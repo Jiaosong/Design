@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-3d-pipeline",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把 Oleander 的 Blender 场景交给 Unreal 做实时漫游，同时还要给 Illustrator 一张分层轴测爆炸图，请设计交换和检查流程。",
+      "expected_output": "A scale-safe exchange plan, format selection, model manifest, texture/camera rules, and axonometric output checklist.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
+      "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
+      "files": []
+    }
+  ]
+}

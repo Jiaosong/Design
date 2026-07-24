@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-delivery-qc",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "检查 Oleander 最终交付包：两张 A0 PDF、一个 4K 宣传片、20 张渲染图和一个 GLB 模型，给出阻断问题和可交付结论。",
+      "expected_output": "A release-gate report covering package integrity, rights, PDF/image, video/audio, and 3D checks with evidence and blockers.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "客户说宣传片颜色和帧率不对，展板又有字体丢失。只诊断，不要修改母版。",
+      "expected_output": "A non-mutating diagnosis using media/PDF/font metadata with a prioritized recheck plan.",
+      "files": []
+    }
+  ]
+}

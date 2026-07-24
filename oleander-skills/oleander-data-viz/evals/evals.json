@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-data-viz",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把 Oleander 的季度客流、活动类型和停留时长做成一张可交互图和一段 15 秒动态图，同时提供 Illustrator 可编辑 SVG。",
+      "expected_output": "Reproducible cleaned data and consistent HTML, MP4, and SVG outputs with stable scales and source notes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "分析场地周边 15 分钟步行圈、公交站和公共服务设施，输出 GIS 图、数据表和展板用轴测化分析底图。",
+      "expected_output": "CRS-aware spatial analysis with validated tables and board-ready vector/raster exports.",
+      "files": []
+    }
+  ]
+}
