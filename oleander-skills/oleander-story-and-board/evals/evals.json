@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-story-and-board",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把 Oleander 的研究结论、三张分析图、六张渲染图编成两张 A0 展板和一份 12 页汇报，要求叙事一致但信息密度不同。",
+      "expected_output": "A shared narrative spine with separate board and deck content maps, hierarchy, specifications, and missing-asset checks.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "为 Oleander 写一个 90 秒品牌宣传片的故事结构和分镜，并指出每个镜头需要哪些现有素材。",
+      "expected_output": "An evidence-aligned 90-second scene map with narration, motion, sound, duration, and asset dependencies.",
+      "files": []
+    }
+  ]
+}

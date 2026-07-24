@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把 Oleander 项目现有的场地调研、政策 PDF、三个竞品案例和两份访谈整理成 Notion 研究库，并指出哪些结论还缺证据。",
+      "expected_output": "A traceable Notion-oriented research structure separating evidence, interpretation, assumptions, decisions, and open questions.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "对五个滨水公共空间案例做可比较的研究矩阵，最后给出对 Oleander 设计最有用的三条启示。",
+      "expected_output": "A sourced comparison matrix with consistent dimensions and evidence-backed design implications.",
+      "files": []
+    }
+  ]
+}
