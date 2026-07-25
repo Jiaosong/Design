@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Oleander｜刘旋的品牌与文化体验设计作品集网页原型。通过关系阅读、结构转译与体验生成，让文化从符号走向体验。" />
+  <meta name="theme-color" content="#F3F0E8" />
+  <title>OLEANDER — 刘旋｜品牌与文化体验设计</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="paper-atmosphere" aria-hidden="true">
+    <span class="paper-atmosphere__fiber paper-atmosphere__fiber--one"></span>
+    <span class="paper-atmosphere__fiber paper-atmosphere__fiber--two"></span>
+    <span class="paper-atmosphere__crease"></span>
+  </div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#home" aria-label="返回首页">
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i>
+      </span>
+      <span>
+        <strong>OLEANDER</strong>
+        <small>刘旋 / LIU XUAN</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span>菜单</span>
+      <i aria-hidden="true"></i>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="主要导航">
+      <a href="#relations">关系</a>
+      <a href="#projects">项目</a>
+      <a href="#practice">实践</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero section section--full" data-section="home">
+      <div class="paper-sheet paper-sheet--one" aria-hidden="true"></div>
+      <div class="paper-sheet paper-sheet--two" aria-hidden="true"></div>
+      <div class="section-coordinate">HOME IDENTITY / 00</div>
+
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">BRAND &amp; CULTURAL EXPERIENCE DESIGN</p>
+          <h1>编织关系</h1>
+          <p class="hero-en">Weaving Relationships</p>
+          <p class="hero-lead">让文化从符号走向体验。</p>
+          <p class="hero-statement">设计不是创造对象，<br />而是重新组织关系。</p>
+        </div>
+
+        <div class="hero-field reveal" data-weave-field aria-label="可交互的品牌关系织场；两组线条可改变密度并建立连接">
+          <svg viewBox="0 0 720 660" role="img" aria-labelledby="hero-field-title hero-field-desc">
+            <title id="hero-field-title">Oleander 关系织场</title>
+            <desc id="hero-field-desc">两组不同方向的线条逐步交错，在开放边缘中形成关系结构。</desc>
+            <g class="field-trace">
+              <path d="M42 108H658" />
+              <path d="M42 204H658" />
+              <path d="M42 300H658" />
+              <path d="M42 396H658" />
+              <path d="M42 492H658" />
+              <path d="M140 42V612" />
+              <path d="M260 42V612" />
+              <path d="M380 42V612" />
+              <path d="M500 42V612" />
+            </g>
+            <g class="field-main">
+              <path d="M90 526C188 444 222 358 298 306C372 254 472 256 638 106" />
+              <path d="M96 116C206 186 270 286 344 350C420 416 498 470 630 542" />
+            </g>
+            <g class="field-nodes">
+              <circle cx="300" cy="304" r="8" />
+              <circle cx="344" cy="350" r="8" />
+              <circle cx="470" cy="256" r="5" />
+              <circle cx="500" cy="472" r="5" />
+            </g>
+            <g class="field-labels">
+              <text x="66" y="96">CULTURE</text>
+              <text x="522" y="90">EXPERIENCE</text>
+              <text x="64" y="566">SOURCE</text>
+              <text x="522" y="578">CONTINUATION</text>
+            </g>
+          </svg>
+          <div class="hero-field__controls">
+            <button class="paper-control" type="button" data-weave-toggle aria-pressed="false">
+              <span>TOUCH / WEAVE</span>
+              <strong>连接织场</strong>
+            </button>
+            <label class="density-control">
+              <span>RELATION DENSITY</span>
+              <input type="range" min="20" max="100" value="58" data-weave-density aria-label="调整关系织场密度" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-footer reveal">
+        <span>以结构支撑表达</span>
+        <span>以关系生成体验</span>
+        <span>让文化在当代语境中继续生长</span>
+      </div>
+
+      <a class="scroll-cue" href="#question">开始阅读 <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="question" class="section question-section" data-section="question">
+      <div class="section-coordinate">THE QUESTION / 01</div>
+      <div class="question-layout">
+        <div class="sticky-copy reveal">
+          <p class="eyebrow">THE QUESTION</p>
+          <h2>文化仍然被看见，<br />为什么却越来越难以被进入？</h2>
+        </div>
+
+        <div class="question-sequence">
+          <article class="reading-unit reveal">
+            <span class="unit-index">01 / OBJECT</span>
+            <p>纹样、建筑、器物和地方名称仍然存在。</p>
+            <div class="relation-line relation-line--solid" aria-hidden="true"></div>
+          </article>
+          <article class="reading-unit reveal">
+            <span class="unit-index">02 / CONTEXT</span>
+            <p>制作、使用、共同记忆与真实场所逐渐退到背景。</p>
+            <div class="relation-line relation-line--weak" aria-hidden="true"></div>
+          </article>
+          <article class="reading-unit reveal">
+            <span class="unit-index">03 / BREAK</span>
+            <p>对象没有消失，赋予对象意义的关系先发生了断裂。</p>
+            <div class="relation-line relation-line--broken" aria-hidden="true"></div>
+          </article>
+          <article class="reading-unit reading-unit--signal reveal">
+            <span class="unit-index">DESIGN TERRITORY</span>
+            <p>设计需要重新组织文化形式与真实生活体验之间的连接条件。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="relations" class="section relations-section" data-section="relations">
+      <div class="section-coordinate">RELATIONS INDEX / 02</div>
+      <header class="section-heading reveal">
+        <p class="eyebrow">READ BY RELATION</p>
+        <h2>选择一段关系，<br />进入对应的设计问题。</h2>
+        <p>关系不是标签。它说明项目试图重新连接什么。</p>
+      </header>
+
+      <section class="relationship-lab reveal" data-reading-lab aria-labelledby="relationship-lab-title">
+        <header class="relationship-lab__header">
+          <div>
+            <span>RELATIONSHIP READING / LIVE MODULE</span>
+            <h3 id="relationship-lab-title">从原有关系，读到当前断点与目标关系。</h3>
+          </div>
+          <div class="reading-state-tabs" role="tablist" aria-label="关系命题状态">
+            <button type="button" role="tab" aria-selected="true" class="is-active" data-reading-state="original">ORIGINAL</button>
+            <button type="button" role="tab" aria-selected="false" data-reading-state="current">CURRENT</button>
+            <button type="button" role="tab" aria-selected="false" data-reading-state="intended">INTENDED</button>
+          </div>
+        </header>
+
+        <div class="relationship-canvas" data-reading-canvas data-state="original">
+          <article class="paper-fragment paper-fragment--source" data-paper-tilt>
+            <span>SOURCE</span>
+            <strong data-reading-source>织物</strong>
+            <small data-reading-source-note>制作与日常使用</small>
+          </article>
+
+          <div class="relationship-bridge" aria-hidden="true">
+            <span data-reading-action>进入</span>
+            <div class="relationship-bridge__line"><i></i><b></b></div>
+            <small data-reading-status>ACTIVE / PAST</small>
+          </div>
+
+          <article class="paper-fragment paper-fragment--target" data-paper-tilt>
+            <span>TARGET</span>
+            <strong data-reading-target>家庭记忆</strong>
+            <small data-reading-target-note>地方身份与共同经验</small>
+          </article>
+
+          <aside class="relationship-reading-note">
+            <div><span>CONTEXT</span><p data-reading-context>长期制作、日常使用与家庭生活</p></div>
+            <div><span>EVIDENCE</span><p data-reading-evidence>材料记录 + 制作者陈述</p></div>
+            <div><span>IMPLICATION</span><p data-reading-implication>文化意义由持续使用和共同记忆生成。</p></div>
+            <button class="evidence-drawer-toggle" type="button" data-reading-evidence-toggle aria-expanded="false">展开证据层 <i aria-hidden="true">＋</i></button>
+            <div class="reading-evidence-drawer" data-reading-evidence-panel hidden>
+              <p data-reading-evidence-detail>织物磨损、修补与长期保存痕迹表明，它曾作为生活对象而非展示符号进入家庭。</p>
+              <small data-reading-confidence>CONFIDENCE / HIGH</small>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="relationship-lab__controls">
+          <label>
+            <span>RELATION TENSION</span>
+            <input type="range" min="0" max="100" value="42" data-reading-tension aria-label="调整关系张力" />
+          </label>
+          <p>拖动张力观察节点距离与线型变化；状态判断仍由文字和证据说明。</p>
+          <button type="button" class="paper-reset" data-reading-reset>恢复阅读状态</button>
+        </footer>
+      </section>
+
+      <div class="relations-workspace reveal">
+        <div class="relation-list" role="list" aria-label="关系列表">
+          <button class="relation-option is-active" type="button" data-relation="culture" aria-pressed="true">
+            <span>01</span>
+            <strong>Culture</strong>
+            <i aria-hidden="true">→</i>
+            <strong>Experience</strong>
+            <small>文化如何进入体验？</small>
+          </button>
+          <button class="relation-option" type="button" data-relation="memory" aria-pressed="false">
+            <span>02</span>
+            <strong>Memory</strong>
+            <i aria-hidden="true">→</i>
+            <strong>Place</strong>
+            <small>记忆如何被场所承载？</small>
+          </button>
+          <button class="relation-option" type="button" data-relation="symbol" aria-pressed="false">
+            <span>03</span>
+            <strong>Symbol</strong>
+            <i aria-hidden="true">→</i>
+            <strong>Behavior</strong>
+            <small>符号如何影响行动？</small>
+          </button>
+          <button class="relation-option" type="button" data-relation="local" aria-pressed="false">
+            <span>04</span>
+            <strong>Local</strong>
+            <i aria-hidden="true">→</i>
+            <strong>Public</strong>
+            <small>地方经验如何形成公共理解？</small>
+          </button>
+          <button class="relation-option" type="button" data-relation="tradition" aria-pressed="false">
+            <span>05</span>
+            <strong>Tradition</strong>
+            <i aria-hidden="true">→</i>
+            <strong>Contemporary Life</strong>
+            <small>传统如何进入当代生活？</small>
+          </button>
+        </div>
+
+        <div class="relation-reading" aria-live="polite">
+          <div class="relation-reading__header">
+            <span id="relation-number">RELATION / 01</span>
+            <span id="relation-count">2 PROJECTS</span>
+          </div>
+          <div class="relation-diagram" aria-hidden="true">
+            <span id="relation-source">CULTURE</span>
+            <i></i>
+            <span id="relation-target">EXPERIENCE</span>
+          </div>
+          <h3 id="relation-question">文化如何从被识别，逐渐走向被理解、使用与参与？</h3>
+          <p id="relation-description">关注品牌、信息、材料与空间如何共同组织公众进入文化内容的路径。</p>
+          <div class="relation-projects" id="relation-projects">
+            <a href="#project-weaving"><span>Project 01</span> 织造文化品牌系统</a>
+            <a href="#projects"><span>Research</span> 文化参与中的所有权</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" class="section evidence-section" data-section="evidence">
+      <div class="section-coordinate">SELECTED EVIDENCE / 03</div>
+      <header class="section-heading reveal">
+        <p class="eyebrow">SELECTED EVIDENCE</p>
+        <h2>不是展示“做过什么”，<br />而是展示什么证据改变了判断。</h2>
+      </header>
+
+      <div class="evidence-grid">
+        <article class="evidence-record evidence-record--image reveal">
+          <div class="evidence-visual evidence-visual--field" role="img" aria-label="由密度不同的经纬结构组成的材料分析示意图"></div>
+          <div>
+            <span class="record-code">MATERIAL / 03</span>
+            <h3>纹样不是独立图形</h3>
+            <p>它由经纬交错、重复单位、材料张力与制作时间共同生成。</p>
+            <dl>
+              <div><dt>Relevance</dt><dd>设计应转译生成结构，而不是复制完整轮廓。</dd></div>
+              <div><dt>Confidence</dt><dd>High</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="evidence-record reveal">
+          <span class="record-code">OBSERVED / 01</span>
+          <blockquote>游客主要集中在完成品区域拍照，对制作流程说明停留较少。</blockquote>
+          <p class="evidence-implication"><strong>Implication</strong> 制作过程没有成为公众理解文化的主要入口。</p>
+          <small>现场观察 / 单一展示场景 / Confidence: Medium</small>
+        </article>
+
+        <article class="evidence-record reveal">
+          <span class="record-code">REVISED ASSUMPTION</span>
+          <div class="assumption-shift">
+            <div>
+              <small>BEFORE</small>
+              <p>年轻公众对传统工艺缺乏兴趣。</p>
+            </div>
+            <i aria-hidden="true">→</i>
+            <div>
+              <small>AFTER</small>
+              <p>问题更可能是现有体验缺少进入制作关系的清晰路径。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects-section" data-section="projects">
+      <div class="section-coordinate">PROJECT INDEX / 04</div>
+      <header class="section-heading reveal">
+        <p class="eyebrow">PROJECTS AS RELATIONSHIP STUDIES</p>
+        <h2>项目不是独立的答案。<br />它们是同一组关系问题的持续展开。</h2>
+      </header>
+
+      <div class="mode-switcher reveal" role="tablist" aria-label="项目阅读模式">
+        <button class="mode-button is-active" type="button" role="tab" aria-selected="true" data-project-mode="relation">按关系</button>
+        <button class="mode-button" type="button" role="tab" aria-selected="false" data-project-mode="practice">按实践</button>
+        <button class="mode-button" type="button" role="tab" aria-selected="false" data-project-mode="archive">开放档案</button>
+      </div>
+
+      <div class="project-mode is-active" data-mode-panel="relation">
+        <article class="project-record project-record--featured reveal">
+          <div class="project-index">PROJECT / 01</div>
+          <div class="project-source-visual" role="img" aria-label="织造材料与结构的抽象图形">
+            <span class="thread thread--a"></span>
+            <span class="thread thread--b"></span>
+            <span class="thread thread--c"></span>
+          </div>
+          <div class="project-record__copy">
+            <p class="eyebrow">TRADITION → CONTEMPORARY LIFE</p>
+            <h3>织造文化品牌系统</h3>
+            <p class="project-proposition">传统工艺的当代表达，不应从纹样复制开始，而应从它如何被制作、使用和记忆开始。</p>
+            <dl class="project-meta">
+              <div><dt>Key Evidence</dt><dd>交错、重复与张力被转译为跨品牌、包装与空间的生成规则。</dd></div>
+              <div><dt>Role</dt><dd>Research / Strategy / Identity / Experience</dd></div>
+              <div><dt>Status</dt><dd>Academic / Prototyped / Tested</dd></div>
+              <div><dt>Evidence</dt><dd>Supported</dd></div>
+            </dl>
+            <a class="text-link" href="#project-weaving">阅读这次转译 <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-record project-record--compact reveal">
+          <div class="project-index">PROJECT / 02</div>
+          <div class="project-record__copy">
+            <p class="eyebrow">PRESSURE → RESTORATIVE PLACE</p>
+            <h3>忘也 Daylily｜都市疗愈商业空间</h3>
+            <p>把短暂休息从消费附属品转化为可进入、可选择、可带走的恢复性体验。</p>
+            <span class="status-label">BRAND / CMF / VIS / SPACE</span>
+            <a class="text-link" href="#project-daylily">阅读完整案例 <span aria-hidden="true">→</span></a>
+          </div>
+          <a class="project-image-link" href="#project-daylily" aria-label="查看忘也 Daylily 项目">
+            <img src="assets/daylily/hero.jpg" alt="忘也 Daylily 都市疗愈商业空间项目封面" />
+          </a>
+        </article>
+
+        <article class="project-record project-record--compact reveal">
+          <div class="project-index">PROJECT / 03</div>
+          <div class="project-record__copy">
+            <p class="eyebrow">SYMBOL → BEHAVIOR</p>
+            <h3>公共符号与行为实验</h3>
+            <p>检查方向、距离、反馈与空间位置如何影响公众的选择和行动。</p>
+            <span class="status-label">FOCUSED PROJECT / EMERGING</span>
+          </div>
+          <div class="project-placeholder project-placeholder--vertical" aria-hidden="true"><i></i><i></i><i></i></div>
+        </article>
+      </div>
+
+      <div class="project-mode" data-mode-panel="practice" hidden>
+        <div class="practice-matrix reveal">
+          <div class="practice-matrix__head"><span>项目</span><span>Observe</span><span>Frame</span><span>Translate</span><span>Form</span><span>Test</span></div>
+          <div><strong>织造文化品牌系统</strong><span>Primary</span><span>Primary</span><span>Primary</span><span>Primary</span><span>Supported</span></div>
+          <div><strong>忘也 Daylily</strong><span>Primary</span><span>Primary</span><span>Primary</span><span>Primary</span><span>Supported</span></div>
+          <div><strong>公共符号与行为实验</strong><span>Supported</span><span>Primary</span><span>Supported</span><span>Primary</span><span>Emerging</span></div>
+        </div>
+      </div>
+
+      <div class="project-mode" data-mode-panel="archive" hidden>
+        <div class="archive-list reveal">
+          <article><span>2026 / RESEARCH NOTE</span><h3>公共文化参与中的所有权问题</h3><p>LOCAL → PUBLIC</p><small>OPEN QUESTION</small></article>
+          <article><span>2025 / MATERIAL PROTOTYPE</span><h3>可展开织造包装实验</h3><p>TRADITION → CONTEMPORARY LIFE</p><small>TESTED</small></article>
+          <article><span>2025 / FIELD RECORD</span><h3>普通场所中的使用痕迹</h3><p>MEMORY → PLACE</p><small>ONGOING</small></article>
+        </div>
+      </div>
+    </section>
+
+    <article id="project-weaving" class="project-detail" data-section="project-weaving">
+      <header class="project-opening section section--full">
+        <div class="section-coordinate">PROJECT DETAIL / 01</div>
+        <div class="project-opening__copy reveal">
+          <p class="eyebrow">TRADITION → CONTEMPORARY LIFE</p>
+          <h2>织造文化品牌系统</h2>
+          <p class="project-opening__en">Weaving Culture Identity System</p>
+          <p class="project-opening__proposition">传统工艺的当代表达，不应从纹样复制开始，而应从它如何被制作、使用和记忆开始。</p>
+        </div>
+        <div class="project-opening__map reveal" aria-label="从传统到当代体验的关系转译图">
+          <div><span>TRADITION</span><small>材料 / 制作 / 使用 / 记忆</small></div>
+          <i aria-hidden="true"></i>
+          <div><span>CONTEMPORARY EXPERIENCE</span><small>品牌 / 包装 / 空间 / 参与</small></div>
+        </div>
+        <nav class="chapter-nav" aria-label="项目章节">
+          <a href="#context">01 Context</a>
+          <a href="#break">02 Break</a>
+          <a href="#reading-evidence">03 Evidence</a>
+          <a href="#translation">04 Translation</a>
+          <a href="#experience">05 Experience</a>
+          <a href="#change">06 Change</a>
+          <a href="#reflection">07 Reflection</a>
+        </nav>
+      </header>
+
+      <section id="context" class="project-chapter section">
+        <div class="chapter-coordinate">01 / ORIGINAL CONTEXT</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">原始语境</p>
+            <h2>纹样不是一个图形。<br />它是关系留下的结果。</h2>
+          </header>
+          <div class="context-chain reveal" aria-label="材料、制作、使用、记忆与地方身份的关系链">
+            <div><span>MATERIAL</span><p>纤维与工具限制形式</p></div>
+            <i>shapes</i>
+            <div><span>PRACTICE</span><p>身体动作组织交错</p></div>
+            <i>generates</i>
+            <div><span>USE</span><p>物件进入日常</p></div>
+            <i>forms</i>
+            <div><span>MEMORY</span><p>使用积累共同经验</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="break" class="project-chapter section chapter--ink">
+        <div class="chapter-coordinate">02 / RELATIONSHIP BREAK</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">关系断点</p>
+            <h2>对象没有消失。<br />消失的是让它具有意义的关系。</h2>
+          </header>
+          <div class="break-map reveal">
+            <div class="break-map__before">
+              <small>BEFORE</small>
+              <span>制作</span><i></i><span>使用</span><i></i><span>记忆</span><i></i><span>身份</span>
+            </div>
+            <div class="break-map__change">
+              <small>CHANGE</small>
+              <p>工艺从日常使用对象逐渐转为展示与纪念对象。</p>
+            </div>
+            <div class="break-map__now">
+              <small>NOW</small>
+              <span>制作</span><i class="broken"></i><span>视觉符号</span><i></i><span>快速传播</span>
+            </div>
+          </div>
+          <p class="chapter-conclusion reveal">纹样仍然存在，但产生纹样的制作、使用与记忆关系正在消失。</p>
+        </div>
+      </section>
+
+      <section id="reading-evidence" class="project-chapter section">
+        <div class="chapter-coordinate">03 / READING EVIDENCE</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">阅读证据</p>
+            <h2>证据不是被收集的材料。<br />证据是改变判断的力量。</h2>
+          </header>
+          <div class="evidence-chain reveal">
+            <article><span>OBSERVED / 01</span><p>公众集中观看完成品。</p></article>
+            <article><span>REPORTED / 02</span><p>访客更常询问图案含义，而非制作过程。</p></article>
+            <article><span>MATERIAL / 03</span><p>纹样来自交错、重复、张力与时间累积。</p></article>
+            <i aria-hidden="true"></i>
+            <article class="evidence-chain__finding"><span>SUPPORTED PATTERN</span><p>公众接触到的是最终形式，而不是形成形式的关系过程。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="translation" class="project-chapter section translation-section">
+        <div class="chapter-coordinate">04 / TRANSLATION LOGIC</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">转译逻辑</p>
+            <h2>我们不复制看见的形式。<br />我们转译形成形式的关系。</h2>
+          </header>
+          <div class="translation-chain reveal">
+            <div><small>SOURCE</small><strong>手工织造</strong></div>
+            <i>↓</i>
+            <div><small>STRUCTURE</small><strong>交错 / 重复 / 张力</strong></div>
+            <i>↓</i>
+            <div><small>PRINCIPLE</small><strong>先建立连接，再形成图形</strong></div>
+            <i>↓</i>
+            <div><small>RULE</small><strong>核心形式由两个独立方向共同生成</strong></div>
+          </div>
+          <div class="rule-applications reveal">
+            <article><span>IDENTITY</span><div class="mini-weave" aria-hidden="true"></div><p>两组方向形成开放标志。</p></article>
+            <article><span>PACKAGING</span><div class="mini-fold" aria-hidden="true"></div><p>展开动作连接分散信息。</p></article>
+            <article><span>SPACE</span><div class="mini-path" aria-hidden="true"></div><p>多条阅读路径在中央交汇。</p></article>
+            <article><span>INTERACTION</span><div class="mini-interaction" aria-hidden="true"></div><p>个人操作进入共同结果。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="project-chapter section chapter--paper-alt">
+        <div class="chapter-coordinate">05 / EXPERIENCE FORMATION</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">体验生成</p>
+            <h2>设计在人进入关系时，<br />才真正开始。</h2>
+          </header>
+          <ol class="experience-path reveal">
+            <li><span>01</span><strong>被看见</strong><p>入口标志让公众感知“交错”而不是完整纹样。</p></li>
+            <li><span>02</span><strong>被理解</strong><p>材料与信息系统解释形式如何被生成。</p></li>
+            <li><span>03</span><strong>被使用</strong><p>包装展开与空间行动使结构进入身体经验。</p></li>
+            <li><span>04</span><strong>被参与</strong><p>个人选择影响正在生长的共同织图。</p></li>
+            <li><span>05</span><strong>被继续</strong><p>内容、模板与档案允许关系在项目之后扩展。</p></li>
+          </ol>
+          <div class="experience-reader" data-experience-reader aria-live="polite">
+            <span data-experience-code>STAGE / 01</span>
+            <strong data-experience-role>Observer → Reader</strong>
+            <p data-experience-description>入口不立即给出完整纹样，而以开放交错结构建立继续阅读的动机。</p>
+            <small data-experience-touchpoint>TOUCHPOINT / IDENTITY + ENTRANCE</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="change" class="project-chapter section">
+        <div class="chapter-coordinate">06 / EVIDENCE OF CHANGE</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">变化证据</p>
+            <h2>设计提出了新的关系。<br />这段关系真的发生了吗？</h2>
+          </header>
+          <div class="result-grid reveal">
+            <article><span>TESTED</span><strong>4 / 5</strong><p>能够描述两组结构逐步交错形成完整图形。</p></article>
+            <article><span>OBSERVED</span><strong>4 / 5</strong><p>独立完成包装展开；两人首先选择错误方向。</p></article>
+            <article><span>PARTIAL</span><strong>2 / 5</strong><p>明确理解个人结果会进入公共档案。</p></article>
+          </div>
+          <div class="maturity-grid reveal">
+            <article><span>VERIFIED</span><p>包装核心结构可被多数测试者完成。</p></article>
+            <article><span>SUPPORTED</span><p>生成过程可能帮助注意力从纹样转向结构。</p></article>
+            <article><span>UNKNOWN</span><p>新的理解能否形成长期参与仍未得到验证。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="reflection" class="project-chapter section reflection-section">
+        <div class="chapter-coordinate">07 / REFLECTION</div>
+        <div class="chapter-grid">
+          <header class="chapter-heading reveal">
+            <p class="eyebrow">反思</p>
+            <h2>项目结束了。<br />设计判断不应停在原来的位置。</h2>
+          </header>
+          <div class="position-revision reveal">
+            <div><small>INITIAL POSITION</small><p>年轻公众对传统工艺缺乏兴趣。</p></div>
+            <i aria-hidden="true">→</i>
+            <div><small>REVISED POSITION</small><p>现有体验缺少把兴趣转化为理解和参与的清晰路径。</p></div>
+          </div>
+          <div class="reflection-notes reveal">
+            <article><span>FAILURE / MEANING</span><p>多数参与者只把互动理解为个性化图案生成，公共关系没有成立。</p></article>
+            <article><span>RESPONSIBILITY</span><p>文化来源、解释权、内容归属与长期维护不能被视觉系统取代。</p></article>
+            <article><span>ODL CHANGE / 0.6</span><p>参与必须让用户知道自己的行动改变了什么，并让这种改变进入后续系统。</p></article>
+          </div>
+          <p class="open-question reveal">开放问题：当传统工艺进入新的品牌与体验系统时，如何避免它再次成为一种更精致、更具互动感的文化消费形式？</p>
+        </div>
+      </section>
+    </article>
+
+    <article id="project-daylily" class="project-detail daylily-detail" data-section="project-daylily">
+      <header class="daylily-opening section section--full">
+        <div class="section-coordinate">PROJECT DETAIL / 02</div>
+        <div class="daylily-opening__copy reveal">
+          <p class="eyebrow">PRESSURE → RESTORATIVE PLACE</p>
+          <h1>忘也<br /><em>Daylily</em></h1>
+          <p class="daylily-lead">一个面向都市人群的疗愈商业空间：不是逃离日常，而是在日常中重新获得片刻呼吸、感知与选择。</p>
+          <dl class="daylily-facts">
+            <div><dt>Role</dt><dd>Research / Strategy / Brand / CMF / VIS / Space</dd></div>
+            <div><dt>Format</dt><dd>Independent portfolio project</dd></div>
+            <div><dt>Evidence</dt><dd>Market research / audience analysis / touchpoint prototypes</dd></div>
+            <div><dt>Source</dt><dd>189 Illustrator artboards / 2026</dd></div>
+          </dl>
+        </div>
+        <figure class="daylily-opening__image reveal">
+          <img src="assets/daylily/site.jpg" alt="忘也 Daylily 空间总览与体验节点分布" />
+          <figcaption>空间不是背景，而是恢复关系发生的媒介。</figcaption>
+        </figure>
+      </header>
+
+      <section class="daylily-chapter section daylily-chapter--paper">
+        <div class="chapter-coordinate">01 / READ</div>
+        <div class="daylily-copy reveal">
+          <p class="eyebrow">CONTEXT &amp; EVIDENCE</p>
+          <h2>当“休息”也需要被安排，<br />疗愈空间应该提供什么？</h2>
+          <p>项目从行业、市场、竞品与目标人群切入，识别到都市疗愈消费中的共同矛盾：人们需要短时恢复，却不希望被迫进入统一的仪式、审美或情绪脚本。</p>
+        </div>
+        <div class="daylily-image-grid daylily-image-grid--two reveal">
+          <figure><img src="assets/daylily/market.jpg" alt="都市疗愈市场分析图表" /><figcaption>市场结构与机会区间</figcaption></figure>
+          <figure><img src="assets/daylily/imagination.jpg" alt="忘也品牌想象与核心命题" /><figcaption>“疗愈”在当代中国意味着什么</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="daylily-chapter section daylily-chapter--green">
+        <div class="chapter-coordinate">02 / FRAME</div>
+        <div class="daylily-split">
+          <div class="daylily-copy reveal">
+            <p class="eyebrow">RELATIONSHIP PROPOSITION</p>
+            <h2>让每一个都市人，<br />都有一株属于自己的“忘忧草”。</h2>
+            <p>Daylily 不把疗愈定义为一次被动服务，而是把品牌、材料、视觉和空间触点组织成一段自主恢复路径：靠近、停留、感知、带走，并允许下一次重新进入。</p>
+          </div>
+          <figure class="reveal"><img src="assets/daylily/positioning.jpg" alt="忘也 Daylily 都市身心疗愈空间定位" /></figure>
+        </div>
+        <div class="principle-strip reveal">
+          <figure><img src="assets/daylily/principles.jpg" alt="忘也品牌定位与四项体验原则" /></figure>
+          <ol>
+            <li><span>01</span>松开被规定的恢复方式</li>
+            <li><span>02</span>用自然材料降低感官负担</li>
+            <li><span>03</span>让短暂停留也形成完整体验</li>
+            <li><span>04</span>把空间记忆带回日常生活</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="daylily-chapter section daylily-chapter--paper">
+        <div class="chapter-coordinate">03 / TRANSLATE</div>
+        <div class="daylily-copy reveal">
+          <p class="eyebrow">IDENTITY AS A LIVING SYSTEM</p>
+          <h2>从萱草的生长与舒展，<br />生成可延展的视觉语言。</h2>
+          <p>标志并不是孤立图形。花瓣、放射、生长节点与开放边界共同构成生成规则，使品牌能在导视、材料、出版物与空间触点之间保持同一种关系语法。</p>
+        </div>
+        <div class="identity-wall reveal">
+          <figure class="identity-wall__wide"><img src="assets/daylily/logo.jpg" alt="忘也 Daylily 标志构成与网格" /></figure>
+          <figure><img src="assets/daylily/symbol.jpg" alt="萱草图形符号与品牌图标" /></figure>
+          <figure><img src="assets/daylily/palette.jpg" alt="忘也品牌色彩系统" /></figure>
+        </div>
+      </section>
+
+      <section class="daylily-chapter section daylily-chapter--warm">
+        <div class="chapter-coordinate">04 / FORM</div>
+        <div class="daylily-copy reveal">
+          <p class="eyebrow">CMF &amp; TOUCHPOINTS</p>
+          <h2>把安静做成可以触摸、<br />翻阅与随身携带的东西。</h2>
+          <p>低饱和植物绿、温暖纸色、半透明层与细微压印形成材料基调。触点从名片、折页和气味卡延伸到随身物件，让体验离开空间后仍能继续。</p>
+        </div>
+        <div class="daylily-image-grid daylily-image-grid--three reveal">
+          <figure><img src="assets/daylily/material.jpg" alt="忘也材料设计卡片" /><figcaption>Material / tactile card</figcaption></figure>
+          <figure><img src="assets/daylily/touchpoint.jpg" alt="忘也品牌折页和纸品系统" /><figcaption>Editorial / printed touchpoint</figcaption></figure>
+          <figure><img src="assets/daylily/signage.jpg" alt="忘也空间标识和材料样品" /><figcaption>Signage / spatial cue</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="daylily-chapter section daylily-chapter--ink">
+        <div class="chapter-coordinate">05 / EXPERIENCE</div>
+        <div class="daylily-split daylily-split--reverse">
+          <div class="daylily-copy reveal">
+            <p class="eyebrow">FROM BRAND TO PLACE</p>
+            <h2>最终交付的不是一套视觉，<br />而是一条恢复路径。</h2>
+            <p>空间、品牌与物料共同承担体验职责：环境帮助身体慢下来，信息降低选择压力，材料建立触觉记忆，随身触点则把短暂恢复延伸到日常。</p>
+            <p class="daylily-note">项目下一阶段将补充真实场景测试：停留时长、触点使用顺序、情绪自评以及再次到访意愿。</p>
+          </div>
+          <figure class="reveal"><img src="assets/daylily/environment.jpg" alt="忘也 Daylily 空间中的品牌材料与光影效果" /></figure>
+        </div>
+      </section>
+    </article>
+
+    <section id="practice" class="section practice-section" data-section="practice">
+      <div class="section-coordinate">PRACTICE / 05</div>
+      <header class="section-heading reveal">
+        <p class="eyebrow">HOW OLEANDER WORKS</p>
+        <h2>设计不是从答案开始。<br />它从重新阅读对象之间的关系开始。</h2>
+      </header>
+
+      <div class="practice-layout reveal">
+        <div class="practice-spine" role="tablist" aria-label="Oleander 六阶段实践方法">
+          <button class="practice-step is-active" type="button" role="tab" aria-selected="true" data-practice-step="read"><span>01</span> READ</button>
+          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="frame"><span>02</span> FRAME</button>
+          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="translate"><span>03</span> TRANSLATE</button>
+          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="form"><span>04</span> FORM</button>
+          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="test"><span>05</span> TEST</button>
+          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="continue"><span>06</span> CONTINUE</button>
+        </div>
+
+        <div class="practice-detail" aria-live="polite">
+          <span id="practice-code">01 / READ</span>
+          <h3 id="practice-title">关系阅读</h3>
+          <p class="practice-question" id="practice-question">设计对象原本处于怎样的关系中？</p>
+          <p id="practice-description">从场景、材料、行为与相关者开始，理解对象如何形成、被使用和进入共同记忆。</p>
+          <dl id="practice-data">
+            <div><dt>Methods</dt><dd>现场观察 / 相关者访谈 / 材料分析 / 使用路径记录</dd></div>
+            <div><dt>Outputs</dt><dd>语境地图 / 关系地图 / 来源记录 / 研究边界</dd></div>
+            <div><dt>Project Evidence</dt><dd><a href="#context">织造项目：材料、制作、使用与记忆链</a></dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="practice-lenses reveal">
+        <article><span>LENS / 01</span><h3>文化阅读</h3><p>来源、解释权、呈现与使用边界。</p></article>
+        <article><span>LENS / 02</span><h3>关系策略</h3><p>相关者、断点、触点与延续机制。</p></article>
+        <article><span>LENS / 03</span><h3>空间与叙事体验</h3><p>时间、路径、材料、信息与参与。</p></article>
+        <article><span>LENS / 04</span><h3>可持续生长的系统</h3><p>扩展、维护、治理与版本迭代。</p></article>
+      </div>
+
+      <div class="responsibility-statement reveal">
+        <span>CULTURAL AND PARTICIPATORY RESPONSIBILITY</span>
+        <p>文化不是等待设计师提取的素材库。进入地方、传统、记忆与公共叙事时，必须同时讨论来源、解释权、参与方式、成果归属与长期维护。</p>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section" data-section="about">
+      <div class="section-coordinate">ABOUT / 06</div>
+      <div class="about-opening">
+        <div class="about-identity reveal">
+          <p class="eyebrow">THE PERSON BEHIND OLEANDER</p>
+          <h2>刘旋</h2>
+          <p class="about-name-en">LIU XUAN</p>
+          <p class="about-role">品牌与文化体验设计师<br /><span>Brand &amp; Cultural Experience Designer</span></p>
+          <p class="about-statement">我关注的不是文化看起来像什么，而是它如何与人、地方和当代生活继续发生关系。</p>
+        </div>
+        <div class="portrait-record reveal" role="img" aria-label="刘旋在工作桌前整理纸张、材料样本与项目研究记录的抽象人物占位图">
+          <div class="portrait-silhouette" aria-hidden="true"></div>
+          <div class="portrait-table" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>PORTRAIT / WORKING CONTEXT</span>
+          <small>Replace with an authentic portrait</small>
+        </div>
+      </div>
+
+      <div class="about-position reveal">
+        <span>01 / POSITION</span>
+        <blockquote>设计不是创造对象，而是重新组织关系。</blockquote>
+        <p>产品设计训练让我从材料、结构和使用开始思考；文化项目让我进一步意识到，物件的意义来自它如何被制作、由谁使用、处于什么地方，以及如何进入共同记忆。</p>
+      </div>
+
+      <div class="path-formation reveal">
+        <header><span>02 / PATH</span><h3>从物件到持续实践</h3></header>
+        <ol>
+          <li><strong>OBJECT</strong><p>从材料、结构、人体尺度与使用开始。</p></li>
+          <li><strong>CONTEXT</strong><p>认识到对象无法脱离地方和人被完整理解。</p></li>
+          <li><strong>RELATION</strong><p>把注意力从单一对象转向对象之间的连接方式。</p></li>
+          <li><strong>EXPERIENCE</strong><p>通过品牌、空间、信息和行为组织进入路径。</p></li>
+          <li><strong>PRACTICE</strong><p>Oleander 成为持续研究这些关系的方法。</p></li>
+        </ol>
+      </div>
+
+      <div class="contribution-grid reveal">
+        <article><span>CONTRIBUTION / 01</span><h3>语境阅读</h3><p>在形式出现前，建立准确的问题和文化来源。</p></article>
+        <article><span>CONTRIBUTION / 02</span><h3>关系定义</h3><p>将模糊目标转化为可讨论、可验证的命题。</p></article>
+        <article><span>CONTRIBUTION / 03</span><h3>转译系统</h3><p>从来源结构建立跨品牌、包装、空间与互动的规则。</p></article>
+        <article><span>CONTRIBUTION / 04</span><h3>叙事体验</h3><p>让复杂内容通过视觉、空间与行为逐步被理解。</p></article>
+      </div>
+
+      <div class="capability-grid reveal">
+        <article><span>CORE</span><p>文化与语境研究<br />品牌与体验策略<br />视觉与信息系统<br />跨媒介转译<br />设计研究与原型</p></article>
+        <article><span>DEVELOPING</span><p>空间叙事<br />展览体验<br />参与式系统<br />运营思考<br />体验验证</p></article>
+        <article><span>COLLABORATIVE</span><p>建筑与工程<br />专业策展<br />历史与人类学研究<br />技术开发<br />长期文化运营与治理</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section" data-section="contact">
+      <div class="section-coordinate">CONTACT / 07</div>
+      <header class="section-heading reveal">
+        <p class="eyebrow">BEGIN WITH A RELATIONSHIP</p>
+        <h2>合作可以从一个<br />尚未被清楚定义的问题开始。</h2>
+        <p>你可以带来一项文化内容、一个品牌、一个场所，或一套已经存在但彼此分离的设计。</p>
+      </header>
+
+      <div class="contact-layout reveal">
+        <ol class="contact-spine" aria-label="联系表单步骤">
+          <li class="is-active" data-contact-nav="1"><span>01</span> PURPOSE</li>
+          <li data-contact-nav="2"><span>02</span> OBJECT</li>
+          <li data-contact-nav="3"><span>03</span> RELATION</li>
+          <li data-contact-nav="4"><span>04</span> CONTEXT</li>
+          <li data-contact-nav="5"><span>05</span> CONTACT</li>
+        </ol>
+
+        <form id="relationship-form" class="relationship-form" novalidate>
+          <section class="form-step is-active" data-form-step="1" aria-labelledby="step-1-title">
+            <span class="form-step__code">01 / PURPOSE</span>
+            <h3 id="step-1-title">你希望开始哪一种对话？</h3>
+            <fieldset class="choice-grid">
+              <legend class="visually-hidden">联系目的</legend>
+              <label><input type="radio" name="purpose" value="项目合作" required /><span><strong>项目合作</strong><small>品牌、文化内容、场所或体验项目</small></span></label>
+              <label><input type="radio" name="purpose" value="职位或团队机会" /><span><strong>职位或团队机会</strong><small>团队、职位或阶段性角色</small></span></label>
+              <label><input type="radio" name="purpose" value="研究交流" /><span><strong>研究交流</strong><small>文化、方法与相关议题</small></span></label>
+              <label><input type="radio" name="purpose" value="展览或活动" /><span><strong>展览或活动</strong><small>分享、讲座、工作坊或评审</small></span></label>
+              <label><input type="radio" name="purpose" value="其他" /><span><strong>其他</strong><small>不属于以上类别</small></span></label>
+            </fieldset>
+            <p class="field-error" data-error-for="purpose" hidden>请选择一种联系目的。</p>
+            <div class="form-actions"><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
+          </section>
+
+          <section class="form-step" data-form-step="2" aria-labelledby="step-2-title" hidden>
+            <span class="form-step__code">02 / OBJECT</span>
+            <h3 id="step-2-title">你正在处理什么？</h3>
+            <p class="field-help">可以是一项文化内容、一个地方、一种材料、一个品牌、一个空间或一个尚未明确的问题。</p>
+            <label class="open-field">
+              <span>对象或问题 <b>必填</b></span>
+              <textarea name="object" rows="7" required placeholder="例如：我们正在整理一项地方工艺，目前已有影像和历史资料，但还没有形成清楚的公众体验方式……"></textarea>
+            </label>
+            <p class="field-error" data-error-for="object" hidden>请至少简单说明你正在处理的对象或问题。</p>
+            <div class="form-actions"><button class="button button--ghost" type="button" data-prev-step>返回</button><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
+          </section>
+
+          <section class="form-step" data-form-step="3" aria-labelledby="step-3-title" hidden>
+            <span class="form-step__code">03 / RELATION</span>
+            <h3 id="step-3-title">哪段关系目前没有成立？</h3>
+            <p class="field-help">不需要设计术语。可以描述人们无法理解什么、哪些内容彼此分离，或什么只被看见却没有被使用。</p>
+            <label class="open-field">
+              <span>关系断点 <em>选填，但建议填写</em></span>
+              <textarea name="break" rows="6" placeholder="例如：公众能够识别地方符号，但无法理解它与真实生活的关系……"></textarea>
+            </label>
+            <fieldset class="chip-field">
+              <legend>你可能正在处理</legend>
+              <label><input type="checkbox" name="relations" value="文化与体验" /><span>文化 ↔ 体验</span></label>
+              <label><input type="checkbox" name="relations" value="记忆与场所" /><span>记忆 ↔ 场所</span></label>
+              <label><input type="checkbox" name="relations" value="符号与行为" /><span>符号 ↔ 行为</span></label>
+              <label><input type="checkbox" name="relations" value="地方与公众" /><span>地方 ↔ 公众</span></label>
+              <label><input type="checkbox" name="relations" value="传统与当代生活" /><span>传统 ↔ 当代生活</span></label>
+              <label><input type="checkbox" name="relations" value="尚不确定" /><span>尚不确定</span></label>
+            </fieldset>
+            <div class="form-actions"><button class="button button--ghost" type="button" data-prev-step>返回</button><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
+          </section>
+
+          <section class="form-step" data-form-step="4" aria-labelledby="step-4-title" hidden>
+            <span class="form-step__code">04 / CONTEXT</span>
+            <h3 id="step-4-title">这段关系目前处于什么状态？</h3>
+            <label class="select-field">
+              <span>项目阶段</span>
+              <select name="stage">
+                <option value="">尚不确定</option>
+                <option>初步问题</option>
+                <option>已有研究</option>
+                <option>方向已明确</option>
+                <option>正在设计</option>
+                <option>已经落地，正在复盘</option>
+                <option>职位或团队机会</option>
+              </select>
+            </label>
+            <label class="open-field">
+              <span>谁与这个项目有关？ <em>选填</em></span>
+              <input name="stakeholders" type="text" placeholder="例如：文化贡献者、运营团队、研究者、地方居民……" />
+            </label>
+            <label class="select-field">
+              <span>大致时间 <em>选填</em></span>
+              <select name="timeline">
+                <option value="">仍在探索</option>
+                <option>希望在一至两个月内开始</option>
+                <option>计划在三至六个月内推进</option>
+                <option>计划在今年稍后推进</option>
+                <option>长期或持续项目</option>
+              </select>
+            </label>
+            <div class="form-actions"><button class="button button--ghost" type="button" data-prev-step>返回</button><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
+          </section>
+
+          <section class="form-step" data-form-step="5" aria-labelledby="step-5-title" hidden>
+            <span class="form-step__code">05 / CONTACT</span>
+            <h3 id="step-5-title">如何继续联系？</h3>
+            <div class="field-pair">
+              <label class="open-field"><span>姓名 <b>必填</b></span><input name="name" type="text" required autocomplete="name" /></label>
+              <label class="open-field"><span>组织 <em>选填</em></span><input name="organization" type="text" autocomplete="organization" /></label>
+            </div>
+            <label class="open-field"><span>邮箱 <b>必填</b></span><input name="email" type="email" required autocomplete="email" inputmode="email" /></label>
+            <p class="field-error" data-error-for="contact" hidden>请填写姓名和有效邮箱地址。</p>
+
+            <div class="contact-summary" data-contact-summary>
+              <span>YOUR RELATION NOTE</span>
+              <p>完成以上内容后，这里会显示提交摘要。</p>
+            </div>
+
+            <p class="privacy-note">提交后，以上信息仅用于理解并回复此次专业联系。此原型不会真实发送或存储服务器数据。</p>
+            <div class="form-actions"><button class="button button--ghost" type="button" data-prev-step>返回</button><button class="button button--primary" type="submit">开始这段对话 <span aria-hidden="true">→</span></button></div>
+          </section>
+
+          <section class="form-success" data-form-success hidden tabindex="-1">
+            <span>RELATION NOTE / RECEIVED</span>
+            <h3>关系说明已收到。</h3>
+            <p>谢谢你分享正在处理的问题。这段联系不会因为提交表单立刻拥有完整答案，但它已经提供了一个可以继续讨论的起点。</p>
+            <p class="prototype-note">这是静态原型的模拟提交，没有真实发送数据。</p>
+            <button class="button button--ghost" type="button" data-reset-form>填写新的关系说明</button>
+          </section>
+        </form>
+      </div>
+
+      <div class="alternative-contact reveal">
+        <div><span>EMAIL</span><a href="mailto:hello@example.com">hello@example.com</a><small>请替换为真实专业邮箱</small></div>
+        <div><span>PROFESSIONAL PROFILE</span><a href="#about">LinkedIn / Portfolio Profile</a><small>请替换为真实链接</small></div>
+        <div><span>AVAILABILITY</span><p>Role Opportunities / Open<br />Project Collaboration / Selective</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>OLEANDER</strong>
+      <p>Brand &amp; Cultural Experience Design</p>
+    </div>
+    <div>
+      <p>设计不是创造对象，<br />而是重新组织关系。</p>
+    </div>
+    <div>
+      <a href="#home">返回顶部 ↑</a>
+      <small>Prototype / Tactile Interaction v2 / 2026</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
