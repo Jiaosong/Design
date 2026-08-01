@@ -594,7 +594,7 @@
     ['STAGE / 04', 'User → Participant', '个人选择改变可见结果，系统同时说明这项改变如何进入共同结构。', 'TOUCHPOINT / INTERACTION + WORKSHOP'],
     ['STAGE / 05', 'Participant → Carrier', '可复用物件、内容档案和后续入口把体验带出现场，形成继续阅读的条件。', 'TOUCHPOINT / ARCHIVE + REUSABLE OBJECT']
   ];
-  const experienceItems = [...document.querySelectorAll('.experience-path li')];
+  const experienceItems = [...document.querySelectorAll('.experience-path button')];
   const experienceNodes = {
     code: document.querySelector('[data-experience-code]'),
     role: document.querySelector('[data-experience-role]'),
@@ -615,8 +615,6 @@
     experienceNodes.touchpoint.textContent = data[3];
   };
   experienceItems.forEach((item, index) => {
-    item.tabIndex = 0;
-    item.setAttribute('role', 'button');
     item.setAttribute('aria-pressed', String(index === 0));
     item.addEventListener('click', () => activateExperience(index));
     item.addEventListener('keydown', (event) => {

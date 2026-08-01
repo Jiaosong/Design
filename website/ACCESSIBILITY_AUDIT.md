@@ -9,7 +9,7 @@ Audit date: `2026-07-31`
 | Level | Scope | Current status |
 | --- | --- | --- |
 | E1 / source review | HTML, CSS, JavaScript, ARIA references, anchors, image alternatives, reduced-motion declaration | Passed locally |
-| E2 / automated browser tests | Playwright + axe in Chromium, Firefox, WebKit, desktop/mobile viewports, keyboard, reduced motion, 200% reflow equivalent | Configured; not executed in the current environment because browser downloads returned empty archives |
+| E2 / automated browser tests | Playwright + axe in Chromium, Firefox, WebKit, desktop/mobile viewports, keyboard, reduced motion, 200% reflow equivalent | Browser runtimes installed; Chromium axe critical/serious scan passed. Full 36-case matrix remains to be completed in CI or an unrestricted test run. |
 | E3 / human verification | Screen reader, real browser zoom, touch exploration, visual reading rhythm, real form delivery/privacy | Not completed |
 
 Do not interpret E1 as proof that E2 or E3 passed.
@@ -24,6 +24,8 @@ Do not interpret E1 as proof that E2 or E3 passed.
 6. Added local-first `@font-face` declarations with system fallbacks and no remote font request.
 7. Added Escape close and trigger-focus restoration to the mobile menu.
 8. Added visible and assistive-technology-readable values to both range controls.
+9. Corrected interactive list semantics and text contrast found by the Chromium axe scan.
+10. Replaced the platform-specific Python preview command with the repository's cross-platform Node preview server.
 
 ## Automated test contract
 

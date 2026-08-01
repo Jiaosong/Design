@@ -1,20 +1,28 @@
-# OLEANDER Website Prototype — Tactile Interaction v2
+# OLEANDER Website — Brand System v0.7
 
-本版本重点强化 **Paper Weave Field（纸上织场）** 与 **Relationship Reading（关系阅读）** 的可感知交互。
+本网站是刘旋的品牌、CMF、空间与文化体验设计作品集。当前生产基线为 **OLEANDER v0.7 / Visual Bible v1.0**。
+
+## 品牌基准
+
+- 核心：设计不是创造对象，而是重新组织关系。
+- 文化与审美方向：中式极简；这是既定方向，不再重新选风格。
+- 调性：以关系为骨，以气韵为势，以构造为证，以时间为尺度，以余地为伦理。
+- 生成方法：关系、共边、位移、嵌合、层累、游观与修订。
+- 识别成果：v0.7 字标、字体、色彩、版式、材料、影像及应用系统。
+
+中式极简在这里不是水墨、书法、红印、茶、香、竹、仿古肌理或宋式配色的符号拼贴。它也不以西方极简的独立对象、几何纯化与均质网格为终点；在静、间、自然材料和无常之外，还强调历史层累、礼序与游观、共同体关系、文化来源与修订责任。
 
 ## 直接运行
 
 打开 `index.html`。页面不请求外部字体或第三方 JavaScript；CSS 通过 `@font-face local()` 优先使用本机可用的思源 / Noto 中文字体，并保留系统字体回退。
 
-也可以直接打开同级交付中的 `oleander-prototype-v2-standalone.html`，该文件已内嵌全部 CSS 和 JavaScript。
+## 视觉语言
 
-## 新增纸质语言
-
-- 多层纸张纤维、局部颗粒与光线响应
-- 纸层阴影、压痕、折线、翘角与轻微毛边
-- Paper Fragment 节点与开放纸张边界
-- 可按压按钮、纸卡抬升与触摸反馈
-- 深色 Contact 页面中的墨色纸面与压印层
+- Field / Evidence / Material / Intervention / Residue 五层阅读结构
+- PAPER、STONE、CHARCOAL、METAL、LINEN、MOSS、EARTH 的克制色彩系统
+- 以无衬线字形、层级、间隔、共边和路径建立秩序
+- 数字材料性来自响应、时间和行为，不依赖仿纸纹理
+- 动效只服务 Scroll、Reveal、Return 三类关系变化
 
 ## 新增交互
 

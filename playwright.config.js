@@ -32,7 +32,7 @@ module.exports = defineConfig({
     }
   ],
   webServer: {
-    command: 'python3 -m http.server 4173 --directory website',
+    command: 'node tests/serve.mjs',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: true,
     timeout: 30_000
