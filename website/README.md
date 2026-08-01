@@ -37,6 +37,13 @@
 - Practice：六阶段方法切换并关联项目证据
 - Contact：五步关系说明、验证、本地草稿及模拟提交
 
+## 外部开源工具
+
+- [img2threejs/img2threejs](https://github.com/img2threejs/img2threejs)：单张参考图到程序化、可动画 Three.js 模型的质量门控工作流。
+- 在 Oleander 中用于产品与器物体块验证、手机壳概念原型、展陈构件和网页三维展示。
+- 它是独立开源项目，采用 Apache-2.0 许可证；不得表述为刘旋或 Oleander 的原创项目。
+- 单图生成无法证明隐藏面和工程尺寸，输出必须经过 Rhino / Blender / 人工结构与版权复核。
+
 ## 无障碍
 
 - 主要交互均支持键盘 Enter / Space
