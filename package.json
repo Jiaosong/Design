@@ -1,0 +1,16 @@
+{
+  "name": "oleander-website-a11y",
+  "version": "0.1.0",
+  "private": true,
+  "description": "E1 static checks and E2 Playwright accessibility tests for the OLEANDER website prototype.",
+  "scripts": {
+    "test:e1": "node --check website/script.js && node tests/e1-static.mjs",
+    "test:e2": "playwright test",
+    "test:e2:headed": "playwright test --headed",
+    "test": "npm run test:e1 && npm run test:e2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.54.1"
+  }
+}

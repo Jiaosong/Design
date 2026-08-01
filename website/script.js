@@ -10,16 +10,31 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  const setMenuOpen = (open, restoreFocus = false) => {
+    menuToggle?.setAttribute('aria-expanded', String(open));
+    siteNav?.classList.toggle('is-open', open);
+    if (open) {
+      window.requestAnimationFrame(() => siteNav?.querySelector('a')?.focus());
+    } else if (restoreFocus) {
+      menuToggle?.focus();
+    }
+  };
+
   menuToggle?.addEventListener('click', () => {
     const open = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', String(!open));
-    siteNav?.classList.toggle('is-open', !open);
+    setMenuOpen(!open);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') {
+      event.preventDefault();
+      setMenuOpen(false, true);
+    }
   });
 
   siteNav?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      siteNav.classList.remove('is-open');
-      menuToggle?.setAttribute('aria-expanded', 'false');
+      setMenuOpen(false);
     });
   });
 
@@ -46,10 +61,32 @@
     const navObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!visible) return;
-      sectionLinks.forEach((link) => link.classList.toggle('is-current', link.getAttribute('href') === `#${visible.target.id}`));
+      sectionLinks.forEach((link) => {
+        const current = link.getAttribute('href') === `#${visible.target.id}`;
+        link.classList.toggle('is-current', current);
+        if (current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
     }, { threshold: [0.16, 0.32, 0.52], rootMargin: '-18% 0px -58% 0px' });
     observedSections.forEach((section) => navObserver.observe(section));
   }
+
+  const bindTabKeyboard = (tabs, activate) => {
+    const items = [...tabs];
+    items.forEach((tab, index) => {
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % items.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + items.length) % items.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = items.length - 1;
+        else return;
+        event.preventDefault();
+        items[nextIndex].focus();
+        activate(items[nextIndex]);
+      });
+    });
+  };
 
   const relationData = {
     culture: {
@@ -114,21 +151,24 @@
 
   const modeButtons = document.querySelectorAll('[data-project-mode]');
   const modePanels = document.querySelectorAll('[data-mode-panel]');
-  modeButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const mode = button.dataset.projectMode;
-      modeButtons.forEach((item) => {
-        const active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
-      });
-      modePanels.forEach((panel) => {
-        const active = panel.dataset.modePanel === mode;
-        panel.hidden = !active;
-        panel.classList.toggle('is-active', active);
-      });
+  const setProjectMode = (button) => {
+    const mode = button.dataset.projectMode;
+    modeButtons.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
     });
+    modePanels.forEach((panel) => {
+      const active = panel.dataset.modePanel === mode;
+      panel.hidden = !active;
+      panel.classList.toggle('is-active', active);
+    });
+  };
+  modeButtons.forEach((button) => {
+    button.addEventListener('click', () => setProjectMode(button));
   });
+  bindTabKeyboard(modeButtons, setProjectMode);
 
   const practiceData = {
     read: { code: '01 / READ', title: '关系阅读', question: '设计对象原本处于怎样的关系中？', description: '从场景、材料、行为与相关者开始，理解对象如何形成、被使用和进入共同记忆。', methods: '现场观察 / 相关者访谈 / 材料分析 / 使用路径记录', outputs: '语境地图 / 关系地图 / 来源记录 / 研究边界', evidence: '<a href="#context">织造项目：材料、制作、使用与记忆链</a>' },
@@ -142,21 +182,26 @@
   const practiceEls = {
     code: document.querySelector('#practice-code'), title: document.querySelector('#practice-title'), question: document.querySelector('#practice-question'), description: document.querySelector('#practice-description'), data: document.querySelector('#practice-data')
   };
-  practiceSteps.forEach((step) => {
-    step.addEventListener('click', () => {
-      practiceSteps.forEach((item) => {
-        const active = item === step;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
-      });
-      const data = practiceData[step.dataset.practiceStep];
-      practiceEls.code.textContent = data.code;
-      practiceEls.title.textContent = data.title;
-      practiceEls.question.textContent = data.question;
-      practiceEls.description.textContent = data.description;
-      practiceEls.data.innerHTML = `<div><dt>Methods</dt><dd>${data.methods}</dd></div><div><dt>Outputs</dt><dd>${data.outputs}</dd></div><div><dt>Project Evidence</dt><dd>${data.evidence}</dd></div>`;
+  const practicePanel = document.querySelector('#practice-panel');
+  const setPracticeStep = (step) => {
+    practiceSteps.forEach((item) => {
+      const active = item === step;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
     });
+    practicePanel?.setAttribute('aria-labelledby', step.id);
+    const data = practiceData[step.dataset.practiceStep];
+    practiceEls.code.textContent = data.code;
+    practiceEls.title.textContent = data.title;
+    practiceEls.question.textContent = data.question;
+    practiceEls.description.textContent = data.description;
+    practiceEls.data.innerHTML = `<div><dt>Methods</dt><dd>${data.methods}</dd></div><div><dt>Outputs</dt><dd>${data.outputs}</dd></div><div><dt>Project Evidence</dt><dd>${data.evidence}</dd></div>`;
+  };
+  practiceSteps.forEach((step) => {
+    step.addEventListener('click', () => setPracticeStep(step));
   });
+  bindTabKeyboard(practiceSteps, setPracticeStep);
 
   const form = document.querySelector('#relationship-form');
   if (!form) return;
@@ -191,25 +236,38 @@
     return field.value || '';
   };
 
+  const setFieldError = (name, invalid) => {
+    const error = form.querySelector(`[data-error-for="${name}"]`);
+    if (error) error.hidden = !invalid;
+    form.querySelectorAll(`[name="${CSS.escape(name)}"]`).forEach((control) => {
+      if (invalid) control.setAttribute('aria-invalid', 'true');
+      else control.removeAttribute('aria-invalid');
+    });
+  };
+
   const validateStep = (number) => {
     let valid = true;
     if (number === 1) {
       valid = Boolean(getValue('purpose'));
-      const error = form.querySelector('[data-error-for="purpose"]');
-      if (error) error.hidden = valid;
+      setFieldError('purpose', !valid);
     }
     if (number === 2) {
       valid = getValue('object').trim().length >= 8;
-      const error = form.querySelector('[data-error-for="object"]');
-      if (error) error.hidden = valid;
+      setFieldError('object', !valid);
     }
     if (number === 5) {
+      const nameValid = getValue('name').trim().length > 1;
       const email = getValue('email').trim();
-      valid = getValue('name').trim().length > 1 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      const error = form.querySelector('[data-error-for="contact"]');
-      if (error) error.hidden = valid;
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      setFieldError('name', !nameValid);
+      setFieldError('email', !emailValid);
+      valid = nameValid && emailValid;
     }
     return valid;
+  };
+
+  const focusFirstInvalid = () => {
+    form.querySelector('[aria-invalid="true"]')?.focus();
   };
 
   const getCheckedValues = (name) => [...form.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
@@ -254,19 +312,27 @@
 
   const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
 
-  form.addEventListener('input', () => { updateSummary(); saveDraft(); });
-  form.addEventListener('change', () => { updateSummary(); saveDraft(); });
+  const clearResolvedError = (target) => {
+    if (!target?.name) return;
+    if (target.name === 'purpose' && getValue('purpose')) setFieldError('purpose', false);
+    if (target.name === 'object' && getValue('object').trim().length >= 8) setFieldError('object', false);
+    if (target.name === 'name' && getValue('name').trim().length > 1) setFieldError('name', false);
+    if (target.name === 'email' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(getValue('email').trim())) setFieldError('email', false);
+  };
+
+  form.addEventListener('input', (event) => { clearResolvedError(event.target); updateSummary(); saveDraft(); });
+  form.addEventListener('change', (event) => { clearResolvedError(event.target); updateSummary(); saveDraft(); });
 
   form.querySelectorAll('[data-next-step]').forEach((button) => button.addEventListener('click', () => {
     if (validateStep(currentStep)) setStep(currentStep + 1);
-    else steps[currentStep - 1]?.querySelector('input, textarea, select')?.focus();
+    else focusFirstInvalid();
   }));
   form.querySelectorAll('[data-prev-step]').forEach((button) => button.addEventListener('click', () => setStep(currentStep - 1)));
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!validateStep(5)) {
-      form.querySelector('[name="name"]')?.focus();
+      focusFirstInvalid();
       return;
     }
     steps.forEach((step) => { step.hidden = true; });
@@ -277,6 +343,8 @@
 
   form.querySelector('[data-reset-form]')?.addEventListener('click', () => {
     form.reset();
+    form.querySelectorAll('[aria-invalid="true"]').forEach((control) => control.removeAttribute('aria-invalid'));
+    form.querySelectorAll('[data-error-for]').forEach((error) => { error.hidden = true; });
     success.hidden = true;
     steps[0].hidden = false;
     try { localStorage.removeItem(draftKey); } catch (_) { /* ignore */ }
@@ -323,11 +391,15 @@
   const weaveField = document.querySelector('[data-weave-field]');
   const weaveToggle = document.querySelector('[data-weave-toggle]');
   const densityInput = document.querySelector('[data-weave-density]');
+  const densityOutput = document.querySelector('[data-weave-density-output]');
   bindTilt(weaveField, 2.2);
 
   const setDensity = (value) => {
-    const normalized = Math.max(0.2, Math.min(1, Number(value) / 100));
+    const numericValue = Math.max(20, Math.min(100, Number(value)));
+    const normalized = numericValue / 100;
     weaveField?.style.setProperty('--weave-density', normalized.toFixed(2));
+    if (densityOutput) densityOutput.textContent = `${numericValue}%`;
+    densityInput?.setAttribute('aria-valuetext', `关系织场密度 ${numericValue}%`);
   };
   if (densityInput) {
     setDensity(densityInput.value);
@@ -367,6 +439,7 @@
   const canvas = document.querySelector('[data-reading-canvas]');
   const stateButtons = [...document.querySelectorAll('[data-reading-state]')];
   const tension = document.querySelector('[data-reading-tension]');
+  const tensionOutput = document.querySelector('[data-reading-tension-output]');
   const reset = document.querySelector('[data-reading-reset]');
   const evidenceToggle = document.querySelector('[data-reading-evidence-toggle]');
   const evidencePanel = document.querySelector('[data-reading-evidence-panel]');
@@ -387,11 +460,14 @@
   };
 
   const setTension = (value) => {
-    const normalized = Math.max(0, Math.min(1, Number(value) / 100));
+    const numericValue = Math.max(0, Math.min(100, Number(value)));
+    const normalized = numericValue / 100;
     const shift = Math.round(normalized * 24);
     lab?.style.setProperty('--relation-tension', normalized.toFixed(2));
     lab?.style.setProperty('--source-shift', `${-shift}px`);
     lab?.style.setProperty('--target-shift', `${shift}px`);
+    if (tensionOutput) tensionOutput.textContent = `${numericValue}%`;
+    tension?.setAttribute('aria-valuetext', `关系张力 ${numericValue}%`);
   };
 
   const setReadingState = (key, announce = true) => {
@@ -406,6 +482,8 @@
       const active = button.dataset.readingState === key;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
+      if (active) canvas.setAttribute('aria-labelledby', button.id);
     });
     if (tension) tension.value = String(data.tension);
     setTension(data.tension);
@@ -414,7 +492,21 @@
     }
   };
 
-  stateButtons.forEach((button) => button.addEventListener('click', () => setReadingState(button.dataset.readingState)));
+  const activateReadingTab = (button) => setReadingState(button.dataset.readingState);
+  stateButtons.forEach((button, index) => {
+    button.addEventListener('click', () => activateReadingTab(button));
+    button.addEventListener('keydown', (event) => {
+      let nextIndex = index;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % stateButtons.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + stateButtons.length) % stateButtons.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = stateButtons.length - 1;
+      else return;
+      event.preventDefault();
+      stateButtons[nextIndex].focus();
+      activateReadingTab(stateButtons[nextIndex]);
+    });
+  });
   tension?.addEventListener('input', () => setTension(tension.value));
   reset?.addEventListener('click', () => setReadingState(currentReadingState));
   evidenceToggle?.addEventListener('click', () => {

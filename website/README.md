@@ -4,7 +4,7 @@
 
 ## 直接运行
 
-打开 `index.html`。页面不依赖外部字体、图片或第三方 JavaScript 库。
+打开 `index.html`。页面不请求外部字体或第三方 JavaScript；CSS 通过 `@font-face local()` 优先使用本机可用的思源 / Noto 中文字体，并保留系统字体回退。
 
 也可以直接打开同级交付中的 `oleander-prototype-v2-standalone.html`，该文件已内嵌全部 CSS 和 JavaScript。
 
@@ -32,6 +32,10 @@
 ## 无障碍
 
 - 主要交互均支持键盘 Enter / Space
+- Tabs 支持方向键、Home / End，并具有完整 `tab` / `tabpanel` 关系
+- 移动菜单支持 Escape 关闭与焦点恢复
+- 表单错误与字段关联，并把焦点移动到首个错误字段
+- Range 控件提供实时数值反馈
 - 状态不只通过颜色表达
 - 支持 `prefers-reduced-motion`
 - 保留原生焦点、表单标签和状态说明

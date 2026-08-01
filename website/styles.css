@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "OLEANDER Serif";
+  src: local("Noto Serif CJK SC"), local("Noto Serif SC"), local("Source Han Serif SC"), local("Songti SC");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OLEANDER Sans";
+  src: local("Inter"), local("Noto Sans CJK SC"), local("Noto Sans SC"), local("Source Han Sans SC"), local("PingFang SC"), local("Microsoft YaHei");
+  font-display: swap;
+}
+
 :root {
   --paper: #f3f0e8;
   --paper-alt: #e9e5da;
@@ -11,13 +23,14 @@
   --margin: clamp(22px, 4.45vw, 64px);
   --gutter: clamp(14px, 1.65vw, 24px);
   --section-y: clamp(96px, 11vw, 176px);
-  --serif: Georgia, "Times New Roman", "Noto Serif CJK SC", serif;
-  --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif: "OLEANDER Serif", Georgia, "Times New Roman", serif;
+  --sans: "OLEANDER Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+.section[id], .project-chapter[id], article[id] { scroll-margin-top: 88px; }
 body {
   margin: 0;
   color: var(--ink);
@@ -412,6 +425,7 @@ h3 { letter-spacing: -0.02em; }
 .choice-grid strong { display: block; font: 1.3rem var(--serif); }
 .choice-grid small { display: block; color: #aaa59a; margin-top: 28px; }
 .choice-grid input:checked + span { border-color: var(--signal); background: rgba(140,58,50,.1); }
+.choice-grid input[aria-invalid="true"] + span { border-color: #f0a49b; }
 .choice-grid input:focus-visible + span { outline: 2px solid var(--paper); outline-offset: 3px; }
 .open-field, .select-field { display: grid; gap: 10px; margin-top: 34px; }
 .open-field > span, .select-field > span, .chip-field legend { font: .75rem var(--mono); }
@@ -431,6 +445,10 @@ h3 { letter-spacing: -0.02em; }
 .chip-field input:focus-visible + span { outline: 2px solid var(--paper); outline-offset: 3px; }
 .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
 .field-error { margin-top: 12px; color: #f0a49b; }
+[aria-invalid="true"] {
+  outline: 2px solid #f0a49b;
+  outline-offset: 4px;
+}
 .form-actions { display: flex; justify-content: space-between; gap: 16px; margin-top: 54px; }
 .button { min-height: 48px; padding: 12px 18px; border: 1px solid #77736a; background: transparent; cursor: pointer; text-decoration: none; }
 .button--primary { margin-left: auto; color: var(--paper); border-color: var(--signal); background: var(--signal); }
@@ -791,6 +809,13 @@ main, .site-header, .site-footer { position: relative; z-index: 1; }
   width: 100%;
   accent-color: var(--signal);
   cursor: ew-resize;
+}
+.density-control output,
+.relationship-lab__controls output {
+  min-width: 3.2rem;
+  color: var(--trace);
+  font: .68rem var(--mono);
+  text-align: right;
 }
 
 /* Tactile paper surfaces */

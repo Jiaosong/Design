@@ -17,7 +17,7 @@
   <a class="skip-link" href="#main">跳到主要内容</a>
 
   <header class="site-header" data-header>
-    <a class="brand" href="#home" aria-label="返回首页">
+    <a class="brand" href="#home" aria-label="OLEANDER，刘旋 / LIU XUAN，返回首页">
       <span class="brand-mark" aria-hidden="true">
         <i></i><i></i>
       </span>
@@ -95,7 +95,8 @@
             </button>
             <label class="density-control">
               <span>RELATION DENSITY</span>
-              <input type="range" min="20" max="100" value="58" data-weave-density aria-label="调整关系织场密度" />
+              <input id="weave-density" type="range" min="20" max="100" value="58" data-weave-density aria-label="调整关系织场密度" aria-describedby="weave-density-value" />
+              <output id="weave-density-value" for="weave-density" data-weave-density-output aria-live="polite">58%</output>
             </label>
           </div>
         </div>
@@ -157,13 +158,13 @@
             <h3 id="relationship-lab-title">从原有关系，读到当前断点与目标关系。</h3>
           </div>
           <div class="reading-state-tabs" role="tablist" aria-label="关系命题状态">
-            <button type="button" role="tab" aria-selected="true" class="is-active" data-reading-state="original">ORIGINAL</button>
-            <button type="button" role="tab" aria-selected="false" data-reading-state="current">CURRENT</button>
-            <button type="button" role="tab" aria-selected="false" data-reading-state="intended">INTENDED</button>
+            <button id="reading-tab-original" type="button" role="tab" aria-selected="true" aria-controls="reading-panel" tabindex="0" class="is-active" data-reading-state="original">ORIGINAL</button>
+            <button id="reading-tab-current" type="button" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-reading-state="current">CURRENT</button>
+            <button id="reading-tab-intended" type="button" role="tab" aria-selected="false" aria-controls="reading-panel" tabindex="-1" data-reading-state="intended">INTENDED</button>
           </div>
         </header>
 
-        <div class="relationship-canvas" data-reading-canvas data-state="original">
+        <div id="reading-panel" class="relationship-canvas" role="tabpanel" aria-labelledby="reading-tab-original" tabindex="0" data-reading-canvas data-state="original">
           <article class="paper-fragment paper-fragment--source" data-paper-tilt>
             <span>SOURCE</span>
             <strong data-reading-source>织物</strong>
@@ -197,7 +198,8 @@
         <footer class="relationship-lab__controls">
           <label>
             <span>RELATION TENSION</span>
-            <input type="range" min="0" max="100" value="42" data-reading-tension aria-label="调整关系张力" />
+            <input id="reading-tension" type="range" min="0" max="100" value="42" data-reading-tension aria-label="调整关系张力" aria-describedby="reading-tension-value" />
+            <output id="reading-tension-value" for="reading-tension" data-reading-tension-output aria-live="polite">42%</output>
           </label>
           <p>拖动张力观察节点距离与线型变化；状态判断仍由文字和证据说明。</p>
           <button type="button" class="paper-reset" data-reading-reset>恢复阅读状态</button>
@@ -316,12 +318,12 @@
       </header>
 
       <div class="mode-switcher reveal" role="tablist" aria-label="项目阅读模式">
-        <button class="mode-button is-active" type="button" role="tab" aria-selected="true" data-project-mode="relation">按关系</button>
-        <button class="mode-button" type="button" role="tab" aria-selected="false" data-project-mode="practice">按实践</button>
-        <button class="mode-button" type="button" role="tab" aria-selected="false" data-project-mode="archive">开放档案</button>
+        <button id="project-tab-relation" class="mode-button is-active" type="button" role="tab" aria-selected="true" aria-controls="project-panel-relation" tabindex="0" data-project-mode="relation">按关系</button>
+        <button id="project-tab-practice" class="mode-button" type="button" role="tab" aria-selected="false" aria-controls="project-panel-practice" tabindex="-1" data-project-mode="practice">按实践</button>
+        <button id="project-tab-archive" class="mode-button" type="button" role="tab" aria-selected="false" aria-controls="project-panel-archive" tabindex="-1" data-project-mode="archive">开放档案</button>
       </div>
 
-      <div class="project-mode is-active" data-mode-panel="relation">
+      <div id="project-panel-relation" class="project-mode is-active" role="tabpanel" aria-labelledby="project-tab-relation" tabindex="0" data-mode-panel="relation">
         <article class="project-record project-record--featured reveal">
           <div class="project-index">PROJECT / 01</div>
           <div class="project-source-visual" role="img" aria-label="织造材料与结构的抽象图形">
@@ -372,7 +374,7 @@
         </article>
       </div>
 
-      <div class="project-mode" data-mode-panel="practice" hidden>
+      <div id="project-panel-practice" class="project-mode" role="tabpanel" aria-labelledby="project-tab-practice" tabindex="0" data-mode-panel="practice" hidden>
         <div class="practice-matrix reveal">
           <div class="practice-matrix__head"><span>项目</span><span>Observe</span><span>Frame</span><span>Translate</span><span>Form</span><span>Test</span></div>
           <div><strong>织造文化品牌系统</strong><span>Primary</span><span>Primary</span><span>Primary</span><span>Primary</span><span>Supported</span></div>
@@ -381,7 +383,7 @@
         </div>
       </div>
 
-      <div class="project-mode" data-mode-panel="archive" hidden>
+      <div id="project-panel-archive" class="project-mode" role="tabpanel" aria-labelledby="project-tab-archive" tabindex="0" data-mode-panel="archive" hidden>
         <div class="archive-list reveal">
           <article><span>2026 / RESEARCH NOTE</span><h3>公共文化参与中的所有权问题</h3><p>LOCAL → PUBLIC</p><small>OPEN QUESTION</small></article>
           <article><span>2025 / MATERIAL PROTOTYPE</span><h3>可展开织造包装实验</h3><p>TRADITION → CONTEMPORARY LIFE</p><small>TESTED</small></article>
@@ -762,15 +764,15 @@
 
       <div class="practice-layout reveal">
         <div class="practice-spine" role="tablist" aria-label="Oleander 六阶段实践方法">
-          <button class="practice-step is-active" type="button" role="tab" aria-selected="true" data-practice-step="read"><span>01</span> READ</button>
-          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="frame"><span>02</span> FRAME</button>
-          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="translate"><span>03</span> TRANSLATE</button>
-          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="form"><span>04</span> FORM</button>
-          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="test"><span>05</span> TEST</button>
-          <button class="practice-step" type="button" role="tab" aria-selected="false" data-practice-step="continue"><span>06</span> CONTINUE</button>
+          <button id="practice-tab-read" class="practice-step is-active" type="button" role="tab" aria-selected="true" aria-controls="practice-panel" tabindex="0" data-practice-step="read"><span>01</span> READ</button>
+          <button id="practice-tab-frame" class="practice-step" type="button" role="tab" aria-selected="false" aria-controls="practice-panel" tabindex="-1" data-practice-step="frame"><span>02</span> FRAME</button>
+          <button id="practice-tab-translate" class="practice-step" type="button" role="tab" aria-selected="false" aria-controls="practice-panel" tabindex="-1" data-practice-step="translate"><span>03</span> TRANSLATE</button>
+          <button id="practice-tab-form" class="practice-step" type="button" role="tab" aria-selected="false" aria-controls="practice-panel" tabindex="-1" data-practice-step="form"><span>04</span> FORM</button>
+          <button id="practice-tab-test" class="practice-step" type="button" role="tab" aria-selected="false" aria-controls="practice-panel" tabindex="-1" data-practice-step="test"><span>05</span> TEST</button>
+          <button id="practice-tab-continue" class="practice-step" type="button" role="tab" aria-selected="false" aria-controls="practice-panel" tabindex="-1" data-practice-step="continue"><span>06</span> CONTINUE</button>
         </div>
 
-        <div class="practice-detail" aria-live="polite">
+        <div id="practice-panel" class="practice-detail" role="tabpanel" aria-labelledby="practice-tab-read" tabindex="0" aria-live="polite">
           <span id="practice-code">01 / READ</span>
           <h3 id="practice-title">关系阅读</h3>
           <p class="practice-question" id="practice-question">设计对象原本处于怎样的关系中？</p>
@@ -864,7 +866,7 @@
           <section class="form-step is-active" data-form-step="1" aria-labelledby="step-1-title">
             <span class="form-step__code">01 / PURPOSE</span>
             <h3 id="step-1-title">你希望开始哪一种对话？</h3>
-            <fieldset class="choice-grid">
+            <fieldset class="choice-grid" aria-describedby="purpose-error">
               <legend class="visually-hidden">联系目的</legend>
               <label><input type="radio" name="purpose" value="项目合作" required /><span><strong>项目合作</strong><small>品牌、文化内容、场所或体验项目</small></span></label>
               <label><input type="radio" name="purpose" value="职位或团队机会" /><span><strong>职位或团队机会</strong><small>团队、职位或阶段性角色</small></span></label>
@@ -872,7 +874,7 @@
               <label><input type="radio" name="purpose" value="展览或活动" /><span><strong>展览或活动</strong><small>分享、讲座、工作坊或评审</small></span></label>
               <label><input type="radio" name="purpose" value="其他" /><span><strong>其他</strong><small>不属于以上类别</small></span></label>
             </fieldset>
-            <p class="field-error" data-error-for="purpose" hidden>请选择一种联系目的。</p>
+            <p id="purpose-error" class="field-error" role="alert" data-error-for="purpose" hidden>请选择一种联系目的。</p>
             <div class="form-actions"><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
           </section>
 
@@ -882,9 +884,9 @@
             <p class="field-help">可以是一项文化内容、一个地方、一种材料、一个品牌、一个空间或一个尚未明确的问题。</p>
             <label class="open-field">
               <span>对象或问题 <b>必填</b></span>
-              <textarea name="object" rows="7" required placeholder="例如：我们正在整理一项地方工艺，目前已有影像和历史资料，但还没有形成清楚的公众体验方式……"></textarea>
+              <textarea name="object" rows="7" required aria-describedby="object-error" placeholder="例如：我们正在整理一项地方工艺，目前已有影像和历史资料，但还没有形成清楚的公众体验方式……"></textarea>
             </label>
-            <p class="field-error" data-error-for="object" hidden>请至少简单说明你正在处理的对象或问题。</p>
+            <p id="object-error" class="field-error" role="alert" data-error-for="object" hidden>请至少简单说明你正在处理的对象或问题（至少 8 个字符）。</p>
             <div class="form-actions"><button class="button button--ghost" type="button" data-prev-step>返回</button><button class="button button--primary" type="button" data-next-step>继续 <span aria-hidden="true">→</span></button></div>
           </section>
 
@@ -944,11 +946,12 @@
             <span class="form-step__code">05 / CONTACT</span>
             <h3 id="step-5-title">如何继续联系？</h3>
             <div class="field-pair">
-              <label class="open-field"><span>姓名 <b>必填</b></span><input name="name" type="text" required autocomplete="name" /></label>
+              <label class="open-field"><span>姓名 <b>必填</b></span><input name="name" type="text" required autocomplete="name" aria-describedby="name-error" /></label>
               <label class="open-field"><span>组织 <em>选填</em></span><input name="organization" type="text" autocomplete="organization" /></label>
             </div>
-            <label class="open-field"><span>邮箱 <b>必填</b></span><input name="email" type="email" required autocomplete="email" inputmode="email" /></label>
-            <p class="field-error" data-error-for="contact" hidden>请填写姓名和有效邮箱地址。</p>
+            <p id="name-error" class="field-error" role="alert" data-error-for="name" hidden>请填写至少 2 个字符的姓名。</p>
+            <label class="open-field"><span>邮箱 <b>必填</b></span><input name="email" type="email" required autocomplete="email" inputmode="email" aria-describedby="email-error" /></label>
+            <p id="email-error" class="field-error" role="alert" data-error-for="email" hidden>请填写有效邮箱地址。</p>
 
             <div class="contact-summary" data-contact-summary>
               <span>YOUR RELATION NOTE</span>
