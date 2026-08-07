@@ -1,6 +1,6 @@
 # SYS-INT-WALL-DEMOUNTABLE-001｜Demountable Compact Interior Wall System
 
-- Status: REVIEW / SYSTEM HYPOTHESIS / mock-up not yet executed
+- Status: SYSTEM RFQ READY / mock-up blocked by subframe
 - Layer: Spatial / SP04 Construction & Operation
 - Canonical source: Notion `SYS-INT-WALL-DEMOUNTABLE-001`
 - Verified: 2026-08-07
@@ -9,73 +9,77 @@
 
 ## Locked product inputs
 - Fundermax Max Compact Interior / Black core F-Quality / 0755 Warm Grey Dark / AP / 2800×1300×12 mm.
-- Button-fix Type 2 / Häfele 262.94.024.
+- Button-fix Type 2 / Häfele 262.94.024 identity reference.
 
 ## System boundary
-
 `building substrate → verified subframe → substrate fastener → Button-fix Type 2 → Fundermax 12 mm panel → joints/corners/termination → secondary retention where required → demounting/maintenance/G9`
 
-The following remain intentionally `UNKNOWN` until a real project or RFQ locks them:
-- subframe manufacturer, section and spacing;
-- fastener / anchor SKU and embedment;
+The following remain intentionally `UNKNOWN` until current evidence is returned:
+- compliant exact subframe manufacturer/profile/thickness/factory;
+- substrate fastener / anchor SKU and embedment;
 - secondary retention strategy;
 - complete Chinese fire-performance evidence;
 - installed system price.
 
-Do not fill these gaps with phrases such as “standard light-gauge frame” or “ordinary self-tapping screws”.
+## Procurement closure｜2026-08-07
+### Fundermax panel
+The current Fundermax Delivery Programme identifies 0755 Warm Grey Dark / AP in Max Compact Interior Black core F-Quality and includes 2800×1300×12 mm in the product programme. Manufacturer documentation also exposes Max Compact Interior EPD, EN 438-7 performance documentation, F-Quality Type CGF CE DoP, EN 438-4 conformity and fire-classification files.
 
-## Compatibility rule
-KLEIBERIT 303.0, Rubio Oil Plus 2C and the recorded OSTERMANN edge band belong to separate veneer / wood-based-panel construction chains. They are **not** inserted into this compact-HPL system just because they exist in the product library.
+Factory status remains **PARTIAL**: manufacturer-level origin is Austria, but the exact Chinese order's production site/batch must be returned on quotation/order/label documentation. Fire classifications tied to riveted/screwed/adhesive assemblies are not automatically transferable to the Button-fix assembly.
 
-## Design inputs
-### Panel
-Lock exact decor, surface, F-Quality, thickness, cut size, weight, openings, joint pattern, corners and service-access frequency.
+### Button-fix Type 2
+Button-fix confirms Type 2 is Made in the UK, 90° surface-mounted, minimum 10 mm panel thickness, and subject to screw/substrate matching and project testing for critical applications. Official downloads include instructions, Declaration of Performance, independent load tests and safety warnings.
 
-### Connection
-Button-fix Type 2 official guide load is a guide, not a project allowable value. Screw/substrate compatibility, quantity, layout, edge distances, engagement, repeated demounting and secondary retention must be validated for the actual panel.
+Button-fix's official Where to Buy page lists **Sugatsune** as a China stockist, with China-wide sales/delivery, stockholding and no minimum order quantity. This closes the procurement route, not the project price.
 
-### Subframe
-Record material, profile, thickness, spacing, flatness tolerance, substrate anchorage, corrosion boundary, fire boundary and interfaces with adjacent construction.
+### Subframe blocker
+BNBM / Dragon partition light-gauge steel framing remains a candidate only. The manufacturer product page still states GB/T 11981-2008, while GB/T 11981-2024 became effective on 2025-05-01 and fully replaced the 2008 edition.
 
-## Current subframe candidate screen
-BNBM / Dragon-brand partition light-gauge steel framing is a plausible local product-family candidate because the manufacturer publicly lists partition framing in 50 / 75 / 100 / 150 series and 0.6–1.2 mm thickness range.
+Do not lock a Dragon subframe until the vendor returns exact profile/section/thickness, actual factory, current GB/T 11981-2024 test/conformity evidence, compatible fasteners and a written quotation.
 
-However, the current BNBM product page still states production to **GB/T 11981-2008**. That standard was superseded in full by **GB/T 11981-2024**, effective 2025-05-01. Therefore no Dragon-brand series is treated as a locked 2026 subframe yet.
+### Substrate anchorage / secondary retention
+These remain system-safety blockers. Do not automatically use HST3 for every substrate. The actual wall base material and system load must determine the fastener. Secondary retention must have a defined product/material, fixation, failure-retention path, demounting method and inspection rule before mock-up.
 
-Close this gap only after receiving the exact series/profile/thickness, actual manufacturing site, GB/T 11981-2024 test or conformity evidence, corrosion/mechanical data, compatible fasteners, project detail and written quotation.
+## Written quotation boundary
+Use one comparable functional unit: **completed wall m² + representative removable-panel detail**. The RFQ must separately return:
+1. Fundermax board, fabrication/openings/edges, yield loss, packaging, freight/tax, batch and spare boards;
+2. Button-fix Fix/Button, positioning tools, screw boundary, China lead time and spares;
+3. subframe, leveling, substrate anchorage, corners/terminations and secondary retention;
+4. mock-up, first article, installation, demounting rehearsal, tests and protection;
+5. warranty, maintenance, spare retention, quotation validity and substitution rules.
 
-This is a governance example: an official brand page may prove product-family existence while still being insufficient for current project compliance.
+Board price + connector price + generic stud price is not a system quotation.
 
 ## Required mock-ups before status can advance
-1. **Visual/tolerance mock-up** — real corner, demountable panel, fixed boundary and actual lighting; assess joints, flatness, gloss/colour, termination and service-door visibility.
-2. **Demounting/safety mock-up** — actual panel weight, subframe and screws; record installation time, removal force, repeated cycles, connector wear, noise, edge damage, relocation error and secondary retention.
-3. **Maintenance scenario** — execute a real service-access sequence from panel removal to temporary storage, repair access, reinstatement, cleaning and re-inspection.
+1. Visual/tolerance mock-up — real corner, demountable panel, fixed boundary and actual lighting.
+2. Demounting/safety mock-up — actual panel weight, subframe, screws and secondary retention.
+3. Maintenance scenario — panel removal, temporary storage, service work, reinstatement, cleaning and re-inspection.
 
-Any dimensions, connector counts or loads used before a project is locked are exercise/design assumptions, not verified project data.
+## Handover / G9
+Transfer panel IDs/locations, approved sample, exact panel batch, spare boards, Button-fix identity/batch, spare Fix/Button stock, positioning tools, screw record, concealed subframe/anchor evidence and secondary-retention record.
 
-## Hold points
-- Before panel fabrication: freeze setting-out, panel sizes, access zones, openings, corners, terminations and spare-panel strategy.
-- Before subframe concealment: verify subframe, anchors, flatness, corrosion/fire boundaries and penetrations.
-- After Button-fix installation: record positions, screws, installation state and secondary retention.
-- First completed bay: pass visual, demounting, safety, access, cleaning and reinstatement checks before scale-up.
-- Handover: maintain panel IDs, locations, connectors, spare parts, spare panels, demounting instructions and maintenance responsibility.
+Track panel damage/contamination/warping/joint drift, connector looseness/noise/damage, demounting cycles, service labour, subframe/anchor anomalies, spare use, replenishment lead time, repair cost, installed settlement cost and replacement cost.
 
-## Cost boundary
-Compare complete installed systems, not board price per m². Include panel procurement and yield loss, fabrication, subframe, substrate anchorage, Button-fix, screws, positioning tools, secondary retention, corners/terminations/openings, mock-ups/tests, installation, protection, spares and maintenance/replacement.
-
-## G9 fields
-Track scratches/contamination/warping/joint drift, loosening/noise/accidental release, demounting cycles, service-access labour, connector wear, spare-panel and spare-part use, supply lead times, cleanability, installed settlement cost and replacement cost.
-
-## Evidence boundary
-- Button-fix Type 2 official page confirms 90° surface-mounted push-and-click use, minimum 10 mm panel thickness and a 50 kg guide load for a wall panel with four Fixes, while requiring proper screw/substrate matching and project testing for critical applications.
-- Fundermax documentation supports Max Compact Interior F-Quality as an interior panel family with wall-cladding applications and multiple fire-test documents. Non-Chinese classifications do not replace Chinese project fire evidence for the complete wall build-up.
-- GB/T 11981-2024 is the current Chinese national product standard for building light-gauge steel framing and fully replaced GB/T 11981-2008 on 2025-05-01.
+## Gate status
+- Fundermax product identity: CLOSED
+- Fundermax order factory: OPEN
+- Fundermax official documentation entry: CLOSED; China complete-system applicability OPEN
+- Button-fix product/origin: CLOSED
+- Button-fix China procurement route: CLOSED; written price OPEN
+- Exact compliant subframe: BLOCKED
+- Substrate anchorage: OPEN
+- Secondary retention: OPEN
+- Complete system written quotation: OPEN
+- Mock-up: BLOCKED until safety substructure is locked
+- G9 structure: READY / actual evidence OPEN
 
 ## Sources
-- https://www.button-fix.com/products/button-fix-type-2
 - https://www.fundermax.com/en/
+- Fundermax Delivery Programme / Documentation
+- https://button-fix.com/products/button-fix-type-2
+- https://button-fix.com/where-to-buy
 - https://www.bnbm.com.cn/category/product.html
 - https://std.samr.gov.cn/gb/search/gbDetailed?id=25940C3CEF728A9AE06397BE0A0A525A
 
 ## Next engineering action
-Do **not** add another finish SKU. Obtain current GB/T 11981-2024 evidence for an exact subframe profile, then lock the substrate fastener + secondary-retention solution and execute the physical mock-up.
+Obtain current GB/T 11981-2024 evidence and a written quote for an exact subframe profile, then lock substrate anchorage + secondary retention and execute the physical mock-up.
