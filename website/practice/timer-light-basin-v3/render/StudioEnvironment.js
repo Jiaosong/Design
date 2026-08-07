@@ -23,12 +23,12 @@ const PRESETS = {
     ...BASE,
     cards:[
       {size:[7.4,1.2],pos:[0,5.0,1.1],color:0xfffaf1,energy:2.1},
-      {size:[4.6,5.4],pos:[-4.2,1.45,3.15],color:0xfff7ea,energy:4.2},
-      {size:[2.2,4.4],pos:[4.4,1.25,2.15],color:0xe7eff5,energy:1.25},
+      {size:[4.8,5.6],pos:[-4.05,1.45,3.25],color:0xfff7ea,energy:5.0},
+      {size:[1.9,4.3],pos:[4.25,1.2,2.05],color:0xe7eff5,energy:0.95},
       {size:[0.75,5.0],pos:[-2.3,1.9,-4.8],color:0xffffff,energy:2.0}
     ],
-    flags:[{size:[1.7,5.0],pos:[4.1,1.55,-2.2],color:0x020202,energy:1}],
-    direct:{key:3.6,fill:1.15,rim:1.7,hemi:0.44}
+    flags:[{size:[1.35,5.2],pos:[3.7,1.5,-2.0],color:0x010101,energy:1}],
+    direct:{key:2.8,fill:1.0,rim:1.55,hemi:0.42}
   },
   diffuser:{
     ...BASE,background:0xe7e2da,floor:0xe5dfd7,
@@ -44,15 +44,15 @@ const PRESETS = {
   knob:{
     ...BASE,background:0xded9d1,floor:0xdcd7cf,
     cards:[
-      {size:[1.15,4.6],pos:[-2.6,1.5,3.4],color:0xffffff,energy:4.3},
-      {size:[0.72,4.2],pos:[2.8,1.4,3.2],color:0xe9f2f8,energy:2.7},
-      {size:[5.8,0.9],pos:[0,4.4,1.5],color:0xfff7ea,energy:1.7},
-      {size:[0.6,4.4],pos:[-1.0,1.5,-4.1],color:0xffffff,energy:2.2}
+      {size:[3.0,3.4],pos:[0.15,1.35,4.0],color:0xfffbf5,energy:3.7},
+      {size:[0.75,4.4],pos:[-2.7,1.45,3.2],color:0xffffff,energy:2.8},
+      {size:[0.65,4.2],pos:[2.8,1.35,3.1],color:0xe9f2f8,energy:2.1},
+      {size:[5.8,0.9],pos:[0,4.4,1.5],color:0xfff7ea,energy:1.5}
     ],
     flags:[{size:[1.2,4.8],pos:[3.6,1.3,-1.8],color:0x020202,energy:1}],
-    direct:{key:3.0,fill:1.7,rim:2.2,hemi:0.46}
+    direct:{key:2.7,fill:1.85,rim:1.9,hemi:0.52}
   },
-  shadow:{...BASE,background:0xe2ddd5,floor:0xe2ddd5,direct:{key:2.8,fill:1.4,rim:1.25,hemi:0.62}}
+  shadow:{...BASE,background:0xe2ddd5,floor:0xe2ddd5,direct:{key:2.2,fill:1.45,rim:1.0,hemi:0.62}}
 };
 
 function reflectionCard(scene,def){
@@ -95,5 +95,5 @@ export function addStudioLights(scene,mode='hero'){
 
 export function applyStudioScene(scene,renderer,mode='hero'){
   const env=buildStudioEnvironment(renderer,mode);scene.environment=env.texture;scene.background=new THREE.Color(env.preset.background);
-  const cyclorama=createCyclorama(mode);scene.add(cyclorama);const lights=addStudioLights(scene,mode);return {...env,cyclorama,lights};
+  const cyclorama=createCyclorama(mode);scene.add(cyclorama);const lights=addSudioLights(scene,mode);return {...env,cyclorama,lights};
 }
