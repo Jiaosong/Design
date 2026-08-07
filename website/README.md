@@ -1,23 +1,23 @@
-# OLEANDER Website — Governance content sync v1.0.1
+# OLEANDER Website｜Portfolio & Research Interface
 
-本网站是刘旋的品牌、CMF、空间与文化体验设计作品集。当前内容治理基线为 **Governance v1.0.1 / ACTIVE / E2**；当前身份对象仍按各自证据等级保持开放状态，不把历史 v0.4、v0.5、v0.7 / v0.7-R1、R4C-G2 或 Wordmark v0.8.1 作为当前权威。
+这是 OLEANDER／织作的个人设计作品与研究展示界面，用于呈现品牌、CMF、空间、文化体验、数字交互与设计方法相关成果。
 
-## 品牌基准
+网站首先是**作品集与研究界面**：让外部阅读者看到项目、判断、方法、原型和证据边界。治理版本、历史映射与发布门槛仍然保留，但它们服务于内容可信度与可追溯性，不再作为页面的第一介绍。
+
+## 设计基准
 
 - 核心：设计不是创造对象，而是重新组织关系。
-- 文化与审美方向：中式极简；这是既定方向，不再重新选风格。
+- 文化与审美方向：中式极简；这是当前持续研究和发展的设计方向。
 - 调性：以关系为骨，以气韵为势，以构造为证，以时间为尺度，以余地为伦理。
 - 生成方法：关系、共边、位移、嵌合、层累、游观与修订。
-- 身份状态：IP-NM-001 维持当前治理记录；IP-IA-001 为 OPEN / E1；IP-WM-001、IP-SM-001、IP-LK-001 为 OPEN / E0。恢复或废弃的历史源文件只作为 Legacy / Deprecated 证据，不自动升级当前对象。
 
 中式极简在这里不是水墨、书法、红印、茶、香、竹、仿古肌理或宋式配色的符号拼贴。它也不以西方极简的独立对象、几何纯化与均质网格为终点；在静、间、自然材料和无常之外，还强调历史层累、礼序与游观、共同体关系、文化来源与修订责任。
 
-## 案例与证据边界
+## Selected Works
 
-- C01｜一脉广渡：RESEARCH + PROPOSAL / EVIDENCE REVIEW；参与者结果仍为 TEST PLANNED / NOT RUN，不把风险假设写成已发生结果。
-- C02｜忘也 Daylily：INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN；不主张医疗、心理或疗效结果。
-- C03｜The Light Collection：Reno CMF 独立概念提案 / VISUALIZED / SAMPLE TEST PENDING；不暗示 OPPO 委托、采用、量产或背书。
-- CASE/GD/DY/LC、Project 01–03、R4C-G2、v0.7 / v0.7-R1、Wordmark v0.8.1 只作为 Legacy / Deprecated 历史映射。
+- **C01｜一脉广渡**：`RESEARCH + PROPOSAL / EVIDENCE REVIEW`。当前以研究与设计提案为主；参与者结果仍为 `TEST PLANNED / NOT RUN`，不把风险假设写成已发生结果。
+- **C02｜忘也 Daylily**：`INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN`。作为独立作品集项目展示，不主张医疗、心理或治疗效果。
+- **C03｜The Light Collection**：Reno CMF 独立概念提案，`VISUALIZED / SAMPLE TEST PENDING`。不暗示 OPPO 委托、采用、量产或背书。
 
 ## 直接运行
 
@@ -31,7 +31,7 @@
 - 数字材料性来自响应、时间和行为，不依赖仿纸纹理
 - 动效只服务 Scroll、Reveal、Return 三类关系变化
 
-## 新增交互
+## 交互与研究原型
 
 - 首页关系织场：连接 / 松开、关系密度调节
 - Relationship Reading：Original / Current / Intended 状态切换
@@ -47,8 +47,8 @@
 ## 外部开源工具
 
 - [img2threejs/img2threejs](https://github.com/img2threejs/img2threejs)：单张参考图到程序化、可动画 Three.js 模型的质量门控工作流。
-- 在 Oleander 中用于产品与器物体块验证、手机壳概念原型、展陈构件和网页三维展示。
-- 它是独立开源项目，采用 Apache-2.0 许可证；不得表述为刘旋或 Oleander 的原创项目。
+- 在 OLEANDER 中用于产品与器物体块验证、手机壳概念原型、展陈构件和网页三维展示。
+- 它是独立开源项目，采用 Apache-2.0 许可证；不得表述为本项目的原创工具。
 - 单图生成无法证明隐藏面和工程尺寸，输出必须经过 Rhino / Blender / 人工结构与版权复核。
 
 ## 无障碍
@@ -62,12 +62,15 @@
 - 支持 `prefers-reduced-motion`
 - 保留原生焦点、表单标签和状态说明
 
-## 当前门槛
+## 证据与发布边界
 
-- E1 / E2 自动化需要在当前 head 重新通过。
+当前内容治理基线为 **Governance v1.0.1 / ACTIVE / E2**。C01 / C02 / C03 是当前案例编号；旧 CASE/GD/DY/LC、Project 01–03、R4C-G2、v0.7 / v0.7-R1、Wordmark v0.8.1 仅作为 Legacy / Deprecated 历史映射。
+
+- E1 / E2 自动化应在当前 head 保持通过。
 - E3 人工验证仍需完成：屏幕阅读器、真实 200% zoom / reflow、实体设备触控、视觉阅读节律和目标平台字体 QA。
 - 28 项网站素材的来源、创作者、人物 / 场地产权、使用渠道与期限、修改 / AI 状态、撤回与发布记录仍需逐项闭环。
 - Contact 仍为模拟提交；真实后端、已验证专业邮箱与隐私 / 数据路径未发布。
+- 当前身份对象按各自证据等级保持开放状态；恢复或废弃的历史源文件不自动升级为当前权威。
 
 ## 上线前需要替换或闭环
 
