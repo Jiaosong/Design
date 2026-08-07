@@ -1,6 +1,6 @@
 # SYS-INT-WALL-DEMOUNTABLE-001｜Demountable Compact Interior Wall System
 
-- Status: SYSTEM RFQ READY / mock-up blocked by subframe + substrate fastening
+- Status: SYSTEM RFQ READY / subframe RFQ candidate identified / mock-up blocked by substrate fastening
 - Layer: Spatial / SP04 Construction & Operation
 - Canonical source: Notion `SYS-INT-WALL-DEMOUNTABLE-001`
 - Verified: 2026-08-07
@@ -14,8 +14,8 @@
 ## System boundary
 `building substrate → verified subframe → substrate fastener → Button-fix Type 2 → Fundermax 12 mm panel → joints/corners/termination → Button-fix Safety Cord for Type 2 + additional Button (candidate secondary retention) → demounting/maintenance/G9`
 
-The following remain intentionally `UNKNOWN` until current evidence is returned:
-- compliant exact subframe manufacturer/profile/thickness/factory;
+The following remain intentionally open until current project evidence is returned:
+- final subframe SKU / actual production site / order batch;
 - substrate fastener / anchor SKU and embedment;
 - complete Chinese fire-performance evidence;
 - installed system price.
@@ -38,12 +38,24 @@ Button-fix officially specifies **Safety Cord for Type 2** where extra safety is
 
 This closes the accessory identity only. It does **not** close project safety. The mock-up must verify the additional Button fixing, substrate/screw compatibility, panel swing/drop path, impact risk, retention after primary-fix release, repeated demounting wear and reinstatement.
 
-### Subframe blocker
+### Current light-gauge-steel standard
 `GB/T 11981-2024 建筑用轻钢龙骨` was published 2024-10-26, became effective 2025-05-01 and fully replaced `GB/T 11981-2008`.
 
-BNBM / Dragon partition light-gauge steel framing remains a candidate only because the manufacturer's current public product page still cites the 2008 edition. Saint-Gobain Gyproc's current China page confirms a continuing horizontal/vertical partition stud family and customizable length/thickness, but does not by itself close a specific project SKU, 2024-edition conformity evidence, production batch or written price.
+BNBM / Dragon remains a product-family lead only because its current public product page still cites the 2008 edition. Saint-Gobain Gyproc's current China page confirms a continuing horizontal/vertical partition-stud family and customizable length/thickness but does not by itself close a specific project SKU, current-standard report, production batch or written price.
 
-Do not lock any subframe until the vendor returns exact profile/section/thickness, actual factory, current GB/T 11981-2024 test/conformity evidence, compatible fasteners and a written quotation.
+### Shengda Q100｜first current-standard RFQ candidate
+Shengda / Shanghai Futian Industrial's official product page lists the Q100 partition family:
+- 100 vertical stud: 100×45×0.6 mm;
+- 100 track: 100×35×0.6 mm;
+- 38 bridging/through stud: 38×12×1.0 mm.
+
+A Shanghai Institute of Quality Inspection and Technical Research commissioned report, `W02510311482`, records `声达 / Q100 / 墙体龙骨`, tested against `GB/T 11981-2024` from 2025-11-24 to 2025-12-01 and signed 2025-12-03. The report states that the tested items complied with the cited basis and explicitly limits the conclusion to the tested items.
+
+The report does **not** close the project order identity: nominal producer, production date, batch/serial number and inspected-batch quantity are blank. Therefore Shengda Q100 is **RFQ CANDIDATE / NOT LOCKED**, not an approved subframe.
+
+Before use, the vendor must return exact stud/track/bridging SKU and length, actual producer/site and batch traceability, current GB/T 11981-2024 evidence, project spacing/height application advice, compatible substrate fastening, quantity/MOQ/freight/tax/lead time and a written quotation.
+
+Whether Q100 rather than Q75 or another section is finally selected depends on the actual Fundermax panel size/weight, support locations, wall height, stud spacing, substrate fastening, joints/corners and failure scenario.
 
 ### Substrate anchorage
 This remains a system-safety blocker. Do not automatically use HST3 for every substrate. The actual wall base material and system load must determine the fastener, embedment, edge distance, spacing, installation method and inspection route.
@@ -52,7 +64,7 @@ This remains a system-safety blocker. Do not automatically use HST3 for every su
 Use one comparable functional unit: **completed wall m² + representative removable-panel detail**. The RFQ must separately return:
 1. Fundermax board, fabrication/openings/edges, yield loss, packaging, freight/tax, batch and spare boards;
 2. Button-fix Fix/Button, Safety Cords, additional Buttons, positioning tools, screw boundary, China lead time and spares;
-3. subframe, leveling, substrate anchorage, corners/terminations and any additional safety hardware;
+3. exact subframe SKU, producer/site, batch traceability, leveling, substrate anchorage, corners/terminations and any additional safety hardware;
 4. mock-up, first article, installation, demounting rehearsal, tests and protection;
 5. warranty, maintenance, spare retention, quotation validity and substitution rules.
 
@@ -60,11 +72,11 @@ Board price + connector price + generic stud price is not a system quotation.
 
 ## Required mock-ups before status can advance
 1. Visual/tolerance mock-up — real corner, demountable panel, fixed boundary and actual lighting.
-2. Demounting/safety mock-up — actual panel weight, subframe, screws and Safety Cord arrangement. Deliberately release the primary connection and record retained position, swing/impact envelope, hardware deformation and reinstatement.
+2. Demounting/safety mock-up — actual panel weight, final subframe, screws and Safety Cord arrangement. Deliberately release the primary connection and record retained position, swing/impact envelope, hardware deformation and reinstatement.
 3. Maintenance scenario — panel removal, temporary storage, service work, reinstatement, cleaning and re-inspection.
 
 ## Handover / G9
-Transfer panel IDs/locations, approved sample, exact panel batch, spare boards, Button-fix identity/batch, Safety Cord and additional Button records, spare Fix/Button stock, positioning tools, screw record, concealed subframe/anchor evidence and secondary-retention inspection instructions.
+Transfer panel IDs/locations, approved sample, exact panel batch, spare boards, Button-fix identity/batch, Safety Cord and additional Button records, spare Fix/Button stock, positioning tools, final subframe producer/SKU/batch, screw/anchor record, concealed subframe evidence and secondary-retention inspection instructions.
 
 Track panel damage/contamination/warping/joint drift, connector looseness/noise/damage, Safety Cord/extra-Button condition, demounting cycles, service labour, subframe/anchor anomalies, spare use, replenishment lead time, repair cost, installed settlement cost and replacement cost.
 
@@ -76,10 +88,11 @@ Track panel damage/contamination/warping/joint drift, connector looseness/noise/
 - Button-fix China procurement route: CLOSED; written price OPEN
 - Secondary-retention product identity: CANDIDATE LOCKED / system safety test OPEN
 - Current light-gauge-steel standard source: CLOSED (`GB/T 11981-2024`)
-- Exact compliant subframe: BLOCKED
+- Current-standard subframe RFQ candidate: IDENTIFIED (`Shengda Q100`)
+- Final compliant subframe / producer / order batch: OPEN
 - Substrate anchorage: OPEN
 - Complete system written quotation: OPEN
-- Mock-up: BLOCKED until subframe + substrate fastening are locked
+- Mock-up: BLOCKED until final subframe + substrate fastening are locked
 - G9 structure: READY / actual evidence OPEN
 
 ## Sources
@@ -89,7 +102,9 @@ Track panel damage/contamination/warping/joint drift, connector looseness/noise/
 - https://button-fix.com/where-to-buy
 - https://www.bnbm.com.cn/category/product.html
 - https://www.saint-gobain.com.cn/node/18846
+- https://www.shengda-wood.com/flwj/106.html
+- https://www.shengda-wood.com/uploads/upload/20260519/d268a88d966960962144bbdb594805f0.pdf
 - https://std.samr.gov.cn/gb/search/gbDetailed?id=25940C3CEF728A9AE06397BE0A0A525A
 
 ## Next engineering action
-Obtain current GB/T 11981-2024 evidence and a written quote for an exact subframe profile, then lock substrate fastening and execute the physical mock-up including deliberate primary-fix release with Safety Cord retention.
+Issue an RFQ around Shengda Q100 as the first current-standard candidate while keeping BNBM/Gyproc as alternates; obtain producer/site/batch + written quote + substrate-fastening proposal, then execute the physical mock-up including deliberate primary-fix release with Safety Cord retention.
