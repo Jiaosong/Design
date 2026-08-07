@@ -1,37 +1,22 @@
 {
   "schema": "OLEANDER_PHOTOGRAPHY_PIPELINE_v3.3",
   "project": "Timer Light Basin",
-  "status": "DESIGN DEVELOPMENT / VISUALIZATION PIPELINE / BROWSER VISUAL REGRESSION BLOCKED",
+  "status": "FOUR-GATE EXECUTABLE-WEBGL CALIBRATION PASS / HERO-CMF RENDER PROFILE LOCKED / ENGINEERING VALIDATION PENDING",
   "modules": {
-    "StudioEnvironment": {
-      "method": "emissive reflection cards -> PMREM + direct RectArea lights",
-      "source": "pmndrs building-dynamic-envmaps principle"
-    },
-    "DiffuserMaterial": {
-      "method": "MeshPhysicalMaterial opal baseline",
-      "status": "VISUALIZATION ONLY",
-      "next_gate": "real sample + optical test or reviewed front/back FBO transmission"
-    },
-    "ContactShadow": {
-      "method": "model silhouette capture to HalfFloat target + separable blur",
-      "resolution": {
-        "hero": 1536,
-        "material": 1024
-      }
-    },
-    "ColorPipeline": {
-      "workflow": "linear HDR -> post -> tone mapping -> sRGB",
-      "renderer_tone_mapping": "NoToneMapping"
-    },
-    "PostProcessing": {
-      "library": "postprocessing 6.39.4",
-      "framebuffer": "HalfFloatType",
-      "bloom": "restrained",
-      "tone_mapping": "AGX"
-    }
+    "StudioEnvironment": {"method": "emissive reflection cards -> PMREM + direct RectArea lights", "source": "pmndrs building-dynamic-envmaps principle"},
+    "DiffuserMaterial": {"method": "MeshPhysicalMaterial opal baseline", "status": "VISUALIZATION ONLY / CALIBRATED", "next_gate": "real sample + optical test or reviewed front/back FBO transmission", "ior": 1.49, "transmission": 0.30, "roughness": 0.42, "thickness_hero": 0.14, "thickness_material": 0.18, "attenuation_distance": 0.11},
+    "ContactShadow": {"method": "model silhouette capture to HalfFloat target + separable blur", "resolution": {"hero": 1536, "material": 1024}, "architecture": "dual-layer tight contact + broad ambient penumbra", "hero_opacity": 0.22, "hero_blur": 5.2},
+    "ColorPipeline": {"workflow": "linear HDR -> post -> tone mapping -> sRGB", "renderer_tone_mapping": "NoToneMapping"},
+    "PostProcessing": {"library": "postprocessing 6.39.4", "framebuffer": "HalfFloatType", "bloom": "restrained", "tone_mapping": "AGX"}
   },
-  "inspection_layer": {
-    "state_and_exploded": "@google/model-viewer 4.1.0"
+  "inspection_layer": {"state_and_exploded": "@google/model-viewer 4.1.0"},
+  "evidence_boundary": "Rendering quality does not prove material optical performance, colorimetry, manufacturing, thermal, electrical or user validation.",
+  "calibration": {
+    "calibration_id": "CAL-20260807-1721-SWIFTSHADER",
+    "environment": {"browser": "Chromium non-headless under Xvfb", "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)", "api": "WebGL 2.0 (OpenGL ES 3.0 Chromium)", "control": "Chrome DevTools Protocol"},
+    "gates": {"Housing highlight": "PASS", "Diffuser volume": "PASS", "Metal knob reflection": "PASS", "Contact shadow falloff": "PASS"},
+    "evidence": "File Library v3.3-web/calibration/final_lock/",
+    "diffuser_final_variant": "Round 09 B — geometry/normal-driven grazing-light cue, no geometry exaggeration"
   },
-  "evidence_boundary": "Rendering quality does not prove material optical performance, colorimetry, manufacturing, thermal, electrical or user validation."
+  "render_lock": {"active": true, "state": "LOCKED", "scope": "Hero + CMF photography visualization target/profile", "unlock_requires_recorded_reason": true, "production_page_deployment_qa": "SEPARATE"}
 }
