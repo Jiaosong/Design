@@ -1,4 +1,4 @@
-# Governance v1.0.0
+# Governance v1.0.1
 
 Status: ACTIVE
 Evidence: E2
@@ -17,11 +17,18 @@ Owner: 刘旋 / OLEANDER／织作
 
 ## Identity
 - IP-NM-001 v1.0.0 ACTIVE E2
-- IP-IA-001 v1.0.0 ACTIVE E2
-- IP-WM-001 v0.0.0 OPEN E0
-- IP-SM-001 v0.0.0 OPEN E0
-- IP-LK-001 v0.0.0 OPEN E0
-- R4C-G2, v0.7-R1 and Wordmark v0.8.1 are LEGACY.
+- IP-IA-001 OPEN E1; the recovered v0.4 source is LEGACY / READ-ONLY evidence only.
+- IP-WM-001 OPEN E0; Wordmark v0.8.1 is DEPRECATED / LINK_ONLY and does not define the current object.
+- IP-SM-001 OPEN E0; rejected v0.5 remains excluded.
+- IP-LK-001 OPEN E0; R4C-G2 is DEPRECATED / LINK_ONLY and must not be reconstructed from previews.
+- v0.7 and v0.7-R1 remain LEGACY comparison inputs.
+
+## Migration v1.0.1
+- Migration-level HOLD: 0.
+- Located and hashed legacy v0.4 and rejected v0.5 sources.
+- Decoupled missing legacy aliases from current-object creation.
+- Current-object design, recognition, physical reproduction and E4 rights/release gates remain open.
+- See `00-governance/migration/`.
 
 ## Status Codes
 OPEN / WIP / PROTO / CAND / REVIEW / ACTIVE / APPROVED / RELEASED / HOLD / REJECTED / DEPRECATED / LEGACY / ARCHIVED
