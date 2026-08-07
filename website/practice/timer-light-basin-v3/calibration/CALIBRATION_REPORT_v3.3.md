@@ -2,7 +2,7 @@
 
 **Calibration ID:** `CAL-20260807-1721-SWIFTSHADER`  
 **Date:** 2026-08-07  
-**Decision:** `FOUR-GATE PASS / FINAL HERO-CMF RENDER PROFILE LOCKED`
+**Decision:** `FOUR-GATE PASS / CANONICAL-GLB GEOMETRY EQUIVALENCE PASS / FINAL HERO-CMF RENDER PROFILE LOCKED`
 
 ## 1｜Executable WebGL environment
 
@@ -14,9 +14,7 @@ This calibration was executed locally in a real browser GPU context, not inferre
 - Renderer: `ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)`
 - Vendor: `Google Inc. (Google)`
 - Rendering backend: ANGLE → Vulkan → SwiftShader
-- Source: real model-derived calibration subset; no invented structure
-
-The earlier records claiming GitHub Actions run `31166364420` / artifact `8989166344` were not valid evidence for this calibration and have been removed from the authoritative files.
+- Source: external visible geometry extracted from canonical `timer_100_pbr.glb`; no invented structure
 
 ## 2｜Hard gates
 
@@ -27,7 +25,17 @@ The earlier records claiming GitHub Actions run `31166364420` / artifact `898916
 | Metal knob reflection | **PASS** | File Library `calibration/final_lock/knob.png` | Controlled bright/dark side sweep reads satin/anodized-metal intent; no brown-plastic or mirror-chrome reading. |
 | Contact shadow falloff | **PASS** | File Library `calibration/final_lock/shadow.png` | Dense contact opens into a smooth penumbra; no rectangular ground patch and no floating gap. |
 
-## 3｜Diffuser iteration chain
+## 3｜Canonical GLB geometry equivalence
+
+Canonical source: `assets/pbr/timer_100_pbr.glb`, SHA-256 `900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66`.
+
+Calibration subset: `calibration/timer_visual_calibration_subset.glb`, SHA-256 `ad18d9afb489cff1eece609a1e722c5b723872e84c6a96768b0c51a9339d57b2`.
+
+At `1e-5 mm`, Housing, Diffuser, Side Knob, Bottom Cover and Silicone Foot Ring have identical triangle surfaces, face counts, bounds and surface areas. Vertex welding during extraction changes indexing only, not the visible geometry. See `GEOMETRY_EQUIVALENCE_v3.3.json`.
+
+`VISUALIZATION_State_Light` remains a separate presentation layer and is not structural evidence.
+
+## 4｜Diffuser iteration chain
 
 Diffuser was deliberately kept **REJECTED** until the actual shallow geometry became readable without deformation.
 
@@ -38,16 +46,16 @@ Diffuser was deliberately kept **REJECTED** until the actual shallow geometry be
 
 Because the modeled basin is only about 3 mm deep over a 100 mm diffuser diameter, the accepted cue is intentionally subtle. Stronger apparent curvature would misrepresent the geometry.
 
-## 4｜Render lock
+## 5｜Render lock
 
 `FINAL HERO / CMF RENDER PROFILE LOCK = LOCKED`
 
 The lock freezes the photography visualization target, not the product engineering state. Reopen it after approved geometry changes, real sample/optical evidence replaces visualization hypotheses, material render-engine/version/color-pipeline changes, or a documented design decision.
 
-## 5｜Evidence boundary
+## 6｜Evidence boundary
 
 Optical performance, measured material appearance/colorimetry, thermal, electrical, DFM/DFA, tolerance, tactile and user-recognition validation remain **NOT RUN**. The four frames are executable-WebGL render evidence only.
 
-## 6｜Deployment boundary
+## 7｜Deployment boundary
 
 The calibration profile is locked. Public deployment of the complete v3.3 page still has a separate integrated-browser QA gate; that gate must not be inferred from this dedicated calibration harness.
