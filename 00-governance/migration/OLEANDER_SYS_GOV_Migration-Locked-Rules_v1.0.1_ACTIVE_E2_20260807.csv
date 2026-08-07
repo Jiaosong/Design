@@ -1,0 +1,6 @@
+规则项,LOCKED
+最高权威,00｜OLEANDER／织作｜命名与四层架构迁移基线
+迁移结论,旧文件缺失不得阻塞新对象；可将无源旧别名降级为 DEPRECATED/E0/LINK_ONLY。
+继承边界,旧文件不得直接改名冒充当前版本；Recovered source only raises legacy evidence to E1.
+现行对象,IP-IA-001、IP-WM-001、IP-LK-001 分别独立建档和验证。
+证据门槛,OPEN/E0 表示尚未开始或尚无当前源文件，不等于迁移阻塞。
