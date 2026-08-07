@@ -1,30 +1,41 @@
 {
   "schema": "OLEANDER_DEPENDENCY_REGISTER_v1",
-  "project": "Timer Light Basin v3.0 Web",
+  "project": "Timer Light Basin v3.3 Photography Pipeline",
   "updated": "2026-08-07",
   "dependencies": [
     {
       "name": "@google/model-viewer",
       "version": "4.1.0",
-      "runtime_use": "GLB/glTF interactive product presentation, camera controls, PBR rendering and poster fallback",
+      "source": "npm / Google model-viewer",
+      "runtime_use": "GLB/glTF state and exploded inspection viewer",
       "license": "Apache-2.0",
       "status": "PROJECT-PINNED",
-      "evidence_boundary": "Presentation layer only; does not prove CAD, DFM, optical, thermal, electrical or user validation.",
-      "upgrade_gate": "Run visual regression, model load, state switch and keyboard interaction checks before version change."
+      "evidence_boundary": "Inspection/presentation layer only; does not prove CAD, DFM, optical, thermal, electrical or user validation.",
+      "upgrade_gate": "Run model-load, state-switch, exploded-animation and keyboard interaction regression before version change."
     },
     {
       "name": "three",
       "version": "0.174.0 / r174",
-      "runtime_use": "Pinned rendering dependency associated with model-viewer v4.1.0",
+      "source": "npm / Three.js",
+      "runtime_use": "Hero and CMF photography viewer: GLTFLoader, MeshPhysicalMaterial, PMREM, RectAreaLight, OrbitControls, contact-shadow capture and color pipeline",
       "license": "MIT",
       "status": "PROJECT-PINNED",
       "evidence_boundary": "Rendering engine only.",
-      "upgrade_gate": "Keep compatible with the chosen model-viewer version and check PBR/glTF regressions."
+      "upgrade_gate": "Check normals, transmission, highlight rolloff, color pipeline, shadows and glTF compatibility before upgrade."
+    },
+    {
+      "name": "postprocessing",
+      "version": "6.39.4",
+      "source": "npm / pmndrs/postprocessing",
+      "runtime_use": "HalfFloat HDR EffectComposer, restrained BloomEffect and final AGX ToneMappingEffect for Hero / Material Lab",
+      "license": "Zlib",
+      "status": "PROJECT-PINNED",
+      "evidence_boundary": "Image pipeline only; no material, optical, DFM or product validation claim.",
+      "upgrade_gate": "Compare highlight rolloff, diffuser bloom, dark-gradient banding, GPU compatibility and performance before upgrade."
     }
   ],
-  "fallback": {
-    "model": "Poster render + downloadable GLB",
-    "information": "HTML/CSS/SVG remains readable if WebGL or custom element fails",
-    "replacement_path": "Three.js + GLTFLoader custom viewer or another reviewed glTF renderer"
-  }
+  "runtime_entry": "https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js",
+  "runtime_entry_note": "model-viewer remains inspection-only in v3.3. Formal Hero/CMF uses the modular Three.js photography pipeline.",
+  "governance_note": "v3.3 separates final photography presentation from inspection viewers. Three.js r174 + postprocessing 6.39.4 run Hero/CMF; model-viewer 4.1.0 remains state/exploded inspection only.",
+  "adopted_reference_register": "TECHNICAL_REFERENCES.md"
 }
