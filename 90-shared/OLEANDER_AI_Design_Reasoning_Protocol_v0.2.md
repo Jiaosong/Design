@@ -1,6 +1,6 @@
 # OLEANDER AI Design Reasoning Protocol v0.2
 
-- Status: ACTIVE reusable protocol / not a project validation result
+- Status: ACTIVE reusable protocol / internally exercised / not a project validation result
 - Canonical method body: Notion `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
 - Method index: `MTH-AI-OLEANDER-001`
 - Updated: 2026-08-07
@@ -46,6 +46,12 @@ Only an actually executed test can create `O`. Simulation, rendering or model sc
 | TEST | observed result, scope, conditions, sample, anomalies, failures | actual test evidence exists; otherwise remain H/U |
 | DECIDE | KEEP / REVISE / REJECT / HOLD + human rationale | responsible human decision recorded |
 | ARCHIVE | version log, decision log, evidence links, next experiment | can answer why the design became this way |
+
+## Adversarial checks added after Protocol Exercise 001
+1. **Product-family existence ≠ current compliance.** An official manufacturer page can prove that a product family exists while its referenced standard, certificate version, factory, SKU or project applicability is stale or incomplete. Current compliance must be closed separately.
+2. **Same category ≠ system compatibility.** Materials or components that all belong to “interior finish”, “CMF”, “structure” or another broad category must not be combined unless their substrate, process, interface, performance and installation logic are actually compatible.
+
+These checks were exercised on the demountable compact-HPL wall workflow: they blocked an incorrect veneer/wood-finish component chain and kept a light-gauge steel subframe candidate on HOLD when its public product page referenced a superseded Chinese standard. This is an internal method exercise, not evidence that the wall system itself performs as intended.
 
 ## Return routes
 - Test contradicts expectation → return to FRAME or HYPOTHESIZE.
