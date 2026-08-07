@@ -63,7 +63,7 @@ function reflectionCard(scene,def){
 
 export function buildStudioEnvironment(renderer,mode='hero'){
   const preset=PRESETS[mode]||PRESETS.hero;
-  const capture=new THREE.Scene();capture.background=new THREE.Color(px11100e);
+  const capture=new THREE.Scene();capture.background=new THREE.Color(0x11100e);
   preset.cards.forEach(d=>reflectionCard(capture,d));
   (preset.flags||[]).forEach(d=>reflectionCard(capture,d));
   const pmrem=new THREE.PMREMGenerator(renderer);
@@ -94,6 +94,6 @@ export function addStudioLights(scene,mode='hero'){
 }
 
 export function applyStudioScene(scene,renderer,mode='hero'){
-  const env=buildSudioEnvironment(renderer,mode);scene.environment=env.texture;scene.background=new THREE.Color(env.preset.background);
+  const env=buildStudioEnvironment(renderer,mode);scene.environment=env.texture;scene.background=new THREE.Color(env.preset.background);
   const cyclorama=createCyclorama(mode);scene.add(cyclorama);const lights=addStudioLights(scene,mode);return {...env,cyclorama,lights};
 }
