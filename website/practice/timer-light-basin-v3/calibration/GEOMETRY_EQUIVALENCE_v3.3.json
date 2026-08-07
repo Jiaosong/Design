@@ -1,0 +1,24 @@
+{
+  "schema": "OLEANDER_GEOMETRY_EQUIVALENCE_GATE_v3.3",
+  "project": "OLEANDER／织作 — Timer Light Basin",
+  "date": "2026-08-07",
+  "canonical_glb": {
+    "path": "assets/pbr/timer_100_pbr.glb",
+    "sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66"
+  },
+  "calibration_subset": {
+    "path": "calibration/timer_visual_calibration_subset.glb",
+    "sha256": "ad18d9afb489cff1eece609a1e722c5b723872e84c6a96768b0c51a9339d57b2",
+    "derivation": "external visible geometry extracted from canonical GLB; duplicate vertices may be welded; triangle surfaces unchanged"
+  },
+  "comparison_tolerance_mm": 0.00001,
+  "meshes": {
+    "01_Upper_Housing": {"faces":40344,"bounds_equal":true,"surface_area_equal":true,"triangle_soup_equal":true},
+    "02_Formed_Diffuser": {"faces":18432,"bounds_equal":true,"surface_area_equal":true,"triangle_soup_equal":true},
+    "17_Side_Knob": {"faces":384,"bounds_equal":true,"surface_area_equal":true,"triangle_soup_equal":true},
+    "18_Bottom_Cover": {"faces":512,"bounds_equal":true,"surface_area_equal":true,"triangle_soup_equal":true},
+    "19_Silicone_Foot_Ring": {"faces":768,"bounds_equal":true,"surface_area_equal":true,"triangle_soup_equal":true}
+  },
+  "state_light_boundary": "VISUALIZATION_State_Light is a separate presentation layer and is not used as structural geometry evidence.",
+  "result": "PASS / CALIBRATION EXTERNAL GEOMETRY IS SURFACE-EQUIVALENT TO CANONICAL GLB"
+}
