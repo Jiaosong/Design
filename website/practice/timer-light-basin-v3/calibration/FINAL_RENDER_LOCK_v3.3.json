@@ -1,0 +1,28 @@
+{
+  "schema": "OLEANDER_HERO_CMF_RENDER_LOCK_v3.3",
+  "project": "OLEANDER／织作 — Timer Light Basin",
+  "calibration_id": "CAL-20260807-1721-SWIFTSHADER",
+  "date": "2026-08-07",
+  "environment": {
+    "browser": "Chromium non-headless under Xvfb",
+    "control": "Chrome DevTools Protocol",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "vendor": "Google Inc. (Google)",
+    "api": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "source_geometry": "real model-derived calibration subset; no structure changes",
+  "gates": {
+    "Housing highlight": "PASS",
+    "Diffuser volume": "PASS",
+    "Metal knob reflection": "PASS",
+    "Contact shadow falloff": "PASS"
+  },
+  "render_lock": {
+    "state": "LOCKED",
+    "label": "FINAL HERO / CMF RENDER PROFILE LOCK",
+    "scope": "Photography visualization target/profile only",
+    "production_page_deployment_qa": "SEPARATE"
+  },
+  "evidence_boundary": "Visualization only; no material, optical, thermal, electrical, DFM/DFA, tolerance or user validation claim.",
+  "ai_image_generation_used_for_calibration": false
+}
