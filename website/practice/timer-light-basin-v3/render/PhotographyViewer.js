@@ -47,8 +47,8 @@ export class PhotographyViewer{
       this.prepareOpticalPresentation();
       this.contactShadow=new ContactShadow(this.renderer,this.scene,this.object,{
         resolution:this.mode==='hero'?1536:1024,
-        opacity:this.mode==='hero'?0.18:0.14,
-        blur:this.mode==='hero'?4.8:4.0
+        opacity:this.mode==='hero'?0.22:0.16,
+        blur:this.mode==='hero'?5.2:4.4
       });
       applyFocusLighting(this.studio.lights,'body');
       this.frame(this.mode==='hero'?VIEWS.hero:VIEWS.body);
