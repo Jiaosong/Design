@@ -11,7 +11,7 @@ const VIEWS={
   housing:{fov:28,cam:[1.72,.96,1.86],target:[0,.155,0]},
   diffuser:{fov:31,cam:[1.02,.64,1.12],target:[0,.285,0]},
   knob:{fov:32,cam:[.67,.35,1.14],target:[.18,.125,.57]},
-  shadow:{fov:40,cam:[1.80,.86,2.35],target:[0,.095,0]}
+  shadow:{fov:42,cam:[1.58,.72,2.25],target:[0,.090,0]}
 };
 const view=VIEWS[shot];
 const scene=new THREE.Scene();
@@ -20,6 +20,20 @@ const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-per
 renderer.setPixelRatio(1);renderer.setSize(1200,900,false);configureColorPipeline(renderer,mode);document.querySelector('#app').appendChild(renderer.domElement);
 const studio=applyStudioScene(scene,renderer,mode);
 applyFocusLighting(studio.lights,shot==='diffuser'?'diffuser':shot==='knob'?'knob':'body');
+if(shot==='shadow'){
+  // Shadow gate evaluates the contact field, not the cyclorama bend. Use a flat studio sweep floor to avoid camera/cyclorama intersection.
+  studio.cyclorama.visible=false;
+  scene.background=new THREE.Color(0xe7e1d8);
+  const shadowFloor=new THREE.Mesh(
+    new THREE.PlaneGeometry(8,8),
+    new THREE.MeshStandardMaterial({color:0xe5dfd6,roughness:0.99,metalness:0})
+  );
+  shadowFloor.rotation.x=-Math.PI/2;
+  shadowFloor.position.y=-0.012;
+  shadowFloor.receiveShadow=true;
+  shadowFloor.name='CALIBRATION_SHADOW_FLOOR';
+  scene.add(shadowFloor);
+}
 
 // MODEL-DERIVED CALIBRATION RIG. Dimensions and diffuser radial profile are extracted from the current v3.3 GLB.
 const root=new THREE.Group();root.name='MODEL_DERIVED_CALIBRATION_RIG';scene.add(root);
@@ -52,7 +66,7 @@ if(shot==='knob'){
 }
 if(shot==='shadow')stateLight.visible=false;
 
-const contactShadow=new ContactShadow(renderer,scene,root,{
+new ContactShadow(renderer,scene,root,{
   resolution:shot==='shadow'?1536:1024,
   opacity:shot==='shadow'?.18:(mode==='material'?.12:.17),
   blur:shot==='shadow'?4.9:(mode==='material'?4.1:4.6)
