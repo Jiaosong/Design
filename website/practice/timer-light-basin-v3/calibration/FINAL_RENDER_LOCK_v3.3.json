@@ -3,26 +3,39 @@
   "project": "OLEANDER／织作 — Timer Light Basin",
   "calibration_id": "CAL-20260807-1721-SWIFTSHADER",
   "date": "2026-08-07",
+  "local_time": "2026-08-07T17:21:00+08:00",
   "environment": {
     "browser": "Chromium non-headless under Xvfb",
-    "control": "Chrome DevTools Protocol",
+    "control": "Chrome DevTools Protocol (Page.setDocumentContent / Runtime.evaluate / Page.captureScreenshot)",
     "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "vendor": "Google Inc. (Google)",
-    "api": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    "api": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "angle_backend": "Vulkan / SwiftShader"
   },
-  "source_geometry": "real model-derived calibration subset; no structure changes",
+  "source_geometry": "calibration subset extracted from canonical timer_100_pbr.glb; visible external surfaces verified triangle-equivalent; no structure changes",
   "gates": {
-    "Housing highlight": "PASS",
-    "Diffuser volume": "PASS",
-    "Metal knob reflection": "PASS",
-    "Contact shadow falloff": "PASS"
+    "Housing highlight": {"status":"PASS","evidence":"calibration/final_lock/housing.png","reason":"Continuous broad highlight; curvature and rim separation readable; no clipped metallic band."},
+    "Diffuser volume": {"status":"PASS","evidence":"calibration/final_lock/diffuser.png","reason":"Actual shallow basin reads through geometry-driven grazing-light gradient while edge thickness remains visible; no geometry exaggeration."},
+    "Metal knob reflection": {"status":"PASS","evidence":"calibration/final_lock/knob.png","reason":"Controlled bright/dark side sweep reads satin metal; front/side cylinder separation remains clear without mirror-chrome look."},
+    "Contact shadow falloff": {"status":"PASS","evidence":"calibration/final_lock/shadow.png","reason":"Dense contact under body transitions to broad smooth penumbra; no visible rectangular shadow plane or floating gap."}
+  },
+  "geometry_equivalence_gate": {
+    "status": "PASS",
+    "canonical_glb": "assets/pbr/timer_100_pbr.glb",
+    "canonical_glb_sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "calibration_subset": "calibration/timer_visual_calibration_subset.glb",
+    "calibration_subset_sha256": "ad18d9afb489cff1eece609a1e722c5b723872e84c6a96768b0c51a9339d57b2",
+    "method": "triangle-soup comparison at 1e-5 mm for visible external parts",
+    "visible_external_meshes_surface_equivalent": true,
+    "report": "calibration/GEOMETRY_EQUIVALENCE_v3.3.json"
   },
   "render_lock": {
     "state": "LOCKED",
     "label": "FINAL HERO / CMF RENDER PROFILE LOCK",
-    "scope": "Photography visualization target/profile only",
-    "production_page_deployment_qa": "SEPARATE"
+    "scope": "Photography visualization target and calibration profile only",
+    "unlock_triggers": ["approved geometry change","real material/optical evidence replacing visualization hypothesis","render engine/version/color-pipeline change","documented design decision"],
+    "production_page_deployment_qa": "SEPARATE GATE — integrated page should be rerun before public release"
   },
-  "evidence_boundary": "Visualization only; no material, optical, thermal, electrical, DFM/DFA, tolerance or user validation claim.",
+  "evidence_boundary": "Visualization quality decision only. Does not validate material optical performance, colorimetry, thermal, electrical, DFM/DFA, tolerance or user recognition.",
   "ai_image_generation_used_for_calibration": false
 }
