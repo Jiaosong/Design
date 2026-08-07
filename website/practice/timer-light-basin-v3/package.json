@@ -1,0 +1,28 @@
+{
+  "name": "oleander-zhizuo-timer-light-basin-v3-web",
+  "private": true,
+  "version": "3.0.0",
+  "description": "OLEANDER／织作 Practice: Timer Light Basin v3.0 web master.",
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 4173",
+    "check:js": "node --check app.js"
+  },
+  "dependencies": {
+    "@google/model-viewer": "4.1.0",
+    "three": "0.174.0"
+  },
+  "oleander": {
+    "system": "OLEANDER／织作",
+    "artifact_type": "PRACTICE / WEB MASTER",
+    "architecture": {
+      "B02": "PRIMARY",
+      "B04": "SUPPORTING",
+      "IP03": "SUPPORTING",
+      "IP04": "SUPPORTING",
+      "Culture": "N/A",
+      "Spatial": "N/A"
+    },
+    "evidence_status": "DESIGN DEVELOPMENT / VALIDATION PENDING"
+  }
+}
