@@ -16,13 +16,14 @@ const FRAGMENT = `
   varying float vWorldY;
   void main(){
     float h = clamp((vWorldY-groundY)/max(heightRange,0.001),0.0,1.0);
-    float alpha = mix(0.90,0.18,smoothstep(0.0,1.0,h));
+    float contact = 1.0 - smoothstep(0.0,0.48,h);
+    float alpha = 0.025 + 0.72 * contact * contact;
     gl_FragColor = vec4(0.0,0.0,0.0,alpha);
   }
 `;
 
 export class ContactShadow {
-  constructor(renderer, scene, root, {resolution=1536, opacity=0.30, blur=2.8}={}){
+  constructor(renderer, scene, root, {resolution=1536, opacity=0.18, blur=4.8}={}){
     this.renderer=renderer; this.scene=scene; this.root=root;
     this.resolution=resolution; this.opacity=opacity; this.blurAmount=blur;
     this.targetA=new THREE.WebGLRenderTarget(resolution,resolution,{type:THREE.HalfFloatType,depthBuffer:true});
@@ -51,7 +52,7 @@ export class ContactShadow {
     const box=new THREE.Box3().setFromObject(this.root);
     const size=box.getSize(new THREE.Vector3());
     const center=box.getCenter(new THREE.Vector3());
-    const span=Math.max(size.x,size.z)*1.32;
+    const span=Math.max(size.x,size.z)*1.48;
     const half=span/2;
     this.camera.left=-half; this.camera.right=half; this.camera.top=half; this.camera.bottom=-half;
     this.camera.near=0.01; this.camera.far=Math.max(2,size.y+1.2);
@@ -90,9 +91,9 @@ export class ContactShadow {
     this.scene.overrideMaterial=previousOverride;
     this.scene.background=previousBackground;
     this.blur(this.targetA,this.targetB,this.blurAmount,true);
-    this.blur(this.targetB,this.targetA,this.blurAmount*0.9,false);
-    this.blur(this.targetA,this.targetB,this.blurAmount*0.55,true);
-    this.blur(this.targetB,this.targetA,this.blurAmount*0.45,false);
+    this.blur(this.targetB,this.targetA,this.blurAmount,false);
+    this.blur(this.targetA,this.targetB,this.blurAmount*0.72,true);
+    this.blur(this.targetB,this.targetA,this.blurAmount*0.64,false);
     this.renderer.setRenderTarget(previousTarget);
     this.renderer.setClearColor(previousColor,previousAlpha);
     this.renderer.autoClear=previousAutoClear;
