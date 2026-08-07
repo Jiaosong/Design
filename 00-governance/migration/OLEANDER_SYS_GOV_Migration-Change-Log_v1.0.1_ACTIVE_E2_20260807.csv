@@ -1,0 +1,5 @@
+Version,Date,Change
+1.0.1,2026-08-07,Recovered v0.4 and v0.5 SVG sources; computed SHA-256; archived to canonical folders.
+1.0.1,2026-08-07,Reclassified R4C-G2 and Wordmark v0.8.1 as DEPRECATED/E0/LINK_ONLY.
+1.0.1,2026-08-07,"Created current object records and folders for IP-IA-001, IP-WM-001 and IP-LK-001."
+1.0.1,2026-08-07,Created 00_Governance/Migration and moved register files into canonical location.
