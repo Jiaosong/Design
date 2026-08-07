@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { applyStudioScene } from './StudioEnvironment.js';
+import { applyStudioScene, applyFocusLighting } from './StudioEnvironment.js';
 import { tuneProductMaterials } from './DiffuserMaterial.js';
 import { ContactShadow } from './ContactShadow.js';
 import { configureColorPipeline } from './ColorPipeline.js';
@@ -10,8 +10,8 @@ import { createPostProcessing } from './PostProcessing.js';
 const VIEWS={
   hero:{theta:-0.64,phi:1.02,distance:2.18,fov:27,focus:null},
   body:{theta:-0.62,phi:1.06,distance:2.05,fov:29,focus:null},
-  top:{theta:0.02,phi:0.66,distance:1.80,fov:28,focus:/02_Formed_Diffuser|VISUALIZATION_State_Light/},
-  control:{theta:-1.34,phi:1.14,distance:1.72,fov:30,focus:/17_Side_Knob|16_Encoder_Shaft|15_Bourns_PEC11R_Envelope/},
+  top:{theta:-0.12,phi:0.86,distance:1.90,fov:29,focus:/02_Formed_Diffuser|VISUALIZATION_State_Light/},
+  control:{theta:-1.20,phi:1.08,distance:1.82,fov:31,focus:/17_Side_Knob|16_Encoder_Shaft|15_Bourns_PEC11R_Envelope/},
   rear:{theta:1.84,phi:1.14,distance:1.76,fov:30,focus:/12_USB_C_Shell|09_Controller_PCB|10_XIAO_RP2040/}
 };
 
@@ -44,11 +44,13 @@ export class PhotographyViewer{
       this.meshes=tuneProductMaterials(this.object,this.mode);
       this.group.add(this.object);
       this.normalizeToGround();
+      this.prepareOpticalPresentation();
       this.contactShadow=new ContactShadow(this.renderer,this.scene,this.object,{
         resolution:this.mode==='hero'?1536:1024,
-        opacity:this.mode==='hero'?0.30:0.25,
-        blur:this.mode==='hero'?3.1:2.6
+        opacity:this.mode==='hero'?0.18:0.14,
+        blur:this.mode==='hero'?4.8:4.0
       });
+      applyFocusLighting(this.studio.lights,'body');
       this.frame(this.mode==='hero'?VIEWS.hero:VIEWS.body);
       this.root.classList.add('is-loaded');
       const status=this.root.querySelector('.viewer-status');
@@ -62,12 +64,28 @@ export class PhotographyViewer{
   }
   normalizeToGround(){
     this.object.updateMatrixWorld(true);
-    let box=new THREE.Box3().setFromObject(this.object);
+    const box=new THREE.Box3().setFromObject(this.object);
     const center=box.getCenter(new THREE.Vector3());
     this.object.position.x-=center.x;
     this.object.position.z-=center.z;
     this.object.position.y-=box.min.y;
     this.object.updateMatrixWorld(true);
+  }
+  prepareOpticalPresentation(){
+    // The visualization-state mesh overlaps the formed diffuser in the source presentation GLB.
+    // For photography only, move that helper below the real diffuser so the surface retains opal volume.
+    // This does not modify the source GLB or create an engineering claim.
+    const diffuser=this.meshes.find((m)=>/02_Formed_Diffuser/.test(m.name));
+    const state=this.meshes.find((m)=>/VISUALIZATION_State_Light/.test(m.name));
+    if(!diffuser||!state) return;
+    this.object.updateMatrixWorld(true);
+    const db=new THREE.Box3().setFromObject(diffuser);
+    const sb=new THREE.Box3().setFromObject(state);
+    const offset=(db.min.y-0.012)-sb.max.y;
+    state.position.y+=offset;
+    state.scale.x*=0.90;
+    state.scale.z*=0.90;
+    state.updateMatrixWorld(true);
   }
   selection(regex){
     if(!regex) return new THREE.Box3().setFromObject(this.object);
@@ -100,6 +118,7 @@ export class PhotographyViewer{
       }
       material.needsUpdate=true;
     });
+    applyFocusLighting(this.studio.lights,key);
     this.frame(preset);
   }
   resize(){
