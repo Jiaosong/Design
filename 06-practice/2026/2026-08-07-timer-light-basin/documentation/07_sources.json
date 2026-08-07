@@ -1,0 +1,38 @@
+{
+  "access_date": "2026-08-07",
+  "official_sources": [
+    {
+      "title": "Parameters in Fusion",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=SLD-MODIFY-PARAMETERS"
+    },
+    {
+      "title": "Import or export parameters",
+      "url": "https://help.autodesk.com/view/fusion360/CHS/?guid=SLD-IMPORT-EXPORT-PARAMETERS"
+    },
+    {
+      "title": "Revolve a solid body",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=SLD-REVOLVE-SOLID"
+    },
+    {
+      "title": "Shell a solid body",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=MODEL-SHELL-CMD"
+    },
+    {
+      "title": "Create new components",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=ASM-NEW-COMPONENT"
+    },
+    {
+      "title": "Create a 3D section view",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=DESIGN-INSPECT-SECTION-ANALYSIS-CMD"
+    },
+    {
+      "title": "Export designs",
+      "url": "https://help.autodesk.com/view/fusion360/ENU/?contextId=TPD-DESIGN-EXPORT"
+    }
+  ],
+  "notion_method_pages": [
+    "Practice｜每日设计手法与验证",
+    "01B-1｜产品设计 × AI｜状态、原型与制造反馈",
+    "01A｜OLEANDER 中式极简调性｜关系、气韵与构造"
+  ]
+}

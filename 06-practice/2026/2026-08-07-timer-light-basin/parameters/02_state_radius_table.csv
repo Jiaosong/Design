@@ -1,0 +1,4 @@
+﻿remaining_fraction,remaining_percent,visible_radius_mm,visible_diameter_mm,mapping
+1.0,100%,50.00,100.00,visible area proportional to remaining time
+0.5,50%,35.36,70.71,visible area proportional to remaining time
+0.1,10%,15.81,31.62,visible area proportional to remaining time

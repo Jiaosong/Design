@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,"Noto Sans CJK SC",sans-serif;fill:#111}.outer{fill:none;stroke:#111;stroke-width:4}.state{fill:#ddd;stroke:#111;stroke-width:2}</style>
+<text x="60" y="55" font-size="28" font-weight="700">Visible-area state mapping reference</text>
+<text x="60" y="88" font-size="17">Area, not radius, is proportional to remaining time. Exercise assumption only.</text>
+<circle cx="240" cy="260" r="140" class="outer"/>
+<circle cx="240" cy="260" r="140.00" class="state"/>
+<text x="170" y="440" font-size="22" font-weight="700">100% remaining</text>
+<text x="170" y="468" font-size="17">visible R = 50.00 mm</text>
+<circle cx="600" cy="260" r="140" class="outer"/>
+<circle cx="600" cy="260" r="98.99" class="state"/>
+<text x="530" y="440" font-size="22" font-weight="700">50% remaining</text>
+<text x="530" y="468" font-size="17">visible R = 35.36 mm</text>
+<circle cx="960" cy="260" r="140" class="outer"/>
+<circle cx="960" cy="260" r="44.27" class="state"/>
+<text x="890" y="440" font-size="22" font-weight="700">10% remaining</text>
+<text x="890" y="468" font-size="17">visible R = 15.81 mm</text>
+</svg>

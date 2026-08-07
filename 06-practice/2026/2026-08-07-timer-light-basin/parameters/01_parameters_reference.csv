@@ -1,0 +1,11 @@
+﻿parameter_name,expression,comment,evidence_status
+body_diameter,118 mm,Base housing outside diameter,EXERCISE ASSUMPTION
+body_height,28 mm,Overall base height excluding diffuser crown,EXERCISE ASSUMPTION
+light_diameter,100 mm,Visible light-surface diameter,EXERCISE ASSUMPTION
+diffuser_edge_height,27 mm,Diffuser perimeter height from bottom datum,EXERCISE ASSUMPTION
+diffuser_center_height,24 mm,Diffuser center height; 3 mm below edge,EXERCISE ASSUMPTION
+wall_thickness,2 mm,Housing nominal wall thickness,EXERCISE ASSUMPTION
+diffuser_thickness,2 mm,Diffuser nominal thickness,EXERCISE ASSUMPTION
+assembly_gap,0.5 mm,Radial nominal gap between housing and diffuser,EXERCISE ASSUMPTION
+base_fillet,4 mm,External base fillet radius,EXERCISE ASSUMPTION
+mask_thickness,1 mm,Light-state mask reference thickness,EXERCISE ASSUMPTION

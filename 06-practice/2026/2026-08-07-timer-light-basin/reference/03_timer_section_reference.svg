@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,"Noto Sans CJK SC",sans-serif;fill:#111} .thin{stroke:#777;stroke-width:1.5;fill:none} .main{stroke:#111;stroke-width:3;fill:none} .dim{stroke:#444;stroke-width:1.4;fill:none;marker-start:url(#a);marker-end:url(#a)} .dash{stroke:#888;stroke-dasharray:8 6;stroke-width:1.5}</style>
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#444"/></marker></defs>
+<text x="60" y="55" font-size="28" font-weight="700">OLEANDER Practice — Timer Light Basin / Fusion 360 reference</text>
+<text x="60" y="90" font-size="17">All dimensions are exercise assumptions. Not manufacturing, optical or safety specifications.</text>
+<line x1="300" y1="405.0" x2="300" y2="685.0" class="dash"/>
+<polyline points="300.0,650.0 713.0,650.0 713.0,510.0 692.0,482.0 657.0,461.0 300.0,461.0" class="main"/>
+<polyline points="300.0,636.0 699.0,636.0 699.0,517.0 681.5,492.5 653.5,475.0 300.0,475.0" class="thin"/>
+<line x1="713.0" y1="650.0" x2="699.0" y2="636.0" class="thin"/>
+<line x1="657.0" y1="461.0" x2="653.5" y2="475.0" class="thin"/>
+<path d="M 300.0 482.0 Q 475.0 481.29999999999995 650.0 461.0" class="main"/>
+<path d="M 300.0 496.0 Q 475.0 495.29999999999995 650.0 475.0" class="thin"/>
+<line x1="650.0" y1="461.0" x2="650.0" y2="475.0" class="main"/>
+<line x1="300.0" y1="671.0" x2="713.0" y2="671.0" class="dim"/>
+<text x="466.5" y="661.0" font-size="17">R 59 mm</text>
+<line x1="762.0" y1="650.0" x2="762.0" y2="454.0" class="dim"/>
+<text x="774.0" y="552.0" font-size="17">28 mm</text>
+<line x1="300.0" y1="433.0" x2="650.0" y2="433.0" class="dim"/>
+<text x="430.0" y="423.0" font-size="17">R 50 mm</text>
+<line x1="671.0" y1="482.0" x2="671.0" y2="461.0" class="dim"/>
+<text x="683.0" y="476.5" font-size="17">3 mm</text>
+<text x="780" y="160" font-size="21" font-weight="700">Component structure</text>
+<text x="780" y="198" font-size="17" font-weight="400">01_Base_Housing</text>
+<text x="780" y="236" font-size="17" font-weight="400">02_Light_Diffuser</text>
+<text x="780" y="274" font-size="17" font-weight="400">03_Light_Mask</text>
+<text x="780" y="312" font-size="17" font-weight="400"></text>
+<text x="780" y="350" font-size="21" font-weight="700">Required checks</text>
+<text x="780" y="388" font-size="17" font-weight="400">• Fully constrained profile sketches</text>
+<text x="780" y="426" font-size="17" font-weight="400">• Timeline features named</text>
+<text x="780" y="464" font-size="17" font-weight="400">• 0.5 mm nominal radial gap</text>
+<text x="780" y="502" font-size="17" font-weight="400">• Section Analysis screenshot</text>
+<text x="780" y="540" font-size="17" font-weight="400">• Parameter stress test ±10%</text>
+<text x="780" y="578" font-size="17" font-weight="400">• No interference between components</text>
+</svg>
