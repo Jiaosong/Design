@@ -6,6 +6,7 @@ on:
       - agent/timer-light-basin-v3.3-calibration-lock
     paths:
       - 'website/practice/timer-light-basin-v3/calibration/**'
+      - 'website/practice/timer-light-basin-v3/render/**'
       - '.github/workflows/timer-v33-photography-calibration.yml'
   workflow_dispatch:
 
