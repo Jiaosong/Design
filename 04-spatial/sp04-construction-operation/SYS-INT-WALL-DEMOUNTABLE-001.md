@@ -37,6 +37,15 @@ Button-fix Type 2 official guide load is a guide, not a project allowable value.
 ### Subframe
 Record material, profile, thickness, spacing, flatness tolerance, substrate anchorage, corrosion boundary, fire boundary and interfaces with adjacent construction.
 
+## Current subframe candidate screen
+BNBM / Dragon-brand partition light-gauge steel framing is a plausible local product-family candidate because the manufacturer publicly lists partition framing in 50 / 75 / 100 / 150 series and 0.6–1.2 mm thickness range.
+
+However, the current BNBM product page still states production to **GB/T 11981-2008**. That standard was superseded in full by **GB/T 11981-2024**, effective 2025-05-01. Therefore no Dragon-brand series is treated as a locked 2026 subframe yet.
+
+Close this gap only after receiving the exact series/profile/thickness, actual manufacturing site, GB/T 11981-2024 test or conformity evidence, corrosion/mechanical data, compatible fasteners, project detail and written quotation.
+
+This is a governance example: an official brand page may prove product-family existence while still being insufficient for current project compliance.
+
 ## Required mock-ups before status can advance
 1. **Visual/tolerance mock-up** — real corner, demountable panel, fixed boundary and actual lighting; assess joints, flatness, gloss/colour, termination and service-door visibility.
 2. **Demounting/safety mock-up** — actual panel weight, subframe and screws; record installation time, removal force, repeated cycles, connector wear, noise, edge damage, relocation error and secondary retention.
@@ -60,10 +69,13 @@ Track scratches/contamination/warping/joint drift, loosening/noise/accidental re
 ## Evidence boundary
 - Button-fix Type 2 official page confirms 90° surface-mounted push-and-click use, minimum 10 mm panel thickness and a 50 kg guide load for a wall panel with four Fixes, while requiring proper screw/substrate matching and project testing for critical applications.
 - Fundermax documentation supports Max Compact Interior F-Quality as an interior panel family with wall-cladding applications and multiple fire-test documents. Non-Chinese classifications do not replace Chinese project fire evidence for the complete wall build-up.
+- GB/T 11981-2024 is the current Chinese national product standard for building light-gauge steel framing and fully replaced GB/T 11981-2008 on 2025-05-01.
 
 ## Sources
 - https://www.button-fix.com/products/button-fix-type-2
 - https://www.fundermax.com/en/
+- https://www.bnbm.com.cn/category/product.html
+- https://std.samr.gov.cn/gb/search/gbDetailed?id=25940C3CEF728A9AE06397BE0A0A525A
 
 ## Next engineering action
-Do **not** add another finish SKU. Lock the actual subframe + substrate fastener + secondary-retention solution, then execute the physical mock-up.
+Do **not** add another finish SKU. Obtain current GB/T 11981-2024 evidence for an exact subframe profile, then lock the substrate fastener + secondary-retention solution and execute the physical mock-up.
