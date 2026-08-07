@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+const execFileAsync=promisify(execFile);
+const dir=new URL('./model-parts/',import.meta.url);
+const entries=(await fs.readdir(dir)).filter(n=>n.startsWith('calibration_glb_xz.b64.part-')).sort();
+let b64='';
+for(const n of entries)b64+=await fs.readFile(new URL(n,dir),'utf8');
+const xz=new URL('./timer_visual_calibration_subset.glb.xz',import.meta.url);
+const glb=new URL('./timer_visual_calibration_subset.glb',import.meta.url);
+await fs.writeFile(xz,Buffer.from(b64,'base64'));
+await execFileAsync('xz',['-dkf',xz.pathname]);
+const stat=await fs.stat(glb);
+console.log(JSON.stringify({parts:entries.length,glbBytes:stat.size}));
