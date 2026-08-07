@@ -1,0 +1,52 @@
+name: Timer v3.3 Photography Calibration
+
+on:
+  push:
+    branches:
+      - agent/timer-light-basin-v3.3-photography
+    paths:
+      - 'website/practice/timer-light-basin-v3/calibration/**'
+      - 'website/practice/timer-light-basin-v3/render/**'
+      - '.github/workflows/timer-v33-photography-calibration.yml'
+  workflow_dispatch:
+
+jobs:
+  webgl-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install calibration dependencies
+        working-directory: website/practice/timer-light-basin-v3/calibration
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        working-directory: website/practice/timer-light-basin-v3/calibration
+        run: npx playwright install --with-deps chromium
+      - name: Start Vite calibration server
+        working-directory: website/practice/timer-light-basin-v3/calibration
+        run: |
+          npm run dev > vite.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat vite.log
+          exit 1
+      - name: Capture four WebGL gates
+        working-directory: website/practice/timer-light-basin-v3/calibration
+        run: npm run capture
+      - name: Print WebGL manifest
+        working-directory: website/practice/timer-light-basin-v3/calibration
+        run: cat artifacts/manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: timer-v33-photography-calibration
+          path: |
+            website/practice/timer-light-basin-v3/calibration/artifacts/*.png
+            website/practice/timer-light-basin-v3/calibration/artifacts/manifest.json
+            website/practice/timer-light-basin-v3/calibration/vite.log
+          if-no-files-found: error
+          retention-days: 14
