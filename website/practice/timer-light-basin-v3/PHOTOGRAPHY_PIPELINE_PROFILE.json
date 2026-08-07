@@ -1,0 +1,37 @@
+{
+  "schema": "OLEANDER_PHOTOGRAPHY_PIPELINE_v3.3",
+  "project": "Timer Light Basin",
+  "status": "DESIGN DEVELOPMENT / VISUALIZATION PIPELINE / BROWSER VISUAL REGRESSION BLOCKED",
+  "modules": {
+    "StudioEnvironment": {
+      "method": "emissive reflection cards -> PMREM + direct RectArea lights",
+      "source": "pmndrs building-dynamic-envmaps principle"
+    },
+    "DiffuserMaterial": {
+      "method": "MeshPhysicalMaterial opal baseline",
+      "status": "VISUALIZATION ONLY",
+      "next_gate": "real sample + optical test or reviewed front/back FBO transmission"
+    },
+    "ContactShadow": {
+      "method": "model silhouette capture to HalfFloat target + separable blur",
+      "resolution": {
+        "hero": 1536,
+        "material": 1024
+      }
+    },
+    "ColorPipeline": {
+      "workflow": "linear HDR -> post -> tone mapping -> sRGB",
+      "renderer_tone_mapping": "NoToneMapping"
+    },
+    "PostProcessing": {
+      "library": "postprocessing 6.39.4",
+      "framebuffer": "HalfFloatType",
+      "bloom": "restrained",
+      "tone_mapping": "AGX"
+    }
+  },
+  "inspection_layer": {
+    "state_and_exploded": "@google/model-viewer 4.1.0"
+  },
+  "evidence_boundary": "Rendering quality does not prove material optical performance, colorimetry, manufacturing, thermal, electrical or user validation."
+}

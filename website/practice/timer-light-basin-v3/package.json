@@ -1,0 +1,30 @@
+{
+  "name": "oleander-zhizuo-timer-light-basin-v3-3-web",
+  "private": true,
+  "version": "3.3.0",
+  "description": "OLEANDER／织作 Practice: Timer Light Basin v3.3 Photography Pipeline — modular studio environment, diffuser, contact shadow, HDR color and post.",
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 4173",
+    "check:js": "node --check app.js",
+    "check:render": "node --check render-pipeline.js && node --check render/StudioEnvironment.js && node --check render/DiffuserMaterial.js && node --check render/ContactShadow.js && node --check render/ColorPipeline.js && node --check render/PostProcessing.js && node --check render/PhotographyViewer.js"
+  },
+  "dependencies": {
+    "@google/model-viewer": "4.1.0",
+    "three": "0.174.0",
+    "postprocessing": "6.39.4"
+  },
+  "oleander": {
+    "system": "OLEANDER／织作",
+    "artifact_type": "PRACTICE / WEB MASTER",
+    "architecture": {
+      "B02": "PRIMARY",
+      "B04": "SUPPORTING",
+      "IP03": "SUPPORTING",
+      "IP04": "SUPPORTING",
+      "Culture": "N/A",
+      "Spatial": "N/A"
+    },
+    "evidence_status": "DESIGN DEVELOPMENT / PHOTOGRAPHY PIPELINE PROTOTYPE / VALIDATION PENDING"
+  }
+}
