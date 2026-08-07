@@ -3,9 +3,8 @@ import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUnifo
 
 RectAreaLightUniformsLib.init();
 
-const BASE = {
-  background:0xe3ddd4,
-  floor:0xe1dbd2,
+const BASE={
+  background:0xe3ddd4,floor:0xe1dbd2,
   cards:[
     {size:[7.2,1.15],pos:[0,4.8,1.4],color:0xfffbf4,energy:2.5},
     {size:[3.8,4.7],pos:[-4.6,1.8,3.1],color:0xfff8ed,energy:3.3},
@@ -16,8 +15,8 @@ const BASE = {
   direct:{key:4.0,fill:1.35,rim:1.9,hemi:0.48}
 };
 
-const PRESETS = {
-  hero: BASE,
+const PRESETS={
+  hero:BASE,
   material:{...BASE,background:0xe7e2da,floor:0xe5e0d8,direct:{key:3.7,fill:1.55,rim:2.15,hemi:0.52}},
   housing:{
     ...BASE,
@@ -64,21 +63,17 @@ function reflectionCard(scene,def){
 export function buildStudioEnvironment(renderer,mode='hero'){
   const preset=PRESETS[mode]||PRESETS.hero;
   const capture=new THREE.Scene();capture.background=new THREE.Color(0x11100e);
-  preset.cards.forEach(d=>reflectionCard(capture,d));
-  (preset.flags||[]).forEach(d=>reflectionCard(capture,d));
-  const pmrem=new THREE.PMREMGenerator(renderer);
-  const target=pmrem.fromScene(capture,0.025,0.1,100);const texture=target.texture;pmrem.dispose();
+  preset.cards.forEach(d=>reflectionCard(capture,d));(preset.flags||[]).forEach(d=>reflectionCard(capture,d));
+  const pmrem=new THREE.PMREMGenerator(renderer);const target=pmrem.fromScene(capture,0.025,0.1,100);const texture=target.texture;pmrem.dispose();
   capture.traverse(o=>{o.geometry?.dispose?.();o.material?.dispose?.();});
   return {texture,target,preset};
 }
 
 export function createCyclorama(mode='hero'){
-  const preset=PRESETS[mode]||PRESETS.hero;
-  const group=new THREE.Group();group.name='PHOTOGRAPHY_CYCLORAMA';
+  const preset=PRESETS[mode]||PRESETS.hero;const group=new THREE.Group();group.name='PHOTOGRAPHY_CYCLORAMA';
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(14,14),new THREE.MeshStandardMaterial({color:preset.floor,roughness:0.98,metalness:0}));
   floor.rotation.x=-Math.PI/2;floor.position.set(0,-0.012,1.5);floor.receiveShadow=true;group.add(floor);
-  const wall=new THREE.Mesh(new THREE.PlaneGeometry(14,9),new THREE.MeshBasicMaterial({color:preset.background,toneMapped:true}));
-  wall.position.set(0,4.45,-4.7);group.add(wall);
+  const wall=new THREE.Mesh(new THREE.PlaneGeometry(14,9),new THREE.MeshBasicMaterial({color:preset.background,toneMapped:true}));wall.position.set(0,4.45,-4.7);group.add(wall);
   return group;
 }
 
@@ -89,11 +84,10 @@ export function addStudioLights(scene,mode='hero'){
   const rimLight=new THREE.RectAreaLight(0xffffff,rim,1.0,3.8);rimLight.position.set(-1.8,2.8,-3.6);rimLight.lookAt(0,.24,0);scene.add(rimLight);
   const shadowKey=new THREE.DirectionalLight(0xfff8ef,.72);shadowKey.position.set(-2.8,4.6,3.8);shadowKey.castShadow=true;shadowKey.shadow.mapSize.set(2048,2048);
   shadowKey.shadow.camera.left=-2;shadowKey.shadow.camera.right=2;shadowKey.shadow.camera.top=2;shadowKey.shadow.camera.bottom=-2;shadowKey.shadow.camera.near=.1;shadowKey.shadow.camera.far=12;shadowKey.shadow.bias=-.0001;scene.add(shadowKey);
-  scene.add(new THREE.HemisphereLight(0xfaf3ea,0x665f56,hemi));
-  return {keyLight,fillLight,rimLight,shadowKey};
+  scene.add(new THREE.HemisphereLight(0xfaf3ea,0x665f56,hemi));return {keyLight,fillLight,rimLight,shadowKey};
 }
 
 export function applyStudioScene(scene,renderer,mode='hero'){
   const env=buildStudioEnvironment(renderer,mode);scene.environment=env.texture;scene.background=new THREE.Color(env.preset.background);
-  const cyclorama=createCyclorama(mode);scene.add(cyclorama);const lights=addSudioLights(scene,mode);return {...env,cyclorama,lights};
+  const cyclorama=createCyclorama(mode);scene.add(cyclorama);const lights=addStudioLights(scene,mode);return {...env,cyclorama,lights};
 }
