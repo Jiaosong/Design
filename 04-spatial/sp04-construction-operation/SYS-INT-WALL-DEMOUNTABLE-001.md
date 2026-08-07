@@ -1,6 +1,6 @@
 # SYS-INT-WALL-DEMOUNTABLE-001｜Demountable Compact Interior Wall System
 
-- Status: SYSTEM RFQ READY / subframe RFQ candidate identified / mock-up blocked by substrate fastening
+- Status: SYSTEM RFQ READY / subframe RFQ candidate identified / substrate fastening routed by base material / mock-up blocked by final SKU + substrate evidence
 - Layer: Spatial / SP04 Construction & Operation
 - Canonical source: Notion `SYS-INT-WALL-DEMOUNTABLE-001`
 - Verified: 2026-08-07
@@ -16,7 +16,7 @@
 
 The following remain intentionally open until current project evidence is returned:
 - final subframe SKU / actual production site / order batch;
-- substrate fastener / anchor SKU and embedment;
+- final substrate fastener / anchor SKU and embedment;
 - complete Chinese fire-performance evidence;
 - installed system price.
 
@@ -57,8 +57,46 @@ Before use, the vendor must return exact stud/track/bridging SKU and length, act
 
 Whether Q100 rather than Q75 or another section is finally selected depends on the actual Fundermax panel size/weight, support locations, wall height, stud spacing, substrate fastening, joints/corners and failure scenario.
 
-### Substrate anchorage
-This remains a system-safety blocker. Do not automatically use HST3 for every substrate. The actual wall base material and system load must determine the fastener, embedment, edge distance, spacing, installation method and inspection route.
+## Substrate fastening decision matrix｜2026-08-07
+The fastening route is selected **after** the real base material is identified. HST3, HUS4-H and HIT-HY 270 are conditional candidates, not default BOM items.
+
+### Structural concrete — cracked / non-cracked
+Candidate routes:
+- **Hilti HST3** where a wedge-anchor solution is supported by the actual concrete, loads, geometry and durability requirements.
+- **Hilti HUS4-H** as a current high-performance screw-anchor candidate for concrete/brick masonry when the specific SKU approval and design support the application.
+
+Required gate: concrete strength and cracking state, member thickness, reinforcement location, design tension/shear, exact SKU, embedment, edge distance, spacing, corrosion environment, installation procedure and inspection.
+
+`JGJ 145-2013` remains a concrete post-installed anchorage source boundary; do not extrapolate its concrete design assumptions directly to masonry.
+
+### Solid brick / solid masonry block
+Candidate routes:
+- **HUS4-H** mechanical route, if the exact masonry and SKU approval cover the base material.
+- **HIT-HY 270** chemical route, if the approved masonry system and project geometry/load make it appropriate.
+
+Do not reuse concrete capacities. Identify the masonry unit, strength, joints, edge distances and hole condition first, then use the applicable approval/design data.
+
+### Hollow brick / hollow masonry block
+First chemical-system candidate:
+- **HIT-HY 270 + approved screen sleeve + approved anchor rod**.
+
+HIT-HY 270 is only one component. The screen sleeve/rod, hole geometry, injection quantity, cleaning, temperature and cure time must be treated as one approved installation system.
+
+### AAC / lightweight masonry / existing non-structural wall / unknown base
+Status: **HOLD**.
+
+Do not approve a wall-panel safety connection merely because a catalog lists AAC or masonry. First establish base-material type, thickness, strength, voids and condition. If the existing wall cannot provide a defensible anchorage path, use an independently supported floor/soffit subframe or other project-engineered support strategy.
+
+### New required evidence before mock-up
+1. substrate photographs and material/thickness/strength evidence;
+2. anchor-point layout relative to the stud/subframe load path;
+3. design tension/shear and combinations;
+4. exact fastening SKU, approval-file version, embedment, edge distance and spacing;
+5. drilling/cleaning/torque or injection/cure procedure;
+6. project-defined field pull-out/verification route where required;
+7. single-primary-fix failure scenario showing the Safety Cord retention path and impact/swing envelope.
+
+Current interpretation: substrate fastening has advanced from **undefined** to a **base-material routing matrix**, but the final SKU remains OPEN and the physical mock-up remains HOLD.
 
 ## Written quotation boundary
 Use one comparable functional unit: **completed wall m² + representative removable-panel detail**. The RFQ must separately return:
@@ -90,7 +128,11 @@ Track panel damage/contamination/warping/joint drift, connector looseness/noise/
 - Current light-gauge-steel standard source: CLOSED (`GB/T 11981-2024`)
 - Current-standard subframe RFQ candidate: IDENTIFIED (`Shengda Q100`)
 - Final compliant subframe / producer / order batch: OPEN
-- Substrate anchorage: OPEN
+- Substrate fastening routing matrix: ESTABLISHED
+- HST3 concrete route: CONDITIONAL
+- HUS4-H concrete/masonry route: CANDIDATE
+- HIT-HY 270 masonry chemical route: CANDIDATE / SYSTEM COMPONENT
+- Final substrate fastener / anchor SKU: OPEN
 - Complete system written quotation: OPEN
 - Mock-up: BLOCKED until final subframe + substrate fastening are locked
 - G9 structure: READY / actual evidence OPEN
@@ -104,7 +146,11 @@ Track panel damage/contamination/warping/joint drift, connector looseness/noise/
 - https://www.saint-gobain.com.cn/node/18846
 - https://www.shengda-wood.com/flwj/106.html
 - https://www.shengda-wood.com/uploads/upload/20260519/d268a88d966960962144bbdb594805f0.pdf
+- https://www.hilti.cn/c/CLS_FASTENER_7135/CLS_MECHANICAL_ANCHORS_7135/r3987939
+- https://www.hilti.cn/c/CLS_FASTENER_7135/CLS_MECHANICAL_ANCHORS_7135/r12910874
+- https://www.hilti.cn/c/CLS_FASTENER_7135/CLS_CHEMICAL_ANCHORS_7135/r3360273
+- https://www.hilti.cn/c/CLS_FASTENER_7135/CLS_ANCHOR_RODS_ELEMENTS_7135/r2804
 - https://std.samr.gov.cn/gb/search/gbDetailed?id=25940C3CEF728A9AE06397BE0A0A525A
 
 ## Next engineering action
-Issue an RFQ around Shengda Q100 as the first current-standard candidate while keeping BNBM/Gyproc as alternates; obtain producer/site/batch + written quote + substrate-fastening proposal, then execute the physical mock-up including deliberate primary-fix release with Safety Cord retention.
+Use the actual project's base-material survey to choose one fastening route, then issue a matched RFQ for the **Shengda Q100 + exact substrate fastener + Button-fix/Safety Cord** assembly. Do not execute the safety mock-up until the base material, final subframe SKU and final fastening SKU are frozen.
