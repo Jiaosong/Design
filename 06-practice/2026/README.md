@@ -1,7 +1,7 @@
 # OLEANDER Practice mirror｜2026
 
 Status: PROTO / E2  
-Authority: Governance v1.0.1 when PR #8 is merged; until then repository baseline remains v1.0.0.  
+Authority: Governance v1.0.1 / ACTIVE / E2 on `main`.  
 Source date: 2026-08-06 to 2026-08-07
 
 This directory mirrors maintainable text/code artifacts from Google Drive. It does not promote an exercise, prototype, score or internal test into a real-world result.
