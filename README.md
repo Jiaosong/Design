@@ -1,13 +1,99 @@
 # OLEANDER／织作
 
-Canonical governance: `v1.0.0 / ACTIVE / E2`.
+**刘旋 / Liu Xuan — 个人设计实践与研究成果档案**  
+**Personal Design Practice & Research Archive**
 
-Four layers: Business / Culture / IP / Spatial.
-Canonical cases: C01 / C02 / C03.
+> **设计不是创造对象，而是重新组织关系。**
 
-File template:
-`OLEANDER_[Scope]_[Node]_[ObjectID-or-Deliverable]_[Role]_vMAJOR.MINOR.PATCH_[Status]_[E#]_[YYYYMMDD].[ext]`
+OLEANDER 是刘旋持续发展的个人设计与研究实践，也是作品、实验、方法与研究成果的公开索引。
 
-Existing `website/` and `oleander-skills/` are `LEGACY PATH / MIGRATION REQUIRED`; retain them during migration without expanding a second architecture.
+它不以一种固定风格覆盖所有项目，也不把品牌、产品、空间、材料或数字媒介彼此割裂。实践从具体问题出发，阅读人与文化、空间、产品、材料、信息和系统之间的关系，再通过研究、设计、原型与验证不断调整这些关系。
 
-See `00-governance/` for the authoritative map.
+OLEANDER 的长期方法可以概括为：
+
+**关系阅读 × 证据校准 × 材料转译 × 持续修订**
+
+对应的工作过程是：**读、定、译、成、验、修**。这里的“织作”不是对传统纹样的表面借用，而是一种持续组织关系、材料、证据和行动的工作方式。OLEANDER 的既有品牌研究也明确将其定义为刘旋的个人品牌视觉传播系统与长期关系型设计实践。 
+
+---
+
+## 这里展示什么
+
+这个 GitHub 仓库用于公开呈现可阅读、可追踪的个人作品与研究成果，主要包括：
+
+- **作品 / Projects**：品牌、视觉、产品、CMF、空间与建筑、数字媒介等项目；
+- **研究 / Research**：设计方法、文化与材料研究、技术调查、案例研究与参考体系；
+- **实践 / Practice**：参数化、建模、信息可视化、AI 协同设计、原型与跨媒介练习；
+- **原型 / Prototypes**：网站、交互、视觉系统、3D 与浏览器实验；
+- **过程与判断 / Process & Decisions**：被保留、修订或否决的方案，以及形成这些判断的依据。
+
+这里不是只展示“完成图”的作品集。研究过程、失败、修订、证据边界和仍待验证的问题同样属于设计成果的一部分。
+
+---
+
+## OLEANDER 的关注范围
+
+OLEANDER 目前持续研究以下方向：
+
+- 品牌与视觉识别
+- 产品设计与 CMF
+- 空间与建筑
+- 文化、地方与公共叙事
+- 网站、交互与数字体验
+- 材料、构造与制造信息
+- 数据表达与 GIS
+- AI 协同设计方法
+
+不同项目可以有不同的材料、尺度、色彩和视觉语言，但共享同一套判断基础：先理解关系，再形成设计；先区分事实与假设，再讨论结果。
+
+---
+
+## Selected Works｜代表作品
+
+### [C01｜一脉广渡](./05-cases/c01-yimai-guangdu/)
+围绕文化、地方主体与公共理解展开的设计研究。项目关注的不是单一建筑、景观或视觉包装，而是地方文化如何重新进入当代生活，以及这些关系如何被持续阅读、维护和修订。
+
+### [C02｜忘也 Daylily](./05-cases/c02-daylily/)
+独立作品集项目，研究空间、行为、停留与自主体验之间的关系。现阶段包含原型与设计研究；未执行的测试不会被描述为已验证结果。
+
+### [C03｜The Light Collection / Reno CMF](./05-cases/c03-the-light-collection/)
+围绕光、材料表面、色彩与产品制造语言展开的独立 CMF 概念研究。项目用于研究材料与视觉表达，不代表品牌委托、采用、量产或商业背书。
+
+---
+
+## Research & Practice｜研究与实践
+
+- [`01-business/`](./01-business/) — 品牌、策略、传播与设计业务研究
+- [`02-culture/`](./02-culture/) — 文化、语境、知识解释与案例研究
+- [`03-ip/`](./03-ip/) — 产品、视觉、身份、材料与数字设计研究
+- [`04-spatial/`](./04-spatial/) — 空间、建筑、构造与环境研究
+- [`05-cases/`](./05-cases/) — 当前公开案例
+- [`06-practice/`](./06-practice/) — 设计练习、实验、原型与验证记录
+- [`website/`](./website/) — 网站与交互原型
+
+这些目录共同构成 OLEANDER 的公开研究档案，而不是相互独立的品牌或项目系统。
+
+---
+
+## 如何阅读这个仓库
+
+仓库中的 **Proposal、Prototype、Test Planned、Pending、Rejected、Pass** 等状态用于说明作品处于什么阶段，而不是作为宣传性标签。
+
+因此：
+
+- 提案不会被写成已实施；
+- 原型不会被写成已生产；
+- 计划中的测试不会被写成已验证；
+- AI 生成图不会替代真实工程、材料或用户证据；
+- 被否决的方案会保留必要的研究价值，但不会继续作为当前结论。
+
+更细的来源、版本、权利和证据规则保存在 [`00-governance/`](./00-governance/)。它用于保证公开作品的表述准确，但不作为本仓库的第一阅读层。
+
+---
+
+## About OLEANDER
+
+OLEANDER 不是一个单独的 Logo 项目，也不是一种预设风格。它是一套长期形成中的个人设计实践：通过研究、关系判断、设计转译、材料与技术实验，以及持续验证，把不同尺度和媒介中的工作组织成可以被阅读、比较和修订的体系。
+
+**OLEANDER / Liu Xuan**  
+*Design, research, prototypes and ongoing practice.*
