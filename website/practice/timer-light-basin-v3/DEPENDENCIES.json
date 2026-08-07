@@ -1,0 +1,30 @@
+{
+  "schema": "OLEANDER_DEPENDENCY_REGISTER_v1",
+  "project": "Timer Light Basin v3.0 Web",
+  "updated": "2026-08-07",
+  "dependencies": [
+    {
+      "name": "@google/model-viewer",
+      "version": "4.1.0",
+      "runtime_use": "GLB/glTF interactive product presentation, camera controls, PBR rendering and poster fallback",
+      "license": "Apache-2.0",
+      "status": "PROJECT-PINNED",
+      "evidence_boundary": "Presentation layer only; does not prove CAD, DFM, optical, thermal, electrical or user validation.",
+      "upgrade_gate": "Run visual regression, model load, state switch and keyboard interaction checks before version change."
+    },
+    {
+      "name": "three",
+      "version": "0.174.0 / r174",
+      "runtime_use": "Pinned rendering dependency associated with model-viewer v4.1.0",
+      "license": "MIT",
+      "status": "PROJECT-PINNED",
+      "evidence_boundary": "Rendering engine only.",
+      "upgrade_gate": "Keep compatible with the chosen model-viewer version and check PBR/glTF regressions."
+    }
+  ],
+  "fallback": {
+    "model": "Poster render + downloadable GLB",
+    "information": "HTML/CSS/SVG remains readable if WebGL or custom element fails",
+    "replacement_path": "Three.js + GLTFLoader custom viewer or another reviewed glTF renderer"
+  }
+}
