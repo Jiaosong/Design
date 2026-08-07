@@ -1,0 +1,22 @@
+{
+  "schema": "OLEANDER_RENDER_LOCK_v1",
+  "project": "Timer Light Basin",
+  "version": "v3.3",
+  "status": "LOCKED",
+  "date": "2026-08-07",
+  "calibration_run_id": 31166364420,
+  "gates": {
+    "housing_highlight": "PASS",
+    "diffuser_volume": "PASS",
+    "metal_knob_reflection": "PASS",
+    "contact_shadow_falloff": "PASS"
+  },
+  "module_sha256": {
+    "StudioEnvironment.js": "bfefa4223f7fe19e9e7006f902dc89cbab78f11e1b47387c286f2fbb95d40140",
+    "DiffuserMaterial.js": "a30e5a8274b361a8afc4ece5fd35329062f2335d100b653ea68a5537c85a0929",
+    "ContactShadow.js": "93cecf38819be1a75989b08483b0ed88f78fe9396e7a714753ed11fac43a3eac",
+    "ColorPipeline.js": "6083758e1bc40ac7c746eb8e0914b012db085ac0955a2f3f84f4bca8fb70aa3e",
+    "PostProcessing.js": "2d54e7106033283fb17a1775cad8774ec4f3280b872e07c23abd55011ef8aea4",
+    "PhotographyViewer.js": "a10184840893eda9d888f1ef384a37dc9b4330caa49909f294a3b46d15cdaca3"
+  }
+}
