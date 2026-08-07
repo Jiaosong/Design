@@ -1,0 +1,45 @@
+{
+  "assessment_scope": "AUTO-BUILD PACKAGE BEFORE NATIVE FUSION EXECUTION",
+  "categories": {
+    "technical_correctness": {
+      "score": 20,
+      "maximum": 25
+    },
+    "file_and_structure": {
+      "score": 15,
+      "maximum": 15
+    },
+    "parameter_and_data_logic": {
+      "score": 15,
+      "maximum": 15
+    },
+    "visual_expression": {
+      "score": 12,
+      "maximum": 15
+    },
+    "check_and_revision": {
+      "score": 8,
+      "maximum": 10
+    },
+    "reproducibility": {
+      "score": 9,
+      "maximum": 10
+    },
+    "oleander_project_value": {
+      "score": 10,
+      "maximum": 10
+    }
+  },
+  "raw_score": 89,
+  "hard_gate_failures": [
+    "No native Fusion .f3d has been generated in this environment.",
+    "No Fusion-generated assembly STEP has been read back.",
+    "No native Timeline, fully-constrained sketch, Interference, Minimum Distance or Section Analysis result exists yet."
+  ],
+  "certified_score": 79,
+  "certified_pass": false,
+  "runtime_target": {
+    "minimum": 80,
+    "expected_if_all_v0.4_gates_pass": 90
+  }
+}

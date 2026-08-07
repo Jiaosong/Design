@@ -1,0 +1,9 @@
+﻿parameter,expression,design_intent
+light_radius,light_diameter / 2,visible surface radius
+opening_radius,light_radius + assembly_gap,housing opening controls radial gap
+neck_outer_radius,opening_radius + wall_thickness,neck wall is explicitly traceable
+diffuser_edge_height,body_height - 1 mm,diffuser follows housing height
+diffuser_center_height,diffuser_edge_height - basin_depth,concavity depth
+state_100_radius,light_radius,100% visible area
+state_50_radius,light_radius * sqrt(0.5),50% visible area
+state_10_radius,light_radius * sqrt(0.1),10% visible area

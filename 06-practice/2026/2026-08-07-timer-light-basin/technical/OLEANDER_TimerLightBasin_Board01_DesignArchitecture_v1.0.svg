@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<title>OLEANDER Timer Light Basin - Editable Technical Board 01</title>
+<defs>
+  <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8afa2"/><stop offset="0.55" stop-color="#8d857a"/><stop offset="1" stop-color="#5e5a54"/></linearGradient>
+  <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ddd7cf"/><stop offset="0.45" stop-color="#938c83"/><stop offset="1" stop-color="#56524d"/></linearGradient>
+  <radialGradient id="gLight" cx="50%" cy="44%" r="58%"><stop offset="0" stop-color="#fffdf6"/><stop offset="0.58" stop-color="#f8e7c8"/><stop offset="0.87" stop-color="#e8c89a"/><stop offset="1" stop-color="#b99a6f"/></radialGradient>
+  <radialGradient id="gLightDim" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#fff9e8"/><stop offset="0.6" stop-color="#f0d19f"/><stop offset="1" stop-color="#8f7657"/></radialGradient>
+  <linearGradient id="gDiffuser" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="1" stop-color="#cfd0cf" stop-opacity="0.72"/></linearGradient>
+  <linearGradient id="gDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3e3c38"/><stop offset="1" stop-color="#20201e"/></linearGradient>
+  <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><line x1="0" y1="0" x2="0" y2="8" stroke="#77736b" stroke-width="1"/></pattern>
+  <pattern id="fineHatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#9d998f" stroke-width="0.8"/></pattern>
+  <marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#4b4944"/></marker>
+  <marker id="arrowW" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#d9d6ce"/></marker>
+  <style>
+    text{font-family:Noto Sans CJK SC, Inter, Arial, sans-serif;}
+    .t{fill:#f7f6f2;} .ti{fill:#171715;} .m{fill:#aaa69c;}
+    .cap{font-size:13px;letter-spacing:1.2px;font-weight:600;}
+    .small{font-size:12px;} .body{font-size:15px;} .sub{font-size:18px;font-weight:600;}
+    .h1{font-size:42px;font-weight:700;letter-spacing:-0.5px;} .h2{font-size:28px;font-weight:700;}
+    .line{stroke:#5d5a53;stroke-width:1;fill:none;} .lineW{stroke:#d3d0c8;stroke-width:1;fill:none;}
+    .dim{stroke:#4b4944;stroke-width:1;fill:none;marker-start:url(#arrow);marker-end:url(#arrow);}
+    .dimW{stroke:#d9d6ce;stroke-width:1;fill:none;marker-start:url(#arrowW);marker-end:url(#arrowW);}
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="#171715"/>
+<line x1="520" y1="0" x2="520" y2="1200" stroke="#4b4944" stroke-width="1"/>
+<line x1="1040" y1="0" x2="1040" y2="680" stroke="#4b4944" stroke-width="1"/>
+<line x1="1420" y1="0" x2="1420" y2="680" stroke="#4b4944" stroke-width="1"/>
+<line x1="0" y1="680" x2="1800" y2="680" stroke="#4b4944" stroke-width="1"/>
+<line x1="0" y1="1015" x2="1800" y2="1015" stroke="#4b4944" stroke-width="1"/>
+<text x="38" y="62" font-size="42" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Timer Light Basin 01</text>
+<text x="38" y="103" font-size="30" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">状态先于造型</text>
+<text x="38" y="136" font-size="12" fill="#aaa69c" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="1.3">STATE BEFORE FORM / SOURCE-GROUNDED VECTOR STUDY</text>
+<text x="38" y="182" font-size="15" fill="#d9d5cd" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="38" dy="0">以发光面积比例表达剩余时间；</tspan>
+<tspan x="38" dy="21.75">使用真实组件尺寸、真实标准索引与可编辑矢量几何。</tspan>
+<tspan x="38" dy="21.75">不把设计输入、计算结果或待测假设写成合规结论。</tspan>
+</text>
+<rect x="38" y="252" width="170.0" height="24" rx="12" fill="#6cc17a" stroke="none" stroke-width="1"/>
+<text x="49" y="270" font-size="11" fill="#111" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">VERIFIED SOURCE DATA</text>
+<rect x="38" y="284" width="162.6" height="24" rx="12" fill="#6eb1d7" stroke="none" stroke-width="1"/>
+<text x="49" y="302" font-size="11" fill="#111" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DERIVED CALCULATION</text>
+<rect x="38" y="316" width="118.2" height="24" rx="12" fill="#e2aa53" stroke="none" stroke-width="1"/>
+<text x="49" y="334" font-size="11" fill="#111" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN TARGET</text>
+<rect x="38" y="348" width="118.2" height="24" rx="12" fill="#d7695e" stroke="none" stroke-width="1"/>
+<text x="49" y="366" font-size="11" fill="#111" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">TEST REQUIRED</text>
+<ellipse cx="268" cy="569.6302" rx="200.736" ry="24.9444" fill="#050504" opacity="0.55"/>
+<path d="M 58.900000000000006,474.994 C 58.900000000000006,542.152 92.35600000000002,585.94 268,590.737 C 443.644,585.94 477.1,542.152 477.1,474.994 L 477.1,516.8632 C 468.736,568.6708 385.096,578.2648 268,581.143 C 150.904,578.2648 67.26400000000001,568.6708 58.900000000000006,516.8632 Z" fill="url(#gBody)"/>
+<ellipse cx="268" cy="474.994" rx="209.1" ry="75.03" fill="url(#gRim)"/>
+<ellipse cx="268" cy="473.764" rx="181.917" ry="60.774300000000004" fill="#3a3732"/>
+<ellipse cx="268" cy="472.53400000000005" rx="169.371" ry="56.2725" fill="url(#gLight)"/>
+<ellipse cx="268" cy="472.53400000000005" rx="169.371" ry="56.2725" fill="none" stroke="#f5efe2" stroke-width="2.706" opacity="0.75"/>
+<path d="M 125.81199999999998,440.4802 C 201.088,411.96880000000004 322.366,411.96880000000004 393.46,444.982" stroke="#fff" stroke-width="3.69" opacity="0.18" fill="none"/>
+<circle cx="464.554" cy="542.767" r="12.3" fill="#3b3936" stroke="#b6afa5" stroke-width="1.722"/>
+<line x1="464.554" y1="535.3870000000001" x2="464.554" y2="550.147" stroke="#d6d1c7" stroke-width="1.845"/>
+<text x="38" y="644" font-size="11" fill="#aaa69c" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.9">OLEANDER / DIGITAL SKILLS RUN 01 / VECTOR TECHNICAL OUTPUT v1.0</text>
+<text x="548" y="36" font-size="18" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">三种时间状态</text>
+<text x="676" y="36" font-size="13" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">THREE TIME STATES</text>
+<ellipse cx="690" cy="177.54919999999998" rx="94.65599999999999" ry="11.7624" fill="#050504" opacity="0.55"/>
+<path d="M 591.4,132.924 C 591.4,164.592 607.176,185.24 690,187.502 C 772.824,185.24 788.6,164.592 788.6,132.924 L 788.6,152.6672 C 784.656,177.0968 745.216,181.6208 690,182.978 C 634.784,181.6208 595.344,177.0968 591.4,152.6672 Z" fill="url(#gBody)"/>
+<ellipse cx="690" cy="132.924" rx="98.6" ry="35.379999999999995" fill="url(#gRim)"/>
+<ellipse cx="690" cy="132.344" rx="85.782" ry="28.657799999999998" fill="#3a3732"/>
+<ellipse cx="690" cy="131.764" rx="79.866" ry="26.534999999999997" fill="url(#gLight)"/>
+<ellipse cx="690" cy="131.764" rx="79.866" ry="26.534999999999997" fill="none" stroke="#f5efe2" stroke-width="1.276" opacity="0.75"/>
+<path d="M 622.952,116.64920000000001 C 658.448,103.2048 715.636,103.2048 749.16,118.772" stroke="#fff" stroke-width="1.7399999999999998" opacity="0.18" fill="none"/>
+<text x="835" y="128" font-size="25" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">100%</text>
+<text x="835" y="158" font-size="15" fill="#f7f6f2" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">充足</text>
+<text x="835" y="183" font-size="12" fill="#6eb1d7" font-weight="600" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = R√1.0</text>
+<ellipse cx="690" cy="387.5492" rx="94.65599999999999" ry="11.7624" fill="#050504" opacity="0.55"/>
+<path d="M 591.4,342.924 C 591.4,374.592 607.176,395.24 690,397.502 C 772.824,395.24 788.6,374.592 788.6,342.924 L 788.6,362.6672 C 784.656,387.0968 745.216,391.6208 690,392.978 C 634.784,391.6208 595.344,387.0968 591.4,362.6672 Z" fill="url(#gBody)"/>
+<ellipse cx="690" cy="342.924" rx="98.6" ry="35.379999999999995" fill="url(#gRim)"/>
+<ellipse cx="690" cy="342.344" rx="85.782" ry="28.657799999999998" fill="#3a3732"/>
+<ellipse cx="690" cy="341.76399999999995" rx="56.473790186244806" ry="18.763078438785037" fill="url(#gLight)"/>
+<ellipse cx="690" cy="341.76399999999995" rx="79.866" ry="26.534999999999997" fill="none" stroke="#f5efe2" stroke-width="1.276" opacity="0.75"/>
+<path d="M 622.952,326.64919999999995 C 658.448,313.2048 715.636,313.2048 749.16,328.772" stroke="#fff" stroke-width="1.7399999999999998" opacity="0.18" fill="none"/>
+<text x="835" y="338" font-size="25" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">50%</text>
+<text x="835" y="368" font-size="15" fill="#f7f6f2" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">过半</text>
+<text x="835" y="393" font-size="12" fill="#6eb1d7" font-weight="600" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = R√0.5</text>
+<ellipse cx="690" cy="597.5492" rx="94.65599999999999" ry="11.7624" fill="#050504" opacity="0.55"/>
+<path d="M 591.4,552.924 C 591.4,584.592 607.176,605.24 690,607.502 C 772.824,605.24 788.6,584.592 788.6,552.924 L 788.6,572.6672 C 784.656,597.0968 745.216,601.6208 690,602.978 C 634.784,601.6208 595.344,597.0968 591.4,572.6672 Z" fill="url(#gBody)"/>
+<ellipse cx="690" cy="552.924" rx="98.6" ry="35.379999999999995" fill="url(#gRim)"/>
+<ellipse cx="690" cy="552.3439999999999" rx="85.782" ry="28.657799999999998" fill="#3a3732"/>
+<ellipse cx="690" cy="551.764" rx="25.25584676070078" ry="8.391103771256793" fill="url(#gLight)"/>
+<ellipse cx="690" cy="551.764" rx="79.866" ry="26.534999999999997" fill="none" stroke="#f5efe2" stroke-width="1.276" opacity="0.75"/>
+<path d="M 622.952,536.6492 C 658.448,523.2048 715.636,523.2048 749.16,538.7719999999999" stroke="#fff" stroke-width="1.7399999999999998" opacity="0.18" fill="none"/>
+<text x="835" y="548" font-size="25" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">10%</text>
+<text x="835" y="578" font-size="15" fill="#f7f6f2" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">临近结束</text>
+<text x="835" y="603" font-size="12" fill="#6eb1d7" font-weight="600" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = R√0.1</text>
+<rect x="1041" y="0" width="379" height="680" rx="0" fill="#f1f0ec" stroke="none" stroke-width="1"/>
+<text x="1065" y="36" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">中心剖面</text>
+<text x="1155" y="36" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">CENTRAL SECTION / mm</text>
+<polygon points="1270.0,467.0 1420.45,467.0 1420.45,267.0 1410.25,235.0 1403.875,211.0 1398.775,211.0 1398.775,251.0 1410.25,275.0 1415.35,451.0 1270.0,451.0 1270.0,451.0 1124.65,451.0 1129.75,275.0 1141.225,251.0 1141.225,211.0 1136.125,211.0 1129.75,235.0 1119.55,267.0 1119.55,467.0 1270.0,467.0" fill="url(#hatch)" stroke="#33312d" stroke-width="1.2"/>
+<polygon points="1270.0,259.0 1275.1,258.9616 1280.2,258.8464 1285.3,258.6544 1290.4,258.3856 1295.5,258.03999999999996 1300.6,257.61760000000004 1305.7,257.1184 1310.8,256.5424 1315.9,255.8896 1321.0,255.16 1326.1,254.3536 1331.2,253.4704 1336.3,252.5104 1341.4,251.4736 1346.5,250.36 1351.6,249.1696 1356.7,247.9024 1361.8,246.5584 1366.9,245.1376 1372.0,243.64 1377.1,242.0656 1382.2,240.4144 1387.3,238.6864 1392.4,236.8816 1397.5,235.0 1397.5,251.0 1392.4,252.8816 1387.3,254.6864 1382.2,256.4144 1377.1,258.0656 1372.0,259.64 1366.9,261.1376 1361.8,262.5584 1356.7,263.9024 1351.6,265.1696 1346.5,266.36 1341.4,267.47360000000003 1336.3,268.5104 1331.2,269.47040000000004 1326.1,270.35360000000003 1321.0,271.15999999999997 1315.9,271.8896 1310.8,272.5424 1305.7,273.1184 1300.6,273.61760000000004 1295.5,274.03999999999996 1290.4,274.3856 1285.3,274.6544 1280.2,274.8464 1275.1,274.9616 1270.0,275.0 1270.0,275.0 1264.9,274.9616 1259.8,274.8464 1254.7,274.6544 1249.6,274.3856 1244.5,274.03999999999996 1239.4,273.61760000000004 1234.3,273.1184 1229.2,272.5424 1224.1,271.8896 1219.0,271.15999999999997 1213.9,270.35360000000003 1208.8,269.47040000000004 1203.7,268.5104 1198.6,267.47360000000003 1193.5,266.36 1188.4,265.1696 1183.3,263.9024 1178.2,262.5584 1173.1,261.1376 1168.0,259.64 1162.9,258.0656 1157.8,256.4144 1152.7,254.6864 1147.6,252.8816 1142.5,251.0 1142.5,235.0 1147.6,236.8816 1152.7,238.6864 1157.8,240.4144 1162.9,242.0656 1168.0,243.64 1173.1,245.1376 1178.2,246.5584 1183.3,247.9024 1188.4,249.1696 1193.5,250.36 1198.6,251.4736 1203.7,252.5104 1208.8,253.4704 1213.9,254.3536 1219.0,255.16 1224.1,255.8896 1229.2,256.5424 1234.3,257.1184 1239.4,257.61760000000004 1244.5,258.03999999999996 1249.6,258.3856 1254.7,258.6544 1259.8,258.8464 1264.9,258.9616 1270.0,259.0" fill="url(#gDiffuser)" stroke="#5a5751" stroke-width="1.1"/>
+<rect x="1186.4875" y="323.0" width="16.957499999999982" height="26.0" rx="1" fill="#caa45d" stroke="#6d5530" stroke-width="1"/>
+<rect x="1336.555" y="323.0" width="16.957499999999982" height="26.0" rx="1" fill="#caa45d" stroke="#6d5530" stroke-width="1"/>
+<rect x="1243.225" y="387.0" width="53.55" height="17.6" rx="1" fill="#397a64" stroke="#194c3e" stroke-width="1"/>
+<line x1="1270.0" y1="475.0" x2="1270.0" y2="187.0" stroke="#99958c" stroke-width="1" stroke-dasharray="5 4"/>
+<line x1="1119.55" y1="187.0" x2="1420.45" y2="187.0" class="dim"/>
+<text x="1270.0" y="179.0" font-size="11" fill="#171715" font-weight="700" text-anchor="middle" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø118 DESIGN TARGET</text>
+<line x1="1142.5" y1="204.60000000000002" x2="1397.5" y2="204.60000000000002" class="dim"/>
+<text x="1270.0" y="196.60000000000002" font-size="11" fill="#171715" font-weight="700" text-anchor="middle" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø100 APERTURE</text>
+<line x1="1440.85" y1="467.0" x2="1440.85" y2="211.0" class="dim"/>
+<text x="1455.85" y="339.0" font-size="12" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">32</text>
+<text x="1070" y="506" font-size="12" fill="#6b6861" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="1">COMPONENT ENVELOPES</text>
+<text x="1070" y="536" font-size="12" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">RGBW LED ring</text>
+<text x="1280" y="536" font-size="12" fill="#171715" font-weight="700" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø65.5 × 3.25</text>
+<circle cx="1297" cy="532" r="5" fill="#6cc17a"/>
+<text x="1309" y="536" font-size="10" fill="#6b6861" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE [1]</text>
+<text x="1070" y="565" font-size="12" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">XIAO RP2040</text>
+<text x="1280" y="565" font-size="12" fill="#171715" font-weight="700" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">21 × 17.8</text>
+<circle cx="1297" cy="561" r="5" fill="#6cc17a"/>
+<text x="1309" y="565" font-size="10" fill="#6b6861" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE [3]</text>
+<text x="1070" y="594" font-size="12" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Diffuser</text>
+<text x="1280" y="594" font-size="12" fill="#171715" font-weight="700" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">2.0 thick</text>
+<circle cx="1297" cy="590" r="5" fill="#e2aa53"/>
+<text x="1309" y="594" font-size="10" fill="#6b6861" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN TARGET</text>
+<text x="1070" y="623" font-size="12" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Radial gap</text>
+<text x="1280" y="623" font-size="12" fill="#171715" font-weight="700" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">0.50</text>
+<circle cx="1297" cy="619" r="5" fill="#e2aa53"/>
+<text x="1309" y="623" font-size="10" fill="#6b6861" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">CAD TARGET</text>
+<text x="1444" y="36" font-size="18" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">爆炸结构</text>
+<text x="1534" y="36" font-size="13" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">EXPLODED ARCHITECTURE</text>
+<ellipse cx="1505" cy="110" rx="92" ry="26" fill="#4e4c47" stroke="#969189"/>
+<circle cx="1505" cy="110" r="8" fill="#1f1f1d"/>
+<line x1="1583" y1="110" x2="1605" y2="110" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="110" r="5" fill="#e2aa53"/>
+<text x="1617" y="107" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">STATE MASK</text>
+<text x="1617" y="125" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN TARGET</text>
+<ellipse cx="1505" cy="190" rx="92" ry="28" fill="url(#gDiffuser)" stroke="#d8d4ca"/>
+<line x1="1583" y1="190" x2="1605" y2="190" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="190" r="5" fill="#6cc17a"/>
+<text x="1617" y="187" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">PLEXIGLAS LED / 2 mm</text>
+<text x="1617" y="205" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE FAMILY [5]</text>
+<ellipse cx="1505" cy="285" rx="82" ry="24" fill="#c8c3b9" stroke="#7e796f"/>
+<ellipse cx="1505" cy="285" rx="56" ry="15" fill="#47443f"/>
+<line x1="1583" y1="285" x2="1605" y2="285" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="285" r="5" fill="#e2aa53"/>
+<text x="1617" y="282" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">LIGHT WELL</text>
+<text x="1617" y="300" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN TARGET</text>
+<ellipse cx="1505" cy="380" rx="70" ry="20" fill="#22553f" stroke="#9b8a5d" stroke-width="3"/>
+<ellipse cx="1505" cy="380" rx="55" ry="14" fill="#171715"/>
+<circle cx="1579.0" cy="380.0" r="3.5" fill="#f0d995"/>
+<circle cx="1576.5" cy="385.2" r="3.5" fill="#f0d995"/>
+<circle cx="1569.1" cy="390.0" r="3.5" fill="#f0d995"/>
+<circle cx="1557.3" cy="394.1" r="3.5" fill="#f0d995"/>
+<circle cx="1542.0" cy="397.3" r="3.5" fill="#f0d995"/>
+<circle cx="1524.2" cy="399.3" r="3.5" fill="#f0d995"/>
+<circle cx="1505.0" cy="400.0" r="3.5" fill="#f0d995"/>
+<circle cx="1485.8" cy="399.3" r="3.5" fill="#f0d995"/>
+<circle cx="1468.0" cy="397.3" r="3.5" fill="#f0d995"/>
+<circle cx="1452.7" cy="394.1" r="3.5" fill="#f0d995"/>
+<circle cx="1440.9" cy="390.0" r="3.5" fill="#f0d995"/>
+<circle cx="1433.5" cy="385.2" r="3.5" fill="#f0d995"/>
+<circle cx="1431.0" cy="380.0" r="3.5" fill="#f0d995"/>
+<circle cx="1433.5" cy="374.8" r="3.5" fill="#f0d995"/>
+<circle cx="1440.9" cy="370.0" r="3.5" fill="#f0d995"/>
+<circle cx="1452.7" cy="365.9" r="3.5" fill="#f0d995"/>
+<circle cx="1468.0" cy="362.7" r="3.5" fill="#f0d995"/>
+<circle cx="1485.8" cy="360.7" r="3.5" fill="#f0d995"/>
+<circle cx="1505.0" cy="360.0" r="3.5" fill="#f0d995"/>
+<circle cx="1524.2" cy="360.7" r="3.5" fill="#f0d995"/>
+<circle cx="1542.0" cy="362.7" r="3.5" fill="#f0d995"/>
+<circle cx="1557.3" cy="365.9" r="3.5" fill="#f0d995"/>
+<circle cx="1569.1" cy="370.0" r="3.5" fill="#f0d995"/>
+<circle cx="1576.5" cy="374.8" r="3.5" fill="#f0d995"/>
+<line x1="1583" y1="380" x2="1605" y2="380" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="380" r="5" fill="#6cc17a"/>
+<text x="1617" y="377" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">RGBW 2861 / Ø65.5</text>
+<text x="1617" y="395" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE [1]</text>
+<rect x="1465" y="455" width="80" height="30" rx="5" fill="#2d7e67" stroke="#9fd0be" stroke-width="1"/>
+<rect x="1494" y="465" width="22" height="10" rx="2" fill="#b8c5c1" stroke="none" stroke-width="1"/>
+<line x1="1583" y1="470" x2="1605" y2="470" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="470" r="5" fill="#6cc17a"/>
+<text x="1617" y="467" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">XIAO / 21×17.8</text>
+<text x="1617" y="485" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE [3]</text>
+<ellipse cx="1505" cy="555" rx="108" ry="32" fill="url(#gRim)"/>
+<path d="M 1397,555 L 1397,593 C 1405,623 1605,623 1613,593 L 1613,555 C 1569,593 1441,593 1397,555 Z" fill="url(#gBody)"/>
+<line x1="1583" y1="555" x2="1605" y2="555" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="555" r="5" fill="#e2aa53"/>
+<text x="1617" y="552" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">BASE / Ø118×32</text>
+<text x="1617" y="570" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN TARGET</text>
+<circle cx="1625" cy="635" r="16" fill="#6f6a63" stroke="#c7c0b5"/>
+<line x1="1583" y1="635" x2="1605" y2="635" stroke="#817d75" stroke-width="1"/>
+<circle cx="1605" cy="635" r="5" fill="#6cc17a"/>
+<text x="1617" y="632" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">PEC11R / Ø12</text>
+<text x="1617" y="650" font-size="9" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE [4]</text>
+<text x="28" y="714" font-size="18" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">关键几何</text>
+<text x="118" y="714" font-size="13" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">KEY DESIGN TARGETS</text>
+<text x="28" y="746" font-size="10" fill="#aaa69c" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.6">PARAMETER</text>
+<text x="176" y="746" font-size="10" fill="#aaa69c" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.6">EXPRESSION / BASIS</text>
+<text x="385" y="746" font-size="10" fill="#aaa69c" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.6">VALUE</text>
+<text x="485" y="746" font-size="10" fill="#aaa69c" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.6">STATUS</text>
+<rect x="20" y="756" width="490" height="26" rx="0" fill="#232220" stroke="none" stroke-width="1"/>
+<text x="28" y="774" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">body_diameter</text>
+<text x="176" y="774" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">component envelope + bezel</text>
+<text x="385" y="774" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">118 mm</text>
+<text x="485" y="774" font-size="11" fill="#e2aa53" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN</text>
+<text x="28" y="803" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">body_height</text>
+<text x="176" y="803" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">stack + air volume</text>
+<text x="385" y="803" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">32 mm</text>
+<text x="485" y="803" font-size="11" fill="#e2aa53" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN</text>
+<rect x="20" y="814" width="490" height="26" rx="0" fill="#232220" stroke="none" stroke-width="1"/>
+<text x="28" y="832" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">light_aperture</text>
+<text x="176" y="832" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">visual field</text>
+<text x="385" y="832" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">100 mm</text>
+<text x="485" y="832" font-size="11" fill="#e2aa53" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN</text>
+<text x="28" y="861" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">diffuser_depth</text>
+<text x="176" y="861" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">edge - centre</text>
+<text x="385" y="861" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">3 mm</text>
+<text x="485" y="861" font-size="11" fill="#e2aa53" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN</text>
+<rect x="20" y="872" width="490" height="26" rx="0" fill="#232220" stroke="none" stroke-width="1"/>
+<text x="28" y="890" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">assembly_gap</text>
+<text x="176" y="890" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">radial CAD target</text>
+<text x="385" y="890" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">0.50 mm</text>
+<text x="485" y="890" font-size="11" fill="#e2aa53" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DESIGN</text>
+<text x="28" y="919" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">LED_ring_OD</text>
+<text x="176" y="919" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Adafruit 2861</text>
+<text x="385" y="919" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">65.5 mm</text>
+<text x="485" y="919" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE</text>
+<rect x="20" y="930" width="490" height="26" rx="0" fill="#232220" stroke="none" stroke-width="1"/>
+<text x="28" y="948" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">controller</text>
+<text x="176" y="948" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Seeed XIAO RP2040</text>
+<text x="385" y="948" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">21×17.8 mm</text>
+<text x="485" y="948" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE</text>
+<text x="28" y="977" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">encoder_body</text>
+<text x="176" y="977" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Bourns PEC11R</text>
+<text x="385" y="977" font-size="11" fill="#f7f6f2" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø12 mm</text>
+<text x="485" y="977" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE</text>
+<text x="548" y="714" font-size="18" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">状态映射</text>
+<text x="638" y="714" font-size="13" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">AREA-PROPORTIONAL MAPPING</text>
+<text x="548" y="752" font-size="22" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">A ∝ t  →  r = R√t</text>
+<circle cx="610" cy="835" r="48" fill="#272624" stroke="#aaa49b" stroke-width="2"/>
+<circle cx="610" cy="835" r="42.24" fill="url(#gLight)"/>
+<circle cx="610" cy="835" r="42.24" fill="none" stroke="#f6ead6" stroke-width="1" opacity="0.5"/>
+<text x="610" y="905" font-size="14" fill="#f7f6f2" font-weight="700" text-anchor="middle" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">100%</text>
+<text x="610" y="927" font-size="10" fill="#6eb1d7" font-weight="600" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = 50.000 mm</text>
+<circle cx="755" cy="835" r="48" fill="#272624" stroke="#aaa49b" stroke-width="2"/>
+<circle cx="755" cy="835" r="29.86819043731977" fill="url(#gLight)"/>
+<circle cx="755" cy="835" r="42.24" fill="none" stroke="#f6ead6" stroke-width="1" opacity="0.5"/>
+<text x="755" y="905" font-size="14" fill="#f7f6f2" font-weight="700" text-anchor="middle" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">50%</text>
+<text x="755" y="927" font-size="10" fill="#6eb1d7" font-weight="600" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = 35.355 mm</text>
+<circle cx="900" cy="835" r="48" fill="#272624" stroke="#aaa49b" stroke-width="2"/>
+<circle cx="900" cy="835" r="13.357460836551235" fill="url(#gLight)"/>
+<circle cx="900" cy="835" r="42.24" fill="none" stroke="#f6ead6" stroke-width="1" opacity="0.5"/>
+<text x="900" y="905" font-size="14" fill="#f7f6f2" font-weight="700" text-anchor="middle" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">10%</text>
+<text x="900" y="927" font-size="10" fill="#6eb1d7" font-weight="600" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">r = 15.811 mm</text>
+<text x="548" y="965" font-size="11" fill="#aaa69c" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="548" dy="0">公式为数学计算；光学可读性、均匀度与眩光仍需实体样机测试。</tspan>
+</text>
+<text x="1048" y="714" font-size="18" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">电气架构</text>
+<text x="1138" y="714" font-size="13" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE-GROUNDED POWER PATH</text>
+<rect x="1055" y="768" width="150" height="72" rx="8" fill="#262522" stroke="#e2aa53" stroke-width="1.5"/>
+<text x="1069" y="797" font-size="13" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">USB-C 5 V</text>
+<text x="1069" y="820" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">3 A design target</text>
+<rect x="1242" y="768" width="150" height="72" rx="8" fill="#262522" stroke="#6eb1d7" stroke-width="1.5"/>
+<text x="1256" y="797" font-size="13" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">5 V rail</text>
+<text x="1256" y="820" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">direct to LED ring</text>
+<rect x="1429" y="768" width="150" height="72" rx="8" fill="#262522" stroke="#6cc17a" stroke-width="1.5"/>
+<text x="1443" y="797" font-size="13" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">RGBW ring</text>
+<text x="1443" y="820" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">24 pixels / 3000 K</text>
+<rect x="1242" y="880" width="150" height="72" rx="8" fill="#262522" stroke="#6cc17a" stroke-width="1.5"/>
+<text x="1256" y="909" font-size="13" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">XIAO RP2040</text>
+<text x="1256" y="932" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">control branch</text>
+<rect x="1429" y="880" width="150" height="72" rx="8" fill="#262522" stroke="#6cc17a" stroke-width="1.5"/>
+<text x="1443" y="909" font-size="13" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">PEC11R</text>
+<text x="1443" y="932" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">12-24 PPR</text>
+<line x1="1205" y1="804" x2="1242" y2="804" stroke="#6eb1d7" stroke-width="2"/>
+<line x1="1392" y1="804" x2="1429" y2="804" stroke="#6eb1d7" stroke-width="2"/>
+<line x1="1317" y1="840" x2="1317" y2="880" stroke="#6eb1d7" stroke-width="2"/>
+<line x1="1392" y1="916" x2="1429" y2="916" stroke="#6eb1d7" stroke-width="2"/>
+<text x="1055" y="985" font-size="11" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Worst-case planning: 24 × 80 mA = 1.92 A @ 5 V (Adafruit rule of thumb).</text>
+<text x="1055" y="1005" font-size="10" fill="#aaa69c" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">The 5 V rail must not be routed through the microcontroller board. Actual draw must be measured.</text>
+<text x="28" y="1057" font-size="11" fill="#aaa69c" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="1">EVIDENCE KEY</text>
+<circle cx="33" cy="1084" r="5" fill="#6cc17a"/>
+<text x="45" y="1088" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">sourced manufacturer / standards data</text>
+<circle cx="348" cy="1084" r="5" fill="#6eb1d7"/>
+<text x="360" y="1088" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">calculated from sourced data</text>
+<circle cx="663" cy="1084" r="5" fill="#e2aa53"/>
+<text x="675" y="1088" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">OLEANDER design target</text>
+<circle cx="978" cy="1084" r="5" fill="#d7695e"/>
+<text x="990" y="1088" font-size="10" fill="#aaa69c" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">physical or laboratory test required</text>
+<text x="28" y="1136" font-size="12" fill="#f7f6f2" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Deliverable: editable SVG + vector PDF + DXF section + BOM/source CSV. No product compliance or optical performance is claimed.</text>
+<text x="1770" y="1168" font-size="11" fill="#aaa69c" font-weight="600" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">BOARD 01 / 02</text>
+</svg>

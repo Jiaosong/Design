@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<title>OLEANDER Timer Light Basin - Evidence and Standards Board 02</title>
+<defs>
+  <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8afa2"/><stop offset="0.55" stop-color="#8d857a"/><stop offset="1" stop-color="#5e5a54"/></linearGradient>
+  <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ddd7cf"/><stop offset="0.45" stop-color="#938c83"/><stop offset="1" stop-color="#56524d"/></linearGradient>
+  <radialGradient id="gLight" cx="50%" cy="44%" r="58%"><stop offset="0" stop-color="#fffdf6"/><stop offset="0.58" stop-color="#f8e7c8"/><stop offset="0.87" stop-color="#e8c89a"/><stop offset="1" stop-color="#b99a6f"/></radialGradient>
+  <radialGradient id="gLightDim" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#fff9e8"/><stop offset="0.6" stop-color="#f0d19f"/><stop offset="1" stop-color="#8f7657"/></radialGradient>
+  <linearGradient id="gDiffuser" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="1" stop-color="#cfd0cf" stop-opacity="0.72"/></linearGradient>
+  <linearGradient id="gDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3e3c38"/><stop offset="1" stop-color="#20201e"/></linearGradient>
+  <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><line x1="0" y1="0" x2="0" y2="8" stroke="#77736b" stroke-width="1"/></pattern>
+  <pattern id="fineHatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#9d998f" stroke-width="0.8"/></pattern>
+  <marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#4b4944"/></marker>
+  <marker id="arrowW" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#d9d6ce"/></marker>
+  <style>
+    text{font-family:Noto Sans CJK SC, Inter, Arial, sans-serif;}
+    .t{fill:#f7f6f2;} .ti{fill:#171715;} .m{fill:#aaa69c;}
+    .cap{font-size:13px;letter-spacing:1.2px;font-weight:600;}
+    .small{font-size:12px;} .body{font-size:15px;} .sub{font-size:18px;font-weight:600;}
+    .h1{font-size:42px;font-weight:700;letter-spacing:-0.5px;} .h2{font-size:28px;font-weight:700;}
+    .line{stroke:#5d5a53;stroke-width:1;fill:none;} .lineW{stroke:#d3d0c8;stroke-width:1;fill:none;}
+    .dim{stroke:#4b4944;stroke-width:1;fill:none;marker-start:url(#arrow);marker-end:url(#arrow);}
+    .dimW{stroke:#d9d6ce;stroke-width:1;fill:none;marker-start:url(#arrowW);marker-end:url(#arrowW);}
+  </style>
+</defs>
+<rect width="100%" height="100%" fill="#f1f0ec"/>
+<rect x="0" y="0" width="1800" height="138" rx="0" fill="#171715" stroke="none" stroke-width="1"/>
+<text x="38" y="58" font-size="35" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Timer Light Basin 01</text>
+<text x="38" y="96" font-size="16" fill="#aaa69c" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="1.0">真实组件、计算链与标准门槛 / EVIDENCE &amp; STANDARDS</text>
+<rect x="1425" y="36" width="162.6" height="24" rx="12" fill="#d7695e" stroke="none" stroke-width="1"/>
+<text x="1436" y="54" font-size="11" fill="#111" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">NO COMPLIANCE CLAIM</text>
+<text x="35" y="182" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">真实组件清单</text>
+<text x="163" y="182" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE-GROUNDED BOM</text>
+<rect x="28" y="200" width="1030" height="420" rx="8" fill="#ffffff" stroke="#cfccc4" stroke-width="1"/>
+<text x="35" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">ID / PART</text>
+<text x="220" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">ROLE</text>
+<text x="470" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">REAL SOURCE DATA</text>
+<text x="710" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">DESIGN USE</text>
+<text x="875" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">EVIDENCE</text>
+<text x="1028" y="230" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">REF</text>
+<rect x="30" y="244" width="1025" height="66" rx="0" fill="#f3f1ec" stroke="none" stroke-width="1"/>
+<text x="35" y="267" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="35" dy="0">A-01 / Adafruit 2861</tspan>
+</text>
+<text x="220" y="267" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="220" dy="0">Light source</tspan>
+</text>
+<text x="470" y="267" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="470" dy="0">24 RGBW pixels; Ø65.5 / Ø52.2 / t3</tspan>
+<tspan x="470" dy="13.75">.25 mm; ~3000 K</tspan>
+</text>
+<text x="710" y="267" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="710" dy="0">central ring under diffuser</tspan>
+</text>
+<text x="875" y="267" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="875" dy="0">SOURCE</tspan>
+</text>
+<text x="1028" y="267" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1028" dy="0">[1]</tspan>
+</text>
+<text x="35" y="337" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="35" dy="0">A-02 / Seeed XIAO RP2040</tspan>
+</text>
+<text x="220" y="337" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="220" dy="0">Controller</tspan>
+</text>
+<text x="470" y="337" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="470" dy="0">21 × 17.8 mm; 11 PWM-capable pins;</tspan>
+<tspan x="470" dy="13.75"> USB-C</tspan>
+</text>
+<text x="710" y="337" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="710" dy="0">animation + state logic</tspan>
+</text>
+<text x="875" y="337" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="875" dy="0">SOURCE</tspan>
+</text>
+<text x="1028" y="337" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1028" dy="0">[3]</tspan>
+</text>
+<rect x="30" y="384" width="1025" height="66" rx="0" fill="#f3f1ec" stroke="none" stroke-width="1"/>
+<text x="35" y="407" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="35" dy="0">A-03 / Bourns PEC11R</tspan>
+</text>
+<text x="220" y="407" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="220" dy="0">Input</tspan>
+</text>
+<text x="470" y="407" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="470" dy="0">Ø12 package; 12/18/24 PPR; IP40 co</tspan>
+<tspan x="470" dy="13.75">mponent; 30k cycles</tspan>
+</text>
+<text x="710" y="407" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="710" dy="0">side rotary + push</tspan>
+</text>
+<text x="875" y="407" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="875" dy="0">SOURCE</tspan>
+</text>
+<text x="1028" y="407" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1028" dy="0">[4]</tspan>
+</text>
+<text x="35" y="477" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="35" dy="0">A-04 / PLEXIGLAS LED family</tspan>
+</text>
+<text x="220" y="477" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="220" dy="0">Diffuser material family</tspan>
+</text>
+<text x="470" y="477" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="470" dy="0">PMMA family for LED backlighting; </tspan>
+<tspan x="470" dy="13.75">translucent; hotspot reduction</tspan>
+</text>
+<text x="710" y="477" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="710" dy="0">2 mm prototype target</tspan>
+</text>
+<text x="875" y="477" font-size="11" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="875" dy="0">SOURCE FAMILY</tspan>
+</text>
+<text x="1028" y="477" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1028" dy="0">[5]</tspan>
+</text>
+<rect x="30" y="524" width="1025" height="66" rx="0" fill="#f3f1ec" stroke="none" stroke-width="1"/>
+<text x="35" y="547" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="35" dy="0">A-05 / 5 V rail</tspan>
+</text>
+<text x="220" y="547" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="220" dy="0">Power architecture</tspan>
+</text>
+<text x="470" y="547" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="470" dy="0">RGBW planning up to 80 mA/pixel</tspan>
+</text>
+<text x="710" y="547" font-size="11" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="710" dy="0">5 V / 3 A input target</tspan>
+</text>
+<text x="875" y="547" font-size="11" fill="#6eb1d7" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="875" dy="0">CALCULATED</tspan>
+</text>
+<text x="1028" y="547" font-size="11" fill="#171715" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1028" dy="0">[2]</tspan>
+</text>
+<text x="35" y="602" font-size="10" fill="#d7695e" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Component IP40 applies to the PEC11R part only; the assembled product has no IP rating.</text>
+<text x="1090" y="182" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">电源预算</text>
+<text x="1180" y="182" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">POWER BUDGET / DESIGN PLANNING</text>
+<rect x="1082" y="200" width="690" height="420" rx="8" fill="#171715" stroke="none" stroke-width="1"/>
+<text x="1110" y="242" font-size="13" fill="#aaa69c" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Worst-case LED planning</text>
+<text x="1110" y="292" font-size="28" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">24 pixels × 80 mA = 1.92 A</text>
+<text x="1110" y="326" font-size="22" fill="#6eb1d7" font-weight="700" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">P = 5 V × 1.92 A = 9.60 W</text>
+<rect x="1110" y="365" width="600" height="32" rx="16" fill="#34322f" stroke="none" stroke-width="1"/>
+<rect x="1110" y="365" width="384" height="32" rx="16" fill="#e2aa53" stroke="none" stroke-width="1"/>
+<text x="1110" y="425" font-size="12" fill="#aaa69c" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Selected input target</text>
+<text x="1110" y="463" font-size="24" fill="#f7f6f2" font-weight="700" text-anchor="start" font-family="DejaVu Sans Mono, monospace" letter-spacing="0">5 V / 3 A = 15 W available</text>
+<text x="1110" y="500" font-size="12" fill="#6cc17a" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Headroom against LED planning value: 1.08 A / 5.40 W</text>
+<text x="1110" y="545" font-size="11" fill="#aaa69c" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1110" dy="0">This is a design power budget, not a measured load.</tspan>
+<tspan x="1110" dy="15.399999999999999">Add 500-1000 µF across 5 V/GND and 300-500 Ω in the data line per Adafruit guidance.</tspan>
+</text>
+<text x="35" y="672" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">适用标准门槛</text>
+<text x="163" y="672" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">APPLICABLE STANDARDS GATES</text>
+<rect x="28" y="690" width="1744" height="275" rx="8" fill="#ffffff" stroke="#cfccc4" stroke-width="1"/>
+<text x="35" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">STANDARD</text>
+<text x="225" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">SCOPE</text>
+<text x="500" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">WHY RELEVANT</text>
+<text x="930" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">REQUIRED EVIDENCE</text>
+<text x="1280" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">CURRENT STATUS</text>
+<text x="1650" y="722" font-size="10" fill="#6d6961" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0.5">CLAIM</text>
+<rect x="30" y="736" width="1738" height="49" rx="0" fill="#f3f1ec" stroke="none" stroke-width="1"/>
+<text x="35" y="758" font-size="9.8" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">IEC 62368-1:2023</text>
+<text x="225" y="758" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">AV/ICT equipment safety</text>
+<text x="500" y="758" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">USB-powered electronic product</text>
+<text x="930" y="758" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">energy source classification; safeguards; thermal/electrical review</text>
+<text x="1280" y="758" font-size="9.8" fill="#d7695e" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">OPEN</text>
+<text x="1650" y="758" font-size="9.8" fill="#d7695e" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">NONE</text>
+<text x="35" y="812" font-size="9.8" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">IEC 62471-7:2023</text>
+<text x="225" y="812" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">visible light sources &amp; luminaires</text>
+<text x="500" y="812" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">RGBW visible source used for signalling</text>
+<text x="930" y="812" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">radiometric assessment; risk group; user information</text>
+<text x="1280" y="812" font-size="9.8" fill="#d7695e" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">OPEN</text>
+<text x="1650" y="812" font-size="9.8" fill="#d7695e" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">NONE</text>
+<rect x="30" y="844" width="1738" height="49" rx="0" fill="#f3f1ec" stroke="none" stroke-width="1"/>
+<text x="35" y="866" font-size="9.8" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">USB Type-C 2.5 / 2026</text>
+<text x="225" y="866" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">cable &amp; connector implementation</text>
+<text x="500" y="866" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">5 V USB-C input architecture</text>
+<text x="930" y="866" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">connector, CC implementation and compliance testing</text>
+<text x="1280" y="866" font-size="9.8" fill="#e2aa53" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">ARCHITECTURE</text>
+<text x="1650" y="866" font-size="9.8" fill="#d7695e" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">NONE</text>
+<text x="35" y="920" font-size="9.8" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Bourns PEC11R data</text>
+<text x="225" y="920" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">component performance</text>
+<text x="500" y="920" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">rotary input component</text>
+<text x="930" y="920" font-size="9.8" fill="#171715" font-weight="400" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">supplier part selection + enclosure validation</text>
+<text x="1280" y="920" font-size="9.8" fill="#6cc17a" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE</text>
+<text x="1650" y="920" font-size="9.8" fill="#e2aa53" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">COMPONENT</text>
+<text x="35" y="1010" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">尺寸来源</text>
+<text x="125" y="1010" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">DIMENSION LINEAGE</text>
+<rect x="40" y="1034" width="310" height="94" rx="8" fill="#ffffff" stroke="#d4d0c8" stroke-width="1"/>
+<circle cx="65" cy="1063" r="7" fill="#6cc17a"/>
+<text x="83" y="1068" font-size="14" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø65.5 LED ring</text>
+<text x="58" y="1100" font-size="10" fill="#6d6961" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">manufacturer source</text>
+<rect x="370" y="1034" width="310" height="94" rx="8" fill="#ffffff" stroke="#d4d0c8" stroke-width="1"/>
+<circle cx="395" cy="1063" r="7" fill="#e2aa53"/>
+<text x="413" y="1068" font-size="14" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø100 aperture</text>
+<text x="388" y="1100" font-size="10" fill="#6d6961" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">design target</text>
+<rect x="700" y="1034" width="310" height="94" rx="8" fill="#ffffff" stroke="#d4d0c8" stroke-width="1"/>
+<circle cx="725" cy="1063" r="7" fill="#e2aa53"/>
+<text x="743" y="1068" font-size="14" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">Ø118 body</text>
+<text x="718" y="1100" font-size="10" fill="#6d6961" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">component + bezel envelope</text>
+<rect x="1030" y="1034" width="310" height="94" rx="8" fill="#ffffff" stroke="#d4d0c8" stroke-width="1"/>
+<circle cx="1055" cy="1063" r="7" fill="#e2aa53"/>
+<text x="1073" y="1068" font-size="14" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">0.50 gap</text>
+<text x="1048" y="1100" font-size="10" fill="#6d6961" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">CAD target; verify prototype</text>
+<text x="1360" y="1010" font-size="18" fill="#171715" font-weight="700" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">来源索引</text>
+<text x="1450" y="1010" font-size="13" fill="#6b6861" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">SOURCE INDEX</text>
+<text x="1360" y="1040" font-size="9.5" fill="#5f5b54" font-weight="500" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif">
+<tspan x="1360" dy="0">[1] Adafruit Product 2861, RGBW ring warm white ~3000 K.</tspan>
+<tspan x="1360" dy="13.11">[2] Adafruit NeoPixel Überguide, power planning and protection guidance.</tspan>
+<tspan x="1360" dy="13.11">[3] Seeed Studio XIAO RP2040 official wiki and DXF reference.</tspan>
+<tspan x="1360" dy="13.11">[4] Bourns PEC11R official product specification.</tspan>
+<tspan x="1360" dy="13.11">[5] PLEXIGLAS LED official product family page.</tspan>
+<tspan x="1360" dy="13.11">[6] IEC 62368-1:2023; IEC 62471-7:2023; USB Type-C 2.5 (2026).</tspan>
+</text>
+<text x="35" y="1172" font-size="10" fill="#6d6961" font-weight="600" text-anchor="start" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">All web sources verified 2026-08-07. Exact optical, thermal, electrical, manufacturing and compliance performance remains test-gated.</text>
+<text x="1770" y="1172" font-size="11" fill="#6d6961" font-weight="600" text-anchor="end" font-family="Noto Sans CJK SC, Inter, Arial, sans-serif" letter-spacing="0">BOARD 02 / 02</text>
+</svg>
