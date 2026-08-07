@@ -11,6 +11,7 @@
 | pmndrs/examples `bouncy-watch` | 同上 | 小型产品低 FOV、受限相机、Environment + ContactShadows | 手表模型、annotation UI 不采用 |
 | pmndrs/drei-vanilla `MeshTransmissionMaterial` story | `28978f680f9071e4f4794611781c19f46de48e35` | front/back FBO、thickness、attenuation、anisotropic blur 作为 diffuser 下一门槛 | v3.3 runtime 暂不直接引入；当前先用 Three MeshPhysicalMaterial baseline |
 | pmndrs/postprocessing | `6.39.4` | HalfFloatType HDR composer、线性工作流、末端 ToneMappingEffect、克制 Bloom | 不用噪声、重 vignette、强 bloom 掩盖模型问题 |
+| Banana Vision Studio | `SOURCE VERIFICATION PENDING` | 独立 Hero 候选、CMF 氛围探索、摄影感视觉变体与传播呈现 | 不作为 WebGL 校准、结构/爆炸/尺寸/BOM/材料性能或任何工程证据；不生成完整网页、完整设计板或完整 PDF 页面 |
 
 ## v3.3 转译
 
@@ -19,6 +20,15 @@
 - `ContactShadow.js`：真实模型轮廓 capture + separable blur，不再用矩形 shadow plane 或固定径向 blob。
 - `ColorPipeline.js`：Linear HDR 保持至后期，renderer `NoToneMapping`，最终 sRGB。
 - `PostProcessing.js`：HalfFloat composer + restrained bloom + AGX tone map。
+
+## Banana Vision Studio｜视觉呈现层
+
+- **Role:** `OPTIONAL VISUAL PRESENTATION / NON-EVIDENCE`。
+- **Gate:** 仅在 Housing highlight / Diffuser volume / Metal knob reflection / Contact shadow falloff 四项真实 WebGL 校准全部 PASS 后进入。
+- **Allowed:** 产品摄影感呈现、独立 Hero/CMF 候选、构图与氛围探索、传播视觉变体。
+- **Forbidden:** 结构证据、爆炸结构、剖面、尺寸、BOM、装配路径、材料/光学/热/DFM 结论，以及完整网页、完整设计板、完整 PDF 页面。
+- **Label:** 所有输出标记 `VISUALIZATION / AI-ASSISTED PRESENTATION / NON-EVIDENCE`。
+- **Verification:** 当前公开资料以社区实践说明为主，官方技术来源、许可证与服务条款尚未完成一手核验，因此不登记为正式 runtime dependency。
 
 ## 权利边界
 
