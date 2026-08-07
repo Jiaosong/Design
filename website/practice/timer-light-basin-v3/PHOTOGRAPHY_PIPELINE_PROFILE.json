@@ -1,7 +1,7 @@
 {
   "schema": "OLEANDER_PHOTOGRAPHY_PIPELINE_v3.3",
   "project": "Timer Light Basin",
-  "status": "DESIGN DEVELOPMENT / VISUALIZATION PIPELINE / BROWSER VISUAL REGRESSION BLOCKED",
+  "status": "FOUR-GATE WEBGL CALIBRATION PASS / HERO-CMF RENDER LOCK ACTIVE / ENGINEERING VALIDATION PENDING",
   "modules": {
     "StudioEnvironment": {
       "method": "emissive reflection cards -> PMREM + direct RectArea lights",
@@ -9,15 +9,24 @@
     },
     "DiffuserMaterial": {
       "method": "MeshPhysicalMaterial opal baseline",
-      "status": "VISUALIZATION ONLY",
-      "next_gate": "real sample + optical test or reviewed front/back FBO transmission"
+      "status": "VISUALIZATION ONLY / CALIBRATED",
+      "next_gate": "real sample + optical test or reviewed front/back FBO transmission",
+      "ior": 1.49,
+      "transmission": 0.34,
+      "roughness": 0.38,
+      "thickness_hero": 0.14,
+      "thickness_material": 0.18,
+      "attenuation_distance": 0.11
     },
     "ContactShadow": {
       "method": "model silhouette capture to HalfFloat target + separable blur",
       "resolution": {
         "hero": 1536,
         "material": 1024
-      }
+      },
+      "architecture": "dual-layer tight contact + broad ambient penumbra",
+      "hero_opacity": 0.22,
+      "hero_blur": 5.2
     },
     "ColorPipeline": {
       "workflow": "linear HDR -> post -> tone mapping -> sRGB",
@@ -33,5 +42,26 @@
   "inspection_layer": {
     "state_and_exploded": "@google/model-viewer 4.1.0"
   },
-  "evidence_boundary": "Rendering quality does not prove material optical performance, colorimetry, manufacturing, thermal, electrical or user validation."
+  "evidence_boundary": "Rendering quality does not prove material optical performance, colorimetry, manufacturing, thermal, electrical or user validation.",
+  "calibration": {
+    "run_id": 31166364420,
+    "artifact_id": 8989166344,
+    "environment": {
+      "renderer": "ANGLE / Vulkan / SwiftShader Device (Subzero)",
+      "api": "WebGL 2.0 / OpenGL ES 3.0 Chromium"
+    },
+    "gates": {
+      "Housing highlight": "PASS",
+      "Diffuser volume": "PASS",
+      "Metal knob reflection": "PASS",
+      "Contact shadow falloff": "PASS"
+    },
+    "evidence": "calibration/round6/"
+  },
+  "render_lock": {
+    "active": true,
+    "scope": "Hero + CMF photography pipeline parameters",
+    "unlock_requires_recorded_reason": true,
+    "source_model": "assets/pbr/timer_100_pbr.glb remains canonical model asset"
+  }
 }
