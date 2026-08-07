@@ -68,8 +68,8 @@ if(shot==='shadow')stateLight.visible=false;
 
 new ContactShadow(renderer,scene,root,{
   resolution:shot==='shadow'?1536:1024,
-  opacity:shot==='shadow'?.18:(mode==='material'?.12:.17),
-  blur:shot==='shadow'?4.9:(mode==='material'?4.1:4.6)
+  opacity:shot==='shadow'?.24:(mode==='material'?.14:.20),
+  blur:shot==='shadow'?5.6:(mode==='material'?4.4:5.2)
 });
 const post=createPostProcessing(renderer,scene,camera,mode);post.setSize(1200,900);
 for(let i=0;i<10;i++)post.render(1/60);
