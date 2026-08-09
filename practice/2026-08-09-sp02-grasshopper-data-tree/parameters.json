@@ -1,0 +1,14 @@
+{
+  "status": "TRAINING HYPOTHESIS / NOT PROJECT DATA",
+  "primary_node": "SP02",
+  "ability": "parametric modeling / data-tree topology",
+  "target_software": "Rhino + Grasshopper",
+  "duration": "2-4 hours",
+  "zones": 4,
+  "items_per_zone": 6,
+  "dx": 2.4,
+  "dy": 3.6,
+  "units": "exercise-only abstract metric units",
+  "variants": ["base", "graft", "flatten", "transpose_by_item"],
+  "software_execution": "PENDING"
+}
