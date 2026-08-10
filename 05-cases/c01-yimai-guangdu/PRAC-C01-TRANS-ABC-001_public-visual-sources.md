@@ -1,76 +1,154 @@
-# PRAC-C01-TRANS-ABC-001｜Public Visual Source Index
+# PRAC-C01-TRANS-ABC-001｜Visual Source Index
 
 Verified: 2026-08-10
 
-Status: `PUBLIC VISUAL REFERENCE ACQUIRED / A0 CURRENT PHOTO PENDING / CONTROLLED 3-SEGMENT FIELD CAPTURE NOT RUN`
+Status: `UPLOADED PROJECT-SOURCE BASELINE RECOVERED / CURRENT-DATED A0 PHOTO NOT CLOSED / SAME-SESSION 3-SEGMENT NOT PROVEN`
 
-This file records external visual references only. It does **not** claim that OLEANDER has performed field photography, heritage approval, local review, or a controlled same-session site sequence.
+This file records visual evidence boundaries for C01. It now prioritizes the user's previously uploaded project source archive before external web references.
 
-## A0 — Existing interpretation baseline
+## 0. Source recovery correction
 
-### 2024 public report
+The user's Library contains the previously uploaded archive:
 
-Source: 衢州职业技术学院转载《春到广渡》, 2024-03-14.
+`广渡村项目完整导出_2026-07-24.zip` — approximately 74 MB.
 
-The report explicitly states that during the 2024-03-07 visit, Guangdu already had walking-route signs, directional signs and a guide map, with stone paths repaired.
+The archive was directly unpacked and inspected. Its own README describes:
+
+- `03_原始资料` as the original HTML research report and village guide map;
+- `04_图片素材` as original project image materials;
+- Word/PDF scheme documents and render backups as separate layers.
+
+Therefore the earlier assumption that no usable project-source visual assets existed was incomplete. The user does **not** need to upload the same archive again.
+
+## 1. A0 — Existing interpretation baseline recovered from uploaded source
+
+### `03_原始资料/广渡村导览图.png`
+
+Recovered and visually inspected.
+
+Use:
+
+- A0 guide-map / information-architecture baseline;
+- object distribution and comparison-path preparation;
+- not a current-dated field photograph.
+
+The map visibly lists multiple cultural/heritage points, including separate entries for the Zhenxiao and Jiexiao archways.
+
+### `04_图片素材/chastity_arch.jpeg`
+
+Recovered and visually inspected.
+
+The source archive's `guangdu-village-report.html` explicitly embeds this file with the caption `贞孝牌坊`.
+
+The photograph shows:
+
+- the stone archway in spatial context;
+- a freestanding/adjacent interpretation plaque at the archway;
+- surrounding paving, buildings and passage condition.
+
+Use:
+
+`PROJECT-SOURCE SITE/INTERPRETATION BASELINE PHOTO FOUND`
 
 Boundary:
 
-- confirms the existence of an interpretation/signage baseline in 2024;
-- does not verify its 2026-08-10 location, condition, content, QR links or maintenance status;
-- the source page contains news photography, but the current retrieval environment does not expose enough image content to verify that the published image itself depicts the signage/guide map;
-- therefore no news image is copied into the project evidence folders and no A0 photo is marked `ACQUIRED`.
+- the JPEG carries no usable EXIF capture date;
+- ZIP upload/export time is **not** treated as the photo capture date;
+- therefore this does not by itself prove the 2026-08-10 current condition.
 
-Required A0 field evidence remains:
+### `04_图片素材/entrance_signboard.jpg`
 
-1. current guide-map full view;
-2. current directional/signage view in spatial context;
-3. information close-read view;
-4. capture time + exact location + maintenance/condition note.
+Recovered and visually inspected.
 
-## Selected site object — Xu-shi Zhenxiao Archway
+Despite the filename, it is a signage/layout design image (`村庄两边入口宣传栏 2个`), not a field photograph.
 
-Object locked for the first controlled capture:
+Decision:
 
-`徐氏贞孝牌坊 / 上马石 / 进村公路右侧`
+`KEEP AS HISTORICAL/PROPOSAL DESIGN ASSET / DO NOT COUNT AS A0 FIELD PHOTO`
 
-### Public source A — Tide News, 2025-03-07
+### `04_图片素材/image12.jpeg` and `image17.jpeg`
 
-`牌坊里的女人`, 毛长明.
+Both are real archway/site photographs in the uploaded source package. They are useful comparison evidence, but their exact object mapping must be closed before they are used as a controlled C1 sequence.
 
-Supports:
+Do not infer `same object` or `same session` from visual similarity alone.
 
-- the archway is identified as the Xu-shi Zhenxiao Archway at Shangmashi;
-- it stands on the right side of the approach road;
-- the source contains recent on-site imagery and describes the two-column / three-tier form, front relief and rear decoration.
+## 2. Uploaded Word evidence — three archway field photographs
 
-Rights boundary: creator-uploaded/news-platform content; reuse rights not closed. Record source only; do not duplicate the photographs as project-owned evidence.
+`广渡村竞赛项目数据汇编.docx` contains a section titled:
 
-### Public source B — Trip.com user field post, 2025-10
+`3.4 三座牌坊实景照片`
 
-A Guangdu Village Dagong Hall trip record states that from the main road across the bridge a standalone `Zhenxiao Archway` is visible and labels it as Photo 18.
+The document states the photo source as `潮新闻（钱江晚报）` and labels three objects:
 
-Use: near-time cross-check only. User-generated content; original file metadata and reuse rights not verified.
+1. `贞孝牌坊` — Qing Daoguang 6 (1826), with relief detail;
+2. `节孝牌坊` — Qing Jiaqing 7 (1802), in front of Baguting;
+3. `卖菜牌坊（大爿地）` — Qing Daoguang 10 (1830).
 
-### Historical comparison — Sina blog, 2014-02-12
+At least one embedded image is explicitly tied by document order/caption to the `贞孝牌坊` entry and provides a second visual source for that object.
 
-Historical photos and construction details for the Xu-shi Zhenxiao Archway and He-shi Jiexiao Archway.
+Rights boundary:
 
-Use: long-term state comparison only; never use as a 2026 condition record.
+- these are third-party news-source photographs embedded in the user's research package;
+- they are valid internal source leads / comparison evidence;
+- they are **not** automatically project-owned public-media assets;
+- photographer/reuse permission remains to be closed before republication.
 
-## Required controlled three-segment sequence
+## 3. A0 status after source recovery
 
-All three segments must be captured in the **same field session**, on the same object and in one consistent movement direction:
+| Gate | Status |
+| --- | --- |
+| Existing guide-map source | `FOUND` |
+| Project-source photo showing on-site interpretation plaque | `FOUND` |
+| 2026-current dated A0 photo | `NOT CLOSED` |
+| Capture-time metadata | `UNKNOWN` |
+| Exact signage maintenance/QR/current content | `UNKNOWN` |
+| Public reuse rights | `PARTIAL / PENDING` |
 
-1. `Approach` — road context + first visual appearance + pedestrian/vehicle relation.
-2. `Front + Read` — complete front elevation + readable inscription/relief/couplet details + obstruction/distance note.
-3. `Pass + Leave` — rear/return view + path continuity + stopping/conflict condition.
+A0 is therefore no longer blocked by `no visual material`; it is blocked by **date/currentness + rights + present condition**.
 
-Do not stitch 2014 and 2025 public images together and label them as a field sequence.
+## 4. Selected site object — Zhenxiao Archway
 
-## Drive evidence indexes
+Project-source evidence now includes:
 
-- `01_A_Control/00_Existing-Signage-Capture/A0_Public-Visual-Source-Index_2026-08-10`
-- `04_Reality-Gate-2/01_Site-Capture/Zhenxiao-Archway_Public-Visual-Source-Index_2026-08-10`
+- `04_图片素材/chastity_arch.jpeg` → explicitly captioned `贞孝牌坊` in the uploaded HTML report;
+- a separate embedded `贞孝牌坊` field photograph in the uploaded data-compilation Word document;
+- additional archway photographs in the uploaded image-material folder.
 
-These are source indexes, not field-photo evidence.
+This is enough to start B evidence reading and C comparison preparation without asking the user for a new object photograph.
+
+It is **not** enough to claim a controlled same-session walking sequence.
+
+## 5. Required controlled three-segment sequence
+
+The target remains:
+
+1. `Approach` — road context + first visual appearance + pedestrian/vehicle relation;
+2. `Front + Read` — complete elevation + readable inscription/relief/couplet + obstruction/distance note;
+3. `Pass + Leave` — opposite/rear condition + path continuity + stopping/conflict condition.
+
+### What the recovered archive changes
+
+Before recovery: `NO PROJECT-SOURCE ARCHWAY PHOTO` was incorrectly treated as a blocker.
+
+After recovery:
+
+- object and interpretation-baseline images exist;
+- multiple archway images exist;
+- a Zhenxiao photo is explicitly identified;
+- the remaining question is whether three images can be proven to be the **same object, same session, consistent movement direction**.
+
+Until that provenance is demonstrated, do not stitch different objects, different dates or different sources together and call them Reality Gate 2.
+
+## 6. External public sources remain secondary
+
+External 2024/2025 public sources may still be used for date/currentness cross-checks, but they are now secondary to the recovered user-uploaded source archive for C01 project reconstruction.
+
+## 7. Evidence decision
+
+- `A0 PROJECT-SOURCE BASELINE`: **FOUND**.
+- `SPECIFIC ZHENXIAO OBJECT PHOTO`: **FOUND**.
+- `THIRD-PARTY THREE-ARCHWAY COMPARISON SOURCE`: **FOUND / RIGHTS PENDING**.
+- `2026 CURRENT-DATED PHOTO`: **PENDING**.
+- `SAME-SESSION APPROACH → FRONT → LEAVE`: **NOT PROVEN**.
+
+C01 remains `RESEARCH + PROPOSAL / EVIDENCE REVIEW`; this correction removes a false asset-availability blocker but does not fabricate field validation.
