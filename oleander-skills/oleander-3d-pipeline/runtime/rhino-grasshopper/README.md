@@ -1,96 +1,106 @@
-# OLEANDER Rhino + Grasshopper Runtime v0.1
+# OLEANDER Rhino + Grasshopper Real Runtime Adapter v0.2-draft
 
-Status: `BOOTSTRAP READY / HOST NOT YET CONNECTED / NOT PRACTICE-VALIDATED`
+Status: `DRAFT / MULTI-RUNTIME ADAPTER / NOT PRACTICE-VALIDATED`
 
-This runtime extends the existing `oleander-3d-pipeline`; it does **not** create a parallel OLEANDER method hierarchy.
+This runtime is a Resource Adapter under the existing `oleander-3d-pipeline`. It does not create a second OLEANDER method and it does not change the evidence rules defined in 01B.
 
-## Goal
+## Current runtime priority
 
-Provide a real Rhino 8 + Grasshopper execution node capable of producing evidence that an offline surrogate cannot provide:
-
-- real `.gh` files;
-- real Grasshopper solves;
-- Data Tree path / branch / item inspection;
-- Grasshopper canvas / Parameter Viewer screenshots;
-- Rhino viewport screenshots;
-- runtime logs and environment manifests;
-- explicit OPEN/HOLD states when the host, plugin, definition, or evidence is unavailable.
-
-## Architecture
-
-```text
-OLEANDER / ChatGPT / repository task
-        |
-        v
-Runtime Contract
-        |
-        v
-Windows Rhino Host
-  Rhino 8.11+
-  StartScriptServer
-  rhinocode CLI
-        |
-        +--> Rhino Python/C# script
-        |       |
-        |       +--> Grasshopper SDK
-        |       +--> GH_DocumentIO -> .gh
-        |       +--> GH_Canvas -> canvas bitmap
-        |       +--> RhinoView -> viewport bitmap
-        |
-        +--> runtime receipt / evidence manifest
-
-Optional later layer:
-Rhino.Compute -> headless Grasshopper solving / batch evaluation
-```
-
-## Why Desktop Runtime is primary
-
-Rhino.Compute can solve Grasshopper definitions, but CP2 / CP4 training evidence also requires real Grasshopper GUI/canvas evidence and Rhino viewport comparison. Therefore:
-
-1. **Desktop Rhino + `rhinocode` is the authoritative execution node for Practice evidence.**
-2. **Rhino.Compute is an optional batch/headless solver**, not a replacement for GUI evidence.
-3. `rhino3dm` or offline Python geometry is useful for surrogate checks only and must never be relabeled as Rhino/Grasshopper runtime evidence.
-
-## Minimum host requirements
-
-- Windows 10/11 x64.
-- Rhino 8.11 or newer. `rhinocode` ships with Rhino >= 8.11.
-- Valid local Rhino license or evaluation license.
-- Grasshopper available in the Rhino installation.
-- Rhino `StartScriptServer` command running.
-- `%PROGRAMFILES%\Rhino 8\System` available on PATH, or use the full path to `rhinocode.exe`.
+1. `FREE_PUBLIC_COMPUTE` — preferred no-cost, no-user-workstation path. **Implemented and attempted; currently blocked because the McNeel public service returns `This server has been turned off`. CP2 remains OPEN; CP4 remains OPEN.**
+2. `PRIVATE_COMPUTE` — future authenticated/private headless runtime; may incur Core-Hour/server cost and therefore requires explicit authorization. Not enabled by the free mode.
+3. `DESKTOP_RHINO` — optional local/debug runtime. It is no longer the default path because the user does not want their workstation to execute the training.
+4. `SURROGATE_OFFLINE` — Python/DXF/SVG/rhino3dm precheck only; never runtime evidence.
 
 ## Evidence boundary
 
-Allowed runtime states:
+A real runtime adapter may create evidence only when its own receipt proves execution:
 
-- `HOST DETECTED`
-- `RHINO RUNTIME PASS`
-- `GRASSHOPPER SDK PASS`
-- `DEFINITION SOLVED`
-- `CANVAS CAPTURED`
-- `VIEWPORT CAPTURED`
-- `DESIGN-READY FOR FUTURE TEST`
+- repository code existence ≠ Rhino runtime evidence;
+- GitHub Actions success ≠ Grasshopper solve success;
+- offline Python/DXF/SVG/rhino3dm ≠ Rhino/Grasshopper runtime evidence;
+- a network request reaching Compute but receiving service-disabled/auth/server errors ≠ Grasshopper runtime evidence;
+- only a returned real runtime report may promote CP2;
+- only desktop GUI evidence can close CP4 because CP4 requires Parameter Viewer / Path Mapper canvas evidence.
 
-Do **not** use `VERIFIED`, `TESTED`, `PASSED`, or equivalent project-approval language unless the exact real evidence required by the task was executed and preserved.
+## FREE_PUBLIC_COMPUTE result｜2026-08-10
 
-## Files
+Actual GitHub-hosted probe:
 
-- `runtime_contract.schema.json` — stable execution / evidence contract.
-- `windows/bootstrap_windows.ps1` — checks Rhino / rhinocode and starts a local Rhino execution instance if needed.
-- `windows/healthcheck.ps1` — performs a real local runtime health check.
-- `windows/run_job.ps1` — dispatches an allow-listed job to a running Rhino instance through `rhinocode`.
-- `rhino/probe_runtime.py` — runs inside Rhino and writes the runtime manifest.
-- `rhino/capture_evidence.py` — captures active Grasshopper canvas and active Rhino viewport.
-- `jobs/cp2_cp4_data_tree.json` — locked job specification for the current Data Tree training.
+```text
+Run ID        31360491115
+Artifact ID   9052171471
+Mode          FREE_PUBLIC_COMPUTE
+Cost policy   NO_PAID_RUNTIME
+HTTP          404
+Response      This server has been turned off
+CP2           OPEN / PUBLIC_SERVICE_DISABLED
+CP4           OPEN / HEADLESS_NO_GRASSHOPPER_GUI
+Evidence      ATTEMPT_EVIDENCE_ONLY
+```
 
-## Current OPEN items
+The branch archives the exact response and receipt under `public_compute/attempts/`.
 
-- The user's Windows Rhino host has not yet run this bootstrap package.
-- No current ChatGPT tool is directly connected to the local Rhino script server.
-- CP2 and CP4 remain OPEN until the host executes the Data Tree definition and returns real evidence.
-- A custom remote connector / MCP bridge is intentionally deferred until the local runtime itself passes healthcheck and evidence capture.
+## Runtime Contract
+
+The shared runtime contract supports:
+
+- `DESKTOP_RHINO`
+- `FREE_PUBLIC_COMPUTE`
+- `PRIVATE_COMPUTE`
+- `SURROGATE_OFFLINE`
+
+Each run must record runtime mode, cost policy, input provenance, required outputs, evidence promotion rules, authority boundary and receipt.
+
+## SP02 locked training target
+
+Exercise assumptions only:
+
+```text
+zones = 4
+items / zone = 6
+DX = 2.4
+DY = 3.6
+```
+
+CP2 target:
+
+```text
+BASE              4 × 6
+GRAFT            24 × 1
+FLATTEN            1 × 24
+TRANSPOSE_BY_ITEM  6 × 4
+```
+
+CP2 may close only after a real Rhino/Grasshopper runtime returns these structures and versioned runtime metadata.
+
+CP4 remains OPEN in every headless runtime. It requires real desktop Grasshopper Parameter Viewer / Path Mapper before/after evidence; no synthetic screenshot is acceptable.
+
+## Directory
+
+```text
+rhino-grasshopper/
+  README.md
+  SECURITY.md
+  runtime_contract.schema.json
+  jobs/
+  public_compute/
+    README.md
+    build_sp02_fixture.py
+    run_sp02_public_compute.py
+    attempts/
+  windows/
+  rhino/
+```
+
+The Windows/Desktop files remain for optional debug or a future controlled desktop node, but they are not required by the current no-user-workstation path.
 
 ## Security
 
-Do not expose Rhino's local script server directly to the public internet. If a remote control layer is added later, use an authenticated, allow-listed bridge with explicit action receipts. The existing public `Jiaosong/Design` repository must not be given an unrestricted self-hosted runner that executes arbitrary fork / PR code.
+- Public repository code must never contain Rhino billing tokens, cloud credentials or unrestricted machine-control credentials.
+- `FREE_PUBLIC_COMPUTE` refuses `RHINO_TOKEN`, the Core-Hour billing token.
+- A public-service shutdown cannot be bypassed by silently switching to a paid/private runtime.
+- Any paid/private runtime requires a separate Human Authority gate.
+
+## Current conclusion
+
+`FREE_PUBLIC_COMPUTE` is now a real implemented execution mode with an auditable failed attempt. The failure is useful evidence: the no-cost public McNeel Compute endpoint is currently unavailable, so SP02 CP2 remains OPEN rather than being falsely promoted. CP4 remains OPEN by design.
