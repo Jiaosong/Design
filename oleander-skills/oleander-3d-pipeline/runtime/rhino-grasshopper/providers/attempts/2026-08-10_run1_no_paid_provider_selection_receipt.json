@@ -1,0 +1,48 @@
+{
+  "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.1",
+  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.1",
+  "github_run_id": "31363600416",
+  "github_run_number": 1,
+  "github_artifact_id": "9053287150",
+  "github_artifact_digest": "sha256:a04f9afe6fc64ecd6b0755fc861aff6995911050a1b9b91a7f2b1afa02549a8a",
+  "status": "NO_ELIGIBLE_NO_PAID_PROVIDER",
+  "selected_provider": null,
+  "eligible_providers": [],
+  "rejected_providers": [
+    {
+      "provider_id": "MCNEEL_PUBLIC_LEGACY",
+      "state": "PUBLIC_SERVICE_DISABLED",
+      "reason": "Actual 2026-08-10 provider preflight returned HTTP 404 and 'This server has been turned off'."
+    },
+    {
+      "provider_id": "GITHUB_WINDOWS11_ARM_STANDARD",
+      "state": "UNSUPPORTED_ARCHITECTURE",
+      "reason": "GitHub provides a free Windows 11 arm64 runner, but Rhino 8 for Windows officially requires a 64-bit Intel or AMD processor and lists ARM processors as unsupported."
+    },
+    {
+      "provider_id": "GITHUB_WINDOWS_X64_STANDARD",
+      "state": "PAID_PATH_REJECTED",
+      "reason": "GitHub standard Windows x64 images are Windows Server. McNeel requires Core-Hour Billing when Rhino runs on Windows Server, so this violates NO_PAID_RUNTIME."
+    },
+    {
+      "provider_id": "GITHUB_UBUNTU_X64_STANDARD",
+      "state": "PAID_PATH_REJECTED",
+      "reason": "McNeel's Linux Compute guide requires a Core-Hour Billing Token; NO_PAID_RUNTIME forbids that token."
+    },
+    {
+      "provider_id": "GITHUB_MACOS_X64_STANDARD",
+      "state": "UNSUPPORTED_OS",
+      "reason": "McNeel Compute FAQ states Rhino.Compute does not work on macOS."
+    },
+    {
+      "provider_id": "USER_WINDOWS_X64_DESKTOP",
+      "state": "POLICY_BLOCKED",
+      "reason": "McNeel supports local Compute with a standard Rhino licence/evaluation, but the current OLEANDER execution policy explicitly excludes the user's workstation."
+    }
+  ],
+  "next_action": "HOLD_CP2_PRESERVE_CP4_OPEN",
+  "evidence_level": "CONTROL_PLANE_SELECTION_ONLY",
+  "runtime_evidence": false,
+  "cp2": "OPEN",
+  "cp4": "OPEN"
+}
