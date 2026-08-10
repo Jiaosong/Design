@@ -1,0 +1,71 @@
+[
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00000-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 340,
+      "mop": 24,
+      "bucket": 4,
+      "squeegee": 17
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00003-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 377,
+      "squeegee": 17,
+      "mop": 39,
+      "bucket": 4
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00007-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 458,
+      "mop": 32,
+      "squeegee": 14,
+      "bucket": 2
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00010-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 424,
+      "mop": 24,
+      "squeegee": 12,
+      "bucket": 1
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00013-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 380,
+      "mop": 38,
+      "squeegee": 24,
+      "bucket": 2
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00017-of-00021.parquet",
+    "rows_scanned": 177885,
+    "matches": {
+      "cleaning_brush": 358,
+      "bucket": 3,
+      "mop": 19,
+      "squeegee": 16
+    }
+  },
+  {
+    "shard": "raw_meta_Home_and_Kitchen/full-00020-of-00021.parquet",
+    "rows_scanned": 177884,
+    "matches": {
+      "cleaning_brush": 261,
+      "mop": 18,
+      "squeegee": 6
+    }
+  }
+]

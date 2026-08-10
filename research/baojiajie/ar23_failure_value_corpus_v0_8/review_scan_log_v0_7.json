@@ -1,0 +1,1358 @@
+[
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00000-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 130,
+    "accepted": {
+      "mop": 26,
+      "squeegee": 9,
+      "cleaning_brush": 32,
+      "bucket": 7
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 2,
+        "4-5_value_language": 18
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 3,
+        "3_tradeoff": 0,
+        "4-5_value_language": 6
+      },
+      "bucket": {
+        "1-2_failure_discovery": 2,
+        "3_tradeoff": 0,
+        "4-5_value_language": 5
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00001-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 144,
+    "accepted": {
+      "bucket": 6,
+      "mop": 5,
+      "cleaning_brush": 10,
+      "squeegee": 13
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 4,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 14,
+        "3_tradeoff": 7,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 8,
+        "3_tradeoff": 3,
+        "4-5_value_language": 11
+      },
+      "bucket": {
+        "1-2_failure_discovery": 4,
+        "3_tradeoff": 0,
+        "4-5_value_language": 9
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00002-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 129,
+    "accepted": {
+      "cleaning_brush": 3,
+      "squeegee": 10,
+      "bucket": 1,
+      "mop": 2
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 7,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 8,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 4,
+        "4-5_value_language": 19
+      },
+      "bucket": {
+        "1-2_failure_discovery": 4,
+        "3_tradeoff": 1,
+        "4-5_value_language": 9
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00003-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 134,
+    "accepted": {
+      "bucket": 6,
+      "squeegee": 4
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 7,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 8,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 5,
+        "3_tradeoff": 2,
+        "4-5_value_language": 13
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00004-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 109,
+    "accepted": {
+      "cleaning_brush": 2,
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 7,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 17,
+        "3_tradeoff": 9,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 5,
+        "3_tradeoff": 2,
+        "4-5_value_language": 14
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00005-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 134,
+    "accepted": {
+      "cleaning_brush": 4,
+      "mop": 1,
+      "bucket": 1,
+      "squeegee": 2
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 8,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 20,
+        "3_tradeoff": 10,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 12,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 5,
+        "3_tradeoff": 2,
+        "4-5_value_language": 15
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00006-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 134,
+    "accepted": {
+      "cleaning_brush": 2,
+      "mop": 3,
+      "bucket": 1,
+      "squeegee": 4
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 8,
+        "3_tradeoff": 8,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 10,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 13,
+        "3_tradeoff": 8,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 5,
+        "3_tradeoff": 2,
+        "4-5_value_language": 16
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00007-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 118,
+    "accepted": {
+      "bucket": 1,
+      "cleaning_brush": 5,
+      "squeegee": 3,
+      "mop": 2
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 9,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 25,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 15,
+        "3_tradeoff": 9,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 5,
+        "3_tradeoff": 2,
+        "4-5_value_language": 17
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00008-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 137,
+    "accepted": {
+      "squeegee": 5,
+      "bucket": 1,
+      "cleaning_brush": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 9,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 26,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 17,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 2,
+        "4-5_value_language": 17
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00009-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 142,
+    "accepted": {
+      "squeegee": 2,
+      "cleaning_brush": 1,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 9,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 19,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 2,
+        "4-5_value_language": 17
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00010-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 134,
+    "accepted": {
+      "mop": 1,
+      "squeegee": 2,
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 10,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 21,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 2,
+        "4-5_value_language": 18
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00011-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 117,
+    "accepted": {
+      "mop": 1,
+      "squeegee": 2
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 11,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 23,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 6,
+        "3_tradeoff": 2,
+        "4-5_value_language": 18
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00012-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 165,
+    "accepted": {
+      "mop": 2,
+      "squeegee": 1,
+      "bucket": 4
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 11,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 24,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 8,
+        "3_tradeoff": 2,
+        "4-5_value_language": 20
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00013-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 128,
+    "accepted": {
+      "bucket": 1,
+      "mop": 2
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 13,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 24,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 2,
+        "4-5_value_language": 20
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00014-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 152,
+    "accepted": {
+      "bucket": 2,
+      "squeegee": 2,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 14,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 26,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 3,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00015-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 126,
+    "accepted": {
+      "squeegee": 1,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 15,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 3,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00016-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 138,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 15,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 3,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00017-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 141,
+    "accepted": {
+      "bucket": 1,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 4,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00018-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 117,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 4,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00019-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 111,
+    "accepted": {
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 9,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00020-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 116,
+    "accepted": {
+      "bucket": 1,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 17,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00021-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 130,
+    "accepted": {
+      "mop": 4
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 21,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 10,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00022-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 108,
+    "accepted": {
+      "bucket": 2,
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 12,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00023-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 119,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 12,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00024-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 138,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 12,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00025-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 106,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 12,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00026-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 95,
+    "accepted": {
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 22,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 13,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00027-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 128,
+    "accepted": {
+      "mop": 1,
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 23,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 14,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00028-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 116,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 23,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 14,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00029-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 124,
+    "accepted": {
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 24,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 14,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00030-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 123,
+    "accepted": {
+      "mop": 2,
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 26,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 15,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00031-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 120,
+    "accepted": {
+      "mop": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 15,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00032-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 101,
+    "accepted": {
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00033-of-00045.parquet",
+    "rows_scanned": 1497999,
+    "candidate_parent_hits": 102,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00034-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 116,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00035-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 122,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00036-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 106,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00037-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 111,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 16,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00038-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 93,
+    "accepted": {
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 17,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00039-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 186,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 17,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00040-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 113,
+    "accepted": {
+      "bucket": 1
+    },
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 18,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00041-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 95,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 18,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00042-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 104,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 18,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00043-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 172,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 18,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  },
+  {
+    "shard": "raw_review_Home_and_Kitchen/full-00044-of-00045.parquet",
+    "rows_scanned": 1497998,
+    "candidate_parent_hits": 116,
+    "accepted": {},
+    "current_counts": {
+      "mop": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "cleaning_brush": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "squeegee": {
+        "1-2_failure_discovery": 27,
+        "3_tradeoff": 12,
+        "4-5_value_language": 21
+      },
+      "bucket": {
+        "1-2_failure_discovery": 18,
+        "3_tradeoff": 5,
+        "4-5_value_language": 21
+      }
+    }
+  }
+]

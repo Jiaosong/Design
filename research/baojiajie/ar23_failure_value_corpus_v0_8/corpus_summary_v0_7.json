@@ -1,0 +1,53 @@
+{
+  "status": "OFFICIAL HOME_AND_KITCHEN ROWS / AUTO-CODED / SEMANTIC REVIEW REQUIRED",
+  "source_dataset": "McAuley-Lab/Amazon-Reviews-2023",
+  "metadata_shards_scanned": [
+    0,
+    3,
+    7,
+    10,
+    13,
+    17,
+    20
+  ],
+  "metadata_title_matches": {
+    "cleaning_brush": 2598,
+    "mop": 194,
+    "bucket": 16,
+    "squeegee": 106
+  },
+  "candidate_parent_asins_by_product": {
+    "mop": 60,
+    "cleaning_brush": 60,
+    "squeegee": 60,
+    "bucket": 16
+  },
+  "review_shards_scanned": 45,
+  "rows_selected_total": 224,
+  "target_per_product": 60,
+  "rows_selected_by_product": {
+    "mop": 60,
+    "cleaning_brush": 60,
+    "squeegee": 60,
+    "bucket": 44
+  },
+  "unique_parent_asin_by_product": {
+    "mop": 22,
+    "cleaning_brush": 23,
+    "squeegee": 25,
+    "bucket": 15
+  },
+  "rating_band_counts": {
+    "1-2_failure_discovery": 99,
+    "3_tradeoff": 41,
+    "4-5_value_language": 84,
+    "unknown": 0
+  },
+  "critical_limitations": [
+    "Deterministically spread metadata shards plus exact-parent review scanning form a discovery sample, not probability sampling.",
+    "Product identity is based on official Home_and_Kitchen product-title metadata and exact parent_asin linkage.",
+    "Automatic Failure/Value coding requires semantic review before evidence promotion.",
+    "Per-product and rating-band quotas are research-design quotas, not prevalence.",
+    "No exact hue/finish preference can be inferred without controlled CMF stimuli."
+  ]
+}
