@@ -130,11 +130,11 @@ jobs:
         run: |
           set -euo pipefail
           target='website/practice/timer-light-basin-v3'
+          cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json"
+          cp "$STAGE_DIR/selection.json" "$QA_DIR/staging-selection.json"
           rm -rf "$target"
           mkdir -p "$target"
           cp -a "$STAGE_DIR/site/." "$target/"
-          cp "$STAGE_DIR/selection.json" "$QA_DIR/staging-selection.json"
-          cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json"
 
       - name: Set up Node
         uses: actions/setup-node@v4
