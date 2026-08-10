@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Select an OLEANDER Rhino/Grasshopper runtime provider under strict no-paid policy.
 
-This selector does not execute Rhino and is not runtime evidence. It evaluates the
-provider registry and returns only candidates that already satisfy the hard policy
-constraints. Live availability still requires a provider-specific preflight.
+This selector does not execute Rhino and is not runtime evidence. It distinguishes:
+1. execution-ready providers;
+2. technically supported candidates blocked by installer/licensing authority;
+3. hard-rejected providers that violate platform, cost, service, or workstation policy.
 """
 from __future__ import annotations
 
@@ -11,7 +12,11 @@ import argparse
 import json
 from pathlib import Path
 
-ALLOWED_STATES_FOR_SELECTION = {"AVAILABLE"}
+EXECUTION_READY_STATES = {"AVAILABLE"}
+AUTHORITY_BLOCKED_STATES = {
+    "INSTALLER_AND_LICENSE_REQUIRED",
+    "RUNTIME_INSTALLED_LICENSE_UNKNOWN",
+}
 
 
 def main() -> int:
@@ -34,41 +39,66 @@ def main() -> int:
     if policy.get("headless_may_close_cp4") is not False:
         raise SystemExit("Registry violates selector invariant: headless_may_close_cp4 must be false")
 
-    eligible = []
+    execution_ready = []
+    staged_candidates = []
     rejected = []
+
     for provider in providers:
         provider_id = provider.get("provider_id")
-        hard_eligible = provider.get("eligible") is True
         state = provider.get("current_state")
         user_workstation = provider.get("user_workstation") is True
-        if hard_eligible and not user_workstation and state in ALLOWED_STATES_FOR_SELECTION:
-            eligible.append(provider_id)
-        else:
-            rejected.append({
+        explicitly_eligible = provider.get("eligible") is True
+        probe_allowed = provider.get("probe_allowed") is True
+
+        if explicitly_eligible and not user_workstation and state in EXECUTION_READY_STATES:
+            execution_ready.append(provider_id)
+            continue
+
+        if not user_workstation and probe_allowed and state in AUTHORITY_BLOCKED_STATES:
+            staged_candidates.append({
                 "provider_id": provider_id,
                 "state": state,
+                "execution_engine": provider.get("execution_engine"),
+                "next_gate": "INSTALLER_AND_LICENSE_AUTHORITY",
                 "reason": provider.get("selector_reason"),
             })
+            continue
 
-    if len(eligible) == 1:
-        status = "ONE_ELIGIBLE_PROVIDER"
-        selected = eligible[0]
+        rejected.append({
+            "provider_id": provider_id,
+            "state": state,
+            "reason": provider.get("selector_reason"),
+        })
+
+    if len(execution_ready) == 1:
+        status = "ONE_EXECUTION_READY_PROVIDER"
+        selected = execution_ready[0]
+        best_candidate = selected
         next_action = "RUN_PROVIDER_PREFLIGHT"
-    elif len(eligible) > 1:
-        status = "MULTIPLE_ELIGIBLE_PROVIDERS_HUMAN_OR_POLICY_TIEBREAK_REQUIRED"
+    elif len(execution_ready) > 1:
+        status = "MULTIPLE_EXECUTION_READY_PROVIDERS_TIEBREAK_REQUIRED"
         selected = None
+        best_candidate = None
         next_action = "HOLD_FOR_TIEBREAK"
+    elif staged_candidates:
+        status = "NO_EXECUTION_READY_NO_PAID_PROVIDER"
+        selected = None
+        best_candidate = staged_candidates[0]["provider_id"]
+        next_action = "HOLD_FOR_INSTALLER_AND_LICENSE"
     else:
         status = "NO_ELIGIBLE_NO_PAID_PROVIDER"
         selected = None
+        best_candidate = None
         next_action = "HOLD_CP2_PRESERVE_CP4_OPEN"
 
     receipt = {
-        "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.1",
+        "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.2",
         "registry_id": data.get("registry_id"),
         "status": status,
         "selected_provider": selected,
-        "eligible_providers": eligible,
+        "best_current_candidate": best_candidate,
+        "execution_ready_providers": execution_ready,
+        "staged_candidates": staged_candidates,
         "rejected_providers": rejected,
         "next_action": next_action,
         "evidence_level": "CONTROL_PLANE_SELECTION_ONLY",
@@ -83,8 +113,11 @@ def main() -> int:
     print(json.dumps({
         "status": status,
         "selected_provider": selected,
-        "eligible_count": len(eligible),
+        "best_current_candidate": best_candidate,
+        "execution_ready_count": len(execution_ready),
+        "staged_candidate_count": len(staged_candidates),
         "next_action": next_action,
+        "runtime_evidence": False,
         "cp2": "OPEN",
         "cp4": "OPEN",
         "evidence_level": "CONTROL_PLANE_SELECTION_ONLY",
