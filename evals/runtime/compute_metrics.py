@@ -124,10 +124,16 @@ def validate(rows):
             for field in ["audited_queries", "retrieval_misses", "wrong_authority"]:
                 if not isinstance(payload.get(field), int) or payload[field] < 0:
                     raise AssertionError(f"{ctx}: RETRIEVAL_AUDIT requires nonnegative integer {field}")
-            if payload["retrieval_misses"] > payload["audited_queries"] or payload["wrong_authority"] > payload["audited_queries"]:
-                raise AssertionError(f"{ctx}: retrieval numerators cannot exceed audited_queries")
-            if row["metric_eligible"] and payload["audited_queries"] == 0:
-                raise AssertionError(f"{ctx}: metric-eligible RETRIEVAL_AUDIT requires audited_queries > 0")
+            unavailable = payload.get("unavailable_queries", 0)
+            if not isinstance(unavailable, int) or unavailable < 0:
+                raise AssertionError(f"{ctx}: RETRIEVAL_AUDIT requires nonnegative integer unavailable_queries")
+            if unavailable > payload["audited_queries"]:
+                raise AssertionError(f"{ctx}: unavailable_queries cannot exceed audited_queries")
+            eligible_queries = payload["audited_queries"] - unavailable
+            if payload["retrieval_misses"] > eligible_queries or payload["wrong_authority"] > eligible_queries:
+                raise AssertionError(f"{ctx}: retrieval numerators cannot exceed eligible scored queries")
+            if row["metric_eligible"] and eligible_queries == 0:
+                raise AssertionError(f"{ctx}: metric-eligible RETRIEVAL_AUDIT requires at least one available scored query")
 
         if row["event_type"] == "PROVENANCE_AUDIT":
             payload = row.get("metric_payload") or {}
@@ -144,6 +150,13 @@ def rate(n, d):
     if d == 0:
         return "N/A — insufficient eligible evidence"
     return f"{n}/{d} = {100*n/d:.1f}%"
+
+
+def latest_snapshot(events, event_type):
+    snapshots = [e for e in events if e["event_type"] == event_type]
+    if not snapshots:
+        return None
+    return max(snapshots, key=lambda e: (e["occurred_at"], e["event_id"]))
 
 
 def aggregate(rows):
@@ -166,14 +179,28 @@ def aggregate(rows):
         survived = sum(e.get("reality_test_outcome") == "SURVIVED" for e in reality)
         partial = sum(e.get("reality_test_outcome") == "PARTIAL" for e in reality)
 
-        retrieval = [e for e in events if e["event_type"] == "RETRIEVAL_AUDIT"]
-        audited_queries = sum(e["metric_payload"]["audited_queries"] for e in retrieval)
-        retrieval_misses = sum(e["metric_payload"]["retrieval_misses"] for e in retrieval)
-        wrong_authority = sum(e["metric_payload"]["wrong_authority"] for e in retrieval)
+        retrieval = latest_snapshot(events, "RETRIEVAL_AUDIT")
+        if retrieval:
+            payload = retrieval["metric_payload"]
+            query_set_size = payload["audited_queries"]
+            unavailable_queries = payload.get("unavailable_queries", 0)
+            eligible_queries = query_set_size - unavailable_queries
+            retrieval_misses = payload["retrieval_misses"]
+            wrong_authority = payload["wrong_authority"]
+            retrieval_snapshot = retrieval["event_id"]
+        else:
+            query_set_size = unavailable_queries = eligible_queries = retrieval_misses = wrong_authority = 0
+            retrieval_snapshot = "N/A"
 
-        provenance = [e for e in events if e["event_type"] == "PROVENANCE_AUDIT"]
-        eligible_assets = sum(e["metric_payload"]["eligible_assets"] for e in provenance)
-        manifested_assets = sum(e["metric_payload"]["manifested_assets"] for e in provenance)
+        provenance = latest_snapshot(events, "PROVENANCE_AUDIT")
+        if provenance:
+            payload = provenance["metric_payload"]
+            eligible_assets = payload["eligible_assets"]
+            manifested_assets = payload["manifested_assets"]
+            provenance_snapshot = provenance["event_id"]
+        else:
+            eligible_assets = manifested_assets = 0
+            provenance_snapshot = "N/A"
 
         results[scope] = {
             "eligible_events": len(events),
@@ -184,8 +211,13 @@ def aggregate(rows):
             "human_override_rate": rate(overrides, len(decisions)),
             "recommendation_reality_survival_rate": rate(survived, len(reality)),
             "recommendation_partial_count": partial,
-            "retrieval_miss_rate": rate(retrieval_misses, audited_queries),
-            "wrong_authority_rate": rate(wrong_authority, audited_queries),
+            "retrieval_snapshot": retrieval_snapshot,
+            "retrieval_query_set_size": query_set_size,
+            "retrieval_unavailable_queries": unavailable_queries,
+            "retrieval_eligible_queries": eligible_queries,
+            "retrieval_miss_rate": rate(retrieval_misses, eligible_queries),
+            "wrong_authority_rate": rate(wrong_authority, eligible_queries),
+            "provenance_snapshot": provenance_snapshot,
             "asset_provenance_coverage": rate(manifested_assets, eligible_assets),
         }
     return results
@@ -206,8 +238,11 @@ def print_report(results):
         print(f"human override rate: {m['human_override_rate']}")
         print(f"recommendation -> reality-test survival: {m['recommendation_reality_survival_rate']}")
         print(f"partial reality-test outcomes: {m['recommendation_partial_count']}")
+        print(f"retrieval current snapshot: {m['retrieval_snapshot']}")
+        print(f"retrieval query set: {m['retrieval_query_set_size']} | unavailable: {m['retrieval_unavailable_queries']} | eligible: {m['retrieval_eligible_queries']}")
         print(f"retrieval miss rate: {m['retrieval_miss_rate']}")
         print(f"wrong-authority rate: {m['wrong_authority_rate']}")
+        print(f"provenance current snapshot: {m['provenance_snapshot']}")
         print(f"asset provenance coverage: {m['asset_provenance_coverage']}")
 
 
