@@ -1,0 +1,64 @@
+{
+  "run_id": "OLEANDER-SP02-DATATREE-CP2-CP4-RUNTIME-001",
+  "job_type": "data_tree_cp2_cp4",
+  "status": "BOOTSTRAP JOB / NOT YET EXECUTED ON RHINO HOST",
+  "input": {
+    "definition_path": null,
+    "rhino_document_path": null,
+    "parameters": {
+      "zones": 4,
+      "items_per_zone": 6,
+      "dx": 2.4,
+      "dy": 3.6
+    },
+    "parameter_provenance": "SIMULATED_EXERCISE_ASSUMPTION",
+    "parameter_note": "练习用假设参数，不代表实际项目尺寸或项目数据。"
+  },
+  "expected_tree_contracts": {
+    "BASE": {"branch_count": 4, "item_count": 24, "items_per_branch": [6, 6, 6, 6]},
+    "GRAFT": {"branch_count": 24, "item_count": 24, "items_per_branch": "1 each"},
+    "FLATTEN": {"branch_count": 1, "item_count": 24, "items_per_branch": [24]},
+    "TRANSPOSE_BY_ITEM": {"branch_count": 6, "item_count": 24, "items_per_branch": [4, 4, 4, 4, 4, 4]}
+  },
+  "required_outputs": [
+    "gh_file",
+    "runtime_manifest",
+    "tree_report",
+    "grasshopper_canvas_png",
+    "rhino_viewport_png",
+    "log",
+    "receipt"
+  ],
+  "cp2": {
+    "require_real_rhino_grasshopper_runtime": true,
+    "close_only_if": [
+      "BASE is 4 x 6 in a real Grasshopper document",
+      "GRAFT is 24 x 1 in a real Grasshopper document",
+      "FLATTEN is 1 x 24 in a real Grasshopper document",
+      "TRANSPOSE_BY_ITEM is 6 x 4 in a real Grasshopper document",
+      "tree_report.json is generated from real Grasshopper GH_Structure objects"
+    ]
+  },
+  "cp4": {
+    "require_real_rhino_grasshopper_runtime": true,
+    "close_only_if": [
+      "Parameter Viewer or equivalent real Grasshopper tree-view evidence is captured before reorganization",
+      "Parameter Viewer or equivalent real Grasshopper tree-view evidence is captured after reorganization",
+      "native Path Mapper configuration is visible or its absence is explicitly HOLD",
+      "Grasshopper canvas screenshot is preserved"
+    ]
+  },
+  "failure_seek": {
+    "adverse": "one zone contains 5 instead of 6 items; the sixth transposed branch must expose only 3 members",
+    "failure_seeking": "one empty branch plus one null item; Flatten must not be used to conceal provenance loss"
+  },
+  "evidence_rules": {
+    "preserve_unknown": true,
+    "no_surrogate_promotion": true,
+    "required_real_runtime_for": ["CP2", "CP4", ".gh", "Grasshopper canvas", "Rhino viewport"]
+  },
+  "authority": {
+    "human_gate_required": true,
+    "approval_scope": "Training evidence only; no engineering, project, construction, safety or acceptance approval."
+  }
+}
