@@ -1,0 +1,54 @@
+[
+  {
+    "code": "A",
+    "title": "Deep Reveal",
+    "status": "ACTUALLY GENERATED",
+    "glb": "models/A_DEEP_REVEAL/scene.glb",
+    "component_count": 3,
+    "components_watertight": true,
+    "opening_area_ratio": 0.19090909090909092,
+    "reveal_depth_to_reference_width": 0.3333333333333333,
+    "opening_count": 1,
+    "frame_setback_from_interior_mm": 500.0,
+    "parameter_status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE"
+  },
+  {
+    "code": "B",
+    "title": "Soft Arch",
+    "status": "ACTUALLY GENERATED",
+    "glb": "models/B_SOFT_ARCH/scene.glb",
+    "component_count": 2,
+    "components_watertight": true,
+    "opening_area_ratio": 0.15580761034835058,
+    "reveal_depth_to_reference_width": 0.3125,
+    "opening_count": 1,
+    "frame_setback_from_interior_mm": null,
+    "parameter_status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE"
+  },
+  {
+    "code": "C",
+    "title": "Offset Frame",
+    "status": "ACTUALLY GENERATED",
+    "glb": "models/C_OFFSET_FRAME/scene.glb",
+    "component_count": 3,
+    "components_watertight": true,
+    "opening_area_ratio": 0.13636363636363635,
+    "reveal_depth_to_reference_width": 0.2,
+    "opening_count": 1,
+    "frame_setback_from_interior_mm": 90.0,
+    "parameter_status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE"
+  },
+  {
+    "code": "D",
+    "title": "Opening Field",
+    "status": "ACTUALLY GENERATED",
+    "glb": "models/D_OPENING_FIELD/scene.glb",
+    "component_count": 1,
+    "components_watertight": true,
+    "opening_area_ratio": 0.34545454545454546,
+    "reveal_depth_to_reference_width": 0.5833333333333334,
+    "opening_count": 5,
+    "frame_setback_from_interior_mm": null,
+    "parameter_status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE"
+  }
+]
