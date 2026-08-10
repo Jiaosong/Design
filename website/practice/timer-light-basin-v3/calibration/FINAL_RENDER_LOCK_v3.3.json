@@ -36,6 +36,15 @@
     "unlock_triggers": ["approved geometry change","real material/optical evidence replacing visualization hypothesis","render engine/version/color-pipeline change","documented design decision"],
     "production_page_deployment_qa": "SEPARATE GATE — integrated page should be rerun before public release"
   },
+  "revalidation_audit_2026_08_10": {
+    "round3_run_id": 31350071652,
+    "round3_execution": "PASS / WebGL executable",
+    "round3_visual_result": "REJECTED REGRESSION",
+    "round3_authority": "NON-AUTHORITATIVE",
+    "reason": "Round 3 changed the calibration geometry representation to simplified LatheGeometry/primitive proxies, so it was not a same-condition test of the locked canonical/surface-equivalent geometry.",
+    "lock_effect": "NONE — existing canonical render lock remains active",
+    "record": "calibration/round3/ROUND3_REGRESSION_REVIEW.md"
+  },
   "evidence_boundary": "Visualization quality decision only. Does not validate material optical performance, colorimetry, thermal, electrical, DFM/DFA, tolerance or user recognition.",
   "ai_image_generation_used_for_calibration": false
 }
