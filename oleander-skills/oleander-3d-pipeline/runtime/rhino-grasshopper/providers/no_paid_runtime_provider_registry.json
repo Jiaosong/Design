@@ -1,5 +1,5 @@
 {
-  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.1",
+  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.2",
   "reviewed_at": "2026-08-10",
   "policy": {
     "user_workstation_allowed": false,
@@ -15,6 +15,7 @@
       "provider_id": "MCNEEL_PUBLIC_LEGACY",
       "runtime_mode": "FREE_PUBLIC_COMPUTE",
       "execution_host": "McNeel historical public Compute",
+      "execution_engine": "RHINO_COMPUTE_GRASSHOPPER",
       "os": "REMOTE_UNKNOWN",
       "architecture": "REMOTE_UNKNOWN",
       "cost_class": "NO_PAID_RUNTIME_TARGET",
@@ -34,6 +35,7 @@
       "provider_id": "GITHUB_WINDOWS11_ARM_STANDARD",
       "runtime_mode": "FREE_HOSTED_CANDIDATE",
       "execution_host": "GitHub-hosted standard runner",
+      "execution_engine": "RHINO_DESKTOP_OR_COMPUTE",
       "workflow_label": "windows-11-arm",
       "os": "Windows 11 Desktop",
       "architecture": "arm64",
@@ -53,6 +55,7 @@
       "provider_id": "GITHUB_WINDOWS_X64_STANDARD",
       "runtime_mode": "FREE_HOSTED_CANDIDATE",
       "execution_host": "GitHub-hosted standard runner",
+      "execution_engine": "RHINO_COMPUTE_GRASSHOPPER",
       "workflow_labels": ["windows-latest", "windows-2025", "windows-2022"],
       "os": "Windows Server 2025/2022",
       "architecture": "x64",
@@ -72,6 +75,7 @@
       "provider_id": "GITHUB_UBUNTU_X64_STANDARD",
       "runtime_mode": "FREE_HOSTED_CANDIDATE",
       "execution_host": "GitHub-hosted standard runner",
+      "execution_engine": "RHINO_COMPUTE_GRASSHOPPER",
       "workflow_labels": ["ubuntu-latest", "ubuntu-24.04"],
       "os": "Ubuntu Server 24.04",
       "architecture": "x64",
@@ -91,25 +95,30 @@
       "provider_id": "GITHUB_MACOS_X64_STANDARD",
       "runtime_mode": "FREE_HOSTED_CANDIDATE",
       "execution_host": "GitHub-hosted standard runner",
-      "workflow_labels": ["macos-15-intel", "macos-26-intel"],
-      "os": "macOS",
+      "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
+      "workflow_label": "macos-15-intel",
+      "os": "macOS 15",
       "architecture": "x64",
       "cost_class": "FREE_STANDARD_PUBLIC_REPO",
       "user_workstation": false,
-      "official_support": "RHINO_COMPUTE_NOT_SUPPORTED_ON_MACOS",
-      "current_state": "UNSUPPORTED_OS",
+      "official_support": "PLATFORM_SUPPORTED_FOR_RHINO_MAC_AND_GRASSHOPPER_PLAYER",
+      "current_state": "INSTALLER_AND_LICENSE_REQUIRED",
       "eligible": false,
-      "probe_allowed": false,
-      "selector_reason": "McNeel Compute FAQ states Rhino.Compute does not work on macOS.",
+      "probe_allowed": true,
+      "selector_reason": "Rhino.Compute is not supported on macOS, but Rhino 8 for Mac supports Intel processors and GrasshopperPlayer can execute a .gh/.ghx without showing the Grasshopper window. The GitHub macOS Intel runner is therefore an environment candidate for real Grasshopper evidence, but Rhino installation and licensing are not yet authorized or configured.",
       "evidence_refs": [
         "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
-        "https://developer.rhino3d.com/en/guides/compute/compute-faq/"
+        "https://www.rhino3d.com/8/system-requirements/",
+        "https://docs.mcneel.com/rhino/8mac/help/en-us/commands/grasshopper.htm",
+        "https://developer.rhino3d.com/en/guides/scripting/advanced-cli/",
+        "https://www.rhino3d.com/en/8/eula/"
       ]
     },
     {
       "provider_id": "USER_WINDOWS_X64_DESKTOP",
       "runtime_mode": "DESKTOP_RHINO",
       "execution_host": "User Windows desktop",
+      "execution_engine": "RHINO_DESKTOP_GRASSHOPPER",
       "os": "Windows 11/10",
       "architecture": "x64",
       "cost_class": "STANDARD_RHINO_LICENSE_OR_EVALUATION",
@@ -127,9 +136,10 @@
   ],
   "selection_result": {
     "eligible_provider_count": 0,
-    "status": "NO_ELIGIBLE_NO_PAID_PROVIDER",
+    "status": "NO_EXECUTION_READY_NO_PAID_PROVIDER",
+    "next_candidate_for_environment_preflight": "GITHUB_MACOS_X64_STANDARD",
     "cp2": "OPEN",
     "cp4": "OPEN",
-    "note": "Registry facts do not replace live provider preflight or Rhino/Grasshopper runtime evidence."
+    "note": "macOS Intel is now treated as a Rhino desktop + GrasshopperPlayer candidate rather than a Rhino.Compute provider. It cannot become execution-ready until installer and license authority are resolved."
   }
 }
