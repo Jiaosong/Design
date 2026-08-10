@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4174",
+    "capture": "node capture.mjs"
+  },
+  "dependencies": {
+    "three": "0.174.0",
+    "postprocessing": "6.39.4",
+    "vite": "7.1.1",
+    "playwright": "1.54.2"
+  }
+}
