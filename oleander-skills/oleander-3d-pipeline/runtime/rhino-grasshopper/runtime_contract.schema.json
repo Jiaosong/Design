@@ -19,6 +19,7 @@
         "runtime_probe",
         "runtime_provider_probe",
         "runtime_provider_selection",
+        "runtime_authority_gate",
         "capture_evidence",
         "grasshopper_definition_run",
         "data_tree_cp2_cp4",
@@ -49,6 +50,8 @@
             "UNSUPPORTED_ARCHITECTURE",
             "UNSUPPORTED_OS",
             "INSTALLER_AND_LICENSE_REQUIRED",
+            "HUMAN_AUTHORITY_REQUIRED",
+            "AUTHORITY_READY_FOR_PREP",
             "RUNTIME_INSTALLED_LICENSE_UNKNOWN",
             "POLICY_BLOCKED",
             "UNAVAILABLE",
@@ -63,6 +66,8 @@
             "RUN_PROVIDER_PREFLIGHT",
             "HOLD_FOR_TIEBREAK",
             "HOLD_FOR_INSTALLER_AND_LICENSE",
+            "HOLD_FOR_HUMAN_AUTHORITY",
+            "ALLOW_INSTALLER_AND_LICENSE_PREP",
             "HOLD_CP2_PRESERVE_CP4_OPEN"
           ]
         },
@@ -102,6 +107,7 @@
           "runtime_manifest",
           "provider_preflight_receipt",
           "provider_selection_receipt",
+          "human_authority_receipt",
           "tree_report",
           "grasshopper_canvas_png",
           "rhino_viewport_png",
@@ -121,6 +127,7 @@
         "no_paid_fallback": {"type": "boolean"},
         "provider_preflight_is_runtime_evidence": {"type": "boolean", "const": false},
         "provider_selection_is_runtime_evidence": {"type": "boolean", "const": false},
+        "human_authority_gate_is_runtime_evidence": {"type": "boolean", "const": false},
         "required_real_runtime_for": {
           "type": "array",
           "items": {"type": "string"}
