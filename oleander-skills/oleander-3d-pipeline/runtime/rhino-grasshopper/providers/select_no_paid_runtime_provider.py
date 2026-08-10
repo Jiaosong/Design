@@ -3,7 +3,7 @@
 
 This selector does not execute Rhino and is not runtime evidence. It distinguishes:
 1. execution-ready providers;
-2. technically supported candidates blocked by installer/licensing authority;
+2. technically supported candidates blocked by explicit human/install/license authority;
 3. hard-rejected providers that violate platform, cost, service, or workstation policy.
 """
 from __future__ import annotations
@@ -15,8 +15,17 @@ from pathlib import Path
 EXECUTION_READY_STATES = {"AVAILABLE"}
 AUTHORITY_BLOCKED_STATES = {
     "INSTALLER_AND_LICENSE_REQUIRED",
+    "HUMAN_AUTHORITY_REQUIRED",
     "RUNTIME_INSTALLED_LICENSE_UNKNOWN",
 }
+
+
+def staged_gate(state: str | None) -> tuple[str, str]:
+    if state == "HUMAN_AUTHORITY_REQUIRED":
+        return "HUMAN_AUTHORITY", "HOLD_FOR_HUMAN_AUTHORITY"
+    if state == "RUNTIME_INSTALLED_LICENSE_UNKNOWN":
+        return "LICENSE_VALIDATION_AUTHORITY", "HOLD_FOR_INSTALLER_AND_LICENSE"
+    return "INSTALLER_AND_LICENSE_AUTHORITY", "HOLD_FOR_INSTALLER_AND_LICENSE"
 
 
 def main() -> int:
@@ -55,11 +64,13 @@ def main() -> int:
             continue
 
         if not user_workstation and probe_allowed and state in AUTHORITY_BLOCKED_STATES:
+            next_gate, next_action = staged_gate(state)
             staged_candidates.append({
                 "provider_id": provider_id,
                 "state": state,
                 "execution_engine": provider.get("execution_engine"),
-                "next_gate": "INSTALLER_AND_LICENSE_AUTHORITY",
+                "next_gate": next_gate,
+                "next_action": next_action,
                 "reason": provider.get("selector_reason"),
             })
             continue
@@ -84,7 +95,7 @@ def main() -> int:
         status = "NO_EXECUTION_READY_NO_PAID_PROVIDER"
         selected = None
         best_candidate = staged_candidates[0]["provider_id"]
-        next_action = "HOLD_FOR_INSTALLER_AND_LICENSE"
+        next_action = staged_candidates[0]["next_action"]
     else:
         status = "NO_ELIGIBLE_NO_PAID_PROVIDER"
         selected = None
@@ -92,7 +103,7 @@ def main() -> int:
         next_action = "HOLD_CP2_PRESERVE_CP4_OPEN"
 
     receipt = {
-        "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.2",
+        "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.3",
         "registry_id": data.get("registry_id"),
         "status": status,
         "selected_provider": selected,
