@@ -1,0 +1,12 @@
+{
+  "sheets": 2,
+  "total_text_objects": 135,
+  "total_boundary_issues": 0,
+  "all_outlined_font_independent": true,
+  "all_previews_exist": true,
+  "H03_scale_check": {
+    "75mm_at_1_2": 37.5,
+    "110mm_at_1_2": 55.0,
+    "12mm_at_1_2": 6.0
+  }
+}
