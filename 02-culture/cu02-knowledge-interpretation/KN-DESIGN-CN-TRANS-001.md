@@ -6,7 +6,7 @@
 - People: PER-ARCHITECT-001｜王澍; PER-ARCHITECT-002｜陆文宇
 - Studio: Amateur Architecture Studio｜业余建筑工作室
 - Notion canonical object: https://app.notion.com/p/3a8b86be5c4781ffbfd3f91642e1cad3
-- Verified: 2026-08-07
+- Verified: 2026-08-10
 
 > GitHub is a versioned knowledge mirror, not the canonical narrative source. Full evidence notes, relations and ongoing research status remain in Notion.
 
@@ -54,6 +54,98 @@ AI may extract candidate mechanisms from verified sources, classify fact / autho
 
 Human judgment remains required for cultural source and rights, real spatial/body scale, material and construction experience, selection of historical references, and deciding which mechanisms are relevant to OLEANDER.
 
+## Mechanism matrix v1｜2026-08-10
+
+This section deepens the framework from architecture-case analysis into source-object mechanisms. The historical records below are institutional evidence; the mechanism extraction and cross-media mapping are OLEANDER interpretations, not historical laws.
+
+### A. Classical gardens: relation compression inside a limited field
+Source evidence: UNESCO describes the Classical Gardens of Suzhou as miniature natural worlds built within limited residential space using water, stones, plants and buildings, with adaptation to local conditions.
+
+OLEANDER mechanism:
+`limited boundary → layered relations → partial conceal/reveal → sequential rereading along a path`
+
+Transfer:
+- Brand/IP: structure proposition → secondary information → local evidence as layered disclosure instead of motif accumulation.
+- Website: treat navigation as path and threshold; reveal only necessary relations first, then progressively expose detail.
+- Spatial: use path, enclosure, opening, sightline and scale changes rather than garden symbols.
+- Product: organize multiple state cues inside a limited surface/volume according to reading order.
+
+Remove-the-symbol test: delete lattice windows, rocks, bridges and other visible historic signs. If the relational logic still works, the translation may have reached T2.
+
+Source: https://whc.unesco.org/en/list/813
+
+### B. Calligraphy: dynamic variation inside a fixed structure
+Source evidence: The Metropolitan Museum of Art explains that Chinese calligraphy combines recognized character structure and stroke order with variations produced by brush speed, pressure, tip/side use and ink loading; order and dynamism coexist.
+
+OLEANDER mechanism:
+`structural / sequential constraint + continuous movement variables + local difference + overall balance`
+
+Transfer:
+- Visual: define the skeleton and alignment first; vary width, density and kinetic emphasis only within that structure.
+- Motion: map speed, acceleration, pause and rebound into time variables instead of simulating ink texture.
+- Product: map operation intensity or rotation to continuous feedback variables such as light, resistance or transition speed.
+- AI: separate speed / pressure / rhythm / density into parameters; prohibit “calligraphic feeling” as the only instruction.
+
+Remove-the-symbol test: remove brush texture. If meaning collapses completely, the route remains primarily T0.
+
+Source: https://www.metmuseum.org/essays/chinese-calligraphy
+
+### C. Timber joinery: connection relation before appearance
+Source evidence: UNESCO records Chinese timber-frame construction as a system in which columns, beams, purlins, lintels and bracket sets are connected by tenon joints, with components manufactured in advance and assembled on site; the craft also depends on systematic procedures and practical transmission.
+
+OLEANDER mechanism:
+`component identity → interface geometry → assembly sequence → structural/behavioral constraint → maintenance relationship`
+
+Transfer:
+- Product: define part interfaces, assembly/disassembly, replacement and repair before deciding whether joints should be visually exposed.
+- Spatial: nodes must explain component, load, installation sequence and maintenance; historic joinery imagery never substitutes for engineering calculation.
+- Website/design system: components combine through explicit dependency rules so local replacement does not break the system.
+- Brand: identity assets need defined roles and combination logic rather than a collection of “traditional elements.”
+
+Remove-the-symbol test: if the system relation is unchanged and only a tenon-shaped graphic is added, classify it as T0.
+
+Source: https://ich.unesco.org/en/RL/chinese-traditional-architectural-craftsmanship-for-timber-framed-structures-00223
+
+### D. Song-period object study: measure an exact object, not a dynasty adjective
+Source object: The Met Jian ware teabowl, China, Song dynasty, 11th–12th century, stoneware with hare's-fur glaze, diameter 12.4 cm.
+
+OLEANDER mechanism:
+`use → dimensions → rim/body/foot relation → material → surface formation → hand contact`
+
+Transfer:
+- Product/CMF: build variables from measurable proportion, material thickness, surface behavior and holding relationship rather than a “Song palette.”
+- Visual: a large quiet field with localized material variation can be studied only when tied back to a specific object/source.
+
+Boundary: one teabowl is a research object, not a proxy for all Song aesthetics. Reject formulas such as “Song = low saturation + whitespace + minimalism.”
+
+Source: https://www.metmuseum.org/art/collection/search/48110
+
+## Source-to-variable translation card
+
+```text
+Source Object / Text
+→ Verified Facts
+→ Historical / Social Context
+→ First-reading Unit
+→ Invariants
+→ Variables
+→ T0–T4 Translation Level
+→ Cross-media Candidate
+→ Remove-the-symbol Test
+→ Human Judgment
+→ Physical / Behavioral Validation
+→ Keep / Reject / Revise
+→ Knowledge Writeback
+```
+
+## AI Design Reasoning Pipeline interface
+
+The mechanism matrix plugs into the existing OLEANDER AI collaboration method rather than creating a prompt library:
+
+`case/source input → evidence separation → structural decomposition → mechanism extraction → invariant/variable split → parametric description → controlled AI variants → adversarial reading → human judgment → physical/behavioral validation → decision log → knowledge writeback`
+
+AI generation is invalid as evidence until the relevant real-world validation has actually been performed.
+
 ## Pending C01 validation
 
 Candidate only — not yet executed:
@@ -75,6 +167,10 @@ Historical use of a material or craft does **not** establish current compliance,
 - MoMA — Wang Shu, Lu Wenyu, Xiangshan Campus: https://www.moma.org/collection/works/416148
 - MoMA — Wang Shu, Lu Wenyu, Wencun Village: https://www.moma.org/collection/works/416155
 - ArchDaily — An Interview with Lu Wenyu, Amateur Architecture Studio: https://www.archdaily.com/630645/an-interview-with-lu-wenyu-amateur-architecture-studio
+- UNESCO — Classical Gardens of Suzhou: https://whc.unesco.org/en/list/813
+- UNESCO — Chinese traditional architectural craftsmanship for timber-framed structures: https://ich.unesco.org/en/RL/chinese-traditional-architectural-craftsmanship-for-timber-framed-structures-00223
+- The Met — Chinese Calligraphy: https://www.metmuseum.org/essays/chinese-calligraphy
+- The Met — Jian ware teabowl, Song dynasty: https://www.metmuseum.org/art/collection/search/48110
 
 ## Evidence boundary
-Author/studio/project facts rely on the institution and collection sources above. T0–T4, first-reading analysis and OLEANDER transfer are current analytical constructs, not quotations or claims by Wang Shu or Lu Wenyu. The framework remains PARTIAL because the first deep batch is architecture-heavy; graphic/type/book, product/furniture, digital and craft cases still require comparable evidence depth.
+Author/studio/project facts rely on the institution and collection sources above. T0–T4, first-reading analysis, mechanism extraction, cross-media transfer and the AI pipeline are current analytical constructs, not quotations or claims by the historical makers or institutions. The framework remains PARTIAL because product, graphic/type/book, digital and craft applications still require executed validation in actual OLEANDER work.
