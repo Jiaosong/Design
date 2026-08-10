@@ -17,9 +17,21 @@
 ## 当前验证入口
 
 - `PRAC-C01-TRANS-ABC-001.md`：榜—牌坊礼序路径第一轮 A/B/C 转译与 Reality Gate 1。
-- `PRAC-C01-TRANS-ABC-001_prototype.html`：可运行低保真现场记录工具；只用于生成原始测试记录，不构成历史定论、文保批准或学习效果证明。
+- `PRAC-C01-TRANS-ABC-001_RG1.5.md`：既有导览 / 既有研究现实基线，以及 A0+A1、C1+C2 的实验修订。
+- `PRAC-C01-TRANS-ABC-001_prototype.html`：第一轮低保真记录工具，保留为历史原型。
+- `PRAC-C01-TRANS-ABC-001_fieldpack_v0.2.html`：Reality Gate 2 现场记录包；记录 A0 / A1 / B / C1 / C2、现场约束、解释权与原始 JSON。
 
-当前 Round 01 决策：A 符号/讲解路线仅保留为对照；B 证据/材料路线保留修订；C 关系/行为路线为领先候选，但 Reality Gate 2 的真实现场与参与者测试尚未执行。因此项目状态不升级。
+当前决策：
+
+- A0 现有导览基线：`PENDING CAPTURE`；
+- A1 受控讲解：`KEEP AS CONTROL`；
+- B 证据阅读：`KEEP`；
+- C1 单坊深读：`KEEP`；
+- C2 多坊比较：`LEAD CANDIDATE / NOT RUN`。
+
+公开资料已经表明广渡此前存在导览设施、调研与多轮高校规划设计介入，因此 C01 不再以“新增第一套导览 / 首次调研”为价值主张。当前验证问题是：能否在既有系统之上形成可追溯的证据分层、对象比较、自主问题、文化解释权与后续责任链。
+
+Reality Gate 2 的真实现场、地方共审和参与者测试尚未执行，因此项目状态与证据等级不升级。
 
 ## 阅读说明
 
