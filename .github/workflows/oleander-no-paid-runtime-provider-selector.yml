@@ -1,0 +1,69 @@
+name: OLEANDER NO_PAID_RUNTIME Provider Selector
+
+on:
+  push:
+    branches:
+      - feature/rhino-grasshopper-runtime-v0.1
+    paths:
+      - '.github/workflows/oleander-no-paid-runtime-provider-selector.yml'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/providers/no_paid_runtime_provider_registry.json'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/providers/select_no_paid_runtime_provider.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  select-provider:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      RUNTIME_ROOT: oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+
+      - name: Reject any paid Rhino runtime token
+        shell: bash
+        run: |
+          if [ -n "${RHINO_TOKEN:-}" ]; then
+            echo "NO_PAID_RUNTIME selector refuses RHINO_TOKEN / Core-Hour billing." >&2
+            exit 1
+          fi
+          echo "NO_PAID_RUNTIME gate active"
+
+      - name: Run deterministic provider eligibility selector
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/providers/select_no_paid_runtime_provider.py" \
+            --registry "$RUNTIME_ROOT/providers/no_paid_runtime_provider_registry.json" \
+            --receipt "$RUNTIME_ROOT/runtime-state/provider-selection/no_paid_provider_selection_receipt.json"
+
+      - name: Verify evidence boundary
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/provider-selection/no_paid_provider_selection_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          assert r['runtime_evidence'] is False
+          assert r['cp2'] == 'OPEN'
+          assert r['cp4'] == 'OPEN'
+          print('selector_status=', r['status'])
+          print('selected_provider=', r['selected_provider'])
+          print('eligible_providers=', len(r['eligible_providers']))
+          print('next_action=', r['next_action'])
+          print('runtime_evidence=', r['runtime_evidence'])
+          print('cp2=', r['cp2'])
+          print('cp4=', r['cp4'])
+          PY
+
+      - name: Upload selector receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-no-paid-runtime-provider-selector
+          path: |
+            ${{ env.RUNTIME_ROOT }}/runtime-state/provider-selection/no_paid_provider_selection_receipt.json
+          if-no-files-found: error
+          retention-days: 14
