@@ -1,0 +1,135 @@
+{
+  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.1",
+  "reviewed_at": "2026-08-10",
+  "policy": {
+    "user_workstation_allowed": false,
+    "paid_runtime_allowed": false,
+    "unsupported_architecture_allowed": false,
+    "unsupported_os_allowed": false,
+    "unofficial_third_party_compute_allowed": false,
+    "surrogate_may_promote_cp2": false,
+    "headless_may_close_cp4": false
+  },
+  "providers": [
+    {
+      "provider_id": "MCNEEL_PUBLIC_LEGACY",
+      "runtime_mode": "FREE_PUBLIC_COMPUTE",
+      "execution_host": "McNeel historical public Compute",
+      "os": "REMOTE_UNKNOWN",
+      "architecture": "REMOTE_UNKNOWN",
+      "cost_class": "NO_PAID_RUNTIME_TARGET",
+      "user_workstation": false,
+      "official_support": "HISTORICAL_ENDPOINT_CURRENTLY_DISABLED",
+      "current_state": "PUBLIC_SERVICE_DISABLED",
+      "eligible": false,
+      "probe_allowed": true,
+      "selector_reason": "Actual 2026-08-10 provider preflight returned HTTP 404 and 'This server has been turned off'.",
+      "evidence_refs": [
+        "GitHub Actions run 31360491115",
+        "GitHub Actions run 31362931991",
+        "https://developer.rhino3d.com/en/guides/compute/compute-faq/"
+      ]
+    },
+    {
+      "provider_id": "GITHUB_WINDOWS11_ARM_STANDARD",
+      "runtime_mode": "FREE_HOSTED_CANDIDATE",
+      "execution_host": "GitHub-hosted standard runner",
+      "workflow_label": "windows-11-arm",
+      "os": "Windows 11 Desktop",
+      "architecture": "arm64",
+      "cost_class": "FREE_STANDARD_PUBLIC_REPO",
+      "user_workstation": false,
+      "official_support": "GITHUB_SUPPORTED_BUT_RHINO_UNSUPPORTED_ARCHITECTURE",
+      "current_state": "UNSUPPORTED_ARCHITECTURE",
+      "eligible": false,
+      "probe_allowed": false,
+      "selector_reason": "GitHub provides a free Windows 11 arm64 runner, but Rhino 8 for Windows officially requires a 64-bit Intel or AMD processor and lists ARM processors as unsupported.",
+      "evidence_refs": [
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+        "https://www.rhino3d.com/8/system-requirements/"
+      ]
+    },
+    {
+      "provider_id": "GITHUB_WINDOWS_X64_STANDARD",
+      "runtime_mode": "FREE_HOSTED_CANDIDATE",
+      "execution_host": "GitHub-hosted standard runner",
+      "workflow_labels": ["windows-latest", "windows-2025", "windows-2022"],
+      "os": "Windows Server 2025/2022",
+      "architecture": "x64",
+      "cost_class": "GITHUB_RUNNER_FREE_BUT_RHINO_SERVER_BILLING_REQUIRED",
+      "user_workstation": false,
+      "official_support": "COMPUTE_SERVER_REQUIRES_CORE_HOUR_BILLING",
+      "current_state": "PAID_PATH_REJECTED",
+      "eligible": false,
+      "probe_allowed": false,
+      "selector_reason": "GitHub standard Windows x64 images are Windows Server. McNeel requires Core-Hour Billing when Rhino runs on Windows Server, so this violates NO_PAID_RUNTIME.",
+      "evidence_refs": [
+        "https://github.com/actions/runner-images",
+        "https://developer.rhino3d.com/en/guides/compute/core-hour-billing/"
+      ]
+    },
+    {
+      "provider_id": "GITHUB_UBUNTU_X64_STANDARD",
+      "runtime_mode": "FREE_HOSTED_CANDIDATE",
+      "execution_host": "GitHub-hosted standard runner",
+      "workflow_labels": ["ubuntu-latest", "ubuntu-24.04"],
+      "os": "Ubuntu Server 24.04",
+      "architecture": "x64",
+      "cost_class": "GITHUB_RUNNER_FREE_BUT_RHINO_COMPUTE_TOKEN_REQUIRED",
+      "user_workstation": false,
+      "official_support": "COMPUTE_LINUX_REQUIRES_CORE_HOUR_TOKEN",
+      "current_state": "PAID_PATH_REJECTED",
+      "eligible": false,
+      "probe_allowed": false,
+      "selector_reason": "McNeel's Linux Compute guide requires a Core-Hour Billing Token; NO_PAID_RUNTIME forbids that token.",
+      "evidence_refs": [
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+        "https://developer.rhino3d.com/guides/compute/compute-linux-getting-started/"
+      ]
+    },
+    {
+      "provider_id": "GITHUB_MACOS_X64_STANDARD",
+      "runtime_mode": "FREE_HOSTED_CANDIDATE",
+      "execution_host": "GitHub-hosted standard runner",
+      "workflow_labels": ["macos-15-intel", "macos-26-intel"],
+      "os": "macOS",
+      "architecture": "x64",
+      "cost_class": "FREE_STANDARD_PUBLIC_REPO",
+      "user_workstation": false,
+      "official_support": "RHINO_COMPUTE_NOT_SUPPORTED_ON_MACOS",
+      "current_state": "UNSUPPORTED_OS",
+      "eligible": false,
+      "probe_allowed": false,
+      "selector_reason": "McNeel Compute FAQ states Rhino.Compute does not work on macOS.",
+      "evidence_refs": [
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+        "https://developer.rhino3d.com/en/guides/compute/compute-faq/"
+      ]
+    },
+    {
+      "provider_id": "USER_WINDOWS_X64_DESKTOP",
+      "runtime_mode": "DESKTOP_RHINO",
+      "execution_host": "User Windows desktop",
+      "os": "Windows 11/10",
+      "architecture": "x64",
+      "cost_class": "STANDARD_RHINO_LICENSE_OR_EVALUATION",
+      "user_workstation": true,
+      "official_support": "SUPPORTED_FOR_LOCAL_COMPUTE",
+      "current_state": "POLICY_BLOCKED",
+      "eligible": false,
+      "probe_allowed": false,
+      "selector_reason": "McNeel supports local Compute with a standard Rhino licence/evaluation, but the current OLEANDER execution policy explicitly excludes the user's workstation.",
+      "evidence_refs": [
+        "https://developer.rhino3d.com/en/guides/compute/compute-faq/",
+        "https://developer.rhino3d.com/en/guides/compute/development/"
+      ]
+    }
+  ],
+  "selection_result": {
+    "eligible_provider_count": 0,
+    "status": "NO_ELIGIBLE_NO_PAID_PROVIDER",
+    "cp2": "OPEN",
+    "cp4": "OPEN",
+    "note": "Registry facts do not replace live provider preflight or Rhino/Grasshopper runtime evidence."
+  }
+}
