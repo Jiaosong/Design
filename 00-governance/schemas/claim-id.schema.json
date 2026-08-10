@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.local/schemas/claim-id-v1.schema.json",
+  "title": "OLEANDER Claim ID v1",
+  "description": "Canonical Claim ID namespace. Bare Cnn values are reserved for case roots and are invalid as Claim IDs.",
+  "type": "string",
+  "oneOf": [
+    {"pattern": "^CLM-C\\d{2}-\\d{3}$"},
+    {"pattern": "^CLM-SYS-\\d{3}$"},
+    {"pattern": "^CLM-MTH-\\d{3}$"}
+  ],
+  "not": {"pattern": "^C\\d{2}$"}
+}
