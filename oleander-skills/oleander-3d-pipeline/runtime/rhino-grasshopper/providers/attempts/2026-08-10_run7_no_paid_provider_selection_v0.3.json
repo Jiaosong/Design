@@ -1,0 +1,28 @@
+{
+  "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.3",
+  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.3",
+  "github_run_id": "31365990070",
+  "github_run_number": 7,
+  "github_artifact_id": "9054145143",
+  "github_artifact_digest": "sha256:f93dc97f35576681c020126297bc09d1e313552f0c884d9d0a90dfbfa7c2de4e",
+  "status": "NO_EXECUTION_READY_NO_PAID_PROVIDER",
+  "selected_provider": null,
+  "best_current_candidate": "GITHUB_MACOS_X64_STANDARD",
+  "execution_ready_count": 0,
+  "staged_candidate_count": 1,
+  "staged_candidates": [
+    {
+      "provider_id": "GITHUB_MACOS_X64_STANDARD",
+      "state": "HUMAN_AUTHORITY_REQUIRED",
+      "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
+      "next_gate": "HUMAN_AUTHORITY",
+      "next_action": "HOLD_FOR_HUMAN_AUTHORITY"
+    }
+  ],
+  "next_action": "HOLD_FOR_HUMAN_AUTHORITY",
+  "evidence_level": "CONTROL_PLANE_SELECTION_ONLY",
+  "runtime_evidence": false,
+  "cp2": "OPEN",
+  "cp4": "OPEN",
+  "drive_file_id": "1c6hYy5YPDAuXNah0OykdZZGJWMJC2ZoR"
+}
