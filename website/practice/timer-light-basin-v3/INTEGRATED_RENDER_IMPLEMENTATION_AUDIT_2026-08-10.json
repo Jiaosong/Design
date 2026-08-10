@@ -1,0 +1,28 @@
+{
+  "status": "IMPLEMENTATION_MATCH_PASS",
+  "checks": {
+    "canonical_glb_sha_match": true,
+    "hero_and_cmf_bind_canonical": true,
+    "housing_roughness_0_55": true,
+    "diffuser_profile_roughness_0_42": true,
+    "diffuser_profile_transmission_0_30": true,
+    "diffuser_profile_ior_1_49": true,
+    "knob_metalness_1_roughness_0_27": true,
+    "hero_shadow_opacity_0_22_blur_5_2": true,
+    "top_grazing_key_locked": true,
+    "knob_focus_locked": true,
+    "linear_hdr_no_renderer_tonemap": true,
+    "agx_last_stage": true,
+    "halffloat_post_and_shadow": true,
+    "viewer_geometry_not_mutated": true,
+    "orientation_scale_only": true,
+    "deps_exact": true,
+    "local_refs_exist": true
+  },
+  "canonical_glb": "assets/pbr/timer_100_pbr.glb",
+  "canonical_glb_sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+  "missing_local_refs": [],
+  "browser_integrated_gate": "BLOCKED_IN_CURRENT_RUNTIME_POLICY",
+  "render_lock_effect": "NONE — FINAL HERO / CMF RENDER PROFILE remains LOCKED",
+  "evidence_boundary": "Visualization implementation audit only; engineering validation remains NOT RUN."
+}
