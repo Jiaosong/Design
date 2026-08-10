@@ -6,6 +6,21 @@
 
 这些内容作为个人研究与方法积累的一部分展示。它们可能处于练习、原型、测试计划或阶段性验证状态，因此不会因为进入 GitHub 就被描述为真实项目结果、生产成果或已完成验证。
 
+## Mandatory Post-Generation Review｜2026 Practice Gate
+
+2026 年所有 Practice 记录统一执行：
+
+`Generate → Automated QA → Open final artifact → Post-Generation Review → Fix → Re-review → Archive`
+
+- 自动 QA、bbox=0、脚本 PASS、文件导出成功或可复现运行都不能直接证明成品通过；
+- 必须实际打开最终 SVG / PDF / PNG / 模型检查视觉、图文边界、比例、几何—标注一致性、构造逻辑和证据状态；
+- 未审查：`REVIEW PENDING`；
+- 发现问题：`POST-REVIEW FAIL / NEEDS REVISION`；
+- 修正后重审通过：`POST-REVIEW PASS`；
+- 只有 `POST-REVIEW PASS` 才允许 DONE / PASS / Candidate。
+
+Canonical rule: [`../../00-governance/post-generation-review-gate.md`](../../00-governance/post-generation-review-gate.md)
+
 ## Included
 
 | Practice | Scope / node | Repository artifact | Source |
