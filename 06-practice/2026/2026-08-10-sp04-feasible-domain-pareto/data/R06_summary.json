@@ -1,0 +1,37 @@
+{
+  "status": "ACTUALLY EXECUTED",
+  "source_matrix": "SP04-R05 coupling_matrix.csv",
+  "source_total_combinations": 43904,
+  "feasible_count": 22806,
+  "infeasible_count": 21098,
+  "domain_thresholds": {
+    "boundary_feasible_max_robustness_margin": 0.05,
+    "robust_feasible_min_robustness_margin": 0.2,
+    "status": "TRAINING-ONLY ANALYSIS THRESHOLDS"
+  },
+  "domain_counts": {
+    "boundary_feasible": 7619,
+    "intermediate_feasible": 2433,
+    "robust_feasible": 12754
+  },
+  "pareto_count": 7,
+  "pareto_objectives": [
+    "maximize openness_ratio",
+    "maximize robustness_margin",
+    "minimize opening count"
+  ],
+  "governing_constraint_counts": {
+    "vertical": 6713,
+    "packing": 6126,
+    "gap": 5772,
+    "edge": 3167,
+    "radius": 1028
+  },
+  "profiles": {
+    "BALANCED": {"pareto_id":"PR005","candidate_id":"FD00798","wall_thickness_mm":40,"edge_mm":80,"gap_mm":150,"radius_mm":12,"count":4,"opening_width_mm":750,"packing_margin_mm":2390.0,"openness_ratio":0.2727023008771953,"robustness_margin":0.3983333333333333,"balanced_score":0.6590496391216385,"governing_constraint":"packing"},
+    "MAX_OPENNESS": {"pareto_id":"PR003","candidate_id":"FD00711","wall_thickness_mm":40,"edge_mm":80,"gap_mm":120,"radius_mm":12,"count":6,"opening_width_mm":750,"packing_margin_mm":740.0,"openness_ratio":0.40905345131579296,"robustness_margin":0.12333333333333334,"balanced_score":0.48815157311031854,"governing_constraint":"packing"},
+    "MAX_ROBUSTNESS": {"pareto_id":"PR006","candidate_id":"FD00797","wall_thickness_mm":40,"edge_mm":80,"gap_mm":150,"radius_mm":12,"count":4,"opening_width_mm":600,"packing_margin_mm":2990.0,"openness_ratio":0.2181568463317408,"robustness_margin":0.40606060606060607,"balanced_score":0.5999898255069588,"governing_constraint":"vertical"},
+    "MIN_COMPLEXITY": {"pareto_id":"PR007","candidate_id":"FD00795","wall_thickness_mm":40,"edge_mm":80,"gap_mm":150,"radius_mm":12,"count":2,"opening_width_mm":900,"packing_margin_mm":3890.0,"openness_ratio":0.16362387771132494,"robustness_margin":0.40606060606060607,"balanced_score":0.6000000000000001,"governing_constraint":"vertical"}
+  },
+  "balanced_weights": {"openness":0.4,"robustness":0.4,"simplicity":0.2,"status":"TRAINING-ONLY RANKING WEIGHTS; NOT USED TO DEFINE PARETO FRONT"}
+}
