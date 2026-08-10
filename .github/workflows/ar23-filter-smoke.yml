@@ -1,0 +1,37 @@
+name: AR23 Filter Smoke Test
+
+on:
+  push:
+    branches:
+      - research/ar23-corpus-v0.1-20260810
+    paths:
+      - '.github/workflows/ar23-filter-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test Dataset Viewer filter by parent_asin
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests, json
+          ds='gmongaras/Amazon-Reviews-2023'
+          s=requests.get('https://datasets-server.huggingface.co/splits',params={'dataset':ds},timeout=60)
+          print('splits_status',s.status_code)
+          print(s.text[:1500])
+          s.raise_for_status()
+          splits=s.json().get('splits') or []
+          row=next((x for x in splits if x.get('split')=='train'),splits[0])
+          params={'dataset':ds,'config':row['config'],'split':row['split'],'where':'"parent_asin"=\'B07C45G8TJ\'','offset':0,'length':5}
+          r=requests.get('https://datasets-server.huggingface.co/filter',params=params,timeout=90)
+          print('filter_url',r.url)
+          print('filter_status',r.status_code)
+          print(r.text[:5000])
+          r.raise_for_status()
+          PY
