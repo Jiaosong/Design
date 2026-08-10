@@ -52,7 +52,9 @@ jobs:
           assert r['cp4'] == 'OPEN'
           print('selector_status=', r['status'])
           print('selected_provider=', r['selected_provider'])
-          print('eligible_providers=', len(r['eligible_providers']))
+          print('best_current_candidate=', r.get('best_current_candidate'))
+          print('execution_ready_providers=', len(r.get('execution_ready_providers', [])))
+          print('staged_candidates=', len(r.get('staged_candidates', [])))
           print('next_action=', r['next_action'])
           print('runtime_evidence=', r['runtime_evidence'])
           print('cp2=', r['cp2'])
