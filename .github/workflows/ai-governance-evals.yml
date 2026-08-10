@@ -5,6 +5,7 @@ on:
     paths:
       - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
       - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
+      - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
       - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
       - 'evals/**'
       - 'oleander-skills/**'
@@ -14,6 +15,7 @@ on:
     paths:
       - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
       - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
+      - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
       - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
       - 'evals/**'
       - 'oleander-skills/**'
@@ -24,7 +26,7 @@ permissions:
 
 jobs:
   governance-corpus:
-    name: P0 + P1 governance corpus
+    name: P0 + P1 + P2 governance and runtime evidence
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,13 +40,22 @@ jobs:
       - name: Validate governance corpus
         run: python evals/scripts/validate_evals.py
 
+      - name: Compute P2 runtime metrics
+        run: python evals/runtime/compute_metrics.py | tee /tmp/p2-metrics.txt
+
       - name: Publish summary
         if: always()
         run: |
-          echo '## OLEANDER AI Governance P0 + P1' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates five reusable skill Golden Sets.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
+          echo '## OLEANDER AI Governance P0 + P1 + P2' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates five reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P1 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Asset manifest does not claim C2PA Content Credentials by default.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates P2 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Workflow dependencies are pinned to immutable reviewed commit SHAs.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Actual model/prompt/skill candidate runs still require versioned result records and human approval before PROMOTE.' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '### P2 current evidence' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f /tmp/p2-metrics.txt ]; then
+            sed 's/^/- /' /tmp/p2-metrics.txt >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '- P2 metrics unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
+          fi
