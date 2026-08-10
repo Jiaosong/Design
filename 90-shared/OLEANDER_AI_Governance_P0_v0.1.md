@@ -160,6 +160,10 @@ Model / skill version changes are analogous to changing a measuring instrument: 
 - `evals/scripts/` — deterministic validators
 - `.github/workflows/ai-governance-evals.yml` — CI gate
 
+## Relationship to P1 runtime governance
+
+After P0 authorizes AI use, `90-shared/OLEANDER_AI_Governance_P1_v0.1.md` governs runtime failure/escalation, human-AI trust calibration and asset-level provenance. A P1 failure may force P0 `HOLD` or `ROLLBACK`, and repeated P1 blocker failures must be added to regression coverage.
+
 ## Relationship to existing OLEANDER governance
 
 - Truth states remain defined by AI Design Reasoning Protocol v0.2.
