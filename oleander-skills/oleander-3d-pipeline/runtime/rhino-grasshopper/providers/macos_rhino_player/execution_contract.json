@@ -1,6 +1,6 @@
 {
-  "contract_id": "OLEANDER-MACOS-RHINO-GRASSHOPPERPLAYER-SP02-v0.1-draft",
-  "status": "DRAFT / PLATFORM_PREFLIGHTED / INSTALLER_AND_LICENSE_REQUIRED / NOT_EXECUTED",
+  "contract_id": "OLEANDER-MACOS-RHINO-GRASSHOPPERPLAYER-SP02-v0.2-draft",
+  "status": "DRAFT / PLATFORM PREFLIGHTED / HUMAN AUTHORITY REQUIRED / NOT EXECUTED",
   "provider_id": "GITHUB_MACOS_X64_STANDARD",
   "runtime_mode": "FREE_HOSTED_CANDIDATE",
   "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
@@ -22,68 +22,76 @@
     "rhinocode_present": false,
     "runtime_evidence": false
   },
-  "required_authority_before_execution": {
+  "human_authority_evidence": {
+    "github_run_id": "31365750361",
+    "artifact_id": "9054055296",
+    "status": "HUMAN_AUTHORITY_REQUIRED",
+    "blockers": [
+      "EULA_AUTHORITY_NOT_GRANTED",
+      "INSTALLER_SOURCE_NOT_PROVIDED",
+      "LICENSE_MODE_NOT_AUTHORIZED"
+    ],
+    "secret_values_logged": false,
+    "installer_downloaded": false,
+    "rhino_installed": false,
+    "licensing_attempted": false,
+    "rhino_started": false,
+    "grasshopper_executed": false,
+    "runtime_evidence": false
+  },
+  "required_authority_before_preparation": {
+    "eula_authority": {
+      "status": "NOT_GRANTED",
+      "requirement": "The license owner must explicitly acknowledge the applicable Rhino 8 EULA. OLEANDER must not accept it on the user's behalf."
+    },
     "installer_source": {
-      "status": "UNKNOWN",
-      "requirement": "A legitimate Rhino 8 for Mac installer obtained through an authorized McNeel download flow must be supplied or made available to the job without committing installer bytes or access credentials to the public repository."
+      "status": "NOT_PROVIDED",
+      "requirement": "A legitimate Rhino 8 for Mac installer obtained through an authorized McNeel download flow must be made available privately. Installer bytes or account credentials must never be committed to the public repository."
     },
     "license_method": {
-      "status": "UNKNOWN",
+      "status": "UNSELECTED",
       "allowed_candidates": [
-        "EXISTING_RHINO8_CLOUD_ZOO_OR_ACCOUNT_LICENSE",
-        "AUTHORIZED_LAN_ZOO_DEPLOYMENT_BUNDLE",
-        "AUTHORIZED_STANDALONE_LICENSE_FOR_EPHEMERAL_HOST_IF_LICENSE_TERMS_AND_VALIDATION_ALLOW",
-        "USER_OBTAINED_90_DAY_EVALUATION_IF_ELIGIBLE"
+        "CLOUD_ZOO_AUTHORIZED_BUNDLE",
+        "LAN_ZOO_AUTHORIZED_BUNDLE",
+        "STANDALONE_EXPLICITLY_AUTHORIZED"
       ],
-      "requirement": "The user or license administrator must explicitly select and authorize a valid Rhino 8 licensing path. OLEANDER must not create accounts, accept terms, request evaluations, or expose keys on the user's behalf."
+      "requirement": "The user or license administrator must explicitly select and authorize a valid Rhino 8 licensing method. No unattended Cloud Zoo login or evaluation-key acquisition is assumed."
+    },
+    "evaluation": {
+      "status": "USER_ACTION_ONLY",
+      "note": "The free 90-day evaluation requires the user to create/login to a Rhino Account, accept McNeel conditions, and obtain a key. It is not an automated CI licensing mode in this contract."
     }
   },
   "execution_plan_after_authority": [
-    "install Rhino 8 for Mac into /Applications/Rhino 8.app using the authorized installer",
+    "validate authority receipt without printing secret values",
+    "download the authorized installer from the private source only after the authority gate passes",
+    "install Rhino 8 for Mac into /Applications/Rhino 8.app",
     "verify Rhino and rhinocode versions without claiming CP2",
-    "establish the authorized license method and verify Rhino can start without interactive license failure",
+    "prepare the explicitly authorized license method and verify Rhino can start without unresolved interactive licensing",
     "build OLEANDER SP02 runtime-neutral GHX from the pinned official McNeel fixture",
     "set OLEANDER_RUNTIME_ENGINE=Rhino 8 for Mac / GrasshopperPlayer",
     "set OLEANDER_SP02_REPORT_PATH to an isolated runtime-state output path",
-    "start Rhino with -nosplash and a controlled startup command or start StartScriptServer",
-    "execute the GHX with scriptable -GrasshopperPlayer and wait for completion",
-    "require the runtime-generated tree_report.json file",
+    "start Rhino using the documented macOS startup automation path",
+    "execute the GHX using scriptable GrasshopperPlayer",
+    "require tree_report.json emitted by the embedded Grasshopper Python 3 component",
     "validate tree_report.json with validate_sp02_runtime_report.py",
-    "record Rhino and Grasshopper versions, GHX hash, report hash, commands, exit state, elapsed time and logs",
-    "promote CP2 only if the real runtime report satisfies the exact topology contract",
-    "leave CP4 OPEN because GrasshopperPlayer does not provide the required Parameter Viewer / Path Mapper GUI evidence"
+    "archive Rhino/Grasshopper versions, GHX hash, report hash, commands, exit state, elapsed time and logs",
+    "promote CP2 only after the exact real-runtime evidence contract passes",
+    "leave CP4 OPEN because GrasshopperPlayer does not provide Parameter Viewer / Path Mapper GUI evidence"
   ],
   "cp2": {
     "current": "OPEN",
-    "target": "REAL_HEADLESS_GRASSHOPPER_EVIDENCE",
-    "promotion_requires": [
-      "supported Rhino 8 for Mac runtime actually started",
-      "authorized valid license path actually accepted by Rhino",
-      "GrasshopperPlayer actually executed the SP02 GHX",
-      "tree_report.json was written by the embedded Grasshopper Python 3 component",
-      "runtime report includes non-empty Rhino and Grasshopper versions",
-      "BASE / GRAFT / FLATTEN / TRANSPOSE_BY_ITEM exactly match the locked contract",
-      "provider-neutral validator returns valid_exact_tree_contract=true",
-      "run receipt preserves immutable evidence references"
-    ]
+    "current_blocker": "HUMAN_AUTHORITY_REQUIRED",
+    "target": "REAL_HEADLESS_GRASSHOPPER_EVIDENCE"
   },
   "cp4": {
     "current": "OPEN",
     "forced_open": true,
-    "blocker": "HEADLESS_NO_GRASSHOPPER_GUI",
-    "note": "A GrasshopperPlayer solve cannot substitute for real Parameter Viewer and Path Mapper canvas evidence."
+    "blocker": "HEADLESS_NO_GRASSHOPPER_GUI"
   },
-  "stop_conditions": [
-    "installer requires an unapproved account or secret",
-    "license requires unapproved purchase or Core-Hour Billing",
-    "license validation cannot be performed legally on the ephemeral host",
-    "Rhino opens an unresolved interactive licensing gate",
-    "runtime platform differs from the preflighted x64 macOS contract",
-    "GrasshopperPlayer does not emit the runtime report",
-    "report topology differs from the exact SP02 contract"
-  ],
   "truth_boundary": {
     "platform_preflight": "OBSERVED_ENVIRONMENT_RESULT",
+    "human_authority_gate": "OBSERVED_HOLD_RESULT",
     "installer_availability": "UNKNOWN",
     "license_availability": "UNKNOWN",
     "runtime_execution": "NOT_EXECUTED",
