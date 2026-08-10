@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "run_1": {
+    "roundtrip_pass": "0/15",
+    "diagnosis": "global face winding inward; signed volume negative while topology remained watertight",
+    "correction": "invert global face orientation when signed volume < 0"
+  },
+  "run_2": {
+    "native_watertight": "5/5",
+    "native_one_body": "5/5",
+    "roundtrip_pass": "15/15",
+    "variant_pass": "5/5",
+    "standalone_reproduction": true
+  },
+  "tests": [
+    {"id":"T01","obj":true,"stl":true,"glb":true,"overall":true},
+    {"id":"T02","obj":true,"stl":true,"glb":true,"overall":true},
+    {"id":"T03","obj":true,"stl":true,"glb":true,"overall":true},
+    {"id":"T04","obj":true,"stl":true,"glb":true,"overall":true},
+    {"id":"T05","obj":true,"stl":true,"glb":true,"overall":true}
+  ],
+  "candidate_boundary": "SP04 Geometric Candidate only; BIM/IFC NOT VERIFIED",
+  "internal_score": 98
+}
