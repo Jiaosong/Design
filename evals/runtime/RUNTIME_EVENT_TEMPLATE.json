@@ -22,6 +22,7 @@
   "reality_evidence_url": null,
   "metric_payload": {
     "audited_queries": null,
+    "unavailable_queries": 0,
     "retrieval_misses": null,
     "wrong_authority": null,
     "eligible_assets": null,
