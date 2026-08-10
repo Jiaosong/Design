@@ -18,6 +18,10 @@ VALID_EVENT_TYPES = {
 VALID_EVIDENCE = {"CONFIRMED", "PROVISIONAL", "REJECTED"}
 VALID_ESCALATIONS = {"F0", "F1", "F2", "F3", "N-A"}
 VALID_REALITY = {"SURVIVED", "PARTIAL", "FAILED", "N-A"}
+VALID_FAILURE_CATEGORIES = {
+    "F-SOURCE", "F-STALE", "F-TRUTH", "F-RIGHTS", "F-SAFETY",
+    "F-DATA", "F-GEOMETRY", "F-TOOL", "F-CONFLICT", "F-PROVENANCE",
+}
 
 
 def load_jsonl(path: Path):
@@ -59,19 +63,29 @@ def validate(rows):
             raise AssertionError(f"{ctx}: metric_eligible must be boolean")
 
         if row["event_type"] == "FAILURE_RECORD":
-            for field in ["failure_category", "escalation", "detection_stage", "blocker_escaped"]:
+            for field in ["failure_category", "escalation", "detection_stage", "release_opportunity", "blocker_escaped"]:
                 if field not in row:
                     raise AssertionError(f"{ctx}: FAILURE_RECORD missing {field}")
+            if row["failure_category"] not in VALID_FAILURE_CATEGORIES:
+                raise AssertionError(f"{ctx}: invalid failure_category {row['failure_category']}")
             if row["escalation"] not in VALID_ESCALATIONS:
                 raise AssertionError(f"{ctx}: invalid escalation {row['escalation']}")
+            if not isinstance(row["release_opportunity"], bool):
+                raise AssertionError(f"{ctx}: release_opportunity must be boolean")
             if not isinstance(row["blocker_escaped"], bool):
                 raise AssertionError(f"{ctx}: blocker_escaped must be boolean")
+            if row["blocker_escaped"] and not row["release_opportunity"]:
+                raise AssertionError(f"{ctx}: blocker_escaped cannot be true without release_opportunity")
 
         if row["event_type"] == "HUMAN_DECISION":
             if "human_override" not in row or not isinstance(row["human_override"], bool):
                 raise AssertionError(f"{ctx}: HUMAN_DECISION requires boolean human_override")
+            if not row.get("recommendation_id"):
+                raise AssertionError(f"{ctx}: HUMAN_DECISION requires recommendation_id")
 
         if row["event_type"] == "RECOMMENDATION_TEST":
+            if not row.get("recommendation_id"):
+                raise AssertionError(f"{ctx}: RECOMMENDATION_TEST requires recommendation_id")
             if not row.get("reality_test_completed"):
                 raise AssertionError(f"{ctx}: RECOMMENDATION_TEST must represent a completed qualifying reality test")
             if row.get("reality_test_outcome") not in VALID_REALITY - {"N-A"}:
@@ -84,6 +98,8 @@ def validate(rows):
                     raise AssertionError(f"{ctx}: RETRIEVAL_AUDIT requires nonnegative integer {field}")
             if payload["retrieval_misses"] > payload["audited_queries"] or payload["wrong_authority"] > payload["audited_queries"]:
                 raise AssertionError(f"{ctx}: retrieval numerators cannot exceed audited_queries")
+            if row["metric_eligible"] and payload["audited_queries"] == 0:
+                raise AssertionError(f"{ctx}: metric-eligible RETRIEVAL_AUDIT requires audited_queries > 0")
 
         if row["event_type"] == "PROVENANCE_AUDIT":
             payload = row.get("metric_payload") or {}
@@ -92,6 +108,8 @@ def validate(rows):
                     raise AssertionError(f"{ctx}: PROVENANCE_AUDIT requires nonnegative integer {field}")
             if payload["manifested_assets"] > payload["eligible_assets"]:
                 raise AssertionError(f"{ctx}: manifested_assets cannot exceed eligible_assets")
+            if row["metric_eligible"] and payload["eligible_assets"] == 0:
+                raise AssertionError(f"{ctx}: metric-eligible PROVENANCE_AUDIT requires eligible_assets > 0")
 
 
 def rate(n, d):
@@ -109,8 +127,9 @@ def aggregate(rows):
     results = {}
     for scope, events in sorted(by_scope.items()):
         failures = [e for e in events if e["event_type"] == "FAILURE_RECORD" and e.get("escalation") in {"F1", "F2", "F3"}]
-        escaped = sum(bool(e.get("blocker_escaped")) for e in failures)
-        prerelease = sum(e.get("detection_stage") == "PRE-RELEASE" for e in failures)
+        release_failures = [e for e in failures if e.get("release_opportunity")]
+        escaped = sum(bool(e.get("blocker_escaped")) for e in release_failures)
+        prerelease = sum(e.get("detection_stage") == "PRE-RELEASE" for e in release_failures)
 
         decisions = [e for e in events if e["event_type"] == "HUMAN_DECISION"]
         overrides = sum(bool(e.get("human_override")) for e in decisions)
@@ -131,8 +150,9 @@ def aggregate(rows):
         results[scope] = {
             "eligible_events": len(events),
             "confirmed_f1_f3_failures": len(failures),
-            "blocker_escape_rate": rate(escaped, len(failures)),
-            "pre_release_catch_rate": rate(prerelease, len(failures)),
+            "release_opportunity_failures": len(release_failures),
+            "blocker_escape_rate": rate(escaped, len(release_failures)),
+            "pre_release_catch_rate": rate(prerelease, len(release_failures)),
             "human_override_rate": rate(overrides, len(decisions)),
             "recommendation_reality_survival_rate": rate(survived, len(reality)),
             "recommendation_partial_count": partial,
@@ -152,6 +172,7 @@ def print_report(results):
         print(f"\n[{scope}]")
         print(f"eligible events: {m['eligible_events']}")
         print(f"confirmed F1-F3 failures: {m['confirmed_f1_f3_failures']}")
+        print(f"release-opportunity failures: {m['release_opportunity_failures']}")
         print(f"blocker escape rate: {m['blocker_escape_rate']}")
         print(f"pre-release catch rate: {m['pre_release_catch_rate']}")
         print(f"human override rate: {m['human_override_rate']}")
