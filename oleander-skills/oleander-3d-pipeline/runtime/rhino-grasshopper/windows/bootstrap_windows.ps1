@@ -9,6 +9,12 @@ function Write-Step([string]$Message) {
   Write-Host "[OLEANDER-RHINO] $Message"
 }
 
+function Read-RhinoInstances([string]$RhinoCodePath) {
+  $raw = & $RhinoCodePath list --json 2>$null
+  if ($LASTEXITCODE -ne 0 -or -not $raw) { return @() }
+  try { return @($raw | ConvertFrom-Json) } catch { return @() }
+}
+
 $rhinoDir = Join-Path $env:ProgramFiles 'Rhino 8\System'
 $rhinoExe = Join-Path $rhinoDir 'Rhino.exe'
 $rhinoCode = Join-Path $rhinoDir 'rhinocode.exe'
@@ -37,13 +43,9 @@ if (-not (($env:Path -split ';') -contains $rhinoDir)) {
   Write-Step 'Added Rhino 8 System directory to PATH for this PowerShell session.'
 }
 
-$instancesRaw = & $rhinoCode list --json 2>$null
-$instances = $null
-if ($LASTEXITCODE -eq 0 -and $instancesRaw) {
-  try { $instances = $instancesRaw | ConvertFrom-Json } catch { $instances = $null }
-}
+$instances = @(Read-RhinoInstances $rhinoCode)
 
-if (-not $instances -or $instances.Count -eq 0) {
+if ($instances.Count -eq 0) {
   Write-Step 'No script-server Rhino instance detected. Starting Rhino 8 with StartScriptServer...'
   Start-Process -FilePath $rhinoExe -ArgumentList @(
     '/nosplash',
@@ -54,14 +56,11 @@ if (-not $instances -or $instances.Count -eq 0) {
   $deadline = (Get-Date).AddSeconds($WaitSeconds)
   do {
     Start-Sleep -Seconds 2
-    $instancesRaw = & $rhinoCode list --json 2>$null
-    if ($LASTEXITCODE -eq 0 -and $instancesRaw) {
-      try { $instances = $instancesRaw | ConvertFrom-Json } catch { $instances = $null }
-    }
-  } until (($instances -and $instances.Count -gt 0) -or (Get-Date) -gt $deadline)
+    $instances = @(Read-RhinoInstances $rhinoCode)
+  } until (($instances.Count -gt 0) -or (Get-Date) -gt $deadline)
 }
 
-if (-not $instances -or $instances.Count -eq 0) {
+if ($instances.Count -eq 0) {
   throw "Rhino started but no rhinocode script-server instance became available within $WaitSeconds seconds. Open Rhino and run StartScriptServer manually, then retry."
 }
 
