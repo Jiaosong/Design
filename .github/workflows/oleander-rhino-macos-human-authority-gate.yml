@@ -1,0 +1,82 @@
+name: OLEANDER Rhino macOS Human Authority Gate
+
+on:
+  push:
+    branches:
+      - feature/rhino-grasshopper-runtime-v0.1
+    paths:
+      - '.github/workflows/oleander-rhino-macos-human-authority-gate.yml'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/providers/macos_rhino_player/human_authority_contract.json'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/providers/macos_rhino_player/check_human_authority_gate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authority-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      RUNTIME_ROOT: oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper
+      OLEANDER_RHINO8_EULA_ACCEPTED: ${{ vars.OLEANDER_RHINO8_EULA_ACCEPTED }}
+      OLEANDER_RHINO8_LICENSE_MODE: ${{ vars.OLEANDER_RHINO8_LICENSE_MODE }}
+      RHINO_MAC_INSTALLER_URL: ${{ secrets.RHINO_MAC_INSTALLER_URL }}
+      RHINO_MAC_LICENSE_BUNDLE_B64: ${{ secrets.RHINO_MAC_LICENSE_BUNDLE_B64 }}
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+
+      - name: Refuse paid Core-Hour path
+        shell: bash
+        run: |
+          if [ -n "${RHINO_TOKEN:-}" ]; then
+            echo "Human Authority Gate refuses RHINO_TOKEN / Core-Hour billing." >&2
+            exit 1
+          fi
+          echo "NO_PAID_RUNTIME gate active"
+
+      - name: Evaluate human authority without consuming secrets
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/providers/macos_rhino_player/check_human_authority_gate.py" \
+            --receipt "$RUNTIME_ROOT/runtime-state/authority/macos_rhino_human_authority_receipt.json"
+
+      - name: Verify no installer, license, Rhino or Grasshopper action occurred
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/authority/macos_rhino_human_authority_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          assert r['evaluated_inputs']['secret_values_logged'] is False
+          assert r['installer_downloaded'] is False
+          assert r['rhino_installed'] is False
+          assert r['licensing_attempted'] is False
+          assert r['rhino_started'] is False
+          assert r['grasshopper_executed'] is False
+          assert r['runtime_evidence'] is False
+          assert r['cp2'] == 'OPEN'
+          assert r['cp4'] == 'OPEN'
+          print('status=', r['status'])
+          print('selector_action=', r['selector_action'])
+          print('blockers=', ','.join(r['blockers']))
+          print('eula_accepted=', r['evaluated_inputs']['eula_accepted'])
+          print('installer_source_present=', r['evaluated_inputs']['installer_source_present'])
+          print('license_mode=', r['evaluated_inputs']['license_mode'])
+          print('license_bundle_present=', r['evaluated_inputs']['license_bundle_present'])
+          print('secret_values_logged=', r['evaluated_inputs']['secret_values_logged'])
+          print('runtime_evidence=', r['runtime_evidence'])
+          print('cp2=', r['cp2'])
+          print('cp4=', r['cp4'])
+          PY
+
+      - name: Upload authority receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-rhino-macos-human-authority-gate
+          path: |
+            ${{ env.RUNTIME_ROOT }}/runtime-state/authority/macos_rhino_human_authority_receipt.json
+          if-no-files-found: error
+          retention-days: 14
