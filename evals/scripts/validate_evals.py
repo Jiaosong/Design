@@ -10,9 +10,14 @@ RETRIEVAL = ROOT / "evals" / "retrieval" / "golden_queries.jsonl"
 FAILURES = ROOT / "evals" / "failure" / "failure_cases.jsonl"
 P0 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P0_v0.1.md"
 P1 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P1_v0.1.md"
+P2 = ROOT / "90-shared" / "OLEANDER_AI_Runtime_Evidence_P2_v0.1.md"
 FAILURE_PLAYBOOK = ROOT / "evals" / "failure" / "FAILURE_ESCALATION_PLAYBOOK.md"
 TRUST_CARD = ROOT / "evals" / "trust" / "AI_RECOMMENDATION_CARD.md"
 PROVENANCE = ROOT / "evals" / "provenance" / "ASSET_PROVENANCE_MANIFEST_TEMPLATE.json"
+RUNTIME_EVENTS = ROOT / "evals" / "runtime" / "runtime_events.jsonl"
+RUNTIME_TEMPLATE = ROOT / "evals" / "runtime" / "RUNTIME_EVENT_TEMPLATE.json"
+RUNTIME_METRICS = ROOT / "evals" / "runtime" / "compute_metrics.py"
+RUNTIME_BASELINE = ROOT / "evals" / "runtime" / "BASELINE_2026-08-10.md"
 
 REQUIRED_SKILLS = {
     "oleander-research",
@@ -153,6 +158,30 @@ def validate_p1_assets():
         raise AssertionError("template must not claim Content Credentials are present by default")
 
 
+def validate_p2_assets():
+    for path in (RUNTIME_EVENTS, RUNTIME_TEMPLATE, RUNTIME_METRICS, RUNTIME_BASELINE):
+        if not path.exists():
+            raise AssertionError(f"missing P2 runtime evidence file: {path.relative_to(ROOT)}")
+
+    runtime_rows = load_jsonl(RUNTIME_EVENTS)
+    if len(runtime_rows) < 1:
+        raise AssertionError("P2 requires at least one runtime evidence event")
+
+    try:
+        template = json.loads(RUNTIME_TEMPLATE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise AssertionError(f"invalid runtime event template JSON: {exc}") from exc
+
+    for field in ["event_id", "occurred_at", "scope", "event_type", "evidence_status", "metric_eligible", "evidence_url", "outcome"]:
+        if field not in template:
+            raise AssertionError(f"runtime event template missing field: {field}")
+
+    baseline = RUNTIME_BASELINE.read_text(encoding="utf-8")
+    for term in ["Blocker escape rate", "Human override rate", "Recommendation → reality-test survival", "Asset provenance coverage", "N/A"]:
+        if term not in baseline:
+            raise AssertionError(f"P2 baseline missing metric/boundary term: {term}")
+
+
 def main():
     try:
         skill_rows = load_jsonl(SKILLS)
@@ -170,7 +199,13 @@ def main():
             "F0 SELF-CORRECT", "F1 HUMAN-REVIEW", "F2 DOMAIN-EXPERT", "F3 STOP-HOLD",
             "AI Recommendation Card", "C2PA compatibility direction",
         ], "P1")
+        validate_protocol(P2, [
+            "Human Override Rate", "Recommendation → Reality-test Survival Rate",
+            "Blocker Escape Rate", "Asset Provenance Coverage",
+            "Retrieval Miss / Wrong-Authority Rate", "N/A — insufficient eligible evidence",
+        ], "P2")
         validate_p1_assets()
+        validate_p2_assets()
     except AssertionError as exc:
         print(f"AI GOVERNANCE EVAL CORPUS: FAIL\n{exc}", file=sys.stderr)
         return 1
@@ -181,6 +216,7 @@ def main():
         print(f"- {skill}: {counts[skill]}")
     print("- P1 trust card: present")
     print("- P1 provenance manifest: valid JSON / no false C2PA claim")
+    print("- P2 runtime evidence protocol + event corpus: present")
     return 0
 
 
