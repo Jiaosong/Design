@@ -6,9 +6,7 @@ on:
       - feature/rhino-grasshopper-runtime-v0.1
     paths:
       - '.github/workflows/oleander-free-public-compute.yml'
-      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/build_sp02_fixture.py'
-      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/run_sp02_public_compute.py'
-      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/jobs/cp2_public_compute_sp02.json'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/check_public_compute_provider.py'
       - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute_probe_nonce.txt'
   workflow_dispatch:
 
@@ -35,7 +33,24 @@ jobs:
           fi
           echo "NO_PAID_RUNTIME gate active"
 
+      - name: Preflight McNeel public Compute provider
+        id: provider
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/public_compute/check_public_compute_provider.py" \
+            --out-dir "$RUNTIME_ROOT/runtime-state/public-compute"
+          STATE=$(python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/public-compute/provider_preflight_receipt.json'
+          print(json.loads(p.read_text(encoding='utf-8'))['provider_state'])
+          PY
+          )
+          echo "state=$STATE" >> "$GITHUB_OUTPUT"
+          echo "provider_state=$STATE"
+
       - name: Build SP02 GHX fixture from official McNeel source
+        if: steps.provider.outputs.state == 'AVAILABLE'
         shell: bash
         run: |
           python3 "$RUNTIME_ROOT/public_compute/build_sp02_fixture.py" \
@@ -43,6 +58,7 @@ jobs:
             --source-copy "$RUNTIME_ROOT/runtime-state/public-compute/mcneel_source_fixture.ghx"
 
       - name: Attempt real McNeel public Compute Grasshopper solve
+        if: steps.provider.outputs.state == 'AVAILABLE'
         shell: bash
         run: |
           python3 "$RUNTIME_ROOT/public_compute/run_sp02_public_compute.py" \
@@ -54,6 +70,7 @@ jobs:
         shell: bash
         run: |
           RECEIPT="$RUNTIME_ROOT/runtime-state/public-compute/public_compute_receipt.json"
+          PREFLIGHT="$RUNTIME_ROOT/runtime-state/public-compute/provider_preflight_receipt.json"
           if [ -f "$RECEIPT" ]; then
             python3 - <<'PY'
           import json, os
@@ -62,14 +79,28 @@ jobs:
           r = json.loads(p.read_text(encoding='utf-8'))
           print('runtime_mode=', r.get('runtime_mode'))
           print('http_status=', r.get('transport', {}).get('http_status'))
-          print('auth_mode=', r.get('auth', {}).get('mode'))
           print('cp2=', r.get('cp2', {}).get('status'))
           print('cp2_blocker=', r.get('cp2', {}).get('blocker'))
           print('cp4=', r.get('cp4', {}).get('status'))
           print('evidence_level=', r.get('evidence', {}).get('level'))
           PY
+          elif [ -f "$PREFLIGHT" ]; then
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/public-compute/provider_preflight_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          print('runtime_mode=', r.get('runtime_mode'))
+          print('provider_state=', r.get('provider_state'))
+          print('selector_action=', r.get('selector_action'))
+          print('http_status=', r.get('transport', {}).get('http_status'))
+          print('cp2= OPEN')
+          print('cp4= OPEN')
+          print('evidence_level= PROVIDER_PREFLIGHT_ONLY')
+          PY
           else
-            echo "No receipt generated; build/probe infrastructure failed before evidence receipt." >&2
+            echo "No provider preflight or runtime receipt generated." >&2
+            exit 1
           fi
 
       - name: Upload auditable probe artifact
