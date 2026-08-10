@@ -8,6 +8,10 @@ on:
       - '.github/workflows/oleander-free-public-compute.yml'
       - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/check_public_compute_provider.py'
       - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute_probe_nonce.txt'
+  # GitHub scheduled workflows run from the repository default branch only.
+  # This becomes active only after the workflow is reviewed and merged to main.
+  schedule:
+    - cron: '0 1 * * 1'
   workflow_dispatch:
 
 permissions:
