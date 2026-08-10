@@ -25,3 +25,20 @@
 - Narrative outputs trace claims back to approved research.
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
 
+## P0 AI governance checks
+
+The skill review is no longer sufficient by itself. Every reusable skill is governed by `90-shared/OLEANDER_AI_Governance_P0_v0.1.md` and the repository `evals/` harness.
+
+Before using or promoting a changed skill:
+
+1. Run the AI Necessity Gate; do not use AI where deterministic, expert, or physical methods are more appropriate.
+2. Execute or review the relevant Golden Cases in `evals/golden/skills.jsonl`.
+3. If the task depends on workspace knowledge, check retrieval authority against `evals/retrieval/golden_queries.jsonl`.
+4. Record model / tool / prompt / skill version and input object version.
+5. Compare the candidate against the approved baseline.
+6. Do not promote a candidate that introduces blocker regressions, unsupported claims, stale-source acceptance, truth-state collapse, rights/safety overreach, or non-reconstructable output.
+7. Keep a rollback point.
+
+### Minimum coverage
+
+Each installed skill must have at least two maintained Golden Cases. CI validates case structure and P0 coverage; actual AI run results require explicit versioned evidence and human approval before `PROMOTE`.

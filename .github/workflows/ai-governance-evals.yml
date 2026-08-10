@@ -1,0 +1,46 @@
+name: AI Governance Evals
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
+      - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
+      - 'evals/**'
+      - 'oleander-skills/**'
+      - '.github/workflows/ai-governance-evals.yml'
+  push:
+    branches: [main]
+    paths:
+      - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
+      - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
+      - 'evals/**'
+      - 'oleander-skills/**'
+      - '.github/workflows/ai-governance-evals.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  governance-corpus:
+    name: P0 corpus and regression contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate eval corpus
+        run: python evals/scripts/validate_evals.py
+
+      - name: Publish summary
+        if: always()
+        run: |
+          echo '## OLEANDER AI Governance P0' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates five reusable skill Golden Sets.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Verifies required P0 governance controls exist.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Actual model/prompt/skill candidate runs must attach versioned result records before PROMOTE.' >> "$GITHUB_STEP_SUMMARY"
