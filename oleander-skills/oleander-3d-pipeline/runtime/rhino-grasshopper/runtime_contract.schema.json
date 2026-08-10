@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OLEANDER-RHINO-RUNTIME-CONTRACT-v0.1",
+  "title": "OLEANDER Rhino + Grasshopper Runtime Contract",
+  "type": "object",
+  "required": [
+    "run_id",
+    "job_type",
+    "input",
+    "required_outputs",
+    "evidence_rules",
+    "authority"
+  ],
+  "properties": {
+    "run_id": {"type": "string"},
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "runtime_probe",
+        "capture_evidence",
+        "grasshopper_definition_run",
+        "data_tree_cp2_cp4"
+      ]
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "definition_path": {"type": ["string", "null"]},
+        "rhino_document_path": {"type": ["string", "null"]},
+        "parameters": {"type": "object"},
+        "parameter_provenance": {
+          "type": "string",
+          "enum": ["FACT", "INFERENCE", "SIMULATED_EXERCISE_ASSUMPTION", "UNKNOWN"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "required_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "gh_file",
+          "runtime_manifest",
+          "tree_report",
+          "grasshopper_canvas_png",
+          "rhino_viewport_png",
+          "log",
+          "receipt"
+        ]
+      }
+    },
+    "evidence_rules": {
+      "type": "object",
+      "required": ["preserve_unknown", "no_surrogate_promotion"],
+      "properties": {
+        "preserve_unknown": {"type": "boolean", "const": true},
+        "no_surrogate_promotion": {"type": "boolean", "const": true},
+        "required_real_runtime_for": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["human_gate_required", "approval_scope"],
+      "properties": {
+        "human_gate_required": {"type": "boolean"},
+        "approval_scope": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}
