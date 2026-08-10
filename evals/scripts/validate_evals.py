@@ -7,7 +7,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
 RETRIEVAL = ROOT / "evals" / "retrieval" / "golden_queries.jsonl"
+FAILURES = ROOT / "evals" / "failure" / "failure_cases.jsonl"
 P0 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P0_v0.1.md"
+P1 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P1_v0.1.md"
+FAILURE_PLAYBOOK = ROOT / "evals" / "failure" / "FAILURE_ESCALATION_PLAYBOOK.md"
+TRUST_CARD = ROOT / "evals" / "trust" / "AI_RECOMMENDATION_CARD.md"
+PROVENANCE = ROOT / "evals" / "provenance" / "ASSET_PROVENANCE_MANIFEST_TEMPLATE.json"
 
 REQUIRED_SKILLS = {
     "oleander-research",
@@ -16,6 +21,13 @@ REQUIRED_SKILLS = {
     "oleander-story-and-board",
     "oleander-delivery-qc",
 }
+
+FAILURE_CATEGORIES = {
+    "F-SOURCE", "F-STALE", "F-TRUTH", "F-RIGHTS", "F-SAFETY",
+    "F-DATA", "F-GEOMETRY", "F-TOOL", "F-CONFLICT", "F-PROVENANCE",
+}
+
+ESCALATION_LEVELS = {"F0", "F1", "F2", "F3"}
 
 
 def load_jsonl(path: Path):
@@ -72,12 +84,8 @@ def validate_skill_cases(rows):
 def validate_retrieval_cases(rows):
     ids = set()
     nonempty_required = [
-        "query_id",
-        "query",
-        "expected_canonical_sources",
-        "required_status",
-        "required_truth_state",
-        "required_warning",
+        "query_id", "query", "expected_canonical_sources", "required_status",
+        "required_truth_state", "required_warning",
     ]
     presence_required = ["forbidden_legacy_sources"]
     for row in rows:
@@ -95,40 +103,84 @@ def validate_retrieval_cases(rows):
         raise AssertionError("retrieval golden set requires at least 10 cases")
 
 
-def validate_p0_protocol():
-    if not P0.exists():
-        raise AssertionError("missing P0 governance protocol")
-    text = P0.read_text(encoding="utf-8")
-    required_terms = [
-        "AI Necessity Gate",
-        "AI Eval Harness",
-        "Retrieval & Context QA",
-        "AI Change & Regression Gate",
-        "NO-AI",
-        "HOLD",
-        "PROMOTE",
-        "ROLLBACK",
-    ]
+def validate_failure_cases(rows):
+    ids = set()
+    required = ["case_id", "trigger", "category", "minimum_escalation", "required_actions", "blocker"]
+    for row in rows:
+        require_nonempty_fields(row, required, row.get("case_id", "failure-case"))
+        if row["case_id"] in ids:
+            raise AssertionError(f"duplicate failure case_id: {row['case_id']}")
+        ids.add(row["case_id"])
+        if row["category"] not in FAILURE_CATEGORIES:
+            raise AssertionError(f"{row['case_id']}: unknown failure category {row['category']}")
+        if row["minimum_escalation"] not in ESCALATION_LEVELS:
+            raise AssertionError(f"{row['case_id']}: invalid escalation {row['minimum_escalation']}")
+        if not isinstance(row["required_actions"], list) or len(row["required_actions"]) < 2:
+            raise AssertionError(f"{row['case_id']}: requires at least 2 recovery actions")
+    if len(rows) < 8:
+        raise AssertionError("P1 failure set requires at least 8 cases")
+
+
+def validate_protocol(path: Path, required_terms, label):
+    if not path.exists():
+        raise AssertionError(f"missing {label} governance protocol")
+    text = path.read_text(encoding="utf-8")
     missing = [term for term in required_terms if term not in text]
     if missing:
-        raise AssertionError(f"P0 protocol missing governance terms: {missing}")
+        raise AssertionError(f"{label} protocol missing governance terms: {missing}")
+
+
+def validate_p1_assets():
+    for path in (FAILURE_PLAYBOOK, TRUST_CARD, PROVENANCE):
+        if not path.exists():
+            raise AssertionError(f"missing P1 execution file: {path.relative_to(ROOT)}")
+
+    trust_text = TRUST_CARD.read_text(encoding="utf-8")
+    trust_terms = ["Evidence basis", "Unknowns / conflicts", "What would falsify this", "Human action required", "Rollback path"]
+    missing = [term for term in trust_terms if term not in trust_text]
+    if missing:
+        raise AssertionError(f"AI Recommendation Card missing fields: {missing}")
+
+    try:
+        manifest = json.loads(PROVENANCE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise AssertionError(f"invalid provenance manifest JSON: {exc}") from exc
+
+    for field in ["manifest_version", "asset_id", "project", "object_version", "file", "origin", "creation", "ingredients", "actions", "known_unknowns", "c2pa"]:
+        if field not in manifest:
+            raise AssertionError(f"provenance manifest missing field: {field}")
+    if manifest.get("c2pa", {}).get("content_credentials_present") is not False:
+        raise AssertionError("template must not claim Content Credentials are present by default")
 
 
 def main():
     try:
         skill_rows = load_jsonl(SKILLS)
         retrieval_rows = load_jsonl(RETRIEVAL)
+        failure_rows = load_jsonl(FAILURES)
         counts = validate_skill_cases(skill_rows)
         validate_retrieval_cases(retrieval_rows)
-        validate_p0_protocol()
+        validate_failure_cases(failure_rows)
+        validate_protocol(P0, [
+            "AI Necessity Gate", "AI Eval Harness", "Retrieval & Context QA",
+            "AI Change & Regression Gate", "NO-AI", "HOLD", "PROMOTE", "ROLLBACK",
+        ], "P0")
+        validate_protocol(P1, [
+            "Failure & Escalation", "Human-AI Trust Calibration", "Asset-level Provenance",
+            "F0 SELF-CORRECT", "F1 HUMAN-REVIEW", "F2 DOMAIN-EXPERT", "F3 STOP-HOLD",
+            "AI Recommendation Card", "C2PA compatibility direction",
+        ], "P1")
+        validate_p1_assets()
     except AssertionError as exc:
         print(f"AI GOVERNANCE EVAL CORPUS: FAIL\n{exc}", file=sys.stderr)
         return 1
 
     print("AI GOVERNANCE EVAL CORPUS: PASS")
-    print(f"skill cases: {len(skill_rows)} | retrieval cases: {len(retrieval_rows)}")
+    print(f"skill cases: {len(skill_rows)} | retrieval cases: {len(retrieval_rows)} | failure cases: {len(failure_rows)}")
     for skill in sorted(counts):
         print(f"- {skill}: {counts[skill]}")
+    print("- P1 trust card: present")
+    print("- P1 provenance manifest: valid JSON / no false C2PA claim")
     return 0
 
 

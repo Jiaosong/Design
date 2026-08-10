@@ -1,0 +1,49 @@
+{
+  "manifest_version": "OLEANDER-ASSET-PROV-0.1",
+  "asset_id": "ASSET-...",
+  "project": "...",
+  "object_version": "...",
+  "file": {
+    "name": "...",
+    "sha256": "...",
+    "created_or_edited_at": "YYYY-MM-DD"
+  },
+  "origin": {
+    "original_source": "...",
+    "creator": "...",
+    "rights_holder": "...",
+    "rights_status": "UNKNOWN|CLEARED|RESTRICTED|EXPIRED|NOT-APPLICABLE",
+    "publish_permission": "UNKNOWN|INTERNAL-ONLY|LIMITED|PUBLIC",
+    "territory_or_expiry": "..."
+  },
+  "creation": {
+    "method": "HUMAN|AI-ASSISTED|AI-GENERATED|HYBRID|UNKNOWN",
+    "ai_model_or_tool": "...",
+    "model_tool_version": "...",
+    "prompt_instruction_workflow_version": "...",
+    "human_responsibility": "..."
+  },
+  "ingredients": [
+    {
+      "asset_id": "...",
+      "role": "reference|input|source|audio|image|model|data|other",
+      "rights_status": "..."
+    }
+  ],
+  "actions": [
+    {
+      "action": "crop|composite|color-correct|generative-fill|redraw|subtitle|audio-replace|other",
+      "tool": "...",
+      "date": "YYYY-MM-DD",
+      "human_or_ai": "HUMAN|AI|HYBRID"
+    }
+  ],
+  "evidence_status": "...",
+  "known_unknowns": ["..."],
+  "withdrawal_delete_replace_path": "...",
+  "c2pa": {
+    "content_credentials_present": false,
+    "manifest_reference": null,
+    "note": "OLEANDER provenance manifest is a governance record and does not itself provide cryptographic authenticity."
+  }
+}
