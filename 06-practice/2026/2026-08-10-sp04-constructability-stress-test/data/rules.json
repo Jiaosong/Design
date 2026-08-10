@@ -1,0 +1,12 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL RULES — NOT CODE / NOT STANDARD",
+  "min_edge_ligament_mm": 50.0,
+  "min_opening_gap_mm": 100.0,
+  "min_edge_ligament_to_wall_thickness_ratio": 0.5,
+  "min_gap_to_wall_thickness_ratio": 0.75,
+  "corner_radius_warning_ratio": 0.1,
+  "corner_radius_fail_ratio": 0.02,
+  "wall_thickness_warning_below_mm": 40.0,
+  "wall_thickness_fail_below_mm": 20.0,
+  "max_opening_count_before_warning": 8
+}
