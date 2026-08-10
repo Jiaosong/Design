@@ -5,13 +5,8 @@ on:
     branches:
       - research/ar23-corpus-v0.1-20260810
     paths:
-      - 'research/baojiajie/ar23_failure_value_extract_v0_1.py'
-      - 'research/baojiajie/ar23_failure_value_shards_v0_2.py'
-      - 'research/baojiajie/ar23_failure_value_joined_v0_3.py'
-      - 'research/baojiajie/ar23_failure_value_joined_shards_v0_4.py'
-      - 'research/baojiajie/ar23_failure_value_official_meta_filter_v0_5.py'
-      - 'research/baojiajie/ar23_failure_value_official_stream_v0_6.py'
       - 'research/baojiajie/ar23_failure_value_official_parquet_v0_7.py'
+      - 'research/baojiajie/ar23_failure_value_official_parquet_v0_8.py'
       - '.github/workflows/ar23-corpus.yml'
   workflow_dispatch:
 
@@ -40,9 +35,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf research/baojiajie/ar23_failure_value_corpus_v0_7
-          python research/baojiajie/ar23_failure_value_official_parquet_v0_7.py \
-            --out research/baojiajie/ar23_failure_value_corpus_v0_7 \
+          rm -rf research/baojiajie/ar23_failure_value_corpus_v0_8
+          python research/baojiajie/ar23_failure_value_official_parquet_v0_8.py \
+            --out research/baojiajie/ar23_failure_value_corpus_v0_8 \
             --meta-shards 7 \
             --reservoir-per-product 60 \
             --per-product 60 \
@@ -50,8 +45,8 @@ jobs:
 
       - name: Show summary
         run: |
-          cat research/baojiajie/ar23_failure_value_corpus_v0_7/corpus_summary_v0_7.json
-          wc -l research/baojiajie/ar23_failure_value_corpus_v0_7/external_failure_value_corpus_v0_7.jsonl
+          cat research/baojiajie/ar23_failure_value_corpus_v0_8/corpus_summary_v0_7.json
+          wc -l research/baojiajie/ar23_failure_value_corpus_v0_8/external_failure_value_corpus_v0_7.jsonl
 
       - name: Commit compact research outputs to branch
         shell: bash
@@ -59,18 +54,18 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/baojiajie/ar23_failure_value_corpus_v0_7/
+          git add research/baojiajie/ar23_failure_value_corpus_v0_8/
           if git diff --cached --quiet; then
             echo "No corpus output changes to commit."
           else
-            git commit -m "research: add official Home and Kitchen AR23 corpus v0.7 [skip ci]"
+            git commit -m "research: add official Home and Kitchen AR23 corpus v0.8 [skip ci]"
             git push origin HEAD:research/ar23-corpus-v0.1-20260810
           fi
 
       - name: Upload research artifact
         uses: actions/upload-artifact@v4
         with:
-          name: baojiajie-ar23-failure-value-corpus-v0.7
-          path: research/baojiajie/ar23_failure_value_corpus_v0_7/
+          name: baojiajie-ar23-failure-value-corpus-v0.8
+          path: research/baojiajie/ar23_failure_value_corpus_v0_8/
           if-no-files-found: error
           retention-days: 14
