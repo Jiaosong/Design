@@ -2,8 +2,8 @@
   "run_id": "OLEANDER-SP02-FREE-PUBLIC-COMPUTE-001",
   "job_type": "data_tree_cp2_headless",
   "runtime_mode": "FREE_PUBLIC_COMPUTE",
-  "status": "ATTEMPTED / BLOCKED_PUBLIC_SERVICE_DISABLED / CP2 OPEN / CP4 OPEN",
-  "latest_attempt": {
+  "status": "ATTEMPTED / PROVIDER-GATED / PUBLIC_SERVICE_DISABLED / CP2 OPEN / CP4 OPEN",
+  "latest_full_attempt": {
     "date": "2026-08-10",
     "github_run_id": "31360491115",
     "github_run_number": 4,
@@ -16,6 +16,22 @@
     "cp4": "OPEN",
     "evidence_level": "ATTEMPT_EVIDENCE_ONLY"
   },
+  "latest_provider_preflight": {
+    "date": "2026-08-10",
+    "github_run_id": "31362931991",
+    "github_run_number": 9,
+    "github_sha": "1d1110820488e135712eef4ab535b29b773e0b26",
+    "artifact_id": "9053037470",
+    "endpoint": "/healthcheck",
+    "http_status": 404,
+    "provider_state": "PUBLIC_SERVICE_DISABLED",
+    "selector_action": "SKIP_SP02_PRESERVE_OPEN",
+    "sp02_fixture_step": "SKIPPED",
+    "sp02_solve_step": "SKIPPED",
+    "cp2": "OPEN",
+    "cp4": "OPEN",
+    "evidence_level": "PROVIDER_PREFLIGHT_ONLY"
+  },
   "cost_policy": {
     "mode": "NO_PAID_RUNTIME",
     "allow_rhino_accounts_bearer": true,
@@ -23,11 +39,14 @@
     "allow_core_hour_rhino_token": false,
     "stop_if_paid_path_required": true
   },
-  "server": {
+  "provider": {
+    "id": "MCNEEL_PUBLIC_LEGACY",
     "url": "https://compute.rhino3d.com/",
-    "endpoint": "grasshopper",
-    "service_class": "BEST_EFFORT_PUBLIC_McNEEL_COMPUTE",
-    "observed_state_2026_08_10": "PUBLIC_SERVICE_DISABLED"
+    "preflight_endpoint": "/healthcheck",
+    "solve_endpoint": "/grasshopper",
+    "current_state": "PUBLIC_SERVICE_DISABLED",
+    "selector_rule": "Only AVAILABLE may enter fixture-build + Grasshopper-solve stages; all other states preserve CP2 OPEN and skip the heavy solve path.",
+    "official_current_route": "McNeel documentation currently directs users to local or self-hosted Rhino.Compute; production/server deployment uses Core-Hour Billing."
   },
   "input": {
     "parameters": {
@@ -47,9 +66,10 @@
     "TRANSPOSE_BY_ITEM": {"branch_count": 6, "item_count": 24, "items_per_branch": [4, 4, 4, 4, 4, 4]}
   },
   "required_outputs": [
-    "generated_ghx_fixture",
-    "public_compute_response",
-    "public_compute_receipt"
+    "provider_preflight_receipt",
+    "generated_ghx_fixture_if_provider_available",
+    "public_compute_response_if_provider_available",
+    "public_compute_receipt_if_provider_available"
   ],
   "cp2": {
     "starting_state": "OFFLINE_SURROGATE_ONLY",
@@ -57,7 +77,8 @@
     "current_state": "OPEN",
     "current_blocker": "PUBLIC_SERVICE_DISABLED",
     "close_only_if": [
-      "McNeel public Compute returns a successful real Grasshopper solve",
+      "provider preflight returns AVAILABLE",
+      "McNeel Compute returns a successful real Grasshopper solve",
       "the solve output contains OLEANDER_SP02_REPORT marker generated inside the Grasshopper Python 3 component",
       "BASE matches 4 branches x 6 items",
       "GRAFT matches 24 branches x 1 item",
@@ -65,6 +86,7 @@
       "TRANSPOSE_BY_ITEM matches 6 branches x 4 items",
       "receipt preserves server, HTTP status, definition hash, Rhino version and Grasshopper assembly version"
     ],
+    "provider_preflight_is_runtime_evidence": false,
     "on_auth_or_service_block": "OPEN_WITH_BLOCKER"
   },
   "cp4": {
@@ -78,6 +100,7 @@
     "no_surrogate_promotion": true,
     "no_auth_success_assumption": true,
     "no_paid_fallback": true,
+    "provider_preflight_is_runtime_evidence": false,
     "required_real_runtime_for_cp2": true
   },
   "authority": {
