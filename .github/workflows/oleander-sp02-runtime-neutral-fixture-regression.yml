@@ -1,0 +1,63 @@
+name: OLEANDER SP02 Runtime-Neutral Fixture Regression
+
+on:
+  push:
+    branches:
+      - feature/rhino-grasshopper-runtime-v0.1
+    paths:
+      - '.github/workflows/oleander-sp02-runtime-neutral-fixture-regression.yml'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/build_sp02_fixture.py'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/tests/test_sp02_runtime_neutral_fixture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      RUNTIME_ROOT: oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+
+      - name: Run reconstructable fixture regression
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/tests/test_sp02_runtime_neutral_fixture.py" \
+            --builder "$RUNTIME_ROOT/public_compute/build_sp02_fixture.py" \
+            --receipt "$RUNTIME_ROOT/runtime-state/regression/sp02_runtime_neutral_fixture_receipt.json"
+
+      - name: Verify evidence boundary
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/regression/sp02_runtime_neutral_fixture_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          assert r['fixture_generated'] is True
+          assert r['embedded_runtime_script_found'] is True
+          assert r['runtime_report_path_contract_found'] is True
+          assert r['runtime_engine_contract_found'] is True
+          assert r['runtime_executed'] is False
+          assert r['runtime_evidence'] is False
+          assert r['cp2'] == 'OPEN'
+          assert r['cp4'] == 'OPEN'
+          print('evidence_level=', r['evidence_level'])
+          print('runtime_executed=', r['runtime_executed'])
+          print('runtime_evidence=', r['runtime_evidence'])
+          print('cp2=', r['cp2'])
+          print('cp4=', r['cp4'])
+          PY
+
+      - name: Upload regression receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-sp02-runtime-neutral-fixture-regression
+          path: |
+            ${{ env.RUNTIME_ROOT }}/runtime-state/regression/sp02_runtime_neutral_fixture_receipt.json
+          if-no-files-found: error
+          retention-days: 14
