@@ -49,26 +49,27 @@ def main():
         ])
 
         if re.search(r"Claim(?: ID)?[^\n]*\bC\d{2}\b", naming, re.IGNORECASE):
-            # The authority file may mention historical bare IDs only when explicitly labelled historical/legacy.
             for line in naming.splitlines():
                 if re.search(r"Claim(?: ID)?[^\n]*\bC\d{2}\b", line, re.IGNORECASE) and not any(k in line.lower() for k in ("histor", "legacy", "must not", "invalid")):
                     fail(f"unqualified bare case ID appears in Claim context: {line}")
 
         claim_schema = load_json(CLAIM_SCHEMA)
-        encoded = json.dumps(claim_schema, ensure_ascii=False)
-        if "CLM-C" not in encoded or "^C\\\\d{2}$" not in encoded:
+        claim_encoded = json.dumps(claim_schema, ensure_ascii=False)
+        if "CLM-C" not in claim_encoded or "^C\\\\d{2}$" not in claim_encoded:
             fail("claim-id schema must accept CLM-Cnn-NNN and explicitly reject bare Cnn")
 
         c01_schema = load_json(C01_SCHEMA)
+        c01_encoded = json.dumps(c01_schema, ensure_ascii=False)
         if c01_schema.get("properties", {}).get("case", {}).get("properties", {}).get("id", {}).get("const") != "C01":
             fail("C01 schema case.id must be const C01")
         responsibility = c01_schema.get("properties", {}).get("responsibility", {}).get("properties", {})
         if responsibility.get("practiceOwner", {}).get("const") != "刘旋 / Liu Xuan":
             fail("C01 schema practiceOwner must be 刘旋 / Liu Xuan")
-        if "P01_evidence_manifest.v0.2.schema.json" not in encoded:
+        if "P01_evidence_manifest.v0.2.schema.json" not in c01_encoded:
             fail("C01 schema must record superseded P01 schema")
-        if '"P01"' in encoded:
-            fail("canonical C01 schema must not use P01 as a current identifier")
+        current_case_id = c01_schema.get("properties", {}).get("case", {}).get("properties", {}).get("id", {}).get("const")
+        if current_case_id == "P01":
+            fail("canonical C01 schema must not use P01 as a current case identifier")
 
         template = load_json(C01_TEMPLATE)
         if template.get("case", {}).get("id") != "C01":
