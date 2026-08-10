@@ -1,0 +1,39 @@
+{
+  "status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED",
+  "source_dataset": "thulthula/Amazon-Reviews-2023-Extended",
+  "parquet_files_available": 5,
+  "selected_shards": [
+    "data/All_Beauty/train-00000-of-00001.parquet",
+    "data/Arts_Crafts_and_Sewing/train-00000-of-00001.parquet",
+    "data/Automotive/train-00000-of-00001.parquet",
+    "data/Baby_Products/train-00000-of-00001.parquet",
+    "data/Beauty_and_Personal_Care/train-00000-of-00001.parquet"
+  ],
+  "rows_selected_total": 470,
+  "rows_selected_by_product": {
+    "mop": 120,
+    "cleaning_brush": 120,
+    "squeegee": 120,
+    "bucket": 110
+  },
+  "unique_parent_asin_by_product": {
+    "mop": 88,
+    "cleaning_brush": 113,
+    "squeegee": 105,
+    "bucket": 19
+  },
+  "rating_band_counts": {
+    "1-2_failure_discovery": 174,
+    "3_tradeoff": 81,
+    "4-5_value_language": 215,
+    "unknown": 0
+  },
+  "critical_limitations": [
+    "Evenly spaced joined-data Parquet shards are a discovery sample, not a probability sample.",
+    "Product relevance is verified from product_title metadata.",
+    "Per-parent caps reduce domination but do not make the sample representative.",
+    "Automatic Failure/Value coding requires semantic review.",
+    "Counts are corpus-internal discovery counts, not prevalence.",
+    "No exact hue/finish preference can be inferred without controlled CMF stimuli."
+  ]
+}

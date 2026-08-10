@@ -1,0 +1,259 @@
+[
+  {
+    "product": "bucket",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 12,
+    "unique_parent_asin": 8,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Leakage": 1
+    },
+    "value_codes_auto": {
+      "Compact Storage": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "bucket",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 9,
+    "unique_parent_asin": 6,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Heaviness": 1,
+      "Storage Bulk": 1
+    },
+    "value_codes_auto": {
+      "Lightness/Low Burden": 1,
+      "Reliability/Durability": 2,
+      "Soft Contact": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "bucket",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 89,
+    "unique_parent_asin": 19,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Instability/Tipping": 2,
+      "Leakage": 5,
+      "Looseness": 1,
+      "Scratch Visibility": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 9,
+      "Compact Storage": 7,
+      "Fast/Immediate Use": 6,
+      "Grip/Comfort": 1,
+      "Hygiene/Easy Maintenance": 2,
+      "Lightness/Low Burden": 5,
+      "Reliability/Durability": 14,
+      "Simple Operation": 4,
+      "Soft Contact": 2,
+      "Value/Price": 2
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "unique_parent_asin": 53,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Head Detachment": 1,
+      "Jamming/Stiction": 1,
+      "Leakage": 1,
+      "Odour": 1,
+      "Rust": 1,
+      "Storage Bulk": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 3,
+      "Fast/Immediate Use": 2,
+      "Lightness/Low Burden": 1,
+      "Reliability/Durability": 3,
+      "Soft Contact": 5,
+      "Value/Price": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "unique_parent_asin": 24,
+    "failure_codes_auto": {
+      "Bristle Shedding/Wear": 2,
+      "Colour Loss": 1,
+      "Jamming/Stiction": 1
+    },
+    "value_codes_auto": {
+      "Compact Storage": 1,
+      "Fast/Immediate Use": 1,
+      "Hygiene/Easy Maintenance": 1,
+      "Reliability/Durability": 1,
+      "Simple Operation": 4,
+      "Soft Contact": 4
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "unique_parent_asin": 41,
+    "failure_codes_auto": {},
+    "value_codes_auto": {
+      "Appearance": 3,
+      "Compact Storage": 1,
+      "Fast/Immediate Use": 1,
+      "Grip/Comfort": 1,
+      "Hygiene/Easy Maintenance": 2,
+      "Reliability/Durability": 5,
+      "Simple Operation": 2,
+      "Soft Contact": 5
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "unique_parent_asin": 44,
+    "failure_codes_auto": {
+      "Breakage": 5,
+      "Bristle Shedding/Wear": 1,
+      "Head Detachment": 1,
+      "Heaviness": 1,
+      "Leakage": 2,
+      "Looseness": 4,
+      "Odour": 1,
+      "Poor Cleaning/Pickup": 1,
+      "Scratch Visibility": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 1,
+      "Clean Result": 1,
+      "Reach/Coverage": 4,
+      "Reliability/Durability": 3,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 1,
+      "Soft Contact": 5,
+      "Value/Price": 3,
+      "Water Handling/Wringing": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "unique_parent_asin": 22,
+    "failure_codes_auto": {
+      "Breakage": 3,
+      "Heaviness": 1,
+      "Jamming/Stiction": 1,
+      "Looseness": 2,
+      "Scratch Visibility": 1
+    },
+    "value_codes_auto": {
+      "Reach/Coverage": 1,
+      "Soft Contact": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "unique_parent_asin": 40,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Bristle Shedding/Wear": 1,
+      "Scratch Visibility": 4
+    },
+    "value_codes_auto": {
+      "Compact Storage": 1,
+      "Fast/Immediate Use": 1,
+      "Lightness/Low Burden": 1,
+      "Reach/Coverage": 2,
+      "Reliability/Durability": 3,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 3,
+      "Soft Contact": 8,
+      "Value/Price": 3,
+      "Water Handling/Wringing": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "unique_parent_asin": 49,
+    "failure_codes_auto": {
+      "Breakage": 4,
+      "Colour Loss": 2,
+      "Jamming/Stiction": 1,
+      "Leakage": 1,
+      "Looseness": 4,
+      "Scratch Visibility": 3,
+      "Streak/Watermark": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 2,
+      "Soft Contact": 3
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "unique_parent_asin": 23,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Jamming/Stiction": 1,
+      "Scratch Visibility": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 1,
+      "Fast/Immediate Use": 1,
+      "Lightness/Low Burden": 1,
+      "Reliability/Durability": 1,
+      "Soft Contact": 1,
+      "Value/Price": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "unique_parent_asin": 40,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Heaviness": 2,
+      "Jamming/Stiction": 1,
+      "Scratch Visibility": 1,
+      "Storage Bulk": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 6,
+      "Fast/Immediate Use": 3,
+      "Grip/Comfort": 1,
+      "Lightness/Low Burden": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 4,
+      "Simple Operation": 1,
+      "Soft Contact": 1,
+      "Value/Price": 1
+    },
+    "evidence_status": "PRODUCT-METADATA VERIFIED / AUTO-CODED / SEMANTIC REVIEW REQUIRED"
+  }
+]

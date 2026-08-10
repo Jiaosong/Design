@@ -1,0 +1,50 @@
+[
+  {
+    "shard": "data/All_Beauty/train-00000-of-00001.parquet",
+    "rows": 2535,
+    "broad_title_hits": 8,
+    "product_verified_candidates": {
+      "cleaning_brush": 6
+    }
+  },
+  {
+    "shard": "data/Arts_Crafts_and_Sewing/train-00000-of-00001.parquet",
+    "rows": 1786437,
+    "broad_title_hits": 3681,
+    "product_verified_candidates": {
+      "mop": 260,
+      "squeegee": 485,
+      "cleaning_brush": 143
+    }
+  },
+  {
+    "shard": "data/Automotive/train-00000-of-00001.parquet",
+    "rows": 6072233,
+    "broad_title_hits": 47339,
+    "product_verified_candidates": {
+      "cleaning_brush": 906,
+      "squeegee": 1599,
+      "mop": 578,
+      "bucket": 76
+    }
+  },
+  {
+    "shard": "data/Baby_Products/train-00000-of-00001.parquet",
+    "rows": 1241083,
+    "broad_title_hits": 3497,
+    "product_verified_candidates": {
+      "cleaning_brush": 220
+    }
+  },
+  {
+    "shard": "data/Beauty_and_Personal_Care/train-00000-of-00001.parquet",
+    "rows": 6624441,
+    "broad_title_hits": 18041,
+    "product_verified_candidates": {
+      "cleaning_brush": 2187,
+      "squeegee": 60,
+      "bucket": 34,
+      "mop": 41
+    }
+  }
+]
