@@ -1,0 +1,115 @@
+name: Timer v3.3 Integrated Browser Gate
+
+on:
+  push:
+    branches:
+      - agent/timer-light-basin-v3.3-photography
+    paths:
+      - 'website/practice/timer-light-basin-v3/**'
+      - 'tests/timer-v33-integrated.mjs'
+      - '.github/workflows/timer-v33-integrated-browser.yml'
+  workflow_dispatch:
+
+jobs:
+  integrated-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Preflight deployable source package
+        id: preflight
+        shell: bash
+        run: |
+          set +e
+          project='website/practice/timer-light-basin-v3'
+          required=(
+            'index.html'
+            'styles.css'
+            'app.js'
+            'render-pipeline.js'
+            'render/PhotographyViewer.js'
+            'render/StudioEnvironment.js'
+            'render/DiffuserMaterial.js'
+            'render/ContactShadow.js'
+            'render/ColorPipeline.js'
+            'render/PostProcessing.js'
+            'assets/state_map.svg'
+            'assets/central_section.svg'
+            'assets/hero_poster.png'
+            'assets/exploded_poster.png'
+            'assets/pbr/timer_100_pbr.glb'
+            'assets/pbr/timer_50_pbr.glb'
+            'assets/pbr/timer_10_pbr.glb'
+            'assets/pbr/timer_exploded_sequence_v32.glb'
+          )
+
+          missing=()
+          for rel in "${required[@]}"; do
+            if [[ ! -f "$project/$rel" ]]; then missing+=("$rel"); fi
+          done
+
+          mkdir -p test-results/timer-v33-integrated
+          python3 - "${missing[@]}" <<'PY'
+          import json, pathlib, sys
+          payload = {
+              'gate': 'Timer Light Basin v3.3 source-package preflight',
+              'status': 'PASS' if len(sys.argv) == 1 else 'BLOCKED_SOURCE_PACKAGE_INCOMPLETE',
+              'missing': sys.argv[1:],
+              'boundary': 'This gate does not alter or rejudge the locked v3.3 photography calibration.'
+          }
+          pathlib.Path('test-results/timer-v33-integrated/preflight.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
+          print(json.dumps(payload, ensure_ascii=False, indent=2))
+          PY
+
+          if (( ${#missing[@]} > 0 )); then
+            echo "Timer v3.3 GitHub source is not deployable; ${#missing[@]} required file(s) are absent."
+            exit 12
+          fi
+
+          expected='900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66'
+          actual="$(sha256sum "$project/assets/pbr/timer_100_pbr.glb" | awk '{print $1}')"
+          if [[ "$actual" != "$expected" ]]; then
+            echo "Canonical GLB SHA mismatch: $actual"
+            exit 13
+          fi
+
+      - name: Set up Node
+        if: success()
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install browser QA dependencies
+        if: success()
+        run: npm ci
+
+      - name: Install Chromium
+        if: success()
+        run: npx playwright install --with-deps chromium
+
+      - name: Start website server
+        if: success()
+        run: |
+          node tests/serve.mjs > test-results/timer-v33-integrated/server.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/practice/timer-light-basin-v3/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat test-results/timer-v33-integrated/server.log
+          exit 1
+
+      - name: Run full-page Chromium/WebGL gate
+        if: success()
+        run: node tests/timer-v33-integrated.mjs
+
+      - name: Upload integrated QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: timer-v33-integrated-browser
+          path: test-results/timer-v33-integrated/
+          if-no-files-found: warn
+          retention-days: 14
