@@ -1,0 +1,6 @@
+legacy_source,legacy_claim_id,canonical_case_id,canonical_claim_id,legacy_status,migration_effect
+CASE_GD_Public_Claim_Matrix.csv,C01,C01,CLM-C01-001,UNVERIFIED,ID_NAMESPACE_ONLY
+CASE_GD_Public_Claim_Matrix.csv,C02,C01,CLM-C01-002,BLOCKED,ID_NAMESPACE_ONLY
+CASE_GD_Public_Claim_Matrix.csv,C03,C01,CLM-C01-003,BLOCKED,ID_NAMESPACE_ONLY
+CASE_GD_Public_Claim_Matrix.csv,C04,C01,CLM-C01-004,BLOCKED,ID_NAMESPACE_ONLY
+CASE_GD_Public_Claim_Matrix.csv,C05,C01,CLM-C01-005,BLOCKED,ID_NAMESPACE_ONLY
