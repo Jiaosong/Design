@@ -1,0 +1,39 @@
+{
+  "canonical_id": "PRAC-C01-TRANS-ABC-001",
+  "round": "R03 Measurement Calibration",
+  "date": "2026-08-10",
+  "status": "MEASUREMENT MODEL LOCKED / RELIABILITY NOT YET ESTABLISHED / HUMAN PILOT NOT RUN",
+  "scope": "PHOTO PILOT ONLY; spatial behavior/site effects excluded",
+  "participant_flow": ["N0a First Attention","N0b Free Curiosity","PK Prior Knowledge Gate","B1 Evidence Boundary","C1 Facilitated Relation Probe","C2-0 Blind Image Comparison","C2-1 Location Reveal","C2-2 Object/Category Reveal","C2-3 Biography/Source Reveal + incomplete third-object evidence"],
+  "sre": {
+    "dimensions": ["D1 Actor relation","D2 Behavior/practice","D3 Institution/governance","D4 Temporal relation","D5 Spatial relation","D6 Value conflict/normativity","D7 Interpretation/source relation","D8 Evidence responsibility"],
+    "status": ["ABSENT","SPONTANEOUS","PROMPTED_NA","AMBIGUOUS","EXPLICIT_REJECTION"],
+    "depth": {"1":"independent relation, vague/unsupported","2":"relation + evidence/uncertainty boundary","3":"relation + evidence boundary + own unresolved question + independently named verifier"},
+    "rules": ["N0a/N0b are the primary spontaneous conditions","B1 makes D8 prompted","C1 is facilitated only and gives no spontaneous credit","C2-0 may generate spontaneous dimensions; later reveals invalidate causal spontaneity for revealed dimensions"]
+  },
+  "pls": {
+    "subtypes": ["PLS-L lexical echo","PLS-S semantic echo","PLS-R structural echo","PLS-C continuation echo"],
+    "subtype_range": "0-2",
+    "high_leakage": "total >= 4/8 OR any subtype = 2"
+  },
+  "dual_coding": {
+    "coverage": "100% of small adult pilot records",
+    "metrics": {"SRE status":"Cohen's kappa per dimension","SRE depth":"quadratic weighted Cohen's kappa","PLS subtype":"quadratic weighted Cohen's kappa","diagnostic":"exact agreement"},
+    "thresholds": {"PASS":"kappa >= 0.75 AND exact >= 0.85","REVISE":"0.60 <= kappa < 0.75 OR exact 0.75-0.849","REJECT_FOR_DECISION_USE":"kappa < 0.60 OR exact < 0.75","NON_ESTIMABLE":"only one category observed"}
+  },
+  "c2": {
+    "order_control": "randomize A/B image order per session and record it",
+    "stages": {"C2-0":"images only","C2-1":"location/context only","C2-2":"object/category names only","C2-3":"minimal source-bound biography/context + incomplete third object"},
+    "lock_rule": "commit each stage before next reveal",
+    "measures": ["free comparison dimensions","information responsiveness","source/evidence attribution","incomplete-evidence integrity","PLS per reveal"]
+  },
+  "pilot": {
+    "operational_target": "12-18 adults; exercise planning assumption, not powered effect study",
+    "minors": "out of scope until adult pilot comprehension and review are complete"
+  },
+  "decision_thresholds": {
+    "N0_discoverability": {"SUPPORTS": ">=0.50 valid participants with >=1 spontaneous D1-D7 depth>=1 before B1/C1","WEAK":"0.25-0.49","DO_NOT_CLAIM":"<0.25"},
+    "C1": {"KEEP":"premise rejection <=0.25 AND high leakage <=0.50 AND >=0.50 evidence-bounded relation after facilitation","REVISE":"premise rejection 0.26-0.40 OR high leakage 0.51-0.70","REJECT":"premise rejection >0.40 OR high leakage >0.70","SELF_DISCOVERY":"never inferred from C1"},
+    "C2": {"KEEP":"information responsiveness >=0.75 AND incomplete-evidence integrity >=0.75 AND C2-0 high leakage <=0.20","REVISE":"any core measure 0.50-0.74","REJECT":"any core measure <0.50"}
+  }
+}
