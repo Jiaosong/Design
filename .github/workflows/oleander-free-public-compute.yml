@@ -1,0 +1,82 @@
+name: OLEANDER FREE_PUBLIC_COMPUTE SP02
+
+on:
+  push:
+    branches:
+      - feature/rhino-grasshopper-runtime-v0.1
+    paths:
+      - '.github/workflows/oleander-free-public-compute.yml'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute/**'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/jobs/cp2_public_compute_sp02.json'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/public_compute_probe_nonce.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sp02-public-compute-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      RUNTIME_ROOT: oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper
+      RHINO_COMPUTE_TOKEN: ${{ secrets.RHINO_COMPUTE_TOKEN }}
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+
+      - name: Confirm no paid Core-Hour token is injected
+        shell: bash
+        run: |
+          if [ -n "${RHINO_TOKEN:-}" ]; then
+            echo "FREE_PUBLIC_COMPUTE refuses RHINO_TOKEN / Core-Hour billing." >&2
+            exit 1
+          fi
+          echo "NO_PAID_RUNTIME gate active"
+
+      - name: Build SP02 GHX fixture from official McNeel source
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/public_compute/build_sp02_fixture.py" \
+            --output "$RUNTIME_ROOT/runtime-state/public-compute/OLEANDER_SP02_FREE_PUBLIC_COMPUTE.ghx" \
+            --source-copy "$RUNTIME_ROOT/runtime-state/public-compute/mcneel_source_fixture.ghx"
+
+      - name: Attempt real McNeel public Compute Grasshopper solve
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/public_compute/run_sp02_public_compute.py" \
+            --definition "$RUNTIME_ROOT/runtime-state/public-compute/OLEANDER_SP02_FREE_PUBLIC_COMPUTE.ghx" \
+            --out-dir "$RUNTIME_ROOT/runtime-state/public-compute"
+
+      - name: Print evidence status only
+        if: always()
+        shell: bash
+        run: |
+          RECEIPT="$RUNTIME_ROOT/runtime-state/public-compute/public_compute_receipt.json"
+          if [ -f "$RECEIPT" ]; then
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/public-compute/public_compute_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          print('runtime_mode=', r.get('runtime_mode'))
+          print('http_status=', r.get('transport', {}).get('http_status'))
+          print('auth_mode=', r.get('auth', {}).get('mode'))
+          print('cp2=', r.get('cp2', {}).get('status'))
+          print('cp2_blocker=', r.get('cp2', {}).get('blocker'))
+          print('cp4=', r.get('cp4', {}).get('status'))
+          print('evidence_level=', r.get('evidence', {}).get('level'))
+          PY
+          else
+            echo "No receipt generated; build/probe infrastructure failed before evidence receipt." >&2
+          fi
+
+      - name: Upload auditable probe artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-sp02-free-public-compute
+          path: |
+            ${{ env.RUNTIME_ROOT }}/runtime-state/public-compute/
+          if-no-files-found: warn
+          retention-days: 14
