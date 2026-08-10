@@ -1,0 +1,98 @@
+{
+  "schema": "oleander.timer.r54.render-spec.v1",
+  "version": "R54",
+  "status": "STANDARD_BUILT_PRODUCTION_RENDER_PENDING",
+  "canonical": {
+    "file": "assets/pbr/timer_100_pbr.glb",
+    "sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "mesh_count": 21,
+    "scene_extents_source_units": [118.0, 123.899998, 34.18],
+    "source_attributes": ["POSITION", "NORMAL"],
+    "texcoord_0_present": false,
+    "tangent_present": false,
+    "source_units_to_render_meters": 0.001,
+    "source_bytes_must_remain_unchanged": true
+  },
+  "render_derivative_allowlist": [
+    "scene-scale interpretation",
+    "UV coordinates",
+    "tangent fields",
+    "non-destructive shading normals",
+    "renderer material bindings",
+    "AOV and cryptomatte IDs",
+    "cameras",
+    "lights and reflection cards"
+  ],
+  "forbidden_geometry_changes": [
+    "vertex repositioning",
+    "proxy geometry",
+    "remeshing",
+    "bevel or subdivision that changes silhouette",
+    "AI-generated structure completion"
+  ],
+  "material_targets": {
+    "housing_pc_abs": {
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "model": "dielectric glossy-diffuse",
+      "specular_ior": 1.47,
+      "specular_roughness": 0.52,
+      "coat_weight": 0.035,
+      "coat_roughness": 0.58,
+      "finish_characteristic_scale_mm": [0.12, 0.35],
+      "normal_map_default": "OFF"
+    },
+    "knob_anodized_aluminum": {
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "base_metalness": 1.0,
+      "specular_roughness": 0.23,
+      "specular_roughness_anisotropy": 0.38,
+      "front_tangent": "radial renderer-side field",
+      "visible_line_texture": "FORBIDDEN"
+    },
+    "diffuser_opal": {
+      "evidence": "VISUALIZATION_HYPOTHESIS_NOT_OPTICAL_TEST",
+      "specular_ior": 1.49,
+      "specular_roughness": 0.30,
+      "transmission_weight": 0.82,
+      "transmission_depth_m": 0.006,
+      "transmission_scatter": [0.78, 0.72, 0.62],
+      "transmission_scatter_anisotropy": 0.15,
+      "required_reading": ["cool Fresnel surface", "milky scattering volume", "warm internal illumination", "edge thickness cue"]
+    }
+  },
+  "studio_rig": {
+    "cards": ["KEY_BROAD", "SIDE_STRIP", "KNOB_SWEEP", "TOP_DIFFUSER", "NEG_FILL"],
+    "camera_hero_mm": 70,
+    "camera_cmf_mm": 85,
+    "camera_macro_mm": 105,
+    "sensor_width_mm": 36
+  },
+  "output": {
+    "primary_adapter": "Blender 4.5 LTS / Cycles",
+    "authority_material_semantics": "OpenPBR 1.1.1",
+    "cmf_view_transform": "Khronos PBR Neutral",
+    "hero_view_transform": "AgX",
+    "hero_max_samples": 1024,
+    "cmf_max_samples": 768,
+    "macro_max_samples": 1536,
+    "adaptive_sampling": true,
+    "noise_threshold": 0.005,
+    "working_master": "OpenEXR multilayer / 16-bit half float minimum",
+    "aovs": ["Combined", "Diffuse Color", "Glossy/Specular", "Transmission", "Emission", "Normal", "Depth", "Shadow", "Cryptomatte Object", "Cryptomatte Material"]
+  },
+  "qa_gates": ["R54-G0 Source Authority", "R54-G1 Render Geometry Equivalence", "R54-G2 Shading Prep", "R54-G3 Material Fidelity", "R54-G4 Studio Reflection", "R54-G5 Color/AOV", "R54-G6 Promotion"],
+  "execution": {
+    "current_runtime": {
+      "blender": "NOT_INSTALLED",
+      "MaterialX_python": "NOT_INSTALLED",
+      "OpenImageIO": "NOT_INSTALLED",
+      "OpenColorIO_python": "NOT_INSTALLED",
+      "vtk": "9.6.2",
+      "trimesh": "4.11.1"
+    },
+    "production_path_traced_render": "NOT_RUN",
+    "authority_impact": "NONE",
+    "posterlock_authority": "UNCHANGED",
+    "pr_23": "UNTOUCHED"
+  }
+}
