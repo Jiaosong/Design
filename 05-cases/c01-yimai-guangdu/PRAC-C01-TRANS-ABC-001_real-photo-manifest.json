@@ -1,0 +1,21 @@
+{
+  "canonical_id": "PRAC-C01-TRANS-ABC-001",
+  "round": "Real-photo Round 01 / 2026-08-10",
+  "source_bundle": "广渡村项目完整导出_2026-07-24.zip",
+  "status": "REAL PROJECT-SOURCE PHOTOS USED / 2026 CURRENT SITE NOT VERIFIED / HUMAN TEST NOT RUN",
+  "drive": {
+    "practice_folder_id": "1W9EVVvLxbbCNV0WKNoQNe3mNUjwOZXGS",
+    "package_file_id": "1f3AJgYfu97W8sgClH_591HIb41LnyxAJ",
+    "a0_folder_id": "1HuXzEAj4L-lz-7Y_Fbsl-ltWr3yk1Ak_",
+    "c1_folder_id": "1iJsQMGZZFUH2PfgQmpZ_GRxOlM9RiO7k",
+    "c2_folder_id": "1eGnmKMyxIbV4RhvR8zd6_5QDecWj2ZYL"
+  },
+  "assets": [
+    {"file":"A0_guide_map.png","sha256":"fab0d16242377801a4ade74385171b43b7c7d88e106662bbace204567f4e6289","drive_file_id":"111L-erie-U3SbPVZaSNp6sWkQ_zZPnac","role":"A0 baseline map","mapping":"project-source guide-map asset","rights":"project-source; public rights not asserted"},
+    {"file":"A0_signage_crop.jpg","sha256":"e2969b22774f413e374acdb6e8b6f52ee64895af70232e1b416784cfca8cb4fa","drive_file_id":"1xRdEzbNs_RFhjCnZWPUoGljZL_LFgT1y","role":"A0 object-level signage evidence crop","mapping":"crop from project-source archway context photo","rights":"internal evidence only"},
+    {"file":"C1_zhenxiao.jpg","sha256":"6e4b0eecba408064581f711f5bdc63a1ee9e3095818ced41bde8fc3a6b34f6e6","drive_file_id":"19i77c-KchnJJeBFTidsXRZ1OADfjd_12","role":"C1 + A/B/C shared photo","mapping":"paired in source DOCX with 贞孝牌坊 caption","rights":"third-party/news watermark; rights pending"},
+    {"file":"C2_jiexiao.jpg","sha256":"e99e151bd9df765f2ad816125f3c4ba9f2385c02043887b9aeaa922f4f7c156b","drive_file_id":"1gtv8pSPZ011aT6NG_pd7kiwWj3PFpwKT","role":"C2 comparison","mapping":"paired in source DOCX with 节孝牌坊 caption","rights":"third-party/news watermark; rights pending"},
+    {"file":"C2_maicai_detail.jpg","sha256":"88f5d6f931a03b44eac3c8531412aad6168b1d4ae83eeb2524dfbadb22f3d3fc","drive_file_id":"1Lmqp1Ck7cuXdhTNRK-7OfeA3oe19VLDr","role":"C2 comparison / evidence-gap","mapping":"paired in source DOCX with 卖菜牌坊（大爿地） caption; detail-only","rights":"internal evidence; exact provenance pending"}
+  ],
+  "notes": "GitHub stores the versioned logic and evidence manifest. Rights-pending source images remain in Drive/internal package and are not republished in-repo."
+}
