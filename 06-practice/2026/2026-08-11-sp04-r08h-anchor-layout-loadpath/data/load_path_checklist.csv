@@ -1,0 +1,6 @@
+load_or_control,from,via_1,via_2,to,status
+gravity,frame sill,setting block,shim/support,structural substrate,PASS logic / dimensions hypothetical
+wind pressure,frame perimeter,anchor bracket/fastener,structural substrate,,PASS logic / design load pending
+wind suction,frame perimeter,anchor bracket/fastener,structural substrate,,PASS logic / design load pending
+thermal,frame/reveal,thermal-break zone,continuous insulation,,CHECK psi/fRsi pending
+water,head/jamb/sill flashing,drainage path,exterior,,PASS principle / exact system pending
