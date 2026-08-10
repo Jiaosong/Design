@@ -1,0 +1,23 @@
+{
+  "status": "DESIGN JUDGMENT / NOT USER TESTING",
+  "A_DEEP_REVEAL": {
+    "primary_effect": "depth, inhabitable edge, light-shadow thickness",
+    "retain": "deep reveal + integrated seat + exterior-set frame",
+    "risk": "600 mm host depth requires later structural/material justification"
+  },
+  "B_SOFT_ARCH": {
+    "primary_effect": "continuous threshold-to-arch spatial reading",
+    "retain": "single continuous arch profile without decorative trim",
+    "risk": "curvature and edge weathering/detailing remain unresolved"
+  },
+  "C_OFFSET_FRAME": {
+    "primary_effect": "different interior/exterior readings through stepped depth",
+    "retain": "large exterior aperture + smaller interior frame plane",
+    "risk": "waterproofing, drainage, thermal bridge and frame anchorage are unresolved"
+  },
+  "D_OPENING_FIELD": {
+    "primary_effect": "solid-void rhythm and repeated deep reveals",
+    "retain": "five-opening field with consistent pier rhythm",
+    "risk": "structural pier sizing and facade movement joints are unresolved"
+  }
+}
