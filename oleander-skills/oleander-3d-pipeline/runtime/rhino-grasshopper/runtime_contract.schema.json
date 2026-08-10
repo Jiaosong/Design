@@ -18,6 +18,7 @@
       "enum": [
         "runtime_probe",
         "runtime_provider_probe",
+        "runtime_provider_selection",
         "capture_evidence",
         "grasshopper_definition_run",
         "data_tree_cp2_cp4",
@@ -45,13 +46,22 @@
             "AUTH_REQUIRED",
             "PAID_PATH_REJECTED",
             "NETWORK_BLOCKED",
+            "UNSUPPORTED_ARCHITECTURE",
+            "UNSUPPORTED_OS",
+            "POLICY_BLOCKED",
             "UNAVAILABLE",
             "UNKNOWN"
           ]
         },
         "selector_action": {
           "type": "string",
-          "enum": ["ALLOW_SP02_SUBMISSION", "SKIP_SP02_PRESERVE_OPEN"]
+          "enum": [
+            "ALLOW_SP02_SUBMISSION",
+            "SKIP_SP02_PRESERVE_OPEN",
+            "RUN_PROVIDER_PREFLIGHT",
+            "HOLD_FOR_TIEBREAK",
+            "HOLD_CP2_PRESERVE_CP4_OPEN"
+          ]
         },
         "preflight_receipt": {"type": ["string", "null"]}
       },
@@ -88,6 +98,7 @@
           "generated_ghx_fixture",
           "runtime_manifest",
           "provider_preflight_receipt",
+          "provider_selection_receipt",
           "tree_report",
           "grasshopper_canvas_png",
           "rhino_viewport_png",
@@ -106,6 +117,7 @@
         "no_surrogate_promotion": {"type": "boolean", "const": true},
         "no_paid_fallback": {"type": "boolean"},
         "provider_preflight_is_runtime_evidence": {"type": "boolean", "const": false},
+        "provider_selection_is_runtime_evidence": {"type": "boolean", "const": false},
         "required_real_runtime_for": {
           "type": "array",
           "items": {"type": "string"}
