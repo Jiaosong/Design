@@ -48,6 +48,8 @@
             "NETWORK_BLOCKED",
             "UNSUPPORTED_ARCHITECTURE",
             "UNSUPPORTED_OS",
+            "INSTALLER_AND_LICENSE_REQUIRED",
+            "RUNTIME_INSTALLED_LICENSE_UNKNOWN",
             "POLICY_BLOCKED",
             "UNAVAILABLE",
             "UNKNOWN"
@@ -60,6 +62,7 @@
             "SKIP_SP02_PRESERVE_OPEN",
             "RUN_PROVIDER_PREFLIGHT",
             "HOLD_FOR_TIEBREAK",
+            "HOLD_FOR_INSTALLER_AND_LICENSE",
             "HOLD_CP2_PRESERVE_CP4_OPEN"
           ]
         },
