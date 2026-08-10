@@ -1,0 +1,11 @@
+{
+  "run_date": "2026-08-10",
+  "source_training": "2026-08-09｜SP02｜Grasshopper Data Tree 关系拓扑训练",
+  "status": "OFFLINE STRUCTURE EXECUTED / RHINO-GRASSHOPPER RUNTIME NOT AVAILABLE",
+  "zones": 4,
+  "items_per_zone": 6,
+  "dx": 2.4,
+  "dy": 3.6,
+  "parameter_status": "SIMULATED / EXERCISE ASSUMPTION",
+  "note": "练习用假设参数，不代表实际项目尺寸或项目数据。"
+}
