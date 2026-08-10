@@ -1,0 +1,328 @@
+[
+  {
+    "product": "bucket",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "failure_codes_auto": {
+      "Breakage": 5,
+      "Colour Loss": 3,
+      "Heaviness": 6,
+      "Instability/Tipping": 1,
+      "Jamming/Stiction": 4,
+      "Leakage": 7,
+      "Looseness": 4,
+      "Odour": 2,
+      "Rust": 3,
+      "Scratch Visibility": 2,
+      "Soil Retention": 3,
+      "Storage Bulk": 3
+    },
+    "value_codes_auto": {
+      "Appearance": 9,
+      "Compact Storage": 1,
+      "Fast/Immediate Use": 3,
+      "Grip/Comfort": 1,
+      "Hygiene/Easy Maintenance": 4,
+      "Lightness/Low Burden": 2,
+      "Reliability/Durability": 7,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 3,
+      "Soft Contact": 3,
+      "Value/Price": 3,
+      "Water Handling/Wringing": 2
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "bucket",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "failure_codes_auto": {
+      "Breakage": 4,
+      "Heaviness": 2,
+      "Instability/Tipping": 1,
+      "Jamming/Stiction": 5,
+      "Leakage": 2,
+      "Looseness": 1,
+      "Odour": 3,
+      "Poor Cleaning/Pickup": 1,
+      "Rust": 1,
+      "Soil Retention": 2,
+      "Storage Bulk": 1,
+      "Streak/Watermark": 2,
+      "Wringer Failure": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 3,
+      "Clean Result": 3,
+      "Fast/Immediate Use": 3,
+      "Hygiene/Easy Maintenance": 5,
+      "Reliability/Durability": 4,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 2
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "bucket",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "failure_codes_auto": {
+      "Breakage": 4,
+      "Burr/Sharp Flash": 1,
+      "Colour Loss": 2,
+      "Dirt Visibility": 1,
+      "Hardening": 1,
+      "Heaviness": 2,
+      "Jamming/Stiction": 2,
+      "Leakage": 2,
+      "Looseness": 1,
+      "Rust": 1,
+      "Soil Retention": 1,
+      "Storage Bulk": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 9,
+      "Compact Storage": 1,
+      "Fast/Immediate Use": 9,
+      "Grip/Comfort": 2,
+      "Hygiene/Easy Maintenance": 5,
+      "Lightness/Low Burden": 4,
+      "Reliability/Durability": 2,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 5,
+      "Soft Contact": 3,
+      "Value/Price": 3
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "failure_codes_auto": {
+      "Breakage": 6,
+      "Colour Loss": 2,
+      "Grip Slip/Discomfort": 1,
+      "Head Detachment": 1,
+      "Heaviness": 2,
+      "Jamming/Stiction": 5,
+      "Leakage": 2,
+      "Looseness": 2,
+      "Rust": 2,
+      "Soil Retention": 4,
+      "Storage Bulk": 2
+    },
+    "value_codes_auto": {
+      "Appearance": 8,
+      "Fast/Immediate Use": 2,
+      "Lightness/Low Burden": 2,
+      "Reliability/Durability": 4,
+      "Replaceability/Repairability": 5,
+      "Simple Operation": 3,
+      "Soft Contact": 3,
+      "Value/Price": 1
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "failure_codes_auto": {
+      "Breakage": 5,
+      "Colour Loss": 1,
+      "Looseness": 1,
+      "Soil Retention": 3,
+      "Storage Bulk": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 4,
+      "Fast/Immediate Use": 4,
+      "Hygiene/Easy Maintenance": 3,
+      "Reach/Coverage": 3,
+      "Reliability/Durability": 1,
+      "Soft Contact": 2
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "cleaning_brush",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "failure_codes_auto": {
+      "Breakage": 2,
+      "Burr/Sharp Flash": 1,
+      "Grip Slip/Discomfort": 1,
+      "Jamming/Stiction": 2,
+      "Leakage": 3,
+      "Scratch Visibility": 2,
+      "Soil Retention": 2,
+      "Yellowing": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 3,
+      "Fast/Immediate Use": 2,
+      "Grip/Comfort": 2,
+      "Hygiene/Easy Maintenance": 4,
+      "Lightness/Low Burden": 2,
+      "Reliability/Durability": 12,
+      "Simple Operation": 2,
+      "Soft Contact": 3,
+      "Value/Price": 2
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "failure_codes_auto": {
+      "Breakage": 6,
+      "Grip Slip/Discomfort": 1,
+      "Heaviness": 3,
+      "Instability/Tipping": 1,
+      "Jamming/Stiction": 7,
+      "Leakage": 2,
+      "Odour": 2,
+      "Poor Cleaning/Pickup": 1,
+      "Rust": 1,
+      "Storage Bulk": 1,
+      "Streak/Watermark": 5
+    },
+    "value_codes_auto": {
+      "Appearance": 4,
+      "Clean Result": 1,
+      "Fast/Immediate Use": 1,
+      "Grip/Comfort": 1,
+      "Lightness/Low Burden": 1,
+      "Reliability/Durability": 3,
+      "Replaceability/Repairability": 1,
+      "Simple Operation": 2,
+      "Value/Price": 1
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "failure_codes_auto": {
+      "Breakage": 2,
+      "Heaviness": 1,
+      "Jamming/Stiction": 6,
+      "Leakage": 1,
+      "Odour": 1,
+      "Poor Cleaning/Pickup": 1,
+      "Streak/Watermark": 2
+    },
+    "value_codes_auto": {
+      "Appearance": 6,
+      "Clean Result": 1,
+      "Fast/Immediate Use": 2,
+      "Lightness/Low Burden": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 2,
+      "Simple Operation": 1,
+      "Water Handling/Wringing": 1
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "mop",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "failure_codes_auto": {
+      "Breakage": 3,
+      "Grip Slip/Discomfort": 1,
+      "Heaviness": 2,
+      "Looseness": 1,
+      "Odour": 1,
+      "Streak/Watermark": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 4,
+      "Compact Storage": 3,
+      "Fast/Immediate Use": 3,
+      "Grip/Comfort": 2,
+      "Lightness/Low Burden": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 6,
+      "Simple Operation": 2,
+      "Soft Contact": 1,
+      "Value/Price": 2,
+      "Water Handling/Wringing": 1
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "1-2_failure_discovery",
+    "selected_rows": 54,
+    "failure_codes_auto": {
+      "Breakage": 2,
+      "Colour Loss": 5,
+      "Grip Slip/Discomfort": 1,
+      "Jamming/Stiction": 6,
+      "Poor Cleaning/Pickup": 1,
+      "Scratch Visibility": 2,
+      "Streak/Watermark": 2
+    },
+    "value_codes_auto": {
+      "Appearance": 6,
+      "Fast/Immediate Use": 1,
+      "Grip/Comfort": 1,
+      "Hygiene/Easy Maintenance": 1,
+      "Lightness/Low Burden": 2,
+      "Reliability/Durability": 2,
+      "Replaceability/Repairability": 2,
+      "Value/Price": 2
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "3_tradeoff",
+    "selected_rows": 24,
+    "failure_codes_auto": {
+      "Breakage": 1,
+      "Colour Loss": 1,
+      "Jamming/Stiction": 2,
+      "Poor Cleaning/Pickup": 1,
+      "Streak/Watermark": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 7,
+      "Fast/Immediate Use": 1,
+      "Grip/Comfort": 1,
+      "Lightness/Low Burden": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 2,
+      "Soft Contact": 1
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  },
+  {
+    "product": "squeegee",
+    "rating_band": "4-5_value_language",
+    "selected_rows": 42,
+    "failure_codes_auto": {
+      "Colour Loss": 2,
+      "Heaviness": 1,
+      "Jamming/Stiction": 2,
+      "Leakage": 1,
+      "Scratch Visibility": 1
+    },
+    "value_codes_auto": {
+      "Appearance": 11,
+      "Fast/Immediate Use": 1,
+      "Grip/Comfort": 1,
+      "Reach/Coverage": 1,
+      "Reliability/Durability": 6,
+      "Simple Operation": 1,
+      "Soft Contact": 3,
+      "Value/Price": 5
+    },
+    "evidence_status": "AUTO-CODED / MANUAL REVIEW REQUIRED"
+  }
+]

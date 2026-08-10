@@ -1,0 +1,98 @@
+[
+  {
+    "folder": "Home_and_Kitchen",
+    "shard": "Home_and_Kitchen/00000.parquet",
+    "rows_scanned": 351094,
+    "broad_hits": 1619,
+    "candidate_counts": {
+      "cleaning_brush": 180,
+      "mop": 180,
+      "bucket": 143,
+      "squeegee": 109
+    }
+  },
+  {
+    "folder": "Home_and_Kitchen",
+    "shard": "Home_and_Kitchen/00064.parquet",
+    "rows_scanned": 351094,
+    "broad_hits": 1112,
+    "candidate_counts": {
+      "squeegee": 63,
+      "mop": 180,
+      "bucket": 77,
+      "cleaning_brush": 180
+    }
+  },
+  {
+    "folder": "Home_and_Kitchen",
+    "shard": "Home_and_Kitchen/00127.parquet",
+    "rows_scanned": 351093,
+    "broad_hits": 1018,
+    "candidate_counts": {
+      "bucket": 61,
+      "mop": 180,
+      "cleaning_brush": 179,
+      "squeegee": 72
+    }
+  },
+  {
+    "folder": "Home_and_Kitchen",
+    "shard": "Home_and_Kitchen/00191.parquet",
+    "rows_scanned": 351093,
+    "broad_hits": 729,
+    "candidate_counts": {
+      "squeegee": 27,
+      "mop": 180,
+      "bucket": 37,
+      "cleaning_brush": 91
+    }
+  },
+  {
+    "folder": "Tools_and_Home_Improvement",
+    "shard": "Tools_and_Home_Improvement/00000.parquet",
+    "rows_scanned": 329052,
+    "broad_hits": 963,
+    "candidate_counts": {
+      "cleaning_brush": 60,
+      "mop": 180,
+      "bucket": 97,
+      "squeegee": 54
+    }
+  },
+  {
+    "folder": "Tools_and_Home_Improvement",
+    "shard": "Tools_and_Home_Improvement/00027.parquet",
+    "rows_scanned": 329052,
+    "broad_hits": 777,
+    "candidate_counts": {
+      "mop": 180,
+      "bucket": 107,
+      "squeegee": 43,
+      "cleaning_brush": 48
+    }
+  },
+  {
+    "folder": "Tools_and_Home_Improvement",
+    "shard": "Tools_and_Home_Improvement/00054.parquet",
+    "rows_scanned": 329052,
+    "broad_hits": 555,
+    "candidate_counts": {
+      "mop": 152,
+      "bucket": 47,
+      "squeegee": 46,
+      "cleaning_brush": 22
+    }
+  },
+  {
+    "folder": "Tools_and_Home_Improvement",
+    "shard": "Tools_and_Home_Improvement/00081.parquet",
+    "rows_scanned": 329051,
+    "broad_hits": 393,
+    "candidate_counts": {
+      "bucket": 33,
+      "squeegee": 40,
+      "cleaning_brush": 15,
+      "mop": 82
+    }
+  }
+]

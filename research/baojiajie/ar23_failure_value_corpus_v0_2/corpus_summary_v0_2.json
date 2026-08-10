@@ -1,0 +1,42 @@
+{
+  "status": "CATEGORY-SHARD DISCOVERY SAMPLE / AUTO-CODED / MANUAL REVIEW REQUIRED",
+  "source_dataset": "bagadbilla/amazon-reviews-2023-trimmed",
+  "folders": [
+    "Home_and_Kitchen",
+    "Tools_and_Home_Improvement"
+  ],
+  "selected_shards": {
+    "Home_and_Kitchen": [
+      "Home_and_Kitchen/00000.parquet",
+      "Home_and_Kitchen/00064.parquet",
+      "Home_and_Kitchen/00127.parquet",
+      "Home_and_Kitchen/00191.parquet"
+    ],
+    "Tools_and_Home_Improvement": [
+      "Tools_and_Home_Improvement/00000.parquet",
+      "Tools_and_Home_Improvement/00027.parquet",
+      "Tools_and_Home_Improvement/00054.parquet",
+      "Tools_and_Home_Improvement/00081.parquet"
+    ]
+  },
+  "rows_selected_total": 480,
+  "rows_selected_by_product": {
+    "mop": 120,
+    "cleaning_brush": 120,
+    "squeegee": 120,
+    "bucket": 120
+  },
+  "rating_band_counts": {
+    "1-2_failure_discovery": 216,
+    "3_tradeoff": 96,
+    "4-5_value_language": 168,
+    "unknown": 0
+  },
+  "critical_limitations": [
+    "Evenly spaced category shards are a discovery sample, not a probability sample.",
+    "Product identity is inferred from review title/text because the trimmed derivative omits parent_asin/product metadata.",
+    "Automatic Failure/Value coding must be manually reviewed before evidence promotion.",
+    "Counts describe only this selected discovery corpus and must not be compared as market prevalence against XJ01/JD samples.",
+    "No exact hue or finish preference can be inferred from this corpus without controlled CMF stimuli."
+  ]
+}
