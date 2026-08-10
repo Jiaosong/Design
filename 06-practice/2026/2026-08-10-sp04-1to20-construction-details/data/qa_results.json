@@ -1,0 +1,5 @@
+[
+  {"prototype":"A","title":"Deep Reveal","wall_total_mm":600,"frame_from_exterior_mm":150,"frame_to_interior_face_mm":450,"AWB_outer_face_mm":145,"AWB_inner_face_mm":160,"waterproof_bridge_to_frame_mm":0,"pass":true},
+  {"prototype":"C","title":"Offset Frame","wall_total_mm":360,"frame_from_exterior_mm":270,"frame_to_interior_face_mm":90,"AWB_outer_face_mm":145,"AWB_inner_face_mm":160,"waterproof_bridge_to_frame_mm":110,"pass":true},
+  {"prototype":"D","title":"Opening Field — Typical Module","wall_total_mm":420,"frame_from_exterior_mm":155,"frame_to_interior_face_mm":265,"AWB_outer_face_mm":145,"AWB_inner_face_mm":160,"waterproof_bridge_to_frame_mm":0,"pass":true}
+]
