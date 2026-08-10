@@ -1,0 +1,105 @@
+name: Timer v3.3 Staging Contract
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'tests/timer-v33-stage-package.py'
+      - 'tests/timer-v33-integrated.mjs'
+      - 'tests/serve-static-root.mjs'
+      - 'website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json'
+      - '.github/workflows/timer-v33-integrated-browser.yml'
+      - '.github/workflows/timer-v33-staged-pages.yml'
+      - '.github/workflows/timer-v33-staging-contract.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'tests/timer-v33-stage-package.py'
+      - 'tests/timer-v33-integrated.mjs'
+      - 'tests/serve-static-root.mjs'
+      - 'website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json'
+      - '.github/workflows/timer-v33-integrated-browser.yml'
+      - '.github/workflows/timer-v33-staged-pages.yml'
+      - '.github/workflows/timer-v33-staging-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  staging-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax checks
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tests/timer-v33-stage-package.py
+          node --check tests/timer-v33-integrated.mjs
+          node --check tests/serve-static-root.mjs
+          python3 -m json.tool website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json >/dev/null
+
+      - name: Validate locked authority manifest
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json')
+          m=json.loads(p.read_text())
+          assert m['schema']=='oleander.timer-light-basin.deployment-artifact.v1'
+          assert m['version']=='3.3'
+          assert m['package_sha256']=='a4ca61701f8bac0c4991fe3789386cdaec84688e6fed90d1917d9be430a8e804'
+          assert m['required_files']['assets/pbr/timer_100_pbr.glb']=='900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66'
+          assert len(m['required_files'])==18
+          print('official manifest contract: PASS')
+          PY
+
+      - name: Exercise verifier with synthetic audited package
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/timer-v33-contract
+          mkdir -p /tmp/timer-v33-contract
+          python3 - <<'PY'
+          import hashlib, json, pathlib, zipfile
+          work=pathlib.Path('/tmp/timer-v33-contract')
+          root='SYNTHETIC_TIMER_V33'
+          files={
+              'index.html': b'<!doctype html><title>synthetic</title>\n',
+              'assets/pbr/timer_100_pbr.glb': b'glTF-synthetic-authority\n'
+          }
+          sums=''.join(f"{hashlib.sha256(data).hexdigest()}  {name}\n" for name,data in files.items()).encode()
+          zip_path=work/'synthetic.zip'
+          with zipfile.ZipFile(zip_path,'w',compression=zipfile.ZIP_DEFLATED) as z:
+              for name,data in files.items(): z.writestr(f'{root}/{name}',data)
+              z.writestr(f'{root}/SHA256SUMS.txt',sums)
+          package_sha=hashlib.sha256(zip_path.read_bytes()).hexdigest()
+          manifest={
+              'schema':'oleander.timer-light-basin.deployment-artifact.v1',
+              'package_root':root,
+              'package_sha256':package_sha,
+              'required_files':{name:hashlib.sha256(data).hexdigest() for name,data in files.items()},
+              'boundary':{'synthetic':'contract test only'}
+          }
+          (work/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          PY
+          python3 tests/timer-v33-stage-package.py \
+            --zip /tmp/timer-v33-contract/synthetic.zip \
+            --manifest /tmp/timer-v33-contract/manifest.json \
+            --dest /tmp/timer-v33-contract/site \
+            --result /tmp/timer-v33-contract/result.json
+          test -f /tmp/timer-v33-contract/site/index.html
+          test -f /tmp/timer-v33-contract/site/assets/pbr/timer_100_pbr.glb
+          python3 - <<'PY'
+          import json, pathlib
+          r=json.loads(pathlib.Path('/tmp/timer-v33-contract/result.json').read_text())
+          assert r['status']=='PASS', r
+          assert r['checks']['package_sha256']['status']=='PASS'
+          assert r['checks']['required_files']['status']=='PASS'
+          assert r['checks']['internal_sha256sums']['status']=='PASS'
+          assert r['checks']['extraction']['status']=='PASS'
+          print('synthetic staging verifier: PASS')
+          PY
