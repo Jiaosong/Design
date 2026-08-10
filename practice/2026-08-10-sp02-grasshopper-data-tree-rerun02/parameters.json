@@ -1,0 +1,18 @@
+{
+  "training_id": "SP02",
+  "run": "Rerun02",
+  "date": "2026-08-10",
+  "parameters": {
+    "zones": {"value": 4, "truth_state": "SIM / EXERCISE ASSUMPTION"},
+    "items_per_zone": {"value": 6, "truth_state": "SIM / EXERCISE ASSUMPTION"},
+    "DX": {"value": 2.4, "truth_state": "SIM / EXERCISE ASSUMPTION"},
+    "DY": {"value": 3.6, "truth_state": "SIM / EXERCISE ASSUMPTION"}
+  },
+  "runtime_boundary": {
+    "offline_python": "EXECUTED",
+    "rhino_grasshopper_desktop": "NOT EXECUTED",
+    "free_public_compute": "PREFLIGHT ONLY / PROVIDER DISABLED",
+    "cp2": "OPEN",
+    "cp4": "OPEN"
+  }
+}
