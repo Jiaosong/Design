@@ -1,0 +1,49 @@
+{
+  "run_id": "OLEANDER-SP02-FREE-PUBLIC-COMPUTE-001",
+  "runtime_mode": "FREE_PUBLIC_COMPUTE",
+  "cost_policy": "NO_PAID_RUNTIME",
+  "server": "https://compute.rhino3d.com/",
+  "endpoint": "/grasshopper",
+  "started_at": "2026-08-10T06:01:57.328453+00:00",
+  "finished_at": "2026-08-10T06:01:57.520846+00:00",
+  "workflow": {
+    "github_run_id": "31360491115",
+    "github_run_number": "4",
+    "github_sha": "188f0d242b886105434028a921214ea9cb9ecc63",
+    "artifact_id": "9052171471",
+    "artifact_sha256": "7fffd05623a3daf5b3e25477689ec102089299d6b5174b94660012767b079720"
+  },
+  "definition": {
+    "path": "runtime-state/public-compute/OLEANDER_SP02_FREE_PUBLIC_COMPUTE.ghx",
+    "sha256": "6e602a0a93b66cc535b6b7d3380f5574cf29aaf98ebd78241f5a1c5907e6bcec"
+  },
+  "auth": {
+    "mode": "ANONYMOUS",
+    "rhino_compute_token_value_logged": false,
+    "rhino_token_core_hour_allowed": false
+  },
+  "transport": {
+    "http_status": 404,
+    "error_kind": "HTTP",
+    "error_message": "HTTP Error 404: Not Found",
+    "response_message": "This server has been turned off"
+  },
+  "evidence": {
+    "level": "ATTEMPT_EVIDENCE_ONLY",
+    "runtime_report_found": false,
+    "runtime_report": null,
+    "validation_errors": [
+      "OLEANDER runtime report marker not found in response"
+    ]
+  },
+  "cp2": {
+    "status": "OPEN",
+    "blocker": "PUBLIC_SERVICE_DISABLED",
+    "promotion_rule": "Only exact report from real public Rhino.Compute / Grasshopper response may promote CP2."
+  },
+  "cp4": {
+    "status": "OPEN",
+    "blocker": "HEADLESS_NO_GRASSHOPPER_GUI",
+    "note": "FREE_PUBLIC_COMPUTE never closes CP4; no Parameter Viewer / canvas GUI evidence exists in headless mode."
+  }
+}
