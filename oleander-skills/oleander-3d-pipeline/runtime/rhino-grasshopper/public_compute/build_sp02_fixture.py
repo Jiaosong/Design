@@ -19,7 +19,6 @@ FIXTURE_URL = (
     "content/en/guides/scripting/_art/python3-component-paramaccess.ghx"
 )
 PYTHON3_COMPONENT_GUID = "719467e6-7cf5-4848-99b0-c5dd57e5442c"
-RHINOCODE_GH_LIB_GUID = "066d0a87-236f-4eae-a0f4-9e42f5327962"
 GROUP_COMPONENT_GUID = "c552a431-af5b-46a9-a8a4-0fcbc27ef596"
 NAMESPACE_UUID = uuid.UUID("519c7863-648f-4b49-a9bb-75b0fd459df5")
 
@@ -143,9 +142,9 @@ def locate_tree_script(definition_objects: ET.Element) -> tuple[ET.Element, ET.E
             continue
         name_item = _direct_item(obj, "Name")
         guid_item = _direct_item(obj, "GUID")
-        if not name_item or (name_item.text or "") != "Python 3 Script":
+        if name_item is None or (name_item.text or "") != "Python 3 Script":
             continue
-        if not guid_item or (guid_item.text or "").lower() != PYTHON3_COMPONENT_GUID:
+        if guid_item is None or (guid_item.text or "").lower() != PYTHON3_COMPONENT_GUID:
             continue
         container = _direct_chunk(obj, "Container")
         if container is None:
@@ -206,10 +205,9 @@ def append_rh_out_group(definition_objects: ET.Element, target_instance_guid: st
     _item(obj_items, "Name", "gh_string", "10", "Group")
     obj_chunks = ET.SubElement(obj, "chunks", {"count": "1"})
     container = ET.SubElement(obj_chunks, "chunk", {"name": "Container"})
-    items = ET.SubElement(container, "items", {"count": "9"})
+    items = ET.SubElement(container, "items", {"count": "8"})
     _item(items, "Border", "gh_int32", "3", "1")
-    _item(items, "Colour", "gh_drawing_color", "36", "")
-    colour = items[-1]
+    colour = _item(items, "Colour", "gh_drawing_color", "36", "")
     argb = ET.SubElement(colour, "ARGB")
     argb.text = "150;170;135;255"
     _item(items, "Description", "gh_string", "10", "OLEANDER headless output group")
@@ -218,8 +216,6 @@ def append_rh_out_group(definition_objects: ET.Element, target_instance_guid: st
     _item(items, "InstanceGuid", "gh_guid", "9", group_instance)
     _item(items, "Name", "gh_string", "10", "Group")
     _item(items, "NickName", "gh_string", "10", "RH_OUT")
-    # Keep item count consistent with official Group serialization by adding a neutral field.
-    _item(items, "Selected", "gh_bool", "1", "false")
     container_chunks = ET.SubElement(container, "chunks", {"count": "1"})
     ET.SubElement(container_chunks, "chunk", {"name": "Attributes"})
 
