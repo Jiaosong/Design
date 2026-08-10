@@ -40,6 +40,12 @@ GitHub 在这个项目中的主要作用是**展示、记录与公开可追溯�
 
 对于第三方项目、品牌、素材、工具或开源代码，仓库会尽量保留来源、权利和使用边界；未核验的内容不会因为进入 GitHub 而自动获得公开发布、商业使用或工程有效性。
 
+## Mandatory Post-Generation Review
+
+OLEANDER／织作的设计与技术输出执行统一成品审查门槛：生成、导出、自动 QA 或可复现运行之后，必须实际打开最终成品复核视觉、图文边界、比例、几何—标注一致性、构造逻辑和证据状态。只有 `POST-REVIEW PASS` 才允许标记 DONE / PASS / Candidate。
+
+Canonical rule: [`00-governance/post-generation-review-gate.md`](00-governance/post-generation-review-gate.md)
+
 ## Repository Map
 
 - [`01-business/`](01-business/) — 商业与项目语境
