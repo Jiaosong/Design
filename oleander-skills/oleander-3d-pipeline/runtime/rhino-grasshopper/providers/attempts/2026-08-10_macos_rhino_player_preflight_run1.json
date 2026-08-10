@@ -1,0 +1,53 @@
+{
+  "preflight_id": "OLEANDER-GITHUB-MACOS-X64-RHINO-PLAYER-PREFLIGHT-v0.1",
+  "provider_id": "GITHUB_MACOS_X64_STANDARD",
+  "runtime_mode": "FREE_HOSTED_CANDIDATE",
+  "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
+  "github_run_id": "31364240139",
+  "github_run_number": 1,
+  "github_artifact_id": "9053514012",
+  "github_artifact_digest": "sha256:ecc19af0068ccaeadce610c6d5072a3ed19943f5ce54b19e345df0be02aa4e46",
+  "cost_policy": "NO_PAID_RUNTIME",
+  "user_workstation": false,
+  "environment": {
+    "runner_os": "macOS",
+    "runner_arch": "X64",
+    "platform_machine": "x86_64",
+    "macos_version": "15.7.7",
+    "kernel": "macOS-15.7.7-x86_64-i386-64bit-Mach-O",
+    "hardware_brand": "Intel(R) Core(TM) i7-8700B CPU @ 3.20GHz",
+    "free_disk_gb": 110.12
+  },
+  "platform_contract": {
+    "required_architecture": "x64 / Intel",
+    "required_os_family": "macOS supported by Rhino 8",
+    "platform_supported_candidate": true,
+    "rhino_system_requirement_disk_gb": 10,
+    "disk_requirement_observed": true
+  },
+  "runtime_presence": {
+    "rhino_8_app_present": false,
+    "rhinocode_present": false,
+    "rhino_app_path": "/Applications/Rhino 8.app",
+    "rhinocode_path": "/Applications/Rhino 8.app/Contents/Resources/bin/rhinocode"
+  },
+  "provider_state": "INSTALLER_AND_LICENSE_REQUIRED",
+  "selector_action": "HOLD_FOR_INSTALLER_AND_LICENSE",
+  "licensing": {
+    "attempted": false,
+    "license_present": null,
+    "rhino_account_login_attempted": false,
+    "evaluation_requested": false,
+    "core_hour_token_allowed": false
+  },
+  "grasshopper_capability_target": {
+    "mechanism": "GrasshopperPlayer / rhinocode inside Rhino 8 for Mac",
+    "runtime_test_attempted": false,
+    "cp2_promotion_possible_only_after_real_execution": true,
+    "cp4_closable_by_this_headless_path": false
+  },
+  "evidence_level": "ENVIRONMENT_PREFLIGHT_ONLY",
+  "runtime_evidence": false,
+  "cp2": "OPEN",
+  "cp4": "OPEN"
+}
