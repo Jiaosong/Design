@@ -1,0 +1,70 @@
+{
+  "contract_id": "OLEANDER-RHINO8-MAC-HUMAN-AUTHORITY-GATE-v0.1",
+  "status": "HOLD / HUMAN AUTHORITY REQUIRED / NO RHINO EXECUTION",
+  "provider_id": "GITHUB_MACOS_X64_STANDARD",
+  "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
+  "purpose": "Prevent installer, EULA, account, license, or runtime actions from occurring until the license owner explicitly authorizes them.",
+  "official_boundary": {
+    "rhino8_eula": "Rhino 8 EULA permits use on a computer or VM the license owner owns, leases, rents, or licenses, subject to concurrent-license limits; EULA acceptance remains a human/legal action.",
+    "installer_access": "Current Rhino 8 Evaluation and Licensed downloads are account/license gated on Rhino3D.com; there is no repo-owned public installer artifact.",
+    "evaluation": "The 90-day evaluation requires the user to create/login to a Rhino Account, accept McNeel conditions, and obtain the evaluation key; OLEANDER must not perform these actions for the user.",
+    "cloud_zoo": "Cloud Zoo supports using an owned Rhino license on computers where Rhino is installed, but Rhino Account login/consent is user-controlled. No unattended Cloud Zoo login credential flow is assumed by this contract.",
+    "managed_distribution": "McNeel documents deployable License Manager folders for managed Mac deployments; standalone license files are system-specific, while LAN Zoo and Cloud Zoo license files can be moved between systems. Any such bundle must be supplied and authorized by the license owner or administrator."
+  },
+  "required_human_assertions": [
+    {
+      "gate": "EULA_AUTHORITY",
+      "repository_variable": "OLEANDER_RHINO8_EULA_ACCEPTED",
+      "required_value": "true",
+      "current_assumption": "NOT_GRANTED"
+    },
+    {
+      "gate": "INSTALLER_AUTHORITY",
+      "repository_secret": "RHINO_MAC_INSTALLER_URL",
+      "required": true,
+      "current_assumption": "NOT_PROVIDED",
+      "note": "Must point to a legitimate private/authorized Rhino 8 Mac installer source. The URL value must never be logged."
+    },
+    {
+      "gate": "LICENSE_MODE",
+      "repository_variable": "OLEANDER_RHINO8_LICENSE_MODE",
+      "allowed_values": [
+        "CLOUD_ZOO_AUTHORIZED_BUNDLE",
+        "LAN_ZOO_AUTHORIZED_BUNDLE",
+        "STANDALONE_EXPLICITLY_AUTHORIZED"
+      ],
+      "current_assumption": "UNSELECTED"
+    },
+    {
+      "gate": "LICENSE_MATERIAL",
+      "repository_secret": "RHINO_MAC_LICENSE_BUNDLE_B64",
+      "required_for": [
+        "CLOUD_ZOO_AUTHORIZED_BUNDLE",
+        "LAN_ZOO_AUTHORIZED_BUNDLE"
+      ],
+      "current_assumption": "NOT_PROVIDED",
+      "note": "Presence only may be checked before execution. Secret content must never be printed or committed."
+    }
+  ],
+  "explicitly_disallowed_automation": [
+    "create a Rhino Account",
+    "accept Rhino EULA or evaluation terms on the user's behalf",
+    "request or consume a one-time evaluation on the user's behalf",
+    "scrape or replay Rhino Account browser cookies",
+    "store Rhino Account passwords in the repository",
+    "commit installer bytes, license keys, license bundles, cookies, or access tokens",
+    "enable RHINO_TOKEN / Core-Hour Billing",
+    "use a standalone license file copied from another Mac as if it were portable",
+    "start Rhino when any required authority gate is unresolved"
+  ],
+  "gate_result_if_unresolved": {
+    "status": "HUMAN_AUTHORITY_REQUIRED",
+    "selector_action": "HOLD_FOR_HUMAN_AUTHORITY",
+    "runtime_executed": false,
+    "runtime_evidence": false,
+    "cp2": "OPEN",
+    "cp4": "OPEN"
+  },
+  "next_stage_if_all_gates_explicitly_pass": "INSTALLER_AND_LICENSE_PREP_ONLY",
+  "note": "Passing this authority gate permits preparation; it does not itself prove that Rhino is licensed, installed, runnable, or that SP02 has executed."
+}
