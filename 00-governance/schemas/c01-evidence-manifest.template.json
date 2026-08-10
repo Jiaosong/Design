@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "authority": "OLEANDER / C01",
+    "status": "REVIEW",
+    "generated": "2026-08-11",
+    "supersedes": [
+      "P01_evidence_manifest.v0.2.schema.json",
+      "P01_evidence_manifest.v0.2.template.json"
+    ]
+  },
+  "case": {
+    "id": "C01",
+    "titleZh": "一脉广渡",
+    "legacyAliases": ["CASE/GD", "03|CASE/GD", "P00"],
+    "status": "RESEARCH + PROPOSAL / EVIDENCE REVIEW"
+  },
+  "responsibility": {
+    "practiceOwner": "刘旋 / Liu Xuan",
+    "systemName": "OLEANDER",
+    "projectRoleStatus": "UNKNOWN"
+  },
+  "claims": [
+    {
+      "claimId": "CLM-C01-001",
+      "legacyClaimId": "C01",
+      "statement": "",
+      "truthState": "UNKNOWN",
+      "evidenceLevel": "E0",
+      "evidenceRefs": []
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "C01-IMG-001",
+      "legacyAssetId": null,
+      "file": "",
+      "rights": "unknown",
+      "evidenceLevel": "E0",
+      "publishPermission": "HOLD",
+      "source": "",
+      "creator": "",
+      "aiModification": "",
+      "withdrawalPath": ""
+    }
+  ]
+}
