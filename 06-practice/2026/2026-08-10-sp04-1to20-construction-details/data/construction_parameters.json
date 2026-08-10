@@ -1,0 +1,15 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE / NOT MANUFACTURER SHOP DRAWING",
+  "common_layers": [
+    {"key":"CLAD","name":"Exterior mineral/stone finish","thickness_mm":15},
+    {"key":"CAV","name":"Drained / ventilated cavity","thickness_mm":30},
+    {"key":"INS","name":"Continuous mineral-wool insulation","thickness_mm":100},
+    {"key":"AWB","name":"Sheathing + air/water-control substrate","thickness_mm":15},
+    {"key":"INT","name":"Interior service + finish build-up","thickness_mm":40}
+  ],
+  "systems": {
+    "A": {"title":"Deep Reveal","wall_total_mm":600,"core_mm":400,"frame_depth_mm":75,"frame_face_mm":60,"frame_from_exterior_mm":150,"rough_gap_mm":12,"reveal_insulation_return_mm":30,"sill_slope_deg":5,"pan_backdam_mm":25,"drip_projection_mm":30,"interior_seal_width_mm":10,"seat_finish_mm":30},
+    "C": {"title":"Offset Frame","wall_total_mm":360,"core_mm":160,"frame_depth_mm":75,"frame_face_mm":60,"frame_from_exterior_mm":270,"rough_gap_mm":12,"reveal_insulation_return_mm":30,"sill_slope_deg":5,"pan_backdam_mm":25,"drip_projection_mm":30,"interior_seal_width_mm":10,"seat_finish_mm":0},
+    "D": {"title":"Opening Field — Typical Module","wall_total_mm":420,"core_mm":220,"frame_depth_mm":75,"frame_face_mm":60,"frame_from_exterior_mm":155,"rough_gap_mm":12,"reveal_insulation_return_mm":30,"sill_slope_deg":5,"pan_backdam_mm":25,"drip_projection_mm":30,"interior_seal_width_mm":10,"pier_width_mm":420}
+  }
+}
