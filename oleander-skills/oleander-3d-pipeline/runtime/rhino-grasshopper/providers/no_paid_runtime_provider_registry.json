@@ -105,8 +105,25 @@
       "current_state": "INSTALLER_AND_LICENSE_REQUIRED",
       "eligible": false,
       "probe_allowed": true,
-      "selector_reason": "Rhino.Compute is not supported on macOS, but Rhino 8 for Mac supports Intel processors and GrasshopperPlayer can execute a .gh/.ghx without showing the Grasshopper window. The GitHub macOS Intel runner is therefore an environment candidate for real Grasshopper evidence, but Rhino installation and licensing are not yet authorized or configured.",
+      "selector_reason": "Rhino 8 for Mac supports Intel processors and GrasshopperPlayer can execute a .gh/.ghx without showing the Grasshopper window. Actual GitHub preflight proved a compatible x86_64 macOS 15.7.7 environment with sufficient disk, but Rhino/rhinocode are not installed and no licensing path has been authorized.",
+      "latest_environment_preflight": {
+        "github_run_id": "31364240139",
+        "github_run_number": 1,
+        "artifact_id": "9053514012",
+        "artifact_digest": "sha256:ecc19af0068ccaeadce610c6d5072a3ed19943f5ce54b19e345df0be02aa4e46",
+        "platform_machine": "x86_64",
+        "macos_version": "15.7.7",
+        "hardware_brand": "Intel(R) Core(TM) i7-8700B CPU @ 3.20GHz",
+        "free_disk_gb": 110.12,
+        "platform_supported_candidate": true,
+        "rhino_8_app_present": false,
+        "rhinocode_present": false,
+        "licensing_attempted": false,
+        "runtime_test_attempted": false,
+        "evidence_level": "ENVIRONMENT_PREFLIGHT_ONLY"
+      },
       "evidence_refs": [
+        "GitHub Actions run 31364240139",
         "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
         "https://www.rhino3d.com/8/system-requirements/",
         "https://docs.mcneel.com/rhino/8mac/help/en-us/commands/grasshopper.htm",
@@ -137,9 +154,11 @@
   "selection_result": {
     "eligible_provider_count": 0,
     "status": "NO_EXECUTION_READY_NO_PAID_PROVIDER",
-    "next_candidate_for_environment_preflight": "GITHUB_MACOS_X64_STANDARD",
+    "next_candidate_for_environment_preflight": null,
+    "best_current_candidate": "GITHUB_MACOS_X64_STANDARD",
+    "best_current_candidate_state": "INSTALLER_AND_LICENSE_REQUIRED",
     "cp2": "OPEN",
     "cp4": "OPEN",
-    "note": "macOS Intel is now treated as a Rhino desktop + GrasshopperPlayer candidate rather than a Rhino.Compute provider. It cannot become execution-ready until installer and license authority are resolved."
+    "note": "There is no execution-ready provider, but GitHub macOS Intel is now platform-preflighted as a supported Rhino Mac + GrasshopperPlayer candidate. Runtime execution remains blocked by installer/licensing authority."
   }
 }
