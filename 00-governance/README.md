@@ -35,3 +35,11 @@ OPEN / WIP / PROTO / CAND / REVIEW / ACTIVE / APPROVED / RELEASED / HOLD / REJEC
 
 ## Evidence Codes
 E0 unlocated; E1 source located; E2 internal validation; E3 real-world validation; E4 approved release with rights, hash, and rollback record.
+
+## Mandatory Post-Generation Review Gate
+
+Canonical rule: [`post-generation-review-gate.md`](post-generation-review-gate.md)
+
+所有设计与技术输出必须在生成/导出/自动 QA 后，再执行一次独立成品审查。未执行时状态为 `REVIEW PENDING`；发现问题为 `POST-REVIEW FAIL / NEEDS REVISION`；只有修正并重审达到 `POST-REVIEW PASS`，才允许升级为 DONE / PASS / Candidate。
+
+自动 QA、脚本 PASS、bbox=0、文件存在或可复现运行，都不能替代最终成品审查。成品审查必须覆盖实际视觉、图文边界、几何—标注一致性、比例/尺度、构造逻辑、证据状态和最终文件复现。
