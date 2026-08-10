@@ -1,0 +1,35 @@
+{
+  "gate_id": "OLEANDER-RHINO8-MAC-HUMAN-AUTHORITY-GATE-v0.1",
+  "github_run_id": "31365750361",
+  "github_run_number": 1,
+  "github_artifact_id": "9054055296",
+  "github_artifact_digest": "sha256:fbb982ce16ae8ff33324949344129da59bc2f0a50754ea9ee64924f253e22861",
+  "provider_id": "GITHUB_MACOS_X64_STANDARD",
+  "status": "HUMAN_AUTHORITY_REQUIRED",
+  "selector_action": "HOLD_FOR_HUMAN_AUTHORITY",
+  "evaluated_inputs": {
+    "eula_accepted": false,
+    "installer_source_present": false,
+    "license_mode": null,
+    "license_mode_allowed": false,
+    "license_bundle_present": false,
+    "secret_values_logged": false
+  },
+  "blockers": [
+    "EULA_AUTHORITY_NOT_GRANTED",
+    "INSTALLER_SOURCE_NOT_PROVIDED",
+    "LICENSE_MODE_NOT_AUTHORIZED"
+  ],
+  "actions_proven_not_executed": {
+    "installer_downloaded": false,
+    "rhino_installed": false,
+    "licensing_attempted": false,
+    "rhino_started": false,
+    "grasshopper_executed": false
+  },
+  "runtime_evidence": false,
+  "evidence_level": "HUMAN_AUTHORITY_GATE_ONLY",
+  "cp2": "OPEN",
+  "cp4": "OPEN",
+  "drive_file_id": "1jGg0d2gouQahaTMPISkYTUK4Wfsu252V"
+}
