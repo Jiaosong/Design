@@ -63,7 +63,8 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           text=Path('.github/workflows/timer-v33-staged-pages.yml').read_text()
-          assert 'if: ${{ inputs.release_authorized == true }}' in text
+          authorization_gate='if: $' + '{{ inputs.release_authorized == true }}'
+          assert authorization_gate in text
           overlay=text.split('- name: Overlay audited Timer v3.3 package',1)[1].split('\n      - name:',1)[0]
           copy_manifest='cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json"'
           replace_target='rm -rf "$target"'
