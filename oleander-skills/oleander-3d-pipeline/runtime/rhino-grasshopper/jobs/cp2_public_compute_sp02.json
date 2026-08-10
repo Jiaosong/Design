@@ -41,10 +41,12 @@
   },
   "provider": {
     "id": "MCNEEL_PUBLIC_LEGACY",
+    "state": "PUBLIC_SERVICE_DISABLED",
+    "selector_action": "SKIP_SP02_PRESERVE_OPEN",
+    "preflight_receipt": "runtime-state/public-compute/provider_preflight_receipt.json",
     "url": "https://compute.rhino3d.com/",
     "preflight_endpoint": "/healthcheck",
     "solve_endpoint": "/grasshopper",
-    "current_state": "PUBLIC_SERVICE_DISABLED",
     "selector_rule": "Only AVAILABLE may enter fixture-build + Grasshopper-solve stages; all other states preserve CP2 OPEN and skip the heavy solve path.",
     "official_current_route": "McNeel documentation currently directs users to local or self-hosted Rhino.Compute; production/server deployment uses Core-Hour Billing."
   },
@@ -66,11 +68,15 @@
     "TRANSPOSE_BY_ITEM": {"branch_count": 6, "item_count": 24, "items_per_branch": [4, 4, 4, 4, 4, 4]}
   },
   "required_outputs": [
-    "provider_preflight_receipt",
-    "generated_ghx_fixture_if_provider_available",
-    "public_compute_response_if_provider_available",
-    "public_compute_receipt_if_provider_available"
+    "provider_preflight_receipt"
   ],
+  "conditional_outputs": {
+    "when_provider_state_is_AVAILABLE": [
+      "generated_ghx_fixture",
+      "public_compute_response",
+      "public_compute_receipt"
+    ]
+  },
   "cp2": {
     "starting_state": "OFFLINE_SURROGATE_ONLY",
     "target_state": "REAL_HEADLESS_GRASSHOPPER_EVIDENCE",
