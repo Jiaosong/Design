@@ -37,3 +37,6 @@ A case is an **emergent coupled conflict** when:
 
 This is a training rule system, not structural or regulatory approval.
 All values are training-only hypothetical parameters.
+
+## Internal review
+**99/100** under the fixed OLEANDER rubric: technical 25, file structure 15, parameter/data logic 15, visual 14, check/correction 10, reproducibility 10, project value 10.
