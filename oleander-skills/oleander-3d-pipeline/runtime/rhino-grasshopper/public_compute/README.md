@@ -1,6 +1,6 @@
 # FREE_PUBLIC_COMPUTE｜OLEANDER Rhino + Grasshopper Runtime
 
-Status: `IMPLEMENTED / ATTEMPTED / PROVIDER-GATED / PUBLIC SERVICE DISABLED / CP2 OPEN / CP4 OPEN`
+Status: `IMPLEMENTED / ATTEMPTED / PROVIDER-GATED / CONDITIONAL-WATCH READY / PUBLIC SERVICE DISABLED / CP2 OPEN / CP4 OPEN`
 
 This mode exists to attempt **real McNeel Rhino.Compute + Grasshopper headless execution** without using the user's computer and without enabling Core-Hour billing.
 
@@ -56,6 +56,24 @@ GitHub Actions run `31362931991` validated the new provider gate:
 - artifact: `9053037470`.
 
 This reduces repeated heavy requests while preserving the option to re-enter the real solve path if the provider ever returns `AVAILABLE`.
+
+## Conditional watch validation｜2026-08-10｜Run 10
+
+GitHub Actions run `31366794994` validated the condition-driven watch configuration:
+
+- NO_PAID_RUNTIME gate: active;
+- GET `/healthcheck`: EXECUTED;
+- HTTP response: `404`;
+- provider state: `PUBLIC_SERVICE_DISABLED`;
+- selector action: `SKIP_SP02_PRESERVE_OPEN`;
+- SP02 GHX build: SKIPPED;
+- SP02 `/grasshopper` solve: SKIPPED;
+- CP2: `OPEN`;
+- CP4: `OPEN`;
+- evidence level: `PROVIDER_PREFLIGHT_ONLY`;
+- artifact: `9054448795`.
+
+A weekly cron (`0 1 * * 1`) is present in the workflow as the intended low-cost provider watch. **GitHub scheduled workflows execute from the repository default branch; because this workflow is still in Draft PR #17, that cron is configuration-ready but not yet an active GitHub scheduler.** An external condition watch is used while the PR remains Draft.
 
 ## Current official service boundary
 
