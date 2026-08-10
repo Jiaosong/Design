@@ -1,0 +1,43 @@
+{
+  "status": "CONSTRUCTION PROTOTYPE — TRAINING-ONLY HYPOTHETICAL DIMENSIONS / NOT IFC / NOT SHOP DRAWING",
+  "parameters": {
+    "wall_total_mm": 360.0,
+    "cladding_mm": 15.0,
+    "cavity_mm": 30.0,
+    "continuous_insulation_mm": 100.0,
+    "awb_substrate_mm": 15.0,
+    "structural_core_mm": 160.0,
+    "interior_build_up_mm": 40.0,
+    "frame_reference": "75 mm thermally-broken aluminium frame envelope; Schüco AWS 75.SI+ is dimensional reference only",
+    "frame_depth_mm": 75.0,
+    "frame_face_reference_mm": 117.0,
+    "frame_exterior_face_x_mm": 270.0,
+    "frame_interior_face_x_mm": 345.0,
+    "rough_opening_joint_mm": 12.0,
+    "reveal_insulation_return_mm": 30.0,
+    "rough_opening_leveling_layer_mm": 10.0,
+    "waterproof_bridge_mm": 110.0,
+    "sill_slope_deg": 5.0,
+    "pan_backdam_mm": 25.0,
+    "pan_end_dam_mm": 25.0,
+    "sill_projection_mm": 30.0,
+    "sill_drip_downturn_mm": 15.0,
+    "sill_finish_nominal_mm": 20.0,
+    "head_flashing_upstand_mm": 40.0,
+    "head_drip_downturn_mm": 15.0,
+    "head_cavity_drain_gap_mm": 15.0,
+    "exterior_weather_joint_mm": 10.0,
+    "center_insulation_zone_mm": 20.0,
+    "interior_air_seal_mm": 10.0,
+    "support_block_mm": 8.0,
+    "anchor_zone_note": "anchor type, edge distance and spacing PENDING manufacturer + structural engineer"
+  },
+  "wall_layers": [
+    ["W01", "Exterior finish / rainscreen", 0, 15],
+    ["W02", "Drained / ventilated cavity", 15, 45],
+    ["W03", "Continuous mineral-wool insulation", 45, 145],
+    ["W04", "Sheathing + primary air/water-control substrate", 145, 160],
+    ["W05", "Structural core", 160, 320],
+    ["W06", "Interior service + finish build-up", 320, 360]
+  ]
+}
