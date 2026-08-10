@@ -55,7 +55,9 @@ jobs:
           m=json.loads(p.read_text())
           assert m['schema']=='oleander.timer-light-basin.deployment-artifact.v1'
           assert m['version']=='3.3'
-          assert m['package_sha256']=='a4ca61701f8bac0c4991fe3789386cdaec84688e6fed90d1917d9be430a8e804'
+          assert m['asset_name']=='OLEANDER_Zhizuo_TimerLightBasin_v3.3_AUDITED_POSTERLOCK_2026-08-10.zip'
+          assert m['package_sha256']=='3c8b2aa31f02e0ee71cf5a0309268c492694c0536aa39dcccb6e3ce81f84d387'
+          assert m['required_files']['assets/hero_poster.png']=='840aa70cd4a568de2f2f4f294425176762a1d100ec7749fec3d6f4b23cfb0193'
           assert m['required_files']['assets/pbr/timer_100_pbr.glb']=='900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66'
           assert len(m['required_files'])==18
           print('official manifest contract: PASS')
