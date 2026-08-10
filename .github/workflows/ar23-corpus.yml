@@ -10,6 +10,7 @@ on:
       - 'research/baojiajie/ar23_failure_value_joined_v0_3.py'
       - 'research/baojiajie/ar23_failure_value_joined_shards_v0_4.py'
       - 'research/baojiajie/ar23_failure_value_official_meta_filter_v0_5.py'
+      - 'research/baojiajie/ar23_failure_value_official_stream_v0_6.py'
       - '.github/workflows/ar23-corpus.yml'
   workflow_dispatch:
 
@@ -31,24 +32,26 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check requests huggingface_hub pyarrow
+      - name: Install compatible Datasets stack
+        run: python -m pip install --disable-pip-version-check 'datasets==2.21.0' 'huggingface_hub==0.24.7' requests
 
-      - name: Acquire metadata-linked Amazon Reviews 23 discovery corpus
+      - name: Acquire official-metadata-linked Amazon Reviews 23 discovery corpus
         shell: bash
+        env:
+          HF_DATASETS_TRUST_REMOTE_CODE: 'true'
         run: |
           set -euo pipefail
-          rm -rf research/baojiajie/ar23_failure_value_corpus_v0_5
-          python research/baojiajie/ar23_failure_value_official_meta_filter_v0_5.py \
-            --out research/baojiajie/ar23_failure_value_corpus_v0_5 \
-            --product-reservoir 40 \
+          rm -rf research/baojiajie/ar23_failure_value_corpus_v0_6
+          python research/baojiajie/ar23_failure_value_official_stream_v0_6.py \
+            --out research/baojiajie/ar23_failure_value_corpus_v0_6 \
+            --reservoir-per-product 45 \
             --per-product 80 \
             --per-parent-band 6
 
       - name: Show summary
         run: |
-          cat research/baojiajie/ar23_failure_value_corpus_v0_5/corpus_summary_v0_5.json
-          wc -l research/baojiajie/ar23_failure_value_corpus_v0_5/external_failure_value_corpus_v0_5.jsonl
+          cat research/baojiajie/ar23_failure_value_corpus_v0_6/corpus_summary_v0_6.json
+          wc -l research/baojiajie/ar23_failure_value_corpus_v0_6/external_failure_value_corpus_v0_6.jsonl
 
       - name: Commit compact research outputs to branch
         shell: bash
@@ -56,18 +59,18 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/baojiajie/ar23_failure_value_corpus_v0_5/
+          git add research/baojiajie/ar23_failure_value_corpus_v0_6/
           if git diff --cached --quiet; then
             echo "No corpus output changes to commit."
           else
-            git commit -m "research: add official-metadata-linked AR23 corpus v0.5 [skip ci]"
+            git commit -m "research: add official-metadata-linked AR23 corpus v0.6 [skip ci]"
             git push origin HEAD:research/ar23-corpus-v0.1-20260810
           fi
 
       - name: Upload research artifact
         uses: actions/upload-artifact@v4
         with:
-          name: baojiajie-ar23-failure-value-corpus-v0.5
-          path: research/baojiajie/ar23_failure_value_corpus_v0_5/
+          name: baojiajie-ar23-failure-value-corpus-v0.6
+          path: research/baojiajie/ar23_failure_value_corpus_v0_6/
           if-no-files-found: error
           retention-days: 14
