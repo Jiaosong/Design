@@ -47,6 +47,25 @@ jobs:
           print('official manifest contract: PASS')
           PY
 
+      - name: Validate staged Pages release boundary
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          text=Path('.github/workflows/timer-v33-staged-pages.yml').read_text()
+          assert 'if: ${{ inputs.release_authorized == true }}' in text
+          overlay=text.split('- name: Overlay audited Timer v3.3 package',1)[1].split('\n      - name:',1)[0]
+          copy_manifest='cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json"'
+          replace_target='rm -rf "$target"'
+          assert copy_manifest in overlay
+          assert replace_target in overlay
+          assert overlay.index(copy_manifest) < overlay.index(replace_target), 'authority manifest must be preserved before target replacement'
+          verify=text.index('- name: Verify authority and extract package')
+          browser=text.index('- name: Run Timer v3.3 Chromium/WebGL gate')
+          deploy=text.index('- name: Deploy to GitHub Pages')
+          assert verify < browser < deploy, 'verification and browser gate must precede Pages deployment'
+          print('staged Pages authorization/provenance ordering: PASS')
+          PY
+
       - name: Exercise verifier with synthetic audited package
         run: |
           set -euo pipefail
