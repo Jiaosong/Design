@@ -59,3 +59,13 @@ Optical performance, measured material appearance/colorimetry, thermal, electric
 ## 7｜Deployment boundary
 
 The calibration profile is locked. Public deployment of the complete v3.3 page still has a separate integrated-browser QA gate; that gate must not be inferred from this dedicated calibration harness.
+
+## 8｜2026-08-10 revalidation audit
+
+A new isolated `round3/` harness was executed in GitHub Actions run `31350071652`. The WebGL execution itself succeeded, but the round is **REJECTED AS NON-AUTHORITATIVE** because the harness replaced the canonical/surface-equivalent external geometry with simplified `LatheGeometry` and primitive proxies before evaluating lighting/material response.
+
+Round 3 visual review: Housing **REJECT**, Diffuser **REJECT**, Knob **REJECT**, Contact shadow **REJECT**. See `round3/ROUND3_REGRESSION_REVIEW.md`.
+
+This rejected experiment does not supersede or reopen the existing render lock: it did not perform a same-condition revalidation of the locked geometry representation. The canonical lock remains governed by the four reviewed `calibration/final_lock/` frames and the recorded geometry-equivalence gate.
+
+Any future revalidation that intends to change the lock state must use `timer_100_pbr.glb` or the verified surface-equivalent calibration subset, preserve the recorded geometry hash/equivalence boundary, and change only declared photography variables.
