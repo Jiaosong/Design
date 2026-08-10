@@ -1,0 +1,32 @@
+name: Timer R54 Product Rendering Contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'website/practice/timer-light-basin-v3/rendering/**'
+      - 'tests/timer-r54-render-contract.py'
+      - '.github/workflows/timer-r54-render-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'website/practice/timer-light-basin-v3/rendering/**'
+      - 'tests/timer-r54-render-contract.py'
+      - '.github/workflows/timer-r54-render-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate R54 standard and authority boundaries
+        run: |
+          set -euo pipefail
+          python3 -m json.tool website/practice/timer-light-basin-v3/rendering/R54_RENDER_SPEC.json >/dev/null
+          python3 -m py_compile website/practice/timer-light-basin-v3/rendering/timer_r54_blender45_cycles_adapter.py
+          python3 tests/timer-r54-render-contract.py
