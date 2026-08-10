@@ -8,6 +8,14 @@
 - `oleander-story-and-board`: shared narrative for boards, reports, decks, brand stories, and films.
 - `oleander-delivery-qc`: non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D, and interactive outputs.
 
+## Retrieval alias / authority routing
+
+Canonical query: **What are the currently installed OLEANDER reusable skills in GitHub?**
+
+Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`.
+
+This file is the current repository-state source for the installed reusable skills list. Installed-skill existence does **not** prove that a skill, prompt, or model version has passed regression evaluation; promotion remains governed by P0 and `evals/`.
+
 ## Review prompts
 
 1. Research: Organize site studies, policies, precedents, and interviews into a traceable Notion research system.
