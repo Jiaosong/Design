@@ -1,0 +1,22 @@
+{
+  "source_execution": "GitHub Actions successful run against McAuley-Lab/Amazon-Reviews-2023 Home_and_Kitchen historical Parquet conversion",
+  "source_rows_acquired": 224,
+  "semantic_review_scope": "product_title + review_title + <=20-word evidence excerpt",
+  "semantic_review_actor": "AI-assisted manual semantic review; not human participant research",
+  "rows_retained_after_semantic_relevance_review": 130,
+  "rows_dropped_not_primary_product": 94,
+  "retained_by_product": {
+    "bucket": 43,
+    "cleaning_brush": 29,
+    "mop": 16,
+    "squeegee": 42
+  },
+  "retained_by_status": {
+    "KEEP_NO_DIRECT_CODE": 9,
+    "AMBIGUOUS_EXCERPT": 3,
+    "KEEP_CONFIRMED": 97,
+    "KEEP_CONTEXT_LIMITED": 21
+  },
+  "critical_rule": "Counts describe only this discovery corpus. They are not population prevalence and may not be compared as rates with XJ01/JD selected samples.",
+  "hue_finish_conclusion": "Specific hue/chroma/finish preference remains UNKNOWN."
+}
