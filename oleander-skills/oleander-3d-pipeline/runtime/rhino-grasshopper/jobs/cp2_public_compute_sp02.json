@@ -2,7 +2,20 @@
   "run_id": "OLEANDER-SP02-FREE-PUBLIC-COMPUTE-001",
   "job_type": "data_tree_cp2_headless",
   "runtime_mode": "FREE_PUBLIC_COMPUTE",
-  "status": "READY_TO_ATTEMPT / NOT YET PROMOTED",
+  "status": "ATTEMPTED / BLOCKED_PUBLIC_SERVICE_DISABLED / CP2 OPEN / CP4 OPEN",
+  "latest_attempt": {
+    "date": "2026-08-10",
+    "github_run_id": "31360491115",
+    "github_run_number": 4,
+    "github_sha": "188f0d242b886105434028a921214ea9cb9ecc63",
+    "artifact_id": "9052171471",
+    "http_status": 404,
+    "server_message": "This server has been turned off",
+    "cp2": "OPEN",
+    "cp2_blocker": "PUBLIC_SERVICE_DISABLED",
+    "cp4": "OPEN",
+    "evidence_level": "ATTEMPT_EVIDENCE_ONLY"
+  },
   "cost_policy": {
     "mode": "NO_PAID_RUNTIME",
     "allow_rhino_accounts_bearer": true,
@@ -13,7 +26,8 @@
   "server": {
     "url": "https://compute.rhino3d.com/",
     "endpoint": "grasshopper",
-    "service_class": "BEST_EFFORT_PUBLIC_McNEEL_COMPUTE"
+    "service_class": "BEST_EFFORT_PUBLIC_McNEEL_COMPUTE",
+    "observed_state_2026_08_10": "PUBLIC_SERVICE_DISABLED"
   },
   "input": {
     "parameters": {
@@ -40,6 +54,8 @@
   "cp2": {
     "starting_state": "OFFLINE_SURROGATE_ONLY",
     "target_state": "REAL_HEADLESS_GRASSHOPPER_EVIDENCE",
+    "current_state": "OPEN",
+    "current_blocker": "PUBLIC_SERVICE_DISABLED",
     "close_only_if": [
       "McNeel public Compute returns a successful real Grasshopper solve",
       "the solve output contains OLEANDER_SP02_REPORT marker generated inside the Grasshopper Python 3 component",
