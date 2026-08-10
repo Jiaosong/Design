@@ -1,7 +1,7 @@
 ---
 name: oleander-3d-pipeline
-description: Plan, build, exchange, render, and audit Oleander 3D assets. Use whenever the user mentions Oleander 3D models, Rhino, Grasshopper, RhinoCode, Rhino.Compute, Blender, Maya, Houdini, Unreal, D5, KeyShot, VRED, geometry nodes, procedural studies, axonometric drawings, exploded views, material libraries, cameras, animation, FBX, glTF, USD, texture paths, or render handoff.
-compatibility: Works with installed Rhino/Grasshopper execution nodes when explicitly connected, plus installed Blender, Maya, Houdini, Cinema 4D, Unreal/Epic, D5, KeyShot, VRED, Adobe tools, and FFmpeg.
+description: Plan, build, exchange, render, and audit Oleander 3D assets. Use whenever the user mentions Oleander 3D models, Blender, Maya, Houdini, Unreal, D5, KeyShot, VRED, Rhino, Grasshopper, geometry nodes, procedural studies, axonometric drawings, exploded views, material libraries, cameras, animation, FBX, glTF, USD, texture paths, or render handoff.
+compatibility: Works with available installed or connected 3D runtimes. Rhino/Grasshopper evidence must follow the runtime adapter under runtime/rhino-grasshopper; offline geometry libraries are surrogate-only.
 ---
 
 # Oleander 3D Pipeline
@@ -27,6 +27,26 @@ Use stable ASCII identifiers for machine-facing names:
 `OLE_[zone]_[discipline]_[asset]_[variant]_[lod]_v###`
 
 Keep geometry, textures, references, caches, cameras, lighting, exports, renders, and review files separate. Use relative texture paths inside the project package.
+
+## Rhino + Grasshopper runtime hierarchy
+
+When Rhino or Grasshopper is part of a task, distinguish four execution modes:
+
+1. `FREE_PUBLIC_COMPUTE` — no-user-workstation, no-paid fallback; may provide real headless evidence only when the public service actually returns a Grasshopper solve.
+2. `PRIVATE_COMPUTE` — private/self-hosted headless runtime; cost/credentials require explicit Human Authority.
+3. `DESKTOP_RHINO` — desktop runtime capable of GUI/canvas/viewport evidence; optional, never assumed connected.
+4. `SURROGATE_OFFLINE` — Python, rhino3dm, DXF, SVG or equivalent prechecks only.
+
+Evidence rules:
+
+- code existing in GitHub is not runtime evidence;
+- CI success is not a Rhino/Grasshopper solve unless the runtime receipt proves the solve;
+- headless runtime may support data/tree/geometry results but cannot close GUI-specific checkpoints;
+- offline/surrogate output never upgrades directly to `REAL_HEADLESS_GRASSHOPPER_EVIDENCE` or desktop evidence;
+- preserve service/auth/network/definition failures as blockers rather than hiding them with a fallback;
+- never silently activate a paid `RHINO_TOKEN` path from `FREE_PUBLIC_COMPUTE`.
+
+Current FREE_PUBLIC_COMPUTE evidence (2026-08-10): actual GitHub-hosted request to McNeel public `/grasshopper` returned HTTP 404 with `This server has been turned off`; SP02 CP2 remains OPEN with `PUBLIC_SERVICE_DISABLED`, and CP4 remains OPEN because headless mode has no Parameter Viewer GUI evidence.
 
 ## Exchange strategy
 
@@ -56,18 +76,9 @@ Run a round-trip test before committing a full scene.
 - Cameras, frame rate, frame range, and color management are documented.
 - External plugins and licenses are listed.
 - A low-resolution review file and thumbnail are included.
-
-## Rhino + Grasshopper real-runtime rule
-
-When a task requires a real Rhino or Grasshopper result, first determine whether a live runtime is actually connected.
-
-- `rhino3dm`, generic Python geometry, DXF generation, SVG, GLB, or an offline Grasshopper-like data structure are **surrogate outputs**, not Rhino/Grasshopper runtime evidence.
-- A real desktop Practice run requires a live Rhino process plus Grasshopper SDK execution, preferably through the governed `runtime/rhino-grasshopper` adapter.
-- For GUI-dependent evidence such as Parameter Viewer or viewport comparison, preserve the real `.gh`, Grasshopper canvas capture, Rhino viewport capture, runtime manifest and receipt.
-- Rhino.Compute may be used for real headless Grasshopper solving and batch evaluation, but must not be used to claim GUI evidence that Compute did not render.
-- Keep `UNKNOWN`, `OPEN` and `HOLD` states intact when the runtime or evidence is missing.
-- Do not promote a successful script dispatch or zero exit code into design, engineering, safety or acceptance approval.
+- Runtime mode and evidence level are explicit.
+- Any UNKNOWN / HOLD / blocker survives handoff.
 
 ## Required output
 
-Return a model manifest, exchange report, render settings, asset dependency list, known limitations, and review images alongside the requested model/render. For real Rhino/Grasshopper tasks, additionally return the runtime manifest, job receipt, `.gh` or source definition, tree/parameter report as applicable, and real canvas/viewport evidence.
+Return a model manifest, exchange report, render settings, asset dependency list, known limitations, runtime/evidence status, and review images alongside the requested model/render.
