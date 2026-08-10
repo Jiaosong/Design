@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.local/schemas/c01-evidence-manifest-v1.schema.json",
+  "title": "OLEANDER C01 Evidence Manifest v1",
+  "description": "Canonical machine schema for C01｜一脉广渡. Supersedes legacy P01 evidence-manifest schemas without rewriting historical source files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "case", "responsibility", "claims", "assets"],
+  "$defs": {
+    "truthState": {
+      "type": "string",
+      "enum": ["REALIZED", "OBSERVED", "TESTED", "SUPPORTED", "PROPOSED", "UNKNOWN", "REJECTED"]
+    },
+    "evidenceLevel": {
+      "type": "string",
+      "enum": ["E0", "E1", "E2", "E3", "E4"]
+    },
+    "rightsState": {
+      "type": "string",
+      "enum": ["owned", "licensed", "permission", "public-domain", "restricted", "unknown", "not-applicable"]
+    },
+    "claimId": {
+      "type": "string",
+      "pattern": "^CLM-C01-\\d{3}$"
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^C01-(IMG|DOC|MAP|AUD|VID|DAT|OUT)-\\d{3}$"
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "authority", "status", "generated", "supersedes"],
+      "properties": {
+        "schemaVersion": {"const": "1.0.0"},
+        "authority": {"const": "OLEANDER / C01"},
+        "status": {"enum": ["ACTIVE", "REVIEW", "HOLD"]},
+        "generated": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "supersedes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "contains": {"const": "P01_evidence_manifest.v0.2.schema.json"}
+        }
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "titleZh", "legacyAliases", "status"],
+      "properties": {
+        "id": {"const": "C01"},
+        "titleZh": {"const": "一脉广渡"},
+        "legacyAliases": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "status": {"const": "RESEARCH + PROPOSAL / EVIDENCE REVIEW"}
+      }
+    },
+    "responsibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["practiceOwner", "systemName", "projectRoleStatus"],
+      "properties": {
+        "practiceOwner": {"const": "刘旋 / Liu Xuan"},
+        "systemName": {"const": "OLEANDER"},
+        "projectRoleStatus": {"enum": ["CONFIRMED", "PARTIAL", "UNKNOWN"]}
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claimId", "statement", "truthState", "evidenceLevel", "evidenceRefs"],
+        "properties": {
+          "claimId": {"$ref": "#/$defs/claimId"},
+          "legacyClaimId": {"type": ["string", "null"]},
+          "statement": {"type": "string", "minLength": 1},
+          "truthState": {"$ref": "#/$defs/truthState"},
+          "evidenceLevel": {"$ref": "#/$defs/evidenceLevel"},
+          "evidenceRefs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assetId", "file", "rights", "evidenceLevel", "publishPermission"],
+        "properties": {
+          "assetId": {"$ref": "#/$defs/assetId"},
+          "legacyAssetId": {"type": ["string", "null"]},
+          "file": {"type": "string", "minLength": 1},
+          "rights": {"$ref": "#/$defs/rightsState"},
+          "evidenceLevel": {"$ref": "#/$defs/evidenceLevel"},
+          "publishPermission": {"enum": ["GRANTED", "LIMITED", "HOLD", "UNKNOWN"]},
+          "source": {"type": "string"},
+          "creator": {"type": "string"},
+          "aiModification": {"type": "string"},
+          "withdrawalPath": {"type": "string"}
+        }
+      }
+    }
+  }
+}

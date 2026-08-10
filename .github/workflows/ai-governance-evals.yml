@@ -3,6 +3,7 @@ name: AI Governance Evals
 on:
   pull_request:
     paths:
+      - '00-governance/**'
       - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
       - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
       - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
@@ -13,6 +14,7 @@ on:
   push:
     branches: [main]
     paths:
+      - '00-governance/**'
       - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
       - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
       - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
@@ -26,7 +28,7 @@ permissions:
 
 jobs:
   governance-corpus:
-    name: P0 + P1 + P2 governance and runtime evidence
+    name: P0 + P1 + P2 governance, namespaces and runtime evidence
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,6 +42,9 @@ jobs:
       - name: Validate governance corpus
         run: python evals/scripts/validate_evals.py
 
+      - name: Validate case and claim namespaces
+        run: python 00-governance/schemas/validate_namespaces.py
+
       - name: Compute P2 runtime metrics
         run: python evals/runtime/compute_metrics.py | tee /tmp/p2-metrics.txt
 
@@ -50,6 +55,7 @@ jobs:
           echo '- Validates five reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P1 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P2 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates reserved case IDs, Claim namespace, C01 canonical schema and Legacy authority registry.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Workflow dependencies are pinned to immutable reviewed commit SHAs.' >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
