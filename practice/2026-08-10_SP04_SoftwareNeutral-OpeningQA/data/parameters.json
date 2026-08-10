@@ -1,0 +1,15 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS",
+  "wall": {
+    "length_mm": 6000,
+    "height_mm": 3300,
+    "thickness_mm": 240
+  },
+  "tests": [
+    {"id":"T01","width_mm":900,"height_mm":2100,"sill_mm":0},
+    {"id":"T02","width_mm":1200,"height_mm":2100,"sill_mm":0},
+    {"id":"T03","width_mm":1500,"height_mm":2400,"sill_mm":450},
+    {"id":"T04","width_mm":1800,"height_mm":2400,"sill_mm":900},
+    {"id":"T05","width_mm":750,"height_mm":1800,"sill_mm":300}
+  ]
+}
