@@ -3,6 +3,14 @@
 Status: ACTIVE governance protocol when present on `main` / E1 static corpus gate required / not evidence of model reliability
 Canonical method source: Notion `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
 
+## Retrieval alias / authority routing
+
+Canonical query: **What happens when a model, prompt, skill, tool or retrieval policy changes?**
+
+Search aliases: `model change`, `prompt change`, `skill update`, `tool change`, `retrieval policy change`, `AI change control`, `regression gate`, `rollback`.
+
+Authority rule: a model, prompt, skill, tool, retrieval policy, parser, canonical source, rendering path, or automation change is a governed candidate change. It must be evaluated against the approved baseline, cannot silently replace the current default, and must retain a rollback point. The full canonical method remains Notion `01B-6｜AI Evaluation & Regression Protocol v0.1`; this file is the GitHub execution contract.
+
 ## Purpose
 P0 prevents AI from becoming an unexamined default. It adds four controls before and around all AI-assisted design work:
 
