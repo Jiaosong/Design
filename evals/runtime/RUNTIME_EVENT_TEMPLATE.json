@@ -13,8 +13,13 @@
   "blocker_escaped": false,
   "human_override": false,
   "recommendation_id": null,
+  "ai_roles": [],
+  "ai_run_config": null,
   "reality_test_completed": false,
+  "reality_test_type": "PHYSICAL_PROTOTYPE|SITE_MEASUREMENT|USER_TEST|BROWSER_DEVICE|PRODUCTION_SAMPLE|PROFESSIONAL_SIMULATION|PROFESSIONAL_INSPECTION|N-A",
+  "test_severity": "BASELINE|STANDARD|STRESS|FAILURE|N-A",
   "reality_test_outcome": "SURVIVED|PARTIAL|FAILED|N-A",
+  "reality_evidence_url": null,
   "metric_payload": {
     "audited_queries": null,
     "retrieval_misses": null,
