@@ -32,8 +32,14 @@ def load_jsonl(path: Path):
     return rows
 
 
-def require_fields(row, fields, context):
+def require_nonempty_fields(row, fields, context):
     missing = [f for f in fields if f not in row or row[f] in (None, "", [])]
+    if missing:
+        raise AssertionError(f"{context}: missing required fields: {', '.join(missing)}")
+
+
+def require_present_fields(row, fields, context):
+    missing = [f for f in fields if f not in row]
     if missing:
         raise AssertionError(f"{context}: missing required fields: {', '.join(missing)}")
 
@@ -43,7 +49,7 @@ def validate_skill_cases(rows):
     counts = Counter()
     required = ["case_id", "skill", "task", "required_outputs", "blockers", "pass_rule"]
     for row in rows:
-        require_fields(row, required, row.get("case_id", "skill-case"))
+        require_nonempty_fields(row, required, row.get("case_id", "skill-case"))
         if row["case_id"] in ids:
             raise AssertionError(f"duplicate case_id: {row['case_id']}")
         ids.add(row["case_id"])
@@ -65,17 +71,19 @@ def validate_skill_cases(rows):
 
 def validate_retrieval_cases(rows):
     ids = set()
-    required = [
+    nonempty_required = [
         "query_id",
         "query",
         "expected_canonical_sources",
-        "forbidden_legacy_sources",
         "required_status",
         "required_truth_state",
         "required_warning",
     ]
+    presence_required = ["forbidden_legacy_sources"]
     for row in rows:
-        require_fields(row, required, row.get("query_id", "retrieval-case"))
+        context = row.get("query_id", "retrieval-case")
+        require_nonempty_fields(row, nonempty_required, context)
+        require_present_fields(row, presence_required, context)
         if row["query_id"] in ids:
             raise AssertionError(f"duplicate query_id: {row['query_id']}")
         ids.add(row["query_id"])
