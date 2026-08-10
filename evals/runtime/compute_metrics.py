@@ -18,6 +18,15 @@ VALID_EVENT_TYPES = {
 VALID_EVIDENCE = {"CONFIRMED", "PROVISIONAL", "REJECTED"}
 VALID_ESCALATIONS = {"F0", "F1", "F2", "F3", "N-A"}
 VALID_REALITY = {"SURVIVED", "PARTIAL", "FAILED", "N-A"}
+VALID_REALITY_TEST_TYPES = {
+    "PHYSICAL_PROTOTYPE", "SITE_MEASUREMENT", "USER_TEST", "BROWSER_DEVICE",
+    "PRODUCTION_SAMPLE", "PROFESSIONAL_SIMULATION", "PROFESSIONAL_INSPECTION", "N-A",
+}
+VALID_TEST_SEVERITY = {"BASELINE", "STANDARD", "STRESS", "FAILURE", "N-A"}
+VALID_AI_ROLES = {
+    "Evidence Reader", "Variable Architect", "Scenario Generator", "Adversarial Critic",
+    "Simulation Interpreter", "Process Archivist", "Other",
+}
 VALID_FAILURE_CATEGORIES = {
     "F-SOURCE", "F-STALE", "F-TRUTH", "F-RIGHTS", "F-SAFETY",
     "F-DATA", "F-GEOMETRY", "F-TOOL", "F-CONFLICT", "F-PROVENANCE",
@@ -37,6 +46,17 @@ def load_jsonl(path: Path):
             raise AssertionError(f"invalid JSON at runtime_events.jsonl:{lineno}: {exc}") from exc
         rows.append(row)
     return rows
+
+
+def require_ai_provenance(row, ctx):
+    if not row.get("ai_run_config"):
+        raise AssertionError(f"{ctx}: requires ai_run_config")
+    roles = row.get("ai_roles")
+    if not isinstance(roles, list) or not roles:
+        raise AssertionError(f"{ctx}: requires non-empty ai_roles")
+    unknown_roles = set(roles) - VALID_AI_ROLES
+    if unknown_roles:
+        raise AssertionError(f"{ctx}: invalid ai_roles {sorted(unknown_roles)}")
 
 
 def validate(rows):
@@ -82,14 +102,22 @@ def validate(rows):
                 raise AssertionError(f"{ctx}: HUMAN_DECISION requires boolean human_override")
             if not row.get("recommendation_id"):
                 raise AssertionError(f"{ctx}: HUMAN_DECISION requires recommendation_id")
+            require_ai_provenance(row, ctx)
 
         if row["event_type"] == "RECOMMENDATION_TEST":
             if not row.get("recommendation_id"):
                 raise AssertionError(f"{ctx}: RECOMMENDATION_TEST requires recommendation_id")
+            require_ai_provenance(row, ctx)
             if not row.get("reality_test_completed"):
                 raise AssertionError(f"{ctx}: RECOMMENDATION_TEST must represent a completed qualifying reality test")
+            if row.get("reality_test_type") not in VALID_REALITY_TEST_TYPES - {"N-A"}:
+                raise AssertionError(f"{ctx}: requires qualifying reality_test_type")
+            if row.get("test_severity") not in VALID_TEST_SEVERITY - {"N-A"}:
+                raise AssertionError(f"{ctx}: requires test_severity")
             if row.get("reality_test_outcome") not in VALID_REALITY - {"N-A"}:
                 raise AssertionError(f"{ctx}: invalid reality_test_outcome")
+            if not row.get("reality_evidence_url"):
+                raise AssertionError(f"{ctx}: requires reality_evidence_url")
 
         if row["event_type"] == "RETRIEVAL_AUDIT":
             payload = row.get("metric_payload") or {}
