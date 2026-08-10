@@ -64,7 +64,6 @@ def extract_report(parsed: Any) -> dict | None:
         if MARKER not in text:
             continue
         tail = text.split(MARKER, 1)[1].strip()
-        # Standard-output data can contain surrounding quotes or additional newlines.
         candidates = [tail]
         match = re.search(r"(\{.*\})", tail, flags=re.S)
         if match:
@@ -102,6 +101,8 @@ def exact_cp2(report: dict | None) -> tuple[bool, list[str]]:
 
 def classify(http_status: int | None, body: str, error_kind: str | None) -> str:
     lower = body.lower()
+    if "this server has been turned off" in lower:
+        return "PUBLIC_SERVICE_DISABLED"
     if error_kind == "NETWORK":
         return "NETWORK_BLOCKED"
     if http_status in (401, 403) or "unauthor" in lower or "authorization" in lower or "sign in" in lower:
@@ -124,7 +125,6 @@ def main():
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Important: FREE_PUBLIC_COMPUTE must never activate Core-Hour billing.
     if os.environ.get("RHINO_TOKEN"):
         raise SystemExit("FREE_PUBLIC_COMPUTE refuses to run when RHINO_TOKEN is present")
 
@@ -162,7 +162,7 @@ def main():
         raw_body = exc.read().decode("utf-8", errors="replace")
         error_kind = "HTTP"
         error_message = str(exc)
-    except Exception as exc:  # network/DNS/TLS/timeout are preserved, not hidden.
+    except Exception as exc:
         error_kind = "NETWORK"
         error_message = f"{type(exc).__name__}: {exc}"
     finished = utc_now()
@@ -200,6 +200,11 @@ def main():
         "endpoint": "/grasshopper",
         "started_at": started,
         "finished_at": finished,
+        "workflow": {
+            "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+            "github_run_number": os.environ.get("GITHUB_RUN_NUMBER"),
+            "github_sha": os.environ.get("GITHUB_SHA"),
+        },
         "definition": {
             "path": str(definition),
             "sha256": sha256(definition),
@@ -213,6 +218,7 @@ def main():
             "http_status": http_status,
             "error_kind": error_kind,
             "error_message": scrub(error_message or "", auth_token) or None,
+            "response_message": parsed.get("message") if isinstance(parsed, dict) else None,
         },
         "evidence": {
             "level": evidence_level,
@@ -238,15 +244,13 @@ def main():
     print(json.dumps({
         "http_status": http_status,
         "auth_mode": auth_mode,
+        "response_message": receipt["transport"]["response_message"],
         "cp2": cp2_status,
         "cp2_blocker": blocker,
         "cp4": "OPEN",
         "evidence_level": evidence_level,
         "receipt": str(out_dir / "public_compute_receipt.json"),
     }, ensure_ascii=False))
-
-    # Always return zero once an auditable receipt exists. Public service availability/auth
-    # is evidence, not CI infrastructure failure.
     return 0
 
 
