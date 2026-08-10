@@ -1,0 +1,7 @@
+[
+  {"id":"T01","width_mm":900,"height_mm":2100,"sill_mm":0,"checks":{"width_exact":true,"height_exact":true,"sill_exact":true,"within_host":true,"through_thickness":true,"obj_exists":true},"pass":true,"obj":"T01_wall_opening.obj"},
+  {"id":"T02","width_mm":1200,"height_mm":2100,"sill_mm":0,"checks":{"width_exact":true,"height_exact":true,"sill_exact":true,"within_host":true,"through_thickness":true,"obj_exists":true},"pass":true,"obj":"T02_wall_opening.obj"},
+  {"id":"T03","width_mm":1500,"height_mm":2400,"sill_mm":450,"checks":{"width_exact":true,"height_exact":true,"sill_exact":true,"within_host":true,"through_thickness":true,"obj_exists":true},"pass":true,"obj":"T03_wall_opening.obj"},
+  {"id":"T04","width_mm":1800,"height_mm":2400,"sill_mm":900,"checks":{"width_exact":true,"height_exact":true,"sill_exact":true,"within_host":true,"through_thickness":true,"obj_exists":true},"pass":true,"obj":"T04_wall_opening.obj"},
+  {"id":"T05","width_mm":750,"height_mm":1800,"sill_mm":300,"checks":{"width_exact":true,"height_exact":true,"sill_exact":true,"within_host":true,"through_thickness":true,"obj_exists":true},"pass":true,"obj":"T05_wall_opening.obj"}
+]
