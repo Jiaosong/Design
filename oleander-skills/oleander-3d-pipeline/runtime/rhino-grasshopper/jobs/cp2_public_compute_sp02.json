@@ -1,0 +1,71 @@
+{
+  "run_id": "OLEANDER-SP02-FREE-PUBLIC-COMPUTE-001",
+  "job_type": "data_tree_cp2_headless",
+  "runtime_mode": "FREE_PUBLIC_COMPUTE",
+  "status": "READY_TO_ATTEMPT / NOT YET PROMOTED",
+  "cost_policy": {
+    "mode": "NO_PAID_RUNTIME",
+    "allow_rhino_accounts_bearer": true,
+    "allow_rhino_compute_api_key": false,
+    "allow_core_hour_rhino_token": false,
+    "stop_if_paid_path_required": true
+  },
+  "server": {
+    "url": "https://compute.rhino3d.com/",
+    "endpoint": "grasshopper",
+    "service_class": "BEST_EFFORT_PUBLIC_McNEEL_COMPUTE"
+  },
+  "input": {
+    "parameters": {
+      "zones": 4,
+      "items_per_zone": 6,
+      "dx": 2.4,
+      "dy": 3.6
+    },
+    "parameter_provenance": "SIMULATED_EXERCISE_ASSUMPTION",
+    "parameter_note": "练习用假设参数，不代表实际项目尺寸或项目数据。",
+    "fixture_source": "Official McNeel Python 3 Grasshopper GHX sample, dynamically patched into an OLEANDER SP02 headless test definition."
+  },
+  "expected_tree_contracts": {
+    "BASE": {"branch_count": 4, "item_count": 24, "items_per_branch": [6, 6, 6, 6]},
+    "GRAFT": {"branch_count": 24, "item_count": 24, "items_per_branch": "1 each"},
+    "FLATTEN": {"branch_count": 1, "item_count": 24, "items_per_branch": [24]},
+    "TRANSPOSE_BY_ITEM": {"branch_count": 6, "item_count": 24, "items_per_branch": [4, 4, 4, 4, 4, 4]}
+  },
+  "required_outputs": [
+    "generated_ghx_fixture",
+    "public_compute_response",
+    "public_compute_receipt"
+  ],
+  "cp2": {
+    "starting_state": "OFFLINE_SURROGATE_ONLY",
+    "target_state": "REAL_HEADLESS_GRASSHOPPER_EVIDENCE",
+    "close_only_if": [
+      "McNeel public Compute returns a successful real Grasshopper solve",
+      "the solve output contains OLEANDER_SP02_REPORT marker generated inside the Grasshopper Python 3 component",
+      "BASE matches 4 branches x 6 items",
+      "GRAFT matches 24 branches x 1 item",
+      "FLATTEN matches 1 branch x 24 items",
+      "TRANSPOSE_BY_ITEM matches 6 branches x 4 items",
+      "receipt preserves server, HTTP status, definition hash, Rhino version and Grasshopper assembly version"
+    ],
+    "on_auth_or_service_block": "OPEN_WITH_BLOCKER"
+  },
+  "cp4": {
+    "status": "OPEN",
+    "forced_open_in_this_mode": true,
+    "blocker": "HEADLESS_NO_GRASSHOPPER_GUI",
+    "note": "No Parameter Viewer / Path Mapper canvas screenshot or Rhino desktop viewport can be claimed from FREE_PUBLIC_COMPUTE."
+  },
+  "evidence_rules": {
+    "preserve_unknown": true,
+    "no_surrogate_promotion": true,
+    "no_auth_success_assumption": true,
+    "no_paid_fallback": true,
+    "required_real_runtime_for_cp2": true
+  },
+  "authority": {
+    "human_gate_required": true,
+    "approval_scope": "Training evidence only; no engineering, project, construction, safety or acceptance approval."
+  }
+}
