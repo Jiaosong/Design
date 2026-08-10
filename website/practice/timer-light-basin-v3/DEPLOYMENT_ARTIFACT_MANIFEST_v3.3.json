@@ -1,0 +1,36 @@
+{
+  "schema": "oleander.timer-light-basin.deployment-artifact.v1",
+  "version": "3.3",
+  "authority": "ChatGPT File Library audited package",
+  "library_path": "/Oleander/Practice/Business/B02_Model-Offering/2026-08-07_Timer-Light-Basin/v3.3-web/OLEANDER_Zhizuo_TimerLightBasin_v3.3_AUDITED_2026-08-10.zip",
+  "staging_release_tag": "timer-v3.3-audited-staging",
+  "asset_name": "OLEANDER_Zhizuo_TimerLightBasin_v3.3_AUDITED_2026-08-10.zip",
+  "package_root": "OLEANDER_Zhizuo_TimerLightBasin_v3.3_WEB",
+  "package_sha256": "a4ca61701f8bac0c4991fe3789386cdaec84688e6fed90d1917d9be430a8e804",
+  "boundary": {
+    "draft_release": "staging transport only; not publication approval",
+    "pages_release": "requires explicit release_authorized=true",
+    "photography_lock": "unchanged",
+    "engineering_validation": "not run"
+  },
+  "required_files": {
+    "index.html": "3c0d7286b1a544de26e4dda8777d0a0d694dbf6ca5865afc58244d2771d54fa9",
+    "styles.css": "58830b5cc1db666e359942aee925891ea0436a71cb34d51991fa8438bc8997fe",
+    "app.js": "4bfcd77ef6ea80b813a6cb89a915eda18c8f4640ba632d9d83de6fd5147abcea",
+    "render-pipeline.js": "42a725d269e5f79f25f39b2b61dd9583c32de39b95a0d9bc2bf59f32b840045b",
+    "render/PhotographyViewer.js": "a10184840893eda9d888f1ef384a37dc9b4330caa49909f294a3b46d15cdaca3",
+    "render/StudioEnvironment.js": "1f636c074916602f3f8403bd4487ea9bab4742360fbff3bbc8412b144cbdf9b6",
+    "render/DiffuserMaterial.js": "264d6ed3a17b5a1e301e0c86b5c54cfae951b2e1887fe22e830be095dc1e9959",
+    "render/ContactShadow.js": "93cecf38819be1a75989b08483b0ed88f78fe9396e7a714753ed11fac43a3eac",
+    "render/ColorPipeline.js": "6083758e1bc40ac7c746eb8e0914b012db085ac0955a2f3f84f4bca8fb70aa3e",
+    "render/PostProcessing.js": "2d54e7106033283fb17a1775cad8774ec4f3280b872e07c23abd55011ef8aea4",
+    "assets/state_map.svg": "d94eb978c2a1e39590e4455e41e82ca950f1286fec76abbe56072ba368bece46",
+    "assets/central_section.svg": "58a7f751436ba7e19216fa05b73c8137c19c7051510308c1065bdb35556ed947",
+    "assets/hero_poster.png": "c86d15eb419689ba46aa91ad101440d108d9079027ea593175c1644e97daed06",
+    "assets/exploded_poster.png": "2739ad022d7e56c1a1138bbb3c7f70851f2af9366965bbcb7886bd92ef3d9f71",
+    "assets/pbr/timer_100_pbr.glb": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "assets/pbr/timer_50_pbr.glb": "a058f9f5d7469276eece75b88673a39a78168080b5e3140715e1ee748fb88c84",
+    "assets/pbr/timer_10_pbr.glb": "2979cf9247f473346cf2b418845eb2464492fc22c6fac033763b75ca5b4ea5a6",
+    "assets/pbr/timer_exploded_sequence_v32.glb": "1eefea32671f42951abe31f4c73f0ac69ff534412b2a1466f7954a4ddfe419ea"
+  }
+}
