@@ -1,0 +1,27 @@
+{
+  "selector_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDER-SELECTOR-v0.2",
+  "registry_id": "OLEANDER-NO-PAID-RUNTIME-PROVIDERS-v0.2",
+  "github_run_id": "31364996312",
+  "github_run_number": 5,
+  "github_artifact_id": "9053782974",
+  "github_artifact_digest": "sha256:3f530c0e59ada99136e7ff728b015c70434d69ff2886e783907239a57b07fde8",
+  "status": "NO_EXECUTION_READY_NO_PAID_PROVIDER",
+  "selected_provider": null,
+  "best_current_candidate": "GITHUB_MACOS_X64_STANDARD",
+  "execution_ready_count": 0,
+  "staged_candidate_count": 1,
+  "staged_candidates": [
+    {
+      "provider_id": "GITHUB_MACOS_X64_STANDARD",
+      "state": "INSTALLER_AND_LICENSE_REQUIRED",
+      "execution_engine": "RHINO_DESKTOP_GRASSHOPPER_PLAYER",
+      "next_gate": "INSTALLER_AND_LICENSE_AUTHORITY"
+    }
+  ],
+  "next_action": "HOLD_FOR_INSTALLER_AND_LICENSE",
+  "evidence_level": "CONTROL_PLANE_SELECTION_ONLY",
+  "runtime_evidence": false,
+  "cp2": "OPEN",
+  "cp4": "OPEN",
+  "migration_note": "Run 4 of the selector workflow produced the same core selector result but CI failed while reading the removed v0.1 field eligible_providers. Run 5 verifies the v0.2 field migration and preserves the same evidence boundary."
+}
