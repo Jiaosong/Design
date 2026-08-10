@@ -1,0 +1,73 @@
+name: OLEANDER macOS Rhino Player Preflight
+
+on:
+  push:
+    branches:
+      - feature/rhino-grasshopper-runtime-v0.1
+    paths:
+      - '.github/workflows/oleander-macos-rhino-player-preflight.yml'
+      - 'oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper/providers/preflight_macos_rhino_player.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos-environment-preflight:
+    runs-on: macos-15-intel
+    timeout-minutes: 4
+    env:
+      RUNTIME_ROOT: oleander-skills/oleander-3d-pipeline/runtime/rhino-grasshopper
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+
+      - name: Confirm no paid Rhino runtime token is injected
+        shell: bash
+        run: |
+          if [ -n "${RHINO_TOKEN:-}" ]; then
+            echo "NO_PAID_RUNTIME macOS preflight refuses RHINO_TOKEN / Core-Hour billing." >&2
+            exit 1
+          fi
+          echo "NO_PAID_RUNTIME gate active"
+
+      - name: Inspect macOS Intel environment only
+        shell: bash
+        run: |
+          python3 "$RUNTIME_ROOT/providers/preflight_macos_rhino_player.py" \
+            --receipt "$RUNTIME_ROOT/runtime-state/provider-selection/macos_rhino_player_preflight_receipt.json"
+
+      - name: Verify no Rhino execution or licensing occurred
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ['RUNTIME_ROOT']) / 'runtime-state/provider-selection/macos_rhino_player_preflight_receipt.json'
+          r = json.loads(p.read_text(encoding='utf-8'))
+          assert r['runtime_evidence'] is False
+          assert r['licensing']['attempted'] is False
+          assert r['licensing']['rhino_account_login_attempted'] is False
+          assert r['grasshopper_capability_target']['runtime_test_attempted'] is False
+          assert r['cp2'] == 'OPEN'
+          assert r['cp4'] == 'OPEN'
+          print('provider_state=', r['provider_state'])
+          print('selector_action=', r['selector_action'])
+          print('machine=', r['environment']['platform_machine'])
+          print('macos=', r['environment']['macos_version'])
+          print('free_disk_gb=', r['environment']['free_disk_gb'])
+          print('rhino_present=', r['runtime_presence']['rhino_8_app_present'])
+          print('rhinocode_present=', r['runtime_presence']['rhinocode_present'])
+          print('runtime_evidence=', r['runtime_evidence'])
+          print('cp2=', r['cp2'])
+          print('cp4=', r['cp4'])
+          PY
+
+      - name: Upload environment preflight receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-macos-rhino-player-preflight
+          path: |
+            ${{ env.RUNTIME_ROOT }}/runtime-state/provider-selection/macos_rhino_player_preflight_receipt.json
+          if-no-files-found: error
+          retention-days: 14
