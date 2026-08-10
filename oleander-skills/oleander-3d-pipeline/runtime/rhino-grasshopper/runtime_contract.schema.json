@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "OLEANDER-RHINO-RUNTIME-CONTRACT-v0.1",
+  "$id": "OLEANDER-RHINO-RUNTIME-CONTRACT-v0.2-draft",
   "title": "OLEANDER Rhino + Grasshopper Runtime Contract",
   "type": "object",
   "required": [
@@ -19,8 +19,27 @@
         "runtime_probe",
         "capture_evidence",
         "grasshopper_definition_run",
-        "data_tree_cp2_cp4"
+        "data_tree_cp2_cp4",
+        "data_tree_cp2_headless"
       ]
+    },
+    "runtime_mode": {
+      "type": "string",
+      "enum": [
+        "DESKTOP_RHINO",
+        "FREE_PUBLIC_COMPUTE",
+        "PRIVATE_COMPUTE",
+        "SURROGATE_OFFLINE"
+      ]
+    },
+    "cost_policy": {
+      "type": "object",
+      "properties": {
+        "mode": {"type": "string", "enum": ["NO_PAID_RUNTIME", "AUTHORIZED_PAID_RUNTIME"]},
+        "allow_core_hour_rhino_token": {"type": "boolean"},
+        "stop_if_paid_path_required": {"type": "boolean"}
+      },
+      "additionalProperties": true
     },
     "input": {
       "type": "object",
@@ -41,10 +60,13 @@
         "type": "string",
         "enum": [
           "gh_file",
+          "generated_ghx_fixture",
           "runtime_manifest",
           "tree_report",
           "grasshopper_canvas_png",
           "rhino_viewport_png",
+          "public_compute_response",
+          "public_compute_receipt",
           "log",
           "receipt"
         ]
@@ -56,6 +78,7 @@
       "properties": {
         "preserve_unknown": {"type": "boolean", "const": true},
         "no_surrogate_promotion": {"type": "boolean", "const": true},
+        "no_paid_fallback": {"type": "boolean"},
         "required_real_runtime_for": {
           "type": "array",
           "items": {"type": "string"}
