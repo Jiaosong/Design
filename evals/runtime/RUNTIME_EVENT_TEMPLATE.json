@@ -9,6 +9,7 @@
   "evidence_status": "CONFIRMED|PROVISIONAL|REJECTED",
   "metric_eligible": false,
   "detection_stage": "PRE-RELEASE|POST-RELEASE|RUNTIME|N-A",
+  "release_opportunity": false,
   "blocker_escaped": false,
   "human_override": false,
   "recommendation_id": null,
