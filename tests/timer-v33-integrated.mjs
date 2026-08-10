@@ -126,6 +126,7 @@ result.diagnostics.modelResponses = modelResponses;
 const localFailures = requestFailures.filter((item) => item.url.startsWith('http://127.0.0.1:4173'));
 const localHttpErrors = httpErrors.filter((item) => item.url.startsWith('http://127.0.0.1:4173'));
 if (pageErrors.length === 0) pass('page_errors'); else fail('page_errors', pageErrors.join('\n'));
+if (consoleErrors.length === 0) pass('console_errors'); else fail('console_errors', consoleErrors.join('\n'));
 if (localFailures.length === 0) pass('local_request_failures'); else fail('local_request_failures', JSON.stringify(localFailures));
 if (localHttpErrors.length === 0) pass('local_http_errors'); else fail('local_http_errors', JSON.stringify(localHttpErrors));
 

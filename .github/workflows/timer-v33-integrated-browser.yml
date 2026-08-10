@@ -91,11 +91,13 @@ jobs:
             -o "$STAGE_DIR/$ASSET_NAME"
 
       - name: Verify authority and extract package
+        env:
+          ASSET_NAME: ${{ inputs.asset_name }}
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/timer-v33-stage-package.py \
-            --zip "$STAGE_DIR/${{ inputs.asset_name }}" \
+            --zip "$STAGE_DIR/$ASSET_NAME" \
             --manifest "$MANIFEST" \
             --dest "$STAGE_DIR/site" \
             --result "$QA_DIR/package-verification.json"

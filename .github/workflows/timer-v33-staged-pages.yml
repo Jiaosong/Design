@@ -33,8 +33,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  authorization-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require explicit release authorization
+        env:
+          RELEASE_AUTHORIZED: ${{ inputs.release_authorized }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$RELEASE_AUTHORIZED" != "true" ]]; then
+            echo "::error::Public Pages deployment is not authorized. Re-run with release_authorized=true only after E3/release review."
+            exit 1
+          fi
+          echo "release authorization: PASS"
+
   validate-and-deploy:
-    if: ${{ inputs.release_authorized == true }}
+    needs: authorization-guard
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -49,12 +65,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Record release boundary
+        env:
+          RELEASE_AUTHORIZED: ${{ inputs.release_authorized }}
+          DRAFT_RELEASE_TAG: ${{ inputs.draft_release_tag }}
+          ASSET_NAME: ${{ inputs.asset_name }}
+          RELEASE_NOTE: ${{ inputs.release_note }}
         shell: bash
         run: |
-          echo "release_authorized=${{ inputs.release_authorized }}"
-          echo "draft_release_tag=${{ inputs.draft_release_tag }}"
-          echo "asset_name=${{ inputs.asset_name }}"
-          echo "release_note=${{ inputs.release_note }}"
+          set -euo pipefail
+          printf 'release_authorized=%s\n' "$RELEASE_AUTHORIZED"
+          printf 'draft_release_tag=%s\n' "$DRAFT_RELEASE_TAG"
+          printf 'asset_name=%s\n' "$ASSET_NAME"
+          printf 'release_note=%s\n' "$RELEASE_NOTE"
 
       - name: Resolve authenticated draft release asset
         env:
@@ -116,11 +138,13 @@ jobs:
             -o "$STAGE_DIR/$ASSET_NAME"
 
       - name: Verify authority and extract package
+        env:
+          ASSET_NAME: ${{ inputs.asset_name }}
         shell: bash
         run: |
           set -euo pipefail
           python3 tests/timer-v33-stage-package.py \
-            --zip "$STAGE_DIR/${{ inputs.asset_name }}" \
+            --zip "$STAGE_DIR/$ASSET_NAME" \
             --manifest "$MANIFEST" \
             --dest "$STAGE_DIR/site" \
             --result "$QA_DIR/package-verification.json"

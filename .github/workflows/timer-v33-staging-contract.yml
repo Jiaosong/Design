@@ -63,8 +63,12 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           text=Path('.github/workflows/timer-v33-staged-pages.yml').read_text()
-          authorization_gate='if: $' + '{{ inputs.release_authorized == true }}'
-          assert authorization_gate in text
+          assert 'authorization-guard:' in text
+          assert 'needs: authorization-guard' in text
+          guard=text.split('authorization-guard:',1)[1].split('\n  validate-and-deploy:',1)[0]
+          assert 'RELEASE_AUTHORIZED:' in guard
+          assert 'if [[ "$RELEASE_AUTHORIZED" != "true" ]]' in guard
+          assert 'exit 1' in guard, 'unauthorized release must fail closed'
           overlay=text.split('- name: Overlay audited Timer v3.3 package',1)[1].split('\n      - name:',1)[0]
           copy_manifest='cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json"'
           replace_target='rm -rf "$target"'
@@ -76,6 +80,45 @@ jobs:
           deploy=text.index('- name: Deploy to GitHub Pages')
           assert verify < browser < deploy, 'verification and browser gate must precede Pages deployment'
           print('staged Pages authorization/provenance ordering: PASS')
+          PY
+
+      - name: Validate workflow input hardening
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          workflows=[
+              Path('.github/workflows/timer-v33-integrated-browser.yml'),
+              Path('.github/workflows/timer-v33-staged-pages.yml'),
+          ]
+          actions_open='$' + '{{'
+          actions_close='}' + '}'
+          risky_fragments=[
+              f'--zip "$STAGE_DIR/{actions_open} inputs.asset_name {actions_close}',
+              f'echo "release_authorized={actions_open} inputs.release_authorized {actions_close}',
+              f'echo "draft_release_tag={actions_open} inputs.draft_release_tag {actions_close}',
+              f'echo "asset_name={actions_open} inputs.asset_name {actions_close}',
+              f'echo "release_note={actions_open} inputs.release_note {actions_close}',
+          ]
+          for path in workflows:
+              text=path.read_text()
+              for fragment in risky_fragments:
+                  assert fragment not in text, f'unsafe inline workflow input in {path}: {fragment}'
+              assert '--zip "$STAGE_DIR/$ASSET_NAME"' in text
+          pages=workflows[1].read_text()
+          for name in ['RELEASE_AUTHORIZED', 'DRAFT_RELEASE_TAG', 'ASSET_NAME', 'RELEASE_NOTE']:
+              assert f'{name}:' in pages
+          print('workflow input hardening: PASS')
+          PY
+
+      - name: Validate integrated browser console gate
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          text=Path('tests/timer-v33-integrated.mjs').read_text()
+          assert "if (message.type() === 'error') consoleErrors.push(message.text());" in text
+          assert "if (consoleErrors.length === 0) pass('console_errors'); else fail('console_errors', consoleErrors.join('\\n'));" in text
+          assert 'result.diagnostics.consoleErrors = consoleErrors;' in text
+          print('console-error fail gate: PASS')
           PY
 
       - name: Exercise verifier with synthetic audited package
