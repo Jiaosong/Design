@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PRAC-C01-TRANS-ABC-001｜牌坊礼序路径 A/B/C 测试</title>
+<style>
+:root{font-family:Inter,"Noto Sans SC","Microsoft YaHei",sans-serif;color:#181816;background:#f4f3ef;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:980px;margin:auto;padding:28px}.status,.panel,.field{background:#fff;border:1px solid #d9d7d0;border-radius:12px}.status{padding:16px;margin-bottom:18px}.status strong{display:block;margin-bottom:6px}.muted{color:#696762;font-size:14px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.tab{appearance:none;border:1px solid #aaa79e;background:#fff;padding:12px;border-radius:10px;cursor:pointer;font-weight:700}.tab[aria-selected="true"]{outline:2px solid #181816;outline-offset:2px}.panel{padding:22px}.route{display:none}.route.active{display:block}.route h2{margin-top:0}.tag{display:inline-block;border:1px solid #aaa79e;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px}.flow{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f5f5f2;padding:10px;border-radius:8px;overflow:auto}.field{padding:18px;margin-top:18px}.field label{display:block;font-weight:700;margin:14px 0 6px}.field input,.field textarea,.field select{width:100%;padding:10px;border:1px solid #aaa79e;border-radius:8px;background:#fff;font:inherit}.field textarea{min-height:90px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.actions button{border:1px solid #181816;background:#181816;color:#fff;border-radius:8px;padding:10px 14px;cursor:pointer}.actions .secondary{background:#fff;color:#181816}.warning{border-left:4px solid #8c3a32;padding:10px 14px;background:#f8f3f1;margin:14px 0}.check{display:flex;gap:8px;align-items:flex-start;margin:8px 0}.check input{width:auto;margin-top:5px}@media(max-width:680px){.wrap{padding:16px}.tabs,.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>榜｜牌坊礼序路径 A/B/C 转译测试</h1>
+<section class="status">
+<strong>PRAC-C01-TRANS-ABC-001</strong>
+<div>ROUND 01 / Reality Gate 2 Field Tool</div>
+<div class="muted">本工具是低保真实测界面，不是历史解释定稿、文保批准或学习效果证明。6–8 分钟为练习用假设参数，不代表实际项目数据。</div>
+</section>
+
+<div class="warning"><strong>现场前置 Gate：</strong>必须先填写具体牌坊对象、当前位置/坐标、可停留位置和保护/使用边界。若道路施工、车行冲突、排水或安全条件未关闭，停止测试。</div>
+
+<section class="field">
+<div class="grid">
+<div><label for="session">Session ID</label><input id="session" placeholder="C01-ABC-YYYYMMDD-01"></div>
+<div><label for="object">具体牌坊对象</label><input id="object" placeholder="不得只写“牌坊”"></div>
+<div><label for="location">位置 / 坐标 / 接近方向</label><input id="location" placeholder="现场填写"></div>
+<div><label for="participant">参与者匿名编号</label><input id="participant" placeholder="不记录不必要身份信息"></div>
+</div>
+<label>现场 Gate</label>
+<div class="check"><input type="checkbox" id="gate1"><span>已确认不会在牌坊本体钻孔、粘贴、悬挂或做不可逆干预。</span></div>
+<div class="check"><input type="checkbox" id="gate2"><span>已确认当前停留位置不会与车行、施工、排水或其他明显风险冲突。</span></div>
+<div class="check"><input type="checkbox" id="gate3"><span>使用的照片、文本或地方叙述已有可追溯来源/授权边界，未知项明确标记 Unknown。</span></div>
+</section>
+
+<nav class="tabs" aria-label="Prototype routes">
+<button class="tab" data-route="A" aria-selected="true">A｜符号讲解</button>
+<button class="tab" data-route="B" aria-selected="false">B｜证据材料</button>
+<button class="tab" data-route="C" aria-selected="false">C｜关系行为</button>
+</nav>
+
+<section class="panel">
+<article class="route active" id="route-A">
+<span class="tag">T0 dominant</span><span class="tag">CONTROL</span>
+<h2>A｜Symbol / Lecture Control</h2>
+<p>展示最小讲解卡：牌坊轮廓 / “榜·礼序” / 经核验的简短背景。不要加入未经证实的宣传词。</p>
+<div class="flow">READ → “这座牌坊代表什么？” → 一句话复述</div>
+<p><strong>Remove-the-symbol test：</strong>测试后移除牌坊轮廓、仿古边框、印章和“榜”标签，判断内容结构是否立即失效。</p>
+</article>
+<article class="route" id="route-B">
+<span class="tag">T1 → T2</span><span class="tag">KEEP / REVISE</span>
+<h2>B｜Evidence / Material Reading</h2>
+<p>先观察真实可见线索；不要先给完整故事。把判断分成四类，再读最小核验背景。</p>
+<div class="flow">OBSERVE → DIRECT / SOURCE / INFERENCE / UNKNOWN → MINIMAL CONTEXT → REVISED JUDGMENT</div>
+<p>建议线索：题额、楹联、浮雕、石材表面、风化、对象与道路/建筑的空间位置。只有现场真实可见才可记录为 Direct.</p>
+</article>
+<article class="route" id="route-C">
+<span class="tag">T2 → T3 candidate</span><span class="tag">LEAD CANDIDATE</span>
+<h2>C｜Relation / Behavior Translation</h2>
+<div class="flow">APPROACH → NOTICE ONE CLUE → ASK → FORM AN OPEN QUESTION → NEXT NODE / RESPONSIBLE SOURCE</div>
+<p>核心问题：</p>
+<ol><li>这个对象当时要求谁遵守什么？</li><li>今天谁有权解释它？</li></ol>
+<p>必须形成一个在本节点不能被标准答案直接关闭的问题，并带入八股厅 / 档案 / 地方讲述者 / 专业来源继续核验。</p>
+</article>
+</section>
+
+<section class="field">
+<h2>共同记录表</h2>
+<div class="grid">
+<div><label for="route">实际测试路线</label><select id="route"><option>A</option><option>B</option><option>C</option></select></div>
+<div><label for="duration">实际持续时间（分钟）</label><input id="duration" type="number" step="0.1" min="0"></div>
+</div>
+<label for="first">首个注意对象 / 线索</label><textarea id="first"></textarea>
+<label for="direct">我能直接看到 / 听到的事实</label><textarea id="direct"></textarea>
+<label for="source">来源告诉我的内容</label><textarea id="source"></textarea>
+<label for="inference">我的推断</label><textarea id="inference"></textarea>
+<label for="unknown">我不知道 / 需要继续核验</label><textarea id="unknown"></textarea>
+<label for="question">参与者自主提出的问题</label><textarea id="question"></textarea>
+<label for="prompt">需要提示的次数与内容</label><textarea id="prompt"></textarea>
+<label for="expression">自主表达结果（不得只复述讲解词）</label><textarea id="expression"></textarea>
+<label for="next">主动连接的下一节点 / 人 / 档案 / 专业来源</label><textarea id="next"></textarea>
+<label for="local">地方讲述者 / 村民 / 专业人员的修订意见</label><textarea id="local"></textarea>
+<label for="symbol">去符号后任务是否仍成立？为什么？</label><textarea id="symbol"></textarea>
+<div class="grid">
+<div><label for="decision">本次判断</label><select id="decision"><option>KEEP</option><option>REJECT</option><option>REVISE</option><option>STOP / SAFETY</option></select></div>
+<div><label for="evidence">本次证据状态</label><select id="evidence"><option>FIELD RECORD / UNREVIEWED</option><option>LOCAL REVIEW PENDING</option><option>PROFESSIONAL REVIEW PENDING</option><option>INVALID / INCOMPLETE</option></select></div>
+</div>
+<label for="revision">下一版具体修订</label><textarea id="revision"></textarea>
+<div class="actions">
+<button id="export">导出本次 JSON</button>
+<button id="clear" class="secondary">清空记录</button>
+</div>
+<p class="muted">导出的 JSON 只是原始记录。进入 Notion Evidence Register 前仍需核对同意/匿名、来源、照片权利、地方解释与专业边界。</p>
+</section>
+</main>
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const routes=[...document.querySelectorAll('.route')];
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.setAttribute('aria-selected','false'));
+  t.setAttribute('aria-selected','true');
+  routes.forEach(r=>r.classList.toggle('active',r.id==='route-'+t.dataset.route));
+  document.getElementById('route').value=t.dataset.route;
+}));
+const ids=['session','object','location','participant','route','duration','first','direct','source','inference','unknown','question','prompt','expression','next','local','symbol','decision','evidence','revision'];
+function gateState(){return {no_heritage_attachment:gate1.checked,safe_stopping_condition_checked:gate2.checked,source_rights_boundary_checked:gate3.checked}}
+function record(){const out={schema:'PRAC-C01-TRANS-ABC-001/field-record-v1',exported_at:new Date().toISOString(),gates:gateState()};ids.forEach(id=>out[id]=document.getElementById(id).value);return out}
+document.getElementById('export').addEventListener('click',()=>{
+ const data=record();
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(data.session||'C01-ABC-field-record')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+});
+document.getElementById('clear').addEventListener('click',()=>{if(!confirm('清空当前未导出的记录？'))return;ids.forEach(id=>{const el=document.getElementById(id);if(el.tagName==='SELECT')el.selectedIndex=0;else el.value=''});[gate1,gate2,gate3].forEach(x=>x.checked=false)});
+</script>
+</body>
+</html>
