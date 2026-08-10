@@ -3,7 +3,7 @@
 - Status: RFQ PACKAGE READY / B0 NOT RUN / B1 BLOCKED
 - Layer: Spatial / SP04 Construction & Operation; Business / B03 Operation & Partnership
 - Canonical source: Notion `PRAC-RFQ-INT-WALL-001`
-- Verified: 2026-08-07
+- Verified: 2026-08-10
 
 > This file stores the stable execution boundary only. Supplier quotations, project substrate facts, order batches, actual measurements and test results remain in Notion / project evidence. **Mock-up conditions are not project approval.**
 
@@ -162,6 +162,40 @@ A PASS applies only to the exact tested assembly and conditions.
 - After evidenced B0 success: `INTERFACE COUPON PASSED / B1 READY`.
 - After evidenced B1 execution: `PHYSICAL MOCK-UP EXECUTED`.
 - Project approval remains separate and requires the real project substrate, panel dimensions, installation height, structural/fire/use conditions and order batches to be closed.
+
+## 13. Stage 03 Evidence Closure Gate｜2026-08-10
+
+Stage 03 is no longer improved by collecting adjacent SKUs for this wall system. The engineering value now comes from closing real external evidence.
+
+### Already closed at knowledge-framework level
+- exact mock-up route and interfaces are defined;
+- integrated RFQ return fields exist;
+- B0 and B1 entry/exit logic exists;
+- cost is defined as a whole-system object, not a sum of material list prices;
+- project approval remains explicitly separate from mock-up success.
+
+### Current blockers — all require real evidence
+1. `RFQ RESPONSE: PENDING` — package exists, but no evidenced supplier quotation / lead time / fabrication-responsibility response is on record.
+2. `PROJECT SUBSTRATE: UNKNOWN / HOLD` — mock-up concrete cannot be promoted into a future project fact.
+3. `B0: NOT RUN` — no real drilling, anchor, thin-steel adapter, HPL concealed-fixing or Safety Cord retention record.
+4. `B1: NOT RUN` — no real repeated-demount, wear, reinstatement, noise, deformation or controlled-release evidence.
+5. `SYSTEM PRICE: PRICE-D` — no single coordinated quote covering materials, fabrication, test, tax/freight, installation and spares.
+6. `G9: PENDING` — no real operating hours, maintenance, spare consumption, downtime, demount labor or settled cost.
+
+### Only valid continuation path
+
+```text
+real RFQ response
+→ supply/interface review
+→ B0 physical coupons
+→ B0 decision
+→ B1 physical safety panel
+→ first-article decision
+→ map to real project conditions
+→ procurement / construction / G9
+```
+
+Until the first real external evidence arrives, simulated values, historical prices, manufacturer guide loads and AI inferences stay non-approving inputs. **Do not upgrade them to PASS / APPROVED / VERIFIED.**
 
 ## References
 
