@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       draft_release_tag:
-        description: "Draft release tag holding the audited v3.3 package"
+        description: "Optional GitHub transport tag holding the audited v3.3 package"
         required: true
         type: string
         default: "timer-v3.3-audited-staging"
@@ -57,6 +57,7 @@ jobs:
               raise SystemExit(f'Expected exactly one asset {asset_name!r}; found {len(assets)}')
           asset = assets[0]
           selection = {
+              'transport': 'github-draft-release',
               'release_id': release['id'],
               'release_tag': tag,
               'release_draft': release['draft'],
@@ -69,13 +70,11 @@ jobs:
           pathlib.Path(selection_path).write_text(json.dumps(selection, indent=2) + '\n')
           with open(output_path, 'a', encoding='utf-8') as handle:
               handle.write(f"asset_api_url={asset['url']}\n")
-              handle.write(f"release_id={release['id']}\n")
-              handle.write(f"asset_id={asset['id']}\n")
           print(json.dumps(selection, indent=2))
           PY
         id: release
 
-      - name: Download staged audited package
+      - name: Download GitHub transport copy
         env:
           GH_TOKEN: ${{ github.token }}
           ASSET_API_URL: ${{ steps.release.outputs.asset_api_url }}
@@ -90,18 +89,6 @@ jobs:
             "$ASSET_API_URL" \
             -o "$STAGE_DIR/$ASSET_NAME"
 
-      - name: Verify authority and extract package
-        env:
-          ASSET_NAME: ${{ inputs.asset_name }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 tests/timer-v33-stage-package.py \
-            --zip "$STAGE_DIR/$ASSET_NAME" \
-            --manifest "$MANIFEST" \
-            --dest "$STAGE_DIR/site" \
-            --result "$QA_DIR/package-verification.json"
-
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -114,32 +101,23 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Start staged package server
+      - name: Run shared authority package + Chromium/WebGL gate
         env:
-          STATIC_ROOT: ${{ env.STAGE_DIR }}/site
+          ASSET_NAME: ${{ inputs.asset_name }}
+          TIMER_V33_MANIFEST: ${{ env.MANIFEST }}
+          TIMER_V33_QA_OUT: ${{ env.QA_DIR }}
+          TIMER_V33_STAGE_DIR: ${{ env.STAGE_DIR }}
+          TIMER_V33_BASE_URL: http://127.0.0.1:4173/index.html
         shell: bash
         run: |
           set -euo pipefail
-          node tests/serve-static-root.mjs > "$QA_DIR/server.log" 2>&1 &
-          for i in {1..45}; do
-            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
-            sleep 1
-          done
-          cat "$QA_DIR/server.log"
-          exit 1
+          bash tests/run-timer-v33-authority-gate.sh "$STAGE_DIR/$ASSET_NAME"
 
-      - name: Run full-page Chromium/WebGL gate
-        env:
-          TIMER_V33_BASE_URL: http://127.0.0.1:4173/index.html
-          TIMER_V33_QA_OUT: ${{ env.QA_DIR }}
-        run: node tests/timer-v33-integrated.mjs
-
-      - name: Record staging provenance
+      - name: Record transport provenance
         if: always()
         shell: bash
         run: |
           cp "$STAGE_DIR/selection.json" "$QA_DIR/staging-selection.json" 2>/dev/null || true
-          cp "$MANIFEST" "$QA_DIR/deployment-artifact-manifest.json" 2>/dev/null || true
 
       - name: Upload integrated QA evidence
         if: always()
