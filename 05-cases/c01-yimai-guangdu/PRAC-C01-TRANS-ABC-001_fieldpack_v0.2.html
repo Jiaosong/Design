@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PRAC-C01-TRANS-ABC-001 Field Pack v0.2</title>
+<style>
+:root{--bg:#f5f3ee;--paper:#fffefa;--ink:#181816;--muted:#6b6963;--line:#d8d4ca;--signal:#8c3a32;--ok:#415a45;--pad:clamp(16px,2.5vw,30px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1180px;margin:auto;padding:28px 18px 70px}.hero,.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:var(--pad);margin:0 0 16px}.hero h1{font-size:clamp(24px,4vw,42px);line-height:1.1;margin:.15em 0}.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.status{display:inline-block;border:1px solid var(--signal);color:var(--signal);padding:4px 8px;border-radius:999px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}@media(max-width:780px){.grid,.grid3{grid-template-columns:1fr}}label{display:block;font-weight:650;margin:0 0 5px}input,select,textarea{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:10px 11px;font:inherit}textarea{min-height:92px;resize:vertical}.small{font-size:12px;color:var(--muted)}h2{font-size:20px;margin:.1em 0 14px}h3{font-size:15px;margin:18px 0 8px}.mode{border-left:4px solid var(--line)}.mode[data-active="true"]{border-left-color:var(--signal)}.chips{display:flex;gap:8px;flex-wrap:wrap}.chips label{font-weight:500;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#fff}.chips input{width:auto;margin-right:5px}.actions{display:flex;gap:10px;flex-wrap:wrap;position:sticky;bottom:10px;background:rgba(245,243,238,.92);padding:10px;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}button{border:1px solid var(--ink);background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font:inherit;cursor:pointer}button.secondary{background:#fff;color:var(--ink)}code{background:#efede7;padding:2px 5px;border-radius:5px}.warning{border-left:4px solid var(--signal);padding-left:12px}.good{border-left:4px solid var(--ok);padding-left:12px}.hidden{display:none}.result{white-space:pre-wrap;word-break:break-word;background:#111;color:#eee;padding:14px;border-radius:8px;max-height:360px;overflow:auto}
+</style>
+</head>
+<body><main>
+<section class="hero">
+<div class="eyebrow">C01 / Reality Gate 2 capture tool</div>
+<h1>榜—牌坊礼序路径<br>A0 / A1 / B / C1 / C2 现场记录包</h1>
+<p><span class="status">NO TEST DATA INCLUDED · NOT RUN</span></p>
+<p>v0.2 将 A 组修正为真实既有导览基线，并把 C 拆成单坊深读 C1 与三坊比较 C2。本工具只保存原始观察，不自动判定“理解提升”“文化传承成功”或“方案通过”。</p>
+</section>
+
+<form id="f">
+<section class="card">
+<h2>00｜Session / 记录身份</h2>
+<div class="grid3">
+<div><label>Session ID</label><input name="session_id" placeholder="C01-ABC-YYYYMMDD-001" required></div>
+<div><label>日期时间</label><input name="datetime" type="datetime-local"></div>
+<div><label>记录者</label><input name="recorder" placeholder="姓名 / 角色"></div>
+</div>
+<div class="grid">
+<div><label>原型模式</label><select name="mode" id="mode" required><option value="">选择</option><option>A0_EXISTING_BASELINE</option><option>A1_LECTURE_CONTROL</option><option>B_EVIDENCE_READING</option><option>C1_SINGLE_OBJECT</option><option>C2_COMPARATIVE_ROUTE</option></select></div>
+<div><label>参与者匿名编号</label><input name="participant_id" placeholder="P01；不要写真实姓名"></div>
+</div>
+<div class="grid">
+<div><label>对象 A</label><select name="object_a"><option value="UNKNOWN">UNKNOWN / 现场确认</option><option value="SHANGMASHI">上马石牌坊候选</option><option value="BAGUTING">八股厅牌坊候选</option><option value="DAPANDI">大爿地牌坊候选</option></select></div>
+<div><label>对象 B（C2 使用）</label><select name="object_b"><option value="NONE">NONE</option><option value="UNKNOWN">UNKNOWN / 现场确认</option><option value="SHANGMASHI">上马石牌坊候选</option><option value="BAGUTING">八股厅牌坊候选</option><option value="DAPANDI">大爿地牌坊候选</option></select></div>
+</div>
+<p class="small">“上马石 / 八股厅 / 大爿地”来自当前可追溯地方报道，正式文保名称、编号和坐标仍须现场及官方名录锁定。</p>
+</section>
+
+<section class="card mode" id="a0">
+<h2>A0｜Existing Interpretation Baseline</h2>
+<p class="warning">先记录“现在已经有什么”，不得把既有导览系统预设为落后、符号化或失败。</p>
+<div class="grid3">
+<div><label>道路标存在</label><select name="a0_route_marker"><option>UNKNOWN</option><option>YES</option><option>NO</option></select></div>
+<div><label>指示牌存在</label><select name="a0_sign"><option>UNKNOWN</option><option>YES</option><option>NO</option></select></div>
+<div><label>导览图存在</label><select name="a0_map"><option>UNKNOWN</option><option>YES</option><option>NO</option></select></div>
+</div>
+<div class="grid">
+<div><label>既有介质第一阅读单元</label><textarea name="a0_first_reading" placeholder="先看到对象名？人物？地图？宣传句？二维码？"></textarea></div>
+<div><label>来源 / 日期 / 责任主体是否可见</label><textarea name="a0_source_visibility"></textarea></div>
+</div>
+<div class="grid">
+<div><label>现有内容实际说了什么</label><textarea name="a0_actual_content" placeholder="只抄录必要摘要；不要先评价"></textarea></div>
+<div><label>当前状态 / 破损 / 遮挡 / 更新痕迹</label><textarea name="a0_condition"></textarea></div>
+</div>
+<div><label>现场照片文件名 / 证据编号</label><input name="a0_photo_refs" placeholder="例如 A0_SIGN_001.jpg; A0_MAP_001.jpg"></div>
+</section>
+
+<section class="card mode" id="a1">
+<h2>A1｜Controlled Lecture Card</h2>
+<p>只有在需要控制内容量时使用。A1 不能故意做成弱方案。</p>
+<div class="grid">
+<div><label>使用的最小事实集</label><textarea name="a1_fact_set"></textarea></div>
+<div><label>参与者一句话复述</label><textarea name="a1_retelling"></textarea></div>
+</div>
+<div><label>去掉牌坊轮廓/仿古视觉后是否仍成立</label><select name="a1_remove_symbol"><option>NOT_RUN</option><option>PASS</option><option>FAIL</option><option>UNCLEAR</option></select></div>
+</section>
+
+<section class="card mode" id="b">
+<h2>B｜Evidence Reading</h2>
+<div class="grid">
+<div><label>我能直接看到</label><textarea name="b_observed" placeholder="题额、楹联、浮雕、结构、风化、空间位置……"></textarea></div>
+<div><label>来源告诉我</label><textarea name="b_sourced"></textarea></div>
+<div><label>我在推断</label><textarea name="b_inferred"></textarea></div>
+<div><label>我仍不知道</label><textarea name="b_unknown"></textarea></div>
+</div>
+<div><label>哪项证据改变了最初判断？</label><textarea name="b_revision"></textarea></div>
+</section>
+
+<section class="card mode" id="c1">
+<h2>C1｜Single-object Deep Reading</h2>
+<div class="grid">
+<div><label>接近时第一个注意对象</label><textarea name="c1_first_notice"></textarea></div>
+<div><label>选择的一个可见线索</label><textarea name="c1_clue"></textarea></div>
+</div>
+<div class="grid">
+<div><label>自主问题</label><textarea name="c1_question"></textarea></div>
+<div><label>下一节点 / 人 / 档案</label><textarea name="c1_next_source"></textarea></div>
+</div>
+</section>
+
+<section class="card mode" id="c2">
+<h2>C2｜Comparative Route</h2>
+<p class="good">核心不是“找不同”，而是让差异产生一个必须继续核验的问题。</p>
+<div class="grid">
+<div><label>两个对象相同之处</label><textarea name="c2_same"></textarea></div>
+<div><label>两个对象不同之处</label><textarea name="c2_different"></textarea></div>
+</div>
+<div class="grid">
+<div><label>差异指向的人物 / 制度 / 位置 / 物证问题</label><textarea name="c2_meaning_question"></textarea></div>
+<div><label>谁有权解释 / 修订这个问题？</label><textarea name="c2_interpretation_rights"></textarea></div>
+</div>
+<div><label>是否主动要求比较第二座牌坊</label><select name="c2_requested_second"><option>NOT_APPLICABLE</option><option>YES</option><option>NO</option><option>PROMPTED</option></select></div>
+</section>
+
+<section class="card">
+<h2>Site Gate｜现场约束</h2>
+<div class="grid3">
+<div><label>道路宽度（实测）</label><input name="site_road_width" type="number" step="0.01" placeholder="留空=未测"></div>
+<div><label>车/人冲突</label><select name="site_conflict"><option>UNKNOWN</option><option>LOW</option><option>MEDIUM</option><option>HIGH</option></select></div>
+<div><label>安全停留点</label><select name="site_stop"><option>UNKNOWN</option><option>YES</option><option>NO</option><option>CONDITIONAL</option></select></div>
+</div>
+<div class="grid">
+<div><label>排水 / 地面 / 无障碍观察</label><textarea name="site_ground"></textarea></div>
+<div><label>保护范围 / 安装权限</label><textarea name="site_heritage_boundary" placeholder="未知就明确写 UNKNOWN"></textarea></div>
+</div>
+<div><label>三视段文件</label><input name="site_three_views" placeholder="APPROACH_xxx; FRONT_xxx; LEAVE_xxx"></div>
+</section>
+
+<section class="card">
+<h2>Human Gate｜行为与解释权</h2>
+<div class="grid3">
+<div><label>年龄组</label><select name="human_group"><option>UNKNOWN</option><option>7-11</option><option>12-17</option><option>18+_LOCAL_OR_RETURNING</option><option>VISITOR</option><option>OTHER</option></select></div>
+<div><label>必要同意</label><select name="human_consent"><option>NOT_CHECKED</option><option>CONFIRMED</option><option>NOT_REQUIRED_FOR_THIS_RECORD</option><option>STOP</option></select></div>
+<div><label>提示次数</label><input name="human_prompts" type="number" min="0"></div>
+</div>
+<div class="grid">
+<div><label>自主问题 / 自主表达</label><textarea name="human_autonomous_output"></textarea></div>
+<div><label>误解 / 冲突 / 退出</label><textarea name="human_failure"></textarea></div>
+</div>
+<div class="grid">
+<div><label>地方讲述者 / 村集体 / 专业人员修订</label><textarea name="human_local_correction"></textarea></div>
+<div><label>参与者认为谁拥有解释权</label><textarea name="human_perceived_authority"></textarea></div>
+</div>
+</section>
+
+<section class="card">
+<h2>Decision｜只记录，不自动通过</h2>
+<div class="grid3">
+<div><label>Keep / Revise / Reject</label><select name="decision"><option>NOT_DECIDED</option><option>KEEP</option><option>REVISE</option><option>REJECT</option></select></div>
+<div><label>证据等级</label><select name="evidence_level"><option>E0</option><option>E1</option><option selected>E2</option><option>E3_CANDIDATE</option></select></div>
+<div><label>Reality Gate 2</label><select name="gate2"><option selected>NOT_RUN</option><option>PARTIAL</option><option>RUN_PENDING_REVIEW</option></select></div>
+</div>
+<div><label>决定理由 / 下一动作</label><textarea name="decision_reason"></textarea></div>
+<p class="small">工具不会提供 “PASS / APPROVED / VERIFIED” 选项。真实原始记录完成后仍需地方、专业与项目治理复核。</p>
+</section>
+</form>
+
+<section class="card">
+<h2>Export</h2>
+<div class="actions"><button type="button" id="export">导出 JSON</button><button type="button" class="secondary" id="preview">预览 JSON</button><button type="button" class="secondary" id="clear">清空本地表单</button></div>
+<pre id="out" class="result hidden"></pre>
+</section>
+
+<section class="card small">
+<strong>Source boundary</strong><br>
+Current public source review indicates that Guangdu had wayfinding/signage/guide-map interventions and prior survey/interview activity reported by 2024, and that three related archways are described in 2025 local reporting. These are source claims used to shape the capture protocol, not OLEANDER field-test results. Formal heritage identity, current 2026 condition, exact coordinates, permissions and participant outcomes remain pending.
+</section>
+</main>
+<script>
+const form=document.getElementById('f'), out=document.getElementById('out'), mode=document.getElementById('mode');
+const modeCards={A0_EXISTING_BASELINE:'a0',A1_LECTURE_CONTROL:'a1',B_EVIDENCE_READING:'b',C1_SINGLE_OBJECT:'c1',C2_COMPARATIVE_ROUTE:'c2'};
+function markMode(){document.querySelectorAll('.mode').forEach(x=>x.dataset.active='false');const id=modeCards[mode.value];if(id)document.getElementById(id).dataset.active='true'}
+mode.addEventListener('change',markMode);markMode();
+function collect(){const fd=new FormData(form), data={schema:'PRAC-C01-TRANS-ABC-001/fieldpack-v0.2',record_status:'RAW_UNREVIEWED',exported_at:new Date().toISOString(),fields:{}};for(const [k,v] of fd.entries())data.fields[k]=v;return data}
+function show(){out.textContent=JSON.stringify(collect(),null,2);out.classList.remove('hidden')}
+document.getElementById('preview').onclick=show;
+document.getElementById('export').onclick=()=>{const data=collect();const sid=(data.fields.session_id||'UNNAMED').replace(/[^a-zA-Z0-9_-]+/g,'_');const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${sid}_RAW.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);show()};
+document.getElementById('clear').onclick=()=>{if(confirm('清空当前未导出的表单？')){form.reset();out.classList.add('hidden');markMode()}};
+</script>
+</body></html>
