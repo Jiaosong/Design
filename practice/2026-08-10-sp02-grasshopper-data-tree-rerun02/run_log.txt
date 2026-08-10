@@ -1,0 +1,12 @@
+command: python -S run_data_tree_training.py
+exit_code: 0
+evidence_boundary: OFFLINE PYTHON ONLY / NOT RHINO-GRASSHOPPER RUNTIME
+
+stdout:
+BASE (4, 24, [6, 6, 6, 6])
+GRAFT (24, 24, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+FLATTEN (1, 24, [24])
+TRANSPOSE (6, 24, [4, 4, 4, 4, 4, 4])
+
+stderr:
+
