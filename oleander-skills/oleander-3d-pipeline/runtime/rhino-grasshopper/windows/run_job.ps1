@@ -35,8 +35,8 @@ $instancesRaw = & $rhinoCode list --json
 if ($LASTEXITCODE -ne 0 -or -not $instancesRaw) {
   throw 'No Rhino script-server response. Run bootstrap_windows.ps1 and healthcheck.ps1 first.'
 }
-$instances = $instancesRaw | ConvertFrom-Json
-if (-not $instances -or $instances.Count -eq 0) { throw 'No live Rhino script-server instance found.' }
+try { $instances = @($instancesRaw | ConvertFrom-Json) } catch { throw "Unable to parse rhinocode list --json: $($_.Exception.Message)" }
+if ($instances.Count -eq 0) { throw 'No live Rhino script-server instance found.' }
 
 $target = $instances[0]
 if ($PipeId) {
