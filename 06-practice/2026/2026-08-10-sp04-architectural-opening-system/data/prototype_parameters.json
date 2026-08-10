@@ -1,0 +1,53 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS — NOT PROJECT DATA / NOT CODE",
+  "prototypes": [
+    {
+      "code": "A",
+      "title": "Deep Reveal",
+      "wall": {"length_mm": 6000.0, "height_mm": 3300.0, "thickness_mm": 600.0},
+      "opening_width_mm": 1800.0,
+      "opening_height_mm": 2100.0,
+      "sill_mm": 450.0,
+      "frame_setback_from_interior_mm": 500.0,
+      "frame_profile_mm": 70.0,
+      "frame_depth_mm": 60.0,
+      "seat_depth_mm": 520.0,
+      "seat_thickness_mm": 80.0
+    },
+    {
+      "code": "B",
+      "title": "Soft Arch",
+      "wall": {"length_mm": 6000.0, "height_mm": 3300.0, "thickness_mm": 500.0},
+      "opening_width_mm": 1600.0,
+      "rect_height_mm": 1300.0,
+      "rise_mm": 800.0,
+      "sill_mm": 0.0,
+      "threshold_depth_mm": 500.0,
+      "threshold_thickness_mm": 60.0
+    },
+    {
+      "code": "C",
+      "title": "Offset Frame",
+      "wall": {"length_mm": 6000.0, "height_mm": 3300.0, "thickness_mm": 360.0},
+      "outer_width_mm": 2100.0,
+      "outer_height_mm": 1800.0,
+      "outer_sill_mm": 750.0,
+      "inner_width_mm": 1800.0,
+      "inner_height_mm": 1500.0,
+      "inner_sill_mm": 900.0,
+      "frame_plane_from_interior_mm": 90.0,
+      "frame_profile_mm": 65.0,
+      "frame_depth_mm": 55.0
+    },
+    {
+      "code": "D",
+      "title": "Opening Field",
+      "wall": {"length_mm": 6000.0, "height_mm": 3300.0, "thickness_mm": 420.0},
+      "count": 5,
+      "opening_width_mm": 720.0,
+      "opening_height_mm": 1900.0,
+      "sill_mm": 500.0,
+      "gap_mm": 420.0
+    }
+  ]
+}
