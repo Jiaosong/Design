@@ -5,10 +5,14 @@ const baseURL = process.env.TIMER_V33_BASE_URL || 'http://127.0.0.1:4173/practic
 const outDir = process.env.TIMER_V33_QA_OUT || 'test-results/timer-v33-integrated';
 await mkdir(outDir, { recursive: true });
 
-const browser = await chromium.launch({
-  headless: true,
-  args: ['--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist']
-});
+const browserArgs = [
+  '--use-angle=swiftshader',
+  '--enable-webgl',
+  '--enable-unsafe-swiftshader',
+  '--ignore-gpu-blocklist',
+  '--disable-dev-shm-usage'
+];
+const browser = await chromium.launch({ headless: true, args: browserArgs });
 
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
 const pageErrors = [];
@@ -36,7 +40,9 @@ const result = {
   url: baseURL,
   startedAt: new Date().toISOString(),
   checks: {},
-  diagnostics: {}
+  diagnostics: {
+    browser: { engine: 'playwright-chromium', headless: true, args: browserArgs }
+  }
 };
 
 let failed = false;
