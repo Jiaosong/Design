@@ -1,0 +1,33 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL RULESET / NOT CODE / NOT MANUFACTURER REQUIREMENT",
+  "rules": {
+    "opening_width_mm": 1200.0,
+    "opening_height_mm": 1500.0,
+    "frame_depth_mm": 75.0,
+    "corner_anchor_offset_mm": 150.0,
+    "max_anchor_spacing_mm": 600.0,
+    "min_structural_edge_distance_mm": 60.0,
+    "setting_block_offset_from_jamb_mm": 150.0,
+    "setting_block_length_mm": 40.0,
+    "sill_membrane_no_puncture_zone_mm": 80.0,
+    "anchor_adjust_slot_mm": 12.0,
+    "anchor_screw_embed_mm": 45.0,
+    "install_joint_mm": 12.0
+  },
+  "derived": {
+    "head_anchor_count": 3,
+    "jamb_anchor_count_each": 3,
+    "top_spacing_mm": 450.0,
+    "side_spacing_mm": 600.0,
+    "sill_candidate_count": 3,
+    "support_block_count": 2
+  },
+  "qa": {
+    "top_max_spacing_ok": true,
+    "left_max_spacing_ok": true,
+    "right_max_spacing_ok": true,
+    "corner_offset_top_ok": true,
+    "corner_offset_side_ok": true,
+    "setting_blocks_symmetrical": true
+  }
+}
