@@ -2,7 +2,9 @@
 """Build an OLEANDER SP02 Grasshopper fixture from an official McNeel GHX sample.
 
 This builder does not execute Rhino or Grasshopper. It prepares a GHX definition that
-can be submitted to a real Rhino.Compute / Grasshopper headless runtime.
+can be submitted to Rhino.Compute or executed by another real Rhino/Grasshopper runtime
+such as GrasshopperPlayer. The embedded component can persist an exact runtime report
+when OLEANDER_SP02_REPORT_PATH is supplied to the real Rhino process.
 """
 from __future__ import annotations
 
@@ -23,6 +25,7 @@ GROUP_COMPONENT_GUID = "c552a431-af5b-46a9-a8a4-0fcbc27ef596"
 NAMESPACE_UUID = uuid.UUID("519c7863-648f-4b49-a9bb-75b0fd459df5")
 
 SP02_SCRIPT = r'''import json
+import os
 import Rhino
 from Grasshopper.Kernel.Data import GH_Structure, GH_Path, GH_GraftMode
 from Grasshopper.Kernel.Types import GH_Number
@@ -81,9 +84,10 @@ for key in expected:
         states[key]["items_per_branch"] == expected[key]["items_per_branch"]
     )
 
+runtime_engine = os.environ.get("OLEANDER_RUNTIME_ENGINE", "Rhino / Grasshopper headless")
 report = {
     "marker_version": "OLEANDER-SP02-HEADLESS-REPORT-v1",
-    "runtime": "Rhino.Compute / Grasshopper headless",
+    "runtime": runtime_engine,
     "rhino_version": str(Rhino.RhinoApp.Version),
     "grasshopper_assembly_version": str(GH_Path(0).GetType().Assembly.GetName().Version),
     "parameters": {
@@ -98,7 +102,17 @@ report = {
     "cp2_candidate": bool(all(checks.values())),
     "cp4": "OPEN_HEADLESS_NO_GUI"
 }
-print("OLEANDER_SP02_REPORT::" + json.dumps(report, sort_keys=True, separators=(",", ":")))
+serialized = json.dumps(report, sort_keys=True, separators=(",", ":"))
+
+# Compute can expose stdout; desktop/headless Rhino can persist the same exact report.
+print("OLEANDER_SP02_REPORT::" + serialized)
+report_path = os.environ.get("OLEANDER_SP02_REPORT_PATH")
+if report_path:
+    report_dir = os.path.dirname(report_path)
+    if report_dir:
+        os.makedirs(report_dir, exist_ok=True)
+    with open(report_path, "w", encoding="utf-8") as report_file:
+        report_file.write(json.dumps(report, sort_keys=True, indent=2))
 '''
 
 
@@ -225,7 +239,7 @@ def append_rh_out_group(definition_objects: ET.Element, target_instance_guid: st
 
 
 def build(output: Path, source_copy: Path | None = None):
-    request = urllib.request.Request(FIXTURE_URL, headers={"User-Agent": "OLEANDER-SP02-fixture-builder/0.1"})
+    request = urllib.request.Request(FIXTURE_URL, headers={"User-Agent": "OLEANDER-SP02-fixture-builder/0.2"})
     with urllib.request.urlopen(request, timeout=30) as response:
         raw = response.read()
     if source_copy:
@@ -248,7 +262,7 @@ def build(output: Path, source_copy: Path | None = None):
     if props is not None:
         name_item = _direct_item(props, "Name")
         if name_item is not None:
-            name_item.text = "OLEANDER_SP02_FREE_PUBLIC_COMPUTE.ghx"
+            name_item.text = "OLEANDER_SP02_RUNTIME_NEUTRAL.ghx"
 
     output.parent.mkdir(parents=True, exist_ok=True)
     tree = ET.ElementTree(root)
@@ -257,11 +271,12 @@ def build(output: Path, source_copy: Path | None = None):
     print(f"fixture={output}")
     print(f"source={FIXTURE_URL}")
     print(f"target_component={instance_guid}")
+    print("runtime_report_env=OLEANDER_SP02_REPORT_PATH")
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output", default="runtime-state/OLEANDER_SP02_FREE_PUBLIC_COMPUTE.ghx")
+    parser.add_argument("--output", default="runtime-state/OLEANDER_SP02_RUNTIME_NEUTRAL.ghx")
     parser.add_argument("--source-copy", default="runtime-state/mcneel_python3_component_paramaccess_source.ghx")
     args = parser.parse_args()
     build(Path(args.output), Path(args.source_copy) if args.source_copy else None)
