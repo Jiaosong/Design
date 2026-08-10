@@ -7,6 +7,7 @@ on:
     paths:
       - 'tests/timer-v33-stage-package.py'
       - 'tests/timer-v33-integrated.mjs'
+      - 'tests/run-timer-v33-authority-gate.sh'
       - 'tests/serve-static-root.mjs'
       - 'website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json'
       - '.github/workflows/timer-v33-integrated-browser.yml'
@@ -18,6 +19,7 @@ on:
     paths:
       - 'tests/timer-v33-stage-package.py'
       - 'tests/timer-v33-integrated.mjs'
+      - 'tests/run-timer-v33-authority-gate.sh'
       - 'tests/serve-static-root.mjs'
       - 'website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json'
       - '.github/workflows/timer-v33-integrated-browser.yml'
@@ -41,6 +43,7 @@ jobs:
           python3 -m py_compile tests/timer-v33-stage-package.py
           node --check tests/timer-v33-integrated.mjs
           node --check tests/serve-static-root.mjs
+          bash -n tests/run-timer-v33-authority-gate.sh
           python3 -m json.tool website/practice/timer-light-basin-v3/DEPLOYMENT_ARTIFACT_MANIFEST_v3.3.json >/dev/null
 
       - name: Validate locked authority manifest
@@ -103,11 +106,32 @@ jobs:
               text=path.read_text()
               for fragment in risky_fragments:
                   assert fragment not in text, f'unsafe inline workflow input in {path}: {fragment}'
-              assert '--zip "$STAGE_DIR/$ASSET_NAME"' in text
+          integrated=workflows[0].read_text()
           pages=workflows[1].read_text()
+          assert 'bash tests/run-timer-v33-authority-gate.sh "$STAGE_DIR/$ASSET_NAME"' in integrated
+          assert '--zip "$STAGE_DIR/$ASSET_NAME"' in pages
           for name in ['RELEASE_AUTHORIZED', 'DRAFT_RELEASE_TAG', 'ASSET_NAME', 'RELEASE_NOTE']:
               assert f'{name}:' in pages
           print('workflow input hardening: PASS')
+          PY
+
+      - name: Validate shared authority runner and browser parity
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          runner=Path('tests/run-timer-v33-authority-gate.sh').read_text()
+          browser=Path('tests/timer-v33-integrated.mjs').read_text()
+          calibration=Path('website/practice/timer-light-basin-v3/calibration/capture.mjs').read_text()
+          verify='python3 tests/timer-v33-stage-package.py'
+          serve='node tests/serve-static-root.mjs'
+          gate='node tests/timer-v33-integrated.mjs'
+          assert verify in runner and serve in runner and gate in runner
+          assert runner.index(verify) < runner.index(serve) < runner.index(gate), 'verify → serve → browser ordering required'
+          for flag in ['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--disable-dev-shm-usage']:
+              assert flag in calibration, f'calibration reference missing {flag}'
+              assert flag in browser, f'integrated browser must match calibrated launch stability flag {flag}'
+          assert 'TIMER_V33_VERIFY_ONLY' in runner
+          print('shared authority runner + calibrated browser parity: PASS')
           PY
 
       - name: Validate integrated browser console gate
@@ -121,7 +145,7 @@ jobs:
           print('console-error fail gate: PASS')
           PY
 
-      - name: Exercise verifier with synthetic audited package
+      - name: Exercise verifier and shared runner with synthetic audited package
         run: |
           set -euo pipefail
           rm -rf /tmp/timer-v33-contract
@@ -149,20 +173,20 @@ jobs:
           }
           (work/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
           PY
-          python3 tests/timer-v33-stage-package.py \
-            --zip /tmp/timer-v33-contract/synthetic.zip \
-            --manifest /tmp/timer-v33-contract/manifest.json \
-            --dest /tmp/timer-v33-contract/site \
-            --result /tmp/timer-v33-contract/result.json
-          test -f /tmp/timer-v33-contract/site/index.html
-          test -f /tmp/timer-v33-contract/site/assets/pbr/timer_100_pbr.glb
+          TIMER_V33_MANIFEST=/tmp/timer-v33-contract/manifest.json \
+          TIMER_V33_QA_OUT=/tmp/timer-v33-contract/qa \
+          TIMER_V33_STAGE_DIR=/tmp/timer-v33-contract/stage \
+          TIMER_V33_VERIFY_ONLY=true \
+          bash tests/run-timer-v33-authority-gate.sh /tmp/timer-v33-contract/synthetic.zip
+          test -f /tmp/timer-v33-contract/stage/site/index.html
+          test -f /tmp/timer-v33-contract/stage/site/assets/pbr/timer_100_pbr.glb
           python3 - <<'PY'
           import json, pathlib
-          r=json.loads(pathlib.Path('/tmp/timer-v33-contract/result.json').read_text())
+          r=json.loads(pathlib.Path('/tmp/timer-v33-contract/qa/package-verification.json').read_text())
           assert r['status']=='PASS', r
           assert r['checks']['package_sha256']['status']=='PASS'
           assert r['checks']['required_files']['status']=='PASS'
           assert r['checks']['internal_sha256sums']['status']=='PASS'
           assert r['checks']['extraction']['status']=='PASS'
-          print('synthetic staging verifier: PASS')
+          print('synthetic shared authority runner: PASS')
           PY
