@@ -1,6 +1,6 @@
 # OLEANDER AI Runtime Evidence P2 v0.1
 
-Status: DRAFT for review
+Status: ACTIVE measurement protocol when present on `main` / scope-limited evidence only / not evidence of model reliability
 Canonical method source: Notion `01B-8｜AI Runtime Evidence Protocol v0.1｜P2 真实运行证据`
 
 ## Purpose
