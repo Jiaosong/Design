@@ -1,6 +1,6 @@
 # OLEANDER AI Governance P0 v0.1
 
-Status: DRAFT for review / intended to extend `OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md`
+Status: ACTIVE governance protocol when present on `main` / E1 static corpus gate required / not evidence of model reliability
 Canonical method source: Notion `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
 
 ## Purpose
@@ -156,7 +156,7 @@ Model / skill version changes are analogous to changing a measuring instrument: 
 
 - `evals/golden/` — task-specific benchmark cases
 - `evals/retrieval/` — canonical-source retrieval QA cases
-- `evals/schemas/` — machine-readable case schemas
+- `evals/change-control/` — promotion and rollback records
 - `evals/scripts/` — deterministic validators
 - `.github/workflows/ai-governance-evals.yml` — CI gate
 
