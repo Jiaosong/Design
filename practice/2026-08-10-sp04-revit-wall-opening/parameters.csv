@@ -1,0 +1,6 @@
+type,width_mm,height_mm,sill_height_mm,status
+T01,900,2100,0,exercise-only hypothetical
+T02,1200,2100,450,exercise-only hypothetical
+T03,1500,2400,900,exercise-only hypothetical
+T04,900,2400,450,exercise-only hypothetical
+T05,1500,2100,0,exercise-only hypothetical
