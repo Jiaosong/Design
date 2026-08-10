@@ -1,0 +1,24 @@
+{
+  "status": "ACTUALLY GENERATED",
+  "checks": {
+    "wall_total_360": true,
+    "frame_depth_75": true,
+    "frame_inside_wall": true,
+    "waterproof_bridge_110": true,
+    "sill_falls_outward": true,
+    "sill_pan_has_backdam": true,
+    "sill_drainage_not_closed_by_airseal": true,
+    "head_control_layer_bridge_drawn": true,
+    "jamb_three_zone_joint_drawn": true,
+    "interior_airseal_is_distinct_from_joint_insulation": true,
+    "anchor_zone_is_marked_pending": true,
+    "svg_3_exists": true,
+    "dxf_3_exists": true
+  },
+  "derived": {
+    "sill_fall_over_110mm_mm": 9.624,
+    "frame_to_interior_finish_mm": 15.0,
+    "AWB_to_frame_exterior_face_mm": 110.0
+  },
+  "pass": true
+}
