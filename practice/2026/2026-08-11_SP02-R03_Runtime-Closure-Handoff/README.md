@@ -61,6 +61,22 @@ A portable kit is provided in the release package:
 Prerequisite: a Windows machine with installed and activated Rhino 8.
 No manual Grasshopper definition construction is required.
 
+## No-Purchase Constraint
+**`NO_PURCHASE = TRUE` is now a hard project constraint.**
+
+SP02 must not trigger a new purchase of Rhino, Rhino.Compute, Cloud VM, or a third-party paid runtime service merely to close Practice gates.
+
+Allowed order:
+1. existing licensed Rhino machine;
+2. Human Authority using an existing licensed machine and returning evidence;
+3. official evaluation only if its current no-purchase terms are re-verified at execution time;
+4. genuinely free existing runtime provider if it actually executes Grasshopper;
+5. otherwise stop and preserve `CP2 OPEN / CP4 OPEN`.
+
+The one-click kit is therefore an **execution handoff for an already available legal Rhino environment**, not a purchase recommendation.
+
+See `providers/NO_PURCHASE_RUNTIME_POLICY.md`.
+
 ## Release-review correction
 The first portable kit inherited the repository-relative expected-contract path. That revision was rejected during release review. The final portable runner explicitly passes:
 
@@ -69,6 +85,6 @@ The first portable kit inherited the repository-relative expected-contract path.
 to the validator.
 
 ## Current truth
-`STATIC HANDOFF PASS / REAL RHINO NOT EXECUTED / SG00—SG07 OPEN / CP2 OPEN / CP4 OPEN`
+`STATIC HANDOFF PASS / REAL RHINO NOT EXECUTED / SG00—SG07 OPEN / CP2 OPEN / CP4 OPEN / NO_PURCHASE TRUE`
 
 See `docs/SP02_R03_v1.4_ONE_RUN_CP2_CLOSEOUT.md` and `data/sp02_r03_v1.4_status.json`.
