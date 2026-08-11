@@ -1,15 +1,15 @@
 {
-  "schema": "oleander.retroactive-persistence-audit.index.v1",
+  "schema": "oleander.retroactive-persistence-audit.index.v1.1",
   "date": "2026-08-11",
-  "status": "AUDIT_COMPLETE_P0_RESCUED_REMEDIATION_OPEN",
+  "revision": "PATH-RESOLUTION-CORRECTED",
+  "status": "AUDIT_V1_1_CURRENT_REMEDIATION_OPEN",
   "governance": "PAP-G0—PAP-G6",
   "counts": {
     "asset_rows": 31,
     "unique_chains": 23,
-    "confirmed_persistence_fail_chains": 7,
-    "rescued_persistence_pass_chains": 1,
+    "confirmed_persistence_fail_chains": 4,
     "at_risk_chains": 1,
-    "healthy_or_recoverable_control_chains": 8,
+    "healthy_or_recovered_chains": 11,
     "not_created_na_chains": 3,
     "legacy_decoupled_chains": 1,
     "nonbinary_archive_incomplete_chains": 3
@@ -18,50 +18,67 @@
     "TIMER-R54-G3.2",
     "TIMER-POSTERLOCK",
     "SP02-RELATIONAL-FIELD",
-    "SP03-ARCH-GEN",
-    "B04-CROSS-MEDIA",
-    "IP03-VISUAL-HIERARCHY",
     "SYNC-REPAIR-LEGACY"
   ],
-  "rescued_pass_chains": ["SP01-R02-GIS"],
   "at_risk_chains": ["XJ01-R02-SOURCE"],
-  "p0_rescue": {
-    "chain": "SP01-R02-GIS",
-    "source_provider": "GitHub Actions",
-    "workflow_run_id": 31454788861,
-    "artifact_id": 9087641476,
-    "source_expires_at": "2026-09-10T03:15:45Z",
-    "source_sha256": "68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c",
-    "bytes": 759942,
-    "pap_drive_folder_id": "16rBzIy15N4g4Bq-HUBdYBianKQyIjplq",
-    "pap_drive_file_id": "12mafNIOtzzrYzIf2HTkjz4XcDq_xjSMI",
-    "practice_mirror_folder_id": "1_h4YvTsO8jXHajgwKua3Y5-87bup0DrF",
-    "practice_mirror_file_id": "1DMpgFdV_vhdRunRqI3GOBD4rFvNI9DJc",
-    "pap_drive_redownload_sha_match": true,
-    "pap_drive_unzip": "PASS",
-    "practice_mirror_redownload_sha_match": true,
-    "practice_mirror_unzip": "PASS",
-    "status": "PERSISTENCE PASS / RESCUED",
-    "project_reality_status": "OPEN",
-    "candidate_promotion": false
+  "recovered_chains": {
+    "SP01-R02-GIS": {
+      "status": "PERSISTENCE PASS / RESCUED",
+      "sha256": "68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c",
+      "bytes": 759942,
+      "pap_drive_file_id": "12mafNIOtzzrYzIf2HTkjz4XcDq_xjSMI",
+      "practice_mirror_file_id": "1DMpgFdV_vhdRunRqI3GOBD4rFvNI9DJc",
+      "verification": "dual retrieval SHA PASS + unzip PASS"
+    },
+    "SP03-ARCH-GEN": {
+      "status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION",
+      "source_drive_file_id": "1EeJlcfWb86j2LJVXptoGMv2-FjOTkjqw",
+      "pap_drive_file_id": "10bXZezsLy6njrdENLVaLDAVnQ3Abra4A",
+      "sha256": "e7d8c9d493af5aedd7cad1bcef379807ce8e691846a7ff377c0e025b85e651c1",
+      "bytes": 758952,
+      "verification": "source + PAP retrieval SHA/size PASS; 3DM format identity PASS; semantic Rhino reopen PENDING"
+    },
+    "B04-CROSS-MEDIA": {
+      "status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION",
+      "source_drive_file_id": "11pnHOagOL95zss9c8BwuryV51GJWp7KI",
+      "pap_drive_file_id": "1ZOJ7hPPYWYPFfs44xbpa0YIa6fuGKwV_",
+      "sha256": "b5d388cad2a4916275f2d8a6dc136824b978f3e59d8021356a896dcc8ac99eaa",
+      "bytes": 723993,
+      "verification": "source + PAP retrieval SHA/size/unzip PASS"
+    },
+    "IP03-VISUAL-HIERARCHY": {
+      "status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION",
+      "source_drive_file_id": "1Tewq-5YT4ZMG0tDjkqR9Zz_Llz1a_FE2",
+      "pap_drive_file_id": "1MoJjL-PmeTjHoR4AV36Urm_9fg6zUZpa",
+      "sha256": "b50586e77ee1bb3deddaa2a69d520f9e6e34b867b0434e86c6781460c9eef7e1",
+      "bytes": 845606,
+      "verification": "source + PAP retrieval SHA/size/unzip PASS"
+    }
   },
-  "durable_audit_authority": {
-    "provider": "Google Drive",
-    "folder_id": "1qbIwmGyjmGjiKNrjLZsbOoVvlPNtGgBb",
-    "zip_id": "1oYLWLODfEOlD7bY5fXLRDbk2ym1Dle0E",
-    "zip_sha256_sidecar_id": "1bm1FtZPsAP__1m-sz1AjQXsz2batAC0l",
-    "report_md_id": "16K5fpEaacKKhz0l-hYHDnNNuK4Z1pv7s",
-    "registry_json_id": "10FEah_8T5xkkvF3rfcRbZQJIK_eYxjgQ",
-    "registry_csv_id": "15RqF2xWE12Al-jV7on6FeYGbia3eZMR6",
-    "remediation_queue_id": "1q4tjHODxLCMT7XPfjiadia8mbi_qDHgZ",
-    "audit_zip_sha256": "db9a51dae4346afb522ff92f00f3cc7e1a629d8a1cd8f18b139ba6f9689fc1e7",
-    "independent_redownload_sha_match": true,
-    "unzip_test": "PASS"
+  "path_resolution_rule": {
+    "status": "LOCKED",
+    "rule": "Enumerate every reasonable same-name, migrated and legacy candidate folder and inspect parent lineage plus actual contents before classifying a binary as missing. An empty duplicate folder cannot establish PERSISTENCE FAIL.",
+    "corrected_false_negatives": ["SP03-ARCH-GEN", "B04-CROSS-MEDIA", "IP03-VISUAL-HIERARCHY"]
   },
-  "priority_order": [
-    "P1 current-authority recovery",
-    "P2 historical recovery",
-    "P3 receipt/checksum backfill"
-  ],
-  "authority_boundary": "Persistence status does not automatically revoke historical execution evidence and never upgrades design, engineering, rights, user validation or release status."
+  "sp02_relational_field": {
+    "status": "PERSISTENCE FAIL",
+    "expected_3dm_sha256": "644dd36bbdd8303aa8f0b51ed34e8f00dbfcd0f7a1e9f9a9eae46ee8ea68cc41",
+    "expected_3dm_bytes": 1136022,
+    "known_candidate_folder": "1a0hTLo0tUF8Ey1c7o5vO8sKmblso5tgI",
+    "known_candidate_folder_empty": true,
+    "search_scope": ["exact 3dm name", "two exact ZIP names", "Relational_Field", "Relational-Field", "Digital-Skills/2026", "Legacy mixed-intake"],
+    "substitute_allowed": false
+  },
+  "p1": {
+    "timer_r54_g3_2": "FAIL-CLOSED",
+    "timer_posterlock": "FAIL-CLOSED",
+    "xj01_r02_source": "PERSISTENCE AT RISK / FILE LIBRARY ONLY"
+  },
+  "v1_0_snapshot": {
+    "preserved": true,
+    "note": "The original Drive audit ZIP remains a pre-remediation discovery snapshot and is not silently rewritten."
+  },
+  "local_v1_1_package_sha256": "83917cda1d50a74fbb52e5456743909371226b59d7f0af0f97fea66c226954ce",
+  "priority_order": ["P1 Timer/XJ01", "P2 SP02 Relational Field", "P3 legacy provenance and receipt/checksum backfill"],
+  "authority_boundary": "Persistence recovery never upgrades design, engineering, rights, user validation, field evidence or release/promotion status."
 }
