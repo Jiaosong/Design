@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.pap.path-resolution-recovery-receipt.v1",
+  "date": "2026-08-11",
+  "status": "THREE_FALSE_NEGATIVES_CORRECTED",
+  "hard_rule": "Before PERSISTENCE FAIL, enumerate all same-name/migrated/legacy candidate folders, inspect parent lineage and actual contents, then independently retrieve and verify bytes. Empty duplicate folders cannot establish loss.",
+  "recoveries": [
+    {
+      "chain": "SP03-ARCH-GEN",
+      "asset": "OLEANDER_Architecture_Generation_Protocol_01.3dm",
+      "empty_duplicate_folder_id": "1QUYTwtijoMG_07qiv3dsOr_-eg89SZnm",
+      "populated_folder_id": "1gX7ZSVeanhIUrwbwxOs6u8evM8u2dXnH",
+      "source_file_id": "1EeJlcfWb86j2LJVXptoGMv2-FjOTkjqw",
+      "pap_folder_id": "1cvRykprsexuUY40JErgfTZSEZ1XYibFz",
+      "pap_file_id": "10bXZezsLy6njrdENLVaLDAVnQ3Abra4A",
+      "bytes": 758952,
+      "sha256": "e7d8c9d493af5aedd7cad1bcef379807ce8e691846a7ff377c0e025b85e651c1",
+      "source_retrieval_sha_size": "PASS",
+      "pap_reretrieval_sha_size": "PASS",
+      "format_identity": "Rhino 3DM header PASS",
+      "semantic_rhino_reopen": "PENDING",
+      "persistence_status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION"
+    },
+    {
+      "chain": "B04-CROSS-MEDIA",
+      "asset": "OLEANDER_Cross_Media_Validation_2026-08-06.zip",
+      "empty_duplicate_folder_id": "1urcHNOBqdYYSj93Pkc9qnOhZHVR0YVta",
+      "populated_folder_id": "1PF2e5HMO6GQa6p_h-Je7DBbPe1AkmtBV",
+      "source_file_id": "11pnHOagOL95zss9c8BwuryV51GJWp7KI",
+      "pap_folder_id": "1A8dtbzjiacpObpbimOwll17z6G7RDrfY",
+      "pap_file_id": "1ZOJ7hPPYWYPFfs44xbpa0YIa6fuGKwV_",
+      "bytes": 723993,
+      "sha256": "b5d388cad2a4916275f2d8a6dc136824b978f3e59d8021356a896dcc8ac99eaa",
+      "source_retrieval": "SHA/size/unzip PASS",
+      "pap_reretrieval": "SHA/size/unzip PASS",
+      "persistence_status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION"
+    },
+    {
+      "chain": "IP03-VISUAL-HIERARCHY",
+      "asset": "OLEANDER_Visual_Grid_01_Blocker_Resolution_v0.2_2026-08-07.zip",
+      "populated_folder_id": "1lg6rVBdRzXrxu1Aj7VVpfzvdKxbwKsqo",
+      "source_file_id": "1Tewq-5YT4ZMG0tDjkqR9Zz_Llz1a_FE2",
+      "pap_folder_id": "1IGtrGxFaXDL0WodvfeM_E3T0SwhT3kYU",
+      "pap_file_id": "1MoJjL-PmeTjHoR4AV36Urm_9fg6zUZpa",
+      "bytes": 845606,
+      "sha256": "b50586e77ee1bb3deddaa2a69d520f9e6e34b867b0434e86c6781460c9eef7e1",
+      "package_entries": 23,
+      "source_retrieval": "SHA/size/unzip PASS",
+      "pap_reretrieval": "SHA/size/unzip PASS",
+      "authority_boundary": "Legacy Visual Grid/v0.7-R1 evidence only; no current IP authority upgrade",
+      "persistence_status": "PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION"
+    }
+  ]
+}
