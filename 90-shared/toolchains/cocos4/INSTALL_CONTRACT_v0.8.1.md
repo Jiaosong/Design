@@ -1,4 +1,4 @@
-# OLEANDER COCOS 4 Install Contract v0.8.1
+# OLEANDER COCOS 4 Install Contract v0.8.2
 
 ## Purpose
 
@@ -10,6 +10,7 @@ This contract makes the COCOS 4 + COCOS CLI runtime a repo-wide OLEANDER depende
 - Upstream CLI source is pinned by commit.
 - Upstream engine is managed by the pinned CLI `npm run init` flow and MUST resolve to the pinned COCOS 4 engine commit.
 - Projects keep only source/data/art/audio/config; they do not vendor private engine forks.
+- The command surface is defined by the **actual source at the pinned CLI commit**, not by drifting upstream documentation.
 
 ## Required environment
 
@@ -39,6 +40,10 @@ OLEANDER_COCOS_BIN_DIR="$HOME/.local/bin" \
 
 This allows non-root CI and workstation installs.
 
+## Pinned command boundary
+
+At `OLEANDER_COCOS_CLI_SHA=6f810d60d89f100b5a5d6f1b0cd3518b67b15e5c`, the CLI registers `create`, `build`, `start-mcp-server`, `make`, `run`, `upload` and `preview`. It does not register standalone `import` or `info` commands. OLEANDER therefore MUST NOT expose or require synthetic `import` / `info` gates for this pin.
+
 ## Verification gates
 
 Bootstrap is successful only if all of these pass:
@@ -47,6 +52,8 @@ Bootstrap is successful only if all of these pass:
 2. CLI-managed `packages/engine` checkout equals `OLEANDER_COCOS_ENGINE_SHA`.
 3. `dist/cli.js` exists.
 4. `oleander-cocos doctor` passes.
-5. For a promoted project, official `create`, `import`, `info`, and target `build` must also pass.
+5. For a promoted project, official `create --project ... --type 2d` must succeed against a non-existing destination.
+6. The materializer must verify the generated project metadata and required governed source overlay.
+7. The target `build` must execute and pass for the declared platform.
 
-Do not label a source pack or wrapper-only install as `TOOLCHAIN_INSTALLED`.
+Do not label a source pack or wrapper-only install as `TOOLCHAIN_INSTALLED`. Do not label a materialized source overlay as `WEB_BUILD_SMOKE_PASS` until the target build has actually completed successfully.
