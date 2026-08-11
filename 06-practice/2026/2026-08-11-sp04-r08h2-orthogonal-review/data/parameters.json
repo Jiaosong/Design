@@ -1,0 +1,14 @@
+{
+  "status": "TRAINING-ONLY HYPOTHETICAL PARAMETERS / NOT CODE / NOT MANUFACTURER REQUIREMENT",
+  "parameters": {
+    "corner_first_anchor": 150.0,
+    "head_next_spacing": 450.0,
+    "jamb_next_spacing": 600.0,
+    "structural_edge_distance": 60.0,
+    "anchor_embed": 45.0,
+    "frame_depth": 75.0,
+    "install_joint": 12.0,
+    "insulation_return": 30.0,
+    "thermal_isolation_pad": 20.0
+  }
+}
