@@ -1,0 +1,84 @@
+{
+  "schema": "oleander.xj01.r02-cmf-binding.v1.18",
+  "project": "BAOJIAJIE_XJ01",
+  "surface_authority": "OLEANDER Blender Surface System v1.18.0",
+  "status": "PROJECT_DECISION_MIGRATED__DIGITAL_CMF_ONLY",
+  "legacy_provenance": {
+    "source_pr": 43,
+    "source_surface_version": "v1.15",
+    "render_response_signature": "44a462645344c996872c5d3cf80b73e2d9a448d26d34356e8918fb60951642ac",
+    "authority": "HISTORICAL_CALIBRATION_PROVENANCE_ONLY"
+  },
+  "r02_decisions": {
+    "anchor_lightness": {"id": "A_MID", "hex": "#888C8F", "status": "SELECTED_DIGITAL"},
+    "field_lightness": {"id": "F_MID", "hex": "#AAA59D", "status": "SELECTED_DIGITAL"},
+    "primary_direction": {
+      "name": "Mineral Cool Blue",
+      "chroma_corridor": "C12",
+      "roles": {
+        "MAT_PP_PRIMARY_FIELD": "#92A9BA",
+        "MAT_PP_SECONDARY": "#E4E1D9",
+        "MAT_PP_UI": "#31516A",
+        "MAT_PU_CONTACT": "#65737A",
+        "MAT_IRON_VISIBLE": "#888C8F",
+        "MAT_METAL_HARDWARE": "#777A78"
+      }
+    },
+    "alternate_direction": {
+      "name": "Clean Teal",
+      "chroma_corridor": "C12",
+      "roles": {
+        "MAT_PP_PRIMARY_FIELD": "#8BACAA",
+        "MAT_PP_UI": "#245E60",
+        "MAT_PU_CONTACT": "#617270"
+      }
+    }
+  },
+  "parameter_permissions": {
+    "MAT_PP_PRIMARY_FIELD": {
+      "project_material_fact": "PP",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "representation": "ALLOW_REPRESENTATION_ONLY",
+      "generic_archetype_autobind": "DENY",
+      "finish_texture_process": "BLOCKED_PENDING_PROJECT_EVIDENCE"
+    },
+    "MAT_PP_SECONDARY": {
+      "project_material_fact": "PP",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "representation": "ALLOW_REPRESENTATION_ONLY",
+      "generic_archetype_autobind": "DENY",
+      "finish_texture_process": "BLOCKED_PENDING_PROJECT_EVIDENCE"
+    },
+    "MAT_PP_UI": {
+      "project_material_fact": "PP",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "representation": "ALLOW_REPRESENTATION_ONLY",
+      "generic_archetype_autobind": "DENY",
+      "finish_texture_process": "BLOCKED_PENDING_PROJECT_EVIDENCE"
+    },
+    "MAT_PU_CONTACT": {
+      "project_material_fact": "PU",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "legacy_TPE_PU_archetype": "BLOCKED_DENY",
+      "exact_family_process_finish": "UNKNOWN_PENDING_EVIDENCE"
+    },
+    "MAT_IRON_VISIBLE": {
+      "project_material_fact": "IRON_TUBE",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "generic_powdercoat_archetype": "BLOCKED_DENY",
+      "actual_coating_process_texture": "UNKNOWN_PENDING_EVIDENCE"
+    },
+    "MAT_METAL_HARDWARE": {
+      "project_material_fact": "METAL_HARDWARE",
+      "color_lane": "VISUALIZATION_LOCKED",
+      "finish_process": "UNKNOWN_PENDING_EVIDENCE"
+    }
+  },
+  "local_detail_status": {
+    "D02_ROD_PP_JOINT": "PASS_FOR_DIGITAL_HIERARCHY_ONLY",
+    "D03C_PP_SURFACE_GRAZE_LOW": "READABILITY_HOLD",
+    "D05B_PU_SURFACE_GRAZE": "READABILITY_HOLD",
+    "D04_LOWER_UI_HARDWARE": "ASSEMBLY_READABLE__FINISH_UNKNOWN"
+  },
+  "truth_boundary": "Digital CMF selection and representation continuity only. No measured CMF, process, finish, durability, manufacturing, supplier, user-preference or mass-production claim is created."
+}
