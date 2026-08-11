@@ -14,6 +14,8 @@ This directory remains authored source rather than a checked-in generated COCOS 
 
 ## Current gate
 
-`SOURCE_READY / SHARED_TOOLCHAIN_SMOKE_PASS / WS07A_RUNTIME_SOURCE_MATERIALIZED / VISUALPROTOTYPE_SCENE_MOUNT_PENDING`.
+`SOURCE_READY / SHARED_TOOLCHAIN_SMOKE_PASS / WS07A_RUNTIME_SOURCE_BUILD_PASS / VISUALPROTOTYPE_SCENE_MOUNT_PENDING`.
+
+Evidence for `WS07A_RUNTIME_SOURCE_BUILD_PASS`: PR #49 commit `12bdf2a4921e548db4ca6306aafb76de290d2767`; `AI Governance Evals #92` and `OLEANDER COCOS4 Smoke #25` both succeeded, including WS-07A contract validation, shared bootstrap, `doctor`, C04 materialization, and `web-mobile` build.
 
 `VisualPrototype.scene` must be created/mounted through the official Creator/CLI/MCP asset workflow before this can be called an interactive runtime pass. Do not hand-author project-wide generated metadata to bypass that gate.

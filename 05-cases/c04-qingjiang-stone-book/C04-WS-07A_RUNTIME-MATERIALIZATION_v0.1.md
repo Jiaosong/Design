@@ -1,6 +1,6 @@
 # C04-WS-07A｜Runtime / Visual Reading System Materialization v0.1
 
-Status: `RUNTIME SOURCE MATERIALIZED / BUILD VALIDATION ACTIVE / INTERACTIVE SCENE MOUNT PENDING`
+Status: `RUNTIME SOURCE BUILD PASS / INTERACTIVE SCENE MOUNT PENDING`
 
 Date: 2026-08-11
 
@@ -10,7 +10,7 @@ This workstream materializes the already-approved research-prototype scope from 
 
 It does not authorize field implementation, GPS/AR dependence, PHY-01, real-time operations claims, or 13/13 completion logic.
 
-## 2. Runtime source now materialized
+## 2. Runtime source materialized
 
 A runtime-specific bundle is added under `assets/resources/c04/ws07a/` so COCOS can import the JSON as `JsonAsset` and load it from the built-in `resources` bundle.
 
@@ -24,17 +24,28 @@ New `assets/scripts/ws07a/` modules: `RuntimeTypes.ts`, `RuntimeCatalog.ts`, `Ru
 
 The controller intentionally exposes Creator Inspector references instead of embedding scene UUIDs in source code.
 
-## 4. CI gate
+## 4. CI evidence — PASS
 
-`90-shared/toolchains/cocos4/validate-ws07a-runtime.mjs` fails closed before the expensive COCOS bootstrap when the Core/Companion counts, 13 page IDs, first validation bindings, offline/GPS rules, My Book rules, density targets, or required source files drift.
+Authority commit: `12bdf2a4921e548db4ca6306aafb76de290d2767` on Draft PR #49.
 
-The existing `OLEANDER COCOS4 Smoke` then continues to materialize through the official CLI and run the web-mobile build.
+Validated on GitHub Actions:
+- `AI Governance Evals #92` — SUCCESS.
+- `OLEANDER COCOS4 Smoke #25` — SUCCESS.
+- `Validate C04 WS-07A runtime source` — SUCCESS.
+- shared COCOS4 bootstrap — SUCCESS.
+- `oleander-cocos doctor` — SUCCESS.
+- C04 materialization from authoritative source pack — SUCCESS.
+- `web-mobile` build — SUCCESS.
+
+Therefore the source/build gate advances to `RUNTIME SOURCE BUILD PASS`.
 
 ## 5. What this pass does not claim
 
-The checked-in `OleanderSmoke.scene` remains a build-smoke asset, not the final visual prototype. COCOS scripting behavior becomes interactive only after the component is mounted to scene nodes. Therefore this pass is not yet `LOCAL RUN PASS` or `VISUAL AUDIT PASS`.
+The checked-in `OleanderSmoke.scene` remains a build-smoke asset, not the final visual prototype. COCOS scripting behavior becomes interactive only after the component is mounted to scene nodes. Therefore this pass is not yet `LOCAL RUN PASS`, `VISUAL AUDIT PASS`, or `REPO RUNTIME PASS`.
 
-Next gate: `RUNTIME SOURCE BUILD PASS → official VisualPrototype.scene creation/mount → S0/S1/S2 runtime capture → visual audit → Route/My Book audit → REPO RUNTIME PASS`.
+Next gate: `official VisualPrototype.scene creation/mount → S0/S1/S2 runtime capture → visual audit → Route/My Book audit → REPO RUNTIME PASS`.
+
+The preferred route is the pinned official Creator/CLI/MCP asset API. If that pinned toolchain cannot create/save SceneAsset, Node, Component and serialized references, the gate remains pending; generated Creator metadata must not be hand-authored merely to force a pass.
 
 ## 6. Visual audit targets
 
