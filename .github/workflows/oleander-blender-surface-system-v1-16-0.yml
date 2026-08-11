@@ -95,12 +95,12 @@ jobs:
             2>&1 | tee "$OUT/blender_execution.log"
           python3 -m json.tool "$OUT/workflow_receipt.json" >/dev/null
           python3 - <<'PY'
-          import json
+          import json,re
           from pathlib import Path
           p=Path('out/OLEANDER_Blender_Surface_System_v1.16.0/node_group_manifest.json')
           rows=json.loads(p.read_text())
           names=[r['name'] for r in rows]
-          bad=[n for n in names if n.startswith('OL_SHD_C')]
+          bad=[n for n in names if re.match(r'^OL_SHD_C\d{2}_', n)]
           assert not bad, f'Case-number collision remains in canonical node groups: {bad}'
           expected={
             'OL_SHD_ShapeControl_v1','OL_SHD_RepetitionCells_v1','OL_SHD_WhiteNoiseCell_v1',
