@@ -47,6 +47,10 @@ This preserves the existing controlled render implementation without opening Fin
 
 Housing, Knob and Diffuser may reuse their **project-specific** locked visualization profiles. Generic material archetype numeric values are not inherited.
 
+## CI scope
+
+The v1.18.0 workflow validates governance/binding behavior only. Blender 5.2 Node Group runtime and asset persistence remain inherited from the already verified v1.17.0 layer; no new Blender binary/API behavior is introduced here.
+
 ## Governance boundary
 
 Render implementation ≠ evidence claim. Representation continuity does not establish measured CMF, process, durability, optical, thermal, manufacturing or user truth.
