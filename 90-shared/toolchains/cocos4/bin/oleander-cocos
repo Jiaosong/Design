@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-TOOL_ROOT="${OLEANDER_COCOS_TOOL_ROOT:-/opt/oleander/cocos4}"
+
+TOOL_ROOT="${OLEANDER_COCOS_HOME:-${OLEANDER_COCOS_TOOL_ROOT:-/opt/oleander/cocos4}}"
 ENV_FILE="$TOOL_ROOT/toolchain.env"
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
+TOOL_ROOT="${OLEANDER_COCOS_HOME:-$TOOL_ROOT}"
+
 usage(){ cat <<'TXT'
 OLEANDER COCOS 4 shared gateway
 Usage:
@@ -16,13 +19,22 @@ Usage:
   oleander-cocos raw <cocos-cli arguments...>
 TXT
 }
-cocos_bin(){
-  if command -v cocos >/dev/null 2>&1; then command -v cocos; return 0; fi
-  if [[ -x "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/node_modules/.bin/cocos" ]]; then echo "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/node_modules/.bin/cocos"; return 0; fi
-  if [[ -x "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/dist/cli.js" ]]; then echo "node ${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/dist/cli.js"; return 0; fi
-  return 1
+
+run_cocos(){
+  local pinned_cli="$TOOL_ROOT/cli/dist/cli.js"
+  if [[ -f "$pinned_cli" ]]; then
+    node "$pinned_cli" "$@"
+    return
+  fi
+  if command -v cocos >/dev/null 2>&1; then
+    cocos "$@"
+    return
+  fi
+  echo "ERROR: upstream COCOS CLI is not installed at $TOOL_ROOT/cli." >&2
+  echo "Run the OLEANDER shared bootstrap first." >&2
+  exit 69
 }
-run_cocos(){ local cb; cb="$(cocos_bin)" || { echo "ERROR: upstream COCOS CLI is not installed yet." >&2; echo "Run: $TOOL_ROOT/bootstrap-linux.sh" >&2; exit 69; }; if [[ "$cb" == node\ * ]]; then $cb "$@"; else "$cb" "$@"; fi; }
+
 cmd="${1:-help}"; shift || true
 case "$cmd" in
   help|-h|--help) usage ;;
