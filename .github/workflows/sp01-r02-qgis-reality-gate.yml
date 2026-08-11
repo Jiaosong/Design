@@ -5,7 +5,11 @@ on:
     branches:
       - practice/2026-08-11-sp01-r02-gis-reality-gate
     paths:
-      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/**'
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/training_points.csv'
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/analyze_qgis_outputs.py'
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/build_qgis_project.py'
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/render_qgis_layouts.py'
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/run_qgis_reality_gate.sh'
       - '.github/workflows/sp01-r02-qgis-reality-gate.yml'
   workflow_dispatch:
 
@@ -58,14 +62,27 @@ jobs:
           out = Path('outputs')
           receipt = json.loads((out/'runtime_receipt.json').read_text())
           gate = json.loads((out/'gate_decision.json').read_text())
+          schema = json.loads((out/'vector_schema_gate.json').read_text())
+          layouts = json.loads((out/'qgis_layout_manifest.json').read_text())
           assert receipt['qgis_runtime_gate'] == 'PASS', receipt
           assert gate['runtime_gate'] == 'PASS', gate
           assert gate['project_crs_gate'] == 'OPEN', gate
           assert gate['project_data_gate'] == 'OPEN', gate
           assert gate['project_candidate_promotion'] is False, gate
+          assert schema['weight_field_numeric'] is True, schema
           tifs = list(out.glob('kde_r*_p*.tif'))
           assert len(tifs) == 9, [p.name for p in tifs]
-          print(json.dumps({'qgis_runtime':'PASS','geo_tiffs':9,'project_reality':'OPEN'}, indent=2))
+          assert len(layouts) == 3, layouts
+          assert len({round(x['map_scale'], 6) for x in layouts}) == 1, layouts
+          assert all(x['common_map_extent'] == [-150.0,-150.0,1200.0,1200.0] for x in layouts), layouts
+          print(json.dumps({
+            'qgis_runtime':'PASS',
+            'geo_tiffs':9,
+            'qgis_layouts':3,
+            'numeric_weight':True,
+            'common_map_scale':True,
+            'project_reality':'OPEN'
+          }, indent=2))
           PY
 
       - name: Upload QGIS runtime evidence
