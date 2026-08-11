@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 / Node 24
         with:
           fetch-depth: 1
 
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload F1 CMF lab evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0 / Node 24
         with:
           name: oleander-cmf-comparison-v1-20-f1-${{ github.run_id }}
           path: out/OLEANDER_Blender_Surface_System_v1.20.0/
