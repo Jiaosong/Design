@@ -25,10 +25,42 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '7.0.x'
+
       - name: Restore official McNeel Grasshopper SDK
         run: dotnet restore Sp02NativeDefinitionBuilder.csproj
-      - name: Compile builder
+
+      - name: Compile builder + one-run CP2 runtime closure
         run: dotnet build Sp02NativeDefinitionBuilder.csproj --configuration Release --no-restore
+
+      - name: PowerShell AST syntax review
+        run: |
+          $files=@(
+            'runner/run_native_definition_windows.ps1',
+            'runner/run_cp2_closure_windows.ps1',
+            'validator/validate_cp2_receipts.ps1'
+          )
+          foreach($file in $files) {
+            $tokens=$null; $parseErrors=$null
+            [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file), [ref]$tokens, [ref]$parseErrors) | Out-Null
+            if ($parseErrors.Count -gt 0) {
+              $parseErrors | Format-List *
+              throw "PowerShell AST parse failed: $file"
+            }
+            Write-Host "AST PASS: $file"
+          }
+
+      - name: Assert CP2 validator fails closed without runtime evidence
+        run: |
+          $fixture=Join-Path (Get-Location) '_validator_empty_fixture'
+          New-Item -ItemType Directory -Force -Path $fixture | Out-Null
+          & pwsh -NoProfile -File 'validator/validate_cp2_receipts.ps1' -EvidenceDir $fixture -ExpectedContract '..\contracts\expected_tree_contract.json'
+          $code=$LASTEXITCODE
+          if ($code -ne 2) { throw "Fail-closed validator expected exit 2, got $code" }
+          $j=Get-Content (Join-Path $fixture 'CP2_VALIDATION_RESULT.json') -Raw | ConvertFrom-Json
+          if ($j.CP2 -ne 'OPEN') { throw 'Empty evidence fixture must leave CP2 OPEN.' }
+          if ($j.CP4 -ne 'OPEN') { throw 'Empty evidence fixture must leave CP4 OPEN.' }
+          Write-Host 'Fail-closed validator PASS.'
+
       - name: Record static build receipt
         run: |
           $dll='bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll'
@@ -36,14 +68,17 @@ jobs:
           $sha=(Get-FileHash $dll -Algorithm SHA256).Hash.ToLower()
           New-Item -ItemType Directory -Force -Path build_receipt | Out-Null
           @{
-            gate='ND01'
+            gate='ND01_PLUS_CP2_HANDOFF_STATIC'
             status='PASS'
-            truth='STATIC_COMPILE_ONLY_NOT_GRASSHOPPER_RUNTIME'
+            truth='STATIC_COMPILE_AND_SCRIPT_REVIEW_ONLY_NOT_GRASSHOPPER_RUNTIME'
             sdk='Grasshopper 8.32.26160.13001'
             dll_sha256=$sha
+            powershell_ast='PASS'
+            validator_fail_closed='PASS'
             commit='${{ github.sha }}'
           } | ConvertTo-Json | Set-Content -Encoding UTF8 build_receipt/ND01_BUILD_RECEIPT.json
-      - name: Upload complete static builder handoff
+
+      - name: Upload complete static one-run handoff
         uses: actions/upload-artifact@v4
         with:
           name: sp02-r03-native-definition-builder-static
@@ -52,6 +87,8 @@ jobs:
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/build_receipt/ND01_BUILD_RECEIPT.json
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/Sp02NativeDefinitionBuilder.csproj
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/Sp02NativeDefinitionBuilder.cs
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/Sp02RuntimeClosure.cs
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/runner/
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/validator/
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/contracts/expected_tree_contract.json
           retention-days: 30
