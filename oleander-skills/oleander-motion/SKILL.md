@@ -1,7 +1,7 @@
 ---
 name: oleander-motion
-description: Design, prototype, implement, and review purposeful motion for OLEANDER across brand, interface, product, 3D, spatial, and data contexts. Use whenever a task involves animation, state transitions, motion language, micro-interactions, scroll/gesture motion, Blender animation, procedural motion, animated data, Lottie/Rive, motion accessibility, or motion QA.
-compatibility: Prefer Figma, Blender, browser-native CSS/WAAPI/JavaScript/GSAP/Three.js when available; may use Rive, Lottie, After Effects, Framer, or TouchDesigner only when the real toolchain is available. Unavailable runtime steps stay PENDING.
+description: Design, prototype, implement, and review purposeful motion for OLEANDER across brand, interface, product, 3D, spatial, and data contexts. Use whenever a task involves animation, state transitions, motion language, micro-interactions, scroll/gesture motion, Blender animation, procedural motion, animated data, motion libraries, Lottie/Rive, motion accessibility, or motion QA.
+compatibility: Native-first. Prefer CSS/WAAPI/View Transitions/Scroll-driven Animations when sufficient; route React/UI to Motion, complex timelines/FLIP/scroll to GSAP, expressive SVG to Anime.js, interactive vector state machines to Rive, vector delivery to Lottie, web 3D to Three.js, and dense GPU 2D/shader work to PixiJS. Figma and Blender remain primary authoring/prototyping routes where applicable. Unavailable runtime steps stay PENDING.
 ---
 
 # OLEANDER Motion
@@ -37,12 +37,37 @@ If no role is identifiable, remove the animation.
 
 ## Tool routing
 
-- **Figma:** component states, prototype paths, Smart Animate, quick interaction validation.
+- **Native Web:** CSS transitions/animations, Web Animations API, CSS Scroll-driven Animations and View Transitions are the first check for DOM/view motion.
+- **Motion:** React/UI state, layout/shared-element continuity, gestures and scroll-linked UI.
+- **GSAP:** complex timeline orchestration, ScrollTrigger narratives and Flip/FLIP transitions.
+- **Anime.js:** expressive DOM/SVG work including morphing, line drawing, motion paths, staggering and draggable behavior.
+- **Rive:** interactive vector assets whose behavior belongs in an explicit state machine.
+- **Lottie:** vector animation delivery/playback where the authored motion is primarily packaged as an animation asset rather than a product state machine.
+- **Three.js:** web 3D animation, camera/material/morph motion and controlled post-processing.
+- **PixiJS:** dense GPU 2D scenes, filters, displacement/noise and shader-driven visual systems.
+- **Lenis / Barba:** selective infrastructure only. Lenis is scroll transport/synchronisation; Barba manages page-transition lifecycle and requires a separate animation mechanism. Check native scrolling/View Transitions first.
+- **Figma:** component states, prototype paths, Smart Animate and quick interaction validation.
 - **Blender:** product/spatial/brand 3D motion, camera, Graph Editor, Drivers, Geometry Nodes and simulation.
-- **Web:** CSS Transitions/Animations, WAAPI, JavaScript/GSAP and Three.js for implemented interactive motion.
-- **Rive / Lottie / After Effects / Framer / TouchDesigner:** use only when the actual environment is available and the task benefits from that medium.
+- **After Effects / Framer / TouchDesigner and other specialist tools:** use only when the actual environment is available and the task benefits from that medium.
 
-Do not claim execution in unavailable software. A storyboard, timeline specification, or code draft is `DESIGNED / NOT RUN` until executed in a real runtime.
+Do not claim execution in unavailable software. A storyboard, timeline specification, effect reference, or code draft is `DESIGNED / NOT RUN` until executed in a real runtime.
+
+## Library and effect selection gate
+
+Read `MOTION_LIBRARY_EFFECT_ATLAS.md` before introducing a new animation dependency or reference effect.
+
+Use this order:
+
+`State / Information Change → Structural Effect → Native Capability Check → Library → Reduced Motion → Runtime Cost → AR-S10 → Keep / Remove`
+
+Do **not** use:
+`Library → Cool Effect → Find a place to use it`.
+
+Prefer reusable structural mechanisms such as shared-element/FLIP continuity, mask/clip reveal, SVG path trace, topology-safe morph, structured stagger, scroll progress, explode/assemble, temporal light/material parameters, data reorder/time interpolation and view transitions.
+
+Treat aurora/glow trails, infinite floating, generic logo reveals, heavy cursor followers, excessive magnetic motion, scroll-jacking, gratuitous glitch/displacement, full-screen zoom transitions and similar showcase effects as `AVOID BY DEFAULT` unless a concrete state/relationship justifies them.
+
+Component/effect libraries and galleries are mechanism references only. Strip their visual identity before any OLEANDER use.
 
 ## Required practice loop
 
@@ -52,6 +77,7 @@ For a formal motion exercise, produce the same state change as:
 
 Record:
 - tool and version;
+- library/runtime and version when applicable;
 - device/canvas/browser and refresh conditions;
 - state diagram and trigger;
 - key durations/curves or physics parameters;
@@ -76,6 +102,8 @@ Check separately:
 - actual frame rate, jank, input latency and first-load blocking;
 - Reduced Motion information equivalence;
 - cross-device/browser/refresh-rate behavior;
+- dependency/bundle/GPU cost when a library or shader is introduced;
+- native scrolling, keyboard, focus and pointer behavior after motion infrastructure is added;
 - source ↔ export consistency;
 - reopen and reproduction.
 
@@ -86,9 +114,10 @@ Hard FAIL:
 - sustained jank changes the task relationship;
 - a loop cannot be exited;
 - motion occludes required content;
+- a scroll or cursor layer breaks expected native control without a justified fallback;
 - export behavior materially differs from the reviewed source.
 
-A screen recording, video render, or automated PASS is not a substitute for target-runtime review.
+A screen recording, video render, vendor demo, component gallery, or automated PASS is not a substitute for target-runtime review.
 
 ## OLEANDER project applications
 
