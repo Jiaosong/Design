@@ -1,0 +1,8 @@
+{
+  "schema": "oleander.external-reference-register.deprecated.v1",
+  "version": "v1.19.0",
+  "status": "DEPRECATED_FROM_DESIGNER_GATE",
+  "policy": "Supplier / grade / TDS / manufacturer-reference acquisition is not required for OLEANDER Blender Surface System designer work. This file is retained only as an audit trace of a superseded scope direction.",
+  "active_references": [],
+  "designer_rule": "Use reasonable estimated values, realistic visual process simulation, scale-aware QA and explicit non-physical semantics."
+}
