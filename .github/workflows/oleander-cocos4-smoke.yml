@@ -34,6 +34,20 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 22.17.0
+      - name: Prepare WS-07A evidence directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          {
+            echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "node=$(node --version)"
+            echo "npm=$(npm --version)"
+            echo "git=$(git --version)"
+            echo "runner_os=${RUNNER_OS:-unknown}"
+            echo "runner_arch=${RUNNER_ARCH:-unknown}"
+          } > "$OUT/environment.txt"
       - name: Validate C04 WS-07A runtime source
         shell: bash
         run: |
@@ -47,8 +61,18 @@ jobs:
           OLEANDER_COCOS_BIN_DIR: ${{ runner.temp }}/oleander-bin
           OLEANDER_COCOS_PROJECT_ROOT: ${{ runner.temp }}/oleander-projects
         run: |
-          set -euo pipefail
-          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          set +e
+          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh 2>&1 | tee "$OUT/bootstrap.log"
+          status=${PIPESTATUS[0]}
+          set -e
+          printf 'bootstrap_exit_code=%s\n' "$status" > "$OUT/bootstrap-status.txt"
+          if [[ "$status" -ne 0 ]]; then
+            echo "ERROR: OLEANDER COCOS bootstrap failed; persisted diagnostics to $OUT/bootstrap.log" >&2
+            exit "$status"
+          fi
           echo "OLEANDER_COCOS_HOME=$OLEANDER_COCOS_HOME" >> "$GITHUB_ENV"
           echo "OLEANDER_COCOS_BIN_DIR=$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_ENV"
           echo "$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_PATH"
@@ -70,9 +94,11 @@ jobs:
         run: |
           set -euo pipefail
           DEST="$RUNNER_TEMP/c04-cocos4"
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
           bash 90-shared/toolchains/cocos4/materialize-ws07a-scene.sh "$DEST"
           test -f "$DEST/assets/scenes/VisualPrototype.scene"
           test -f "$DEST/temp/oleander-ws07a-scene-proof.json"
+          cp "$DEST/temp/oleander-ws07a-scene-proof.json" "$OUT/"
           rm -f "$DEST/assets/scenes/OleanderSmoke.scene" "$DEST/assets/scenes/OleanderSmoke.scene.meta"
       - name: Web-mobile VisualPrototype build
         shell: bash
@@ -92,7 +118,7 @@ jobs:
           DEST="$RUNNER_TEMP/c04-cocos4"
           OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
           mkdir -p "$OUT"
-          cp "$DEST/temp/oleander-ws07a-scene-proof.json" "$OUT/"
+          test -f "$OUT/oleander-ws07a-scene-proof.json"
           BUILD_INDEX="$(find "$DEST/build" -type f -name index.html -print | sort | head -n 1)"
           test -n "$BUILD_INDEX"
           BUILD_ROOT="$(dirname "$BUILD_INDEX")"
@@ -103,7 +129,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: c04-ws07a-runtime-capture-${{ github.run_number }}
+          name: c04-ws07a-runtime-capture-${{ github.run_number }}-attempt-${{ github.run_attempt }}
           path: ${{ runner.temp }}/c04-ws07a-runtime-capture
           if-no-files-found: error
           retention-days: 14
