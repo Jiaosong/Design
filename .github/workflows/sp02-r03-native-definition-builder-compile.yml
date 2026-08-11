@@ -60,6 +60,7 @@ jobs:
           if ($j.CP2 -ne 'OPEN') { throw 'Empty evidence fixture must leave CP2 OPEN.' }
           if ($j.CP4 -ne 'OPEN') { throw 'Empty evidence fixture must leave CP4 OPEN.' }
           Write-Host 'Fail-closed validator PASS.'
+          exit 0
 
       - name: Record static build receipt
         run: |
