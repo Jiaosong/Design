@@ -5,8 +5,12 @@ on:
     branches:
       - practice/2026-08-11-sp03-r02-light-performance-interface
     paths:
-      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/**'
-      - '.github/workflows/sp03-r02-radiance-performance-interface.yml'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/input_contract.json'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/generate_scene.py'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/convert_rtrace.py'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/parse_evalglare.py'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/analyze_results.py'
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/run_radiance_gate.sh'
   workflow_dispatch:
 
 permissions:
@@ -51,7 +55,6 @@ jobs:
 
           echo "pyradiance_version=$("$HOME/pyradiance-venv/bin/python" -c 'import pyradiance; print(pyradiance.__version__)')"
           echo "PYRAD_BIN=$PYRAD_BIN"
-          find "$PYRAD_ROOT" -maxdepth 2 -type d -print | sort
           for exe in oconv rtrace rpict gensky evalglare; do
             test -x "$PYRAD_BIN/$exe"
             "$PYRAD_BIN/$exe" -version 2>&1 | head -n 2 || true
