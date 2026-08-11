@@ -3,20 +3,20 @@
 - Status: ACTIVE reusable protocol / internally exercised / not a project validation result
 - Canonical method body: Notion `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
 - Method index: `MTH-AI-OLEANDER-001`
-- Updated: 2026-08-07
+- Updated: 2026-08-11
 
 > This file is a lightweight execution contract. It does not duplicate the full Canonical method narrative in Notion.
 
-## P0 governance prerequisite
+## AIG-01 governance prerequisite
 
-Before entering the design reasoning loop, apply `90-shared/OLEANDER_AI_Governance_P0_v0.1.md`:
+Before entering the design reasoning loop, apply `90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md`:
 
 1. AI Necessity Gate — decide whether AI should be used at all.
 2. AI Eval Harness — reusable skills/prompts/models must have task-specific Golden Cases.
 3. Retrieval & Context QA — canonical, legacy, conflicting and unknown sources must be separated.
 4. AI Change / Regression Gate — model/prompt/skill/tool/retrieval changes require baseline comparison and rollback.
 
-P0 gates are human-governed. AI cannot approve its own promotion.
+AIG-01 gates are human-governed. AI cannot approve its own promotion.
 
 ## Core loop
 `Read → Frame → Hypothesize → Vary → Construct → Attack → Test → Decide → Archive`
@@ -93,6 +93,8 @@ AI does **not** independently close bodily experience, real material appearance,
 - Notion `01B` remains the Canonical full method source.
 - The Notion METHOD card is an index/pointer only.
 - This GitHub file is the reusable lightweight execution contract.
-- `90-shared/OLEANDER_AI_Governance_P0_v0.1.md` governs whether AI may be used and whether a changed AI configuration may be promoted.
+- `90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md` governs whether AI may be used and whether a changed AI configuration may be promoted.
+- `90-shared/OLEANDER_AIG-02_Failure_Trust_Provenance_v0.1.md` governs runtime failure, trust calibration and provenance.
+- `90-shared/OLEANDER_AIG-03_Runtime_Evidence_v0.1.md` governs real runtime evidence measurement.
 - `evals/` stores Golden Cases, retrieval QA and change/regression templates.
 - Real project evidence and dynamic decisions remain in Notion/project records; Drive stores actual files.
