@@ -93,6 +93,17 @@ See `FINAL_ARTIFACT_REVIEW.md` and `evidence_snapshot.json`.
 
 Before a light-role strategy is called robust, test at least one diffuse condition and opposed directional conditions. If directional conditions invert the intended hierarchy, revise aperture distribution, orientation, controls/shading, or the role target itself instead of hiding the failure in a preferred rendering.
 
+## Release / Archive
+- Curated final package: `OLEANDER_SP03_R02_Light_Performance_Interface_FINAL.zip`
+  - bytes: `4004035`
+  - SHA256: `4ff692b1aebe87e06e5c3234867775d4440335afed9c973cae125f0c4dcf86a8`
+  - 115 manifest entries; ZIP CRC PASS; manifest SHA256 PASS.
+- Google Drive R02 folder ID: `1v6IDcV7TdInCiv5kZghSYp9row7Bdwpu`
+- Drive curated package file ID: `10-Zb1Kxv_9IBRgVX_yQiIV1GpVb8OUrV`
+- Drive raw run #6 evidence file ID: `1n84HInZlGe6DrLJQd3Nkw0ccg6QsUZXx`
+- Drive final review document ID: `1ryhotCGnMudpXKN_3OdbvaR0vzeYUKuKGup47xu69No`
+- Drive folder and review document were read back after write.
+
 ## Truth boundaries / Reopen conditions
 Still OPEN until a real project provides:
 - real geometry/orientation;
