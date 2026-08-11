@@ -1,0 +1,19 @@
+{
+  "system": "OLEANDER Artifact Review System v1.0",
+  "common_gates": ["AR-G01","AR-G02","AR-G03","AR-G04","AR-G05","AR-G06","AR-G07","AR-G08","AR-G09","AR-G10"],
+  "specific_gates": {
+    "AR-S01": "Drawing",
+    "AR-S02": "Model",
+    "AR-S03": "Data",
+    "AR-S04": "Code / Parametric",
+    "AR-S05": "GIS",
+    "AR-S06": "Visual / CMF",
+    "AR-S07": "Documentation",
+    "AR-S08": "Presentation",
+    "AR-S09": "Release Package"
+  },
+  "ar_g10_independent_checks": ["visual_hierarchy","boundary","occlusion","clearance","geometry_dimension","scale_proportion","view_appropriateness","cross_view_consistency","construction_functional_logic","evidence_pending","export_reproduction"],
+  "hard_fail": ["critical_occlusion","scale_error","geometry_dimension_mismatch","wrong_view","cross_view_conflict","construction_or_functional_logic_error","false_evidence_claim","artifact_cannot_open"],
+  "release_rule": "PACKAGE RELEASE PASS requires Common PASS + all triggered Specific PASS + AR-S09 PASS",
+  "historical_rule": "Not rerun under v1.0 => LEGACY REVIEW RESULT"
+}
