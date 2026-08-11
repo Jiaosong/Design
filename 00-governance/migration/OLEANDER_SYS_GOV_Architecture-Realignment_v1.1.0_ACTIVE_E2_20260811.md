@@ -36,24 +36,37 @@ The former AI-governance labels `P0 / P1 / P2` collided with the current project
 
 Historical runtime IDs such as `P2-E011`, `P2-E012`, `P2-E013` are **not renumbered** because they are evidence identities. New events use `AIG3-E...`.
 
+Additional collision repair inside the AI method:
+- roadmap priority `P0 / P1 / P2` → `PRI-0 / PRI-1 / PRI-2`;
+- product-stage gates `P1…P5` → `PROD-G1…PROD-G5`;
+- project-axis `P0…P4` therefore remains unambiguous.
+
 ## 4｜GitHub current-authority changes
-Current contracts created:
+Current contracts created / renamed with history continuity:
 - `90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md`
 - `90-shared/OLEANDER_AIG-02_Failure_Trust_Provenance_v0.1.md`
 - `90-shared/OLEANDER_AIG-03_Runtime_Evidence_v0.1.md`
 
-Former current files removed from `90-shared` on the migration branch:
+Former current paths removed from `90-shared`:
 - `OLEANDER_AI_Governance_P0_v0.1.md`
 - `OLEANDER_AI_Governance_P1_v0.1.md`
 - `OLEANDER_AI_Runtime_Evidence_P2_v0.1.md`
 
-Execution layer aligned:
+Execution and routing layer aligned:
 - `evals/scripts/validate_evals.py`
 - `.github/workflows/ai-governance-evals.yml`
 - `evals/retrieval/golden_queries.jsonl`
 - `evals/runtime/RUNTIME_EVENT_TEMPLATE.json`
 - `evals/runtime/BASELINE_2026-08-10.md`
+- `evals/runtime/compute_metrics.py`
 - `90-shared/README.md`
+- `90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md`
+- `oleander-skills/REVIEW.md`
+
+A machine guard was added:
+- `00-governance/schemas/validate_architecture_namespaces.py`
+
+It checks only **current routing / template / CI authority**, not historical runtime rows or migration logs. Therefore historical IDs remain valid while any reintroduction of old AI `P0/P1/P2` current routing fails CI.
 
 Historical event rows and evidence URLs were not rewritten.
 
@@ -73,11 +86,18 @@ Runtime database renamed in place:
 
 Existing `P2-*` event IDs remain historical evidence IDs. New records use `AIG3-*`.
 
+The main AI method page was namespace-cleaned without rewriting history:
+- AI roadmap priorities use `PRI-0 / PRI-1 / PRI-2`;
+- Product stage gates use `PROD-G1…PROD-G5`;
+- current AI governance entry uses `AIG-01 / AIG-02 / AIG-03`.
+
 `04C｜Media Assets & Rights` current first-reading asset groups were changed from CASE/GD/DY/LC labels to C01/C02/C03; historical linked source pages remain available as provenance.
 
 ## 6｜Authority boundaries after migration
 - `P0–P4` = project axis only.
 - `AIG-01–03` = AI governance only.
+- `PRI-0–2` = AI roadmap priority only.
+- `PROD-G1–G5` = product method gates only.
 - `C01+` = case roots only.
 - `CLM-*` = claim IDs only.
 - `IP-*` = IP asset IDs only.
@@ -103,7 +123,8 @@ This record also does not upgrade any evidence status, project stage, rights sta
 Architecture realignment is complete only when:
 1. current AI governance retrieval resolves to AIG-01/02/03;
 2. current templates generate AIG3 event IDs, not new P2-E IDs;
-3. the governance CI validates the new contracts;
+3. the governance CI validates the AIG contracts and architecture namespace guard;
 4. former P0/P1/P2 AI files are absent from current `90-shared` authority;
-5. historical IDs remain traceable;
-6. no project-axis P0/P1/P2 object is confused with AI governance.
+5. AI reasoning, reusable-skill routing and runtime metric output use current AIG names;
+6. historical IDs remain traceable;
+7. no project-axis P0/P1/P2 object is confused with AI governance.
