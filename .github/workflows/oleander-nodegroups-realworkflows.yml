@@ -21,9 +21,8 @@ jobs:
       - name: Reconstruct reviewed Blender builder
         run: |
           set -euo pipefail
-          cat tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64.part1 \
-              tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64.part2 \
-              | base64 -d | gzip -d > /tmp/build_nodegroups_and_workflows.py
+          base64 -d tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64 \
+            | gzip -d > /tmp/build_nodegroups_and_workflows.py
           python3 -m py_compile /tmp/build_nodegroups_and_workflows.py
 
       - name: Install Blender 5.2.0 LTS
