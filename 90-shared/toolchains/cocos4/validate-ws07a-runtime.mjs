@@ -16,6 +16,7 @@ const toolchainFiles = [
   path.join(repo, '90-shared/toolchains/cocos4/materialize-ws07a-scene.mjs'),
   path.join(repo, '90-shared/toolchains/cocos4/materialize-ws07a-scene.sh'),
   path.join(repo, '90-shared/toolchains/cocos4/capture-ws07a-runtime.mjs'),
+  path.join(repo, '90-shared/toolchains/cocos4/audit-ws07a-responsive-layout.mjs'),
 ];
 function fail(message) { console.error(`ERROR: WS-07A runtime contract failed: ${message}`); process.exit(65); }
 for (const file of [manifestPath, tokensPath, sceneContractPath, ...requiredScripts, ...toolchainFiles]) if (!fs.existsSync(file)) fail(`missing ${path.relative(repo, file)}`);
@@ -96,6 +97,13 @@ for (const required of ['1080x1920', '390x844', '844x390', 'RUNTIME_CAPTURE_PASS
 if (!capture.includes('Page.captureScreenshot')) fail('capture contract must persist browser screenshots');
 if (!capture.includes('Runtime.exceptionThrown')) fail('capture contract must record browser runtime exceptions');
 
-console.log('PASS: WS-07A runtime + official scene + WS-07A.1 correction + browser capture contract');
+const responsiveAudit = fs.readFileSync(toolchainFiles[3], 'utf8');
+for (const required of ['RESPONSIVE_INTERACTION_LAYOUT_PASS', 'INTERACTIVE_TOUCH_TARGET_LT_44PX', 'LANDSCAPE_REVEAL_READING_OVERLAY_VISIBLE']) {
+  if (!responsiveAudit.includes(required)) fail(`responsive audit contract missing ${required}`);
+}
+if (!responsiveAudit.includes('MIN_TOUCH_PX = 44')) fail('responsive audit must preserve 44px minimum touch target');
+if (!responsiveAudit.includes('Raw Label/UITransform AABB')) fail('responsive audit must preserve non-gating Label AABB diagnostic boundary');
+
+console.log('PASS: WS-07A runtime + official scene + WS-07A.1 correction + browser capture + responsive interaction audit contract');
 console.log(`  Core=${manifest.corePages.length} Companion=${manifest.companionPages.length} Screens=${manifest.prototypeScreens.length} SceneNodes=${scenePaths.length}`);
-console.log('  Route=offline-first / MyBook=partial-is-complete / ResponsiveCorrection=declared+ordered / RuntimeCapture=CDP');
+console.log('  Route=offline-first / MyBook=partial-is-complete / ResponsiveCorrection=declared+ordered / TouchTarget>=44px / RuntimeCapture=CDP');
