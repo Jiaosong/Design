@@ -1,69 +1,74 @@
-# OLEANDER｜SP02-R03 v1.3｜Multi-Provider Runtime Closure
+# OLEANDER｜SP02-R03 v1.4｜One-Run CP2 Closure
 
-**Handoff Artifact：POST-REVIEW PASS**  
-**SP02 Runtime：ACTIVE / RUNTIME GATE OPEN**
+**Handoff Artifact：POST-REVIEW PASS / STATIC HANDOFF VERIFIED**  
+**Real Rhino Runtime：NOT EXECUTED**  
+**SP02：ACTIVE / RUNTIME GATE OPEN**  
+**CP2：OPEN**  
+**CP4：OPEN**
 
-## Solve Gate Decomposition
+## Current architecture
 `SG00 Authority → SG01 Native Definition → SG02 Solve Request → SG03 Solve Completion → SG04 Tree Extraction → SG05 Contract Match → SG06 Adverse Visibility → SG07 Repeatability`
 
 - `CP2-CORE = SG00—SG03`
 - `CP2-DATA = SG04—SG06`
 - `CP2-REPRO = SG07`
-- `CP2 = SG00—SG07`
+- `CP2 = SG00—SG07 all PASS`
 - `CP4` remains a separate real GUI provenance gate.
 
-## v1.3｜SG01 Native Definition Closure
-SG01 is further decomposed:
+## What v1.4 changes
+v1.3 proved the native-definition boundary:
+- ND00 SDK metadata PASS;
+- ND01 SDK-typed Builder compile PASS;
+- hosted managed SDK cannot instantiate `GH_Document` without Rhino native `rhcommon_c`.
 
-- `ND00｜SDK Metadata` → **PASS**
-- `ND01｜Builder Compile` → **PASS**
-- `ND02｜Native Serialize` → **OPEN**
-- `ND03｜Native Reload` → **BLOCKED BY ND02**
-- `ND04｜Identity Audit` → **BLOCKED BY ND03**
-- `SG01` → **OPEN**
+v1.4 therefore stops trying to close SG01 separately. A single real Rhino 8 process now targets **SG00—SG07 / CP2** in one execution.
 
-### ND00
-Official McNeel Grasshopper `8.32.26160.13001` PE/IL metadata was inspected without pretending to load Rhino runtime. It confirmed:
+The real process will:
+1. require `RhinoApp.IsLicenseValidated = true` for SG00;
+2. programmatically build the native GHX;
+3. `GH_DocumentIO.SaveQuiet()` + immediate `Open()` + SHA256/identity audit for SG01;
+4. observe `SolutionStart` and call `GH_Document.NewSolution(true, GH_SolutionMode.Silent)` for SG02;
+5. observe `SolutionEnd`, collect runtime Error messages and output fingerprint for SG03;
+6. extract BASE / GRAFT / FLATTEN / TRANSPOSE / ADVERSE from real `VolatileData` for SG04;
+7. compare nominal states to the frozen tree contract for SG05;
+8. verify adverse `[4,4,4,4,4,3] / 23 items` remains visible for SG06;
+9. solve the same native definition again and compare structural signatures for SG07.
 
-- `Param_Number`
-- `GH_ParamViewer`
-- `GH_PathMapper`
-- `GH_PathMapper.Lexers`
-- `GH_LexerCombo(string,string)`
-- `IGH_Param.DataMapping`
-- `GH_DocumentIO.SaveQuiet / Open`
+If all eight microgates pass:
+`CP2 = PASS / CP4 = OPEN`.
 
-This rejected the earlier assumption that Path Mapper should be treated as an ordinary `IGH_Component`.
+CP4 is intentionally not bundled into CP2. It still requires readable real Parameter Viewer / Grasshopper canvas provenance and final visual review.
 
-### ND01
-The SDK-typed native builder now compiles successfully. It builds the intended Base/Graft/Flatten/Path Mapper/Adverse structure and five Param Viewers. Final static handoff compile:
+## Final static handoff verification
+GitHub Actions run `31464984533` / job `93695924498`:
+- C# Builder + `Sp02RuntimeClosure.cs` compile：PASS
+- PowerShell AST syntax review：PASS
+- empty-evidence fail-closed validator：PASS
+- static handoff artifact upload：PASS
 
-- run `31463559829`
-- artifact `9090687106`
-- artifact digest `sha256:90faa650c416be27a0bb5a9f0c66dd28b3c6b708249e8537bb3eb7364d69c28c`
-- builder DLL SHA256 `4adc6b62632e9cdde8272f2b33fdda3c744d086928bfdc0c7dd06e46ba312925`
+Static artifact:
+- ID `9091185183`
+- digest `sha256:338a43f4c69f8999c179bef19baf1fdcfd860524f6ac8202fade002509265cd0`
+- head `e64e3b66580dd76aa8e5c114e361d116f6c65c44`
 
-ND01 means **STATIC_COMPILE_ONLY_NOT_GRASSHOPPER_RUNTIME**.
+This remains **static handoff evidence only**.
 
-## Hosted SDK runtime boundary
-A GitHub-hosted Windows experiment compiled the Builder and harness and hydrated the managed McNeel SDK assemblies. Actual execution reached `new GH_Document()` and then failed on Rhino native `rhcommon_c`.
+## One-click execution
+A portable kit is provided in the release package:
 
-Decision: this is accepted as boundary evidence. We stop trying to hydrate managed DLLs because that would imitate Rhino rather than execute Rhino. The historical hosted workflow is now manual-only and is not a supported SG01 closure route.
+`ONE_CLICK_CP2/RUN_CP2.cmd`
 
-## Exact remaining SG01 operation
-Run once on a real Rhino 8 native runtime:
+Prerequisite: a Windows machine with installed and activated Rhino 8.
+No manual Grasshopper definition construction is required.
 
-`Builder DLL → GH_Document → GH_DocumentIO.SaveQuiet(SP02_R03_native.ghx) → GH_DocumentIO.Open(same GHX) → SHA256 + five sinks + five Param Viewers identity audit`
+## Release-review correction
+The first portable kit inherited the repository-relative expected-contract path. That revision was rejected during release review. The final portable runner explicitly passes:
 
-Prepared paths:
-- `native_definition/runner/run_native_definition_windows.ps1`
-- `native_definition/runner/run_builder_in_rhino.py`
-- `native_definition/validator/validate_sg01_definition_receipt.py`
-- `.github/workflows/sp02-r03-native-definition-real-rhino.yml`
+`ONE_CLICK_CP2/contract/expected_tree_contract.json`
 
-The real-Rhino workflow intentionally requires `[self-hosted, Windows, X64, rhino8]` for ND02—ND04.
+to the validator.
 
 ## Current truth
-`ND00 PASS / ND01 PASS / ND02 OPEN / ND03 BLOCKED / ND04 BLOCKED / SG00 OPEN / SG01 OPEN / CP2 OPEN / CP4 OPEN`
+`STATIC HANDOFF PASS / REAL RHINO NOT EXECUTED / SG00—SG07 OPEN / CP2 OPEN / CP4 OPEN`
 
-See `docs/SG01_NATIVE_DEFINITION_CLOSEOUT_v1.3.md` for evidence IDs, rejected shortcuts and review state.
+See `docs/SP02_R03_v1.4_ONE_RUN_CP2_CLOSEOUT.md` and `data/sp02_r03_v1.4_status.json`.
