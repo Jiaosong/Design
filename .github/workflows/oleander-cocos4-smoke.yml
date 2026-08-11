@@ -32,10 +32,18 @@ jobs:
         with:
           node-version: 22.17.0
 
+      - name: Configure authenticated GitHub fetches
+        shell: bash
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config --global url."https://x-access-token:${GH_READ_TOKEN}@github.com/".insteadOf "https://github.com/"
+
       - name: Install COCOS CLI from pinned source
         shell: bash
         run: |
-          set -euxo pipefail
+          set -euo pipefail
           git clone https://github.com/cocos/cocos-cli.git "$RUNNER_TEMP/cocos-cli"
           git -C "$RUNNER_TEMP/cocos-cli" checkout --detach 6f810d60d89f100b5a5d6f1b0cd3518b67b15e5c
           cd "$RUNNER_TEMP/cocos-cli"
@@ -50,7 +58,7 @@ jobs:
       - name: Materialize C04 from authoritative source pack
         shell: bash
         run: |
-          set -euxo pipefail
+          set -euo pipefail
           DEST="$RUNNER_TEMP/c04-cocos4"
           cocos create --project "$DEST" --type 2d
           cp -R 05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/assets/. "$DEST/assets/"
@@ -60,5 +68,5 @@ jobs:
       - name: Web-mobile smoke build
         shell: bash
         run: |
-          set -euxo pipefail
+          set -euo pipefail
           cocos build --project "$RUNNER_TEMP/c04-cocos4" --platform web-mobile --debug
