@@ -18,11 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
-      - name: Reconstruct Blender builder
+      - name: Reconstruct reviewed Blender builder
         run: |
           set -euo pipefail
-          cat tools/oleander-nodegroups/build_nodegroups_and_workflows.py.gz.b64.part1 \
-              tools/oleander-nodegroups/build_nodegroups_and_workflows.py.gz.b64.part2 \
+          cat tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64.part1 \
+              tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64.part2 \
               | base64 -d | gzip -d > /tmp/build_nodegroups_and_workflows.py
           python3 -m py_compile /tmp/build_nodegroups_and_workflows.py
 
@@ -39,7 +39,7 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version
 
-      - name: Build parameterized node groups and render workflows
+      - name: Build parameterized node groups and render reviewed workflows
         run: |
           set -euo pipefail
           mkdir -p "$GITHUB_WORKSPACE/out"
@@ -51,11 +51,11 @@ jobs:
           python3 -m json.tool "$GITHUB_WORKSPACE/out/workflow_receipt.json" >/dev/null
           find "$GITHUB_WORKSPACE/out" -maxdepth 2 -type f -printf '%p %s bytes\n' | sort
 
-      - name: Upload node-group library and workflow evidence
+      - name: Upload reviewed node-group library and workflow evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: oleander-nodegroups-realworkflows-${{ github.run_id }}
+          name: oleander-nodegroups-realworkflows-review2-${{ github.run_id }}
           path: out/
           if-no-files-found: error
           retention-days: 14
