@@ -1,7 +1,10 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "scene": {"baseName":"VisualPrototype","dbURL":"db://assets/scenes","templateType":"2d"},
   "controller": {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/VisualPrototypeController.ts","className":"C04WS07AVisualPrototypeController"},
+  "corrections": [
+    {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/ResponsiveVisualLayoutCorrection.ts","className":"C04WS07AResponsiveVisualLayoutCorrection","gate":"WS-07A.1"}
+  ],
   "nodes": [
     {"path":"Canvas/PrototypeNav","type":"Empty"},
     {"path":"Canvas/PrototypeNav/NavS0","type":"Button","position":{"x":-480,"y":-300,"z":0}},
