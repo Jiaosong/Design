@@ -1,51 +1,24 @@
-# OLEANDER｜SP02-R03｜Runtime Closure Handoff
+# OLEANDER｜SP02-R03 v1.1｜Multi-Provider Runtime Closure
 
-**Current status: RUNTIME HANDOFF READY / REAL RHINO-GRASSHOPPER NOT EXECUTED**
+**Handoff Artifact：POST-REVIEW PASS**  
+**SP02 Runtime：ACTIVE / RUNTIME GATE OPEN**  
+**CP2：OPEN｜CP4：OPEN**
 
-本包不是 Rerun 03 的离线替代品，而是 SP02 的最后一个真实运行交接层。当前环境没有 Rhino 8，因此 CP2 / CP4 仍 OPEN。
+本版修正 v1.0 过度绑定 self-hosted Windows 的问题。R03 现在是 provider-neutral closure architecture。
 
-## Why this package exists
-SP02-R01/R02 已经把离线 Data Tree contract 做到足够成熟；继续增加 Python 图表没有项目价值。R03 只解决：
+## Provider families
+- P01 Windows Rhino 8 GUI → CP2 + CP4 capable
+- P02 macOS Rhino 8 GUI → CP2 + CP4 capable
+- P03 Human Authority GUI → CP2 + CP4 capable
+- P04 Cloud Windows VM → CP2；CP4 取决于 GUI evidence
+- P05 Rhino.Compute headless → **CP2 capable / CP4 cannot close alone**
+- P06 GrasshopperPlayer desktop → CP2 capable；CP4 需 GUI supplement
+- P07 Future provider → 必须先实现 adapter + authority proof
 
-1. 真实 Rhino 8 + Grasshopper 是否实际 solve；
-2. Base / Graft / Flatten / Graft→Path Mapper 是否与离线合同一致；
-3. Parameter Viewer 是否能在真实组件图中证明 path provenance；
-4. adverse case 是否被真实 Grasshopper 暴露而不是被 Flatten 隐藏。
+## Shared closure chain
+`Provider → provider_receipt → tree_runtime → component inventory / GUI evidence → provider-neutral validator → CP2/CP4 → Final Artifact Review`
 
-## Execute
-### Windows
-`runner/run_windows.ps1 -GhFile C:\path\SP02_R03.gh`
+## Current truth
+本包仍未执行真实 Rhino/Grasshopper，因此不会把 v1.1 架构改写成 Runtime PASS。它只关闭“必须依赖某一台 Windows self-hosted runner”的错误假设。
 
-### macOS
-`runner/run_macos.sh /path/SP02_R03.gh`
-
-两者都要求本机已安装并能正常授权 Rhino 8。
-
-## Required definition nicknames
-Data sinks:
-- SP02_BASE
-- SP02_GRAFT
-- SP02_FLATTEN
-- SP02_TRANSPOSE
-- SP02_ADVERSE_TRANSPOSE
-
-Parameter Viewers:
-- PV_BASE
-- PV_GRAFT
-- PV_FLATTEN
-- PV_TRANSPOSE
-- PV_ADVERSE
-
-## Truth rules
-- 公共 compute preflight ≠ runtime。
-- Rhino3dm ≠ Grasshopper solve。
-- `.ghx` 文件存在 ≠ 已执行。
-- workflow green ≠ artifact PASS。
-- Runtime JSON PASS ≠ final artifact PASS。
-
-官方 Rhino 8 支持 `GrasshopperPlayer` 执行 `.gh/.ghx`、`/runscript` 启动脚本；Grasshopper API 提供 `GH_Document.NewSolution` 与 `GH_DocumentIO.SaveQuiet`。本包采用这些真实 API 路径，但当前包自身没有执行 Rhino。
-
-## Closeout
-只有：
-`CP2 PASS + CP4 PASS + Runtime↔Offline Contract PASS + AR-G01—G10 + AR-S01/S04/S07/S09 POST-REVIEW PASS`
-才允许 SP02 `PRACTICE CLOSED`。
+详见 `providers/PROVIDER_MATRIX.md` 与 `contracts/provider_receipt_schema.json`。
