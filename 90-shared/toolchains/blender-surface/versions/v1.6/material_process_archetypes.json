@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.material-process-archetypes.v1",
+  "status": "VISUALIZATION_STARTING_POINTS_NOT_MEASURED_FACTS",
+  "archetypes": {
+    "PP_INJECTION_FINE_MATTE": {
+      "material_family": "PP",
+      "primary_process": "INJECTION_MOLDING",
+      "finish": "FINE_MATTE_MOLD",
+      "optical_model": "DIELECTRIC",
+      "roughness_base": 0.52,
+      "micro_roughness_strength": 0.025,
+      "micro_bump_strength": 0.015,
+      "anisotropy": 0.0,
+      "notes": "Hero should read highlight broadening, not visible grain."
+    },
+    "TPE_OVERMOLD_SOFT_MATTE": {
+      "material_family": "TPE_PU",
+      "primary_process": "OVERMOLDING",
+      "finish": "SOFT_MATTE",
+      "optical_model": "DIELECTRIC",
+      "roughness_base": 0.66,
+      "micro_roughness_strength": 0.035,
+      "micro_bump_strength": 0.012,
+      "anisotropy": 0.0,
+      "notes": "Material softness also depends on interface radii and geometry."
+    },
+    "STEEL_POWDERCOAT_FINE_MATTE": {
+      "material_family": "STEEL_SUBSTRATE_POLYMER_COATING",
+      "primary_process": "TUBE_FORMING",
+      "finish": "POWDER_COAT_FINE_MATTE",
+      "optical_model": "DIELECTRIC_COATING",
+      "roughness_base": 0.46,
+      "micro_roughness_strength": 0.03,
+      "micro_bump_strength": 0.018,
+      "anisotropy": 0.0,
+      "notes": "Do not default to metallic=1; visible surface is coating."
+    },
+    "AL_BRUSHED_ANODIZED": {
+      "material_family": "ALUMINUM",
+      "primary_process": "MECHANICAL_BRUSHING",
+      "finish": "ANODIZED",
+      "optical_model": "METAL_CONDUCTOR",
+      "roughness_base": 0.28,
+      "micro_roughness_strength": 0.018,
+      "micro_bump_strength": 0.01,
+      "anisotropy": 0.48,
+      "notes": "Tangent orientation must follow real brushing direction."
+    },
+    "PC_FROSTED_TRANSLUCENT": {
+      "material_family": "PC_PMMA",
+      "primary_process": "MOLDING_OR_SHEET",
+      "finish": "FROSTED_TRANSLUCENT",
+      "optical_model": "TRANSMISSIVE_DIELECTRIC",
+      "roughness_base": 0.34,
+      "transmission": 0.85,
+      "micro_roughness_strength": 0.02,
+      "micro_bump_strength": 0.008,
+      "notes": "Requires real thickness; not an alpha-only material."
+    },
+    "ABS_PAINT_CLEARCOAT_HIGHGLOSS": {
+      "material_family": "ABS_PAINTED",
+      "primary_process": "PAINT",
+      "finish": "CLEARCOAT_HIGHGLOSS",
+      "optical_model": "DIELECTRIC_LAYERED",
+      "roughness_base": 0.24,
+      "coat_weight": 1.0,
+      "coat_roughness": 0.08,
+      "micro_roughness_strength": 0.008,
+      "notes": "Keep base color and coat reflection visually separable."
+    }
+  }
+}
