@@ -1,0 +1,52 @@
+name: OLEANDER Blender Surface System v1.18.0
+
+on:
+  push:
+    branches: [agent/blender-surface-system-v1-18-0]
+    paths:
+      - 'practice/2026-08-11-ip03-blender-procedural-surface-system-v1-18/**'
+      - 'tools/oleander-blender-surface/v1.18.0/**'
+      - '.github/workflows/oleander-blender-surface-system-v1-18-0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-adapter-archetype-retirement-binding-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+
+      - name: Syntax + governance bundle validation
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/oleander-blender-surface/v1.18.0/validate_v1_18.py
+          base64 -d tools/oleander-blender-surface/v1.18.0/V1_18_GOVERNANCE_BUNDLE.json.gz.b64 | gzip -d > /tmp/V1_18_GOVERNANCE_BUNDLE.json
+          python3 -m json.tool /tmp/V1_18_GOVERNANCE_BUNDLE.json >/dev/null
+
+      - name: Run Evidence Adapter / Retirement / Binding assertions
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          python3 tools/oleander-blender-surface/v1.18.0/validate_v1_18.py \
+            --bundle tools/oleander-blender-surface/v1.18.0/V1_18_GOVERNANCE_BUNDLE.json.gz.b64 \
+            --out out/V1_18_CI_VALIDATION.json
+          python3 - <<'PY'
+          import json
+          r=json.load(open('out/V1_18_CI_VALIDATION.json'))
+          assert r['status']=='PASS', r
+          print('V1.18 EVIDENCE/BINDING GATE PASS')
+          PY
+
+      - name: Upload v1.18 governance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: oleander-blender-surface-system-v1-18-0-${{ github.run_id }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
