@@ -3,10 +3,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUN="$ROOT/runtime"; OUT="$ROOT/outputs"
 rm -rf "$RUN" "$OUT"; mkdir -p "$RUN" "$OUT"
-export RAYPATH=".:/usr/share/radiance/lib:/usr/local/lib/ray"
+# Workflow provides the packaged Radiance library path when available.
+export RAYPATH="${RAYPATH:-.}"
 
 python3 "$ROOT/generate_scene.py" | tee "$RUN/generate_scene.log"
 {
+  echo "RAYPATH=$RAYPATH"
   echo "rtrace=$(command -v rtrace)"; rtrace -version 2>&1 || true
   echo "rpict=$(command -v rpict)"; rpict -version 2>&1 || true
   echo "evalglare=$(command -v evalglare)"; evalglare -v 2>&1 || true
