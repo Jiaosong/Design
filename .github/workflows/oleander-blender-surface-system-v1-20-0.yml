@@ -1,0 +1,102 @@
+name: OLEANDER Blender Surface System v1.20.0 CMF Lab
+
+on:
+  push:
+    branches: [agent/blender-surface-system-v1-20-0-clean]
+    paths:
+      - 'practice/2026-08-11-ip03-blender-cmf-comparison-lab-v1-20/**'
+      - 'tools/oleander-blender-surface/v1.20.0/**'
+      - '.github/workflows/oleander-blender-surface-system-v1-20-0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cmf-comparison-f1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+
+      - name: Reconstruct verified F1 builder and apply final rig
+        run: |
+          set -euo pipefail
+          # Verified executable source from the first v1.20 runtime pass; current patch changes only diagnostic rig scale/energy and diffuser assist.
+          git fetch --depth=1 origin 60320785ec104ce44322a58d4e199054f84fd0ad
+          git show FETCH_HEAD:tools/oleander-blender-surface/v1.20.0/build_material_presets_and_cmf_lab.py.gz.b64 | base64 -d | gzip -d > /tmp/build_v120.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/build_v120.py')
+          s=p.read_text(encoding='utf-8')
+          old='''RIGS = {\n    "BROAD": {\n        "purpose": "overall material response and highlight width",\n        "key": {"type": "AREA", "shape": "DISK", "energy": 850.0, "size": 3.5, "location": [-2.4, -3.8, 3.0]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 110.0, "size": 2.0, "location": [2.7, -1.8, 1.8]},\n    },\n    "STRIP": {\n        "purpose": "controlled narrow reflection for roughness / anisotropy reading",\n        "key": {"type": "AREA", "shape": "RECTANGLE", "energy": 1050.0, "size": 0.28, "size_y": 3.2, "location": [-2.0, -3.0, 2.1]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 65.0, "size": 1.5, "location": [2.7, -1.6, 1.8]},\n    },\n    "GRAZING": {\n        "purpose": "low-angle surface structure / microtexture stress test",\n        "key": {"type": "AREA", "shape": "RECTANGLE", "energy": 1250.0, "size": 0.18, "size_y": 2.8, "location": [-2.6, -0.85, 0.62]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 35.0, "size": 1.2, "location": [2.4, -2.0, 1.6]},\n    },\n}\n'''
+          new='''RIGS = {\n    "BROAD": {\n        "purpose": "overall material response and highlight width",\n        "key": {"type": "AREA", "shape": "DISK", "energy": 15.0, "size": 0.42, "location": [-0.34, -0.52, 0.40]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 2.0, "size": 0.24, "location": [0.30, -0.24, 0.22]},\n    },\n    "STRIP": {\n        "purpose": "controlled narrow reflection for roughness / anisotropy reading",\n        "key": {"type": "AREA", "shape": "RECTANGLE", "energy": 12.0, "size": 0.026, "size_y": 0.30, "location": [-0.24, -0.34, 0.22]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 1.2, "size": 0.18, "location": [0.28, -0.22, 0.20]},\n    },\n    "GRAZING": {\n        "purpose": "low-angle surface structure / microtexture stress test",\n        "key": {"type": "AREA", "shape": "RECTANGLE", "energy": 16.0, "size": 0.018, "size_y": 0.28, "location": [-0.30, -0.08, 0.13]},\n        "fill": {"type": "AREA", "shape": "DISK", "energy": 0.8, "size": 0.14, "location": [0.26, -0.20, 0.18]},\n    },\n}\n'''
+          assert old in s
+          s=s.replace(old,new)
+          old2='''def add_internal_diffuser_assist():\n    # Fixed, low-energy internal/back assist used only for diffuser reading.\n    d = bpy.data.lights.new("DIFFUSER_INTERNAL_ASSIST", "AREA")\n    d.energy = 120.0\n    d.shape = "DISK"\n    d.size = 0.08\n    o = bpy.data.objects.new("DIFFUSER_INTERNAL_ASSIST", d)\n    bpy.context.collection.objects.link(o)\n    o.location = (0, 0.055, 0.072)\n    look_at(o, (0, 0, 0.072))\n    return o\n'''
+          new2='''def add_internal_diffuser_assist():\n    d = bpy.data.lights.new("DIFFUSER_INTERNAL_ASSIST", "SPOT")\n    d.energy = 1.0\n    d.spot_size = math.radians(100.0)\n    d.spot_blend = 0.55\n    d.shadow_soft_size = 0.018\n    o = bpy.data.objects.new("DIFFUSER_INTERNAL_ASSIST", d)\n    bpy.context.collection.objects.link(o)\n    o.location = (0, 0.080, 0.072)\n    look_at(o, (0, 0, 0.072))\n    return o\n'''
+          assert old2 in s
+          s=s.replace(old2,new2)
+          p.write_text(s,encoding='utf-8')
+          PY
+          python3 -m py_compile /tmp/build_v120.py
+          python3 -m json.tool tools/oleander-blender-surface/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json >/dev/null
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')"
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version
+
+      - name: Run F1 CMF comparison lab
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Blender_Surface_System_v1.20.0"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender -b --python /tmp/build_v120.py -- --out "$OUT" --samples 8 --resolution 640
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/RENDER_SECONDS.txt"
+          echo 'RIG_REVISION_02_DIFFUSER_ASSIST_1W' > "$OUT/RIG_REVISION.txt"
+
+      - name: Validate render matrix and execution contract
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Blender_Surface_System_v1.20.0"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Blender_Surface_System_v1.20.0')
+          r=json.loads((out/'CMF_COMPARISON_RECEIPT.json').read_text())
+          assert r['status']=='15_RENDERED_POST_REVIEW_REQUIRED', r
+          assert r['scene_compile_count']==1, r
+          assert r['persistent_data'] is True
+          assert r['adaptive_sampling'] is True
+          assert r['samples']==8
+          assert r['resolution']==[640,640]
+          pngs=sorted((out/'renders').glob('*.png'))
+          assert len(pngs)==15, len(pngs)
+          assert len(r['renders'])==15
+          assert (out/'OLEANDER_CMF_MaterialPresets_v1.20.0.blend').exists()
+          assert (out/'lab_blends/CMF_LAB_COMPILED_F1.blend').exists()
+          for p in pngs:
+              assert p.stat().st_size > 1000, (p,p.stat().st_size)
+          print('F1 EXECUTION GATE PASS', len(pngs))
+          PY
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+
+      - name: Upload F1 CMF lab evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: oleander-cmf-comparison-v1-20-clean-f1-${{ github.run_id }}
+          path: out/OLEANDER_Blender_Surface_System_v1.20.0/
+          if-no-files-found: error
+          retention-days: 14
