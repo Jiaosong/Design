@@ -10,17 +10,21 @@ if (candidates.Length == 0) throw new FileNotFoundException("Grasshopper.dll not
 var dll = candidates.OrderByDescending(p => new FileInfo(p).Length).First();
 
 using var asm = AssemblyDefinition.ReadAssembly(dll, new ReaderParameters { ReadSymbols = false });
-var filters = new[] { "PathMapper", "Path_Mapping", "Param_Number", "ParamViewer", "Param_Viewer", "Graft", "Flatten" };
+var filters = new[] { "PathMapper", "Param_Number", "ParamViewer", "Graft", "Flatten", "Lexer" };
 
 bool Match(TypeDefinition t) => filters.Any(f =>
     t.FullName.Contains(f, StringComparison.OrdinalIgnoreCase) ||
     t.Name.Contains(f, StringComparison.OrdinalIgnoreCase));
 
+string Signature(MethodDefinition m) =>
+    $"{m.ReturnType.FullName} {m.Name}({string.Join(", ", m.Parameters.Select(p => p.ParameterType.FullName + " " + p.Name))})";
+
 object Describe(TypeDefinition t) => new {
     t.FullName,
     BaseType = t.BaseType?.FullName,
     Interfaces = t.Interfaces.Select(i => i.InterfaceType.FullName).OrderBy(x => x).ToArray(),
-    Constructors = t.Methods.Where(m => m.IsConstructor && m.IsPublic).Select(Signature).ToArray(),
+    Constructors = t.Methods.Where(m => m.IsConstructor).Select(m => new { Signature=Signature(m), m.IsPublic, m.IsFamily, m.IsAssembly }).ToArray(),
+    Fields = t.Fields.Select(f => new { f.Name, Type=f.FieldType.FullName, f.IsPublic, f.IsInitOnly, f.IsStatic }).OrderBy(f => f.Name).ToArray(),
     Properties = t.Properties.Select(p => new {
         p.Name,
         Type = p.PropertyType.FullName,
@@ -29,11 +33,8 @@ object Describe(TypeDefinition t) => new {
         GetterPublic = p.GetMethod?.IsPublic ?? false,
         SetterPublic = p.SetMethod?.IsPublic ?? false
     }).OrderBy(p => p.Name).ToArray(),
-    Methods = t.Methods.Where(m => m.IsPublic && !m.IsConstructor).Select(Signature).OrderBy(x => x).ToArray()
+    Methods = t.Methods.Where(m => !m.IsConstructor).Select(m => new { Signature=Signature(m), m.IsPublic, m.IsFamily, m.IsAssembly }).OrderBy(x => x.Signature).ToArray()
 };
-
-string Signature(MethodDefinition m) =>
-    $"{m.ReturnType.FullName} {m.Name}({string.Join(", ", m.Parameters.Select(p => p.ParameterType.FullName + " " + p.Name))})";
 
 TypeDefinition RequireType(string fullName) => asm.MainModule.Types.FirstOrDefault(t => t.FullName == fullName)
     ?? throw new InvalidOperationException("Required API type missing from assembly metadata: " + fullName);
@@ -43,6 +44,8 @@ var componentServer = RequireType("Grasshopper.Kernel.GH_ComponentServer");
 var document = RequireType("Grasshopper.Kernel.GH_Document");
 var documentIo = RequireType("Grasshopper.Kernel.GH_DocumentIO");
 var param = RequireType("Grasshopper.Kernel.IGH_Param");
+var mapper = RequireType("Grasshopper.Kernel.Special.GH_PathMapper");
+var lexerCombo = RequireType("Grasshopper.Kernel.Data.GH_LexerCombo");
 
 var api = new {
     ProbeMode = "PE_IL_METADATA_ONLY_NO_GRASSHOPPER_RUNTIME_LOAD",
@@ -50,6 +53,8 @@ var api = new {
     Assembly = asm.Name.FullName,
     AssemblyLocation = dll,
     Types = interesting,
+    PathMapper = Describe(mapper),
+    LexerCombo = Describe(lexerCombo),
     KnownApis = new {
         FindObjectByName = componentServer.Methods.Where(m => m.Name == "FindObjectByName").Select(Signature).ToArray(),
         EmitObject = componentServer.Methods.Where(m => m.Name == "EmitObject").Select(Signature).ToArray(),
