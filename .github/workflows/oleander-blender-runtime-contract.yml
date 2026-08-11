@@ -1,0 +1,35 @@
+name: OLEANDER Blender Runtime Contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/**'
+      - 'tools/oleander-runtime/**'
+      - 'tests/oleander-blender-runtime-contract.py'
+      - '.github/workflows/oleander-blender-runtime-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/**'
+      - 'tools/oleander-runtime/**'
+      - 'tests/oleander-blender-runtime-contract.py'
+      - '.github/workflows/oleander-blender-runtime-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # reviewed immutable checkout
+      - name: Validate shared Blender runtime interface
+        run: |
+          set -euo pipefail
+          python3 -m json.tool 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json >/dev/null
+          bash -n tools/oleander-runtime/activate-blender.sh
+          bash -n tools/oleander-runtime/blender.sh
+          python3 tests/oleander-blender-runtime-contract.py
