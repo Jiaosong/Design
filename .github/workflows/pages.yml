@@ -29,14 +29,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Record release boundary
+        env:
+          RELEASE_AUTHORIZED: ${{ inputs.release_authorized }}
+          RELEASE_NOTE: ${{ inputs.release_note }}
+        shell: bash
         run: |
-          echo "release_authorized=${{ inputs.release_authorized }}"
-          echo "release_note=${{ inputs.release_note }}"
+          set -euo pipefail
+          printf 'release_authorized=%s\n' "$RELEASE_AUTHORIZED"
+          printf 'release_note=%s\n' "$RELEASE_NOTE"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
