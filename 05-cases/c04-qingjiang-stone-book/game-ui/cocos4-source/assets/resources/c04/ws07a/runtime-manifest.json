@@ -1,0 +1,37 @@
+{
+  "version": "0.2",
+  "authority": ["C04-WS-06 Digital Product Architecture v1.0", "C04-WS-07 Visual Reading System v1.0"],
+  "status": "RUNTIME_SOURCE_MATERIALIZED",
+  "principles": ["LANDSCAPE_FIRST", "PHONE_IN_LOOK_PHONE_OUT", "PARTIAL_IS_COMPLETE", "OFFLINE_FIRST", "RETURN_SERVICE_OVER_COMPANION"],
+  "corePages": [
+    {"id":"R01","title":"红岩嘴","markName":"越江印","chapter":"序｜越江开卷","mode":"S1","role":"CORE","observation":"先别找景点，先看山体如何从江面升起。","status":"REMOTE-GROUNDED"},
+    {"id":"R05","title":"红花石林","markName":"峰林印","chapter":"序｜越江开卷","mode":"S0","role":"CORE","observation":"收起手机，先看峰林与江面的距离关系。","status":"REMOTE-GROUNDED"},
+    {"id":"R02","title":"华中第一藤","markName":"生长印","chapter":"第一章｜见山而行","mode":"S1","role":"CORE","observation":"先看藤如何借岩体获得方向。","status":"CONDITIONAL"},
+    {"id":"R06","title":"多级阶地·不对称河谷","markName":"河谷印","chapter":"第二章｜河谷成形","mode":"S2","role":"CORE","observation":"先找不同高度的平坦面，再打开剖面。","status":"REMOTE-GROUNDED / FIELD-NOT-VERIFIED","claimLayers":[
+      {"type":"FACT","text":"多级阶地／不对称河谷作为观察关系已纳入远程证据；精确剖面、尺度与成因机制仍待现场或专业复核。","evidenceStatus":"REMOTE-GROUNDED / FIELD-NOT-VERIFIED"},
+      {"type":"LOCAL_NARRATIVE","text":"本页不把地方叙事作为河谷成因的科学解释。","evidenceStatus":"SEPARATION RULE"},
+      {"type":"DESIGN_READING","text":"把屏幕当作短暂剖面提示器：比较两岸后立即回到真实河谷。","evidenceStatus":"DESIGN PROPOSAL"}
+    ]},
+    {"id":"R07","title":"仓廪／仓禀峰","markName":"象形印","chapter":"第二章｜河谷成形","mode":"S1","role":"CORE","observation":"先看形，再看名字。","status":"NAME-OPEN"},
+    {"id":"R09","title":"盐水女神峰","markName":"回声印","chapter":"第三章｜山形由人命名","mode":"S1","role":"CORE","observation":"先找轮廓，再读取地方叙事。","status":"REMOTE-GROUNDED"},
+    {"id":"R12","title":"廪君峰","markName":"望山印","chapter":"第三章｜山形由人命名","mode":"S1","role":"CORE","observation":"先辨认山形关系，再看文化解释。","status":"REMOTE-GROUNDED"},
+    {"id":"R13","title":"一线天","markName":"归缝印","chapter":"第四章｜归缝成书","mode":"S0","role":"CORE","observation":"穿过缝隙时不读解释，只看光、石与远处清江。","status":"REMOTE-GROUNDED"}
+  ],
+  "companionPages": [
+    {"id":"R03","title":"铁券天书","mode":"S1","role":"COMPANION","status":"PROVISIONAL"},
+    {"id":"R04","title":"母子相望／母子峰","mode":"S1","role":"COMPANION","status":"PROVISIONAL"},
+    {"id":"R08","title":"文山天书","mode":"S1","role":"COMPANION","status":"PROVISIONAL"},
+    {"id":"R10","title":"绝壁天书","mode":"S1","role":"COMPANION","status":"PROVISIONAL"},
+    {"id":"R11","title":"金石为开","mode":"S1","role":"COMPANION","status":"PROVISIONAL"}
+  ],
+  "prototypeScreens": [
+    {"id":"S0_ONE_LINE_SKY","kind":"PAGE","pageId":"R13","density":"S0"},
+    {"id":"S1_RED_ROCK_MOUTH","kind":"PAGE","pageId":"R01","density":"S1"},
+    {"id":"S2_RIVER_VALLEY","kind":"PAGE","pageId":"R06","density":"S2"},
+    {"id":"ROUTE","kind":"ROUTE"},
+    {"id":"MY_BOOK","kind":"BOOK"}
+  ],
+  "route": {"layers":["ROUTE","READING","SERVICE"],"priority":["RETURN_SERVICE","CURRENT_ROUTE","NEXT_CORE","COMPANION","CONTEXT_SCENIC"],"autoGpsRequired":false,"offlineFirst":true},
+  "myBook": {"partialIsComplete":true,"requiresThirteenOfThirteen":false,"completionReward":false,"unreadPagesBecomeRevisitInvitation":true},
+  "returnGuard": {"message":"请确认返程时间；运营信息以现场公告为准。","realTimeClaim":false}
+}
