@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.xj01.surface-binding.v1",
+  "project": "BAOJIAJIE_XJ01",
+  "surface_system": "OLEANDER Blender Surface System",
+  "stage_policy": "R02_SURFACE_LOCKED_COLOR_ONLY",
+  "evidence_boundary": "PP / PU / iron are project material facts. Process/finish mappings below are visualization baselines unless separately verified; they are not production CMF specifications.",
+  "roles": {
+    "MAT_PP_PRIMARY_FIELD": {
+      "project_material_fact": "PP",
+      "archetype_id": "PP_INJECTION_FINE_MATTE",
+      "recipe_id": "NT_PP_FINE_MATTE",
+      "microstructure_enabled": true,
+      "micro_bump_enabled": true,
+      "process_status": "VISUALIZATION_HYPOTHESIS_PENDING_SAMPLE_PROCESS_CONFIRMATION",
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "MAT_PP_SECONDARY": {
+      "project_material_fact": "PP",
+      "archetype_id": "PP_INJECTION_FINE_MATTE",
+      "recipe_id": "NT_PP_FINE_MATTE",
+      "microstructure_enabled": true,
+      "micro_bump_enabled": true,
+      "process_status": "VISUALIZATION_HYPOTHESIS_PENDING_SAMPLE_PROCESS_CONFIRMATION",
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "MAT_PP_UI": {
+      "project_material_fact": "PP",
+      "archetype_id": "PP_INJECTION_FINE_MATTE",
+      "recipe_id": "NT_PP_FINE_MATTE",
+      "microstructure_enabled": true,
+      "micro_bump_enabled": true,
+      "process_status": "VISUALIZATION_HYPOTHESIS_PENDING_SAMPLE_PROCESS_CONFIRMATION",
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "note": "R02 keeps UI finish identical to the PP family; no extra smoothness variable is introduced during color-role study."
+    },
+    "MAT_PU_CONTACT": {
+      "project_material_fact": "PU",
+      "archetype_id": "TPE_OVERMOLD_SOFT_MATTE",
+      "recipe_id": "NT_TPE_SOFT_MATTE",
+      "microstructure_enabled": true,
+      "micro_bump_enabled": false,
+      "process_status": "PU_SOFT_SURFACE_METHOD_ADOPTED__OVERMOLD_PROCESS_NOT_CLAIMED_AS_FACT",
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "note": "Only the TPE/PU soft dielectric response method is inherited. The archetype's OVERMOLDING process label is not promoted to an XJ01 fact."
+    },
+    "MAT_IRON_VISIBLE": {
+      "project_material_fact": "IRON_TUBE",
+      "archetype_id": "STEEL_POWDERCOAT_FINE_MATTE",
+      "recipe_id": null,
+      "microstructure_enabled": false,
+      "micro_bump_enabled": false,
+      "process_status": "POWDER_COAT_BASELINE_CANDIDATE__XJ01_FINISH_CONFIRMATION_PENDING",
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "note": "Uses coated-tube dielectric optical baseline because Surface System defines PP+PU/TPE+powder-coated tube as the home-care calibration set. No powder microtexture is applied until XJ01 finish evidence confirms it."
+    },
+    "MAT_METAL_HARDWARE": {
+      "project_material_fact": "METAL_HARDWARE",
+      "archetype_id": null,
+      "recipe_id": null,
+      "microstructure_enabled": false,
+      "micro_bump_enabled": false,
+      "appearance_overrides": {
+        "optical_model": "METAL_CONDUCTOR",
+        "roughness_base": 0.34,
+        "metallic_visible_surface": 1.0
+      },
+      "process_status": "HARDWARE_FINISH_UNKNOWN",
+      "evidence": "VISUALIZATION_HYPOTHESIS",
+      "note": "Generic conductor fallback only; plating/coating/process remains pending."
+    }
+  }
+}
