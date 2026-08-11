@@ -1,0 +1,17 @@
+{
+  "schema": "oleander.parameter-promotion-register.v1",
+  "version": "v1.19.0",
+  "overall": "4 PROJECT_DEFINED promotions; 0 physical parameter promotions",
+  "promotions": [
+    {"target":"XJ01 / PP Main Field / material family","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project design specification explicitly defines PP.","not_promoted":["exact resin grade","supplier","masterbatch","physical surface properties"]},
+    {"target":"XJ01 / PP Main Field / process","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project design specification explicitly defines injection molding.","not_promoted":["tooling supplier","mold texture code","molding conditions","production validation"]},
+    {"target":"XJ01 / PU Contact / material family","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project specification states material fact: PU.","not_promoted":["PU chemistry/system","grade","hardness","supplier","process"]},
+    {"target":"XJ01 / Iron Tube / substrate identity","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project specification states material fact: iron tube.","not_promoted":["exact steel grade","tube wall spec","coating process"]},
+    {"target":"XJ01 / PP roughness 0.52","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No physical gloss/roughness measurement or approved sample."},
+    {"target":"XJ01 / PP 0.4 mm + 0.12 mm texture hierarchy","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No supplier/tooling texture code or physical sample measurement."},
+    {"target":"XJ01 / Iron Tube / powder coating","to":"P0 BLOCKED","decision":"HOLD","blocker":"Supplier/coating chemistry/process/sample not selected."},
+    {"target":"Timer / Housing / physical identity","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No exact grade/supplier/sample evidence."},
+    {"target":"Timer / Knob / anodized brushed aluminum physical process","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No alloy/temper, brush specification, anodic designation/thickness/color/seal or sample evidence."},
+    {"target":"Timer / Diffuser / optical material + transmission","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No exact polymer grade, thickness, transmittance/haze data or physical sample."}
+  ]
+}
