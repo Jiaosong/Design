@@ -14,5 +14,6 @@ Namespace rule: `P0–P4` are reserved for the project axis (`Portfolio / Progra
 ## Shared production toolchains
 
 - `toolchains/cocos4/` — OLEANDER-wide COCOS 4 + COCOS CLI gateway for Business / Culture / IP / Spatial / Cases / Practice. Use `oleander-cocos`; project-level private engine forks are not canonical.
+- `toolchains/blender-surface-system/v1.20.0/` — OLEANDER Blender Surface System v1.20 reusable CMF preset contract, D1→D2 promotion record and F1 post-review. Current files live here; historical `tools/oleander-blender-surface/...` paths remain provenance only and the frozen legacy `tools/` root must not receive new current content.
 
 All third-party engine, plugin, code, visual, audio and font dependencies remain subject to the OLEANDER Rights Gate and project-specific evidence boundaries.
