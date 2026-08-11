@@ -2,26 +2,8 @@ name: AI Governance Evals
 
 on:
   pull_request:
-    paths:
-      - '00-governance/**'
-      - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
-      - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
-      - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
-      - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
-      - 'evals/**'
-      - 'oleander-skills/**'
-      - '.github/workflows/**'
   push:
     branches: [main]
-    paths:
-      - '00-governance/**'
-      - '90-shared/OLEANDER_AI_Governance_P0_v0.1.md'
-      - '90-shared/OLEANDER_AI_Governance_P1_v0.1.md'
-      - '90-shared/OLEANDER_AI_Runtime_Evidence_P2_v0.1.md'
-      - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
-      - 'evals/**'
-      - 'oleander-skills/**'
-      - '.github/workflows/**'
 
 permissions:
   contents: read
@@ -30,6 +12,7 @@ jobs:
   governance-corpus:
     name: P0 + P1 + P2 governance, namespaces and runtime evidence
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -48,6 +31,9 @@ jobs:
       - name: Enforce immutable workflow action refs
         run: python evals/scripts/validate_workflow_action_pins.py
 
+      - name: Validate release workflow defaults
+        run: python evals/scripts/validate_workflow_release_defaults.py
+
       - name: Compute P2 runtime metrics
         run: python evals/runtime/compute_metrics.py | tee /tmp/p2-metrics.txt
 
@@ -55,11 +41,13 @@ jobs:
         if: always()
         run: |
           echo '## OLEANDER AI Governance P0 + P1 + P2' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Runs on every pull request and every push to main, so it can be used as a stable required check.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates five reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P1 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P2 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates reserved case IDs, Claim namespace, C01 canonical schema and Legacy authority registry.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
           echo '### P2 current evidence' >> "$GITHUB_STEP_SUMMARY"
