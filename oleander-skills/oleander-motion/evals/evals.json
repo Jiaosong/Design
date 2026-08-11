@@ -1,0 +1,23 @@
+{
+  "skill_name": "oleander-motion",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "为 OLEANDER Timer Light Basin 设计剩余时间状态光动效。必须比较无动效基线、两种时间曲线和 Reduced Motion，并说明哪些结论只是设计假设。",
+      "expected_output": "A state-based motion specification with baseline/candidate/reduced-motion variants, explicit timing assumptions, runtime checks, and no unsupported usability claims.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "把 OLEANDER 不可逆修订符号做成品牌动效，但不能使用通用 logo reveal。需要保留介入、不可逆后果和残留关系，并给出静态失败时的淘汰条件。",
+      "expected_output": "A brand-motion system derived from the symbol topology, not decorative effects, with remove/reduce criteria and production-safe fallback states.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "制作一个网页滚动触发的项目状态转场，要求处理 interrupt/reverse、Reduced Motion、60/120Hz 差异、遮挡和首屏性能，并输出可复现实现说明。",
+      "expected_output": "An implemented interaction plan or runtime artifact with AR-S10 checks for interruption, accessibility, frame pacing, latency, export/runtime consistency, and evidence boundaries.",
+      "files": []
+    }
+  ]
+}
