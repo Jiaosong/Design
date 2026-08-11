@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "architecture_baseline": {
+    "source_pr": 66,
+    "source_head": "1c742a5c6978d935b063afd713b27d30930e754e",
+    "project_axis": ["P0 Portfolio", "P1 Program", "P2 Project", "P3 Workstream", "P4 Validation"],
+    "spatial_nodes_are_project_ids": false,
+    "runtime_axis": ["Design Intelligence", "Execution Runtime", "Evidence & Governance"]
+  },
+  "project": {
+    "id": "PRAC-SPATIAL-2026",
+    "level": "P2",
+    "parent": "PG-30",
+    "main_layer": "Spatial",
+    "status": "ACTIVE",
+    "notion_project_id": "3b9b86be-5c47-8176-8e65-ef95b281f788",
+    "notion_canonical_page_id": "3b9b86be-5c47-8168-84df-fc90bb413632"
+  },
+  "workstreams": [
+    {
+      "id": "PRAC-SPATIAL-2026-WS-01",
+      "node": "SP01",
+      "name": "Site & Evidence",
+      "current_gate": "G1",
+      "governance": "ACTIVE",
+      "design_state": "EXPLORE",
+      "notion_id": "3b9b86be-5c47-8194-8d12-d4a014be30c1",
+      "l7_id": "PRAC-20260808-01",
+      "validation_id": "PRAC-SPATIAL-2026-VAL-01",
+      "truth": "QGIS Runtime VERIFIED / Project CRS OPEN / Project Data OPEN / Candidate Promotion NO"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-WS-02",
+      "node": "SP02",
+      "name": "Program & Relations",
+      "current_gate": "G4",
+      "governance": "HOLD",
+      "design_state": "EXPLORE",
+      "notion_id": "3b9b86be-5c47-8196-bdfb-db2b19569895",
+      "l7_id": "PRAC-20260809-01",
+      "validation_id": "PRAC-SPATIAL-2026-VAL-02",
+      "no_purchase": true,
+      "truth": "Static Handoff PASS / Real Rhino Runtime NOT EXECUTED / CP2 OPEN / CP4 OPEN"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-WS-03",
+      "node": "SP03",
+      "name": "Space & Experience",
+      "current_gate": "G4",
+      "governance": "ACTIVE",
+      "design_state": "EXPLORE",
+      "notion_id": "3b9b86be-5c47-8169-b1a2-cfa94f110b90",
+      "l7_id": "PRAC-20260809-02",
+      "validation_id": "PRAC-SPATIAL-2026-VAL-03",
+      "truth": "Performance Interface VERIFIED ON SYNTHETIC TEST CELL / Project Reality OPEN"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-WS-04",
+      "node": "SP04",
+      "name": "Construction & Operation",
+      "current_gate": "G5",
+      "governance": "ARCHIVED",
+      "design_state": "LOCKED",
+      "notion_id": "3b9b86be-5c47-819b-8aab-e8b79dddea13",
+      "l7_id": "PRAC-20260810-01",
+      "validation_id": "PRAC-SPATIAL-2026-VAL-04",
+      "truth": "Practice CLOSED / ARCHIVED AS TRAINING PROTOTYPE / RG-01—RG-04 OPEN / Project Issue BLOCKED"
+    }
+  ],
+  "validations": [
+    {
+      "id": "PRAC-SPATIAL-2026-VAL-01",
+      "legacy_lineage": "SP01-R02 GIS Reality Gate",
+      "state": "COMPLETED",
+      "notion_id": "3b9b86be-5c47-81ea-9136-da98c7bbd44e",
+      "evidence_l7": "PRAC-20260808-01"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-VAL-02",
+      "legacy_lineage": "SP02-R03 Runtime Closure",
+      "state": "HOLD",
+      "notion_id": "3b9b86be-5c47-812f-8358-d6467cab74c9",
+      "evidence_l7": "PRAC-20260809-01"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-VAL-03",
+      "legacy_lineage": "SP03-R02 Light Performance Interface",
+      "state": "COMPLETED",
+      "notion_id": "3b9b86be-5c47-8185-a925-dafd6a1fafc7",
+      "evidence_l7": "PRAC-20260809-02"
+    },
+    {
+      "id": "PRAC-SPATIAL-2026-VAL-04",
+      "legacy_lineage": "SP04 R08J.1 P0 Evidence Closure",
+      "state": "ARCHIVED",
+      "notion_id": "3b9b86be-5c47-81d8-84a5-cc733827df20",
+      "evidence_l7": "PRAC-20260810-01"
+    }
+  ],
+  "historical_lineage_policy": {
+    "move_or_rename_old_artifacts": false,
+    "old_sp_paths_define_project_hierarchy": false,
+    "old_reruns": "VERSION / FAILURE HISTORY ONLY",
+    "evidence_status_inheritance": "DENY"
+  }
+}
