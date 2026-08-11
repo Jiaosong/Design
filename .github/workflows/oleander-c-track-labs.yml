@@ -1,0 +1,64 @@
+name: OLEANDER C Track Blender Labs
+
+on:
+  push:
+    branches:
+      - oleander/c-track-labs-20260811
+    paths:
+      - 'tools/c-track/**'
+      - '.github/workflows/oleander-c-track-labs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c-track:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Blender 5.2.0 LTS
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          mkdir -p .runtime
+          curl -fL --retry 4 --retry-delay 5 -o .runtime/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum .runtime/blender.tar.xz | awk '{print $1}')"
+          echo "expected_sha256=$EXPECTED" | tee .runtime/runtime-receipt.txt
+          echo "actual_sha256=$ACTUAL" | tee -a .runtime/runtime-receipt.txt
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf .runtime/blender.tar.xz -C .runtime
+          BLENDER="$(find .runtime -maxdepth 2 -type f -name blender -perm -111 | head -1)"
+          test -x "$BLENDER"
+          echo "BLENDER=$BLENDER" >> "$GITHUB_ENV"
+          "$BLENDER" --version | tee -a .runtime/runtime-receipt.txt
+
+      - name: Run C01-C09 in Cycles
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p c-track-output
+          "$BLENDER" -b --factory-startup --python tools/c-track/c_track_runner.py -- --out "$PWD/c-track-output" --samples 8 2>&1 | tee c-track-output/blender-console.log
+
+      - name: List outputs
+        if: always()
+        shell: bash
+        run: |
+          find c-track-output -maxdepth 3 -type f -printf '%p %s bytes\n' | sort || true
+          cat c-track-output/MASTER_RECEIPT.json || true
+
+      - name: Upload C Track evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-c-track-c01-c09-${{ github.run_id }}
+          path: |
+            c-track-output
+            .runtime/runtime-receipt.txt
+          if-no-files-found: warn
+          retention-days: 14
