@@ -1,42 +1,67 @@
-using System.Reflection;
 using System.Text.Json;
-using Grasshopper.Kernel;
+using Mono.Cecil;
 
-var asm = typeof(GH_Document).Assembly;
-var filters = new[] { "PathMapper", "Path Mapper", "Param_Number", "ParamViewer", "Param_Viewer", "Graft", "Flatten" };
+const string version = "8.32.26160.13001";
+var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+var packageRoot = Path.Combine(userProfile, ".nuget", "packages", "grasshopper", version);
+if (!Directory.Exists(packageRoot)) throw new DirectoryNotFoundException(packageRoot);
+var candidates = Directory.GetFiles(packageRoot, "Grasshopper.dll", SearchOption.AllDirectories);
+if (candidates.Length == 0) throw new FileNotFoundException("Grasshopper.dll not found in restored NuGet package.");
+var dll = candidates.OrderByDescending(p => new FileInfo(p).Length).First();
 
-var hits = asm.GetTypes()
-    .Where(t => filters.Any(f => t.FullName?.Contains(f.Replace(" ", ""), StringComparison.OrdinalIgnoreCase) == true
-                              || t.Name.Contains(f.Replace(" ", ""), StringComparison.OrdinalIgnoreCase)))
-    .OrderBy(t => t.FullName)
-    .Select(t => new {
-        t.FullName,
-        BaseType = t.BaseType?.FullName,
-        Interfaces = t.GetInterfaces().Select(i => i.FullName).OrderBy(x => x).ToArray(),
-        Constructors = t.GetConstructors(BindingFlags.Public|BindingFlags.Instance)
-            .Select(c => c.ToString()).ToArray(),
-        Properties = t.GetProperties(BindingFlags.Public|BindingFlags.Instance|BindingFlags.Static)
-            .Select(p => new { p.Name, Type = p.PropertyType.FullName, p.CanRead, p.CanWrite })
-            .OrderBy(p => p.Name).ToArray(),
-        Methods = t.GetMethods(BindingFlags.Public|BindingFlags.Instance|BindingFlags.Static|BindingFlags.DeclaredOnly)
-            .Select(m => m.ToString()).OrderBy(x => x).ToArray()
-    }).ToArray();
+using var asm = AssemblyDefinition.ReadAssembly(dll, new ReaderParameters { ReadSymbols = false });
+var filters = new[] { "PathMapper", "Path_Mapping", "Param_Number", "ParamViewer", "Param_Viewer", "Graft", "Flatten" };
 
-var componentServer = typeof(GH_ComponentServer);
+bool Match(TypeDefinition t) => filters.Any(f =>
+    t.FullName.Contains(f, StringComparison.OrdinalIgnoreCase) ||
+    t.Name.Contains(f, StringComparison.OrdinalIgnoreCase));
+
+object Describe(TypeDefinition t) => new {
+    t.FullName,
+    BaseType = t.BaseType?.FullName,
+    Interfaces = t.Interfaces.Select(i => i.InterfaceType.FullName).OrderBy(x => x).ToArray(),
+    Constructors = t.Methods.Where(m => m.IsConstructor && m.IsPublic).Select(Signature).ToArray(),
+    Properties = t.Properties.Select(p => new {
+        p.Name,
+        Type = p.PropertyType.FullName,
+        CanRead = p.GetMethod is not null,
+        CanWrite = p.SetMethod is not null,
+        GetterPublic = p.GetMethod?.IsPublic ?? false,
+        SetterPublic = p.SetMethod?.IsPublic ?? false
+    }).OrderBy(p => p.Name).ToArray(),
+    Methods = t.Methods.Where(m => m.IsPublic && !m.IsConstructor).Select(Signature).OrderBy(x => x).ToArray()
+};
+
+string Signature(MethodDefinition m) =>
+    $"{m.ReturnType.FullName} {m.Name}({string.Join(", ", m.Parameters.Select(p => p.ParameterType.FullName + " " + p.Name))})";
+
+TypeDefinition RequireType(string fullName) => asm.MainModule.Types.FirstOrDefault(t => t.FullName == fullName)
+    ?? throw new InvalidOperationException("Required API type missing from assembly metadata: " + fullName);
+
+var interesting = asm.MainModule.Types.Where(Match).OrderBy(t => t.FullName).Select(Describe).ToArray();
+var componentServer = RequireType("Grasshopper.Kernel.GH_ComponentServer");
+var document = RequireType("Grasshopper.Kernel.GH_Document");
+var documentIo = RequireType("Grasshopper.Kernel.GH_DocumentIO");
+var param = RequireType("Grasshopper.Kernel.IGH_Param");
+
 var api = new {
-    Package = "Grasshopper 8.32.26160.13001",
-    Assembly = asm.FullName,
-    AssemblyLocation = asm.Location,
-    Types = hits,
+    ProbeMode = "PE_IL_METADATA_ONLY_NO_GRASSHOPPER_RUNTIME_LOAD",
+    Package = "Grasshopper " + version,
+    Assembly = asm.Name.FullName,
+    AssemblyLocation = dll,
+    Types = interesting,
     KnownApis = new {
-        FindObjectByName = componentServer.GetMethods().Where(m => m.Name == "FindObjectByName").Select(m => m.ToString()).ToArray(),
-        EmitObject = componentServer.GetMethods().Where(m => m.Name == "EmitObject").Select(m => m.ToString()).ToArray(),
-        AddObject = typeof(GH_Document).GetMethods().Where(m => m.Name == "AddObject").Select(m => m.ToString()).ToArray(),
-        DocumentIO = typeof(GH_DocumentIO).GetMethods(BindingFlags.Public|BindingFlags.Instance).Where(m => m.Name is "Open" or "SaveQuiet").Select(m => m.ToString()).ToArray(),
-        DocumentIOConstructors = typeof(GH_DocumentIO).GetConstructors().Select(c => c.ToString()).ToArray()
+        FindObjectByName = componentServer.Methods.Where(m => m.Name == "FindObjectByName").Select(Signature).ToArray(),
+        EmitObject = componentServer.Methods.Where(m => m.Name == "EmitObject").Select(Signature).ToArray(),
+        AddObject = document.Methods.Where(m => m.Name == "AddObject").Select(Signature).ToArray(),
+        DocumentIO = documentIo.Methods.Where(m => m.Name is "Open" or "SaveQuiet").Select(Signature).ToArray(),
+        DocumentIOConstructors = documentIo.Methods.Where(m => m.IsConstructor).Select(Signature).ToArray(),
+        ParamAddSource = param.Methods.Where(m => m.Name == "AddSource").Select(Signature).ToArray(),
+        ParamDataMapping = param.Properties.Where(p => p.Name == "DataMapping").Select(p => new { p.Name, Type=p.PropertyType.FullName }).ToArray()
     }
 };
 
 Directory.CreateDirectory("sdk_probe_output");
-File.WriteAllText("sdk_probe_output/grasshopper_sdk_metadata.json", JsonSerializer.Serialize(api, new JsonSerializerOptions { WriteIndented = true }));
-Console.WriteLine(JsonSerializer.Serialize(api, new JsonSerializerOptions { WriteIndented = true }));
+var json = JsonSerializer.Serialize(api, new JsonSerializerOptions { WriteIndented = true });
+File.WriteAllText("sdk_probe_output/grasshopper_sdk_metadata.json", json);
+Console.WriteLine(json);
