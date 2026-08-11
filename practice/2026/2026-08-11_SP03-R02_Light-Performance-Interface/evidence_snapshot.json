@@ -59,6 +59,21 @@
     "AR_S09_Release": "PASS",
     "final_artifact_status": "POST-REVIEW PASS"
   },
+  "release": {
+    "curated_package_name": "OLEANDER_SP03_R02_Light_Performance_Interface_FINAL.zip",
+    "curated_package_bytes": 4004035,
+    "curated_package_sha256": "4ff692b1aebe87e06e5c3234867775d4440335afed9c973cae125f0c4dcf86a8",
+    "manifest_entries": 115,
+    "zip_crc": "PASS",
+    "manifest_sha256": "PASS"
+  },
+  "google_drive": {
+    "folder_id": "1v6IDcV7TdInCiv5kZghSYp9row7Bdwpu",
+    "curated_package_file_id": "10-Zb1Kxv_9IBRgVX_yQiIV1GpVb8OUrV",
+    "raw_run6_evidence_file_id": "1n84HInZlGe6DrLJQd3Nkw0ccg6QsUZXx",
+    "final_review_doc_id": "1ryhotCGnMudpXKN_3OdbvaR0vzeYUKuKGup47xu69No",
+    "readback_verified": true
+  },
   "truth": {
     "performance_interface_gate": "VERIFIED_ON_SYNTHETIC_TEST_CELL",
     "project_geometry_gate": "OPEN",
