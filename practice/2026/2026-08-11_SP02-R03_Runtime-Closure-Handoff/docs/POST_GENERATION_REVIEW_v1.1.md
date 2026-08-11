@@ -18,3 +18,11 @@
 
 ### Revision from v1.0
 v1.0 incorrectly made self-hosted Windows appear to be the only closure route. v1.1 corrects this into a provider-neutral architecture while preserving the same evidence standards.
+
+## Post-release metadata correction
+第一次 release audit 发现包内 receipt 记录 ZIP 自身 SHA256 会形成自引用：receipt 内容变化会改变 ZIP hash，因此该字段不能成为包内稳定事实；manifest entry count 也滞后一版。该候选包被拒绝。
+
+修正：
+- 包内 `RELEASE_RECEIPT_v1.1.json` 只记录稳定的 manifest / gate / review 状态；
+- ZIP SHA256 改为包外 `.zip.sha256` sidecar；
+- 重新生成 MANIFEST、ZIP、CRC 与逐项 SHA256 复核后才重新同步 Drive。
