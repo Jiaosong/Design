@@ -1,0 +1,60 @@
+name: SP02-R03 Real Rhino Native Definition Gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-static-builder:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      - run: dotnet restore Sp02NativeDefinitionBuilder.csproj
+      - run: dotnet build Sp02NativeDefinitionBuilder.csproj --configuration Release --no-restore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sp02-r03-builder-for-real-rhino
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll
+          retention-days: 1
+
+  nd02-nd04-real-rhino:
+    needs: build-static-builder
+    runs-on: [self-hosted, Windows, X64, rhino8]
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: sp02-r03-builder-for-real-rhino
+          path: _sp02_builder
+      - name: Execute real Rhino 8 native serialize → reload → identity audit
+        run: |
+          $root='practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition'
+          & "$root/runner/run_native_definition_windows.ps1" `
+            -BuilderDll "_sp02_builder/Sp02NativeDefinitionBuilder.dll" `
+            -EvidenceDir "$root/native_definition_evidence"
+      - name: Assert SG01 closed
+        run: |
+          $p='practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/native_definition_evidence/SG01_VALIDATION_RESULT.json'
+          $j=Get-Content $p -Raw | ConvertFrom-Json
+          if ($j.SG01 -ne 'PASS') { throw "SG01 not closed: $($j | ConvertTo-Json -Depth 8)" }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sp02-r03-native-definition-real-rhino-evidence
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/native_definition_evidence/
+          if-no-files-found: error
+          retention-days: 30
