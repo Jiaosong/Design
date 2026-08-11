@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -15,12 +16,17 @@ OLD_CURRENT_FILES = [
     ROOT / "90-shared" / "OLEANDER_AI_Runtime_Evidence_P2_v0.1.md",
 ]
 
-# These parallel roots were used by older/experimental branches. Current OLEANDER
-# authority uses 00-governance, 06-practice and 90-shared/toolchains instead.
-FORBIDDEN_PARALLEL_ROOTS = {
+# Legacy parallel roots already exist in historical/current main. Do not delete them
+# merely to make the architecture look clean. Freeze their exact tree identity so
+# ordinary future PRs cannot silently add more current work there. Any intentional
+# migration/removal must explicitly review and update this frozen SHA in the same
+# governance change.
+FROZEN_LEGACY_ROOTS = {
+    "practice": "fa29e287d3347cafa788bf904d760c2b8c11fd34",
+    "tools": "45d7f97ac289704226c5b0a8a382ce2a38ec518f",
+}
+FORBIDDEN_NEW_ROOTS = {
     "governance": "use 00-governance or the relevant current domain path",
-    "practice": "use 06-practice",
-    "tools": "use 90-shared/toolchains for shared reusable toolchains, or a scoped current project path",
 }
 
 CURRENT_ROUTING_FILES = {
@@ -60,11 +66,27 @@ def fail(message):
     raise AssertionError(message)
 
 
+def git_tree_sha(path: str):
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", f"HEAD:{path}"], cwd=ROOT, text=True
+        ).strip()
+    except subprocess.CalledProcessError:
+        return None
+
+
 def main():
-    for root_name, route in FORBIDDEN_PARALLEL_ROOTS.items():
-        path = ROOT / root_name
-        if path.exists():
+    for root_name, route in FORBIDDEN_NEW_ROOTS.items():
+        if (ROOT / root_name).exists():
             fail(f"parallel top-level root is forbidden: {root_name}/; {route}")
+
+    for root_name, expected_sha in FROZEN_LEGACY_ROOTS.items():
+        actual_sha = git_tree_sha(root_name)
+        if actual_sha != expected_sha:
+            fail(
+                f"frozen legacy root changed: {root_name}/ expected {expected_sha}, got {actual_sha}; "
+                "new current work must use canonical roots. Intentional migration requires an explicit governance review/update."
+            )
 
     for path in AIG_FILES:
         if not path.exists():
@@ -112,7 +134,8 @@ def main():
     print("- P0-P4 reserved for project axis")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
     print("- superseded AI P0/P1/P2 current files absent")
-    print("- forbidden parallel roots absent: governance/ practice/ tools/")
+    print("- governance/ parallel root absent")
+    print("- legacy practice/ and tools/ roots frozen at reviewed tree SHAs")
     print("- new runtime event namespace: AIG3-E...")
     print("- current reasoning/skill/CI routing contains no known old AI-governance paths")
     return 0
