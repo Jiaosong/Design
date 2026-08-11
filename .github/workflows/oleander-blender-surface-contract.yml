@@ -1,0 +1,29 @@
+name: OLEANDER Blender Surface Contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '90-shared/toolchains/blender-surface/**'
+      - '.github/workflows/oleander-blender-surface-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - '90-shared/toolchains/blender-surface/**'
+      - '.github/workflows/oleander-blender-surface-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  surface-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate shared Surface System contract
+        run: |
+          set -euo pipefail
+          python3 -m json.tool 90-shared/toolchains/blender-surface/ACTIVE.json >/dev/null
+          python3 90-shared/toolchains/blender-surface/test_surface_contract.py
