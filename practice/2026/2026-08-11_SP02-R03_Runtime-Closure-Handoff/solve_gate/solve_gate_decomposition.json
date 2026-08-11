@@ -1,0 +1,26 @@
+{
+  "version": "1.2",
+  "exercise": "SP02-R03｜Solve Gate Decomposition",
+  "truth_state": "HANDOFF VERIFIED / REAL GRASSHOPPER SOLVE STILL OPEN",
+  "microgates": [
+    {"id":"SG00","name":"Runtime Authority","proof":"real Rhino/Grasshopper-capable provider + execution id"},
+    {"id":"SG01","name":"Native Definition Load","proof":"native .gh/.ghx + SHA256 + load success"},
+    {"id":"SG02","name":"Solve Request","proof":"GH SolutionStart / Compute solve request / Player execution receipt"},
+    {"id":"SG03","name":"Solve Completion","proof":"GH SolutionEnd / successful Compute response + output fingerprint"},
+    {"id":"SG04","name":"Tree Extraction","proof":"BASE/GRAFT/FLATTEN/TRANSPOSE/ADVERSE from real solve"},
+    {"id":"SG05","name":"Contract Match","proof":"4x6 / 24x1 / 1x24 / 6x4 exact structural match"},
+    {"id":"SG06","name":"Adverse Visibility","proof":"[4,4,4,4,4,3], 23 items remain visible"},
+    {"id":"SG07","name":"Repeatability","proof":"second solve, same definition hash and structural signature"}
+  ],
+  "composite_gates": {
+    "CP2_CORE": ["SG00","SG01","SG02","SG03"],
+    "CP2_DATA": ["SG04","SG05","SG06"],
+    "CP2_REPRO": ["SG07"],
+    "CP2": ["SG00","SG01","SG02","SG03","SG04","SG05","SG06","SG07"],
+    "CP4": "separate real Parameter Viewer / Grasshopper canvas provenance"
+  },
+  "current_state": {
+    "SG00":"OPEN","SG01":"OPEN","SG02":"BLOCKED","SG03":"BLOCKED","SG04":"BLOCKED","SG05":"BLOCKED","SG06":"BLOCKED","SG07":"BLOCKED",
+    "CP2_CORE":"OPEN","CP2_DATA":"OPEN","CP2_REPRO":"OPEN","CP2":"OPEN","CP4":"OPEN"
+  }
+}
