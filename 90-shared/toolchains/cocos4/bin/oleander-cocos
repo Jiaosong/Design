@@ -18,19 +18,40 @@ Usage:
 TXT
 }
 
-run_cocos(){
+resolve_cocos(){
   local pinned_cli="$TOOL_ROOT/cli/dist/cli.js"
   if [[ -f "$pinned_cli" ]]; then
-    node "$pinned_cli" "$@"
+    COCOS_CMD=(node "$pinned_cli")
     return
   fi
   if command -v cocos >/dev/null 2>&1; then
-    cocos "$@"
+    COCOS_CMD=(cocos)
     return
   fi
   echo "ERROR: upstream COCOS CLI is not installed at $TOOL_ROOT/cli." >&2
   echo "Run the OLEANDER shared bootstrap first." >&2
   exit 69
+}
+
+run_cocos(){
+  resolve_cocos
+  "${COCOS_CMD[@]}" "$@"
+}
+
+run_cocos_with_display(){
+  resolve_cocos
+  if [[ "$(uname -s)" == "Linux" && -z "${DISPLAY:-}" ]]; then
+    if ! command -v xvfb-run >/dev/null 2>&1; then
+      echo "ERROR: headless Linux COCOS build requires xvfb-run, but it is not installed." >&2
+      echo "Install the xvfb package or provide a DISPLAY before running the build gateway." >&2
+      exit 69
+    fi
+    echo "OLEANDER: no DISPLAY detected; running COCOS build under Xvfb software rendering." >&2
+    LIBGL_ALWAYS_SOFTWARE="${LIBGL_ALWAYS_SOFTWARE:-1}" \
+      xvfb-run -a -s "-screen 0 1280x720x24" "${COCOS_CMD[@]}" "$@"
+    return
+  fi
+  "${COCOS_CMD[@]}" "$@"
 }
 
 cmd="${1:-help}"; shift || true
@@ -47,7 +68,7 @@ case "$cmd" in
     fi
     run_cocos create --project "$p" --type "$type"
     ;;
-  build) p="${1:?project path required}"; platform="${2:-web-mobile}"; run_cocos build --project "$p" --platform "$platform" ;;
+  build) p="${1:?project path required}"; platform="${2:-web-mobile}"; run_cocos_with_display build --project "$p" --platform "$platform" ;;
   mcp) p="${1:?project path required}"; port="${2:-9527}"; run_cocos start-mcp-server --project "$p" --port "$port" ;;
   raw) run_cocos "$@" ;;
   *) echo "Unknown command: $cmd" >&2; usage; exit 64 ;;
