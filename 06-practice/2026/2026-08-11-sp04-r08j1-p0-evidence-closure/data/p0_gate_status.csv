@@ -1,0 +1,5 @@
+gate,evidence_acquisition,technical_closure,why
+RG-01,PARTIAL_CLOSED,OPEN,System family verified; exact project configuration not frozen.
+RG-02,ROUTE_CLOSED,OPEN,Authoritative Schüco connection-document route identified but exact fixing rules are access-restricted/not yet supplied.
+RG-03,METHOD+REQUEST_CLOSED,OPEN,Hilti approval/design method identified; project substrate and exact anchor selection missing.
+RG-04,REQUEST_CLOSED,OPEN,Required load/reaction package precisely defined; project actions absent.
