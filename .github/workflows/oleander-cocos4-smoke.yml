@@ -65,8 +65,23 @@ jobs:
           bash 90-shared/toolchains/cocos4/materialize-c04.sh \
             05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source \
             "$DEST"
-      - name: Web-mobile smoke build
+      - name: Materialize WS-07A VisualPrototype scene via pinned MCP
         shell: bash
         run: |
           set -euo pipefail
-          oleander-cocos build "$RUNNER_TEMP/c04-cocos4" web-mobile
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          bash 90-shared/toolchains/cocos4/materialize-ws07a-scene.sh "$DEST"
+          test -f "$DEST/assets/scenes/VisualPrototype.scene"
+          test -f "$DEST/temp/oleander-ws07a-scene-proof.json"
+          rm -f "$DEST/assets/scenes/OleanderSmoke.scene" "$DEST/assets/scenes/OleanderSmoke.scene.meta"
+      - name: Web-mobile VisualPrototype build
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          test -f "$DEST/assets/scenes/VisualPrototype.scene"
+          if find "$DEST/assets/scenes" -maxdepth 1 -name 'OleanderSmoke.scene' -print -quit | grep -q .; then
+            echo 'ERROR: legacy OleanderSmoke.scene still present; refusing to count this as VisualPrototype build evidence' >&2
+            exit 65
+          fi
+          oleander-cocos build "$DEST" web-mobile

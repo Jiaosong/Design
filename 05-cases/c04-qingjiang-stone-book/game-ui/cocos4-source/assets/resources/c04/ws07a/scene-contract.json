@@ -1,0 +1,56 @@
+{
+  "version": "0.1",
+  "scene": {"baseName":"VisualPrototype","dbURL":"db://assets/scenes","templateType":"2d"},
+  "controller": {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/VisualPrototypeController.ts","className":"C04WS07AVisualPrototypeController"},
+  "nodes": [
+    {"path":"Canvas/PrototypeNav","type":"Empty"},
+    {"path":"Canvas/PrototypeNav/NavS0","type":"Button","position":{"x":-480,"y":-300,"z":0}},
+    {"path":"Canvas/PrototypeNav/NavS0/Text","type":"Label","label":"S0 一线天","fontSize":18},
+    {"path":"Canvas/PrototypeNav/NavS1","type":"Button","position":{"x":-240,"y":-300,"z":0}},
+    {"path":"Canvas/PrototypeNav/NavS1/Text","type":"Label","label":"S1 红岩嘴","fontSize":18},
+    {"path":"Canvas/PrototypeNav/NavS2","type":"Button","position":{"x":0,"y":-300,"z":0}},
+    {"path":"Canvas/PrototypeNav/NavS2/Text","type":"Label","label":"S2 河谷","fontSize":18},
+    {"path":"Canvas/PrototypeNav/NavRoute","type":"Button","position":{"x":240,"y":-300,"z":0}},
+    {"path":"Canvas/PrototypeNav/NavRoute/Text","type":"Label","label":"路线","fontSize":18},
+    {"path":"Canvas/PrototypeNav/NavBook","type":"Button","position":{"x":480,"y":-300,"z":0}},
+    {"path":"Canvas/PrototypeNav/NavBook/Text","type":"Label","label":"我的石书","fontSize":18},
+
+    {"path":"Canvas/S0_OneLineSky","type":"Empty","active":true},
+    {"path":"Canvas/S0_OneLineSky/LandscapeSlot","type":"Empty"},
+    {"path":"Canvas/S0_OneLineSky/ScreenHint","type":"Label","position":{"x":0,"y":80,"z":0},"label":"S0｜一线天｜LANDSCAPE SLOT","fontSize":24},
+
+    {"path":"Canvas/S1_RedRockMouth","type":"Empty","active":false},
+    {"path":"Canvas/S1_RedRockMouth/LandscapeSlot","type":"Empty"},
+    {"path":"Canvas/S1_RedRockMouth/ScreenHint","type":"Label","position":{"x":0,"y":80,"z":0},"label":"S1｜红岩嘴｜LANDSCAPE SLOT","fontSize":24},
+
+    {"path":"Canvas/S2_RiverValley","type":"Empty","active":false},
+    {"path":"Canvas/S2_RiverValley/LandscapeSlot","type":"Empty"},
+    {"path":"Canvas/S2_RiverValley/ScreenHint","type":"Label","position":{"x":0,"y":110,"z":0},"label":"S2｜多级阶地·不对称河谷｜LANDSCAPE SLOT","fontSize":22},
+    {"path":"Canvas/S2_RiverValley/RevealRoot","type":"Empty","active":false},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/EvidenceStatus","type":"Label","position":{"x":-420,"y":130,"z":0},"label":"EVIDENCE","fontSize":15},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/Fact","type":"Label","position":{"x":-350,"y":70,"z":0},"label":"FACT","fontSize":16},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/Narrative","type":"Label","position":{"x":-350,"y":10,"z":0},"label":"LOCAL NARRATIVE","fontSize":16},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/DesignReading","type":"Label","position":{"x":-350,"y":-50,"z":0},"label":"DESIGN READING","fontSize":16},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/CloseReveal","type":"Button","position":{"x":430,"y":-180,"z":0}},
+    {"path":"Canvas/S2_RiverValley/RevealRoot/CloseReveal/Text","type":"Label","label":"关闭 Reveal","fontSize":16},
+
+    {"path":"Canvas/ReadingOverlay","type":"Empty","active":true},
+    {"path":"Canvas/ReadingOverlay/PageTitle","type":"Label","position":{"x":-430,"y":260,"z":0},"label":"页名","fontSize":30},
+    {"path":"Canvas/ReadingOverlay/Observation","type":"Label","position":{"x":-360,"y":210,"z":0},"label":"观察令","fontSize":18},
+    {"path":"Canvas/ReadingOverlay/RecordButton","type":"Button","position":{"x":350,"y":-210,"z":0},"active":false},
+    {"path":"Canvas/ReadingOverlay/RecordButton/Text","type":"Label","label":"记录此页","fontSize":16},
+    {"path":"Canvas/ReadingOverlay/RevealButton","type":"Button","position":{"x":350,"y":-150,"z":0},"active":false},
+    {"path":"Canvas/ReadingOverlay/RevealButton/Text","type":"Label","label":"揭示这一层","fontSize":16},
+
+    {"path":"Canvas/Route","type":"Empty","active":false},
+    {"path":"Canvas/Route/Title","type":"Label","position":{"x":-430,"y":250,"z":0},"label":"路线｜RETURN / SERVICE FIRST","fontSize":28},
+    {"path":"Canvas/Route/Priority","type":"Label","position":{"x":-330,"y":190,"z":0},"label":"返回/服务 > 当前路线 > 下一核心页 > Companion","fontSize":17},
+
+    {"path":"Canvas/MyBook","type":"Empty","active":false},
+    {"path":"Canvas/MyBook/Title","type":"Label","position":{"x":-430,"y":250,"z":0},"label":"我的石书｜PARTIAL IS COMPLETE","fontSize":28},
+    {"path":"Canvas/MyBook/BookSummary","type":"Label","position":{"x":-300,"y":180,"z":0},"label":"本次还没有留下印记；未完成也可以成为一本石书。","fontSize":17},
+
+    {"path":"Canvas/ReturnGuard","type":"Empty","active":true},
+    {"path":"Canvas/ReturnGuard/Label","type":"Label","position":{"x":-380,"y":-250,"z":0},"label":"请确认返程时间；运营信息以现场公告为准。","fontSize":15}
+  ]
+}
