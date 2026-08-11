@@ -1,0 +1,6 @@
+{
+  "schema": "SP02_PROVIDER_RECEIPT_v1.1",
+  "required": ["provider_id","provider_name","authority_state","runtime_state","definition_sha256","real_rhino","real_grasshopper","license_or_compute_authority","timestamp_utc"],
+  "runtime_state_allowed": ["RHINO_GRASSHOPPER_EXECUTED","HEADLESS_RHINO_GRASSHOPPER_EXECUTED","HOST_BLOCKED","PROVIDER_PREFLIGHT_ONLY","RUNTIME_FAIL"],
+  "authority_state_allowed": ["REAL_RHINO_GRASSHOPPER","REAL_HEADLESS_RHINO_GRASSHOPPER","HUMAN_AUTHORITY","TO_BE_PROVEN"]
+}
