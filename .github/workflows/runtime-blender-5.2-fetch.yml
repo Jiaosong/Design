@@ -1,0 +1,48 @@
+name: Runtime Blender 5.2 LTS Fetch
+
+on:
+  push:
+    branches:
+      - agent/runtime-blender-5.2-lts-fetch
+    paths:
+      - '.github/workflows/runtime-blender-5.2-fetch.yml'
+
+permissions:
+  contents: read
+
+env:
+  BLENDER_URL: https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz
+  BLENDER_FILE: blender-5.2.0-linux-x64.tar.xz
+  BLENDER_SHA256: 96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48
+
+jobs:
+  fetch-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Download official Blender 5.2.0 Linux x64
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 4 --retry-delay 3 "$BLENDER_URL" --output "$BLENDER_FILE"
+          echo "$BLENDER_SHA256  $BLENDER_FILE" | sha256sum --check --strict
+
+      - name: Verify Blender and Cycles runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/blender52
+          tar -xf "$BLENDER_FILE" -C /tmp/blender52
+          BLENDER_BIN="$(find /tmp/blender52 -maxdepth 2 -type f -name blender -perm -111 | head -n1)"
+          test -n "$BLENDER_BIN"
+          "$BLENDER_BIN" --background --version
+          "$BLENDER_BIN" --background --python-expr "import bpy; print('BLENDER_VERSION='+bpy.app.version_string); bpy.context.scene.render.engine='CYCLES'; print('RENDER_ENGINE='+bpy.context.scene.render.engine); print('CYCLES_AVAILABLE='+str('CYCLES' in [i.identifier for i in bpy.types.RenderSettings.bl_rna.properties['engine'].enum_items]))"
+
+      - name: Upload verified Blender archive
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: blender-5.2.0-linux-x64-verified
+          path: blender-5.2.0-linux-x64.tar.xz
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
