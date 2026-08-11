@@ -2,8 +2,8 @@
 
 **Canonical Project ID:** `C04`  
 **Current state:** `RESEARCH + PROPOSAL / WEB EVIDENCE REVIEW / FIELD NOT RUN`  
-**Primary layers:** `Culture + Spatial`  
-**Supporting layers:** `IP + Business`
+**Governance main layer:** `Spatial`  
+**Four-layer work emphasis:** `Culture + Spatial = PRIMARY`; `IP + Business = SUPPORTING / CONDITIONAL`
 
 Notion canonical entry: https://app.notion.com/p/3b9b86be5c4781beae61e05ce054a146?pvs=204
 
