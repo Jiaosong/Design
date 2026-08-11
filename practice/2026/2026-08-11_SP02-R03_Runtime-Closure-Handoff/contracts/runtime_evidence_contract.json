@@ -1,0 +1,27 @@
+{
+  "runtime_gate": {
+    "required_runtime_state": "RHINO_GRASSHOPPER_EXECUTED",
+    "must_be_real": true,
+    "forbidden_promotions": [
+      "provider preflight",
+      "offline Python equivalence",
+      "Rhino3dm-only processing",
+      "mock screenshot",
+      "manually edited runtime JSON without source .gh/.ghx"
+    ]
+  },
+  "required_files": [
+    "runtime_receipt.json",
+    "tree_runtime.json",
+    "component_inventory.json",
+    "grasshopper_canvas_four_state.png",
+    "rhino_viewport_four_state.png",
+    "adverse_case_canvas.png"
+  ],
+  "required_native_definition": {"extensions": [".gh", ".ghx"], "minimum_count": 1},
+  "checkpoint_rules": {
+    "CP2": "PASS only if real Rhino+Grasshopper runtime executed and nominal tree states match contract.",
+    "CP4": "PASS only if Parameter Viewer evidence is present for Base/Graft/Flatten/Path Mapper and component inventory confirms viewer objects."
+  },
+  "artifact_review": ["AR-G01","AR-G02","AR-G03","AR-G04","AR-G05","AR-G06","AR-G07","AR-G08","AR-G09","AR-G10","AR-S01","AR-S04","AR-S07","AR-S09"]
+}

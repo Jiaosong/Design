@@ -1,0 +1,41 @@
+{
+  "exercise": "SP02-R03｜Runtime Closure",
+  "truth_state": "RUNTIME HANDOFF READY / REAL RHINO-GRASSHOPPER NOT EXECUTED",
+  "nominal": {
+    "BASE": {
+      "paths": ["{0}","{1}","{2}","{3}"],
+      "branch_count": 4,
+      "data_count": 24,
+      "branch_lengths": [6,6,6,6]
+    },
+    "GRAFT": {
+      "branch_count": 24,
+      "data_count": 24,
+      "branch_lengths": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+      "path_dimension": 2
+    },
+    "FLATTEN": {
+      "paths": ["{0}"],
+      "branch_count": 1,
+      "data_count": 24,
+      "branch_lengths": [24]
+    },
+    "TRANSPOSE": {
+      "paths": ["{0}","{1}","{2}","{3}","{4}","{5}"],
+      "branch_count": 6,
+      "data_count": 24,
+      "branch_lengths": [4,4,4,4,4,4],
+      "contract": "Base {z} -> Graft {z;i} -> Path Mapper {A;B}->{B} -> {i}"
+    }
+  },
+  "adverse": {
+    "ADVERSE_TRANSPOSE": {
+      "branch_count": 6,
+      "data_count": 23,
+      "branch_lengths": [4,4,4,4,4,3],
+      "meaning": "zone {2} contains only 5 items; mismatch must remain visible"
+    }
+  },
+  "required_sink_nicknames": ["SP02_BASE","SP02_GRAFT","SP02_FLATTEN","SP02_TRANSPOSE","SP02_ADVERSE_TRANSPOSE"],
+  "required_viewer_nicknames": ["PV_BASE","PV_GRAFT","PV_FLATTEN","PV_TRANSPOSE","PV_ADVERSE"]
+}

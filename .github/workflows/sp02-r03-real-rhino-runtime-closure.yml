@@ -1,0 +1,35 @@
+name: SP02-R03 Real Rhino Runtime Closure
+
+on:
+  workflow_dispatch:
+    inputs:
+      gh_file:
+        description: 'Path to .gh/.ghx on the self-hosted Rhino runner workspace'
+        required: true
+        default: 'SP02_R03.gh'
+
+permissions:
+  contents: read
+
+jobs:
+  real-rhino-grasshopper:
+    # Deliberately cannot run on GitHub-hosted machines.
+    # Requires a self-hosted Windows machine with licensed Rhino 8.
+    runs-on: [self-hosted, Windows, X64, rhino8]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Execute real Rhino + Grasshopper
+        shell: powershell
+        run: |
+          $root = "practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff"
+          & "$root/runner/run_windows.ps1" -GhFile "${{ inputs.gh_file }}" -EvidenceDir "$root/runtime_evidence"
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp02-r03-real-rhino-runtime-evidence
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/runtime_evidence/
+          if-no-files-found: error
