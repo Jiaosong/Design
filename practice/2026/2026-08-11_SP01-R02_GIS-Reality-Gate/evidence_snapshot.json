@@ -1,0 +1,86 @@
+{
+  "exercise": "SP01-R02 GIS Reality Gate",
+  "final_workflow_run": {
+    "run_number": 5,
+    "run_id": 31454788861,
+    "head_sha": "9dab6e96f4446a0a8c76a7e7c825a6f98957274e",
+    "artifact_id": 9087641476,
+    "artifact_digest": "sha256:68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c"
+  },
+  "runtime": {
+    "qgis": "3.34.4-Prizren",
+    "gdal": "3.8.4",
+    "algorithm": "qgis:heatmapkerneldensityestimation",
+    "kernel": "Quartic",
+    "output": "Raw",
+    "radii_m": [75, 150, 300],
+    "pixel_sizes_m": [10, 25, 50],
+    "geo_tiff_count": 9,
+    "qgz_created": true,
+    "qgis_layout_count": 3
+  },
+  "input": {
+    "feature_count": 24,
+    "x_m_type": "Real",
+    "y_m_type": "Real",
+    "weight_type": "Integer",
+    "crs": "EPSG:3857_RUNTIME_PLACEHOLDER",
+    "project_data": "SYNTHETIC_TRAINING_ONLY"
+  },
+  "pixel_sensitivity": [
+    {
+      "radius_m": 75,
+      "component_counts_50pct": [4],
+      "max_weighted_centroid_shift_m": 6.151821312916791,
+      "area50_relative_spread": 0.04819277108433735,
+      "integral_inside_relative_spread": 0.000913670867986818,
+      "exercise_heuristic_only": "stable"
+    },
+    {
+      "radius_m": 150,
+      "component_counts_50pct": [1, 2],
+      "max_weighted_centroid_shift_m": 2.200016617956896,
+      "area50_relative_spread": 0.055637982195845696,
+      "integral_inside_relative_spread": 0.0012269180605686397,
+      "exercise_heuristic_only": "resolution-sensitive"
+    },
+    {
+      "radius_m": 300,
+      "component_counts_50pct": [1],
+      "max_weighted_centroid_shift_m": 3.6017586600896805,
+      "area50_relative_spread": 0.05299843014128729,
+      "integral_inside_relative_spread": 0.004349352821895218,
+      "exercise_heuristic_only": "stable"
+    }
+  ],
+  "edge_spill_fraction": {
+    "75m": {"10m": 0.0, "25m": 0.0, "50m": 0.0},
+    "150m": {"10m": 0.0012722705857846073, "25m": 0.0007623118066054646, "50m": 0.00022446143883136926},
+    "300m": {"10m": 0.04414136818474268, "25m": 0.04277320705540921, "50m": 0.039983280693117185}
+  },
+  "final_layout_contract": {
+    "common_map_extent": [-150.0, -150.0, 1200.0, 1200.0],
+    "map_scale_all_sheets": 5510.2040816326535,
+    "study_boundary": [0, 0, 1000, 1000],
+    "scale_bar": "0-300 m / 100 m segments",
+    "density_rendering": "PER_SHEET_MIN_MAX_STRETCH_FOR_MORPHOLOGY_ONLY",
+    "north_arrow": "INTENTIONALLY_OMITTED_SYNTHETIC_ORIENTATION"
+  },
+  "gate_decision": {
+    "qgis_runtime_gate": "PASS / VERIFIED",
+    "project_crs_gate": "OPEN",
+    "project_data_gate": "OPEN",
+    "project_reality": "OPEN",
+    "project_candidate_promotion": false,
+    "practice_status": "QGIS RUNTIME VERIFIED / PROJECT REALITY OPEN"
+  },
+  "review": {
+    "AR-G01-G10": "PASS",
+    "AR-S03": "PASS",
+    "AR-S04": "PASS",
+    "AR-S05": "PASS WITH PROJECT REALITY OPEN",
+    "AR-S07": "PASS",
+    "AR-S09": "PASS",
+    "final_artifact_reopen": "PASS"
+  }
+}
