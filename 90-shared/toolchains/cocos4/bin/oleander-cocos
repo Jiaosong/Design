@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+TOOL_ROOT="${OLEANDER_COCOS_TOOL_ROOT:-/opt/oleander/cocos4}"
+ENV_FILE="$TOOL_ROOT/toolchain.env"
+[[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
+usage(){ cat <<'TXT'
+OLEANDER COCOS 4 shared gateway
+Usage:
+  oleander-cocos doctor
+  oleander-cocos version
+  oleander-cocos create <project-path> [2d|3d]
+  oleander-cocos import <project-path>
+  oleander-cocos build <project-path> [platform]
+  oleander-cocos info <project-path>
+  oleander-cocos mcp <project-path> [port]
+  oleander-cocos raw <cocos-cli arguments...>
+TXT
+}
+cocos_bin(){
+  if command -v cocos >/dev/null 2>&1; then command -v cocos; return 0; fi
+  if [[ -x "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/node_modules/.bin/cocos" ]]; then echo "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/node_modules/.bin/cocos"; return 0; fi
+  if [[ -x "${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/dist/cli.js" ]]; then echo "node ${OLEANDER_COCOS_HOME:-$TOOL_ROOT}/cli/dist/cli.js"; return 0; fi
+  return 1
+}
+run_cocos(){ local cb; cb="$(cocos_bin)" || { echo "ERROR: upstream COCOS CLI is not installed yet." >&2; echo "Run: $TOOL_ROOT/bootstrap-linux.sh" >&2; exit 69; }; if [[ "$cb" == node\ * ]]; then $cb "$@"; else "$cb" "$@"; fi; }
+cmd="${1:-help}"; shift || true
+case "$cmd" in
+  help|-h|--help) usage ;;
+  doctor) "$TOOL_ROOT/doctor.sh" ;;
+  version) run_cocos --version ;;
+  create) p="${1:?project path required}"; type="${2:-2d}"; run_cocos create --project "$p" --type "$type" ;;
+  import) p="${1:?project path required}"; run_cocos import --project "$p" ;;
+  build) p="${1:?project path required}"; platform="${2:-web-mobile}"; run_cocos build --project "$p" --platform "$platform" ;;
+  info) p="${1:?project path required}"; run_cocos info --project "$p" ;;
+  mcp) p="${1:?project path required}"; port="${2:-9527}"; run_cocos start-mcp-server --project "$p" --port "$port" ;;
+  raw) run_cocos "$@" ;;
+  *) echo "Unknown command: $cmd" >&2; usage; exit 64 ;;
+esac
