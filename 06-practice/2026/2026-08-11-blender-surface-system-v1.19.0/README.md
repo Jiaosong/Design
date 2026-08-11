@@ -1,43 +1,30 @@
-# OLEANDER Blender Surface System｜v1.19.0｜Evidence Acquisition & Parameter Promotion Gate
+# OLEANDER Blender Surface System｜v1.19.0｜Designer Estimate & Realistic Process Simulation Gate
 
 Status: REVIEW / STACKED ON v1.18.0 / NOT MERGED
 Primary: IP03
 Supporting: SP03
+Scope: DESIGNER ONLY
 
 ## Purpose
-Obtain project-specific evidence before activating physical material/process parameters.
+Use defensible estimated values and visually realistic process simulation for CMF / Blender design work.
 
-## First-pass result
-- 4 project-definition promotions to `P2 PROJECT_DEFINED`.
-- 0 physical parameter promotions.
-- 6 Evidence Acquisition Requests.
+Supplier selection, exact grade, TDS/SDS, coating chemistry and production proof are **not prerequisites** for this system. Those remain downstream Engineering / Production Handoff topics.
 
-Promoted only as project definition:
-1. XJ01 PP Main Field material family = PP.
-2. XJ01 PP Main Field process = injection molding.
-3. XJ01 PU Contact material family = PU.
-4. XJ01 Iron Tube substrate identity = iron tube.
+## Designer parameter ladder
+`D0 UNDEFINED → D1 DESIGN_ESTIMATE → D2 DESIGN_CALIBRATED → D3 PROJECT_LOCKED_VISUAL_PROFILE`
 
-Held:
-- XJ01 PP roughness / feature-size hierarchy remains `VISUALIZATION_LOCKED`.
-- XJ01 powder coating remains `BLOCKED` / sample hypothesis.
-- Timer Housing / Knob / Diffuser remain `VISUALIZATION_LOCKED` for physical identity/process/optics.
+## Active design estimates
+- XJ01 PP Fine Matte: roughness 0.52, design range 0.48–0.58; subtle meso/micro hierarchy.
+- XJ01 PU Soft Matte: roughness 0.66, range 0.60–0.72.
+- XJ01 coated iron visual: metallic 0, roughness 0.46, range 0.40–0.55.
+- Timer Housing: roughness 0.55, range 0.48–0.62.
+- Timer Knob: roughness 0.28 / anisotropy 0.48 with directional logic.
+- Timer Diffuser: roughness 0.34 / transmission 0.85 with visually tuned scatter/Fresnel.
 
-## Promotion ladder
-`P0 UNKNOWN_OR_BLOCKED → P1 VISUALIZATION_LOCKED → P2 PROJECT_DEFINED → P3 SUPPLIER_DOCUMENTED → P4 SAMPLE_CALIBRATED → P5 PRODUCTION_VALIDATED`
+## Powder-coat simulation rule
+Treat the visible coat as an opaque dielectric layer over metal: Metallic = 0; narrow roughness variation; very weak optional bump; microstructure should disappear at normal product-view distance. Validate with broad-strip and grazing-strip reflections. Reject chrome response, visible sandpaper grain, exaggerated orange peel and random base-color speckle.
 
-## Evidence policy
-External manufacturer/industry references are `REFERENCE_ONLY` unless the project identifies the exact supplier/product/grade/process. Blender render parameters remain representation controls and are never relabeled as physical measurements.
+## Process-simulation rule
+The goal is to reproduce the **visual mechanism** of a plausible finish closely enough for design judgment, not to recreate a named supplier formula.
 
-## Acquisition priority
-P0:
-- XJ01 exact PP grade / supplier / mold-finish sample.
-- XJ01 exact PU system / supplier / process.
-- XJ01 iron-tube coating chemistry / TDS / coupon.
-- Timer diffuser exact polymer / grade / thickness / transmittance / haze.
-
-P1:
-- Timer housing exact material grade / finish / molded sample.
-- Timer knob alloy / brush / anodize designation / sample.
-
-Reality boundary: no new measured CMF, coating, optical, manufacturing or user claims are introduced by this PR.
+Reality boundary: Blender parameters are representation controls, not laboratory or supplier measurements.
