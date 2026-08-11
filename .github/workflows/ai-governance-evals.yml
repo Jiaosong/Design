@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   governance-corpus:
-    name: P0 + P1 + P2 governance, namespaces and runtime evidence
+    name: AIG-01 + AIG-02 + AIG-03 governance, namespaces and runtime evidence
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -28,31 +28,34 @@ jobs:
       - name: Validate case and claim namespaces
         run: python 00-governance/schemas/validate_namespaces.py
 
+      - name: Validate architecture namespaces
+        run: python 00-governance/schemas/validate_architecture_namespaces.py
+
       - name: Enforce immutable workflow action refs
         run: python evals/scripts/validate_workflow_action_pins.py
 
       - name: Validate release workflow defaults
         run: python evals/scripts/validate_workflow_release_defaults.py
 
-      - name: Compute P2 runtime metrics
-        run: python evals/runtime/compute_metrics.py | tee /tmp/p2-metrics.txt
+      - name: Compute AIG-03 runtime metrics
+        run: python evals/runtime/compute_metrics.py | tee /tmp/aig03-metrics.txt
 
       - name: Publish summary
         if: always()
         run: |
-          echo '## OLEANDER AI Governance P0 + P1 + P2' >> "$GITHUB_STEP_SUMMARY"
+          echo '## OLEANDER AI Governance AIG-01 + AIG-02 + AIG-03' >> "$GITHUB_STEP_SUMMARY"
           echo '- Runs on every pull request and every push to main, so it can be used as a stable required check.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates five reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates P1 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates P2 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates reserved case IDs, Claim namespace, C01 canonical schema and Legacy authority registry.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates AIG-02 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates AIG-03 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
-          echo '### P2 current evidence' >> "$GITHUB_STEP_SUMMARY"
-          if [ -f /tmp/p2-metrics.txt ]; then
-            sed 's/^/- /' /tmp/p2-metrics.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '### AIG-03 current evidence' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f /tmp/aig03-metrics.txt ]; then
+            sed 's/^/- /' /tmp/aig03-metrics.txt >> "$GITHUB_STEP_SUMMARY"
           else
-            echo '- P2 metrics unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
+            echo '- AIG-03 metrics unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
           fi

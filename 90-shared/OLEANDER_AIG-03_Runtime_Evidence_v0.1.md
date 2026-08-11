@@ -1,12 +1,15 @@
-# OLEANDER AI Runtime Evidence P2 v0.1
+# OLEANDER AIG-03｜AI Runtime Evidence v0.1
 
 Status: ACTIVE measurement protocol when present on `main` / scope-limited evidence only / not evidence of model reliability
-Canonical method source: Notion `01B-8｜AI Runtime Evidence Protocol v0.1｜P2 真实运行证据`
+Canonical method source: Notion `AIG-03｜AI Runtime Evidence Protocol v0.1｜真实运行证据`
+
+## Namespace rule
+`AIG-03` is the current runtime-evidence identifier. `P2` is reserved by the project axis for `Project`. Historical event IDs such as `P2-E011` remain immutable audit identifiers only; new runtime events use the `AIG3-E###` namespace.
 
 ## Purpose
-P0 governs whether AI may be used and whether a changed configuration may be promoted. P1 governs runtime failure, trust calibration and provenance. P2 measures whether those controls improve real OLEANDER work.
+AIG-01 governs whether AI may be used and whether a changed configuration may be promoted. AIG-02 governs runtime failure, trust calibration and provenance. AIG-03 measures whether those controls improve real OLEANDER work.
 
-P2 does not create more AI authority. It creates operational evidence about AI collaboration quality.
+AIG-03 does not create more AI authority. It creates operational evidence about AI collaboration quality.
 
 ## Core rule
 Never report a zero rate when no eligible denominator exists. Use `N/A — insufficient eligible evidence`.
@@ -23,10 +26,10 @@ Every metric must be segmented by scope. Governance-infrastructure evidence cann
 - `DATA-VIZ`
 - `KNOWLEDGE`
 
-## P2 metrics
+## AIG-03 metrics
 
 ### M1 | F1–F3 Failure Records
-Count confirmed P1 failures with evidence URL, category, escalation, containment and outcome.
+Count confirmed AIG-02 failures with evidence URL, category, escalation, containment and outcome.
 
 Failure count is diagnostic, not a target to minimize. Better detection may increase the count while reducing escape.
 
@@ -69,7 +72,7 @@ Golden-query corpus errors are governance-corpus failures; they are not automati
 - Scope
 - Event type
 - Project/object/version
-- P1 failure category when applicable
+- AIG-02 failure category when applicable
 - Escalation level when applicable
 - Evidence URL / immutable reference
 - Detection stage: PRE-RELEASE / POST-RELEASE / RUNTIME / N-A
@@ -99,10 +102,10 @@ Only `CONFIRMED` + `metric_eligible=true` events enter reported rates.
 - Do not improve Provenance Coverage by redefining eligible assets after seeing results.
 - Every denominator definition is fixed before rate calculation and remains visible in the report.
 
-## First baseline boundary — 2026-08-10
-The initial dataset may include verified P0/P1 implementation incidents from PR #20 and #21 under `GOVERNANCE-INFRA` only.
+## Historical baseline boundary
+The initial dataset includes verified pre-realignment AIG governance implementation incidents from historical PR #20 and #21 under `GOVERNANCE-INFRA` only. Those PR titles and `P2-*` event IDs remain immutable audit identifiers; they do not redefine the current P0/P1/P2 project axis.
 
-It must not claim:
+The initial dataset must not claim:
 - human override rate until qualified AI Recommendation Cards reach a human gate;
 - recommendation survival rate until a real-world test exists;
 - retrieval miss rate from a Golden Query authoring error;
@@ -111,8 +114,10 @@ It must not claim:
 
 The four initial failures all have explicit `release_opportunity=true` because they were on PR paths approaching `main`, and all were detected pre-release.
 
+Existing `P2-*` runtime records remain preserved as audit history and are not renumbered. Current AIG-03 reporting may consume those historical records where their evidence remains valid, while all new events use `AIG3-*` IDs.
+
 ## Collection sequence
-`AI Recommendation / AI Run → P1 record → Evidence URL → P2 eligibility check → Runtime event → Metric aggregation → Human review → Regression case / process change`
+`AI Recommendation / AI Run → AIG-02 record → Evidence URL → AIG-03 eligibility check → Runtime event → Metric aggregation → Human review → Regression case / process change`
 
 ## Review cadence
 - Per blocker: record immediately.
@@ -121,13 +126,13 @@ The four initial failures all have explicit `release_opportunity=true` because t
 - Any F2/F3 or post-release blocker: immediate review regardless of sample size.
 
 ## Decision use
-P2 metrics may justify:
+AIG-03 metrics may justify:
 - adding or changing a Golden Case;
 - narrowing AI permission;
 - changing a prompt/skill/tool;
 - requiring more reality testing;
 - changing retrieval authority rules;
 - improving provenance workflow;
-- P0 `HOLD` or `ROLLBACK`.
+- AIG-01 `HOLD` or `ROLLBACK`.
 
-P2 metrics cannot automatically approve a design, close a rights/safety gate, or replace professional and reality evidence.
+AIG-03 metrics cannot automatically approve a design, close a rights/safety gate, or replace professional and reality evidence.

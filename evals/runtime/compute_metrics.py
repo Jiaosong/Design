@@ -224,7 +224,7 @@ def aggregate(rows):
 
 
 def print_report(results):
-    print("P2 RUNTIME EVIDENCE: PASS")
+    print("AIG-03 RUNTIME EVIDENCE: PASS")
     if not results:
         print("No confirmed metric-eligible events.")
         return
@@ -252,7 +252,7 @@ def main():
         validate(rows)
         results = aggregate(rows)
     except AssertionError as exc:
-        print(f"P2 RUNTIME EVIDENCE: FAIL\n{exc}", file=sys.stderr)
+        print(f"AIG-03 RUNTIME EVIDENCE: FAIL\n{exc}", file=sys.stderr)
         return 1
     print_report(results)
     return 0

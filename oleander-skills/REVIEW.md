@@ -15,7 +15,7 @@ Canonical query: **What are the currently installed OLEANDER reusable skills in 
 
 Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`.
 
-This file is the current repository-state source for the installed reusable skills list. Installed-skill existence does **not** prove that a skill, prompt, or model version has passed regression evaluation; promotion remains governed by P0 and `evals/`.
+This file is the current repository-state source for the installed reusable skills list. Installed-skill existence does **not** prove that a skill, prompt, or model version has passed regression evaluation; promotion remains governed by AIG-01 and `evals/`.
 
 ## Review prompts
 
@@ -36,9 +36,9 @@ This file is the current repository-state source for the installed reusable skil
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
 - Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, uses native-first library routing, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility, dependency/runtime cost and export consistency.
 
-## P0 AI governance checks
+## AIG-01 AI governance checks
 
-The skill review is no longer sufficient by itself. Every reusable skill is governed by `90-shared/OLEANDER_AI_Governance_P0_v0.1.md` and the repository `evals/` harness.
+The skill review is no longer sufficient by itself. Every reusable skill is governed by `90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md` and the repository `evals/` harness.
 
 Before using or promoting a changed skill:
 
@@ -52,4 +52,4 @@ Before using or promoting a changed skill:
 
 ### Minimum coverage
 
-Each installed skill must have at least two maintained Golden Cases. CI validates case structure and P0 coverage; actual AI run results require explicit versioned evidence and human approval before `PROMOTE`.
+Each installed skill must have at least two maintained Golden Cases. CI validates case structure and AIG-01 coverage; actual AI run results require explicit versioned evidence and human approval before `PROMOTE`.

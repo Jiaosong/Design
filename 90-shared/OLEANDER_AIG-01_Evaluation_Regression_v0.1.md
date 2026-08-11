@@ -1,30 +1,31 @@
-# OLEANDER AI Governance P0 v0.1
+# OLEANDER AIG-01｜AI Evaluation & Regression v0.1
 
 Status: ACTIVE governance protocol when present on `main` / E1 static corpus gate required / not evidence of model reliability
-Canonical method source: Notion `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
+Canonical method source: Notion `AIG-01｜AI Evaluation & Regression Protocol v0.1｜评估与回归`
+
+## Namespace rule
+`AIG-01` is the current AI-governance identifier. `P0` is reserved by the project axis for `Portfolio` and must not be reused for AI governance. Historical records that already contain AI `P0` remain immutable audit evidence only.
 
 ## Retrieval alias / authority routing
-
 Canonical query: **What happens when a model, prompt, skill, tool or retrieval policy changes?**
 
 Search aliases: `model change`, `prompt change`, `skill update`, `tool change`, `retrieval policy change`, `AI change control`, `regression gate`, `rollback`.
 
-Authority rule: a model, prompt, skill, tool, retrieval policy, parser, canonical source, rendering path, or automation change is a governed candidate change. It must be evaluated against the approved baseline, cannot silently replace the current default, and must retain a rollback point. The full canonical method remains Notion `01B-6｜AI Evaluation & Regression Protocol v0.1`; this file is the GitHub execution contract.
+Authority rule: a model, prompt, skill, tool, retrieval policy, parser, canonical source, rendering path, or automation change is a governed candidate change. It must be evaluated against the approved baseline, cannot silently replace the current default, and must retain a rollback point. The full canonical method remains Notion `AIG-01｜AI Evaluation & Regression Protocol v0.1｜评估与回归`; this file is the GitHub execution contract.
 
 ## Purpose
-P0 prevents AI from becoming an unexamined default. It adds four controls before and around all AI-assisted design work:
+AIG-01 prevents AI from becoming an unexamined default. It adds four controls before and around all AI-assisted design work:
 
 1. AI Necessity Gate
 2. AI Eval Harness
 3. Retrieval & Context QA
 4. AI Change / Regression Gate
 
-AI may help execute these checks, but cannot close a P0 gate on itself.
+AI may help execute these checks, but cannot close an AIG-01 gate on itself.
 
 ---
 
-## P0-1 | AI Necessity Gate
-
+## AIG-01.1 | AI Necessity Gate
 Run before assigning a task to AI.
 
 ### Required questions
@@ -48,8 +49,7 @@ AI is never justified only because it is faster, available, visually impressive,
 
 ---
 
-## P0-2 | AI Eval Harness
-
+## AIG-01.2 | AI Eval Harness
 Every reusable OLEANDER skill, prompt family, or model-dependent workflow must be tested against task-specific cases.
 
 ### Eval layers
@@ -79,8 +79,7 @@ Scores never replace failure analysis. One blocker may fail a release even if th
 
 ---
 
-## P0-3 | Retrieval & Context QA
-
+## AIG-01.3 | Retrieval & Context QA
 Retrieval is a separate system to test. A fluent answer with the wrong source version is a failure.
 
 ### Golden query record
@@ -118,8 +117,7 @@ Do not dump the full archive into context when a scoped pack can preserve author
 
 ---
 
-## P0-4 | AI Change & Regression Gate
-
+## AIG-01.4 | AI Change & Regression Gate
 Any change to model, prompt, skill, tool, retrieval policy, canonical source, parser, rendering path, or automation must be treated as a governed system change.
 
 ### Change record
@@ -156,24 +154,20 @@ Model / skill version changes are analogous to changing a measuring instrument: 
 
 ---
 
-## P0 execution sequence
-
+## AIG-01 execution sequence
 `Necessity → Context Pack → Eval / Retrieval QA → Work → Human Gate → Regression Record → Promote or Rollback`
 
 ## Repository implementation
-
 - `evals/golden/` — task-specific benchmark cases
 - `evals/retrieval/` — canonical-source retrieval QA cases
 - `evals/change-control/` — promotion and rollback records
 - `evals/scripts/` — deterministic validators
 - `.github/workflows/ai-governance-evals.yml` — CI gate
 
-## Relationship to P1 runtime governance
-
-After P0 authorizes AI use, `90-shared/OLEANDER_AI_Governance_P1_v0.1.md` governs runtime failure/escalation, human-AI trust calibration and asset-level provenance. A P1 failure may force P0 `HOLD` or `ROLLBACK`, and repeated P1 blocker failures must be added to regression coverage.
+## Relationship to AIG-02 runtime governance and AIG-03 evidence
+After AIG-01 authorizes AI use, `90-shared/OLEANDER_AIG-02_Failure_Trust_Provenance_v0.1.md` governs runtime failure/escalation, human-AI trust calibration and asset-level provenance. `90-shared/OLEANDER_AIG-03_Runtime_Evidence_v0.1.md` measures real operational evidence. An AIG-02 failure may force AIG-01 `HOLD` or `ROLLBACK`; repeated blockers must be added to regression coverage. AIG-03 evidence may narrow permissions or change future regression cases.
 
 ## Relationship to existing OLEANDER governance
-
 - Truth states remain defined by AI Design Reasoning Protocol v0.2.
 - E0–E4 remain defined by Validation Protocol.
 - Simulation uses Simulation Protocol v0.2.
