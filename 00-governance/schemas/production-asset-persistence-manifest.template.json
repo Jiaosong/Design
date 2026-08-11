@@ -1,0 +1,52 @@
+{
+  "schema": "oleander.production-asset-persistence.v1",
+  "project": "PROJECT_NAME",
+  "version": "v0.0",
+  "production_id": "RUN_OR_GATE_ID",
+  "status": "PERSISTENCE PENDING",
+  "promotion_eligible": false,
+  "verified_at": null,
+  "notes": "Promotion remains locked until every required artifact has at least one independently retrieved durable copy with matching SHA-256 and byte size.",
+  "artifacts": [
+    {
+      "role": "native_source",
+      "required": true,
+      "applicability": "REQUIRED",
+      "na_reason": null,
+      "filename": "authoritative-native-source.blend",
+      "sha256": null,
+      "bytes": null,
+      "durable_copies": []
+    },
+    {
+      "role": "canonical_model",
+      "required": true,
+      "applicability": "REQUIRED",
+      "na_reason": null,
+      "filename": "canonical-model.glb",
+      "sha256": null,
+      "bytes": null,
+      "durable_copies": []
+    },
+    {
+      "role": "production_zip",
+      "required": true,
+      "applicability": "REQUIRED",
+      "na_reason": null,
+      "filename": "production-package.zip",
+      "sha256": null,
+      "bytes": null,
+      "durable_copies": []
+    },
+    {
+      "role": "checksum",
+      "required": true,
+      "applicability": "REQUIRED",
+      "na_reason": null,
+      "filename": "SHA256SUMS.txt",
+      "sha256": null,
+      "bytes": null,
+      "durable_copies": []
+    }
+  ]
+}
