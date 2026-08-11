@@ -1,13 +1,8 @@
 {
-  "schema": "oleander.external-reference-only-register.v1",
+  "schema": "oleander.external-reference-register.deprecated.v1",
   "version": "v1.19.0",
-  "policy": "Official manufacturer/industry references are REFERENCE_ONLY unless the project identifies the exact supplier/product/grade/process.",
-  "references": [
-    {"ref_id":"REF-PP-LYB-MOPLEN-HP500N","authority":"LyondellBasell","material":"PP homopolymer","grade":"Moplen HP500N","project_match":"NONE"},
-    {"ref_id":"REF-PCABS-COVESTRO-BAYBLEND-T80XG","authority":"Covestro","material":"PC+ABS","grade":"Bayblend T80 XG","project_match":"NONE"},
-    {"ref_id":"REF-OPTICAL-PC-COVESTRO-LED2245","authority":"Covestro","material":"polycarbonate","grade":"Makrolon LED2245","project_match":"NONE"},
-    {"ref_id":"REF-TPU-BASF-ELASTOLLAN","authority":"BASF","material":"TPU family reference","project_match":"NONE"},
-    {"ref_id":"REF-POWDER-INTERPON-610","authority":"Interpon","material":"polyester powder coating","grade":"Interpon 610 example","project_match":"NONE"},
-    {"ref_id":"REF-AL-FINISH-AA-DESIGNATION","authority":"The Aluminum Association","material":"aluminum finish designation system","project_match":"NONE"}
-  ]
+  "status": "DEPRECATED_FROM_DESIGNER_GATE",
+  "policy": "Supplier / grade / TDS / manufacturer-reference acquisition is not required for OLEANDER Blender Surface System designer work. This file is retained only as an audit trace of a superseded scope direction.",
+  "active_references": [],
+  "designer_rule": "Use reasonable estimated values, realistic visual process simulation, scale-aware QA and explicit non-physical semantics."
 }
