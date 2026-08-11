@@ -1,6 +1,6 @@
 # OLEANDER Product Rendering Standard v0.1 — Timer R54
 
-Status: `STANDARD BUILT / PRODUCTION RENDER EXECUTION PENDING`
+Status: `STANDARD BUILT / BLENDER 5.2 LTS + CYCLES CPU SMOKE PASS / PRODUCTION RENDER EXECUTION PENDING`
 
 R54 is a production-rendering rebuild, not another visual-tuning round. The objective is to make material appearance portable, auditable, and separable from geometry authority.
 
@@ -9,7 +9,7 @@ R54 is a production-rendering rebuild, not another visual-tuning round. The obje
 - **FACT** — canonical GLB bytes, mesh names, positions, face topology, SHA and dimensions.
 - **METHOD** — OpenPBR material structure, scene-linear rendering, reflection-card lighting, path tracing and AOV review.
 - **VISUALIZATION HYPOTHESIS** — PC+ABS finish, anodized-aluminum finish, PMMA/opal IOR/scatter values until samples are measured.
-- **PENDING** — final production renderer execution, sample calibration, optical validation and physical CMF validation.
+- **PENDING** — full-quality production R54 render, sample calibration, optical validation and physical CMF validation.
 
 ## Geometry contract
 
@@ -65,6 +65,8 @@ Keep lighting and compositing scene-linear. CMF review uses **Khronos PBR Neutra
 
 Production target: path tracing + adaptive sampling. Working master: multilayer floating-point EXR. Required passes: Combined, Diffuse Color, Glossy/Specular, Transmission, Emission, Normal, Depth, Shadow, Cryptomatte Object and Cryptomatte Material.
 
+Blender 5.2 routes the R54 multilayer output through a compositor `File Output` node; the scene render output remains regular OpenEXR. This avoids relying on the older direct `RenderSettings.image_settings = OPEN_EXR_MULTILAYER` path.
+
 ## Promotion gates
 
 - `R54-G0` Source Authority
@@ -77,8 +79,22 @@ Production target: path tracing + adaptive sampling. Working master: multilayer 
 
 R54 may replace `hero_poster.png` / `material_poster.png` only after G0–G6 pass and explicit visual approval. Promotion then regenerates internal `SHA256SUMS.txt`, critical-file hashes, outer package SHA and deployment manifest/contract.
 
-Until that gate, current v3.3 POSTERLOCK remains authority and PR #23 is untouched.
+Until that gate, current v3.3 POSTERLOCK remains authority. Its deployment manifest authority is the merged PR #33; R54 does not modify that authority.
+
+## Blender 5.2 runtime evidence — 2026-08-11
+
+- Runtime: `Blender 5.2.0 LTS`, commit `fbe6228777e7`.
+- Renderer: `Cycles`.
+- Current execution device: CPU (`AMD EPYC 9V74`); CUDA/HIP GPU acceleration is unavailable in this container.
+- Canonical GLB SHA check: **PASS**.
+- Canonical mesh import: **21/21 PASS**.
+- Compatibility smoke render: `320 × 240`, `16 samples`, `Khronos PBR Neutral`.
+- Beauty EXR: **PASS**.
+- Multilayer EXR: **PASS**, with 13 routed outputs covering Combined plus depth/normal/material-lighting and Cryptomatte channel groups.
+- Classification: **RUNTIME COMPATIBILITY ONLY / NOT PRODUCTION QUALITY**.
+
+The smoke render proves that Blender 5.2 + Cycles + canonical GLB + R54 camera/light/material/AOV path executes in this environment. It does **not** upgrade R54-G3, G4 or G5 to production PASS, and does not authorize poster promotion.
 
 ## Current execution boundary
 
-The current ChatGPT runtime has no Blender/Cycles, MaterialX Python, OpenImageIO or OpenColorIO runtime. The R54 standard and Blender/Cycles adapter are authored and locally syntax-validated, but no production path-traced R54 render is claimed.
+Blender/Cycles is now available. MaterialX Python, OpenImageIO and OpenColorIO Python remain unavailable in this runtime. Full-quality path-traced R54 rendering at production sample/resolution settings is still `NOT RUN`.
