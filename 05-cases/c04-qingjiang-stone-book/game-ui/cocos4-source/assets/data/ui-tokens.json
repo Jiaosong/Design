@@ -1,0 +1,14 @@
+{
+  "systemName":"山水游历志 × 石拓印记 × 图卷式探索 UI",
+  "principles":["真实景观第一阅读层","游戏感来自探索与留痕而非奖励经济","每屏一个强主动作","文化回声与地质事实分层","S0节点主动退屏"],
+  "colorRoles":{
+    "rockBlack":"#171817",
+    "qingjiangTeal":"#204C4B",
+    "riverMist":"#8DA6A0",
+    "oldBronze":"#8B7652",
+    "paperWarm":"#D7D0C1",
+    "sealVermilion":"#9A3B32"
+  },
+  "motion":["揭页","路线显现","印痕留下","水纹轻响应"],
+  "forbidden":["经验值","等级","金币","宝箱","稀有度","强制13/13通关","每点AR","仙侠手游金框皮肤"]
+}
