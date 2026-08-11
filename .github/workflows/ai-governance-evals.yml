@@ -28,6 +28,9 @@ jobs:
       - name: Validate case and claim namespaces
         run: python 00-governance/schemas/validate_namespaces.py
 
+      - name: Validate architecture namespaces
+        run: python 00-governance/schemas/validate_architecture_namespaces.py
+
       - name: Enforce immutable workflow action refs
         run: python evals/scripts/validate_workflow_action_pins.py
 
@@ -45,7 +48,7 @@ jobs:
           echo '- Validates reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-02 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-03 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates reserved case IDs, Claim namespace, C01 canonical schema and Legacy authority registry.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
