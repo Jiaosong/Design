@@ -1,6 +1,6 @@
 # C04-WS-07A｜Runtime / Visual Reading System Materialization v0.1
 
-Status: `RUNTIME SOURCE BUILD PASS / INTERACTIVE SCENE MOUNT PENDING`
+Status: `RUNTIME SOURCE BUILD PASS / OFFICIAL SCENE MATERIALIZATION PASS / VISUALPROTOTYPE WEB-MOBILE BUILD PASS / RUNTIME CAPTURE ACTIVE / VISUAL AUDIT OPEN`
 
 Date: 2026-08-11
 
@@ -20,32 +20,74 @@ The pre-existing `assets/data/nodes.json` is retained as Legacy/framework histor
 
 ## 3. Runtime code
 
-New `assets/scripts/ws07a/` modules: `RuntimeTypes.ts`, `RuntimeCatalog.ts`, `RuntimeStore.ts`, `VisualPrototypeController.ts`, and `VisualAuditRules.ts`.
+Runtime modules under `assets/scripts/ws07a/`: `RuntimeTypes.ts`, `RuntimeCatalog.ts`, `RuntimeStore.ts`, `VisualPrototypeController.ts`, and `VisualAuditRules.ts`.
 
-The controller intentionally exposes Creator Inspector references instead of embedding scene UUIDs in source code.
+`VisualPrototypeController` resolves the stable scene naming contract at runtime rather than embedding generated Creator UUIDs. The current capture branch also exposes a bounded `globalThis.__OLEANDER_WS07A__` research/test bridge for deterministic browser-state capture and removes it when the component is destroyed.
 
-## 4. CI evidence — PASS
+## 4. Verified CI evidence
 
-Authority commit: `12bdf2a4921e548db4ca6306aafb76de290d2767` on Draft PR #49.
+### 4.1 Runtime source/build — PASS
 
-Validated on GitHub Actions:
-- `AI Governance Evals #92` — SUCCESS.
-- `OLEANDER COCOS4 Smoke #25` — SUCCESS.
-- `Validate C04 WS-07A runtime source` — SUCCESS.
+Initial authority commit: `12bdf2a4921e548db4ca6306aafb76de290d2767` on Draft PR #49.
+
+GitHub Actions verified:
+- WS-07A runtime contract validator — SUCCESS.
 - shared COCOS4 bootstrap — SUCCESS.
 - `oleander-cocos doctor` — SUCCESS.
 - C04 materialization from authoritative source pack — SUCCESS.
 - `web-mobile` build — SUCCESS.
 
-Therefore the source/build gate advances to `RUNTIME SOURCE BUILD PASS`.
+Therefore `RUNTIME SOURCE BUILD PASS` is established.
 
-## 5. What this pass does not claim
+### 4.2 Official VisualPrototype scene materialization — PASS
 
-The checked-in `OleanderSmoke.scene` remains a build-smoke asset, not the final visual prototype. COCOS scripting behavior becomes interactive only after the component is mounted to scene nodes. Therefore this pass is not yet `LOCAL RUN PASS`, `VISUAL AUDIT PASS`, or `REPO RUNTIME PASS`.
+`OLEANDER COCOS4 Smoke #28` on PR #49 commit `2ac2c4368dbcf90c4ee220790228162078bbaa87` completed SUCCESS.
 
-Next gate: `official VisualPrototype.scene creation/mount → S0/S1/S2 runtime capture → visual audit → Route/My Book audit → REPO RUNTIME PASS`.
+That run used the pinned official COCOS MCP asset API to:
+- create/open `VisualPrototype.scene`;
+- create the WS-07A node hierarchy;
+- add/set COCOS UI components;
+- mount `C04WS07AVisualPrototypeController`;
+- save, reload and query the generated scene;
+- remove the legacy `OleanderSmoke.scene` from build evidence;
+- build the generated VisualPrototype as `web-mobile`.
 
-The preferred route is the pinned official Creator/CLI/MCP asset API. If that pinned toolchain cannot create/save SceneAsset, Node, Component and serialized references, the gate remains pending; generated Creator metadata must not be hand-authored merely to force a pass.
+Therefore `OFFICIAL SCENE MATERIALIZATION PASS` and `VISUALPROTOTYPE WEB-MOBILE BUILD PASS` are established. Generated Creator project metadata remains generated output, not authored source authority.
+
+### 4.3 Browser runtime capture — ACTIVE
+
+Current PR #49 head: `e56c1b561b7ccfd28a6a76087e4e9ee6893d8782`.
+
+The active CI adds deterministic HTTP-served browser capture using Chrome DevTools Protocol without introducing Playwright/Puppeteer dependency drift. It targets:
+- `1080×1920`;
+- `390×844` narrow mobile;
+- `844×390` wide/landscape mobile.
+
+For each viewport it drives and captures:
+1. S0 一线天;
+2. S1 红岩嘴;
+3. S1 record state;
+4. S2 河谷;
+5. S2 Reveal;
+6. Route;
+7. My Book.
+
+Expected evidence is 18 screenshots plus `runtime-capture-report.json`, browser console/runtime exception records, scene proof and UITransform world-space AABB snapshots. Structural runtime failures are fail-closed; AABB overlap candidates are recorded for visual review rather than silently promoted to `VISUAL AUDIT PASS`.
+
+## 5. Current gate boundary
+
+Established:
+- `RUNTIME SOURCE BUILD PASS`;
+- `OFFICIAL SCENE MATERIALIZATION PASS`;
+- `VISUALPROTOTYPE WEB-MOBILE BUILD PASS`.
+
+Open:
+- `RUNTIME CAPTURE` — current CI executing;
+- `VISUAL AUDIT` — requires inspection of actual screenshots and geometry evidence;
+- `LANDSCAPE FIRST FINAL VISUAL PASS` — cannot be claimed while `LandscapeSlot` is still placeholder media;
+- `REPO RUNTIME PASS` — only after runtime capture + visual audit closure.
+
+No runtime/build result in this workstream changes `G1F IMPLEMENTATION HOLD` for field installation or engineering claims.
 
 ## 6. Visual audit targets
 
@@ -56,3 +98,4 @@ The preferred route is the pinned official Creator/CLI/MCP asset API. If that pi
 - Return/Service stays more reachable than Companion.
 - Route and book remain usable without network/GPS/AR.
 - 1080×1920 plus narrow/wide mobile ratios require explicit overflow/occlusion audit.
+- A structural runtime capture pass is not equivalent to a visual-design pass.
