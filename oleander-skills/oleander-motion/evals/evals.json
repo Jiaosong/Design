@@ -18,6 +18,30 @@
       "prompt": "制作一个网页滚动触发的项目状态转场，要求处理 interrupt/reverse、Reduced Motion、60/120Hz 差异、遮挡和首屏性能，并输出可复现实现说明。",
       "expected_output": "An implemented interaction plan or runtime artifact with AR-S10 checks for interruption, accessibility, frame pacing, latency, export/runtime consistency, and evidence boundaries.",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "一个项目卡片只需要展开/收起、位置与尺寸连续变化，并且当前网站没有动画依赖。为它选择实现路径，不得因为效果更丰富就默认引入 GSAP。",
+      "expected_output": "A native-first routing decision that compares CSS/WAAPI/View Transitions or Motion only when framework/layout needs justify it, with interruption and Reduced Motion checks.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "设计一个包含多个叙事段落、pin、scrub、可逆滚动和共享布局状态的长篇项目页。比较原生 scroll-driven animation、Motion 与 GSAP/ScrollTrigger/Flip，并给出依赖升级理由。",
+      "expected_output": "A capability-based comparison that selects the smallest adequate stack, explicitly addresses scroll-jacking, pinning, reverse/interrupt behavior, performance and Reduced Motion, and rejects library-first reasoning.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "一个交互式矢量状态资产需要 idle、hover、pressed、success、error 与数据输入驱动的转换。比较 Rive 与 Lottie，说明为什么两者不是同一种运行模型。",
+      "expected_output": "A routing explanation that treats Rive as an interactive state-machine route and Lottie primarily as vector animation delivery/playback, with real-runtime handoff and source/export checks.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "一个网页需要高密度 2D 场、位移、噪声和自定义 shader，同时另一个对象是可旋转的真实 3D 产品。分别选择 PixiJS 与 Three.js，并列出 GPU/performance QA，而不是把两类渲染任务混成一个库。",
+      "expected_output": "Separate renderer decisions for dense GPU 2D versus true 3D, with filter/post-processing cost, device variance, fallback and AR-S10 runtime evidence requirements.",
+      "files": []
     }
   ]
 }
