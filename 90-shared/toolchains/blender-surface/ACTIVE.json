@@ -1,0 +1,37 @@
+{
+  "schema": "oleander.blender-surface-system.active.v1",
+  "system_name": "OLEANDER Blender Surface System",
+  "active_version": "v1.6",
+  "version_policy": "CONTINUOUSLY_UPDATED_GLOBAL_SYSTEM",
+  "resolution_policy": {
+    "development": "FOLLOW_ACTIVE_AND_RECORD_SNAPSHOT",
+    "controlled_gate": "RESOLVE_ACTIVE_THEN_FREEZE_EXACT_HASHES_IN_RUN_MANIFEST",
+    "promotion": "PIN_RESOLVED_VERSION_AND_HASHES"
+  },
+  "source_status": {
+    "umbrella_version": "USER_DECLARED_v1.6",
+    "canonical_v1_6_single_manifest_found_in_connected_sources": false,
+    "integration_basis": "RESOLVED_ACTIVE_COMPONENT_CORPUS",
+    "component_document_versions": "v1.0",
+    "note": "This integration manifest does not rewrite the user-authored Surface System; it makes the resolved corpus executable and reproducible."
+  },
+  "components": {
+    "material_process_archetypes": {
+      "path": "versions/v1.6/material_process_archetypes.json",
+      "raw_sha256": "355ad5c22866213499f4a507ba87b36480eef86744f7ef447ba422fd29810b92",
+      "semantic_sha256": "6e759b4f3ccef904446ddd20c8907e54a837e2207f51b240a6c3121b7574d7c0",
+      "source_schema": "oleander.material-process-archetypes.v1"
+    },
+    "texture_node_recipes": {
+      "path": "versions/v1.6/texture_node_recipes.json",
+      "raw_sha256": "b3d108fe2c5ef4191d3e2c4a90334b10065fb3717d6abbd11f75c876a45eb5f5",
+      "semantic_sha256": "f3baba8d4bb698cd8678c97861816bab4afa0cac2b83b747aeda65af15b5a683",
+      "source_schema": "oleander.texture-node-recipes.v1"
+    }
+  },
+  "target_runtime": {
+    "blender": "5.2.0 LTS",
+    "engine": "CYCLES"
+  },
+  "evidence_boundary": "All numerical appearance seeds remain VISUALIZATION_HYPOTHESIS unless separately measured, manufacturer-specified, or sample-calibrated."
+}
