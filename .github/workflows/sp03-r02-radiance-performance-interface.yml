@@ -1,0 +1,74 @@
+name: SP03-R02 Radiance Performance Interface
+
+on:
+  push:
+    branches:
+      - practice/2026-08-11-sp03-r02-light-performance-interface
+    paths:
+      - 'practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/**'
+      - '.github/workflows/sp03-r02-radiance-performance-interface.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  radiance-performance-interface:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+        working-directory: practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Install Radiance and analysis dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            radiance \
+            python3-numpy \
+            python3-matplotlib
+          command -v oconv
+          command -v rtrace
+          command -v rpict
+          command -v gensky
+          command -v evalglare
+          rtrace -version || true
+          evalglare -v || true
+
+      - name: Execute real Radiance interface matrix
+        run: |
+          bash run_radiance_gate.sh
+
+      - name: Assert truth boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path('outputs/gate_decision.json').read_text())
+          assert g['radiance_runtime_gate']=='PASS', g
+          assert g['glare_runtime_gate']=='PASS', g
+          assert g['performance_interface_gate']=='PASS', g
+          assert g['project_geometry_gate']=='OPEN', g
+          assert g['project_material_gate']=='OPEN', g
+          assert g['project_sky_time_gate']=='OPEN', g
+          assert g['project_program_threshold_gate']=='OPEN', g
+          assert g['project_reality_promotion'] is False, g
+          assert g['final_artifact_review']=='PENDING', g
+          print(json.dumps(g, indent=2))
+          PY
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp03-r02-radiance-performance-evidence
+          path: |
+            practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/runtime/
+            practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/outputs/
+            practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/input_contract.json
+          if-no-files-found: error
+          retention-days: 30

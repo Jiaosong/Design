@@ -1,0 +1,55 @@
+{
+  "exercise": "SP03-R02 Light Role -> Performance Interface",
+  "truth_state": "SYNTHETIC PERFORMANCE TEST CELL",
+  "project_reality_gate": "OPEN",
+  "geometry": {
+    "room_m": {"length_x": 12.0, "width_y": 6.0, "height_z": 3.6},
+    "workplane_z_m": 0.8,
+    "eye_z_m": 1.6,
+    "sensor_step_m": 0.5,
+    "axis_note": "+X = sequence direction; +Y = nominal north for coordinate consistency only"
+  },
+  "roles": [
+    {"id":"ENTRY","x_range_m":[0,3],"intended_rank":3},
+    {"id":"STAY","x_range_m":[3,6],"intended_rank":1},
+    {"id":"TURN","x_range_m":[6,9],"intended_rank":2},
+    {"id":"BACKGROUND","x_range_m":[9,12],"intended_rank":4}
+  ],
+  "materials": {
+    "wall_reflectance_h": 0.65,
+    "ceiling_reflectance_h": 0.80,
+    "floor_reflectance_h": 0.25,
+    "glazing_radiance_rgb_transmissivity_h": [0.60,0.60,0.60],
+    "note": "All material values are exercise hypotheses, not measured project properties; glazing values are Radiance glass parameters, not claimed product VLT."
+  },
+  "aperture_control": {
+    "skylight_y_range_m": [2.25,3.75],
+    "centers_x_m": [1.5,4.5,7.5,10.5],
+    "scheme_A_uniform_widths_m": [1.2,1.2,1.2,1.2],
+    "scheme_B_sequence_widths_m": [0.8,2.4,1.0,0.6],
+    "same_total_aperture_area_required": true
+  },
+  "sky_scenarios": [
+    {"id":"OVC","gensky_args":"-ang 45 0 -c","project_time":null,"status":"EXERCISE SKY"},
+    {"id":"CLEAR_E","gensky_args":"-ang 25 -60 +s","project_time":null,"status":"EXERCISE SOLAR ANGLE"},
+    {"id":"CLEAR_HIGH","gensky_args":"-ang 65 0 +s","project_time":null,"status":"EXERCISE SOLAR ANGLE"},
+    {"id":"CLEAR_W","gensky_args":"-ang 25 60 +s","project_time":null,"status":"EXERCISE SOLAR ANGLE"}
+  ],
+  "metrics": {
+    "illuminance_lux": "SIMULATED",
+    "zone_mean_lux": "SIMULATED",
+    "uniformity_u0_min_over_mean": "SIMULATED",
+    "coefficient_of_variation": "SIMULATED / descriptive only",
+    "role_rank_spearman": "CUSTOM EXERCISE HEURISTIC",
+    "dgp": "SIMULATED with evalglare where available; interpret within evalglare applicability limits",
+    "absolute_project_thresholds": "NOT SET"
+  },
+  "comparison_contract": [
+    "same room geometry",
+    "same total skylight area",
+    "same material parameters",
+    "same sky scenario",
+    "same sensor grid and viewpoints",
+    "only skylight area distribution changes between A and B"
+  ]
+}
