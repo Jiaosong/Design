@@ -7,6 +7,7 @@
 - `oleander-3d-pipeline`: 3D naming, units, exchange, axonometric, render, and archive workflow.
 - `oleander-story-and-board`: shared narrative for boards, reports, decks, brand stories, and films.
 - `oleander-delivery-qc`: non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D, and interactive outputs.
+- `oleander-motion`: purposeful motion design, state-transition prototyping, 3D/procedural motion, interactive motion, reduced-motion alternatives, delivery, and AR-S10 Motion QA.
 
 ## Retrieval alias / authority routing
 
@@ -23,6 +24,7 @@ This file is the current repository-state source for the installed reusable skil
 3. 3D pipeline: Hand a Blender scene to Unreal while producing a layered Illustrator-ready exploded axonometric.
 4. Story and board: Compile approved findings, analysis diagrams, and renders into two A0 boards and a 12-page deck.
 5. Delivery QC: Inspect A0 PDFs, a 4K film, render images, and a GLB model without modifying masters.
+6. Motion: Design one state change as no-motion baseline, candidate variants and Reduced Motion; execute in a real runtime when available and review with AR-S10 rather than judging only visual smoothness.
 
 ## Acceptance checks
 
@@ -32,6 +34,7 @@ This file is the current repository-state source for the installed reusable skil
 - 3D handoffs record units, axes, dependencies, versions, and exchange tests.
 - Narrative outputs trace claims back to approved research.
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
+- Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility and export consistency.
 
 ## P0 AI governance checks
 
