@@ -60,7 +60,7 @@ const requiredScenePaths = [
   'Canvas/ReturnGuard',
 ];
 for (const requiredPath of requiredScenePaths) if (!scenePaths.includes(requiredPath)) fail(`scene contract missing ${requiredPath}`);
-const controllerPaths = ['S0_OneLineSky','S1_RedRockMouth','S2_RiverValley','S2_RiverValley/RevealRoot','ReadingOverlay','Route','MyBook','ReturnGuard'];
+const controllerPaths = ['S0_OneLineSky','S1_RedRockMouth','S2_RiverValley','S2_RiverValley/RevealRoot','ReadingOverlay','Route','MyBook','ReturnGuard/Label'];
 for (const relativePath of controllerPaths) if (!controller.includes(`'${relativePath}'`)) fail(`controller does not resolve ${relativePath}`);
 
 console.log('PASS: WS-07A runtime + official scene materialization contract');
