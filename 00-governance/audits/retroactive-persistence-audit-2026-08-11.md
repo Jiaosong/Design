@@ -80,6 +80,23 @@ The populated canonical folder was overlooked by the initial audit.
 
 The Visual Grid / `v0.7-R1` contents remain Legacy evidence and do not become current IP authority.
 
+## Canonical v1.1 Drive package
+
+Current canonical Drive folder:
+
+- folder ID: `1PXhKKv1E5K9M7Lw3KBejJyCqmGiYQFlF`
+- ZIP ID: `1P65rfFJjyBmZ7R-is9LWedR0PXbIvql8`
+- external SHA sidecar ID: `1HOuIvyTwL5bqH1jrmK4ouV7qiON506O_`
+- Markdown report ID: `1XHiQEaWiVYyJPaL5TYvbANVgSX2Ifq5W`
+- CSV registry ID: `1M64cyf2bNkiVQVsPL6ytIusQFsX4AxvG`
+- ZIP bytes: `20050`
+- SHA-256: `83917cda1d50a74fbb52e5456743909371226b59d7f0af0f97fea66c226954ce`
+- independent Drive re-download: **PASS**
+- external sidecar match: **PASS**
+- `unzip -t`: **PASS**
+
+A second Drive folder created during re-verification was renamed `SECONDARY-COPY__Retroactive-Audit-v1.1-2026-08-11` and is explicitly **non-canonical**. Folder ID: `1Ov2Hk0qDFmcJYHgHb4rajjp0VDnLdlB9`.
+
 ## Remaining confirmed FAIL chains
 
 1. `TIMER-R54-G3.2` — exact G3.2 `.blend`, canonical GLB and production ZIP still cannot be re-materialized. Historical G0–G5 evidence remains; G7/Promotion stays locked.
@@ -118,6 +135,6 @@ Do not misclassify absent native files when execution never occurred:
 
 `P1 Timer/XJ01 → P2 SP02 Relational Field → P3 legacy provenance + receipt/checksum backfill`
 
-Local v1.1 audit package SHA-256:
+Canonical v1.1 audit package SHA-256:
 
 `83917cda1d50a74fbb52e5456743909371226b59d7f0af0f97fea66c226954ce`
