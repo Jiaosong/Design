@@ -1,0 +1,19 @@
+{
+  "schema": "oleander.cmf-material-parameter-preset-contract.v1",
+  "system": "OLEANDER Blender Surface System",
+  "version": "v1.20.0",
+  "scope": "DESIGNER_ESTIMATE_AND_REALISTIC_PROCESS_SIMULATION",
+  "material_presets": [
+    {"material_id":"MAT-SIM-POWDER-FINE-MATTE-001","material_name":"OL_MAT_PowderCoatFineMatte_v1","parameter_id":"PAR-SIM-POWDER-FINE-MATTE-001","roughness":0.46,"roughness_range":[0.40,0.55],"metallic":0.0},
+    {"material_id":"MAT-SIM-PP-FINE-MATTE-001","material_name":"OL_MAT_PPFineMatte_v1","parameter_id":"PAR-SIM-PP-FINE-MATTE-001","roughness":0.52,"roughness_range":[0.48,0.58],"metallic":0.0},
+    {"material_id":"MAT-SIM-PU-SOFT-MATTE-001","material_name":"OL_MAT_PUSoftMatte_v1","parameter_id":"PAR-SIM-PU-SOFT-MATTE-001","roughness":0.66,"roughness_range":[0.60,0.72],"metallic":0.0},
+    {"material_id":"MAT-SIM-AL-BRUSHED-ANODIZED-001","material_name":"OL_MAT_BrushedAnodizedAl_v1","parameter_id":"PAR-SIM-AL-BRUSHED-ANODIZED-001","roughness":0.28,"roughness_range":[0.22,0.36],"metallic":1.0,"anisotropy":0.48,"anisotropy_range":[0.35,0.60]},
+    {"material_id":"MAT-SIM-DIFFUSER-MILKY-001","material_name":"OL_MAT_MilkyDiffuser_v1","parameter_id":"PAR-SIM-DIFFUSER-MILKY-001","roughness":0.34,"roughness_range":[0.25,0.42],"transmission":0.85,"transmission_range":[0.75,0.92]}
+  ],
+  "lighting_rigs":["BROAD","STRIP","GRAZING"],
+  "render_matrix":{"materials":5,"rigs":3,"expected_renders":15},
+  "fidelity":"F1_DESIGN_VALIDATION",
+  "render_defaults":{"resolution":640,"samples":8,"adaptive_sampling":true,"adaptive_threshold":0.08,"persistent_data":true},
+  "promotion_rule":"Only post-review can promote center/range from D1 to D2/D3. Render completion alone is not promotion.",
+  "reality_boundary":"All parameters are designer representation controls, not measured physical specifications."
+}

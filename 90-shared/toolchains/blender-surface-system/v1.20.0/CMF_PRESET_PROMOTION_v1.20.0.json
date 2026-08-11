@@ -1,0 +1,19 @@
+{
+  "schema": "oleander.cmf-preset-promotion.v1",
+  "version": "v1.20.0",
+  "status": "F1_DESIGN_VALIDATION_PASS",
+  "from": "D1_DESIGN_ESTIMATE",
+  "to": "D2_DESIGN_CALIBRATED",
+  "canonical_run": 31511146453,
+  "artifact_id": 9109180350,
+  "artifact_sha256": "88600df62127d9586c64d66a0e705615812986c89519f37dcac096fb37b14636",
+  "presets": [
+    {"id":"PAR-SIM-POWDER-FINE-MATTE-001","decision":"PASS","state":"D2"},
+    {"id":"PAR-SIM-PP-FINE-MATTE-001","decision":"PASS","state":"D2"},
+    {"id":"PAR-SIM-PU-SOFT-MATTE-001","decision":"PASS","state":"D2"},
+    {"id":"PAR-SIM-AL-BRUSHED-ANODIZED-001","decision":"PASS","state":"D2"},
+    {"id":"PAR-SIM-DIFFUSER-MILKY-001","decision":"PASS_AFTER_ASSIST_REVISION","state":"D2"}
+  ],
+  "project_lock_rule": "D3 requires project-specific geometry/context validation; generic CMF Lab cannot create D3.",
+  "reality_boundary": "Blender representation controls only; no measured physical property claim."
+}
