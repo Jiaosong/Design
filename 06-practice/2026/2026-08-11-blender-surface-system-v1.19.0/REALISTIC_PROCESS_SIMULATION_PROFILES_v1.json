@@ -1,0 +1,12 @@
+{
+  "schema": "oleander.realistic-process-simulation-profiles.v1",
+  "version": "v1.19.0",
+  "policy": "Simulate plausible visual process mechanisms for design judgment. Values are Blender/design estimates, not supplier specifications.",
+  "profiles": [
+    {"id":"SIM-COAT-POWDER-FINE-MATTE-001","name":"Fine Matte Powder-Coated Metal","metallic":0.0,"roughness":{"center":0.46,"range":[0.40,0.55]},"micro_roughness":{"center":0.030,"range":[0.015,0.045]},"micro_bump":{"center":0.018,"range":[0.008,0.026]},"micro_feature_scale_mm":{"center":0.18,"range":[0.10,0.30]},"rule":"opaque dielectric coat; narrow roughness modulation; weak bump; reject chrome, visible grain and exaggerated orange peel"},
+    {"id":"SIM-MOLD-PP-FINE-MATTE-001","name":"Injection-Molded PP Fine Matte","metallic":0.0,"roughness":{"center":0.52,"range":[0.48,0.58]},"meso_feature_scale_mm":{"center":0.40,"range":[0.30,0.50]},"micro_feature_scale_mm":{"center":0.12,"range":[0.08,0.15]},"rule":"roughness-led microstructure; subtle bump; avoid visible Noise in Base Color"},
+    {"id":"SIM-PU-SOFT-MATTE-001","name":"PU Soft Matte Contact Surface","metallic":0.0,"roughness":{"center":0.66,"range":[0.60,0.72]},"rule":"broader reflection; microstructure subordinate to geometry; avoid rubber caricature"},
+    {"id":"SIM-AL-BRUSHED-ANODIZED-001","name":"Brushed / Anodized Aluminum Visual Simulation","metallic":1.0,"roughness":{"center":0.28,"range":[0.22,0.36]},"anisotropy":{"center":0.48,"range":[0.35,0.60]},"rule":"tangent direction primary; Wave/Gabor only low-amplitude perturbation; no visible stripes"},
+    {"id":"SIM-DIFFUSER-MILKY-001","name":"Milky Transmissive Diffuser Visual Simulation","roughness":{"center":0.34,"range":[0.25,0.42]},"transmission":{"center":0.85,"range":[0.75,0.92]},"rule":"preserve Fresnel edge and thickness; visually tune scatter; avoid clear glass and flat emission-card reading"}
+  ]
+}
