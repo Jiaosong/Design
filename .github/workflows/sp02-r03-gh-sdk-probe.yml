@@ -33,8 +33,23 @@ jobs:
       - name: Build metadata probe
         run: dotnet build --configuration Release --no-restore
 
+      - name: Hydrate McNeel SDK assemblies for metadata-only inspection
+        run: |
+          $out = Join-Path (Get-Location) 'bin/Release/net7.0'
+          $roots = @(
+            (Join-Path $env:USERPROFILE '.nuget/packages/grasshopper/8.32.26160.13001'),
+            (Join-Path $env:USERPROFILE '.nuget/packages/rhinocommon/8.32.26160.13001')
+          )
+          foreach ($root in $roots) {
+            if (!(Test-Path $root)) { throw "Missing restored SDK package: $root" }
+            Get-ChildItem $root -Recurse -Filter *.dll | ForEach-Object {
+              Copy-Item $_.FullName $out -Force
+            }
+          }
+          Get-ChildItem $out -Filter *.dll | Select-Object Name,Length | Format-Table -AutoSize
+
       - name: Run metadata probe
-        run: dotnet run --configuration Release --no-build
+        run: dotnet bin/Release/net7.0/Sp02GhSdkProbe.dll
 
       - name: Assert probe output
         run: |
