@@ -24,20 +24,38 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
 
-      - name: Install Radiance and analysis dependencies
+      - name: Install official LBNL Radiance runtime and analysis dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            radiance \
+            python3-venv \
             python3-numpy \
             python3-matplotlib
-          command -v oconv
-          command -v rtrace
-          command -v rpict
-          command -v gensky
-          command -v evalglare
-          rtrace -version || true
-          evalglare -v || true
+
+          python3 -m venv "$HOME/pyradiance-venv"
+          "$HOME/pyradiance-venv/bin/pip" install --disable-pip-version-check pyradiance==1.2.4
+
+          PYRAD_BIN=$("$HOME/pyradiance-venv/bin/python" - <<'PY'
+          from pyradiance.anci import BINPATH
+          print(BINPATH)
+          PY
+          )
+          PYRAD_ROOT=$(dirname "$PYRAD_BIN")
+          echo "$PYRAD_BIN" >> "$GITHUB_PATH"
+          echo "PYRAD_BIN=$PYRAD_BIN" >> "$GITHUB_ENV"
+          if [ -d "$PYRAD_ROOT/lib" ]; then
+            echo "RAYPATH=.:$PYRAD_ROOT/lib" >> "$GITHUB_ENV"
+          else
+            echo "RAYPATH=." >> "$GITHUB_ENV"
+          fi
+
+          echo "pyradiance_version=$("$HOME/pyradiance-venv/bin/python" -c 'import pyradiance; print(pyradiance.__version__)')"
+          echo "PYRAD_BIN=$PYRAD_BIN"
+          find "$PYRAD_ROOT" -maxdepth 2 -type d -print | sort
+          for exe in oconv rtrace rpict gensky evalglare; do
+            test -x "$PYRAD_BIN/$exe"
+            "$PYRAD_BIN/$exe" -version 2>&1 | head -n 2 || true
+          done
 
       - name: Execute real Radiance interface matrix
         run: |
