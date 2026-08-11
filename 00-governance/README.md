@@ -1,8 +1,24 @@
-# Governance v1.0.1
+# Governance v1.1.0
 
 Status: ACTIVE
 Evidence: E2
 Owner: 刘旋 / OLEANDER／织作
+
+## Current architecture authority
+
+- Knowledge structure: `00 / 01 / 02 / 10 / 20 / 30 / 90 / 99`.
+- Knowledge axis: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Framework / Cluster → L5 Knowledge Object / Index → L6 Evidence / Case → L7 Practice / Output`.
+- Project axis: `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`.
+- Project/application mapping: `Business / Culture / IP / Spatial`.
+- Case roots: `C01 / C02 / C03...`.
+- Claims: `CLM-*`; IP assets: `IP-[Role]-[NNN]`.
+- AI governance: `AIG-01 / AIG-02 / AIG-03`.
+
+**Namespace hard rule:** `P0–P4` are reserved for the project axis and must not be reused as current AI-governance identifiers. Historical AI `P0/P1/P2`, `P2-E...` evidence IDs, PR titles and source filenames remain immutable audit history only. New runtime evidence uses `AIG3-E...`.
+
+**No-loss / no-pollution rule:** preserve history in Git history, `99-archive` or migration records, but maintain only one current authority. Do not create parallel replacement pages/files when an in-place identity, relation or current-file repair is sufficient.
+
+Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md`](migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md).
 
 ## Layers
 - Business: B01 Positioning & Value; B02 Model & Offering; B03 Operation & Partnership; B04 Metrics & Governance.
@@ -23,11 +39,10 @@ Owner: 刘旋 / OLEANDER／织作
 - IP-LK-001 OPEN E0; R4C-G2 is DEPRECATED / LINK_ONLY and must not be reconstructed from previews.
 - v0.7 and v0.7-R1 remain LEGACY comparison inputs.
 
-## Migration v1.0.1
-- Migration-level HOLD: 0.
-- Located and hashed legacy v0.4 and rejected v0.5 sources.
-- Decoupled missing legacy aliases from current-object creation.
-- Current-object design, recognition, physical reproduction and E4 rights/release gates remain open.
+## Migration
+- Migration-level HOLD from v1.0.1: 0.
+- v1.1.0 realignment separates project-axis P0–P4 from AIG governance identifiers and updates current authority without renumbering immutable historical evidence.
+- Current-object design, recognition, physical reproduction and E4 rights/release gates remain open where previously open.
 - See `00-governance/migration/`.
 
 ## Status Codes

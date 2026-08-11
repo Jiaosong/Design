@@ -8,9 +8,9 @@ ROOT = Path(__file__).resolve().parents[2]
 SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
 RETRIEVAL = ROOT / "evals" / "retrieval" / "golden_queries.jsonl"
 FAILURES = ROOT / "evals" / "failure" / "failure_cases.jsonl"
-P0 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P0_v0.1.md"
-P1 = ROOT / "90-shared" / "OLEANDER_AI_Governance_P1_v0.1.md"
-P2 = ROOT / "90-shared" / "OLEANDER_AI_Runtime_Evidence_P2_v0.1.md"
+AIG01 = ROOT / "90-shared" / "OLEANDER_AIG-01_Evaluation_Regression_v0.1.md"
+AIG02 = ROOT / "90-shared" / "OLEANDER_AIG-02_Failure_Trust_Provenance_v0.1.md"
+AIG03 = ROOT / "90-shared" / "OLEANDER_AIG-03_Runtime_Evidence_v0.1.md"
 FAILURE_PLAYBOOK = ROOT / "evals" / "failure" / "FAILURE_ESCALATION_PLAYBOOK.md"
 TRUST_CARD = ROOT / "evals" / "trust" / "AI_RECOMMENDATION_CARD.md"
 PROVENANCE = ROOT / "evals" / "provenance" / "ASSET_PROVENANCE_MANIFEST_TEMPLATE.json"
@@ -123,7 +123,7 @@ def validate_failure_cases(rows):
         if not isinstance(row["required_actions"], list) or len(row["required_actions"]) < 2:
             raise AssertionError(f"{row['case_id']}: requires at least 2 recovery actions")
     if len(rows) < 8:
-        raise AssertionError("P1 failure set requires at least 8 cases")
+        raise AssertionError("AIG-02 failure set requires at least 8 cases")
 
 
 def validate_protocol(path: Path, required_terms, label):
@@ -135,10 +135,10 @@ def validate_protocol(path: Path, required_terms, label):
         raise AssertionError(f"{label} protocol missing governance terms: {missing}")
 
 
-def validate_p1_assets():
+def validate_aig02_assets():
     for path in (FAILURE_PLAYBOOK, TRUST_CARD, PROVENANCE):
         if not path.exists():
-            raise AssertionError(f"missing P1 execution file: {path.relative_to(ROOT)}")
+            raise AssertionError(f"missing AIG-02 execution file: {path.relative_to(ROOT)}")
 
     trust_text = TRUST_CARD.read_text(encoding="utf-8")
     trust_terms = ["Evidence basis", "Unknowns / conflicts", "What would falsify this", "Human action required", "Rollback path"]
@@ -158,14 +158,14 @@ def validate_p1_assets():
         raise AssertionError("template must not claim Content Credentials are present by default")
 
 
-def validate_p2_assets():
+def validate_aig03_assets():
     for path in (RUNTIME_EVENTS, RUNTIME_TEMPLATE, RUNTIME_METRICS, RUNTIME_BASELINE):
         if not path.exists():
-            raise AssertionError(f"missing P2 runtime evidence file: {path.relative_to(ROOT)}")
+            raise AssertionError(f"missing AIG-03 runtime evidence file: {path.relative_to(ROOT)}")
 
     runtime_rows = load_jsonl(RUNTIME_EVENTS)
     if len(runtime_rows) < 1:
-        raise AssertionError("P2 requires at least one runtime evidence event")
+        raise AssertionError("AIG-03 requires at least one runtime evidence event")
 
     try:
         template = json.loads(RUNTIME_TEMPLATE.read_text(encoding="utf-8"))
@@ -179,7 +179,7 @@ def validate_p2_assets():
     baseline = RUNTIME_BASELINE.read_text(encoding="utf-8")
     for term in ["Blocker escape rate", "Human override rate", "Recommendation → reality-test survival", "Asset provenance coverage", "N/A"]:
         if term not in baseline:
-            raise AssertionError(f"P2 baseline missing metric/boundary term: {term}")
+            raise AssertionError(f"runtime baseline missing metric/boundary term: {term}")
 
 
 def main():
@@ -190,22 +190,22 @@ def main():
         counts = validate_skill_cases(skill_rows)
         validate_retrieval_cases(retrieval_rows)
         validate_failure_cases(failure_rows)
-        validate_protocol(P0, [
+        validate_protocol(AIG01, [
             "AI Necessity Gate", "AI Eval Harness", "Retrieval & Context QA",
             "AI Change & Regression Gate", "NO-AI", "HOLD", "PROMOTE", "ROLLBACK",
-        ], "P0")
-        validate_protocol(P1, [
+        ], "AIG-01")
+        validate_protocol(AIG02, [
             "Failure & Escalation", "Human-AI Trust Calibration", "Asset-level Provenance",
             "F0 SELF-CORRECT", "F1 HUMAN-REVIEW", "F2 DOMAIN-EXPERT", "F3 STOP-HOLD",
             "AI Recommendation Card", "C2PA compatibility direction",
-        ], "P1")
-        validate_protocol(P2, [
+        ], "AIG-02")
+        validate_protocol(AIG03, [
             "Human Override Rate", "Recommendation → Reality-test Survival Rate",
             "Blocker Escape Rate", "Asset Provenance Coverage",
             "Retrieval Miss / Wrong-Authority Rate", "N/A — insufficient eligible evidence",
-        ], "P2")
-        validate_p1_assets()
-        validate_p2_assets()
+        ], "AIG-03")
+        validate_aig02_assets()
+        validate_aig03_assets()
     except AssertionError as exc:
         print(f"AI GOVERNANCE EVAL CORPUS: FAIL\n{exc}", file=sys.stderr)
         return 1
@@ -214,9 +214,9 @@ def main():
     print(f"skill cases: {len(skill_rows)} | retrieval cases: {len(retrieval_rows)} | failure cases: {len(failure_rows)}")
     for skill in sorted(counts):
         print(f"- {skill}: {counts[skill]}")
-    print("- P1 trust card: present")
-    print("- P1 provenance manifest: valid JSON / no false C2PA claim")
-    print("- P2 runtime evidence protocol + event corpus: present")
+    print("- AIG-02 trust card: present")
+    print("- AIG-02 provenance manifest: valid JSON / no false C2PA claim")
+    print("- AIG-03 runtime evidence protocol + event corpus: present")
     return 0
 
 
