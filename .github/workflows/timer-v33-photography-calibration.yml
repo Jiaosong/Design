@@ -1,15 +1,24 @@
 name: Timer v3.3 Photography Calibration
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'website/practice/timer-light-basin-v3/calibration/**'
+      - 'website/practice/timer-light-basin-v3/render/**'
+      - 'website/practice/timer-light-basin-v3/QA_V3.3_PHOTOGRAPHY.md'
+      - '.github/workflows/timer-v33-photography-calibration.yml'
   push:
-    branches:
-      - agent/timer-light-basin-v3.3-photography
+    branches: [main]
     paths:
       - 'website/practice/timer-light-basin-v3/calibration/**'
       - 'website/practice/timer-light-basin-v3/render/**'
       - 'website/practice/timer-light-basin-v3/QA_V3.3_PHOTOGRAPHY.md'
       - '.github/workflows/timer-v33-photography-calibration.yml'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   webgl-calibration:
