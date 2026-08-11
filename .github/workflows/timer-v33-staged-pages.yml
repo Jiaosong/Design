@@ -17,7 +17,7 @@ on:
         description: "Exact audited ZIP asset name"
         required: true
         type: string
-        default: "OLEANDER_Zhizuo_TimerLightBasin_v3.3_AUDITED_2026-08-10.zip"
+        default: "OLEANDER_Zhizuo_TimerLightBasin_v3.3_AUDITED_POSTERLOCK_2026-08-10.zip"
       release_note:
         description: "Approval record or release note reference"
         required: false
