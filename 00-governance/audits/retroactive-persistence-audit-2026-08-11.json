@@ -74,6 +74,23 @@
     "timer_posterlock": "FAIL-CLOSED",
     "xj01_r02_source": "PERSISTENCE AT RISK / FILE LIBRARY ONLY"
   },
+  "drive_v1_1_canonical": {
+    "folder_id": "1PXhKKv1E5K9M7Lw3KBejJyCqmGiYQFlF",
+    "zip_id": "1P65rfFJjyBmZ7R-is9LWedR0PXbIvql8",
+    "zip_sha256_sidecar_id": "1HOuIvyTwL5bqH1jrmK4ouV7qiON506O_",
+    "markdown_id": "1XHiQEaWiVYyJPaL5TYvbANVgSX2Ifq5W",
+    "csv_registry_id": "1M64cyf2bNkiVQVsPL6ytIusQFsX4AxvG",
+    "zip_bytes": 20050,
+    "zip_sha256": "83917cda1d50a74fbb52e5456743909371226b59d7f0af0f97fea66c226954ce",
+    "independent_redownload": "PASS",
+    "sidecar_match": true,
+    "unzip_test": "PASS"
+  },
+  "secondary_drive_copy": {
+    "folder_id": "1Ov2Hk0qDFmcJYHgHb4rajjp0VDnLdlB9",
+    "status": "SECONDARY-COPY / NON-CANONICAL",
+    "reason": "Created during re-verification; explicitly demoted to avoid duplicate authority."
+  },
   "v1_0_snapshot": {
     "preserved": true,
     "note": "The original Drive audit ZIP remains a pre-remediation discovery snapshot and is not silently rewritten."
