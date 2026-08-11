@@ -3,3 +3,8 @@ Version,Date,Change
 1.0.1,2026-08-07,Reclassified R4C-G2 and Wordmark v0.8.1 as DEPRECATED/E0/LINK_ONLY.
 1.0.1,2026-08-07,"Created current object records and folders for IP-IA-001, IP-WM-001 and IP-LK-001."
 1.0.1,2026-08-07,Created 00_Governance/Migration and moved register files into canonical location.
+1.1.0,2026-08-11,"Locked L0-L7 knowledge axis and P0-P4 project axis as separate namespaces; retained Business/Culture/IP/Spatial as application mapping."
+1.1.0,2026-08-11,"Migrated current AI governance naming from P0/P1/P2 to AIG-01/AIG-02/AIG-03 to prevent collision with Portfolio/Program/Project; historical evidence IDs remain immutable."
+1.1.0,2026-08-11,"Removed superseded P0/P1/P2 AI governance files from current 90-shared authority; aligned validator, CI, retrieval authority and runtime-event template."
+1.1.0,2026-08-11,"Updated Notion canonical governance pages/index pointers/runtime database in place; no duplicate replacement pages created."
+1.1.0,2026-08-11,"Updated 04C current case labels to C01/C02/C03 while preserving linked historical source pages as provenance."
