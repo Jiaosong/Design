@@ -1,0 +1,20 @@
+{
+  "status": "AUTO-QA PASS",
+  "text_objects": 73,
+  "graphic_objects": 109,
+  "text_boundary_issues": [],
+  "graphic_boundary_issues": [],
+  "scale_and_dimension_checks": {
+    "A1_150_1_10": {"expected_paper_mm": 15.0, "actual_paper_mm": 15.0, "pass": true},
+    "A1_450_1_10": {"expected_paper_mm": 45.0, "actual_paper_mm": 45.0, "pass": true},
+    "A1_600_1_10": {"expected_paper_mm": 60.0, "actual_paper_mm": 60.0, "pass": true},
+    "A2_12_1_2": {"expected_paper_mm": 6.0, "actual_paper_mm": 6.0, "pass": true},
+    "A2_30_1_2": {"expected_paper_mm": 15.0, "actual_paper_mm": 15.0, "pass": true},
+    "A2_20_1_2": {"expected_paper_mm": 10.0, "actual_paper_mm": 10.0, "pass": true},
+    "A2_45_1_2": {"expected_paper_mm": 22.5, "actual_paper_mm": 22.5, "pass": true},
+    "A2_75_1_2": {"expected_paper_mm": 37.5, "actual_paper_mm": 37.5, "pass": true},
+    "A3_60_1_5": {"expected_paper_mm": 12.0, "actual_paper_mm": 12.0, "pass": true}
+  },
+  "outlined_font_independent": true,
+  "preview_exists": true
+}
