@@ -1,0 +1,93 @@
+name: SP01-R02 QGIS Reality Gate
+
+on:
+  pull_request:
+    paths:
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/**'
+      - '.github/workflows/sp01-r02-qgis-reality-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/**'
+      - '.github/workflows/sp01-r02-qgis-reality-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qgis-reality-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    defaults:
+      run:
+        shell: bash
+        working-directory: practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate
+    env:
+      QT_QPA_PLATFORM: offscreen
+      DEBIAN_FRONTEND: noninteractive
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Install QGIS PyQGIS and GDAL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            qgis \
+            python3-qgis \
+            gdal-bin \
+            python3-gdal \
+            python3-numpy
+          /usr/bin/python3 - <<'PY'
+          from qgis.core import Qgis
+          from osgeo import gdal
+          import numpy
+          print('PyQGIS:', Qgis.QGIS_VERSION)
+          print('GDAL:', gdal.VersionInfo())
+          print('NumPy:', numpy.__version__)
+          PY
+          qgis_process --version
+
+      - name: Execute real QGIS KDE runtime matrix
+        run: bash run_qgis_reality_gate.sh
+
+      - name: Assert gate truth
+        run: |
+          /usr/bin/python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out = Path('outputs')
+          receipt = json.loads((out/'runtime_receipt.json').read_text())
+          gate = json.loads((out/'gate_decision.json').read_text())
+          schema = json.loads((out/'vector_schema_gate.json').read_text())
+          layouts = json.loads((out/'qgis_layout_manifest.json').read_text())
+          assert receipt['qgis_runtime_gate'] == 'PASS', receipt
+          assert gate['runtime_gate'] == 'PASS', gate
+          assert gate['project_crs_gate'] == 'OPEN', gate
+          assert gate['project_data_gate'] == 'OPEN', gate
+          assert gate['project_candidate_promotion'] is False, gate
+          assert schema['weight_field_numeric'] is True, schema
+          tifs = list(out.glob('kde_r*_p*.tif'))
+          assert len(tifs) == 9, [p.name for p in tifs]
+          assert len(layouts) == 3, layouts
+          assert len({round(x['map_scale'], 6) for x in layouts}) == 1, layouts
+          assert all(x['common_map_extent'] == [-150.0,-150.0,1200.0,1200.0] for x in layouts), layouts
+          print(json.dumps({
+            'qgis_runtime':'PASS',
+            'geo_tiffs':9,
+            'qgis_layouts':3,
+            'numeric_weight':True,
+            'common_map_scale':True,
+            'project_reality':'OPEN'
+          }, indent=2))
+          PY
+
+      - name: Upload QGIS runtime evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: sp01-r02-qgis-runtime-evidence
+          path: practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/outputs/
+          if-no-files-found: error
+          retention-days: 30
