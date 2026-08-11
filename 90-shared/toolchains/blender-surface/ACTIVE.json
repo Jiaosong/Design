@@ -1,37 +1,45 @@
 {
-  "schema": "oleander.blender-surface-system.active.v1",
+  "schema": "oleander.blender-surface-system.active.v2",
   "system_name": "OLEANDER Blender Surface System",
-  "active_version": "v1.6",
+  "active_version": "v1.15",
+  "active_track_status": "C_TRACK_RENDERED_DIAGNOSTIC_PASS",
   "version_policy": "CONTINUOUSLY_UPDATED_GLOBAL_SYSTEM",
   "resolution_policy": {
     "development": "FOLLOW_ACTIVE_AND_RECORD_SNAPSHOT",
     "controlled_gate": "RESOLVE_ACTIVE_THEN_FREEZE_EXACT_HASHES_IN_RUN_MANIFEST",
-    "promotion": "PIN_RESOLVED_VERSION_AND_HASHES"
+    "promotion": "PIN_RESOLVED_VERSION_AND_HASHES",
+    "surface_update_gate": "INVALIDATE_PROJECT_COLOR_GATE_ONLY_WHEN_RENDER_RESPONSE_SIGNATURE_CHANGES"
   },
   "source_status": {
-    "umbrella_version": "USER_DECLARED_v1.6",
-    "canonical_v1_6_single_manifest_found_in_connected_sources": false,
-    "integration_basis": "RESOLVED_ACTIVE_COMPONENT_CORPUS",
-    "component_document_versions": "v1.0",
-    "note": "This integration manifest does not rewrite the user-authored Surface System; it makes the resolved corpus executable and reproducible."
+    "authority": "USER_UPLOADED_V1_15_C_TRACK_RENDERED_ZIP",
+    "source_zip_sha256": "6cca25f08a7b070b0ed8e3ed3dffcebb5c073f79e6db7ea6d3ac22597e1e10dc",
+    "drive_file_id": "13lcgZdr4N2DjyEaCAmfz5IfbzWkbakEF",
+    "package_manifest_sha256_actual": "e353b7008265bf2c4e6f17f3d479619e31a9a08edf3072fa4f1cf36ab27fdccf",
+    "payload_manifest_records_verified": 144,
+    "payload_manifest_mismatches": 0,
+    "manifest_self_record_status": "NON_AUTHORITATIVE_SELF_REFERENCE_MISMATCH",
+    "scope_boundary": "not physical/material/manufacturing validation"
   },
+  "render_response_signature": "44a462645344c996872c5d3cf80b73e2d9a448d26d34356e8918fb60951642ac",
+  "diagnostic_capability_signature": "78d9a5da9b406d07ccbed200aff522f1737e69d5c6b14a7c6087fa857e58ea04",
   "components": {
     "material_process_archetypes": {
-      "path": "versions/v1.6/material_process_archetypes.json",
-      "raw_sha256": "355ad5c22866213499f4a507ba87b36480eef86744f7ef447ba422fd29810b92",
-      "semantic_sha256": "6e759b4f3ccef904446ddd20c8907e54a837e2207f51b240a6c3121b7574d7c0",
-      "source_schema": "oleander.material-process-archetypes.v1"
+      "path": "versions/v1.15/material_process_archetypes.json",
+      "package_raw_sha256": "355ad5c22866213499f4a507ba87b36480eef86744f7ef447ba422fd29810b92",
+      "semantic_sha256": "6e759b4f3ccef904446ddd20c8907e54a837e2207f51b240a6c3121b7574d7c0"
     },
     "texture_node_recipes": {
-      "path": "versions/v1.6/texture_node_recipes.json",
-      "raw_sha256": "b3d108fe2c5ef4191d3e2c4a90334b10065fb3717d6abbd11f75c876a45eb5f5",
-      "semantic_sha256": "f3baba8d4bb698cd8678c97861816bab4afa0cac2b83b747aeda65af15b5a683",
-      "source_schema": "oleander.texture-node-recipes.v1"
+      "path": "versions/v1.15/texture_node_recipes.json",
+      "package_raw_sha256": "7b68ae3ab951d468c755960f7004780b40119ff570610b290711facd7e9ada46",
+      "semantic_sha256": "f3baba8d4bb698cd8678c97861816bab4afa0cac2b83b747aeda65af15b5a683"
+    },
+    "c_track_package": {
+      "modules": ["C01","C03","C04","C05","C06","C07","C08","C09"],
+      "overall": "DIAGNOSTIC_PASS",
+      "artifact_location": "Google Drive / Blender-Shared-Toolchain / Surface-System / v1.15_C_Track_Rendered",
+      "note": "Rendered .blend/.png package remains in Drive; repository stores contracts, bindings and semantic checks rather than heavy binary evidence."
     }
   },
-  "target_runtime": {
-    "blender": "5.2.0 LTS",
-    "engine": "CYCLES"
-  },
-  "evidence_boundary": "All numerical appearance seeds remain VISUALIZATION_HYPOTHESIS unless separately measured, manufacturer-specified, or sample-calibrated."
+  "target_runtime": {"blender":"5.2.0 LTS","build_hash":"fbe6228777e7","engine":"CYCLES"},
+  "evidence_boundary": "Surface/C Track numeric parameters are visualization hypotheses or diagnostic methods unless separately measured, manufacturer-specified, sample-calibrated, or process-verified."
 }
