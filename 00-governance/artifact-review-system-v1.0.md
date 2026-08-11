@@ -77,8 +77,31 @@ PPTX and presentation PDF. Review page grid, hierarchy, typography, crop, occlus
 ### AR-S09｜Release Package Review
 ZIP, MANIFEST, GitHub branch, Drive folder and final directory. Review completeness, structure, naming, CURRENT version, VOID/SUPERSEDED, manifest/SHA256, dependencies, unzip/open test, reproduction and Notion/GitHub/Drive status consistency.
 
+For any release package containing native binaries, canonical models, render/CAD scenes or other non-trivial production binaries, **AR-S09 additionally requires `PAP-G0—PAP-G6 PASS` under `production-asset-persistence-gate-v1.0.md`.** A checksum, preview, File Library metadata record, temporary `/mnt/data` path or expiring workflow artifact is not a durable binary copy.
+
+## Production Asset Persistence dependency
+
+Canonical gate: [`production-asset-persistence-gate-v1.0.md`](production-asset-persistence-gate-v1.0.md)
+
+The production persistence chain is:
+
+`package → hash → durable upload → independent retrieval → SHA/open verification → PERSISTENCE PASS → AR-S09 PASS → Promotion / Archive`
+
+Required production quartet when applicable:
+
+- native source / authoring binary;
+- canonical model / interchange authority;
+- production ZIP;
+- checksum records.
+
+At least one **real, independently retrievable binary copy** of every required asset must exist in a qualified durable store. Notion/GitHub text, filenames, hashes, previews, local runtime files and expiring workflow artifacts are evidence records only and cannot satisfy persistence by themselves.
+
 ## Status flow
 
 `REVIEW PENDING → NEEDS REVISION / FAIL → correction → rerun QA → reopen final artifact → POST-REVIEW PASS`
+
+For packages with triggered production binaries:
+
+`POST-REVIEW PASS → PERSISTENCE PENDING / FAIL → PAP-G0—PAP-G6 PASS → AR-S09 PASS → PACKAGE RELEASE PASS`
 
 Only after all triggered gates pass may a package become `PACKAGE RELEASE PASS`.
