@@ -1,0 +1,86 @@
+{
+  "schema": "oleander.texture-node-recipes.v1",
+  "status": "VISUALIZATION_HYPOTHESES_FOR_NODE_STUDY",
+  "global_rules": {
+    "formula": "Coordinates -> ScaleDirection -> Pattern -> SignalShaping -> Channel -> BSDF",
+    "levels": ["HERO", "CMF", "MACRO"],
+    "data_textures": ["ROUGHNESS", "METALLIC", "NORMAL", "HEIGHT", "MASK", "AO"],
+    "color_textures": ["BASE_COLOR", "PRINT_COLOR"],
+    "do_not_use_one_noise_for_all_channels": true
+  },
+  "recipes": {
+    "NT_PP_FINE_MATTE": {
+      "purpose": "Injection molded fine matte plastic",
+      "coordinate": "OBJECT",
+      "macro": null,
+      "meso": {"generator": "NOISE", "feature_size_mm": 0.4, "role": "ROUGHNESS", "amplitude": 0.018},
+      "micro": {"generator": "NOISE", "feature_size_mm": 0.12, "role": "ROUGHNESS+BUMP", "roughness_amplitude": 0.012, "bump_strength": 0.01},
+      "roughness_base": 0.52,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_PP_ETCHED": {
+      "purpose": "Etched mold / leather-like plastic texture study",
+      "coordinate": "UV_OR_OBJECT",
+      "meso": {"generator": "NOISE_VORONOI_COMPOSITE", "feature_size_mm": 0.8, "role": "ROUGHNESS+BUMP"},
+      "roughness_base": 0.55,
+      "bump_strength": 0.035,
+      "displacement_macro_only": true,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_TPE_SOFT_MATTE": {
+      "purpose": "Soft matte elastomer",
+      "coordinate": "OBJECT",
+      "macro": {"generator": "NOISE", "feature_size_mm": 6.0, "role": "ROUGHNESS", "amplitude": 0.015},
+      "micro": {"generator": "NOISE", "feature_size_mm": 0.2, "role": "ROUGHNESS", "amplitude": 0.02},
+      "roughness_base": 0.66,
+      "bump_strength": 0.006,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_POWDER_COAT_FINE": {
+      "purpose": "Fine matte powder coat over steel substrate",
+      "coordinate": "OBJECT",
+      "meso": {"generator": "NOISE_VORONOI_COMPOSITE", "feature_size_mm": 0.35, "role": "ROUGHNESS+BUMP"},
+      "roughness_base": 0.46,
+      "roughness_amplitude": 0.025,
+      "bump_strength": 0.014,
+      "metallic_visible_surface": 0.0,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_BRUSHED_ANODIZED_AL": {
+      "purpose": "Directional brushed + anodized aluminum",
+      "coordinate": "UV_TANGENT",
+      "direction": "MANUFACTURING_AUTHORITY_REQUIRED",
+      "meso": {"generator": "WAVE_BANDS_DISTORTED", "feature_size_mm": 0.12, "role": "ROUGHNESS+BUMP"},
+      "roughness_base": 0.28,
+      "anisotropy": 0.48,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_TURNED_AL": {
+      "purpose": "Concentric turned machining marks",
+      "coordinate": "UV_OR_OBJECT_ALIGNED_TO_AXIS",
+      "direction": "CONCENTRIC",
+      "meso": {"generator": "WAVE_RINGS_DISTORTED", "feature_size_mm": 0.18, "role": "ROUGHNESS+BUMP"},
+      "roughness_base": 0.25,
+      "anisotropy": 0.35,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_FROSTED_PC": {
+      "purpose": "Frosted transmissive polymer",
+      "coordinate": "OBJECT",
+      "micro": {"generator": "NOISE", "feature_size_mm": 0.18, "role": "ROUGHNESS+BUMP"},
+      "roughness_base": 0.34,
+      "transmission_weight": 0.85,
+      "requires_real_thickness": true,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    },
+    "NT_CLEARCOAT_ORANGEPEEL": {
+      "purpose": "Painted substrate with restrained clearcoat orange peel",
+      "coordinate": "OBJECT",
+      "macro": {"generator": "NOISE", "feature_size_mm": 2.0, "role": "COAT_NORMAL", "amplitude": 0.004},
+      "base_roughness": 0.24,
+      "coat_weight": 1.0,
+      "coat_roughness": 0.08,
+      "evidence": "VISUALIZATION_HYPOTHESIS"
+    }
+  }
+}
