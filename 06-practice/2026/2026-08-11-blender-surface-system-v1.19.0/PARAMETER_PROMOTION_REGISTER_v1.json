@@ -1,0 +1,26 @@
+{
+  "schema": "oleander.designer-parameter-promotion.v1.1",
+  "version": "v1.19.0",
+  "compatibility_base": "OLEANDER Blender Surface System v1.18.0",
+  "levels": [
+    {"level":"D0","name":"UNDEFINED","meaning":"No useful design estimate yet."},
+    {"level":"D1","name":"DESIGN_ESTIMATE","meaning":"Defensible starting value/range for visualization."},
+    {"level":"D2","name":"DESIGN_CALIBRATED","meaning":"Adjusted through controlled Blender comparison and multi-scale review."},
+    {"level":"D3","name":"PROJECT_LOCKED_VISUAL_PROFILE","meaning":"Approved for current project visual continuity."}
+  ],
+  "claim_lane_firewall": {
+    "rule": "D0-D3 controls design representation only and never upgrades v1.18 evidence claim lanes.",
+    "generic_archetype_autobind": "DENY",
+    "evidence_claim_impact": "NONE",
+    "engineering_or_production_handoff": "SEPARATE_DOWNSTREAM"
+  },
+  "current": [
+    {"target":"XJ01 PP visual","level":"D2 DESIGN_CALIBRATED","roughness_center":0.52,"roughness_range":[0.48,0.58],"v1_18_claim_lane":"VISUALIZATION_LOCKED","process_finish_claim":"BLOCKED_PENDING_PROJECT_EVIDENCE","generic_archetype_autobind":"DENY"},
+    {"target":"XJ01 PU visual","level":"D1 DESIGN_ESTIMATE","roughness_center":0.66,"roughness_range":[0.60,0.72],"v1_18_claim_lane":"VISUALIZATION_LOCKED_FOR_REPRESENTATION","exact_family_process_finish_claim":"UNKNOWN","legacy_TPE_PU_binding":"BLOCKED_DENY"},
+    {"target":"XJ01 coated iron visual hypothesis","level":"D1 DESIGN_ESTIMATE","metallic":0.0,"roughness_center":0.46,"roughness_range":[0.40,0.55],"v1_18_claim_lane":"VISUALIZATION_LOCKED_FOR_REPRESENTATION","powdercoat_process_claim":"BLOCKED_UNKNOWN","generic_powdercoat_autobind":"DENY"},
+    {"target":"Timer Housing","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.55,"roughness_range":[0.48,0.62],"v1_18_claim_lane":"VISUALIZATION_LOCKED","generic_archetype_autobind":"DENY"},
+    {"target":"Timer Knob","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.28,"anisotropy_center":0.48,"v1_18_claim_lane":"VISUALIZATION_LOCKED","generic_archetype_autobind":"DENY"},
+    {"target":"Timer Diffuser","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.34,"transmission_center":0.85,"v1_18_claim_lane":"VISUALIZATION_LOCKED","generic_archetype_autobind":"DENY"}
+  ],
+  "parameter_semantics":"All values are design / representation controls, not physical measurements, process proof or supplier specifications."
+}

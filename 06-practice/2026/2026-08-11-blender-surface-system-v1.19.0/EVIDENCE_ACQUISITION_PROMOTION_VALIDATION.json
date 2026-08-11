@@ -1,0 +1,22 @@
+{
+  "schema": "oleander.designer-estimate-validation.v1.1",
+  "status": "PASS_AFTER_V1_18_COMPATIBILITY_REVIEW",
+  "profiles": 6,
+  "process_simulation_profiles": 5,
+  "physical_parameter_claims": 0,
+  "supplier_dependencies_in_designer_gate": 0,
+  "generic_profile_autobind_permissions": 0,
+  "evidence_claim_promotions_from_D1_D2_D3": 0,
+  "checks": [
+    "center + design range",
+    "visual role",
+    "failure signs",
+    "multi-scale QA views",
+    "explicit non-physical semantics",
+    "realistic process simulation rather than supplier-specific formula",
+    "D0-D3 design ladder does not upgrade v1.18 claim lanes",
+    "generic process simulation profiles are designer-explicit only and autobind-denied",
+    "XJ01 iron powder-coat process claim remains BLOCKED/UNKNOWN",
+    "XJ01 PU exact family/process/finish remains UNKNOWN with legacy merged TPE/PU binding denied"
+  ]
+}
