@@ -1,0 +1,56 @@
+{
+  "schema": "oleander.retroactive-persistence-audit.index.v1",
+  "date": "2026-08-11",
+  "status": "AUDIT_COMPLETE_REMEDIATION_OPEN",
+  "governance": "PAP-G0—PAP-G6",
+  "counts": {
+    "asset_rows": 31,
+    "unique_chains": 23,
+    "confirmed_persistence_fail_chains": 8,
+    "at_risk_chains": 1,
+    "healthy_or_recoverable_control_chains": 7,
+    "not_created_na_chains": 3,
+    "legacy_decoupled_chains": 1,
+    "nonbinary_archive_incomplete_chains": 3
+  },
+  "confirmed_fail_chains": [
+    "TIMER-R54-G3.2",
+    "TIMER-POSTERLOCK",
+    "SP01-R02-GIS",
+    "SP02-RELATIONAL-FIELD",
+    "SP03-ARCH-GEN",
+    "B04-CROSS-MEDIA",
+    "IP03-VISUAL-HIERARCHY",
+    "SYNC-REPAIR-LEGACY"
+  ],
+  "at_risk_chains": ["XJ01-R02-SOURCE"],
+  "p0": {
+    "chain": "SP01-R02-GIS",
+    "artifact_id": 9087641476,
+    "expires_at": "2026-09-10T03:15:45Z",
+    "sha256": "68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c",
+    "audit_retrieval": "PASS",
+    "unzip": "PASS",
+    "status": "PERSISTENCE FAIL / RECOVERABLE NOW"
+  },
+  "durable_audit_authority": {
+    "provider": "Google Drive",
+    "folder_id": "1qbIwmGyjmGjiKNrjLZsbOoVvlPNtGgBb",
+    "zip_id": "1oYLWLODfEOlD7bY5fXLRDbk2ym1Dle0E",
+    "zip_sha256_sidecar_id": "1bm1FtZPsAP__1m-sz1AjQXsz2batAC0l",
+    "report_md_id": "16K5fpEaacKKhz0l-hYHDnNNuK4Z1pv7s",
+    "registry_json_id": "10FEah_8T5xkkvF3rfcRbZQJIK_eYxjgQ",
+    "registry_csv_id": "15RqF2xWE12Al-jV7on6FeYGbia3eZMR6",
+    "remediation_queue_id": "1q4tjHODxLCMT7XPfjiadia8mbi_qDHgZ",
+    "audit_zip_sha256": "db9a51dae4346afb522ff92f00f3cc7e1a629d8a1cd8f18b139ba6f9689fc1e7",
+    "independent_redownload_sha_match": true,
+    "unzip_test": "PASS"
+  },
+  "priority_order": [
+    "P0 rescue",
+    "P1 current-authority recovery",
+    "P2 historical recovery",
+    "P3 receipt/checksum backfill"
+  ],
+  "authority_boundary": "Persistence status does not automatically revoke historical execution evidence and never upgrades design, engineering, rights, user validation or release status."
+}
