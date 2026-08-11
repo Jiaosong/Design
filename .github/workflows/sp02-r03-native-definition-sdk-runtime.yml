@@ -1,0 +1,67 @@
+name: SP02-R03 Native Grasshopper Definition SDK Runtime
+
+on:
+  push:
+    branches:
+      - practice/2026-08-11-sp02-r03-runtime-closure
+    paths:
+      - 'practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/**'
+      - 'practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition_ci/**'
+      - '.github/workflows/sp02-r03-native-definition-sdk-runtime.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-serialize-reload:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition_ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore official McNeel SDK
+        run: dotnet restore Sp02NativeDefinitionHarness.csproj
+
+      - name: Build native serialization harness
+        run: dotnet build Sp02NativeDefinitionHarness.csproj --configuration Release --no-restore
+
+      - name: Hydrate McNeel runtime assemblies for native serialization test
+        run: |
+          $out = Join-Path (Get-Location) 'bin/Release/net7.0-windows'
+          $packageRoots = @(
+            (Join-Path $env:USERPROFILE '.nuget/packages/grasshopper/8.32.26160.13001'),
+            (Join-Path $env:USERPROFILE '.nuget/packages/rhinocommon/8.32.26160.13001')
+          )
+          foreach ($root in $packageRoots) {
+            if (!(Test-Path $root)) { throw "Missing restored package: $root" }
+            Get-ChildItem $root -Recurse -Filter *.dll | ForEach-Object {
+              Copy-Item $_.FullName $out -Force
+            }
+          }
+          Get-ChildItem $out -Filter *.dll | Select-Object Name,Length | Sort-Object Name | Format-Table -AutoSize
+
+      - name: Execute Grasshopper GH_DocumentIO native serialize and reload
+        run: dotnet bin/Release/net7.0-windows/Sp02NativeDefinitionHarness.dll
+
+      - name: Validate native definition receipt and hash
+        run: |
+          python ../native_definition/validator/validate_sg01_definition_receipt.py native_ci_evidence
+          $j=Get-Content native_ci_evidence/SG01_VALIDATION_RESULT.json -Raw | ConvertFrom-Json
+          if ($j.SG01 -ne 'PASS') { throw 'SG01 native serialization/reload did not pass' }
+
+      - name: Upload native GHX evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sp02-r03-native-ghx-sdk-evidence
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition_ci/native_ci_evidence/
+          if-no-files-found: warn
+          retention-days: 30
