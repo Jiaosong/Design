@@ -27,7 +27,7 @@ async function connect() {
   let lastError;
   for (let attempt = 1; attempt <= 90; attempt += 1) {
     transport = new StreamableHTTPClientTransport(mcpUrl);
-    client = new Client({ name: 'oleander-ws07a-materializer', version: '0.2.0' }, { capabilities: { tools: {} } });
+    client = new Client({ name: 'oleander-ws07a-materializer', version: '0.3.0' }, { capabilities: { tools: {} } });
     try {
       await client.connect(transport);
       return;
@@ -101,6 +101,20 @@ function managedRoots() {
   return [...new Set(contract.nodes.map((spec) => spec.path.split('/').slice(0, 2).join('/')))].filter((pathValue) => pathValue.startsWith('Canvas/'));
 }
 
+function componentContracts() {
+  return [contract.controller, ...(Array.isArray(contract.corrections) ? contract.corrections : [])];
+}
+
+async function componentAttached(spec) {
+  const host = assertOk(await callTool('scene-query-node', {
+    options: { path: spec.nodePath, includeChildren: false, includeComponents: true },
+  }), `query component host ${spec.nodePath}`);
+  return (host.components ?? []).some((item) => {
+    const text = `${item.type ?? ''} ${item.path ?? ''} ${item.value ?? ''}`;
+    return text.includes(spec.className) || text.includes(path.basename(spec.component, '.ts'));
+  });
+}
+
 await connect();
 try {
   const toolList = await client.listTools({}, { timeout: 30000 });
@@ -129,7 +143,6 @@ try {
     assertOk(await callTool('scene-create-node-by-type', { options: { path: 'Canvas', name: 'Canvas', nodeType: 'Canvas', workMode: '2d' } }), 'create Canvas');
   }
 
-  // Fail closed against stale Creator template children/default labels/buttons from previous generations.
   for (const rootPath of managedRoots()) {
     const existing = await callTool('scene-query-node', { options: { path: rootPath, includeChildren: false, includeComponents: true } });
     if (existing.code === 200) {
@@ -139,19 +152,15 @@ try {
 
   for (const spec of contract.nodes) await createContractNode(spec);
 
-  const canvasAfterNodes = assertOk(await callTool('scene-query-node', { options: { path: contract.controller.nodePath, includeChildren: true, includeComponents: true } }), 'query controller host');
-  const attached = (canvasAfterNodes.components ?? []).some((item) => {
-    const text = `${item.type ?? ''} ${item.path ?? ''} ${item.value ?? ''}`;
-    return text.includes(contract.controller.className) || text.includes('VisualPrototypeController');
-  });
-
-  let controllerPath;
-  if (!attached) {
-    const added = assertOk(await callTool('scene-add-component', { addComponentInfo: {
-      nodePath: contract.controller.nodePath,
-      component: contract.controller.component,
-    } }), 'mount WS-07A controller');
-    controllerPath = added?.path;
+  const mountedComponents = [];
+  for (const spec of componentContracts()) {
+    let componentPath = 'existing';
+    if (!await componentAttached(spec)) {
+      const added = await addComponent(spec.nodePath, spec.component, `mount ${spec.className}`);
+      componentPath = added?.path;
+      if (!componentPath) throw new Error(`mount ${spec.className}: component path missing`);
+    }
+    mountedComponents.push({ className: spec.className, componentPath, gate: spec.gate ?? 'BASE' });
   }
 
   assertOk(await callTool('scene-save', {}), 'save VisualPrototype.scene');
@@ -160,8 +169,8 @@ try {
   for (const spec of contract.nodes) {
     assertOk(await callTool('scene-query-node', { options: { path: spec.path, includeChildren: false, includeComponents: true } }), `verify ${spec.path}`);
   }
-  if (controllerPath) {
-    assertOk(await callTool('scene-query-component', { component: { componentPath: controllerPath } }), 'verify mounted WS-07A controller');
+  for (const spec of componentContracts()) {
+    if (!await componentAttached(spec)) throw new Error(`verify mounted component failed: ${spec.className}`);
   }
 
   assertOk(await callTool('scene-save', {}), 'final save VisualPrototype.scene');
@@ -174,7 +183,8 @@ try {
     nodeCount: contract.nodes.length,
     managedRootCount: managedRoots().length,
     controller: contract.controller.className,
-    controllerPath: controllerPath ?? 'existing',
+    corrections: (contract.corrections ?? []).map((item) => item.className),
+    mountedComponents,
     defaultTemplateVisuals: 'REMOVED_BY_EMPTY_NODE_MATERIALIZATION',
   };
   const proofPath = path.join(projectPath, 'temp', 'oleander-ws07a-scene-proof.json');
