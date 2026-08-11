@@ -23,10 +23,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Validate R54 standard and authority boundaries
         run: |
           set -euo pipefail
           python3 -m json.tool website/practice/timer-light-basin-v3/rendering/R54_RENDER_SPEC.json >/dev/null
-          python3 -m py_compile website/practice/timer-light-basin-v3/rendering/timer_r54_blender45_cycles_adapter.py
+          python3 -m py_compile website/practice/timer-light-basin-v3/rendering/timer_r54_blender52_cycles_adapter.py
           python3 tests/timer-r54-render-contract.py
