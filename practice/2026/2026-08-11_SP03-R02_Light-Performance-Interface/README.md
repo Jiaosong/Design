@@ -1,55 +1,104 @@
 # SP03-R02｜Light Role → Performance Interface
 
-Status before runtime: **RADIANCE PERFORMANCE INTERFACE PENDING**.
+Final artifact status: **POST-REVIEW PASS**.
+
+Truth state: **PERFORMANCE INTERFACE VERIFIED ON SYNTHETIC TEST CELL / PROJECT REALITY OPEN**.
 
 ## Purpose
-Translate SP03-R01's conceptual light roles into an explicit performance input/output contract without pretending that a synthetic test cell is a real project.
+Translate SP03-R01's conceptual light-role method into an explicit and reproducible performance interface without pretending that a synthetic test cell is a real project.
 
 ## Controlled A/B experiment
-Both schemes use the same 12 × 6 × 3.6 m synthetic room, materials, 7.2 m² total skylight area, 288 workplane sensors, sky cases and viewpoints. Only skylight-area distribution changes.
+Identical in both schemes:
+- synthetic room: 12 × 6 × 3.6 m;
+- workplane z = 0.8 m;
+- 0.5 m sensor grid, 288 sensors total, 72 in each role zone;
+- exercise material hypotheses;
+- identical four sky cases and viewpoints;
+- total skylight area = 7.2 m².
 
-- Scheme A｜Uniform: four equal 1.2 m-wide skylights.
-- Scheme B｜Sequence: widths 0.8 / 2.4 / 1.0 / 0.6 m assigned to Entry / Stay / Turn / Background.
-- Intended role rank for the exercise: Stay > Turn > Entry > Background.
+Only skylight-area distribution changes:
+- Scheme A｜Uniform: 1.2 / 1.2 / 1.2 / 1.2 m;
+- Scheme B｜Sequence: 0.8 / 2.4 / 1.0 / 0.6 m mapped to ENTRY / STAY / TURN / BACKGROUND.
 
-The role-rank correlation is a **custom exercise heuristic**, not a lighting standard.
+Exercise target rank: `STAY > TURN > ENTRY > BACKGROUND`.
+The role-rank Spearman is a **custom Practice heuristic**, not a lighting standard.
 
-## Real simulation scope
-GitHub Actions must install and execute Radiance. The workflow runs:
+## Final verified runtime
+GitHub Actions run `#6 / 31457344868`
+- runtime head SHA: `cb7cf10df2ee006de5143c9303be51b6d00fca13`
+- artifact ID: `9088638622`
+- artifact digest: `sha256:abe1512e849c17054fd8b92d89c8044f70b891a40da0dd04267a052328b02436`
+- Radiance: `6.0a`
+- evalglare: `3.06 release 01.10.2025`
+- official LBNL `pyradiance==1.2.4` runtime package
 
-- `gensky` for one overcast and three exercise solar-angle scenarios;
-- `oconv` for each A/B × sky scene;
-- `rtrace -I+` on the same 288-point workplane grid;
-- `rpict` 180° fisheye HDR views for clear east/west cases;
-- `evalglare` for DGP and vertical illuminance evidence;
-- automated comparison plots and gate JSON.
+Executed:
+- 8 real `rtrace -I+` workplane simulations;
+- 16 real 800×800 180° angular-fisheye HDR renders;
+- 16 real `evalglare` evaluations;
+- final glare CSV preserves evalglare's self-described 23-field schema.
 
-Radiance `rtrace` is used as the ray-tracing engine, while `evalglare` evaluates 180° fisheye HDR images and reports DGP/vertical illuminance. These are software-runtime evidence only; project compliance is not claimed.
+## Performance observations
+Mean role-rank Spearman across the four exercise skies:
+- Scheme A: `0.30`
+- Scheme B: `0.50`
 
-## Truth boundaries
-OPEN until a real project provides them:
+By sky:
+- OVC: A `0.6` / B `1.0`
+- CLEAR_HIGH: A `0.6` / B `1.0`
+- CLEAR_E: A `0.4` / B `0.4`
+- CLEAR_W: A `-0.4` / B `-0.4`
 
-- project geometry/orientation;
-- measured or verified material/glazing optical properties;
-- actual location/weather/time conditions;
-- program-specific illuminance/glare targets;
-- user/task validation.
+Uniformity / glare trade-off:
+- mean U0: A `0.2343` / B `0.1836`
+- mean CV: A `1.7731` / B `1.7987`
+- max DGP under clear east/west viewpoints: A `0.281196` / B `0.298364`
 
-Therefore the maximum allowed result is:
+Therefore **Scheme B is not promoted as a universally better scheme**. It strengthens the intended role order under the diffuse and high-sun synthetic conditions, but directional sun can remove or invert the intended hierarchy. It also trades away uniformity and produces a slightly higher worst-case DGP in this matrix.
 
-`PERFORMANCE INTERFACE VERIFIED ON SYNTHETIC TEST CELL / PROJECT REALITY OPEN`
+No project compliance or comfort threshold is claimed.
 
-not Project Reality PASS.
+## Failure-seeking revision chain
+1. Run #1 — FAIL: Ubuntu 24.04 had no `radiance` apt candidate; no simulation occurred.
+2. Run #2 — FAIL: official runtime installed, but script-overwritten `RAYPATH` prevented `rayinit.cal` resolution.
+3. Run #3 — runtime PASS / NEEDS REVISION: first complete real run; A/B heatmaps had incomparable color scales and glare parser was incomplete.
+4. Run #5 — runtime PASS / NEEDS REVISION: shared visual scale fixed; Data Review found evalglare's 14th field was `dgr`, not the old hard-coded `band_avlum`, and later fields were omitted.
+5. Run #6 — corrected: parser reads evalglare's self-described 23-field schema; final plots/HDR/data were reopened and reviewed.
 
-## Review routing
-After runtime completion, artifacts must undergo:
+A green workflow was never treated as final review.
 
-- AR-G01—G10 Common;
-- AR-S03 Data;
-- AR-S04 Code / Parametric;
-- AR-S05-equivalent spatial-performance review for coordinate/time/sky truth;
-- AR-S06/visual review for exported maps/charts where applicable;
-- AR-S07 Documentation;
-- AR-S09 Release Package.
+## Reproduction
+Run #5 → #6, unchanged physical inputs and ray settings:
+- role-rank Spearman identical in all 8 A/B × sky rows;
+- mean illuminance max relative change < 0.10%;
+- role-zone mean max relative change < 0.31%;
+- DGP and vertical illuminance identical for all 16 viewpoints;
+- U0 is more sensitive to the sampled minimum, with max relative change about 3.1%.
 
-Automatic success or a green GitHub Action is not sufficient. Final exported plots and evidence must be reopened and reviewed before `POST-REVIEW PASS`.
+Classification: **NUMERICALLY STABLE, NOT BYTE-IDENTICAL**.
+
+## Artifact Review System v1.0
+- AR-G01—G10 Common: PASS
+- AR-S02 Model: PASS for synthetic scene / Project Geometry Gate OPEN
+- AR-S03 Data: PASS after evalglare schema correction
+- AR-S04 Code / Parametric: PASS
+- AR-S06 Visual: PASS
+- AR-S07 Documentation: PASS
+- AR-S09 Release Package: PASS
+
+See `FINAL_ARTIFACT_REVIEW.md` and `evidence_snapshot.json`.
+
+## Practice rule candidate
+**Light Role is a target relationship, not a performance guarantee.**
+
+Before a light-role strategy is called robust, test at least one diffuse condition and opposed directional conditions. If directional conditions invert the intended hierarchy, revise aperture distribution, orientation, controls/shading, or the role target itself instead of hiding the failure in a preferred rendering.
+
+## Truth boundaries / Reopen conditions
+Still OPEN until a real project provides:
+- real geometry/orientation;
+- verified material and glazing optical properties;
+- actual location/weather/date/time;
+- program-specific illuminance and glare criteria;
+- user/task outcome validation.
+
+No Project Reality or Candidate promotion is allowed before these close.
