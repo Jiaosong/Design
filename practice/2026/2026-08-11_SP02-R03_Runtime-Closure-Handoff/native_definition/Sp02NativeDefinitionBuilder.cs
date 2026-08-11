@@ -57,7 +57,7 @@ public static class Sp02NativeDefinitionBuilder
         if (!io.SaveQuiet(outputPath))
             throw new IOException("GH_DocumentIO.SaveQuiet returned false.");
 
-        using var reload = new GH_DocumentIO();
+        var reload = new GH_DocumentIO();
         if (!reload.Open(outputPath) || reload.Document is null)
             throw new IOException("GH_DocumentIO.Open failed to reload newly saved GHX.");
 
