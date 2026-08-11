@@ -68,7 +68,7 @@
     "sensor_width_mm": 36
   },
   "output": {
-    "primary_adapter": "Blender 4.5 LTS / Cycles",
+    "primary_adapter": "Blender 5.2 LTS / Cycles",
     "authority_material_semantics": "OpenPBR 1.1.1",
     "cmf_view_transform": "Khronos PBR Neutral",
     "hero_view_transform": "AgX",
@@ -83,16 +83,30 @@
   "qa_gates": ["R54-G0 Source Authority", "R54-G1 Render Geometry Equivalence", "R54-G2 Shading Prep", "R54-G3 Material Fidelity", "R54-G4 Studio Reflection", "R54-G5 Color/AOV", "R54-G6 Promotion"],
   "execution": {
     "current_runtime": {
-      "blender": "NOT_INSTALLED",
+      "blender": "5.2.0 LTS fbe6228777e7",
+      "cycles": "CPU_PATH_TRACING_SMOKE_PASS",
+      "cycles_device": "CPU / AMD EPYC 9V74",
+      "gpu_acceleration": "UNAVAILABLE_IN_CURRENT_CONTAINER",
       "MaterialX_python": "NOT_INSTALLED",
       "OpenImageIO": "NOT_INSTALLED",
       "OpenColorIO_python": "NOT_INSTALLED",
       "vtk": "9.6.2",
       "trimesh": "4.11.1"
     },
+    "smoke_test": {
+      "canonical_sha_verified": true,
+      "canonical_meshes_loaded": 21,
+      "resolution": [320, 240],
+      "samples": 16,
+      "view_transform": "Khronos PBR Neutral",
+      "multilayer_exr": "PASS",
+      "beauty_exr": "PASS",
+      "multilayer_pass_count": 13,
+      "classification": "RUNTIME_COMPATIBILITY_ONLY_NOT_PRODUCTION_QUALITY"
+    },
     "production_path_traced_render": "NOT_RUN",
     "authority_impact": "NONE",
     "posterlock_authority": "UNCHANGED",
-    "pr_23": "UNTOUCHED"
+    "posterlock_manifest_authority": "PR_33_MERGED"
   }
 }
