@@ -3,7 +3,6 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUN="$ROOT/runtime"; OUT="$ROOT/outputs"
 rm -rf "$RUN" "$OUT"; mkdir -p "$RUN" "$OUT"
-# Workflow provides the packaged Radiance library path when available.
 export RAYPATH="${RAYPATH:-.}"
 
 python3 "$ROOT/generate_scene.py" | tee "$RUN/generate_scene.log"
@@ -43,19 +42,34 @@ for sky in OVC CLEAR_E CLEAR_HIGH CLEAR_W; do
   gensky ${SKYARGS[$sky]} > "$RUN/sky_${sky}.rad"
 done
 
-# Workplane matrix: same sensor grid and ray settings for A/B.
+# Build all scene octrees first. This also fails fast on geometry/material syntax.
 for scheme in A B; do
   for sky in OVC CLEAR_E CLEAR_HIGH CLEAR_W; do
-    oct="$RUN/${scheme}_${sky}.oct"
-    oconv "$RUN/materials.rad" "$RUN/room_${scheme}.rad" "$RUN/sky_${sky}.rad" "$RUN/sky_sources.rad" > "$oct"
-    raw="$RUN/irr_${scheme}_${sky}.txt"
-    rtrace -I+ -h -ab 5 -ad 4096 -as 1024 -aa 0.10 -ar 256 -lw 1e-5 "$oct" < "$RUN/sensors.pts" > "$raw"
-    python3 "$ROOT/convert_rtrace.py" --raw "$raw" --sensors "$RUN/sensors.csv" --out "$RUN/ill_${scheme}_${sky}.csv" --scheme "$scheme" --sky "$sky"
+    oconv "$RUN/materials.rad" "$RUN/room_${scheme}.rad" "$RUN/sky_${sky}.rad" "$RUN/sky_sources.rad" > "$RUN/${scheme}_${sky}.oct"
   done
 done
 
-# Glare views keep the same 800x800 fisheye and ray parameters as the serial version;
-# only scheduling changes. Limit concurrency to 4 so runtime is reproducible on a 4-core hosted runner.
+# Workplane simulations: physics and ray parameters are unchanged; only independent
+# A/B × sky cases are scheduled concurrently (max 4).
+run_workplane_one() {
+  local scheme="$1" sky="$2"
+  local oct="$RUN/${scheme}_${sky}.oct"
+  local raw="$RUN/irr_${scheme}_${sky}.txt"
+  rtrace -I+ -h -ab 5 -ad 4096 -as 1024 -aa 0.10 -ar 256 -lw 1e-5 \
+    "$oct" < "$RUN/sensors.pts" > "$raw"
+  python3 "$ROOT/convert_rtrace.py" --raw "$raw" --sensors "$RUN/sensors.csv" \
+    --out "$RUN/ill_${scheme}_${sky}.csv" --scheme "$scheme" --sky "$sky"
+}
+for scheme in A B; do
+  for sky in OVC CLEAR_E CLEAR_HIGH CLEAR_W; do
+    run_workplane_one "$scheme" "$sky" &
+    while [ "$(jobs -rp | wc -l)" -ge 4 ]; do wait -n; done
+  done
+done
+wait
+
+# Glare simulations: keep the same 800×800 angular fisheye and ray parameters.
+# Only scheduling changes; max 4 concurrent renders.
 run_glare_one() {
   local scheme="$1" sky="$2" role="$3" vp="$4" vd="$5" vu="$6"
   local oct="$RUN/${scheme}_${sky}.oct"
@@ -68,14 +82,11 @@ run_glare_one() {
     --out "$RUN/glare_${scheme}_${sky}_${role}.csv" \
     --scheme "$scheme" --sky "$sky" --role "$role"
 }
-
 for scheme in A B; do
   for sky in CLEAR_E CLEAR_W; do
     while IFS='|' read -r role vp vd vu; do
       run_glare_one "$scheme" "$sky" "$role" "$vp" "$vd" "$vu" &
-      while [ "$(jobs -rp | wc -l)" -ge 4 ]; do
-        wait -n
-      done
+      while [ "$(jobs -rp | wc -l)" -ge 4 ]; do wait -n; done
     done < <(python3 - "$RUN/views.json" <<'PY'
 import json,sys
 for v in json.load(open(sys.argv[1])):
