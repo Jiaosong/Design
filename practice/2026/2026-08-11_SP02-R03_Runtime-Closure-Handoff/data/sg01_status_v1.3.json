@@ -1,0 +1,45 @@
+{
+  "exercise": "SP02-R03 v1.3｜SG01 Native Definition Closure",
+  "date": "2026-08-11",
+  "handoff_artifact_status": "POST-REVIEW PASS",
+  "gates": {
+    "ND00": "PASS",
+    "ND01": "PASS",
+    "ND02": "OPEN",
+    "ND03": "BLOCKED_BY_ND02",
+    "ND04": "BLOCKED_BY_ND03",
+    "SG00": "OPEN",
+    "SG01": "OPEN",
+    "CP2": "OPEN",
+    "CP4": "OPEN"
+  },
+  "ND00": {
+    "run_id": 31462994131,
+    "job_id": 93690114301,
+    "head_sha": "e195ab0d0b463f3968bd98334a57031af26c7c35",
+    "artifact_id": 9090484158,
+    "artifact_digest": "sha256:cb85b1fc030ed186f6b36963d3fc8f147cbc7eac82cd731a2942bd6d04fe3ec6",
+    "truth": "PE_IL_METADATA_ONLY_NO_GRASSHOPPER_RUNTIME_LOAD"
+  },
+  "ND01": {
+    "run_id": 31463559829,
+    "job_id": 93691740664,
+    "head_sha": "a0c3c4518f8bc47b6609f9d4638375d1fd452dd5",
+    "artifact_id": 9090687106,
+    "artifact_digest": "sha256:90faa650c416be27a0bb5a9f0c66dd28b3c6b708249e8537bb3eb7364d69c28c",
+    "builder_dll_sha256": "4adc6b62632e9cdde8272f2b33fdda3c744d086928bfdc0c7dd06e46ba312925",
+    "truth": "STATIC_COMPILE_ONLY_NOT_GRASSHOPPER_RUNTIME"
+  },
+  "hosted_sdk_runtime_attempt": {
+    "run_id": 31463649333,
+    "job_id": 93691998677,
+    "head_sha": "e063caf23ce8f2b68f1c3440061c4bf011c638a4",
+    "builder_and_harness_compile": "PASS",
+    "managed_sdk_hydration": "PASS",
+    "GH_Document_initialization": "FAIL",
+    "exception": "System.DllNotFoundException: rhcommon_c",
+    "classification": "BOUNDARY_EVIDENCE_NOT_SG01_RUNTIME"
+  },
+  "exact_remaining_operation": "Real Rhino 8 native runtime: Builder DLL -> GH_Document -> GH_DocumentIO.SaveQuiet(GHX) -> GH_DocumentIO.Open(same GHX) -> SHA256 + required nickname inventory -> SG01 validator",
+  "practice_close_allowed": false
+}
