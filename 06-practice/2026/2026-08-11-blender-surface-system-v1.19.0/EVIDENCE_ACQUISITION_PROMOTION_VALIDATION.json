@@ -1,8 +1,16 @@
 {
-  "schema": "oleander.evidence-acquisition-promotion-validation.v1",
+  "schema": "oleander.designer-estimate-validation.v1",
   "status": "PASS",
-  "errors": [],
-  "promotion_counts": {"PROMOTE": 4, "HOLD": 6},
-  "physical_parameter_promotions": 0,
-  "evidence_acquisition_request_count": 6
+  "profiles": 6,
+  "process_simulation_profiles": 5,
+  "physical_parameter_claims": 0,
+  "supplier_dependencies_in_designer_gate": 0,
+  "checks": [
+    "center + design range",
+    "visual role",
+    "failure signs",
+    "multi-scale QA views",
+    "explicit non-physical semantics",
+    "realistic process simulation rather than supplier-specific formula"
+  ]
 }
