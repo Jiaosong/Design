@@ -1,0 +1,6 @@
+[
+  {"id":"CH01","name":"越江开卷","nodes":[1,2,3],"experience":"从看风景进入读山"},
+  {"id":"CH02","name":"行于峰林","nodes":[4,5,6,7],"experience":"关系、峰林与河谷阅读"},
+  {"id":"CH03","name":"石上有人","nodes":[8,9,10],"experience":"石层事实与文化回声分层"},
+  {"id":"CH04","name":"裂隙归江","nodes":[11,12,13],"experience":"裂隙、望山、穿行与收束"}
+]

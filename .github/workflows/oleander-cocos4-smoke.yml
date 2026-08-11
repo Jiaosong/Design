@@ -1,0 +1,72 @@
+name: OLEANDER COCOS4 Smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '90-shared/toolchains/cocos4/**'
+      - '05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/**'
+      - '.github/workflows/oleander-cocos4-smoke.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '90-shared/toolchains/cocos4/**'
+      - '05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/**'
+      - '.github/workflows/oleander-cocos4-smoke.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oleander-cocos4-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cocos4-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Use Node 22.17.0
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22.17.0
+
+      - name: Bootstrap shared OLEANDER COCOS toolchain
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OLEANDER_COCOS_HOME: ${{ runner.temp }}/oleander-cocos4
+          OLEANDER_COCOS_BIN_DIR: ${{ runner.temp }}/oleander-bin
+          OLEANDER_COCOS_PROJECT_ROOT: ${{ runner.temp }}/oleander-projects
+        run: |
+          set -euo pipefail
+          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh
+          echo "OLEANDER_COCOS_HOME=$OLEANDER_COCOS_HOME" >> "$GITHUB_ENV"
+          echo "OLEANDER_COCOS_BIN_DIR=$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_ENV"
+          echo "$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_PATH"
+
+      - name: Verify shared gateway
+        shell: bash
+        run: |
+          set -euo pipefail
+          oleander-cocos doctor
+
+      - name: Materialize C04 from authoritative source pack
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          bash 90-shared/toolchains/cocos4/materialize-c04.sh \
+            05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source \
+            "$DEST"
+
+      - name: Web-mobile smoke build
+        shell: bash
+        run: |
+          set -euo pipefail
+          oleander-cocos build "$RUNNER_TEMP/c04-cocos4" web-mobile
