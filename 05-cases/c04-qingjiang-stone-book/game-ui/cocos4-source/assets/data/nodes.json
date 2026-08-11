@@ -1,0 +1,15 @@
+[
+  {"id":1,"name":"红岩嘴","chapter":"CH01","phone":"S1","stamp":"视域印","action":"越江后先找最完整的裸露岩壁","mode":"PROMPT"},
+  {"id":2,"name":"华中第一藤","chapter":"CH01","phone":"S1","stamp":"生长印","action":"比较藤的生长时间与岩石时间","mode":"PROMPT"},
+  {"id":3,"name":"铁券天书","chapter":"CH01","phone":"S2","stamp":"崩塌印","action":"先找脱离母岩的块体，再看文化比拟","mode":"REVEAL"},
+  {"id":4,"name":"母子相望","chapter":"CH02","phone":"S1","stamp":"关系印","action":"先看两块岩体之间的距离、朝向和留白","mode":"PROMPT"},
+  {"id":5,"name":"红花石林","chapter":"CH02","phone":"S0","stamp":"峰林印","action":"手机退场，观察峰林整体轮廓与层次","mode":"LANDSCAPE"},
+  {"id":6,"name":"多级阶地·不对称河谷","chapter":"CH02","phone":"S2","stamp":"河谷印","action":"同时看两岸，比较阶地与河谷关系","mode":"REVEAL"},
+  {"id":7,"name":"仓廪峰","chapter":"CH02","phone":"S1","stamp":"象形印","action":"先画轮廓，再理解人为何这样命名","mode":"PROMPT"},
+  {"id":8,"name":"文山天书","chapter":"CH03","phone":"S2","stamp":"层理印","action":"找最连续层理，以真实岩层建立石书物证","mode":"REVEAL"},
+  {"id":9,"name":"盐水女神峰","chapter":"CH03","phone":"S1","stamp":"回声印","action":"先看峰形，再听短文化回声","mode":"PROMPT"},
+  {"id":10,"name":"绝壁天书","chapter":"CH03","phone":"S1","stamp":"纹理印","action":"找凹凸、结核或条带最明显的岩壁纹理","mode":"PROMPT"},
+  {"id":11,"name":"金石为开","chapter":"CH04","phone":"S2","stamp":"裂隙印","action":"找X形裂隙，再切换事实与地方故事","mode":"REVEAL"},
+  {"id":12,"name":"廪君峰","chapter":"CH04","phone":"S1","stamp":"望山印","action":"先看山，再理解人为何读成廪君","mode":"PROMPT"},
+  {"id":13,"name":"一线天","chapter":"CH04","phone":"S0","stamp":"归缝印","action":"收起手机，直接穿行","mode":"LANDSCAPE"}
+]
