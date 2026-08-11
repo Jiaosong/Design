@@ -1,0 +1,60 @@
+name: OLEANDER NodeGroups + Real Workflows
+
+on:
+  push:
+    branches: [oleander/nodegroups-realworkflows-20260811]
+    paths:
+      - 'tools/oleander-nodegroups/**'
+      - '.github/workflows/oleander-nodegroups-realworkflows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-render-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Reconstruct reviewed Blender builder
+        run: |
+          set -euo pipefail
+          base64 -d tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64 \
+            | gzip -d > /tmp/build_nodegroups_and_workflows.py
+          python3 -m py_compile /tmp/build_nodegroups_and_workflows.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')"
+          echo "Expected SHA: $EXPECTED"
+          echo "Actual SHA:   $ACTUAL"
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version
+
+      - name: Build parameterized node groups and render reviewed workflows
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          /tmp/blender-5.2.0-linux-x64/blender -b \
+            --python /tmp/build_nodegroups_and_workflows.py -- \
+            --out "$GITHUB_WORKSPACE/out" \
+            --samples 12 --width 1280 --height 900 \
+            2>&1 | tee "$GITHUB_WORKSPACE/out/blender_execution.log"
+          python3 -m json.tool "$GITHUB_WORKSPACE/out/workflow_receipt.json" >/dev/null
+          find "$GITHUB_WORKSPACE/out" -maxdepth 2 -type f -printf '%p %s bytes\n' | sort
+
+      - name: Upload reviewed node-group library and workflow evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-nodegroups-realworkflows-review2-${{ github.run_id }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
