@@ -1,0 +1,52 @@
+name: SP02-R03 Native Definition Builder Compile
+
+on:
+  push:
+    branches:
+      - practice/2026-08-11-sp02-r03-runtime-closure
+    paths:
+      - 'practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/**'
+      - '.github/workflows/sp02-r03-native-definition-builder-compile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nd01-builder-compile:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      - name: Restore official McNeel Grasshopper SDK
+        run: dotnet restore Sp02NativeDefinitionBuilder.csproj
+      - name: Compile builder
+        run: dotnet build Sp02NativeDefinitionBuilder.csproj --configuration Release --no-restore
+      - name: Record static build receipt
+        run: |
+          $dll='bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll'
+          if (!(Test-Path $dll)) { throw 'Builder DLL missing' }
+          $sha=(Get-FileHash $dll -Algorithm SHA256).Hash.ToLower()
+          New-Item -ItemType Directory -Force -Path build_receipt | Out-Null
+          @{
+            gate='ND01'
+            status='PASS'
+            truth='STATIC_COMPILE_ONLY_NOT_GRASSHOPPER_RUNTIME'
+            sdk='Grasshopper 8.32.26160.13001'
+            dll_sha256=$sha
+            commit='${{ github.sha }}'
+          } | ConvertTo-Json | Set-Content -Encoding UTF8 build_receipt/ND01_BUILD_RECEIPT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sp02-r03-native-definition-builder-static
+          path: |
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/build_receipt/ND01_BUILD_RECEIPT.json
+          retention-days: 30
