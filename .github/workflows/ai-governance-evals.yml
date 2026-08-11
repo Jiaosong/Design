@@ -10,7 +10,7 @@ on:
       - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
       - 'evals/**'
       - 'oleander-skills/**'
-      - '.github/workflows/ai-governance-evals.yml'
+      - '.github/workflows/**'
   push:
     branches: [main]
     paths:
@@ -21,7 +21,7 @@ on:
       - '90-shared/OLEANDER_AI_Design_Reasoning_Protocol_v0.2.md'
       - 'evals/**'
       - 'oleander-skills/**'
-      - '.github/workflows/ai-governance-evals.yml'
+      - '.github/workflows/**'
 
 permissions:
   contents: read
@@ -45,6 +45,9 @@ jobs:
       - name: Validate case and claim namespaces
         run: python 00-governance/schemas/validate_namespaces.py
 
+      - name: Enforce immutable workflow action refs
+        run: python evals/scripts/validate_workflow_action_pins.py
+
       - name: Compute P2 runtime metrics
         run: python evals/runtime/compute_metrics.py | tee /tmp/p2-metrics.txt
 
@@ -56,8 +59,8 @@ jobs:
           echo '- Validates P1 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates P2 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates reserved case IDs, Claim namespace, C01 canonical schema and Legacy authority registry.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Workflow dependencies are pinned to immutable reviewed commit SHAs.' >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
           echo '### P2 current evidence' >> "$GITHUB_STEP_SUMMARY"
           if [ -f /tmp/p2-metrics.txt ]; then
