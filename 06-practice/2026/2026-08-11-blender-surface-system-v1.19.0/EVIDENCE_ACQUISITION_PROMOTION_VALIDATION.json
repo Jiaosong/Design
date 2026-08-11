@@ -1,0 +1,8 @@
+{
+  "schema": "oleander.evidence-acquisition-promotion-validation.v1",
+  "status": "PASS",
+  "errors": [],
+  "promotion_counts": {"PROMOTE": 4, "HOLD": 6},
+  "physical_parameter_promotions": 0,
+  "evidence_acquisition_request_count": 6
+}
