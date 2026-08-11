@@ -140,13 +140,13 @@ async function setViewport(width, height) {
   await delay(400);
 }
 
-async function invoke(method) {
-  const value = await evaluate(`globalThis.__OLEANDER_WS07A__.${method}()`);
-  await delay(200);
-  return value;
-}
-
 async function snapshot() { return evaluate('globalThis.__OLEANDER_WS07A__.snapshot()'); }
+
+async function invoke(method) {
+  await evaluate(`globalThis.__OLEANDER_WS07A__.${method}()`);
+  await delay(220);
+  return snapshot();
+}
 
 async function screenshot(folder, name) {
   const capture = await cdp('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
@@ -174,12 +174,52 @@ function layoutIssueScan(state) {
   return issues;
 }
 
+const criticalPairs = [
+  ['PrototypeNav/NavS0', 'PrototypeNav/NavS1'], ['PrototypeNav/NavS1', 'PrototypeNav/NavS2'],
+  ['PrototypeNav/NavS2', 'PrototypeNav/NavRoute'], ['PrototypeNav/NavRoute', 'PrototypeNav/NavBook'],
+  ['PrototypeNav/NavS0', 'ReturnGuard/Label'], ['PrototypeNav/NavS1', 'ReturnGuard/Label'],
+  ['PrototypeNav/NavS2', 'ReturnGuard/Label'], ['PrototypeNav/NavRoute', 'ReturnGuard/Label'], ['PrototypeNav/NavBook', 'ReturnGuard/Label'],
+  ['ReadingOverlay/PageTitle', 'ReadingOverlay/Observation'],
+  ['ReadingOverlay/RecordButton', 'ReadingOverlay/RevealButton'],
+  ['ReadingOverlay/RecordButton', 'ReturnGuard/Label'], ['ReadingOverlay/RevealButton', 'ReturnGuard/Label'],
+  ['Route/Title', 'Route/Priority'], ['MyBook/Title', 'MyBook/BookSummary'],
+  ['S2_RiverValley/RevealRoot/EvidenceStatus', 'S2_RiverValley/RevealRoot/Fact'],
+  ['S2_RiverValley/RevealRoot/EvidenceStatus', 'S2_RiverValley/RevealRoot/Narrative'],
+  ['S2_RiverValley/RevealRoot/EvidenceStatus', 'S2_RiverValley/RevealRoot/DesignReading'],
+  ['S2_RiverValley/RevealRoot/Fact', 'S2_RiverValley/RevealRoot/Narrative'],
+  ['S2_RiverValley/RevealRoot/Narrative', 'S2_RiverValley/RevealRoot/DesignReading'],
+  ['S2_RiverValley/RevealRoot/Fact', 'S2_RiverValley/RevealRoot/CloseReveal'],
+  ['S2_RiverValley/RevealRoot/Narrative', 'S2_RiverValley/RevealRoot/CloseReveal'],
+  ['S2_RiverValley/RevealRoot/DesignReading', 'S2_RiverValley/RevealRoot/CloseReveal'],
+  ['S2_RiverValley/RevealRoot/CloseReveal', 'ReturnGuard/Label'],
+];
+function criticalLayoutScan(state) {
+  const byPath = new Map((state.layout ?? []).map((item) => [item.path, item]));
+  const issues = [];
+  for (const [aPath, bPath] of criticalPairs) {
+    const a = byPath.get(aPath); const b = byPath.get(bPath);
+    if (rectOverlap(a, b)) issues.push({ code: 'CRITICAL_AABB_OVERLAP', a: aPath, b: bPath });
+  }
+  return issues;
+}
+
 const viewports = [
   { id: '1080x1920', width: 1080, height: 1920 },
   { id: '390x844', width: 390, height: 844 },
   { id: '844x390', width: 844, height: 390 },
 ];
-const report = { gate: 'RUNTIME_CAPTURE', targetUrl, chrome, viewports: [], consoleEvents, exceptions, failures: [], visualIssues: [] };
+const report = {
+  gate: 'RUNTIME_CAPTURE',
+  responsiveLayoutGate: 'RESPONSIVE_LAYOUT_AUDIT_OPEN',
+  targetUrl,
+  chrome,
+  viewports: [],
+  consoleEvents,
+  exceptions,
+  failures: [],
+  visualIssues: [],
+  responsiveLayoutIssues: [],
+};
 
 for (const viewport of viewports) {
   await setViewport(viewport.width, viewport.height);
@@ -226,6 +266,7 @@ for (const viewport of viewports) {
 
   for (const [stateName, state] of Object.entries(record.states)) {
     for (const issue of layoutIssueScan(state)) report.visualIssues.push({ viewport: viewport.id, state: stateName, ...issue });
+    for (const issue of criticalLayoutScan(state)) report.responsiveLayoutIssues.push({ viewport: viewport.id, state: stateName, ...issue });
   }
   report.viewports.push(record);
 }
@@ -235,10 +276,11 @@ if (exceptions.length) report.failures.push({ code: 'RUNTIME_EXCEPTIONS', count:
 if (errorConsole.length) report.failures.push({ code: 'CONSOLE_ERRORS', count: errorConsole.length, errors: errorConsole });
 report.finalSnapshot = await snapshot();
 report.gate = report.failures.length === 0 ? 'RUNTIME_CAPTURE_PASS' : 'RUNTIME_CAPTURE_FAIL';
+report.responsiveLayoutGate = report.responsiveLayoutIssues.length === 0 ? 'RESPONSIVE_LAYOUT_PASS' : 'RESPONSIVE_LAYOUT_AUDIT_OPEN';
 fs.writeFileSync(path.join(outDir, 'runtime-capture-report.json'), `${JSON.stringify(report, null, 2)}\n`);
 
 console.log(`${report.gate}: ${report.viewports.length} viewports / ${report.viewports.reduce((sum, item) => sum + item.captures.length, 0)} screenshots`);
-console.log(`visualIssues=${report.visualIssues.length} consoleErrors=${errorConsole.length} exceptions=${exceptions.length}`);
+console.log(`${report.responsiveLayoutGate}: visualIssues=${report.visualIssues.length} critical=${report.responsiveLayoutIssues.length} consoleErrors=${errorConsole.length} exceptions=${exceptions.length}`);
 if (report.failures.length) {
   console.error(JSON.stringify(report.failures, null, 2));
   process.exitCode = 65;
