@@ -2,6 +2,13 @@ name: OLEANDER COCOS4 Smoke
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - c04/qingjiang-project-alignment-20260811
+    paths:
+      - '90-shared/toolchains/cocos4/**'
+      - '05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/**'
+      - '.github/workflows/oleander-cocos4-smoke.yml'
 
 jobs:
   cocos4-smoke:
@@ -14,7 +21,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.17.0
-          cache: npm
 
       - name: Install COCOS CLI from pinned source
         shell: bash
