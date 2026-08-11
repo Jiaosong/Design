@@ -68,8 +68,10 @@ It does **not** prove measured CMF, real wood/stone/textile material properties,
   - https://app.notion.com/p/3b9b86be5c4781dfb014e904e06fd1af
 - Google Drive folder:
   - https://drive.google.com/drive/folders/11uxrdZdg0v3J5xD0_vl388CEXM_4J6e9
-- Drive evidence ZIP ID: `1S1pqzD51LqEE3ncNKr9uU5aNN52WW0wJ`
-- Reusable binary inside evidence ZIP: `OLEANDER_Procedural_NodeGroups_v1.0.blend`
+- Raw Blender evidence ZIP ID: `1S1pqzD51LqEE3ncNKr9uU5aNN52WW0wJ`
+- Final package ZIP ID: `1E2-ZkIFafpXVZYZ5qFwvSxkAbzSc86OO`
+- Reusable binary inside evidence package: `OLEANDER_Procedural_NodeGroups_v1.0.blend`
+- Draft PR: https://github.com/Jiaosong/Design/pull/47 — mergeable, intentionally not auto-merged.
 
 ## Next gate
 
