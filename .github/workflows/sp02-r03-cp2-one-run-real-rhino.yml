@@ -1,0 +1,70 @@
+name: SP02-R03 One-Run Real Rhino CP2 Closure
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider_id:
+        description: 'Provider classification for the real Rhino node'
+        required: true
+        default: 'P01_GUI_WINDOWS_DESKTOP'
+
+permissions:
+  contents: read
+
+jobs:
+  build-runtime-closure:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      - run: dotnet restore Sp02NativeDefinitionBuilder.csproj
+      - run: dotnet build Sp02NativeDefinitionBuilder.csproj --configuration Release --no-restore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sp02-r03-cp2-runtime-dll
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll
+          retention-days: 1
+
+  close-cp2-real-rhino:
+    needs: build-runtime-closure
+    runs-on: [self-hosted, Windows, X64, rhino8]
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: sp02-r03-cp2-runtime-dll
+          path: _sp02_cp2
+
+      - name: Execute one real Rhino process for SG00—SG07
+        run: |
+          $root='practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition'
+          & "$root/runner/run_cp2_closure_windows.ps1" `
+            -RuntimeDll '_sp02_cp2/Sp02NativeDefinitionBuilder.dll' `
+            -EvidenceDir "$root/cp2_runtime_evidence" `
+            -ProviderId '${{ inputs.provider_id }}'
+
+      - name: Assert CP2 closed and CP4 still open
+        run: |
+          $p='practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/cp2_runtime_evidence/CP2_VALIDATION_RESULT.json'
+          $j=Get-Content $p -Raw | ConvertFrom-Json
+          if ($j.CP2 -ne 'PASS') { throw "CP2 did not close: $($j | ConvertTo-Json -Depth 50)" }
+          if ($j.CP4 -ne 'OPEN') { throw 'CP4 must remain OPEN until GUI provenance review.' }
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sp02-r03-real-rhino-cp2-evidence
+          path: practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/cp2_runtime_evidence/
+          if-no-files-found: error
+          retention-days: 30
