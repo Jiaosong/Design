@@ -46,6 +46,20 @@ AR-G10 必须把以下内容作为独立检查项：Visual hierarchy、Boundary�
 - AR-S08 Presentation
 - AR-S09 Release Package
 
+## Production Asset Persistence Gate
+
+任何包含 `.blend`、原生 CAD/参数化源文件、canonical model、渲染/仿真场景、production ZIP 或其他不可仅凭文本记录重建的生产二进制的交付包，同时触发：
+
+`00-governance/production-asset-persistence-gate-v1.0.md`
+
+必须完成：
+
+`PAP-G0 Asset Inventory → PAP-G1 Local Integrity → PAP-G2 Durable Upload → PAP-G3 Independent Retrieval → PAP-G4 Retrieval Integrity → PAP-G5 Persistence Manifest → PAP-G6 Cross-System Receipt`
+
+只有 `PAP-G0—PAP-G6 PASS` 才允许 AR-S09 PASS 和 Promotion / Archive。
+
+**至少一个真正的二进制持久化副本必须存在并经过重新下载/重新 materialize + SHA-256 校验。** 文件名、checksum、PNG preview、Notion/GitHub 文字记录、`/mnt/data` 临时文件、临时 signed URL 和会过期的 Actions artifact 都不能独立满足这一要求。
+
 ## Review scope
 
 1. 实际打开最终 SVG / PDF / PNG / 模型，检查版面、文字、尺寸、图形、索引、图签、线型、层级、拥挤、越框、**遮挡**与阅读顺序。
@@ -58,17 +72,21 @@ AR-G10 必须把以下内容作为独立检查项：Visual hierarchy、Boundary�
 8. 证据状态：区分练习假设、外部核验事实、PENDING、厂家/结构输入、法规和项目数据。
 9. 复现：确认修正真正进入最终交付文件。
 10. 审查结果必须写入 README / REVIEW / REVISION / ARTIFACT_REVIEW_MATRIX / training record。
+11. 若触发生产二进制持久化：确认真实 binary 已持久化、重新取回、SHA/size 一致，并记录 stable provider file/object ID。
 
 ## Hard FAIL
 
 以下问题不能通过总分平均抵消：关键遮挡、比例错误、几何—标注不一致、视图错误、多视图冲突、构造/功能逻辑错误、虚假证据/同步声明、文件无法打开。
+
+对于 production binary，以下也属于 Hard FAIL：只剩 checksum/preview、只剩临时 runtime、只剩会过期的 Actions artifact、上传后未重新取回验证、re-download SHA/size 不一致、没有 stable provider object ID。
 
 ## Status gate
 
 - 未执行：`REVIEW PENDING`
 - 发现问题：`POST-REVIEW FAIL / NEEDS REVISION`
 - 修正后重审通过：`POST-REVIEW PASS`
-- 所有触发 Gate + AR-S09 通过：`PACKAGE RELEASE PASS`
+- 二进制持久化未完成：`PERSISTENCE PENDING / FAIL`
+- `POST-REVIEW PASS + PAP PASS + 所有触发 Gate + AR-S09 PASS`：`PACKAGE RELEASE PASS`
 
 ## Prohibited shortcuts
 
@@ -76,7 +94,10 @@ AR-G10 必须把以下内容作为独立检查项：Visual hierarchy、Boundary�
 - 不得生成完即交付而未打开最终成品；
 - 不得发现问题后只改文档、不改源文件；
 - 不得把未复核文件同步为正式候选版本；
-- 不得把 Code PASS 当作 Generated Artifact PASS。
+- 不得把 Code PASS 当作 Generated Artifact PASS；
+- 不得用 SHA 记录替代实际 binary；
+- 不得把 `/mnt/data`、临时 sandbox、临时 URL 或会过期 Actions artifact 当成唯一生产资产仓库；
+- 不得仅凭“upload success”宣布持久化完成，必须重新取回并核对 SHA/size。
 
 ## Trigger case: SP04 R08H.1
 
@@ -85,3 +106,7 @@ R08H.1-C-A04 在最终成品审查中判定为 `POST-REVIEW FAIL / NEEDS REVISIO
 - A2 构造标注与填充/线稿拥挤；
 - A2 `60 [H]` 与实际 1:2 几何长度不一致；
 - 证明自动边界 QA 不能替代成品审查。
+
+## Trigger case: Timer Light Basin R54 G3.2
+
+Timer R54 G3.2 证明：**生产 SHA / review PNG / gate JSON 仍存在，不等于 native `.blend` 和 production ZIP 可被真正恢复。** 该批次因此作为 `PERSISTENCE FAIL / SOURCE BINARY MATERIALIZATION MISSING` 的治理触发案例；历史 G0–G5 渲染证据不因此撤销，但 Promotion 继续锁定。
