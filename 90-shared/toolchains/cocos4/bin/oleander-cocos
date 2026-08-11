@@ -11,7 +11,7 @@ OLEANDER COCOS 4 shared gateway
 Usage:
   oleander-cocos doctor
   oleander-cocos version
-  oleander-cocos create <project-path> [2d|3d]
+  oleander-cocos create <project-path> [2d]
   oleander-cocos import <project-path>
   oleander-cocos build <project-path> [platform]
   oleander-cocos info <project-path>
@@ -40,7 +40,15 @@ case "$cmd" in
   help|-h|--help) usage ;;
   doctor) "$TOOL_ROOT/doctor.sh" ;;
   version) run_cocos --version ;;
-  create) p="${1:?project path required}"; type="${2:-2d}"; run_cocos create --project "$p" --type "$type" ;;
+  create)
+    p="${1:?project path required}"
+    type="${2:-2d}"
+    if [[ "$type" != "2d" ]]; then
+      echo "ERROR: pinned COCOS CLI create gateway currently supports only the governed 2d template; requested: $type" >&2
+      exit 64
+    fi
+    run_cocos create --path "$p"
+    ;;
   import) p="${1:?project path required}"; run_cocos import --project "$p" ;;
   build) p="${1:?project path required}"; platform="${2:-web-mobile}"; run_cocos build --project "$p" --platform "$platform" ;;
   info) p="${1:?project path required}"; run_cocos info --project "$p" ;;
