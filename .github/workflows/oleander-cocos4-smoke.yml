@@ -136,6 +136,15 @@ jobs:
           echo "OLEANDER WS-07A capture build root: $BUILD_ROOT"
           node 90-shared/toolchains/cocos4/capture-ws07a-runtime.mjs "$BUILD_ROOT" "$OUT"
           test -f "$OUT/runtime-capture-report.json"
+      - name: Audit WS-07A responsive interaction layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          node 90-shared/toolchains/cocos4/audit-ws07a-responsive-layout.mjs \
+            "$OUT/runtime-capture-report.json" \
+            "$OUT/responsive-layout-audit.json"
+          test -f "$OUT/responsive-layout-audit.json"
       - name: Upload WS-07A runtime capture evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
