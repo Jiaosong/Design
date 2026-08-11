@@ -12,9 +12,7 @@ Usage:
   oleander-cocos doctor
   oleander-cocos version
   oleander-cocos create <project-path> [2d]
-  oleander-cocos import <project-path>
   oleander-cocos build <project-path> [platform]
-  oleander-cocos info <project-path>
   oleander-cocos mcp <project-path> [port]
   oleander-cocos raw <cocos-cli arguments...>
 TXT
@@ -44,14 +42,12 @@ case "$cmd" in
     p="${1:?project path required}"
     type="${2:-2d}"
     if [[ "$type" != "2d" ]]; then
-      echo "ERROR: pinned COCOS CLI create gateway currently supports only the governed 2d template; requested: $type" >&2
+      echo "ERROR: OLEANDER governed create gateway currently supports only 2d; requested: $type" >&2
       exit 64
     fi
-    run_cocos create --path "$p"
+    run_cocos create --project "$p" --type "$type"
     ;;
-  import) p="${1:?project path required}"; run_cocos import --project "$p" ;;
   build) p="${1:?project path required}"; platform="${2:-web-mobile}"; run_cocos build --project "$p" --platform "$platform" ;;
-  info) p="${1:?project path required}"; run_cocos info --project "$p" ;;
   mcp) p="${1:?project path required}"; port="${2:-9527}"; run_cocos start-mcp-server --project "$p" --port "$port" ;;
   raw) run_cocos "$@" ;;
   *) echo "Unknown command: $cmd" >&2; usage; exit 64 ;;
