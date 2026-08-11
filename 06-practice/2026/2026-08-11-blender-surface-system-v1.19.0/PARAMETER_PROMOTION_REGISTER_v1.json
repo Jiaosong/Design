@@ -1,17 +1,20 @@
 {
-  "schema": "oleander.parameter-promotion-register.v1",
+  "schema": "oleander.designer-parameter-promotion.v1",
   "version": "v1.19.0",
-  "overall": "4 PROJECT_DEFINED promotions; 0 physical parameter promotions",
-  "promotions": [
-    {"target":"XJ01 / PP Main Field / material family","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project design specification explicitly defines PP.","not_promoted":["exact resin grade","supplier","masterbatch","physical surface properties"]},
-    {"target":"XJ01 / PP Main Field / process","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project design specification explicitly defines injection molding.","not_promoted":["tooling supplier","mold texture code","molding conditions","production validation"]},
-    {"target":"XJ01 / PU Contact / material family","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project specification states material fact: PU.","not_promoted":["PU chemistry/system","grade","hardness","supplier","process"]},
-    {"target":"XJ01 / Iron Tube / substrate identity","to":"P2 PROJECT_DEFINED","decision":"PROMOTE","claim":"Project specification states material fact: iron tube.","not_promoted":["exact steel grade","tube wall spec","coating process"]},
-    {"target":"XJ01 / PP roughness 0.52","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No physical gloss/roughness measurement or approved sample."},
-    {"target":"XJ01 / PP 0.4 mm + 0.12 mm texture hierarchy","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No supplier/tooling texture code or physical sample measurement."},
-    {"target":"XJ01 / Iron Tube / powder coating","to":"P0 BLOCKED","decision":"HOLD","blocker":"Supplier/coating chemistry/process/sample not selected."},
-    {"target":"Timer / Housing / physical identity","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No exact grade/supplier/sample evidence."},
-    {"target":"Timer / Knob / anodized brushed aluminum physical process","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No alloy/temper, brush specification, anodic designation/thickness/color/seal or sample evidence."},
-    {"target":"Timer / Diffuser / optical material + transmission","to":"P1 VISUALIZATION_LOCKED","decision":"HOLD","blocker":"No exact polymer grade, thickness, transmittance/haze data or physical sample."}
-  ]
+  "levels": [
+    {"level":"D0","name":"UNDEFINED","meaning":"No useful design estimate yet."},
+    {"level":"D1","name":"DESIGN_ESTIMATE","meaning":"Defensible starting value/range for visualization."},
+    {"level":"D2","name":"DESIGN_CALIBRATED","meaning":"Adjusted through controlled Blender comparison and multi-scale review."},
+    {"level":"D3","name":"PROJECT_LOCKED_VISUAL_PROFILE","meaning":"Approved for current project visual continuity."}
+  ],
+  "external_handoff": "Engineering / production evidence is a separate downstream handoff, not D4.",
+  "current": [
+    {"target":"XJ01 PP","level":"D2 DESIGN_CALIBRATED","roughness_center":0.52,"roughness_range":[0.48,0.58]},
+    {"target":"XJ01 PU","level":"D1 DESIGN_ESTIMATE","roughness_center":0.66,"roughness_range":[0.60,0.72]},
+    {"target":"XJ01 coated iron visual","level":"D1 DESIGN_ESTIMATE","metallic":0.0,"roughness_center":0.46,"roughness_range":[0.40,0.55]},
+    {"target":"Timer Housing","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.55,"roughness_range":[0.48,0.62]},
+    {"target":"Timer Knob","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.28,"anisotropy_center":0.48},
+    {"target":"Timer Diffuser","level":"D3 PROJECT_LOCKED_VISUAL_PROFILE","roughness_center":0.34,"transmission_center":0.85}
+  ],
+  "parameter_semantics":"All values are design / representation controls, not physical measurements."
 }
