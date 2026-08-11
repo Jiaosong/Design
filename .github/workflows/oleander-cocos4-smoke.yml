@@ -17,6 +17,9 @@ on:
       - '05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/**'
       - '.github/workflows/oleander-cocos4-smoke.yml'
 
+permissions:
+  contents: read
+
 jobs:
   cocos4-smoke:
     runs-on: ubuntu-latest
