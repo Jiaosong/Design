@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.project-flow.v0.3",
+  "title": "OLEANDER Canonical Project Flow Contract v0.3",
+  "type": "object",
+  "required": [
+    "project",
+    "decision_question",
+    "design_state",
+    "authority",
+    "fidelity",
+    "locked_variables",
+    "open_variables",
+    "exit_condition",
+    "persistence"
+  ],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "primary_layer"],
+      "properties": {
+        "name": {"type": "string"},
+        "case_id": {"type": ["string", "null"], "description": "Only canonical Cxx case IDs where applicable."},
+        "primary_layer": {"enum": ["Business", "Culture", "IP", "Spatial"]},
+        "primary_node": {"type": "string"},
+        "supporting_nodes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "decision_question": {"type": "string", "minLength": 1},
+    "loop": {"enum": ["EXPLORATION_SANDBOX", "CANONICAL_PRODUCTION"]},
+    "design_state": {"enum": ["EXPLORE", "CANDIDATE", "REVISE", "REJECTED", "PROMOTED", "LOCKED", "SUPERSEDED"]},
+    "job_state": {"enum": ["CREATED", "RESOLVED", "QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "CANCELLED", "CACHED"]},
+    "authority": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["state"],
+        "properties": {
+          "state": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY", "FROZEN_AUTHORITY"]},
+          "source": {"type": ["string", "null"]},
+          "hash": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "fidelity": {"enum": ["FID0_PREFLIGHT", "FID1_DESIGN_VALIDATION", "FID2_PROMOTION", "FID3_PRESENTATION"]},
+    "locked_variables": {"type": "array", "items": {"type": "string"}},
+    "open_variables": {"type": "array", "items": {"type": "string"}},
+    "comparison": {
+      "type": "object",
+      "properties": {
+        "candidates": {"type": "array", "items": {"type": "string"}},
+        "reading_scale": {"type": "array", "items": {"type": "string"}},
+        "failure_signs": {"type": "array", "items": {"type": "string"}},
+        "review_contract_hash": {"type": ["string", "null"]}
+      }
+    },
+    "resource_budget": {
+      "type": "object",
+      "properties": {
+        "max_variants": {"type": "integer", "minimum": 1},
+        "max_iterations": {"type": "integer", "minimum": 0},
+        "max_runtime_minutes": {"type": "number", "minimum": 0},
+        "max_resolution": {"type": "integer", "minimum": 1},
+        "parallelism": {"type": "integer", "minimum": 1}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "capability": {"type": "string"},
+        "worker": {"type": "string"},
+        "runtime": {"type": "string"},
+        "scene_compile_hash": {"type": ["string", "null"]},
+        "artifact_cache_key": {"type": ["string", "null"]}
+      }
+    },
+    "qa": {
+      "type": "object",
+      "properties": {
+        "machine": {"enum": ["PENDING", "PASS", "REVISE", "BLOCKED", "FAILED"]},
+        "visual": {"enum": ["PENDING", "PASS", "REVISE", "REJECT", "BLOCKED"]},
+        "project": {"enum": ["PENDING", "PASS", "REVISE", "REJECT", "BLOCKED"]},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "exit_condition": {"type": "string", "minLength": 1},
+    "promotion": {
+      "type": "object",
+      "properties": {
+        "eligible": {"type": "boolean"},
+        "decision": {"enum": ["PENDING", "PROMOTE", "REVISE", "REJECT", "BLOCK"]},
+        "reason": {"type": "string"}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {"type": ["string", "null"]},
+        "artifact_hash": {"type": ["string", "null"]},
+        "source_job": {"type": ["string", "null"]},
+        "supersedes": {"type": ["string", "null"]}
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "required": ["policy", "pap_required", "pap_status"],
+      "properties": {
+        "policy": {"enum": ["TEMP_ONLY", "RECEIPT_ONLY", "PRE_PROMOTION_PAP", "PROMOTION_SYNC", "CONTRACT_REQUIRED_SYNC"]},
+        "pap_required": {"type": "boolean"},
+        "pap_status": {"enum": ["NOT_TRIGGERED", "PENDING", "FAIL", "PASS"]},
+        "durable_store": {"type": ["string", "null"]},
+        "durable_file_id": {"type": ["string", "null"]},
+        "retrieved_sha256": {"type": ["string", "null"]},
+        "open_test": {"enum": ["NOT_RUN", "PASS", "FAIL", null]},
+        "receipt": {"type": ["string", "null"]},
+        "github": {"type": ["string", "null"]},
+        "notion": {"type": ["string", "null"]},
+        "drive": {"type": ["string", "null"]}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["promotion", "persistence"],
+        "properties": {
+          "promotion": {
+            "required": ["decision"],
+            "properties": {"decision": {"const": "PROMOTE"}}
+          },
+          "persistence": {
+            "required": ["pap_required"],
+            "properties": {"pap_required": {"const": true}}
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "persistence": {
+            "required": ["pap_status"],
+            "properties": {"pap_status": {"const": "PASS"}}
+          }
+        }
+      }
+    }
+  ]
+}
