@@ -43,10 +43,15 @@ jobs:
             dll_sha256=$sha
             commit='${{ github.sha }}'
           } | ConvertTo-Json | Set-Content -Encoding UTF8 build_receipt/ND01_BUILD_RECEIPT.json
-      - uses: actions/upload-artifact@v4
+      - name: Upload complete static builder handoff
+        uses: actions/upload-artifact@v4
         with:
           name: sp02-r03-native-definition-builder-static
           path: |
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/bin/Release/net7.0/Sp02NativeDefinitionBuilder.dll
             practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/build_receipt/ND01_BUILD_RECEIPT.json
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/Sp02NativeDefinitionBuilder.csproj
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/Sp02NativeDefinitionBuilder.cs
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/runner/
+            practice/2026/2026-08-11_SP02-R03_Runtime-Closure-Handoff/native_definition/validator/
           retention-days: 30
