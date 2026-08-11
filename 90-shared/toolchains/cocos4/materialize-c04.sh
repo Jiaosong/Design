@@ -42,6 +42,30 @@ cp -R "$SOURCE/assets/." "$DEST/assets/"
 [[ -f "$DEST/assets/scripts/core/AppState.ts" ]] || { echo "ERROR: AppState.ts missing after source overlay" >&2; exit 65; }
 [[ -f "$DEST/assets/scripts/core/NodeRegistry.ts" ]] || { echo "ERROR: NodeRegistry.ts missing after source overlay" >&2; exit 65; }
 
+# A COCOS web build requires at least one real SceneAsset. The pinned CLI's
+# `create 2d` command materializes project metadata but does not create a scene,
+# so source packs must provide one explicitly. Fail here with a precise contract
+# error instead of surfacing the builder's generic BUILD_FAILED (exit 34).
+SCENE_FILE="$(find "$DEST/assets" -type f -name '*.scene' -print -quit)"
+[[ -n "$SCENE_FILE" ]] || { echo "ERROR: no .scene asset found after source overlay; at least one COCOS SceneAsset is required" >&2; exit 65; }
+
+node - "$SCENE_FILE" <<'NODE'
+const fs = require('fs');
+const file = process.argv[2];
+let document;
+try {
+  document = JSON.parse(fs.readFileSync(file, 'utf8'));
+} catch (error) {
+  console.error(`ERROR: scene is not valid JSON: ${file}`);
+  console.error(error.message);
+  process.exit(65);
+}
+if (!Array.isArray(document) || !document.some((entry) => entry && entry.__type__ === 'cc.SceneAsset')) {
+  console.error(`ERROR: scene does not contain a cc.SceneAsset root: ${file}`);
+  process.exit(65);
+}
+NODE
+
 node - "$DEST/package.json" <<'NODE'
 const fs = require('fs');
 const file = process.argv[2];
@@ -56,4 +80,5 @@ if (!pkg.creator || pkg.creator.version !== '4.0.0') {
 }
 NODE
 
+echo "C04 materialized with buildable scene: ${SCENE_FILE#$DEST/}"
 echo "C04 materialized as a real COCOS CLI project at: $DEST"
