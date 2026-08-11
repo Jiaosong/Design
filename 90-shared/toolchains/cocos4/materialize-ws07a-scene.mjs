@@ -27,7 +27,7 @@ async function connect() {
   let lastError;
   for (let attempt = 1; attempt <= 90; attempt += 1) {
     transport = new StreamableHTTPClientTransport(mcpUrl);
-    client = new Client({ name: 'oleander-ws07a-materializer', version: '0.1.0' }, { capabilities: { tools: {} } });
+    client = new Client({ name: 'oleander-ws07a-materializer', version: '0.2.0' }, { capabilities: { tools: {} } });
     try {
       await client.connect(transport);
       return;
@@ -58,39 +58,47 @@ function assertOk(result, label) {
   return result.data;
 }
 
-async function ensureNode(spec) {
-  const query = await callTool('scene-query-node', { options: { path: spec.path, includeChildren: false, includeComponents: true } });
-  if (query.code === 200) return query.data;
-  return assertOk(await callTool('scene-create-node-by-type', {
+async function addComponent(nodePath, component, label) {
+  return assertOk(await callTool('scene-add-component', {
+    addComponentInfo: { nodePath, component },
+  }), label);
+}
+
+async function createContractNode(spec) {
+  assertOk(await callTool('scene-create-node-by-type', {
     options: {
       path: spec.path,
       name: spec.path.split('/').at(-1),
-      nodeType: spec.type,
+      nodeType: 'Empty',
       workMode: '2d',
-      ...(spec.position ? { position: spec.position } : {}),
     },
   }), `create ${spec.path}`);
+
+  if (spec.type === 'Label') {
+    const added = await addComponent(spec.path, 'cc.Label', `add Label ${spec.path}`);
+    const componentPath = added?.path;
+    if (!componentPath) throw new Error(`add Label ${spec.path}: component path missing`);
+    const properties = { string: spec.label ?? '' };
+    if (Number.isFinite(spec.fontSize)) {
+      properties.fontSize = spec.fontSize;
+      properties.lineHeight = Math.max(spec.fontSize + 4, Math.round(spec.fontSize * 1.2));
+    }
+    assertOk(await callTool('scene-set-component-property', {
+      setPropertyOptions: { componentPath, properties },
+    }), `set Label ${spec.path}`);
+  } else if (spec.type === 'Button') {
+    await addComponent(spec.path, 'cc.Button', `add Button ${spec.path}`);
+  }
+
+  if (typeof spec.active === 'boolean') {
+    assertOk(await callTool('scene-update-node', {
+      options: { path: spec.path, properties: { active: spec.active } },
+    }), `set active ${spec.path}`);
+  }
 }
 
-async function setNodeActive(pathValue, active) {
-  assertOk(await callTool('scene-update-node', { options: { path: pathValue, properties: { active } } }), `set active ${pathValue}`);
-}
-
-async function setLabel(spec) {
-  if (typeof spec.label !== 'string') return;
-  const componentPath = `${spec.path}/cc.Label`;
-  let queried = await callTool('scene-query-component', { component: { componentPath } });
-  if (queried.code !== 200) {
-    assertOk(await callTool('scene-add-component', { addComponentInfo: { nodePath: spec.path, component: 'cc.Label' } }), `add Label ${spec.path}`);
-    queried = await callTool('scene-query-component', { component: { componentPath } });
-  }
-  assertOk(queried, `query Label ${spec.path}`);
-  const properties = { string: spec.label };
-  if (Number.isFinite(spec.fontSize)) {
-    properties.fontSize = spec.fontSize;
-    properties.lineHeight = Math.max(spec.fontSize + 4, Math.round(spec.fontSize * 1.2));
-  }
-  assertOk(await callTool('scene-set-component-property', { setPropertyOptions: { componentPath, properties } }), `set Label ${spec.path}`);
+function managedRoots() {
+  return [...new Set(contract.nodes.map((spec) => spec.path.split('/').slice(0, 2).join('/')))].filter((pathValue) => pathValue.startsWith('Canvas/'));
 }
 
 await connect();
@@ -99,7 +107,7 @@ try {
   const available = new Set(toolList.tools.map((tool) => tool.name));
   const required = [
     'scene-create', 'scene-open', 'scene-save', 'scene-reload', 'scene-close',
-    'scene-query-node', 'scene-create-node-by-type', 'scene-update-node',
+    'scene-query-node', 'scene-create-node-by-type', 'scene-update-node', 'scene-delete-node',
     'scene-add-component', 'scene-query-component', 'scene-set-component-property',
   ];
   for (const name of required) if (!available.has(name)) throw new Error(`Pinned MCP tool missing: ${name}`);
@@ -121,11 +129,15 @@ try {
     assertOk(await callTool('scene-create-node-by-type', { options: { path: 'Canvas', name: 'Canvas', nodeType: 'Canvas', workMode: '2d' } }), 'create Canvas');
   }
 
-  for (const spec of contract.nodes) {
-    await ensureNode(spec);
-    if (typeof spec.active === 'boolean') await setNodeActive(spec.path, spec.active);
-    await setLabel(spec);
+  // Fail closed against stale Creator template children/default labels/buttons from previous generations.
+  for (const rootPath of managedRoots()) {
+    const existing = await callTool('scene-query-node', { options: { path: rootPath, includeChildren: false, includeComponents: true } });
+    if (existing.code === 200) {
+      assertOk(await callTool('scene-delete-node', { options: { path: rootPath } }), `delete stale managed root ${rootPath}`);
+    }
   }
+
+  for (const spec of contract.nodes) await createContractNode(spec);
 
   const canvasAfterNodes = assertOk(await callTool('scene-query-node', { options: { path: contract.controller.nodePath, includeChildren: true, includeComponents: true } }), 'query controller host');
   const attached = (canvasAfterNodes.components ?? []).some((item) => {
@@ -146,7 +158,7 @@ try {
   assertOk(await callTool('scene-reload', {}), 'reload VisualPrototype.scene');
 
   for (const spec of contract.nodes) {
-    assertOk(await callTool('scene-query-node', { options: { path: spec.path, includeChildren: false, includeComponents: false } }), `verify ${spec.path}`);
+    assertOk(await callTool('scene-query-node', { options: { path: spec.path, includeChildren: false, includeComponents: true } }), `verify ${spec.path}`);
   }
   if (controllerPath) {
     assertOk(await callTool('scene-query-component', { component: { componentPath: controllerPath } }), 'verify mounted WS-07A controller');
@@ -158,9 +170,12 @@ try {
   const proof = {
     gate: 'OFFICIAL_MCP_SCENE_MATERIALIZATION_PASS',
     sceneUrl,
+    contractVersion: contract.version,
     nodeCount: contract.nodes.length,
+    managedRootCount: managedRoots().length,
     controller: contract.controller.className,
     controllerPath: controllerPath ?? 'existing',
+    defaultTemplateVisuals: 'REMOVED_BY_EMPTY_NODE_MATERIALIZATION',
   };
   const proofPath = path.join(projectPath, 'temp', 'oleander-ws07a-scene-proof.json');
   fs.mkdirSync(path.dirname(proofPath), { recursive: true });
