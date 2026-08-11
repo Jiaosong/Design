@@ -8,12 +8,13 @@ const manifestPath = path.join(root, 'assets/resources/c04/ws07a/runtime-manifes
 const tokensPath = path.join(root, 'assets/resources/c04/ws07a/ui-tokens.json');
 const sceneContractPath = path.join(root, 'assets/resources/c04/ws07a/scene-contract.json');
 const requiredScripts = ['RuntimeTypes.ts','RuntimeCatalog.ts','RuntimeStore.ts','VisualPrototypeController.ts','VisualAuditRules.ts'].map((file) => path.join(root, 'assets/scripts/ws07a', file));
-const materializerFiles = [
+const toolchainFiles = [
   path.join(repo, '90-shared/toolchains/cocos4/materialize-ws07a-scene.mjs'),
   path.join(repo, '90-shared/toolchains/cocos4/materialize-ws07a-scene.sh'),
+  path.join(repo, '90-shared/toolchains/cocos4/capture-ws07a-runtime.mjs'),
 ];
 function fail(message) { console.error(`ERROR: WS-07A runtime contract failed: ${message}`); process.exit(65); }
-for (const file of [manifestPath, tokensPath, sceneContractPath, ...requiredScripts, ...materializerFiles]) if (!fs.existsSync(file)) fail(`missing ${path.relative(repo, file)}`);
+for (const file of [manifestPath, tokensPath, sceneContractPath, ...requiredScripts, ...toolchainFiles]) if (!fs.existsSync(file)) fail(`missing ${path.relative(repo, file)}`);
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8'));
 const sceneContract = JSON.parse(fs.readFileSync(sceneContractPath, 'utf8'));
@@ -40,6 +41,9 @@ if (!controller.includes("showPageScreen('S0_ONE_LINE_SKY', 'R13')")) fail('cont
 if (!controller.includes("showPageScreen('S1_RED_ROCK_MOUTH', 'R01')")) fail('controller S1 binding missing');
 if (!controller.includes("showPageScreen('S2_RIVER_VALLEY', 'R06')")) fail('controller S2 binding missing');
 if (!controller.includes("@ccclass('C04WS07AVisualPrototypeController')")) fail('controller class name drifted');
+if (!controller.includes("const BRIDGE_KEY = '__OLEANDER_WS07A__'")) fail('runtime capture bridge missing');
+if (!controller.includes('getAuditSnapshot')) fail('runtime audit snapshot contract missing');
+if (!controller.includes('getBoundingBoxToWorld')) fail('runtime layout evidence contract missing');
 
 if (sceneContract.scene?.baseName !== 'VisualPrototype' || sceneContract.scene?.templateType !== '2d') fail('scene contract must generate VisualPrototype as 2d');
 if (sceneContract.scene?.dbURL !== 'db://assets/scenes') fail('VisualPrototype target directory drifted');
@@ -63,6 +67,13 @@ for (const requiredPath of requiredScenePaths) if (!scenePaths.includes(required
 const controllerPaths = ['S0_OneLineSky','S1_RedRockMouth','S2_RiverValley','S2_RiverValley/RevealRoot','ReadingOverlay','Route','MyBook','ReturnGuard/Label'];
 for (const relativePath of controllerPaths) if (!controller.includes(`'${relativePath}'`)) fail(`controller does not resolve ${relativePath}`);
 
-console.log('PASS: WS-07A runtime + official scene materialization contract');
+const capture = fs.readFileSync(toolchainFiles[2], 'utf8');
+for (const required of ['1080x1920', '390x844', '844x390', 'RUNTIME_CAPTURE_PASS', 'S0_MINIMAL_CHROME', 'S2_REVEAL_OPEN', 'BOOK_SUMMARY']) {
+  if (!capture.includes(required)) fail(`capture contract missing ${required}`);
+}
+if (!capture.includes('Page.captureScreenshot')) fail('capture contract must persist browser screenshots');
+if (!capture.includes('Runtime.exceptionThrown')) fail('capture contract must record browser runtime exceptions');
+
+console.log('PASS: WS-07A runtime + official scene + browser capture contract');
 console.log(`  Core=${manifest.corePages.length} Companion=${manifest.companionPages.length} Screens=${manifest.prototypeScreens.length} SceneNodes=${scenePaths.length}`);
-console.log('  Route=offline-first / MyBook=partial-is-complete / S0-S1-S2 density locked / VisualPrototype=MCP-generated');
+console.log('  Route=offline-first / MyBook=partial-is-complete / S0-S1-S2 density locked / VisualPrototype=MCP-generated / RuntimeCapture=CDP');
