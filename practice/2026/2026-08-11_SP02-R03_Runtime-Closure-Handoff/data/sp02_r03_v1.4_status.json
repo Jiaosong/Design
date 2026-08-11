@@ -1,0 +1,38 @@
+{
+  "exercise": "SP02-R03 v1.4｜One-Run Real Rhino CP2 Closure",
+  "date": "2026-08-11",
+  "handoff_artifact_status": "POST-REVIEW PASS / STATIC HANDOFF VERIFIED",
+  "real_runtime_status": "NOT EXECUTED",
+  "gates": {
+    "ND00": "PASS",
+    "ND01": "PASS",
+    "SG00": "OPEN",
+    "SG01": "OPEN",
+    "SG02": "OPEN",
+    "SG03": "OPEN",
+    "SG04": "OPEN",
+    "SG05": "OPEN",
+    "SG06": "OPEN",
+    "SG07": "OPEN",
+    "CP2": "OPEN",
+    "CP4": "OPEN"
+  },
+  "static_verification": {
+    "github_run_id": 31464984533,
+    "github_job_id": 93695924498,
+    "head_sha": "e64e3b66580dd76aa8e5c114e361d116f6c65c44",
+    "artifact_id": 9091185183,
+    "artifact_digest": "sha256:338a43f4c69f8999c179bef19baf1fdcfd860524f6ac8202fade002509265cd0",
+    "csharp_compile": "PASS",
+    "powershell_ast": "PASS",
+    "validator_fail_closed": "PASS"
+  },
+  "portable_release_review": {
+    "status": "PASS AFTER REVISION",
+    "rejected_issue": "Portable runner inherited repository-relative expected-contract lookup.",
+    "correction": "Final portable runner explicitly passes ONE_CLICK_CP2/contract/expected_tree_contract.json."
+  },
+  "target_after_one_real_rhino_run": "CP2 PASS / CP4 OPEN",
+  "practice_close_allowed": false,
+  "truth": "No real Rhino runtime has executed in v1.4."
+}
