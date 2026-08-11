@@ -38,12 +38,12 @@ jobs:
           echo "BLENDER=$BLENDER" >> "$GITHUB_ENV"
           "$BLENDER" --version | tee -a .runtime/runtime-receipt.txt
 
-      - name: Run C01-C09 in Cycles
+      - name: Run revised C01-C09 in Cycles
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p c-track-output
-          "$BLENDER" -b --factory-startup --python tools/c-track/c_track_runner.py -- --out "$PWD/c-track-output" --samples 8 2>&1 | tee c-track-output/blender-console.log
+          "$BLENDER" -b --factory-startup --python tools/c-track/c_track_runner_v2.py -- --out "$PWD/c-track-output" --samples 8 2>&1 | tee c-track-output/blender-console.log
 
       - name: List outputs
         if: always()
@@ -56,7 +56,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: oleander-c-track-c01-c09-${{ github.run_id }}
+          name: oleander-c-track-c01-c09-review2-${{ github.run_id }}
           path: |
             c-track-output
             .runtime/runtime-receipt.txt
