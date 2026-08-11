@@ -6,6 +6,7 @@ TOOL_ROOT="${OLEANDER_COCOS_HOME:-${OLEANDER_COCOS_TOOL_ROOT:-/opt/oleander/coco
 TOOL_ROOT="${OLEANDER_COCOS_HOME:-$TOOL_ROOT}"
 CLI_DIR="$TOOL_ROOT/cli"
 ENGINE_DIR="$CLI_DIR/packages/engine"
+EXTERNAL_DIR="$ENGINE_DIR/native/external"
 fail=0
 
 printf '%-28s %s\n' 'OLEANDER COCOS home' "$TOOL_ROOT"
@@ -13,7 +14,10 @@ printf '%-28s %s\n' 'OS' "$(. /etc/os-release 2>/dev/null; echo ${PRETTY_NAME:-u
 printf '%-28s %s\n' 'Node' "$(node -v 2>/dev/null || echo MISSING)"
 printf '%-28s %s\n' 'npm' "$(npm -v 2>/dev/null || echo MISSING)"
 printf '%-28s %s\n' 'Git' "$(git --version 2>/dev/null || echo MISSING)"
+printf '%-28s %s\n' 'Engine label' "${OLEANDER_COCOS_ENGINE_TAG:-UNKNOWN}"
 printf '%-28s %s\n' 'Engine pin' "${OLEANDER_COCOS_ENGINE_SHA:-UNKNOWN}"
+printf '%-28s %s\n' 'External label' "${OLEANDER_COCOS_EXTERNAL_TAG:-UNKNOWN}"
+printf '%-28s %s\n' 'External pin' "${OLEANDER_COCOS_EXTERNAL_SHA:-UNKNOWN}"
 printf '%-28s %s\n' 'CLI pin' "${OLEANDER_COCOS_CLI_SHA:-UNKNOWN}"
 
 node_ver="$(node -p 'process.versions.node' 2>/dev/null || echo 0.0.0)"
@@ -31,10 +35,19 @@ fi
 
 if [[ -d "$ENGINE_DIR/.git" ]]; then
   engine_sha="$(git -C "$ENGINE_DIR" rev-parse HEAD 2>/dev/null || echo ERROR)"
-  printf '%-28s %s\n' 'CLI-managed engine' "$engine_sha"
+  printf '%-28s %s\n' 'Pinned engine checkout' "$engine_sha"
   [[ "$engine_sha" == "${OLEANDER_COCOS_ENGINE_SHA:-}" ]] || fail=1
 else
-  printf '%-28s %s\n' 'CLI-managed engine' 'NOT_INSTALLED'
+  printf '%-28s %s\n' 'Pinned engine checkout' 'NOT_INSTALLED'
+  fail=1
+fi
+
+if [[ -d "$EXTERNAL_DIR/.git" ]]; then
+  external_sha="$(git -C "$EXTERNAL_DIR" rev-parse HEAD 2>/dev/null || echo ERROR)"
+  printf '%-28s %s\n' 'Pinned external checkout' "$external_sha"
+  [[ "$external_sha" == "${OLEANDER_COCOS_EXTERNAL_SHA:-}" ]] || fail=1
+else
+  printf '%-28s %s\n' 'Pinned external checkout' 'NOT_INSTALLED'
   fail=1
 fi
 

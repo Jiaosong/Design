@@ -1,0 +1,11 @@
+{
+  "version": "0.2",
+  "systemName": "山水游历志 × 石拓印记 × 图卷式探索 UI",
+  "colorRoles": {"landscapeNeutral":"#F1EFE8","inkRock":"#202523","mistGray":"#A8AEAA","deepQing":"#173D39","oldBronze":"#8A6844","evidenceGray":"#6F7672","warning":"#B44A3A"},
+  "densityTargets": {"S0":{"landscapeMin":0.85,"landscapeMax":0.95},"S1":{"landscapeMin":0.60,"landscapeMax":0.75},"S2":{"landscapeMin":0.40,"landscapeMax":0.60}},
+  "hierarchy": ["H0_LANDSCAPE","H1_PAGE_OBSERVATION","H2_REVEAL_RELATION","H3_SUPPORT","H4_EVIDENCE_META"],
+  "functionalLines": ["ROUTE_LINE","READING_LINE","EVIDENCE_LINE"],
+  "claimTypes": ["FACT","LOCAL_NARRATIVE","DESIGN_READING"],
+  "accessibilityTargets": {"functionalTextPxMin":14,"mainActionPxMin":44,"colorAloneForbidden":true,"textureBehindSmallTextForbidden":true},
+  "forbidden": ["GAME_HUD","FAKE_ANTIQUE_SKIN","REWARD_GLOW","RARITY","THIRTEEN_COLOR_SYSTEM","MANDATORY_13_OF_13"]
+}

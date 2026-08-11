@@ -27,15 +27,32 @@ concurrency:
 jobs:
   cocos4-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
-
       - name: Use Node 22.17.0
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 22.17.0
-
+      - name: Prepare WS-07A evidence directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          {
+            echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "node=$(node --version)"
+            echo "npm=$(npm --version)"
+            echo "git=$(git --version)"
+            echo "runner_os=${RUNNER_OS:-unknown}"
+            echo "runner_arch=${RUNNER_ARCH:-unknown}"
+          } > "$OUT/environment.txt"
+      - name: Validate C04 WS-07A runtime source
+        shell: bash
+        run: |
+          set -euo pipefail
+          node 90-shared/toolchains/cocos4/validate-ws07a-runtime.mjs
       - name: Bootstrap shared OLEANDER COCOS toolchain
         shell: bash
         env:
@@ -44,18 +61,26 @@ jobs:
           OLEANDER_COCOS_BIN_DIR: ${{ runner.temp }}/oleander-bin
           OLEANDER_COCOS_PROJECT_ROOT: ${{ runner.temp }}/oleander-projects
         run: |
-          set -euo pipefail
-          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          set +e
+          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh 2>&1 | tee "$OUT/bootstrap.log"
+          status=${PIPESTATUS[0]}
+          set -e
+          printf 'bootstrap_exit_code=%s\n' "$status" > "$OUT/bootstrap-status.txt"
+          if [[ "$status" -ne 0 ]]; then
+            echo "ERROR: OLEANDER COCOS bootstrap failed; persisted diagnostics to $OUT/bootstrap.log" >&2
+            exit "$status"
+          fi
           echo "OLEANDER_COCOS_HOME=$OLEANDER_COCOS_HOME" >> "$GITHUB_ENV"
           echo "OLEANDER_COCOS_BIN_DIR=$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_ENV"
           echo "$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_PATH"
-
       - name: Verify shared gateway
         shell: bash
         run: |
           set -euo pipefail
           oleander-cocos doctor
-
       - name: Materialize C04 from authoritative source pack
         shell: bash
         run: |
@@ -64,9 +89,67 @@ jobs:
           bash 90-shared/toolchains/cocos4/materialize-c04.sh \
             05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source \
             "$DEST"
-
-      - name: Web-mobile smoke build
+      - name: Materialize WS-07A VisualPrototype scene via pinned MCP
         shell: bash
         run: |
           set -euo pipefail
-          oleander-cocos build "$RUNNER_TEMP/c04-cocos4" web-mobile
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          bash 90-shared/toolchains/cocos4/materialize-ws07a-scene.sh "$DEST"
+          test -f "$DEST/assets/scenes/VisualPrototype.scene"
+          test -f "$DEST/temp/oleander-ws07a-scene-proof.json"
+          cp "$DEST/temp/oleander-ws07a-scene-proof.json" "$OUT/"
+          rm -f "$DEST/assets/scenes/OleanderSmoke.scene" "$DEST/assets/scenes/OleanderSmoke.scene.meta"
+      - name: Web-mobile VisualPrototype build
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          test -f "$DEST/assets/scenes/VisualPrototype.scene"
+          if find "$DEST/assets/scenes" -maxdepth 1 -name 'OleanderSmoke.scene' -print -quit | grep -q .; then
+            echo 'ERROR: legacy OleanderSmoke.scene still present; refusing to count this as VisualPrototype build evidence' >&2
+            exit 65
+          fi
+          oleander-cocos build "$DEST" web-mobile
+      - name: Ensure CJK font for research capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! fc-match 'Noto Sans CJK SC' | grep -qi 'NotoSansCJK'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+            fc-cache -f
+          fi
+          fc-match 'Noto Sans CJK SC'
+          fc-match 'Noto Sans CJK SC' >> "$RUNNER_TEMP/c04-ws07a-runtime-capture/environment.txt"
+      - name: Capture WS-07A browser runtime and visual evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          test -f "$OUT/oleander-ws07a-scene-proof.json"
+          BUILD_INDEX="$(find "$DEST/build" -type f -name index.html -print | sort | head -n 1)"
+          test -n "$BUILD_INDEX"
+          BUILD_ROOT="$(dirname "$BUILD_INDEX")"
+          echo "OLEANDER WS-07A capture build root: $BUILD_ROOT"
+          node 90-shared/toolchains/cocos4/capture-ws07a-runtime.mjs "$BUILD_ROOT" "$OUT"
+          test -f "$OUT/runtime-capture-report.json"
+      - name: Audit WS-07A responsive interaction layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          node 90-shared/toolchains/cocos4/audit-ws07a-responsive-layout.mjs \
+            "$OUT/runtime-capture-report.json" \
+            "$OUT/responsive-layout-audit.json"
+          test -f "$OUT/responsive-layout-audit.json"
+      - name: Upload WS-07A runtime capture evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: c04-ws07a-runtime-capture-${{ github.run_number }}-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/c04-ws07a-runtime-capture
+          if-no-files-found: error
+          retention-days: 14
