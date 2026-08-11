@@ -1,0 +1,71 @@
+{
+  "exercise": "SP03-R02 Light Role -> Performance Interface",
+  "date": "2026-08-11",
+  "final_runtime": {
+    "run_number": 6,
+    "run_id": 31457344868,
+    "job_id": 93673805131,
+    "head_sha": "cb7cf10df2ee006de5143c9303be51b6d00fca13",
+    "artifact_id": 9088638622,
+    "artifact_digest": "sha256:abe1512e849c17054fd8b92d89c8044f70b891a40da0dd04267a052328b02436",
+    "radiance": "6.0a",
+    "evalglare": "3.06 release 01.10.2025",
+    "pyradiance": "1.2.4"
+  },
+  "controlled_test": {
+    "room_m": [12.0, 6.0, 3.6],
+    "sensor_count": 288,
+    "role_sensor_count_each": 72,
+    "total_skylight_area_m2_A": 7.2,
+    "total_skylight_area_m2_B": 7.2,
+    "scheme_A_widths_m": [1.2, 1.2, 1.2, 1.2],
+    "scheme_B_widths_m": [0.8, 2.4, 1.0, 0.6],
+    "sky_cases": ["OVC", "CLEAR_E", "CLEAR_HIGH", "CLEAR_W"],
+    "glare_views": 16
+  },
+  "aggregate_observations": {
+    "mean_role_rank_spearman_A": 0.3,
+    "mean_role_rank_spearman_B": 0.5,
+    "mean_u0_A": 0.2343336048258405,
+    "mean_u0_B": 0.1835908699333059,
+    "mean_cv_A": 1.7731248557081691,
+    "mean_cv_B": 1.7986875270105167,
+    "mean_dgp_A_clear_EW": 0.246360375,
+    "mean_dgp_B_clear_EW": 0.247053875,
+    "max_dgp_A_clear_EW": 0.281196,
+    "max_dgp_B_clear_EW": 0.298364
+  },
+  "role_rank_by_sky": {
+    "OVC": {"A": 0.6, "B": 1.0},
+    "CLEAR_E": {"A": 0.4, "B": 0.4},
+    "CLEAR_HIGH": {"A": 0.6, "B": 1.0},
+    "CLEAR_W": {"A": -0.4, "B": -0.4}
+  },
+  "reproduction_run5_to_run6": {
+    "role_rank_identical": true,
+    "mean_lux_max_relative_change": 0.0009503762220429828,
+    "zone_mean_max_relative_change": 0.0030148617736116485,
+    "u0_max_relative_change": 0.030794105711710026,
+    "dgp_all_16_identical": true,
+    "classification": "NUMERICALLY_STABLE_NOT_BYTE_IDENTICAL"
+  },
+  "review": {
+    "AR_G01_G10": "PASS",
+    "AR_S02_Model": "PASS_SYNTHETIC_MODEL_PROJECT_GATE_OPEN",
+    "AR_S03_Data": "PASS_AFTER_EVALGLARE_SCHEMA_FIX",
+    "AR_S04_Code": "PASS",
+    "AR_S06_Visual": "PASS",
+    "AR_S07_Documentation": "PASS",
+    "AR_S09_Release": "PASS",
+    "final_artifact_status": "POST-REVIEW PASS"
+  },
+  "truth": {
+    "performance_interface_gate": "VERIFIED_ON_SYNTHETIC_TEST_CELL",
+    "project_geometry_gate": "OPEN",
+    "project_material_gate": "OPEN",
+    "project_sky_time_gate": "OPEN",
+    "project_program_threshold_gate": "OPEN",
+    "project_reality_promotion": false,
+    "practice_status": "PERFORMANCE INTERFACE VERIFIED ON SYNTHETIC TEST CELL / PROJECT REALITY OPEN"
+  }
+}
