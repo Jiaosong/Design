@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.production-asset-persistence-receipt.v1",
+  "receipt_id": "PAP-SP01-R02-GIS-2026-08-11",
+  "project": "SP01-R02｜GIS Reality Gate",
+  "status": "PERSISTENCE PASS / RESCUED",
+  "rescue_date": "2026-08-11",
+  "source": {
+    "provider": "GitHub Actions",
+    "repository": "Jiaosong/Design",
+    "workflow_run_id": 31454788861,
+    "artifact_id": 9087641476,
+    "artifact_name": "sp01-r02-qgis-runtime-evidence",
+    "head_sha": "9dab6e96f4446a0a8c76a7e7c825a6f98957274e",
+    "source_digest_sha256": "68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c",
+    "source_expiry": "2026-09-10T03:15:45Z"
+  },
+  "durable_store": {
+    "provider": "Google Drive",
+    "pap_folder_id": "16rBzIy15N4g4Bq-HUBdYBianKQyIjplq",
+    "pap_file_id": "12mafNIOtzzrYzIf2HTkjz4XcDq_xjSMI",
+    "practice_mirror_folder_id": "1_h4YvTsO8jXHajgwKua3Y5-87bup0DrF",
+    "practice_mirror_file_id": "1DMpgFdV_vhdRunRqI3GOBD4rFvNI9DJc"
+  },
+  "independent_readback": {
+    "bytes": 759942,
+    "sha256": "68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c",
+    "pap_drive_sha_match": true,
+    "pap_drive_zip_integrity": "PASS",
+    "practice_mirror_sha_match": true,
+    "practice_mirror_zip_integrity": "PASS",
+    "content_spotcheck": [
+      "SP01_R02_QGIS_Runtime.qgz",
+      "training_points.gpkg",
+      "9× KDE GeoTIFF rasters",
+      "3× QGIS Layout PNG",
+      "GDAL/QGIS runtime evidence",
+      "gate and sensitivity metrics files"
+    ]
+  },
+  "governance": {
+    "persistence_gate": "PASS",
+    "runtime_evidence_status": "UNCHANGED / VALID",
+    "project_crs_gate": "OPEN",
+    "project_data_gate": "OPEN",
+    "candidate_promotion": false,
+    "note": "This receipt closes durable binary persistence only."
+  }
+}
