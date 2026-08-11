@@ -1,0 +1,76 @@
+name: OLEANDER Blender Surface System v1.16.0
+
+on:
+  push:
+    branches: [agent/blender-surface-system-v1-16-0]
+    paths:
+      - 'tools/oleander-blender-surface-system/**'
+      - 'practice/2026-08-11-ip03-blender-procedural-surface-system/**'
+      - '.github/workflows/oleander-blender-surface-system-v1-16-0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-build-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reconstruct canonical v1.16.0 builder
+        run: |
+          set -euo pipefail
+          base64 -d tools/oleander-blender-surface-system/build_blender_surface_system_v1_16_0.py.gz.b64 \
+            | gzip -d > /tmp/build_blender_surface_system_v1_16_0.py
+          python3 -m py_compile /tmp/build_blender_surface_system_v1_16_0.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')"
+          echo "Expected SHA: $EXPECTED"
+          echo "Actual SHA:   $ACTUAL"
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version
+
+      - name: Build canonical Node Groups and workflow evidence
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Blender_Surface_System_v1.16.0"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender -b \
+            --python /tmp/build_blender_surface_system_v1_16_0.py -- \
+            --out "$OUT" --samples 12 --width 1280 --height 900 \
+            2>&1 | tee "$OUT/blender_execution.log"
+          python3 -m json.tool "$OUT/workflow_receipt.json" >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('out/OLEANDER_Blender_Surface_System_v1.16.0/node_group_manifest.json')
+          rows=json.loads(p.read_text())
+          names=[r['name'] for r in rows]
+          bad=[n for n in names if n.startswith('OL_SHD_C')]
+          assert not bad, f'Case-number collision remains in canonical node groups: {bad}'
+          expected={
+            'OL_SHD_ShapeControl_v1','OL_SHD_RepetitionCells_v1','OL_SHD_WhiteNoiseCell_v1',
+            'OL_SHD_ComposeFields_v1','OL_SHD_SpaceManipulation_v1','OL_SHD_WaveField_v1',
+            'OL_SHD_VoronoiField_v1','OL_SHD_GaborField_v1'
+          }
+          assert set(names)==expected, (names, expected)
+          print('Canonical naming gate PASS')
+          PY
+
+      - name: Upload v1.16.0 review artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oleander-blender-surface-system-v1-16-0-${{ github.run_id }}
+          path: out/OLEANDER_Blender_Surface_System_v1.16.0/
+          if-no-files-found: error
+          retention-days: 14
