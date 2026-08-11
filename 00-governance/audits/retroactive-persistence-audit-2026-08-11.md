@@ -1,162 +1,123 @@
 # OLEANDER Retroactive Production Asset Persistence Audit — 2026-08-11
 
-Status: `AUDIT COMPLETE / P0 RESCUED / REMEDIATION OPEN`
+Status: `v1.1 / PATH-RESOLUTION-CORRECTED / REMEDIATION OPEN`  
 Governance: `Production Asset Persistence Gate v1.0 / PAP-G0—PAP-G6`
-Scope: indexed OLEANDER production asset chains, canonical Drive `06_Practice/2026`, GitHub Actions artifacts where referenced, and File Library high-risk binary records.
+
+The original v1.0 Drive audit package remains preserved as a **pre-remediation discovery snapshot**. v1.1 is the current canonical status and corrects false negatives caused by same-name / migrated Drive directory resolution.
 
 ## Decision boundary
 
-This audit concerns durable byte availability. It does not upgrade or revoke visual, engineering, evidence, rights, user-test or release status unless byte-level reproducibility is itself required. Missing binaries block PAP/Promotion; they do not automatically erase historical execution evidence.
+This audit concerns durable byte availability. Persistence recovery does not upgrade visual, engineering, rights, field/user-test or release/promotion status.
 
-## Audit totals
+## Current totals
 
 - 31 asset-level rows
 - 23 unique chains
-- 7 confirmed `PERSISTENCE FAIL` chains
-- 1 rescued `PERSISTENCE PASS` chain: `SP01-R02-GIS`
-- 1 current `PERSISTENCE AT RISK` chain
-- 8 healthy / durable-recoverable control chains
+- **4 confirmed `PERSISTENCE FAIL` chains**
+- **1 `PERSISTENCE AT RISK` chain**
+- **11 healthy / recovered / durable-recoverable chains**
 - 3 `NOT CREATED / N/A` chains
 - 1 legacy-source chain explicitly decoupled from current authority
 - 3 non-binary archive-incomplete chains
 
-## P0 rescue completed — SP01-R02-GIS
+## New hard rule — Candidate Path Enumeration
 
-The real QGIS runtime artifact was rescued from GitHub Actions artifact `9087641476` before its provider expiry `2026-09-10T03:15:45Z`.
+A binary may be classified as missing only after this sequence is executed:
 
-Source identity:
+`filename search → enumerate all same-name / migrated / legacy candidate folders → parent lineage → actual folder contents → stable file ID → independent retrieval → SHA/size/open test`
 
-- workflow run: `31454788861`
-- head SHA: `9dab6e96f4446a0a8c76a7e7c825a6f98957274e`
-- source digest: `68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c`
+**An empty duplicate folder is not evidence that the binary is lost.**
+
+This rule was added because the initial audit produced real false negatives.
+
+## Recovered chains
+
+### SP01-R02-GIS — `PERSISTENCE PASS / RESCUED`
+
+- source GitHub Actions artifact: `9087641476`
+- source / retrieved SHA-256: `68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c`
 - bytes: `759942`
-
-Durable stores:
-
-- PAP folder: `16rBzIy15N4g4Bq-HUBdYBianKQyIjplq`
 - PAP Drive file: `12mafNIOtzzrYzIf2HTkjz4XcDq_xjSMI`
-- Practice canonical mirror folder: `1_h4YvTsO8jXHajgwKua3Y5-87bup0DrF`
 - Practice mirror file: `1DMpgFdV_vhdRunRqI3GOBD4rFvNI9DJc`
+- dual independent retrieval SHA PASS + unzip PASS
 
-Independent readback was executed from both Drive copies. Each returned the same `759942` bytes, exact SHA match to the source digest, and `unzip -t` PASS. Spot-check confirmed `.qgz`, GPKG, 9 KDE GeoTIFF rasters, 3 QGIS Layout PNGs, GDAL/QGIS evidence, gate files and sensitivity metrics.
+Project CRS/Data reality gates remain OPEN; Candidate Promotion remains NO.
 
-Decision: `PERSISTENCE PASS / RESCUED`.
+### SP03-ARCH-GEN — `PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION`
 
-This closes durable binary persistence only. QGIS runtime evidence remains valid; `Project CRS Gate` and `Project Data Gate` remain OPEN; Candidate Promotion remains NO.
+The initial audit resolved an empty same-name folder `1QUYTwtijoMG_07qiv3dsOr_-eg89SZnm`. A second same-name folder was populated:
 
-Machine-readable receipt:
+- populated folder: `1gX7ZSVeanhIUrwbwxOs6u8evM8u2dXnH`
+- original `.3dm`: `1EeJlcfWb86j2LJVXptoGMv2-FjOTkjqw`
+- bytes: `758952`
+- SHA-256: `e7d8c9d493af5aedd7cad1bcef379807ce8e691846a7ff377c0e025b85e651c1`
+- PAP copy: `10bXZezsLy6njrdENLVaLDAVnQ3Abra4A`
+- source Drive retrieval + PAP re-retrieval SHA/size PASS
+- file header identifies Rhino 3DM format; full Rhino semantic reopen remains PENDING
 
-`00-governance/audits/pap-sp01-r02-gis-rescue-2026-08-11.json`
+### B04-CROSS-MEDIA — `PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION`
 
-## Confirmed persistence-fail chains
+The initial audit resolved empty same-name folder `1urcHNOBqdYYSj93Pkc9qnOhZHVR0YVta`. The populated canonical folder is `1PF2e5HMO6GQa6p_h-Je7DBbPe1AkmtBV`.
 
-1. `TIMER-R54-G3.2` — exact G3.2 `.blend`, canonical GLB and production ZIP cannot currently be re-materialized from a qualified durable store. Historical G0–G5 evidence remains; G7/Promotion stays locked.
-2. `TIMER-POSTERLOCK` — audited POSTERLOCK package identity/SHA and constituent hashes survive, but the exact ZIP binary is not currently re-materializable. The older superseded audited ZIP is also missing.
-3. `SP02-RELATIONAL-FIELD` — real Rhino `.3dm` plus two historical production ZIPs are not present in the canonical Drive folder and are not currently materializable from File Library.
-4. `SP03-ARCH-GEN` — real `OLEANDER_Architecture_Generation_Protocol_01.3dm` was historically read-back verified but the current bytes are unavailable.
-5. `B04-CROSS-MEDIA` — Notion/migration record and report survive; `OLEANDER_Cross_Media_Validation_2026-08-06.zip` does not.
-6. `IP03-VISUAL-HIERARCHY` — inner evidence files partially survive in Drive, but `OLEANDER_Visual_Grid_01_Blocker_Resolution_v0.2_2026-08-07.zip` does not.
-7. `SYNC-REPAIR-LEGACY` — `OLEANDER_GitHub_Notion同步修复包_2026-08-06.zip` has a recorded SHA but no current durable binary. It is legacy WORKING material, not current governance authority.
+- original ZIP: `11pnHOagOL95zss9c8BwuryV51GJWp7KI`
+- bytes: `723993`
+- SHA-256: `b5d388cad2a4916275f2d8a6dc136824b978f3e59d8021356a896dcc8ac99eaa`
+- source unzip PASS
+- PAP copy: `1ZOJ7hPPYWYPFfs44xbpa0YIa6fuGKwV_`
+- PAP re-retrieval SHA/size/unzip PASS
 
-## Current at-risk chain
+### IP03-VISUAL-HIERARCHY — `PERSISTENCE PASS / RECOVERED BY CORRECT PATH RESOLUTION`
 
-`XJ01-R02-SOURCE`
+The populated canonical folder was overlooked by the initial audit.
+
+- folder: `1lg6rVBdRzXrxu1Aj7VVpfzvdKxbwKsqo`
+- original ZIP: `1Tewq-5YT4ZMG0tDjkqR9Zz_Llz1a_FE2`
+- bytes: `845606`
+- SHA-256: `b50586e77ee1bb3deddaa2a69d520f9e6e34b867b0434e86c6781460c9eef7e1`
+- 23 package files; unzip PASS
+- PAP copy: `1MoJjL-PmeTjHoR4AV36Urm_9fg6zUZpa`
+- PAP re-retrieval SHA/size/unzip PASS
+
+The Visual Grid / `v0.7-R1` contents remain Legacy evidence and do not become current IP authority.
+
+## Remaining confirmed FAIL chains
+
+1. `TIMER-R54-G3.2` — exact G3.2 `.blend`, canonical GLB and production ZIP still cannot be re-materialized. Historical G0–G5 evidence remains; G7/Promotion stays locked.
+2. `TIMER-POSTERLOCK` — package identity/SHA and constituent hashes survive, but exact POSTERLOCK ZIP bytes are not currently re-materializable.
+3. `SP02-RELATIONAL-FIELD` — real Rhino `.3dm` plus two historical ZIPs remain missing after exact-name, naming-variant, canonical-folder, Digital-Skills and Legacy intake searches.
+4. `SYNC-REPAIR-LEGACY` — legacy WORKING package has a recorded SHA but no durable binary; no current governance-authority impact.
+
+### SP02 exact historical identity
+
+Expected `.3dm`:
+
+- `OLEANDER_Relational_Field_01_State_B.3dm`
+- SHA-256 `644dd36bbdd8303aa8f0b51ed34e8f00dbfcd0f7a1e9f9a9eae46ee8ea68cc41`
+- `1,136,022` bytes
+
+Known folder `1a0hTLo0tUF8Ey1c7o5vO8sKmblso5tgI` is empty. No regenerated substitute may inherit the historical identity.
+
+## Current AT RISK — XJ01-R02-SOURCE
+
+Actual File Library objects still exist:
 
 - `XJ01_R02_calibration_master.obj`
 - `XJ01_R02_material_masks_v0_1.obj`
 
-Both actual OBJ files still surface in File Library, but PAP requires real re-materialization + SHA verification. They are absent from the corresponding Drive R54 output folder. Status: `PERSISTENCE AT RISK / FILE LIBRARY ONLY`.
-
-## Strong healthy controls
-
-### SP01-R02 GIS
-
-- two stable Drive file IDs
-- independent re-download from both copies
-- exact SHA match: `68ce760293057b3595856b8c935ed3cb51c4c512ea6f9a6ea5eb5614b225d00c`
-- unzip PASS
-- status: `PERSISTENCE PASS / RESCUED`
-
-### SP02-R03 Runtime Closure Handoff v1.4 FINAL
-
-- Drive ZIP stable ID: `1lwdw6NehMEkdgvdD4C-Vg7g4PNu-QmOr`
-- sidecar stable ID: `1B2Ro16RhRIO4qpSroUqv_dzt9pR7MXyc`
-- expected/retrieved SHA: `8a0d1eb06efb270dd572708fdc722c5e466d46d2040839c594c156245cb24fd3`
-- audit re-download: PASS
-- unzip: PASS
-
-Persistence PASS does not imply a real `.gh/.ghx` solve; that runtime gate remains separate.
-
-Other durable-recoverable controls include SP03-R02 curated/raw runtime ZIPs, SP04-R02 Interoperability QA ZIP, C01 RealPhoto package, OLEANDER GitHub Migration package and durable Drive-native Motion records.
+However, the Drive connector rejects File Library file IDs as uploadable connector file references. Until exact bytes can be materialized, hashed and re-uploaded to a durable store, status remains `PERSISTENCE AT RISK / FILE LIBRARY ONLY`.
 
 ## Not-created / N/A
 
-Do not misclassify absent native files when no native execution occurred:
+Do not misclassify absent native files when execution never occurred:
 
 - Fusion `.f3d` — not generated.
 - Grasshopper `.gh/.ghx` — real runtime/solve not executed.
-- Revit `.rfa/.rvt` — native Revit run not performed; software-neutral geometry path used.
+- Revit `.rfa/.rvt` — native Revit run not performed.
 
-## Non-binary archive completeness gaps
+## Current remediation order
 
-These are tracked separately from PAP core-binary loss:
+`P1 Timer/XJ01 → P2 SP02 Relational Field → P3 legacy provenance + receipt/checksum backfill`
 
-- 2026-08-08 IP03 Product Interface — generated SVG/JSON/CSV files; Drive folder created but upload explicitly blocked.
-- 2026-08-09 SP03 Light Sequence — generated SVG/JSON/CSV files; original folder did not receive files; later SP03-R02 is a separate durable production chain.
-- IP04 Wayfinding optional AI PNG — core native Google Doc is durable; PNG was explicitly not claimed as archived.
+Local v1.1 audit package SHA-256:
 
-## Remaining priority queue
-
-### P1
-
-- Timer G3.2 exact `.blend` + canonical GLB + production ZIP.
-- Timer exact POSTERLOCK ZIP.
-- XJ01 R02 OBJ source chain.
-
-### P2
-
-- SP02 Relational Field native/package chain.
-- SP03 Architecture Generation `.3dm`.
-- B04 Cross-Media ZIP.
-- IP03 Visual Hierarchy ZIP.
-
-### P3
-
-- Legacy/superseded package recovery where useful.
-- Backfill external package checksums + PAP receipts for durable-recoverable controls.
-- Preserve identity legacy-source gaps as provenance only; never reconstruct them from previews under the old identity.
-
-## Durable audit authority
-
-Detailed 31-row registry and complete audit package are stored in Google Drive under:
-
-`OLEANDER_Project-Archive/Production-Asset-Persistence/Retroactive-Audit-2026-08-11/`
-
-Stable Drive IDs:
-
-- folder: `1qbIwmGyjmGjiKNrjLZsbOoVvlPNtGgBb`
-- complete audit ZIP: `1oYLWLODfEOlD7bY5fXLRDbk2ym1Dle0E`
-- ZIP sidecar: `1bm1FtZPsAP__1m-sz1AjQXsz2batAC0l`
-- Markdown: `16K5fpEaacKKhz0l-hYHDnNNuK4Z1pv7s`
-- JSON registry: `10FEah_8T5xkkvF3rfcRbZQJIK_eYxjgQ`
-- CSV registry: `15RqF2xWE12Al-jV7on6FeYGbia3eZMR6`
-- remediation queue: `1q4tjHODxLCMT7XPfjiadia8mbi_qDHgZ`
-
-Audit ZIP upload was independently re-downloaded from Drive. Retrieved SHA-256:
-
-`db9a51dae4346afb522ff92f00f3cc7e1a629d8a1cd8f18b139ba6f9689fc1e7`
-
-The external sidecar contains the same SHA and `unzip -t` passes.
-
-## Required status-language correction
-
-Historical `ARCHIVED` must not imply that the binary is durably present. Where a record survives but the package does not, use explicit wording such as:
-
-- `RECORD ARCHIVED / BINARY PERSISTENCE FAIL`
-- `INNER EVIDENCE PARTIALLY ARCHIVED / PACKAGE BINARY PERSISTENCE FAIL`
-- `PERSISTENCE FAIL / SOURCE BINARY MATERIALIZATION MISSING`
-- `PERSISTENCE PASS / RESCUED`
-
-P0 is closed. Remaining remediation order is:
-
-`P1 current-authority recovery → P2 historical recovery → P3 receipt/checksum backfill`
+`83917cda1d50a74fbb52e5456743909371226b59d7f0af0f97fea66c226954ce`
