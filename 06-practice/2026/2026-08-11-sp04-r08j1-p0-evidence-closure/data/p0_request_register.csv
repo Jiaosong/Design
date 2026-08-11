@@ -1,0 +1,7 @@
+recipient,priority,request_id,request,must_include,closes
+Schüco China technical adviser / nominated fabricator,P0,REQ-SCH-01,AWS 75.SI+ exact system/profile/opening configuration and current revision applicable to China/project market.,system/series; profile codes or configuration; revision/date; applicability,M01 / RG-01 applicability
+Schüco China technical adviser / nominated fabricator,P0,REQ-SCH-02,Official building-structure connection detail for selected AWS 75.SI+ configuration.,fixing datum; bracket/fastener family; frame interface; permitted zones; drawing/detail ID + revision,M02 / RG-02
+Schüco China technical adviser / nominated fabricator,P0,REQ-SCH-03,Fixing spacing and corner/end distance rules.,max spacing; corner/end distance; measurement datum; unit type/load/configuration conditions; exceptions,M03/M04 / RG-02
+Project Structural Engineer,P0,REQ-STR-01,Opening substrate definition.,material; grade/strength; thickness; edge geometry; reinforcement/PT/cover; allowable drill zones,S01 / RG-03
+Project Structural Engineer,P0,REQ-STR-02,Governing reactions/actions at frame fixing interface.,wind pressure/suction; gravity; operable sash; accidental/seismic if applicable; combinations; sign convention,S04 / RG-04
+Anchor supplier + Structural Engineer,P0,REQ-ANC-01,Selected anchor design package after frame fixing family and substrate are known.,product + size; approval/ETA/ESR; hef/hnom; cmin/smin/hmin; fixture thickness; design resistance/utilisation; installation method,S02/S03 / RG-03/RG-04
