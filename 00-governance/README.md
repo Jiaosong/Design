@@ -56,3 +56,15 @@ Operational gate: [`post-generation-review-gate.md`](post-generation-review-gate
 所有设计与技术输出必须在生成/导出/自动 QA 后，再执行一次独立成品审查。未执行时状态为 `REVIEW PENDING`；发现问题为 `POST-REVIEW FAIL / NEEDS REVISION`；只有修正并重审达到 `POST-REVIEW PASS`，才允许升级。
 
 自动 QA、脚本 PASS、bbox=0、文件存在或可复现运行，都不能替代最终成品审查。Code PASS 也不能替代 Generated Artifact PASS。
+
+## Production Asset Persistence Gate v1.0
+
+Canonical system: [`production-asset-persistence-gate-v1.0.md`](production-asset-persistence-gate-v1.0.md)
+
+凡生产链触发 native source、canonical model、production ZIP 或其他不可仅凭文本重建的二进制，必须执行 `PAP-G0—PAP-G6`。每个 required binary 至少必须有 **1 个真正的 durable binary copy**，并完成独立重新下载/materialize、byte size + SHA-256 校验以及 open/unzip/parse 验证。
+
+不计入唯一持久化副本：`/mnt/data`、临时 sandbox、signed URL、checksum-only、preview-only、仅 Notion/GitHub 文字记录、会过期且没有第二持久副本的 GitHub Actions artifact。
+
+生产 Promotion 链统一为：
+
+`final artifact review → package/hash → durable upload → independent retrieval → PERSISTENCE PASS → AR-S09 PASS → Promotion / Archive`
