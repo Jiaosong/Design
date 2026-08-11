@@ -32,41 +32,37 @@ jobs:
         with:
           node-version: 22.17.0
 
-      - name: Configure authenticated GitHub fetches
+      - name: Bootstrap shared OLEANDER COCOS toolchain
         shell: bash
         env:
-          GH_READ_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+          OLEANDER_COCOS_HOME: ${{ runner.temp }}/oleander-cocos4
+          OLEANDER_COCOS_BIN_DIR: ${{ runner.temp }}/oleander-bin
+          OLEANDER_COCOS_PROJECT_ROOT: ${{ runner.temp }}/oleander-projects
         run: |
           set -euo pipefail
-          git config --global url."https://x-access-token:${GH_READ_TOKEN}@github.com/".insteadOf "https://github.com/"
+          bash 90-shared/toolchains/cocos4/bootstrap-linux.sh
+          echo "OLEANDER_COCOS_HOME=$OLEANDER_COCOS_HOME" >> "$GITHUB_ENV"
+          echo "OLEANDER_COCOS_BIN_DIR=$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_ENV"
+          echo "$OLEANDER_COCOS_BIN_DIR" >> "$GITHUB_PATH"
 
-      - name: Install COCOS CLI from pinned source
+      - name: Verify shared gateway
         shell: bash
         run: |
           set -euo pipefail
-          git clone https://github.com/cocos/cocos-cli.git "$RUNNER_TEMP/cocos-cli"
-          git -C "$RUNNER_TEMP/cocos-cli" checkout --detach 6f810d60d89f100b5a5d6f1b0cd3518b67b15e5c
-          cd "$RUNNER_TEMP/cocos-cli"
-          npm install -g node-gyp
-          npm run init
-          npm install
-          npm run download-tools
-          npm run build
-          npm link
-          cocos --version
+          oleander-cocos doctor
 
       - name: Materialize C04 from authoritative source pack
         shell: bash
         run: |
           set -euo pipefail
           DEST="$RUNNER_TEMP/c04-cocos4"
-          cocos create --project "$DEST" --type 2d
-          cp -R 05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/assets/. "$DEST/assets/"
-          cocos import --project "$DEST"
-          cocos info --project "$DEST"
+          bash 90-shared/toolchains/cocos4/materialize-c04.sh \
+            05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source \
+            "$DEST"
 
       - name: Web-mobile smoke build
         shell: bash
         run: |
           set -euo pipefail
-          cocos build --project "$RUNNER_TEMP/c04-cocos4" --platform web-mobile --debug
+          oleander-cocos build "$RUNNER_TEMP/c04-cocos4" web-mobile
