@@ -43,6 +43,7 @@ for sky in OVC CLEAR_E CLEAR_HIGH CLEAR_W; do
   gensky ${SKYARGS[$sky]} > "$RUN/sky_${sky}.rad"
 done
 
+# Workplane matrix: same sensor grid and ray settings for A/B.
 for scheme in A B; do
   for sky in OVC CLEAR_E CLEAR_HIGH CLEAR_W; do
     oct="$RUN/${scheme}_${sky}.oct"
@@ -53,22 +54,37 @@ for scheme in A B; do
   done
 done
 
+# Glare views keep the same 800x800 fisheye and ray parameters as the serial version;
+# only scheduling changes. Limit concurrency to 4 so runtime is reproducible on a 4-core hosted runner.
+run_glare_one() {
+  local scheme="$1" sky="$2" role="$3" vp="$4" vd="$5" vu="$6"
+  local oct="$RUN/${scheme}_${sky}.oct"
+  local hdr="$RUN/view_${scheme}_${sky}_${role}.hdr"
+  local txt="$RUN/evalglare_${scheme}_${sky}_${role}.txt"
+  rpict -vta -vp $vp -vd $vd -vu $vu -vh 180 -vv 180 -x 800 -y 800 \
+    -ab 4 -ad 2048 -as 512 -aa 0.15 -ar 128 -lw 1e-4 "$oct" > "$hdr"
+  evalglare -d "$hdr" > "$txt"
+  python3 "$ROOT/parse_evalglare.py" --input "$txt" \
+    --out "$RUN/glare_${scheme}_${sky}_${role}.csv" \
+    --scheme "$scheme" --sky "$sky" --role "$role"
+}
+
 for scheme in A B; do
   for sky in CLEAR_E CLEAR_W; do
-    oct="$RUN/${scheme}_${sky}.oct"
-    python3 - "$RUN/views.json" <<'PY' | while IFS='|' read -r role vp vd vu; do
+    while IFS='|' read -r role vp vd vu; do
+      run_glare_one "$scheme" "$sky" "$role" "$vp" "$vd" "$vu" &
+      while [ "$(jobs -rp | wc -l)" -ge 4 ]; do
+        wait -n
+      done
+    done < <(python3 - "$RUN/views.json" <<'PY'
 import json,sys
 for v in json.load(open(sys.argv[1])):
- print(v['role']+'|'+' '.join(map(str,v['vp']))+'|'+' '.join(map(str,v['vd']))+'|'+' '.join(map(str,v['vu'])))
+    print(v['role']+'|'+' '.join(map(str,v['vp']))+'|'+' '.join(map(str,v['vd']))+'|'+' '.join(map(str,v['vu'])))
 PY
-      hdr="$RUN/view_${scheme}_${sky}_${role}.hdr"
-      txt="$RUN/evalglare_${scheme}_${sky}_${role}.txt"
-      rpict -vta -vp $vp -vd $vd -vu $vu -vh 180 -vv 180 -x 800 -y 800 -ab 4 -ad 2048 -as 512 -aa 0.15 -ar 128 -lw 1e-4 "$oct" > "$hdr"
-      evalglare -d "$hdr" > "$txt"
-      python3 "$ROOT/parse_evalglare.py" --input "$txt" --out "$RUN/glare_${scheme}_${sky}_${role}.csv" --scheme "$scheme" --sky "$sky" --role "$role"
-    done
+)
   done
 done
+wait
 
 python3 "$ROOT/analyze_results.py" | tee "$OUT/analyze_stdout.json"
 python3 - <<'PY'
