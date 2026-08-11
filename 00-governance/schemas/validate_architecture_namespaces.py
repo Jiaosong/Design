@@ -15,6 +15,14 @@ OLD_CURRENT_FILES = [
     ROOT / "90-shared" / "OLEANDER_AI_Runtime_Evidence_P2_v0.1.md",
 ]
 
+# These parallel roots were used by older/experimental branches. Current OLEANDER
+# authority uses 00-governance, 06-practice and 90-shared/toolchains instead.
+FORBIDDEN_PARALLEL_ROOTS = {
+    "governance": "use 00-governance or the relevant current domain path",
+    "practice": "use 06-practice",
+    "tools": "use 90-shared/toolchains for shared reusable toolchains, or a scoped current project path",
+}
+
 CURRENT_ROUTING_FILES = {
     ROOT / "90-shared" / "README.md": [
         "OLEANDER_AI_Governance_P0_v0.1.md",
@@ -53,6 +61,11 @@ def fail(message):
 
 
 def main():
+    for root_name, route in FORBIDDEN_PARALLEL_ROOTS.items():
+        path = ROOT / root_name
+        if path.exists():
+            fail(f"parallel top-level root is forbidden: {root_name}/; {route}")
+
     for path in AIG_FILES:
         if not path.exists():
             fail(f"missing current AIG contract: {path.relative_to(ROOT)}")
@@ -99,6 +112,7 @@ def main():
     print("- P0-P4 reserved for project axis")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
     print("- superseded AI P0/P1/P2 current files absent")
+    print("- forbidden parallel roots absent: governance/ practice/ tools/")
     print("- new runtime event namespace: AIG3-E...")
     print("- current reasoning/skill/CI routing contains no known old AI-governance paths")
     return 0
