@@ -1,0 +1,42 @@
+{
+  "schema": "oleander.runtime.blender.v1",
+  "version": "1.0",
+  "status": "ACTIVE_RUNTIME_INTERFACE",
+  "scope": "OLEANDER_ALL_PROJECTS",
+  "runtime": {
+    "product": "Blender",
+    "version": "5.2.0 LTS",
+    "build_hash": "fbe6228777e7",
+    "release_archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "render_engine": "CYCLES",
+    "current_chatgpt_runtime_home": "/mnt/data/runtime/blender-5.2.0-lts",
+    "current_chatgpt_runtime_bin": "/usr/local/bin/blender",
+    "current_chatgpt_wrapper": "/usr/local/bin/oleander-blender"
+  },
+  "resolution_order": [
+    "OLEANDER_BLENDER_BIN environment variable",
+    "blender found on PATH",
+    "/mnt/data/runtime/blender-5.2.0-lts/blender current ChatGPT-runtime fallback"
+  ],
+  "environment_contract": {
+    "OLEANDER_BLENDER_VERSION": "5.2.0 LTS",
+    "OLEANDER_BLENDER_BUILD": "fbe6228777e7",
+    "OLEANDER_BLENDER_HOME": "runtime-specific; may be overridden",
+    "OLEANDER_BLENDER_BIN": "runtime-specific; may be overridden",
+    "OLEANDER_RENDER_ENGINE": "CYCLES"
+  },
+  "project_policy": {
+    "project_specific_absolute_blender_paths": "FORBIDDEN",
+    "vendoring_blender_binary_in_repository": "FORBIDDEN",
+    "preferred_invocation": "bash tools/oleander-runtime/blender.sh <blender args>",
+    "preferred_activation": "source tools/oleander-runtime/activate-blender.sh",
+    "evidence_rule": "runtime availability does not upgrade design, engineering, optical, CMF, fabrication or user-validation evidence"
+  },
+  "verified_current_runtime": {
+    "blender_version_probe": "PASS",
+    "cycles_cpu_path_tracing": "PASS",
+    "cycles_device": "CPU / AMD EPYC 9V74 80-Core Processor",
+    "gpu_acceleration": "UNAVAILABLE_IN_CURRENT_CONTAINER",
+    "canonical_timer_smoke": "PASS / runtime compatibility only"
+  }
+}
