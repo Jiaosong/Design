@@ -4,7 +4,6 @@ on:
   push:
     branches: [agent/blender-surface-system-v1-16-0]
     paths:
-      - 'tools/oleander-blender-surface-system/**'
       - 'practice/2026-08-11-ip03-blender-procedural-surface-system/**'
       - '.github/workflows/oleander-blender-surface-system-v1-16-0.yml'
   workflow_dispatch:
@@ -18,12 +17,58 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Reconstruct canonical v1.16.0 builder
+      - name: Reconstruct canonical v1.16.0 builder from frozen Legacy Source
         run: |
           set -euo pipefail
-          base64 -d tools/oleander-blender-surface-system/build_blender_surface_system_v1_16_0.py.gz.b64 \
-            | gzip -d > /tmp/build_blender_surface_system_v1_16_0.py
+          git fetch --depth=1 origin \
+            refs/heads/oleander/nodegroups-realworkflows-final-20260811:refs/remotes/origin/legacy-nodegroups-v1
+          git show origin/legacy-nodegroups-v1:tools/oleander-nodegroups/build_nodegroups_and_workflows_review2.py.gz.b64 \
+            | base64 -d | gzip -d > /tmp/legacy_builder.py
+          python3 -m py_compile /tmp/legacy_builder.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/legacy_builder.py')
+          text=p.read_text(encoding='utf-8')
+          mapping={
+            'OL_SHD_C01_ShapeControl_v1':'OL_SHD_ShapeControl_v1',
+            'OL_SHD_C03_RepetitionCells_v1':'OL_SHD_RepetitionCells_v1',
+            'OL_SHD_C04_WhiteNoiseCell_v1':'OL_SHD_WhiteNoiseCell_v1',
+            'OL_SHD_C05_ComposeFields_v1':'OL_SHD_ComposeFields_v1',
+            'OL_SHD_C06_SpaceManipulation_v1':'OL_SHD_SpaceManipulation_v1',
+            'OL_SHD_C07_WaveField_v1':'OL_SHD_WaveField_v1',
+            'OL_SHD_C08_VoronoiField_v1':'OL_SHD_VoronoiField_v1',
+            'OL_SHD_C09_GaborField_v1':'OL_SHD_GaborField_v1',
+          }
+          for old,new in mapping.items():
+              text=text.replace(old,new)
+          text=text.replace('LIB_VERSION = "1.0"','LIB_VERSION = "1.16.0"')
+          text=text.replace('OLEANDER_Procedural_NodeGroups_v1.0.blend','OLEANDER_Blender_Surface_NodeGroups_v1.16.0.blend')
+          source_map={
+            '"source": "C01"':'"source": "Shape Control", "legacy_lab_alias": "C01"',
+            '"source": "C03"':'"source": "Repetition / Cells", "legacy_lab_alias": "C03"',
+            '"source": "C04"':'"source": "White Noise Randomization", "legacy_lab_alias": "C04"',
+            '"source": "C05"':'"source": "Texture Composition", "legacy_lab_alias": "C05"',
+            '"source": "C06"':'"source": "Space Manipulation", "legacy_lab_alias": "C06"',
+            '"source": "C07"':'"source": "Wave Field", "legacy_lab_alias": "C07"',
+            '"source": "C08"':'"source": "Voronoi Topology", "legacy_lab_alias": "C08"',
+            '"source": "C09"':'"source": "Gabor Directional Field", "legacy_lab_alias": "C09"',
+          }
+          for old,new in source_map.items():
+              text=text.replace(old,new)
+          text=text.replace(
+              'g["OLEANDER_SOURCE_MODULE"]=spec["source"]',
+              'g["OLEANDER_SOURCE_MODULE"]=spec["source"]\n    g["OLEANDER_LEGACY_LAB_ALIAS"]=spec.get("legacy_lab_alias","")'
+          )
+          text=text.replace(
+              'Basis: C01/C03/C04/C05/C06/C07/C08/C09 diagnostic-pass patterns.',
+              'Basis: v1.15 verified procedural lab evidence; former Cxx labels are Legacy Lab Alias only.'
+          )
+          out=Path('/tmp/build_blender_surface_system_v1_16_0.py')
+          out.write_text(text,encoding='utf-8')
+          PY
           python3 -m py_compile /tmp/build_blender_surface_system_v1_16_0.py
 
       - name: Install Blender 5.2.0 LTS
