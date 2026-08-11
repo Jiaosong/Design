@@ -27,7 +27,7 @@ concurrency:
 jobs:
   cocos4-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Use Node 22.17.0
@@ -85,3 +85,25 @@ jobs:
             exit 65
           fi
           oleander-cocos build "$DEST" web-mobile
+      - name: Capture WS-07A browser runtime and visual evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture"
+          mkdir -p "$OUT"
+          cp "$DEST/temp/oleander-ws07a-scene-proof.json" "$OUT/"
+          BUILD_INDEX="$(find "$DEST/build" -type f -name index.html -print | sort | head -n 1)"
+          test -n "$BUILD_INDEX"
+          BUILD_ROOT="$(dirname "$BUILD_INDEX")"
+          echo "OLEANDER WS-07A capture build root: $BUILD_ROOT"
+          node 90-shared/toolchains/cocos4/capture-ws07a-runtime.mjs "$BUILD_ROOT" "$OUT"
+          test -f "$OUT/runtime-capture-report.json"
+      - name: Upload WS-07A runtime capture evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: c04-ws07a-runtime-capture-${{ github.run_number }}
+          path: ${{ runner.temp }}/c04-ws07a-runtime-capture
+          if-no-files-found: error
+          retention-days: 14
