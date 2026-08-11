@@ -111,6 +111,17 @@ jobs:
             exit 65
           fi
           oleander-cocos build "$DEST" web-mobile
+      - name: Ensure CJK font for research capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! fc-match 'Noto Sans CJK SC' | grep -qi 'NotoSansCJK'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+            fc-cache -f
+          fi
+          fc-match 'Noto Sans CJK SC'
+          fc-match 'Noto Sans CJK SC' >> "$RUNNER_TEMP/c04-ws07a-runtime-capture/environment.txt"
       - name: Capture WS-07A browser runtime and visual evidence
         shell: bash
         run: |
