@@ -17,12 +17,12 @@ OLD_CURRENT_FILES = [
 ]
 
 # Legacy parallel roots already exist in historical/current main. Do not delete them
-# merely to make the architecture look clean. Freeze their exact tree identity so
-# ordinary future PRs cannot silently add more current work there. Any intentional
-# migration/removal must explicitly review and update this frozen SHA in the same
-# governance change.
+# merely to make the architecture look clean. Freeze their reviewed tree identity so
+# ordinary future PRs cannot silently add more current work there. The practice/ SHA
+# below includes the audited Legacy-location README added during Authority Integrity
+# cleanup; changing it again requires explicit governance review in the same change.
 FROZEN_LEGACY_ROOTS = {
-    "practice": "fa29e287d3347cafa788bf904d760c2b8c11fd34",
+    "practice": "6c44d003197c9aa31050b1f445e4670e48dd0843",
     "tools": "45d7f97ac289704226c5b0a8a382ce2a38ec518f",
 }
 FORBIDDEN_NEW_ROOTS = {
@@ -60,6 +60,8 @@ CURRENT_ROUTING_FILES = {
         'OLEANDER_AI_Runtime_Evidence_P2_v0.1.md',
     ],
 }
+
+PROJECT_FLOW_SCHEMA = ROOT / "00-governance" / "schemas" / "oleander-project-flow-v0.3.schema.json"
 
 
 def fail(message):
@@ -130,8 +132,25 @@ def main():
     if "GitHub:90-shared/OLEANDER_AI_Governance_P0_v0.1.md" not in forbidden:
         fail("RQ-012 must retain the former P0 file only as forbidden legacy authority")
 
+    if not PROJECT_FLOW_SCHEMA.exists():
+        fail("missing project-flow machine contract")
+    project_flow_schema = json.loads(PROJECT_FLOW_SCHEMA.read_text(encoding="utf-8"))
+    project_props = project_flow_schema.get("properties", {}).get("project", {}).get("properties", {})
+    project_required = set(project_flow_schema.get("properties", {}).get("project", {}).get("required", []))
+    stale_project_keys = {"primary_layer", "primary_node", "supporting_nodes"} & set(project_props)
+    if stale_project_keys:
+        fail(f"project-flow schema still encodes old layer ownership: {sorted(stale_project_keys)}")
+    if not {"project_level", "project_id"}.issubset(project_required):
+        fail("project-flow schema must require explicit project_level + project_id")
+    if "application_mapping" not in project_props or "application_primary_mapping" not in project_props:
+        fail("project-flow schema must separate Application Mapping from Project Axis")
+    if "knowledge_context" not in project_props:
+        fail("project-flow schema must support Domain / exact L0-L7 knowledge context separately")
+
     print("ARCHITECTURE NAMESPACE GATE: PASS")
     print("- P0-P4 reserved for project axis")
+    print("- Project Flow schema requires project_level + project_id")
+    print("- Application Mapping and Knowledge Context are machine-separated")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
     print("- superseded AI P0/P1/P2 current files absent")
     print("- governance/ parallel root absent")
