@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m8.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m8_gatefix.py'
       - '90-shared/toolchains/modeling-worker/automotive/v0.11/M8_DETAIL_INSTANCES_GATE.md'
       - '.github/workflows/oleander-automotive-v0-11-m8-detail-instances.yml'
   workflow_dispatch:
@@ -33,6 +34,7 @@ jobs:
           test -f /tmp/revise_v011_r29a_m6.py
           test -f /tmp/revise_v011_r29a_m7.py
           test -f /tmp/revise_v011_r29a_m8.py
+          test -f /tmp/revise_v011_r29a_m8_gatefix.py
           test -f /tmp/wheel_hp_contract.py
           python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
           git rev-parse HEAD > /tmp/M8_SOURCE_COMMIT.txt
@@ -50,7 +52,7 @@ jobs:
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M8"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m8.py -- --out "$OUT" --samples 4 --resolution 512
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m8_gatefix.py -- --out "$OUT" --samples 4 --resolution 512
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
           cp /tmp/M8_SOURCE_COMMIT.txt "$OUT/M8_SOURCE_COMMIT.txt"
