@@ -1,0 +1,95 @@
+name: OLEANDER Automotive v0.11 M10 Multi-Scale QA
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m10.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/M10_MULTI_SCALE_QA_GATE.md'
+      - '.github/workflows/oleander-automotive-v0-11-m10-multiscale-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m10-multiscale-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+      - name: Stage R29A M10 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r29a.py
+          test -f /tmp/revise_v011_r29a_m6.py
+          test -f /tmp/revise_v011_r29a_m7.py
+          test -f /tmp/revise_v011_r29a_m8.py
+          test -f /tmp/revise_v011_r29a_m9.py
+          test -f /tmp/revise_v011_r29a_m10.py
+          test -f /tmp/wheel_hp_contract.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+          git rev-parse HEAD > /tmp/M10_SOURCE_COMMIT.txt
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Run M10 multi-scale QA
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M10"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m10.py -- --out "$OUT" --samples 4 --resolution 640
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          cp /tmp/M10_SOURCE_COMMIT.txt "$OUT/M10_SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/M10_RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.json "$OUT"/*.blend > "$OUT/M10_PRIMARY_SHA256SUMS.txt"
+      - name: M10 machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_v0.11_M10')
+          q=json.loads((out/'M10_MULTI_SCALE_QA.json').read_text())
+          r=json.loads((out/'M10_RECEIPT.json').read_text())
+          expected='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert q['status']=='MACHINE_PASS_HUMAN_M10_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_MACHINE_PASS_HUMAN_M10_REVIEW_REQUIRED',r
+          assert q['source_hash_before']==q['source_hash_after']==expected
+          assert all(q['checks'].values()),q['checks']
+          assert q['source_topology']['vertices']==2909 and q['source_topology']['faces']==2793
+          assert q['source_topology']['tri']==4 and q['source_topology']['ngon']==0
+          assert q['region_counts']['REG-GLASSHOUSE']==220
+          assert q['instance_counts']=={'spokes':40,'rim_rings':4}
+          assert len(q['material_ids'])==6
+          assert q['scale_counts']=={'MACRO':3,'MESO':3,'MICRO':2}
+          assert len(q['renders'])==8 and len(list((out/'renders').glob('*.png')))==8
+          assert all(v['authority']=='DIAGNOSTIC_ONLY' and v['engineering_authority'] is False for v in q['renders'])
+          assert r['render_count']==8 and r['samples']==4 and r['resolution']==[640,640]
+          assert r['script_elapsed_seconds']>0
+          assert r['candidate_authority_if_human_pass']=='MODELING_WORKER_v0.11_CANDIDATE_AUTHORITY'
+          print('AUTOMOTIVE v0.11 M10 MACHINE PASS — HUMAN MULTI-SCALE REVIEW REQUIRED')
+          PY
+      - name: Upload M10 multi-scale evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-m10-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_M10/
+          if-no-files-found: error
+          retention-days: 14
