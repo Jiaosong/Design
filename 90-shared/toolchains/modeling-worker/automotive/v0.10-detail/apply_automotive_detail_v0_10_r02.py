@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """OLEANDER Automotive Detail v0.10 — M8-R02 visual refinement.
 
-Starts from an M8-R01 derived blend, removes all M8 objects, then deterministically rebuilds
-refined detail. v0.9 source objects remain immutable.
+Runs directly from promoted v0.9 M7 source, removes any stale M8 objects if present,
+then deterministically rebuilds refined detail. v0.9 source objects remain immutable.
 """
 from __future__ import annotations
 import argparse,hashlib,json,math,sys
@@ -37,7 +37,6 @@ def source_hash():
     return h.hexdigest()
 
 before=source_hash();source_names=sorted(o.name for o in bpy.data.objects if is_source(o))
-# Remove R01 detail wholesale; R02 is a clean rebuild, not an additive patch.
 for o in list(bpy.data.objects):
     if o.name.startswith('M8_'):bpy.data.objects.remove(o,do_unlink=True)
 assert before==source_hash()
@@ -74,11 +73,9 @@ for x,ax in ((FX,'F'),(RX,'R')):
         bpy.ops.mesh.primitive_cylinder_add(vertices=56,radius=.150,depth=.014,location=(x,y+side*.052,WZ),rotation=(math.radians(90),0,0));o=bpy.context.object;o.name=f'M8_DISC_{ax}{sy}';o.data.materials.append(disc)
         bpy.ops.mesh.primitive_torus_add(major_radius=.190,minor_radius=.016,major_segments=56,minor_segments=12,location=(x,y+side*.075,WZ),rotation=(math.radians(90),0,0));o=bpy.context.object;o.name=f'M8_RIM_RING_{ax}{sy}';o.data.materials.append(rim)
         bpy.ops.mesh.primitive_cylinder_add(vertices=40,radius=.032,depth=.030,location=(x,y+side*.084,WZ),rotation=(math.radians(90),0,0));o=bpy.context.object;o.name=f'M8_HUB_{ax}{sy}';o.data.materials.append(rim)
-        # Five clean single spokes: lower visual density than R01 split-spoke pattern.
         for i in range(5):
             aa=2*math.pi*i/5;rr=.105;px=x+rr*math.cos(aa);pz=WZ+rr*math.sin(aa);cube(f'M8_SPOKE_{ax}{sy}_{i}',(px,y+side*.088,pz),(.165,.017,.013),rim,(0,-aa,0),.003)
         cube(f'M8_CALIPER_{ax}{sy}',(x-.105,y+side*.065,WZ),(.050,.018,.095),cal,(0,0,0),.007)
-# Smaller/lower mirrors.
 for side,sy in ((1,'L'),(-1,'R')):
     y=side*.978;sphere(f'M8_MIRROR_{sy}',(.65,y,.985),(.105,.043,.040),mirror);cube(f'M8_MIRROR_STEM_{sy}',(.625,side*.952,.955),(.070,.022,.030),mirror,(0,0,0),.008);cube(f'M8_MIRROR_GLASS_{sy}',(.646,y+side*.039,.986),(.076,.004,.035),mglass,(0,0,0),.006)
 for side,sy in ((1,'L'),(-1,'R')):
@@ -94,5 +91,5 @@ def rv(out,label,loc,target,lens=75,ortho=False,scale=5,rig='BROAD',override=Non
     rd=out/'renders';rd.mkdir(parents=True,exist_ok=True);set_rig(lights,rig);layer=bpy.context.view_layer;old=layer.material_override;layer.material_override=override;set_world((.012,.012,.012),.16);cam=camera('CAM_'+label,loc,target,lens,ortho,scale);bpy.context.scene.camera=cam;p=rd/f'{MODEL}__{label}.png';setup_render(p,a.samples,a.resolution);bpy.ops.render.render(write_still=True);layer.material_override=old;bpy.data.objects.remove(cam,do_unlink=True);return {'view':label,'file':str(p),'rig':rig,'override':override.name if override else None}
 out=Path(a.out).resolve();out.mkdir(parents=True,exist_ok=True);clay=bpy.data.materials['MAT_PRIMARY_CLAY'];renders=[rv(out,'HERO_FRONT_3Q',(5.8,-6.6,2.65),(.05,0,.63)),rv(out,'HERO_REAR_3Q',(-5.6,6.3,2.55),(-.08,0,.62)),rv(out,'SIDE_PROFILE',(0,-8.4,1.20),(0,0,.62),85,True,5.15),rv(out,'WHEEL_DETAIL',(2.05,-3.0,.92),(FX,-WY,.35),100,False,2.25),rv(out,'MIRROR_HANDLE_DETAIL',(2.1,-3.0,1.45),(.45,-.86,.88),95,False,2.3),rv(out,'TOP_3Q',(4.6,-5.2,5.0),(0,0,.58),78),rv(out,'CLAY_STRIP',(5.8,-6.6,2.65),(.05,0,.63),75,False,5,'STRIP',clay),rv(out,'CLAY_GRAZING',(5.8,-6.6,2.65),(.05,0,.63),75,False,5,'GRAZING',clay)]
 checks={'source_model_hash_unchanged':before==after,'source_model_object_set_unchanged':source_names==sorted(o.name for o in bpy.data.objects if is_source(o)),'primary_manifold':nonmanifold(body)==0,'wheel_disc_count':len([o for o in m8 if o.name.startswith('M8_DISC_')])==4,'wheel_ring_count':len([o for o in m8 if o.name.startswith('M8_RIM_RING_')])==4,'wheel_spoke_count':len([o for o in m8 if o.name.startswith('M8_SPOKE_')])==20,'caliper_count':len([o for o in m8 if o.name.startswith('M8_CALIPER_')])==4,'mirror_housing_count':len([o for o in m8 if o.name.startswith('M8_MIRROR_') and 'STEM' not in o.name and 'GLASS' not in o.name])==2,'mirror_glass_count':len([o for o in m8 if o.name.startswith('M8_MIRROR_GLASS_')])==2,'handle_count':len([o for o in m8 if o.name.startswith('M8_HANDLE_')])==4,'wiper_count':len([o for o in m8 if o.name.startswith('M8_WIPER_')])==2,'render_matrix':len(renders)==8}
-qa={'schema':'oleander.automotive-detail.qa.v0.10-r02','model':MODEL,'revision':REV,'source_authority':'OLEANDER_Automotive_Secondary_v0.9','status':'MACHINE_PASS_VISUAL_REVIEW_REQUIRED' if all(checks.values()) else 'MACHINE_FAIL','source_scene_hash_before':before,'source_scene_hash_after':after,'source_object_count':len(source_names),'m8_component_count':len(m8),'checks':checks,'renders':renders,'revision_scope':'M8 clean rebuild from v0.9 lineage; smaller mirror/handle, lower wheel-detail density.','boundary':'Exterior detail benchmark only; interior package/CMF remain later scope.'};(out/'AUTOMOTIVE_M8_QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
+qa={'schema':'oleander.automotive-detail.qa.v0.10-r02','model':MODEL,'revision':REV,'source_authority':'OLEANDER_Automotive_Secondary_v0.9','status':'MACHINE_PASS_VISUAL_REVIEW_REQUIRED' if all(checks.values()) else 'MACHINE_FAIL','source_scene_hash_before':before,'source_scene_hash_after':after,'source_object_count':len(source_names),'m8_component_count':len(m8),'checks':checks,'renders':renders,'revision_scope':'M8 clean rebuild directly from v0.9 lineage; smaller mirror/handle, lower wheel-detail density.','boundary':'Exterior detail benchmark only; interior package/CMF remain later scope.'};(out/'AUTOMOTIVE_M8_QA.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2)+'\n')
 bpy.context.scene['OLEANDER_MODEL']=MODEL;bpy.context.scene['OLEANDER_STAGE']='M8';bpy.context.scene['OLEANDER_REVISION']=REV;blend=out/f'{MODEL}.blend';bpy.ops.wm.save_as_mainfile(filepath=str(blend));rec={'schema':'oleander.automotive-detail.receipt.v0.10-r02','model':MODEL,'revision':REV,'blender_version':bpy.app.version_string,'status':'EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED' if qa['status'].startswith('MACHINE_PASS') else 'EXECUTED_MACHINE_FAIL','blend':str(blend),'qa':str(out/'AUTOMOTIVE_M8_QA.json'),'renders':renders};(out/'AUTOMOTIVE_M8_RECEIPT.json').write_text(json.dumps(rec,ensure_ascii=False,indent=2)+'\n');print(json.dumps(rec,ensure_ascii=False,indent=2));raise SystemExit(0 if qa['status'].startswith('MACHINE_PASS') else 5)
