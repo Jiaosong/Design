@@ -21,17 +21,18 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Reconstruct and validate R03/R05 sources
+      - name: Reconstruct and validate R03/R05/R06 sources
         run: |
           set -euo pipefail
           R03='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r03.py'
           R05='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r05.py'
+          R06='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r06.py'
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/build_automotive_primary_v0_8.py.gz.b64 | gzip -d > /tmp/build_auto_primary_v08.py
           test "$(git hash-object "$R03")" = "5e4bc14bf3aec09bcc56e4328740b1b101b29234"
           test "$(git hash-object "$R05")" = "4256b03abcc2418eb6a50d8d29c0b2c9adf3a509"
-          cp "$R03" /tmp/apply_auto_primary_v08_r03.py
-          cp "$R05" /tmp/apply_auto_primary_v08_r05.py
-          python3 -m py_compile /tmp/build_auto_primary_v08.py /tmp/apply_auto_primary_v08_r03.py /tmp/apply_auto_primary_v08_r05.py
+          test "$(git hash-object "$R06")" = "6539ff4178fa8d1954fd233b043c816dca70cf9f"
+          cp "$R03" /tmp/r03.py; cp "$R05" /tmp/r05.py; cp "$R06" /tmp/r06.py
+          python3 -m py_compile /tmp/build_auto_primary_v08.py /tmp/r03.py /tmp/r05.py /tmp/r06.py
           test "$(sha256sum /tmp/build_auto_primary_v08.py | awk '{print $1}')" = "5cee2b54e7998b34bdd5d7ea4a029624888ae2bdfd0c08841deaffb3686425f5"
 
       - name: Install Blender 5.2.0 LTS
@@ -43,66 +44,68 @@ jobs:
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
 
-      - name: Materialize R01 base at preflight quality
+      - name: Materialize R01 base
         run: |
           set -euo pipefail
-          BASE="$RUNNER_TEMP/v08-r01";mkdir -p "$BASE";set +e
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_auto_primary_v08.py -- --out "$BASE" --samples 1 --resolution 96
-          RC=$?;set -e;test "$RC" -eq 5
-          test -f "$BASE/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
+          OUT="$RUNNER_TEMP/r01";mkdir -p "$OUT";set +e
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_auto_primary_v08.py -- --out "$OUT" --samples 1 --resolution 80
+          RC=$?;set -e;test "$RC" -eq 5;test -f "$OUT/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
 
-      - name: Materialize R03 integrated shell at preflight quality
+      - name: Materialize R03 integrated shell
         run: |
           set -euo pipefail
-          BASE="$RUNNER_TEMP/v08-r01/OLEANDER_Automotive_Primary_Surface_v0.8.blend";OUT="$RUNNER_TEMP/v08-r03";mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/apply_auto_primary_v08_r03.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 1 --resolution 96
+          BASE="$RUNNER_TEMP/r01/OLEANDER_Automotive_Primary_Surface_v0.8.blend";OUT="$RUNNER_TEMP/r03";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/r03.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 1 --resolution 80
+          test -f "$OUT/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
+
+      - name: Materialize R05 tension source
+        run: |
+          set -euo pipefail
+          BASE="$RUNNER_TEMP/r03/OLEANDER_Automotive_Primary_Surface_v0.8.blend";OUT="$RUNNER_TEMP/r05";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/r05.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 1 --resolution 80
           python3 - <<'PY'
           import json,os
           from pathlib import Path
-          q=json.loads((Path(os.environ['RUNNER_TEMP'])/'v08-r03'/'AUTOMOTIVE_PRIMARY_QA.json').read_text())
+          q=json.loads((Path(os.environ['RUNNER_TEMP'])/'r05'/'AUTOMOTIVE_PRIMARY_QA.json').read_text())
           assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED'
-          assert q['checks']['single_primary_shell'] is True
+          assert q['checks']['flush_glazing_faces'] is True
           PY
 
-      - name: Apply R05 tension and flush-glazing revision
+      - name: Run R06 diagnostic integrity proof
         run: |
           set -euo pipefail
-          BASE="$RUNNER_TEMP/v08-r03/OLEANDER_Automotive_Primary_Surface_v0.8.blend";OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R05";mkdir -p "$OUT"
+          BASE="$RUNNER_TEMP/r05/OLEANDER_Automotive_Primary_Surface_v0.8.blend";OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R06";mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/apply_auto_primary_v08_r05.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/r06.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s);echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
           printf '%s\n' \
-            'R01: split body/cabin → visual REVISE' \
-            'R02: flatter cabin + explicit glazing → split-volume hat defect persists' \
-            'R03: one integrated shell → split-volume defect closed; body still too soft / component reading weak' \
-            'R04: floating glazing overlays → REJECT; panels do not conform to primary shell' \
-            'R05: rebuild from R03 control cage with controlled SubD tension + flush shell-face glazing zones' \
+            'R05: crease/tension + flush material zones / Machine PASS / Visual review detected glazing disappeared after silhouette diagnostic' \
+            'R06: geometry LOCKED; diagnostic renderer changed to material_override + explicit rendered glazing masks' \
             > "$OUT/REVISION_CHAIN.txt"
 
-      - name: Validate R05 Machine/Construction gate
+      - name: Validate R06 diagnostic gate
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R05"
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R06"
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/OLEANDER_Automotive_Primary_Surface_v0.8-R05');q=json.loads((out/'AUTOMOTIVE_PRIMARY_QA.json').read_text());r=json.loads((out/'AUTOMOTIVE_PRIMARY_RECEIPT.json').read_text())
-          assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED',q
-          assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED',r
-          assert q['revision']=='R05'
-          for key in ['primary_shell_manifold','control_ngon_zero','crease_edges_present','flush_glazing_faces','floating_glazing_absent','wheel_guides','premature_detail_absent','render_matrix','height_corridor']:
+          out=Path('out/OLEANDER_Automotive_Primary_Surface_v0.8-R06');q=json.loads((out/'AUTOMOTIVE_PRIMARY_QA.json').read_text());r=json.loads((out/'AUTOMOTIVE_PRIMARY_RECEIPT.json').read_text())
+          assert q['status']=='DIAGNOSTIC_PASS_VISUAL_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_DIAGNOSTIC_PASS_VISUAL_REVIEW_REQUIRED',r
+          for key in ['material_indices_preserved','glass_face_index_present','glazing_mask_side_visible','glazing_mask_front_visible','primary_shell_manifold','wheel_guides','premature_detail_absent','render_matrix']:
               assert q['checks'][key] is True,(key,q)
-          assert len(list((out/'renders').glob('*.png')))==8
-          print('R05 MACHINE/CONSTRUCTION PASS; VISUAL REVIEW REQUIRED',q['crease_edge_count'],q['glazing_zone_counts'])
+          assert len(list((out/'renders').glob('*.png')))==10
+          print('R06 DIAGNOSTIC INTEGRITY PASS',q['glazing_masks'])
           PY
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: Upload v0.8 R05 evidence
+      - name: Upload v0.8 R06 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-modeling-worker-automotive-primary-v0-8-r05-${{ github.run_id }}
-          path: out/OLEANDER_Automotive_Primary_Surface_v0.8-R05/
+          name: oleander-modeling-worker-automotive-primary-v0-8-r06-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Primary_Surface_v0.8-R06/
           if-no-files-found: error
           retention-days: 14
