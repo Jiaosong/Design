@@ -6,30 +6,37 @@ Owner: 刘旋 / OLEANDER／织作
 
 ## Current architecture authority
 
-- Knowledge structure: `00 / 01 / 02 / 10 / 20 / 30 / 90 / 99`.
 - Knowledge axis: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Framework / Cluster → L5 Knowledge Object / Index → L6 Evidence / Case → L7 Practice / Output`.
+- Application Mapping: `Business / Culture / IP / Spatial`, with `B01–B04 / CU01–CU04 / IP01–IP04 / SP01–SP04`. These codes express where knowledge or project work is applied; they are not a knowledge taxonomy, Project IDs, or delivery-priority labels.
 - Project axis: `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`.
-- Project/application mapping: `Business / Culture / IP / Spatial`.
-- Case roots: `C01 / C02 / C03...`.
+- Case axis: `C01 / C02 / C03 / C04 / C05+`; a bare `Cnn` is a Canonical Case ID and must not substitute for a P2 Project ID.
+- Delivery priority: `Priority-0 / Priority-1 / Priority-2 / Priority-3` only.
 - Claims: `CLM-*`; IP assets: `IP-[Role]-[NNN]`.
 - AI governance: `AIG-01 / AIG-02 / AIG-03`.
 
-**Namespace hard rule:** `P0–P4` are reserved for the project axis and must not be reused as current AI-governance identifiers. Historical AI `P0/P1/P2`, `P2-E...` evidence IDs, PR titles and source filenames remain immutable audit history only. New runtime evidence uses `AIG3-E...`.
+GitHub repository paths such as `01-business/`, `02-culture/`, `03-ip/`, `04-spatial/`, `05-cases/` and `06-practice/` are navigation / publication locations. Their folder names do not override the Knowledge, Application, Project or Case axes above.
+
+**Namespace hard rule:** `P0–P4` are reserved for the project axis and must not be reused as current AI-governance identifiers or delivery priorities. Historical AI `P0/P1/P2`, `P2-E...` evidence IDs, PR titles and source filenames remain immutable audit history only. New runtime evidence uses `AIG3-E...`.
+
+**Case / Project hard rule:** `Cnn` is reserved for the Case Axis. Historical project-registry rows or workstream IDs that use `Cnn`, `Cnn-WS-*` or `Cnn-VAL-*` as Project Axis identities are residual migration evidence until the writable registry is recovered; do not create a second project merely to eliminate those historical IDs.
 
 **No-loss / no-pollution rule:** preserve history in Git history, `99-archive` or migration records, but maintain only one current authority. Do not create parallel replacement pages/files when an in-place identity, relation or current-file repair is sufficient.
 
 Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md`](migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md).
 
-## Layers
+## Application Mapping
 - Business: B01 Positioning & Value; B02 Model & Offering; B03 Operation & Partnership; B04 Metrics & Governance.
 - Culture: CU01 Source & Context; CU02 Knowledge & Interpretation; CU03 Participation & Rights; CU04 Continuity & Renewal.
 - IP: IP01 Identity & Naming; IP02 Narrative & Content; IP03 Visual & Verbal System; IP04 Application & Licensing.
 - Spatial: SP01 Site & Evidence; SP02 Program & Relations; SP03 Space & Experience; SP04 Construction & Operation.
 
+These mappings are assigned after a Knowledge Object has a `Domain / L0–L7` position, or when a project needs to state where knowledge is being applied. `PRIMARY / SUPPORTING / CONDITIONAL / N/A` describes application emphasis only.
+
 ## Cases
-- C01: 一脉广渡. Legacy: CASE/GD, old 03 and P00 pages. Primary: Culture + Spatial. Status: RESEARCH + PROPOSAL / EVIDENCE REVIEW.
-- C02: 忘也 Daylily. Legacy: CASE/DY, old 03C. Primary: Business + IP + Spatial. Status: INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN.
-- C03: The Light Collection / Reno CMF independent concept proposal. Legacy: CASE/LC, old 03D. Primary: IP. Status: PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING. Do not imply OPPO commission, adoption, production, or endorsement.
+- C01: 一脉广渡. Legacy: CASE/GD, old 03 and P00 pages. Application emphasis: Culture + Spatial. Status: RESEARCH + PROPOSAL / EVIDENCE REVIEW.
+- C02: 忘也 Daylily. Legacy: CASE/DY, old 03C. Application emphasis: Business + IP + Spatial. Status: INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN.
+- C03: The Light Collection / Reno CMF independent concept proposal. Legacy: CASE/LC, old 03D. Application emphasis: IP. Status: PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING. Do not imply OPPO commission, adoption, production, or endorsement.
+- C04: 清江石书｜红花峰林十三印. Legacy working names include 清江十三印 / 清江三十印 and historical QJ13 / WS identifiers. Application emphasis: Culture + Spatial, with IP / Business support. Field / professional survey and implementation claims remain evidence-gated.
 
 ## Identity
 - IP-NM-001 v1.0.0 ACTIVE E2
@@ -41,7 +48,7 @@ Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_
 
 ## Migration
 - Migration-level HOLD from v1.0.1: 0.
-- v1.1.0 realignment separates project-axis P0–P4 from AIG governance identifiers and updates current authority without renumbering immutable historical evidence.
+- v1.1.0 realignment separates Knowledge Architecture, Application Mapping, Project Axis, Case Axis, delivery priority and AIG governance identifiers without renumbering immutable historical evidence.
 - Current-object design, recognition, physical reproduction and E4 rights/release gates remain open where previously open.
 - See `00-governance/migration/`.
 
