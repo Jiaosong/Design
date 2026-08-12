@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Stage current v0.11 source chain through R26
+      - name: Stage current v0.11 source chain through R27
         run: |
           set -euo pipefail
           ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
@@ -32,10 +32,10 @@ jobs:
           test -f /tmp/build_automotive_v011_r05.py
           test -f /tmp/revise_v011_r24.py
           test -f /tmp/revise_v011_r25.py
-          test -f /tmp/revise_v011_r26.py
+          test -f /tmp/revise_v011_r27.py
           python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py
           test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
-          git rev-parse HEAD > /tmp/R26_SOURCE_COMMIT.txt
+          git rev-parse HEAD > /tmp/R27_SOURCE_COMMIT.txt
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -47,27 +47,28 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
 
-      - name: Build R26 lateral fender section integration
+      - name: Build R27 circumferential wheel-arch source topology
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r26.py -- --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r27.py -- --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
-          cp /tmp/R26_SOURCE_COMMIT.txt "$OUT/R26_SOURCE_COMMIT.txt"
+          cp /tmp/R27_SOURCE_COMMIT.txt "$OUT/R27_SOURCE_COMMIT.txt"
           cat > "$OUT/REVISION_CHAIN.txt" <<'TXT'
-          R26 CURRENT EXECUTION CANDIDATE:
-          R25 rounded x-z wheel-opening profile retained after visual improvement.
-          R09/R11/R12 package and topology membership remain locked.
-          R26 changes only wheel-zone Source y-coordinates with a tapered lateral fender section to integrate wheel/tire and shoulder/crown.
+          R27 CURRENT EXECUTION CANDIDATE:
+          R24-R26 Human M5 evidence classified the remaining wheel-zone defect as topology/surface-construction rather than scalar tuning.
+          R09 package, R11 non-wheel transverse tension, R12 longitudinal interpolation, R18/R20 termination and R25 rounded opening target remain locked.
+          R27 replaces longitudinal strip approximation in the wheel zone with an angle-parameterized shared SHOULDER_TRANSITION -> BLEND1 -> BLEND2 -> INNER_OPENING ring system inside the same Source mesh.
+          Zone exits reuse MID/ROCKER/UNDER vertices; no detached wheel-brow authority is introduced.
           Source Boolean/SubD/ngon remain forbidden. M6/M7/M8 remain blocked pending Human M5 Visual QA.
           TXT
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: R26 machine gate
+      - name: R27 machine gate
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -77,27 +78,29 @@ jobs:
           q=json.loads((out/'AUTOMOTIVE_V011_QA.json').read_text())
           r=json.loads((out/'AUTOMOTIVE_V011_RECEIPT.json').read_text())
           c=json.loads((out/'MODELING_CONTRACT.json').read_text())
+          t=json.loads((out/'R27_TOPOLOGY_CONTRACT.json').read_text())
           assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED', q
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
-          assert q['model'].endswith('_R26'), q['model']
+          assert q['model'].endswith('_R27'), q['model']
           assert c['contract_version']=='v0.2' and c['spec_patch']=='v0.2.1'
           assert c['modeling_stage']=='M5'
-          assert c['job_id']=='SYS-MODELING-WORKER-AUTO-M4M5-v0.11-R26'
+          assert c['job_id']=='SYS-MODELING-WORKER-AUTO-M4M5-v0.11-R27'
           checks=q['checks']
-          for key in ('source_hash_stable_during_diagnostics','source_island_count_one','source_ngon_zero','termination_triangles_four','source_no_boolean','source_no_subd','arch_endpoint_vertex_reuse_24','four_arch_boundaries','rounded_profile_active','lateral_fender_section_active','render_matrix'):
+          for key in ('source_hash_stable_during_diagnostics','source_island_count_one','source_ngon_zero','termination_triangles_four','source_no_boolean','source_no_subd','arch_endpoint_vertex_reuse_24','four_arch_boundaries','rounded_profile_active','circumferential_arch_active','arch_segments_24','four_nested_arch_boundaries','render_matrix'):
               assert checks.get(key) is True, (key,checks)
           assert q['endpoint_reuse_count']==24
+          assert t['arch_segments']==24 and t['ring_count']==4
           assert len(q['renders'])==9
           assert len(list((out/'renders').glob('*.png')))==9
           assert 'M6/M7/M8 remains blocked' in ' | '.join(c['qa']['project'])
-          print('AUTOMOTIVE v0.11 R26 MACHINE GATE PASS — HUMAN VISUAL QA REQUIRED')
+          print('AUTOMOTIVE v0.11 R27 MACHINE GATE PASS — HUMAN VISUAL QA REQUIRED')
           PY
 
-      - name: Upload v0.11 R26 M5 evidence
+      - name: Upload v0.11 R27 M5 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-automotive-v0-11-r26-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r27-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
