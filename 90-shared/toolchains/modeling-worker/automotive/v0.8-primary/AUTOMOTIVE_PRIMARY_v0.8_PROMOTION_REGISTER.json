@@ -1,0 +1,28 @@
+{
+  "schema": "oleander.automotive-primary-surface.promotion.v0.8",
+  "date": "2026-08-12",
+  "model": "OLEANDER_Automotive_Primary_Surface_v0.8",
+  "modeling_contract": "v0.2 / spec patch v0.2.1",
+  "fidelity": "F1_DESIGN_VALIDATION",
+  "m5": "PASS_WITH_LIMITATIONS",
+  "m6": "PASS_FOR_F1",
+  "from_authority": "WORKING_SOURCE",
+  "to_authority": "CANDIDATE_AUTHORITY_PRIMARY_SURFACE_BENCHMARK",
+  "design_geometry_source": "R05",
+  "normal_visual_evidence": {
+    "revision": "R06",
+    "run": 31558664550,
+    "artifact": 9126935876,
+    "artifact_sha256": "3d6483b0a060e19d314340db191304f170cb8a4370e649b8ceadaa49e0ca6f65"
+  },
+  "diagnostic_closure": {
+    "revision": "R07",
+    "run": 31559096522,
+    "job": 93997527335,
+    "artifact": 9127068419,
+    "artifact_sha256": "a6d6ecd8acfa1264bf4e7356601afa444d76519e1bddf97a25259794376521cf",
+    "side_red_pixels": 17912,
+    "front_red_pixels": 39366
+  },
+  "boundary": "Designer primary-surface benchmark only; not Class-A, engineering CAD, packaging, crash/aero, homologation or production validation."
+}
