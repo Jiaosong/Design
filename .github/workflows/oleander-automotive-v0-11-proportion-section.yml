@@ -1,0 +1,79 @@
+name: OLEANDER Automotive v0.11 Proportion Section Rebuild
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/**'
+      - '.github/workflows/oleander-automotive-v0-11-proportion-section.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  automotive-v0-11-f1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Decode builder and syntax-check
+        run: |
+          set -euo pipefail
+          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011.py.gz.b64 | gzip -d > /tmp/build_automotive_v011.py
+          python3 -m py_compile /tmp/build_automotive_v011.py
+          test "$(sha256sum /tmp/build_automotive_v011.py | awk '{print $1}')" = "5e48c20821b4af6615e671cf19fcf6b7ba3c0b5c0f911fd8060e8d66829fd6f3"
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+
+      - name: Build fresh M1-M5 automotive source and render diagnostics
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_automotive_v011.py -- --out "$OUT" --samples 8 --resolution 640
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+
+      - name: Machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11')
+          q=json.loads((out/'AUTOMOTIVE_V011_QA.json').read_text())
+          r=json.loads((out/'AUTOMOTIVE_V011_RECEIPT.json').read_text())
+          c=json.loads((out/'MODELING_CONTRACT.json').read_text())
+          assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED', q
+          assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
+          assert c['contract_version']=='v0.2'
+          assert c['spec_patch']=='v0.2.1'
+          assert c['modeling_stage']=='M5'
+          assert len(c['sections']['items'])==14
+          assert len(list((out/'renders').glob('*.png')))==8
+          assert q['checks']['premature_detail_absent'] is True
+          print('AUTOMOTIVE v0.11 M1-M5 MACHINE GATE PASS')
+          PY
+
+      - name: Upload v0.11 diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
+          if-no-files-found: error
+          retention-days: 14
