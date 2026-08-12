@@ -1,0 +1,103 @@
+name: OLEANDER Blender v1.20 Reference Product
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/build_reference_product.py'
+      - '06-practice/2026/SYS-BLENDER-SURFACE/artifacts/2026-08-12_CMF-Reference-Product-v0.1/**'
+      - '.github/workflows/oleander-blender-reference-product-v1-20.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reference-product-f1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 / Node 24
+        with:
+          fetch-depth: 1
+
+      - name: Validate product builder source
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/blender-surface-system/v1.20.0/build_reference_product.py
+
+      - name: Fetch current canonical v1.20 D2 Material Preset library
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Canonical v1.20 clean-path evidence from merged PR #70 / run 31517080734.
+          curl -fL --retry 3 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -o /tmp/cmf-v120.zip \
+            https://api.github.com/repos/Jiaosong/Design/actions/artifacts/9111557209/zip
+          echo 'e213f9225a7a7e1cf7c38ca7c959935844f0b1a789dc61e467cf6cf9126bde69  /tmp/cmf-v120.zip' | sha256sum -c -
+          mkdir -p /tmp/cmf-v120
+          unzip -q /tmp/cmf-v120.zip -d /tmp/cmf-v120
+          LIB="$(find /tmp/cmf-v120 -name 'OLEANDER_CMF_MaterialPresets_v1.20.0.blend' -print -quit)"
+          test -n "$LIB"
+          echo "MATERIAL_LIBRARY=$LIB" >> "$GITHUB_ENV"
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')"
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version
+
+      - name: Build representative product and run F1 renders
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Blender_Surface_System_v1.20.0/reference-product"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender -b "$MATERIAL_LIBRARY" \
+            --python 90-shared/toolchains/blender-surface-system/v1.20.0/build_reference_product.py -- \
+            --out "$OUT" --samples 8 --resolution 720
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/REFERENCE_PRODUCT_RENDER_SECONDS.txt"
+
+      - name: Validate geometry and render gates
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Blender_Surface_System_v1.20.0/reference-product"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Blender_Surface_System_v1.20.0/reference-product')
+          q=json.loads((out/'receipts/REFERENCE_PRODUCT_GEOMETRY_QA.json').read_text())
+          r=json.loads((out/'receipts/REFERENCE_PRODUCT_RENDER_RECEIPT.json').read_text())
+          assert q['machine_gate']=='PASS', q
+          assert q['material_binding_complete'] is True
+          assert q['mesh_manifold_complete'] is True
+          assert q['bounds_corridor_pass'] is True
+          assert q['framing_gate']=='PASS', q['framing_preflight']
+          assert r['status']=='6_RENDERED_POST_REVIEW_REQUIRED', r
+          assert r['scene_compile_count']==1
+          assert r['samples']==8 and r['resolution']==[720,720]
+          assert (out/'OLEANDER_CMF_Reference_Product_v0.1.blend').exists()
+          pngs=sorted((out/'renders').glob('*.png'))
+          assert len(pngs)==6
+          for p in pngs: assert p.stat().st_size>1000,(p,p.stat().st_size)
+          print('REFERENCE PRODUCT MACHINE/F1 EXECUTION GATE PASS', len(pngs))
+          PY
+          sha256sum "$OUT"/OLEANDER_CMF_Reference_Product_v0.1.blend "$OUT"/renders/*.png > "$OUT/REFERENCE_PRODUCT_SHA256SUMS.txt"
+
+      - name: Upload reference product evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0 / Node 24
+        with:
+          name: oleander-reference-product-v1-20-${{ github.run_id }}
+          path: out/OLEANDER_Blender_Surface_System_v1.20.0/reference-product/
+          if-no-files-found: error
+          retention-days: 14
