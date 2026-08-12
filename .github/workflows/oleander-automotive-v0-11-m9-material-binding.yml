@@ -1,0 +1,94 @@
+name: OLEANDER Automotive v0.11 M9 Material Binding
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m9.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/M9_MATERIAL_BINDING_GATE.md'
+      - '.github/workflows/oleander-automotive-v0-11-m9-material-binding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m9-material-binding:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+      - name: Stage R29A M9 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r29a.py
+          test -f /tmp/revise_v011_r29a_m6.py
+          test -f /tmp/revise_v011_r29a_m7.py
+          test -f /tmp/revise_v011_r29a_m8.py
+          test -f /tmp/revise_v011_r29a_m9.py
+          test -f /tmp/wheel_hp_contract.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+          git rev-parse HEAD > /tmp/M9_SOURCE_COMMIT.txt
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Build M9 semantic material binding
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M9"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m9.py -- --out "$OUT" --samples 6 --resolution 640
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          cp /tmp/M9_SOURCE_COMMIT.txt "$OUT/M9_SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/M9_RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.json "$OUT"/*.blend > "$OUT/M9_PRIMARY_SHA256SUMS.txt"
+      - name: M9 machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_v0.11_M9')
+          q=json.loads((out/'M9_MATERIAL_QA.json').read_text())
+          a=json.loads((out/'M9_MATERIAL_BINDING.json').read_text())
+          r=json.loads((out/'M9_RECEIPT.json').read_text())
+          expected='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert q['status']=='MACHINE_PASS_HUMAN_M9_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_MACHINE_PASS_HUMAN_M9_REVIEW_REQUIRED',r
+          assert q['source_hash_before']==q['source_hash_after']==expected
+          assert all(q['checks'].values()),q['checks']
+          assert q['source_topology']['vertices']==2909 and q['source_topology']['faces']==2793
+          assert q['source_topology']['tri']==4 and q['source_topology']['ngon']==0
+          assert a['cmf_authority']=='NOT_FINAL_CMF'
+          assert len(a['materials'])==6 and len(set(m['id'] for m in a['materials']))==6
+          assert len(a['bindings'])==6
+          assert q['region_counts']['REG-GLASSHOUSE']==220
+          detail=[b for b in a['bindings'] if b['material']=='MAT-WHEEL-DETAIL-METAL'][0]
+          assert detail['inherited_instance_count']==44
+          assert len(q['wheel_hp_package'])==4
+          assert len(q['renders'])==4 and len(list((out/'renders').glob('*.png')))==4
+          print('AUTOMOTIVE v0.11 M9 MACHINE PASS — HUMAN MATERIAL BINDING REVIEW REQUIRED')
+          PY
+      - name: Upload M9 material binding evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-m9-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_M9/
+          if-no-files-found: error
+          retention-days: 14
