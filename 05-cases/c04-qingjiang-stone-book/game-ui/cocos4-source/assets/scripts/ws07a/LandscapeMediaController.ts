@@ -4,6 +4,7 @@ import {
   find,
   ImageAsset,
   JsonAsset,
+  Label,
   Node,
   resources,
   Sprite,
@@ -49,6 +50,7 @@ interface MediaSnapshot {
   variant: string;
   assetId: string;
   pageId: string;
+  currentPageId?: string;
   visible: boolean;
   usageGate: string;
   techGate: string;
@@ -61,6 +63,7 @@ interface MediaSnapshot {
 
 interface MediaBridge {
   ready: boolean;
+  showActiveExperiment: () => MediaSnapshot;
   snapshot: () => MediaSnapshot;
 }
 
@@ -140,6 +143,41 @@ export class LandscapeMediaController extends Component {
     }
   }
 
+  private showActiveExperiment(): MediaSnapshot {
+    if (!this.ready || !this.manifest || !this.activeAsset) return this.snapshot();
+    const page = RuntimeStore.getPage(this.activeAsset.pageId);
+    if (!page) {
+      warn(`[C04 WS-07A.2] visual experiment page missing: ${this.activeAsset.pageId}`);
+      return this.snapshot();
+    }
+
+    RuntimeStore.setScreen('S0_ONE_LINE_SKY');
+    RuntimeStore.setCurrentPage(page.id);
+    RuntimeStore.setReveal(false);
+
+    const roots = ['S0_OneLineSky', 'S1_RedRockMouth', 'S2_RiverValley', 'Route', 'MyBook'];
+    for (const rootName of roots) {
+      const root = find(rootName, this.node);
+      if (root) root.active = rootName === 'S0_OneLineSky';
+    }
+    const overlay = find('ReadingOverlay', this.node);
+    if (overlay) overlay.active = true;
+    const title = find('ReadingOverlay/PageTitle', this.node)?.getComponent(Label);
+    const observation = find('ReadingOverlay/Observation', this.node)?.getComponent(Label);
+    if (title) title.string = page.title;
+    if (observation) observation.string = page.observation ?? '';
+    const record = find('ReadingOverlay/RecordButton', this.node);
+    const reveal = find('ReadingOverlay/RevealButton', this.node);
+    const revealRoot = find('S2_RiverValley/RevealRoot', this.node);
+    if (record) record.active = false;
+    if (reveal) reveal.active = false;
+    if (revealRoot) revealRoot.active = false;
+
+    this.syncVisibility();
+    this.applyCoverLayout(true);
+    return this.snapshot();
+  }
+
   private syncVisibility(): void {
     if (!this.imageNode || !this.activeAsset) return;
     const visible = this.ready
@@ -179,6 +217,7 @@ export class LandscapeMediaController extends Component {
   private installBridge(): void {
     const bridge: MediaBridge = {
       ready: false,
+      showActiveExperiment: () => this.showActiveExperiment(),
       snapshot: () => this.snapshot(),
     };
     const root = globalThis as unknown as Record<string, unknown>;
@@ -199,6 +238,7 @@ export class LandscapeMediaController extends Component {
       variant: this.manifest?.activeExperiment.variant ?? '',
       assetId: this.activeAsset?.assetId ?? '',
       pageId: this.activeAsset?.pageId ?? '',
+      currentPageId: RuntimeStore.snapshot.currentPageId,
       visible: Boolean(this.imageNode?.activeInHierarchy),
       usageGate: this.activeAsset?.usageGate ?? '',
       techGate: this.activeAsset?.techGate ?? '',
