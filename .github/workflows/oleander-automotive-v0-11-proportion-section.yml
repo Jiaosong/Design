@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Decode R05 source and syntax-check R07-R11
+      - name: Decode R05 source and syntax-check R07-R12
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
@@ -28,9 +28,10 @@ jobs:
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r09.py /tmp/revise_v011_r09.py
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r10.py /tmp/revise_v011_r10.py
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r11.py /tmp/revise_v011_r11.py
-          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r12.py /tmp/revise_v011_r12.py
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py
           test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
-          git rev-parse HEAD > /tmp/R11_SOURCE_COMMIT.txt
+          git rev-parse HEAD > /tmp/R12_SOURCE_COMMIT.txt
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -42,17 +43,17 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
 
-      - name: Build R11 transverse section tension variant
+      - name: Build R12 shape-preserving interpolation variant
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r11.py -- --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r12.py -- --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
-          cp /tmp/R11_SOURCE_COMMIT.txt "$OUT/R11_SOURCE_COMMIT.txt"
-          echo 'R11: R09 longitudinal package locked; transverse shoulder +10mm/side/+12mm z; mid body -30mm/side; rocker -20mm/side' > "$OUT/REVISION_CHAIN.txt"
+          cp /tmp/R12_SOURCE_COMMIT.txt "$OUT/R12_SOURCE_COMMIT.txt"
+          echo 'R12: all R11 hard points/22 sections locked; longitudinal interpolation changed only from piecewise-linear to shape-preserving cubic Hermite/PCHIP-like' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
@@ -75,15 +76,16 @@ jobs:
           assert q['checks']['source_quad_only'] is True
           assert q['checks']['derived_manifold'] is True
           assert q['checks']['glazing_zone_faces'] is True
+          assert q['interpolation']=='shape-preserving cubic Hermite/PCHIP-like'
           assert len(list((out/'renders').glob('*.png')))==9
-          print('AUTOMOTIVE v0.11 R11 TRANSVERSE-TENSION MACHINE GATE PASS')
+          print('AUTOMOTIVE v0.11 R12 PCHIP MACHINE GATE PASS')
           PY
 
-      - name: Upload v0.11 R11 comparison evidence
+      - name: Upload v0.11 R12 comparison evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-automotive-v0-11-r11-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r12-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
