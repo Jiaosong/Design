@@ -1,0 +1,99 @@
+name: OLEANDER Automotive v0.11 M6 Component Architecture
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m6.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/M6_COMPONENT_ARCHITECTURE_GATE.md'
+      - '.github/workflows/oleander-automotive-v0-11-m6-component-architecture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m6-component-architecture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Stage R29A M6 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/build_automotive_v011_r05.py
+          test -f /tmp/revise_v011_r25.py
+          test -f /tmp/revise_v011_r29a.py
+          test -f /tmp/wheel_hp_contract.py
+          test -f /tmp/revise_v011_r29a_m6.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+          git rev-parse HEAD > /tmp/M6_SOURCE_COMMIT.txt
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+
+      - name: Build M6 semantic routing architecture
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M6"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m6.py -- --out "$OUT" --samples 4 --resolution 512
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          cp /tmp/M6_SOURCE_COMMIT.txt "$OUT/M6_SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/M6_RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.json "$OUT"/*.blend > "$OUT/M6_PRIMARY_SHA256SUMS.txt"
+
+      - name: M6 machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_v0.11_M6')
+          q=json.loads((out/'M6_COMPONENT_QA.json').read_text())
+          a=json.loads((out/'M6_COMPONENT_ARCHITECTURE.json').read_text())
+          r=json.loads((out/'M6_RECEIPT.json').read_text())
+          expected='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert q['status']=='MACHINE_PASS_HUMAN_M6_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_MACHINE_PASS_HUMAN_M6_REVIEW_REQUIRED',r
+          assert a['stage']=='M6' and a['source_authority']=='R29A_M5_PRIMARY_GEOMETRY'
+          assert q['source_hash_before']==expected and q['source_hash_after']==expected
+          checks=q['checks']
+          for key in ('canonical_source_hash_before','source_hash_stable_after_annotations','source_island_one','topology_stable','termination_triangles_four','source_ngon_zero','source_no_modifiers','region_coverage_exact','all_required_regions_nonzero','paired_region_symmetry','unique_region_ids','dependency_refs_resolve','wheel_hp_package_exact','selective_rebuild_matrix_complete','derived_map_authority_none','diagnostic_render_matrix'):
+              assert checks.get(key) is True,(key,checks)
+          assert q['topology_after']['tri']==4 and q['topology_after']['ngon']==0
+          assert sum(q['region_face_counts'].values())==q['topology_after']['faces']
+          assert len(a['components'])==10 and len(a['package_components'])==4
+          assert len(set(c['id'] for c in a['components']+a['package_components']))==14
+          assert all(c['authority']=='ROUTING_ONLY' for c in a['components'])
+          assert all(c['physical_panel_seam'] is False for c in a['components'])
+          assert len(q['renders'])==3 and len(list((out/'renders').glob('*.png')))==3
+          print('AUTOMOTIVE v0.11 M6 MACHINE PASS — HUMAN COMPONENT-MAP REVIEW REQUIRED')
+          PY
+
+      - name: Upload M6 component architecture evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-m6-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_M6/
+          if-no-files-found: error
+          retention-days: 14
