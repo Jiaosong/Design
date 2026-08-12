@@ -28,8 +28,9 @@ def eval_wb(o):
     finally:oe.to_mesh_clear()
 
 def target_center(name):
-    x=diag.b.FX if name.startswith('WHEEL_F') else diag.b.RX
-    y=diag.b.WY if '_L_' in name else -diag.b.WY
+    code=name.split('_')[1]
+    x=diag.b.FX if code.startswith('F') else diag.b.RX
+    y=diag.b.WY if code.endswith('L') else -diag.b.WY
     return [float(x),float(y),float(diag.b.WZ)]
 
 def fixed_wheels(M):
@@ -56,25 +57,15 @@ def near(a,b,tol=1e-5):return abs(a-b)<tol
 
 def package_ok(r):
     ar=r['after_raw'];ae=r['after_evaluated'];tc=r['target_center']
-    return (near(ar['dimensions'][0],TARGET_OD) and near(ar['dimensions'][2],TARGET_OD) and
-            near(ae['dimensions'][0],TARGET_OD) and near(ae['dimensions'][2],TARGET_OD) and
-            all(near(ar['center'][i],tc[i]) for i in range(3)) and all(near(ae['center'][i],tc[i]) for i in range(3)) and
-            near(ar['dimensions'][1],r['y_thickness_target']) and near(ae['dimensions'][1],r['y_thickness_target']))
+    return (near(ar['dimensions'][0],TARGET_OD) and near(ar['dimensions'][2],TARGET_OD) and near(ae['dimensions'][0],TARGET_OD) and near(ae['dimensions'][2],TARGET_OD) and all(near(ar['center'][i],tc[i]) for i in range(3)) and all(near(ae['center'][i],tc[i]) for i in range(3)) and near(ar['dimensions'][1],r['y_thickness_target']) and near(ae['dimensions'][1],r['y_thickness_target']))
 
 def main():
     code=0
     try:diag.main()
     except SystemExit as e:code=int(e.code or 0)
-    a=diag.b.parse();out=Path(a.out).resolve();data={'schema':'oleander.auto.v0.11.wheel-hp-normalization.v2','target_od_m':TARGET_OD,'target_centers':{'front_left':[diag.b.FX,diag.b.WY,diag.b.WZ],'front_right':[diag.b.FX,-diag.b.WY,diag.b.WZ],'rear_left':[diag.b.RX,diag.b.WY,diag.b.WZ],'rear_right':[diag.b.RX,-diag.b.WY,diag.b.WZ]},'source_change':False,'validation_method':'RAW_MESH_PLUS_EVALUATED_DEPSGRAPH_WORLD_GEOMETRY','wheel_mesh_count':len(FIX_RECORD),'records':FIX_RECORD}
+    a=diag.b.parse();out=Path(a.out).resolve();data={'schema':'oleander.auto.v0.11.wheel-hp-normalization.v3','target_od_m':TARGET_OD,'target_centers':{'front_left':[diag.b.FX,diag.b.WY,diag.b.WZ],'front_right':[diag.b.FX,-diag.b.WY,diag.b.WZ],'rear_left':[diag.b.RX,diag.b.WY,diag.b.WZ],'rear_right':[diag.b.RX,-diag.b.WY,diag.b.WZ]},'source_change':False,'validation_method':'RAW_MESH_PLUS_EVALUATED_DEPSGRAPH_WORLD_GEOMETRY','wheel_mesh_count':len(FIX_RECORD),'records':FIX_RECORD}
     (out/'WHEEL_HP_NORMALIZATION.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
-    qp=out/'AUTOMOTIVE_V011_QA.json';q=json.loads(qp.read_text());q['schema']='oleander.auto.v0.11.r28a.hpdiag.v2.qa'
-    q['checks']['wheel_hp_package_exact']=len(FIX_RECORD)==4 and all(package_ok(r) for r in FIX_RECORD)
-    q['checks']['wheel_hp_od_normalized']=q['checks']['wheel_hp_package_exact']
-    q['checks']['wheel_centers_match_hard_points']=len(FIX_RECORD)==4 and all(all(near(r['after_evaluated']['center'][i],r['target_center'][i]) for i in range(3)) for r in FIX_RECORD)
-    q['checks']['wheel_y_thickness_retained']=len(FIX_RECORD)==4 and all(near(r['after_evaluated']['dimensions'][1],r['y_thickness_target']) for r in FIX_RECORD)
-    q['checks'].pop('wheel_centers_retained',None)
-    q['boundary']='R28A Source locked. Four visible wheel meshes must match M1 hard points in actual evaluated world geometry: OD X/Z=0.70 m, centers=FX/RX +/-WY WZ, Y thickness retained.'
-    q['status']='MACHINE_PASS_VISUAL_REVIEW_REQUIRED' if all(q['checks'].values()) else 'MACHINE_FAIL';qp.write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
-    cp=out/'MODELING_CONTRACT.json';c=json.loads(cp.read_text());c['job_id']='SYS-MODELING-WORKER-AUTO-M1M5-v0.11-R28A-HPDIAG-v2';c['revision']={'revision_id':'R28A-WHEEL-HP-DIAGNOSTIC-v2','source_change':False,'wheel_display_change':'enforce 0.70 m OD and exact M1 center on WHEEL_* world geometry','validation_readback':'raw mesh + evaluated depsgraph','design_variable_change':False};c['qa']['construction'].append('R28A Source unchanged; wheel package must match locked M1 OD and centers before Human M5');cp.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
+    qp=out/'AUTOMOTIVE_V011_QA.json';q=json.loads(qp.read_text());q['schema']='oleander.auto.v0.11.r28a.hpdiag.v3.qa';q['checks']['wheel_hp_package_exact']=len(FIX_RECORD)==4 and all(package_ok(r) for r in FIX_RECORD);q['checks']['wheel_hp_od_normalized']=q['checks']['wheel_hp_package_exact'];q['checks']['wheel_centers_match_hard_points']=len(FIX_RECORD)==4 and all(all(near(r['after_evaluated']['center'][i],r['target_center'][i]) for i in range(3)) for r in FIX_RECORD);q['checks']['wheel_y_thickness_retained']=len(FIX_RECORD)==4 and all(near(r['after_evaluated']['dimensions'][1],r['y_thickness_target']) for r in FIX_RECORD);q['checks'].pop('wheel_centers_retained',None);q['boundary']='R28A Source locked. Four visible wheel meshes must match M1 hard points in actual evaluated world geometry: OD X/Z=0.70 m, centers=FX/RX +/-WY WZ, Y thickness retained; FL/RL map to +WY and FR/RR to -WY.';q['status']='MACHINE_PASS_VISUAL_REVIEW_REQUIRED' if all(q['checks'].values()) else 'MACHINE_FAIL';qp.write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
+    cp=out/'MODELING_CONTRACT.json';c=json.loads(cp.read_text());c['job_id']='SYS-MODELING-WORKER-AUTO-M1M5-v0.11-R28A-HPDIAG-v3';c['revision']={'revision_id':'R28A-WHEEL-HP-DIAGNOSTIC-v3','source_change':False,'wheel_display_change':'enforce 0.70 m OD and exact M1 center on WHEEL_* world geometry','left_right_mapping':'FL/RL +WY; FR/RR -WY','validation_readback':'raw mesh + evaluated depsgraph','design_variable_change':False};c['qa']['construction'].append('R28A Source unchanged; wheel package must match locked M1 OD and centers before Human M5');cp.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
     raise SystemExit(0 if q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED' else (code or 5))
 if __name__=='__main__':main()
