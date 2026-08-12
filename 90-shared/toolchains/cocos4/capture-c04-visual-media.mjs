@@ -14,6 +14,7 @@ fs.mkdirSync(outDir, { recursive: true });
 const HTTP_PORT = Number(process.env.OLEANDER_MEDIA_CAPTURE_HTTP_PORT ?? 4174);
 const DEBUG_PORT = Number(process.env.OLEANDER_MEDIA_CAPTURE_DEBUG_PORT ?? 9223);
 const targetUrl = `http://127.0.0.1:${HTTP_PORT}/index.html`;
+const expectedObservation = '收起手机，先看峰体的高低、疏密与层次。';
 const mime = new Map([
   ['.html', 'text/html; charset=utf-8'], ['.js', 'text/javascript; charset=utf-8'], ['.mjs', 'text/javascript; charset=utf-8'],
   ['.css', 'text/css; charset=utf-8'], ['.json', 'application/json; charset=utf-8'], ['.wasm', 'application/wasm'],
@@ -157,8 +158,9 @@ const viewports = [
 ];
 const report = {
   gate: 'WS-07A.2_RESEARCH_MEDIA_CAPTURE',
-  experiment: 'A_PHOTO_DOMINANT_R05',
+  experiment: 'A_PHOTO_DOMINANT_R05_READABILITY_A2',
   targetUrl,
+  expectedObservation,
   viewports: [],
   failures,
   consoleEvents,
@@ -168,16 +170,26 @@ const report = {
 
 for (const viewport of viewports) {
   await setViewport(viewport.width, viewport.height);
-  const media = await evaluate('globalThis.__OLEANDER_C04_MEDIA__.showActiveExperiment()');
+  await evaluate('globalThis.__OLEANDER_C04_MEDIA__.showActiveExperiment()');
   await delay(300);
   const runtime = await evaluate('globalThis.__OLEANDER_WS07A__.snapshot()');
   const settledMedia = await evaluate('globalThis.__OLEANDER_C04_MEDIA__.snapshot()');
 
   if (runtime.currentScreen !== 'S0_ONE_LINE_SKY' || runtime.currentPageId !== 'R05') failures.push({ code: 'R05_BINDING', viewport: viewport.id, runtime });
+  if (runtime.observation !== expectedObservation) failures.push({ code: 'R05_OBSERVATION_DRIFT', viewport: viewport.id, expectedObservation, actual: runtime.observation });
   if (!settledMedia.visible || settledMedia.assetId !== 'OW-20230616-2a923422a') failures.push({ code: 'R05_MEDIA_VISIBLE', viewport: viewport.id, media: settledMedia });
   if (settledMedia.usageGate !== 'RESEARCH_PROTOTYPE_ONLY') failures.push({ code: 'MEDIA_USAGE_GATE', viewport: viewport.id, media: settledMedia });
   if (settledMedia.techGate !== 'FAIL_LT2400_FINAL_HERO') failures.push({ code: 'TECH_BOUNDARY_DRIFT', viewport: viewport.id, media: settledMedia });
   if (settledMedia.renderedWidth < runtime.canvas.width || settledMedia.renderedHeight < runtime.canvas.height) failures.push({ code: 'COVER_LAYOUT', viewport: viewport.id, media: settledMedia, canvas: runtime.canvas });
+
+  const protection = settledMedia.textProtection;
+  if (!protection?.applied || !protection.titleShadow || !protection.observationShadow || !protection.returnGuardShadow) {
+    failures.push({ code: 'A2_TEXT_PROTECTION_INACTIVE', viewport: viewport.id, textProtection: protection });
+  }
+  const guard = protection?.returnGuardColor;
+  if (!Array.isArray(guard) || guard.length !== 4 || guard[0] < 250 || guard[1] < 250 || guard[2] < 250 || guard[3] < 220) {
+    failures.push({ code: 'A2_RETURN_GUARD_CONTRAST_STATE', viewport: viewport.id, returnGuardColor: guard });
+  }
 
   const capture = await screenshot(viewport.id, 'R05-A-photo-dominant-research');
   report.viewports.push({ ...viewport, capture, media: settledMedia, runtime: {
@@ -203,4 +215,4 @@ try { fs.rmSync(userDataDir, { recursive: true, force: true }); } catch {}
 fs.closeSync(chromeLog);
 
 if (failures.length) process.exit(1);
-console.log('PASS: C04 R05 A｜Photo-dominant research media captured across 3 viewports');
+console.log('PASS: C04 R05 A.2 photo-dominant research media + runtime text protection captured across 3 viewports');
