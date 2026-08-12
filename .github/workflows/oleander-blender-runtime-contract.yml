@@ -35,7 +35,7 @@ jobs:
           bash -n tools/oleander-runtime/blender.sh
           python3 tests/oleander-blender-runtime-contract.py
 
-  automotive-r19-execution-bridge:
+  automotive-r20-execution-bridge:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -43,26 +43,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Stage R05 and R07-R19 dependency chain
+      - name: Stage R05 and R07-R20 dependency chain
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r07.py /tmp/revise_v011_r07.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r08.py /tmp/revise_v011_r08.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r09.py /tmp/revise_v011_r09.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r10.py /tmp/revise_v011_r10.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r11.py /tmp/revise_v011_r11.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r12.py /tmp/revise_v011_r12.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r14.py /tmp/revise_v011_r14.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r15.py /tmp/revise_v011_r15.py
-          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r16.py.gz.b64 | gzip -d > /tmp/revise_v011_r16.py
-          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r17.py.gz.b64 | gzip -d > /tmp/revise_v011_r17.py
-          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r18.py.gz.b64 | gzip -d > /tmp/revise_v011_r18.py
-          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r19.py.gz.b64 | gzip -d > /tmp/revise_v011_r19.py
-          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r19.py
+          for n in 07 08 09 10 11 12 14 15; do cp "90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r${n}.py" "/tmp/revise_v011_r${n}.py"; done
+          for n in 16 17 18 20; do base64 -d "90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r${n}.py.gz.b64" | gzip -d > "/tmp/revise_v011_r${n}.py"; done
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r20.py
           test "$(sha256sum /tmp/revise_v011_r18.py | awk '{print $1}')" = "2639452639988b20c6c499ae30138f780a56bf8802605bc325001e2b15194a2c"
-          test "$(sha256sum /tmp/revise_v011_r19.py | awk '{print $1}')" = "7c159ed02969ceffe1cad2a149fa3aa94fc0a84ed3a60a9dfdda629ad1760b48"
-          git rev-parse HEAD > /tmp/R19_SOURCE_COMMIT.txt
+          test "$(sha256sum /tmp/revise_v011_r20.py | awk '{print $1}')" = "76fb216f4c8ccbb41d1d6b94a2995486b87769abc1ce1e78f986a7538b74afae"
+          git rev-parse HEAD > /tmp/R20_SOURCE_COMMIT.txt
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -73,18 +63,18 @@ jobs:
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
 
-      - name: Build R19 normal diagnostic closure
+      - name: Build R20 local termination winding repair
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r19.py -- --out "$OUT" --samples 8 --resolution 640
-          cp /tmp/R19_SOURCE_COMMIT.txt "$OUT/R19_SOURCE_COMMIT.txt"
-          echo 'R19: R18 geometry fully locked; connected face normals recalculated only; 6 termination affected views; M5 promotion still requires Visual QA' > "$OUT/REVISION_CHAIN.txt"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r20.py -- --out "$OUT" --samples 8 --resolution 640
+          cp /tmp/R20_SOURCE_COMMIT.txt "$OUT/R20_SOURCE_COMMIT.txt"
+          echo 'R20: returns to R18 geometry; only 28 structured termination face windings reversed; orientation-invariant shape hash; no global normal recalc' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: R19 Machine Gate
+      - name: R20 Machine Gate
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -95,17 +85,17 @@ jobs:
           r=json.loads((out/'AUTOMOTIVE_V011_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED', q
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
-          for key in ['geometry_hash_unchanged','topology_unchanged','source_ngon_zero','termination_triangles_four','source_no_boolean','source_no_subd','render_matrix']:
+          for key in ['shape_hash_unchanged','topology_unchanged','termination_faces_flipped_28','source_ngon_zero','termination_triangles_four','source_no_boolean','source_no_subd','render_matrix']:
               assert q['checks'][key] is True, (key,q)
           assert len(list((out/'renders').glob('*.png')))==6
-          print('AUTOMOTIVE v0.11 R19 NORMAL CLOSURE MACHINE GATE PASS')
+          print('AUTOMOTIVE v0.11 R20 LOCAL TERMINATION WINDING GATE PASS')
           PY
 
-      - name: Upload R19 evidence
+      - name: Upload R20 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
-          name: oleander-automotive-v0-11-r19-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r20-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
