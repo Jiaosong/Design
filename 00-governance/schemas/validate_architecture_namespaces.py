@@ -110,6 +110,14 @@ def main():
     if "## AIG-01 governance prerequisite" not in reasoning:
         fail("AI Design Reasoning Protocol must route through AIG-01")
 
+    aig01 = (ROOT / "90-shared" / "OLEANDER_AIG-01_Evaluation_Regression_v0.1.md").read_text(encoding="utf-8")
+    for stale_eval_label in ("`L1 Contract`", "`L2 Evidence`", "`L3 Task`", "`L4 Safety / Rights`", "`L5 Regression`"):
+        if stale_eval_label in aig01:
+            fail(f"AIG-01 reuses Knowledge Architecture L0-L7 namespace: {stale_eval_label}")
+    for required_eval_label in ("EVAL-1 Contract", "EVAL-2 Evidence", "EVAL-3 Task", "EVAL-4 Safety / Rights", "EVAL-5 Regression"):
+        if required_eval_label not in aig01:
+            fail(f"AIG-01 missing explicit evaluation namespace: {required_eval_label}")
+
     skill_review = (ROOT / "oleander-skills" / "REVIEW.md").read_text(encoding="utf-8")
     if "## AIG-01 AI governance checks" not in skill_review:
         fail("oleander-skills/REVIEW.md must route reusable skills through AIG-01")
@@ -149,6 +157,7 @@ def main():
 
     print("ARCHITECTURE NAMESPACE GATE: PASS")
     print("- P0-P4 reserved for project axis")
+    print("- L0-L7 reserved for Knowledge Architecture; AIG uses EVAL-* for evaluation layers")
     print("- Project Flow schema requires project_level + project_id")
     print("- Application Mapping and Knowledge Context are machine-separated")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
