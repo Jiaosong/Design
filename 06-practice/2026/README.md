@@ -6,6 +6,21 @@
 
 这些内容作为个人研究与方法积累的一部分展示。它们可能处于练习、原型、测试计划或阶段性验证状态，因此不会因为进入 GitHub 就被描述为真实项目结果、生产成果或已完成验证。
 
+## Authority boundary｜2026-08-12
+
+- Current Practice root: `06-practice/`.
+- Governance authority: `Governance v1.1.0 / ACTIVE / E2` on `main`.
+- `B01–B04 / CU01–CU04 / IP01–IP04 / SP01–SP04` in Practice names or Scope / node fields are Application Mapping / knowledge-location codes, **not Project IDs**.
+- `P0–P4` are reserved for the Project axis. Delivery priority uses `Priority-0…Priority-3`; AI governance uses `AIG-01…AIG-03`.
+- The older repository root `practice/` is a Legacy artifact location. Existing bytes, filenames and evidence links are retained; it is not a parallel current authority.
+
+### Indexed legacy-location records still referenced by current work
+
+| Current identity / role | Legacy artifact location | Authority handling |
+| --- | --- | --- |
+| `PRJ-XJ01-CMF` / XJ01 R02 CMF evidence binding | [`../../practice/2026-08-11-xj01-r02-cmf-direction/`](../../practice/2026-08-11-xj01-r02-cmf-direction/) | Artifact path retained for provenance; XJ01 is an independent P2 Project. The research reserve is an input, not its parent project. |
+| Spatial Practice / `SP01-R02` GIS Reality Gate | [`../../practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/`](../../practice/2026/2026-08-11_SP01-R02_GIS-Reality-Gate/) | `SP01` is Spatial Application Mapping, not a Project ID. Existing evidence stays in place. |
+
 ## Mandatory Post-Generation Review｜2026 Practice Gate
 
 2026 年所有 Practice 记录统一执行：
@@ -19,7 +34,8 @@
 - 修正后重审通过：`POST-REVIEW PASS`；
 - 只有 `POST-REVIEW PASS` 才允许 DONE / PASS / Candidate。
 
-Canonical rule: [`../../00-governance/post-generation-review-gate.md`](../../00-governance/post-generation-review-gate.md)
+Canonical governance: [`../../00-governance/README.md`](../../00-governance/README.md)  
+Canonical review rule: [`../../00-governance/post-generation-review-gate.md`](../../00-governance/post-generation-review-gate.md)
 
 ## Included
 
@@ -33,8 +49,8 @@ Canonical rule: [`../../00-governance/post-generation-review-gate.md`](../../00-
 ## Source & maintenance
 
 Status: `PROTO / E2`  
-Authority: Governance v1.0.1 / ACTIVE / E2 on `main`  
-Source date: 2026-08-06 to 2026-08-07
+Authority: Governance v1.1.0 / ACTIVE / E2 on `main`  
+Source date: 2026-08-06 onward
 
 部分文本与代码成果来自 Google Drive 中的可维护源文件，并在 GitHub 中保留为可追溯版本。GitHub 负责公开展示与版本记录，Drive 仍承载部分二进制、视觉刺激物和大型源文件。
 
