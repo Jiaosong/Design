@@ -1,11 +1,6 @@
 name: OLEANDER Automotive v0.11 R29A Diagnostic Isolation
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a.py'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_diag.py'
-      - '.github/workflows/oleander-automotive-v0-11-r29a-diag.yml'
   workflow_dispatch:
 
 permissions:
