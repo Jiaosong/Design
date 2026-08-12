@@ -1,0 +1,155 @@
+name: OLEANDER Modeling Worker R01 Selective Geometry Regression
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/regression/r01/**'
+      - '06-practice/2026/SYS-MODELING-WORKER/**'
+      - '.github/workflows/oleander-modeling-worker-regression-r01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  selective-modeling-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SOURCE_ARTIFACT_ID: '9124975690'
+      SOURCE_ARTIFACT_SHA: 'e8e459bfde3af4d03d41a839d5673404875ab79e7ade7b088155d4fd770508d6'
+      CONTRACT: '06-practice/2026/SYS-MODELING-WORKER/artifacts/2026-08-12_Selective-Geometry-Cache-Regression-R01/MODELING_CONTRACT.json'
+      WORKER_ROOT: '90-shared/toolchains/modeling-worker/regression/r01'
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 / Node 24
+        with:
+          fetch-depth: 1
+
+      - name: Static validate contract and workers
+        run: |
+          set -euo pipefail
+          python3 -m py_compile "$WORKER_ROOT/apply_selective_wheel_revision.py" "$WORKER_ROOT/resolve_cache.py"
+          python3 -m json.tool "$CONTRACT" >/dev/null
+          python3 - <<'PY'
+          import json, os
+          c=json.load(open(os.environ['CONTRACT']))
+          assert c['project_relation']['p2']=='SYS-MODELING-WORKER'
+          assert c['project_relation']['p3']=='SYS-MODELING-WORKER-WS-01'
+          assert c['project_relation']['p4']=='SYS-MODELING-WORKER-VAL-02'
+          assert c['project_relation']['node_codes_are_project_ids'] is False
+          assert c['source']['clean_path_source_rerun']=='PENDING'
+          PY
+
+      - name: Retrieve historical executed v0.7 source provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -o /tmp/v07.zip \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}/zip"
+          echo "$SOURCE_ARTIFACT_SHA  /tmp/v07.zip" | sha256sum -c -
+          mkdir -p /tmp/v07
+          unzip -q /tmp/v07.zip -d /tmp/v07
+          test -f /tmp/v07/OLEANDER_Automotive_Reference_Vehicle_v0.7.blend
+          test -f /tmp/v07/renders/OLEANDER_Automotive_Reference_Vehicle_v0.7__WHEEL_DETAIL.png
+          test -f /tmp/v07/renders/OLEANDER_Automotive_Reference_Vehicle_v0.7__HERO_FRONT_3Q.png
+          echo 'HISTORICAL_EXECUTED_SOURCE / CLEAN-PATH VAL-01 ARTIFACT RERUN STILL REQUIRED BEFORE CURRENT PROMOTION' > /tmp/v07/SOURCE_PROVENANCE_BOUNDARY.txt
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Resolve first job - must MISS
+        run: |
+          set -euo pipefail
+          mkdir -p out cache
+          python3 "$WORKER_ROOT/resolve_cache.py" \
+            --contract "$CONTRACT" \
+            --source-sha "$SOURCE_ARTIFACT_SHA" --cache-dir "$GITHUB_WORKSPACE/cache" --out out/CACHE_RESOLUTION_01.json
+          test "$(python3 -c "import json;print(json.load(open('out/CACHE_RESOLUTION_01.json'))['status'])")" = MISS
+
+      - name: Execute selective modeling job
+        run: |
+          set -euo pipefail
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background /tmp/v07/OLEANDER_Automotive_Reference_Vehicle_v0.7.blend --python-exit-code 5 \
+            --python "$WORKER_ROOT/apply_selective_wheel_revision.py" -- \
+            --contract "$CONTRACT" \
+            --out "$GITHUB_WORKSPACE/out/variant"
+          END=$(date +%s)
+          echo $((END-START)) > out/SELECTIVE_EXECUTION_SECONDS.txt
+
+      - name: Validate selective geometry and only two renders
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          out=Path('out/variant')
+          g=json.loads((out/'GEOMETRY_REVISION_REPORT.json').read_text())
+          r=json.loads((out/'MODELING_RECEIPT.json').read_text())
+          assert r['status']=='EXECUTED_SELECTIVE_PASS',r
+          assert g['locked_geometry_pass'] is True,g
+          assert g['target_count']==40,g
+          assert len(g['changed_objects'])==40,g
+          pngs=sorted((out/'renders').glob('*.png'));assert len(pngs)==2,pngs
+          base=Path('/tmp/v07/renders')
+          pairs={
+            'WHEEL_DETAIL':(base/'OLEANDER_Automotive_Reference_Vehicle_v0.7__WHEEL_DETAIL.png',out/'renders/WHEEL_DETAIL.png'),
+            'HERO_FRONT_3Q':(base/'OLEANDER_Automotive_Reference_Vehicle_v0.7__HERO_FRONT_3Q.png',out/'renders/HERO_FRONT_3Q.png')}
+          delta={}
+          for k,(a,b) in pairs.items():
+            ha=hashlib.sha256(a.read_bytes()).hexdigest();hb=hashlib.sha256(b.read_bytes()).hexdigest()
+            delta[k]={'baseline_sha256':ha,'variant_sha256':hb,'changed':ha!=hb}
+            assert ha!=hb
+          (Path('out')/'RENDER_DELTA_HASHES.json').write_text(json.dumps(delta,indent=2)+'\n')
+          print('SELECTIVE MODELING GATE PASS')
+          PY
+
+      - name: Commit job-local content-addressed cache entry
+        run: |
+          set -euo pipefail
+          KEY="$(python3 -c "import json;print(json.load(open('out/CACHE_RESOLUTION_01.json'))['cache_key'])")"
+          ENTRY="$GITHUB_WORKSPACE/cache/$KEY"; mkdir -p "$ENTRY"
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          key=json.load(open('out/CACHE_RESOLUTION_01.json'))['cache_key'];entry=Path('cache')/key;out=Path('out/variant')
+          files={}
+          for p in sorted(out.rglob('*')):
+            if p.is_file():files[str(p.relative_to(out))]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (entry/'CACHE_MANIFEST.json').write_text(json.dumps({'schema':'oleander.modeling-cache-entry.v1','cache_key':key,'result_status':'EXECUTED_SELECTIVE_PASS','files':files},indent=2)+'\n')
+          PY
+
+      - name: Resolve identical job again - must HIT and skip Blender
+        run: |
+          set -euo pipefail
+          python3 "$WORKER_ROOT/resolve_cache.py" \
+            --contract "$CONTRACT" \
+            --source-sha "$SOURCE_ARTIFACT_SHA" --cache-dir "$GITHUB_WORKSPACE/cache" --out out/CACHE_RESOLUTION_02.json
+          test "$(python3 -c "import json;print(json.load(open('out/CACHE_RESOLUTION_02.json'))['status'])")" = HIT
+          echo 'SECOND_IDENTICAL_JOB_BLENDER_EXECUTION_SKIPPED' > out/CACHE_HIT_PROOF.txt
+
+      - name: Package regression evidence
+        run: |
+          set -euo pipefail
+          cp "$CONTRACT" out/MODELING_CONTRACT.json
+          cp /tmp/v07/SOURCE_PROVENANCE_BOUNDARY.txt out/SOURCE_PROVENANCE_BOUNDARY.txt
+          sha256sum out/variant/renders/*.png out/variant/*.json out/*.json > out/REGRESSION_SHA256SUMS.txt
+
+      - name: Upload regression evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0 / Node 24
+        with:
+          name: oleander-modeling-worker-regression-r01-${{ github.run_id }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
