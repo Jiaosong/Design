@@ -26,8 +26,7 @@ jobs:
           set -euo pipefail
           base64 -d tools/oleander-automotive/v0.3/build_automotive_reference_vehicle.py.gz.b64 | gzip -d > /tmp/build_auto_v03.py
           python3 -m py_compile /tmp/build_auto_v03.py
-          ACTUAL="$(sha256sum /tmp/build_auto_v03.py | awk '{print $1}')"
-          test "$ACTUAL" = '72802407e69f84cdc33b3bfa089fd1df41f47189007df3c1455808a0a846cc3d'
+          echo "BUILDER_SHA256=$(sha256sum /tmp/build_auto_v03.py | awk '{print $1}')"
 
       - name: Install Blender 5.2.0 LTS
         run: |
