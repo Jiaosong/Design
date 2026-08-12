@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.modeling-job-contract.v1",
+  "project_relation": {
+    "p2": "SYS-MODELING-WORKER",
+    "p3": "SYS-MODELING-WORKER-WS-01",
+    "p4": "SYS-MODELING-WORKER-VAL-02",
+    "workflow_code": "MODELING-R01",
+    "node_ownership": ["IP03", "Business"],
+    "node_codes_are_project_ids": false
+  },
+  "job_id": "MDL-AUTO-R01-SPOKE-LIGHTEN",
+  "source": {
+    "model": "OLEANDER_Automotive_Reference_Vehicle_v0.7",
+    "source_validation": "SYS-MODELING-WORKER-VAL-01",
+    "authority_state": "CANDIDATE_AUTHORITY",
+    "github_run": 31553008820,
+    "github_artifact": 9124975690,
+    "artifact_sha256": "e8e459bfde3af4d03d41a839d5673404875ab79e7ade7b088155d4fd770508d6",
+    "provenance_status": "HISTORICAL_EXECUTED_SOURCE",
+    "clean_path_source_rerun": "PENDING"
+  },
+  "loop": "EXPLORATION_SANDBOX",
+  "fidelity": "F1_DESIGN_VALIDATION",
+  "decision_question": "Can the wheel-face spoke chord be reduced locally without modifying locked vehicle geometry, while rerendering only the views affected by that revision?",
+  "operation": "SCALE_WHEEL_SPOKE_LOCAL_X",
+  "parameters": {
+    "spoke_chord_scale": 0.90
+  },
+  "target_selector": "*_SPOKE_*",
+  "expected_target_count": 40,
+  "locked_variables": [
+    "body shell",
+    "roof canopy",
+    "windshield / side / rear glazing",
+    "A/B/C pillars",
+    "wheel tire positions and wheel centers",
+    "lights",
+    "interior",
+    "materials",
+    "studio lights"
+  ],
+  "open_variables": [
+    "wheel spoke local-X chord only"
+  ],
+  "render_views": [
+    "WHEEL_DETAIL",
+    "HERO_FRONT_3Q"
+  ],
+  "resource_budget": {
+    "max_renders": 2,
+    "resolution": 640,
+    "samples": 8,
+    "max_iterations": 1
+  },
+  "cache": {
+    "content_addressed": true,
+    "scope": "JOB_LOCAL_ONLY",
+    "key_inputs": [
+      "source artifact SHA256",
+      "normalized contract",
+      "worker version",
+      "Blender version"
+    ],
+    "required_second_resolution": "CACHE_HIT"
+  },
+  "promotion": {
+    "variant_state": "REJECTED",
+    "method_state": "VALIDATION_PASS_AT_CURRENT_SCOPE",
+    "source_authority_mutation": false,
+    "generalized_worker_capability": false
+  }
+}

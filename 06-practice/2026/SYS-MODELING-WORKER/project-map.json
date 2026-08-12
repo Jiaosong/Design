@@ -26,13 +26,24 @@
       "workflow_code": "AUTO-V07-F1",
       "state": "COMPLETED_CANDIDATE",
       "notion_id": "3bab86be-5c47-8179-b0be-e51e04198282",
-      "evidence": "Run 31553008820 / Artifact 9124975690 / F1 Machine + Product Visual QA PASS"
+      "evidence": "Run 31553008820 / Artifact 9124975690 / F1 Machine + Product Visual QA PASS",
+      "clean_path_rerun": "PENDING"
+    },
+    {
+      "id": "SYS-MODELING-WORKER-VAL-02",
+      "workflow_code": "MODELING-R01",
+      "state": "HISTORICAL_EXECUTED_PASS_METHOD_VARIANT_REJECTED",
+      "notion_id": "3bab86be-5c47-8190-92f1-c88fa2e8bbac",
+      "evidence": "Run 31553669263 / Artifact 9125183502 / 40 target meshes changed / 0 locked changed / 2 rerenders / job-local MISS→HIT",
+      "design_decision": "90 percent spoke-chord variant REJECTED; source v0.7 unchanged",
+      "clean_path_rerun": "PENDING_VAL01_CLEAN_SOURCE"
     }
   ],
   "historical_lineage_policy": {
     "v0_1_to_v0_6": "REJECTED_OR_REVISION_AUDIT_ONLY",
     "move_or_rename_merged_history": false,
     "legacy_tools_paths": "IMMUTABLE_COMMIT_PROVENANCE_ONLY",
+    "job_local_cache_is_persistent_cache": false,
     "evidence_status_inheritance": "DENY"
   }
 }
