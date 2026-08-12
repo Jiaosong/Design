@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "project_axis": ["P0 Portfolio", "P1 Program", "P2 Project", "P3 Workstream", "P4 Validation"],
+  "node_codes_are_project_ids": false,
+  "delivery_priority_namespace": ["Priority-0", "Priority-1", "Priority-2", "Priority-3"],
+  "project": {
+    "id": "PRAC-BUSINESS-2026",
+    "level": "P2",
+    "parent": "PG-30",
+    "main_layer": "Business",
+    "notion_project_id": "3bab86be-5c47-81ac-866a-fe04ca9e16f8",
+    "notion_canonical_page_id": "3bab86be-5c47-8179-b03d-d6a7c1374f9f"
+  },
+  "workstreams": [
+    {
+      "id": "PRAC-BUSINESS-2026-WS-01",
+      "workflow_code": "TIMER-LIGHT-BASIN",
+      "node": "B02",
+      "name": "Timer Light Basin",
+      "notion_id": "3bab86be-5c47-815a-bb71-feee6b819d7b",
+      "l7_id": "PRAC-TIMER-20260807-01",
+      "current_gate": "G5",
+      "design_state": "CANDIDATE",
+      "delivery_priority": "Priority-1",
+      "truth": "Visual/Web/GLB/photography maturity does not close engineering/manufacturing/user reality"
+    }
+  ],
+  "validations": [],
+  "historical_artifact_policy": {
+    "move_or_rename_old_artifacts": false,
+    "old_node_or_date_paths_define_project_hierarchy": false,
+    "evidence_status_inheritance": "DENY"
+  }
+}

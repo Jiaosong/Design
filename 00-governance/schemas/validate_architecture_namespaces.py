@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -55,11 +56,28 @@ CURRENT_ROUTING_FILES = {
         "P2 RUNTIME EVIDENCE: FAIL",
     ],
     ROOT / "evals" / "scripts" / "validate_evals.py": [
-        'OLEANDER_AI_Governance_P0_v0.1.md',
-        'OLEANDER_AI_Governance_P1_v0.1.md',
-        'OLEANDER_AI_Runtime_Evidence_P2_v0.1.md',
+        "OLEANDER_AI_Governance_P0_v0.1.md",
+        "OLEANDER_AI_Governance_P1_v0.1.md",
+        "OLEANDER_AI_Runtime_Evidence_P2_v0.1.md",
     ],
 }
+
+PRACTICE_MAP_FILES = [
+    ROOT / "06-practice" / "2026" / "PRAC-BUSINESS-2026" / "project-map.json",
+    ROOT / "06-practice" / "2026" / "PRAC-CULTURE-2026" / "project-map.json",
+    ROOT / "06-practice" / "2026" / "PRAC-IP-2026" / "project-map.json",
+    ROOT / "06-practice" / "2026" / "PRAC-SPATIAL-2026" / "project-map.json",
+]
+PRACTICE_CURRENT_FILES = [
+    ROOT / "06-practice" / "2026" / "README.md",
+    ROOT / "06-practice" / "2026" / "PRAC-BUSINESS-2026" / "README.md",
+    ROOT / "06-practice" / "2026" / "PRAC-CULTURE-2026" / "README.md",
+    ROOT / "06-practice" / "2026" / "PRAC-IP-2026" / "README.md",
+    ROOT / "06-practice" / "2026" / "PRAC-SPATIAL-2026" / "README.md",
+]
+LEGACY_PRIORITY_LABELS = ["P0 紧急", "P1 重要", "P2 一般", "P3 低"]
+NODE_CODE_RE = re.compile(r"^(?:B|CU|IP|SP)\d{2}$")
+PRIORITY_RE = re.compile(r"^Priority-[0-3](?:｜.*)?$")
 
 
 def fail(message):
@@ -73,6 +91,40 @@ def git_tree_sha(path: str):
         ).strip()
     except subprocess.CalledProcessError:
         return None
+
+
+def validate_practice_map(path: Path):
+    if not path.exists():
+        fail(f"missing current Practice project map: {path.relative_to(ROOT)}")
+    data = json.loads(path.read_text(encoding="utf-8"))
+
+    project = data.get("project") or {}
+    project_id = project.get("id", "")
+    if project.get("level") != "P2":
+        fail(f"Practice map project must be P2: {path.relative_to(ROOT)}")
+    if NODE_CODE_RE.fullmatch(project_id):
+        fail(f"four-layer node used as project ID in {path.relative_to(ROOT)}: {project_id}")
+
+    explicit_flag = data.get("node_codes_are_project_ids")
+    spatial_flag = (data.get("architecture_baseline") or {}).get("spatial_nodes_are_project_ids")
+    if explicit_flag is not False and spatial_flag is not False:
+        fail(f"Practice map must explicitly deny node-code project identity: {path.relative_to(ROOT)}")
+
+    for row in data.get("workstreams", []):
+        node = row.get("node", "")
+        workstream_id = row.get("id", "")
+        if NODE_CODE_RE.fullmatch(workstream_id):
+            fail(f"four-layer node used as workstream project ID in {path.relative_to(ROOT)}: {workstream_id}")
+        if node and workstream_id == node:
+            fail(f"workstream ID collapses to node code in {path.relative_to(ROOT)}: {node}")
+        priority = row.get("delivery_priority")
+        if priority is not None and not PRIORITY_RE.fullmatch(priority):
+            fail(f"invalid delivery-priority namespace in {path.relative_to(ROOT)}: {priority}")
+
+    for row in data.get("validations", []):
+        validation_id = row.get("id", "")
+        if NODE_CODE_RE.fullmatch(validation_id):
+            fail(f"four-layer node used as validation project ID in {path.relative_to(ROOT)}: {validation_id}")
 
 
 def main():
@@ -130,10 +182,23 @@ def main():
     if "GitHub:90-shared/OLEANDER_AI_Governance_P0_v0.1.md" not in forbidden:
         fail("RQ-012 must retain the former P0 file only as forbidden legacy authority")
 
+    for path in PRACTICE_MAP_FILES:
+        validate_practice_map(path)
+
+    for path in PRACTICE_CURRENT_FILES:
+        if not path.exists():
+            fail(f"missing current Practice authority file: {path.relative_to(ROOT)}")
+        text = path.read_text(encoding="utf-8")
+        for term in LEGACY_PRIORITY_LABELS:
+            if term in text:
+                fail(f"legacy P0-P3 delivery-priority label in current Practice authority: {path.relative_to(ROOT)}: {term!r}")
+
     print("ARCHITECTURE NAMESPACE GATE: PASS")
     print("- P0-P4 reserved for project axis")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
     print("- superseded AI P0/P1/P2 current files absent")
+    print("- delivery priority namespace: Priority-0..Priority-3")
+    print("- Business/Culture/IP/Spatial Practice maps deny node-code project identity")
     print("- governance/ parallel root absent")
     print("- legacy practice/ and tools/ roots frozen at reviewed tree SHAs")
     print("- new runtime event namespace: AIG3-E...")

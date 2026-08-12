@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "project_axis": ["P0 Portfolio", "P1 Program", "P2 Project", "P3 Workstream", "P4 Validation"],
+  "node_codes_are_project_ids": false,
+  "delivery_priority_namespace": ["Priority-0", "Priority-1", "Priority-2", "Priority-3"],
+  "project": {
+    "id": "PRAC-CULTURE-2026",
+    "level": "P2",
+    "parent": "PG-30",
+    "main_layer": "Culture",
+    "notion_project_id": "3bab86be-5c47-81c9-a231-c1aac5d8d8ea",
+    "notion_canonical_page_id": "3bab86be-5c47-81cc-9319-c78c6972dbed"
+  },
+  "workstreams": [
+    {
+      "id": "PRAC-CULTURE-2026-WS-01",
+      "workflow_code": "CU01-MATERIAL-TRANSFORMATION",
+      "node": "CU01",
+      "name": "Material Transformation｜Paper–Frame–Light",
+      "notion_id": "3bab86be-5c47-816a-a185-ce84a382adee",
+      "l7_id": "PRAC-CULTURE-MAT-20260812-01",
+      "governance": "ACTIVE",
+      "current_gate": "G3",
+      "design_state": "CANDIDATE",
+      "delivery_priority": "Priority-2",
+      "truth": "Official source facts and A/B translation Practice recorded; real material/manufacturing/safety evidence remains open"
+    }
+  ],
+  "validations": [],
+  "historical_artifact_policy": {
+    "move_or_rename_old_artifacts": false,
+    "old_node_or_date_paths_define_project_hierarchy": false,
+    "evidence_status_inheritance": "DENY"
+  }
+}
