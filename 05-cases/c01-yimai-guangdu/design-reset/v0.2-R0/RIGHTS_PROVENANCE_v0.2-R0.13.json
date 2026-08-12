@@ -1,0 +1,41 @@
+{
+  "version": "v0.2-R0.13",
+  "status": "NO PUBLIC UPGRADE",
+  "assets": {
+    "P1": {
+      "file": "C1_zhenxiao.jpg",
+      "sha256": "6e4b0eecba408064581f711f5bdc63a1ee9e3095818ced41bde8fc3a6b34f6e6",
+      "drive_file_id": "19i77c-KchnJJeBFTidsXRZ1OADfjd_12",
+      "provenance": "PARTIAL_CLOSED",
+      "rights": "OPEN",
+      "public_use": "BLOCKED"
+    },
+    "P2": {
+      "file": "C2_jiexiao.jpg",
+      "sha256": "e99e151bd9df765f2ad816125f3c4ba9f2385c02043887b9aeaa922f4f7c156b",
+      "drive_file_id": "1gtv8pSPZ011aT6NG_pd7kiwWj3PFpwKT",
+      "provenance": "PARTIAL_CLOSED",
+      "object_mapping": "HOLD",
+      "rights": "OPEN",
+      "public_use": "BLOCKED"
+    },
+    "P3": {
+      "file": "C2_maicai_detail.jpg",
+      "sha256": "88f5d6f931a03b44eac3c8531412aad6168b1d4ae83eeb2524dfbadb22f3d3fc",
+      "drive_file_id": "1Lmqp1Ck7cuXdhTNRK-7OfeA3oe19VLDr",
+      "provenance": "OPEN",
+      "spatial_context": "OPEN",
+      "rights": "OPEN",
+      "public_use": "BLOCKED"
+    }
+  },
+  "rules": [
+    "source family known != exact-image provenance closed",
+    "provenance closed != reuse rights granted",
+    "project caption mapping != formal heritage identity",
+    "public webpage visible != permission to republish",
+    "internal evidence use != public media use",
+    "P3 detail evidence != full spatial evidence"
+  ],
+  "release_change": "NONE"
+}
