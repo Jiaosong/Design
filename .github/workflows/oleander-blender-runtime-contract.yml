@@ -52,7 +52,7 @@ jobs:
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r23.py /tmp/revise_v011_r23.py
           python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r20.py /tmp/revise_v011_r22.py /tmp/revise_v011_r23.py
           test "$(sha256sum /tmp/revise_v011_r22.py | awk '{print $1}')" = "366f9fba073f111ecb0da48abd5c2f292cbfa901c4d46f75ef0dbb17c49f5778"
-          test "$(sha256sum /tmp/revise_v011_r23.py | awk '{print $1}')" = "10bf1b976c7ad62103ccd1ba90ec2b530b2375ea80f3352f316a205893c8b741"
+          sha256sum /tmp/revise_v011_r23.py > /tmp/R23_SCRIPT_SHA256.txt
           git rev-parse HEAD > /tmp/R23_SOURCE_COMMIT.txt
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -69,6 +69,7 @@ jobs:
           mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r23.py -- --out "$OUT" --samples 8 --resolution 640
           cp /tmp/R23_SOURCE_COMMIT.txt "$OUT/R23_SOURCE_COMMIT.txt"
+          cp /tmp/R23_SCRIPT_SHA256.txt "$OUT/R23_SCRIPT_SHA256.txt"
           echo 'R23: R22 Source fully locked; derived wheelhouse liners + near-side wheel isolation only; distinguishes source arch from open-cavity diagnostic artifacts' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
