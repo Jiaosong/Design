@@ -4,11 +4,17 @@
 **Workstream:** `C04-WS-04｜视觉阅读与身份`  
 **Notion output:** https://app.notion.com/p/3bab86be5c47814282cef5988eec3b02?pvs=204  
 **Evidence input:** `EVD-C04-002`  
-**Status:** `DESIGN PROPOSAL / RIGHTS-SAFE PRIORITY-0 MEDIA PENDING`
+**Status:** `DESIGN PROPOSAL / OFFICIAL-WEB RIGHTS PASS / PRIORITY-0 NODE+TECH SELECTION ACTIVE`
+
+## 0. Rights update｜2026-08-12
+
+The project owner explicitly authorizes direct use of official/operator website media within C04/OLEANDER. For those assets, `RIGHTS PASS` is satisfied and the remaining media gate is `NODE PASS + TECH PASS`.
+
+This authorization is recorded as a project-use decision, not represented as an independently discovered open license. Third-party media remain separately governed.
 
 ## 1. Locked rules
 
-- `L0 LANDSCAPE` must use real, rights-cleared node media.
+- `L0 LANDSCAPE` must use real target-node media; official/operator website media are project-use approved.
 - Marks derive from real contour / crack / view / section / growth / walking relations.
 - `FACT / LOCAL NARRATIVE / DESIGN READING` remain structurally separate.
 - S0 is allowed to use zero graphic overlay.
@@ -20,14 +26,14 @@
 
 | ID | Page / Mode | Real-media requirement | Mark source | State |
 |---|---|---|---|---|
-| `R01` | 红岩嘴 / S1 | moving/cross-river view with bare rock + Qingjiang relation | view frame + cliff edge + river direction | `NODE SUPPORTED / IMAGE RIGHTS HOLD` |
-| `R05` | 红花石林 / S0 | complete peak-forest contour, depth, vegetation ratio | multi-peak contour + rhythm | `NODE SUPPORTED / IMAGE RIGHTS HOLD` |
-| `R02` | 华中第一藤 / S1 / Conditional | vine/tree/rock or real growth-support relation | growth/entanglement relation | `MEDIA EVIDENCE INSUFFICIENT / HOLD` |
-| `R06` | 多级阶地·不对称河谷 / S2 | both banks + Qingjiang + terrace relation from a valid observation view | terrace horizontals + valley section + asymmetry | `VIEW RELATION SUPPORTED / IMAGE RIGHTS HOLD` |
-| `R07` | 仓廪／仓禀峰 / S1 | readable real mountain outline before naming | actual contour | `NODE SUPPORTED / NAME + IMAGE HOLD` |
-| `R09` | 盐水女神峰 / S1 | real view supporting object contour → local naming | contour / negative space | `NODE SUPPORTED / IMAGE RIGHTS HOLD` |
-| `R12` | 廪君峰 / S1 | real mountain + observation direction / Qingjiang relation | mountain outline + viewing direction | `VIEW RELATION SUPPORTED / IMAGE RIGHTS HOLD` |
-| `R13` | 一线天 / S0 | narrow slit, body scale, external Qingjiang/boat/north-bank frame | slit negative space + frame | `VIEW RELATION SUPPORTED / IMAGE RIGHTS HOLD` |
+| `R01` | 红岩嘴 / S1 | moving/cross-river view with bare rock + Qingjiang relation | view frame + cliff edge + river direction | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
+| `R05` | 红花石林 / S0 | complete peak-forest contour, depth, vegetation ratio | multi-peak contour + rhythm | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
+| `R02` | 华中第一藤 / S1 / Conditional | vine/tree/rock or real growth-support relation | growth/entanglement relation | `OFFICIAL-WEB RIGHTS PASS IF ASSET FOUND / MEDIA EVIDENCE REVIEW` |
+| `R06` | 多级阶地·不对称河谷 / S2 | both banks + Qingjiang + terrace relation from a valid observation view | terrace horizontals + valley section + asymmetry | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
+| `R07` | 仓廪／仓禀峰 / S1 | readable real mountain outline before naming | actual contour | `OFFICIAL-WEB RIGHTS PASS / NAME+NODE+TECH REVIEW` |
+| `R09` | 盐水女神峰 / S1 | real view supporting object contour → local naming | contour / negative space | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
+| `R12` | 廪君峰 / S1 | real mountain + observation direction / Qingjiang relation | mountain outline + viewing direction | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
+| `R13` | 一线天 / S0 | narrow slit, body scale, external Qingjiang/boat/north-bank frame | slit negative space + frame | `OFFICIAL-WEB RIGHTS PASS / NODE+TECH REVIEW` |
 
 ## 3. Companion pool
 
@@ -52,7 +58,7 @@ These percentages are design targets, not user-test findings.
 
 ### A — Photo-dominant
 
-- same rights-safe node photo;
+- same accepted node photo;
 - page name + one observation line only;
 - Mark may be zero.
 
@@ -81,7 +87,7 @@ Question: is the explanatory gain worth the information-density cost?
 - crop forces a figurative/mythic reading before users see the actual object.
 - S0 gains cards, long text or competing primary actions.
 - S2 diagram cannot be located back in the photograph.
-- copyrighted preview becomes indistinguishable from publishable production media.
+- third-party copyrighted preview becomes indistinguishable from publishable production media.
 
 ## 7. Current decision corridor
 
@@ -91,8 +97,9 @@ This is an acceptable corridor for the next experiment, not a final style freeze
 
 ## 8. Priority-0 comparison set
 
-1. `R05 红花石林 / S0` — test near-zero UI.
-2. `R01 红岩嘴 / S1` — test relation mark.
-3. `R06 河谷 / S2` — test photo + reveal.
+1. `R05 红花石林 / S0` — select an official-web asset that passes node + crop/quality review, then test near-zero UI.
+2. `R01 红岩嘴 / S1` — select an official-web asset that passes node + crop/quality review, then test relation mark.
+3. `R06 河谷 / S2` — select an official-web asset that passes node + crop/quality review, then test photo + reveal.
+4. `R13 一线天 / S0` — select an official-web asset that passes node + crop/quality review, then test body/frame reading.
 
-Before rights-safe exact-node media exists, any layout use is `REFERENCE MOCK / NON-PUBLISHABLE` and cannot become final visual evidence.
+The official-web rights bottleneck is removed. Do not create `C04-VAL-02` until at least one Priority-0 media asset is actually selected, technically validated and inserted into the responsive prototype.
