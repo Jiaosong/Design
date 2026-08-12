@@ -45,6 +45,14 @@ interface VisualMediaManifest {
   assets: VisualMediaAsset[];
 }
 
+interface TextProtectionSnapshot {
+  applied: boolean;
+  titleShadow: boolean;
+  observationShadow: boolean;
+  returnGuardShadow: boolean;
+  returnGuardColor: [number, number, number, number];
+}
+
 interface MediaSnapshot {
   ready: boolean;
   manifestStatus: string;
@@ -61,6 +69,7 @@ interface MediaSnapshot {
   sourceHeight: number;
   renderedWidth: number;
   renderedHeight: number;
+  textProtection: TextProtectionSnapshot;
 }
 
 interface MediaBridge {
@@ -297,6 +306,20 @@ export class LandscapeMediaController extends Component {
     return (root[MEDIA_BRIDGE_KEY] as MediaBridge | undefined) ?? null;
   }
 
+  private textProtectionSnapshot(): TextProtectionSnapshot {
+    const title = find('ReadingOverlay/PageTitle', this.node)?.getComponent(Label) ?? null;
+    const observation = find('ReadingOverlay/Observation', this.node)?.getComponent(Label) ?? null;
+    const returnGuard = find('ReturnGuard/Label', this.node)?.getComponent(Label) ?? null;
+    const guardColor = returnGuard?.color ?? new Color(0, 0, 0, 0);
+    return {
+      applied: this.textProtectionApplied,
+      titleShadow: Boolean(title?.enableShadow),
+      observationShadow: Boolean(observation?.enableShadow),
+      returnGuardShadow: Boolean(returnGuard?.enableShadow),
+      returnGuardColor: [guardColor.r, guardColor.g, guardColor.b, guardColor.a],
+    };
+  }
+
   private snapshot(): MediaSnapshot {
     const transform = this.imageNode?.getComponent(UITransform);
     return {
@@ -315,6 +338,7 @@ export class LandscapeMediaController extends Component {
       sourceHeight: this.activeAsset?.sourceHeight ?? 0,
       renderedWidth: transform?.contentSize.width ?? 0,
       renderedHeight: transform?.contentSize.height ?? 0,
+      textProtection: this.textProtectionSnapshot(),
     };
   }
 }
