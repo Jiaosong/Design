@@ -1,10 +1,6 @@
 name: OLEANDER Automotive v0.11 HP Rebaseline A-B
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.11/compare_v011_r25_r28a_hp.py'
-      - '.github/workflows/oleander-automotive-v0-11-hp-rebaseline.yml'
   workflow_dispatch:
 
 permissions:
