@@ -1,0 +1,55 @@
+{
+  "schema": "oleander.reference-product-d3-binding.v1",
+  "date": "2026-08-12",
+  "lab": "2026-08-12｜IP03｜CMF Reference Product｜Product Geometry × Material Binding Validation",
+  "model": "OLEANDER_CMF_Reference_Product_v0.1",
+  "authority_state": "CANDIDATE_AUTHORITY",
+  "source_run": 31549292487,
+  "source_job": 93968262669,
+  "source_artifact": 9123645565,
+  "source_artifact_sha256": "09c8d1957421906774fd0d255913c2324109115a5fc3029bc053ae8f7a004b82",
+  "global_preset_state": "D2 DESIGN_CALIBRATED",
+  "binding_scope": "REFERENCE_PRODUCT_ONLY",
+  "bindings": [
+    {
+      "role": "PP Housing",
+      "objects": ["OL_REF_PP_Housing_Lower", "OL_REF_PP_Housing_Lid", "OL_REF_PP_FrameAnchor_L", "OL_REF_PP_FrameAnchor_R"],
+      "parameter_preset": "PAR-SIM-PP-FINE-MATTE-001",
+      "product_state": "D3 PROJECT_LOCKED_VISUAL_PROFILE",
+      "decision": "PASS"
+    },
+    {
+      "role": "PU Contact",
+      "objects": ["OL_REF_PU_Contact_Pad", "OL_REF_PU_Front_Grip"],
+      "parameter_preset": "PAR-SIM-PU-SOFT-MATTE-001",
+      "product_state": "D3 PROJECT_LOCKED_VISUAL_PROFILE",
+      "decision": "PASS"
+    },
+    {
+      "role": "Powder-Coated U-Frame",
+      "objects": ["OL_REF_PowderCoated_U_Frame"],
+      "parameter_preset": "PAR-SIM-POWDER-FINE-MATTE-001",
+      "product_state": "D3 PROJECT_LOCKED_VISUAL_PROFILE",
+      "decision": "PASS"
+    },
+    {
+      "role": "Brushed/Anodized Knob",
+      "objects": ["OL_REF_Anodized_Al_Knob", "OL_REF_Knob_Index"],
+      "parameter_preset": "PAR-SIM-AL-BRUSHED-ANODIZED-001",
+      "product_state": "D3 PROJECT_LOCKED_VISUAL_PROFILE",
+      "decision": "PASS"
+    },
+    {
+      "role": "Milky Diffuser",
+      "objects": ["OL_REF_Milky_Diffuser"],
+      "parameter_preset": "PAR-SIM-DIFFUSER-MILKY-001",
+      "product_state": "D3 PROJECT_LOCKED_VISUAL_PROFILE",
+      "decision": "PASS_WITH_CONTEXT_LOCK",
+      "note": "Product-context internal-light behavior is locked here; the generic D2 preset is not globally altered."
+    }
+  ],
+  "machine_qa": "PASS",
+  "visual_qa": "PASS",
+  "promotion": "WORKING_SOURCE → CANDIDATE_AUTHORITY",
+  "reality_boundary": "Designer visual benchmark only; not engineering CAD, physical measurement, supplier selection or manufacturing validation."
+}

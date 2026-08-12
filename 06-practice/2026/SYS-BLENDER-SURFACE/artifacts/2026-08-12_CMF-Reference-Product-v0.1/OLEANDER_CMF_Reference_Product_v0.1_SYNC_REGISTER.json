@@ -1,0 +1,55 @@
+{
+  "schema": "oleander.reference-product.sync.v1",
+  "date": "2026-08-12",
+  "model": "OLEANDER_CMF_Reference_Product_v0.1",
+  "project_identity": {
+    "p2": "SYS-BLENDER-SURFACE",
+    "node_ownership": ["IP03"],
+    "node_codes_are_project_ids": false,
+    "artifact_role": "REFERENCE_PRODUCT_D3_BINDING_VALIDATION"
+  },
+  "status": "F1 PASS / CANDIDATE_AUTHORITY / PRODUCT-SCOPED D3 / THREE-SYSTEM-SYNCED / PERSISTENCE-PASS / REVIEW",
+  "github": {
+    "repository": "Jiaosong/Design",
+    "draft_pr": 71,
+    "current_base": "repair/practice-business-ip-project-axis-20260812",
+    "head": "agent/blender-surface-system-v1-20-product-reference",
+    "canonical_v1_20_source_pr": 70,
+    "canonical_v1_20_artifact": 9111557209,
+    "canonical_v1_20_artifact_sha256": "e213f9225a7a7e1cf7c38ca7c959935844f0b1a789dc61e467cf6cf9126bde69",
+    "historical_reference_product_run": 31549292487,
+    "historical_reference_product_job": 93968262669,
+    "historical_reference_product_artifact": 9123645565,
+    "historical_reference_product_artifact_sha256": "09c8d1957421906774fd0d255913c2324109115a5fc3029bc053ae8f7a004b82",
+    "merged": false,
+    "routing_note": "Historical run evidence remains valid provenance. Rebuilt current workflow consumes merged PR #70 canonical v1.20 artifact and current canonical paths."
+  },
+  "notion": {
+    "canonical_practice_page_id": "3b9b86be-5c47-81df-b014-e904e06fd1af",
+    "p2_project_id": "3bab86be-5c47-8194-9361-f389b3ec102d",
+    "section": "Reference Product Gate｜2026-08-12｜v1.20.0",
+    "updated": true
+  },
+  "google_drive": {
+    "v1_20_parent_id": "15e5u1IOu2TRv1X-Kqj8E4oA-9-7506or",
+    "reference_product_folder_id": "1dhLCu_XgwIRhFP_1ljmYLXn8lfukhSP7",
+    "review_zip_id": "1V-MctLEDZ7jEnJk5KWz49lQxQJOGafyr",
+    "blend_id": "1Bd6EWjbK7zCV88MTNCvc4ctjHl8g6Vqv",
+    "contact_sheet_id": "1BWtxsZal7jzD-nh2Rkn1Bza1ll_K7w1J",
+    "post_review_id": "1zKk9-OAGGXsho0B_mnwrLzG_WiG47kEk",
+    "d3_binding_register_id": "19F6YP3dHBJJA5fRA4MDqBdaRsJxPhZ-c",
+    "sync_register_id": "1KnvUAC5xidb7CLK_EqaH5rl_o2LTEvYr",
+    "review_zip_bytes": 3064303,
+    "review_zip_sha256_after_redownload": "7766ca8aadf7fee0628c71649b9f312e32302da145cd0ac3a839ea761d2d44c4",
+    "zip_integrity": "PASS"
+  },
+  "product_gate": {
+    "bounds_mm": [140.0, 102.5, 121.361],
+    "machine_qa": "PASS",
+    "visual_qa": "PASS",
+    "authority": "CANDIDATE_AUTHORITY",
+    "global_presets": "remain D2",
+    "product_scoped_bindings": "5 × D3 PROJECT_LOCKED_VISUAL_PROFILE"
+  },
+  "reality_boundary": "Designer benchmark/reference product only. Not engineering CAD, physical material measurement, supplier choice or production validation."
+}
