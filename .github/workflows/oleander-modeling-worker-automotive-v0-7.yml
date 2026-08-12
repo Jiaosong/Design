@@ -1,0 +1,100 @@
+name: OLEANDER Modeling Worker Automotive v0.7 F1
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/**'
+      - '06-practice/2026/SYS-MODELING-WORKER/**'
+      - '.github/workflows/oleander-modeling-worker-automotive-v0-7.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  automotive-f1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2 / Node 24
+        with:
+          fetch-depth: 1
+
+      - name: Resolve immutable historical revision chain and validate current v0.7 source
+        run: |
+          set -euo pipefail
+          # v0.2–v0.6 are immutable historical provenance. Their old tools/ paths are
+          # read by exact commit SHA only and are not current repository routing.
+          git fetch --depth=1 origin c1b5b593024c96901f54f9bfd2235a3d37cf7883
+          git show FETCH_HEAD:tools/oleander-automotive/v0.2/build_automotive_reference_vehicle.py.gz.b64 | base64 -d | gzip -d > /tmp/build_auto_v02.py
+          git fetch --depth=1 origin dbcace4001d6598dbfd52aa04f04237a0d377a15
+          git show FETCH_HEAD:tools/oleander-automotive/v0.4/patch_automotive_reference_vehicle.py > /tmp/patch_auto_v04.py
+          git fetch --depth=1 origin dd0a1dd65f0868dbb5c5f36bc47d7a8d7f3c2a0d
+          git show FETCH_HEAD:tools/oleander-automotive/v0.5/apply_automotive_v0_5.py > /tmp/apply_auto_v05.py
+          git fetch --depth=1 origin e1312de928288a0da2b9c7dc65c44aaa34965cda
+          git show FETCH_HEAD:tools/oleander-automotive/v0.6/apply_automotive_v0_6.py > /tmp/apply_auto_v06.py
+          python3 -m py_compile /tmp/build_auto_v02.py /tmp/patch_auto_v04.py /tmp/apply_auto_v05.py /tmp/apply_auto_v06.py 90-shared/toolchains/modeling-worker/automotive/v0.7/apply_automotive_v0_7.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build v0.2 base
+        run: |
+          set -euo pipefail
+          O="$RUNNER_TEMP/v02"; mkdir -p "$O"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_auto_v02.py -- --out "$O" --samples 1 --resolution 200
+
+      - name: Materialize v0.5 locked lower-body source
+        run: |
+          set -euo pipefail
+          B="$RUNNER_TEMP/v02/OLEANDER_Automotive_Reference_Vehicle_v0.2.blend"; O="$RUNNER_TEMP/v05"; mkdir -p "$O"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$B" --python-exit-code 5 --python /tmp/apply_auto_v05.py -- --v04-source /tmp/patch_auto_v04.py --out "$O" --samples 1 --resolution 200
+
+      - name: Materialize v0.6 glazing/pillar source
+        run: |
+          set -euo pipefail
+          B="$RUNNER_TEMP/v05/OLEANDER_Automotive_Reference_Vehicle_v0.5.blend"; O="$RUNNER_TEMP/v06"; mkdir -p "$O"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$B" --python-exit-code 5 --python /tmp/apply_auto_v06.py -- --v04-source /tmp/patch_auto_v04.py --out "$O" --samples 1 --resolution 200
+
+      - name: Apply v0.7 roof-envelope correction and render F1
+        run: |
+          set -euo pipefail
+          B="$RUNNER_TEMP/v06/OLEANDER_Automotive_Reference_Vehicle_v0.6.blend"; OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Reference_Vehicle_v0.7"; mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background "$B" --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/automotive/v0.7/apply_automotive_v0_7.py -- --v04-source /tmp/patch_auto_v04.py --out "$OUT" --samples 8 --resolution 720
+          END=$(date +%s); echo $((END-START)) > "$OUT/RENDER_SECONDS.txt"
+          echo 'V0.5 LOWER BODY/WHEELS LOCKED + V0.6 GLAZING/PILLARS LOCKED -> V0.7 ROOF CANOPY ENVELOPE ONLY' > "$OUT/REVISION_CHAIN.txt"
+
+      - name: Validate v0.7 machine gate
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Reference_Vehicle_v0.7"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_Reference_Vehicle_v0.7')
+          r=json.loads((out/'AUTOMOTIVE_RECEIPT.json').read_text())
+          q=json.loads((out/'AUTOMOTIVE_QA.json').read_text())
+          assert r['status']=='EXECUTED_QA_PASS',r
+          assert q['status']=='PASS',q
+          assert len(list((out/'renders').glob('*.png')))==8
+          assert (out/'OLEANDER_Automotive_Reference_Vehicle_v0.7.blend').exists()
+          print('AUTOMOTIVE V0.7 MACHINE GATE PASS')
+          PY
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+
+      - name: Upload automotive v0.7 F1 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0 / Node 24
+        with:
+          name: oleander-modeling-worker-automotive-v0-7-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Reference_Vehicle_v0.7/
+          if-no-files-found: error
+          retention-days: 14
