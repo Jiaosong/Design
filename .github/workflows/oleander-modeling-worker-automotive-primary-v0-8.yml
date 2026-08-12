@@ -24,11 +24,12 @@ jobs:
       - name: Reconstruct and validate v0.8 sources
         run: |
           set -euo pipefail
+          PATCH='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r02.py'
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/build_automotive_primary_v0_8.py.gz.b64 | gzip -d > /tmp/build_auto_primary_v08.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r02.py /tmp/apply_auto_primary_v08_r02.py
+          test "$(git hash-object "$PATCH")" = "75f2617346107e54f2d7bd0c4f89bfa05d306230"
+          cp "$PATCH" /tmp/apply_auto_primary_v08_r02.py
           python3 -m py_compile /tmp/build_auto_primary_v08.py /tmp/apply_auto_primary_v08_r02.py
           test "$(sha256sum /tmp/build_auto_primary_v08.py | awk '{print $1}')" = "5cee2b54e7998b34bdd5d7ea4a029624888ae2bdfd0c08841deaffb3686425f5"
-          test "$(sha256sum /tmp/apply_auto_primary_v08_r02.py | awk '{print $1}')" = "92d1b285c145b0e44f186589c0098cc020df0088d61172aaae71b77f001c67c1"
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -48,7 +49,6 @@ jobs:
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_auto_primary_v08.py -- --out "$BASE" --samples 1 --resolution 160
           RC=$?
           set -e
-          # R01 is expected to return 5 because its height QA used bbox span instead of ground datum.
           test "$RC" -eq 5
           test -f "$BASE/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
           test -f "$BASE/AUTOMOTIVE_PRIMARY_QA.json"
