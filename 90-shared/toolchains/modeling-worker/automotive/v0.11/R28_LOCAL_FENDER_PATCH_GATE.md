@@ -1,65 +1,97 @@
 # Automotive v0.11｜R28 Local Fender Patch Architecture Gate
 
-Status: `INITIALIZED / M4 REOPENED LOCALLY / M6-M8 BLOCKED`
+Status: `CLOSED / MACHINE PASS / HUMAN M5 REVISE / SUPERSEDED_AS_SOURCE / AUDIT_ONLY`
 
-## Evidence trigger
+## Why R28 was opened
 
-R27A–R27E established that a circumferential wheel-opening principle is preferable to the earlier longitudinal-strip approximation, but every attempt to attach that new ring system directly into the inherited row4–row7 lower-body cage failed Human M5 in a different way:
+R27A–R27E showed that direct circumferential-ring attachment into the inherited row4–row7 cage produced overshoot, hard exits, transition teeth or radial collar pinching. R28 therefore reopened the complete local fender window:
 
-- R27A: radial overshoot / floating bridge;
-- R27B: hard common-endpoint exits;
-- R27C: tangential fan still retained the common attachment wall;
-- R27D: staggered stations were structurally clearer but transition triangles became visible teeth;
-- R27E: all-quad collars removed wheel-zone triangles but converted the same local conflict into radial highlight pinching / curvature teeth.
+`wheel opening + fender crown + shoulder + mid-body + rocker transition`
 
-Therefore the remaining defect is no longer scoped as `wheel-arch attachment`. The local M4 reopening expands to:
+as one local Primary patch.
 
-`wheel opening + fender crown + shoulder transition + mid-body transition + rocker transition`
+## Executed R28 chain
 
-as one Primary patch architecture.
+### R28A｜Local U-boundary → polar wheel-opening patch
+- 6 radial layers;
+- outer U boundary reused locked body-cage anchors;
+- one Source island, 4 triangles, 0 n-gons;
+- Machine M5 PASS;
+- Human M5 REVISE: direct attachment seam was reduced, but the patch remained folded/faceted and wheel evidence still looked inconsistent.
 
-## Locked outside the R28 influence window
+### Package diagnosis
+A dedicated wheel-envelope audit found that the visible wheel asset implementation had an anisotropic X/Z envelope of approximately `0.71 × 1.0792 m` instead of the locked `0.70 m` wheel OD. The current R09 runtime wheel centers are retained at approximately:
+- front x = `1.465 m`;
+- rear x = `-1.355 m`;
+- y = `±0.795 m`;
+- z = `0.350 m`.
 
-- R09 wheelbase / track / wheel OD / cabin package;
-- R11 transverse section intent outside local fender windows;
-- R12 longitudinal interpolation outside local fender windows;
-- R18/R20 front/rear termination system;
-- R25 wheel-opening proportion target as a starting target, not a mandatory final curve;
-- global roof / greenhouse / center body package.
+The wheel implementation defect is deterministic package/display geometry, not a body design variable.
 
-## R28 construction requirements
+### R28B｜Package-constrained inset crown
+- visible wheel X/Z OD normalized to 0.70 m;
+- R28A topology retained;
+- inner crown changed from shoulder +26 mm to shoulder −18 mm;
+- package lateral clearance ≈30 mm at axle center;
+- Machine M5 PASS;
+- Human M5 still showed folded/ridged local surface.
 
-1. Rebuild each front/rear fender zone as a single local Source patch, not an inserted ring with attachment cells.
-2. The patch must include the complete shoulder-to-rocker transition around the wheel opening.
-3. Inner wheel opening and outer body boundary must be solved together in the same parameterization.
-4. Influence must decay to the locked body cage before leaving the local window.
-5. One editable Source authority remains mandatory.
-6. No detached wheel-brow authority.
-7. Source Boolean = forbidden as the modeling-quality solution.
-8. Global SubD = forbidden as the modeling-quality solution.
-9. Source n-gon = 0.
-10. Any unavoidable extraordinary vertices / controlled triangles must be explicitly counted and visually audited under Strip/Grazing.
+### R28C｜Zero-bulge radial patch
+- R28B package/crown relation retained;
+- R28A artificial intermediate radial bulge removed;
+- Machine M5 PASS;
+- Human M5 REVISE: Strip/Grazing and Hero views still show repeated comb-like/radial folds; arch lips remain hard and patch-like.
 
-## R28A decision question
+## Hard-point-correct A/B rebaseline
 
-Can a local polar-to-body fender patch, with the complete shoulder-to-rocker region included inside the same deformation field, remove the R27 attachment seam/pinching while retaining the accepted package and R25 wheel-opening scale?
+R25 and R28A were then rendered source-locked with the same corrected wheel package and identical 9-view evidence:
+- X/Z wheel OD = `0.700 m`;
+- FL/RL on `+Y`, FR/RR on `−Y`;
+- wheel centers = current runtime hard points;
+- Y tire thickness retained;
+- far-wheel / open-cavity ambiguity isolated with derived-only wheelhouse evidence.
 
-## Validation matrix
+Both candidates Machine PASS.
 
-Machine:
-- one Source island;
-- no n-gon;
-- no Boolean / global SubD;
-- local influence bounded to front/rear fender windows;
-- stable source hash during diagnostics;
-- 9 renders.
+Human A/B decision:
 
-Human M5:
-- wheel opening wraps tire coherently in Side and 3/4;
-- no visible attachment seam, teeth, radial collar pinching or vertical strip wall;
-- fender crown grows from shoulder/body volume rather than reading as a cap;
-- front/rear arch detail has controlled curvature;
-- Strip and Grazing highlights cross the patch without severe kinks;
-- package / cabin / body proportion remains unchanged outside local windows.
+**R25 is materially stronger than R28A/R28C as the working Source baseline.**
 
-No M6/M7/M8 continuation until Human M5 PASS.
+R25 retains:
+- cleaner side silhouette;
+- cleaner broad/strip/grazing surface flow;
+- less radial/faceted local fender distortion;
+- simpler and more legible source construction.
+
+R25 still does **not** pass Human M5. Remaining defects are smaller and better scoped:
+- cap-like front/rear fender crown;
+- hood–fender–shoulder pinching / local crown isolation;
+- local wheel-opening endpoint cleanup.
+
+## R28 decision
+
+R28A/B/C are retained as **AUDIT_ONLY / SUPERSEDED_AS_SOURCE**. They are not deleted and remain valid evidence for the Modeling Worker method, especially the lesson that broader topology freedom does not justify a more complex Source if hard-point evidence was wrong upstream.
+
+Current working baseline is:
+
+`R25 Source geometry + wheel_hp_contract.py`
+
+R25 Source hash is locked to:
+
+`6ae67c33aafb6da9f64359784e0cabb4fe9fb36b5bf62b91e49a0fa5348b9adf`
+
+## Required next gate
+
+`R29｜Local Fender Crown Integration`
+
+R29 must reopen a **smaller** dependency than R27/R28:
+- wheel-opening proportions remain R25 unless direct evidence requires change;
+- current corrected wheel package remains locked;
+- non-wheel R11/R12 body source remains locked;
+- only the local crown / hood–fender–shoulder relation may move initially;
+- no ring-insert architecture;
+- no broad shoulder-to-rocker patch rewrite;
+- no Boolean / global SubD / n-gon concealment;
+- same M5 visual matrix required.
+
+`M6/M7/M8 remain BLOCKED` until Human M5 PASS.
