@@ -1,10 +1,6 @@
 name: OLEANDER Automotive v0.11 Wheel Envelope
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.11/inspect_v011_wheel_envelope.py'
-      - '.github/workflows/oleander-automotive-v0-11-wheel-envelope.yml'
   workflow_dispatch:
 
 permissions:
