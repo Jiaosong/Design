@@ -3,10 +3,13 @@
 
 No Source geometry, topology, region assignment, dependency graph or selective-rebuild
 rule changes. Adds one derived-only underside view so REG-UNDERBODY-CENTER can receive
-Human M6 review without ground-plane occlusion.
+Human M6 review without ground-plane occlusion, then updates only the diagnostic-view
+count gate from the original 3-view matrix to the expanded 4-view matrix.
 """
 from __future__ import annotations
 import importlib.util
+import json
+from pathlib import Path
 import bpy
 
 
@@ -39,8 +42,6 @@ def render_component_views(out,samples,res,M,source,diag):
         ('M6_COMPONENT_SIDE',(0,-8.8,1.14),(0,0,.64),85,True,5.25,'BROAD',False),
         ('M6_COMPONENT_FRONT_3Q',(6.2,-7.0,2.75),(.05,0,.66),78,False,5.0,'BROAD',False),
         ('M6_COMPONENT_REAR_3Q',(-6.0,6.8,2.65),(-.10,0,.66),78,False,5.0,'BROAD',False),
-        # Diagnostic-only view: ground hidden and world raised so the cross-center
-        # underbody routing strip is visible. This camera has no design authority.
         ('M6_COMPONENT_UNDERSIDE_3Q',(4.2,-5.2,-2.65),(0,0,.28),72,False,5.0,'BROAD',True),
     ]
     records=[]
@@ -48,10 +49,7 @@ def render_component_views(out,samples,res,M,source,diag):
         m6.b.setrig(L,rig)
         for g in ground_objs:
             g.hide_render=underside
-        if underside:
-            m6.b.world((.08,.08,.08),.55)
-        else:
-            m6.b.world((.018,.018,.018),.18)
+        m6.b.world((.08,.08,.08),.55) if underside else m6.b.world((.018,.018,.018),.18)
         cam=m6.b.camera('CAM_'+label,loc,target,lens,ortho,scale)
         bpy.context.scene.camera=cam
         p=rd/f'{m6.MODEL}__{label}.png'
@@ -66,5 +64,45 @@ def render_component_views(out,samples,res,M,source,diag):
 
 m6.render_component_views=render_component_views
 
+
+def patch_four_view_gate(out:Path):
+    qp=out/'M6_COMPONENT_QA.json'
+    rp=out/'M6_RECEIPT.json'
+    ap=out/'M6_COMPONENT_ARCHITECTURE.json'
+    q=json.loads(qp.read_text())
+    renders=q.get('renders',[])
+    underside=[v for v in renders if v.get('view')=='M6_COMPONENT_UNDERSIDE_3Q']
+    valid_four=(len(renders)==4 and len(underside)==1 and underside[0].get('ground_hidden') is True)
+    q['checks']['diagnostic_render_matrix']=valid_four
+    q['checks']['underbody_diagnostic_present']=valid_four
+    q['human_review_required']=[
+        'region boundary plausibility',
+        'occlusion/visibility including underbody center',
+        'scale/proportion',
+        'cropping/framing',
+        'routing-mask-not-design-seam interpretation',
+    ]
+    q['status']='MACHINE_PASS_HUMAN_M6_REVIEW_REQUIRED' if all(q['checks'].values()) else 'MACHINE_FAIL'
+    qp.write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
+
+    r=json.loads(rp.read_text())
+    r['status']='EXECUTED_'+q['status']
+    rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+
+    a=json.loads(ap.read_text())
+    a['status']=q['status']
+    a['diagnostic_matrix']='SIDE + FRONT_3Q + REAR_3Q + UNDERSIDE_3Q'
+    ap.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n')
+    return q
+
+
 if __name__=='__main__':
-    m6.main()
+    code=0
+    try:
+        m6.main()
+    except SystemExit as e:
+        code=int(e.code or 0)
+    a=m6.b.parse()
+    out=Path(a.out).resolve()
+    q=patch_four_view_gate(out)
+    raise SystemExit(0 if q['status']=='MACHINE_PASS_HUMAN_M6_REVIEW_REQUIRED' else (code or 5))
