@@ -55,8 +55,8 @@ async function main() {
     if (!asset?.sourceUrl || !asset?.sha256 || !asset?.materializedFile) {
       throw new Error(`visual media manifest asset is incomplete: ${JSON.stringify(asset)}`);
     }
-    if (asset.usageGate !== 'RESEARCH_PROTOTYPE_ONLY' && asset.rightsGate !== 'PASS_PROJECT_USE_APPROVED') {
-      throw new Error(`visual media asset is not approved for materialization: ${asset.assetId}`);
+    if (asset.usageGate !== 'RESEARCH_PROTOTYPE_ONLY' || asset.rightsGate !== 'PASS_PROJECT_USE_APPROVED') {
+      throw new Error(`visual media asset is not approved for research materialization: ${asset.assetId}`);
     }
     const response = await fetch(asset.sourceUrl, {
       headers: { 'user-agent': 'OLEANDER-C04-Media-Materializer/0.1' },
