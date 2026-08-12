@@ -50,7 +50,7 @@ jobs:
           for n in 16 17 18 20 22; do base64 -d "90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r${n}.py.gz.b64" | gzip -d > "/tmp/revise_v011_r${n}.py"; done
           python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r20.py /tmp/revise_v011_r22.py
           test "$(sha256sum /tmp/revise_v011_r20.py | awk '{print $1}')" = "76fb216f4c8ccbb41d1d6b94a2995486b87769abc1ce1e78f986a7538b74afae"
-          test "$(sha256sum /tmp/revise_v011_r22.py | awk '{print $1}')" = "3ab0584de1121aa3e09ffcbb7346d8f2fa27bf04f859526171a6d109cc7a2777"
+          test "$(sha256sum /tmp/revise_v011_r22.py | awk '{print $1}')" = "366f9fba073f111ecb0da48abd5c2f292cbfa901c4d46f75ef0dbb17c49f5778"
           git rev-parse HEAD > /tmp/R22_SOURCE_COMMIT.txt
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -67,7 +67,7 @@ jobs:
           mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r22.py -- --out "$OUT" --samples 8 --resolution 640
           cp /tmp/R22_SOURCE_COMMIT.txt "$OUT/R22_SOURCE_COMMIT.txt"
-          echo 'R22: only wheel-zone coordinate law changed to cosine-squared nested arch; R20 termination/non-wheel geometry locked' > "$OUT/REVISION_CHAIN.txt"
+          echo 'R22 patch: x-station sampling remains locked to R20/R17 0.535 m; only actual arch deformation uses 0.475 m cosine-squared law' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
       - name: R22 Machine Gate
