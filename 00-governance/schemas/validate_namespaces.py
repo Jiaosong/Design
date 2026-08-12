@@ -39,10 +39,16 @@ def require_text(path, terms):
 def main():
     try:
         naming = require_text(NAMING, [
-            "C01", "C02", "C03", "CLM-[Scope]-[NNN]",
-            "CLM-C01-001", "bare `Cnn`", "migration failure",
+            "C01", "C02", "C03", "C04", "CLM-[Scope]-[NNN]",
+            "CLM-C01-001", "CLM-C04-001", "bare `Cnn`", "migration failure",
+            "Project axis namespace", "Application Mapping namespace",
+            "Priority-0", "Domain / exact L0–L7 level",
         ])
-        require_text(CASE_MAP, ["C01 / 一脉广渡", "C02 / 忘也 Daylily", "C03 / The Light Collection", "CLM-C01-NNN"])
+        require_text(CASE_MAP, [
+            "C01 / 一脉广渡", "C02 / 忘也 Daylily", "C03 / The Light Collection",
+            "C04 / 清江石书", "CLM-C01-NNN", "CLM-C04-NNN",
+            "Case Axis root IDs only", "Application Mapping",
+        ])
         require_text(AUTHORITY, [
             "SUPERSEDED MACHINE SCHEMA", "HISTORICAL ERROR", "RESOLVED HISTORICAL FAILURE",
             "CASE_GD_Public_Claim_Matrix.csv", "CLM-C01-001", "CLM-C01-005",
@@ -52,6 +58,9 @@ def main():
             for line in naming.splitlines():
                 if re.search(r"Claim(?: ID)?[^\n]*\bC\d{2}\b", line, re.IGNORECASE) and not any(k in line.lower() for k in ("histor", "legacy", "must not", "invalid")):
                     fail(f"unqualified bare case ID appears in Claim context: {line}")
+
+        if "Cnn` is reserved" not in naming and "Cnn` values MUST NOT be used as Project IDs" not in naming:
+            fail("naming authority must explicitly prevent bare Cnn from becoming a Project ID")
 
         claim_schema = load_json(CLAIM_SCHEMA)
         claim_encoded = json.dumps(claim_schema, ensure_ascii=False)
@@ -85,7 +94,10 @@ def main():
         return 1
 
     print("OLEANDER NAMESPACE GOVERNANCE: PASS")
-    print("- case roots locked: C01 / C02 / C03")
+    print("- case roots locked: C01 / C02 / C03 / C04")
+    print("- bare Cnn cannot substitute for Project ID")
+    print("- Application Mapping separated from Domain/L0-L7 and Project Axis")
+    print("- delivery priority uses Priority-* namespace")
     print("- claim namespace locked: CLM-[Scope]-[NNN]")
     print("- legacy P01 / CASE-GD authority explicitly superseded")
     print("- canonical C01 schema/template validated")
