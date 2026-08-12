@@ -1,11 +1,12 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "architecture_baseline": {
     "source_pr": 66,
     "source_head": "1c742a5c6978d935b063afd713b27d30930e754e",
     "project_axis": ["P0 Portfolio", "P1 Program", "P2 Project", "P3 Workstream", "P4 Validation"],
     "spatial_nodes_are_project_ids": false,
-    "runtime_axis": ["Design Intelligence", "Execution Runtime", "Evidence & Governance"]
+    "runtime_axis": ["Design Intelligence", "Execution Runtime", "Evidence & Governance"],
+    "delivery_priority_namespace": ["Priority-0", "Priority-1", "Priority-2", "Priority-3"]
   },
   "project": {
     "id": "PRAC-SPATIAL-2026",
@@ -91,16 +92,20 @@
     },
     {
       "id": "PRAC-SPATIAL-2026-VAL-04",
+      "current_label": "SP04 R08J.1 Priority-0 Evidence Closure",
       "legacy_lineage": "SP04 R08J.1 P0 Evidence Closure",
+      "legacy_priority_label": "P0",
       "state": "ARCHIVED",
       "notion_id": "3b9b86be-5c47-81d8-84a5-cc733827df20",
-      "evidence_l7": "PRAC-20260810-01"
+      "evidence_l7": "PRAC-20260810-01",
+      "truth": "Evidence Acquisition route/method/request closure complete; Project Technical Gates RG-01—RG-04 OPEN; Project Issue BLOCKED"
     }
   ],
   "historical_lineage_policy": {
     "move_or_rename_old_artifacts": false,
     "old_sp_paths_define_project_hierarchy": false,
     "old_reruns": "VERSION / FAILURE HISTORY ONLY",
+    "legacy_p0_priority_label": "IMMUTABLE_ARTIFACT_PROVENANCE_ONLY",
     "evidence_status_inheritance": "DENY"
   }
 }

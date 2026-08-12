@@ -11,6 +11,7 @@ This index follows the revised OLEANDER dual-axis architecture:
 - `SP01–SP04` are **not project IDs**.
 - Practice knowledge outputs remain L7 Practice / Output objects in the knowledge system.
 - Runtime state remains separate: `Design Intelligence → Execution Runtime → Evidence & Governance`.
+- Delivery/evidence priority uses `Priority-0 / Priority-1 / Priority-2 / Priority-3`; bare `P0/P1/P2/P3` is reserved for project-axis levels when used in current authority.
 
 Parent Program: `PG-30｜Cases & Practice`.
 
@@ -27,12 +28,14 @@ P2 Project: `PRAC-SPATIAL-2026`.
 
 ## P4 Validations
 
-| Validation ID | Existing lineage | Result boundary |
+| Validation ID | Current label / lineage | Result boundary |
 |---|---|---|
 | `PRAC-SPATIAL-2026-VAL-01` | `SP01-R02｜GIS Reality Gate` | Software Reality closed; project reality not promoted |
 | `PRAC-SPATIAL-2026-VAL-02` | `SP02-R03｜Runtime Closure` | Handoff artifact PASS; CP2 / CP4 OPEN |
 | `PRAC-SPATIAL-2026-VAL-03` | `SP03-R02｜Light Performance Interface` | Synthetic test-cell performance interface verified; project inputs OPEN |
-| `PRAC-SPATIAL-2026-VAL-04` | `SP04 R08J.1｜P0 Evidence Closure` | Evidence acquisition route/method/request closure complete; RG-01—RG-04 OPEN |
+| `PRAC-SPATIAL-2026-VAL-04` | `SP04 R08J.1｜Priority-0 Evidence Closure` | Evidence acquisition route/method/request closure complete; RG-01—RG-04 OPEN |
+
+**Legacy naming boundary:** historical R08J.1 files, package names and audit text may retain `P0 Evidence Closure`. That string is immutable provenance only. Current priority naming is `Priority-0 Evidence Closure`; `P0` itself is reserved for Portfolio level in the project axis.
 
 ## No-loss rule
 
@@ -56,5 +59,6 @@ If none exists: `STOP / PRESERVE OPEN`.
 - WS-02: `3b9b86be-5c47-8196-bdfb-db2b19569895`
 - WS-03: `3b9b86be-5c47-8169-b1a2-cfa94f110b90`
 - WS-04: `3b9b86be-5c47-819b-8aab-e8b79dddea13`
+- VAL-04: `3b9b86be-5c47-81d8-84a5-cc733827df20`
 
 This index is deliberately thin. Full narrative bodies remain in their original Notion practice pages and are not duplicated here.
