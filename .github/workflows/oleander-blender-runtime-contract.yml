@@ -35,24 +35,25 @@ jobs:
           bash -n tools/oleander-runtime/blender.sh
           python3 tests/oleander-blender-runtime-contract.py
 
-  automotive-r22-wheel-arch:
+  automotive-r23-wheelhouse-diagnostic:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 1
-      - name: Stage R05 and R07-R22 dependency chain
+      - name: Stage R05 and R07-R23 dependency chain
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
           for n in 07 08 09 10 11 12 14 15; do cp "90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r${n}.py" "/tmp/revise_v011_r${n}.py"; done
           for n in 16 17 18 20; do base64 -d "90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r${n}.py.gz.b64" | gzip -d > "/tmp/revise_v011_r${n}.py"; done
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r22.py /tmp/revise_v011_r22.py
-          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r20.py /tmp/revise_v011_r22.py
-          test "$(sha256sum /tmp/revise_v011_r20.py | awk '{print $1}')" = "76fb216f4c8ccbb41d1d6b94a2995486b87769abc1ce1e78f986a7538b74afae"
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r23.py /tmp/revise_v011_r23.py
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py /tmp/revise_v011_r16.py /tmp/revise_v011_r17.py /tmp/revise_v011_r18.py /tmp/revise_v011_r20.py /tmp/revise_v011_r22.py /tmp/revise_v011_r23.py
           test "$(sha256sum /tmp/revise_v011_r22.py | awk '{print $1}')" = "366f9fba073f111ecb0da48abd5c2f292cbfa901c4d46f75ef0dbb17c49f5778"
-          git rev-parse HEAD > /tmp/R22_SOURCE_COMMIT.txt
+          test "$(sha256sum /tmp/revise_v011_r23.py | awk '{print $1}')" = "10bf1b976c7ad62103ccd1ba90ec2b530b2375ea80f3352f316a205893c8b741"
+          git rev-parse HEAD > /tmp/R23_SOURCE_COMMIT.txt
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
@@ -61,17 +62,17 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build R22 C1 wheel arch
+      - name: Build R23 wheelhouse diagnostic isolation
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r22.py -- --out "$OUT" --samples 8 --resolution 640
-          cp /tmp/R22_SOURCE_COMMIT.txt "$OUT/R22_SOURCE_COMMIT.txt"
-          echo 'R22 patch: x-station sampling remains locked to R20/R17 0.535 m; only actual arch deformation uses 0.475 m cosine-squared law' > "$OUT/REVISION_CHAIN.txt"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r23.py -- --out "$OUT" --samples 8 --resolution 640
+          cp /tmp/R23_SOURCE_COMMIT.txt "$OUT/R23_SOURCE_COMMIT.txt"
+          echo 'R23: R22 Source fully locked; derived wheelhouse liners + near-side wheel isolation only; distinguishes source arch from open-cavity diagnostic artifacts' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
-      - name: R22 Machine Gate
+      - name: R23 Machine Gate
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -82,16 +83,16 @@ jobs:
           r=json.loads((out/'AUTOMOTIVE_V011_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED',q
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED',r
-          for k in ['topology_membership_unchanged','changed_vertices_positive','outside_wheel_zone_changed_zero','source_island_count_one','source_ngon_zero','termination_triangles_four','termination_faces_winding_repaired','source_no_boolean','source_no_subd','render_matrix']:
+          for k in ['source_shape_hash_locked','source_topology_hash_locked','wheelhouse_count_four','termination_winding_repair_retained','source_no_boolean','source_no_subd','render_matrix']:
               assert q['checks'][k] is True,(k,q)
-          assert len(list((out/'renders').glob('*.png')))==9
-          print('AUTOMOTIVE v0.11 R22 C1 ARCH MACHINE GATE PASS')
+          assert len(list((out/'renders').glob('*.png')))==6
+          print('AUTOMOTIVE v0.11 R23 WHEELHOUSE DIAGNOSTIC MACHINE GATE PASS')
           PY
-      - name: Upload R22 evidence
+      - name: Upload R23 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
-          name: oleander-automotive-v0-11-r22-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r23-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
