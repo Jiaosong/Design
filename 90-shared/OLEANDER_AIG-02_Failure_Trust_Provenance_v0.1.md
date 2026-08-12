@@ -36,10 +36,12 @@ AI cannot close F2/F3 escalation gates on itself.
 - `F2 DOMAIN-EXPERT`: safety, regulation, professional or cultural-rights issue; freeze conclusion.
 - `F3 STOP-HOLD`: authority, rights, responsibility or tool state is unresolved; stop AI/publication path.
 
+`F0–F3` is the AIG-02 escalation namespace. It is not Knowledge Architecture `L0–L7`, Project Axis `P0–P4`, or Fidelity `FID0–FID3`.
+
 ### Mandatory escalation
 - Same blocker repeats twice: at least F1.
 - AI conflicts with a canonical source and cannot explain the conflict: F1.
-- D4 cultural/rights or D5 safety-critical data: at least F2.
+- Cultural/rights-sensitive evidence or safety-critical data: at least F2.
 - Unauthorised personal/client data, unknown publication rights, or repeated fabrication of unknowns: F3.
 - Tool state is unknown and the action may be irreversible: F3.
 
