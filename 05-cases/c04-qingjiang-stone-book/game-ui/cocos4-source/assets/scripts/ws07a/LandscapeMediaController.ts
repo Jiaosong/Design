@@ -1,5 +1,6 @@
 import {
   _decorator,
+  Color,
   Component,
   find,
   ImageAsset,
@@ -10,6 +11,7 @@ import {
   Sprite,
   SpriteFrame,
   UITransform,
+  Vec2,
   warn,
 } from 'cc';
 import { RuntimeStore } from './RuntimeStore';
@@ -67,6 +69,14 @@ interface MediaBridge {
   snapshot: () => MediaSnapshot;
 }
 
+interface LabelStyleSnapshot {
+  color: Color;
+  enableShadow: boolean;
+  shadowColor: Color;
+  shadowOffset: Vec2;
+  shadowBlur: number;
+}
+
 function loadJson<T>(path: string): Promise<T> {
   return new Promise<T>((resolve, reject) => {
     resources.load(path, JsonAsset, (err, asset) => {
@@ -96,6 +106,8 @@ export class LandscapeMediaController extends Component {
   private activeAsset: VisualMediaAsset | null = null;
   private ready = false;
   private lastLayoutSignature = '';
+  private textStyleBaselines = new Map<Label, LabelStyleSnapshot>();
+  private textProtectionApplied = false;
 
   protected start(): void {
     this.imageNode = find('S0_OneLineSky/LandscapeImage', this.node);
@@ -110,11 +122,13 @@ export class LandscapeMediaController extends Component {
   }
 
   protected lateUpdate(): void {
+    this.ensureTextStyleBaselines();
     this.syncVisibility();
     this.applyCoverLayout(false);
   }
 
   protected onDestroy(): void {
+    this.applyPhotoTextProtection(false);
     const root = globalThis as unknown as Record<string, unknown>;
     delete root[MEDIA_BRIDGE_KEY];
   }
@@ -185,6 +199,60 @@ export class LandscapeMediaController extends Component {
       && RuntimeStore.snapshot.currentScreen === 'S0_ONE_LINE_SKY';
     this.imageNode.active = visible;
     if (this.hintNode) this.hintNode.active = !visible;
+    this.applyPhotoTextProtection(visible);
+  }
+
+  private ensureTextStyleBaselines(): void {
+    if (this.textStyleBaselines.size > 0) return;
+    for (const path of ['ReadingOverlay/PageTitle', 'ReadingOverlay/Observation', 'ReturnGuard/Label']) {
+      const label = find(path, this.node)?.getComponent(Label);
+      if (!label) continue;
+      this.textStyleBaselines.set(label, {
+        color: new Color(label.color.r, label.color.g, label.color.b, label.color.a),
+        enableShadow: label.enableShadow,
+        shadowColor: new Color(label.shadowColor.r, label.shadowColor.g, label.shadowColor.b, label.shadowColor.a),
+        shadowOffset: new Vec2(label.shadowOffset.x, label.shadowOffset.y),
+        shadowBlur: label.shadowBlur,
+      });
+    }
+  }
+
+  private applyPhotoTextProtection(visible: boolean): void {
+    this.ensureTextStyleBaselines();
+    if (visible && this.textProtectionApplied) return;
+    if (!visible && !this.textProtectionApplied) return;
+
+    const title = find('ReadingOverlay/PageTitle', this.node)?.getComponent(Label) ?? null;
+    const observation = find('ReadingOverlay/Observation', this.node)?.getComponent(Label) ?? null;
+    const returnGuard = find('ReturnGuard/Label', this.node)?.getComponent(Label) ?? null;
+
+    if (visible) {
+      for (const label of [title, observation]) {
+        if (!label) continue;
+        label.enableShadow = true;
+        label.shadowColor = new Color(0, 0, 0, 180);
+        label.shadowOffset = new Vec2(0, -2);
+        label.shadowBlur = 2;
+      }
+      if (returnGuard) {
+        returnGuard.color = new Color(255, 255, 255, 225);
+        returnGuard.enableShadow = true;
+        returnGuard.shadowColor = new Color(0, 0, 0, 215);
+        returnGuard.shadowOffset = new Vec2(0, -1);
+        returnGuard.shadowBlur = 2;
+      }
+      this.textProtectionApplied = true;
+      return;
+    }
+
+    for (const [label, baseline] of this.textStyleBaselines) {
+      label.color = new Color(baseline.color.r, baseline.color.g, baseline.color.b, baseline.color.a);
+      label.enableShadow = baseline.enableShadow;
+      label.shadowColor = new Color(baseline.shadowColor.r, baseline.shadowColor.g, baseline.shadowColor.b, baseline.shadowColor.a);
+      label.shadowOffset = new Vec2(baseline.shadowOffset.x, baseline.shadowOffset.y);
+      label.shadowBlur = baseline.shadowBlur;
+    }
+    this.textProtectionApplied = false;
   }
 
   private applyCoverLayout(force: boolean): void {
