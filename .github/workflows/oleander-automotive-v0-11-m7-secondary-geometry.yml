@@ -1,0 +1,101 @@
+name: OLEANDER Automotive v0.11 M7 Secondary Geometry
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m7.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/M7_SECONDARY_GEOMETRY_GATE.md'
+      - '.github/workflows/oleander-automotive-v0-11-m7-secondary-geometry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m7-secondary-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Stage R29A M7 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r29a.py
+          test -f /tmp/wheel_hp_contract.py
+          test -f /tmp/revise_v011_r29a_m6.py
+          test -f /tmp/revise_v011_r29a_m7.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+          git rev-parse HEAD > /tmp/M7_SOURCE_COMMIT.txt
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+
+      - name: Build M7 secondary geometry benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M7"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m7.py -- --out "$OUT" --samples 4 --resolution 512
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          cp /tmp/M7_SOURCE_COMMIT.txt "$OUT/M7_SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/M7_RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.json "$OUT"/*.blend > "$OUT/M7_PRIMARY_SHA256SUMS.txt"
+
+      - name: M7 machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_v0.11_M7')
+          q=json.loads((out/'M7_SECONDARY_QA.json').read_text())
+          a=json.loads((out/'M7_SECONDARY_GEOMETRY.json').read_text())
+          r=json.loads((out/'M7_RECEIPT.json').read_text())
+          expected='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert q['status']=='MACHINE_PASS_HUMAN_M7_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_MACHINE_PASS_HUMAN_M7_REVIEW_REQUIRED',r
+          assert q['source_hash_before']==q['source_hash_after']==expected
+          checks=q['checks']
+          for key in ('canonical_source_hash_before','source_hash_stable_m6_annotations','source_hash_stable_secondary_build','source_hash_stable_after_render','source_topology_stable','source_island_one','source_termination_triangles_four','source_ngon_zero','m6_region_assignments_exact','wheel_hp_package_exact','wheelhouse_count_four','wheelhouse_centers_exact','wheelhouse_clearance_declared','wheelhouse_dependencies_resolve','glazing_source_faces_220','glazing_separate_object','secondary_ids_unique','all_secondary_authority_correct','source_not_secondary_authority','selective_affected_views_complete','diagnostic_render_matrix'):
+              assert checks.get(key) is True,(key,checks)
+          assert q['topology_after']['vertices']==2909 and q['topology_after']['faces']==2793
+          assert q['topology_after']['tri']==4 and q['topology_after']['ngon']==0
+          assert q['region_counts']['REG-GLASSHOUSE']==220
+          assert len(q['wheel_hp_package'])==4
+          assert len(q['secondary_ids'])==5 and len(set(q['secondary_ids']))==5
+          assert len(a['secondary_components'])==5
+          wh=[c for c in a['secondary_components'] if c['id'].startswith('SEC-WHEELHOUSE-')]
+          assert len(wh)==4 and all(abs(c['radial_clearance_m']-.055)<1e-9 for c in wh)
+          gl=[c for c in a['secondary_components'] if c['id']=='SEC-GLAZING-SHELL']
+          assert len(gl)==1 and gl[0]['source_routing_face_count']==220
+          assert len(q['renders'])==4 and len(list((out/'renders').glob('*.png')))==4
+          print('AUTOMOTIVE v0.11 M7 MACHINE PASS — HUMAN SECONDARY GEOMETRY REVIEW REQUIRED')
+          PY
+
+      - name: Upload M7 secondary geometry evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-m7-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_M7/
+          if-no-files-found: error
+          retention-days: 14
