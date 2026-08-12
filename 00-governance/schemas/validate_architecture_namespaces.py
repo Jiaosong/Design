@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -155,10 +156,22 @@ def main():
     if "knowledge_context" not in project_props:
         fail("project-flow schema must support Domain / exact L0-L7 knowledge context separately")
 
+    project_id_schema = project_props.get("project_id", {})
+    forbidden_project_pattern = project_id_schema.get("not", {}).get("pattern")
+    if not forbidden_project_pattern:
+        fail("project-flow schema must machine-reject reserved non-project namespaces in project_id")
+    for reserved_id in ("C04", "B02", "CU01", "IP03", "SP04", "Priority-1", "AIG-01"):
+        if re.fullmatch(forbidden_project_pattern, reserved_id) is None:
+            fail(f"project_id exclusion pattern does not reject reserved namespace: {reserved_id}")
+    for valid_project_id in ("PRJ-XJ01-CMF", "PG-30", "SYS-BLENDER-SURFACE", "PRAC-SPATIAL-2026"):
+        if re.fullmatch(forbidden_project_pattern, valid_project_id) is not None:
+            fail(f"project_id exclusion pattern wrongly rejects current Project ID: {valid_project_id}")
+
     print("ARCHITECTURE NAMESPACE GATE: PASS")
     print("- P0-P4 reserved for project axis")
     print("- L0-L7 reserved for Knowledge Architecture; AIG uses EVAL-* for evaluation layers")
     print("- Project Flow schema requires project_level + project_id")
+    print("- project_id rejects Case / Application / Priority / AIG namespaces")
     print("- Application Mapping and Knowledge Context are machine-separated")
     print("- AIG-01/AIG-02/AIG-03 current contracts present")
     print("- superseded AI P0/P1/P2 current files absent")
