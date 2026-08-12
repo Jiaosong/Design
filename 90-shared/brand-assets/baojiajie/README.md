@@ -70,3 +70,13 @@ Before promotion or delivery:
 If the composition conflicts with the locked portrait, revise the composition — not the person.
 
 This rule applies to jump cards / hang tags, packaging, posters, e-commerce pages, key visuals, social content, web assets, video stills and all later Baojiajie visual outputs.
+
+## 中文硬门槛｜所有宝家洁大纲与视觉任务必须继承
+
+- 用户上传并明确用于宝家洁项目的杨幂／代言人版权照片，统一视为 **LOCKED SOURCE ASSET（锁定源资产）**。
+- 人物形象、动作、表情、妆发、服装、手势、身体比例、轮廓及人物内部像素关系必须保持原图不变；**一根头发丝的位置也不得改变**，除非用户明确指定某张照片允许修改。
+- 允许的操作仅限：整体等比缩放、整体平移、裁剪、遮挡、只隐藏源像素的蒙版及普通图层合成。
+- 禁止：AI 重绘／重生成、换脸、修脸、局部修图、改妆发、改服装、改姿势、改表情、改手势、改变身体比例、非等比拉伸、透视变形、液化、补画裁切部位、生成式扩图人物或任何会改变人物本体的处理。
+- 标准工作流：**先完成不含人物的背景／文字／图形／装饰／光效／版式生成与 QA，再把用户上传的原始版权人物照片作为独立锁定图层后期加入。**
+- 版式冲突时调整版式，不调整人物。人物可以被裁剪或遮挡，但不能为适应版面而改变人物本体。
+- 本规则自动适用于所有宝家洁项目大纲、CMF、跳跳卡、吊牌、包装、海报、电商详情页、KV、社媒、网页、视频静帧与后续视觉输出。
