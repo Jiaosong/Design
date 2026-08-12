@@ -21,6 +21,65 @@ All Baojiajie / BOOMJOY projects must use this confirmed logo asset as the brand
 
 The PDF binary master is governed in Google Drive; this GitHub page records the cross-project asset authority and canonical locations.
 
+## BJ-LOGO-LOCK-01｜Logo Source Asset Lock
+
+Status: **HARD GATE / ALL BAOJIAJIE VISUAL OUTPUTS**
+
+The user-confirmed master logo is a `LOCKED SOURCE ASSET`. The logo itself is not generative design material and must not be redrawn, regenerated, traced, stylized, reconstructed, or visually re-authored.
+
+### Immutable logo content
+
+Unless the user explicitly authorizes a specific exception, do not alter:
+
+- symbol geometry;
+- Chinese wordmark letterforms / strokes;
+- internal proportions;
+- spacing and symbol-to-wordmark relationship;
+- official combination logic;
+- stroke shapes, terminals, counters or contours;
+- official color relationship;
+- relative placement of all logo elements.
+
+Do not add outlines, shadows, glows, gradients, bevels, 3D effects, textures, distortion, perspective, skew, non-uniform scaling, AI inpainting, AI redraw, generative reconstruction, or substitute typography.
+
+### Allowed operations only
+
+- use an official combination/version already contained in the approved master;
+- uniform whole-logo scaling;
+- whole-logo translation / placement;
+- layout crop or occlusion that does not alter the logo artwork itself;
+- background adaptation outside the locked logo layer.
+
+Reversed, monochrome, alternate-color, simplified or other variants may be used only when they already exist in the approved master or the user explicitly approves that specific version.
+
+### Required production workflow
+
+`DESIGN / GENERATE ALL NON-LOGO CONTENT → LOGO-FREE QA → COMPOSITE APPROVED LOGO MASTER AS LOCKED LAYER → FINAL QA`
+
+The approved logo should normally be inserted after AI image generation is complete. If a generation step can reinterpret or redraw the logo, the logo must not be included in that generation step.
+
+### QA Gate
+
+Before promotion or delivery:
+
+- `LOGO SOURCE AUTHORITY = PASS`
+- `LOGO INTERNAL MODIFICATION = NONE`
+- `ALLOWED TRANSFORM ONLY = PASS`
+
+If the composition conflicts with the locked logo, revise the composition — not the logo.
+
+This rule applies to jump cards / hang tags, packaging, posters, e-commerce pages, key visuals, social content, web assets, video stills and all later Baojiajie visual outputs.
+
+## 中文硬门槛｜Logo 锁定规则
+
+- `12.3新一代拖把LOGO(1).pdf` / `BAOJIAJIE_新一代拖把_LOGO_MASTER_2026-08-12.pdf` 为宝家洁相关项目唯一 **Logo Source Authority**。
+- Logo 本体必须锁死：不得 AI 重绘、重生成、描摹替代、改字形、改图形、改笔画、改比例关系、改间距、改组合逻辑、改官方色彩关系、加描边、阴影、渐变、立体效果或做任何生成式修改。
+- 只允许调用正式母版中已有的组合版本；对 Logo 图层只允许整体等比缩放、整体平移、版式裁剪/遮挡，以及 Logo 外部的背景适配。
+- 反白、单色、其他色彩或简化版本，仅在正式母版已有或用户明确批准时可使用。
+- 标准工作流：**先完成不含 Logo 的背景／人物／产品／文字／图形／装饰／光效／版式生成与 QA，再把正式 Logo 作为独立锁定图层后期加入。**
+- 版式冲突时调整版式，不调整 Logo。
+- 本规则自动适用于所有宝家洁项目大纲、CMF、跳跳卡、吊牌、包装、海报、电商详情页、KV、社媒、网页、视频静帧与后续视觉输出。
+
 ## BJ-PORTRAIT-LOCK-01｜Licensed Portrait Asset Lock
 
 Status: **HARD GATE / ALL BAOJIAJIE VISUAL OUTPUTS**
