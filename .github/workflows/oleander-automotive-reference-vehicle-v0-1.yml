@@ -1,0 +1,78 @@
+name: OLEANDER Automotive Reference Vehicle v0.1 F1
+
+on:
+  push:
+    branches: [agent/automotive-reference-vehicle-v0-1]
+    paths:
+      - 'tools/oleander-automotive/v0.1/**'
+      - 'practice/2026/2026-08-12-ip03-automotive-reference-vehicle/**'
+      - '.github/workflows/oleander-automotive-reference-vehicle-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  automotive-f1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4 pinned
+        with:
+          fetch-depth: 1
+
+      - name: Static validate builder
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/oleander-automotive/v0.1/build_automotive_reference_vehicle.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          ACTUAL="$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')"
+          test "$ACTUAL" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version
+
+      - name: Build and render automotive F1
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Reference_Vehicle_v0.1"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender -b --python tools/oleander-automotive/v0.1/build_automotive_reference_vehicle.py -- --out "$OUT" --samples 8 --resolution 720
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/RENDER_SECONDS.txt"
+
+      - name: Validate automotive execution gate
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Reference_Vehicle_v0.1"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_Reference_Vehicle_v0.1')
+          receipt=json.loads((out/'AUTOMOTIVE_RECEIPT.json').read_text())
+          qa=json.loads((out/'AUTOMOTIVE_QA.json').read_text())
+          assert receipt['status']=='EXECUTED_QA_PASS', receipt
+          assert qa['status']=='PASS', qa
+          assert len(list((out/'renders').glob('*.png')))==8
+          assert (out/'OLEANDER_Automotive_Reference_Vehicle_v0.1.blend').exists()
+          for p in (out/'renders').glob('*.png'):
+              assert p.stat().st_size > 1500, (p,p.stat().st_size)
+          print('AUTOMOTIVE F1 MACHINE GATE PASS')
+          PY
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+
+      - name: Upload automotive F1 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4 pinned
+        with:
+          name: oleander-automotive-reference-v0-1-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Reference_Vehicle_v0.1/
+          if-no-files-found: error
+          retention-days: 14
