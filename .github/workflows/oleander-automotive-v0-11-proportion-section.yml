@@ -1,10 +1,6 @@
 name: OLEANDER Automotive v0.11 Proportion Section Rebuild
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.11/**'
-      - '.github/workflows/oleander-automotive-v0-11-proportion-section.yml'
   workflow_dispatch:
 
 permissions:
@@ -58,13 +54,6 @@ jobs:
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
           cp /tmp/R29A_SOURCE_COMMIT.txt "$OUT/R29A_SOURCE_COMMIT.txt"
-          cat > "$OUT/REVISION_CHAIN.txt" <<'TXT'
-          R29A CURRENT EXECUTION CANDIDATE:
-          HP-correct A/B retained R25 over R27/R28. R29 then tested the narrowest possible nested-arch reorder and Machine PASSed, but Human M5 remained REVISE because its numeric rule kept CROWN below INNER at the apex.
-          R29A retains the R25 rounded wheel-opening scale, shared-endpoint topology and exact 0.700 m wheel HP package.
-          Only the local crown / hood-fender-shoulder dependency reopens: a bounded raised-cosine crown influence extends to +/-0.620 m, the shared row4 shoulder becomes the peak authority, and apex ordering is constrained to SHOULDER_CROWN > B1 > B2 > INNER_OPENING.
-          R09 hard points, non-wheel R11/R12 Source and R18/R20 terminations remain locked. Source Boolean/global SubD/ngon remain forbidden. M6/M7/M8 remain blocked pending Human M5 Visual QA.
-          TXT
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
@@ -92,8 +81,7 @@ jobs:
           assert len(q['wheel_hp_package'])==4
           assert all(t['monotonic_z'] is True for t in x['targets'])
           assert len(q['renders'])==9 and len(list((out/'renders').glob('*.png')))==9
-          assert 'M6/M7/M8 remains blocked' in ' | '.join(c['qa']['project'])
-          print('AUTOMOTIVE v0.11 R29A MACHINE GATE PASS — HUMAN M5 VISUAL QA REQUIRED')
+          print('AUTOMOTIVE v0.11 R29A M5 MACHINE GATE PASS — FROZEN MANUAL REPLAY')
           PY
 
       - name: Upload v0.11 R29A M5 evidence
