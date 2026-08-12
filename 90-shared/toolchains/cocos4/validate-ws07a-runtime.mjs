@@ -135,9 +135,17 @@ if (sceneContract.version === '0.2') {
     "RuntimeStore.setScreen('S0_ONE_LINE_SKY')",
     'RuntimeStore.setCurrentPage(page.id)',
     'SpriteFrame.createWithImage',
+    'applyPhotoTextProtection',
+    'textStyleBaselines',
+    'label.enableShadow = true',
+    'returnGuard.color = new Color(255, 255, 255, 225)',
   ]) {
     if (!mediaController.includes(required)) fail(`WS-07A.2 media controller contract missing ${required}`);
   }
+
+  const r05 = manifest.corePages.find((page) => page.id === 'R05');
+  if (!r05) fail('WS-07A.2 R05 page missing');
+  if (r05.observation !== '收起手机，先看峰体的高低、疏密与层次。') fail('WS-07A.2 R05 observation must match the controlled A.2 readability revision');
 
   const mediaManifest = JSON.parse(fs.readFileSync(visualMediaManifestPath, 'utf8'));
   if (mediaManifest.version !== '0.1') fail('WS-07A.2 visual media manifest must be v0.1');
@@ -182,4 +190,4 @@ if (sceneContract.version === '0.2') {
 console.log('PASS: WS-07A runtime + official scene + WS-07A.1 correction + browser capture + responsive interaction audit contract');
 console.log(`  Core=${manifest.corePages.length} Companion=${manifest.companionPages.length} Screens=${manifest.prototypeScreens.length} SceneNodes=${scenePaths.length} SceneContract=${sceneContract.version}`);
 console.log('  Route=offline-first / MyBook=partial-is-complete / ResponsiveCorrection=declared+ordered / TouchTarget>=44px / RuntimeCapture=CDP');
-if (sceneContract.version === '0.3') console.log('  WS-07A.2=research-media-only / OfficialAsset=SHA-pinned / FinalHeroTech=FAIL preserved / Baseline screen bindings unchanged');
+if (sceneContract.version === '0.3') console.log('  WS-07A.2=research-media-only / OfficialAsset=SHA-pinned / FinalHeroTech=FAIL preserved / Baseline screen bindings unchanged / A.2 text-protection contract locked');
