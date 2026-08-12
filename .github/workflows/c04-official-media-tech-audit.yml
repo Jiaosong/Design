@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - '05-cases/c04-qingjiang-stone-book/tools/audit_official_media.py'
+      - '05-cases/c04-qingjiang-stone-book/tools/discover_official_page_media.py'
       - '05-cases/c04-qingjiang-stone-book/C04-WS-04_OFFICIAL-WEB-MEDIA-SHORTLIST_v0.1.md'
       - '.github/workflows/c04-official-media-tech-audit.yml'
   workflow_dispatch:
@@ -30,11 +31,18 @@ jobs:
       - name: Run official media technical audit
         run: python 05-cases/c04-qingjiang-stone-book/tools/audit_official_media.py
 
-      - name: Show technical summary
+      - name: Discover official 3229 page media
+        run: python 05-cases/c04-qingjiang-stone-book/tools/discover_official_page_media.py
+
+      - name: Show evidence summaries
         if: always()
         run: |
           if [ -f 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/TECH-AUDIT.md ]; then
             cat 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/TECH-AUDIT.md
+          fi
+          if [ -f 05-cases/c04-qingjiang-stone-book/evidence/official-page-media-discovery/3229/DISCOVERY.md ]; then
+            echo ''
+            cat 05-cases/c04-qingjiang-stone-book/evidence/official-page-media-discovery/3229/DISCOVERY.md
           fi
 
       - name: Upload C04 official media technical evidence
@@ -42,6 +50,8 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: c04-official-media-tech-audit
-          path: 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/
+          path: |
+            05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/
+            05-cases/c04-qingjiang-stone-book/evidence/official-page-media-discovery/
           if-no-files-found: error
           retention-days: 14
