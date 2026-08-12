@@ -1,0 +1,47 @@
+name: C04 Official Media Tech Audit
+
+on:
+  pull_request:
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/tools/audit_official_media.py'
+      - '05-cases/c04-qingjiang-stone-book/C04-WS-04_OFFICIAL-WEB-MEDIA-SHORTLIST_v0.1.md'
+      - '.github/workflows/c04-official-media-tech-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned Pillow
+        run: python -m pip install --disable-pip-version-check 'Pillow==10.4.0'
+
+      - name: Run official media technical audit
+        run: python 05-cases/c04-qingjiang-stone-book/tools/audit_official_media.py
+
+      - name: Show technical summary
+        if: always()
+        run: |
+          if [ -f 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/TECH-AUDIT.md ]; then
+            cat 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/TECH-AUDIT.md
+          fi
+
+      - name: Upload C04 official media technical evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c04-official-media-tech-audit
+          path: 05-cases/c04-qingjiang-stone-book/evidence/official-media-tech-audit/
+          if-no-files-found: error
+          retention-days: 14
