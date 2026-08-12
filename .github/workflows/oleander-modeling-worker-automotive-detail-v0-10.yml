@@ -1,0 +1,99 @@
+name: OLEANDER Modeling Worker Automotive Detail v0.10
+
+on:
+  push:
+    branches:
+      - 'agent/automotive-detail-v0-10'
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.10-detail/**'
+      - '.github/workflows/oleander-modeling-worker-automotive-detail-v0-10.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m8-detail-f2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Reconstruct and validate source lineage
+        run: |
+          set -euo pipefail
+          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/build_automotive_primary_v0_8.py.gz.b64 | gzip -d > /tmp/base.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r03.py /tmp/r03_primary.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r05.py /tmp/r05_primary.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.9-secondary/apply_automotive_secondary_v0_9_r03.py /tmp/m7.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.10-detail/apply_automotive_detail_v0_10.py /tmp/m8.py
+          python3 -m py_compile /tmp/base.py /tmp/r03_primary.py /tmp/r05_primary.py /tmp/m7.py /tmp/m8.py
+          test "$(sha256sum /tmp/base.py | awk '{print $1}')" = '5cee2b54e7998b34bdd5d7ea4a029624888ae2bdfd0c08841deaffb3686425f5'
+          test "$(git hash-object 90-shared/toolchains/modeling-worker/automotive/v0.9-secondary/apply_automotive_secondary_v0_9_r03.py)" = '4edd57451a3333e46ba6f09ad531c442e8c55236'
+          test "$(git hash-object 90-shared/toolchains/modeling-worker/automotive/v0.10-detail/apply_automotive_detail_v0_10.py)" = '7203ade90caa51b17df36f2d19735a1707e4e691'
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz 'https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = '96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Materialize v0.8 F1 → v0.9 M7 source lineage
+        run: |
+          set -euo pipefail
+          B=/tmp/blender-5.2.0-linux-x64/blender
+          mkdir -p "$RUNNER_TEMP/r01" "$RUNNER_TEMP/r03" "$RUNNER_TEMP/r05" "$RUNNER_TEMP/m7"
+          set +e
+          "$B" --background --python-exit-code 5 --python /tmp/base.py -- --out "$RUNNER_TEMP/r01" --samples 1 --resolution 56
+          RC=$?
+          set -e
+          test "$RC" -eq 5
+          "$B" --background "$RUNNER_TEMP/r01/OLEANDER_Automotive_Primary_Surface_v0.8.blend" --python-exit-code 5 --python /tmp/r03_primary.py -- --base-source /tmp/base.py --out "$RUNNER_TEMP/r03" --samples 1 --resolution 56
+          "$B" --background "$RUNNER_TEMP/r03/OLEANDER_Automotive_Primary_Surface_v0.8.blend" --python-exit-code 5 --python /tmp/r05_primary.py -- --base-source /tmp/base.py --out "$RUNNER_TEMP/r05" --samples 1 --resolution 56
+          "$B" --background "$RUNNER_TEMP/r05/OLEANDER_Automotive_Primary_Surface_v0.8.blend" --python-exit-code 5 --python /tmp/m7.py -- --base-source /tmp/base.py --out "$RUNNER_TEMP/m7" --samples 1 --resolution 56
+          test -f "$RUNNER_TEMP/m7/OLEANDER_Automotive_Secondary_v0.9.blend"
+
+      - name: Build M8 v0.10 and render diagnostics
+        run: |
+          set -euo pipefail
+          B=/tmp/blender-5.2.0-linux-x64/blender
+          BASE="$RUNNER_TEMP/m7/OLEANDER_Automotive_Secondary_v0.9.blend"
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Detail_v0.10-M8-R01"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          "$B" --background "$BASE" --python-exit-code 5 --python /tmp/m8.py -- --base-source /tmp/base.py --out "$OUT" --samples 8 --resolution 640
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+
+      - name: Validate M8 source lock and detail gate
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Detail_v0.10-M8-R01"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_Detail_v0.10-M8-R01')
+          q=json.loads((out/'AUTOMOTIVE_M8_QA.json').read_text())
+          r=json.loads((out/'AUTOMOTIVE_M8_RECEIPT.json').read_text())
+          assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED',q
+          assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED',r
+          for key in ['source_model_hash_unchanged','source_model_object_set_unchanged','primary_manifold','wheel_disc_count','wheel_ring_count','wheel_spoke_count','caliper_count','mirror_housing_count','mirror_glass_count','handle_count','wiper_count','render_matrix']:
+              assert q['checks'][key] is True,(key,q)
+          assert len(list((out/'renders').glob('*.png')))==8
+          assert (out/'OLEANDER_Automotive_Detail_v0.10.blend').exists()
+          print('M8 MACHINE PASS / SOURCE HASH',q['source_scene_hash_before'])
+          PY
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/M8_SHA256SUMS.txt"
+
+      - name: Upload v0.10 M8 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-automotive-detail-v0-10-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Detail_v0.10-M8-R01/
+          if-no-files-found: error
+          retention-days: 14
