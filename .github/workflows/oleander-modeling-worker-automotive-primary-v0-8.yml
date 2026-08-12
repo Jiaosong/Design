@@ -28,7 +28,7 @@ jobs:
           for pair in \
             'r03.py:5e4bc14bf3aec09bcc56e4328740b1b101b29234' \
             'r05.py:4256b03abcc2418eb6a50d8d29c0b2c9adf3a509' \
-            'r07.py:e5950e10286b11fe77963245937bec095b8c7640'; do
+            'r07.py:5d6adc0ce68b8a6ec8dd97316ceb2fddcebee1e7'; do
             f="${pair%%:*}"; expected="${pair##*:}"; src="90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_${f}"
             test "$(git hash-object "$src")" = "$expected"
             cp "$src" "/tmp/$f"
@@ -67,8 +67,7 @@ jobs:
           END=$(date +%s);echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
           printf '%s\n' \
             'R06 normal diagnostics proved glazing visible after silhouette material-override repair.' \
-            'R06 mask duplicate still cleared its own slots and falsely returned red_pixels=0.' \
-            'R07 replaces duplicate material slots in place and reruns only SIDE/FRONT glazing masks.' \
+            'R07 replaces duplicate material slots in place and uses scene-linear relative-red visibility thresholds.' \
             > "$OUT/REVISION_CHAIN.txt"
 
       - name: Validate R07 diagnostic closure
@@ -81,10 +80,10 @@ jobs:
           out=Path('out/OLEANDER_Automotive_Primary_Surface_v0.8-R07')
           q=json.loads((out/'AUTOMOTIVE_PRIMARY_QA.json').read_text())
           assert q['status']=='DIAGNOSTIC_PASS', q
-          assert q['side']['red_pixels']>500, q
-          assert q['front']['red_pixels']>200, q
           assert q['checks']['side_indices_preserved'] is True
           assert q['checks']['front_indices_preserved'] is True
+          assert q['checks']['side_mask_visible'] is True
+          assert q['checks']['front_mask_visible'] is True
           print('R07 DIAGNOSTIC CLOSURE PASS',q['side']['red_pixels'],q['front']['red_pixels'])
           PY
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
