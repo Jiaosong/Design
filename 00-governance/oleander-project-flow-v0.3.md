@@ -1,8 +1,9 @@
 # OLEANDER Canonical Project Flow｜v0.3
 
 **Status:** REVIEW  
-**Primary:** B04｜Metrics & Governance  
-**Supporting:** IP03｜Visual & Verbal System / SP04｜Construction & Operation  
+**Application Primary Mapping:** B04｜Metrics & Governance  
+**Application Supporting Mapping:** IP03｜Visual & Verbal System / SP04｜Construction & Operation  
+**Knowledge Architecture note:** B04 / IP03 / SP04 describe Application Mapping only; knowledge ownership must be resolved separately through `Domain / exact L0–L7 level`.  
 **Parent cognitive method:** `01B｜OLEANDER AI 协同设计方法｜读取、反馈与验证`
 
 ## 1｜Position
@@ -113,7 +114,7 @@ The design target is often an **Acceptable Corridor**, not a fake global optimum
 
 ## 7｜Shared Fidelity Namespace
 
-Bare `F1–F3` already has an active meaning in `OLEANDER AI Runtime Evidence P2` as failure-record severity/classification language. To prevent namespace collision, project-flow fidelity uses the explicit `FID` prefix:
+Bare `F1–F3` already has an active meaning in the AI runtime-evidence classification governed by `AIG-03`. Historical governance/evidence records may refer to the same lineage as `OLEANDER AI Runtime Evidence P2`; that old `P2` label is Legacy only and must not be reused as Current Authority. To prevent namespace collision, project-flow fidelity uses the explicit `FID` prefix:
 
 - **FID0｜Preflight** — syntax, scene, topology, framing and obvious failures.
 - **FID1｜Design Validation** — fast controlled comparison.
@@ -242,7 +243,7 @@ Stop when:
 
 ## 17｜Relationship to G0–G9
 
-G0–G9 remains the outer project-governance layer, not a waterfall schedule.
+`G0–G9` is the outer project-governance Gate sequence. It is **not** the `P0–P4` Project Axis, not a Delivery Priority namespace, and not a waterfall schedule.
 
 - G0–G2: Read / Frame / Exploration dominant;
 - G3–G4: Exploration and Canonical Production alternate;
