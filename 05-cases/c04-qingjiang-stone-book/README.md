@@ -1,17 +1,21 @@
 # C04｜清江石书｜红花峰林十三印
 
-**Canonical Project ID:** `C04`  
+**Canonical Case ID:** `C04`  
+**Project Axis identity:** `P2 Project / PROJECT ID PENDING REGISTRY RECOVERY`  
 **Current state:** `RESEARCH + PROPOSAL / WEB EVIDENCE REVIEW / FIELD NOT RUN`  
-**Governance main layer:** `Spatial`  
-**Four-layer work emphasis:** `Culture + Spatial = PRIMARY`; `IP + Business = SUPPORTING / CONDITIONAL`
+**Application Primary Mapping:** `Spatial`  
+**Application Mapping emphasis:** `Culture + Spatial = PRIMARY`; `IP + Business = SUPPORTING / CONDITIONAL`
 
-Notion canonical entry: https://app.notion.com/p/3b9b86be5c4781beae61e05ce054a146?pvs=204
+Notion canonical content entry: https://app.notion.com/p/3b9b86be5c4781beae61e05ce054a146?pvs=204
+
+> Authority boundary: `C04` identifies the Canonical Case. It is not the P2 Project ID. The previous `Canonical Project ID: C04` wording is superseded by Governance v1.1.0. The writable Notion project registry is currently under recovery, so this file does not invent a second P2 record or prematurely assign a replacement Project ID.
 
 ## Naming
 
 - `清江石书`：母叙事／总体体验系统。
 - `清江十三印`：核心体验子系统，当前仍为 provisional node set。
 - `清江三十印`：`LEGACY` 历史工作名，不再作为现行主标识。
+- Historical `C04-WS-* / C04-VAL-*` identifiers are retained as project-registry migration evidence until the existing records can be repaired in place. They must not be used as templates for new Project Axis IDs.
 
 ## Project Frame
 
@@ -28,6 +32,8 @@ Notion canonical entry: https://app.notion.com/p/3b9b86be5c4781beae61e05ce054a14
 - **G2｜关系问题与设计任务定义:** `PROVISIONAL DRAFT / NOT PASSED`
 - **G3–G4:** `HOLD`
 - **G5+:** `NOT STARTED`
+
+These `G0–G9` values are domain/project gate language, not `P0–P4` Project Axis levels and not delivery priority.
 
 此前 `Existing Outcome Integration Audit → Node Architecture → Node Matrix → Route & Evidence → Field Protocol → Field Evidence Register → Web Evidence Register → Evidence Consolidation → Experience Architecture` 全部保留，但重新分类为 **Exploratory Design / Research Chain**。这些版本记录不等于 OLEANDER Gate 已通过。
 
@@ -53,6 +59,8 @@ Notion canonical entry: https://app.notion.com/p/3b9b86be5c4781beae61e05ce054a14
 
 ## Next executable workstream
 
-`C04-WS-01｜项目治理与场地证据｜G0–G1 Alignment`
+Historical/current registry reference: `C04-WS-01｜项目治理与场地证据｜G0–G1 Alignment`.
+
+Until Registry Recovery closes the Case × Project namespace conflict, treat `C04-WS-01` as an existing record reference, **not** as the naming template for a new P3 object. Continue work on the same underlying workstream; do not create a duplicate.
 
 正式体验、数字与空间方案在 Gate 0 / Gate 1 通过后再进入下一阶段。
