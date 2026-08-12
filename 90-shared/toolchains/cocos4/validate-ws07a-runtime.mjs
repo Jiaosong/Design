@@ -106,9 +106,6 @@ for (const required of ['RESPONSIVE_INTERACTION_LAYOUT_PASS', 'INTERACTIVE_TOUCH
 if (!responsiveAudit.includes('MIN_TOUCH_PX = 44')) fail('responsive audit must preserve 44px minimum touch target');
 if (!responsiveAudit.includes('Raw Label/UITransform AABB')) fail('responsive audit must preserve non-gating Label AABB diagnostic boundary');
 
-// Scene-contract v0.2 is the frozen WS-07A.1 baseline. v0.3 is accepted only
-// when the complete WS-07A.2 research-media contract is present and preserves
-// every v0.2 baseline binding above. This is an additive gate, not a relaxation.
 if (sceneContract.version === '0.2') {
   if (corrections.length !== 1) fail('WS-07A.1 v0.2 scene contract must declare exactly one responsive correction layer');
 } else if (sceneContract.version === '0.3') {
@@ -139,6 +136,7 @@ if (sceneContract.version === '0.2') {
     'textStyleBaselines',
     'label.enableShadow = true',
     'returnGuard.color = new Color(255, 255, 255, 225)',
+    'textProtectionSnapshot',
   ]) {
     if (!mediaController.includes(required)) fail(`WS-07A.2 media controller contract missing ${required}`);
   }
@@ -180,6 +178,10 @@ if (sceneContract.version === '0.2') {
     '__OLEANDER_C04_MEDIA__', 'showActiveExperiment',
     'RESEARCH_PROTOTYPE_ONLY', 'FAIL_LT2400_FINAL_HERO',
     'R05-A-photo-dominant-research', 'NO_FINAL_VISUAL_PASS_INFERRED',
+    'A_PHOTO_DOMINANT_R05_READABILITY_A2',
+    'A2_TEXT_PROTECTION_INACTIVE',
+    'A2_RETURN_GUARD_CONTRAST_STATE',
+    'R05_OBSERVATION_DRIFT',
   ]) {
     if (!mediaCapture.includes(required)) fail(`WS-07A.2 media capture contract missing ${required}`);
   }
@@ -190,4 +192,4 @@ if (sceneContract.version === '0.2') {
 console.log('PASS: WS-07A runtime + official scene + WS-07A.1 correction + browser capture + responsive interaction audit contract');
 console.log(`  Core=${manifest.corePages.length} Companion=${manifest.companionPages.length} Screens=${manifest.prototypeScreens.length} SceneNodes=${scenePaths.length} SceneContract=${sceneContract.version}`);
 console.log('  Route=offline-first / MyBook=partial-is-complete / ResponsiveCorrection=declared+ordered / TouchTarget>=44px / RuntimeCapture=CDP');
-if (sceneContract.version === '0.3') console.log('  WS-07A.2=research-media-only / OfficialAsset=SHA-pinned / FinalHeroTech=FAIL preserved / Baseline screen bindings unchanged / A.2 text-protection contract locked');
+if (sceneContract.version === '0.3') console.log('  WS-07A.2=research-media-only / OfficialAsset=SHA-pinned / FinalHeroTech=FAIL preserved / Baseline screen bindings unchanged / A.2 prompt+text-protection runtime assertions locked');
