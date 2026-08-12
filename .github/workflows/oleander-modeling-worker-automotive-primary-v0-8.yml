@@ -21,14 +21,14 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Reconstruct and validate v0.8 sources
+      - name: Reconstruct and validate v0.8 R03 sources
         run: |
           set -euo pipefail
-          PATCH='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r02.py'
+          PATCH='90-shared/toolchains/modeling-worker/automotive/v0.8-primary/apply_automotive_primary_v0_8_r03.py'
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.8-primary/build_automotive_primary_v0_8.py.gz.b64 | gzip -d > /tmp/build_auto_primary_v08.py
-          test "$(git hash-object "$PATCH")" = "75f2617346107e54f2d7bd0c4f89bfa05d306230"
-          cp "$PATCH" /tmp/apply_auto_primary_v08_r02.py
-          python3 -m py_compile /tmp/build_auto_primary_v08.py /tmp/apply_auto_primary_v08_r02.py
+          test "$(git hash-object "$PATCH")" = "5e4bc14bf3aec09bcc56e4328740b1b101b29234"
+          cp "$PATCH" /tmp/apply_auto_primary_v08_r03.py
+          python3 -m py_compile /tmp/build_auto_primary_v08.py /tmp/apply_auto_primary_v08_r03.py
           test "$(sha256sum /tmp/build_auto_primary_v08.py | awk '{print $1}')" = "5cee2b54e7998b34bdd5d7ea4a029624888ae2bdfd0c08841deaffb3686425f5"
 
       - name: Install Blender 5.2.0 LTS
@@ -51,7 +51,6 @@ jobs:
           set -e
           test "$RC" -eq 5
           test -f "$BASE/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
-          test -f "$BASE/AUTOMOTIVE_PRIMARY_QA.json"
           python3 - <<'PY'
           import json, os
           from pathlib import Path
@@ -62,53 +61,50 @@ jobs:
           print('R01 audit reproduced: height_corridor is the only machine failure')
           PY
 
-      - name: Apply R02 cabin/glazing revision and render final diagnostics
+      - name: Apply R03 integrated-shell revision and render final diagnostics
         run: |
           set -euo pipefail
           BASE="$RUNNER_TEMP/v08-r01/OLEANDER_Automotive_Primary_Surface_v0.8.blend"
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R02"
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R03"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/apply_auto_primary_v08_r02.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background "$BASE" --python-exit-code 5 --python /tmp/apply_auto_primary_v08_r03.py -- --base-source /tmp/build_auto_primary_v08.py --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
           printf '%s\n' \
-            'R01: body + cabin primary / machine fail only from height-gate bug / visual cabin REVISE' \
-            'R02: BODY PRIMARY + WHEEL HARD POINTS LOCKED; cabin sections + glazing rake + height gate revised' \
+            'R01: split BODY_PRIMARY + CABIN_PRIMARY / Machine height-gate bug / Visual cabin REVISE' \
+            'R02: flatter cabin + explicit glazing / Machine PASS / Visual REVISE: split closed-volume architecture still reads as hat/pillbox' \
+            'R03: body-cabin interface CONDITIONALLY UNLOCKED -> one integrated primary shell; stance hard points and lower-body section values retained' \
             > "$OUT/REVISION_CHAIN.txt"
 
-      - name: Validate R02 Machine and Construction pre-gates
+      - name: Validate R03 Machine and Construction pre-gates
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R02"
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Primary_Surface_v0.8-R03"
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/OLEANDER_Automotive_Primary_Surface_v0.8-R02')
+          out=Path('out/OLEANDER_Automotive_Primary_Surface_v0.8-R03')
           q=json.loads((out/'AUTOMOTIVE_PRIMARY_QA.json').read_text())
           r=json.loads((out/'AUTOMOTIVE_PRIMARY_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED', q
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
-          assert q['revision']=='R02'
-          assert 1.38 <= q['exterior_height_from_ground_m'] <= 1.46
+          assert q['revision']=='R03'
           assert len(list((out/'renders').glob('*.png')))==8
-          assert q['checks']['premature_detail_absent'] is True
-          assert q['checks']['body_control_ngon_zero'] is True
-          assert q['checks']['cabin_control_ngon_zero'] is True
-          assert q['checks']['body_final_manifold'] is True
-          assert q['checks']['cabin_final_manifold'] is True
+          for key in ['length_corridor','width_corridor','height_corridor','wheelbase','track','integrated_shell_manifold','control_ngon_zero','single_primary_shell','section_count','wheel_guides','premature_detail_absent','render_matrix']:
+              assert q['checks'][key] is True, (key,q)
           assert (out/'MODELING_CONTRACT.json').exists()
           assert (out/'OLEANDER_Automotive_Primary_Surface_v0.8.blend').exists()
-          print('AUTOMOTIVE PRIMARY V0.8 R02 MACHINE/CONSTRUCTION PRE-GATE PASS; VISUAL REVIEW REQUIRED')
+          print('AUTOMOTIVE PRIMARY V0.8 R03 MACHINE/CONSTRUCTION PRE-GATE PASS; VISUAL REVIEW REQUIRED')
           PY
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: Upload v0.8 R02 primary-surface evidence
+      - name: Upload v0.8 R03 primary-surface evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-modeling-worker-automotive-primary-v0-8-r02-${{ github.run_id }}
-          path: out/OLEANDER_Automotive_Primary_Surface_v0.8-R02/
+          name: oleander-modeling-worker-automotive-primary-v0-8-r03-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_Primary_Surface_v0.8-R03/
           if-no-files-found: error
           retention-days: 14
