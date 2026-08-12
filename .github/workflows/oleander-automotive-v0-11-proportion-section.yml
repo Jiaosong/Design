@@ -19,12 +19,14 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Decode builder and syntax-check
+      - name: Decode R01 builder + R02 section revision
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011.py.gz.b64 | gzip -d > /tmp/build_automotive_v011.py
-          python3 -m py_compile /tmp/build_automotive_v011.py
+          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r02.py.gz.b64 | gzip -d > /tmp/revise_v011_r02.py
+          python3 -m py_compile /tmp/build_automotive_v011.py /tmp/revise_v011_r02.py
           test "$(sha256sum /tmp/build_automotive_v011.py | awk '{print $1}')" = "5e48c20821b4af6615e671cf19fcf6b7ba3c0b5c0f911fd8060e8d66829fd6f3"
+          test "$(sha256sum /tmp/revise_v011_r02.py | awk '{print $1}')" = "a2a4ff20c7ef1abf45f90026fb667f74b7ee753f575dbb177b2b3665b3dd3049"
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -36,15 +38,16 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
 
-      - name: Build fresh M1-M5 automotive source and render diagnostics
+      - name: Build R02 M1-M5 source and render diagnostics
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/build_automotive_v011.py -- --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r02.py -- --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          echo 'R02: lower/longer greenhouse + explicit roof-edge/upper-glass section controls + stronger plan taper' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
@@ -66,14 +69,14 @@ jobs:
           assert len(c['sections']['items'])==14
           assert len(list((out/'renders').glob('*.png')))==8
           assert q['checks']['premature_detail_absent'] is True
-          print('AUTOMOTIVE v0.11 M1-M5 MACHINE GATE PASS')
+          print('AUTOMOTIVE v0.11 R02 M1-M5 MACHINE GATE PASS')
           PY
 
-      - name: Upload v0.11 diagnostic evidence
+      - name: Upload v0.11 R02 diagnostic evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-automotive-v0-11-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r02-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
