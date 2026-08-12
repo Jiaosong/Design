@@ -1,0 +1,29 @@
+{
+  "schema": "oleander.automotive-detail.promotion.v0.10",
+  "date": "2026-08-12",
+  "model": "OLEANDER_Automotive_Detail_v0.10",
+  "source_authority": "OLEANDER_Automotive_Secondary_v0.9",
+  "modeling_contract": "v0.2 / spec patch v0.2.1",
+  "stage": "M8",
+  "fidelity": "F2_PROMOTION",
+  "decision": "PASS_WITH_LIMITATIONS",
+  "from_authority": "WORKING_SOURCE",
+  "to_authority": "CANDIDATE_AUTHORITY_DETAIL_INSTANCE_BENCHMARK",
+  "canonical_revision": "M8-R02",
+  "runtime": {
+    "run": 31561128705,
+    "job": 94003451816,
+    "artifact": 9127774318,
+    "artifact_sha256": "6d0bd90f0d84a17697b3c157165d9e0fd222e8640a9991f455b5e828cba0ea4f",
+    "execution_seconds": 72
+  },
+  "source_lock": {
+    "v0_9_scene_hash_before": "824f5d124c0afb4bc52cab098d2ea668a155462346ed133a4bc1b0e556dc3ae8",
+    "v0_9_scene_hash_after": "824f5d124c0afb4bc52cab098d2ea668a155462346ed133a4bc1b0e556dc3ae8",
+    "unchanged": true,
+    "source_object_count": 31
+  },
+  "m8_component_count": 44,
+  "next_gate": "M9_MATERIAL_CMF_BINDING / M10_MULTI_SCALE_QA",
+  "boundary": "Designer detail/instance benchmark only; not Class-A or engineering/production validation."
+}
