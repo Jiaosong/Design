@@ -1,11 +1,12 @@
 # C04-WS-04｜R05 A Photo-dominant Research Audit v0.1
 
 **Project:** `C04｜清江石书｜红花峰林十三印`  
-**Workstream:** `C04-WS-04｜视觉阅读与身份`  
+**Current Workstream:** `C04-WS-04｜视觉阅读与身份` (P3)  
+**Legacy/runtime namespace:** `WS-07A / WS-07A.2` — compatibility only, not a current project level  
 **Notion output:** `C04-WS04-OUT-004` — https://app.notion.com/p/3bab86be5c478111a9cbda76c820b52d?pvs=204  
 **Evidence:** `EVD-C04-003｜Official Web Media Technical Audit v0.1`  
-**Runtime:** COCOS4 Smoke #52 / run `31561027659` / artifact `9127918519`  
-**Status:** `A = REVISE / NO C04-VAL-02`
+**Current Loop:** `Exploration`  
+**Status:** `KEEP A / SKIP B / NO C04-VAL-02 / FINAL HERO TECH HOLD`
 
 ## 1. Tested asset
 
@@ -17,89 +18,104 @@
 - source technical evidence: `1080×525`, `120087 bytes`;
 - final Hero tech: `FAIL_LT2400_FINAL_HERO`;
 - experiment usage: `RESEARCH_PROTOTYPE_ONLY`;
-- exact 红花石林 identity: still requires re-verification.
+- exact 红花石林 identity: still requires re-verification before Final Hero promotion.
 
 ## 2. Runtime/materialization result
 
-PASS:
+The controlled pipeline is now proven:
 
-- official URL downloaded during C04 materialization;
-- SHA-256 and expected byte count verified fail-closed;
-- image imported into the generated Creator project as local resource;
-- pinned MCP v0.3 scene materialization created the governed Sprite node and mounted the media controller;
-- `web-mobile` build passed;
-- existing WS-07A 18-screen runtime/responsive baseline passed unchanged;
-- R05-A extra captures passed at `1080×1920`, `390×844`, `844×390`;
-- runtime failures, runtime exceptions and console errors = `0`.
+`official JPEG → URL/SHA256/byte lock → C04 materialization → Creator ImageAsset/Sprite → MCP scene v0.3 → web-mobile build → baseline 18-screen regression → responsive audit → R05 3-viewport capture → runtime readability assertions → human visual review`
 
-This establishes:
+Final A.2 technical evidence:
 
-`OFFICIAL LOW-RES MEDIA MATERIALIZATION PASS / R05-A RESEARCH RUNTIME CAPTURE PASS`.
+- PR #82 HEAD tested: `b305afa386088aab5a25cf89a6121047c89603fd`;
+- AI Governance Evals #259 = PASS;
+- OLEANDER COCOS4 Smoke #60 / run `31563200312` = PASS;
+- artifact `9128687816`;
+- digest `sha256:8f268b485b9676224f8083908a239e4730c6e3f0d73cc41d44a43eda72745870`;
+- viewports: `1080×1920`, `390×844`, `844×390`;
+- runtime/capture failures = `0`;
+- runtime exceptions = `0`;
+- console errors = `0`.
 
-It does not establish Final Hero or final visual approval.
+This establishes a research runtime/media PASS. It does not establish Final Hero or field reality.
 
-## 3. Human visual audit
+## 3. Controlled experiment history
 
-### PASS — Photo-dominant landscape hierarchy
+### A｜Photo-dominant
 
-- the peak/stone-forest image is the first reading in all three viewports;
-- no card stack, faux-antique frame, bronze skin or decorative Mark competes with the landscape;
-- both portrait viewports retain the main peak mass;
-- landscape orientation preserves the strongest full relation between peak group, vegetation and cableway scale;
-- the test supports the WS-04 rule that S0 may use nearly zero graphic intervention.
+PASS: `PHOTO-DOMINANT LANDSCAPE HIERARCHY`.
 
-### FAIL — Prompt/media relation
+The real landscape is the first reading in all three viewports; no decorative Mark, faux-antique frame or heavy card stack competes with it.
 
-Current runtime observation:
+Initial FAIL: the former observation asked the visitor to inspect peak-forest-to-river distance, while the adopted photograph contains no readable Qingjiang river surface.
 
-`收起手机，先看峰林与江面的距离关系。`
+### A.1｜Prompt correction
 
-The adopted photograph contains no readable Qingjiang river surface in any of the three captured viewports.
+Observation revised to:
 
-Therefore the photograph cannot support the current observation action. A Relation Mark must not draw, imply or compensate for a river relation that is absent from the factual photograph.
+`收起手机，先看峰体的高低、疏密与层次。`
 
-Decision:
+The prompt now refers only to relationships visible in the photograph. Photograph, crop, layout and interaction remained locked.
 
-`PROMPT–MEDIA RELATION FAIL`.
+### A.2｜Readability correction
 
-### REVISE — Text legibility
+Only photo-active readability variables changed:
 
-- Return Guard text sits over dark green vegetation and is visibly under-contrasted;
-- the white title/observation in the landscape viewport is less stable against bright sky;
-- the next visual iteration should test a minimal local gradient/text-protection treatment rather than reintroducing heavy UI cards.
+- lightweight native Cocos Label shadow for title and observation;
+- high-contrast Return Guard with restrained shadow;
+- short observation retained;
+- protections restore to baseline when the photo experiment is inactive;
+- runtime capture asserts the protection state in all three viewports.
+
+## 4. Human visual audit｜2026-08-12
+
+### PASS — Landscape First
+
+The photograph remains the dominant first reading in `1080×1920`, `390×844` and `844×390`. Text protection stays local to glyphs and does not become an overlay panel.
+
+### PASS — Prompt ↔ Media
+
+The current observation matches visible peak-height, density and depth/layering relationships. No absent river relation is implied.
+
+### PASS — Readability / S0 density
+
+- title and observation remain readable against sky/rock;
+- Return Guard is readable over vegetation;
+- effective title/body rendering remains in a coherent pixel range across the three runtime viewports;
+- S0 remains intentionally sparse and does not become UI-led.
+
+## 5. Decision
+
+`PIPELINE PASS / RUNTIME PASS / RESPONSIVE PASS / R05 A.2 HUMAN VISUAL PASS / KEEP A / SKIP B / FINAL HERO TECH HOLD`.
+
+### KEEP A / SKIP B
+
+Do **not** add `B｜Photo + Relation Mark` merely to make R05 look like a designed system. The photograph already carries the first reading and the observation directs attention sufficiently. A Relation Mark would add visual occupation without closing an evidence gap.
 
 ### HOLD — Final Hero technical quality
 
-The published website source is only `1080×525`. EVD-C04-003 already establishes that it fails the current `>=2400 px` fallback Hero threshold.
+The web-published source remains `1080×525`, below the current `>=2400 px` fallback Hero requirement. Research PASS does not promote it to Final Hero or Canonical Production.
 
-It remains valid only as `RESEARCH / LOW-RES WEB SOURCE / NON-FINAL`.
+## 6. New-framework validation boundary
 
-## 4. Decision
+A / A.1 / A.2 are Exploration experiments/outputs under the P3 Workstream; they are not P4 levels.
 
-`PIPELINE PASS / PHOTO-DOMINANT LANDSCAPE HIERARCHY PASS / PROMPT–MEDIA RELATION FAIL / LEGIBILITY REVISE / FINAL HERO HOLD`.
+No `C04-VAL-02` is created here. Create a new P4 only when there is a genuinely independent validation question across the relevant visual-content system.
 
-`A = REVISE`.
-
-## 5. Next gate before B
-
-Do **not** start `B｜Photo + Relation Mark` using this image yet.
-
-First close `R05 OBSERVATION ↔ MEDIA RELATION` through one of two controlled paths:
-
-1. **Media-first:** find an official R05 image where peak forest + Qingjiang relation is actually visible, keeping the current observation; or
-2. **Prompt revision:** if WS-04 decides that R05's first reading should instead focus on peak contour, depth/rhythm and vegetation proportion, explicitly revise the R05 observation and rerun A with the same photograph.
-
-Do not preserve the current copy by graphically inventing an absent river relation.
-
-## 6. Validation boundary
-
-No `C04-VAL-02` is created by this audit.
-
-The current formal boundary remains:
+Current formal boundary:
 
 - `C04-VAL-01` runtime/responsive structure = PASS;
-- low-res official media pipeline = PASS;
-- R05 A visual structure = PASS;
-- R05 content relation = REVISE;
-- Final Hero tech = HOLD;
-- final Landscape First visual = NOT PASSED.
+- R05 official research-media pipeline = PASS;
+- R05 A.2 human visual review = PASS;
+- R05 Final Hero tech = HOLD;
+- R01 / R06 / R13 media closure = OPEN;
+- final cross-page Landscape First visual system = OPEN;
+- G1F field/professional survey = IMPLEMENTATION HOLD.
+
+## 7. Next Priority-0 decision
+
+Move the active C04-WS-04 Exploration to:
+
+1. `R13 一线天 / S0` — obtain an official node-specific fissure/framing image;
+2. `R06 多级阶地·不对称河谷 / S2` — obtain an official image capable of supporting the terrace/valley Science Hero reading.
