@@ -7,7 +7,10 @@
 - Official website media rights state: `RIGHTS PASS / PROJECT-USE APPROVED`.
 - Official website assets still require `NODE PASS + TECH PASS` before becoming final visual candidates.
 - Commercial licensable third-party pool: found; normal third-party license terms still apply.
-- Drive-owned exact-node image search: no pre-existing matching image asset found; official-web intake folder is now established.
+- Drive intake root renamed to `C04-WS-04__VISUAL-MEDIA__NODE-TECH-REVIEW`.
+- Official media intake: `05_OFFICIAL-WEB__PROJECT-USE-APPROVED`.
+- Third-party proof: `00_RIGHTS_LICENSE_PROOF__THIRD-PARTY`.
+- Unlicensed third-party references: `90_THIRD-PARTY_REFERENCE-ONLY_DO-NOT-PUBLISH`.
 - Current gate: `OFFICIAL-WEB RIGHTS PASS / PRIORITY-0 NODE+TECH SELECTION ACTIVE`.
 - Next formal validation: `C04-VAL-02` after at least one Priority-0 official-web or otherwise-cleared asset passes node + technical review and enters the responsive prototype.
 
