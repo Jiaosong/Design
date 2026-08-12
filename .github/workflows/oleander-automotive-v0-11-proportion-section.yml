@@ -19,14 +19,14 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Decode R05 source-grid and syntax-check direct R06 source
+      - name: Decode R05 source-grid and syntax-check direct R07 source
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
-          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r06.py /tmp/revise_v011_r06.py
-          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r06.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r07.py /tmp/revise_v011_r07.py
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py
           test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
-          git rev-parse HEAD > /tmp/R06_SOURCE_COMMIT.txt
+          git rev-parse HEAD > /tmp/R07_SOURCE_COMMIT.txt
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -38,17 +38,17 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
 
-      - name: Build R06 continuous source grid and derived diagnostics
+      - name: Build R07 production-calibrated package and section grid
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r06.py -- --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r07.py -- --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
-          cp /tmp/R06_SOURCE_COMMIT.txt "$OUT/R06_SOURCE_COMMIT.txt"
-          echo 'R06: continuous quad Source Grid; piecewise-linear profile preserves cowl/backlight stations; wheel arches + front/rear terminations are diagnostic derived geometry only' > "$OUT/REVISION_CHAIN.txt"
+          cp /tmp/R07_SOURCE_COMMIT.txt "$OUT/R07_SOURCE_COMMIT.txt"
+          echo 'R07: real-production proportion corridor; 4.65m / 2.82m / 1.86m / 1.45m; 22-section continuous source grid; wheel package guides only; no destructive wheel arch at M5' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
@@ -66,19 +66,19 @@ jobs:
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
           assert c['contract_version']=='v0.2' and c['spec_patch']=='v0.2.1'
           assert c['modeling_stage']=='M5'
-          assert len(c['sections']['items'])==20
+          assert len(c['sections']['items'])==22
           assert q['checks']['source_quad_only'] is True
-          assert q['checks']['termination_surfaces'] is True
+          assert q['checks']['no_destructive_wheel_boolean'] is True
           assert q['checks']['premature_detail_absent'] is True
           assert len(list((out/'renders').glob('*.png')))==8
-          print('AUTOMOTIVE v0.11 R06 SOURCE/DERIVED MACHINE GATE PASS')
+          print('AUTOMOTIVE v0.11 R07 PROPORTION/SECTION MACHINE GATE PASS')
           PY
 
-      - name: Upload v0.11 R06 diagnostic evidence
+      - name: Upload v0.11 R07 diagnostic evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-automotive-v0-11-r06-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r07-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
