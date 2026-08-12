@@ -17,7 +17,7 @@ while keeping:
 - the shared wheel_hp_contract.py as the only wheel package correction authority.
 """
 from __future__ import annotations
-import importlib.util,json
+import importlib.util,json,bpy
 from pathlib import Path
 
 
