@@ -6,6 +6,8 @@ Canonical method source: Notion `AIG-01｜AI Evaluation & Regression Protocol v0
 ## Namespace rule
 `AIG-01` is the current AI-governance identifier. `P0` is reserved by the project axis for `Portfolio` and must not be reused for AI governance. Historical records that already contain AI `P0` remain immutable audit evidence only.
 
+`L0–L7` is reserved for Knowledge Architecture. AIG evaluation depth therefore uses the explicit `EVAL-*` namespace rather than bare `L*` labels.
+
 ## Retrieval alias / authority routing
 Canonical query: **What happens when a model, prompt, skill, tool or retrieval policy changes?**
 
@@ -53,11 +55,13 @@ AI is never justified only because it is faster, available, visually impressive,
 Every reusable OLEANDER skill, prompt family, or model-dependent workflow must be tested against task-specific cases.
 
 ### Eval layers
-1. `L1 Contract`: required fields, truth states, locked variables, output format.
-2. `L2 Evidence`: source accuracy, unsupported claims, stale-source rejection, authority selection.
-3. `L3 Task`: whether the task-specific output is correct and useful.
-4. `L4 Safety / Rights`: whether the run incorrectly closes safety, legal, cultural, rights, privacy, or professional gates.
-5. `L5 Regression`: whether a new model / prompt / skill version performs worse than the approved baseline.
+1. `EVAL-1 Contract`: required fields, truth states, locked variables, output format.
+2. `EVAL-2 Evidence`: source accuracy, unsupported claims, stale-source rejection, authority selection.
+3. `EVAL-3 Task`: whether the task-specific output is correct and useful.
+4. `EVAL-4 Safety / Rights`: whether the run incorrectly closes safety, legal, cultural, rights, privacy, or professional gates.
+5. `EVAL-5 Regression`: whether a new model / prompt / skill version performs worse than the approved baseline.
+
+These are AI evaluation dimensions, not Knowledge Architecture levels.
 
 ### Eval status
 - `PASS`
