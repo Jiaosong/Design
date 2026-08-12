@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "project_axis": ["P0 Portfolio", "P1 Program", "P2 Project", "P3 Workstream", "P4 Validation"],
+  "node_codes_are_project_ids": false,
+  "delivery_priority_namespace": ["Priority-0", "Priority-1", "Priority-2", "Priority-3"],
+  "project": {
+    "id": "PRAC-IP-2026",
+    "level": "P2",
+    "parent": "PG-30",
+    "main_layer": "IP",
+    "notion_project_id": "3bab86be-5c47-8192-9571-c3735fcd814a",
+    "notion_canonical_page_id": "3bab86be-5c47-81ef-8473-fa89f0ea00b2"
+  },
+  "workstreams": [
+    {
+      "id": "PRAC-IP-2026-WS-01",
+      "workflow_code": "IP-PRODUCT-FORM",
+      "node": "IP03",
+      "name": "Product Form & Interface",
+      "notion_id": "3bab86be-5c47-81bf-b2c5-e3b076658823",
+      "l7_id": "PRAC-IP-FORM-20260808-01",
+      "governance": "HOLD",
+      "current_gate": "G4",
+      "delivery_priority": "Priority-3",
+      "truth": "Abstract method exists; real product-family structure/manufacturing/ergonomics/user evidence open"
+    },
+    {
+      "id": "PRAC-IP-2026-WS-02",
+      "workflow_code": "IP-WAYFINDING",
+      "node": "IP04",
+      "name": "Wayfinding",
+      "notion_id": "3bab86be-5c47-816c-971b-faced4733cdf",
+      "l7_id": "PRAC-IP-WAYFINDING-20260810-01",
+      "governance": "ACTIVE",
+      "current_gate": "G4",
+      "delivery_priority": "Priority-1",
+      "truth": "Abstract A/B method exists; field and unfamiliar-user reality open"
+    },
+    {
+      "id": "PRAC-IP-2026-WS-03",
+      "workflow_code": "IP-MOTION",
+      "node": "IP03",
+      "name": "Motion Hierarchy",
+      "notion_id": "3bab86be-5c47-8124-94a0-ddd4eff1d53f",
+      "l7_id": "PRAC-IP-MOTION-20260811-01",
+      "governance": "ACTIVE",
+      "current_gate": "G4",
+      "delivery_priority": "Priority-2",
+      "truth": "Storyboard/reduced-motion method exists; real interface/device/user task evidence open"
+    }
+  ],
+  "validations": [],
+  "shared_system_exclusions": [
+    {
+      "project_id": "SYS-BLENDER-SURFACE",
+      "reason": "IP03 is knowledge ownership only; shared system belongs to PG-10, not annual IP Practice"
+    }
+  ],
+  "historical_artifact_policy": {
+    "move_or_rename_old_artifacts": false,
+    "old_node_or_date_paths_define_project_hierarchy": false,
+    "evidence_status_inheritance": "DENY"
+  }
+}
