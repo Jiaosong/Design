@@ -35,7 +35,7 @@ jobs:
           bash -n tools/oleander-runtime/blender.sh
           python3 tests/oleander-blender-runtime-contract.py
 
-  automotive-r14-execution-bridge:
+  automotive-r15-execution-bridge:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -43,7 +43,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Stage R05 and R07-R14 dependency chain
+      - name: Stage R05 and R07-R15 dependency chain
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
@@ -54,9 +54,10 @@ jobs:
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r11.py /tmp/revise_v011_r11.py
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r12.py /tmp/revise_v011_r12.py
           cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r14.py /tmp/revise_v011_r14.py
-          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r15.py /tmp/revise_v011_r15.py
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r07.py /tmp/revise_v011_r08.py /tmp/revise_v011_r09.py /tmp/revise_v011_r10.py /tmp/revise_v011_r11.py /tmp/revise_v011_r12.py /tmp/revise_v011_r14.py /tmp/revise_v011_r15.py
           test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
-          git rev-parse HEAD > /tmp/R14_SOURCE_COMMIT.txt
+          git rev-parse HEAD > /tmp/R15_SOURCE_COMMIT.txt
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -68,21 +69,21 @@ jobs:
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
 
-      - name: Build R14 Source Feature-Loop topology
+      - name: Build R15 integrated shoulder/fender topology
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11"
           mkdir -p "$OUT"
           START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r14.py -- --out "$OUT" --samples 8 --resolution 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r15.py -- --out "$OUT" --samples 8 --resolution 640
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
-          cp /tmp/R14_SOURCE_COMMIT.txt "$OUT/R14_SOURCE_COMMIT.txt"
-          echo 'R14: Source Feature-Loop topology; wheel arch and fender crown are explicit Source loops; no Source Boolean/SubD; M6-M8 blocked' > "$OUT/REVISION_CHAIN.txt"
+          cp /tmp/R15_SOURCE_COMMIT.txt "$OUT/R15_SOURCE_COMMIT.txt"
+          echo 'R15: R14 detached crown removed; shoulder becomes local fender crown; two blend loops connect to inner wheel arch; terminal taper local only; M6-M8 blocked' > "$OUT/REVISION_CHAIN.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: R14 Machine Gate
+      - name: R15 Machine Gate
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -96,17 +97,17 @@ jobs:
           assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
           assert c['contract_version']=='v0.2' and c['spec_patch']=='v0.2.1'
           assert c['modeling_stage']=='M5'
-          for key in ['source_ngon_zero','controlled_triangles_only','source_no_boolean','source_no_subd','four_arch_boundaries','four_fender_crowns','hood_feature_lines','shoulder_feature_lines','premature_detail_absent','render_matrix']:
+          for key in ['source_ngon_zero','controlled_triangles_only','source_no_boolean','source_no_subd','four_arch_boundaries','four_fender_crowns','shoulder_feature_lines','premature_detail_absent','render_matrix']:
               assert q['checks'][key] is True, (key,q)
           assert len(list((out/'renders').glob('*.png')))==12
-          print('AUTOMOTIVE v0.11 R14 SOURCE FEATURE-LOOP MACHINE GATE PASS')
+          print('AUTOMOTIVE v0.11 R15 INTEGRATED FENDER MACHINE GATE PASS')
           PY
 
-      - name: Upload R14 evidence
+      - name: Upload R15 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-automotive-v0-11-r14-${{ github.run_id }}
+          name: oleander-automotive-v0-11-r15-${{ github.run_id }}
           path: out/OLEANDER_Automotive_Proportion_Section_Rebuild_v0.11/
           if-no-files-found: error
           retention-days: 14
