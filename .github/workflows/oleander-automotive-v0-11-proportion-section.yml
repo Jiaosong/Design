@@ -19,11 +19,11 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Decode R05 source-grid + R06 diagnostic revision
+      - name: Decode R05 source-grid and validate direct R06 source
         run: |
           set -euo pipefail
           base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/build_automotive_v011_r05.py.gz.b64 | gzip -d > /tmp/build_automotive_v011_r05.py
-          base64 -d 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r06.py.gz.b64 | gzip -d > /tmp/revise_v011_r06.py
+          cp 90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r06.py /tmp/revise_v011_r06.py
           python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r06.py
           test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
           test "$(sha256sum /tmp/revise_v011_r06.py | awk '{print $1}')" = "6bedd131ebcf06442f18530414b925fda2091416d78fec6418bf00370ffff6f7"
