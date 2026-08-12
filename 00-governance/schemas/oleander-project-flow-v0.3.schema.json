@@ -14,17 +14,71 @@
     "exit_condition",
     "persistence"
   ],
+  "$defs": {
+    "application_mapping_code": {
+      "enum": [
+        "B01", "B02", "B03", "B04",
+        "CU01", "CU02", "CU03", "CU04",
+        "IP01", "IP02", "IP03", "IP04",
+        "SP01", "SP02", "SP03", "SP04"
+      ]
+    },
+    "knowledge_level": {
+      "enum": ["L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7"]
+    }
+  },
   "properties": {
     "project": {
       "type": "object",
-      "required": ["name", "primary_layer"],
+      "required": ["name", "project_level", "project_id"],
       "properties": {
-        "name": {"type": "string"},
-        "case_id": {"type": ["string", "null"], "description": "Only canonical Cxx case IDs where applicable."},
-        "primary_layer": {"enum": ["Business", "Culture", "IP", "Spatial"]},
-        "primary_node": {"type": "string"},
-        "supporting_nodes": {"type": "array", "items": {"type": "string"}}
-      }
+        "name": {"type": "string", "minLength": 1},
+        "project_level": {
+          "enum": ["P0", "P1", "P2", "P3", "P4"],
+          "description": "Project Axis level only: P0 Portfolio / P1 Program / P2 Project / P3 Workstream / P4 Validation."
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Explicit Project Axis identity. A bare Cnn Case ID or B/CU/IP/SP Application Mapping code is invalid here."
+        },
+        "case_id": {
+          "type": ["string", "null"],
+          "pattern": "^C[0-9]{2,}$",
+          "description": "Canonical Case Axis ID where applicable. It does not substitute for project_id."
+        },
+        "delivery_priority": {
+          "enum": ["Priority-0", "Priority-1", "Priority-2", "Priority-3", null]
+        },
+        "application_primary_mapping": {
+          "anyOf": [
+            {"$ref": "#/$defs/application_mapping_code"},
+            {"type": "null"}
+          ],
+          "description": "Primary Application Mapping only; not Knowledge Architecture ownership and not Project Axis identity."
+        },
+        "application_mapping": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/application_mapping_code"},
+          "description": "Business/Culture/IP/Spatial application locations only."
+        },
+        "knowledge_context": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["domain", "level"],
+            "properties": {
+              "domain": {"type": "string", "minLength": 1},
+              "level": {"$ref": "#/$defs/knowledge_level"},
+              "object_id": {"type": ["string", "null"]}
+            },
+            "additionalProperties": false
+          },
+          "description": "Knowledge Architecture references. Each object resolves an explicit Domain and exact L0-L7 level before Application Mapping."
+        }
+      },
+      "additionalProperties": false
     },
     "decision_question": {"type": "string", "minLength": 1},
     "loop": {"enum": ["EXPLORATION_SANDBOX", "CANONICAL_PRODUCTION"]},
