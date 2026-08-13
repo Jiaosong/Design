@@ -1,8 +1,10 @@
-# OLEANDER Modeling Worker｜Automotive v0.11 Candidate Authority
+# OLEANDER Modeling Worker｜Automotive v0.11 Candidate Authority｜Historical Receipt
 
-Authority state: `CANDIDATE_AUTHORITY / PAP_PASS / READY_FOR_PROMOTE_REVIEW / NOT PROMOTED / DRAFT PR`
+Authority state: `SUPERSEDED_BY_CANONICAL_AUTHORITY / HISTORICAL_CANDIDATE_RECEIPT`
 
-Promotion review: `PROMOTION_REVIEW_2026-08-13.md`
+Canonical successor: `CANONICAL_AUTHORITY_R29A_2026-08-13.md`
+Promotion merge commit: `1ee9d06a54e799a57835e761d32c706644792365`
+Promotion review: `PROMOTE_REVIEW_FINAL_2026-08-13.md`
 PAP manifest: `PAP_MANIFEST_v1.json`
 PAP receipt: `PAP_RECEIPT_2026-08-13.md`
 
@@ -14,7 +16,7 @@ System:
 Benchmark:
 `Automotive v0.11`
 
-Primary Source candidate:
+Primary Source candidate promoted to Canonical Authority:
 `R29A｜Shoulder-Fed Monotonic Fender Crown`
 
 Canonical executed Source hash:
@@ -29,7 +31,7 @@ Wheel hard-point contract:
 - M1 Hard Points — PASS after wheel-display implementation correction
 - M2 Envelope / Package — retained
 - M3 Section Network — retained
-- M4 Primary Geometry — R29A current candidate
+- M4 Primary Geometry — R29A promoted source
 - M5 Construction & Surface QA — PASS
 - M6 Component Architecture — PASS
 - M7 Secondary Geometry — PASS
@@ -96,8 +98,9 @@ Canonical interchange:
 Cross-system receipt:
 - Drive manifest `1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P`
 - Drive receipt `1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi`
-- Notion page `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
-- GitHub `PAP_MANIFEST_v1.json` + `PAP_RECEIPT_2026-08-13.md`
+- Notion PAP page `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
+- Notion Canonical Authority receipt `3bbb86be-5c47-8194-8bac-f323fc4ea324`
+- Drive Canonical Authority receipt `1wc33xRbVikGcjz7v5Ntip6v_30VUAUEnmArt5wYktv8`
 
 ## Retained construction authority
 
@@ -127,7 +130,7 @@ Cross-system receipt:
 
 ## Explicit non-authority
 
-This candidate does not claim:
+This authority does not claim:
 - Class-A surfacing;
 - automotive engineering CAD;
 - validated structural / crash / aero performance;
@@ -137,20 +140,18 @@ This candidate does not claim:
 - homologation;
 - final CMF.
 
-## Current promotion state｜2026-08-13
+## Promotion closure｜2026-08-13
 
-The previous `HOLD / PERSISTENCE_GATE` is closed.
+The prior Candidate Authority state is closed by successful Promotion Execution.
 
-Current persistence classification:
+`DESIGN STATE = PROMOTED`
 
-`PERSISTENCE PASS / PAP-G0—PAP-G6 PASS`
+`AUTHORITY STATE = CANONICAL_AUTHORITY`
 
-No M5–M10 gate is reopened and Candidate Authority is not downgraded.
+Canonical receipt:
+`CANONICAL_AUTHORITY_R29A_2026-08-13.md`
 
-The next allowed action is a **new explicit Promote Review**. Before `CANDIDATE_AUTHORITY → CANONICAL_AUTHORITY`, recheck PR #85 mergeability, AI Governance Evals, Blender Runtime Contract, PAP consistency and the explicit non-authority boundary.
+PR #85 was merged into main as commit:
+`1ee9d06a54e799a57835e761d32c706644792365`
 
-Until that decision:
-- PR #85 stays Draft;
-- no automatic merge;
-- downstream reuse cites `CANDIDATE_AUTHORITY`, not `CANONICAL_AUTHORITY`;
-- no final-CMF / engineering / manufacturing authority is implied.
+This file is retained as a historical Candidate receipt and must no longer be cited as the current authority state.
