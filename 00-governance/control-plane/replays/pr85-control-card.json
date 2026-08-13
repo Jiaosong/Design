@@ -14,6 +14,7 @@
   "problem_layer": "Evidence",
   "authority_source": {
     "state": "CANDIDATE_AUTHORITY",
+    "object_id": "AUTO-R29A",
     "source_id": "R29A-CANDIDATE-1d5e3da9",
     "location": "Jiaosong/Design#85",
     "sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
