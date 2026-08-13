@@ -30,6 +30,8 @@ jobs:
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/relationship_surface_contract.schema.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json >/dev/null
 
       - name: Run v0.12 regression tests
         run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
@@ -41,6 +43,40 @@ jobs:
             --report /tmp/modeling-worker-v012-report.json
           cat /tmp/modeling-worker-v012-report.json
 
+      - name: Control Plane v0.3 LIVE check — E3 application card
+        run: |
+          python 00-governance/control-plane/control_plane.py check \
+            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+
+      - name: Validate E3 Automotive application relationship contract
+        run: |
+          python 90-shared/toolchains/modeling-worker/v0.12/validate_relationship_surface.py \
+            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json \
+            --report /tmp/modeling-worker-v012-e3-contract-report.json
+          cat /tmp/modeling-worker-v012-e3-contract-report.json
+
+      - name: Assert E3 remains fail-closed before execution
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          card=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json').read_text())
+          contract=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json').read_text())
+          assert card['mode']=='CANDIDATE'
+          assert card['authority_source']['state']=='WORKING_SOURCE'
+          assert card['evidence_state']['machine']=='NOT_RUN'
+          assert card['evidence_state']['visual']=='NOT_RUN'
+          assert card['evidence_state']['project']=='NOT_RUN'
+          assert card['evidence_state']['promotion']=='BLOCKED'
+          assert contract['gate_state']['M2']=='OPEN'
+          assert contract['gate_state']['M3']=='BLOCKED'
+          assert contract['gate_state']['M4']=='BLOCKED'
+          assert contract['gate_state']['M4_5']=='BLOCKED'
+          assert contract['gate_state']['M5']=='BLOCKED'
+          assert contract['gate_state']['M6_plus_blocked'] is True
+          print('E3_PRE_EXECUTION_FAIL_CLOSED_PASS')
+          PY
+
       - name: Publish boundary summary
         if: always()
         run: |
@@ -49,6 +85,8 @@ jobs:
           echo '- Low-frequency Control Cage is topology-independent.' >> "$GITHUB_STEP_SUMMARY"
           echo '- M4.5 Surface Fairness blocks M5/M6+ until passed.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Smooth shading is never accepted as fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 is the first Control Plane v0.3 LIVE application card and starts at WORKING_SOURCE / M2 OPEN.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 contract validation is not E3 surface execution or design PASS.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Machine fairness proxies do not establish Class-A, engineering or human design authority.' >> "$GITHUB_STEP_SUMMARY"
 
   freeform-blender:
