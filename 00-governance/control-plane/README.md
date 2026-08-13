@@ -1,64 +1,92 @@
-# OLEANDER Project Control Plane v0.2
+# OLEANDER Project Control Plane v0.3
 
-Status: REVIEW / EXECUTABLE CANDIDATE
+Status: `v0.2 EXECUTABLE CORE / MERGED` + `v0.3 HARDENED ORCHESTRATION CANDIDATE / REVIEW`
 
-This directory turns the v0.1 operational compression layer into a small executable compiler/router. It is subordinate to `00-governance/README.md` and existing canonical specialist systems. It does **not** create a second source of governance truth.
+This directory is subordinate to `00-governance/README.md` and `OLEANDER Current Authority v1.1.0`. It compiles and orchestrates existing governance; it does not create a second authority and never makes the final human Candidate/Canonical/Release decision.
 
-## What v0.2 executes
+## v0.2 executable core
 
-1. **Project Control Card validation** — a single machine-readable card for one active Decision Question.
-2. **Context / namespace resolution** — keeps Knowledge, Application Mapping, Project Axis, Case Axis and Priority separate.
-3. **Gate profile selection** — attaches existing specialist gates only when their triggers apply.
-4. **CB-01 Repeated Revise Breaker** — two consecutive same-question, same-layer Visual/Project `REVISE` results block a third same-layer tuning loop and require `ROOT_CAUSE_RECLASSIFICATION`.
-5. **Asset locator primitive** — deterministic registry + filesystem lookup. Drive/File Library providers must materialize or feed registry entries; CI does not invent connector credentials.
+- Project Control Card validation;
+- Context / namespace resolution;
+- EXPLORE / CANDIDATE / AUTHORITY gate-profile routing;
+- CB-01 repeated-revise breaker;
+- local/registry asset-locator primitive.
 
-## Non-negotiable boundaries
+The checked-in `control-card.schema.json` is now enforced by the executable validator. Schema presence without runtime enforcement is not accepted.
 
-- Machine PASS != Design PASS.
-- Executed != Validated.
-- Digital evidence cannot substitute for Physical / Field / Human / Rights / Engineering evidence.
-- Derived artifacts cannot replace Source Authority.
-- Human judgment owns Candidate retention, Locked Variable reopening, root-cause confirmation and Canonical/Release decisions.
-- No new system Gate is created here; existing Artifact Review, Post-Generation Review, Rights, Reality, Engineering, Human Test and PAP systems are only routed.
+## v0.3 hardened orchestration
+
+### 1. Authority-bound provider receipts
+
+Authority resolution and materialization are separate. A GitHub/Drive/File Library/runtime hit is actionable only when it matches the resolved authority binding:
+
+`object_id + source_id + authority_state + SHA (when available)`
+
+Provider order is search/materialization order, not authority rank. Discovery hits remain blocked until Authority Resolution is complete. `UNLOCATED / E0` is a resolution outcome, not an actionable-success exit.
+
+### 2. Authority-bound gate receipts
+
+Plain strings such as `"Machine QA": "PASS"` are insufficient. Required gate receipts bind:
+
+`gate + result + object_id + source_id + authority_sha256 + gate_version + receipt_id + executed_at + evidence_ref`
+
+Open/blocked/unknown evidence cannot be hidden by omitting a claim type during Promotion.
+
+### 3. Explicit Promotion transition
+
+Every Promotion declares an allowed transition:
+
+- `WORKING_SOURCE -> CANDIDATE_AUTHORITY`
+- `CANDIDATE_AUTHORITY -> CANONICAL_AUTHORITY`
+- `CANONICAL_AUTHORITY -> FROZEN_AUTHORITY`
+- `CANONICAL_AUTHORITY -> RELEASED` while retaining Canonical authority state
+
+Machine completion stops at `READY_FOR_HUMAN_DECISION`.
+
+### 4. Semantic / freshness contradiction scan
+
+Notion / GitHub / Drive snapshots are checked for:
+
+- object identity;
+- snapshot freshness;
+- revision binding;
+- payload hash binding of `fields + semantic + revision`;
+- expected state fields;
+- explicit semantic assertions.
+
+Field consistency alone is not enough.
+
+### 5. PR #85 immutable replay
+
+`replays/` contains the Automotive v0.11 R29A promotion replay grounded in existing PR #85 / Canonical Authority evidence. It verifies:
+
+`Candidate evidence -> READY_FOR_HUMAN_DECISION -> historical human promotion -> Canonical three-system semantic/freshness scan PASS`
+
+Replay mappings do not rewrite historical gate names or create new historical claims.
 
 ## Commands
 
 ```bash
-python 00-governance/control-plane/control_plane.py validate CARD.json
-python 00-governance/control-plane/control_plane.py resolve CARD.json
-python 00-governance/control-plane/control_plane.py gates CARD.json
-python 00-governance/control-plane/control_plane.py breaker CARD.json
 python 00-governance/control-plane/control_plane.py check CARD.json
-python 00-governance/control-plane/control_plane.py locate NAME --root PATH [--registry REGISTRY.json]
+python 00-governance/control-plane/orchestrator.py providers PROVIDER_RECEIPTS.json
+python 00-governance/control-plane/orchestrator.py promotion CARD.json GATE_RECEIPTS.json
+python 00-governance/control-plane/orchestrator.py contradictions MANIFEST.json
 ```
 
-`check` is the fail-closed entry point for CI. It returns non-zero when the card is invalid or CB-01 is tripped.
+## Non-negotiable boundaries
 
-## Problem-layer ladder
-
-`Parameter -> Relation -> Geometry -> Topology -> Architecture -> Evidence`
-
-When CB-01 trips, the tool does not decide the new layer. It blocks same-layer tuning and requires human/root-cause reclassification.
-
-## Gate routing
-
-- `EXPLORE`: Authority Check + Preflight + Visual QA.
-- `CANDIDATE`: Machine + Visual + Project QA.
-- `AUTHORITY`: Machine + Visual + Project QA + existing Artifact/Post-Generation review; specialist gates attach from artifact/claim/persistence triggers.
-- PAP is triggered by production binaries, release packages, or explicit `PAP/FULL_SYNC` persistence triggers.
-- AR-S09 is triggered only for Authority release-package/release/full-sync contexts.
-
-## Asset locator boundary
-
-The locator searches supplied registry entries and materialized filesystem roots. It intentionally cannot call ChatGPT-only Drive/File Library connectors from GitHub Actions. The external orchestrator should query providers in the canonical order and pass durable/materialized results into the executable layer:
-
-`Current Authority / Registry -> GitHub -> Drive -> File Library -> runtime materialization`
-
-Only after the external provider chain and this locator both fail should an object be declared `UNLOCATED / E0`.
+- `Machine PASS != Design PASS`.
+- `Executed != Validated`.
+- `Provider FOUND != Authority resolved` unless exact authority binding passes.
+- `Cross-system consistent != Physical / Field / Human / Rights / Engineering validated`.
+- Derived artifacts cannot replace Source Authority.
+- Human judgment owns Candidate retention, root-cause confirmation, Locked Variable reopening and Canonical/Release decisions.
+- No new system-level Gate is introduced here.
 
 ## Tests
 
 ```bash
 python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' -v
-python 00-governance/control-plane/control_plane.py check 00-governance/control-plane/examples/example-explore.json
+python 00-governance/control-plane/orchestrator.py promotion 00-governance/control-plane/replays/pr85-control-card.json 00-governance/control-plane/replays/pr85-gate-receipts.json
+python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
 ```
