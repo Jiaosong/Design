@@ -1,136 +1,29 @@
-name: OLEANDER Modeling Worker v0.12 R3.3
+name: OLEANDER Modeling Worker v0.12 R3.3｜Historical Audit
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md'
-      - '.github/workflows/oleander-modeling-worker-v0-12-r33.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  r33-contract:
-    name: R3.3 Locked Architecture + Primary Curve Contract
+  immutable-r33-receipt:
+    name: Verify immutable R3.3 application Machine + Human PASS receipt
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: '3.12'
-      - name: Parse and compile R3.3 inputs
-        run: |
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json >/dev/null
-          python -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py
-      - name: Require R3.2 Human REVISE receipt
+      - name: Verify R3.3 lineage
         run: |
           set -euo pipefail
-          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md'
-          grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' "$RECEIPT"
-          grep -F '31687799918' "$RECEIPT"
-          grep -F '9176403622' "$RECEIPT"
-      - name: Assert architecture and thresholds remain locked
+          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md'
+          test -f "$RECEIPT"
+          grep -F 'R3.3 APPLICATION MACHINE PASS / HUMAN PROJECT+VISUAL PASS' "$RECEIPT"
+          grep -F '31688935218' "$RECEIPT"
+          grep -F '9176833315' "$RECEIPT"
+          grep -F 'cd608eb82f191df16ccf32be0a28280577d866b70dbd7bdbe84d8351006c1d3f' "$RECEIPT"
+          echo 'R3_3_APPLICATION_HUMAN_PASS_RECEIPT_VERIFIED'
+      - name: Boundary
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          base=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json').read_text())
-          r32=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json').read_text())
-          r33=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json').read_text())
-          assert base['machine_thresholds']==r32['locked_thresholds']
-          for k,v in r33['locked_architecture'].items(): assert base['architecture'][k]==v,(k,base['architecture'][k],v)
-          assert set(r33['profile_primary_curve_overrides'])==set(base['profile_primary_curves'])
-          assert set(r33['plan_primary_curve_overrides'])==set(base['plan_primary_curves'])
-          assert set(r33['semantic_delta_overrides'])==set(base['semantic_controls'])
-          for vals in r33['profile_primary_curve_overrides'].values(): assert len(vals)==9
-          for vals in r33['plan_primary_curve_overrides'].values(): assert len(vals)==9
-          print('R3_3_ARCHITECTURE_THRESHOLD_AND_PRIMARY_CURVE_CONTRACT_PASS')
-          PY
-
-  r33-blender:
-    name: R3.3 Blender Primary Curve + Semantic Multi-view QA
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Compile R3.3 chain
-        run: |
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_coupled_surface_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r32_coupled_surface_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py
-      - name: Install Blender runtime dependencies
-        run: |
-          set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends libegl1
-      - name: Install Blender 5.2.0 LTS
-        run: |
-          set -euo pipefail
-          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
-          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
-          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
-          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
-          tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Execute E3 R3.3
-        run: |
-          set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R33"
-          mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py -- \
-            --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
-            --r32-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json \
-            --r33-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json \
-            --out "$OUT" --resolution 512
-      - name: R3.3 machine gate
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R33')
-          q=json.loads((r/'E3_R33_MACHINE_REPORT.json').read_text())
-          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED',q
-          assert all(q['checks'].values()),q['checks']
-          assert q['checks']['r3_architecture_locked']
-          assert q['checks']['r32_termination_correction_retained']
-          assert q['checks']['existing_quality_thresholds_unchanged']
-          for cid,row in q['semantic_variants'].items():
-              assert row['source_edit_exact'],cid
-              assert row['direct_declared_authority_effect']['pass'],cid
-              assert row['working_fidelity_legible'],cid
-              assert row['machine_surface_pass'],cid
-          for n in ('E3_R3_HERO.png','E3_R3_SIDE.png','E3_R3_TOP.png','E3_R3_ZEBRA.png','E3_R33_COMPILED_SURFACE_SOURCE.json'):
-              assert (r/n).is_file(),n
-          for cid in ('HOOD_COWL','CABIN','SHOULDER','REAR_HAUNCH','LOWER_BODY','FRONT_TERMINATION','REAR_TERMINATION'):
-              assert (r/f'E3_R3_VARIANT_{cid}_SIDE.png').is_file(),cid
-              assert (r/f'E3_R3_VARIANT_{cid}_TOP.png').is_file(),cid
-          assert any(r.glob('*.blend'))
-          print(json.dumps({'checks':q['checks'],'profile':q['base']['profile_metrics'],'plan':q['base']['plan_metrics'],'variants':{k:v['max_surface_displacement'] for k,v in q['semantic_variants'].items()}},indent=2))
-          PY
-      - name: Upload R3.3 evidence even when fail-closed
-        if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: oleander-modeling-worker-v0-12-e3-r33-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R33/
-          if-no-files-found: error
-          retention-days: 14
-      - name: Publish R3.3 boundary
-        if: always()
-        run: |
-          echo '## E3 R3.3 boundary' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R3 five-family architecture is locked.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R3.2 termination correction and evidence zoning are retained.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Existing Machine thresholds are unchanged.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Only Profile / Plan Primary Curve relations and working-fidelity semantic edit amplitudes change.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Machine PASS opens Human Hero / Side / Top / Zebra + semantic multi-view review only; PAP and Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R3.3 is accepted only at E3 application-benchmark scope. It opens PAP; it does not itself authorize system Promotion, Canonical Authority, final Automotive design, engineering or production claims.' >> "$GITHUB_STEP_SUMMARY"
