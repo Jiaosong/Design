@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.3",
+  "kind": "GATE_RECEIPTS",
+  "execution_mode": "REPLAY",
+  "object_id": "AUTO-R29A",
+  "authority_binding": {
+    "source_id": "R29A-CANDIDATE-1d5e3da9",
+    "authority_state": "CANDIDATE_AUTHORITY",
+    "sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+  },
+  "transition": {
+    "kind": "CANONICAL_PROMOTION",
+    "from_authority_state": "CANDIDATE_AUTHORITY",
+    "target_authority_state": "CANONICAL_AUTHORITY",
+    "target_design_state": "PROMOTED"
+  },
+  "receipts": [
+    {
+      "gate": "Machine QA", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "M10 Multi-Scale QA machine evidence",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-MACHINE",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/M10_MULTI_SCALE_QA_PASS.md"
+    },
+    {
+      "gate": "Visual QA", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "M10 Human Multi-Scale QA + R29A M5 visual decision",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-VISUAL",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/M10_MULTI_SCALE_QA_PASS.md"
+    },
+    {
+      "gate": "Project QA", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "Formal Promote Review P1-P5 / PROMOTE REVIEW PASS",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-PROJECT",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/PROMOTE_REVIEW_FINAL_2026-08-13.md"
+    },
+    {
+      "gate": "Artifact Review", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "M10 candidate-authority evidence matrix (compatibility mapping; historical file does not use current gate name)",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-ARTIFACT",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/M10_MULTI_SCALE_QA_PASS.md"
+    },
+    {
+      "gate": "Post-Generation Review", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "M10 Human Multi-Scale QA (compatibility mapping; historical file does not use current gate name)",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-POST",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/M10_MULTI_SCALE_QA_PASS.md"
+    },
+    {
+      "gate": "Production Asset Persistence Gate", "result": "PASS", "basis": "DIRECT",
+      "historical_evidence_label": "PAP-G0—G6 PASS",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "PAP-G0-G6", "receipt_id": "PR85-PAP",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/PAP_RECEIPT_2026-08-13.md"
+    },
+    {
+      "gate": "AR-S09 Release Package Review", "result": "PASS", "basis": "REPLAY_MAPPING",
+      "historical_evidence_label": "Formal Promote Review / Promotion Execution contract (compatibility mapping; historical file does not use AR-S09 label)",
+      "object_id": "AUTO-R29A", "source_id": "R29A-CANDIDATE-1d5e3da9",
+      "authority_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+      "gate_version": "replay-mapping-v0.3", "receipt_id": "PR85-RELEASE-REVIEW",
+      "executed_at": "2026-08-13T01:26:56Z",
+      "evidence_ref": "90-shared/toolchains/modeling-worker/automotive/v0.11/PROMOTE_REVIEW_FINAL_2026-08-13.md"
+    }
+  ]
+}

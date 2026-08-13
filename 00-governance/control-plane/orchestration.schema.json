@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/control-plane-orchestration.v0.3.schema.json",
+  "title": "OLEANDER Control Plane Orchestration v0.3",
+  "$defs": {
+    "authorityBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "authority_state", "sha256"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "authority_state": {"enum": ["WORKING_SOURCE","CANDIDATE_AUTHORITY","CANONICAL_AUTHORITY","FROZEN_AUTHORITY"]},
+        "sha256": {"type": ["string","null"], "pattern": "^(?:[A-Fa-f0-9]{64})?$"}
+      }
+    },
+    "providerHit": {
+      "type":"object", "additionalProperties": false,
+      "required":["object_id","source_id","authority_state","sha256","provider_ref"],
+      "properties": {
+        "object_id":{"type":"string","minLength":1},
+        "source_id":{"type":"string","minLength":1},
+        "authority_state":{"enum":["WORKING_SOURCE","CANDIDATE_AUTHORITY","CANONICAL_AUTHORITY","FROZEN_AUTHORITY"]},
+        "sha256":{"type":["string","null"],"pattern":"^(?:[A-Fa-f0-9]{64})?$"},
+        "provider_ref":{"type":"string","minLength":1}
+      }
+    },
+    "providerReceipt": {
+      "type":"object", "additionalProperties": false,
+      "required":["provider","attempted","status","hits","observed_at"],
+      "properties": {
+        "provider":{"enum":["current_authority","github","drive","file_library","runtime"]},
+        "attempted":{"const":true},
+        "status":{"enum":["FOUND","NOT_FOUND","UNAVAILABLE","BLOCKED","ERROR"]},
+        "hits":{"type":"array","items":{"$ref":"#/$defs/providerHit"}},
+        "observed_at":{"type":"string","minLength":1}
+      }
+    },
+    "providerChain": {
+      "type":"object", "additionalProperties": false,
+      "required":["schema_version","kind","lookup_mode","object_id","query","authority_binding","providers"],
+      "properties": {
+        "schema_version":{"const":"0.3"}, "kind":{"const":"PROVIDER_CHAIN"},
+        "lookup_mode":{"enum":["BOUND_AUTHORITY","DISCOVERY"]},
+        "object_id":{"type":"string","minLength":1}, "query":{"type":"string","minLength":1},
+        "authority_binding":{"oneOf":[{"$ref":"#/$defs/authorityBinding"},{"type":"null"}]},
+        "providers":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/providerReceipt"}}
+      }
+    },
+    "transition": {
+      "type":"object", "additionalProperties": false,
+      "required":["kind","from_authority_state","target_authority_state","target_design_state"],
+      "properties": {
+        "kind":{"enum":["CANDIDATE_PROMOTION","CANONICAL_PROMOTION","FREEZE","RELEASE"]},
+        "from_authority_state":{"enum":["WORKING_SOURCE","CANDIDATE_AUTHORITY","CANONICAL_AUTHORITY","FROZEN_AUTHORITY"]},
+        "target_authority_state":{"enum":["CANDIDATE_AUTHORITY","CANONICAL_AUTHORITY","FROZEN_AUTHORITY"]},
+        "target_design_state":{"enum":["CANDIDATE","PROMOTED","FROZEN","RELEASED"]}
+      }
+    },
+    "gateReceipt": {
+      "type":"object", "additionalProperties": false,
+      "required":["gate","result","basis","object_id","source_id","authority_sha256","gate_version","receipt_id","executed_at","evidence_ref"],
+      "properties": {
+        "gate":{"type":"string","minLength":1}, "result":{"enum":["PASS","FAIL","BLOCKED","NOT_RUN","N_A"]},
+        "basis":{"enum":["DIRECT","REPLAY_MAPPING"]},
+        "historical_evidence_label":{"type":["string","null"]},
+        "object_id":{"type":"string","minLength":1}, "source_id":{"type":"string","minLength":1},
+        "authority_sha256":{"type":["string","null"],"pattern":"^(?:[A-Fa-f0-9]{64})?$"},
+        "gate_version":{"type":"string","minLength":1}, "receipt_id":{"type":"string","minLength":1},
+        "executed_at":{"type":"string","minLength":1}, "evidence_ref":{"type":"string","minLength":1}
+      }
+    },
+    "gateBundle": {
+      "type":"object", "additionalProperties": false,
+      "required":["schema_version","kind","execution_mode","object_id","authority_binding","transition","receipts"],
+      "properties": {
+        "schema_version":{"const":"0.3"}, "kind":{"const":"GATE_RECEIPTS"},
+        "execution_mode":{"enum":["LIVE","REPLAY"]},
+        "object_id":{"type":"string","minLength":1}, "authority_binding":{"$ref":"#/$defs/authorityBinding"},
+        "transition":{"$ref":"#/$defs/transition"}, "receipts":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/gateReceipt"}}
+      }
+    },
+    "systemSnapshot": {
+      "type":"object", "additionalProperties": false,
+      "required":["status","object_id","source_ref","observed_at","revision","payload_sha256","fields","semantic"],
+      "properties": {
+        "status":{"enum":["FOUND","NOT_FOUND","UNAVAILABLE","BLOCKED","ERROR"]},
+        "object_id":{"type":"string","minLength":1}, "source_ref":{"type":"string","minLength":1},
+        "observed_at":{"type":"string","minLength":1}, "revision":{"type":"string","minLength":1},
+        "payload_sha256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},
+        "fields":{"type":"object"}, "semantic":{"type":"object"}
+      }
+    },
+    "contradictionManifest": {
+      "type":"object", "additionalProperties": false,
+      "required":["schema_version","kind","object_id","scan_as_of","max_age_seconds","expected","semantic_expected","systems"],
+      "properties": {
+        "schema_version":{"const":"0.3"}, "kind":{"const":"CONTRADICTION_MANIFEST"},
+        "object_id":{"type":"string","minLength":1}, "scan_as_of":{"type":"string","minLength":1},
+        "max_age_seconds":{"type":"integer"}, "expected":{"type":"object","minProperties":1},
+        "semantic_expected":{"type":"object","minProperties":1},
+        "systems":{"type":"object","additionalProperties":false,"required":["notion","github","drive"],"properties":{"notion":{"$ref":"#/$defs/systemSnapshot"},"github":{"$ref":"#/$defs/systemSnapshot"},"drive":{"$ref":"#/$defs/systemSnapshot"}}}
+      }
+    }
+  },
+  "oneOf": [
+    {"$ref":"#/$defs/providerChain"},
+    {"$ref":"#/$defs/gateBundle"},
+    {"$ref":"#/$defs/contradictionManifest"}
+  ]
+}

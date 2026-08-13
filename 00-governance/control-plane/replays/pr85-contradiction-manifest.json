@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.3",
+  "kind": "CONTRADICTION_MANIFEST",
+  "object_id": "AUTO-R29A",
+  "scan_as_of": "2026-08-13T02:05:00Z",
+  "max_age_seconds": 1800,
+  "expected": {
+    "version": "v0.11",
+    "authority_state": "CANONICAL_AUTHORITY",
+    "design_state": "PROMOTED",
+    "source_geometry_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+  },
+  "semantic_expected": {
+    "pap_pass": true,
+    "canonical_receipt_present": true,
+    "m5_m10_closed": true,
+    "authority_boundary_limited": true,
+    "future_changes_require_new_decision": true
+  },
+  "systems": {
+    "notion": {
+      "status": "FOUND",
+      "object_id": "AUTO-R29A",
+      "source_ref": "page:3bbb86be-5c47-8194-8bac-f323fc4ea324",
+      "observed_at": "2026-08-13T01:36:54.324Z",
+      "revision": "notion-asof-2026-08-13T01:36:54.324Z",
+      "payload_sha256": "1ea576a6343bc76af34bc0e1e7b11b48feb8744f301754ca5f70b091274e5d82",
+      "fields": {
+        "version": "v0.11",
+        "authority_state": "CANONICAL_AUTHORITY",
+        "design_state": "PROMOTED",
+        "source_geometry_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+      },
+      "semantic": {
+        "pap_pass": true,
+        "canonical_receipt_present": true,
+        "m5_m10_closed": true,
+        "authority_boundary_limited": true,
+        "future_changes_require_new_decision": true
+      }
+    },
+    "github": {
+      "status": "FOUND",
+      "object_id": "AUTO-R29A",
+      "source_ref": "main:90-shared/toolchains/modeling-worker/automotive/v0.11/CANONICAL_AUTHORITY_R29A_2026-08-13.md",
+      "observed_at": "2026-08-13T02:02:00Z",
+      "revision": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "payload_sha256": "84b5540e57b71a0900b0900f7fd562bf72a99988ac53a6b533427148e9c5ecf0",
+      "fields": {
+        "version": "v0.11",
+        "authority_state": "CANONICAL_AUTHORITY",
+        "design_state": "PROMOTED",
+        "source_geometry_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+      },
+      "semantic": {
+        "pap_pass": true,
+        "canonical_receipt_present": true,
+        "m5_m10_closed": true,
+        "authority_boundary_limited": true,
+        "future_changes_require_new_decision": true
+      }
+    },
+    "drive": {
+      "status": "FOUND",
+      "object_id": "AUTO-R29A",
+      "source_ref": "file:1wc33xRbVikGcjz7v5Ntip6v_30VUAUEnmArt5wYktv8",
+      "observed_at": "2026-08-13T02:02:00Z",
+      "revision": "AIroW34eWBLxNNPJpJb4J4tBhJNsC_FpACVqJaHkRcGaNqyYeZHSnSEGyF_JEZbEfXq_cSkjAMWKoION2dHZC35Pbbs5viiAQ02mZDG5D3E",
+      "payload_sha256": "42b440bb89ee5066de3e68fe8326cf98d867de4a7c562ee0ddc416b0ddb53f94",
+      "fields": {
+        "version": "v0.11",
+        "authority_state": "CANONICAL_AUTHORITY",
+        "design_state": "PROMOTED",
+        "source_geometry_sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+      },
+      "semantic": {
+        "pap_pass": true,
+        "canonical_receipt_present": true,
+        "m5_m10_closed": true,
+        "authority_boundary_limited": true,
+        "future_changes_require_new_decision": true
+      }
+    }
+  }
+}
