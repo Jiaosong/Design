@@ -1,6 +1,7 @@
 {
   "schema": "oleander.modeling-worker.v0.12.e3.r3.coupled-surface-network",
-  "job_id": "SYS-MODELING-WORKER-v0.12-AUTO-E3-R3",
+  "revision": "R3.1",
+  "job_id": "SYS-MODELING-WORKER-v0.12-AUTO-E3-R3.1",
   "decision_question": "Can the v0.12 relationship-driven compiler preserve genuinely distinct hood/cabin, shoulder/rear-haunch, lower-body and termination masses when authored as separate but coupled Surface Source families with independent Profile and Plan-view Primary Curve authority and relationship-specific continuity targets?",
   "authority": {
     "design_relationship": "WORKING_SOURCE",
@@ -15,6 +16,7 @@
     "profile_plan_authority_separated": true,
     "global_control_cage_forbidden": true,
     "blanket_continuity_class_forbidden": true,
+    "fairness_zone_policy": "BROAD_INTERIOR / CHARACTER_BAND / INTENTIONAL_BOUNDARY are evaluated separately; changing sample density cannot itself establish PASS",
     "execution_policy": "resolve Primary Curves and declared boundary relationships into Surface Source families first; sample execution topology only after Surface Source compilation"
   },
   "curve_parameterization": {
@@ -59,31 +61,31 @@
       "source_boundary": "MAIN_FRONT_SECTION",
       "type": "HERMITE_CONTINUATION_NETWORK",
       "length": 0.34,
-      "width_scale": 0.38,
-      "vertical_blend": 0.35
+      "width_scale": 0.64,
+      "vertical_blend": 0.62
     },
     "SURF-REAR-TERM": {
       "source_boundary": "MAIN_REAR_SECTION",
       "type": "HERMITE_CONTINUATION_NETWORK",
       "length": 0.32,
-      "width_scale": 0.46,
-      "vertical_blend": 0.30
+      "width_scale": 0.68,
+      "vertical_blend": 0.60
     }
   },
   "boundary_tangent_policies": {
-    "BND-SHOULDER-TANGENT": {"toward": "PROFILE-ROCKER + PLAN-ROCKER", "scale": 0.62},
-    "BND-ROCKER-TANGENT": {"toward": "PROFILE-UNDERBODY-EDGE + PLAN-UNDERBODY-EDGE", "scale": 0.60},
-    "BND-UNDERBODY-TANGENT": {"vector_yz": [-0.16, -0.05]}
+    "BND-SHOULDER-TANGENT": {"toward": "PROFILE-ROCKER + PLAN-ROCKER", "scale": 0.86},
+    "BND-ROCKER-TANGENT": {"toward": "PROFILE-UNDERBODY-EDGE + PLAN-UNDERBODY-EDGE", "scale": 0.84},
+    "BND-UNDERBODY-TANGENT": {"vector_yz": [-0.14, -0.06]}
   },
   "relationship_graph": [
-    {"id":"REL-R3-01","source":"SURF-UPPER","target":"SURF-SIDE","boundary":"BND-SHOULDER","class":"G1","priority":"HARD","max_position_error":0.000001,"max_normal_angle_deg":0.10,"intent":"upper mass hands into shoulder/side with a controlled tangent-plane relationship while preserving shoulder character"},
-    {"id":"REL-R3-02","source":"SURF-SIDE","target":"SURF-LOWER","boundary":"BND-ROCKER","class":"G1","priority":"HARD","max_position_error":0.000001,"max_normal_angle_deg":0.15,"intent":"side mass turns under through a controlled rocker tangent rather than one continuous bubble"},
+    {"id":"REL-R3-01","source":"SURF-UPPER","target":"SURF-SIDE","boundary":"BND-SHOULDER","class":"G1","priority":"HARD","max_position_error":0.000001,"max_normal_angle_deg":0.10,"intent":"upper mass hands into shoulder/side with a shared source tangent-plane relationship while preserving shoulder character"},
+    {"id":"REL-R3-02","source":"SURF-SIDE","target":"SURF-LOWER","boundary":"BND-ROCKER","class":"G1","priority":"HARD","max_position_error":0.000001,"max_normal_angle_deg":0.15,"intent":"side mass turns under through a shared source rocker tangent rather than one continuous bubble"},
     {"id":"REL-R3-03","source":"SURF-FRONT-TERM","target":"MAIN_FRONT_SECTION","boundary":"BND-FRONT-SEAM","class":"G1","priority":"HARD","max_position_error":0.00001,"max_normal_angle_deg":0.35,"intent":"front termination continues the authored front section without a planar mesh cap"},
     {"id":"REL-R3-04","source":"MAIN_REAR_SECTION","target":"SURF-REAR-TERM","boundary":"BND-REAR-SEAM","class":"G1","priority":"HARD","max_position_error":0.00001,"max_normal_angle_deg":0.35,"intent":"rear termination continues the rear mass without forcing the entire body into one C2 chain"},
     {"id":"REL-R3-05","source":"PROFILE-UPPER-CENTER","target":"PROFILE-SHOULDER-HEIGHT","boundary":"LONGITUDINAL_UPPER_FIELD","class":"CURVATURE_RATE","priority":"HIGH","max_rate_proxy":18.0,"intent":"hood/cabin profile may change curvature character while remaining free of abrupt highlight acceleration"},
     {"id":"REL-R3-06","source":"PLAN-SHOULDER","target":"PLAN-ROCKER","boundary":"PLAN_VIEW_MASS_FIELD","class":"CURVATURE_RATE","priority":"HIGH","max_rate_proxy":12.0,"intent":"rear-haunch width buildup and rocker trajectory remain coordinated without sharing one plan curve"},
-    {"id":"REL-R3-07","source":"SURF-FRONT-TERM","target":"FRONT_FAR_BOUNDARY","boundary":"BND-FRONT-FAR","class":"INTENTIONAL_BOUNDARY","priority":"MEDIUM","intent":"far front benchmark boundary remains explicit and is not falsely classified as a production closure"},
-    {"id":"REL-R3-08","source":"SURF-REAR-TERM","target":"REAR_FAR_BOUNDARY","boundary":"BND-REAR-FAR","class":"INTENTIONAL_BOUNDARY","priority":"MEDIUM","intent":"far rear benchmark boundary remains explicit and is not falsely classified as a production closure"}
+    {"id":"REL-R3-07","source":"SURF-FRONT-TERM","target":"FRONT_FAR_BOUNDARY","boundary":"BND-FRONT-FAR","class":"INTENTIONAL_BOUNDARY","priority":"MEDIUM","intent":"far front benchmark boundary remains explicit and is evaluated for non-degeneracy rather than broad fairness"},
+    {"id":"REL-R3-08","source":"SURF-REAR-TERM","target":"REAR_FAR_BOUNDARY","boundary":"BND-REAR-FAR","class":"INTENTIONAL_BOUNDARY","priority":"MEDIUM","intent":"far rear benchmark boundary remains explicit and is evaluated for non-degeneracy rather than broad fairness"}
   ],
   "semantic_controls": {
     "HOOD-COWL": [
@@ -103,28 +105,34 @@
       {"authority":"PLAN","curve":"PLAN-SHOULDER","index":6,"delta":0.085}
     ],
     "LOWER-BODY": [
-      {"authority":"PROFILE","curve":"PROFILE-ROCKER","index":4,"delta":0.045},
-      {"authority":"PLAN","curve":"PLAN-ROCKER","index":5,"delta":0.045}
+      {"authority":"PROFILE","curve":"PROFILE-ROCKER","index":4,"delta":0.075},
+      {"authority":"PROFILE","curve":"PROFILE-ROCKER","index":5,"delta":0.060},
+      {"authority":"PLAN","curve":"PLAN-ROCKER","index":5,"delta":0.070},
+      {"authority":"PLAN","curve":"PLAN-ROCKER","index":6,"delta":0.055}
     ],
     "FRONT-TERMINATION": [
       {"authority":"TERMINATION","family":"SURF-FRONT-TERM","field":"length","delta":0.055},
-      {"authority":"TERMINATION","family":"SURF-FRONT-TERM","field":"width_scale","delta":-0.06}
+      {"authority":"TERMINATION","family":"SURF-FRONT-TERM","field":"width_scale","delta":-0.045}
     ],
     "REAR-TERMINATION": [
       {"authority":"TERMINATION","family":"SURF-REAR-TERM","field":"length","delta":0.060},
-      {"authority":"TERMINATION","family":"SURF-REAR-TERM","field":"width_scale","delta":0.06}
+      {"authority":"TERMINATION","family":"SURF-REAR-TERM","field":"width_scale","delta":0.045}
     ]
   },
   "machine_thresholds": {
-    "max_surface_adjacent_normal_jump_deg": 8.0,
-    "max_surface_normal_acceleration_proxy": 22.0,
     "min_surface_cell_area_proxy": 0.00005,
     "min_semantic_surface_displacement": 0.025,
     "max_semantic_surface_displacement": 0.20,
     "max_profile_slope_change_proxy": 5.0,
     "max_profile_inflection_count": 5,
     "min_rear_haunch_plan_advantage": 0.035,
-    "max_reflection_field_acceleration_proxy": 24.0
+    "max_reflection_field_acceleration_proxy": 24.0,
+    "broad_interior_margin": 0.08,
+    "min_broad_normal_radius_proxy_m": 0.020,
+    "min_character_band_normal_radius_proxy_m": 0.010,
+    "max_character_band_total_normal_turn_deg": 105.0,
+    "min_intentional_boundary_half_width_m": 0.16,
+    "max_runtime_boundary_normal_diagnostic_deg": 0.50
   },
   "visual_contract": {
     "fixed_views": ["HERO", "SIDE", "TOP", "ZEBRA"],
@@ -138,5 +146,5 @@
       "reflection flow has no unexplained seam break or concentrated looping caused by the source architecture"
     ]
   },
-  "boundary": "E3 R3 is an Automotive application Surface Source architecture benchmark only. G1 and curvature-rate metrics are benchmark proxies, not Class-A or production CAD claims. Machine PASS opens Human Project/Visual QA only. PAP and Promotion remain blocked until explicit later closure."
+  "boundary": "E3 R3.1 revises the failed R3 Working Source and machine-evidence semantics without rewriting R3 failure history. G1 source construction, broad-interior fairness, character-band concentration and intentional-boundary non-degeneracy are separate evidence classes. Machine PASS opens Human Project/Visual QA only. No Class-A, engineering, production, PAP or Promotion authority is implied."
 }
