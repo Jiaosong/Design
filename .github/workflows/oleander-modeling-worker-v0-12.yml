@@ -58,8 +58,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Compile E1 script
-        run: python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
+      - name: Compile E1 scripts
+        run: |
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
 
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -76,7 +78,7 @@ jobs:
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E1"
           mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py -- \
+            --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- \
             --out "$OUT" --resolution 512
 
       - name: E1 fairness gate
