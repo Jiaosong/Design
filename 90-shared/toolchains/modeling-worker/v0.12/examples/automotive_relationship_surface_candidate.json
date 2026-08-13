@@ -1,0 +1,89 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.relationship-surface-contract",
+  "job_id": "SYS-MODELING-WORKER-FREEFORM-v0.12-AUTO-E0",
+  "decision_question": "Can an explicit shoulder-to-crown flow relationship be represented by primary curves and a low-frequency control cage before any execution topology is generated?",
+  "authority": {
+    "design_relationship": "WORKING_SOURCE",
+    "surface_source": "WORKING_SOURCE",
+    "execution_geometry": "NONE"
+  },
+  "hard_points": [
+    {"id": "HP-FRONT-WHEEL"},
+    {"id": "HP-REAR-WHEEL"},
+    {"id": "HP-COWL"},
+    {"id": "HP-ROOF-PEAK"}
+  ],
+  "volume_skeleton": [
+    {"id": "VOL-HOOD", "role": "primary front volume", "locked_variables": ["wheel package"], "open_variables": ["crown tension"]},
+    {"id": "VOL-CABIN", "role": "primary cabin volume", "locked_variables": ["roof peak"], "open_variables": ["A/C pillar flow"]},
+    {"id": "VOL-SHOULDER", "role": "primary shoulder and haunch volume", "locked_variables": [], "open_variables": ["front/rear acceleration"]}
+  ],
+  "relationship_graph": {
+    "nodes": [
+      {"id": "RELNODE-HOOD"},
+      {"id": "RELNODE-SHOULDER"},
+      {"id": "RELNODE-CROWN"},
+      {"id": "RELNODE-CABIN"}
+    ],
+    "edges": [
+      {"id": "REL-01", "source": "RELNODE-SHOULDER", "target": "RELNODE-CROWN", "relation": "FLOW", "priority": "HIGH", "intended_effect": "wheel crown reads as a continuation of shoulder volume rather than an attached brow", "allowed_variation": "bounded by wheel package and silhouette"},
+      {"id": "REL-02", "source": "RELNODE-HOOD", "target": "RELNODE-CROWN", "relation": "TANGENCY", "priority": "HIGH", "intended_effect": "avoid highlight compression at hood-to-fender transition", "allowed_variation": {"tangent_jump_deg_max": 5.0}},
+      {"id": "REL-03", "source": "RELNODE-CABIN", "target": "RELNODE-SHOULDER", "relation": "PROPORTION", "priority": "MEDIUM", "intended_effect": "prevent single-bubble cabin dominance", "allowed_variation": "human visual review required"}
+    ]
+  },
+  "primary_curves": [
+    {"id": "CURVE-SHOULDER", "role": "longitudinal shoulder flow", "depends_on": ["VOL-SHOULDER", "HP-FRONT-WHEEL", "HP-REAR-WHEEL"], "continuity_target": "G2", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-CROWN", "role": "front wheel crown trajectory", "depends_on": ["CURVE-SHOULDER", "HP-FRONT-WHEEL"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-ROCKER", "role": "lower-body tension reference", "depends_on": ["VOL-SHOULDER"], "continuity_target": "G1", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "LOCKED"}
+  ],
+  "control_cage": {
+    "id": "CAGE-PRIMARY-01",
+    "frequency": "LOW",
+    "semantic_axes": ["longitudinal-flow", "vertical-volume", "transverse-tension"],
+    "max_control_points": 96,
+    "local_influence_policy": "local edits must have declared falloff and may not densify the cage to solve secondary detail",
+    "topology_independent": true
+  },
+  "surface_fairness": {
+    "required_metrics": ["G1", "G2", "TANGENT_JUMP", "CURVATURE_RATE", "SPACING_REGULARITY", "ZEBRA", "REFLECTION_FLOW", "SILHOUETTE_DERIVATIVE"],
+    "thresholds": {
+      "max_tangent_jump_deg": 5.0,
+      "spacing_cv": 0.05,
+      "inflection_count": 0
+    },
+    "evidence": [
+      {
+        "id": "E-CURVE-SHOULDER-01",
+        "kind": "CURVE_SAMPLES",
+        "points": [
+          [-4.0, 0.0, 0.32],
+          [-3.0, 0.0, 0.18],
+          [-2.0, 0.0, 0.08],
+          [-1.0, 0.0, 0.02],
+          [0.0, 0.0, 0.0],
+          [1.0, 0.0, 0.02],
+          [2.0, 0.0, 0.08],
+          [3.0, 0.0, 0.18],
+          [4.0, 0.0, 0.32]
+        ]
+      },
+      {"id": "E-ZEBRA-01", "kind": "ZEBRA", "status": "RENDER_REQUIRED"},
+      {"id": "E-REFLECTION-01", "kind": "REFLECTION_FLOW", "status": "RENDER_REQUIRED"}
+    ],
+    "status": "MACHINE_PASS_VISUAL_REVIEW_REQUIRED"
+  },
+  "execution_geometry": {
+    "derived_from_surface_source": true,
+    "editable_source": "CURVES+CAGE+EVALUATION_SURFACE",
+    "derived_outputs": [],
+    "smooth_shading_is_evidence": false
+  },
+  "gate_state": {
+    "M2": "PASS",
+    "M3": "PASS",
+    "M4": "PASS",
+    "M4_5": "OPEN",
+    "M5": "BLOCKED",
+    "M6_plus_blocked": true
+  }
+}
