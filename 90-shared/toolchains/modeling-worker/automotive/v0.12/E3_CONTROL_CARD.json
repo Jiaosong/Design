@@ -37,14 +37,14 @@
     "R3.3 run 31688935218 / artifact 9176833315 / Human Project+Visual PASS",
     "accepted source snapshot commit = 5782c039562e723705b6f46537fea7efa0936b29",
     "PAP-G0—G6 = PASS; durable Drive root = 1NqK4452BlZom84nX8UdmJh4Ga1GUcrWd",
+    "Control Plane v0.3 LIVE contradiction scan run 31691596325 = PASS",
     "derived execution topology cannot replace editable Surface Source Authority",
     "no Class-A / engineering / manufacturing / final Automotive design / release claim"
   ],
   "open_variables": [
-    "cross-system semantic/freshness contradiction scan result",
     "explicit human Promote Review decision",
-    "authority transition remains unexecuted until human decision",
-    "system Canonical Authority remains false until a valid explicit Promotion transition"
+    "authority transition WORKING_SOURCE → CANDIDATE_AUTHORITY remains unexecuted until human decision",
+    "system Canonical Authority remains false; Canonical promotion is a separate later transition"
   ],
   "required_qa": ["Machine", "Visual", "Project"],
   "artifact_type": "model",
@@ -54,10 +54,9 @@
     "machine": "PASS",
     "visual": "PASS",
     "project": "PASS",
-    "pap": "PASS",
-    "promotion": "BLOCKED"
+    "pap": "PASS"
   },
-  "next_allowed_action": "Run the existing Control Plane v0.3 semantic/freshness contradiction scan against the GitHub / Notion / Drive PAP candidate state. If and only if it passes, prepare an explicit human Promote Review. Do not change authority state, mark PR #91 Ready, merge, or claim Canonical Authority before that human decision.",
+  "next_allowed_action": "Prepare an explicit human Promote Review for the valid CANDIDATE_PROMOTION transition WORKING_SOURCE → CANDIDATE_AUTHORITY / CANDIDATE. Do not execute the transition, mark PR #91 Ready, merge, or claim Canonical Authority until the human decision is recorded.",
   "sync_persistence_trigger": "PAP",
   "review_history": [
     {
