@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/control-plane-orchestration.v0.3.schema.json",
+  "title": "OLEANDER Control Plane Orchestration v0.3",
+  "$defs": {
+    "providerReceipt": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["provider", "attempted", "status", "hits"],
+      "properties": {
+        "provider": {
+          "enum": ["current_authority", "github", "drive", "file_library", "runtime"]
+        },
+        "attempted": {"const": true},
+        "status": {
+          "enum": ["FOUND", "NOT_FOUND", "UNAVAILABLE", "BLOCKED", "ERROR"]
+        },
+        "hits": {"type": "array"},
+        "as_of": {"type": ["string", "null"]}
+      }
+    },
+    "providerChain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "query", "providers"],
+      "properties": {
+        "schema_version": {"const": "0.3"},
+        "query": {"type": "string", "minLength": 1},
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/providerReceipt"}
+        }
+      }
+    },
+    "systemSnapshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["status", "fields"],
+      "properties": {
+        "status": {"enum": ["FOUND", "NOT_FOUND", "UNAVAILABLE", "BLOCKED", "ERROR"]},
+        "fields": {"type": "object"},
+        "as_of": {"type": ["string", "null"]}
+      }
+    },
+    "contradictionManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "object_id", "expected", "systems"],
+      "properties": {
+        "schema_version": {"const": "0.3"},
+        "object_id": {"type": "string", "minLength": 1},
+        "expected": {"type": "object", "minProperties": 1},
+        "systems": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["notion", "github", "drive"],
+          "properties": {
+            "notion": {"$ref": "#/$defs/systemSnapshot"},
+            "github": {"$ref": "#/$defs/systemSnapshot"},
+            "drive": {"$ref": "#/$defs/systemSnapshot"}
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {"$ref": "#/$defs/providerChain"},
+    {"$ref": "#/$defs/contradictionManifest"}
+  ]
+}
