@@ -29,3 +29,11 @@ Current explicit identities already recovered in the writable Project Registry:
 - P4 Runtime / Responsive validation: `PRJ-C04-RUNTIME-RESPONSIVE`
 
 The P3 Visual Reading row retains Case ID `C04`, but its new explicit Project ID is still **HOLD** at the current registry-write checkpoint; historical `C04-WS-04` therefore remains workflow/legacy compatibility only and must not be treated as a repaired Project ID until the registry write succeeds.
+
+## Current Closure Override｜2026-08-13
+
+This section supersedes the prior Visual Reading HOLD checkpoint above.
+
+- P3 Visual Reading / Identity: `PRJ-C04-VISUAL-READING` with `Case ID=C04` is now present in the original writable Project Registry row and has passed fresh readback.
+- Current C04 explicit Project Axis identities are therefore complete for this recovery batch: `PRJ-C04-QINGJIANG-SHISHU`, `PRJ-C04-GOV-SITE`, `PRJ-C04-EXPERIENCE-SPATIAL`, `PRJ-C04-DIGITAL-INTERACTION`, `PRJ-C04-VISUAL-READING`, and `PRJ-C04-RUNTIME-RESPONSIVE`.
+- Historical `C04-WS-* / C04-VAL-*` remain workflow/legacy compatibility aliases only and are not Current Project ID authority.
