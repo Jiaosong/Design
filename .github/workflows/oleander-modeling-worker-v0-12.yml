@@ -25,10 +25,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Parse contract schema and example
+      - name: Parse contract schemas and examples
         run: |
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/relationship_surface_contract.schema.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json >/dev/null
 
       - name: Run v0.12 regression tests
         run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
@@ -50,18 +51,19 @@ jobs:
           echo '- Smooth shading is never accepted as fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Machine fairness proxies do not establish Class-A, engineering or human design authority.' >> "$GITHUB_STEP_SUMMARY"
 
-  e1-freeform-blender:
-    name: E1 Blender Freeform Surface
+  freeform-blender:
+    name: E1 + E2 Blender Freeform Surface
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Compile E1 scripts
+      - name: Compile freeform scripts
         run: |
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py
 
       - name: Install Blender runtime dependencies
         run: |
@@ -78,7 +80,7 @@ jobs:
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
 
-      - name: Execute relationship-to-freeform benchmark
+      - name: Execute E1 relationship-to-freeform benchmark
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E1"
@@ -87,7 +89,7 @@ jobs:
             --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- \
             --out "$OUT" --resolution 512
 
-      - name: E1 fairness gate
+      - name: E1 machine fairness gate
         run: |
           python3 - <<'PY'
           import json
@@ -111,12 +113,59 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Publish E1 boundary
+      - name: Require recorded E1 Human M4.5 PASS before E2
+        run: |
+          set -euo pipefail
+          grep -F 'E1 M4.5 PASS / SINGLE-PATCH METHOD SCOPE' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
+          grep -F 'termination boundary' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
+
+      - name: Execute E2 multi-patch relationship compiler
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E2"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py -- \
+            --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json \
+            --out "$OUT" --resolution 512
+
+      - name: E2 multi-patch fairness gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/OLEANDER_ModelingWorker_v0.12_E2')
+          q=json.loads((root/'E2_FREEFORM_FAIRNESS.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED', q
+          assert all(q['checks'].values()), q['checks']
+          assert q['front_seam']['max_position_error'] <= 1e-7
+          assert q['rear_seam']['max_position_error'] <= 1e-7
+          assert q['front_seam']['max_tangent_angle_deg'] <= 0.05
+          assert q['rear_seam']['max_tangent_angle_deg'] <= 0.05
+          assert q['front_seam']['max_second_derivative_error'] <= 1e-6
+          assert q['rear_seam']['max_second_derivative_error'] <= 1e-6
+          for name in ('E2_HERO_NETWORK.png','E2_SIDE_NETWORK.png','E2_TOP_NETWORK.png','E2_ZEBRA_NETWORK.png'):
+              assert (root/name).is_file(), name
+          assert any(root.glob('*.blend'))
+          print(json.dumps(q,indent=2))
+          PY
+
+      - name: Upload E2 multi-patch evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-e2-${{ github.run_id }}
+          path: out/OLEANDER_ModelingWorker_v0.12_E2/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish freeform boundary
         if: always()
         run: |
-          echo '## E1 relationship-driven freeform benchmark' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Surface Source = sparse 4x4 bicubic cage.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Execution mesh is derived, not authority.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Analytic derivatives produce machine fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Human M4.5 zebra/reflection review is still required.' >> "$GITHUB_STEP_SUMMARY"
+          echo '## v0.12 freeform execution boundary' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E1 Surface Source = sparse 4x4 bicubic cage.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E1 Human M4.5 PASS is a required receipt before E2.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E2 compiles explicit C2 seam relations into a three-patch network.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Front/rear termination are surface patches, not mesh closure.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Execution topology is derived after surface-network compilation.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Human E2 zebra/reflection review is still required.' >> "$GITHUB_STEP_SUMMARY"
           echo '- No Class-A / engineering / final design claim.' >> "$GITHUB_STEP_SUMMARY"
