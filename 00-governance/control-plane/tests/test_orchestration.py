@@ -33,20 +33,31 @@ def authority_card(evidence=None):
         "schema_version": "0.2",
         "object": {"name": "Candidate", "project_id": "SYS-MODELING-WORKER", "project_level": "P2", "case_id": None, "knowledge_position": "L7 Practice", "application_mapping": ["IP03"], "priority": "Priority-1"},
         "mode": "AUTHORITY", "decision_question": "Promote exact candidate?", "problem_layer": "Evidence",
-        "authority_source": {"state": "CANDIDATE_AUTHORITY", "source_id": "SRC-1", "location": "registry", "sha256": H},
+        "authority_source": {"state": "CANDIDATE_AUTHORITY", "object_id": "OBJ-1", "source_id": "SRC-1", "location": "registry", "sha256": H},
         "locked_variables": ["geometry"], "open_variables": [], "required_qa": ["Machine", "Visual", "Project"], "artifact_type": "release_package", "claim_types": ["rights", "release"],
         "evidence_state": evidence or {"digital": "PASS", "rights": "PASS"}, "next_allowed_action": "PROMOTION_REVIEW", "sync_persistence_trigger": "FULL_SYNC", "review_history": []
     }
 
 
-def gate_bundle(card=None, wrong_object=False, transition=None):
-    card = card or authority_card(); source = card["authority_source"]; obj = source["source_id"]
+def gate_bundle(card=None, wrong_object=False, transition=None, execution_mode="LIVE", replay_mapping=False):
+    card = card or authority_card(); source = card["authority_source"]
     transition = transition or {"kind": "CANONICAL_PROMOTION", "from_authority_state": "CANDIDATE_AUTHORITY", "target_authority_state": "CANONICAL_AUTHORITY", "target_design_state": "PROMOTED"}
     gates = ["Machine QA", "Visual QA", "Project QA", "Artifact Review", "Post-Generation Review", "Rights Gate", "Production Asset Persistence Gate", "AR-S09 Release Package Review"]
     receipts = []
     for i, gate in enumerate(gates):
-        receipts.append({"gate": gate, "result": "PASS", "object_id": "OTHER" if wrong_object and i == 0 else obj, "source_id": obj, "authority_sha256": source["sha256"], "gate_version": "v1", "receipt_id": f"R-{i}", "executed_at": "2026-08-13T02:00:00Z", "evidence_ref": f"evidence:{i}"})
-    return {"schema_version": "0.3", "kind": "GATE_RECEIPTS", "object_id": obj, "authority_binding": {"source_id": obj, "authority_state": source["state"], "sha256": source["sha256"]}, "transition": transition, "receipts": receipts}
+        receipts.append({
+            "gate": gate, "result": "PASS", "basis": "REPLAY_MAPPING" if replay_mapping else "DIRECT",
+            "historical_evidence_label": "historical compatibility mapping" if replay_mapping else None,
+            "object_id": "OTHER" if wrong_object and i == 0 else source["object_id"],
+            "source_id": source["source_id"], "authority_sha256": source["sha256"],
+            "gate_version": "v1", "receipt_id": f"R-{i}", "executed_at": "2026-08-13T02:00:00Z", "evidence_ref": f"evidence:{i}"
+        })
+    return {
+        "schema_version": "0.3", "kind": "GATE_RECEIPTS", "execution_mode": execution_mode,
+        "object_id": source["object_id"],
+        "authority_binding": {"source_id": source["source_id"], "authority_state": source["state"], "sha256": source["sha256"]},
+        "transition": transition, "receipts": receipts
+    }
 
 
 def snapshot(system, semantic=None, observed="2026-08-13T02:00:00Z"):
@@ -79,6 +90,10 @@ class OrchestrationTests(unittest.TestCase):
         result = evaluate_provider_chain(data)
         self.assertTrue(result["e0_eligible"]); self.assertEqual(result["actionability"], "BLOCKED")
 
+    def test_promotion_requires_distinct_object_and_source_identity(self):
+        card = authority_card(); card["authority_source"]["object_id"] = None
+        self.assertEqual(evaluate_promotion(card, gate_bundle())["code"], "PROMOTION_AUTHORITY_IDENTITY_INCOMPLETE")
+
     def test_promotion_rejects_wrong_object_gate_receipt(self):
         result = evaluate_promotion(authority_card(), gate_bundle(wrong_object=True))
         self.assertEqual(result["status"], "BLOCKED"); self.assertEqual(result["code"], "PROMOTION_GATES_OPEN")
@@ -91,9 +106,23 @@ class OrchestrationTests(unittest.TestCase):
         transition = {"kind": "FREEZE", "from_authority_state": "CANDIDATE_AUTHORITY", "target_authority_state": "FROZEN_AUTHORITY", "target_design_state": "FROZEN"}
         self.assertEqual(evaluate_promotion(authority_card(), gate_bundle(transition=transition))["code"], "PROMOTION_TRANSITION_INVALID")
 
-    def test_promotion_ready_only_with_bound_receipts(self):
+    def test_live_promotion_rejects_replay_mapping(self):
+        result = evaluate_promotion(authority_card(), gate_bundle(execution_mode="LIVE", replay_mapping=True))
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertTrue(any("LIVE promotion requires DIRECT" in item["reason"] for item in result["missing_or_failed_gates"]))
+
+    def test_replay_allows_explicit_mapping_but_has_no_live_actions(self):
+        result = evaluate_promotion(authority_card(), gate_bundle(execution_mode="REPLAY", replay_mapping=True))
+        self.assertEqual(result["status"], "READY_FOR_HUMAN_DECISION")
+        self.assertTrue(result["replay_only"])
+        self.assertEqual(result["post_promotion_actions"], [])
+        self.assertTrue(result["simulated_post_promotion_actions"])
+
+    def test_promotion_ready_only_with_direct_bound_live_receipts(self):
         result = evaluate_promotion(authority_card(), gate_bundle())
-        self.assertEqual(result["status"], "READY_FOR_HUMAN_DECISION"); self.assertEqual(result["transition"]["target_authority_state"], "CANONICAL_AUTHORITY")
+        self.assertEqual(result["status"], "READY_FOR_HUMAN_DECISION")
+        self.assertFalse(result["replay_only"])
+        self.assertEqual(result["transition"]["target_authority_state"], "CANONICAL_AUTHORITY")
 
     def test_contradiction_detects_stale_snapshot(self):
         systems = {x: snapshot(x, observed="2026-08-12T00:00:00Z") for x in ["notion", "github", "drive"]}
