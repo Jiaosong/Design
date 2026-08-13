@@ -3,28 +3,13 @@
   "revision_id": "G1-R2-ERGONOMIC-PALM-INTERFACE-RELATION",
   "problem_layer": "Relation / Surface Source",
   "base_source": "G1_PRIMARY_CURVE_SOURCE.json",
-  "allowed_changes": [
-    "GRIP_AXIS",
-    "PALM_PROFILE",
-    "THUMB_SIDE_PLAN",
-    "OPPOSITE_SIDE_PLAN",
-    "LOWER_RETURN_PROFILE",
-    "INTERFACE_DECK_BOUNDARY"
-  ],
+  "allowed_changes": ["GRIP_AXIS","PALM_PROFILE","THUMB_SIDE_PLAN","OPPOSITE_SIDE_PLAN","LOWER_RETURN_PROFILE","INTERFACE_DECK_BOUNDARY"],
   "mesh_local_patch_allowed": false,
   "source_overrides": {
-    "GRIP_AXIS": {
-      "control_points": [[0.0,0.0,0.045],[0.002,-0.001,0.046],[0.020,-0.004,0.052],[0.150,-0.001,0.059],[0.187,0.003,0.055],[0.190,0.0,0.048]]
-    },
-    "PALM_PROFILE": {
-      "control_values": [0.003,0.030,0.060,0.079,0.058,0.003]
-    },
-    "THUMB_SIDE_PLAN": {
-      "control_values": [0.003,0.025,0.047,0.061,0.044,0.003]
-    },
-    "OPPOSITE_SIDE_PLAN": {
-      "control_values": [0.003,0.022,0.038,0.045,0.034,0.003]
-    },
+    "GRIP_AXIS": {"control_points": [[0.0,0.0,0.045],[0.002,-0.001,0.046],[0.020,-0.004,0.052],[0.150,-0.001,0.059],[0.187,0.003,0.055],[0.190,0.0,0.048]]},
+    "PALM_PROFILE": {"control_values": [0.003,0.030,0.060,0.079,0.058,0.003]},
+    "THUMB_SIDE_PLAN": {"control_values": [0.003,0.025,0.047,0.061,0.044,0.003]},
+    "OPPOSITE_SIDE_PLAN": {"control_values": [0.003,0.022,0.038,0.045,0.034,0.003]},
     "LOWER_RETURN_PROFILE": {
       "control_values": [0.003,0.032,0.055,0.066,0.050,0.003],
       "termination_envelope": "sin(pi*u)^0.34",
@@ -33,13 +18,12 @@
     "INTERFACE_DECK_BOUNDARY": {
       "u_center": 0.62,
       "u_halfspan": 0.18,
-      "theta_center_rad": 0.12,
+      "theta_center": "TOP_MERIDIAN",
       "theta_halfspan_rad": 0.76,
       "depth_m": 0.012,
       "core_fraction": 0.50,
       "blend": "QUINTIC_SMOOTHERSTEP",
-      "opening_semantics": "RECESSED_INTERFACE_BASIN_WITH_EXPLICIT_REGION_BOUNDARY",
-      "required_region_boundary_loops": 1
+      "opening_semantics": "RECESSED_INTERFACE_BASIN_WITH_EXPLICIT_REGION_BOUNDARY"
     }
   },
   "machine_zoning": {
@@ -50,7 +34,7 @@
       "outer_boundary_normal_continuity_max_deg": 0.5,
       "core_boundary_normal_continuity_max_deg": 0.5,
       "boundary_probe_epsilon_rho": 0.002,
-      "semantic_boundary_loop_required": true,
+      "required_region_boundary_loops": 1,
       "deck_inset_depth_uses_existing_0.006_to_0.012_m_contract": true
     }
   },
