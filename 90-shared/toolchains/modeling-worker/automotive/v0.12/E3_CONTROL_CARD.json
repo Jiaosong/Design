@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "Modeling Worker v0.12｜E3 Automotive Application Benchmark",
+    "project_id": "SYS-MODELING-WORKER",
+    "project_level": "P2",
+    "case_id": null,
+    "knowledge_position": "L7 Practice / Output",
+    "application_mapping": [],
+    "priority": null
+  },
+  "mode": "CANDIDATE",
+  "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
+  "problem_layer": "Relation",
+  "authority_source": {
+    "state": "WORKING_SOURCE",
+    "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+    "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+    "location": "90-shared/toolchains/modeling-worker/automotive/v0.12/",
+    "sha256": null
+  },
+  "locked_variables": [
+    "wheel OD comparison contract = 0.700 m",
+    "wheelbase / track package inherited from accepted v0.11 benchmark",
+    "broad overall length / width / height class",
+    "Primary / Secondary / Detail semantic distinction",
+    "deterministic receipts and Machine / Visual / Project QA separation",
+    "PAP and human-owned Promotion boundary"
+  ],
+  "open_variables": [
+    "VOL-HOOD crown and front-volume tension",
+    "VOL-CABIN gesture and A/C-pillar flow",
+    "VOL-SHOULDER acceleration and wheel-crown relationship",
+    "VOL-REAR-HAUNCH mass and rear-opening flow",
+    "VOL-LOWER-BODY rocker-to-shoulder tension",
+    "VOL-FRONT-TERMINATION longitudinal continuation",
+    "VOL-REAR-TERMINATION longitudinal continuation",
+    "Primary Curve positions / derivatives and sparse-cage influence falloff",
+    "application-level proportion and first-reading quality"
+  ],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "model",
+  "claim_types": [],
+  "evidence_state": {
+    "contract": "OPEN",
+    "machine": "NOT_RUN",
+    "visual": "NOT_RUN",
+    "project": "NOT_RUN",
+    "pap": "NOT_RUN",
+    "promotion": "BLOCKED"
+  },
+  "next_allowed_action": "Validate the E3 application contract under Control Plane v0.3, then execute application surface compilation. Do not promote or open M5 before E3 M4.5 Machine + Visual + Project evidence exists.",
+  "sync_persistence_trigger": "RECEIPT",
+  "review_history": []
+}
