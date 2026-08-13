@@ -1,0 +1,41 @@
+name: OLEANDER Automotive v0.11 PAP Source Snapshot
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-automotive-v0-11-pap-source-snapshot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pap-source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+      - name: Build immutable source snapshot
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/pap-source"
+          mkdir -p "$OUT"
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          zip -qr "$OUT/OLEANDER_Automotive_v0.11_Source_Snapshot.zip" "$ROOT" \
+            .github/workflows/oleander-automotive-v0-11-m10-multiscale-qa.yml \
+            .github/workflows/oleander-automotive-v0-11-m9-material-binding.yml \
+            .github/workflows/oleander-automotive-v0-11-m8-detail-instances.yml \
+            .github/workflows/oleander-automotive-v0-11-m7-secondary-geometry.yml \
+            .github/workflows/oleander-automotive-v0-11-m6-component-architecture.yml
+          git rev-parse HEAD > "$OUT/SOURCE_SNAPSHOT_COMMIT.txt"
+          sha256sum "$OUT/OLEANDER_Automotive_v0.11_Source_Snapshot.zip" > "$OUT/SOURCE_SNAPSHOT_SHA256.txt"
+          unzip -t "$OUT/OLEANDER_Automotive_v0.11_Source_Snapshot.zip" >/dev/null
+      - name: Upload source snapshot
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-automotive-v0-11-pap-source-${{ github.run_id }}
+          path: out/pap-source/
+          if-no-files-found: error
+          retention-days: 14
