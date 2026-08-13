@@ -8,7 +8,7 @@ Source hash: `d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb`
 
 ## Decision
 
-`HOLD / PROMOTION_INTEGRATION_GATE / PERSISTENCE_GATE`
+`HOLD / PERSISTENCE_GATE`
 
 Authority remains:
 
@@ -31,26 +31,20 @@ No current evidence identifies a geometry, topology, component-routing, secondar
 
 Therefore the Candidate is retained exactly as validated.
 
+## Integration status
+
+The branch is diverged from current `main` and remains 23 commits behind, but GitHub currently reports PR #85 as mergeable.
+
+Current head validation after this Promotion Review state change:
+
+- AI Governance Evals — SUCCESS;
+- OLEANDER Blender Runtime Contract — SUCCESS.
+
+Therefore mainline integration is **not** the active HOLD reason. The newer main governance is relevant because it introduces the active persistence requirement below.
+
 ## Why this cannot PROMOTE yet
 
-### H1｜Mainline integration is not closed
-
-At review time PR #85 is Draft and GitHub reports it as not mergeable.
-
-The benchmark branch has diverged from `main`:
-
-- branch ahead of main: 158 commits;
-- branch behind main: 23 commits;
-- current main: `3a1399655bf6bf40d1bf4fc55d37ef33bc4bd7e8`;
-- merge base: `295d31cca5f8d7347bc05c4a3954e7bcc0bb2d98`.
-
-The 23 newer main commits include governance changes to `00-governance/oleander-project-flow-v0.3.md`, namespace validation and related governance files. A Candidate may not be promoted against an outdated governance baseline when the current branch cannot yet enter main safely.
-
-Classification:
-
-`INTEGRATION HOLD / NOT MODELING REVISE`
-
-### H2｜Production Asset Persistence Gate is triggered
+### H1｜Production Asset Persistence Gate is triggered
 
 Current `main` governance activates:
 
@@ -72,14 +66,7 @@ This persistence classification does not revoke any M5–M10 design or execution
 
 Promotion may be reviewed again only after all of the following are true.
 
-### E1｜Governance integration
-
-- reconcile the branch with current `main`;
-- resolve merge conflicts / integration incompatibilities;
-- PR becomes mergeable against the current governance baseline;
-- AI Governance and Blender Runtime Contract remain PASS after reconciliation.
-
-### E2｜PAP asset inventory
+### E1｜PAP asset inventory
 
 Identify the required production set for the Candidate Authority:
 
@@ -88,11 +75,11 @@ Identify the required production set for the Candidate Authority:
 3. immutable production ZIP;
 4. checksum records for contents and production ZIP.
 
-### E3｜Durable upload
+### E2｜Durable upload
 
 Store every required binary in a PAP-qualified durable location with stable provider file/object IDs. Google Drive is acceptable.
 
-### E4｜Independent retrieval and integrity
+### E3｜Independent retrieval and integrity
 
 Re-download/re-materialize the durable copies and verify:
 
@@ -102,11 +89,19 @@ Re-download/re-materialize the durable copies and verify:
 - `.blend` parse/open where practical;
 - canonical model parse/open where applicable.
 
-### E5｜Persistence manifest / receipts
+### E4｜Persistence manifest / receipts
 
 Record PAP-G0—PAP-G6 evidence including provider, stable IDs, paths/references, retention class, upload/retrieval timestamps, expected/retrieved SHA and open-test status.
 
 GitHub and Notion governance receipts must point to the same persistence manifest/status.
+
+### E5｜Final promotion check
+
+Immediately before Promotion:
+
+- PR #85 must remain mergeable against the then-current `main`;
+- AI Governance Evals must remain PASS;
+- Blender Runtime Contract must remain PASS.
 
 ### E6｜Promotion decision
 
@@ -138,8 +133,8 @@ Any change to these is a separate Revision Proposal and may require the relevant
 
 `MODELING GATES = M5–M10 PASS / CLOSED`
 
-`PROMOTION = BLOCKED BY INTEGRATION + PAP`
+`PROMOTION = BLOCKED BY PAP`
 
-`PR #85 = DRAFT / DO NOT MERGE YET`
+`PR #85 = DRAFT / MERGEABLE / DO NOT MERGE YET`
 
-`NOTION / DRIVE CANONICAL PROMOTION SYNC = BLOCKED UNTIL PAP + INTEGRATION PASS`
+`NOTION / DRIVE CANONICAL PROMOTION SYNC = BLOCKED UNTIL PAP PASS`
