@@ -91,9 +91,10 @@
       {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.05,0.0385,0.02695]}
     ],
     "VOL-REAR-HAUNCH": [
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":1,"delta":[0.00,0.021,0.015]},
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":2,"delta":[0.00,0.041,0.030]},
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.00,0.049,0.034]}
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":1,"delta":[0.00,0.075,0.0525]},
+      {"station":"STA-REAR-HAUNCH","field":"tangents","index":1,"delta":[0.00,-0.075,-0.0525]},
+      {"station":"STA-REAR-HAUNCH","field":"tangents","index":2,"delta":[0.00,-0.090,-0.0600]},
+      {"station":"STA-REAR-HAUNCH","field":"tangents","index":3,"delta":[0.00,-0.090,-0.0600]}
     ],
     "VOL-LOWER-BODY": [
       {"station":"STA-HOOD-COWL","field":"positions","index":4,"delta":[0.00,-0.03,0.04]},
@@ -120,5 +121,5 @@
       "front and rear terminations read as continued volumes rather than mesh caps"
     ]
   },
-  "boundary": "E3 R2.1 revises only rear-half source jets and semantic source ownership after the fail-closed R2 machine result. E1/E2 generic method evidence remains unchanged. No Class-A, production engineering, final automotive design, PAP or Promotion authority is implied."
+  "boundary": "E3 R2.2 retains the R2.1 fair base source jets but makes rear-haunch semantic ownership disjoint from shoulder and lower-body controls. E1/E2 generic method evidence remains unchanged. No Class-A, production engineering, final automotive design, PAP or Promotion authority is implied."
 }
