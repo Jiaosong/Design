@@ -64,6 +64,7 @@ jobs:
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py
 
       - name: Install Blender runtime dependencies
         run: |
@@ -119,13 +120,19 @@ jobs:
           grep -F 'E1 M4.5 PASS / SINGLE-PATCH METHOD SCOPE' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
           grep -F 'termination boundary' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
 
+      - name: Require E2 precision classification without threshold relaxation
+        run: |
+          set -euo pipefail
+          grep -F 'NO DESIGN THRESHOLD RELAXATION' 90-shared/toolchains/modeling-worker/v0.12/E2_PRECISION_CLASSIFICATION.md
+          grep -F 'max_second_derivative_error <= 1e-06' 90-shared/toolchains/modeling-worker/v0.12/E2_PRECISION_CLASSIFICATION.md
+
       - name: Execute E2 multi-patch relationship compiler
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E2"
           mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py -- \
+            --python 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py -- \
             --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json \
             --out "$OUT" --resolution 512
 
@@ -138,12 +145,17 @@ jobs:
           q=json.loads((root/'E2_FREEFORM_FAIRNESS.json').read_text())
           assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED', q
           assert all(q['checks'].values()), q['checks']
+          assert q['precision_classification']['compiler_design_threshold_unchanged'] == 1e-6
+          assert q['front_seam']['precision_authority']=='COMPILER_C2_RESIDUAL_FROM_RAW_PYTHON_FLOAT_CAGE'
+          assert q['rear_seam']['precision_authority']=='COMPILER_C2_RESIDUAL_FROM_RAW_PYTHON_FLOAT_CAGE'
           assert q['front_seam']['max_position_error'] <= 1e-7
           assert q['rear_seam']['max_position_error'] <= 1e-7
           assert q['front_seam']['max_tangent_angle_deg'] <= 0.05
           assert q['rear_seam']['max_tangent_angle_deg'] <= 0.05
           assert q['front_seam']['max_second_derivative_error'] <= 1e-6
           assert q['rear_seam']['max_second_derivative_error'] <= 1e-6
+          assert q['front_seam']['runtime_max_second_derivative_error'] <= 5e-6
+          assert q['rear_seam']['runtime_max_second_derivative_error'] <= 5e-6
           for name in ('E2_HERO_NETWORK.png','E2_SIDE_NETWORK.png','E2_TOP_NETWORK.png','E2_ZEBRA_NETWORK.png'):
               assert (root/name).is_file(), name
           assert any(root.glob('*.blend'))
@@ -165,6 +177,8 @@ jobs:
           echo '- E1 Surface Source = sparse 4x4 bicubic cage.' >> "$GITHUB_STEP_SUMMARY"
           echo '- E1 Human M4.5 PASS is a required receipt before E2.' >> "$GITHUB_STEP_SUMMARY"
           echo '- E2 compiles explicit C2 seam relations into a three-patch network.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Compiler-space C2 and Blender runtime representation residuals are separate evidence classes.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Original compiler C2 design thresholds are unchanged.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Front/rear termination are surface patches, not mesh closure.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Execution topology is derived after surface-network compilation.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Human E2 zebra/reflection review is still required.' >> "$GITHUB_STEP_SUMMARY"
