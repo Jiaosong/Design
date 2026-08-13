@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.3",
+  "kind": "GATE_RECEIPTS",
+  "execution_mode": "LIVE",
+  "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+  "authority_binding": {
+    "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+    "authority_state": "WORKING_SOURCE",
+    "sha256": null
+  },
+  "transition": {
+    "kind": "CANDIDATE_PROMOTION",
+    "from_authority_state": "WORKING_SOURCE",
+    "target_authority_state": "CANDIDATE_AUTHORITY",
+    "target_design_state": "CANDIDATE"
+  },
+  "receipts": [
+    {
+      "gate": "Machine QA",
+      "result": "PASS",
+      "basis": "DIRECT",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+      "authority_sha256": null,
+      "gate_version": "E3-R3.3",
+      "receipt_id": "MW-v0.12-E3-R33-MACHINE-31688935218",
+      "executed_at": "2026-08-13T10:07:02Z",
+      "evidence_ref": "github-actions:31688935218;artifact:9176833315;report:E3_R33_MACHINE_REPORT.json;digest:sha256:cd608eb82f191df16ccf32be0a28280577d866b70dbd7bdbe84d8351006c1d3f"
+    },
+    {
+      "gate": "Visual QA",
+      "result": "PASS",
+      "basis": "DIRECT",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+      "authority_sha256": null,
+      "gate_version": "E3-R3.3-HUMAN",
+      "receipt_id": "MW-v0.12-E3-R33-VISUAL-20260813",
+      "executed_at": "2026-08-13T10:10:00Z",
+      "evidence_ref": "github:90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md#Human-Visual-QA;blob:24449ce0bc04814ac646a28fb3e30854cad53986"
+    },
+    {
+      "gate": "Project QA",
+      "result": "PASS",
+      "basis": "DIRECT",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+      "authority_sha256": null,
+      "gate_version": "E3-R3.3-HUMAN",
+      "receipt_id": "MW-v0.12-E3-R33-PROJECT-20260813",
+      "executed_at": "2026-08-13T10:10:00Z",
+      "evidence_ref": "github:90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md#Project-QA;blob:24449ce0bc04814ac646a28fb3e30854cad53986"
+    },
+    {
+      "gate": "Production Asset Persistence Gate",
+      "result": "PASS",
+      "basis": "DIRECT",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_id": "github:PR91:agent/modeling-worker-v0-12-freeform-surface",
+      "authority_sha256": null,
+      "gate_version": "PAP-v1",
+      "receipt_id": "MW-v0.12-E3-R33-PAP-G0-G6-20260813",
+      "executed_at": "2026-08-13T10:26:01Z",
+      "evidence_ref": "github:PAP_RECEIPT_2026-08-13.md;notion:3bbb86be-5c47-814d-b440-c3be9f9dd999;drive-manifest:1-Xc9Wm0rrQS2ZMV1MoHB6aGbY8Plzfi6;drive-receipt:15LntbAtSn0TrM_Fn7HycaZEtT91Rh9Bk"
+    }
+  ]
+}
