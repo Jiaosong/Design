@@ -49,7 +49,7 @@ class ModelingWorkerV013G1Regression(unittest.TestCase):
         text = (V013 / "G1_R1_VISUAL_DECISION.md").read_text(encoding="utf-8")
         self.assertIn("VISUAL REVISE", text)
         self.assertIn("PROJECT QA BLOCKED", text)
-        self.assertIn("Candidate Review", text)
+        self.assertIn("CANDIDATE REVIEW BLOCKED", text)
 
 
 if __name__ == "__main__":
