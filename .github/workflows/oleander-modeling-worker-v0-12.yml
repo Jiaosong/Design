@@ -32,6 +32,7 @@ jobs:
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_SURFACE_EXECUTION_SPEC.json >/dev/null
 
       - name: Run v0.12 regression tests
         run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
@@ -90,9 +91,9 @@ jobs:
           echo '- Machine fairness proxies do not establish Class-A, engineering or human design authority.' >> "$GITHUB_STEP_SUMMARY"
 
   freeform-blender:
-    name: E1 + E2 Blender Freeform Surface
+    name: E1 + E2 + E3 Blender Freeform Surface
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -103,6 +104,7 @@ jobs:
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_application_entry.py
 
       - name: Install Blender runtime dependencies
         run: |
@@ -208,6 +210,55 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+      - name: Require recorded E2 Human M4.5 PASS before E3 application
+        run: |
+          set -euo pipefail
+          grep -F 'E2 M4.5 = PASS' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
+          grep -F 'Required next step｜E3 application benchmark' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
+
+      - name: Execute E3 Automotive application benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_application_entry.py -- \
+            --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_SURFACE_EXECUTION_SPEC.json \
+            --out "$OUT" --resolution 512
+
+      - name: E3 application machine gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive')
+          q=json.loads((root/'E3_APPLICATION_MACHINE_REPORT.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED', q
+          assert all(q['checks'].values()), q['checks']
+          assert q['checks']['semantic_source_edits_exact'] is True
+          assert q['checks']['all_declared_volume_variants_machine_pass'] is True
+          for row in q['semantic_control_variants'].values():
+              assert row['source_edit_exact'] is True, row
+              assert row['derived_network_changed'] is True, row
+              assert row['machine_status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED', row
+          for name in (
+              'E3_HERO_APPLICATION.png','E3_SIDE_APPLICATION.png','E3_TOP_APPLICATION.png','E3_ZEBRA_APPLICATION.png',
+              'E3_VARIANT_HOOD_SIDE.png','E3_VARIANT_CABIN_SIDE.png','E3_VARIANT_SHOULDER_SIDE.png','E3_VARIANT_LOWER-BODY_SIDE.png',
+              'E3_COMPILED_SURFACE_SOURCE.json','E3_APPLICATION_MACHINE_REPORT.json'
+          ):
+              assert (root/name).is_file(), name
+          assert any(root.glob('*.blend'))
+          print(json.dumps(q,indent=2))
+          PY
+
+      - name: Upload E3 application evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-e3-automotive-${{ github.run_id }}
+          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive/
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Publish freeform boundary
         if: always()
         run: |
@@ -217,7 +268,7 @@ jobs:
           echo '- E2 compiles explicit C2 seam relations into a three-patch network.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Compiler-space C2 and Blender runtime representation residuals are separate evidence classes.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Original compiler C2 design thresholds are unchanged.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Front/rear termination are surface patches, not mesh closure.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Execution topology is derived after surface-network compilation.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Human E2 zebra/reflection review is still required.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- No Class-A / engineering / final design claim.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 consumes the generic compiler as an Automotive application benchmark; it does not redefine the generic method.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 semantic edits must remain exact at Source Authority level; derived neighbor changes are execution consequences.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 Machine PASS only opens Human Project/Visual QA. PAP and system Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- No Class-A / engineering / manufacturing / final design claim.' >> "$GITHUB_STEP_SUMMARY"
