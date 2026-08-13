@@ -1,0 +1,115 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.relationship-surface-contract",
+  "job_id": "SYS-MODELING-WORKER-v0.12-AUTO-E3",
+  "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
+  "authority": {
+    "design_relationship": "WORKING_SOURCE",
+    "surface_source": "WORKING_SOURCE",
+    "execution_geometry": "NONE"
+  },
+  "hard_points": [
+    {"id": "HP-FRONT-WHEEL"},
+    {"id": "HP-REAR-WHEEL"},
+    {"id": "HP-COWL"},
+    {"id": "HP-ROOF-PEAK"},
+    {"id": "HP-FRONT-OVERHANG"},
+    {"id": "HP-REAR-OVERHANG"}
+  ],
+  "volume_skeleton": [
+    {"id": "VOL-HOOD", "role": "independently controllable front upper volume", "locked_variables": ["wheel package", "front overhang class"], "open_variables": ["crown tension", "front volume falloff"]},
+    {"id": "VOL-CABIN", "role": "independently controllable cabin and roof volume", "locked_variables": ["roof peak class", "wheelbase class"], "open_variables": ["cabin gesture", "A-pillar flow", "C-pillar flow"]},
+    {"id": "VOL-SHOULDER", "role": "primary longitudinal shoulder volume", "locked_variables": ["front/rear wheel package"], "open_variables": ["shoulder acceleration", "wheel-crown relationship"]},
+    {"id": "VOL-REAR-HAUNCH", "role": "rear mass and wheel-opening support volume", "locked_variables": ["rear wheel package"], "open_variables": ["haunch mass", "rear opening curvature"]},
+    {"id": "VOL-LOWER-BODY", "role": "rocker and lower-body tension volume", "locked_variables": ["overall height class"], "open_variables": ["rocker tension", "lower-body rise"]},
+    {"id": "VOL-FRONT-TERMINATION", "role": "independent front termination volume", "locked_variables": ["front overhang class"], "open_variables": ["termination depth", "longitudinal continuation"]},
+    {"id": "VOL-REAR-TERMINATION", "role": "independent rear termination volume", "locked_variables": ["rear overhang class"], "open_variables": ["termination depth", "longitudinal continuation"]}
+  ],
+  "relationship_graph": {
+    "nodes": [
+      {"id": "VOL-HOOD"},
+      {"id": "VOL-CABIN"},
+      {"id": "VOL-SHOULDER"},
+      {"id": "VOL-REAR-HAUNCH"},
+      {"id": "VOL-LOWER-BODY"},
+      {"id": "VOL-FRONT-TERMINATION"},
+      {"id": "VOL-REAR-TERMINATION"}
+    ],
+    "edges": [
+      {"id": "REL-E3-01", "source": "VOL-HOOD", "target": "VOL-SHOULDER", "relation": "TANGENCY", "priority": "HIGH", "intended_effect": "hood crown should feed the front shoulder without an attached-fender highlight break", "allowed_variation": {"tangent_jump_deg_max": 5.0}},
+      {"id": "REL-E3-02", "source": "VOL-CABIN", "target": "VOL-SHOULDER", "relation": "PROPORTION", "priority": "HIGH", "intended_effect": "cabin must read as a distinct volume supported by the shoulder rather than one single bubble", "allowed_variation": "Human Project/Visual QA required"},
+      {"id": "REL-E3-03", "source": "VOL-SHOULDER", "target": "VOL-REAR-HAUNCH", "relation": "FLOW", "priority": "HIGH", "intended_effect": "shoulder acceleration should build rear-haunch mass before the rear opening rather than appear as a local patch", "allowed_variation": "bounded by rear wheel package and side silhouette"},
+      {"id": "REL-E3-04", "source": "VOL-LOWER-BODY", "target": "VOL-SHOULDER", "relation": "TENSION", "priority": "MEDIUM", "intended_effect": "rocker and lower-body rise should counterbalance shoulder mass without flattening the side section", "allowed_variation": "application-level visual review"},
+      {"id": "REL-E3-05", "source": "VOL-FRONT-TERMINATION", "target": "VOL-HOOD", "relation": "FLOW", "priority": "HIGH", "intended_effect": "front termination should continue the hood and shoulder volume instead of closing as a topology cap", "allowed_variation": "far boundary remains independently editable"},
+      {"id": "REL-E3-06", "source": "VOL-REAR-HAUNCH", "target": "VOL-REAR-TERMINATION", "relation": "CURVATURE", "priority": "HIGH", "intended_effect": "rear termination should continue rear-haunch curvature while remaining a distinct editable volume", "allowed_variation": "far boundary remains independently editable"},
+      {"id": "REL-E3-07", "source": "VOL-CABIN", "target": "VOL-REAR-HAUNCH", "relation": "PROPORTION", "priority": "MEDIUM", "intended_effect": "C-pillar and rear-haunch mass must form a controlled transition rather than a generic roof-to-tail blend", "allowed_variation": "Human Project/Visual QA required"}
+    ]
+  },
+  "primary_curves": [
+    {"id": "CURVE-SIDE-SILHOUETTE", "role": "application side silhouette", "depends_on": ["VOL-HOOD", "VOL-CABIN", "VOL-REAR-HAUNCH", "VOL-FRONT-TERMINATION", "VOL-REAR-TERMINATION"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-PLAN-SILHOUETTE", "role": "application plan silhouette", "depends_on": ["VOL-HOOD", "VOL-SHOULDER", "VOL-REAR-HAUNCH"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-ROOF-FLOW", "role": "centerline roof and cabin flow", "depends_on": ["VOL-CABIN", "HP-COWL", "HP-ROOF-PEAK"], "continuity_target": "G2", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-HOOD-CROWN", "role": "hood crown trajectory", "depends_on": ["VOL-HOOD", "VOL-FRONT-TERMINATION"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-SHOULDER", "role": "longitudinal shoulder acceleration", "depends_on": ["VOL-SHOULDER", "HP-FRONT-WHEEL", "HP-REAR-WHEEL"], "continuity_target": "G2", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-BELT", "role": "belt reference", "depends_on": ["VOL-CABIN", "VOL-SHOULDER"], "continuity_target": "G1", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-ROCKER", "role": "lower-body tension reference", "depends_on": ["VOL-LOWER-BODY", "VOL-SHOULDER"], "continuity_target": "G1", "sampling_policy": "ARC_LENGTH", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-A-PILLAR", "role": "A-pillar trajectory", "depends_on": ["VOL-CABIN", "VOL-HOOD", "HP-COWL"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-C-PILLAR", "role": "C-pillar trajectory", "depends_on": ["VOL-CABIN", "VOL-REAR-HAUNCH"], "continuity_target": "G2", "sampling_policy": "CURVATURE_ADAPTIVE", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-FRONT-TERMINATION", "role": "front longitudinal termination flow", "depends_on": ["VOL-FRONT-TERMINATION", "VOL-HOOD", "VOL-SHOULDER"], "continuity_target": "G2", "sampling_policy": "EXPLICIT", "authority": "WORKING_SOURCE", "state": "OPEN"},
+    {"id": "CURVE-REAR-TERMINATION", "role": "rear longitudinal termination flow", "depends_on": ["VOL-REAR-TERMINATION", "VOL-REAR-HAUNCH", "VOL-SHOULDER"], "continuity_target": "G2", "sampling_policy": "EXPLICIT", "authority": "WORKING_SOURCE", "state": "OPEN"}
+  ],
+  "control_cage": {
+    "id": "CAGE-E3-AUTO-PRIMARY",
+    "frequency": "LOW",
+    "semantic_axes": ["longitudinal-flow", "vertical-volume", "transverse-tension", "volume-influence-falloff"],
+    "max_control_points": 128,
+    "local_influence_policy": "every cage edit must identify its intended low-frequency volume and bounded falloff; local defects may not be solved by uncontrolled global cage densification",
+    "topology_independent": true
+  },
+  "surface_fairness": {
+    "required_metrics": ["G1", "G2", "TANGENT_JUMP", "CURVATURE_COMB", "CURVATURE_RATE", "INFLECTION_COUNT", "SPACING_REGULARITY", "ZEBRA", "REFLECTION_FLOW", "SILHOUETTE_DERIVATIVE", "TERMINATION_INFLUENCE"],
+    "thresholds": {
+      "max_tangent_jump_deg": 18.5,
+      "spacing_cv": 0.08,
+      "max_curvature_rate": 0.25,
+      "inflection_count": 2
+    },
+    "evidence": [
+      {
+        "id": "E3-CURVE-SIDE-00",
+        "kind": "CURVE_SAMPLES",
+        "status": "WORKING_DESIGN_SAMPLE",
+        "points": [[-4.0,0.0,0.55],[-3.0,0.0,0.68],[-2.0,0.0,0.90],[-1.0,0.0,1.18],[0.0,0.0,1.34],[1.0,0.0,1.20],[2.0,0.0,0.92],[3.0,0.0,0.70],[4.0,0.0,0.58]]
+      },
+      {
+        "id": "E3-CURVE-SHOULDER-00",
+        "kind": "CURVE_SAMPLES",
+        "status": "WORKING_DESIGN_SAMPLE",
+        "points": [[-4.0,0.70,0.62],[-3.0,0.78,0.68],[-2.0,0.84,0.77],[-1.0,0.88,0.86],[0.0,0.90,0.91],[1.0,0.89,0.90],[2.0,0.86,0.84],[3.0,0.80,0.74],[4.0,0.72,0.65]]
+      },
+      {
+        "id": "E3-CURVE-ROOF-00",
+        "kind": "CURVE_SAMPLES",
+        "status": "WORKING_DESIGN_SAMPLE",
+        "points": [[-2.5,0.0,0.88],[-1.9,0.0,1.05],[-1.3,0.0,1.22],[-0.7,0.0,1.35],[0.0,0.0,1.40],[0.7,0.0,1.36],[1.3,0.0,1.24],[1.9,0.0,1.08],[2.5,0.0,0.92]]
+      },
+      {"id": "E3-ZEBRA-00", "kind": "ZEBRA", "status": "RENDER_REQUIRED"},
+      {"id": "E3-REFLECTION-00", "kind": "REFLECTION_FLOW", "status": "RENDER_REQUIRED"},
+      {"id": "E3-PROJECT-VISUAL-00", "kind": "APPLICATION_PROJECT_VISUAL_QA", "status": "NOT_RUN"}
+    ],
+    "status": "OPEN"
+  },
+  "execution_geometry": {
+    "derived_from_surface_source": true,
+    "editable_source": "APPLICATION_RELATIONSHIPS+PRIMARY_CURVES+SPARSE_CAGE",
+    "derived_outputs": [],
+    "smooth_shading_is_evidence": false
+  },
+  "gate_state": {
+    "M2": "OPEN",
+    "M3": "BLOCKED",
+    "M4": "BLOCKED",
+    "M4_5": "BLOCKED",
+    "M5": "BLOCKED",
+    "M6_plus_blocked": true
+  }
+}
