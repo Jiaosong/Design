@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "Modeling Worker v0.13｜Cross-Domain Freeform Generalization Benchmark",
+    "project_id": "SYS-MODELING-WORKER",
+    "project_level": "P2",
+    "case_id": null,
+    "knowledge_position": "L7 Practice / Output",
+    "application_mapping": [],
+    "priority": null
+  },
+  "mode": "EXPLORE",
+  "decision_question": "Can the v0.12 relationship-driven freeform-surface method transfer to a materially different non-automotive freeform product domain without changing the core Relationship/Fairness Contract, while preserving editable Surface Source Authority, stable Machine QA, and repeatable Human Visual / Project judgment?",
+  "problem_layer": "Architecture",
+  "authority_source": {
+    "state": "WORKING_SOURCE",
+    "object_id": "SYS-MODELING-WORKER-v0.13-GENERALIZATION",
+    "source_id": "github:branch:agent/modeling-worker-v0-13-generalization-reentry",
+    "location": "90-shared/toolchains/modeling-worker/v0.13/",
+    "sha256": null
+  },
+  "locked_variables": [
+    "v0.12 remains current CANONICAL_AUTHORITY until a later legal promotion supersedes it",
+    "Design Geometry Layer → Surface Construction Layer → Execution Mesh Layer",
+    "Relationship Graph remains first-class evidence",
+    "Primary Curves / sparse low-frequency source structures precede dense execution topology",
+    "editable Surface Source Authority remains distinct from derived execution mesh",
+    "position PASS != fairness PASS",
+    "smooth shading != G1/G2 evidence",
+    "local mesh patching cannot silently override upstream relationship defects",
+    "Machine / Visual / Project QA remain separate",
+    "historical failed evidence remains immutable",
+    "PAP / Promotion remain explicit human-owned transitions",
+    "no Class-A / engineering / manufacturing / Release claim"
+  ],
+  "open_variables": [
+    "exact non-automotive second-domain benchmark geometry grammar",
+    "benchmark hard / soft relationship priorities",
+    "primary-curve ownership for the second domain",
+    "sparse Surface Source representation for the second domain",
+    "unchanged-or-stricter Machine fairness thresholds",
+    "first bounded relationship-transfer experiment",
+    "controlled upstream relation-revision experiment",
+    "Human Visual QA",
+    "Human Project QA",
+    "Candidate entry review"
+  ],
+  "required_qa": [
+    "Machine",
+    "Visual",
+    "Project"
+  ],
+  "artifact_type": "model",
+  "claim_types": [],
+  "evidence_state": {
+    "observe": "PASS",
+    "reentry": "PASS",
+    "benchmark_contract": "OPEN",
+    "machine": "NOT_RUN",
+    "visual": "NOT_RUN",
+    "project": "NOT_RUN",
+    "candidate_review": "NOT_RUN"
+  },
+  "next_allowed_action": "Compile the second-domain benchmark contract, define relationship priorities and sparse source ownership, then run the first bounded relationship-transfer experiment. Candidate entry is blocked until Machine + Visual + Project QA all PASS.",
+  "sync_persistence_trigger": "RECEIPT",
+  "review_history": []
+}
