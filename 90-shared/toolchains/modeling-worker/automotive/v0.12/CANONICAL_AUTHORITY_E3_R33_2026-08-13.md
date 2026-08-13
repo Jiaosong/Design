@@ -1,6 +1,6 @@
 # OLEANDER Modeling Worker v0.12｜E3 R3.3｜Canonical Authority Receipt
 
-Status: `CANONICAL_AUTHORITY / PROMOTED / CROSS_SYSTEM_SYNC_PENDING / NOT RELEASED`.
+Status: `SYNCED / CANONICAL_AUTHORITY / PROMOTED / NOT RELEASED`.
 
 Object: `SYS-MODELING-WORKER-v0.12-E3-AUTO`.
 
@@ -34,13 +34,21 @@ Notion `3bbb86be-5c47-814b-be11-da0191aae39f`.
 
 No modeling, fairness, relationship, Human Project/Visual, or PAP gate was reopened by Canonical Promotion.
 
-## Supersession
-
-Automotive v0.11 remains immutable historical Canonical Authority evidence for its validated benchmark state. Modeling Worker v0.12 is now the current system authority. v0.11 is superseded as current authority but its historical receipts are not deleted or rewritten.
-
 ## Cross-system closure
 
-Canonical Notion / Drive receipt synchronization is required immediately after this transition. Until readback completes, `CROSS_SYSTEM_SYNC_PENDING` remains explicit.
+- GitHub Canonical sync receipt: `CANONICAL_AUTHORITY_SYNC_E3_R33_2026-08-13.md`; commit `7fc68f9224a4632756d7cb371fa22940131cb429`; remote readback PASS.
+- Notion Canonical Authority receipt: `3bbb86be-5c47-8156-8d3c-fdae008c3252`; readback PASS.
+- Google Drive Canonical Authority receipt: `1RCpMcCCrvcvAZXzAdYhMQmK7LjdTBJFvUjNjSoozfz8` under PAP root `1NqK4452BlZom84nX8UdmJh4Ga1GUcrWd`; content and parent-folder readback PASS.
+- Post-Canonical contradiction manifest: `00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-post-canonical-promotion.json`; commit `a43c9b7a2bdce76b3da8fd3a27f5fdd509339eda`.
+- Post-Canonical contradiction result: `CONTRADICTION_SCAN_PASS`; result commit `62353cb6c323789f1c3cffa712e346b90d229843`; findings `[]`; systems checked = Notion / GitHub / Drive.
+
+`CROSS_SYSTEM_SYNC = PASS`
+
+`POST_CANONICAL_CONTRADICTION_SCAN = PASS`
+
+## Supersession
+
+Automotive v0.11 remains immutable historical Canonical Authority evidence for its validated benchmark state. Modeling Worker v0.12 is the current system authority. v0.11 is superseded as current authority but its historical receipts are not deleted or rewritten.
 
 ## Authority boundary
 
