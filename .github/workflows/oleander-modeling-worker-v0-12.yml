@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   candidate-state-and-receipts:
-    name: Candidate State + Immutable Evidence Receipts
+    name: Candidate Authority State + Immutable Evidence Receipts
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -34,9 +34,7 @@ jobs:
       - name: Run generic v0.12 regression tests
         run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
       - name: Control Plane v0.3 check — active E3 card
-        run: |
-          python 00-governance/control-plane/control_plane.py check \
-            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+        run: python 00-governance/control-plane/control_plane.py check 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
       - name: Verify accepted evidence progression without re-rendering historical states
         run: |
           set -euo pipefail
@@ -46,33 +44,40 @@ jobs:
           grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' 90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md
           grep -F 'R3.3 APPLICATION MACHINE PASS / HUMAN PROJECT+VISUAL PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md
           grep -F 'PERSISTENCE PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_RECEIPT_2026-08-13.md
-      - name: Assert current candidate state
+          grep -F 'Decision: `APPROVED`' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md
+          grep -F 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md
+      - name: Assert current candidate authority state
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          card=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json').read_text())
-          pap=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_MANIFEST_v1.json').read_text())
+          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
+          pap=json.loads((root/'PAP_MANIFEST_v1.json').read_text())
           assert card['mode']=='CANDIDATE'
-          assert card['authority_source']['state']=='WORKING_SOURCE'
+          assert card['authority_source']['state']=='CANDIDATE_AUTHORITY'
           assert card['problem_layer']=='Evidence'
           ev=card['evidence_state']
           for key in ('contract','machine','visual','project','pap'):
               assert ev[key]=='PASS',(key,ev[key])
           assert 'promotion' not in ev
-          assert 'CANDIDATE_PROMOTION' in card['next_allowed_action']
-          assert 'WORKING_SOURCE → CANDIDATE_AUTHORITY' in card['next_allowed_action']
           assert pap['status']=='PERSISTENCE_PASS'
           assert pap['authority_state']=='WORKING_SOURCE'
           assert pap['design_state']=='CANDIDATE'
           assert all(v=='PASS' for v in pap['pap_gates'].values())
           assert pap['accepted_source_snapshot_commit']=='5782c039562e723705b6f46537fea7efa0936b29'
-          print('V0_12_CANDIDATE_STATE_RECEIPT_VERIFICATION_PASS')
+          authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+          sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+          assert 'WORKING_SOURCE' in authority and 'CANDIDATE_AUTHORITY' in authority
+          assert 'ARTIFACT_REGISTER = EXECUTED' in sync
+          assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
+          print('V0_12_CANDIDATE_AUTHORITY_RECEIPT_VERIFICATION_PASS')
           PY
       - name: Publish boundary
         run: |
-          echo 'PR CI verifies current contracts and immutable receipts instead of re-rendering accepted or known-failed historical Blender states.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Promotion is an unexecuted human-owned transition, not an evidence key. Authority State remains WORKING_SOURCE and PR remains Draft.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PR CI verifies current Candidate Authority plus immutable historical evidence without re-rendering accepted or known-failed Blender states.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The PAP manifest remains the historical WORKING_SOURCE persistence receipt; Candidate Authority is established by the later approved transition receipts.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'CANONICAL_AUTHORITY, Release, and merge are not authorized by this workflow.' >> "$GITHUB_STEP_SUMMARY"
 
   manual-active-blender-replay:
     name: Manual E1 + E2 + R3.3 Active Blender Replay
@@ -103,8 +108,7 @@ jobs:
       - name: Replay E1
         run: |
           OUT="$GITHUB_WORKSPACE/out/E1"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- --out "$OUT" --resolution 512
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- --out "$OUT" --resolution 512
           python - <<'PY'
           import json; from pathlib import Path
           q=json.loads(Path('out/E1/E1_FREEFORM_FAIRNESS.json').read_text())
@@ -113,9 +117,7 @@ jobs:
       - name: Replay E2
         run: |
           OUT="$GITHUB_WORKSPACE/out/E2"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py -- \
-            --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json --out "$OUT" --resolution 512
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py -- --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json --out "$OUT" --resolution 512
           python - <<'PY'
           import json; from pathlib import Path
           q=json.loads(Path('out/E2/E2_FREEFORM_FAIRNESS.json').read_text())
@@ -125,12 +127,7 @@ jobs:
       - name: Replay active R3.3
         run: |
           OUT="$GITHUB_WORKSPACE/out/R33"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py -- \
-            --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
-            --r32-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json \
-            --r33-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json \
-            --out "$OUT" --resolution 512
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py -- --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json --r32-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json --r33-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json --out "$OUT" --resolution 512
           python - <<'PY'
           import json; from pathlib import Path
           q=json.loads(Path('out/R33/E3_R33_MACHINE_REPORT.json').read_text())
@@ -144,5 +141,4 @@ jobs:
           if-no-files-found: error
           retention-days: 14
       - name: Boundary
-        run: |
-          echo 'Manual replay reproduces active Machine evidence only. Existing Human receipts remain separate evidence and no Promotion is authorized by this replay.' >> "$GITHUB_STEP_SUMMARY"
+        run: echo 'Manual replay reproduces active Machine evidence only; it does not alter Human receipts, Candidate Authority, or authorize Canonical Promotion.' >> "$GITHUB_STEP_SUMMARY"
