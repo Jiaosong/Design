@@ -1,0 +1,159 @@
+name: OLEANDER Modeling Worker v0.12 R3.1
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_*'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_*'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_MACHINE_FAILURE_DECISION.md'
+      - '.github/workflows/oleander-modeling-worker-v0-12-r3-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r3-1-contract:
+    name: R3.1 Evidence Semantics + Authority Contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Parse R3.1 contract
+        run: python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
+      - name: Compile R3.1 compiler
+        run: python -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_coupled_surface_entry.py
+      - name: Require immutable R3 machine-failure receipt
+        run: |
+          set -euo pipefail
+          grep -F 'R3 CONTRACT PASS / MACHINE FAIL' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_MACHINE_FAILURE_DECISION.md
+          grep -F '31670668379' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_MACHINE_FAILURE_DECISION.md
+          grep -F '9169743690' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_MACHINE_FAILURE_DECISION.md
+      - name: Assert R3.1 evidence classes are explicit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json').read_text())
+          assert c['revision']=='R3.1'
+          assert c['architecture']['fairness_zone_policy'].startswith('BROAD_INTERIOR')
+          th=c['machine_thresholds']
+          for k in ('broad_interior_margin','min_broad_normal_radius_proxy_m','min_character_band_normal_radius_proxy_m','max_character_band_total_normal_turn_deg','min_intentional_boundary_half_width_m','max_runtime_boundary_normal_diagnostic_deg'):
+              assert k in th, k
+          assert c['authority']['primary_curves']=='WORKING_SOURCE'
+          assert c['authority']['surface_source']=='WORKING_SOURCE'
+          assert c['authority']['execution_geometry']=='DERIVED'
+          assert c['architecture']['profile_plan_authority_separated'] is True
+          assert c['architecture']['global_control_cage_forbidden'] is True
+          print('R3_1_EVIDENCE_SEMANTICS_CONTRACT_PASS')
+          PY
+
+  r3-1-blender:
+    name: R3.1 Blender Relationship-Aware Surface QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Compile R3.1 compiler
+        run: |
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_coupled_surface_entry.py
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Execute E3 R3.1
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3_1"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_coupled_surface_entry.py -- \
+            --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
+            --out "$OUT" --resolution 512
+      - name: R3.1 machine gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3_1')
+          q=json.loads((r/'E3_R3_1_MACHINE_REPORT.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED', q
+          assert all(q['checks'].values()), q['checks']
+          required=(
+              'five_surface_source_families',
+              'profile_plan_primary_curve_authority_separated',
+              'global_control_cage_forbidden',
+              'relationship_specific_continuity_classes',
+              'source_relationship_authority_pass',
+              'broad_interior_fairness_pass',
+              'character_band_quality_pass',
+              'intentional_boundaries_non_degenerate',
+              'semantic_control_source_ownership_disjoint',
+              'profile_silhouette_metrics_pass',
+              'plan_view_rear_haunch_hierarchy_pass',
+              'reflection_field_proxy_pass',
+              'execution_topology_is_derived',
+              'semantic_source_edits_exact',
+              'all_semantic_variants_surface_pass',
+              'semantic_authority_domain_effects_present',
+              'machine_pass_only_opens_human_review'
+          )
+          assert all(q['checks'][k] for k in required)
+          assert not q['base']['semantic_source_overlaps']
+          for rel in q['base']['source_relationship_metrics']:
+              assert rel['pass'], rel
+          for row in q['base']['runtime_boundary_diagnostics']:
+              assert row['diagnostic_only'] is True
+              assert row['finite_difference_max_normal_angle_deg'] is not None
+          for fam,row in q['base']['zoned_fairness']['broad_interior'].items():
+              assert row['min_normal_radius_proxy_m'] >= 0.020, (fam,row)
+          for band,row in q['base']['zoned_fairness']['character_bands'].items():
+              assert row['min_normal_radius_proxy_m'] >= 0.010, (band,row)
+              assert row['max_total_normal_turn_deg'] <= 105.0, (band,row)
+          assert q['base']['intentional_boundary_metrics']['pass']
+          for cid,row in q['semantic_variants'].items():
+              assert row['source_edit_exact'], cid
+              assert row['direct_declared_authority_effect']['pass'], cid
+              assert row['working_fidelity_legible'], cid
+              assert row['machine_surface_pass'], cid
+          for n in ('E3_R3_HERO.png','E3_R3_SIDE.png','E3_R3_TOP.png','E3_R3_ZEBRA.png','E3_R3_1_COMPILED_SURFACE_SOURCE.json'):
+              assert (r/n).is_file(), n
+          for cid in ('HOOD_COWL','CABIN','SHOULDER','REAR_HAUNCH','LOWER_BODY','FRONT_TERMINATION','REAR_TERMINATION'):
+              assert (r/f'E3_R3_VARIANT_{cid}_SIDE.png').is_file(), cid
+              assert (r/f'E3_R3_VARIANT_{cid}_TOP.png').is_file(), cid
+          assert any(r.glob('*.blend'))
+          print(json.dumps(q['checks'],indent=2))
+          PY
+      - name: Upload R3.1 evidence even when fail-closed
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-e3-r3-1-${{ github.run_id }}
+          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3_1/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish R3.1 boundary
+        if: always()
+        run: |
+          echo '## E3 R3.1 boundary' >> "$GITHUB_STEP_SUMMARY"
+          echo '- R3 failure remains immutable evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Source relationship authority is separated from finite-difference runtime diagnostics.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Broad interior, character bands and intentional far boundaries are separate QA classes.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Geometry revisions broaden character transitions and retain more termination width/height.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Machine PASS only opens Human Project/Visual QA; PAP and Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
