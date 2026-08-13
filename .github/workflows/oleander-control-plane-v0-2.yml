@@ -1,0 +1,33 @@
+name: OLEANDER Control Plane v0.2
+
+on:
+  pull_request:
+    paths:
+      - '00-governance/control-plane/**'
+      - '00-governance/README.md'
+      - '00-governance/oleander-project-flow-v0.3.md'
+      - '.github/workflows/oleander-control-plane-v0-2.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00-governance/control-plane/**'
+      - '.github/workflows/oleander-control-plane-v0-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  control-plane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' -v
+      - name: Example control card fail-closed check
+        run: python 00-governance/control-plane/control_plane.py check 00-governance/control-plane/examples/example-explore.json
+      - name: Compile check
+        run: python -m py_compile 00-governance/control-plane/control_plane.py
