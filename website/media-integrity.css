@@ -1,0 +1,211 @@
+/* Portfolio media integrity: complete boards remain complete; photography is handled elsewhere. */
+.daylily-detail figure,
+.reno-detail figure,
+.expression-encounter figure {
+  overflow: visible !important;
+}
+
+.daylily-detail figure img,
+.reno-detail figure img,
+.expression-encounter figure img {
+  display: block;
+  width: 100% !important;
+  max-width: 1800px;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+  filter: none !important;
+  image-rendering: auto;
+  margin-inline: auto;
+}
+
+.daylily-detail figure.is-reading-image img,
+.reno-detail figure.is-reading-image img,
+.expression-encounter figure.is-reading-image img {
+  transform: none !important;
+}
+
+.work-board-image {
+  cursor: zoom-in;
+}
+
+.work-board-image:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+.daylily-detail figcaption,
+.reno-detail figcaption,
+.expression-encounter figcaption {
+  margin-top: 12px;
+}
+
+@media (min-width: 1180px) {
+  .encounter-work--daylily img,
+  .encounter-work--reno img,
+  .daylily-opening__image img,
+  .reno-opening__image img {
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+  }
+
+  .daylily-image-grid--two,
+  .reno-grid--two {
+    grid-template-columns: minmax(0, 1.55fr) minmax(360px, .75fr) !important;
+    align-items: start;
+  }
+
+  .daylily-image-grid--two figure:last-child,
+  .reno-grid--two figure:last-child {
+    margin-top: clamp(84px, 8vw, 150px) !important;
+  }
+
+  .daylily-image-grid--three {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: clamp(24px, 3vw, 54px) !important;
+    align-items: start;
+  }
+
+  .daylily-image-grid--three figure:nth-child(1) {
+    grid-column: 1 / span 8;
+    margin-top: 0 !important;
+  }
+
+  .daylily-image-grid--three figure:nth-child(2) {
+    grid-column: 9 / -1;
+    margin-top: clamp(110px, 9vw, 170px) !important;
+  }
+
+  .daylily-image-grid--three figure:nth-child(3) {
+    grid-column: 6 / span 7;
+    margin-top: clamp(24px, 3vw, 52px) !important;
+  }
+
+  .identity-wall {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: clamp(24px, 3vw, 54px) !important;
+    align-items: start;
+  }
+
+  .identity-wall__wide {
+    grid-column: 1 / span 8 !important;
+  }
+
+  .identity-wall > figure:nth-child(2) {
+    grid-column: 9 / -1 !important;
+    margin-top: clamp(90px, 7vw, 140px) !important;
+  }
+
+  .identity-wall > figure:nth-child(3) {
+    grid-column: 6 / span 7 !important;
+    margin-top: clamp(20px, 2vw, 40px) !important;
+  }
+
+  .reno-color-map {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: clamp(24px, 3vw, 54px) !important;
+    align-items: start;
+  }
+
+  .reno-color-map__wide {
+    grid-column: 1 / span 8 !important;
+  }
+
+  .reno-color-map > figure:nth-child(2) {
+    grid-column: 9 / -1 !important;
+    margin-top: clamp(80px, 7vw, 140px) !important;
+  }
+
+  .reno-color-map > figure:nth-child(3) {
+    grid-column: 2 / span 5 !important;
+    margin-top: clamp(36px, 4vw, 72px) !important;
+  }
+
+  .reno-color-map > figure:nth-child(4) {
+    grid-column: 7 / span 6 !important;
+    margin-top: clamp(110px, 9vw, 180px) !important;
+  }
+}
+
+.work-viewer[hidden] {
+  display: none !important;
+}
+
+.work-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: rgba(22, 22, 20, .94);
+  color: #f2efe8;
+  padding: clamp(16px, 2vw, 32px);
+}
+
+.work-viewer__bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 44px;
+}
+
+.work-viewer__close {
+  border: 1px solid rgba(242, 239, 232, .38);
+  background: transparent;
+  color: inherit;
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+.work-viewer__stage {
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vh, 24px) 0;
+}
+
+.work-viewer__stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1800px);
+  max-height: 84vh;
+  object-fit: contain;
+  background: transparent;
+}
+
+.work-viewer__caption {
+  width: min(92vw, 1800px);
+  margin: 12px auto 0;
+  color: rgba(242, 239, 232, .78);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+body.is-viewing-work {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .work-viewer {
+    padding: 12px;
+  }
+
+  .work-viewer__stage {
+    place-items: start center;
+  }
+
+  .work-viewer__stage img {
+    max-width: 100%;
+    max-height: none;
+  }
+}
