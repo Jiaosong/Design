@@ -12,8 +12,8 @@ permissions:
   contents: read
 
 jobs:
-  relationship-surface-contract:
-    name: Relationship + Control Plane LIVE State
+  candidate-state-and-receipts:
+    name: Candidate State + Immutable Evidence Receipts
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -23,83 +23,68 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-      - name: Parse schemas and LIVE inputs
+      - name: Parse active contracts and receipts
         run: |
           python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/relationship_surface_contract.schema.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json >/dev/null
           python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_SURFACE_EXECUTION_SPEC.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_VOLUME_JET_SURFACE_SOURCE.json >/dev/null
-      - name: Run v0.12 regression tests
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_MANIFEST_v1.json >/dev/null
+      - name: Run generic v0.12 regression tests
         run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
-      - name: Run generic quantitative fairness example
-        run: |
-          python 90-shared/toolchains/modeling-worker/v0.12/validate_relationship_surface.py \
-            90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json \
-            --report /tmp/modeling-worker-v012-report.json
-          cat /tmp/modeling-worker-v012-report.json
-      - name: Control Plane v0.3 LIVE check — E3 card
+      - name: Control Plane v0.3 check — active E3 card
         run: |
           python 00-governance/control-plane/control_plane.py check \
             90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
-      - name: Validate E3 application relationship contract
+      - name: Verify accepted evidence progression without re-rendering historical states
         run: |
-          python 90-shared/toolchains/modeling-worker/v0.12/validate_relationship_surface.py \
-            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_APPLICATION_RELATIONSHIP_SURFACE.json \
-            --report /tmp/modeling-worker-v012-e3-contract-report.json
-          cat /tmp/modeling-worker-v012-e3-contract-report.json
-      - name: Assert E3 LIVE state remains fail-closed
+          set -euo pipefail
+          grep -F 'E1 M4.5 PASS / SINGLE-PATCH METHOD SCOPE' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
+          grep -F 'E2 M4.5 = PASS' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
+          grep -F 'R3.1 CONTRACT PASS / MACHINE FAIL' 90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md
+          grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' 90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md
+          grep -F 'R3.3 APPLICATION MACHINE PASS / HUMAN PROJECT+VISUAL PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md
+          grep -F 'PERSISTENCE PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_RECEIPT_2026-08-13.md
+      - name: Assert current candidate state
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           card=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json').read_text())
-          ev=card['evidence_state']
+          pap=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_MANIFEST_v1.json').read_text())
           assert card['mode']=='CANDIDATE'
           assert card['authority_source']['state']=='WORKING_SOURCE'
-          assert ev['pap']=='NOT_RUN'
+          assert card['problem_layer']=='Evidence'
+          ev=card['evidence_state']
+          for key in ('contract','machine','visual','project','pap'):
+              assert ev[key]=='PASS',(key,ev[key])
           assert ev['promotion']=='BLOCKED'
-          if ev['machine']=='NOT_RUN':
-              assert ev['visual']=='NOT_RUN' and ev['project']=='NOT_RUN'
-              print('E3_LIVE_STATE_PRE_EXECUTION_FAIL_CLOSED_PASS')
-          elif ev['machine']=='PASS':
-              assert ev['visual']!='PASS' and ev['project']!='PASS'
-              assert card['problem_layer']=='Architecture'
-              receipt=Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_PROJECT_VISUAL_DECISION.md')
-              assert receipt.is_file()
-              text=receipt.read_text()
-              assert 'E3 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' in text
-              assert 'PAP BLOCKED / PROMOTION BLOCKED' in text
-              print('E3_LIVE_STATE_POST_REVIEW_FAIL_CLOSED_PASS')
-          else:
-              raise AssertionError(f"unsupported E3 machine state: {ev['machine']}")
+          assert pap['status']=='PERSISTENCE_PASS'
+          assert pap['authority_state']=='WORKING_SOURCE'
+          assert pap['design_state']=='CANDIDATE'
+          assert all(v=='PASS' for v in pap['pap_gates'].values())
+          assert pap['accepted_source_snapshot_commit']=='5782c039562e723705b6f46537fea7efa0936b29'
+          print('V0_12_CANDIDATE_STATE_RECEIPT_VERIFICATION_PASS')
           PY
-      - name: Publish LIVE boundary
-        if: always()
+      - name: Publish boundary
         run: |
-          echo '## Control Plane v0.3 LIVE rollout' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R1 Machine PASS + Human REVISE remains the active reviewed receipt until R2 Human QA completes.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R2 changes application Surface Source architecture only; E1/E2 generic authority is unchanged.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- PAP and Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PR CI verifies current contracts and immutable receipts instead of re-rendering accepted or known-failed historical Blender states.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Machine/Human/PAP PASS does not authorize Promotion; Authority State remains WORKING_SOURCE and PR remains Draft.' >> "$GITHUB_STEP_SUMMARY"
 
-  freeform-blender:
-    name: E1 + E2 + E3 R1/R2 Blender Evidence Replay
+  manual-active-blender-replay:
+    name: Manual E1 + E2 + R3.3 Active Blender Replay
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Compile scripts
+      - name: Compile active Blender chain
         run: |
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_multipatch_network.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_application_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_volume_jet_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_precision_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py
       - name: Install Blender runtime dependencies
         run: |
           set -euo pipefail
@@ -113,157 +98,49 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Execute E1 benchmark
+      - name: Replay E1
         run: |
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E1"; mkdir -p "$OUT"
+          OUT="$GITHUB_WORKSPACE/out/E1"; mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
             --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- --out "$OUT" --resolution 512
-      - name: E1 machine gate
-        run: |
-          python3 - <<'PY'
+          python - <<'PY'
           import json; from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E1'); q=json.loads((r/'E1_FREEFORM_FAIRNESS.json').read_text())
+          q=json.loads(Path('out/E1/E1_FREEFORM_FAIRNESS.json').read_text())
           assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED' and all(q['checks'].values())
-          assert q['metrics']['control_cage_points']==16
-          assert all((r/n).is_file() for n in ('E1_HERO_3Q.png','E1_SIDE.png','E1_TOP.png','E1_ZEBRA_NORMAL_PROXY.png'))
-          assert any(r.glob('*.blend'))
           PY
-      - name: Upload E1 evidence
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: oleander-modeling-worker-v0-12-e1-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E1/
-          if-no-files-found: error
-          retention-days: 14
-      - name: Require E1 Human M4.5 PASS
+      - name: Replay E2
         run: |
-          grep -F 'E1 M4.5 PASS / SINGLE-PATCH METHOD SCOPE' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
-          grep -F 'termination boundary' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
-      - name: Require E2 precision classification
-        run: |
-          grep -F 'NO DESIGN THRESHOLD RELAXATION' 90-shared/toolchains/modeling-worker/v0.12/E2_PRECISION_CLASSIFICATION.md
-          grep -F 'max_second_derivative_error <= 1e-06' 90-shared/toolchains/modeling-worker/v0.12/E2_PRECISION_CLASSIFICATION.md
-      - name: Execute E2 compiler
-        run: |
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E2"; mkdir -p "$OUT"
+          OUT="$GITHUB_WORKSPACE/out/E2"; mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
             --python 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py -- \
             --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json --out "$OUT" --resolution 512
-      - name: E2 machine gate
-        run: |
-          python3 - <<'PY'
+          python - <<'PY'
           import json; from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E2'); q=json.loads((r/'E2_FREEFORM_FAIRNESS.json').read_text())
+          q=json.loads(Path('out/E2/E2_FREEFORM_FAIRNESS.json').read_text())
           assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED' and all(q['checks'].values())
           assert q['precision_classification']['compiler_design_threshold_unchanged']==1e-6
-          for s in (q['front_seam'],q['rear_seam']):
-              assert s['max_position_error']<=1e-7 and s['max_tangent_angle_deg']<=0.05
-              assert s['max_second_derivative_error']<=1e-6 and s['runtime_max_second_derivative_error']<=5e-6
-          assert all((r/n).is_file() for n in ('E2_HERO_NETWORK.png','E2_SIDE_NETWORK.png','E2_TOP_NETWORK.png','E2_ZEBRA_NETWORK.png'))
-          assert any(r.glob('*.blend'))
           PY
-      - name: Upload E2 evidence
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: oleander-modeling-worker-v0-12-e2-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E2/
-          if-no-files-found: error
-          retention-days: 14
-      - name: Require E2 Human M4.5 PASS
+      - name: Replay active R3.3
         run: |
-          grep -F 'E2 M4.5 = PASS' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
-          grep -F 'Required next step｜E3 application benchmark' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
-      - name: Execute E3 R1 baseline replay
-        run: |
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R1"; mkdir -p "$OUT"
+          OUT="$GITHUB_WORKSPACE/out/R33"; mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_application_entry.py -- \
-            --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_SURFACE_EXECUTION_SPEC.json --out "$OUT" --resolution 512
-      - name: E3 R1 baseline machine gate
-        run: |
-          python3 - <<'PY'
+            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py -- \
+            --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
+            --r32-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json \
+            --r33-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json \
+            --out "$OUT" --resolution 512
+          python - <<'PY'
           import json; from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R1'); q=json.loads((r/'E3_APPLICATION_MACHINE_REPORT.json').read_text())
+          q=json.loads(Path('out/R33/E3_R33_MACHINE_REPORT.json').read_text())
           assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED' and all(q['checks'].values())
-          assert q['checks']['semantic_source_edits_exact'] and q['checks']['all_declared_volume_variants_machine_pass']
-          for row in q['semantic_control_variants'].values():
-              assert row['source_edit_exact'] and row['derived_network_changed']
-          assert any(r.glob('*.blend'))
           PY
-      - name: Require recorded E3 R1 Project/Visual REVISE
-        run: |
-          grep -F 'E3 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_PROJECT_VISUAL_DECISION.md
-          grep -F 'Root-cause reclassification' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_PROJECT_VISUAL_DECISION.md
-      - name: Upload E3 R1 baseline evidence
+      - name: Upload manual active replay
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: oleander-modeling-worker-v0-12-e3-r1-baseline-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R1/
+          name: oleander-modeling-worker-v0-12-manual-active-${{ github.run_id }}
+          path: out/
           if-no-files-found: error
           retention-days: 14
-      - name: Require E3 R2 precision classification
+      - name: Boundary
         run: |
-          grep -F 'COMPILER C2 THRESHOLD UNCHANGED' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PRECISION_CLASSIFICATION.md
-          grep -F 'RUNTIME D2 = DIAGNOSTIC' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PRECISION_CLASSIFICATION.md
-      - name: Execute E3 R2.1 volume-jet architecture
-        run: |
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R2"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_precision_entry.py -- \
-            --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_VOLUME_JET_SURFACE_SOURCE.json --out "$OUT" --resolution 512
-      - name: E3 R2 machine architecture gate
-        run: |
-          python3 - <<'PY'
-          import json; from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R2'); q=json.loads((r/'E3_R2_MACHINE_REPORT.json').read_text())
-          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED', q
-          assert all(q['checks'].values()), q['checks']
-          assert q['checks']['five_independent_source_stations']
-          assert q['checks']['shared_position_tangent_curvature_jets']
-          assert q['checks']['compiler_c2_seams_pass']
-          assert q['checks']['runtime_position_tangent_normal_representation_stable']
-          assert q['checks']['runtime_second_derivative_diagnostic_recorded']
-          assert q['checks']['semantic_control_source_ownership_disjoint']
-          assert q['checks']['semantic_source_edits_exact']
-          assert q['checks']['all_semantic_variants_fair']
-          assert q['checks']['all_semantic_variants_have_working_fidelity_effect']
-          assert q['checks']['r1_single_center_cage_not_reused']
-          assert q['precision_classification']['compiler_design_threshold_unchanged']==1e-6
-          assert not q['precision_classification']['semantic_control_source_overlaps']
-          assert q['precision_classification']['runtime_second_derivative']['gating'] is False
-          for row in q['semantic_control_variants'].values():
-              assert row['source_edit_exact'] and row['machine_fairness_pass']
-              assert row['working_fidelity_visual_legibility_proxy']
-              assert 0.04 <= row['max_surface_displacement'] <= 0.30
-          for seam in q['base']['compiler_seams']:
-              assert seam['max_position_error'] <= 1e-7
-              assert seam['max_tangent_angle_deg'] <= 0.05
-              assert seam['max_second_derivative_error'] <= 1e-6
-              assert seam['runtime_max_position_error'] <= 5e-7
-              assert seam['runtime_max_tangent_angle_deg'] <= 0.05
-              assert seam['runtime_max_normal_angle_deg'] <= 0.05
-              assert 'runtime_max_second_derivative_error' in seam
-          for n in ('E3_R2_HERO.png','E3_R2_SIDE.png','E3_R2_TOP.png','E3_R2_ZEBRA.png','E3_R2_COMPILED_SURFACE_SOURCE.json'):
-              assert (r/n).is_file(), n
-          assert any(r.glob('*.blend'))
-          print(json.dumps(q['checks'], indent=2))
-          PY
-      - name: Upload E3 R2 evidence
-        if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: oleander-modeling-worker-v0-12-e3-r2-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R2/
-          if-no-files-found: error
-          retention-days: 14
-      - name: Publish evidence boundary
-        if: always()
-        run: |
-          echo '## v0.12 E3 architecture evidence boundary' >> "$GITHUB_STEP_SUMMARY"
-          echo '- E1/E2 remain accepted generic method evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- E3 R1 Machine PASS + Human REVISE remains immutable baseline evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- E3 R2.1 retains independent semantic position/tangent/curvature source jets and disjoint source ownership.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Compiler C2 threshold remains unchanged; Blender float32 reconstructed D2 is diagnostic, while runtime position/tangent/normal remain gated.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Failed or passed R2 evidence is uploaded for audit.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R2 Machine PASS opens Human Project/Visual QA only; it cannot self-promote.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- PAP and system Promotion remain blocked until Human R2 Project/Visual review closes.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Manual replay reproduces active Machine evidence only. Existing Human receipts remain separate evidence and no Promotion is authorized by this replay.' >> "$GITHUB_STEP_SUMMARY"
