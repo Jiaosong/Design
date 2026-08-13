@@ -1,143 +1,29 @@
-name: OLEANDER Modeling Worker v0.12 R3.2
+name: OLEANDER Modeling Worker v0.12 R3.2｜Historical Audit
 
 on:
-  pull_request:
-    paths:
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r32_coupled_surface_entry.py'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md'
-      - '.github/workflows/oleander-modeling-worker-v0-12-r32.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  r32-contract:
-    name: R3.2 Threshold Lock + Correction Contract
+  immutable-r32-receipt:
+    name: Verify immutable R3.2 Machine PASS + Human REVISE receipt
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: '3.12'
-      - name: Parse correction inputs
-        run: |
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
-          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json >/dev/null
-          python -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r32_coupled_surface_entry.py
-      - name: Require immutable R3.1 failure receipt
+      - name: Verify R3.2 lineage
         run: |
           set -euo pipefail
-          grep -F 'R3.1 CONTRACT PASS / MACHINE FAIL' 90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md
-          grep -F '31672155972' 90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md
-          grep -F '9170303850' 90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md
-      - name: Assert R3.2 does not relax thresholds
+          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md'
+          test -f "$RECEIPT"
+          grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' "$RECEIPT"
+          grep -F '31687799918' "$RECEIPT"
+          grep -F '9176403622' "$RECEIPT"
+          grep -F '7f12b75fb36fddf20e94db7e8078790b937914eaf21e3c68a1e51511c5432d98' "$RECEIPT"
+          echo 'R3_2_HISTORICAL_RECEIPT_VERIFIED'
+      - name: Boundary
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          base=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json').read_text())
-          fix=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json').read_text())
-          assert base['revision']=='R3.1'
-          assert fix['revision']=='R3.2'
-          assert fix['base_revision']=='R3.1'
-          assert base['machine_thresholds']==fix['locked_thresholds'], (base['machine_thresholds'],fix['locked_thresholds'])
-          assert fix['evidence_zoning']['rule'].startswith('Termination continuation uses the existing broad-interior radius threshold')
-          for family in ('SURF-FRONT-TERM','SURF-REAR-TERM'):
-              row=fix['surface_source_overrides'][family]
-              assert row['width_scale'] > base['surface_sources'][family]['width_scale']
-              assert row['vertical_blend'] > base['surface_sources'][family]['vertical_blend']
-          print('R3_2_THRESHOLD_LOCK_AND_CORRECTION_CONTRACT_PASS')
-          PY
-
-  r32-blender:
-    name: R3.2 Blender Termination + Zoned Fairness QA
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Compile R3.2 compiler
-        run: |
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_1_coupled_surface_entry.py
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r32_coupled_surface_entry.py
-      - name: Install Blender runtime dependencies
-        run: |
-          set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends libegl1
-      - name: Install Blender 5.2.0 LTS
-        run: |
-          set -euo pipefail
-          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
-          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
-          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
-          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
-          tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Execute E3 R3.2
-        run: |
-          set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R32"
-          mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r32_coupled_surface_entry.py -- \
-            --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
-            --correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json \
-            --out "$OUT" --resolution 512
-      - name: R3.2 machine gate
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R32')
-          q=json.loads((r/'E3_R32_MACHINE_REPORT.json').read_text())
-          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED', q
-          assert all(q['checks'].values()), q['checks']
-          assert q['checks']['existing_quality_thresholds_unchanged'] is True
-          assert q['base']['zoned_fairness']['thresholds_unchanged'] is True
-          for fam in ('SURF-FRONT-TERM','SURF-REAR-TERM'):
-              row=q['base']['zoned_fairness']['broad_interior'][fam]
-              assert row['min_normal_radius_proxy_m'] >= 0.020, (fam,row)
-              assert row['min_cell_area_proxy'] >= 0.00005, (fam,row)
-              assert row['excluded_inherited_character_band_edges'] > 0, (fam,row)
-          for band,row in q['base']['zoned_fairness']['character_bands'].items():
-              assert row['min_normal_radius_proxy_m'] >= 0.010, (band,row)
-              assert row['max_total_normal_turn_deg'] <= 105.0, (band,row)
-          for name,row in q['base']['zoned_fairness']['intentional_boundary_transitions'].items():
-              assert row['diagnostic_only'] is True, (name,row)
-              assert row['authority_class']=='INTENTIONAL_BOUNDARY', (name,row)
-          for cid,row in q['semantic_variants'].items():
-              assert row['source_edit_exact'], cid
-              assert row['direct_declared_authority_effect']['pass'], cid
-              assert row['working_fidelity_legible'], cid
-              assert row['machine_surface_pass'], cid
-          for n in ('E3_R3_HERO.png','E3_R3_SIDE.png','E3_R3_TOP.png','E3_R3_ZEBRA.png','E3_R32_COMPILED_SURFACE_SOURCE.json'):
-              assert (r/n).is_file(), n
-          for cid in ('HOOD_COWL','CABIN','SHOULDER','REAR_HAUNCH','LOWER_BODY','FRONT_TERMINATION','REAR_TERMINATION'):
-              assert (r/f'E3_R3_VARIANT_{cid}_SIDE.png').is_file(), cid
-              assert (r/f'E3_R3_VARIANT_{cid}_TOP.png').is_file(), cid
-          assert any(r.glob('*.blend'))
-          print(json.dumps(q['checks'],indent=2))
-          PY
-      - name: Upload R3.2 evidence even when fail-closed
-        if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: oleander-modeling-worker-v0-12-e3-r32-${{ github.run_id }}
-          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R32/
-          if-no-files-found: error
-          retention-days: 14
-      - name: Publish R3.2 boundary
-        if: always()
-        run: |
-          echo '## E3 R3.2 boundary' >> "$GITHUB_STEP_SUMMARY"
-          echo '- R3 and R3.1 failures remain immutable evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Existing Machine quality thresholds are unchanged.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Termination broad-radius authority excludes inherited shoulder/rocker character bands but whole-zone non-degeneracy remains checked.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Far termination transitions remain INTENTIONAL_BOUNDARY diagnostics, not ordinary character-band PASS.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Machine PASS only opens Human Project/Visual QA; PAP and Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R3.2 closed termination geometry/evidence-zoning Machine defects but Human Project/Visual remained REVISE. Active application execution moves to Primary-Curve Relation revision; R3.2 is no longer re-rendered on each PR synchronize.' >> "$GITHUB_STEP_SUMMARY"
