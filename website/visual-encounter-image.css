@@ -1,0 +1,4 @@
+@media (min-width: 1180px) {
+  .encounter-work--daylily { grid-column: 1 / span 11 !important; }
+  .encounter-work--daylily img { width: 100%; height: auto !important; min-height: 0 !important; aspect-ratio: auto !important; object-fit: contain !important; }
+}

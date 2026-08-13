@@ -1,0 +1,4 @@
+@media (min-width: 1180px) {
+  .daylily-opening__image img, .reno-opening__image img { display: block; width: 100% !important; height: auto !important; min-height: 0 !important; max-height: none !important; object-fit: contain !important; border: 0 !important; box-shadow: none !important; }
+  .daylily-facts, .reno-facts { opacity: 1 !important; }
+}
