@@ -49,3 +49,66 @@ jobs:
           echo '- M4.5 Surface Fairness blocks M5/M6+ until passed.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Smooth shading is never accepted as fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Machine fairness proxies do not establish Class-A, engineering or human design authority.' >> "$GITHUB_STEP_SUMMARY"
+
+  e1-freeform-blender:
+    name: E1 Blender Freeform Surface
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile E1 script
+        run: python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Execute relationship-to-freeform benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E1"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.12/e1_freeform_bicubic.py -- \
+            --out "$OUT" --resolution 512
+
+      - name: E1 fairness gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/OLEANDER_ModelingWorker_v0.12_E1')
+          q=json.loads((root/'E1_FREEFORM_FAIRNESS.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED', q
+          assert all(q['checks'].values()), q['checks']
+          assert q['metrics']['control_cage_points']==16
+          for name in ('E1_HERO_3Q.png','E1_SIDE.png','E1_TOP.png','E1_ZEBRA_NORMAL_PROXY.png'):
+              assert (root/name).is_file(), name
+          assert any(root.glob('*.blend'))
+          print(json.dumps(q,indent=2))
+          PY
+
+      - name: Upload E1 freeform evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-e1-${{ github.run_id }}
+          path: out/OLEANDER_ModelingWorker_v0.12_E1/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish E1 boundary
+        if: always()
+        run: |
+          echo '## E1 relationship-driven freeform benchmark' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Surface Source = sparse 4x4 bicubic cage.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Execution mesh is derived, not authority.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Analytic derivatives produce machine fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Human M4.5 zebra/reflection review is still required.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- No Class-A / engineering / final design claim.' >> "$GITHUB_STEP_SUMMARY"
