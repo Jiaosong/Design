@@ -1,0 +1,51 @@
+name: OLEANDER Modeling Worker v0.12
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.12/**'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/**'
+      - '.github/workflows/oleander-modeling-worker-v0-12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  relationship-surface-contract:
+    name: Relationship + Surface Fairness Contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Parse contract schema and example
+        run: |
+          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/relationship_surface_contract.schema.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json >/dev/null
+
+      - name: Run v0.12 regression tests
+        run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
+
+      - name: Run quantitative fairness example
+        run: |
+          python 90-shared/toolchains/modeling-worker/v0.12/validate_relationship_surface.py \
+            90-shared/toolchains/modeling-worker/v0.12/examples/automotive_relationship_surface_candidate.json \
+            --report /tmp/modeling-worker-v012-report.json
+          cat /tmp/modeling-worker-v012-report.json
+
+      - name: Publish boundary summary
+        if: always()
+        run: |
+          echo '## OLEANDER Modeling Worker v0.12' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Relationship Graph precedes topology.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Low-frequency Control Cage is topology-independent.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- M4.5 Surface Fairness blocks M5/M6+ until passed.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Smooth shading is never accepted as fairness evidence.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Machine fairness proxies do not establish Class-A, engineering or human design authority.' >> "$GITHUB_STEP_SUMMARY"
