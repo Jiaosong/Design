@@ -1,0 +1,32 @@
+name: OLEANDER Control Plane v0.3｜E3 R3.3 Post-Candidate Promotion Scan
+
+on:
+  pull_request:
+    paths:
+      - '00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-post-candidate-promotion.json'
+      - '.github/workflows/oleander-control-plane-v0-3-e3-r33-post-candidate-promotion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  post-candidate-promotion-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Run existing v0.3 post-transition contradiction scan
+        run: |
+          python 00-governance/control-plane/orchestrator.py contradictions \
+            00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-post-candidate-promotion.json
+      - name: Boundary
+        run: |
+          echo 'This workflow invokes the existing Control Plane v0.3 contradiction scanner; it adds no new Gate.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PASS validates CANDIDATE_AUTHORITY / CANDIDATE cross-system synchronization only.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PASS does not authorize CANONICAL_PROMOTION, Release, or merge PR #91.' >> "$GITHUB_STEP_SUMMARY"

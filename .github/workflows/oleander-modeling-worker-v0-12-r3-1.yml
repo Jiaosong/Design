@@ -1,0 +1,28 @@
+name: OLEANDER Modeling Worker v0.12 R3.1｜Historical Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  immutable-r31-failure-receipt:
+    name: Verify immutable R3.1 machine-failure receipt
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Verify R3.1 failure lineage
+        run: |
+          set -euo pipefail
+          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md'
+          test -f "$RECEIPT"
+          grep -F 'R3.1 CONTRACT PASS / MACHINE FAIL' "$RECEIPT"
+          grep -F '31672155972' "$RECEIPT"
+          grep -F '9170303850' "$RECEIPT"
+          echo 'R3_1_HISTORICAL_FAILURE_RECEIPT_VERIFIED'
+      - name: Boundary
+        run: |
+          echo 'R3.1 is immutable failed evidence. Active Automotive application execution is R3.2; this workflow no longer re-runs the known-failed Blender Working Source on every PR synchronize.' >> "$GITHUB_STEP_SUMMARY"

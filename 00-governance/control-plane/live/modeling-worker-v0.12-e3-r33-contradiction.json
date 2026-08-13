@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.3",
+  "kind": "CONTRADICTION_MANIFEST",
+  "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+  "scan_as_of": "2026-08-13T10:29:32Z",
+  "max_age_seconds": 1800,
+  "expected": {
+    "authority_state": "WORKING_SOURCE",
+    "design_state": "CANDIDATE",
+    "pap_state": "PERSISTENCE_PASS",
+    "accepted_source_snapshot_commit": "5782c039562e723705b6f46537fea7efa0936b29",
+    "native_source_sha256": "3d49b6ece3272781e42521e2420f609fc5b608387d1ab9a166cecbdbb5ddf430"
+  },
+  "semantic_expected": {
+    "machine_pass": true,
+    "human_project_visual_pass": true,
+    "pap_pass": true,
+    "system_promotion_not_authorized": true,
+    "authority_boundary_limited": true,
+    "source_snapshot_bound": true
+  },
+  "systems": {
+    "notion": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "page:3bbb86be-5c47-814d-b440-c3be9f9dd999",
+      "observed_at": "2026-08-13T10:26:01.941Z",
+      "revision": "notion-asof-2026-08-13T10:26:01.941Z",
+      "payload_sha256": "789f69d576266e7d41f6610e1f13f1e8dc8060eea3a441bf79437a514da5eef0",
+      "fields": {
+        "authority_state": "WORKING_SOURCE",
+        "design_state": "CANDIDATE",
+        "pap_state": "PERSISTENCE_PASS",
+        "accepted_source_snapshot_commit": "5782c039562e723705b6f46537fea7efa0936b29",
+        "native_source_sha256": "3d49b6ece3272781e42521e2420f609fc5b608387d1ab9a166cecbdbb5ddf430"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "system_promotion_not_authorized": true,
+        "authority_boundary_limited": true,
+        "source_snapshot_bound": true
+      }
+    },
+    "github": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "pr:91;control-card:E3_CONTROL_CARD.json;pap:PAP_MANIFEST_v1.json+PAP_RECEIPT_2026-08-13.md",
+      "observed_at": "2026-08-13T10:29:24Z",
+      "revision": "366081113002b79b9944f88421e9ace8b5dcd50c",
+      "payload_sha256": "8c6fddf128a0f3e336fcfd9fa3d7a7b1a776d0cbe4dd94e4cb1dff6034b6c995",
+      "fields": {
+        "authority_state": "WORKING_SOURCE",
+        "design_state": "CANDIDATE",
+        "pap_state": "PERSISTENCE_PASS",
+        "accepted_source_snapshot_commit": "5782c039562e723705b6f46537fea7efa0936b29",
+        "native_source_sha256": "3d49b6ece3272781e42521e2420f609fc5b608387d1ab9a166cecbdbb5ddf430"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "system_promotion_not_authorized": true,
+        "authority_boundary_limited": true,
+        "source_snapshot_bound": true
+      }
+    },
+    "drive": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "manifest:1-Xc9Wm0rrQS2ZMV1MoHB6aGbY8Plzfi6;receipt:15LntbAtSn0TrM_Fn7HycaZEtT91Rh9Bk",
+      "observed_at": "2026-08-13T10:24:19.705Z",
+      "revision": "manifest:a20b5d945a59e0f227f3828c93d9bc8a433d7124fd88e26567c3216ee29c128f;receipt:a9c32cdb19c15022a925208cd1b7f7f5235ee110690a63e3ab864790206660f9",
+      "payload_sha256": "e2987b82bd29a767c6eee03684c1b1a3a9c41907a70dbb79295ea10f1cd6ede4",
+      "fields": {
+        "authority_state": "WORKING_SOURCE",
+        "design_state": "CANDIDATE",
+        "pap_state": "PERSISTENCE_PASS",
+        "accepted_source_snapshot_commit": "5782c039562e723705b6f46537fea7efa0936b29",
+        "native_source_sha256": "3d49b6ece3272781e42521e2420f609fc5b608387d1ab9a166cecbdbb5ddf430"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "system_promotion_not_authorized": true,
+        "authority_boundary_limited": true,
+        "source_snapshot_bound": true
+      }
+    }
+  }
+}

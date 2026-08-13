@@ -1,0 +1,144 @@
+name: OLEANDER Modeling Worker v0.12
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.12/**'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/**'
+      - '.github/workflows/oleander-modeling-worker-v0-12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-state-and-receipts:
+    name: Candidate Authority State + Immutable Evidence Receipts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Parse active contracts and receipts
+        run: |
+          python -m json.tool 90-shared/toolchains/modeling-worker/v0.12/relationship_surface_contract.schema.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_MANIFEST_v1.json >/dev/null
+      - name: Run generic v0.12 regression tests
+        run: python -m unittest discover -s 90-shared/toolchains/modeling-worker/v0.12/tests -p 'test_*.py' -v
+      - name: Control Plane v0.3 check — active E3 card
+        run: python 00-governance/control-plane/control_plane.py check 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+      - name: Verify accepted evidence progression without re-rendering historical states
+        run: |
+          set -euo pipefail
+          grep -F 'E1 M4.5 PASS / SINGLE-PATCH METHOD SCOPE' 90-shared/toolchains/modeling-worker/v0.12/E1_M4_5_HUMAN_DECISION.md
+          grep -F 'E2 M4.5 = PASS' 90-shared/toolchains/modeling-worker/v0.12/E2_M4_5_HUMAN_DECISION.md
+          grep -F 'R3.1 CONTRACT PASS / MACHINE FAIL' 90-shared/toolchains/modeling-worker/automotive/v0.12/R31_MACHINE_FAILURE_DECISION.md
+          grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' 90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md
+          grep -F 'R3.3 APPLICATION MACHINE PASS / HUMAN PROJECT+VISUAL PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md
+          grep -F 'PERSISTENCE PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_RECEIPT_2026-08-13.md
+          grep -F 'Decision: `APPROVED`' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md
+          grep -F 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md
+      - name: Assert current candidate authority state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
+          pap=json.loads((root/'PAP_MANIFEST_v1.json').read_text())
+          assert card['mode']=='CANDIDATE'
+          assert card['authority_source']['state']=='CANDIDATE_AUTHORITY'
+          assert card['problem_layer']=='Evidence'
+          ev=card['evidence_state']
+          for key in ('contract','machine','visual','project','pap'):
+              assert ev[key]=='PASS',(key,ev[key])
+          assert 'promotion' not in ev
+          assert pap['status']=='PERSISTENCE_PASS'
+          assert pap['authority_state']=='WORKING_SOURCE'
+          assert pap['design_state']=='CANDIDATE'
+          assert all(v=='PASS' for v in pap['pap_gates'].values())
+          assert pap['accepted_source_snapshot_commit']=='5782c039562e723705b6f46537fea7efa0936b29'
+          authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+          sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+          assert 'WORKING_SOURCE' in authority and 'CANDIDATE_AUTHORITY' in authority
+          assert 'ARTIFACT_REGISTER = EXECUTED' in sync
+          assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
+          print('V0_12_CANDIDATE_AUTHORITY_RECEIPT_VERIFICATION_PASS')
+          PY
+      - name: Publish boundary
+        run: |
+          echo 'PR CI verifies current Candidate Authority plus immutable historical evidence without re-rendering accepted or known-failed Blender states.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The PAP manifest remains the historical WORKING_SOURCE persistence receipt; Candidate Authority is established by the later approved transition receipts.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'CANONICAL_AUTHORITY, Release, and merge are not authorized by this workflow.' >> "$GITHUB_STEP_SUMMARY"
+
+  manual-active-blender-replay:
+    name: Manual E1 + E2 + R3.3 Active Blender Replay
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Compile active Blender chain
+        run: |
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Replay E1
+        run: |
+          OUT="$GITHUB_WORKSPACE/out/E1"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/v0.12/e1_blender_entry.py -- --out "$OUT" --resolution 512
+          python - <<'PY'
+          import json; from pathlib import Path
+          q=json.loads(Path('out/E1/E1_FREEFORM_FAIRNESS.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED' and all(q['checks'].values())
+          PY
+      - name: Replay E2
+        run: |
+          OUT="$GITHUB_WORKSPACE/out/E2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py -- --contract 90-shared/toolchains/modeling-worker/v0.12/examples/e2_multipatch_relationship_network.json --out "$OUT" --resolution 512
+          python - <<'PY'
+          import json; from pathlib import Path
+          q=json.loads(Path('out/E2/E2_FREEFORM_FAIRNESS.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_M4_5_REVIEW_REQUIRED' and all(q['checks'].values())
+          assert q['precision_classification']['compiler_design_threshold_unchanged']==1e-6
+          PY
+      - name: Replay active R3.3
+        run: |
+          OUT="$GITHUB_WORKSPACE/out/R33"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r33_relation_entry.py -- --base-contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json --r32-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R32_CORRECTION.json --r33-correction 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R33_RELATION_CORRECTION.json --out "$OUT" --resolution 512
+          python - <<'PY'
+          import json; from pathlib import Path
+          q=json.loads(Path('out/R33/E3_R33_MACHINE_REPORT.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED' and all(q['checks'].values())
+          PY
+      - name: Upload manual active replay
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-manual-active-${{ github.run_id }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Boundary
+        run: echo 'Manual replay reproduces active Machine evidence only; it does not alter Human receipts, Candidate Authority, or authorize Canonical Promotion.' >> "$GITHUB_STEP_SUMMARY"

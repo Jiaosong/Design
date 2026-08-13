@@ -1,0 +1,69 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.e2.multipatch-network",
+  "job_id": "SYS-MODELING-WORKER-FREEFORM-v0.12-E2",
+  "decision_question": "Can explicit C2 seam relationships compile a sparse editable center surface plus independent front and rear termination patches into a deterministic multi-patch freeform network without topology-first closure?",
+  "authority": {
+    "design_relationship": "WORKING_SOURCE",
+    "surface_source": "WORKING_SOURCE",
+    "execution_geometry": "DERIVED"
+  },
+  "patches": [
+    {"id": "PATCH-FRONT-TERMINATION", "role": "independent front termination surface", "source": "COMPILED_FROM_FRONT_BOUNDARY_AND_CENTER_JET"},
+    {"id": "PATCH-CENTER-VOLUME", "role": "primary low-frequency body volume", "source": "EXPLICIT_EDITABLE_CAGE"},
+    {"id": "PATCH-REAR-TERMINATION", "role": "independent rear termination surface", "source": "COMPILED_FROM_REAR_BOUNDARY_AND_CENTER_JET"}
+  ],
+  "relationships": [
+    {
+      "id": "REL-E2-FRONT-SEAM",
+      "source": "PATCH-FRONT-TERMINATION",
+      "target": "PATCH-CENTER-VOLUME",
+      "relation": "CURVATURE",
+      "continuity_target": "C2",
+      "priority": "HARD",
+      "intent": "front termination remains a distinct editable volume while matching center-surface position, first derivative and second derivative at the shared seam"
+    },
+    {
+      "id": "REL-E2-REAR-SEAM",
+      "source": "PATCH-CENTER-VOLUME",
+      "target": "PATCH-REAR-TERMINATION",
+      "relation": "CURVATURE",
+      "continuity_target": "C2",
+      "priority": "HARD",
+      "intent": "rear termination remains a distinct editable volume while matching center-surface position, first derivative and second derivative at the shared seam"
+    },
+    {
+      "id": "REL-E2-TERMINATION-INDEPENDENCE",
+      "source": "TERMINATION-BOUNDARIES",
+      "target": "PATCH-CENTER-VOLUME",
+      "relation": "DEPENDENCY",
+      "continuity_target": "N/A",
+      "priority": "HIGH",
+      "intent": "far termination boundaries may change without mutating the center cage or the shared seam jets"
+    }
+  ],
+  "center_patch_cage": [
+    [[0.75, 0.00, 1.05], [0.75, 0.40, 0.90], [0.75, 0.72, 0.70], [0.75, 0.82, 0.30]],
+    [[0.25, 0.00, 1.15], [0.25, 0.44, 0.98], [0.25, 0.78, 0.75], [0.25, 0.86, 0.30]],
+    [[-0.25, 0.00, 1.15], [-0.25, 0.44, 0.98], [-0.25, 0.78, 0.75], [-0.25, 0.86, 0.30]],
+    [[-0.75, 0.00, 1.05], [-0.75, 0.40, 0.90], [-0.75, 0.72, 0.70], [-0.75, 0.82, 0.30]]
+  ],
+  "termination_boundaries": {
+    "front": [[2.25, 0.00, 0.60], [2.25, 0.22, 0.50], [2.25, 0.45, 0.40], [2.25, 0.62, 0.26]],
+    "rear": [[-2.25, 0.00, 0.66], [-2.25, 0.25, 0.54], [-2.25, 0.49, 0.42], [-2.25, 0.65, 0.27]]
+  },
+  "compiler_policy": {
+    "parameter_direction": "FRONT_TO_REAR",
+    "seam_constraint": "PARAMETRIC_C2",
+    "center_cage_locked_during_termination_edit": true,
+    "execution_topology_generated_after_surface_compile": true,
+    "mesh_closure_for_termination_forbidden": true
+  },
+  "fairness_thresholds": {
+    "max_seam_position_error": 1e-7,
+    "max_seam_tangent_angle_deg": 0.05,
+    "max_seam_second_derivative_error": 1e-6,
+    "min_surface_jacobian": 0.15,
+    "max_adjacent_normal_jump_deg": 5.0,
+    "max_mean_curvature_rate_proxy": 10.0
+  }
+}

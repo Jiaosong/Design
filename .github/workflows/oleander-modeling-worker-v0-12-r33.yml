@@ -1,0 +1,29 @@
+name: OLEANDER Modeling Worker v0.12 R3.3｜Historical Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  immutable-r33-receipt:
+    name: Verify immutable R3.3 application Machine + Human PASS receipt
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Verify R3.3 lineage
+        run: |
+          set -euo pipefail
+          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R33_PROJECT_VISUAL_DECISION.md'
+          test -f "$RECEIPT"
+          grep -F 'R3.3 APPLICATION MACHINE PASS / HUMAN PROJECT+VISUAL PASS' "$RECEIPT"
+          grep -F '31688935218' "$RECEIPT"
+          grep -F '9176833315' "$RECEIPT"
+          grep -F 'cd608eb82f191df16ccf32be0a28280577d866b70dbd7bdbe84d8351006c1d3f' "$RECEIPT"
+          echo 'R3_3_APPLICATION_HUMAN_PASS_RECEIPT_VERIFIED'
+      - name: Boundary
+        run: |
+          echo 'R3.3 is accepted only at E3 application-benchmark scope. It opens PAP; it does not itself authorize system Promotion, Canonical Authority, final Automotive design, engineering or production claims.' >> "$GITHUB_STEP_SUMMARY"

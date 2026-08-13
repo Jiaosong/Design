@@ -1,0 +1,77 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.e3.automotive-application-execution",
+  "job_id": "SYS-MODELING-WORKER-v0.12-AUTO-E3-EXEC",
+  "decision_question": "Can application-specific low-frequency automotive volume edits remain semantically bounded while the existing v0.12 C2 surface compiler preserves seam and interior fairness?",
+  "authority": {
+    "design_relationship": "WORKING_SOURCE",
+    "surface_source": "WORKING_SOURCE",
+    "execution_geometry": "DERIVED"
+  },
+  "patches": [
+    {"id": "PATCH-FRONT-TERMINATION", "role": "VOL-FRONT-TERMINATION + hood continuation", "source": "GENERIC_C2_COMPILER"},
+    {"id": "PATCH-CENTER-VOLUME", "role": "VOL-HOOD + VOL-CABIN + VOL-SHOULDER + VOL-REAR-HAUNCH + VOL-LOWER-BODY", "source": "APPLICATION_EDITABLE_CAGE"},
+    {"id": "PATCH-REAR-TERMINATION", "role": "VOL-REAR-TERMINATION + rear-haunch continuation", "source": "GENERIC_C2_COMPILER"}
+  ],
+  "relationships": [
+    {"id": "REL-E3-FRONT-SEAM", "source": "PATCH-FRONT-TERMINATION", "target": "PATCH-CENTER-VOLUME", "relation": "CURVATURE", "continuity_target": "C2", "priority": "HARD", "intent": "front termination remains independent while matching the application center surface at the shared seam"},
+    {"id": "REL-E3-REAR-SEAM", "source": "PATCH-CENTER-VOLUME", "target": "PATCH-REAR-TERMINATION", "relation": "CURVATURE", "continuity_target": "C2", "priority": "HARD", "intent": "rear termination remains independent while matching the application center surface at the shared seam"},
+    {"id": "REL-E3-SEMANTIC-EDIT", "source": "APPLICATION-VOLUME-CONTROLS", "target": "PATCH-CENTER-VOLUME", "relation": "DEPENDENCY", "continuity_target": "N/A", "priority": "HIGH", "intent": "application edits change only declared low-frequency source controls; compiled neighbor changes are derived consequences"}
+  ],
+  "center_patch_cage": [
+    [[0.90,0.00,1.00],[0.90,0.36,0.88],[0.90,0.70,0.70],[0.90,0.84,0.30]],
+    [[0.30,0.00,1.18],[0.30,0.40,1.02],[0.30,0.76,0.76],[0.30,0.88,0.31]],
+    [[-0.30,0.00,1.20],[-0.30,0.41,1.04],[-0.30,0.77,0.78],[-0.30,0.89,0.32]],
+    [[-0.90,0.00,1.02],[-0.90,0.37,0.90],[-0.90,0.71,0.71],[-0.90,0.85,0.30]]
+  ],
+  "termination_boundaries": {
+    "front": [[2.40,0.00,0.58],[2.40,0.20,0.54],[2.40,0.46,0.42],[2.40,0.64,0.25]],
+    "rear": [[-2.40,0.00,0.62],[-2.40,0.22,0.57],[-2.40,0.49,0.44],[-2.40,0.66,0.26]]
+  },
+  "application_controls": {
+    "VOL-HOOD": {
+      "edits": [
+        {"index": [0,0], "delta": [0.0,0.0,0.030]},
+        {"index": [0,1], "delta": [0.0,0.0,0.025]},
+        {"index": [1,0], "delta": [0.0,0.0,0.015]},
+        {"index": [1,1], "delta": [0.0,0.0,0.012]}
+      ]
+    },
+    "VOL-CABIN": {
+      "edits": [
+        {"index": [1,0], "delta": [0.0,0.0,0.040]},
+        {"index": [1,1], "delta": [0.0,0.0,0.030]},
+        {"index": [2,0], "delta": [0.0,0.0,0.050]},
+        {"index": [2,1], "delta": [0.0,0.0,0.040]}
+      ]
+    },
+    "VOL-SHOULDER": {
+      "edits": [
+        {"index": [1,2], "delta": [0.0,0.015,0.012]},
+        {"index": [2,2], "delta": [0.0,0.025,0.025]},
+        {"index": [3,2], "delta": [0.0,0.020,0.018]}
+      ]
+    },
+    "VOL-LOWER-BODY": {
+      "edits": [
+        {"index": [1,3], "delta": [0.0,0.0,0.015]},
+        {"index": [2,3], "delta": [0.0,0.0,0.020]}
+      ]
+    }
+  },
+  "compiler_policy": {
+    "parameter_direction": "FRONT_TO_REAR",
+    "seam_constraint": "PARAMETRIC_C2",
+    "center_cage_locked_during_termination_edit": true,
+    "execution_topology_generated_after_surface_compile": true,
+    "mesh_closure_for_termination_forbidden": true
+  },
+  "fairness_thresholds": {
+    "max_seam_position_error": 1e-7,
+    "max_seam_tangent_angle_deg": 0.05,
+    "max_seam_second_derivative_error": 1e-6,
+    "min_surface_jacobian": 0.15,
+    "max_adjacent_normal_jump_deg": 6.0,
+    "max_mean_curvature_rate_proxy": 10.0
+  },
+  "application_boundary": "This is a Modeling Worker application benchmark, not an automotive design authority. Semantic source edits are working design inputs; derived C2 patch changes are execution consequences."
+}

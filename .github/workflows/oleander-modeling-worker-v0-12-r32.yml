@@ -1,0 +1,29 @@
+name: OLEANDER Modeling Worker v0.12 R3.2｜Historical Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  immutable-r32-receipt:
+    name: Verify immutable R3.2 Machine PASS + Human REVISE receipt
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Verify R3.2 lineage
+        run: |
+          set -euo pipefail
+          RECEIPT='90-shared/toolchains/modeling-worker/automotive/v0.12/R32_PROJECT_VISUAL_DECISION.md'
+          test -f "$RECEIPT"
+          grep -F 'R3.2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' "$RECEIPT"
+          grep -F '31687799918' "$RECEIPT"
+          grep -F '9176403622' "$RECEIPT"
+          grep -F '7f12b75fb36fddf20e94db7e8078790b937914eaf21e3c68a1e51511c5432d98' "$RECEIPT"
+          echo 'R3_2_HISTORICAL_RECEIPT_VERIFIED'
+      - name: Boundary
+        run: |
+          echo 'R3.2 closed termination geometry/evidence-zoning Machine defects but Human Project/Visual remained REVISE. Active application execution moves to Primary-Curve Relation revision; R3.2 is no longer re-rendered on each PR synchronize.' >> "$GITHUB_STEP_SUMMARY"

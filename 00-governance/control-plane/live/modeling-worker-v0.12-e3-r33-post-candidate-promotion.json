@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.3",
+  "kind": "CONTRADICTION_MANIFEST",
+  "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+  "scan_as_of": "2026-08-13T12:30:00Z",
+  "max_age_seconds": 1800,
+  "expected": {
+    "version": "v0.12",
+    "authority_state": "CANDIDATE_AUTHORITY",
+    "design_state": "CANDIDATE",
+    "accepted_source_snapshot_sha": "5782c039562e723705b6f46537fea7efa0936b29",
+    "pap_status": "PERSISTENCE_PASS",
+    "sync_status": "SYNCED"
+  },
+  "semantic_expected": {
+    "machine_pass": true,
+    "human_project_visual_pass": true,
+    "pap_pass": true,
+    "candidate_promotion_approved": true,
+    "candidate_promotion_executed": true,
+    "artifact_register_executed": true,
+    "persistence_receipt_sync_executed": true,
+    "canonical_authority": false,
+    "release_authority": false
+  },
+  "systems": {
+    "notion": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "page:3bbb86be-5c47-812d-9d6a-cc569231fd05",
+      "observed_at": "2026-08-13T12:28:37.209Z",
+      "revision": "notion-asof-2026-08-13T12:28:37.209Z",
+      "payload_sha256": "72d58ccb250552436f7e0530076fb8a2866db341599af31c73ae00666472b5e6",
+      "fields": {
+        "version": "v0.12",
+        "authority_state": "CANDIDATE_AUTHORITY",
+        "design_state": "CANDIDATE",
+        "accepted_source_snapshot_sha": "5782c039562e723705b6f46537fea7efa0936b29",
+        "pap_status": "PERSISTENCE_PASS",
+        "sync_status": "SYNCED"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "candidate_promotion_approved": true,
+        "candidate_promotion_executed": true,
+        "artifact_register_executed": true,
+        "persistence_receipt_sync_executed": true,
+        "canonical_authority": false,
+        "release_authority": false
+      }
+    },
+    "github": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "PR91:90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md",
+      "observed_at": "2026-08-13T12:29:24Z",
+      "revision": "3aedc51c769eb34141d73b31f973664b7fa8ea5a",
+      "payload_sha256": "4cea5c4e61daeed9543fca826fe2c1437bade616fa4ffdf4c4bdad56d7fb5067",
+      "fields": {
+        "version": "v0.12",
+        "authority_state": "CANDIDATE_AUTHORITY",
+        "design_state": "CANDIDATE",
+        "accepted_source_snapshot_sha": "5782c039562e723705b6f46537fea7efa0936b29",
+        "pap_status": "PERSISTENCE_PASS",
+        "sync_status": "SYNCED"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "candidate_promotion_approved": true,
+        "candidate_promotion_executed": true,
+        "artifact_register_executed": true,
+        "persistence_receipt_sync_executed": true,
+        "canonical_authority": false,
+        "release_authority": false
+      }
+    },
+    "drive": {
+      "status": "FOUND",
+      "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+      "source_ref": "file:1I2cd1p1bJZza6_6AVqDxwsxRtQumW2ZUHuiInO2z8VU",
+      "observed_at": "2026-08-13T12:29:24Z",
+      "revision": "AIroW34n6HCICZzp3_x9E4rsHVhsFDjcwOqOm8ncYiSn6A9rkLWwMkYVJ4n5bMAIFzxDyFtQlh8y7P8bzEM4ubyWO0GnqnNozXCwpx3e1a0",
+      "payload_sha256": "1bffbe374a84a007ad0b00320aa298a3f51df76a64822030072087583e707ec4",
+      "fields": {
+        "version": "v0.12",
+        "authority_state": "CANDIDATE_AUTHORITY",
+        "design_state": "CANDIDATE",
+        "accepted_source_snapshot_sha": "5782c039562e723705b6f46537fea7efa0936b29",
+        "pap_status": "PERSISTENCE_PASS",
+        "sync_status": "SYNCED"
+      },
+      "semantic": {
+        "machine_pass": true,
+        "human_project_visual_pass": true,
+        "pap_pass": true,
+        "candidate_promotion_approved": true,
+        "candidate_promotion_executed": true,
+        "artifact_register_executed": true,
+        "persistence_receipt_sync_executed": true,
+        "canonical_authority": false,
+        "release_authority": false
+      }
+    }
+  }
+}

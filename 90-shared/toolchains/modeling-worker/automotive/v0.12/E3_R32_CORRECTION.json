@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.e3.r3.2.correction",
+  "revision": "R3.2",
+  "base_contract": "E3_R3_COUPLED_SURFACE_NETWORK.json",
+  "base_revision": "R3.1",
+  "immutable_failure_receipt": "R31_MACHINE_FAILURE_DECISION.md",
+  "decision_question": "Can the retained R3 five-family Automotive Surface Source architecture clear Machine QA after correcting termination continuation geometry and evidence zoning without relaxing any existing quality threshold?",
+  "surface_source_overrides": {
+    "SURF-FRONT-TERM": {
+      "length": 0.38,
+      "width_scale": 0.82,
+      "vertical_blend": 0.80,
+      "far_tangent_longitudinal_scale": 0.60,
+      "far_tangent_lateral_scale": 0.75,
+      "far_tangent_vertical_scale": 0.75
+    },
+    "SURF-REAR-TERM": {
+      "length": 0.36,
+      "width_scale": 0.84,
+      "vertical_blend": 0.80,
+      "far_tangent_longitudinal_scale": 0.60,
+      "far_tangent_lateral_scale": 0.75,
+      "far_tangent_vertical_scale": 0.75
+    }
+  },
+  "evidence_zoning": {
+    "termination_far_boundary_margin": 0.08,
+    "termination_character_band_half_width": 0.04,
+    "inherited_character_centers": [0.3333333333333333, 0.6666666666666666],
+    "rule": "Termination continuation uses the existing broad-interior radius threshold outside inherited shoulder/rocker character bands while whole-zone cell-area/non-degeneracy remains checked. Far intentional-boundary transition is diagnostic and is not ordinary Character-Band authority."
+  },
+  "locked_thresholds": {
+    "min_surface_cell_area_proxy": 0.00005,
+    "min_semantic_surface_displacement": 0.025,
+    "max_semantic_surface_displacement": 0.20,
+    "max_profile_slope_change_proxy": 5.0,
+    "max_profile_inflection_count": 5,
+    "min_rear_haunch_plan_advantage": 0.035,
+    "max_reflection_field_acceleration_proxy": 24.0,
+    "broad_interior_margin": 0.08,
+    "min_broad_normal_radius_proxy_m": 0.020,
+    "min_character_band_normal_radius_proxy_m": 0.010,
+    "max_character_band_total_normal_turn_deg": 105.0,
+    "min_intentional_boundary_half_width_m": 0.16,
+    "max_runtime_boundary_normal_diagnostic_deg": 0.50
+  },
+  "boundary": "R3.2 is a Working Source correction inside the existing R3 architecture and R3.1 evidence semantics. It does not add a system Gate, does not relax thresholds, and cannot open PAP or Promotion without Machine plus Human Project/Visual PASS."
+}

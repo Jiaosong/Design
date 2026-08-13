@@ -1,0 +1,44 @@
+name: OLEANDER Control Plane v0.3｜E3 R3.3 Promote Review
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/**'
+      - '.github/workflows/oleander-control-plane-v0-3-e3-r33-promotion-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  promotion-state-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Validate active Control Card
+        run: python 00-governance/control-plane/control_plane.py check 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+      - name: Verify transition-aware state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
+          assert card['mode']=='CANDIDATE'
+          state=card['authority_source']['state']
+          if state=='WORKING_SOURCE':
+              assert not (root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').exists()
+              print('PRE_APPROVAL_WORKING_SOURCE_PASS')
+          elif state=='CANDIDATE_AUTHORITY':
+              authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+              sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+              assert 'Decision: `APPROVED`' in authority
+              assert 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' in sync
+              assert 'ARTIFACT_REGISTER = EXECUTED' in sync
+              assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
+              print('POST_APPROVAL_CANDIDATE_AUTHORITY_PASS')
+          else:
+              raise AssertionError(state)
+          PY
+      - name: Boundary
+        run: echo 'Candidate Authority verification only; no Canonical Promotion or merge is authorized.' >> "$GITHUB_STEP_SUMMARY"
