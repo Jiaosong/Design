@@ -66,14 +66,35 @@ PR #85 merge result:
 - `merged=true`
 - merge commit `1ee9d06a54e799a57835e761d32c706644792365`
 
-## Cross-system references
+## Cross-system canonical receipts
 
-- Drive PAP root: `1PLXbsvK81vLrfkcukaYD_Ks7P1SmLPk3`
-- Drive PAP manifest: `1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P`
-- Drive PAP receipt: `1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi`
-- Notion PAP receipt: `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
-- Notion Promote Review receipt: `3bbb86be-5c47-81e7-93a3-e28aba991475`
-- GitHub PR: `#85`
+GitHub:
+- current Canonical Authority receipt: `90-shared/toolchains/modeling-worker/automotive/v0.11/CANONICAL_AUTHORITY_R29A_2026-08-13.md`
+- historical Candidate receipt: `MODELING_WORKER_V011_CANDIDATE_AUTHORITY.md` with `SUPERSEDED_BY_CANONICAL_AUTHORITY`
+- PR #85: merged / closed / title updated to Canonical Authority
+
+Notion:
+- Canonical Authority receipt page `3bbb86be-5c47-8194-8bac-f323fc4ea324`
+- PAP receipt page `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
+- Promote Review page `3bbb86be-5c47-81e7-93a3-e28aba991475`
+
+Google Drive:
+- Canonical Authority receipt `1wc33xRbVikGcjz7v5Ntip6v_30VUAUEnmArt5wYktv8`
+- PAP root `1PLXbsvK81vLrfkcukaYD_Ks7P1SmLPk3`
+- PAP manifest `1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P`
+- PAP receipt `1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi`
+
+## Post-promotion contradiction scan
+
+- PR #85 current metadata: `merged=true / closed / Canonical Authority` — PASS
+- Candidate Authority receipt marked historical/superseded — PASS
+- GitHub Canonical Authority receipt exists on `main` — PASS
+- Notion Canonical Authority receipt readback — PASS
+- Drive Canonical Authority receipt readback — PASS
+- Drive receipt is stored inside PAP root — PASS
+- post-promotion AI Governance push run `31658343571` on main — SUCCESS
+
+No current-authority contradiction requires reopening M5–M10 or reverting Promotion.
 
 ## Authority boundary
 
@@ -100,5 +121,7 @@ It does not claim:
 `M5–M10 = PASS / CLOSED`
 
 `PAP = PASS`
+
+`POST-PROMOTION CONTRADICTION SCAN = PASS`
 
 Future changes must enter a new Decision Question and follow the applicable Re-enter / Candidate / Promotion gates; they must not silently mutate this authority object.
