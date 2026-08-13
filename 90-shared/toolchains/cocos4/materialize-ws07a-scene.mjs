@@ -88,6 +88,8 @@ async function createContractNode(spec) {
     }), `set Label ${spec.path}`);
   } else if (spec.type === 'Button') {
     await addComponent(spec.path, 'cc.Button', `add Button ${spec.path}`);
+  } else if (spec.type === 'Sprite') {
+    await addComponent(spec.path, 'cc.Sprite', `add Sprite ${spec.path}`);
   }
 
   if (typeof spec.active === 'boolean') {
