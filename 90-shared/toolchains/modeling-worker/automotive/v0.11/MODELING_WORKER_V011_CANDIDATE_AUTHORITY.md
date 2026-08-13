@@ -1,6 +1,8 @@
 # OLEANDER Modeling Worker｜Automotive v0.11 Candidate Authority
 
-Authority state: `CANDIDATE_AUTHORITY / NOT PROMOTED / DRAFT PR`
+Authority state: `CANDIDATE_AUTHORITY / HOLD_FOR_PROMOTION / NOT PROMOTED / DRAFT PR`
+
+Promotion review: `PROMOTION_REVIEW_2026-08-13.md`
 
 ## Canonical benchmark identity
 
@@ -103,12 +105,29 @@ This candidate does not claim:
 - homologation;
 - final CMF.
 
-## Promotion rule
+## Promotion review result｜2026-08-13
 
-Candidate Authority is eligible for explicit OLEANDER Promote review.
+Decision:
 
-Until that decision:
+`HOLD / PROMOTION_INTEGRATION_GATE / PERSISTENCE_GATE`
+
+The HOLD does **not** reopen M5–M10 and does not downgrade the Candidate Authority.
+
+Promotion is blocked because:
+
+1. PR #85 is currently Draft and not mergeable against current `main`; the branch is 23 commits behind current main governance and must be reconciled before canonical integration.
+2. Current `main` activates `Production Asset Persistence Gate v1.0`; Automotive v0.11 generated native `.blend` production assets, while the recorded production binaries remain represented by expiring GitHub Actions artifacts rather than a PAP-qualified durable copy with independent retrieval verification.
+3. Connected Google Drive search during Promotion Review did not locate an R29A / M10 durable production binary.
+
+Current persistence classification:
+
+`PERSISTENCE FAIL / DURABLE PRODUCTION BINARY NOT YET VERIFIED`
+
+Promotion may be reviewed again only after the exit conditions in `PROMOTION_REVIEW_2026-08-13.md` are closed: current-main integration, PAP asset inventory, durable upload, independent retrieval + SHA/size/open verification, and aligned GitHub/Notion persistence receipts.
+
+Until then:
 - PR #85 stays Draft;
 - no automatic merge;
-- no canonical Notion/Drive sync;
-- downstream reuse must cite `CANDIDATE_AUTHORITY`, not `CANONICAL_AUTHORITY`.
+- no canonical Notion/Drive promotion sync;
+- downstream reuse must cite `CANDIDATE_AUTHORITY`, not `CANONICAL_AUTHORITY`;
+- R29A Source and M5–M10 passed gates remain locked unless a separate Revision Proposal explicitly reopens them.
