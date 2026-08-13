@@ -4,7 +4,8 @@ Status: `PERSISTENCE PASS` / `PAP-G0—PAP-G6 PASS` / `SYSTEM PROMOTION NOT AUTH
 
 Candidate: `E3 R3.3 Application Benchmark`  
 Object: `SYS-MODELING-WORKER-v0.12-E3-AUTO`  
-Authority entering PAP: `WORKING_SOURCE / CANDIDATE`  
+Authority state entering PAP: `WORKING_SOURCE`  
+Design state entering PAP: `CANDIDATE`  
 Accepted source snapshot commit: `5782c039562e723705b6f46537fea7efa0936b29`
 
 ## Accepted application evidence
