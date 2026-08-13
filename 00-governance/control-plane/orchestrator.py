@@ -194,12 +194,19 @@ def evaluate_promotion(card: dict[str, Any], bundle: dict[str, Any]) -> dict[str
         }
 
     source = card.get("authority_source") or {}
+    expected_object = source.get("object_id")
+    expected_source = source.get("source_id")
+    if not expected_object or not expected_source:
+        return {
+            "status": "BLOCKED", "code": "PROMOTION_AUTHORITY_IDENTITY_INCOMPLETE", "control_check": check,
+            "findings": [{"level": "ERROR", "code": "AUTHORITY_IDENTITY_INCOMPLETE", "message": "Promotion requires distinct authority_source.object_id and authority_source.source_id"}],
+            "missing_or_failed_gates": [], "post_promotion_actions": [],
+        }
     binding = bundle["authority_binding"]
-    expected_object = source.get("source_id")
-    if bundle["object_id"] != expected_object or binding.get("source_id") != expected_object or binding.get("authority_state") != source.get("state"):
+    if bundle["object_id"] != expected_object or binding.get("source_id") != expected_source or binding.get("authority_state") != source.get("state"):
         return {
             "status": "BLOCKED", "code": "PROMOTION_AUTHORITY_BINDING_MISMATCH", "control_check": check,
-            "findings": [{"level": "ERROR", "code": "AUTHORITY_BINDING_MISMATCH", "message": "gate bundle does not bind to the exact Control Card authority source"}],
+            "findings": [{"level": "ERROR", "code": "AUTHORITY_BINDING_MISMATCH", "message": "gate bundle does not bind to the exact Control Card authority object/source"}],
             "missing_or_failed_gates": [], "post_promotion_actions": [],
         }
     expected_hash = source.get("sha256")
@@ -231,6 +238,7 @@ def evaluate_promotion(card: dict[str, Any], bundle: dict[str, Any]) -> dict[str
         }
 
     receipts = bundle["receipts"]
+    execution_mode = bundle["execution_mode"]
     by_gate: dict[str, dict[str, Any]] = {}
     duplicates: list[str] = []
     for receipt in receipts:
@@ -247,38 +255,50 @@ def evaluate_promotion(card: dict[str, Any], bundle: dict[str, Any]) -> dict[str
     profile = select_gate_profile(card)
     required = list(profile.base_qa) + list(profile.specialist_gates)
     missing_or_failed: list[dict[str, str]] = []
+    replay_mappings: list[dict[str, str]] = []
     for gate in required:
         receipt = by_gate.get(gate)
         if not receipt:
             missing_or_failed.append({"gate": gate, "result": "NOT_RUN", "reason": "missing bound gate receipt"})
             continue
-        if receipt["object_id"] != bundle["object_id"] or receipt["source_id"] != binding["source_id"]:
+        if receipt["object_id"] != expected_object or receipt["source_id"] != expected_source:
             missing_or_failed.append({"gate": gate, "result": receipt["result"], "reason": "receipt object/source binding mismatch"})
             continue
         if binding.get("sha256") not in (None, "") and receipt["authority_sha256"] != binding["sha256"]:
             missing_or_failed.append({"gate": gate, "result": receipt["result"], "reason": "receipt authority hash mismatch"})
             continue
+        if execution_mode == "LIVE" and receipt["basis"] != "DIRECT":
+            missing_or_failed.append({"gate": gate, "result": receipt["result"], "reason": "LIVE promotion requires DIRECT gate evidence; replay mapping is not admissible"})
+            continue
+        if receipt["basis"] == "REPLAY_MAPPING":
+            replay_mappings.append({"gate": gate, "historical_evidence_label": receipt.get("historical_evidence_label") or "UNSPECIFIED"})
         if receipt["result"] != "PASS":
             missing_or_failed.append({"gate": gate, "result": receipt["result"], "reason": "required bound gate must PASS"})
     if missing_or_failed:
         return {
             "status": "BLOCKED", "code": "PROMOTION_GATES_OPEN", "control_check": check,
-            "gate_profile": asdict(profile), "transition": transition, "findings": [],
-            "missing_or_failed_gates": missing_or_failed, "post_promotion_actions": [],
+            "gate_profile": asdict(profile), "transition": transition, "execution_mode": execution_mode,
+            "findings": [], "missing_or_failed_gates": missing_or_failed, "post_promotion_actions": [],
         }
 
-    actions = ["ARTIFACT_REGISTER"]
+    simulated_actions = ["ARTIFACT_REGISTER"]
     sync = card.get("sync_persistence_trigger")
     if sync == "RECEIPT":
-        actions.append("RECEIPT_SYNC")
+        simulated_actions.append("RECEIPT_SYNC")
     if sync == "PAP":
-        actions.append("PERSISTENCE_RECEIPT_SYNC")
+        simulated_actions.append("PERSISTENCE_RECEIPT_SYNC")
     if sync == "FULL_SYNC":
-        actions.extend(["NOTION_GITHUB_DRIVE_FULL_SYNC", "CONTRADICTION_SCAN"])
+        simulated_actions.extend(["NOTION_GITHUB_DRIVE_FULL_SYNC", "CONTRADICTION_SCAN"])
+
+    replay_only = execution_mode == "REPLAY"
     return {
-        "status": "READY_FOR_HUMAN_DECISION", "code": "PROMOTION_BOUND_PREREQUISITES_PASS",
+        "status": "READY_FOR_HUMAN_DECISION",
+        "code": "PROMOTION_REPLAY_PREREQUISITES_PASS" if replay_only else "PROMOTION_BOUND_PREREQUISITES_PASS",
         "control_check": check, "gate_profile": asdict(profile), "transition": transition,
-        "missing_or_failed_gates": [], "post_promotion_actions": actions,
+        "execution_mode": execution_mode, "replay_only": replay_only, "replay_mappings": replay_mappings,
+        "missing_or_failed_gates": [],
+        "post_promotion_actions": [] if replay_only else simulated_actions,
+        "simulated_post_promotion_actions": simulated_actions if replay_only else [],
         "human_decision_required": True,
     }
 
