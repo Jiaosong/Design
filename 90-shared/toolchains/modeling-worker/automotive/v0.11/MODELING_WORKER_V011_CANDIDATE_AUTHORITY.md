@@ -109,21 +109,21 @@ This candidate does not claim:
 
 Decision:
 
-`HOLD / PROMOTION_INTEGRATION_GATE / PERSISTENCE_GATE`
+`HOLD / PERSISTENCE_GATE`
 
 The HOLD does **not** reopen M5–M10 and does not downgrade the Candidate Authority.
 
-Promotion is blocked because:
+Current integration state is not a blocker: PR #85 is Draft but GitHub currently reports it as mergeable, and the latest AI Governance Evals and Blender Runtime Contract are PASS. The branch remains 23 commits behind current `main`; final mergeability and CI must be rechecked immediately before Promotion, but this does not require a modeling re-entry.
 
-1. PR #85 is currently Draft and not mergeable against current `main`; the branch is 23 commits behind current main governance and must be reconciled before canonical integration.
-2. Current `main` activates `Production Asset Persistence Gate v1.0`; Automotive v0.11 generated native `.blend` production assets, while the recorded production binaries remain represented by expiring GitHub Actions artifacts rather than a PAP-qualified durable copy with independent retrieval verification.
-3. Connected Google Drive search during Promotion Review did not locate an R29A / M10 durable production binary.
+Promotion is blocked because current `main` activates `Production Asset Persistence Gate v1.0`; Automotive v0.11 generated native `.blend` production assets, while the recorded production binaries remain represented by expiring GitHub Actions artifacts rather than a PAP-qualified durable copy with independent retrieval verification.
+
+Connected Google Drive search during Promotion Review did not locate an R29A / M10 durable production binary.
 
 Current persistence classification:
 
 `PERSISTENCE FAIL / DURABLE PRODUCTION BINARY NOT YET VERIFIED`
 
-Promotion may be reviewed again only after the exit conditions in `PROMOTION_REVIEW_2026-08-13.md` are closed: current-main integration, PAP asset inventory, durable upload, independent retrieval + SHA/size/open verification, and aligned GitHub/Notion persistence receipts.
+Promotion may be reviewed again only after the exit conditions in `PROMOTION_REVIEW_2026-08-13.md` are closed: PAP asset inventory, durable upload, independent retrieval + SHA/size/open verification, aligned GitHub/Notion persistence receipts, followed by a final mergeability/CI check.
 
 Until then:
 - PR #85 stays Draft;
