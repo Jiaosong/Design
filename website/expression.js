@@ -71,6 +71,10 @@
   const researchCase = relationPanel?.querySelector('.project-record--featured');
   if (relationPanel && researchCase) relationPanel.appendChild(researchCase);
 
+  const c01 = $('#project-weaving');
+  const c03 = $('#project-reno-cmf');
+  if (c01 && c03 && c01.parentNode === c03.parentNode) c03.insertAdjacentElement('afterend', c01);
+
   if ('IntersectionObserver' in window) {
     const targets = ['relations','practice'].map((id) => document.getElementById(id)).filter(Boolean);
     const visibility = new Map(targets.map((target) => [target,false]));
