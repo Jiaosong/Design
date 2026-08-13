@@ -11,7 +11,7 @@
   },
   "mode": "CANDIDATE",
   "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
-  "problem_layer": "Architecture",
+  "problem_layer": "Surface-Network Architecture",
   "authority_source": {
     "state": "WORKING_SOURCE",
     "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
@@ -28,15 +28,22 @@
     "PAP and human-owned Promotion boundary",
     "E1 single-patch method evidence",
     "E2 precision-aware multi-patch C2 method evidence",
-    "E3 run 31665641314 Machine PASS receipt"
+    "E3 R1 Machine PASS + Human Project/Visual REVISE historical baseline",
+    "E3 R2.2 run 31669314369 Machine PASS receipt",
+    "E3 R2 Project/Visual REVISE receipt",
+    "compiler-space C2 design threshold remains unchanged where C2 is declared",
+    "derived execution topology cannot replace editable Surface Source Authority"
   ],
   "open_variables": [
-    "independent low-frequency Surface Source architecture for hood / cowl versus cabin crown",
-    "independent cabin gesture rather than lifting one center dome",
-    "independent shoulder acceleration and rear-haunch buildup",
-    "lower-body / rocker counter-tension to shoulder mass",
-    "front and rear termination volume styling while preserving existing C2/fairness boundaries",
-    "fixed-view visual legibility of each semantic edit",
+    "separate Upper / Hood-Cabin Surface Network",
+    "separate Side / Shoulder-Rear-Haunch Surface Network",
+    "separate Lower-Body / Rocker Surface Network",
+    "independent Front and Rear Termination Surface Networks",
+    "independent Profile Primary Curve authority",
+    "independent Plan-view Primary Curve authority for shoulder / belt / rocker / termination trajectories",
+    "relationship-specific continuity classes instead of blanket longitudinal C2",
+    "perceptual independence of rear-haunch and lower-body masses",
+    "reflection-field organization / highlight acceleration at application scale",
     "application-level proportion and first-reading quality"
   ],
   "required_qa": ["Machine", "Visual", "Project"],
@@ -50,7 +57,7 @@
     "pap": "NOT_RUN",
     "promotion": "BLOCKED"
   },
-  "next_allowed_action": "Rebuild the E3 application Surface Source architecture so hood/cowl, cabin, shoulder/rear-haunch, lower-body and terminations have genuinely independent low-frequency source controls. Re-run the same Decision Question at working fidelity; do not open PAP or Promotion and do not add secondary detail/CMF to mask the architecture failure.",
+  "next_allowed_action": "Execute E3 R3 Coupled Semantic Surface Network under the same Decision Question. Build separate Upper, Side, Lower-Body, Front-Termination and Rear-Termination Surface Source families; give Profile and Plan-view Primary Curves separate authority; declare relationship-specific G0/G1/G2_PROXY/curvature-rate/intentional-boundary targets before surface compilation. Re-run Machine QA and then Human Hero/Side/Top/Zebra + semantic multi-view Project/Visual QA. Do not open PAP or Promotion and do not add wheel/detail/CMF.",
   "sync_persistence_trigger": "RECEIPT",
   "review_history": [
     {
@@ -58,7 +65,19 @@
       "problem_layer": "Architecture",
       "visual_result": "REVISE",
       "project_result": "REVISE",
+      "receipt": "E3_PROJECT_VISUAL_DECISION.md",
       "timestamp": "2026-08-13T12:06:00+08:00"
+    },
+    {
+      "decision_question": "Can v0.12 replace the rejected E3 R1 single-center-cage Automotive application architecture with genuinely independent low-frequency source structures while preserving continuity/fairness and making each volume legible at first reading?",
+      "problem_layer": "Surface-Network Architecture",
+      "machine_result": "PASS",
+      "visual_result": "REVISE",
+      "project_result": "REVISE",
+      "machine_run": "31669314369",
+      "machine_artifact": "9169286096",
+      "receipt": "E3_R2_PROJECT_VISUAL_DECISION.md",
+      "timestamp": "2026-08-13T12:26:00+08:00"
     }
   ]
 }
