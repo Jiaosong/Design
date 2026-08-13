@@ -67,6 +67,10 @@
     hero.insertAdjacentElement('afterend', encounter);
   }
 
+  const relationPanel = $('#project-panel-relation');
+  const researchCase = relationPanel?.querySelector('.project-record--featured');
+  if (relationPanel && researchCase) relationPanel.appendChild(researchCase);
+
   if ('IntersectionObserver' in window) {
     const targets = ['relations','practice'].map((id) => document.getElementById(id)).filter(Boolean);
     const visibility = new Map(targets.map((target) => [target,false]));
