@@ -1,8 +1,10 @@
 # OLEANDER Modeling Worker｜Automotive v0.11 Candidate Authority
 
-Authority state: `CANDIDATE_AUTHORITY / HOLD_FOR_PROMOTION / NOT PROMOTED / DRAFT PR`
+Authority state: `CANDIDATE_AUTHORITY / PAP_PASS / READY_FOR_PROMOTE_REVIEW / NOT PROMOTED / DRAFT PR`
 
 Promotion review: `PROMOTION_REVIEW_2026-08-13.md`
+PAP manifest: `PAP_MANIFEST_v1.json`
+PAP receipt: `PAP_RECEIPT_2026-08-13.md`
 
 ## Canonical benchmark identity
 
@@ -34,6 +36,7 @@ Wheel hard-point contract:
 - M8 Detail / Instances — PASS
 - M9 Material Binding — PASS / NOT FINAL CMF
 - M10 Multi-Scale QA — PASS
+- PAP-G0—PAP-G6 — PASS
 
 ## Load-bearing evidence
 
@@ -66,6 +69,35 @@ Digest `sha256:ba3234f0e4912f41d42079fe50c873c7a9be237996f57eda574e21c852a82ee7`
 Run `31623379139`
 Artifact `9152168778`
 Digest `sha256:01b39f726ff943f9db2bca2d089cd197a3b23ce35a7ca277c2740cfe0448e6ac`
+
+## PAP durable authority evidence
+
+Google Drive PAP root:
+`1PLXbsvK81vLrfkcukaYD_Ks7P1SmLPk3`
+
+Native Blender source:
+- Drive ID `1KQP_SJU11teCutdBLDSaF1D29aD2Fp2H`
+- size `248834` bytes
+- SHA-256 `f8f800360a61392592262f89e3f6a6ca5ec6e76eda9211911530bd257939d8e1`
+- independent retrieval PASS
+- byte-identical to executed M10 Blender scene
+
+Production ZIP:
+- Drive ID `1xQhmz5_RBwfK5iQFODiIM2jFn_ZGJw4D`
+- size `3861986` bytes
+- SHA-256 `3dd304dd94e6493e01e1a4e436339949cc82851cef1ce007eacbf02f226ef204`
+- independent retrieval PASS
+- ZIP test PASS
+- internal checksums PASS
+
+Canonical interchange:
+`N/A` — editable Blender Source is the benchmark Geometry Authority; no separate GLB/STEP/OBJ authority was created or validated.
+
+Cross-system receipt:
+- Drive manifest `1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P`
+- Drive receipt `1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi`
+- Notion page `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
+- GitHub `PAP_MANIFEST_v1.json` + `PAP_RECEIPT_2026-08-13.md`
 
 ## Retained construction authority
 
@@ -105,29 +137,20 @@ This candidate does not claim:
 - homologation;
 - final CMF.
 
-## Promotion review result｜2026-08-13
+## Current promotion state｜2026-08-13
 
-Decision:
-
-`HOLD / PERSISTENCE_GATE`
-
-The HOLD does **not** reopen M5–M10 and does not downgrade the Candidate Authority.
-
-Current integration state is not a blocker: PR #85 is Draft but GitHub currently reports it as mergeable, and the latest AI Governance Evals and Blender Runtime Contract are PASS. The branch remains 23 commits behind current `main`; final mergeability and CI must be rechecked immediately before Promotion, but this does not require a modeling re-entry.
-
-Promotion is blocked because current `main` activates `Production Asset Persistence Gate v1.0`; Automotive v0.11 generated native `.blend` production assets, while the recorded production binaries remain represented by expiring GitHub Actions artifacts rather than a PAP-qualified durable copy with independent retrieval verification.
-
-Connected Google Drive search during Promotion Review did not locate an R29A / M10 durable production binary.
+The previous `HOLD / PERSISTENCE_GATE` is closed.
 
 Current persistence classification:
 
-`PERSISTENCE FAIL / DURABLE PRODUCTION BINARY NOT YET VERIFIED`
+`PERSISTENCE PASS / PAP-G0—PAP-G6 PASS`
 
-Promotion may be reviewed again only after the exit conditions in `PROMOTION_REVIEW_2026-08-13.md` are closed: PAP asset inventory, durable upload, independent retrieval + SHA/size/open verification, aligned GitHub/Notion persistence receipts, followed by a final mergeability/CI check.
+No M5–M10 gate is reopened and Candidate Authority is not downgraded.
 
-Until then:
+The next allowed action is a **new explicit Promote Review**. Before `CANDIDATE_AUTHORITY → CANONICAL_AUTHORITY`, recheck PR #85 mergeability, AI Governance Evals, Blender Runtime Contract, PAP consistency and the explicit non-authority boundary.
+
+Until that decision:
 - PR #85 stays Draft;
 - no automatic merge;
-- no canonical Notion/Drive promotion sync;
-- downstream reuse must cite `CANDIDATE_AUTHORITY`, not `CANONICAL_AUTHORITY`;
-- R29A Source and M5–M10 passed gates remain locked unless a separate Revision Proposal explicitly reopens them.
+- downstream reuse cites `CANDIDATE_AUTHORITY`, not `CANONICAL_AUTHORITY`;
+- no final-CMF / engineering / manufacturing authority is implied.
