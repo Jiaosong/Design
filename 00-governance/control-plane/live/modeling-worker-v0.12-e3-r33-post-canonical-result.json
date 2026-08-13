@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.3",
+  "kind": "CONTRADICTION_SCAN_RESULT",
+  "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
+  "status": "PASS",
+  "code": "CONTRADICTION_SCAN_PASS",
+  "findings": [],
+  "systems_checked": ["notion", "github", "drive"],
+  "manifest": "00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-post-canonical-promotion.json",
+  "manifest_commit": "a43c9b7a2bdce76b3da8fd3a27f5fdd509339eda",
+  "scanner": "00-governance/control-plane/orchestrator.py::scan_contradictions",
+  "scanner_blob_sha": "6e7c4c365ec5382d3cb2f0559e11ec17bc5644e9",
+  "execution_surface": "LIVE_CONNECTOR_SNAPSHOTS_PLUS_CONTROL_PLANE_V0_3_SCANNER_LOGIC",
+  "expected_authority_state": "CANONICAL_AUTHORITY",
+  "expected_design_state": "PROMOTED",
+  "expected_sync_status": "SYNCED",
+  "release_authority": false
+}
