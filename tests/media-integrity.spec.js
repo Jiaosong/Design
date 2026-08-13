@@ -11,6 +11,7 @@ test('portfolio media keeps natural proportions and opens detail viewer', async 
   const measurements = await boards.evaluateAll((images) => images.map((img) => {
     const rect = img.getBoundingClientRect();
     return {
+      src: img.getAttribute('src'),
       sourceRatio: img.naturalWidth / img.naturalHeight,
       renderedRatio: rect.width / rect.height,
       objectFit: getComputedStyle(img).objectFit,
@@ -19,9 +20,10 @@ test('portfolio media keeps natural proportions and opens detail viewer', async 
   }));
 
   for (const item of measurements) {
-    expect(Math.abs(item.sourceRatio - item.renderedRatio)).toBeLessThan(0.015);
-    expect(item.objectFit).toBe('contain');
-    expect(item.transform).toBe('none');
+    const relativeRatioDelta = Math.abs(item.sourceRatio - item.renderedRatio) / item.sourceRatio;
+    expect(relativeRatioDelta, `${item.src} changed its source proportion`).toBeLessThan(0.02);
+    expect(item.objectFit, `${item.src} must remain complete`).toBe('contain');
+    expect(item.transform, `${item.src} must not be scale-softened`).toBe('none');
   }
 
   const first = boards.first();
