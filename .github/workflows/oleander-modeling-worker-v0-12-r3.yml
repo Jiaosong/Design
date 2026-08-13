@@ -1,0 +1,159 @@
+name: OLEANDER Modeling Worker v0.12 R3
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_*'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_*'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/R3_DESIGN_NOTE.md'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PROJECT_VISUAL_DECISION.md'
+      - '.github/workflows/oleander-modeling-worker-v0-12-r3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r3-contract:
+    name: R3 Relationship + Authority Contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Parse R3 contract and Control Card
+        run: |
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json >/dev/null
+          python -m json.tool 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json >/dev/null
+      - name: Compile R3 application compiler
+        run: python -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py
+      - name: Control Plane v0.3 check
+        run: |
+          python 00-governance/control-plane/control_plane.py check \
+            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+      - name: Require R2 Machine PASS + Human REVISE receipt
+        run: |
+          set -euo pipefail
+          grep -F 'E3 R2 MACHINE PASS / VISUAL REVISE / PROJECT REVISE' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PROJECT_VISUAL_DECISION.md
+          grep -F 'ROOT CAUSE = SURFACE-NETWORK ARCHITECTURE' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PROJECT_VISUAL_DECISION.md
+          grep -F 'PAP remains `BLOCKED`' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PROJECT_VISUAL_DECISION.md
+      - name: Assert R3 fail-closed authority boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json').read_text())
+          card=json.loads(Path('90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json').read_text())
+          assert c['authority']['primary_curves']=='WORKING_SOURCE'
+          assert c['authority']['surface_source']=='WORKING_SOURCE'
+          assert c['authority']['execution_geometry']=='DERIVED'
+          assert c['architecture']['profile_plan_authority_separated'] is True
+          assert c['architecture']['global_control_cage_forbidden'] is True
+          assert c['architecture']['blanket_continuity_class_forbidden'] is True
+          classes={r['class'] for r in c['relationship_graph']}
+          assert {'G1','CURVATURE_RATE','INTENTIONAL_BOUNDARY'} <= classes
+          assert card['mode']=='CANDIDATE'
+          assert card['problem_layer']=='Architecture'
+          assert card['evidence_state']['pap']=='NOT_RUN'
+          assert card['evidence_state']['promotion']=='BLOCKED'
+          assert 'R3 Coupled Semantic Surface Network' in card['next_allowed_action']
+          print('R3_CONTRACT_FAIL_CLOSED_PASS')
+          PY
+
+  r3-blender:
+    name: R3 Blender Coupled Semantic Surface Network
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Compile R3 compiler
+        run: python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Execute E3 R3 coupled surface network
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r3_coupled_surface_entry.py -- \
+            --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R3_COUPLED_SURFACE_NETWORK.json \
+            --out "$OUT" --resolution 512
+      - name: R3 machine architecture gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=Path('out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3')
+          q=json.loads((r/'E3_R3_MACHINE_REPORT.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_PROJECT_VISUAL_REVIEW_REQUIRED', q
+          assert all(q['checks'].values()), q['checks']
+          required=(
+            'five_surface_source_families',
+            'profile_plan_primary_curve_authority_separated',
+            'global_control_cage_forbidden',
+            'relationship_specific_continuity_classes',
+            'declared_boundary_relationships_pass',
+            'all_surface_family_interior_fairness_pass',
+            'semantic_control_source_ownership_disjoint',
+            'profile_silhouette_metrics_pass',
+            'plan_view_rear_haunch_hierarchy_pass',
+            'reflection_field_proxy_pass',
+            'execution_topology_is_derived',
+            'semantic_source_edits_exact',
+            'all_semantic_variants_surface_pass',
+            'semantic_authority_domain_effects_present',
+            'machine_pass_only_opens_human_review'
+          )
+          assert all(q['checks'][k] for k in required)
+          assert not q['base']['semantic_source_overlaps']
+          for rel in q['base']['relationship_metrics']:
+            assert rel['pass'], rel
+          for cid,row in q['semantic_variants'].items():
+            assert row['source_edit_exact'], cid
+            assert row['working_fidelity_legible'], cid
+            assert row['declared_authority_domain_effect'], cid
+            assert row['machine_surface_pass'], cid
+          for n in ('E3_R3_HERO.png','E3_R3_SIDE.png','E3_R3_TOP.png','E3_R3_ZEBRA.png','E3_R3_COMPILED_SURFACE_SOURCE.json'):
+            assert (r/n).is_file(), n
+          for cid in ('HOOD_COWL','CABIN','SHOULDER','REAR_HAUNCH','LOWER_BODY','FRONT_TERMINATION','REAR_TERMINATION'):
+            assert (r/f'E3_R3_VARIANT_{cid}_SIDE.png').is_file(), cid
+            assert (r/f'E3_R3_VARIANT_{cid}_TOP.png').is_file(), cid
+          assert any(r.glob('*.blend'))
+          print(json.dumps(q['checks'],indent=2))
+          PY
+      - name: Upload R3 evidence even when fail-closed
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-12-e3-r3-${{ github.run_id }}
+          path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R3/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish R3 authority boundary
+        if: always()
+        run: |
+          echo '## E3 R3 authority boundary' >> "$GITHUB_STEP_SUMMARY"
+          echo '- R3 changes only Automotive application Surface Source architecture.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Profile and Plan-view Primary Curves are separate working authorities.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Upper, Side, Lower, Front-Termination and Rear-Termination are separate Surface Source families.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Relationships are evaluated by declared G1 / curvature-rate / intentional-boundary classes; no blanket C2.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Machine PASS only opens Human Project/Visual QA.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- PAP and Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"
