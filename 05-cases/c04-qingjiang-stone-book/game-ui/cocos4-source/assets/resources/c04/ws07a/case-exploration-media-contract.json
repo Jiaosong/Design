@@ -1,0 +1,27 @@
+{
+  "version": "0.1",
+  "status": "CASE_EXPLORATION_EXTENSION / PROJECT_AXIS_UNRESOLVED",
+  "caseId": "C04",
+  "controlCard": "00-governance/control-plane/cases/C04_R05_A2_REGISTRY-RECOVERY.control-card.json",
+  "legacyRuntimeNamespace": "WS-07A.2_RESEARCH_MEDIA",
+  "corrections": [
+    {
+      "nodePath": "Canvas",
+      "component": "db://assets/scripts/ws07a/LandscapeMediaController.ts",
+      "className": "C04WS07ALandscapeMediaController",
+      "gate": "CASE_EXPLORATION_MEDIA"
+    }
+  ],
+  "nodes": [
+    {
+      "path": "Canvas/S0_OneLineSky/LandscapeImage",
+      "type": "Sprite",
+      "active": false
+    }
+  ],
+  "promotion": {
+    "projectAxisAllowed": false,
+    "canonicalProductionAllowed": false,
+    "finalVisualPassInferred": false
+  }
+}
