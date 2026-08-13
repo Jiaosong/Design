@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.3",
+  "receipt_type": "CROSS_SYSTEM_CANDIDATE_CONTRADICTION_SCAN",
+  "object_id": "OLEANDER-CTRL-V03",
+  "expected": {
+    "version": "v0.3",
+    "authority_role": "SUBORDINATE_OPERATIONAL_LAYER",
+    "design_state": "ORCHESTRATION_CANDIDATE",
+    "review_state": "REVIEW",
+    "parent_authority": "OLEANDER Current Authority v1.1.0"
+  },
+  "systems": {
+    "notion": {
+      "status": "FOUND",
+      "source_ref": "page:3bbb86be-5c47-8157-9d1d-c7a179d8e08f",
+      "fields": {
+        "version": "v0.3",
+        "authority_role": "SUBORDINATE_OPERATIONAL_LAYER",
+        "design_state": "ORCHESTRATION_CANDIDATE",
+        "review_state": "REVIEW",
+        "parent_authority": "OLEANDER Current Authority v1.1.0"
+      }
+    },
+    "github": {
+      "status": "FOUND",
+      "source_ref": "Jiaosong/Design#89",
+      "fields": {
+        "version": "v0.3",
+        "authority_role": "SUBORDINATE_OPERATIONAL_LAYER",
+        "design_state": "ORCHESTRATION_CANDIDATE",
+        "review_state": "REVIEW",
+        "parent_authority": "OLEANDER Current Authority v1.1.0"
+      }
+    },
+    "drive": {
+      "status": "FOUND",
+      "source_ref": "file:1cBw82OH_ysAmCVb7uUjOuUS70zpkaWf18sV7M8Thh1s",
+      "title": "OLEANDER_SYS_CTRL_Project-Control-Plane_v0.3_CANDIDATE_E2",
+      "fields": {
+        "version": "v0.3",
+        "authority_role": "SUBORDINATE_OPERATIONAL_LAYER",
+        "design_state": "ORCHESTRATION_CANDIDATE",
+        "review_state": "REVIEW",
+        "parent_authority": "OLEANDER Current Authority v1.1.0"
+      }
+    }
+  },
+  "scan_result": {
+    "status": "PASS",
+    "code": "CONTRADICTION_SCAN_PASS",
+    "findings": []
+  },
+  "evidence_boundary": [
+    "Cross-system consistency is internal E2 execution evidence only.",
+    "It does not prove Physical, Field, Human, Rights or Engineering validation.",
+    "It does not promote v0.3 or replace the human Canonical/Release decision."
+  ]
+}
