@@ -1,8 +1,8 @@
 {
   "schema_version": "0.2",
   "object": {
-    "name": "Example CMF comparison",
-    "project_id": "PRJ-XJ01-CMF",
+    "name": "Fixture CMF comparison",
+    "project_id": "FIXTURE-P2-CTRL-001",
     "project_level": "P2",
     "case_id": null,
     "knowledge_position": "L7 Practice",
@@ -14,8 +14,8 @@
   "problem_layer": "Parameter",
   "authority_source": {
     "state": "WORKING_SOURCE",
-    "source_id": "example-source",
-    "location": "local/materialized/source",
+    "source_id": "FIXTURE-SOURCE-001",
+    "location": "fixture/materialized/source",
     "sha256": null
   },
   "locked_variables": ["geometry", "camera", "lighting"],

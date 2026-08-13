@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "Automotive v0.11 R29A Candidate Replay",
+    "project_id": "SYS-MODELING-WORKER",
+    "project_level": "P2",
+    "case_id": null,
+    "knowledge_position": "L7 Practice",
+    "application_mapping": ["IP03"],
+    "priority": "Priority-1"
+  },
+  "mode": "AUTHORITY",
+  "decision_question": "Were the recorded PR #85 Candidate prerequisites sufficient to reach a human Canonical promotion decision?",
+  "problem_layer": "Evidence",
+  "authority_source": {
+    "state": "CANDIDATE_AUTHORITY",
+    "object_id": "AUTO-R29A",
+    "source_id": "R29A-CANDIDATE-1d5e3da9",
+    "location": "Jiaosong/Design#85",
+    "sha256": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb"
+  },
+  "locked_variables": ["R29A source geometry", "wheel hard-point contract", "authority boundary"],
+  "open_variables": [],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "release_package",
+  "claim_types": ["release"],
+  "evidence_state": {"digital": "PASS", "modeling": "PASS", "persistence": "PASS"},
+  "next_allowed_action": "PROMOTION_REVIEW",
+  "sync_persistence_trigger": "FULL_SYNC",
+  "review_history": []
+}

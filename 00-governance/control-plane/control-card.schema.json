@@ -47,6 +47,7 @@
       "required": ["state"],
       "properties": {
         "state": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY", "FROZEN_AUTHORITY", "UNLOCATED"]},
+        "object_id": {"type": ["string", "null"]},
         "source_id": {"type": ["string", "null"]},
         "location": {"type": ["string", "null"]},
         "sha256": {"type": ["string", "null"], "pattern": "^(?:[A-Fa-f0-9]{64})?$"}
