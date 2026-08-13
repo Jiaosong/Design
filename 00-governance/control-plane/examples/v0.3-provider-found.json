@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.3",
+  "query": "control_plane.py",
+  "providers": [
+    {
+      "provider": "current_authority",
+      "attempted": true,
+      "status": "NOT_FOUND",
+      "hits": []
+    },
+    {
+      "provider": "github",
+      "attempted": true,
+      "status": "FOUND",
+      "hits": [
+        {
+          "id": "00-governance/control-plane/control_plane.py",
+          "location": "Jiaosong/Design"
+        }
+      ]
+    }
+  ]
+}
