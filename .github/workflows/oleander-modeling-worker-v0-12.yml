@@ -99,6 +99,7 @@ jobs:
           python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.12/e2_precision_entry.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_application_entry.py
           python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_volume_jet_entry.py
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_precision_entry.py
       - name: Install Blender runtime dependencies
         run: |
           set -euo pipefail
@@ -200,11 +201,15 @@ jobs:
           path: out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R1/
           if-no-files-found: error
           retention-days: 14
-      - name: Execute E3 R2 volume-jet architecture
+      - name: Require E3 R2 precision classification
+        run: |
+          grep -F 'COMPILER C2 THRESHOLD UNCHANGED' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PRECISION_CLASSIFICATION.md
+          grep -F 'RUNTIME D2 = DIAGNOSTIC' 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_PRECISION_CLASSIFICATION.md
+      - name: Execute E3 R2.1 volume-jet architecture
         run: |
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_ModelingWorker_v0.12_E3_Automotive_R2"; mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_volume_jet_entry.py -- \
+            --python 90-shared/toolchains/modeling-worker/automotive/v0.12/e3_r2_precision_entry.py -- \
             --contract 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_R2_VOLUME_JET_SURFACE_SOURCE.json --out "$OUT" --resolution 512
       - name: E3 R2 machine architecture gate
         run: |
@@ -216,10 +221,16 @@ jobs:
           assert q['checks']['five_independent_source_stations']
           assert q['checks']['shared_position_tangent_curvature_jets']
           assert q['checks']['compiler_c2_seams_pass']
+          assert q['checks']['runtime_position_tangent_normal_representation_stable']
+          assert q['checks']['runtime_second_derivative_diagnostic_recorded']
+          assert q['checks']['semantic_control_source_ownership_disjoint']
           assert q['checks']['semantic_source_edits_exact']
           assert q['checks']['all_semantic_variants_fair']
           assert q['checks']['all_semantic_variants_have_working_fidelity_effect']
           assert q['checks']['r1_single_center_cage_not_reused']
+          assert q['precision_classification']['compiler_design_threshold_unchanged']==1e-6
+          assert not q['precision_classification']['semantic_control_source_overlaps']
+          assert q['precision_classification']['runtime_second_derivative']['gating'] is False
           for row in q['semantic_control_variants'].values():
               assert row['source_edit_exact'] and row['machine_fairness_pass']
               assert row['working_fidelity_visual_legibility_proxy']
@@ -228,13 +239,17 @@ jobs:
               assert seam['max_position_error'] <= 1e-7
               assert seam['max_tangent_angle_deg'] <= 0.05
               assert seam['max_second_derivative_error'] <= 1e-6
-              assert seam['runtime_max_second_derivative_error'] <= 5e-6
+              assert seam['runtime_max_position_error'] <= 5e-7
+              assert seam['runtime_max_tangent_angle_deg'] <= 0.05
+              assert seam['runtime_max_normal_angle_deg'] <= 0.05
+              assert 'runtime_max_second_derivative_error' in seam
           for n in ('E3_R2_HERO.png','E3_R2_SIDE.png','E3_R2_TOP.png','E3_R2_ZEBRA.png','E3_R2_COMPILED_SURFACE_SOURCE.json'):
               assert (r/n).is_file(), n
           assert any(r.glob('*.blend'))
           print(json.dumps(q['checks'], indent=2))
           PY
       - name: Upload E3 R2 evidence
+        if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: oleander-modeling-worker-v0-12-e3-r2-${{ github.run_id }}
@@ -247,6 +262,8 @@ jobs:
           echo '## v0.12 E3 architecture evidence boundary' >> "$GITHUB_STEP_SUMMARY"
           echo '- E1/E2 remain accepted generic method evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- E3 R1 Machine PASS + Human REVISE remains immutable baseline evidence.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- E3 R2 replaces the rejected one-center-cage application architecture with shared semantic position/tangent/curvature source jets.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- E3 R2.1 retains independent semantic position/tangent/curvature source jets and disjoint source ownership.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Compiler C2 threshold remains unchanged; Blender float32 reconstructed D2 is diagnostic, while runtime position/tangent/normal remain gated.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Failed or passed R2 evidence is uploaded for audit.' >> "$GITHUB_STEP_SUMMARY"
           echo '- R2 Machine PASS opens Human Project/Visual QA only; it cannot self-promote.' >> "$GITHUB_STEP_SUMMARY"
           echo '- PAP and system Promotion remain blocked until Human R2 Project/Visual review closes.' >> "$GITHUB_STEP_SUMMARY"
