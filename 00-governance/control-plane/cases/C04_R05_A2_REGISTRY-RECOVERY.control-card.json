@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "C04 R05 Photo-dominant Case Exploration Recovery",
+    "project_id": null,
+    "project_level": null,
+    "case_id": "C04",
+    "knowledge_position": "L7 Practice",
+    "application_mapping": ["CU02", "IP03", "SP03"],
+    "priority": "Priority-0"
+  },
+  "mode": "EXPLORE",
+  "decision_question": "Can the validated R05 photo-dominant A.2 research baseline be rebuilt against current main without asserting a restored Project Axis or Final Hero authority, while preserving all evidence boundaries?",
+  "problem_layer": "Evidence",
+  "authority_source": {
+    "state": "WORKING_SOURCE",
+    "object_id": "C04-R05-A2-RESEARCH-EVIDENCE",
+    "source_id": "PR82:b305afa386088aab5a25cf89a6121047c89603fd",
+    "location": "github:Jiaosong/Design#82; artifact:9128687816",
+    "sha256": "8f268b485b9676224f8083908a239e4730c6e3f0d73cc41d44a43eda72745870"
+  },
+  "locked_variables": [
+    "case_id=C04",
+    "project_id unresolved; no P2/P3/P4 promotion",
+    "R05 asset OW-20230616-2a923422a",
+    "R05 observation: 收起手机，先看峰体的高低、疏密与层次。",
+    "KEEP A / SKIP B",
+    "offline bundle + SHA-pinned official-web research asset",
+    "Final Hero Tech HOLD",
+    "G1F implementation HOLD"
+  ],
+  "open_variables": [
+    "formal Project Axis identity after Registry Recovery",
+    "current-main technical compatibility",
+    "exact R05 node identity",
+    "Final Hero source >=2400px",
+    "R13 node-specific fissure/framing media",
+    "R06 Science Hero media"
+  ],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "code",
+  "claim_types": ["rights", "reality", "field"],
+  "evidence_state": {
+    "digital": "OPEN",
+    "rights": "PASS",
+    "reality": "OPEN",
+    "field": "NOT_RUN",
+    "physical": "NOT_RUN"
+  },
+  "next_allowed_action": "CLEAN_REBUILD_R05_A2_AGAINST_CURRENT_MAIN",
+  "sync_persistence_trigger": "RECEIPT",
+  "review_history": [
+    {
+      "decision_question": "Does R05 A.2 preserve Landscape First without a Relation Mark under fixed media and responsive shell?",
+      "problem_layer": "Relation",
+      "visual_result": "PASS",
+      "project_result": "PASS",
+      "timestamp": "2026-08-12T04:36:56+08:00"
+    }
+  ]
+}
