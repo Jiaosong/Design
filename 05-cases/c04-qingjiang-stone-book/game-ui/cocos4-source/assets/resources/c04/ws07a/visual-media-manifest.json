@@ -1,0 +1,45 @@
+{
+  "version": "0.1",
+  "status": "RESEARCH_PROTOTYPE_MEDIA / REGISTRY_RECOVERY",
+  "authority": {
+    "caseId": "C04",
+    "projectAxis": "UNRESOLVED / NO P2-P4 CLAIM",
+    "controlCard": "00-governance/control-plane/cases/C04_R05_A2_REGISTRY-RECOVERY.control-card.json",
+    "legacyRuntimeNamespace": "C04-WS-04 / WS-07A.2",
+    "evidence": "EVD-C04-003 Official Web Media Technical Audit v0.1 (legacy evidence pointer; source-chain recovery pending)",
+    "rights": "PROJECT-USE APPROVED BY PROJECT OWNER 2026-08-12"
+  },
+  "policy": {
+    "offlineBundleRequired": true,
+    "verifyRemoteBytesBySha256": true,
+    "researchMediaMayFailFinalHeroTechGate": true,
+    "finalVisualPassInferred": false,
+    "projectAxisPromotionAllowed": false
+  },
+  "activeExperiment": {
+    "id": "C04-WS04-A-R05-PHOTO-DOMINANT-v0.1",
+    "pageId": "R05",
+    "screenId": "S0_ONE_LINE_SKY",
+    "variant": "A_PHOTO_DOMINANT",
+    "assetId": "OW-20230616-2a923422a"
+  },
+  "assets": [
+    {
+      "assetId": "OW-20230616-2a923422a",
+      "pageId": "R05",
+      "sourceType": "OFFICIAL_WEB",
+      "sourceUrl": "https://www.eslygroup.com/uploadfile/image/20230616/2a923422a.jpg",
+      "sha256": "0360b3ea3665e1ae7b1779ad4a2418b728ea9e6f5a3949effe3f731091621309",
+      "expectedBytes": 120087,
+      "sourceWidth": 1080,
+      "sourceHeight": 525,
+      "resourcePath": "c04/ws07a/media/OW-20230616-2a923422a",
+      "materializedFile": "assets/resources/c04/ws07a/media/OW-20230616-2a923422a.jpg",
+      "rightsGate": "PASS_PROJECT_USE_APPROVED",
+      "nodeGate": "HIGH_CANDIDATE_EXACT_IDENTITY_TO_REVERIFY",
+      "techGate": "FAIL_LT2400_FINAL_HERO",
+      "usageGate": "RESEARCH_PROTOTYPE_ONLY",
+      "landscapeFirstStatus": "S0_COMPOSITION_CANDIDATE"
+    }
+  ]
+}
