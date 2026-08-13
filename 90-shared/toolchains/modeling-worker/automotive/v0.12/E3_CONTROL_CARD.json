@@ -11,7 +11,7 @@
   },
   "mode": "CANDIDATE",
   "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
-  "problem_layer": "Relation",
+  "problem_layer": "Architecture",
   "authority_source": {
     "state": "WORKING_SOURCE",
     "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
@@ -25,31 +25,40 @@
     "broad overall length / width / height class",
     "Primary / Secondary / Detail semantic distinction",
     "deterministic receipts and Machine / Visual / Project QA separation",
-    "PAP and human-owned Promotion boundary"
+    "PAP and human-owned Promotion boundary",
+    "E1 single-patch method evidence",
+    "E2 precision-aware multi-patch C2 method evidence",
+    "E3 run 31665641314 Machine PASS receipt"
   ],
   "open_variables": [
-    "VOL-HOOD crown and front-volume tension",
-    "VOL-CABIN gesture and A/C-pillar flow",
-    "VOL-SHOULDER acceleration and wheel-crown relationship",
-    "VOL-REAR-HAUNCH mass and rear-opening flow",
-    "VOL-LOWER-BODY rocker-to-shoulder tension",
-    "VOL-FRONT-TERMINATION longitudinal continuation",
-    "VOL-REAR-TERMINATION longitudinal continuation",
-    "Primary Curve positions / derivatives and sparse-cage influence falloff",
+    "independent low-frequency Surface Source architecture for hood / cowl versus cabin crown",
+    "independent cabin gesture rather than lifting one center dome",
+    "independent shoulder acceleration and rear-haunch buildup",
+    "lower-body / rocker counter-tension to shoulder mass",
+    "front and rear termination volume styling while preserving existing C2/fairness boundaries",
+    "fixed-view visual legibility of each semantic edit",
     "application-level proportion and first-reading quality"
   ],
   "required_qa": ["Machine", "Visual", "Project"],
   "artifact_type": "model",
   "claim_types": [],
   "evidence_state": {
-    "contract": "OPEN",
-    "machine": "NOT_RUN",
-    "visual": "NOT_RUN",
-    "project": "NOT_RUN",
+    "contract": "PASS",
+    "machine": "PASS",
+    "visual": "FAIL",
+    "project": "FAIL",
     "pap": "NOT_RUN",
     "promotion": "BLOCKED"
   },
-  "next_allowed_action": "Validate the E3 application contract under Control Plane v0.3, then execute application surface compilation. Do not promote or open M5 before E3 M4.5 Machine + Visual + Project evidence exists.",
+  "next_allowed_action": "Rebuild the E3 application Surface Source architecture so hood/cowl, cabin, shoulder/rear-haunch, lower-body and terminations have genuinely independent low-frequency source controls. Re-run the same Decision Question at working fidelity; do not open PAP or Promotion and do not add secondary detail/CMF to mask the architecture failure.",
   "sync_persistence_trigger": "RECEIPT",
-  "review_history": []
+  "review_history": [
+    {
+      "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
+      "problem_layer": "Architecture",
+      "visual_result": "REVISE",
+      "project_result": "REVISE",
+      "timestamp": "2026-08-13T12:06:00+08:00"
+    }
+  ]
 }
