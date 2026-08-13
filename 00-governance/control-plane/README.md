@@ -22,13 +22,20 @@ Authority resolution and materialization are separate. A GitHub/Drive/File Libra
 
 `object_id + source_id + authority_state + SHA (when available)`
 
+`object_id` identifies the governed authority object; `source_id` identifies the exact source/candidate materialization. They are not interchangeable.
+
 Provider order is search/materialization order, not authority rank. Discovery hits remain blocked until Authority Resolution is complete. `UNLOCATED / E0` is a resolution outcome, not an actionable-success exit.
 
 ### 2. Authority-bound gate receipts
 
 Plain strings such as `"Machine QA": "PASS"` are insufficient. Required gate receipts bind:
 
-`gate + result + object_id + source_id + authority_sha256 + gate_version + receipt_id + executed_at + evidence_ref`
+`gate + result + basis + object_id + source_id + authority_sha256 + gate_version + receipt_id + executed_at + evidence_ref`
+
+Two execution modes are explicit:
+
+- `LIVE`: required Gate evidence must use `basis=DIRECT`; replay mappings are inadmissible.
+- `REPLAY`: historical evidence may use `basis=REPLAY_MAPPING` when today’s generic Gate name did not exist in the historical record. Such mappings must retain the historical evidence label and cannot execute live post-promotion actions.
 
 Open/blocked/unknown evidence cannot be hidden by omitting a claim type during Promotion.
 
@@ -60,9 +67,11 @@ Field consistency alone is not enough.
 
 `replays/` contains the Automotive v0.11 R29A promotion replay grounded in existing PR #85 / Canonical Authority evidence. It verifies:
 
-`Candidate evidence -> READY_FOR_HUMAN_DECISION -> historical human promotion -> Canonical three-system semantic/freshness scan PASS`
+`Candidate evidence -> replay compatibility -> historical human promotion -> Canonical three-system semantic/freshness scan PASS`
 
-Replay mappings do not rewrite historical gate names or create new historical claims.
+The historical files explicitly support M5–M10 PASS/CLOSED, PAP PASS, Formal Promote Review PASS and Candidate-to-Promotion Execution. Current generic Gate names that are not present verbatim in those historical files are marked `REPLAY_MAPPING`; they are not rewritten as historical DIRECT evidence.
+
+A successful replay returns `replay_only=true`, has no live `post_promotion_actions`, and therefore cannot mutate or promote current state.
 
 ## Commands
 
@@ -90,3 +99,5 @@ python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' 
 python 00-governance/control-plane/orchestrator.py promotion 00-governance/control-plane/replays/pr85-control-card.json 00-governance/control-plane/replays/pr85-gate-receipts.json
 python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
 ```
+
+Current hardened regression set: `27/27 PASS` on PR #90 head validation.
