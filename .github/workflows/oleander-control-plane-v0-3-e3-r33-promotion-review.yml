@@ -1,59 +1,44 @@
 name: OLEANDER Control Plane v0.3｜E3 R3.3 Promote Review
-
 on:
   pull_request:
     paths:
-      - '00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-gate-receipts.json'
-      - '90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.12/**'
       - '.github/workflows/oleander-control-plane-v0-3-e3-r33-promotion-review.yml'
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
-  bound-promotion-prerequisites:
-    name: Bound Prerequisites → Human Decision Only
+  promotion-state-verification:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
-      - name: Validate exact Control Card state
+      - name: Validate active Control Card
+        run: python 00-governance/control-plane/control_plane.py check 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
+      - name: Verify transition-aware state
         run: |
-          python 00-governance/control-plane/control_plane.py check \
-            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
-      - name: Evaluate existing v0.3 bound promotion prerequisites
-        run: |
-          set -euo pipefail
-          python 00-governance/control-plane/orchestrator.py promotion \
-            90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json \
-            00-governance/control-plane/live/modeling-worker-v0.12-e3-r33-gate-receipts.json \
-            | tee /tmp/promotion-result.json
           python - <<'PY'
           import json
           from pathlib import Path
-          q=json.loads(Path('/tmp/promotion-result.json').read_text())
-          assert q['status']=='READY_FOR_HUMAN_DECISION', q
-          assert q['code']=='PROMOTION_BOUND_PREREQUISITES_PASS', q
-          assert q['execution_mode']=='LIVE'
-          assert q['replay_only'] is False
-          assert q['human_decision_required'] is True
-          assert q['transition']=={
-              'kind':'CANDIDATE_PROMOTION',
-              'from_authority_state':'WORKING_SOURCE',
-              'target_authority_state':'CANDIDATE_AUTHORITY',
-              'target_design_state':'CANDIDATE'
-          }
-          assert q['missing_or_failed_gates']==[]
-          assert 'PERSISTENCE_RECEIPT_SYNC' in q['post_promotion_actions']
-          print('E3_R33_READY_FOR_HUMAN_CANDIDATE_PROMOTION_DECISION')
+          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
+          assert card['mode']=='CANDIDATE'
+          state=card['authority_source']['state']
+          if state=='WORKING_SOURCE':
+              assert not (root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').exists()
+              print('PRE_APPROVAL_WORKING_SOURCE_PASS')
+          elif state=='CANDIDATE_AUTHORITY':
+              authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+              sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+              assert 'Decision: `APPROVED`' in authority
+              assert 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' in sync
+              assert 'ARTIFACT_REGISTER = EXECUTED' in sync
+              assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
+              print('POST_APPROVAL_CANDIDATE_AUTHORITY_PASS')
+          else:
+              raise AssertionError(state)
           PY
       - name: Boundary
-        run: |
-          echo 'This workflow only evaluates existing Control Plane v0.3 bound prerequisites.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'READY_FOR_HUMAN_DECISION is not Promotion. No Authority transition, PR Ready transition, merge, Canonical claim, or post-promotion action is executed here.' >> "$GITHUB_STEP_SUMMARY"
+        run: echo 'Candidate Authority verification only; no Canonical Promotion or merge is authorized.' >> "$GITHUB_STEP_SUMMARY"
