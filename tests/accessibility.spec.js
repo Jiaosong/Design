@@ -68,6 +68,7 @@ test('form errors are announced, associated, and focus the first invalid field',
 });
 
 test('semantic relationship interaction changes reading state while continuous tuning controls stay out of public reading', async ({ page }) => {
+  await expect(page.locator('html')).toHaveAttribute('data-oleander-ready', 'true');
   const field = page.locator('[data-weave-field]');
   const toggle = page.locator('[data-weave-toggle]');
 
