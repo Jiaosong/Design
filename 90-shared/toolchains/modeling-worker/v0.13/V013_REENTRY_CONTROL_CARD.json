@@ -31,11 +31,13 @@
     "Machine / Visual / Project QA remain separate",
     "historical failed evidence remains immutable",
     "PAP / Promotion remain explicit human-owned transitions",
+    "second-domain benchmark = MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+    "Notion Re-entry receipt = 3bbb86be-5c47-817e-a781-ff973f6bc0d5",
+    "Drive v0.13 folder = 1wJAcJCZM_yTlhvluWZzs5RxRrLaqXUMn",
+    "Drive Re-entry receipt = 1KXwt7nYz0ZCx9VARnb7iU9Z5wB4aWHPaUSseKRmJvps / content+parent readback PASS",
     "no Class-A / engineering / manufacturing / Release claim"
   ],
   "open_variables": [
-    "exact non-automotive second-domain benchmark geometry grammar",
-    "benchmark hard / soft relationship priorities",
     "primary-curve ownership for the second domain",
     "sparse Surface Source representation for the second domain",
     "unchanged-or-stricter Machine fairness thresholds",
@@ -55,13 +57,14 @@
   "evidence_state": {
     "observe": "PASS",
     "reentry": "PASS",
-    "benchmark_contract": "OPEN",
+    "benchmark_contract": "PASS",
+    "receipt_sync": "PASS",
     "machine": "NOT_RUN",
     "visual": "NOT_RUN",
     "project": "NOT_RUN",
     "candidate_review": "NOT_RUN"
   },
-  "next_allowed_action": "Compile the second-domain benchmark contract, define relationship priorities and sparse source ownership, then run the first bounded relationship-transfer experiment. Candidate entry is blocked until Machine + Visual + Project QA all PASS.",
+  "next_allowed_action": "Define Primary Curve ownership and sparse Surface Source strategy for MW-V013-G1-ERGONOMIC-HANDHELD-SHELL, then run the first bounded relationship-transfer experiment. Candidate entry remains blocked until Machine + Visual + Project QA all PASS.",
   "sync_persistence_trigger": "RECEIPT",
   "review_history": []
 }
