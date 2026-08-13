@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import json
 import math
-import sys
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -112,7 +111,10 @@ def validate_contract(data: dict[str, Any]) -> list[str]:
     node_ids = [x.get("id") for x in graph.get("nodes", [])]
     if len(node_ids) < 2 or len(set(node_ids)) != len(node_ids):
         errors.append("relationship_graph requires >=2 unique node ids")
-    for edge in graph.get("edges", []):
+    edges = graph.get("edges", [])
+    if not edges:
+        errors.append("relationship_graph requires at least one explicit design relationship before topology")
+    for edge in edges:
         if edge.get("relation") not in RELATIONS:
             errors.append(f"invalid relation: {edge.get('relation')}")
         if edge.get("source") not in node_ids or edge.get("target") not in node_ids:
