@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.local/modeling-worker/v0.12/relationship_surface_contract.schema.json",
+  "title": "OLEANDER Modeling Worker v0.12 Relationship Surface Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "job_id",
+    "decision_question",
+    "authority",
+    "hard_points",
+    "volume_skeleton",
+    "relationship_graph",
+    "primary_curves",
+    "control_cage",
+    "surface_fairness",
+    "execution_geometry",
+    "gate_state"
+  ],
+  "properties": {
+    "schema": {"const": "oleander.modeling-worker.v0.12.relationship-surface-contract"},
+    "job_id": {"type": "string", "minLength": 1},
+    "decision_question": {"type": "string", "minLength": 12},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design_relationship", "surface_source", "execution_geometry"],
+      "properties": {
+        "design_relationship": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY"]},
+        "surface_source": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY"]},
+        "execution_geometry": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY"]}
+      }
+    },
+    "hard_points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/semanticObject"}
+    },
+    "volume_skeleton": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "allOf": [
+          {"$ref": "#/$defs/semanticObject"},
+          {
+            "type": "object",
+            "required": ["role", "locked_variables", "open_variables"],
+            "properties": {
+              "role": {"type": "string", "minLength": 1},
+              "locked_variables": {"type": "array", "items": {"type": "string"}},
+              "open_variables": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        ]
+      }
+    },
+    "relationship_graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes", "edges"],
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/semanticObject"}
+        },
+        "edges": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "source", "target", "relation", "priority", "intended_effect", "allowed_variation"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "source": {"type": "string", "minLength": 1},
+              "target": {"type": "string", "minLength": 1},
+              "relation": {"enum": ["ALIGN", "TANGENCY", "CURVATURE", "OFFSET", "PROPORTION", "TENSION", "FLOW", "BOUNDARY", "DEPENDENCY"]},
+              "priority": {"enum": ["HARD", "HIGH", "MEDIUM", "LOW"]},
+              "intended_effect": {"type": "string", "minLength": 3},
+              "allowed_variation": {"type": ["number", "string", "object"]}
+            }
+          }
+        }
+      }
+    },
+    "primary_curves": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "depends_on", "continuity_target", "sampling_policy", "authority", "state"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "role": {"type": "string", "minLength": 1},
+          "depends_on": {"type": "array", "items": {"type": "string"}},
+          "continuity_target": {"enum": ["G0", "G1", "G2", "G3", "N/A"]},
+          "sampling_policy": {"enum": ["ARC_LENGTH", "CURVATURE_ADAPTIVE", "PARAMETRIC", "EXPLICIT"]},
+          "authority": {"enum": ["WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY"]},
+          "state": {"enum": ["LOCKED", "OPEN", "REVISE", "REJECTED"]}
+        }
+      }
+    },
+    "control_cage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "frequency", "semantic_axes", "max_control_points", "local_influence_policy", "topology_independent"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "frequency": {"const": "LOW"},
+        "semantic_axes": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+        "max_control_points": {"type": "integer", "minimum": 4},
+        "local_influence_policy": {"type": "string", "minLength": 6},
+        "topology_independent": {"const": true}
+      }
+    },
+    "surface_fairness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_metrics", "thresholds", "evidence", "status"],
+      "properties": {
+        "required_metrics": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {"enum": ["G0", "G1", "G2", "TANGENT_JUMP", "CURVATURE_COMB", "CURVATURE_RATE", "INFLECTION_COUNT", "SPACING_REGULARITY", "ZEBRA", "REFLECTION_FLOW", "SILHOUETTE_DERIVATIVE", "TERMINATION_INFLUENCE"]}
+        },
+        "thresholds": {"type": "object", "minProperties": 1},
+        "evidence": {"type": "array", "items": {"type": "object"}},
+        "status": {"enum": ["OPEN", "MACHINE_PASS_VISUAL_REVIEW_REQUIRED", "PASS", "REVISE", "FAIL"]}
+      }
+    },
+    "execution_geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["derived_from_surface_source", "editable_source", "derived_outputs", "smooth_shading_is_evidence"],
+      "properties": {
+        "derived_from_surface_source": {"const": true},
+        "editable_source": {"type": "string", "minLength": 1},
+        "derived_outputs": {"type": "array", "items": {"type": "string"}},
+        "smooth_shading_is_evidence": {"const": false}
+      }
+    },
+    "gate_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["M2", "M3", "M4", "M4_5", "M5", "M6_plus_blocked"],
+      "properties": {
+        "M2": {"enum": ["OPEN", "PASS", "REVISE", "BLOCKED"]},
+        "M3": {"enum": ["OPEN", "PASS", "REVISE", "BLOCKED"]},
+        "M4": {"enum": ["OPEN", "PASS", "REVISE", "BLOCKED"]},
+        "M4_5": {"enum": ["OPEN", "PASS", "REVISE", "BLOCKED"]},
+        "M5": {"enum": ["OPEN", "PASS", "REVISE", "BLOCKED"]},
+        "M6_plus_blocked": {"type": "boolean"}
+      }
+    }
+  },
+  "$defs": {
+    "semanticObject": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
