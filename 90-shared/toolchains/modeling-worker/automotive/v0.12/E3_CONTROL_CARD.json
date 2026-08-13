@@ -29,8 +29,8 @@
     "E1 single-patch method evidence",
     "E2 precision-aware multi-patch C2 method evidence",
     "E3 R1 Machine PASS + Human Project/Visual REVISE historical baseline",
-    "E3 R2.2 run 31669314369 Machine PASS receipt",
-    "E3 R2 Project/Visual REVISE receipt",
+    "E3 R2.2 run 31669314369 / artifact 9169286096 Machine PASS receipt",
+    "E3 R2 Project/Visual REVISE receipt = E3_R2_PROJECT_VISUAL_DECISION.md",
     "compiler-space C2 design threshold remains unchanged where C2 is declared",
     "derived execution topology cannot replace editable Surface Source Authority"
   ],
@@ -65,18 +65,13 @@
       "problem_layer": "Architecture",
       "visual_result": "REVISE",
       "project_result": "REVISE",
-      "receipt": "E3_PROJECT_VISUAL_DECISION.md",
       "timestamp": "2026-08-13T12:06:00+08:00"
     },
     {
       "decision_question": "Can v0.12 replace the rejected E3 R1 single-center-cage Automotive application architecture with genuinely independent low-frequency source structures while preserving continuity/fairness and making each volume legible at first reading?",
-      "problem_layer": "Surface-Network Architecture",
-      "machine_result": "PASS",
+      "problem_layer": "Architecture",
       "visual_result": "REVISE",
       "project_result": "REVISE",
-      "machine_run": "31669314369",
-      "machine_artifact": "9169286096",
-      "receipt": "E3_R2_PROJECT_VISUAL_DECISION.md",
       "timestamp": "2026-08-13T12:26:00+08:00"
     }
   ]
