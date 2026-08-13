@@ -14,7 +14,8 @@
     "source_authority": "STATION_POSITION_TANGENT_CURVATURE_JETS",
     "execution_policy": "compile source jets to analytic patches first; sample execution topology only after surface compilation",
     "continuity_policy": "adjacent patches share the same station position / first derivative / second derivative jets, establishing parametric C2 by construction",
-    "mesh_stitching_as_surface_authority": false
+    "mesh_stitching_as_surface_authority": false,
+    "semantic_control_ownership_policy": "each named semantic control owns a disjoint set of source keys; influence may propagate through compiled patches but source ownership may not overlap"
   },
   "transverse_roles": [
     "CENTER_CROWN",
@@ -48,15 +49,15 @@
     {
       "id": "STA-REAR-HAUNCH",
       "volume": "VOL-REAR-HAUNCH",
-      "positions": [[-1.20,0.00,1.03],[-1.20,0.36,0.97],[-1.20,0.69,0.85],[-1.20,0.97,0.83],[-1.20,0.95,0.32]],
-      "tangents": [[-0.90,0.00,-0.24],[-0.90,0.00,-0.20],[-0.90,0.00,-0.14],[-0.90,-0.01,-0.10],[-0.90,0.00,-0.02]],
+      "positions": [[-1.20,0.00,1.03],[-1.20,0.36,0.97],[-1.20,0.69,0.85],[-1.20,0.93,0.76],[-1.20,0.98,0.32]],
+      "tangents": [[-0.90,0.00,-0.18],[-0.90,0.00,-0.16],[-0.90,0.00,-0.11],[-0.90,-0.005,-0.07],[-0.90,0.00,-0.02]],
       "curvatures": [[0.00,0.00,-0.04],[0.00,0.00,-0.03],[0.00,0.00,-0.02],[0.00,0.00,-0.01],[0.00,0.00,0.00]]
     },
     {
       "id": "STA-REAR-TERMINATION",
       "volume": "VOL-REAR-TERMINATION",
-      "positions": [[-2.40,0.00,0.66],[-2.40,0.27,0.62],[-2.40,0.52,0.54],[-2.40,0.76,0.46],[-2.40,0.84,0.27]],
-      "tangents": [[-0.78,0.00,-0.10],[-0.78,-0.02,-0.09],[-0.78,-0.03,-0.07],[-0.78,-0.04,-0.05],[-0.78,-0.02,-0.02]],
+      "positions": [[-2.40,0.00,0.66],[-2.40,0.27,0.62],[-2.40,0.55,0.55],[-2.40,0.80,0.49],[-2.40,0.94,0.30]],
+      "tangents": [[-0.78,0.00,-0.12],[-0.78,-0.01,-0.10],[-0.78,-0.02,-0.08],[-0.78,-0.02,-0.06],[-0.78,-0.02,-0.02]],
       "curvatures": [[0.00,0.00,0.08],[0.00,0.00,0.06],[0.00,0.00,0.04],[0.00,0.00,0.02],[0.00,0.00,0.01]]
     }
   ],
@@ -82,14 +83,17 @@
       {"station":"STA-CABIN-CROWN","field":"curvatures","index":1,"delta":[0.00,0.00,-0.06]}
     ],
     "VOL-SHOULDER": [
-      {"station":"STA-HOOD-COWL","field":"positions","index":3,"delta":[0.00,0.05,0.04]},
-      {"station":"STA-CABIN-CROWN","field":"positions","index":3,"delta":[0.00,0.07,0.05]},
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.00,0.10,0.08]}
+      {"station":"STA-HOOD-COWL","field":"positions","index":2,"delta":[0.05,0.0175,0.01225]},
+      {"station":"STA-HOOD-COWL","field":"positions","index":3,"delta":[0.05,0.0280,0.01960]},
+      {"station":"STA-CABIN-CROWN","field":"positions","index":2,"delta":[0.05,0.0210,0.01470]},
+      {"station":"STA-CABIN-CROWN","field":"positions","index":3,"delta":[0.05,0.0350,0.02450]},
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":2,"delta":[0.05,0.0245,0.01715]},
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.05,0.0385,0.02695]}
     ],
     "VOL-REAR-HAUNCH": [
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":2,"delta":[0.00,0.08,0.07]},
-      {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.00,0.12,0.10]},
-      {"station":"STA-REAR-HAUNCH","field":"tangents","index":3,"delta":[0.00,-0.03,-0.04]}
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":1,"delta":[0.00,0.021,0.015]},
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":2,"delta":[0.00,0.041,0.030]},
+      {"station":"STA-REAR-HAUNCH","field":"positions","index":3,"delta":[0.00,0.049,0.034]}
     ],
     "VOL-LOWER-BODY": [
       {"station":"STA-HOOD-COWL","field":"positions","index":4,"delta":[0.00,-0.03,0.04]},
@@ -116,5 +120,5 @@
       "front and rear terminations read as continued volumes rather than mesh caps"
     ]
   },
-  "boundary": "E3 R2 is an application Surface Source architecture revision only. E1/E2 generic method evidence remains unchanged. No Class-A, production engineering, final automotive design, PAP or Promotion authority is implied."
+  "boundary": "E3 R2.1 revises only rear-half source jets and semantic source ownership after the fail-closed R2 machine result. E1/E2 generic method evidence remains unchanged. No Class-A, production engineering, final automotive design, PAP or Promotion authority is implied."
 }
