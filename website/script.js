@@ -1,1 +1,1 @@
-const s=document.createElement('script');s.src='script-base.js';s.onload=()=>{const e=document.createElement('script');e.src='expression.js';document.body.appendChild(e)};document.body.appendChild(s);
+const h=document.createElement('link');h.rel='stylesheet';h.href='visual-hierarchy.css';document.head.appendChild(h);const s=document.createElement('script');s.src='script-base.js';s.onload=()=>{const e=document.createElement('script');e.src='expression.js';document.body.appendChild(e)};document.body.appendChild(s);
