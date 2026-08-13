@@ -5,7 +5,7 @@
   "project": "SYS-MODELING-WORKER / Automotive v0.12",
   "candidate": "E3 R3.3 Application Benchmark",
   "design_state": "CANDIDATE",
-  "authority_state": "WORKING_SOURCE / CANDIDATE",
+  "authority_state": "WORKING_SOURCE",
   "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
   "accepted_source_snapshot_commit": "5782c039562e723705b6f46537fea7efa0936b29",
   "r33": {
