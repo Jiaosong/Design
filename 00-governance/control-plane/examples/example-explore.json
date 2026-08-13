@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "Example CMF comparison",
+    "project_id": "PRJ-XJ01-CMF",
+    "project_level": "P2",
+    "case_id": null,
+    "knowledge_position": "L7 Practice",
+    "application_mapping": ["IP03"],
+    "priority": "Priority-1"
+  },
+  "mode": "EXPLORE",
+  "decision_question": "Which retained material direction better preserves the intended first reading under fixed geometry and lighting?",
+  "problem_layer": "Parameter",
+  "authority_source": {
+    "state": "WORKING_SOURCE",
+    "source_id": "example-source",
+    "location": "local/materialized/source",
+    "sha256": null
+  },
+  "locked_variables": ["geometry", "camera", "lighting"],
+  "open_variables": ["material profile"],
+  "required_qa": ["Visual"],
+  "artifact_type": "visual_cmf",
+  "claim_types": [],
+  "evidence_state": {
+    "digital": "OPEN",
+    "physical": "NOT_RUN"
+  },
+  "next_allowed_action": "RUN_AB_COMPARISON",
+  "sync_persistence_trigger": "NONE",
+  "review_history": []
+}
