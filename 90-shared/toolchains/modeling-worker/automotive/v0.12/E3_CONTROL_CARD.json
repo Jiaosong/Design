@@ -11,7 +11,7 @@
   },
   "mode": "CANDIDATE",
   "decision_question": "Can the merged v0.12 relationship-driven surface compiler consume an automotive application with independently controllable hood, cabin, shoulder, rear-haunch, lower-body and termination volumes while preserving surface fairness and improving application-level proportion/form?",
-  "problem_layer": "Surface-Network Architecture",
+  "problem_layer": "Architecture",
   "authority_source": {
     "state": "WORKING_SOURCE",
     "object_id": "SYS-MODELING-WORKER-v0.12-E3-AUTO",
