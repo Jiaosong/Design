@@ -56,11 +56,11 @@
       </header>
       <div class="encounter-stream">
         <figure class="encounter-work encounter-work--daylily">
-          <img src="assets/daylily/hero.jpg" alt="忘也 Daylily 项目主视觉" loading="eager" decoding="async">
+          <img src="assets/daylily/environment.jpg" alt="忘也 Daylily 品牌材料与空间光影视觉" loading="eager" decoding="async">
           <figcaption><span>C02</span><strong>忘也 Daylily</strong><small class="encounter-status">PROTOTYPED / TEST PLANNED</small></figcaption>
         </figure>
         <figure class="encounter-work encounter-work--reno">
-          <img src="assets/reno-cmf/cover.jpg" alt="The Light Collection CMF 项目视觉" loading="lazy" decoding="async">
+          <img src="assets/reno-cmf/finalseries.jpg" alt="The Light Collection 四款 CMF 系列最终视觉" loading="lazy" decoding="async">
           <figcaption><span>C03</span><strong>The Light Collection</strong><small class="encounter-status">VISUALIZED / SAMPLE TEST PENDING</small></figcaption>
         </figure>
       </div>`;
