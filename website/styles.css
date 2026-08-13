@@ -2,7 +2,6 @@
 @import url("expression.css");
 @import url("visual-hierarchy-refine.css");
 
-/* Entry-level quality contract. These mirror the resolved base styles so static checks and browsers share the same guarantees. */
 @font-face {
   font-family: "OLEANDER Display";
   src: local("Inter Medium"), local("Inter"), local("Noto Sans CJK SC Medium"), local("Noto Sans SC Medium"), local("Source Han Sans SC Medium"), local("Microsoft YaHei UI");
@@ -16,6 +15,11 @@
 }
 
 .section[id], .project-chapter[id], article[id] { scroll-margin-top: 88px; }
+
+.hero-copy > .eyebrow,
+.hero-en,
+.hero-statement,
+.hero-system > span { color: #575a55; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition-duration: 0s !important; transition-delay: 0s !important; }
