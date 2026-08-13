@@ -1,0 +1,44 @@
+{
+  "schema": "oleander.modeling-worker.v0.12.e3.r3.3.relation-correction",
+  "revision": "R3.3",
+  "base_contract": "E3_R3_COUPLED_SURFACE_NETWORK.json",
+  "termination_correction": "E3_R32_CORRECTION.json",
+  "immutable_prior_human_receipt": "R32_PROJECT_VISUAL_DECISION.md",
+  "decision_question": "Can the locked R3 five-family Surface Source architecture produce a clearly differentiated Automotive hood/cowl, cabin, shoulder/rear-haunch and lower-body hierarchy by revising only Profile / Plan Primary Curve relations while retaining R3.2 termination correction and every existing Machine threshold?",
+  "locked_architecture": {
+    "type": "COUPLED_SEMANTIC_SURFACE_NETWORK",
+    "main_surface_families": ["SURF-UPPER", "SURF-SIDE", "SURF-LOWER"],
+    "termination_families": ["SURF-FRONT-TERM", "SURF-REAR-TERM"],
+    "profile_plan_authority_separated": true,
+    "global_control_cage_forbidden": true,
+    "blanket_continuity_class_forbidden": true
+  },
+  "profile_primary_curve_overrides": {
+    "PROFILE-UPPER-CENTER": [0.60, 0.66, 0.70, 0.78, 1.38, 1.52, 1.30, 0.82, 0.58],
+    "PROFILE-SHOULDER-HEIGHT": [0.48, 0.56, 0.63, 0.69, 0.75, 0.82, 0.92, 0.74, 0.50],
+    "PROFILE-ROCKER": [0.24, 0.27, 0.29, 0.30, 0.30, 0.31, 0.32, 0.29, 0.24],
+    "PROFILE-UNDERBODY-EDGE": [0.17, 0.18, 0.19, 0.20, 0.20, 0.21, 0.22, 0.20, 0.17]
+  },
+  "plan_primary_curve_overrides": {
+    "PLAN-CENTER": [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+    "PLAN-SHOULDER": [0.56, 0.76, 0.86, 0.88, 0.90, 0.98, 1.12, 0.94, 0.58],
+    "PLAN-ROCKER": [0.68, 0.80, 0.84, 0.85, 0.85, 0.86, 0.88, 0.80, 0.60],
+    "PLAN-UNDERBODY-EDGE": [0.56, 0.68, 0.72, 0.73, 0.74, 0.75, 0.76, 0.69, 0.50]
+  },
+  "semantic_delta_overrides": {
+    "HOOD-COWL": [0.10, 0.11],
+    "CABIN": [0.11, 0.10],
+    "SHOULDER": [0.075, 0.080],
+    "REAR-HAUNCH": [0.095, 0.105],
+    "LOWER-BODY": [0.10, 0.08, 0.09, 0.075],
+    "FRONT-TERMINATION": [0.055, -0.045],
+    "REAR-TERMINATION": [0.060, 0.045]
+  },
+  "design_intent": {
+    "profile": "lower and calmer hood plateau, delayed but clearer cowl/cabin rise, rearward cabin peak and controlled rear falloff",
+    "plan": "less capsule-like plan with a measurable waist and stronger rear-haunch authority",
+    "side_lower": "rocker/lower-body becomes a visible counter-tension rather than a weak parallel strip",
+    "semantic_variants": "working-fidelity edit amplitudes become perceptually readable while staying inside the unchanged 0.025–0.20 m displacement contract"
+  },
+  "boundary": "R3.3 changes only low-frequency Profile / Plan Primary Curve relations and working-fidelity semantic edit amplitudes. R3 five-family architecture, R3.2 termination geometry/evidence zoning, relationship classes, Machine thresholds, PAP boundary and human-owned Promotion remain locked."
+}
