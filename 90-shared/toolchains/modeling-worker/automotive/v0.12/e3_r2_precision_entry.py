@@ -4,11 +4,13 @@
 Compiler-space C2 remains authoritative under the unchanged design thresholds. Blender
 mathutils position/tangent/normal continuity remains a runtime representation gate; the
 float32 reconstructed second-derivative residual is retained as diagnostic evidence.
-Interior fairness and semantic variants remain fail-closed.
+Interior fairness, semantic source ownership and semantic variants remain fail-closed.
 """
 from __future__ import annotations
 
 import importlib.util
+import json
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -23,14 +25,16 @@ _original_evaluate = base.evaluate_contract
 
 def _control_source_keys(contract):
     ownership = {}
+    seen = {}
     overlaps = []
     for control_id, edits in contract["semantic_controls"].items():
         keys = {(e["station"], e["field"], int(e["index"])) for e in edits}
         ownership[control_id] = sorted([list(k) for k in keys])
         for key in keys:
-            owner = next((cid for cid, owned in ownership.items() if cid != control_id and list(key) in owned), None)
-            if owner:
-                overlaps.append({"key": list(key), "controls": sorted([owner, control_id])})
+            if key in seen:
+                overlaps.append({"key": list(key), "controls": sorted([seen[key], control_id])})
+            else:
+                seen[key] = control_id
     return ownership, overlaps
 
 
@@ -83,5 +87,36 @@ def evaluate_contract_classified(contract):
 
 base.evaluate_contract = evaluate_contract_classified
 
+
+def _arg_value(name: str):
+    args = base.user_args()
+    try:
+        return args[args.index(name) + 1]
+    except (ValueError, IndexError):
+        return None
+
+
+def main() -> int:
+    code = base.main()
+    out_arg = _arg_value("--out")
+    contract_arg = _arg_value("--contract")
+    if out_arg and contract_arg:
+        out = Path(out_arg).resolve()
+        report_path = out / "E3_R2_MACHINE_REPORT.json"
+        if report_path.is_file():
+            q = json.loads(report_path.read_text(encoding="utf-8"))
+            contract = json.loads(Path(contract_arg).read_text(encoding="utf-8"))
+            classified, _ = evaluate_contract_classified(contract)
+            q["precision_classification"] = classified["precision_classification"]
+            q["boundary"] = (
+                "R2 Machine PASS proves independent source-jet isolation, disjoint semantic source ownership, "
+                "analytic compiler-space C2, runtime position/tangent/normal representation stability, interior fairness "
+                "and minimum working-fidelity geometric effect. Blender reconstructed D2 remains diagnostic. "
+                "Human Project/Visual review remains mandatory before application PASS, PAP or Promotion."
+            )
+            report_path.write_text(json.dumps(q, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return code
+
+
 if __name__ == "__main__":
-    raise SystemExit(base.main())
+    raise SystemExit(main())
