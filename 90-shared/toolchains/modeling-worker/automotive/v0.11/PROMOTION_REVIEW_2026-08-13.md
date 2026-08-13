@@ -6,114 +6,81 @@ Benchmark: `Automotive v0.11`
 Candidate: `R29A｜Shoulder-Fed Monotonic Fender Crown`
 Source hash: `d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb`
 
-## Decision
+## Current status
 
-`HOLD / PERSISTENCE_GATE`
+`PAP PASS / HOLD EXITED / READY_FOR_EXPLICIT_PROMOTE_REVIEW`
 
-Authority remains:
+Authority remains until a separate Promote decision:
 
 `MODELING_WORKER_v0.11_CANDIDATE_AUTHORITY`
 
-This is **not** a Modeling Quality REVISE and does not reopen M5–M10.
+This state change does **not** reopen M5–M10 and does not itself Promote the Candidate.
 
-## Why this is not RE-ENTER
+## Original Promote Review decision
 
-The validated production chain is intact:
+The first review decision was:
 
-- M5 Primary Geometry / Surface QA — PASS
-- M6 Component Architecture — PASS
-- M7 Secondary Geometry — PASS
-- M8 Detail / Instances — PASS
-- M9 Material Binding — PASS / NOT FINAL CMF
-- M10 Multi-Scale QA — PASS
+`HOLD / PERSISTENCE_GATE`
 
-No current evidence identifies a geometry, topology, component-routing, secondary-geometry, instance, material-binding or multi-scale defect that requires reopening a passed gate.
+That HOLD was not a Modeling Quality REVISE. M5–M10 were already PASS / CLOSED and remained locked throughout PAP closure.
 
-Therefore the Candidate is retained exactly as validated.
+## PAP closure｜2026-08-13
 
-## Integration status
+Formal records:
 
-The branch is diverged from current `main` and remains 23 commits behind, but GitHub currently reports PR #85 as mergeable.
+- `PAP_MANIFEST_v1.json`
+- `PAP_RECEIPT_2026-08-13.md`
+- Notion receipt page ID `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`
+- Google Drive PAP root ID `1PLXbsvK81vLrfkcukaYD_Ks7P1SmLPk3`
 
-Current head validation after this Promotion Review state change:
+PAP result:
 
-- AI Governance Evals — SUCCESS;
-- OLEANDER Blender Runtime Contract — SUCCESS.
+`PAP-G0 PASS → G1 PASS → G2 PASS → G3 PASS → G4 PASS → G5 PASS → G6 PASS`
 
-Therefore mainline integration is **not** the active HOLD reason. The newer main governance is relevant because it introduces the active persistence requirement below.
+### Durable native source
 
-## Why this cannot PROMOTE yet
+Drive file ID: `1KQP_SJU11teCutdBLDSaF1D29aD2Fp2H`
 
-### H1｜Production Asset Persistence Gate is triggered
+- filename: `OLEANDER_Automotive_v0.11_R29A_M10_Candidate.blend`
+- size: `248834` bytes
+- SHA-256: `f8f800360a61392592262f89e3f6a6ca5ec6e76eda9211911530bd257939d8e1`
+- independent retrieval: PASS
+- retrieved bytes are identical to the M10 executed Blender scene from run `31623379139`.
 
-Current `main` governance activates:
+### Durable production ZIP
 
-`00-governance/production-asset-persistence-gate-v1.0.md`
+Drive file ID: `1xQhmz5_RBwfK5iQFODiIM2jFn_ZGJw4D`
 
-Its scope explicitly includes non-trivial native authoring binaries and canonical models such as `.blend` files.
+- filename: `OLEANDER_Automotive_v0.11_R29A_M10_PAP_Production.zip`
+- size: `3861986` bytes
+- SHA-256: `3dd304dd94e6493e01e1a4e436339949cc82851cef1ce007eacbf02f226ef204`
+- independent retrieval: PASS
+- ZIP open/test: PASS
+- internal `SHA256SUMS.txt`: all entries PASS
+- includes native source, M10 QA/receipt/renders, immutable source snapshot, PAP inventory and checksums.
 
-Automotive v0.11 generated native Blender production scenes during M5–M10. The recorded evidence currently points to GitHub Actions artifacts with finite retention. Under PAP v1.0, expiring Actions artifacts, signed URLs, Markdown receipts and hashes are evidence only and are not a durable production copy.
+### Canonical interchange
 
-Connected Google Drive search at Promotion Review did not locate an R29A / M10 durable binary object. Therefore a qualifying durable copy and independent retrieval verification are not currently evidenced.
+`N/A` by design.
 
-Promotion status:
+Automotive v0.11 defines the editable Blender Source as Geometry Authority. No separate GLB/STEP/OBJ authority was created or validated, so PAP closure did not invent a new geometry authority after M10.
 
-`PERSISTENCE FAIL / DURABLE PRODUCTION BINARY NOT YET VERIFIED`
+## Cross-system receipt
 
-This persistence classification does not revoke any M5–M10 design or execution evidence. It blocks Promotion only.
+The same durable object set is referenced by:
 
-## HOLD exit conditions
+- Google Drive manifest ID `1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P`;
+- Google Drive receipt ID `1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi`;
+- Notion receipt page `3bbb86be-5c47-81c0-adf7-f9d8c5f16924`;
+- GitHub `PAP_MANIFEST_v1.json` and `PAP_RECEIPT_2026-08-13.md` on PR #85.
 
-Promotion may be reviewed again only after all of the following are true.
+Therefore the persistence classification is now:
 
-### E1｜PAP asset inventory
+`PERSISTENCE PASS`
 
-Identify the required production set for the Candidate Authority:
+## Locked authority chain
 
-1. native source / authoring binary — required `.blend`;
-2. canonical interchange/model authority — provide a project-defined binary such as `.glb`, or explicitly record `N/A` with a governance-valid reason if the benchmark intentionally has no separate interchange authority;
-3. immutable production ZIP;
-4. checksum records for contents and production ZIP.
-
-### E2｜Durable upload
-
-Store every required binary in a PAP-qualified durable location with stable provider file/object IDs. Google Drive is acceptable.
-
-### E3｜Independent retrieval and integrity
-
-Re-download/re-materialize the durable copies and verify:
-
-- SHA-256;
-- byte size;
-- ZIP open/test;
-- `.blend` parse/open where practical;
-- canonical model parse/open where applicable.
-
-### E4｜Persistence manifest / receipts
-
-Record PAP-G0—PAP-G6 evidence including provider, stable IDs, paths/references, retention class, upload/retrieval timestamps, expected/retrieved SHA and open-test status.
-
-GitHub and Notion governance receipts must point to the same persistence manifest/status.
-
-### E5｜Final promotion check
-
-Immediately before Promotion:
-
-- PR #85 must remain mergeable against the then-current `main`;
-- AI Governance Evals must remain PASS;
-- Blender Runtime Contract must remain PASS.
-
-### E6｜Promotion decision
-
-Only after E1–E5 pass may authority advance:
-
-`CANDIDATE_AUTHORITY → CANONICAL_AUTHORITY`
-
-Promotion then triggers the normal canonical Artifact Registry / GitHub / Notion / Drive synchronization required by the current OLEANDER flow.
-
-## Locked during HOLD
-
-The following remain locked and must not be changed merely to satisfy the Promotion HOLD:
+The following remain unchanged:
 
 - R29A Source geometry / Source hash;
 - canonical 0.700 m wheel HP contract;
@@ -123,18 +90,34 @@ The following remain locked and must not be changed merely to satisfy the Promot
 - M9 neutral benchmark material bindings;
 - M10 Human PASS decision.
 
-Any change to these is a separate Revision Proposal and may require the relevant modeling gate to re-enter.
+No M5–M10 gate is reopened by PAP closure.
 
-## Final review state
+## Next required decision
 
-`DESIGN STATE = CANDIDATE / HOLD_FOR_PROMOTION`
+Before authority can advance:
+
+`CANDIDATE_AUTHORITY → CANONICAL_AUTHORITY`
+
+perform a **new explicit Promote Review** that rechecks:
+
+1. PR #85 mergeability against then-current `main`;
+2. AI Governance Evals;
+3. Blender Runtime Contract;
+4. PAP receipt consistency;
+5. authority/non-authority boundaries.
+
+Until that explicit decision, PR #85 remains Draft and must not be auto-merged.
+
+## Current review state
+
+`DESIGN STATE = CANDIDATE / READY_FOR_PROMOTE_REVIEW`
 
 `AUTHORITY STATE = CANDIDATE_AUTHORITY`
 
 `MODELING GATES = M5–M10 PASS / CLOSED`
 
-`PROMOTION = BLOCKED BY PAP`
+`PERSISTENCE = PAP-G0—G6 PASS`
 
-`PR #85 = DRAFT / MERGEABLE / DO NOT MERGE YET`
+`PROMOTION = ELIGIBLE FOR EXPLICIT REVIEW / NOT YET PROMOTED`
 
-`NOTION / DRIVE CANONICAL PROMOTION SYNC = BLOCKED UNTIL PAP PASS`
+`PR #85 = DRAFT / DO NOT AUTO-MERGE`
