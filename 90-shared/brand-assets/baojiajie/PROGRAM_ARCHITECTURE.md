@@ -161,3 +161,33 @@ Every new Baojiajie project should register at least:
 - Baojiajie shared asset authority: `90-shared/brand-assets/baojiajie/README.md`
 
 This file is a navigation / architecture layer. Research bodies remain in OLEANDER Knowledge Architecture and project execution remains in each Project Axis; do not duplicate them into parallel facts here.
+
+## 11. Evidence Completion Rule｜Internal Research × External Web Supplement
+
+Baojiajie projects must **not** operate as a closed system that only calls the user's existing research. Existing Baojiajie brand research, cleaning-industry / cleaning-tool research, project evidence and OLEANDER Knowledge / Evidence are the primary internal inputs, but not the only inputs.
+
+Default evidence sequence:
+
+`OLEANDER / BAOJIAJIE Internal Evidence → Evidence Gap Scan → External Web Research → Source Triangulation → Project-specific Revalidation → Decision`
+
+Rules:
+
+- **Internal First, Not Internal Only.** Reuse verified internal facts, methods, history and locked assets, but do not treat the internal library as a closed answer set.
+- **Web Supplement by Need.** When the current decision lacks sufficient evidence, may be outdated, contains conflicting evidence, or needs verification of product / market / claim / competitor / trend / material / regulation / user facts, actively research the web without waiting for another reminder.
+- **Current-state Verification.** Brand positioning, official product portfolio, prices/channels, competitors, forecasts, regulations/standards, materials/processes, software/platforms, endorsers and campaigns must be rechecked when temporal change can affect the decision.
+- **Source priority.** Prefer official / primary sources first (Baojiajie official materials, manufacturers, material suppliers, standards/regulators, original papers, official forecast institutions), then authoritative secondary research, then retail/market evidence. UGC/social/reviews are weak signals and should not become technical facts without upstream verification.
+- **Evidence governance.** Record `Source / Publisher / URL or Identifier / Access Date / Evidence Type / Scope / Confidence / Conflict State`. Keep internal evidence, official facts, third-party facts, methods, inference, hypotheses, unknowns and pending validation explicitly separated.
+- **No silent overwrite.** External web evidence must not silently replace existing user research. Conflicts become `Conflict / Supersede / Needs Revalidation` with time, authority and scope explained.
+- **Triangulate important claims.** A single webpage is not enough to promote an inference into a verified fact.
+- **Return useful evidence.** External findings with cross-project value return to the Baojiajie Shared Evidence Layer; SKU / batch / campaign-specific findings remain project-local.
+
+For Product / CMF / Brand / Packaging / Retail / E-commerce / Visual / Lifestyle / Web work, every project should also ask:
+
+1. What has changed in the current external brand, market or category context?
+2. What evidence is missing from the internal research?
+3. What stronger / more advanced cases, design directions, materials, CMF, technologies or methods should be added?
+4. Are those external directions actually compatible with Baojiajie rather than copied mechanically?
+
+External research expands and completes the evidence base; it does not replace design judgment. Final logic remains:
+
+`Evidence → Translation → Design → Validation`
