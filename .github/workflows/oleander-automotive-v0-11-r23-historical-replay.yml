@@ -1,0 +1,68 @@
+name: OLEANDER Automotive v0.11 R23 Historical Replay
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r23-wheelhouse-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 1
+      - name: Stage R23 historical diagnostic chain
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          for f in revise_v011_r16.py revise_v011_r17.py revise_v011_r18.py revise_v011_r19.py revise_v011_r20.py; do
+            base64 -d "$ROOT/${f}.gz.b64" | gzip -d > "/tmp/$f"
+          done
+          cp "$ROOT/revise_v011_r14.py" /tmp/revise_v011_r14.py
+          cp "$ROOT/revise_v011_r15.py" /tmp/revise_v011_r15.py
+          cp "$ROOT/revise_v011_r22.py" /tmp/revise_v011_r22.py
+          cp "$ROOT/revise_v011_r23.py" /tmp/revise_v011_r23.py
+          base64 -d "$ROOT/build_automotive_v011_r05.py.gz.b64" | gzip -d > /tmp/build_automotive_v011_r05.py
+          python3 -m py_compile /tmp/build_automotive_v011_r05.py /tmp/revise_v011_r1*.py /tmp/revise_v011_r22.py /tmp/revise_v011_r23.py
+          test "$(sha256sum /tmp/build_automotive_v011_r05.py | awk '{print $1}')" = "4e6e6482b9098a7e2aa42eafed7217a7e97d331a45a9a1ceaa78fc98f287a967"
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+      - name: Run R23 source-locked wheelhouse diagnostic
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_R23_Diagnostic"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r23.py -- --out "$OUT" --samples 8 --resolution 640
+      - name: R23 historical replay gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_R23_Diagnostic')
+          q=json.loads((out/'AUTOMOTIVE_V011_QA.json').read_text())
+          r=json.loads((out/'AUTOMOTIVE_V011_RECEIPT.json').read_text())
+          assert q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED', q
+          assert r['status']=='EXECUTED_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r
+          for key in ('source_shape_hash_locked','source_topology_hash_locked','wheelhouse_count_four','termination_winding_repair_retained','source_no_boolean','source_no_subd','render_matrix'):
+              assert q['checks'].get(key) is True, (key,q['checks'])
+          assert len(q['renders'])==6
+          print('AUTOMOTIVE R23 HISTORICAL REPLAY PASS — AUDIT ONLY')
+          PY
+      - name: Upload R23 historical evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-automotive-v0-11-r23-historical-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_R23_Diagnostic/
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,116 @@
+{
+  "schema": "oleander.production_asset_persistence.v1",
+  "status": "PERSISTENCE_PASS",
+  "verified_at_utc": "2026-08-13T00:49:13Z",
+  "project": "SYS-MODELING-WORKER / Automotive v0.11",
+  "candidate": "R29A Shoulder-Fed Monotonic Fender Crown",
+  "design_state": "CANDIDATE",
+  "authority_state": "CANDIDATE_AUTHORITY",
+  "source_geometry_hash": "d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb",
+  "m10": {
+    "run_id": 31623379139,
+    "artifact_id": 9152168778,
+    "artifact_digest": "sha256:01b39f726ff943f9db2bca2d089cd197a3b23ce35a7ca277c2740cfe0448e6ac"
+  },
+  "durable_store": {
+    "provider": "Google Drive",
+    "root_folder_id": "1PLXbsvK81vLrfkcukaYD_Ks7P1SmLPk3",
+    "root_folder_name": "Automotive-v0.11-R29A-M10",
+    "retention_class": "DURABLE_PROVIDER_OBJECT"
+  },
+  "pap_gates": {
+    "PAP-G0_asset_inventory": "PASS",
+    "PAP-G1_local_integrity": "PASS",
+    "PAP-G2_durable_upload": "PASS",
+    "PAP-G3_independent_retrieval": "PASS",
+    "PAP-G4_retrieval_integrity": "PASS",
+    "PAP-G5_persistence_manifest": "PASS",
+    "PAP-G6_cross_system_receipt": "PASS"
+  },
+  "assets": [
+    {
+      "role": "native_source",
+      "filename": "OLEANDER_Automotive_v0.11_R29A_M10_Candidate.blend",
+      "byte_size": 248834,
+      "sha256": "f8f800360a61392592262f89e3f6a6ca5ec6e76eda9211911530bd257939d8e1",
+      "provider_file_id": "1KQP_SJU11teCutdBLDSaF1D29aD2Fp2H",
+      "provider_folder_id": "1X2kKFpuMEpaG0VlxaC1MFeuTDXlh5SVo",
+      "independent_retrieval": "PASS",
+      "retrieved_byte_size": 248834,
+      "retrieved_sha256": "f8f800360a61392592262f89e3f6a6ca5ec6e76eda9211911530bd257939d8e1",
+      "open_test": "PASS_BY_BYTE_IDENTITY_TO_EXECUTED_M10_BLEND",
+      "open_test_evidence": "Retrieved bytes are identical to R29A_M10_MULTI_SCALE_QA.blend from M10 run 31623379139, which Blender 5.2 opened and rendered successfully."
+    },
+    {
+      "role": "canonical_model",
+      "status": "N/A",
+      "reason": "Automotive v0.11 benchmark defines the editable Blender Source as Geometry Authority. No separate GLB/STEP/OBJ interchange authority was created or validated; PAP closure must not invent one after M10."
+    },
+    {
+      "role": "production_zip",
+      "filename": "OLEANDER_Automotive_v0.11_R29A_M10_PAP_Production.zip",
+      "byte_size": 3861986,
+      "sha256": "3dd304dd94e6493e01e1a4e436339949cc82851cef1ce007eacbf02f226ef204",
+      "provider_file_id": "1xQhmz5_RBwfK5iQFODiIM2jFn_ZGJw4D",
+      "provider_folder_id": "1McJTWqmNQTWzWWyj3NC1u0E0OpGpZQ0i",
+      "independent_retrieval": "PASS",
+      "retrieved_byte_size": 3861986,
+      "retrieved_sha256": "3dd304dd94e6493e01e1a4e436339949cc82851cef1ce007eacbf02f226ef204",
+      "zip_open_test": "PASS",
+      "inner_sha256sum_test": "PASS",
+      "contains": [
+        "native source",
+        "M10 QA/receipt/renders",
+        "immutable source snapshot",
+        "PAP asset inventory",
+        "inner checksums"
+      ]
+    },
+    {
+      "role": "checksum_set",
+      "filename": "SHA256SUMS.txt",
+      "byte_size": 2594,
+      "sha256": "6d20d70d492d44e9c1b3192da329b530adc855680dbe2efd35e9eb52fc5b6431",
+      "provider_file_id": "1oYeiOSy5POBPwi_gSda9LsvOGinjA_R5",
+      "independent_retrieval": "PASS"
+    },
+    {
+      "role": "checksum_production_zip",
+      "filename": "PRODUCTION_ZIP_SHA256.txt",
+      "byte_size": 139,
+      "sha256": "653be302d5ad86740d1c0b8b47dc394d5483de631eb172564325e662338d6f1c",
+      "provider_file_id": "1hjkn9NVCA7s03H92tpMe3MHKGB5IY7DJ",
+      "independent_retrieval": "PASS"
+    },
+    {
+      "role": "checksum_native_blend",
+      "filename": "NATIVE_BLEND_SHA256.txt",
+      "byte_size": 143,
+      "sha256": "0eeb20250ce9ccbd9cf5041570e39662a1b4a8317934f5630494918428d49b9e",
+      "provider_file_id": "1mcZ3OATMPETvM7vQW9BFkajDQ6L39gXv",
+      "independent_retrieval": "PASS"
+    }
+  ],
+  "source_snapshot": {
+    "workflow_run": 31655521149,
+    "artifact_id": 9164211420,
+    "snapshot_commit": "4ba7c4644ec58cb82c489fd87335cb405fd7e56a",
+    "embedded_in_production_zip": true,
+    "zip_test": "PASS"
+  },
+  "authority_boundary": {
+    "does_not_reopen_m5_m10": true,
+    "does_not_create_final_cmf": true,
+    "does_not_claim_class_a_or_engineering_cad": true,
+    "promotion_eligibility_after_g6": "ELIGIBLE_FOR_EXPLICIT_PROMOTE_REVIEW"
+  },
+  "cross_system_receipts": {
+    "drive_manifest_file_id": "1STqH_YWQ8o3jR3AzOSctkVdMuGyVmK-P",
+    "drive_receipt_file_id": "1xyWEfsBd2H4Yayj8CxlfKf_fdsxJahoi",
+    "notion_page_id": "3bbb86be-5c47-81c0-adf7-f9d8c5f16924",
+    "notion_page_url": "https://app.notion.com/p/3bbb86be5c4781c0adf7f9d8c5f16924?pvs=204",
+    "github_pr": "https://github.com/Jiaosong/Design/pull/85",
+    "github_manifest_path": "90-shared/toolchains/modeling-worker/automotive/v0.11/PAP_MANIFEST_v1.json",
+    "github_receipt_path": "90-shared/toolchains/modeling-worker/automotive/v0.11/PAP_RECEIPT_2026-08-13.md"
+  }
+}

@@ -1,0 +1,60 @@
+name: OLEANDER Automotive v0.11 M8 Detail Instances
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m8-detail-instances:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+      - name: Stage R29A M8 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r29a_m8.py
+          test -f /tmp/revise_v011_r29a_m8_gatefix.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Replay M8 linked detail instances
+        run: |
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_M8"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m8_gatefix.py -- --out "$OUT" --samples 4 --resolution 512
+      - name: M8 replay gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads((Path('out/OLEANDER_Automotive_v0.11_M8')/'M8_DETAIL_QA.json').read_text())
+          assert q['status']=='MACHINE_PASS_HUMAN_M8_REVIEW_REQUIRED'
+          assert q['source_hash_before']==q['source_hash_after']=='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert all(q['checks'].values())
+          print('M8 PASSED EVIDENCE REPLAY — MANUAL ONLY')
+          PY
+      - name: Upload M8 detail instance evidence
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-m8-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_M8/
+          if-no-files-found: error
+          retention-days: 14

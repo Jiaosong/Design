@@ -1,0 +1,69 @@
+name: OLEANDER Automotive v0.11 HP Rebaseline A-B
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hp-rebaseline:
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [R25, R28A]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+      - name: Stage A-B dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r25.py
+          test -f /tmp/revise_v011_r28a.py
+          test -f /tmp/compare_v011_r25_r28a_hp.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/compare_v011_r25_r28a_hp.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Render HP-correct ${{ matrix.variant }} rebaseline
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/${{ matrix.variant }}"
+          mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/compare_v011_r25_r28a_hp.py -- --out "$OUT" --variant '${{ matrix.variant }}' --samples 8 --resolution 640
+      - name: A-B machine gate
+        run: |
+          set -euo pipefail
+          VARIANT='${{ matrix.variant }}' python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          v=os.environ['VARIANT'];q=json.loads((Path('out')/v/'AB_QA.json').read_text())
+          assert q['variant']==v and q['status']=='MACHINE_PASS_VISUAL_REVIEW_REQUIRED',q
+          for k in ('source_shape_hash_locked','source_island_count_one','source_ngon_zero','termination_triangles_four','source_no_boolean','source_no_subd','wheel_hp_package_exact','wheelhouse_count_four','render_matrix'):
+              assert q['checks'].get(k) is True,(k,q)
+          assert len(q['renders'])==9
+          print(f'{v} HP REBASELINE MACHINE PASS — HUMAN A/B VISUAL QA REQUIRED')
+          PY
+      - name: Upload ${{ matrix.variant }} A-B evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-v0-11-${{ matrix.variant }}-hp-rebaseline-${{ github.run_id }}
+          path: out/${{ matrix.variant }}/
+          if-no-files-found: error
+          retention-days: 14
