@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "Control Plane v0.3 Release Candidate",
+    "project_id": "PRJ-OLEANDER-CTRL",
+    "project_level": "P2",
+    "case_id": null,
+    "knowledge_position": "L7 Practice",
+    "application_mapping": ["B04"],
+    "priority": "Priority-1"
+  },
+  "mode": "AUTHORITY",
+  "decision_question": "Are the machine prerequisites complete for a human promotion decision?",
+  "problem_layer": "Evidence",
+  "authority_source": {
+    "state": "CANONICAL_AUTHORITY",
+    "source_id": "OLEANDER-CTRL-V03",
+    "location": "00-governance/control-plane",
+    "sha256": null
+  },
+  "locked_variables": ["governance authority boundary", "human promotion ownership"],
+  "open_variables": [],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "release_package",
+  "claim_types": ["rights", "release"],
+  "evidence_state": {
+    "digital": "PASS",
+    "rights": "PASS"
+  },
+  "next_allowed_action": "PROMOTION_REVIEW",
+  "sync_persistence_trigger": "FULL_SYNC",
+  "review_history": []
+}
