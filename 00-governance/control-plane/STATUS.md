@@ -1,7 +1,7 @@
 # Control Plane v0.3 Status
 
 Branch: `agent/project-control-plane-v0-3-orchestration`
-Status: `ORCHESTRATION CANDIDATE / REVIEW`
+Status: `ORCHESTRATION CANDIDATE / REVIEW / CI GREEN / REAL CROSS-SYSTEM SCAN PASS`
 Authority: subordinate to `00-governance/README.md` and `OLEANDER Current Authority v1.1.0`.
 
 ## v0.2 merged baseline
@@ -27,6 +27,15 @@ Implemented on this branch:
 - Notion / GitHub / Drive contradiction scan against explicit expected canonical state;
 - orchestration schema, examples, tests and v0.3 CI.
 
+Validation completed:
+- isolated orchestration tests: 9/9 PASS;
+- GitHub Actions `OLEANDER Control Plane v0.3`: PASS;
+- GitHub Actions `AI Governance Evals`: PASS;
+- real candidate-state snapshots collected from Notion, GitHub PR #89 and Google Drive;
+- Google Drive subordinate receipt: `OLEANDER_SYS_CTRL_Project-Control-Plane_v0.3_CANDIDATE_E2`, file `1cBw82OH_ysAmCVb7uUjOuUS70zpkaWf18sV7M8Thh1s`;
+- real Notion × GitHub × Drive contradiction scan: `PASS / findings=[]`;
+- durable repository receipt: `receipts/OLEANDER_CTRL_v0.3_cross-system-candidate_20260813.json`.
+
 ## Explicitly not automated
 
 - connector authentication or credential storage inside GitHub Actions;
@@ -43,3 +52,5 @@ v0.3 may be promoted only after:
 - external provider ordering remains fail-closed;
 - Promotion output remains human-decision-gated;
 - contradiction scan remains compare-only and fail-closed.
+
+Current machine state does **not** equal human promotion. PR #89 remains a Draft orchestration candidate until explicitly reviewed and promoted.
