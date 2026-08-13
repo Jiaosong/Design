@@ -59,7 +59,9 @@ jobs:
           ev=card['evidence_state']
           for key in ('contract','machine','visual','project','pap'):
               assert ev[key]=='PASS',(key,ev[key])
-          assert ev['promotion']=='BLOCKED'
+          assert 'promotion' not in ev
+          assert 'CANDIDATE_PROMOTION' in card['next_allowed_action']
+          assert 'WORKING_SOURCE → CANDIDATE_AUTHORITY' in card['next_allowed_action']
           assert pap['status']=='PERSISTENCE_PASS'
           assert pap['authority_state']=='WORKING_SOURCE'
           assert pap['design_state']=='CANDIDATE'
@@ -70,7 +72,7 @@ jobs:
       - name: Publish boundary
         run: |
           echo 'PR CI verifies current contracts and immutable receipts instead of re-rendering accepted or known-failed historical Blender states.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Machine/Human/PAP PASS does not authorize Promotion; Authority State remains WORKING_SOURCE and PR remains Draft.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Promotion is an unexecuted human-owned transition, not an evidence key. Authority State remains WORKING_SOURCE and PR remains Draft.' >> "$GITHUB_STEP_SUMMARY"
 
   manual-active-blender-replay:
     name: Manual E1 + E2 + R3.3 Active Blender Replay
