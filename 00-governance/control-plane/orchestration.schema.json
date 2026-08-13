@@ -57,9 +57,11 @@
     },
     "gateReceipt": {
       "type":"object", "additionalProperties": false,
-      "required":["gate","result","object_id","source_id","authority_sha256","gate_version","receipt_id","executed_at","evidence_ref"],
+      "required":["gate","result","basis","object_id","source_id","authority_sha256","gate_version","receipt_id","executed_at","evidence_ref"],
       "properties": {
         "gate":{"type":"string","minLength":1}, "result":{"enum":["PASS","FAIL","BLOCKED","NOT_RUN","N_A"]},
+        "basis":{"enum":["DIRECT","REPLAY_MAPPING"]},
+        "historical_evidence_label":{"type":["string","null"]},
         "object_id":{"type":"string","minLength":1}, "source_id":{"type":"string","minLength":1},
         "authority_sha256":{"type":["string","null"],"pattern":"^(?:[A-Fa-f0-9]{64})?$"},
         "gate_version":{"type":"string","minLength":1}, "receipt_id":{"type":"string","minLength":1},
@@ -68,9 +70,10 @@
     },
     "gateBundle": {
       "type":"object", "additionalProperties": false,
-      "required":["schema_version","kind","object_id","authority_binding","transition","receipts"],
+      "required":["schema_version","kind","execution_mode","object_id","authority_binding","transition","receipts"],
       "properties": {
         "schema_version":{"const":"0.3"}, "kind":{"const":"GATE_RECEIPTS"},
+        "execution_mode":{"enum":["LIVE","REPLAY"]},
         "object_id":{"type":"string","minLength":1}, "authority_binding":{"$ref":"#/$defs/authorityBinding"},
         "transition":{"$ref":"#/$defs/transition"}, "receipts":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/gateReceipt"}}
       }
