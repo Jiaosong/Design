@@ -36,6 +36,4 @@ test('portfolio desktop visual experiment', async ({ page }, testInfo) => {
   await captureViewport(page, testInfo, 'portfolio-1920-daylily.png', '#project-daylily');
   await captureViewport(page, testInfo, 'portfolio-1920-reno.png', '#project-reno-cmf');
   await captureViewport(page, testInfo, 'portfolio-1920-about.png', '#about');
-
-  throw new Error('VISUAL_EXPERIMENT_CAPTURE_COMPLETE');
 });
