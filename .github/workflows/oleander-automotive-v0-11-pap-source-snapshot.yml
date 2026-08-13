@@ -1,9 +1,6 @@
 name: OLEANDER Automotive v0.11 PAP Source Snapshot
 
 on:
-  pull_request:
-    paths:
-      - '.github/workflows/oleander-automotive-v0-11-pap-source-snapshot.yml'
   workflow_dispatch:
 
 permissions:
