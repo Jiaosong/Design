@@ -1,0 +1,102 @@
+{
+  "schema_version": "c04-b-lane/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "owner_project_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+  "case_id": "C04",
+  "lane": "B",
+  "lane_role": "NARRATIVE_CONTENT_TEMPORARY_EXECUTION_LANE",
+  "authority_state": "OWNER_LANE_RECEIPT_CANDIDATE",
+  "creates_new_p3": false,
+  "source_authority": {
+    "governance": "Governance v1.1.1",
+    "current_frontier": "C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md",
+    "c_contract": "C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v2.0.md",
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD"
+  },
+  "content_objects": [
+    {
+      "content_id": "B-R01-MOVING-VIEW",
+      "title": "索道移动观看关系",
+      "route_segment": "M2_CROSS_RIVER_CABLE",
+      "experience_state": "OBSERVE",
+      "claim_type": "FACT",
+      "source": "A_REMOTE_CLOSURE_FRONTIER:R01",
+      "evidence_state": "SOURCE_GROUNDED_FIELD_OPEN",
+      "delivery": {"FULL": false, "LIGHT": true, "OFF": true},
+      "do_not_use_condition": "DEGRADED|CLOSED|UNKNOWN|RETURN_PRIORITY or when service/safety content needs priority",
+      "route_dependency": "conditional on real cable operation; not a mandatory narrative stop",
+      "wording_boundary": "view-first; no claim of continuous cabin POV verification"
+    },
+    {
+      "content_id": "B-R06-PLATFORM-RELATION",
+      "title": "多级阶地·不对称河谷观景关系",
+      "route_segment": "M4_OBSERVE_READ_RECOVER",
+      "experience_state": "OBSERVE",
+      "claim_type": "FACT",
+      "source": "A_REMOTE_CLOSURE_FRONTIER:R06",
+      "evidence_state": "SOURCE_GROUNDED_FIELD_GEOMETRY_OPEN",
+      "delivery": {"FULL": false, "LIGHT": true, "OFF": true},
+      "do_not_use_condition": "exact terrace count, measured section, exact platform geometry, or geological causation",
+      "route_dependency": "observation-platform role source-grounded; exact location/geometry field-required",
+      "wording_boundary": "observation relation only; geology process explanation held for expert evidence"
+    },
+    {
+      "content_id": "B-R07-NAME",
+      "title": "仓禀峰",
+      "route_segment": "M3_SOUTH_BANK_WALKING_NETWORK",
+      "experience_state": "READ",
+      "claim_type": "FACT",
+      "source": "A_REMOTE_CLOSURE_FRONTIER:R07",
+      "evidence_state": "OPERATOR_PUBLIC_NAME_SOURCE_GROUNDED_FIELD_SIGN_OPEN",
+      "delivery": {"FULL": false, "LIGHT": true, "OFF": true},
+      "do_not_use_condition": "when presenting field-sign authority or claiming legacy alternate spelling as current",
+      "route_dependency": "exact viewpoint/signage location remains field-open",
+      "wording_boundary": "仓禀峰 is current first-party-carried public spelling; 仓廪峰 remains legacy/alternate provenance"
+    },
+    {
+      "content_id": "B-R09-R12-TRADITION",
+      "title": "务相—廪君—盐水神女文本传统",
+      "route_segment": "M4_OBSERVE_READ_RECOVER",
+      "experience_state": "READ",
+      "claim_type": "LOCAL_NARRATIVE",
+      "source": "A_REMOTE_CLOSURE_FRONTIER:R09_R12",
+      "evidence_state": "TEXT_TRADITION_SOURCE_CLOSED_SITE_EQUIVALENCE_NOT_SUPPORTED",
+      "delivery": {"FULL": false, "LIGHT": true, "OFF": true},
+      "do_not_use_condition": "any wording equating modern named peaks with the ancient event site",
+      "route_dependency": "not a mandatory stop or route-order authority",
+      "wording_boundary": "may present textual tradition only; modern peak = ancient event site is prohibited"
+    },
+    {
+      "content_id": "B-R13-NATURAL-FRAME",
+      "title": "一线天自然框景关系",
+      "route_segment": "M5_NATURAL_CLOSURE_WITHDRAW",
+      "experience_state": "WITHDRAW",
+      "claim_type": "FACT",
+      "source": "A_REMOTE_CLOSURE_FRONTIER:R13",
+      "evidence_state": "SOURCE_GROUNDED_SAFETY_AND_EXACT_MEDIA_OPEN",
+      "delivery": {"FULL": false, "LIGHT": true, "OFF": true},
+      "do_not_use_condition": "inside-node strong narrative, hero takeover, exact dimensions, safety or accessibility claims",
+      "route_dependency": "natural closure candidate; field safety/accessibility remains required",
+      "wording_boundary": "design withdraws; landscape/body/safety outrank narrative"
+    }
+  ],
+  "contract_rules": [
+    "FACT_LOCAL_NARRATIVE_DESIGN_READING_MUST_REMAIN_DISTINCT",
+    "A_OPEN_HOLD_MUST_NOT_BE_UPGRADED_BY_B_WORDING",
+    "NO_13_OF_13_COMPLETION_LOGIC",
+    "NARRATIVE_MUST_WITHDRAW_AT_NATURAL_CLOSURE",
+    "RETURN_SERVICE_OUTRANK_MEMORY_NARRATIVE_UNDER_PRESSURE",
+    "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OPEN"
+  ],
+  "blockers": [
+    "A_G1F",
+    "R02_MEDIA_OR_EXPERT_EVIDENCE",
+    "R06_SOURCE_LOCKED_STIMULUS_AND_FIELD_GEOMETRY",
+    "R07_FIELD_NAME_AUTHORITY",
+    "R13_EXACT_MEDIA_SAFETY"
+  ],
+  "decision": "B_R1_OWNER_LANE_RECEIPT_CANDIDATE_READY_FOR_READBACK",
+  "promotion": "NO"
+}
