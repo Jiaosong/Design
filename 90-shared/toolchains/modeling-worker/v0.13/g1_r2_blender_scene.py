@@ -75,6 +75,10 @@ def theta_center_rad(data):
     raise ValueError("INTERFACE_DECK_BOUNDARY requires theta_center_rad or theta_center=TOP_MERIDIAN")
 
 
+def termination_exponent(data):
+    return float(data.get("termination_envelope_exponent", 0.55))
+
+
 def sources(source, collection):
     own = base.own
     out = [
@@ -85,36 +89,43 @@ def sources(source, collection):
             own(source, "GRIP_AXIS")["role"],
         )
     ]
-    out += [
-        profile(
-            "OL_SRC_PALM_PROFILE",
-            own(source, "PALM_PROFILE")["control_values"],
-            collection,
-            own(source, "PALM_PROFILE")["role"],
-            "Z+",
-        ),
-        profile(
-            "OL_SRC_THUMB_SIDE_PLAN",
-            own(source, "THUMB_SIDE_PLAN")["control_values"],
-            collection,
-            own(source, "THUMB_SIDE_PLAN")["role"],
-            "Y+",
-        ),
-        profile(
-            "OL_SRC_OPPOSITE_SIDE_PLAN",
-            own(source, "OPPOSITE_SIDE_PLAN")["control_values"],
-            collection,
-            own(source, "OPPOSITE_SIDE_PLAN")["role"],
-            "Y-",
-        ),
-        profile(
-            "OL_SRC_LOWER_RETURN_PROFILE",
-            own(source, "LOWER_RETURN_PROFILE")["control_values"],
-            collection,
-            own(source, "LOWER_RETURN_PROFILE")["role"],
-            "Z-",
-        ),
-    ]
+    palm = profile(
+        "OL_SRC_PALM_PROFILE",
+        own(source, "PALM_PROFILE")["control_values"],
+        collection,
+        own(source, "PALM_PROFILE")["role"],
+        "Z+",
+    )
+    thumb = profile(
+        "OL_SRC_THUMB_SIDE_PLAN",
+        own(source, "THUMB_SIDE_PLAN")["control_values"],
+        collection,
+        own(source, "THUMB_SIDE_PLAN")["role"],
+        "Y+",
+    )
+    opposite = profile(
+        "OL_SRC_OPPOSITE_SIDE_PLAN",
+        own(source, "OPPOSITE_SIDE_PLAN")["control_values"],
+        collection,
+        own(source, "OPPOSITE_SIDE_PLAN")["role"],
+        "Y-",
+    )
+    lower_data = own(source, "LOWER_RETURN_PROFILE")
+    lower = profile(
+        "OL_SRC_LOWER_RETURN_PROFILE",
+        lower_data["control_values"],
+        collection,
+        lower_data["role"],
+        "Z-",
+    )
+    # Existing Source family retained: this is a relation property, not a seventh geometry family.
+    # Although stored on LOWER_RETURN_PROFILE for ownership continuity, r2.point() applies it to
+    # PALM / THUMB / OPPOSITE / LOWER amplitudes together as the shared termination envelope.
+    lower["termination_envelope_exponent"] = termination_exponent(lower_data)
+    lower["termination_envelope_semantics"] = "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE"
+    lower["termination_envelope_formula"] = "sin(pi*u)^exponent"
+    out += [palm, thumb, opposite, lower]
+
     deck_data = own(source, "INTERFACE_DECK_BOUNDARY")
     deck = bpy.data.objects.new("OL_SRC_INTERFACE_DECK_BOUNDARY", None)
     collection.objects.link(deck)
