@@ -1,0 +1,14 @@
+{
+  "version":"QJ-E09-COMPONENT-MAP-v0.1",
+  "target":"Penpot File Library / Components",
+  "components":[
+    {"source":"components/01_action.svg","name":"QJ/Action","variants":["Primary","Secondary","Tertiary","Critical"]},
+    {"source":"components/02_observation-prompt.svg","name":"QJ/Reading/ObservationPrompt","variants":["Find","Compare","Listen","Trace","Frame","Walk","LookBack"]},
+    {"source":"components/03_reveal-2d.svg","name":"QJ/Reading/Reveal","variants":["Fallback2D","Section","Alignment","AR-Candidate"]},
+    {"source":"components/04_route-canvas.svg","name":"QJ/Journey/RouteCanvas","variants":["Simulated","Live-Candidate"]},
+    {"source":"components/05_service-item.svg","name":"QJ/Service/Item","variants":["Known","Unknown","Unavailable","Closed","OfflineCached","OfficialRequired"]},
+    {"source":"components/06_memory-entry.svg","name":"QJ/Memory/Entry","variants":["Page","Photo","Line","Frame","Text","Comparison","Sensory","SharedObservation"]},
+    {"source":"components/07_primary-nav.svg","name":"QJ/Nav/Primary","variants":["Today","Route","Book","Service"]}
+  ],
+  "note":"SVG import creates editable shapes; component/variant promotion must occur natively in Penpot and be read back before PASS."
+}
