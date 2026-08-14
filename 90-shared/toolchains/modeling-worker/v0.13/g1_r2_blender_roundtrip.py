@@ -25,6 +25,15 @@ def curve_points(name: str):
     return [tuple(float(v) for v in p.co[:3]) for p in obj.data.splines[0].points]
 
 
+def theta_center_rad(source: dict[str, Any]) -> float:
+    d = base.own(source, "INTERFACE_DECK_BOUNDARY")
+    if "theta_center_rad" in d:
+        return float(d["theta_center_rad"])
+    if d.get("theta_center") == "TOP_MERIDIAN":
+        return 0.0
+    raise ValueError("INTERFACE_DECK_BOUNDARY requires theta_center_rad or theta_center=TOP_MERIDIAN")
+
+
 def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     out = copy.deepcopy(template)
     base.own(out, "GRIP_AXIS")["control_points"] = [list(p) for p in curve_points(NAMES["GRIP_AXIS"])]
@@ -34,20 +43,22 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     base.own(out, "LOWER_RETURN_PROFILE")["control_values"] = [float(-p[2]) for p in curve_points(NAMES["LOWER_RETURN_PROFILE"])]
     deck = bpy.data.objects[NAMES["INTERFACE_DECK_BOUNDARY"]]
     d = base.own(out, "INTERFACE_DECK_BOUNDARY")
-    for key in ("u_center", "u_halfspan", "theta_center_rad", "theta_halfspan_rad", "depth_m", "core_fraction"):
+    for key in ("u_center", "u_halfspan", "theta_halfspan_rad", "depth_m", "core_fraction"):
         if key in deck:
             d[key] = float(deck[key])
+    d["theta_center_rad"] = float(deck.get("theta_center_rad", theta_center_rad(template)))
     return out
 
 
 def source_numeric_snapshot(source: dict[str, Any]) -> dict[str, list[float]]:
+    d = base.own(source, "INTERFACE_DECK_BOUNDARY")
     return {
         "GRIP_AXIS": [float(v) for p in base.own(source,"GRIP_AXIS")["control_points"] for v in p],
         "PALM_PROFILE": [float(v) for v in base.own(source,"PALM_PROFILE")["control_values"]],
         "THUMB_SIDE_PLAN": [float(v) for v in base.own(source,"THUMB_SIDE_PLAN")["control_values"]],
         "OPPOSITE_SIDE_PLAN": [float(v) for v in base.own(source,"OPPOSITE_SIDE_PLAN")["control_values"]],
         "LOWER_RETURN_PROFILE": [float(v) for v in base.own(source,"LOWER_RETURN_PROFILE")["control_values"]],
-        "INTERFACE_DECK_BOUNDARY": [float(base.own(source,"INTERFACE_DECK_BOUNDARY")[k]) for k in ("u_center","u_halfspan","theta_center_rad","theta_halfspan_rad","depth_m","core_fraction")],
+        "INTERFACE_DECK_BOUNDARY": [float(d["u_center"]),float(d["u_halfspan"]),theta_center_rad(source),float(d["theta_halfspan_rad"]),float(d["depth_m"]),float(d["core_fraction"])],
     }
 
 
