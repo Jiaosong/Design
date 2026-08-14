@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "authority": "C04-WS-02 QJ-C C10/C11 remote prototype boundary",
+  "route_scenarios": [
+    {"id":"normal","safety":true,"route":true,"return":true,"real_relation":true,"optional_layers":["content","digital","physical","memory"]},
+    {"id":"shortened","safety":true,"route":true,"return":true,"real_relation":true,"optional_layers":["content","memory"]},
+    {"id":"closed_node","safety":true,"route":true,"return":true,"real_relation":true,"optional_layers":["digital","memory"]},
+    {"id":"return_pressure","safety":true,"route":true,"return":true,"real_relation":true,"optional_layers":[]}
+  ],
+  "no_phone": {"digital":false,"safety":true,"route":true,"return":true,"observation_sources":["landscape","physical_wayfinding","paper","human"]},
+  "failures": [
+    {"id":"page_closed","level":"F1","route_continues":true,"fallback":["route","landscape"]},
+    {"id":"digital_offline","level":"F1","route_continues":true,"fallback":["physical_wayfinding","paper","human"]},
+    {"id":"physical_unavailable","level":"F2","route_continues":true,"fallback":["bypass","original_route"]},
+    {"id":"rain","level":"F2","route_continues":true,"fallback":["safety","surface","near_view"],"active_physical_hero":false},
+    {"id":"fog","level":"F1","route_continues":true,"fallback":["near_view","atmosphere","sound"]},
+    {"id":"crowd","level":"F2","route_continues":true,"fallback":["route","safety","move_deep_read"],"deep_read_in_bottleneck":false},
+    {"id":"return_pressure","level":"F2","route_continues":true,"fallback":["return_priority"],"new_deep_read":false}
+  ],
+  "attention_cases": [
+    {"id":"no_gap","need":false,"choices":[{"name":"C0","level":0,"solves":true,"first_reading":"landscape"},{"name":"LightSupport","level":1,"solves":true,"first_reading":"landscape"},{"name":"StrongHero","level":4,"solves":true,"first_reading":"design"}],"expected":"C0"},
+    {"id":"reading_gap","need":true,"choices":[{"name":"C0","level":0,"solves":false,"first_reading":"landscape"},{"name":"MicroPrompt","level":1,"solves":true,"first_reading":"landscape"},{"name":"DigitalReveal","level":2,"solves":true,"first_reading":"mixed"},{"name":"StrongHero","level":4,"solves":true,"first_reading":"design"}],"expected":"MicroPrompt"}
+  ],
+  "recovery_cases": [
+    {"id":"no_proven_gap","problem_exists":false,"existing_context_sufficient":true,"railing_feasible":false,"larger_evidence":false,"expected":"C0"},
+    {"id":"micro_fatigue","problem_exists":true,"existing_context_sufficient":true,"railing_feasible":false,"larger_evidence":false,"expected":"ExistingContext"},
+    {"id":"railing_case","problem_exists":true,"existing_context_sufficient":false,"railing_feasible":true,"larger_evidence":false,"expected":"RailingSupport"},
+    {"id":"large_candidate_unproven","problem_exists":true,"existing_context_sufficient":false,"railing_feasible":false,"larger_evidence":false,"expected":"HOLD"}
+  ],
+  "return_case": {"re_recognition":true,"new_hero":false,"forced_final_task":false,"memory_phase":"post_visit","return_priority":true}
+}
