@@ -46,7 +46,9 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     for key in ("u_center", "u_halfspan", "theta_halfspan_rad", "depth_m", "core_fraction"):
         if key in deck:
             d[key] = float(deck[key])
-    d["theta_center_rad"] = float(deck.get("theta_center_rad", theta_center_rad(template)))
+    # TOP_MERIDIAN is a locked semantic, not a new numeric authority DOF.
+    if d.get("theta_center") != "TOP_MERIDIAN":
+        d["theta_center_rad"] = float(deck.get("theta_center_rad", theta_center_rad(template)))
     return out
 
 
@@ -84,7 +86,7 @@ def max_displacement(a, b):
     return max(math.dist(tuple(x), tuple(y)) for x, y in zip(a, b))
 
 
-def controlled_native_edit_test(template: dict[str, Any], delta_m: float = 0.003):
+def controlled_native_edit_test(template: dict[str, Any], delta_m: float = 0.003, edit_tolerance: float = 1e-8, restore_tolerance: float = 1e-12):
     baseline = extract_native_source(template)
     bv, _, _ = r2.mesh(baseline, False)
     thumb = bpy.data.objects[NAMES["THUMB_SIDE_PLAN"]]
@@ -98,15 +100,16 @@ def controlled_native_edit_test(template: dict[str, Any], delta_m: float = 0.003
     point.co = original
     restored = extract_native_source(template)
     restored_error = source_difference(baseline, restored)
-    changed = [k for k,v in diffs.items() if v > 1e-12]
+    changed = [k for k,v in diffs.items() if v > edit_tolerance]
     checks = {
         "only_thumb_source_family_changed": changed == ["THUMB_SIDE_PLAN"],
-        "native_curve_edit_read_back": abs(diffs["THUMB_SIDE_PLAN"] - delta_m) <= 1e-9,
+        "native_curve_edit_read_back": abs(diffs["THUMB_SIDE_PLAN"] - delta_m) <= edit_tolerance,
         "derived_surface_changed_after_native_edit": displacement >= 0.001,
-        "native_source_restored_exactly": max(restored_error.values()) <= 1e-12,
+        "native_source_restored_exactly": max(restored_error.values()) <= restore_tolerance,
     }
     return {
         "edit": {"object": NAMES["THUMB_SIDE_PLAN"], "control_index": 3, "delta_m": delta_m},
+        "representation_tolerance_m": edit_tolerance,
         "source_family_differences_m": diffs,
         "changed_families": changed,
         "derived_surface_max_displacement_m": displacement,
@@ -116,15 +119,18 @@ def controlled_native_edit_test(template: dict[str, Any], delta_m: float = 0.003
     }
 
 
-def authority_checks(template: dict[str, Any]):
+def authority_checks(template: dict[str, Any], readback_tolerance: float = 1e-8, locked_semantic_tolerance: float = 1e-8):
     extracted = extract_native_source(template)
     diffs = source_difference(template, extracted)
     objects = [bpy.data.objects.get(name) for name in NAMES.values()]
     present = len(objects) == 6 and all(o is not None for o in objects)
+    deck = bpy.data.objects.get(NAMES["INTERFACE_DECK_BOUNDARY"])
+    locked_theta_ok = bool(deck is not None and abs(float(deck.get("theta_center_rad", 0.0))) <= locked_semantic_tolerance)
     checks = {
         "six_native_source_objects_present": present,
         "all_native_source_objects_editable": present and all(bool(o.get("OLEANDER_EDITABLE", False)) for o in objects),
         "all_native_source_objects_working_source": present and all(o.get("OLEANDER_AUTHORITY") == "WORKING_SURFACE_SOURCE" for o in objects),
-        "bootstrap_roundtrip_exact": max(diffs.values()) <= 1e-12,
+        "bootstrap_roundtrip_within_blender_representation_tolerance": max(diffs.values()) <= readback_tolerance,
+        "locked_top_meridian_semantic_preserved": locked_theta_ok,
     }
     return extracted, diffs, checks
