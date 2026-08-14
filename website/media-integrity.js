@@ -72,4 +72,9 @@
       closeViewer();
     }
   });
+
+  const framework = document.createElement('script');
+  framework.src = 'portfolio-framework.js';
+  framework.onload = () => document.documentElement.setAttribute('data-portfolio-framework', 'ready');
+  document.body.appendChild(framework);
 })();
