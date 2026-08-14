@@ -109,4 +109,6 @@ def master_exr(scene,out,cam,obj,mat,qac):
     scene.camera=cam; assign(obj,mat)
     for x in qac.objects:
         if x.type=='LIGHT': x.hide_render=not x.name.startswith('BROAD')
-    scene.render.image_settings.file_format='OPEN_EXR_MULTILAYER'; scene.render.image_settings.color_depth='32'; p=out/'G1_R2_BASELINE_MASTER.exr'; scene.render.filepath=str(p); bpy.ops.render.render(write_still=True); scene.render.image_settings.file_format='PNG'; scene.render.image_settings.color_depth='8'; return p.name
+    scene.render.image_settings.file_format='OPEN_EXR'; scene.render.image_settings.color_depth='32'
+    if hasattr(scene.render.image_settings,'exr_codec'): scene.render.image_settings.exr_codec='ZIP'
+    p=out/'G1_R2_BASELINE_MASTER.exr'; scene.render.filepath=str(p); bpy.ops.render.render(write_still=True); scene.render.image_settings.file_format='PNG'; scene.render.image_settings.color_depth='8'; return p.name
