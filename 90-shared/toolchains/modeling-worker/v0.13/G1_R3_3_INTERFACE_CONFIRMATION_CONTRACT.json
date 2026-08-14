@@ -1,5 +1,5 @@
 {
-  "schema": "oleander.modeling-worker.v0.13.g1.r3.3.interface-confirmation.v1",
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.3.interface-confirmation.v2",
   "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
   "stage": "R3.3_INTERFACE_DIRECTION_CONFIRMATION",
   "selected_direction": "R3.2-B-CORE-RECOVERY",
@@ -24,12 +24,14 @@
     "candidate_promotion": "NOT_RUN"
   },
   "local_view": {
+    "revision": "V2_WIDER_CONTEXT_AFTER_V1_FRAMING_INSUFFICIENT",
     "name": "R3_3_INTERFACE_CLOSE_CAM",
-    "lens_mm": 120.0,
+    "lens_mm": 90.0,
     "target": "LIVE_INTERFACE_DECK_CENTER",
-    "offset_from_target_m": [0.11, -0.15, 0.09]
+    "offset_from_target_m": [0.16, -0.22, 0.13],
+    "intent": "Include the complete interface-basin boundary plus surrounding palm field while preserving the same oblique diagnostic direction. This changes diagnostic framing only; Source and relation remain exact R3.2-B."
   },
-  "confirmation_question": "Does the exact R3.2-B relation retain a legible secondary interface basin and a fair right-transition field when inspected both globally and locally, without conflating the separate right/front termination defect?",
+  "confirmation_question": "Does the exact R3.2-B relation retain a legible secondary interface basin and a fair right-transition field when inspected both globally and in a sufficiently contextual local view, without conflating the separate right/front termination defect?",
   "termination_state": "OPEN_SEPARATE_NOT_PART_OF_INTERFACE_CONFIRMATION",
   "boundary": "A confirmation PASS may close the interface-relation correction question and return it to Candidate Review. It does not authorize Candidate Promotion, Canonical Promotion, Class-A, engineering CAD, manufacturing, ergonomic validation or Release."
 }
