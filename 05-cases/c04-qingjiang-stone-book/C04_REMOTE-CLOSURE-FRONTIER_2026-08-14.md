@@ -127,10 +127,44 @@ P0-01 decision:
 
 No further remote interpretation of tiny labels is authorized without a higher-resolution/durable source copy.
 
+## P0-03｜R06 Observation Platform Source Closure v0.1
+
+Source: operator-carried Hubei Daily field report, `https://www.eslygroup.com/media_focus/3229.html`, published 2024-05-22.
+
+The report explicitly states that the observation platform simultaneously exposes clouds, mountains, peak forest, river valley and cruise vessels, and identifies the location as a best observation point for Qingjiang multi-level terraces.
+
+It also states that `廪君峰` lies to the right side of the observation platform.
+
+Promoted at SOURCE level only:
+- `R06 OBSERVATION-PLATFORM ROLE = SOURCE PASS`;
+- `R06 DESIRED C0 VIEW CONTENT = SOURCE-GROUNDED: valley + mountain/peak system + river + moving vessel where present`;
+- `R12 廪君峰 RELATION TO R06 PLATFORM = SOURCE-GROUNDED / RIGHT-SIDE CONTEXT`.
+
+This relative relation does not make R12 a mandatory separate stopping event.
+
+The same report describes `一线天` as a natural narrow rock aperture through which Qingjiang water, passing cruise vessels and the north-bank village landscape can be seen. This further supports `R13 NATURAL APERTURE VIEW RELATION = SOURCE-GROUNDED` and the current S0/SILENCE candidate. Dimensions and safety remain FIELD-REQUIRED.
+
+The article’s statement that regional mountain uplift and river incision explain the terrace/valley condition is retained only as `PUBLIC INTERPRETIVE CLAIM / MEDIA-CARRIED GEOLOGY NARRATIVE`. It is not node-specific scientific authority. Exact R06/R03/R08/R10 lithology, age and process remain `FIELD + GEOLOGY EXPERT REQUIRED`.
+
+The report contains field photographs, but current extraction does not provide a source-locked, platform-eye, annotation-free R06 image whose position can be verified as the controlled C0 stimulus. Related image-search results are not substitutes.
+
+Therefore:
+- `R06 PLATFORM SOURCE PIXEL = BLOCKED`;
+- `R06 CONTROLLED C0 STIMULUS = BLOCKED`;
+- `R06 USER TEST = NOT STARTED`;
+- `R06 PLATFORM ROLE = SOURCE-CLOSED`;
+- `R06 ↔ R12 RELATIVE RELATION = SOURCE-CLOSED`;
+- `R13 NATURAL FRAME RELATION = SOURCE-CLOSED`;
+- `R06 PIXEL / FIELD GEOMETRY = OPEN`;
+- `GEOLOGICAL CAUSATION = EXPERT HOLD`;
+- `PROMOTION = NO`.
+
+Next R06 progress must be a source-locked observation-platform-eye image / original field photo, or real field capture and geometry. Generic landscape-image substitution is prohibited.
+
 ## Current next true progress
 
 1. acquire authentic continuous R01 cableway video;
-2. acquire R06 observation-platform pixels + field geometry;
+2. acquire R06 source-locked observation-platform pixels + field geometry;
 3. execute R11/R13 Safety Field;
 4. execute R04/R07/R09/R12 field signage/viewpoint capture;
 5. close R02 botany with qualified expertise;
