@@ -15,14 +15,14 @@ permissions:
 
 jobs:
   g1-r2-blender-execution:
-    name: G1 R2 Sparse Working Source → Surface System F1 Runtime
+    name: G1 R2 Sparse Source → Surface System → Topology Isolation
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Compile bridge and validate executable Surface System binding
+      - name: Compile bridge and validate executable contracts
         run: |
           python3 -m py_compile \
             90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py \
@@ -30,12 +30,14 @@ jobs:
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_reopen_verify.py \
-            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_topology_isolation.py
           python3 -m json.tool 90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_TOPOLOGY_ISOLATION_CONTRACT.json >/dev/null
           python3 00-governance/control-plane/tests/test_modeling_worker_v013_blender_bridge.py
 
       - name: Install Blender runtime dependencies
@@ -69,6 +71,23 @@ jobs:
             --out "$OUT" \
             --resolution 512
 
+      - name: Run same-source topology-vs-source isolation
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$OUT/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_topology_isolation.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --isolation-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_TOPOLOGY_ISOLATION_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 512
+
       - name: Reopen saved blend and execute embedded native-source rebuild
         run: |
           set -euo pipefail
@@ -82,7 +101,7 @@ jobs:
             --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
             --delta 0.003
 
-      - name: Verify Surface System runtime, native round-trip, reopen rebuild and authority boundary
+      - name: Verify Surface System runtime, topology isolation, native round-trip and authority boundary
         run: |
           python3 - <<'PY'
           import json
@@ -90,7 +109,9 @@ jobs:
           root=Path('out/G1_R2'); diag=root/'60_OUTPUTS/DIAGNOSTIC'
           report=json.loads((diag/'G1_R2_BLENDER_REPORT.json').read_text())
           roundtrip=json.loads((diag/'G1_R2_BLENDER_SOURCE_ROUNDTRIP.json').read_text())
+          isolation=json.loads((diag/'G1_R2_TOPOLOGY_SOURCE_ISOLATION.json').read_text())
           reopen=json.loads((diag/'G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json').read_text())
+
           assert report['status']=='BLENDER_NATIVE_SOURCE_SURFACE_SYSTEM_RUNTIME_PASS_REFLECTION_VISUAL_REVIEW_REQUIRED', report['status']
           assert all(report['checks'].values()), report['checks']
           ss=report['surface_system_runtime']
@@ -106,6 +127,7 @@ jobs:
           assert report['candidate_promotion']=='NOT_RUN'
           assert report['render_engine']=='CYCLES'
           assert report['blender_version'].startswith('5.2.0')
+
           assert roundtrip['source_mode']=='BLENDER_NATIVE_EDITABLE_WORKING_SOURCE'
           assert roundtrip['surface_system_runtime']['status']=='PASS'
           assert all(roundtrip['authority_checks'].values())
@@ -113,18 +135,46 @@ jobs:
           assert roundtrip['controlled_native_edit_test']['changed_families']==['THUMB_SIDE_PLAN']
           assert roundtrip['controlled_native_edit_test']['derived_surface_max_displacement_m'] >= 0.001
           assert roundtrip['bootstrap_seed_overwritten'] is False
+
+          assert isolation['status']=='TOPOLOGY_SOURCE_ISOLATION_EXECUTED', isolation['status']
+          assert all(isolation['checks'].values()), isolation['checks']
+          assert isolation['classification'] in {
+              'TOPOLOGY_SENSITIVE_EXECUTION_GEOMETRY_SUSPECTED',
+              'TOPOLOGY_INVARIANT_SOURCE_RELATION_SUSPECTED',
+              'INCONCLUSIVE_VISUAL_REVIEW_REQUIRED',
+          }
+          assert isolation['classification_role']=='DIAGNOSTIC_ROUTING_HEURISTIC_NOT_PROMOTION_EVIDENCE'
+          assert isolation['design_state']=='REVISE'
+          assert isolation['authority_state']=='WORKING_SOURCE'
+          assert isolation['candidate_review']=='REOPENED'
+          assert isolation['candidate_promotion']=='NOT_RUN'
+          assert isolation['source']['unchanged'] is True
+          assert isolation['topology']['baseline']['u_rings']==56
+          assert isolation['topology']['baseline']['circumferential_samples']==72
+          assert isolation['topology']['dense']['u_rings']==112
+          assert isolation['topology']['dense']['circumferential_samples']==144
+          assert isolation['topology']['baseline']['authority']=='DERIVED_EXECUTION_NOT_AUTHORITY'
+          assert isolation['topology']['dense']['authority']=='DERIVED_EXECUTION_NOT_AUTHORITY'
+          assert isolation['topology']['face_density_ratio'] >= 3.9
+          assert isolation['analytic_source_probe']['topology_independent'] is True
+          assert set(isolation['visual_ab']['metrics'])=={'STRIP','GRAZING','ZEBRA'}
+
           assert reopen['status']=='REOPEN_NATIVE_SOURCE_REBUILD_PASS', reopen
           assert all(reopen['checks'].values()), reopen['checks']
           assert reopen['authority_state']=='WORKING_SOURCE'
           assert reopen['candidate_promotion']=='NOT_RUN'
+
           assert (root/'OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend').exists()
           assert (diag/'G1_R2_BASELINE_MASTER.exr').exists()
           for stem in (
               'BASELINE_BROAD_PERSPECTIVE','BASELINE_BROAD_TOP','BASELINE_BROAD_SIDE',
               'BASELINE_STRIP_PERSPECTIVE','BASELINE_GRAZING_PERSPECTIVE','BASELINE_ZEBRA_PERSPECTIVE',
-              'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE'):
+              'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE',
+              'ISO_BASE_STRIP_PERSPECTIVE','ISO_DENSE_STRIP_PERSPECTIVE',
+              'ISO_BASE_GRAZING_PERSPECTIVE','ISO_DENSE_GRAZING_PERSPECTIVE',
+              'ISO_BASE_ZEBRA_PERSPECTIVE','ISO_DENSE_ZEBRA_PERSPECTIVE'):
               assert (diag/f'{stem}.png').exists(), stem
-          print('V0_13_SPARSE_SOURCE_TO_BLENDER_SURFACE_SYSTEM_RUNTIME_PASS')
+          print('V0_13_R2_TOPOLOGY_VS_SOURCE_ISOLATION_PASS', isolation['classification'])
           PY
 
       - name: Upload Blender diagnostic artifact
@@ -137,6 +187,7 @@ jobs:
 
       - name: Boundary
         run: |
-          echo 'The v0.13 sparse Blender-native Working Source now executes through the shared Blender Surface System v1.20.0 F1 runtime for materials, cameras, Broad/Strip/Grazing rigs, Zebra and render setup.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Modeling Worker retains source/relationship/derived-geometry ownership; local duplicate Surface System runtime is forbidden and checked.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Reflection Visual QA remains REVISE / Candidate Review REOPENED. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'v0.13 sparse Blender-native Working Source executes through the shared Blender Surface System v1.20.0 F1 runtime.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The same native Source is now rendered under baseline 56x72 and dense 112x144 derived topology using identical HERO camera and Strip/Grazing/Zebra diagnostics, plus a topology-independent analytic source-normal probe.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Isolation classification is diagnostic routing only. Modeling Worker retains source/relation authority; both topology variants are DERIVED_EXECUTION_NOT_AUTHORITY.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Reflection state remains REVISE / Candidate Review REOPENED / Candidate Promotion NOT_RUN. No mesh-local cosmetic patch, Canonical Promotion or Release is authorized.' >> "$GITHUB_STEP_SUMMARY"
