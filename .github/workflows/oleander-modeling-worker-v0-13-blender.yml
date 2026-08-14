@@ -25,6 +25,7 @@ jobs:
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_reopen_verify.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json >/dev/null
@@ -58,7 +59,19 @@ jobs:
             --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
             --out "$OUT" \
             --resolution 512
-      - name: Verify native round-trip, Blender receipt and authority boundary
+      - name: Reopen saved blend and execute embedded native-source rebuild
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$OUT/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 6 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_reopen_verify.py \
+            -- \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --delta 0.003
+      - name: Verify native round-trip, reopen rebuild, Blender receipt and authority boundary
         run: |
           python3 - <<'PY'
           import json
@@ -66,6 +79,7 @@ jobs:
           root=Path('out/G1_R2'); diag=root/'60_OUTPUTS/DIAGNOSTIC'
           report=json.loads((diag/'G1_R2_BLENDER_REPORT.json').read_text())
           roundtrip=json.loads((diag/'G1_R2_BLENDER_SOURCE_ROUNDTRIP.json').read_text())
+          reopen=json.loads((diag/'G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json').read_text())
           assert report['status']=='BLENDER_NATIVE_SOURCE_ROUNDTRIP_PASS_REFLECTION_VISUAL_REVIEW_REQUIRED', report['status']
           assert all(report['checks'].values()), report['checks']
           assert report['design_state']=='REVISE'
@@ -80,6 +94,10 @@ jobs:
           assert roundtrip['controlled_native_edit_test']['changed_families']==['THUMB_SIDE_PLAN']
           assert roundtrip['controlled_native_edit_test']['derived_surface_max_displacement_m'] >= 0.001
           assert roundtrip['bootstrap_seed_overwritten'] is False
+          assert reopen['status']=='REOPEN_NATIVE_SOURCE_REBUILD_PASS', reopen
+          assert all(reopen['checks'].values()), reopen['checks']
+          assert reopen['authority_state']=='WORKING_SOURCE'
+          assert reopen['candidate_promotion']=='NOT_RUN'
           assert (root/'OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend').exists()
           assert (diag/'G1_R2_BASELINE_MASTER.exr').exists()
           for stem in (
@@ -87,7 +105,7 @@ jobs:
               'BASELINE_STRIP_PERSPECTIVE','BASELINE_GRAZING_PERSPECTIVE','BASELINE_ZEBRA_PERSPECTIVE',
               'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE'):
               assert (diag/f'{stem}.png').exists(), stem
-          print('V0_13_G1_R2_BLENDER_NATIVE_SOURCE_ROUNDTRIP_PASS')
+          print('V0_13_G1_R2_BLENDER_NATIVE_SOURCE_REOPEN_REBUILD_PASS')
           PY
       - name: Upload Blender diagnostic artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
@@ -98,6 +116,6 @@ jobs:
           retention-days: 14
       - name: Boundary
         run: |
-          echo 'Blender bridge now validates Blender-native editable Working Source readback, controlled native edit -> derived rebuild, restore, Cycles diagnostics, EXR and native .blend.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'The JSON R2 files are immutable bootstrap seeds/provenance; the live post-bootstrap Working Source is the Blender-native source object set and a new round-trip snapshot is written without overwriting the seed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Blender bridge validates Blender-native editable Working Source readback, controlled native edit -> derived rebuild, restore, saved-.blend reopen -> embedded rebuild, Cycles diagnostics, EXR and native .blend.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The JSON R2 files remain immutable bootstrap seeds/provenance; the live post-bootstrap Working Source is the Blender-native source object set and a new round-trip snapshot is written without overwriting the seed.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Reflection Visual QA remains REVISE / Candidate Review REOPENED. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
