@@ -1,0 +1,148 @@
+/* OLEANDER portfolio framework v2 — work first, research second. */
+
+.portfolio-framework-v2 .portfolio-research-divider {
+  min-height: 72vh;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  column-gap: clamp(16px, 1.8vw, 28px);
+  padding-top: clamp(96px, 12vh, 160px);
+  padding-bottom: clamp(96px, 12vh, 160px);
+  border-top: 1px solid rgba(41, 43, 40, .15);
+}
+
+.portfolio-framework-v2 .portfolio-research-divider > .section-coordinate {
+  grid-column: 1 / -1;
+  align-self: start;
+}
+
+.portfolio-framework-v2 .portfolio-research-divider__inner {
+  grid-column: 2 / span 8;
+  max-width: 980px;
+}
+
+.portfolio-framework-v2 .portfolio-research-divider__inner h2 {
+  max-width: 10ch;
+  margin: .22em 0 .55em;
+  font-size: clamp(42px, 5.6vw, 94px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.portfolio-framework-v2 .portfolio-research-divider__inner > p:last-child {
+  max-width: 44em;
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.75;
+}
+
+@media (min-width: 1180px) {
+  .portfolio-framework-v2 #home {
+    min-height: 88vh;
+  }
+
+  .portfolio-framework-v2 #projects {
+    padding-top: clamp(120px, 14vh, 190px);
+    padding-bottom: clamp(130px, 16vh, 220px);
+  }
+
+  .portfolio-framework-v2 #projects > .section-heading {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(18px, 1.65vw, 26px);
+    align-items: end;
+    margin-bottom: clamp(72px, 9vh, 128px);
+  }
+
+  .portfolio-framework-v2 #projects > .section-heading .eyebrow {
+    grid-column: 1 / span 3;
+    align-self: start;
+  }
+
+  .portfolio-framework-v2 #projects > .section-heading h2 {
+    grid-column: 1 / span 7;
+    max-width: 10ch;
+    margin-top: clamp(22px, 3vh, 42px);
+    font-size: clamp(48px, 5.4vw, 92px);
+    line-height: .98;
+    letter-spacing: -.045em;
+  }
+
+  .portfolio-framework-v2 #projects > .section-heading .section-intro {
+    grid-column: 9 / span 4;
+    align-self: end;
+    max-width: 31em;
+    margin: 0 0 .5rem;
+    line-height: 1.72;
+  }
+
+  .portfolio-framework-v2 #project-panel-relation {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(96px, 13vh, 170px);
+  }
+
+  .portfolio-framework-v2 #projects .project-record--compact {
+    min-height: 74vh;
+  }
+
+  .portfolio-framework-v2 #projects .project-record--featured {
+    min-height: 48vh;
+    margin-top: clamp(28px, 4vh, 64px);
+    padding-top: clamp(48px, 6vh, 86px);
+    border-top: 1px solid rgba(41, 43, 40, .18);
+  }
+
+  .portfolio-framework-v2 #projects .project-record--featured .project-source-visual {
+    opacity: .62;
+  }
+
+  .portfolio-framework-v2 #projects .mode-switcher {
+    margin-top: clamp(76px, 10vh, 132px);
+    padding-top: 22px;
+    border-top: 1px solid rgba(41, 43, 40, .16);
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .portfolio-framework-v2 #projects .mode-button {
+    min-height: auto;
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: 12px;
+    letter-spacing: .08em;
+  }
+
+  .portfolio-framework-v2 #project-panel-practice,
+  .portfolio-framework-v2 #project-panel-archive {
+    margin-top: 32px;
+  }
+
+  .portfolio-framework-v2 #question {
+    min-height: 138vh;
+  }
+
+  .portfolio-framework-v2 #relations,
+  .portfolio-framework-v2 #evidence,
+  .portfolio-framework-v2 #practice {
+    padding-top: clamp(110px, 14vh, 180px);
+  }
+}
+
+@media (max-width: 1179px) {
+  .portfolio-framework-v2 .portfolio-research-divider {
+    min-height: 58vh;
+    display: block;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .portfolio-framework-v2 .portfolio-research-divider__inner {
+    max-width: 760px;
+  }
+
+  .portfolio-framework-v2 .portfolio-research-divider__inner h2 {
+    font-size: clamp(38px, 8vw, 68px);
+  }
+}
