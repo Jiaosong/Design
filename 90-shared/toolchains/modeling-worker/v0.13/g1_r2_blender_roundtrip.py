@@ -34,13 +34,26 @@ def theta_center_rad(source: dict[str, Any]) -> float:
     raise ValueError("INTERFACE_DECK_BOUNDARY requires theta_center_rad or theta_center=TOP_MERIDIAN")
 
 
+def termination_exponent(source: dict[str, Any]) -> float:
+    return float(base.own(source, "LOWER_RETURN_PROFILE").get("termination_envelope_exponent", 0.55))
+
+
 def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     out = copy.deepcopy(template)
     base.own(out, "GRIP_AXIS")["control_points"] = [list(p) for p in curve_points(NAMES["GRIP_AXIS"])]
     base.own(out, "PALM_PROFILE")["control_values"] = [float(p[2]) for p in curve_points(NAMES["PALM_PROFILE"])]
     base.own(out, "THUMB_SIDE_PLAN")["control_values"] = [float(p[1]) for p in curve_points(NAMES["THUMB_SIDE_PLAN"])]
     base.own(out, "OPPOSITE_SIDE_PLAN")["control_values"] = [float(-p[1]) for p in curve_points(NAMES["OPPOSITE_SIDE_PLAN"])]
-    base.own(out, "LOWER_RETURN_PROFILE")["control_values"] = [float(-p[2]) for p in curve_points(NAMES["LOWER_RETURN_PROFILE"])]
+    lower_obj = bpy.data.objects[NAMES["LOWER_RETURN_PROFILE"]]
+    lower = base.own(out, "LOWER_RETURN_PROFILE")
+    lower["control_values"] = [float(-p[2]) for p in curve_points(NAMES["LOWER_RETURN_PROFILE"])]
+    lower["termination_envelope_exponent"] = float(
+        lower_obj.get("termination_envelope_exponent", termination_exponent(template))
+    )
+    lower["termination_envelope"] = f"sin(pi*u)^{lower['termination_envelope_exponent']}"
+    lower["termination_envelope_semantics"] = str(
+        lower_obj.get("termination_envelope_semantics", "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE")
+    )
     deck = bpy.data.objects[NAMES["INTERFACE_DECK_BOUNDARY"]]
     d = base.own(out, "INTERFACE_DECK_BOUNDARY")
     for key in ("u_center", "u_halfspan", "theta_halfspan_rad", "depth_m", "core_fraction"):
@@ -54,12 +67,13 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
 
 def source_numeric_snapshot(source: dict[str, Any]) -> dict[str, list[float]]:
     d = base.own(source, "INTERFACE_DECK_BOUNDARY")
+    lower = base.own(source, "LOWER_RETURN_PROFILE")
     return {
         "GRIP_AXIS": [float(v) for p in base.own(source,"GRIP_AXIS")["control_points"] for v in p],
         "PALM_PROFILE": [float(v) for v in base.own(source,"PALM_PROFILE")["control_values"]],
         "THUMB_SIDE_PLAN": [float(v) for v in base.own(source,"THUMB_SIDE_PLAN")["control_values"]],
         "OPPOSITE_SIDE_PLAN": [float(v) for v in base.own(source,"OPPOSITE_SIDE_PLAN")["control_values"]],
-        "LOWER_RETURN_PROFILE": [float(v) for v in base.own(source,"LOWER_RETURN_PROFILE")["control_values"]],
+        "LOWER_RETURN_PROFILE": [float(v) for v in lower["control_values"]] + [float(lower.get("termination_envelope_exponent", 0.55))],
         "INTERFACE_DECK_BOUNDARY": [float(d["u_center"]),float(d["u_halfspan"]),theta_center_rad(source),float(d["theta_halfspan_rad"]),float(d["depth_m"]),float(d["core_fraction"])],
     }
 
@@ -119,18 +133,67 @@ def controlled_native_edit_test(template: dict[str, Any], delta_m: float = 0.003
     }
 
 
+def controlled_native_termination_relation_edit_test(
+    template: dict[str, Any],
+    delta_exponent: float = 0.02,
+    edit_tolerance: float = 1e-8,
+    restore_tolerance: float = 1e-12,
+):
+    baseline = extract_native_source(template)
+    bv, _, _ = r2.mesh(baseline, False)
+    lower = bpy.data.objects[NAMES["LOWER_RETURN_PROFILE"]]
+    original = float(lower["termination_envelope_exponent"])
+    lower["termination_envelope_exponent"] = original + float(delta_exponent)
+    edited = extract_native_source(template)
+    ev, _, _ = r2.mesh(edited, False)
+    diffs = source_difference(baseline, edited)
+    displacement = max_displacement(bv, ev)
+    lower["termination_envelope_exponent"] = original
+    restored = extract_native_source(template)
+    restored_error = source_difference(baseline, restored)
+    changed = [k for k, v in diffs.items() if v > edit_tolerance]
+    checks = {
+        "only_lower_return_source_family_relation_changed": changed == ["LOWER_RETURN_PROFILE"],
+        "native_relation_edit_read_back": abs(diffs["LOWER_RETURN_PROFILE"] - abs(float(delta_exponent))) <= edit_tolerance,
+        "derived_surface_changed_after_native_relation_edit": displacement > 1e-6,
+        "native_source_restored_exactly": max(restored_error.values()) <= restore_tolerance,
+    }
+    return {
+        "edit": {
+            "object": NAMES["LOWER_RETURN_PROFILE"],
+            "property": "termination_envelope_exponent",
+            "delta": float(delta_exponent),
+            "semantics": "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE",
+        },
+        "source_family_differences": diffs,
+        "changed_families": changed,
+        "derived_surface_max_displacement_m": displacement,
+        "restored_source_error": restored_error,
+        "checks": checks,
+        "pass": all(checks.values()),
+    }
+
+
 def authority_checks(template: dict[str, Any], readback_tolerance: float = 1e-8, locked_semantic_tolerance: float = 1e-8):
     extracted = extract_native_source(template)
     diffs = source_difference(template, extracted)
     objects = [bpy.data.objects.get(name) for name in NAMES.values()]
     present = len(objects) == 6 and all(o is not None for o in objects)
     deck = bpy.data.objects.get(NAMES["INTERFACE_DECK_BOUNDARY"])
+    lower = bpy.data.objects.get(NAMES["LOWER_RETURN_PROFILE"])
     locked_theta_ok = bool(deck is not None and abs(float(deck.get("theta_center_rad", 0.0))) <= locked_semantic_tolerance)
+    termination_relation_present = bool(lower is not None and "termination_envelope_exponent" in lower)
+    termination_relation_semantics_ok = bool(
+        lower is not None
+        and lower.get("termination_envelope_semantics") == "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE"
+    )
     checks = {
         "six_native_source_objects_present": present,
         "all_native_source_objects_editable": present and all(bool(o.get("OLEANDER_EDITABLE", False)) for o in objects),
         "all_native_source_objects_working_source": present and all(o.get("OLEANDER_AUTHORITY") == "WORKING_SURFACE_SOURCE" for o in objects),
         "bootstrap_roundtrip_within_blender_representation_tolerance": max(diffs.values()) <= readback_tolerance,
         "locked_top_meridian_semantic_preserved": locked_theta_ok,
+        "native_shared_termination_relation_present": termination_relation_present,
+        "native_shared_termination_relation_semantics_preserved": termination_relation_semantics_ok,
     }
     return extracted, diffs, checks
