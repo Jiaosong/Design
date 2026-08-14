@@ -16,7 +16,6 @@ if str(HERE) not in sys.path:
 import g1_geometry_core as base
 import g1_r2_core as r2
 import g1_r2_blender_roundtrip as rt
-import g1_r2_blender_scene as bs
 import g1_r2_topology_isolation as iso
 
 
@@ -24,6 +23,7 @@ def args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", required=True)
     parser.add_argument("--r2-correction", required=True)
+    parser.add_argument("--execution-contract", required=True)
     parser.add_argument("--binding", required=True)
     parser.add_argument("--variants", required=True)
     parser.add_argument("--machine-report", required=True)
@@ -59,6 +59,7 @@ def main() -> int:
     a = args()
     source_seed = load(a.source)
     r2_fix = load(a.r2_correction)
+    execution_contract = load(a.execution_contract)
     binding = load(a.binding)
     variants_contract = load(a.variants)
     machine_report = load(a.machine_report)
@@ -82,7 +83,7 @@ def main() -> int:
 
     surface_runtime, runtime_identity = iso.load_surface_runtime(binding)
     scene = bpy.context.scene
-    surface_runtime.render_setup(scene, {"cycles_samples": 96, "denoise": True, "adaptive_sampling": True}, a.resolution)
+    surface_runtime.render_setup(scene, execution_contract["runtime"], a.resolution)
     scene.view_settings.exposure = -1.20
     derived_collection = bpy.data.collections.get(binding["surface_evaluation"]["derived_collection"])
     qa_collection = bpy.data.collections.get(binding["surface_evaluation"]["qa_collection"])
