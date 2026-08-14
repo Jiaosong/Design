@@ -1,13 +1,20 @@
 {
-  "schema": "oleander.modeling-worker.v0.13.g1.r2.blender-execution-contract.v2",
+  "schema": "oleander.modeling-worker.v0.13.g1.r2.blender-execution-contract.v3",
   "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
   "revision": "G1-R2-ERGONOMIC-PALM-INTERFACE-RELATION",
-  "job_state_target": "BLENDER_NATIVE_SOURCE_ROUNDTRIP_VALIDATED",
+  "job_state_target": "R2_TOPOLOGY_VS_SOURCE_ISOLATION_EXECUTED",
   "design_state": "REVISE",
   "authority_state": "WORKING_SOURCE",
   "candidate_review": "REOPENED",
   "candidate_promotion": "NOT_RUN",
-  "runtime": {"blender":"5.2.0 LTS","engine":"CYCLES","diagnostic_resolution":512,"cycles_samples":48,"adaptive_sampling":true,"denoise":true},
+  "runtime": {
+    "blender": "5.2.0 LTS",
+    "engine": "CYCLES",
+    "diagnostic_resolution": 512,
+    "cycles_samples": 48,
+    "adaptive_sampling": true,
+    "denoise": true
+  },
   "source_binding": {
     "bootstrap_primary_curve_source": "G1_PRIMARY_CURVE_SOURCE.json",
     "bootstrap_r2_relation_correction": "G1_R2_RELATION_CORRECTION.json",
@@ -20,13 +27,28 @@
     "live_role_after_bootstrap": "BLENDER_NATIVE_EDITABLE_WORKING_SOURCE"
   },
   "native_source_objects": {
-    "GRIP_AXIS":"OL_SRC_GRIP_AXIS","PALM_PROFILE":"OL_SRC_PALM_PROFILE","THUMB_SIDE_PLAN":"OL_SRC_THUMB_SIDE_PLAN","OPPOSITE_SIDE_PLAN":"OL_SRC_OPPOSITE_SIDE_PLAN","LOWER_RETURN_PROFILE":"OL_SRC_LOWER_RETURN_PROFILE","INTERFACE_DECK_BOUNDARY":"OL_SRC_INTERFACE_DECK_BOUNDARY"
+    "GRIP_AXIS": "OL_SRC_GRIP_AXIS",
+    "PALM_PROFILE": "OL_SRC_PALM_PROFILE",
+    "THUMB_SIDE_PLAN": "OL_SRC_THUMB_SIDE_PLAN",
+    "OPPOSITE_SIDE_PLAN": "OL_SRC_OPPOSITE_SIDE_PLAN",
+    "LOWER_RETURN_PROFILE": "OL_SRC_LOWER_RETURN_PROFILE",
+    "INTERFACE_DECK_BOUNDARY": "OL_SRC_INTERFACE_DECK_BOUNDARY"
   },
-  "derived_objects": {"baseline":"OL_DERIVED_G1_R2_BASELINE","thumb_revision":"OL_DERIVED_G1_R2_THUMB_REVISION"},
+  "derived_objects": {
+    "baseline": "OL_DERIVED_G1_R2_BASELINE",
+    "thumb_revision": "OL_DERIVED_G1_R2_THUMB_REVISION",
+    "isolation_baseline": "OL_ISO_R2_BASE_TOPOLOGY",
+    "isolation_dense": "OL_ISO_R2_DENSE_TOPOLOGY"
+  },
   "roundtrip": {
     "native_readback_required": true,
-    "bootstrap_readback_tolerance_m": 1e-8,
-    "controlled_native_edit": {"object":"OL_SRC_THUMB_SIDE_PLAN","index":3,"delta_m":0.003,"only_family":"THUMB_SIDE_PLAN"},
+    "bootstrap_readback_tolerance_m": 1e-08,
+    "controlled_native_edit": {
+      "object": "OL_SRC_THUMB_SIDE_PLAN",
+      "index": 3,
+      "delta_m": 0.003,
+      "only_family": "THUMB_SIDE_PLAN"
+    },
     "derived_surface_min_effect_m": 0.001,
     "restore_tolerance_m": 1e-12,
     "rebuild_text_block": "OLEANDER_G1_R2_REBUILD.py",
@@ -36,25 +58,109 @@
     "saved_blend_reopen_report": "G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json",
     "overwrite_bootstrap_seed_forbidden": true
   },
-  "camera_jobs": {"HERO_CAM":{"lens_mm":85},"CMF_CAM":{"lens_mm":110},"INSPECTION_CAM":{"lens_mm":135}},
+  "topology_source_isolation": {
+    "required": true,
+    "contract": "G1_R2_TOPOLOGY_ISOLATION_CONTRACT.json",
+    "executor": "g1_r2_topology_isolation.py",
+    "same_native_source_required": true,
+    "source_edit_forbidden": true,
+    "baseline_topology": {
+      "u_rings": 56,
+      "circumferential_samples": 72
+    },
+    "dense_topology": {
+      "u_rings": 112,
+      "circumferential_samples": 144
+    },
+    "shared_surface_system_runtime_required": true,
+    "analytic_source_probe_required": true,
+    "paired_visual_rigs": [
+      "STRIP",
+      "GRAZING",
+      "ZEBRA"
+    ],
+    "promotion_from_isolation_forbidden": true
+  },
+  "camera_jobs": {
+    "HERO_CAM": {
+      "lens_mm": 85
+    },
+    "CMF_CAM": {
+      "lens_mm": 110
+    },
+    "INSPECTION_CAM": {
+      "lens_mm": 135
+    }
+  },
   "diagnostic_rigs": {
-    "BROAD":["R2_KEY_BROAD","R2_TOP_CARD","R2_CONTACT_FILL","R2_NEG_FILL"],
-    "STRIP":["R2_SIDE_STRIP_A","R2_SIDE_STRIP_B","R2_NEG_FILL"],
-    "GRAZING":["R2_GRAZING_STRIP","R2_CONTACT_FILL","R2_NEG_FILL"],
-    "ZEBRA":["OLEANDER_MAT_QA_ZEBRA_NORMAL_v1"]
+    "BROAD": [
+      "R2_KEY_BROAD",
+      "R2_TOP_CARD",
+      "R2_CONTACT_FILL",
+      "R2_NEG_FILL"
+    ],
+    "STRIP": [
+      "R2_SIDE_STRIP_A",
+      "R2_SIDE_STRIP_B",
+      "R2_NEG_FILL"
+    ],
+    "GRAZING": [
+      "R2_GRAZING_STRIP",
+      "R2_CONTACT_FILL",
+      "R2_NEG_FILL"
+    ],
+    "ZEBRA": [
+      "OLEANDER_MAT_QA_ZEBRA_NORMAL_v1"
+    ]
   },
   "outputs": {
-    "blend":"OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend",
-    "diagnostic_root":"60_OUTPUTS/DIAGNOSTIC",
-    "report":"G1_R2_BLENDER_REPORT.json",
-    "source_snapshot":"G1_R2_BLENDER_NATIVE_SOURCE.json",
-    "roundtrip_snapshot":"G1_R2_BLENDER_SOURCE_ROUNDTRIP.json",
-    "reopen_rebuild_report":"G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json",
-    "master_exr":"G1_R2_BASELINE_MASTER.exr"
+    "blend": "OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend",
+    "diagnostic_root": "60_OUTPUTS/DIAGNOSTIC",
+    "report": "G1_R2_BLENDER_REPORT.json",
+    "source_snapshot": "G1_R2_BLENDER_NATIVE_SOURCE.json",
+    "roundtrip_snapshot": "G1_R2_BLENDER_SOURCE_ROUNDTRIP.json",
+    "reopen_rebuild_report": "G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json",
+    "topology_isolation_report": "G1_R2_TOPOLOGY_SOURCE_ISOLATION.json",
+    "master_exr": "G1_R2_BASELINE_MASTER.exr"
   },
-  "required_diagnostics": ["BASELINE_BROAD_PERSPECTIVE","BASELINE_BROAD_TOP","BASELINE_BROAD_SIDE","BASELINE_STRIP_PERSPECTIVE","BASELINE_GRAZING_PERSPECTIVE","BASELINE_ZEBRA_PERSPECTIVE","REVISION_BROAD_PERSPECTIVE","REVISION_STRIP_PERSPECTIVE"],
+  "required_diagnostics": [
+    "BASELINE_BROAD_PERSPECTIVE",
+    "BASELINE_BROAD_TOP",
+    "BASELINE_BROAD_SIDE",
+    "BASELINE_STRIP_PERSPECTIVE",
+    "BASELINE_GRAZING_PERSPECTIVE",
+    "BASELINE_ZEBRA_PERSPECTIVE",
+    "REVISION_BROAD_PERSPECTIVE",
+    "REVISION_STRIP_PERSPECTIVE"
+  ],
+  "required_isolation_diagnostics": [
+    "ISO_BASE_STRIP_PERSPECTIVE",
+    "ISO_DENSE_STRIP_PERSPECTIVE",
+    "ISO_BASE_GRAZING_PERSPECTIVE",
+    "ISO_DENSE_GRAZING_PERSPECTIVE",
+    "ISO_BASE_ZEBRA_PERSPECTIVE",
+    "ISO_DENSE_ZEBRA_PERSPECTIVE"
+  ],
   "debug_contract": {
-    "deterministic_bootstrap":true,"explicit_camera_assignment":true,"explicit_light_assignment":true,"explicit_material_assignment":true,"fallback_materials_forbidden":true,"named_outputs_required":true,"machine_readable_receipt_required":true,"derived_mesh_is_not_source_authority":true,"blender_native_source_is_editable":true,"native_source_readback_required":true,"native_edit_to_derived_rebuild_required":true,"self_contained_rebuild_text_required":true,"saved_blend_reopen_rebuild_required":true,"bootstrap_seed_overwrite_forbidden":true
+    "deterministic_bootstrap": true,
+    "explicit_camera_assignment": true,
+    "explicit_light_assignment": true,
+    "explicit_material_assignment": true,
+    "fallback_materials_forbidden": true,
+    "named_outputs_required": true,
+    "machine_readable_receipt_required": true,
+    "derived_mesh_is_not_source_authority": true,
+    "blender_native_source_is_editable": true,
+    "native_source_readback_required": true,
+    "native_edit_to_derived_rebuild_required": true,
+    "self_contained_rebuild_text_required": true,
+    "saved_blend_reopen_rebuild_required": true,
+    "bootstrap_seed_overwrite_forbidden": true,
+    "same_source_across_topology_ab_required": true,
+    "alternate_topology_not_authority": true,
+    "analytic_source_space_probe_required": true,
+    "surface_system_runtime_shared_for_topology_ab": true,
+    "topology_isolation_cannot_promote_candidate": true
   },
-  "boundary": "This gate validates Blender-native Working Source readback/rebuild, saved-.blend reopen/rebuild continuity, and Surface System diagnostics. Reflection Visual QA remains REVISE until the newer native-source/execution isolation evidence is reviewed. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized."
+  "boundary": "This gate validates Blender-native Working Source readback/rebuild, executable shared Surface System diagnostics, and same-Source topology-vs-source isolation. Reflection/design state remains REVISE regardless of diagnostic classification until the evidence is reviewed. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized."
 }
