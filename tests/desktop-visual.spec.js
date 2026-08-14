@@ -5,6 +5,7 @@ async function settle(page) {
   await page.waitForLoadState('networkidle');
   await expect(page.locator('.expression-encounter')).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-portfolio-framework', 'ready');
+  await expect(page.locator('html')).toHaveAttribute('data-portfolio-crops', 'ready');
   await page.evaluate(async () => {
     await Promise.all([...document.images].map((img) => img.complete ? Promise.resolve() : new Promise((resolve) => {
       img.addEventListener('load', resolve, { once: true });
