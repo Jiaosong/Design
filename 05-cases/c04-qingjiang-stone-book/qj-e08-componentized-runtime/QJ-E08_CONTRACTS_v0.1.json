@@ -1,0 +1,21 @@
+{
+  "componentContract": {
+    "version": "QJ-E08-COMPONENT-CONTRACT-v0.1",
+    "components": {
+      "qj-action": {"props": {"variant": ["primary","secondary","tertiary","critical"],"label": "string","go": "state-key"},"touchTargetMinPx": 48},
+      "qj-prompt": {"props": {"type": ["find","compare","listen","trace","frame","walk","look-back"],"label": "string","text": "string"}},
+      "qj-reveal": {"props": {"mode": ["fallback-2d","section","alignment","ar-candidate"],"title": "string","copy": "string"},"default": "fallback-2d"},
+      "qj-route-canvas": {"dataPolicy": "SIMULATED unless field authority is attached"},
+      "qj-service-item": {"states": ["KNOWN","UNKNOWN","UNAVAILABLE","CLOSED","OFFLINE_CACHED","OFFICIAL_REQUIRED"]},
+      "qj-memory-entry": {"semantics": "record, not achievement"},
+      "qj-nav": {"items": ["today","route","book","service"]}
+    }
+  },
+  "stateContract": {
+    "version": "QJ-E08-STATE-CONTRACT-v0.1",
+    "primaryJourney": ["today","route","s1","s2","record","s0","closure","book"],
+    "nodeModes": {"S0": "landscape sovereignty / digital silence","S1": "observation prompt","S2": "digital reveal only when needed"},
+    "readingSequence": ["presence","find","compare","understand","leave"],
+    "fieldAuthorityRequired": ["gps","route_time","live_service","ar_tracking","node_closure","field_safety"]
+  }
+}
