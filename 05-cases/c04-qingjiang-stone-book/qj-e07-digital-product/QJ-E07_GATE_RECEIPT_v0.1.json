@@ -7,10 +7,11 @@
     "fallback_architecture": "PASS",
     "structured_output": "PASS",
     "local_open_test": "PASS",
-    "visual_render_test": "PENDING",
+    "visual_render_test": "PASS_SVG_RENDER_ONLY",
     "penpot_native_import": "OPEN",
     "drive_sync_readback": "PASS",
-    "github_sync_readback": "OPEN",
+    "github_sync_readback": "PASS",
+    "github_pr_diff_audit": "PASS",
     "field_validation": "OPEN",
     "static_flow_validation": "PASS",
     "svg_import_asset_validation": "PASS",
@@ -21,13 +22,23 @@
   "qa_notes": [
     "S0 persistent primary navigation removed after visual QA.",
     "S2 unsupported return glyph replaced after render QA.",
-    "Chromium headless runner failed to produce a reliable browser screenshot in this container; SVG render QA used as visual evidence instead. Penpot-native and field gates remain open."
+    "Chromium headless runner failed to produce a reliable browser screenshot in this container; SVG render QA used as visual evidence instead.",
+    "Penpot-native import/readback and field validation remain open and are not represented as completed."
   ],
   "sync_receipts": {
     "drive": {
       "file_id": "1FIxclE1NzgkRcoynKVoBC1KUbHEaQNnZ",
       "parent_id": "1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz",
       "metadata_readback": "PASS"
+    },
+    "github": {
+      "repository": "Jiaosong/Design",
+      "branch": "agent/qj-e07-digital-product",
+      "pull_request": 96,
+      "pull_request_state": "DRAFT_OPEN",
+      "runtime_blob_sha": "90c5aab580bc18959fd592ca20d74716c5d5330d",
+      "file_readback": "PASS",
+      "pr_diff_audit": "PASS"
     }
   }
 }
