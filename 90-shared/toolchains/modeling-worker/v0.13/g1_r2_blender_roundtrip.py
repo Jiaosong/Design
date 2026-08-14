@@ -109,10 +109,11 @@ def authority_checks(template: dict[str, Any]):
     extracted = extract_native_source(template)
     diffs = source_difference(template, extracted)
     objects = [bpy.data.objects.get(name) for name in NAMES.values()]
+    present = len(objects) == 6 and all(o is not None for o in objects)
     checks = {
-        "six_native_source_objects_present": all(objects) and len(objects) == 6,
-        "all_native_source_objects_editable": all(bool(o.get("OLEANDER_EDITABLE", False)) for o in objects),
-        "all_native_source_objects_working_source": all(o.get("OLEANDER_AUTHORITY") == "WORKING_SURFACE_SOURCE" for o in objects),
+        "six_native_source_objects_present": present,
+        "all_native_source_objects_editable": present and all(bool(o.get("OLEANDER_EDITABLE", False)) for o in objects),
+        "all_native_source_objects_working_source": present and all(o.get("OLEANDER_AUTHORITY") == "WORKING_SURFACE_SOURCE" for o in objects),
         "bootstrap_roundtrip_exact": max(diffs.values()) <= 1e-12,
     }
     return extracted, diffs, checks
