@@ -8,6 +8,19 @@
 - Decision question: 状态变化时，怎样把“任务变化”置于装饰变化之前？
 - Application Mapping: IP03 PRIMARY; B04 SUPPORTING.
 
+## Project relation
+- P2 Project ID: `PRAC-IP-2026`
+- P3 Workstream ID: `PRAC-IP-2026-WS-03`
+- P3 name: `Motion Hierarchy｜State × Attention × Reduced Motion`
+- Current P3 state: `EXPLORE / G4`
+- This Practice adds runtime evidence to the existing P3; it does not create P4 validation.
+
+## Authority split
+- Stable Motion Theory: Notion `KN-THEORY-MOTION-DESIGN-001`.
+- Current/datable runtime-library routing: Notion `TOOL-MOTION-RUNTIME-ROUTING-001` + GitHub `oleander-skills/oleander-motion/`.
+- GitHub skill merge/CI snapshot: Notion `EVD-MOTION-SKILL-V03-MERGE-20260811`.
+- This artifact: executed MOT-02 runtime evidence only; it does not promote the Theory or every tool/library route.
+
 ## Variants
 - No-motion Baseline: idle state.
 - Candidate A / Simultaneous: card translation + dot scale/opacity + progress expansion share the same 320 ms transition.
