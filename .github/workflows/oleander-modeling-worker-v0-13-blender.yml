@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
       - '00-governance/control-plane/tests/test_modeling_worker_v013_blender_bridge.py'
       - '.github/workflows/oleander-modeling-worker-v0-13-blender.yml'
   workflow_dispatch:
@@ -13,29 +15,35 @@ permissions:
 
 jobs:
   g1-r2-blender-execution:
-    name: G1 R2 Blender Native Working Source + Reflection Diagnostics
+    name: G1 R2 Sparse Working Source → Surface System F1 Runtime
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Compile bridge and validate JSON contracts
+
+      - name: Compile bridge and validate executable Surface System binding
         run: |
           python3 -m py_compile \
+            90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_reopen_verify.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py
+          python3 -m json.tool 90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json >/dev/null
+          python3 00-governance/control-plane/tests/test_modeling_worker_v013_blender_bridge.py
+
       - name: Install Blender runtime dependencies
         run: |
           set -euo pipefail
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends libegl1
+
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
@@ -44,7 +52,8 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Execute G1 R2 Blender native-source bridge
+
+      - name: Execute sparse source through shared Blender Surface System runtime
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
@@ -59,6 +68,7 @@ jobs:
             --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
             --out "$OUT" \
             --resolution 512
+
       - name: Reopen saved blend and execute embedded native-source rebuild
         run: |
           set -euo pipefail
@@ -71,7 +81,8 @@ jobs:
             -- \
             --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
             --delta 0.003
-      - name: Verify native round-trip, reopen rebuild, Blender receipt and authority boundary
+
+      - name: Verify Surface System runtime, native round-trip, reopen rebuild and authority boundary
         run: |
           python3 - <<'PY'
           import json
@@ -80,8 +91,15 @@ jobs:
           report=json.loads((diag/'G1_R2_BLENDER_REPORT.json').read_text())
           roundtrip=json.loads((diag/'G1_R2_BLENDER_SOURCE_ROUNDTRIP.json').read_text())
           reopen=json.loads((diag/'G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json').read_text())
-          assert report['status']=='BLENDER_NATIVE_SOURCE_ROUNDTRIP_PASS_REFLECTION_VISUAL_REVIEW_REQUIRED', report['status']
+          assert report['status']=='BLENDER_NATIVE_SOURCE_SURFACE_SYSTEM_RUNTIME_PASS_REFLECTION_VISUAL_REVIEW_REQUIRED', report['status']
           assert all(report['checks'].values()), report['checks']
+          ss=report['surface_system_runtime']
+          assert ss['status']=='PASS'
+          assert ss['system']=='OLEANDER Blender Surface System'
+          assert ss['version']=='v1.20.0'
+          assert ss['fidelity']=='F1_DESIGN_VALIDATION'
+          assert ss['api']=='oleander.blender-surface-system.f1-runtime.v1'
+          assert all(ss['checks'].values()), ss
           assert report['design_state']=='REVISE'
           assert report['authority_state']=='WORKING_SOURCE'
           assert report['candidate_review']=='REOPENED'
@@ -89,6 +107,7 @@ jobs:
           assert report['render_engine']=='CYCLES'
           assert report['blender_version'].startswith('5.2.0')
           assert roundtrip['source_mode']=='BLENDER_NATIVE_EDITABLE_WORKING_SOURCE'
+          assert roundtrip['surface_system_runtime']['status']=='PASS'
           assert all(roundtrip['authority_checks'].values())
           assert roundtrip['controlled_native_edit_test']['pass'] is True
           assert roundtrip['controlled_native_edit_test']['changed_families']==['THUMB_SIDE_PLAN']
@@ -105,8 +124,9 @@ jobs:
               'BASELINE_STRIP_PERSPECTIVE','BASELINE_GRAZING_PERSPECTIVE','BASELINE_ZEBRA_PERSPECTIVE',
               'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE'):
               assert (diag/f'{stem}.png').exists(), stem
-          print('V0_13_G1_R2_BLENDER_NATIVE_SOURCE_REOPEN_REBUILD_PASS')
+          print('V0_13_SPARSE_SOURCE_TO_BLENDER_SURFACE_SYSTEM_RUNTIME_PASS')
           PY
+
       - name: Upload Blender diagnostic artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
@@ -114,8 +134,9 @@ jobs:
           path: out/G1_R2/
           if-no-files-found: error
           retention-days: 14
+
       - name: Boundary
         run: |
-          echo 'Blender bridge validates Blender-native editable Working Source readback, controlled native edit -> derived rebuild, restore, saved-.blend reopen -> embedded rebuild, Cycles diagnostics, EXR and native .blend.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'The JSON R2 files remain immutable bootstrap seeds/provenance; the live post-bootstrap Working Source is the Blender-native source object set and a new round-trip snapshot is written without overwriting the seed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The v0.13 sparse Blender-native Working Source now executes through the shared Blender Surface System v1.20.0 F1 runtime for materials, cameras, Broad/Strip/Grazing rigs, Zebra and render setup.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Modeling Worker retains source/relationship/derived-geometry ownership; local duplicate Surface System runtime is forbidden and checked.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Reflection Visual QA remains REVISE / Candidate Review REOPENED. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
