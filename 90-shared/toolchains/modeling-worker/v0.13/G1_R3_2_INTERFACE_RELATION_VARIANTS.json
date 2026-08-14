@@ -42,17 +42,17 @@
     },
     {
       "variant_id": "R3.2-C-DEFINED-CORE",
-      "design_question": "Can a still larger core recover a distinct recessed field if the angular and longitudinal spans provide only the compensation required for fairness?",
+      "design_question": "Can a larger core recover stronger basin definition while staying inside the existing Machine height gate and the working fairness gate?",
       "source_overrides": {
-        "u_halfspan": 0.271,
-        "theta_halfspan_rad": 1.10,
-        "core_fraction": 0.32,
+        "u_halfspan": 0.26,
+        "theta_halfspan_rad": 1.09,
+        "core_fraction": 0.30,
         "depth_m": 0.012
       }
     }
   ],
   "selection_policy": "FAIRNESS_GATE_FIRST; render all passing professional relation directions; visual hierarchy decides among passing variants",
-  "batch_logic": "Three independent source-relation directions. A tests compact angular footprint, B recovers core definition, C pushes core recovery further with bounded angular/longitudinal compensation. This is not a thumbnail or one-dimensional micro-tuning batch.",
+  "batch_logic": "Three independent source-relation directions. A tests compact angular footprint, B recovers core definition, C pushes core recovery further without crossing the existing height gate. This is not a thumbnail or one-dimensional micro-tuning batch.",
   "termination_policy": "RIGHT_FRONT_TERMINATION remains open and unchanged.",
   "boundary": "R3.2 variants are reversible Working Source experiments only. No Machine, fairness or visual result directly promotes Candidate or Canonical authority."
 }
