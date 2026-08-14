@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -28,6 +29,7 @@ def args():
     parser.add_argument("--variants", required=True)
     parser.add_argument("--machine-report", required=True)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--stage", default="R3.1")
     parser.add_argument("--resolution", type=int, default=512)
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else sys.argv[1:])
 
@@ -36,8 +38,14 @@ def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def token(stage: str) -> str:
+    return re.sub(r"[^A-Za-z0-9]+", "_", stage).strip("_").upper()
+
+
 def main() -> int:
     a = args()
+    stage = str(a.stage)
+    stage_token = token(stage)
     source_seed = load(a.source)
     r2_fix = load(a.r2_correction)
     execution_contract = load(a.execution_contract)
@@ -49,11 +57,11 @@ def main() -> int:
 
     candidates = list(machine_report.get("visual_candidates", []))
     if not candidates:
-        raise RuntimeError("R3.1 has no Machine+Fairness PASS visual candidates")
+        raise RuntimeError(f"{stage} has no Machine+Fairness PASS visual candidates")
     by_id = {row["variant_id"]: row for row in variants_contract["variants"]}
     missing = [variant_id for variant_id in candidates if variant_id not in by_id]
     if missing:
-        raise RuntimeError(f"R3.1 machine report references missing variants: {missing}")
+        raise RuntimeError(f"{stage} machine report references missing variants: {missing}")
 
     template = r2.apply(source_seed, r2_fix)
     baseline_source = rt.extract_native_source(template)
@@ -72,10 +80,11 @@ def main() -> int:
     if derived_collection is None or qa_collection is None:
         raise RuntimeError("Expected derived/QA collections are missing from saved .blend")
 
-    baseline_obj, _, _, _ = rt.replace_derived("OL_DERIVED_G1_R3_1_R2_BASELINE", baseline_source, derived_collection, False)
-    baseline_obj["OLEANDER_R3_1_VISUAL_ROLE"] = "R2_REFERENCE"
+    baseline_obj, _, _, _ = rt.replace_derived(f"OL_DERIVED_G1_{stage_token}_R2_BASELINE", baseline_source, derived_collection, False)
+    baseline_obj["OLEANDER_R3_BATCH_STAGE"] = stage
+    baseline_obj["OLEANDER_R3_BATCH_VISUAL_ROLE"] = "R2_REFERENCE"
     iso.set_only_rendered(derived_collection, baseline_obj)
-    baseline_renders = vis.render_set(surface_runtime, binding, out, qa_collection, baseline_obj, "R3_1_R2_BASELINE")
+    baseline_renders = vis.render_set(surface_runtime, binding, out, qa_collection, baseline_obj, f"{stage_token}_R2_BASELINE")
 
     variant_results = []
     all_renders = list(baseline_renders.values())
@@ -86,7 +95,8 @@ def main() -> int:
         source_diffs = rt.source_difference(baseline_source, candidate_source)
         changed = [name for name, value in source_diffs.items() if value > 1e-8]
         candidate_obj, _, _, _ = rt.replace_derived(f"OL_DERIVED_{variant_id}", candidate_source, derived_collection, False)
-        candidate_obj["OLEANDER_R3_1_VISUAL_ROLE"] = "MACHINE_FAIRNESS_PASS_PROFESSIONAL_VARIANT"
+        candidate_obj["OLEANDER_R3_BATCH_STAGE"] = stage
+        candidate_obj["OLEANDER_R3_BATCH_VISUAL_ROLE"] = "MACHINE_FAIRNESS_PASS_PROFESSIONAL_VARIANT"
         candidate_obj["OLEANDER_VARIANT_ID"] = variant_id
         iso.set_only_rendered(derived_collection, candidate_obj)
         renders = vis.render_set(surface_runtime, binding, out, qa_collection, candidate_obj, variant_id)
@@ -123,17 +133,19 @@ def main() -> int:
         "candidate_promotion_still_blocked": machine_report.get("candidate_promotion") == "NOT_RUN",
         "all_batch_renders_written": all((out / name).exists() for name in all_renders),
     }
-    status = "R3_1_PROFESSIONAL_BATCH_RENDERED_VISUAL_REVIEW_REQUIRED" if all(checks.values()) else "R3_1_BATCH_FAIL_REVISE"
+    status = f"{stage_token}_PROFESSIONAL_BATCH_RENDERED_VISUAL_REVIEW_REQUIRED" if all(checks.values()) else f"{stage_token}_BATCH_FAIL_REVISE"
+    report_name = f"G1_{stage_token}_VISUAL_BATCH_REPORT.json"
     report = {
-        "schema": "oleander.modeling-worker.v0.13.g1.r3.1.visual-batch-report.v1",
+        "schema": f"oleander.modeling-worker.v0.13.g1.{stage.lower()}.visual-batch-report.v1",
+        "stage": stage,
         "status": status,
-        "job_state": "R3_1_MINIMUM_CHANGE_PROFESSIONAL_BATCH_EXECUTED",
+        "job_state": f"{stage_token}_PROFESSIONAL_BATCH_EXECUTED",
         "design_state": "REVISE",
         "authority_state": "WORKING_SOURCE",
         "candidate_review": "REOPENED",
         "candidate_promotion": "NOT_RUN",
         "machine_selection_policy": machine_report.get("selection_policy"),
-        "machine_recommended_minimum_change_variant": machine_report.get("selected_for_fixed_rig_visual_diagnostics"),
+        "machine_recommended_variant": machine_report.get("selected_for_fixed_rig_visual_diagnostics"),
         "visual_candidates": candidates,
         "checks": checks,
         "surface_system_runtime": runtime_identity,
@@ -141,11 +153,11 @@ def main() -> int:
         "variants": variant_results,
         "source_restored_error": restored_error,
         "visual_decision": "NOT_RUN_BATCH_REVIEW_REQUIRED",
-        "termination_state": "OPEN_UNCHANGED_NOT_SOLVED_BY_R3_1_INTERFACE_BATCH",
-        "next_legal_action": "Compare every Machine+Fairness PASS professional variant under fixed Strip/Grazing/Zebra. Select the smallest relation change that preserves interface-basin readability and removes the R2 compression; otherwise remain REVISE.",
-        "boundary": "R3.1 batch output is diagnostic design evidence only. No Candidate or Canonical Promotion is authorized.",
+        "termination_state": f"OPEN_UNCHANGED_NOT_SOLVED_BY_{stage_token}_INTERFACE_BATCH",
+        "next_legal_action": "Compare every Machine+Fairness PASS professional variant under fixed Strip/Grazing/Zebra. Preserve interface-basin readability and remove the R2 compression; otherwise remain REVISE.",
+        "boundary": f"{stage} batch output is diagnostic design evidence only. No Candidate or Canonical Promotion is authorized.",
     }
-    (out / "G1_R3_1_VISUAL_BATCH_REPORT.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    (out / report_name).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
     return 0 if status.endswith("REVIEW_REQUIRED") else 7
 
