@@ -75,12 +75,8 @@ Source page: `https://www.esdqj.cn/jdwf/85.html`.
 Current gate:
 - `OFFICIAL MAP ASSET EXISTS = PASS`;
 - `EXACT FIRST-PARTY ROUTE-ASSET ENDPOINT = PASS`;
-- `RAW / READABLE PIXELS = BLOCKED` because the current runtime cannot transfer the mmbiz bytes;
-- `NODE-BY-NODE MAP READING = NOT RUN`;
-- no R03/R08/R10 name promotion from an unread image;
-- R07 field/map spelling remains OPEN;
-- R04 map-name/viewpoint closure remains OPEN;
-- R06 micro-route/platform geometry remains OPEN;
+- the mmbiz route-image bytes remain transport-blocked in the current runtime;
+- no node-name or micro-route promotion is permitted from an unread image;
 - `PROMOTION = NO`.
 
 The same official guide supports only the provisional macro access topology:
@@ -89,21 +85,60 @@ The same official guide supports only the provisional macro access topology:
 
 Current 2026 operator-carried material continues to reference 云坛口码头、跨江索道 and 峰林游步道 in active operating context. This supports continuity of the macro physical access system, but does **not** make the 2025 departure times, ticket prices or detailed schedule current 2026 facts.
 
-No further generic map search counts as progress for this blocker. Unblock requires the same first-party guide asset bytes or a readable official/project-owned copy, followed by Open Test + Pixel QA before any node-by-node extraction.
+## P0-01｜Official Guide Pixel QA v0.3
 
-`P0-01 SOURCE ENDPOINT CLOSURE = PASS / PIXEL CLOSURE = BLOCKED / NEXT = ASSET DELIVERY OR FIELD`.
+Official first-party hand-drawn guide:
+- page: `https://www.esdqj.cn/jdwf/87.html`;
+- publication: 2025-08-05;
+- direct image: `https://www.esdqj.cn/upload/20250805/f8d50b8f0d5027.jpg`.
+
+The direct image opened in the web visual runtime. State transition:
+- `HAND-DRAWN GUIDE WEB PIXEL VIEW = PASS`;
+- `VISUAL RELATION REVIEW = RUN`;
+- `LOCAL BYTE MATERIALIZATION / HASH / DURABLE PROJECT COPY = BLOCKED`.
+
+The pixels safely establish:
+- Qingjiang as the separating river field;
+- a north-bank access/facility cluster;
+- an explicitly drawn cableway crossing to the south-bank peak-forest side;
+- a terrain-following south-bank walking system with bends and multiple labelled scenic/facility points;
+- the visual topology is not a simple `OPEN → 13 sequential stops → FINALE` diagram.
+
+This strengthens the current QJ-C macro relation model: water/access → cableway viewpoint change → mountain-side walking network. It also supports keeping `清江十三印` as a content/reading-lens library rather than fixed route authority.
+
+The hand-drawn guide is not a survey drawing and does **not** establish metric distance, slope, level difference, stair count, width, walking time, safety envelope, drainage, accessibility, crowd capacity, exact viewpoint coordinates, or a mandatory node sequence. At the currently available web-view resolution, complete authoritative reading of every small Chinese label is also not promoted.
+
+Therefore:
+- `MICRO-ROUTE ORDER = OPEN`;
+- `NODE-BY-NODE LABEL AUTHORITY = PARTIAL / NOT PROMOTED`;
+- `R06 PLATFORM GEOMETRY = FIELD-REQUIRED`;
+- `R11 / R13 SAFETY = FIELD-REQUIRED`;
+- `R04 / R07 / R09 / R12 SIGNAGE / VIEWPOINT = FIELD-REQUIRED`.
+
+Official full-panorama companion:
+- page: `https://www.esdqj.cn/jdwf/86.html`;
+- publication: 2025-08-05;
+- direct image endpoint: `https://www.esdqj.cn/upload/20250805/d435f1a0b8bd13.jpg`;
+- page/endpoint authority PASS;
+- pixel view remains BLOCKED by current web cache miss.
+
+P0-01 decision:
+`OFFICIAL HAND-DRAWN GUIDE SOURCE = PASS / OFFICIAL HAND-DRAWN GUIDE WEB PIXELS = PASS / MACRO SPATIAL RELATION = PIXEL-GROUNDED PROVISIONAL INPUT / COMPLETE LABEL EXTRACTION = NOT PASS / METRIC FIELD GEOMETRY = NOT PASS / LOCAL DURABLE IMAGE COPY = NOT PASS / PROMOTION = NO`.
+
+No further remote interpretation of tiny labels is authorized without a higher-resolution/durable source copy.
 
 ## Current next true progress
 
-1. materialize and visually read the official route/guide pixels;
-2. acquire authentic continuous R01 cableway video;
-3. acquire R06 observation-platform pixels + field geometry;
-4. execute R11/R13 Safety Field;
-5. execute R04/R07/R09/R12 field signage/viewpoint capture;
-6. close R02 botany with qualified expertise;
-7. close R03/R08/R10 node-specific geology with field/expert evidence;
-8. acquire R05 same-view clear/fog pair;
-9. run user validation only after stimulus Visual QA passes.
+1. acquire authentic continuous R01 cableway video;
+2. acquire R06 observation-platform pixels + field geometry;
+3. execute R11/R13 Safety Field;
+4. execute R04/R07/R09/R12 field signage/viewpoint capture;
+5. close R02 botany with qualified expertise;
+6. close R03/R08/R10 node-specific geology with field/expert evidence;
+7. acquire R05 same-view clear/fog pair;
+8. run user validation only after stimulus Visual QA passes.
+
+A higher-resolution/durable official guide or panorama source copy remains a valid evidence delivery, but generic map searching is no longer a primary work item.
 
 ## 2026 operator context
 
