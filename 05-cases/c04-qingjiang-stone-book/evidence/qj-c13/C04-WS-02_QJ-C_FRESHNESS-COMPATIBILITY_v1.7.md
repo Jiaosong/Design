@@ -43,15 +43,19 @@ Result:
 
 No retest is required solely because of the v1.7 macro-topology delta. This does not waive A/G1F field execution.
 
-## Still open
+## Cross-line owner readback delta
 
-QJ-C15 v1.6 recorded owner revisions still OPEN:
+QJ-C15 v1.6 recorded owner revisions. After QJ-C16, direct C-D receipt `C04-WS-02_WS-04_R01-MODE-ALIGNMENT_v0.1.md` at commit `5f02d48d5cd42f78240ddcc1971f1b448f395428` closes D-R1 / R01 mode alignment:
+
+`R01 = S0 PRIMARY ONSITE + S1 OPTIONAL AFTER-VIEW`
+
+Still OPEN:
 - B-R1
-- D-R1 / D-R2
+- D-R2
 - E-R1 / E-R2
 - F-R1
 
-QJ-C16 does not close those owner revisions.
+The direct alignment does not create field truth or promotion.
 
 Field / implementation remains:
 `OPEN / G1F HOLD`
