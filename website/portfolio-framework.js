@@ -32,6 +32,20 @@
   c03?.setAttribute('data-case-role', 'visual-case');
   c01?.setAttribute('data-case-role', 'research-case');
 
+  const encounterDaylily = $('.encounter-work--daylily', encounter || document);
+  const encounterReno = $('.encounter-work--reno', encounter || document);
+  const daylilyOpening = c02?.querySelector('.daylily-opening__image');
+  const renoOpening = c03?.querySelector('.reno-opening__image');
+  [encounterDaylily, encounterReno, daylilyOpening, renoOpening].filter(Boolean).forEach((figure) => {
+    figure.dataset.cropRole = 'presentation';
+  });
+
+  const renoEncounterImage = encounterReno?.querySelector('img');
+  if (renoEncounterImage) {
+    renoEncounterImage.src = 'assets/reno-cmf/hero.jpg';
+    renoEncounterImage.alt = 'Reno 单机光影 CMF 视觉，作为 The Light Collection 项目入口';
+  }
+
   const encounterHead = encounter?.querySelector('.expression-encounter__head');
   if (encounterHead) {
     const eyebrow = encounterHead.querySelector('.eyebrow');
