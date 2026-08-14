@@ -1,0 +1,177 @@
+{
+  "schema_version": "c04-f-integration/0.1",
+  "project": {
+    "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+    "case_id": "C04",
+    "name": "清江石书｜红花峰林十三印",
+    "project_level": "P2",
+    "current_loop": "Exploration",
+    "design_state": "EXPLORE",
+    "current_gate": "G3"
+  },
+  "overlay": {
+    "name": "F｜Final Integration",
+    "kind": "P2_TEMPORARY_INTEGRATION_OVERLAY",
+    "authority_state": "NOT_AUTHORITY",
+    "creates_p3_namespace": false
+  },
+  "decision_question": "如何把 A–E 当前 DIRECT/研究级输入整合成可审计的跨媒介候选，同时不补造 Evidence、Route、Rights、Field truth，不越过 G1F？",
+  "authority_inputs": {
+    "canonical_project": "notion:C04-canonical-project",
+    "A_evidence_reality": "C04-WS-01",
+    "B_narrative_content": "C04 canonical narrative + content objects",
+    "C_spatial_experience": "C04-WS-02",
+    "D_visual_translation": "C04-WS-04",
+    "E_digital_translation": "C04-WS-03",
+    "control_plane": "OLEANDER Project Control Plane v0.3"
+  },
+  "evidence_state": {
+    "G1R": "RESEARCH_LEVEL_USABLE",
+    "G1F": "IMPLEMENTATION_HOLD",
+    "field_observed_count": 0,
+    "field_measured_count": 0
+  },
+  "locked_rules": [
+    "LANDSCAPE_FIRST",
+    "ROUTE_SERVICE_GT_CHAPTER_CONTENT",
+    "8_CORE_PLUS_COMPANION_POOL",
+    "S0_S1_S2",
+    "PARTIAL_IS_COMPLETE",
+    "OFFLINE_FIRST",
+    "MANUAL_LOCATION_DEFAULT",
+    "FACT_LOCAL_NARRATIVE_DESIGN_READING_SEPARATED"
+  ],
+  "lane_receipts": {
+    "A": {
+      "owner": "C04-WS-01",
+      "direct_delta": false,
+      "status": "NO_NEW_FIELD_DIRECT_DELTA",
+      "claim_boundary": "remote/source evidence may support research; no Field Verified promotion"
+    },
+    "B": {
+      "owner": "canonical narrative/content objects",
+      "direct_delta": false,
+      "status": "NO_INDEPENDENT_CANONICAL_DELTA",
+      "claim_boundary": "F does not author content authority"
+    },
+    "C": {
+      "owner": "C04-WS-02",
+      "direct_delta": false,
+      "status": "CANDIDATE_RETAINED_DO_NOT_REOPEN",
+      "claim_boundary": "route/spatial authority remains with C"
+    },
+    "D": {
+      "owner": "C04-WS-04",
+      "direct_delta": false,
+      "status": "VISUAL_CANDIDATES_WITH_MEDIA_HOLDS",
+      "claim_boundary": "Rights PASS != Node/Tech/Final Visual PASS"
+    },
+    "E": {
+      "owner": "C04-WS-03",
+      "direct_delta": false,
+      "status": "DIGITAL_CANDIDATE_RETAINED",
+      "claim_boundary": "GPS/AR/realtime/auto-trigger remain conditional"
+    }
+  },
+  "core_pages": [
+    {
+      "id": "R01",
+      "title": "红岩嘴",
+      "reading_mode": "ALIGNMENT_OPEN_S0S1_VS_S1",
+      "route_relation": "序｜越江开卷 / 索道视域",
+      "media_state": "RELATION_HIGH_CANDIDATE_EXACT_NODE_TECH_REVIEW",
+      "digital_state": "S1_CANDIDATE",
+      "f_state": "ALIGNMENT_OPEN"
+    },
+    {
+      "id": "R05",
+      "title": "红花石林",
+      "reading_mode": "S0",
+      "route_relation": "序｜越江开卷 / 峰林视域",
+      "media_state": "KEEP_A_SKIP_B_FINAL_HERO_TECH_HOLD",
+      "digital_state": "S0_CANDIDATE",
+      "f_state": "CROSS_LINE_FIT_FINAL_MEDIA_HOLD"
+    },
+    {
+      "id": "R02",
+      "title": "华中第一藤",
+      "reading_mode": "S1_CONDITIONAL",
+      "route_relation": "第一章｜见山而行",
+      "media_state": "MEDIA_EVIDENCE_INSUFFICIENT_HOLD",
+      "digital_state": "S1_CONDITIONAL",
+      "f_state": "HOLD_MEDIA_EVIDENCE"
+    },
+    {
+      "id": "R06",
+      "title": "观景平台＋多级阶地／不对称河谷",
+      "reading_mode": "S2",
+      "route_relation": "第二章｜河谷成形",
+      "media_state": "SCIENCE_HERO_HOLD_TARGETED_MEDIA_SEARCH",
+      "digital_state": "S2_REVEAL_CANDIDATE",
+      "f_state": "STRUCTURE_FIT_SCIENCE_MEDIA_HOLD"
+    },
+    {
+      "id": "R07",
+      "title": "仓廪／仓禀峰",
+      "reading_mode": "S1",
+      "route_relation": "第二章｜河谷成形",
+      "media_state": "NAME_NODE_TECH_REVIEW",
+      "digital_state": "S1_CANDIDATE",
+      "f_state": "NAME_AUTHORITY_OPEN"
+    },
+    {
+      "id": "R09",
+      "title": "盐水女神峰",
+      "reading_mode": "S1",
+      "route_relation": "第三章｜山形由人命名",
+      "media_state": "NODE_TECH_REVIEW",
+      "digital_state": "S1_CANDIDATE",
+      "f_state": "CONTENT_AUTHORITY_OPEN"
+    },
+    {
+      "id": "R12",
+      "title": "廪君峰",
+      "reading_mode": "S1",
+      "route_relation": "第三章｜山形由人命名",
+      "media_state": "NODE_TECH_REVIEW",
+      "digital_state": "S1_CANDIDATE",
+      "f_state": "CONTENT_AUTHORITY_OPEN"
+    },
+    {
+      "id": "R13",
+      "title": "一线天",
+      "reading_mode": "S0",
+      "route_relation": "第四章｜归缝成书",
+      "media_state": "IMAGE_LEVEL_CANDIDATE_PENDING",
+      "digital_state": "S0_RETURN_SERVICE_PRIORITY",
+      "f_state": "IMAGE_CANDIDATE_HOLD"
+    }
+  ],
+  "hard_dependencies": [
+    "G1F_FIELD_REALITY",
+    "R07_NAMING_AUTHORITY",
+    "R06_SCIENCE_PROFESSIONAL_EVIDENCE",
+    "R02_MEDIA_EVIDENCE",
+    "R13_EXACT_MEDIA"
+  ],
+  "non_blocking_by_design": [
+    "COMPANION_MAY_BE_ABSENT",
+    "UNREAD_IS_NOT_FAILURE",
+    "NO_13_OF_13_REQUIREMENT",
+    "8_CORE_DOES_NOT_MEAN_8_PHYSICAL_STOPS"
+  ],
+  "forbidden_promotions": [
+    "FIELD_VERIFIED",
+    "FINAL_VISUAL_PASS",
+    "PERMANENT_SPATIAL_PLACEMENT",
+    "P2_AUTHORITY_PROMOTION",
+    "REOPEN_C_WITHOUT_DIRECT_DELTA"
+  ],
+  "decision": {
+    "direct_delta_present": false,
+    "reopen_C": false,
+    "promote_P2": false,
+    "result": "CONTROLLED_INTEGRATION_CONTINUE_NO_PROMOTION",
+    "next_action": "RUN_F_CROSS_MEDIA_CONSISTENCY_ON_NEW_OWNER_RECEIPT"
+  }
+}
