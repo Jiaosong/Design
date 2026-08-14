@@ -16,7 +16,8 @@
     "visual_browser_render":"OPEN_ENVIRONMENT_BLOCKED",
     "penpot_native_import":"OPEN",
     "drive_sync_readback":"PASS",
-    "github_sync_readback":"OPEN",
+    "github_sync_readback":"PASS",
+    "github_pr_diff_audit":"PASS",
     "field_validation":"OPEN"
   },
   "test_receipts":{
@@ -26,7 +27,8 @@
     "browser_blocker":"Chromium DBus/zygote container failure; no browser screenshot PASS claimed"
   },
   "sync_receipts":{
-    "drive":{"file_id":"1rAZMaSYIss6_OxCTGomzCiNgdHlr59Kl","parent_id":"1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz","metadata_readback":"PASS"}
+    "drive":{"file_id":"1rAZMaSYIss6_OxCTGomzCiNgdHlr59Kl","parent_id":"1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz","metadata_readback":"PASS"},
+    "github":{"repository":"Jiaosong/Design","branch":"agent/qj-e07-digital-product","pull_request":96,"pull_request_state":"DRAFT_OPEN","pull_request_mergeable":true,"runtime_blob_sha":"a721f6a36faebe2d6c099fd98da2a1b926538b68","file_readback":"PASS","changed_files":10,"pr_diff_audit":"PASS"}
   },
   "promotion":"WORKING_SOURCE_VERIFIED_NOT_NATIVE_PROMOTED"
 }
