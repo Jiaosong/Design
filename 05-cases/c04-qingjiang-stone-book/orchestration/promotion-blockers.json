@@ -1,0 +1,23 @@
+{
+  "schema_version": "c04-promotion-blockers/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "generated_from_runtime": "runtime-state.json",
+  "freeze_active": true,
+  "decision": "NO_PROMOTION",
+  "blocked_transitions": ["FINAL", "FIELD VALIDATED", "IMPLEMENTABLE", "SYSTEM PROMOTED"],
+  "blockers": [
+    {"id": "A_G1F", "status": "OPEN"},
+    {"id": "R02_EXPERT_EVIDENCE", "status": "OPEN"},
+    {"id": "R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY", "status": "OPEN"},
+    {"id": "R07_FIELD_NAME_AUTHORITY", "status": "OPEN"},
+    {"id": "R13_IMAGE_ASSET_AND_FIELD_SAFETY", "status": "OPEN"}
+  ],
+  "closed_not_blocking": [
+    {"id":"B_R1_OWNER_LANE_RECEIPT","status":"CLOSED_BY_DIRECT_OWNER_RECEIPT","source_revision":"c26ab84d4c561145ed9badbc69bda266090ee421"},
+    {"id":"D_R1_R2_R3_OWNER_CONTRACTS","status":"CLOSED_AT_ARCHITECTURE_SCOPE_FIELD_OPEN","source_revision":"96ca8bdd3e7d88b026f98b19a6d6b06c73d774d2"},
+    {"id":"E_R1_R2_OWNER_CONTRACTS","status":"CLOSED_AT_ARCHITECTURE_SCOPE_FIELD_OPEN","source_revision":"2ed0bb6339f5e3fed6b7f351cf1c8aaa5e7edd62"},
+    {"id":"F_MAIN_READBACK","status":"CLOSED_BY_VERIFIED_MAIN_READBACK","source_revision":"6c92097b0de16fd0cf02dd602000e68535672b11"},
+    {"id":"R06_R13_PUBLIC_INDEX_SEARCH_CURRENT_ITERATION","status":"CLOSED_WITH_FIELD_AND_EXPERT_HOLDS","source_revision":"cdcf2e0d955ccb8b221fe4aba2c97e2035e10cab"}
+  ],
+  "release_condition": "EVERY_BLOCKER_CLOSED_AND_HUMAN_PROMOTION_DECISION_WITH_REQUIRED_EVIDENCE"
+}

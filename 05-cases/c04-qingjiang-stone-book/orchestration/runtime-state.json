@@ -1,0 +1,75 @@
+{
+  "schema_version": "c04-orchestration/1.0",
+  "project": {
+    "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+    "case_id": "C04",
+    "project_level": "P2",
+    "design_state": "EXPLORE",
+    "current_gate": "G3",
+    "promotion": "NO_PROMOTION"
+  },
+  "authority_chain": {
+    "master_protocol": {"id": "OLEANDER_GOVERNANCE_V1_1_1", "source": "00-governance/README.md"},
+    "project_state": {"id": "PRJ-C04-QINGJIANG-SHISHU_EXPLORE_G3_HOLD", "source": "05-cases/c04-qingjiang-stone-book/C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md"},
+    "source_authority": {
+      "id": "C20_OWNER_REVISION_READBACK_C19_CONTRACT_C17_ROUTE_RETAINED",
+      "sources": [
+        "05-cases/c04-qingjiang-stone-book/C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v2.0.md",
+        "05-cases/c04-qingjiang-stone-book/C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v2.1.md",
+        "05-cases/c04-qingjiang-stone-book/C04-B_NARRATIVE-CONTENT-RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/C04-D_STATE-EVIDENCE-CONTRACT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/f-integration/runtime-state.json"
+      ],
+      "latest_revision": "672cd61bbac02dd6686c297567a16a5afd81a8fa"
+    },
+    "current_task": {"id": "C04_SIX_LANE_ORCHESTRATION_CONTROLS_V1", "scope": "MACHINE_READABLE_CONTROL_AND_EXECUTABLE_VALIDATION_ONLY", "new_methodology": false}
+  },
+  "validation_stop_rule": {
+    "active": true,
+    "allowed_progress": ["SOURCE_VALIDATION", "FIELD_VALIDATION", "EXPERT_VALIDATION", "USER_VALIDATION_AFTER_STIMULUS_VISUAL_QA", "VALIDATION_DRIVEN_CORRECTION", "OWNER_REVISION_READBACK", "CROSS_LINE_AUDIT", "SYNC_REPAIR"],
+    "forbidden_progress": ["NEW_DIGITAL_FEATURES", "NEW_PAPER_EXPANSION", "NARRATIVE_EXPANSION", "SYSTEM_LEVEL_PROMOTION", "REPEATED_PUBLIC_KEYWORD_SEARCH_AS_PROGRESS"]
+  },
+  "evidence_state": {"field_observed": 0, "field_measured": 0, "field_pass": "NONE", "G1F": "HOLD", "remote_evidence_may_substitute_field": false},
+  "no_delta_policy": {
+    "rule": "NO_DELTA_NO_VERSION",
+    "material_delta_types": ["SOURCE", "FIELD", "EXPERT", "OWNER_REVISION", "VERIFIABLE_EXECUTION_RESULT"],
+    "no_delta_output": "NO_MATERIAL_DELTA",
+    "version_creation_allowed_without_delta": false
+  },
+  "single_frontier_policy": {
+    "rule": "ONE_CURRENT_FRONTIER_PER_LANE",
+    "current_authority_state": "CURRENT",
+    "non_current_authority_states": ["SUPERSEDED", "LEGACY_READONLY", "PROVENANCE_ONLY"],
+    "non_current_may_be_consumed_as_current": false
+  },
+  "blocker_aging_policy": {
+    "required_fields": ["opened_at", "last_evidence_delta", "owner", "next_legal_action"],
+    "external_wait_after_no_delta_runs": 1,
+    "external_wait_state": "WAIT_EXTERNAL_EVIDENCE",
+    "repeated_research_is_progress": false
+  },
+  "lanes": [
+    {"lane":"A","owner":"PRJ-C04-GOV-SITE","frontier_id":"A_REMOTE_CLOSURE_FRONTIER_WAIT_EXTERNAL","authority_state":"CURRENT","source_revision":"733c6eb956757e0d7f92152f41081ba55953c496","material_delta":false,"delta_types":[],"output_action":"NO_MATERIAL_DELTA","next_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"lane":"B","owner":"PRJ-C04-EXPERIENCE-SPATIAL","frontier_id":"B_R1_OWNER_LANE_RECEIPT","authority_state":"CURRENT","source_revision":"c26ab84d4c561145ed9badbc69bda266090ee421","material_delta":true,"delta_types":["OWNER_REVISION"],"output_action":"APPLY_OWNER_REVISION_NO_PROMOTION","next_state":"FIELD_OPEN"},
+    {"lane":"C","owner":"PRJ-C04-EXPERIENCE-SPATIAL","frontier_id":"C20_OWNER_REVISION_READBACK_C19_CONTRACT_C17_ROUTE","authority_state":"CURRENT","source_revision":"672cd61bbac02dd6686c297567a16a5afd81a8fa","material_delta":true,"delta_types":["OWNER_REVISION","VERIFIABLE_EXECUTION_RESULT"],"output_action":"APPLY_OWNER_READBACK_NO_PROMOTION","next_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"lane":"D","owner":"PRJ-C04-VISUAL-READING","frontier_id":"D_STATE_EVIDENCE_OWNER_CONTRACT","authority_state":"CURRENT","source_revision":"96ca8bdd3e7d88b026f98b19a6d6b06c73d774d2","material_delta":true,"delta_types":["OWNER_REVISION"],"output_action":"APPLY_OWNER_REVISION_NO_PROMOTION","next_state":"FIELD_OPEN"},
+    {"lane":"E","owner":"PRJ-C04-DIGITAL-INTERACTION","frontier_id":"E_STATE_DIGITAL_OFF_OWNER_CONTRACT","authority_state":"CURRENT","source_revision":"2ed0bb6339f5e3fed6b7f351cf1c8aaa5e7edd62","material_delta":true,"delta_types":["OWNER_REVISION"],"output_action":"APPLY_OWNER_REVISION_NO_PROMOTION","next_state":"FIELD_OPEN"},
+    {"lane":"F","owner":"F_OVERLAY","frontier_id":"F_MAIN_READBACK_CLOSED_PLUS_ORCHESTRATION_CONTROLS","authority_state":"CURRENT","source_revision":"6c92097b0de16fd0cf02dd602000e68535672b11","material_delta":true,"delta_types":["VERIFIABLE_EXECUTION_RESULT"],"output_action":"APPLY_MAIN_READBACK_NO_PROMOTION","next_state":"NO_PROMOTION"}
+  ],
+  "blockers": [
+    {"id":"A_G1F","status":"OPEN","opened_at":"2026-08-14T14:39:50Z","last_evidence_delta":"2026-08-14T14:39:50Z","owner":"PRJ-C04-GOV-SITE","next_legal_action":"FIELD_PACKAGE_EXECUTION_AND_READBACK","no_delta_runs":1,"aging_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"id":"R02_EXPERT_EVIDENCE","status":"OPEN","opened_at":"2026-08-14T14:39:50Z","last_evidence_delta":"2026-08-14T14:39:50Z","owner":"PRJ-C04-GOV-SITE","next_legal_action":"QUALIFIED_BOTANY_EXPERT_OR_FIELD_IDENTIFICATION","no_delta_runs":1,"aging_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"id":"R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY","status":"OPEN","opened_at":"2026-08-14T14:39:50Z","last_evidence_delta":"2026-08-14T15:11:20Z","owner":"PRJ-C04-GOV-SITE","next_legal_action":"ORIGINAL_MEDIA_PLUS_FIELD_GEOMETRY_AND_EXPERT_READBACK","no_delta_runs":1,"aging_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"id":"R07_FIELD_NAME_AUTHORITY","status":"OPEN","opened_at":"2026-08-14T14:39:50Z","last_evidence_delta":"2026-08-14T14:39:50Z","owner":"PRJ-C04-GOV-SITE","next_legal_action":"FIELD_SIGNAGE_AND_READABLE_OFFICIAL_MAP_CAPTURE","no_delta_runs":1,"aging_state":"WAIT_EXTERNAL_EVIDENCE"},
+    {"id":"R13_IMAGE_ASSET_AND_FIELD_SAFETY","status":"OPEN","opened_at":"2026-08-14T14:39:50Z","last_evidence_delta":"2026-08-14T15:11:20Z","owner":"PRJ-C04-GOV-SITE","next_legal_action":"REAL_NODE_CAPTURE_AND_SAFETY_ACCESSIBILITY_FIELD_READBACK","no_delta_runs":1,"aging_state":"WAIT_EXTERNAL_EVIDENCE"}
+  ],
+  "cross_line_contracts": [
+    {"id":"B_CLAIM_TYPE_TO_A_EVIDENCE_STATE","producer":"A","consumer":"B","producer_state":"FIELD_NONE_G1F_HOLD","consumer_state":"EVIDENCE_BOUND_OWNER_RECEIPT_FIELD_OPEN","required_relation":"B_MUST_NOT_LABEL_REMOTE_OR_PROVISIONAL_AS_FIELD_OR_FINAL"},
+    {"id":"C_ROUTE_STATE_TO_D_READING_MODE","producer":"C","consumer":"D","producer_state":"C19_STATE_AXES_WITH_C17_M0_M7_ROUTE","consumer_state":"OWNER_CONTRACT_CLOSED_ARCHITECTURE_FIELD_OPEN","required_relation":"READING_MODE_MUST_NOT_OWN_ROUTE_SOVEREIGNTY"},
+    {"id":"C_REALITY_STATE_TO_E_DIGITAL_STATE","producer":"C","consumer":"E","producer_state":"C19_REALITY_STATE_FIELD_NONE","consumer_state":"OWNER_CONTRACT_CLOSED_ARCHITECTURE_FIELD_OPEN","required_relation":"DIGITAL_OFFLINE_OR_NO_PHONE_MUST_RETAIN_ROUTE_SAFETY_RETURN"},
+    {"id":"A_HOLD_TO_F_FINAL_WORDING","producer":"A","consumer":"F","producer_state":"G1F_HOLD","consumer_state":"NO_PROMOTION","required_relation":"F_MUST_BLOCK_FINAL_FIELD_VALIDATED_IMPLEMENTABLE_SYSTEM_PROMOTED"}
+  ],
+  "field_package_gate": {"schema":"field-package.schema.json","register":"field-package-register.json","status":"HOLD_NOT_RUN","batch_readback_targets":["A","C","D","E","F"]},
+  "promotion_freeze": {"manifest":"promotion-blockers.json","decision":"NO_PROMOTION","forbidden_wording":["FINAL","FIELD VALIDATED","IMPLEMENTABLE","SYSTEM PROMOTED"]}
+}

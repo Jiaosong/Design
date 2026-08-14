@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c04-field-package/1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "package_id",
+    "captured_at",
+    "collector",
+    "location",
+    "direction",
+    "photos",
+    "videos",
+    "dimensions",
+    "sightline",
+    "slope",
+    "safety",
+    "signage",
+    "operations",
+    "weather",
+    "equipment",
+    "source_files",
+    "readback_targets"
+  ],
+  "properties": {
+    "schema_version": {"const": "c04-field-package/1.0"},
+    "project_id": {"const": "PRJ-C04-QINGJIANG-SHISHU"},
+    "package_id": {"type": "string", "minLength": 1},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "collector": {"type": "string", "minLength": 1},
+    "location": {"$ref": "#/$defs/observation"},
+    "direction": {"$ref": "#/$defs/observation"},
+    "photos": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/media"}},
+    "videos": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/media"}},
+    "dimensions": {"$ref": "#/$defs/measurement"},
+    "sightline": {"$ref": "#/$defs/measurement"},
+    "slope": {"$ref": "#/$defs/measurement"},
+    "safety": {"$ref": "#/$defs/observation"},
+    "signage": {"$ref": "#/$defs/observation"},
+    "operations": {"$ref": "#/$defs/observation"},
+    "weather": {"$ref": "#/$defs/observation"},
+    "equipment": {"$ref": "#/$defs/observation"},
+    "source_files": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "readback_targets": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"enum": ["A", "C", "D", "E", "F"]}
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "required": ["value", "evidence_refs"],
+      "properties": {
+        "value": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": ["value", "unit", "method", "evidence_refs"],
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"type": "string", "minLength": 1},
+        "method": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    },
+    "media": {
+      "type": "object",
+      "required": ["path", "sha256", "captured_at", "location_ref", "direction_ref"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "captured_at": {"type": "string", "format": "date-time"},
+        "location_ref": {"type": "string", "minLength": 1},
+        "direction_ref": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

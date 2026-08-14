@@ -5,12 +5,14 @@ on:
   pull_request:
     paths:
       - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '05-cases/c04-qingjiang-stone-book/orchestration/**'
       - '.github/workflows/c04-f-integration-loop.yml'
   push:
     branches:
       - main
     paths:
       - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '05-cases/c04-qingjiang-stone-book/orchestration/**'
       - '.github/workflows/c04-f-integration-loop.yml'
 
 permissions:
@@ -29,16 +31,26 @@ jobs:
           node-version: '20'
 
       - name: Syntax check
-        run: node --check 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+        run: |
+          node --check 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+          node --check 05-cases/c04-qingjiang-stone-book/orchestration/validate-cross-line-contracts.mjs
+
+      - name: Test orchestration controls
+        run: node --test 05-cases/c04-qingjiang-stone-book/orchestration/test-cross-line-contracts.mjs
+
+      - name: Validate six-lane contracts and promotion freeze
+        run: node 05-cases/c04-qingjiang-stone-book/orchestration/validate-cross-line-contracts.mjs
 
       - name: Run latest-governance integration loop
         run: node 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
 
       - name: Preserve result as execution evidence only
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: c04-f-integration-loop-result
-          path: 05-cases/c04-qingjiang-stone-book/f-integration/loop-result.json
+          path: |
+            05-cases/c04-qingjiang-stone-book/f-integration/loop-result.json
+            05-cases/c04-qingjiang-stone-book/orchestration/orchestration-result.json
           if-no-files-found: error
           retention-days: 7
