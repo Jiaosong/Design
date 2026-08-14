@@ -1,0 +1,122 @@
+{
+  "artifact_family": "C04-WS-02 QJ-C executable evidence closure",
+  "receipt_version": "1.7",
+  "date": "2026-08-14",
+  "supersedes_receipt": {
+    "file": "C04-WS-02_QJ-C_FINAL-CLOSURE-RECEIPT_v1.5.json",
+    "status": "HISTORICAL / PROVIDER-SYNCED",
+    "reason": "C authority advanced after v1.5 receipt merge."
+  },
+  "authority": {
+    "current_c_file": "05-cases/c04-qingjiang-stone-book/C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v1.7.md",
+    "current_c_scope": "QJ-C16 Reality Delta Recalibration v1.7",
+    "github_commit": "e77fbced8e85becd59a7af1626d9f87a8ddf0c16",
+    "github_blob_sha": "e6063b22cee1f4dd81a60dcf69bb2688d649ab68",
+    "drive_id": "1RKcbh9gUZB_JCKP9u181q-4QNag1HCQq",
+    "state": "WORKING-CANONICAL UPDATE / REMOTE-SOURCE DELTA APPLIED",
+    "field_observed": 0,
+    "field_measured": 0,
+    "promotion": "NO"
+  },
+  "authority_delta": {
+    "macro_topology": "ARRIVAL SYSTEM → NORTH-BANK SERVICE / ORIENTATION → CROSS-RIVER CABLE → SOUTH-BANK WALKING NETWORK → CABLE RETURN → EXIT / MEMORY",
+    "boat": "ACCESS VARIANT / CONDITIONAL; NOT UNIVERSAL CORE",
+    "cable": "REAL TRANSPORT + VIEWING CONDITION; TOURIST-ONLY PERSONA REJECTED",
+    "south_bank": "WALKING NETWORK; NOT 13 LINEAR STATIONS",
+    "return": "CABLE RETURN = REMOTE-SOURCE SUPPORTED MACRO RETURN RELATION",
+    "physical_impact": "NO NEW PHYSICAL NEED; railing support KEEP/NOT LOCATED; mountain fluid/Qingfengyin/PHY-01 HOLD"
+  },
+  "prototype": {
+    "suite": "T-C10-01—06",
+    "all_pass": true,
+    "negative_control_detected": true,
+    "maximum_conclusion": "PROTOTYPE PASS / ELIGIBLE FOR FIELD TEST",
+    "field_pass": false
+  },
+  "local": {
+    "open_test": "PASS",
+    "formula_error_scan": "PASS / zero target errors",
+    "final_executable_rerun": "PASS / exit 0",
+    "artifacts_sha256": {
+      "C04-WS-02_QJ-C_EXECUTABLE-EVIDENCE_v1.0.md": "d9374bfb1fe0ae2143f668be2a8d0b7c34bc41d2bde742c6290d2c8a31cc7b42",
+      "C04-WS-02_QJ-C_FIELD-EVIDENCE-PROTOCOL_v1.0.xlsx": "7633d03d494e60eb539bb7ba3d78ceec097e2af7138483b8a7266bf20b008e98",
+      "C04-WS-02_QJ-C_FIELD-EVIDENCE-PROTOCOL_v1.0.manifest.final.json": "c37fb36890d07864515e4c9ffe8c6eb74968cff8de3b08f91e5b70ae85f2eaff",
+      "C04-WS-02_QJ-C_FIELD-EVIDENCE-PROTOCOL_v1.0.final.sha256": "80aef4e70732fbad635469cb1c807adfb24aaba773edea04d88ac32f90a58db5",
+      "qjc_prototype_tests.py": "bcf6faa4a6a5845625329904b6587b0cc5a6ac4f59c7ee679da330a004ae860a",
+      "qjc_test_scenarios_v1.0.json": "e63c3a131e2ce0b87d0a3e9c0d2f08904784e8d28c0d2e6e5a99e791461f6bb7",
+      "qjc_prototype_test_results_v1.0.json": "5e99debc27cc83b54712d74a51703c9b05e2c1695ec3cf04353c63912017f573",
+      "qjc_prototype_tests_run_final.log": "eef3b9a4cf26473c8be1864023ef53c9a7eb31e9088e7e3da8b78d9bfd8944ff",
+      "C04-WS-02_QJ-C_CLOSURE_v1.3.md": "bab7f2671946c8a3511f5b119a8c938294588f29a05ac58e748bb9d599f458b6",
+      "C04-WS-02_QJ-C_PRE-INTEGRATION-HANDOFF_v1.4.md": "16fda6d9dadcbc6b33f5d6aba3b7bfea2871a7f16538f1d02a634bbaa0ec4f42"
+    }
+  },
+  "drive": {
+    "field_evidence_sheet_id": "1aahKJLDVLX97VOb33rrmKNkHNyiLISVP2k5iemmZdW4",
+    "closure_doc_v1_3_id": "1tIvL6fwBeijGwBMvXy7rqQGtqpH_-u5s6I3f7wgK-j8",
+    "preintegration_doc_v1_4_id": "1quZCpPib0NcR414p7Krr5CF21yIfni8SFLgR1DXhPsI",
+    "closure_package_v1_4_id": "1eq-NQjCks0salNb7-9ms8VdElUFZ5yso",
+    "current_authority_v1_5_id": "1z00pOSgFfITdyi4XQJwDUZGXOV-tNqpy",
+    "readback": "PASS",
+    "current_authority_v1_7_id": "1RKcbh9gUZB_JCKP9u181q-4QNag1HCQq",
+    "final_receipt_v1_5_id": "1AGv4eI7TcqnhKgdlOKINtTZJfiGMw-Xp",
+    "closure_package_v1_5_id": "1_iX9SywGRbjVGG0B3vYzVo_q8tYl89zJ"
+  },
+  "github": {
+    "repo": "Jiaosong/Design",
+    "evidence_pr": 98,
+    "evidence_pr_head": "3ee69200098e7a7f10e2302c722b8bb85d7905c4",
+    "evidence_merge_commit": "5408c0184eb1e7d55bb42cd507fca053a0a0f754",
+    "main_readback_path": "05-cases/c04-qingjiang-stone-book/evidence/qj-c13/C04-WS-02_QJ-C_EXECUTABLE-EVIDENCE_v1.0.md",
+    "main_readback_blob_sha": "7c648eea2c186a9c250744b9392b5c44a52d3f60",
+    "workflow": "AI Governance Evals",
+    "workflow_run_id": 31810287669,
+    "workflow_conclusion": "success",
+    "combined_legacy_statuses": "none",
+    "readback": "PASS",
+    "final_receipt_pr": 99,
+    "final_receipt_merge_commit": "0008110b2e78a20201ec22e95ea5563608429e9c",
+    "receipt_present_in_current_main_ancestry": true,
+    "current_main_after_receipt": "e77fbced8e85becd59a7af1626d9f87a8ddf0c16",
+    "main_after_c16_and_r01_alignment": "5f02d48d5cd42f78240ddcc1971f1b448f395428"
+  },
+  "semantic_freshness_scan": {
+    "result": "PASS",
+    "compatibility_file": "C04-WS-02_QJ-C_FRESHNESS-COMPATIBILITY_v1.7.md",
+    "notes": [
+      "QJ-C16 macro topology supersedes any universal Boat/Core assumption.",
+      "Existing executable suite did not encode Boat as a universal dependency.",
+      "South-bank 13-linear route remains rejected; executable suite does not depend on it.",
+      "Physical authority remains unchanged: railing support KEEP/NOT LOCATED; mountain fluid/Qingfengyin/PHY-01 HOLD.",
+      "No field truth or physical selection/location is promoted.",
+      "D-R1 / R01 C-D mode alignment is now RESOLVED by direct owner receipt at 5f02d48d; B-R1, D-R2, E-R1/E-R2, and F-R1 remain OPEN."
+    ]
+  },
+  "promotion_transition": {
+    "remote_test": "READY FOR PROTOTYPE TEST → PROTOTYPE PASS / ELIGIBLE FOR FIELD TEST",
+    "macro_topology": "REMOTE-SOURCE GROUNDED / MICRO ORDER STILL A-G1F OPEN",
+    "field": "NO PROMOTION",
+    "physical": "NO SELECTED / LOCATED CANDIDATE"
+  },
+  "closure": {
+    "executable_evidence_provider_loop": "CLOSED / SYNCED / READBACK PASS",
+    "freshness_compatibility_to_qj_c16": "PASS",
+    "qj_c_current_state": "WORKING-CANONICAL UPDATE / OWNER REVISIONS PARTIALLY OPEN",
+    "field_implementation": "OPEN / G1F HOLD",
+    "field_observed": 0,
+    "field_measured": 0
+  },
+  "cross_line_freshness": {
+    "latest_non_authority_alignment_commit": "5f02d48d5cd42f78240ddcc1971f1b448f395428",
+    "receipt": "C04-WS-02_WS-04_R01-MODE-ALIGNMENT_v0.1.md",
+    "decision": "R01 = S0 PRIMARY ONSITE + S1 OPTIONAL AFTER-VIEW",
+    "effect": "D-R1 / R01 C-D mode-alignment conflict RESOLVED",
+    "still_open": [
+      "B-R1",
+      "D-R2",
+      "E-R1",
+      "E-R2",
+      "F-R1"
+    ],
+    "field_effect": "NONE / FIELD OBSERVED 0 / FIELD MEASURED 0 / PROMOTION NO"
+  }
+}
