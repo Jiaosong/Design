@@ -1,0 +1,94 @@
+/* OLEANDER Portfolio Crop System v0.1
+   Presentation crops create hierarchy; full boards remain intact in chapters/viewer. */
+
+.portfolio-framework-v2 .expression-encounter .encounter-work,
+.portfolio-framework-v2 .daylily-opening__image,
+.portfolio-framework-v2 .reno-opening__image {
+  overflow: hidden !important;
+}
+
+.portfolio-framework-v2 .expression-encounter .encounter-work img,
+.portfolio-framework-v2 .daylily-opening__image img,
+.portfolio-framework-v2 .reno-opening__image img {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  transform: none !important;
+  filter: none !important;
+  margin: 0 !important;
+}
+
+.portfolio-framework-v2 .encounter-work--daylily {
+  aspect-ratio: 16 / 10;
+}
+
+.portfolio-framework-v2 .encounter-work--daylily img {
+  aspect-ratio: auto !important;
+  object-position: 50% 50% !important;
+}
+
+.portfolio-framework-v2 .encounter-work--reno {
+  aspect-ratio: 3 / 2;
+}
+
+.portfolio-framework-v2 .encounter-work--reno img {
+  aspect-ratio: auto !important;
+  object-position: 50% 48% !important;
+}
+
+.portfolio-framework-v2 .daylily-opening__image,
+.portfolio-framework-v2 .reno-opening__image {
+  aspect-ratio: 16 / 10;
+}
+
+.portfolio-framework-v2 .daylily-opening__image img {
+  aspect-ratio: auto !important;
+  object-position: 50% 50% !important;
+}
+
+.portfolio-framework-v2 .reno-opening__image img {
+  aspect-ratio: auto !important;
+  object-position: 50% 48% !important;
+}
+
+/* Full design boards: never inherit presentation cropping. */
+.portfolio-framework-v2 .daylily-chapter figure,
+.portfolio-framework-v2 .reno-chapter figure {
+  overflow: visible !important;
+  aspect-ratio: auto !important;
+}
+
+.portfolio-framework-v2 .daylily-chapter figure img,
+.portfolio-framework-v2 .reno-chapter figure img {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+@media (max-width: 760px) {
+  .portfolio-framework-v2 .encounter-work--daylily,
+  .portfolio-framework-v2 .encounter-work--reno,
+  .portfolio-framework-v2 .daylily-opening__image,
+  .portfolio-framework-v2 .reno-opening__image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .portfolio-framework-v2 .encounter-work--daylily img,
+  .portfolio-framework-v2 .daylily-opening__image img {
+    object-position: 52% 50% !important;
+  }
+
+  .portfolio-framework-v2 .encounter-work--reno img,
+  .portfolio-framework-v2 .reno-opening__image img {
+    object-position: 50% 50% !important;
+  }
+}
