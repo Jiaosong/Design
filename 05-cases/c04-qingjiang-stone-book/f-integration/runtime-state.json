@@ -59,11 +59,11 @@
     {"id":"D-R3","status":"CLOSED_BY_DIRECT_D_OWNER_CONTRACT"},
     {"id":"E-R1","status":"CLOSED_BY_DIRECT_E_OWNER_CONTRACT"},
     {"id":"E-R2","status":"CLOSED_BY_DIRECT_E_OWNER_CONTRACT"},
-    {"id":"F-R1","status":"CLOSED_IN_PR_CANDIDATE_MAIN_READBACK_PENDING"},
-    {"id":"F-R2","status":"CLOSED_IN_PR_CANDIDATE"},
+    {"id":"F-R1","status":"CLOSED_BY_MAIN_INTEGRATION_READBACK"},
+    {"id":"F-R2","status":"CLOSED_IN_MAIN_INTEGRATION"},
     {"id":"F-R3","status":"ENFORCED_CONTINUOUSLY"}
   ],
-  "final_wording_blockers":["A_G1F","R02_EXPERT_EVIDENCE","R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY","R07_FIELD_NAME_AUTHORITY","R13_IMAGE_ASSET_AND_FIELD_SAFETY","F_MAIN_READBACK"],
+  "final_wording_blockers":["A_G1F","R02_EXPERT_EVIDENCE","R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY","R07_FIELD_NAME_AUTHORITY","R13_IMAGE_ASSET_AND_FIELD_SAFETY"],
   "promotion_transition":{"from":"EXPLORE","target":"EXPLORE","machine_ceiling":"READY_FOR_HUMAN_DECISION","human_decision_required":true},
-  "decision":{"research_overlay_status":"PASS_WITH_BLOCKERS","result":"VALIDATION_STOP_RULE_ACTIVE","promote_P2":false,"reopen_C":false,"next_action":"F_CI_THEN_C_OWNER_REVISION_READBACK"}
+  "decision":{"research_overlay_status":"PASS_WITH_BLOCKERS","result":"VALIDATION_STOP_RULE_ACTIVE","promote_P2":false,"reopen_C":false,"next_action":"C_OWNER_REVISION_READBACK_THEN_WAIT_A_EXTERNAL_EVIDENCE"}
 }
