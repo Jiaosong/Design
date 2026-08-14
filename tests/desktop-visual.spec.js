@@ -4,6 +4,7 @@ async function settle(page) {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.waitForLoadState('networkidle');
   await expect(page.locator('.expression-encounter')).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-portfolio-framework', 'ready');
   await page.evaluate(async () => {
     await Promise.all([...document.images].map((img) => img.complete ? Promise.resolve() : new Promise((resolve) => {
       img.addEventListener('load', resolve, { once: true });
@@ -28,9 +29,15 @@ test('portfolio desktop visual experiment', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await settle(page);
+
+  const order = await page.locator('#main > *').evaluateAll((nodes) => nodes.map((node) => node.id || (node.classList.contains('portfolio-research-divider') ? 'research-divider' : node.className)));
+  const expected = ['home', 'selected-work', 'projects', 'project-daylily', 'project-reno-cmf', 'project-weaving', 'research-divider', 'question', 'relations', 'evidence', 'practice', 'about', 'contact'];
+  expected.forEach((key, index) => expect(order.indexOf(key), `${key} should follow the portfolio-first spine`).toBe(index));
+
   await captureViewport(page, testInfo, 'portfolio-1440-home.png');
-  await captureViewport(page, testInfo, 'portfolio-1440-first-encounter.png', '.expression-encounter');
-  await captureViewport(page, testInfo, 'portfolio-1440-question.png', '#question');
+  await captureViewport(page, testInfo, 'portfolio-1440-first-encounter.png', '#selected-work');
+  await captureViewport(page, testInfo, 'portfolio-1440-selected-works.png', '#projects');
+  await captureViewport(page, testInfo, 'portfolio-1440-research-divider.png', '.portfolio-research-divider');
 
   await page.setViewportSize({ width: 1920, height: 1080 });
   await captureViewport(page, testInfo, 'portfolio-1920-daylily.png', '#project-daylily');
