@@ -33,6 +33,11 @@ def profile(name,vals,c,role,axis):
         pts.append((x,float(v),0) if axis=='Y+' else (x,-float(v),0) if axis=='Y-' else (x,0,-float(v)) if axis=='Z-' else (x,0,float(v)))
     o=nurbs(name,pts,c,role); o['OLEANDER_PROFILE_AXIS']=axis; o['OLEANDER_CONTROL_VALUES']=[float(v) for v in vals]; return o
 
+def theta_center_rad(d):
+    if 'theta_center_rad' in d: return float(d['theta_center_rad'])
+    if d.get('theta_center')=='TOP_MERIDIAN': return 0.0
+    raise ValueError('INTERFACE_DECK_BOUNDARY requires theta_center_rad or theta_center=TOP_MERIDIAN')
+
 def sources(s,c):
     own=base.own
     out=[nurbs('OL_SRC_GRIP_AXIS',[tuple(map(float,p)) for p in own(s,'GRIP_AXIS')['control_points']],c,own(s,'GRIP_AXIS')['role'])]
@@ -42,9 +47,10 @@ def sources(s,c):
             profile('OL_SRC_LOWER_RETURN_PROFILE',own(s,'LOWER_RETURN_PROFILE')['control_values'],c,own(s,'LOWER_RETURN_PROFILE')['role'],'Z-')]
     d=own(s,'INTERFACE_DECK_BOUNDARY'); o=bpy.data.objects.new('OL_SRC_INTERFACE_DECK_BOUNDARY',None); c.objects.link(o)
     o.empty_display_type='CIRCLE'; o.empty_display_size=.012; o['OLEANDER_AUTHORITY']='WORKING_SURFACE_SOURCE'; o['OLEANDER_ROLE']=d['role']; o['OLEANDER_EDITABLE']=True
-    for k in ('u_center','u_halfspan','theta_center_rad','theta_halfspan_rad','depth_m','core_fraction'):
+    for k in ('u_center','u_halfspan','theta_halfspan_rad','depth_m','core_fraction'):
         if k in d: o[k]=float(d[k])
-    o['blend']=str(d.get('blend','QUINTIC_SMOOTHERSTEP')); o.location=r2.point(s,float(d['u_center']),float(d.get('theta_center_rad',0)),False,False); out.append(o)
+    o['theta_center_rad']=theta_center_rad(d); o['theta_center_semantics']=str(d.get('theta_center','RADIAN'))
+    o['blend']=str(d.get('blend','QUINTIC_SMOOTHERSTEP')); o.location=r2.point(s,float(d['u_center']),theta_center_rad(d),False,False); out.append(o)
     return out
 
 def mesh_obj(name,verts,faces,c,role):
