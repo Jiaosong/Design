@@ -1,25 +1,25 @@
 {
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"c04-f-integration/0.9",
+  "$id":"c04-f-integration/1.0",
   "type":"object",
   "required":["schema_version","governance","project","overlay","decision_question","control_sources","stop_rule","evidence_state","current_C_authority","lane_receipts","search_stop","f_acceptance_audit","revision_requests","final_wording_blockers","promotion_transition","decision"],
   "properties":{
-    "schema_version":{"const":"c04-f-integration/0.9"},
+    "schema_version":{"const":"c04-f-integration/1.0"},
     "governance":{"type":"object","required":["authority","control_plane"],"properties":{"authority":{"const":"Governance v1.1.1"},"control_plane":{"const":"OLEANDER Project Control Plane v0.3"}}},
     "project":{"type":"object","required":["project_id","case_id","project_level","current_loop","design_state","current_gate"],"properties":{"project_id":{"const":"PRJ-C04-QINGJIANG-SHISHU"},"case_id":{"const":"C04"},"project_level":{"const":"P2"},"current_loop":{"const":"Exploration"},"design_state":{"const":"EXPLORE"},"current_gate":{"const":"G3"}}},
     "overlay":{"type":"object","required":["kind","authority_state","creates_p3_namespace"],"properties":{"kind":{"const":"P2_TEMPORARY_INTEGRATION_OVERLAY"},"authority_state":{"const":"NOT_AUTHORITY"},"creates_p3_namespace":{"const":false}}},
     "decision_question":{"type":"string"},
-    "control_sources":{"type":"object","required":["C14_audit","C15_readback","C17_route","R01_alignment","D_media_search_stop"]},
+    "control_sources":{"type":"object","required":["C17_route","C18_governance_correction","C19_state_contract","B_owner_receipt","D_owner_contract","E_owner_contract","R01_alignment"]},
     "stop_rule":{"type":"object","required":["active","allowed_progress","forbidden_progress"]},
     "evidence_state":{"type":"object","required":["G1F","field_observed","field_measured","field_pass","physical_selected_or_located"]},
-    "current_C_authority":{"type":"object","required":["semantic_stage","status","segments","invariants","micro_route","field_pass"],"properties":{"semantic_stage":{"const":"C17"},"field_pass":{"const":"NONE"}}},
+    "current_C_authority":{"type":"object","required":["semantic_stage","route_stage","status","segments","invariants","micro_route","field_pass"],"properties":{"semantic_stage":{"const":"C19"},"route_stage":{"const":"C17"},"field_pass":{"const":"NONE"}}},
     "lane_receipts":{"type":"object","required":["A","B","C","D","E"],"properties":{"A":{"$ref":"#/$defs/receipt"},"B":{"$ref":"#/$defs/receipt"},"C":{"$ref":"#/$defs/receipt"},"D":{"$ref":"#/$defs/receipt"},"E":{"$ref":"#/$defs/receipt"}}},
     "search_stop":{"type":"object","required":["R06","R13"]},
     "f_acceptance_audit":{"type":"array","minItems":10,"maxItems":10,"items":{"type":"object","required":["id","status"]}},
     "revision_requests":{"type":"array","minItems":9,"items":{"type":"object","required":["id","status"]}},
     "final_wording_blockers":{"type":"array","minItems":1,"items":{"type":"string"}},
     "promotion_transition":{"type":"object","required":["from","target","machine_ceiling","human_decision_required"],"properties":{"from":{"const":"EXPLORE"},"target":{"const":"EXPLORE"},"machine_ceiling":{"const":"READY_FOR_HUMAN_DECISION"},"human_decision_required":{"const":true}}},
-    "decision":{"type":"object","required":["research_overlay_status","result","promote_P2","reopen_C"],"properties":{"research_overlay_status":{"const":"PASS_WITH_REVISION_AND_BLOCKERS"},"result":{"const":"VALIDATION_STOP_RULE_ACTIVE"},"promote_P2":{"const":false},"reopen_C":{"const":false}}}
+    "decision":{"type":"object","required":["research_overlay_status","result","promote_P2","reopen_C"],"properties":{"research_overlay_status":{"const":"PASS_WITH_BLOCKERS"},"result":{"const":"VALIDATION_STOP_RULE_ACTIVE"},"promote_P2":{"const":false},"reopen_C":{"const":false}}}
   },
   "$defs":{"receipt":{"type":"object","required":["owner","receipt_type","authority_state","semantic_stage","source_revision","status","boundary"],"properties":{"receipt_type":{"enum":["DIRECT","NONE","REPLAY"]},"authority_state":{"enum":["LIVE_WRITABLE","LEGACY_READONLY","BLOCKED","NOT_AUTHORITY"]},"payload_hash_algo":{"enum":["GIT_BLOB_SHA1","SHA256"]},"payload_hash":{"type":"string","minLength":40}}}}
 }
