@@ -1,0 +1,79 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r2.blender-execution-contract",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "revision": "G1-R2-ERGONOMIC-PALM-INTERFACE-RELATION",
+  "job_state_target": "BLENDER_EXECUTION_VALIDATED",
+  "design_state": "EXPLORE",
+  "authority_state": "WORKING_SOURCE",
+  "candidate_promotion": "NOT_RUN",
+  "runtime": {
+    "blender": "5.2.0 LTS",
+    "engine": "CYCLES",
+    "diagnostic_resolution": 512,
+    "cycles_samples": 48,
+    "adaptive_sampling": true,
+    "denoise": true
+  },
+  "source_binding": {
+    "primary_curve_source": "G1_PRIMARY_CURVE_SOURCE.json",
+    "r2_relation_correction": "G1_R2_RELATION_CORRECTION.json",
+    "machine_qa": "g1_r2_qa.py",
+    "native_source_collection": "OLEANDER_SOURCE_AUTHORITY",
+    "derived_execution_collection": "OLEANDER_DERIVED_EXECUTION",
+    "qa_rig_collection": "OLEANDER_QA_RIG"
+  },
+  "native_source_objects": {
+    "GRIP_AXIS": "OL_SRC_GRIP_AXIS",
+    "PALM_PROFILE": "OL_SRC_PALM_PROFILE",
+    "THUMB_SIDE_PLAN": "OL_SRC_THUMB_SIDE_PLAN",
+    "OPPOSITE_SIDE_PLAN": "OL_SRC_OPPOSITE_SIDE_PLAN",
+    "LOWER_RETURN_PROFILE": "OL_SRC_LOWER_RETURN_PROFILE",
+    "INTERFACE_DECK_BOUNDARY": "OL_SRC_INTERFACE_DECK_BOUNDARY"
+  },
+  "derived_objects": {
+    "baseline": "OL_DERIVED_G1_R2_BASELINE",
+    "thumb_revision": "OL_DERIVED_G1_R2_THUMB_REVISION"
+  },
+  "camera_jobs": {
+    "HERO_CAM": {"lens_mm": 85},
+    "CMF_CAM": {"lens_mm": 110},
+    "INSPECTION_CAM": {"lens_mm": 135}
+  },
+  "diagnostic_rigs": {
+    "BROAD": ["R2_KEY_BROAD", "R2_TOP_CARD", "R2_CONTACT_FILL", "R2_NEG_FILL"],
+    "STRIP": ["R2_SIDE_STRIP_A", "R2_SIDE_STRIP_B", "R2_NEG_FILL"],
+    "GRAZING": ["R2_GRAZING_STRIP", "R2_CONTACT_FILL", "R2_NEG_FILL"],
+    "ZEBRA": ["OLEANDER_MAT_QA_ZEBRA_NORMAL_v1"]
+  },
+  "outputs": {
+    "blend": "OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend",
+    "diagnostic_root": "60_OUTPUTS/DIAGNOSTIC",
+    "report": "G1_R2_BLENDER_REPORT.json",
+    "source_snapshot": "G1_R2_BLENDER_NATIVE_SOURCE.json",
+    "master_exr": "G1_R2_BASELINE_MASTER.exr"
+  },
+  "required_diagnostics": [
+    "BASELINE_BROAD_PERSPECTIVE",
+    "BASELINE_BROAD_TOP",
+    "BASELINE_BROAD_SIDE",
+    "BASELINE_STRIP_PERSPECTIVE",
+    "BASELINE_GRAZING_PERSPECTIVE",
+    "BASELINE_ZEBRA_PERSPECTIVE",
+    "REVISION_BROAD_PERSPECTIVE",
+    "REVISION_STRIP_PERSPECTIVE"
+  ],
+  "debug_contract": {
+    "deterministic_bootstrap": true,
+    "explicit_camera_assignment": true,
+    "explicit_light_assignment": true,
+    "explicit_material_assignment": true,
+    "fallback_materials_forbidden": true,
+    "named_outputs_required": true,
+    "machine_readable_receipt_required": true,
+    "derived_mesh_is_not_source_authority": true,
+    "blender_native_source_mirror_is_editable": true,
+    "json_source_remains_input_authority_for_this_replay": true,
+    "round_trip_writeback_to_json": "NOT_IMPLEMENTED_IN_THIS_GATE"
+  },
+  "boundary": "This gate validates Blender-native execution and reflection diagnostics only. It does not execute Candidate Promotion, establish Canonical Authority, prove ergonomic comfort, Class-A surfacing, engineering CAD, manufacturing feasibility, final CMF, or Release."
+}
