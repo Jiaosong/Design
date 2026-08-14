@@ -135,6 +135,7 @@ def main() -> int:
     }
     status = f"{stage_token}_PROFESSIONAL_BATCH_RENDERED_VISUAL_REVIEW_REQUIRED" if all(checks.values()) else f"{stage_token}_BATCH_FAIL_REVISE"
     report_name = f"G1_{stage_token}_VISUAL_BATCH_REPORT.json"
+    recommended = machine_report.get("selected_for_fixed_rig_visual_diagnostics")
     report = {
         "schema": f"oleander.modeling-worker.v0.13.g1.{stage.lower()}.visual-batch-report.v1",
         "stage": stage,
@@ -145,7 +146,8 @@ def main() -> int:
         "candidate_review": "REOPENED",
         "candidate_promotion": "NOT_RUN",
         "machine_selection_policy": machine_report.get("selection_policy"),
-        "machine_recommended_variant": machine_report.get("selected_for_fixed_rig_visual_diagnostics"),
+        "machine_recommended_variant": recommended,
+        "machine_recommended_minimum_change_variant": recommended,
         "visual_candidates": candidates,
         "checks": checks,
         "surface_system_runtime": runtime_identity,
