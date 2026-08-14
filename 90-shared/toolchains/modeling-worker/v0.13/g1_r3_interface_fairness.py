@@ -127,6 +127,13 @@ def changed_parameters(base_source: dict[str, Any], candidate: dict[str, Any]) -
     return out
 
 
+def relation_change_cost(base_source: dict[str, Any], candidate: dict[str, Any]) -> float:
+    a = base.own(base_source, "INTERFACE_DECK_BOUNDARY")
+    b = base.own(candidate, "INTERFACE_DECK_BOUNDARY")
+    keys = ("u_halfspan", "theta_halfspan_rad", "depth_m", "core_fraction")
+    return sum(abs(float(b[key]) - float(a[key])) / max(abs(float(a[key])), 1e-12) for key in keys)
+
+
 def machine_result(source: dict[str, Any], r2_fix: dict[str, Any]) -> dict[str, Any]:
     result, _ = qa.evaluate(source, r2_fix, False)
     return {
@@ -180,6 +187,7 @@ def main() -> int:
             "variant_id": variant["variant_id"],
             "design_question": variant["design_question"],
             "changed_parameters": changed_parameters(r2_source, candidate),
+            "relation_change_cost": relation_change_cost(r2_source, candidate),
             "machine": machine,
             "interior_fairness": fairness,
             "visual_qa_eligible": eligible,
@@ -193,8 +201,8 @@ def main() -> int:
         results,
         key=lambda row: (
             not row["visual_qa_eligible"],
+            float(row["relation_change_cost"]),
             float(row["interior_fairness"]["metrics"]["max_combined_turn_score"]),
-            len(row["changed_parameters"]),
         ),
     )
     selected = ranked[0]["variant_id"] if ranked and ranked[0]["visual_qa_eligible"] else None
@@ -209,7 +217,7 @@ def main() -> int:
     }
     status = "R3_INTERFACE_FAIRNESS_VARIANT_READY_FOR_VISUAL_QA" if all(checks.values()) else "R3_INTERFACE_FAIRNESS_REVISE"
     report = {
-        "schema": "oleander.modeling-worker.v0.13.g1.r3.interface-fairness-report.v1",
+        "schema": "oleander.modeling-worker.v0.13.g1.r3.interface-fairness-report.v2",
         "status": status,
         "job_state": "R3_INTERIOR_TRANSITION_FAIRNESS_EXECUTED",
         "design_state": "REVISE",
@@ -218,6 +226,7 @@ def main() -> int:
         "candidate_promotion": "NOT_RUN",
         "checks": checks,
         "threshold_basis": contract["threshold_basis"],
+        "selection_policy": "FAIRNESS_GATE_THEN_MINIMUM_SOURCE_RELATION_CHANGE_THEN_FIXED_RIG_VISUAL_REVIEW",
         "baseline": {
             "variant_id": variants_contract["baseline"]["variant_id"],
             "machine": baseline_machine,
