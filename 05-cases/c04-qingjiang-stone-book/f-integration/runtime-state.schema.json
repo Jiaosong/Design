@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c04-f-integration/0.2",
+  "title": "C04 F Integration Runtime State",
+  "type": "object",
+  "required": ["schema_version", "project", "overlay", "decision_question", "evidence_state", "lane_receipts", "core_pages", "promotion_transition", "decision"],
+  "properties": {
+    "schema_version": {"const": "c04-f-integration/0.2"},
+    "project": {
+      "type": "object",
+      "required": ["project_id", "case_id", "project_level", "current_loop", "design_state", "current_gate"],
+      "properties": {
+        "project_id": {"const": "PRJ-C04-QINGJIANG-SHISHU"},
+        "case_id": {"const": "C04"},
+        "project_level": {"const": "P2"},
+        "current_loop": {"const": "Exploration"},
+        "design_state": {"const": "EXPLORE"},
+        "current_gate": {"const": "G3"}
+      }
+    },
+    "overlay": {
+      "type": "object",
+      "required": ["kind", "authority_state", "creates_p3_namespace"],
+      "properties": {
+        "kind": {"const": "P2_TEMPORARY_INTEGRATION_OVERLAY"},
+        "authority_state": {"const": "NOT_AUTHORITY"},
+        "creates_p3_namespace": {"const": false}
+      }
+    },
+    "decision_question": {"type": "string", "minLength": 1},
+    "evidence_state": {
+      "type": "object",
+      "required": ["G1R", "G1F", "field_observed_count", "field_measured_count"],
+      "properties": {
+        "G1F": {"enum": ["IMPLEMENTATION_HOLD", "DIRECT_FIELD_RECEIPT_AVAILABLE"]},
+        "field_observed_count": {"type": "integer", "minimum": 0},
+        "field_measured_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "lane_receipts": {
+      "type": "object",
+      "required": ["A", "B", "C", "D", "E"],
+      "properties": {
+        "A": {"$ref": "#/$defs/receipt"},
+        "B": {"$ref": "#/$defs/receipt"},
+        "C": {"$ref": "#/$defs/receipt"},
+        "D": {"$ref": "#/$defs/receipt"},
+        "E": {"$ref": "#/$defs/receipt"}
+      }
+    },
+    "core_pages": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "reading_mode", "route_relation", "media_state", "digital_state", "f_state"]
+      }
+    },
+    "promotion_transition": {
+      "type": "object",
+      "required": ["from_design_state", "target_design_state", "machine_ceiling", "human_decision_required"],
+      "properties": {
+        "from_design_state": {"const": "EXPLORE"},
+        "target_design_state": {"enum": ["EXPLORE", "CANDIDATE"]},
+        "machine_ceiling": {"const": "READY_FOR_HUMAN_DECISION"},
+        "human_decision_required": {"const": true}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["direct_delta_present", "reopen_C", "promote_P2", "result", "next_action"],
+      "properties": {
+        "direct_delta_present": {"type": "boolean"},
+        "reopen_C": {"type": "boolean"},
+        "promote_P2": {"const": false},
+        "result": {"enum": ["CONTROLLED_INTEGRATION_CONTINUE_NO_PROMOTION", "READY_FOR_OWNER_REPLAY", "BLOCKED_BY_CONTRADICTION"]},
+        "next_action": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "receipt": {
+      "type": "object",
+      "required": ["owner", "object_id", "source_id", "receipt_type", "authority_state", "observed_at", "source_revision", "payload_hash", "direct_delta", "status", "claim_boundary"],
+      "properties": {
+        "owner": {"type": "string", "minLength": 1},
+        "object_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "receipt_type": {"enum": ["DIRECT", "REPLAY", "NONE"]},
+        "authority_state": {"enum": ["LIVE_WRITABLE", "LEGACY_READONLY", "BLOCKED", "NOT_AUTHORITY"]},
+        "observed_at": {"type": "string", "minLength": 1},
+        "source_revision": {"type": "string", "minLength": 1},
+        "payload_hash": {"type": "string", "minLength": 8},
+        "direct_delta": {"type": "boolean"},
+        "status": {"type": "string", "minLength": 1},
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
