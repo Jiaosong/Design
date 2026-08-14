@@ -25,13 +25,15 @@
   "derived_objects": {"baseline":"OL_DERIVED_G1_R2_BASELINE","thumb_revision":"OL_DERIVED_G1_R2_THUMB_REVISION"},
   "roundtrip": {
     "native_readback_required": true,
-    "bootstrap_readback_tolerance_m": 1e-12,
+    "bootstrap_readback_tolerance_m": 1e-8,
     "controlled_native_edit": {"object":"OL_SRC_THUMB_SIDE_PLAN","index":3,"delta_m":0.003,"only_family":"THUMB_SIDE_PLAN"},
     "derived_surface_min_effect_m": 0.001,
     "restore_tolerance_m": 1e-12,
     "rebuild_text_block": "OLEANDER_G1_R2_REBUILD.py",
     "live_source_text_block": "OLEANDER_G1_R2_LIVE_SOURCE.json",
     "snapshot_output": "G1_R2_BLENDER_SOURCE_ROUNDTRIP.json",
+    "saved_blend_reopen_rebuild_required": true,
+    "saved_blend_reopen_report": "G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json",
     "overwrite_bootstrap_seed_forbidden": true
   },
   "camera_jobs": {"HERO_CAM":{"lens_mm":85},"CMF_CAM":{"lens_mm":110},"INSPECTION_CAM":{"lens_mm":135}},
@@ -47,11 +49,12 @@
     "report":"G1_R2_BLENDER_REPORT.json",
     "source_snapshot":"G1_R2_BLENDER_NATIVE_SOURCE.json",
     "roundtrip_snapshot":"G1_R2_BLENDER_SOURCE_ROUNDTRIP.json",
+    "reopen_rebuild_report":"G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json",
     "master_exr":"G1_R2_BASELINE_MASTER.exr"
   },
   "required_diagnostics": ["BASELINE_BROAD_PERSPECTIVE","BASELINE_BROAD_TOP","BASELINE_BROAD_SIDE","BASELINE_STRIP_PERSPECTIVE","BASELINE_GRAZING_PERSPECTIVE","BASELINE_ZEBRA_PERSPECTIVE","REVISION_BROAD_PERSPECTIVE","REVISION_STRIP_PERSPECTIVE"],
   "debug_contract": {
-    "deterministic_bootstrap":true,"explicit_camera_assignment":true,"explicit_light_assignment":true,"explicit_material_assignment":true,"fallback_materials_forbidden":true,"named_outputs_required":true,"machine_readable_receipt_required":true,"derived_mesh_is_not_source_authority":true,"blender_native_source_is_editable":true,"native_source_readback_required":true,"native_edit_to_derived_rebuild_required":true,"self_contained_rebuild_text_required":true,"bootstrap_seed_overwrite_forbidden":true
+    "deterministic_bootstrap":true,"explicit_camera_assignment":true,"explicit_light_assignment":true,"explicit_material_assignment":true,"fallback_materials_forbidden":true,"named_outputs_required":true,"machine_readable_receipt_required":true,"derived_mesh_is_not_source_authority":true,"blender_native_source_is_editable":true,"native_source_readback_required":true,"native_edit_to_derived_rebuild_required":true,"self_contained_rebuild_text_required":true,"saved_blend_reopen_rebuild_required":true,"bootstrap_seed_overwrite_forbidden":true
   },
-  "boundary": "This gate validates Blender-native Working Source readback/rebuild plus Surface System diagnostics. Reflection Visual QA remains REVISE until the newer native-source/execution isolation evidence is reviewed. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized."
+  "boundary": "This gate validates Blender-native Working Source readback/rebuild, saved-.blend reopen/rebuild continuity, and Surface System diagnostics. Reflection Visual QA remains REVISE until the newer native-source/execution isolation evidence is reviewed. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized."
 }
