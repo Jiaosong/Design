@@ -1,0 +1,33 @@
+{
+  "gate_version": "QJ-E07-GATE-v0.1",
+  "gates": {
+    "authority_boundary": "PASS",
+    "state_before_form": "PASS",
+    "no_rpg": "PASS",
+    "fallback_architecture": "PASS",
+    "structured_output": "PASS",
+    "local_open_test": "PASS",
+    "visual_render_test": "PENDING",
+    "penpot_native_import": "OPEN",
+    "drive_sync_readback": "PASS",
+    "github_sync_readback": "OPEN",
+    "field_validation": "OPEN",
+    "static_flow_validation": "PASS",
+    "svg_import_asset_validation": "PASS",
+    "svg_visual_render_test": "PASS",
+    "browser_headless_visual_test": "OPEN_ENVIRONMENT_BLOCKED"
+  },
+  "promotion": "WORKING_SOURCE_VERIFIED_NOT_NATIVE_PROMOTED",
+  "qa_notes": [
+    "S0 persistent primary navigation removed after visual QA.",
+    "S2 unsupported return glyph replaced after render QA.",
+    "Chromium headless runner failed to produce a reliable browser screenshot in this container; SVG render QA used as visual evidence instead. Penpot-native and field gates remain open."
+  ],
+  "sync_receipts": {
+    "drive": {
+      "file_id": "1FIxclE1NzgkRcoynKVoBC1KUbHEaQNnZ",
+      "parent_id": "1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz",
+      "metadata_readback": "PASS"
+    }
+  }
+}
