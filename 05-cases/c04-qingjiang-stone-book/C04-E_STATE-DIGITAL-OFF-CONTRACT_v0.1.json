@@ -1,0 +1,60 @@
+{
+  "schema_version":"c04-e-contract/0.1",
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "owner_project_id":"PRJ-C04-DIGITAL-INTERACTION",
+  "case_id":"C04",
+  "lane":"E",
+  "authority_state":"OWNER_CONTRACT_RECEIPT_CANDIDATE",
+  "inputs":{
+    "c19":"C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v2.0.md",
+    "e_owner":"C04-WS-03｜数字产品与交互",
+    "d_consumer_handoff":"R01 NO UI onsite; R06 exact science hold; R13 digital afterward only"
+  },
+  "field_boundary":{"field_observed":0,"field_measured":0,"g1f":"HOLD","field_safety_verified":false,"promotion":"NO"},
+  "state_model":{
+    "experience_state":["MOVE","RECOVER","OBSERVE","READ","WITHDRAW","RETURN"],
+    "reality_state":["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "delivery_modifier":["NONE","OFFLINE","RETURN-PRIORITY"],
+    "rules":[
+      "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OR_OPEN",
+      "OFFLINE_DOES_NOT_EQUAL_DEGRADED",
+      "RETURN_PRIORITY_MAY_OVERLAY_NORMAL_DEGRADED_UNKNOWN",
+      "CLOSED_REQUIRES_BYPASS_REROUTE_OR_EXIT",
+      "OPTIONAL_DEPTH_CLOSES_BEFORE_ROUTE_SAFETY_RETURN"
+    ]
+  },
+  "digital_off_contract":{
+    "digital_required_for_route":false,
+    "digital_required_for_safety":false,
+    "digital_required_for_return":false,
+    "digital_required_for_core_observation":false,
+    "fallback_owners":{
+      "ROUTE":["PHYSICAL","PAPER","HUMAN"],
+      "SAFETY":["PHYSICAL","HUMAN"],
+      "RETURN":["PHYSICAL","PAPER","HUMAN"],
+      "CORE_OBSERVATION":["FIELD_REALITY","PAPER_OPTIONAL","HUMAN_OPTIONAL"]
+    },
+    "failure_sequence":[
+      "CLOSE_S2_OPTIONAL_EXPLANATION",
+      "CLOSE_MEMORY_AND_SHARE_ENTRY",
+      "KEEP_ROUTE_SAFETY_RETURN_OUTSIDE_DIGITAL",
+      "KEEP_REAL_STIMULUS_AS_PRIMARY"
+    ],
+    "claim_boundary":"Architecture completeness only; does not prove current field signage, staffing, route safety or service sufficiency."
+  },
+  "capability_policy":{
+    "manual_location":"DEFAULT",
+    "offline_first":true,
+    "gps":"CONDITIONAL_G1F",
+    "qr_nfc":"CONDITIONAL",
+    "ar":"CONDITIONAL_AND_NOT_VERIFIED",
+    "auto_trigger":"CONDITIONAL_G1F",
+    "live_service":"OFFICIAL_INTERFACE_REQUIRED",
+    "pseudo_live_status":"PROHIBITED"
+  },
+  "priority":"SERVICE_RETURN > ROUTE > OBSERVATION > EXPLANATION > MEMORY > SHARE",
+  "revision_closure":{"E-R1":"READY_TO_CLOSE_ON_OWNER_READBACK","E-R2":"READY_TO_CLOSE_ON_OWNER_READBACK"},
+  "blockers":["A_G1F","FIELD_ROUTE_SAFETY_SERVICE_SUFFICIENCY","GPS_ROUTE_TIME_LIVE_SERVICE_AR_NODE_CLOSURE_FIELD_NOT_VERIFIED"],
+  "decision":"E_DEGRADED_OFFLINE_AND_DIGITAL_OFF_CONTRACT_CANDIDATE_READY_FOR_OWNER_READBACK",
+  "promotion":"NO"
+}
