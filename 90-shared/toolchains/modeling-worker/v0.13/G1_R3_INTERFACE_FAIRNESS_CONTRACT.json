@@ -1,0 +1,65 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.interface-fairness-contract.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R3_INTERIOR_TRANSITION_FAIRNESS_GATE",
+  "design_state": "REVISE",
+  "authority_state": "WORKING_SOURCE",
+  "candidate_review": "REOPENED",
+  "candidate_promotion": "NOT_RUN",
+  "gate_role": "WORKING_DESIGN_DIAGNOSTIC_ONLY_NOT_PROMOTION_EVIDENCE",
+  "source_policy": {
+    "base": "R2 Blender-native sparse Working Source",
+    "allowed_source_family": "INTERFACE_DECK_BOUNDARY",
+    "mesh_local_patch_forbidden": true,
+    "hidden_sculpt_correction_forbidden": true,
+    "derived_mesh_is_authority": false,
+    "changes_must_be_sparse_explicit_reversible": true,
+    "theta_center_semantics_locked": "TOP_MERIDIAN",
+    "preserve_r2_depth_m": 0.012
+  },
+  "sampling": {
+    "u_samples": 97,
+    "theta_samples": 144,
+    "du": 0.005,
+    "dtheta_rad": 0.025,
+    "reported_longitudinal_span_u": 0.01,
+    "reported_circumferential_span_rad": 0.05,
+    "zone": "core_fraction < rho(interface) < 1.0",
+    "percentile": 95
+  },
+  "threshold_basis": {
+    "reference": "G1_PRIMARY_CURVE_SOURCE.machine_thresholds broad-surface normal-turn limits",
+    "broad_longitudinal_deg_per_0_01u": 4.0,
+    "broad_circumferential_deg_per_0_05rad": 8.0,
+    "reasoning": "The interface is an intentional transition and may turn more strongly than the broad surface. R3 therefore scales the existing broad-surface limits rather than inventing an unrelated absolute standard.",
+    "working_multipliers": {
+      "max_longitudinal": 2.0,
+      "p95_longitudinal": 1.5,
+      "max_circumferential": 1.5,
+      "p95_circumferential": 1.25
+    },
+    "derived_working_limits": {
+      "max_longitudinal_deg_per_0_01u": 8.0,
+      "p95_longitudinal_deg_per_0_01u": 6.0,
+      "max_circumferential_deg_per_0_05rad": 12.0,
+      "p95_circumferential_deg_per_0_05rad": 10.0,
+      "max_combined_turn_score": 14.422205101855956
+    },
+    "threshold_status": "WORKING_R3_DIAGNOSTIC_THRESHOLD_NOT_UNIVERSAL_CLASS_A_CRITERION"
+  },
+  "selection_policy": {
+    "baseline_expected_to_fail_interior_fairness": true,
+    "existing_r2_machine_checks_must_remain_pass": true,
+    "interior_fairness_gate_must_pass": true,
+    "interface_depth_must_remain_0_012": true,
+    "visual_qa_only_after_machine_and_fairness_pass": true,
+    "visual_rigs": ["STRIP", "GRAZING", "ZEBRA"],
+    "visual_camera": "HERO_CAM",
+    "visual_runtime": "OLEANDER Blender Surface System v1.20.0 / F1_DESIGN_VALIDATION"
+  },
+  "known_open_defects": {
+    "interface_right_transition": "ACTIVE_R3_TARGET",
+    "right_front_termination": "OPEN_UNCHANGED_NOT_SOLVED_BY_THIS_GATE"
+  },
+  "boundary": "A fairness PASS only authorizes fixed-rig visual QA of that R3 Source-relation variant. It does not authorize Candidate Promotion, Canonical Promotion, Class-A, engineering CAD, manufacturing, ergonomic validation or Release."
+}
