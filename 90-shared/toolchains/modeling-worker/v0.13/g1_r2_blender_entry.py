@@ -22,9 +22,10 @@ def main():
     a=args(); source_path=Path(a.source); seed_sha_before=sha(source_path); source=load(a.source); fix=load(a.correction); contract=load(a.contract); binding=load(a.binding); seed=r2.apply(source,fix)
     out=Path(a.out).resolve(); diag=out/contract['outputs']['diagnostic_root']; diag.mkdir(parents=True,exist_ok=True)
 
+    gate=binding['roundtrip_gate']; read_tol=float(gate['bootstrap_readback_tolerance_m']); edit_tol=float(gate['controlled_native_edit_tolerance_m']); restore_tol=float(gate['restore_tolerance_m']); locked_tol=float(gate['locked_semantic_tolerance_rad'])
     bs.clean(); sc=bs.col(bs.SRC); dc=bs.col(bs.DER); qc=bs.col(bs.QA); src=bs.sources(seed,sc)
-    live_source,bootstrap_diffs,authority_checks=rt.authority_checks(seed)
-    edit_delta=float(binding['roundtrip_gate']['controlled_native_edit_delta_m']); edit_test=rt.controlled_native_edit_test(seed,edit_delta)
+    live_source,bootstrap_diffs,authority_checks=rt.authority_checks(seed,read_tol,locked_tol)
+    edit_delta=float(gate['controlled_native_edit_delta_m']); edit_test=rt.controlled_native_edit_test(seed,edit_delta,edit_tol,restore_tol)
     live_source=rt.extract_native_source(seed)
     base_report,bv=qa.evaluate(live_source,fix,False); rev_report,rv=qa.evaluate(live_source,fix,True); _,bf,_=r2.mesh(live_source,False); _,rf,_=r2.mesh(live_source,True)
     base=bs.mesh_obj('OL_DERIVED_G1_R2_BASELINE',bv,bf,dc,'R2 baseline derived from Blender-native Working Source'); rev=bs.mesh_obj('OL_DERIVED_G1_R2_THUMB_REVISION',rv,rf,dc,'R2 controlled revision derived from Blender-native Working Source'); rev.hide_render=True; rev.hide_viewport=True
@@ -32,7 +33,7 @@ def main():
 
     clay=bs.material('OLEANDER_MAT_DIAG_CLAY_v1',(.34,.35,.37),.42,0); refl=bs.material('OLEANDER_MAT_DIAG_REFLECTION_v1',(.055,.06,.07),.14,.65); zebra=bs.zebra(); bs.assign(base,clay); bs.assign(rev,clay)
     scene=bpy.context.scene; bs.render_setup(scene,contract,a.resolution); scene.view_settings.exposure=-1.20; target=(.095,0,.052)
-    scene['OLEANDER_G1_R2_U_RINGS']=int(live_source['derived_execution']['u_rings']); scene['OLEANDER_G1_R2_CIRC_SAMPLES']=int(live_source['derived_execution']['circumferential_samples']); scene['OLEANDER_TERMINATION_ENVELOPE_EXPONENT']=float(live_source['ownership']['LOWER_RETURN_PROFILE'].get('termination_envelope_exponent',.34))
+    scene['OLEANDER_G1_R2_U_RINGS']=int(live_source['derived_execution']['u_rings']); scene['OLEANDER_G1_R2_CIRC_SAMPLES']=int(live_source['derived_execution']['circumferential_samples']); scene['OLEANDER_TERMINATION_ENVELOPE_EXPONENT']=float(live_source['ownership']['LOWER_RETURN_PROFILE'].get('termination_envelope_exponent',.34)); scene['OLEANDER_LOCKED_THETA_CENTER_TOP']=True; scene['OLEANDER_NATIVE_READBACK_TOLERANCE_M']=read_tol
     hero=bs.camera('HERO_CAM',85,(.34,-.34,.25),target,qc); cmf=bs.camera('CMF_CAM',110,(.095,0,1.20),target,qc); inspect=bs.camera('INSPECTION_CAM',135,(.95,0,.075),target,qc); rigmap=bs.rigs(qc,target)
     for o in qc.objects:
         if (o.type=='LIGHT' or o.name=='R2_NEG_FILL') and hasattr(o,'visible_camera'): o.visible_camera=False
@@ -46,11 +47,11 @@ def main():
     roundtrip={
       'schema':'oleander.modeling-worker.v0.13.g1.r2.blender-native-roundtrip',
       'authority_state':'WORKING_SOURCE','source_mode':'BLENDER_NATIVE_EDITABLE_WORKING_SOURCE','bootstrap_seed_sha256':seed_sha_before,
-      'bootstrap_readback_family_error_m':bootstrap_diffs,'authority_checks':authority_checks,'controlled_native_edit_test':edit_test,
+      'representation_precision':gate['representation_precision'],'bootstrap_readback_tolerance_m':read_tol,'bootstrap_readback_family_error_m':bootstrap_diffs,'authority_checks':authority_checks,'controlled_native_edit_test':edit_test,
       'live_source_snapshot':live_source,'bootstrap_seed_overwritten':False,'writeback_policy':'NEW_SNAPSHOT_ONLY','rebuild_text_block':'OLEANDER_G1_R2_REBUILD.py'
     }
     (diag/contract['outputs']['roundtrip_snapshot']).write_text(json.dumps(roundtrip,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    native={'schema':'oleander.modeling-worker.v0.13.g1.r2.blender-native-source-snapshot','authority_state':'WORKING_SOURCE','source_mode':'BLENDER_NATIVE_EDITABLE_WORKING_SOURCE','bootstrap_role':'IMMUTABLE_SEED_AND_PROVENANCE','objects':{o.name:{'type':o.type,'role':o.get('OLEANDER_ROLE'),'editable':bool(o.get('OLEANDER_EDITABLE',False))} for o in src},'derived_objects':[base.name,rev.name],'round_trip_readback_and_rebuild':'IMPLEMENTED','bootstrap_seed_overwrite':'FORBIDDEN'}
+    native={'schema':'oleander.modeling-worker.v0.13.g1.r2.blender-native-source-snapshot','authority_state':'WORKING_SOURCE','source_mode':'BLENDER_NATIVE_EDITABLE_WORKING_SOURCE','bootstrap_role':'IMMUTABLE_SEED_AND_PROVENANCE','objects':{o.name:{'type':o.type,'role':o.get('OLEANDER_ROLE'),'editable':bool(o.get('OLEANDER_EDITABLE',False))} for o in src},'derived_objects':[base.name,rev.name],'round_trip_readback_and_rebuild':'IMPLEMENTED','bootstrap_seed_overwrite':'FORBIDDEN','locked_semantics':binding['source_authority']['locked_semantics']}
     (diag/contract['outputs']['source_snapshot']).write_text(json.dumps(native,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
     scene['OLEANDER_MODEL']=MODEL; scene['OLEANDER_STAGE']='G1_R2_BLENDER_NATIVE_SOURCE_ROUNDTRIP'; scene['OLEANDER_AUTHORITY_STATE']='WORKING_SOURCE'; scene['OLEANDER_DESIGN_STATE']='REVISE'; scene['OLEANDER_CANDIDATE_REVIEW']='REOPENED'; scene['OLEANDER_CANDIDATE_PROMOTION']='NOT_RUN'; scene['OLEANDER_SOURCE_MODE']='BLENDER_NATIVE_EDITABLE_WORKING_SOURCE'; scene['OLEANDER_SOURCE_SHA256']=seed_sha_before; scene['OLEANDER_CORRECTION_SHA256']=sha(a.correction); scene['OLEANDER_EXECUTION_CONTRACT_SHA256']=sha(a.contract); scene['OLEANDER_SURFACE_BINDING_SHA256']=sha(a.binding); scene['OLEANDER_DIAGNOSTIC_EXPOSURE']=-1.20
@@ -59,7 +60,8 @@ def main():
       'source_authority_objects_present':authority_checks['six_native_source_objects_present'],
       'source_objects_editable':authority_checks['all_native_source_objects_editable'],
       'source_objects_are_working_source':authority_checks['all_native_source_objects_working_source'],
-      'bootstrap_to_native_readback_exact':authority_checks['bootstrap_roundtrip_exact'],
+      'bootstrap_to_native_readback_within_representation_tolerance':authority_checks['bootstrap_roundtrip_within_blender_representation_tolerance'],
+      'locked_source_semantics_preserved':authority_checks['locked_top_meridian_semantic_preserved'],
       'controlled_native_edit_roundtrip_pass':edit_test['pass'],
       'derived_mesh_not_authority':base.get('OLEANDER_AUTHORITY')=='DERIVED_EXECUTION_NOT_AUTHORITY' and rev.get('OLEANDER_AUTHORITY')=='DERIVED_EXECUTION_NOT_AUTHORITY',
       'derived_mesh_built_from_native_readback':base.get('OLEANDER_SOURCE_MODE')=='BLENDER_NATIVE_EDITABLE_WORKING_SOURCE',
