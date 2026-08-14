@@ -1,0 +1,26 @@
+{
+  "schema": "C04-QJD-GD3-RESPONSIBILITY-v0.3",
+  "task_id": "R06_RELATION_COMPARE",
+  "visitor_goal": "先观察真实河谷，再比较左右/高低/江面-岸坡-平缓面关系；解释可后置",
+  "exclusive_responsibilities": {
+    "route_direction": {"primary": "field_signage", "allowed_secondary": []},
+    "safety_return": {"primary": "field_signage", "allowed_secondary": ["paper_service_copy"]},
+    "observation_prompt": {"primary": "field_signage", "allowed_secondary": ["paper"]},
+    "portable_relation_trace": {"primary": "paper", "allowed_secondary": []},
+    "evidence_deep_read": {"primary": "digital_optional", "allowed_secondary": ["human_service"]},
+    "memory_afterward": {"primary": "paper", "allowed_secondary": ["digital_optional"]}
+  },
+  "channels": {
+    "field_signage": {"onsite": true, "phone_required": false, "owns": ["route_direction", "safety_return", "observation_prompt"], "must_not": ["long_explanation", "completion_mechanic"]},
+    "paper": {"onsite": true, "phone_required": false, "owns": ["portable_relation_trace", "memory_afterward"], "must_not": ["precise_unmeasured_geometry", "route_as_only_source"]},
+    "digital_optional": {"onsite": false, "phone_required": true, "owns": ["evidence_deep_read"], "must_not": ["route_direction", "safety_return", "core_journey", "mandatory_trigger"]},
+    "human_service": {"onsite": true, "phone_required": false, "owns": [], "must_not": ["forced_interception", "unsupported_science_claim"]}
+  },
+  "acceptance": [
+    "Exactly one primary owner per exclusive responsibility",
+    "Digital owns neither route_direction nor safety_return nor core_journey",
+    "No-phone path can satisfy route/safety/observation without digital",
+    "Field first-read remains landscape/route rather than explanation",
+    "FACT / LOCAL NARRATIVE / DESIGN READING remain separable"
+  ]
+}
