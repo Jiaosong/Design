@@ -1,4 +1,4 @@
-# C04｜QJ-C｜Spatial + Experience Working Pack v0.9
+# C04｜QJ-C｜Spatial + Experience Working Pack v1.1
 
 - Date: 2026-08-14
 - Current canonical home: `C04-WS-02｜体验与空间关系`
