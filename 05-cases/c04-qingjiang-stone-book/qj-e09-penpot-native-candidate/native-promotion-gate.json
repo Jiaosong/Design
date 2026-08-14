@@ -1,13 +1,17 @@
 {
   "version":"QJ-E09-NATIVE-PROMOTION-GATE-v0.1",
-  "candidateArtifacts":{"tokens":1,"screenSVG":9,"componentSVG":7,"componentMap":1,"prototypeLinkMap":1},
+  "candidateArtifacts":{"tokens":1,"screenSVG":9,"componentSVG":7,"componentMap":1,"prototypeLinkMap":1,"semanticFreshnessScan":1},
   "localCandidateValidation":"PASS",
-  "validationReceipts":{"svg_xml_parse":"16/16 PASS","svg_png_render":"16/16 PASS","prototype_links":"11/11 endpoints valid","component_names":"7/7 unique","s0_true_digital_silence":"PASS_AFTER_E07_TO_E08_CONTRADICTION_REPAIR"},
+  "validationReceipts":{"svg_xml_parse":"16/16 PASS","svg_png_render":"16/16 PASS","prototype_links":"11/11 endpoints valid","component_names":"7/7 unique","s0_true_digital_silence":"PASS_AFTER_E07_TO_E08_CONTRADICTION_REPAIR","semantic_freshness_scan":"PASS_WITH_PROJECT_HOLD"},
+  "freshnessAuthority":{"currentFrontier":"C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md","sha":"6089c00890f7d7c34b3f0e345b062848eb908b4d","stopRule":"ACTIVE","digitalFeatureExpansion":"BLOCKED","projectProgress":"HOLD_VALIDATION_ONLY"},
   "provider":{"penpotPluginSearch":"NO_PLUGIN_AVAILABLE","penpotWriteConnector":false},
   "drive":{"nativeCandidateZip":"1nB48aS7qtf_leT4IjSXBOipWVqO1-rLb","tokenImportZip":"1yp3iI2CJsOWmjmKHDSg6G2L_bvlQsLpT","metadataReadback":"PASS"},
-  "github":{"repository":"Jiaosong/Design","branch":"agent/qj-e07-digital-product","pullRequest":96,"pullRequestState":"DRAFT_OPEN","mergeable":true,"changedFiles":17,"expectedPathAudit":"PASS","readback":{"readme":"PASS","promotionGate":"PASS","prototypeLinks":"PASS","s0RepairSVG":"PASS"}},
+  "github":{"repository":"Jiaosong/Design","branch":"agent/qj-e07-digital-product","pullRequest":96,"pullRequestState":"DRAFT_OPEN","mergeable":true,"changedFiles":18,"expectedPathAudit":"PASS","readback":{"readme":"PASS","promotionGate":"PASS","prototypeLinks":"PASS_WITH_UI_SEQUENCE_LIMIT","s0RepairSVG":"PASS","semanticFreshnessScan":"PASS"}},
   "github_sync_readback":"PASS",
-  "requiredForPromotion":["Import DTCG token JSON and verify token sets/values","Import/reconstruct 7 components and create native variants","Import 9 screen boards and verify editable shape hierarchy","Connect prototype interactions according to prototype-links.json","Run View mode primary flow and verify S0/S1/S2 behavior","Read back native file/component/variant/prototype state","Only then set penpot_native_import=PASS"],
+  "candidateAuthority":"MATERIALIZATION_QA_MIGRATION_CANDIDATE_ONLY_NO_NEW_FEATURE_AUTHORITY",
+  "requiredForPromotion":["Close the controlling C04 validation/evidence stop conditions before system-level promotion","Import DTCG token JSON and verify token sets/values","Import/reconstruct 7 components and create native variants","Import 9 screen boards and verify editable shape hierarchy","Connect prototype interactions according to prototype-links.json as UI-state links only","Run View mode primary flow and verify S0/S1/S2 behavior","Read back native file/component/variant/prototype state","Only then set penpot_native_import=PASS"],
   "penpot_native_import":"OPEN_PROVIDER_BLOCKED",
-  "promotion":"NOT_PROMOTED"
+  "field_validation":"OPEN",
+  "main_promotion":"OPEN_EXPLICIT_TRANSITION",
+  "promotion":"NOT_PROMOTED_PROJECT_HOLD"
 }
