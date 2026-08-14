@@ -3,6 +3,7 @@
 
 Edit OL_SRC_* native source objects, then Run Script. The derived baseline mesh is rebuilt
 from Blender-native Working Source objects. No repository Python modules are required.
+Locked relationship semantics remain fail-closed and do not become new source DOFs.
 """
 from __future__ import annotations
 import json
@@ -47,13 +48,21 @@ def wrap(a): return (a + math.pi) % (2*math.pi) - math.pi
 def source():
     grip = pts(NAMES["GRIP_AXIS"])
     deck = bpy.data.objects[NAMES["INTERFACE_DECK_BOUNDARY"]]
+    theta = float(deck.get("theta_center_rad", 0.0))
+    if bool(bpy.context.scene.get("OLEANDER_LOCKED_THETA_CENTER_TOP", True)):
+        tol = float(bpy.context.scene.get("OLEANDER_NATIVE_READBACK_TOLERANCE_M", 1e-8))
+        if abs(theta) > tol:
+            raise RuntimeError("Locked INTERFACE_DECK_BOUNDARY.theta_center=TOP_MERIDIAN was modified; re-enter Relation / Surface Source to unlock it")
     return {
         "grip": grip,
         "palm": [p[2] for p in pts(NAMES["PALM_PROFILE"])],
         "thumb": [p[1] for p in pts(NAMES["THUMB_SIDE_PLAN"])],
         "opposite": [-p[1] for p in pts(NAMES["OPPOSITE_SIDE_PLAN"])],
         "lower": [-p[2] for p in pts(NAMES["LOWER_RETURN_PROFILE"])],
-        "deck": {k: float(deck[k]) for k in ("u_center","u_halfspan","theta_center_rad","theta_halfspan_rad","depth_m","core_fraction")},
+        "deck": {
+            "u_center":float(deck["u_center"]),"u_halfspan":float(deck["u_halfspan"]),"theta_center_rad":theta,
+            "theta_halfspan_rad":float(deck["theta_halfspan_rad"]),"depth_m":float(deck["depth_m"]),"core_fraction":float(deck["core_fraction"])
+        },
         "termination_exponent": float(bpy.context.scene.get("OLEANDER_TERMINATION_ENVELOPE_EXPONENT", 0.34)),
     }
 
@@ -107,7 +116,7 @@ def rebuild():
     for p in me.polygons: p.use_smooth=True
     for m in mats: me.materials.append(m)
     obj["OLEANDER_AUTHORITY"]="DERIVED_EXECUTION_NOT_AUTHORITY"; obj["OLEANDER_EDITABLE"]=False; obj["OLEANDER_SOURCE_MODE"]="BLENDER_NATIVE_WORKING_SOURCE"
-    live={"authority_state":"WORKING_SOURCE","source_mode":"BLENDER_NATIVE_WORKING_SOURCE","grip_axis":s["grip"],"palm_profile":s["palm"],"thumb_side_plan":s["thumb"],"opposite_side_plan":s["opposite"],"lower_return_profile":s["lower"],"interface_deck_boundary":s["deck"],"termination_envelope_exponent":s["termination_exponent"]}
+    live={"authority_state":"WORKING_SOURCE","source_mode":"BLENDER_NATIVE_WORKING_SOURCE","locked_semantics":{"interface_theta_center":"TOP_MERIDIAN"},"grip_axis":s["grip"],"palm_profile":s["palm"],"thumb_side_plan":s["thumb"],"opposite_side_plan":s["opposite"],"lower_return_profile":s["lower"],"interface_deck_boundary":s["deck"],"termination_envelope_exponent":s["termination_exponent"]}
     t=bpy.data.texts.get("OLEANDER_G1_R2_LIVE_SOURCE.json") or bpy.data.texts.new("OLEANDER_G1_R2_LIVE_SOURCE.json"); t.clear(); t.write(json.dumps(live,indent=2))
     bpy.context.scene["OLEANDER_LAST_NATIVE_REBUILD"]="PASS"
     print("OLEANDER_G1_R2_NATIVE_SOURCE_REBUILD_PASS",len(verts),len(faces))
