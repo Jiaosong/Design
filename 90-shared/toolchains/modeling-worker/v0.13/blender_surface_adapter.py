@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import math
 from pathlib import Path
 from typing import Iterable
 
@@ -14,8 +13,6 @@ SYSTEM_VERSION = "v1.20.0"
 def clear_scene() -> None:
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
-    for datablocks in (bpy.data.curves, bpy.data.meshes, bpy.data.materials, bpy.data.cameras, bpy.data.lights):
-        pass
 
 
 def collection(name: str):
@@ -24,12 +21,6 @@ def collection(name: str):
         c = bpy.data.collections.new(name)
         bpy.context.scene.collection.children.link(c)
     return c
-
-
-def link_only(obj, coll) -> None:
-    for c in list(obj.users_collection):
-        c.objects.unlink(obj)
-    coll.objects.link(obj)
 
 
 def source_curve(name: str, points: Iterable[Iterable[float]], family: str, coll, bevel: float = 0.0007):
@@ -146,9 +137,9 @@ def area(name: str, loc, target, energy: float, size: float, size_y: float, coll
     return o
 
 
-def setup_scene(resolution: int, samples: int = 8):
+def setup_scene(resolution: int, samples: int = 8, engine: str = "CYCLES"):
     sc = bpy.context.scene
-    sc.render.engine = "BLENDER_EEVEE_NEXT"
+    sc.render.engine = engine
     sc.render.resolution_x = resolution
     sc.render.resolution_y = resolution
     sc.render.resolution_percentage = 100
@@ -156,9 +147,14 @@ def setup_scene(resolution: int, samples: int = 8):
     sc.render.film_transparent = False
     sc.world.color = (0.018, 0.018, 0.018)
     sc.render.use_persistent_data = True
+    if engine == "CYCLES":
+        sc.cycles.samples = samples
+        sc.cycles.use_adaptive_sampling = True
+        sc.cycles.adaptive_threshold = 0.08
     sc["OLEANDER_SURFACE_SYSTEM"] = SYSTEM
     sc["OLEANDER_SURFACE_SYSTEM_VERSION"] = SYSTEM_VERSION
     sc["OLEANDER_FIDELITY"] = "F1_DESIGN_VALIDATION"
+    sc["OLEANDER_RENDER_ENGINE"] = engine
     sc["OLEANDER_TARGET_SAMPLES"] = samples
     return sc
 
@@ -196,17 +192,3 @@ def render(sc, out: Path, camera_obj, name: str):
 
 def set_collection_render(coll, visible: bool):
     coll.hide_render = not visible
-
-
-def object_bounds(objects):
-    pts = []
-    for obj in objects:
-        if obj.type != "MESH":
-            continue
-        for v in obj.data.vertices:
-            pts.append(obj.matrix_world @ v.co)
-    if not pts:
-        return (Vector((0, 0, 0)), Vector((1, 1, 1)))
-    lo = Vector(tuple(min(p[i] for p in pts) for i in range(3)))
-    hi = Vector(tuple(max(p[i] for p in pts) for i in range(3)))
-    return lo, hi
