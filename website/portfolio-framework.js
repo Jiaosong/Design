@@ -4,6 +4,15 @@
 
   document.body.classList.add('portfolio-framework-v2');
 
+  if (!document.querySelector('link[data-portfolio-crops]')) {
+    const cropStyles = document.createElement('link');
+    cropStyles.rel = 'stylesheet';
+    cropStyles.href = 'portfolio-crops.css';
+    cropStyles.dataset.portfolioCrops = '';
+    cropStyles.onload = () => document.documentElement.setAttribute('data-portfolio-crops', 'ready');
+    document.head.appendChild(cropStyles);
+  }
+
   const main = $('#main');
   const hero = $('#home');
   const encounter = $('.expression-encounter');
