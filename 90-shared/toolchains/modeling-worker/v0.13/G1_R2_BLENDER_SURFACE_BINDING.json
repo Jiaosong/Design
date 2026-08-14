@@ -48,7 +48,7 @@
     "derived_surface_must_change_min_m": 0.001,
     "restore_tolerance_m": 1e-12,
     "locked_semantic_tolerance_rad": 1e-8,
-    "writeback_policy": "WRITE_NEW_ROUNDTRIP_SNAPSHOT; DO NOT_OVERWRITE_BOOTSTRAP_SEED"
+    "writeback_policy": "WRITE_NEW_ROUNDTRIP_SNAPSHOT; DO_NOT_OVERWRITE_BOOTSTRAP_SEED"
   },
   "diagnostics": {
     "required_render_passes": ["BROAD","STRIP","GRAZING","ZEBRA","RELATION_A_B"],
