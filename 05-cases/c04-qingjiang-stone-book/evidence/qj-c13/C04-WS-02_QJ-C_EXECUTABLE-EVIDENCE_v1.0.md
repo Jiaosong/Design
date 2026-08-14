@@ -2,14 +2,14 @@
 
 - Date: 2026-08-14
 - Role: `EVIDENCE COMPANION / NOT AUTHORITY REPLACEMENT`
-- Current C authority: `C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v1.4.md`
-- C authority state: `PRE-INTEGRATION HANDOFF / CROSS-LINE READY / FIELD OPEN / NOT PROMOTED`
+- Current C authority: `C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v1.5.md` (`QJ-C14｜Cross-line Compliance Audit v1.5`)
+- Current C authority state: `CROSS-LINE AUDIT COMPLETE / REVISION REQUESTS ISSUED / FIELD OPEN / NOT PROMOTED`
 - Field: `FIELD OBSERVED = 0 / FIELD MEASURED = 0`
 - G1F: `IMPLEMENTATION HOLD`
 
 ## 01｜Purpose
 
-This package adds executable and editable evidence artifacts to the existing QJ-C12/C13 authority. It does not replace C11/C12/C13 and does not create new field truth.
+This package adds executable and editable evidence artifacts to the current QJ-C authority chain through C14. It does not replace C11/C12/C13/C14 and does not create new field truth.
 
 ## 02｜Artifacts
 
@@ -42,13 +42,14 @@ This package adds executable and editable evidence artifacts to the existing QJ-
 
 ## 04｜Freshness alignment
 
-Current GitHub C12/C13 authority is preserved:
+Current GitHub C14 authority is preserved:
 
-- railing support: `KEEP / Candidate / Not Located`;
+- railing support: `Candidate / Not Located`;
 - mountain fluid rest: `HOLD`;
 - Qingfengyin: `HOLD`;
 - PHY-01 / 步步生光: `HOLD / no Recovery Primary eligibility / not selected or located`;
-- Strong artificial Hero as default: `REJECT BY METHOD`.
+- physical selected / located: `NONE`;
+- Promotion: `NO`.
 
 The workbook therefore records PHY-01 as `UNLOCATED / Problem Exists UNKNOWN / FIELD EVIDENCE REQUIRED / HOLD`. It does not claim that no future site-specific Need can exist.
 
@@ -74,4 +75,4 @@ Allowed:
 Not allowed:
 `FIELD PASS / PHYSICAL SELECTED / LOCATED / SAFE / ACCESSIBLE / OPERABLE / CONSTRUCTIBLE`
 
-This evidence companion is suitable for Drive/GitHub synchronization and final integration audit, subject to provider readback.
+C14's B/D/E/F revision requests and A/G1F wait state remain authoritative. This evidence companion is a provider-verifiable support artifact only.
