@@ -1,0 +1,30 @@
+[
+  {
+    "step": "baseline",
+    "readout": "state=idle | reduce-motion=false"
+  },
+  {
+    "step": "active_100ms",
+    "a_transform": "matrix(1, 0, 0, 1, 0, -7.72559)",
+    "a_dot_transform": "matrix(1.67599, 0, 0, 1.67599, 0, 0)",
+    "b_dot_transform": "matrix(1, 0, 0, 1, 0, 0)",
+    "a_progress": "matrix(7.75989, 0, 0, 1, 0, 0)",
+    "b_progress": "matrix(7.24482, 0, 0, 1, 0, 0)"
+  },
+  {
+    "step": "active_550ms",
+    "readout": "state=active | reduce-motion=false",
+    "aTransform": "matrix(1, 0, 0, 1, 0, -8)",
+    "bDot": "matrix(1.45, 0, 0, 1.45, 0, 0)"
+  },
+  {
+    "step": "reduced",
+    "readout": "state=active | reduce-motion=true",
+    "aDur": "0.001s",
+    "bDur": "0.001s"
+  },
+  {
+    "step": "reset_click",
+    "readout": "state=idle | reduce-motion=false"
+  }
+]

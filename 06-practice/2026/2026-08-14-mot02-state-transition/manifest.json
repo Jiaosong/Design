@@ -1,0 +1,11 @@
+{
+  "date": "2026-08-14",
+  "domain": "General Design Knowledge / Motion & Interaction Design",
+  "level": "L5 Practice Method Candidate",
+  "canonical_path": "06-practice/2026/2026-08-14-mot02-state-transition/",
+  "application_mapping": {"IP03": "PRIMARY", "B04": "SUPPORTING"},
+  "runtime": "Chromium headless via Playwright page.set_content",
+  "evidence_state": "EXECUTED / NOT HUMAN TESTED / NOT PRODUCT VALIDATED",
+  "score": 92,
+  "rule_candidate": "Task-bearing state change should lead; secondary motion may follow only when it encodes a subordinate state relationship."
+}

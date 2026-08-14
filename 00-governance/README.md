@@ -1,4 +1,4 @@
-# Governance v1.1.0
+# Governance v1.1.1
 
 Status: ACTIVE
 Evidence: E2
@@ -9,7 +9,7 @@ Owner: 刘旋 / OLEANDER／织作
 - Knowledge axis: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Framework / Cluster → L5 Knowledge Object / Index → L6 Evidence / Case → L7 Practice / Output`.
 - Application Mapping: `Business / Culture / IP / Spatial`, with `B01–B04 / CU01–CU04 / IP01–IP04 / SP01–SP04`. These codes express where knowledge or project work is applied; they are not a knowledge taxonomy, Project IDs, or delivery-priority labels.
 - Project axis: `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`.
-- Case axis: `C01 / C02 / C03 / C04 / C05+`; a bare `Cnn` is a Canonical Case ID and must not substitute for a P2 Project ID.
+- Case axis: `C01 / C02 / C03 / C04 / C05+`; a bare `Cnn` is a Canonical Case ID and must not substitute for a Project ID.
 - Delivery priority: `Priority-0 / Priority-1 / Priority-2 / Priority-3` only.
 - Claims: `CLM-*`; IP assets: `IP-[Role]-[NNN]`.
 - AI governance: `AIG-01 / AIG-02 / AIG-03`.
@@ -18,11 +18,32 @@ GitHub repository paths such as `01-business/`, `02-culture/`, `03-ip/`, `04-spa
 
 **Namespace hard rule:** `P0–P4` are reserved for the project axis and must not be reused as current AI-governance identifiers or delivery priorities. Historical AI `P0/P1/P2`, `P2-E...` evidence IDs, PR titles and source filenames remain immutable audit history only. New runtime evidence uses `AIG3-E...`.
 
-**Case / Project hard rule:** `Cnn` is reserved for the Case Axis. Historical project-registry rows or workstream IDs that use `Cnn`, `Cnn-WS-*` or `Cnn-VAL-*` as Project Axis identities are residual migration evidence until the writable registry is recovered; do not create a second project merely to eliminate those historical IDs.
+**Case / Project hard rule:** `Cnn` is reserved for the Case Axis. The original writable Project Registry has now been recovered in place and separates `Project ID｜项目ID` from `Case ID｜案例ID`. Historical `Cnn`, `Cnn-WS-*` and `Cnn-VAL-*` values remain workflow / compatibility / provenance aliases only; they no longer carry Current Project Axis authority.
 
 **No-loss / no-pollution rule:** preserve history in Git history, `99-archive` or migration records, but maintain only one current authority. Do not create parallel replacement pages/files when an in-place identity, relation or current-file repair is sufficient.
 
 Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md`](migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md).
+
+## Registry Recovery / Current physical identity
+
+Notion Registry Recovery is complete for the original core registry lineage. The original `90｜System Databases` and Notes / Domain / Project data sources were restored with their existing IDs; no parallel registry was created.
+
+Current physical identity contracts:
+
+- Knowledge hierarchy: `Canonical Parent｜层级上位 / Canonical Children｜层级子级`. Historical `上位笔记 / 子级笔记` are migration / provenance fields only and must not drive Current hierarchy or AI routing.
+- Project identity: `Project ID｜项目ID + 项目层级` for the full `P0–P4` axis.
+- Case identity: `Case ID｜案例ID`, resolved independently from Project ID.
+- Source, Method, Project, Related and Supersession relations remain semantically separate from structural hierarchy.
+
+Current Portfolio / Program identities:
+
+- P0 `PF-00` — OLEANDER Design System Portfolio.
+- P1 `PG-10` — Knowledge & Governance.
+- P1 `PG-20` — Brand & Identity.
+- P1 `PG-30` — Cases & Practice.
+- P1 `PG-40` — BAOJIAJIE Brand & Cleaning Innovation.
+
+`PRJ-XJ01-CMF` remains an independent P2 and now resolves `PF-00 → PG-40 → PRJ-XJ01-CMF`. Baojiajie brand research, cleaning-industry/tool research, CMF research and rights/asset evidence remain Knowledge / Evidence inputs; they are not additional P2 projects.
 
 ## Application Mapping
 - Business: B01 Positioning & Value; B02 Model & Offering; B03 Operation & Partnership; B04 Metrics & Governance.
@@ -33,10 +54,12 @@ Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_
 These mappings are assigned after a Knowledge Object has a `Domain / L0–L7` position, or when a project needs to state where knowledge is being applied. `PRIMARY / SUPPORTING / CONDITIONAL / N/A` describes application emphasis only.
 
 ## Cases
-- C01: 一脉广渡. Legacy: CASE/GD, old 03 and P00 pages. Application emphasis: Culture + Spatial. Status: RESEARCH + PROPOSAL / EVIDENCE REVIEW.
-- C02: 忘也 Daylily. Legacy: CASE/DY, old 03C. Application emphasis: Business + IP + Spatial. Status: INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN.
-- C03: The Light Collection / Reno CMF independent concept proposal. Legacy: CASE/LC, old 03D. Application emphasis: IP. Status: PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING. Do not imply OPPO commission, adoption, production, or endorsement.
-- C04: 清江石书｜红花峰林十三印. Legacy working names include 清江十三印 / 清江三十印 and historical QJ13 / WS identifiers. Application emphasis: Culture + Spatial, with IP / Business support. Field / professional survey and implementation claims remain evidence-gated.
+- C01: 一脉广渡. Current P2: `PRJ-C01-YIMAI-GUANGDU`. Legacy: CASE/GD, old 03 and P00 pages. Application emphasis: Culture + Spatial. Status: RESEARCH + PROPOSAL / EVIDENCE REVIEW.
+- C02: 忘也 Daylily. Current P2: `PRJ-C02-DAYLILY`. Legacy: CASE/DY, old 03C. Application emphasis: Business + IP + Spatial. Status: INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN.
+- C03: The Light Collection / Reno CMF independent concept proposal. Current P2: `PRJ-C03-LIGHT-COLLECTION`. Legacy: CASE/LC, old 03D. Application emphasis: IP. Status: PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING. Do not imply OPPO commission, adoption, production, or endorsement.
+- C04: 清江石书｜红花峰林十三印. Current P2: `PRJ-C04-QINGJIANG-SHISHU`. Legacy working names include 清江十三印 / 清江三十印 and historical QJ13 / WS identifiers. Application emphasis: Culture + Spatial, with IP / Business support. Field / professional survey and implementation claims remain evidence-gated.
+
+C04 current explicit P3/P4 identities are `PRJ-C04-GOV-SITE`, `PRJ-C04-EXPERIENCE-SPATIAL`, `PRJ-C04-DIGITAL-INTERACTION`, `PRJ-C04-VISUAL-READING` and `PRJ-C04-RUNTIME-RESPONSIVE`. Historical `C04-WS-* / C04-VAL-*` remain compatibility aliases only.
 
 ## Identity
 - IP-NM-001 v1.0.0 ACTIVE E2
@@ -48,7 +71,8 @@ These mappings are assigned after a Knowledge Object has a `Domain / L0–L7` po
 
 ## Migration
 - Migration-level HOLD from v1.0.1: 0.
-- v1.1.0 realignment separates Knowledge Architecture, Application Mapping, Project Axis, Case Axis, delivery priority and AIG governance identifiers without renumbering immutable historical evidence.
+- v1.1.0 realignment separated Knowledge Architecture, Application Mapping, Project Axis, Case Axis, delivery priority and AIG governance identifiers without renumbering immutable historical evidence.
+- v1.1.1 records the original-registry restoration, Current structural hierarchy fields, complete P0/P1 Project IDs and Baojiajie `PG-40` registration.
 - Current-object design, recognition, physical reproduction and E4 rights/release gates remain open where previously open.
 - See `00-governance/migration/`.
 

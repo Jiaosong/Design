@@ -19,7 +19,7 @@ Bare case IDs are reserved exclusively for Canonical Case roots:
 
 `C01`, `C02`, `C03`, `C04`, and future bare `Cnn` values MUST NOT be used as Project IDs, Claim IDs, Evidence IDs, Asset IDs, Role IDs, experiment IDs, or generic node IDs.
 
-Historical case-prefixed project-registry identities such as `C04-WS-* / C04-VAL-*` are migration residues. Preserve them where they are immutable provenance, but do not use them as templates for new P3/P4 identities. Repair the existing registry rows in place when the writable registry is recovered rather than creating duplicate projects.
+The original writable Project Registry has been recovered in place. Historical case-prefixed values such as `C04-WS-* / C04-VAL-*` remain workflow / compatibility / immutable-provenance aliases only. Current P2/P3/P4 identities use the explicit `Project ID｜项目ID` field; do not create duplicate projects to eliminate historical aliases.
 
 Legacy aliases such as `CASE/GD`, `CASE/DY`, `CASE/LC`, `03|CASE/GD`, `P00`, and former `P01/P02/P03` project numbering may appear only in immutable source filenames, Legacy Alias fields, migration tables, or historical evidence references.
 
@@ -29,9 +29,32 @@ Project hierarchy is reserved as:
 
 `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`
 
-The hierarchy level and the Project ID are separate fields. Current Project IDs use explicit identities such as `PRJ-*`, `PG-*`, `PF-*`, `SYS-*` or `PRAC-*` according to object role; a Case ID does not substitute for them.
+The hierarchy level and the Project ID are separate fields. **Current routing authority is `Project ID｜项目ID + 项目层级` across the full P0–P4 axis.** `项目编号` and `工作流代码` remain compatibility / navigation fields and do not override Current Project ID authority.
+
+Current explicit Portfolio / Program identities:
+
+- P0 `PF-00` — OLEANDER Design System Portfolio
+- P1 `PG-10` — Knowledge & Governance
+- P1 `PG-20` — Brand & Identity
+- P1 `PG-30` — Cases & Practice
+- P1 `PG-40` — BAOJIAJIE Brand & Cleaning Innovation
+
+Representative P2 identities include `PRJ-C01-YIMAI-GUANGDU`, `PRJ-C02-DAYLILY`, `PRJ-C03-LIGHT-COLLECTION`, `PRJ-C04-QINGJIANG-SHISHU` and `PRJ-XJ01-CMF`.
+
+`PRJ-XJ01-CMF` resolves under `PF-00 → PG-40 → PRJ-XJ01-CMF`. Baojiajie research/evidence remains Knowledge / Evidence input and does not become a second P2.
 
 Delivery priority uses `Priority-0 / Priority-1 / Priority-2 / Priority-3`, never bare `P0/P1/P2/P3`.
+
+## Knowledge hierarchy relation namespace
+
+Current Knowledge structural hierarchy is expressed only through:
+
+- `Canonical Parent｜层级上位`
+- `Canonical Children｜层级子级`
+
+Historical `上位笔记 / 子级笔记` are migration/provenance fields only. They must not drive Current hierarchy, parent inference or AI routing.
+
+Source/provenance, Method invocation, Project use, semantic Related links and Supersession are separate relation semantics and must not be encoded by structural parent fields merely for navigation convenience.
 
 ## Application Mapping namespace
 
