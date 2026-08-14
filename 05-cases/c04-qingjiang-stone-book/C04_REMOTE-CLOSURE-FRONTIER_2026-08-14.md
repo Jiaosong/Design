@@ -64,6 +64,35 @@ Only Source / Field / Expert / User Validation or validation-driven correction i
 - fog is a real Daqingjiang regional condition;
 - same-view clear↔fog controlled pair remains BLOCKED.
 
+## P0-01｜Official Route Pixel Retrieval Update v0.2
+
+The first-party 2025 Enshi Daqingjiang guide embeds a route image directly under `红花峰林景区线路`. The deterministic first-party asset endpoint is now pinned as:
+
+`https://mmbiz.qpic.cn/sz_mmbiz_jpg/fqXa7xc2VGhSa3z8GuJkUk5x5l0VTSnkN22nsqXZPBRvHa7SeiaKdAceo1P4CSPDC63ibnHV71u3bFOtkZ5U0aiaw/640?randomid=guydbe2j&tp=webp&wx_co=1&wx_fmt=jpeg&wx_lazy=1&wxfrom=5`
+
+Source page: `https://www.esdqj.cn/jdwf/85.html`.
+
+Current gate:
+- `OFFICIAL MAP ASSET EXISTS = PASS`;
+- `EXACT FIRST-PARTY ROUTE-ASSET ENDPOINT = PASS`;
+- `RAW / READABLE PIXELS = BLOCKED` because the current runtime cannot transfer the mmbiz bytes;
+- `NODE-BY-NODE MAP READING = NOT RUN`;
+- no R03/R08/R10 name promotion from an unread image;
+- R07 field/map spelling remains OPEN;
+- R04 map-name/viewpoint closure remains OPEN;
+- R06 micro-route/platform geometry remains OPEN;
+- `PROMOTION = NO`.
+
+The same official guide supports only the provisional macro access topology:
+- self-drive: `318国道 → 鸦沙公路 → 云坛口旅游码头 → 红花峰林（索道往返）`;
+- water-route: `浑水河旅游码头 → 云坛口旅游码头 → 红花峰林（索道往返） → 浑水河旅游码头`.
+
+Current 2026 operator-carried material continues to reference 云坛口码头、跨江索道 and 峰林游步道 in active operating context. This supports continuity of the macro physical access system, but does **not** make the 2025 departure times, ticket prices or detailed schedule current 2026 facts.
+
+No further generic map search counts as progress for this blocker. Unblock requires the same first-party guide asset bytes or a readable official/project-owned copy, followed by Open Test + Pixel QA before any node-by-node extraction.
+
+`P0-01 SOURCE ENDPOINT CLOSURE = PASS / PIXEL CLOSURE = BLOCKED / NEXT = ASSET DELIVERY OR FIELD`.
+
 ## Current next true progress
 
 1. materialize and visually read the official route/guide pixels;
