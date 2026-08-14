@@ -1,0 +1,44 @@
+name: C04 F Integration Loop
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '.github/workflows/c04-f-integration-loop.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '.github/workflows/c04-f-integration-loop.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  f-integration-loop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20'
+
+      - name: Syntax check
+        run: node --check 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+
+      - name: Run latest-governance integration loop
+        run: node 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+
+      - name: Preserve result as execution evidence only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: c04-f-integration-loop-result
+          path: 05-cases/c04-qingjiang-stone-book/f-integration/loop-result.json
+          if-no-files-found: error
+          retention-days: 7

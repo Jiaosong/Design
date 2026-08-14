@@ -1,0 +1,65 @@
+{
+  "schema_version": "c04-f-integration/0.9",
+  "governance": {"authority":"Governance v1.1.1","control_plane":"OLEANDER Project Control Plane v0.3"},
+  "project": {"project_id":"PRJ-C04-QINGJIANG-SHISHU","case_id":"C04","project_level":"P2","current_loop":"Exploration","design_state":"EXPLORE","current_gate":"G3"},
+  "overlay": {"kind":"P2_TEMPORARY_INTEGRATION_OVERLAY","authority_state":"NOT_AUTHORITY","creates_p3_namespace":false},
+  "decision_question": "Consume latest A/C/D owner receipts, audit F acceptance and revision state, and prevent unsupported Final/Field/System promotion.",
+  "control_sources": {
+    "C14_audit":"github:Jiaosong/Design@725a7b1804099ed7a68a797e50f8041b4cb51dd9:C04-QJ-C-v1.5",
+    "C15_readback":"github:Jiaosong/Design@f126d62c5562eccba051029e0444b132ecad5105:C04-QJ-C-v1.6",
+    "C17_route":"github:Jiaosong/Design@d8cbf99a488bfda917e50ba5114f8e452b694ddd:C04-QJ-C-v1.8",
+    "R01_alignment":"github:Jiaosong/Design@5f02d48d5cd42f78240ddcc1971f1b448f395428:R01-C-D-alignment-v0.1",
+    "D_media_search_stop":"github:Jiaosong/Design@cdcf2e0d955ccb8b221fe4aba2c97e2035e10cab:R06-R13-media-search-closure-v0.2"
+  },
+  "stop_rule": {
+    "active": true,
+    "allowed_progress":["SOURCE_VALIDATION","FIELD_VALIDATION","EXPERT_VALIDATION","USER_VALIDATION_AFTER_STIMULUS_VISUAL_QA","VALIDATION_DRIVEN_CORRECTION","CROSS_LINE_AUDIT"],
+    "forbidden_progress":["NEW_DIGITAL_FEATURES","NEW_PAPER_EXPANSION","NARRATIVE_EXPANSION","SYSTEM_LEVEL_PROMOTION","REPEATED_PUBLIC_KEYWORD_SEARCH_AS_PROGRESS"]
+  },
+  "evidence_state": {"G1F":"IMPLEMENTATION_HOLD","field_observed":0,"field_measured":0,"field_pass":"NONE","physical_selected_or_located":"NONE"},
+  "current_C_authority": {
+    "semantic_stage":"C17",
+    "status":"WORKING_CANONICAL_READY_FOR_CROSS_LINE_CONSUMPTION_FIELD_NONE_PROMOTION_NO",
+    "segments":["M0_PREP","M1_ARRIVAL","M2_CROSS_RIVER_CABLE","M3_SOUTH_BANK_WALKING_NETWORK","M4_OBSERVE_READ_RECOVER","M5_NATURAL_CLOSURE_WITHDRAW","M6_RETURN","M7_EXIT_MEMORY"],
+    "invariants":["BOAT_NEVER_UNSKIPPABLE","CABLE_SAFETY_FLOW_RETURN_GT_OBSERVATION","READING_PAGES_NO_ROUTE_SOVEREIGNTY","SINGLE_POINT_FAILURE_CANNOT_CUT_JOURNEY","NO_PHONE_RETAINS_ROUTE_SAFETY_RETURN","NATURAL_CLOSURE_DEFAULTS_WITHDRAWAL","RETURN_PRIORITY_CLOSES_NEW_CONTENT","REMOTE_SOURCE_NEVER_FIELD_VERIFIED"],
+    "micro_route":"A_G1F_OPEN",
+    "field_pass":"NONE"
+  },
+  "lane_receipts": {
+    "A":{"owner":"PRJ-C04-GOV-SITE","receipt_type":"DIRECT","authority_state":"LIVE_WRITABLE","semantic_stage":"REMOTE_CLOSURE_FRONTIER","source_revision":"733c6eb956757e0d7f92152f41081ba55953c496","payload_hash_algo":"GIT_BLOB_SHA1","payload_hash":"6089c00890f7d7c34b3f0e345b062848eb908b4d","status":"SOURCE_LEVEL_RELATIONS_CLOSED_FIELD_OPEN","boundary":"Macro topology and selected R06/R12/R13 source relations may integrate; micro-route, exact field geometry, safety/accessibility and expert claims remain open."},
+    "B":{"owner":"CONTENT-C04-NARRATIVE","receipt_type":"NONE","authority_state":"LIVE_WRITABLE","semantic_stage":"OWNER_CANONICAL_MISSING","source_revision":"f126d62c5562eccba051029e0444b132ecad5105","status":"BLOCKED_OWNER_CANONICAL_MISSING","boundary":"F must not back-fill missing B owner Content Authority."},
+    "C":{"owner":"PRJ-C04-EXPERIENCE-SPATIAL","receipt_type":"DIRECT","authority_state":"LIVE_WRITABLE","semantic_stage":"C17","source_revision":"d8cbf99a488bfda917e50ba5114f8e452b694ddd","payload_hash_algo":"GIT_BLOB_SHA1","payload_hash":"9056accaf102c5d92ebd2a289195792f59ecb544","status":"WORKING_CANONICAL_READY_FOR_CROSS_LINE_CONSUMPTION_FIELD_NONE_PROMOTION_NO","boundary":"F may use M0-M7; micro order, metrics, accessibility, capacity, viewpoints and operation remain A/G1F OPEN."},
+    "D":{"owner":"PRJ-C04-VISUAL-READING","receipt_type":"DIRECT","authority_state":"LIVE_WRITABLE","semantic_stage":"D_REMOTE_CLOSURE_R01_ALIGNMENT_MEDIA_SEARCH_STOP","source_revision":"cdcf2e0d955ccb8b221fe4aba2c97e2035e10cab","payload_hash_algo":"GIT_BLOB_SHA1","payload_hash":"0f1a73c370c37c65267acf1a57170f2269adc465","status":"PASS_WITH_REVISION_R01_CLOSED_R06_R13_PUBLIC_SEARCH_CLOSED_FINAL_PROMOTION_NO","boundary":"R01 conflict closed. D-R2/D-R3 remain open. R06 exact Science Hero and R13 image-asset Node+Tech remain HOLD; field execution not run."},
+    "E":{"owner":"PRJ-C04-DIGITAL-INTERACTION","receipt_type":"NONE","authority_state":"LIVE_WRITABLE","semantic_stage":"PASS_WITH_REVISION","source_revision":"f126d62c5562eccba051029e0444b132ecad5105","status":"PASS_WITH_REVISION_OWNER_RECEIPT_UNREAD","boundary":"E-R1 degraded/offline state contract and E-R2 Digital-OFF completeness receipt remain open; no feature expansion."}
+  },
+  "search_stop": {
+    "R06":{"status":"PUBLIC_WEB_SEARCH_STOP_EXACT_SCIENCE_HERO_HOLD","reopen_on":["TRACEABLE_ORIGINAL_HIGH_RES_FILE","REAL_PLATFORM_CAPTURE_PLUS_FIELD_GEOMETRY"]},
+    "R13":{"status":"PAGE_LEVEL_NODE_EVIDENCE_PASS_IMAGE_ASSET_IDENTITY_TECH_HOLD_FINAL_HERO_HOLD","reopen_on":["TRACEABLE_ORIGINAL_HIGH_RES_FILE","REAL_R13_NODE_CAPTURE"]}
+  },
+  "f_acceptance_audit":[
+    {"id":"F-AC01","status":"PASS_RESEARCH"},
+    {"id":"F-AC02","status":"PASS_ARCHITECTURE_FIELD_OPEN"},
+    {"id":"F-AC03","status":"PASS_RESEARCH"},
+    {"id":"F-AC04","status":"PASS"},
+    {"id":"F-AC05","status":"PASS_WAIT_A_G1F"},
+    {"id":"F-AC06","status":"PASS"},
+    {"id":"F-AC07","status":"REVISE_D_E"},
+    {"id":"F-AC08","status":"PASS_WITH_B_SEMANTICS_PENDING"},
+    {"id":"F-AC09","status":"PASS_RESEARCH"},
+    {"id":"F-AC10","status":"PASS_RULE_ENFORCEMENT_REQUIRED"}
+  ],
+  "revision_requests":[
+    {"id":"B-R1","status":"BLOCKING_OPEN"},
+    {"id":"D-R1","status":"CLOSED_BY_DIRECT_C_D_RECEIPT"},
+    {"id":"D-R2","status":"OPEN"},
+    {"id":"D-R3","status":"OPEN"},
+    {"id":"E-R1","status":"OPEN"},
+    {"id":"E-R2","status":"OPEN"},
+    {"id":"F-R1","status":"CLOSED_IN_PR_CANDIDATE_MAIN_READBACK_PENDING"},
+    {"id":"F-R2","status":"CLOSED_IN_PR_CANDIDATE"},
+    {"id":"F-R3","status":"ENFORCED_CONTINUOUSLY"}
+  ],
+  "final_wording_blockers":["B_OWNER_CANONICAL","A_G1F","D_STATE_VOCABULARY","E_DEGRADED_OFFLINE_OWNER_CONTRACT","R02_EXPERT_EVIDENCE","R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY","R07_FIELD_NAME_AUTHORITY","R13_IMAGE_ASSET_AND_FIELD_SAFETY"],
+  "promotion_transition":{"from":"EXPLORE","target":"EXPLORE","machine_ceiling":"READY_FOR_HUMAN_DECISION","human_decision_required":true},
+  "decision":{"research_overlay_status":"PASS_WITH_REVISION_AND_BLOCKERS","result":"VALIDATION_STOP_RULE_ACTIVE","promote_P2":false,"reopen_C":false}
+}
