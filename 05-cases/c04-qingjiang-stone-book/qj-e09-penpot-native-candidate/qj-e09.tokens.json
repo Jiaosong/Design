@@ -1,0 +1,14 @@
+{
+  "Global": {
+    "color": {
+      "rock": {"950":{"$value":"#101714","$type":"color"},"900":{"$value":"#17211D","$type":"color"},"800":{"$value":"#23312B","$type":"color"}},
+      "paper": {"100":{"$value":"#F2EFE7","$type":"color"},"200":{"$value":"#E5DFD1","$type":"color"}},
+      "qing": {"500":{"$value":"#3F7B70","$type":"color"},"300":{"$value":"#86AAA0","$type":"color"}},
+      "bronze": {"500":{"$value":"#9B7B45","$type":"color"}},
+      "vermilion": {"500":{"$value":"#A84636","$type":"color"}},
+      "safe": {"500":{"$value":"#6F917D","$type":"color"}}
+    },
+    "spacing":{"1":{"$value":4,"$type":"dimension"},"2":{"$value":8,"$type":"dimension"},"3":{"$value":12,"$type":"dimension"},"4":{"$value":16,"$type":"dimension"},"5":{"$value":20,"$type":"dimension"},"6":{"$value":24,"$type":"dimension"},"8":{"$value":32,"$type":"dimension"}},
+    "radius":{"sm":{"$value":8,"$type":"dimension"},"md":{"$value":14,"$type":"dimension"},"lg":{"$value":22,"$type":"dimension"}}
+  }
+}
