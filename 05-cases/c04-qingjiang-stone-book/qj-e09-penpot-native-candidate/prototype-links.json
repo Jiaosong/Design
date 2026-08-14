@@ -1,0 +1,19 @@
+{
+  "version":"QJ-E09-PROTOTYPE-LINKS-v0.1",
+  "flowStart":"01_today",
+  "interaction":"On click → Navigate to",
+  "links":[
+    {"from":"01_today","trigger":"start-journey","to":"02_route"},
+    {"from":"02_route","trigger":"enter-observation","to":"03_s1"},
+    {"from":"03_s1","trigger":"compare-seen","to":"04_s2"},
+    {"from":"04_s2","trigger":"record-page","to":"05_record"},
+    {"from":"05_record","trigger":"continue","to":"06_s0"},
+    {"from":"06_s0","trigger":"leave-silence","to":"07_closure"},
+    {"from":"07_closure","trigger":"generate-book","to":"08_book"},
+    {"from":"01_today","trigger":"service","to":"09_service"},
+    {"from":"02_route","trigger":"service","to":"09_service"},
+    {"from":"07_closure","trigger":"service","to":"09_service"},
+    {"from":"09_service","trigger":"return-route","to":"02_route"}
+  ],
+  "nativeState":"NOT_APPLIED_PROVIDER_REQUIRED"
+}
