@@ -63,6 +63,7 @@ def material(name: str, color: tuple[float, float, float], roughness: float, met
     if old:
         bpy.data.materials.remove(old)
     mat = _tag(bpy.data.materials.new(name), "F1_DIAGNOSTIC_MATERIAL")
+    mat.use_fake_user = True
     mat.use_nodes = True
     bsdf = mat.node_tree.nodes.get("Principled BSDF")
     _require(bsdf is not None, "Principled BSDF missing")
@@ -78,6 +79,7 @@ def zebra(name: str = "OLEANDER_MAT_QA_ZEBRA_NORMAL_v1", frequency: float = 18.0
     if old:
         bpy.data.materials.remove(old)
     mat = _tag(bpy.data.materials.new(name), "F1_ZEBRA_NORMAL_FIELD")
+    mat.use_fake_user = True
     mat.use_nodes = True
     nt = mat.node_tree
     for node in list(nt.nodes):
