@@ -1,0 +1,15 @@
+{
+  "suite": "QJ-C10 Remote Prototype Tests",
+  "scenario_version": "1.0",
+  "all_pass": true,
+  "results": [
+    {"test_id":"T-C10-01","status":"PASS","observations":{"scenario_checks":{"normal":true,"shortened":true,"closed_node":true,"return_pressure":true},"negative_control_detected":true},"what_it_does_not_prove":"Does not prove real distance, duration, visibility, operations, crowd, safety or route legality."},
+    {"test_id":"T-C10-02","status":"PASS","observations":{"digital_disabled":true,"fallback_sources":["landscape","physical_wayfinding","paper","human"]},"what_it_does_not_prove":"Does not prove real signage sufficiency, staff availability, weak-network performance or accessibility."},
+    {"test_id":"T-C10-03","status":"PASS","observations":{"failure_checks":{"page_closed":true,"digital_offline":true,"physical_unavailable":true,"rain":true,"fog":true,"crowd":true,"return_pressure":true}},"what_it_does_not_prove":"Does not prove real emergency response, weather thresholds, closure policy, capacity or operational authority."},
+    {"test_id":"T-C10-04","status":"PASS","observations":{"selected":{"no_gap":"C0","reading_gap":"MicroPrompt"},"expected":{"no_gap":"C0","reading_gap":"MicroPrompt"}},"what_it_does_not_prove":"Does not prove real gaze behavior, visual salience or that a specific micro-prompt is sufficient on site."},
+    {"test_id":"T-C10-05","status":"PASS","observations":{"selected":{"no_proven_gap":"C0","micro_fatigue":"ExistingContext","railing_case":"RailingSupport","large_candidate_unproven":"HOLD"},"expected":{"no_proven_gap":"C0","micro_fatigue":"ExistingContext","railing_case":"RailingSupport","large_candidate_unproven":"HOLD"},"phy01_selected":false},"what_it_does_not_prove":"Does not prove actual fatigue, support geometry, anchoring, clear width, maintenance or site-specific need."},
+    {"test_id":"T-C10-06","status":"PASS","observations":{"re_recognition":true,"new_hero":false,"forced_final_task":false,"memory_phase":"post_visit","return_priority":true},"what_it_does_not_prove":"Does not prove real return visibility, visitor recognition, operating window or post-visit memory behavior."}
+  ],
+  "promotion_ceiling": "ELIGIBLE FOR FIELD TEST",
+  "field_pass": false
+}
