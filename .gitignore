@@ -1,3 +1,5 @@
 node_modules/
 playwright-report/
 test-results/
+05-cases/c04-qingjiang-stone-book/f-integration/loop-result.json
+05-cases/c04-qingjiang-stone-book/orchestration/orchestration-result.json

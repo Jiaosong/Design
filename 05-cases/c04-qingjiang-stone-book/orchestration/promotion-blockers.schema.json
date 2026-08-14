@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c04-promotion-blockers/1.0",
+  "type": "object",
+  "required": ["schema_version", "project_id", "generated_from_runtime", "freeze_active", "decision", "blocked_transitions", "blockers", "closed_not_blocking", "release_condition"],
+  "properties": {
+    "schema_version": {"const": "c04-promotion-blockers/1.0"},
+    "project_id": {"const": "PRJ-C04-QINGJIANG-SHISHU"},
+    "freeze_active": {"type": "boolean"},
+    "decision": {"enum": ["NO_PROMOTION", "READY_FOR_HUMAN_DECISION"]},
+    "blocked_transitions": {
+      "type": "array",
+      "minItems": 4,
+      "items": {"type": "string"}
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {"status": {"enum": ["OPEN", "CLOSED"]}}
+      }
+    },
+    "closed_not_blocking": {"type": "array"},
+    "release_condition": {"type": "string"}
+  }
+}

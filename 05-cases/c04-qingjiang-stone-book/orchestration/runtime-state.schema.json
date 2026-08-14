@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "c04-orchestration/1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "authority_chain",
+    "validation_stop_rule",
+    "evidence_state",
+    "no_delta_policy",
+    "single_frontier_policy",
+    "blocker_aging_policy",
+    "lanes",
+    "blockers",
+    "cross_line_contracts",
+    "field_package_gate",
+    "promotion_freeze"
+  ],
+  "properties": {
+    "schema_version": {"const": "c04-orchestration/1.0"},
+    "project": {
+      "type": "object",
+      "required": ["project_id", "case_id", "project_level", "design_state", "current_gate", "promotion"],
+      "properties": {
+        "project_id": {"const": "PRJ-C04-QINGJIANG-SHISHU"},
+        "case_id": {"const": "C04"},
+        "project_level": {"const": "P2"},
+        "design_state": {"const": "EXPLORE"},
+        "current_gate": {"const": "G3"},
+        "promotion": {"const": "NO_PROMOTION"}
+      }
+    },
+    "authority_chain": {
+      "type": "object",
+      "required": ["master_protocol", "project_state", "source_authority", "current_task"]
+    },
+    "validation_stop_rule": {
+      "type": "object",
+      "required": ["active", "allowed_progress", "forbidden_progress"],
+      "properties": {"active": {"const": true}}
+    },
+    "evidence_state": {
+      "type": "object",
+      "required": ["field_observed", "field_measured", "field_pass", "G1F", "remote_evidence_may_substitute_field"],
+      "properties": {
+        "field_observed": {"const": 0},
+        "field_measured": {"const": 0},
+        "field_pass": {"const": "NONE"},
+        "G1F": {"const": "HOLD"},
+        "remote_evidence_may_substitute_field": {"const": false}
+      }
+    },
+    "no_delta_policy": {
+      "type": "object",
+      "required": ["rule", "material_delta_types", "no_delta_output", "version_creation_allowed_without_delta"],
+      "properties": {
+        "rule": {"const": "NO_DELTA_NO_VERSION"},
+        "no_delta_output": {"const": "NO_MATERIAL_DELTA"},
+        "version_creation_allowed_without_delta": {"const": false}
+      }
+    },
+    "single_frontier_policy": {
+      "type": "object",
+      "required": ["rule", "current_authority_state", "non_current_authority_states", "non_current_may_be_consumed_as_current"],
+      "properties": {
+        "rule": {"const": "ONE_CURRENT_FRONTIER_PER_LANE"},
+        "current_authority_state": {"const": "CURRENT"},
+        "non_current_may_be_consumed_as_current": {"const": false}
+      }
+    },
+    "blocker_aging_policy": {
+      "type": "object",
+      "required": ["required_fields", "external_wait_after_no_delta_runs", "external_wait_state", "repeated_research_is_progress"],
+      "properties": {
+        "external_wait_state": {"const": "WAIT_EXTERNAL_EVIDENCE"},
+        "repeated_research_is_progress": {"const": false}
+      }
+    },
+    "lanes": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/lane"}
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/blocker"}
+    },
+    "cross_line_contracts": {
+      "type": "array",
+      "minItems": 4,
+      "items": {"$ref": "#/$defs/contract"}
+    },
+    "field_package_gate": {
+      "type": "object",
+      "required": ["schema", "register", "status", "batch_readback_targets"],
+      "properties": {"status": {"const": "HOLD_NOT_RUN"}}
+    },
+    "promotion_freeze": {
+      "type": "object",
+      "required": ["manifest", "decision", "forbidden_wording"],
+      "properties": {"decision": {"const": "NO_PROMOTION"}}
+    }
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "required": ["lane", "owner", "frontier_id", "authority_state", "source_revision", "material_delta", "delta_types", "output_action", "next_state"],
+      "properties": {
+        "lane": {"enum": ["A", "B", "C", "D", "E", "F"]},
+        "authority_state": {"const": "CURRENT"},
+        "source_revision": {"type": "string", "minLength": 40},
+        "material_delta": {"type": "boolean"},
+        "delta_types": {"type": "array"}
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "required": ["id", "status", "opened_at", "last_evidence_delta", "owner", "next_legal_action", "no_delta_runs", "aging_state"],
+      "properties": {
+        "status": {"enum": ["OPEN", "CLOSED"]},
+        "opened_at": {"type": "string"},
+        "last_evidence_delta": {"type": "string"},
+        "no_delta_runs": {"type": "integer", "minimum": 0}
+      }
+    },
+    "contract": {
+      "type": "object",
+      "required": ["id", "producer", "consumer", "producer_state", "consumer_state", "required_relation"]
+    }
+  }
+}

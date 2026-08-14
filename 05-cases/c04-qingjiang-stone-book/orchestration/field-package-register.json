@@ -1,0 +1,30 @@
+{
+  "schema_version": "c04-field-package-register/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "package_id": "C04-FIELD-PACKAGE-001",
+  "status": "NOT_RUN",
+  "gate": "HOLD",
+  "field_observed": 0,
+  "field_measured": 0,
+  "evidence_items": [],
+  "capture_requirements": [
+    {"field": "location", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "direction", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "photos", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "videos", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "dimensions", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "sightline", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "slope", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "safety", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "signage", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "operations", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "weather", "status": "REQUIRED_NOT_COLLECTED"},
+    {"field": "equipment", "status": "REQUIRED_NOT_COLLECTED"}
+  ],
+  "readback": {
+    "status": "NOT_READY",
+    "targets": ["A", "C", "D", "E", "F"],
+    "requires_schema_valid_package": true,
+    "promotion_effect": "NONE_UNTIL_VALIDATED"
+  }
+}

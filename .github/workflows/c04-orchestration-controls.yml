@@ -1,0 +1,60 @@
+name: C04 Six-lane Orchestration Controls
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/orchestration/**'
+      - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '.github/workflows/c04-orchestration-controls.yml'
+      - '.github/workflows/c04-f-integration-loop.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/orchestration/**'
+      - '05-cases/c04-qingjiang-stone-book/f-integration/**'
+      - '.github/workflows/c04-orchestration-controls.yml'
+      - '.github/workflows/c04-f-integration-loop.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  orchestration-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20'
+
+      - name: Syntax check
+        run: |
+          node --check 05-cases/c04-qingjiang-stone-book/orchestration/validate-cross-line-contracts.mjs
+          node --check 05-cases/c04-qingjiang-stone-book/orchestration/test-cross-line-contracts.mjs
+          node --check 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+
+      - name: Negative-path contract tests
+        run: node --test 05-cases/c04-qingjiang-stone-book/orchestration/test-cross-line-contracts.mjs
+
+      - name: Validate current six-lane state
+        run: node 05-cases/c04-qingjiang-stone-book/orchestration/validate-cross-line-contracts.mjs
+
+      - name: Validate F integration readback
+        run: node 05-cases/c04-qingjiang-stone-book/f-integration/run-f-integration-loop.mjs
+
+      - name: Preserve validation receipts as execution evidence only
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: c04-six-lane-orchestration-results
+          path: |
+            05-cases/c04-qingjiang-stone-book/orchestration/orchestration-result.json
+            05-cases/c04-qingjiang-stone-book/f-integration/loop-result.json
+          if-no-files-found: error
+          retention-days: 7
