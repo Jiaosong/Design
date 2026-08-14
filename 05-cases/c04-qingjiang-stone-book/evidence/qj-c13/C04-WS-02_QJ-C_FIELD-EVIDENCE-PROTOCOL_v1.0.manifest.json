@@ -1,0 +1,26 @@
+{
+  "artifact": "C04-WS-02_QJ-C_FIELD-EVIDENCE-PROTOCOL_v1.0.xlsx",
+  "role": "editable G1F field-evidence handoff",
+  "sha256": "7633d03d494e60eb539bb7ba3d78ceec097e2af7138483b8a7266bf20b008e98",
+  "local_open_test": "PASS",
+  "formula_error_scan": "PASS / zero target errors",
+  "drive_native_sheet": {
+    "id": "1aahKJLDVLX97VOb33rrmKNkHNyiLISVP2k5iemmZdW4",
+    "readback": "PASS"
+  },
+  "sheets": [
+    "00_README",
+    "01_SITE_BANDS",
+    "02_FIELD_OBSERVATION",
+    "03_OPPORTUNITY_GATE",
+    "04_CANDIDATE_PORTFOLIO",
+    "05_TEST_PROTOCOL",
+    "06_RECEIPTS"
+  ],
+  "field_observed": 0,
+  "field_measured": 0,
+  "g1f": "IMPLEMENTATION HOLD",
+  "physical_selected_or_located": false,
+  "promotion_ceiling": "PROTOTYPE PASS / ELIGIBLE FOR FIELD TEST",
+  "note": "The exact XLSX bytes are preserved in the Drive closure package; GitHub stores this integrity manifest plus executable companion artifacts."
+}
