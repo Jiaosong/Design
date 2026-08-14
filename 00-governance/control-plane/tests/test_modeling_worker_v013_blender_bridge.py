@@ -25,18 +25,25 @@ class ModelingWorkerV013BlenderBridge(unittest.TestCase):
         self.assertTrue(contract['debug_contract']['native_source_readback_required'])
         self.assertTrue(contract['debug_contract']['native_edit_to_derived_rebuild_required'])
         self.assertTrue(contract['debug_contract']['self_contained_rebuild_text_required'])
+        self.assertTrue(contract['debug_contract']['saved_blend_reopen_rebuild_required'])
         self.assertTrue(contract['debug_contract']['bootstrap_seed_overwrite_forbidden'])
+        self.assertTrue(contract['roundtrip']['saved_blend_reopen_rebuild_required'])
+        self.assertEqual(contract['roundtrip']['saved_blend_reopen_report'], 'G1_R2_BLENDER_REOPEN_REBUILD_REPORT.json')
+        self.assertEqual(contract['roundtrip']['bootstrap_readback_tolerance_m'], 1e-8)
         self.assertEqual(binding['schema'], 'oleander.modeling-worker.v0.13.blender-surface-binding.v2')
         self.assertEqual(binding['blender_surface_system']['version'], 'v1.20.0')
         self.assertEqual(binding['source_authority']['live_representation_after_bootstrap'], 'BLENDER_NATIVE_EDITABLE_WORKING_SOURCE')
+        self.assertEqual(binding['source_authority']['locked_semantics']['INTERFACE_DECK_BOUNDARY.theta_center'], 'TOP_MERIDIAN')
         self.assertTrue(binding['source_authority']['native_readback_required'])
         self.assertTrue(binding['source_authority']['native_edit_to_derived_rebuild_required'])
+        self.assertEqual(binding['roundtrip_gate']['bootstrap_readback_tolerance_m'], 1e-8)
         self.assertEqual(len(contract['native_source_objects']), 6)
         self.assertEqual(len(contract['required_diagnostics']), 8)
         for filename in (
             'g1_r2_blender_scene.py',
             'g1_r2_blender_roundtrip.py',
             'g1_r2_blender_rebuild.py',
+            'g1_r2_blender_reopen_verify.py',
             'g1_r2_blender_entry.py',
         ):
             py_compile.compile(str(V013 / filename), doraise=True)
