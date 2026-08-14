@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   g1-r2-blender-execution:
-    name: G1 R2 Blender Native Execution + Reflection Diagnostics
+    name: G1 R2 Blender Native Working Source + Reflection Diagnostics
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -23,10 +23,13 @@ jobs:
         run: |
           python3 -m py_compile \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py \
             90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json >/dev/null
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json >/dev/null
       - name: Install Blender runtime dependencies
         run: |
           set -euo pipefail
@@ -40,7 +43,7 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Execute G1 R2 Blender bridge
+      - name: Execute G1 R2 Blender native-source bridge
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
@@ -52,23 +55,31 @@ jobs:
             --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
             --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
             --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
             --out "$OUT" \
             --resolution 512
-      - name: Verify Blender receipt and authority boundary
+      - name: Verify native round-trip, Blender receipt and authority boundary
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
-          root=Path('out/G1_R2')
-          diag=root/'60_OUTPUTS/DIAGNOSTIC'
+          root=Path('out/G1_R2'); diag=root/'60_OUTPUTS/DIAGNOSTIC'
           report=json.loads((diag/'G1_R2_BLENDER_REPORT.json').read_text())
-          assert report['status']=='BLENDER_EXECUTION_PASS_HUMAN_REFLECTION_REVIEW_REQUIRED', report['status']
+          roundtrip=json.loads((diag/'G1_R2_BLENDER_SOURCE_ROUNDTRIP.json').read_text())
+          assert report['status']=='BLENDER_NATIVE_SOURCE_ROUNDTRIP_PASS_REFLECTION_VISUAL_REVIEW_REQUIRED', report['status']
           assert all(report['checks'].values()), report['checks']
-          assert report['design_state']=='EXPLORE'
+          assert report['design_state']=='REVISE'
           assert report['authority_state']=='WORKING_SOURCE'
+          assert report['candidate_review']=='REOPENED'
           assert report['candidate_promotion']=='NOT_RUN'
           assert report['render_engine']=='CYCLES'
           assert report['blender_version'].startswith('5.2.0')
+          assert roundtrip['source_mode']=='BLENDER_NATIVE_EDITABLE_WORKING_SOURCE'
+          assert all(roundtrip['authority_checks'].values())
+          assert roundtrip['controlled_native_edit_test']['pass'] is True
+          assert roundtrip['controlled_native_edit_test']['changed_families']==['THUMB_SIDE_PLAN']
+          assert roundtrip['controlled_native_edit_test']['derived_surface_max_displacement_m'] >= 0.001
+          assert roundtrip['bootstrap_seed_overwritten'] is False
           assert (root/'OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend').exists()
           assert (diag/'G1_R2_BASELINE_MASTER.exr').exists()
           for stem in (
@@ -76,7 +87,7 @@ jobs:
               'BASELINE_STRIP_PERSPECTIVE','BASELINE_GRAZING_PERSPECTIVE','BASELINE_ZEBRA_PERSPECTIVE',
               'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE'):
               assert (diag/f'{stem}.png').exists(), stem
-          print('V0_13_G1_R2_BLENDER_EXECUTION_PASS')
+          print('V0_13_G1_R2_BLENDER_NATIVE_SOURCE_ROUNDTRIP_PASS')
           PY
       - name: Upload Blender diagnostic artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
@@ -87,6 +98,6 @@ jobs:
           retention-days: 14
       - name: Boundary
         run: |
-          echo 'Blender bridge verifies native editable source mirrors, derived execution geometry, Cycles diagnostic renders, reflection/grazing/zebra views, EXR master and native .blend.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'JSON R2 source remains replay input authority in this gate; Blender-to-JSON round-trip writeback is not yet implemented.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Blender bridge now validates Blender-native editable Working Source readback, controlled native edit -> derived rebuild, restore, Cycles diagnostics, EXR and native .blend.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The JSON R2 files are immutable bootstrap seeds/provenance; the live post-bootstrap Working Source is the Blender-native source object set and a new round-trip snapshot is written without overwriting the seed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Reflection Visual QA remains REVISE / Candidate Review REOPENED. Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
