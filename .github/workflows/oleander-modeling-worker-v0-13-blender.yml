@@ -1,0 +1,92 @@
+name: OLEANDER Modeling Worker v0.13 Blender Bridge
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '00-governance/control-plane/tests/test_modeling_worker_v013_blender_bridge.py'
+      - '.github/workflows/oleander-modeling-worker-v0-13-blender.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r2-blender-execution:
+    name: G1 R2 Blender Native Execution + Reflection Diagnostics
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Compile bridge and validate JSON contracts
+        run: |
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json >/dev/null
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+      - name: Execute G1 R2 Blender bridge
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --out "$OUT" \
+            --resolution 512
+      - name: Verify Blender receipt and authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R2')
+          diag=root/'60_OUTPUTS/DIAGNOSTIC'
+          report=json.loads((diag/'G1_R2_BLENDER_REPORT.json').read_text())
+          assert report['status']=='BLENDER_EXECUTION_PASS_HUMAN_REFLECTION_REVIEW_REQUIRED', report['status']
+          assert all(report['checks'].values()), report['checks']
+          assert report['design_state']=='EXPLORE'
+          assert report['authority_state']=='WORKING_SOURCE'
+          assert report['candidate_promotion']=='NOT_RUN'
+          assert report['render_engine']=='CYCLES'
+          assert report['blender_version'].startswith('5.2.0')
+          assert (root/'OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend').exists()
+          assert (diag/'G1_R2_BASELINE_MASTER.exr').exists()
+          for stem in (
+              'BASELINE_BROAD_PERSPECTIVE','BASELINE_BROAD_TOP','BASELINE_BROAD_SIDE',
+              'BASELINE_STRIP_PERSPECTIVE','BASELINE_GRAZING_PERSPECTIVE','BASELINE_ZEBRA_PERSPECTIVE',
+              'REVISION_BROAD_PERSPECTIVE','REVISION_STRIP_PERSPECTIVE'):
+              assert (diag/f'{stem}.png').exists(), stem
+          print('V0_13_G1_R2_BLENDER_EXECUTION_PASS')
+          PY
+      - name: Upload Blender diagnostic artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r2-blender-${{ github.run_id }}
+          path: out/G1_R2/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Boundary
+        run: |
+          echo 'Blender bridge verifies native editable source mirrors, derived execution geometry, Cycles diagnostic renders, reflection/grazing/zebra views, EXR master and native .blend.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'JSON R2 source remains replay input authority in this gate; Blender-to-JSON round-trip writeback is not yet implemented.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Candidate Promotion, Canonical Authority, ergonomic validation, Class-A, engineering CAD, manufacturing and Release remain unauthorized.' >> "$GITHUB_STEP_SUMMARY"
