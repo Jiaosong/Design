@@ -1,5 +1,5 @@
 {
-  "schema": "oleander.modeling-worker.v0.13.blender-surface-binding.v1",
+  "schema": "oleander.modeling-worker.v0.13.blender-surface-binding.v2",
   "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
   "modeling_worker_version": "v0.13",
   "blender_surface_system": {
@@ -11,45 +11,45 @@
   },
   "source_authority": {
     "state": "WORKING_SOURCE",
-    "representation": "BLENDER_NATIVE_EDITABLE_CONTROL_OBJECTS",
-    "families": [
-      "GRIP_AXIS",
-      "PALM_PROFILE",
-      "THUMB_SIDE_PLAN",
-      "OPPOSITE_SIDE_PLAN",
-      "INTERFACE_DECK_BOUNDARY",
-      "LOWER_RETURN_PROFILE"
-    ],
-    "collection": "00_SOURCE_AUTHORITY",
+    "bootstrap_seed": "G1_PRIMARY_CURVE_SOURCE.json + G1_R2_RELATION_CORRECTION.json",
+    "live_representation_after_bootstrap": "BLENDER_NATIVE_EDITABLE_WORKING_SOURCE",
+    "families": ["GRIP_AXIS","PALM_PROFILE","THUMB_SIDE_PLAN","OPPOSITE_SIDE_PLAN","INTERFACE_DECK_BOUNDARY","LOWER_RETURN_PROFILE"],
+    "collection": "OLEANDER_SOURCE_AUTHORITY",
+    "objects": {
+      "GRIP_AXIS":"OL_SRC_GRIP_AXIS",
+      "PALM_PROFILE":"OL_SRC_PALM_PROFILE",
+      "THUMB_SIDE_PLAN":"OL_SRC_THUMB_SIDE_PLAN",
+      "OPPOSITE_SIDE_PLAN":"OL_SRC_OPPOSITE_SIDE_PLAN",
+      "LOWER_RETURN_PROFILE":"OL_SRC_LOWER_RETURN_PROFILE",
+      "INTERFACE_DECK_BOUNDARY":"OL_SRC_INTERFACE_DECK_BOUNDARY"
+    },
+    "native_readback_required": true,
+    "native_edit_to_derived_rebuild_required": true,
     "dense_execution_mesh_is_authority": false
   },
   "surface_evaluation": {
-    "collection": "10_SURFACE_EVALUATION",
+    "derived_collection": "OLEANDER_DERIVED_EXECUTION",
+    "qa_collection": "OLEANDER_QA_RIG",
     "method": "R2_ANALYTIC_RELATIONSHIP_SURFACE",
     "rebuild_text_block": "OLEANDER_G1_R2_REBUILD.py",
-    "derived_mesh_object": "DRV-G1-R2-EVALUATED-SURFACE",
-    "revision_variant_object": "QA-G1-R2-THUMB-RELATION-VARIANT"
+    "live_source_text_block": "OLEANDER_G1_R2_LIVE_SOURCE.json",
+    "derived_mesh_object": "OL_DERIVED_G1_R2_BASELINE",
+    "revision_variant_object": "OL_DERIVED_G1_R2_THUMB_REVISION"
+  },
+  "roundtrip_gate": {
+    "bootstrap_readback_tolerance_m": 1e-12,
+    "controlled_native_edit_object": "OL_SRC_THUMB_SIDE_PLAN",
+    "controlled_native_edit_index": 3,
+    "controlled_native_edit_delta_m": 0.003,
+    "only_declared_source_family_may_change": "THUMB_SIDE_PLAN",
+    "derived_surface_must_change_min_m": 0.001,
+    "restore_tolerance_m": 1e-12,
+    "writeback_policy": "WRITE_NEW_ROUNDTRIP_SNAPSHOT; DO_NOT_OVERWRITE_BOOTSTRAP_SEED"
   },
   "diagnostics": {
-    "collection": "30_DIAGNOSTICS",
-    "render_passes": [
-      "BROAD_HERO",
-      "BROAD_TOP",
-      "BROAD_SIDE",
-      "STRIP_HERO",
-      "GRAZING_HERO",
-      "ZEBRA_HERO",
-      "RELATION_A_B"
-    ],
+    "required_render_passes": ["BROAD","STRIP","GRAZING","ZEBRA","RELATION_A_B"],
     "fixed_camera_required": true,
-    "source_objects_visible_in_source_view": true,
     "surface_source_and_execution_geometry_must_remain_separable": true
   },
-  "output": {
-    "native_blend_required": true,
-    "machine_report_required": true,
-    "blender_bridge_report_required": true,
-    "render_manifest_required": true
-  },
-  "boundary": "This adapter binds the validated sparse Surface Source to Blender Surface System v1.20.0 for F1 design validation. It does not establish ergonomic comfort, Class-A, engineering CAD, manufacturing/tooling, final CMF, Candidate Promotion, Canonical Promotion or Release."
+  "boundary": "This binding upgrades the Blender representation from editable mirror to live Working Source with readback/rebuild and a new round-trip snapshot. It does not overwrite historical seed evidence or establish ergonomic comfort, Class-A, engineering CAD, manufacturing/tooling, final CMF, Candidate Promotion, Canonical Promotion or Release."
 }
