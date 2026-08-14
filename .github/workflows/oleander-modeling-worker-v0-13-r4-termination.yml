@@ -1,0 +1,132 @@
+name: OLEANDER Modeling Worker v0.13 R4 Termination Isolation
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-termination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-termination-isolation:
+    name: G1 R4 Termination Source ↔ Pole Topology Isolation
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R4 contracts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r4_termination_isolation.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_TERMINATION_ISOLATION_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('90-shared/toolchains/modeling-worker/v0.13/G1_R4_TERMINATION_ISOLATION_CONTRACT.json').read_text())
+          i=json.loads(Path('90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json').read_text())
+          assert c['policy']['source_edit_during_isolation_forbidden'] is True
+          assert c['policy']['mesh_local_cosmetic_patch_forbidden'] is True
+          assert c['policy']['candidate_promotion']=='NOT_RUN'
+          assert i['authority_state']=='WORKING_SOURCE_RELATION_CONFIRMED_NOT_PROMOTED'
+          assert i['source_overrides']['theta_center']=='TOP_MERIDIAN'
+          assert i['source_overrides']['depth_m']==0.012
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build R2 Blender-native Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 512
+
+      - name: Execute same-Source termination isolation
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4"; mkdir -p "$OUT/60_OUTPUTS/DIAGNOSTIC"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_termination_isolation.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --isolation-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_TERMINATION_ISOLATION_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 640
+
+      - name: Verify R4 authority and isolation boundaries
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4/60_OUTPUTS/DIAGNOSTIC')
+          r=json.loads((root/'G1_R4_TERMINATION_ISOLATION_REPORT.json').read_text())
+          assert r['status']=='R4_TERMINATION_ISOLATION_EXECUTED_VISUAL_CLASSIFICATION_REQUIRED', r['status']
+          assert all(r['checks'].values()), r['checks']
+          assert r['interface_relation_state']=='CONFIRMED_LOCKED_FOR_R4'
+          assert r['termination_state']=='OPEN_UNDER_ISOLATION'
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert r['classification']=='NOT_RUN_REQUIRES_LOCAL_STRIP_GRAZING_ZEBRA_REVIEW'
+          assert set(r['variant_geometry'])=={'baseline','dense','pole_refined'}
+          assert r['variant_geometry']['dense']['faces'] > 3*r['variant_geometry']['baseline']['faces']
+          assert r['variant_geometry']['pole_refined']['last_ring_u'] > r['variant_geometry']['dense']['last_uniform_ring_u']
+          assert r['source_space_pole_probe']['near_pole_max_normal_turn_deg_u_ge_0_995'] > r['source_space_pole_probe']['pre_cap_max_normal_turn_deg_u_le_0_98']
+          assert set(r['image_difference_metrics_vs_baseline'])=={'dense','pole_refined'}
+          for group in r['renders'].values():
+              assert set(group)=={'STRIP','GRAZING','ZEBRA'}
+              for name in group.values():
+                  assert (root/name).exists(), name
+          print('R4_TERMINATION_ISOLATION_EXECUTION_PASS_VISUAL_CLASSIFICATION_REQUIRED')
+          PY
+
+      - name: Upload R4 termination isolation artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-termination-${{ github.run_id }}
+          path: |
+            out/G1_R4/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R4 changes no Source relation. It compares baseline, uniformly dense and pole-refined derived execution topology on the same confirmed Working Source.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A topology-independent source-space pole probe is recorded alongside fixed local Strip/Grazing/Zebra diagnostics.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No mesh-local correction or Promotion is authorized by this isolation.' >> "$GITHUB_STEP_SUMMARY"
