@@ -2,6 +2,7 @@
   "version":"QJ-E09-PROTOTYPE-LINKS-v0.1",
   "flowStart":"01_today",
   "interaction":"On click → Navigate to",
+  "sequenceAuthority":"UI_STATE_DEMONSTRATION_ONLY_NOT_PHYSICAL_ROUTE_OR_NODE_ORDER",
   "links":[
     {"from":"01_today","trigger":"start-journey","to":"02_route"},
     {"from":"02_route","trigger":"enter-observation","to":"03_s1"},
