@@ -1,0 +1,55 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.blender-surface-binding.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "modeling_worker_version": "v0.13",
+  "blender_surface_system": {
+    "system": "OLEANDER Blender Surface System",
+    "version": "v1.20.0",
+    "fidelity": "F1_DESIGN_VALIDATION",
+    "required_lighting_rigs": ["BROAD", "STRIP", "GRAZING"],
+    "additional_surface_diagnostic": "ZEBRA_NORMAL_FIELD"
+  },
+  "source_authority": {
+    "state": "WORKING_SOURCE",
+    "representation": "BLENDER_NATIVE_EDITABLE_CONTROL_OBJECTS",
+    "families": [
+      "GRIP_AXIS",
+      "PALM_PROFILE",
+      "THUMB_SIDE_PLAN",
+      "OPPOSITE_SIDE_PLAN",
+      "INTERFACE_DECK_BOUNDARY",
+      "LOWER_RETURN_PROFILE"
+    ],
+    "collection": "00_SOURCE_AUTHORITY",
+    "dense_execution_mesh_is_authority": false
+  },
+  "surface_evaluation": {
+    "collection": "10_SURFACE_EVALUATION",
+    "method": "R2_ANALYTIC_RELATIONSHIP_SURFACE",
+    "rebuild_text_block": "OLEANDER_G1_R2_REBUILD.py",
+    "derived_mesh_object": "DRV-G1-R2-EVALUATED-SURFACE",
+    "revision_variant_object": "QA-G1-R2-THUMB-RELATION-VARIANT"
+  },
+  "diagnostics": {
+    "collection": "30_DIAGNOSTICS",
+    "render_passes": [
+      "BROAD_HERO",
+      "BROAD_TOP",
+      "BROAD_SIDE",
+      "STRIP_HERO",
+      "GRAZING_HERO",
+      "ZEBRA_HERO",
+      "RELATION_A_B"
+    ],
+    "fixed_camera_required": true,
+    "source_objects_visible_in_source_view": true,
+    "surface_source_and_execution_geometry_must_remain_separable": true
+  },
+  "output": {
+    "native_blend_required": true,
+    "machine_report_required": true,
+    "blender_bridge_report_required": true,
+    "render_manifest_required": true
+  },
+  "boundary": "This adapter binds the validated sparse Surface Source to Blender Surface System v1.20.0 for F1 design validation. It does not establish ergonomic comfort, Class-A, engineering CAD, manufacturing/tooling, final CMF, Candidate Promotion, Canonical Promotion or Release."
+}
