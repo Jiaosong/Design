@@ -19,5 +19,29 @@
     {"id":"F_MAIN_READBACK","status":"CLOSED_BY_VERIFIED_MAIN_READBACK","source_revision":"6c92097b0de16fd0cf02dd602000e68535672b11"},
     {"id":"R06_R13_PUBLIC_INDEX_SEARCH_CURRENT_ITERATION","status":"CLOSED_WITH_FIELD_AND_EXPERT_HOLDS","source_revision":"cdcf2e0d955ccb8b221fe4aba2c97e2035e10cab"}
   ],
+  "delivery_readback": {
+    "readback_at": "2026-08-15T19:15:00+08:00",
+    "web_v4": "STATIC_KEEP / BROWSER_HOLD",
+    "c23_detail_v3": "KEEP / CONCEPT / NTS / SUPPORT",
+    "a_r1": "KEEP_SUPPORT_ONLY",
+    "a_v2": "PRODUCTION_OUTPUTS_RECEIVED / VISUAL_REVIEW_PENDING",
+    "model_recovery": "CURRENT_COMPLETE_PACKAGE_RECEIVED_HASH_VERIFIED / VISUAL_HOLD",
+    "b_single_frontier": "v1.4 CURRENT / v1.3 SUPERSEDED_PROVENANCE",
+    "f_matrix_single_frontier": "v2 CURRENT / v1 SUPERSEDED_PROVENANCE",
+    "delivery_deltas_close_field_or_promotion_blockers": false
+  },
+  "delivery_only_holds": [
+    {"id":"WEB_V4_BROWSER_READBACK","status":"OPEN","blocks_promotion":false},
+    {"id":"A_V2_INDEPENDENT_VISUAL_REVIEW","status":"OPEN","blocks_promotion":false},
+    {"id":"MODEL_CURRENT_VISUAL_REVIEW","status":"OPEN","blocks_promotion":false},
+    {"id":"FINAL_CROSS_MEDIA_READBACK","status":"OPEN","blocks_promotion":false}
+  ],
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "FIELD_PASS": "NONE",
+    "promotion": "NO_PROMOTION"
+  },
   "release_condition": "EVERY_BLOCKER_CLOSED_AND_HUMAN_PROMOTION_DECISION_WITH_REQUIRED_EVIDENCE"
 }
