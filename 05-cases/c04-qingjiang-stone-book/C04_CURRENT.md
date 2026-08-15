@@ -59,6 +59,47 @@ Wellbeing content means rest, pacing, hydration/shade prompts, quiet observation
 
 Current editorial test is therefore: **Does every page/section materially improve the visitor story, design proof or professional readability?** If not, merge/drop it. If a necessary argument is cramped, split/expand it.
 
+## Public Quality Gate｜DIRECTOR-LEVEL / NON-NEGOTIABLE
+
+**Unbounded count does not mean unbounded quality. Page count is free; professional quality is constrained.**
+
+A page/section/frame may enter `MAIN` only after an independent design read returns `KEEP` or `KEEP_AFTER_REVISION`. `REVISE`, `REJECT`, unresolved template-feel, or merely machine-valid outputs cannot remain MAIN.
+
+Every MAIN output must pass all applicable checks below:
+
+1. **FIRST READ** — within the first glance, the viewer can identify one dominant subject, one dominant claim and the intended reading order. No equal-weight card wall, no dense research-report first impression, no interface/debug/dashboard look.
+2. **COMPOSITION / SCALE** — image crop, figure-to-page ratio, negative space, typography scale and human/landscape/product scale are deliberate. Key visuals must not be undersized, over-cropped or padded by decorative filler.
+3. **VISUAL HIERARCHY / RHYTHM** — contrast, spacing, sequencing and transitions create clear high/low intensity. Adjacent sections must not repeat the same composition or visual weight without purpose.
+4. **DESIGN SPECIFICITY** — every MAIN image must show a C04-specific decision, scene, service, product, route, interaction or cultural reading. Generic mountain imagery, generic game UI, generic infographic grammar and generic AI atmosphere are SUPPORT or DROP.
+5. **EXPERIENCE COMPLETENESS** — arrival, service, route choice, BOAT/CABLE/WALK, scene interaction, rest, return and memory must read as one visitor experience. Landscape beauty may not erase service/product/digital/memory logic.
+6. **AUDIENCE VALUE** — when audience adaptation is claimed, the output must make visible what child/family, youth, adult and older/low-stamina visitors actually gain or need. Labels alone do not count as design.
+7. **PHYSICAL / PRODUCT CREDIBILITY** — F01–F04 and any new physical object must show believable use, body relation, placement logic, material/CMF intent and maintenance/installation logic appropriate to concept stage. A floating render or isolated product beauty shot is insufficient.
+8. **DIGITAL RETREATABILITY** — digital content must add value when present and disappear without breaking route, safety or return. UI cannot visually dominate R01/R13 or natural climax scenes.
+9. **MOTION QUALITY** — film/motion must use spatial continuity, timing, shot purpose, movement and sound/text rhythm. Static slideshow behavior, filler transitions, repeated zooms or title-card dependence are REVISE.
+10. **CROSS-MEDIA CONSISTENCY** — Web, boards, PDF, film, map, model, product and digital interfaces must share the same narrative hierarchy, scene identity and visual direction while respecting medium-specific composition.
+11. **PROFESSIONAL FINISH** — no clipping, accidental overlaps, weak alignment, illegible small text, inconsistent iconography, arbitrary corner radii, stock-template appearance, unresolved mobile/print composition or obvious placeholder assets in MAIN.
+12. **TRUTH BOUNDARY** — evidence labels remain subordinate but present where needed; no visual polish may promote `FIELD=0` concepts into implied built/verified/approved facts.
+
+### Hard fail conditions for MAIN
+
+Any one of the following forces `REVISE / SUPPORT / DROP`:
+- looks primarily like a student board, research report, spreadsheet, dashboard, program output or AI moodboard rather than a designed public experience;
+- the strongest visual is smaller or weaker than explanatory text/cards;
+- content exists only because a page slot was available;
+- product/service/digital/memory is represented only by labels, matrices or governance diagrams;
+- a generic image could be swapped with another tourism project without changing the design argument;
+- technical PASS / CI / SHA / manifest is used as a substitute for visual or experiential quality;
+- the object requires verbal explanation to hide weak composition, scale, interaction, construction logic or scene fit.
+
+### Main quality decision rule
+
+For every review cycle, F/Web/D must explicitly select:
+`MAIN / SUPPORT / PROCESS / DROP`.
+
+Only `MAIN` must meet the full Public Quality Gate. `SUPPORT` may be technically useful but cannot dilute first reading. `PROCESS` records method/evidence. `DROP` is removed from public delivery.
+
+**Quality is optimized before quantity. If removing five weak pages produces a stronger project, remove them. If one argument requires three excellent pages to become clear, expand it.**
+
 ## Allowed conceptual development
 
 C04 may now produce, using explicit `SG / RI / CA / FR` states:
@@ -81,7 +122,7 @@ How can C04 turn Qingjiang's real culture, journey, transport, landscape scenes 
 
 ## Delivery priority
 
-1. Web + final integration skeleton under the v1.8 public narrative, with no fixed section/page count
+1. Web + final integration skeleton under the v1.8 public narrative, with no fixed section/page count and the Public Quality Gate applied to every MAIN output
 2. Culture/journey/map + key service/scene/audience matrices
 3. Masterplan / key plans-sections / critical model + physical/product proof
 4. Hero renderings / analysis graphics / core interactions + motion
