@@ -1,0 +1,57 @@
+{
+  "schema": "c04-f-final-delivery-manifest/0.5",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "revision": "REV04",
+  "authority_model": "ONE CURRENT PER MEDIA TYPE",
+  "current": {
+    "A1": {
+      "artifact": "C04_F_A1_BOARDS_REV04.pdf",
+      "sha256": "8659dfd950274590451ae94c8e89019fb4f60efb6e42b970f3b8f02a6b85645d",
+      "state": "CURRENT / TARGETED_READBACK_HOLD"
+    },
+    "STORY20": {
+      "artifact": "C04_F_Landscape_Atlas_20screen_REV04.pdf",
+      "sha256": "c8c81c90f9a3ba7adfe359dcd00e684514fe8ffd0eff172a9728715b7cbb939f",
+      "state": "CURRENT / TARGETED_READBACK_HOLD"
+    },
+    "PUBLIC_FILM": {
+      "artifact": "C04_F_FILM_86s_REV04.mp4",
+      "sha256": "fd17b8e21a3b74e710315f74bcc670568d698df3b92c9ba27f60155636ebcb7f",
+      "state": "SOLE CURRENT / TARGETED_READBACK_HOLD"
+    },
+    "WEB": {
+      "artifact": "REV04 exact successor source",
+      "state": "SOLE CURRENT CANDIDATE / SOURCE_PERSISTENCE + EXACT_BROWSER_HOLD"
+    }
+  },
+  "support_only": {
+    "E72": "APPENDIX_ONLY / KEEP_SUPPORT",
+    "D_V12": "INDEPENDENT_MOTION_REVIEW_REFERENCE / NOT_BINARY_SUBSTITUTION",
+    "P19_MAIN": "UPSTREAM MAIN OWNER ASSET / B v1.6 GAP CLOSED / REV04 P19 PIXELS UNCHANGED"
+  },
+  "superseded": [
+    "old M1 web",
+    "old 20-screen packages",
+    "PR #108 historical web authority",
+    "older public-film binaries"
+  ],
+  "scope_lock": {
+    "A1": ["A1-03 only"],
+    "pages": ["P02", "P10", "P14", "P15", "P17", "P18", "P20"],
+    "film": "51-86s only"
+  },
+  "delivery_order": [
+    "3×A1",
+    "20-screen",
+    "86s public film",
+    "Web exact source + browser readback",
+    "manifest/hash/readback"
+  ],
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  },
+  "note": "FIELD/expert blockers are evidence-open and non-blocking for Remote Showcase; they continue to block field/implementation/promotion claims."
+}
