@@ -1,0 +1,11 @@
+segment_id,name,mode,time_rec_min,time_min,time_max,slope_rec_pct,slope_min_pct,slope_max_pct,slope_metric,basis,sensitivity,future_field_correction
+M0,PREP / 进入前准备,SERVICE,8,6,10,,,,N/A,C22 M0；总量服从C23 T182；远程设计分配,票务/信息确认、同行者准备、运营状态,现场入口流程计时
+M1,ARRIVAL / 云坛口服务—北站,WALK/SERVICE,12,8,14,4,0,8,"DESIGN TEST GRADE, NOT SITE SLOPE",A03/C22关系；坡度无来源，作为设计敏感性测试,到达模式、排队、路面、台阶/无障碍实际关系,路线长度+高程/GPS+净宽实测
+M2,CROSS-RIVER CABLE / 去程,CABLE,6,4,10,14.8,14.8,14.8,156/1056=14.8% CHORD VERTICAL RATIO; NOT TERRAIN GRADE,A04+A05：索道1056m、高差156m；时间含候乘/进出站的远程设计缓冲,实际运行速度、停机/排队、居民与游客共用,站到站实测运行+排队分布
+M3a,SOUTH WALK A / 南站—核心景观,WALK,28,22,36,8,3,15,"DESIGN TEST GRADE, NOT SITE SLOPE",A01/A02仅支持多分支网络；坡度/长度不支持，故仅做测试带,支路选择、台阶、停看频率、真实高差,逐段长度/高程/台阶数/GPS轨迹
+M3b,SOUTH WALK B / 分支—回环阅读,WALK/OPTIONAL READ,48,38,58,10,4,18,"DESIGN TEST GRADE, NOT SITE SLOPE",A01/A02多分支/回环；十三印为可选阅读层,阅读选择、拥挤、支路开放、休息,真实支路拓扑+停留时间+坡度
+M3c,SOUTH WALK C / 回收—返程方向,WALK/RETURN,26,20,32,7,2,15,"DESIGN TEST GRADE, NOT SITE SLOPE",C22 RETURN优先；非测绘路线,返程识别、体力、关闭支路,返程真实最短路径+夜间/雨后测试
+M4,OBSERVE / READ / RECOVER,STOP/LOCAL WALK,30,24,36,5,0,10,"LOCAL CIRCULATION TEST, NOT SITE SLOPE",C22 M4 CONDITIONAL；R06含恢复角色但Field Geometry Open,停留强度、座靠需求、天气、可达性,行为观察+停留计时+可达性审核
+M5,WITHDRAW / 收束,RETURN CUE,6,4,8,,,,N/A,C22 M5 CONDITIONAL WITHDRAW,关闭/退化状态、返程提示可见性,路线决策点可读性测试
+M6,CABLE RETURN / 返程,CABLE,6,4,10,-14.8,-14.8,-14.8,-156/1056=-14.8% CHORD VERTICAL RATIO; NOT TERRAIN GRADE,A04+A05；返程为服务优先,运营状态、排队、居民优先/共用逻辑,实际候乘+运行计时
+M7,EXIT / MEMORY,SERVICE/MEMORY,12,8,16,2,0,5,"DESIGN TEST GRADE, NOT SITE SLOPE",C22 M7 EXIT/MEMORY；低干预离场,出口位置、交通接驳、纸本领取,出口动线与接驳实测
