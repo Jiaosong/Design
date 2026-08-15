@@ -1,0 +1,32 @@
+{
+  "schema": "oleander.c04.qje-handoff/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "owner": "PRJ-C04-DIGITAL-INTERACTION",
+  "state": "REMOTE_MATERIALIZATION_CANDIDATE",
+  "gates": {"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"},
+  "authority_inputs": [
+    "orchestration/runtime-state.json@main",
+    "C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json@main",
+    "C04-WS-02_QJ-C_SPATIAL-EXPERIENCE_WORKING_v2.1",
+    "C04_AC_Handoff_v2.1"
+  ],
+  "interfaces": {
+    "A": "may replace UNKNOWN/OPEN values only with evidence-tagged source/field/expert delta",
+    "B": "may supply claim_type + source_id + evidence_state; preserve FACT / LOCAL_NARRATIVE / DESIGN_READING separation",
+    "C": "owns macro/micro route relation and state contract; prototype sequence is not route authority",
+    "D": "owns visual translation; preserve WITHDRAW / UNKNOWN / CLOSED hierarchy and evidence states",
+    "F": "may embed preview/PDF/video as NOT_AUTHORITY overlay; cannot promote P2"
+  },
+  "open_blockers": [
+    "A_G1F",
+    "R02_EXPERT_EVIDENCE",
+    "R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY",
+    "R07_FIELD_NAME_AUTHORITY",
+    "R13_IMAGE_ASSET_AND_FIELD_SAFETY"
+  ],
+  "drive_artifacts": {
+    "delivery_zip":"1dNeVUfaeT_eOs1IuTSDDbQ-Iq3slXdRu",
+    "display_pdf":"1ZJsWZQF_38mXRCmTbmSFDABOKeLxS5Pt",
+    "demo_mp4":"11si9Q8R2S8kGBk0dUf82hAdaI6t3iS7q"
+  }
+}
