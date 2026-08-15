@@ -1,0 +1,24 @@
+{
+  "schema": "oleander.owner-receipt-run-manifest.v1",
+  "object": "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT",
+  "source": "PR-109-merge-and-main-readback",
+  "revision": "v1.1-main-closure",
+  "time": "2026-08-15T09:36:00+08:00",
+  "hash": "git-merge:167b0d5395068a51a3f51e9174ff4454c842c182",
+  "state": "OWNER_RECEIPT_CREATED / MATERIAL_DELTA_CONFIRMED / POST_MERGE_CLOSURE_PENDING",
+  "material_delta": true,
+  "owner": "OLEANDER Governance",
+  "evidence": {
+    "merged_pr": 109,
+    "merge_commit": "167b0d5395068a51a3f51e9174ff4454c842c182",
+    "main_v1_1_blob_sha": "f22ee5684a2b7ec254bf8daadbe37134361e2314",
+    "main_v1_0_blob_sha": "80b5838ab82617c20546d8d1c4abeefe3f08f0f7"
+  },
+  "required_chain": ["OWNER_RECEIPT","CURRENT_STATE_RECEIPT","GITHUB_BRANCH","COMMIT","PR","CI","REMOTE_READBACK","F_CROSSLINE_READBACK"],
+  "global_boundary": {"field_observed":0,"field_measured":0,"g1f":"HOLD","promotion":"NO_PROMOTION"},
+  "does_not_prove": [
+    "This owner receipt does not itself prove the post-merge state receipt is valid or synchronized.",
+    "Merge does not prove Promotion or Release.",
+    "Main readback does not prove field, design, engineering, manufacturing, rights or implementation validity."
+  ]
+}
