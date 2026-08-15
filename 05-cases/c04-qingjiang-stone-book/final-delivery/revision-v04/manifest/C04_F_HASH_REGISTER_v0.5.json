@@ -1,0 +1,39 @@
+{
+  "schema": "c04-f-hash-register/0.5",
+  "latest_main_sha": "0ae4fc68fdc982df208e101ed5319af73aab561e",
+  "b_v1_6": {
+    "content_map": "c829e2dc3b179cd100f6c46287770a19491198ace0d9700068426e148951a0b9",
+    "final_cn_copy": "4fdd7b8dada7f798772821d436db411f881b7a1deef6f68e7354e030d354cc23",
+    "video_binding": "c71d7e6fee7e274ae24a19225215da2717b5c6dba02584550472a6e587c3bd72",
+    "web_f_binding": "ae2115c450f4661a1eb472579e49e70acc04d48569de7f13d2bd18491bc3b04a"
+  },
+  "a_p19": {
+    "png": "e62858ec5a42595203053db2983aeb9790135b024dbb1eb4e391d42383c59b7b",
+    "svg": "1aff786e83caaab6cd983be64b0d72e265740e6473bca7e7c0dfdbb7fa188822",
+    "independent_review_receipt": "402102471219542101ce1cb7a9c85838486f3f489a156c2bf17b40e0ded38a4e"
+  },
+  "rev04": {
+    "A1_PDF": "8659dfd950274590451ae94c8e89019fb4f60efb6e42b970f3b8f02a6b85645d",
+    "STORY20_PDF": "c8c81c90f9a3ba7adfe359dcd00e684514fe8ffd0eff172a9728715b7cbb939f",
+    "FILM86": "fd17b8e21a3b74e710315f74bcc670568d698df3b92c9ba27f60155636ebcb7f",
+    "A1_01": "d3a94b4ac3c1089a968282c4ab32b7d5c60eb206beb3e6a938c84f10ea4d822d",
+    "A1_02": "d68356bc113e3b41d94f0b9813c572696970180acc3b4cd34fe72d03d26387d9",
+    "R13_v3": "f67bc1aa6c6d6f9453e601bd6467df5325aa8dd53317e6a25d4bc41f57c9cc60"
+  },
+  "d_v12_review_reference": {
+    "video": "a4c3f3cb67d619df84eb1346b023f46e8dc6c24722fbfe44e286a108b16f07e5"
+  },
+  "web_static_v4": {
+    "source_predecessor": "6c009a5e90337b4a38d9a1e5a088241ff72779600d3ac5e6c64cae9769e39d18",
+    "A3_PDF": "c94bb8f0992e39988cb2bb5afdd7f04da091fe5bdb02d7936af374a1a03a39ba",
+    "W00": "73ca2fd39b2428ce8d2b193767914cdd5da14b1ccb5c4465db517cc885e528ff",
+    "W06": "c5ae1905b0bcbffe5693d2e5e3f5c2962241da296dc1eeadfabb34bafad2e3a7",
+    "MOBILE_390": "1e66be68cc111274fc9f11409ca9fbf9c86854f64d552624f367dcf04b55b904"
+  },
+  "web_exact_current_source": {
+    "github_blob_sha": "c1b0730e0133447badcfd47fd144e254807b06e1",
+    "content_readback": "x",
+    "sha256": "UNAVAILABLE_AS_VALID_SOURCE",
+    "state": "INVALID_PLACEHOLDER"
+  }
+}
