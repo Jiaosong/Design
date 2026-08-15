@@ -1,0 +1,63 @@
+{
+  "schema": "oleander.c04.f-rev03-live-browser-readback/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "field_observed": 0,
+  "field_measured": 0,
+  "g1f": "HOLD",
+  "promotion": "NO_PROMOTION",
+  "browser": "Chromium 144.0.7559.96",
+  "exact_f_rev03_web": {
+    "manifest_path": "web/index.html",
+    "github_exact_path": "05-cases/c04-qingjiang-stone-book/final-delivery/revision-v03/web/index.html",
+    "github_readback": "404_NOT_FOUND",
+    "drive_search": "NO_EXECUTABLE_MATCH",
+    "workflow_artifact": "NOT_SURFACED",
+    "verdict": "HOLD_EXACT_F_ARTIFACT_UNAVAILABLE"
+  },
+  "evidence_basis": "FROZEN_E_PORTABLE_PLUS_WEB_ONLY_RESPONSIVE_PATCH",
+  "responsive": {
+    "1920x1080": {"overflow": "PASS", "map_M5": "PASS", "unknown_offline": "PASS"},
+    "1366x768": {"overflow": "PASS", "map_M5": "PASS", "unknown_offline": "PASS"},
+    "390x844": {"overflow": "PASS", "map_M5_touch": "PASS_AFTER_WEB_PATCH", "unknown_offline": "PASS"}
+  },
+  "interaction": {
+    "keyboard_tab_enter_filter": "PASS",
+    "keyboard_tab_enter_route": "PASS",
+    "touch_unknown_offline": "PASS",
+    "touch_s0_digital_silence": "PASS",
+    "scroll_390": "PASS"
+  },
+  "state_contract": {
+    "reality_delivery_separate_axes": "PASS",
+    "unknown_fail_closed": "PASS",
+    "offline_not_degraded": "PASS",
+    "optional_depth_unknown_offline": "OFF",
+    "pseudo_live": "PROHIBITED"
+  },
+  "print_pdf": {
+    "chromium_pages": 8,
+    "page_size": "A4",
+    "render_review": "PASS_8_OF_8",
+    "byte_identity_required": false
+  },
+  "integration_patch": {
+    "scope": "WEB_F_RESPONSIVE_ONLY",
+    "e_source_modified": false,
+    "feature_change": false,
+    "mobile_map_reflow": true,
+    "mobile_node_hit_target_css_px_tested": 46.6
+  },
+  "screenshots": 13,
+  "evidence_zip": {
+    "drive_file_id": "1oEEzyd0Unmsy5Q7kPggjEZpQ4yf-uE9y",
+    "bytes": 7764893,
+    "sha256": "c97bc98edb7d122611ed10dd335ab7ecb2bd7a6b22d5c1071b726040a7605439"
+  },
+  "verdict": {
+    "e_web_evidence": "PASS",
+    "remaining_revise": "NONE",
+    "f_rev03_exact_web": "HOLD",
+    "f_live_browser_gate": "HOLD_PENDING_EXACT_REV03_WEB_READBACK"
+  },
+  "next_legal_action": "When exact F REV03 web/index.html is available, rerun the same responsive/interaction/print matrix only; no E redesign and no new features."
+}
