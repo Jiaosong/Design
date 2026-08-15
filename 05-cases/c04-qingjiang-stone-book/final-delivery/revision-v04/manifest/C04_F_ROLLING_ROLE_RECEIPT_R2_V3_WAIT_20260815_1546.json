@@ -1,0 +1,55 @@
+{
+  "schema": "oleander.c04.f-rolling-role-receipt/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "timestamp_local": "2026-08-15T15:46:00+08:00",
+  "status": "EXECUTED / REVISE / WAIT_FOR_WEB5_AND_MODEL_V3_PREVIEW",
+  "scope": "ROLE_REGISTRATION_ONLY",
+  "do_not_execute": [
+    "do not integrate model V2",
+    "do not restart legacy REV04 web materialization",
+    "do not reopen KEEP assets",
+    "do not use E portable pages as F body",
+    "do not promote any remote/technical result to field or implementation authority"
+  ],
+  "a_r2": {
+    "FIG-C04-A00": {"decision": "KEEP", "presentation_role": "CURRENT CANDIDATE / NOT YET MAIN UNTIL F RE-READ"},
+    "FIG-C04-A02": {"decision": "KEEP", "presentation_role": "CURRENT CANDIDATE / ANALYSIS-EVIDENCE"},
+    "FIG-C04-A01": {"decision": "KEEP SUPPORT", "presentation_role": "SUPPORT ONLY / MAIN PROHIBITED"},
+    "legacy_A": {"decision": "PROHIBIT MAIN DISPLAY", "presentation_role": "PROVENANCE ONLY"}
+  },
+  "model": {
+    "V2_axono": {"decision": "REJECT", "finding": "cone-like peaks + draped plane + river pushed to edge"},
+    "V2_hero": {"decision": "REJECT", "finding": "cone-like peaks + draped plane + river pushed to edge"},
+    "V2_SEC-A": {"decision": "KEEP SUPPORT", "presentation_role": "SUPPORT ONLY"},
+    "V2_integration": "PROHIBITED",
+    "V3": {"state": "IN PRODUCTION UPSTREAM", "f_action": "WAIT_FOR_ACTUAL_PREVIEW"}
+  },
+  "web_successor": {
+    "owner": "E ordinary conversation",
+    "state": "GENERATING 5-SCREEN SUCCESSOR",
+    "f_action": "WAIT_FOR_ACTUAL_5-SCREEN_PREVIEW",
+    "boundary": "E successor may be integrated only after actual preview/readback; E portable legacy pages cannot substitute F body"
+  },
+  "f_current_slots": {
+    "A1-01": "REVISE",
+    "P03": "REVISE",
+    "all_other_previously_KEEP_assets": "KEEP / DO NOT REOPEN"
+  },
+  "legacy_rev04_web_materialization": {
+    "state": "SUSPENDED / PROVENANCE ONLY",
+    "instruction": "do not restart; do not treat intermediate probe/materialization commits as current F web authority"
+  },
+  "next_inputs_required": [
+    "E Web successor actual 5-screen preview",
+    "model V3 actual preview"
+  ],
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "PROMOTION": "NO_PROMOTION",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "maximum_current_conclusion": "ROLE REGISTRATION COMPLETE; F INTEGRATION PAUSED PENDING ACTUAL WEB5 + MODEL V3 PREVIEWS"
+}
