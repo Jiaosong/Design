@@ -1,0 +1,13 @@
+{
+  "review_id": "C04-A-DESIGN-CRIT-20260815-01",
+  "review_basis": "Actual PNG previews opened at 1920x1080 after SVG render.",
+  "common_locks": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "results": [
+    {"figure_id":"FIG-C04-A00","decision":"KEEP","reason":"主屏信息层级清晰；河流/索道/分支网络是第一阅读；F/I/A/D与容量边界可辨；1920×1080可直接进Web Hero。","handoff":"WEB MAIN / F MAIN"},
+    {"figure_id":"FIG-C04-A01","decision":"KEEP","reason":"四级区位采用关系级NTS而非伪行政边界；水陆两种到达、索道跨江与南岸分支结构清晰。","handoff":"WEB MAIN / F SUPPORT"},
+    {"figure_id":"FIG-C04-A02","decision":"KEEP after REVISE R2","reason":"首轮底部图例与第6行发生遮挡，已压缩行高并重排；复核后无关键遮挡，三段推理链可读。","handoff":"WEB EVIDENCE / F SUPPORT"},
+    {"figure_id":"FIG-C04-A03","decision":"KEEP","reason":"路线分钟、坡度测试带、容量公式/单位与风险谱系均有明确语义；密度较高，适合作为网页分析段或F appendix，不建议作首屏。","handoff":"WEB ANALYSIS / F APPENDIX"}
+  ],
+  "rejected": [{"artifact":"R0 PNG render","decision":"REJECTED/SUPERSEDED","reason":"SVG纸纹filter黑色源层导致PNG整体压黑；已移除该渲染层，R1/R2替代。"}],
+  "remaining_open": "所有Field、Survey、实际步行坡度/距离、实时运营、安全/无障碍合规、真实系统容量仍OPEN。"
+}
