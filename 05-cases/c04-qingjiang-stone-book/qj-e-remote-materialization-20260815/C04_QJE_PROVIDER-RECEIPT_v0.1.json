@@ -2,7 +2,7 @@
   "schema":"oleander.c04.qje-provider-receipt/0.1",
   "project_id":"PRJ-C04-QINGJIANG-SHISHU",
   "date":"2026-08-15",
-  "state":"DRIVE_SYNCED_GITHUB_BRANCH_WRITTEN_PR_PENDING",
+  "state":"WORKING_SOURCE_PROVIDER_CLOSED / DRIVE_SYNCED / GITHUB_DRAFT_PR_SYNCED",
   "drive":{
     "folder_id":"1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz",
     "delivery_zip":{"id":"1dNeVUfaeT_eOs1IuTSDDbQ-Iq3slXdRu","bytes":4198798,"metadata_readback":"PASS"},
@@ -20,11 +20,14 @@
   "github":{
     "repository":"Jiaosong/Design",
     "branch":"agent/c04-qje-sprint-20260815",
-    "pull_request":null,
-    "pull_request_state":"PENDING",
-    "expected_path_audit":"PENDING",
-    "exact_file_readback":"PENDING"
+    "pull_request":111,
+    "pull_request_state":"DRAFT_OPEN",
+    "expected_changed_files":7,
+    "expected_path_audit":"PASS_7_OF_7_ONLY_QJE_DIRECTORY",
+    "exact_file_readback":"PASS",
+    "runtime_contract_blob_sha":"031ded6f110c5d32ed194367342c4966b889a6fb",
+    "promotion_to_main":"OPEN_EXPLICIT_TRANSITION_NOT_PERFORMED"
   },
   "gates":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"},
-  "maximum_conclusion":"REMOTE RESEARCH MATERIALIZATION PROVIDER CLOSURE IN PROGRESS; NOT FIELD PASS; NOT IMPLEMENTATION; NOT SYSTEM PROMOTION"
+  "maximum_conclusion":"WORKING-SOURCE PROVIDER CLOSURE VERIFIED; REMOTE RESEARCH MATERIALIZATION ONLY; NOT FIELD PASS; NOT IMPLEMENTATION; NOT SYSTEM PROMOTION"
 }
