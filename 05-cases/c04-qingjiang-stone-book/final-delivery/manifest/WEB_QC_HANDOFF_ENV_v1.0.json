@@ -1,0 +1,45 @@
+{
+  "schema": "oleander.c04.web-qc-handoff/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "from": "F Final Integration",
+  "to": ["Web", "Governance QC", "Delivery QC"],
+  "status": "READY / TECHNICAL EXPORT QC PASS / FIELD OPEN / NO_PROMOTION",
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NO_PROMOTION": true,
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "environment_manifest": "final-delivery/environment/C04_F_ENVIRONMENT_TOOLCHAIN_MANIFEST_v1.0.json",
+  "reproducible_export": "final-delivery/work/export_reproducible.sh",
+  "qc_entry": "final-delivery/work/qc_delivery.sh",
+  "qc_result": "final-delivery/qc/C04_F_QC_RESULT.json",
+  "results": {
+    "A1": "PASS - 3 pages A1, full render, Ghostscript 0-error, pre/post visual diff 0/3 changed",
+    "20screen": "PASS - 20 pages, full render, Ghostscript 0-error, pre/post visual diff 0/20 changed",
+    "video": "PASS - 86.000 s, 1920x1080, 24 fps, H.264 yuv420p + AAC 48 kHz mono, full decode stderr 0 bytes",
+    "web_pdf_fallback": "PASS - WeasyPrint 68.0 generated 3-page A1 and 20-page 16:9 PDFs",
+    "chromium": "HOLD AS TOOL PATH - binary installed but current headless PDF smoke times out; not used and not blocking"
+  },
+  "current_hashes": {
+    "boards/C04_F_A1_BOARDS_v0.1.pdf": "a32f45040140eb32b61c5419036a71a73968f66937591e93b5ae1249c22c3fc5",
+    "C04_F_Landscape_Atlas_20screen_v0.1.pdf": "859012b416fdccad61885ceb5921ee3072ec654768c500728987bd0b1aff53d7",
+    "video/C04_F_FILM_86s_REPRO.mp4": "0e74bd7d69781495a6db6f3ddc3a26b03b692b6a6f1f00d399c61dc5aef5ae61",
+    "video/C04_F_FILM_86s_audio_master.m4a": "0eb90e5173c2adbd6e9069d7c7162e614d1c62bc74a0131c38308e185e5e9748"
+  },
+  "accepted_presentation_overrides": {
+    "PAGE-11": "Landscape First / recovered from pre-freeze accepted PDF / exact F presentation-state override",
+    "PAGE-20": "Return / Re-recognition / recovered from pre-freeze accepted PDF / exact F presentation-state override"
+  },
+  "only_open_replacement_dependency": {
+    "id": "MODEL-BRIDGE-PACKAGE",
+    "state": "OPEN / NOT BLOCKING CURRENT F",
+    "slot": "SLOT-3D-HERO",
+    "expected": ["GLB or recoverable bridge reference", "PNG hero/axon/section outputs", "camera/section mapping", "source/hash/state receipt"],
+    "integration_rule": "replace slot only after bridge receipt; no current page/board/video re-layout is required"
+  },
+  "project_wide_holds_are_boundaries_not_export_blockers": ["R01 authentic cabin POV", "R06 field geometry", "R13 safety field", "botany/geology/field sign evidence"],
+  "does_not_prove": "Technical export/QC PASS does not equal Design/Field/Implementation/Promotion PASS."
+}
