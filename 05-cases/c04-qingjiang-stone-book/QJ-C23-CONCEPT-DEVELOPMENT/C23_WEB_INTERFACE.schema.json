@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QJ-C23 Spatial Runtime Interface",
+  "type": "object",
+  "required": ["route_segment", "reality_state", "experience_state", "evidence_state"],
+  "properties": {
+    "route_segment": {"enum": ["M0","M1","M2","M3","M4","M5","M6","M7"]},
+    "reality_state": {"enum": ["NORMAL","DEGRADED","CLOSED","UNKNOWN"]},
+    "experience_state": {"enum": ["MOVE","RECOVER","OBSERVE","READ","WITHDRAW","RETURN"]},
+    "delivery_modifier": {"type":"array","items":{"enum":["OFFLINE","RETURN-PRIORITY"]}},
+    "facility_id": {"enum":["F01","F02","F03",null]},
+    "evidence_state": {"enum":["SOURCE-GROUNDED","DESIGN-ASSUMPTION","FIELD-OPEN","HOLD"]},
+    "eta_range_min": {"type":"array","items":{"type":"number"},"minItems":2,"maxItems":2},
+    "fallback": {"enum":["PHYSICAL","PAPER","HUMAN","NONE"]}
+  }
+}
