@@ -1,0 +1,60 @@
+{
+  "schema": "oleander.c04.qje-web-f-integration/0.1",
+  "checkpoint": "E_DIGITAL_PROTOTYPE_COMPLETE_NO_REDO_INTEGRATION_FIXES_ONLY",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "field_observed": 0,
+  "field_measured": 0,
+  "G1F": "HOLD",
+  "promotion": "NO_PROMOTION",
+  "drive_package": {
+    "file_id": "1A1uveOVgGnnlY_28JrqhTnFLfsSBeI-M",
+    "bytes": 1952539,
+    "sha256": "85605c03f2ede787b5a89ea1d4aca7db48db11ea18324f493fd4b807e2a6bd30"
+  },
+  "pages": [
+    {"page_id":"QJE-WEB-P01","artifact":"C04_QJE_PORTABLE_SCROLL_v0.1.html","placement":"MAIN_REQUIRED","modules":["QJE-MOD-MAP:#map","QJE-MOD-READING:#reading","QJE-MOD-STATE:#state","QJE-MOD-CHARTS:#charts","QJE-MOD-SCREENS:#screens"]},
+    {"page_id":"QJE-WEB-P02","artifact":"C04_QJE_PORTABLE_PROTOTYPE_v0.1.html","placement":"MAIN_REQUIRED","states":["QJE-PROT-TODAY","QJE-PROT-ROUTE","QJE-PROT-BOOK","QJE-PROT-SERVICE","QJE-PROT-REVEAL","QJE-PROT-SILENCE"]},
+    {"page_id":"QJE-PRINT-P01","artifact":"C04_QJE_Remote-Research-Display_v0.1.pdf","placement":"APPENDIX","pdf_page_ids":["QJE-PDF-01","QJE-PDF-02","QJE-PDF-03","QJE-PDF-04","QJE-PDF-05","QJE-PDF-06","QJE-PDF-07","QJE-PDF-08"]}
+  ],
+  "map": {
+    "map_id": "QJE-MAP-M0-M7",
+    "nodes": ["M0","M1","M2","M3","M4","M5","M6","M7"],
+    "authority": "MACRO_RELATION_ONLY_NOT_SURVEY_OR_FIXED_13_NODE_ROUTE"
+  },
+  "state_axes": {
+    "reality": ["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "delivery_modifier": ["NONE","OFFLINE","RETURN-PRIORITY"],
+    "derived_optional_depth": ["FULL","LIGHT","OFF"],
+    "derive": "OFF when reality in CLOSED/UNKNOWN or delivery RETURN-PRIORITY; LIGHT when reality DEGRADED or delivery OFFLINE; otherwise FULL",
+    "rules": ["UNKNOWN_FAIL_CLOSED","OFFLINE_NOT_EQUAL_DEGRADED","CLOSED_REQUIRES_BYPASS_REROUTE_OR_EXIT","OPTIONAL_DEPTH_CLOSES_BEFORE_ROUTE_SAFETY_RETURN"]
+  },
+  "reading_network": {
+    "network_id": "QJE-READ-8P5",
+    "core": ["R01","R05","R06","R13","R02","R07","R09","R12"],
+    "companion": ["GEOLOGY_EVIDENCE","ECOLOGY_SEASON","ROUTE_REREAD","MULTI_VOICE","MY_STONE_BOOK"],
+    "main_emphasis": ["R01","R05","R06","R13"],
+    "authority": "READING_NETWORK_NOT_PHYSICAL_ROUTE_SEQUENCE"
+  },
+  "video": {
+    "artifact": "C04_QJE_Interaction-Demo_72s_v0.1.mp4",
+    "duration_s": 72,
+    "fps": 30,
+    "resolution": "1920x1080",
+    "scene_ids": ["QJE-VID-S01","QJE-VID-S02","QJE-VID-S03","QJE-VID-S04","QJE-VID-S05","QJE-VID-S06","QJE-VID-S07","QJE-VID-S08","QJE-VID-S09","QJE-VID-S10","QJE-VID-S11","QJE-VID-S12"],
+    "main_static_scenes": ["QJE-VID-S01","QJE-VID-S03","QJE-VID-S04","QJE-VID-S05","QJE-VID-S06","QJE-VID-S09","QJE-VID-S10","QJE-VID-S12"],
+    "appendix_static_scenes": ["QJE-VID-S02","QJE-VID-S07","QJE-VID-S08","QJE-VID-S11"]
+  },
+  "asset_sha": {
+    "delivery_zip":{"bytes":4199996,"sha256":"8cf85b34cfb968e6302969daacd18849503792f8f809949d263f45ac86756f64"},
+    "portable_scroll":{"bytes":37042,"sha256":"e73f3651bbd9bf5a1ac20646c9f7c8be632d80cea551f8a70d60f04d338141f8"},
+    "portable_prototype":{"bytes":27049,"sha256":"d11a30339edf3d1557032c6b2f66b43c151ac3f6c58afcf226add03aff17f5d6"},
+    "runtime_json":{"bytes":9863,"sha256":"0d208765d195d874dc1eb1168020334db8a7fea984743b70ec06f6aaee3615c6"},
+    "video":{"bytes":835519,"sha256":"1612f4a34f2458f91361ea4ae10832376893d5d57fd6643d7871a1a6f8eb5c2c"},
+    "pdf":{"bytes":504325,"sha256":"c1f649407e7497aa170dbad82479ec895e38068414497c2de884c174a50bda46"}
+  },
+  "browser_limit": "BROWSER_VISUAL_OPEN_POLICY_BLOCKED: container Chromium policy blocks file/data/private-local navigation; do not claim Browser PASS",
+  "main_display": ["QJE-MOD-MAP","QJE-MOD-READING","QJE-MOD-STATE","QJE-MOD-SCREENS","QJE-WEB-P02","72S_VIDEO"],
+  "main_optional": ["QJE-MOD-CHARTS"],
+  "appendix": ["8_PAGE_PDF","SECONDARY_STATIC_FRAMES","AUTHORITY_SNAPSHOT","SHOTLIST","DECISION_LIMITS","QA_PROVIDER_RECEIPTS"],
+  "change_rule": "ONLY_REPRODUCIBLE_WEB_F_INTEGRATION_BLOCKERS_MAY_MODIFY_E"
+}
