@@ -1,0 +1,79 @@
+{
+  "schema": "c04-public-narrative-content/1.8",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "date": "2026-08-16",
+  "status": "CURRENT_PUBLIC_NARRATIVE_DIRECTION_FIELD_OPEN_NO_PROMOTION",
+  "source_policy": {
+    "original_enshi_archive": "CONTENT_BRIEF_INSPIRATION_SOURCE",
+    "route_and_fact_authority": "C04_CURRENT_AND_CURRENT_OWNER_SOURCE_AUTHORITY",
+    "game_rule": "CONTENT_AND_EXPLORATION_MAY_BE_GAMIFIED_ROUTE_SAFETY_RETURN_MAY_NOT_BE_GATED_BY_GAME",
+    "thirteen_imprints": "OPTIONAL_CONTENT_INDEX_NOT_13_OF_13_ROUTE"
+  },
+  "hero": {
+    "title_cn": "先游清江，再读清江。",
+    "subtitle_cn": "从游船、索道到峰林步道，在真实游程中加入必要的地图、导向、休息、文化阅读、互动与回程支持。"
+  },
+  "public_chapters": [
+    {"id":"CH01","name_cn":"地域文化","question":"清江有什么值得体验？"},
+    {"id":"CH02","name_cn":"游玩线路与交通","question":"游客怎么来、怎么走、怎么回来？"},
+    {"id":"CH03","name_cn":"场景互动","question":"到了这个地方具体能做什么？"},
+    {"id":"CH04","name_cn":"不同人群","question":"不同年龄与体力状态具体获得什么？"},
+    {"id":"CH05","name_cn":"实体·数字·记忆","question":"设计怎样落到设施、界面和可带走的记忆？"}
+  ],
+  "content_library": [
+    "HISTORY_REGIONAL",
+    "LOCAL_STORY",
+    "CRAFT_INTANGIBLE_CULTURE",
+    "LANDSCAPE_KNOWLEDGE",
+    "TRADITIONAL_LANDSCAPE_VIEW",
+    "DAILY_WISDOM_WELLBEING"
+  ],
+  "journey": ["ARRIVE","MAP_RETURN_CHECK","CHOOSE_MOBILITY","CROSS_RIVER","WALKING_NETWORK","CHOOSE_SCENE","OBSERVE_REST_PLAY_READ","RETURN","EXIT_MEMORY"],
+  "mobility": [
+    {"id":"BOAT","label_cn":"水上看清江","role":"WATER_SCALE_LONG_VIEW"},
+    {"id":"CABLE","label_cn":"空中看清江","role":"TRANSPORT_FIRST_WHOLE_VALLEY_VIEW_SECOND"},
+    {"id":"WALK","label_cn":"山中看清江","role":"BODY_SCALE_NEAR_OBSERVATION"}
+  ],
+  "interaction_modes": [
+    {"id":"CULTURE","label_cn":"文化","examples":["地名故事","地方人物","传说","非遗","历史交通"]},
+    {"id":"WISDOM","label_cn":"智慧/观察","pattern":"OBSERVE_GUESS_EXPLAIN","examples":["两岸比较","峰形判断","方向","能见度","植物与岩壁观察"]},
+    {"id":"PLAY","label_cn":"娱乐/探索","examples":["找峰形","轮廓匹配","声音寻找","地图探索","家庭合作","轻解谜","个人石书记录"],"no_completion_gate":true},
+    {"id":"WELLBEING","label_cn":"身体与自我关照","examples":["休息","步行节奏","饮水提示","安静观看","疲劳降级","回程提醒"],"medical_claims":false}
+  ],
+  "audience_modes": [
+    {"id":"FAMILY_CHILD","priority":["DISCOVERY","CO_PLAY","NATURE_ATTENTION"],"ui":["VISUAL_AUDIO","LOW_TEXT","LARGE_TARGETS"]},
+    {"id":"YOUTH","priority":["EXPLORATION","SPATIAL_REASONING","LIGHT_CHALLENGE","SOCIAL_MEMORY"],"ui":["MAP_EXPLORE","OBSERVE_REASON","OPTIONAL_COLLECTION"]},
+    {"id":"ADULT","priority":["CULTURE","LANDSCAPE_UNDERSTANDING","OPTIONAL_DEEP_READ","TIME_MANAGEMENT"],"ui":["LAYERED_CONTENT","ROUTE_CHOICE"]},
+    {"id":"OLDER_LOW_STAMINA","priority":["DIRECTION","REST","RETURN","LOW_COGNITIVE_LOAD"],"ui":["LARGE_TEXT","CLEAR_REMAINING_ROUTE","RETURN_FIRST","SKIP_CONTENT"]}
+  ],
+  "public_decisions": [
+    "先把清江的地域文化和故事梳理清楚，再决定讲什么。",
+    "先把一次真实游程讲清：怎么来、怎么过江、怎么走、怎么回。",
+    "游船、索道、步行提供三种不同尺度的清江体验。",
+    "地图可以像探索游戏，但路线、安全和回程不能靠任务解锁。",
+    "每个场景只放真正适合发生的文化、智慧、娱乐或身体内容。",
+    "同一场景为不同年龄与体力状态提供不同深度，而不是复制多套产品。",
+    "实体设施、纸图和数字界面互相补充；没有手机仍能完成游程。",
+    "最后用回程、个人记录和可带走的记忆收束，不用十三印完成率收束。"
+  ],
+  "scene_bindings": [
+    {"scene":"ARRIVAL_YUNTANKOU","role":["SERVICE","ROUTE"],"content":["HOW_TO_PLAY","MOBILITY","OPEN_UNKNOWN","RETURN"],"design":["GAME_STYLE_WORLD_MAP","PAPER_MAP","HUMAN_SERVICE"]},
+    {"scene":"R01","role":["TRANSPORT","OBSERVE"],"content":["TWO_BANKS","VALLEY","DIRECTION"],"game":"OFF_FORCED_TRIGGER","design":["NO_FORCED_UI","NO_LONG_EXPLANATION"]},
+    {"scene":"R02","role":["OBSERVE","WISDOM"],"content":["PLANT_OBSERVATION"],"boundary":"SPECIES_AGE_EXPERT_OPEN","design":["OPTIONAL_F02"]},
+    {"scene":"R05","role":["OBSERVE","PLAY"],"content":["PEAK_FORM_DISCOVERY","WHOLE_FOREST"],"design":["OPTIONAL_LIGHT_PLAY"]},
+    {"scene":"R06","role":["OBSERVE","RECOVER","WISDOM"],"content":["WHOLE_VALLEY","SIMPLE_SECTION","REST","AUDIENCE_DEPTH"],"design":["F01","SECTION_MODEL"]},
+    {"scene":"R07","role":["CULTURE","NAME"],"content":["NAME_CONFLICT_AS_READING"],"design":["DUAL_SPELLING"],"boundary":"FIELD_SIGN_OPEN"},
+    {"scene":"R09","role":["LOCAL_STORY"],"content":["Yanshui_Goddess"],"boundary":"NO_ANCIENT_SITE_EQUIVALENCE"},
+    {"scene":"R12","role":["LOCAL_STORY","CULTURE"],"content":["Linjun"],"boundary":"NO_ANCIENT_SITE_EQUIVALENCE"},
+    {"scene":"R13","role":["BODY","SAFETY","RETURN"],"content":["NARROWNESS","LIGHT","BODY_PASSAGE"],"game":"OFF_HIGH_ATTENTION","design":["DIRECTION","SAFETY","RETURN"]},
+    {"scene":"RETURN_EXIT","role":["RETURN","MEMORY"],"content":["ROUTE_RECOGNITION","PERSONAL_MAP","TRAVEL_NOTE"],"design":["F03","F04","MY_QINGJIANG"]}
+  ],
+  "cross_media": {
+    "web_main_order": ["HERO","CULTURE","HOW_TO_PLAY_MAP","BOAT_CABLE_WALK","SCENE_INTERACTIONS","AUDIENCE_DEPTH","R06","R13","PHYSICAL_PRODUCTS","DIGITAL_OFFLINE","RETURN_MEMORY","TECHNICAL_PROOF"],
+    "d_visual_direction": "CULTURE_MAP_MOBILITY_SCENE_PRODUCT_DIGITAL_MEMORY_ONE_SYSTEM",
+    "f_edit_rule": ["MAIN","SUPPORT","PROCESS","DROP"],
+    "e_state": "WATCH_FREEZE_NO_FEATURE_EXPANSION",
+    "c23_model": "ONLY_NECESSARY_PHYSICAL_SCALE_DETAIL_PROOF"
+  },
+  "truth_boundary": ["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","GAME_MAP_NOT_SURVEY","FENGSHUI_NOT_SCIENTIFIC_CAUSATION","WELLBEING_NOT_MEDICAL","PROTOTYPE_NOT_FIELD_PASS"]
+}
