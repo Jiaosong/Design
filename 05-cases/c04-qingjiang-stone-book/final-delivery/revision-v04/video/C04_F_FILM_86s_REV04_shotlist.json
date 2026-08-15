@@ -1,0 +1,23 @@
+{
+  "schema": "oleander.c04.f-motion-revision/0.4",
+  "status": "EXECUTED / REVISE",
+  "independent_review_inherited": {
+    "structure": "KEEP",
+    "targeted_revise": ["51-61s R13", "Return UI length", "audit-card ending"]
+  },
+  "duration_s": 86,
+  "output": "C04_F_FILM_86s_REV04.mp4",
+  "r13_source": "inputs/image2_rev04/湿润峡谷中的远眺者.png",
+  "r13_label": "AI-assisted conceptual visualization",
+  "r13_does_not_prove": ["actual landform", "actual facility", "path width", "railing", "safety condition"],
+  "segments": [
+    {"scene_id": "SCENE-F-01", "name": "hero", "start_s": 0, "duration_s": 8, "end_s": 8},
+    {"scene_id": "SCENE-F-02", "name": "map", "start_s": 8, "duration_s": 10, "end_s": 18},
+    {"scene_id": "SCENE-F-03", "name": "seca", "start_s": 18, "duration_s": 10, "end_s": 28},
+    {"scene_id": "SCENE-F-04", "name": "model", "start_s": 28, "duration_s": 10, "end_s": 38},
+    {"scene_id": "SCENE-F-05", "name": "r06", "start_s": 38, "duration_s": 13, "end_s": 51},
+    {"scene_id": "SCENE-F-06", "name": "r13", "start_s": 51, "duration_s": 10, "end_s": 61},
+    {"scene_id": "SCENE-F-07", "name": "return", "start_s": 61, "duration_s": 7, "end_s": 68},
+    {"scene_id": "SCENE-F-08", "name": "end", "start_s": 68, "duration_s": 18, "end_s": 86}
+  ]
+}
