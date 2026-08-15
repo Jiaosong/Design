@@ -45,6 +45,20 @@ Traditional feng-shui / landscape ideas may be researched and presented only as 
 
 Wellbeing content means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and return support; it must not become medical, treatment or selenium-health claims.
 
+## Public pagination / screen-count policy｜UNBOUNDED BY COUNT
+
+**C04 public presentation is no longer constrained by a fixed page count or screen count.**
+
+- `20-screen`, `约20页`, `3 boards`, or any other previous count is **provenance / delivery history only**, not a target, minimum or maximum unless an external submission specification explicitly requires it.
+- Web, PDF, portfolio narrative and presentation pages may expand or contract according to content completeness, reading rhythm, visual hierarchy, evidence density and medium-specific readability.
+- Do **not** add filler pages to reach a number, and do **not** compress distinct design arguments merely to remain under a number.
+- One page/section may carry one dominant claim when this improves clarity, but this is an editorial principle, not a page-count rule.
+- Continuous Web sections may be longer or shorter than one viewport; print/PDF pagination is derived from the final layout rather than used to determine the content structure.
+- Stable `page_id / scene_id / figure_id` should remain machine-readable where useful, but visible numbering and total count are allowed to change as the narrative is refined.
+- Boards are also not fixed at three. Use as many boards as are necessary for a coherent professional submission, subject only to actual external format requirements.
+
+Current editorial test is therefore: **Does every page/section materially improve the visitor story, design proof or professional readability?** If not, merge/drop it. If a necessary argument is cramped, split/expand it.
+
 ## Allowed conceptual development
 
 C04 may now produce, using explicit `SG / RI / CA / FR` states:
@@ -67,11 +81,11 @@ How can C04 turn Qingjiang's real culture, journey, transport, landscape scenes 
 
 ## Delivery priority
 
-1. Web + final integration skeleton under the v1.8 public narrative
+1. Web + final integration skeleton under the v1.8 public narrative, with no fixed section/page count
 2. Culture/journey/map + key service/scene/audience matrices
 3. Masterplan / key plans-sections / critical model + physical/product proof
 4. Hero renderings / analysis graphics / core interactions + motion
-5. Boards / PDF / video / secondary supplements
+5. Boards / PDF / video / secondary supplements, count derived from professional readability and actual submission needs
 
 ## Active integration architecture
 
@@ -116,6 +130,7 @@ Near context limit: stop expansion, create the checkpoint and continue through t
 ## Do not reopen
 
 - fixed 13-stop completion route;
+- fixed 20-page / 20-screen / 3-board public-delivery target unless imposed by an actual external submission requirement;
 - A–F lanes as new P3/P4 namespaces;
 - obsolete game/progress/chapter-led **route authority** (this does not prohibit game-style content/exploration under v1.8);
 - `M1/M0.5/C1/C2` as Current evidence system;
