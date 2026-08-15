@@ -1,0 +1,87 @@
+{
+  "package_version": "v3.0",
+  "job_id": "QJ-C22-SPATIAL-DRAWING-PRODUCTION",
+  "status": "SOURCE-GROUNDED / PROVISIONAL / FIELD OPEN / G1F HOLD / NO_PROMOTION",
+  "date": "2026-08-15",
+  "authority": {
+    "project": "PRJ-C04-QINGJIANG-SHISHU",
+    "workstream": "PRJ-C04-EXPERIENCE-SPATIAL",
+    "current_gate": "G3",
+    "field_observed": 0,
+    "field_measured": 0,
+    "promotion": "NO"
+  },
+  "sources": [
+    {
+      "id": "SRC-A01",
+      "type": "FIRST_PARTY_GUIDE",
+      "title": "红花峰林景区手绘导览",
+      "date": "2025-08-05",
+      "pixels": "1400x912",
+      "sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c",
+      "supports": ["two-bank relation", "cross-river cable", "south-bank multi-branch/loop walking network"],
+      "does_not_support": ["survey geometry", "micro route order", "distance", "slope", "clear width", "safety", "capacity"]
+    },
+    {
+      "id": "SRC-A02",
+      "type": "FIRST_PARTY_GUIDE",
+      "title": "红花峰林景区全景导览",
+      "date": "2025-08-05",
+      "pixels": "1216x646",
+      "sha256": "8d237321e197656f0a9e8e0ea8d042a1492691153f6325baf547d037572e9c4",
+      "supports": ["multi-branch/loop network", "macro nodes/facilities relation"],
+      "does_not_support": ["survey geometry", "field safety"]
+    },
+    {
+      "id": "SRC-A03",
+      "type": "OFFICIAL_SCENIC",
+      "title": "2025年恩施大清江景区旅游攻略",
+      "url": "https://www.esdqj.cn/jdwf/85.html",
+      "supports": ["云坛口码头", "跨江索道", "游步道", "红花峰林为不对称河谷代表性区段/多级阶地观察区", "macro access variants"]
+    },
+    {
+      "id": "SRC-A04",
+      "type": "OFFICIAL_OPERATOR",
+      "title": "红花峰林景区开园迎客",
+      "url": "https://www.eslygroup.com/group_news/2827.html",
+      "supports": ["cable 1056m", "vertical difference 156m", "2023 operation context"]
+    },
+    {
+      "id": "SRC-A05",
+      "type": "OFFICIAL_OPERATOR_2026",
+      "title": "跨清江索道变身两岸乡亲空中公交",
+      "url": "https://www.eslygroup.com/media_focus/4375.html",
+      "supports": ["resident daily mobility", "transport function outranks tourist-only narrative"]
+    }
+  ],
+  "macro_route": [
+    "M0 PREP", "M1 ARRIVAL road|boat|unknown", "M2 CROSS-RIVER CABLE", "M3 SOUTH-BANK WALKING NETWORK",
+    "M4 CONDITIONAL OBSERVE/READ/RECOVER", "M5 CONDITIONAL WITHDRAW", "M6 CABLE RETURN", "M7 EXIT/MEMORY"
+  ],
+  "nodes": [
+    {"id":"A1","name":"云坛口码头/服务","role":"arrival_service","status":"REMOTE_SOURCE_SUPPORTED","position":"diagrammatic"},
+    {"id":"A2","name":"索道北站","role":"transport_service","status":"REMOTE_SOURCE_SUPPORTED","position":"diagrammatic"},
+    {"id":"R01","name":"红岩嘴/索道移动观看","role":"S0_view","status":"SOURCE_SUPPORTED_RELATION / POV_OPEN","position":"on cable relation"},
+    {"id":"A3","name":"索道南站","role":"transport_service","status":"REMOTE_SOURCE_SUPPORTED","position":"diagrammatic"},
+    {"id":"R02","name":"华中第一藤","role":"reading_optional","status":"NAME/IDENTITY PARTIAL; SPECIES OPEN","position":"diagrammatic"},
+    {"id":"R05","name":"红花石林","role":"S0_view","status":"SOURCE_SUPPORTED","position":"diagrammatic"},
+    {"id":"R06","name":"观景平台+河谷","role":"S2_candidate + recovery","status":"VIEW RELATION SUPPORTED / FIELD GEOMETRY OPEN","position":"diagrammatic"},
+    {"id":"R07","name":"仓禀峰／仓廪峰","role":"S1_silhouette","status":"SPELLING AUTHORITY CONFLICT","position":"diagrammatic"},
+    {"id":"R09","name":"盐水女神峰","role":"S1_narrative_separated","status":"NAME SUPPORTED / SITE-NARRATIVE LINK OPEN","position":"diagrammatic"},
+    {"id":"R12","name":"廪君峰","role":"S1_narrative_separated","status":"NAME SUPPORTED / SITE-NARRATIVE LINK OPEN","position":"diagrammatic"},
+    {"id":"R13","name":"一线天","role":"S0_body_closure","status":"PAGE-LEVEL NODE EVIDENCE / FIELD SAFETY OPEN","position":"diagrammatic"}
+  ],
+  "facilities": [
+    {"id":"F01","name":"可拆卸倚靠休息板","decision":"KEEP / NOT LOCATED","width_mm":[800,1400],"support_depth_mm":[120,180],"top_height_mm":[900,1050],"note":"research envelope only; field/engineering required"},
+    {"id":"F02","name":"最小阅读提示板","decision":"OPTIONAL","panel_width_mm":[320,480],"panel_height_mm":[180,300],"reading_center_mm":[1000,1250],"tilt_deg":[15,30],"note":"prefer existing support"},
+    {"id":"F03","name":"返程识别条","decision":"CONDITIONAL","width_mm":[80,120],"visible_zone_height_mm":[900,1200],"note":"direction/return only; field viewing test required"},
+    {"id":"F04","name":"纸本地图/清江旅记","decision":"AFTER-EXIT","note":"macro route only; never sole navigation"}
+  ],
+  "selected_strategy": "C0 BASE + DISTRIBUTED MINIMAL SUPPORT; no primary hero selected",
+  "rejected_or_hold": ["Boat as universal core", "13 linear stations", "tourist-only cable threshold", "山体流体休憩装置", "清风吟", "步步生光 primary placement"],
+  "de_interface": {
+    "D": ["route_segment", "experience_state", "reality_state", "reading_mode", "evidence_state", "visual_rule"],
+    "E": ["arrival_mode", "experience_state", "reality_state", "delivery_modifier", "fallback", "return_guard"]
+  },
+  "limitations": ["not survey", "not construction", "no exact coordinates", "no micro-route geometry", "no accessibility/safety/capacity claims", "no realtime operation claims"]
+}
