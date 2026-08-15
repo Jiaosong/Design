@@ -1,0 +1,218 @@
+{
+  "schema": "oleander.environment-toolchain/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "lane": "F / Final Integration",
+  "captured_at_utc": "2026-08-15T04:42:46Z",
+  "policy": {
+    "free_or_existing_tools_only": true,
+    "install_wait": false,
+    "missing_tool_strategy": "degrade to pure HTML/SVG, existing Python/Pillow/ReportLab, Poppler/Ghostscript, or FFmpeg; never block final integration on tool installation",
+    "model_blender_blocking": false,
+    "model_bridge_policy": "consume upstream GLB/PNG/sections/bridge package when materialized; missing Blender/native 3D does not block F export",
+    "browser_print_status": "Chromium binary present but current headless print unavailable; WeasyPrint is the tested web-to-PDF fallback."
+  },
+  "host": {
+    "os": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "architecture": "x86_64"
+  },
+  "tools": [
+    {
+      "id": "BROWSER-CHROMIUM",
+      "available": false,
+      "path": "/usr/bin/chromium",
+      "version": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+      "role": ["offline HTML open", "1920x1080 screenshot fallback", "CSS paged-media PDF print fallback"],
+      "command_entry": "chromium --headless --no-sandbox --disable-gpu --allow-file-access-from-files --print-to-pdf=<out.pdf> --no-pdf-header-footer file://<print.html>",
+      "fallback": "WeasyPrint 68.0 for HTML/CSS paged-media PDF; primary F PDFs remain ReportLab; Poppler/Ghostscript verify output.",
+      "does_not_prove": "The installed Chromium binary is not a valid current PDF-print path in this container. Prior browser PASS elsewhere must not be inferred here.",
+      "binary_available": true,
+      "runtime_usable_for_pdf_print": false,
+      "runtime_status": "HEADLESS_PDF_PRINT_SMOKE_FAIL / timeout=20s / DBus+zygote errors / no PDF emitted"
+    },
+    {
+      "id": "WEB-PDF-WEASYPRINT",
+      "available": true,
+      "path": "/opt/pyvenv/bin/weasyprint",
+      "version": "WeasyPrint version 68.0",
+      "role": ["HTML/CSS paged-media PDF fallback", "A1 and 20-screen print fallback"],
+      "command_entry": "weasyprint <print.html> <out.pdf>",
+      "actual_smoke": "PASS: 20-screen=20 pages at 1440x810 pt; A1=3 pages at 2383.94x1683.78 pt",
+      "fallback": "ReportLab primary PDF assembly. If WeasyPrint is unavailable, keep ReportLab output and verify with Poppler/Ghostscript.",
+      "does_not_prove": "WeasyPrint output proves this HTML/CSS renderer path only; it is not Chromium parity and does not prove field/design promotion."
+    },
+    {
+      "id": "PDF-AUTHOR-REPORTLAB",
+      "available": true,
+      "path": "/opt/pyvenv/bin/python",
+      "version": "4.4.9",
+      "role": ["A1 PDF assembly", "20-screen PDF assembly"],
+      "command_entry": "python work/generate_f_delivery.py",
+      "fallback": "WeasyPrint paged-media PDF from boards/print_a1_fallback.html or web/print_20screen.html.",
+      "does_not_prove": "Successful PDF creation does not prove visual quality until rendered/opened and reviewed; it does not prove field/design promotion."
+    },
+    {
+      "id": "PDF-RENDER-POPPLER",
+      "available": true,
+      "path": "/usr/bin/pdftoppm",
+      "version": "pdftoppm version 25.06.0",
+      "role": ["PDF raster verification", "page-count/size inspection via pdfinfo"],
+      "command_entry": "python /home/oai/skills/pdfs/scripts/render_pdf.py <pdf> --out_dir <dir> --dpi 72",
+      "fallback": "Ghostscript nullpage/open check; ImageMagick may rasterize simple PDFs but is not the preferred verifier.",
+      "does_not_prove": "A clean render proves only PDF readability in the tested renderer, not content correctness or design/field validation."
+    },
+    {
+      "id": "PDF-CHECK-GHOSTSCRIPT",
+      "available": true,
+      "path": "/usr/bin/gs",
+      "version": "10.05.1",
+      "role": ["independent PDF interpreter/open check", "nullpage error check"],
+      "command_entry": "gs -q -dNOPAUSE -dBATCH -sDEVICE=nullpage <pdf>",
+      "fallback": "Poppler render + pdfinfo.",
+      "does_not_prove": "Zero interpreter errors do not prove page aesthetics, source accuracy, or implementation readiness."
+    },
+    {
+      "id": "VIDEO-FFMPEG",
+      "available": true,
+      "path": "/usr/bin/ffmpeg",
+      "version": "ffmpeg version 7.1.5-0+deb13u1",
+      "role": ["H.264 encode", "AAC handling", "ASS subtitle burn-in", "audio extraction", "full decode QC"],
+      "command_entry": "ffmpeg -i <D_v1.1_motion.mp4> -i <audio_master.m4a> -vf ass=<F.ass>:fontsdir=/usr/share/fonts/opentype/noto -c:v libx264 -preset ultrafast -crf 20 -profile:v high -level:v 4.1 -pix_fmt yuv420p -r 24 -c:a copy -t 86 -movflags +faststart <out.mp4>",
+      "fallback": "Default fast reproducible delivery uses stream-copy remux of accepted F v0.2; if audio master is absent, only an explicitly named SILENT_FALLBACK may be created for technical QC.",
+      "does_not_prove": "Successful encode/decode proves container/codec integrity only; it does not prove narration accuracy, copyright clearance, field state, or cinematic design quality."
+    },
+    {
+      "id": "VIDEO-FFPROBE",
+      "available": true,
+      "path": "/usr/bin/ffprobe",
+      "version": "ffprobe version 7.1.5-0+deb13u1",
+      "role": ["duration/resolution/fps/codec/audio probe"],
+      "command_entry": "ffprobe -v error -show_entries format=duration,size,bit_rate:stream=... -of json <mp4>",
+      "fallback": "ffmpeg -i <mp4> metadata read.",
+      "does_not_prove": "Probe metadata does not prove successful full-stream decoding or visual quality."
+    },
+    {
+      "id": "SVG-INKSCAPE",
+      "available": true,
+      "path": "/usr/bin/inkscape",
+      "version": "Inkscape 1.4 (e7c3feb100, 2024-10-09)",
+      "role": ["SVG open/render/export fallback"],
+      "command_entry": "inkscape <input.svg> --export-type=png --export-filename=<out.png>",
+      "fallback": "CairoSVG 2.8.2 via Python; for locked F visuals, prefer existing PNG assets to avoid renderer drift.",
+      "does_not_prove": "SVG rasterization proves renderer compatibility only, not source-authority or geometry validation."
+    },
+    {
+      "id": "RASTER-PILLOW",
+      "available": true,
+      "path": "/opt/pyvenv/bin/python",
+      "version": "12.3.0",
+      "role": ["A1 composition", "screen-frame composition", "PNG resizing/cropping", "image QC statistics"],
+      "command_entry": "python work/generate_f_delivery.py",
+      "fallback": "ImageMagick command line for resize/convert/composite; preserve source pixels and labels.",
+      "does_not_prove": "Raster composition does not make provisional spatial/field claims authoritative."
+    },
+    {
+      "id": "RASTER-IMAGEMAGICK",
+      "available": true,
+      "path": "/opt/imagemagick/bin/magick",
+      "version": "ImageMagick 7.1.2-1 Q16-HDRI",
+      "role": ["image inspection/convert/compression fallback"],
+      "command_entry": "magick <input> <output>",
+      "fallback": "Pillow 12.3.0.",
+      "does_not_prove": "Image conversion does not prove design correctness or source authenticity."
+    },
+    {
+      "id": "SVG-CAIROSVG",
+      "available": true,
+      "path": "/opt/pyvenv/bin/python",
+      "version": "2.8.2",
+      "role": ["SVG-to-PNG/PDF fallback when Inkscape path is unavailable"],
+      "command_entry": "python -m cairosvg <input.svg> -o <output.png>",
+      "fallback": "Inkscape 1.4 or existing locked PNG.",
+      "does_not_prove": "Renderer output is presentation evidence only."
+    },
+    {
+      "id": "COMPRESS-ZIP",
+      "available": true,
+      "path": "/usr/bin/zip",
+      "version": "Info-ZIP 3.0 (July 5th 2008)",
+      "role": ["delivery packaging"],
+      "command_entry": "zip -r -9 <delivery.zip> <files...>",
+      "fallback": "Python stdlib zipfile.",
+      "does_not_prove": "Archive creation does not prove contents are valid; hashes and independent open/QC remain required."
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Noto Sans CJK SC",
+      "resolved_file": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+      "style": "Regular",
+      "role": "Chinese/Latin primary display and subtitles",
+      "embedded_or_copied_into_delivery": false,
+      "fallback": "Noto Sans CJK family -> Liberation Sans/DejaVu Sans; visual regression required if fallback occurs",
+      "does_not_prove": "Font availability on this machine does not guarantee identical typography on another host unless PDF/subtitle rasterization is performed here."
+    },
+    {
+      "family": "DejaVu Sans Mono",
+      "resolved_file": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf",
+      "style": "Book",
+      "role": "IDs/meta/technical labels",
+      "embedded_or_copied_into_delivery": false,
+      "fallback": "Liberation Mono or system monospace with regression review",
+      "does_not_prove": "Font substitution can change metrics; it must not be assumed layout-equivalent."
+    }
+  ],
+  "missing_non_blocking_tools": [
+    {"tool": "qpdf", "available": false, "fallback": "pdfinfo + Poppler render + Ghostscript nullpage; do not install/wait"},
+    {"tool": "rsvg-convert", "available": false, "fallback": "Inkscape 1.4 or CairoSVG 2.8.2; do not install/wait"},
+    {"tool": "Blender", "availability": "NOT REQUIRED BY F", "fallback": "consume upstream GLB/PNG/section/model bridge package when supplied; C22 exploded relation remains explicitly non-3D-field-model until then"}
+  ],
+  "reproducible_entrypoints": {
+    "export": "work/export_reproducible.sh",
+    "qc": "work/qc_delivery.sh",
+    "primary_generator": "work/generate_f_delivery.py",
+    "browser_print_20screen": "web/print_20screen.html",
+    "browser_print_a1": "boards/print_a1_fallback.html",
+    "video_subtitles": "video/C04_F_FILM_86s_v0.1.ass",
+    "video_audio_master": "video/C04_F_FILM_86s_audio_master.m4a"
+  },
+  "hard_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NO_PROMOTION": true,
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true,
+    "global_does_not_prove": "EXECUTED / BUILD / RENDER / ENCODE / DECODE PASS never substitutes for Design PASS, Field PASS, compliance, measured geometry, structural adequacy, operational approval, or P2 promotion."
+  },
+  "qc_freeze": {
+    "result": "PASS",
+    "qc_result": "qc/repro_20260815/C04_F_QC_RESULT.json",
+    "primary_pdf_visual_regression": {
+      "A1": "0/3 changed pages at 36 dpi against pre-freeze snapshot",
+      "20screen": "0/20 changed pages at 36 dpi against pre-freeze snapshot after restoring accepted PAGE-11/PAGE-20 overrides"
+    },
+    "full_pdf_render": {"A1": "3/3 pages rendered", "20screen": "20/20 pages rendered"},
+    "ghostscript_errors": {"A1": 0, "20screen": 0},
+    "video": {"duration_s": 86.0, "resolution": "1920x1080", "fps": "24/1", "video_codec": "h264", "audio_codec": "aac", "decode_error_bytes": 0},
+    "web_pdf_fallback": {"renderer": "WeasyPrint 68.0", "A1_pages": 3, "screen_pages": 20, "status": "PASS"},
+    "chromium_pdf_print": "NON-BLOCKING FAIL / binary present, headless smoke timeout"
+  },
+  "accepted_presentation_overrides": {
+    "PAGE-11": {"file": "work/accepted_overrides/PAGE-11.png", "sha256": "02abb1c06bfb34f9b8ece5d2cec80e521ca9d418902c10c2bf435d31e4d63420", "reason": "preserve accepted Landscape First edit"},
+    "PAGE-20": {"file": "work/accepted_overrides/PAGE-20.png", "sha256": "1bd03cc26db709dc4b56e0b529c546a53d44d03ba531b988344dd5b7b7a9ffa2", "reason": "preserve accepted Return / Re-recognition ending"}
+  },
+  "current_artifact_hashes": {
+    "boards/C04_F_A1_BOARDS_v0.1.pdf": "a32f45040140eb32b61c5419036a71a73968f66937591e93b5ae1249c22c3fc5",
+    "C04_F_Landscape_Atlas_20screen_v0.1.pdf": "859012b416fdccad61885ceb5921ee3072ec654768c500728987bd0b1aff53d7",
+    "video/C04_F_FILM_86s_REPRO.mp4": "0e74bd7d69781495a6db6f3ddc3a26b03b692b6a6f1f00d399c61dc5aef5ae61",
+    "video/C04_F_FILM_86s_audio_master.m4a": "0eb90e5173c2adbd6e9069d7c7162e614d1c62bc74a0131c38308e185e5e9748"
+  },
+  "remaining_dependency": {
+    "id": "MODEL-BRIDGE-PACKAGE",
+    "state": "OPEN_REPLACEMENT_DEPENDENCY / NOT F DELIVERY BLOCKER",
+    "need": "upstream GLB/PNG/section/camera or bridge manifest when materialized",
+    "web_qc_action": "keep SLOT-3D-HERO as replaceable slot; do not reflow or delay current F submission",
+    "does_not_prove": "arrival of a render/GLB does not create field/model/design authority without its upstream bridge/source manifest"
+  }
+}
