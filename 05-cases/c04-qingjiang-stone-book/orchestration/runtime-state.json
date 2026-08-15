@@ -44,7 +44,7 @@
     "non_current_may_be_consumed_as_current": false
   },
   "delivery_profile": {
-    "readback_at": "2026-08-15T19:15:00+08:00",
+    "readback_at": "2026-08-15T20:16:00+08:00",
     "state": "MATERIAL_DELTA_APPLIED / DELIVERY_READBACK_ONLY / NO_PROMOTION",
     "web_v4": {
       "static_design_gate": "KEEP",
@@ -67,11 +67,7 @@
       "promotion": "NO"
     },
     "a_display": {
-      "r1": {
-        "state": "KEEP_SUPPORT_ONLY",
-        "main_display": false,
-        "assets": ["A1-01-R1_bdec1528", "P03-R1_25886f37"]
-      },
+      "r1": {"state": "KEEP_SUPPORT_ONLY", "main_display": false, "assets": ["A1-01-R1_bdec1528", "P03-R1_25886f37"]},
       "v2": {
         "state": "PRODUCTION_OUTPUTS_RECEIVED / INDEPENDENT_VISUAL_REVIEW_PENDING",
         "main_display": false,
@@ -90,24 +86,52 @@
       "visual_gate": "HOLD_PENDING_CURRENT_INDEPENDENT_VISUAL_REVIEW",
       "state_truth": "CONCEPTUAL / NTS / NOT FOR CONSTRUCTION / FIELD=0 / G1F HOLD / NO_PROMOTION"
     },
-    "b_content_map": {
-      "requested_readback": "v1.3",
-      "current_detected": "v1.4",
-      "v1.3_state": "SUPERSEDED_BY_v1.4 / PROVENANCE_ONLY",
-      "current_rule": "SINGLE_FRONTIER_USES_LATEST_ACTUAL_RECEIPT"
+    "b_presentation_content": {
+      "current_detected": "v1.6",
+      "provider": "GOOGLE_DRIVE",
+      "provider_file_id": "1peEaHNHWPIVzPQh7zd7R9GGE2aikgvw9",
+      "main_story_pages": 20,
+      "evidence_appendix_units": 8,
+      "technical_review_units": 4,
+      "process_archive": "PRESENT",
+      "state": "CURRENT_PRESENTATION_CONTENT / DELIVERY_ONLY / DOES_NOT_REPLACE_B_OWNER_RECEIPT",
+      "unique_open_gap": "P19_KEEP_LEVEL_MAIN_OPEN_FRONTIER_EVIDENCE_APPENDIX_ASSET",
+      "hard_boundary": "FIELD=0 / G1F HOLD / NO_PROMOTION / SUPPORT_NE_MAIN"
     },
-    "f_delivery_matrix": {
-      "requested_readback": "v1",
-      "current_detected": "v2",
-      "v1_state": "SUPERSEDED_BY_v2 / PROVENANCE_ONLY",
-      "v2_state": "EXECUTED / REVISE",
-      "promotion": "NO_PROMOTION"
+    "b_content_map_history": {
+      "v1.3": "SUPERSEDED / PROVENANCE_ONLY",
+      "v1.4": "SUPERSEDED_BY_v1.6_AT_PRESENTATION_CONTENT_SCOPE",
+      "current_rule": "SINGLE_FRONTIER_USES_LATEST_ACTUAL_PRESENTATION_RECEIPT_WITHOUT_REPLACING_OWNER_AUTHORITY"
+    },
+    "f_rev04": {
+      "pr": 114,
+      "branch": "agent/c04-f-env-freeze-20260815",
+      "head": "31e3f5639c64d98c97f9e9d1dffb4c40d20ea897",
+      "state": "EXECUTED / REVISE / DRAFT / NOT_CURRENT_AUTHORITY",
+      "a1_01": "KEEP_CARRIED",
+      "a1_02": "KEEP_CARRIED",
+      "a1_03": "TARGETED_REVISION_EXECUTED / INDEPENDENT_REREAD_PENDING",
+      "story20": "20_OF_20_RENDERED / 7_TARGETED_PAGES_REREAD_PENDING",
+      "film86": "86S_1920X1080_24FPS_H264_AAC_DECODE_PASS / R13_RETURN_END_REREAD_PENDING",
+      "web": "20_SECTIONS_20_REFS_0_MISSING / LIVE_BROWSER_HOLD",
+      "merge_gate": "WAIT_FOR_E_LINE_NEW_LIVE_BROWSER_READBACK",
+      "freshness": "BRANCH_DIVERGED_FROM_MAIN / MUST_ABSORB_LATEST_MAIN_AND_B_v1.6_BEFORE_CURRENT",
+      "professional_completion_claim": "NOT_ALLOWED"
+    },
+    "f_delivery_matrix_history": {
+      "v1": "SUPERSEDED / PROVENANCE_ONLY",
+      "v2": "PRE_REV04_HISTORY / PROVENANCE_ONLY",
+      "rev04_completion_matrix": "ACTIVE_BRANCH_DELIVERY_MATRIX / NOT_MAIN_AUTHORITY"
     },
     "remote_delivery_holds": [
-      {"id": "WEB_V4_BROWSER_READBACK", "status": "OPEN", "blocks_field_promotion": false},
-      {"id": "A_V2_INDEPENDENT_VISUAL_REVIEW", "status": "OPEN", "blocks_field_promotion": false},
-      {"id": "MODEL_CURRENT_VISUAL_REVIEW", "status": "OPEN", "blocks_field_promotion": false},
-      {"id": "FINAL_CROSS_MEDIA_READBACK", "status": "OPEN", "blocks_field_promotion": false}
+      {"id": "WEB_V4_BROWSER_READBACK", "status": "OPEN", "owner": "WEB", "blocks_field_promotion": false},
+      {"id": "E_PR111_LIVE_BROWSER_READBACK", "status": "OPEN", "owner": "E", "blocks_field_promotion": false},
+      {"id": "A_V2_INDEPENDENT_VISUAL_REVIEW", "status": "OPEN", "owner": "A", "blocks_field_promotion": false},
+      {"id": "B_P19_MAIN_OPEN_FRONTIER_ASSET", "status": "OPEN", "owner": "A_TO_B", "blocks_field_promotion": false},
+      {"id": "MODEL_CURRENT_VISUAL_REVIEW", "status": "OPEN", "owner": "MODEL_QC", "blocks_field_promotion": false},
+      {"id": "F_REV04_INDEPENDENT_PROFESSIONAL_REREAD", "status": "OPEN", "owner": "D_TO_F", "blocks_field_promotion": false},
+      {"id": "F_REV04_FRESHNESS_REBASE_OR_SYNC", "status": "OPEN", "owner": "F", "blocks_field_promotion": false},
+      {"id": "FINAL_CROSS_MEDIA_READBACK", "status": "OPEN", "owner": "F_QC", "blocks_field_promotion": false}
     ],
     "hard_state": {"field_observed": 0, "field_measured": 0, "G1F": "HOLD", "promotion": "NO_PROMOTION"}
   },
