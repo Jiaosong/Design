@@ -1,0 +1,21 @@
+{
+  "schema": "oleander.owner-receipt-run-manifest.v1",
+  "object": "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT",
+  "source": "user-governance-directive-2026-08-15T09:29:00+08:00",
+  "revision": "v1.1-draft",
+  "time": "2026-08-15T09:29:00+08:00",
+  "source_hash_sha256": "82b02e0f01606ff31f45df3c12d66643b500f01bff80ddd11c8548a6b2b92cdf",
+  "state": "OWNER_RECEIPT_CREATED / MATERIAL_DELTA_CONFIRMED / CHANGE_NOT_YET_VALIDATED",
+  "material_delta": true,
+  "owner": "OLEANDER Governance",
+  "target_current": "00-governance/cross-platform-sync-contract-v1.1.md",
+  "supersedes": "00-governance/cross-platform-sync-contract-v1.0.md",
+  "required_chain": ["OWNER_RECEIPT","ARTIFACT_WRITE","GITHUB_BRANCH","COMMIT","PR","CI","REMOTE_READBACK","F_CROSSLINE_READBACK"],
+  "binding_required": ["object","source","revision","time","hash","state","does-not-prove"],
+  "global_boundary": {"field_observed":0,"field_measured":0,"g1f":"HOLD","promotion":"NO_PROMOTION"},
+  "does_not_prove": [
+    "This receipt does not prove the v1.1 contract was written.",
+    "This receipt does not prove commit, PR, CI PASS, remote readback, merge, validation, promotion or release.",
+    "Chat text is not Project State or Current Task authority."
+  ]
+}
