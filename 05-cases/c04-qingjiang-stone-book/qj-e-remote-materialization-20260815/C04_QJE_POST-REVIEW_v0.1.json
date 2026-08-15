@@ -1,0 +1,20 @@
+{
+  "schema": "oleander.artifact-post-generation-review/1.0",
+  "date": "2026-08-15",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact_family": "QJ-E remote digital materialization v0.1.0",
+  "review_result": "PASS_WITH_BROWSER_POLICY_LIMIT",
+  "promotion": "NO_PROMOTION",
+  "field_observed": 0,
+  "field_measured": 0,
+  "G1F": "HOLD",
+  "reviews": {
+    "authority_content": {"state":"PASS","notes":["current orchestration runtime and E owner contract re-read before production","no new digital feature authority introduced","prototype sequence explicitly not physical route authority"]},
+    "data_state": {"state":"PASS_AFTER_REPAIR","notes":["Reality and Delivery axes separated after cross-professional review","FULL/LIGHT/OFF derived from axes","UNKNOWN fail-closed; OFFLINE != DEGRADED"]},
+    "interactive_runtime": {"state":"PASS_SOURCE_HTTP / BROWSER_VISUAL_OPEN_POLICY_BLOCKED","tests":"31/31 structural + 6/6 HTTP 200","notes":["no external runtime dependencies","manual location default","pseudo-live prohibited","Chromium organization policy blocks local/private navigation in this container"]},
+    "print_pdf": {"state":"PASS","pages":8,"size":"A4","fonts_embedded":true,"visual_review":"8-page contact sheet inspected; no overlap/cutoff detected"},
+    "video": {"state":"PASS_AFTER_REPAIR","duration_s":72.0,"resolution":"1920x1080","fps":30,"visual_review":"contact sheet + decoded frames at 3/33/51/69s inspected","repairs":["78s→72s timing mismatch fixed","awkward English word breaks fixed"]},
+    "cross_professional": {"state":"PASS_AFTER_REPAIR","checks":["A Evidence > E UI confidence","C route authority > E prototype flow","Safety/Operations owner retained","D preserves CLOSED/UNKNOWN/WITHDRAW","B narrative separated from fact"]}
+  },
+  "maximum_conclusion": "REMOTE RESEARCH DISPLAY / OFFLINE-FIRST PROTOTYPE MATERIALIZATION PASS; NOT FIELD PASS; NOT IMPLEMENTATION; NOT SYSTEM PROMOTION"
+}
