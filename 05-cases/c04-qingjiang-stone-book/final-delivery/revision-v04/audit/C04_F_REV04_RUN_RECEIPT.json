@@ -1,0 +1,50 @@
+{
+  "schema": "oleander.c04.f-rev04-run-receipt/1.0",
+  "status": "EXECUTED / REVISE",
+  "scope": "narrow-only",
+  "r13_v3_sha256": "f67bc1aa6c6d6f9453e601bd6467df5325aa8dd53317e6a25d4bc41f57c9cc60",
+  "a1_pdf": {
+    "file": "/mnt/data/C04_F_FINAL_20260815/revision_v04/boards/C04_F_A1_BOARDS_REV04.pdf",
+    "sha256": "8659dfd950274590451ae94c8e89019fb4f60efb6e42b970f3b8f02a6b85645d",
+    "gs_error_bytes": 0
+  },
+  "p20_pdf": {
+    "file": "/mnt/data/C04_F_FINAL_20260815/revision_v04/C04_F_Landscape_Atlas_20screen_REV04.pdf",
+    "sha256": "c8c81c90f9a3ba7adfe359dcd00e684514fe8ffd0eff172a9728715b7cbb939f",
+    "gs_error_bytes": 0
+  },
+  "video": {
+    "file": "/mnt/data/C04_F_FINAL_20260815/revision_v04/video/C04_F_FILM_86s_REV04.mp4",
+    "sha256": "fd17b8e21a3b74e710315f74bcc670568d698df3b92c9ba27f60155636ebcb7f",
+    "duration_s": 86.0,
+    "resolution": "1920x1080",
+    "fps": 24,
+    "decode_error_bytes": 0
+  },
+  "web": {
+    "sections": 20,
+    "image_refs": 20,
+    "missing": [],
+    "live_browser_readback": "WAIT_FOR_E_LINE_NEW_READBACK"
+  },
+  "keep_check": {
+    "A1-01": {"rev03_sha": "d3a94b4ac3c1089a968282c4ab32b7d5c60eb206beb3e6a938c84f10ea4d822d", "rev04_sha": "d3a94b4ac3c1089a968282c4ab32b7d5c60eb206beb3e6a938c84f10ea4d822d", "byte_identical": true},
+    "A1-02": {"rev03_sha": "d68356bc113e3b41d94f0b9813c572696970180acc3b4cd34fe72d03d26387d9", "rev04_sha": "d68356bc113e3b41d94f0b9813c572696970180acc3b4cd34fe72d03d26387d9", "byte_identical": true},
+    "P01": {"rev03_sha": "9541335cae5e3b1f20d624bdc8a9e392f30d50fe979990f4ba28c41cb5f17301", "rev04_sha": "9541335cae5e3b1f20d624bdc8a9e392f30d50fe979990f4ba28c41cb5f17301", "byte_identical": true},
+    "P03": {"rev03_sha": "f8f2d5dd875e9ce01565f75dce8a3d663ec6d92010877252e4e82a2748bc8a4e", "rev04_sha": "f8f2d5dd875e9ce01565f75dce8a3d663ec6d92010877252e4e82a2748bc8a4e", "byte_identical": true},
+    "P04": {"rev03_sha": "3c8ce95da2c70c77481af963b1089076738ade7a1962f5317f12f90bd7f24ad3", "rev04_sha": "3c8ce95da2c70c77481af963b1089076738ade7a1962f5317f12f90bd7f24ad3", "byte_identical": true},
+    "P05": {"rev03_sha": "95089497fd76165d7e0564abee8aeec12840caa952b52dd78a6e367565102fbe", "rev04_sha": "95089497fd76165d7e0564abee8aeec12840caa952b52dd78a6e367565102fbe", "byte_identical": true},
+    "P06": {"rev03_sha": "d9467c2a65e4d25e8e41ed2b0092e14103e43a849d08817aeb69a71f3030e4d4", "rev04_sha": "d9467c2a65e4d25e8e41ed2b0092e14103e43a849d08817aeb69a71f3030e4d4", "byte_identical": true},
+    "P07": {"rev03_sha": "a69e93d20ec9ad66dc95849eaa07386bfab7a60d5c458bdde6fca057e4184b0a", "rev04_sha": "a69e93d20ec9ad66dc95849eaa07386bfab7a60d5c458bdde6fca057e4184b0a", "byte_identical": true},
+    "P08": {"rev03_sha": "1c35ec2f7b4028b9977a9a52ad3f5dd3a8f2ec992194d93ba751ac911c416a90", "rev04_sha": "1c35ec2f7b4028b9977a9a52ad3f5dd3a8f2ec992194d93ba751ac911c416a90", "byte_identical": true},
+    "P09": {"rev03_sha": "013d06dad25ac2b7a1f3fc5b00fc6f0e68d66b17b50858828b2bd81f22506260", "rev04_sha": "013d06dad25ac2b7a1f3fc5b00fc6f0e68d66b17b50858828b2bd81f22506260", "byte_identical": true},
+    "P11": {"rev03_sha": "e16a207988d17e321490e3ff93d9eb240d74f44ccfb57c059f32a4cceca70191", "rev04_sha": "e16a207988d17e321490e3ff93d9eb240d74f44ccfb57c059f32a4cceca70191", "byte_identical": true},
+    "P12": {"rev03_sha": "80115860d83a898f896c02178650da0dd91852093ff043a4c0810b0c508ebf4f", "rev04_sha": "80115860d83a898f896c02178650da0dd91852093ff043a4c0810b0c508ebf4f", "byte_identical": true},
+    "P13": {"rev03_sha": "07d225a02af9544375b59e25cf13c57e2652f8e1bf96d7c64f4434b212983cd8", "rev04_sha": "07d225a02af9544375b59e25cf13c57e2652f8e1bf96d7c64f4434b212983cd8", "byte_identical": true},
+    "P16": {"rev03_sha": "4283af909b9228b3157d4b83e0e8c2948a76dd1cf02ecce88f2b327101863036", "rev04_sha": "4283af909b9228b3157d4b83e0e8c2948a76dd1cf02ecce88f2b327101863036", "byte_identical": true},
+    "P19": {"rev03_sha": "ec6e478ff369ecaf5245e2a98365d878076290bcfb07fec361db106d684298e3", "rev04_sha": "ec6e478ff369ecaf5245e2a98365d878076290bcfb07fec361db106d684298e3", "byte_identical": true}
+  },
+  "e_live_browser": "WAIT / PR111 has no new live-browser receipt at run time",
+  "merge": "HOLD until E live-browser readback",
+  "hard_state": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
