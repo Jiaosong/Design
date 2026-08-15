@@ -80,17 +80,22 @@
       "role": "SOLE CURRENT WEB RELEASE CANDIDATE",
       "static_gate": "KEEP",
       "branch_source_path": "05-cases/c04-qingjiang-stone-book/final-delivery/revision-v04/web/index.html",
-      "branch_source_readback": "INVALID_PLACEHOLDER: exact GitHub readback content is one character 'x'",
+      "source_readback": "RESTORED_FROM_REV04_DETERMINISTIC_GENERATOR",
+      "source_git_blob_sha": "a089d8562c51e2e71f17c15e87f5471cac9bc6f1",
+      "source_sha256": "e06fe29f628cbe7e56427795d82d405560b3ef326c934611724eb724b7434bc7",
+      "source_bytes": 3228,
+      "source_contract": "20 sections; deterministic references to ../screens/PAGE-01_REV04.png through PAGE-20_REV04.png",
+      "binary_bundle_readback": "20 REV04 screen PNG binaries are referenced by producer receipt/SHA but are not materialized in this GitHub branch or current Drive search",
       "portable_browser_evidence": "PASS WITH SPECIFIC REVISIONS but explicitly != exact successor",
-      "exact_current_browser_gate": "HOLD",
-      "status": "SOURCE_PERSISTENCE + EXACT_BROWSER_HOLD"
+      "exact_current_browser_gate": "HOLD_PENDING_EXACT_20_SCREEN_BINARY_BUNDLE_BROWSER_READBACK",
+      "status": "SOURCE_RECOVERED / EXACT_BROWSER_HOLD"
     }
   ],
   "remote_showcase_blockers": [
     {
-      "id": "EXACT_CURRENT_WEB_SOURCE_AND_BROWSER_READBACK",
+      "id": "EXACT_CURRENT_WEB_BINARY_BUNDLE_AND_BROWSER_READBACK",
       "status": "OPEN",
-      "reason": "PR #114 exact revision-v04/web/index.html is placeholder 'x'; available Chromium receipts are E portable / portable successor evidence, explicitly not exact current successor",
+      "reason": "REV04 deterministic HTML source is now persisted; exact 20-screen binary bundle is not retrievable from GitHub/Drive in this runtime, so current-source Chromium readback cannot yet be truthfully closed",
       "blocks_remote_showcase": true
     },
     {
