@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import unittest
 from pathlib import Path
 
@@ -53,6 +54,18 @@ class CrossPlatformSyncContractV11(unittest.TestCase):
         self.assertIn("FIELD MEASURED = 0", self.v11)
         self.assertIn("G1F = HOLD", self.v11)
         self.assertIn("NO_PROMOTION", self.v11)
+
+    def test_f_crossline_receipt_is_explicitly_premerge(self):
+        receipt = json.loads((GOV / "receipts/SYNC_CONTRACT_F_CROSSLINE_READBACK_2026-08-15.json").read_text(encoding="utf-8"))
+        self.assertEqual(receipt["object"], "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT")
+        self.assertEqual(receipt["pr"], 109)
+        self.assertIn("F_READBACK_PASS", receipt["state"])
+        self.assertIn("NOT_MERGED", receipt["state"])
+        self.assertEqual(receipt["sync_state"], "GITHUB_BRANCH_READBACK_PASS / F_READBACK_PASS / MAIN_SYNC_PARTIAL")
+        self.assertEqual(receipt["global_boundary"]["field_observed"], 0)
+        self.assertEqual(receipt["global_boundary"]["field_measured"], 0)
+        self.assertEqual(receipt["global_boundary"]["g1f"], "HOLD")
+        self.assertEqual(receipt["global_boundary"]["promotion"], "NO_PROMOTION")
 
 
 if __name__ == "__main__":
