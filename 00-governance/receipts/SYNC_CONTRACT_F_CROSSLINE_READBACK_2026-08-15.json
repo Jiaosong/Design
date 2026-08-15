@@ -1,0 +1,43 @@
+{
+  "schema": "oleander.f-crossline-readback-receipt.v1",
+  "object": "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT",
+  "source": "SYNC_CONTRACT_OWNER_RECEIPT_2026-08-15.json",
+  "revision": "v1.1-pr109-readback-1",
+  "time": "2026-08-15T09:34:00+08:00",
+  "observed_branch": "governance/sync-contract-v1-1",
+  "observed_head_sha": "f2c2c2b95ec5b9a6d7276079495dc5ffb6d9e665",
+  "pr": 109,
+  "state": "F_READBACK_PASS / BRANCH_VALIDATED / PR_OPEN / NOT_MERGED / NO_PROMOTION",
+  "bindings": {
+    "directive_sha256": "82b02e0f01606ff31f45df3c12d66643b500f01bff80ddd11c8548a6b2b92cdf",
+    "v1_1_path": "00-governance/cross-platform-sync-contract-v1.1.md",
+    "v1_1_blob_sha": "f22ee5684a2b7ec254bf8daadbe37134361e2314",
+    "v1_1_declared_state": "CURRENT / ACTIVE on validated branch; not yet main authority",
+    "v1_0_path": "00-governance/cross-platform-sync-contract-v1.0.md",
+    "v1_0_blob_sha": "80b5838ab82617c20546d8d1c4abeefe3f08f0f7",
+    "v1_0_declared_state": "SUPERSEDED / HISTORY on validated branch; main remains unchanged until merge",
+    "owner_receipt_blob_sha": "489a472ecc72a706bdb4840bae4e63935fe4584d",
+    "regression_blob_sha": "3abb73c2cce58b16bafee0ca48d1b3bd0370ac5a"
+  },
+  "ci": {
+    "control_plane_run": 31856826238,
+    "control_plane": "PASS",
+    "ai_governance_run": 31856826196,
+    "ai_governance": "PASS"
+  },
+  "readback": {
+    "owner_receipt": "PASS",
+    "v1_1_contract": "PASS",
+    "v1_0_supersession_marker": "PASS",
+    "regression_test": "PASS",
+    "exactly_one_current_within_branch_change_set": "PASS"
+  },
+  "sync_state": "GITHUB_BRANCH_READBACK_PASS / F_READBACK_PASS / MAIN_SYNC_PARTIAL",
+  "global_boundary": {"field_observed":0,"field_measured":0,"g1f":"HOLD","promotion":"NO_PROMOTION"},
+  "does_not_prove": [
+    "This receipt does not prove PR #109 is merged.",
+    "This receipt does not make the branch version the main-branch canonical authority before merge/readback.",
+    "CI PASS does not prove field, design, engineering, manufacturing, rights, release or Promotion validity.",
+    "F readback does not authorize Promotion."
+  ]
+}
