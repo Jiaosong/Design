@@ -1,0 +1,72 @@
+{
+  "schema_version": "c04-b-experience/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "owner_project_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+  "lane": "B",
+  "package_id": "C04-BEXP-PACK-v1.0",
+  "status": "READY_FOR_WEB_BINDING / READY_FOR_F_INTEGRATION / SOURCE-GROUNDED + EVIDENCE-BOUNDED CONCEPTUAL / FIELD OPEN / NO_PROMOTION",
+  "authority": {
+    "current": "C04_CURRENT.md@main",
+    "c_route": "C17 M0-M7",
+    "c_spatial": "QJ-C22 + QJ-C23 concept development",
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO"
+  },
+  "story_spine": ["EVIDENCE", "RELATION", "QUESTION", "OPTIONAL_READING", "WITHDRAWAL", "RE_RECOGNITION", "MEMORY"],
+  "principles": [
+    "LANDSCAPE_FIRST",
+    "OPTIONAL_READING",
+    "READING_PAGES_HAVE_NO_ROUTE_SOVEREIGNTY",
+    "NO_13_OF_13_COMPLETION",
+    "RETURN_SERVICE_OUTRANK_NARRATIVE",
+    "NATURAL_CLOSURE_DEFAULTS_TO_WITHDRAWAL",
+    "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OPEN",
+    "DIGITAL_OFF_MUST_NOT_BREAK_ROUTE_SAFETY_RETURN_CORE_OBSERVATION"
+  ],
+  "core_ids": ["R01","R02","R05","R06","R07","R09","R12","R13"],
+  "companion_ids": ["R03","R04","R08","R10","R11"],
+  "route_mapping": [
+    {"segment":"M0_PREP","action":"PREPARE","narrative":"return/service certainty before story","density":"LIGHT"},
+    {"segment":"M1_ARRIVAL","action":"ORIENT","narrative":"river/bank/direction before content","density":"LIGHT"},
+    {"segment":"M2_CROSS_RIVER_CABLE","action":"MOVE_OBSERVE","narrative":"viewpoint transition, not chapter one","density":"S0_TO_OPTIONAL_S1"},
+    {"segment":"M3_SOUTH_BANK_WALKING_NETWORK","action":"MOVE_CHOOSE_SKIP","narrative":"8 Core + 5 Companion reading library, reorderable and skippable","density":"SILENCE_TO_LIGHT"},
+    {"segment":"M4_OBSERVE_READ_RECOVER","action":"OBSERVE_QUESTION_OPTIONAL_READ_RECOVER","narrative":"primary Evidence-to-Story zone","density":"LIGHT_TO_OPTIONAL_S1_S2"},
+    {"segment":"M5_NATURAL_CLOSURE_WITHDRAW","action":"WITHDRAW","narrative":"story stops and landscape/body take over","density":"S0_WITHDRAW"},
+    {"segment":"M6_RETURN","action":"RETURN_RECOGNIZE","narrative":"no new deep content; re-recognize relationships","density":"LIGHT"},
+    {"segment":"M7_EXIT_MEMORY","action":"EXIT_REMEMBER","narrative":"deep reading/share after journey, never blocks exit","density":"OPTIONAL"}
+  ],
+  "narratives": [
+    {"narrative_id":"NAR-C04-R01","node_id":"R01","tier":"CORE","title":"红岩嘴／索道移动观看","claim_type":"FACT","evidence_state":"SOURCE_GROUNDED_FIELD_OPEN","short":"过江之前，先让视线过江。","medium":"索道不是第一章，而是一段移动中的视点转换。河面、两岸与峰林先建立关系，解释随后再来。","long":"从北岸到南岸，最重要的不是在吊厢里完成一次阅读，而是感到清江把两岸拉开，又被索道重新连接。移动改变观看尺度：近处是水面，远处是峰林，脚下路径暂时退到背景。内容保持轻、可以忽略；安全、通行和回程始终优先。","caption_web":"先看两岸关系，再决定是否打开解释。","caption_board":"跨江索道把“到达”转化为一次视点转换。","caption_video":"视点正在过江","default_density":"S0_TO_OPTIONAL_S1","off_conditions":["DEGRADED","CLOSED","UNKNOWN","RETURN-PRIORITY","SERVICE_SAFETY_PRIORITY"]},
+    {"narrative_id":"NAR-C04-R02","node_id":"R02","tier":"CORE","title":"华中第一藤","claim_type":"FACT_NAME_ONLY","evidence_state":"NAME_IDENTITY_PARTIAL_SPECIES_EXPERT_OPEN","short":"先看一株藤怎样进入森林。","medium":"“华中第一藤”作为现行公共称谓进入阅读；物种、年龄以及“第一”的判据不作为已验证事实。","long":"这里的价值不在迅速给植物贴上一个科学标签，而在观察藤本如何与树木、坡地、光线和时间形成可见关系。公共名称可以成为入口，物种、年龄和“第一”的判断仍等待专家证据。面对不确定，阅读把答案改成问题。","caption_web":"先观察生命关系，再打开科学答案。","caption_board":"公共称谓已经存在；植物学结论仍等待专家证据。","caption_video":"先观察，再命名","default_density":"S1_OPTIONAL","off_conditions":["EXPERT_CLAIM_REQUIRED","RETURN-PRIORITY"]},
+    {"narrative_id":"NAR-C04-R03","node_id":"R03","tier":"COMPANION","title":"石面观察","claim_type":"DESIGN_READING","evidence_state":"GEOLOGY_FIELD_OR_EXPERT_REQUIRED","short":"先读石面，不急着给成因。","medium":"颜色、纹理、裂隙和层面都可以成为观察线索；具体岩性、年代与形成过程仍等待节点级核验。","long":"石头可以先被看见，再被解释。这里只引导比较表面纹理、裂隙走向、层面与风化差异，不把区域地质背景直接套到眼前某一块岩石。真正的岩性、年代和形成过程仍需现场与专业判断。","caption_web":"观察是一种证据入口，不是地质结论。","caption_board":"从识别差异开始，而不是从宣布成因开始。","caption_video":"先看石面","default_density":"S1_OPTIONAL","off_conditions":["GEOLOGY_FACT_WORDING"]},
+    {"narrative_id":"NAR-C04-R04","node_id":"R04","tier":"COMPANION","title":"方向与来路","claim_type":"DESIGN_READING","evidence_state":"LOCATION_OPERATION_FIELD_OPEN","short":"岔路先回答：往哪走，怎么回。","medium":"方向与返程优先于内容；若位置、标识或开放状态不确定，阅读自动退出。","long":"在路线发生选择的地方，最重要的问题不是这里讲什么，而是我在哪里、主要方向在哪、还能不能清楚返回。因此这一 Companion 只承担方向—回程辅助理解，不创造新的景点任务。无法确认的状态保持 UNKNOWN。","caption_web":"先确认方向，故事可以以后再读。","caption_board":"Route Authority 始终高于 Reading Page Authority。","caption_video":"先认来路","default_density":"LIGHT","off_conditions":["UNKNOWN_OPERATION","RETURN-PRIORITY"]},
+    {"narrative_id":"NAR-C04-R05","node_id":"R05","tier":"CORE","title":"红花石林","claim_type":"FACT","evidence_state":"SOURCE_GROUNDED","short":"峰林先作为一个整体出现。","medium":"不急着把红花石林拆成知识点；先看峰、谷、江和大气条件怎样共同改变轮廓与层次。","long":"红花石林的第一阅读不是某一块石头，而是整个峰林场。能见度较高时，远近和轮廓更明确；低能见度时，体验应退回近景、声音和出现—隐没，而不是补造一幅永远晴朗的景色。景观本身有权改变阅读方式。","caption_web":"先看峰林整体，再选择其中一个问题。","caption_board":"Landscape Whole before Objects。","caption_video":"先看整片峰林","default_density":"S0","off_conditions":[]},
+    {"narrative_id":"NAR-C04-R06","node_id":"R06","tier":"CORE","title":"观景平台＋河谷","claim_type":"FACT_RELATION_ONLY","evidence_state":"VIEW_RELATION_SUPPORTED_FIELD_GEOMETRY_OPEN","short":"看河谷的关系，不数台地。","medium":"先比较江、坡、峰林与开阔面的高低、左右和远近；只有在真实关系已经可见之后，科学解释才出现。","long":"R06 是从看见走向理解的主要 Core。先让河谷、坡面、峰林以及视野中的动态对象共同进入画面，再通过关系图解释高低、左右、近远。现阶段不把台地数量、精确边界、剖面尺寸或节点级地质成因写成现场事实。","caption_web":"先看河谷，再把看见的关系画出来。","caption_board":"景观先读，关系揭示随后出现。","caption_video":"看见 → 比较 → 理解","default_density":"S0_TO_OPTIONAL_S2","off_conditions":["EXACT_TERRACE_COUNT","MEASURED_SECTION","GEOLOGY_CAUSATION"]},
+    {"narrative_id":"NAR-C04-R07","node_id":"R07","tier":"CORE","title":"仓禀峰／仓廪峰","claim_type":"FACT_NAME_CONFLICT","evidence_state":"PUBLIC_NAME_SOURCE_GROUNDED_FIELD_SIGN_OPEN","short":"一个名字，也是一条待核对的线索。","medium":"现有来源存在“仓禀峰／仓廪峰”的写法差异；阅读保留冲突，最终名称等待现场标牌确认。","long":"R07 不把名称冲突藏起来。名字首先只是引导注意的入口：先看峰体轮廓及它与周围山体的关系，再看到当前来源之间的写法差异。名称不能反过来证明地貌、历史或故事；现场标识返回后再替换这一字段。","caption_web":"仓禀峰／仓廪峰——待现场标牌确认。","caption_board":"名称证据未完全闭合，因此冲突本身被保留。","caption_video":"名字仍待核对","default_density":"S1","off_conditions":["FIELD_SIGN_AUTHORITY_REQUIRED"]},
+    {"narrative_id":"NAR-C04-R08","node_id":"R08","tier":"COMPANION","title":"裂隙与层面","claim_type":"DESIGN_READING","evidence_state":"GEOLOGY_FIELD_OR_EXPERT_REQUIRED","short":"裂隙是线索，不是结论。","medium":"顺着岩壁的裂隙、层面和风化痕迹寻找结构变化；不从外观直接推断岩性、年代或成因。","long":"这一 Companion 的任务不是复制一段区域地质知识，而是训练观察：哪些裂隙连续，哪些表面差异明显，哪些层面改变了光影？这些都可以成为下一步专业核验的问题，但不能提前写成节点级地质事实。","caption_web":"你可以先发现差异，不必先得到答案。","caption_board":"把地质解释推迟到证据真正到达之后。","caption_video":"沿裂隙阅读","default_density":"S1_OPTIONAL","off_conditions":["GEOLOGY_FACT_WORDING"]},
+    {"narrative_id":"NAR-C04-R09","node_id":"R09","tier":"CORE","title":"盐水女神峰","claim_type":"LOCAL_NARRATIVE","evidence_state":"TEXT_TRADITION_SUPPORTED_SITE_EQUIVALENCE_OPEN","short":"故事可以被听见，但不替地点作证。","medium":"盐水神女相关文本传统进入文化阅读层；它提供地方记忆，却不证明现代命名峰体就是古代事件发生地。","long":"R09 让地方叙事与景观并置，而不让二者互相冒充证据。盐水神女的传统可以被讲述、被记忆，也可以与廪君文本一起阅读；但现代峰名与古代事件地点之间仍存在证据断层。因此它始终属于 LOCAL NARRATIVE。","caption_web":"听一个故事，同时保留它与地点之间的距离。","caption_board":"文本传统成立，不等于古代事件地点等同成立。","caption_video":"故事不是地理证明","default_density":"S1","off_conditions":["ANCIENT_SITE_EQUIVALENCE_WORDING"]},
+    {"narrative_id":"NAR-C04-R10","node_id":"R10","tier":"COMPANION","title":"脚下地形","claim_type":"DESIGN_READING","evidence_state":"METRIC_GEOLOGY_FIELD_OPEN","short":"让脚下成为地形的刻度。","medium":"从步幅、石面、边坡与路径转折感受地形；精确坡度、宽度、台阶和岩性仍保持 Field Open。","long":"这一 Companion 把注意力从远景收回身体。脚下路径和边坡可以帮助人理解地形正在怎样改变行走，但当前不存在对应实测坡度、台阶、净宽和节点级地质数据，所以这里只形成观察提示，不形成工程或科学结论。","caption_web":"低头看一眼：地形也写在脚下。","caption_board":"身体可以感知地形，但不能代替测量。","caption_video":"地形经过脚下","default_density":"S1_OPTIONAL","off_conditions":["MEASURED_METRIC_CLAIM"]},
+    {"narrative_id":"NAR-C04-R11","node_id":"R11","tier":"COMPANION","title":"身体与回程","claim_type":"DESIGN_READING_SERVICE","evidence_state":"SAFETY_ACCESSIBILITY_FIELD_REQUIRED","short":"先确认身体和回程，再听风。","medium":"风、湿滑、拥挤或视线受阻时，内容立即降级；安全、方向与返回始终优先。","long":"R11 不再发展“清风吟”式独立感官装置，而把身体感受转译为服务判断：是否适合停留、地面是否可能湿滑、人群是否影响通过、返程是否明确。任何现实状态不确定时，深阅读关闭。自然感知可以发生，但它不是必须完成的任务。","caption_web":"感觉环境之前，先知道怎样安全继续或返回。","caption_board":"环境变化首先改变服务与安全，而不是增加互动。","caption_video":"身体先于内容","default_density":"LIGHT","off_conditions":["UNKNOWN","RETURN-PRIORITY","SAFETY_UNCERTAIN"]},
+    {"narrative_id":"NAR-C04-R12","node_id":"R12","tier":"CORE","title":"廪君峰","claim_type":"LOCAL_NARRATIVE","evidence_state":"TEXT_TRADITION_SUPPORTED_SITE_EQUIVALENCE_OPEN","short":"第二个故事，不等于第二处史址。","medium":"廪君文本传统可以与盐水神女并读；现代峰名提供阅读入口，但不承担古代事件地点的证明责任。","long":"R12 与 R09 构成一组文化阅读，而不是两座必须到访的故事站。廪君相关传统帮助理解地方文化如何将人物、山水与记忆联系起来，但现代峰体与古代事件地点之间仍有证据断层。文化故事存在，地理等同保持开放。","caption_web":"把故事带进山水，但不要让故事替山水作证。","caption_board":"一组地方文本传统，而非两个强制文化节点。","caption_video":"传统进入景观","default_density":"S1","off_conditions":["ANCIENT_SITE_EQUIVALENCE_WORDING"]},
+    {"narrative_id":"NAR-C04-R13","node_id":"R13","tier":"CORE","title":"一线天","claim_type":"FACT_RELATION_ONLY","evidence_state":"SOURCE_GROUNDED_EXACT_MEDIA_SAFETY_OPEN","short":"到这里，设计开始退场。","medium":"天然狭口把注意力重新压回身体、岩壁、光线与清江；文字、品牌与数字解释同时减弱。","long":"R13 不是最后一关，也不是十三印的完成章。天然狭口本身承担身体尺度、岩壁、光线与外部景观之间的闭合感，因此设计主动撤退：不设置强 Hero，不强制记录，不追加任务。若现场安全、通行或开放条件不成立，就真实关闭或绕行，不用数字内容模拟一次无法进入的空间体验。","caption_web":"最重要的一页，是让页面消失。","caption_board":"Natural Closure → Design Withdrawal。","caption_video":"设计退场","default_density":"S0_WITHDRAW","off_conditions":["SAFETY_UNCERTAIN","CLOSED","UNKNOWN"]}
+  ],
+  "scenarios": [
+    {"scenario_id":"SC-01","state":"NORMAL","condition":"good_visibility_low_crowd","response":"LANDSCAPE_FIRST_CORE_LIGHT_DEEP_READ_OPT_IN"},
+    {"scenario_id":"SC-02","state":"DEGRADED","condition":"fog_low_visibility","response":"DISTANT_EXPLANATION_OFF_NEAR_VIEW_SOUND_APPEAR_DISAPPEAR_NO_FAKE_CLEAR_WEATHER"},
+    {"scenario_id":"SC-03","state":"DEGRADED","condition":"rain_wet_surface_possible","response":"READING_DOWNGRADE_SAFETY_ROUTE_RETURN_FIRST_NO_FORCED_DWELL"},
+    {"scenario_id":"SC-04","state":"DEGRADED","condition":"strong_light","response":"REDUCE_FINE_TEXT_SCREEN_DEPENDENCE_DIRECTION_OUTLINE_HIGH_CONTRAST_FIRST"},
+    {"scenario_id":"SC-05","state":"NORMAL_OR_DEGRADED","condition":"peak_crowd_group","response":"DEEP_READ_OFF_AT_BOTTLENECK_MOVE_DEPTH_TO_WIDER_AREA_OR_M7"},
+    {"scenario_id":"SC-06","state":"UNKNOWN","condition":"operation_service_route_unknown","response":"FAIL_CLOSED_NEVER_RENDER_NORMAL_OPEN_EXPLANATION_WITHDRAWS"},
+    {"scenario_id":"SC-07","state":"OFFLINE","condition":"no_network_no_phone","response":"DIGITAL_OFF_PHYSICAL_PAPER_HUMAN_KEEP_ROUTE_SAFETY_RETURN"},
+    {"scenario_id":"SC-08","state":"CLOSED","condition":"node_unavailable","response":"TRUTHFUL_CLOSE_BYPASS_RETURN_EXIT_NO_VIRTUAL_EQUIVALENCE"},
+    {"scenario_id":"SC-09","state":"RETURN-PRIORITY","condition":"time_fatigue_operation_pressure","response":"CLOSE_NEW_READ_ENTRIES_KEEP_RETURN_SERVICE"},
+    {"scenario_id":"SC-10","state":"ANY","condition":"fatigue","response":"DEEP_TO_LIGHT_TO_OFF_JOURNEY_REMAINS_COMPLETE"}
+  ],
+  "web_f_interface": ["narrative_id","node_id","tier","claim_type","evidence_state","route_segment","experience_state","default_density","short","medium","long","caption_web","caption_board","caption_video","off_conditions"],
+  "do_not_reopen": ["FIXED_13_STOP_ROUTE","13_OF_13_COMPLETION","CHAPTER_PROGRESS_GAMIFICATION","MANDATORY_BOAT","MANDATORY_AR_AUTO_TRIGGER","MOUNTAIN_FLUID_REST_PRIMARY","QINGFENGYIN","BUBUSHENGGUANG_PRIMARY_PLACEMENT","LARGE_CHECKIN_HERO","R13_STRONG_CONTENT_BRAND_DIGITAL"],
+  "promotion_blockers": ["A_G1F","R02_EXPERT_EVIDENCE","R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY","R07_FIELD_NAME_AUTHORITY","R13_IMAGE_ASSET_AND_FIELD_SAFETY"],
+  "decision": "B_EXPERIENCE_CONTENT_READY_FOR_PRESENTATION_INTEGRATION_ONLY",
+  "promotion": "NO"
+}
