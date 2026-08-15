@@ -1,0 +1,19 @@
+{
+  "schema": "oleander.c04.f-motion-revision/0.3",
+  "status": "EXECUTED / REVISE",
+  "professional_gate": "REVISE / independent review required",
+  "duration_s": 86,
+  "fps": 24,
+  "resolution": "1920x1080",
+  "segments": [
+    {"scene_id":"SCENE-F-01","name":"hero_push_in","start_s":0,"duration_s":8},
+    {"scene_id":"SCENE-F-02","name":"map_line_growth","start_s":8,"duration_s":10},
+    {"scene_id":"SCENE-F-03","name":"sec_a_cut_in","start_s":18,"duration_s":10},
+    {"scene_id":"SCENE-F-04","name":"model_orbit_push","start_s":28,"duration_s":10,"presentation_role":"PROCESS_SUPPORT"},
+    {"scene_id":"SCENE-F-05","name":"r06_enter_relation","start_s":38,"duration_s":12},
+    {"scene_id":"SCENE-F-06","name":"r13_withdraw_close","start_s":50,"duration_s":12,"presentation_role":"SUPPORT / IMAGE2_REPLACEABLE"},
+    {"scene_id":"SCENE-F-07","name":"return_state_backlook","start_s":62,"duration_s":14},
+    {"scene_id":"SCENE-F-08","name":"return_re_recognition_end","start_s":76,"duration_s":10}
+  ],
+  "does_not_prove": ["field truth","professional design PASS","implementation readiness"]
+}
