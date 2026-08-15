@@ -1,5 +1,7 @@
 {
   "schema": "oleander.f-crossline-readback-receipt.v1",
+  "record_state": "SUPERSEDED / HISTORY",
+  "superseded_by": "SYNC_CONTRACT_CURRENT_STATE_RECEIPT_2026-08-15.json",
   "object": "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT",
   "source": "SYNC_CONTRACT_OWNER_RECEIPT_2026-08-15.json",
   "revision": "v1.1-pr109-readback-1",
@@ -35,8 +37,8 @@
   "sync_state": "GITHUB_BRANCH_READBACK_PASS / F_READBACK_PASS / MAIN_SYNC_PARTIAL",
   "global_boundary": {"field_observed":0,"field_measured":0,"g1f":"HOLD","promotion":"NO_PROMOTION"},
   "does_not_prove": [
-    "This receipt does not prove PR #109 is merged.",
-    "This receipt does not make the branch version the main-branch canonical authority before merge/readback.",
+    "This historical receipt does not prove PR #109 is merged.",
+    "It records the pre-merge observation only.",
     "CI PASS does not prove field, design, engineering, manufacturing, rights, release or Promotion validity.",
     "F readback does not authorize Promotion."
   ]

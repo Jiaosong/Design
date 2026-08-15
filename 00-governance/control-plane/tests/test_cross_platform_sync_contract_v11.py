@@ -55,13 +55,22 @@ class CrossPlatformSyncContractV11(unittest.TestCase):
         self.assertIn("G1F = HOLD", self.v11)
         self.assertIn("NO_PROMOTION", self.v11)
 
-    def test_f_crossline_receipt_is_explicitly_premerge(self):
+    def test_premerge_receipt_is_history(self):
         receipt = json.loads((GOV / "receipts/SYNC_CONTRACT_F_CROSSLINE_READBACK_2026-08-15.json").read_text(encoding="utf-8"))
-        self.assertEqual(receipt["object"], "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT")
-        self.assertEqual(receipt["pr"], 109)
-        self.assertIn("F_READBACK_PASS", receipt["state"])
+        self.assertEqual(receipt["record_state"], "SUPERSEDED / HISTORY")
+        self.assertEqual(receipt["superseded_by"], "SYNC_CONTRACT_CURRENT_STATE_RECEIPT_2026-08-15.json")
         self.assertIn("NOT_MERGED", receipt["state"])
-        self.assertEqual(receipt["sync_state"], "GITHUB_BRANCH_READBACK_PASS / F_READBACK_PASS / MAIN_SYNC_PARTIAL")
+
+    def test_postmerge_current_state_receipt(self):
+        receipt = json.loads((GOV / "receipts/SYNC_CONTRACT_CURRENT_STATE_RECEIPT_2026-08-15.json").read_text(encoding="utf-8"))
+        self.assertEqual(receipt["record_state"], "CURRENT")
+        self.assertEqual(receipt["object"], "OLEANDER-CROSS-PLATFORM-SYNC-CONTRACT")
+        self.assertIn("MAIN_MERGED", receipt["state"])
+        self.assertIn("GITHUB_REMOTE_READBACK_PASS", receipt["state"])
+        self.assertIn("F_READBACK_PASS", receipt["state"])
+        self.assertEqual(receipt["bindings"]["merge_commit"], "167b0d5395068a51a3f51e9174ff4454c842c182")
+        self.assertEqual(receipt["bindings"]["v1_1_blob_sha"], "f22ee5684a2b7ec254bf8daadbe37134361e2314")
+        self.assertEqual(receipt["bindings"]["v1_0_blob_sha"], "80b5838ab82617c20546d8d1c4abeefe3f08f0f7")
         self.assertEqual(receipt["global_boundary"]["field_observed"], 0)
         self.assertEqual(receipt["global_boundary"]["field_measured"], 0)
         self.assertEqual(receipt["global_boundary"]["g1f"], "HOLD")
