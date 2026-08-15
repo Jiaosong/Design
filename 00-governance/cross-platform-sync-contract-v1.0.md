@@ -1,7 +1,8 @@
 # OLEANDER Cross-platform Sync Contract v1.0
 
-Status: ACTIVE
+Status: SUPERSEDED / HISTORY
 Date: 2026-08-13
+Superseded by: `cross-platform-sync-contract-v1.1.md` effective 2026-08-15T09:29:00+08:00
 Scope: Notion, GitHub and Google Drive synchronization claims for OLEANDER governance, knowledge, practice, project and release artifacts.
 
 ## Core rule
