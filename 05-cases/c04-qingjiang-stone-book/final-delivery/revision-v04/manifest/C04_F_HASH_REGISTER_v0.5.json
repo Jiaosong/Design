@@ -31,9 +31,11 @@
     "MOBILE_390": "1e66be68cc111274fc9f11409ca9fbf9c86854f64d552624f367dcf04b55b904"
   },
   "web_exact_current_source": {
-    "github_blob_sha": "c1b0730e0133447badcfd47fd144e254807b06e1",
-    "content_readback": "x",
-    "sha256": "UNAVAILABLE_AS_VALID_SOURCE",
-    "state": "INVALID_PLACEHOLDER"
+    "github_blob_sha": "a089d8562c51e2e71f17c15e87f5471cac9bc6f1",
+    "sha256": "e06fe29f628cbe7e56427795d82d405560b3ef326c934611724eb724b7434bc7",
+    "bytes": 3228,
+    "state": "SOURCE_RECOVERED_FROM_DETERMINISTIC_REV04_GENERATOR",
+    "binary_bundle": "NOT_MATERIALIZED_IN_GITHUB_OR_CURRENT_DRIVE_SEARCH",
+    "browser_gate": "HOLD_PENDING_EXACT_BINARY_BUNDLE"
   }
 }
