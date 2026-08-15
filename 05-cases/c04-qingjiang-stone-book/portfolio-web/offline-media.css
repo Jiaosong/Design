@@ -1,0 +1,12 @@
+@import url('professional-gate.css');
+
+.hero-media,
+.motion-image{
+  background-image:linear-gradient(90deg,rgba(8,18,15,.88) 0%,rgba(8,18,15,.56) 38%,rgba(8,18,15,.12) 70%,rgba(8,18,15,.34) 100%),url('assets/drawings/00_Hero_Source-Grounded_Field.svg')!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.05),transparent 45%,rgba(0,0,0,.42))!important}
+.map-shell img{object-fit:contain!important;background:#F3F0E7}
+.map-shell::after{content:"QJ-C22 SOURCE-GROUNDED MASTERPLAN · DERIVED FROM OFFICIAL GUIDE · NOT GEOREFERENCED"!important;background:rgba(244,241,233,.94)!important}
+.motion-screen{background:#17211F}

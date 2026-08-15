@@ -1,0 +1,86 @@
+/* Professional Design Gate refinements.
+   - Reading Library becomes a continuous editorial index, not a dashboard/card wall.
+   - Key node evidence remains visible in the 1920x1080 first viewport.
+   - The print-only thesis divider becomes a deliberate full A3 page.
+   - All 13 reading entries must remain visible in A3 print. */
+
+.library .node-detail{
+  justify-content:flex-start!important;
+  gap:clamp(24px,3vh,42px)!important;
+}
+.node-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:0!important;
+  align-content:start;
+  border-top:1px solid rgba(244,241,233,.28);
+}
+.node-card{
+  min-height:72px!important;
+  padding:13px 8px!important;
+  border:0!important;
+  border-bottom:1px solid rgba(244,241,233,.22)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--paper)!important;
+  display:grid!important;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:12px;
+  position:relative;
+}
+.node-card:nth-child(odd){border-right:1px solid rgba(244,241,233,.16)!important;padding-right:18px!important}
+.node-card:nth-child(even){padding-left:18px!important}
+.node-card::after{content:"";position:absolute;left:0;bottom:-1px;width:0;height:1px;background:var(--signal);transition:width .2s ease}
+.node-card:hover::after,.node-card.active::after{width:100%}
+.node-card:hover,.node-card.active{color:var(--paper)!important;background:rgba(244,241,233,.035)!important}
+.node-card.active b{color:var(--water-soft)}
+.node-card.featured::before{position:absolute;right:8px;top:10px;content:"SOURCE"!important;font-size:7px!important;letter-spacing:.13em;color:var(--water-soft)!important}
+.node-card b{font-size:16px!important;line-height:1.2;max-width:78%}
+.node-card span{font-size:7px!important;letter-spacing:.08em;text-align:right;max-width:145px}
+
+@media(max-width:680px){
+  .node-grid{grid-template-columns:1fr!important}
+  .node-card:nth-child(odd){border-right:0!important;padding-right:8px!important}
+  .node-card:nth-child(even){padding-left:8px!important}
+}
+
+@media print{
+  .intro-strip{
+    width:420mm!important;
+    height:297mm!important;
+    min-height:297mm!important;
+    padding:36mm 28mm!important;
+    page-break-after:always!important;
+    display:grid!important;
+    grid-template-columns:1.2fr 1fr 1fr 1fr!important;
+    align-content:center!important;
+    align-items:center!important;
+    gap:12mm!important;
+    background:var(--ink)!important;
+    color:var(--paper)!important;
+    overflow:hidden!important;
+  }
+  .intro-strip .big{font-size:13mm!important;line-height:1.1!important}
+  .intro-strip b{font-size:3mm!important}
+  .intro-strip p{font-size:3.2mm!important;line-height:1.55!important}
+
+  .library .section-head{margin-bottom:5mm!important}
+  .library .section-head h2{font-size:18mm!important;line-height:.92!important}
+  .library .section-head .lead{font-size:3.6mm!important;line-height:1.55!important}
+  .library-toolbar{margin-bottom:4mm!important;padding-top:3mm!important}
+  .node-layout{grid-template-columns:.62fr 1.38fr!important;gap:6mm!important;min-height:0!important}
+  .library .node-detail{padding-top:3mm!important;gap:4mm!important}
+  .node-detail .node-num{font-size:27mm!important;line-height:.8!important}
+  .node-detail h3{font-size:9.5mm!important;margin:1.5mm 0 2mm!important}
+  .node-detail .alt{font-size:2.4mm!important;margin-bottom:2mm!important}
+  .node-detail p{font-size:2.5mm!important;line-height:1.45!important;margin:1.5mm 0!important}
+  .node-status{font-size:1.9mm!important;padding:1.6mm 2mm!important}
+  .node-grid{grid-template-columns:repeat(2,1fr)!important}
+  .node-card{min-height:10.2mm!important;padding:1.4mm 1.2mm!important;gap:2mm!important}
+  .node-card:nth-child(odd){padding-right:2mm!important}
+  .node-card:nth-child(even){padding-left:2mm!important}
+  .node-card b{font-size:2.8mm!important;line-height:1.12!important}
+  .node-card span{font-size:1.35mm!important;line-height:1.2!important;max-width:30mm!important}
+  .node-card.featured::before{font-size:1.2mm!important;top:1mm!important;right:1mm!important}
+}

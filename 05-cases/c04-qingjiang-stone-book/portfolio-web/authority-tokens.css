@@ -1,0 +1,23 @@
+:root{
+  --paper:#F4F1E9;
+  --paper-2:#E8E3D8;
+  --ink:#17211F;
+  --ink-soft:#36413E;
+  --water:#3C8990;
+  --water-soft:#A9C9C7;
+  --moss:#566E5E;
+  --trace:#6E7874;
+  --signal:#B64936;
+  --hold:#7C675A;
+  --white:#FBFAF6;
+  --line:rgba(23,33,31,.18);
+  --line-strong:rgba(23,33,31,.42);
+  --serif:"Noto Serif CJK SC","Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"Noto Sans CJK SC","Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+}
+
+/* QJ-D retained visual tokens under the 2026-08-15 Dual Quality Gate.
+   Landscape-dominant first; Paper / Ink / Relation Line / Evidence Trace.
+   No generic seal / antique-Chinese primitive is used as default styling.
+   Primary-display eligibility still requires actual-preview Professional Design review.
+   This file never changes evidence or field state. */
