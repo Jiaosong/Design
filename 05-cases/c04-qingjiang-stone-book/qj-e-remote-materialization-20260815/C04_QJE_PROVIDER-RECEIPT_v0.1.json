@@ -1,0 +1,30 @@
+{
+  "schema":"oleander.c04.qje-provider-receipt/0.1",
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "date":"2026-08-15",
+  "state":"DRIVE_SYNCED_GITHUB_BRANCH_WRITTEN_PR_PENDING",
+  "drive":{
+    "folder_id":"1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz",
+    "delivery_zip":{"id":"1dNeVUfaeT_eOs1IuTSDDbQ-Iq3slXdRu","bytes":4198798,"metadata_readback":"PASS"},
+    "display_pdf":{"id":"1ZJsWZQF_38mXRCmTbmSFDABOKeLxS5Pt","bytes":504325,"metadata_readback":"PASS"},
+    "demo_mp4":{"id":"11si9Q8R2S8kGBk0dUf82hAdaI6t3iS7q","bytes":835519,"metadata_readback":"PASS"}
+  },
+  "local_validation":{
+    "runtime_contract":"31/31 PASS",
+    "http_open":"6/6 HTTP 200",
+    "pdf_review":"PASS / 8 pages / embedded fonts",
+    "video_review":"PASS_AFTER_REPAIR / 72.000s / 1920x1080 / 30fps",
+    "zip_integrity":"PASS",
+    "browser_visual":"OPEN_ENVIRONMENT_POLICY_BLOCKED"
+  },
+  "github":{
+    "repository":"Jiaosong/Design",
+    "branch":"agent/c04-qje-sprint-20260815",
+    "pull_request":null,
+    "pull_request_state":"PENDING",
+    "expected_path_audit":"PENDING",
+    "exact_file_readback":"PENDING"
+  },
+  "gates":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"},
+  "maximum_conclusion":"REMOTE RESEARCH MATERIALIZATION PROVIDER CLOSURE IN PROGRESS; NOT FIELD PASS; NOT IMPLEMENTATION; NOT SYSTEM PROMOTION"
+}
