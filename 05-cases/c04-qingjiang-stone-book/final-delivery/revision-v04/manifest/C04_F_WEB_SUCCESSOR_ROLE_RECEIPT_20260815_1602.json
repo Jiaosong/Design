@@ -1,0 +1,71 @@
+{
+  "schema": "oleander.c04.f-web-successor-role-receipt/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "timestamp_local": "2026-08-15T16:02:00+08:00",
+  "status": "EXECUTED / REVISE",
+  "scope": "ROLLING_RECEIPT_ONLY / NO_VISUAL_REBUILD / NO_PROMOTION",
+  "web_successor": {
+    "actual_preview_reviewed_by_controller": true,
+    "five_screen_existence_does_not_equal_main_display_pass": true,
+    "roles": {
+      "W00": {
+        "decision": "KEEP_LAYOUT / REVISE_ASSET_BIND",
+        "main_display_pass": false
+      },
+      "W02": {
+        "decision": "KEEP SUPPORT",
+        "role": "RELATION_DIAGRAM_ONLY",
+        "restriction": "DOES_NOT_REPLACE_REAL_MAP_MAIN_IMAGE",
+        "main_display_pass": false
+      },
+      "W03": {
+        "decision": "KEEP_LAYOUT / REVISE_CONTENT",
+        "restriction": "EMPTY_SLOT_UNTIL_MODEL_V3_ARRIVES",
+        "main_display_pass": false
+      },
+      "W06": {
+        "decision": "REJECT MAIN / REVISE_ASSET_BIND",
+        "reason": "ABSTRACT_COLOR_BLOCK_PROXY_IS_NOT_EFFECT_VISUALIZATION",
+        "main_display_pass": false
+      },
+      "W07": {
+        "decision": "KEEP ENDING SUPPORT",
+        "main_display_pass": false
+      }
+    },
+    "promotion_rule": "FILE_EXISTENCE_OR_LAYOUT_COMPLETION_MUST_NOT_BE_RECORDED_AS_MAIN_DISPLAY_PASS",
+    "f_integration_state": "WAIT_FOR_VALID_ASSET_BINDINGS_AND_MODEL_V3_PREVIEW"
+  },
+  "a_intake_roles": {
+    "state": "UNCHANGED_FROM_PRIOR_RECEIPT",
+    "A00": "KEEP",
+    "A02": "KEEP",
+    "A01": "KEEP SUPPORT ONLY",
+    "legacy_A": "PROHIBITED_FROM_MAIN_DISPLAY"
+  },
+  "model": {
+    "V2": "REJECTED / DO_NOT_INTEGRATE",
+    "SEC_A": "KEEP SUPPORT ONLY",
+    "V3": "NOT_YET_DELIVERED / WAIT_FOR_ACTUAL_PREVIEW"
+  },
+  "f_assets": {
+    "A1_01": "REVISE",
+    "P03": "REVISE",
+    "other_existing_KEEP_assets": "DO_NOT_REOPEN"
+  },
+  "governance": {
+    "PR_114": "DRAFT / UNMERGED",
+    "promotion": "NO_PROMOTION",
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "next_allowed_f_action": [
+    "RECEIVE_AND_REVIEW_MODEL_V3_ACTUAL_PREVIEW",
+    "RECEIVE_CORRECTED_WEB_ASSET_BINDINGS_FOR_W00_W03_W06",
+    "DO_NOT_USE_E_PAGE_AS_F_BODY",
+    "DO_NOT_PROMOTE_SUPPORT_SCREENS_TO_MAIN"
+  ]
+}
