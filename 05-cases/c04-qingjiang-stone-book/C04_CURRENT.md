@@ -1,4 +1,4 @@
-# C04｜Current Execution Authority｜2026-08-15
+# C04｜Current Execution Authority｜2026-08-16
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
@@ -19,6 +19,32 @@ Unresolved P0 evidence continues to block:
 
 It does **not** block evidence-bounded conceptual production.
 
+## Current public narrative authority｜2026-08-16
+
+Current public narrative and experience/content direction:
+- `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md`
+- `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.8.json`
+
+This is a real material delta requested by the user. It **supersedes the eight abstract anchors in `C04_B_PUBLIC_EDIT_OVERLAY_v1.0` for public-facing narrative**, while preserving current route/evidence/design authority.
+
+Public story is now concrete and visitor-action-led:
+`地域文化 → 游玩线路/交通 → 场景互动 → 不同人群获得什么 → 实体/数字/记忆`.
+
+Public project statement:
+> 《清江石书》不是在清江增加十三个景点，而是重新组织一次真实的清江游玩体验：先让游客知道怎么到达、怎么过江、怎么走、在哪里停、怎么玩、怎么回来；再把地域文化、自然观察、地方智慧、轻娱乐和身体休息内容放进真正适合发生的场景。
+
+The original user-provided `@恩施/拆解专项赛资料 (1).zip` is restored as a **Content / Brief / Inspiration Source**. It may seed culture, story, tourism-resource, game/interaction, product/IP and audience ideas, but it does **not** override current A/C04 fact, route, science, safety or field authority.
+
+Game/exploration clarification:
+- game-style map / marker / collection / observation / light puzzle language is allowed;
+- content may be gamified;
+- route, safety, closure and return may **not** be gated by game tasks or completion;
+- `十三印` remains optional content index, not `13/13` route/progress authority.
+
+Traditional feng-shui / landscape ideas may be researched and presented only as `traditional landscape view / cultural interpretation`; they are not scientific causation, exact siting or safety evidence.
+
+Wellbeing content means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and return support; it must not become medical, treatment or selenium-health claims.
+
 ## Allowed conceptual development
 
 C04 may now produce, using explicit `SG / RI / CA / FR` states:
@@ -29,22 +55,34 @@ C04 may now produce, using explicit `SG / RI / CA / FR` states:
 - safety zoning, guardrail/edge logic, anti-slip, lighting, evacuation, return and warning/status logic;
 - low/medium/high scenario capacity models with explicit formula assumptions and sensitivity analysis;
 - buildable conceptual permanent facilities including weathering, maintenance, replacement and night-use assumptions;
-- web, models, analysis graphics, hero renderings, interaction prototype, boards and video.
+- web, models, analysis graphics, hero renderings, interaction prototype, boards and video;
+- culture/content library, game-style route visualization, scene interaction concepts, audience-depth adaptations and memory/product concepts when bounded by current evidence.
 
 Every estimated value must include:
 `recommended value + reasonable range + basis + sensitivity factors + future field-correction field`.
 
 ## Single Decision Question
 
-How can C04 use official evidence, public mapping/data and transparent remote assumptions to complete a coherent, directly presentable research-design prototype before departure, while preserving evidence-state truth and replaceable fields for later field/expert correction?
+How can C04 turn Qingjiang's real culture, journey, transport, landscape scenes and visitor needs into a coherent public experience across physical, digital, editorial, game/content and memory media, while preserving route/evidence truth and replaceable field/expert correction fields?
 
 ## Delivery priority
 
-1. Web + final integration skeleton
-2. Masterplan / key plans-sections / critical model
-3. Hero renderings / analysis graphics / core interactions
-4. Video + boards + exports
-5. Secondary supplements
+1. Web + final integration skeleton under the v1.8 public narrative
+2. Culture/journey/map + key service/scene/audience matrices
+3. Masterplan / key plans-sections / critical model + physical/product proof
+4. Hero renderings / analysis graphics / core interactions + motion
+5. Boards / PDF / video / secondary supplements
+
+## Active integration architecture
+
+This ordinary ChatGPT conversation is the C04 control + design-director + F/Web integration center. GitHub and Google Drive are cross-line communication / Source of Truth.
+
+- ACTIVE 1 = Experience + Service + Editorial / B
+- ACTIVE 2 = Visual + Motion Direction / D
+- ACTIVE 3 = Web Public Experience
+- ACTIVE 4 = Physical / Product / Detail / C23 + Model
+- ACTIVE 5 = Final Integration / F
+- WATCH/FREEZE = A Evidence / E Digital Product / Governance-QC unless triggered.
 
 ## Context discipline
 
@@ -65,7 +103,7 @@ Checkpoint minimum fields:
 - next three actions;
 - `FIELD=0 / G1F HOLD / NO_PROMOTION`.
 
-Near context limit: stop expansion, create the checkpoint, hand off to QJ-F Final Integration + Governance QC and a lower-context existing normal ChatGPT conversation. Do not rebuild completed work.
+Near context limit: stop expansion, create the checkpoint and continue through the current control conversation without rebuilding completed work.
 
 ## Current checkpoint references
 
@@ -73,13 +111,15 @@ Near context limit: stop expansion, create the checkpoint, hand off to QJ-F Fina
 - Drive JSON: `C04_CHECKPOINT_2026-08-15_0917.json`
 - GitHub: `checkpoints/C04_CHECKPOINT_2026-08-15_0917.md`
 - Notion: `C04 CHECKPOINT｜2026-08-15 09:17`
-- F handoff checkpoint: `C04 CHECKPOINT｜2026-08-15 09:27｜F Integration Handoff 01` (updated to this override)
+- F handoff checkpoint: `C04 CHECKPOINT｜2026-08-15 09:27｜F Integration Handoff 01`
 
 ## Do not reopen
 
 - fixed 13-stop completion route;
 - A–F lanes as new P3/P4 namespaces;
-- obsolete game/progress/chapter-led route authority;
+- obsolete game/progress/chapter-led **route authority** (this does not prohibit game-style content/exploration under v1.8);
 - `M1/M0.5/C1/C2` as Current evidence system;
 - species/lithology/geology/safety/exact geometry/ancient-site equivalence inferred from names or appearance alone;
-- 2025 operating times/fares as current 2026 facts without verification.
+- 2025 operating times/fares as current 2026 facts without verification;
+- feng-shui/traditional landscape interpretation as scientific/engineering fact;
+- wellbeing/selenium narratives as unverified medical or health-effect claims.
