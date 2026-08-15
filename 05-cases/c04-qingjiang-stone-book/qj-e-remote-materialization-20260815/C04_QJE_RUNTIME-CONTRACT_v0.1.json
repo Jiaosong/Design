@@ -1,0 +1,60 @@
+{
+  "schema": "oleander.c04.qje-runtime-contract/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "owner_project_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "case_id": "C04",
+  "artifact_state": "REMOTE_RESEARCH_CANDIDATE_E2",
+  "field_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  },
+  "authority_effect": "VERIFIABLE_EXECUTION_RESULT_ONLY_NO_NEW_FEATURE_AUTHORITY",
+  "macro_topology": [
+    {"id":"M0","relation":"arrival system","state":"SOURCE_SUPPORTED_OPERATION_FRESHNESS_OPEN"},
+    {"id":"M1","relation":"north-bank service / orientation","state":"MACRO_SUPPORTED"},
+    {"id":"M2","relation":"cross-river cable / moving view","state":"MACRO_SUPPORTED_FIELD_VIEW_OPEN"},
+    {"id":"M3","relation":"south-bank branching / loop walking network","state":"OFFICIAL_GUIDE_SUPPORTED_MICRO_ROUTE_OPEN"},
+    {"id":"M4","relation":"optional VIEW / READ / RECOVER opportunities","state":"PROVISIONAL"},
+    {"id":"M5","relation":"Yixiantian closure candidate","state":"OPTIONAL_FIELD_SAFETY_OPEN"},
+    {"id":"M6","relation":"cable return","state":"MACRO_SUPPORTED_OPERATION_OPEN"},
+    {"id":"M7","relation":"exit / memory","state":"REMOTE_PROTOTYPE_RELATION"}
+  ],
+  "reading_network": {
+    "central_judgment": "8 Core Reading Pages + 5 replaceable Companion Slots; not a 13-stop linear physical route",
+    "core": ["R01","R05","R06","R13","R02","R07","R09","R12"],
+    "companions": ["GEOLOGY_EVIDENCE","ECO_SEASON","PATH_REREAD","MULTIVOICE_NARRATIVE","PERSONAL_STONE_BOOK"]
+  },
+  "state_axes": {
+    "experience": ["MOVE","RECOVER","OBSERVE","READ","WITHDRAW","RETURN"],
+    "reality": ["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "delivery_modifier": ["NONE","OFFLINE","RETURN-PRIORITY"],
+    "derived_reading_intensity": ["FULL","LIGHT","OFF"]
+  },
+  "state_rules": [
+    "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OR_OPEN",
+    "OFFLINE_DOES_NOT_EQUAL_DEGRADED",
+    "RETURN_PRIORITY_MAY_OVERLAY_REALITY_STATE",
+    "CLOSED_REQUIRES_BYPASS_REROUTE_OR_EXIT",
+    "OPTIONAL_DEPTH_CLOSES_BEFORE_ROUTE_SAFETY_RETURN"
+  ],
+  "digital_off_contract": {
+    "digital_required_for_route": false,
+    "digital_required_for_safety": false,
+    "digital_required_for_return": false,
+    "digital_required_for_core_observation": false
+  },
+  "capability_policy": {
+    "manual_location": "DEFAULT",
+    "offline_first": true,
+    "gps": "CONDITIONAL_G1F",
+    "qr_nfc": "CONDITIONAL",
+    "ar": "CONDITIONAL_AND_NOT_VERIFIED",
+    "auto_trigger": "CONDITIONAL_G1F",
+    "live_service": "OFFICIAL_INTERFACE_REQUIRED",
+    "pseudo_live_status": "PROHIBITED"
+  },
+  "priority": "SERVICE_RETURN > ROUTE > OBSERVATION > EXPLANATION > MEMORY > SHARE",
+  "route_authority_guard": "UI_FLOW_IS_NOT_PHYSICAL_ROUTE_AUTHORITY"
+}
