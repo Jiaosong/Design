@@ -21,7 +21,9 @@
     },
     "WEB": {
       "artifact": "REV04 exact successor source",
-      "state": "SOLE CURRENT CANDIDATE / SOURCE_PERSISTENCE + EXACT_BROWSER_HOLD"
+      "source_sha256": "e06fe29f628cbe7e56427795d82d405560b3ef326c934611724eb724b7434bc7",
+      "source_git_blob_sha": "a089d8562c51e2e71f17c15e87f5471cac9bc6f1",
+      "state": "SOLE CURRENT CANDIDATE / SOURCE_RECOVERED / EXACT_BROWSER_HOLD"
     }
   },
   "support_only": {
@@ -44,8 +46,12 @@
     "3×A1",
     "20-screen",
     "86s public film",
-    "Web exact source + browser readback",
+    "Web exact source + exact binary-bundle browser readback",
     "manifest/hash/readback"
+  ],
+  "remote_showcase_holds": [
+    "EXACT_CURRENT_WEB_BINARY_BUNDLE_AND_BROWSER_READBACK",
+    "REV04_TARGETED_FINAL_DESIGN_READBACK"
   ],
   "hard_state": {
     "FIELD_OBSERVED": 0,
