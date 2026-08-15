@@ -1,0 +1,18 @@
+{
+  "date": "2026-08-15",
+  "tool": "OpenSCAD",
+  "category": "product modeling",
+  "variants_mm": [0.2, 0.6, 1.2],
+  "parameter_status": "EXERCISE ASSUMPTION",
+  "local_open_test": "PASS",
+  "scad_compile": "PASS",
+  "stl_export": "PASS",
+  "png_render": "PASS",
+  "visual_review": {
+    "0.2": "seam weak / risk of disappearing",
+    "0.6": "keep as visual-comparison baseline",
+    "1.2": "seam too dominant at this scale"
+  },
+  "manufacturing_validation": "NOT TESTED / OPEN",
+  "rule_status": "CANDIDATE / NOT PROMOTED"
+}
