@@ -1,0 +1,4 @@
+scenario,cable_design_pph,station_test_pph,walk_test_pph,node_test_pph,return_test_pph,bottleneck_test_pph,eta_ops_rec,eta_ops_range,effective_test_pph,status
+LOW,2700,600,450,300,500,300,0.8,0.50–1.00,240,ASSUMPTION / STRESS TEST ONLY
+MID,2700,900,750,600,800,600,0.8,0.50–1.00,480,ASSUMPTION / STRESS TEST ONLY
+HIGH,2700,1500,1200,900,1200,900,0.8,0.50–1.00,720,ASSUMPTION / STRESS TEST ONLY

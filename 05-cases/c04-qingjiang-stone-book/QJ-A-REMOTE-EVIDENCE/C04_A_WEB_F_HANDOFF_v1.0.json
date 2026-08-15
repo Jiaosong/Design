@@ -1,0 +1,33 @@
+{
+  "handoff_id": "C04-A→WEB-F-20260815-01",
+  "status": "KEEP / READY FOR WEB-F CONSUMPTION / FIELD OPEN",
+  "primary": {
+    "figure_id": "FIG-C04-A00",
+    "page_id": "PAGE-C04-WEB-HERO-A",
+    "role": "1920x1080 primary analytical hero",
+    "library_preview": "/Oleander/C04/A-Line/FIG-C04-A00_web_hero_1920x1080.png"
+  },
+  "figure_bindings": [
+    {"figure_id":"FIG-C04-A00","page_id":"PAGE-C04-WEB-HERO-A","destination":"WEB MAIN / F MAIN","decision":"KEEP"},
+    {"figure_id":"FIG-C04-A01","page_id":"PAGE-C04-A01","destination":"WEB MAIN / F SUPPORT","decision":"KEEP"},
+    {"figure_id":"FIG-C04-A02","page_id":"PAGE-C04-A02","destination":"WEB EVIDENCE / F SUPPORT","decision":"KEEP after REVISE R2"},
+    {"figure_id":"FIG-C04-A03","page_id":"PAGE-C04-A03","destination":"WEB ANALYSIS / F APPENDIX","decision":"KEEP"}
+  ],
+  "persistent_package": {
+    "library_path": "/Oleander/C04/A-Line/C04_A_REMOTE_EVIDENCE_PACK_v1.0_20260815.zip",
+    "sha256": "405b0f97f03ce30ec533e852f33f0e8071231dc574f68b62e477dedadee01be6"
+  },
+  "data_contract": {
+    "epistemic_layers": ["F FACT/SOURCE-GROUNDED", "I INFERENCE/SPATIAL FINDING", "A ASSUMPTION/REMOTE ESTIMATE", "D DECISION"],
+    "route_total": {"recommended_min":182,"range_min":138,"range_max":230,"status":"DESIGN TEST / NOT MEASURED"},
+    "capacity_formula": "C_system=min(C_cable,C_station,C_walk,C_node,C_return)",
+    "capacity_warning": "2700 p/h is cable design capacity only; trail/node/system capacity remains unmeasured and unapproved.",
+    "arrival_mode": ["road", "boat", "unknown"],
+    "experience_state": ["NORMAL", "DEGRADED", "CLOSED", "UNKNOWN"],
+    "delivery_modifier": ["FULL", "LIGHT", "OFF"],
+    "service_priority": "SERVICE/RETURN > ROUTE > OBSERVATION > EXPLANATION > MEMORY > SHARE"
+  },
+  "consume_rule": "Use JSON/CSV as truth carrier; SVG as editable visual; PNG as preview. Never promote diagrammatic positions or walking-grade tests to Field facts.",
+  "global_lock": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove": "exact map geometry, measured distance/slope, field safety, approved capacity, real-time operation, implementability"
+}

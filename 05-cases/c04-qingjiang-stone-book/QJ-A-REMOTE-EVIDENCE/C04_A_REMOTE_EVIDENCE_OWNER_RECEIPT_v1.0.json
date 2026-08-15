@@ -1,0 +1,70 @@
+{
+  "receipt_id": "C04-A-REMOTE-EVIDENCE-20260815-01",
+  "date": "2026-08-15",
+  "base_main_sha": "131c63fbd9ab0ed2082b291ee95757c664e8ba22",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "case_id": "C04",
+  "state": "EXPLORE / G3",
+  "status": "KEEP / WEB-F HANDOFF READY / FIELD OPEN",
+  "locks": ["FIELD OBSERVED=0", "FIELD MEASURED=0", "G1F HOLD", "NO_PROMOTION", "NTS", "NOT FOR CONSTRUCTION"],
+  "authority_consumed": [
+    "00-governance/README.md — Governance v1.1.1 / ACTIVE",
+    "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md — CURRENT",
+    "QJ-C22-SPATIAL-DRAWING/QJ_C_SPATIAL_DRAWING_DATA_v3.0.json — current source/relation authority",
+    "QJ-C23-CONCEPT-DEVELOPMENT/C23_SYNC_RECEIPT_v4.0.md — current Owner Receipt",
+    "checkpoints/C04_CHECKPOINT_2026-08-15_1101_BEXP_FRESHNESS.md — current freshness/current-task readback"
+  ],
+  "material_remote_evidence_delta": [
+    {
+      "source_id": "SRC-A05",
+      "source_date": "2026-02-20",
+      "publisher": "恩施旅游集团（转载极目新闻）",
+      "url": "https://www.eslygroup.com/media_focus/4375.html",
+      "supports": ["景区位于恩施市新塘乡与沙地乡交界", "清江分隔保水溪村与柳池村", "索道1056m/高差156m", "索道兼具居民日常交通功能"],
+      "does_not_prove": "Field geometry, tourist system capacity, actual visitor/resident flow conflict"
+    },
+    {
+      "source_id": "SRC-A06",
+      "source_date": "2026-02-13",
+      "publisher": "恩施旅游集团（转载恩施日报）",
+      "url": "https://www.eslygroup.com/media_focus/4366.html",
+      "supports": ["1056m/156m/最高6m/s/设计2700 p/h规格复核", "丰水/汛期渡船可受影响"],
+      "does_not_prove": "future closure threshold, measured risk, real-time service state"
+    }
+  ],
+  "route_test": {
+    "recommended_total_min": 182,
+    "range_min": 138,
+    "range_max": 230,
+    "official_anchor": "2025 official scenic guide: 景区游览约3小时",
+    "segment_ids": ["M0", "M1", "M2", "M3a", "M3b", "M3c", "M4", "M5", "M6", "M7"],
+    "critical_note": "all walking slopes are remote DESIGN TEST GRADE, not measured site slope; M2/M6 ±14.8% is 156/1056 cable chord vertical ratio, not terrain grade"
+  },
+  "capacity_test": {
+    "formula": "C_system = min(C_cable, C_station, C_walk, C_node, C_return)",
+    "effective_formula": "Q_effective,test = C_system,test * eta_ops",
+    "cable_design_capacity_fact_pph": 2700,
+    "low_mid_high_bottleneck_test_pph": [300, 600, 900],
+    "eta_ops_reference": 0.8,
+    "low_mid_high_effective_test_pph": [240, 480, 720],
+    "critical_note": "all station/walk/node/return capacities are assumptions for stress testing; 2700 p/h must not be propagated to scenic system capacity"
+  },
+  "figures": [
+    {"figure_id":"FIG-C04-A00","page_id":"PAGE-C04-WEB-HERO-A","decision":"KEEP","role":"1920x1080 primary Web/F analytical hero"},
+    {"figure_id":"FIG-C04-A01","page_id":"PAGE-C04-A01","decision":"KEEP","role":"four-level locator + macro water/land/cable network"},
+    {"figure_id":"FIG-C04-A02","page_id":"PAGE-C04-A02","decision":"KEEP after REVISE R2","role":"Evidence→Spatial Finding→Design Consequence"},
+    {"figure_id":"FIG-C04-A03","page_id":"PAGE-C04-A03","decision":"KEEP","role":"route/capacity/risk detail; appendix-preferred"}
+  ],
+  "persistent_binary_package": {
+    "library_path": "/Oleander/C04/A-Line/C04_A_REMOTE_EVIDENCE_PACK_v1.0_20260815.zip",
+    "bytes": 1027736,
+    "sha256": "405b0f97f03ce30ec533e852f33f0e8071231dc574f68b62e477dedadee01be6",
+    "contains": "4 editable SVG + 4 PNG previews + CSV/JSON + manifest + Design Crit + Web/F handoff"
+  },
+  "primary_preview": {
+    "library_path": "/Oleander/C04/A-Line/FIG-C04-A00_web_hero_1920x1080.png",
+    "bytes": 225994,
+    "sha256": "43513bc5a12ab0c54f3e25dcbe0304676b235e7235448e218f41b838a2e14f3e"
+  },
+  "does_not_prove": ["survey geometry", "exact coordinates", "measured walking slope/distance/clear width", "field safety/accessibility compliance", "approved carrying capacity", "real-time operation", "construction readiness", "structural adequacy"]
+}

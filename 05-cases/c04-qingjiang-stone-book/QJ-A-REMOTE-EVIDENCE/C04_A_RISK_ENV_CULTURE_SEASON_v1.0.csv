@@ -1,0 +1,9 @@
+risk_id,family,season,evidence_layer,attention,evidence,design_consequence,does_not_prove
+RX-01,ACCESS / ROAD,ALL,F→I,MED-HIGH,2025官方攻略：前往浑水河道路后半段有大弯道、大下坡。,到达时长不写死；保留缓冲与road状态说明。,事故率、道路坡度或实时路况
+RX-02,HYDRO / BOAT,丰水/汛期敏感,F→I,HIGH,2026官方运营转载报道：丰水/汛期渡船可能受影响或停运。,boat不可作为唯一核心；arrival_mode保留road|boat|unknown。,未来具体停航日、阈值、水位
+RX-03,VISIBILITY / WET,夏雨/冬雾雪敏感,F(corridor)→I,MED-HIGH,官方清江介绍：夏飞瀑、冬雾雪；为走廊级季节叙述。,图形/返程提示需高对比与DEGRADED/UNKNOWN状态；湿滑作为待Field验证风险。,红花峰林微气候、能见度或摩擦系数
+RX-04,EDGE / TERRAIN,ALL,F→I,HIGH / FIELD OPEN,官方资料描述奇峰、危崖层叠且存在游步道。,不做护栏/安全达标声明；R13与边缘节点保持FIELD SAFETY OPEN。,坠落风险等级、落石概率、栏杆合规性
+RX-05,ECOLOGY / LOW INTERVENTION,ALL,F→D,HIGH,官方定位为综合型生态旅游区；C22当前策略为分布式最小支持。,优先可逆、少落地、借既有支撑；不设大型Hero装置。,生态承载力、保护红线、施工许可
+RX-06,CULTURE / LOCAL MOBILITY,ALL,F→D,HIGH,2026官方报道确认索道服务两岸居民日常出行。,SERVICE/RETURN优先于旅游任务；避免游客系统遮蔽居民通行语义。,居民客流比例、运营优先级制度
+RX-07,CULTURE / NARRATIVE,ALL,C22 OPEN→D,MED,R09/R12名称存在资料，但site-narrative link仍OPEN；R07名称权威冲突。,文化文本分为FACT / LOCAL_NARRATIVE / DESIGN_READING；R07双写仓禀峰／仓廪峰。,传说与特定岩峰的历史等值关系
+RX-08,OPERATION / CAPACITY,PEAK / UNKNOWN,F+A→D,HIGH,索道设计运力2700人/h为部件参数；步道/节点/返程容量未测。,系统容量仅作min()情景测试；真实阈值由运营/现场验证替换。,景区可接待量、瞬时安全人数、消防疏散能力
