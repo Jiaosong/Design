@@ -1,0 +1,11 @@
+{
+  "schema": "oleander.practice.vector-negative-space/1.0",
+  "canonical_id": "PRAC-VEC-NEGSPACE-20260816",
+  "canvas": [1600, 1000],
+  "source_shape_viewbox": [240, 260],
+  "notch_width_variants_px": [8, 12, 16],
+  "target_scale_tests_px": [64, 32, 16],
+  "fixed_variables": ["silhouette height", "silhouette width", "oblique notch direction", "monochrome fill"],
+  "open_variable": "negative-space notch width",
+  "evidence_boundary": "EXERCISE ASSUMPTION / NOT BRAND SPEC / NOT PRODUCTION SPEC"
+}
