@@ -1,12 +1,13 @@
-# C04｜Web Experience Framework v2.2 — NO COMPRESSION / current-main alignment
+# C04｜Web Experience Framework v2.3 — NO COMPRESSION / Control Plane preservation
 
 State: `ARCHITECTURE SUCCESSOR / CONTENT-IN-PROGRESS / FIELD OPEN / NO_PROMOTION`
 
-Current main baseline consumed: `68845fc60ad709966f4587b438e37528a19b7ac1`.
+Current main baseline consumed: `e962df1437a00be92738a35c6df32326759fd1bb`.
 Content baseline: `b7bd4a448c088a798eb42afc76a5993de92b970e` (PR #129 R05/R06 scene deepening).
 
-Global authority now inherited from main:
-`00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md`.
+Authorities inherited from current main:
+- `00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md`;
+- merged Control Plane Architecture `preservation_review` enforcement from PR #131/#132.
 
 This branch does **not** overwrite App/Game Map v1.2, Physical/Memory v1.2, canonical R01–R13 identity authority, C22/C23, or D Hero/R06/R13/Return source assets.
 
@@ -19,6 +20,26 @@ This branch does **not** overwrite App/Game Map v1.2, Physical/Memory v1.2, cano
 - Visual restraint may reduce clutter, not content.
 - Reorder / split / add / reweight / explicit demotion are allowed only for design reasons; compression is never a valid reason.
 - This framework is working, not locked. New material may change the architecture, but cannot be silently lost.
+- **C04's 12 layers are project-specific. They are not a global OLEANDER template.**
+
+## Control Plane preservation review
+
+For `problem_layer=Architecture`, `ARCHITECTURE_v2.json` now explicitly accounts for every established layer with:
+- `concept_state`;
+- `presentation_state`;
+- `truth_evidence_state`;
+- restructuring `action`;
+- concrete `reason`.
+
+Current source result:
+- established objects: `12`;
+- accounted objects: `12`;
+- `removed_objects=[]`;
+- `demoted_objects=[]`;
+- `compression_used_as_reason=false`;
+- `global_fixed_chapter_count_applied=false`.
+
+This is a preservation/accountability check only. `Machine PASS ≠ Design PASS`; it cannot promote weak pixels into MAIN or manufacture field/evidence validity.
 
 ## Nine visitor questions
 
