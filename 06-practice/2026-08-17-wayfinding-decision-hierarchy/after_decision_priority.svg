@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#f2f2ee"/>
+<rect x="150" y="160" width="1300" height="650" rx="10" fill="#fff" stroke="#111" stroke-width="3"/>
+<g font-family="Noto Sans CJK SC, Noto Sans CJK, Arial, sans-serif" fill="#111">
+<text x="150" y="90" font-size="30" font-weight="700">WAYFINDING DECISION HIERARCHY / SAME INFORMATION</text>
+<text x="150" y="125" font-size="17">AFTER — return first, route second, optional reading third</text>
+<text x="220" y="310" font-size="92" font-weight="700">→</text>
+<text x="390" y="290" font-size="58" font-weight="700">回程 / RETURN</text>
+<text x="393" y="338" font-size="23">Service + Return · NO PHONE OK</text>
+<text x="1180" y="295" font-size="20" font-weight="700">NORMAL</text><text x="1180" y="330" font-size="17">Route open</text>
+<line x1="200" y1="385" x2="1390" y2="385" stroke="#111" stroke-width="2"/>
+<text x="220" y="500" font-size="48" font-weight="700">←</text>
+<text x="320" y="490" font-size="31" font-weight="700">R06 河谷观察</text>
+<text x="322" y="530" font-size="19">Valley Observation</text>
+<text x="850" y="500" font-size="36">↑</text>
+<text x="930" y="490" font-size="25" font-weight="700">十三印阅读</text>
+<text x="932" y="528" font-size="17">Thirteen Imprints Reading</text>
+<text x="932" y="560" font-size="15">OPTIONAL · Read if useful</text>
+<line x1="200" y1="620" x2="1390" y2="620" stroke="#111" stroke-width="1"/>
+<text x="220" y="695" font-size="16">Decision order: RETURN → ROUTE / OBSERVATION → OPTIONAL EXPLANATION</text>
+<text x="150" y="900" font-size="14" opacity=".55">Synthetic training sign. Labels test C04 priority logic only; no site distance, direction or opening-state fact is claimed.</text>
+</g></svg>
