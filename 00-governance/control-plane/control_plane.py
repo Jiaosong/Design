@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OLEANDER Project Control Plane v0.2 executable core with enforced schema."""
+"""OLEANDER Project Control Plane executable core with v0.2 replay compatibility and v0.3 current no-loss enforcement."""
 from __future__ import annotations
 
 import argparse
@@ -12,7 +12,11 @@ from typing import Any, Iterable
 from schema_enforcer import load_schema, validate_instance
 
 HERE = Path(__file__).resolve().parent
-CARD_SCHEMA = load_schema(HERE / "control-card.schema.json")
+CURRENT_SCHEMA_VERSION = "0.3"
+CARD_SCHEMAS = {
+    "0.2": load_schema(HERE / "control-card.schema.json"),
+    "0.3": load_schema(HERE / "control-card.v0.3.schema.json"),
+}
 MODES = {"EXPLORE", "CANDIDATE", "AUTHORITY"}
 PROBLEM_LAYERS = {"Parameter", "Relation", "Geometry", "Topology", "Architecture", "Evidence"}
 PROJECT_LEVELS = {"P0", "P1", "P2", "P3", "P4"}
@@ -27,33 +31,31 @@ CASE_RE = re.compile(r"^C\d{2,}$")
 LEGACY_CASE_PROJECT_RE = re.compile(r"^C\d{2,}(?:-(?:WS|VAL)-|$)")
 KNOWLEDGE_RE = re.compile(r"^L[0-7](?:\b|\s|[-/:])")
 SHA256_RE = re.compile(r"^[0-9a-fA-F]{64}$")
-REMOVAL_ACTIONS = {"DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "CUT"}
+
+LEGACY_REMOVAL_ACTIONS = {"DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "CUT"}
 INVALID_SOLE_REMOVAL_REASONS = {
-    "compression",
-    "brevity",
-    "page count",
-    "too long",
-    "too many pages",
-    "cleaner deck",
-    "cleaner presentation",
-    "cleaner website",
-    "simpler website",
-    "shorter film",
-    "shorter web",
-    "less text",
-    "minimalism",
-    "压缩",
-    "太长",
-    "页数太多",
-    "更简洁",
-    "更干净",
-    "网站太长",
-    "影片更短",
-    "视频更短",
-    "少一点文字",
-    "极简",
-    "极简主义",
+    "compression", "brevity", "page count", "too long", "too many pages",
+    "cleaner deck", "cleaner presentation", "cleaner website", "simpler website",
+    "shorter film", "shorter web", "less text", "minimalism",
+    "压缩", "太长", "页数太多", "更简洁", "更干净", "网站太长",
+    "影片更短", "视频更短", "少一点文字", "极简", "极简主义",
 }
+MATERIAL_REDUCTION_ACTIONS = {"DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "CUT", "MERGE"}
+STRUCTURAL_TARGET_ACTIONS = {"SPLIT", "GROUP", "MERGE", "REMAP"}
+SUBSTANTIVE_REASON_CODES = {
+    "REDUNDANCY_NO_UNIQUE_FUNCTION",
+    "AUTHORITY_CONTRADICTION",
+    "PROJECT_GENERICITY",
+    "DESIGN_WEAKNESS_AFTER_REDRAW",
+    "EXPERIENCE_OR_USER_VALUE_HARM",
+    "TECHNICAL_OR_PHYSICAL_INFEASIBILITY",
+    "EVIDENCE_TRUTH_RIGHTS_SAFETY_CONFLICT",
+    "SUPERSEDED_WITH_PROVENANCE",
+    "HIERARCHY_RESTRUCTURE_WITH_IDENTITY_PRESERVED",
+    "CROSS_SURFACE_REMAP_WITH_IDENTITY_PRESERVED",
+    "OTHER_SUBSTANTIVE",
+}
+
 
 @dataclass(frozen=True)
 class Finding:
@@ -61,12 +63,14 @@ class Finding:
     code: str
     message: str
 
+
 @dataclass(frozen=True)
 class GateProfile:
     mode: str
     base_qa: list[str]
     specialist_gates: list[str]
     persistence: str
+
 
 @dataclass(frozen=True)
 class BreakerResult:
@@ -91,7 +95,8 @@ def _normalize_reason(value: Any) -> str:
     return re.sub(r"\s+", " ", cleaned).strip()
 
 
-def _validate_preservation_review(card: dict[str, Any]) -> list[Finding]:
+def _validate_preservation_review_v02(card: dict[str, Any]) -> list[Finding]:
+    """Legacy v0.2 behavior retained only for replay/backward compatibility."""
     findings: list[Finding] = []
     review = card.get("preservation_review")
     architecture_change = card.get("problem_layer") == "Architecture"
@@ -103,67 +108,198 @@ def _validate_preservation_review(card: dict[str, Any]) -> list[Finding]:
             "Architecture-layer work requires preservation_review so established project objects cannot disappear silently",
         ))
         return findings
-
     if not isinstance(review, dict):
         return findings
-
     if review.get("global_fixed_chapter_count_applied") is not False:
         findings.append(Finding(
-            "ERROR",
-            "NO_LOSS_GLOBAL_TEMPLATE_FORBIDDEN",
+            "ERROR", "NO_LOSS_GLOBAL_TEMPLATE_FORBIDDEN",
             "Global no-loss policy cannot impose C04's 12-layer count or any other fixed universal chapter template",
         ))
-
     decisions = review.get("decisions")
     if review.get("established_objects_present") is True and (not isinstance(decisions, list) or not decisions):
         findings.append(Finding(
-            "ERROR",
-            "NO_LOSS_ESTABLISHED_OBJECTS_UNACCOUNTED",
+            "ERROR", "NO_LOSS_ESTABLISHED_OBJECTS_UNACCOUNTED",
             "Established objects are present; preservation_review.decisions must account for them explicitly",
         ))
         return findings
-
     if not isinstance(decisions, list):
         return findings
-
     for index, decision in enumerate(decisions):
         if not isinstance(decision, dict):
             continue
         action = decision.get("action")
         reason = _normalize_reason(decision.get("reason"))
         object_id = decision.get("object_id", f"index {index}")
-
-        if action in REMOVAL_ACTIONS and reason in INVALID_SOLE_REMOVAL_REASONS:
+        if action in LEGACY_REMOVAL_ACTIONS and reason in INVALID_SOLE_REMOVAL_REASONS:
             findings.append(Finding(
-                "ERROR",
-                "NO_LOSS_INVALID_REMOVAL_REASON",
+                "ERROR", "NO_LOSS_INVALID_REMOVAL_REASON",
                 f"{object_id}: {action} cannot use compression/page-count/minimalism/shorter-delivery language as its sole reason",
             ))
-
         if action == "DEMOTE_TO_SUPPORT" and decision.get("presentation_state") != "SUPPORT":
-            findings.append(Finding(
-                "ERROR",
-                "NO_LOSS_DEMOTE_STATE_MISMATCH",
-                f"{object_id}: DEMOTE_TO_SUPPORT requires presentation_state=SUPPORT",
-            ))
+            findings.append(Finding("ERROR", "NO_LOSS_DEMOTE_STATE_MISMATCH", f"{object_id}: DEMOTE_TO_SUPPORT requires presentation_state=SUPPORT"))
         if action == "DEMOTE_TO_PROCESS" and decision.get("presentation_state") != "PROCESS":
-            findings.append(Finding(
-                "ERROR",
-                "NO_LOSS_DEMOTE_STATE_MISMATCH",
-                f"{object_id}: DEMOTE_TO_PROCESS requires presentation_state=PROCESS",
-            ))
+            findings.append(Finding("ERROR", "NO_LOSS_DEMOTE_STATE_MISMATCH", f"{object_id}: DEMOTE_TO_PROCESS requires presentation_state=PROCESS"))
         if action == "CUT" and decision.get("concept_state") != "DROP":
             findings.append(Finding(
-                "ERROR",
-                "NO_LOSS_CUT_STATE_MISMATCH",
+                "ERROR", "NO_LOSS_CUT_STATE_MISMATCH",
                 f"{object_id}: CUT requires concept_state=DROP; pixel/presentation failure alone cannot delete a kept concept",
+            ))
+    return findings
+
+
+def _validate_change_scope_v03(card: dict[str, Any]) -> list[Finding]:
+    findings: list[Finding] = []
+    scope = card.get("change_scope")
+    if not isinstance(scope, dict):
+        return findings
+
+    kind = scope.get("kind")
+    architecture_change = card.get("problem_layer") == "Architecture"
+    if architecture_change and kind != "RESTRUCTURE":
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_ARCHITECTURE_SCOPE_CONTRADICTION",
+            "problem_layer=Architecture must declare change_scope.kind=RESTRUCTURE",
+        ))
+
+    if kind != "RESTRUCTURE":
+        return findings
+
+    surfaces = scope.get("surfaces")
+    if not isinstance(surfaces, list) or not surfaces:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_RESTRUCTURE_SURFACE_REQUIRED",
+            "RESTRUCTURE must identify at least one affected project/delivery surface",
+        ))
+
+    baseline = scope.get("established_object_baseline")
+    if not isinstance(baseline, list):
+        return findings
+    greenfield = scope.get("greenfield_no_established_objects") is True
+    baseline_source = scope.get("baseline_source")
+
+    if baseline and greenfield:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_GREENFIELD_BASELINE_CONTRADICTION",
+            "greenfield_no_established_objects cannot be true when established_object_baseline is non-empty",
+        ))
+    if baseline and (not isinstance(baseline_source, str) or not baseline_source.strip()):
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_BASELINE_SOURCE_REQUIRED",
+            "A non-empty established_object_baseline must identify the authority/current source used to derive it",
+        ))
+    if not baseline and not greenfield:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_BASELINE_REQUIRED",
+            "RESTRUCTURE requires an established-object baseline, or an explicit greenfield_no_established_objects=true declaration",
+        ))
+    return findings
+
+
+def _validate_preservation_review_v03(card: dict[str, Any]) -> list[Finding]:
+    findings: list[Finding] = []
+    scope = card.get("change_scope") if isinstance(card.get("change_scope"), dict) else {}
+    restructure = scope.get("kind") == "RESTRUCTURE" or card.get("problem_layer") == "Architecture"
+    review = card.get("preservation_review")
+
+    if restructure and not isinstance(review, dict):
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_PRESERVATION_REVIEW_REQUIRED",
+            "Any declared restructure, including delivery/narrative/Web/integration restructuring, requires preservation_review",
+        ))
+        return findings
+    if not isinstance(review, dict):
+        return findings
+    if review.get("global_fixed_chapter_count_applied") is not False:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_GLOBAL_TEMPLATE_FORBIDDEN",
+            "Global no-loss policy cannot impose C04's 12-layer count or any other fixed universal chapter template",
+        ))
+
+    decisions = review.get("decisions")
+    if not isinstance(decisions, list):
+        return findings
+    baseline = scope.get("established_object_baseline") if isinstance(scope.get("established_object_baseline"), list) else []
+    decision_ids = [d.get("object_id") for d in decisions if isinstance(d, dict) and isinstance(d.get("object_id"), str)]
+
+    duplicates = sorted({x for x in decision_ids if decision_ids.count(x) > 1})
+    if duplicates:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_DUPLICATE_BASELINE_DECISION",
+            f"Each established object must have exactly one preservation decision; duplicates={duplicates}",
+        ))
+    missing = sorted(set(baseline) - set(decision_ids))
+    if restructure and missing:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_BASELINE_OBJECTS_UNACCOUNTED",
+            f"preservation_review does not account for established baseline objects: {missing}",
+        ))
+    extras = sorted(set(decision_ids) - set(baseline))
+    if restructure and extras:
+        findings.append(Finding(
+            "ERROR", "NO_LOSS_DECISION_OUTSIDE_BASELINE",
+            f"preservation_review decisions must refer only to established baseline objects; extras={extras}",
+        ))
+
+    for index, decision in enumerate(decisions):
+        if not isinstance(decision, dict):
+            continue
+        object_id = decision.get("object_id", f"index {index}")
+        action = decision.get("action")
+        concept_state = decision.get("concept_state")
+        presentation_state = decision.get("presentation_state")
+        reason_code = decision.get("reason_code")
+        targets = decision.get("target_object_ids") if isinstance(decision.get("target_object_ids"), list) else []
+        identity_preserved = decision.get("identity_preserved")
+
+        if action in MATERIAL_REDUCTION_ACTIONS and reason_code not in SUBSTANTIVE_REASON_CODES:
+            findings.append(Finding(
+                "ERROR", "NO_LOSS_SUBSTANTIVE_REASON_CODE_REQUIRED",
+                f"{object_id}: {action} requires a substantive design/authority/evidence reason code; compression/minimalism/page-count is never a reason code",
+            ))
+        if action == "DEMOTE_TO_SUPPORT" and presentation_state != "SUPPORT":
+            findings.append(Finding("ERROR", "NO_LOSS_DEMOTE_STATE_MISMATCH", f"{object_id}: DEMOTE_TO_SUPPORT requires presentation_state=SUPPORT"))
+        if action == "DEMOTE_TO_PROCESS" and presentation_state != "PROCESS":
+            findings.append(Finding("ERROR", "NO_LOSS_DEMOTE_STATE_MISMATCH", f"{object_id}: DEMOTE_TO_PROCESS requires presentation_state=PROCESS"))
+
+        if action == "CUT":
+            if concept_state != "DROP":
+                findings.append(Finding(
+                    "ERROR", "NO_LOSS_CUT_STATE_MISMATCH",
+                    f"{object_id}: CUT requires concept_state=DROP; pixel/presentation failure alone cannot delete a kept concept",
+                ))
+            if identity_preserved is not False:
+                findings.append(Finding("ERROR", "NO_LOSS_CUT_IDENTITY_MISMATCH", f"{object_id}: CUT requires identity_preserved=false"))
+            if targets:
+                findings.append(Finding("ERROR", "NO_LOSS_CUT_TARGET_MISMATCH", f"{object_id}: CUT cannot declare replacement target_object_ids; use MERGE/REMAP/supersession accounting instead"))
+        else:
+            if concept_state == "DROP":
+                findings.append(Finding(
+                    "ERROR", "NO_LOSS_DROP_REQUIRES_CUT",
+                    f"{object_id}: concept_state=DROP requires action=CUT",
+                ))
+            if identity_preserved is not True:
+                findings.append(Finding(
+                    "ERROR", "NO_LOSS_IDENTITY_MUST_PERSIST",
+                    f"{object_id}: non-CUT restructuring must preserve the established object's identity/retrievability",
+                ))
+
+        if action in STRUCTURAL_TARGET_ACTIONS and not targets:
+            findings.append(Finding(
+                "ERROR", "NO_LOSS_STRUCTURAL_TARGET_REQUIRED",
+                f"{object_id}: {action} requires target_object_ids so structural remapping remains traceable",
             ))
 
     return findings
 
 
 def validate_card(card: dict[str, Any]) -> list[Finding]:
-    findings = [Finding("ERROR", "SCHEMA_VALIDATION", f"{e['path']}: {e['message']}") for e in validate_instance(card, CARD_SCHEMA)]
+    version = card.get("schema_version")
+    schema = CARD_SCHEMAS.get(version)
+    if schema is None:
+        findings = [Finding("ERROR", "CONTROL_CARD_SCHEMA_VERSION_UNSUPPORTED", f"Unsupported schema_version={version!r}; supported={sorted(CARD_SCHEMAS)}")]
+    else:
+        findings = [Finding("ERROR", "SCHEMA_VALIDATION", f"{e['path']}: {e['message']}") for e in validate_instance(card, schema)]
+
     obj = card.get("object") if isinstance(card.get("object"), dict) else {}
     project_id = obj.get("project_id")
     if project_id:
@@ -195,14 +331,26 @@ def validate_card(card: dict[str, Any]) -> list[Finding]:
             findings.append(Finding("ERROR", "GATE_PROFILE_AUTHORITY_QA", "AUTHORITY requires Machine + Visual + Project QA"))
         if authority.get("state") in {"NONE", "WORKING_SOURCE", "UNLOCATED", None}:
             findings.append(Finding("ERROR", "AUTHORITY_MODE_SOURCE", "AUTHORITY mode requires at least CANDIDATE_AUTHORITY source state"))
-    findings.extend(_validate_preservation_review(card))
+
+    if version == "0.3":
+        findings.extend(_validate_change_scope_v03(card))
+        findings.extend(_validate_preservation_review_v03(card))
+    elif version == "0.2":
+        findings.extend(_validate_preservation_review_v02(card))
     return findings
 
 
 def resolve_context(card: dict[str, Any]) -> dict[str, Any]:
     obj = card.get("object", {}) if isinstance(card.get("object"), dict) else {}
     preservation = card.get("preservation_review") if isinstance(card.get("preservation_review"), dict) else None
+    scope = card.get("change_scope") if isinstance(card.get("change_scope"), dict) else None
+    restructure = (
+        card.get("problem_layer") == "Architecture"
+        if card.get("schema_version") == "0.2"
+        else bool(scope and scope.get("kind") == "RESTRUCTURE") or card.get("problem_layer") == "Architecture"
+    )
     return {
+        "schema_version": card.get("schema_version"),
         "knowledge_position": obj.get("knowledge_position"),
         "application_mapping": obj.get("application_mapping", []),
         "project": {"id": obj.get("project_id"), "level": obj.get("project_level"), "case_id": obj.get("case_id"), "priority": obj.get("priority")},
@@ -210,9 +358,11 @@ def resolve_context(card: dict[str, Any]) -> dict[str, Any]:
         "problem_layer": card.get("problem_layer"),
         "authority_state": (card.get("authority_source") or {}).get("state") if isinstance(card.get("authority_source"), dict) else None,
         "no_loss": {
-            "preservation_review_required": card.get("problem_layer") == "Architecture",
+            "change_kind": scope.get("kind") if scope else None,
+            "surfaces": scope.get("surfaces", []) if scope else [],
+            "baseline_count": len(scope.get("established_object_baseline", [])) if scope and isinstance(scope.get("established_object_baseline"), list) else None,
+            "preservation_review_required": restructure,
             "preservation_review_present": preservation is not None,
-            "established_objects_present": preservation.get("established_objects_present") if preservation else None,
             "global_fixed_chapter_count_applied": preservation.get("global_fixed_chapter_count_applied") if preservation else None,
         },
     }
@@ -254,8 +404,10 @@ def revision_breaker(card: dict[str, Any]) -> BreakerResult:
 
 
 def _registry_candidates(registry: Any, name: str) -> Iterable[dict[str, Any]]:
-    if isinstance(registry, dict): registry = registry.get("assets", [])
-    if not isinstance(registry, list): return []
+    if isinstance(registry, dict):
+        registry = registry.get("assets", [])
+    if not isinstance(registry, list):
+        return []
     target = name.casefold()
     return [item for item in registry if isinstance(item, dict) and target in str(item.get("name", item.get("id", ""))).casefold()]
 
@@ -266,9 +418,11 @@ def locate_asset(name: str, roots: Iterable[str | Path] = (), registry: Any = No
     target = name.casefold()
     for root in roots:
         p = Path(root)
-        if not p.exists(): continue
+        if not p.exists():
+            continue
         for candidate in p.rglob("*"):
-            if candidate.is_file() and target in candidate.name.casefold(): fs_hits.append(str(candidate.resolve()))
+            if candidate.is_file() and target in candidate.name.casefold():
+                fs_hits.append(str(candidate.resolve()))
     return {"query": name, "status": "FOUND" if registry_hits or fs_hits else "UNLOCATED", "registry_hits": registry_hits, "filesystem_hits": sorted(fs_hits), "external_provider_status": "REQUIRES_MATERIALIZATION_OR_REGISTRY_INPUT"}
 
 
@@ -280,36 +434,60 @@ def run_check(card: dict[str, Any]) -> dict[str, Any]:
     return {"status": "BLOCKED" if blocking else "PASS", "context": resolve_context(card), "findings": [asdict(f) for f in findings], "gate_profile": asdict(profile) if profile else None, "revision_breaker": asdict(breaker)}
 
 
-def _print(value: Any) -> None: print(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True))
+def _print(value: Any) -> None:
+    print(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True))
+
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="OLEANDER Project Control Plane v0.2")
+    parser = argparse.ArgumentParser(description="OLEANDER Project Control Plane v0.2 replay compatibility + v0.3 current execution")
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ("validate", "resolve", "gates", "breaker", "check"):
-        p = sub.add_parser(name); p.add_argument("card")
-    locate = sub.add_parser("locate"); locate.add_argument("name"); locate.add_argument("--root", action="append", default=[]); locate.add_argument("--registry")
+        p = sub.add_parser(name)
+        p.add_argument("card")
+    locate = sub.add_parser("locate")
+    locate.add_argument("name")
+    locate.add_argument("--root", action="append", default=[])
+    locate.add_argument("--registry")
     return parser
+
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "locate":
         registry = load_json(args.registry) if args.registry else None
-        result = locate_asset(args.name, args.root, registry); _print(result); return 0 if result["status"] == "FOUND" else 3
+        result = locate_asset(args.name, args.root, registry)
+        _print(result)
+        return 0 if result["status"] == "FOUND" else 3
     card = load_json(args.card)
     if args.command == "validate":
-        findings = validate_card(card); ok = not any(f.level == "ERROR" for f in findings); _print({"status": "PASS" if ok else "FAIL", "findings": [asdict(f) for f in findings]}); return 0 if ok else 2
+        findings = validate_card(card)
+        ok = not any(f.level == "ERROR" for f in findings)
+        _print({"status": "PASS" if ok else "FAIL", "findings": [asdict(f) for f in findings]})
+        return 0 if ok else 2
     if args.command == "resolve":
         findings = validate_card(card)
-        if any(f.level == "ERROR" for f in findings): _print({"status":"FAIL","findings":[asdict(f) for f in findings]}); return 2
-        _print(resolve_context(card)); return 0
+        if any(f.level == "ERROR" for f in findings):
+            _print({"status": "FAIL", "findings": [asdict(f) for f in findings]})
+            return 2
+        _print(resolve_context(card))
+        return 0
     if args.command == "gates":
         findings = validate_card(card)
-        if any(f.level == "ERROR" for f in findings): _print({"status":"FAIL","findings":[asdict(f) for f in findings]}); return 2
-        _print(asdict(select_gate_profile(card))); return 0
+        if any(f.level == "ERROR" for f in findings):
+            _print({"status": "FAIL", "findings": [asdict(f) for f in findings]})
+            return 2
+        _print(asdict(select_gate_profile(card)))
+        return 0
     if args.command == "breaker":
-        result = revision_breaker(card); _print(asdict(result)); return 4 if result.tripped else 0
+        result = revision_breaker(card)
+        _print(asdict(result))
+        return 4 if result.tripped else 0
     if args.command == "check":
-        result = run_check(card); _print(result); return 0 if result["status"] == "PASS" else 5
+        result = run_check(card)
+        _print(result)
+        return 0 if result["status"] == "PASS" else 5
     return 1
 
-if __name__ == "__main__": raise SystemExit(main())
+
+if __name__ == "__main__":
+    raise SystemExit(main())
