@@ -1,0 +1,36 @@
+{
+  "schema": "c04.web-raster-crop-manifest/1.0",
+  "non_generative": true,
+  "formal_text_baked_into_crops": false,
+  "outputs": {
+    "hero_clean.jpg": {
+      "source": "QJD_V11_01_HERO_1920x1080.png",
+      "box": [600, 90, 1920, 850],
+      "drive_id": "16xgXoszQX3-LH150FPH_q5YO2GSfzeAB",
+      "bytes": 188804,
+      "sha256": "6bb51e3931d32b0a71bdb0049824d94f3f436ca90c125e8e627a1b861d0a3679"
+    },
+    "r06_valley_clean.jpg": {
+      "source": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+      "box": [240, 255, 930, 670],
+      "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+      "bytes": 106131,
+      "sha256": "92d076375939d2d50a45be30c487d147eeed275947292142c5f2caede6f97530"
+    },
+    "r13_exit_clean.jpg": {
+      "source": "QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+      "box": [976, 175, 1426, 812],
+      "drive_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+      "bytes": 72240,
+      "sha256": "a43592952157481ea766e84248be61a7506b831f7bbd17ce0b1f9605a7c13c9e"
+    },
+    "return_clean.jpg": {
+      "source": "QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png",
+      "box": [650, 0, 1920, 560],
+      "drive_id": "19mkQdgTj0ASkGh0Ott6JIMNrPcaHd4Y7",
+      "bytes": 79959,
+      "sha256": "fcaaf603e5dfb53fa3b29ef111854c57d1f28e95d9adbc3db2dbd0d460844684"
+    }
+  },
+  "truth_boundary": "Crops are presentation pixels only; not field/site/geometry authority."
+}
