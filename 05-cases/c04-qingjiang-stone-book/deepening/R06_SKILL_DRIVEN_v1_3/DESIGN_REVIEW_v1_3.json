@@ -1,0 +1,39 @@
+{
+  "review_id": "C04-R06-SKILL-v1.3-BLIND-REVIEW",
+  "method": [
+    "Strict/Blind Review: first-read category before prose",
+    "Node Review: geometry-bound dimensions/foundation/connection/human/lineweight",
+    "Material QA: phenomenon/channel/scale/response",
+    "Project QA: landscape-first + recovery + field-open"
+  ],
+  "sheet_01": {
+    "first_read": "PASS WITH REVISION",
+    "category": "spatial experience / body-use scene",
+    "strength": "real Qingjiang landscape dominates; continuous approach→lean→exit replaces six text cards",
+    "remaining": "body section is still conceptual/NTS and site clear-width/fall-edge are open"
+  },
+  "sheet_02": {
+    "first_read": "PASS AS CONCEPT TECHNICAL DRAWING / NTS",
+    "category": "GA / section / exploded / base detail",
+    "strength": "orthographic geometry, 1700 human, v1.7 dimensions, explicit RC conditional detail, lineweight hierarchy",
+    "remaining": "not fabricator/engineering detail; R7 original pixels not reproduced; final anchor/fall-guard unresolved"
+  },
+  "sheet_03": {
+    "first_read": "PASS AS SUPPORT TECHNICAL / NTS",
+    "category": "foundation scenarios + material/maintenance",
+    "strength": "unknown substrate stays HOLD; direct rock is not given fake anchor numbers; CMF is treated as maintainable layer stack",
+    "remaining": "local material exposure and actual maintenance owner/cycle require field/operation closure"
+  },
+  "main_decision": {
+    "scene": "KEEP_AFTER_REVISION / MAIN-BOUND",
+    "technical_ga": "KEEP / SUPPORT TECHNICAL; eligible for Technical Proof chapter",
+    "foundation_cmf": "KEEP / SUPPORT TECHNICAL",
+    "overall": "NOT MAIN KEEP YET"
+  },
+  "truth": "FIELD=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "deterministic_visual_repairs": [
+    "Removed false graphic-scale labels; current sheets are ORTHOGRAPHIC / NTS.",
+    "Wrapped exploded labels to remove clipping.",
+    "Split RC and direct-rock notes to remove overflow/overlap."
+  ]
+}
