@@ -1,0 +1,40 @@
+{
+  "schema": "c04.integrated-scene-production-manifest/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "base_main": "bccbe9a119d6ee1438a9be43270add4629b0ae65",
+  "editable_source": "R06_R13_INTEGRATED_EXPERIENCE_V2.html",
+  "reviewed_local_outputs": [
+    {
+      "file": "C04_R06_INTEGRATED_EXPERIENCE_V2.png",
+      "bytes": 1508729,
+      "sha256": "57380eb7e35e53fe5880da6c2258dc600cbab346944e51ec3a9c935371a10597",
+      "state": "VISUAL_REVIEW_KEEP"
+    },
+    {
+      "file": "C04_R13_INTEGRATED_EXPERIENCE_V2.png",
+      "bytes": 800198,
+      "sha256": "5fe5cdd297c0c11176352529ad211fe2f760b230de92093dbce7a986f832795b",
+      "state": "VISUAL_REVIEW_KEEP"
+    },
+    {
+      "file": "C04_R06_R13_INTEGRATED_V2_REVIEW.png",
+      "bytes": 2851841,
+      "sha256": "bb57424acf4d35bd8f62f16fdd5b15f440dd390e4a6e6056e99d9aea4ef1cc88",
+      "state": "PAIR_VISUAL_REVIEW_KEEP"
+    }
+  ],
+  "source_bindings": {
+    "R06_PRESENTATION_PIXEL": "Drive 1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+    "R13_CONCEPTUAL_RELATION_PIXEL": "Drive 1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+    "R06_BODY_PROOF": "design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg",
+    "P02_DESIGN_SOURCE": "physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+    "APP_DESIGN_SOURCE": "digital-currentization/app-game-map-v1.2 + current App design-source v2 delta"
+  },
+  "does_not_prove": [
+    "FIELD_PASS",
+    "R13_SITE_SAFETY",
+    "R06_PRECISE_GEOLOGY",
+    "ENGINEERING_APPROVAL",
+    "PROJECT_PROMOTION"
+  ]
+}
