@@ -1,0 +1,53 @@
+{
+  "receipt_id": "OLEANDER-CONTROL-PLANE-V03-NO-LOSS-DEEPENING-2026-08-16",
+  "base_main_sha": "9dd784dd903fcfd2af42d75ec4bc77c5772025fd",
+  "scope": "GLOBAL OLEANDER CONTROL PLANE / NO COMPRESSION NO LOSS / CURRENT CONTROL CARD",
+  "material_findings_before_change": [
+    {
+      "id": "F-01",
+      "finding": "Machine enforcement was narrower than policy because preservation_review was mandatory only when problem_layer=Architecture.",
+      "risk": "Narrative/Web/Board/PDF/Film/App/Integration/Final-Edit restructuring could avoid no-loss by using another problem layer."
+    },
+    {
+      "id": "F-02",
+      "finding": "Established-object presence was represented only by a boolean plus free-form decisions.",
+      "risk": "A restructure could self-report no established objects or omit individual established objects without machine set-coverage verification."
+    },
+    {
+      "id": "F-03",
+      "finding": "Removal-reason rejection compared normalized free text against an exact list.",
+      "risk": "Mixed phrases such as 'reduce page count and simplify the website' could bypass the exact-match rejection."
+    },
+    {
+      "id": "F-04",
+      "finding": "Current CI/docs still described the earlier Architecture-only trigger and v0.2 fixture wording.",
+      "risk": "Human execution guidance could diverge from the intended current machine contract."
+    }
+  ],
+  "implemented_delta": [
+    "Add Control Card v0.3 as Current stored-card schema while retaining v0.2 replay compatibility.",
+    "Require explicit change_scope.kind and affected surfaces on Current cards.",
+    "Require any declared RESTRUCTURE, not only Architecture problem-layer work, to provide preservation_review.",
+    "Require a source-bound established_object_baseline or explicit genuine-greenfield declaration.",
+    "Require preservation decisions to match the established baseline exactly: no missing, duplicate, or outside-baseline decisions.",
+    "Add MERGE and REMAP as explicit structural actions; SPLIT/GROUP/MERGE/REMAP require target_object_ids.",
+    "Require non-CUT restructuring to preserve object identity/retrievability; CUT requires concept DROP and identity_preserved=false.",
+    "Replace fragile free-text-only removal checking for Current v0.3 with structured substantive reason_code enforcement.",
+    "Require repo-wide Current Control Card scanner to reject v0.2 outside excluded provenance/replay zones.",
+    "Migrate the current active E3 Control Card and current example to v0.3 without rewriting historical review records.",
+    "Currentize Control Plane README, entrypoint, status and CI wording/compile coverage."
+  ],
+  "global_boundaries_preserved": [
+    "C04 12-layer architecture is not encoded as a global template.",
+    "Historical replay/provenance remains readable and is not retroactively rewritten.",
+    "Control Plane remains the existing validator; no second registry or system-level Gate is introduced.",
+    "Concept state, presentation state and truth/evidence state remain separate.",
+    "Machine/CI PASS does not imply Design PASS, MAIN KEEP, Field/Rights/Engineering/Human validation, Promotion or Release."
+  ],
+  "validation_state": "PENDING PR CI AND MAIN READBACK",
+  "does_not_prove": [
+    "This owner receipt does not prove the implementation passes CI before the PR run completes.",
+    "Structured reason_code makes reduction rationale machine-visible; it cannot by itself prove the substantive truth of a human-entered reason.",
+    "The machine contract cannot infer undisclosed project objects that were never included in the baseline source; baseline quality remains authority/human-review dependent."
+  ]
+}
