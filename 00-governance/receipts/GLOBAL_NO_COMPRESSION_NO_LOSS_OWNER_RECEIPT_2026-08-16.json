@@ -1,0 +1,27 @@
+{
+  "receipt_id": "OLEANDER-GLOBAL-NO-COMPRESSION-NO-LOSS-2026-08-16",
+  "owner": "刘旋 / OLEANDER",
+  "scope": "ALL OLEANDER PROJECTS / WORKSTREAMS / VALIDATIONS / CASES / PRACTICE / DELIVERY SURFACES",
+  "material_delta": true,
+  "decision": "NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS becomes the global default execution principle",
+  "quality_separation": [
+    "Artifact existence != Design quality",
+    "Traceability != Professional finish",
+    "Evidence correctness != Visual excellence",
+    "Process PASS != MAIN KEEP",
+    "Machine PASS != Design PASS",
+    "Executed != Validated"
+  ],
+  "project_specific_architecture_rule": "Global policy does not impose a universal chapter count. Existing independently valid architecture is preserved unless an explicit justified DEMOTE/CUT is recorded.",
+  "c04_relation": "C04 12-layer architecture is a project-specific inheritance/example only, not the global OLEANDER template.",
+  "does_not_prove": [
+    "No design artifact receives MAIN status from this governance change",
+    "No project, case, validation, field, rights, engineering, manufacturing or release state is promoted",
+    "No existing project architecture is frozen against future explicit justified restructuring"
+  ],
+  "target_files": [
+    "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "00-governance/README.md"
+  ],
+  "state": "OWNER_RECEIPT_CREATED / POLICY_WRITE_AUTHORIZED"
+}

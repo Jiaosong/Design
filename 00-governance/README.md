@@ -22,6 +22,26 @@ GitHub repository paths such as `01-business/`, `02-culture/`, `03-ip/`, `04-spa
 
 **No-loss / no-pollution rule:** preserve history in Git history, `99-archive` or migration records, but maintain only one current authority. Do not create parallel replacement pages/files when an in-place identity, relation or current-file repair is sufficient.
 
+### Global default execution principle｜NO COMPRESSION / NO LOSS
+
+Canonical policy: [`OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md`](OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md)
+
+All OLEANDER projects, workstreams, validations, cases, Practice outputs and delivery surfaces inherit by default:
+
+> **NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS**
+
+Global quality separation:
+- `Artifact existence ≠ Design quality`;
+- `Traceability ≠ Professional finish`;
+- `Evidence correctness ≠ Visual excellence`;
+- `Process PASS ≠ MAIN KEEP`;
+- `Machine PASS ≠ Design PASS`;
+- `Executed ≠ Validated`.
+
+This policy does **not** impose one universal chapter count or the C04 12-layer architecture on other projects. Each project keeps its own valid architecture. The hard rule is that independently valid layers, content systems, design outcomes and evidence chains may not be silently collapsed or deleted merely for brevity, page count, cleaner presentation, simpler Web, shorter film or visual minimalism.
+
+Reorder / split / add / regroup / reweight / redraw are allowed when unique information and design function are preserved. Any genuine removal must be explicit `DEMOTE TO SUPPORT / DEMOTE TO PROCESS / HOLD / CUT` with a concrete design reason. `Compression` by itself is never a valid design reason.
+
 Current migration record: [`migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md`](migration/OLEANDER_SYS_GOV_Architecture-Realignment_v1.1.0_ACTIVE_E2_20260811.md).
 
 ## Registry Recovery / Current physical identity
