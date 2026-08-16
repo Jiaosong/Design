@@ -1,0 +1,56 @@
+{
+  "schema": "oleander.owner-receipt/1.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_GAME_MAP_v1_3",
+  "owner": "Digital / App deepening",
+  "branch": "c04/app-game-map-v1-3-deepening",
+  "base_main_sha": "9dd784dd903fcfd2af42d75ec4bc77c5772025fd",
+  "state": "EXECUTED_SOURCE / MAIN_CANDIDATE / PIXEL_READBACK_HOLD / FIELD_OPEN / NO_PROMOTION",
+  "authority_consumed": [
+    "OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0",
+    "C04 current authority chain",
+    "C04_R01-R13_CANONICAL_SCENE_REGISTER_v1.0",
+    "App/Game Map v1.2",
+    "R05/R06 merged scene deepening",
+    "C04 9Q visitor questions"
+  ],
+  "material_delta": [
+    "FULL/LIGHT/OFF digital presence moved from explanatory copy into interactive state behavior",
+    "Digital Silence interaction added without adding a new primary navigation tab",
+    "R05/R06/R13 scene-level digital retreat behavior bound into Imprint dialogs",
+    "NORMAL/DEGRADED/CLOSED/UNKNOWN demo state machine added with CLOSED/UNKNOWN fail-closed Return emphasis",
+    "Return-to-Recognition-to-My-Book memory closure added",
+    "No-phone minimum-complete journey made explicit as LOOK/MOVE/REST/RETURN"
+  ],
+  "no_loss": {
+    "today_preserved": true,
+    "route_preserved": true,
+    "read_preserved": true,
+    "my_book_preserved": true,
+    "service_return_preserved": true,
+    "boat_cable_walk_preserved": true,
+    "r01_r13_library_preserved": true,
+    "audience_depth_preserved": true,
+    "local_memory_preserved": true,
+    "print_fallback_preserved": true,
+    "no_gps_no_login_no_cloud_preserved": true,
+    "compression_used_as_reason": false
+  },
+  "does_not_prove": [
+    "finished mobile or desktop visual quality",
+    "live operation status",
+    "GPS positioning",
+    "field conditions",
+    "measured route geometry",
+    "final safety or accessibility conditions",
+    "MAIN KEEP",
+    "merge or promotion"
+  ],
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "construction": "NOT_FOR_CONSTRUCTION"
+  }
+}
