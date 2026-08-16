@@ -1,0 +1,46 @@
+{
+  "review_id": "C04-CULTURE-MAIN-V2-POST-GENERATION-REVIEW-20260816",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "case_id": "C04",
+  "review_basis": "Actual reopened 1920x1080 PNG finished outputs after v2.1 readability repair",
+  "authority": [
+    "Governance v1.1.1",
+    "Artifact Review System v1.0",
+    "Post-Generation Review Gate",
+    "C04_CURRENT 2026-08-16"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "supersedes": "C04_CULTURE_MAIN_DESIGN_v1 visual decisions; v1 remains REJECTED / PROVENANCE ONLY",
+  "common_review": {
+    "AR-G01": "PASS — project/case/figure/version naming explicit",
+    "AR-G02": "PASS — v2.1 CURRENT CANDIDATE; v1 rejected provenance",
+    "AR-G03": "PASS — 5 editable SVG + 5 final PNG + source manifest + owner run manifest",
+    "AR-G04": "PASS — internal labels/status/IDs consistent",
+    "AR-G05": "PASS — cross-file journey/culture/truth vocabulary consistent",
+    "AR-G06": "PASS — no new field/species/geology/safety/live-state claim; R13 conceptual and map NTS boundaries explicit",
+    "AR-G07": "PASS — SVG render and PNG reopen verified",
+    "AR-G08": "PASS — SVG to 1920x1080 PNG rerender repeated after readability repair",
+    "AR-G09": "PASS — v1 rejection, owner run manifest and v2.1 repair trace recorded",
+    "AR-G10": "PASS — final pixels reopened; hierarchy, boundary, occlusion, proportion, view appropriateness, consistency and evidence boundary reviewed"
+  },
+  "specific_review": {
+    "AR-S06": "PASS — Qingjiang-specific source pixels dominate; no generic AI moodboard; typography/crop/alignment readable; no critical occlusion",
+    "AR-S08": "PASS — first-read/scene argument/cross-page system coherent; no dashboard or matrix first-read",
+    "AR-S09": "PENDING in this receipt; closes only after durable package upload + independent retrieval + GitHub/Drive receipt consistency"
+  },
+  "figures": [
+    {"id":"CUL2_01_CULTURE_JOURNEY_MAIN","decision":"KEEP","role":"MAIN","png_sha256":"999147a5151a5f1888236391eabaffcc20dfeba8418f868dbaccdfcd9136262c","note":"real Qingjiang first-read + journey map; culture expressed as LOOK/COMPARE/LISTEN/REMEMBER"},
+    {"id":"CUL2_02_PLACE_NAME_LOCAL_STORY","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"2446087e415f25bc72d2d32959b6a7d8f50b1c5beece03f34fa867c1ba4cfa92","note":"map-based R07/R09/R12 scene grammar; no invented peak image or historical-site equivalence"},
+    {"id":"CUL2_03_R06_WISDOM","decision":"KEEP","role":"MAIN","png_sha256":"034fa979b3b692ab25ab7391a221e1790fea962838573d185de6d37168ae84be","note":"strongest scene; actual valley pixel carries first-read; WISDOM = LOOK/COMPARE/EXPLAIN/OPEN"},
+    {"id":"CUL2_04_R13_WITHDRAW_RETURN","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"b0d70d88e0677e22b39490a028283676b3404f2766d7814aa680b06f0c9fdc70","note":"culture/game withdraws under high-attention/return conditions; conceptual R13 pixel does not claim site safety"},
+    {"id":"CUL2_05_MEMORY_JOURNAL","decision":"KEEP","role":"MAIN","png_sha256":"487a787cee59caa0292f9667b8749c79ab04751158479f73f44040aa016f9b3b","note":"Qingjiang Journal/My Book close culture as personal memory, not 13/13 completion"}
+  ],
+  "director_summary": {
+    "strongest": "CUL2_03_R06_WISDOM",
+    "memory_main": "CUL2_05_MEMORY_JOURNAL",
+    "culture_main": "CUL2_01_CULTURE_JOURNEY_MAIN",
+    "controlled_support": ["CUL2_02_PLACE_NAME_LOCAL_STORY", "CUL2_04_R13_WITHDRAW_RETURN"]
+  },
+  "overall": "POST-REVIEW PASS / PACKAGE RELEASE PENDING",
+  "promotion": "NO"
+}
