@@ -1,0 +1,55 @@
+name: OLEANDER Universal Production Environment
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.*'
+      - '00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.*'
+      - 'tools/oleander-runtime/**'
+      - '.github/workflows/oleander-universal-production-environment.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.*'
+      - '00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.*'
+      - 'tools/oleander-runtime/**'
+      - '.github/workflows/oleander-universal-production-environment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  environment-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate machine-readable contracts
+        run: |
+          set -euo pipefail
+          python3 -m json.tool 00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json >/dev/null
+          python3 -m json.tool 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json >/dev/null
+      - name: Validate shared Blender adapter exists
+        run: |
+          set -euo pipefail
+          test -f tools/oleander-runtime/activate-blender.sh
+          test -f tools/oleander-runtime/blender.sh
+          bash -n tools/oleander-runtime/activate-blender.sh
+          bash -n tools/oleander-runtime/blender.sh
+      - name: Validate environment invariants
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json')
+          data = json.loads(p.read_text())
+          assert data['scope'] == 'OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS'
+          assert 'FIGMA_IS_OPTIONAL_NOT_DEFAULT' in data['hard_rules']
+          assert data['figma']['role'] == 'OPTIONAL_SPECIALIST_ADAPTER'
+          assert data['blender_shared_runtime']['scope'] == 'OLEANDER_ALL_PROJECTS'
+          assert data['blender_shared_runtime']['preferred_wrapper'] == 'tools/oleander-runtime/blender.sh'
+          assert 'PENDING_VERIFICATION' in data['capability_states']
+          print('OLEANDER universal production environment contract: PASS')
+          PY
