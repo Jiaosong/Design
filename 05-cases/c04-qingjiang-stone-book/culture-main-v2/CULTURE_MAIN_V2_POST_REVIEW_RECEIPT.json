@@ -11,17 +11,17 @@
     "AR-G02": "PASS — v2.1 CURRENT CANDIDATE; v1 rejected provenance",
     "AR-G03": "PASS — 5 editable SVG + 5 final PNG + source manifest + owner run manifest",
     "AR-G04": "PASS — internal labels/status/IDs consistent",
-    "AR-G05": "PASS — cross-file journey/culture/truth vocabulary consistent",
+    "AR-G05": "PASS — cross-file journey/culture/truth vocabulary consistent; final persistence state reconciled",
     "AR-G06": "PASS — no new field/species/geology/safety/live-state claim; R13 conceptual and map NTS boundaries explicit",
     "AR-G07": "PASS — SVG render and PNG reopen verified",
     "AR-G08": "PASS — SVG to 1920x1080 PNG rerender repeated after readability repair",
-    "AR-G09": "PASS — v1 rejection, owner run manifest and v2.1 repair trace recorded",
+    "AR-G09": "PASS — v1 rejection, owner run manifest, v2.1 repair and persistence closure trace recorded",
     "AR-G10": "PASS — final pixels reopened; hierarchy, boundary, occlusion, proportion, view appropriateness, consistency and evidence boundary reviewed"
   },
   "specific_review": {
     "AR-S06": "PASS — Qingjiang-specific source pixels dominate; no generic AI moodboard; typography/crop/alignment readable; no critical occlusion",
     "AR-S08": "PASS — first-read/scene argument/cross-page system coherent; no dashboard or matrix first-read",
-    "AR-S09": "PENDING in this receipt; closes only after durable package upload + independent retrieval + GitHub/Drive receipt consistency"
+    "AR-S09": "PASS — closed by CULTURE_MAIN_V2_PERSISTENCE_AND_F_HANDOFF_RECEIPT after PAP-G0—G6, Drive independent retrieval and Notion/GitHub cross-system readback"
   },
   "figures": [
     {"id":"CUL2_01_CULTURE_JOURNEY_MAIN","decision":"KEEP","role":"MAIN","png_sha256":"615a6869cdef26d632a712a8de3d542ce3b5b3534e5ecd7fd32f159f00928bbc","svg_sha256":"23f1d7d953dbae09f1a2e1fdb29d5172569760868f1cbf1d890b97560f91dc4e"},
@@ -36,6 +36,12 @@
     "culture_main": "CUL2_01_CULTURE_JOURNEY_MAIN",
     "controlled_support": ["CUL2_02_PLACE_NAME_LOCAL_STORY","CUL2_04_R13_WITHDRAW_RETURN"]
   },
-  "overall": "POST-REVIEW PASS / PACKAGE RELEASE PENDING",
+  "persistence_closure": {
+    "drive_file_id":"1SBlBU1RlNQ6YEd-tSV3bZn64tfTxR4BL",
+    "package_sha256":"ae2aa53ed8bf7229e435c29d8cbe341345967edcd223ef99ca4446edc1d6c1ae",
+    "notion_receipt_id":"3beb86be-5c47-81f3-a882-f464b8c542c3",
+    "PAP_G0_G6":"PASS"
+  },
+  "overall": "POST-REVIEW PASS / PERSISTENCE PASS / PACKAGE RELEASE PASS (bounded Culture v2 artifact package only)",
   "promotion": "NO"
 }
