@@ -1,0 +1,70 @@
+{
+  "schema": "c04.physical-memory-production-manifest/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "base_main": "25f322bee334b8e5e4f4a066d0ecc8bdc7da38e4",
+  "reviewed_local_outputs": [
+    {
+      "file": "C04_P02_LEAN_REST_DESIGN_SOURCE_V2.svg",
+      "bytes": 106815,
+      "sha256": "b7d63f44b0208fd14a9d04c415ba033308340c0e19a1f8b3ba482e1d0d7dd797",
+      "status": "REVIEWED_EXACT_PORTABLE",
+      "remote_source_carrier": "P02_LEAN_REST_DESIGN_SOURCE_V2.svg",
+      "note": "Exact local portable embeds the reviewed R06 presentation pixel; GitHub source carrier binds that image externally."
+    },
+    {
+      "file": "C04_P02_LEAN_REST_DESIGN_SOURCE_V2.png",
+      "bytes": 1388081,
+      "sha256": "379dbf65e44c4bf60f040d6855e5609a469d7d9e0774d61a6ac7d422df18bfdf",
+      "status": "VISUAL_REVIEW_KEEP"
+    },
+    {
+      "file": "C04_P01_STEP_LIGHT_DESIGN_SOURCE_V2.svg",
+      "bytes": 5963,
+      "sha256": "b3e34dcf466fb254c6dfaa685f9f6800f909c23a5e57b7ab58c9d7186e311d4d",
+      "status": "REVIEWED_EDITABLE_SOURCE",
+      "remote_source_carrier": "P01_STEP_LIGHT_DESIGN_SOURCE_V2.svg"
+    },
+    {
+      "file": "C04_P01_STEP_LIGHT_DESIGN_SOURCE_V2.png",
+      "bytes": 279244,
+      "sha256": "82dba8fe1a02eb53df84f8ddf2e8442e91a3ca520a75ff9acf56e661956ea9d3",
+      "status": "VISUAL_REVIEW_KEEP"
+    },
+    {
+      "file": "C04_MEMORY_PAPER_DIGITAL_BRIDGE_V2.svg",
+      "bytes": 75186,
+      "sha256": "32d7aade4ccce529ff61caca815270d900a607a4bdc66ffbd71aba7f4e88160a",
+      "status": "REVIEWED_EXACT_PORTABLE",
+      "remote_source_carrier": "MEMORY_PAPER_DIGITAL_BRIDGE_V2.svg",
+      "note": "GitHub carrier reconstructs the same design system without claiming live paper↔App sync."
+    },
+    {
+      "file": "C04_MEMORY_PAPER_DIGITAL_BRIDGE_V2.png",
+      "bytes": 200305,
+      "sha256": "35424dac88904a5c6bd01935cfe234964fdb570295894ef5994663cfed7ff1af",
+      "status": "VISUAL_REVIEW_KEEP"
+    },
+    {
+      "file": "C04_PHYSICAL_SENSORY_MEMORY_V2_REVIEW.png",
+      "bytes": 2625562,
+      "sha256": "78d476f2127eb564f5fc618dc31fffba693aa8ddd03fea6ae32d51fed606ed37",
+      "status": "COMBINED_VISUAL_REVIEW_KEEP"
+    }
+  ],
+  "source_bindings": {
+    "R06_PRESENTATION_PIXEL": {
+      "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+      "does_not_prove": "site/geometry/engineering authority"
+    },
+    "P01_SOURCE": "physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg",
+    "P02_SOURCE": "physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+    "M01_SOURCE": "physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg"
+  },
+  "does_not_prove": [
+    "FIELD_PASS",
+    "ENGINEERING_APPROVAL",
+    "INSTALLATION_READINESS",
+    "MANUFACTURING_READINESS",
+    "PROJECT_PROMOTION"
+  ]
+}
