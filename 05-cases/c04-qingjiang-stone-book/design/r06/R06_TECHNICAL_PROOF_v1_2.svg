@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<style>
+.bg{fill:#f2efe7}.card{fill:#faf8f2;stroke:#cbd2ce;stroke-width:1.4}.ink{fill:#18231f}.muted{fill:#6e7873}.qing{fill:#477d77}.seal{fill:#a64b3e}.steel{fill:#5d6b66}.wood{fill:#a98662}.copper{fill:#8f5d48}.rc{fill:#d5d7d2}
+.h1{font:700 48px "Noto Serif CJK SC","Songti SC",serif}.h2{font:700 25px "Noto Serif CJK SC","Songti SC",serif}
+.body{font:400 16px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.small{font:400 13px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+.cap{font:700 12px "Noto Sans CJK SC","Microsoft YaHei",sans-serif;letter-spacing:1.2px}.dim{stroke:#a64b3e;stroke-width:1.6;fill:none}.line{stroke:#18231f;stroke-width:3;fill:none}.ghost{stroke:#9ba7a1;stroke-width:2;fill:none;stroke-dasharray:7 7}
+</style>
+<rect width="1920" height="1080" class="bg"/>
+<text x="68" y="58" class="cap qing">R06 / TECHNICAL PROOF v1.2 · SHEET 02</text>
+<text x="68" y="119" class="h1 ink">1200 × 160 × 975：解释 / 倚靠阅读构件，不是防坠栏杆。</text>
+<text x="68" y="160" class="body muted">C23 v1.5 recommended interface · concept benchmark only · NOT FOR CONSTRUCTION</text>
+<rect x="68" y="205" width="1050" height="520" rx="20" class="card"/>
+<text x="96" y="245" class="cap qing">GENERAL ARRANGEMENT / RECONSTRUCTED FROM LOCKED INTERFACE</text>
+<path d="M145 585 C360 550 570 560 1015 500" stroke="#9da79f" stroke-width="7" fill="none"/>
+<path d="M765 420 L1020 390" class="ghost"/>
+<text x="830" y="373" class="small muted">independent protective boundary if FIELD requires</text>
+<rect x="320" y="342" width="560" height="54" rx="7" class="copper"/>
+<rect x="335" y="327" width="530" height="19" rx="4" class="wood"/>
+<rect x="390" y="396" width="36" height="250" rx="3" class="steel"/>
+<rect x="774" y="396" width="36" height="220" rx="3" class="steel"/>
+<rect x="348" y="646" width="118" height="12" class="steel"/>
+<rect x="733" y="616" width="118" height="12" class="steel"/>
+<rect x="330" y="658" width="155" height="56" rx="2" class="rc"/>
+<rect x="715" y="628" width="155" height="56" rx="2" class="rc"/>
+<circle cx="612" cy="365" r="18" fill="#18231f"/><path d="M612 383L612 455M612 405L575 433M612 405L648 424M612 455L580 510M612 455L646 510" class="line"/>
+<path d="M320 305V280M880 305V280M320 290H880" class="dim"/><path d="M320 290l10-6v12zM880 290l-10-6v12z" fill="#a64b3e"/><text x="600" y="274" text-anchor="middle" class="body seal">1200 mm</text>
+<path d="M925 327H950M925 714H950M940 327V714" class="dim"/><path d="M940 327l-6 10h12zM940 714l-6-10h12z" fill="#a64b3e"/><text x="962" y="527" class="body seal">975 mm</text>
+<text x="96" y="690" class="small muted">Depth = 160 mm. Two support-post centers ±420 mm. Main member top = 975 mm above conceptual datum.</text>
+<rect x="1148" y="205" width="702" height="252" rx="20" class="card"/>
+<text x="1176" y="244" class="cap qing">FUNCTION / SAFETY ROLE</text>
+<text x="1176" y="286" class="h2 ink">975 mm 本体不能冒充唯一防护。</text>
+<text x="1176" y="327" class="body ink">用途：解释 / 倚靠 / 阅读 / 短恢复。</text>
+<text x="1176" y="360" class="body muted">若最终位于坠落边缘，独立防护边界必须由 FIELD + 专业设计确定。</text>
+<text x="1176" y="402" class="small seal">CONCEPT BENCHMARK: 1.0 kN/m horizontal leaning robustness</text>
+<text x="1176" y="429" class="small muted">仅作为 C23 v1.5 概念作用场景，不是结构验证。</text>
+<rect x="1148" y="483" width="702" height="242" rx="20" class="card"/>
+<text x="1176" y="522" class="cap qing">MATERIAL / CMF / REPLACEABILITY</text>
+<circle cx="1202" cy="563" r="13" class="steel"/><text x="1228" y="568" class="body ink">隐藏主框：Q355-class / equivalent，镀锌或高性能涂层</text>
+<circle cx="1202" cy="603" r="13" class="copper"/><text x="1228" y="608" class="body ink">可见深铜：优先可控涂层镀锌钢；耐候钢仅可选表皮</text>
+<circle cx="1202" cy="643" r="13" class="wood"/><text x="1228" y="648" class="body ink">触摸面：35–45 mm 耐久/改性木，独立可替换</text>
+<text x="1176" y="688" class="small muted">潮湿、径流染色、异种金属、积水与维护可达性必须在下一阶段关闭。</text>
+<rect x="68" y="755" width="860" height="255" rx="20" class="card"/>
+<text x="96" y="794" class="cap qing">FOUNDATION / CONNECTION SCENARIOS</text>
+<text x="96" y="836" class="h2 ink">A｜已验证 RC</text>
+<text x="96" y="872" class="body ink">240×160×12 mm base plate candidate</text>
+<text x="96" y="904" class="body ink">4 × M16 post-installed anchors candidate</text>
+<text x="96" y="936" class="small muted">Embedment NOT FIXED：混凝土强度、边距、钢筋扫描、裂缝与锚固系统决定。</text>
+<text x="500" y="836" class="h2 ink">B｜直接岩体</text>
+<text x="500" y="872" class="body seal">ANCHOR SIZE / EMBEDMENT = UNSPECIFIED</text>
+<text x="500" y="904" class="body muted">岩性、节理、风化和抗拔未知；不能把混凝土后锚固逻辑直接套到岩体。</text>
+<text x="500" y="948" class="cap seal">FIELD + GEO / STRUCTURAL ENGINEER</text>
+<rect x="958" y="755" width="892" height="255" rx="20" class="card"/>
+<text x="986" y="794" class="cap qing">MAINTENANCE / FAILURE-FIRST</text>
+<g transform="translate(986 824)">
+<rect width="158" height="130" rx="12" fill="#eef1ef"/><text x="14" y="26" class="cap seal">OPENING</text><text x="14" y="55" class="small ink">状态 / 损伤</text><text x="14" y="80" class="small muted">明显异常则退出</text>
+<rect x="174" width="158" height="130" rx="12" fill="#eef1ef"/><text x="188" y="26" class="cap seal">MONTHLY</text><text x="188" y="55" class="small ink">表面 / 松动</text><text x="188" y="80" class="small muted">障碍 / 腐蚀</text>
+<rect x="348" width="158" height="130" rx="12" fill="#eef1ef"/><text x="362" y="26" class="cap seal">QUARTER</text><text x="362" y="55" class="small ink">排水 / 固定</text><text x="362" y="80" class="small muted">涂层 / 锚固</text>
+<rect x="522" width="158" height="130" rx="12" fill="#eef1ef"/><text x="536" y="26" class="cap seal">ANNUAL</text><text x="536" y="55" class="small ink">结构 / 腐蚀</text><text x="536" y="80" class="small muted">替换 / 重涂判断</text>
+<rect x="696" width="158" height="130" rx="12" fill="#eef1ef"/><text x="710" y="26" class="cap seal">EVENT</text><text x="710" y="55" class="small ink">暴雨 / 撞击</text><text x="710" y="80" class="small muted">关闭后复核</text>
+</g>
+<text x="68" y="1051" class="small muted">FIELD OPEN: exact location / clear width / fall height / existing guard / substrate / anchorage / drainage / exposure / accessibility. Artifact existence ≠ engineering validation.</text>
+</svg>
