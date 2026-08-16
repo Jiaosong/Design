@@ -1,0 +1,35 @@
+{
+  "receipt_id": "OLEANDER-CONTROL-PLANE-NO-LOSS-POSTMERGE-READBACK-2026-08-16",
+  "scope": "GLOBAL OLEANDER CONTROL PLANE / NO-LOSS ARCHITECTURE ENFORCEMENT",
+  "source_policy": "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+  "implementation_pr": 131,
+  "implementation_head_sha": "2f95abfa1dabc9c8d848eadbbe8035c4c2bf08e3",
+  "merge_sha": "1e6dd1fe0276aa4e57d193c0aacb6c9482bdd9a2",
+  "ci": {
+    "control_plane_v0_3_run": 31933606938,
+    "control_plane_result": "SUCCESS",
+    "ai_governance_run": 31933606951,
+    "ai_governance_result": "SUCCESS"
+  },
+  "main_readback": {
+    "control_plane_py_blob_sha": "f6aee38c8bbbcd5616cfd4473d8e3298b3b1f4b9",
+    "control_card_schema_blob_sha": "d7bcabcb3eb45207dcd4d702987a1b226cd6f176",
+    "architecture_preservation_review_required": true,
+    "global_fixed_chapter_count_applied_const": false,
+    "c04_12_layer_global_template": false
+  },
+  "machine_contract": [
+    "Architecture-layer work requires preservation_review.",
+    "Established objects must be accounted for when present.",
+    "Concept, presentation and truth/evidence states remain separate.",
+    "CUT requires concept_state=DROP.",
+    "DEMOTE actions must match SUPPORT/PROCESS presentation state.",
+    "Compression/page-count/minimalism/shorter-delivery language cannot be the sole removal reason."
+  ],
+  "state": "MERGED / CI_PASS / MAIN_READBACK_PASS / GLOBAL DEFAULT COMPILED INTO CONTROL PLANE",
+  "does_not_prove": [
+    "No Design PASS or MAIN status is granted by this receipt.",
+    "No project-specific architecture is frozen or replaced.",
+    "No Field, Rights, Engineering, Human, Promotion or Release state is upgraded."
+  ]
+}
