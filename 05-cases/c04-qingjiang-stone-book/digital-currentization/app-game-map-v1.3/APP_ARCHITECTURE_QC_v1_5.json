@@ -1,0 +1,31 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"APP_PRODUCT_ARCHITECTURE_v1.5",
+  "design_state":"CANDIDATE / REQUIRES VISUAL QA + USER-SCENARIO TEST",
+  "previous_architecture":{"v1.4":"REVISE / PROVENANCE","reason":"function-first expansion before user-relation and architecture comparison"},
+  "review":{
+    "user_relation":{"result":"PASS_AT_ARCHITECTURE_LEVEL","evidence":"seven user jobs + original/break/intended relation explicitly defined"},
+    "comparison_first":{"result":"PASS_SOURCE","evidence":"IA-A Tabs-first / IA-B Journey-state-first / IA-C Map-first compared with locked variables"},
+    "reading_unit":{"result":"PASS_SOURCE","evidence":"each journey phase owns one central judgment"},
+    "hierarchy":{"result":"PASS_SOURCE","evidence":"L0/L1/L2/L3/L4 roles + Field/Reading/Evidence zones applied"},
+    "interaction_consequence":{"result":"PASS_SOURCE","evidence":"participation must change reveal/judgment/memory/next state; click-only pattern rejected"},
+    "return_priority":{"result":"PASS_SOURCE","evidence":"Return is global priority and becomes L1 under closed/unknown/low-stamina states"},
+    "no_phone":{"result":"PASS_SOURCE","evidence":"shadow path mapped for every critical user job"},
+    "thirteen_imprints":{"result":"PASS_SOURCE","evidence":"complete R01-R13 preserved but full index demoted from default field experience"},
+    "memory":{"result":"PASS_SOURCE","evidence":"memory caused by recognition/changed judgment rather than automatic collection"},
+    "visual_first_read":{"result":"HOLD","reason":"prototype source exists but no live pixel/browser readback in this conversation"},
+    "responsive":{"result":"HOLD","reason":"390px CSS contract exists; actual browser inspection not executed"},
+    "human_test":{"result":"NOT_RUN","reason":"architecture scenarios defined but no participant session"}
+  },
+  "primary_candidate":"IA-B / JOURNEY-STATE-FIRST",
+  "prototype":"C04_QINGJIANG_APP_v1_5_JOURNEY_STATE_PROTOTYPE.html",
+  "current_gaps":[
+    "replace relation placeholder imagery with source-grounded Qingjiang/R05/R06 visuals during visual-design phase",
+    "perform actual mobile browser visual QA",
+    "test whether journey-state transitions are understood without training",
+    "test whether secondary capability drawer keeps full R01-R13 discoverable without returning to catalogue-first behavior",
+    "test R13 and UNKNOWN/CLOSED for true attention withdrawal"
+  ],
+  "does_not_prove":["Design PASS","field validation","live operations","precise positioning","safety validation","promotion"],
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"}
+}
