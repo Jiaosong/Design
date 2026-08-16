@@ -2,15 +2,26 @@
   "schema":"oleander.artifact-review/1.0",
   "project":"PRJ-C04-QINGJIANG-SHISHU",
   "artifact":"WEB_EXPERIENCE_FRAMEWORK_v2",
-  "revision":"v2.2-no-compression-current-main",
-  "review_scope":"WEB SOURCE + ARCHITECTURE + CURRENT-MAIN REBASE + MERGED R05/R06 BINDING",
-  "review_state":"SOURCE_STRUCTURE_PASS / FINAL_HEAD_CI_PENDING_READBACK / FINISHED_OUTPUT_HOLD",
+  "revision":"v2.3-control-plane-preservation",
+  "review_scope":"WEB SOURCE + ARCHITECTURE + CURRENT-MAIN REBASE + CONTROL-PLANE PRESERVATION REVIEW + MERGED R05/R06 BINDING",
+  "review_state":"SOURCE_STRUCTURE_PASS / PRESERVATION_REVIEW_PASS_SOURCE / FINAL_HEAD_CI_PENDING_READBACK / FINISHED_OUTPUT_HOLD",
   "repo_baseline":{
-    "main_sha":"68845fc60ad709966f4587b438e37528a19b7ac1",
+    "main_sha":"e962df1437a00be92738a35c6df32326759fd1bb",
     "content_sha":"b7bd4a448c088a798eb42afc76a5993de92b970e",
-    "global_policy":"00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md"
+    "global_policy":"00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "control_plane":"Architecture preservation_review enforcement merged through PR131/132"
   },
-  "policy_checks":{"NO_COMPRESSION":"PASS_SOURCE_AND_GLOBAL_AUTHORITY","NO_LOSS":"PASS_SOURCE","working_framework_not_locked":"PASS_SOURCE"},
+  "policy_checks":{"NO_COMPRESSION":"PASS_SOURCE_AND_GLOBAL_AUTHORITY","NO_LOSS":"PASS_SOURCE","working_framework_not_locked":"PASS_SOURCE","global_fixed_chapter_count_applied":false},
+  "preservation_review":{
+    "problem_layer":"Architecture",
+    "required_fields":["concept_state","presentation_state","truth_evidence_state","action","reason"],
+    "established_objects":12,
+    "accounted_objects":12,
+    "removed_objects":[],
+    "demoted_objects":[],
+    "compression_used_as_reason":false,
+    "result":"PASS_SOURCE"
+  },
   "checks":{
     "main_experience_surfaces":{"expected":["Hero","Culture","How to Play","App","Thirteen Imprints","Scene Interaction","Audience Depth","Physical/Sensory","R06/R13","Memory/IP","Technical Proof","Return"],"count":12,"result":"PASS_SOURCE"},
     "nine_visitor_questions":"PASS_MAPPED",
@@ -59,7 +70,7 @@
     "new_r05_r06_svg_dependencies":"IN_REPOSITORY_CURRENT_MAIN",
     "legacy_web_v1_raster_dependencies":"REUSED / REPOSITORY_SOURCE_RESOLUTION_NOT_PROVEN",
     "app_physical_memory_svg_dependencies":"REFERENCED_CURRENT_MERGED_SOURCES",
-    "portable_carrier":"NOT_CREATED_FOR_V2_2",
+    "portable_carrier":"NOT_CREATED_FOR_V2_3",
     "status":"PARTIAL / DOES_NOT_PROVE_FINISHED_OUTPUT"
   },
   "main_decision":"HOLD_AS_MAIN_UNTIL_FINISHED_OUTPUT_READBACK",
