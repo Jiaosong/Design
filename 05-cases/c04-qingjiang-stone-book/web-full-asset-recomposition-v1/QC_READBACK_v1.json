@@ -1,0 +1,58 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "WEB_FULL_ASSET_RECOMPOSITION_v1",
+  "state": "MAIN_CANDIDATE / DESIGN_REVIEWED / FIELD_OPEN / NO_PROMOTION",
+  "ai_image_used": false,
+  "formal_text": "HTML_SVG_VECTOR_EDITABLE",
+  "desktop": {
+    "viewport": "1440x1000",
+    "full_page_height": 12069,
+    "horizontal_overflow": false,
+    "review": "KEEP_AFTER_REVISION"
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "full_page_height": 14311,
+    "horizontal_overflow": false,
+    "focused_sections": ["map", "app", "physical", "memory"],
+    "review": "KEEP_AFTER_REVISION"
+  },
+  "repair_log": [
+    "SVG object rendering blank -> replaced with SVG img references",
+    "reviewed desktop-v2 and mobile-v2"
+  ],
+  "main_strength": "APP_GAME_MAP_INTEGRATION",
+  "main_weakness": "CULTURE_VISUAL_SPECIFICITY",
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "construction": "NOT_FOR_CONSTRUCTION"
+  },
+  "github_portable_source": {
+    "index_bytes": 618554,
+    "sha256": "23969128fe8ff6699023870db1c867f755a3957db4c2f99b345b04c3cc249f87",
+    "raster_strategy": "four non-generative clean D crops embedded as JPEG data URIs; canonical editable SVG assets referenced from merged App/Physical directories",
+    "desktop_reopen": {
+      "viewport": "1440x1000",
+      "full_page_height": 12069,
+      "horizontal_overflow": false
+    },
+    "mobile_reopen": {
+      "viewport": "390x844",
+      "full_page_height": 14311,
+      "horizontal_overflow": false
+    },
+    "browser": "system Chromium via Playwright set_content",
+    "result": "PASS_AFTER_REVISION / MAIN CANDIDATE",
+    "drive_file_id": "1x6KbC2m53XgbWwfMSoCTnrg1WZdEwA5Q"
+  },
+  "delivery_zip": {
+    "file": "C04_WEB_FULL_ASSET_RECOMPOSITION_v1.zip",
+    "sha256": "dcef64ded2b0168e5a95f4909eb970b6a9bc2e1678d1fa4a1134710ab2762d87",
+    "bytes": 7234093,
+    "drive_persisted": false
+  }
+}
