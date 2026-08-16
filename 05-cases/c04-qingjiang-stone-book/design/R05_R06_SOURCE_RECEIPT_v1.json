@@ -1,0 +1,21 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "scope":"R05_R06_SINGLE_PROJECT_DEEPENING_v1",
+  "state":"KEEP_AFTER_REVISION / FIELD_OPEN / NO_PROMOTION",
+  "total_architecture_frozen":false,
+  "r05":{
+    "identity":"R05 红花石林",
+    "disposition":"SCENE",
+    "interaction":"SEE_DO_FEEDBACK_END_EXIT",
+    "pixel_state":"REVISE_QINGJIANG_SPECIFIC_LANDSCAPE_FIRST_READ"
+  },
+  "r06":{
+    "identity":"R06 多级阶地·不对称河谷",
+    "disposition":"SCENE_SYSTEM",
+    "interaction":"LANDSCAPE_RECOVER_OPTIONAL_REVEAL_CONTINUE_RETURN",
+    "pixel_state":"REVISE_REAL_LANDSCAPE_AND_AUTHORITATIVE_PROOF_REPLACEMENT"
+  },
+  "ai_image_used":false,
+  "formal_text":"HTML_SVG_VECTOR_EDITABLE",
+  "truth_boundary":["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","NOT_FOR_CONSTRUCTION"]
+}
