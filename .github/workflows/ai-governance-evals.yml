@@ -31,6 +31,9 @@ jobs:
       - name: Validate architecture namespaces
         run: python 00-governance/schemas/validate_architecture_namespaces.py
 
+      - name: Validate current Control Cards and no-loss architecture contract
+        run: python 00-governance/control-plane/scan_control_cards.py | tee /tmp/control-card-scan.txt
+
       - name: Enforce immutable workflow action refs
         run: python evals/scripts/validate_workflow_action_pins.py
 
@@ -49,9 +52,18 @@ jobs:
           echo '- Validates AIG-02 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-03 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Discovers current Control Card v0.2 objects by content signature and applies existing Control Plane validation, including the global no-loss Architecture preservation contract.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Replay/example/test/receipt/archive/frozen-Legacy zones are not retroactively rewritten by the prospective Control Card scan.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '### Current Control Card scan' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f /tmp/control-card-scan.txt ]; then
+            sed 's/^/- /' /tmp/control-card-scan.txt >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '- Control Card scan unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo '' >> "$GITHUB_STEP_SUMMARY"
           echo '### AIG-03 current evidence' >> "$GITHUB_STEP_SUMMARY"
           if [ -f /tmp/aig03-metrics.txt ]; then
