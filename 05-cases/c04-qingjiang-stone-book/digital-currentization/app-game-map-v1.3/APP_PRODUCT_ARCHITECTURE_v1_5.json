@@ -1,0 +1,81 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "APP_PRODUCT_ARCHITECTURE",
+  "revision": "v1.5-method-grounded",
+  "state": "CANDIDATE_ARCHITECTURE / FIELD_OPEN / NO_PROMOTION",
+  "supersedes_for_architecture_review": "APP_ARCHITECTURE_v1_4",
+  "method": {
+    "loop": ["READ", "LOCATE", "TRANSLATE", "FORM", "TEST", "REVISE"],
+    "design_review": ["Reading Unit", "Hierarchy", "Rhythm", "Relation", "Geometry"],
+    "screen_hierarchy": ["L0 Identity", "L1 Central Judgment", "L2 Relation-Body", "L3 Evidence-Meta", "L4 Continuation"],
+    "principles": [
+      "context before navigation",
+      "one reading unit / one decision",
+      "field first",
+      "progressive reveal",
+      "participation must have consequence",
+      "UNKNOWN is valid",
+      "Return always wins",
+      "every critical digital job has a no-phone shadow",
+      "memory is an outcome",
+      "evidence does not own first read"
+    ]
+  },
+  "user_jobs": [
+    {"id":"J01","name":"ORIENT","question":"我现在处在这趟游程的什么位置？"},
+    {"id":"J02","name":"DECIDE_NEXT_MOVE","question":"我下一步应该继续、分支、休息还是回来？"},
+    {"id":"J03","name":"NOTICE","question":"这里有什么值得我真正看一眼？"},
+    {"id":"J04","name":"ENGAGE","question":"如果我愿意参与，我具体做什么？"},
+    {"id":"J05","name":"RECOVER","question":"我累了、想停、想减少信息时怎么办？"},
+    {"id":"J06","name":"RETURN","question":"我怎样清楚地结束探索并回来？"},
+    {"id":"J07","name":"REMEMBER","question":"哪一部分真的值得我带走？"}
+  ],
+  "architecture_comparison": {
+    "locked_variables": ["R01-R13 identity", "BOAT/CABLE/WALK", "Service/Return priority", "Reality states", "FULL/LIGHT/OFF", "offline/no-GPS/no-phone", "content modes", "audience depth", "My Book concept"],
+    "changed_variable": "primary information architecture and reading order",
+    "candidates": [
+      {"id":"IA-A","name":"TABS_FIRST","state":"CONTROL","risk":"feature-department / scenic-app reading"},
+      {"id":"IA-B","name":"JOURNEY_STATE_FIRST","state":"PRIMARY_CANDIDATE","reason":"maps product to real visitor decisions and allows phone retreat"},
+      {"id":"IA-C","name":"MAP_FIRST","state":"SUPPORTING_REFERENCE","risk":"turns content into POIs and may let map replace landscape"}
+    ]
+  },
+  "journey_state_spine": [
+    {"id":"P01","name":"ENTER","central_judgment":"今天先怎么进入清江？","primary_jobs":["J01","J02"]},
+    {"id":"P02","name":"MOVE","central_judgment":"继续、分支、休息或返回","primary_jobs":["J01","J02","J06"]},
+    {"id":"P03","name":"NOTICE","central_judgment":"这里有什么值得真正看一眼？","primary_jobs":["J03"]},
+    {"id":"P04","name":"ENGAGE","central_judgment":"只做一个有后续结果的动作","primary_jobs":["J04"]},
+    {"id":"P05","name":"REVEAL","central_judgment":"什么信息真正改变了刚才的判断？","primary_jobs":["J04"]},
+    {"id":"P06","name":"RECOVER","central_judgment":"先停下来，还是继续？","primary_jobs":["J05","J06"]},
+    {"id":"P07","name":"RETURN","central_judgment":"现在先回来。","primary_jobs":["J06"]},
+    {"id":"P08","name":"RECOGNIZE","central_judgment":"回来时，你现在认出了什么？","primary_jobs":["J07"]},
+    {"id":"P09","name":"REMEMBER","central_judgment":"哪一部分值得留下？","primary_jobs":["J07"]}
+  ],
+  "secondary_capabilities": {
+    "ROUTE": ["journey overview", "movement mode", "branch relation", "rest overlay", "reality state", "return overlay", "no-phone handoff"],
+    "IMPRINTS": ["nearby meaningful", "by question", "by mode", "full R01-R13 index", "canonical scene detail"],
+    "BOOK": ["journey trace", "saved scenes", "changed/unknown judgments", "recognition", "journal", "revisit"],
+    "SERVICE": ["return now", "human service", "paper map", "offline/no-phone", "operator/field status placeholder"]
+  },
+  "object_model": ["JourneySession", "TravelLeg", "DecisionPoint", "Scene", "Observation", "RecoveryState", "MemoryPage"],
+  "interaction_contract": "USER_INTENT -> ACTION -> SYSTEM_RESPONSE -> USER_CONSEQUENCE -> EXIT",
+  "visual_contract": {
+    "mobile_reference": 390,
+    "columns": 4,
+    "gutter": 12,
+    "side_margin": 20,
+    "zones": ["Field Zone", "Reading Zone", "Evidence Zone"],
+    "anti_patterns": ["equal-weight card walls", "filter-first interaction", "decorative semantic-free graphics", "generic Signal accent", "progress/collection indicators"]
+  },
+  "no_phone_shadow_required_for": ["ORIENT", "DECIDE_NEXT_MOVE", "NOTICE", "ENGAGE", "RECOVER", "RETURN", "REMEMBER"],
+  "test_scenarios": ["first arrival", "R01 cable movement", "R05 optional play", "R06 low stamina/recovery", "R13 body-return priority", "UNKNOWN/CLOSED", "no-phone", "Return-to-Memory"],
+  "preservation": {
+    "today_capability": "KEEP_REFRAMED",
+    "route_capability": "KEEP",
+    "thirteen_imprints_complete_system": "KEEP",
+    "my_book": "KEEP_REFRAMED_AS_OUTCOME",
+    "service_return": "KEEP_PRIORITY",
+    "v1_2_v1_3_source": "NOT_OVERWRITTEN",
+    "project_12_layer_web_architecture": "NOT_CHANGED"
+  },
+  "truth_boundary": {"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","NTS":true,"construction":"NOT_FOR_CONSTRUCTION"}
+}
