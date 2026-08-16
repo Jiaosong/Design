@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.run-manifest/1.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_GAME_MAP_v1_3",
+  "run_date": "2026-08-16",
+  "base_main_sha": "9dd784dd903fcfd2af42d75ec4bc77c5772025fd",
+  "branch": "c04/app-game-map-v1-3-deepening",
+  "execution_rule": "NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS",
+  "inputs": [
+    {"object": "app-game-map-v1.2", "role": "current digital design source"},
+    {"object": "C04_R01-R13_CANONICAL_SCENE_REGISTER_v1.0", "role": "Rxx identity and disposition"},
+    {"object": "design/r05", "role": "R05 optional scene interaction contract"},
+    {"object": "design/r06", "role": "R06 recover/reveal/body-use contract"},
+    {"object": "C04 9Q", "role": "visitor-experience audit questions"},
+    {"object": "OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0", "role": "global no-loss authority"}
+  ],
+  "outputs": [
+    {"path": "digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html", "type": "self-contained editable HTML/CSS/JS/SVG prototype"},
+    {"path": "digital-currentization/app-game-map-v1.3/README.md", "type": "design delta and boundary"},
+    {"path": "digital-currentization/app-game-map-v1.3/OWNER_RECEIPT_v1_3.json", "type": "owner receipt"},
+    {"path": "digital-currentization/app-game-map-v1.3/RUN_MANIFEST_v1_3.json", "type": "run manifest"},
+    {"path": "digital-currentization/app-game-map-v1.3/QC_READBACK_v1_3.json", "type": "source-level QC carrier"}
+  ],
+  "primary_ia": ["TODAY", "ROUTE", "READ", "MY BOOK"],
+  "persistent_service": "SERVICE / RETURN",
+  "state_axes": {
+    "reality": ["NORMAL", "DEGRADED", "CLOSED", "UNKNOWN"],
+    "delivery": ["FULL", "LIGHT", "OFF"]
+  },
+  "digital_retreat": {
+    "global": "Digital Silence overlay",
+    "R01": "OFF/LIGHT moving-view observation; no forced UI",
+    "R05": "LIGHT; one optional observation then exit",
+    "R06": "OFF -> SHORT reveal -> OFF",
+    "R13": "OFF; PLAY OFF; Body/Safety/Return first"
+  },
+  "no_phone_minimum_complete": ["LOOK", "MOVE", "REST", "RETURN"],
+  "memory_closure": ["RETURN", "RECOGNITION", "RECORD", "MY BOOK"],
+  "gates": {
+    "authority_consumed": "PASS_SOURCE",
+    "no_compression": "PASS_SOURCE",
+    "no_loss": "PASS_SOURCE",
+    "canonical_identity": "PASS_SOURCE",
+    "offline_single_file_source": "PASS_BY_SOURCE_STRUCTURE",
+    "browser_pixel": "HOLD_NO_LIVE_BROWSER_READBACK",
+    "desktop_mobile": "HOLD_NO_LIVE_BROWSER_READBACK",
+    "ci": "HOLD_NO_PR_CREATED",
+    "design_main": "HOLD",
+    "field": "HOLD",
+    "merge": "NO",
+    "promotion": "NO"
+  }
+}
