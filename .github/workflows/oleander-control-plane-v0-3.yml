@@ -29,11 +29,13 @@ jobs:
           python-version: '3.12'
       - name: Unit and regression tests
         run: python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' -v
-      - name: v0.2 control-card schema fail-closed check
+      - name: Current v0.3 Control Card schema fail-closed check
         run: python 00-governance/control-plane/control_plane.py check 00-governance/control-plane/examples/example-explore.json
-      - name: PR85 immutable promotion replay
+      - name: Repository-wide Current Control Card scan
+        run: python 00-governance/control-plane/scan_control_cards.py
+      - name: PR85 immutable v0.2 promotion replay
         run: python 00-governance/control-plane/orchestrator.py promotion 00-governance/control-plane/replays/pr85-control-card.json 00-governance/control-plane/replays/pr85-gate-receipts.json
       - name: PR85 semantic freshness contradiction replay
         run: python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
       - name: Compile check
-        run: python -m py_compile 00-governance/control-plane/schema_enforcer.py 00-governance/control-plane/control_plane.py 00-governance/control-plane/orchestrator.py
+        run: python -m py_compile 00-governance/control-plane/schema_enforcer.py 00-governance/control-plane/control_plane.py 00-governance/control-plane/scan_control_cards.py 00-governance/control-plane/orchestrator.py
