@@ -1,0 +1,34 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_R06_SCENE_TECH_PAIR_v1_2",
+  "design_state": "KEEP_AFTER_REVISION / MAIN-BOUND SCENE + INDEPENDENT TECHNICAL PROOF",
+  "no_compression": "Technical Proof remains independently visible and is not reduced to a footnote.",
+  "source_basis": {
+    "scene_pixel": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png / Drive 1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+    "spatial_section": "C22-SEC-B from C04_QJ-C22_SPATIAL_DRAWING_PACKAGE_v3.0.pdf",
+    "node_reality": "C04-R06-REALITY-CHECK-v1.5",
+    "later_chain": "R7/R7.1 GA/detail/structural/foundation manifests located in File Library but raw pixels not materialized in this runtime"
+  },
+  "locked_interface_mm": {
+    "width": 1200,
+    "depth": 160,
+    "overall_height": 975
+  },
+  "functional_role": "interpretive / leaning / reading element; NOT sole fall-protection guard",
+  "concept_benchmarks": {
+    "horizontal_leaning_load": "1.0 kN/m over 1.2m width / C23 concept benchmark",
+    "frame": "2 × RHS 60×40×4 mm candidate; concept only",
+    "touch_surface": "35–45 mm durable/modified wood, replaceable",
+    "verified_RC_base_plate": "240×160×12 mm candidate",
+    "verified_RC_anchor": "4 × M16 candidate; embedment not fixed",
+    "direct_rock_anchor": "UNSPECIFIED / FIELD OPEN"
+  },
+  "truth": [
+    "FIELD_OBSERVED_0",
+    "FIELD_MEASURED_0",
+    "G1F_HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT_FOR_CONSTRUCTION"
+  ]
+}
