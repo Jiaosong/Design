@@ -1,0 +1,12 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"APP_GAME_MAP_v1.2",
+  "state":"MAIN_CANDIDATE / DETAIL_DEEPENING / FIELD_OPEN / NO_PROMOTION",
+  "material_delta":["fixed duplicated route-filter JS binding from v1.1","map purpose modes: journey/culture/rest/return","travel focus: all/boat/cable/walk","R01-R13 content + audience filters","imprint-to-MyBook save action","localStorage memory editor","print/no-phone service fallback"],
+  "static_checks":{"node_syntax":"PASS","five_views":"PASS","four_main_tabs":"PASS","thirteen_imprints":"PASS","standalone_svg_parse":"PASS","local_memory_logic_present":"PASS"},
+  "visual_checks":{"standalone_map_vector_render":"PASS_AFTER_FIX_VIEWBOX_CASE","actual_live_browser":"HOLD_ENVIRONMENT_ADMIN_BLOCK"},
+  "design_crit":{"information_architecture":"KEEP_AFTER_REVISION","game_map":"KEEP_AFTER_REVISION","read_depth":"KEEP_AFTER_REVISION","my_book_interaction":"KEEP_AFTER_REVISION","service_return":"KEEP_AFTER_REVISION"},
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","map":"RELATIONAL_NTS_NOT_SURVEY","live_operations":"NOT_CLAIMED"},
+  "ai_image_used":false,
+  "text_layer":"HTML_SVG_VECTOR_EDITABLE"
+}
