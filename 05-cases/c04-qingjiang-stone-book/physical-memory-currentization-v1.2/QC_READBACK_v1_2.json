@@ -1,0 +1,8 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"PHYSICAL_MEMORY_DETAIL_v1.2",
+  "state":"SINGLE_OBJECT_DETAIL_DEEPENING / FIELD_OPEN / NO_PROMOTION",
+  "objects":{"P02":{"concept":"KEEP","presentation":"KEEP_AFTER_REVISION","delta":"reversible clamp + drain/clean + accessible-flow + maintenance logic"},"P01":{"concept":"KEEP/HOLD","presentation":"PROTOTYPE_MAIN_CANDIDATE","delta":"local short feedback + default OFF failure strategy"},"M01":{"concept":"KEEP","presentation":"MAIN_CANDIDATE","delta":"A5 physical prototype + 4 page types + paper-digital field match"}},
+  "checks":{"all_svg_parse":"PASS","viewbox":"PASS","vector_text":"PASS","no_ai_image":"PASS"},
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","construction":"NOT_FOR_CONSTRUCTION","P02_structure":"UNVERIFIED","P01_site_need":"UNVERIFIED"}
+}
