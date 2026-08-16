@@ -1,0 +1,60 @@
+{
+  "receipt_id": "OLEANDER-CONTROL-PLANE-NO-LOSS-STORED-CARD-COMPAT-AUDIT-2026-08-16",
+  "scope": "MAIN / STORED CONTROL CARDS / CURRENT-ONLY COMPATIBILITY AUDIT",
+  "authority": {
+    "global_policy": "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "control_plane_implementation_pr": 131,
+    "control_plane_readback_pr": 132,
+    "main_tree_sha_observed": "e962df1437a00be92738a35c6df32326759fd1bb"
+  },
+  "audit_rule": "Only Current + problem_layer=Architecture Control Cards are migration candidates. Replay, example, test, receipt, Legacy/history/provenance objects remain immutable and are excluded.",
+  "search_methods": [
+    {
+      "method": "repository subtree path audit",
+      "roots": ["01-business", "02-culture", "03-ip", "04-spatial", "05-cases", "06-practice", "90-shared", "00-governance"],
+      "result": "No Current Architecture Control Card path requiring migration found"
+    },
+    {
+      "method": "Control Plane workflow reference audit",
+      "result": "Current workflow references resolve to example-explore.json, pr85-control-card.json, and 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json"
+    },
+    {
+      "method": "direct card readback",
+      "objects": [
+        {
+          "path": "00-governance/control-plane/examples/example-explore.json",
+          "classification": "EXAMPLE / EXCLUDED",
+          "problem_layer": "Parameter",
+          "blob_sha": "73c7b2297c9630dba7aa880bb519206cca2e6e5a"
+        },
+        {
+          "path": "00-governance/control-plane/replays/pr85-control-card.json",
+          "classification": "HISTORICAL REPLAY / EXCLUDED",
+          "problem_layer": "Evidence",
+          "blob_sha": "0c1a85639d4021c3f174af5639c758574c910b13"
+        },
+        {
+          "path": "90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json",
+          "classification": "CURRENT ACTIVE CONTROL CARD / COMPATIBLE / NO MIGRATION",
+          "problem_layer": "Evidence",
+          "blob_sha": "93baa93ac563c481acee850d0e076475a7e00ab8",
+          "note": "review_history contains historical Architecture entries, but the current Control Card problem_layer is Evidence; the new no-loss rule is not retroactively written into historical review records"
+        }
+      ]
+    }
+  ],
+  "migration_candidates": [],
+  "decision": "NO_CURRENT_ARCHITECTURE_CONTROL_CARDS_FOUND / NO_STOCK_MIGRATION_REQUIRED",
+  "prospective_behavior": [
+    "Any future or re-entered Control Card with problem_layer=Architecture must supply preservation_review.",
+    "Established objects must be accounted for explicitly when Architecture work is executed.",
+    "No fixed global chapter count may be applied; C04's 12-layer structure remains C04-specific.",
+    "No historical replay/example/test/receipt/provenance object is rewritten merely to satisfy the new prospective machine contract."
+  ],
+  "does_not_prove": [
+    "This audit does not claim that every JSON file in the repository is a Control Card; it audits current Control Plane card carriers and workflow-referenced active cards.",
+    "No project Design PASS, MAIN state, Field, Rights, Engineering, Human, Promotion or Release state is changed.",
+    "No project architecture is frozen against future explicit evidence-based restructuring."
+  ],
+  "state": "COMPATIBILITY_AUDIT_CLOSED / NO_STOCK_MIGRATION / PROSPECTIVE_FAIL_CLOSED"
+}
