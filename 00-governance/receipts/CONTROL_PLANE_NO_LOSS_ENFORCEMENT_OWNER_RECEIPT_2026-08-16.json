@@ -1,0 +1,26 @@
+{
+  "receipt_id": "OLEANDER-CONTROL-PLANE-NO-LOSS-ENFORCEMENT-2026-08-16",
+  "owner": "刘旋 / OLEANDER",
+  "material_delta": true,
+  "authority_input": "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+  "decision": "Compile the global NO COMPRESSION / NO LOSS policy into the existing Project Control Plane without creating a parallel governance system.",
+  "scope": [
+    "00-governance/control-plane/control-card.schema.json",
+    "00-governance/control-plane/control_plane.py",
+    "00-governance/control-plane/tests/test_control_plane.py",
+    "00-governance/control-plane/README.md"
+  ],
+  "required_machine_behavior": [
+    "Architecture-layer Control Cards must include an explicit preservation_review.",
+    "The review must separate concept_state, presentation_state and truth_evidence_state for established objects.",
+    "DEMOTE/CUT decisions require a substantive explicit reason.",
+    "Compression, page count, cleaner presentation, shorter film/web or minimalism cannot be the sole removal reason.",
+    "The machine contract must not encode C04's 12-layer architecture or any fixed universal chapter count."
+  ],
+  "does_not_prove": [
+    "This change does not decide which project objects should be MAIN.",
+    "This change does not create Design PASS, Field PASS, Rights PASS, Engineering PASS, Promotion or Release.",
+    "This change does not freeze project-specific architectures against later explicit evidence-based restructuring."
+  ],
+  "state": "OWNER_RECEIPT_CREATED / IMPLEMENTATION_AUTHORIZED"
+}
