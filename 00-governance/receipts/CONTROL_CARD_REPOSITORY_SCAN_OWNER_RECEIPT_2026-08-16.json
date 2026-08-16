@@ -1,0 +1,26 @@
+{
+  "receipt_id": "OLEANDER-CONTROL-CARD-REPOSITORY-SCAN-2026-08-16",
+  "owner": "刘旋 / OLEANDER",
+  "material_delta": true,
+  "decision": "Make the existing Control Plane fail-closed against current stored Control Cards even when their filenames are arbitrary.",
+  "why_now": "Compatibility audit found the live card E3_CONTROL_CARD.json through workflow references rather than the earlier filename search, showing that explicit per-file check invocation alone is insufficient for a global default rule.",
+  "implementation_scope": [
+    "00-governance/control-plane/scan_control_cards.py",
+    "00-governance/control-plane/tests/test_control_card_scan.py",
+    ".github/workflows/ai-governance-evals.yml"
+  ],
+  "contract": [
+    "Discover Control Card-shaped JSON by schema/content signature, not by filename.",
+    "Validate current stored cards with the existing control_plane.validate_card implementation.",
+    "Exclude explicit replay/example/test/receipt/archive/legacy provenance zones from prospective migration enforcement.",
+    "Run the scan on every pull request and every push to main through the existing AI Governance workflow.",
+    "Do not create a new Gate or a second Control Card registry.",
+    "Do not encode any fixed project chapter count."
+  ],
+  "does_not_prove": [
+    "Repository scan PASS is not Design PASS or MAIN status.",
+    "It does not upgrade Field, Rights, Engineering, Human, Promotion or Release state.",
+    "It does not rewrite historical provenance."
+  ],
+  "state": "OWNER_RECEIPT_CREATED / IMPLEMENTATION_AUTHORIZED"
+}
