@@ -1,0 +1,81 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "status": "PERMANENT_DESIGN_INVARIANTS",
+  "inheritance": {
+    "project_identity": "Qingjiang integrated landscape + product + experience + digital + narrative + visual design project",
+    "design_source": "Original C04 presentation boards and mature original design outcomes",
+    "design_dna": [
+      "REAL_QINGJIANG_FIRST",
+      "LANDSCAPE_FIRST",
+      "PAPER_INK_LINE_SEAL",
+      "PHYSICAL_DIGITAL_COMPLEMENTARITY",
+      "THIRTEEN_IMPRINTS_AS_CONTENT_SYSTEM",
+      "REAL_BODY_SPACE",
+      "RETURN_CLOSURE",
+      "MEMORY_IP_AS_TRAVEL_AFTERGLOW"
+    ],
+    "full_design_universe": [
+      "LANDSCAPE",
+      "JOURNEY",
+      "13_IMPRINTS",
+      "SCENE_INTERACTION",
+      "AUDIENCE",
+      "PHYSICAL_SENSORY",
+      "DIGITAL",
+      "MEMORY_IP",
+      "TECHNICAL",
+      "NARRATIVE",
+      "VISUAL_MOTION",
+      "RETURN"
+    ]
+  },
+  "hard_equations": [
+    "CURRENT_DELTA != PROJECT_SCOPE",
+    "NOT_EDITED_THIS_ROUND != DOES_NOT_EXIST",
+    "NOT_SHOWN_IN_THIS_ARTIFACT != REMOVED_FROM_C04",
+    "VALIDATION_SUBSET != WHOLE_PROJECT",
+    "ARTIFACT_EXISTENCE != DESIGN_QUALITY",
+    "TRACEABILITY != PROFESSIONAL_FINISH",
+    "EVIDENCE_CORRECTNESS != VISUAL_EXCELLENCE",
+    "PROCESS_PASS != MAIN_KEEP",
+    "CONCEPT_KEEP != PIXEL_KEEP",
+    "PIXEL_FAIL != DESIGN_DELETE"
+  ],
+  "current_delta_contract": {
+    "required_fields": [
+      "EDITING_NOW",
+      "NOT_EDITING_THIS_ROUND",
+      "DOES_NOT_CHANGE"
+    ],
+    "does_not_change": [
+      "PROJECT_IDENTITY",
+      "DESIGN_SOURCE",
+      "DESIGN_DNA",
+      "FULL_DESIGN_UNIVERSE"
+    ],
+    "semantic_rule": "A narrow editing delta limits the work of the round only; all other C04 systems remain inherited unless explicitly demoted or cut."
+  },
+  "explicit_state_changes_only": [
+    "DEMOTE_TO_SUPPORT",
+    "DEMOTE_TO_PROCESS",
+    "HOLD_FIELD_OPEN",
+    "CUT"
+  ],
+  "invalid_cut_reasons": [
+    "page too long",
+    "website too long",
+    "board does not fit",
+    "want it cleaner",
+    "want fewer chapters",
+    "minimalism",
+    "not edited this round"
+  ],
+  "truth_boundary": [
+    "FIELD_OBSERVED_0",
+    "FIELD_MEASURED_0",
+    "G1F_HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT_FOR_CONSTRUCTION"
+  ]
+}
