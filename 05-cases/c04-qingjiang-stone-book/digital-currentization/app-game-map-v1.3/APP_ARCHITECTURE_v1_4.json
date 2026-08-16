@@ -1,0 +1,75 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"QINGJIANG_APP_ARCHITECTURE",
+  "revision":"v1.4",
+  "state":"ARCHITECTURE_DEEPENING / NO_PROMOTION / FIELD_OPEN",
+  "product_thesis":"Invisible travel companion: appear for orientation, optional depth, recovery/return and memory; retreat when landscape, movement, body, safety or human service should dominate.",
+  "priority_order":["SERVICE_RETURN","ROUTE","OBSERVATION","EXPLANATION","MEMORY","SHARE"],
+  "global_shell":{
+    "reality_state":["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "delivery_state":["FULL","LIGHT","OFF"],
+    "persistent_actions":["RETURN_SERVICE","DIGITAL_SILENCE","NO_PHONE_HANDOFF","CURRENT_JOURNEY_ORIENTATION"],
+    "context_strip":["WHERE","MOVE","RETURN","DIGITAL"],
+    "forbidden":["points","streaks","completion_percentage","13_of_13_progress","content_gated_route"]
+  },
+  "primary_domains":[
+    {
+      "id":"TODAY",
+      "role":"current travel decision",
+      "modules":["SITUATION","NEXT_MOVE","JOURNEY_SCALE","NEARBY_MEANINGFUL_SCENE","REST_RETURN_READINESS","CONTINUE_WITHOUT_PHONE"],
+      "exits":["ROUTE","SCENE","REST","RETURN","DIGITAL_OFF"]
+    },
+    {
+      "id":"ROUTE",
+      "role":"spatial backbone",
+      "modules":["JOURNEY_OVERVIEW","MOVEMENT_MODE","BRANCH_DECISION","SCENE_DENSITY_OVERLAY","REST_RECOVERY_OVERLAY","REALITY_OVERLAY","RETURN_OVERLAY","NO_PHONE_HANDOFF"],
+      "exits":["CONTINUE","OPEN_SCENE","REST","RETURN","PHONE_OFF"]
+    },
+    {
+      "id":"READ",
+      "role":"optional Thirteen Imprints content world",
+      "entry_modes":["NEARBY","BY_QUESTION","BY_MODE","FULL_13_INDEX"],
+      "opens":"SCENE_OBJECT"
+    },
+    {
+      "id":"MY_BOOK",
+      "role":"personal journey memory, not completion",
+      "modules":["JOURNEY_TRACE","SAVED_SCENES","RECOGNITION","JOURNAL_PAGE","TAKE_AWAY"]
+    }
+  ],
+  "scene_object":{
+    "S0":{"name":"SCENE_IDENTITY","fields":["RXX_ID","CANONICAL_NAME","DISPOSITION","TRUTH_EVIDENCE_STATE"]},
+    "S1":{"name":"FIRST_READ","answers":["Q1_SEE"],"rule":"landscape/spatial cue before screen"},
+    "S2":{"name":"ORIENT","answers":["Q2_MOVE"],"fields":["BOAT_CABLE_WALK_RELATION","CONTINUE_BRANCH_RETURN"]},
+    "S3":{"name":"OPTIONAL_ACTION","answers":["Q3_PLAY"],"verbs":["LOOK","FIND","COMPARE","LISTEN","REST","WRITE","REMEMBER"]},
+    "S4":{"name":"FEEDBACK","carriers":["SHORT_UI_REVEAL","LIGHT","SOUND","GRAPHIC_RELATION","PHYSICAL_SENSORY","NONE"]},
+    "S5":{"name":"DEPTH","audiences":["FAMILY","YOUTH","ADULT","OLDER_LOW_STAMINA"],"rule":"depth changes explanation/action burden, never route access"},
+    "S6":{"name":"BODY_REST","answers":["Q4_REST","Q8_BODY_USE"],"verbs":["STAND","WALK","LEAN","SIT","TOUCH","LISTEN","STOP"]},
+    "S7":{"name":"DIGITAL_RETREAT","answers":["Q5_PHONE"],"states":["FULL","LIGHT","OFF","AUTO_RETREAT_AFTER_REVEAL"]},
+    "S8":{"name":"NO_PHONE","answers":["Q6_NO_PHONE"],"fallbacks":["PHYSICAL_VISIBLE_CUE","ROUTE_RETURN","PAPER","SIGN","HUMAN_SERVICE"]},
+    "S9":{"name":"EXIT","required":true,"options":["CONTINUE","RETURN","REST_MORE","SAVE_TO_MY_BOOK","PHONE_OFF"]}
+  },
+  "scene_examples":{
+    "R01":{"digital":"LIGHT_OR_OFF","first_read":"moving cross-river view","rule":"no forced UI"},
+    "R05":{"digital":"LIGHT","loop":"SEE -> OPTIONAL ACTION -> LIGHT FEEDBACK -> EXIT"},
+    "R06":{"digital":"OFF -> SHORT REVEAL -> OFF_OR_LIGHT","loop":"LANDSCAPE FIRST -> RECOVER -> OPTIONAL REVEAL -> CONTINUE_OR_RETURN"},
+    "R13":{"digital":"OFF","rule":"PLAY OFF / BODY + RETURN FIRST"}
+  },
+  "service_return_parallel_layer":["RETURN_NOW","HUMAN_SERVICE","NO_PHONE_MINIMUM_PATH","DIGITAL_OFF"],
+  "state_machines":{
+    "journey":["ARRIVAL","BOAT","CABLE","WALK","SCENE","REST","RETURN","EXIT"],
+    "reality":["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "digital":["FULL","LIGHT","OFF"],
+    "attention":["ROUTE","LANDSCAPE","BODY","CONTENT","RETURN"]
+  },
+  "no_loss":{
+    "keeps_primary_anchors":["TODAY","ROUTE","READ","MY_BOOK"],
+    "keeps_full_r01_r13":true,
+    "keeps_audience_depth":true,
+    "keeps_no_phone":true,
+    "keeps_service_return_priority":true,
+    "keeps_my_book_local_memory":true,
+    "rule":"NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS"
+  },
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","NO_PROMOTION":true,"NTS":true,"NOT_FOR_CONSTRUCTION":true}
+}
