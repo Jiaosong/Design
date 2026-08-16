@@ -1,0 +1,32 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "APP_GAME_MAP_CURRENTIZATION_v1",
+  "state": "MAIN_CANDIDATE / DESIGN_REVIEWED / FIELD_OPEN / NO_PROMOTION",
+  "design_crit": {
+    "app_today": "KEEP_AFTER_REVISION",
+    "route_mobile": "KEEP_AFTER_REVISION",
+    "thirteen_imprints": "KEEP_AFTER_REVISION",
+    "my_book": "KEEP_AFTER_REVISION",
+    "service_return": "KEEP_AFTER_REVISION",
+    "standalone_game_map": "KEEP_AFTER_REVISION"
+  },
+  "runtime_checks": {
+    "main_tabs": "PASS",
+    "return_service": "PASS",
+    "R06_dialog": "PASS",
+    "audience_depth": "PASS",
+    "map_layer_filter": "PASS",
+    "numeric_completion_semantics_removed": "PASS"
+  },
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "map": "NTS_RELATIONAL_NOT_SURVEY"
+  },
+  "ai_image_used": false,
+  "text_layer": "HTML_SVG_VECTOR_EDITABLE",
+  "local_source_zip_sha256": "bddfdec2223fd27439a30ce5f10952c8c115ac777a160b5fba9c0adb7870a372",
+  "local_source_zip_bytes": 1040967
+}
