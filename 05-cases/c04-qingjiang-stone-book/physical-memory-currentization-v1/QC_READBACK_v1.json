@@ -1,0 +1,17 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"PHYSICAL_MEMORY_CURRENTIZATION_v1",
+  "state":"DESIGN_CURRENTIZATION / FIELD_OPEN / NO_PROMOTION",
+  "ai_image_used":false,
+  "text_layer":"HTML_SVG_VECTOR_EDITABLE",
+  "browser_review":{"method":"Playwright page.set_content with SVG data URIs due navigation policy","viewport":"1500x1100","full_page_px":"1500x5988","horizontal_overflow":false},
+  "design_crit":{
+    "P02_railing_rest":"KEEP_AFTER_REVISION / MAIN_SUPPORT_CANDIDATE",
+    "P01_step_light":"CONCEPT_KEEP / HOLD_SELECTION / PROCESS_SUPPORT",
+    "P03_P05_competition":"SUPPORT / ORIGINAL_FORM_OR_SITE_NEED_REQUIRED",
+    "M01_qingjiang_journal":"KEEP_AFTER_REVISION / MEMORY_MAIN_CANDIDATE",
+    "memory_grammar":"SUPPORT / FORM_AUTHORITY_NEEDED_FOR_OPTIONAL_EXTENSIONS"
+  },
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","scale":"NTS","construction":"NOT_FOR_CONSTRUCTION"},
+  "local_package":{"file":"C04_PHYSICAL_MEMORY_CURRENTIZATION_v1.zip","sha256":"c831e7054658fd21a74698223f785c3260b0e386a9261d0a2ce49162415f9d7c","bytes":744000}
+}
