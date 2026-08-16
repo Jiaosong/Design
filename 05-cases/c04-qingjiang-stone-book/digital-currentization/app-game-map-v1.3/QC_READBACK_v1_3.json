@@ -1,0 +1,61 @@
+{
+  "schema": "oleander.artifact-review/1.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_GAME_MAP_v1_3",
+  "review_scope": "SOURCE / IA / STATE MACHINE / NO-LOSS",
+  "review_state": "SOURCE_IMPLEMENTATION_PASS / FINISHED_OUTPUT_HOLD",
+  "checks": {
+    "primary_ia_preserved": "PASS_SOURCE / TODAY ROUTE READ MY_BOOK",
+    "service_return_persistent": "PASS_SOURCE",
+    "r01_no_forced_ui": "PASS_SOURCE",
+    "r05_scene_loop": "PASS_SOURCE / LIGHT OPTIONAL",
+    "r06_scene_loop": "PASS_SOURCE / OFF_SHORT_OFF",
+    "r13_play_off": "PASS_SOURCE",
+    "reality_states": "PASS_SOURCE / NORMAL DEGRADED CLOSED UNKNOWN",
+    "closed_unknown_fail_closed": "PASS_SOURCE / RETURN EMPHASIS",
+    "delivery_states": "PASS_SOURCE / FULL LIGHT OFF",
+    "digital_silence": "PASS_SOURCE",
+    "no_phone_continuity": "PASS_SOURCE / LOOK MOVE REST RETURN",
+    "my_book_local_storage": "PASS_SOURCE",
+    "return_recognition_memory": "PASS_SOURCE",
+    "no_completion_rate": "PASS_SOURCE",
+    "no_gps_login_cloud_claim": "PASS_SOURCE",
+    "map_nts_boundary": "PASS_SOURCE",
+    "formal_ui_editable": "PASS_SOURCE / HTML CSS JS SVG"
+  },
+  "design_crit": {
+    "strongest_delta": "Digital retreat is now observable behavior at both global and scene levels; Return priority is embodied in state transitions instead of copy only.",
+    "secondary_delta": "Return now produces Recognition before My Book, improving the experience-memory closure without completion mechanics.",
+    "risk_1": "Reality selector is a prototype demo control; visual treatment must not be mistaken for live operation status.",
+    "risk_2": "Source-level correctness does not prove mobile/desktop composition, tap comfort, modal overflow, or actual offline/browser behavior.",
+    "risk_3": "R05/R06 scene pixels remain bounded by their upstream source status; App interaction depth does not promote landscape pixels."
+  },
+  "public_quality_gate": {
+    "FIRST_READ": "HOLD_BROWSER_READBACK",
+    "COMPOSITION_SCALE": "HOLD_BROWSER_READBACK",
+    "HIERARCHY_RHYTHM": "HOLD_BROWSER_READBACK",
+    "EXPERIENCE_COMPLETENESS": "KEEP_AFTER_REVISION_SOURCE_LEVEL",
+    "DIGITAL_RETREATABILITY": "KEEP_SOURCE_LEVEL",
+    "NO_PHONE": "KEEP_SOURCE_LEVEL",
+    "RETURN_PRIORITY": "KEEP_SOURCE_LEVEL",
+    "PROFESSIONAL_FINISH": "HOLD_BROWSER_READBACK",
+    "TRUTH_BOUNDARY": "PASS_SOURCE"
+  },
+  "artifact_status_separation": {
+    "artifact": "EXISTS_ON_BRANCH",
+    "commit": "EXISTS",
+    "pr": "NO_NEW_PR_CREATED",
+    "ci": "NOT_TRIGGERED_AS_NO_PR",
+    "validated_finished_output": "NO",
+    "merged": "NO",
+    "promoted": "NO"
+  },
+  "decision": "KEEP_AFTER_REVISION / MAIN CANDIDATE / DO_NOT_PROMOTE_BEFORE_BROWSER_READBACK",
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "construction": "NOT_FOR_CONSTRUCTION"
+  }
+}
