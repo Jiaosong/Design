@@ -1,6 +1,6 @@
 # OLEANDER Existing Mature Design First Policy v1.0
 
-Status: ACTIVE CANDIDATE FOR GOVERNANCE MERGE  
+Status: ACTIVE / MERGED  
 Scope: ALL OLEANDER P0–P4 / Cases / Domains / Application Mappings / Design & Research Work  
 Principle family: NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS
 
