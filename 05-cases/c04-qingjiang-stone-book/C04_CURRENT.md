@@ -1,181 +1,218 @@
-# C04｜Current Execution Authority｜2026-08-16
+# C04｜Current Execution Authority｜2026-08-16｜FULL-ASSET NO-LOSS
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
 Hard truth: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`
 
-## Current user decision override
+## 0｜Current authority chain
 
-Evidence Closure and Conceptual Development run **in parallel**.
+Read and execute in this order:
 
-The older file `C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md` remains valid **remote-evidence provenance**, but its statement that further concept production would violate the Stop Rule is **SUPERSEDED**.
+1. OLEANDER current Governance / Project Flow / Artifact Review-Persistence rules
+2. **this file `C04_CURRENT.md`**
+3. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md` + machine CSV
+4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md`
+5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.8.json`
+6. `C04_ACTIVE_EXECUTION_CURRENT.md`
+7. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
 
-Unresolved P0 evidence continues to block:
+The older `C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md` remains remote-evidence provenance. Its former prohibition on further concept production is superseded.
+
+## 1｜Current user decision｜NO-LOSS before pruning
+
+Later evidence/validation/minimum-service packages are **not** the complete project.
+
+Hard rules:
+
+> **`CONCEPT KEEP ≠ PIXEL KEEP`**  
+> **`PIXEL FAIL ≠ DESIGN DELETE`**  
+> **`VALIDATION SUBSET ≠ WHOLE PROJECT`**
+
+Before Web / F / D removes, hides or rebuilds an existing object, it must first locate that object in `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0` and separately decide:
+- concept state: KEEP / CURRENTIZE / COMPETE / HOLD / DROP;
+- presentation state: MAIN / SUPPORT / PROCESS / REDRAW / NOT-YET-SHOWN.
+
+A stale image, UI or board can be `CONCEPT KEEP / PIXELS REDRAW`. A design may only be concept-dropped after actual design review finds it redundant, harmful, generic, or incompatible with the experience — never simply because C23/E/REV04 did not show it.
+
+The complete existing design universe remains in scope:
+`Journey + R01–R13 + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
+
+## 2｜Current public reframe｜three axes
+
+The three user-defined axes reorganize existing designs; they do not replace them.
+
+### N1｜地域文化｜清江有什么？
+Regional history / local stories / names / landscape knowledge / traditional landscape view / feng-shui as cultural interpretation / local wisdom.
+
+### N2｜游玩线路与交通｜游客怎么游？
+Arrival + service + `BOAT / CABLE / WALK` + game-style Qingjiang map + route + return.
+
+### N3｜场景游戏与不同人群｜到了这里具体做什么？
+`CULTURE / WISDOM / PLAY / WELLBEING × scene × audience`, activating the existing Thirteen Imprints, App, physical interactions, sensory designs and memory/IP.
+
+Public Hero direction:
+
+> **先游清江，再读清江。**
+> 从地域文化和真实游程出发，把十三印、游戏地图、数字界面、实体互动、休息、记忆和文创重新编排到真正适合发生的场景。
+
+Public language must stay concrete: show what visitors see, do, use, choose, learn, rest with and take away. Abstract relation/reveal/withdrawal terms may remain internal/support but must not carry the project alone.
+
+## 3｜Existing design systems that must remain visible in decisions
+
+### Journey / Service
+Arrival, BOAT, CABLE, WALK, branching/loop walking network, paper/human/signage fallback, Return.
+
+### Thirteen Imprints
+R01–R13 remain the complete existing content/design library. Current Core/Companion architecture may control exposure/depth, but does not delete the thirteen-system. They are optional/reorderable content, not a mandatory 13-stop route or 13/13 completion task.
+
+### Qingjiang Thirteen Imprints App / Digital
+The App is a primary designed outcome, not a disposable fallback.
+
+Current design anchors:
+- `TODAY｜今日清江`
+- `ROUTE｜探索地图`
+- `READ｜十三印 / 场景内容`
+- `MY BOOK｜我的石书`
+- Service / Return always accessible.
+
+Freeze **uncontrolled new feature expansion only**. Existing App currentization + visual presentation are ACTIVE through B/D/Web/F.
+
+Currentize `C04_Digital_UI_Detail_System_v0.6` + QJ-E prototype:
+- preserve `山水游历志 × 石拓印记 × 图卷式探索` class-game character;
+- preserve game feeling through map reveal, markers, optional imprint/content discovery, personal route/memory and low-intensity interaction;
+- remove legacy `9/13`, `07/13`, completion score and task-route authority;
+- retain NORMAL/DEGRADED/CLOSED/UNKNOWN, FULL/LIGHT/OFF, Offline and Return Priority as behavior constraints, not public chapters;
+- no-phone route/service/return must remain complete.
+
+### Physical / Body / Sensory
+The complete existing physical universe includes:
+- `PHY-01 步步生光` — primary physical hero candidate;
+- `栏杆式可拆卸倚靠休息板` — short recovery/service support;
+- `山体流体休憩装置` — conditional secondary physical hero candidate;
+- `清风吟` — sensory interaction/memory candidate;
+- F01/F02/F03/F04 — current technical/service descendants/support.
+
+**C23/F01–F04 are a technical validation subset and do not replace the wider Physical design universe.**
+
+### Memory / IP / Cultural Product
+Keep in the project:
+- `清江旅记` — physical memory hero;
+- `我的石书` — digital memory hero;
+- `清江一线`;
+- `清江雾气`;
+- `清风吟` memory extension;
+- `红花峰崽` — child/family observation IP.
+
+These are selective memory interfaces, not a compulsory gift-shop checklist.
+
+### Audience / Interaction
+Use A1–A6 experience modes and real interaction depth rather than decorative personas.
+Existing interaction verbs remain valid design mechanics:
+`LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
+
+### Spatial / Technical / Model
+C22/C23 + plan/section + Model provide proof, not project identity.
+Model selection remains restrained:
+- `SEC-A` = strongest primary section candidate;
+- `R06 node` = pair with R06 landscape: feeling + how it works;
+- `Hero clay` only if clearer than current spatial graphics;
+- `overall Axon` = support;
+- real Qingjiang landscape > grey model.
+
+## 4｜Evidence / truth boundary
+
+Evidence Closure and evidence-bounded conceptual development continue in parallel.
+
+Unresolved field/expert evidence blocks:
 - field-fact promotion;
-- exact measured geometry claims;
-- approved safety/capacity claims;
-- formal construction / approval / implementation-ready claims;
-- system-level Promotion.
+- exact measured geometry;
+- approved safety/capacity/accessibility;
+- construction / implementation-ready / approval claims;
+- system Promotion.
 
-It does **not** block evidence-bounded conceptual production.
+It does **not** block evidence-bounded concept development, game/interface design, physical/product concept development, Web, boards, film or remote-research display.
 
-## Current public narrative authority｜2026-08-16
+Traditional feng-shui / landscape ideas may only be presented as cultural landscape interpretation, not engineering/science evidence.
 
-Current public narrative and experience/content direction:
-- `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md`
-- `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.8.json`
+Wellbeing means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and return support; no treatment/medical/selenium-health claims.
 
-This is a real material delta requested by the user. It **supersedes the eight abstract anchors in `C04_B_PUBLIC_EDIT_OVERLAY_v1.0` for public-facing narrative**, while preserving current route/evidence/design authority.
+## 5｜Count policy｜UNBOUNDED BY COUNT
 
-Public story is now concrete and visitor-action-led:
-`地域文化 → 游玩线路/交通 → 场景互动 → 不同人群获得什么 → 实体/数字/记忆`.
+No fixed 20-screen / ~20-page / 3-board target. Page/screen/board count is an editorial output, not a design input.
 
-Public project statement:
-> 《清江石书》不是在清江增加十三个景点，而是重新组织一次真实的清江游玩体验：先让游客知道怎么到达、怎么过江、怎么走、在哪里停、怎么玩、怎么回来；再把地域文化、自然观察、地方智慧、轻娱乐和身体休息内容放进真正适合发生的场景。
+Do not add filler to hit a count and do not compress necessary design proof to stay under a count.
 
-The original user-provided `@恩施/拆解专项赛资料 (1).zip` is restored as a **Content / Brief / Inspiration Source**. It may seed culture, story, tourism-resource, game/interaction, product/IP and audience ideas, but it does **not** override current A/C04 fact, route, science, safety or field authority.
+## 6｜Public Quality Gate｜NON-NEGOTIABLE
 
-Game/exploration clarification:
-- game-style map / marker / collection / observation / light puzzle language is allowed;
-- content may be gamified;
-- route, safety, closure and return may **not** be gated by game tasks or completion;
-- `十三印` remains optional content index, not `13/13` route/progress authority.
+No candidate enters/remains MAIN unless actual finished-output review returns `KEEP` or `KEEP_AFTER_REVISION`.
 
-Traditional feng-shui / landscape ideas may be researched and presented only as `traditional landscape view / cultural interpretation`; they are not scientific causation, exact siting or safety evidence.
+Check all applicable:
+1. FIRST READ
+2. COMPOSITION / SCALE
+3. HIERARCHY / RHYTHM
+4. C04 SPECIFICITY
+5. EXPERIENCE COMPLETENESS
+6. AUDIENCE VALUE
+7. PHYSICAL / PRODUCT CREDIBILITY
+8. DIGITAL EXPERIENCE + RETREATABILITY
+9. MOTION QUALITY
+10. CROSS-MEDIA CONSISTENCY
+11. PROFESSIONAL FINISH
+12. TRUTH BOUNDARY
 
-Wellbeing content means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and return support; it must not become medical, treatment or selenium-health claims.
+`CI PASS / browser PASS / SHA / manifest / file exists / render complete / prototype works` are execution evidence only, not Design PASS.
 
-## Public pagination / screen-count policy｜UNBOUNDED BY COUNT
+Hard MAIN failures include student-report/research-report/dashboard/program-output appearance, generic tourism/game UI, weak visual rescued by text, matrices replacing design, static slideshow/repetitive zoom, or visual implication of nonexistent field/operational certainty.
 
-**C04 public presentation is no longer constrained by a fixed page count or screen count.**
+Quality pruning happens **after** the no-loss asset inventory and concept/pixel separation.
 
-- `20-screen`, `约20页`, `3 boards`, or any other previous count is **provenance / delivery history only**, not a target, minimum or maximum unless an external submission specification explicitly requires it.
-- Web, PDF, portfolio narrative and presentation pages may expand or contract according to content completeness, reading rhythm, visual hierarchy, evidence density and medium-specific readability.
-- Do **not** add filler pages to reach a number, and do **not** compress distinct design arguments merely to remain under a number.
-- One page/section may carry one dominant claim when this improves clarity, but this is an editorial principle, not a page-count rule.
-- Continuous Web sections may be longer or shorter than one viewport; print/PDF pagination is derived from the final layout rather than used to determine the content structure.
-- Stable `page_id / scene_id / figure_id` should remain machine-readable where useful, but visible numbering and total count are allowed to change as the narrative is refined.
-- Boards are also not fixed at three. Use as many boards as are necessary for a coherent professional submission, subject only to actual external format requirements.
+## 7｜Current execution architecture
 
-Current editorial test is therefore: **Does every page/section materially improve the visitor story, design proof or professional readability?** If not, merge/drop it. If a necessary argument is cramped, split/expand it.
+This ordinary ChatGPT conversation remains C04 control + Design Director + F/Web integration center. GitHub + Google Drive are cross-line Source of Truth.
 
-## Public Quality Gate｜DIRECTOR-LEVEL / NON-NEGOTIABLE
+### ACTIVE 1｜B — Experience + Service + Editorial
+Convert culture/content into actual scene/action/value and preserve the complete R01–R13 system.
 
-**Unbounded count does not mean unbounded quality. Page count is free; professional quality is constrained.**
+### ACTIVE 2｜D — Whole-project Visual + Motion
+Unify real Qingjiang, Culture, Game Map, App, Thirteen Imprints, Physical/Sensory, Memory/IP, Return and technical proof. Raise App/Physical/Memory/Return visual quality to the Hero/R06 level.
 
-A page/section/frame may enter `MAIN` only after an independent design read returns `KEEP` or `KEEP_AFTER_REVISION`. `REVISE`, `REJECT`, unresolved template-feel, or merely machine-valid outputs cannot remain MAIN.
+### ACTIVE 3｜Web Public Experience
+Reassemble from the full Asset Atlas. Stop equal 16:9/PPT stacking. App / 13 Imprints / Physical / Memory/IP must be visibly present at professional depth.
 
-Every MAIN output must pass all applicable checks below:
+### ACTIVE 4｜Physical / Product / Detail
+Includes existing outcomes + C23 + Model. C23 is proof/deepening subset, not the definition of Physical.
 
-1. **FIRST READ** — within the first glance, the viewer can identify one dominant subject, one dominant claim and the intended reading order. No equal-weight card wall, no dense research-report first impression, no interface/debug/dashboard look.
-2. **COMPOSITION / SCALE** — image crop, figure-to-page ratio, negative space, typography scale and human/landscape/product scale are deliberate. Key visuals must not be undersized, over-cropped or padded by decorative filler.
-3. **VISUAL HIERARCHY / RHYTHM** — contrast, spacing, sequencing and transitions create clear high/low intensity. Adjacent sections must not repeat the same composition or visual weight without purpose.
-4. **DESIGN SPECIFICITY** — every MAIN image must show a C04-specific decision, scene, service, product, route, interaction or cultural reading. Generic mountain imagery, generic game UI, generic infographic grammar and generic AI atmosphere are SUPPORT or DROP.
-5. **EXPERIENCE COMPLETENESS** — arrival, service, route choice, BOAT/CABLE/WALK, scene interaction, rest, return and memory must read as one visitor experience. Landscape beauty may not erase service/product/digital/memory logic.
-6. **AUDIENCE VALUE** — when audience adaptation is claimed, the output must make visible what child/family, youth, adult and older/low-stamina visitors actually gain or need. Labels alone do not count as design.
-7. **PHYSICAL / PRODUCT CREDIBILITY** — F01–F04 and any new physical object must show believable use, body relation, placement logic, material/CMF intent and maintenance/installation logic appropriate to concept stage. A floating render or isolated product beauty shot is insufficient.
-8. **DIGITAL RETREATABILITY** — digital content must add value when present and disappear without breaking route, safety or return. UI cannot visually dominate R01/R13 or natural climax scenes.
-9. **MOTION QUALITY** — film/motion must use spatial continuity, timing, shot purpose, movement and sound/text rhythm. Static slideshow behavior, filler transitions, repeated zooms or title-card dependence are REVISE.
-10. **CROSS-MEDIA CONSISTENCY** — Web, boards, PDF, film, map, model, product and digital interfaces must share the same narrative hierarchy, scene identity and visual direction while respecting medium-specific composition.
-11. **PROFESSIONAL FINISH** — no clipping, accidental overlaps, weak alignment, illegible small text, inconsistent iconography, arbitrary corner radii, stock-template appearance, unresolved mobile/print composition or obvious placeholder assets in MAIN.
-12. **TRUTH BOUNDARY** — evidence labels remain subordinate but present where needed; no visual polish may promote `FIELD=0` concepts into implied built/verified/approved facts.
+### ACTIVE 5｜F Final Integration
+First classify `CONCEPT` vs `PIXELS`, then MAIN / SUPPORT / PROCESS / DROP. REV04 omissions cannot erase project assets.
 
-### Hard fail conditions for MAIN
+### WATCH / FREEZE
+- A Research/Evidence: intervene only on new claim/evidence/contradiction.
+- E **new feature engineering only**: frozen. Existing App currentization/presentation is ACTIVE through B/D/Web/F.
+- Governance/QC: version pollution, false PASS, source boundary, persistence/recoverability only.
 
-Any one of the following forces `REVISE / SUPPORT / DROP`:
-- looks primarily like a student board, research report, spreadsheet, dashboard, program output or AI moodboard rather than a designed public experience;
-- the strongest visual is smaller or weaker than explanatory text/cards;
-- content exists only because a page slot was available;
-- product/service/digital/memory is represented only by labels, matrices or governance diagrams;
-- a generic image could be swapped with another tourism project without changing the design argument;
-- technical PASS / CI / SHA / manifest is used as a substitute for visual or experiential quality;
-- the object requires verbal explanation to hide weak composition, scale, interaction, construction logic or scene fit.
+## 8｜Current execution priority
 
-### Main quality decision rule
+1. Full-asset Web/F reassembly without design loss.
+2. App / game-map currentization as a MAIN design outcome.
+3. Physical/Sensory + Memory/IP visual recovery and selection.
+4. Culture-to-scene interaction binding across the full Thirteen Imprints library.
+5. Audience-depth scene design.
+6. Film/boards successor only after the above hierarchy is visible.
+7. C23/Model technical proof where it materially clarifies use/scale/constructability.
 
-For every review cycle, F/Web/D must explicitly select:
-`MAIN / SUPPORT / PROCESS / DROP`.
+## 9｜Do not reopen
 
-Only `MAIN` must meet the full Public Quality Gate. `SUPPORT` may be technically useful but cannot dilute first reading. `PROCESS` records method/evidence. `DROP` is removed from public delivery.
+- mandatory linear 13-stop route or 13/13 completion authority;
+- fixed page/screen/board count;
+- old Stop Rule that prohibits evidence-bounded design production;
+- species/geology/safety/exact geometry/ancient-site equivalence inferred from names/appearance;
+- 2025 operating data as current 2026 live facts without verification;
+- feng-shui as scientific/engineering fact;
+- wellbeing/selenium as unverified health-effect claim;
+- the false equation `E feature freeze = App removed`;
+- the false equation `C23 validation subset = whole Physical project`.
 
-**Quality is optimized before quantity. If removing five weak pages produces a stronger project, remove them. If one argument requires three excellent pages to become clear, expand it.**
+## 10｜Context discipline
 
-## Allowed conceptual development
-
-C04 may now produce, using explicit `SG / RI / CA / FR` states:
-- conceptual masterplan / plan / section / positioning logic;
-- recommended dimensions + reasonable ranges;
-- materials, conceptual structure, foundations, connections, installation/disassembly, drainage, anti-slip, maintenance and typical details;
-- route reconstruction from official guide/public map/network topology with distance/time/slope ranges;
-- safety zoning, guardrail/edge logic, anti-slip, lighting, evacuation, return and warning/status logic;
-- low/medium/high scenario capacity models with explicit formula assumptions and sensitivity analysis;
-- buildable conceptual permanent facilities including weathering, maintenance, replacement and night-use assumptions;
-- web, models, analysis graphics, hero renderings, interaction prototype, boards and video;
-- culture/content library, game-style route visualization, scene interaction concepts, audience-depth adaptations and memory/product concepts when bounded by current evidence.
-
-Every estimated value must include:
-`recommended value + reasonable range + basis + sensitivity factors + future field-correction field`.
-
-## Single Decision Question
-
-How can C04 turn Qingjiang's real culture, journey, transport, landscape scenes and visitor needs into a coherent public experience across physical, digital, editorial, game/content and memory media, while preserving route/evidence truth and replaceable field/expert correction fields?
-
-## Delivery priority
-
-1. Web + final integration skeleton under the v1.8 public narrative, with no fixed section/page count and the Public Quality Gate applied to every MAIN output
-2. Culture/journey/map + key service/scene/audience matrices
-3. Masterplan / key plans-sections / critical model + physical/product proof
-4. Hero renderings / analysis graphics / core interactions + motion
-5. Boards / PDF / video / secondary supplements, count derived from professional readability and actual submission needs
-
-## Active integration architecture
-
-This ordinary ChatGPT conversation is the C04 control + design-director + F/Web integration center. GitHub and Google Drive are cross-line communication / Source of Truth.
-
-- ACTIVE 1 = Experience + Service + Editorial / B
-- ACTIVE 2 = Visual + Motion Direction / D
-- ACTIVE 3 = Web Public Experience
-- ACTIVE 4 = Physical / Product / Detail / C23 + Model
-- ACTIVE 5 = Final Integration / F
-- WATCH/FREEZE = A Evidence / E Digital Product / Governance-QC unless triggered.
-
-## Context discipline
-
-Create `C04 CHECKPOINT`:
-- after each milestone;
-- after two consecutive long-output rounds;
-- whenever context visibly grows.
-
-Checkpoint minimum fields:
-- Current Authority;
-- single Decision Question;
-- completed downloadable assets;
-- locked IDs / parameters;
-- Evidence / Inference / Assumption;
-- downstream interfaces;
-- blockers;
-- do-not-reopen items;
-- next three actions;
-- `FIELD=0 / G1F HOLD / NO_PROMOTION`.
-
-Near context limit: stop expansion, create the checkpoint and continue through the current control conversation without rebuilding completed work.
-
-## Current checkpoint references
-
-- Drive Markdown: `C04_CHECKPOINT_2026-08-15_0917.md`
-- Drive JSON: `C04_CHECKPOINT_2026-08-15_0917.json`
-- GitHub: `checkpoints/C04_CHECKPOINT_2026-08-15_0917.md`
-- Notion: `C04 CHECKPOINT｜2026-08-15 09:17`
-- F handoff checkpoint: `C04 CHECKPOINT｜2026-08-15 09:27｜F Integration Handoff 01`
-
-## Do not reopen
-
-- fixed 13-stop completion route;
-- fixed 20-page / 20-screen / 3-board public-delivery target unless imposed by an actual external submission requirement;
-- A–F lanes as new P3/P4 namespaces;
-- obsolete game/progress/chapter-led **route authority** (this does not prohibit game-style content/exploration under v1.8);
-- `M1/M0.5/C1/C2` as Current evidence system;
-- species/lithology/geology/safety/exact geometry/ancient-site equivalence inferred from names or appearance alone;
-- 2025 operating times/fares as current 2026 facts without verification;
-- feng-shui/traditional landscape interpretation as scientific/engineering fact;
-- wellbeing/selenium narratives as unverified medical or health-effect claims.
+After milestones / two long rounds / visible context growth, create a C04 checkpoint recording:
+Current Authority, Decision Question, real completed assets, locked IDs/parameters, Evidence/Inference/Assumption, interfaces, blockers, do-not-reopen, next three actions, and `FIELD=0 / G1F HOLD / NO_PROMOTION`.
