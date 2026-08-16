@@ -1,0 +1,81 @@
+{
+  "schema":"oleander.artifact-review/1.0",
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"WEB_EXPERIENCE_FRAMEWORK_v2",
+  "revision":"v2.2-no-compression-current-main",
+  "review_scope":"WEB SOURCE + ARCHITECTURE + CURRENT-MAIN REBASE + MERGED R05/R06 BINDING",
+  "review_state":"SOURCE_STRUCTURE_PASS / FINAL_HEAD_CI_PENDING_READBACK / FINISHED_OUTPUT_HOLD",
+  "repo_baseline":{
+    "main_sha":"68845fc60ad709966f4587b438e37528a19b7ac1",
+    "content_sha":"b7bd4a448c088a798eb42afc76a5993de92b970e",
+    "global_policy":"00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md"
+  },
+  "policy_checks":{"NO_COMPRESSION":"PASS_SOURCE_AND_GLOBAL_AUTHORITY","NO_LOSS":"PASS_SOURCE","working_framework_not_locked":"PASS_SOURCE"},
+  "checks":{
+    "main_experience_surfaces":{"expected":["Hero","Culture","How to Play","App","Thirteen Imprints","Scene Interaction","Audience Depth","Physical/Sensory","R06/R13","Memory/IP","Technical Proof","Return"],"count":12,"result":"PASS_SOURCE"},
+    "nine_visitor_questions":"PASS_MAPPED",
+    "r01_identity":"PASS_R01_RED_YAN_ZUI_CABLE_MOVING_VIEW_OBSERVE_NO_ROUTE_AUTHORITY",
+    "r13_rule":"PASS_PLAY_OFF_BODY_SAFETY_RETURN_PRIORITY",
+    "r05_merged_scene_binding":"PASS_SOURCE_R05_SVG_DIRECTLY_REFERENCED",
+    "r06_merged_scene_binding":"PASS_SOURCE_R06_BODY_USE_PARALLEL_PROOF_DIRECTLY_REFERENCED",
+    "r05_final_main_pixel":"NO / KEEP_AFTER_REVISION / QINGJIANG_SPECIFIC_LANDSCAPE_FIRST_READ_REQUIRED",
+    "r06_final_main_pixel":"NO / KEEP_AFTER_REVISION / REAL_LANDSCAPE + AUTHORITATIVE_SEC_A_R06_NODE_REQUIRED",
+    "audience_depth_independent_main":"PASS_SOURCE_AND_R05_R06_DERIVED",
+    "physical_sensory_independent_main":"PASS_SOURCE_AND_R06_BODY_USE_BOUND",
+    "memory_ip_independent_main":"PASS_SOURCE",
+    "technical_proof_independent_main":"PASS_SOURCE / R06_PARALLEL_PROOF_INTERFACE_IS_NOT_AUTHORITATIVE_PROOF",
+    "return_independent_final_main":"PASS_SOURCE",
+    "pr128_culture_candidate":"PENDING_OPEN_DRAFT_NOT_CURRENT_AUTHORITY"
+  },
+  "source_design_crit":{
+    "Hero":"KEEP_SOURCE_STRUCTURE",
+    "Culture":"REVISE_CURRENT_MAIN / PR128_PENDING",
+    "How_to_Play":"KEEP_AFTER_REVISION_SOURCE_STRUCTURE",
+    "App":"KEEP_SOURCE_STRUCTURE",
+    "Thirteen_Imprints":"KEEP_AFTER_REVISION_SOURCE_STRUCTURE",
+    "Scene_Interaction":"KEEP_AFTER_REVISION / MATERIAL_DELTA_FROM_PR129 / R05_R06_PIXELS_STILL_REVISE",
+    "Audience_Depth":"KEEP_STRUCTURE / MATERIAL_DELTA_FROM_PR129",
+    "Physical_Sensory":"KEEP_AFTER_REVISION / R06_BODY_USE_MATERIAL_DELTA",
+    "R06_R13":"KEEP_AFTER_REVISION / R06_PROOF_REPLACEMENT_REQUIRED",
+    "Memory_IP":"KEEP_AFTER_REVISION",
+    "Technical_Proof":"KEEP_STRUCTURE / AUTHORITATIVE_ASSET_BINDING_PARTIAL",
+    "Return":"KEEP_SOURCE_STRUCTURE"
+  },
+  "public_quality_gate":{
+    "FIRST_READ":"HOLD_PIXEL_READBACK_REQUIRED",
+    "COMPOSITION_SCALE":"HOLD_PIXEL_READBACK_REQUIRED",
+    "HIERARCHY_RHYTHM":"HOLD_PIXEL_READBACK_REQUIRED",
+    "C04_SPECIFICITY":"REVISE_CURRENT_MAIN_CULTURE + R05_FIRST_READ",
+    "EXPERIENCE_COMPLETENESS":"KEEP_AFTER_REVISION_AT_STRUCTURE_LEVEL",
+    "AUDIENCE_VALUE":"KEEP_STRUCTURE_WITH_REAL_SCENE_SOURCE",
+    "PHYSICAL_PRODUCT_CREDIBILITY":"KEEP_P02_SUPPORT / P01_HOLD / R06_BODY_USE_KEEP",
+    "DIGITAL_EXPERIENCE_RETREATABILITY":"KEEP_R05_R06_SOURCE_LOGIC",
+    "TECHNICAL_PROOF_CREDIBILITY":"KEEP_STRUCTURE / AUTHORITATIVE_BINDING_REQUIRED",
+    "RETURN_CLOSURE":"KEEP_STRUCTURE / PIXEL_HOLD",
+    "PROFESSIONAL_FINISH":"HOLD_PIXEL_READBACK_REQUIRED",
+    "TRUTH_BOUNDARY":"PASS_SOURCE"
+  },
+  "asset_dependency_readback":{
+    "new_r05_r06_svg_dependencies":"IN_REPOSITORY_CURRENT_MAIN",
+    "legacy_web_v1_raster_dependencies":"REUSED / REPOSITORY_SOURCE_RESOLUTION_NOT_PROVEN",
+    "app_physical_memory_svg_dependencies":"REFERENCED_CURRENT_MERGED_SOURCES",
+    "portable_carrier":"NOT_CREATED_FOR_V2_2",
+    "status":"PARTIAL / DOES_NOT_PROVE_FINISHED_OUTPUT"
+  },
+  "main_decision":"HOLD_AS_MAIN_UNTIL_FINISHED_OUTPUT_READBACK",
+  "artifact_status_separation":{"artifact":"EXISTS","commit":"EXISTS","pr":"OPEN_DRAFT_127","ci":"PENDING_FINAL_HEAD_READBACK","validated_finished_output":"NO","merged":"NO","promoted":"NO"},
+  "remaining_p0":[
+    "Culture current-main finished visual remains weak; PR128 is pending and not consumed",
+    "R05 source-grounded Qingjiang/Honghua landscape first-read",
+    "R06 real landscape + authoritative SEC-A/R06 node replacement"
+  ],
+  "remaining_p1":[
+    "1-3 additional Scene Interaction loops only if content warrants them",
+    "stronger no-phone end-to-end visual proof",
+    "Physical/Sensory finished visual beyond product/proof diagrams",
+    "Memory/IP visual family refinement",
+    "browser desktop/mobile finished-output readback",
+    "portable persistence only after Design Crit"
+  ],
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","NTS":true,"construction":"NOT_FOR_CONSTRUCTION"}
+}

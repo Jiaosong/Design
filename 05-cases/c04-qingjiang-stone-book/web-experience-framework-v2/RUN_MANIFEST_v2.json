@@ -1,0 +1,59 @@
+{
+  "schema":"oleander.run-manifest/1.0",
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"WEB_EXPERIENCE_FRAMEWORK_v2",
+  "revision":"v2.2-no-compression-current-main",
+  "run_date":"2026-08-16",
+  "base_main_sha":"68845fc60ad709966f4587b438e37528a19b7ac1",
+  "content_base_sha":"b7bd4a448c088a798eb42afc76a5993de92b970e",
+  "branch":"c04/web-experience-framework-v2",
+  "pr":127,
+  "execution_rule":"NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS",
+  "governance_authority":"00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+  "inputs":[
+    {"object":"OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0","role":"global preservation/restructuring authority"},
+    {"object":"web-full-asset-recomposition-v1","role":"presentation provenance + D clean crops"},
+    {"object":"digital-currentization/app-game-map-v1.2","role":"current App/Game Map authority"},
+    {"object":"C04_R01-R13_CANONICAL_SCENE_REGISTER_v1.0","role":"Rxx identity + disposition authority"},
+    {"object":"physical-memory-currentization-v1.2","role":"P01/P02/M01 current detail authority"},
+    {"object":"design/R05_R06_DESIGN_CRIT_v1.md","role":"merged Scene design readback"},
+    {"object":"design/r05/R05_SEE_DO_FEEDBACK_EXIT_v1.svg","role":"R05 editable Scene source"},
+    {"object":"design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg","role":"R06 body-use/digital/proof relation source"},
+    {"object":"QJ-C22-SPATIAL-DRAWING","role":"selected technical proof source"},
+    {"object":"QJ-C23-CONCEPT-DEVELOPMENT","role":"selected human-scale / technical proof source"}
+  ],
+  "pending_input_not_current_authority":[{"object":"PR128 Culture Main v2","state":"OPEN_DRAFT","rule":"do not bind into current-main Web until merged or explicitly authorized"}],
+  "outputs":[
+    {"path":"web-experience-framework-v2/index.html","type":"editable HTML/CSS public framework","delta":"full 12 layers + direct R05/R06 scene-source binding"},
+    {"path":"web-experience-framework-v2/ARCHITECTURE_v2.json","type":"machine-readable architecture map","delta":"current-main scene bindings + global no-compression authority"},
+    {"path":"web-experience-framework-v2/README.md","type":"architecture contract"},
+    {"path":"web-experience-framework-v2/OWNER_RECEIPT_v2.json","type":"owner receipt"},
+    {"path":"web-experience-framework-v2/RUN_MANIFEST_v2.json","type":"run manifest"},
+    {"path":"web-experience-framework-v2/QC_READBACK_v2.json","type":"review gate carrier"}
+  ],
+  "main_sequence_count":12,
+  "main_sequence":["Hero","Culture","How to Play","App","13 Imprints","Scene Interaction","Audience Depth","Physical/Sensory","R06/R13","Memory/IP","Technical Proof","Return"],
+  "cross_systems":["Digital Presence/Retreat","No-phone Continuity","Reality/Safety/Return"],
+  "persistence":{
+    "source_code":"GitHub branch + Draft PR",
+    "base_current_main":"68845fc60ad709966f4587b438e37528a19b7ac1",
+    "upstream_binary_assets":"reuse existing persisted assets/receipts",
+    "new_single_file_portable":"NOT_CREATED / NOT_REQUIRED_BEFORE_DESIGN_READBACK",
+    "drive_current":"UNCHANGED_FROM_WEB_V1; v2.2 not promoted"
+  },
+  "gates":{
+    "authority_read":"PASS",
+    "global_no_compression_authority":"PASS_CONSUMED",
+    "no_compression":"PASS_SOURCE",
+    "no_loss":"PASS_SOURCE",
+    "current_main_rebase":"PASS_AT_68845fc6_BEFORE_FINAL_HEAD_READBACK",
+    "canonical_identity":"PASS",
+    "twelve_main_layers":"PASS_SOURCE",
+    "r05_r06_scene_source_binding":"PASS_SOURCE",
+    "asset_dependency_resolution":"PARTIAL / LEGACY BINARY CARRIERS NOT REPACKAGED",
+    "browser_pixel":"HOLD_NO_EXECUTION_SURFACE",
+    "portable_open":"HOLD_NOT_CREATED",
+    "design_main":"HOLD",
+    "field":"HOLD"
+  }
+}

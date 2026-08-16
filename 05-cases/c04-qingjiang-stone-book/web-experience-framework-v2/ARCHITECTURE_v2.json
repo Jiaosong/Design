@@ -1,0 +1,140 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "WEB_EXPERIENCE_FRAMEWORK_v2",
+  "revision": "v2.3-control-plane-preservation",
+  "base_main_sha": "e962df1437a00be92738a35c6df32326759fd1bb",
+  "content_base_sha": "b7bd4a448c088a798eb42afc76a5993de92b970e",
+  "state": "ARCHITECTURE_SUCCESSOR / CONTENT_IN_PROGRESS / FIELD_OPEN / NO_PROMOTION",
+  "architecture_policy": {
+    "authority": "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "control_plane_contract": "Architecture preservation_review required by merged Control Plane no-loss enforcement",
+    "NO_COMPRESSION": true,
+    "NO_LOSS": true,
+    "global_fixed_chapter_count_applied": false,
+    "rule": "Do not reduce independent project layers to shorten the Web. Reorder, split, add, reweight or explicitly demote only for a design reason; compression is never a valid reason.",
+    "visual_restraint_does_not_authorize_content_loss": true,
+    "page_count_is_content_derived": true,
+    "working_framework_not_locked": true
+  },
+  "consumes": [
+    "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "00-governance/control-plane/control-card.schema.json preservation_review contract",
+    "00-governance/control-plane/control_plane.py no-loss Architecture enforcement",
+    "C04_9Q_CROSS-SYSTEM_EXECUTION_v0.1.md",
+    "C04_R01-R13_CANONICAL_SCENE_REGISTER_v1.0.md",
+    "digital-currentization/app-game-map-v1.2",
+    "physical-memory-currentization-v1.2",
+    "web-full-asset-recomposition-v1 presentation assets",
+    "design/R05_R06_DESIGN_CRIT_v1.md",
+    "design/r05/R05_HONGHUA_SCENE_v1.html",
+    "design/r05/R05_SEE_DO_FEEDBACK_EXIT_v1.svg",
+    "design/r06/R06_VALLEY_SCENE_SYSTEM_v1.html",
+    "design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg"
+  ],
+  "pending_not_authority": [
+    "PR #128 Culture Main v2 is OPEN DRAFT and is not consumed as current main authority until merged or explicitly promoted by the user"
+  ],
+  "visitor_questions": {
+    "Q1": "游客看到什么？",
+    "Q2": "怎么走？",
+    "Q3": "怎么玩？",
+    "Q4": "怎么休息？",
+    "Q5": "手机什么时候出现、什么时候退场？",
+    "Q6": "没手机怎么成立？",
+    "Q7": "十三印在哪些场景真正有意义？",
+    "Q8": "实体设计具体怎么被身体使用？",
+    "Q9": "最后怎么回来、怎么记住？"
+  },
+  "main_sequence": [
+    {"id":"WEB-01","role":"HERO / ENTER QINGJIANG","answers":["Q1"],"status":"MAIN"},
+    {"id":"WEB-02","role":"CULTURE / WHAT QINGJIANG CONTAINS","answers":["Q1","Q7"],"status":"MAIN / CURRENT PIXEL GAP; PR128 PENDING"},
+    {"id":"WEB-03","role":"HOW TO PLAY / BOAT + CABLE + WALK + GAME MAP","answers":["Q2","Q3","Q6","Q9"],"status":"MAIN"},
+    {"id":"WEB-04","role":"APP / QINGJIANG THIRTEEN-IMPRINTS DIGITAL EXPERIENCE","answers":["Q2","Q3","Q5","Q6","Q9"],"status":"MAIN"},
+    {"id":"WEB-05","role":"THIRTEEN IMPRINTS / COMPLETE CONTENT SYSTEM","answers":["Q1","Q3","Q7"],"status":"MAIN"},
+    {"id":"WEB-06","role":"SCENE INTERACTION / SELECTED PLAYABLE SCENES","answers":["Q1","Q3","Q5","Q7"],"status":"MAIN / R05+R06 MERGED SOURCE BOUND; PIXELS REVISE"},
+    {"id":"WEB-07","role":"AUDIENCE DEPTH / SAME SCENE DIFFERENT DEPTHS","answers":["Q3","Q4","Q5","Q6","Q8"],"status":"MAIN / R05+R06 MERGED SOURCE BOUND"},
+    {"id":"WEB-08","role":"PHYSICAL + SENSORY / BODY USE, REST, LIGHT, WIND, SOUND, TOUCH","answers":["Q1","Q4","Q5","Q6","Q8"],"status":"MAIN / P01+P02+R06 BODY USE BOUND"},
+    {"id":"WEB-09","role":"R06 + R13 / SPATIAL DEEPENING","answers":["Q1","Q4","Q5","Q8"],"status":"MAIN / R06 SCENE SYSTEM BOUND; AUTHORITATIVE SEC-A+NODE STILL REQUIRED"},
+    {"id":"WEB-10","role":"MEMORY + IP + CULTURAL PRODUCTS / TAKE THE JOURNEY AWAY","answers":["Q9"],"status":"MAIN"},
+    {"id":"WEB-11","role":"TECHNICAL PROOF / C22 + C23 + SEC-A + R06 NODE","answers":["Q2","Q4","Q8"],"status":"MAIN_BACKSTAGE_PROOF / R06 PARALLEL-PROOF INTERFACE BOUND; AUTHORITATIVE PROOF REPLACEMENT REQUIRED"},
+    {"id":"WEB-12","role":"RETURN / REAL QINGJIANG CLOSURE","answers":["Q2","Q5","Q6","Q9"],"status":"MAIN_FINAL"}
+  ],
+  "preservation_review": {
+    "problem_layer": "Architecture",
+    "global_fixed_chapter_count_applied": false,
+    "all_established_objects_accounted_for": true,
+    "objects": [
+      {"id":"WEB-01","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"SOURCE-GROUNDED LANDSCAPE / FIELD OPEN","action":"KEEP","reason":"Hero owns entry and landscape-first desire; no other chapter performs this role."},
+      {"id":"WEB-02","concept_state":"KEEP","presentation_state":"MAIN / REDRAW","truth_evidence_state":"CURRENT MAIN WEAK / PR128 DRAFT NOT AUTHORITY","action":"REVISE","reason":"Culture is the content mother-source; weak current pixels require replacement, not deletion."},
+      {"id":"WEB-03","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"ROUTE-RELATIONAL / NTS / FIELD OPEN","action":"KEEP","reason":"How to Play owns real journey logic plus exploration map; BOAT/CABLE/WALK are embedded rather than deleted."},
+      {"id":"WEB-04","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"APP v1.2 CURRENT / NO ROUTE-SAFETY AUTHORITY","action":"KEEP","reason":"App is a core public outcome and optional companion; it cannot be collapsed into map or Thirteen Imprints."},
+      {"id":"WEB-05","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"R01-R13 CANONICAL CONTENT REGISTER / FIELD OPEN","action":"KEEP","reason":"The complete Thirteen Imprints content world must remain visible before selected scenes; it is not 13 forced route tasks."},
+      {"id":"WEB-06","concept_state":"KEEP","presentation_state":"MAIN / PIXELS REVISE","truth_evidence_state":"R05+R06 MERGED SOURCE / FINAL PIXELS OPEN","action":"REVISE","reason":"Scene Interaction proves what visitors actually do; merged R05/R06 sources improve closure but do not justify deleting the independent chapter."},
+      {"id":"WEB-07","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"R05+R06 AUDIENCE DEPTH SOURCE / FIELD OPEN","action":"KEEP","reason":"Audience Depth proves one valid scene can support different depths; cross-system checking cannot replace its public chapter."},
+      {"id":"WEB-08","concept_state":"KEEP","presentation_state":"MAIN / REDRAW","truth_evidence_state":"P01/P02/R06 BODY USE CURRENT / P01 HOLD","action":"REVISE","reason":"Physical/Sensory is the bridge from content and screen to body; product inventory alone is insufficient but the layer is independently necessary."},
+      {"id":"WEB-09","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"R06/R13 SOURCE-GROUNDED CONCEPTUAL / FIELD OPEN","action":"KEEP","reason":"R06 and R13 are contrasting spatial peaks applying prior body/sensory logic; they do not replace the full Physical/Sensory layer."},
+      {"id":"WEB-10","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"M01 / MEMORY GRAMMAR CURRENT / FINAL FAMILY OPEN","action":"KEEP","reason":"Memory/IP extends the journey and is a design outcome distinct from Return and Technical Proof."},
+      {"id":"WEB-11","concept_state":"KEEP","presentation_state":"MAIN_BACKSTAGE_PROOF / REPLACE PLACEHOLDERS","truth_evidence_state":"C22/C23/SEC-A/R06 NODE SOURCE-BOUND / NOT FOR CONSTRUCTION","action":"REVISE","reason":"Technical Proof is required to show how the design holds together; it remains concise and subordinate, not removed for narrative smoothness."},
+      {"id":"WEB-12","concept_state":"KEEP","presentation_state":"MAIN_FINAL","truth_evidence_state":"RETURN SOURCE / FIELD OPEN / NO LIVE SERVICE CLAIM","action":"KEEP","reason":"Return owns functional and emotional closure and must remain the final public chapter with nothing after it."}
+    ],
+    "removed_objects": [],
+    "demoted_objects": [],
+    "compression_used_as_reason": false
+  },
+  "scene_bindings": {
+    "R05": {
+      "source":"design/r05/R05_SEE_DO_FEEDBACK_EXIT_v1.svg",
+      "contract":"SEE -> DO(optional) -> FEEDBACK(light) -> END/EXIT",
+      "digital":"OFF/LIGHT; retreat after one observation",
+      "audience":"family / youth / adult / older-low-stamina share same scene",
+      "current_verdict":"KEEP_AFTER_REVISION / MAIN CANDIDATE / NOT MAIN PIXEL YET",
+      "remaining":"replace abstract peak first-read with source-grounded Qingjiang/Honghua visual without inventing viewpoint/geometry/weather"
+    },
+    "R06": {
+      "source":"design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg",
+      "contract":"LANDSCAPE FIRST -> RECOVER -> OPTIONAL REVEAL -> CONTINUE/RETURN",
+      "body_use":"BODY STATE -> APPROACH -> ACTION -> SUPPORT -> DURATION -> EXIT",
+      "digital":"OFF during viewing/rest; short Reveal when needed; then OFF/LIGHT",
+      "audience":"older/low-stamina prioritizes rest + Service + Return",
+      "current_verdict":"KEEP_AFTER_REVISION / MAIN CANDIDATE / PROOF SOURCE REPLACEMENT REQUIRED",
+      "remaining":"real R06 landscape first-read + authoritative SEC-A/R06 node"
+    }
+  },
+  "main_transition_logic": [
+    "Hero -> Culture: 这里值得进入 -> 这里有什么可以被读",
+    "Culture -> How to Play: 内容世界 -> 如何在真实游程中探索",
+    "How to Play -> App: 真实游程成立 -> 数字伴侣只提供可选深度",
+    "App -> Thirteen Imprints: 工具 -> 它承载的完整内容世界",
+    "Thirteen Imprints -> Scene Interaction: 系统全貌 -> 具体怎么玩",
+    "Scene Interaction -> Audience Depth: 一个有效场景 -> 不同人获得不同深度",
+    "Audience Depth -> Physical/Sensory: 体验差异 -> 手机退场、身体接管",
+    "Physical/Sensory -> R06/R13: 感官和身体机制 -> 进入真实空间条件",
+    "R06/R13 -> Memory/IP: 走过与停留 -> 什么被带走",
+    "Memory/IP -> Technical Proof: 价值已被感知 -> 证明它不是空想",
+    "Technical Proof -> Return: 如何成立 -> 为什么最后仍回到清江本身"
+  ],
+  "cross_systems": [
+    {"id":"X-DIG","name":"DIGITAL PRESENCE / RETREAT","rule":"Arrival high; BOAT/CABLE lower; ordinary scene brief; strong landscape/body scenes retreat; R13 essential return only; Return/Exit rises again"},
+    {"id":"X-NOPHONE","name":"NO-PHONE CONTINUITY","rule":"paper map + human service + physical direction + rest + return recognition + journal remain minimum-complete"},
+    {"id":"X-REAL","name":"REALITY / SAFETY / RETURN","rule":"NORMAL/DEGRADED/CLOSED/UNKNOWN + FULL/LIGHT/OFF + Return Priority govern behavior"}
+  ],
+  "global_review_rules": [
+    "Audience Depth is a visible MAIN chapter and also a check applied back to valid scenes; the cross-check does not replace the chapter.",
+    "Landscape/route/body first-read outranks UI and model imagery.",
+    "No-phone journey must remain complete from Arrival through Return.",
+    "Technical proof may also attach locally to parent design objects, but local attachment does not replace WEB-11 Technical Proof.",
+    "Return is the final MAIN chapter; nothing follows it in the public story."
+  ],
+  "canonical_identity_correction": {"R01":"红岩嘴","spatial_carrier":"CABLE moving view","disposition":"OBSERVE","route_authority":false},
+  "current_gaps": [
+    {"priority":"P0","need":"Consume Qingjiang-specific Culture Main only after PR128 is merged or explicitly authorized; current main Culture remains weak"},
+    {"priority":"P0","need":"R05 source-grounded Qingjiang/Honghua landscape first-read replacing abstract peak silhouette"},
+    {"priority":"P0","need":"R06 real landscape first-read plus authoritative SEC-A/R06 node replacing proof slot"},
+    {"priority":"P1","need":"1-3 additional Scene Interaction loops at R05/R06-level closure if content warrants them; do not add filler"},
+    {"priority":"P1","need":"stronger no-phone end-to-end visual proof"},
+    {"priority":"P1","need":"Physical/Sensory finished public visual beyond current product/proof diagrams"},
+    {"priority":"P1","need":"Memory/IP visual family refinement"},
+    {"priority":"P1","need":"pixel/browser readback before MAIN/PASS claim"}
+  ],
+  "truth_boundary": {"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","NTS":true,"construction":"NOT_FOR_CONSTRUCTION"}
+}

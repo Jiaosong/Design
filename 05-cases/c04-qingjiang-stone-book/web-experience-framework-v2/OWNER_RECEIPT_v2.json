@@ -1,0 +1,61 @@
+{
+  "schema":"oleander.owner-receipt/1.0",
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"WEB_EXPERIENCE_FRAMEWORK_v2",
+  "revision":"v2.2-no-compression-current-main",
+  "owner":"Web / Design Director integration",
+  "base_main_sha":"68845fc60ad709966f4587b438e37528a19b7ac1",
+  "content_base_sha":"b7bd4a448c088a798eb42afc76a5993de92b970e",
+  "branch":"c04/web-experience-framework-v2",
+  "pr":127,
+  "state":"EXECUTED / DRAFT_PR / CURRENT_MAIN_REBASED / SOURCE_STRUCTURE_REVIEWED / PIXEL_HOLD / FIELD_OPEN / NO_PROMOTION",
+  "user_directive":{"NO_COMPRESSION":true,"NO_LOSS":true,"working_framework_not_locked":true},
+  "authority_consumed":[
+    "00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md",
+    "C04 current authority chain",
+    "C04_R01-R13_CANONICAL_SCENE_REGISTER_v1.0",
+    "App/Game Map v1.2",
+    "Physical/Memory v1.2",
+    "PR129 merged R05/R06 Scene Deepening"
+  ],
+  "current_main_delta_consumed":[
+    "R05 editable HTML scene prototype + SEE_DO_FEEDBACK_EXIT SVG",
+    "R06 Landscape First / Recover / Optional Reveal / Continue-Return scene system",
+    "R06 BODY STATE -> APPROACH -> ACTION -> SUPPORT -> DURATION -> EXIT",
+    "R06 Digital Presence OFF/LIGHT/short Reveal",
+    "R06 parallel-proof interface for SEC-A + R06 node",
+    "OLEANDER global NO COMPRESSION / NO LOSS policy"
+  ],
+  "pending_not_consumed_as_authority":["PR128 Culture Main v2 remains OPEN DRAFT"],
+  "material_delta":[
+    "Full 12-layer Web retained without compression",
+    "Branch rebased onto current global governance main",
+    "Scene Interaction directly renders merged R05 and R06 SVG sources",
+    "Audience Depth derives from merged same-scene depth logic",
+    "Physical/Sensory uses R06 body-use contract in addition to P01/P02",
+    "Technical Proof shows R06 parallel-proof relationship while preserving requirement for authoritative SEC-A/R06 node",
+    "Return remains independent final MAIN chapter"
+  ],
+  "no_loss":{
+    "upstream_app_v1_2_overwritten":false,
+    "upstream_physical_memory_v1_2_overwritten":false,
+    "canonical_rxx_identity_overwritten":false,
+    "pr129_scene_sources_overwritten":false,
+    "old_web_v1_deleted":false,
+    "audience_depth_compressed_away":false,
+    "physical_sensory_compressed_away":false,
+    "memory_ip_compressed_away":false,
+    "technical_proof_compressed_away":false,
+    "return_compressed_away":false
+  },
+  "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","NTS":true,"construction":"NOT_FOR_CONSTRUCTION"},
+  "does_not_prove":[
+    "finished pixel quality",
+    "desktop/mobile browser composition",
+    "all legacy binary image dependencies resolve in deployed/portable output",
+    "R05 final Qingjiang-specific landscape pixel",
+    "R06 authoritative SEC-A/R06 node binding",
+    "field conditions or measured geometry",
+    "construction readiness"
+  ]
+}
