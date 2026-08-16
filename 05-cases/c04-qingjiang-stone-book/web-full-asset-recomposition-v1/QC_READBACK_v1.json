@@ -1,0 +1,68 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "WEB_FULL_ASSET_RECOMPOSITION_v1",
+  "state": "MAIN_CANDIDATE / DESIGN_REVIEWED / FIELD_OPEN / NO_PROMOTION",
+  "ai_image_used": false,
+  "formal_text": "HTML_SVG_VECTOR_EDITABLE",
+  "desktop": {
+    "viewport": "1440x1000",
+    "full_page_height": 12069,
+    "horizontal_overflow": false,
+    "review": "KEEP_AFTER_REVISION"
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "full_page_height": 14311,
+    "horizontal_overflow": false,
+    "focused_sections": ["map", "app", "physical", "memory"],
+    "review": "KEEP_AFTER_REVISION"
+  },
+  "repair_log": [
+    "SVG object rendering blank -> replaced with SVG img references",
+    "first Drive portable still depended on repository SVG relative paths -> renamed SUPERSEDED_PARTIAL",
+    "rebuilt true single-file portable with all raster and SVG layers embedded",
+    "reopened exact single-file composition in system Chromium"
+  ],
+  "main_strength": "APP_GAME_MAP_INTEGRATION",
+  "main_weakness": "CULTURE_VISUAL_SPECIFICITY",
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "construction": "NOT_FOR_CONSTRUCTION"
+  },
+  "drive_portable_current": {
+    "file": "C04_WEB_FULL_ASSET_RECOMPOSITION_v1_PORTABLE_FULL.html",
+    "drive_file_id": "1iePFyl5vZrRzKEmLMBpv5JPB4r0-0egu",
+    "drive_folder_id": "1o0Er4SLxhwVvErfcWaIVzogJ4Jvo6Owt",
+    "bytes": 649914,
+    "sha256": "58b20cb20eac0b2a0b8bd6ce8518ff38e87283892543a0d0bec09683f7b9b164",
+    "relative_asset_dependencies": 0,
+    "embedded_image_layers": 7,
+    "decoded_image_layers": "7/7",
+    "desktop_reopen": {
+      "viewport": "1440x1000",
+      "full_page_height": 12069,
+      "horizontal_overflow": false
+    },
+    "mobile_reopen": {
+      "viewport": "390x844",
+      "full_page_height": 14311,
+      "horizontal_overflow": false
+    },
+    "browser": "system Chromium via Playwright set_content",
+    "result": "PASS_AFTER_REVISION / MAIN CANDIDATE"
+  },
+  "drive_portable_superseded": {
+    "file_id": "1x6KbC2m53XgbWwfMSoCTnrg1WZdEwA5Q",
+    "state": "SUPERSEDED_PARTIAL / NOT CURRENT"
+  },
+  "delivery_zip": {
+    "file": "C04_WEB_FULL_ASSET_RECOMPOSITION_v1.zip",
+    "sha256": "dcef64ded2b0168e5a95f4909eb970b6a9bc2e1678d1fa4a1134710ab2762d87",
+    "bytes": 7234093,
+    "drive_persisted": false
+  }
+}
