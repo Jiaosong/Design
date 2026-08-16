@@ -1,6 +1,6 @@
 # OLEANDER Independent Design Verdict Policy v1.0
 
-Status: ACTIVE CANDIDATE FOR GOVERNANCE MERGE  
+Status: ACTIVE / MERGED  
 Date: 2026-08-16  
 Scope: ALL OLEANDER P0–P4 / Cases / Domains / design media
 
