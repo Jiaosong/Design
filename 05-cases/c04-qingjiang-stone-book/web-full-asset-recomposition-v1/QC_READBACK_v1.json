@@ -19,7 +19,9 @@
   },
   "repair_log": [
     "SVG object rendering blank -> replaced with SVG img references",
-    "reviewed desktop-v2 and mobile-v2"
+    "first Drive portable still depended on repository SVG relative paths -> renamed SUPERSEDED_PARTIAL",
+    "rebuilt true single-file portable with all raster and SVG layers embedded",
+    "reopened exact single-file composition in system Chromium"
   ],
   "main_strength": "APP_GAME_MAP_INTEGRATION",
   "main_weakness": "CULTURE_VISUAL_SPECIFICITY",
@@ -31,10 +33,15 @@
     "NTS": true,
     "construction": "NOT_FOR_CONSTRUCTION"
   },
-  "github_portable_source": {
-    "index_bytes": 618554,
-    "sha256": "23969128fe8ff6699023870db1c867f755a3957db4c2f99b345b04c3cc249f87",
-    "raster_strategy": "four non-generative clean D crops embedded as JPEG data URIs; canonical editable SVG assets referenced from merged App/Physical directories",
+  "drive_portable_current": {
+    "file": "C04_WEB_FULL_ASSET_RECOMPOSITION_v1_PORTABLE_FULL.html",
+    "drive_file_id": "1iePFyl5vZrRzKEmLMBpv5JPB4r0-0egu",
+    "drive_folder_id": "1o0Er4SLxhwVvErfcWaIVzogJ4Jvo6Owt",
+    "bytes": 649914,
+    "sha256": "58b20cb20eac0b2a0b8bd6ce8518ff38e87283892543a0d0bec09683f7b9b164",
+    "relative_asset_dependencies": 0,
+    "embedded_image_layers": 7,
+    "decoded_image_layers": "7/7",
     "desktop_reopen": {
       "viewport": "1440x1000",
       "full_page_height": 12069,
@@ -46,8 +53,11 @@
       "horizontal_overflow": false
     },
     "browser": "system Chromium via Playwright set_content",
-    "result": "PASS_AFTER_REVISION / MAIN CANDIDATE",
-    "drive_file_id": "1x6KbC2m53XgbWwfMSoCTnrg1WZdEwA5Q"
+    "result": "PASS_AFTER_REVISION / MAIN CANDIDATE"
+  },
+  "drive_portable_superseded": {
+    "file_id": "1x6KbC2m53XgbWwfMSoCTnrg1WZdEwA5Q",
+    "state": "SUPERSEDED_PARTIAL / NOT CURRENT"
   },
   "delivery_zip": {
     "file": "C04_WEB_FULL_ASSET_RECOMPOSITION_v1.zip",
