@@ -16,9 +16,10 @@
 - Canonical ID/path, parameters, evidence boundary, known issue: PASS.
 
 ### Release Package / AR-S09
-- GitHub: requires remote file readback after final commit.
-- Drive: requires folder + native archive readback.
-- Notion: requires training-record readback.
+- GitHub: SYNCED / REMOTE READBACK PASS.
+- Drive: PARTIAL / READBACK PASS — reproducible source, parameters, QA and review are archived as native Docs; rendered state image/export unavailable.
+- Notion: SYNCED / READBACK PASS.
+- AR-S09 PACKAGE RELEASE PASS: NO because Drive visual evidence is incomplete and the Professional Design visual gate remains open.
 - Professional Design / POST-REVIEW PASS: NOT ELIGIBLE until actual screenshot reopen and visual critique are completed.
 
 ## Known Issue
