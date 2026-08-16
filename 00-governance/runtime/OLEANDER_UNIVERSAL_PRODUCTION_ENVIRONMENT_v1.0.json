@@ -1,0 +1,114 @@
+{
+  "schema": "oleander.production-environment.v1",
+  "version": "1.0",
+  "status": "CANDIDATE_CURRENT",
+  "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
+  "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
+  "hard_rules": [
+    "NO_SINGLE_APP_IS_THE_OLEANDER_ENVIRONMENT",
+    "FIGMA_IS_OPTIONAL_NOT_DEFAULT",
+    "BLENDER_SHARED_RUNTIME_IS_REUSABLE_ACROSS_OLEANDER",
+    "VERIFY_CAPABILITY_BEFORE_EXECUTED",
+    "USE_EXISTING_SKILL_AND_RUNTIME_BEFORE_CREATING_NEW_METHOD",
+    "SOURCE_AUTHORITY_PRECEDES_TOOL_CHOICE",
+    "NATIVE_EDITABLE_SOURCE_PRECEDES_FLATTENED_PREVIEW",
+    "ARTIFACT_EXISTENCE_DOES_NOT_PROVE_DESIGN_QUALITY",
+    "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT"
+  ],
+  "capability_states": [
+    "NATIVE_AVAILABLE",
+    "CONNECTOR_AVAILABLE",
+    "SHARED_RUNTIME_AVAILABLE",
+    "RUNNER_AVAILABLE",
+    "FALLBACK_AVAILABLE",
+    "PENDING_VERIFICATION",
+    "UNAVAILABLE"
+  ],
+  "resolver_order": [
+    "READ_CURRENT_AUTHORITY_AND_SOURCE_AUTHORITY",
+    "RESOLVE_EXISTING_OLEANDER_SKILL",
+    "IDENTIFY_REQUIRED_NATIVE_OUTPUT_AND_FIDELITY",
+    "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
+    "PROBE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
+    "SELECT_BEST_FIT_ADAPTER",
+    "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
+    "MARK_ONLY_THE_UNAVAILABLE_STEP_PENDING"
+  ],
+  "adapters": {
+    "research_knowledge": {
+      "preferred": ["Web", "official archives", "PDF", "Notion", "GitHub", "Google Drive"],
+      "status": "DETECT_PER_RUN"
+    },
+    "deterministic_data": {
+      "preferred": ["Python", "GDAL", "GeoPandas", "QGIS when verified", "deterministic geometry and image tools"],
+      "status": "DETECT_PER_RUN",
+      "evidence_boundary": "calculation or export success does not prove aesthetic quality"
+    },
+    "two_d_vector_layout": {
+      "preferred": ["SVG", "HTML/CSS", "PDF/vector tooling", "Figma when explicitly useful and verified"],
+      "status": "DETECT_PER_RUN",
+      "figma_policy": "OPTIONAL_ADAPTER_NOT_REQUIRED_NOT_DEFAULT"
+    },
+    "three_d_spatial_product": {
+      "preferred": ["Blender shared runtime", "Rhino/Grasshopper when verified", "CAD/BIM/FreeCAD when verified"],
+      "status": "DETECT_PER_RUN",
+      "blender_runtime_contract": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json",
+      "blender_invocation": "bash tools/oleander-runtime/blender.sh <blender args>",
+      "authority_rule": "derived render or mesh does not silently replace authoritative geometry/source"
+    },
+    "materials_cmf_render": {
+      "preferred": ["Blender/Cycles", "measured/reference material data", "image tools for supplementary visualization"],
+      "status": "DETECT_PER_RUN"
+    },
+    "motion_video": {
+      "preferred": ["Blender animation/compositor", "FFmpeg when verified", "browser motion when appropriate"],
+      "status": "DETECT_PER_RUN"
+    },
+    "web_interaction": {
+      "preferred": ["HTML/CSS/JS", "browser runtime", "Playwright/Chromium when verified"],
+      "status": "DETECT_PER_RUN"
+    },
+    "visual_readback": {
+      "preferred": ["actual screenshots", "rendered pixels", "browser readback", "model render/viewport capture", "PDF page render"],
+      "status": "DETECT_PER_RUN",
+      "minimum": ["FIRST_READ_OR_THUMBNAIL", "DETAIL_OR_NEAR_READ"]
+    }
+  },
+  "blender_shared_runtime": {
+    "status": "ACTIVE_RUNTIME_INTERFACE",
+    "scope": "OLEANDER_ALL_PROJECTS",
+    "source": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json",
+    "project_specific_absolute_paths": "FORBIDDEN",
+    "preferred_wrapper": "tools/oleander-runtime/blender.sh",
+    "conversation_rule": "Every OLEANDER conversation may route Blender work through the shared runtime contract; the individual run must still verify that its execution surface can invoke the runtime before claiming EXECUTED."
+  },
+  "figma": {
+    "role": "OPTIONAL_SPECIALIST_ADAPTER",
+    "use_when": [
+      "the project explicitly requires editable Figma delivery",
+      "a verified Figma connector materially improves component or interface work",
+      "visual readback is actually available"
+    ],
+    "do_not": [
+      "block a project because Figma is absent",
+      "treat Figma as Source Authority by default",
+      "substitute node count or export existence for visual review"
+    ]
+  },
+  "execution_receipt": {
+    "required_fields": [
+      "TASK",
+      "AUTHORITY",
+      "SKILL_RESOLVED",
+      "REQUIRED_OUTPUT",
+      "CAPABILITY_STATE",
+      "ADAPTER_SELECTED",
+      "VERSION_OR_PATH_IF_VERIFIED",
+      "EXECUTED_OR_PENDING",
+      "READBACK_STATE",
+      "EVIDENCE_GATE",
+      "DESIGN_QUALITY_GATE",
+      "DOES_NOT_PROVE"
+    ]
+  }
+}
