@@ -73,6 +73,35 @@ The historical files explicitly support M5–M10 PASS/CLOSED, PAP PASS, Formal P
 
 A successful replay returns `replay_only=true`, has no live `post_promotion_actions`, and therefore cannot mutate or promote current state.
 
+### 6. Global NO COMPRESSION / NO LOSS preservation contract
+
+The Control Plane now compiles `00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md` into the existing Control Card rather than creating another Gate or parallel methodology.
+
+For `problem_layer=Architecture`, `preservation_review` is mandatory. It records whether established project objects exist and, where they do, accounts for restructuring through three separate ledgers per object:
+
+`concept_state + presentation_state + truth_evidence_state`
+
+This makes the following machine-visible:
+
+- `CONCEPT KEEP != PIXEL KEEP`;
+- `PIXEL FAIL != DESIGN DELETE`;
+- `VALIDATION SUBSET != WHOLE PROJECT`;
+- `SOURCE / AUTHORITY != DERIVED PRESENTATION`.
+
+Allowed actions remain project-specific and include `PRESERVE / REORDER / SPLIT / GROUP / REWEIGHT / REDRAW / DEMOTE_TO_SUPPORT / DEMOTE_TO_PROCESS / HOLD / CUT`.
+
+Removal rules are fail-closed:
+
+- established objects cannot be left unaccounted for;
+- `DEMOTE_TO_SUPPORT` must end in `presentation_state=SUPPORT`;
+- `DEMOTE_TO_PROCESS` must end in `presentation_state=PROCESS`;
+- `CUT` requires `concept_state=DROP` so a weak pixel cannot silently delete a kept concept;
+- compression, page count, cleaner presentation, shorter Web/film, less text or minimalism cannot be the sole removal reason.
+
+`global_fixed_chapter_count_applied` is schema-locked to `false`. The machine contract therefore does **not** encode C04's 12-layer architecture, or any other project's chapter count, as a global template.
+
+This is core validation, not a new system-level Gate. It does not decide which object deserves MAIN, does not manufacture evidence, and does not grant Promotion or Release.
+
 ## Commands
 
 ```bash
@@ -100,4 +129,4 @@ python 00-governance/control-plane/orchestrator.py promotion 00-governance/contr
 python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
 ```
 
-Current hardened regression set: `27/27 PASS` on PR #90 head validation.
+Historical hardened baseline: `27/27 PASS` on PR #90 head validation. Any later regression count must be taken from the current CI run, not inferred from this historical baseline.

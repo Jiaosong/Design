@@ -89,6 +89,31 @@
           "timestamp": {"type": ["string", "null"]}
         }
       }
+    },
+    "preservation_review": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["established_objects_present", "global_fixed_chapter_count_applied", "decisions"],
+      "properties": {
+        "established_objects_present": {"type": "boolean"},
+        "global_fixed_chapter_count_applied": {"const": false},
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["object_id", "concept_state", "presentation_state", "truth_evidence_state", "action", "reason"],
+            "properties": {
+              "object_id": {"type": "string", "minLength": 1},
+              "concept_state": {"enum": ["KEEP", "CURRENTIZE", "REVISE", "COMPETE", "HOLD", "DROP"]},
+              "presentation_state": {"enum": ["MAIN", "SUPPORT", "PROCESS", "REDRAW", "NOT_YET_SHOWN"]},
+              "truth_evidence_state": {"type": "string", "minLength": 1},
+              "action": {"enum": ["PRESERVE", "REORDER", "SPLIT", "GROUP", "REWEIGHT", "REDRAW", "DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "HOLD", "CUT"]},
+              "reason": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
     }
   }
 }

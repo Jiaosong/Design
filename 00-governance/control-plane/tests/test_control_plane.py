@@ -18,6 +18,28 @@ def base_card():
         "evidence_state":{"digital":"OPEN","physical":"NOT_RUN"},"next_allowed_action":"COMPARE","sync_persistence_trigger":"NONE","review_history":[]
     }
 
+
+def architecture_card(established=True):
+    c = base_card()
+    c["decision_question"] = "Can the project architecture become clearer without becoming less?"
+    c["problem_layer"] = "Architecture"
+    c["preservation_review"] = {
+        "established_objects_present": established,
+        "global_fixed_chapter_count_applied": False,
+        "decisions": []
+    }
+    if established:
+        c["preservation_review"]["decisions"] = [{
+            "object_id": "OBJ-EXISTING-01",
+            "concept_state": "KEEP",
+            "presentation_state": "REDRAW",
+            "truth_evidence_state": "OPEN",
+            "action": "REDRAW",
+            "reason": "Current pixels are weak but the independent design function remains valid"
+        }]
+    return c
+
+
 class ControlPlaneTests(unittest.TestCase):
     def test_valid_explore_card(self):
         self.assertFalse([f for f in validate_card(base_card()) if f.level == "ERROR"])
@@ -51,5 +73,48 @@ class ControlPlaneTests(unittest.TestCase):
             p=Path(td)/"XJ01_R02_calibration_master.obj"; p.write_text("o test",encoding="utf-8")
             r=locate_asset("calibration_master",[td],{"assets":[]}); self.assertEqual(r["status"],"FOUND")
         r=locate_asset("R54",[],{"assets":[{"id":"STD-R54","name":"R54 Product Rendering Standard","location":"registry"}]}); self.assertEqual(r["status"],"FOUND")
+
+    def test_architecture_requires_preservation_review(self):
+        c=base_card(); c["problem_layer"]="Architecture"
+        self.assertIn("NO_LOSS_PRESERVATION_REVIEW_REQUIRED", {f.code for f in validate_card(c)})
+        self.assertEqual(run_check(c)["status"], "BLOCKED")
+
+    def test_architecture_with_no_established_objects_can_start_clean(self):
+        c=architecture_card(established=False)
+        self.assertFalse([f for f in validate_card(c) if f.level == "ERROR"])
+        self.assertEqual(run_check(c)["status"], "PASS")
+
+    def test_established_objects_must_be_accounted_for(self):
+        c=architecture_card(established=True); c["preservation_review"]["decisions"]=[]
+        self.assertIn("NO_LOSS_ESTABLISHED_OBJECTS_UNACCOUNTED", {f.code for f in validate_card(c)})
+
+    def test_fixed_global_chapter_count_is_rejected(self):
+        c=architecture_card(); c["preservation_review"]["global_fixed_chapter_count_applied"]=True
+        self.assertIn("SCHEMA_VALIDATION", {f.code for f in validate_card(c)})
+
+    def test_compression_alone_cannot_justify_cut(self):
+        c=architecture_card(); c["preservation_review"]["decisions"]=[{
+            "object_id":"OBJ-EXISTING-01","concept_state":"DROP","presentation_state":"PROCESS","truth_evidence_state":"OPEN","action":"CUT","reason":"compression"
+        }]
+        self.assertIn("NO_LOSS_INVALID_REMOVAL_REASON", {f.code for f in validate_card(c)})
+
+    def test_substantive_cut_reason_can_pass_machine_contract(self):
+        c=architecture_card(); c["preservation_review"]["decisions"]=[{
+            "object_id":"OBJ-EXISTING-01","concept_state":"DROP","presentation_state":"PROCESS","truth_evidence_state":"SUPERSEDED","action":"CUT","reason":"Superseded by a stronger authority object with the same function and preserved provenance"
+        }]
+        self.assertFalse([f for f in validate_card(c) if f.level == "ERROR"])
+
+    def test_cut_cannot_delete_a_kept_concept(self):
+        c=architecture_card(); c["preservation_review"]["decisions"]=[{
+            "object_id":"OBJ-EXISTING-01","concept_state":"KEEP","presentation_state":"PROCESS","truth_evidence_state":"OPEN","action":"CUT","reason":"The current representation is visually weak"
+        }]
+        self.assertIn("NO_LOSS_CUT_STATE_MISMATCH", {f.code for f in validate_card(c)})
+
+    def test_demote_action_and_presentation_state_must_agree(self):
+        c=architecture_card(); c["preservation_review"]["decisions"]=[{
+            "object_id":"OBJ-EXISTING-01","concept_state":"KEEP","presentation_state":"MAIN","truth_evidence_state":"OPEN","action":"DEMOTE_TO_SUPPORT","reason":"Independent function remains but it is secondary to the current public first-read"
+        }]
+        self.assertIn("NO_LOSS_DEMOTE_STATE_MISMATCH", {f.code for f in validate_card(c)})
+
 
 if __name__=="__main__": unittest.main()

@@ -27,6 +27,33 @@ CASE_RE = re.compile(r"^C\d{2,}$")
 LEGACY_CASE_PROJECT_RE = re.compile(r"^C\d{2,}(?:-(?:WS|VAL)-|$)")
 KNOWLEDGE_RE = re.compile(r"^L[0-7](?:\b|\s|[-/:])")
 SHA256_RE = re.compile(r"^[0-9a-fA-F]{64}$")
+REMOVAL_ACTIONS = {"DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "CUT"}
+INVALID_SOLE_REMOVAL_REASONS = {
+    "compression",
+    "brevity",
+    "page count",
+    "too long",
+    "too many pages",
+    "cleaner deck",
+    "cleaner presentation",
+    "cleaner website",
+    "simpler website",
+    "shorter film",
+    "shorter web",
+    "less text",
+    "minimalism",
+    "压缩",
+    "太长",
+    "页数太多",
+    "更简洁",
+    "更干净",
+    "网站太长",
+    "影片更短",
+    "视频更短",
+    "少一点文字",
+    "极简",
+    "极简主义",
+}
 
 @dataclass(frozen=True)
 class Finding:
@@ -55,6 +82,84 @@ def load_json(path: str | Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError("Control Card root must be a JSON object")
     return value
+
+
+def _normalize_reason(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    cleaned = re.sub(r"[^0-9a-zA-Z\u4e00-\u9fff]+", " ", value.casefold())
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def _validate_preservation_review(card: dict[str, Any]) -> list[Finding]:
+    findings: list[Finding] = []
+    review = card.get("preservation_review")
+    architecture_change = card.get("problem_layer") == "Architecture"
+
+    if architecture_change and not isinstance(review, dict):
+        findings.append(Finding(
+            "ERROR",
+            "NO_LOSS_PRESERVATION_REVIEW_REQUIRED",
+            "Architecture-layer work requires preservation_review so established project objects cannot disappear silently",
+        ))
+        return findings
+
+    if not isinstance(review, dict):
+        return findings
+
+    if review.get("global_fixed_chapter_count_applied") is not False:
+        findings.append(Finding(
+            "ERROR",
+            "NO_LOSS_GLOBAL_TEMPLATE_FORBIDDEN",
+            "Global no-loss policy cannot impose C04's 12-layer count or any other fixed universal chapter template",
+        ))
+
+    decisions = review.get("decisions")
+    if review.get("established_objects_present") is True and (not isinstance(decisions, list) or not decisions):
+        findings.append(Finding(
+            "ERROR",
+            "NO_LOSS_ESTABLISHED_OBJECTS_UNACCOUNTED",
+            "Established objects are present; preservation_review.decisions must account for them explicitly",
+        ))
+        return findings
+
+    if not isinstance(decisions, list):
+        return findings
+
+    for index, decision in enumerate(decisions):
+        if not isinstance(decision, dict):
+            continue
+        action = decision.get("action")
+        reason = _normalize_reason(decision.get("reason"))
+        object_id = decision.get("object_id", f"index {index}")
+
+        if action in REMOVAL_ACTIONS and reason in INVALID_SOLE_REMOVAL_REASONS:
+            findings.append(Finding(
+                "ERROR",
+                "NO_LOSS_INVALID_REMOVAL_REASON",
+                f"{object_id}: {action} cannot use compression/page-count/minimalism/shorter-delivery language as its sole reason",
+            ))
+
+        if action == "DEMOTE_TO_SUPPORT" and decision.get("presentation_state") != "SUPPORT":
+            findings.append(Finding(
+                "ERROR",
+                "NO_LOSS_DEMOTE_STATE_MISMATCH",
+                f"{object_id}: DEMOTE_TO_SUPPORT requires presentation_state=SUPPORT",
+            ))
+        if action == "DEMOTE_TO_PROCESS" and decision.get("presentation_state") != "PROCESS":
+            findings.append(Finding(
+                "ERROR",
+                "NO_LOSS_DEMOTE_STATE_MISMATCH",
+                f"{object_id}: DEMOTE_TO_PROCESS requires presentation_state=PROCESS",
+            ))
+        if action == "CUT" and decision.get("concept_state") != "DROP":
+            findings.append(Finding(
+                "ERROR",
+                "NO_LOSS_CUT_STATE_MISMATCH",
+                f"{object_id}: CUT requires concept_state=DROP; pixel/presentation failure alone cannot delete a kept concept",
+            ))
+
+    return findings
 
 
 def validate_card(card: dict[str, Any]) -> list[Finding]:
@@ -90,11 +195,13 @@ def validate_card(card: dict[str, Any]) -> list[Finding]:
             findings.append(Finding("ERROR", "GATE_PROFILE_AUTHORITY_QA", "AUTHORITY requires Machine + Visual + Project QA"))
         if authority.get("state") in {"NONE", "WORKING_SOURCE", "UNLOCATED", None}:
             findings.append(Finding("ERROR", "AUTHORITY_MODE_SOURCE", "AUTHORITY mode requires at least CANDIDATE_AUTHORITY source state"))
+    findings.extend(_validate_preservation_review(card))
     return findings
 
 
 def resolve_context(card: dict[str, Any]) -> dict[str, Any]:
     obj = card.get("object", {}) if isinstance(card.get("object"), dict) else {}
+    preservation = card.get("preservation_review") if isinstance(card.get("preservation_review"), dict) else None
     return {
         "knowledge_position": obj.get("knowledge_position"),
         "application_mapping": obj.get("application_mapping", []),
@@ -102,6 +209,12 @@ def resolve_context(card: dict[str, Any]) -> dict[str, Any]:
         "decision_question": card.get("decision_question"),
         "problem_layer": card.get("problem_layer"),
         "authority_state": (card.get("authority_source") or {}).get("state") if isinstance(card.get("authority_source"), dict) else None,
+        "no_loss": {
+            "preservation_review_required": card.get("problem_layer") == "Architecture",
+            "preservation_review_present": preservation is not None,
+            "established_objects_present": preservation.get("established_objects_present") if preservation else None,
+            "global_fixed_chapter_count_applied": preservation.get("global_fixed_chapter_count_applied") if preservation else None,
+        },
     }
 
 
