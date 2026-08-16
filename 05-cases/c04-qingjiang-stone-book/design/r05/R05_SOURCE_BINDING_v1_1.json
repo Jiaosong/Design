@@ -1,0 +1,17 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "object":"R05 红花石林",
+  "revision":"v1.1",
+  "state":"SCENE / INTERACTION_KEEP / PIXEL_SOURCE_OPEN / NO_PROMOTION",
+  "canonical_identity":"R05 红花石林",
+  "route_authority":false,
+  "source_grounding":{
+    "supported":["operator_source_lists_Honghua_peak_forest","operator_material_supports_cableway_moving_view_relation","overall_peak_forest_observation_is_valid_content_role"],
+    "open":["exact_viewpoint","cabin_side","occlusion","weather_visibility","exact_peak_profile","precise_peak_identity_in_frame"]
+  },
+  "visual_rule":"until exact current R05 source pixels are materialized, use an explicitly labeled observation proxy and never anchor UI markers to claimed real peak positions",
+  "interaction_contract":["SEE_LANDSCAPE_FIRST","OPTIONAL_VIEWFINDER_OR_CO_DISCOVERY","LIGHT_FEEDBACK","OPTIONAL_MY_BOOK_RECORD","END_EXIT"],
+  "digital_presence":["OFF","SHORT","SHORT","OFF"],
+  "forbidden":["score","timer","unlock","route_gate","13_of_13","fake_peak_recognition","fake_exact_peak_labels"],
+  "truth_boundary":["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION"]
+}
