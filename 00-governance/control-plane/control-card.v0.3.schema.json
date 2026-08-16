@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/project-control-card.v0.3.schema.json",
+  "title": "OLEANDER Project Control Card v0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "object",
+    "mode",
+    "decision_question",
+    "problem_layer",
+    "change_scope",
+    "authority_source",
+    "locked_variables",
+    "open_variables",
+    "required_qa",
+    "evidence_state",
+    "next_allowed_action",
+    "sync_persistence_trigger"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.3"},
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "project_id": {"type": ["string", "null"]},
+        "project_level": {"type": ["string", "null"], "enum": ["P0", "P1", "P2", "P3", "P4", null]},
+        "case_id": {"type": ["string", "null"], "pattern": "^C[0-9]{2,}$"},
+        "knowledge_position": {"type": ["string", "null"], "pattern": "^L[0-7](?:\\b|\\s|[-/:])"},
+        "application_mapping": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(?:B|CU|IP|SP)[0-9]{2}$"}
+        },
+        "priority": {"type": ["string", "null"], "enum": ["Priority-0", "Priority-1", "Priority-2", "Priority-3", null]}
+      }
+    },
+    "mode": {"enum": ["EXPLORE", "CANDIDATE", "AUTHORITY"]},
+    "decision_question": {"type": "string", "minLength": 1},
+    "problem_layer": {"enum": ["Parameter", "Relation", "Geometry", "Topology", "Architecture", "Evidence"]},
+    "change_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "surfaces", "established_object_baseline", "baseline_source", "greenfield_no_established_objects"],
+      "properties": {
+        "kind": {"enum": ["NON_RESTRUCTURE", "RESTRUCTURE"]},
+        "surfaces": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "PROJECT_ARCHITECTURE",
+              "NARRATIVE",
+              "PRESENTATION",
+              "WEB",
+              "BOARD",
+              "PDF_DOCUMENT",
+              "SLIDES",
+              "FILM_MOTION",
+              "APP_DIGITAL",
+              "PROTOTYPE",
+              "INTEGRATION",
+              "FINAL_EDIT",
+              "TECHNICAL_PACKAGE",
+              "EVIDENCE_PACKAGE",
+              "SYSTEM_TOOLCHAIN",
+              "OTHER"
+            ]
+          }
+        },
+        "established_object_baseline": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "baseline_source": {"type": ["string", "null"]},
+        "greenfield_no_established_objects": {"type": "boolean"}
+      }
+    },
+    "authority_source": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["NONE", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY", "FROZEN_AUTHORITY", "UNLOCATED"]},
+        "object_id": {"type": ["string", "null"]},
+        "source_id": {"type": ["string", "null"]},
+        "location": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^(?:[A-Fa-f0-9]{64})?$"}
+      }
+    },
+    "locked_variables": {"type": "array", "items": {"type": "string"}},
+    "open_variables": {"type": "array", "items": {"type": "string"}},
+    "required_qa": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["Machine", "Visual", "Project"]}
+    },
+    "artifact_type": {
+      "type": ["string", "null"],
+      "enum": ["drawing", "model", "data", "code", "gis", "visual_cmf", "documentation", "presentation", "release_package", "production_binary", null]
+    },
+    "claim_types": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["rights", "reality", "engineering", "human_test", "physical", "field", "release"]}
+    },
+    "evidence_state": {
+      "type": "object",
+      "additionalProperties": {"enum": ["UNKNOWN", "NOT_RUN", "OPEN", "BLOCKED", "PASS", "FAIL", "N_A"]}
+    },
+    "next_allowed_action": {"type": "string", "minLength": 1},
+    "sync_persistence_trigger": {"enum": ["NONE", "RECEIPT", "PAP", "FULL_SYNC"]},
+    "review_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["decision_question", "problem_layer", "visual_result", "project_result"],
+        "properties": {
+          "decision_question": {"type": "string"},
+          "problem_layer": {"enum": ["Parameter", "Relation", "Geometry", "Topology", "Architecture", "Evidence"]},
+          "visual_result": {"enum": ["PASS", "REVISE", "REJECT", "BLOCKED", "NOT_RUN"]},
+          "project_result": {"enum": ["PASS", "REVISE", "REJECT", "BLOCKED", "NOT_RUN"]},
+          "timestamp": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "preservation_review": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["global_fixed_chapter_count_applied", "decisions"],
+      "properties": {
+        "global_fixed_chapter_count_applied": {"const": false},
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "object_id",
+              "concept_state",
+              "presentation_state",
+              "truth_evidence_state",
+              "action",
+              "reason_code",
+              "reason",
+              "target_object_ids",
+              "identity_preserved"
+            ],
+            "properties": {
+              "object_id": {"type": "string", "minLength": 1},
+              "concept_state": {"enum": ["KEEP", "CURRENTIZE", "REVISE", "COMPETE", "HOLD", "DROP"]},
+              "presentation_state": {"enum": ["MAIN", "SUPPORT", "PROCESS", "REDRAW", "NOT_YET_SHOWN"]},
+              "truth_evidence_state": {"type": "string", "minLength": 1},
+              "action": {"enum": ["PRESERVE", "REORDER", "SPLIT", "GROUP", "MERGE", "REMAP", "REWEIGHT", "REDRAW", "DEMOTE_TO_SUPPORT", "DEMOTE_TO_PROCESS", "HOLD", "CUT"]},
+              "reason_code": {
+                "enum": [
+                  "NOT_APPLICABLE",
+                  "REDUNDANCY_NO_UNIQUE_FUNCTION",
+                  "AUTHORITY_CONTRADICTION",
+                  "PROJECT_GENERICITY",
+                  "DESIGN_WEAKNESS_AFTER_REDRAW",
+                  "EXPERIENCE_OR_USER_VALUE_HARM",
+                  "TECHNICAL_OR_PHYSICAL_INFEASIBILITY",
+                  "EVIDENCE_TRUTH_RIGHTS_SAFETY_CONFLICT",
+                  "SUPERSEDED_WITH_PROVENANCE",
+                  "HIERARCHY_RESTRUCTURE_WITH_IDENTITY_PRESERVED",
+                  "CROSS_SURFACE_REMAP_WITH_IDENTITY_PRESERVED",
+                  "OTHER_SUBSTANTIVE"
+                ]
+              },
+              "reason": {"type": "string", "minLength": 1},
+              "target_object_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {"type": "string", "minLength": 1}
+              },
+              "identity_preserved": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
