@@ -1,6 +1,6 @@
 # OLEANDER Universal Production Environment v1.0
 
-Status: **CANDIDATE CURRENT**  
+Status: **ACTIVE CURRENT**  
 Scope: **ALL OLEANDER projects / all lanes / all conversations / all media**
 
 ## 0｜Core correction

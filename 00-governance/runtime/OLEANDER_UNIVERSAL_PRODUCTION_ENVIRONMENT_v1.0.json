@@ -1,7 +1,7 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
-  "status": "CANDIDATE_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
   "hard_rules": [
