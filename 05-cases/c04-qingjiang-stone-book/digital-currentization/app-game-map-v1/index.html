@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>清江石书｜十三印</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-block">
+        <span class="brand-seal" aria-hidden="true">清</span>
+        <div><b>清江石书</b><small>QINGJIANG · THIRTEEN IMPRINTS</small></div>
+      </div>
+      <button class="return-pill" data-open="service" aria-label="返回与服务"><span>↩</span> 返回 / 服务</button>
+    </header>
+
+    <main id="viewRoot">
+      <section class="view active" data-view="today">
+        <div class="hero-card river-field">
+          <div class="hero-copy">
+            <span class="eyebrow">TODAY / 今日清江</span>
+            <h1>先游清江，<br/>再读清江。</h1>
+            <p>从游船、索道到峰林步道。路线与回程先清楚，故事、观察和游戏按兴趣打开。</p>
+          </div>
+          <svg class="river-mark" viewBox="0 0 520 260" aria-hidden="true">
+            <path d="M-15,204 C72,122 151,204 226,135 C311,56 387,117 543,35"/>
+            <path d="M-20,227 C90,159 165,227 241,158 C327,83 399,141 553,65"/>
+          </svg>
+        </div>
+
+        <div class="journey-strip" aria-label="三种游览方式">
+          <button class="journey-mode" data-mode="boat"><span class="mode-icon">≈</span><b>游船</b><small>水上看清江</small></button>
+          <button class="journey-mode" data-mode="cable"><span class="mode-icon">╱</span><b>索道</b><small>空中看两岸</small></button>
+          <button class="journey-mode" data-mode="walk"><span class="mode-icon">⌁</span><b>步行</b><small>山中近看</small></button>
+        </div>
+
+        <section class="today-block">
+          <div class="section-title"><div><span>建议从这里开始</span><h2>看清路线，再决定怎么玩</h2></div><button class="text-button" data-nav="route">打开地图 →</button></div>
+          <div class="route-preview" data-nav="route">
+            <div class="route-mini-map">
+              <span class="mini-river"></span><i class="m-north">北岸</i><i class="m-cable">索道</i><i class="m-south">南岸步道</i><i class="m-return">回程</i>
+            </div>
+            <div class="route-summary"><b>多分支探索，不按 1→13 排队</b><p>十三印会出现在附近场景中；可以打开、跳过、以后再看。</p></div>
+          </div>
+        </section>
+
+        <section class="today-block">
+          <div class="section-title"><div><span>附近可体验</span><h2>不同场景，做不同的事</h2></div></div>
+          <div class="scene-cards">
+            <article class="scene-card" data-open-imprint="R05"><div class="scene-index">R05</div><div><b>红花石林</b><p>找峰形 · 看整体峰林</p></div><em>PLAY / WISDOM</em></article>
+            <article class="scene-card" data-open-imprint="R06"><div class="scene-index">R06</div><div><b>河谷观察</b><p>看两岸 · 比较空间关系</p></div><em>WISDOM / REST</em></article>
+            <article class="scene-card quiet" data-open-imprint="R13"><div class="scene-index">R13</div><div><b>一线天</b><p>通过 · 看光 · 注意身体尺度</p></div><em>BODY / RETURN</em></article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" data-view="route">
+        <div class="map-head">
+          <div><span class="eyebrow">ROUTE / 探索地图</span><h1>从江面到山中，<br/>自己决定阅读深度。</h1></div>
+          <div class="map-note">NTS · 关系示意<br/>不代表实测距离与坡度</div>
+        </div>
+        <div class="map-toolbar" role="group" aria-label="地图内容筛选">
+          <button class="chip active" data-layer="all">全部</button><button class="chip" data-layer="journey">交通</button><button class="chip" data-layer="imprint">十三印</button><button class="chip" data-layer="rest">休息</button><button class="chip" data-layer="service">服务 / 回程</button>
+        </div>
+        <div class="game-map" id="gameMap">
+          <svg viewBox="0 0 900 1160" role="img" aria-label="清江石书探索地图，非测绘图">
+            <defs>
+              <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+            </defs>
+            <g class="terrain terrain-back"><path d="M90 120 C210 34 302 98 357 189 C431 311 549 176 680 145 C768 123 842 171 880 237 L880 476 C778 412 725 478 641 511 C543 549 480 500 395 469 C291 431 223 503 97 443 Z"/></g>
+            <g class="terrain terrain-front"><path d="M45 641 C162 523 266 549 354 661 C435 763 527 664 618 619 C724 565 813 612 886 705 L886 1090 L34 1090 Z"/></g>
+            <path class="river-path" d="M-30 508 C144 398 259 484 382 529 C512 576 593 501 731 433 C814 393 883 406 934 438"/>
+            <path class="river-path river-secondary" d="M-35 551 C146 448 260 532 386 574 C513 618 604 544 742 477 C815 443 885 453 940 481"/>
+            <g class="routes journey-layer">
+              <path class="boat-line" d="M72 549 C145 506 223 516 303 548"/><path class="cable-line" d="M307 503 L476 700"/>
+              <path class="walk-line" d="M472 703 C558 656 622 686 686 752 C738 806 775 883 733 962"/>
+              <path class="walk-line branch" d="M548 696 C523 781 491 842 432 886"/><path class="walk-line branch" d="M661 753 C609 818 614 902 669 962"/>
+              <path class="return-line" d="M733 962 C789 887 780 792 699 728"/>
+            </g>
+            <g class="map-labels journey-layer">
+              <g transform="translate(85 493)"><circle class="poi journey" r="23"/><text y="5">船</text><text class="label" x="36" y="6">水上段</text></g>
+              <g transform="translate(307 503)"><circle class="poi service" r="23"/><text y="5">北</text><text class="label" x="36" y="6">北岸 / 到达</text></g>
+              <g transform="translate(476 700)"><circle class="poi journey" r="23"/><text y="5">索</text><text class="label" x="36" y="6">索道跨江</text></g>
+              <g transform="translate(714 979)"><circle class="poi return" r="23"/><text y="5">返</text><text class="label" x="36" y="6">回程方向</text></g>
+            </g>
+            <g class="imprint-layer">
+              <g class="imprint-node" data-id="R01" transform="translate(430 624)"><circle r="18"/><text>01</text></g>
+              <g class="imprint-node" data-id="R02" transform="translate(520 680)"><circle r="18"/><text>02</text></g>
+              <g class="imprint-node" data-id="R03" transform="translate(572 744)"><circle r="18"/><text>03</text></g>
+              <g class="imprint-node" data-id="R04" transform="translate(631 785)"><circle r="18"/><text>04</text></g>
+              <g class="imprint-node" data-id="R05" transform="translate(684 839)"><circle r="18"/><text>05</text></g>
+              <g class="imprint-node featured" data-id="R06" transform="translate(603 866)"><circle r="22"/><text>06</text></g>
+              <g class="imprint-node" data-id="R07" transform="translate(541 821)"><circle r="18"/><text>07</text></g>
+              <g class="imprint-node" data-id="R08" transform="translate(496 880)"><circle r="18"/><text>08</text></g>
+              <g class="imprint-node" data-id="R09" transform="translate(447 925)"><circle r="18"/><text>09</text></g>
+              <g class="imprint-node" data-id="R10" transform="translate(520 958)"><circle r="18"/><text>10</text></g>
+              <g class="imprint-node" data-id="R11" transform="translate(592 934)"><circle r="18"/><text>11</text></g>
+              <g class="imprint-node" data-id="R12" transform="translate(657 991)"><circle r="18"/><text>12</text></g>
+              <g class="imprint-node" data-id="R13" transform="translate(720 914)"><circle r="18"/><text>13</text></g>
+            </g>
+            <g class="rest-layer"><g transform="translate(582 894)"><rect class="rest-mark" x="-18" y="-8" width="36" height="16" rx="8"/><text class="label" x="28" y="6">短时休息</text></g></g>
+            <g class="service-layer"><g transform="translate(753 733)"><path class="service-mark" d="M-18 -18 H18 V18 H-18Z"/><text class="label" x="30" y="6">服务 / 返回信息</text></g></g>
+          </svg>
+          <div class="map-overlay">
+            <b>探索而不是通关</b><p>节点位置为关系性设计示意；真实微路线、距离、坡度、开放状态仍按现场与官方信息更新。</p>
+          </div>
+        </div>
+        <div class="map-legend-row"><span><i class="legend-dot river"></i>清江</span><span><i class="legend-dot transport"></i>交通</span><span><i class="legend-dot imprint"></i>十三印</span><span><i class="legend-dot return"></i>返回</span></div>
+      </section>
+
+      <section class="view" data-view="read">
+        <div class="read-head"><span class="eyebrow">READ / 十三印</span><h1>不是十三关。<br/>是十三种看清江的方法。</h1><p>按兴趣打开，随时跳过；文化故事、自然观察、轻游戏与身体体验在合适的场景出现。</p></div>
+        <div class="audience-switch" aria-label="内容深度"><span>为谁看</span><button class="aud active" data-audience="adult">成人</button><button class="aud" data-audience="family">亲子</button><button class="aud" data-audience="youth">青年</button><button class="aud" data-audience="senior">长者 / 低体力</button></div>
+        <div id="imprintGrid" class="imprint-grid"></div>
+      </section>
+
+      <section class="view" data-view="book">
+        <div class="book-hero"><span class="eyebrow">MY BOOK / 我的石书</span><h1>留下你走过的清江，<br/>不是一本任务清单。</h1><p>路线、照片、停留、故事、观察、书写都可以留下；不要求集齐十三印。</p></div>
+        <div class="memory-ribbon"><span>走过</span><b>BOAT → CABLE → WALK</b><small>个人路线记录 · 非精确轨迹</small></div>
+        <div class="memory-grid">
+          <article><span class="memory-type">LOOK</span><b>我记住的峰形</b><p>红花石林 / 轮廓比较</p></article>
+          <article><span class="memory-type">REST</span><b>我停下来的地方</b><p>R06 / 河谷观察与恢复</p></article>
+          <article><span class="memory-type">LISTEN</span><b>我听见的清江</b><p>水声 / 风 / 清风吟</p></article>
+          <article><span class="memory-type">WRITE</span><b>清江旅记</b><p>手写、画、路线和自己的问题</p></article>
+        </div>
+        <div class="book-actions"><button class="primary-action">继续写一页</button><button class="secondary-action">查看我的路线</button></div>
+      </section>
+
+      <section class="view" data-view="service">
+        <div class="service-hero"><span class="eyebrow">SERVICE / RETURN</span><h1>先确定怎么回来。</h1><p>服务与返回永远比新内容优先。这里不伪装实时运营；未知状态保持未知。</p></div>
+        <div class="service-status"><div><span>当前演示状态</span><b>UNKNOWN / 未确认</b></div><em>FAIL-CLOSED</em></div>
+        <div class="service-list">
+          <article><b>返回方向</b><p>保持可见；不依赖完成十三印。</p><span>始终可达</span></article>
+          <article><b>纸质地图 / 人工服务</b><p>手机没电或离线时，路线与返回仍成立。</p><span>NO-PHONE</span></article>
+          <article><b>关闭 / 绕行</b><p>只有获得官方或现场确认后才显示具体开放结论。</p><span>FIELD OPEN</span></article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button class="nav-item active" data-nav="today"><span>⌂</span><b>今日</b></button>
+      <button class="nav-item" data-nav="route"><span>⌘</span><b>地图</b></button>
+      <button class="nav-item" data-nav="read"><span>印</span><b>十三印</b></button>
+      <button class="nav-item" data-nav="book"><span>页</span><b>我的石书</b></button>
+    </nav>
+  </div>
+
+  <dialog id="imprintDialog" class="imprint-dialog">
+    <button class="close-dialog" aria-label="关闭">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
