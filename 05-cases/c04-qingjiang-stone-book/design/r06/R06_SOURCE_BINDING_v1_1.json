@@ -1,0 +1,44 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "object":"R06 多级阶地·不对称河谷",
+  "revision":"v1.1",
+  "state":"SCENE_SYSTEM / KEEP_AFTER_REVISION / FIELD_OPEN / NO_PROMOTION",
+  "landscape_first":{
+    "file":"QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+    "drive_id":"1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+    "bytes":1911515,
+    "sha256":"12b4170d77279c6730230e205dde5e5946feec93da2a802eae5263959b60160d",
+    "dimensions":"1920x1080",
+    "role":"PRIMARY_R06_LANDSCAPE_RELATION",
+    "display_rule":"LANDSCAPE_FIRST_BEFORE_RELATION_REVEAL",
+    "does_not_prove":["exact_terrace_count","elevation","surveyed_geometry","geology_causation"]
+  },
+  "technical_proof_current_R4":{
+    "review":"01_FINAL_INDEPENDENT_REVIEW_RECEIPT_R4",
+    "SEC_A":{
+      "svg":"01_SEC-A_CONTROL_R4.svg",
+      "svg_sha256":"90052bdffe830eb635fa382390d60de07b6c3d7fa138505b1b3d9a6b17b6f228",
+      "png":"01_SEC-A_CONTROL_R4.png",
+      "png_sha256":"498f187bc923b446ca4b7351da00a3d45eb45429acd28f96ef74e86dbf9b02d9",
+      "role":"MAIN_TECHNICAL_CONDITIONAL",
+      "condition":"pair_with_real_Qingjiang_landscape_or_official_route_evidence; never present as surveyed site section"
+    },
+    "R06_GA":{
+      "svg":"02_R06_GA_R4.svg",
+      "svg_sha256":"742b40b2c57ce285fdfa3926ab0213fafe9f7afe84c49e10d0ba4d77e8978fac",
+      "png":"02_R06_GA_R4.png",
+      "png_sha256":"7158ea40635119573be6eb702b7b52df36f65bdf9863e92c0c9e65759cca8f43",
+      "role":"SUPPORT_TECHNICAL"
+    },
+    "R06_DETAIL":{
+      "svg":"03_R06_DETAIL_R4.svg",
+      "svg_sha256":"2511b36e55969fb108571434bb9c090b1b9cdfa586ad4bba540a561a4504a655",
+      "png":"03_R06_DETAIL_R4.png",
+      "png_sha256":"55a70dc6390bfd05774d9463f14c5063e5e984e9e5cdeb736a55b007b3a9fc65",
+      "role":"SUPPORT_TECHNICAL"
+    }
+  },
+  "experience_contract":["LANDSCAPE_FIRST","RECOVER","OPTIONAL_REVEAL","CONTINUE_OR_RETURN"],
+  "digital_presence":["OFF","OFF","SHORT","OFF_OR_LIGHT"],
+  "truth_boundary":["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","NTS","NOT_FOR_CONSTRUCTION"]
+}
