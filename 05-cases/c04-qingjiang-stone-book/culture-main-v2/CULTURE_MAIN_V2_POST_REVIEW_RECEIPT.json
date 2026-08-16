@@ -3,12 +3,7 @@
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "case_id": "C04",
   "review_basis": "Actual reopened 1920x1080 PNG finished outputs after v2.1 readability repair",
-  "authority": [
-    "Governance v1.1.1",
-    "Artifact Review System v1.0",
-    "Post-Generation Review Gate",
-    "C04_CURRENT 2026-08-16"
-  ],
+  "authority": ["Governance v1.1.1","Artifact Review System v1.0","Post-Generation Review Gate","C04_CURRENT 2026-08-16"],
   "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
   "supersedes": "C04_CULTURE_MAIN_DESIGN_v1 visual decisions; v1 remains REJECTED / PROVENANCE ONLY",
   "common_review": {
@@ -29,17 +24,17 @@
     "AR-S09": "PENDING in this receipt; closes only after durable package upload + independent retrieval + GitHub/Drive receipt consistency"
   },
   "figures": [
-    {"id":"CUL2_01_CULTURE_JOURNEY_MAIN","decision":"KEEP","role":"MAIN","png_sha256":"999147a5151a5f1888236391eabaffcc20dfeba8418f868dbaccdfcd9136262c","note":"real Qingjiang first-read + journey map; culture expressed as LOOK/COMPARE/LISTEN/REMEMBER"},
-    {"id":"CUL2_02_PLACE_NAME_LOCAL_STORY","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"2446087e415f25bc72d2d32959b6a7d8f50b1c5beece03f34fa867c1ba4cfa92","note":"map-based R07/R09/R12 scene grammar; no invented peak image or historical-site equivalence"},
-    {"id":"CUL2_03_R06_WISDOM","decision":"KEEP","role":"MAIN","png_sha256":"034fa979b3b692ab25ab7391a221e1790fea962838573d185de6d37168ae84be","note":"strongest scene; actual valley pixel carries first-read; WISDOM = LOOK/COMPARE/EXPLAIN/OPEN"},
-    {"id":"CUL2_04_R13_WITHDRAW_RETURN","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"b0d70d88e0677e22b39490a028283676b3404f2766d7814aa680b06f0c9fdc70","note":"culture/game withdraws under high-attention/return conditions; conceptual R13 pixel does not claim site safety"},
-    {"id":"CUL2_05_MEMORY_JOURNAL","decision":"KEEP","role":"MAIN","png_sha256":"487a787cee59caa0292f9667b8749c79ab04751158479f73f44040aa016f9b3b","note":"Qingjiang Journal/My Book close culture as personal memory, not 13/13 completion"}
+    {"id":"CUL2_01_CULTURE_JOURNEY_MAIN","decision":"KEEP","role":"MAIN","png_sha256":"615a6869cdef26d632a712a8de3d542ce3b5b3534e5ecd7fd32f159f00928bbc","svg_sha256":"23f1d7d953dbae09f1a2e1fdb29d5172569760868f1cbf1d890b97560f91dc4e"},
+    {"id":"CUL2_02_PLACE_NAME_LOCAL_STORY","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"6049062e64bfd76dfcadf1bac33b78f07ff5976f8039d9ad9de530d44e6ebbfa","svg_sha256":"7914b6bba08b79be70fbc5fbb95d3da2632e915562c0264c5314804b4601ff49"},
+    {"id":"CUL2_03_R06_WISDOM","decision":"KEEP","role":"MAIN","png_sha256":"034fa979b3b692ab25ab7391a221e1790fea962838573d185de6d37168ae84be","svg_sha256":"e594e355a0951ab226d0054386f2e85731fb0b4a24ea36175672fc4115adae55"},
+    {"id":"CUL2_04_R13_WITHDRAW_RETURN","decision":"KEEP_AFTER_REVISION","role":"MAIN/SUPPORT","png_sha256":"9a495bfada595ab9a2c7c45d735a7ae5dd72f430ca2198ee29fc7968330a1422","svg_sha256":"995069467b3f2b90f4deb4e22e833806446be19570001587b8d6327a5841a0f9"},
+    {"id":"CUL2_05_MEMORY_JOURNAL","decision":"KEEP","role":"MAIN","png_sha256":"487a787cee59caa0292f9667b8749c79ab04751158479f73f44040aa016f9b3b","svg_sha256":"7fda6753d0390a01a92fa29018803201ba9dee105fedaaf9c6da1702333bcbb3"}
   ],
   "director_summary": {
     "strongest": "CUL2_03_R06_WISDOM",
     "memory_main": "CUL2_05_MEMORY_JOURNAL",
     "culture_main": "CUL2_01_CULTURE_JOURNEY_MAIN",
-    "controlled_support": ["CUL2_02_PLACE_NAME_LOCAL_STORY", "CUL2_04_R13_WITHDRAW_RETURN"]
+    "controlled_support": ["CUL2_02_PLACE_NAME_LOCAL_STORY","CUL2_04_R13_WITHDRAW_RETURN"]
   },
   "overall": "POST-REVIEW PASS / PACKAGE RELEASE PENDING",
   "promotion": "NO"
