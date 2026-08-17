@@ -46,6 +46,7 @@ Run a round-trip test before committing a full scene.
 3. Export clean linework/vector geometry when possible.
 4. Export render passes for color, shadow, depth, object/material ID, and ambient occlusion as needed.
 5. Keep labels and explanatory graphics outside the 3D master unless they are spatial objects.
+6. When an axonometric, exploded, section-derived or projected view becomes a dimensioned technical figure, fabrication/assembly document or construction/detail drawing, hand the derived geometry to `oleander-technical-drawing`. The 3D master remains geometry authority unless an approved design revision explicitly changes that authority; presentation edits must not silently modify geometry, dimensions or truth state.
 
 ## Handoff checklist
 
@@ -59,5 +60,5 @@ Run a round-trip test before committing a full scene.
 
 ## Required output
 
-Return a model manifest, exchange report, render settings, asset dependency list, known limitations, and review images alongside the requested model/render.
+Return a model manifest, exchange report, render settings, asset dependency list, known limitations, and review images alongside the requested model/render. If the requested output includes decision-bearing dimensions, nodes, sections or fabrication/construction notation, include the corresponding `oleander-technical-drawing` handoff/review rather than treating the 3D render as sufficient technical authority.
 
