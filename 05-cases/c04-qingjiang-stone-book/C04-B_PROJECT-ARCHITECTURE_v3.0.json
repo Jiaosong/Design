@@ -1,0 +1,131 @@
+{
+  "schema": "c04-project-architecture/3.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "date": "2026-08-17",
+  "status": "CURRENT_PROJECT_ARCHITECTURE_CANDIDATE_FIELD_OPEN_NO_PROMOTION",
+  "supersedes_structure": [
+    "C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.9 journey-only structure",
+    "C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0 six-layer display architecture"
+  ],
+  "preserves": [
+    "C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0 content direction",
+    "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0",
+    "ROUTE-03 current route lock",
+    "R01-R13 content library",
+    "App/Digital",
+    "Physical/Sensory",
+    "Memory/IP",
+    "Audience",
+    "C22/C23/Model",
+    "Visual/Motion",
+    "Process",
+    "Truth boundary"
+  ],
+  "architecture_backbone": [
+    "CONTEXT_EVIDENCE",
+    "PROBLEM",
+    "INSIGHT",
+    "PRINCIPLES",
+    "METHODS",
+    "MASTER_SYSTEM",
+    "SUBSYSTEM_DESIGN",
+    "SCENE_APPLICATION",
+    "DETAIL_DEVELOPMENT",
+    "TECHNICAL_PROOF",
+    "PROFESSIONAL_JUDGMENT",
+    "RETURN_CONCLUSION"
+  ],
+  "chapters": [
+    {"id":"CH00","name_cn":"项目定义","name_en":"Cover / Project Statement","primary_type":"PROJECT"},
+    {"id":"CH01","name_cn":"项目问题与机会","name_en":"Project Question / Opportunity","primary_type":"ANALYSIS"},
+    {"id":"CH02","name_cn":"场地与山水分析","name_en":"Site / Landscape Analysis","primary_type":"ANALYSIS"},
+    {"id":"CH03","name_cn":"地域文化与内容分析","name_en":"Culture / Content Analysis","primary_type":"ANALYSIS"},
+    {"id":"CH04","name_cn":"人群与使用状态分析","name_en":"People / Audience Analysis","primary_type":"AUDIENCE"},
+    {"id":"CH05","name_cn":"游程与行为分析","name_en":"Journey / Behavior Analysis","primary_type":"ANALYSIS"},
+    {"id":"CH06","name_cn":"设计原理","name_en":"Design Principles","primary_type":"PRINCIPLE"},
+    {"id":"CH07","name_cn":"设计方法","name_en":"Design Methods","primary_type":"METHOD"},
+    {"id":"CH08","name_cn":"总体策略与体验系统","name_en":"Master Strategy / Experience System","primary_type":"SYSTEM"},
+    {"id":"CH09","name_cn":"路线、交通与服务设计","name_en":"Route / Mobility / Service Design","primary_type":"SYSTEM"},
+    {"id":"CH10","name_cn":"十三印内容与互动系统","name_en":"Thirteen Imprints / Content & Interaction","primary_type":"SYSTEM"},
+    {"id":"CH11","name_cn":"数字陪伴系统","name_en":"Digital / App System","primary_type":"SYSTEM"},
+    {"id":"CH12","name_cn":"关键场景设计","name_en":"Key Scene Design","primary_type":"SCENE"},
+    {"id":"CH13","name_cn":"实体、身体与感官设计","name_en":"Physical / Body / Sensory Design","primary_type":"DETAIL"},
+    {"id":"CH14","name_cn":"记忆与文化产品","name_en":"Memory / IP / Cultural Product","primary_type":"SYSTEM"},
+    {"id":"CH15","name_cn":"设计深化与细节","name_en":"Design Detail Development","primary_type":"DETAIL"},
+    {"id":"CH16","name_cn":"技术与模型证明","name_en":"Technical / Model Proof","primary_type":"TECHNICAL"},
+    {"id":"CH17","name_cn":"过程、比较与专业判断","name_en":"Process / Alternatives / Professional Judgment","primary_type":"PROCESS"},
+    {"id":"CH18","name_cn":"开放项、回程与结尾","name_en":"Open Items / Return / Closure","primary_type":"CLOSURE"}
+  ],
+  "page_types": {
+    "PROJECT": {"question":"WHAT_IS_THE_PROJECT","grammar":["PROPOSITION","SCOPE","VISITOR_VALUE"]},
+    "ANALYSIS": {"question":"WHAT_DID_WE_FIND_AND_WHY_IT_MATTERS","grammar":["EVIDENCE_OR_OBSERVATION","FINDING","DESIGN_CONSEQUENCE"]},
+    "AUDIENCE": {"question":"WHAT_CHANGES_FOR_THIS_USER_OR_STATE","grammar":["CONDITION","NEED_OR_RISK","DESIGN_RESPONSE","SAME_SCENE_DIFFERENCE"]},
+    "PRINCIPLE": {"question":"WHAT_RULE_GOVERNS_THE_DESIGN","grammar":["TENSION","PRINCIPLE","APPLICATION","LIMIT"]},
+    "METHOD": {"question":"HOW_WAS_THE_DESIGN_GENERATED","grammar":["INPUT","OPERATION","OUTPUT","WHERE_USED"]},
+    "SYSTEM": {"question":"HOW_DO_PARTS_WORK_TOGETHER","grammar":["COMPONENTS","RELATION","USER_FLOW","FALLBACK"]},
+    "SCENE": {"question":"WHAT_HAPPENS_HERE","grammar":["CONDITION","DESIGN_DECISION","ACTION","CARRIER","VALUE","FALLBACK"]},
+    "DETAIL": {"question":"HOW_DOES_IT_WORK","grammar":["USE","GEOMETRY_OR_STATE","MATERIAL_OR_INTERFACE","CONNECTION","MAINTENANCE","OPEN_ITEM"]},
+    "TECHNICAL": {"question":"WHAT_PROVES_THE_DESIGN","grammar":["DESIGN_CLAIM","PROOF","WHAT_IT_PROVES","DOES_NOT_PROVE"]},
+    "PROCESS": {"question":"WHY_WAS_ONE_OPTION_CHOSEN","grammar":["ALTERNATIVES","CRITERIA","VERDICT","DESIGN_LEARNING"]},
+    "CLOSURE": {"question":"WHAT_REMAINS_AND_WHAT_IS_TAKEN_AWAY","grammar":["RETURN","MEMORY","OPEN_ITEMS"]}
+  },
+  "required_gap_families": [
+    "PROJECT_PROBLEM_DEFINITION",
+    "SITE_LANDSCAPE_ANALYSIS",
+    "CULTURE_CONTENT_SCENE_FIT_ANALYSIS",
+    "AUDIENCE_AND_USAGE_STATE_ANALYSIS",
+    "JOURNEY_BEHAVIOR_ANALYSIS",
+    "DESIGN_PRINCIPLES",
+    "DESIGN_METHODS",
+    "MASTER_SYSTEM_SYNTHESIS",
+    "BOAT_CABLE_WALK_COMPARISON",
+    "THIRTEEN_IMPRINTS_SYSTEM_EXPLANATION",
+    "APP_INFORMATION_ARCHITECTURE_AND_STATES",
+    "KEY_SCENE_APPLICATION",
+    "PHYSICAL_SENSORY_DESIGN_DEPTH",
+    "MEMORY_IP_DEVELOPMENT",
+    "HUMAN_SCALE_MATERIAL_CMF_CONNECTION_MAINTENANCE_DETAILS",
+    "TECHNICAL_MODEL_PROOF",
+    "ALTERNATIVE_SELECTION_HOLD_DROP_JUDGMENT",
+    "RETURN_CLOSURE_AND_OPEN_ITEMS"
+  ],
+  "web_rebuild": {
+    "current_inventory": 52,
+    "inventory_is_architecture": false,
+    "inventory_is_ceiling": false,
+    "final_count_fixed": false,
+    "surface_actions": ["KEEP","REWRITE","MERGE","MOVE","REDRAW","PROCESS","ARCHIVE","ADD_NEW"],
+    "execution_order": [
+      "INVENTORY_EXISTING_SURFACES",
+      "BIND_TO_CHAPTER_AND_PAGE_TYPE",
+      "IDENTIFY_MISSING_REQUIRED_CONTENT",
+      "ADD_SUBSTANTIVE_NEW_SURFACES",
+      "REBUILD_READING_RHYTHM",
+      "PRUNE_DUPLICATES_AND_WEAK_PIXELS",
+      "INDEPENDENT_FINISHED_PRODUCT_DESIGN_CRIT"
+    ]
+  },
+  "current_locks": {
+    "route":"ROUTE-03_LOCKED_CURRENT",
+    "journey04":"PROVENANCE_NON_CURRENT",
+    "r06":"FINISHED_FROZEN_NO_REOPEN",
+    "physical": {
+      "P02_RAIL_LEANING_REST":"KEEP_HIGH_PRIORITY_SUPPORT_NOT_LOCATED",
+      "PHY01_STEP_LIGHT":"KEEP_CONCEPT_HOLD_SELECTION_PROCESS_SUPPORT",
+      "FLUID_REST":"HOLD_SINGLE_SITE_COMPETITION",
+      "QINGFENGYIN":"HOLD_WIND_SENSORY_CANDIDATE"
+    }
+  },
+  "truth_boundary": [
+    "FIELD_OBSERVED_0",
+    "FIELD_MEASURED_0",
+    "G1F_HOLD",
+    "NO_PROMOTION",
+    "UNKNOWN_NEVER_OPEN",
+    "NO_SURVEYED_GEOMETRY_CLAIM",
+    "NO_APPROVED_SAFETY_ACCESSIBILITY_CAPACITY_CLAIM",
+    "NO_LIVE_OPERATION_CERTAINTY",
+    "NO_CONSTRUCTION_READY_CLAIM",
+    "AI_CONCEPT_NOT_SITE_PHOTO_OR_FIELD_PROOF"
+  ]
+}
