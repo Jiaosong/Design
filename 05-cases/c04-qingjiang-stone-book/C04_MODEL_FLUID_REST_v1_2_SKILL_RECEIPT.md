@@ -101,12 +101,14 @@ Terrain-only render, raw side view and source-cage diagnostic are withheld as in
 - technical package QC: `PASS`;
 - independent Design / MAIN verdict: `PENDING`.
 
-## Portable package
+## Portable package / persistence
 
-Local package: `C04_MODEL_FLUID_REST_v1_2__OLEANDER_SKILL_DRIVEN_DELIVERY.zip`
+Package: `C04_MODEL_FLUID_REST_v1_2__OLEANDER_SKILL_DRIVEN_DELIVERY.zip`
 
 - bytes: `4,671,833`;
-- SHA256: `c106ba5f3c8f9d4a3b9309e652523604882ea622eb5a8af830d01d984047981c`.
+- SHA256: `c106ba5f3c8f9d4a3b9309e652523604882ea622eb5a8af830d01d984047981c`;
+- Google Drive file ID: `1bMKrFe7b9UK-7nKd3ao_esryFqoxXKAS`;
+- Drive returned size: `4,671,833` — `PASS`.
 
 ## Does not prove
 
