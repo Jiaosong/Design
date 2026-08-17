@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.c04.c22-official-guide-review.v1",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "C22 Macro Network",
+  "date": "2026-08-17",
+  "authority_state": "EXPLORE / G3 / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "existing_first": {
+    "C0": "A-IMG-01 official hand-drawn guide",
+    "C1": "official guide + M1-M4 minimal vector overlay",
+    "C2": "derived C22 schematic"
+  },
+  "source": {
+    "id": "A-IMG-01",
+    "title": "红花峰林景区手绘导览",
+    "publisher": "恩施大清江风景区官网",
+    "date": "2025-08-05",
+    "pixels": [1400, 912],
+    "expected_sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c",
+    "authority": "FIRST_PARTY_GUIDE / HIGH / RELATION-LEVEL",
+    "source_bytes_state": "HOLD_NO_SOURCE_BYTES"
+  },
+  "material_delta": {
+    "C1": "FAIL / NEGATIVE DELTA",
+    "decision": "REJECT C1 / REVERT TO C0"
+  },
+  "design_verdict": {
+    "C1": "REJECT / REVERT TO EXISTING",
+    "C2": "SUPPORT / PROCESS",
+    "C0": "CURRENT SOURCE BASIS / POSITIVE INDEPENDENT DESIGN VERDICT PENDING"
+  },
+  "artifact_review": {
+    "identity_authority": "PASS",
+    "source_boundary": "PASS",
+    "no_invented_route_geometry": "PASS",
+    "scale_metric_claims": "PASS / NTS",
+    "independent_source_render": "FAIL",
+    "recoverability_persistence": "FAIL",
+    "final_reproduction": "FAIL",
+    "post_review_state": "POST-REVIEW FAIL / NEEDS SOURCE MATERIALIZATION"
+  },
+  "reference_materialization_gate": "BROWSER_VISIBLE != LOCAL_SOURCE_BYTES_AVAILABLE",
+  "release_requirements": [
+    "recover exact A-IMG-01 raw bytes",
+    "verify 1400x912",
+    "verify expected SHA-256",
+    "persist recoverable source copy",
+    "bind locally",
+    "independently reopen",
+    "rerun 2D artifact review",
+    "future overlay requires new Material Delta test"
+  ],
+  "producer_positive_keep": "PROHIBITED / NOT ISSUED"
+}
