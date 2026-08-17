@@ -8,6 +8,8 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `references/GRAPHIC_SYSTEM.md` — technical hierarchy plus composition, contrast budget, grid/rails, whitespace, typography and 3s/30s/near-read review.
 - `references/DETAIL_DENSITY_CALIBRATION.md` — professional near-read depth D0–D6: identity, primary relation, functional dimensions/datums, build-up/materials, connections/interfaces, environment/serviceability, and unresolved closure. Use it when a drawing is visually clean but still technically shallow.
 - `references/VISUAL_HIERARCHY_TRANSFER.md` — cross-skill translation from mature Data-viz / Story-board / external design skills into technical drawing without importing UI decoration.
+- `references/SPATIAL_TRANSLATION_PROTOCOL.md` — **mandatory before drawing decision-relevant spatial-analysis geometry**. Separates semantic identification from valid spatial translation through `SOURCE/PHENOMENON → SPATIAL MODEL → GEOMETRIC ABSTRACTION → GRAPHIC CARRIER → VISUAL ENCODING`; requires translation mode, registration class, preserved/relaxed spatial invariants and does-not-prove boundaries. Prevents arbitrary lines/dots/blobs that merely have the right label.
+- `references/LANDSCAPE_ANALYSIS_DRAWING.md` — landscape/site/public-realm carrier grammar for topography, hydrology, movement, vegetation/habitat, edge/threshold, view/experience, program/dwell and operations. Use together with `SPATIAL_TRANSLATION_PROTOCOL.md`; knowing a line/node/field class is not enough until its geometry is validly translated from source/spatial structure.
 - `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` — base 1:1 reference reconstruction mode and RF-G0…RF-G6 separation from technical truth.
 - `references/PIXEL_FORENSIC_PROTOCOL.md` — mandatory deep path for explicit `像素级 / pixel-level / pixel perfect / exact replica` work: RF-C0…RF-C3 claim levels, locked renderer/font/color environment, sub-pixel anchors, typography/stroke/pattern forensics, tolerance-zero diff, edge-radius diagnostics, critical ROI contracts and E0–E6 layer freezing.
 - `references/PIXEL_SOLVER_PROTOCOL.md` — mandatory when forensic review finds measurable residuals that can be expressed as bounded editable SVG parameters. It replaces eyeballed nudging with renderer-locked, ROI-weighted, multi-cycle coupled coordinate descent and explicitly reopens earlier layers after coupled variables change.
@@ -20,15 +22,17 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `references/FINAL_STAGE_PIXEL_SOLVER.md` — last-stage typography/symbol/node/micro-flow repair after geometry/base/theme/flow are materially reconstructed. It permits only bounded local visual carriers, preserves editable semantic sources and forbids full-sheet residual path-cloud shortcuts.
 - `references/REALITY_CHECK.md` — real-world technical evidence, ranges, sensitivity and FIELD/engineer closure.
 - `references/STANDARDS_ROUTING.md` — jurisdiction, ISO/ASME/PRC standards discovery and compliance-claim boundary.
-- `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis diagrams: source/evidence/inference/decision overlays and Evidence → Spatial Finding → Design Consequence chains. Quantitative/statistical charts remain `oleander-data-viz`.
+- `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis diagrams: source/evidence/inference/decision overlays and Evidence → Spatial Finding → Design Consequence chains. Quantitative/statistical charts remain `oleander-data-viz`. Any spatial geometry produced by this module must pass `SPATIAL_TRANSLATION_PROTOCOL.md` before styling.
 - `templates/DRAWING_EXECUTION_TEMPLATE.md` — reusable brief/register/QA carrier; Section 9A becomes mandatory for exact reconstruction.
 - `tools/reference_fidelity.py` — registered raster diagnostics and optional hard fidelity contract; it reports residual translation, tolerance-zero pixel error, r0/r1/r2 edge disagreement, mismatch concentration and ROI failures without warping the candidate.
 - `tools/svg_parameter_solver.py` — bounded editable-SVG parameter solver. Supports numeric attributes and group translation, explicit renderer selection, ROI-weighted search, coarse-to-fine steps and repeated coupled cycles. It outputs solved SVG/PNG plus a complete accepted-parameter trace.
 - `tools/validate_semantic_reconstruction.py` — machine gate for multilayer semantic editability: shared master-base reuse, relation carriers/targets, callout topology and reusable symbol instances. This gate cannot award pixel fidelity or Design KEEP.
 - `tools/validate_flow_network.py` — machine gate for flow-network graph integrity: base geometry, route classes, edge/node topology, node degree, direction-marker ownership/tangency contract, route-label binding, mode-symbol ownership and external continuations. This gate cannot prove source completeness, route truth, pixel fidelity or Design KEEP.
+- `tools/validate_spatial_translation.py` — machine gate for spatial translation register integrity. Checks source binding, spatial model, translation mode, registration class, preserved invariants, carrier type and non-promotion. It rejects pseudo-map schematics, topology-only graphics claiming exact position and symbol-only spatial relations. Machine PASS does not prove project interpretation or Design KEEP.
 - `tools/validate_base_instances.py` — machine gate for repeated-base instance structure: semantic master preservation, distinct per-panel visual carriers, non-authority state, neutral-only vector content and no raster/text/theme contamination. This gate cannot prove pixel fidelity or geometry authority.
 - `fixtures/reconstruction/ML-REL-01_SEMANTIC.svg` + `ML-REL-01_RELATION_REGISTER.json` — synthetic regression proving the semantic-reconstruction machine gate; not Golden promoted and not project authority.
 - `fixtures/reconstruction/FLOW-01_NETWORK.svg` + `FLOW-01_NETWORK_REGISTER.json` — synthetic regression proving that circulation/mobility objects stay a semantic graph rather than collapsing into a few generic arrows; not Golden promoted and not project authority.
+- `fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json` + `validate_spatial_translation_regression.py` — synthetic regression proving that semantic naming cannot skip the spatial-model/translation stage; not Golden promoted and not project authority.
 - `fixtures/reconstruction/BASE-01_INSTANCE.svg` + `BASE-01_INSTANCE_REGISTER.json` — synthetic regression proving geometry-master / rendered-base-instance separation and bounded non-authoritative visual carriers; not Golden promoted and not project authority.
 - `fixtures/reconstruction/` — synthetic strict reconstruction regression, including an RF-C3 zero-difference contract; not Golden promoted and not project authority.
 - `fixtures/golden/` — editable Golden Drawing Fixture candidates for architecture section, landscape node, product assembly/CMF, connection/foundation, spatial analysis plan and evidence-to-consequence analysis.
@@ -37,7 +41,13 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 
 Core pipeline:
 
-`CURRENT AUTHORITY → DISCIPLINE / ANALYSIS TYPE + STATUS + DECISION → PRIMARY CLAIM → VIEW / ANALYSIS SET → DIMENSION/REALITY/TRUTH-STATE/FLOW REGISTERS → EDITABLE VECTOR DRAWING → 3S CLAIM / 30S LOGIC / NEAR-READ PROOF → DETAIL DENSITY D0–D6 → TD-G0…TD-G8 → INDEPENDENT REVIEW → DOWNSTREAM STORY/BOARD → DELIVERY QC`
+`CURRENT AUTHORITY → DISCIPLINE / ANALYSIS TYPE + STATUS + DECISION → PRIMARY CLAIM → SOURCE / PHENOMENON → SPATIAL MODEL → GEOMETRIC ABSTRACTION + REGISTRATION CLASS + PRESERVED INVARIANTS → GRAPHIC CARRIER → VIEW / ANALYSIS SET → DIMENSION/REALITY/TRUTH-STATE/FLOW REGISTERS → EDITABLE VECTOR DRAWING → VISUAL ENCODING / 3S CLAIM / 30S LOGIC / NEAR-READ PROOF → DETAIL DENSITY D0–D6 → TD-G0…TD-G8 → INDEPENDENT REVIEW → DOWNSTREAM STORY/BOARD → DELIVERY QC`
+
+For landscape/spatial-analysis work, the translation sequence is mandatory before styling:
+
+`SOURCE / PHENOMENON → SPATIAL MODEL → TRACE | DERIVE | GENERALIZE | SCHEMATIZE | INFER | DESIGN → MAP_BOUND | BASE_RELATION_BOUND | TOPOLOGY_BOUND | SEQUENCE_BOUND | DIAGRAM_ONLY → POINT | LINE | CENTERLINE | EDGE_PAIR | BAND | POLYGON | FIELD | NETWORK | SECTION | VECTOR → VISUAL ENCODING`.
+
+If the producer cannot state the spatial model or which invariants survive simplification, the carrier is not ready to draw.
 
 Exact reconstruction pipeline:
 
@@ -47,6 +57,10 @@ Visualization reconstruction handoff:
 
 `REFERENCE PIXELS → TECHNICAL-DRAWING FORENSICS → SOURCE_VISIBLE / REFERENCE_DERIVED_GEOMETRY / INFERRED_FROM_MARK / REFERENCE_TRACE_CANDIDATE / UNREADABLE → oleander-data-viz SOURCE_DATA.json → VISUAL_ENCODING_SPEC.json → PARAMETRIC GENERATOR → SVG → SAME-SIZE ROI READBACK → CROSSING/LAYER SEMANTIC AUDIT → DETERMINISTIC ROUNDTRIP`.
 
+Spatial-translation claim ladder:
+
+`ST-C0 SEMANTIC IDENTIFIED → ST-C1 SPATIAL MODEL RESOLVED → ST-C2 GEOMETRIC TRANSLATION RESOLVED → ST-C3 GRAPHIC CARRIER VALIDATED`.
+
 Flow-network claim ladder:
 
 `FN-C0 NETWORK IDENTIFIED → FN-C1 TOPOLOGY RECONSTRUCTED → FN-C2 SPATIAL BINDING RECONSTRUCTED → FN-C3 VISUAL NETWORK FIDELITY CANDIDATE`.
@@ -55,7 +69,7 @@ Base-instance claim ladder:
 
 `BI-C0 BASE IDENTIFIED → BI-C1 MASTER + INSTANCE MODEL → BI-C2 PANEL VISIBILITY RECONSTRUCTED → BI-C3 VISUAL BASE FIDELITY CANDIDATE`.
 
-`FN-C3 != RF-C3` and `BI-C3 != RF-C3`. A compressed R3/JPEG source may support `FN-C3 + BI-C3 + RF-C2` while RF-C3 remains unavailable because exact font/render/compression conditions are unknown.
+`ST-C3 != DESIGN KEEP`, `FN-C3 != RF-C3` and `BI-C3 != RF-C3`. A compressed R3/JPEG source may support `FN-C3 + BI-C3 + RF-C2` while RF-C3 remains unavailable because exact font/render/compression conditions are unknown.
 
 `RF-C3 / PIXEL-EXACT` is not a synonym for “very similar”. It requires a locked comparison environment and zero unexplained changed pixels in the declared in-scope region at tolerance 0. If the exact font/render path or source quality is unavailable, the honest ceiling is RF-C2 or lower.
 
@@ -78,6 +92,16 @@ The module is intentionally no-loss: the main skill owns invariant rules; refere
 Hard boundaries:
 
 `MORE DETAIL ≠ MORE PROFESSIONAL`
+
+`SEMANTIC IDENTIFICATION ≠ SPATIAL TRANSLATION`
+
+`KNOWN MEANING ≠ VALID GEOMETRY`
+
+`GRAPHIC SIMPLIFICATION ≠ PERMISSION TO INVENT SPATIAL RELATION`
+
+`SCHEMATIC TOPOLOGY ≠ MAP GEOMETRY`
+
+`POINT / LINE / FIELD CHOICE ≠ VISUAL CONVENIENCE`
 
 `HIGH GLOBAL PIXEL SIMILARITY ≠ PIXEL-EXACT`
 
@@ -127,6 +151,8 @@ Hard boundaries:
 
 `DETERMINISTIC ROUNDTRIP ≠ REFERENCE PASS`
 
+`ST-C3 ≠ DESIGN KEEP`
+
 `FN-C3 ≠ RF-C3`
 
 `BI-C3 ≠ RF-C3`
@@ -139,4 +165,4 @@ Hard boundaries:
 
 `ARTIFACT EXISTS ≠ DRAWING PASS ≠ ENGINEERING PASS ≠ FIELD PASS ≠ MAIN KEEP`
 
-`STRUCTURE/DENSITY-CONTRACT PASS ≠ 3S/30S/NEAR-READ DESIGN PASS ≠ GOLDEN PROMOTION`
+`STRUCTURE/DENSITY-CONTRACT PASS ≠ TRANSLATION PASS ≠ 3S/30S/NEAR-READ DESIGN PASS ≠ GOLDEN PROMOTION`
