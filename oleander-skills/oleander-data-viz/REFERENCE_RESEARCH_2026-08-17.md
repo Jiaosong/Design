@@ -40,6 +40,37 @@ Purpose: strengthen the existing `oleander-data-viz` skill without replacing OLE
    - Designer-oriented bridge between tabular data and editable SVG/vector graphics.
    - Transfer: preserve raw/clean/spec -> SVG -> design refinement -> reconciliation chain.
 
+7. D3 — `d3/d3`
+   - Low-level, web-standard data-driven graphics using SVG / Canvas / HTML.
+   - Transfer: use D3 when the task genuinely needs custom marks, unusual spatial layout, bespoke interaction or controlled motion that a higher-level grammar cannot express cleanly.
+   - Do not choose D3 merely for prestige; low-level freedom increases the burden of accessibility, responsive behavior, regression testing and reproducibility.
+
+8. AntV G2 — `antvis/G2` v5
+   - Progressive + declarative visualization grammar for dashboards, exploration and storytelling.
+   - Rejects a fixed chart-typology approach in favor of marks, transforms, scales, coordinates and compositions, with data-driven animation and action-based interaction.
+   - Transfer: tool choice should preserve the same analytical grammar across simple and advanced figures rather than switch to ad-hoc drawing as complexity grows.
+
+9. kepler.gl — `keplergl/kepler.gl`
+   - High-performance geolocation exploration built for large spatial datasets, with map state/layers and spatial aggregation.
+   - Transfer: use a true spatial stack only when authoritative coordinates/CRS/geolocation data exist and the analytical question is geographic.
+   - A relation-only or diagrammatic network must not be promoted to a geographic map simply because a mapping tool can render it.
+
+10. Datawrapper — `datawrapper/datawrapper`
+   - Inspected as a mature public data-visualization product/tool reference.
+   - Transfer is limited to the product principle of fast, publication-oriented chart production; OLEANDER does not treat Datawrapper defaults as an aesthetic authority or allow tool defaults to replace project-specific hierarchy.
+
+## Tool routing extracted from the comparison
+
+Use the highest-level deterministic system that can express the analytical claim without loss:
+
+1. **Plot / Vega-Lite / G2 class** — default for standard analytical charts, layered marks, faceting and common interactions.
+2. **RAWGraphs / vector bridge** — when a designer needs an editable SVG handoff for typographic/compositional refinement.
+3. **D3 class** — when custom geometry, bespoke interaction, spatial layout or motion is materially necessary and cannot be expressed cleanly above.
+4. **GeoPandas / QGIS / kepler.gl class** — only for real geographic data with authoritative CRS/coordinates or explicit exploratory geolocation analysis.
+5. **SVG/HTML direct drawing** — acceptable for relational/diagrammatic systems when the object is not pretending to be a statistical or geographic chart; all semantics must remain machine-readable in a companion data/spec file.
+
+Tool sophistication is not a quality score. A simpler declarative chart with stronger truth/hierarchy outranks a more technically elaborate custom visualization that obscures the claim.
+
 ## Material changes absorbed into OLEANDER
 
 - Added Subject Grounding + One Signature.
@@ -50,6 +81,7 @@ Purpose: strengthen the existing `oleander-data-viz` skill without replacing OLE
 - Added 30-second first impression + 3-second first-read gate.
 - Added structural-device truth rule.
 - Added editable vector bridge with post-refinement data reconciliation.
+- Added tool-routing rule: highest-level deterministic grammar first; custom D3/geo stacks only when the claim requires them.
 - Added diagnostic review lenses without allowing score averaging to defeat OLEANDER hard vetoes.
 
 ## What remains uniquely OLEANDER
