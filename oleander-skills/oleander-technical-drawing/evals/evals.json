@@ -36,6 +36,24 @@
       "prompt": "产品爆炸图看起来完整，但一个隐藏螺钉在装配后没有工具进入路径，维修时也无法拆出电池模块。图纸已经有尺寸和 BOM。判断并修正图纸体系。",
       "expected_output": "Assembly/serviceability failure identified despite dimensional/BOM completeness; tool/hand/removal envelopes made visible; assembly/disassembly sequence revised or connection strategy held; parent assembly plus local interface/service detail; critical clearances dimensioned from functional interfaces; fabrication permission withheld until access is physically feasible; TD-G4 failure cannot be overridden by TD-G3 or TD-G7 PASS.",
       "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "给你一张 1600×1000 的干净数字 PNG 专业节点图和可用的准确字体，要求可编辑 SVG 像素级复刻。现在候选全图 99.4% 像素相同，但主剖切轮廓有 1 px 位移、标题 baseline 偏 1 px、虚线 phase 不一致。能不能判像素级完成？",
+      "expected_output": "Activate EXACT RECONSTRUCTION plus PIXEL_FORENSIC_PROTOCOL; bind R1 reference and locked renderer/font/color environment; reject any global 99.4% pass logic; use tolerance-zero comparison; A0–A4 object/anchor/typography/stroke registers; critical ROI contract; edge disagreement r0/r1/r2; sub-pixel centerline/phase diagnosis; E0–E6 freeze order; result REVISE and RF-C3 unavailable until zero unexplained in-scope changed pixels. TD review remains separate.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "只有一张 900px 宽、JPEG 压缩明显的网上截图，字体未知，还裁掉了图框一部分。用户要求把整张图做到 pixel perfect 并宣称 1:1。",
+      "expected_output": "Classify source as R3; preserve source limitations; do not invent cropped content, sub-pixel typography, hatch phase or exact lineweight; exact-font/render environment cannot be locked; RF-C3 must be HOLD/UNAVAILABLE, maximum honest target RF-C0/C1 or bounded RF-C2 for recoverable ROIs; no hidden raster embedding; exclusions and unknowns explicit; use high-fidelity/structural reconstruction language rather than pixel-perfect.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "有一张原生矢量 PDF 专业构造详图，可以在锁定 renderer 下做到 0 pixel diff；但参考里的锚栓尺寸和当前项目工程师已批准的尺寸冲突。用户要把参考直接用于当前项目主图。",
+      "expected_output": "Separate fidelity from truth: reference may achieve RF-C3 as a reproduction, but current-project adaptation must obey present engineering authority; do not copy conflicting anchor dimensions as project fact; record PROJECT TRUTH OVERRIDE/DESIGN ADAPTATION; TD-G1/G3/G4 judge the adapted drawing independently; an RF-C3 reproduction cannot become MAIN/engineering authority merely because pixel diff is zero.",
+      "files": []
     }
   ]
 }
