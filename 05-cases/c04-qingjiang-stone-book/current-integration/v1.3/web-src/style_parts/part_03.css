@@ -38,3 +38,5 @@
 .dark .scene-copy p{color:#bac5bd}
 
 /* audience */
+.scene-gallery img:not(.wide){object-fit:contain;background:#f2efe7}
+@media(min-width:1051px){.scene-gallery{grid-template-rows:auto 240px}.scene-gallery img:not(.wide){height:240px}}
