@@ -1,0 +1,35 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "C22_03_OFFICIAL_GUIDE_PRIMARY_v3",
+  "execution_chain": [
+    "Current Authority reread",
+    "Existing Mature C22 v1/v2 opened",
+    "Material Delta identified",
+    "existing oleander-data-viz invoked",
+    "editable SVG + HTML + machine contracts produced",
+    "1920x1080 layout preview rendered and reopened",
+    "Evidence Gate separated from Design Quality Gate",
+    "Drive persistence + raw readback verified",
+    "GitHub PR lineage continued"
+  ],
+  "producer_state": "EXECUTED / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING",
+  "source_materialization": "HOLD_NO_LOCAL_A-IMG-01_BYTES",
+  "layout_readback": {
+    "canvas": "1920x1080",
+    "official_source_frame_is_primary": true,
+    "annotation_rail_is_secondary": true,
+    "route_overlay": false,
+    "terrain_redraw": false,
+    "preview_limitation": "layout-only placeholder; not finished-pixel review because A-IMG-01 raw bytes are not locally materialized"
+  },
+  "drive": {
+    "file_id": "1_580DlAGC_iY7SsnLEXX_y100DAveRwx",
+    "filename": "C22_OFFICIAL_GUIDE_PRIMARY_v3_PACKAGE.zip",
+    "bytes": 95612,
+    "sha256": "7964535496a87f06f48cee35c0af9f590a38b22b19c5c7a9152efc55a9c8ace5",
+    "independent_fetch_size_match": true,
+    "zip_integrity": "PASS"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT SURVEY / NOT GEOREFERENCED",
+  "does_not_prove": ["independent Design KEEP", "source-byte closure", "survey geometry", "current operations", "field/safety/capacity closure"]
+}
