@@ -1,0 +1,49 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01 / LANDSCAPE ANALYSIS v3.8",
+  "owner_role": "producer / currentization",
+  "state": "EXECUTED / SOURCE-CARRIER-BOUND / SELF-CHECKED / INDEPENDENT REVIEW PENDING",
+  "material_delta": [
+    "adopts source-carrier precedence as current landscape-analysis rule",
+    "reuses first-party guide as the primary spatial carrier for river/cable/walking-network relations",
+    "keeps R2 as a separate SEQUENCE_BOUND abstraction",
+    "withholds R06 plan view-cone geometry",
+    "withholds R13 plan threshold footprint",
+    "withholds a separate map-like Return curve",
+    "records previous custom route/envelope/view/threshold geometry as provenance rather than current truth"
+  ],
+  "current_files": [
+    "C22_SOURCE_CARRIER_PRECEDENCE_v3_8.json",
+    "C22_LANDSCAPE_ANALYSIS_CURRENT_v3_8.md",
+    "OWNER_RECEIPT_LANDSCAPE_v3_8.json"
+  ],
+  "source_authority": [
+    {
+      "id": "SRC-A01",
+      "title": "红花峰林景区手绘导览",
+      "date": "2025-08-05",
+      "pixels": "1400x912",
+      "sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c",
+      "role": "DIRECT PRIMARY SPATIAL CARRIER / RELATION LEVEL"
+    },
+    {
+      "id": "SRC-A02",
+      "title": "红花峰林景区全景导览",
+      "date": "2025-08-05",
+      "pixels": "1216x646",
+      "sha256": "8d237321e197656f0a9e8e0ea8d042a1492691153f6325baf547d037572e9c4",
+      "role": "RELATION-LEVEL CROSS-CHECK"
+    }
+  ],
+  "does_not_prove": [
+    "survey/GIS geometry",
+    "field-validated micro-route order",
+    "distance/slope/path width",
+    "accessibility/safety/capacity",
+    "live operational state",
+    "Design KEEP",
+    "Professional Finish",
+    "Promotion"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
