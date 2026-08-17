@@ -1,0 +1,14 @@
+{
+  "baseline": "C22_01_OFFICIAL_GUIDE_PRIMARY.svg / C22 Official Source Final v2",
+  "material_delta": [
+    "official guide gains more perceptual mass; editorial rail reduced",
+    "three repeated observation blocks collapsed into one SPATIAL FINDING",
+    "source observation and project design consequence explicitly separated",
+    "large thesis '清江不是十三站，是一张山水网络' removed from first-read to stop editorial copy competing with source",
+    "drop shadow removed; official guide reads as source evidence rather than a designed poster",
+    "no change to route, terrain, node positions, metrics or evidence claims"
+  ],
+  "raw_source_modified": false,
+  "truth_state_modified": false,
+  "independent_keep_claimed": false
+}
