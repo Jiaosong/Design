@@ -14,6 +14,10 @@ Use only after geometry master, panel instances, thematic overlays, callout topo
 
 `BOUNDED RESIDUAL CARRIER != FULL-SHEET PATH CLOUD`
 
+`BOUNDED ROI != AUTOMATICALLY SPARSE RESIDUAL`
+
+`HIGH RESIDUAL COVERAGE = REOPEN SEMANTIC GEOMETRY`
+
 ## 1. Entry conditions
 
 Do not enter this stage until all are true:
@@ -118,6 +122,44 @@ Forbidden:
 - residual carrier that absorbs labels, base, theme and flow into one anonymous object;
 - using changed-pixel improvement to override a semantic/topology failure.
 
+## 6A. Residual-carrier density gate
+
+A residual carrier may be spatially bounded yet still be functionally equivalent to repainting the source.
+
+Therefore record for every residual ROI:
+
+- `roi_pixel_count`;
+- `residual_pixel_count`;
+- `residual_coverage_ratio`;
+- `component_count` or run/path count;
+- residual classes represented;
+- whether the semantic object remains visually legible without the residual carrier;
+- whether removing the residual carrier reveals a recognizably correct geometry or only a rough placeholder.
+
+Interpretation:
+
+- low residual coverage concentrated on antialiasing, glyph edges, tiny symbol details or local compressed-raster noise may remain in final-stage calibration;
+- medium/high residual coverage is a diagnostic, not a success condition;
+- if the carrier must repaint a large fraction of the ROI to make the semantic object resemble the reference, return to the semantic geometry / symbol / typography module first.
+
+Do **not** use one universal percentage as a Design PASS threshold. Use the ratio as a stop signal together with semantic legibility and residual class.
+
+Automatic `REVISE / REOPEN UPSTREAM` when any of these are true:
+
+1. the residual carrier covers most of a small symbol/diagram ROI rather than only its local residuals;
+2. the semantic object is not recognizably the same object when the residual layer is hidden;
+3. residual runs reproduce broad fills, complete contours or full icon silhouettes that should belong to semantic geometry;
+4. the residual layer contains multiple unrelated semantic classes;
+5. `changed_pixel_ratio` improves sharply only because residual density increases sharply;
+6. the carrier acts as a vectorized raster substitute rather than a correction layer.
+
+Calibration example that triggered this gate:
+- a waterfront-theory icon ROI reached near-zero `>12` pixel difference only after a bounded residual carrier covered about `67.9%` of the ROI;
+- the semantic-only ROI remained visually and numerically far from the source;
+- result: pixel repair succeeded, but semantic reconstruction was still `REVISE`; the correct action is to reopen the icon geometry, not promote the residual-heavy result.
+
+`SPARSE RESIDUAL REPAIR != DENSE RESIDUAL REPAINT`.
+
 ## 7. Evaluation sequence
 
 Run in this order:
@@ -125,9 +167,10 @@ Run in this order:
 1. `TYPOGRAPHY ROI` — baseline/linebreak/rotation/content and target-size glyph fidelity;
 2. `SYMBOL/NODE ROI` — position/scale/family/ownership/density;
 3. `MICRO-FLOW ROI` — secondary edges, local arrows, branch/continuation marks;
-4. `FULL PAGE` — only after the three local classes improve without upstream regression;
-5. reopen `RELATION / FLOW / BASE / THEME` audits;
-6. independent review.
+4. `RESIDUAL DENSITY` — verify that local carriers remain correction layers rather than repaint layers;
+5. `FULL PAGE` — only after the local classes improve without upstream regression;
+6. reopen `RELATION / FLOW / BASE / THEME` audits;
+7. independent review.
 
 Do not optimize global MAE first.
 
@@ -141,6 +184,7 @@ until an independent reviewer checks:
 
 - semantic editability remains recoverable;
 - visual carriers are bounded and non-authoritative;
+- residual carriers remain sparse correction layers rather than dense repaints;
 - no full-sheet path-cloud shortcut was introduced;
 - symbol/node ownership remains correct;
 - micro-flow remains bound to registered topology;
