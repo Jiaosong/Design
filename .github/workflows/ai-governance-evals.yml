@@ -34,6 +34,12 @@ jobs:
           --svg oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_SEMANTIC.svg
           --register oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_RELATION_REGISTER.json
 
+      - name: Validate flow-network semantic fixture
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_flow_network.py
+          --svg oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK.svg
+          --register oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK_REGISTER.json
+
       - name: Validate case and claim namespaces
         run: python 00-governance/schemas/validate_namespaces.py
 
@@ -60,6 +66,7 @@ jobs:
           echo '- Validates reusable skill Golden Sets and canonical retrieval QA cases.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates editable Technical Drawing Golden Fixture structure; this is not a substitute for independent visual Design PASS.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates shared-base reuse, relation carriers, callout topology and symbol instances in the multilayer semantic reconstruction regression; this does not prove pixel fidelity or Design KEEP.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates flow-network nodes, edges, route classes, direction-marker ownership/tangency contracts, route labels, mode-symbol binding and external continuations; this does not prove route truth, visual fidelity or Design KEEP.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-02 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-03 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
