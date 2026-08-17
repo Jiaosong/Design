@@ -49,7 +49,7 @@ If these questions cannot be answered with execution evidence, continue using th
 2. Data visualization: Turn quarterly traffic, activity, and dwell-time data into interactive, animated, and editable outputs.
 3. 3D pipeline: Hand a Blender scene to Unreal while producing a layered Illustrator-ready exploded axonometric.
 4. Story and board: Compile approved findings, analysis diagrams, and renders into two A0 boards and a 12-page deck.
-5. Delivery QC: Inspect A0 PDFs, a 4K film, render images, video, audio, 3D, and interactive outputs without modifying masters.
+5. Delivery QC: Inspect A0 PDFs, a 4K film, render images, and a GLB model without modifying masters.
 6. Motion: Design one state change as a no-motion baseline, candidate variants and Reduced Motion; justify any runtime library through the Motion Library & Effect Atlas and execute in a real runtime when available.
 
 ## Acceptance checks
