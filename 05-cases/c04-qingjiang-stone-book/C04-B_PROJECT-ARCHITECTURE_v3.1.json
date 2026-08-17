@@ -1,0 +1,45 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "version": "v3.1",
+  "role": "CURRENT_PROJECT_DISPLAY_ARCHITECTURE_CHAPTER_PAGE_SEPARATION",
+  "inherits": ["C04-B_PROJECT-ARCHITECTURE_v3.0"],
+  "hierarchy": ["PROJECT", "CHAPTER", "PAGE", "MODULE_FIGURE_ASSET"],
+  "hard_rules": {
+    "chapter_is_not_page": true,
+    "chapter_count_must_not_equal_page_count_by_inference": true,
+    "legacy_52_pages_preserved": true,
+    "new_content_adds_pages": true,
+    "page_count_unbounded": true,
+    "merge_default_allowed": false,
+    "merge_requires_independent_review": true,
+    "preview_unit": "PAGE_ID",
+    "readback_unit": "PAGE_ID"
+  },
+  "chapter_ids": ["CH00","CH01","CH02","CH03","CH04","CH05","CH06","CH07","CH08","CH09","CH10","CH11","CH12","CH13","CH14","CH15","CH16","CH17","CH18"],
+  "legacy_page_baseline": {
+    "source": "C04 Web v1.4/v1.8 full readback",
+    "count": 52,
+    "id_pattern": "C04-WEB-P001..C04-WEB-P052",
+    "default_state": "PRESERVE_UNMAPPED"
+  },
+  "new_page_pattern": "C04-WEB-N001...",
+  "page_required_fields": [
+    "page_id",
+    "chapter_id",
+    "page_type",
+    "primary_claim",
+    "primary_visual",
+    "concept_state",
+    "pixel_state",
+    "action",
+    "does_not_prove"
+  ],
+  "migration_actions": ["KEEP","MOVE","REWRITE","REDRAW","EXPAND","PROCESS","ARCHIVE_CANDIDATE"],
+  "merge_flow": ["MERGE_CANDIDATE","INDEPENDENT_REVIEW","APPROVED_OR_REJECTED"],
+  "implementation": {
+    "chapter_selector": "section[data-chapter]",
+    "page_selector": "article[data-page-id]",
+    "counts_required": ["chapter_count","page_count"]
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
