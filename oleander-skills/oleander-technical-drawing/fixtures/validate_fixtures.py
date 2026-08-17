@@ -55,17 +55,32 @@ def validate_svg(entry, global_required_groups):
         if term not in joined:
             fail(f"{entry['id']}: missing visible {term} status")
 
-    if "PRIMARY_CLAIM" in ids:
-        claim_group = next(node for node in root.iter() if node.attrib.get("id") == "PRIMARY_CLAIM")
-        claim_text = " ".join((t.text or "") for t in claim_group.iter(SVG_NS + "text")).strip()
-        if len(claim_text) < 8:
-            fail(f"{entry['id']}: PRIMARY_CLAIM is structurally present but effectively empty")
+    claim_group = next(node for node in root.iter() if node.attrib.get("id") == "PRIMARY_CLAIM")
+    claim_text = " ".join((t.text or "") for t in claim_group.iter(SVG_NS + "text")).strip()
+    if len(claim_text) < 8:
+        fail(f"{entry['id']}: PRIMARY_CLAIM is structurally present but effectively empty")
+
+    if entry.get("type") == "technical_drawing":
+        density_target = (entry.get("density_target") or "").strip()
+        if len(density_target) < 20:
+            fail(f"{entry['id']}: technical fixture lacks a meaningful density_target")
+        depth_levels = entry.get("depth_levels_present") or []
+        valid_depth = {f"D{i}" for i in range(7)}
+        if any(level not in valid_depth for level in depth_levels):
+            fail(f"{entry['id']}: invalid depth level in {depth_levels}")
+        if len(set(depth_levels)) < 5:
+            fail(f"{entry['id']}: professional-density calibration requires at least five represented depth levels")
+        if "D0" not in depth_levels or "D1" not in depth_levels or "D6" not in depth_levels:
+            fail(f"{entry['id']}: technical fixture must retain identity, primary relation and unresolved-closure depth (D0/D1/D6)")
+        if len(texts) < 24:
+            fail(f"{entry['id']}: detail-density fixture has too little recoverable vector annotation ({len(texts)} text nodes)")
 
     return {
         "id": entry["id"],
         "file": entry["file"],
         "groups": len(ids),
         "text_nodes": len(texts),
+        "depth": entry.get("depth_levels_present"),
     }
 
 
@@ -94,9 +109,11 @@ def main():
     print("OLEANDER DRAWING FIXTURES: STRUCTURE PASS")
     print(f"fixture count: {len(results)}")
     print("hierarchy scaffold: HIERARCHY_FRAME / PRIMARY_CLAIM / ANNOTATION_RAIL")
+    print("technical density contract: density_target + D0..D6 coverage + graphical groups")
     for r in results:
-        print(f"- {r['id']} {r['file']}: groups={r['groups']} text_nodes={r['text_nodes']}")
-    print("NOTE: structure PASS does not equal 3s/30s/near-read Design PASS or Golden promotion.")
+        depth = f" depth={','.join(r['depth'])}" if r.get("depth") else ""
+        print(f"- {r['id']} {r['file']}: groups={r['groups']} text_nodes={r['text_nodes']}{depth}")
+    print("NOTE: structure/density-contract PASS does not equal 3s/30s/near-read Design PASS, engineering approval or Golden promotion.")
     return 0
 
 
