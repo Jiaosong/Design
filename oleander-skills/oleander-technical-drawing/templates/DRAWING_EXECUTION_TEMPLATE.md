@@ -2,7 +2,7 @@
 
 Use this template for substantial technical drawing work. Delete non-applicable fields; do not invent values to fill blanks.
 
-When the task is an explicit 1:1 / pixel-level / exact reference reconstruction, also use `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` and complete the optional Section 9A. Reconstruction fidelity gates never replace TD-G0…TD-G8.
+When the task is an explicit 1:1 / pixel-level / exact reference reconstruction, use both `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` and `references/PIXEL_FORENSIC_PROTOCOL.md`, then complete Section 9A. Reconstruction fidelity gates never replace TD-G0…TD-G8.
 
 ## 1. DRAWING BRIEF
 
@@ -88,7 +88,10 @@ For each critical item:
 
 Complete only for `EXACT RECONSTRUCTION / STRUCTURAL RECONSTRUCTION / SYSTEM EXTRACTION / PROJECT ADAPTATION` work.
 
+### Claim level
+
 - Reconstruction mode:
+- Current fidelity claim: `RF-C0 STRUCTURAL / RF-C1 GEOMETRIC / RF-C2 RENDER-LOCKED HIGH FIDELITY / RF-C3 PIXEL-EXACT CANDIDATE`
 - Reference source class: `R0 / R1 / R2 / R3 / R4`
 - Reference file / revision / SHA-256:
 - Full-sheet or ROI scope:
@@ -99,23 +102,70 @@ Complete only for `EXACT RECONSTRUCTION / STRUCTURAL RECONSTRUCTION / SYSTEM EXT
 - Normalization transform: crop / rotate / deskew / dewarp / none
 - Acceptance contract / reviewer:
 
+### Render environment lock
+
+- Renderer + exact version:
+- OS/runtime where rendering depends on it:
+- Canvas px:
+- DPI/export scale:
+- Alpha/background rule:
+- Color-space/profile rule:
+- Antialiasing setting/path:
+- Font face identity/hash register:
+- CJK/Latin shaping/fallback chain:
+- Supersampling factor when used:
+- Downsample filter/path:
+- Browser engine/version when relevant:
+- Environment-lock SHA/identity:
+
+Any material change above invalidates previous RF-C3 evidence.
+
+### Reference normalization / candidate registration
+
+- Untouched reference preserved: `YES / NO`
+- Reference capture rectification:
+- Candidate registration transform:
+- Non-uniform scale/warp used on candidate: must be `NO` for exact reconstruction
+- Estimated residual whole-page translation dx/dy before repair:
+- Registration evidence:
+
 ### Anchor register
 
-| anchor_id | class | reference position/measure | candidate position/measure | delta | tolerance | result |
-|---|---|---|---|---|---|---|
-| | A0/A1/A2/A3/A4/A5 | | | | | |
+| anchor_id | class | criticality | reference position/measure | candidate position/measure | delta px/page-unit | tolerance | result |
+|---|---|---|---|---|---|---|---|
+| | A0/A1/A2/A3/A4/A5 | CRITICAL/MAJOR/SUPPORT | | | | | |
 
-### Typography register
+### Sub-pixel anchor register
 
-| text_id | role | family/state | size | baseline/box | line break | delta/open item |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+| anchor_id | centerline/page coordinate | target raster phase | supersample evidence | final target-render result |
+|---|---|---|---|---|
+| | | | | |
+
+### Object forensic register
+
+| object_id | role | criticality | ref bbox | cand bbox | centroid delta | visible thickness/coverage | parent/group | result |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | |
+
+### Typography forensic register
+
+| text_id | exact string | face/state | size | start x | baseline y | run width | line box | line break | tracking/shaping | delta/open item |
+|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | |
+
+For RF-C3, unresolved exact font/shaping mismatch is a blocker rather than a percentage deduction.
 
 ### Stroke / hatch / symbol register
 
-| style_id | role | reference visible class | candidate class | pattern/symbol | mismatch/open item |
-|---|---|---|---|---|---|
-| | | | | | |
+| style_id | role | reference visible class | candidate class | centerline | visible thickness samples | dash/phase | hatch period/origin | symbol endpoint/bbox | mismatch/open item |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
+
+### Critical ROI contract
+
+| roi_id | role | criticality | bounds | RF-C2 threshold | RF-C3 threshold | result |
+|---|---|---|---|---|---|---|
+| | PAGE_FRAME/PRIMARY_VIEW/PRIMARY_GEOMETRY/TITLE/DIMENSIONS/CALLOUT/TITLE_BLOCK/HATCH | CRITICAL/MAJOR/SUPPORT | | | default zero unexplained difference | |
 
 ### Fidelity evidence
 
@@ -123,9 +173,29 @@ Complete only for `EXACT RECONSTRUCTION / STRUCTURAL RECONSTRUCTION / SYSTEM EXT
 - Same-size candidate preview:
 - 50/50 overlay:
 - Absolute-difference image:
-- Changed-pixel mask + declared tolerance:
+- Changed-pixel mask at tolerance 0:
 - `FIDELITY_METRICS.json`:
-- ROI report:
+- Critical ROI report:
+- Whole-page residual translation estimate:
+- Edge disagreement r0 / r1 / r2:
+- Top mismatch tiles / heat concentration:
+- Changed-pixel bounding box:
+- Row/column mismatch peaks:
+- Source-noise/exclusion masks and pre-declared rationale:
+
+### Layer freeze / repair register
+
+| layer | state | blocker | last material repair | rerender evidence |
+|---|---|---|---|---|
+| E0 Canvas | OPEN/FROZEN | | | |
+| E1 Major View | OPEN/FROZEN | | | |
+| E2 Primary Geometry | OPEN/FROZEN | | | |
+| E3 Typography | OPEN/FROZEN | | | |
+| E4 Stroke/Symbol/Dimensions | OPEN/FROZEN | | | |
+| E5 Hatch/Tone/Raster Context | OPEN/FROZEN | | | |
+| E6 Render Residual | OPEN/EXPLAINED/ZERO | | | |
+
+Changing an earlier frozen layer reopens its dependent later layers.
 
 ### RF-G0…RF-G6
 
@@ -138,6 +208,10 @@ Complete only for `EXACT RECONSTRUCTION / STRUCTURAL RECONSTRUCTION / SYSTEM EXT
 | RF-G4 Stroke, Hatch & Symbol Fidelity | | | |
 | RF-G5 Pixel & ROI Readback | | | |
 | RF-G6 Fidelity Truth Boundary & Independent Review | | | |
+
+### RF-C3 hard condition
+
+Do not write `PIXEL-EXACT / 像素级一致` unless the final locked-environment comparison uses tolerance `0` and reports zero unexplained changed pixels for every declared in-scope pixel. If exclusions exist, the claim must be scoped to the non-excluded region and must not be described as whole-page pixel-exact.
 
 State explicitly: `RF PASS != TD PASS` and `TD PASS != RF PASS`.
 
@@ -171,7 +245,8 @@ State explicitly: `RF PASS != TD PASS` and `TD PASS != RF PASS`.
 `KEEP / REVISE / REJECT / HOLD`
 
 State separately:
-- Reference-fidelity status when applicable:
+- Reference-fidelity status:
+- RF-C0…RF-C3 claim level:
 - Drawing Design status:
 - Engineering status:
 - Field status:
