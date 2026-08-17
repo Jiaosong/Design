@@ -1,0 +1,87 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "date": "2026-08-17",
+  "role": "PROJECT_ORGANIZATION_OBJECT_LINEAGE_CONTROL",
+  "base_main_sha": "25329e4b0c9f9c93ce64d1d9bbff2731c553d9c2",
+  "current_delta": {
+    "editing_now": [
+      "canonical object identity",
+      "merged-current vs open-candidate separation",
+      "candidate lineage",
+      "ownership",
+      "downstream consumer boundaries",
+      "no-loss project hygiene"
+    ],
+    "not_editing": [
+      "Web integration",
+      "App UI redesign",
+      "new design pixels",
+      "field or engineering claims"
+    ]
+  },
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "drawing_status": "NTS_NOT_FOR_CONSTRUCTION"
+  },
+  "authority_classes": [
+    "DESIGN_SOURCE",
+    "CURRENT_MAIN_AUTHORITY",
+    "CANDIDATE_DELTA",
+    "TECHNICAL_VALIDATION_PROOF",
+    "DOWNSTREAM_PRESENTATION_CARRIER"
+  ],
+  "full_design_universe": [
+    "LANDSCAPE",
+    "JOURNEY",
+    "13_IMPRINTS",
+    "SCENE_INTERACTION",
+    "AUDIENCE",
+    "PHYSICAL_SENSORY",
+    "DIGITAL",
+    "MEMORY_IP",
+    "TECHNICAL",
+    "NARRATIVE",
+    "VISUAL_MOTION",
+    "RETURN"
+  ],
+  "lane_locks": {
+    "PROJECT_ORGANIZATION": {
+      "owner": "THIS_LANE",
+      "may_edit": ["object registry", "lineage", "status", "ownership", "no-loss accounting"],
+      "may_not_edit": ["Web pixels", "App pixels"]
+    },
+    "APP": {
+      "owner": "USER_OWNED_NEXT_DELTA",
+      "latest_existing_candidate": "PR#162",
+      "organization_action": "REGISTER_ONLY_DO_NOT_MODIFY"
+    },
+    "WEB": {
+      "owner": "SEPARATE_DOWNSTREAM_INTEGRATION_LANE",
+      "latest_candidate_snapshot": "PR#164",
+      "organization_action": "REGISTER_AS_CONSUMER_NOT_AUTHORITY"
+    }
+  },
+  "candidate_lineages": {
+    "APP": ["PR#140", "PR#144", "PR#162", "USER_NEXT_DELTA"],
+    "CULTURE": ["REJECTED_V1_PROVENANCE", "PR#128"],
+    "R05_R06_R13": ["PR#133", "PR#145"],
+    "FLUID_REST": ["P03_P04_DESIGN_SOURCE", "PR#151_MODEL_PROOF", "PR#159_PUBLIC_PRESENTATION"],
+    "QINGFENGYIN": ["P05_DESIGN_SOURCE", "PR#152", "PR#159_PUBLIC_PRESENTATION"],
+    "MEMORY": ["M01_M02_DESIGN_SOURCE", "PR#143", "PR#153"],
+    "AUDIENCE": ["A01_A04_CANONICAL", "PR#155"],
+    "WEB": ["REV04_PROVENANCE", "PR#127", "PR#163", "PR#164"]
+  },
+  "hard_rules": [
+    "CURRENT_DELTA_NE_PROJECT_SCOPE",
+    "NOT_EDITED_NE_DOES_NOT_EXIST",
+    "NOT_SHOWN_NE_REMOVED",
+    "VALIDATION_SUBSET_NE_WHOLE_PROJECT",
+    "CONCEPT_KEEP_NE_PIXEL_KEEP",
+    "PIXEL_FAIL_NE_DESIGN_DELETE",
+    "OPEN_PR_NE_CURRENT",
+    "WEB_F_CONSUME_DO_NOT_DEFINE_PROJECT"
+  ]
+}
