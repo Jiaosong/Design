@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+<defs>
+  <marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="#26312f"/>
+  </marker>
+</defs>
+<rect width="1800" height="1120" fill="#efede7"/>
+<rect x="44" y="40" width="1712" height="1038" rx="18" fill="#fff" stroke="#d3d0c8"/>
+<text x="88" y="102" font-family="Arial" font-size="30" font-weight="700" fill="#111">OLEANDER / DIMENSION-TO-OBJECT BINDING</text>
+<text x="88" y="138" font-family="Arial" font-size="14" fill="#666">C04 SCALE-TEST CALIBRATION · NTS · NOT FIELD / SITE MEASUREMENT</text>
+<text x="88" y="198" font-family="Arial" font-size="17" font-weight="700">A / DETACHED REGISTER — REJECT</text>
+<text x="88" y="224" font-family="Arial" font-size="12" fill="#777">The values exist, but the reader must mentally map them back to the model.</text>
+<rect x="88" y="258" width="760" height="640" fill="#f8f8f5" stroke="#cbc8c0"/>
+<g transform="translate(135 330)">
+  <path d="M40 430 C120 390 205 400 295 350 S470 330 610 250" fill="none" stroke="#9fa29d" stroke-width="42" stroke-linecap="round"/>
+  <rect x="80" y="360" width="475" height="28" rx="12" fill="#c6c5bf" stroke="#454a47" stroke-width="3"/>
+  <path d="M390 360 L470 218" stroke="#454a47" stroke-width="16" stroke-linecap="round"/>
+  <path d="M148 388 L130 475 M300 388 L286 475 M500 388 L520 475" stroke="#454a47" stroke-width="8"/>
+  <circle cx="255" cy="255" r="17" fill="#222"/>
+  <line x1="255" y1="272" x2="250" y2="342" stroke="#222" stroke-width="8"/>
+  <line x1="250" y1="305" x2="210" y2="330" stroke="#222" stroke-width="7"/>
+  <line x1="250" y1="342" x2="212" y2="388" stroke="#222" stroke-width="8"/>
+  <line x1="250" y1="342" x2="296" y2="388" stroke="#222" stroke-width="8"/>
+</g>
+<text x="120" y="820" font-family="Arial" font-size="11" font-weight="700" fill="#333">MODEL / SCALE RELATION</text>
+<rect x="520" y="590" width="290" height="250" rx="10" fill="#fff" stroke="#bbb"/>
+<text x="542" y="622" font-family="Arial" font-size="11" font-weight="700" fill="#333">DIMENSION REGISTER</text>
+<text x="542" y="660" font-family="Arial" font-size="24" font-weight="700">5400</text><text x="625" y="660" font-family="Arial" font-size="11" fill="#666">overall mm</text>
+<text x="542" y="700" font-family="Arial" font-size="24" font-weight="700">445</text><text x="610" y="700" font-family="Arial" font-size="11" fill="#666">sit mm</text>
+<text x="542" y="740" font-family="Arial" font-size="24" font-weight="700">740</text><text x="610" y="740" font-family="Arial" font-size="11" fill="#666">lean mm</text>
+<text x="542" y="780" font-family="Arial" font-size="24" font-weight="700">455+740</text><text x="685" y="780" font-family="Arial" font-size="11" fill="#666">recline mm</text>
+<text x="542" y="818" font-family="Arial" font-size="10" fill="#777">Failure: number knowledge is detached from object reading.</text>
+<text x="936" y="198" font-family="Arial" font-size="17" font-weight="700">B / CRITICAL ATTACHMENT + SECONDARY RAIL — KEEP</text>
+<text x="936" y="224" font-family="Arial" font-size="12" fill="#777">Critical dimensions stay on-object; secondary scale-test values move to a compact rail so the silhouette remains first-read.</text>
+<rect x="936" y="258" width="776" height="640" fill="#f8f8f5" stroke="#cbc8c0"/>
+<g transform="translate(975 330)">
+  <path d="M40 430 C120 390 205 400 295 350 S470 330 610 250" fill="none" stroke="#9fa29d" stroke-width="42" stroke-linecap="round"/>
+  <rect x="80" y="360" width="475" height="28" rx="12" fill="#c6c5bf" stroke="#454a47" stroke-width="3"/>
+  <path d="M390 360 L470 218" stroke="#454a47" stroke-width="16" stroke-linecap="round"/>
+  <path d="M148 388 L130 475 M300 388 L286 475 M500 388 L520 475" stroke="#454a47" stroke-width="8"/>
+  <circle cx="255" cy="255" r="17" fill="#222"/>
+  <line x1="255" y1="272" x2="250" y2="342" stroke="#222" stroke-width="8"/>
+  <line x1="250" y1="305" x2="210" y2="330" stroke="#222" stroke-width="7"/>
+  <line x1="250" y1="342" x2="212" y2="388" stroke="#222" stroke-width="8"/>
+  <line x1="250" y1="342" x2="296" y2="388" stroke="#222" stroke-width="8"/>
+</g>
+<line x1="1055" y1="838" x2="1530" y2="838" stroke="#26312f" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<line x1="1055" y1="775" x2="1055" y2="850" stroke="#7c837f" stroke-width="1"/>
+<line x1="1530" y1="775" x2="1530" y2="850" stroke="#7c837f" stroke-width="1"/>
+<text x="1292" y="829" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#26312f">5400 mm / overall</text>
+<line x1="1035" y1="690" x2="1035" y2="718" stroke="#26312f" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<line x1="1025" y1="690" x2="1045" y2="690" stroke="#7c837f"/>
+<line x1="1025" y1="718" x2="1045" y2="718" stroke="#7c837f"/>
+<text x="1050" y="708" font-family="Arial" font-size="11" font-weight="700" fill="#26312f">445</text>
+<line x1="1085" y1="610" x2="1085" y2="690" stroke="#26312f" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<line x1="1075" y1="610" x2="1095" y2="610" stroke="#7c837f"/>
+<line x1="1075" y1="690" x2="1095" y2="690" stroke="#7c837f"/>
+<text x="1100" y="650" font-family="Arial" font-size="11" font-weight="700" fill="#26312f">740</text>
+<path d="M1365 690 L1445 548" stroke="#26312f" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/><path d="M1445 548 L1560 510" fill="none" stroke="#7c837f" stroke-width="1"/>
+<text x="1570" y="506" font-family="Arial" font-size="11" font-weight="700" fill="#26312f">455 HIP + 740 BACK RISE</text>
+<rect x="1145" y="752" width="500" height="70" rx="8" fill="#fff" stroke="#c8c5be"/>
+<text x="1162" y="775" font-family="Arial" font-size="10" font-weight="700" fill="#5c6b67">SECONDARY SCALE-TEST RAIL</text>
+<text x="1162" y="796" font-family="Arial" font-size="10" fill="#444">SIT 445 · LEAN 740 · HALF-RECLINE 455 + BACK RISE 740</text>
+<text x="1162" y="815" font-family="Arial" font-size="9" fill="#777">C04 scale test / NTS · does not prove site, field, structure or accessibility</text>
+<line x1="88" y1="952" x2="1712" y2="952" stroke="#d3d0c8"/>
+<text x="88" y="992" font-family="Arial" font-size="13" font-weight="700">TRANSFER RULE /</text>
+<text x="210" y="992" font-family="Arial" font-size="13" fill="#333">A dimension is not “present” until its extension/leader relationship makes the measured object or interval unambiguous in the intended view.</text>
+<text x="88" y="1028" font-family="Arial" font-size="11" fill="#777">ISO 129-1 is used only as a general dimension-presentation reference; this training graphic does not claim full ISO compliance or construction validity.</text>
+</svg>
