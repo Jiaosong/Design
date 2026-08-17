@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#F3F1EC"/>
+<style>
+text{font-family:"Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei","Arial",sans-serif;fill:#17202A}
+.meta{font-size:16px;letter-spacing:1.2px;fill:#6A706D}
+.h1{font-size:38px;font-weight:760}
+.h2{font-size:24px;font-weight:700}
+.body{font-size:19px}
+.small{font-size:14px;fill:#6B716D}
+.inv{fill:#FFF}
+.line{stroke:#C1C4BF;stroke-width:1}
+.card{fill:#FFF;stroke:#D9D6CF;stroke-width:1.5}
+.pink{fill:#E94B86}.coral{fill:#F26A55}.blue{fill:#003DA7}.soft{fill:#F7DDE8}
+</style>
+<text x="70" y="54" class="meta">OLEANDER / BAOJIAJIE / 100×100 mm JUMP CARD / TYPOGRAPHY TRAINING</text>
+<text x="70" y="100" class="h1">标题识别度来自字形关系，不来自装饰堆叠</text>
+<text x="70" y="132" class="body">Transfer study from Josef Müller-Brockmann’s Musica Viva logic → Baojiajie retail headline calibration</text>
+<line x1="70" y1="158" x2="1530" y2="158" class="line"/>
+<rect x="70" y="184" width="1460" height="106" rx="18" fill="#E8E5DE"/>
+<text x="94" y="216" class="meta">VISIBLE FACT</text>
+<text x="94" y="248" class="body">Musica Viva 1958：大尺度几何质量占主场；节目文字被压入底部窄带，字级小但秩序稳定。</text>
+<text x="94" y="276" class="small">MoMA records: 1958 / linocut + letterpress / 128 × 90.5 cm. Museum für Gestaltung holds Müller-Brockmann’s estate.</text>
+<text x="930" y="216" class="meta">TRANSFER RULE</text>
+<text x="930" y="248" class="body">标题先用尺寸差、宽度差与负形建立“形态事件”；</text>
+<text x="930" y="276" class="small">装饰只可强化，不能替代标题骨架。</text>
+<text x="82" y="344" class="meta">A — DECORATION-STACKED / REVISE</text>
+<rect x="70" y="366" width="700" height="500" rx="24" class="card"/>
+<rect x="116" y="408" width="420" height="420" rx="12" fill="#FFF7FA" stroke="#F1C4D4"/>
+<rect x="136" y="428" width="122" height="40" rx="8" fill="#FFF" stroke="#003DA7" stroke-dasharray="6 5"/>
+<text x="148" y="453" class="small" fill="#003DA7">LOCKED LOGO</text>
+<rect x="364" y="428" width="152" height="122" rx="8" fill="#EEECE7" stroke="#BFC1BD" stroke-dasharray="6 5"/>
+<text x="380" y="458" class="small">PORTRAIT</text><text x="380" y="480" class="small">RESERVED</text>
+<rect x="142" y="515" width="328" height="54" rx="27" fill="#F7DDE8"/>
+<text x="164" y="555" style="font-size:44px;font-weight:800;fill:#E94B86;stroke:#FFF;stroke-width:7;paint-order:stroke">洁净不费劲</text>
+<text x="160" y="616" style="font-size:35px;font-weight:850;fill:#F26A55;stroke:#E94B86;stroke-width:2;paint-order:stroke">一拖就搞定</text>
+<path d="M158 634 L454 634" stroke="#E94B86" stroke-width="7" stroke-linecap="round"/>
+<circle cx="177" cy="666" r="11" fill="#F26A55"/><circle cx="210" cy="666" r="7" fill="#E94B86"/>
+<path d="M462 592 l18 -12 -5 22 21 3 -20 10 8 19 -22 -9 -10 19 1 -24 -23 -1 20 -12 -10 -20z" fill="#F26A55"/>
+<text x="148" y="708" class="small">清洁卖点说明 · 训练占位</text>
+<rect x="146" y="741" width="220" height="42" rx="21" fill="#003DA7"/>
+<text x="170" y="768" class="small inv">产品信息 / 卖点占位</text>
+<text x="566" y="432" class="h2">问题</text>
+<text x="566" y="470" class="body">标题靠 5 种装饰</text>
+<text x="566" y="500" class="body">同时制造“重点”。</text>
+<text x="566" y="542" class="small">描边</text><text x="566" y="568" class="small">色块</text><text x="566" y="594" class="small">下划线</text><text x="566" y="620" class="small">爆炸形</text><text x="566" y="646" class="small">散点</text>
+<text x="566" y="700" class="small">缩到货架距离后，</text><text x="566" y="724" class="small">只剩“很热闹”，</text><text x="566" y="748" class="small">读不出标题结构。</text>
+<text x="842" y="344" class="meta">B — LETTERFORM-RELATION / PROPOSED</text>
+<rect x="830" y="366" width="700" height="500" rx="24" class="card"/>
+<rect x="876" y="408" width="420" height="420" rx="12" fill="#FFF7FA" stroke="#F1C4D4"/>
+<rect x="896" y="428" width="122" height="40" rx="8" fill="#FFF" stroke="#003DA7" stroke-dasharray="6 5"/>
+<text x="908" y="453" class="small" fill="#003DA7">LOCKED LOGO</text>
+<rect x="1124" y="428" width="152" height="122" rx="8" fill="#EEECE7" stroke="#BFC1BD" stroke-dasharray="6 5"/>
+<text x="1140" y="458" class="small">PORTRAIT</text><text x="1140" y="480" class="small">RESERVED</text>
+<text x="900" y="560" style="font-size:72px;font-weight:900;fill:#E94B86;letter-spacing:-5px">洁净</text>
+<g transform="translate(900 638) scale(1.16 1)"><text x="0" y="0" style="font-size:64px;font-weight:900;fill:#F26A55;letter-spacing:-4px">不费劲</text></g>
+<rect x="902" y="661" width="102" height="7" rx="3.5" fill="#003DA7"/>
+<text x="900" y="705" style="font-size:23px;font-weight:680;fill:#17202A;letter-spacing:1px">一拖就搞定</text>
+<text x="900" y="744" class="small">清洁卖点说明 · 训练占位</text>
+<line x1="900" y1="767" x2="1256" y2="767" stroke="#D7B8C4" stroke-width="1"/>
+<text x="900" y="795" class="small" fill="#003DA7">产品信息 / 卖点占位</text>
+<text x="1326" y="432" class="h2">做法</text>
+<text x="1326" y="470" class="body">两行形成 1.12×</text><text x="1326" y="500" class="body">宽度张力。</text>
+<text x="1326" y="542" class="small">主字 72 / 64</text><text x="1326" y="568" class="small">紧 tracking</text><text x="1326" y="594" class="small">行距 78</text><text x="1326" y="620" class="small">两综合色分角色</text><text x="1326" y="646" class="small">品牌蓝只作锚点</text>
+<text x="1326" y="700" class="small">缩小后仍先读到</text><text x="1326" y="724" class="small">“洁净 / 不费劲”</text><text x="1326" y="748" class="small">两段字形质量。</text>
+<line x1="70" y1="902" x2="1530" y2="902" class="line"/>
+<text x="70" y="936" class="meta">FAILURE CONDITION</text>
+<text x="270" y="936" class="body">如果去掉描边/贴纸/爆炸形后，标题立刻失去识别度，就说明“字形骨架”尚未成立。</text>
+<text x="70" y="972" class="small">TRAINING ONLY / COPY PLACEHOLDER / LOGO + PORTRAIT SOURCE NOT EMBEDDED. Tests typography hierarchy; does not alter locked brand assets or prove production copy approval.</text>
+</svg>
