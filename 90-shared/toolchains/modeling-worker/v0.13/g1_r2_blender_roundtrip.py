@@ -69,9 +69,10 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     )
     if "termination_cap_onset_u" in lower_obj:
         lower["termination_cap_onset_u"] = float(lower_obj["termination_cap_onset_u"])
-        lower["termination_cap_pole_curvature_scale"] = float(
-            lower_obj.get("termination_cap_pole_curvature_scale", r2.CAP_POLE_CURVATURE_SCALE_DEFAULT)
-        )
+        if "termination_cap_pole_curvature_scale" in lower_obj:
+            lower["termination_cap_pole_curvature_scale"] = float(lower_obj["termination_cap_pole_curvature_scale"])
+        else:
+            lower.pop("termination_cap_pole_curvature_scale", None)
         lower["termination_cap_law"] = str(lower_obj.get("termination_cap_law", r2.CAP_LAW))
         lower["termination_cap_semantics"] = str(lower_obj.get("termination_cap_semantics", r2.CAP_SEMANTICS))
         lower["termination_cap_endpoint_section"] = str(
