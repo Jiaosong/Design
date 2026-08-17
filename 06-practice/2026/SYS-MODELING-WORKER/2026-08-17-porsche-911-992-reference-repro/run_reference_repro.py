@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 from pathlib import Path
 
@@ -35,10 +36,17 @@ def build_wheels_fixed(M):
         all_objs.extend(mod.build_wheel(code, x, y, tyre_spec, geom, M, side))
     return all_objs
 
-# Focused runtime repair 2: Blender 5.2 exposes EEVEE as BLENDER_EEVEE.
+# Focused runtime repair 2: use the already-proven headless Cycles CPU path.
 def setup_render_fixed(path, samples, rx, ry):
     sc = bpy.context.scene
-    sc.render.engine = "BLENDER_EEVEE"
+    sc.render.engine = "CYCLES"
+    sc.cycles.device = "CPU"
+    sc.cycles.samples = samples
+    sc.cycles.use_denoising = False
+    sc.cycles.max_bounces = 4
+    sc.cycles.diffuse_bounces = 2
+    sc.cycles.glossy_bounces = 2
+    sc.cycles.transmission_bounces = 3
     sc.render.resolution_x = rx
     sc.render.resolution_y = ry
     sc.render.resolution_percentage = 100
@@ -54,4 +62,20 @@ def setup_render_fixed(path, samples, rx, ry):
 
 mod.build_wheels = build_wheels_fixed
 mod.setup_render = setup_render_fixed
-mod.main()
+
+# Preserve the build script's fail-closed exit while correcting runtime provenance in the emitted QA.
+out_dir = None
+if "--out" in benchmark_args:
+    out_dir = Path(benchmark_args[benchmark_args.index("--out") + 1])
+
+try:
+    mod.main()
+except SystemExit as exc:
+    if exc.code == 0 and out_dir is not None:
+        qa_path = out_dir / "REFERENCE_REPRO_QA.json"
+        if qa_path.exists():
+            qa = json.loads(qa_path.read_text())
+            qa["render_engine"] = "CYCLES_CPU"
+            qa["runtime_bridge_fixes"] = ["ARGV_ROUTING", "WHEEL_ARGUMENT_BINDING", "HEADLESS_CYCLES_CPU"]
+            qa_path.write_text(json.dumps(qa, ensure_ascii=False, indent=2) + "\n")
+    raise
