@@ -18,15 +18,14 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          fetch-depth: 1
+        with: {fetch-depth: 1}
       - name: Validate refined 3D Skill and reference fidelity contract
         run: |
           set -euo pipefail
           python3 -m py_compile \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v5.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v7.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v8.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
@@ -35,52 +34,33 @@ jobs:
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
-          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
-          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'; EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
-      - name: Build Porsche 911 Carrera 992.2 V7 rounded-end reproduction
+      - name: Build Porsche 911 Carrera 992.2 V8 integrated-plan reproduction
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"
-          mkdir -p "$OUT"
-          START=$(date +%s)
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v7.py \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v8.py \
             -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
-          END=$(date +%s)
-          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
-          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
-          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
-          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+          END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"; sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
       - name: Machine and reference-fidelity screening gates
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
-          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());c=json.loads((out/'REFERENCE_CONTRACT.json').read_text())
-          assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED', q
-          assert r['status']=='EXECUTED_MACHINE_PASS_REFERENCE_REVIEW_REQUIRED', r
-          assert c['reference_vehicle']=='Porsche 911 Carrera Coupe (992.2)'
-          assert c['reference_revision']=='2025_992.2_CARRERA'
-          assert abs(c['hard_points']['length']-4.542)<1e-9
-          assert abs(c['hard_points']['width_excluding_mirrors']-1.852)<1e-9
-          assert abs(c['hard_points']['height']-1.298)<1e-9
-          assert abs(c['hard_points']['wheelbase']-2.450)<1e-9
-          assert abs(c['hard_points']['track_front']-1.591)<1e-9
-          assert abs(c['hard_points']['track_rear']-1.557)<1e-9
-          assert all(q['checks'].values()), q['checks']
-          assert len(q['renders'])==6
-          assert q['reference_fidelity_machine_gate']=='MACHINE_SCREENING_PASS'
-          assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
-          assert q['aperture_exposure_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED'
-          assert q['end_form_plan_curvature_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED'
-          assert r['reference_fidelity_machine_gate']=='MACHINE_SCREENING_PASS'
-          print('PORSCHE 911 992.2 V7 MACHINE GATE PASS')
+          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro');q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());c=json.loads((out/'REFERENCE_CONTRACT.json').read_text())
+          assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q;assert r['status']=='EXECUTED_MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',r
+          assert c['reference_vehicle']=='Porsche 911 Carrera Coupe (992.2)' and c['reference_revision']=='2025_992.2_CARRERA'
+          assert abs(c['hard_points']['length']-4.542)<1e-9 and abs(c['hard_points']['width_excluding_mirrors']-1.852)<1e-9 and abs(c['hard_points']['height']-1.298)<1e-9 and abs(c['hard_points']['wheelbase']-2.450)<1e-9 and abs(c['hard_points']['track_front']-1.591)<1e-9 and abs(c['hard_points']['track_rear']-1.557)<1e-9
+          assert all(q['checks'].values()),q['checks'];assert len(q['renders'])==6
+          assert q['reference_fidelity_machine_gate']=='MACHINE_SCREENING_PASS';assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON';assert q['aperture_exposure_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED';assert q['end_form_plan_curvature_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED';assert q['roof_rail_continuity_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED';assert r['reference_fidelity_machine_gate']=='MACHINE_SCREENING_PASS'
+          print('PORSCHE 911 992.2 V8 MACHINE GATE PASS')
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_FIDELITY_RECEIPT.json
       - name: Upload Porsche 911 992 reproduction evidence
