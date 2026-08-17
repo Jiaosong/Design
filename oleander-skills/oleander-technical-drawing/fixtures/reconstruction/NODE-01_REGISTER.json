@@ -1,0 +1,38 @@
+{
+  "schema": "oleander-node-semantics/0.1",
+  "promotion_state": "CANDIDATE_NOT_PROMOTED",
+  "edges": [
+    {"id":"E01","start_node":"N_ENTRY","end_node":"N_JUNCTION"},
+    {"id":"E02","start_node":"N_JUNCTION","end_node":"N_TRANSFER"},
+    {"id":"E03","start_node":"N_JUNCTION","end_node":"N_OBS"},
+    {"id":"E04","start_node":"N_TRANSFER","end_node":"N_CONTENT"},
+    {"id":"E05","start_node":"N_CONTENT","end_node":"N_TERMINUS"},
+    {"id":"E_RETURN","start_node":"N_TRANSFER","end_node":"N_RETURN"}
+  ],
+  "nodes": [
+    {
+      "id":"N_ENTRY","node_class":"ENTRY_EXIT","primary_role":"ENTRY","secondary_roles":[],"owner_system":"ROUTE","graphic_carrier_id":"NODE_ENTRY","connected_edge_ids":["E01"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_JUNCTION","node_class":"JUNCTION","primary_role":"BRANCH_DECISION","secondary_roles":["DECISION"],"owner_system":"ROUTE","graphic_carrier_id":"NODE_JUNCTION","connected_edge_ids":["E01","E02","E03"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_TRANSFER","node_class":"TRANSFER","primary_role":"MODE_CHANGE","secondary_roles":["SERVICE","DECISION"],"owner_system":"MOBILITY","graphic_carrier_id":"NODE_TRANSFER","connected_edge_ids":["E02","E04","E_RETURN"],"modes":["WALK","CABLE"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_OBS","node_class":"OBSERVATION","primary_role":"VIEW","secondary_roles":[],"owner_system":"OBSERVATION","graphic_carrier_id":"NODE_OBSERVATION","connected_edge_ids":["E03"],"view_target_id":"VIEW_TARGET_A","truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_RETURN","node_class":"RETURN_RETREAT","primary_role":"RETURN","secondary_roles":["EXIT_RECOGNITION"],"owner_system":"RETURN","graphic_carrier_id":"NODE_RETURN","connected_edge_ids":["E_RETURN"],"return_edge_ids":["E_RETURN"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_CONTENT","node_class":"CONTENT_READING","primary_role":"OPTIONAL_CONTENT","secondary_roles":[],"owner_system":"CONTENT","graphic_carrier_id":"NODE_CONTENT","connected_edge_ids":["E04","E05"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_TERMINUS","node_class":"TERMINUS_CONTINUATION","primary_role":"CONTINUATION","secondary_roles":[],"owner_system":"ROUTE","graphic_carrier_id":null,"connected_edge_ids":["E05"],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    },
+    {
+      "id":"N_CALLOUT","node_class":"CALLOUT_TARGET","primary_role":"ANNOTATION_ONLY","secondary_roles":[],"owner_system":"ANNOTATION","graphic_carrier_id":"CALLOUT_ANCHOR","connected_edge_ids":[],"truth_state":"SYNTHETIC_FIXTURE","position_confidence":"LOCKED_FIXTURE"
+    }
+  ]
+}
