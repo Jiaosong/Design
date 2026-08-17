@@ -1,6 +1,6 @@
 ---
 name: oleander-technical-drawing
-description: Create, deepen, edit, and audit OLEANDER technical drawings as evidence-bound professional design documents. Use whenever the user mentions plans, sections, elevations, construction details, nodes, exploded/assembly drawings, fabrication drawings, dimensional drawings, lineweight, projection, section cuts, callouts, tolerances, material/CMF schedules, title blocks, SVG/DXF/PDF drawing output, Illustrator/CAD drafting, or asks to make a drawing more professional rather than merely more detailed.
+description: Create, deepen, edit, reconstruct, and audit OLEANDER technical and spatial-analysis drawings as evidence-bound professional design documents. Use whenever the user mentions plans, sections, elevations, construction details, nodes, exploded/assembly drawings, fabrication drawings, dimensional drawings, lineweight, projection, section cuts, callouts, tolerances, material/CMF schedules, circulation/flow/mobility analysis, route hierarchy, direction arrows, parking/transit networks, exact/pixel-level drawing reconstruction, title blocks, SVG/DXF/PDF drawing output, Illustrator/CAD drafting, or asks to make a drawing more professional rather than merely more detailed.
 compatibility: Works with CAD/vector tools, Blender or other geometry-authoring tools, Illustrator/Inkscape, SVG/DXF/PDF workflows, and OLEANDER review/delivery-QC conventions.
 ---
 
@@ -13,32 +13,48 @@ A technical drawing is a design-and-communication instrument, not a decorated sc
 This skill is independent from `oleander-3d-pipeline`, `oleander-story-and-board`, and `oleander-delivery-qc`:
 
 - 3D pipeline owns model/exchange authority and derived axonometric geometry.
-- Technical drawing owns 2D/2.5D drawing logic, dimensional communication, detail hierarchy, technical reality checking and drawing-specific review.
+- Technical drawing owns 2D/2.5D drawing logic, spatial-analysis geometry, dimensional communication, detail hierarchy, technical reality checking and drawing-specific review.
 - Story/board owns placement of approved drawings inside presentation surfaces.
 - Delivery QC owns release-package preflight; it does not grant drawing-design approval.
 
 `ARTIFACT EXISTS ≠ DRAWING PASS ≠ ENGINEERING PASS ≠ FIELD PASS ≠ MAIN KEEP`.
 
-`NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS` applies to technical drawing sets. Simplification may improve hierarchy, but it must not delete necessary technical proof, audience/use information, maintenance logic, field-open conditions or dimensional truth state.
+`NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS` applies to technical drawing sets. Simplification may improve hierarchy, but it must not delete necessary technical proof, audience/use information, maintenance logic, field-open conditions, network topology or dimensional truth state.
 
 ## 0. Execution router — resolve the drawing problem before drawing
 
 Do not begin by selecting a visual style. Resolve these five axes first:
 
-1. **Discipline** — architecture/interior, landscape/site, industrial/product, structural/support explanation, fabrication/assembly, or a declared hybrid.
+1. **Discipline** — architecture/interior, landscape/site, industrial/product, structural/support explanation, fabrication/assembly, spatial/design analysis, circulation/mobility analysis, or a declared hybrid.
 2. **Maturity/status** — DESIGN STUDY, TECHNICAL EXPLANATION, COORDINATION, FABRICATION, CONSTRUCTION.
 3. **Decision** — what exact uncertainty or relationship must the drawing close?
-4. **Authority** — which source controls geometry, dimensions, materials, site facts and specialist design?
+4. **Authority** — which source controls geometry, dimensions, materials, site facts, network relations and specialist design?
 5. **Output condition** — physical sheet/display size, scale, vector/raster requirements, downstream CAD/Illustrator/PDF use and intended reader.
 
 Then load the supporting reference appropriate to the task:
 
 - `references/DISCIPLINE_PROFILES.md` — profession-specific view sets, checks and failure patterns.
 - `references/GRAPHIC_SYSTEM.md` — line hierarchy, section/plan grammar, dimensions, callouts, hatches, typography, scale and multi-scale review.
+- `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis truth states, evidence→finding→decision chains and analysis-specific visual hierarchy.
+- `references/FLOW_DIRECTION_ANALYSIS.md` — mandatory for circulation, mobility, route hierarchy, direction markers, parking/transit networks or exact reconstruction of flow analysis. Adds route-edge/node graph, direction-marker taxonomy, base binding, FN-C0…FN-C3 and flow-specific machine/review gates.
+- `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` — required when reconstructing a supplied drawing/reference rather than adapting its system.
+- `references/PIXEL_FORENSIC_PROTOCOL.md` — required for explicit pixel-level/exact reconstruction claims.
+- `references/MULTILAYER_RELATION_RECONSTRUCTION.md` — required for stacked analytical atlases, repeated bases and callout-heavy references.
+- `references/EDITORIAL_CALLOUT_FIDELITY.md` — required when side-icons, leader landing and dense route/street typography are material fidelity carriers.
 - `references/REALITY_CHECK.md` — design action → system → reference → value/range → sensitivity → FIELD/engineer verify protocol.
 - `templates/DRAWING_EXECUTION_TEMPLATE.md` — execution registers and TD-G0…TD-G8 review carrier.
 
 A substantial task should not skip these because a previous drawing already exists. Existing pixels may be provenance, not current authority.
+
+### Reconstruction routing rule
+
+If the task says `1:1`, `pixel-level`, `像素级复刻`, `exact reconstruction`, or equivalent, visual similarity is not enough. Route through the reconstruction references and keep these axes separate:
+
+`REFERENCE FIDELITY ≠ SEMANTIC EDITABILITY ≠ TECHNICAL TRUTH ≠ DESIGN KEEP`.
+
+If the reference is a flow/mobility diagram, also separate:
+
+`PIXEL FIDELITY ≠ FLOW TOPOLOGY FIDELITY ≠ ROUTE-TO-BASE BINDING ≠ DIRECTION-MARKER FIDELITY`.
 
 ## 1. Declare drawing status before drawing
 
@@ -67,6 +83,7 @@ Before editing geometry, create a compact authority table:
 | material/finish | CMF schedule/spec | ... | approved / candidate | ... |
 | structure/connection | engineer/detail/reference | ... | explanatory / approved | ... |
 | site/context | survey/map/field/source | ... | observed / inferred | ... |
+| circulation/network | plan/map/reference/observed route | ... | source / derived / inference / decision | ... |
 | safety/access | code/specialist/project rule | ... | review / approved | ... |
 | manufacturer/system | supplier technical data | ... | bounded candidate / selected | ... |
 
@@ -89,6 +106,7 @@ Choose only the views needed to answer the drawing's decision question. Typical 
 - `ELEVATION`: vertical relation, envelope, alignment and finish boundaries.
 - `SECTION`: cut relation, depth, level, support, ground/water/build-up and human scale.
 - `LONGITUDINAL PROFILE`: route/grade/sequence/drainage relationship when required.
+- `FLOW / CIRCULATION ANALYSIS`: editable base-bound route graph, route hierarchy, nodes, direction markers, entries/exits, labels, modes and operational states.
 - `DETAIL / NODE`: local interface, fixing, edge, joint, drainage, safety or maintenance condition.
 - `EXPLODED / ASSEMBLY`: part identity and assembly order; not a substitute for exact interface detail.
 - `PART / FABRICATION`: manufacturable geometry, dimensions, tolerance and finish for one part/scope.
@@ -96,6 +114,8 @@ Choose only the views needed to answer the drawing's decision question. Typical 
 - `INSTALLATION / MAINTENANCE`: access, removal, replacement, inspection or sequence when feasibility depends on it.
 
 A detail must have a traceable parent view. A parent view must show where the detail comes from. Do not let an attractive exploded axon replace plan/section information needed to resolve interfaces.
+
+A circulation analysis must have a traceable spatial base. Do not let route labels or large arrows replace missing route geometry, branch/merge structure or base binding.
 
 ### Node ladder
 
@@ -116,6 +136,8 @@ At minimum:
 - **Industrial/product** must preserve CAD authority, part/assembly relation, functional dimensions, mating surfaces, serviceability and CMF state.
 - **Structural/support explanation** must make support/load-transfer intent and substrate/interface logic visible while keeping specialist sizing authority separate.
 - **Fabrication/assembly** requires controlling geometry, tolerance basis, material/finish state, interfaces and assembly feasibility before permission to make.
+- **Spatial/design analysis** must keep source/evidence/inference/constraint/decision states distinguishable and graphically traceable.
+- **Circulation/mobility analysis** must preserve route-edge/node topology, route hierarchy, spatial-base binding, direction-marker meaning, external continuation, route-linked labels and mode-symbol ownership.
 
 For hybrid work, declare which profile governs each view or technical question.
 
@@ -138,12 +160,48 @@ For axonometric/exploded views, lock camera/projection and derive geometry from 
 
 The same interface cannot be drawn one way in plan, another way in section and a third way in exploded view unless a documented state/variant explains the difference. Cross-view contradiction is a geometry failure, not a presentation preference.
 
+### Flow-network coherence invariant
+
+For circulation/mobility work, the network is also a geometry system. The same route/node cannot silently move, reconnect, reverse direction or change class between views/panels unless a documented state/scenario explains the difference.
+
+For analytical atlases:
+
+`GEOMETRY_MASTER ≠ RENDERED_BASE_INSTANCE`.
+
+Use one recoverable source geometry where appropriate, but record per-panel transform, visibility/occlusion, line/tone treatment and theme/network state. Reusing one identical rendered base in every panel is wrong when the source intentionally fades, omits, masks or emphasizes different base objects.
+
+## 5A. Flow / circulation / mobility analysis gate
+
+When movement, access, mobility or directional sequence is the main subject, load `references/FLOW_DIRECTION_ANALYSIS.md` and build a `FLOW_NETWORK_REGISTER`.
+
+Minimum semantic graph:
+
+`BASE_GEOMETRY → ROUTE_EDGE → ROUTE_NODE → ROUTE_CLASS → DIRECTION_MARKER → ENTRY/EXIT/CONTINUATION → ROUTE LABEL/STATE/SPEED → MODE SYMBOL`.
+
+Hard rules:
+
+1. A flow line is not a decorative polyline. It must have an explicit analytical/traversal role and, when applicable, a base carrier.
+2. A direction arrow is an event on a route or analytical vector. Record its function class and owner; do not apply one generic marker family to route direction, callout pointers, external continuation and orientation marks indiscriminately.
+3. Directed edges that require direction evidence must own markers; marker orientation must follow local route tangent within the declared reconstruction/design tolerance.
+4. Primary/secondary/local/external/closed/service classes remain separate objects and graphic classes when the information is decision-relevant.
+5. Branch/merge/junction/entry/exit positions are topology, not decorative placement.
+6. Street names, speed labels and state labels must bind to the correct route/street edge. Correct text on the wrong segment is a relation failure.
+7. Parking/transit/bicycle/service symbols must bind to a registered route/node or be explicitly classified as free-standing context.
+8. For strict reconstruction, inventory recoverable route classes, edge/node topology, marker policy and repeated symbol density before pixel polishing.
+9. If source-route carrier recovery is materially low, stop font/antialiasing/JPEG micro-tuning and return to topology/base binding. Do not describe structural route omissions as renderer residual.
+10. `FN-C0…FN-C3` flow-network claim level remains separate from `RF-C0…RF-C3` reconstruction fidelity and from TD/Design review.
+
+Machine structure check: `tools/validate_flow_network.py`.
+
+Machine PASS proves only registered graph consistency. It does not prove complete source inventory, route planning validity, visual fidelity, pixel fidelity, site truth or Design KEEP.
+
 ## 6. Scale is a decision tool
 
 Choose view scale from the technical question rather than habit. Use `references/GRAPHIC_SYSTEM.md` for the scale-selection logic.
 
 - Context scale answers `WHERE / SYSTEM RELATION`.
 - Arrangement scale answers `PRINCIPAL GEOMETRY / MOVEMENT / LEVEL / CLEARANCE`.
+- Network scale answers `ROUTE / NODE / BRANCH / DIRECTION / MODE / CONTINUATION`.
 - Detail scale answers `BUILD-UP / JOINT / EDGE / FIXING / DRAINAGE / TRANSITION`.
 - Component/fabrication scale answers `EXACT PART / DATUM / HOLE / SLOT / RADIUS / TOLERANCE / MATING`.
 
@@ -245,12 +303,19 @@ Default reading order:
 
 `CUT / PRIMARY FORM → PRIMARY STRUCTURE OR SPATIAL RELATION → SECONDARY CONSTRUCTION / EDGE / INTERFACE → DIMENSION / LEADER / NOTE / HUMAN / MAINTENANCE SUPPORT → CONTEXT / FIELD-OPEN SUPPORT`.
 
+For flow analysis:
+
+`BASE CARRIER → PRIMARY ROUTE/NETWORK → SECONDARY/LOCAL ROUTES → DIRECTION/NODES/MODES → ROUTE-LINKED LABELS → CONTEXT`.
+
 Use the fewest distinct graphic classes that reliably create this order at the actual delivery size. Lineweight values are output- and scale-dependent; do not treat one screen-pixel recipe as universal.
 
 Hard rules:
 
 - section cuts/primary profiles must read before annotations;
+- primary route/network must read before route labels and editorial side-icons;
 - secondary construction must remain visible at near-read without competing with the primary claim;
+- route class differences must survive intended-size review when they carry different meanings;
+- direction markers must not overpower the route carrier unless the source/design intent explicitly makes direction the primary claim;
 - dimensions and leaders must terminate unambiguously and must not float as decorative graphics;
 - humans, furniture, vegetation and maintenance figures establish use/scale only and never overpower the technical subject;
 - hatch/material fills must distinguish states without burying linework;
@@ -259,7 +324,7 @@ Hard rules:
 - existing/proposed/field-open states must not depend on color alone;
 - line hierarchy must survive grayscale export and intended-size print/display review.
 
-Review `FIRST READ`, `INTENDED SIZE` and `NEAR READ` separately. A clean thumbnail that loses construction evidence at print/detail scale remains `REVISE`.
+Review `FIRST READ`, `INTENDED SIZE` and `NEAR READ` separately. A clean thumbnail that loses construction or network evidence at print/detail scale remains `REVISE`.
 
 Use `references/GRAPHIC_SYSTEM.md` for the full line/callout/hatch/typography/export grammar.
 
@@ -272,13 +337,14 @@ Text, dimensions, leaders, symbols, title blocks, legends and core technical lin
 - Raster imagery may appear as a referenced/context layer, but must not replace authoritative linework or dimensional information.
 - Keep annotation on separable named layers/classes.
 - Establish typography hierarchy for title, view title, dimension, note, qualifier and source/state label.
+- Route/street/speed labels must remain bound to the correct network edge; a correctly rendered label on the wrong edge is not a typography-only error.
 - Check collisions, overset/clipping, leader crossings and minimum readable size at the target print/view scale.
 - Verify CJK/Latin font substitution/embedding in actual exported PDF/SVG when bilingual work is used.
 - Do not outline all technical text by default; preserve editability unless the delivery contract requires outlined text.
 
 ### AI image boundary
 
-AI-generated imagery may be used only as a non-authoritative visualization/reference layer. It cannot substitute for editable technical geometry, vector technical text, dimensional information, construction interfaces or field/engineering evidence.
+AI-generated imagery may be used only as a non-authoritative visualization/reference layer. It cannot substitute for editable technical geometry, vector technical text, dimensional information, network topology, construction interfaces or field/engineering evidence.
 
 ## 12. Material / CMF communication
 
@@ -306,7 +372,8 @@ For landscape/site/public-realm work:
 - do not invent root zone, geology, foundation or retaining conditions from imagery;
 - make safety edges and body-scale relationships readable;
 - include maintenance/access when replacement, cleaning, vegetation management or inspection changes feasibility;
-- when the project has operational state logic, `UNKNOWN` must not be drawn as normal/open. Preserve NORMAL/DEGRADED/CLOSED/UNKNOWN and other current project state semantics where applicable.
+- when the project has operational state logic, `UNKNOWN` must not be drawn as normal/open. Preserve NORMAL/DEGRADED/CLOSED/UNKNOWN and other current project state semantics where applicable;
+- where route/access state is analyzed, bind closure/degraded/unknown states to explicit edges/nodes/zones rather than a detached legend only.
 
 ## 14. Product/fabrication truth
 
@@ -349,34 +416,34 @@ PASS when drawing purpose, audience, truth state and allowed use are explicit.
 Blockers: unlabeled study presented as construction/fabrication authority; stale/superseded state shown as current; no defined technical decision.
 
 ### `TD-G1 / SOURCE AUTHORITY`
-PASS when geometry, dimensions, materials and specialist assumptions trace to current authority or are explicitly provisional/open.
+PASS when geometry, dimensions, materials, site/network facts and specialist assumptions trace to current authority or are explicitly provisional/open.
 
-Blockers: invented dimensions; render/AI image treated as geometry authority; unresolved source conflict silently reconciled; old source revived by recency alone.
+Blockers: invented dimensions; render/AI image treated as geometry authority; unresolved source conflict silently reconciled; old source revived by recency alone; inferred route/network state presented as observed fact.
 
-### `TD-G2 / GEOMETRY & PROJECTION`
-PASS when views agree with the same source, datum/orientation is coherent and cut/detail parentage is traceable.
+### `TD-G2 / GEOMETRY, PROJECTION & NETWORK COHERENCE`
+PASS when views agree with the same source, datum/orientation is coherent, cut/detail parentage is traceable, and decision-critical network topology remains internally/spatially coherent where applicable.
 
-Blockers: plan/section mismatch; impossible assembly created by presentation edits; untraceable section/detail; unexplained view rotation or geometry drift.
+Blockers: plan/section mismatch; impossible assembly created by presentation edits; untraceable section/detail; unexplained view rotation or geometry drift; route edge crosses the wrong base carrier; missing/extra branch or merge; route/node silently reconnects across panels; directed/bidirectional state changes without documented scenario; one identical rendered base instance erases material per-panel visibility differences in a strict reconstruction.
 
 ### `TD-G3 / DIMENSIONAL INTENT`
 PASS when controlling dimensions are sufficient, non-contradictory and correctly truth-labeled.
 
 Blockers: missing critical interface dimension for claimed fabrication/construction scope; false precision; conflicting chains; unqualified derived/image-estimated value; generic tolerance without basis.
 
-### `TD-G4 / CONSTRUCTION & ASSEMBLY LOGIC`
-PASS when the required interfaces and maintenance/assembly conditions are graphically understandable for the declared scope.
+### `TD-G4 / CONSTRUCTION, ASSEMBLY & OPERATIONAL LOGIC`
+PASS when the required interfaces and maintenance/assembly/operational conditions are graphically understandable for the declared scope.
 
-Blockers: prose-only critical connection; physically impossible access/assembly; specialist design presented as resolved without authority; missing drainage/safety/service relation when decision-critical.
+Blockers: prose-only critical connection; physically impossible access/assembly; specialist design presented as resolved without authority; missing drainage/safety/service relation when decision-critical; operational closure/access conclusion exists only in prose or detached status legend while the affected route/zone is drawn as normal.
 
 ### `TD-G5 / DESIGN QUALITY & READABILITY`
 PASS when first-read, intended-size and near-read hierarchy are all professional at target output condition.
 
-Blockers: equal-weight visual noise; annotations dominate geometry; illegible detail; diagrammatic black cuts; missing technical evidence hidden by visual simplification; decorative hatch/figures overpower technical subject.
+Blockers: equal-weight visual noise; annotations dominate geometry; illegible detail; diagrammatic black cuts; missing technical evidence hidden by visual simplification; decorative hatch/figures overpower technical subject; flow network reduced to a few oversized generic arrows; primary/secondary/continuation routes flattened into one line class; direction markers visually dominate or point against local route tangent; repeated parking/transit/mode system simplified until the analytical density/reading changes materially.
 
-### `TD-G6 / VECTOR & ANNOTATION INTEGRITY`
-PASS when vector text/dimensions/linework survive export and annotations target the intended geometry without collision or ambiguity.
+### `TD-G6 / VECTOR, ANNOTATION & SEMANTIC INTEGRITY`
+PASS when vector text/dimensions/linework survive export and annotations/analysis objects target the intended geometry without collision, ambiguity or semantic decoupling.
 
-Blockers: rasterized technical text where vector output is required; broken fonts; pseudo-text; orphan callouts; clipped content; CJK/Latin substitution materially changes the drawing.
+Blockers: rasterized technical text where vector output is required; broken fonts; pseudo-text; orphan callouts; clipped content; CJK/Latin substitution materially changes the drawing; route labels/speed labels bound to the wrong edge; mode symbols float without intended owner; path-cloud trace presented as semantic editability; flow arrows exist without recoverable owner route/function when such ownership is required by the source/design logic.
 
 ### `TD-G7 / OUTPUT & ROUND-TRIP`
 PASS when editable source and delivery derivatives open independently, scales/units remain correct, and the exported PDF/SVG/DXF reproduces the approved drawing state.
@@ -384,7 +451,7 @@ PASS when editable source and delivery derivatives open independently, scales/un
 Blockers: wrong scale/units; missing links/fonts; stale export; non-recoverable source; export differs materially from reviewed source; a scaled view becomes falsely labelled after board/web resizing.
 
 ### `TD-G8 / INDEPENDENT REVIEW & PROMOTION`
-Production author may supply evidence but must not self-promote the drawing to `MAIN KEEP`, `FABRICATION APPROVED`, or `CONSTRUCTION APPROVED`. Use the current OLEANDER review path / responsible independent reviewer and keep engineering/field approval separate.
+Production author may supply evidence but must not self-promote the drawing to `MAIN KEEP`, `PIXEL KEEP`, `PROFESSIONAL FINISH PASS`, `FABRICATION APPROVED`, or `CONSTRUCTION APPROVED`. Use the current OLEANDER review path / responsible independent reviewer and keep engineering/field approval separate.
 
 A CI/export PASS, checksum, artifact existence or owner claim cannot override `TD-G1`–`TD-G6`.
 
@@ -392,16 +459,16 @@ A CI/export PASS, checksum, artifact existence or owner claim cannot override `T
 
 `TD-G5` is not a generic aesthetics score. Review these dimensions independently:
 
-1. **First visual threshold** — is the main spatial/constructive claim immediately legible?
+1. **First visual threshold** — is the main spatial/constructive/analytical claim immediately legible?
 2. **Composition** — do views, negative space and annotations establish a deliberate reading path?
 3. **Proportion/scale** — do human/object/component relationships read plausibly without overstating field accuracy?
 4. **Line hierarchy** — do cut, primary, secondary and support information remain distinct?
-5. **Typography/annotation** — are IDs, dimensions and notes precise, restrained and targetable?
-6. **Node readability** — can interfaces be understood without reconstructing them mentally?
+5. **Typography/annotation** — are IDs, dimensions, route labels and notes precise, restrained and targetable?
+6. **Node readability** — can interfaces or network junctions be understood without reconstructing them mentally?
 7. **Material/build-up clarity** — are real material states and boundaries distinguishable from graphic texture?
-8. **Technical depth** — are drainage, edge, maintenance, assembly, access or other decision-critical relations present?
-9. **Cross-view coherence** — do plan/section/elevation/axon/detail describe one object/system?
-10. **Professional completion** — does the final derivative survive intended-scale and near-read review without looking like a default CAD export, classroom diagram or AI illustration?
+8. **Technical/analytical depth** — are drainage, edge, maintenance, assembly, access, route topology, direction, nodes/modes or other decision-critical relations present?
+9. **Cross-view coherence** — do plan/section/elevation/axon/detail/analysis panels describe one object/system or documented state variants?
+10. **Professional completion** — does the final derivative survive intended-scale and near-read review without looking like a default CAD export, classroom diagram, generic infographic or AI illustration?
 
 Any one critical blocker can force `REVISE/REJECT` even when the other gates pass.
 
@@ -410,19 +477,21 @@ Any one critical blocker can force `REVISE/REJECT` even when the other gates pas
 Use this order before adding new content:
 
 1. Open the actual editable/source drawing and exported derivative.
-2. Confirm status, discipline profile and source authority.
-3. Confirm the technical decision each view must answer.
+2. Confirm status, discipline/analysis profile and source authority.
+3. Confirm the technical or analytical decision each view must answer.
 4. Check cross-view geometry/projection and detail parentage.
-5. Check the dimension set and unresolved critical interfaces.
-6. Run the technical reality chain on safety/structure/foundation/drainage/material/tolerance decisions.
-7. Check construction/assembly/maintenance logic for the declared scope.
-8. Review at thumbnail/distance scale for composition and first-read hierarchy.
-9. Review at intended physical/display size for line/text/dimension survival.
-10. Zoom to near-read/detail scale for connection, callout, material and dimensional clarity.
-11. Inspect vector/text/export integrity and grayscale/color-independent semantics.
-12. Produce `KEEP / REVISE / REJECT / HOLD` with concrete blockers and evidence.
-13. Repair the highest-order blocker first; do not add decorative complexity as a substitute.
-14. Re-export and repeat actual-derivative readback after every material drawing change.
+5. If flow/mobility is present, inventory/verify route classes, edge/node topology, branch/merge, direction-marker functions, base binding, labels and mode-symbol ownership before typography/pixel polishing.
+6. Check the dimension set and unresolved critical interfaces.
+7. Run the technical reality chain on safety/structure/foundation/drainage/material/tolerance decisions.
+8. Check construction/assembly/maintenance/operational logic for the declared scope.
+9. Review at thumbnail/distance scale for composition and first-read hierarchy.
+10. Review at intended physical/display size for line/text/dimension/network survival.
+11. Zoom to near-read/detail scale for connection, callout, material, dimensional and route/node clarity.
+12. Inspect vector/text/export/semantic integrity and grayscale/color-independent semantics.
+13. For reconstruction, separate structural/topology mismatch from typography and renderer/JPEG residual before assigning repair priority.
+14. Produce only the verdict class allowed by the current review role; producer may use `EXECUTED / SELF-CHECKED / REVIEW PENDING / REVISE / REJECT` but not self-KEEP.
+15. Repair the highest-order blocker first; do not add decorative complexity or micro-pixel tuning as a substitute.
+16. Re-export and repeat actual-derivative readback after every material drawing change.
 
 ## 19. Required output contract
 
@@ -432,13 +501,15 @@ For a substantial drawing task, return or create:
 - vector PDF/SVG/DXF derivative where applicable;
 - preview PNG only as a review convenience, never as sole technical authority;
 - `DRAWING_BRIEF` stating discipline, decision, audience, status, allowed use and prohibited claim;
-- `AUTHORITY_MATRIX` for geometry/dimensions/material/site/specialist inputs;
+- `AUTHORITY_MATRIX` for geometry/dimensions/material/site/network/specialist inputs;
 - `DRAWING_MANIFEST` containing IDs, revision, units, scales, source authority, truth state and dependencies;
 - `VIEW_SET` defining parent/child view logic and decision per view;
 - `DIMENSION_REGISTER` for critical dimensions/ranges/field-open items when complexity warrants it;
 - `DETAIL/CALLOUT_REGISTER` linking parent views and node IDs where complexity warrants it;
+- `FLOW_NETWORK_REGISTER` for circulation/mobility/route-hierarchy work, including route edges/nodes/classes, direction-marker ownership, base binding, route labels, modes and external continuations;
 - `MATERIAL/CMF_REGISTER` when material state matters;
 - `REALITY_CHECK_REGISTER` for critical technical assumptions/ranges/sensitivities/closure items;
+- reconstruction-specific source/anchor/ROI/semantic/pixel evidence when exact/high-fidelity reconstruction is requested;
 - `DRAWING_QA` with TD-G0…TD-G8 status and blockers;
 - multi-scale Design Crit for thumbnail / intended size / near-read;
 - revision log that records material design changes rather than cosmetic file churn.
@@ -456,6 +527,12 @@ Use `templates/DRAWING_EXECUTION_TEMPLATE.md` unless the project already has a s
 - `EXPLODED VIEW = NODE DETAIL` — false when interface precision is still unresolved.
 - `CAD DEFAULT LINEWEIGHT = PROFESSIONAL HIERARCHY` — false.
 - `CLEAN THUMBNAIL = PROFESSIONAL DRAWING` — false if near-read evidence disappears.
+- `A FEW BIG ARROWS = FLOW ANALYSIS` — false. Preserve graph topology, route classes, direction events and base binding.
+- `STREET LABEL PRESENT = STREET NETWORK RECONSTRUCTED` — false.
+- `ARROW LOOKS RIGHT = DIRECTION RELATION RIGHT` — false unless function, owner edge, position and tangent are right.
+- `SHARED GEOMETRY = IDENTICAL PANEL BASE PIXELS` — false in multilayer atlases with panel-specific visibility/emphasis.
+- `LOW FULL-PAGE MAE = FLOW FIDELITY` — false if route-carrier recall/topology remains poor.
+- `JPEG RESIDUAL = EXCUSE FOR MISSING ROUTES` — false. Compression residual is considered only after recoverable structure is reconstructed.
 - `EXPORT PASS = DRAWING PASS` — false.
 - `DRAWING PASS = ENGINEERING/FIELD PASS` — false.
 - `TRACEABILITY = VISUAL EXCELLENCE` — false.
@@ -493,8 +570,12 @@ These references define professional convention domains, not automatic complianc
 
 This skill succeeds only when it improves both **technical truth discipline** and **drawing design quality**.
 
-A successful result is not merely a file with dimensions. It is a recoverable, editable, source-bound drawing system in which the reader can distinguish:
+A successful result is not merely a file with dimensions or arrows. It is a recoverable, editable, source-bound drawing system in which the reader can distinguish:
 
 `WHAT IS KNOWN → WHAT IS DESIGNED → WHAT IS RECOMMENDED → WHAT IS ONLY REFERENCE → WHAT REMAINS FIELD/ENGINEER OPEN`,
 
-while the drawing itself still meets the first-read, near-read, spatial/constructive clarity and professional-finish threshold required for OLEANDER MAIN consideration.
+and, where spatial networks matter:
+
+`WHAT IS THE BASE → WHAT CONNECTS → WHERE IT BRANCHES → WHICH WAY IT MOVES → WHAT MODE/STATE IT CARRIES → WHAT CONTINUES/ENDS → WHICH LABEL/SYMBOL BELONGS TO WHICH EDGE/NODE`,
+
+while the drawing itself still meets the first-read, near-read, spatial/constructive/analytical clarity and professional-finish threshold required for OLEANDER MAIN consideration.
