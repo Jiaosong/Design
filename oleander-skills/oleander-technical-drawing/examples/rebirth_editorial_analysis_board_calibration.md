@@ -4,11 +4,11 @@ Status: `CALIBRATION PROVENANCE / NOT GOLDEN / NOT PROMOTED`
 
 Reference used in the calibration:
 - title visible in source: `'REBIRTH' URBAN BROWNFIELD AND WATERFRONT REGENERATION`;
-- author/project source identified publicly as Jiayu Zhu / University of Sheffield landscape-planning project;
+- public project source identifies the work as Jiayu Zhu / University of Sheffield landscape-planning work;
 - supplied reconstruction source: `474×671` compressed JPEG;
 - reference class: `R3 / partial-compressed-low-resolution`.
 
-This calibration was used to test the OLEANDER Technical Drawing reconstruction system on a heterogeneous landscape/urban-design analysis board.
+This calibration tests the OLEANDER Technical Drawing reconstruction system on a heterogeneous landscape/urban-design analysis board.
 
 ## 1. Board argument recovered
 
@@ -54,7 +54,7 @@ Metrics:
 Result: semantically better but pixel-worse. This proves that lower pixel error is not a reliable editability/semantic score.
 
 ### V3 — Dual Track
-Visible bounded source carriers were used for fidelity while board-logic/site/theory objects remained separately editable/non-rendering semantic objects.
+Visible bounded source carriers were used for fidelity while board-logic/site/theory objects remained separately editable semantic objects.
 
 Metrics:
 - `MAE = 0.3329`;
@@ -75,17 +75,90 @@ Why RF-C3 remains unavailable:
 
 `SOURCE TILE CONTROL != RF-C3`
 
-## 3. Skill gaps exposed and repaired
+## 3. Waterfront-theory solver — V5 / V6
 
-New module:
-- `references/EDITORIAL_ANALYSIS_BOARD_RECONSTRUCTION.md`
+A small `Waterfront City Theory` icon ROI was used to test final-stage residual repair.
 
-New machine gate:
-- `tools/validate_editorial_analysis_board.py`
+### V5
+Semantic object + anonymous bounded residual:
+- semantic-only ROI `MAE ≈ 28.81`;
+- corrected ROI `MAE ≈ 0.172`;
+- residual coverage ≈ `67.9%` of ROI.
 
-New regression:
-- `fixtures/reconstruction/BOARD-01_REGISTER.json`
-- `fixtures/reconstruction/validate_editorial_analysis_board_regression.py`
+Verdict: `REVISE`. The residual layer was functioning as a repaint, not a sparse correction.
+
+### V6
+Source-measured node count/positions and urban/water relations were reopened upstream before residual repair:
+- semantic-only ROI `MAE ≈ 19.17`;
+- corrected ROI `MAE ≈ 0.198`;
+- residual coverage ≈ `61.5%`.
+
+Verdict: semantic geometry improved, but anonymous residual remained too dense. This triggered `FINAL_STAGE_PIXEL_SOLVER` residual-density rules.
+
+## 4. Owner-bound visual carrier — V7
+
+The anonymous residual was removed.
+
+The visual layer was partitioned by semantic owner:
+- `NODE_FAMILY_VISUAL`;
+- `PLUS_VISUAL`;
+- `URBAN_EDGE_VISUAL`;
+- `WATER_EDGE_VISUAL`.
+
+Editable semantic objects remain separately present.
+
+V7 Waterfront metrics:
+- semantic-only `MAE ≈ 19.06`;
+- visible-dual `MAE ≈ 0.090`;
+- visible-dual `changed@t12 ≈ 0.026%`;
+- anonymous residual: `NONE`.
+
+Correct interpretation:
+- target-size visible fidelity is very high;
+- semantic geometry is still partial;
+- the large gap between semantic-only and visible-dual metrics must be reported;
+- RF-C3 remains unavailable.
+
+This triggered:
+- `references/OWNER_BOUND_VISUAL_CARRIER.md`.
+
+## 5. Compact City Theory — V8
+
+A second theory ROI was reconstructed to test whether the method generalizes.
+
+Recoverable source meaning:
+- mixed/compositional pie carrier;
+- repeated circular pictogram family;
+- horizontal sequence relation.
+
+Unrecoverable at R3:
+- exact pie values;
+- exact identity/meaning of each miniature pictogram;
+- microtext labels below the diagram.
+
+The semantic SVG intentionally does **not** invent those meanings.
+
+V8 metrics:
+- semantic-only `MAE ≈ 24.59`;
+- visible-dual `MAE = 0.0` at the declared ROI;
+- anonymous residual: `NONE`;
+- visible fidelity is carried by two owner-bound source-derived carriers: `MIX_DIAGRAM_VISUAL` and `PICTOGRAM_FAMILY_VISUAL`.
+
+The zero visible-dual error does **not** upgrade semantic completeness or RF-C3. It only proves that the owner-bound visual carrier can reproduce the supplied R3 pixels exactly inside that ROI.
+
+## 6. Skill gaps exposed and repaired
+
+New/updated modules:
+- `references/EDITORIAL_ANALYSIS_BOARD_RECONSTRUCTION.md`;
+- `references/FINAL_STAGE_PIXEL_SOLVER.md` residual-density gate;
+- `references/OWNER_BOUND_VISUAL_CARRIER.md`.
+
+Machine gate:
+- `tools/validate_editorial_analysis_board.py`.
+
+Regression:
+- `fixtures/reconstruction/BOARD-01_REGISTER.json`;
+- `fixtures/reconstruction/validate_editorial_analysis_board_regression.py`.
 
 New board-specific rules:
 - reconstruct the board argument, not only the panel pixels;
@@ -96,17 +169,21 @@ New board-specific rules:
 - theory diagrams must link back to a diagnosed problem;
 - unreadable R3 microtext cannot be invented;
 - source-raster visibility cannot prove semantic completion;
-- source-tile visual equality cannot claim RF-C3.
+- source-tile visual equality cannot claim RF-C3;
+- dense anonymous residual must reopen semantic geometry;
+- if R3 visual detail is irreducible, source-derived visual pixels may be partitioned by semantic owner, but visible-dual and semantic-only metrics must remain separate.
 
-## 4. Calibration conclusion
+## 7. Calibration conclusion
 
-The reconstruction loop must preserve three independent axes:
+The reconstruction loop must preserve four independent axes:
 
 `BOARD ARGUMENT / CARRIER LOGIC`
 
 `SEMANTIC EDITABILITY`
 
-`PIXEL / RENDER FIDELITY`
+`OWNER-BOUND TARGET-SIZE VISUAL FIDELITY`
+
+`FULL PIXEL / RENDER FIDELITY`
 
 Improvement on one axis must not be silently reported as improvement on the others.
 
