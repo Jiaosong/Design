@@ -1,0 +1,29 @@
+name: OLEANDER 3D Public Reference Asset Probe
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-public-reference-asset-probe.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/probe_public_reference_asset.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-reference-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Probe only normal public access path
+        run: |
+          set -euo pipefail
+          python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/probe_public_reference_asset.py
+      - name: Upload probe receipt
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-public-reference-asset-probe-${{ github.run_id }}
+          path: PUBLIC_REFERENCE_ASSET_PROBE.json
+          if-no-files-found: error
+          retention-days: 7
