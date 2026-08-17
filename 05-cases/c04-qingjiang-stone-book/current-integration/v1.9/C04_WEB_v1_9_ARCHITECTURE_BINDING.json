@@ -15,6 +15,16 @@
     "v1_7_deltas_reused": ["scene_interaction", "physical", "technical", "styles"],
     "v1_8_deltas_reused": ["ROUTE-03 journey lock", "styles"]
   },
+  "source_snapshot": {
+    "ordered_chapter_files": 21,
+    "project_architecture_chapters": 19,
+    "split_carriers": {
+      "CH11": ["game_map", "app_system"],
+      "CH18": ["motion", "return_conclusion"]
+    },
+    "branch_source_readback": "PASS",
+    "browser_readback": "PENDING"
+  },
   "locks": {
     "route": "ROUTE-03 LOCKED CURRENT",
     "journey04": "PROVENANCE NON-CURRENT",
