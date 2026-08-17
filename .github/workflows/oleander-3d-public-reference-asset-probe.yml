@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/oleander-3d-public-reference-asset-probe.yml'
       - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/probe_public_reference_asset.py'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/fetch_9922_reference_images.py'
   workflow_dispatch:
 
 permissions:
@@ -20,10 +21,17 @@ jobs:
         run: |
           set -euo pipefail
           python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/probe_public_reference_asset.py
-      - name: Upload probe receipt
+      - name: Fetch same-revision public calibration imagery
+        run: |
+          set -euo pipefail
+          python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/fetch_9922_reference_images.py
+      - name: Upload reference probe and calibration evidence
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: oleander-public-reference-asset-probe-${{ github.run_id }}
-          path: PUBLIC_REFERENCE_ASSET_PROBE.json
+          path: |
+            PUBLIC_REFERENCE_ASSET_PROBE.json
+            REFERENCE_IMAGE_FETCH_RECEIPT.json
+            reference_images/
           if-no-files-found: error
           retention-days: 7
