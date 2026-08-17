@@ -1,0 +1,20 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-17-MATERIAL-IDENTITY",
+  "topic": "Material identity under constant lighting: beyond color-only CMF",
+  "reference_model": "glTF 2.0 metallic-roughness categories (base color / metallic / roughness / normal / occlusion)",
+  "truth_boundary": "Representational calibration only; not a PBR renderer, not measured reflectance, not a construction/material approval.",
+  "v1_failure": "Material identity carried mostly by hue and labels; same highlight width, texture scale and edge response made three materials feel like colored gray-model surfaces.",
+  "v2_failure": "Response channels separated, but surface patterns became too decorative and periodic, creating pattern identity instead of material identity.",
+  "v3_repairs": [
+    "remove regular stone pattern",
+    "replace decorative rust dots with non-periodic surface variation",
+    "reduce timber repeat cadence",
+    "differentiate broad vs tight response",
+    "differentiate dielectric vs conductor cues",
+    "differentiate edge response",
+    "add grayscale identity check"
+  ],
+  "v3_verification": "Local rendered PNG and grayscale derivative were reopened. Material families remain distinguishable before reading captions; this proves training-level visual separation only.",
+  "final_verdict": "KEEP_FOR_TRAINING",
+  "runtime_pbr_validation": "HOLD_NOT_REQUIRED_FOR_THIS_CALIBRATION"
+}
