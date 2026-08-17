@@ -1,0 +1,79 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.5.1b.cap-curvature-refinement.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_5_1B_SAME_DOF_CAP_SCALE_REFINEMENT",
+  "authorization_receipt": "G1_R4_5_1_CAP_CURVATURE_SCALE_DECISION_2026-08-17.md",
+  "authorization_phrase": "R4.5.1B same-DOF refinement = AUTHORIZED",
+  "source_owner_family": "LOWER_RETURN_PROFILE",
+  "relation_id": "TERMINATION_CAP_RELATION",
+  "relation_vocabulary": {
+    "numeric_dof_count": 2,
+    "locked_onset_value": 0.88,
+    "scale_property": "termination_cap_pole_curvature_scale",
+    "law": "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE",
+    "semantics": "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION"
+  },
+  "visual_reference": {
+    "id": "SCALE_A_0_90_CONTROL",
+    "termination_cap_pole_curvature_scale": 0.90,
+    "state": "R4_5_1_FIRST_BATCH_MACHINE_VISUAL_BEST_BUT_REVISE"
+  },
+  "variants": {
+    "SCALE_E_0_86": {"termination_cap_pole_curvature_scale": 0.86},
+    "SCALE_F_0_88": {"termination_cap_pole_curvature_scale": 0.88}
+  },
+  "policy": {
+    "termination_cap_onset_u_locked": 0.88,
+    "confirmed_interface_relation_locked": true,
+    "termination_envelope_exponent_locked": 0.34,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "seventh_source_family_forbidden": true,
+    "mesh_local_cosmetic_patch_forbidden": true,
+    "dense_control_field_forbidden": true,
+    "third_numeric_cap_dof_forbidden": true,
+    "max_sparse_authority_scalar_count": 50,
+    "blender_native_source_binding_required": true,
+    "roundtrip_required": true,
+    "shared_surface_system_runtime_required": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "machine_gate": {
+    "theta_samples": 72,
+    "onset_probe_epsilon_u": 0.0001,
+    "onset_position_continuity_max_m": 0.00001,
+    "onset_normal_continuity_max_deg": 0.5,
+    "interface_regression_u_samples": [0.38,0.50,0.62,0.74,0.86,0.879],
+    "interface_regression_theta_samples": 36,
+    "interface_regression_max_displacement_m": 1e-9,
+    "cap_turn_span_u": 0.002,
+    "cap_tau_samples": [0.08,0.16,0.24,0.32,0.40,0.48,0.56,0.64,0.72,0.80,0.88,0.94,0.975,0.99],
+    "cap_region_max_normal_turn_deg": 3.2,
+    "near_pole_samples": [0.995,0.996,0.997,0.998,0.999],
+    "near_pole_max_normal_turn_deg": 2.0,
+    "reflection_flow_concentration_ratio_max": 1.75,
+    "radial_monotonic_samples": 64,
+    "radial_monotonic_tolerance_m": 1e-7,
+    "closure_position_tolerance_m": 1e-10,
+    "minimum_cap_aware_extra_u_rings": 9
+  },
+  "visual_gate": {
+    "required_rigs": ["BROAD","STRIP","GRAZING","ZEBRA"],
+    "comparison": "Compare .86/.88 directly against .90 control under the same camera/runtime/rigs.",
+    "reject_if": [
+      "terminal cap remains a discrete appended plug/nipple comparable to .90 control",
+      "Strip/Grazing retains a detached terminal oval",
+      "Zebra retains a localized lower hook/loop",
+      "near-pole closure becomes visibly pinched or pointed",
+      "new onset kink or interface regression appears"
+    ],
+    "pass_if": "terminal island/hook is materially reduced relative to .90 while tail-to-cap remains continuous and near-pole closure does not become pinched."
+  },
+  "local_view": {
+    "name": "R4_5_1B_CAP_SCALE_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "boundary": "Same two-DOF relation only. No third DOF, Source family, control point, mesh patch, Candidate Promotion, Candidate/Canonical Authority, Class-A, engineering CAD, manufacturing/tooling, ergonomic comfort, final CMF or Release."
+}
