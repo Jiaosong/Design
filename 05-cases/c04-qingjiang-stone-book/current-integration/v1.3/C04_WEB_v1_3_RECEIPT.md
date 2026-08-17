@@ -37,8 +37,8 @@ A self-contained HTML was loaded with Chromium `page.set_content()` because mana
 `/screens/CONTACT_v1_3.jpg` combines 26 actual desktop readbacks covering Hero, Culture, Journey, Map, all six App screens, Thirteen Imprints + R13 selection, R06/R13, Scene, Audience, Physical, Memory, Technical, Motion and Return.
 
 Final contact sheet:
-- bytes: `505,235`
-- SHA256: `c4b2ccdeed10bca4cd11c4b313a0c8c14d5c17b1c0acca98cace92dd7e523ae7`
+- bytes: `500,319`
+- SHA256: `b8bfbb799e675e43514efbb02bcf22ab7efae4550206e54272470425df9c5580`
 
 ## Persistence
 
@@ -52,8 +52,8 @@ Persistent Library CURRENT target:
 ## Package
 
 - filename: `C04_WEB_v1_3_NO_COMPRESSION.zip`
-- bytes: `90,814,588`
-- SHA256: `69c7c99b8f1f2d577a32655c89ddbc9cf2a4b3faadae24d4f24cbe87d70605f7`
+- bytes: `90,747,719`
+- SHA256: `dc010d1469fc69c8d74bc1d2af8801eb04e0d58e2d05a84cf645044736eb3cb5`
 - package contains runtime HTML/CSS/JS, binary assets, final screenshots/readback, object binding, producer Crit, and modular rebuildable source. Package receipt/meta are external to avoid self-referential hash mutation.
 
 ## Truth boundary
