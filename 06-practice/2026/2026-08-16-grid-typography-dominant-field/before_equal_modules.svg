@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#f7f7f5"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+  <text x="96" y="92" font-size="18" font-weight="700">QINGJIANG / R06 + R13</text>
+  <text x="96" y="126" font-size="14">Portfolio board hierarchy study — equal module baseline</text>
+</g>
+<g stroke="#111" stroke-opacity=".08" stroke-width="1">
+<line x1="96" y1="160" x2="96" y2="900"/><line x1="214" y1="160" x2="214" y2="900"/><line x1="332" y1="160" x2="332" y2="900"/><line x1="450" y1="160" x2="450" y2="900"/><line x1="568" y1="160" x2="568" y2="900"/><line x1="686" y1="160" x2="686" y2="900"/><line x1="804" y1="160" x2="804" y2="900"/><line x1="922" y1="160" x2="922" y2="900"/><line x1="1040" y1="160" x2="1040" y2="900"/><line x1="1158" y1="160" x2="1158" y2="900"/><line x1="1276" y1="160" x2="1276" y2="900"/><line x1="1394" y1="160" x2="1394" y2="900"/><line x1="1512" y1="160" x2="1512" y2="900"/>
+</g>
+<g fill="none" stroke="#111" stroke-width="2">
+  <rect x="96" y="190" width="438" height="520"/>
+  <rect x="581" y="190" width="438" height="520"/>
+  <rect x="1066" y="190" width="438" height="520"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+  <text x="120" y="230" font-size="14" font-weight="700">R06 / LANDSCAPE</text>
+  <text x="605" y="230" font-size="14" font-weight="700">R06 / RELATION</text>
+  <text x="1090" y="230" font-size="14" font-weight="700">R13 / RETURN</text>
+  <text x="120" y="755" font-size="36" font-weight="700">READ</text>
+  <text x="120" y="795" font-size="36" font-weight="700">THE LANDSCAPE</text>
+  <text x="120" y="842" font-size="16">Landscape first → relation reveal → return closure</text>
+  <text x="120" y="875" font-size="13">Same content weight. Same frame weight. No single thesis dominates.</text>
+</g>
+</svg>

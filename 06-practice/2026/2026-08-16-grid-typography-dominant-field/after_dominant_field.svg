@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#f7f7f5"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+  <text x="96" y="92" font-size="18" font-weight="700">QINGJIANG / R06 + R13</text>
+  <text x="96" y="126" font-size="14">Portfolio board hierarchy study — dominant field revision</text>
+</g>
+<g stroke="#111" stroke-opacity=".08" stroke-width="1">
+<line x1="96" y1="160" x2="96" y2="900"/><line x1="214" y1="160" x2="214" y2="900"/><line x1="332" y1="160" x2="332" y2="900"/><line x1="450" y1="160" x2="450" y2="900"/><line x1="568" y1="160" x2="568" y2="900"/><line x1="686" y1="160" x2="686" y2="900"/><line x1="804" y1="160" x2="804" y2="900"/><line x1="922" y1="160" x2="922" y2="900"/><line x1="1040" y1="160" x2="1040" y2="900"/><line x1="1158" y1="160" x2="1158" y2="900"/><line x1="1276" y1="160" x2="1276" y2="900"/><line x1="1394" y1="160" x2="1394" y2="900"/><line x1="1512" y1="160" x2="1512" y2="900"/>
+</g>
+<g fill="none" stroke="#111">
+  <rect x="96" y="190" width="910" height="560" stroke-width="3"/>
+  <rect x="1054" y="190" width="450" height="270" stroke-width="1.5"/>
+  <rect x="1054" y="492" width="450" height="258" stroke-width="1.5"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+  <text x="120" y="232" font-size="14" font-weight="700">R06 / LANDSCAPE FIRST</text>
+  <text x="1078" y="232" font-size="13" font-weight="700">R06 / RELATION REVEAL</text>
+  <text x="1078" y="534" font-size="13" font-weight="700">R13 / RETURN CLOSURE</text>
+  <text x="96" y="820" font-size="72" font-weight="700">READ THE LANDSCAPE</text>
+  <text x="1000" y="814" font-size="16" text-anchor="end">01</text>
+  <text x="1054" y="812" font-size="16">Landscape first</text>
+  <text x="1054" y="840" font-size="16">Relation second</text>
+  <text x="1054" y="868" font-size="16">Return closes the sequence</text>
+  <text x="96" y="884" font-size="13">Same information, same grid, same labels — only dominance and grouping changed.</text>
+</g>
+</svg>
