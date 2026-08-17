@@ -12,6 +12,8 @@
     "USE_EXISTING_SKILL_AND_RUNTIME_BEFORE_CREATING_NEW_METHOD",
     "SOURCE_AUTHORITY_PRECEDES_TOOL_CHOICE",
     "NATIVE_EDITABLE_SOURCE_PRECEDES_FLATTENED_PREVIEW",
+    "BROWSER_VISIBLE_DOES_NOT_EQUAL_LOCAL_SOURCE_BYTES_AVAILABLE",
+    "REFERENCE_MATERIALIZATION_PRECEDES_ONE_TO_ONE_RECONSTRUCTION_CLAIMS",
     "ARTIFACT_EXISTENCE_DOES_NOT_PROVE_DESIGN_QUALITY",
     "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT"
   ],
@@ -28,16 +30,38 @@
     "READ_CURRENT_AUTHORITY_AND_SOURCE_AUTHORITY",
     "RESOLVE_EXISTING_OLEANDER_SKILL",
     "IDENTIFY_REQUIRED_NATIVE_OUTPUT_AND_FIDELITY",
+    "IF_REFERENCE_RECONSTRUCTION_RESOLVE_REFERENCE_MATERIALIZATION_GATE",
     "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
     "PROBE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
     "SELECT_BEST_FIT_ADAPTER",
     "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
     "MARK_ONLY_THE_UNAVAILABLE_STEP_PENDING"
   ],
+  "reference_materialization": {
+    "status": "ACTIVE_CURRENT_GATE",
+    "contract": "00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.json",
+    "human_contract": "00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.md",
+    "canonical_adapter": "tools/oleander-runtime/materialize_reference.py",
+    "invariant": "BROWSER_VISIBLE_DOES_NOT_EQUAL_LOCAL_SOURCE_BYTES_AVAILABLE",
+    "required_sequence": [
+      "SOURCE_AUTHORITY_FOUND",
+      "SOURCE_BYTES_MATERIALIZED",
+      "SOURCE_HASHED",
+      "REFERENCE_FRAME_EXTRACTED",
+      "REFERENCE_SCALE_LOCKED",
+      "COMPARISON_RUNTIME_VERIFIED"
+    ],
+    "fail_closed_rule": "IF_SOURCE_BYTES_OR_REFERENCE_FRAME_CANNOT_BE_LOCKED_FIDELITY_GATE_HOLD_AND_REPRODUCTION_PASS_FORBIDDEN"
+  },
   "adapters": {
     "research_knowledge": {
       "preferred": ["Web", "official archives", "PDF", "Notion", "GitHub", "Google Drive"],
       "status": "DETECT_PER_RUN"
+    },
+    "reference_materialization": {
+      "preferred": ["mounted conversation file", "public direct URL download", "connector-native materialization", "exact GitHub/Google Drive file retrieval", "tools/oleander-runtime/materialize_reference.py"],
+      "status": "DETECT_PER_RUN",
+      "evidence_boundary": "source bytes and hashes prove materialization/reproducibility only, not authority, rights, fidelity or design quality"
     },
     "deterministic_data": {
       "preferred": ["Python", "GDAL", "GeoPandas", "QGIS when verified", "deterministic geometry and image tools"],
@@ -109,6 +133,18 @@
       "EVIDENCE_GATE",
       "DESIGN_QUALITY_GATE",
       "DOES_NOT_PROVE"
+    ],
+    "reference_reconstruction_additional_fields": [
+      "SOURCE_LOCATOR",
+      "SOURCE_BYTES_STATE",
+      "SOURCE_SHA256",
+      "REFERENCE_FRAME_STATE",
+      "PAGE_OR_FRAME",
+      "SCALE_OR_DPI",
+      "RENDERER",
+      "REFERENCE_FRAME_SHA256",
+      "COMPARISON_RUNTIME",
+      "FIDELITY_GATE"
     ]
   }
 }
