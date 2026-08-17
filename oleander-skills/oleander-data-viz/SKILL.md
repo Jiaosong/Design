@@ -31,6 +31,21 @@ Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spa
    - XLSX with source/clean/data-dictionary sheets when a table is part of delivery.
 7. Validate totals, axes, labels, legends, frame order, map CRS, and export dimensions.
 
+## Uncertainty-first scenario charts
+
+Use this gate whenever a value is estimated, inferred, scenario-based, provisional, remotely researched, or awaiting FIELD correction.
+
+1. Do not let a recommended value read as a measured scalar. A single bar, large numeral, or isolated point is `REVISE` when the underlying plausible range could change interpretation or a decision.
+2. When uncertainty is decision-relevant, make the plausible range the primary visual mark and place the recommended or central estimate as a subordinate point inside that range. Dot-range, interval, or band forms are preferred over bars with decorative error marks.
+3. Keep the following adjacent to the visual, not hidden in a distant footnote: unit, range definition, evidence class, confidence/quality state, and FIELD correction status when applicable.
+4. Distinguish evidence provenance from probability. If line style, symbol, texture, or another channel encodes `SOURCE-GROUNDED / INFERRED / ASSUMPTION`, state explicitly that the channel does not represent likelihood unless it truly does.
+5. Use plain-language uncertainty wording where possible. Do not imply statistical confidence intervals when the range is instead an engineering scenario, sensitivity band, expert estimate, or design allowance.
+6. If uncertainty is so large that the visual cannot support a meaningful comparison or decision, do not force a ranked chart. State the limitation and keep the underlying values available in the data table.
+7. The absence of measured field data is not a reason to collapse to a single neat number. Preserve `recommended value + reasonable range + basis + sensitivity + future FIELD correction item` when the project authority requires provisional advancement.
+8. In critique, separately test first-read and truthfulness: the chart must be visually clear, but visual polish cannot upgrade `ASSUMPTION` to evidence or `PROVISIONAL` to measured fact.
+
+Reference calibration: UK Office for National Statistics guidance on showing uncertainty in charts recommends uncertainty ranges when they materially change interpretation and favours range-oriented forms such as shaded bands or dot plots with ranges. OLEANDER extends that principle to non-statistical design scenarios by preserving the explicit evidence class and FIELD boundary.
+
 ## Motion rules
 
 - Keep axes and color scales stable across frames.
@@ -50,4 +65,5 @@ Return the visualization, cleaned dataset, data dictionary, transformation note,
 - Avoid truncated axes unless clearly justified.
 - Use project-safe relative paths.
 - Preserve editable vector or source output.
-
+- For provisional/scenario values, verify that range, evidence class and FIELD state remain legible at the intended viewing scale.
+- Never treat chart export success, traceability, or numerical consistency as a substitute for a Design Crit or truth-state review.
