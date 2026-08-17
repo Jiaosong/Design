@@ -42,6 +42,23 @@ Every section should have one primary claim and one primary visual.
 - Brand story: human motivation, distinctive promise, proof, voice.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
+## Bilingual typography gate
+
+Use this gate whenever Chinese and English coexist on the same presentation surface.
+
+1. Decide the primary reading language before styling. Bilingual presentation is not a requirement to give both languages equal visual weight.
+2. Preserve the full information in both languages when both are required, but allocate unequal size, weight, line length, spacing, contrast, and placement according to reading priority.
+3. A translated headline must not automatically duplicate the primary headline's type size, width, and emphasis. If both languages compete for first-read, mark the layout `REVISE` unless the page intentionally presents two equal claims.
+4. Treat line breaks as designed structure. Break Chinese by semantic phrase and visual rhythm; do not leave opening punctuation at line end or closing/stop punctuation stranded at line start where the composition can avoid it.
+5. In mixed Chinese/Latin text, keep proportional Latin letters and European numerals. Do not use fullwidth ASCII merely to make mixed-script text look aligned.
+6. For Chinese-dominant horizontal text, allow controlled spacing between Han characters and adjacent Latin letters or numerals when needed for legibility; do not insert arbitrary spaces inconsistently across the same document.
+7. Keep abbreviations, units, IDs, figure numbers, and technical tokens visually intact. Do not split an annotation mark from the text it marks or separate symbols from the numerals they qualify when that changes meaning.
+8. Test both distance-read and near-read. At distance, the audience should identify the primary claim and language immediately; near-read must still preserve the secondary-language content without making it a footnote-like afterthought.
+9. Do not use typography polish to hide translation drift. The secondary-language text must remain semantically aligned with the approved primary claim and evidence boundary.
+10. A successful export, font load, or line-wrap implementation does not prove design quality. Reopen the rendered result and review hierarchy, line breaks, punctuation position, mixed-script spacing, crop/overflow, and paragraph density independently.
+
+Calibration reference: W3C *Requirements for Chinese Text Layout (CLReq)* for Chinese punctuation, line-breaking constraints, and Chinese/Western mixed-text composition. Treat project-specific typography as a design decision, not as a blanket claim of standards compliance.
+
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
@@ -53,4 +70,5 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 - Captions identify what, where, when, and why it matters.
 - Text remains readable at target print/view distance.
 - The conclusion follows from the evidence rather than visual mood alone.
+- Bilingual pages identify a primary reading language, avoid accidental equal-weight competition, and pass line-break/crop review in the rendered output.
 
