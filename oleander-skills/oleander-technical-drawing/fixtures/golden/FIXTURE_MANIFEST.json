@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.2",
+  "manifest_version": "0.3",
   "skill": "oleander-technical-drawing",
   "candidate_skill_revision": "v0.2",
   "status": "GOLDEN_CANDIDATE_NOT_PROMOTED",
@@ -7,6 +7,7 @@
     "independent_oleander_design_review",
     "actual_svg_open_and_visual_readback",
     "3s_30s_near_read_review",
+    "detail_density_review",
     "structure_assertion_check",
     "no_blocker_regression"
   ],
@@ -20,6 +21,8 @@
     "annotation_rail_alignment",
     "contrast_budget_reserved_for_primary_relation",
     "3s_claim_30s_logic_near_read_evidence",
+    "near_read_density_concentrated_at_decision_interfaces",
+    "text_does_not_replace_graphical_technical_proof",
     "no_authoritative_geometry_distortion_for_layout",
     "artifact_existence_not_equal_design_pass",
     "no_engineering_or_field_claim_from_fixture"
@@ -31,9 +34,11 @@
       "type": "technical_drawing",
       "discipline": "architecture_interior",
       "decision": "section hierarchy and parent-detail traceability",
-      "required_groups": ["SHEET_HEADER","VIEW_A_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","L2_PRIMARY_RELATION","L3_SECONDARY_BUILDUP","L4_DIMENSIONS_NOTES","DETAIL_CALLOUT","VIEW_B_DETAIL","TITLE_BLOCK"],
-      "visual_invariants": ["cut_reads_before_annotation","primary_section_owns_largest_field","detail_parent_visible","detail_aligned_to_annotation_rail","secondary_build_up_survives_near_read","truth_boundary_visible"],
-      "blocker_mutations": ["equalize_all_strokes","remove_detail_callout","scatter_detail_notes_into_primary_field","rasterize_annotations","hide_truth_boundary"]
+      "density_target": "parent section controls cut, levels and dimensions; child detail proves material build-up, bracket zone, joint and open verification",
+      "depth_levels_present": ["D0","D1","D2","D3","D4","D6"],
+      "required_groups": ["SHEET_HEADER","VIEW_A_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","L2_PRIMARY_RELATION","L3_SECONDARY_BUILDUP","LEVEL_DATUMS","FUNCTIONAL_DIMENSIONS","MATERIAL_TAGS","L4_DIMENSIONS_NOTES","DETAIL_CALLOUT","VIEW_B_DETAIL","INTERFACE_COMPONENTS","DETAIL_DIMENSIONS","BUILDUP_REGISTER","DETAIL_STATE","TITLE_BLOCK"],
+      "visual_invariants": ["cut_reads_before_annotation","primary_section_owns_largest_field","datum_and_control_dimensions_trace_to_parent","detail_parent_visible","detail_aligned_to_annotation_rail","material_layers_are_drawn_not_only_named","bracket_and_joint_have_graphical_targets","truth_boundary_visible"],
+      "blocker_mutations": ["equalize_all_strokes","remove_detail_callout","remove_level_datums","replace_material_layers_with_notes_only","scatter_detail_notes_into_primary_field","rasterize_annotations","hide_truth_boundary"]
     },
     {
       "id": "GD-02",
@@ -41,9 +46,11 @@
       "type": "technical_drawing",
       "discipline": "landscape_site",
       "decision": "slope path drainage support safety and field-open relation",
-      "required_groups": ["PARENT_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","L2_PRIMARY_RELATION","L3_SECONDARY_CONSTRUCTION","DRAINAGE_LOGIC","SAFETY_EDGE","FIELD_OPEN_ZONES","DETAIL_D03","DETAIL_D04","TITLE_BLOCK"],
-      "visual_invariants": ["path_support_drainage_are_3s_claim","existing_and_proposed_distinct","field_open_not_rendered_as_resolved","drainage_direction_graphic","safety_edge_visible","details_share_one_rail","maintenance_relation_visible"],
-      "blocker_mutations": ["replace_field_open_with_precise_foundation","remove_drainage_logic","make_context_heavier_than_path","scatter_details","delete_edge_detail"]
+      "density_target": "walking surface, support, water, edge and maintenance remain one technical chain while foundation and receiving conditions stay open",
+      "depth_levels_present": ["D0","D1","D2","D3","D4","D5","D6"],
+      "required_groups": ["PARENT_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","PATH_BUILDUP","L2_PRIMARY_RELATION","L3_SECONDARY_CONSTRUCTION","FUNCTIONAL_DIMENSIONS","DRAINAGE_LOGIC","SUPPORT_INTERFACE","SAFETY_EDGE","FIELD_OPEN_ZONES","MAINTENANCE_ENVELOPE","DETAIL_D03","DETAIL_D04","VERIFY_REGISTER","TITLE_BLOCK"],
+      "visual_invariants": ["path_support_drainage_are_3s_claim","surface_and_support_build_up_are_spatially_distinct","functional_width_and_crossfall_are_bounded_training_values","field_open_not_rendered_as_resolved","drainage_direction_and_outlet_are_graphic","safety_edge_visible","details_share_one_rail","maintenance_relation_visible"],
+      "blocker_mutations": ["replace_field_open_with_precise_foundation","remove_path_build_up","remove_drainage_outlet","make_context_heavier_than_path","scatter_details","delete_maintenance_envelope","delete_edge_detail"]
     },
     {
       "id": "GD-03",
@@ -51,9 +58,11 @@
       "type": "technical_drawing",
       "discipline": "industrial_product",
       "decision": "assembly mating serviceability and CMF truth state",
-      "required_groups": ["EXPLODED_ASSEMBLY","PART_01_FRONT_SHELL","PART_02_GASKET","PART_03_CARRIER","PART_04_BATTERY","PART_05_BACK_SHELL","ASSEMBLY_ARROWS","SERVICE_PATH","DETAIL_D05","CMF_REGISTER","BOM","TITLE_BLOCK"],
-      "visual_invariants": ["assembly_axis_is_3s_signature","exploded_order_clear","exact_interface_has_separate_detail","service_path_visible","interface_and_cmf_share_quieter_rail","candidate_finish_not_equal_approved","no_generic_tolerance"],
-      "blocker_mutations": ["remove_service_path","promote_candidate_finish_to_approved","make_cmf_rail_louder_than_assembly","use_exploded_view_as_only_interface_detail","add_unsupported_plus_minus_tolerance"]
+      "density_target": "assembly order remains primary while datum, fit, interface stack, fixing axis, service path and CMF state become recoverable at near-read",
+      "depth_levels_present": ["D0","D1","D2","D3","D4","D5","D6"],
+      "required_groups": ["EXPLODED_ASSEMBLY","DATUM_SYSTEM","PART_01_FRONT_SHELL","PART_02_GASKET","PART_03_CARRIER","PART_04_BATTERY","PART_05_BACK_SHELL","ASSEMBLY_ARROWS","FUNCTIONAL_DIMENSIONS","SERVICE_PATH","DETAIL_D05","FASTENER_PATH","FIT_DIMENSIONS","CMF_REGISTER","SERVICE_ENVELOPE","BOM","TITLE_BLOCK"],
+      "visual_invariants": ["assembly_axis_is_3s_signature","exploded_order_clear","datum_system_is_recoverable","fit_gap_is_owned_by_interface_detail","fastener_axis_is_drawn_but_unreleased","service_path_visible","interface_and_cmf_share_quieter_rail","candidate_finish_not_equal_approved","no_generic_tolerance"],
+      "blocker_mutations": ["remove_service_path","remove_datums","promote_candidate_finish_to_approved","make_cmf_rail_louder_than_assembly","replace_interface_stack_with_text_only","use_exploded_view_as_only_interface_detail","add_unsupported_plus_minus_tolerance"]
     },
     {
       "id": "GD-04",
@@ -61,9 +70,11 @@
       "type": "technical_drawing",
       "discipline": "structural_support_explanation",
       "decision": "support load path base anchor foundation drainage and maintenance relation",
-      "required_groups": ["GENERAL_NODE","L1_PRIMARY","L2_CONNECTION","L3_SECONDARY","LOAD_PATH","DRAINAGE_ISOLATION","FIELD_OPEN","CALLOUTS","DETAIL_D06","DETAIL_D07","DETAIL_D08","REALITY_CHAIN"],
-      "visual_invariants": ["load_path_is_single_signature","connection_graphically_resolved","foundation_state_open","details_are_subordinate_to_general_node","drainage_and_corrosion_intent_visible","tool_access_visible"],
-      "blocker_mutations": ["invent_final_anchor_size","remove_foundation_field_open","replace_connection_geometry_with_notes","make_three_details_equal_heroes","remove_access_envelope"]
+      "density_target": "member-to-substrate connection chain, environmental separation and maintenance are graphically deep while engineering adequacy remains explicitly open",
+      "depth_levels_present": ["D0","D1","D2","D3","D4","D5","D6"],
+      "required_groups": ["GENERAL_NODE","L1_PRIMARY","BASE_PLATE_INTERFACE","ANCHOR_SYSTEM","L2_CONNECTION","L3_SECONDARY","LOAD_PATH","FUNCTIONAL_DIMENSIONS","DRAINAGE_ISOLATION","CORROSION_SEPARATION","FIELD_OPEN","TOOL_ACCESS","CALLOUTS","DETAIL_D06","DETAIL_D07","DETAIL_D08","VERIFY_REGISTER","REALITY_CHAIN"],
+      "visual_invariants": ["load_path_is_single_signature","member_plate_anchor_substrate_chain_is_graphically_resolved","isolation_and_contact_zones_are_visible","anchor_adequacy_is_not_invented","foundation_state_open","details_are_subordinate_to_general_node","drainage_and_corrosion_intent_visible","tool_access_visible"],
+      "blocker_mutations": ["invent_final_anchor_size","invent_reinforcement_or_footing_depth","remove_foundation_field_open","replace_connection_geometry_with_notes","remove_isolation_layer","make_three_details_equal_heroes","remove_access_envelope"]
     },
     {
       "id": "GD-05",
