@@ -27,7 +27,7 @@
     "HOLD_NO_RENDERER",
     "HOLD_SOURCE_AMBIGUOUS"
   ],
-  "canonical_adapter": "tools/oleander-runtime/materialize_reference.py",
+  "canonical_adapter": "90-shared/toolchains/reference-materialization/materialize_reference.py",
   "pdf_renderer_order": [
     "pdftoppm",
     "pypdfium2"
