@@ -1,0 +1,9 @@
+{
+  "review_type": "OLEANDER independent finished-output Design Crit",
+  "target": "C22_03_OFFICIAL_GUIDE_PRIMARY_v3",
+  "best_existing_comparison": ["C0 A-IMG-01 official guide", "C22_01_OFFICIAL_GUIDE_PRIMARY v2"],
+  "mandatory_gates": ["first-read", "composition/proportion", "C04 specificity", "source-vs-design separation", "professional finish", "truth-boundary legibility"],
+  "review_blocker": "Exact A-IMG-01 raw bytes are not locally materialized, so current layout preview cannot establish finished-pixel KEEP.",
+  "allowed_current_verdicts": ["REVIEW PENDING", "REVISE", "REJECT"],
+  "producer_positive_keep_forbidden": true
+}
