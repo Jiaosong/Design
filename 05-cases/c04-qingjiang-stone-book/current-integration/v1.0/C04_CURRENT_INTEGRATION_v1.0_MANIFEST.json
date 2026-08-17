@@ -60,13 +60,17 @@
     "scroll_width": 1920,
     "client_width": 1920,
     "section_screenshots": 12,
-    "producer_self_keep": false
+    "contact_sheet": true,
+    "producer_self_keep": false,
+    "first_internal_version_revised": true
   },
   "drive_package": {
     "drive_id": "1d_aXFYynwDM7QOv49jEG2xBcl2CjhjBO",
     "filename": "C04_CURRENT_INTEGRATION_v1_0.zip",
-    "bytes": 16817982,
-    "sha256": "e4b9d5de572c6afe5cfdca5119ad1e0de597af0275965e5289ec64bc3be70de9",
+    "bytes": 40940621,
+    "sha256": "db42d58793e3e711aafa600fc3a1c75e20701cefa9d3c7702f20de9448051fc2",
+    "replacement_upload_pass": true,
+    "drive_returned_size": 40940621,
     "metadata_size_readback_pass": true
   },
   "open_gaps": [
