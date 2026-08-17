@@ -1,0 +1,14 @@
+id,label,priority,anchor,visible
+R00,ENTRY / RETURN,1,right,True
+R06,VALLEY OBSERVATION,1,right,True
+R11,RETURN FORK,1,top,True
+R02,PLANT EDGE,2,right,True
+R04,RIDGE SPLIT,2,right,True
+R07,CANGBIN PEAK,2,right,True
+R12,EXIT,2,top,True
+R01,CABLE VIEW,3,top,True
+R10,CLIFF EDGE,3,top,True
+R03,WATER TURN,4,bottom,True
+R08,STONE READ,4,suppressed,False
+R05,SHADE PASS,5,bottom,True
+R09,QUIET BEND,5,bottom,True

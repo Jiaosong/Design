@@ -51,6 +51,23 @@ For source-bound spatial graphics, record:
 - any transform and whether it is uniform;
 - what the graphic supports and what it does not prove.
 
+## Map label priority and collision gate
+
+Apply this gate whenever a map, route network, diagram, or spatial interface contains enough labels that density can change route or decision readability.
+
+1. Classify every label before placement. At minimum distinguish `P1 CRITICAL` (entry, exit, return, safety, decision, current target), `P2 IMPORTANT` (major named place or route relation), and `P3+ SUPPORT` (secondary POI, descriptive, interpretive, or redundant context).
+2. **Priority controls retention rights, not only typography.** P1 labels must not disappear under ordinary density pressure. P2 labels should be protected whenever a collision-free or acceptably displaced position exists. P3+ labels may move, defer, cluster, abbreviate, or suppress before P1/P2 are sacrificed.
+3. Do not use `show everything` as a completeness proxy. Complete data does not require complete simultaneous labeling. Hidden/suppressed labels remain in the source data and must be recoverable through zoom, interaction, legend, index, hover, selection, or a less-dense scale where applicable.
+4. Use variable anchors / offsets before hiding important labels. Point labels should test multiple placements around the anchor; line labels should follow their geometry when that improves identification without false geometry.
+5. Run collision checks at the actual delivery size, not only on a large authoring canvas. Re-run after font, language, responsive breakpoint, export scale, or label-content changes.
+6. Keep label hierarchy aligned with route hierarchy. A support POI must not visually overpower entry, return, closure, hazard, or a route junction merely because its name is longer.
+7. Suppression is a presentation operation only. It must not delete the underlying feature, alter topology, or imply that an unlabeled route/node does not exist.
+8. When labels from different layers compete, define a deterministic placement / sort policy rather than relying on accidental draw order. Record which label classes win collisions.
+9. For dense small-screen or fixed-scale maps, prefer fewer legible labels with preserved context over forcing all names into the viewport. If users still need access to all names, add an explicit retrieval mechanism rather than shrinking text below the intended reading threshold.
+10. Promotion requires a matched-scale visual reopen at both the normal working scale and the densest expected delivery scale. If topology is correct but P1/P2 decisions become hard to find because of label clutter, the map is `REVISE`.
+
+Implementation note: Mapbox symbol layers expose collision behavior, `text-variable-anchor`, padding, placement and sort-key mechanisms; equivalent tools in QGIS or custom SVG/HTML renderers may be used. The gate is tool-agnostic: the required outcome is deterministic priority, collision control, and preserved topology.
+
 ## Motion rules
 
 - Keep axes and color scales stable across frames.
@@ -65,6 +82,8 @@ Return the visualization, cleaned dataset, data dictionary, transformation note,
 
 For source-bound spatial work, also return a geometry-authority note identifying the current source/locked object, the preservation operation, and any geometry regression check performed.
 
+For dense labeled maps, also return the label-priority rule, collision/suppression behavior, and a compact-scale proof showing that critical labels remain readable.
+
 ## Quality checks
 
 - Reconcile displayed values with the cleaned table.
@@ -75,3 +94,5 @@ For source-bound spatial work, also return a geometry-authority note identifying
 - For source-bound spatial work, verify that locked geometry/topology has not been materially distorted, re-authored, or replaced by a presentation-driven approximation.
 - Treat non-uniform geometry distortion as a blocker unless the object is explicitly schematic and labelled presentation-only.
 - Compare against the strongest mature existing spatial artifact before promoting a redesign; visual polish cannot override a spatial-authority regression.
+- For labeled maps, verify that P1/P2 labels survive the densest intended scale and that any suppressed P3+ labels remain present in the source dataset.
+- Treat `all labels fit on the authoring canvas` as insufficient evidence; inspect the exported/delivery-scale pixels.
