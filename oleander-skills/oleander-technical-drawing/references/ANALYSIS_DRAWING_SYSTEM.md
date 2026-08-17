@@ -1,8 +1,10 @@
 # OLEANDER Technical Drawing — Analysis Drawing System
 
-Status: `v0.1 / companion to oleander-technical-drawing v0.2 candidate`
+Status: `v0.2 / companion to oleander-technical-drawing v0.2 candidate`
 
 Analysis drawings are design-reasoning drawings. They explain **spatial conditions, relations, constraints, sequences, alternatives and consequences** using editable geometry and explicit truth states. They are not decorative infographics and they do not replace quantitative data visualization.
+
+The visual hierarchy follows `GRAPHIC_SYSTEM.md` and `VISUAL_HIERARCHY_TRANSFER.md`: one dominant claim, position/area/whitespace before color, controlled annotation rails, and 3-second → 30-second → near-read sequencing.
 
 ## 1. Routing boundary
 
@@ -41,6 +43,9 @@ Every analysis layer must declare one of:
 
 Do not encode these states with color alone. Use line/fill/dash/ID/label redundancy.
 
+### Visual authority must not invert evidential authority
+A `DECISION` may become the visually dominant conclusion because the drawing explains a design response, but its styling must not make it appear more *factual* than its evidence permits. Use hierarchy for reading order; use line/pattern/labels for truth state.
+
 ## 3. Required analysis sequence
 
 A serious analysis diagram should answer:
@@ -49,7 +54,39 @@ A serious analysis diagram should answer:
 
 If the conclusion cannot point back to a source/evidence layer, it is not analysis; it is an unsupported assertion.
 
-## 4. Spatial analysis plan grammar
+## 4. Visual hierarchy contract
+
+Before drawing, define:
+
+- `PRIMARY_CLAIM` — the single spatial/design conclusion the figure exists to explain;
+- `SOURCE_BASE` — geometry that must remain recoverable and undistorted;
+- `SIGNATURE` — one meaningful relation allowed to receive exceptional emphasis;
+- `ANNOTATION_RAIL` — legend, IDs, qualifiers and source notes;
+- `3S_READ` — base + dominant relation/decision;
+- `30S_READ` — evidence/inference/constraint logic;
+- `NEAR_READ` — provenance, state, open items and method.
+
+### Channel priority
+
+Use:
+
+`POSITION → AREA / SCALE → PROXIMITY → STROKE / PATTERN → TONE → COLOR`.
+
+Do not use saturated color to compensate for a weak spatial composition.
+
+### Contrast allocation
+
+A normal analysis plan should visually behave approximately as:
+
+1. primary claim / decision-critical relation — strongest;
+2. source spine / principal evidence — clearly legible;
+3. inference / constraint — distinct but subordinate;
+4. context — quiet;
+5. provenance / metadata — readable at near read.
+
+This is perceptual hierarchy, not evidence hierarchy.
+
+## 5. Spatial analysis plan grammar
 
 Recommended layer order:
 
@@ -63,7 +100,25 @@ Recommended layer order:
 
 Keep the base quieter than the analytical claim but still recoverable. An overlay must not distort or redraw the authoritative base geometry to make the conclusion look stronger.
 
-## 5. Evidence → Spatial Finding → Design Consequence grammar
+### Composition
+
+Prefer an asymmetric analytical composition over equal panels when one relationship is primary:
+
+`DOMINANT SPATIAL FIELD + NARROW ANNOTATION/LEGEND RAIL + QUIET FOOTER`.
+
+- the spatial field should own most of the perceptual area;
+- legends and explanatory conclusions align to the same rail when possible;
+- labels stay near the geometry they describe or land on a common annotation edge;
+- avoid floating rectangles for every fact;
+- do not turn evidence, inference, constraint and decision into four equal cards.
+
+### Source base discipline
+
+The source base should be quiet, not invisible. It must remain possible to inspect whether the analysis overlay respects the source.
+
+If the source needs to become visually louder for one local comparison, use a controlled highlight rather than redrawing its geometry.
+
+## 6. Evidence → Spatial Finding → Design Consequence grammar
 
 Use stable IDs:
 
@@ -81,23 +136,78 @@ Required pattern:
 
 `EVIDENCE ID → bounded interpretation → spatial finding → design response → open verification item`.
 
-## 6. Composition and reading hierarchy
+### Avoid the equal-card trap
 
-Analysis drawings are reviewed at three scales:
+A three-column E/F/D logic does not require nine equal boxes. Hierarchy may be created by:
+- one dominant row/claim and quieter supporting rows;
+- shared alignment rails rather than boxed cards;
+- direct E→F→D traces;
+- scale/weight differences tied to importance;
+- more whitespace around the dominant chain.
 
-- **distance / thumbnail** — the spatial question and dominant relation are clear;
-- **intended size** — source, inference and decision remain distinguishable;
-- **near read** — IDs, qualifiers, source notes and open items are legible.
+Equal rectangles are acceptable only when the cases are genuinely parallel and equal in decision importance.
 
-Do not use equal visual weight for all arrows, zones and labels. One diagram should have one main analytical claim.
+## 7. 3-second / 30-second / near-read
 
-## 7. Editable-vector requirement
+### 3 seconds
+The viewer should understand:
+- the main spatial object/base;
+- the dominant conflict/opportunity/relation;
+- the design consequence or question.
+
+### 30 seconds
+The viewer should be able to trace:
+- evidence → finding → decision;
+- source vs inference vs constraint;
+- the principal decision point or spatial zone.
+
+### Near read
+The viewer should recover:
+- source IDs;
+- qualifiers/confidence/basis;
+- unknown/open conditions;
+- exact E/F/D traceability;
+- does-not-prove boundary.
+
+Do not make the title carry a conclusion the geometry cannot show.
+
+## 8. Annotation and legend rail
+
+Legends are supporting navigation, not a second hero.
+
+- align state keys, conclusion text and provenance to one controlled rail where possible;
+- use direct labels on important overlays to reduce eye travel;
+- keep state semantics redundant in line/fill/dash/ID;
+- use a compact legend to decode the system, not repeat every label;
+- place long source notes in near-read metadata space;
+- avoid oversized status blocks and repeated pills.
+
+## 9. One-signature rule for analysis
+
+One relationship may receive exceptional emphasis when it is the actual analytical insight:
+- junction / bottleneck;
+- return spine;
+- view cone;
+- conflict edge;
+- drainage path;
+- Evidence→Finding→Decision trace.
+
+Do not also create a competing hero title, giant legend, bright background field and multiple accent colors. One signature; the rest supports it.
+
+## 10. Editable-vector requirement
 
 Core analysis geometry, arrows, labels, legends, IDs and explanatory text remain vector. Raster map/photo/image layers may support context but cannot contain the only copy of a critical label, route, boundary or conclusion.
 
 Use stable `<g id="...">` groups or equivalent named CAD/vector layers so the analysis can be reconstructed and regression-tested.
 
-## 8. Analysis-specific blockers
+Visual-hierarchy candidates should expose:
+- `HIERARCHY_FRAME`
+- `PRIMARY_CLAIM`
+- `ANNOTATION_RAIL`
+
+in addition to domain-specific groups.
+
+## 11. Analysis-specific blockers
 
 Automatic `REVISE / HOLD` triggers:
 
@@ -109,13 +219,31 @@ Automatic `REVISE / HOLD` triggers:
 - diagram becomes a generic method card with no project/spatial object;
 - statistical magnitude is encoded without data-viz truth controls;
 - analysis is technically correct but first-read is visually flat/noisy;
-- decision appears more authoritative than the evidence allows.
+- decision appears more authoritative than the evidence allows;
+- equal cards/panels create false equality among unequal evidence or decisions;
+- legend/metadata visually dominates the spatial field;
+- color carries the only distinction among source/evidence/inference/decision;
+- multiple signatures compete for first-read.
 
-## 9. Golden fixture coverage
+## 12. Diagnostic-to-repair loop
+
+Use:
+
+`3S READ → 30S TRACE → NEAR-READ PROVENANCE → MISMATCH → CAUSE → ONE MATERIAL REPAIR → REOPEN`.
+
+Typical repairs:
+- source disappears → increase source legibility slightly; do not reduce overlay truth labels;
+- inference looks factual → change pattern/ID/label while keeping readable weight;
+- four overlays compete → identify the actual claim, demote support overlays and create one signature;
+- legend reads first → narrow/quiet annotation rail and enlarge spatial field;
+- E/F/D reads as admin cards → remove equal boxes, strengthen directional traces and row hierarchy;
+- conclusion only exists in prose → move the claim back into spatial geometry/relationship.
+
+## 13. Golden fixture coverage
 
 The current fixture suite includes:
 
-- `GD-05_SPATIAL_ANALYSIS_PLAN.svg` — base geometry + evidence overlays + inference + decision + state legend;
-- `GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg` — traceable E→F→D reasoning chain.
+- `GD-05_SPATIAL_ANALYSIS_PLAN.svg` — dominant spatial field + base geometry + evidence/inference/decision + annotation rail;
+- `GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg` — traceable E→F→D reasoning with unequal row hierarchy rather than a card wall.
 
 These are calibration assets with locked training geometry. They are not site evidence and do not prove a real project condition.
