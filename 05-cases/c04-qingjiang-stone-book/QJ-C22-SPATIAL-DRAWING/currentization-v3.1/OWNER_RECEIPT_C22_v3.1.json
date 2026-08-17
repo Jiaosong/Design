@@ -1,0 +1,27 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01",
+  "current_delta": "Professionalize the existing C22 macro relational masterplan without altering route authority, adding surveyed geometry, or reopening R06.",
+  "source": {
+    "package": "C04_QJ-C22_SPATIAL_DRAWING_PACKAGE_v3.0.pdf",
+    "drive_file_id": "1iyvpCESZlFqVvwRZDxzuaiwjmSDL7224",
+    "source_sheet": "DRW-C04-C22-01",
+    "source_state": "SOURCE-GROUNDED / FIELD OPEN"
+  },
+  "design_constraints": [
+    "two-bank + cable + south-bank multi-branch/loop relation only",
+    "R01-R13 are reading/content identities, not route authority",
+    "R06 remains frozen/finished and is not reopened by this sheet",
+    "no surveyed coordinates, distance, slope, width, timing, capacity or safety claims",
+    "relationship certainty may be drawn strongly; geometric uncertainty remains visibly diagrammatic"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "state": "OWNER_RECEIPT_CREATED / DESIGN_CURRENTIZATION_CANDIDATE / INDEPENDENT_REVIEW_PENDING",
+  "does_not_prove": [
+    "surveyed masterplan",
+    "exact route order or coordinates",
+    "real slopes/clear widths/distances",
+    "field safety or accessibility compliance",
+    "construction readiness"
+  ]
+}
