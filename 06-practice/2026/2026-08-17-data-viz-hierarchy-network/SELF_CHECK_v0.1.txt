@@ -1,0 +1,26 @@
+OLEANDER DATA VIZ HIERARCHY NETWORK — PRODUCER SELF-CHECK
+Date: 2026-08-17
+Status: EXECUTED / SELF-CHECKED / REVIEW PENDING
+Does not establish: PIXEL KEEP / MAIN KEEP / PROFESSIONAL FINISH PASS
+
+Local actual-render / structure checks:
+- SVG parsed successfully: PASS
+- raster <image> elements inside SVG: 0
+- editable SVG <text> elements: 59
+- intended raster preview: 1920x1080
+- required node IDs present in SVG text: A1 A2 A3 R01 R02 R05 R06 R07 R09 R12 R13 = PASS
+- explicit boundary token `RELATIONAL / NTS` = PASS
+- explicit topology token `NOT ROUTE ORDER` = PASS
+- explicit uncertainty token `FIELD / SURVEY OPEN` = PASS
+- explicit return layer `RETURN SPINE` = PASS
+
+Local file integrity:
+- SVG bytes: 12491
+- SVG SHA256: af197bad2d47ba723c5b804fe439596346962d52d2661a101ebcfe49f853c901
+- PNG preview bytes: 342658
+- PNG preview SHA256: 618c7631bf5cf003d53df3a1557218b4c10472dcf0aa8d9e9c4b3c2532ccb55d
+
+Boundary:
+FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / RELATIONAL / NTS / NOT GEOREFERENCED
+
+Independent design verdict remains required. See REVIEW_REQUEST.md.
