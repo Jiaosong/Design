@@ -1,0 +1,53 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CURRENT_WEB_INTEGRATION_v1_2",
+  "state": "FULL_PROJECT_WEB_INTEGRATION_REVISED_CANDIDATE__NONAPP_DELTA_ABSORBED__APP_SOURCE_PRESERVED__PENDING_INDEPENDENT_FINAL_VERDICT",
+  "current_delta": "WEB_FRAMEWORK_AND_CROSS_SYSTEM_INTEGRATION_ONLY",
+  "absorbs": [
+    "C04_CURRENT_INTEGRATION_v1_0",
+    "C04_CURRENT_INTEGRATION_NONAPP_REPAIR_v1"
+  ],
+  "app_ownership": "PRESERVED CURRENT APP V1.6 SOURCE; NO APP REDESIGN IN THIS WEB DELTA",
+  "repairs": [
+    "Journey relational field",
+    "interactive Thirteen Imprints field",
+    "Audience Depth v2",
+    "Physical removes AI standalone MAIN",
+    "Digital source preserved",
+    "physical Qingjiang Journal first",
+    "Technical Focus v2 readable",
+    "Motion Spine v2 absorbed",
+    "Return no-phone primary closure"
+  ],
+  "browser_readback": {
+    "desktop": {"viewport":"1920x1080","scrollWidth":1920,"clientWidth":1920,"scrollHeight":15668,"errors":[]},
+    "laptop": {"viewport":"1366x768","scrollWidth":1366,"clientWidth":1366,"scrollHeight":12192,"errors":[]},
+    "mobile": {"viewport":"390x844","scrollWidth":390,"clientWidth":390,"scrollHeight":13577,"errors":[]},
+    "imprint_r13_title":"一线天",
+    "technical_lightbox":"lightbox open"
+  },
+  "persistence": {
+    "drive_zip_id":"1H74BKrsF3BrbAi-XGCuZG47mkwgO4g1z",
+    "drive_contact_sheet_id":"10HuVeirk2RJqlECVBSshZ_6aaddrxYY0",
+    "drive_receipt_id":"1ZYrwb-kW9HJZjy_Spk1L0u5Rc5ilJTfI",
+    "filename":"C04_CURRENT_WEB_INTEGRATION_v1_2.zip",
+    "bytes":48570481,
+    "sha256":"fddbc3e64623986e282b2947c7d102876319da7fce2151e3856a3b535bc5ca7e",
+    "library_mirror":"/Oleander/C04_Qingjiang-Stone-Book/CURRENT/"
+  },
+  "open_gaps": [
+    "independent finished-output verdict",
+    "Motion re-edit against Motion Spine v2",
+    "R05 official Honghua raw source pixel",
+    "field/site/engineering validation"
+  ],
+  "truth_boundary": {
+    "FIELD_OBSERVED":0,
+    "FIELD_MEASURED":0,
+    "G1F":"HOLD",
+    "FIELD_PASS":"NONE",
+    "promotion":"NO_PROMOTION",
+    "NTS":true,
+    "construction":"NOT_FOR_CONSTRUCTION"
+  }
+}
