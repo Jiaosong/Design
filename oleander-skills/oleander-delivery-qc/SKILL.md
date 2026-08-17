@@ -18,12 +18,35 @@ Treat QC as a reproducible release gate. Inspect without modifying masters unles
 ## Gate 2: research and rights
 
 - Important claims link to approved evidence.
-- Credits, licenses, model releases, font rights, music rights, and stock licenses are present.
+- Credits, licenses, model releases, font rights, music rights, and stock licenses are present when required by the project authority.
 - Confidential or personal information is not unintentionally included.
 
 ## Gate 3: images and boards
 
 Check dimensions, effective DPI, aspect ratio, ICC profile, alpha, bit depth, compression, missing links, missing fonts, overset text, bleed, trim, and safe margins. Render PDFs to images for visual comparison when needed.
+
+### Source-independent visual QA fallback
+
+Do not make visual design review depend on a single authoring application's screenshot/export service.
+
+If the native authoring tool cannot provide a visual readback because of quota, connection, plugin, browser, or runtime limits, but the artifact itself is deterministic and faithfully renderable, use an independent renderer/viewer and continue the visual gate.
+
+Required fallback sequence:
+
+`SOURCE ARTIFACT → IDENTITY/DIMENSION CHECK → INDEPENDENT RENDER → REOPEN → DESIGN CRIT → VERDICT`
+
+Examples include SVG → CairoSVG/browser rasterization, HTML → browser screenshot, PDF → independent PDF rasterizer, image → independent image viewer, and video → FFmpeg frame extraction.
+
+The fallback view must preserve the intended canvas/aspect ratio and must be traceable to the source artifact. Record renderer/tool, output dimensions, and checksum when practical.
+
+A source-tool screenshot failure is **not** by itself a reason to mark Professional Design / Visual QA `HOLD` when a faithful independent view can be produced.
+
+Keep `HOLD` when:
+- no faithful view can be generated;
+- the fallback changes layout, fonts, color, geometry, timing, or state materially;
+- the review question depends on authoring-tool-only evidence such as hidden layers, native editability, component structure, interactive state, 3D scene state, or source-specific behavior.
+
+Never use fallback rendering to claim facts it does not prove. A rendered PNG can prove visible composition but cannot prove the health of the native source file.
 
 ## Gate 4: video and audio
 
@@ -52,4 +75,3 @@ Use:
 8. Final sign-off status
 
 Never mark a deliverable approved while blocking defects remain.
-
