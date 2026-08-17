@@ -1,0 +1,49 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CURRENT_WEB_INTEGRATION_v1_1",
+  "state": "FULL_PROJECT_WEB_INTEGRATION_REVISED_CANDIDATE__PENDING_INDEPENDENT_FINAL_VERDICT",
+  "current_delta": "WEB_FRAMEWORK_AND_CROSS_SYSTEM_INTEGRATION_ONLY",
+  "preserves": [
+    "Real Qingjiang First",
+    "Landscape First",
+    "paper/ink/line/seal",
+    "physical+digital complementary",
+    "Thirteen Imprints optional content system",
+    "real body+space",
+    "Return closure",
+    "Memory/IP travel aftertaste",
+    "no-phone complete"
+  ],
+  "repairs": [
+    "journey relational field",
+    "interactive 13-imprint discovery",
+    "stateful digital stage",
+    "physical evidence separation",
+    "readable technical proof",
+    "visual motion sequence",
+    "culture web-native recomposition"
+  ],
+  "browser_readback": {
+    "desktop": {"viewport": "1920x1080", "scrollWidth": 1920, "clientWidth": 1920},
+    "laptop": {"viewport": "1366x768", "scrollWidth": 1366, "clientWidth": 1366},
+    "mobile": {"viewport": "390x844", "scrollWidth": 390, "clientWidth": 390},
+    "imprint_r13_title": "一线天",
+    "digital_return_title": "内容可以消失，返回不能消失。",
+    "technical_lightbox": "PASS",
+    "console_errors": 0
+  },
+  "persistence": {
+    "library_package": "/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_CURRENT_WEB_INTEGRATION_v1_1.zip",
+    "package_sha256": "6f0d96ced60840cd2564cce9d9dbfc73dc55db9c7e436b3542d3135a0a1c9f33",
+    "contact_sheet": "/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_CURRENT_WEB_INTEGRATION_v1_1_CONTACT.jpg"
+  },
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "FIELD_PASS": "NONE",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "construction": "NOT_FOR_CONSTRUCTION"
+  }
+}
