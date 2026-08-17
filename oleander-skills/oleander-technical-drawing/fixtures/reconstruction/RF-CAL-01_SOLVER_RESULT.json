@@ -1,0 +1,56 @@
+{
+  "fixture_id": "RF-CAL-01",
+  "runtime": {
+    "reference_render_path": "CairoSVG",
+    "candidate_render_path": "CairoSVG",
+    "canvas": [1200, 800],
+    "tolerance": 0
+  },
+  "initial_candidate_errors": {
+    "primary_dx": 5.0,
+    "title_y": 108.0,
+    "title_font_size": 31.0,
+    "interface_stroke": 2.8
+  },
+  "observed_one_pass_failure": {
+    "description": "A one-pass sequence corrected font-size after baseline search; the baseline optimum therefore moved and had to be reopened.",
+    "temporary_false_optimum": {
+      "title_y": 104.0,
+      "title_font_size": 32.0
+    },
+    "consequence": "Fixed one-pass E2→E3→E4 ordering is insufficient for coupled pixel reconstruction. Earlier parameters must reopen after dependent parameters change."
+  },
+  "coupled_solver_recovery": {
+    "primary_dx": 0.0,
+    "title_y": 105.0,
+    "title_font_size": 32.0,
+    "interface_stroke": 2.2
+  },
+  "final_readback": {
+    "changed_pixel_ratio": 0.0,
+    "mae_norm": 0.0,
+    "edge_mismatch_r1": 0.0,
+    "verdict": "SYNTHETIC_RF_C3_DIAGNOSTIC_ZERO_DIFFERENCE / INDEPENDENT_REVIEW_STILL_SEPARATE"
+  },
+  "renderer_mismatch_finding": {
+    "finding": "When an Inkscape-rendered reference was optimized using a CairoSVG candidate path, the objective could prefer a false text baseline. Renderer mismatch is therefore part of the fidelity problem, not harmless implementation detail.",
+    "rule": "WRONG RENDERER -> WRONG OPTIMUM",
+    "rf_consequence": "A solver result from a different renderer/font path cannot be RF-C3 evidence."
+  },
+  "water_world_transfer": {
+    "project": "Information is Beautiful / Water World",
+    "source_page": "https://informationisbeautiful.net/visualizations/water-world-distribution-of-the-all-the-water-in-all-the-world/",
+    "web_reference_found": true,
+    "exact_reference_bytes_materialized_in_solver_runtime": false,
+    "current_ceiling": "RF-C1 / STRUCTURAL-GEOMETRIC RECONSTRUCTION",
+    "rf_c3_blocker": "REFERENCE_BYTES_OPEN",
+    "note": "The visible web/search reference is sufficient to expose composition and structure, but exact remote pixels were not materialized into the local solver runtime, so zero-tolerance RF-C3 comparison is not claimed."
+  },
+  "does_not_prove": [
+    "professional Design KEEP",
+    "technical truth",
+    "engineering adequacy",
+    "field truth",
+    "fabrication or construction permission"
+  ]
+}
