@@ -1,0 +1,22 @@
+{
+  "project_identity":"PRJ-C04-QINGJIANG-SHISHU",
+  "branch":"c04/web-final-framework-v2",
+  "base_main":"e4a12c9fcf8a643dd071d8ef86c2e3edbbcc2a0e",
+  "readback_scope":"repository source / architecture / binding paths only",
+  "checks":{
+    "branch_compare":"ahead 4 / behind 0 before this receipt",
+    "index_fetch":"PASS",
+    "architecture_file":"PASS",
+    "asset_binding_file":"PASS",
+    "no_loss_accounting":"12 permanent systems accounted; 0 CUT",
+    "merged_game_map_binding":"PASS: ../digital-currentization/app-game-map-v1.2/assets/qingjiang-game-map-v1_2.svg",
+    "merged_app_binding":"PASS: ../digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+    "merged_physical_memory_bindings":"PASS: physical-memory-currentization-v1.2 P01/P02/M01",
+    "merged_r06_proof_binding":"PASS: ../design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg",
+    "drive_raster_materialization":"HOLD: QJ-D Hero/R06/R13/Return local target files are intentionally not claimed as repository-materialized in this source PR",
+    "browser_finished_output":"NOT RUN / HOLD",
+    "independent_design_verdict":"PENDING"
+  },
+  "source_verdict":"SOURCE STRUCTURE PASS / NO-LOSS PASS / ASSET-MATERIALIZATION HOLD / FINISHED-OUTPUT DESIGN HOLD",
+  "does_not_prove":["browser PASS","final pixel quality","MAIN KEEP","field/site truth","engineering approval","Promotion"]
+}
