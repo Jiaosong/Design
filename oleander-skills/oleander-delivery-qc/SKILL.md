@@ -21,9 +21,13 @@ Treat QC as a reproducible release gate. Inspect without modifying masters unles
 - Credits, licenses, model releases, font rights, music rights, and stock licenses are present.
 - Confidential or personal information is not unintentionally included.
 
-## Gate 3: images and boards
+## Gate 3: images, boards and technical drawings
 
 Check dimensions, effective DPI, aspect ratio, ICC profile, alpha, bit depth, compression, missing links, missing fonts, overset text, bleed, trim, and safe margins. Render PDFs to images for visual comparison when needed.
+
+For technical drawings, also verify that the released derivative matches the reviewed drawing revision, units/scales/status labels remain intact, required vector text/dimensions/linework have not been unintentionally rasterized, and the `DRAWING_MANIFEST` / TD-Gate record referenced by the release is the intended one.
+
+Delivery QC does **not** award drawing-design, engineering, fabrication, construction or field approval. Those states remain owned by `oleander-technical-drawing` and the responsible discipline/field review. A technically valid PDF/export cannot override an open `TD-G0…TD-G8` blocker.
 
 ## Gate 4: video and audio
 
