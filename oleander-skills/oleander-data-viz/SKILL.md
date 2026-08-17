@@ -23,7 +23,7 @@ Core libraries include pandas, Polars, OpenPyXL, XlsxWriter, Matplotlib, Seaborn
 
 Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spatial transformations. Do not bind scripts to QGIS 3 paths.
 
-For routing among chart, graph, infographic, geographic and narrative renderers, also consult `ROUTING_AND_RENDERER_ADAPTERS_v0.1.md`. Renderer syntax belongs in adapters; design/truth policy remains here.
+For routing among chart, graph, infographic, geographic and narrative renderers, also consult `ROUTING_AND_RENDERER_ADAPTERS_v0.1.md`. Renderer syntax belongs in adapters; design/truth policy remains here. For the current executable chart contract, align the project instance with Notion Canonical `T-DATAVIZ-OLEANDER-001｜OLEANDER Chart Spec v0.2`; the Skill owns reusable policy while the Chart Spec owns the fillable execution contract.
 
 ## 0. Existing Mature Design First
 
@@ -57,7 +57,7 @@ Spend visual boldness in one place. Keep surrounding elements restrained and fun
 3. State the analytical question and the **one primary visual claim** the artifact is allowed to make.
 4. Classify the information structure before choosing a renderer: comparison, trend, distribution, hierarchy, relation/topology, strict sequence, geographic, explanatory narrative, or mixed composition.
 5. Choose the visual form from the question and data relationship, not decoration or a favorite template.
-6. Create the Visual Contract below before drawing.
+6. Create the Visual Contract below and instantiate the current `T-DATAVIZ-OLEANDER-001` Chart Spec before drawing.
 7. Lock the analytical grammar: `data -> transform -> mark -> channel -> scale -> facet -> interaction -> annotation`.
 8. Route to the simplest renderer family that can express the claim without loss.
 9. Build the visualization reproducibly with editable structure.
@@ -72,12 +72,19 @@ Record, at minimum:
 
 - `audience`
 - `question`
-- `primary_claim`
+- `primary_claim / one_sentence_finding`
+- `reading_mode`: `fast_scan | directed_read | exploration`; only add a clock-time target when the project has evidence for one
 - `source_authority`
 - `truth_boundary / does_not_prove`
 - `information_structure`
 - `visual_form`
+- `visual_idea`
+- `first_read_object / dominant_field`
+- `first_read_label_budget`
 - `renderer_family`
+- `geometry_layout_engine`
+- `engine_role`: `grammar | transform | scale | coordinate | layout | edge_routing | geometry`
+- `renderer`: `SVG | Canvas | WebGL | other`
 - `data_transform`
 - `primary_mark_or_relation`
 - `encoding_channels`
@@ -87,13 +94,33 @@ Record, at minimum:
 - `lineweight_or_mark_hierarchy`
 - `grid / alignment rule`
 - `annotation_budget`
+- `negative_space / hierarchy rule`
+- `abstraction_budget`
 - `far_read / mid_read / near_read`
 - `signature`
+- `semantic_svg_structure`: stable `group / id / data-role / layer` naming when SVG is material
+- `spatial_authority_lock`: task-critical anchors that an automatic layout may not move/delete
+- `deterministic_render`: renderer/version/font/fallback/canvas parameters when reproducibility is material
 - `intended_output_size`
 - `editable_source`
 - `accessibility_equivalent`
 
 If the claim cannot be stated in one sentence without explanation, the figure is not ready to draw.
+
+### 2.1 Visual Idea Before Decoration
+
+After the analytical grammar is valid, define how the claim becomes a visual event before styling details:
+
+1. **Finding** — what single judgment should survive after the viewer leaves the page?
+2. **Visual idea** — which proportion, path, field, comparison, area, number, spatial relation or typographic relationship can carry that finding directly?
+3. **Dominant field** — what should control first-read, and what must remain quiet?
+4. **Label budget** — which 2–5 labels/numbers/relations are necessary at first-read? Move the rest to directed/near reading.
+5. **Remove Decoration Test** — remove gradients, stickers, ornamental lines, extra status colors, badges and effects. If the core relation collapses, revise the structure rather than restoring decoration.
+6. **Series rhythm** — unify design DNA across a series, but do not force every page into the same template or reading speed.
+
+`CHART TYPE != VISUAL IDEA`
+
+A renderer can generate correct marks while the editorial composition remains weak.
 
 ## 2.5 Analytical Grammar Before Styling
 
@@ -152,7 +179,8 @@ For graph engines such as G6, NetworkX, D3-force or custom SVG:
 - force, dagre, radial, circular, mindmap or grid layouts must not be read as measured geography, distance, chronology, rank or flow volume unless separately encoded and supported;
 - overlap prevention, dragging, zooming, selection or collapse/expand are interaction behaviors, not evidence;
 - interaction must not silently rewrite topology or evidence status;
-- when a fixed relational composition is required for a board, prefer deterministic coordinates and preserve a machine-readable topology companion.
+- when a fixed relational composition is required for a board, prefer deterministic coordinates and preserve a machine-readable topology companion;
+- task-critical anchors such as river/bank relation, station, Return, Service, true orientation or other Current-Authority geometry must be locked before automatic layout when the user task depends on them.
 
 If layout position is not evidence, label or caption that boundary explicitly.
 
@@ -165,6 +193,8 @@ Keep three layers separate:
 3. **Renderer adapter** — version-specific syntax and runtime rules for G2, G6, Plotly, D3, QGIS, kepler.gl, SVG, AntV Infographic, T8, or other engines.
 
 A renderer adapter may prove that code is valid for a library. It cannot establish source validity, analytical validity or professional visual quality.
+
+For renderer choice, declare the engine's **role** explicitly. D3/G2/G6/Plot/Vega/ECharts/custom code may own grammar, transforms, scale, coordinate, layout, edge routing or geometry. They do not own final aesthetic judgment.
 
 ## 4. Visual Hierarchy Gate
 
@@ -227,13 +257,21 @@ Use one coherent grid per surface; derive sub-layouts by span rather than introd
 
 For data/diagram panels, snap images, plots, captions and evidence strips to whole modules. Captions align to the figure they describe. Keep baseline and spacing increments systematic.
 
-### 5.2 Intended-size hierarchy
+### 5.2 Intended-size and Reading-mode Hierarchy
 
 For boards / portfolio / 1920x1080 presentation frames, explicitly test:
 
 - **far read:** the primary claim and primary structure are legible without reading captions;
 - **mid read:** the relation between major parts / series / zones is clear;
 - **near read:** evidence state, units, source notes, uncertainty and IDs are available.
+
+Also classify the intended reading task as:
+
+- **fast scan** — orientation / first judgment;
+- **directed read** — inspect a named relation, comparison, exception or evidence layer;
+- **exploration** — trace detail, filter, browse or compare multiple structures.
+
+Do not impose a universal `3-second` or `30-second` threshold. Record a clock-time target only when the project has a real viewing condition, user task, exhibition distance, interface requirement or test protocol that justifies it.
 
 A poster/hero analytical frame should normally have one clearly dominant element. As a diagnostic starting point, that dominant visual field often occupies roughly 60–80% of perceived attention/area, with secondary evidence and metadata substantially quieter. This is not a template or scoring rule; the strongest mature design remains the benchmark.
 
@@ -302,17 +340,32 @@ The displayed prose may be concise, but raw value, unit, provenance and evidence
 
 Unlike external systems that ban all scenario/simulated values, OLEANDER may use estimates, scenarios and simulations when the current protocol allows them **and** their state is explicit. Scenario data must never be serialized as observed fact.
 
+### 7.2 Semantic SVG Contract
+
+When SVG is a formal editable deliverable rather than only a transport format:
+
+- preserve stable `id` values for material objects and groups;
+- group objects by semantic role/layer, not only by paint order;
+- use `data-role`, stable group names or an equivalent machine-readable convention where useful;
+- keep displayed text as editable SVG `<text>` by default; convert to outlines only for a declared compatibility/rights reason and record that substitution;
+- do not treat a large anonymous path cloud as semantic editability;
+- keep source-data IDs / node IDs / entity IDs recoverable when the relationship is material;
+- distinguish renderer-generated geometry from manually refined geometry and reconcile both against the data/spec;
+- when deterministic regeneration matters, record renderer/version/font/fallback/canvas parameters and rerun a same-input check.
+
+`SVG EXISTS != SEMANTIC SVG != DESIGN KEEP`
+
 ## 8. Deletion Test and First-Visual Veto
 
 Before final export, hide the explanation and inspect only the artifact.
 
-Run a **30-second first impression** and a **3-second first-read**:
+Run the first-read check appropriate to the declared `reading_mode` (`fast_scan / directed_read / exploration`). A fixed seconds threshold is allowed only when the project has a justified viewing/test condition.
 
 1. What draws the eye first? Is it the right thing?
-2. Can the viewer tell what the figure is for without the body copy?
-3. Is the primary claim visible in the marks, or only in the title?
+2. Can the viewer tell what the figure is for without the body copy at the intended viewing condition?
+3. Is the primary claim visible in the marks/relations, or only in the title?
 4. Can any panel, contour, icon, label, legend block, background field, status badge or ornamental effect be removed without weakening the claim? If yes, remove it.
-5. Does the chart still work in grayscale and at 50% size?
+5. Does the chart still work in grayscale and at a relevant reduced size?
 6. Does it look like a project-specific analytical artifact or a generic dashboard/template?
 7. Does any neat geometry overstate geographic, temporal, statistical, or engineering precision?
 8. Is there one memorable signature rather than many competing effects?
@@ -337,14 +390,16 @@ When a figure benefits from designer refinement, preserve this chain:
 
 SVG/vector refinement may improve hierarchy, typography, annotation, grouping and composition, but must not silently change values, axes, topology, geometry meaning or evidence state. Reconcile the refined vector against the cleaned data/spec before release.
 
+For formal SVG delivery, use the Semantic SVG Contract in §7.2: stable semantic groups/IDs, editable text, data-role or equivalent object roles, and a deterministic regeneration record where material. PNG is normally a review/readback preview, not a substitute for the editable SVG source.
+
 Use browser-local or offline processing for sensitive data where practical; do not require server upload merely to obtain a polished vector artifact.
 
 ## 11. Export
 
 Export as required:
 
-- SVG for Illustrator / Inkscape / editable board use;
-- PNG at explicit pixel dimensions for actual-preview review;
+- SVG for Illustrator / Inkscape / editable board use; for formal vector delivery, preserve semantic groups/IDs and editable text under §7.2;
+- PNG at explicit pixel dimensions for actual-preview review; PNG does not replace the formal SVG unless the medium explicitly requires raster;
 - HTML for interaction;
 - MP4/WebM/GIF only when motion adds meaning;
 - XLSX with source/clean/data-dictionary sheets when a table is part of delivery.
@@ -361,13 +416,14 @@ Return or persist, as applicable:
 4. data dictionary;
 5. transformation note;
 6. source / evidence note;
-7. Visual Contract;
+7. Visual Contract / current Chart Spec instance;
 8. analytical grammar/spec;
-9. semantic entity companion when narrative/data linking is material;
-10. statement of what the visual supports and does not prove;
-11. actual-preview self-check;
-12. strongest-existing benchmark reference when one exists;
-13. independent review status.
+9. semantic SVG structure note when SVG editability is material;
+10. semantic entity companion when narrative/data linking is material;
+11. statement of what the visual supports and does not prove;
+12. actual-preview self-check under the declared reading mode;
+13. strongest-existing benchmark reference when one exists;
+14. independent review status.
 
 ## 13. Quality Checks
 
@@ -383,7 +439,7 @@ Return or persist, as applicable:
 
 ### Design / visual
 
-- First-read claim is visible in the artifact itself.
+- First-read claim is visible in the artifact itself under the intended reading mode.
 - Primary / secondary / evidence / metadata hierarchy is unequal and intentional.
 - Position/size/whitespace establish hierarchy before color carries it.
 - One grid governs the surface; alignments are exact or deliberately broken.
@@ -397,6 +453,7 @@ Return or persist, as applicable:
 - Structural devices encode real information rather than decoration.
 - A computational graph layout does not imply unsupported position/order/distance.
 - Template selection matches the true information structure.
+- A chart library/renderer owns declared grammar/layout/geometry responsibilities only; it does not substitute for editorial design judgment.
 - Candidate does not regress against the strongest mature existing design.
 
 ### Accessibility / output
@@ -405,6 +462,7 @@ Return or persist, as applicable:
 - Provide text/data equivalent for interactive or high-density graphics.
 - Use project-safe relative paths.
 - Preserve editable vector or source output.
+- For formal SVG, verify stable semantic groups/IDs and editable text or record any justified outline substitution.
 - Reopen the final export before recording status.
 
 ## 14. Diagnostic Review Lenses
@@ -430,7 +488,7 @@ After any material change to this skill:
 4. compare against the strongest existing artifact where relevant;
 5. do not promote a skill revision merely because code-generation or retrieval tests improved.
 
-Targeted regressions should include, when applicable: equal-weight network, relation falsely converted to sequence, card-wall evidence diagram, cleaner-but-weaker redesign, unsupported geographic layout, renderer-valid-but-visually-generic output, narrative entity provenance loss, and vector-refinement data drift.
+Targeted regressions should include, when applicable: equal-weight network, relation falsely converted to sequence, card-wall evidence diagram, cleaner-but-weaker redesign, unsupported geographic layout, renderer-valid-but-visually-generic output, narrative entity provenance loss, vector-refinement data drift, unjustified fixed read-time thresholds, anonymous-path-cloud falsely claimed as semantic SVG, and automatic layout moving task-critical spatial anchors.
 
 ## 16. Verdict
 
