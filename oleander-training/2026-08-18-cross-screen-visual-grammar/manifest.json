@@ -1,0 +1,14 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-CROSS-SCREEN-GRAMMAR",
+  "topic": "Cross-screen visual grammar with role-specific variation",
+  "project_trigger": "Recent Qingjiang digital review: ROUTE strong; TODAY/MY BOOK weaker and visually disconnected.",
+  "truth_boundary": "Synthetic interface calibration only; not a production C04 screen or user-tested product.",
+  "design_crit": {
+    "v1": "REJECT — unrelated visual grammars",
+    "v2": "REVISE — consistency over-corrected into cloned ROUTE-like skins",
+    "v3": "REVISE — TODAY subtitle collided with header/light-field boundary",
+    "v4": "KEEP FOR TRAINING — shared invariants survive while task-specific first-read remains distinct"
+  },
+  "final_svg_sha256": "a464b97a8dd8c92b3a61ca7982671e60f6a8faa6a1ad9928642ad046d0d6a4d3",
+  "distance_png_sha256": "0a38fbfc359a4a58480506014761fa3e7338c152ad9a7cbac1c1ac1d162c0c4c"
+}
