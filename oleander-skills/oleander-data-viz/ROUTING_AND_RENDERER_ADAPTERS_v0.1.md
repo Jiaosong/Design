@@ -206,6 +206,28 @@ For each material entity preserve:
 
 Do not use semantic highlighting to disguise weak evidence. Narrative text is an access layer, not a replacement for analytical evidence.
 
+### 8. Raster visualization reconstruction
+
+When the only source is an existing chart/infographic raster and the goal is an editable data-driven reconstruction, load `RASTER_TO_PARAMETRIC_RECONSTRUCTION.md`.
+
+Route:
+
+`REFERENCE SNAPSHOT -> ROI SEGMENTATION -> MARK-FAMILY DETECTION -> SOURCE_DATA.json -> VISUAL_ENCODING_SPEC.json -> PARAMETRIC GENERATOR -> EDITABLE SVG -> SAME-SIZE ROI READBACK -> SEMANTIC AUDIT -> DETERMINISTIC ROUNDTRIP`.
+
+Required boundaries:
+
+- measured pixel geometry is `REFERENCE_DERIVED_GEOMETRY`, not automatically original numeric data;
+- inferred proxy values exist only to regenerate visible marks;
+- unreadable labels/variables remain `UNREADABLE`;
+- alluvial/network crossings require identity confidence rather than silent topology claims;
+- skeleton/path fragments are not semantic layers until grouped and source meaning is bound;
+- a repair that worsens the declared target ROI is rejected unless a necessary semantic/editability gain explicitly justifies the tradeoff;
+- regenerating twice with zero diff proves determinism only, not reference fidelity or data truth.
+
+Cross-skill rule:
+
+`oleander-data-viz` owns data/encoding semantics. `oleander-technical-drawing` reconstruction modules may provide reference registration, path/geometry forensics and pixel/ROI evidence. `RF-C3 PIXEL MATCH != VR-C3 SEMANTIC DATA RECONSTRUCTION`.
+
 ## Renderer adapter rule
 
 When a task explicitly uses a renderer/version, retrieve its current primary documentation or dedicated renderer skill and obey that syntax separately from OLEANDER design policy.
