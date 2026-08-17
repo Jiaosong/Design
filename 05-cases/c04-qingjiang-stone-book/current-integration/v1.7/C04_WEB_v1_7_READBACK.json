@@ -1,0 +1,21 @@
+{
+  "version": "v1.7",
+  "mode": "Playwright page.set_content with local assets inlined; not direct browser navigation",
+  "desktop": {
+    "culture": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920},
+    "journey": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920},
+    "r13": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920},
+    "physical": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920},
+    "technical_01": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920},
+    "technical_02": {"errors": [], "scrollHeight": 1080, "scrollWidth": 1920}
+  },
+  "mobile": {
+    "culture": {"errors": [], "scrollWidth": 390, "scrollHeight": 844},
+    "journey": {"errors": [], "scrollWidth": 390, "scrollHeight": 844},
+    "r13": {"errors": [], "scrollWidth": 390, "scrollHeight": 844},
+    "technical": {"errors": [], "scrollWidth": 390, "scrollHeight": 844}
+  },
+  "runtime_counts": {"chapters": 13, "articles": 51, "accepted_app_beats": 6, "imprints": 13},
+  "missing_local_refs": 0,
+  "live_browser_navigation": "HOLD_CURRENT_EXECUTION_SURFACE"
+}
