@@ -204,3 +204,46 @@ Automatic `REVISE / REJECT` triggers:
 - raster/path-cloud extraction aid is presented as final professional editable source.
 
 `RF PIXEL FIDELITY + RELATIONSHIP FIDELITY + SEMANTIC EDITABILITY` must be reviewed as separate axes.
+
+## 11. Dual-track repair — do not let pixel similarity defeat editability
+
+The actual atlas calibration exposed another failure: a raw path-cloud trace can score better on full-page pixel metrics than a cleaner semantic reconstruction. That does **not** make the trace the better reconstruction.
+
+Maintain two explicit internal tracks until the semantic rebuild has closed enough visual gaps:
+
+- `VISUAL_EXTRACTION_TRACK` — may contain quarantined trace/path-cloud evidence used to locate shapes, tones and repeated geometry;
+- `SEMANTIC_REBUILD_TRACK` — shared bases, routes, zones, callouts, symbols and text rebuilt as editable objects.
+
+Rules:
+
+1. Never promote `VISUAL_EXTRACTION_TRACK` merely because its MAE/changed-pixel ratio is lower.
+2. The final editable candidate must derive its in-scope relationships from `SEMANTIC_REBUILD_TRACK`.
+3. A repeated base may remain `STRUCTURED VECTOR` if rebuilding every architectural edge semantically has no decision value, but routes/zones/callout topology/symbol instances/text must reach `SEMANTIC VECTOR` when they carry the analytical claim.
+4. Once the semantic structure is stable, run `PIXEL_SOLVER_PROTOCOL` only on bounded parameters such as panel transforms, group translations, label baselines, stroke widths and symbol scales. Do not use the solver to collapse semantic objects back into anonymous traces.
+5. Compare both tracks during repair. If the semantic track loses a visible relationship or panel hierarchy that the extraction track still exposes, the valid state is `REVISE`, not permission to publish the trace.
+
+Recommended repair loop:
+
+`EXTRACTION AID → SHARED BASE REGISTER → SEMANTIC RELATIONS → CALLOUT/SYMBOL REBUILD → SAME-SIZE RENDER → PANEL/RELATION DIFF → BOUNDED SOLVER → REOPEN RELATION AUDIT`.
+
+## 12. Machine semantic-reconstruction gate
+
+Use `tools/validate_semantic_reconstruction.py` with a `RELATION_REGISTER.json` when a reconstruction claims semantic editability.
+
+The machine gate checks only structural claims that are objectively testable:
+
+- one master base exists and is reused with `<use>` across multiple panels;
+- panels point to registered shared-base instances;
+- relation IDs are unique and exist in the SVG;
+- a relation marked `DRAWN` has non-text carrier geometry;
+- carrier and target IDs exist;
+- a callout, when declared, contains label + leader geometry + anchor + registered target;
+- reusable symbol families actually have multiple `<use>` instances;
+- the register remains non-promoted.
+
+Synthetic regression fixture:
+
+- `fixtures/reconstruction/ML-REL-01_SEMANTIC.svg`
+- `fixtures/reconstruction/ML-REL-01_RELATION_REGISTER.json`
+
+A structure PASS proves only that semantic reconstruction claims are wired coherently. It does **not** prove visual/pixel fidelity, professional finish, technical truth, or Design KEEP.
