@@ -14,7 +14,7 @@ def fail(message: str):
     raise AssertionError(message)
 
 
-def validate_svg(entry):
+def validate_svg(entry, global_required_groups):
     path = GOLDEN / entry["file"]
     if not path.exists():
         fail(f"{entry['id']}: missing fixture {entry['file']}")
@@ -32,6 +32,7 @@ def validate_svg(entry):
     view_box = root.attrib.get("viewBox")
     if view_box != "0 0 1800 1200":
         fail(f"{entry['id']}: fixture canvas drifted; expected viewBox 0 0 1800 1200, got {view_box!r}")
+
     ids = []
     for node in root.iter():
         node_id = node.attrib.get("id")
@@ -40,9 +41,12 @@ def validate_svg(entry):
     duplicates = sorted({i for i in ids if ids.count(i) > 1})
     if duplicates:
         fail(f"{entry['id']}: duplicate SVG ids: {duplicates}")
-    missing = [g for g in entry["required_groups"] if g not in ids]
+
+    required = list(global_required_groups) + list(entry["required_groups"])
+    missing = [g for g in required if g not in ids]
     if missing:
         fail(f"{entry['id']}: missing required groups: {missing}")
+
     texts = list(root.iter(SVG_NS + "text"))
     if len(texts) < 8:
         fail(f"{entry['id']}: too few vector text nodes ({len(texts)})")
@@ -50,6 +54,13 @@ def validate_svg(entry):
     for term in ("GOLDEN", "CANDIDATE"):
         if term not in joined:
             fail(f"{entry['id']}: missing visible {term} status")
+
+    if "PRIMARY_CLAIM" in ids:
+        claim_group = next(node for node in root.iter() if node.attrib.get("id") == "PRIMARY_CLAIM")
+        claim_text = " ".join((t.text or "") for t in claim_group.iter(SVG_NS + "text")).strip()
+        if len(claim_text) < 8:
+            fail(f"{entry['id']}: PRIMARY_CLAIM is structurally present but effectively empty")
+
     return {
         "id": entry["id"],
         "file": entry["file"],
@@ -72,15 +83,20 @@ def main():
         types = {f["type"] for f in fixtures}
         if "technical_drawing" not in types or "analysis_drawing" not in types:
             fail("suite must cover both technical_drawing and analysis_drawing")
-        results = [validate_svg(entry) for entry in fixtures]
-    except (AssertionError, OSError, json.JSONDecodeError) as exc:
+        global_required_groups = manifest.get("global_required_groups") or []
+        for expected in ("HIERARCHY_FRAME", "PRIMARY_CLAIM", "ANNOTATION_RAIL"):
+            if expected not in global_required_groups:
+                fail(f"manifest hierarchy scaffold is missing {expected}")
+        results = [validate_svg(entry, global_required_groups) for entry in fixtures]
+    except (AssertionError, OSError, json.JSONDecodeError, StopIteration) as exc:
         print(f"OLEANDER DRAWING FIXTURES: FAIL\n{exc}", file=sys.stderr)
         return 1
     print("OLEANDER DRAWING FIXTURES: STRUCTURE PASS")
     print(f"fixture count: {len(results)}")
+    print("hierarchy scaffold: HIERARCHY_FRAME / PRIMARY_CLAIM / ANNOTATION_RAIL")
     for r in results:
         print(f"- {r['id']} {r['file']}: groups={r['groups']} text_nodes={r['text_nodes']}")
-    print("NOTE: structure PASS does not equal independent Design PASS or Golden promotion.")
+    print("NOTE: structure PASS does not equal 3s/30s/near-read Design PASS or Golden promotion.")
     return 0
 
 
