@@ -1,0 +1,86 @@
+{
+  "project_identity": "PRJ-C04-QINGJIANG-SHISHU",
+  "role": "FINAL WEB FRAMEWORK SUCCESSOR / NO-LOSS EDITORIAL ARCHITECTURE",
+  "status": "PRODUCER CANDIDATE / PENDING INDEPENDENT FINISHED-OUTPUT VERDICT",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "authority_chain": [
+    "OLEANDER current Governance / Project Flow / Artifact Review-Persistence",
+    "C04_CURRENT.md",
+    "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md",
+    "C04_NARRATIVE_REFRAME_3AXIS_v1.0.md",
+    "C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md + machine contract",
+    "C04_ACTIVE_EXECUTION_CURRENT.md",
+    "lane-specific merged/current material delta"
+  ],
+  "design_source": "Original C04 presentation boards and mature original design outcomes, currentized under latest authority/evidence boundaries.",
+  "design_dna": [
+    "REAL QINGJIANG FIRST",
+    "LANDSCAPE FIRST",
+    "PAPER / INK / LINE / SEAL",
+    "PHYSICAL + DIGITAL COMPLEMENTARITY",
+    "THIRTEEN IMPRINTS AS OPTIONAL CONTENT SYSTEM",
+    "REAL BODY-SPACE CREDIBILITY",
+    "RETURN CLOSURE",
+    "MEMORY-IP AFTERGLOW"
+  ],
+  "public_axes": {
+    "N1": "地域文化｜清江有什么？",
+    "N2": "游玩线路与交通｜游客怎么游？",
+    "N3": "场景游戏与不同人群｜到了这里具体做什么？"
+  },
+  "public_hero": "先游清江，再读清江。",
+  "count_policy": "UNBOUNDED BY COUNT; section length follows design content and proof burden.",
+  "macro_sequence": [
+    {"id":"hero","label":"清江石书","systems":["LANDSCAPE","NARRATIVE","VISUAL / MOTION"],"role":"real-Qingjiang first read + project proposition"},
+    {"id":"culture","label":"地域文化","systems":["NARRATIVE","13 IMPRINTS","MEMORY / IP"],"axis":"N1","role":"culture as scene/content engine, not background taxonomy"},
+    {"id":"journey","label":"游程与交通","systems":["JOURNEY","RETURN"],"axis":"N2","role":"BOAT / CABLE / WALK / RETURN spatial sequence"},
+    {"id":"map","label":"探索地图","systems":["JOURNEY","DIGITAL","13 IMPRINTS"],"axis":"N2","role":"branch/loop game-map relation without task-route sovereignty"},
+    {"id":"app","label":"数字伴随","systems":["DIGITAL","RETURN","MEMORY / IP"],"axis":"N2,N3","role":"consume actual app/game-map artifact; no simulated phone as final proof"},
+    {"id":"imprints","label":"十三印","systems":["13 IMPRINTS","NARRATIVE"],"axis":"N1,N3","role":"complete R01-R13 library with selective depth"},
+    {"id":"scenes","label":"场景互动","systems":["SCENE INTERACTION","LANDSCAPE","DIGITAL","PHYSICAL / SENSORY","RETURN"],"axis":"N3","role":"R06 open/recover/compare versus R13 compress/body-first/return"},
+    {"id":"audience","label":"人群深度","systems":["AUDIENCE","SCENE INTERACTION","RETURN"],"axis":"N3","role":"same scene, different body burden/attention/content depth; no persona dashboard"},
+    {"id":"physical","label":"实体与感官","systems":["PHYSICAL / SENSORY","LANDSCAPE","TECHNICAL"],"axis":"N3","role":"actual body-use objects + sensory candidates; no equal product matrix"},
+    {"id":"memory","label":"记忆与IP","systems":["MEMORY / IP","DIGITAL","RETURN"],"axis":"N3","role":"Qingjiang Journal × My Book + selective extensions; partial is complete"},
+    {"id":"technical","label":"技术证明","systems":["TECHNICAL","LANDSCAPE","PHYSICAL / SENSORY"],"role":"C22/C23/SEC-A/R06 node as attached proof, never project identity"},
+    {"id":"visual-motion","label":"视觉与动态","systems":["VISUAL / MOTION","NARRATIVE"],"role":"show graphic/motion family and editorial grammar without becoming method board"},
+    {"id":"return","label":"回程","systems":["RETURN","JOURNEY","DIGITAL","MEMORY / IP"],"role":"independent closure; route/service/no-phone/fail-closed remain available"}
+  ],
+  "full_design_universe_accounting": {
+    "LANDSCAPE":["hero","scenes","physical","technical"],
+    "JOURNEY":["journey","map","return"],
+    "13 IMPRINTS":["culture","map","imprints"],
+    "SCENE INTERACTION":["scenes","audience"],
+    "AUDIENCE":["audience"],
+    "PHYSICAL / SENSORY":["scenes","physical","technical"],
+    "DIGITAL":["map","app","scenes","memory","return"],
+    "MEMORY / IP":["culture","app","memory","return"],
+    "TECHNICAL":["physical","technical"],
+    "NARRATIVE":["hero","culture","imprints","visual-motion"],
+    "VISUAL / MOTION":["hero","visual-motion"],
+    "RETURN":["journey","app","scenes","audience","memory","return"]
+  },
+  "no_loss_restructure": {
+    "source_framework":"web-full-asset-recomposition-v1",
+    "actions":[
+      {"source":"hero","action":"REMAP","target":"hero","reason":"retain real-Qingjiang first read; strengthen orientation and remove research-header dominance"},
+      {"source":"culture","action":"REMAP","target":"culture","reason":"retain N1 content while changing equal cards into editorial scene engine"},
+      {"source":"journey","action":"REMAP","target":"journey","reason":"add explicit Return to BOAT/CABLE/WALK journey spine"},
+      {"source":"map","action":"REMAP","target":"map","reason":"bind current merged game-map v1.2 rather than older asset path"},
+      {"source":"app","action":"REMAP","target":"app","reason":"replace simulated phone composition with actual merged portable app artifact"},
+      {"source":"imprints","action":"REMAP","target":"imprints","reason":"retain all R01-R13; improve selective-depth editorial hierarchy"},
+      {"source":"R06/R13","action":"SPLIT","target":"scenes + audience + technical","reason":"separate experience, audience depth and proof without deleting content"},
+      {"source":"physical","action":"REMAP","target":"physical","reason":"consume merged v1.2 SVGs; retain non-materialized design families as named source-bound candidates"},
+      {"source":"memory","action":"REMAP","target":"memory","reason":"consume merged Qingjiang Journal v1.2 and digital My Book relationship"},
+      {"source":"return","action":"REMAP","target":"return","reason":"retain independent closure and fail-closed/no-phone logic"},
+      {"source":"Audience omitted/absorbed","action":"RESTORE","target":"audience","reason":"Audience is an independent permanent C04 design system"},
+      {"source":"Technical absorbed into R06/Physical","action":"RESTORE","target":"technical","reason":"Technical Proof must remain visible/readable but secondary"},
+      {"source":"Visual/Motion implicit","action":"RESTORE","target":"visual-motion","reason":"visual/motion remains an independent project system and film lineage needs a public carrier"}
+    ],
+    "cut":[],
+    "compression_used_as_reason":false
+  },
+  "public_quality_gate": [
+    "FIRST READ","COMPOSITION + SCALE","HIERARCHY + RHYTHM","C04 SPECIFICITY","EXPERIENCE COMPLETENESS","AUDIENCE VALUE","PHYSICAL / PRODUCT CREDIBILITY","DIGITAL EXPERIENCE + RETREATABILITY","MOTION QUALITY","CROSS-MEDIA CONSISTENCY","PROFESSIONAL FINISH","TRUTH BOUNDARY"
+  ],
+  "does_not_prove": ["field verification","measured geometry","live operations","approved safety/capacity/accessibility","construction readiness","rights clearance","whole-project Design PASS","Promotion"]
+}
