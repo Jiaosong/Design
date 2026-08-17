@@ -1,0 +1,29 @@
+{
+  "version": "v2",
+  "runtime": "system Chromium via Playwright page.set_content",
+  "forward_reverse_sequence": [
+    {"step":0,"title":"APPROACH","transform":"matrix(1, 0, 0, 1, 0, 0)","relationOpacity":"0"},
+    {"step":1,"title":"CONFIRM","transform":"matrix(1.025, 0, 0, 1.025, -16, 4)","relationOpacity":"1"},
+    {"step":2,"title":"ENTER","transform":"matrix(1.065, 0, 0, 1.065, -38, 12)","relationOpacity":"1"},
+    {"step":3,"title":"ORIENT","transform":"matrix(1.035, 0, 0, 1.035, -62, 16)","relationOpacity":"1"},
+    {"step":4,"title":"RETURN","transform":"matrix(1, 0, 0, 1, 0, 0)","relationOpacity":"0"},
+    {"step":3,"title":"ORIENT","transform":"matrix(1.035, 0, 0, 1.035, -62, 16)","relationOpacity":"1"},
+    {"step":2,"title":"ENTER","transform":"matrix(1.065, 0, 0, 1.065, -38, 12)","relationOpacity":"1"},
+    {"step":1,"title":"CONFIRM","transform":"matrix(1.025, 0, 0, 1.025, -16, 4)","relationOpacity":"1"},
+    {"step":0,"title":"APPROACH","transform":"matrix(1, 0, 0, 1, 0, 0)","relationOpacity":"0"}
+  ],
+  "reduced_motion": {
+    "transitionDuration": "1e-06s",
+    "state": "STATE / ORIENT",
+    "informationEquivalent": true
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "v1": "REVISE",
+    "v2": "KEEP practice asset"
+  },
+  "boundary": "runtime evidence proves designed behavior only; not user comprehension, field truth, release readiness or full accessibility"
+}
