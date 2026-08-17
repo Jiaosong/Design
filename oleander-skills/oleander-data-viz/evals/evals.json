@@ -4,13 +4,37 @@
     {
       "id": 1,
       "prompt": "把 Oleander 的季度客流、活动类型和停留时长做成一张可交互图和一段 15 秒动态图，同时提供 Illustrator 可编辑 SVG。",
-      "expected_output": "Reproducible cleaned data and consistent HTML, MP4, and SVG outputs with stable scales and source notes.",
+      "expected_output": "Reproducible cleaned data and consistent HTML, MP4, and SVG outputs with stable scales, explicit analytical grammar, source notes, intended-size visual review, and editable vector reconciliation.",
       "files": []
     },
     {
       "id": 2,
       "prompt": "分析场地周边 15 分钟步行圈、公交站和公共服务设施，输出 GIS 图、数据表和展板用轴测化分析底图。",
-      "expected_output": "CRS-aware spatial analysis with validated tables and board-ready vector/raster exports.",
+      "expected_output": "CRS-aware spatial analysis with validated tables, source/field boundary, one-grid presentation composition, and board-ready vector/raster exports.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个路线网络图的数据和拓扑都正确，但所有节点、连线、说明和状态标签视觉权重几乎相同。重做为专业展示图：路线/服务/回程必须先读，可选阅读节点保持可见但不得像打卡清单；图仍然是关系图而不是测绘地图。",
+      "expected_output": "Preserve topology and truth state while creating an unequal H0-H4 hierarchy, role-based node/line semantics, visible return relation, explicit RELATIONAL/NTS/NOT GEOREFERENCED boundary, one coherent grid, and a 3-second/30-second actual-preview review. Producer verdict remains REVIEW PENDING unless independent review exists.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "把一个由 6 个等权卡片组成的 Evidence→Finding→Decision 图改成展板级分析图。不得删信息，不得用更大的标题掩盖弱图，不得把流程画成不存在的线性时间顺序。",
+      "expected_output": "No-loss restructuring into one dominant analytical field with true directional/relational structure, subordinate evidence/meta layers, exact alignment, concrete annotations, and no generic dashboard/card-wall composition.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "已有一张成熟项目图表和一张新生成候选。候选数据更完整但视觉更像技术报告。请优化而不是推倒重做。",
+      "expected_output": "Open the strongest mature design first, separate data/content delta from visual regression, preserve solved design DNA, apply only material deltas, compare side-by-side, and reject/revise any candidate that is cleaner but visually weaker. No self-KEEP.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "将同一份清洗数据先用声明式图表规范生成，再导出 SVG 进行 Illustrator 风格的排版与注释深化。",
+      "expected_output": "Explicit data->transform->mark->channel->scale grammar, editable SVG bridge, refinement that changes typography/composition but not values/axes/topology/evidence state, followed by reconciliation against the cleaned data/spec.",
       "files": []
     }
   ]
