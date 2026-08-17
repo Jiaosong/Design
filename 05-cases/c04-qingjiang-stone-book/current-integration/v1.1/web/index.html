@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>清江石书 C04｜Current Web Integration v1.1</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="brand"><span class="seal">清</span><span>清江石书 · CURRENT WEB v1.1</span></div>
+  <div class="navRight"><span class="navState" id="navState">LANDSCAPE / 01</span><a class="returnChip" href="#return">RETURN / 服务</a></div>
+</nav>
+
+<section id="hero" data-label="LANDSCAPE / 01">
+  <img class="fullbg" src="assets/hero_qingjiang.jpg" alt="清江景观">
+  <div class="heroShade"></div>
+  <div class="heroInner">
+    <div><div class="eyebrow" style="color:#c5d8d1">01 / LANDSCAPE · PROJECT IDENTITY</div><h1 class="heroTitle">先游清江，<br>再读清江。</h1><p class="heroLead">项目不是十三个新增景点。路线、身体、文化、数字、休息、记忆与 Return 被重新放回一次真实的清江游程。</p></div>
+    <div class="journeySpine"><div class="spineItem"><span class="spineNum">01</span><div><b>BOAT</b><small>ARRIVE / LANDSCAPE FIRST</small></div></div><div class="spineItem"><span class="spineNum">02</span><div><b>CABLE</b><small>MOVING VIEW / NO FORCED UI</small></div></div><div class="spineItem"><span class="spineNum">03</span><div><b>WALK</b><small>BRANCH / OBSERVE / OPTIONAL READ</small></div></div><div class="spineItem"><span class="spineNum">04</span><div><b>RETURN</b><small>SERVICE FIRST / NO-PHONE COMPLETE</small></div></div></div>
+  </div>
+</section>
+
+<section id="culture" class="sectionPad" data-label="CULTURE / 02">
+  <div class="eyebrow">02 / CULTURE · NARRATIVE</div><h2 class="title">文化不被挂在墙上，<br>而在游程中发生。</h2><p class="lead">真实清江先读；地方命名、山水观察、故事与记忆只在适合发生的场景里打开。文化层不夺取路线主权。</p>
+  <div class="cultureGrid">
+    <div class="cultureImage"><img src="assets/culture_r06_scene_crop.jpg" alt="清江 R06 河谷观察"><div class="cultureOverlay"><strong>看 · 辨 · 听 · 记</strong><div class="micro" style="color:white;margin-top:7px">LOOK / COMPARE / LISTEN / REMEMBER</div></div></div>
+    <div class="cultureCards"><div class="cultureCard"><b>看</b><p>山水观察优先发生在 R05 / R06 等真实视野节点。</p></div><div class="cultureCard"><b>辨</b><p>地名、形态、来源并置，但不把推断伪装成现场事实。</p></div><div class="cultureCard"><b>听</b><p>地方故事可选进入；R09 / R12 保持来源与现场边界。</p></div><div class="cultureCard"><b>记</b><p>离场后进入清江旅记 / 我的石书，而不是完成度结算。</p></div></div>
+  </div>
+</section>
+
+<section id="journey" class="dark sectionPad" data-label="JOURNEY / 03">
+  <div class="eyebrow">03 / JOURNEY · RELATIONAL ROUTE</div><h2 class="title">先选怎么走，<br>再决定读多深。</h2><p class="lead">地图不是 GPS，也不称实时开放。它只把游程关系说清楚，并始终让 Service / Return 比内容更近。</p>
+  <div class="journeyStage">
+    <div class="routeField observe">
+      <svg viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true"><path class="routePath" d="M40 200 C150 130 230 160 315 240 S500 345 605 280 S750 255 830 390 S900 500 960 525"/><path class="returnPath" d="M830 390 C865 430 910 470 960 525"/></svg>
+      <div class="routeLabel rl1">BOAT<small>ARRIVAL</small></div><div class="routeLabel rl2">CABLE<small>MOVING VIEW</small></div><div class="routeLabel rl3">WALK<small>BRANCHING FIELD</small></div><div class="routeLabel rl4">RETURN<small>FAIL-CLOSED</small></div>
+      <div class="routeHint">关系地图只承担“怎么游”。R01–R13 内容可以被遇见、跳过、重排；不构成 13/13 路线任务。</div>
+    </div>
+    <div class="phoneDock"><img class="phoneShot" src="assets/app_route.png" alt="ROUTE 界面"></div>
+  </div>
+</section>
+
+<section id="imprints" class="dark sectionPad" data-label="13 IMPRINTS / 04">
+  <div class="eyebrow">04 / THIRTEEN IMPRINTS · OPTIONAL DISCOVERY</div><h2 class="title">十三印是一层可发现的内容，<br>不是十三个强制任务。</h2><p class="lead">点击任一印记查看它在游程中的身份。没有积分、完成率或强制打卡；退出后直接回到景观 / 路线。</p>
+  <div class="imprintLayout">
+    <div class="imprintMap" id="imprintMap"><div class="riverLine"></div><div class="branchLine"></div></div>
+    <aside class="imprintDetail" aria-live="polite"><div><div class="eyebrow" id="imprintKicker">R06 / OBSERVATION</div><h3 id="imprintTitle">多级阶地 · 不对称河谷</h3><p class="lead" id="imprintCopy">先看河谷，再在需要时短暂 Reveal 关系。阅读完成后界面退出，注意力回到清江。</p><div class="tagrow" id="imprintTags"></div></div><div class="optionalNote">OPTIONAL READING · REORDERABLE · NO SCORE · NO 13/13 AUTHORITY<br>FIELD OPEN / SOURCE-BOUNDED</div></aside>
+  </div>
+</section>
+
+<section id="scene" class="dark sectionPad" data-label="SCENE / 05">
+  <div class="eyebrow">05 / SCENE INTERACTION · BODY RHYTHM</div><h2 class="title">R06 打开感知，<br>R13 收紧注意。</h2><p class="lead">同一系统不使用统一交互强度。开阔河谷允许短暂解释，狭窄一线天优先身体、安全与退出。</p>
+  <div class="sceneFlow"><div class="sceneFrame"><img src="assets/r06_qingjiang.jpg" alt="R06 清江河谷"><div class="sceneCaption"><b>R06 · OPEN</b><small>LOOK → RECOVER → OPTIONAL REVEAL → RETREAT</small></div></div><div class="flowArrow">ATTENTION<i></i>RETURN</div><div class="sceneFrame"><img src="assets/r13_exit.jpg" alt="R13 一线天"><div class="sceneCaption"><b>R13 · COMPRESS</b><small>BODY FIRST → PLAY OFF → SAFETY / RETURN ON</small></div></div></div>
+</section>
+
+<section id="audience" class="sectionPad" data-label="AUDIENCE / 06">
+  <div class="eyebrow">06 / AUDIENCE DEPTH · SAME SCENE</div><h2 class="title">同一片河谷，<br>不是同一种观看。</h2><p class="lead">差异化发生在身体负荷、停留深度、解释密度与恢复方式，而不是再造几套彼此割裂的路线。</p><div class="audienceCanvas"><img src="assets/audience_depth.svg" alt="Audience Depth"></div>
+</section>
+
+<section id="physical" class="sectionPad" data-label="PHYSICAL / 07">
+  <div class="eyebrow">07 / PHYSICAL + SENSORY · BODY SUPPORT</div><h2 class="title">身体支持不是产品陈列，<br>而是游程强度的调节器。</h2><p class="lead">Physical 只在身体真的需要时介入。概念效果图与技术证据分开：空间感可以先表达，但不冒充现场几何、基础或施工证明。</p>
+  <div class="physicalStage"><div class="physicalHero"><img src="assets/fluid_rest_render.png" alt="山体流体休憩装置概念效果"><div class="proofVeil"><b>Mountain Fluid Rest</b><p>长停留 Physical Hero candidate。真实落位、临边、基础、排水、维护、无障碍与安全边界继续 FIELD OPEN。</p></div></div><div class="physicalSide"><div class="sensoryFrame"><img src="assets/qingfengyin_render.png" alt="清风吟概念效果"></div><div class="evidenceBand"><b>CONCEPT VISUAL ≠ TECHNICAL PROOF</b><p>清风吟 = low-density sensory secondary；P02 = short-recovery service support。效果图仅证明空间意图，不证明现场可实施性。</p></div></div></div>
+</section>
+
+<section id="digital" class="dark sectionPad" data-label="DIGITAL / 08">
+  <div class="eyebrow">08 / DIGITAL · QUIET GAME-LIKE COMPANION</div><h2 class="title">地图会展开，印记会出现，<br>但界面完成后必须退场。</h2><p class="lead">保留山水游历志 × 石拓印记 × 图卷式探索的动态语言；删除积分、13/13、任务路线权威。下面是真实可切换的 Current App v1.6 状态。</p>
+  <div class="digitalShell">
+    <div class="modeRail" role="tablist" aria-label="数字体验状态"><button class="modeBtn active" data-mode="today" role="tab"><b>TODAY</b><small>ARRIVE</small></button><button class="modeBtn" data-mode="route" role="tab"><b>ROUTE</b><small>REVEAL</small></button><button class="modeBtn" data-mode="r06" role="tab"><b>R06</b><small>OPTIONAL READ</small></button><button class="modeBtn" data-mode="book" role="tab"><b>MY BOOK</b><small>MEMORY</small></button><button class="modeBtn" data-mode="return" role="tab"><b>RETURN</b><small>EXIT / SERVICE</small></button></div>
+    <div class="deviceStage"><img id="deviceImage" src="assets/app_today.png" alt="TODAY 界面"></div>
+    <div class="modeStory"><div class="eyebrow" id="modeKicker">ARRIVAL / LANDSCAPE FIRST</div><h3 id="modeTitle">今日清江先出现景观，<br>不是任务。</h3><p id="modeCopy">数字只告诉游客：现在在哪里、怎么继续、怎样返回。可读内容退居第二层；无手机路径仍然完整。</p><div class="behavior"><div><b>FULL / LIGHT / OFF</b>解释密度可降级</div><div><b>NORMAL / DEGRADED</b>状态改变行为</div><div><b>CLOSED / UNKNOWN</b>内容退场，Return 提升</div></div></div>
+  </div>
+</section>
+
+<section id="memory" class="sectionPad" data-label="MEMORY / 09">
+  <div class="eyebrow">09 / MEMORY + IP · AFTERTASTE</div><h2 class="title">真正带走的，<br>不是完成度。</h2><p class="lead">清江旅记与“我的石书”并行：纸本保证 no-phone 完整，数字只保存真正看过、停过、写过、改变过判断的部分。</p>
+  <div class="memoryStage"><div class="memoryImage"><img src="assets/memory_hero.png" alt="清江旅记与我的石书"></div><div class="memorySteps"><div class="memoryStep"><span>01</span><div><b>RETURN</b><p>先完成安全与服务闭环。</p></div></div><div class="memoryStep"><span>02</span><div><b>RECOGNITION</b><p>从“我到过”变成“我认出了什么”。</p></div></div><div class="memoryStep"><span>03</span><div><b>RECORD</b><p>纸与数字都允许留下个人痕迹。</p></div></div><div class="memoryStep"><span>04</span><div><b>TAKE AWAY</b><p>记忆 / IP 成为旅行余味，不成为任务奖励。</p></div></div></div></div>
+</section>
+
+<section id="technical" class="sectionPad" data-label="TECHNICAL / 10">
+  <div class="eyebrow">10 / TECHNICAL PROOF · READABLE, SUBORDINATE</div><h2 class="title">技术证明必须看得清，<br>但不抢走清江。</h2><p class="lead">把“感觉”和“怎么成立”成对阅读。Technical 不再缩成脚注，也不膨胀成工程报告。</p>
+  <div class="techStage"><div class="techFigure"><img id="techZoom" src="assets/r06_technical.png" alt="R06 技术证明图" title="点击放大"></div><div class="techMeta"><div><div class="eyebrow">R06 / C22 / C23 SELECTED PROOF</div><h3>尺度、关系、构造、风险。</h3><p>当前图仅作为研究级概念证明。SEC-A / R06 node 的角色是说明人体、谷地、路径、节点与维护关系；FIELD=0 时基础、防坠、锚固、施工许可全部保持 OPEN。</p><div class="proofStack"><div><b>DESIGN INTENT</b>身体如何停、靠、看、退出</div><div><b>RELATION PROOF</b>路径 / 山体 / 河谷 / 节点关系</div><div><b>TECHNICAL OPEN</b>结构、基础、临边、排水、维护</div></div></div><span class="status">NTS · NOT FOR CONSTRUCTION · FIELD OPEN</span></div></div>
+</section>
+
+<section id="visual" class="dark sectionPad" data-label="MOTION / 11">
+  <div class="eyebrow">11 / VISUAL + MOTION · EXPERIENCE GRAMMAR</div><h2 class="title">动效不把所有东西都动起来，<br>而是控制注意力什么时候打开与退出。</h2><div class="motionRule">OPEN → REVEAL → RETREAT → COMPRESS → REOPEN / RETURN</div>
+  <div class="motionFrames">
+    <article class="motionFrame"><img src="assets/hero_qingjiang.jpg" alt="OPEN 景观"><div><b>OPEN</b><small>LANDSCAPE / ARRIVAL</small></div></article>
+    <article class="motionFrame phoneMotion"><img src="assets/app_route.png" alt="REVEAL 路线"><div><b>REVEAL</b><small>ROUTE / RELATION</small></div></article>
+    <article class="motionFrame"><img src="assets/r06_qingjiang.jpg" alt="RETREAT 河谷"><div><b>RETREAT</b><small>R06 / INTERFACE WITHDRAWS</small></div></article>
+    <article class="motionFrame"><img src="assets/r13_exit.jpg" alt="COMPRESS R13"><div><b>COMPRESS</b><small>R13 / BODY FIRST</small></div></article>
+    <article class="motionFrame"><img src="assets/return_qingjiang.jpg" alt="RETURN 清江"><div><b>RETURN</b><small>REOPEN / SERVICE / MEMORY</small></div></article>
+  </div>
+</section>
+
+<section id="return" data-label="RETURN / 12">
+  <img class="fullbg" src="assets/return_qingjiang.jpg" alt="清江 Return 景观"><div class="heroShade"></div><div class="returnInner"><div class="returnText"><div class="eyebrow" style="color:#c8d8d3">12 / RETURN · INDEPENDENT FINAL LAYER</div><h2>现在先回来。</h2><p>UNKNOWN / CLOSED / DEGRADED 时，内容主动退场。纸图、标识、人工服务与景观识别共同保证：没有手机也能完成一次完整游程。</p><div class="tagrow" style="margin-top:26px"><span class="tag">RETURN PRIORITY</span><span class="tag">NO-PHONE COMPLETE</span><span class="tag">FAIL-CLOSED</span></div></div><div class="returnDevice observe"><img src="assets/app_return_crop.png" alt="Return 服务界面"></div><div class="truth">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · FIELD PASS=NONE · NO_PROMOTION · NTS · NOT FOR CONSTRUCTION</div></div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeLightbox">关闭 ×</button><img src="assets/r06_technical.png" alt="R06 技术图放大"></div>
+<script src="app.js"></script>
+</body></html>
