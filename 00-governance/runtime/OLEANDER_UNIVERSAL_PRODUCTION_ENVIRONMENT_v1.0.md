@@ -19,9 +19,11 @@ Tool choice follows the project. The project never follows the tool.
 
 For reference-reconstruction work, add one mandatory preflight before production:
 
-> **Source Authority → Source Bytes Materialized → Reference Frame Locked → Reconstruction Runtime → 1:1 Fidelity Review**
+> **Source Authority → Source Bytes Materialized → Reference Frame Locked → Reconstruction Runtime → Pixel-level Fidelity Review**
 
 `BROWSER_VISIBLE ≠ LOCAL_SOURCE_BYTES_AVAILABLE`.
+
+`REPRODUCTION / RECONSTRUCTION / 复现 / 复刻 / 1:1 / 一模一样 / 按原图做` defaults to **pixel-level fidelity**. A visually similar result without pixel-level comparison cannot receive `REPRODUCTION PASS`.
 
 ---
 
@@ -88,17 +90,21 @@ Canonical contract:
 
 Preferred deterministic adapter:
 
-- `tools/oleander-runtime/materialize_reference.py`
+- `90-shared/toolchains/reference-materialization/materialize_reference.py`
 
 Required sequence:
 
-`SOURCE_AUTHORITY_FOUND → SOURCE_BYTES_MATERIALIZED → SOURCE_HASHED → REFERENCE_FRAME_EXTRACTED → REFERENCE_SCALE_LOCKED → COMPARISON_RUNTIME_VERIFIED`
+`SOURCE_AUTHORITY_FOUND → SOURCE_BYTES_MATERIALIZED → SOURCE_HASHED → REFERENCE_FRAME_EXTRACTED → REFERENCE_SCALE_LOCKED → COMPARISON_RUNTIME_VERIFIED → INDEPENDENT_ONE_TO_ONE_RECONSTRUCTION → PIXEL_LEVEL_COMPARISON → MISMATCH_REPAIR → RETEST`
 
 Use the first valid source-byte route that preserves the original file: mounted upload, public direct URL, connector-native materialization/download, or exact GitHub/Drive file retrieval. A browser view, citation ref, screenshot handle or preview is not a local byte source.
 
-If source bytes or an exact reference frame cannot be obtained, mark `REFERENCE MATERIALIZATION GATE = HOLD`. Continue only as `STRUCTURAL RECONSTRUCTION / METHOD STUDY / REFERENCE-BOUND STUDY`; do not claim `REPRODUCTION PASS`.
+If source bytes or an exact reference frame cannot be obtained, mark `REFERENCE MATERIALIZATION GATE = HOLD`. If pixel-level comparison cannot be executed, or material pixel mismatch remains, keep `FIDELITY HOLD / REVISE`; do not claim `REPRODUCTION PASS`.
 
-After materialization, use matched-scale side-by-side plus overlay/flicker/difference where technically meaningful. Hashing and rendering source bytes prove reproducibility only; they do not prove fidelity or design quality.
+For deterministic vector/raster/icon/interface/page reconstruction using a shared deterministic render pipeline, target **zero pixel difference at the locked frame**. Antialiasing, rasterizer, ICC/color-management or font-rendering differences may be accepted only when isolated, quantified and proven non-material.
+
+Direct source copying/re-export does not count as reconstruction evidence. A claimed reconstruction must have an independently constructed editable representation appropriate to the medium.
+
+Hashing and rendering source bytes prove reproducibility only; they do not prove Source Authority, rights clearance, independent design quality, or transfer-variant quality.
 
 ### Deterministic data / GIS / calculation
 
@@ -179,7 +185,7 @@ Any meaningful production run should be able to report:
 
 Reference-reconstruction runs additionally report:
 
-`SOURCE_LOCATOR / SOURCE_BYTES_STATE / SOURCE_SHA256 / REFERENCE_FRAME_STATE / PAGE_OR_FRAME / SCALE_OR_DPI / RENDERER / REFERENCE_FRAME_SHA256 / COMPARISON_RUNTIME / FIDELITY_GATE`
+`SOURCE_LOCATOR / SOURCE_BYTES_STATE / SOURCE_SHA256 / REFERENCE_FRAME_STATE / PAGE_OR_FRAME / SCALE_OR_DPI / RENDERER / REFERENCE_FRAME_SHA256 / COMPARISON_RUNTIME / PIXEL_DIFF_STATE / PIXEL_DIFF_METRIC / MISMATCH_STATE / FIDELITY_GATE`
 
 `EXECUTED`, `TRACEABLE` and `REPRODUCIBLE` are process states. They cannot be converted into `Design PASS`, `Professional Finish` or `MAIN KEEP` without independent design review.
 
