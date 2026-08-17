@@ -1,0 +1,21 @@
+{
+  "schema":"oleander.skill.3d-pipeline.reference-aperture-exposure.v1",
+  "version":"2026-08-17-v1",
+  "purpose":"Prevent windows, lamps, intakes and other identity apertures from being represented as floating decals/solids or revealing an incorrect exterior cap behind a transparent opening.",
+  "required_chain":["HOST_SURFACE","OPENING_OR_BOUNDARY","RECESS_OR_VOID_WHEN_REFERENCE_REQUIRES","LENS_OR_GLASS","BACKING_OR_INTERIOR_STATE"],
+  "must_check":[
+    "aperture normal/orientation matches host surface",
+    "transparent aperture does not reveal exterior body material where reference shows cabin/interior/void",
+    "identity lens is embedded/recessed rather than floating beyond the host envelope",
+    "aperture family remains derived from the same Source revision",
+    "side/front/rear views agree on aperture placement"
+  ],
+  "forbidden":[
+    "opaque exterior cap directly behind windshield",
+    "floating lamp sphere or disc used as recognition shortcut",
+    "material-only fake opening where silhouette/host geometry is wrong",
+    "per-view aperture repositioning"
+  ],
+  "failure_codes":["REVISE_APERTURE_EXPOSURE","REVISE_IDENTITY_FEATURE_INTEGRATION"],
+  "does_not_prove":["production lamp engineering","glazing engineering","water sealing","manufacturing feasibility"]
+}
