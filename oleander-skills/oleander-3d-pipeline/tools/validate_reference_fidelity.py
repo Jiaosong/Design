@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json,math
+import argparse,json
 from pathlib import Path
 HERE=Path(__file__).resolve()
 CONTRACT=HERE.parents[1]/"contracts"/"REFERENCE_REPRODUCTION_FIDELITY_CONTRACT_v1.json"
@@ -43,11 +43,11 @@ def validate(data,contract):
   if computed>limit: fail("FAIL_REFERENCE_LANDMARK_ERROR",f"{lid} normalized error {computed} > {limit}")
  if data.get("source_digest_before")!=data.get("source_digest_after"): fail("FAIL_MULTI_VIEW_FIDELITY","Source digest changed across fidelity views")
  if data.get("per_view_geometry_override",False): fail("FAIL_MULTI_VIEW_FIDELITY","per-view geometry override forbidden")
- if data.get("silhouette_gate")!="PASS": fail("REVISE_PRIMARY_SILHOUETTE","silhouette gate not PASS")
- if data.get("reference_fidelity_gate")!="PASS": fail("FAIL_MULTI_VIEW_FIDELITY","reference fidelity gate not PASS")
+ if data.get("silhouette_gate")!="MACHINE_SCREENING_PASS": fail("REVISE_PRIMARY_SILHOUETTE","silhouette machine screening not PASS")
+ if data.get("reference_fidelity_gate")!="MACHINE_SCREENING_PASS": fail("FAIL_MULTI_VIEW_FIDELITY","reference fidelity machine screening not PASS")
  if data.get("design_quality_gate")=="PASS" and not data.get("independent_reference_review",False): fail("FAIL_MULTI_VIEW_FIDELITY","Design PASS requires independent reference review")
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("receipt");args=ap.parse_args()
  validate(json.loads(Path(args.receipt).read_text()),json.loads(CONTRACT.read_text()))
- print("REFERENCE FIDELITY RECEIPT PASS")
+ print("REFERENCE FIDELITY MACHINE SCREENING PASS")
 if __name__=="__main__": main()
