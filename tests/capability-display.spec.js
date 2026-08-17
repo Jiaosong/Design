@@ -10,14 +10,21 @@ async function capture(page, testInfo, name, selector) {
   const path = testInfo.outputPath(name);
   if (selector) {
     const target = page.locator(selector);
-    await target.evaluate((node) => node.scrollIntoView({ block: 'start', behavior: 'auto' }));
+    await page.evaluate(() => {
+      document.documentElement.style.overflowAnchor = 'none';
+      document.body.style.overflowAnchor = 'none';
+    });
+    const alignTop = async () => {
+      const y = await target.evaluate((node) => node.getBoundingClientRect().top + window.scrollY);
+      await page.evaluate((targetY) => window.scrollTo({ top: Math.max(0, targetY - 64), behavior: 'auto' }), y);
+    };
+    await alignTop();
     const imgs = target.locator('img:visible');
     for (let i = 0; i < await imgs.count(); i += 1) {
       await expect.poll(() => imgs.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0), { timeout: 5000 }).toBeTruthy();
     }
-    await target.evaluate((node) => node.scrollIntoView({ block: 'start', behavior: 'auto' }));
-    await page.evaluate(() => window.scrollBy(0, -64));
-    await page.waitForTimeout(120);
+    await alignTop();
+    await page.waitForTimeout(150);
   } else {
     await page.evaluate(() => window.scrollTo(0, 0));
   }
@@ -35,7 +42,7 @@ test('XJ01 PRO-04.2 binds the editorial presentation spine instead of the old re
     .toEqual(['p00','p01','p02','p03','p04','p05','p06']);
 
   await expect(page.locator('#p00 h1')).toContainText('Continuous');
-  await expect(page.locator('#p00')).toContainText('D1 exact-geometry broad preflight');
+  await expect(page.locator('#p00')).toContainText('cropped from retained D2 exact-geometry whole-product renders');
   await expect(page.locator('#p01')).toContainText('Direction DNA');
   await expect(page.locator('#p02')).toContainText('Colour × Material × Geometry');
   await expect(page.locator('#p03')).toContainText('Where materials meet');
