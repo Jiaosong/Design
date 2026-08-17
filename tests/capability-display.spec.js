@@ -11,7 +11,7 @@ async function capture(page, testInfo, name, selector) {
   if (selector) {
     const target = page.locator(selector);
     await target.scrollIntoViewIfNeeded();
-    const imgs = target.locator('img');
+    const imgs = target.locator('img:visible');
     for (let i = 0; i < await imgs.count(); i += 1) {
       await expect.poll(() => imgs.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0), { timeout: 5000 }).toBeTruthy();
     }
