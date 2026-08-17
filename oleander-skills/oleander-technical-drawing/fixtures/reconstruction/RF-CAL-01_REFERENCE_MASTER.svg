@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ffffff"/>
+  <g id="FRAME" fill="none" stroke="#111111">
+    <rect x="35" y="35" width="1130" height="730" stroke-width="2"/>
+    <line x1="35" y1="690" x2="1165" y2="690" stroke-width="1"/>
+    <line x1="880" y1="690" x2="880" y2="765" stroke-width="1"/>
+  </g>
+  <g id="PRIMARY_GEOMETRY" fill="none" stroke="#111111" stroke-linejoin="round">
+    <path d="M140 520 L310 520 L360 420 L600 420 L660 520 L820 520" stroke-width="4"/>
+    <line x1="140" y1="520" x2="820" y2="520" stroke-width="1.8"/>
+    <rect x="365" y="370" width="230" height="50" stroke-width="2.2"/>
+    <line x1="410" y1="370" x2="410" y2="420" stroke-width="1.2"/>
+    <line x1="550" y1="370" x2="550" y2="420" stroke-width="1.2"/>
+  </g>
+  <g id="HATCH" stroke="#777777" stroke-width="0.9">
+    <line x1="335" y1="470" x2="370" y2="435"/><line x1="350" y1="490" x2="395" y2="445"/>
+    <line x1="585" y1="445" x2="625" y2="485"/><line x1="570" y1="455" x2="625" y2="510"/>
+  </g>
+  <g id="DIMENSIONS" fill="none" stroke="#555555" stroke-width="1">
+    <line x1="140" y1="570" x2="820" y2="570"/>
+    <line x1="140" y1="552" x2="140" y2="585"/><line x1="820" y1="552" x2="820" y2="585"/>
+    <line x1="470" y1="340" x2="470" y2="520"/>
+    <line x1="458" y1="340" x2="482" y2="340"/><line x1="458" y1="520" x2="482" y2="520"/>
+  </g>
+  <g id="CALLOUTS" fill="none" stroke="#555555" stroke-width="1">
+    <polyline points="595,390 735,300 900,300"/>
+    <circle cx="595" cy="390" r="5" fill="#ffffff"/>
+  </g>
+  <g id="TEXT" font-family="DejaVu Sans,Arial,sans-serif" fill="#111111">
+    <text x="90" y="105" font-size="32" font-weight="700">SECTION A-A / REFERENCE MASTER</text>
+    <text x="90" y="140" font-size="15" fill="#555555">SYNTHETIC CALIBRATION FIXTURE · VECTOR SOURCE · NTS</text>
+    <text x="900" y="294" font-size="16">D-01 INTERFACE</text>
+    <text x="455" y="595" font-size="15" text-anchor="middle">6800 REF</text>
+    <text x="490" y="438" font-size="15">1800</text>
+    <text x="895" y="720" font-size="13">RF-CAL-01</text>
+    <text x="895" y="744" font-size="13">REFERENCE / NOT PROJECT AUTHORITY</text>
+    <text x="55" y="720" font-size="13">CUT → SUPPORT → DIMENSION → NOTE</text>
+  </g>
+</svg>
