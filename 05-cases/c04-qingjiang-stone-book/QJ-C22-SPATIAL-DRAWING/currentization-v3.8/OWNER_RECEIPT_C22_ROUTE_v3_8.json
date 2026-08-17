@@ -1,0 +1,33 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01",
+  "revision": "v3.8",
+  "status": "EXECUTED / SOURCE-REANCHORED / RENDERED / REOPENED / INDEPENDENT DESIGN REVIEW PENDING",
+  "supersedes_route": [
+    "v3.5"
+  ],
+  "local_failed_not_persisted": [
+    "v3.6",
+    "v3.7"
+  ],
+  "artifacts": [
+    {
+      "file": "C04_C22_01_OFFICIAL_GUIDE_VECTOR_TRANSCRIPTION_v3_8.svg",
+      "sha256": "efc2cdfc5478d3f857234543d27539c44b715dbee411c2b49bb6e121c95bddda",
+      "bytes": 66614
+    },
+    {
+      "file": "C04_C22_01_OFFICIAL_GUIDE_VECTOR_TRANSCRIPTION_v3_8_PREVIEW.png",
+      "sha256": "f17f2d9d212413ceb996fdc3e9a0b0785f3439ab2f675b46a648014f68a3b2d3",
+      "bytes": 588088
+    }
+  ],
+  "does_not_prove": [
+    "field observation",
+    "field measurement",
+    "survey geometry",
+    "construction readiness",
+    "design KEEP"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
