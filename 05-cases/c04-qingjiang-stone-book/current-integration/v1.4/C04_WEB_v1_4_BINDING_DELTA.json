@@ -1,0 +1,18 @@
+{
+  "schema": "oleander.c04.web-binding-delta/1.4",
+  "inherits": "../v1.3/C04_WEB_v1_3_OBJECT_BINDINGS.json",
+  "annotation_rule": "CANONICAL BASELINE REGISTER + LATEST INDEPENDENT ANNOTATION STATUS OVERLAY",
+  "count_policy": "UNBOUNDED_BY_COUNT / NO_TARGET_RANGE",
+  "presentation_delta": {
+    "Culture": "Web-native scene composition replaces inherited review-board framing for Journey/R06/R13/Memory while preserving canonical content identity.",
+    "Audience": "Drive v4 remains strongest authority; Web carrier reconstructs the same R06 depth logic natively rather than embedding the board.",
+    "P01": "PASS→GLOW→FADE shows interaction timing only; current upstream presentation remains HOLD/PROCESS and is not promoted.",
+    "FluidRest": "Object crop derived from existing source only; PHYSICAL/TECH SUPPORT + LOCATION HOLD unchanged.",
+    "Qingfengyin": "Object crop derived from existing source only; DO NOT MODEL YET / engineering open unchanged.",
+    "Technical": "Exact technical_focus SVG content viewport-cropped to proof field; C22 namespace and dimensions unchanged.",
+    "Motion": "Web carrier changes from static thumbnail strip to scroll-driven ARRIVE/CROSS/OPEN/PASS/REMEMBER/RETURN; final Motion film remains open.",
+    "App": "UNCHANGED / next App delta USER-OWNED.",
+    "R05": "UNCHANGED / authoritative landscape source open; no substitute."
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
