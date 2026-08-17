@@ -1,0 +1,32 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "C23-R06-GA-SECTION-DETAIL",
+  "revision": "v1.4-CANDIDATE",
+  "pr": 190,
+  "branch": "agent/c04-r06-drawing-professionalize-v1-4",
+  "observed_pr_head_before_this_receipt": "9d2945a7f52953cdb62078ea8257def77118f0d0",
+  "base_main": "ca147a95d27eb99db9e76bb81e516bb3cba9253c",
+  "remote_svg": {
+    "path": "05-cases/c04-qingjiang-stone-book/deepening/R06_DRAWING_OPT_v1_4/C04_R06_GA_SECTION_DETAIL_v1_4_CANDIDATE.svg",
+    "blob_sha": "7395af373264468572a5b8a9156cd3ec9750e809",
+    "readback": "PASS"
+  },
+  "owner_receipt": {
+    "path": "05-cases/c04-qingjiang-stone-book/deepening/R06_DRAWING_OPT_v1_4/OWNER_RECEIPT_v1_4.json",
+    "blob_sha": "3583c3a8e8cd98bb6ef01b132cd881c7f854eee8",
+    "readback": "PASS"
+  },
+  "producer_review": {
+    "path": "05-cases/c04-qingjiang-stone-book/deepening/R06_DRAWING_OPT_v1_4/AR_S01_PRODUCER_SELF_CHECK_v1_4.md",
+    "blob_sha": "792fffca416e78938404ac849b05f3a20a513922",
+    "readback": "PASS",
+    "design_verdict_authority": "NONE / PRODUCER SELF-CHECK ONLY"
+  },
+  "pr_status": "OPEN_DRAFT / MERGEABLE_OBSERVED_TRUE_BEFORE_THIS_RECEIPT",
+  "ci_status": "NO_PULL_REQUEST_WORKFLOW_RUN_OBSERVED_FOR_HEAD_9d2945a7f52953cdb62078ea8257def77118f0d0",
+  "f_crossline_readback": "PENDING",
+  "sync_state": "PARTIAL",
+  "design_state": "REVIEW_PENDING",
+  "truth_boundary": ["FIELD_OBSERVED=0", "FIELD_MEASURED=0", "G1F_HOLD", "NO_PROMOTION", "NTS", "NOT_FOR_CONSTRUCTION"],
+  "does_not_prove": ["CI_PASS", "F_READBACK_PASS", "Design_PASS", "PIXEL_KEEP", "MAIN_KEEP", "FIELD_PASS", "structural_adequacy", "construction_approval", "Promotion"]
+}
