@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>清江石书｜Qingjiang Stone Book</title>
+<style>
+:root{
+  --paper:#f1ede3;--paper-2:#e7e1d5;--paper-3:#dfe4dd;--ink:#14231e;--muted:#63716b;
+  --qing:#315f55;--qing-2:#719b91;--seal:#a4473b;--gold:#9a825f;--line:#c8c6bc;--dark:#142f28;
+  --white:#faf8f1;--serif:"Noto Serif CJK SC","Songti SC","STSong",serif;
+  --sans:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;
+  --max:1480px;--pad:max(28px,5vw)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}img,object,iframe{display:block;max-width:100%}.wrap{width:min(var(--max),calc(100% - 2*var(--pad)));margin:auto}
+.site-nav{position:fixed;z-index:60;left:50%;top:16px;transform:translateX(-50%);width:min(1420px,calc(100% - 30px));min-height:58px;padding:0 18px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(13,35,29,.78);color:#f7f3ea;backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap}.brand b{font:700 16px var(--serif)}.brand small{font-size:8px;letter-spacing:.16em;opacity:.62}.nav-links{display:flex;gap:18px;font-size:10px;letter-spacing:.04em;align-items:center}.nav-links a{opacity:.72}.nav-links a:hover{opacity:1}.return-pill{padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;opacity:1!important}
+.hero{min-height:100svh;position:relative;background:#17372f;color:white;display:flex;align-items:flex-end;overflow:hidden}.hero-media,.full-media{position:absolute;inset:0;background:#17372f}.hero-media img,.full-media img{width:100%;height:100%;object-fit:cover}.hero-media:after,.full-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,26,21,.84),rgba(8,26,21,.28) 55%,rgba(8,26,21,.06)),linear-gradient(0deg,rgba(8,26,21,.62),transparent 58%)}.media-slot.missing:before{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;padding:40px;text-align:center;font:700 clamp(28px,4vw,64px)/1.05 var(--serif);letter-spacing:-.03em;color:#b7ccc5;background:radial-gradient(circle at 70% 30%,#315d52 0,#17372f 45%,#10261f 100%)}
+.hero-inner{position:relative;z-index:2;width:min(var(--max),calc(100% - 2*var(--pad)));margin:0 auto;padding:170px 0 82px}.kicker{font-size:10px;letter-spacing:.18em;font-weight:800;color:#a8ccc2}.hero h1{font:700 clamp(68px,10.5vw,160px)/.86 var(--serif);letter-spacing:-.075em;margin:22px 0 30px}.hero-claim{font:700 clamp(26px,3.2vw,46px)/1.25 var(--serif);max-width:850px}.hero-intro{font-size:15px;line-height:1.9;color:#d5e1dd;max-width:720px;margin-top:22px}.hero-orient{margin-top:44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:920px;border-top:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.28)}.hero-orient div{padding:15px 18px 16px;border-right:1px solid rgba(255,255,255,.18)}.hero-orient div:last-child{border-right:0}.hero-orient span{font-size:8px;letter-spacing:.14em;color:#a8c7bf}.hero-orient b{display:block;margin-top:6px;font:700 16px var(--serif)}.truth-line{margin-top:28px;font-size:8px;letter-spacing:.12em;color:#a9bdb6}
+.chapter{padding:118px 0;border-bottom:1px solid var(--line);position:relative}.chapter.dark{background:var(--dark);color:#f8f5ed}.chapter.soft{background:var(--paper-2)}.chapter.green{background:var(--paper-3)}.chapter-head{display:grid;grid-template-columns:.42fr 1.58fr;gap:52px;margin-bottom:60px;align-items:start}.idx{font-size:10px;letter-spacing:.18em;font-weight:800;color:var(--qing)}.dark .idx{color:#98c3b7}.chapter-head h2{font:700 clamp(44px,5.4vw,82px)/1 var(--serif);letter-spacing:-.045em;margin:0}.chapter-head p{max-width:800px;color:var(--muted);font-size:15px;line-height:1.85;margin:22px 0 0}.dark .chapter-head p{color:#bfd0ca}.micro{font-size:9px;letter-spacing:.12em;color:var(--qing);font-weight:800}.lead{font:700 clamp(28px,3vw,45px)/1.28 var(--serif);letter-spacing:-.02em}.muted{color:var(--muted)}
+.culture-spread{display:grid;grid-template-columns:1.35fr .65fr;gap:22px}.culture-main{min-height:520px;padding:50px;background:#15372f;color:white;border-radius:30px;display:flex;flex-direction:column;justify-content:space-between}.culture-main h3{font:700 clamp(42px,5vw,74px)/1 var(--serif);letter-spacing:-.04em;margin:18px 0 22px}.culture-main p{max-width:670px;color:#c9d9d3;line-height:1.8}.culture-scenes{display:grid;gap:12px}.culture-scenes article{padding:26px;border-top:2px solid var(--ink);background:rgba(255,255,255,.38)}.culture-scenes h4{font:700 23px var(--serif);margin:12px 0}.culture-scenes p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}.culture-ids{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.culture-ids span{padding:7px 10px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:9px}
+.journey-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:28px}.journey-track:before{content:"";position:absolute;left:8%;right:8%;top:37px;height:1px;background:var(--ink);opacity:.38}.journey-step{position:relative;padding:0 22px 30px}.journey-step:first-child{padding-left:0}.journey-step:last-child{padding-right:0}.journey-dot{width:74px;height:74px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);display:grid;place-items:center;font:700 14px var(--serif);position:relative;z-index:2}.journey-step:nth-child(2) .journey-dot{background:var(--dark);color:white}.journey-step:last-child .journey-dot{border-color:var(--seal);color:var(--seal)}.journey-step h3{font:700 27px var(--serif);margin:24px 0 8px}.journey-step p{font-size:12px;line-height:1.7;color:var(--muted);max-width:270px}.journey-note{margin-top:26px;padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:30px;font-size:12px;line-height:1.75;color:var(--muted)}
+.map-stage{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:stretch}.map-frame{border-radius:30px;overflow:hidden;background:#e9eee8;border:1px solid rgba(20,35,30,.08);min-height:640px;display:grid;place-items:center;padding:28px}.map-frame object{width:100%;height:100%;min-height:580px}.map-copy{display:flex;flex-direction:column;justify-content:space-between;padding:20px 0}.map-copy h3{font:700 36px/1.2 var(--serif);margin:0}.map-rules{display:grid;gap:12px;margin-top:36px}.map-rules div{border-top:1px solid var(--ink);padding-top:12px}.map-rules b{font:700 15px var(--serif)}.map-rules p{font-size:11px;line-height:1.65;color:var(--muted)}
+.app-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:28px;align-items:start}.app-copy{position:sticky;top:110px;padding-top:20px}.app-copy h3{font:700 42px/1.1 var(--serif);margin:14px 0}.app-copy p{font-size:13px;line-height:1.8;color:#bfd0ca}.app-principles{display:grid;gap:8px;margin-top:28px}.app-principles div{padding:12px 0;border-top:1px solid rgba(255,255,255,.2);font-size:11px;color:#dce5e1}.app-shell{border-radius:34px;overflow:hidden;background:#f6f2e9;box-shadow:0 30px 90px rgba(0,0,0,.22);min-height:820px}.app-shell iframe{width:100%;height:820px;border:0;background:#f6f2e9}.app-foot{margin-top:18px;font-size:10px;color:#a8bdb5;line-height:1.7}
+.imprint-rail{display:grid;grid-template-columns:repeat(13,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}.imprint{min-height:235px;border:1px solid var(--line);border-radius:20px;padding:17px;background:rgba(255,255,255,.42);display:flex;flex-direction:column;justify-content:space-between}.imprint strong{font:700 32px var(--serif);color:var(--qing-2)}.imprint h3{font:700 17px/1.25 var(--serif);margin:0}.imprint small{font-size:8px;color:var(--muted);line-height:1.5}.imprint.hot{background:var(--dark);color:white;border-color:var(--dark)}.imprint.hot small{color:#bdd0c9}.imprint.r13{background:#ede3de;border-color:#b88c84}.imprint-summary{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:24px}.imprint-summary article{padding-top:20px;border-top:2px solid var(--ink)}.imprint-summary h4{font:700 25px var(--serif);margin:0 0 10px}.imprint-summary p{font-size:12px;line-height:1.75;color:var(--muted)}
+.scene-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.scene-card{min-height:720px;border-radius:30px;overflow:hidden;position:relative;background:#16362e;color:white}.scene-card .media-slot{position:absolute;inset:0}.scene-card img{width:100%;height:100%;object-fit:cover}.scene-card .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,25,20,.9),rgba(7,25,20,.05) 65%)}.scene-content{position:absolute;left:34px;right:34px;bottom:34px;z-index:3}.scene-content .num{font:700 54px var(--serif);color:#a4c8bf}.scene-content h3{font:700 42px/1.05 var(--serif);margin:8px 0}.scene-content p{max-width:580px;color:#d5e1dd;line-height:1.75;font-size:13px}.scene-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.scene-actions span{border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:7px 10px;font-size:9px}.scene-proof-line{margin-top:24px;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}.scene-proof-line object{width:100%;background:white;border-radius:24px}.scene-proof-line p{font-size:12px;color:var(--muted);line-height:1.8}
+.audience-stage{position:relative;border-radius:34px;background:linear-gradient(135deg,#dbe5df,#f1ede3 55%,#e5ddd1);padding:42px;overflow:hidden}.audience-stage:after{content:"";position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(0deg,rgba(49,95,85,.09),transparent);pointer-events:none}.same-scene{display:flex;justify-content:space-between;gap:20px;align-items:center;padding-bottom:26px;border-bottom:1px solid rgba(20,35,30,.25)}.same-scene b{font:700 28px var(--serif)}.same-scene span{font-size:10px;color:var(--muted)}.depth-flow{position:relative;display:grid;grid-template-columns:1fr 1.06fr 1.12fr 1.18fr;gap:12px;margin-top:28px;align-items:end}.depth-card{position:relative;border-radius:22px;background:rgba(255,255,255,.72);padding:22px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}.depth-card:nth-child(2){min-height:300px}.depth-card:nth-child(3){min-height:340px}.depth-card:nth-child(4){min-height:380px;background:#17372f;color:white}.depth-card:nth-child(4) .depth-note{color:#bdd0c9}.body-icon{width:70px;height:90px;position:relative;margin-bottom:18px}.body-icon:before{content:"";position:absolute;left:27px;top:0;width:18px;height:18px;border:2px solid currentColor;border-radius:50%}.body-icon:after{content:"";position:absolute;left:35px;top:20px;width:2px;height:48px;background:currentColor;box-shadow:-17px 18px 0 -0.5px currentColor,17px 18px 0 -0.5px currentColor}.depth-card:nth-child(4) .body-icon{transform:rotate(8deg);transform-origin:bottom}.depth-tag{font-size:8px;letter-spacing:.13em;color:var(--seal);font-weight:800}.depth-card:nth-child(4) .depth-tag{color:#9ec9bd}.depth-card h3{font:700 19px/1.3 var(--serif);margin:8px 0}.depth-note{font-size:10px;line-height:1.6;color:var(--muted)}.audience-rule{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:11px;line-height:1.7;color:var(--muted)}
+.physical-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.physical-asset{border-radius:28px;background:#faf8f2;padding:22px;min-height:430px;border:1px solid rgba(20,35,30,.08)}.physical-asset img{width:100%;height:auto}.physical-asset h3{font:700 25px var(--serif);margin:18px 0 6px}.physical-asset p{font-size:11px;color:var(--muted);line-height:1.7}.physical-secondary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.candidate{min-height:260px;border-radius:24px;padding:24px;background:#e3ddd2;display:flex;flex-direction:column;justify-content:space-between}.candidate:nth-child(2){background:#dbe5df}.candidate h4{font:700 24px var(--serif);margin:0 0 10px}.candidate p{font-size:11px;line-height:1.65;color:var(--muted)}.candidate .shape{height:90px;margin-bottom:18px;position:relative}.candidate .shape.fluid:before{content:"";position:absolute;left:5%;right:5%;bottom:20px;height:32px;border:2px solid var(--ink);border-radius:55% 45% 48% 52% / 70% 65% 35% 30%;transform:rotate(-3deg)}.candidate .shape.wind:before,.candidate .shape.wind:after{content:"";position:absolute;left:10%;right:10%;top:28px;height:22px;border-top:2px solid var(--qing);border-radius:50%;transform:rotate(-6deg)}.candidate .shape.wind:after{top:52px;left:24%;right:4%;opacity:.55}.physical-rule{margin-top:26px;border-top:1px solid var(--line);padding-top:20px;font-size:11px;line-height:1.8;color:var(--muted)}
+.memory-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}.journal{border-radius:30px;background:#d8d2c7;padding:20px;display:grid;place-items:center}.journal img{width:100%}.memory-copy{padding:32px;background:#15372f;color:white;border-radius:30px;display:flex;flex-direction:column;justify-content:space-between}.memory-copy h3{font:700 42px/1.1 var(--serif);margin:16px 0}.memory-copy p{color:#c7d7d1;line-height:1.8;font-size:13px}.memory-chain{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}.memory-chain span{padding:14px 8px;font-size:9px;border-right:1px solid rgba(255,255,255,.16)}.memory-chain span:last-child{border-right:0}.memory-extensions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.memory-extensions span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 10px;font-size:9px}
+.tech-layout{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}.tech-visual{border-radius:28px;background:white;padding:18px}.tech-visual object{width:100%}.tech-stack{display:grid;gap:12px}.tech-item{padding:24px;border-top:2px solid var(--ink);background:rgba(255,255,255,.35)}.tech-item strong{font:700 21px var(--serif)}.tech-item p{font-size:11px;line-height:1.65;color:var(--muted)}.tech-order{margin-top:24px;font:700 28px/1.35 var(--serif)}
+.motion-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.motion-gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}.motion-shot{aspect-ratio:16/9;border-radius:22px;overflow:hidden;position:relative;background:#17372f}.motion-shot img{width:100%;height:100%;object-fit:cover}.motion-shot .label{position:absolute;left:14px;bottom:12px;z-index:2;color:white;font-size:9px;letter-spacing:.12em}.motion-shot:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,27,21,.65),transparent 55%)}.motion-copy{display:flex;flex-direction:column;justify-content:space-between}.motion-copy h3{font:700 38px/1.1 var(--serif);margin:0}.timeline{margin-top:28px}.timeline div{padding:14px 0;border-top:1px solid rgba(255,255,255,.2);display:grid;grid-template-columns:70px 1fr;gap:14px;font-size:11px}.timeline span{color:#96bcb2}.timeline b{font-weight:500;color:#d8e3df}.motion-copy p{font-size:11px;line-height:1.7;color:#b9cdc6}
+.return{min-height:88svh;position:relative;color:white;display:flex;align-items:flex-end;overflow:hidden;background:#10271f}.return .full-media{z-index:0}.return-inner{position:relative;z-index:2;width:min(var(--max),calc(100% - 2*var(--pad)));margin:auto;padding:90px 0 72px}.return h2{font:700 clamp(54px,7vw,108px)/.98 var(--serif);letter-spacing:-.05em;margin:18px 0}.return p{max-width:760px;font-size:14px;line-height:1.85;color:#d0ddd8}.return-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}.return-actions span{padding:9px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;font-size:9px}.footer{padding:34px var(--pad);background:#0d211b;color:#9fb4ac;display:flex;justify-content:space-between;gap:24px;font-size:8px;letter-spacing:.08em}
+@media(max-width:980px){.nav-links{display:none}.chapter{padding:88px 0}.chapter-head{grid-template-columns:1fr;gap:14px}.culture-spread,.map-stage,.app-layout,.scene-proof-line,.physical-grid,.memory-layout,.tech-layout,.motion-grid{grid-template-columns:1fr}.journey-track{grid-template-columns:1fr 1fr;gap:32px}.journey-track:before{display:none}.app-copy{position:static}.app-shell,.app-shell iframe{min-height:720px;height:720px}.scene-pair{grid-template-columns:1fr}.scene-card{min-height:620px}.depth-flow{grid-template-columns:1fr 1fr;align-items:stretch}.depth-card,.depth-card:nth-child(2),.depth-card:nth-child(3),.depth-card:nth-child(4){min-height:280px}.motion-gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){:root{--pad:20px}.site-nav{top:10px}.brand small{display:none}.hero-inner{padding-bottom:54px}.hero h1{font-size:70px}.hero-orient{grid-template-columns:1fr 1fr}.hero-orient div:nth-child(2){border-right:0}.chapter{padding:72px 0}.chapter-head h2{font-size:45px}.culture-main{min-height:440px;padding:28px}.journey-track{grid-template-columns:1fr}.journey-note,.imprint-summary,.audience-rule{grid-template-columns:1fr}.map-frame{min-height:470px;padding:12px}.map-frame object{min-height:430px}.app-shell,.app-shell iframe{height:650px;min-height:650px}.scene-card{min-height:560px}.scene-content{left:22px;right:22px;bottom:22px}.scene-content h3{font-size:34px}.audience-stage{padding:20px}.same-scene{display:block}.same-scene span{display:block;margin-top:8px}.depth-flow{grid-template-columns:1fr}.depth-card,.depth-card:nth-child(2),.depth-card:nth-child(3),.depth-card:nth-child(4){min-height:245px}.physical-secondary,.motion-gallery{grid-template-columns:1fr}.memory-chain{grid-template-columns:1fr 1fr}.footer{display:block;line-height:1.7}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="brand"><b>清江石书</b><small>QINGJIANG STONE BOOK · C04</small></div>
+  <div class="nav-links">
+    <a href="#culture">文化</a><a href="#journey">游程</a><a href="#app">数字</a><a href="#scenes">场景</a><a href="#physical">实体</a><a href="#memory">记忆</a><a href="#technical">证明</a><a class="return-pill" href="#return">回程</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-media media-slot" data-fallback="REAL QINGJIANG FIRST · QJ-D HERO"><img src="assets/QJD_V11_01_HERO_1920x1080.png" alt="清江石书项目主视觉"></div>
+  <div class="hero-inner">
+    <div class="kicker">QINGJIANG · LANDSCAPE / JOURNEY / CONTENT / BODY / DIGITAL / MEMORY</div>
+    <h1>清江石书</h1>
+    <div class="hero-claim">先游清江，再读清江。</div>
+    <p class="hero-intro">从水面、索道到峰林步道，把地域文化、十三印、游戏地图、身体休息、数字阅读与离场记忆重新放回一次完整旅行。内容可以选择，路线、服务和回程不依赖完成率。</p>
+    <div class="hero-orient">
+      <div><span>BOAT</span><b>水上看</b></div><div><span>CABLE</span><b>空中看</b></div><div><span>WALK</span><b>山中看</b></div><div><span>RETURN</span><b>随时回来</b></div>
+    </div>
+    <div class="truth-line">SOURCE-GROUNDED REMOTE RESEARCH DESIGN · FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION</div>
+  </div>
+</header>
+
+<section class="chapter soft" id="culture">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">01 / N1 · CULTURE</div><div><h2>清江有什么，<br>决定我们在这里读什么。</h2><p>文化不做成独立知识墙。地方故事、地名、传统山水观与自然观察进入适合发生的场景，再由十三印、App、听读与记忆载体选择性展开。</p></div></div>
+    <div class="culture-spread">
+      <article class="culture-main"><div><div class="micro">CONTENT ENGINE / NOT BACKGROUND TAXONOMY</div><h3>从地方叙事，<br>回到眼前山水。</h3><p>清江石书不要求游客先完成一套知识学习。先看江、山、峰、植物、岩壁与路径，再决定是否打开一个故事、一段比较或一种地方解释。</p></div><div class="culture-ids"><span>R07 仓禀峰／仓廪峰</span><span>R09 盐水女神峰</span><span>R12 廪君峰</span><span>地名与故事 ≠ 历史现场证明</span></div></article>
+      <div class="culture-scenes"><article><div class="micro">LOCAL STORY</div><h4>名字从哪里来？</h4><p>保留地方命名、传说与文本传统，同时把未确认的现场等价关系保持开放。</p></article><article><div class="micro">LANDSCAPE KNOWLEDGE</div><h4>为什么看起来不同？</h4><p>先比较形态与关系，再进入自然解释；物种、岩性、年代与精确成因不从外观反推。</p></article><article><div class="micro">TRADITIONAL VIEW</div><h4>怎样理解一片山水？</h4><p>传统环境观念作为文化阅读，不承担科学因果、工程判断或安全依据。</p></article></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="journey">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">02 / N2 · JOURNEY</div><div><h2>一趟旅行，<br>四个始终成立的动作。</h2><p>BOAT、CABLE、WALK 改变观看尺度；RETURN 保证游客始终知道怎么离开。十三印不拥有路线主权，手机也不是通行证。</p></div></div>
+    <div class="journey-track">
+      <article class="journey-step"><div class="journey-dot">BOAT</div><h3>水上看清江</h3><p>江面、峡谷、声音和长距离观看。作为 access / view variant，不强行成为每个人的固定一站。</p></article>
+      <article class="journey-step"><div class="journey-dot">CABLE</div><h3>空中跨两岸</h3><p>先承担交通与回程，再提供移动视点。R01 不设置强制 UI、长解释或必做触发。</p></article>
+      <article class="journey-step"><div class="journey-dot">WALK</div><h3>山中近看</h3><p>进入多分支 / 回环步行网络，身体开始面对坡地、植物、岩壁、疲劳、停留与转折。</p></article>
+      <article class="journey-step"><div class="journey-dot">RETURN</div><h3>随时可以回来</h3><p>纸图、人工服务、标识与数字服务互补。UNKNOWN 不伪装为正常开放，CLOSED 不被游戏状态覆盖。</p></article>
+    </div>
+    <div class="journey-note"><div><b>路线不是 13 个点。</b><br>R01–R13 是完整可选内容库，可以被发现、错序、跳过或以后再读。</div><div><b>无手机不是降级体验。</b><br>路线、服务、回程与关键判断必须仍由真实空间、纸图和现场服务成立。</div></div>
+  </div>
+</section>
+
+<section class="chapter green" id="map">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">03 / N2 · GAME MAP</div><div><h2>像探索游戏，<br>但不把现实路线变成关卡。</h2><p>游戏感来自附近内容、个人轨迹和轻量发现；路线、安全、关闭和回程仍由真实服务系统决定。</p></div></div>
+    <div class="map-stage">
+      <div class="map-frame"><object data="../digital-currentization/app-game-map-v1.2/assets/qingjiang-game-map-v1_2.svg" type="image/svg+xml" aria-label="清江探索地图 v1.2"></object></div>
+      <aside class="map-copy"><div><div class="micro">BRANCH / LOOP / OPTIONAL CONTENT</div><h3>附近还有什么，<br>比“下一关是什么”更重要。</h3><div class="map-rules"><div><b>Route ≠ Task Chain</b><p>十三印作为内容标记出现，不构成必须顺序完成的导航。</p></div><div><b>Transport first</b><p>索道首先承担交通和回程，再承担观看与内容触发。</p></div><div><b>NTS relation</b><p>当前地图表达拓扑与相对关系，不宣称 GPS、实测距离、坡度或实时开放状态。</p></div></div></div><p class="muted">Current merged source: `app-game-map-v1.2`.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="chapter dark" id="app">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">04 / DIGITAL COMPANION</div><div><h2>手机出现时，<br>像一个隐性的旅行助手。</h2><p>TODAY / ROUTE / READ / MY BOOK 构成数字体验主结构；Service / Return 永久可达。数字内容能出现、减弱或消失，不重新夺走真实景观的第一阅读。</p></div></div>
+    <div class="app-layout">
+      <aside class="app-copy"><div class="micro">ACTUAL MERGED APP ARTIFACT</div><h3>不再用模拟手机<br>代替产品本体。</h3><p>这一版 Web 直接消费当前仓库的 portable App/Game Map，而不是重新画三张“像 App 的示意图”。</p><div class="app-principles"><div>REAL QINGJIANG FIRST</div><div>NORMAL / DEGRADED / CLOSED / UNKNOWN</div><div>FULL / LIGHT / OFF</div><div>OFFLINE / NO-PHONE CONTINUITY</div><div>RETURN PRIORITY</div></div></aside>
+      <div><div class="app-shell"><iframe src="../digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html" title="清江数字体验原型"></iframe></div><div class="app-foot">Behavior states support the experience; they are not public dashboard chapters. Current v2 framework does not silently promote open PR #144 pixels over merged/current authority.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="imprints">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">05 / THIRTEEN IMPRINTS</div><div><h2>十三印完整保留，<br>但每一印只是一次可选阅读。</h2><p>它们不再平均占据十三个任务卡，而是按真正适合发生的文化、观察、身体和空间问题进入旅行。</p></div></div>
+    <div class="imprint-rail">
+      <article class="imprint"><strong>01</strong><h3>红岩嘴</h3><small>移动视点 / 识别<br>无强制 UI</small></article>
+      <article class="imprint"><strong>02</strong><h3>华中第一藤</h3><small>植物时间 / 观察<br>物种证据 OPEN</small></article>
+      <article class="imprint"><strong>03</strong><h3>铁券天书</h3><small>岩面 / 过程比较<br>地质解释 source-gated</small></article>
+      <article class="imprint"><strong>04</strong><h3>母子相望</h3><small>形态 / 地方命名<br>比较与讲述</small></article>
+      <article class="imprint"><strong>05</strong><h3>红花石林</h3><small>峰林识别<br>Landscape first</small></article>
+      <article class="imprint hot"><strong>06</strong><h3>多级阶地·不对称河谷</h3><small>OPEN / RECOVER / COMPARE<br>主场景深读</small></article>
+      <article class="imprint"><strong>07</strong><h3>仓禀峰／仓廪峰</h3><small>地名 / 形态<br>命名冲突显式保留</small></article>
+      <article class="imprint"><strong>08</strong><h3>文山天书</h3><small>层理 / 表面阅读<br>不虚构岩性</small></article>
+      <article class="imprint"><strong>09</strong><h3>盐水女神峰</h3><small>地方故事<br>故事 ≠ 史址证明</small></article>
+      <article class="imprint"><strong>10</strong><h3>绝壁天书</h3><small>近距纹理 / trace<br>不虚构地质</small></article>
+      <article class="imprint"><strong>11</strong><h3>金石为开</h3><small>裂隙 / 身体尺度<br>避免伪科学</small></article>
+      <article class="imprint"><strong>12</strong><h3>廪君峰</h3><small>文化文本 / 山水<br>文本 ≠ 现场等价</small></article>
+      <article class="imprint r13"><strong>13</strong><h3>一线天</h3><small>BODY FIRST / PLAY OFF<br>RETURN ON</small></article>
+    </div>
+    <div class="imprint-summary"><article><h4>R06：打开</h4><p>看完整河谷 → 恢复 → 可选比较/解释 → 继续或返回。数字解释只在游客需要时出现。</p></article><article><h4>R13：收束</h4><p>窄处先通过，再解释。游戏、长文本和强 UI 撤退；身体、路线、出口与 Return 获得最高优先级。</p></article></div>
+  </div>
+</section>
+
+<section class="chapter soft" id="scenes">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">06 / SCENE INTERACTION</div><div><h2>不是一套模板，<br>而是两种完全不同的空间节奏。</h2><p>R06 通过开阔视野支持观察、恢复与比较；R13 在高注意力空间主动减少内容。Scene Interaction 的价值来自环境与身体关系，而不是统一交互组件。</p></div></div>
+    <div class="scene-pair">
+      <article class="scene-card"><div class="media-slot" data-fallback="R06 · LANDSCAPE FIRST"><img src="assets/02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png" alt="R06 清江河谷 Landscape First"></div><div class="shade"></div><div class="scene-content"><div class="num">R06</div><h3>先看完整河谷。</h3><p>先比较江、两岸、坡面与视野中的相对关系；需要时才打开简化剖面、内容解释与短恢复支持。</p><div class="scene-actions"><span>LOOK</span><span>RECOVER</span><span>OPTIONAL READ</span><span>CONTINUE / RETURN</span></div></div></article>
+      <article class="scene-card"><div class="media-slot" data-fallback="R13 · BODY FIRST"><img src="assets/04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png" alt="R13 一线天概念关系图"></div><div class="shade"></div><div class="scene-content"><div class="num">R13</div><h3>窄处先让身体通过。</h3><p>追逐、搜寻、计时、长解释关闭；路线、出口、风险边界与 Return 保持可见。该视觉是远程概念关系图，不是现场照片或安全证明。</p><div class="scene-actions"><span>BODY FIRST</span><span>PLAY OFF</span><span>RETURN ON</span></div></div></article>
+    </div>
+    <div class="scene-proof-line"><object data="../design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg" type="image/svg+xml" aria-label="R06 身体使用与并行证明"></object><p><b>感觉 + 怎么成立。</b><br>景观图承担体验第一读；剖面/身体/节点图承担尺度与关系证明。模型和技术图只有在比文字更清楚时进入 MAIN。</p></div>
+  </div>
+</section>
+
+<section class="chapter green" id="audience">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">07 / AUDIENCE DEPTH</div><div><h2>同一片河谷，<br>不是同一种观看。</h2><p>Audience 不做 persona 卡。景观、路线和 Return 保持同一底线，只改变身体支持、注意任务和内容深度。</p></div></div>
+    <div class="audience-stage">
+      <div class="same-scene"><b>ONE SHARED SCENE · R06</b><span>LANDSCAPE / ROUTE / RETURN SHARED</span></div>
+      <div class="depth-flow">
+        <article class="depth-card"><div><div class="body-icon"></div><div class="depth-tag">FAMILY / CHILD</div><h3>一起指出江、两岸与峰形。</h3></div><div class="depth-note">共同发现优先；长读可跳过。</div></article>
+        <article class="depth-card"><div><div class="body-icon"></div><div class="depth-tag">YOUTH / EXPLORER</div><h3>用简化剖面判断自己在哪里。</h3></div><div class="depth-note">短 Reveal 可选；不显示伪精确数值。</div></article>
+        <article class="depth-card"><div><div class="body-icon"></div><div class="depth-tag">ADULT / DEEP READ</div><h3>先看整体，再决定是否深读。</h3></div><div class="depth-note">文化 / 自然解释按证据深度展开。</div></article>
+        <article class="depth-card"><div><div class="body-icon"></div><div class="depth-tag">LOW-STAMINA / RETURN-FIRST</div><h3>先恢复，再决定是否继续。</h3></div><div class="depth-note">Physical support 与 Return 优先；疲劳上升时内容主动降级。</div></article>
+      </div>
+      <div class="audience-rule"><div><b>不是四套景观。</b><br>共享环境不因为人群不同而被复制成四个主题区。</div><div><b>差异必须通过身体与任务可见。</b><br>不再使用 PR #155 中被独立审查判为 REVISE 的等距文本梯级作为 MAIN pixels。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="physical">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">08 / PHYSICAL + SENSORY</div><div><h2>实体设计必须先回答：<br>身体为什么在这里需要它？</h2><p>C23 是技术证明子集，不是整个 Physical 项目。短恢复、步行反馈、长停留与风感候选承担不同身体角色，不能压成一张产品矩阵。</p></div></div>
+    <div class="physical-grid">
+      <article class="physical-asset"><img src="../physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg" alt="栏杆式可拆卸倚靠休息板"><h3>短恢复｜靠一下，再走。</h3><p>服务性小介入。身体尺度、依附关系和维护概念可以深化；最终位置、承载、基础与现场栏杆条件仍需 FIELD / Engineering 校核。</p></article>
+      <article class="physical-asset"><img src="../physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg" alt="步步生光"><h3>步行反馈｜短暂出现，再退场。</h3><p>身体通过 → 低强度反馈 → 淡出 / 关闭。无分数、扫码和任务链；DAY / FAULT / MAINTENANCE 可直接 OFF。</p></article>
+    </div>
+    <div class="physical-secondary"><article class="candidate"><div><div class="shape fluid"></div><h4>山体流体休憩</h4><p>只在真正值得长停留的一处景观条件中竞争 Physical Hero。对象、眩光、拥挤或维护负担一旦抢过清江第一读，就应退场。</p></div><div class="micro">CONDITIONAL LONG-STAY FAMILY · SOURCE-BOUND</div></article><article class="candidate"><div><div class="shape wind"></div><h4>清风吟</h4><p>自然风是基线；设计只提供低密度、可关闭的感官提示。避免许愿墙、密集悬挂和旅游装饰化。</p></div><div class="micro">LOW-DENSITY SENSORY FAMILY · SOURCE-BOUND</div></article></div>
+    <div class="physical-rule">任何进入 MAIN 的实体对象都应逐步呈现：`scene → body action → use → body scale → plan/section/axon/exploded proof → material/CMF → mounting/maintenance concept → environment sensitivity → FIELD OPEN items`。</div>
+  </div>
+</section>
+
+<section class="chapter soft" id="memory">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">09 / MEMORY + IP</div><div><h2>离开以后，<br>带走的是自己走过的那部分清江。</h2><p>清江旅记与“我的石书”分别保存纸上的身体痕迹和数字里的选择记录；没有 13/13，也没有强制纪念品清单。</p></div></div>
+    <div class="memory-layout"><div class="journal"><img src="../physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg" alt="清江旅记"></div><article class="memory-copy"><div><div class="micro" style="color:#9fc8bd">PHYSICAL × DIGITAL MEMORY</div><h3>部分经历，<br>也可以是完整旅行。</h3><p>纸本可以独立完成无手机旅程；数字 My Book 保存路线痕迹、识别、选择和再访线索。两者互补，谁都不是谁的备份。</p><div class="memory-chain"><span>RETURN</span><span>RECOGNITION</span><span>RECORD</span><span>TAKE AWAY</span></div></div><div class="memory-extensions"><span>清江一线</span><span>清江雾气</span><span>清风吟 memory</span><span>红花峰崽 / family layer</span></div></article></div>
+  </div>
+</section>
+
+<section class="chapter green" id="technical">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">10 / TECHNICAL PROOF</div><div><h2>技术图证明空间关系，<br>但不替代真实清江。</h2><p>C22 / C23 / Model 进入作品是为了说明“怎么成立”，不是为了把项目变成灰模或工程报告。Technical Proof 必须可见、可读，同时保持从属。</p></div></div>
+    <div class="tech-layout"><div class="tech-visual"><object data="../design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg" type="image/svg+xml" aria-label="R06 技术证明"></object></div><div class="tech-stack"><article class="tech-item"><strong>C22｜空间与路线关系</strong><p>承担 masterplan / network / section 的关系权威；当前不是现场实测 survey。</p></article><article class="tech-item"><strong>C23｜概念深化</strong><p>承担 F01/F02/F03、路线/容量/风险/材料/维护/构造研究；是 validation subset，不是 Physical 全集。</p></article><article class="tech-item"><strong>Model｜选择性证明</strong><p>SEC-A 为首选技术剖面；R06 node 与景观并置；Hero clay 只有比线稿更清楚时才进入；overall Axon 保持 SUPPORT。</p></article><div class="tech-order">真实景观<br>→ 身体与空间<br>→ 技术证明<br>→ FIELD 校核</div></div></div>
+  </div>
+</section>
+
+<section class="chapter dark" id="visual-motion">
+  <div class="wrap">
+    <div class="chapter-head"><div class="idx">11 / VISUAL + MOTION</div><div><h2>纸、墨、线、印，<br>不是装饰，是信息节奏。</h2><p>视觉系统要让真实清江始终是第一读；运动不是静态展板的缩放播放。现有 86 秒影片结构保留为 lineage，但需要把 App、Physical、Memory 和 Return 重新放回旅程。</p></div></div>
+    <div class="motion-grid">
+      <div class="motion-gallery"><div class="motion-shot media-slot" data-fallback="HERO"><img src="assets/QJD_V11_01_HERO_1920x1080.png" alt="Hero"><span class="label">HERO / REAL QINGJIANG</span></div><div class="motion-shot media-slot" data-fallback="R06"><img src="assets/03_R06_RELATION_REVEAL_KEEP_WITH_HOLD_1920x1080.png" alt="R06 Relation Reveal"><span class="label">R06 / LANDSCAPE → RELATION</span></div><div class="motion-shot media-slot" data-fallback="R13"><img src="assets/04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png" alt="R13"><span class="label">R13 / BODY FIRST</span></div><div class="motion-shot media-slot" data-fallback="RETURN"><img src="assets/QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png" alt="Return"><span class="label">RETURN / FAIL-CLOSED</span></div></div>
+      <aside class="motion-copy"><div><div class="micro" style="color:#9ec8bc">86s LINEAGE / RE-EDIT</div><h3>镜头从“解释项目”<br>改成“走完一次清江”。</h3><div class="timeline"><div><span>OPEN</span><b>真实清江 + 游程</b></div><div><span>MOVE</span><b>BOAT / CABLE / WALK + Game Map</b></div><div><span>READ</span><b>R06 / Thirteen Imprints / Audience</b></div><div><span>BODY</span><b>Physical / Sensory / R13 withdrawal</b></div><div><span>CLOSE</span><b>Return → Memory / IP</b></div></div></div><p>Current motion lineage is `KEEP STRUCTURE / RE-EDIT`; this chapter does not claim a new final film export.</p></aside>
+    </div>
+  </div>
+</section>
+
+<section class="return" id="return">
+  <div class="full-media media-slot" data-fallback="RETURN · REAL QINGJIANG"><img src="assets/QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png" alt="清江回程视觉"></div>
+  <div class="return-inner"><div class="kicker">12 / RETURN · INDEPENDENT CLOSURE</div><h2>先确定怎么回来，<br>再决定还要看什么。</h2><p>回程不是尾声，而是全程都存在的设计层。疲劳、天气、网络或运营条件变化时，内容密度下降，路线、服务、纸图与无手机路径提升优先级；UNKNOWN 采用 fail-closed，不画成正常开放。</p><div class="return-actions"><span>RETURN PRIORITY</span><span>NO-PHONE COMPLETE</span><span>UNKNOWN = FAIL-CLOSED</span><span>CLOSED ≠ GAME STATE</span></div></div>
+</section>
+
+<footer class="footer"><span>QINGJIANG STONE BOOK · C04 · FINAL WEB FRAMEWORK v2 · PRODUCER CANDIDATE</span><span>FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION · NTS · NOT FOR CONSTRUCTION</span></footer>
+<script>
+document.querySelectorAll('.media-slot img').forEach(function(img){
+  function fail(){var p=img.closest('.media-slot');if(p){p.classList.add('missing')}img.style.display='none'}
+  if(img.complete && img.naturalWidth===0) fail(); else img.addEventListener('error',fail,{once:true});
+});
+</script>
+</body>
+</html>
