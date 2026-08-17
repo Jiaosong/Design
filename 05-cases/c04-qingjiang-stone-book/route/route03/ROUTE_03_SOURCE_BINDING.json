@@ -1,0 +1,32 @@
+{
+  "figure_id": "ROUTE-03",
+  "source_file": "qingjiang_route_guide_translated.svg",
+  "source_role": "user-provided relational route topology",
+  "preserved": [
+    "main path geometry",
+    "all source dashed branch geometries",
+    "17 named source nodes",
+    "A-D route modes",
+    "north cue",
+    "parking lot",
+    "marina",
+    "tourist centre"
+  ],
+  "removed_or_reframed": [
+    "dark game-map background",
+    "glow",
+    "duplicate node-order strip",
+    "per-node English repetition",
+    "large UI-style route-mode card",
+    "decorative facility icons"
+  ],
+  "not_proved": [
+    "GPS",
+    "distance",
+    "slope",
+    "time",
+    "current operating status",
+    "survey geometry"
+  ],
+  "state": "EXECUTED / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING"
+}
