@@ -36,6 +36,24 @@
       "prompt": "将同一份清洗数据先用声明式图表规范生成，再导出 SVG 进行 Illustrator 风格的排版与注释深化。",
       "expected_output": "Explicit data->transform->mark->channel->scale grammar, editable SVG bridge, refinement that changes typography/composition but not values/axes/topology/evidence state, followed by reconciliation against the cleaned data/spec.",
       "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "现有信息是一个多分支关系网络，但一个现成 infographic 模板把它自动画成 8 个连续步骤。请保留全部信息并重构成正确的专业图，不得因为模板更整齐就接受线性顺序。",
+      "expected_output": "Classify information structure before renderer/template selection, reject sequence semantics, preserve stable node/edge roles, select a relation/topology or custom editorial form, label computational/diagrammatic layout boundaries, and keep every original information item without converting branch choice into completion order.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "一篇研究页中混有官方值、推算区间、情景模拟和设计决定。生成可视化叙事时，正文要简洁，但后续必须能恢复每个重要数字的原值、单位、来源、证据状态和 does-not-prove。",
+      "expected_output": "Create a semantic entity companion linking concise display text to raw_value/unit/source_ref/evidence_state/claim_role/detail/does_not_prove, preserving OBSERVED/SOURCE-GROUNDED/INFERRED/SCENARIO/DECISION distinctions; never serialize scenario or simulated values as observed facts.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "用 G6 或 force layout 把节点自动排开后，图看起来像一张精确的空间分布图。请审查并修复，使拓扑可读但不误导为真实距离、方位或地理位置。",
+      "expected_output": "Keep stable IDs and source/target topology, treat force positions as computational layout rather than evidence, remove or relabel unsupported spatial implications, use deterministic diagrammatic coordinates if needed for presentation, and preserve explicit RELATIONAL/NTS/NOT GEOREFERENCED truth boundaries.",
+      "files": []
     }
   ]
 }
