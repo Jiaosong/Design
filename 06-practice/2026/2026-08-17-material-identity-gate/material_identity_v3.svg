@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+<defs>
+ <linearGradient id="stoneLight" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#aaa9a3"/><stop offset=".42" stop-color="#858781"/><stop offset="1" stop-color="#60645f"/></linearGradient>
+ <linearGradient id="steelLight" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4b332b"/><stop offset=".34" stop-color="#7b513b"/><stop offset=".48" stop-color="#b47b58"/><stop offset=".57" stop-color="#6d4937"/><stop offset="1" stop-color="#3c2b27"/></linearGradient>
+ <linearGradient id="woodLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a18563"/><stop offset=".48" stop-color="#7b654d"/><stop offset="1" stop-color="#59493d"/></linearGradient>
+ <filter id="softNoise"><feTurbulence type="fractalNoise" baseFrequency=".025 .055" numOctaves="3" seed="11"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .15"/></feComponentTransfer></filter>
+ <filter id="rustNoise"><feTurbulence type="fractalNoise" baseFrequency=".018 .035" numOctaves="4" seed="22"/><feColorMatrix values=".9 0 0 0 0 .45 0 0 0 0 .15 0 0 0 0 0 0 0 .28 0"/></filter>
+</defs>
+<rect width="1800" height="1120" fill="#efede7"/><rect x="42" y="38" width="1716" height="1042" rx="18" fill="#fff" stroke="#d4d1c9"/>
+<text x="88" y="102" font-family="Arial" font-size="30" font-weight="700" fill="#111">OLEANDER / MATERIAL IDENTITY CALIBRATION</text>
+<text x="88" y="138" font-family="Arial" font-size="14" fill="#666">V3 · RESPONSE + SCALE + EDGE · REPRESENTATIONAL, NOT A PBR RENDER OR MEASURED SAMPLE</text>
+<text x="88" y="200" font-family="Arial" font-size="18" font-weight="700">C / MATERIAL IDENTITY — KEEP FOR TRAINING</text>
+<text x="88" y="226" font-family="Arial" font-size="12" fill="#777">Texture is reduced from “pattern” to surface variation; material distinction must remain legible even after color is removed.</text>
+<g font-family="Arial">
+<rect x="88" y="265" width="500" height="625" rx="14" fill="#f7f7f4" stroke="#ccc9c1"/>
+<rect x="110" y="290" width="456" height="390" rx="8" fill="url(#stoneLight)"/><rect x="110" y="290" width="456" height="390" rx="8" filter="url(#softNoise)" opacity=".72"/>
+<path d="M142 398 C198 380 250 405 304 390 M260 520 C320 505 355 540 420 518 M382 340 C430 328 468 345 532 326 M160 610 C205 590 270 615 338 596" fill="none" stroke="#c1c1bb" stroke-width="2" opacity=".35"/>
+<path d="M110 331 C248 300 410 323 566 294" stroke="#d8d8d2" stroke-width="48" opacity=".16" fill="none"/><path d="M110 671 L566 671" stroke="#4d504b" stroke-width="12" opacity=".78"/>
+<text x="122" y="720" font-size="20" font-weight="700">LIMESTONE</text><text x="122" y="750" font-size="12" fill="#555">dielectric · high roughness · broad soft response</text><text x="122" y="775" font-size="12" fill="#555">low-amplitude mineral variation · blunt edge</text><line x1="122" y1="808" x2="530" y2="808" stroke="#bbb"/><text x="122" y="835" font-size="11" fill="#777">NO TILE-LIKE REPEAT AT REVIEW SCALE</text>
+<rect x="650" y="265" width="500" height="625" rx="14" fill="#f7f7f4" stroke="#ccc9c1"/>
+<rect x="672" y="290" width="456" height="390" rx="8" fill="url(#steelLight)"/><rect x="672" y="290" width="456" height="390" rx="8" filter="url(#rustNoise)" opacity=".82"/>
+<path d="M903 290 L958 680" stroke="#f5c29d" stroke-width="28" opacity=".23"/><path d="M672 303 L1128 303" stroke="#d1a183" stroke-width="7" opacity=".55"/><path d="M672 676 L1128 676" stroke="#2c211e" stroke-width="9" opacity=".9"/>
+<path d="M714 436 C770 420 835 448 898 427 M940 562 C1000 538 1055 560 1098 545" fill="none" stroke="#c28a68" stroke-width="3" opacity=".22"/>
+<text x="684" y="720" font-size="20" font-weight="700">WEATHERING STEEL</text><text x="684" y="750" font-size="12" fill="#555">conductor cue · mid roughness · tighter response</text><text x="684" y="775" font-size="12" fill="#555">non-periodic oxidation variation · sharper edge</text><line x1="684" y1="808" x2="1092" y2="808" stroke="#bbb"/><text x="684" y="835" font-size="11" fill="#777">ORANGE ALONE MUST NOT CARRY IDENTITY</text>
+<rect x="1212" y="265" width="500" height="625" rx="14" fill="#f7f7f4" stroke="#ccc9c1"/>
+<rect x="1234" y="290" width="456" height="390" rx="8" fill="url(#woodLight)"/>
+<g fill="none" stroke="#c5a57d" stroke-width="1.4" opacity=".42"><path d="M1234 322 C1330 302 1380 338 1465 316 S1600 320 1690 300"/><path d="M1234 347 C1320 326 1400 365 1488 340 S1615 350 1690 327"/><path d="M1234 382 C1300 356 1385 402 1460 372 S1600 386 1690 358"/><path d="M1234 430 C1325 405 1405 446 1480 420 S1600 430 1690 405"/><path d="M1234 492 C1320 466 1375 510 1465 480 S1600 493 1690 468"/><path d="M1234 558 C1335 530 1410 579 1490 548 S1610 560 1690 538"/><path d="M1234 628 C1310 602 1395 648 1480 617 S1605 628 1690 608"/></g>
+<path d="M1244 300 L1244 670" stroke="#b89b77" stroke-width="7" opacity=".45"/><path d="M1680 300 L1680 670" stroke="#4b3d34" stroke-width="7" opacity=".68"/><path d="M1234 326 L1690 326" stroke="#dfc49d" stroke-width="20" opacity=".16"/>
+<text x="1246" y="720" font-size="20" font-weight="700">TIMBER</text><text x="1246" y="750" font-size="12" fill="#555">dielectric · mid/high roughness · directional grain</text><text x="1246" y="775" font-size="12" fill="#555">grain scale follows object scale · side-edge distinction</text><line x1="1246" y1="808" x2="1654" y2="808" stroke="#bbb"/><text x="1246" y="835" font-size="11" fill="#777">DIRECTION MATTERS MORE THAN BROWN HUE</text>
+</g>
+<line x1="88" y1="946" x2="1712" y2="946" stroke="#d0cec7"/><text x="88" y="986" font-family="Arial" font-size="13" font-weight="700">TRANSFER RULE /</text><text x="210" y="986" font-family="Arial" font-size="13" fill="#333">Material identity = coherent surface response + plausible texture scale + edge behavior; color and labels remain secondary evidence.</text>
+<text x="88" y="1022" font-family="Arial" font-size="12" fill="#777">PBR categories referenced from glTF 2.0 metallic-roughness. This SVG is a calibration diagram, not physical material validation.</text>
+</svg>
