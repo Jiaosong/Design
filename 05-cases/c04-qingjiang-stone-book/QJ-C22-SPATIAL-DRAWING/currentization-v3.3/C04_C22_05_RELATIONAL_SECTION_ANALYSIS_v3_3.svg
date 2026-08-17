@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 2384 1684">
+<defs><style>
+.paper{fill:#f6f3ec}.field{fill:#fbfaf6}.hair{stroke:#c8cbc4;stroke-width:1.2;fill:none}.datum{stroke:#aab0ac;stroke-width:1.3;fill:none;stroke-dasharray:7 7}
+.cut{stroke:#17201e;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}.primary{stroke:#26302d;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}.secondary{stroke:#7b837f;stroke-width:1.7;fill:none}.frozen{stroke:#aeb3af;stroke-width:1.3;fill:none}.water{fill:#c7dddb;stroke:#6f9795;stroke-width:1.7}.open{stroke:#c7594f;stroke-width:2.2;fill:none;stroke-dasharray:8 7}.flow{stroke:#17201e;stroke-width:2.6;fill:none;stroke-linecap:round}.release{stroke:#c7594f;stroke-width:2.8;fill:none;stroke-linecap:round}.zone{fill:#c7594f;fill-opacity:.09;stroke:#c7594f;stroke-width:1.5;stroke-dasharray:6 6}
+.cap{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;fill:#707873}.title{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:48px;font-weight:700;fill:#17201e}.claim{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:24px;font-weight:700;fill:#17201e}.sub{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;fill:#57605c}.viewtitle{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:20px;font-weight:700;fill:#17201e}.label{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;font-weight:600;fill:#17201e}.sm{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:14px;fill:#65706b}.micro{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:11px;fill:#757d79}.railhead{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:18px;font-weight:700;fill:#17201e}
+</style>
+<marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#17201e"/></marker>
+<marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#c7594f"/></marker>
+</defs>
+<rect class="paper" width="2384" height="1684"/>
+<g id="HIERARCHY_FRAME"><line x1="74" y1="62" x2="2310" y2="62" class="hair"/><line x1="74" y1="1512" x2="2310" y2="1512" class="hair"/></g>
+<g id="SHEET_HEADER"><text x="74" y="103" class="cap">C04 / C22 · RELATIONAL SECTION ANALYSIS · REV 3.3</text><text x="74" y="163" class="title">空间剖面分析｜Transport / Body / Compression / Return</text><text x="2310" y="103" text-anchor="end" class="sm">NTS · FIELD OPEN · NOT FOR CONSTRUCTION</text></g>
+<g id="PRIMARY_CLAIM"><text x="74" y="220" class="claim">剖面不是“说明三件事”，而是让移动、身体尺度与空间压缩关系在图上直接成立。</text><text x="74" y="251" class="sub">SEC-A 证明跨江移动与观看；SEC-C 证明 Approach → Compression → Release / Return；R06 只保留冻结上下文。</text></g>
+<g id="PRIMARY_DRAWING_FIELD"><rect x="74" y="292" width="1740" height="1160" class="field"/>
+<g id="C22_SEC_A">
+<text x="104" y="334" class="cap">C22-SEC-A · TRANSPORT + MOVING VIEW · PRIMARY</text>
+<text x="104" y="368" class="viewtitle">跨江首先是交通关系；观看发生在移动中，不用强制 UI 才成立。</text>
+<line x1="104" y1="705" x2="1778" y2="705" class="datum"/><text x="108" y="728" class="micro">RELATIONAL DATUM / NOT A LEVEL</text>
+<g id="SEC_A_SOURCE_GEOMETRY" transform="translate(10 64) scale(.73)">
+<path d="M 119.195731 625.843652 C 372.486704 603.496977 521.482773 536.449136 730.080395 499.198166 C 834.379206 479.828442 908.873334 521.548748 975.925081 581.146394" class="cut"/>
+<path d="M 1340.96506 610.943264 C 1489.961129 543.899331 1653.85368 432.150325 1817.754044 402.353456 C 2011.443464 369.57182 2145.543052 409.799743 2220.041087 476.847583" class="cut"/>
+<path id="CABLE_AXIS" d="M 715.180007 469.397389 L 1847.550914 365.102485" class="primary"/>
+<circle cx="744.98" cy="466.42" r="16.4" class="primary"/><circle cx="1814.77" cy="368.08" r="16.4" class="primary"/>
+<rect x="943.14" y="457.99" width="50.66" height="32.78" rx="7" class="secondary"/><rect x="1241.13" y="430.54" width="50.66" height="32.78" rx="7" class="secondary"/><rect x="1539.12" y="403.10" width="50.66" height="32.78" rx="7" class="secondary"/>
+</g>
+<rect x="720" y="534" width="270" height="72" class="water"/><text x="855" y="577" text-anchor="middle" class="label">清江 / QINGJIANG</text>
+<path d="M545 500 L1375 425" class="flow" marker-end="url(#arrDark)"/><path d="M1375 450 L545 525" class="flow" marker-end="url(#arrDark)"/>
+<text x="960" y="448" text-anchor="middle" class="sm" transform="rotate(-5 960 448)">BIDIRECTIONAL TRANSPORT RELATION</text>
+<g id="MOVING_VIEW"><circle cx="810" cy="470" r="6" fill="#5f8f8d"/><path d="M810 470 L760 416 M810 470 L860 410" class="secondary"/><text x="690" y="404" class="sm">MOVING VIEW</text><text x="690" y="425" class="micro">relation / not camera survey</text></g>
+<g id="PUBLIC_REFERENCE"><path d="M460 390 L1398 306" class="secondary"/><text x="880" y="330" class="sm">1056 m · official reported cable line length · reference only / NOT SCALED</text><path d="M1550 335 L1550 548" class="open"/><text x="1575" y="432" class="label" fill="#c7594f">ΔH ≈ 156 m</text><text x="1575" y="455" class="micro">public reported difference / reference only</text></g>
+</g>
+<line x1="104" y1="783" x2="1778" y2="783" class="hair"/>
+<g id="C22_SEC_C">
+<text x="104" y="826" class="cap">C22-SEC-C · R13 NATURAL CONVERGENCE · PRIMARY</text>
+<text x="104" y="860" class="viewtitle">身体路径先读：Approach → Compression → Release / Return；精确宽高、安全与容量继续 FIELD OPEN。</text>
+<g id="SEC_C_SOURCE_GEOMETRY" transform="translate(8 248) scale(.73)">
+<path d="M 178.797284 1445.325939 C 327.793353 1378.278099 491.68981 1333.576934 677.932943 1341.027128 C 849.275688 1348.477322 953.574499 1400.624775 1042.972922 1482.573003" class="cut"/>
+<path d="M 1370.765837 1482.573003 C 1460.160353 1385.728293 1564.455257 1341.027128 1728.355621 1341.027128 C 1922.052855 1341.027128 2071.048924 1385.728293 2220.041087 1460.222421" class="cut"/>
+</g>
+<path d="M220 1218 C500 1170 725 1168 878 1186 C1012 1200 1122 1208 1522 1248" class="flow" marker-end="url(#arrDark)"/>
+<path d="M810 1010 C840 980 922 968 972 1005 L972 1335 L810 1335 Z" class="zone"/>
+<text x="352" y="1110" class="label">APPROACH</text><text x="827" y="965" class="label" fill="#c7594f">COMPRESSION</text><text x="1265" y="1138" class="label">RELEASE</text>
+<path d="M1495 1245 C1600 1250 1660 1292 1725 1350" class="release" marker-end="url(#arrRed)"/><text x="1588" y="1324" class="label" fill="#c7594f">RETURN / EXIT</text>
+<g id="BODY_SEQUENCE" stroke="#4e5753" fill="none" stroke-width="2.1">
+<g transform="translate(500 1152)"><circle cx="0" cy="0" r="9" fill="#4e5753"/><line x1="0" y1="10" x2="0" y2="64"/><line x1="0" y1="30" x2="-18" y2="48"/><line x1="0" y1="30" x2="18" y2="48"/><line x1="0" y1="64" x2="-16" y2="96"/><line x1="0" y1="64" x2="16" y2="96"/></g>
+<g transform="translate(890 1130)"><circle cx="0" cy="0" r="9" fill="#4e5753"/><line x1="0" y1="10" x2="0" y2="64"/><line x1="0" y1="30" x2="-15" y2="47"/><line x1="0" y1="30" x2="15" y2="47"/><line x1="0" y1="64" x2="-14" y2="94"/><line x1="0" y1="64" x2="14" y2="94"/></g>
+<g transform="translate(1310 1168)"><circle cx="0" cy="0" r="9" fill="#4e5753"/><line x1="0" y1="10" x2="0" y2="64"/><line x1="0" y1="30" x2="-18" y2="48"/><line x1="0" y1="30" x2="18" y2="48"/><line x1="0" y1="64" x2="-16" y2="96"/><line x1="0" y1="64" x2="16" y2="96"/></g>
+</g>
+<path d="M810 1010 V1360 M972 1005 V1360" class="open"/><text x="891" y="1388" text-anchor="middle" class="sm" fill="#c7594f">W / H / SURFACE / SLIP / GUARD / CAPACITY = FIELD VERIFY</text>
+</g>
+</g>
+<g id="ANNOTATION_RAIL"><line x1="1855" y1="292" x2="1855" y2="1452" class="hair"/>
+<text x="1892" y="330" class="cap">RELATION / TRUTH RAIL</text>
+<text x="1892" y="380" class="railhead">SEC-A / WHAT IS DRAWN</text><text x="1892" y="410" class="sm">bank profile + river + cable relation +</text><text x="1892" y="432" class="sm">bidirectional transport + moving-view cue.</text>
+<text x="1892" y="480" class="railhead">SEC-C / WHAT IS DRAWN</text><text x="1892" y="510" class="sm">body sequence + narrowing zone + passage line +</text><text x="1892" y="532" class="sm">release / return continuation.</text>
+<line x1="1892" y1="568" x2="2296" y2="568" class="hair"/>
+<text x="1892" y="610" class="railhead">SEC-B / R06 · FROZEN</text>
+<g id="C22_SEC_B_FROZEN" opacity=".50" transform="translate(1865 635) scale(.16)"><path d="M126.65 1087.73 C491.69 1043.03 789.68 968.53 1132.37 946.19 C1460.16 923.84 1802.85 871.69 2220.04 856.79" class="frozen"/><path d="M461.89 990.89 C700.28 961.09 893.98 931.29 1132.37 920.86" class="frozen"/></g>
+<text x="1892" y="842" class="sm">R06 finished context only. No new geometry,</text><text x="1892" y="864" class="sm">dimension or node family introduced here.</text>
+<line x1="1892" y1="900" x2="2296" y2="900" class="hair"/>
+<text x="1892" y="942" class="railhead">E → F → D</text><text x="1892" y="976" class="sm">E-01: existing relational section carriers.</text><text x="1892" y="1002" class="sm">F-01: movement / compression can be read</text><text x="1892" y="1024" class="sm">without relying on prose.</text><text x="1892" y="1050" class="sm">D-01: UI/content remains subordinate to</text><text x="1892" y="1072" class="sm">transport, body passage and Return.</text>
+<line x1="1892" y1="1110" x2="2296" y2="1110" class="hair"/>
+<text x="1892" y="1152" class="railhead" fill="#c7594f">FIELD OPEN</text><text x="1892" y="1182" class="sm">survey profile · exact cable geometry · R13 W/H</text><text x="1892" y="1204" class="sm">surface/slip/guard/capacity · operational state</text>
+<text x="1892" y="1284" class="micro">Producer state: EXECUTED / SELF-CHECKED</text><text x="1892" y="1306" class="micro">Independent Design Review: PENDING</text>
+</g>
+<g id="FOOTER"><text x="74" y="1560" class="sm">DRW-C04-C22-05 · v3.3 relational analysis rebuild · source carriers preserved where available</text><text x="2310" y="1560" text-anchor="end" class="sm">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION</text></g>
+</svg>
