@@ -74,10 +74,14 @@ def _revision_triplet(u):
 
 
 def _profile_radius_triplet(s, family, u, revision=False):
-    value, d1, d2 = _bezier_scalar_triplet(base.own(s, family)["control_values"], u)
+    base_value, base_d1, base_d2 = _bezier_scalar_triplet(base.own(s, family)["control_values"], u)
     if revision and family == "THUMB_SIDE_PLAN":
         m, m1, m2 = _revision_triplet(u)
-        value, d1, d2 = value * m, d1 * m + value * m1, d2 * m + 2.0 * d1 * m1 + value * m2
+        value = base_value * m
+        d1 = base_d1 * m + base_value * m1
+        d2 = base_d2 * m + 2.0 * base_d1 * m1 + base_value * m2
+    else:
+        value, d1, d2 = base_value, base_d1, base_d2
     env, env1, env2 = _base_envelope_triplet(s, u)
     return (
         value * env,
