@@ -118,12 +118,17 @@ def sources(source, collection):
         lower_data["role"],
         "Z-",
     )
-    # Existing Source family retained: this is a relation property, not a seventh geometry family.
-    # Although stored on LOWER_RETURN_PROFILE for ownership continuity, r2.point() applies it to
-    # PALM / THUMB / OPPOSITE / LOWER amplitudes together as the shared termination envelope.
     lower["termination_envelope_exponent"] = termination_exponent(lower_data)
     lower["termination_envelope_semantics"] = "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE"
     lower["termination_envelope_formula"] = "sin(pi*u)^exponent"
+    if "termination_cap_onset_u" in lower_data:
+        lower["termination_cap_onset_u"] = float(lower_data["termination_cap_onset_u"])
+        lower["termination_cap_law"] = str(lower_data.get("termination_cap_law", r2.CAP_LAW))
+        lower["termination_cap_semantics"] = str(lower_data.get("termination_cap_semantics", r2.CAP_SEMANTICS))
+        lower["termination_cap_endpoint_section"] = str(
+            lower_data.get("termination_cap_endpoint_section", r2.CAP_ENDPOINT_SECTION)
+        )
+        lower["termination_cap_numeric_dof_count"] = 1
     out += [palm, thumb, opposite, lower]
 
     deck_data = own(source, "INTERFACE_DECK_BOUNDARY")
