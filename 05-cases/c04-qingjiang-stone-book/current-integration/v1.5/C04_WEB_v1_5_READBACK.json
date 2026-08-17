@@ -1,0 +1,26 @@
+{
+  "version": "v1.5",
+  "scope": "bounded changed-fragment browser readback",
+  "full_runtime_rerun": false,
+  "full_runtime_reason": "browser environment blocks local/file URL navigation; v1.4 full runtime QC inherited as execution provenance only",
+  "renders": {
+    "desktop": "1920x1080",
+    "mobile": "390x844"
+  },
+  "changed_fragments": [
+    "culture_r13",
+    "fluid_rest",
+    "qingfengyin",
+    "motion_ARRIVE",
+    "motion_CROSS",
+    "motion_OPEN",
+    "motion_PASS",
+    "motion_REMEMBER",
+    "motion_RETURN"
+  ],
+  "horizontal_overflow": {
+    "1920": false,
+    "390": false
+  },
+  "design_verdict": "KEEP_AFTER_REVISION / 8.6 / WEB MAIN CANDIDATE / NO PROJECT PROMOTION"
+}

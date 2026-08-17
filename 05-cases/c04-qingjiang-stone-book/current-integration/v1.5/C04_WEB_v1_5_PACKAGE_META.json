@@ -1,0 +1,8 @@
+{
+  "version": "v1.5",
+  "package": "C04_WEB_v1_5_BOUNDED_REPAIR.zip",
+  "bytes": 62108592,
+  "sha256": "53e40b384bf922eefe80f549448624efbcda718d88549f1c971634fd4104b853",
+  "independent_design_verdict": "KEEP_AFTER_REVISION / 8.6 / WEB MAIN CANDIDATE / NO PROJECT PROMOTION",
+  "base": "v1.4 localized repair over v1.3 no-compression Web carrier"
+}
