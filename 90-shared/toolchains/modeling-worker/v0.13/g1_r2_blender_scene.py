@@ -123,9 +123,8 @@ def sources(source, collection):
     lower["termination_envelope_formula"] = "sin(pi*u)^exponent"
     if "termination_cap_onset_u" in lower_data:
         lower["termination_cap_onset_u"] = float(lower_data["termination_cap_onset_u"])
-        lower["termination_cap_pole_curvature_scale"] = float(
-            lower_data.get("termination_cap_pole_curvature_scale", r2.CAP_POLE_CURVATURE_SCALE_DEFAULT)
-        )
+        if "termination_cap_pole_curvature_scale" in lower_data:
+            lower["termination_cap_pole_curvature_scale"] = float(lower_data["termination_cap_pole_curvature_scale"])
         lower["termination_cap_law"] = str(lower_data.get("termination_cap_law", r2.CAP_LAW))
         lower["termination_cap_semantics"] = str(lower_data.get("termination_cap_semantics", r2.CAP_SEMANTICS))
         lower["termination_cap_endpoint_section"] = str(
