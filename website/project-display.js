@@ -35,17 +35,16 @@
         <p class="pro04-hero__lead">Two retained territories. One product architecture. Digital CMF design review — no physical approval claimed.</p>
         <div class="pro04-hero__status"><span>PRO-04.2</span><span>DESIGN REVIEW READY</span><span>NO WINNER</span></div>
       </div>
-      <div class="pro04-hero__visuals">
-        <article class="pro04-hero-card pro04-hero-card--primary" style="--territory:${esc(d02.colour.hex)}">
-          ${image(art(data,'A1-WHOLE-D02'),'D02 Cool Mineral Air whole product')}
-          <div><b>D02</b><strong>Cool Mineral Air</strong><small>Lightweight structural cleanliness</small></div>
-        </article>
-        <article class="pro04-hero-card pro04-hero-card--secondary" style="--territory:${esc(d03.colour.hex)}">
-          ${image(art(data,'A1-WHOLE-D03'),'D03 Quiet Green Mineral whole product')}
-          <div><b>D03</b><strong>Quiet Green Mineral</strong><small>Soft domestic care</small></div>
-        </article>
+      <div class="pro04-hero__visuals" style="min-height:0;align-self:center">
+        <figure class="pro04-image" data-artifact-id="PRO04-PRESENTATION-HERO" data-evidence-level="D1" style="background:#eceae3">
+          <img src="assets/xj01/pro04-hero-directions.jpg" alt="D02 Cool Mineral Air and D03 Quiet Green Mineral presentation comparison" loading="eager" decoding="async" style="width:100%;height:auto;object-fit:contain">
+        </figure>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+          <div style="border-top:6px solid ${esc(d02.colour.hex)};padding-top:12px"><b style="font:700 .68rem var(--mono)">D02</b><strong style="display:block;margin-top:5px;font:1.05rem var(--serif)">Cool Mineral Air</strong><small style="color:var(--trace);font:.62rem var(--mono)">Lightweight structural cleanliness</small></div>
+          <div style="border-top:6px solid ${esc(d03.colour.hex)};padding-top:12px"><b style="font:700 .68rem var(--mono)">D03</b><strong style="display:block;margin-top:5px;font:1.05rem var(--serif)">Quiet Green Mineral</strong><small style="color:var(--trace);font:.62rem var(--mono)">Soft domestic care</small></div>
+        </div>
       </div>
-      <p class="pro04-boundary">Presentation frame. Existing D2 renders remain evidence assets; this editorial layer does not upgrade their evidence class.</p>
+      <p class="pro04-boundary">Presentation stimulus / D1 exact-geometry broad preflight. D2 black-field renders remain review evidence and are not promoted to Hero.</p>
     </section>`;
   }
 
