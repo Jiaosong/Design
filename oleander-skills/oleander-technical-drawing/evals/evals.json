@@ -60,6 +60,24 @@
       "prompt": "给你一张纵向 944×2048 的多层爆炸轴测分析图。七个主题层反复使用同一场地底图，并通过彩色路线、区域、垂直虚线、侧边图标和折线引线说明关系。要求像素级可编辑 SVG 复刻。自动描摹后全页已经很像，文件也是 SVG，但路线、建筑、文字、图标和引线都混在匿名 path cloud 里。逐层判断是否完成，并检查关系到底画出来还是只剩文字/像素轮廓。",
       "expected_output": "Activate EXACT RECONSTRUCTION + PIXEL_FORENSIC_PROTOCOL + MULTILAYER_RELATION_RECONSTRUCTION; segment the seven stack layers; create one shared-base genealogy and per-layer transforms; reject anonymous path-cloud as semantic editability; create relation-evidence register with DRAWN/PARTIAL/TEXT-ONLY/UNRECOVERABLE states; reconstruct callout topology LABEL/SYMBOL→LEADER→ANCHOR→TARGET; create symbol dictionary for repeated icon families; define per-panel relationship/callout/icon/typography ROIs; compare same-size renders and pixel/edge metrics but do not let full-page similarity override a failed relation; producer may only SELF-CHECK/REVISE/REJECT/REVIEW PENDING and cannot self-KEEP.",
       "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "RF-CAL 类候选有四个已知误差：主几何整体 +5 px、标题 baseline 108 应为 105、标题字号 31 应为 32、接口 stroke 2.8 应为 2.2。第一次按 E2→E3→E4 只跑一遍时，标题 baseline 为了适配错误字号被调到 104。现在要求自动求解，不允许手工把最终值写回。",
+      "expected_output": "Load PIXEL_SOLVER_PROTOCOL; parameterize only bounded editable SVG variables; run multi-cycle coupled coordinate descent rather than permanent one-pass freeze; after font-size changes reopen title baseline; retain ROI-weighted loss as diagnostic only; recover primary_dx=0, title_y=105, title_font_size=32, interface_stroke=2.2 under one locked renderer; final tolerance-zero changed pixels/MAE/edge mismatch must be zero for synthetic RF-C3 candidate; solver trace and original candidate retained; no Design/technical promotion.",
+      "files": ["fixtures/reconstruction/RF-CAL-01_SOLVER_SPEC.json"]
+    },
+    {
+      "id": 12,
+      "prompt": "同一个 SVG 参考先用 Inkscape 输出成 PNG，但自动参数求解器为了速度用 CairoSVG 渲染候选。求解后它认为标题 y=104 比真实的 y=105 更好。是否可以把这个结果用于 RF-C3？",
+      "expected_output": "Reject RF-C3 use of the cross-renderer optimum; identify renderer/font rasterization mismatch as part of the fidelity problem; enforce RENDER_ENVIRONMENT_LOCK and rule WRONG RENDERER→WRONG OPTIMUM; either rerender the vector reference through the same solver renderer or run the solver/final diff through the declared Inkscape path; previous cross-renderer result remains diagnostic provenance only and must not be normalized into a pixel-exact claim.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "在 Information is Beautiful 的 Water World 页面上能看到清晰的网页/搜索参考，也能读出结构和标签，但当前执行环境无法把那张远程参考图的确切 bytes 持久化到本地 solver。用户仍要求继续做像素级复刻。",
+      "expected_output": "Continue RF-C0/RF-C1 structural/geometric reconstruction if useful, but set REFERENCE_BYTES_OPEN; do not compare against a recreated proxy or candidate screenshot as if it were the source; do not claim RF-C3; preserve the canonical source URL/identity and exact materialization requirement; when exact reference bytes become available, resume renderer lock→forensics→bounded solver→tolerance-zero diff rather than restarting the design from scratch.",
+      "files": []
     }
   ]
 }
