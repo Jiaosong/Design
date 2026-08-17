@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1684" height="1191" viewBox="0 0 1684 1191">
+<defs>
+  <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8,4 L0,0 L0,8 Z" fill="#9b4438"/></marker>
+  <marker id="secArrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#18211e"/></marker>
+  <pattern id="steel" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M0,10 L10,0" stroke="#7e8a85" stroke-width="0.8"/></pattern>
+  <pattern id="wood" width="22" height="12" patternUnits="userSpaceOnUse"><path d="M0,4 C5,0 11,7 22,3 M0,10 C7,6 13,13 22,8" fill="none" stroke="#9b7c5e" stroke-width="0.8"/></pattern>
+  <pattern id="concrete" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0,18 L18,0 M-6,6 L6,-6 M12,24 L24,12" stroke="#b4bab6" stroke-width="0.8"/><circle cx="5" cy="5" r="1.1" fill="#aab1ad"/><circle cx="14" cy="12" r="1.1" fill="#aab1ad"/></pattern>
+</defs>
+<style>
+.bg{fill:#f7f5ef}.paper{fill:#fffefa}.ink{fill:#18211e}.muted{fill:#68726e}.qing{fill:#3f746f}.seal{fill:#9b4438}.warm{fill:#8b5a45}
+.cut{stroke:#18211e;stroke-width:3.0;fill:none;stroke-linecap:square;stroke-linejoin:miter}.out{stroke:#18211e;stroke-width:1.9;fill:none;stroke-linejoin:miter}.det{stroke:#45524d;stroke-width:1.05;fill:none}.anno{stroke:#66716c;stroke-width:.72;fill:none}.hidden{stroke:#7b8681;stroke-width:.8;fill:none;stroke-dasharray:6 5}.center{stroke:#7b8681;stroke-width:.7;fill:none;stroke-dasharray:12 4 2 4}.datum{stroke:#18211e;stroke-width:1.0;fill:none}.dim{stroke:#9b4438;stroke-width:.85;fill:none;marker-start:url(#arrow);marker-end:url(#arrow)}.ext{stroke:#9b4438;stroke-width:.65}.lead{stroke:#66716c;stroke-width:.75;fill:none}.view{stroke:#3f746f;stroke-width:1;fill:#dfeae7;fill-opacity:.55}
+.h0{font:700 36px "Noto Serif CJK SC","Songti SC",serif}.h1{font:700 18px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.h2{font:700 14px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.t{font:400 12px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.s{font:400 10.5px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.xs{font:400 9px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}.cap{font:700 9px "Noto Sans CJK SC","Microsoft YaHei",sans-serif;letter-spacing:1px}.num{font:700 10px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+</style>
+<rect width="1684" height="1191" class="bg"/>
+<rect x="34" y="34" width="1616" height="1123" class="paper" stroke="#18211e" stroke-width="1.2"/>
+<text x="58" y="70" class="cap qing">OLEANDER / PRJ-C04-QINGJIANG-SHISHU / TECHNICAL PROOF</text>
+<text x="58" y="112" class="h0 ink">R06 倚靠阅读构件｜总图 · 剖面 · 连接节点</text>
+<text x="58" y="139" class="t muted">GENERAL ARRANGEMENT / SECTION / CONNECTION DETAIL · CURRENTIZATION v1.4 · ALL FORMAL TEXT REMAINS VECTOR</text>
+<line x1="58" y1="156" x2="1626" y2="156" class="anno"/>
+<text x="58" y="187" class="h1 ink">A｜平面 PLAN</text><text x="168" y="187" class="cap seal">ORTHOGRAPHIC / NTS</text>
+<line x1="58" y1="197" x2="800" y2="197" class="anno"/>
+<g id="plan">
+  <rect x="155" y="278" width="520" height="70" fill="url(#wood)" stroke="#18211e" stroke-width="1.9"/>
+  <rect x="184" y="248" width="96" height="130" fill="none" stroke="#18211e" stroke-width="1.45"/>
+  <rect x="550" y="248" width="96" height="130" fill="none" stroke="#18211e" stroke-width="1.45"/>
+  <g fill="#18211e"><circle cx="205" cy="270" r="4"/><circle cx="259" cy="270" r="4"/><circle cx="205" cy="356" r="4"/><circle cx="259" cy="356" r="4"/><circle cx="571" cy="270" r="4"/><circle cx="625" cy="270" r="4"/><circle cx="571" cy="356" r="4"/><circle cx="625" cy="356" r="4"/></g>
+  <line x1="415" y1="220" x2="415" y2="405" class="center"/><text x="422" y="238" class="xs muted">CL</text>
+  <line x1="128" y1="313" x2="702" y2="313" class="center"/>
+  <line x1="415" y1="226" x2="415" y2="395" class="cut"/>
+  <line x1="415" y1="226" x2="385" y2="226" class="cut" marker-end="url(#secArrow)"/>
+  <line x1="415" y1="395" x2="445" y2="395" class="cut" marker-end="url(#secArrow)"/>
+  <circle cx="367" cy="226" r="13" fill="#fffefa" stroke="#18211e" stroke-width="1.2"/><text x="367" y="230" text-anchor="middle" class="num ink">A</text>
+  <circle cx="463" cy="395" r="13" fill="#fffefa" stroke="#18211e" stroke-width="1.2"/><text x="463" y="399" text-anchor="middle" class="num ink">A</text>
+  <line x1="155" y1="258" x2="155" y2="214" class="ext"/><line x1="675" y1="258" x2="675" y2="214" class="ext"/><line x1="155" y1="220" x2="675" y2="220" class="dim"/><text x="415" y="211" text-anchor="middle" class="s seal">[C] 1200 DESIGN ENVELOPE</text>
+  <line x1="184" y1="390" x2="184" y2="427" class="ext"/><line x1="646" y1="390" x2="646" y2="427" class="ext"/><line x1="184" y1="419" x2="646" y2="419" class="dim"/><text x="415" y="411" text-anchor="middle" class="s seal">[C] 840 POST C/C</text>
+  <line x1="692" y1="278" x2="721" y2="278" class="ext"/><line x1="692" y1="348" x2="721" y2="348" class="ext"/><line x1="714" y1="278" x2="714" y2="348" class="dim"/><text x="725" y="318" class="s seal">[C] 160</text>
+  <text x="58" y="455" class="s muted">[C] = CONCEPT INTERFACE DIMENSION. Base plate candidate: 220×180×12; anchor layout candidate: 150×110 / 4×M16. Embedment OPEN.</text>
+</g>
+<text x="58" y="500" class="h1 ink">B｜正立面 FRONT ELEVATION</text><text x="282" y="500" class="cap seal">ORTHOGRAPHIC / NTS</text>
+<line x1="58" y1="510" x2="800" y2="510" class="anno"/>
+<g id="elevation">
+  <line x1="105" y1="879" x2="735" y2="879" class="datum"/><polygon points="104,879 114,874 114,884" fill="#18211e"/><text x="116" y="875" class="xs ink">±0.000 CONCEPT DATUM</text>
+  <rect x="218" y="605" width="394" height="18" fill="url(#wood)" stroke="#18211e" stroke-width="1.9"/>
+  <rect x="232" y="623" width="366" height="58" fill="#8b5a45" stroke="#18211e" stroke-width="1.9"/>
+  <rect x="278" y="681" width="24" height="190" fill="url(#steel)" stroke="#18211e" stroke-width="1.7"/>
+  <rect x="528" y="681" width="24" height="190" fill="url(#steel)" stroke="#18211e" stroke-width="1.7"/>
+  <rect x="259" y="871" width="62" height="8" fill="#56625d" stroke="#18211e" stroke-width="1.2"/><rect x="509" y="871" width="62" height="8" fill="#56625d" stroke="#18211e" stroke-width="1.2"/>
+  <line x1="415" y1="574" x2="415" y2="904" class="center"/><text x="422" y="593" class="xs muted">CL</text>
+  <g transform="translate(130 0)" class="out"><circle cx="0" cy="626" r="13" fill="#18211e" stroke="none"/><path d="M0 639L4 714M3 661L-25 687M3 661L29 682M4 714L-22 781M4 714L34 778"/></g>
+  <line x1="87" y1="626" x2="87" y2="781" class="dim"/><text x="96" y="708" class="xs seal">1700 REF PERSON</text>
+  <line x1="218" y1="590" x2="218" y2="565" class="ext"/><line x1="612" y1="590" x2="612" y2="565" class="ext"/><line x1="218" y1="571" x2="612" y2="571" class="dim"/><text x="415" y="562" text-anchor="middle" class="s seal">[C] 1200</text>
+  <line x1="650" y1="605" x2="681" y2="605" class="ext"/><line x1="650" y1="879" x2="681" y2="879" class="ext"/><line x1="674" y1="605" x2="674" y2="879" class="dim"/><text x="686" y="746" class="s seal">[C] 975</text>
+  <line x1="290" y1="895" x2="540" y2="895" class="dim"/><text x="415" y="888" text-anchor="middle" class="s seal">[C] 840 C/C</text>
+  <rect x="58" y="918" width="742" height="48" fill="#fff8f5" stroke="#9b4438" stroke-width=".8"/>
+  <text x="72" y="938" class="cap seal">USE BOUNDARY</text><text x="166" y="938" class="xs ink">INTERPRET / LEAN / READ / SHORT RECOVERY</text>
+  <text x="166" y="955" class="xs seal">NOT SOLE FALL-PROTECTION / GUARD AUTHORITY</text>
+</g>
+<text x="838" y="187" class="h1 ink">C｜A–A 剖面 SECTION</text><text x="1040" y="187" class="cap seal">C23-R06-S01 / ORTHOGRAPHIC / NTS</text>
+<line x1="838" y1="197" x2="1626" y2="197" class="anno"/>
+<g id="section">
+  <line x1="865" y1="456" x2="1250" y2="456" class="datum"/><polygon points="865,456 875,451 875,461" fill="#18211e"/><text x="879" y="450" class="xs ink">±0.000 CONCEPT DATUM</text>
+  <rect x="1050" y="245" width="88" height="24" fill="url(#wood)" stroke="#18211e" stroke-width="2.5"/>
+  <rect x="1055" y="269" width="78" height="10" fill="#8b5a45" stroke="#18211e" stroke-width="1.7"/>
+  <rect x="1068" y="279" width="52" height="103" fill="#8b5a45" stroke="#18211e" stroke-width="1.7"/>
+  <rect x="1081" y="382" width="26" height="66" fill="url(#steel)" stroke="#18211e" stroke-width="1.8"/>
+  <rect x="1038" y="448" width="112" height="8" fill="#56625d" stroke="#18211e" stroke-width="1.4"/>
+  <rect x="1028" y="456" width="132" height="12" fill="#e0e4e0" stroke="#65716c" stroke-width="1.0"/>
+  <rect x="990" y="468" width="208" height="82" fill="url(#concrete)" stroke="#7b8681" stroke-width="1.0" stroke-dasharray="6 5"/>
+  <path d="M1054 444L1054 528M1134 444L1134 528" class="out"/><circle cx="1054" cy="451" r="4" fill="#18211e"/><circle cx="1134" cy="451" r="4" fill="#18211e"/>
+  <g transform="translate(935 0)" class="out"><circle cx="0" cy="303" r="13" fill="#18211e" stroke="none"/><path d="M0 316L18 373M7 337L47 333M18 373L1 432M18 373L44 427"/></g><circle cx="982" cy="333" r="4.5" class="seal"/>
+  <path d="M936 303 L1038 236 L1074 270 Z" class="view"/><text x="998" y="228" class="cap qing">VIEW TO VALLEY</text>
+  <line x1="1173" y1="245" x2="1205" y2="245" class="ext"/><line x1="1173" y1="456" x2="1205" y2="456" class="ext"/><line x1="1198" y1="245" x2="1198" y2="456" class="dim"/><text x="1210" y="354" class="s seal">[C] 975</text>
+  <line x1="1050" y1="228" x2="1138" y2="228" class="dim"/><text x="1094" y="218" text-anchor="middle" class="s seal">[C] 160</text>
+  <text x="838" y="584" class="h2 ink">剖面控制说明</text>
+  <text x="838" y="608" class="s ink">01 40mm timber cap / replaceable warm-touch layer.</text>
+  <text x="838" y="629" class="s ink">02 3mm coated steel tray + 2mm isolation + 5mm drain gap.</text>
+  <text x="838" y="650" class="s ink">03 RHS 60×40×4 frame candidate; post/base detail see D01.</text>
+  <text x="838" y="671" class="s seal">04 BELOW DATUM = CONDITION-SPECIFIC / FIELD + ENGINEER OPEN.</text>
+  <text x="838" y="692" class="s muted">Contact point shown for body-use reading; it is not a compliance or accessibility approval.</text>
+</g>
+<text x="838" y="742" class="h1 ink">D｜构造爆炸轴测 EXPLODED</text><text x="1087" y="742" class="cap seal">C23-R06-AX01 / NTS</text>
+<line x1="838" y1="752" x2="1228" y2="752" class="anno"/>
+<g transform="translate(850 775)">
+  <polygon points="0,18 166,18 190,30 24,30" fill="url(#wood)" stroke="#18211e" stroke-width="1.5"/><circle cx="205" cy="24" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="28" text-anchor="middle" class="xs ink">01</text>
+  <polygon points="8,62 158,62 182,72 32,72" fill="#8b5a45" stroke="#18211e" stroke-width="1.4"/><circle cx="205" cy="67" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="71" text-anchor="middle" class="xs ink">02</text>
+  <polygon points="16,104 150,104 174,114 40,114" fill="#9b6852" stroke="#18211e" stroke-width="1.4"/><circle cx="205" cy="109" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="113" text-anchor="middle" class="xs ink">03</text>
+  <g transform="translate(36 140)"><rect x="0" y="0" width="15" height="88" fill="url(#steel)" stroke="#18211e" stroke-width="1.5"/><rect x="105" y="0" width="15" height="88" fill="url(#steel)" stroke="#18211e" stroke-width="1.5"/><rect x="0" y="14" width="120" height="12" fill="url(#steel)" stroke="#18211e" stroke-width="1.2"/><rect x="0" y="65" width="120" height="10" fill="url(#steel)" stroke="#18211e" stroke-width="1.2"/></g><circle cx="205" cy="178" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="182" text-anchor="middle" class="xs ink">04</text>
+  <polygon points="34,242 70,242 80,250 44,250" fill="#56625d" stroke="#18211e" stroke-width="1.3"/><polygon points="136,242 172,242 182,250 146,250" fill="#56625d" stroke="#18211e" stroke-width="1.3"/><circle cx="205" cy="246" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="250" text-anchor="middle" class="xs ink">05</text>
+  <path d="M48 255L48 275M63 255L63 275M150 255L150 275M165 255L165 275" class="out"/><circle cx="205" cy="268" r="9" fill="#fffefa" stroke="#18211e"/><text x="205" y="272" text-anchor="middle" class="xs ink">06</text>
+  <text x="230" y="25" class="xs ink">01 Timber cap — [C] 1200×160×40</text>
+  <text x="230" y="67" class="xs ink">02 Steel tray — 3mm + isolation + drain gap</text>
+  <text x="230" y="109" class="xs ink">03 Face skin — 3mm + ventilated cavity</text>
+  <text x="230" y="178" class="xs ink">04 RHS frame — 60×40×4 candidate</text>
+  <text x="230" y="246" class="xs ink">05 Base plate — [C] 220×180×12</text>
+  <text x="230" y="268" class="xs seal">06 4×M16 / plate · embedment OPEN</text>
+</g>
+<text x="1248" y="742" class="h1 ink">E｜柱脚节点 POST BASE</text><text x="1460" y="742" class="cap seal">C23-R06-D01 / NTS</text>
+<line x1="1248" y1="752" x2="1626" y2="752" class="anno"/>
+<g transform="translate(1260 778)">
+  <rect x="0" y="172" width="150" height="62" fill="url(#concrete)" stroke="#18211e" stroke-width="2"/>
+  <rect x="22" y="164" width="106" height="8" fill="#dfe3df" stroke="#65716c" stroke-width=".9"/>
+  <rect x="34" y="153" width="82" height="11" fill="#56625d" stroke="#18211e" stroke-width="1.6"/>
+  <rect x="65" y="68" width="20" height="85" fill="url(#steel)" stroke="#18211e" stroke-width="1.8"/>
+  <polygon points="65,122 44,153 65,153" fill="#65716c" stroke="#18211e" stroke-width="1.0"/><polygon points="85,122 106,153 85,153" fill="#65716c" stroke="#18211e" stroke-width="1.0"/>
+  <path d="M44 148L44 218M106 148L106 218" class="out"/><circle cx="44" cy="153" r="4" fill="#18211e"/><circle cx="106" cy="153" r="4" fill="#18211e"/>
+  <circle cx="75" cy="36" r="11" fill="#fffefa" stroke="#18211e" stroke-width="1.1"/><text x="75" y="40" text-anchor="middle" class="num ink">D1</text><line x1="75" y1="47" x2="75" y2="64" class="lead"/>
+  <text x="170" y="78" class="xs ink">1 RHS 60×40×4</text><text x="170" y="99" class="xs ink">2 6mm gusset / 4mm fillet weld candidate</text><text x="170" y="120" class="xs ink">3 base plate [C] 220×180×12</text><text x="170" y="141" class="xs ink">4 grout [C] 10–20mm</text><text x="170" y="162" class="xs ink">5 4×M16 / [C] 150×110 layout</text><text x="170" y="183" class="xs seal">6 EMBEDMENT = ENGINEER OPEN</text><text x="170" y="204" class="xs muted">7 verified RC strength / thickness / edge / rebar scan required</text><text x="170" y="225" class="xs muted">8 substrate ≠ verified RC → detail NOT applicable</text>
+  <rect x="165" y="242" width="194" height="34" fill="#fff3ef" stroke="#9b4438" stroke-width=".8"/><text x="175" y="257" class="cap seal">HOLD</text><text x="175" y="271" class="xs ink">No substrate receipt → no anchor issue.</text>
+</g>
+<line x1="58" y1="1033" x2="1626" y2="1033" class="anno"/>
+<text x="58" y="1055" class="cap qing">GENERAL NOTES</text>
+<text x="160" y="1055" class="xs ink">1 DO NOT SCALE. 2 Units: mm. 3 [C] = concept interface dimension, not field measurement. 4 Drawing represents an interpretive / leaning / reading / short-recovery candidate, not sole fall-protection authority.</text>
+<text x="160" y="1073" class="xs ink">5 Exact clear width, fall edge, substrate, drainage, accessibility, anchors, structural adequacy and final location require FIELD + professional closure. 6 Geometry lineage: v1.7 currentizes explicit component geometry only.</text>
+<g transform="translate(58 1090)">
+  <rect x="0" y="0" width="1568" height="48" fill="#fffefa" stroke="#18211e" stroke-width="1.1"/>
+  <line x1="545" y1="0" x2="545" y2="48" class="anno"/><line x1="936" y1="0" x2="936" y2="48" class="anno"/><line x1="1145" y1="0" x2="1145" y2="48" class="anno"/><line x1="1340" y1="0" x2="1340" y2="48" class="anno"/>
+  <text x="12" y="16" class="cap qing">PROJECT / DRAWING</text><text x="12" y="35" class="s ink">PRJ-C04-QINGJIANG-SHISHU · C23-R06-GA-01</text>
+  <text x="557" y="16" class="cap qing">CURRENT DELTA</text><text x="557" y="35" class="xs ink">DRAWING REPRESENTATION ONLY · NO NEW FIELD/ENGINEERING TRUTH</text>
+  <text x="948" y="16" class="cap qing">STATUS</text><text x="948" y="35" class="s seal">REVIEW PENDING / NO PROMOTION</text>
+  <text x="1157" y="16" class="cap qing">SCALE / UNITS</text><text x="1157" y="35" class="s ink">NTS / mm</text>
+  <text x="1352" y="16" class="cap qing">REV / TRUTH</text><text x="1352" y="35" class="xs ink">v1.4 CAND · FIELD=0 · G1F HOLD · NFC</text>
+</g>
+<text x="58" y="1154" class="xs muted">Target print hierarchy: CUT 0.45 / OUTLINE 0.25 / DETAIL 0.13 / ANNO 0.10 mm. Vector source maps these as relative stroke classes; no claimed plotted scale.</text>
+<text x="1626" y="1154" text-anchor="end" class="xs muted">SOURCE: PR #133 / R06 v1.3 + v1.7 explicit geometry lineage</text>
+</svg>
