@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="1060" viewBox="0 0 1760 1060">
+<rect width="1760" height="1060" fill="#efede7"/>
+<text x="70" y="65" font-family="Arial" font-size="30" font-weight="700">OLEANDER / CAMERA CLAIM GATE</text>
+<text x="70" y="99" font-family="Arial" font-size="13" fill="#666">CLAIM → PROJECTION → CAMERA DISTANCE / FOCAL LENGTH → FIRST-READ → ROLE VERDICT</text>
+<rect x="70" y="210" width="500" height="720" fill="#faf9f6" stroke="#c9c7c0"/>
+<text x="88" y="244" font-family="Arial" font-size="16" font-weight="700">18 mm WIDE + CLOSE</text>
+<text x="88" y="268" font-family="Arial" font-size="11" font-weight="700" fill="#7a5148">REJECT / HERO</text>
+<text x="88" y="305" font-family="Arial" font-size="10" font-weight="700" fill="#4f625e">CLAIM / FIT EVERYTHING</text>
+<path d="M -73.1 1149.1 L 244.4 766.0 L 297.9 701.4 L 320.0 674.8 L 332.1 660.3 L 339.6 651.1 L 342.8 644.8" fill="none" stroke="#537770" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 327.3 690.4 L 327.3 603.0" fill="none" stroke="#1d2322" stroke-width="5" stroke-linecap="round"/>
+<path d="M 271.9 716.0 L 271.8 552.8 L 368.2 552.8 L 368.1 716.0 L 271.9 716.0" fill="none" stroke="#9a9c96" stroke-width="3"/>
+<path d="M 280.9 669.1 L 280.8 540.9 L 359.2 540.9 L 359.1 669.1 L 280.9 669.1" fill="none" stroke="#6f7774" stroke-width="3"/>
+<path d="M 247.5 644.8 L 268.1 556.8 L 299.3 596.4 L 330.4 534.7 L 361.5 583.2 L 392.7 550.2" fill="none" stroke="#8ba09b" stroke-width="6" stroke-linecap="round"/>
+<circle cx="320" cy="716" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="328" y="719" font-family="Arial" font-size="8" fill="#555">NEAR</text>
+<circle cx="320" cy="669.1" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="328" y="672.1" font-family="Arial" font-size="8" fill="#555">MID</text>
+<circle cx="320" cy="651.1" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="328" y="654.1" font-family="Arial" font-size="8" fill="#555">FAR</text>
+<text x="88" y="876" font-family="Arial" font-size="9" fill="#666">Perspective · 18 mm · camera Y -1.2</text>
+
+<rect x="630" y="210" width="500" height="720" fill="#faf9f6" stroke="#c9c7c0"/>
+<text x="648" y="244" font-family="Arial" font-size="16" font-weight="700">35 mm MODERATE</text>
+<text x="648" y="268" font-family="Arial" font-size="11" font-weight="700" fill="#365e57">KEEP / EXPERIENCE</text>
+<text x="648" y="305" font-family="Arial" font-size="10" font-weight="700" fill="#4f625e">CLAIM / BODY + ROUTE + CONTEXT</text>
+<path d="M 747.5 794.6 L 818.1 738.5 L 856.2 708.2 L 880.0 689.3 L 896.3 676.4 L 908.1 667.0 L 914.1 659.8" fill="none" stroke="#537770" stroke-width="5" stroke-linecap="round"/>
+<path d="M 888.3 701.0 L 888.3 601.4" fill="none" stroke="#1d2322" stroke-width="5"/>
+<path d="M 831.7 716.6 L 831.6 552.5 L 928.4 552.5 L 928.3 716.6 L 831.7 716.6" fill="none" stroke="#9a9c96" stroke-width="3"/>
+<path d="M 829.9 684.5 L 829.8 520.3 L 930.2 520.3 L 930.1 684.5 L 829.9 684.5" fill="none" stroke="#6f7774" stroke-width="3"/>
+<path d="M 771.7 659.8 L 802.5 528.4 L 849.0 587.6 L 895.5 495.5 L 942.0 567.9 L 988.5 518.5" fill="none" stroke="#8ba09b" stroke-width="6" stroke-linecap="round"/>
+<circle cx="880" cy="716.6" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="888" y="719.6" font-family="Arial" font-size="8" fill="#555">NEAR</text>
+<circle cx="880" cy="684.5" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="888" y="687.5" font-family="Arial" font-size="8" fill="#555">MID</text>
+<circle cx="880" cy="667" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="888" y="670" font-family="Arial" font-size="8" fill="#555">FAR</text>
+<text x="648" y="876" font-family="Arial" font-size="9" fill="#666">Perspective · 35 mm · camera Y -7.0</text>
+
+<rect x="1190" y="210" width="500" height="720" fill="#faf9f6" stroke="#c9c7c0"/>
+<text x="1208" y="244" font-family="Arial" font-size="16" font-weight="700">ORTHOGRAPHIC</text>
+<text x="1208" y="268" font-family="Arial" font-size="11" font-weight="700" fill="#365e57">KEEP / TECHNICAL</text>
+<text x="1208" y="305" font-family="Arial" font-size="10" font-weight="700" fill="#4f625e">CLAIM / COMPARE RELATIONS</text>
+<path d="M 1302.3 776.2 L 1348.2 742.2 L 1394.1 708.1 L 1440.0 674.1 L 1485.9 640.1 L 1531.8 606.1 L 1573.2 571.0" fill="none" stroke="#537770" stroke-width="5" stroke-linecap="round"/>
+<path d="M 1427.9 701.3 L 1427.9 617.5" fill="none" stroke="#1d2322" stroke-width="5"/>
+<path d="M 1369.2 717.1 L 1369.2 598.9 L 1435.9 615.0 L 1435.9 733.3 L 1369.2 717.1" fill="none" stroke="#9a9c96" stroke-width="3"/>
+<path d="M 1400.4 649.5 L 1400.4 482.0 L 1498.3 505.7 L 1498.3 673.2 L 1400.4 649.5" fill="none" stroke="#6f7774" stroke-width="3"/>
+<path d="M 1368.6 521.5 L 1413.1 335.2 L 1479.8 440.0 L 1546.5 318.2 L 1613.3 442.7 L 1680.0 385.0" fill="none" stroke="#8ba09b" stroke-width="6" stroke-linecap="round"/>
+<circle cx="1402.5" cy="725.2" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="1410.5" y="728.2" font-family="Arial" font-size="8" fill="#555">NEAR</text>
+<circle cx="1449.4" cy="661.3" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="1457.4" y="664.3" font-family="Arial" font-size="8" fill="#555">MID</text>
+<circle cx="1496.2" cy="597.5" r="5" fill="#fff" stroke="#26312f" stroke-width="2"/><text x="1504.2" y="600.5" font-family="Arial" font-size="8" fill="#555">FAR</text>
+<text x="1208" y="876" font-family="Arial" font-size="9" fill="#666">Orthographic · scale 16.5</text>
+
+<line x1="70" y1="968" x2="1690" y2="968" stroke="#d0cec7"/>
+<text x="70" y="1002" font-family="Arial" font-size="12" font-weight="700">RULE / camera choice is part of the design claim, not only a framing setting.</text>
+<text x="70" y="1028" font-family="Arial" font-size="10" fill="#777">Synthetic training geometry only · NTS · not a measured Qingjiang viewpoint or lens match.</text>
+</svg>
