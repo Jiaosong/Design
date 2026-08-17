@@ -23,7 +23,9 @@ jobs:
       - name: Validate refined 3D Skill and reference script
         run: |
           set -euo pipefail
-          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py
@@ -45,7 +47,7 @@ jobs:
           mkdir -p "$OUT"
           START=$(date +%s)
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro.py \
             -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s)
           echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
