@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#f3f1eb"/>
+<style>
+text{font-family:"Noto Sans CJK SC","Noto Sans SC","Arial",sans-serif;fill:#171a18}
+.meta{font-size:17px;letter-spacing:1.3px;fill:#666b67}
+.h1{font-size:42px;font-weight:720}
+.h2{font-size:26px;font-weight:700}
+.body{font-size:20px}
+.small{font-size:15px;fill:#686d69}
+.rule{stroke:#afb3ae;stroke-width:1}
+.rock{fill:#d9d6cf;stroke:#262b28;stroke-width:2}
+.path{fill:#fbfaf6;stroke:#616762;stroke-width:1.5}
+</style>
+<text x="72" y="58" class="meta">OLEANDER / C04 R13 / SPATIAL COMPRESSION TRAINING</text>
+<text x="72" y="104" class="h1">压缩必须由几何成立，而不是由暗角成立</text>
+<text x="72" y="138" class="body">Transfer study from Jewish Museum Berlin “Between the Lines” → R13 visual translation</text>
+<line x1="72" y1="164" x2="1528" y2="164" class="rule"/>
+<rect x="72" y="190" width="1456" height="116" rx="18" fill="#e7e4dc"/>
+<text x="96" y="224" class="meta">VISIBLE FACT</text>
+<text x="96" y="254" class="body">地下轴线、倾斜墙体与裸混凝土 void 共同制造方向性；</text>
+<text x="96" y="284" class="small">Holocaust Tower 的自然光只从狭窄缝隙进入。</text>
+<text x="850" y="224" class="meta">DESIGN INFERENCE</text>
+<text x="850" y="254" class="body">压缩感首先来自边界收敛、视域截断；</text>
+<text x="850" y="284" class="small">出口控制形成期待。暗度只能强化，不能替代几何。</text>
+<text x="92" y="360" class="meta">A — ATMOSPHERE-ONLY / REVISE</text>
+<rect x="72" y="382" width="698" height="470" rx="24" fill="#fbfaf6" stroke="#d1cec6"/>
+<text x="100" y="420" class="h2">平面：边界平行，只有整体色调压暗</text>
+<path d="M120 465 L360 465 L360 650 L120 650 Z" class="rock"/>
+<path d="M480 465 L720 465 L720 650 L480 650 Z" class="rock"/>
+<rect x="360" y="465" width="120" height="185" class="path"/>
+<rect x="378" y="465" width="84" height="185" fill="#303532" opacity=".22"/>
+<circle cx="420" cy="606" r="10" fill="#1b1f1d"/>
+<line x1="420" y1="596" x2="420" y2="568" stroke="#1b1f1d" stroke-width="4"/>
+<line x1="420" y1="576" x2="405" y2="588" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="420" y1="576" x2="435" y2="588" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="420" y1="568" x2="410" y2="548" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="420" y1="568" x2="430" y2="548" stroke="#1b1f1d" stroke-width="3"/>
+<text x="116" y="685" class="small">问题：通道宽度从入口到出口没有变化；第一眼读不到“被挤压”。</text>
+<text x="100" y="734" class="h2">剖面：天际线不收口</text>
+<path d="M120 770 L120 832 L330 832 L330 770 Z" class="rock"/>
+<path d="M510 770 L510 832 L720 832 L720 770 Z" class="rock"/>
+<rect x="330" y="770" width="180" height="62" class="path"/>
+<rect x="330" y="770" width="180" height="62" fill="#303532" opacity=".22"/>
+<text x="116" y="876" class="small">FAILURE CONDITION：仅加暗角、雾化或整体色调，不改变边界关系。</text>
+<text x="850" y="360" class="meta">B — GEOMETRY-FIRST / PROPOSED SUPPORT</text>
+<rect x="830" y="382" width="698" height="470" rx="24" fill="#fbfaf6" stroke="#d1cec6"/>
+<text x="858" y="420" class="h2">平面：入口 → throat → 再释放</text>
+<path d="M878 465 L1110 465 L1172 522 L1140 650 L878 650 Z" class="rock"/>
+<path d="M1480 465 L1248 465 L1186 522 L1218 650 L1480 650 Z" class="rock"/>
+<path d="M1110 465 L1248 465 L1186 522 L1218 650 L1140 650 L1172 522 Z" class="path"/>
+<line x1="1178" y1="615" x2="1178" y2="485" stroke="#7a5f42" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="1178" cy="606" r="10" fill="#1b1f1d"/>
+<line x1="1178" y1="596" x2="1178" y2="568" stroke="#1b1f1d" stroke-width="4"/>
+<line x1="1178" y1="576" x2="1163" y2="588" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="1178" y1="576" x2="1193" y2="588" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="1178" y1="568" x2="1168" y2="548" stroke="#1b1f1d" stroke-width="3"/>
+<line x1="1178" y1="568" x2="1188" y2="548" stroke="#1b1f1d" stroke-width="3"/>
+<text x="872" y="685" class="small">关系：两侧边界向 throat 收敛；出口只被部分看见，形成方向与期待。</text>
+<text x="858" y="734" class="h2">剖面：顶部也必须参与收口</text>
+<path d="M878 832 L878 785 L1080 770 L1164 802 L1164 832 Z" class="rock"/>
+<path d="M1192 802 L1276 770 L1480 785 L1480 832 L1192 832 Z" class="rock"/>
+<rect x="1164" y="802" width="28" height="30" fill="#fbfaf6"/>
+<line x1="1178" y1="802" x2="1178" y2="770" stroke="#7a5f42" stroke-width="4"/>
+<text x="872" y="876" class="small">关键：窄缝光只强化 throat；不能用光效伪造不存在的几何压缩。</text>
+<line x1="72" y1="914" x2="1528" y2="914" class="rule"/>
+<text x="72" y="946" class="meta">TRANSFER RULE</text>
+<text x="214" y="946" class="body">先审平面/剖面是否出现“收敛 + 遮挡 + 释放”，再审材质、色调、雾与光。</text>
+<text x="72" y="978" class="small">C04 boundary: RELATION DIAGRAM / NOT SITE GEOMETRY / NTS / FIELD OPEN. No new railing, platform, route or permanent intervention is proposed.</text>
+</svg>
