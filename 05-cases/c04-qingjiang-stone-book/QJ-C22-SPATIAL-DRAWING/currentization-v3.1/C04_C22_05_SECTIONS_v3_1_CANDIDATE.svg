@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 1682 1188">
+<defs>
+<style>
+.bg{fill:#F4F1E8}.ink{stroke:#17211F;fill:none;stroke-linecap:round;stroke-linejoin:round}.cut{stroke:#17211F;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}.outline{stroke:#17211F;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}.detail{stroke:#51605C;stroke-width:1.7;fill:none;stroke-linecap:round}.guide{stroke:#C9C5BA;stroke-width:1;fill:none}.mass{fill:#E2DED2;stroke:#17211F;stroke-width:2}.river{fill:#A5C4C4}.accent{stroke:#4A8F91;fill:none}.warn{stroke:#B96649;fill:none}.t0{font-family:'Noto Sans CJK SC','Noto Sans',sans-serif;font-size:42px;font-weight:700;fill:#17211F}.t1{font-family:'Noto Sans CJK SC','Noto Sans',sans-serif;font-size:24px;font-weight:700;fill:#17211F}.t2{font-family:'Noto Sans CJK SC','Noto Sans',sans-serif;font-size:18px;font-weight:500;fill:#17211F}.t3{font-family:'Noto Sans CJK SC','Noto Sans',sans-serif;font-size:15px;font-weight:400;fill:#4D5955}.t4{font-family:'Noto Sans CJK SC','Noto Sans',sans-serif;font-size:13px;font-weight:500;fill:#69736F;letter-spacing:.3px}.orange{fill:#B96649}.teal{fill:#4A8F91}.white{fill:#F4F1E8}.dim{stroke:#B96649;stroke-width:1.7;fill:none;marker-start:url(#arr);marker-end:url(#arr)}
+</style>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8" fill="none" stroke="#B96649" stroke-width="1.3"/></marker>
+</defs>
+<rect class="bg" width="1682" height="1188"/>
+<text x="54" y="58" class="t4">OLEANDER / C04 / 清江石书 / C22 CURRENTIZATION</text>
+<text x="54" y="112" class="t0">典型剖面｜C22-SEC-A / SEC-B / SEC-C</text>
+<text x="54" y="147" class="t3">RELATIONAL SECTIONS / NTS / ONLY EXPLICIT PUBLIC CABLE PARAMETERS ARE NUMERIC</text>
+<line x1="54" y1="174" x2="1628" y2="174" class="ink" stroke-width="2"/>
+<text x="1326" y="62" class="t4" text-anchor="end">SOURCE-GROUNDED</text><circle cx="1347" cy="56" r="7" class="teal"/>
+<text x="1585" y="62" class="t4" text-anchor="end">FIELD OPEN</text><circle cx="1606" cy="56" r="7" class="orange"/>
+<text x="62" y="228" class="t1">C22-SEC-A｜跨江索道 / Transport + View</text>
+<text x="62" y="256" class="t3">Transport authority first; terrain profile is diagrammatic. Public operator figures: cable line length 1056 m / vertical difference approx. 156 m.</text>
+<line x1="62" y1="282" x2="1620" y2="282" class="guide"/>
+<path class="mass" d="M82 475 C185 446,265 395,348 373 C421 354,489 365,565 424 L565 497 L82 497 Z"/>
+<path class="mass" d="M1012 438 C1106 391,1210 322,1310 294 C1404 266,1508 285,1602 337 L1602 497 L1012 497 Z"/>
+<rect x="565" y="448" width="447" height="49" class="river"/><text x="788" y="480" class="t3" text-anchor="middle" fill="#F4F1E8">清江 / QINGJIANG</text>
+<line x1="460" y1="343" x2="1402" y2="272" class="cut"/><line x1="460" y1="353" x2="1402" y2="282" class="detail"/>
+<circle cx="460" cy="348" r="16" class="white" stroke="#17211F" stroke-width="3"/><circle cx="1402" cy="277" r="16" class="white" stroke="#17211F" stroke-width="3"/>
+<rect x="650" y="330" width="36" height="25" rx="5" class="white" stroke="#17211F" stroke-width="1.6"/><rect x="950" y="306" width="36" height="25" rx="5" class="white" stroke="#17211F" stroke-width="1.6"/><rect x="1210" y="287" width="36" height="25" rx="5" class="white" stroke="#17211F" stroke-width="1.6"/>
+<text x="925" y="286" class="t4" text-anchor="middle">1056 m = OFFICIAL REPORTED CABLE LINE LENGTH / NOT DRAWN TO SCALE</text>
+<line x1="1440" y1="284" x2="1440" y2="430" class="dim"/><text x="1458" y="365" class="t3" fill="#B96649">ΔH ≈ 156 m</text>
+<text x="90" y="322" class="t4" fill="#B96649">NO SURVEY PROFILE / NO STRUCTURAL GEOMETRY CLAIM</text><text x="1012" y="523" class="t4">VIEW = MOVING OBSERVATION; NO FORCED UI / NO HERO DEVICE</text>
+<text x="62" y="585" class="t1">C22-SEC-B｜R06 slope walk + viewing/recovery edge</text><text x="62" y="613" class="t3">R06 is finished. This C22 relation is retained only as frozen project context and is not being currentized in this round.</text>
+<line x1="62" y1="638" x2="1620" y2="638" class="guide"/>
+<path d="M120 772 C376 730,596 714,834 690 C1058 668,1300 645,1564 628" class="outline" opacity=".55"/><line x1="120" y1="754" x2="1564" y2="610" class="detail" opacity=".45"/>
+<circle cx="930" cy="677" r="9" fill="#65706B" opacity=".6"/><line x1="930" y1="686" x2="930" y2="725" class="detail" opacity=".6"/><line x1="930" y1="698" x2="911" y2="716" class="detail" opacity=".6"/><line x1="930" y1="698" x2="948" y2="716" class="detail" opacity=".6"/><line x1="930" y1="725" x2="914" y2="750" class="detail" opacity=".6"/><line x1="930" y1="725" x2="947" y2="750" class="detail" opacity=".6"/>
+<rect x="700" y="650" width="162" height="42" rx="14" fill="none" stroke="#788B72" stroke-width="2" opacity=".65"/><text x="781" y="676" class="t3" text-anchor="middle" fill="#788B72">FROZEN R06 REF</text><text x="1162" y="694" class="t4">NO NEW DIMENSIONS / NO NEW NODE / NO REOPEN</text>
+<text x="62" y="844" class="t1">C22-SEC-C｜自然收束 / 一线天 relation section</text><text x="62" y="872" class="t3">Body passage + route + exit/Return first. Actual fissure width, ground, slip, guard and capacity remain FIELD OPEN.</text>
+<line x1="62" y1="897" x2="1620" y2="897" class="guide"/>
+<path class="mass" d="M100 1080 C230 1020,330 990,430 995 C530 1000,596 1037,672 1090 L672 1118 L100 1118 Z"/><path class="mass" d="M1582 1080 C1452 1020,1352 990,1252 995 C1152 1000,1086 1037,1010 1090 L1010 1118 L1582 1118 Z"/>
+<path d="M672 1090 C705 1040,738 1006,790 986" class="cut"/><path d="M1010 1090 C977 1040,944 1006,892 986" class="cut"/><line x1="790" y1="986" x2="892" y2="986" class="guide" stroke-dasharray="6 6"/>
+<g transform="translate(620 1002) scale(.8)"><circle cx="0" cy="0" r="10" fill="#17211F"/><line x1="0" y1="10" x2="0" y2="58" class="outline"/><line x1="0" y1="25" x2="-22" y2="44" class="outline"/><line x1="0" y1="25" x2="22" y2="44" class="outline"/><line x1="0" y1="58" x2="-18" y2="88" class="outline"/><line x1="0" y1="58" x2="18" y2="88" class="outline"/></g>
+<g transform="translate(840 975) scale(.7)"><circle cx="0" cy="0" r="10" fill="#17211F"/><line x1="0" y1="10" x2="0" y2="58" class="outline"/><line x1="0" y1="25" x2="-18" y2="45" class="outline"/><line x1="0" y1="25" x2="18" y2="45" class="outline"/><line x1="0" y1="58" x2="-15" y2="88" class="outline"/><line x1="0" y1="58" x2="15" y2="88" class="outline"/></g>
+<g transform="translate(1062 1002) scale(.8)"><circle cx="0" cy="0" r="10" fill="#17211F"/><line x1="0" y1="10" x2="0" y2="58" class="outline"/><line x1="0" y1="25" x2="-22" y2="44" class="outline"/><line x1="0" y1="25" x2="22" y2="44" class="outline"/><line x1="0" y1="58" x2="-18" y2="88" class="outline"/><line x1="0" y1="58" x2="18" y2="88" class="outline"/></g>
+<path d="M520 1098 C610 1070,690 1040,766 1010 C808 994,868 994,918 1010 C995 1038,1075 1070,1160 1098" class="detail" stroke-dasharray="9 7"/>
+<text x="505" y="1008" class="t4">APPROACH</text><text x="814" y="926" class="t4">COMPRESSION</text><text x="1096" y="1008" class="t4">RELEASE / RETURN</text><text x="812" y="1102" class="t4" fill="#B96649">W / H / SURFACE / SLIP / GUARD / CAPACITY = FIELD OPEN</text>
+<line x1="54" y1="1140" x2="1628" y2="1140" class="ink" stroke-width="1.5"/><text x="54" y="1169" class="t4">DRW-C04-C22-05 / v3.1 CANDIDATE</text><text x="430" y="1169" class="t4">SCALE NTS / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION</text><text x="1628" y="1169" class="t4" text-anchor="end">2026-08-17</text>
+</svg>
