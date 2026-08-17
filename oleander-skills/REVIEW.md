@@ -5,6 +5,7 @@
 - `oleander-research`: Notion-first evidence, precedent, interview, and decision research.
 - `oleander-data-viz`: reproducible table, chart, animation, map, and export workflow.
 - `oleander-3d-pipeline`: 3D naming, units, exchange, axonometric, render, and archive workflow.
+- `oleander-technical-drawing`: evidence-bound plans, sections, elevations, nodes, details, assembly/fabrication drawings, dimensions, vector annotation, and drawing-specific TD-G0…TD-G8 review.
 - `oleander-story-and-board`: shared narrative for boards, reports, decks, brand stories, and films.
 - `oleander-delivery-qc`: non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D, and interactive outputs.
 - `oleander-motion`: purposeful motion design, native-first library routing, state-transition prototyping, 3D/procedural motion, interactive motion, Reduced Motion alternatives, delivery, effect selection and AR-S10 Motion QA.
@@ -22,9 +23,10 @@ This file is the current repository-state source for the installed reusable skil
 1. Research: Organize site studies, policies, precedents, and interviews into a traceable Notion research system.
 2. Data visualization: Turn quarterly traffic, activity, and dwell-time data into interactive, animated, and editable outputs.
 3. 3D pipeline: Hand a Blender scene to Unreal while producing a layered Illustrator-ready exploded axonometric.
-4. Story and board: Compile approved findings, analysis diagrams, and renders into two A0 boards and a 12-page deck.
-5. Delivery QC: Inspect A0 PDFs, a 4K film, render images, and a GLB model without modifying masters.
-6. Motion: Design one state change as a no-motion baseline, candidate variants and Reduced Motion; justify any runtime library through the Motion Library & Effect Atlas and execute in a real runtime when available.
+4. Technical drawing: Deepen a provisional landscape/product node into a professional plan/section/detail set while preserving source authority, dimensional truth state, construction boundaries, vector annotation and independent drawing review.
+5. Story and board: Compile approved findings, analysis diagrams, and renders into two A0 boards and a 12-page deck.
+6. Delivery QC: Inspect A0 PDFs, a 4K film, render images, and a GLB model without modifying masters.
+7. Motion: Design one state change as a no-motion baseline, candidate variants and Reduced Motion; justify any runtime library through the Motion Library & Effect Atlas and execute in a real runtime when available.
 
 ## Acceptance checks
 
@@ -32,6 +34,7 @@ This file is the current repository-state source for the installed reusable skil
 - GIS instructions target QGIS 4 and avoid QGIS 3 paths.
 - Data work uses `C:\Users\Xianmu\.venvs\oleander`.
 - 3D handoffs record units, axes, dependencies, versions, and exchange tests.
+- Technical drawings declare allowed-use status; preserve geometry/dimension/material authority; separate verified, recommended-range and field-open dimensions; keep plan/section/detail parentage coherent; retain vector technical text/linework; and do not collapse drawing, engineering, field, export or MAIN promotion into one PASS.
 - Narrative outputs trace claims back to approved research.
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
 - Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, uses native-first library routing, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility, dependency/runtime cost and export consistency.
