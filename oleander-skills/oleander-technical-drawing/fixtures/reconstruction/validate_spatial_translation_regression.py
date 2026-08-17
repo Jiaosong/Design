@@ -41,5 +41,27 @@ def main():
     bad["items"][2]["source_refs"] = []
     run(bad, False, "carrier without source binding must fail")
 
+    bad = copy.deepcopy(base)
+    bad["items"][0]["redraw_justification"] = "cleaner"
+    run(bad, False, "authoritative source cannot be redrawn for aesthetics only")
+
+    bad = copy.deepcopy(base)
+    bad["items"][3]["redraw_justification"] = "N/A"
+    run(bad, False, "sufficient source carrier requires material justification for derived replacement")
+
+    bad = copy.deepcopy(base)
+    bad["items"][1]["carrier_precedence_decision"] = "REUSE_DIRECT"
+    bad["items"][1]["geometry_type"] = "DIRECT_SOURCE_VISUAL"
+    bad["items"][1]["redraw_justification"] = "N/A"
+    run(bad, False, "direct reuse cannot be claimed when source carrier is insufficient")
+
+    good = copy.deepcopy(base)
+    good["items"][0]["carrier_precedence_decision"] = "REUSE_DIRECT"
+    good["items"][0]["geometry_type"] = "DIRECT_SOURCE_VISUAL"
+    good["items"][0]["redraw_justification"] = "N/A"
+    good["items"][0]["graphic_carrier_id"] = "FIXTURE-RIVER-BANKS"
+    good["items"][0]["derivation_method"] = "direct source visual reuse"
+    run(good, True, "authoritative source may be reused directly without redraw")
+
 if __name__ == "__main__":
     main()
