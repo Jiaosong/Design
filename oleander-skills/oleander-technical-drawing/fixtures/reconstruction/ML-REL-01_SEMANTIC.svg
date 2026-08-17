@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+<defs>
+  <g id="MASTER_BASE"><path d="M0 80 L180 0 L420 90 L230 185 Z" fill="none" stroke="#aaa"/><rect x="110" y="65" width="70" height="28" fill="#eee" stroke="#aaa"/><rect x="230" y="90" width="80" height="30" fill="#eee" stroke="#aaa"/></g>
+  <g id="SYM_NODE"><circle r="6" fill="#fff" stroke="#222"/><circle r="2" fill="#222"/></g>
+</defs>
+<g id="P01"><use id="P01_BASE" href="#MASTER_BASE" transform="translate(220 70)"/><g id="REL-01"><path id="REL-01_ROUTE" d="M250 170 L360 125 L470 170" fill="none" stroke="#d66" stroke-width="5"/><circle id="REL-01_TARGET" cx="470" cy="170" r="8" fill="#d66"/><text id="REL-01_LABEL" x="40" y="150">route relation</text><path id="REL-01_LEADER" d="M140 146 H205 V170 H462" fill="none" stroke="#333"/><circle id="REL-01_ANCHOR" cx="470" cy="170" r="3" fill="#111"/></g></g>
+<g id="P02"><use id="P02_BASE" href="#MASTER_BASE" transform="translate(220 330)"/><g id="REL-02"><path id="REL-02_ZONE" d="M290 430 L390 385 L455 410 L355 458 Z" fill="#bcd" stroke="#578"/><circle id="REL-02_TARGET" cx="390" cy="420" r="8" fill="#578"/><text id="REL-02_LABEL" x="690" y="415">zone relation</text><path id="REL-02_LEADER" d="M680 410 H515 V420 H398" fill="none" stroke="#333"/><circle id="REL-02_ANCHOR" cx="390" cy="420" r="3" fill="#111"/></g></g>
+<g id="P03"><use id="P03_BASE" href="#MASTER_BASE" transform="translate(220 590)"/><g id="REL-03"><use id="NODE-01" href="#SYM_NODE" x="330" y="690"/><use id="NODE-02" href="#SYM_NODE" x="430" y="650"/><path id="REL-03_LINK" d="M330 690 L430 650" fill="none" stroke="#697" stroke-width="3"/><circle id="REL-03_TARGET" cx="430" cy="650" r="8" fill="#697"/><text id="REL-03_LABEL" x="60" y="700">node relation</text><path id="REL-03_LEADER" d="M145 696 H230 V650 H422" fill="none" stroke="#333"/><circle id="REL-03_ANCHOR" cx="430" cy="650" r="3" fill="#111"/></g></g>
+</svg>

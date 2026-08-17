@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+  <rect width="600" height="300" fill="#fff"/>
+  <defs>
+    <g id="BASE-01_GEOMETRY_MASTER">
+      <path d="M20 70 L100 30 L180 70 L100 110 Z" fill="none" stroke="#777" stroke-width="2"/>
+      <rect x="62" y="55" width="76" height="32" fill="none" stroke="#999" stroke-width="2"/>
+    </g>
+  </defs>
+  <g id="PANEL-A">
+    <use id="PANEL-A_SEMANTIC_BASE" href="#BASE-01_GEOMETRY_MASTER" transform="translate(10 20)" opacity="0"/>
+    <g id="PANEL-A_VISUAL_BASE" data-state="STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY">
+      <path d="M30 90 L110 50 L190 90 L110 130 Z" fill="none" stroke="#b0b0b0" stroke-width="1.4"/>
+      <rect x="72" y="75" width="76" height="32" fill="none" stroke="#c0c0c0" stroke-width="1.2"/>
+    </g>
+  </g>
+  <g id="PANEL-B">
+    <use id="PANEL-B_SEMANTIC_BASE" href="#BASE-01_GEOMETRY_MASTER" transform="translate(205 20)" opacity="0"/>
+    <g id="PANEL-B_VISUAL_BASE" data-state="STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY">
+      <path d="M225 90 L305 50 L385 90 L305 130 Z" fill="none" stroke="#c0c0c0" stroke-width="1.2"/>
+      <path d="M272 75 H338" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+    </g>
+  </g>
+  <g id="PANEL-C">
+    <use id="PANEL-C_SEMANTIC_BASE" href="#BASE-01_GEOMETRY_MASTER" transform="translate(400 20)" opacity="0"/>
+    <g id="PANEL-C_VISUAL_BASE" data-state="STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY">
+      <path d="M420 90 L500 50 L580 90 L500 130 Z" fill="none" stroke="#a8a8a8" stroke-width="1.6"/>
+      <rect x="462" y="75" width="76" height="32" fill="#e0e0e0" stroke="#b8b8b8" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<defs>
+  <pattern id="diag" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#aeb3ae" stroke-width="1"/></pattern>
+</defs>
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#18201e}.cap{font-size:11px;font-weight:700;letter-spacing:2.2px;fill:#69716d}.claim{font-size:34px;font-weight:700;letter-spacing:-.6px}.viewtitle{font-size:15px;font-weight:700}.label{font-size:12px;font-weight:700}.tx{font-size:11px}.sm{font-size:9.5px;fill:#707773}.micro{font-size:8.5px;fill:#747b77}.l1{stroke:#17201e;stroke-width:7;fill:none}.l2{stroke:#26302d;stroke-width:3.6;fill:none}.l3{stroke:#6b736f;stroke-width:1.7;fill:none}.l4{stroke:#878e8a;stroke-width:1.1;fill:none}.l5{stroke:#b5bbb6;stroke-width:1;fill:none;stroke-dasharray:7 6}.dim{stroke:#777f7b;stroke-width:1;fill:none}.cutfill{fill:#d7d9d4}.soft{fill:#f4f2ec}.paper{fill:#f7f5ef}.rail{fill:#eeede7}.accent{stroke:#8a513f;fill:none;stroke-width:2}.accentFill{fill:#8a513f}.hair{stroke:#c9cbc5;stroke-width:1}.truth{fill:#f7f5ef;stroke:#c8cac4}.mat{fill:url(#diag);stroke:#6b736f;stroke-width:1.2}.datum{stroke:#506b65;stroke-width:1.2;fill:none}.datumFill{fill:#506b65}.open{stroke:#8a513f;stroke-width:1.2;fill:none;stroke-dasharray:5 4}
+</style>
+<rect class="paper" width="1800" height="1200"/>
+<g id="HIERARCHY_FRAME"><line x1="72" y1="54" x2="1728" y2="54" class="hair"/><line x1="1300" y1="132" x2="1300" y2="970" class="hair"/><line x1="72" y1="1000" x2="1728" y2="1000" class="hair"/></g>
+<g id="SHEET_HEADER"><text x="72" y="88" class="cap">GD-01 · ARCHITECTURE / INTERIOR · PROFESSIONAL DETAIL DENSITY CALIBRATION</text><text x="1728" y="88" class="sm" text-anchor="end">TECHNICAL EXPLANATION · SYNTHETIC TRAINING GEOMETRY · NOT FOR CONSTRUCTION</text></g>
+<g id="PRIMARY_CLAIM"><text x="72" y="148" class="claim">CUT → LEVEL → INTERFACE</text><text x="72" y="174" class="tx">Parent section owns levels and controlling dimensions; D-02 owns the sill build-up, bracket interface and finish return.</text></g>
+<g id="VIEW_A_SECTION">
+<text x="72" y="220" class="viewtitle">A-A / SECTION · TRAINING SCALE 1:50</text>
+<g id="L5_CONTEXT"><path d="M100 800 C250 765 390 790 535 750 C700 704 850 740 1020 708 C1135 686 1212 696 1260 674" class="l5"/><line x1="110" y1="862" x2="1250" y2="862" class="l5"/><text x="108" y="890" class="sm">EXISTING GROUND / REFERENCE CONTEXT</text></g>
+<g id="L1_CUT_PRIMARY"><path d="M345 815 L345 430 L376 430 L376 815" class="l1"/><path d="M960 815 L960 430 L991 430 L991 815" class="l1"/><path d="M315 420 L1022 420" class="l1"/><path d="M315 815 L1022 815" class="l1"/></g>
+<g id="MATERIAL_HATCHES"><rect x="315" y="420" width="707" height="31" class="cutfill"/><rect x="315" y="790" width="707" height="25" class="cutfill"/><rect x="345" y="452" width="31" height="338" class="mat"/><rect x="960" y="452" width="31" height="338" class="mat"/></g>
+<g id="L2_PRIMARY_RELATION"><line x1="376" y1="453" x2="960" y2="453" class="l2"/><line x1="376" y1="790" x2="960" y2="790" class="l2"/><line x1="550" y1="453" x2="550" y2="790" class="l2"/><line x1="795" y1="453" x2="795" y2="790" class="l2"/><path d="M376 582 H550 V790" class="l2"/><path d="M795 642 H960" class="l2"/></g>
+<g id="L3_SECONDARY_BUILDUP"><line x1="376" y1="470" x2="960" y2="470" class="l3"/><line x1="376" y1="770" x2="960" y2="770" class="l3"/><line x1="360" y1="453" x2="360" y2="790" class="l3"/><line x1="976" y1="453" x2="976" y2="790" class="l3"/><rect x="558" y="470" width="229" height="300" fill="none" stroke="#6b736f" stroke-width="1.5"/><line x1="558" y1="603" x2="787" y2="603" class="l4"/><line x1="674" y1="470" x2="674" y2="770" class="l4"/></g>
+<g id="LEVEL_DATUMS">
+<path d="M1046 420 h55 l-12 -7 v14 z" class="datumFill"/><line x1="1046" y1="420" x2="1208" y2="420" class="datum"/><text x="1110" y="412" class="label">+3.800 · LOCKED TRAINING LEVEL</text>
+<path d="M1046 790 h55 l-12 -7 v14 z" class="datumFill"/><line x1="1046" y1="790" x2="1208" y2="790" class="datum"/><text x="1110" y="782" class="label">±0.000 · DATUM A</text>
+</g>
+<g id="FUNCTIONAL_DIMENSIONS">
+<line x1="270" y1="430" x2="270" y2="815" class="dim"/><line x1="262" y1="430" x2="278" y2="430" class="dim"/><line x1="262" y1="815" x2="278" y2="815" class="dim"/><text x="245" y="625" class="tx" transform="rotate(-90 245 625)">3800 · CONTROLLING · LOCKED TRAINING</text>
+<line x1="376" y1="850" x2="960" y2="850" class="dim"/><line x1="376" y1="842" x2="376" y2="858" class="dim"/><line x1="960" y1="842" x2="960" y2="858" class="dim"/><text x="602" y="842" class="tx">5800 · CLEAR SPAN · LOCKED TRAINING</text>
+<line x1="550" y1="878" x2="795" y2="878" class="dim"/><line x1="550" y1="870" x2="550" y2="886" class="dim"/><line x1="795" y1="870" x2="795" y2="886" class="dim"/><text x="610" y="905" class="sm">2450 · OPENING / LOCKED TRAINING</text>
+</g>
+<g id="MATERIAL_TAGS">
+<line x1="352" y1="520" x2="220" y2="500" class="l4"/><text x="108" y="494" class="label">MAT-01 / PRIMARY WALL</text><text x="108" y="512" class="sm">synthetic training substrate</text>
+<line x1="610" y1="790" x2="610" y2="738" class="l4"/><text x="620" y="735" class="label">MAT-02 / FLOOR BUILD-UP</text><text x="620" y="753" class="sm">cut slab + secondary finish zone</text>
+<line x1="787" y1="603" x2="905" y2="566" class="l4"/><text x="908" y="560" class="label">FIN-01 / LINING RETURN</text><text x="908" y="578" class="sm">finish ≠ substrate authority</text>
+</g>
+<g id="HUMAN_SCALE" stroke="#48504d" fill="none" stroke-width="1.7"><circle cx="692" cy="651" r="8" fill="#48504d"/><line x1="692" y1="659" x2="692" y2="712"/><line x1="692" y1="676" x2="675" y2="694"/><line x1="692" y1="676" x2="709" y2="694"/><line x1="692" y1="712" x2="678" y2="744"/><line x1="692" y1="712" x2="706" y2="744"/></g>
+<g id="L4_DIMENSIONS_NOTES"><text x="108" y="928" class="micro">DIMENSION HIERARCHY: datum/overall → functional opening → local interface. No decorative micro-dimensions.</text></g>
+<g id="DETAIL_CALLOUT"><circle cx="795" cy="642" r="27" fill="none" stroke="#8a513f" stroke-width="2"/><path d="M822 642 H1260" class="accent"/><circle cx="1260" cy="642" r="4" class="accentFill"/><text x="1120" y="628" class="sm">D-02 / CHILD DETAIL</text></g>
+</g>
+<g id="ANNOTATION_RAIL">
+<rect x="1325" y="132" width="403" height="838" class="rail"/>
+<text x="1352" y="176" class="cap">D-02 / INTERFACE DETAIL RAIL</text><text x="1352" y="205" class="viewtitle">SILL + RETURN + BRACKET · 1:10</text>
+<g id="VIEW_B_DETAIL">
+<g id="DETAIL_L1"><path d="M1405 300 V675" class="l1"/><path d="M1405 675 H1638" class="l1"/></g>
+<g id="DETAIL_L2"><line x1="1431" y1="320" x2="1431" y2="650" class="l2"/><line x1="1431" y1="650" x2="1613" y2="650" class="l2"/></g>
+<g id="DETAIL_L3"><line x1="1452" y1="332" x2="1452" y2="628" class="l3"/><line x1="1452" y1="628" x2="1590" y2="628" class="l3"/><rect x="1458" y="472" width="68" height="20" fill="#dedfd9" stroke="#6b736f"/><rect x="1452" y="332" width="14" height="296" fill="#ecece7" stroke="#878e8a"/><circle cx="1484" cy="482" r="5" fill="#fff" stroke="#59615d"/><line x1="1484" y1="487" x2="1484" y2="530" class="l3"/><path d="M1431 610 H1452 V628" class="l3"/></g>
+<g id="INTERFACE_COMPONENTS">
+<line x1="1526" y1="482" x2="1660" y2="445" class="l4"/><text x="1538" y="427" class="label">HW-01 / BRACKET ZONE</text><text x="1538" y="445" class="sm">fixing location shown; sizing illustrative</text>
+<line x1="1462" y1="395" x2="1658" y2="375" class="l4"/><text x="1538" y="360" class="label">FIN-01 / RETURN LAYER</text><text x="1538" y="378" class="sm">finish layer spatially separated</text>
+<line x1="1431" y1="575" x2="1658" y2="550" class="l4"/><text x="1538" y="535" class="label">J-01 / EDGE JOINT</text><text x="1538" y="553" class="sm">movement/seal requirement = authority open</text>
+</g>
+<g id="DETAIL_DIMENSIONS">
+<line x1="1405" y1="708" x2="1452" y2="708" class="dim"/><line x1="1405" y1="700" x2="1405" y2="716" class="dim"/><line x1="1452" y1="700" x2="1452" y2="716" class="dim"/><text x="1388" y="734" class="sm">47 · LOCKED TRAINING BUILD-UP</text>
+<line x1="1452" y1="740" x2="1526" y2="740" class="dim"/><line x1="1452" y1="732" x2="1452" y2="748" class="dim"/><line x1="1526" y1="732" x2="1526" y2="748" class="dim"/><text x="1465" y="766" class="sm">74 · INTERFACE ZONE / TRAINING</text>
+</g>
+<g id="BUILDUP_REGISTER">
+<text x="1352" y="800" class="cap">NEAR-READ INDEX</text>
+<text x="1352" y="824" class="tx">01 · MAT-01 substrate / primary cut</text>
+<text x="1352" y="845" class="tx">02 · FIN-01 return / secondary layer</text>
+<text x="1352" y="866" class="tx">03 · HW-01 bracket / fixing interface</text>
+<text x="1352" y="887" class="tx">04 · J-01 joint / movement-seal authority open</text>
+</g>
+<g id="DETAIL_STATE"><rect x="1352" y="905" width="348" height="48" class="truth"/><text x="1368" y="925" class="sm">FV-01 connection sizing · ENGINEER / SYSTEM VERIFY</text><text x="1368" y="942" class="sm">No fire / thermal / waterproofing performance claim.</text></g>
+</g>
+</g>
+<g id="METADATA_RAIL"><g id="TITLE_BLOCK"><text x="72" y="1037" class="cap">OLEANDER TECHNICAL DRAWING · GOLDEN FIXTURE SUITE</text><text x="72" y="1065" class="sm">Fixture GD-01 · Depth present: D0 identity / D1 cut+levels / D2 controlling dimensions / D3 material layers / D4 bracket+joint / D6 verify</text><text x="72" y="1090" class="sm">Synthetic values test dimension hierarchy only. They are not project recommendations, engineering sizes or field measurements.</text><text x="72" y="1124" class="label">GOLDEN CANDIDATE · independent OLEANDER visual review required before promotion</text><text x="1728" y="1124" class="sm" text-anchor="end">REV C · 2026-08-17</text></g></g>
+</svg>

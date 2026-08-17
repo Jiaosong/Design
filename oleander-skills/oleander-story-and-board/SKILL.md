@@ -28,11 +28,14 @@ Every section should have one primary claim and one primary visual.
 1. Pull approved claims and sources from Notion.
 2. Pull validated charts from `oleander-data-viz`.
 3. Pull model manifests and approved renders from `oleander-3d-pipeline`.
-4. Create a content inventory before layout.
-5. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering.
-6. Produce a low-fidelity sequence before polishing.
-7. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
-8. Run content, visual, and production reviews separately.
+4. Pull plans, sections, elevations, nodes, exploded/assembly and other technical figures from `oleander-technical-drawing` when those figures are decision-bearing.
+5. Create a content inventory before layout.
+6. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering.
+7. Produce a low-fidelity sequence before polishing.
+8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
+9. Run content, visual, drawing and production reviews separately where technical figures are present.
+
+Do not redraw, crop away, relabel or cosmetically simplify a technical figure in a way that changes its dimensions, source authority, truth-state labels, detail parentage or TD-Gate meaning. Presentation layout may change framing and surrounding narrative; technical drawing content remains owned by `oleander-technical-drawing`.
 
 ## Deliverable variants
 
@@ -53,4 +56,5 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 - Captions identify what, where, when, and why it matters.
 - Text remains readable at target print/view distance.
 - The conclusion follows from the evidence rather than visual mood alone.
+- Technical figures remain bound to their approved source/revision and do not gain a stronger engineering, field or construction status through presentation alone.
 

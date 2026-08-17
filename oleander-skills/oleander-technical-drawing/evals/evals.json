@@ -1,0 +1,83 @@
+{
+  "skill_name": "oleander-technical-drawing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "OLEANDER 清江 R06 节点已有概念轴测、剖面和若干推荐尺寸，但 FIELD OBSERVED=0、FIELD MEASURED=0。把现有内容深化成专业节点图，不得虚构现场尺寸或把结构假设写成施工定案。",
+      "expected_output": "Landscape/site profile selected; source-authority matrix; TECHNICAL EXPLANATION / NOT FOR CONSTRUCTION status; parent section → interface detail → connection enlargement logic; verified/recommended/range/FIELD VERIFY dimensions separated; design-action → system → reference → range → sensitivity → FIELD/engineer verify reality chain; visible connection/drainage/maintenance/safety relationships; vector annotation; thumbnail/intended-size/near-read crit; TD-G0…TD-G8 with engineering/field gates separate.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "从锁定的产品 CAD/OBJ 几何制作一套可交制造沟通的总装、剖面、爆炸和零件尺寸图。渲染图与 CAD 有一处边界冲突，CMF 表里有两个候选 finish 尚未批准。",
+      "expected_output": "Industrial/product profile selected; CAD/model authority preserved over render conflict; coherent orthographic/section/assembly views; exploded view backed by exact mating/interface detail; minimum controlling dimension set; candidate finishes distinct from approved material authority; tolerances only where function/process/inspection basis exists; service/tool access checked; vector PDF/SVG/DXF-capable output; round-trip checks and no fabrication promotion while critical authority remains open.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个建筑改造节点有现状测绘平面、旧版施工详图和新的概念模型。旧详图与现状测绘在墙体位置上冲突。需要形成平面、剖面和墙脚节点用于设计协调。",
+      "expected_output": "Architecture profile; current survey/approved project authority resolved before legacy detail; stale detail retained only as reference/provenance; plan-section-detail parentage; structural vs finish levels/build-up separated; conflicting wall geometry not silently reconciled; coordination status and open waterproofing/structure items visible; dimensions tied to stable datums; TD-G1/G2 cannot PASS until conflict is explicitly resolved or bounded.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "远程做一个山地步道边缘节点：照片能看到岩壁和步道，但没有精确坡度、岩体强度、基础或排水测量。方案仍需要推进到专业研究设计图纸。",
+      "expected_output": "Landscape profile; no-stop remote-design continuation; existing/proposed/inferred/FIELD OPEN states; no precise rock/foundation geometry invented; recommended slope/edge/drainage/support ranges only with basis and sensitivity; explicit survey/substrate/drainage/safety closure items; human scale and maintenance access; UNKNOWN operational state not presented as normal; no construction claim.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "一张技术剖面信息其实齐全，但 CAD 导出后所有线宽一样，文字和引线压住主体，缩略图很乱；用户要求只提升职业化，不新增几何和尺寸。",
+      "expected_output": "No content invention; same authoritative geometry retained; L1–L5 graphic hierarchy applied; CUT/primary relation/secondary/interface/annotation separated; annotations moved into negative space before geometry is thickened; no decorative hatch; multi-scale thumbnail/intended-size/near-read review; evidence completeness preserved while graphic hierarchy improves; TD-G5 independently judged from export success.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "产品爆炸图看起来完整，但一个隐藏螺钉在装配后没有工具进入路径，维修时也无法拆出电池模块。图纸已经有尺寸和 BOM。判断并修正图纸体系。",
+      "expected_output": "Assembly/serviceability failure identified despite dimensional/BOM completeness; tool/hand/removal envelopes made visible; assembly/disassembly sequence revised or connection strategy held; parent assembly plus local interface/service detail; critical clearances dimensioned from functional interfaces; fabrication permission withheld until access is physically feasible; TD-G4 failure cannot be overridden by TD-G3 or TD-G7 PASS.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "给你一张 1600×1000 的干净数字 PNG 专业节点图和可用的准确字体，要求可编辑 SVG 像素级复刻。现在候选全图 99.4% 像素相同，但主剖切轮廓有 1 px 位移、标题 baseline 偏 1 px、虚线 phase 不一致。能不能判像素级完成？",
+      "expected_output": "Activate EXACT RECONSTRUCTION plus PIXEL_FORENSIC_PROTOCOL; bind R1 reference and locked renderer/font/color environment; reject any global 99.4% pass logic; use tolerance-zero comparison; A0–A4 object/anchor/typography/stroke registers; critical ROI contract; edge disagreement r0/r1/r2; sub-pixel centerline/phase diagnosis; E0–E6 freeze order; result REVISE and RF-C3 unavailable until zero unexplained in-scope changed pixels. TD review remains separate.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "只有一张 900px 宽、JPEG 压缩明显的网上截图，字体未知，还裁掉了图框一部分。用户要求把整张图做到 pixel perfect 并宣称 1:1。",
+      "expected_output": "Classify source as R3; preserve source limitations; do not invent cropped content, sub-pixel typography, hatch phase or exact lineweight; exact-font/render environment cannot be locked; RF-C3 must be HOLD/UNAVAILABLE, maximum honest target RF-C0/C1 or bounded RF-C2 for recoverable ROIs; no hidden raster embedding; exclusions and unknowns explicit; use high-fidelity/structural reconstruction language rather than pixel-perfect.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "有一张原生矢量 PDF 专业构造详图，可以在锁定 renderer 下做到 0 pixel diff；但参考里的锚栓尺寸和当前项目工程师已批准的尺寸冲突。用户要把参考直接用于当前项目主图。",
+      "expected_output": "Separate fidelity from truth: reference may achieve RF-C3 as a reproduction, but current-project adaptation must obey present engineering authority; do not copy conflicting anchor dimensions as project fact; record PROJECT TRUTH OVERRIDE/DESIGN ADAPTATION; TD-G1/G3/G4 judge the adapted drawing independently; an RF-C3 reproduction cannot become MAIN/engineering authority merely because pixel diff is zero.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "给你一张纵向 944×2048 的多层爆炸轴测分析图。七个主题层反复使用同一场地底图，并通过彩色路线、区域、垂直虚线、侧边图标和折线引线说明关系。要求像素级可编辑 SVG 复刻。自动描摹后全页已经很像，文件也是 SVG，但路线、建筑、文字、图标和引线都混在匿名 path cloud 里。逐层判断是否完成，并检查关系到底画出来还是只剩文字/像素轮廓。",
+      "expected_output": "Activate EXACT RECONSTRUCTION + PIXEL_FORENSIC_PROTOCOL + MULTILAYER_RELATION_RECONSTRUCTION; segment the seven stack layers; create one shared-base genealogy and per-layer transforms; reject anonymous path-cloud as semantic editability; create relation-evidence register with DRAWN/PARTIAL/TEXT-ONLY/UNRECOVERABLE states; reconstruct callout topology LABEL/SYMBOL→LEADER→ANCHOR→TARGET; create symbol dictionary for repeated icon families; define per-panel relationship/callout/icon/typography ROIs; compare same-size renders and pixel/edge metrics but do not let full-page similarity override a failed relation; producer may only SELF-CHECK/REVISE/REJECT/REVIEW PENDING and cannot self-KEEP.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "RF-CAL 类候选有四个已知误差：主几何整体 +5 px、标题 baseline 108 应为 105、标题字号 31 应为 32、接口 stroke 2.8 应为 2.2。第一次按 E2→E3→E4 只跑一遍时，标题 baseline 为了适配错误字号被调到 104。现在要求自动求解，不允许手工把最终值写回。",
+      "expected_output": "Load PIXEL_SOLVER_PROTOCOL; parameterize only bounded editable SVG variables; run multi-cycle coupled coordinate descent rather than permanent one-pass freeze; after font-size changes reopen title baseline; retain ROI-weighted loss as diagnostic only; recover primary_dx=0, title_y=105, title_font_size=32, interface_stroke=2.2 under one locked renderer; final tolerance-zero changed pixels/MAE/edge mismatch must be zero for synthetic RF-C3 candidate; solver trace and original candidate retained; no Design/technical promotion.",
+      "files": ["fixtures/reconstruction/RF-CAL-01_SOLVER_SPEC.json"]
+    },
+    {
+      "id": 12,
+      "prompt": "同一个 SVG 参考先用 Inkscape 输出成 PNG，但自动参数求解器为了速度用 CairoSVG 渲染候选。求解后它认为标题 y=104 比真实的 y=105 更好。是否可以把这个结果用于 RF-C3？",
+      "expected_output": "Reject RF-C3 use of the cross-renderer optimum; identify renderer/font rasterization mismatch as part of the fidelity problem; enforce RENDER_ENVIRONMENT_LOCK and rule WRONG RENDERER→WRONG OPTIMUM; either rerender the vector reference through the same solver renderer or run the solver/final diff through the declared Inkscape path; previous cross-renderer result remains diagnostic provenance only and must not be normalized into a pixel-exact claim.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "在 Information is Beautiful 的 Water World 页面上能看到清晰的网页/搜索参考，也能读出结构和标签，但当前执行环境无法把那张远程参考图的确切 bytes 持久化到本地 solver。用户仍要求继续做像素级复刻。",
+      "expected_output": "Continue RF-C0/RF-C1 structural/geometric reconstruction if useful, but set REFERENCE_BYTES_OPEN; do not compare against a recreated proxy or candidate screenshot as if it were the source; do not claim RF-C3; preserve the canonical source URL/identity and exact materialization requirement; when exact reference bytes become available, resume renderer lock→forensics→bounded solver→tolerance-zero diff rather than restarting the design from scratch.",
+      "files": []
+    }
+  ]
+}

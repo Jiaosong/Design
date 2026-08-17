@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "status": "CANDIDATE_NOT_PROMOTED",
+  "semantic_editability_target": "SEMANTIC_VECTOR",
+  "master_base": {
+    "id": "MASTER_BASE",
+    "instances": ["P01_BASE", "P02_BASE", "P03_BASE"]
+  },
+  "symbol_dictionary": {
+    "SYM_NODE": {"min_instances": 2}
+  },
+  "panels": [
+    {"id": "P01", "base_instance": "P01_BASE", "relations": ["REL-01"]},
+    {"id": "P02", "base_instance": "P02_BASE", "relations": ["REL-02"]},
+    {"id": "P03", "base_instance": "P03_BASE", "relations": ["REL-03"]}
+  ],
+  "relations": [
+    {
+      "id": "REL-01",
+      "state": "DRAWN",
+      "carrier_ids": ["REL-01_ROUTE"],
+      "target_ids": ["REL-01_TARGET"],
+      "callout": {"label_id": "REL-01_LABEL", "leader_id": "REL-01_LEADER", "anchor_id": "REL-01_ANCHOR", "target_id": "REL-01_TARGET"}
+    },
+    {
+      "id": "REL-02",
+      "state": "DRAWN",
+      "carrier_ids": ["REL-02_ZONE"],
+      "target_ids": ["REL-02_TARGET"],
+      "callout": {"label_id": "REL-02_LABEL", "leader_id": "REL-02_LEADER", "anchor_id": "REL-02_ANCHOR", "target_id": "REL-02_TARGET"}
+    },
+    {
+      "id": "REL-03",
+      "state": "DRAWN",
+      "carrier_ids": ["REL-03_LINK", "NODE-01", "NODE-02"],
+      "target_ids": ["REL-03_TARGET"],
+      "callout": {"label_id": "REL-03_LABEL", "leader_id": "REL-03_LEADER", "anchor_id": "REL-03_ANCHOR", "target_id": "REL-03_TARGET"}
+    }
+  ]
+}

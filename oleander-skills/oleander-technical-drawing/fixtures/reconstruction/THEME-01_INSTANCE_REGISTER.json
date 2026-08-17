@@ -1,0 +1,17 @@
+{
+  "status": "CANDIDATE_NOT_PROMOTED",
+  "themes": [
+    {
+      "id": "THEME-A",
+      "semantic_group": "THEME-01-SEM-A",
+      "visual_carrier": "THEME-01-VIS-A",
+      "authority": "NON_AUTHORITY"
+    },
+    {
+      "id": "THEME-B",
+      "semantic_group": "THEME-01-SEM-B",
+      "visual_carrier": "THEME-01-VIS-B",
+      "authority": "NON_AUTHORITY"
+    }
+  ]
+}

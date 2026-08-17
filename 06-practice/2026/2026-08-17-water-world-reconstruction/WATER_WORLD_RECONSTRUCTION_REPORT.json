@@ -1,0 +1,25 @@
+{
+  "project": "Water World — Information is Beautiful",
+  "source_page": "https://informationisbeautiful.net/visualizations/water-world-distribution-of-the-all-the-water-in-all-the-world/",
+  "reference_access": "512x512 web/image-search visible reference; original vector/PDF not materialized",
+  "reconstruction_mode": "STRUCTURAL RECONSTRUCTION",
+  "fidelity_claim": "RF-C1 GEOMETRIC FIDELITY CANDIDATE / NOT RF-C3",
+  "editable": true,
+  "raster_reference_embedded": false,
+  "canvas": [512, 512],
+  "known_limitations": [
+    "No original vector/PDF/CAD bytes available in this runtime",
+    "Exact font family and glyph metrics are not verified",
+    "Bezier control points, lineweight phase and hidden cropped labels are inferred from the visible web reference",
+    "No zero-tolerance pixel-diff can be claimed without materialized reference pixels"
+  ],
+  "next_gate_for_RF_C3": [
+    "materialize exact reference image/PDF",
+    "lock renderer/font environment",
+    "extract A0-A4 anchors/object register",
+    "render same-size candidate",
+    "zero-tolerance critical-ROI diff",
+    "iterate until zero unexplained in-scope mismatch"
+  ],
+  "review_state": "PRODUCER EXECUTED / SELF-CHECKED / INDEPENDENT FIDELITY REVIEW PENDING"
+}

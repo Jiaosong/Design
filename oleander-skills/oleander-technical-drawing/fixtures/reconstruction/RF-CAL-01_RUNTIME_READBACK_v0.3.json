@@ -1,0 +1,90 @@
+{
+  "fixture_id": "RF-CAL-01",
+  "readback_revision": "v0.3_pixel_forensic",
+  "status": "PRODUCER_DIAGNOSTIC_ONLY_NOT_INDEPENDENT_KEEP",
+  "runtime": {
+    "renderer": "Inkscape",
+    "canvas_px": [1200, 800],
+    "comparison_tolerance": 0,
+    "source_rasters": ["reference.png", "candidate_bad.png", "candidate_match.png"]
+  },
+  "negative_candidate": {
+    "global": {
+      "changed_pixel_ratio_above_tolerance": 0.015273958333333334,
+      "mean_absolute_channel_error": 2.6671239583333333,
+      "rmse_channel_error": 23.747714517226004,
+      "max_absolute_channel_error": 238,
+      "changed_pixel_bbox": [92, 81, 824, 521]
+    },
+    "registration_diagnostic": {
+      "suggested_candidate_shift_to_align_px": {"dx": 0, "dy": 0},
+      "interpretation": "no whole-page translation; failures are local geometry/typography/stroke mismatches"
+    },
+    "edge": {
+      "reference_unmatched_ratio_r0": 0.14223512336719885,
+      "candidate_unmatched_ratio_r0": 0.13011480718280835,
+      "reference_unmatched_ratio_r1": 0.09457184325108853,
+      "candidate_unmatched_ratio_r1": 0.08257285840447454,
+      "reference_unmatched_ratio_r2": 0.05904208998548621,
+      "candidate_unmatched_ratio_r2": 0.0450397409478952
+    },
+    "critical_rois": {
+      "title": {
+        "changed_pixel_ratio": 0.16633846153846155,
+        "reference_edge_unmatched_r0": 0.416553901668922,
+        "reference_edge_unmatched_r1": 0.2856337392873252,
+        "reference_edge_unmatched_r2": 0.16441136671177267
+      },
+      "primary_geometry": {
+        "changed_pixel_ratio": 0.02291244788564622,
+        "reference_edge_unmatched_r0": 0.14800901577761083,
+        "reference_edge_unmatched_r1": 0.08602554470323065,
+        "reference_edge_unmatched_r2": 0.06624092161282244
+      },
+      "dimensions": {
+        "changed_pixel_ratio": 0.0,
+        "reference_edge_unmatched_r0": 0.0
+      },
+      "callout": {
+        "changed_pixel_ratio": 0.007368421052631579,
+        "reference_edge_unmatched_r0": 0.04597701149425287
+      },
+      "title_block": {
+        "changed_pixel_ratio": 0.0,
+        "reference_edge_unmatched_r0": 0.0
+      }
+    },
+    "diagnosis": "REVISE_A2_A3_A4",
+    "rf_c3_contract": "FAIL"
+  },
+  "matched_candidate": {
+    "global": {
+      "exact_equal_pixel_ratio": 1.0,
+      "changed_pixel_ratio_above_tolerance": 0.0,
+      "mean_absolute_channel_error": 0.0,
+      "rmse_channel_error": 0.0,
+      "max_absolute_channel_error": 0
+    },
+    "registration_diagnostic": {
+      "suggested_candidate_shift_to_align_px": {"dx": 0, "dy": 0}
+    },
+    "edge": {
+      "reference_unmatched_ratio_r0": 0.0,
+      "candidate_unmatched_ratio_r0": 0.0,
+      "reference_unmatched_ratio_r1": 0.0,
+      "candidate_unmatched_ratio_r1": 0.0,
+      "reference_unmatched_ratio_r2": 0.0,
+      "candidate_unmatched_ratio_r2": 0.0
+    },
+    "rf_c3_contract": "MATCH_IN_LOCKED_SYNTHETIC_FIXTURE",
+    "producer_claim_ceiling": "RF-C3_PIXEL_EXACT_CANDIDATE_IN_FIXTURE_ONLY"
+  },
+  "does_not_prove": [
+    "professional drawing Design KEEP",
+    "technical correctness",
+    "engineering adequacy",
+    "field truth",
+    "pixel-exact capability for arbitrary scanned/unknown-font references",
+    "project promotion"
+  ]
+}

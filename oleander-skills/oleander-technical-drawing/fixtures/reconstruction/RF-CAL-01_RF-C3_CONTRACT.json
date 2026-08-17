@@ -1,0 +1,43 @@
+{
+  "claim": "RF-C3_PIXEL_EXACT_CANDIDATE",
+  "required_tolerance": 0,
+  "global_limits": {
+    "global.changed_pixel_ratio_above_tolerance": {"max": 0.0},
+    "global.mean_absolute_channel_error": {"max": 0.0},
+    "global.rmse_channel_error": {"max": 0.0},
+    "global.max_absolute_channel_error": {"max": 0},
+    "registration_diagnostic.abs_dx": {"max": 0},
+    "registration_diagnostic.abs_dy": {"max": 0},
+    "edge.reference_unmatched_ratio_r0": {"max": 0.0},
+    "edge.candidate_unmatched_ratio_r0": {"max": 0.0}
+  },
+  "roi_limits": {
+    "title": {
+      "metrics.changed_pixel_ratio_above_tolerance": {"max": 0.0},
+      "edge.reference_unmatched_ratio_r0": {"max": 0.0},
+      "edge.candidate_unmatched_ratio_r0": {"max": 0.0}
+    },
+    "primary_geometry": {
+      "metrics.changed_pixel_ratio_above_tolerance": {"max": 0.0},
+      "edge.reference_unmatched_ratio_r0": {"max": 0.0},
+      "edge.candidate_unmatched_ratio_r0": {"max": 0.0}
+    },
+    "dimensions": {
+      "metrics.changed_pixel_ratio_above_tolerance": {"max": 0.0},
+      "edge.reference_unmatched_ratio_r0": {"max": 0.0},
+      "edge.candidate_unmatched_ratio_r0": {"max": 0.0}
+    },
+    "callout": {
+      "metrics.changed_pixel_ratio_above_tolerance": {"max": 0.0}
+    },
+    "title_block": {
+      "metrics.changed_pixel_ratio_above_tolerance": {"max": 0.0}
+    }
+  },
+  "does_not_prove": [
+    "technical correctness",
+    "engineering or field truth",
+    "drawing Design KEEP",
+    "project promotion"
+  ]
+}

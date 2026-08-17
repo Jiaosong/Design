@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+<style>.base{stroke:#b9bebc;stroke-width:2;fill:none}.route{stroke:#24302d;stroke-width:5;fill:none;stroke-linecap:round}.secondary{stroke:#6f7773;stroke-width:3;fill:none}.node{fill:#f7f4ec;stroke:#24302d;stroke-width:3}.return{fill:#24302d}.obs{fill:#d8ebe8;stroke:#4f817d;stroke-width:3}.content{fill:#fff;stroke:#8d9692;stroke-width:2;stroke-dasharray:5 4}.callout{fill:#111}.txt{font-family:sans-serif;font-size:18px;fill:#24302d}</style>
+<path id="BASE_PATH" d="M100 360 H1040" class="base"/>
+<path id="EDGE_E01" d="M110 360 H330" class="route"/>
+<path id="EDGE_E02" d="M330 360 H620" class="route"/>
+<path id="EDGE_E03" d="M330 360 L510 210" class="secondary"/>
+<path id="EDGE_E04" d="M620 360 H940" class="route"/>
+<path id="EDGE_RETURN" d="M620 360 L800 520" class="secondary"/>
+<circle id="NODE_ENTRY" cx="110" cy="360" r="16" class="node"/>
+<circle id="NODE_JUNCTION" cx="330" cy="360" r="18" class="node"/>
+<rect id="NODE_TRANSFER" x="600" y="340" width="40" height="40" class="node"/>
+<circle id="NODE_OBSERVATION" cx="510" cy="210" r="20" class="obs"/>
+<circle id="NODE_RETURN" cx="800" cy="520" r="19" class="return"/>
+<circle id="NODE_CONTENT" cx="760" cy="360" r="15" class="content"/>
+<circle id="CALLOUT_ANCHOR" cx="900" cy="300" r="6" class="callout"/>
+<line id="CALLOUT_LEADER" x1="900" y1="300" x2="1010" y2="250" stroke="#111" stroke-width="1.5"/>
+<text x="90" y="405" class="txt">ENTRY</text><text x="285" y="410" class="txt">JUNCTION</text><text x="580" y="420" class="txt">TRANSFER</text><text x="460" y="165" class="txt">OBSERVATION</text><text x="760" y="565" class="txt">RETURN</text><text x="715" y="410" class="txt">CONTENT</text>
+</svg>

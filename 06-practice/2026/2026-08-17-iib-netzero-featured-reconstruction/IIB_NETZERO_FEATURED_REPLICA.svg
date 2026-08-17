@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<rect width="512" height="512" fill="#333237"/>
+<g id="clusters" fill="none" stroke-width="1.55" opacity="0.98">
+  <circle id="olive_01" cx="-16" cy="86" r="61" stroke="#879137"/>
+  <circle id="olive_02" cx="-25" cy="221" r="78" stroke="#879137"/>
+  <circle id="pink_01" cx="159" cy="155" r="94" stroke="#A56C83"/>
+  <circle id="pink_02" cx="282" cy="66" r="55" stroke="#A56C83"/>
+  <circle id="pink_03" cx="410" cy="88" r="73" stroke="#A56C83"/>
+  <circle id="pink_04" cx="311" cy="170" r="54" stroke="#A56C83"/>
+  <circle id="pink_05" cx="262" cy="276" r="66" stroke="#A56C83"/>
+  <circle id="grey_01" cx="81" cy="325" r="43" stroke="#717178"/>
+  <circle id="grey_02" cx="29" cy="424" r="68" stroke="#717178"/>
+  <circle id="yellow_01" cx="420" cy="310" r="58" stroke="#B78A25"/>
+  <circle id="yellow_02" cx="195" cy="392" r="52" stroke="#B78A25"/>
+  <circle id="yellow_03" cx="293" cy="392" r="45" stroke="#B78A25"/>
+  <circle id="yellow_04" cx="389" cy="433" r="62" stroke="#B78A25"/>
+  <circle id="yellow_05" cx="192" cy="466" r="20" stroke="#B78A25"/>
+  <circle id="yellow_06" cx="249" cy="462" r="43" stroke="#B78A25"/>
+</g>
+</svg>

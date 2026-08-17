@@ -1,0 +1,69 @@
+{
+  "fixture_id": "RF-CAL-01",
+  "status": "SYNTHETIC_CALIBRATION_NOT_GOLDEN_PROMOTED",
+  "renderer_calibration": {
+    "canvas": [1200, 800],
+    "strict_comparison_tolerance": 0,
+    "renderer_used_for_recorded_readback": "Inkscape",
+    "claim_model": "RF-C0_STRUCTURAL -> RF-C1_GEOMETRIC -> RF-C2_RENDER_LOCKED -> RF-C3_PIXEL_EXACT_CANDIDATE"
+  },
+  "negative_candidate": {
+    "required_detected_failures": [
+      "A2_PRIMARY_GEOMETRY_X_SHIFT_5PX",
+      "A4_INTERFACE_STROKE_2_2_TO_2_8",
+      "A3_TITLE_BASELINE_PLUS_3PX",
+      "A3_TITLE_SIZE_32_TO_31"
+    ],
+    "recorded_tolerance_zero": {
+      "global_changed_pixel_ratio": 0.015273958333333334,
+      "global_mae": 2.6671239583333333,
+      "global_rmse": 23.747714517226004,
+      "global_max_error": 238,
+      "estimated_whole_page_translation_dx": 0,
+      "estimated_whole_page_translation_dy": 0,
+      "reference_edge_unmatched_r0": 0.14223512336719885,
+      "reference_edge_unmatched_r1": 0.09457184325108853,
+      "reference_edge_unmatched_r2": 0.05904208998548621,
+      "candidate_edge_unmatched_r0": 0.13011480718280835,
+      "candidate_edge_unmatched_r1": 0.08257285840447454,
+      "candidate_edge_unmatched_r2": 0.0450397409478952,
+      "changed_pixel_bbox": [92, 81, 824, 521]
+    },
+    "critical_roi_changed_pixel_ratio_tolerance_zero": {
+      "title": 0.16633846153846155,
+      "primary_geometry": 0.02291244788564622,
+      "dimensions": 0.0,
+      "callout": 0.007368421052631579,
+      "title_block": 0.0
+    },
+    "required_claim_ceiling": "RF-C0_OR_RF-C1_ONLY",
+    "required_verdict": "REVISE"
+  },
+  "matched_candidate": {
+    "visible_pixel_match_under_locked_renderer": true,
+    "recorded_tolerance_zero": {
+      "exact_equal_pixel_ratio": 1.0,
+      "changed_pixel_ratio": 0.0,
+      "mean_absolute_channel_error": 0.0,
+      "rmse_channel_error": 0.0,
+      "max_error": 0,
+      "reference_edge_unmatched_r0": 0.0,
+      "candidate_edge_unmatched_r0": 0.0,
+      "estimated_whole_page_translation_dx": 0,
+      "estimated_whole_page_translation_dy": 0
+    },
+    "source_bytes_may_differ": true,
+    "maximum_producer_claim": "RF-C3_PIXEL_EXACT_CANDIDATE_IN_LOCKED_FIXTURE_ONLY",
+    "required_verdict": "FIDELITY_CONTRACT_MATCH_INDEPENDENT_REVIEW_STILL_REQUIRED"
+  },
+  "invariants": [
+    "NO_GLOBAL_SIMILARITY_PERCENTAGE_CAN_AWARD_RF_C3",
+    "RF_C3_REQUIRES_TOLERANCE_ZERO_AND_ZERO_UNEXPLAINED_IN_SCOPE_CHANGED_PIXELS",
+    "RF_PASS_NEVER_IMPLIES_TD_PASS",
+    "PIXEL_MATCH_NEVER_IMPLIES_VECTOR_EDITABILITY",
+    "PIXEL_MATCH_NEVER_IMPLIES_ENGINEERING_OR_FIELD_TRUTH",
+    "GLOBAL_METRIC_CANNOT_OVERRIDE_CRITICAL_ROI_FAILURE",
+    "CANDIDATE_MUST_NOT_BE_WARPED_TO_HIDE_RECONSTRUCTION_ERROR",
+    "RENDER_ENVIRONMENT_CHANGE_INVALIDATES_PRIOR_RF_C3_EVIDENCE"
+  ]
+}

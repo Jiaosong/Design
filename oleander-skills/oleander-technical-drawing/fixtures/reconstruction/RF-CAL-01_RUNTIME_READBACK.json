@@ -1,0 +1,44 @@
+{
+  "fixture_id": "RF-CAL-01",
+  "runtime": {
+    "renderer": "Inkscape",
+    "canvas_px": [1200, 800],
+    "comparison_tolerance": 2
+  },
+  "negative_candidate": {
+    "global": {
+      "exact_equal_pixel_ratio": 0.9847260416666667,
+      "changed_pixel_ratio_above_tolerance": 0.01519375,
+      "mean_absolute_channel_error": 2.6671239583333333,
+      "rmse_channel_error": 23.747714517226004,
+      "p95_absolute_channel_error": 0.0,
+      "max_absolute_channel_error": 238
+    },
+    "rois": {
+      "title": {"changed_pixel_ratio_above_tolerance": 0.16529230769230768},
+      "primary_geometry": {"changed_pixel_ratio_above_tolerance": 0.022858844550327575},
+      "dimensions": {"changed_pixel_ratio_above_tolerance": 0.0},
+      "callout": {"changed_pixel_ratio_above_tolerance": 0.007298245614035088},
+      "title_block": {"changed_pixel_ratio_above_tolerance": 0.0}
+    },
+    "producer_diagnostic": "REVISE_GEOMETRY_TYPOGRAPHY_STROKE"
+  },
+  "matched_candidate": {
+    "global": {
+      "exact_equal_pixel_ratio": 1.0,
+      "changed_pixel_ratio_above_tolerance": 0.0,
+      "mean_absolute_channel_error": 0.0,
+      "rmse_channel_error": 0.0,
+      "max_absolute_channel_error": 0
+    },
+    "producer_diagnostic": "VISIBLE_MATCH_UNDER_LOCKED_RENDERER_REVIEW_PENDING"
+  },
+  "source_sha256": {
+    "reference_svg": "43723ec255fa038971a1b33f4ae801405fe9c353a539004a3990575c26d444e1",
+    "negative_svg": "d1c6c48f7f6ca279736d1942eff38d86e687c88c829e99be3d1bb9769e8bc585",
+    "matched_svg": "aa534b22ded35b9490fba9aaacd6255f512619b3cddff943a52ca1c9a36d408b",
+    "reference_raster": "b9c4e68484ffb3f1f6bf68350ee59ed4bc7cd6ae0b9db9e861b51dcf96061340",
+    "matched_raster": "b9c4e68484ffb3f1f6bf68350ee59ed4bc7cd6ae0b9db9e861b51dcf96061340"
+  },
+  "boundary": "PRODUCER CALIBRATION ONLY / RF-G6 INDEPENDENT REVIEW PENDING / RF PASS != TD PASS"
+}

@@ -1,0 +1,52 @@
+{
+  "fixture_id": "FLOW-01",
+  "status": "CANDIDATE_NOT_PROMOTED",
+  "network_editability_target": "SEMANTIC_FLOW_GRAPH",
+  "base_geometry_id": "BASE_GEOMETRY",
+  "required_route_classes": ["primary", "secondary", "external"],
+  "route_classes": {
+    "primary": {"stroke_role": "major movement spine"},
+    "secondary": {"stroke_role": "local connector"},
+    "external": {"stroke_role": "frame continuation"}
+  },
+  "marker_to_stroke_ratio_range": [1.0, 6.0],
+  "max_marker_tangent_error_deg": 2.0,
+  "nodes": [
+    {"id": "N-A", "svg_id": "NODE-A", "class": "entry", "degree": 1, "connected_edges": ["E-P01"]},
+    {"id": "N-B", "svg_id": "NODE-B", "class": "junction", "degree": 3, "connected_edges": ["E-P01", "E-P02", "E-S01"]},
+    {"id": "N-C", "svg_id": "NODE-C", "class": "transition", "degree": 2, "connected_edges": ["E-P02", "E-X01"]},
+    {"id": "N-D", "svg_id": "NODE-D", "class": "local-entry", "degree": 1, "connected_edges": ["E-S01"]},
+    {"id": "N-E", "svg_id": "NODE-E", "class": "external-continuation", "degree": 1, "connected_edges": ["E-X01"]}
+  ],
+  "edges": [
+    {"id": "E-P01", "svg_id": "EDGE-P01", "start_node": "N-A", "end_node": "N-B", "directed": true, "requires_direction_marker": true, "route_class": "primary", "base_binding": "CORRIDOR-BOUND"},
+    {"id": "E-P02", "svg_id": "EDGE-P02", "start_node": "N-B", "end_node": "N-C", "directed": true, "requires_direction_marker": true, "route_class": "primary", "base_binding": "CENTERLINE-BOUND"},
+    {"id": "E-S01", "svg_id": "EDGE-S01", "start_node": "N-D", "end_node": "N-B", "directed": true, "requires_direction_marker": true, "route_class": "secondary", "base_binding": "FREE ANALYTICAL VECTOR"},
+    {"id": "E-X01", "svg_id": "EDGE-X01", "start_node": "N-C", "end_node": "N-E", "directed": true, "requires_direction_marker": true, "route_class": "external", "base_binding": "CENTERLINE-BOUND"}
+  ],
+  "direction_markers": [
+    {"id": "M-P01", "svg_id": "MARK-P01", "route_edge": "E-P01", "position": "interior", "marker_angle_deg": 4.0, "local_tangent_deg": 4.0, "marker_to_stroke_ratio": 2.5},
+    {"id": "M-P02", "svg_id": "MARK-P02", "route_edge": "E-P02", "position": "end", "marker_angle_deg": -27.0, "local_tangent_deg": -27.0, "marker_to_stroke_ratio": 2.5},
+    {"id": "M-S01", "svg_id": "MARK-S01", "route_edge": "E-S01", "position": "interior", "marker_angle_deg": 27.0, "local_tangent_deg": 27.0, "marker_to_stroke_ratio": 4.5},
+    {"id": "M-X01", "svg_id": "MARK-X01", "route_edge": "E-X01", "position": "continuation", "marker_angle_deg": -27.0, "local_tangent_deg": -27.0, "marker_to_stroke_ratio": 5.0}
+  ],
+  "route_labels": [
+    {"id": "RL-P01", "svg_id": "LBL-P01", "route_edge": "E-P01", "kind": "route-name"},
+    {"id": "RL-S01", "svg_id": "LBL-S01", "route_edge": "E-S01", "kind": "route-name"},
+    {"id": "RL-X01", "svg_id": "LBL-X01", "route_edge": "E-X01", "kind": "continuation-label"}
+  ],
+  "mode_symbols": [
+    {"id": "MS-PARK-B", "svg_id": "MODE-PARK-B", "mode": "parking", "node_id": "N-B"},
+    {"id": "MS-TRANSIT-C", "svg_id": "MODE-TRANSIT-C", "mode": "transit", "node_id": "N-C"}
+  ],
+  "external_continuations": [
+    {"edge_id": "E-X01", "frame_side": "right"}
+  ],
+  "does_not_prove": [
+    "visual fidelity to any external reference",
+    "pixel fidelity",
+    "transport planning validity",
+    "project route truth",
+    "independent Design KEEP"
+  ]
+}
