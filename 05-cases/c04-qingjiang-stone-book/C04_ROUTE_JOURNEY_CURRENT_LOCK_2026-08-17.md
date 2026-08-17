@@ -1,11 +1,11 @@
-# C04 Route + Journey CURRENT Lock｜2026-08-17
+# C04 ROUTE CURRENT Lock｜2026-08-17
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 Case: `C04`
-Decision owner: user explicit decision in active conversation
-State: `LOCKED CURRENT / DOWNSTREAM REFERENCE`
+Decision owner: user explicit correction in active conversation
+State: `ROUTE-03 LOCKED CURRENT / DOWNSTREAM REFERENCE`
 
-## CURRENT objects
+## LOCKED CURRENT object
 
 ### ROUTE
 - object: `ROUTE-03`
@@ -15,13 +15,12 @@ State: `LOCKED CURRENT / DOWNSTREAM REFERENCE`
 - package SHA-256: `977307610d1908c3951535b57222355c39fe262f0f2e3da68d803055a882aabb`
 - Drive locked package ID: `1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy`
 
+## Not locked
+
 ### JOURNEY MODES
-- object: `JOURNEY-04`
-- artifact: `JOURNEY_04_FOUR_MODES`
-- source topology: user-provided `qingjiang_route_guide_translated.svg`
-- package bytes: `467821`
-- package SHA-256: `b4a4cf6952b0413d0c5ceac15bbce8c1e3bf9956e7994bc764614061e46c2e91`
-- Drive locked package ID: `1bMoEs2iu2NC4pMxE16NOorvNh0e4RfL4`
+- `JOURNEY-04` is **NOT LOCKED**.
+- It remains a working candidate / provenance artifact only.
+- It must not be propagated as CURRENT because of the previous mistaken lock sync.
 
 ## Superseded / provenance only
 - `ROUTE-01`
@@ -29,11 +28,10 @@ State: `LOCKED CURRENT / DOWNSTREAM REFERENCE`
 - `JOURNEY-01`
 - `JOURNEY-02`
 - `JOURNEY-03`
-
-These objects remain provenance only and must not replace CURRENT because of recency, filename, search relevance, or local availability.
+- `JOURNEY-04` remains unlocked candidate/provenance unless explicitly locked later.
 
 ## Lock semantics
-`LOCKED CURRENT` means the project has selected these object revisions for downstream Web / board / PDF / video / subsequent-figure references.
+`LOCKED CURRENT` applies to `ROUTE-03` only and means downstream Route references should use this object revision.
 
 It does **not** imply or self-award:
 - `PIXEL KEEP`
@@ -56,6 +54,8 @@ Independent design verdict remains a separate gate.
 ## Downstream rule
 Until an explicit later authority decision supersedes this lock, use:
 
-`ROUTE-03 + JOURNEY-04`
+`ROUTE-03`
 
-as the single CURRENT route/journey pair for C04 downstream integration.
+as the single CURRENT Route object for C04 downstream integration.
+
+`JOURNEY-04` is not locked.
