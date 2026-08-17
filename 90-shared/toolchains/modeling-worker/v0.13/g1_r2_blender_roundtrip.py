@@ -43,6 +43,14 @@ def termination_cap_onset(source: dict[str, Any]) -> float:
     return float(base.own(source, "LOWER_RETURN_PROFILE").get("termination_cap_onset_u", 1.0))
 
 
+def termination_cap_pole_scale(source: dict[str, Any]) -> float:
+    return float(
+        base.own(source, "LOWER_RETURN_PROFILE").get(
+            "termination_cap_pole_curvature_scale", r2.CAP_POLE_CURVATURE_SCALE_DEFAULT
+        )
+    )
+
+
 def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     out = copy.deepcopy(template)
     base.own(out, "GRIP_AXIS")["control_points"] = [list(p) for p in curve_points(NAMES["GRIP_AXIS"])]
@@ -61,6 +69,9 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     )
     if "termination_cap_onset_u" in lower_obj:
         lower["termination_cap_onset_u"] = float(lower_obj["termination_cap_onset_u"])
+        lower["termination_cap_pole_curvature_scale"] = float(
+            lower_obj.get("termination_cap_pole_curvature_scale", r2.CAP_POLE_CURVATURE_SCALE_DEFAULT)
+        )
         lower["termination_cap_law"] = str(lower_obj.get("termination_cap_law", r2.CAP_LAW))
         lower["termination_cap_semantics"] = str(lower_obj.get("termination_cap_semantics", r2.CAP_SEMANTICS))
         lower["termination_cap_endpoint_section"] = str(
@@ -69,6 +80,7 @@ def extract_native_source(template: dict[str, Any]) -> dict[str, Any]:
     else:
         for key in (
             "termination_cap_onset_u",
+            "termination_cap_pole_curvature_scale",
             "termination_cap_law",
             "termination_cap_semantics",
             "termination_cap_endpoint_section",
@@ -94,7 +106,11 @@ def source_numeric_snapshot(source: dict[str, Any]) -> dict[str, list[float]]:
         "THUMB_SIDE_PLAN": [float(v) for v in base.own(source, "THUMB_SIDE_PLAN")["control_values"]],
         "OPPOSITE_SIDE_PLAN": [float(v) for v in base.own(source, "OPPOSITE_SIDE_PLAN")["control_values"]],
         "LOWER_RETURN_PROFILE": [float(v) for v in lower["control_values"]]
-        + [float(lower.get("termination_envelope_exponent", 0.55)), float(lower.get("termination_cap_onset_u", 1.0))],
+        + [
+            float(lower.get("termination_envelope_exponent", 0.55)),
+            float(lower.get("termination_cap_onset_u", 1.0)),
+            float(lower.get("termination_cap_pole_curvature_scale", r2.CAP_POLE_CURVATURE_SCALE_DEFAULT)),
+        ],
         "INTERFACE_DECK_BOUNDARY": [
             float(d["u_center"]),
             float(d["u_halfspan"]),
@@ -245,6 +261,46 @@ def controlled_native_cap_relation_edit_test(
     }
 
 
+def controlled_native_cap_pole_scale_edit_test(
+    template: dict[str, Any],
+    delta_scale: float = 0.02,
+    edit_tolerance: float = 1e-8,
+    restore_tolerance: float = 1e-12,
+):
+    lower_obj = bpy.data.objects[NAMES["LOWER_RETURN_PROFILE"]]
+    if "termination_cap_onset_u" not in lower_obj or "termination_cap_pole_curvature_scale" not in lower_obj:
+        raise RuntimeError("cap onset and pole curvature scale must be bound before scale roundtrip edit test")
+    baseline = extract_native_source(template)
+    original = float(lower_obj["termination_cap_pole_curvature_scale"])
+    lower_obj["termination_cap_pole_curvature_scale"] = original + float(delta_scale)
+    edited = extract_native_source(template)
+    diffs = source_difference(baseline, edited)
+    lower_obj["termination_cap_pole_curvature_scale"] = original
+    restored = extract_native_source(template)
+    restored_error = source_difference(baseline, restored)
+    changed = [k for k, v in diffs.items() if v > edit_tolerance]
+    checks = {
+        "only_lower_return_source_family_cap_scale_changed": changed == ["LOWER_RETURN_PROFILE"],
+        "native_cap_scale_edit_read_back": abs(diffs["LOWER_RETURN_PROFILE"] - abs(float(delta_scale))) <= edit_tolerance,
+        "native_source_restored_exactly": max(restored_error.values()) <= restore_tolerance,
+        "cap_relation_semantics_preserved": base.own(edited, "LOWER_RETURN_PROFILE").get("termination_cap_semantics") == r2.CAP_SEMANTICS,
+        "cap_relation_law_preserved": base.own(edited, "LOWER_RETURN_PROFILE").get("termination_cap_law") == r2.CAP_LAW,
+    }
+    return {
+        "edit": {
+            "object": NAMES["LOWER_RETURN_PROFILE"],
+            "property": "termination_cap_pole_curvature_scale",
+            "delta": float(delta_scale),
+            "semantics": r2.CAP_SEMANTICS,
+        },
+        "source_family_differences": diffs,
+        "changed_families": changed,
+        "restored_source_error": restored_error,
+        "checks": checks,
+        "pass": all(checks.values()),
+    }
+
+
 def authority_checks(template: dict[str, Any], readback_tolerance: float = 1e-8, locked_semantic_tolerance: float = 1e-8):
     extracted = extract_native_source(template)
     diffs = source_difference(template, extracted)
@@ -261,6 +317,8 @@ def authority_checks(template: dict[str, Any], readback_tolerance: float = 1e-8,
     )
     cap_expected = "termination_cap_onset_u" in lower_template
     cap_relation_present = bool(lower_obj is not None and "termination_cap_onset_u" in lower_obj)
+    cap_scale_expected = "termination_cap_pole_curvature_scale" in lower_template
+    cap_scale_present = bool(lower_obj is not None and "termination_cap_pole_curvature_scale" in lower_obj)
     cap_relation_semantics_ok = bool(
         lower_obj is not None
         and lower_obj.get("termination_cap_semantics") == r2.CAP_SEMANTICS
@@ -277,5 +335,6 @@ def authority_checks(template: dict[str, Any], readback_tolerance: float = 1e-8,
         "native_shared_termination_relation_semantics_preserved": termination_relation_semantics_ok,
         "native_cap_relation_present_when_expected": (not cap_expected) or cap_relation_present,
         "native_cap_relation_semantics_preserved_when_expected": (not cap_expected) or cap_relation_semantics_ok,
+        "native_cap_pole_scale_present_when_expected": (not cap_scale_expected) or cap_scale_present,
     }
     return extracted, diffs, checks
