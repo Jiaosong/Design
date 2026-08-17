@@ -1,0 +1,40 @@
+:root{
+  --ink:#121713;
+  --ink2:#1d261f;
+  --paper:#f2efe7;
+  --paper2:#e8e4da;
+  --mist:#dce6e0;
+  --river:#4f8277;
+  --river-dark:#2c5f55;
+  --signal:#a94338;
+  --line:rgba(18,23,19,.16);
+  --line-dark:rgba(255,255,255,.18);
+  --max:1640px;
+  --nav-h:58px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper);color:var(--ink)}
+body{margin:0;font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--signal);color:#fff}
+
+#progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--signal);z-index:1000}
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(242,239,231,.90);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);z-index:900}
+.brand{display:flex;align-items:center;gap:11px;font-size:12px;letter-spacing:.08em;font-weight:700}
+.seal{width:27px;height:27px;border:1px solid var(--signal);display:grid;place-items:center;color:var(--signal);font-family:serif;font-size:16px}
+.navmeta{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.12em;color:#5d675f}
+.return-link{border:1px solid rgba(18,23,19,.22);padding:8px 12px;border-radius:99px;color:var(--ink)}
+.chapter-rail{position:fixed;z-index:850;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
+.chapter-dot{width:9px;height:9px;border:0;border-radius:50%;background:rgba(18,23,19,.22);padding:0;cursor:pointer;transition:.25s}
+.chapter-dot.active{background:var(--signal);transform:scale(1.35)}
+
+main{padding-top:0}
+.chapter{position:relative;scroll-margin-top:var(--nav-h)}
+.beat{position:relative;min-height:78vh;display:flex;align-items:center;padding:110px 5vw 88px;border-bottom:1px solid var(--line)}
+.beat.full{min-height:100vh}
+.beat.dark{background:var(--ink);color:#eef2ee;border-bottom-color:var(--line-dark)}
+.beat.deep{background:#18231d;color:#eef2ee;border-bottom-color:var(--line-dark)}
+.beat.paper2{background:var(--paper2)}
+.beat.mist{background:var(--mist)}
