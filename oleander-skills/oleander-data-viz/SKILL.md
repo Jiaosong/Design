@@ -10,7 +10,8 @@ Transform project data into reproducible visual evidence **and a professionally 
 
 `DATA CORRECTNESS != DESIGN QUALITY`  
 `EXPORT SUCCESS != PROFESSIONAL FINISH`  
-`TRACEABILITY != FIRST-READ CLARITY`
+`TRACEABILITY != FIRST-READ CLARITY`  
+`RENDERER VALID != VISUALIZATION VALID != DESIGN KEEP`
 
 This skill is governed by the current OLEANDER Independent Design Verdict Policy and Artifact Review System. A producer may finish and self-check a visualization, but may not self-promote it to `PIXEL KEEP`, `MAIN KEEP`, or `PROFESSIONAL FINISH PASS`.
 
@@ -21,6 +22,8 @@ Use `C:\Users\Xianmu\.venvs\oleander\Scripts\python.exe`.
 Core libraries include pandas, Polars, OpenPyXL, XlsxWriter, Matplotlib, Seaborn, Plotly, Kaleido, Altair, NetworkX, OpenCV, GeoPandas, Shapely, PyProj, Rasterio, Contextily, and OSMnx.
 
 Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spatial transformations. Do not bind scripts to QGIS 3 paths.
+
+For routing among chart, graph, infographic, geographic and narrative renderers, also consult `ROUTING_AND_RENDERER_ADAPTERS_v0.1.md`. Renderer syntax belongs in adapters; design/truth policy remains here.
 
 ## 0. Existing Mature Design First
 
@@ -52,14 +55,16 @@ Spend visual boldness in one place. Keep surrounding elements restrained and fun
 1. Inspect source files, units, missing values, time ranges, coordinate systems, category definitions, evidence status, and Current Authority.
 2. Keep raw data unchanged; write cleaned data separately with a transformation log.
 3. State the analytical question and the **one primary visual claim** the artifact is allowed to make.
-4. Choose the visual form from the question and data relationship, not decoration.
-5. Create the Visual Contract below before drawing.
-6. Lock the analytical grammar: `data -> transform -> mark -> channel -> scale -> facet -> interaction -> annotation`.
-7. Build the visualization reproducibly with editable structure.
-8. Run data/GIS checks.
-9. Reopen the actual final artifact at intended display size and run the Design Quality Gate.
-10. Compare against the strongest existing mature design where one exists.
-11. Export and record `EXECUTED / SELF-CHECKED / REVIEW PENDING`; independent review is required for KEEP-class promotion.
+4. Classify the information structure before choosing a renderer: comparison, trend, distribution, hierarchy, relation/topology, strict sequence, geographic, explanatory narrative, or mixed composition.
+5. Choose the visual form from the question and data relationship, not decoration or a favorite template.
+6. Create the Visual Contract below before drawing.
+7. Lock the analytical grammar: `data -> transform -> mark -> channel -> scale -> facet -> interaction -> annotation`.
+8. Route to the simplest renderer family that can express the claim without loss.
+9. Build the visualization reproducibly with editable structure.
+10. Run data/GIS/topology checks as applicable.
+11. Reopen the actual final artifact at intended display size and run the Design Quality Gate.
+12. Compare against the strongest existing mature design where one exists.
+13. Export and record `EXECUTED / SELF-CHECKED / REVIEW PENDING`; independent review is required for KEEP-class promotion.
 
 ## 2. Visual Contract
 
@@ -70,7 +75,9 @@ Record, at minimum:
 - `primary_claim`
 - `source_authority`
 - `truth_boundary / does_not_prove`
+- `information_structure`
 - `visual_form`
+- `renderer_family`
 - `data_transform`
 - `primary_mark_or_relation`
 - `encoding_channels`
@@ -115,9 +122,49 @@ Choose the simplest form that preserves the analytical relationship:
 - process / causal sequence -> staged flow with explicit direction and no decorative branching;
 - spatial relation -> GIS/map only when coordinates are authoritative; otherwise label as relational / diagrammatic;
 - network / topology -> node-edge diagram only when topology itself is the claim;
-- evidence -> inference -> decision -> use a directional analytical strip or relation field, not a wall of cards.
+- hierarchy -> tree/indented hierarchy/containment only when parent-child structure is real;
+- evidence -> inference -> decision -> use a directional analytical strip or relation field, not a wall of cards;
+- narrative interpretation -> structured text with semantic entity metadata only when prose is the primary reading mode.
 
 Do not use a map-like graphic when the data supports only topology or relation. `RELATIONAL / NTS / NOT GEOREFERENCED` must appear on the figure itself when applicable.
+
+### 3.1 Information Structure Before Template
+
+Treat templates as renderers, never as evidence or design authority.
+
+- Use `sequence-*` / timelines / roadmaps only when a strict order, time sequence or staged dependency is supported.
+- Use `relation-*` / network only when pairwise or topological relations are the actual claim.
+- Use hierarchy only when parent-child or containment relations are real.
+- Use comparison forms only when dimensions are meaningfully comparable.
+- Use list/grid forms only for genuinely parallel items; do not convert a causal or relational argument into equal cards for convenience.
+- Do not turn a relation into a sequence because a sequence template looks cleaner.
+- Do not turn uncertainty or branch choice into a forced order.
+
+`INFORMATION STRUCTURE -> VISUAL FORM -> RENDERER`, never `TEMPLATE -> CLAIM`.
+
+### 3.2 Graph / Network Layout Semantics
+
+For graph engines such as G6, NetworkX, D3-force or custom SVG:
+
+- stable node IDs and explicit `source/target` edges are mandatory;
+- node/edge roles belong in data, not only in style;
+- computational layout is a presentation transform unless the positions themselves are authoritative data;
+- force, dagre, radial, circular, mindmap or grid layouts must not be read as measured geography, distance, chronology, rank or flow volume unless separately encoded and supported;
+- overlap prevention, dragging, zooming, selection or collapse/expand are interaction behaviors, not evidence;
+- interaction must not silently rewrite topology or evidence status;
+- when a fixed relational composition is required for a board, prefer deterministic coordinates and preserve a machine-readable topology companion.
+
+If layout position is not evidence, label or caption that boundary explicitly.
+
+### 3.3 Design Core / Router / Renderer Adapter Separation
+
+Keep three layers separate:
+
+1. **Design core** — claim, evidence, truth boundary, hierarchy, composition, typography, annotation, accessibility and review.
+2. **Intent/form router** — comparison, trend, distribution, topology, hierarchy, sequence, geographic, infographic, narrative text, etc.
+3. **Renderer adapter** — version-specific syntax and runtime rules for G2, G6, Plotly, D3, QGIS, kepler.gl, SVG, AntV Infographic, T8, or other engines.
+
+A renderer adapter may prove that code is valid for a library. It cannot establish source validity, analytical validity or professional visual quality.
 
 ## 4. Visual Hierarchy Gate
 
@@ -232,6 +279,29 @@ For source-traced spatial work, distinguish:
 
 `SOURCE-TRACED RELATION` vs `DIAGRAMMATIC PLACEHOLDER` vs `FIELD / SURVEY OPEN`.
 
+### 7.1 Semantic Entity Contract for Narrative + Figure Linking
+
+Borrow the useful idea of semantic entity annotation from narrative-visualization systems, but bind it to OLEANDER truth states.
+
+For important values, claims or named entities, preserve a machine-readable companion with fields such as:
+
+- `entity_id`
+- `display_text`
+- `entity_type`
+- `raw_value`
+- `unit`
+- `time_or_scope`
+- `source_ref`
+- `evidence_state`
+- `claim_role`
+- `assessment` only when the evaluative direction is justified
+- `detail` for supporting arrays/relations when needed
+- `does_not_prove`
+
+The displayed prose may be concise, but raw value, unit, provenance and evidence state must remain recoverable. Semantic annotations may generate mini-charts or highlights; they must not manufacture certainty.
+
+Unlike external systems that ban all scenario/simulated values, OLEANDER may use estimates, scenarios and simulations when the current protocol allows them **and** their state is explicit. Scenario data must never be serialized as observed fact.
+
 ## 8. Deletion Test and First-Visual Veto
 
 Before final export, hide the explanation and inspect only the artifact.
@@ -293,10 +363,11 @@ Return or persist, as applicable:
 6. source / evidence note;
 7. Visual Contract;
 8. analytical grammar/spec;
-9. statement of what the visual supports and does not prove;
-10. actual-preview self-check;
-11. strongest-existing benchmark reference when one exists;
-12. independent review status.
+9. semantic entity companion when narrative/data linking is material;
+10. statement of what the visual supports and does not prove;
+11. actual-preview self-check;
+12. strongest-existing benchmark reference when one exists;
+13. independent review status.
 
 ## 13. Quality Checks
 
@@ -307,6 +378,8 @@ Return or persist, as applicable:
 - Avoid truncated axes unless clearly justified.
 - Validate map CRS / projection / NoData where applicable.
 - Confirm data-to-artifact consistency.
+- For graphs, verify stable node IDs, edge endpoints and topology independently of layout.
+- For narrative entities, reconcile display text with raw value/unit/source/evidence state.
 
 ### Design / visual
 
@@ -322,6 +395,8 @@ Return or persist, as applicable:
 - Return/fallback is visually legible when it is part of the design claim.
 - Source-traced vs placeholder geometry is unambiguous.
 - Structural devices encode real information rather than decoration.
+- A computational graph layout does not imply unsupported position/order/distance.
+- Template selection matches the true information structure.
 - Candidate does not regress against the strongest mature existing design.
 
 ### Accessibility / output
@@ -345,7 +420,19 @@ For review, record findings by severity (`Critical / Major / Minor / Enhancement
 
 These are diagnostic lenses only. A high average score cannot override an OLEANDER hard veto, truth failure, or independent-review requirement.
 
-## 15. Verdict
+## 15. Regression Discipline
+
+After any material change to this skill:
+
+1. rerun broad data/truth/accessibility cases;
+2. rerun targeted visual regressions tied to the discovered failure mode;
+3. keep renderer-syntax/API tests separate from visual-design tests;
+4. compare against the strongest existing artifact where relevant;
+5. do not promote a skill revision merely because code-generation or retrieval tests improved.
+
+Targeted regressions should include, when applicable: equal-weight network, relation falsely converted to sequence, card-wall evidence diagram, cleaner-but-weaker redesign, unsupported geographic layout, renderer-valid-but-visually-generic output, narrative entity provenance loss, and vector-refinement data drift.
+
+## 16. Verdict
 
 Producer status is limited to:
 
