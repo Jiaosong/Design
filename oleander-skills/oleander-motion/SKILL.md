@@ -69,6 +69,30 @@ Treat aurora/glow trails, infinite floating, generic logo reveals, heavy cursor 
 
 Component/effect libraries and galleries are mechanism references only. Strip their visual identity before any OLEANDER use.
 
+## Exploration behavior grammar gate
+
+For route, travel, spatial exploration, museum/exhibition, game-like discovery, or other multi-step experiences, do not review each transition as an isolated visual effect. Establish a **behavior grammar** first.
+
+Use:
+
+`Journey / Task State → Behavioral Verb → Persistent World/Object → Relationship Change → Motion Mechanism → Reverse/Recovery → Reduced Motion`
+
+Rules:
+- derive behavioral verbs from the actual task or journey; do not impose a universal vocabulary when the experience requires different verbs;
+- examples such as `approach → confirm → enter → orient → return` are a pattern, not a mandatory sequence;
+- every transition must clarify at least one source/destination, causal, spatial, hierarchy, or task relationship;
+- preserve a persistent world, object, route, or anchor across adjacent states when continuity is part of the experience; replacing the whole scene with another overlay is not continuity merely because it fades smoothly;
+- forward and backward navigation should normally use the same reversible spatial/causal grammar; introduce a different exit effect only when the state semantics actually change;
+- fade, glow, reveal, blur, light sweep and similar effects may reinforce a behavioral transition but cannot substitute for the transition relationship itself;
+- evaluate the grammar across the sequence: individually polished screens can still fail if the temporal verbs change arbitrarily from screen to screen;
+- for landscape-first or world-first experiences, move or reframe the relationship to the world before adding a dominant UI overlay; motion must not turn an environmental experience into an overlay-first map/dashboard without a task reason;
+- Reduced Motion must preserve the same behavioral state, route continuity, action hierarchy and return logic through static structure, explicit state change, or near-instant transitions;
+- run forward, reverse/back, rapid-repeat and small-screen tests. A desktop sequence that clips anchors, labels, return cues or state meaning on mobile is `REVISE` even when its desktop motion is strong.
+
+Reject by default when a sequence can be described only as `fade / reveal / glow / withdraw` and those effects do not explain why the state changed, where the viewer is going, or how to return.
+
+This gate extends MOT-03 Spatial Continuity and Narrative; it does not create a separate motion framework.
+
 ## Required practice loop
 
 For a formal motion exercise, produce the same state change as:
