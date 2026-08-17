@@ -36,7 +36,7 @@
         <div class="pro04-hero__status"><span>PRO-04.2</span><span>DESIGN REVIEW READY</span><span>NO WINNER</span></div>
       </div>
       <div class="pro04-hero__visuals" style="min-height:0;align-self:center">
-        <figure class="pro04-image" data-artifact-id="PRO04-PRESENTATION-HERO" data-evidence-level="D1" style="background:#eceae3">
+        <figure class="pro04-image" data-artifact-id="PRO04-PRESENTATION-HERO" data-evidence-level="D2-PRESENTATION-DERIVATIVE" style="background:#eceae3">
           <img src="assets/xj01/pro04-hero-directions.jpg" alt="D02 Cool Mineral Air and D03 Quiet Green Mineral presentation comparison" loading="eager" decoding="async" style="width:100%;height:auto;object-fit:contain">
         </figure>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
@@ -44,7 +44,7 @@
           <div style="border-top:6px solid ${esc(d03.colour.hex)};padding-top:12px"><b style="font:700 .68rem var(--mono)">D03</b><strong style="display:block;margin-top:5px;font:1.05rem var(--serif)">Quiet Green Mineral</strong><small style="color:var(--trace);font:.62rem var(--mono)">Soft domestic care</small></div>
         </div>
       </div>
-      <p class="pro04-boundary">Presentation stimulus / D1 exact-geometry broad preflight. D2 black-field renders remain review evidence and are not promoted to Hero.</p>
+      <p class="pro04-boundary">Presentation derivative / cropped from retained D2 exact-geometry whole-product renders. The crop/composition does not upgrade the source evidence class.</p>
     </section>`;
   }
 
