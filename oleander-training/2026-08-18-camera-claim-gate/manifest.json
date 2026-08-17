@@ -1,0 +1,30 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-CAMERA-CLAIM",
+  "topic": "Camera claim / perspective-role selection",
+  "candidate_rule": "CLAIM → PROJECTION → CAMERA DISTANCE / FOCAL LENGTH → FIRST-READ → ROLE VERDICT",
+  "truth_boundary": "Synthetic geometry only; not C04 geometry, field view, or measured lens match.",
+  "external_reference": [
+    "Blender Manual: perspective makes distant objects smaller and parallel lines converge",
+    "Blender Manual: shorter focal length increases field of view; longer focal length reduces field of view",
+    "Blender Manual: orthographic keeps apparent object size independent of distance",
+    "Blender Manual: lens shift can change framing/vanishing-point placement without rotating geometry"
+  ],
+  "camera_metrics": [
+    {"camera":"CAM-A-WIDE-CLOSE","mode":"perspective","focal_mm":18,"camera_y":-1.2,"near_far_equal_height_ratio":2.6092,"verdict":"REJECT_AS_EXPERIENCE_HERO"},
+    {"camera":"CAM-B-CLAIM-PERSPECTIVE","mode":"perspective","focal_mm":35,"camera_y":-7.0,"near_far_equal_height_ratio":1.8324,"verdict":"KEEP_FOR_TRAINING_EXPERIENCE_HERO"},
+    {"camera":"CAM-C-ORTHO","mode":"orthographic","ortho_scale":16.5,"near_far_equal_height_ratio":1.0,"verdict":"KEEP_FOR_TRAINING_TECHNICAL_RELATION"}
+  ],
+  "design_crit": {
+    "v1": "REVISE — orthographic crop clipped the ridge; camera contract printed literal newline escapes; role claims were too implicit.",
+    "v2": "KEEP FOR TRAINING — all views fit, role claims are explicit, same geometry is preserved, and camera emphasis is legible."
+  },
+  "does_not_prove": [
+    "C04 site geometry",
+    "field viewpoint",
+    "measured visibility",
+    "lens calibration",
+    "user perception",
+    "engineering or accessibility",
+    "project Design PASS"
+  ]
+}
