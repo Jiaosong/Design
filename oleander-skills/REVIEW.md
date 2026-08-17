@@ -17,6 +17,32 @@ Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`,
 
 This file is the current repository-state source for the installed reusable skills list. Installed-skill existence does **not** prove that a skill, prompt, or model version has passed regression evaluation; promotion remains governed by AIG-01 and `evals/`.
 
+## Process-first / existing-skill-first rule
+
+OLEANDER projects and training must **execute the current OLEANDER process with existing Skills before optimizing or creating Skills**.
+
+Canonical order:
+
+`CURRENT AUTHORITY / PROJECT FLOW → EXISTING MATURE DESIGN / DESIGN SOURCE → CURRENT PROJECT STATE / CURRENT DELTA → EXISTING SKILL RESOLVER → INVOKE EXISTING SKILL(S) → REQUIRED NATIVE OUTPUT → RUNTIME / ADAPTER PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + DESIGN QUALITY GATE → GAP DIAGNOSIS → OPTIMIZE EXISTING SKILL ONLY IF THE GAP IS REAL → REGRESSION / GOLDEN CASE → RE-RUN → NEW SKILL ONLY IF NO EXISTING SKILL CAN REASONABLY OWN THE GAP`
+
+Hard rules:
+
+- Skill design or Skill optimization is **not** a prerequisite to project execution.
+- Do not jump from an interesting reference, novel task, failed artifact, or new medium directly to a new Skill.
+- Before changing a Skill, record which current Skill(s) were actually invoked, which step was insufficient, what observable consequence occurred in the real artifact/runtime/readback, and why project-level repair alone is insufficient.
+- A vague feeling that a Skill is incomplete, a better explanation, a new name, or a cleaner framework does not establish a Skill gap.
+- Prefer repairing/extending the existing owning Skill over creating a parallel Skill. If an installed Skill substantially owns the capability, extend it rather than fork it.
+- A Skill change is not validated by documentation, commit, PR, CI, eval structure or artifact existence alone. Re-run the same or an equivalent real task and perform actual readback.
+- A training artifact, reference reconstruction, method study or Skill candidate does not become project Authority merely because it exists.
+- New Skill creation is legal only after real execution evidence shows that the capability cannot reasonably be owned by the existing installed Skills without damaging their scope/coherence.
+- Open Candidate Skill PRs remain Candidate/OPEN until this sequence is satisfied; recency or implementation completeness does not make them Current.
+
+The default question before any Skill change is:
+
+> **现有 OLEANDER 流程和现有 Skill 已经实际跑到了哪一步？具体哪里不够？这个不足是否由真实产物/readback 证明？为什么不能先修现有 Skill？**
+
+If these questions cannot be answered with execution evidence, continue using the current Skill; do not optimize the Skill yet.
+
 ## Review prompts
 
 1. Research: Organize site studies, policies, precedents, and interviews into a traceable Notion research system.
