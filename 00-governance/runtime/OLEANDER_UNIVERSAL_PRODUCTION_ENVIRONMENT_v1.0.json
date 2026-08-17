@@ -86,7 +86,7 @@
     "status": "ACTIVE_CURRENT_GATE",
     "contract": "00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.json",
     "human_contract": "00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.md",
-    "canonical_adapter": "tools/oleander-runtime/materialize_reference.py",
+    "canonical_adapter": "90-shared/toolchains/reference-materialization/materialize_reference.py",
     "invariant": "BROWSER_VISIBLE_DOES_NOT_EQUAL_LOCAL_SOURCE_BYTES_AVAILABLE",
     "required_sequence": [
       "SOURCE_AUTHORITY_FOUND",
@@ -104,7 +104,7 @@
       "status": "DETECT_PER_RUN"
     },
     "reference_materialization": {
-      "preferred": ["mounted conversation file", "public direct URL download", "connector-native materialization", "exact GitHub/Google Drive file retrieval", "tools/oleander-runtime/materialize_reference.py"],
+      "preferred": ["mounted conversation file", "public direct URL download", "connector-native materialization", "exact GitHub/Google Drive file retrieval", "90-shared/toolchains/reference-materialization/materialize_reference.py"],
       "status": "DETECT_PER_RUN",
       "evidence_boundary": "source bytes and hashes prove materialization/reproducibility only, not authority, rights, fidelity or design quality"
     },
