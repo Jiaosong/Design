@@ -13,7 +13,7 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `references/PIXEL_SOLVER_PROTOCOL.md` — mandatory when forensic review finds measurable residuals that can be expressed as bounded editable SVG parameters. It replaces eyeballed nudging with renderer-locked, ROI-weighted, multi-cycle coupled coordinate descent and explicitly reopens earlier layers after coupled variables change.
 - `references/MULTILAYER_RELATION_RECONSTRUCTION.md` — mandatory companion for stacked/exploded analytical diagrams and callout-heavy references. Adds shared-base genealogy, relation-evidence register, semantic-editability levels, callout-network topology, symbol dictionaries, dual visual-extraction/semantic-rebuild tracks and per-panel relationship ROI review. It explicitly rejects `path-cloud vector = editable` and `label present = relation drawn`.
 - `references/EDITORIAL_CALLOUT_FIDELITY.md` — targeted repair for exact leader landing, editorial side-icon crop/component fidelity, typography-only ROIs and rotated street/route labels. Use it after semantic structure exists but callout pixels still drift.
-- `references/FLOW_DIRECTION_ANALYSIS.md` — circulation/mobility/route-network grammar: route edges/nodes, primary/secondary hierarchy, direction-marker scale/tangency, route-to-base binding, speed/street/mode-symbol ownership, network-topology fidelity and R3/JPEG reconstruction ceiling.
+- `references/FLOW_DIRECTION_ANALYSIS.md` — circulation/mobility/route-network grammar: route edges/nodes, direction-marker taxonomy, primary/secondary hierarchy, base binding, speed/street/mode-symbol ownership, topology/pixel diagnosis, low-recall stop rule, FN-C0…FN-C3 claim ladder and R3/JPEG reconstruction ceiling.
 - `references/REALITY_CHECK.md` — real-world technical evidence, ranges, sensitivity and FIELD/engineer closure.
 - `references/STANDARDS_ROUTING.md` — jurisdiction, ISO/ASME/PRC standards discovery and compliance-claim boundary.
 - `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis diagrams: source/evidence/inference/decision overlays and Evidence → Spatial Finding → Design Consequence chains. Quantitative/statistical charts remain `oleander-data-viz`.
@@ -21,7 +21,9 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `tools/reference_fidelity.py` — registered raster diagnostics and optional hard fidelity contract; it reports residual translation, tolerance-zero pixel error, r0/r1/r2 edge disagreement, mismatch concentration and ROI failures without warping the candidate.
 - `tools/svg_parameter_solver.py` — bounded editable-SVG parameter solver. Supports numeric attributes and group translation, explicit renderer selection, ROI-weighted search, coarse-to-fine steps and repeated coupled cycles. It outputs solved SVG/PNG plus a complete accepted-parameter trace.
 - `tools/validate_semantic_reconstruction.py` — machine gate for multilayer semantic editability: shared master-base reuse, relation carriers/targets, callout topology and reusable symbol instances. This gate cannot award pixel fidelity or Design KEEP.
+- `tools/validate_flow_network.py` — machine gate for flow-network graph integrity: base geometry, route classes, edge/node topology, node degree, direction-marker ownership/tangency contract, route-label binding, mode-symbol ownership and external continuations. This gate cannot prove source completeness, route truth, pixel fidelity or Design KEEP.
 - `fixtures/reconstruction/ML-REL-01_SEMANTIC.svg` + `ML-REL-01_RELATION_REGISTER.json` — synthetic regression proving the semantic-reconstruction machine gate; not Golden promoted and not project authority.
+- `fixtures/reconstruction/FLOW-01_NETWORK.svg` + `FLOW-01_NETWORK_REGISTER.json` — synthetic regression proving that circulation/mobility objects stay a semantic graph rather than collapsing into a few generic arrows; not Golden promoted and not project authority.
 - `fixtures/reconstruction/` — synthetic strict reconstruction regression, including an RF-C3 zero-difference contract; not Golden promoted and not project authority.
 - `fixtures/golden/` — editable Golden Drawing Fixture candidates for architecture section, landscape node, product assembly/CMF, connection/foundation, spatial analysis plan and evidence-to-consequence analysis.
 - `fixtures/validate_fixtures.py` — structural regression validator for required SVG groups, vector-only core content, hierarchy scaffold, technical depth contract, fixed fixture canvas and non-promotion state.
@@ -29,11 +31,17 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 
 Core pipeline:
 
-`CURRENT AUTHORITY → DISCIPLINE / ANALYSIS TYPE + STATUS + DECISION → PRIMARY CLAIM → VIEW / ANALYSIS SET → DIMENSION/REALITY/TRUTH-STATE REGISTERS → EDITABLE VECTOR DRAWING → 3S CLAIM / 30S LOGIC / NEAR-READ PROOF → DETAIL DENSITY D0–D6 → TD-G0…TD-G8 → INDEPENDENT REVIEW → DOWNSTREAM STORY/BOARD → DELIVERY QC`
+`CURRENT AUTHORITY → DISCIPLINE / ANALYSIS TYPE + STATUS + DECISION → PRIMARY CLAIM → VIEW / ANALYSIS SET → DIMENSION/REALITY/TRUTH-STATE/FLOW REGISTERS → EDITABLE VECTOR DRAWING → 3S CLAIM / 30S LOGIC / NEAR-READ PROOF → DETAIL DENSITY D0–D6 → TD-G0…TD-G8 → INDEPENDENT REVIEW → DOWNSTREAM STORY/BOARD → DELIVERY QC`
 
 Exact reconstruction pipeline:
 
-`REFERENCE SNAPSHOT → RF SOURCE CLASS → RENDER ENVIRONMENT LOCK → REFERENCE RECTIFICATION → CANVAS REGISTRATION → PANEL / STACK SEGMENTATION → GEOMETRY MASTER + PER-PANEL RENDERED BASE INSTANCES → OBJECT/ANCHOR FORENSICS → A2 GEOMETRY → RELATION-EVIDENCE REGISTER → FLOW-NETWORK / CALLOUT TOPOLOGY / SYMBOL DICTIONARY → SEMANTIC VECTOR REBUILD → SEMANTIC MACHINE GATE → LEADER TARGET / EDITORIAL ICON / TYPOGRAPHY ROI CALIBRATION → FLOW EDGE/NODE/DIRECTION-MARKER RECONCILIATION → STROKE/SYMBOL/HATCH PHASE → TARGET-SIZE RENDER → TOLERANCE-0 DIFF → EDGE r0/r1/r2 + CRITICAL ROI + RELATIONSHIP/FLOW ROI DIAGNOSIS → BOUNDED SVG PARAMETERIZATION → COUPLED SOLVER CYCLES → TARGET-SIZE RE-RENDER → REOPEN RELATION/FLOW AUDIT → E0–E6 FREEZE/REPAIR → RF-C0…RF-C3 CLAIM → RF-G0…RF-G6 → TD-G0…TD-G8 SEPARATELY → INDEPENDENT REVIEW`.
+`REFERENCE SNAPSHOT → RF SOURCE CLASS → RENDER ENVIRONMENT LOCK → REFERENCE RECTIFICATION → CANVAS REGISTRATION → PANEL / STACK SEGMENTATION → GEOMETRY MASTER + PER-PANEL RENDERED BASE INSTANCES → OBJECT/ANCHOR FORENSICS → A2 GEOMETRY → RELATION-EVIDENCE REGISTER → FLOW-NETWORK / CALLOUT TOPOLOGY / SYMBOL DICTIONARY → SEMANTIC VECTOR REBUILD → SEMANTIC + FLOW MACHINE GATES → LEADER TARGET / EDITORIAL ICON / TYPOGRAPHY ROI CALIBRATION → FLOW EDGE/NODE/DIRECTION-MARKER RECONCILIATION → STROKE/SYMBOL/HATCH PHASE → TARGET-SIZE RENDER → TOLERANCE-0 DIFF → EDGE r0/r1/r2 + CRITICAL ROI + RELATIONSHIP/FLOW ROI DIAGNOSIS → BOUNDED SVG PARAMETERIZATION → COUPLED SOLVER CYCLES → TARGET-SIZE RE-RENDER → REOPEN RELATION/FLOW AUDIT → E0–E6 FREEZE/REPAIR → RF-C0…RF-C3 CLAIM → RF-G0…RF-G6 → TD-G0…TD-G8 SEPARATELY → INDEPENDENT REVIEW`.
+
+Flow-network claim ladder:
+
+`FN-C0 NETWORK IDENTIFIED → FN-C1 TOPOLOGY RECONSTRUCTED → FN-C2 SPATIAL BINDING RECONSTRUCTED → FN-C3 VISUAL NETWORK FIDELITY CANDIDATE`.
+
+`FN-C3 != RF-C3`. A compressed R3/JPEG source may support `FN-C3 + RF-C2` while RF-C3 remains unavailable because exact font/render/compression conditions are unknown.
 
 `RF-C3 / PIXEL-EXACT` is not a synonym for “very similar”. It requires a locked comparison environment and zero unexplained changed pixels in the declared in-scope region at tolerance 0. If the exact font/render path or source quality is unavailable, the honest ceiling is RF-C2 or lower.
 
@@ -71,11 +79,19 @@ Hard boundaries:
 
 `FLOW LINE ≠ DECORATIVE POLYLINE`
 
+`A FEW BIG ARROWS ≠ FLOW NETWORK`
+
 `ARROWHEAD ≠ GENERIC DIRECTION ICON`
+
+`ROUTE LABEL PRESENT ≠ ROUTE RELATION DRAWN`
+
+`LOW ROUTE-CARRIER RECALL ≠ RENDERER/JPEG RESIDUAL`
 
 `GEOMETRY MASTER ≠ IDENTICAL RENDERED BASE INSTANCE`
 
 `LABEL PRESENT ≠ RELATION DRAWN`
+
+`FN-C3 ≠ RF-C3`
 
 `RF-C3 PIXEL MATCH ≠ VECTOR EDITABILITY ≠ TD PASS`
 
