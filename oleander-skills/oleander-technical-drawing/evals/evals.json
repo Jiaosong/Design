@@ -1,0 +1,17 @@
+{
+  "skill_name": "oleander-technical-drawing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "OLEANDER 清江 R06 节点已有概念轴测、剖面和若干推荐尺寸，但 FIELD OBSERVED=0、FIELD MEASURED=0。把现有内容深化成专业节点图，不得虚构现场尺寸或把结构假设写成施工定案。",
+      "expected_output": "A source-authority table; declared TECHNICAL EXPLANATION / NOT FOR CONSTRUCTION status; parent section plus traceable node/detail logic; verified vs recommended-range vs FIELD VERIFY dimensions separated; visible connection/maintenance/safety relationships; vector annotation; TD-G0…TD-G8 review with engineering/field gates kept separate.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "从锁定的产品 CAD/OBJ 几何制作一套可交制造沟通的总装、剖面、爆炸和零件尺寸图。渲染图与 CAD 有一处边界冲突，CMF 表里有两个候选 finish 尚未批准。",
+      "expected_output": "CAD/model authority preserved over render conflict; coherent orthographic/section/assembly views; minimum controlling dimension set; candidate finishes kept distinct from approved material authority; tolerances only where function/manufacturing basis exists; vector PDF/SVG/DXF-capable output; round-trip/export checks and no fabrication promotion while critical authority remains open.",
+      "files": []
+    }
+  ]
+}
