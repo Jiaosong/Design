@@ -36,6 +36,51 @@ This file is the current repository-state source for the installed reusable skil
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
 - Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, uses native-first library routing, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility, dependency/runtime cost and export consistency.
 
+## Reference Reconstruction Fidelity Gate
+
+For OLEANDER aesthetic / design-skill training, the word **reproduction / reconstruction / 复现** is reserved for a strict 1:1 fidelity exercise. A loose reinterpretation, style study, inspired variant, simplified teaching diagram, or principle-only A/B is **not** a reproduction.
+
+Required sequence:
+
+`ORIGINAL REFERENCE → 1:1 RECONSTRUCTION → SIDE-BY-SIDE / OVERLAY CRIT → FIDELITY REPAIR → METHOD EXTRACTION → TRANSFER VARIANT`
+
+Do not skip the 1:1 reconstruction stage when the training claim is that a reference has been reproduced.
+
+### Minimum reproduction standard
+
+The reconstruction must aim to be visually indistinguishable from the available reference at the intended viewing scale, with no deliberate redesign before the fidelity gate. Match, as applicable:
+
+- canvas / frame / aspect ratio and crop;
+- primary mass, geometry, silhouette and object placement;
+- grid, margins, alignment, spacing and whitespace;
+- typography family or the closest legally/technically available equivalent, plus size, weight, leading, tracking and line breaks;
+- lineweight, stroke hierarchy, icon/pictogram geometry and annotation placement;
+- image scale, crop, tonal balance, color relationships and contrast;
+- material, lighting, camera, lens/perspective and render relationship for 3D/spatial/product work;
+- state timing, easing, path, overlap and key-frame relationships for motion/interaction work.
+
+A result that is only “similar”, “captures the principle”, “has the same hierarchy”, or “looks inspired by the reference” remains `STRUCTURAL STUDY / VISUAL REVISE`, not `REPRODUCTION PASS`.
+
+### Fidelity verification
+
+Every claimed reproduction requires actual visual comparison against the reference:
+
+- side-by-side at matched scale;
+- overlay / flicker / difference view where the source medium permits;
+- first-read plus near-read/detail review;
+- pixel/geometry diff when technically meaningful, while accounting for unavoidable rasterization, antialiasing, color-management or rendering differences;
+- explicit mismatch list and another repair cycle until no material visual mismatch remains.
+
+If the source reference is incomplete, too low-resolution, unavailable, or cannot support an honest 1:1 comparison, do **not** fabricate missing details and do **not** call the result a reproduction. Label it `STRUCTURAL RECONSTRUCTION`, `METHOD STUDY`, or `REFERENCE-BOUND STUDY` and keep the fidelity gate `HOLD`.
+
+### Training and rights boundary
+
+The 1:1 reconstruction is a study / calibration artifact used to learn professional visual judgment. It must not be presented as OLEANDER original authorship, substituted for the source project, or promoted as a public/commercial project deliverable. The transferable output is the extracted method and the independently designed transfer variant, not the copied reference artifact itself.
+
+### Skill promotion consequence
+
+A principle extracted from a reference cannot receive a stronger visual-learning status merely because the explanation is correct. If the training task claims reproduction but the 1:1 fidelity gate fails, record at most `OBSERVATION / STRUCTURAL STUDY`; do not use that failed reproduction as evidence for `CANDIDATE` promotion. Artifact existence, export success, traceability, and CI cannot override this fidelity gate.
+
 ## AIG-01 AI governance checks
 
 The skill review is no longer sufficient by itself. Every reusable skill is governed by `90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md` and the repository `evals/` harness.
