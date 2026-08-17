@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.5.1b.scale-086-confirmation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_5_1B_EXACT_SCALE_0_86_CONFIRMATION",
+  "authorization_receipt": "G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_DECISION_2026-08-17.md",
+  "authorization_phrase": "VISUAL_SELECT_SCALE_0_86_FOR_EXACT_CONFIRMATION",
+  "selected_relation": {
+    "source_family": "LOWER_RETURN_PROFILE",
+    "termination_cap_onset_u": 0.88,
+    "termination_cap_pole_curvature_scale": 0.86,
+    "termination_cap_law": "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE",
+    "termination_cap_semantics": "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION",
+    "termination_cap_endpoint_section": "SYMMETRIC_ELLIPSE_DERIVED_FROM_ONSET_MEANS",
+    "numeric_dof_count": 2
+  },
+  "locked_upstream": {
+    "confirmed_interface_relation": "G1_R3_CONFIRMED_INTERFACE_RELATION.json",
+    "interface_u_center": 0.62,
+    "interface_u_halfspan": 0.26,
+    "interface_theta_center": "TOP_MERIDIAN",
+    "interface_theta_halfspan_rad": 1.06,
+    "interface_core_fraction": 0.29,
+    "interface_depth_m": 0.012,
+    "termination_envelope_exponent": 0.34
+  },
+  "machine_gate_source": "G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json",
+  "policy": {
+    "exact_selected_relation_only": true,
+    "parameter_tuning_in_confirmation_forbidden": true,
+    "six_source_families_only": true,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "third_numeric_cap_dof_forbidden": true,
+    "mesh_local_patch_forbidden": true,
+    "native_source_must_remain_active_in_saved_blend": true,
+    "derived_mesh_is_authority": false,
+    "shared_surface_system_runtime_required": true,
+    "required_diagnostics": ["BROAD","STRIP","GRAZING","ZEBRA"],
+    "candidate_promotion": "NOT_RUN"
+  },
+  "local_view": {
+    "name": "R4_5_1B_CONFIRM_SCALE_086_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "outputs": {
+    "blend": "OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend",
+    "report": "G1_R4_5_1B_SCALE_086_CONFIRMATION_REPORT.json",
+    "native_source_snapshot": "G1_R4_5_1B_SCALE_086_NATIVE_SOURCE_SNAPSHOT.json"
+  },
+  "boundary": "Exact Working Source confirmation only. No parameter tuning, third DOF, Candidate Promotion, Candidate/Canonical Authority, Class-A, engineering CAD, manufacturing/tooling, ergonomic comfort, final CMF or Release."
+}
