@@ -1,4 +1,4 @@
-# C04｜ACTIVE EXECUTION CURRENT｜2026-08-17｜COMPLETE PROFESSIONAL DEPTH
+# C04｜ACTIVE EXECUTION CURRENT｜2026-08-17｜PROJECT ARCHITECTURE v3.0
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 Role: `CURRENT EXECUTION CARRIER`  
@@ -12,14 +12,15 @@ Every execution round MUST read, in order:
 2. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md`
 3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support
 4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json`
-5. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
-6. lane-specific latest Owner / PR / Drive material delta.
+5. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md` + `C04-B_PROJECT-ARCHITECTURE_v3.0.json`**
+6. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
+7. lane-specific latest Owner / PR / Drive material delta.
 
-GitHub + Google Drive remain cross-line communication / Source of Truth.
+GitHub + Google Drive remain cross-line Source of Truth.
 
-## 1｜NO-LOSS RULE｜DESIGN ASSET BEFORE PRUNING
+## 1｜NO-LOSS RULE
 
-The later evidence / governance / validation subsets do **not** define the complete design inventory.
+The later evidence / governance / validation subsets do not define the complete design inventory.
 
 Hard rule:
 
@@ -27,265 +28,230 @@ Hard rule:
 > **`PIXEL FAIL ≠ DESIGN DELETE`**  
 > **`VALIDATION SUBSET ≠ WHOLE PROJECT`**
 
-Before Web / F / D deletes, demotes or rebuilds any existing object, it must first locate the object in `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0` and separately decide:
-- `CONCEPT STATE = KEEP / CURRENTIZE / COMPETE / HOLD / DROP`
-- `PRESENTATION STATE = MAIN / SUPPORT / PROCESS / REDRAW / NOT-YET-SHOWN`
+Before Web / F / D deletes, demotes or rebuilds an object, classify concept, presentation and truth state against the Asset Atlas and latest Owner/review/lock state.
 
-A stale UI / old board / weak render may be `CONCEPT KEEP / PIXELS REDRAW`.
+The full design universe remains visible in decisions:
+`Journey + R01–R13 + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
 
-The full existing design universe remains visible in decisions:
-`Journey + 13 Imprints + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
+## 2｜CURRENT ARCHITECTURE｜DESIGN CAUSALITY
 
-## 2｜CURRENT NARRATIVE｜FIRST READ + PROFESSIONAL DEPTH
+Use architecture v3.0 as the main project structure:
 
-The project is **not** reduced to one short journey story.
+`CONTEXT / EVIDENCE → PROBLEM → INSIGHT → PRINCIPLES → METHODS → MASTER SYSTEM → SUBSYSTEM DESIGN → SCENE APPLICATION → DETAIL DEVELOPMENT → TECHNICAL PROOF → PROFESSIONAL JUDGMENT → RETURN / CONCLUSION`
 
-### First-read spine
+The journey remains a first-read thread only:
 
-`ENTER QINGJIANG → CHOOSE HOW TO MOVE → CROSS / OPEN → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS / WITHDRAW → RETURN → REMEMBER`
+`ENTER → ORIENT / CHOOSE → MOVE / OPEN → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS → RETURN → REMEMBER`
 
-Hero:
-> **先游清江，再读清江。**
-> **水上看，空中看，山中走；需要时，再打开一页清江。**
+The project is not compressed to the journey and is not organised as a generic list of systems.
 
-### Professional-depth spine
+Architecture chapters are CH00–CH18:
+- CH00 Project Statement
+- CH01 Project Question / Opportunity
+- CH02 Site / Landscape Analysis
+- CH03 Culture / Content Analysis
+- CH04 People / Audience Analysis
+- CH05 Journey / Behavior Analysis
+- CH06 Design Principles
+- CH07 Design Methods
+- CH08 Master Strategy / Experience System
+- CH09 Route / Mobility / Service Design
+- CH10 Thirteen Imprints / Content & Interaction System
+- CH11 Digital / App System
+- CH12 Key Scene Design
+- CH13 Physical / Body / Sensory Design
+- CH14 Memory / IP / Cultural Product
+- CH15 Design Detail Development
+- CH16 Technical / Model Proof
+- CH17 Process / Alternatives / Professional Judgment
+- CH18 Open Items / Return / Closure
 
-`CONTEXT / ANALYSIS → DESIGN PRINCIPLES → DESIGN METHODS → SYSTEM DESIGN → SCENE DESIGN → AUDIENCE DEPTH → PHYSICAL / DIGITAL / MEMORY → DESIGN DETAILS → TECHNICAL PROOF → PROCESS JUDGMENT → OPEN ITEMS`
+## 3｜PAGE-TYPE QUALITY RULE
 
-These two readings coexist.
+Every new or migrated surface declares one page type:
+`PROJECT / ANALYSIS / AUDIENCE / PRINCIPLE / METHOD / SYSTEM / SCENE / DETAIL / TECHNICAL / PROCESS / CLOSURE`.
 
-Hard correction:
+Required grammars:
+- ANALYSIS = `evidence/observation → finding → design consequence`
+- AUDIENCE = `condition → need/risk → design response → same-scene difference`
+- PRINCIPLE = `tension → principle → application → limit`
+- METHOD = `input → operation → output → where used`
+- SYSTEM = `components → relation → user flow → fallback`
+- SCENE = `condition → decision → action → carrier → value → fallback`
+- DETAIL = `use → geometry/state → material/interface → connection → maintenance/open item`
+- TECHNICAL = `design claim → proof → what it proves → does-not-prove`
+- PROCESS = `alternatives → criteria → verdict → design learning`
 
-> **Analysis is not governance.**  
-> **Design principles, design methods, audience analysis and design details may be MAIN content.**  
-> **First-read clarity does not authorize information loss.**
+Generic analysis, decorative persona cards, empty matrices and generic methods without C04 output are REVISE/REJECT.
 
-FIELD / G1F / Authority / Receipt / CI / versioning remain subordinate truth-boundary information and must not dominate public MAIN headlines.
+## 4｜CURRENT 52-SURFACE WEB｜SOURCE INVENTORY, NOT ARCHITECTURE
 
-## 3｜COUNT FREE, QUALITY HARD
+The current Web lineage contains 52 visible semantic surfaces.
 
-The current Web lineage contains **52 visible semantic surfaces**. This is the current inventory only.
+This means only:
+- 52 surfaces currently exist;
+- they must be inventoried and reused where useful.
 
-- 52 is not a ceiling;
-- 52 is not a target;
-- new substantive analysis / principle / method / design-detail content may create new pages;
-- no filler is added merely to increase count;
-- no useful professional content is deleted merely to preserve 52.
+It does **not** mean:
+- final count = 52;
+- current order is correct;
+- all 52 deserve equal weight;
+- missing analysis/details must fit inside 52.
 
-Appropriate page/surface roles include:
-- `STORY_EXPERIENCE`
-- `ANALYSIS_MAIN`
-- `PRINCIPLE_METHOD`
-- `DESIGN_SYSTEM`
-- `AUDIENCE_ANALYSIS`
-- `DESIGN_DETAIL`
-- `TECHNICAL_PROOF`
-- `PROCESS_JUDGMENT`
-- `SUPPORT_EVIDENCE`
-- `ARCHIVE`
+Web rebuild sequence:
+1. inventory all 52 surfaces;
+2. bind each to one CH00–CH18 chapter + page type;
+3. mark `KEEP / REWRITE / MERGE / MOVE / REDRAW / PROCESS / ARCHIVE`;
+4. identify missing required content;
+5. add substantive new surfaces;
+6. rebuild reading rhythm;
+7. prune duplicated/weak/governance-heavy surfaces only after no-loss review;
+8. run independent finished-product Design Crit.
 
-Each content type has its own test:
-- story: what does the visitor experience and what decision shapes it;
-- analysis: what was learned, why it matters and what design consequence follows;
-- principle/method: what rule/method is used and which C04 examples demonstrate it;
-- audience: what changes in the same scene for different people;
-- detail: how the design actually works;
-- technical: what part of the design is proven and what remains open;
-- process: why an alternative was selected / held / dropped.
-
-## 4｜REQUIRED PROFESSIONAL CONTENT TO SUPPLEMENT
-
-The following are active content-development targets. They are **not claims that the current Web already contains them at sufficient depth**.
-
-### Analysis
-- regional / landscape context;
-- river / valley / peak-forest relation;
-- north / south bank and transport relation;
-- route / branch / loop analysis;
-- BOAT / CABLE / WALK comparative experience;
-- arrival / service / recovery / Return analysis;
-- culture / content / scene-fit analysis;
-- audience / people analysis;
-- behavior / interaction analysis;
-- scene attention-density analysis;
-- environmental / seasonal / visibility analysis where supported;
-- risk / accessibility / capacity / maintenance as evidence-bounded scenarios or open items.
-
-### Design principles
-- Real Qingjiang First;
-- Service / Return before completion;
-- three experience scales;
-- optional content, not mandatory stops;
-- scene-specific attention density;
-- digital retreatability;
-- minimum necessary physical intervention;
-- same scene, different audience depth;
-- Landscape → Relation → Explanation;
-- Return + Memory, not completion score.
-
-### Design methods
-- `Evidence → Spatial Finding → Design Consequence`;
-- `Visitor Situation → Action → Mode → Carrier → Value → Fallback`;
-- `Landscape First → Relation Reveal`;
-- `Scene × Attention Density × Audience Depth`;
-- `Concept State ≠ Pixel State`;
-- `Existing / Minimal Intervention / Hero Intervention` comparison;
-- `NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF` behavior logic;
-- Physical + Digital + Paper + Human Service redundancy / retreatability;
-- `Design Decision → Body / Experience Effect → Detail / Proof → FIELD OPEN`.
-
-### Design details
-- route / map detail;
-- App information architecture / screen hierarchy / states;
-- R01–R13 content structure and selected scene detail;
-- R06 / R13 plan / section / sequence / body relation;
-- Physical body scale / plan / section / axon / exploded / material / mounting / maintenance;
-- Memory/IP object and use development;
-- C22/C23/Model technical proof at current verdict level.
-
-## 5｜ACTIVE 1｜B — EXPERIENCE + SERVICE + EDITORIAL
+## 5｜ACTIVE 1｜B — PROJECT NARRATIVE / EDITORIAL
 
 ### EXECUTE NOW
-- Build a **complete professional project narrative**, not only a short experience story.
-- Preserve the first-read Qingjiang journey as orientation.
-- Add / organize analysis, principles, methods, audience studies, system explanation, design details, technical proof and process judgment at appropriate depth.
-- Preserve all R01–R13 as the complete existing content/design library.
-- Use `CULTURE / WISDOM / PLAY / WELLBEING` as scene/content tools, not four mandatory equal chapters.
-- Preserve interaction verbs: `LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
-- Treat HOLD/DROP material as design-development/process content where it demonstrates professional judgment.
+- build the CH00–CH18 content architecture from existing assets and missing professional content;
+- create a page/surface register, not another abstract narrative essay;
+- write explicit design principles and methods using real C04 examples;
+- add site/landscape, culture/content, audience, journey/behavior analyses with design consequences;
+- preserve all R01–R13 as the full content/design library;
+- integrate App, Physical/Sensory, Memory/IP, technical detail and process into the causal architecture;
+- treat HOLD/DROP as Process only when they show professional judgment.
 
 ### QUALITY STOP
-Do not add generic methodology pages, decorative persona cards, empty matrices or analysis without a design consequence.
+No generic methods, generic user personas, decorative diagrams or research pages without design consequence.
 
 ### MAIN TEST
-The project must visibly explain **what / why / for whom / by what principle and method / how it works / how it was developed**.
+The viewer must understand:
+`what is the problem → what was found → what principles/methods follow → what system was designed → how it changes real scenes/users → how details make it work`.
 
-## 6｜ACTIVE 2｜D — WHOLE-PROJECT VISUAL + MOTION DIRECTION
+## 6｜ACTIVE 2｜D — VISUAL / MOTION DIRECTION
 
 ### EXECUTE NOW
-D visually supports both readings:
-- first-read Qingjiang experience;
-- professional analysis / principles / methods / details.
+Develop two compatible visual modes:
+1. **Experience mode** — real Qingjiang / journey / body / scene;
+2. **Professional mode** — analysis / principles / methods / details / technical proof.
+
+Professional graphics must still look like C04, not generic consulting diagrams.
 
 Priorities:
 - protect strongest real-Qingjiang Hero / R06 / R13 imagery;
-- develop C04-specific visual language for analysis and methods rather than generic flowcharts;
-- raise App/Game Map, selected Physical, Memory/IP and Return visual quality;
-- show real designed objects, body relation and interaction;
-- reject invented terrain / structures and generic tourism/game moodboards.
+- improve landscape/site/journey analysis graphics;
+- create strong diagrams for principles and methods;
+- raise App/Game Map, selected Physical, Memory/IP and Return visual maturity;
+- show actual designed objects, body relation and interaction;
+- reject invented terrain/structures and generic tourism/game moodboards.
 
-### MOTION
 Film remains mainly experiential:
-`ENTER → MOVE → OPEN → WALK/STOP → PASS → RETURN → REMEMBER`.
+`ENTER → MOVE → OPEN → DISCOVER/STOP → PASS → RETURN → REMEMBER`.
 
-Do not force the full analytical depth into film. Web / PDF / boards carry the deeper professional reading.
+Web/PDF/boards carry deeper professional reading.
 
-## 7｜ACTIVE 3｜WEB PUBLIC EXPERIENCE
+## 7｜ACTIVE 3｜WEB
 
 ### EXECUTE NOW
-Treat the 52 current semantic surfaces as the **starting inventory**.
+Rebuild Web around v3.0, not around the existing 52 order.
 
-Execution order:
-1. map all 52 current surfaces to v2.0 layers;
-2. identify missing professional content;
-3. add / expand real content where material;
-4. preserve the first-read journey as navigation/orientation;
-5. remove only duplicated, weak, stale or governance-heavy content after no-loss review;
-6. rerun actual finished-pixel review.
-
-The Web must be able to hold:
-- project / experience;
-- site / culture / route / behavior analysis;
+Mandatory content coverage before pruning:
+- project problem/opportunity;
+- site/landscape analysis;
+- culture/content analysis;
+- people/audience analysis;
+- journey/behavior analysis;
 - design principles;
 - design methods;
-- audience analysis;
-- system design;
-- scene design;
-- App / Game Map;
-- Physical / Sensory;
-- Memory / IP;
-- design details;
-- technical proof;
-- process / alternatives;
-- evidence boundary.
+- master system;
+- Route/Mobility/Service;
+- Thirteen Imprints;
+- App/Digital;
+- key scenes;
+- Physical/Sensory;
+- Memory/IP;
+- design detail development;
+- technical/model proof;
+- alternatives/process;
+- Return/open-items closure.
 
 ### QUALITY STOP
 - no fixed page-count compression;
 - no equal PPT-like board stacking;
 - no governance-first headlines;
-- no generic analysis graphics disconnected from actual C04 decisions;
-- no deleting design analysis merely because it is not part of the journey story.
+- no generic system taxonomy as the whole story;
+- no deleting valid analysis/details because they are not part of the journey spine.
 
 ### MAIN TEST
-The Web must read both as a compelling Qingjiang project **and** as a complete professional design study.
+Web must read as both:
+- a compelling Qingjiang project;
+- a complete professional design study.
 
-## 8｜ACTIVE 4｜PHYSICAL / PRODUCT / DETAIL｜C23 + MODEL + EXISTING OUTCOMES
+## 8｜ACTIVE 4｜PHYSICAL / PRODUCT / DETAIL
 
-C23 + Model remain proof/deepening tools, not the full Physical definition.
+Current selection discipline remains:
+- P02 railing leaning-rest = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
+- PHY-01 step-light = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
+- Fluid Rest = `HOLD / SINGLE-SITE COMPETITION`;
+- Qingfengyin = `HOLD / WIND-SENSORY CANDIDATE`;
+- F01–F04 / C23 / Model = technical/service descendants/support.
 
-Current Physical / Sensory selection discipline:
-- `栏杆式可拆卸倚靠休息板 / P02 lineage` = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
-- `PHY-01 步步生光` = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
-- `山体流体休憩装置` = `HOLD / SINGLE-SITE COMPETITION`;
-- `清风吟` = `HOLD / WIND-SENSORY CANDIDATE`;
-- `F01/F02/F03/F04` = technical/service descendants and supporting layer.
+R06 experience remains `FINISHED / FROZEN / NO REOPEN`.
 
-R06 experience is `FINISHED / FROZEN / NO REOPEN`.
-
-For selected physical outcomes, show as applicable:
-`scene → body action → use → body scale → plan / section / axon / exploded → material / CMF → mounting / maintenance → environment sensitivity → FIELD OPEN`.
+For selected outcomes show as applicable:
+`WHY HERE → BODY ACTION → USE → SCALE → PLAN/SECTION/AXON/EXPLODED → MATERIAL/CMF → CONNECTION → MAINTENANCE → ENVIRONMENT SENSITIVITY → FIELD OPEN`.
 
 No pseudo-construction certainty and no automatic revival of HOLD concepts.
 
-## 9｜ACTIVE 5｜F — FINAL INTEGRATION / EDITOR
+## 9｜ACTIVE 5｜F — FINAL INTEGRATION
 
-F must protect professional depth, not only the first-read story.
+F must assemble the same causal architecture across media.
 
 Order:
-1. inventory current design objects;
+1. inventory current objects/surfaces;
 2. apply latest Owner / lock / review state;
 3. separate concept state from pixel state;
-4. classify each content item by v2.0 page type;
-5. preserve strong analysis / principles / methods / audience / details;
-6. remove duplication, filler, stale pixels and governance noise;
-7. assemble Web / PDF / boards / film with appropriate depth by medium.
+4. bind each item to CH00–CH18 + page type;
+5. identify missing professional content;
+6. protect strong C04-specific outputs;
+7. remove duplication, filler, stale pixels and governance noise only after content completion;
+8. create Web / PDF / boards / film at medium-appropriate depth.
 
-Old 20-screen / REV04 / 52-surface counts are provenance or current inventories, not compression targets.
+Old 20-screen / REV04 / 52-surface counts are not compression targets.
 
-## 10｜DIGITAL STATUS｜DESIGN OUTCOME + PROFESSIONAL EXPLANATION
+## 10｜CURRENT LOCKS / DO NOT REOPEN
 
-Correct execution:
-- freeze uncontrolled feature expansion;
-- actively currentize and present existing App/UI design;
-- retain `TODAY / ROUTE / READ / MY BOOK` + always-accessible Service/Return;
-- retain game feeling through map reveal, exploration, imprint states, personal route/memory and low-intensity interaction;
-- remove legacy completion-score and route-task authority;
-- preserve NORMAL/DEGRADED/CLOSED/UNKNOWN, FULL/LIGHT/OFF, Offline and Return Priority;
-- no-phone remains a parallel complete route/service path;
-- allow independent professional pages for App IA, interaction states, cross-screen behavior and retreatability.
+- `ROUTE-03` remains locked current route binding.
+- `JOURNEY-04` remains provenance unless authority changes.
+- R06 experience remains frozen/no-reopen.
+- R01–R13 remain optional content, not a mandatory linear route.
+- legacy 13/13 completion authority stays dropped.
+- HOLD Physical concepts do not become current/built MAIN without new valid review.
+- App feature bloat remains frozen; App design/presentation/explanation remains active.
+- no species/geology/safety/exact geometry/ancient-site equivalence inferred from name/appearance.
+- no 2025 operations data written as current 2026 live fact without verification.
+- traditional landscape/feng-shui is not scientific/engineering evidence.
+- wellbeing/selenium claims remain non-medical/non-treatment unless verified.
+- `C23 validation subset ≠ whole Physical project`.
 
 ## 11｜WATCH / FREEZE
 
 ### A — RESEARCH / EVIDENCE
-Intervene for new claims, contradiction, source support and evidence-bounded analysis. Research does not replace design, but analysis may be a visible professional project layer.
+Intervene for new claims, contradiction, source support and evidence-bounded analysis.
 
 ### E — FEATURE ENGINEERING ONLY
-New feature expansion frozen. Existing App currentization, presentation and design explanation are ACTIVE through B/D/Web/F.
+New feature expansion frozen. Existing App currentization, presentation and professional explanation remain active through B/D/Web/F.
 
 ### GOVERNANCE / QC
-Version pollution, false PASS, stale Current, source-boundary, persistence/recoverability and cross-media contradiction only.
-
-Governance remains visible where necessary but must not replace analysis / design reasoning.
+Version pollution, false PASS, stale Current, source boundary, persistence/recoverability and cross-media contradiction only.
 
 ## 12｜CURRENT EXECUTION PRIORITY
 
-1. **Map the existing 52 Web surfaces to the six v2.0 narrative layers.**
-2. **Identify and add missing design principles / methods / analysis / audience / details.**
-3. **Keep the first-read Qingjiang journey as orientation, not as a compression rule.**
-4. **Preserve ROUTE-03 current binding and R06 frozen state.**
-5. **Document Physical/Sensory selection and details without promoting HOLD concepts.**
-6. **Re-edit technical proof around design explanation.**
-7. **After content completion, remove duplication / weak pixels / governance noise and rerun independent finished-output Crit.**
-8. A / new E feature engineering / Governance remain WATCH/FREEZE unless triggered.
+1. **Create the 52-surface → CH00–CH18 migration register.**
+2. **Identify exact missing analysis/principle/method/audience/detail pages.**
+3. **Add missing professional content before deleting anything.**
+4. **Rebuild the overall reading rhythm around design causality.**
+5. **Protect ROUTE-03, R06 frozen state and current Physical selection.**
+6. **Re-edit technical/model proof after design/detail chapters.**
+7. **Build Process pages from real alternatives/selection logic, not file history.**
+8. **After content closure, prune and run independent finished-output Crit.**
 
-This file is the current execution carrier. The project is evaluated as a **complete professional design project**, not only as a short public story and not only as a governance-compliant artifact set.
+This file is the current execution carrier. The project is evaluated as a complete professional design project, with first-read clarity and professional depth simultaneously required.
