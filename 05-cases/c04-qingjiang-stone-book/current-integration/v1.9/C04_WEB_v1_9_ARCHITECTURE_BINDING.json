@@ -1,0 +1,36 @@
+{
+  "version": "v1.9-chinese-project-architecture",
+  "role": "DOWNSTREAM WEB / PRESENTATION CARRIER",
+  "architecture": {
+    "object": "C04-B_PROJECT-ARCHITECTURE_v3.0",
+    "main_merge": "7cb30a03e8c40ea22e264e4f3bad0990dc06147e",
+    "language": "zh-CN",
+    "backbone": "背景/证据→问题→洞察→设计原理→设计方法→总体系统→分系统设计→场景应用→设计深化→技术证明→专业判断→回程/结论"
+  },
+  "web_inheritance": {
+    "base": "v1.8",
+    "previous_visible_semantic_inventory": 52,
+    "count_policy": "INVENTORY_NOT_CEILING",
+    "v1_3_full_source": "7cbe640df95b15fbc4aec7d76bc6ecd6e66758cd",
+    "v1_7_deltas_reused": ["scene_interaction", "physical", "technical", "styles"],
+    "v1_8_deltas_reused": ["ROUTE-03 journey lock", "styles"]
+  },
+  "locks": {
+    "route": "ROUTE-03 LOCKED CURRENT",
+    "journey04": "PROVENANCE NON-CURRENT",
+    "r06": "FINISHED FROZEN NO REOPEN"
+  },
+  "new_professional_depth": [
+    "项目问题与机会",
+    "场地与山水分析",
+    "人群与使用状态分析",
+    "游程与行为分析",
+    "设计原理",
+    "设计方法",
+    "总体策略与体验系统",
+    "设计深化与细节",
+    "方案演化与专业判断"
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "design_verdict": "PENDING_INDEPENDENT_FINISHED_PIXEL_REVIEW"
+}
