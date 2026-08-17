@@ -16,6 +16,8 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `references/EDITORIAL_CALLOUT_FIDELITY.md` — targeted repair for exact leader landing, editorial side-icon crop/component fidelity, typography-only ROIs and rotated street/route labels. Use it after semantic structure exists but callout pixels still drift.
 - `references/FLOW_DIRECTION_ANALYSIS.md` — circulation/mobility/route-network grammar: route edges/nodes, direction-marker taxonomy, primary/secondary hierarchy, base binding, speed/street/mode-symbol ownership, topology/pixel diagnosis, low-recall stop rule, FN-C0…FN-C3 claim ladder and R3/JPEG reconstruction ceiling.
 - `references/BASE_INSTANCE_FIDELITY.md` — repeated main-body/base reconstruction: separates semantic geometry master, per-panel rendered base instance and bounded non-authoritative visual carrier; adds visibility/omission profiles, contamination blockers, BI-C0…BI-C3 and panel-specific neutral/base fidelity diagnosis.
+- `references/THEME_OVERLAY_FIDELITY.md` — thematic-overlay reconstruction: separates semantic theme objects from bounded source-derived theme visual carriers, with TI-C0…TI-C3 and contamination/authority boundaries.
+- `references/FINAL_STAGE_PIXEL_SOLVER.md` — last-stage typography/symbol/node/micro-flow repair after geometry/base/theme/flow are materially reconstructed. It permits only bounded local visual carriers, preserves editable semantic sources and forbids full-sheet residual path-cloud shortcuts.
 - `references/REALITY_CHECK.md` — real-world technical evidence, ranges, sensitivity and FIELD/engineer closure.
 - `references/STANDARDS_ROUTING.md` — jurisdiction, ISO/ASME/PRC standards discovery and compliance-claim boundary.
 - `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis diagrams: source/evidence/inference/decision overlays and Evidence → Spatial Finding → Design Consequence chains. Quantitative/statistical charts remain `oleander-data-viz`.
@@ -39,7 +41,7 @@ Core pipeline:
 
 Exact reconstruction pipeline:
 
-`REFERENCE SNAPSHOT → RF SOURCE CLASS → RENDER ENVIRONMENT LOCK → REFERENCE RECTIFICATION → CANVAS REGISTRATION → PANEL / STACK SEGMENTATION → GEOMETRY MASTER → PER-PANEL RENDERED BASE INSTANCE / VISIBILITY PROFILE → OPTIONAL BOUNDED BASE VISUAL CARRIER → OBJECT/ANCHOR FORENSICS → A2 GEOMETRY → RELATION-EVIDENCE REGISTER → FLOW-NETWORK / CALLOUT TOPOLOGY / SYMBOL DICTIONARY → SEMANTIC VECTOR REBUILD → SEMANTIC + FLOW + BASE-INSTANCE MACHINE GATES → LEADER TARGET / EDITORIAL ICON / TYPOGRAPHY ROI CALIBRATION → FLOW EDGE/NODE/DIRECTION-MARKER RECONCILIATION → STROKE/SYMBOL/HATCH PHASE → TARGET-SIZE RENDER → TOLERANCE-0 DIFF → EDGE r0/r1/r2 + CRITICAL ROI + RELATIONSHIP/FLOW/BASE ROI DIAGNOSIS → BOUNDED SVG PARAMETERIZATION → COUPLED SOLVER CYCLES → TARGET-SIZE RE-RENDER → REOPEN RELATION/FLOW/BASE AUDIT → E0–E6 FREEZE/REPAIR → RF-C0…RF-C3 CLAIM → RF-G0…RF-G6 → TD-G0…TD-G8 SEPARATELY → INDEPENDENT REVIEW`.
+`REFERENCE SNAPSHOT → RF SOURCE CLASS → RENDER ENVIRONMENT LOCK → REFERENCE RECTIFICATION → CANVAS REGISTRATION → PANEL / STACK SEGMENTATION → GEOMETRY MASTER → PER-PANEL RENDERED BASE INSTANCE / VISIBILITY PROFILE → OPTIONAL BOUNDED BASE VISUAL CARRIER → OBJECT/ANCHOR FORENSICS → A2 GEOMETRY → RELATION-EVIDENCE REGISTER → FLOW-NETWORK / CALLOUT TOPOLOGY / SYMBOL DICTIONARY → SEMANTIC VECTOR REBUILD → SEMANTIC + FLOW + BASE-INSTANCE MACHINE GATES → LEADER TARGET / EDITORIAL ICON / TYPOGRAPHY ROI CALIBRATION → FLOW EDGE/NODE/DIRECTION-MARKER RECONCILIATION → STROKE/SYMBOL/HATCH PHASE → TARGET-SIZE RENDER → TOLERANCE-0 DIFF → EDGE r0/r1/r2 + CRITICAL ROI + RELATIONSHIP/FLOW/BASE ROI DIAGNOSIS → BOUNDED SVG PARAMETERIZATION → COUPLED SOLVER CYCLES → FINAL-STAGE TYPOGRAPHY / SYMBOL-NODE / MICRO-FLOW BOUNDED SOLVER → TARGET-SIZE RE-RENDER → REOPEN RELATION/FLOW/BASE/THEME AUDIT → E0–E6 FREEZE/REPAIR → RF-C0…RF-C3 CLAIM → RF-G0…RF-G6 → TD-G0…TD-G8 SEPARATELY → INDEPENDENT REVIEW`.
 
 Visualization reconstruction handoff:
 
@@ -104,6 +106,16 @@ Hard boundaries:
 `BASE VISUAL CARRIER ≠ GEOMETRY AUTHORITY`
 
 `LOW BASE-CARRIER RECALL ≠ TYPOGRAPHY/JPEG RESIDUAL`
+
+`THEME SEMANTICS ≠ THEME VISUAL CARRIER`
+
+`EDITABLE TEXT ≠ TYPOGRAPHY VISUAL CARRIER`
+
+`SYMBOL PIXELS ≠ SYMBOL OWNERSHIP`
+
+`MICRO-FLOW PIXELS ≠ FLOW TOPOLOGY`
+
+`BOUNDED RESIDUAL CARRIER ≠ FULL-SHEET PATH CLOUD`
 
 `LABEL PRESENT ≠ RELATION DRAWN`
 
