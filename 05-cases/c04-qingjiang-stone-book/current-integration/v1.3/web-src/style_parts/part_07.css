@@ -1,0 +1,5 @@
+.map-beat .map-field{min-height:720px}
+.audience-stage{display:grid;grid-template-columns:.72fr 1.28fr;gap:4vw;align-items:center}
+.audience-beat .audience-board{margin-top:0}
+@media(max-width:1050px){.map-stage,.audience-stage{grid-template-columns:1fr}.map-beat .map-field{min-height:620px}.map-copy .map-info{min-height:auto}.audience-beat .audience-board{margin-top:28px}}
+@media(max-width:680px){.map-beat .map-field{min-height:520px}.map-stage,.audience-stage{gap:26px}}
