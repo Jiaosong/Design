@@ -10,14 +10,13 @@ async function capture(page, testInfo, name, selector) {
   const path = testInfo.outputPath(name);
   if (selector) {
     const target = page.locator(selector);
-    await target.evaluate((node) => {
-      const top = node.getBoundingClientRect().top + window.scrollY - 64;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
-    });
+    await target.evaluate((node) => node.scrollIntoView({ block: 'start', behavior: 'auto' }));
     const imgs = target.locator('img:visible');
     for (let i = 0; i < await imgs.count(); i += 1) {
       await expect.poll(() => imgs.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0), { timeout: 5000 }).toBeTruthy();
     }
+    await target.evaluate((node) => node.scrollIntoView({ block: 'start', behavior: 'auto' }));
+    await page.evaluate(() => window.scrollBy(0, -64));
     await page.waitForTimeout(120);
   } else {
     await page.evaluate(() => window.scrollTo(0, 0));
