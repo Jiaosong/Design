@@ -13,7 +13,7 @@ def valid():
   'hard_points':[{'id':'LENGTH','authority':'OFFICIAL','target':4.542,'candidate':4.542}],
   'landmarks':[lm(x) for x in CONTRACT['required_landmarks']],
   'source_digest_before':'abc','source_digest_after':'abc','per_view_geometry_override':False,
-  'silhouette_gate':'PASS','reference_fidelity_gate':'PASS','design_quality_gate':'HOLD','independent_reference_review':False}
+  'silhouette_gate':'MACHINE_SCREENING_PASS','reference_fidelity_gate':'MACHINE_SCREENING_PASS','design_quality_gate':'HOLD','independent_reference_review':False}
 class T(unittest.TestCase):
  def test_valid(self): mod.validate(valid(),CONTRACT)
  def test_mixed_revision_fails(self):
@@ -33,6 +33,9 @@ class T(unittest.TestCase):
   with self.assertRaises(SystemExit):mod.validate(d,CONTRACT)
  def test_missing_provenance_fails(self):
   d=valid();d['landmarks'][0].pop('reference_target_source')
+  with self.assertRaises(SystemExit):mod.validate(d,CONTRACT)
+ def test_plain_pass_semantic_fails(self):
+  d=valid();d['reference_fidelity_gate']='PASS'
   with self.assertRaises(SystemExit):mod.validate(d,CONTRACT)
  def test_source_drift_fails(self):
   d=valid();d['source_digest_after']='def'
