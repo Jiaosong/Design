@@ -3,9 +3,9 @@
 Fixture: `RF-CAL-01`  
 Status: `SYNTHETIC CALIBRATION / NOT GOLDEN PROMOTED / NOT PROJECT AUTHORITY`
 
-This fixture exists to prove that the reconstruction-fidelity workflow can detect material drawing mismatches without conflating pixel similarity with technical correctness.
+This fixture exists to prove that the reconstruction-fidelity workflow can detect and repair material drawing mismatches without conflating pixel similarity with technical correctness.
 
-The v0.3 calibration intentionally removes the earlier weak idea that a high global similarity percentage could support a pixel-level claim. `98%+ equal pixels` is now treated as diagnostically interesting but categorically insufficient for RF-C3.
+The v0.3 calibration intentionally removes the earlier weak idea that a high global similarity percentage could support a pixel-level claim. `98%+ equal pixels` is diagnostically interesting but categorically insufficient for RF-C3.
 
 ## Files
 
@@ -16,8 +16,12 @@ The v0.3 calibration intentionally removes the earlier weak idea that a high glo
 - `RF-CAL-01_EXPECTED.json` — machine-readable tolerance-zero regression expectations and invariants.
 - `RF-CAL-01_RF-C3_CONTRACT.json` — hard RF-C3 zero-difference contract.
 - `RF-CAL-01_RUNTIME_READBACK_v0.3.json` — recorded tolerance-zero / edge-radius diagnostic readback.
+- `RF-CAL-01_SOLVER_SPEC.json` — bounded E2/E3/E4 parameter search specification.
+- `RF-CAL-01_SOLVER_RESULT.json` — actual coupled-solver recovery and renderer-mismatch finding.
 - `../../tools/reference_fidelity.py` — same-canvas raster comparison and hard-contract tool.
+- `../../tools/svg_parameter_solver.py` — bounded editable SVG parameter solver.
 - `../../references/PIXEL_FORENSIC_PROTOCOL.md` — strict forensic reconstruction protocol.
+- `../../references/PIXEL_SOLVER_PROTOCOL.md` — solver routing, coupling and renderer-lock protocol.
 
 ## Deliberate negative mutations
 
@@ -32,7 +36,7 @@ The rest of the fixture is intentionally held constant so the difference evidenc
 
 ## Actual local render/readback — strict tolerance zero
 
-Renderer used for this calibration: Inkscape on the current execution machine, 1200×800 raster output.
+Renderer used for the original v0.3 forensic calibration: Inkscape on the current execution machine, 1200×800 raster output.
 
 ### Negative candidate
 
@@ -78,6 +82,37 @@ Under the same locked synthetic render condition:
 The matched candidate has different semantic group IDs / source bytes but rasterizes identically under the locked renderer. This demonstrates that file hash equality is not required for output-pixel equality, while editable/vector structure remains a separate requirement.
 
 This result supports only `RF-C3 PIXEL-EXACT CANDIDATE IN THIS LOCKED SYNTHETIC FIXTURE`. It does not prove arbitrary-reference reconstruction capability and does not self-award independent review.
+
+## Coupled solver regression
+
+A first automatic solver pass exposed an important failure mode. When title baseline was solved while the title font size was still wrong, the temporary optimum moved to `y=104`. Correcting font size from `31 → 32` invalidated that baseline result.
+
+Therefore exact reconstruction cannot use a permanently frozen one-pass sequence. The solver now cycles through dependent layers and reopens earlier parameters after downstream changes.
+
+With reference and candidate both rasterized through the same CairoSVG comparison path, the coupled solver recovered:
+
+- `primary_dx: 5 → 0`;
+- `title_y: 108 → 105`;
+- `title_font_size: 31 → 32`;
+- `interface_stroke: 2.8 → 2.2`.
+
+Final recorded readback:
+
+- changed-pixel ratio: `0.0`;
+- normalized MAE: `0.0`;
+- edge mismatch r1: `0.0`.
+
+This is a real automated parameter recovery on the synthetic fixture, not a hand-entered final candidate.
+
+## Renderer mismatch regression
+
+A second failure was equally important: optimizing against an Inkscape-rendered reference while rendering candidates through CairoSVG can prefer a false typography baseline even when the SVG parameter is otherwise correct.
+
+Therefore:
+
+`WRONG RENDERER → WRONG OPTIMUM`.
+
+RF-C3 requires the solver and final comparison to use the declared locked renderer/font path. A cross-renderer solver result may be useful diagnostically but cannot be used as pixel-exact evidence.
 
 ## Claim model
 
