@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#171717}.t1{font-size:28px;font-weight:700}.t2{font-size:15px;font-weight:700}.tx{font-size:12px}.sm{font-size:10px;fill:#666}.l1{stroke:#111;stroke-width:8;fill:none}.l2{stroke:#222;stroke-width:4;fill:none}.l3{stroke:#555;stroke-width:2;fill:none}.l4{stroke:#777;stroke-width:1.2;fill:none}.l5{stroke:#aaa;stroke-width:1;fill:none;stroke-dasharray:8 6}.dim{stroke:#777;stroke-width:1;fill:none}.paper{fill:#fff}.zone{fill:#f5f5f2}.cutfill{fill:#deded9}.hatch{stroke:#aaa;stroke-width:1}.note{fill:#f7f7f5;stroke:#ccc}.accent{stroke:#7b3f2b;fill:none;stroke-width:2}
+</style>
+<rect class="paper" width="1800" height="1200"/>
+<g id="SHEET_HEADER"><text x="80" y="72" class="t1">GD-01 / ARCHITECTURE SECTION — GOLDEN FIXTURE CANDIDATE</text><text x="80" y="100" class="sm">Editable vector regression asset · locked training geometry · TECHNICAL EXPLANATION · NOT FOR CONSTRUCTION</text></g>
+<g id="VIEW_A_SECTION">
+<rect x="80" y="145" width="1240" height="800" class="zone" stroke="#ddd"/>
+<text x="105" y="180" class="t2">A-A / SECTION · TRAINING SCALE 1:50</text>
+<g id="L5_CONTEXT"><path d="M105 800 C260 760 390 790 540 748 C720 700 860 744 1030 706 C1140 680 1220 694 1290 670" class="l5"/><line x1="120" y1="860" x2="1285" y2="860" class="l5"/><text x="108" y="888" class="sm">EXISTING GROUND / REFERENCE CONTEXT</text></g>
+<g id="L1_CUT_PRIMARY">
+<path d="M360 810 L360 430 L390 430 L390 810" class="l1"/><path d="M970 810 L970 430 L1000 430 L1000 810" class="l1"/><path d="M330 420 L1030 420" class="l1"/><path d="M330 810 L1030 810" class="l1"/>
+</g>
+<g id="L2_PRIMARY_RELATION">
+<line x1="390" y1="452" x2="970" y2="452" class="l2"/><line x1="390" y1="785" x2="970" y2="785" class="l2"/><line x1="560" y1="452" x2="560" y2="785" class="l2"/><line x1="800" y1="452" x2="800" y2="785" class="l2"/>
+<path d="M390 580 L560 580 L560 785" class="l2"/><path d="M800 640 L970 640" class="l2"/>
+</g>
+<g id="L3_SECONDARY_BUILDUP">
+<line x1="390" y1="470" x2="970" y2="470" class="l3"/><line x1="390" y1="765" x2="970" y2="765" class="l3"/><line x1="372" y1="452" x2="372" y2="785" class="l3"/><line x1="988" y1="452" x2="988" y2="785" class="l3"/>
+<rect x="566" y="470" width="228" height="295" fill="none" stroke="#777" stroke-width="1.5"/><line x1="566" y1="602" x2="794" y2="602" class="l4"/><line x1="680" y1="470" x2="680" y2="765" class="l4"/>
+</g>
+<g id="MATERIAL_HATCHES">
+<rect x="330" y="420" width="700" height="32" class="cutfill"/><rect x="330" y="785" width="700" height="25" class="cutfill"/>
+<g class="hatch"><line x1="336" y1="446" x2="362" y2="420"/><line x1="356" y1="452" x2="388" y2="420"/><line x1="376" y1="452" x2="408" y2="420"/><line x1="396" y1="452" x2="428" y2="420"/><line x1="930" y1="452" x2="962" y2="420"/><line x1="950" y1="452" x2="982" y2="420"/><line x1="970" y1="452" x2="1002" y2="420"/></g>
+</g>
+<g id="HUMAN_SCALE" stroke="#333" fill="none" stroke-width="2"><circle cx="700" cy="650" r="9" fill="#333"/><line x1="700" y1="659" x2="700" y2="715"/><line x1="700" y1="675" x2="680" y2="695"/><line x1="700" y1="675" x2="720" y2="695"/><line x1="700" y1="715" x2="684" y2="748"/><line x1="700" y1="715" x2="716" y2="748"/></g>
+<g id="L4_DIMENSIONS_NOTES">
+<line x1="300" y1="430" x2="300" y2="810" class="dim"/><line x1="292" y1="430" x2="308" y2="430" class="dim"/><line x1="292" y1="810" x2="308" y2="810" class="dim"/><text x="270" y="625" class="tx" transform="rotate(-90 270 625)">3800 · LOCKED TRAINING VALUE</text>
+<line x1="390" y1="850" x2="970" y2="850" class="dim"/><line x1="390" y1="842" x2="390" y2="858" class="dim"/><line x1="970" y1="842" x2="970" y2="858" class="dim"/><text x="610" y="842" class="tx">5800 · LOCKED TRAINING VALUE</text>
+<line x1="560" y1="545" x2="470" y2="520" class="l4"/><circle cx="560" cy="545" r="4" fill="#fff" stroke="#555"/><text x="405" y="510" class="t2">01 / PARTITION INTERFACE</text><text x="405" y="530" class="sm">secondary construction, not section-cut weight</text>
+<line x1="800" y1="640" x2="900" y2="600" class="l4"/><circle cx="800" cy="640" r="4" fill="#fff" stroke="#555"/><text x="905" y="594" class="t2">02 / SILL + RETURN</text><text x="905" y="614" class="sm">detail parentage shown in section</text>
+</g>
+<g id="DETAIL_CALLOUT"><circle cx="800" cy="640" r="28" fill="none" stroke="#7b3f2b" stroke-width="2"/><line x1="828" y1="640" x2="1120" y2="640" class="accent"/><text x="1130" y="646" class="t2">D-02 → INTERFACE DETAIL</text></g>
+</g>
+<g id="VIEW_B_DETAIL">
+<rect x="1360" y="145" width="360" height="800" fill="#fbfbfa" stroke="#ddd"/><text x="1385" y="180" class="t2">D-02 / NEAR-READ DETAIL · 1:10</text>
+<g id="DETAIL_L1"><path d="M1450 370 L1450 700" class="l1"/><path d="M1450 700 L1640 700" class="l1"/></g>
+<g id="DETAIL_L2"><line x1="1475" y1="390" x2="1475" y2="675" class="l2"/><line x1="1475" y1="675" x2="1620" y2="675" class="l2"/></g>
+<g id="DETAIL_L3"><line x1="1495" y1="400" x2="1495" y2="655" class="l3"/><line x1="1495" y1="655" x2="1600" y2="655" class="l3"/><rect x="1500" y="520" width="55" height="18" fill="#e8e8e4" stroke="#555"/><circle cx="1520" cy="529" r="4" fill="#fff" stroke="#555"/></g>
+<g id="DETAIL_NOTES"><line x1="1555" y1="529" x2="1665" y2="480" class="l4"/><text x="1568" y="462" class="t2">BRACKET ZONE</text><text x="1568" y="480" class="sm">connection relation visible</text><line x1="1495" y1="615" x2="1640" y2="585" class="l4"/><text x="1548" y="570" class="t2">FINISH RETURN</text><text x="1548" y="588" class="sm">CMF boundary separate from substrate</text></g>
+<g id="DETAIL_STATE"><rect x="1385" y="790" width="300" height="105" class="note"/><text x="1400" y="818" class="t2">TRUTH BOUNDARY</text><text x="1400" y="840" class="sm">Geometry: locked training fixture</text><text x="1400" y="860" class="sm">Connection sizing: illustrative only</text><text x="1400" y="880" class="sm">No engineering / construction claim</text></g>
+</g>
+<g id="TITLE_BLOCK"><line x1="80" y1="990" x2="1720" y2="990" stroke="#222"/><text x="80" y="1025" class="t2">OLEANDER TECHNICAL DRAWING / GOLDEN FIXTURE SUITE</text><text x="80" y="1050" class="sm">Fixture ID: GD-01 · Discipline: Architecture/Interior · Regression target: section hierarchy + parent/detail traceability</text><text x="80" y="1074" class="sm">Required groups: L1_CUT_PRIMARY / L2_PRIMARY_RELATION / L3_SECONDARY_BUILDUP / L4_DIMENSIONS_NOTES / L5_CONTEXT / DETAIL_CALLOUT / TITLE_BLOCK</text><text x="80" y="1110" class="sm">Status: GOLDEN CANDIDATE — requires independent OLEANDER visual review before promotion</text><text x="1450" y="1110" class="sm">REV A · 2026-08-17</text></g>
+</svg>
