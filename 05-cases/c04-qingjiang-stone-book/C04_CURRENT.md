@@ -1,4 +1,4 @@
-# C04｜Current Execution Authority｜2026-08-17｜PROJECT ARCHITECTURE v3.0
+# C04｜Current Execution Authority｜2026-08-17｜PROJECT ARCHITECTURE v3.1
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
@@ -13,11 +13,11 @@ Read and execute in this order:
 3. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md` + machine CSV
 4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support only
 5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json` for current content/narrative direction
-6. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md` + `C04-B_PROJECT-ARCHITECTURE_v3.0.json` for current chapter/page architecture**
+6. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` for professional content architecture + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` for chapter/page hierarchy and no-compression execution**
 7. `C04_ACTIVE_EXECUTION_CURRENT.md`
 8. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
 
-Architecture v3.0 supersedes the earlier v1.9 journey-only structure and v2.0 six-layer display structure **for organisation/order only**. It does not delete v2.0 content direction or any valid project object.
+Architecture v3.1 inherits all v3.0 content and chapters. It only corrects structural hierarchy: chapters are containers; pages are independent display units. It supersedes any execution that equates chapter count, chapter files, `<section>` count, viewport count or preview boards with page count.
 
 The older `C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md` remains remote-evidence provenance. Its former prohibition on further concept production is superseded.
 
@@ -29,9 +29,10 @@ Hard rules:
 
 > **`CONCEPT KEEP ≠ PIXEL KEEP`**  
 > **`PIXEL FAIL ≠ DESIGN DELETE`**  
-> **`VALIDATION SUBSET ≠ WHOLE PROJECT`**
+> **`VALIDATION SUBSET ≠ WHOLE PROJECT`**  
+> **`CHAPTER ≠ PAGE`**
 
-Before Web / F / D removes, hides or rebuilds an existing object, locate it in `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0` and separately classify:
+Before Web / F / D removes, hides or rebuilds an existing object or page, locate it in `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0` and separately classify:
 - concept state: KEEP / CURRENTIZE / REVISE / COMPETE / HOLD / DROP;
 - presentation state: MAIN / SUPPORT / PROCESS / REDRAW / NOT-YET-SHOWN;
 - truth state: source-grounded / design candidate / field-open / provenance.
@@ -41,9 +42,9 @@ A stale UI / old board / weak render can be `CONCEPT KEEP / PIXELS REDRAW`.
 The complete design universe remains in scope:
 `SITE/JOURNEY + R01–R13 + APP/GAME MAP + PHYSICAL/BODY + SENSORY + MEMORY/IP + AUDIENCE + SPATIAL/TECHNICAL + VISUAL/MOTION`.
 
-## 2｜Current project architecture｜design causality, not page-count or taxonomy
+## 2｜Current project architecture｜design causality + strict chapter/page separation
 
-The current structure is defined by `C04-B_PROJECT-ARCHITECTURE_v3.0`.
+The current professional content structure remains defined by v3.0; v3.1 controls how it is implemented.
 
 Backbone:
 
@@ -54,6 +55,17 @@ The visitor journey remains a strong first-read thread:
 `ENTER → ORIENT / CHOOSE → MOVE / OPEN → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS → RETURN → REMEMBER`
 
 But the journey is **not** the only public/professional architecture.
+
+### Mandatory hierarchy
+
+`PROJECT → CHAPTER → PAGE → MODULE / FIGURE / ASSET`
+
+- CH00–CH18 are organisational chapters only.
+- PAGE is the actual Web/PDF/board display unit.
+- A chapter may contain many pages.
+- A chapter file or `<section>` is not a page.
+- Figure/card/grid/phone-screen inside a page is not automatically a page.
+- `chapter_count` and `page_count` must always be reported separately.
 
 The project must explicitly contain and professionally present where material exists:
 - project problem/opportunity;
@@ -79,13 +91,20 @@ Hard distinction:
 
 > **Analysis is not governance.**  
 > **First-read clarity does not justify information loss.**  
-> **Design principles, methods, audience analysis and design details may be MAIN content.**
+> **Design principles, methods, audience analysis and design details may be MAIN content.**  
+> **Chapter reorganisation never authorises page compression.**
 
 FIELD / G1F / Authority / Receipt / CI / versioning remain subordinate truth-boundary information and must not become public MAIN headlines.
 
-## 3｜Page-type discipline
+## 3｜Page identity + page-type discipline
 
-Every future Web/PDF/board surface must have one primary page type from architecture v3.0:
+Existing validated Web baseline pages receive stable identities:
+
+`C04-WEB-P001 ... C04-WEB-P052`
+
+All 52 default to `PRESERVE` before mapping. New professional content uses `C04-WEB-N001...`.
+
+Every Web/PDF/board PAGE has one primary page type:
 - PROJECT
 - ANALYSIS
 - AUDIENCE
@@ -109,7 +128,9 @@ Each type uses its own professional grammar:
 - technical: `claim → proof → what it proves → does-not-prove`;
 - process: `alternatives → criteria → verdict → design learning`.
 
-A page that cannot satisfy its page-type grammar must be rewritten, merged, downgraded or removed.
+A page that cannot satisfy its page-type grammar must be rewritten, moved, redrawn, expanded, downgraded or marked archive candidate. It is **not automatically merged**.
+
+`MERGE` is not a default action. Merge requires explicit `MERGE CANDIDATE → INDEPENDENT REVIEW → APPROVED/REJECTED`. No approval means both PAGE identities remain.
 
 ## 4｜Current object / system locks
 
@@ -186,18 +207,21 @@ Traditional landscape/feng-shui ideas may only be presented as cultural interpre
 
 Wellbeing means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and Return support; no unverified treatment/medical/selenium-health claims.
 
-## 6｜Count policy｜unbounded by count
+## 6｜Count policy｜unbounded by count, page-count only from actual PAGE units
 
 No fixed 20-screen / 52-page / ~20-page / 3-board target.
 
-The existing 52 Web semantic surfaces are the **current source inventory only**:
+The existing 52 Web PAGE surfaces are the **preserved baseline inventory**:
 - not the new architecture;
 - not a ceiling;
-- not a target.
+- not a target;
+- not reducible to 19 chapters or 21 chapter files.
 
-Architecture v3.0 may add new substantive pages for missing analysis, principles, methods, audience, system explanation, scene design, detail development and technical proof.
+Architecture v3.1 requires:
 
-Do not add filler to increase count. Do not compress useful content to preserve 52.
+`52 preserved baseline pages + substantive missing professional pages = new actual page count (>52 when new pages are added)`.
+
+Do not add filler to increase count. Do not compress useful content to preserve 52. Do not compress pages to make chapters cleaner.
 
 ## 7｜Public / professional quality gate
 
@@ -225,7 +249,7 @@ Analysis / principles / methods are not rejected merely for being analytical; th
 ## 8｜Current execution architecture
 
 ### ACTIVE 1｜B — Experience + Service + Editorial
-Use architecture v3.0 as the content/page structure. Build missing analysis, principles, methods, audience logic, system explanation, scene design, detail development, technical proof and process judgment. Preserve the journey as a first-read thread but not as a compression rule.
+Use architecture v3.0/v3.1 as the content and page structure. Build missing analysis, principles, methods, audience logic, system explanation, scene design, detail development, technical proof and process judgment. Preserve the journey as a first-read thread but not as a compression rule.
 
 ### ACTIVE 2｜D — Whole-project Visual + Motion
 Develop C04-specific visual language for both experiential and analytical pages. Protect strong real-Qingjiang Hero/R06/R13 assets. Raise App/Game Map, selected Physical, Memory/IP, Return and analytical graphics without generic flowchart/dashboard language.
@@ -233,21 +257,22 @@ Develop C04-specific visual language for both experiential and analytical pages.
 Film remains primarily experiential; Web/PDF/boards carry deeper professional analysis and details.
 
 ### ACTIVE 3｜Web
-Rebuild the current 52-surface inventory into architecture v3.0:
-1. inventory each surface;
-2. bind to one CH00–CH18 chapter + page type;
-3. mark KEEP / REWRITE / MERGE / MOVE / REDRAW / PROCESS / ARCHIVE;
+Rebuild the current 52-PAGE baseline into architecture v3.1 without page loss:
+1. reserve PAGE-ID `P001–P052`;
+2. map each PAGE to one CH00–CH18 chapter + page type;
+3. mark `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE`;
 4. identify missing required content;
-5. add substantive new pages;
-6. rebuild reading rhythm;
-7. then remove duplication / weak pixels / governance noise;
-8. run independent finished-product Design Crit.
+5. add substantive N-series pages;
+6. rebuild reading rhythm while retaining page independence;
+7. perform PAGE-ID finished-pixel readback;
+8. run independent Design Crit;
+9. only after independent approval may true duplicate pages enter merge consideration.
 
 ### ACTIVE 4｜Physical / Product / Detail
 Includes existing outcomes + C23 + Model. Current selection/HOLD state remains explicit. Design details are a dedicated project chapter and may include body scale, plan/section/axon/exploded, material/CMF, mounting, replacement, maintenance and evidence-bounded environment sensitivity.
 
 ### ACTIVE 5｜F Final Integration
-Protect both first-read quality and professional depth. Classify concept/pixel state before editorial role. Web/PDF/boards/film do not need identical depth, but must share the same v3.0 causal architecture.
+Protect both first-read quality and professional depth. Classify concept/pixel state before editorial role. Web/PDF/boards/film do not need identical depth, but must share the same v3.1 chapter/page hierarchy.
 
 ### WATCH / FREEZE
 - A Research/Evidence: intervene for new claims, contradictions, source support and analysis where required.
@@ -256,20 +281,23 @@ Protect both first-read quality and professional depth. Classify concept/pixel s
 
 ## 9｜Current execution priority
 
-1. **Remap all existing 52 Web surfaces to CH00–CH18 + page types.**
-2. **Produce a gap register for missing professional content.**
-3. **Add missing Site/Culture/Audience/Journey analyses.**
-4. **Add explicit Design Principles and Design Methods using real C04 examples.**
-5. **Complete Master System / Route / Thirteen Imprints / App explanation.**
-6. **Deepen key scenes, Physical/Sensory, Memory/IP and design details at current authority levels.**
-7. **Re-edit Technical/Model proof after the design chapters.**
-8. **Build Process/Alternatives pages only where they demonstrate professional judgment.**
-9. **After content completion, prune duplication and weak pixels; then run independent design review.**
+1. **Lock all existing 52 Web pages as independent PAGE identities.**
+2. **Map P001–P052 to CH00–CH18 without collapsing them.**
+3. **Produce a gap register for missing professional pages.**
+4. **Add missing Site/Culture/Audience/Journey analyses as N-series pages.**
+5. **Add explicit Design Principles and Design Methods as real pages using C04 examples.**
+6. **Complete Master System / Route / Thirteen Imprints / App explanation without replacing existing pages.**
+7. **Deepen key scenes, Physical/Sensory, Memory/IP and design details at current authority levels.**
+8. **Re-edit Technical/Model proof after the design chapters.**
+9. **Build Process/Alternatives pages only where they demonstrate professional judgment.**
+10. **After page-level content completion and independent review, consider only genuine duplicate merge candidates.**
 
 ## 10｜Do not reopen
 
 - mandatory linear 13-stop route or 13/13 completion authority;
 - fixed page/screen/board count;
+- chapter count used as page count;
+- chapter-file compression that collapses multiple pages;
 - journey-only public structure as the whole project architecture;
 - generic taxonomy-only structure as the whole project architecture;
 - the false rule that analysis / principles / methods / audience studies / design details belong only in Appendix;
