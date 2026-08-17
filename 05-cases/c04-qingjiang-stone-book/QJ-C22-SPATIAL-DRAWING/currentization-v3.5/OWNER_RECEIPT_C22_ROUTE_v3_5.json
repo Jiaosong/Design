@@ -1,0 +1,19 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01",
+  "current_delta": "Deepen v3.4 real-route transcription into a professional route drawing with junction, return, and cross-sheet detail while preserving the same route authority.",
+  "source_version": "v3.4",
+  "target_version": "v3.5",
+  "must_preserve": [
+    "real visitor route is the dominant line",
+    "official guide + R2 candidate evidence boundary",
+    "Honghua Stone Forest optional spur only",
+    "Thirteen Imprints do not own route sovereignty",
+    "R06 frozen / no reopen"
+  ],
+  "must_not_add": [
+    "survey geometry", "GPS", "measured distance", "measured slope", "invented field direction", "invented branches", "new R06 intervention"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "state": "OWNER_RECEIPT_CREATED / v3.5 MATERIAL DELTA / INDEPENDENT DESIGN REVIEW PENDING"
+}
