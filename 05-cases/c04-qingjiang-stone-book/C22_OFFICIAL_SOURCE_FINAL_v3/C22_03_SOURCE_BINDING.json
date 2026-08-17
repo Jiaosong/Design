@@ -1,0 +1,13 @@
+{
+  "source_id": "A-IMG-01",
+  "title": "红花峰林景区手绘导览",
+  "publisher": "恩施大清江风景区官网",
+  "date": "2025-08-05",
+  "url": "https://www.esdqj.cn/upload/20250805/f8d50b8f0d5027.jpg",
+  "expected_pixels": [1400, 912],
+  "expected_sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c",
+  "materialization_state": "HOLD_NO_LOCAL_SOURCE_BYTES",
+  "supports": ["two-bank relation", "cross-river cable", "south-bank branching/loop walking network"],
+  "does_not_prove": ["survey geometry", "micro-route order", "distance", "slope", "clear width", "safety", "capacity", "current open/closed state"],
+  "binding_rule": "The production SVG/HTML references the exact first-party URL. Replace only with a locally materialized byte-identical A-IMG-01 after SHA verification; do not substitute another map."
+}
