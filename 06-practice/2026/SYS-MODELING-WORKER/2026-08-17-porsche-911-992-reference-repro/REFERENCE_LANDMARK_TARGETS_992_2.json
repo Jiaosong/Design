@@ -1,0 +1,29 @@
+{
+  "schema":"oleander.reference-landmarks.porsche-911-carrera-992-2.v1",
+  "reference_id":"PORSCHE_911_CARRERA_2025_992_2",
+  "revision":"2025_992.2_CARRERA",
+  "status":"SOURCE_GROUNDED_VISUAL_ESTIMATE_NOT_ENGINEERING_MEASUREMENT",
+  "method":"Official hard points are copied from Porsche technical data. Visual silhouette targets are estimated from Porsche 2025 Carrera press imagery and a near-side 992.2 support photograph, normalized against official length/height. They are screening targets, not manufacturer CAD dimensions.",
+  "sources":[
+    "Porsche official 992.2 911 Carrera technical specifications",
+    "Porsche Newsroom 2025 911 Carrera press imagery",
+    "2025 911 Carrera near-side profile support image"
+  ],
+  "targets_m":[
+    {"id":"FRONT_AXLE","axis":"x","value":1.255,"authority":"OFFICIAL","normalization":4.542},
+    {"id":"REAR_AXLE","axis":"x","value":-1.195,"authority":"OFFICIAL","normalization":4.542},
+    {"id":"ROOF_APEX","axis":"z","value":1.298,"authority":"OFFICIAL","normalization":1.298},
+    {"id":"A_PILLAR_BASE","axis":"x","value":0.720,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542},
+    {"id":"C_PILLAR_BASE","axis":"x","value":-1.010,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542},
+    {"id":"FRONT_ARCH_APEX","axis":"z","value":0.711,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"REAR_ARCH_APEX","axis":"z","value":0.755,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"FRONT_EXTREME","axis":"x","value":2.271,"authority":"OFFICIAL_DERIVED_FROM_LENGTH","normalization":4.542},
+    {"id":"REAR_EXTREME","axis":"x","value":-2.271,"authority":"OFFICIAL_DERIVED_FROM_LENGTH","normalization":4.542},
+    {"id":"FRONT_LAMP_CENTRE_X","axis":"x","value":1.700,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542},
+    {"id":"FRONT_LAMP_CENTRE_Z","axis":"z","value":0.760,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"CABIN_HALF_WIDTH_ROOF","axis":"y","value":0.590,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.852},
+    {"id":"CABIN_HALF_WIDTH_BELT","axis":"y","value":0.660,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.852},
+    {"id":"REAR_SHOULDER_HALF_WIDTH","axis":"y","value":0.926,"authority":"OFFICIAL_BOUND_PLUS_VISUAL_DISTRIBUTION","normalization":1.852}
+  ],
+  "does_not_prove":["manufacturer CAD","Class-A surface","production panel architecture"]
+}
