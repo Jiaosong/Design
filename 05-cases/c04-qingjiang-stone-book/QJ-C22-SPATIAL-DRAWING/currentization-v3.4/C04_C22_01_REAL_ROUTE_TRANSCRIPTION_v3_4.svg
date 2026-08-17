@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 2384 1684">
+
+<rect x="0" y="0" width="2384" height="1684" fill="#F3F0E8" stroke="none" stroke-width="1" rx="0"/>
+<line x1="70" y1="58" x2="2314" y2="58" stroke="#CFC9BC" stroke-width="1.4" opacity="1"/>
+<text x="70" y="102" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="2.1">OLEANDER / C04 / C22 · ROUTE-GROUNDED SPATIAL DRAWING</text>
+<text x="70" y="168" font-family="Noto Serif CJK SC" font-size="52" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">真实游程转译｜红花峰林步行路线</text>
+<text x="70" y="208" font-family="Noto Sans CJK SC" font-size="16" font-weight="600" fill="#66716C" text-anchor="start" letter-spacing="1.1">REAL ROUTE TRANSCRIPTION · UNFOLDED FOR READABILITY · NOT A SURVEY PLAN</text>
+<text x="2314" y="101" font-family="Noto Sans CJK SC" font-size="15" font-weight="600" fill="#66716C" text-anchor="end" letter-spacing="0">DRW-C04-C22-01 / v3.4</text>
+<text x="2314" y="132" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#2D7F86" text-anchor="end" letter-spacing="0">SOURCE-GROUNDED / R2 ROUTE SEQUENCE</text>
+<text x="2314" y="163" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#A84E3D" text-anchor="end" letter-spacing="0">FIELD OBSERVED=0 / FIELD MEASURED=0</text>
+<line x1="70" y1="242" x2="2314" y2="242" stroke="#16231F" stroke-width="1.6" opacity="1"/>
+<line x1="1780" y1="282" x2="1780" y2="1470" stroke="#CFC9BC" stroke-width="1.2" opacity="1"/>
+<text x="90" y="302" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="1.2">01 / 到达真实游程</text>
+<text x="90" y="337" font-family="Noto Sans CJK SC" font-size="23" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">进入红花峰林之前，路线先完成“到达—跨江—上山”。</text>
+<path d="M110 394 C250 354, 500 354, 790 394" fill="none" stroke="#2D7F86" stroke-width="4" stroke-dasharray="10 8"/>
+<path d="M445 449 C560 449, 650 414, 790 394" fill="none" stroke="#16231F" stroke-width="4"/>
+<path d="M790 394 C900 394, 1010 394, 1120 394" fill="none" stroke="#16231F" stroke-width="5"/>
+<rect x="1190" y="339" width="120" height="110" fill="#9EBFC0" stroke="none" stroke-width="0" rx="10"/>
+<text x="1250" y="402" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">清江</text>
+<path d="M1120 394 L1450 394" fill="none" stroke="#16231F" stroke-width="5"/>
+<path d="M1120 402 L1450 402" fill="none" stroke="#66716C" stroke-width="1.5"/>
+<circle cx="110" cy="394" r="12" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="110" y="374" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">浑水河码头</text>
+<text x="110" y="427" font-family="Noto Sans CJK SC" font-size="11" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.7">BOAT / ACCESS VARIANT</text>
+<circle cx="445" cy="449" r="12" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="445" y="429" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">自驾云坛口</text>
+<text x="445" y="482" font-family="Noto Sans CJK SC" font-size="11" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.7">ROAD / ACCESS VARIANT</text>
+<circle cx="790" cy="394" r="12" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="790" y="374" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">云坛口旅游码头</text>
+<text x="790" y="427" font-family="Noto Sans CJK SC" font-size="11" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.7">SERVICE / ORIENTATION</text>
+<circle cx="1120" cy="394" r="12" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1120" y="374" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">索道北站</text>
+<text x="1120" y="427" font-family="Noto Sans CJK SC" font-size="11" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.7">BOARDING</text>
+<circle cx="1450" cy="394" r="12" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1450" y="374" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">索道上站</text>
+<text x="1450" y="427" font-family="Noto Sans CJK SC" font-size="11" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.7">WALK START + RETURN</text>
+<text x="1645" y="384" font-family="Noto Sans CJK SC" font-size="12" font-weight="600" fill="#66716C" text-anchor="end" letter-spacing="0">1056 m / ΔH≈156 m</text>
+<text x="1645" y="412" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#A84E3D" text-anchor="end" letter-spacing="0">公开索道参数；不作为本图比例</text>
+<line x1="90" y1="485" x2="1680" y2="485" stroke="#CFC9BC" stroke-width="1" opacity="1"/>
+<text x="90" y="530" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="1.2">02 / 山上步行路线</text>
+<text x="90" y="569" font-family="Noto Sans CJK SC" font-size="26" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">线只表达“人在景区里怎么走”；十三印不再拥有自己的连线。</text>
+<text x="90" y="600" font-family="Noto Sans CJK SC" font-size="14" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">依据：官方导览像素 + 项目 R2 远程环线候选。顺序可用于研究型转译；几何、距离、坡度与现场方向仍开放。</text>
+<path d="M 220 720 C 460 670, 890 680, 1390 715 C 1515 725, 1570 790, 1530 865 C 1470 945, 1220 960, 860 950 C 600 944, 420 955, 365 1030 C 330 1090, 445 1145, 730 1165 C 1040 1185, 1370 1160, 1490 1210 C 1560 1240, 1535 1320, 1420 1350 C 1190 1410, 890 1400, 665 1365 C 470 1336, 332 1268, 255 1180 C 190 1105, 170 1000, 195 905 C 210 845, 230 780, 220 720" fill="none" stroke="#BFD6D2" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+<path d="M 220 720 C 460 670, 890 680, 1390 715 C 1515 725, 1570 790, 1530 865 C 1470 945, 1220 960, 860 950 C 600 944, 420 955, 365 1030 C 330 1090, 445 1145, 730 1165 C 1040 1185, 1370 1160, 1490 1210 C 1560 1240, 1535 1320, 1420 1350 C 1190 1410, 890 1400, 665 1365 C 470 1336, 332 1268, 255 1180 C 190 1105, 170 1000, 195 905 C 210 845, 230 780, 220 720" fill="none" stroke="#16231F" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 1385 714 C 1505 650, 1600 605, 1662 642 C 1695 663, 1670 715, 1588 745 C 1510 775, 1460 790, 1530 865" fill="none" stroke="#C5AD7E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+<path d="M 1385 714 C 1505 650, 1600 605, 1662 642 C 1695 663, 1670 715, 1588 745 C 1510 775, 1460 790, 1530 865" fill="none" stroke="#C5AD7E" stroke-width="3.2" stroke-dasharray="10 7" stroke-linecap="round"/>
+<circle cx="220" cy="720" r="14" fill="#16231F" stroke="#16231F" stroke-width="2.2"/>
+<circle cx="220" cy="720" r="4" fill="#2D7F86" stroke="#2D7F86" stroke-width="0"/>
+<text x="220" y="675" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">索道上站</text>
+<text x="220" y="695" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.35">START / RETURN</text>
+<circle cx="410" cy="690" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="410" y="644" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">华中第一藤</text>
+<text x="410" y="664" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.35">生长 / 进入</text>
+<circle cx="610" cy="684" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="610" y="634" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">上部脊线</text>
+<text x="610" y="654" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.35">清江之吻 · 铁券天书 · 一帆风顺</text>
+<circle cx="835" cy="688" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="835" y="648" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">文人问礼</text>
+<circle cx="1045" cy="692" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1045" y="650" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">红花点赞 / 红花火炬</text>
+<circle cx="1235" cy="700" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1235" y="657" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">游客休息区</text>
+<text x="1235" y="677" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.35">RECOVER</text>
+<circle cx="1390" cy="715" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1390" y="671" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">母子相望 / 母子峰</text>
+<circle cx="1516" cy="790" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1564" y="786" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">驼峰山</text>
+<circle cx="1530" cy="865" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1575" y="907" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">红花山神 / 采药翁</text>
+<circle cx="1325" cy="935" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1325" y="990" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">多级阶地 · 不对称河谷</text>
+<text x="1325" y="1009" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#66716C" text-anchor="middle" letter-spacing="0.35">OBSERVATION ZONE</text>
+<circle cx="1080" cy="953" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1080" y="1005" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">红花幺妹 / 红花少女</text>
+<circle cx="850" cy="950" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="850" y="1002" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">红花大佛</text>
+<circle cx="620" cy="955" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="620" y="1007" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">仓廪峰 / 仓禀峰</text>
+<text x="620" y="1026" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#A84E3D" text-anchor="middle" letter-spacing="0.35">名称冲突待现场牌</text>
+<circle cx="395" cy="1000" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="345" y="1000" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="end" letter-spacing="0">文山天书</text>
+<circle cx="430" cy="1118" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="375" y="1121" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="end" letter-spacing="0">盐水女神峰</text>
+<circle cx="690" cy="1162" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="690" y="1210" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">绝壁天书</text>
+<circle cx="960" cy="1172" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="960" y="1220" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">金石为开</text>
+<circle cx="1230" cy="1174" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1230" y="1222" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">仙灵洞</text>
+<circle cx="1480" cy="1210" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1525" y="1210" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">廪君峰</text>
+<circle cx="1420" cy="1350" r="10" fill="#FAF8F2" stroke="#16231F" stroke-width="2.2"/>
+<text x="1420" y="1402" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">一线天</text>
+<text x="1420" y="1421" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="600" fill="#A84E3D" text-anchor="middle" letter-spacing="0.35">NATURAL CLOSURE</text>
+<circle cx="1660" cy="643" r="11" fill="#FAF8F2" stroke="#C5AD7E" stroke-width="2.6"/>
+<text x="1660" y="612" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#16231F" text-anchor="middle" letter-spacing="0">红花石林视域 / 可选支线</text>
+<text x="1660" y="667" font-family="Noto Sans CJK SC" font-size="10.5" font-weight="700" fill="#C5AD7E" text-anchor="middle" letter-spacing="0.55">VIEW OBJECT · OPTIONAL SPUR</text>
+<rect x="1676" y="631" width="30" height="18" rx="2" fill="#A84E3D"/>
+<text x="1691" y="644" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R05</text>
+<rect x="424" y="673" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="438" y="686" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R02</text>
+<rect x="1339" y="918" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="1353" y="931" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R06</text>
+<rect x="634" y="938" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="648" y="951" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R07</text>
+<rect x="444" y="1101" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="458" y="1114" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R09</text>
+<rect x="1494" y="1193" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="1508" y="1206" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R12</text>
+<rect x="1434" y="1333" width="28" height="18" rx="2" fill="#A84E3D" opacity=".92"/>
+<text x="1448" y="1346" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R13</text>
+<text x="103" y="1425" font-family="Noto Sans CJK SC" font-size="12" font-weight="600" fill="#A84E3D" text-anchor="start" letter-spacing="0">十三印只以小型阅读标记贴附在真实游程旁；不形成第二套“十三点路线”。</text>
+<line x1="1605" y1="744" x2="1660" y2="778" stroke="#C5AD7E" stroke-width="1.2" opacity="1"/>
+<text x="1690" y="795" font-family="Noto Sans CJK SC" font-size="11" font-weight="700" fill="#66716C" text-anchor="end" letter-spacing="0.7">A / 红花石林</text>
+<text x="1690" y="817" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#16231F" text-anchor="end" letter-spacing="0">景观视域 / 可选支线；</text>
+<text x="1690" y="835" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#16231F" text-anchor="end" letter-spacing="0">不要求进入石林内部。</text>
+<line x1="1325" y1="935" x2="1455" y2="1004" stroke="#CFC9BC" stroke-width="1.2" opacity="1"/>
+<text x="1468" y="1018" font-family="Noto Sans CJK SC" font-size="11" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="0">B / 多级阶地</text>
+<text x="1468" y="1040" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">路线通过观察区；</text>
+<text x="1468" y="1058" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">不新增平台假设。</text>
+<line x1="1420" y1="1350" x2="1565" y2="1385" stroke="#CFC9BC" stroke-width="1.2" opacity="1"/>
+<text x="1575" y="1392" font-family="Noto Sans CJK SC" font-size="11" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="0">C / 一线天</text>
+<text x="1575" y="1414" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">自然收束后回到索道；</text>
+<text x="1575" y="1432" font-family="Noto Sans CJK SC" font-size="11" font-weight="500" fill="#A84E3D" text-anchor="start" letter-spacing="0">宽度 / 地面 / 安全 FIELD OPEN。</text>
+<text x="1825" y="304" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="1.5">SOURCE / ROUTE AUTHORITY</text>
+<text x="1825" y="350" font-family="Noto Serif CJK SC" font-size="28" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">这条线为什么存在？</text>
+<text x="1825" y="390" font-family="Noto Sans CJK SC" font-size="15" font-weight="600" fill="#16231F" text-anchor="start" letter-spacing="0">因为它代表游客的步行游程，</text>
+<text x="1825" y="416" font-family="Noto Sans CJK SC" font-size="15" font-weight="600" fill="#16231F" text-anchor="start" letter-spacing="0">不是视觉装饰，也不是“关系系统”。</text>
+<line x1="1825" y1="448" x2="2295" y2="448" stroke="#CFC9BC" stroke-width="1" opacity="1"/>
+<text x="1825" y="490" font-family="Noto Sans CJK SC" font-size="12" font-weight="700" fill="#2D7F86" text-anchor="start" letter-spacing="0.7">FIRST-PARTY GUIDE · 2025-08-05</text>
+<text x="1825" y="522" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">两张官方导览共同支持：</text>
+<circle cx="1833" cy="557" r="4" fill="#2D7F86" stroke="#2D7F86" stroke-width="0"/>
+<text x="1848" y="562" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">清江两岸 + 跨江索道</text>
+<circle cx="1833" cy="588" r="4" fill="#2D7F86" stroke="#2D7F86" stroke-width="0"/>
+<text x="1848" y="593" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">南岸存在多分支 / 回环游步网络</text>
+<circle cx="1833" cy="619" r="4" fill="#2D7F86" stroke="#2D7F86" stroke-width="0"/>
+<text x="1848" y="624" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">景观 / 服务点分布在步道网络上</text>
+<text x="1825" y="670" font-family="Noto Sans CJK SC" font-size="12" font-weight="700" fill="#C5AD7E" text-anchor="start" letter-spacing="0.5">R2 REMOTE LOOP · PROJECT RECONSTRUCTION</text>
+<text x="1825" y="702" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">全景导览 + 公开完整游览序列共同支持</text>
+<text x="1825" y="727" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">本图所示的“步行顺序候选”。</text>
+<text x="1825" y="755" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">方向 / 版本存在冲突，因此不把编号</text>
+<text x="1825" y="779" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">写成现场正式路标顺序。</text>
+<line x1="1825" y1="820" x2="2295" y2="820" stroke="#CFC9BC" stroke-width="1" opacity="1"/>
+<text x="1825" y="860" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">只保留两种线</text>
+<line x1="1825" y1="900" x2="1911" y2="900" stroke="#16231F" stroke-width="5.2" opacity="1"/>
+<text x="1930" y="905" font-family="Noto Sans CJK SC" font-size="13" font-weight="600" fill="#16231F" text-anchor="start" letter-spacing="0">步行路线</text>
+<line x1="1825" y1="940" x2="1911" y2="940" stroke="#C5AD7E" stroke-width="3" opacity="1" stroke-dasharray="10 7"/>
+<text x="1930" y="945" font-family="Noto Sans CJK SC" font-size="13" font-weight="600" fill="#16231F" text-anchor="start" letter-spacing="0">可选支线 / 红花石林</text>
+<rect x="1825" y="974" width="28" height="18" rx="2" fill="#A84E3D"/>
+<text x="1839" y="987" font-family="Noto Sans CJK SC" font-size="8.5" font-weight="700" fill="#FAF8F2" text-anchor="middle" letter-spacing="0">R</text>
+<text x="1930" y="987" font-family="Noto Sans CJK SC" font-size="13" font-weight="600" fill="#16231F" text-anchor="start" letter-spacing="0">可选阅读标记；不连线</text>
+<line x1="1825" y1="1025" x2="2295" y2="1025" stroke="#CFC9BC" stroke-width="1" opacity="1"/>
+<text x="1825" y="1065" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#16231F" text-anchor="start" letter-spacing="0">不画什么</text>
+<text x="1825" y="1102" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">— 不画十三点串联路线</text>
+<text x="1825" y="1134" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">— 不画假 GPS / 假距离 / 假坡度</text>
+<text x="1825" y="1166" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">— 不把导览图转成伪测绘平面</text>
+<text x="1825" y="1198" font-family="Noto Sans CJK SC" font-size="13" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">— 不为了“丰富”补不存在的分叉</text>
+<line x1="1825" y1="1242" x2="2295" y2="1242" stroke="#CFC9BC" stroke-width="1" opacity="1"/>
+<text x="1825" y="1282" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#A84E3D" text-anchor="start" letter-spacing="1.2">FIELD OPEN</text>
+<text x="1825" y="1318" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">真实轨迹 / 坡度 / 台阶 / 净宽</text>
+<text x="1825" y="1348" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">具体方向 / 分叉现场牌</text>
+<text x="1825" y="1378" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">安全 / 防滑 / 无障碍 / 容量</text>
+<text x="1825" y="1408" font-family="Noto Sans CJK SC" font-size="12.5" font-weight="500" fill="#16231F" text-anchor="start" letter-spacing="0">实时索道运营与回程状态</text>
+<line x1="70" y1="1508" x2="2314" y2="1508" stroke="#16231F" stroke-width="1.3" opacity="1"/>
+<text x="70" y="1548" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#66716C" text-anchor="start" letter-spacing="0.8">DRW-C04-C22-01 · REAL ROUTE TRANSCRIPTION · v3.4</text>
+<text x="70" y="1581" font-family="Noto Sans CJK SC" font-size="12" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">Route geometry on this sheet is UNFOLDED for sequence readability. It does not claim geographic shape or measured spacing.</text>
+<text x="70" y="1612" font-family="Noto Sans CJK SC" font-size="11.5" font-weight="500" fill="#66716C" text-anchor="start" letter-spacing="0">SOURCE: first-party Honghua Peak Forest guide pixels + C04 Remote Site Reconstruction v0.3 / R2 micro-loop candidate</text>
+<text x="2314" y="1548" font-family="Noto Sans CJK SC" font-size="14" font-weight="700" fill="#A84E3D" text-anchor="end" letter-spacing="0">NTS / NOT FOR CONSTRUCTION</text>
+<text x="2314" y="1581" font-family="Noto Sans CJK SC" font-size="12" font-weight="600" fill="#66716C" text-anchor="end" letter-spacing="0">G1F HOLD / NO_PROMOTION</text>
+<text x="2314" y="1612" font-family="Noto Sans CJK SC" font-size="11.5" font-weight="500" fill="#66716C" text-anchor="end" letter-spacing="0">2026-08-17</text>
+</svg>
