@@ -1,0 +1,16 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "C22_03_OFFICIAL_GUIDE_PRIMARY_v3",
+  "analytical_question": "What macro spatial relation is directly supported by the first-party guide, and what design consequence can be drawn without inventing route geometry?",
+  "audience": "C04 public Web / board / PDF readers",
+  "primary_claim": "Official guide first: two banks + cross-river cable + south-bank branching/loop network; route authority stays separate from optional Thirteen Imprints reading.",
+  "primary_visual": "A-IMG-01 untouched first-party guide",
+  "layout": {
+    "canvas": "1920x1080",
+    "official_guide_perceptual_mass_target": ">=80%",
+    "annotation_rail": "single continuous rail"
+  },
+  "hierarchy": ["SOURCE", "SPATIAL FINDING", "DESIGN CONSEQUENCE", "TRUTH BOUNDARY"],
+  "forbidden": ["terrain redraw", "route redraw", "M1-M4 overlay revival", "invented node position", "metric promotion", "AI replacement map"],
+  "producer_verdict": "EXECUTED / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING"
+}
