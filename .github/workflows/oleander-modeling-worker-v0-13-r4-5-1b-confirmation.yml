@@ -1,0 +1,144 @@
+name: OLEANDER Modeling Worker v0.13 R4.5.1B Scale 0.86 Confirmation
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_DECISION_2026-08-17.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-5-1b-confirmation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-5-1b-scale-086-confirmation:
+    name: G1 R4.5.1B Exact Scale 0.86 Confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate frozen relation
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/v0.13')
+          c=json.loads((root/'G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json').read_text())
+          r=c['selected_relation']
+          assert r['source_family']=='LOWER_RETURN_PROFILE'
+          assert r['termination_cap_onset_u']==0.88
+          assert r['termination_cap_pole_curvature_scale']==0.86
+          assert r['numeric_dof_count']==2
+          assert r['termination_cap_law']=='C2_MATCHED_ELLIPTIC_PARABOLOID_POLE'
+          assert r['termination_cap_semantics']=='EXPLICIT_SPARSE_TERMINATION_CAP_RELATION'
+          p=c['policy']
+          assert p['exact_selected_relation_only'] is True
+          assert p['parameter_tuning_in_confirmation_forbidden'] is True
+          assert p['third_numeric_cap_dof_forbidden'] is True
+          assert p['native_source_must_remain_active_in_saved_blend'] is True
+          assert p['derived_mesh_is_authority'] is False
+          assert p['candidate_promotion']=='NOT_RUN'
+          receipt=(root/c['authorization_receipt']).read_text()
+          assert c['authorization_phrase'] in receipt
+          print('R4_5_1B_SCALE_086_CONFIRMATION_CONTRACT_VALIDATED')
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build Blender-native R2 Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 384
+
+      - name: Execute exact scale 0.86 confirmation
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_5_1B_CONFIRM"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 17 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --refinement-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json \
+            --confirmation 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json \
+            --out "$OUT" \
+            --resolution 768
+
+      - name: Verify exact confirmation and active native Source
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4_5_1B_CONFIRM')
+          r=json.loads((root/'G1_R4_5_1B_SCALE_086_CONFIRMATION_REPORT.json').read_text())
+          assert r['status']=='R4_5_1B_SCALE_086_EXACT_CONFIRMATION_PASS_VISUAL_DECISION_REQUIRED',r['status']
+          assert all(r['checks'].values()),r['checks']
+          rel=r['selected_relation']
+          assert rel['termination_cap_onset_u']==0.88
+          assert rel['termination_cap_pole_curvature_scale']==0.86
+          assert rel['numeric_dof_count']==2
+          assert r['candidate_machine']['machine_pass'] is True
+          assert r['candidate_machine']['legacy_machine_report']['sparse_scalar_count']==50
+          assert r['roundtrip']['pass'] is True
+          assert r['authority_state']=='WORKING_SOURCE'
+          assert r['candidate_review']=='REOPENED'
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert (root/'OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend').exists()
+          assert (root/'G1_R4_5_1B_SCALE_086_NATIVE_SOURCE_SNAPSHOT.json').exists()
+          for group in r['renders'].values():
+              assert set(group)=={'BROAD','STRIP','GRAZING','ZEBRA'}
+              for name in group.values():assert (root/name).exists(),name
+          print('R4_5_1B_SCALE_086_EXACT_CONFIRMATION_PASS_VISUAL_DECISION_REQUIRED',r['source_digest'])
+          PY
+          sha256sum out/G1_R4_5_1B_CONFIRM/OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend | tee out/G1_R4_5_1B_CONFIRM/NATIVE_BLEND_SHA256.txt
+
+      - name: Upload exact scale 0.86 artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-5-1b-confirm-${{ github.run_id }}
+          path: out/G1_R4_5_1B_CONFIRM/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'Exact frozen relation: onset=.88, pole-curvature-scale=.86, two numeric DOFs total.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Saved .blend must retain both parameters on the existing native LOWER_RETURN_PROFILE Source owner; derived mesh remains non-authoritative.' >> "$GITHUB_STEP_SUMMARY"
+          echo '768px Broad/Strip/Grazing/Zebra still require Human Visual decision. Candidate Promotion remains NOT_RUN.' >> "$GITHUB_STEP_SUMMARY"
