@@ -59,6 +59,27 @@ A visually stronger board that weakens spatial truth is a regression and must be
 - Brand story: human motivation, distinctive promise, proof, voice.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
+## Small-mark optical-size gate
+
+Use this gate when a logo, identity mark, pictogram, route symbol, seal, product mark, or other recognition-bearing vector must survive small raster sizes. This is a size-specific optical review, not permission to casually redesign an authoritative mark.
+
+1. Preserve an **identity skeleton** before simplifying: topology, dominant silhouette, distinctive negative space, principal directional gesture, and locked brand relationships remain authoritative unless the brand authority explicitly allows a new variant.
+2. Do not assume that a master vector can be uniformly scaled to every target. **Mechanical scale ≠ optical scale.** Small raster sizes can make the same vector appear lighter, noisier, or less balanced.
+3. Define actual target sizes before editing. Review at native raster sizes such as `24 / 32 / 48 / 96 px`, not only as zoomed vectors.
+4. At each target size classify details as `SURVIVES / CHATTERS / DISAPPEARS / MERGES`. Remove or simplify only detail that cannot carry reliable identity at that size.
+5. Prefer **size-specific optical compensation** over arbitrary restyling: limited stroke-weight compensation, focal-dot enlargement, aperture opening, spacing compensation, or removal of nonessential secondary traces can be valid when the identity skeleton is preserved.
+6. Do not use blur, glow, contrast tricks, or additional color to rescue a structurally weak small mark. Small-size legibility must work in monochrome when the master identity requires monochrome support.
+7. If the mark includes text, review symbol and wordmark separately. A mark may survive at `24 px` while the complete lockup does not; do not force unreadable bilingual or endorsement text into an icon-size use case.
+8. Keep a **display/master variant** and a **small optical variant** explicitly named and bounded. Do not silently replace the master with the simplified variant at large sizes.
+9. Reopen both the native-size raster and an enlarged nearest-neighbor diagnostic. The enlarged diagnostic helps inspect pixel chatter; the native-size view decides recognition.
+10. Promotion requires at least: `master vector → target raster matrix → optical variant where needed → monochrome check where relevant → native-size visual reopen → role/authority check`.
+11. If a small-size variant changes the identity silhouette enough to read as a different mark, it is REJECT even when it is clearer.
+12. A successful optical-size training or export does not establish trademark approval, logo-authority replacement, brand-system approval, or project Design PASS.
+
+Candidate transfer sequence:
+
+`IDENTITY SKELETON → TARGET PIXEL SIZE → SURVIVING DETAIL → OPTICAL WEIGHT → RASTER REOPEN`
+
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
