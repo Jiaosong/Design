@@ -23,6 +23,7 @@ REQUIRED_SKILLS = {
     "oleander-research",
     "oleander-data-viz",
     "oleander-3d-pipeline",
+    "oleander-technical-drawing",
     "oleander-story-and-board",
     "oleander-delivery-qc",
 }
