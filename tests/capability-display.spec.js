@@ -4,19 +4,18 @@ async function waitForXJ01(page) {
   await page.goto('/project.html?project=xj01');
   await expect(page.locator('html')).toHaveAttribute('data-project-display', 'ready');
   await expect(page.locator('html')).toHaveAttribute('data-pro04', 'ready');
-  await page.evaluate(async () => {
-    await Promise.all([...document.images].map((img) => img.complete ? Promise.resolve() : new Promise((resolve) => {
-      img.addEventListener('load', resolve, { once: true });
-      img.addEventListener('error', resolve, { once: true });
-    })));
-  });
 }
 
 async function capture(page, testInfo, name, selector) {
   const path = testInfo.outputPath(name);
   if (selector) {
-    await page.locator(selector).scrollIntoViewIfNeeded();
-    await page.waitForTimeout(80);
+    const target = page.locator(selector);
+    await target.scrollIntoViewIfNeeded();
+    const imgs = target.locator('img');
+    for (let i = 0; i < await imgs.count(); i += 1) {
+      await expect.poll(() => imgs.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0), { timeout: 5000 }).toBeTruthy();
+    }
+    await page.waitForTimeout(120);
   } else {
     await page.evaluate(() => window.scrollTo(0, 0));
   }
