@@ -12,6 +12,7 @@ Start with `SKILL.md`. Then load the module that matches the decision:
 - `references/PIXEL_FORENSIC_PROTOCOL.md` — mandatory deep path for explicit `像素级 / pixel-level / pixel perfect / exact replica` work: RF-C0…RF-C3 claim levels, locked renderer/font/color environment, sub-pixel anchors, typography/stroke/pattern forensics, tolerance-zero diff, edge-radius diagnostics, critical ROI contracts and E0–E6 layer freezing.
 - `references/PIXEL_SOLVER_PROTOCOL.md` — mandatory when forensic review finds measurable residuals that can be expressed as bounded editable SVG parameters. It replaces eyeballed nudging with renderer-locked, ROI-weighted, multi-cycle coupled coordinate descent and explicitly reopens earlier layers after coupled variables change.
 - `references/MULTILAYER_RELATION_RECONSTRUCTION.md` — mandatory companion for stacked/exploded analytical diagrams and callout-heavy references. Adds shared-base genealogy, relation-evidence register, semantic-editability levels, callout-network topology, symbol dictionaries, dual visual-extraction/semantic-rebuild tracks and per-panel relationship ROI review. It explicitly rejects `path-cloud vector = editable` and `label present = relation drawn`.
+- `references/VISUALIZATION_DATA_RECONSTRUCTION_BRIDGE.md` — mandatory bridge when the supplied reference is a chart/infographic/analytical visualization and the user expects editable data semantics. It separates RF pixel/relationship recovery from Data-viz source-data/encoding recovery, adds crossing-identity confidence, segment→layer promotion rules and deterministic data/spec/generator roundtrip requirements.
 - `references/EDITORIAL_CALLOUT_FIDELITY.md` — targeted repair for exact leader landing, editorial side-icon crop/component fidelity, typography-only ROIs and rotated street/route labels. Use it after semantic structure exists but callout pixels still drift.
 - `references/FLOW_DIRECTION_ANALYSIS.md` — circulation/mobility/route-network grammar: route edges/nodes, direction-marker taxonomy, primary/secondary hierarchy, base binding, speed/street/mode-symbol ownership, topology/pixel diagnosis, low-recall stop rule, FN-C0…FN-C3 claim ladder and R3/JPEG reconstruction ceiling.
 - `references/BASE_INSTANCE_FIDELITY.md` — repeated main-body/base reconstruction: separates semantic geometry master, per-panel rendered base instance and bounded non-authoritative visual carrier; adds visibility/omission profiles, contamination blockers, BI-C0…BI-C3 and panel-specific neutral/base fidelity diagnosis.
@@ -39,6 +40,10 @@ Core pipeline:
 Exact reconstruction pipeline:
 
 `REFERENCE SNAPSHOT → RF SOURCE CLASS → RENDER ENVIRONMENT LOCK → REFERENCE RECTIFICATION → CANVAS REGISTRATION → PANEL / STACK SEGMENTATION → GEOMETRY MASTER → PER-PANEL RENDERED BASE INSTANCE / VISIBILITY PROFILE → OPTIONAL BOUNDED BASE VISUAL CARRIER → OBJECT/ANCHOR FORENSICS → A2 GEOMETRY → RELATION-EVIDENCE REGISTER → FLOW-NETWORK / CALLOUT TOPOLOGY / SYMBOL DICTIONARY → SEMANTIC VECTOR REBUILD → SEMANTIC + FLOW + BASE-INSTANCE MACHINE GATES → LEADER TARGET / EDITORIAL ICON / TYPOGRAPHY ROI CALIBRATION → FLOW EDGE/NODE/DIRECTION-MARKER RECONCILIATION → STROKE/SYMBOL/HATCH PHASE → TARGET-SIZE RENDER → TOLERANCE-0 DIFF → EDGE r0/r1/r2 + CRITICAL ROI + RELATIONSHIP/FLOW/BASE ROI DIAGNOSIS → BOUNDED SVG PARAMETERIZATION → COUPLED SOLVER CYCLES → TARGET-SIZE RE-RENDER → REOPEN RELATION/FLOW/BASE AUDIT → E0–E6 FREEZE/REPAIR → RF-C0…RF-C3 CLAIM → RF-G0…RF-G6 → TD-G0…TD-G8 SEPARATELY → INDEPENDENT REVIEW`.
+
+Visualization reconstruction handoff:
+
+`REFERENCE PIXELS → TECHNICAL-DRAWING FORENSICS → SOURCE_VISIBLE / REFERENCE_DERIVED_GEOMETRY / INFERRED_FROM_MARK / REFERENCE_TRACE_CANDIDATE / UNREADABLE → oleander-data-viz SOURCE_DATA.json → VISUAL_ENCODING_SPEC.json → PARAMETRIC GENERATOR → SVG → SAME-SIZE ROI READBACK → CROSSING/LAYER SEMANTIC AUDIT → DETERMINISTIC ROUNDTRIP`.
 
 Flow-network claim ladder:
 
@@ -102,9 +107,19 @@ Hard boundaries:
 
 `LABEL PRESENT ≠ RELATION DRAWN`
 
+`PIXEL PATH ≠ RECOVERED SOURCE RELATION`
+
+`SEGMENT PATH ≠ SEMANTIC LAYER`
+
+`GEOMETRIC LAYER ORDER ≠ ORIGINAL VARIABLE MEANING`
+
+`DETERMINISTIC ROUNDTRIP ≠ REFERENCE PASS`
+
 `FN-C3 ≠ RF-C3`
 
 `BI-C3 ≠ RF-C3`
+
+`RF-C3 PIXEL MATCH ≠ VR-C3 SEMANTIC DATA RECONSTRUCTION`
 
 `RF-C3 PIXEL MATCH ≠ VECTOR EDITABILITY ≠ TD PASS`
 
