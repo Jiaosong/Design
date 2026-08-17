@@ -43,10 +43,16 @@ Grayscale derivative generated. Main route remains dominant by weight and contin
 - Final PNG size: `2384×1684`.
 - Final render reopened after the repair cycle.
 - No new raster dependency introduced.
+- Repository source is a compacted editable SVG using CSS classes; compaction changes source serialization only.
+- Compact SVG was independently rendered and compared against the authored verbose SVG render; `ImageChops` difference bounding box = `None`, i.e. pixel-identical in the executed comparison.
 
 ## Hashes
-- SVG SHA256: `7a05724ee4167ee8b269adf4a67ff910c4810ae0f0d0d8cf242322b7b8107737`
-- PNG SHA256: `10a030d7305eb106e90ed82450d5eb364fe8a48dd4fd95ced2652c25b0cf068d`
+- authored verbose SVG SHA256: `7a05724ee4167ee8b269adf4a67ff910c4810ae0f0d0d8cf242322b7b8107737`
+- GitHub compact editable SVG SHA256: `197623f59f9879264ef7ec6d76b89b574abc3bf703c169f1335f73c440b3cfbd`
+- rendered PNG SHA256: `10a030d7305eb106e90ed82450d5eb364fe8a48dd4fd95ced2652c25b0cf068d`
+
+## Version hygiene
+Route-specific v3.4 files are superseded and removed from the current PR working tree after v3.5 persistence. The separate `C04_C22_01_LANDSCAPE_ANALYSIS_ATLAS_v3_4` lineage remains an independent support drawing and is not superseded by this route deepening.
 
 ## Truth boundary
 The route is unfolded for sequence readability. Editorial envelopes, arrows and section references do not claim geographic shape, measured spacing, field direction, slope, steps, clear width, GPS, safety, capacity, accessibility or current operations.
