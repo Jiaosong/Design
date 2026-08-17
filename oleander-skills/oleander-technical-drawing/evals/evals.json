@@ -54,6 +54,12 @@
       "prompt": "有一张原生矢量 PDF 专业构造详图，可以在锁定 renderer 下做到 0 pixel diff；但参考里的锚栓尺寸和当前项目工程师已批准的尺寸冲突。用户要把参考直接用于当前项目主图。",
       "expected_output": "Separate fidelity from truth: reference may achieve RF-C3 as a reproduction, but current-project adaptation must obey present engineering authority; do not copy conflicting anchor dimensions as project fact; record PROJECT TRUTH OVERRIDE/DESIGN ADAPTATION; TD-G1/G3/G4 judge the adapted drawing independently; an RF-C3 reproduction cannot become MAIN/engineering authority merely because pixel diff is zero.",
       "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "给你一张纵向 944×2048 的多层爆炸轴测分析图。七个主题层反复使用同一场地底图，并通过彩色路线、区域、垂直虚线、侧边图标和折线引线说明关系。要求像素级可编辑 SVG 复刻。自动描摹后全页已经很像，文件也是 SVG，但路线、建筑、文字、图标和引线都混在匿名 path cloud 里。逐层判断是否完成，并检查关系到底画出来还是只剩文字/像素轮廓。",
+      "expected_output": "Activate EXACT RECONSTRUCTION + PIXEL_FORENSIC_PROTOCOL + MULTILAYER_RELATION_RECONSTRUCTION; segment the seven stack layers; create one shared-base genealogy and per-layer transforms; reject anonymous path-cloud as semantic editability; create relation-evidence register with DRAWN/PARTIAL/TEXT-ONLY/UNRECOVERABLE states; reconstruct callout topology LABEL/SYMBOL→LEADER→ANCHOR→TARGET; create symbol dictionary for repeated icon families; define per-panel relationship/callout/icon/typography ROIs; compare same-size renders and pixel/edge metrics but do not let full-page similarity override a failed relation; producer may only SELF-CHECK/REVISE/REJECT/REVIEW PENDING and cannot self-KEEP.",
+      "files": []
     }
   ]
 }
