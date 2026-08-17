@@ -1,0 +1,26 @@
+{
+  "figure_id": "AUD-05",
+  "basis": "Existing Mature Design First",
+  "benchmark": "09_C04_R06_AUDIENCE_DEPTH_CURRENTIZED_v4.png",
+  "benchmark_drive_id": "16WA2GIiNFrRsT9r-k1nPxw2PfPlyEpNt",
+  "repair_from": [
+    "AUD-03 REJECT",
+    "AUD-04 REJECT"
+  ],
+  "design_dna_preserved": [
+    "real Qingjiang landscape first",
+    "one R06 scene",
+    "four body/use modes",
+    "secondary depth ladder",
+    "Return/body support visible"
+  ],
+  "changes": [
+    "remove card-wall composition",
+    "remove overlapping top band",
+    "reduce method vocabulary",
+    "move labels into one behavior ribbon and one quiet editorial rail",
+    "increase landscape perceptual mass"
+  ],
+  "producer_state": "EXECUTED / REVIEW PENDING",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}
