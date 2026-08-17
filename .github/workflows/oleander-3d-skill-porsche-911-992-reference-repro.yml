@@ -1,0 +1,86 @@
+name: OLEANDER 3D Skill Porsche 911 992 Reference Reproduction
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-skill-porsche-911-992-reference-repro.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/**'
+      - 'oleander-skills/oleander-3d-pipeline/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  porsche-911-992-reference-repro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Validate refined 3D Skill and reference script
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py
+          python3 -m unittest \
+            00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
+            00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+
+      - name: Build Porsche 911 Carrera 992 reference reproduction
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
+            -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
+
+      - name: Reference reproduction machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
+          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text())
+          r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text())
+          c=json.loads((out/'REFERENCE_CONTRACT.json').read_text())
+          assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED', q
+          assert r['status']=='EXECUTED_MACHINE_PASS_REFERENCE_REVIEW_REQUIRED', r
+          assert c['reference_vehicle']=='Porsche 911 Carrera (992)'
+          assert abs(c['hard_points']['length']-4.542)<1e-9
+          assert abs(c['hard_points']['width_excluding_mirrors']-1.852)<1e-9
+          assert abs(c['hard_points']['height']-1.302)<1e-9
+          assert abs(c['hard_points']['wheelbase']-2.450)<1e-9
+          assert all(q['checks'].values()), q['checks']
+          assert len(q['renders'])==6
+          assert q['design_quality_gate']=='HOLD_FOR_REFERENCE_COMPARISON'
+          print('PORSCHE 911 992 REFERENCE REPRO MACHINE GATE PASS')
+          PY
+
+      - name: Upload Porsche 911 992 reproduction evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-porsche-911-992-reference-repro-${{ github.run_id }}
+          path: out/OLEANDER_Porsche_911_992_Reference_Repro/
+          if-no-files-found: error
+          retention-days: 14
