@@ -122,7 +122,7 @@ Canonical contract:
 
 Preferred deterministic adapter:
 
-- `tools/oleander-runtime/materialize_reference.py`
+- `90-shared/toolchains/reference-materialization/materialize_reference.py`
 
 Required sequence:
 
