@@ -1,12 +1,23 @@
 {
   "filename": "C04_WEB_v1_3_NO_COMPRESSION.zip",
-  "bytes": 90747719,
-  "sha256": "dc010d1469fc69c8d74bc1d2af8801eb04e0d58e2d05a84cf645044736eb3cb5",
+  "bytes": 94189118,
+  "sha256": "4805fb8968acdf2731d71643a876fa6c22aaee55c9e81506b857a613940ea19f",
   "contact_sheet": {
     "filename": "screens/CONTACT_v1_3.jpg",
-    "bytes": 500319,
-    "sha256": "b8bfbb799e675e43514efbb02bcf22ab7efae4550206e54272470425df9c5580"
+    "bytes": 546539,
+    "sha256": "dce1a299b6eba6d99c82dc293e5dbec5873f089509cbcde0c098eb187fb06b3c"
+  },
+  "implementation_readback": {
+    "articles": 52,
+    "chapters": 13,
+    "appBeats": 6,
+    "imprints": 13
   },
   "persistence": "/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_NO_COMPRESSION.zip",
-  "does_not_prove": ["independent Design PASS","field validation","engineering closure","Motion final","Promotion"]
+  "does_not_prove": [
+    "whole-project Promotion",
+    "field validation",
+    "engineering closure",
+    "Motion final"
+  ]
 }
