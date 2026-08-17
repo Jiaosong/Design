@@ -1,7 +1,12 @@
 {
   "filename": "C04_WEB_v1_3_NO_COMPRESSION.zip",
-  "bytes": 89995364,
-  "sha256": "58ec2a9808d74b8eb9d3ded8b6139971bd8a555f9f1a21b77f3a738958255b3d",
+  "bytes": 90814588,
+  "sha256": "69c7c99b8f1f2d577a32655c89ddbc9cf2a4b3faadae24d4f24cbe87d70605f7",
+  "contact_sheet": {
+    "filename": "screens/CONTACT_v1_3.jpg",
+    "bytes": 505235,
+    "sha256": "c4b2ccdeed10bca4cd11c4b313a0c8c14d5c17b1c0acca98cace92dd7e523ae7"
+  },
   "persistence": "/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_NO_COMPRESSION.zip",
   "does_not_prove": ["independent Design PASS","field validation","engineering closure","Motion final","Promotion"]
 }
