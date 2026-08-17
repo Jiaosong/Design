@@ -1,0 +1,83 @@
+{
+  "manifest_version": "0.1",
+  "skill": "oleander-technical-drawing",
+  "candidate_skill_revision": "v0.2",
+  "status": "GOLDEN_CANDIDATE_NOT_PROMOTED",
+  "promotion_requires": [
+    "independent_oleander_design_review",
+    "actual_svg_open_and_visual_readback",
+    "thumbnail_intended_size_near_read_review",
+    "structure_assertion_check",
+    "no_blocker_regression"
+  ],
+  "global_invariants": [
+    "editable_vector_core",
+    "stable_group_ids",
+    "truth_state_visible",
+    "artifact_existence_not_equal_design_pass",
+    "no_engineering_or_field_claim_from_fixture",
+    "first_read_and_near_read_both_required"
+  ],
+  "fixtures": [
+    {
+      "id": "GD-01",
+      "file": "GD-01_ARCH_SECTION.svg",
+      "type": "technical_drawing",
+      "discipline": "architecture_interior",
+      "decision": "section hierarchy and parent-detail traceability",
+      "required_groups": ["SHEET_HEADER","VIEW_A_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","L2_PRIMARY_RELATION","L3_SECONDARY_BUILDUP","L4_DIMENSIONS_NOTES","DETAIL_CALLOUT","VIEW_B_DETAIL","TITLE_BLOCK"],
+      "visual_invariants": ["cut_reads_before_annotation","detail_parent_visible","secondary_build_up_survives_near_read","truth_boundary_visible"],
+      "blocker_mutations": ["equalize_all_strokes","remove_detail_callout","rasterize_annotations","hide_truth_boundary"]
+    },
+    {
+      "id": "GD-02",
+      "file": "GD-02_LANDSCAPE_NODE.svg",
+      "type": "technical_drawing",
+      "discipline": "landscape_site",
+      "decision": "slope path drainage support safety and field-open relation",
+      "required_groups": ["PARENT_SECTION","L5_CONTEXT","L1_CUT_PRIMARY","L2_PRIMARY_RELATION","L3_SECONDARY_CONSTRUCTION","DRAINAGE_LOGIC","SAFETY_EDGE","FIELD_OPEN_ZONES","DETAIL_D03","DETAIL_D04","TITLE_BLOCK"],
+      "visual_invariants": ["existing_and_proposed_distinct","field_open_not_rendered_as_resolved","drainage_direction_graphic","safety_edge_visible","maintenance_relation_visible"],
+      "blocker_mutations": ["replace_field_open_with_precise_foundation","remove_drainage_logic","make_context_heavier_than_path","delete_edge_detail"]
+    },
+    {
+      "id": "GD-03",
+      "file": "GD-03_PRODUCT_ASSEMBLY_CMF.svg",
+      "type": "technical_drawing",
+      "discipline": "industrial_product",
+      "decision": "assembly mating serviceability and CMF truth state",
+      "required_groups": ["EXPLODED_ASSEMBLY","PART_01_FRONT_SHELL","PART_02_GASKET","PART_03_CARRIER","PART_04_BATTERY","PART_05_BACK_SHELL","ASSEMBLY_ARROWS","SERVICE_PATH","DETAIL_D05","CMF_REGISTER","BOM","TITLE_BLOCK"],
+      "visual_invariants": ["exploded_order_clear","exact_interface_has_separate_detail","service_path_visible","candidate_finish_not_equal_approved","no_generic_tolerance"],
+      "blocker_mutations": ["remove_service_path","promote_candidate_finish_to_approved","use_exploded_view_as_only_interface_detail","add_unsupported_plus_minus_tolerance"]
+    },
+    {
+      "id": "GD-04",
+      "file": "GD-04_CONNECTION_FOUNDATION.svg",
+      "type": "technical_drawing",
+      "discipline": "structural_support_explanation",
+      "decision": "support load path base anchor foundation drainage and maintenance relation",
+      "required_groups": ["GENERAL_NODE","L1_PRIMARY","L2_CONNECTION","L3_SECONDARY","LOAD_PATH","DRAINAGE_ISOLATION","FIELD_OPEN","CALLOUTS","DETAIL_D06","DETAIL_D07","DETAIL_D08","REALITY_CHAIN"],
+      "visual_invariants": ["load_path_visible","connection_graphically_resolved","foundation_state_open","drainage_and_corrosion_intent_visible","tool_access_visible"],
+      "blocker_mutations": ["invent_final_anchor_size","remove_foundation_field_open","replace_connection_geometry_with_notes","remove_access_envelope"]
+    },
+    {
+      "id": "GD-05",
+      "file": "GD-05_SPATIAL_ANALYSIS_PLAN.svg",
+      "type": "analysis_drawing",
+      "discipline": "spatial_analysis",
+      "decision": "separate base source evidence inference and design decision in one plan",
+      "required_groups": ["ANALYSIS_BASE","SOURCE_GEOMETRY","CONTOUR_CONTEXT","EVIDENCE_OVERLAYS","DESIGN_DECISION","TRUTH_STATE_MARKERS","ANALYSIS_LEGEND","ANALYSIS_CONCLUSION","TITLE_BLOCK"],
+      "visual_invariants": ["source_geometry_remains_recoverable","evidence_and_inference_semantically_distinct","decision_does_not_redraw_source","legend_uses_non_color_semantics","one_primary_spatial_claim"],
+      "blocker_mutations": ["merge_source_and_inference_styles","hide_unknowns","use_color_only_semantics","distort_base_to_support_conclusion"]
+    },
+    {
+      "id": "GD-06",
+      "file": "GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg",
+      "type": "analysis_drawing",
+      "discipline": "evidence_reasoning",
+      "decision": "trace evidence to spatial finding to design consequence",
+      "required_groups": ["COLUMN_HEADERS","ROW_01","ROW_02","ROW_03","TRACEABILITY_FOOTER"],
+      "visual_invariants": ["every_finding_has_evidence_path","every_decision_has_finding_path","unknowns_remain_visible","three_columns_have_distinct_semantics","unsupported_claim_titles_forbidden"],
+      "blocker_mutations": ["delete_evidence_ids","skip_finding_column","draw_unknown_as_confirmed","promote_decision_beyond_evidence"]
+    }
+  ]
+}
