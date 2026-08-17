@@ -1,0 +1,51 @@
+{
+  "project": "XJ01-CMF",
+  "stage": "PRO-04.2｜Editorial Upgrade + CMF Presentation Layer",
+  "version": "v0.6",
+  "scope": "DIGITAL_CMF_DESIGN_REVIEW_AND_PRESENTATION",
+  "design_review_ready": true,
+  "presentation_ready": "REVIEW_CANDIDATE",
+  "physical_validation": "OUT_OF_SCOPE",
+  "winner": null,
+  "fixed_issues": [
+    "removed single-template board rhythm",
+    "reduced black render dominance via light-background hero and varied composition",
+    "separated Direction DNA from simple hue A/B comparison",
+    "made colour × material × geometry explicit",
+    "showed Iron–PP diagnostic instead of only referencing it",
+    "renamed environment page to controlled reflection-environment evidence",
+    "converted lifecycle from failure grid to use/wipe/long-term story",
+    "demoted evidence governance to appendix"
+  ],
+  "presentation_sequence": [
+    "P00 Hero Opening",
+    "P01 Direction DNA",
+    "P02 Colour × Material × Geometry",
+    "P03 Interfaces",
+    "P04 Reflection Environment Adaptation",
+    "P05 Lifecycle Story",
+    "P06 Evidence Appendix"
+  ],
+  "artifact_receipts": {
+    "master_contact": {
+      "filename": "XJ01_PRO04_2_MASTER_CONTACT_v0.6.jpg",
+      "bytes": 320060,
+      "sha256": "b544d73ff09cf3fc00be32cc8ee2a11f36145111d673dc109dda8c565719f735",
+      "state": "CHAT_ARTIFACT"
+    },
+    "presentation_pack": {
+      "filename": "XJ01_PRO04_2_PRESENTATION_PACK_v0.6.zip",
+      "bytes": 4701922,
+      "sha256": "48bcb483dad85b88034cc5819c4d11b3aa6c88110ec86b9f55a1c9191702d1b8",
+      "contains": "7 editable SVG sources + 7 JPG previews + manifest/status",
+      "state": "CHAT_ARTIFACT"
+    }
+  },
+  "does_not_prove": [
+    "measured production colour",
+    "supplier process feasibility",
+    "physical wet or ageing behaviour",
+    "engineering approval",
+    "production release"
+  ]
+}
