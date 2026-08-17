@@ -1,0 +1,13 @@
+{
+  "filename": "C04_WEB_v1_4_LOCALIZED_POLISH.zip",
+  "bytes": 47095846,
+  "sha256": "3daeb6e0be03e1382aff98091e6066b993424b7a3bcc62d25cbe18a3d1c3bc86",
+  "delta_contact": {
+    "filename": "CONTACT_v1_4_DELTA.jpg",
+    "bytes": 384553,
+    "sha256": "e296e050c39507166ac92c41559bb98f65d2618b2df5e07ef6824e78c066d721"
+  },
+  "persistence": "/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_4_LOCALIZED_POLISH.zip",
+  "state": "LOCALIZED FINISHED-PIXEL POLISH / DELIVERY-QC PASS / INDEPENDENT DESIGN VERDICT PENDING / NO_PROMOTION",
+  "does_not_prove": ["independent Design PASS","upstream object promotion","field validation","engineering closure","final Motion film","project Promotion"]
+}
