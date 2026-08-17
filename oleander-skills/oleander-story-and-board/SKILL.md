@@ -75,3 +75,22 @@ For any layout containing source-bound spatial evidence, include a short authori
 - The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
+
+## Long-form project orientation gate
+
+Use this gate when a case, report, portfolio, website, or design book contains many independent pages inside chapter or section containers.
+
+1. Separate three navigation jobs: **orientation** answers “where am I?”, **local continuity** answers “what is immediately before/after?”, and **global access** answers “how do I jump elsewhere?”. Do not force one permanent mega-navigation surface to perform all three jobs.
+2. Preserve the project hierarchy explicitly. `PROJECT → CHAPTER / SECTION → PAGE` must remain distinguishable; navigation must never collapse chapter count into page count or imply that one chapter equals one page.
+3. Keep current location visible with a compact project/chapter/page marker. On the web, use semantic navigation and programmatically mark the current page when practical; breadcrumb-style hierarchy is appropriate when it matches the actual information architecture.
+4. Local previous/next navigation should use meaningful page titles or claims, not only arrows or page numbers, so sequence is legible without opening the global index.
+5. Global index access may be persistent when the task genuinely requires constant scanning, but long-form narrative reading should default to on-demand global access rather than exposing the complete project tree on every page.
+6. When a desktop chapter rail collapses on mobile, global access must not disappear with it. Provide an explicit mobile-safe index/drawer/menu while keeping the current-page claim visually dominant.
+7. If several navigation regions exist in a web page, give them distinct semantic purposes and labels; avoid redundant unlabeled navigation landmarks.
+8. Full information availability does not require full simultaneous visibility. Hiding the directory is acceptable only when all pages remain reachable and current orientation/local continuity remain available.
+9. Navigation presentation may change, but page identity, chapter binding, evidence order, and protected no-loss rules must not be rewritten merely to simplify the interface.
+10. Promotion requires separate readbacks of at least: deep-linked current page, previous/next sequence, global-index closed state, global-index open state, desktop, and target mobile width. A layout with no overflow can still REVISE if the reader loses project/chapter/page orientation.
+
+Default review sequence:
+
+`PAGE IDENTITY → CURRENT LOCATION → LOCAL CONTINUITY → GLOBAL ACCESS → DESKTOP READ → MOBILE READ → OPEN/CLOSED INDEX STATE → DESIGN CRIT`
