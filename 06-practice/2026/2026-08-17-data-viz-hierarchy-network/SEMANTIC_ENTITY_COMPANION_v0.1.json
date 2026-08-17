@@ -1,0 +1,106 @@
+{
+  "practice_id": "PRAC-DV-2026-08-17-HIERARCHY-NETWORK",
+  "status": "TRAINING / REVIEW PENDING",
+  "entities": [
+    {
+      "entity_id": "CLAIM-ROUTE-AUTHORITY",
+      "display_text": "Route / Service / Return 先读，可选阅读随后进入。",
+      "entity_type": "design_claim",
+      "raw_value": null,
+      "unit": null,
+      "time_or_scope": "C04 relational route-network communication",
+      "source_ref": "QJ-C22-SPATIAL-DRAWING",
+      "evidence_state": "DECISION grounded by SOURCE-TRACED RELATION",
+      "claim_role": "H0 primary claim",
+      "assessment": null,
+      "detail": {
+        "priority_order": ["SERVICE/RETURN", "ROUTE", "OPTIONAL READING"]
+      },
+      "does_not_prove": ["field operation", "actual route sequence"]
+    },
+    {
+      "entity_id": "REL-CROSS-RIVER",
+      "display_text": "M2 · CROSS-RIVER CABLE",
+      "entity_type": "source_grounded_relation",
+      "raw_value": null,
+      "unit": null,
+      "time_or_scope": "north-bank to south-bank relation",
+      "source_ref": "QJ-C22-SPATIAL-DRAWING",
+      "evidence_state": "SOURCE-GROUNDED RELATION",
+      "claim_role": "H1 primary structure",
+      "assessment": null,
+      "detail": {
+        "from": "A2",
+        "to": "A3"
+      },
+      "does_not_prove": ["cable sag geometry", "station coordinates", "span length"]
+    },
+    {
+      "entity_id": "REL-RETURN-SPINE",
+      "display_text": "RETURN SPINE",
+      "entity_type": "design_relation",
+      "raw_value": null,
+      "unit": null,
+      "time_or_scope": "branch junctions to cable-return reading layer",
+      "source_ref": "QJ-C22-SPATIAL-DRAWING + OLEANDER route-priority decision",
+      "evidence_state": "DECISION / DIAGRAMMATIC",
+      "claim_role": "H1 return readability",
+      "assessment": null,
+      "detail": {
+        "purpose": "make return visible without fabricating a single itinerary"
+      },
+      "does_not_prove": ["exact return path", "field signage", "real-time opening state"]
+    },
+    {
+      "entity_id": "NODE-R13",
+      "display_text": "R13 · 一线天 · CLOSURE / RETURN",
+      "entity_type": "node_role",
+      "raw_value": null,
+      "unit": null,
+      "time_or_scope": "relational diagram",
+      "source_ref": "QJ-C22-SPATIAL-DRAWING",
+      "evidence_state": "SOURCE-TRACED NAME/RELATION + FIELD SAFETY OPEN",
+      "claim_role": "closure_return_anchor",
+      "assessment": null,
+      "detail": {
+        "visual_priority": "H1_RETURN"
+      },
+      "does_not_prove": ["field safety", "clear width", "stair count", "capacity"]
+    },
+    {
+      "entity_id": "BOUNDARY-RELATIONAL",
+      "display_text": "RELATIONAL / NTS / NOT GEOREFERENCED",
+      "entity_type": "truth_boundary",
+      "raw_value": null,
+      "unit": null,
+      "time_or_scope": "whole figure",
+      "source_ref": "OLEANDER truth-state requirement",
+      "evidence_state": "BOUNDARY",
+      "claim_role": "H3 evidence/uncertainty",
+      "assessment": null,
+      "detail": {
+        "layout_state": "DETERMINISTIC_DIAGRAMMATIC"
+      },
+      "does_not_prove": ["survey coordinates", "measured distance", "geographic precision"]
+    },
+    {
+      "entity_id": "FIELD-STATE",
+      "display_text": "FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION",
+      "entity_type": "project_state_boundary",
+      "raw_value": 0,
+      "unit": "field observations / field measurements",
+      "time_or_scope": "practice transfer from C04",
+      "source_ref": "C04 current project constraints",
+      "evidence_state": "FIELD OPEN / HOLD",
+      "claim_role": "H4 metadata / governance boundary",
+      "assessment": null,
+      "detail": {
+        "field_observed": 0,
+        "field_measured": 0,
+        "g1f": "HOLD",
+        "promotion": "NO"
+      },
+      "does_not_prove": ["field validation", "construction readiness"]
+    }
+  ]
+}
