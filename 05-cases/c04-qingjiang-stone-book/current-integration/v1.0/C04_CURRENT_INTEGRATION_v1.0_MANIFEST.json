@@ -1,0 +1,87 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CURRENT_INTEGRATION_v1_0",
+  "state": "FULL_PROJECT_CURRENT_INTEGRATION_CANDIDATE__PENDING_INDEPENDENT_DESIGN_VERDICT",
+  "current_delta": "FULL_PROJECT_INTEGRATION_ONLY",
+  "design_invariants": {
+    "project_identity": "Qingjiang landscape + product + experience + digital + narrative + visual",
+    "design_source": "original C04 boards + mature outcomes",
+    "design_dna": [
+      "Real Qingjiang First",
+      "Landscape First",
+      "paper / ink / line / seal",
+      "physical + digital complementary",
+      "Thirteen Imprints as content system",
+      "real body + space",
+      "Return closure",
+      "Memory/IP travel aftertaste"
+    ],
+    "full_design_universe": [
+      "Landscape",
+      "Journey",
+      "13 Imprints",
+      "Scene Interaction",
+      "Audience",
+      "Physical/Sensory",
+      "Digital",
+      "Memory/IP",
+      "Technical",
+      "Narrative",
+      "Visual/Motion",
+      "Return"
+    ]
+  },
+  "source_set": {
+    "culture": "PR#128 / Culture Main v2",
+    "app": "PR#162 / App mature design v1.6",
+    "audience": "PR#155 / R06 Audience Depth v1.2",
+    "physical_sensory": "P02 support + Mountain Fluid Rest + Qingfengyin",
+    "memory": "Qingjiang Journal x My Book",
+    "technical": "R06/C22/C23 selected proof",
+    "return": "independent final layer"
+  },
+  "public_sequence": [
+    "Landscape / Hero",
+    "Culture + Narrative",
+    "Journey / How to Play",
+    "Thirteen Imprints content system",
+    "Scene Interaction",
+    "Audience Depth",
+    "Physical / Sensory",
+    "Digital",
+    "Memory / IP",
+    "Technical Proof",
+    "Visual / Motion direction",
+    "Return"
+  ],
+  "browser_readback": {
+    "viewport": "1920x1080",
+    "horizontal_overflow": false,
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "section_screenshots": 12,
+    "producer_self_keep": false
+  },
+  "drive_package": {
+    "drive_id": "1d_aXFYynwDM7QOv49jEG2xBcl2CjhjBO",
+    "filename": "C04_CURRENT_INTEGRATION_v1_0.zip",
+    "bytes": 16817982,
+    "sha256": "e4b9d5de572c6afe5cfdca5119ad1e0de597af0275965e5289ec64bc3be70de9",
+    "metadata_size_readback_pass": true
+  },
+  "open_gaps": [
+    "R05 official Honghua raw pixel",
+    "independent finished-output verdict",
+    "integrated motion/final video",
+    "field/site/engineering validation"
+  ],
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "FIELD_PASS": "NONE",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "construction": "NOT_FOR_CONSTRUCTION"
+  }
+}
