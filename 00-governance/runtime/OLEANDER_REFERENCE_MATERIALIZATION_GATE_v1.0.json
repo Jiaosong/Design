@@ -1,0 +1,73 @@
+{
+  "schema": "oleander.reference-materialization-gate.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT",
+  "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS_REFERENCE_RECONSTRUCTION",
+  "invariant": "BROWSER_VISIBLE_DOES_NOT_EQUAL_LOCAL_SOURCE_BYTES_AVAILABLE",
+  "required_sequence": [
+    "SOURCE_AUTHORITY_FOUND",
+    "SOURCE_BYTES_MATERIALIZED",
+    "SOURCE_HASHED",
+    "REFERENCE_FRAME_EXTRACTED",
+    "REFERENCE_SCALE_LOCKED",
+    "COMPARISON_RUNTIME_VERIFIED",
+    "ONE_TO_ONE_RECONSTRUCTION"
+  ],
+  "materialization_routes": [
+    "CONVERSATION_UPLOAD_OR_MOUNTED_FILE",
+    "PUBLIC_DIRECT_URL_DOWNLOAD",
+    "CONNECTOR_NATIVE_MATERIALIZE_OR_DOWNLOAD",
+    "GITHUB_OR_GOOGLE_DRIVE_EXACT_FILE_TO_LOCAL_BYTES",
+    "BROWSER_ONLY_SOURCE_RESULTS_IN_HOLD_NO_SOURCE_BYTES"
+  ],
+  "states": [
+    "MATERIALIZED",
+    "LOCKED_REFERENCE_FRAME",
+    "HOLD_NO_SOURCE_BYTES",
+    "HOLD_NO_RENDERER",
+    "HOLD_SOURCE_AMBIGUOUS"
+  ],
+  "canonical_adapter": "tools/oleander-runtime/materialize_reference.py",
+  "pdf_renderer_order": [
+    "pdftoppm",
+    "pypdfium2"
+  ],
+  "manifest_name": "reference_materialization_manifest.json",
+  "comparison_sequence": [
+    "LOCKED_ORIGINAL_FRAME",
+    "ONE_TO_ONE_RECONSTRUCTION",
+    "MATCHED_SCALE_SIDE_BY_SIDE",
+    "OVERLAY_OR_FLICKER",
+    "DIFFERENCE_VIEW",
+    "MISMATCH_LIST",
+    "FIDELITY_REPAIR",
+    "RETEST"
+  ],
+  "required_receipt_fields": [
+    "SOURCE_AUTHORITY",
+    "SOURCE_LOCATOR",
+    "SOURCE_BYTES_STATE",
+    "SOURCE_SHA256",
+    "REFERENCE_FRAME_STATE",
+    "PAGE_OR_FRAME",
+    "SCALE_OR_DPI",
+    "RENDERER",
+    "REFERENCE_FRAME_SHA256",
+    "COMPARISON_RUNTIME",
+    "FIDELITY_GATE",
+    "DOES_NOT_PROVE"
+  ],
+  "fail_closed_rules": [
+    "IF_SOURCE_BYTES_NOT_MATERIALIZED_REPRODUCTION_PASS_IS_FORBIDDEN",
+    "IF_REFERENCE_FRAME_NOT_LOCKED_OVERLAY_DIFF_CANNOT_BE_CLAIMED",
+    "DO_NOT_FABRICATE_MISSING_SOURCE_PIXELS_OR_DIMENSIONS",
+    "DO_NOT_LOWER_REPRODUCTION_MEANING_TO_HIDE_RUNTIME_LIMITATIONS"
+  ],
+  "does_not_prove": [
+    "SOURCE_AUTHORITY",
+    "RIGHTS_CLEARANCE",
+    "RECONSTRUCTION_FIDELITY",
+    "DESIGN_QUALITY",
+    "FIELD_OR_ENGINEERING_TRUTH"
+  ]
+}

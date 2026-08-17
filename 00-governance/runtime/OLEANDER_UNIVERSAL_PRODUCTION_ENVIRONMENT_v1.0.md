@@ -17,6 +17,12 @@ The invariant is:
 
 Tool choice follows the project. The project never follows the tool.
 
+For reference-reconstruction work, add one mandatory preflight before production:
+
+> **Source Authority → Source Bytes Materialized → Reference Frame Locked → Reconstruction Runtime → 1:1 Fidelity Review**
+
+`BROWSER_VISIBLE ≠ LOCAL_SOURCE_BYTES_AVAILABLE`.
+
 ---
 
 ## 1｜What “all conversations can use Blender” means
@@ -57,12 +63,13 @@ Before production, every OLEANDER conversation performs this resolver:
 1. Read Current Authority / Source Authority / current project state.
 2. Resolve an existing OLEANDER Skill before inventing a method.
 3. Define the required **native output**: geometry, editable vector, HTML, dataset, render, video, PDF, etc.
-4. Probe only the capabilities needed for that output.
-5. Prefer an existing shared OLEANDER runtime or runner over project-specific installation logic.
-6. Select the adapter that best preserves editability, truth and fidelity.
-7. If the preferred adapter is absent, use an equivalent fallback when no information is lost.
-8. Mark only the genuinely unavailable step `PENDING`; continue all other executable work.
-9. Open/render/read back the resulting artifact before a visual Design PASS.
+4. If the task is reference reconstruction, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0` before any fidelity claim.
+5. Probe only the capabilities needed for that output.
+6. Prefer an existing shared OLEANDER runtime or runner over project-specific installation logic.
+7. Select the adapter that best preserves editability, truth and fidelity.
+8. If the preferred adapter is absent, use an equivalent fallback when no information is lost.
+9. Mark only the genuinely unavailable step `PENDING`; continue all other executable work.
+10. Open/render/read back the resulting artifact before a visual Design PASS.
 
 ---
 
@@ -71,6 +78,27 @@ Before production, every OLEANDER conversation performs this resolver:
 ### Research / knowledge / source evidence
 
 Preferred adapters: Web, official archives, PDFs, Notion, GitHub, Google Drive. These establish evidence and provenance; they do not establish visual quality.
+
+### Reference materialization / 1:1 reconstruction
+
+Canonical contract:
+
+- `00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.md`
+- `00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.json`
+
+Preferred deterministic adapter:
+
+- `tools/oleander-runtime/materialize_reference.py`
+
+Required sequence:
+
+`SOURCE_AUTHORITY_FOUND → SOURCE_BYTES_MATERIALIZED → SOURCE_HASHED → REFERENCE_FRAME_EXTRACTED → REFERENCE_SCALE_LOCKED → COMPARISON_RUNTIME_VERIFIED`
+
+Use the first valid source-byte route that preserves the original file: mounted upload, public direct URL, connector-native materialization/download, or exact GitHub/Drive file retrieval. A browser view, citation ref, screenshot handle or preview is not a local byte source.
+
+If source bytes or an exact reference frame cannot be obtained, mark `REFERENCE MATERIALIZATION GATE = HOLD`. Continue only as `STRUCTURAL RECONSTRUCTION / METHOD STUDY / REFERENCE-BOUND STUDY`; do not claim `REPRODUCTION PASS`.
+
+After materialization, use matched-scale side-by-side plus overlay/flicker/difference where technically meaningful. Hashing and rendering source bytes prove reproducibility only; they do not prove fidelity or design quality.
 
 ### Deterministic data / GIS / calculation
 
@@ -148,6 +176,10 @@ Do not fork a separate Blender installation path inside each project.
 Any meaningful production run should be able to report:
 
 `TASK / AUTHORITY / SKILL_RESOLVED / REQUIRED_OUTPUT / CAPABILITY_STATE / ADAPTER_SELECTED / VERIFIED_VERSION_OR_PATH / EXECUTED_OR_PENDING / READBACK_STATE / EVIDENCE_GATE / DESIGN_QUALITY_GATE / DOES_NOT_PROVE`
+
+Reference-reconstruction runs additionally report:
+
+`SOURCE_LOCATOR / SOURCE_BYTES_STATE / SOURCE_SHA256 / REFERENCE_FRAME_STATE / PAGE_OR_FRAME / SCALE_OR_DPI / RENDERER / REFERENCE_FRAME_SHA256 / COMPARISON_RUNTIME / FIDELITY_GATE`
 
 `EXECUTED`, `TRACEABLE` and `REPRODUCIBLE` are process states. They cannot be converted into `Design PASS`, `Professional Finish` or `MAIN KEEP` without independent design review.
 
