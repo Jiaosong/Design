@@ -6,16 +6,39 @@ compatibility: Works with CAD/vector tools, Blender or other geometry-authoring 
 
 # OLEANDER Technical Drawing
 
+Candidate revision: `v0.2 / PR #172`.
+
 A technical drawing is a design-and-communication instrument, not a decorated screenshot. Preserve authoritative geometry and truth state first; then make spatial, constructive, dimensional and visual relationships readable enough that the intended reader does not need to guess.
 
 This skill is independent from `oleander-3d-pipeline`, `oleander-story-and-board`, and `oleander-delivery-qc`:
 
 - 3D pipeline owns model/exchange authority and derived axonometric geometry.
-- Technical drawing owns 2D/2.5D drawing logic, dimensional communication, detail hierarchy and drawing-specific review.
+- Technical drawing owns 2D/2.5D drawing logic, dimensional communication, detail hierarchy, technical reality checking and drawing-specific review.
 - Story/board owns placement of approved drawings inside presentation surfaces.
 - Delivery QC owns release-package preflight; it does not grant drawing-design approval.
 
 `ARTIFACT EXISTS ≠ DRAWING PASS ≠ ENGINEERING PASS ≠ FIELD PASS ≠ MAIN KEEP`.
+
+`NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS` applies to technical drawing sets. Simplification may improve hierarchy, but it must not delete necessary technical proof, audience/use information, maintenance logic, field-open conditions or dimensional truth state.
+
+## 0. Execution router — resolve the drawing problem before drawing
+
+Do not begin by selecting a visual style. Resolve these five axes first:
+
+1. **Discipline** — architecture/interior, landscape/site, industrial/product, structural/support explanation, fabrication/assembly, or a declared hybrid.
+2. **Maturity/status** — DESIGN STUDY, TECHNICAL EXPLANATION, COORDINATION, FABRICATION, CONSTRUCTION.
+3. **Decision** — what exact uncertainty or relationship must the drawing close?
+4. **Authority** — which source controls geometry, dimensions, materials, site facts and specialist design?
+5. **Output condition** — physical sheet/display size, scale, vector/raster requirements, downstream CAD/Illustrator/PDF use and intended reader.
+
+Then load the supporting reference appropriate to the task:
+
+- `references/DISCIPLINE_PROFILES.md` — profession-specific view sets, checks and failure patterns.
+- `references/GRAPHIC_SYSTEM.md` — line hierarchy, section/plan grammar, dimensions, callouts, hatches, typography, scale and multi-scale review.
+- `references/REALITY_CHECK.md` — design action → system → reference → value/range → sensitivity → FIELD/engineer verify protocol.
+- `templates/DRAWING_EXECUTION_TEMPLATE.md` — execution registers and TD-G0…TD-G8 review carrier.
+
+A substantial task should not skip these because a previous drawing already exists. Existing pixels may be provenance, not current authority.
 
 ## 1. Declare drawing status before drawing
 
@@ -29,6 +52,10 @@ Every sheet/view must declare one of these states:
 
 Never visually imitate a fabrication/construction drawing while the truth state is only study or explanation. Use explicit markers such as `NTS`, `PROVISIONAL`, `FIELD OPEN`, `VERIFY`, `ENGINEERING REVIEW REQUIRED`, or `NOT FOR CONSTRUCTION` where applicable.
 
+### Status cannot be inferred from appearance
+
+A dense title block, many dimensions, realistic fasteners or professional hatch do not upgrade a study. Promotion depends on authority and review, not visual resemblance to issued construction/fabrication documents.
+
 ## 2. Resolve source authority
 
 Before editing geometry, create a compact authority table:
@@ -40,8 +67,18 @@ Before editing geometry, create a compact authority table:
 | material/finish | CMF schedule/spec | ... | approved / candidate | ... |
 | structure/connection | engineer/detail/reference | ... | explanatory / approved | ... |
 | site/context | survey/map/field/source | ... | observed / inferred | ... |
+| safety/access | code/specialist/project rule | ... | review / approved | ... |
+| manufacturer/system | supplier technical data | ... | bounded candidate / selected | ... |
 
 Authority order is project-specific; do not invent a universal hierarchy. A render, AI image, presentation diagram or raster screenshot does not become dimensional authority merely because it looks resolved. If a derived view conflicts with the authoritative geometry, the authority wins until a documented design revision changes it.
+
+### Source snapshot requirement
+
+For a material drawing revision, bind the drawing to the exact source revision or source object ID when available. Record enough identity that another reviewer can distinguish:
+
+`CURRENT AUTHORITY` vs `DERIVED DRAWING` vs `REFERENCE` vs `SUPERSEDED/HISTORY`.
+
+Do not let recency alone revive obsolete geometry.
 
 ## 3. Build a drawing set, not an isolated picture
 
@@ -51,14 +88,38 @@ Choose only the views needed to answer the drawing's decision question. Typical 
 - `PLAN`: horizontal organization, clearances, interfaces and movement.
 - `ELEVATION`: vertical relation, envelope, alignment and finish boundaries.
 - `SECTION`: cut relation, depth, level, support, ground/water/build-up and human scale.
+- `LONGITUDINAL PROFILE`: route/grade/sequence/drainage relationship when required.
 - `DETAIL / NODE`: local interface, fixing, edge, joint, drainage, safety or maintenance condition.
 - `EXPLODED / ASSEMBLY`: part identity and assembly order; not a substitute for exact interface detail.
 - `PART / FABRICATION`: manufacturable geometry, dimensions, tolerance and finish for one part/scope.
 - `CMF / MATERIAL MAP`: material ID, boundary, direction, finish and schedule linkage.
+- `INSTALLATION / MAINTENANCE`: access, removal, replacement, inspection or sequence when feasibility depends on it.
 
 A detail must have a traceable parent view. A parent view must show where the detail comes from. Do not let an attractive exploded axon replace plan/section information needed to resolve interfaces.
 
-## 4. Projection and view coherence
+### Node ladder
+
+Use the smallest necessary ladder:
+
+`CONTEXT / GA → PARENT PLAN OR SECTION → INTERFACE DETAIL → CONNECTION ENLARGEMENT → COMPONENT / FOUNDATION / EDGE DETAIL`
+
+Each child view must answer a question the parent cannot answer at its scale. A child detail that only repeats information is clutter, not depth.
+
+## 4. Discipline-specific routing
+
+Do not use one generic drafting recipe across all design fields. Apply the relevant profile in `references/DISCIPLINE_PROFILES.md`.
+
+At minimum:
+
+- **Architecture/interior** must resolve grids/levels, cut/beyond, build-up, clearances and coordination boundaries.
+- **Landscape/site** must distinguish existing/proposed/inferred/FIELD OPEN, slope/grade/drainage/edge/vegetation and maintenance realities.
+- **Industrial/product** must preserve CAD authority, part/assembly relation, functional dimensions, mating surfaces, serviceability and CMF state.
+- **Structural/support explanation** must make support/load-transfer intent and substrate/interface logic visible while keeping specialist sizing authority separate.
+- **Fabrication/assembly** requires controlling geometry, tolerance basis, material/finish state, interfaces and assembly feasibility before permission to make.
+
+For hybrid work, declare which profile governs each view or technical question.
+
+## 5. Projection and view coherence
 
 For orthographic work:
 
@@ -68,20 +129,38 @@ For orthographic work:
 - use consistent datums, levels, grids or local reference axes;
 - do not silently change camera, crop, orientation or scale between comparison views;
 - use hidden lines only when they add decision-relevant information;
-- use local enlargements for dense interfaces rather than forcing all detail into the parent view.
+- use local enlargements for dense interfaces rather than forcing all detail into the parent view;
+- when a detail is rotated for readability, clearly indicate orientation so rotation is not mistaken for geometry change.
 
 For axonometric/exploded views, lock camera/projection and derive geometry from the authoritative model where possible. Labels and explanatory graphics remain separate vector layers from the geometry source.
 
-## 5. Dimensioning is a design test
+### Cross-view invariant
+
+The same interface cannot be drawn one way in plan, another way in section and a third way in exploded view unless a documented state/variant explains the difference. Cross-view contradiction is a geometry failure, not a presentation preference.
+
+## 6. Scale is a decision tool
+
+Choose view scale from the technical question rather than habit. Use `references/GRAPHIC_SYSTEM.md` for the scale-selection logic.
+
+- Context scale answers `WHERE / SYSTEM RELATION`.
+- Arrangement scale answers `PRINCIPAL GEOMETRY / MOVEMENT / LEVEL / CLEARANCE`.
+- Detail scale answers `BUILD-UP / JOINT / EDGE / FIXING / DRAINAGE / TRANSITION`.
+- Component/fabrication scale answers `EXACT PART / DATUM / HOLE / SLOT / RADIUS / TOLERANCE / MATING`.
+
+Write scale per view or mark intentionally `NTS`. If a scaled drawing is placed into a board/web page and digitally resized, do not leave a false printed scale statement. Use a trustworthy scale bar or update the view metadata.
+
+## 7. Dimensioning is a design test
 
 Dimensions must communicate design intent, not merely fill empty space.
 
 Before adding a dimension, classify it as:
 
 - `AUTHORITY / VERIFIED` — measured or locked by the approved source;
+- `LOCKED DESIGN VALUE` — approved design value but not necessarily field-measured;
 - `DESIGN RECOMMENDATION` — selected design value with rationale;
 - `RECOMMENDED RANGE` — bounded design range where a single number is not yet authoritative;
 - `REFERENCE` — informational only, not controlling;
+- `DERIVED / NOT FIELD MEASURED` — calculated or measured from bounded source geometry/image;
 - `FIELD VERIFY` — cannot be closed remotely/currently;
 - `TBD` — unresolved and not safe to guess.
 
@@ -93,10 +172,43 @@ Rules:
 4. Tolerance only what has a functional/manufacturing reason and an appropriate authority basis. Do not invent precision to make a sheet look professional.
 5. Keep nominal size, tolerance, field uncertainty and design range conceptually separate.
 6. If a dimension is source-derived by calculation or image/geometry measurement, record method, units and uncertainty outside or alongside the drawing record.
+7. Do not duplicate a controlling dimension across views unless the drawing convention requires it and discrepancy risk is managed.
+8. A qualifier such as `FIELD VERIFY`, `REF`, `RANGE` or `TBD` must remain visually bound to the value it qualifies.
+9. Dimension chains must reflect functional control. A visually complete chain that creates contradictory closure remains a failure.
+10. Where field geometry is unknown, locate the interface to a field datum/verification point instead of inventing the field surface.
 
 Mechanical GD&T may use ASME Y14.5 or the project's designated GPS standard when applicable, but this skill does not imply GD&T competence or compliance by default. Discipline-specific engineering review remains required.
 
-## 6. Draw the construction/assembly logic that matters
+## 8. Technical reality check — do not invent professional-looking certainty
+
+For every critical technical issue involving structure/support, foundations, anchors, fasteners, slopes, drainage, safety, clearances, materials, manufacturing or tolerances, use the protocol in `references/REALITY_CHECK.md`:
+
+`DESIGN ACTION → SYSTEM → APPLICABLE STANDARD / ENGINEERING REFERENCE → RECOMMENDED VALUE OR RANGE → SENSITIVE FACTORS → FIELD / ENGINEER VERIFY ITEMS`
+
+### Remote-design continuation rule
+
+Missing field evidence is not a reason to stop design or reduce professional depth. If the field cannot yet be closed:
+
+`CONTINUE DESIGN WITH BOUNDED RECOMMENDATION → SHOW VALUE/RANGE + BASIS → IDENTIFY SENSITIVITY → CREATE FIELD-VERIFY SLOT → KEEP PROMOTION GATE OPEN`.
+
+This is mandatory for OLEANDER work with `FIELD OBSERVED=0` or `FIELD MEASURED=0` when technical decisions still need to be developed.
+
+### Evidence ladder
+
+Prefer, in order:
+
+1. current project authority;
+2. applicable code/standard/specialist requirement;
+3. actual manufacturer/system technical data;
+4. published engineering/design reference;
+5. bounded built precedent;
+6. calculation/geometry-derived inference;
+7. image-derived estimate;
+8. AI/stylistic reference.
+
+Lower evidence may support exploration but cannot silently override higher authority.
+
+## 9. Draw the construction/assembly logic that matters
 
 A professional node drawing should let a qualified reader identify the intended relation without reconstructing it from prose.
 
@@ -111,17 +223,27 @@ When applicable, graphically resolve:
 - drainage, water-shedding and corrosion-isolation intent;
 - slip/trip/fall/safety edge condition;
 - removal/replacement and maintenance access;
-- assembly/disassembly order if it changes design feasibility.
+- assembly/disassembly order if it changes design feasibility;
+- tool/hand/service clearance where access controls assembly;
+- movement/thermal gap where movement materially affects the interface.
 
 Text does not substitute for visible geometry. Conversely, visible geometry does not prove engineering adequacy. If structural sizing, anchorage, foundation, fire, waterproofing, electrical or other specialist design is unresolved, show the relationship needed for design coordination and mark the specialist scope open.
 
-## 7. Graphic hierarchy: first-read to near-read
+### Professional-node minimum
+
+For a node presented as serious technical proof, the intended reader should be able to answer, where applicable:
+
+`WHAT → WHERE → HOW BIG → WHAT MADE OF → HOW CONNECTED/SUPPORTED/DRAINED → HOW INSTALLED/MAINTAINED → WHAT IS STILL OPEN → WHICH SOURCE CONTROLS`.
+
+If the reader must infer a critical connection from notes alone, the node is not complete.
+
+## 10. Graphic hierarchy: first-read to near-read
 
 Technical completeness cannot compensate for a flat drawing.
 
 Default reading order:
 
-`CUT / PRIMARY FORM → PRIMARY STRUCTURE OR SPATIAL RELATION → SECONDARY CONSTRUCTION / EDGE / INTERFACE → DIMENSION / LEADER / NOTE / HUMAN / MAINTENANCE SUPPORT`
+`CUT / PRIMARY FORM → PRIMARY STRUCTURE OR SPATIAL RELATION → SECONDARY CONSTRUCTION / EDGE / INTERFACE → DIMENSION / LEADER / NOTE / HUMAN / MAINTENANCE SUPPORT → CONTEXT / FIELD-OPEN SUPPORT`.
 
 Use the fewest distinct graphic classes that reliably create this order at the actual delivery size. Lineweight values are output- and scale-dependent; do not treat one screen-pixel recipe as universal.
 
@@ -133,11 +255,15 @@ Hard rules:
 - humans, furniture, vegetation and maintenance figures establish use/scale only and never overpower the technical subject;
 - hatch/material fills must distinguish states without burying linework;
 - if a note competes with the object it describes, move/shorten/reduce the note before making all geometry heavier;
-- adding more dimensions or notes is not a valid fix for poor hierarchy.
+- adding more dimensions or notes is not a valid fix for poor hierarchy;
+- existing/proposed/field-open states must not depend on color alone;
+- line hierarchy must survive grayscale export and intended-size print/display review.
 
-Review both `FIRST READ` and `NEAR READ`. A clean thumbnail that loses construction evidence at print/detail scale remains `REVISE`.
+Review `FIRST READ`, `INTENDED SIZE` and `NEAR READ` separately. A clean thumbnail that loses construction evidence at print/detail scale remains `REVISE`.
 
-## 8. Annotation and vector integrity
+Use `references/GRAPHIC_SYSTEM.md` for the full line/callout/hatch/typography/export grammar.
+
+## 11. Annotation and vector integrity
 
 Text, dimensions, leaders, symbols, title blocks, legends and core technical linework must remain vector in the editable source and vector-capable delivery formats whenever the format supports it.
 
@@ -147,21 +273,53 @@ Text, dimensions, leaders, symbols, title blocks, legends and core technical lin
 - Keep annotation on separable named layers/classes.
 - Establish typography hierarchy for title, view title, dimension, note, qualifier and source/state label.
 - Check collisions, overset/clipping, leader crossings and minimum readable size at the target print/view scale.
+- Verify CJK/Latin font substitution/embedding in actual exported PDF/SVG when bilingual work is used.
+- Do not outline all technical text by default; preserve editability unless the delivery contract requires outlined text.
 
-## 9. Material / CMF communication
+### AI image boundary
+
+AI-generated imagery may be used only as a non-authoritative visualization/reference layer. It cannot substitute for editable technical geometry, vector technical text, dimensional information, construction interfaces or field/engineering evidence.
+
+## 12. Material / CMF communication
 
 Where material or finish affects the drawing, use stable IDs linked to a schedule. Show, as applicable:
 
-- material/finish ID and approved/candidate state;
+- substrate/material family;
+- material/finish ID and approved/candidate/provisional state;
 - finish boundary and transition;
 - grain/brushing/weave/lay direction when function or appearance depends on it;
 - coating/plating/anodizing/paint/texture/gloss specification only when source-grounded;
 - substrate versus finish as separate concepts;
-- edge/return/back-face treatment where visible or manufacturable.
+- edge/return/back-face treatment where visible or manufacturable;
+- service/replacement implications when finish or cladding is removable;
+- measurable performance properties only from applicable technical evidence.
 
-Do not infer a hidden build-up solely from a render.
+Do not infer a hidden build-up solely from a render. Render appearance does not prove gloss, roughness, coating thickness, corrosion class, slip resistance, fire performance or durability.
 
-## 10. Sheet and document control
+## 13. Landscape/site truth and operational state
+
+For landscape/site/public-realm work:
+
+- distinguish existing, proposed, inferred and FIELD OPEN geometry;
+- distinguish observed/measured slope from recommended or scenario slope;
+- show drainage direction/low points/discharge intent where water management matters;
+- do not invent root zone, geology, foundation or retaining conditions from imagery;
+- make safety edges and body-scale relationships readable;
+- include maintenance/access when replacement, cleaning, vegetation management or inspection changes feasibility;
+- when the project has operational state logic, `UNKNOWN` must not be drawn as normal/open. Preserve NORMAL/DEGRADED/CLOSED/UNKNOWN and other current project state semantics where applicable.
+
+## 14. Product/fabrication truth
+
+For industrial/product/furniture/equipment work:
+
+- locked CAD/model outranks render silhouette for geometry;
+- mating/interface dimensions are more important than decorative dimension density;
+- exploded view must be backed by exact interface detail where fabrication/assembly depends on it;
+- generic `±` tolerances are forbidden without functional/process basis;
+- serviceability, tool access, cable/battery/component removal and assembly direction must be visible where relevant;
+- candidate CMF states remain distinct from approved manufacturing specifications.
+
+## 15. Sheet and document control
 
 Every controlled drawing set should expose enough document metadata to identify exactly what is being reviewed:
 
@@ -175,93 +333,151 @@ Every controlled drawing set should expose enough document metadata to identify 
 - projection/orientation when relevant;
 - source/authority revision;
 - truth/status boundary;
-- superseded/current state.
+- superseded/current state;
+- discipline/profile;
+- allowed/prohibited use when status could be misunderstood.
 
 Use project title-block conventions; ISO 7200 is a reference for document-header field logic, not an automatic claim of full compliance.
 
-## 11. OLEANDER Drawing Gates
+## 16. OLEANDER Drawing Gates
 
 A drawing must pass these gates independently. Do not collapse them into one score.
 
 ### `TD-G0 / INTENT & STATUS`
 PASS when drawing purpose, audience, truth state and allowed use are explicit.
 
-Blockers: unlabeled study presented as construction/fabrication authority; stale/superseded state shown as current.
+Blockers: unlabeled study presented as construction/fabrication authority; stale/superseded state shown as current; no defined technical decision.
 
 ### `TD-G1 / SOURCE AUTHORITY`
 PASS when geometry, dimensions, materials and specialist assumptions trace to current authority or are explicitly provisional/open.
 
-Blockers: invented dimensions; render/AI image treated as geometry authority; unresolved source conflict silently reconciled.
+Blockers: invented dimensions; render/AI image treated as geometry authority; unresolved source conflict silently reconciled; old source revived by recency alone.
 
 ### `TD-G2 / GEOMETRY & PROJECTION`
 PASS when views agree with the same source, datum/orientation is coherent and cut/detail parentage is traceable.
 
-Blockers: plan/section mismatch; impossible assembly created by presentation edits; untraceable section/detail.
+Blockers: plan/section mismatch; impossible assembly created by presentation edits; untraceable section/detail; unexplained view rotation or geometry drift.
 
 ### `TD-G3 / DIMENSIONAL INTENT`
 PASS when controlling dimensions are sufficient, non-contradictory and correctly truth-labeled.
 
-Blockers: missing critical interface dimension for claimed fabrication/construction scope; false precision; conflicting chains.
+Blockers: missing critical interface dimension for claimed fabrication/construction scope; false precision; conflicting chains; unqualified derived/image-estimated value; generic tolerance without basis.
 
 ### `TD-G4 / CONSTRUCTION & ASSEMBLY LOGIC`
 PASS when the required interfaces and maintenance/assembly conditions are graphically understandable for the declared scope.
 
-Blockers: prose-only critical connection; physically impossible access/assembly; specialist design presented as resolved without authority.
+Blockers: prose-only critical connection; physically impossible access/assembly; specialist design presented as resolved without authority; missing drainage/safety/service relation when decision-critical.
 
 ### `TD-G5 / DESIGN QUALITY & READABILITY`
-PASS when first-read and near-read hierarchy are both professional at target scale.
+PASS when first-read, intended-size and near-read hierarchy are all professional at target output condition.
 
-Blockers: equal-weight visual noise; annotations dominate geometry; illegible detail; diagrammatic black cuts; missing technical evidence hidden by visual simplification.
+Blockers: equal-weight visual noise; annotations dominate geometry; illegible detail; diagrammatic black cuts; missing technical evidence hidden by visual simplification; decorative hatch/figures overpower technical subject.
 
 ### `TD-G6 / VECTOR & ANNOTATION INTEGRITY`
 PASS when vector text/dimensions/linework survive export and annotations target the intended geometry without collision or ambiguity.
 
-Blockers: rasterized technical text where vector output is required; broken fonts; pseudo-text; orphan callouts; clipped content.
+Blockers: rasterized technical text where vector output is required; broken fonts; pseudo-text; orphan callouts; clipped content; CJK/Latin substitution materially changes the drawing.
 
 ### `TD-G7 / OUTPUT & ROUND-TRIP`
 PASS when editable source and delivery derivatives open independently, scales/units remain correct, and the exported PDF/SVG/DXF reproduces the approved drawing state.
 
-Blockers: wrong scale/units; missing links/fonts; stale export; non-recoverable source; export differs materially from reviewed source.
+Blockers: wrong scale/units; missing links/fonts; stale export; non-recoverable source; export differs materially from reviewed source; a scaled view becomes falsely labelled after board/web resizing.
 
 ### `TD-G8 / INDEPENDENT REVIEW & PROMOTION`
 Production author may supply evidence but must not self-promote the drawing to `MAIN KEEP`, `FABRICATION APPROVED`, or `CONSTRUCTION APPROVED`. Use the current OLEANDER review path / responsible independent reviewer and keep engineering/field approval separate.
 
 A CI/export PASS, checksum, artifact existence or owner claim cannot override `TD-G1`–`TD-G6`.
 
-## 12. Required review sequence
+## 17. Design Quality Gate — drawing-specific crit
+
+`TD-G5` is not a generic aesthetics score. Review these dimensions independently:
+
+1. **First visual threshold** — is the main spatial/constructive claim immediately legible?
+2. **Composition** — do views, negative space and annotations establish a deliberate reading path?
+3. **Proportion/scale** — do human/object/component relationships read plausibly without overstating field accuracy?
+4. **Line hierarchy** — do cut, primary, secondary and support information remain distinct?
+5. **Typography/annotation** — are IDs, dimensions and notes precise, restrained and targetable?
+6. **Node readability** — can interfaces be understood without reconstructing them mentally?
+7. **Material/build-up clarity** — are real material states and boundaries distinguishable from graphic texture?
+8. **Technical depth** — are drainage, edge, maintenance, assembly, access or other decision-critical relations present?
+9. **Cross-view coherence** — do plan/section/elevation/axon/detail describe one object/system?
+10. **Professional completion** — does the final derivative survive intended-scale and near-read review without looking like a default CAD export, classroom diagram or AI illustration?
+
+Any one critical blocker can force `REVISE/REJECT` even when the other gates pass.
+
+## 18. Required review sequence
 
 Use this order before adding new content:
 
 1. Open the actual editable/source drawing and exported derivative.
-2. Confirm status and source authority.
-3. Check cross-view geometry/projection.
-4. Check the dimension set and unresolved critical interfaces.
-5. Check construction/assembly/maintenance logic for the declared scope.
-6. Review at intended print/display size for first-read hierarchy.
-7. Zoom to near-read/detail scale for line, callout, dimension and material clarity.
-8. Inspect vector/text/export integrity.
-9. Produce `KEEP / REVISE / REJECT / HOLD` with concrete blockers and evidence.
-10. Repair the highest-order blocker first; do not add decorative complexity as a substitute.
+2. Confirm status, discipline profile and source authority.
+3. Confirm the technical decision each view must answer.
+4. Check cross-view geometry/projection and detail parentage.
+5. Check the dimension set and unresolved critical interfaces.
+6. Run the technical reality chain on safety/structure/foundation/drainage/material/tolerance decisions.
+7. Check construction/assembly/maintenance logic for the declared scope.
+8. Review at thumbnail/distance scale for composition and first-read hierarchy.
+9. Review at intended physical/display size for line/text/dimension survival.
+10. Zoom to near-read/detail scale for connection, callout, material and dimensional clarity.
+11. Inspect vector/text/export integrity and grayscale/color-independent semantics.
+12. Produce `KEEP / REVISE / REJECT / HOLD` with concrete blockers and evidence.
+13. Repair the highest-order blocker first; do not add decorative complexity as a substitute.
+14. Re-export and repeat actual-derivative readback after every material drawing change.
 
-## 13. Required output contract
+## 19. Required output contract
 
 For a substantial drawing task, return or create:
 
 - editable authoritative/derived source (`DWG/DXF/SVG/AI` or project-native equivalent as applicable);
 - vector PDF/SVG/DXF derivative where applicable;
 - preview PNG only as a review convenience, never as sole technical authority;
+- `DRAWING_BRIEF` stating discipline, decision, audience, status, allowed use and prohibited claim;
+- `AUTHORITY_MATRIX` for geometry/dimensions/material/site/specialist inputs;
 - `DRAWING_MANIFEST` containing IDs, revision, units, scales, source authority, truth state and dependencies;
+- `VIEW_SET` defining parent/child view logic and decision per view;
 - `DIMENSION_REGISTER` for critical dimensions/ranges/field-open items when complexity warrants it;
 - `DETAIL/CALLOUT_REGISTER` linking parent views and node IDs where complexity warrants it;
+- `MATERIAL/CMF_REGISTER` when material state matters;
+- `REALITY_CHECK_REGISTER` for critical technical assumptions/ranges/sensitivities/closure items;
 - `DRAWING_QA` with TD-G0…TD-G8 status and blockers;
+- multi-scale Design Crit for thumbnail / intended size / near-read;
 - revision log that records material design changes rather than cosmetic file churn.
 
-## 14. Standards reference boundary
+Use `templates/DRAWING_EXECUTION_TEMPLATE.md` unless the project already has a stricter equivalent.
 
-Use current discipline/project standards when required. As a cross-discipline professional anchor, this skill is informed by the scopes of:
+## 20. Anti-patterns — automatic REVISE/HOLD triggers
+
+- `MORE NOTES = MORE PROFESSIONAL` — false. Fix hierarchy/geometry first.
+- `MORE DIMENSIONS = MORE TECHNICAL` — false. Use controlling dimensions.
+- `REALISTIC RENDER = DIMENSIONAL AUTHORITY` — false.
+- `AI DETAIL LOOKS PLAUSIBLE = CONNECTION VALID` — false.
+- `FIELD=0 = STOP DESIGN` — false. Continue with bounded recommendation + sensitivity + verify slot.
+- `FIELD=0 = INVENT A PRECISE DETAIL` — also false.
+- `EXPLODED VIEW = NODE DETAIL` — false when interface precision is still unresolved.
+- `CAD DEFAULT LINEWEIGHT = PROFESSIONAL HIERARCHY` — false.
+- `CLEAN THUMBNAIL = PROFESSIONAL DRAWING` — false if near-read evidence disappears.
+- `EXPORT PASS = DRAWING PASS` — false.
+- `DRAWING PASS = ENGINEERING/FIELD PASS` — false.
+- `TRACEABILITY = VISUAL EXCELLENCE` — false.
+- `LOGIC CORRECT = MAIN KEEP` — false.
+
+## 21. Standards and jurisdiction routing
+
+Use current discipline/project standards when required. Do not freeze a global project to one jurisdiction.
+
+Before any compliance claim:
+
+1. identify jurisdiction and discipline;
+2. identify the responsible standard/code family;
+3. verify current status/edition using an authoritative source;
+4. distinguish drawing-convention standard from engineering/safety/performance standard;
+5. obtain/check the applicable normative requirements when compliance is claimed;
+6. keep project-specific requirements above generic convention guidance when legitimately authoritative.
+
+As a cross-discipline professional anchor, this skill is informed by the published scopes of:
 
 - ISO 128-1:2020 — fundamental requirements for technical drawing representation;
-- ISO 128-2:2022 — line, leader and reference-line conventions;
+- ISO 128-2:2022 — basic conventions for lines, leaders and reference lines;
 - ISO 128-3:2022 — views, sections and cuts;
 - ISO 129-1:2018 + Amd 1:2020 — presentation of dimensions and associated tolerances (not the full meaning/application of tolerances);
 - ISO 5455:1979 — drawing scales;
@@ -269,4 +485,16 @@ Use current discipline/project standards when required. As a cross-discipline pr
 - ISO 7200:2004 — title-block/document-header data fields;
 - ASME Y14.5-2018 (R2024) — GD&T when that standard is the project authority.
 
+Runtime verification note: ISO states ISO 128-1:2020 remains current after its 2026 review; ISO 128-2:2022 is the published replacement for withdrawn ISO 128-2:2020; ISO 129-1:2018 remains published/current but has a new edition under development. Therefore future executions must verify status rather than assuming this list is permanently frozen.
+
 These references define professional convention domains, not automatic compliance. If a task requires code/standard compliance, verify the applicable current edition, jurisdiction, discipline and purchased/full normative requirements before claiming compliance.
+
+## 22. Skill success condition
+
+This skill succeeds only when it improves both **technical truth discipline** and **drawing design quality**.
+
+A successful result is not merely a file with dimensions. It is a recoverable, editable, source-bound drawing system in which the reader can distinguish:
+
+`WHAT IS KNOWN → WHAT IS DESIGNED → WHAT IS RECOMMENDED → WHAT IS ONLY REFERENCE → WHAT REMAINS FIELD/ENGINEER OPEN`,
+
+while the drawing itself still meets the first-read, near-read, spatial/constructive clarity and professional-finish threshold required for OLEANDER MAIN consideration.
