@@ -1,0 +1,39 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "C23-R06-GA-SECTION-DETAIL",
+  "source": {
+    "lineage": "PR #133 R06_SKILL_DRIVEN_v1_3 / 02_R06_GA_SECTION_DETAIL_v1_3.svg",
+    "source_pr_head": "d63386d7b6b00f93cbc82a0e7f81622d4989fc53",
+    "source_blob_sha": "5481e1deeb71b8920ff97923a8c7b34ffc533a04",
+    "geometry_authority_note": "v1.7 explicit component geometry may currentize conflicting v1.5 detail geometry; function/safety/material rationale remains inherited separately",
+    "current_main_at_start": "ca147a95d27eb99db9e76bb81e516bb3cba9253c"
+  },
+  "revision": "v1.4-CANDIDATE",
+  "time": "2026-08-17T15:42:00+08:00",
+  "material_delta": "Professionalize the existing R06 technical drawing representation: cross-view registration, section/detail indexing, dimension semantics, lineweight hierarchy, human-scale reading, construction note hierarchy and title block. No new field geometry, foundation truth or engineering adequacy is introduced.",
+  "current_delta": {
+    "editing_now": "R06 GA / section / connection-detail drawing representation only",
+    "not_editing_this_round": "Landscape scene pixels, Journey, App, 13 Imprints system, Audience system, other Physical/Sensory objects, Memory/IP, Web/F and Motion remain inherited and unchanged",
+    "does_not_change": "PROJECT IDENTITY / DESIGN SOURCE / DESIGN DNA / FULL DESIGN UNIVERSE"
+  },
+  "truth_boundary": [
+    "FIELD_OBSERVED=0",
+    "FIELD_MEASURED=0",
+    "G1F_HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT_FOR_CONSTRUCTION"
+  ],
+  "state": "OWNER_RECEIPT_CREATED / DESIGN_CURRENTIZATION_CANDIDATE / REVIEW_PENDING",
+  "does_not_prove": [
+    "Design_PASS",
+    "PIXEL_KEEP",
+    "MAIN_KEEP",
+    "surveyed_geometry",
+    "field_safety",
+    "structural_adequacy",
+    "accessibility_compliance",
+    "construction_approval",
+    "Promotion"
+  ]
+}
