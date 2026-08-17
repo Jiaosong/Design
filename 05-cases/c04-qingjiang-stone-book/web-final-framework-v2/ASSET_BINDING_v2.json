@@ -1,0 +1,29 @@
+{
+  "project_identity":"PRJ-C04-QINGJIANG-SHISHU",
+  "framework":"web-final-framework-v2",
+  "policy":"Use merged/current repository assets directly. Drive-bound raster assets remain explicit materialization inputs; open-PR candidates are not silently promoted into current-main authority.",
+  "drive_bound_raster": [
+    {"slot":"hero","local_target":"assets/QJD_V11_01_HERO_1920x1080.png","drive_id":"16xgXoszQX3-LH150FPH_q5YO2GSfzeAB","source_name":"QJD_V11_01_HERO_1920x1080.png","state":"KEEP / MAIN source","does_not_prove":"site/field verification"},
+    {"slot":"r06-landscape","local_target":"assets/02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png","drive_id":"1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ","source_name":"02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png","state":"KEEP WITH HOLD / MAIN source","does_not_prove":"exact geometry/geology/site"},
+    {"slot":"r06-relation","local_target":"assets/03_R06_RELATION_REVEAL_KEEP_WITH_HOLD_1920x1080.png","drive_id":"13MOMwySypj13Vb1O6SsuUMoV8vQh1AxN","source_name":"03_R06_RELATION_REVEAL_KEEP_WITH_HOLD_1920x1080.png","state":"KEEP WITH HOLD / MAIN source","does_not_prove":"measured geometry"},
+    {"slot":"r13","local_target":"assets/04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png","drive_id":"18PST2KVoARuc9Kfr23MIjv7vDhC3v1Ka","source_name":"04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png","state":"KEEP WITH TRUTH LABEL / MAIN-SUPPORT","does_not_prove":"site/access/safety truth"},
+    {"slot":"return","local_target":"assets/QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png","drive_id":"19mkQdgTj0ASkGh0Ott6JIMNrPcaHd4Y7","source_name":"QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png","state":"KEEP / VISUAL UPGRADE source","does_not_prove":"live operation state"}
+  ],
+  "repository_assets": [
+    {"slot":"game-map","path":"../digital-currentization/app-game-map-v1.2/assets/qingjiang-game-map-v1_2.svg","state":"merged/current repository source"},
+    {"slot":"app-portable","path":"../digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html","state":"merged/current portable digital artifact"},
+    {"slot":"p01-step-light","path":"../physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg","state":"merged/current design source carrier"},
+    {"slot":"p02-lean-rest","path":"../physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg","state":"merged/current design source carrier"},
+    {"slot":"m01-journal","path":"../physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg","state":"merged/current design source carrier"},
+    {"slot":"r06-body-proof","path":"../design/r06/R06_BODY_USE_PARALLEL_PROOF_v1.svg","state":"merged/current R06 support proof"}
+  ],
+  "candidate_only_not_bound_as_authority": [
+    {"object":"App MAIN pixels + Game Map v2.1","reference":"PR #144","reason":"open draft / unmerged; may inform successor review but not silently become current-main asset"},
+    {"object":"Mountain Fluid Rest v1.2","reference":"PR #151","reason":"open draft/current candidate; source family remains visible in framework as conditional object, raster/vector not promoted"},
+    {"object":"Qingfengyin v1.2","reference":"PR #152","reason":"open draft/current candidate; sensory system retained without silent asset promotion"},
+    {"object":"Memory Hero Pair v1.1","reference":"PR #153","reason":"open draft/unmerged; merged M01 v1.2 + current App memory relation used until authority advances"},
+    {"object":"Audience Depth v1.2","reference":"PR #155","reason":"independent verdict PIXELS=REVISE / MAIN=NOT YET; framework restores Audience but does not bind rejected pixel composition"},
+    {"object":"Physical/Sensory public chapter v1.3","reference":"PR #159","reason":"pending independent finished-output lock; framework uses its hierarchy as candidate logic only where consistent with current invariants"}
+  ],
+  "materialization_gate":"Drive-bound assets must be copied to the exact local_target paths before portable/offline finished-output validation. Missing bindings keep the Web at FRAMEWORK / ASSET-MATERIALIZATION-HOLD and do not justify MAIN pixel PASS."
+}
