@@ -1,4 +1,4 @@
-# C04｜Current Execution Authority｜2026-08-17｜PROJECT ARCHITECTURE v3.1
+# C04｜Current Execution Authority｜2026-08-17｜PROJECT ARCHITECTURE v3.2
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
@@ -13,11 +13,12 @@ Read and execute in this order:
 3. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md` + machine CSV
 4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support only
 5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json` for current content/narrative direction
-6. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` for professional content architecture + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` for chapter/page hierarchy and no-compression execution**
-7. `C04_ACTIVE_EXECUTION_CURRENT.md`
-8. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
+6. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` for professional content architecture + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` for chapter/page hierarchy and no-compression execution + `C04-B_PROJECT-ARCHITECTURE_v3.2.md` for current independent Brand chapter and CH00–CH19 chapter-container structure**
+7. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` for the latest authored chapter/page-content sync; these authoring identities do not replace final Web PAGE-ID mapping
+8. `C04_ACTIVE_EXECUTION_CURRENT.md`
+9. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
 
-Architecture v3.1 inherits all v3.0 content and chapters. It only corrects structural hierarchy: chapters are containers; pages are independent display units. It supersedes any execution that equates chapter count, chapter files, `<section>` count, viewport count or preview boards with page count.
+Architecture v3.2 inherits all v3.0/v3.1 content, page-preservation rules, object locks and professional depth. It adds `CH14｜品牌与视觉识别系统` as an independent chapter and renumbers the former CH14–CH18 to CH15–CH19 without deleting or merging their content. It continues to supersede any execution that equates chapter count, chapter files, `<section>` count, viewport count or preview boards with page count.
 
 The older `C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md` remains remote-evidence provenance. Its former prohibition on further concept production is superseded.
 
@@ -40,11 +41,11 @@ Before Web / F / D removes, hides or rebuilds an existing object or page, locate
 A stale UI / old board / weak render can be `CONCEPT KEEP / PIXELS REDRAW`.
 
 The complete design universe remains in scope:
-`SITE/JOURNEY + R01–R13 + APP/GAME MAP + PHYSICAL/BODY + SENSORY + MEMORY/IP + AUDIENCE + SPATIAL/TECHNICAL + VISUAL/MOTION`.
+`SITE/JOURNEY + R01–R13 + APP/GAME MAP + PHYSICAL/BODY + SENSORY + BRAND/VISUAL IDENTITY + MEMORY/IP + AUDIENCE + SPATIAL/TECHNICAL + VISUAL/MOTION`.
 
 ## 2｜Current project architecture｜design causality + strict chapter/page separation
 
-The current professional content structure remains defined by v3.0; v3.1 controls how it is implemented.
+The current professional content structure remains inherited from v3.0; v3.1 controls chapter/page hierarchy and no-compression execution; v3.2 is the current chapter-container authority and adds Brand as an independent professional system without deleting prior content.
 
 Backbone:
 
@@ -60,7 +61,7 @@ But the journey is **not** the only public/professional architecture.
 
 `PROJECT → CHAPTER → PAGE → MODULE / FIGURE / ASSET`
 
-- CH00–CH18 are organisational chapters only.
+- CH00–CH19 are organisational chapters only.
 - PAGE is the actual Web/PDF/board display unit.
 - A chapter may contain many pages.
 - A chapter file or `<section>` is not a page.
@@ -81,17 +82,45 @@ The project must explicitly contain and professionally present where material ex
 - App/Digital system;
 - key scene design;
 - Physical/Body/Sensory design;
+- Brand / Visual Identity system;
 - Memory/IP/Cultural Product;
 - design detail development;
 - technical/model proof;
 - process/alternatives/professional judgment;
 - open items + Return/closure.
 
+### Current chapter containers｜CH00–CH19
+
+- CH00 项目定义
+- CH01 项目问题与机会
+- CH02 场地与山水分析
+- CH03 地域文化与内容分析
+- CH04 人群与使用状态分析
+- CH05 游程与行为分析
+- CH06 设计原理
+- CH07 设计方法
+- CH08 总体策略与体验系统
+- CH09 路线、交通与服务设计
+- CH10 十三印内容与互动系统
+- CH11 数字陪伴系统
+- CH12 关键场景设计
+- CH13 实体、身体与感官设计
+- CH14 品牌与视觉识别系统
+- CH15 记忆、IP与文化产品
+- CH16 设计深化与细节
+- CH17 技术、模型与工程证明
+- CH18 方案演化与专业判断
+- CH19 开放项、回程与结尾
+
+Brand and Memory/IP remain distinct:
+- `Brand = 整个项目如何被识别`;
+- `Memory/IP = 游客离开以后，哪些内容继续被带走和传播`.
+
 Hard distinction:
 
 > **Analysis is not governance.**  
 > **First-read clarity does not justify information loss.**  
-> **Design principles, methods, audience analysis and design details may be MAIN content.**  
+> **Design principles, methods, audience analysis, Brand and design details may be MAIN content.**  
 > **Chapter reorganisation never authorises page compression.**
 
 FIELD / G1F / Authority / Receipt / CI / versioning remain subordinate truth-boundary information and must not become public MAIN headlines.
@@ -103,6 +132,8 @@ Existing validated Web baseline pages receive stable identities:
 `C04-WEB-P001 ... C04-WEB-P052`
 
 All 52 default to `PRESERVE` before mapping. New professional content uses `C04-WEB-N001...`.
+
+The latest authored content sync uses `CHxx-Pxx` only as chapter-level **authoring identities** to preserve page-level content. These are not final Web PAGE-IDs and must later be mapped one-to-one against the protected baseline before any final page count is claimed.
 
 Every Web/PDF/board PAGE has one primary page type:
 - PROJECT
@@ -167,6 +198,20 @@ Current selection discipline:
 
 A HOLD/DROP design may enter Process where it demonstrates professional judgment, but cannot be visually promoted to current/built MAIN.
 
+### Brand / Visual Identity
+Brand is an independent designed system and must remain visible across Web, App, paper map, Thirteen Imprints, selected Physical, boards, film and cultural products at medium-appropriate strength.
+
+Preserve and deepen where current material exists:
+- `清江石书` brand proposition and naming;
+- logo / wordmark system;
+- colour roles with `BRAND COLOR ≠ OPERATIONAL STATUS COLOR`;
+- typography / editorial layout;
+- LINE / SEAL / PAGE / TRACE graphic language;
+- icon / map / information-graphic grammar;
+- cross-media Brand Presence Scale.
+
+Brand does not gain route, safety or landscape authority. High-landscape / high-body-attention scenes may carry LIGHT / TRACE / OFF brand presence.
+
 ### Memory / IP
 Preserve:
 - `清江旅记` — physical Memory MAIN candidate;
@@ -201,7 +246,7 @@ Unresolved field/expert evidence blocks:
 - construction / implementation-ready / approval claims;
 - system Promotion.
 
-It does **not** block evidence-bounded analysis, design principles, methods, audience studies, game/interface design, physical/product concept development, design details, scenario ranges, Web, boards, film or remote-research display.
+It does **not** block evidence-bounded analysis, design principles, methods, audience studies, game/interface design, brand/identity development, physical/product concept development, design details, scenario ranges, Web, boards, film or remote-research display.
 
 Traditional landscape/feng-shui ideas may only be presented as cultural interpretation, not engineering/science evidence.
 
@@ -215,11 +260,13 @@ The existing 52 Web PAGE surfaces are the **preserved baseline inventory**:
 - not the new architecture;
 - not a ceiling;
 - not a target;
-- not reducible to 19 chapters or 21 chapter files.
+- not reducible to 20 chapters or 21 chapter files.
 
-Architecture v3.1 requires:
+Architecture v3.2 requires:
 
 `52 preserved baseline pages + substantive missing professional pages = new actual page count (>52 when new pages are added)`.
+
+The 2026-08-17 chapter-content sync currently contains **70 base authoring page units**. This is an authoring-content inventory only: **it is not the current Web page_count and must not be calculated as `52 + 70`**. Some units map to or expand legacy pages; only materially new units become N-series pages after the exact 52-row PAGE REGISTER is built.
 
 Do not add filler to increase count. Do not compress useful content to preserve 52. Do not compress pages to make chapters cleaner.
 
@@ -244,35 +291,36 @@ Check all applicable:
 
 `CI PASS / browser PASS / SHA / manifest / file exists / render complete / prototype works` are execution evidence only, not Design PASS.
 
-Analysis / principles / methods are not rejected merely for being analytical; they fail MAIN only when generic, visually weak, disconnected from C04 decisions or unable to show a design consequence.
+Analysis / principles / methods / Brand are not rejected merely for being analytical or identity-system content; they fail MAIN only when generic, visually weak, disconnected from C04 decisions or unable to show a design consequence / cross-media identity value.
 
 ## 8｜Current execution architecture
 
 ### ACTIVE 1｜B — Experience + Service + Editorial
-Use architecture v3.0/v3.1 as the content and page structure. Build missing analysis, principles, methods, audience logic, system explanation, scene design, detail development, technical proof and process judgment. Preserve the journey as a first-read thread but not as a compression rule.
+Use architecture v3.0/v3.1/v3.2 as the content and page structure, together with `chapter-content-sync/v0.1/` as the latest authored-content source where available. Build missing analysis, principles, methods, audience logic, system explanation, Brand, scene design, detail development, technical proof and process judgment. Preserve the journey as a first-read thread but not as a compression rule.
 
 ### ACTIVE 2｜D — Whole-project Visual + Motion
-Develop C04-specific visual language for both experiential and analytical pages. Protect strong real-Qingjiang Hero/R06/R13 assets. Raise App/Game Map, selected Physical, Memory/IP, Return and analytical graphics without generic flowchart/dashboard language.
+Develop C04-specific visual language for both experiential and analytical pages. Protect strong real-Qingjiang Hero/R06/R13 assets. Raise App/Game Map, selected Physical, Brand/Visual Identity, Memory/IP, Return and analytical graphics without generic flowchart/dashboard language. Brand should unify cross-media reading without becoming a visual overlay that competes with landscape.
 
 Film remains primarily experiential; Web/PDF/boards carry deeper professional analysis and details.
 
 ### ACTIVE 3｜Web
-Rebuild the current 52-PAGE baseline into architecture v3.1 without page loss:
+Rebuild the current 52-PAGE baseline into architecture v3.2 without page loss:
 1. reserve PAGE-ID `P001–P052`;
-2. map each PAGE to one CH00–CH18 chapter + page type;
-3. mark `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE`;
-4. identify missing required content;
-5. add substantive N-series pages;
-6. rebuild reading rhythm while retaining page independence;
-7. perform PAGE-ID finished-pixel readback;
-8. run independent Design Crit;
-9. only after independent approval may true duplicate pages enter merge consideration.
+2. map each PAGE to one CH00–CH19 chapter + page type;
+3. compare the 70 authored units against the 52-row PAGE REGISTER as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`;
+4. mark migration actions `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE` without default merge;
+5. identify missing required content;
+6. add substantive N-series pages only for materially new page units;
+7. rebuild reading rhythm while retaining page independence;
+8. perform PAGE-ID finished-pixel readback;
+9. run independent Design Crit;
+10. only after independent approval may true duplicate pages enter merge consideration.
 
 ### ACTIVE 4｜Physical / Product / Detail
 Includes existing outcomes + C23 + Model. Current selection/HOLD state remains explicit. Design details are a dedicated project chapter and may include body scale, plan/section/axon/exploded, material/CMF, mounting, replacement, maintenance and evidence-bounded environment sensitivity.
 
 ### ACTIVE 5｜F Final Integration
-Protect both first-read quality and professional depth. Classify concept/pixel state before editorial role. Web/PDF/boards/film do not need identical depth, but must share the same v3.1 chapter/page hierarchy.
+Protect both first-read quality and professional depth. Classify concept/pixel state before editorial role. Web/PDF/boards/film do not need identical depth, but must share the same v3.2 CH00–CH19 chapter/page hierarchy and Brand system at medium-appropriate strength.
 
 ### WATCH / FREEZE
 - A Research/Evidence: intervene for new claims, contradictions, source support and analysis where required.
@@ -282,12 +330,12 @@ Protect both first-read quality and professional depth. Classify concept/pixel s
 ## 9｜Current execution priority
 
 1. **Lock all existing 52 Web pages as independent PAGE identities.**
-2. **Map P001–P052 to CH00–CH18 without collapsing them.**
-3. **Produce a gap register for missing professional pages.**
-4. **Add missing Site/Culture/Audience/Journey analyses as N-series pages.**
-5. **Add explicit Design Principles and Design Methods as real pages using C04 examples.**
-6. **Complete Master System / Route / Thirteen Imprints / App explanation without replacing existing pages.**
-7. **Deepen key scenes, Physical/Sensory, Memory/IP and design details at current authority levels.**
+2. **Build the exact 52-row PAGE REGISTER and map P001–P052 to CH00–CH19 without collapsing them.**
+3. **Compare the 70 synced authoring units against the legacy register; do not calculate `52 + 70`.**
+4. **Produce a gap register for truly missing professional pages and allocate N-series only after object-level comparison.**
+5. **Continue missing CH01 / CH08 authoring from current authority and actual project material; do not invent filler.**
+6. **Complete Master System / Route / Thirteen Imprints / App / Brand explanation without replacing existing pages.**
+7. **Deepen key scenes, Physical/Sensory, Brand, Memory/IP and design details at current authority levels.**
 8. **Re-edit Technical/Model proof after the design chapters.**
 9. **Build Process/Alternatives pages only where they demonstrate professional judgment.**
 10. **After page-level content completion and independent review, consider only genuine duplicate merge candidates.**
@@ -300,7 +348,7 @@ Protect both first-read quality and professional depth. Classify concept/pixel s
 - chapter-file compression that collapses multiple pages;
 - journey-only public structure as the whole project architecture;
 - generic taxonomy-only structure as the whole project architecture;
-- the false rule that analysis / principles / methods / audience studies / design details belong only in Appendix;
+- the false rule that analysis / principles / methods / audience studies / Brand / design details belong only in Appendix;
 - R06 experience redesign;
 - JOURNEY-04 as current route authority while ROUTE-03 remains locked current;
 - HOLD Physical concepts promoted to current/built MAIN without new valid review;
