@@ -38,6 +38,32 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## Mixed-media evidence-role gate
+
+When one page or sequence combines source-grounded imagery, renders, models, diagrams, sections, nodes, or prototypes, assign an explicit evidence role to each medium before layout.
+
+Default spatial roles are:
+
+- **Landscape / site image / source-grounded scene**: proves the experienced field, context, atmosphere, or first-read relation that is actually supported by the source.
+- **Model / axon / clay study**: proves relative geometry, scale relation, sequence, massing, or spatial logic; it does not automatically prove atmosphere, field conditions, material truth, or implementation.
+- **Section / node / technical drawing**: proves how a relationship can be dimensioned, supported, assembled, maintained, or checked; it does not automatically prove engineering approval, field validation, or construction readiness.
+- **Render / AI-assisted visualization / prototype image**: proves a visualized design hypothesis or experience candidate only within its declared source and design boundaries.
+
+For each primary mixed-media composition:
+
+1. Write `PROVES` and `DOES NOT PROVE` for every medium before deciding size or placement.
+2. A derivative medium must not silently become a stronger authority than the source object it was created to explain.
+3. Do not allow a clean clay model, diagram, or render to become the project hero merely because it is graphically easier to control than the real landscape, product, object, or evidence source.
+4. If the project claim is experiential or landscape-first, source-grounded landscape/context should normally carry the first read; the model should support the spatial relation and the technical drawing should support near-read proof.
+5. If the decision question is explicitly geometric, structural, or assembly-led, a model/section/node may become the primary visual, but the role change must be intentional and named.
+6. When two media show the same relation, make the correspondence readable through shared IDs, anchors, callouts, camera/section references, or adjacency. Do not rely on visual resemblance alone.
+7. `Render PASS`, `Model PASS`, `Prototype PASS`, and `Field PASS` remain separate verdicts. Presentation hierarchy must not collapse them.
+8. Evidence boundaries must remain adjacent to the visual when a viewer could otherwise over-read what that medium proves.
+9. Run a first-read test without captions: if the viewer would infer the wrong authority or think a derivative image is the real project evidence, revise the hierarchy.
+10. Run a near-read test with captions: the technical/support media must remain legible after being visually subordinated.
+
+A mixed-media page is REVISE if it is visually polished but causes the viewer to mistake a derivative model/render/prototype for the underlying source authority.
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
@@ -75,3 +101,4 @@ For any layout containing source-bound spatial evidence, include a short authori
 - The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
+- Mixed-media compositions preserve explicit evidence roles and do not promote derivative media beyond what they can prove.
