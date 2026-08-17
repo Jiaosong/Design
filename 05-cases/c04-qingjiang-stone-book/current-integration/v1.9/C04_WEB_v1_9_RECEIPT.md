@@ -17,9 +17,16 @@
 6. Hero 与路线章节中文第一阅读；ROUTE-03 几何/锁定关系不改。
 7. 继承当前 Game Map / App / 十三印 / Scene / Physical / Memory / Technical / Motion / Return，不因架构重建删除设计对象。
 
+## 源码 readback
+- v1.9 `web-src/chapters/` 已写入 21 个按序构建的章节文件；其中 CH11 由 Game Map + App 两个文件承载，CH18 由 Motion + Return 两个文件承载，因此不等于 21 个新的项目章节。
+- `page_top.html` 已改为中文主导航与中文章节状态。
+- `app.js` 已改为中文章节标签，并保留十三印/地图交互与 lightbox 行为。
+- CSS 继承 v1.3 基础 + v1.7 delta + v1.8 ROUTE-03 delta，并新增 v3.0 专业深度样式。
+
 ## 当前验证边界
-- 源文件/绑定：执行中，提交后需 branch readback。
-- 构建语法/浏览器 finished-pixel readback：本回执不预先声明 PASS。
+- GitHub branch source readback：PASS。
+- 本环境无法直接联网 clone GitHub，因此本轮未在本地浏览器重新执行 finished-pixel 矩阵；不能沿用 v1.8 的 Browser PASS 作为 v1.9 Browser PASS。
+- v1.9 Browser / responsive / finished-pixel readback：PENDING。
 - 独立 Design Verdict：PENDING。
 - 不证明现场、工程、安全、运营、可施工或项目 Promotion。
 
