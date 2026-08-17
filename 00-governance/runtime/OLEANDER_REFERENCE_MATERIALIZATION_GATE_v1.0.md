@@ -47,20 +47,20 @@ A web page screenshot can be a locked reference frame only when the page itself 
 
 Preferred deterministic helper:
 
-`python tools/oleander-runtime/materialize_reference.py ...`
+`python 90-shared/toolchains/reference-materialization/materialize_reference.py ...`
 
 Examples:
 
 ```bash
 # Public PDF
-python tools/oleander-runtime/materialize_reference.py \
+python 90-shared/toolchains/reference-materialization/materialize_reference.py \
   --url 'https://official.example/reference.pdf' \
   --out-dir /mnt/data/reference-lock \
   --page 12 \
   --dpi 200
 
 # Existing local source
-python tools/oleander-runtime/materialize_reference.py \
+python 90-shared/toolchains/reference-materialization/materialize_reference.py \
   --file /mnt/data/source/reference.pdf \
   --out-dir /mnt/data/reference-lock \
   --page 12 \
