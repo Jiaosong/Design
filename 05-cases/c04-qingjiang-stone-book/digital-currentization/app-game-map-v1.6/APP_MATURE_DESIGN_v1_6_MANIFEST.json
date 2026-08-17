@@ -1,0 +1,49 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_v1_6_MATURE",
+  "state": "KEEP_AFTER_REVISION / FIELD_OPEN / NO_PROMOTION",
+  "design_invariants": "05-cases/c04-qingjiang-stone-book/C04_DESIGN_INVARIANTS.md",
+  "design_source": [
+    "app-game-map-v1.2 / TODAY-ROUTE-READ-MY BOOK / Service-Return / full R01-R13 / Audience Depth",
+    "original C04 presentation-board design DNA"
+  ],
+  "process_support_only": [
+    "app-game-map-v1.3 interaction-state deepening",
+    "v1.4 architecture prototype",
+    "v1.5 journey-state architecture prototype"
+  ],
+  "approved_visual_screens": ["TODAY", "ROUTE", "R06", "R13", "MY_BOOK", "RETURN"],
+  "source_bindings": {
+    "hero": {"drive_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh", "state": "existing D v1.1 KEEP display source"},
+    "r06": {"drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn", "state": "source-grounded real Qingjiang valley display source"},
+    "r13": {"drive_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf", "state": "conceptual relation pixel / does-not-prove site geometry or safety"},
+    "return": {"drive_id": "19mkQdgTj0ASkGh0Ott6JIMNrPcaHd4Y7", "state": "demo-state pixel / does-not-prove live operations"}
+  },
+  "portable_package": {
+    "drive_id": "1lkc4fpnedae1L17OzOT3gAo8Hsf0Xumy",
+    "filename": "C04_QINGJIANG_APP_v1_6_MATURE_PACKAGE.zip",
+    "bytes": 3175161,
+    "sha256": "9ee05f24f8040983bf34aaeb6ab890567488e711517d6b669690da7f73756904",
+    "drive_raw_readback_size_pass": true
+  },
+  "quality_gate": {
+    "design_source_continuity": "KEEP",
+    "real_qingjiang_first_read": "KEEP",
+    "route_return_hierarchy": "KEEP",
+    "digital_retreat": "KEEP",
+    "memory_as_outcome": "KEEP",
+    "r06": "KEEP",
+    "r13": "KEEP_AFTER_REVISION_FIELD_OPEN",
+    "browser_runtime_readback": "HOLD_ENVIRONMENT",
+    "field_safety_live_operation": "HOLD"
+  },
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "FIELD_PASS": "NONE",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "construction": "NOT_FOR_CONSTRUCTION"
+  }
+}
