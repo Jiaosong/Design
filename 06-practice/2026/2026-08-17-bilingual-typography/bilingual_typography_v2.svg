@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#f0eee8"/>
+<rect x="42" y="40" width="1836" height="1000" rx="14" fill="#fff" stroke="#d7d4cc"/>
+<text x="92" y="108" font-family="Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#111">OLEANDER / BILINGUAL TYPOGRAPHY CALIBRATION</text>
+<text x="92" y="142" font-family="Noto Sans, sans-serif" font-size="14" fill="#74716a">CN–EN hierarchy · line breaks · mixed-script spacing · editable SVG</text>
+<text x="92" y="208" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#111">A / 等权双语 — REJECT</text>
+<text x="92" y="235" font-family="Noto Sans CJK SC, sans-serif" font-size="13" fill="#777">两个语言都在抢第一阅读，标题像翻译清单而不是一个完整设计命题。</text>
+<rect x="92" y="265" width="780" height="650" fill="#faf9f6" stroke="#d7d5cf"/>
+<text x="126" y="340" font-family="Noto Sans CJK SC, sans-serif" font-size="46" font-weight="700" fill="#111">先让回程成立，再谈解释</text>
+<text x="126" y="410" font-family="Noto Sans, sans-serif" font-size="42" font-weight="700" fill="#111"><tspan x="126" dy="0">MAKE RETURN WORK</tspan><tspan x="126" dy="54">BEFORE EXPLANATION</tspan></text>
+<line x1="126" y1="510" x2="820" y2="510" stroke="#c8c6bf"/>
+<text x="126" y="570" font-family="Noto Sans CJK SC, sans-serif" font-size="22" fill="#222"><tspan x="126" dy="0">景观和路线应该先被读懂，数字系统只在需要时出现。</tspan><tspan x="126" dy="38">RETURN、ROUTE 与 SAFETY 不能被解释层抢走注意力。</tspan></text>
+<text x="126" y="686" font-family="Noto Sans, sans-serif" font-size="22" fill="#222"><tspan x="126" dy="0">Landscape and route should be understood first, while the</tspan><tspan x="126" dy="34">digital layer appears only when it is needed. Return, route</tspan><tspan x="126" dy="34">and safety must not be visually subordinated to explanation.</tspan></text>
+<text x="126" y="826" font-family="Noto Sans CJK SC, sans-serif" font-size="13" fill="#777">问题：字号、重量、占宽与段落密度都近似，形成双主角。</text>
+<text x="126" y="856" font-family="Noto Sans, sans-serif" font-size="13" fill="#777">Failure: both languages compete for the same visual role.</text>
+<text x="980" y="208" font-family="Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" fill="#111">B / 主语言 + 支持语言 — KEEP CANDIDATE</text>
+<text x="980" y="235" font-family="Noto Sans CJK SC, sans-serif" font-size="13" fill="#777">中文承担第一阅读；英文做近读校验，不复制中文的视觉重量。</text>
+<rect x="980" y="265" width="848" height="650" fill="#f8f8f5" stroke="#d7d5cf"/>
+<text x="1022" y="350" font-family="Noto Sans CJK SC, sans-serif" font-size="58" font-weight="700" fill="#111"><tspan x="1022" dy="0">先让回程成立，</tspan><tspan x="1022" dy="72">再谈解释。</tspan></text>
+<text x="1024" y="514" font-family="Noto Sans, sans-serif" font-size="19" font-weight="600" letter-spacing="1.1" fill="#5e6967">RETURN BEFORE EXPLANATION</text>
+<line x1="1022" y1="552" x2="1768" y2="552" stroke="#c8cbc7"/>
+<text x="1022" y="612" font-family="Noto Sans CJK SC, sans-serif" font-size="20" fill="#202321"><tspan x="1022" dy="0">景观和路线先成立，数字系统只在需要时出现。</tspan><tspan x="1022" dy="34">回程、路线与安全保持在解释之前。</tspan></text>
+<text x="1022" y="722" font-family="Noto Sans, sans-serif" font-size="14" fill="#727974"><tspan x="1022" dy="0">Landscape and route remain the first read. The digital layer appears only</tspan><tspan x="1022" dy="23">when needed; return, route and safety remain ahead of explanation.</tspan></text>
+<text x="1022" y="808" font-family="Noto Sans CJK SC, sans-serif" font-size="12" fill="#777">中文：主标题 / 主正文</text>
+<text x="1232" y="808" font-family="Noto Sans, sans-serif" font-size="12" fill="#777">EN: verification / secondary reading</text>
+<text x="1022" y="842" font-family="Noto Sans CJK SC, sans-serif" font-size="12" fill="#777">混排原则：英文缩写与数字保留比例字形，不用全角 ASCII 伪造整齐。</text>
+<line x1="92" y1="956" x2="1828" y2="956" stroke="#d6d3cc"/>
+<text x="92" y="995" font-family="Noto Sans CJK SC, sans-serif" font-size="13" font-weight="700" fill="#111">RULE /</text>
+<text x="150" y="995" font-family="Noto Sans CJK SC, sans-serif" font-size="13" fill="#333">双语并置不是复制两遍同一层级。先决定主阅读语言，再分配第二语言的字号、行长、字重和节奏；信息不删，但视觉权重必须不等。</text>
+</svg>
