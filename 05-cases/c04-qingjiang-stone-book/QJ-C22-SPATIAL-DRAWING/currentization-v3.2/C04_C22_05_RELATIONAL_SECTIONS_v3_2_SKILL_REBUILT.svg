@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 2384 1684">
+<defs><style>
+.paper{fill:#f4f1e9}.hair{stroke:#c8cbc4;stroke-width:1.4;fill:none}.field{fill:#f8f6f0}.railbg{fill:#efeee8}
+.cut{stroke:#17201e;stroke-width:6.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.primary{stroke:#26302d;stroke-width:3.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.secondary{stroke:#737b77;stroke-width:1.8;fill:none}.frozen{stroke:#a3aaa5;stroke-width:1.5;fill:none}
+.open{stroke:#b86649;stroke-width:2;fill:none;stroke-dasharray:9 7}.datum{stroke:#60716b;stroke-width:1.4;fill:none;stroke-dasharray:8 6}
+.water{fill:#c9dddb;stroke:#6f9795;stroke-width:1.7}.mass{fill:#dedbd2;stroke:#17201e;stroke-width:2.2}
+.cap{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:18px;font-weight:700;letter-spacing:2.2px;fill:#68716c}
+.title{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:50px;font-weight:700;fill:#17201e}
+.claim{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:24px;font-weight:700;fill:#17201e}
+.viewtitle{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:22px;font-weight:700;fill:#17201e}
+.label{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:18px;font-weight:600;fill:#17201e}
+.tx{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:16px;fill:#3f4945}
+.sm{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:14px;fill:#69716d}.micro{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:12px;fill:#737a76}
+</style></defs>
+<rect class="paper" width="2384" height="1684"/>
+<g id="HIERARCHY_FRAME"><line x1="70" y1="58" x2="2314" y2="58" class="hair"/><line x1="1690" y1="210" x2="1690" y2="1470" class="hair"/><line x1="70" y1="1508" x2="2314" y2="1508" class="hair"/></g>
+<g id="SHEET_HEADER"><text x="70" y="100" class="cap">OLEANDER / C04 / C22 · LANDSCAPE SECTION SYSTEM</text><text x="70" y="162" class="title">典型剖面｜C22-SEC-A / SEC-B / SEC-C</text><text x="2314" y="100" text-anchor="end" class="sm">TECHNICAL EXPLANATION · NTS · FIELD OPEN · NOT FOR CONSTRUCTION</text></g>
+<g id="PRIMARY_CLAIM"><text x="70" y="225" class="claim">剖面只证明“关系”：跨江移动与观看、冻结的 R06 上下文、以及 R13 的压缩—释放。</text><text x="70" y="256" class="tx">3S：SEC-A + SEC-C　/　30S：运输 / 身体 / Return 逻辑　/　Near read：公开参数、来源状态与未关闭条件</text></g>
+<g id="PRIMARY_DRAWING_FIELD"><rect x="70" y="295" width="1570" height="1120" class="field"/>
+<g id="C22_SEC_A">
+ <text x="100" y="342" class="cap">C22-SEC-A · TRANSPORT + VIEW · PRIMARY SECTION</text>
+ <text x="100" y="378" class="viewtitle">跨江索道：交通优先；地形轮廓仅为 C22 既有关系剖面，不是测绘纵断面。</text>
+ <line x1="100" y1="735" x2="1608" y2="735" class="datum"/>
+ <text x="103" y="760" class="micro">RELATIONAL DATUM / NOT A LEVEL</text>
+ <g id="SEC_A_SOURCE_GEOMETRY" transform="translate(0 80) scale(.72)"><path d="M 119.195731 625.843652 C 372.486704 603.496977 521.482773 536.449136 730.080395 499.198166 C 834.379206 479.828442 908.873334 521.548748 975.925081 581.146394 " class="cut"/><path d="M 1340.96506 610.943264 C 1489.961129 543.899331 1653.85368 432.150325 1817.754044 402.353456 C 2011.443464 369.57182 2145.543052 409.799743 2220.041087 476.847583 " class="cut"/><path d="M 715.180007 469.397389 L 1847.550914 365.102485 " class="primary"/><path d="M 761.369648 466.41653 C 761.369648 475.472403 754.03275 482.809301 744.980784 482.809301 C 735.928817 482.809301 728.591919 475.472403 728.591919 466.41653 C 728.591919 457.368471 735.928817 450.031573 744.980784 450.031573 C 754.03275 450.031573 761.369648 457.368471 761.369648 466.41653 Z M 761.369648 466.41653 " class="primary"/><path d="M 1831.158143 368.083344 C 1831.158143 377.131403 1823.825151 384.472208 1814.773185 384.472208 C 1805.717312 384.472208 1798.384321 377.131403 1798.384321 368.083344 C 1798.384321 359.031378 1805.717312 351.690573 1814.773185 351.690573 C 1823.825151 351.690573 1831.158143 359.031378 1831.158143 368.083344 Z M 1831.158143 368.083344 " class="primary"/><path d="M 950.59364 457.989646 L 986.352228 457.989646 C 990.466048 457.989646 993.802422 462.103466 993.802422 465.43984 L 993.802422 483.31718 C 993.802422 487.431 990.466048 490.767374 986.352228 490.767374 L 950.59364 490.767374 C 946.47982 490.767374 943.143446 486.653555 943.143446 483.31718 L 943.143446 465.43984 C 943.143446 461.322113 946.47982 457.989646 950.59364 457.989646 Z M 950.59364 457.989646 " class="secondary"/><path d="M 1248.585778 430.544646 L 1284.344366 430.544646 C 1288.458186 430.544646 1291.79456 434.654559 1291.79456 437.990934 L 1291.79456 455.872181 C 1291.79456 459.982094 1288.458186 463.318468 1284.344366 463.318468 L 1248.585778 463.318468 C 1244.471958 463.318468 1241.135584 459.208555 1241.135584 455.872181 L 1241.135584 437.990934 C 1241.135584 433.877114 1244.471958 430.544646 1248.585778 430.544646 Z M 1248.585778 430.544646 " class="secondary"/><path d="M 1546.577916 403.099647 L 1582.336504 403.099647 C 1586.450324 403.099647 1589.786698 407.20956 1589.786698 410.545934 L 1589.786698 428.427182 C 1589.786698 432.537095 1586.450324 435.873469 1582.336504 435.873469 L 1546.577916 435.873469 C 1542.464097 435.873469 1539.127722 431.763556 1539.127722 428.427182 L 1539.127722 410.545934 C 1539.127722 406.432115 1542.464097 403.099647 1546.577916 403.099647 Z M 1546.577916 403.099647 " class="secondary"/></g><rect x="700" y="535" width="250" height="70" class="water"/><text x="825" y="578" text-anchor="middle" class="label">清江 / QINGJIANG</text>
+<g id="SEC_A_PUBLIC_REFERENCES"><line x1="370" y1="434" x2="1307" y2="350" class="secondary"/><text x="780" y="385" class="sm">1056 m · OFFICIAL REPORTED CABLE LINE LENGTH · REFERENCE ONLY / NOT SCALED</text>
+<line x1="1450" y1="352" x2="1450" y2="560" class="open"/><text x="1475" y="462" class="label" fill="#b86649">ΔH ≈ 156 m</text><text x="1475" y="486" class="micro">public reported vertical difference / reference only</text></g>
+<text x="103" y="692" class="sm">NO SURVEY PROFILE · NO STRUCTURAL GEOMETRY CLAIM · VIEW = MOVING OBSERVATION / NO FORCED UI</text>
+</g>
+<line x1="100" y1="805" x2="1608" y2="805" class="hair"/>
+<g id="C22_SEC_C">
+ <text x="100" y="850" class="cap">C22-SEC-C · R13 NATURAL CONVERGENCE · SECOND PRIMARY SECTION</text>
+ <text x="100" y="886" class="viewtitle">身体先读：Approach → Compression → Release / Return；裂隙真实宽高、地面、防滑、边界与容量均 FIELD OPEN。</text>
+ <g id="SEC_C_SOURCE_GEOMETRY" transform="translate(0 305) scale(.70)"><path d="M 178.797284 1445.325939 C 327.793353 1378.278099 491.68981 1333.576934 677.932943 1341.027128 C 849.275688 1348.477322 953.574499 1400.624775 1042.972922 1482.573003 " class="cut"/><path d="M 1370.765837 1482.573003 C 1460.160353 1385.728293 1564.455257 1341.027128 1728.355621 1341.027128 C 1922.052855 1341.027128 2071.048924 1385.728293 2220.041087 1460.222421 " class="cut"/></g><path d="M180 1270 C470 1220 710 1195 860 1218 C995 1238 1120 1244 1525 1280" class="datum"/>
+<text x="270" y="1194" class="label">APPROACH</text><text x="786" y="1128" class="label">COMPRESSION</text><text x="1288" y="1194" class="label">RELEASE / RETURN</text>
+<g id="HUMAN_SCALE_RELATIONAL" stroke="#4e5753" fill="none" stroke-width="2.1">
+ <circle cx="500" cy="1221" r="10" fill="#4e5753"/><line x1="500" y1="1231" x2="500" y2="1290"/><line x1="500" y1="1250" x2="480" y2="1270"/><line x1="500" y1="1250" x2="520" y2="1270"/><line x1="500" y1="1290" x2="482" y2="1324"/><line x1="500" y1="1290" x2="518" y2="1324"/>
+ <circle cx="875" cy="1197" r="10" fill="#4e5753"/><line x1="875" y1="1207" x2="875" y2="1266"/><line x1="875" y1="1226" x2="855" y2="1246"/><line x1="875" y1="1226" x2="895" y2="1246"/><line x1="875" y1="1266" x2="857" y2="1300"/><line x1="875" y1="1266" x2="893" y2="1300"/>
+ <circle cx="1290" cy="1221" r="10" fill="#4e5753"/><line x1="1290" y1="1231" x2="1290" y2="1290"/><line x1="1290" y1="1250" x2="1270" y2="1270"/><line x1="1290" y1="1250" x2="1310" y2="1270"/><line x1="1290" y1="1290" x2="1272" y2="1324"/><line x1="1290" y1="1290" x2="1308" y2="1324"/>
+</g>
+<path d="M810 1138 V1360 M945 1138 V1360" class="open"/><text x="878" y="1388" text-anchor="middle" class="sm" fill="#b86649">W / H / SURFACE / SLIP / GUARD / CAPACITY = FIELD VERIFY</text>
+</g>
+</g>
+<g id="ANNOTATION_RAIL"><rect x="1730" y="295" width="584" height="1120" class="railbg"/>
+<text x="1765" y="338" class="cap">ANNOTATION / EVIDENCE RAIL</text>
+<text x="1765" y="384" class="viewtitle">SEC-B / FROZEN R06 CONTEXT</text><text x="1765" y="414" class="sm">R06 已结束；这里只保留 C22 跨图上下文。</text>
+<g id="C22_SEC_B_FROZEN" opacity=".55" transform="translate(1700 470) scale(.25)"><path d="M 126.649831 1087.732248 C 491.68981 1043.03499 789.681948 968.533049 1132.371345 946.186373 C 1460.160353 923.835791 1802.853656 871.688339 2220.041087 856.78795 " class="frozen"/><path d="M 461.885127 990.887538 C 700.279619 961.086761 893.976853 931.289892 1132.371345 920.858838 " class="frozen"/><path d="M 461.885127 990.887538 C 700.279619 961.086761 893.976853 931.289892 1132.371345 920.858838 " class="frozen"/><path d="M 1110.020762 868.711386 L 1095.120374 961.086761 " class="frozen"/><path d="M 1273.91722 868.711386 L 1266.463119 931.289892 " class="frozen"/><path d="M 1370.765837 864.238144 L 1370.765837 931.289892 " class="frozen"/><path d="M 1370.765837 886.588727 L 1340.96506 908.939309 " class="frozen"/><path d="M 1370.765837 886.588727 L 1400.562706 908.939309 " class="frozen"/><path d="M 1370.765837 931.289892 L 1348.415254 968.533049 " class="frozen"/><path d="M 1370.765837 931.289892 L 1393.112512 968.533049 " class="frozen"/><path d="M 1400.503906 871.574219 L 1772.949219 789.636719 L 1765.496094 946.0625 Z M 1400.503906 871.574219 " class="frozen"/></g><text x="1765" y="760" class="micro">NO NEW DIMENSIONS · NO NEW NODE · NO R06 REOPEN</text>
+<line x1="1765" y1="792" x2="2278" y2="792" class="hair"/>
+<text x="1765" y="836" class="viewtitle">TRUTH / AUTHORITY</text>
+<text x="1765" y="874" class="label">SEC-A / EVIDENCE-BOUND</text><text x="1765" y="900" class="sm">1056 m + ΔH≈156 m are public reported facts.</text><text x="1765" y="924" class="sm">They do not define the profile geometry or scale.</text>
+<text x="1765" y="968" class="label">SEC-B / FROZEN PROVENANCE</text><text x="1765" y="994" class="sm">Only preserves cross-sheet lineage.</text>
+<text x="1765" y="1038" class="label">SEC-C / RELATIONAL + FIELD OPEN</text><text x="1765" y="1064" class="sm">Compression/release is a design reading.</text><text x="1765" y="1088" class="sm">Actual fissure geometry and safety remain open.</text>
+<line x1="1765" y1="1128" x2="2278" y2="1128" class="hair"/>
+<text x="1765" y="1172" class="viewtitle">DOES NOT PROVE</text><text x="1765" y="1208" class="sm">terrain survey / cable structure / clearance / slope</text><text x="1765" y="1233" class="sm">R13 width-height / surface / slip / guard / capacity</text>
+<text x="1765" y="1288" class="label" fill="#b86649">FIELD OBSERVED=0 · FIELD MEASURED=0</text><text x="1765" y="1316" class="sm">G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION</text>
+</g>
+<g id="METADATA_RAIL"><text x="70" y="1548" class="cap">DRW-C04-C22-05 · REV v3.2 · SKILL-REBUILT</text><text x="70" y="1580" class="sm">Discipline: Landscape / Site + Spatial Analysis · Status: TECHNICAL EXPLANATION · Scale: NTS · source section geometry retained where applicable</text><text x="2314" y="1580" text-anchor="end" class="sm">2026-08-17 · CURRENT DELTA C22 ONLY</text><text x="70" y="1620" class="micro">v3.1 equal-strip board superseded: v3.2 gives SEC-A/SEC-C the main field and moves frozen SEC-B + truth state into a subordinate rail.</text></g>
+</svg>
