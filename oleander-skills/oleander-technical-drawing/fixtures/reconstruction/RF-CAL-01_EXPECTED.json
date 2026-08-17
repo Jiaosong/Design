@@ -1,0 +1,33 @@
+{
+  "fixture_id": "RF-CAL-01",
+  "status": "SYNTHETIC_CALIBRATION_NOT_GOLDEN_PROMOTED",
+  "renderer_calibration": {
+    "canvas": [1200, 800],
+    "comparison_tolerance": 2,
+    "renderer_used_for_recorded_readback": "Inkscape"
+  },
+  "negative_candidate": {
+    "required_detected_failures": [
+      "A2_PRIMARY_GEOMETRY_X_SHIFT_5PX",
+      "A4_INTERFACE_STROKE_2_2_TO_2_8",
+      "A3_TITLE_BASELINE_PLUS_3PX",
+      "A3_TITLE_SIZE_32_TO_31"
+    ],
+    "recorded_global_changed_pixel_ratio_above_tolerance": 0.01519375,
+    "required_verdict": "REVISE"
+  },
+  "matched_candidate": {
+    "visible_pixel_match_under_locked_renderer": true,
+    "recorded_exact_equal_pixel_ratio": 1.0,
+    "recorded_changed_pixel_ratio_above_tolerance": 0.0,
+    "source_bytes_may_differ": true,
+    "required_verdict": "FIDELITY_DIAGNOSTIC_MATCH_ONLY_REVIEW_STILL_REQUIRED"
+  },
+  "invariants": [
+    "RF_PASS_NEVER_IMPLIES_TD_PASS",
+    "PIXEL_MATCH_NEVER_IMPLIES_VECTOR_EDITABILITY",
+    "PIXEL_MATCH_NEVER_IMPLIES_ENGINEERING_OR_FIELD_TRUTH",
+    "GLOBAL_METRIC_CANNOT_OVERRIDE_CRITICAL_ROI_FAILURE",
+    "CANDIDATE_MUST_NOT_BE_WARPED_TO_HIDE_RECONSTRUCTION_ERROR"
+  ]
+}
