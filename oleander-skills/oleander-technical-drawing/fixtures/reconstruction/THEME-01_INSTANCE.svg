@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="white"/>
+  <g id="THEME-01-SEM-A" data-role="THEME_SEMANTIC_LAYER"><path d="M80 120 H300 V240 H80 Z" fill="none" stroke="#c55"/></g>
+  <g id="THEME-01-SEM-B" data-role="THEME_SEMANTIC_LAYER"><path d="M430 80 C520 100 590 160 650 250" fill="none" stroke="#5879a3"/></g>
+  <g id="THEME-01-VIS-A" data-role="STRUCTURED_THEME_VISUAL_VECTOR_NON_AUTHORITY"><path d="M92 132 H286 V228 H92 Z" fill="#efb2b5"/></g>
+  <g id="THEME-01-VIS-B" data-role="STRUCTURED_THEME_VISUAL_VECTOR_NON_AUTHORITY"><path d="M438 90 C520 108 585 164 642 244" fill="none" stroke="#7394b8" stroke-width="8"/></g>
+</svg>
