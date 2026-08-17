@@ -1,4 +1,4 @@
-# C04｜ACTIVE EXECUTION CURRENT｜2026-08-16｜NO-LOSS REFRAME
+# C04｜ACTIVE EXECUTION CURRENT｜2026-08-17｜JOURNEY-LED NO-LOSS
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 Role: `CURRENT EXECUTION CARRIER`  
@@ -10,8 +10,8 @@ Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`
 Every execution round MUST read, in order:
 1. `C04_CURRENT.md`
 2. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md`
-3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md`
-4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md` + machine content contract
+3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support
+4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.9.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.9.json`
 5. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
 6. lane-specific latest Owner / PR / Drive material delta.
 
@@ -43,24 +43,35 @@ No design disappears merely because:
 The full existing design universe that must remain visible in editorial decisions includes:
 `Journey + 13 Imprints + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
 
-## 2｜CURRENT THREE-AXIS PUBLIC REFRAME
+## 2｜CURRENT PUBLIC STORY｜JOURNEY-LED, NOT TAXONOMY-LED
 
-The user-directed public structure is now:
+The previous N1/N2/N3 three-axis structure remains as an internal content/indexing tool only.
 
-### N1｜地域文化｜清江有什么？
-Regional history / local stories / place names / traditional landscape view / landscape knowledge / local wisdom.
+Public storytelling follows one journey:
 
-### N2｜游玩线路与交通｜游客怎么游？
-Arrival + BOAT / CABLE / WALK + game-style Qingjiang map + route/service/return.
+`ENTER QINGJIANG → CHOOSE HOW TO MOVE → CROSS / OPEN → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS / WITHDRAW → RETURN → REMEMBER`
 
-### N3｜场景游戏与人群｜到了这里具体做什么？
-`CULTURE / WISDOM / PLAY / WELLBEING × scene × audience`, activating the existing Thirteen Imprints, App, physical interaction, sensory design and memory/IP.
-
-These axes reorganize existing designs. They are not three new subprojects and they do not replace existing assets.
-
-Public Hero direction:
+Public Hero:
 > **先游清江，再读清江。**
-> 从地域文化和真实游程出发，把十三印、游戏地图、数字界面、实体互动、休息、记忆和文创重新编排到真正适合发生的场景。
+> **水上看，空中看，山中走；需要时，再打开一页清江。**
+
+The public story is driven by eight design decisions:
+1. Real Qingjiang first.
+2. BOAT / CABLE / WALK as three experience scales.
+3. Thirteen Imprints as optional content, not route authority.
+4. Different scenes use different attention density.
+5. Digital is an implicit companion and withdraws when the landscape is stronger.
+6. Physical intervention appears only where the body genuinely needs it.
+7. Audience depth changes inside the same scene, not through persona silos.
+8. Return + memory close the experience, not 13/13 completion.
+
+Hard MAIN editorial test:
+
+> **“这个设计决定是什么？”**
+
+A surface that mainly says “we researched / validated / governed / built a framework” is not MAIN.
+
+The existing 52 Web semantic surfaces remain a no-loss inventory. They are not 52 equal pages and are not compressed to a new target count.
 
 ## 3｜COUNT FREE, QUALITY HARD
 
@@ -100,34 +111,38 @@ Quality pruning happens **after** asset no-loss classification, not before.
 ## 4｜ACTIVE 1｜B — EXPERIENCE + SERVICE + EDITORIAL
 
 ### EXECUTE NOW
-- Build the public story from the full Asset Atlas, not only the later 8-anchor summary.
-- Axis N1 must convert culture/history/story/feng-shui-as-cultural-view into actual scene content, not taxonomy-only pages.
+- Use Public Narrative v1.9 as the public spine; stop using Culture/Journey/Audience/Physical/Digital/Memory as equal public taxonomy chapters.
 - Preserve all R01–R13 as the complete existing content/design library; current Core/Companion selection controls exposure, not existence.
-- For MAIN scenes write only: `visitor situation → action → content/game mode → audience depth → physical/digital carrier → what they gain → fallback`.
-- Use `CULTURE / WISDOM / PLAY / WELLBEING` as tags inside scenes, not four equal chapters.
+- Embed culture into scenes through `source/content → scene → visitor action → perception change`; do not build taxonomy-only public pages.
+- For MAIN scenes write only: `visitor situation → visible design decision → action → optional content/game mode → audience depth → physical/digital carrier → what changes for the visitor → fallback`.
+- Use `CULTURE / WISDOM / PLAY / WELLBEING` as internal scene tags, not four equal chapters.
 - Preserve existing family interaction verbs: `LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
+- Treat HOLD/DROP material as Process only when it demonstrates a professional design judgment.
 
 ### QUALITY STOP
 No new narrative version if it only adds categories/wording without changing a visible scene/action/design decision.
 
 ### MAIN TEST
-The story must directly activate an existing or explicitly new design object from the Asset Atlas.
+Every MAIN surface must directly activate a current/valid scene or design object and visibly answer “这个设计决定是什么？”.
 
 ## 5｜ACTIVE 2｜D — WHOLE-PROJECT VISUAL + MOTION DIRECTION
 
 ### EXECUTE NOW
-D visually unifies the **full design universe**:
-`Qingjiang landscape → Culture → Game Map → BOAT/CABLE/WALK → Thirteen Imprints → App → Physical/Sensory → Return/Memory/IP → Technical Proof`.
+D visually unifies the **full design universe through journey rhythm**:
+`Qingjiang landscape → route/mobility → optional content → App companion → scene/body → Return → Memory → Technical Proof`.
 
 Priorities:
 - protect strongest real-Qingjiang Hero / R06 / R13 imagery;
-- raise App/Game Map, Physical, Memory/IP and Return to the same visual maturity;
+- raise App/Game Map, selected Physical, Memory/IP and Return visual quality without reviving HOLD concepts as MAIN;
 - show real designed objects, body relation and interaction, not just labels;
 - new images only when they replace a weaker MAIN asset or close a specific missing design visualization;
 - reject invented platforms/railings/cable structures/fake terrain and generic tourism-game moodboards.
 
 ### MOTION
-The next film edit must restore App / 13 Imprints / physical interaction / memory into the journey. It may not remain an abstract `relation → reveal → withdrawal` slideshow.
+The next film edit follows:
+`ENTER → MOVE → OPEN → WALK/STOP → PASS → RETURN → REMEMBER`.
+
+It must restore App / 13 Imprints / selected physical interaction / memory where useful, but may not become an abstract `relation → reveal → withdrawal` slideshow or a contact-sheet montage.
 
 ### MAIN TEST
 A candidate should still read as this Qingjiang project with most explanatory text hidden.
@@ -135,85 +150,90 @@ A candidate should still read as this Qingjiang project with most explanatory te
 ## 6｜ACTIVE 3｜WEB PUBLIC EXPERIENCE
 
 ### EXECUTE NOW
-The next Web successor must consume the full Asset Atlas before layout pruning.
+The current Web lineage contains **52 visible semantic surfaces**. Treat them as an editable no-loss inventory, not equal public pages.
 
-Required design systems to make visible at professional depth:
+Assign each surface exactly one primary editorial role:
+- `MAIN_DECISION`
+- `SUPPORT_EVIDENCE`
+- `PROCESS_JUDGMENT`
+- `TECHNICAL_PROOF`
+- `ARCHIVE`
+
+MAIN must be journey/design-decision-led. Required systems remain visible at professional depth, but they no longer need equal standalone chapters:
 - real Qingjiang + journey;
-- N1 culture/content engine;
-- game-style Qingjiang map + BOAT/CABLE/WALK;
-- **Qingjiang Thirteen Imprints App as a primary designed outcome**;
-- full 13-content system with selected deep scene examples;
-- physical/body/sensory designs including `步步生光`, rail-rest, fluid-rest candidate, `清风吟`;
-- audience-specific scene actions;
+- locked current Route binding and BOAT/CABLE/WALK experience scales;
+- Qingjiang Thirteen Imprints App as a primary designed outcome/implicit companion;
+- full 13-content system with selected scene examples;
+- selected physical/body/sensory designs with honest current selection/HOLD state;
+- audience-specific actions inside scenes;
 - `清江旅记 + 我的石书 + 清江一线 + 清江雾气 + 红花峰崽` memory/IP layer;
-- C22/C23/SEC-A/R06 node technical proof.
-
-Stop treating the Web as a fixed stack of equal 16:9 screens. Section length is content-derived.
-
-Suggested macro rhythm, freely split/merge by quality:
-`Hero → Culture → How to Play / Map → App → 13 Imprints → Scene Interactions → Audience Depth → Physical/Sensory → R06/R13 → Memory/IP → Technical Proof → Return`.
+- C22/C23/Model technical proof after the design decision;
+- Return as independent closure.
 
 ### QUALITY STOP
-Do not preserve old REV04 sections merely because they exist. But do not delete an underlying design concept merely because its old pixels fail.
+- stop equal 16:9/PPT stacking;
+- stop public headlines led by FIELD / G1F / Authority / Evidence Gate / State Machine / Version / Receipt;
+- stop generic system headings when a scene/design decision can carry the content;
+- do not preserve old REV04 sections merely because they exist;
+- do not delete an underlying design concept merely because its old pixels fail.
 
 ### MAIN TEST
-The Web must read as a complete designed tourism/experience system, not a research presentation embedded in a webpage.
+The Web must read as one designed Qingjiang journey, not a research presentation or a catalogue of project subsystems.
 
 ## 7｜ACTIVE 4｜PHYSICAL / PRODUCT / DETAIL｜C23 + MODEL + EXISTING OUTCOMES
 
 ### EXECUTE NOW
 C23 + Model are **technical proof for selected existing outcomes**, not the full Physical definition.
 
-Existing Physical / Sensory universe to retain in decisions:
-- `PHY-01 步步生光` — Primary Physical Hero Candidate;
-- `栏杆式可拆卸倚靠休息板` — service/recovery support;
-- `山体流体休憩装置` — conditional secondary physical hero candidate;
-- `清风吟` — sensory interaction / memory candidate;
-- `F01/F02/F03/F04` — current technical/service descendants and supporting layer.
+Current Physical / Sensory selection discipline:
+- `栏杆式可拆卸倚靠休息板 / P02 lineage` = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
+- `PHY-01 步步生光` = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
+- `山体流体休憩装置` = `HOLD / SINGLE-SITE COMPETITION`;
+- `清风吟` = `HOLD / WIND-SENSORY CANDIDATE`;
+- `F01/F02/F03/F04` = technical/service descendants and supporting layer.
+
+R06 experience is `FINISHED / FROZEN / NO REOPEN`. Technical work may clarify it but may not restart its experience design.
 
 For any MAIN physical object show, as applicable:
 `scene → body action → use → body scale → plan/section/axon/exploded proof → material/CMF → mounting/maintenance concept → environment sensitivity → FIELD OPEN items`.
 
 Model priority remains selective:
-- `SEC-A` = strongest primary section candidate;
-- `R06 node` = pair with R06 landscape: feeling + how it works;
-- `Hero clay` only if it adds spatial clarity;
-- `overall Axon` support;
-- no new model views if they are weaker than C23 linework or real Qingjiang landscape.
+- current independently reviewed section/technical candidates only at their actual verdict level;
+- R06 node/model = pair with R06 landscape only when it materially clarifies “how it works”;
+- overall Axon = support;
+- no new model views if weaker than C23 linework or real Qingjiang landscape.
 
 ### QUALITY STOP
-No infinite detailing, pseudo-construction certainty or new object family merely to grow deliverables.
+No infinite detailing, pseudo-construction certainty, automatic revival of HOLD Physical concepts, or new object family merely to grow deliverables.
 
 ## 8｜ACTIVE 5｜F — FINAL INTEGRATION / EDITOR
 
 ### EXECUTE NOW
-F must classify **concept and pixels separately** before `MAIN / SUPPORT / PROCESS / DROP`.
+F must classify **concept and pixels separately**, then classify editorial role.
 
 Order:
 1. inventory all current candidates against `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0`;
-2. mark `CONCEPT KEEP / PIXELS KEEP` or `CONCEPT KEEP / PIXELS REDRAW` etc.;
-3. protect strongest Qingjiang-specific assets;
-4. restore missing App / 13 Imprints / Physical / Sensory / Memory/IP before pruning;
-5. then remove duplicated research pages, matrix-led pages, weak filler and stale pixels from MAIN;
-6. assemble Web/PDF/boards/film with one cross-media hierarchy.
+2. apply latest owner/lock/review state;
+3. mark `CONCEPT KEEP / PIXELS KEEP` or `CONCEPT KEEP / PIXELS REDRAW` etc.;
+4. classify surface/output as `MAIN_DECISION / SUPPORT_EVIDENCE / PROCESS_JUDGMENT / TECHNICAL_PROOF / ARCHIVE`;
+5. protect strongest Qingjiang-specific assets;
+6. restore missing App / 13 Imprints / selected Physical / Sensory / Memory/IP before pruning;
+7. remove duplicated research pages, matrix-led pages, weak filler and stale pixels from MAIN;
+8. assemble Web/PDF/boards/film with the same journey hierarchy.
 
-Current REV04 binaries remain delivery provenance until a quality-gated successor is actually built and read back. Their existence does not grant MAIN status and their omissions do not delete project assets.
+Current REV04/old 20-screen binaries remain delivery provenance. Their existence does not grant MAIN status and their omissions do not delete project assets.
 
-## 9｜DIGITAL STATUS CORRECTION｜NO FEATURE BLOAT, BUT NOT INVISIBLE
-
-The previous label `E DIGITAL = WATCH/FREEZE` caused a false interpretation that the App should disappear.
+## 9｜DIGITAL STATUS｜IMPLICIT COMPANION, NO FEATURE BLOAT
 
 Correct execution:
 - **freeze uncontrolled feature expansion**;
 - **actively currentize and present the existing App/UI design**;
-- currentize `C04_Digital_UI_Detail_System_v0.6` + QJ-E materialization into a coherent current App candidate;
 - retain `TODAY / ROUTE / READ / MY BOOK` + always-accessible Service/Return;
 - retain game feeling through map reveal, exploration, imprint states, personal route/memory and light interactions;
-- remove legacy `9/13`, `07/13`, completion-score closure and any route-task authority;
+- remove legacy `9/13`, `07/13`, completion-score closure and route-task authority;
 - preserve NORMAL/DEGRADED/CLOSED/UNKNOWN, FULL/LIGHT/OFF, Offline and Return Priority as behavior constraints, not public chapters;
-- no-phone remains a parallel complete route/service path.
-
-This Digital currentization is now part of Web/D/F ACTIVE execution even if E feature engineering itself remains frozen.
+- no-phone remains a parallel complete route/service path;
+- in public narrative, show App behavior **inside the journey** instead of isolating it as a product-spec chapter.
 
 ## 10｜WATCH / FREEZE
 
@@ -226,6 +246,8 @@ New feature expansion frozen. Existing App currentization and presentation are A
 ### GOVERNANCE / QC
 Only version pollution, false PASS, stale Current, source-boundary, persistence/recoverability and cross-media contradiction.
 
+Governance must remain visible where necessary but must not become a MAIN public narrative layer.
+
 ## 11｜EACH HOURLY ROUND
 
 For every ACTIVE area report:
@@ -236,7 +258,10 @@ For every ACTIVE area report:
 - `VERDICT = KEEP / REVISE / REJECT / FREEZE`
 - `NEXT-HOUR EXECUTION`
 
-For D/Web/F also report affected objects as `MAIN / SUPPORT / PROCESS / DROP`, but only **after** concept/pixel separation.
+For B/D/Web/F also report affected objects by:
+- concept state;
+- pixel state;
+- editorial role: `MAIN_DECISION / SUPPORT_EVIDENCE / PROCESS_JUDGMENT / TECHNICAL_PROOF / ARCHIVE`.
 
 End with:
 1. what actual design/output changed this hour;
@@ -246,12 +271,13 @@ End with:
 
 ## 12｜CURRENT EXECUTION PRIORITY
 
-1. **Full-asset inventory + Web reassembly** — no design loss.
-2. **App / Game Map currentization** — existing design returns to MAIN candidate status.
-3. **Physical/Sensory + Memory/IP visual recovery** — select and present strongest existing designs.
-4. **Culture-to-scene interaction binding** — feed Thirteen Imprints and App/gameplay.
-5. **Film/boards successor** — only after the above visual hierarchy exists.
-6. C23/Model technical proof only where it makes a design clearer.
-7. A / new E feature engineering / Governance = WATCH/FREEZE unless triggered.
+1. **Bind B/Web/F to Public Narrative v1.9** without information loss.
+2. **Reclassify the 52 Web semantic surfaces** by visible design decision/editorial role instead of chapter taxonomy.
+3. **Keep ROUTE-03 current binding** and remove JOURNEY-04 from public/current route authority.
+4. **Embed Culture / Audience / App / Physical / Memory inside journey scenes** rather than parallel public silos.
+5. **Preserve honest Physical selection**: P02 support; PHY-01 / Fluid Rest / Qingfengyin HOLD/Process until valid new review changes them.
+6. **Film/boards successor** follows `ENTER → MOVE → OPEN → STOP/PASS → RETURN → REMEMBER`.
+7. C23/Model technical proof only where it makes a design decision clearer.
+8. A / new E feature engineering / Governance = WATCH/FREEZE unless triggered.
 
 This file is the current execution carrier. The project is evaluated by actual designed outputs, while the Asset Atlas prevents valuable existing design work from being silently erased.
