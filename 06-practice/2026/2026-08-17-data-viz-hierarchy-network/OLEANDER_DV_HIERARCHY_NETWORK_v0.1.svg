@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style><![CDATA[
+      .bg{fill:#F3F0E8}.ink{fill:#14211F}.muted{fill:#67726E}.teal{fill:#4C9693}.rust{fill:#B35B43}.hair{stroke:#C9C9C1;stroke-width:1}.hair2{stroke:#AEB4B0;stroke-width:1.5}
+      .route{fill:none;stroke:#14211F;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+      .branch{fill:none;stroke:#5F6A66;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
+      .cond{fill:none;stroke:#4C9693;stroke-width:4;stroke-dasharray:14 12;stroke-linecap:round}
+      .return{fill:none;stroke:#B35B43;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .leader{fill:none;stroke:#808986;stroke-width:1.5}
+      .nodeA{fill:#F3F0E8;stroke:#14211F;stroke-width:3}
+      .nodeR{fill:#F3F0E8;stroke:#69736F;stroke-width:2}
+      .nodeRet{fill:#B35B43;stroke:#B35B43;stroke-width:2}
+      .cap{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;fill:#5F6A66}
+      .meta{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:16px;font-weight:500;letter-spacing:1px;fill:#67726E}
+      .small{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:18px;font-weight:500;fill:#67726E}
+      .label{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:20px;font-weight:650;fill:#14211F}
+      .label2{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:17px;font-weight:500;fill:#67726E}
+      .title{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:72px;font-weight:760;letter-spacing:-2px;fill:#14211F}
+      .subtitle{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:30px;font-weight:620;fill:#14211F}
+      .bigNum{font-family:Arial,sans-serif;font-size:40px;font-weight:700;fill:#14211F}
+      .zone{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;fill:#14211F}
+      .eTitle{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:19px;font-weight:700;fill:#14211F}
+      .eBody{font-family:'Noto Sans CJK SC','Source Han Sans SC','Microsoft YaHei',Arial,sans-serif;font-size:17px;font-weight:500;fill:#5F6A66}
+      .nodeText{font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:15px;font-weight:700;fill:#14211F;text-anchor:middle;dominant-baseline:middle}
+      .nodeTextInv{font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:14px;font-weight:700;fill:#F3F0E8;text-anchor:middle;dominant-baseline:middle}
+    ]]></style>
+    <marker id="arrowRust" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#B35B43"/></marker>
+    <marker id="arrowInk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#14211F"/></marker>
+  </defs>
+  <rect class="bg" width="1920" height="1080"/>
+  <line x1="64" y1="56" x2="1856" y2="56" class="hair"/>
+  <text x="64" y="92" class="cap">OLEANDER · DATA VIZ HIERARCHY LAB / TRANSFER VARIANT</text>
+  <text x="1856" y="92" class="meta" text-anchor="end">REVIEW PENDING · RELATIONAL / NTS</text>
+  <g id="narrative">
+    <text x="70" y="188" class="cap">ROUTE AUTHORITY</text>
+    <text x="70" y="264" class="title">两岸—索道—</text>
+    <text x="70" y="342" class="title">峰林网络</text>
+    <text x="70" y="408" class="subtitle">Route / Service / Return 先读，</text>
+    <text x="70" y="448" class="subtitle">可选阅读随后进入。</text>
+    <line x1="70" y1="506" x2="520" y2="506" class="hair2"/>
+    <text x="70" y="548" class="cap">3-SECOND FIRST READ</text>
+    <circle cx="83" cy="592" r="8" class="ink"/>
+    <text x="110" y="600" class="label">主干 = 到达 / 越江 / 步行 / 回程</text>
+    <text x="110" y="630" class="label2">连续粗线；不由阅读节点控制。</text>
+    <circle cx="83" cy="682" r="8" class="teal"/>
+    <text x="110" y="690" class="label">内容 = 可选打开 / 跳过 / 关闭</text>
+    <text x="110" y="720" class="label2">小节点 + 细支线；保持可见但不抢路线。</text>
+    <circle cx="83" cy="772" r="8" class="rust"/>
+    <text x="110" y="780" class="label">Return = 始终可识别</text>
+    <text x="110" y="810" class="label2">独立回程脊柱；不伪装为唯一游览顺序。</text>
+    <rect x="70" y="858" width="500" height="68" rx="34" fill="#14211F"/>
+    <text x="320" y="899" fill="#F3F0E8" text-anchor="middle" style="font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:15px;font-weight:700;letter-spacing:1.1px">NETWORK &gt; LINEAR · RETURN REMAINS COMPLETE</text>
+  </g>
+  <g id="network-field">
+    <rect x="612" y="144" width="1244" height="708" rx="20" fill="#ECEAE2" stroke="#D3D2CA" stroke-width="1.2"/>
+    <text x="652" y="184" class="cap">PRIMARY ANALYTICAL FIELD · TOPOLOGY / NOT GEOGRAPHY</text>
+    <rect x="652" y="220" width="286" height="546" rx="18" fill="#E7E4DA"/>
+    <rect x="1006" y="220" width="810" height="546" rx="18" fill="#E9ECE7"/>
+    <text x="682" y="254" class="zone">NORTH BANK · ARRIVAL / SERVICE</text>
+    <text x="1038" y="254" class="zone">SOUTH BANK · WALKING NETWORK</text>
+    <path d="M948 206 C925 300 972 352 946 456 C924 545 958 631 942 780 L1014 780 C1030 662 1002 568 1020 480 C1042 376 1008 301 1028 206 Z" fill="#8FB9B6" opacity="0.82"/>
+    <text x="982" y="534" transform="rotate(-90 982 534)" style="font-family:Arial,sans-serif;font-size:18px;font-weight:700;letter-spacing:5px;fill:#F3F0E8;text-anchor:middle">QINGJIANG / 清江</text>
+    <path d="M692 420 C760 414 800 420 846 428 L888 434" class="route" marker-end="url(#arrowInk)"/>
+    <text x="698" y="392" class="small">ROAD ARRIVAL</text>
+    <path d="M688 634 C770 606 856 589 928 576" class="cond"/>
+    <text x="690" y="666" class="small">BOAT ACCESS / CONDITIONAL</text>
+    <rect x="768" y="512" width="122" height="70" rx="14" class="nodeA"/>
+    <text x="829" y="541" class="label" text-anchor="middle">A1</text>
+    <text x="829" y="565" class="label2" text-anchor="middle">云坛口 / 服务</text>
+    <line x1="829" y1="512" x2="842" y2="440" class="leader"/>
+    <rect x="842" y="366" width="96" height="70" rx="14" class="nodeA"/>
+    <text x="890" y="395" class="label" text-anchor="middle">A2</text>
+    <text x="890" y="419" class="label2" text-anchor="middle">索道北站</text>
+    <path d="M916 390 C990 370 1068 347 1142 328" class="route"/>
+    <path d="M916 405 C990 385 1068 362 1142 343" fill="none" stroke="#14211F" stroke-width="2"/>
+    <text x="1004" y="330" class="small" transform="rotate(-14 1004 330)">M2 · CROSS-RIVER CABLE</text>
+    <circle cx="1014" cy="365" r="19" class="nodeR"/>
+    <text x="1014" y="365" class="nodeText">R01</text>
+    <rect x="1128" y="286" width="112" height="76" rx="16" class="nodeA"/>
+    <text x="1184" y="314" class="label" text-anchor="middle">A3</text>
+    <text x="1184" y="339" class="label2" text-anchor="middle">索道南站</text>
+    <path d="M1184 362 C1186 414 1204 447 1246 468 C1290 490 1322 506 1366 524 C1410 542 1432 576 1438 618" class="route"/>
+    <path d="M1438 618 C1444 666 1412 702 1368 720" class="route"/>
+    <text x="1268" y="532" class="meta" style="font-size:14px;letter-spacing:1px">RELATIONAL BACKBONE / NOT ROUTE ORDER</text>
+    <path d="M1368 720 C1286 720 1220 676 1202 620 C1182 558 1206 514 1246 468 C1204 447 1188 411 1184 362" class="return" marker-end="url(#arrowRust)"/>
+    <text x="1236" y="650" class="eTitle" fill="#B35B43">RETURN SPINE</text>
+    <text x="1236" y="676" class="eBody">branch junctions → cable return</text>
+    <path d="M1246 468 C1260 424 1304 392 1348 380" class="branch"/>
+    <path d="M1348 380 C1418 362 1492 370 1552 396" class="branch"/>
+    <circle cx="1282" cy="414" r="19" class="nodeR"/>
+    <text x="1282" y="414" class="nodeText">R02</text>
+    <text x="1250" y="382" class="label2">华中第一藤</text>
+    <circle cx="1552" cy="396" r="19" class="nodeR"/>
+    <text x="1552" y="396" class="nodeText">R05</text>
+    <text x="1584" y="401" class="label2">红花石林</text>
+    <path d="M1366 524 C1418 488 1478 476 1538 490" class="branch"/>
+    <path d="M1538 490 C1600 500 1640 524 1688 550" class="branch"/>
+    <circle cx="1476" cy="486" r="20" class="nodeR"/>
+    <text x="1476" y="486" class="nodeText">R06</text>
+    <text x="1440" y="452" class="label2">观景平台 · 河谷</text>
+    <circle cx="1688" cy="550" r="19" class="nodeR"/>
+    <text x="1688" y="550" class="nodeText">R07</text>
+    <text x="1718" y="555" class="label2">仓禀 / 仓廪</text>
+    <path d="M1438 618 C1500 596 1574 600 1618 636 C1654 666 1644 710 1602 732 C1556 758 1476 754 1368 720" class="branch"/>
+    <circle cx="1604" cy="638" r="19" class="nodeR"/>
+    <text x="1604" y="638" class="nodeText">R09</text>
+    <text x="1634" y="642" class="label2">盐水女神峰</text>
+    <circle cx="1498" cy="742" r="19" class="nodeR"/>
+    <text x="1498" y="742" class="nodeText">R12</text>
+    <text x="1460" y="780" class="label2">廪君峰</text>
+    <circle cx="1368" cy="720" r="24" class="nodeRet"/>
+    <text x="1368" y="720" class="nodeTextInv">R13</text>
+    <text x="1258" y="770" class="label" fill="#B35B43">一线天 · CLOSURE / RETURN</text>
+    <circle cx="1308" cy="566" r="10" fill="#F3F0E8" stroke="#9AA19D" stroke-width="1.5"/>
+    <text x="1308" y="566" class="nodeText" style="font-size:11px">C</text>
+    <circle cx="1506" cy="580" r="10" fill="#F3F0E8" stroke="#9AA19D" stroke-width="1.5"/>
+    <text x="1506" y="580" class="nodeText" style="font-size:11px">C</text>
+    <circle cx="1540" cy="688" r="10" fill="#F3F0E8" stroke="#9AA19D" stroke-width="1.5"/>
+    <text x="1540" y="688" class="nodeText" style="font-size:11px">C</text>
+    <rect x="1032" y="796" width="236" height="38" rx="19" fill="#4C9693"/>
+    <text x="1150" y="821" fill="#F3F0E8" text-anchor="middle" style="font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.0px">SOURCE-TRACED RELATION</text>
+    <rect x="1280" y="796" width="244" height="38" rx="19" fill="#F3F0E8" stroke="#8F9793" stroke-width="1.5"/>
+    <text x="1402" y="821" class="meta" text-anchor="middle" style="font-size:13px">DIAGRAMMATIC PLACEHOLDER</text>
+    <rect x="1536" y="796" width="206" height="38" rx="19" fill="#F3F0E8" stroke="#B35B43" stroke-width="1.5"/>
+    <text x="1639" y="821" fill="#B35B43" text-anchor="middle" style="font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.0px">FIELD / SURVEY OPEN</text>
+  </g>
+  <g id="evidence-strip">
+    <line x1="64" y1="964" x2="1856" y2="964" class="hair2"/>
+    <text x="64" y="1000" class="cap">EVIDENCE</text>
+    <text x="64" y="1032" class="eBody">双第一方导览支持：清江分隔 + 跨江索道 + 南岸分支 / 回环 topology。</text>
+    <line x1="702" y1="984" x2="702" y2="1040" class="hair"/>
+    <text x="736" y="1000" class="cap">SPATIAL FINDING</text>
+    <text x="736" y="1032" class="eBody">路线首先是一张关系网络，不是 13 个点的线性完成序列。</text>
+    <line x1="1328" y1="984" x2="1328" y2="1040" class="hair"/>
+    <text x="1362" y="1000" class="cap">DESIGN CONSEQUENCE</text>
+    <text x="1362" y="1032" class="eBody">阅读可跳过 / 重排 / 关闭；Route / Service / Return 保持完整。</text>
+  </g>
+  <text x="1856" y="1062" class="meta" text-anchor="end">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION</text>
+</svg>
