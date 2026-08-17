@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<style>
+  .sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}
+  .serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}
+</style>
+</defs>
+<rect width="1920" height="1080" fill="#F4F1E9"/>
+
+<!-- SOURCE-FIRST: official guide owns the page -->
+<rect x="42" y="42" width="1472" height="959" rx="3" fill="#FBFAF6" stroke="#C9C3B8" stroke-width="1"/>
+<image id="A-IMG-01" x="43" y="43" width="1470" height="958"
+       href="https://www.esdqj.cn/upload/20250805/f8d50b8f0d5027.jpg"
+       preserveAspectRatio="xMidYMid meet"/>
+
+<!-- quiet source identifier -->
+<text x="43" y="1029" class="sans" font-size="10.5" font-weight="700" letter-spacing="1.25" fill="#77736B">
+C22 / A-IMG-01 / 红花峰林景区手绘导览 / FIRST-PARTY GUIDE / DIRECT USE / NO REDRAW
+</text>
+
+<!-- single annotation rail: SOURCE -> FINDING -> DESIGN CONSEQUENCE -->
+<g id="ANNOTATION_RAIL">
+  <text x="1564" y="58" class="sans" font-size="10.5" font-weight="700" letter-spacing="1.45" fill="#77736B">
+  OLEANDER / C04 / C22
+  </text>
+
+  <text x="1564" y="122" class="serif" font-size="31" font-weight="700" fill="#181816">
+  <tspan x="1564" dy="0">先读官方导览，</tspan>
+  <tspan x="1564" dy="42">再做设计判断。</tspan>
+  </text>
+
+  <line x1="1564" y1="202" x2="1874" y2="202" stroke="#C9C3B8" stroke-width="1"/>
+
+  <text x="1564" y="246" class="sans" font-size="10.5" font-weight="800" letter-spacing="1.35" fill="#3C8990">SOURCE</text>
+  <text x="1564" y="280" class="sans" font-size="14" font-weight="700" fill="#181816">第一方手绘导览</text>
+  <text x="1564" y="306" class="sans" font-size="11.5" fill="#77736B">
+    <tspan x="1564" dy="0">1400 × 912 · 2025-08-05</tspan>
+    <tspan x="1564" dy="20">恩施大清江风景区官网</tspan>
+  </text>
+
+  <line x1="1564" y1="359" x2="1874" y2="359" stroke="#D8D2C7" stroke-width="1"/>
+
+  <text x="1564" y="403" class="sans" font-size="10.5" font-weight="800" letter-spacing="1.35" fill="#3C8990">SPATIAL FINDING</text>
+  <text x="1564" y="439" class="serif" font-size="23" font-weight="700" fill="#181816">
+    <tspan x="1564" dy="0">两岸 · 跨江索道 ·</tspan>
+    <tspan x="1564" dy="31">南岸分支 / 回环网络</tspan>
+  </text>
+  <text x="1564" y="516" class="sans" font-size="11.5" fill="#77736B">
+    <tspan x="1564" dy="0">这里只读取宏观关系。</tspan>
+    <tspan x="1564" dy="20">不从手绘导览推出精确几何。</tspan>
+  </text>
+
+  <line x1="1564" y1="570" x2="1874" y2="570" stroke="#D8D2C7" stroke-width="1"/>
+
+  <text x="1564" y="614" class="sans" font-size="10.5" font-weight="800" letter-spacing="1.35" fill="#8F3D35">DESIGN CONSEQUENCE</text>
+  <text x="1564" y="650" class="serif" font-size="22" font-weight="700" fill="#181816">
+    <tspan x="1564" dy="0">路线拥有主权，</tspan>
+    <tspan x="1564" dy="30">十三印保持可选。</tspan>
+  </text>
+  <text x="1564" y="724" class="sans" font-size="11.5" fill="#77736B">
+    <tspan x="1564" dy="0">R01–R13 是阅读 / 场景 ID，</tspan>
+    <tspan x="1564" dy="20">不构成强制线性完成顺序。</tspan>
+  </text>
+
+  <line x1="1564" y1="789" x2="1874" y2="789" stroke="#C9C3B8" stroke-width="1"/>
+
+  <text x="1564" y="833" class="sans" font-size="10.5" font-weight="800" letter-spacing="1.15" fill="#8F3D35">
+  TRUTH BOUNDARY
+  </text>
+  <text x="1564" y="868" class="sans" font-size="10.5" fill="#77736B">
+    <tspan x="1564" dy="0">NTS · NOT SURVEY</tspan>
+    <tspan x="1564" dy="19">NOT GEOREFERENCED</tspan>
+    <tspan x="1564" dy="19">FIELD OBSERVED=0</tspan>
+    <tspan x="1564" dy="19">FIELD MEASURED=0</tspan>
+    <tspan x="1564" dy="19">G1F HOLD · NO_PROMOTION</tspan>
+  </text>
+
+  <text x="1564" y="998" class="sans" font-size="9.5" fill="#8F3D35">
+    <tspan x="1564" dy="0">DOES NOT PROVE</tspan>
+    <tspan x="1564" dy="17" fill="#77736B">距离 / 坡度 / 净宽 / 安全 / 容量 / 当日开放</tspan>
+  </text>
+</g>
+</svg>
