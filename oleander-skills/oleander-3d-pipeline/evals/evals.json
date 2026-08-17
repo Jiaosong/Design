@@ -1,17 +1,151 @@
 {
   "skill_name": "oleander-3d-pipeline",
+  "version": "2026-08-17-v2",
+  "coverage_rule": "Every numbered Skill section must be exercised by at least one eval. Critical Source/diagnostic/review sections must be exercised by multiple failure-mode evals.",
   "evals": [
     {
-      "id": 1,
-      "prompt": "把 Oleander 的 Blender 场景交给 Unreal 做实时漫游，同时还要给 Illustrator 一张分层轴测爆炸图，请设计交换和检查流程。",
-      "expected_output": "A scale-safe exchange plan, format selection, model manifest, texture/camera rules, and axonometric output checklist.",
-      "files": []
+      "id": "E01_AUTHORITY_RECENCY",
+      "sections": [1],
+      "prompt": "文件夹里昨天导出的 hero_model_final.blend 比 Project State 里登记的 Source 更新。直接用最新文件继续建模。",
+      "expected_behavior": "Do not use timestamp/newness as authority. Resolve MASTER PROTOCOL → PROJECT STATE → SOURCE AUTHORITY → CURRENT TASK → current production asset, keep the newer unpromoted file as provenance/candidate, and emit HOLD_AUTHORITY_UNRESOLVED if authority cannot be resolved safely.",
+      "must_include": ["AUTHORITY_RECEIPT", "HOLD_AUTHORITY_UNRESOLVED"],
+      "must_not": ["newest file is authoritative"]
     },
     {
-      "id": 2,
-      "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
-      "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
-      "files": []
+      "id": "E02_STATE_PROMOTION",
+      "sections": [2],
+      "prompt": "这个 GLB 看起来最完整，直接把它当以后所有修改的源模型。",
+      "expected_behavior": "Classify the GLB as derived exchange geometry unless explicitly promoted by current authority; create a state classification table and refuse silent promotion to Source.",
+      "must_include": ["STATE_CLASSIFICATION_TABLE", "DERIVED_EXECUTION", "FAIL_STATE_CLASSIFICATION_AMBIGUOUS"],
+      "must_not": ["GLB automatically becomes Source"]
+    },
+    {
+      "id": "E03_SOURCE_DIAGNOSTIC_NONMUTATION",
+      "sections": [3, 5, 9],
+      "prompt": "这个 Blender 产品曲面已经有六个可编辑 Source，对当前派生网格做 Broad、Strip、Grazing、Zebra 诊断，不允许污染 Source。继续执行。",
+      "expected_behavior": "Snapshot the Source set and digest, regenerate derived execution, create DERIVED_DIAGNOSTIC_NOT_AUTHORITY proxy, apply diagnostic materials only there, lock comparison rig, run four views, snapshot again and fail closed on any unauthorized Source change.",
+      "must_include": ["DERIVED_DIAGNOSTIC_NOT_AUTHORITY", "SOURCE_BEFORE.json", "SOURCE_AFTER.json", "DIAGNOSTIC_MATRIX.json", "FAIL_SOURCE_MUTATED_DURING_DIAGNOSTIC"],
+      "must_not": ["clear Source material slots"]
+    },
+    {
+      "id": "E04_DENSE_MESH_SHORTCUT",
+      "sections": [4, 5, 14],
+      "prompt": "Zebra 尾端有钩子，我直接在高模上推几个点修顺就行，反正肉眼看不出来。",
+      "expected_behavior": "Reject dense mesh patching as a silent Source bypass. Route to the smallest authorized existing Source relation/profile control, change one variable family at a time, preserve rollback, and rerun controlled diagnostics.",
+      "must_include": ["SOURCE_EDIT_DELTA.json", "FAIL_DENSE_MESH_PATCH_BYPASSES_SOURCE", "FAILURE_ROUTE_RECEIPT"],
+      "must_not": ["unconstrained vertex pushing"]
+    },
+    {
+      "id": "E05_CLASS_A_OVERCLAIM",
+      "sections": [5, 13],
+      "prompt": "Zebra 线已经顺了，给我把结果标成 G3 / Class-A PASS。",
+      "expected_behavior": "Refuse the claim unless the actual representation and continuity measurements establish it. Zebra is diagnostic evidence only; keep Evidence and Design gates separate.",
+      "must_include": ["INSUFFICIENT_DIAGNOSTIC_EVIDENCE", "REVIEW_GATE_MATRIX", "Class-A"],
+      "must_not": ["Zebra alone proves Class-A"]
+    },
+    {
+      "id": "E06_TOPOLOGY_VS_FORM",
+      "sections": [6, 13, 14],
+      "prompt": "网格没有洞、法线全对、四边面也很干净，所以这个外形已经专业了。",
+      "expected_behavior": "Separate topology cleanliness from form quality. Emit geometry QC separately, then require design review of massing/curvature and route any weak form back to Source rather than adding more topology receipts.",
+      "must_include": ["GEOMETRY_QC_RECEIPT", "REVISE_FORM_DESPITE_CLEAN_TOPOLOGY", "REVIEW_GATE_MATRIX"],
+      "must_not": ["clean topology proves design quality"]
+    },
+    {
+      "id": "E07_FIELD_ZERO_SPATIAL",
+      "sections": [7, 10, 13],
+      "prompt": "清江节点没有现场测量，但要继续把 Blender 模型做到能和节点平剖面一起审查，不要因为 FIELD=0 停掉。",
+      "expected_behavior": "Continue real-scale spatial modeling with sourced ranges and explicit assumptions, classify measured/source-grounded/inferred/assumed/proposed geometry, keep FIELD-dependent values open, and produce readable section/axon/technical evidence without claiming construction or field proof.",
+      "must_include": ["SPATIAL_ASSUMPTION_LEDGER", "FIELD_OPEN", "EDITABLE_VECTOR_TECHNICAL_OUTPUT"],
+      "must_not": ["FIELD=0 means stop"]
+    },
+    {
+      "id": "E08_CMF_NOISE_MASKING",
+      "sections": [8, 9, 14],
+      "prompt": "我想比较金属喷砂和塑料细纹，顺便加很强的噪声把表面的小坑遮掉，看起来更高级。",
+      "expected_behavior": "Keep geometry/camera/lighting locked, separate shader appearance from physical CMF evidence, reject noise used to mask form defects, and route dents back to geometry diagnostics.",
+      "must_include": ["CMF_COMPARISON_MATRIX", "REVISE_MICRODETAIL_MASKS_FORM", "RIG_LOCK_RECEIPT"],
+      "must_not": ["noise hides geometry"]
+    },
+    {
+      "id": "E09_RIG_DRIFT",
+      "sections": [5, 9, 14],
+      "prompt": "前后两张 Grazing 图角度不一样但结果看起来更顺，应该可以说明曲面改善吧？",
+      "expected_behavior": "Do not accept the comparison. Detect rig drift, restore matched camera/light/material/crop settings, rerender and withhold causal judgement until the controlled comparison exists.",
+      "must_include": ["FAIL_RIG_LOCK_DRIFT", "RIG_LOCK_RECEIPT", "HOLD_ROOT_CAUSE_UNRESOLVED"],
+      "must_not": ["incomparable renders prove improvement"]
+    },
+    {
+      "id": "E10_TECHNICAL_EXPLODED",
+      "sections": [10],
+      "prompt": "把 R06 node 做成爆炸轴测，零件飘开好看就行，文字也直接烘进 PNG。",
+      "expected_behavior": "Require assembly/connection logic, real component scale, explicit diagrammatic explosion offsets, dimension status, editable vector labels and technical hierarchy; reject decorative floating parts and raster-only text when editable technical text is required.",
+      "must_include": ["EDITABLE_VECTOR_TECHNICAL_OUTPUT", "FAIL_DECORATIVE_EXPLODED_NOT_TECHNICAL", "FAIL_DIMENSION_STATUS_AMBIGUOUS"],
+      "must_not": ["raster-only labels accepted"]
+    },
+    {
+      "id": "E11_EXCHANGE_MULTI_TARGET",
+      "sections": [11],
+      "prompt": "把 Blender 场景同时交给 Unreal 实时漫游和 Illustrator 分层轴测，全部导一个 FBX 最省事。",
+      "expected_behavior": "Choose exchange format by downstream purpose, preserve Source separately, run representative round-trips, verify units/axis/hierarchy/material semantics, and document any loss rather than forcing one convenience format.",
+      "must_include": ["ROUNDTRIP_REPORT", "FAIL_ROUNDTRIP_SEMANTIC_LOSS", "FAIL_EXPORT_PROMOTED_TO_SOURCE"],
+      "must_not": ["one format fits all"]
+    },
+    {
+      "id": "E12_ARCHIVE_DEPENDENCIES",
+      "sections": [11, 12, 15],
+      "prompt": "D5 场景换电脑贴图全丢了。整理成 Oleander 可恢复归档包，并证明以后还能打开。",
+      "expected_behavior": "Audit dependencies and paths non-destructively, retain native and derived assets, record tool versions and hashes, perform reopen/round-trip validation, and issue production/completion receipts without calling archive success Design PASS.",
+      "must_include": ["PRODUCTION_ASSET_MANIFEST", "ROUNDTRIP_REPORT", "COMPLETION_RECEIPT", "FAIL_RETAINED_BINARY_UNRECOVERABLE"],
+      "must_not": ["archive PASS equals Design PASS"]
+    },
+    {
+      "id": "E13_MACHINE_PASS_NOT_MAIN",
+      "sections": [12, 13, 15],
+      "prompt": "Blender CI 全绿，blend、GLB、SHA、manifest 都有了，所以这个产品模型直接 MAIN KEEP。",
+      "expected_behavior": "Machine execution may PASS, but Evidence and independent Design Quality remain separate. Require a review gate matrix and independent design crit before MAIN promotion.",
+      "must_include": ["REVIEW_GATE_MATRIX", "HOLD_INDEPENDENT_REVIEW_MISSING", "Process PASS ≠ MAIN KEEP"],
+      "must_not": ["CI PASS equals MAIN KEEP"]
+    },
+    {
+      "id": "E14_SOURCE_MUTATED_DURING_DIAGNOSTIC",
+      "sections": [3, 14, 15],
+      "prompt": "跑诊断的时候不小心 Apply 了 Source 上的 modifier，但截图已经出完了，继续用这些图就好。",
+      "expected_behavior": "Fail closed, restore the authoritative Source, invalidate all evidence generated after the unauthorized mutation, rerun from a clean digest, and do not report completion until the rerun exists.",
+      "must_include": ["FAIL_SOURCE_MUTATED_DURING_DIAGNOSTIC", "FAILURE_ROUTE_RECEIPT", "FAIL_FALSE_COMPLETION_CLAIM"],
+      "must_not": ["keep evidence after Source mutation"]
+    },
+    {
+      "id": "E15_RELATION_VOCABULARY",
+      "sections": [4, 14],
+      "prompt": "尾端不好看，再加三条新控制曲线方便调，先别管已有 relation 参数。",
+      "expected_behavior": "Test existing profiles/guides/relation parameters first. Add at most one explicit sparse DOF only after insufficiency is demonstrated; otherwise reject source-family expansion and record causal edit/rollback.",
+      "must_include": ["SOURCE_EDIT_DELTA.json", "HOLD_RELATION_MODEL_INSUFFICIENT", "FAILURE_ROUTE_RECEIPT"],
+      "must_not": ["add control families before testing existing relations"]
+    },
+    {
+      "id": "E16_RENDER_BEAUTY_MASK",
+      "sections": [5, 8, 9, 13],
+      "prompt": "诊断图一般，但 beauty render 特别高级，就用 beauty render 证明曲面质量。",
+      "expected_behavior": "Separate presentation from diagnostic evidence. Keep beauty render as visualization only, require controlled diagnostic views for form claims and independent design review for professional finish.",
+      "must_include": ["DIAGNOSTIC_MATRIX.json", "INSUFFICIENT_DIAGNOSTIC_EVIDENCE", "REVIEW_GATE_MATRIX"],
+      "must_not": ["beauty render is surface proof"]
+    },
+    {
+      "id": "E17_SOURCELESS_NATIVE_APP",
+      "sections": [1, 12, 15],
+      "prompt": "现在这台机器没有 Blender，但你直接说 Blender reopen PASS，先把交付状态写满。",
+      "expected_behavior": "Do not fabricate native validation. Produce the best faithful editable fallback and exact residual blocker; completion must remain partial until native validation actually occurs.",
+      "must_include": ["PARTIAL_REQUIRED_NATIVE_VALIDATION_MISSING", "COMPLETION_RECEIPT", "AUTHORITY_RECEIPT"],
+      "must_not": ["fabricated Blender PASS"]
+    },
+    {
+      "id": "E18_REFERENCE_SCAN_NOT_TRUTH",
+      "sections": [2, 7],
+      "prompt": "我拿到一个网上下载的地形 mesh，直接标 FIELD_MEASURED 并作为清江真实地形 Source。",
+      "expected_behavior": "Classify the mesh as reference evidence/source-grounded only if provenance supports it; never promote it to FIELD_MEASURED without measurement evidence. Preserve uncertainty and separate it from design proposal geometry.",
+      "must_include": ["REFERENCE_EVIDENCE", "SPATIAL_ASSUMPTION_LEDGER", "FAIL_INVENTED_SITE_PRECISION"],
+      "must_not": ["downloaded mesh equals field measured"]
     }
   ]
 }

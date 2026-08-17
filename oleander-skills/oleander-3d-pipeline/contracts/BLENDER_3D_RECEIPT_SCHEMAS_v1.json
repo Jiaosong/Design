@@ -1,0 +1,372 @@
+{
+  "schema": "oleander.skill.3d-pipeline.receipt-schemas.v1",
+  "skill": "oleander-3d-pipeline",
+  "version": "2026-08-17-v1",
+  "common_required_fields": [
+    "schema",
+    "project_id",
+    "asset_id",
+    "task_id",
+    "timestamp_utc",
+    "producer",
+    "source_revision",
+    "status",
+    "does_not_prove"
+  ],
+  "sections": {
+    "01_authority": {
+      "receipt": "AUTHORITY_RECEIPT",
+      "required_fields": [
+        "project_id",
+        "asset_id",
+        "scene_id",
+        "task_id",
+        "task_class",
+        "current_authority_chain",
+        "source_path_or_id",
+        "source_revision",
+        "source_hash_if_available",
+        "authoring_application",
+        "authoring_version",
+        "units",
+        "scale",
+        "coordinate_convention",
+        "source_mutation_authorized",
+        "legacy_assets_consulted",
+        "status",
+        "does_not_prove"
+      ],
+      "status_enum": [
+        "PASS",
+        "HOLD_AUTHORITY_UNRESOLVED"
+      ]
+    },
+    "02_state_classification": {
+      "receipt": "STATE_CLASSIFICATION_TABLE",
+      "row_required_fields": [
+        "object_or_file_id",
+        "state_class",
+        "owner",
+        "editable",
+        "regenerated_from",
+        "may_mutate_in_current_task",
+        "persistence_requirement",
+        "source_revision",
+        "does_not_prove"
+      ],
+      "state_enum": [
+        "SOURCE_OR_WORKING_SOURCE",
+        "DERIVED_EXECUTION",
+        "DERIVED_DIAGNOSTIC_NOT_AUTHORITY",
+        "VISUALIZATION_OR_RENDER_SCENE",
+        "REFERENCE_EVIDENCE"
+      ]
+    },
+    "03_blender_source_authority": {
+      "receipt": "SOURCE_AUTHORITY_DIAGNOSTIC_RECEIPT",
+      "required_fields": [
+        "source_collection",
+        "expected_source_objects",
+        "source_before_path",
+        "source_before_sha256",
+        "diagnostic_proxy_object",
+        "diagnostic_proxy_role",
+        "diagnostic_proxy_authority",
+        "source_after_path",
+        "source_after_sha256",
+        "source_unchanged",
+        "material_slots_preserved",
+        "source_owner",
+        "authorized_delta_if_any",
+        "status",
+        "failure_code",
+        "does_not_prove"
+      ],
+      "status_enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "04_sparse_edit": {
+      "receipt": "SOURCE_EDIT_DELTA",
+      "required_fields": [
+        "source_family",
+        "control_name",
+        "unit",
+        "previous_value",
+        "new_value",
+        "allowed_range",
+        "locked_dependencies",
+        "predicted_geometric_effect",
+        "sensitive_regions",
+        "forbidden_side_effects",
+        "rollback_value",
+        "before_evidence_ids",
+        "after_evidence_ids",
+        "causal_hypothesis",
+        "status"
+      ]
+    },
+    "05_surface_diagnostics": {
+      "receipt": "DIAGNOSTIC_MATRIX",
+      "row_required_fields": [
+        "view",
+        "question",
+        "source_sha256",
+        "reference_asset",
+        "candidate_asset",
+        "camera_id",
+        "rig_id",
+        "material_id",
+        "color_management_id",
+        "render_settings_id",
+        "crop_id",
+        "failure_signatures_observed",
+        "evidence_result",
+        "does_not_prove"
+      ],
+      "view_enum": [
+        "BROAD",
+        "STRIP",
+        "GRAZING",
+        "ZEBRA"
+      ],
+      "evidence_result_enum": [
+        "PASS",
+        "INSUFFICIENT",
+        "CONTRADICTED"
+      ]
+    },
+    "06_geometry_topology": {
+      "receipt": "GEOMETRY_QC_RECEIPT",
+      "required_fields": [
+        "source_structure_checks",
+        "derived_topology_checks",
+        "normals_check",
+        "manifoldness_check",
+        "boundary_drift_check",
+        "units_check",
+        "bounds_check",
+        "uv_material_id_check",
+        "source_form_quality_not_inferred",
+        "status",
+        "failure_codes"
+      ]
+    },
+    "07_spatial_models": {
+      "receipt": "SPATIAL_ASSUMPTION_LEDGER",
+      "row_required_fields": [
+        "geometry_id",
+        "evidence_class",
+        "source_or_reference",
+        "value_or_geometry_scope",
+        "unit",
+        "recommended_value_if_any",
+        "range_if_any",
+        "method",
+        "confidence",
+        "field_status",
+        "replacement_or_verification_item",
+        "does_not_prove"
+      ],
+      "evidence_class_enum": [
+        "FIELD_MEASURED",
+        "OFFICIAL_OR_SOURCE_GROUNDED",
+        "INFERRED",
+        "ASSUMED",
+        "DESIGN_PROPOSAL",
+        "VISUALIZATION_ENTOURAGE"
+      ]
+    },
+    "08_materials_cmf": {
+      "receipt": "CMF_COMPARISON_MATRIX",
+      "row_required_fields": [
+        "candidate_id",
+        "geometry_sha256",
+        "camera_id",
+        "rig_id",
+        "material_name",
+        "claim_level",
+        "shader_parameters",
+        "physical_evidence_source",
+        "physical_evidence_status",
+        "microdetail_role",
+        "macro_form_masking_check",
+        "result",
+        "does_not_prove"
+      ],
+      "claim_level_enum": [
+        "SHADER_APPEARANCE",
+        "MATERIAL_HYPOTHESIS",
+        "MANUFACTURER_SPEC",
+        "MEASURED_PHYSICAL_FINISH",
+        "PRODUCTION_CMF_DECISION"
+      ]
+    },
+    "09_camera_render": {
+      "receipt": "RIG_LOCK_RECEIPT",
+      "required_fields": [
+        "camera_transform",
+        "projection",
+        "focal_length_or_ortho_scale",
+        "crop_and_aspect",
+        "exposure",
+        "view_transform",
+        "color_management",
+        "world_background",
+        "light_transforms",
+        "light_sizes",
+        "light_energy",
+        "light_shapes",
+        "diagnostic_material",
+        "samples",
+        "denoise_policy",
+        "rig_hash_if_supported",
+        "comparison_variable",
+        "drift_detected",
+        "status"
+      ]
+    },
+    "10_technical_outputs": {
+      "receipt": "TECHNICAL_OUTPUT_RECEIPT",
+      "required_fields": [
+        "editable_vector_asset",
+        "preview_asset",
+        "linked_model_revision",
+        "camera_orientation",
+        "camera_scale",
+        "crop",
+        "reference_direction",
+        "assembly_groups",
+        "connection_logic",
+        "explosion_offsets",
+        "dimension_status_legend",
+        "vector_text_confirmed",
+        "human_or_maintenance_scale_if_applicable",
+        "status",
+        "does_not_prove"
+      ]
+    },
+    "11_exchange_roundtrip": {
+      "receipt": "ROUNDTRIP_REPORT",
+      "required_fields": [
+        "source_application",
+        "source_version",
+        "source_asset",
+        "source_sha256",
+        "format",
+        "export_asset",
+        "export_sha256",
+        "target_application",
+        "target_version",
+        "units_check",
+        "bounds_check",
+        "axis_check",
+        "origin_check",
+        "hierarchy_check",
+        "instance_check",
+        "normals_check",
+        "materials_textures_check",
+        "camera_animation_check_if_applicable",
+        "critical_named_objects_check",
+        "topology_or_geometry_drift",
+        "semantic_losses",
+        "source_authority_unchanged",
+        "status"
+      ]
+    },
+    "12_production_artifacts": {
+      "receipt": "PRODUCTION_ASSET_MANIFEST",
+      "row_required_fields": [
+        "path",
+        "role",
+        "state_class",
+        "bytes",
+        "sha256",
+        "application",
+        "application_version",
+        "dependencies",
+        "recoverability",
+        "validation_method",
+        "validation_status",
+        "current_or_superseded",
+        "does_not_prove"
+      ]
+    },
+    "13_review_gates": {
+      "receipt": "REVIEW_GATE_MATRIX",
+      "required_fields": [
+        "machine_gate",
+        "machine_evidence_ids",
+        "evidence_gate",
+        "evidence_ids",
+        "design_quality_gate",
+        "design_review_system_or_reviewer",
+        "design_evidence_ids",
+        "main_promotion_requested",
+        "independent_review_present",
+        "final_promotion_state",
+        "does_not_prove"
+      ],
+      "machine_enum": [
+        "PASS",
+        "FAIL"
+      ],
+      "evidence_enum": [
+        "PASS",
+        "INSUFFICIENT",
+        "CONTRADICTED"
+      ],
+      "design_enum": [
+        "KEEP",
+        "REVISE",
+        "REJECT",
+        "HOLD"
+      ]
+    },
+    "14_failure_routing": {
+      "receipt": "FAILURE_ROUTE_RECEIPT",
+      "required_fields": [
+        "symptom",
+        "observed_layer",
+        "failure_signature",
+        "hypothesized_owner_layer",
+        "isolation_test",
+        "controlled_variables",
+        "changed_variable",
+        "chosen_edit_target",
+        "rejected_edit_targets",
+        "result",
+        "root_cause_confidence",
+        "next_action",
+        "status"
+      ]
+    },
+    "15_completion": {
+      "receipt": "COMPLETION_RECEIPT",
+      "required_fields": [
+        "requested_deliverables",
+        "deliverable_statuses",
+        "native_assets",
+        "derived_assets",
+        "evidence_receipts",
+        "reopen_or_machine_checks",
+        "authority_boundaries_intact",
+        "machine_gate",
+        "evidence_gate",
+        "design_quality_gate",
+        "field_engineering_manufacturing_open_items",
+        "residual_blockers",
+        "final_status",
+        "does_not_prove"
+      ],
+      "final_status_enum": [
+        "COMPLETE_TO_REQUESTED_SCOPE",
+        "PARTIAL",
+        "HOLD",
+        "FAIL"
+      ]
+    }
+  },
+  "boundary": "Receipt completeness proves structured execution evidence only. It does not self-authorize design quality, MAIN KEEP, Class-A, field verification, engineering validity, manufacturing readiness or physical CMF truth."
+}

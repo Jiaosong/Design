@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.surface-source-context-binding.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "source_owner": "MODELING_WORKER_v0.13",
+  "surface_system": {
+    "system": "OLEANDER Blender Surface System",
+    "version": "v1.21.0",
+    "adapter_api": "oleander.blender-surface-system.source-authority-adapter.v1",
+    "module": "90-shared/toolchains/blender-surface-system/v1.21.0/source_authority_adapter.py",
+    "contract": "90-shared/toolchains/blender-surface-system/v1.21.0/SOURCE_AUTHORITY_ADAPTER_CONTRACT_v1.21.0.json",
+    "parent_render_runtime": "90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py"
+  },
+  "source_authority": {
+    "state": "WORKING_SOURCE",
+    "collection": "OLEANDER_SOURCE_AUTHORITY",
+    "expected_objects": [
+      "OL_SRC_GRIP_AXIS",
+      "OL_SRC_INTERFACE_DECK_BOUNDARY",
+      "OL_SRC_LOWER_RETURN_PROFILE",
+      "OL_SRC_OPPOSITE_SIDE_PLAN",
+      "OL_SRC_PALM_PROFILE",
+      "OL_SRC_THUMB_SIDE_PLAN"
+    ],
+    "families": {
+      "GRIP_AXIS": "OL_SRC_GRIP_AXIS",
+      "PALM_PROFILE": "OL_SRC_PALM_PROFILE",
+      "THUMB_SIDE_PLAN": "OL_SRC_THUMB_SIDE_PLAN",
+      "OPPOSITE_SIDE_PLAN": "OL_SRC_OPPOSITE_SIDE_PLAN",
+      "LOWER_RETURN_PROFILE": "OL_SRC_LOWER_RETURN_PROFILE",
+      "INTERFACE_DECK_BOUNDARY": "OL_SRC_INTERFACE_DECK_BOUNDARY"
+    },
+    "captured_relation_properties": {
+      "LOWER_RETURN_PROFILE": [
+        "termination_envelope_exponent",
+        "termination_envelope_semantics",
+        "termination_cap_onset_u",
+        "termination_cap_pole_curvature_scale",
+        "termination_cap_numeric_dof_count"
+      ],
+      "INTERFACE_DECK_BOUNDARY": [
+        "u_center",
+        "u_halfspan",
+        "theta_center_rad",
+        "theta_center_semantics",
+        "theta_halfspan_rad",
+        "core_fraction",
+        "depth_m",
+        "blend"
+      ]
+    },
+    "derived_execution_is_authority": false
+  },
+  "diagnostic_policy": {
+    "diagnostic_proxy_required": true,
+    "diagnostic_proxy_role": "DERIVED_DIAGNOSTIC_NOT_AUTHORITY",
+    "source_before_after_digest_gate_required": true,
+    "source_geometry_mutation_during_diagnostic_forbidden": true,
+    "source_material_mutation_forbidden": true,
+    "project_target_material_mutation_forbidden": true,
+    "diagnostic_material_mutation_allowed_on_proxy_only": true,
+    "controlled_source_edit_must_change_digest": true,
+    "restored_source_must_restore_digest": true,
+    "promotion_impact": "NONE"
+  },
+  "adoption": {
+    "new_surface_diagnostic_runs": "USE_v1.21_SOURCE_CONTEXT_ADAPTER",
+    "historical_v1.20_direct_derived_render_evidence": "RETAIN_AS_PROVENANCE",
+    "r4_5_1_compatibility": "termination_cap_pole_curvature_scale is captured but remains Modeling Worker-owned",
+    "no_candidate_promotion_from_adapter": true
+  },
+  "boundary": "This binding makes Modeling Worker v0.13 sparse Blender-native Working Source readable by the Blender Surface System without transferring authority. The adapter may snapshot and bind Source context and may create non-authoritative diagnostic proxies. It may not redefine Source geometry, promote a candidate, or establish Class-A, ergonomic, engineering, manufacturing, physical CMF, or Release evidence."
+}
