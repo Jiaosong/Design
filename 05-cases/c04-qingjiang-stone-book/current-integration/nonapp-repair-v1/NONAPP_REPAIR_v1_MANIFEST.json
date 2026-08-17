@@ -1,0 +1,31 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04 Current Integration · Non-App Repair v1",
+  "scope": "non-App public design repair only",
+  "app_ownership": "USER-OWNED NEXT DELTA; Digital/App section restored to pre-repair Current Integration and not modified in this package.",
+  "material_delta": [
+    "Journey no longer uses App phone as primary visual",
+    "Thirteen Imprints changed from phone-directory layout to optional spatial/content field",
+    "Audience changed from taxonomy board to same-scene body/use-depth graphic",
+    "Physical removes AI standalone renders from MAIN web display",
+    "Memory foregrounds physical Qingjiang Journal; App/My Book untouched",
+    "Technical proof re-laid out for readable PLAN/ELEVATION/SECTION/LAYER without new dimensions",
+    "Visual/Motion changed from 2-image static comparison to 6-stage real-asset edit spine",
+    "Return removes App phone from primary closure and shows no-phone path explicitly"
+  ],
+  "drive": {
+    "package_file": "C04_CURRENT_INTEGRATION_NONAPP_REPAIR_v1.zip",
+    "file_id": "1cJ8ch8oGsYawwJAovKXqmJfvkVZ8Taix",
+    "bytes": 52668743,
+    "sha256": "0233df443ec680b5131268266d4b9718dc3e21679462bda49f121b9d483d7e7b",
+    "preview_file": "C04_NONAPP_REPAIR_v1_CORE_PREVIEW.png",
+    "preview_file_id": "1-FAnaBCfVfZn6KhFefd5KASNtHPa62it"
+  },
+  "readback": {
+    "svg_static_preview": "PASS",
+    "app_section_restored_unchanged": true,
+    "browser_finished_output": "HOLD_RUNTIME_BLOCKED",
+    "independent_design_verdict": "PENDING"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
