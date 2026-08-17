@@ -6,6 +6,8 @@ import importlib.util
 import sys
 from pathlib import Path
 
+import bpy
+
 HERE = Path(__file__).resolve().parent
 TARGET = HERE / "build_porsche_911_992_reference.py"
 
@@ -20,8 +22,7 @@ spec = importlib.util.spec_from_file_location("porsche_911_992_reference", TARGE
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
-# Focused runtime repair: the original build_wheels helper unpacked `side` into the
-# material-table position. Keep the geometry contract untouched and bind arguments explicitly.
+# Focused runtime repair 1: explicit material/side binding for wheel construction.
 def build_wheels_fixed(M):
     all_objs = []
     specs = [
@@ -34,5 +35,23 @@ def build_wheels_fixed(M):
         all_objs.extend(mod.build_wheel(code, x, y, tyre_spec, geom, M, side))
     return all_objs
 
+# Focused runtime repair 2: Blender 5.2 exposes EEVEE as BLENDER_EEVEE.
+def setup_render_fixed(path, samples, rx, ry):
+    sc = bpy.context.scene
+    sc.render.engine = "BLENDER_EEVEE"
+    sc.render.resolution_x = rx
+    sc.render.resolution_y = ry
+    sc.render.resolution_percentage = 100
+    sc.render.image_settings.file_format = "PNG"
+    sc.render.image_settings.color_mode = "RGBA"
+    sc.render.filepath = str(path)
+    sc.render.film_transparent = False
+    try:
+        sc.view_settings.look = "AgX - Medium High Contrast"
+    except Exception:
+        pass
+    sc["OLEANDER_REQUESTED_SAMPLES"] = samples
+
 mod.build_wheels = build_wheels_fixed
+mod.setup_render = setup_render_fixed
 mod.main()
