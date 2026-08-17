@@ -59,6 +59,12 @@ Purpose: strengthen the existing `oleander-data-viz` skill without replacing OLE
    - Inspected as a mature public data-visualization product/tool reference.
    - Transfer is limited to the product principle of fast, publication-oriented chart production; OLEANDER does not treat Datawrapper defaults as an aesthetic authority or allow tool defaults to replace project-specific hierarchy.
 
+11. AntV — `antvis/chart-visualization-skills`
+   - The repository separates a generic `chart-visualization` routing skill from renderer-specific skills such as `antv-g2-chart`, `antv-g6-graph` and `antv-x6-editor`.
+   - The generic skill is intentionally task/type oriented: inspect the data/request, choose a chart family, construct a structured request, render, and return the result. This is useful for intent routing but is not a sufficient professional-design gate for OLEANDER.
+   - The G2-specific skill contains runtime/version constraints and precise API guardrails. Transfer: **design policy and renderer syntax must remain separate layers**. A renderer adapter can prove that code is legal for a given library; it cannot prove visual hierarchy, evidence quality or professional finish.
+   - The repo also maintains dedicated evaluation datasets and targeted rerun IDs for G2/G6/X6 retrieval/code accuracy. Transfer: after a skill change, OLEANDER should retain focused regression cases for the exact failure mode rather than rely only on broad generic prompts.
+
 ## Tool routing extracted from the comparison
 
 Use the highest-level deterministic system that can express the analytical claim without loss:
@@ -71,6 +77,27 @@ Use the highest-level deterministic system that can express the analytical claim
 
 Tool sophistication is not a quality score. A simpler declarative chart with stronger truth/hierarchy outranks a more technically elaborate custom visualization that obscures the claim.
 
+## Skill architecture extracted from the comparison
+
+Keep three layers separate:
+
+1. **Visualization design policy** — analytical question, truth boundary, hierarchy, composition, annotation, accessibility and independent review. This is `oleander-data-viz` core.
+2. **Intent / form router** — decide whether the task is comparison, trend, distribution, topology, flow, geographic, explanatory diagram, etc., and select the appropriate representation/tool family.
+3. **Renderer adapter** — tool/version-specific syntax, runtime constraints, export behavior and debugging rules for G2, D3, QGIS, Plotly, etc.
+
+`RENDERER VALID != VISUALIZATION VALID != DESIGN KEEP`.
+
+This prevents renderer documentation from bloating the design skill and prevents a technically legal chart from being promoted simply because its API usage is correct.
+
+## Evaluation architecture extracted from the comparison
+
+For changed visualization skills, maintain both:
+
+- **broad golden cases** covering truth/accessibility/data correctness;
+- **targeted regression cases** keyed to the exact discovered failure, e.g. equal-weight network, card-wall evidence diagram, cleaner-but-weaker redesign, or vector-refinement data drift.
+
+Rerun targeted cases after each material skill change before broad promotion. Retrieval/code-syntax evals and actual visual-design evals remain different gates.
+
 ## Material changes absorbed into OLEANDER
 
 - Added Subject Grounding + One Signature.
@@ -82,6 +109,8 @@ Tool sophistication is not a quality score. A simpler declarative chart with str
 - Added structural-device truth rule.
 - Added editable vector bridge with post-refinement data reconciliation.
 - Added tool-routing rule: highest-level deterministic grammar first; custom D3/geo stacks only when the claim requires them.
+- Added explicit separation of visualization design policy / intent router / renderer adapter.
+- Added targeted visual-quality regression cases alongside existing broad golden cases.
 - Added diagnostic review lenses without allowing score averaging to defeat OLEANDER hard vetoes.
 
 ## What remains uniquely OLEANDER
