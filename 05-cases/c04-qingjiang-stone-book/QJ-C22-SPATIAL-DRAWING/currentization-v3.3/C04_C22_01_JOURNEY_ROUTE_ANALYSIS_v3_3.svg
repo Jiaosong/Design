@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 2384 1684">
+<defs>
+<style>
+.paper{fill:#f6f3ec} .ink{fill:#18211f} .muted{fill:#6d746f} .teal{fill:#5f8f8d} .red{fill:#c7594f}
+.hair{stroke:#c8cbc4;stroke-width:1.2;fill:none} .guide{stroke:#d7d8d2;stroke-width:1;fill:none;stroke-dasharray:4 7}
+.river{fill:#c7dddb;stroke:#6f9795;stroke-width:2.2}
+.base-primary{stroke:#26302d;stroke-width:3.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.base-secondary{stroke:#8a918d;stroke-width:1.55;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.route-primary{stroke:#1d2825;stroke-width:6.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.route-secondary{stroke:#5f6c67;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.route-conditional{stroke:#5f8f8d;stroke-width:3;fill:none;stroke-dasharray:11 9;stroke-linecap:round}
+.cable{stroke:#1d2825;stroke-width:3.1;fill:none}
+.node{fill:#f6f3ec;stroke:#17201e;stroke-width:2.2} .node-hi{fill:#17201e;stroke:#17201e;stroke-width:1.5}
+.content-node{fill:#f6f3ec;stroke:#8b918d;stroke-width:1.5}
+.zone{fill:#c7dddb;fill-opacity:.23;stroke:#5f8f8d;stroke-width:1.6;stroke-dasharray:7 6}
+.return{stroke:#c7594f;stroke-width:3.8;fill:none;stroke-linecap:round;stroke-dasharray:8 7}
+.leader{stroke:#343d39;stroke-width:1.4;fill:none} .leader-red{stroke:#c7594f;stroke-width:1.6;fill:none}
+.cap{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;font-weight:700;letter-spacing:2px;fill:#707873}
+.title{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:48px;font-weight:700;fill:#17201e}
+.claim{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:24px;font-weight:700;fill:#17201e}
+.sub{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;fill:#57605c}
+.label{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:17px;font-weight:600;fill:#17201e}
+.sm{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:14px;fill:#65706b}
+.micro{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:11px;fill:#757d79}
+.railhead{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:19px;font-weight:700;fill:#17201e}
+.bigstep{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;font-size:23px;font-weight:700;fill:#17201e}
+</style>
+<marker id="arrDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#17201e"/></marker>
+<marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#c7594f"/></marker>
+</defs>
+<rect class="paper" width="2384" height="1684"/>
+<g id="HIERARCHY_FRAME"><line x1="74" y1="62" x2="2310" y2="62" class="hair"/><line x1="74" y1="1512" x2="2310" y2="1512" class="hair"/></g>
+<g id="SHEET_HEADER">
+<text x="74" y="103" class="cap">C04 / C22 · SPATIAL ANALYSIS · SOURCE-BOUND REV 3.3</text>
+<text x="74" y="163" class="title">游程骨架与南岸分支网络｜Journey / Route Analysis</text>
+<text x="2310" y="103" text-anchor="end" class="sm">RELATIONAL / NTS · NOT SURVEY · FIELD OPEN</text>
+</g>
+<g id="PRIMARY_CLAIM">
+<text x="74" y="220" class="claim">路线不是十三个任务点，而是“到达—跨江—分支行走—回程”的空间网络。</text>
+<text x="74" y="251" class="sub">主图先让关系自己成立；R01–R13 只作为可选内容节点，不覆盖 Route 主权。</text>
+</g>
+<g id="PRIMARY_DRAWING_FIELD">
+<rect x="74" y="292" width="1740" height="1160" fill="#fbfaf6"/>
+<text x="102" y="330" class="cap">SOURCE BASE / EXACT C22 V3.0 RELATION CARRIERS · PRESENTATION TRANSFORM ONLY</text>
+<g id="SOURCE_BASE_C22_V3_EXACT_CARRIER" transform="translate(25 128) scale(.76)">
+<path d="M 961.024693 245.907192 C 1013.172145 447.050714 938.674111 670.544817 1005.721951 871.688339 C 1065.319597 1050.485184 990.82547 1273.975381 1072.773698 1534.724362 L 1288.817608 1534.724362 C 1229.219962 1288.879676 1318.614478 1057.935378 1259.016831 856.78795 C 1199.419185 640.747947 1303.714089 439.600519 1244.116443 245.907192 Z" class="river"/>
+<path id="EDGE_ARRIVAL" d="M 141.546313 625.843652 C 268.1918 610.943264 342.689834 581.146394 476.789422 603.496977 C 610.881196 625.843652 677.932943 640.747947 752.430978 588.596589" class="route-primary"/>
+<path id="EDGE_BOAT_CONDITIONAL" d="M 148.996507 1043.03499 C 365.040417 1028.138509 536.387068 983.437344 767.327459 931.289892" class="route-conditional"/>
+<path id="EDGE_CABLE_A" d="M 777.758512 536.449136 L 1501.880658 372.552679" class="cable"/>
+<path id="EDGE_CABLE_B" d="M 777.758512 554.326477 L 1501.880658 390.433926" class="cable"/>
+<path id="EDGE_S01" d="M 1512.307805 447.050714 C 1579.359552 528.995036 1601.706228 633.297753 1653.85368 715.242075 C 1728.355621 834.441275 1877.35169 774.839722 1966.746206 856.78795 C 2071.048924 953.636567 2138.092858 1072.83186 2100.845794 1221.827929" class="route-primary"/>
+<path id="EDGE_S02" d="M 1653.85368 715.242075 C 1787.953267 625.843652 1922.052855 521.548748 2100.845794 566.246006" class="route-primary"/>
+<path id="EDGE_S03" d="M 1758.152491 774.839722 C 1691.10465 908.939309 1676.208169 1028.138509 1773.056786 1132.433413 C 1862.447395 1229.28203 2011.443464 1259.0789 2100.845794 1221.827929" class="route-primary"/>
+<path id="EDGE_S04" d="M 1810.299943 663.094623 C 1922.052855 737.592658 2041.244241 774.839722 2160.439534 745.042852" class="route-primary"/>
+<path id="EDGE_S05" d="M 1773.056786 1132.433413 C 1638.957198 1199.481253 1549.558775 1162.230283 1512.307805 1057.935378 C 1482.510935 968.533049 1534.658387 879.142439 1653.85368 819.540886" class="route-primary"/>
+<path id="EDGE_S06" d="M 1653.85368 715.242075 C 1624.060717 640.747947 1594.25994 581.146394 1564.455257 521.548748" class="route-secondary"/>
+<path id="EDGE_S07" d="M 1966.746206 856.78795 C 2033.797954 826.987174 2093.3956 819.540886 2160.439534 834.441275" class="route-secondary"/>
+<path id="EDGE_S08" d="M 2100.845794 1221.827929 C 2011.443464 1311.226352 1862.447395 1341.027128 1758.152491 1273.975381" class="route-secondary"/>
+</g>
+<path d="M1115 470 C1300 418 1510 458 1660 575 C1725 630 1748 858 1652 1018 C1564 1154 1350 1190 1153 1088 C1052 1038 1044 582 1115 470Z" class="zone" id="SOUTH_BRANCH_FIELD"/>
+<text x="1420" y="430" text-anchor="middle" class="label" fill="#5f8f8d">MULTI-BRANCH / LOOP WALKING FIELD</text>
+<text x="1420" y="454" text-anchor="middle" class="micro">evidence-bound relational reading · not survey boundary</text>
+<g id="JOURNEY_ANCHORS">
+<circle cx="365" cy="672" r="17" class="node-hi"/><text x="392" y="665" class="label">ARRIVAL / SERVICE</text><text x="392" y="688" class="sm">云坛口 / map / return certainty</text>
+<circle cx="510" cy="535" r="15" class="node"/><text x="536" y="530" class="label">CABLE NORTH</text>
+<circle cx="1165" cy="405" r="15" class="node"/><text x="1190" y="401" class="label">CABLE SOUTH</text>
+<path d="M493 520 L1145 373" class="leader" marker-end="url(#arrDark)"/><text x="805" y="432" class="sm" transform="rotate(-12 805 432)">TRANSPORT + MOVING VIEW / bidirectional service relationship</text>
+</g>
+<g id="OPTIONAL_CONTENT_NODES">
+<g><circle cx="1260" cy="645" r="12" class="content-node"/><text x="1278" y="650" class="sm">R02</text></g>
+<g><circle cx="1570" cy="548" r="12" class="content-node"/><text x="1588" y="553" class="sm">R05</text></g>
+<g><circle cx="1600" cy="681" r="12" class="content-node"/><text x="1618" y="686" class="sm">R06</text></g>
+<g><circle cx="1472" cy="762" r="12" class="content-node"/><text x="1490" y="767" class="sm">R07</text></g>
+<g><circle cx="1500" cy="875" r="12" class="content-node"/><text x="1518" y="880" class="sm">R09</text></g>
+<g><circle cx="1328" cy="955" r="12" class="content-node"/><text x="1346" y="960" class="sm">R12</text></g>
+<g><circle cx="1567" cy="1018" r="12" class="content-node"/><text x="1585" y="1023" class="sm">R13</text></g>
+</g>
+<g id="RELATION_CALLOUTS">
+<path d="M1100 784 L1000 784 L1000 878" class="leader"/><circle cx="1100" cy="784" r="4" fill="#17201e"/>
+<text x="826" y="875" class="label">CONTENT ≠ ROUTE</text><text x="826" y="899" class="sm">节点可读 / 可玩 / 可跳过；不拥有导航与安全主权。</text>
+<path d="M1540 1115 L1680 1115 L1680 1190" class="leader-red"/><circle cx="1540" cy="1115" r="4" fill="#c7594f"/>
+<text x="1515" y="1222" class="label" fill="#c7594f">RETURN MUST REMAIN AVAILABLE</text><text x="1515" y="1246" class="sm">具体回程方向 / 开闭状态仍需现场与运营数据；此处只锁服务原则。</text>
+</g>
+<g id="JOURNEY_SEQUENCE">
+<line x1="154" y1="1323" x2="1640" y2="1323" class="hair"/>
+<circle cx="210" cy="1323" r="8" fill="#17201e"/><text x="210" y="1286" text-anchor="middle" class="bigstep">01</text><text x="210" y="1360" text-anchor="middle" class="label">到达 / SERVICE</text>
+<line x1="235" y1="1323" x2="520" y2="1323" class="leader" marker-end="url(#arrDark)"/>
+<circle cx="560" cy="1323" r="8" fill="#17201e"/><text x="560" y="1286" text-anchor="middle" class="bigstep">02</text><text x="560" y="1360" text-anchor="middle" class="label">跨江 / CABLE</text>
+<line x1="585" y1="1323" x2="885" y2="1323" class="leader" marker-end="url(#arrDark)"/>
+<circle cx="925" cy="1323" r="8" fill="#17201e"/><text x="925" y="1286" text-anchor="middle" class="bigstep">03</text><text x="925" y="1360" text-anchor="middle" class="label">分支 / WALK</text>
+<line x1="950" y1="1323" x2="1250" y2="1323" class="leader" marker-end="url(#arrDark)"/>
+<circle cx="1290" cy="1323" r="8" fill="#c7594f"/><text x="1290" y="1286" text-anchor="middle" class="bigstep" fill="#c7594f">04</text><text x="1290" y="1360" text-anchor="middle" class="label" fill="#c7594f">回程 / RETURN</text>
+</g>
+</g>
+<g id="ANNOTATION_RAIL">
+<line x1="1855" y1="292" x2="1855" y2="1452" class="hair"/>
+<text x="1892" y="330" class="cap">EVIDENCE → FINDING → CONSEQUENCE</text>
+<text x="1892" y="382" class="railhead">E-01 / SOURCE</text><text x="1892" y="412" class="sm">C22 v3.0 relation carriers + current project</text><text x="1892" y="434" class="sm">route/source authority. Base remains relational.</text>
+<line x1="1892" y1="470" x2="2296" y2="470" class="hair"/>
+<text x="1892" y="514" class="railhead">F-01 / SPATIAL FINDING</text><text x="1892" y="544" class="sm">跨江后不是线性十三站，而是南岸多分支</text><text x="1892" y="566" class="sm">步行关系；内容节点叠加在网络之上。</text>
+<line x1="1892" y1="602" x2="2296" y2="602" class="hair"/>
+<text x="1892" y="646" class="railhead">D-01 / DESIGN CONSEQUENCE</text><text x="1892" y="676" class="sm">地图 / App / Web / 纸图必须先表达 Route，</text><text x="1892" y="698" class="sm">再允许 R01–R13 被选择性打开。</text>
+<line x1="1892" y1="734" x2="2296" y2="734" class="hair"/>
+<text x="1892" y="778" class="railhead" fill="#c7594f">OPEN / DOES NOT PROVE</text><text x="1892" y="808" class="sm">无测绘坐标、距离、坡度、时间、GPS、</text><text x="1892" y="830" class="sm">实时开闭或安全容量结论。</text>
+<text x="1892" y="885" class="cap">READING KEY</text>
+<line x1="1892" y1="930" x2="1962" y2="930" class="route-primary"/><text x="1986" y="936" class="sm">source primary relation</text>
+<line x1="1892" y1="976" x2="1962" y2="976" class="route-secondary"/><text x="1986" y="982" class="sm">source secondary relation</text>
+<line x1="1892" y1="1022" x2="1962" y2="1022" class="route-conditional"/><text x="1986" y="1028" class="sm">conditional relation</text>
+<rect x="1892" y="1055" width="70" height="28" class="zone"/><text x="1986" y="1076" class="sm">evidence-bound analysis zone</text>
+<circle cx="1927" cy="1124" r="10" class="content-node"/><text x="1986" y="1130" class="sm">optional content node</text>
+<line x1="1892" y1="1172" x2="1962" y2="1172" class="return"/><text x="1986" y="1178" class="sm">service / return principle</text>
+<text x="1892" y="1250" class="cap">CURRENT ROUTE POINTER</text><text x="1892" y="1280" class="sm">ROUTE-03 = user-locked downstream Route object.</text><text x="1892" y="1302" class="sm">This sheet does not replace its topology authority.</text>
+<text x="1892" y="1370" class="micro">Producer state: EXECUTED / SELF-CHECKED / REVIEW PENDING</text>
+</g>
+<g id="FOOTER"><text x="74" y="1560" class="sm">DRW-C04-C22-01 · v3.3 analysis rebuild · exact C22 source carriers retained · C04 Current Authority governs</text><text x="2310" y="1560" text-anchor="end" class="sm">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO_PROMOTION</text></g>
+</svg>
