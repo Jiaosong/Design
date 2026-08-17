@@ -54,6 +54,24 @@
       "prompt": "用 G6 或 force layout 把节点自动排开后，图看起来像一张精确的空间分布图。请审查并修复，使拓扑可读但不误导为真实距离、方位或地理位置。",
       "expected_output": "Keep stable IDs and source/target topology, treat force positions as computational layout rather than evidence, remove or relabel unsupported spatial implications, use deterministic diagrammatic coordinates if needed for presentation, and preserve explicit RELATIONAL/NTS/NOT GEOREFERENCED truth boundaries.",
       "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "只有一张 735×1041 的信息可视化 JPEG。能读到部分年份和百分比，但气泡矩阵、环形柱、右上复合图和 alluvial 的原始数据表都没有。要求复刻为可编辑、数据驱动 SVG。",
+      "expected_output": "Activate RASTER_TO_PARAMETRIC_RECONSTRUCTION. Build SOURCE_DATA.json + VISUAL_ENCODING_SPEC.json + deterministic generator. Separate SOURCE_VISIBLE, REFERENCE_DERIVED_GEOMETRY, INFERRED_FROM_MARK, REFERENCE_TRACE_CANDIDATE and UNREADABLE. Recover grid/circle/radial/path geometry from pixels but do not invent original values/variable meanings. Generate editable SVG, run ROI fidelity readback and deterministic double-generation roundtrip. VR-C3 remains unavailable where original semantics are unreadable.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "alluvial 图已经从参考图追出了 52 条曲线，像素也比较接近。交叉点很多。是否可以直接把 source→target 当成原始拓扑？",
+      "expected_output": "No. Treat visible path traces separately from crossing identity. Record endpoints, relation/color family, crossing-order inversion, local tangent continuation and HIGH/MEDIUM/LOW identity confidence. MEDIUM/LOW crossings stay REFERENCE_TRACE_CANDIDATE. Pixel similarity or trace support cannot promote ambiguous crossings to recovered source topology.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "从栅格图 skeletonize 出了几十段等高/层叠线段。把它们都存成 SVG path 后，能不能说每条原始数据层已经恢复？一个 19 层参数模型内部拟合更漂亮，但放回整图后 ROI 误差反而更大。",
+      "expected_output": "Keep L1 geometry segments separate from semantic layers. Use continuation/stitching and stable ordering to reach L2 layer candidates; L3 requires source-supported variable meaning. Reject the 19-layer repair if target ROI regresses and it supplies no necessary semantic gain. Algorithm sophistication/internal objective improvement cannot override actual reference ROI regression.",
+      "files": []
     }
   ]
 }
