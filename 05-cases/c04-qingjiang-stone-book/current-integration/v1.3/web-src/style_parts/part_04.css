@@ -38,3 +38,4 @@
 .tech-hero{margin-top:40px;border:1px solid var(--line);background:#fff;cursor:zoom-in}
 .tech-hero img{width:100%}
 .proof-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+.memory-object{background:transparent;box-shadow:none}.memory-object img{width:100%;height:auto;object-fit:contain}
