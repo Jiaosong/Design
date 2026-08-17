@@ -14,6 +14,10 @@ Use with `REFERENCE_RECONSTRUCTION_FIDELITY.md` and `MULTILAYER_RELATION_RECONST
 
 `ROUTE LABEL PRESENT != ROUTE RELATION DRAWN`
 
+`LOW ROUTE-CARRIER RECALL != ANTIALIASING PROBLEM`
+
+`GEOMETRY MASTER != RENDERED BASE INSTANCE`
+
 ## 1. What a professional flow analysis actually contains
 
 A circulation/flow drawing is a graph tied to spatial base geometry.
@@ -58,7 +62,29 @@ Do not allow marker size to grow unintentionally with route stroke width. A comm
 
 The arrowhead must be tangent to the route at the placement point. A visually close triangle that points along the wrong segment is a directional-relation error.
 
-## 3. Flow-network topology register
+## 3. Direction-marker taxonomy — do not collapse unlike arrows
+
+Before reconstruction, classify every visible arrow/triangle by function. At minimum distinguish:
+
+1. `ROUTE_DIRECTION` — direction of travel/movement on a route edge;
+2. `ENTRY_EXIT` — crossing into/out of the analytical frame or site;
+3. `EXTERNAL_CONTINUATION` — the route continues beyond the current panel;
+4. `ANALYTICAL_VECTOR` — a directional analytical force/relationship not bound to a traversable path;
+5. `SEQUENCE_TRANSITION` — before/after or state transition;
+6. `CALLOUT_POINTER` — annotation pointer, not movement;
+7. `NORTH / ORIENTATION` — sheet/spatial orientation, not network direction.
+
+These classes may look visually similar in a compressed reference but are not interchangeable. A generic SVG marker definition applied to all of them is a semantic failure unless the source genuinely uses one family with one meaning.
+
+### Direction-marker register
+
+Record:
+
+`MARKER-ID → FUNCTION CLASS → OWNER EDGE/NODE → PAGE POSITION → LOCAL TANGENT → HEAD GEOMETRY → STROKE/FILL → REFERENCE CONFIDENCE`.
+
+If the owner edge/node is unknown, state `UNRECOVERABLE / PARTIAL`; do not invent a network relation merely because an arrow is visible.
+
+## 4. Flow-network topology register
 
 Create a `FLOW_NETWORK_REGISTER` for serious circulation analysis or strict reconstruction.
 
@@ -90,7 +116,19 @@ For each `ROUTE_NODE` record:
 
 This makes branch/merge/continuation errors visible instead of hiding them inside one path string.
 
-## 4. Route hierarchy is graphical, not only semantic
+### Topology invariants
+
+A strict reconstruction must explicitly test:
+
+- every edge has valid start/end nodes;
+- node degree matches the actual connected edge set;
+- branch/merge locations remain attached to the same source spatial carrier;
+- directed edges have direction evidence when the source shows it;
+- bidirectional routes are not silently rendered one-way;
+- frame continuations do not terminate as ordinary internal endpoints;
+- separate route classes remain separate objects even when they overlap visually.
+
+## 5. Route hierarchy is graphical, not only semantic
 
 A professional flow analysis often uses more than one line class:
 
@@ -108,7 +146,15 @@ Preserve relative hierarchy through:
 
 Do not flatten every route into the same thick accent stroke.
 
-## 5. Flow line must be bound to the spatial base
+### Route-class inventory before drawing
+
+For strict reference reconstruction, inventory visible route classes **before** authoring SVG routes. Record at minimum:
+
+`CLASS → REPRESENTATIVE PIXEL/STROKE SAMPLE → EDGE COUNT OR BOUNDED COUNT → MARKER POLICY → LABEL POLICY → BASE-BINDING TYPE`.
+
+Do not infer class equality merely because two lines share hue. Width, opacity, dash, marker frequency and spatial role may encode different classes.
+
+## 6. Flow line must be bound to the spatial base
 
 Every route segment should answer:
 
@@ -124,7 +170,15 @@ Possible binding states:
 
 A route that drifts across buildings or ignores the source street/path geometry is not a minor pixel error. It is a spatial-relation failure.
 
-## 6. Speed, street-name and mode-symbol binding
+### Base-binding audit
+
+For each critical edge, compare at multiple stations, not only endpoints:
+
+`ROUTE SAMPLE POINT → EXPECTED BASE CARRIER → CANDIDATE BASE CARRIER → NORMAL OFFSET / RELATION STATE`.
+
+A route can have correct endpoints and still bow across the wrong spatial object. Endpoint alignment alone does not establish relation fidelity.
+
+## 7. Speed, street-name and mode-symbol binding
 
 A speed or street label is not ordinary typography.
 
@@ -139,7 +193,19 @@ Record:
 
 Parking/transit/bicycle symbols must record their owning node/edge or explicit free-standing state. A visually accurate pin at the wrong road segment is a relation error.
 
-## 7. Reconstruction-specific fidelity dimensions
+### Symbol-density fidelity
+
+For references where repeated parking/transit/bicycle pins form a visible system, compare:
+
+- count or bounded count by symbol class;
+- spatial distribution along the network;
+- node/edge ownership;
+- clustering/repetition rhythm;
+- symbol scale hierarchy.
+
+One or two correctly drawn pins cannot stand in for a dense source network.
+
+## 8. Reconstruction-specific fidelity dimensions
 
 For flow/circulation reconstruction, add these checks to ordinary pixel/ROI comparison:
 
@@ -181,7 +247,7 @@ For flow/circulation reconstruction, add these checks to ordinary pixel/ROI comp
 
 A full-page MAE can improve while all four of these remain wrong.
 
-## 8. Flow-specific pixel diagnostic
+## 9. Flow-specific pixel diagnostic
 
 For a supplied reference, isolate route-carrier pixels by panel and class where feasible.
 
@@ -200,7 +266,17 @@ These metrics are diagnostics, not universal PASS thresholds.
 
 If reference-color recall is very low, do not spend time tuning antialiasing or fonts first. The route system itself has not been reconstructed.
 
-## 9. Multi-layer analytical atlas rule
+### Low-recall stop rule
+
+When a route-carrier diagnostic shows that a material share of the source network is absent or displaced, freeze lower-priority pixel polishing and return to:
+
+`EDGE INVENTORY → NODE/BRANCH TOPOLOGY → BASE BINDING → ROUTE CLASSES → DIRECTION MARKERS`.
+
+Typography may continue only for labels needed to identify route ownership; cosmetic type, antialiasing, JPEG-noise matching and micro-icon color work are deferred.
+
+This is a **repair-order rule**, not a fixed numeric threshold. The producer must show that route carrier/topology is substantially reconstructed before claiming lower-layer residuals are the dominant problem.
+
+## 10. Multi-layer analytical atlas rule
 
 When several panels reuse one site but show different thematic networks:
 
@@ -219,7 +295,15 @@ Do not assume that one identical rendered base `<use>` can be copied into every 
 
 This distinction is essential for pixel reconstruction.
 
-## 10. Exact-reconstruction blocker sequence
+### Base-instance register
+
+For each analytical panel record:
+
+`PANEL-ID → GEOMETRY_MASTER REV → TRANSFORM → VISIBLE OBJECT SET / MASK → LINE/TONE CLASS → THEME OVERLAY → NETWORK REGISTER`.
+
+Shared source geometry should prevent drift; per-panel rendering state should preserve what the reference actually shows.
+
+## 11. Exact-reconstruction blocker sequence
 
 Before claiming high fidelity, eliminate in this order:
 
@@ -228,7 +312,7 @@ Before claiming high fidelity, eliminate in this order:
 3. wrong route topology;
 4. wrong route-to-base binding;
 5. missing primary/secondary line classes;
-6. wrong arrowhead position/orientation/scale;
+6. wrong arrowhead function/position/orientation/scale;
 7. wrong nodes/pins/mode-symbol density;
 8. wrong speed/street label binding;
 9. typography/stroke/color residuals;
@@ -236,7 +320,20 @@ Before claiming high fidelity, eliminate in this order:
 
 Do not tune item 9–10 while items 1–6 are materially wrong.
 
-## 11. R3/JPEG truth boundary
+### Structural mismatch vs renderer residual
+
+Classify remaining difference clusters before pixel polishing:
+
+- `STRUCTURAL / TOPOLOGY` — missing/extra/misconnected route or node;
+- `GEOMETRIC / BINDING` — route exists but is displaced from its source carrier;
+- `DIRECTIONAL` — arrow function, tangent, position or bidirectionality wrong;
+- `SYMBOL-DENSITY` — repeated network symbols missing/overgeneralized;
+- `TYPOGRAPHIC` — correct relation but baseline/run/rotation differs;
+- `RENDERER / JPEG` — geometry and semantics align, residual is rasterization/compression.
+
+Only the last class should be handled as pure renderer/JPEG cleanup.
+
+## 12. R3/JPEG truth boundary
 
 For compressed raster references, literal tolerance-zero pixel equality may be unavailable while preserving clean semantic vectors.
 
@@ -259,18 +356,75 @@ For R3 sources, separate:
 
 RF-C3 remains unavailable when exact original font/render/compression conditions are not verifiable.
 
-## 12. Producer review questions
+Do not invoke `SOURCE-COMPRESSION RESIDUAL` while recoverable route topology, base binding, marker placement or symbol density is still materially incomplete.
+
+## 13. Machine flow-network gate
+
+Use `tools/validate_flow_network.py` with a `FLOW_NETWORK_REGISTER` whenever a reconstruction claims semantic flow-network editability.
+
+The machine gate checks structural claims that are objectively testable:
+
+- registered base geometry exists;
+- required route classes exist and contain edges;
+- edge IDs are unique and map to vector line/path/polyline carriers;
+- each edge references valid start/end nodes;
+- node degree and connected-edge lists agree with the graph;
+- base-binding state is explicit;
+- directed edges that require direction evidence own direction markers;
+- each marker names its owner edge and stays within the declared tangent/marker-scale contract;
+- route labels remain editable text bound to an existing edge;
+- mode symbols bind to exactly one registered node or edge;
+- external continuations use an explicit continuation/external route class;
+- the register remains non-promoted.
+
+Regression fixture:
+
+- `fixtures/reconstruction/FLOW-01_NETWORK.svg`
+- `fixtures/reconstruction/FLOW-01_NETWORK_REGISTER.json`
+
+A machine `STRUCTURE PASS` does not prove:
+
+- the reference network was completely inventoried;
+- pixel/visual fidelity;
+- route planning validity;
+- project/site truth;
+- independent Design KEEP.
+
+## 14. Reconstruction acceptance ladder for flow panels
+
+Do not jump directly from “there are arrows” to pixel fidelity. Use:
+
+### `FN-C0 / NETWORK IDENTIFIED`
+Panel segmentation, base, route classes and recoverable network objects have been inventoried.
+
+### `FN-C1 / TOPOLOGY RECONSTRUCTED`
+Recoverable edge/node/branch/continuation structure is rebuilt as editable objects. Major relations do not rely on prose.
+
+### `FN-C2 / SPATIAL BINDING RECONSTRUCTED`
+Route geometry is attached to the correct base carriers; markers, labels and mode symbols own the correct edges/nodes.
+
+### `FN-C3 / VISUAL NETWORK FIDELITY CANDIDATE`
+Route carrier, line-class hierarchy, direction-marker geometry, node/symbol density and panel rendering state are materially aligned to the reference under declared source limitations.
+
+`FN-C3` is still not `RF-C3 PIXEL-EXACT`. The latter additionally requires the Pixel Forensic contract and source/render conditions that support an exact claim.
+
+If the source is R3/JPEG, the normal ceiling may be `FN-C3 + RF-C2` rather than RF-C3.
+
+## 15. Producer review questions
 
 For every flow panel ask:
 
 1. Can I trace the network without reading the prose?
 2. Do I know which line is primary, secondary and continuation?
 3. Are arrowheads attached to the actual route and tangent to it?
-4. Do branches/merges occur at the same spatial locations as the source?
-5. Do speed/street labels belong to the correct segments?
-6. Are parking/transit/cycle symbols bound to actual nodes/edges?
-7. Does the overlay respect the base geometry?
-8. Is any conclusion carried only by a label because the route was simplified away?
+4. Do arrowheads mean the same thing as their source counterparts, rather than merely looking similar?
+5. Do branches/merges occur at the same spatial locations as the source?
+6. Do speed/street labels belong to the correct segments?
+7. Are parking/transit/cycle symbols bound to actual nodes/edges and present at source-like density?
+8. Does the overlay respect the base geometry at multiple sample stations, not only endpoints?
+9. Does each panel render the shared base with the visibility/tone/omission state visible in that panel?
+10. Is any conclusion carried only by a label because the route was simplified away?
+11. Are remaining errors actually renderer/JPEG residuals, or are recoverable network objects still missing?
 
 If any critical answer is no, producer state remains `REVISE / REVIEW PENDING`.
 
