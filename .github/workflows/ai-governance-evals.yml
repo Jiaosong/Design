@@ -43,6 +43,14 @@ jobs:
       - name: Exercise flow-network negative regressions
         run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_flow_regression.py
 
+      - name: Validate spatial semantic-to-graphic translation fixture
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_spatial_translation.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json
+
+      - name: Exercise spatial translation negative regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_spatial_translation_regression.py
+
       - name: Validate repeated-base panel instance fixture
         run: >-
           python oleander-skills/oleander-technical-drawing/tools/validate_base_instances.py
@@ -89,6 +97,8 @@ jobs:
           echo '- Validates shared-base reuse, relation carriers, callout topology and symbol instances in the multilayer semantic reconstruction regression; this does not prove pixel fidelity or Design KEEP.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates flow-network nodes, edges, route classes, direction-marker ownership/tangency contracts, route labels, mode-symbol binding and external continuations; this does not prove route truth, visual fidelity or Design KEEP.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Exercises negative flow regressions so oversized generic arrows, wrong tangent, wrong label-edge binding, collapsed route classes and missing direction evidence must fail.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates spatial semantic-to-graphic translation: source phenomenon, spatial model, abstraction mode, registration class, preserved invariants and carrier type must all be explicit before styling.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Exercises negative translation regressions so pseudo-map schematics, topology-only geometry claiming position, symbol-only junctions and unbound carriers must fail.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates geometry-master vs rendered-base-instance separation and forbids raster/text/theme contamination or false authority inside base visual carriers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Exercises negative base-instance regressions so raster embedding, label contamination, theme-color leakage, false authority, identical-carrier collapse and semantic-master deletion must fail.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates thematic semantic-layer vs visual-carrier separation and forbids raster/text contamination or false authority inside theme visual carriers.' >> "$GITHUB_STEP_SUMMARY"
