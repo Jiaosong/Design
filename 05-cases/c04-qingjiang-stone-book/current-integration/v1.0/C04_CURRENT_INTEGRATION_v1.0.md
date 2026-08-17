@@ -57,39 +57,40 @@ First internal composition was rejected/revised specifically at:
 - Digital: full App contact sheet read as a tiny dashboard;
 - Return: isolated portrait UI was too weak against the final layer role.
 
-Revisions:
-- Journey now uses a dominant approved ROUTE screen and journey hierarchy;
-- Thirteen Imprints now uses the actual route-map product surface with all R01–R13 around it;
-- Digital now uses three individually cropped approved v1.6 screens instead of one miniature contact sheet;
-- Return now uses a full-Qingjiang background with a larger approved Return screen.
+Final revisions:
+- Journey uses a dominant approved ROUTE screen and journey hierarchy;
+- Thirteen Imprints uses the actual route-map product surface with all R01–R13 around it;
+- Digital uses three individually cropped approved App v1.6 screens instead of one miniature contact sheet;
+- Return uses a full-Qingjiang background with a larger approved Return screen.
 
-Browser readback:
+Browser readback on final v1.0:
 - viewport `1920×1080`;
 - `scrollWidth == clientWidth == 1920`;
-- 12 section screenshots produced;
-- no horizontal overflow in this integration carrier.
+- 12 final section screenshots produced;
+- no horizontal overflow.
 
 Important verdict boundary:
 - producer does **not** self-KEEP;
 - current integration remains `PENDING INDEPENDENT DESIGN VERDICT`;
 - Browser render existence does not equal project Design PASS.
 
-## Persisted production package
+## Persisted production package — FINAL v1.0 bytes
 
 Drive parent: `C04_Qingjiang-Stone-Book` / `1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz`
 
 Package:
 - Drive ID: `1d_aXFYynwDM7QOv49jEG2xBcl2CjhjBO`
 - filename: `C04_CURRENT_INTEGRATION_v1_0.zip`
-- bytes: `16,817,982`
-- SHA256: `e4b9d5de572c6afe5cfdca5119ad1e0de597af0275965e5289ec64bc3be70de9`
-- Drive metadata readback size: PASS.
+- bytes: `40,940,621`
+- SHA256: `db42d58793e3e711aafa600fc3a1c75e20701cefa9d3c7702f20de9448051fc2`
+- Drive replacement upload: PASS;
+- Drive returned size: `40,940,621` — PASS.
 
 Package contains:
 - editable multi-section HTML;
 - self-contained portable HTML;
 - selected mature source images / SVG;
-- 1920×1080 browser section screenshots;
+- 12 final 1920×1080 browser section screenshots + contact sheet;
 - integration manifest;
 - SHA manifest.
 
