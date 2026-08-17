@@ -1,0 +1,51 @@
+{
+  "practice_id": "PRAC-DV-2026-08-17-HIERARCHY-NETWORK",
+  "project_context": "PRJ-C04-QINGJIANG-SHISHU / transfer exercise only",
+  "status": "TRAINING / REVIEW PENDING / NOT CURRENT C22 AUTHORITY",
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "surveyed": false,
+    "georeferenced": false,
+    "g1f": "HOLD",
+    "promotion": "NO"
+  },
+  "source_authority": [
+    "05-cases/c04-qingjiang-stone-book/QJ-C22-SPATIAL-DRAWING/QJ_C_SPATIAL_DRAWING_DATA_v3.0.json",
+    "05-cases/c04-qingjiang-stone-book/QJ-C22-SPATIAL-DRAWING/README.md"
+  ],
+  "claim": "Route / Service / Return must read before optional reading nodes while the south-bank system remains a branching relational network rather than a 13-stop sequence.",
+  "nodes": [
+    {"id":"A1","label":"云坛口 / 服务","role":"arrival_service","visual_priority":"H1","position_state":"diagrammatic"},
+    {"id":"A2","label":"索道北站","role":"transport_service","visual_priority":"H1","position_state":"diagrammatic"},
+    {"id":"R01","label":"移动观看","role":"optional_reading_on_cable","visual_priority":"H2","position_state":"relation_only"},
+    {"id":"A3","label":"索道南站","role":"transport_service","visual_priority":"H1","position_state":"diagrammatic"},
+    {"id":"R02","label":"华中第一藤","role":"optional_reading","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R05","label":"红花石林","role":"optional_reading","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R06","label":"观景平台 · 河谷","role":"optional_reading_recovery_candidate","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R07","label":"仓禀 / 仓廪","role":"optional_reading","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R09","label":"盐水女神峰","role":"optional_reading","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R12","label":"廪君峰","role":"optional_reading","visual_priority":"H2","position_state":"diagrammatic"},
+    {"id":"R13","label":"一线天","role":"closure_return_anchor","visual_priority":"H1_RETURN","position_state":"diagrammatic / field safety open"}
+  ],
+  "relations": [
+    {"from":"arrival","to":"A2","role":"route_backbone","geometry":"diagrammatic"},
+    {"from":"A2","to":"A3","role":"cross_river_cable","geometry":"source-supported relation / not sag geometry"},
+    {"from":"A3","to":"south_bank_junctions","role":"relational_backbone","geometry":"diagrammatic / not route order"},
+    {"from":"south_bank_junctions","to":"R02|R05|R06|R07|R09|R12|R13","role":"optional_branches","geometry":"diagrammatic"},
+    {"from":"branch_junctions","to":"A3","role":"return_spine","geometry":"design communication layer / not surveyed path"},
+    {"from":"boat_access","to":"north_bank","role":"conditional_access","geometry":"diagrammatic"}
+  ],
+  "does_not_prove": [
+    "exact coordinates",
+    "micro-route order",
+    "distance or walking time",
+    "slope or elevation",
+    "clear width or stair count",
+    "capacity",
+    "accessibility compliance",
+    "field safety",
+    "construction geometry",
+    "real-time operation"
+  ]
+}
