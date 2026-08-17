@@ -42,6 +42,23 @@ Every section should have one primary claim and one primary visual.
 - Brand story: human motivation, distinctive promise, proof, voice.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
+## Responsive focal-anchor gate
+
+When a claim-bearing image moves across web, mobile, board, deck, or other aspect ratios, responsive success means preserving the claim, not merely fitting the media box.
+
+1. Identify the visual object or relation that carries the claim before changing aspect ratio. Record it as a focal anchor or focal region.
+2. Define a crop-safe zone around that anchor. The safe zone must include every element required to understand the primary claim, not only the most photogenic object.
+3. Simulate every target ratio before approval. At minimum, compare the widest and narrowest intended presentation surfaces.
+4. `object-fit: cover`, center crop, or an automated crop is never a design PASS by itself. If the declared focal anchor leaves the visible frame, the responsive variant is `REVISE` even when there is no overflow.
+5. Use `object-position` or equivalent focal-coordinate controls only when a single source image can preserve the same claim at all required ratios.
+6. Use art-directed source variants when one crop cannot preserve composition, scale, subject relation, or legibility across ratios. Do not stretch or distort one source to avoid producing a proper variant.
+7. Keep focal coordinates, safe-zone intent, and crop decisions in the production specification so later web, slide, board, and video implementations do not silently recenter the asset.
+8. If text overlays an image, test the image anchor and text safe zone together. Preserving the subject while causing title/body collisions is still `REVISE`.
+9. Claim continuity and asset identity are separate gates: a crop may preserve the image file while destroying the claim, or preserve the claim while using an unauthorized replacement. Both must pass.
+10. Browser/runtime evidence remains distinct from crop-geometry or static visual proof. A geometric crop simulation can support Design Crit but must not be reported as browser PASS.
+
+Reference implementation logic: CSS Images defines `object-fit: cover` as preserving aspect ratio while filling the content box, and `object-position` as the alignment control inside that box. The skill uses those primitives as implementation tools, not as substitutes for composition review.
+
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
@@ -52,5 +69,6 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 - No placeholder or unlicensed asset reaches final output.
 - Captions identify what, where, when, and why it matters.
 - Text remains readable at target print/view distance.
+- Claim-bearing images retain their declared focal anchor and safe zone across approved aspect ratios.
 - The conclusion follows from the evidence rather than visual mood alone.
 
