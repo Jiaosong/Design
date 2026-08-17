@@ -1,0 +1,21 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-DIMENSION-BINDING",
+  "topic": "Dimension-to-object binding for 3D/model presentation",
+  "project_trigger": "C04 Mountain Fluid Rest v1.4 was rejected because dimensions were not sufficiently attached to the model read.",
+  "practice_values": {
+    "overall_mm": 5400,
+    "sit_mm": 445,
+    "lean_mm": 740,
+    "half_recline": "455 hip + 740 back rise"
+  },
+  "truth_boundary": "Existing C04 scale-test values reused for training only; not field/site measurement; NTS; no engineering/accessibility approval.",
+  "design_crit": {
+    "v1": "REJECT — detached register contains correct values but object interval is ambiguous.",
+    "v2": "REVISE — attachment works but the vertical dimension cluster competes with silhouette/human scale.",
+    "v3": "KEEP FOR TRAINING — critical dimensions attach directly; secondary values move to a near-read rail; model/human scale remains first-read."
+  },
+  "candidate_rule": "SOURCE VALUE -> MEASURED OBJECT / INTERVAL -> ATTACHMENT CARRIER -> FIRST-READ MODEL -> NEAR-READ DIMENSION -> TRUTH BOUNDARY",
+  "external_reference": "ISO 129-1:2018 general principles for presentation of dimensions and tolerances; applicable to 2D and can also be applied to 3D applications.",
+  "source_artifact_sha256": "7ed98317886b1500218471f88d53732779a02ea276905d008a92b4802bae720a",
+  "state": "KEEP_FOR_TRAINING / MATERIAL_DELTA_VALID / NO_PROJECT_PROMOTION"
+}
