@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#efede7"/>
+<rect x="44" y="42" width="1832" height="996" rx="16" fill="#fff" stroke="#d4d1ca"/>
+<text x="92" y="104" font-family="Arial" font-size="30" font-weight="700">OLEANDER / EVIDENCE-BOUND FIGURE CAPTION</text>
+<text x="92" y="140" font-family="Arial" font-size="14" fill="#666">same figure · same information · different evidence binding</text>
+<text x="92" y="204" font-family="Arial" font-size="17" font-weight="700">A / DETACHED CAPTION — REJECT</text>
+<rect x="92" y="258" width="790" height="650" fill="#f8f8f5" stroke="#ccc9c1"/>
+<rect x="118" y="286" width="738" height="430" fill="#4c6664"/>
+<path d="M118 628 L210 515 L285 610 L400 455 L500 602 L620 420 L735 590 L856 478 L856 716 L118 716 Z" fill="#38524f"/>
+<path d="M118 655 C245 606 355 663 480 610 S710 600 856 548" fill="none" stroke="#8bb8b8" stroke-width="58"/>
+<path d="M420 590 C515 552 610 520 708 460" fill="none" stroke="#efece2" stroke-width="4" stroke-dasharray="12 10"/>
+<circle cx="708" cy="460" r="13" fill="#efece2"/>
+<text x="144" y="326" font-family="Arial" font-size="12" fill="#d6e3df">FIGURE 06</text>
+<text x="144" y="363" font-family="Arial" font-size="30" font-weight="700" fill="#fff">Valley relation</text>
+<text x="118" y="764" font-family="Arial" font-size="12" fill="#444">Figure 06. Valley relation at R06. Source-grounded landscape study, 2026.</text>
+<text x="118" y="796" font-family="Arial" font-size="11" fill="#888">Does not prove field measurement, exact dimensions, engineering approval, or implementation readiness.</text>
+<text x="118" y="846" font-family="Arial" font-size="11" fill="#777">Truth state reads like a remote footer, not part of the figure.</text>
+<text x="958" y="204" font-family="Arial" font-size="17" font-weight="700">B / EVIDENCE-BOUND CAPTION — KEEP</text>
+<rect x="958" y="258" width="870" height="650" fill="#f8f8f5" stroke="#ccc9c1"/>
+<rect x="982" y="282" width="822" height="430" fill="#4c6664"/>
+<path d="M982 624 L1070 515 L1140 606 L1250 455 L1350 600 L1468 420 L1585 588 L1804 470 L1804 712 L982 712 Z" fill="#38524f"/>
+<path d="M982 652 C1115 604 1230 658 1350 608 S1585 600 1804 540" fill="none" stroke="#8bb8b8" stroke-width="58"/>
+<path d="M1290 586 C1390 548 1485 516 1588 456" fill="none" stroke="#efece2" stroke-width="4" stroke-dasharray="12 10"/>
+<circle cx="1588" cy="456" r="13" fill="#efece2"/>
+<rect x="982" y="712" width="822" height="112" fill="#fff" stroke="#c8c5be"/>
+<text x="1000" y="738" font-family="Arial" font-size="10" font-weight="700" fill="#596865">FIG-R06-01 · SOURCE-GROUNDED · R06 / valley relation</text>
+<text x="1000" y="766" font-family="Arial" font-size="13" font-weight="700" fill="#111">Landscape first; the node is a relation anchor.</text>
+<text x="1000" y="790" font-family="Arial" font-size="11" fill="#555">Supports: experienced field + relative spatial relation.</text>
+<text x="1000" y="811" font-family="Arial" font-size="10" fill="#7a5c52">DOES NOT PROVE: field measurement · exact dimensions · engineering approval · implementation</text>
+<text x="1720" y="811" text-anchor="end" font-family="Arial" font-size="10" fill="#777">FIELD OPEN / NTS</text>
+<path d="M1588 456 L1670 394 L1735 394" fill="none" stroke="#f0eee6" stroke-width="1.5"/>
+<text x="1678" y="384" font-family="Arial" font-size="10" fill="#fff">RELATION ANCHOR</text>
+<line x1="92" y1="958" x2="1828" y2="958" stroke="#d5d2ca"/>
+<text x="92" y="998" font-family="Arial" font-size="13" font-weight="700">RULE /</text>
+<text x="148" y="998" font-family="Arial" font-size="13" fill="#333">If truth state changes interpretation, source class and “does not prove” belong next to the figure, not in a distant appendix.</text>
+</svg>
