@@ -1,64 +1,60 @@
-# C04 Current Web Integration v1.2 — Integration Receipt
+# C04 Current Web Integration v1.2 — SUPERSEDED PROVENANCE
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
-State: `FULL-PROJECT WEB INTEGRATION REVISED CANDIDATE / NON-APP DELTA ABSORBED / APP SOURCE PRESERVED / PENDING INDEPENDENT FINAL VERDICT / NO_PROMOTION`
+State: `SUPERSEDED / COMPRESSED INTEGRATION PROVENANCE / DESIGN REVISE / NO MAIN KEEP / NO_PROMOTION`
 
-## Current delta
+## Why v1.2 is superseded
 
-`CURRENT DELTA = WEB FRAMEWORK + CROSS-SYSTEM INTEGRATION ONLY`.
+Independent finished-pixel review exposed a more fundamental architecture error than the local page-level defects: v1.2 incorrectly mapped the permanent C04 design universes to roughly one public section each. That is a compression error.
 
-This v1.2 supersedes the local Web v1.1 candidate before promotion because a newer concurrent material delta appeared during persistence: `C04_CURRENT_INTEGRATION_NONAPP_REPAIR_v1`. v1.2 absorbs that package instead of overwriting it.
+Current authority explicitly requires:
+- `COUNT POLICY = UNBOUNDED BY COUNT`;
+- full-asset Web reassembly without design loss;
+- App / 13 Imprints / Physical / Memory-IP visible at professional depth;
+- the App as a primary designed outcome rather than a static integration chapter;
+- quality pruning only after no-loss inventory and concept/pixel separation.
 
-## No-loss / no-pollution integration
+Therefore:
 
-- 12 permanent C04 design universes remain visible.
-- Journey keeps the large relational route field; App phone is support, not route authority.
-- Thirteen Imprints remains an interactive 13-node optional discovery field; R01–R13 retained; no score / no 13/13.
-- Audience uses the newer same-scene `audience_depth_v2` source.
-- Physical/Sensory removes AI standalone renders from MAIN Web first-read; uses currentized landscape-first design boards + R06 technical support.
-- **Digital/App is not redesigned in this delta.** Current approved App v1.6 TODAY / R06 / MY BOOK source pixels are preserved as a static integration chapter; App remains an independent next design delta.
-- Memory restores the physical `清江旅记` as first-read Memory Hero; My Book is not re-authored here.
-- Technical absorbs `Technical Focus v2` and keeps click-to-zoom.
-- Visual/Motion absorbs the six-stage current-asset Motion Spine v2; the existing 73s Motion v1.0 is not falsely promoted as the revised final film.
-- Return removes the App phone from primary closure and makes paper map / path signage / human service / landscape recognition explicit.
+> `12 DESIGN SYSTEMS ≠ 12 WEB PAGES`
 
-## Browser readback
+> `MACRO CHAPTER ≠ SINGLE FINISHED SCREEN`
 
-Chromium finished-output readback from self-contained portable HTML:
+> `v1.2 BROWSER PASS ≠ CURRENT WEB ARCHITECTURE PASS`
 
-- `1920×1080`: `scrollWidth == clientWidth == 1920`, `scrollHeight = 15668`;
-- `1366×768`: `scrollWidth == clientWidth == 1366`, `scrollHeight = 12192`;
-- `390×844`: `scrollWidth == clientWidth == 390`, `scrollHeight = 13577`;
-- console / page errors: `0`;
-- R13 imprint interaction: PASS (`一线天`);
-- Technical lightbox: PASS (`lightbox open`).
+v1.2 remains useful only as provenance for:
+- browser/runtime validation patterns;
+- some repaired Journey / Return hierarchy tests;
+- interaction proof for the 13-node selector and technical lightbox;
+- independent Design Crit evidence.
 
-12 desktop section pixels plus responsive readbacks are persisted in the package.
+It is no longer the Current final-Web candidate.
+
+## Preserved assets / no-loss handoff
+
+No mature upstream system is deleted by superseding v1.2. The next Web successor must consume:
+- real Qingjiang / Journey / Service / Return;
+- full R01–R13 content library;
+- App v1.6 approved visual set: TODAY / ROUTE / R06 / R13 / MY BOOK / RETURN;
+- game-map / optional discovery / Digital Retreat behavior;
+- Physical/Body/Sensory full universe: 步步生光 / rail-rest / fluid-rest candidate / 清风吟 / F01–F04 descendants;
+- Memory/IP: 清江旅记 / 我的石书 / 清江一线 / 清江雾气 / 清风吟 memory extension / 红花峰崽;
+- Audience A1–A6 + interaction verbs;
+- C22/C23 / SEC-A / R06 node / model support;
+- Visual/Motion and independent Return.
 
 ## Persistence
 
-Google Drive:
-- ZIP ID: `1H74BKrsF3BrbAi-XGCuZG47mkwgO4g1z`
-- Contact sheet ID: `10HuVeirk2RJqlECVBSshZ_6aaddrxYY0`
-- Receipt ID: `1ZYrwb-kW9HJZjy_Spk1L0u5Rc5ilJTfI`
+The former v1.2 package remains archived as provenance:
+- `C04_CURRENT_WEB_INTEGRATION_v1_2.zip`
+- Google Drive ID `1H74BKrsF3BrbAi-XGCuZG47mkwgO4g1z`
+- bytes `48,570,481`
+- SHA256 `fddbc3e64623986e282b2947c7d102876319da7fce2151e3856a3b535bc5ca7e`
 
-Package:
-- filename: `C04_CURRENT_WEB_INTEGRATION_v1_2.zip`
-- bytes: `48,570,481`
-- SHA256: `fddbc3e64623986e282b2947c7d102876319da7fce2151e3856a3b535bc5ca7e`
+No promotion is implied by its existence, browser readback, SHA or CI.
 
-Persistent Library mirror:
-- `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_CURRENT_WEB_INTEGRATION_v1_2.zip`
-- `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_CURRENT_WEB_INTEGRATION_v1_2_CONTACT.jpg`
-- `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_CURRENT_WEB_INTEGRATION_v1_2_RECEIPT.md`
-
-## Design boundary
-
-- v1.2 is the Current Web integration candidate, not self-KEEP.
-- App design ownership remains outside this Web delta.
-- R05 official Honghua raw source pixel remains open upstream.
-- Existing 73s Motion v1.0 remains previous finished motion; new Motion Spine v2 requires a later re-edit before final Motion verdict.
-- Field/site/engineering validation remains open.
+Next architecture source:
+`current-integration/v1.3/C04_WEB_NO_COMPRESSION_ARCHITECTURE_v1_3.md`
 
 `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`
