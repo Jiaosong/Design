@@ -4,13 +4,37 @@
     {
       "id": 1,
       "prompt": "OLEANDER 清江 R06 节点已有概念轴测、剖面和若干推荐尺寸，但 FIELD OBSERVED=0、FIELD MEASURED=0。把现有内容深化成专业节点图，不得虚构现场尺寸或把结构假设写成施工定案。",
-      "expected_output": "A source-authority table; declared TECHNICAL EXPLANATION / NOT FOR CONSTRUCTION status; parent section plus traceable node/detail logic; verified vs recommended-range vs FIELD VERIFY dimensions separated; visible connection/maintenance/safety relationships; vector annotation; TD-G0…TD-G8 review with engineering/field gates kept separate.",
+      "expected_output": "Landscape/site profile selected; source-authority matrix; TECHNICAL EXPLANATION / NOT FOR CONSTRUCTION status; parent section → interface detail → connection enlargement logic; verified/recommended/range/FIELD VERIFY dimensions separated; design-action → system → reference → range → sensitivity → FIELD/engineer verify reality chain; visible connection/drainage/maintenance/safety relationships; vector annotation; thumbnail/intended-size/near-read crit; TD-G0…TD-G8 with engineering/field gates separate.",
       "files": []
     },
     {
       "id": 2,
       "prompt": "从锁定的产品 CAD/OBJ 几何制作一套可交制造沟通的总装、剖面、爆炸和零件尺寸图。渲染图与 CAD 有一处边界冲突，CMF 表里有两个候选 finish 尚未批准。",
-      "expected_output": "CAD/model authority preserved over render conflict; coherent orthographic/section/assembly views; minimum controlling dimension set; candidate finishes kept distinct from approved material authority; tolerances only where function/manufacturing basis exists; vector PDF/SVG/DXF-capable output; round-trip/export checks and no fabrication promotion while critical authority remains open.",
+      "expected_output": "Industrial/product profile selected; CAD/model authority preserved over render conflict; coherent orthographic/section/assembly views; exploded view backed by exact mating/interface detail; minimum controlling dimension set; candidate finishes distinct from approved material authority; tolerances only where function/process/inspection basis exists; service/tool access checked; vector PDF/SVG/DXF-capable output; round-trip checks and no fabrication promotion while critical authority remains open.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个建筑改造节点有现状测绘平面、旧版施工详图和新的概念模型。旧详图与现状测绘在墙体位置上冲突。需要形成平面、剖面和墙脚节点用于设计协调。",
+      "expected_output": "Architecture profile; current survey/approved project authority resolved before legacy detail; stale detail retained only as reference/provenance; plan-section-detail parentage; structural vs finish levels/build-up separated; conflicting wall geometry not silently reconciled; coordination status and open waterproofing/structure items visible; dimensions tied to stable datums; TD-G1/G2 cannot PASS until conflict is explicitly resolved or bounded.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "远程做一个山地步道边缘节点：照片能看到岩壁和步道，但没有精确坡度、岩体强度、基础或排水测量。方案仍需要推进到专业研究设计图纸。",
+      "expected_output": "Landscape profile; no-stop remote-design continuation; existing/proposed/inferred/FIELD OPEN states; no precise rock/foundation geometry invented; recommended slope/edge/drainage/support ranges only with basis and sensitivity; explicit survey/substrate/drainage/safety closure items; human scale and maintenance access; UNKNOWN operational state not presented as normal; no construction claim.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "一张技术剖面信息其实齐全，但 CAD 导出后所有线宽一样，文字和引线压住主体，缩略图很乱；用户要求只提升职业化，不新增几何和尺寸。",
+      "expected_output": "No content invention; same authoritative geometry retained; L1–L5 graphic hierarchy applied; CUT/primary relation/secondary/interface/annotation separated; annotations moved into negative space before geometry is thickened; no decorative hatch; multi-scale thumbnail/intended-size/near-read review; evidence completeness preserved while graphic hierarchy improves; TD-G5 independently judged from export success.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "产品爆炸图看起来完整，但一个隐藏螺钉在装配后没有工具进入路径，维修时也无法拆出电池模块。图纸已经有尺寸和 BOM。判断并修正图纸体系。",
+      "expected_output": "Assembly/serviceability failure identified despite dimensional/BOM completeness; tool/hand/removal envelopes made visible; assembly/disassembly sequence revised or connection strategy held; parent assembly plus local interface/service detail; critical clearances dimensioned from functional interfaces; fabrication permission withheld until access is physically feasible; TD-G4 failure cannot be overridden by TD-G3 or TD-G7 PASS.",
       "files": []
     }
   ]
