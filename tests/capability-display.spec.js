@@ -10,7 +10,10 @@ async function capture(page, testInfo, name, selector) {
   const path = testInfo.outputPath(name);
   if (selector) {
     const target = page.locator(selector);
-    await target.scrollIntoViewIfNeeded();
+    await target.evaluate((node) => {
+      const top = node.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    });
     const imgs = target.locator('img:visible');
     for (let i = 0; i < await imgs.count(); i += 1) {
       await expect.poll(() => imgs.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0), { timeout: 5000 }).toBeTruthy();
@@ -33,6 +36,7 @@ test('XJ01 PRO-04.2 binds the editorial presentation spine instead of the old re
     .toEqual(['p00','p01','p02','p03','p04','p05','p06']);
 
   await expect(page.locator('#p00 h1')).toContainText('Continuous');
+  await expect(page.locator('#p00')).toContainText('D1 exact-geometry broad preflight');
   await expect(page.locator('#p01')).toContainText('Direction DNA');
   await expect(page.locator('#p02')).toContainText('Colour × Material × Geometry');
   await expect(page.locator('#p03')).toContainText('Where materials meet');
