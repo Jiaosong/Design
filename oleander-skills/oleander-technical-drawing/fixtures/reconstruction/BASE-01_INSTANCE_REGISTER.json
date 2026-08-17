@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "status": "CANDIDATE_NOT_PROMOTED",
+  "geometry_master": "BASE-01_GEOMETRY_MASTER",
+  "panels": [
+    {
+      "panel_id": "PANEL-A",
+      "semantic_base_instance": "PANEL-A_SEMANTIC_BASE",
+      "visual_carrier_id": "PANEL-A_VISUAL_BASE",
+      "carrier_state": "STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY",
+      "authority": false,
+      "roi": [0, 0, 200, 160],
+      "visibility_profile": "full outline + interior rectangle",
+      "does_not_prove": "project geometry, survey, field or engineering authority"
+    },
+    {
+      "panel_id": "PANEL-B",
+      "semantic_base_instance": "PANEL-B_SEMANTIC_BASE",
+      "visual_carrier_id": "PANEL-B_VISUAL_BASE",
+      "carrier_state": "STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY",
+      "authority": false,
+      "roi": [200, 0, 400, 160],
+      "visibility_profile": "quiet outline + omitted interior edges",
+      "does_not_prove": "project geometry, survey, field or engineering authority"
+    },
+    {
+      "panel_id": "PANEL-C",
+      "semantic_base_instance": "PANEL-C_SEMANTIC_BASE",
+      "visual_carrier_id": "PANEL-C_VISUAL_BASE",
+      "carrier_state": "STRUCTURED_VISUAL_VECTOR_NON_AUTHORITY",
+      "authority": false,
+      "roi": [400, 0, 600, 160],
+      "visibility_profile": "stronger outline + neutral fill emphasis",
+      "does_not_prove": "project geometry, survey, field or engineering authority"
+    }
+  ]
+}
