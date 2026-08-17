@@ -1,13 +1,14 @@
-# Reconstruction Fidelity Calibration Fixture
+# Reconstruction Fidelity Calibration Fixtures
 
-Fixture: `RF-CAL-01`  
 Status: `SYNTHETIC CALIBRATION / NOT GOLDEN PROMOTED / NOT PROJECT AUTHORITY`
 
-This fixture exists to prove that the reconstruction-fidelity workflow can detect and repair material drawing mismatches without conflating pixel similarity with technical correctness.
+These fixtures prove different reconstruction contracts without conflating pixel similarity, semantic editability, technical truth or Design KEEP.
 
-The v0.3 calibration intentionally removes the earlier weak idea that a high global similarity percentage could support a pixel-level claim. `98%+ equal pixels` is diagnostically interesting but categorically insufficient for RF-C3.
+## RF-CAL-01 — pixel forensic + coupled solver
 
-## Files
+`RF-CAL-01` proves that reconstruction-fidelity tooling can detect and repair bounded drawing mismatches under a locked renderer and that a high global similarity percentage cannot substitute for a strict RF-C3 contract.
+
+### Files
 
 - `RF-CAL-01_REFERENCE_MASTER.svg` — synthetic editable vector reference.
 - `RF-CAL-01_CANDIDATE_BAD.svg` — deliberate geometry, typography and stroke mismatch.
@@ -23,7 +24,7 @@ The v0.3 calibration intentionally removes the earlier weak idea that a high glo
 - `../../references/PIXEL_FORENSIC_PROTOCOL.md` — strict forensic reconstruction protocol.
 - `../../references/PIXEL_SOLVER_PROTOCOL.md` — solver routing, coupling and renderer-lock protocol.
 
-## Deliberate negative mutations
+### Deliberate negative mutations
 
 `CANDIDATE_BAD` contains four explicit reconstruction failures across three classes:
 
@@ -34,85 +35,62 @@ The v0.3 calibration intentionally removes the earlier weak idea that a high glo
 
 The rest of the fixture is intentionally held constant so the difference evidence remains attributable.
 
-## Actual local render/readback — strict tolerance zero
+### Actual strict readback
 
-Renderer used for the original v0.3 forensic calibration: Inkscape on the current execution machine, 1200×800 raster output.
+The negative candidate demonstrated that roughly 98%+ unchanged full-canvas pixels are not a passing argument when critical geometry/typography/stroke ROIs still fail.
 
-### Negative candidate
-
-Tolerance `0`:
-
-- changed-pixel ratio: `0.0152739583`;
-- mean absolute channel error: `2.6671239583`;
-- RMSE: `23.7477145172`;
-- maximum channel error: `238`;
-- changed-pixel bounding box: `[92,81] → [824,521]`;
-- estimated whole-page translation: `dx=0 / dy=0`.
-
-The last point matters: the mismatch is not a page-registration problem. It is local geometry / typography / stroke error.
-
-Edge disagreement remains substantial even when a 1–2 px neighborhood is allowed:
-
-- reference unmatched edge ratio r0: `0.1422351234`;
-- r1: `0.0945718433`;
-- r2: `0.0590420900`.
-
-Critical ROI readback at tolerance zero:
-
-- `title` changed-pixel ratio: `0.1663384615`;
-- `primary_geometry`: `0.0229124479`;
-- `dimensions`: `0.0`;
-- `callout`: `0.0073684211`;
-- `title_block`: `0.0`.
-
-Therefore the negative candidate is `REVISE_A2_A3_A4`. The fact that roughly 98.47% of the full canvas is unchanged has no passing authority.
-
-### Matched candidate
-
-Under the same locked synthetic render condition:
+The matched candidate under one locked synthetic renderer produced:
 
 - exact-equal pixel ratio: `1.0`;
 - changed-pixel ratio at tolerance 0: `0.0`;
 - MAE: `0.0`;
 - RMSE: `0.0`;
-- maximum channel error: `0`;
 - estimated translation: `dx=0 / dy=0`;
 - edge unmatched r0/r1/r2: all `0.0`.
 
-The matched candidate has different semantic group IDs / source bytes but rasterizes identically under the locked renderer. This demonstrates that file hash equality is not required for output-pixel equality, while editable/vector structure remains a separate requirement.
-
-This result supports only `RF-C3 PIXEL-EXACT CANDIDATE IN THIS LOCKED SYNTHETIC FIXTURE`. It does not prove arbitrary-reference reconstruction capability and does not self-award independent review.
-
-## Coupled solver regression
-
-A first automatic solver pass exposed an important failure mode. When title baseline was solved while the title font size was still wrong, the temporary optimum moved to `y=104`. Correcting font size from `31 → 32` invalidated that baseline result.
-
-Therefore exact reconstruction cannot use a permanently frozen one-pass sequence. The solver now cycles through dependent layers and reopens earlier parameters after downstream changes.
-
-With reference and candidate both rasterized through the same CairoSVG comparison path, the coupled solver recovered:
-
-- `primary_dx: 5 → 0`;
-- `title_y: 108 → 105`;
-- `title_font_size: 31 → 32`;
-- `interface_stroke: 2.8 → 2.2`.
-
-Final recorded readback:
-
-- changed-pixel ratio: `0.0`;
-- normalized MAE: `0.0`;
-- edge mismatch r1: `0.0`.
-
-This is a real automated parameter recovery on the synthetic fixture, not a hand-entered final candidate.
-
-## Renderer mismatch regression
-
-A second failure was equally important: optimizing against an Inkscape-rendered reference while rendering candidates through CairoSVG can prefer a false typography baseline even when the SVG parameter is otherwise correct.
-
-Therefore:
+The coupled solver additionally demonstrated that typography/geometry/stroke parameters must be reopened across cycles and that cross-renderer optimization can choose a false optimum.
 
 `WRONG RENDERER → WRONG OPTIMUM`.
 
-RF-C3 requires the solver and final comparison to use the declared locked renderer/font path. A cross-renderer solver result may be useful diagnostically but cannot be used as pixel-exact evidence.
+This supports only `RF-C3 PIXEL-EXACT CANDIDATE IN THIS LOCKED SYNTHETIC FIXTURE`. It does not award independent review.
+
+---
+
+## ML-REL-01 — multilayer semantic relationship reconstruction
+
+`ML-REL-01` exists because a second real calibration exposed a different failure mode: an SVG can look close to a stacked analytical reference while its repeated bases, routes, zones, leaders and symbols remain anonymous path-cloud fragments.
+
+Files:
+
+- `ML-REL-01_SEMANTIC.svg` — synthetic three-panel stacked reconstruction with one reusable master base, route/zone/node relations, callout topology and reused symbol component.
+- `ML-REL-01_RELATION_REGISTER.json` — machine-readable panel/base/relation/symbol contract.
+- `../../tools/validate_semantic_reconstruction.py` — semantic reconstruction structural gate.
+- `../../references/MULTILAYER_RELATION_RECONSTRUCTION.md` — shared-base genealogy, relation evidence, semantic editability, callout topology, symbol dictionary and dual-track repair protocol.
+
+The validator checks:
+
+- multiple panels reuse one declared `MASTER_BASE` through `<use>`;
+- panel/base genealogy is explicit;
+- registered relation groups and carriers exist;
+- a relation marked `DRAWN` cannot use text as its only carrier;
+- targets exist;
+- declared callouts contain `LABEL → LEADER → ANCHOR → TARGET`;
+- repeated symbol families actually have repeated instances;
+- the fixture remains non-promoted.
+
+Current synthetic regression output:
+
+`OLEANDER SEMANTIC RECONSTRUCTION: STRUCTURE PASS`
+
+This does **not** mean the pixels match a reference. It proves only the editability/relationship structure that a path-cloud trace lacks.
+
+Hard boundary:
+
+`LOWER PIXEL ERROR ≠ BETTER EDITABLE RECONSTRUCTION`.
+
+The correct multilayer workflow keeps visual extraction and semantic reconstruction separate until both axes are reconciled.
+
+---
 
 ## Claim model
 
@@ -121,13 +99,15 @@ RF-C3 requires the solver and final comparison to use the declared locked render
 - `RF-C2` — render-locked high fidelity with explained residuals;
 - `RF-C3` — pixel-exact candidate: tolerance-zero, zero unexplained in-scope changed pixels, locked renderer/font/color environment, independent review pending.
 
-Do not call RF-C2 “almost pixel-perfect”. If non-zero unexplained in-scope pixels remain, it is not RF-C3.
+Semantic editability is reviewed separately:
+
+`RASTER SUBSTITUTE → PATH-CLOUD TRACE → STRUCTURED VECTOR → SEMANTIC VECTOR`.
 
 ## Gate interpretation
 
-- `RF-G0…RF-G5` can be exercised by this synthetic fixture.
+- Pixel forensic/solver structure PASS does not imply technical or Design PASS.
+- Semantic reconstruction structure PASS does not imply pixel fidelity or professional finish.
 - `RF-G6` remains an independent-review boundary; this README is producer evidence only.
 - `RF PASS != TD PASS`.
 - A reference can be matched perfectly and still be technically unsuitable for a current OLEANDER project.
 - A project adaptation may intentionally deviate from the reference when current geometry, evidence, safety, engineering or FIELD truth requires it.
-- Render-environment changes invalidate prior RF-C3 evidence and require a new strict run.
