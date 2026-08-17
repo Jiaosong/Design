@@ -1,0 +1,28 @@
+{
+  "version": "v1.8-lock-rebind",
+  "role": "DOWNSTREAM WEB / PRESENTATION CARRIER",
+  "route_current": {
+    "object": "ROUTE-03",
+    "state": "LOCKED CURRENT",
+    "artifact": "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+    "upstream_pr": 192,
+    "drive_package_id": "1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy",
+    "package_sha256": "977307610d1908c3951535b57222355c39fe262f0f2e3da68d803055a882aabb",
+    "svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "web_asset": "assets/route03_locked_current.svg"
+  },
+  "journey04": {
+    "state": "NOT LOCKED / PROVENANCE ONLY",
+    "public_current_binding": false,
+    "removed_public_assets": ["app_v117_route_modes_contact.jpg", "app_v117_journey_portable.html"]
+  },
+  "r06": "FINISHED / FROZEN / NO REOPEN",
+  "full_readback": {
+    "page_level_surfaces": 41,
+    "embedded_sub_surfaces": 11,
+    "visible_semantic_objects": 52,
+    "desktop": {"viewport":"1920x1080","continuous_viewports":50,"document_width":1920,"page_errors":0},
+    "mobile": {"viewport":"390x844","continuous_viewports":61,"document_width":390,"page_errors":0}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
