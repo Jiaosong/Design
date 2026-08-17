@@ -75,3 +75,20 @@ For any layout containing source-bound spatial evidence, include a short authori
 - The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
+
+## Physical wayfinding reassurance gate
+
+Use this gate when an OLEANDER journey must remain understandable without a phone, screen, GPS, animation, or continuous digital overlay.
+
+1. Classify every physical cue before drawing it: `DECISION`, `REASSURANCE`, `INTERPRETIVE`, `RETURN / SERVICE`, or another explicitly justified role. Do not let all signs default to the same panel type.
+2. Place `DECISION` cues at actual ambiguity or branch points and make them answer the smallest necessary routing question: where next, toward what destination, or which path not to take.
+3. Use `REASSURANCE` only after commitment to confirm continuity. Reassurance must normally be materially quieter and smaller than a decision cue; it is not a second map, story panel, or dashboard.
+4. Permit `INTERPRETIVE` waysides only where the story intersects a specific landscape/object/view. The landscape or original object remains the first-read; the wayside acts as a caption to it, not a visual replacement.
+5. Give `RETURN / SERVICE` explicit operational priority whenever loss of return legibility would affect safety, closure, service recovery, or a no-phone journey. Do not hide return information inside optional interpretation.
+6. Review the sequence as a physical journey: `DECISION → REASSURANCE → optional INTERPRETATION → RETURN / SERVICE`. A beautiful isolated sign family can still fail if reassurance gaps or unnecessary sign repetition break continuity.
+7. Prefer the least intrusive physical form that can answer the role. Repeated large upright boards at every touchpoint default to `REVISE` when compact markers, blades, low-profile waysides, path cues, or other quieter forms can carry the same necessary information.
+8. Visual accessibility remains a separate gate: where applicable, use legible visual characters, strong figure/ground contrast, non-glare assumptions, and simple typography; tactile/Braille requirements, mounting heights, reach ranges, clear floor space, and local code compliance require project-specific verification rather than visual inference.
+9. Missing field information does not authorize invented installation precision. Keep concept drawings `NTS / FIELD OPEN` unless mounting, viewing distance, foundation, material, drainage, maintenance, accessibility, and code constraints are actually supported.
+10. Promotion requires two independent reads: `LANDSCAPE / ROUTE FIRST-READ` and `SIGN NEAR-READ`. If signs become the dominant scenic object or if a visitor cannot continue without opening the digital layer, the physical wayfinding system is `REVISE / REJECT` even when the signs themselves are polished.
+
+Reference calibration: NPS Harpers Ferry Center wayside-design guidance treats the landscape as the original object and the wayside as its caption, and its evaluation checklist asks whether the exhibit relates directly to the landscape and remains visually unobtrusive. U.S. Access Board sign guidance supplies visual-accessibility constraints where applicable. These references inform the gate but do not substitute for project-specific local standards or field verification.
