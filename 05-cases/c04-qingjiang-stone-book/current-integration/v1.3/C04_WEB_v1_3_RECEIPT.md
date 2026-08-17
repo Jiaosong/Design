@@ -9,10 +9,11 @@ State: `ACTUAL WEB BUILT / ANNOTATION-BOUND / NO-COMPRESSION / INDEPENDENT LOCK 
 - v1.2 12-section carrier remains superseded provenance.
 - v1.3 is an actual continuous Web, not only an architecture document.
 - 13 macro chapters remain independent; they are not page-count limits.
-- source currently contains **60 article/visual content blocks**; this is an implementation readback, not a target count.
+- current implementation contains **60 article/visual content blocks**; this is readback, not a quota or cap.
 - App exposes **6 independent current source screens**: TODAY / ROUTE / R06 / R13 / MY BOOK / RETURN; canonical D01–D10 remain in scope.
 - Thirteen Imprints exposes **13 interactive canonical content states**.
 - R06 / R13 / Audience / Physical / Memory / Technical / Motion / Return each receive separate professional-depth carriers.
+- public finished pixels were cleaned of internal `MAIN / PIXEL / REVISE / CANDIDATE / SUPPORT ONLY / RE-EDIT / 下一版` production-language residue before final packaging.
 
 ## Annotation binding
 
@@ -24,32 +25,36 @@ High-impact bindings include Audience Drive v4, P01 process/hold presentation, P
 
 A self-contained HTML was loaded with Chromium `page.set_content()` because managed Chromium policy blocks local/file URL navigation. This is a real Chromium raster readback, not a source-only check.
 
-- 1920×1080: scrollWidth=1920 / clientWidth=1920 / scrollHeight=43960 / missing images=0
-- 1366×768: scrollWidth=1366 / clientWidth=1366 / scrollHeight=34507 / missing images=0
-- 390×844: scrollWidth=390 / clientWidth=390 / scrollHeight=41532 / missing images=0
+- 1920×1080: scrollWidth=1920 / clientWidth=1920 / scrollHeight=43747 / missing images=0
+- 1366×768: scrollWidth=1366 / clientWidth=1366 / scrollHeight=34234 / missing images=0
+- 390×844: scrollWidth=390 / clientWidth=390 / scrollHeight=41153 / missing images=0
 - page errors: 0
 - R13 imprint interaction: `一线天`
-- Technical zoom/lightbox: open
+- Technical zoom/lightbox: `true`
 
 ## Finished pixels reviewed
 
 `/screens/CONTACT_v1_3.jpg` combines 26 actual desktop readbacks covering Hero, Culture, Journey, Map, all six App screens, Thirteen Imprints + R13 selection, R06/R13, Scene, Audience, Physical, Memory, Technical, Motion and Return.
 
+Final contact sheet:
+- bytes: `505,235`
+- SHA256: `c4b2ccdeed10bca4cd11c4b313a0c8c14d5c17b1c0acca98cace92dd7e523ae7`
+
 ## Persistence
 
-Persistent Library CURRENT:
+Persistent Library CURRENT target:
 - `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_NO_COMPRESSION.zip`
 - `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_CONTACT.jpg`
 - `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_RECEIPT.md`
 - `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_PACKAGE_META.json`
-
-GitHub stores editable/rebuildable text source under `current-integration/v1.3/web-src/`; binary mature assets remain in the persisted production package rather than Git history.
+- `/Oleander/C04_Qingjiang-Stone-Book/CURRENT/C04_WEB_v1_3_PRODUCER_DESIGN_CRIT.md`
 
 ## Package
 
 - filename: `C04_WEB_v1_3_NO_COMPRESSION.zip`
-- bytes: `89,995,364`
-- SHA256: `58ec2a9808d74b8eb9d3ded8b6139971bd8a555f9f1a21b77f3a738958255b3d`
+- bytes: `90,814,588`
+- SHA256: `69c7c99b8f1f2d577a32655c89ddbc9cf2a4b3faadae24d4f24cbe87d70605f7`
+- package contains runtime HTML/CSS/JS, binary assets, final screenshots/readback, object binding, producer Crit, and modular rebuildable source. Package receipt/meta are external to avoid self-referential hash mutation.
 
 ## Truth boundary
 
