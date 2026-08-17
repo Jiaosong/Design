@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#f1f0eb"/>
+  <style>
+    text { font-family: "Noto Sans CJK SC","Noto Sans SC","Arial",sans-serif; fill:#161a18; } .inverse { fill:#ffffff !important; }
+    .meta { font-size:18px; letter-spacing:1.5px; fill:#646966; }
+    .title { font-size:28px; font-weight:700; }
+    .h1 { font-size:38px; font-weight:700; }
+    .body { font-size:21px; }
+    .small { font-size:16px; fill:#666b68; }
+    .button { font-size:20px; font-weight:650; }
+  </style>
+  <text x="80" y="70" class="meta">OLEANDER / C04 S1 PROMPT / SINGLE-VARIABLE A/B</text>
+  <text x="80" y="108" class="title">Semantic salience: color is reserved for action role, not decoration</text>
+  <text x="240" y="165" class="meta">A — EQUAL-WEIGHT / REVISE</text>
+  <text x="875" y="165" class="meta">B — ROLE-WEIGHTED / PROPOSED</text>
+  <rect x="150" y="190" width="420" height="650" rx="34" fill="#fdfcf8" stroke="#222826" stroke-width="2"/>
+  <text x="185" y="235" class="small">第三章 · 山形由人命名</text>
+  <text x="185" y="282" class="h1">盐水女神峰</text>
+  <rect x="185" y="315" width="350" height="240" rx="18" fill="#d8d7d1"/>
+  <text x="205" y="350" class="small">LANDSCAPE PLACEHOLDER / 训练稿</text>
+  <text x="185" y="605" class="body">先看山体轮廓，再看名字如何被赋予。</text>
+  <text x="185" y="645" class="small">地方叙事与设计阅读在深读中展开。</text>
+  <rect x="185" y="695" width="165" height="60" rx="14" fill="#315d58"/>
+  <rect x="370" y="695" width="165" height="60" rx="14" fill="#a77a3a"/>
+  <text x="218" y="733" class="button inverse">记下这一页</text>
+  <text x="405" y="733" class="button inverse">再深一点</text>
+  <circle cx="520" cy="230" r="17" fill="#315d58"/>
+  <text x="488" y="270" class="small">服务</text>
+  <rect x="790" y="190" width="420" height="650" rx="34" fill="#fdfcf8" stroke="#222826" stroke-width="2"/>
+  <text x="825" y="235" class="small">第三章 · 山形由人命名</text>
+  <text x="825" y="282" class="h1">盐水女神峰</text>
+  <rect x="825" y="315" width="350" height="240" rx="18" fill="#d8d7d1"/>
+  <text x="845" y="350" class="small">LANDSCAPE PLACEHOLDER / 训练稿</text>
+  <text x="825" y="605" class="body">先看山体轮廓，再看名字如何被赋予。</text>
+  <text x="825" y="645" class="small">地方叙事与设计阅读在深读中展开。</text>
+  <text x="825" y="692" class="small">再深一点 →</text>
+  <rect x="825" y="725" width="350" height="64" rx="16" fill="#a77a3a"/>
+  <text x="927" y="766" class="button inverse">记下这一页</text>
+  <text x="1104" y="235" class="small">服务 / 返回</text>
+  <line x1="1104" y1="244" x2="1175" y2="244" stroke="#315d58" stroke-width="2"/>
+  <line x1="585" y1="705" x2="700" y2="705" stroke="#7a7e7b" stroke-width="1"/>
+  <text x="602" y="680" class="small">A：两个高饱和按钮竞争</text>
+  <text x="602" y="708" class="small">主动作无法在 1 秒内锁定</text>
+  <line x1="1212" y1="756" x2="1515" y2="756" stroke="#7a7e7b" stroke-width="1"/>
+  <text x="1235" y="690" class="small">B：单一强调色只承担</text>
+  <text x="1235" y="718" class="small">“留下阅读痕迹”的主动作</text>
+  <text x="1235" y="746" class="small">功能色退回服务语义</text>
+  <text x="80" y="875" class="small">Training artifact — transfer study, NOT Braun ET66 reproduction. Landscape image intentionally omitted to isolate action hierarchy.</text>
+</svg>
