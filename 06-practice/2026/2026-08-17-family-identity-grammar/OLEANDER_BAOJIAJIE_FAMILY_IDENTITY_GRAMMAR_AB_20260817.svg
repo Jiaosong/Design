@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000">
+<rect width="1600" height="1000" fill="#F3F1EC"/>
+<style>
+text{font-family:"Noto Sans CJK SC","Noto Sans SC","Arial",sans-serif;fill:#17201D}
+.m{font-size:16px;letter-spacing:1.2px;fill:#6B716D}.h1{font-size:38px;font-weight:760}.h2{font-size:24px;font-weight:720}
+.b{font-size:19px}.s{font-size:14px;fill:#6B716D}.t{font-size:11px;fill:#6B716D}.p{fill:#FFFDF8;stroke:#D8D5CE;stroke-width:1.5}
+</style>
+<text x="72" y="54" class="m">OLEANDER / BAOJIAJIE / FAMILY IDENTITY TRAINING</text>
+<text x="72" y="100" class="h1">系列识别来自共同语法，不是共同模板</text>
+<text x="72" y="132" class="b">MIT Media Lab identity → Baojiajie 100×100 mm retail jump-card family calibration</text>
+<line x1="72" y1="158" x2="1528" y2="158" stroke="#C1C4BF"/>
+<rect x="72" y="184" width="1456" height="108" rx="18" fill="#E8E5DE"/>
+<text x="96" y="216" class="m">VISIBLE FACT — MIT MEDIA LAB / PENTAGRAM</text>
+<text x="96" y="248" class="b">同一底层网格扩展到 23 个研究组；固定身份与差异化 glyph 同时成立。</text>
+<text x="96" y="276" class="s">Pentagram: 2014 identity; same 7×7 grid extended from the Lab mark to 23 research groups.</text>
+<text x="930" y="216" class="m">TRANSFER RULE</text>
+<text x="930" y="248" class="b">先锁少量不可变关系，再允许 SKU 自己变化。</text>
+<text x="930" y="276" class="s">同一版式 ≠ 系列；每张都重新发明 ≠ 系列。</text>
+<text x="84" y="344" class="m">A — THREE POSTERS / NO FAMILY / REVISE</text>
+<rect x="72" y="366" width="700" height="472" rx="24" class="p"/>
+<text x="100" y="405" class="h2">单张各自成立，并排后却需要重新识别三次品牌</text>
+<rect x="108" y="448" width="180" height="180" rx="10" fill="#FFF5F4" stroke="#E6C6C1"/>
+<rect x="122" y="462" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/>
+<text x="130" y="479" class="t">LOCKED LOGO</text><circle cx="238" cy="492" r="28" fill="#DE4B42"/>
+<text x="122" y="535" style="font-size:28px;font-weight:850;fill:#DE4B42">欧科棉</text><text x="122" y="562" style="font-size:16px;font-weight:700">清洁更快</text>
+<path d="M120 586 Q205 550 276 602" fill="none" stroke="#DE4B42" stroke-width="8"/>
+<rect x="306" y="448" width="180" height="180" rx="10" fill="#101413"/>
+<rect x="320" y="462" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/>
+<text x="328" y="479" class="t">LOCKED LOGO</text><path d="M438 462 L474 462 L474 526 L418 526 L418 488 L438 488Z" fill="#C7E62A"/>
+<text x="320" y="548" style="font-size:28px;font-weight:900;fill:#C7E62A">XF01</text><text x="320" y="578" style="font-size:18px;font-weight:750;fill:#FFF">肥皂拖把</text><rect x="320" y="598" width="126" height="10" fill="#FFF"/>
+<rect x="504" y="448" width="180" height="180" rx="10" fill="#FFF"/>
+<rect x="518" y="462" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/><text x="526" y="479" class="t">LOCKED LOGO</text>
+<rect x="518" y="508" width="22" height="76" fill="#E94B86"/><rect x="540" y="508" width="22" height="76" fill="#F28A3A"/><rect x="562" y="508" width="22" height="76" fill="#F0D84A"/><rect x="584" y="508" width="22" height="76" fill="#72C66B"/><rect x="606" y="508" width="22" height="76" fill="#57A9D8"/><rect x="628" y="508" width="22" height="76" fill="#7466C8"/>
+<text x="518" y="606" style="font-size:19px;font-weight:850">七彩高弹胶棉</text>
+<text x="108" y="674" class="s">不同网格 / 不同标题位置 / 不同信息密度 / 不同品牌蓝角色。</text><text x="108" y="704" class="s">统一圆角或字体只能得到组件一致，不能得到家族识别。</text><text x="108" y="760" class="s">FAILURE：遮住产品名后，三张看不出属于同一系统。</text>
+<text x="842" y="344" class="m">B — SHARED GRAMMAR / BOUNDED VARIATION / PROPOSED</text><rect x="830" y="366" width="698" height="472" rx="24" class="p"/><text x="858" y="405" class="h2">共同的是关系；差异来自 SKU 本身</text><text x="858" y="438" class="t">INVARIANTS: LOGO ANCHOR / PORTRAIT RESERVE / CLAIM DATUM / BRAND-BLUE PROOF RAIL</text>
+<rect x="866" y="468" width="180" height="180" rx="10" fill="#FFF7F5" stroke="#DDD8D1"/><rect x="878" y="480" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/><text x="886" y="497" class="t">LOCKED LOGO</text><rect x="976" y="480" width="56" height="48" rx="5" fill="#ECE9E2" stroke="#BFC2BD" stroke-dasharray="5 4"/><text x="983" y="503" class="t">PORTRAIT</text><circle cx="910" cy="554" r="34" fill="#DE4B42"/><circle cx="929" cy="554" r="34" fill="#FFF7F5"/><text x="878" y="598" style="font-size:25px;font-weight:850;fill:#DE4B42">欧科棉</text><line x1="878" y1="610" x2="1032" y2="610" stroke="#A8AAA5"/><rect x="878" y="620" width="154" height="14" rx="7" fill="#003DA7"/>
+<rect x="1060" y="468" width="180" height="180" rx="10" fill="#F7F8F2" stroke="#DDD8D1"/><rect x="1072" y="480" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/><text x="1080" y="497" class="t">LOCKED LOGO</text><rect x="1170" y="480" width="56" height="48" rx="5" fill="#ECE9E2" stroke="#BFC2BD" stroke-dasharray="5 4"/><text x="1177" y="503" class="t">PORTRAIT</text><path d="M1080 540 L1140 540 L1140 560 L1164 560 L1164 578 L1104 578 L1104 594 L1080 594Z" fill="#C7E62A"/><text x="1072" y="598" style="font-size:25px;font-weight:900">XF01</text><line x1="1072" y1="610" x2="1226" y2="610" stroke="#A8AAA5"/><rect x="1072" y="620" width="154" height="14" rx="7" fill="#003DA7"/>
+<rect x="1254" y="468" width="180" height="180" rx="10" fill="#FFF8FB" stroke="#DDD8D1"/><rect x="1266" y="480" width="70" height="24" rx="4" fill="#FFF" stroke="#003DA7" stroke-dasharray="5 4"/><text x="1274" y="497" class="t">LOCKED LOGO</text><rect x="1364" y="480" width="56" height="48" rx="5" fill="#ECE9E2" stroke="#BFC2BD" stroke-dasharray="5 4"/><text x="1371" y="503" class="t">PORTRAIT</text><circle cx="1282" cy="556" r="14" fill="#E94B86"/><circle cx="1310" cy="556" r="14" fill="#F28A3A"/><circle cx="1338" cy="556" r="14" fill="#F0D84A"/><circle cx="1366" cy="556" r="14" fill="#72C66B"/><circle cx="1394" cy="556" r="14" fill="#57A9D8"/><text x="1266" y="598" style="font-size:20px;font-weight:850">七彩高弹胶棉</text><line x1="1266" y1="610" x2="1420" y2="610" stroke="#A8AAA5"/><rect x="1266" y="620" width="154" height="14" rx="7" fill="#003DA7"/>
+<text x="866" y="674" class="s">固定：品牌资产锚点、claim datum、proof rail。</text><text x="866" y="704" class="s">变化：吸水弧 / XF01 动作几何 / 七彩材料节奏。</text><text x="866" y="760" class="s">Anti-template：若三张只换综合色和产品名，仍然 REVISE。</text>
+<line x1="72" y1="884" x2="1528" y2="884" stroke="#C1C4BF"/><text x="72" y="918" class="m">FAMILY GRAMMAR REVIEW</text><text x="72" y="946" class="b">遮住产品名后仍像同一家族；遮住综合色后仍看得出不同 SKU。两项缺一不可。</text><text x="72" y="972" class="s">TRAINING ONLY / 100×100 mm RELATIONAL STUDY. Locked Baojiajie logo and licensed portrait pixels are not embedded or altered.</text><text x="72" y="994" class="s">Copy/claims are placeholders. Does not prove print color, claim approval, portrait crop approval, or commercial release readiness.</text>
+</svg>
