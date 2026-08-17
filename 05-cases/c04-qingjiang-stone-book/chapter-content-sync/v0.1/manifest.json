@@ -1,0 +1,58 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "sync_date": "2026-08-17",
+  "sync_version": "v0.1",
+  "architecture_target": "C04-B_PROJECT-ARCHITECTURE_v3.2",
+  "hierarchy": "PROJECT > CHAPTER > PAGE > MODULE/FIGURE/ASSET",
+  "rules": [
+    "CHAPTER != PAGE",
+    "NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS",
+    "CONCEPT KEEP != PIXEL KEEP",
+    "PIXEL FAIL != DESIGN DELETE",
+    "VALIDATION SUBSET != WHOLE PROJECT"
+  ],
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "drawing_status": ["NTS", "NOT FOR CONSTRUCTION"]
+  },
+  "chapter_count_target": 20,
+  "synced_chapters": [
+    {"chapter_id":"CH00","title":"项目定义","file":"CH00_PROJECT-DEFINITION.md","base_authoring_units":2},
+    {"chapter_id":"CH02","title":"场地与山水分析","file":"CH02_SITE-LANDSCAPE-ANALYSIS.md","base_authoring_units":5},
+    {"chapter_id":"CH03","title":"地域文化与内容分析","file":"CH03_CULTURE-CONTENT-ANALYSIS.md","base_authoring_units":4},
+    {"chapter_id":"CH04","title":"人群与使用状态分析","file":"CH04_AUDIENCE-USE-STATE-ANALYSIS.md","base_authoring_units":6},
+    {"chapter_id":"CH05","title":"游程与行为分析","file":"CH05_JOURNEY-BEHAVIOR-ANALYSIS.md","base_authoring_units":4},
+    {"chapter_id":"CH06","title":"设计原理","file":"CH06_DESIGN-PRINCIPLES.md","base_authoring_units":5},
+    {"chapter_id":"CH07","title":"设计方法","file":"CH07_DESIGN-METHODS.md","base_authoring_units":4},
+    {"chapter_id":"CH09","title":"路线、交通与服务设计","file":"CH09_ROUTE-MOBILITY-SERVICE.md","base_authoring_units":5},
+    {"chapter_id":"CH10","title":"十三印内容与互动系统","file":"CH10_THIRTEEN-IMPRINTS-CONTENT-INTERACTION.md","base_authoring_units":5},
+    {"chapter_id":"CH11","title":"数字陪伴系统","file":"CH11_DIGITAL-COMPANION-SYSTEM.md","base_authoring_units":8,"expansion_candidates":6},
+    {"chapter_id":"CH12","title":"关键场景设计","file":"CH12_KEY-SCENE-DESIGN.md","base_authoring_units":7,"expansion_candidates":7},
+    {"chapter_id":"CH13","title":"实体、身体与感官设计","file":"CH13_PHYSICAL-BODY-SENSORY.md","base_authoring_units":7,"expansion_candidates":8},
+    {"chapter_id":"CH14","title":"品牌与视觉识别系统","file":"CH14_BRAND-VISUAL-IDENTITY.md","base_authoring_units":8,"expansion_candidates":7}
+  ],
+  "not_regenerated_this_round": ["CH01", "CH08"],
+  "renumber_only": {
+    "old_CH14": "CH15",
+    "old_CH15": "CH16",
+    "old_CH16": "CH17",
+    "old_CH17": "CH18",
+    "old_CH18": "CH19"
+  },
+  "base_authoring_unit_count": 70,
+  "expansion_candidate_count": 28,
+  "legacy_protected_page_floor": 52,
+  "count_warning": "70 is authoring-unit count only. Do not calculate 52+70. Exact current page_count requires one-to-one mapping against C04-WEB-P001..P052.",
+  "next_required_step": "Build exact 52-row legacy PAGE REGISTER, then map every authored unit as MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT before claiming final page_count.",
+  "does_not_prove": [
+    "finished-pixel quality",
+    "independent Design Crit PASS",
+    "browser/export PASS",
+    "field validation",
+    "construction readiness",
+    "final page count"
+  ]
+}
