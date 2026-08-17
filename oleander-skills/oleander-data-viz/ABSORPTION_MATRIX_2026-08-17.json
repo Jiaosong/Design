@@ -1,0 +1,64 @@
+{
+  "artifact": "OLEANDER_DATA_VIZ_EXTERNAL_ABSORPTION_MATRIX",
+  "date": "2026-08-17",
+  "status": "EXECUTED / REVIEW PENDING",
+  "sources": [
+    {
+      "source": "antvis/chart-visualization-skills/skills/antv-g6-graph/SKILL.md",
+      "source_pattern": ["stable node id", "explicit source/target edges", "layout as separate config", "behaviors separate from data"],
+      "adopt": ["stable IDs and explicit topology", "layout-state field", "interaction/evidence separation"],
+      "reject_or_limit": ["renderer correctness as design correctness", "force layout interpreted as spatial evidence"],
+      "implemented_in": ["SKILL.md 3.2", "ROUTING_AND_RENDERER_ADAPTERS_v0.1.md", "evals 9", "SK-DV-007"]
+    },
+    {
+      "source": "antvis/chart-visualization-skills/skills/infographic-creator/SKILL.md",
+      "source_pattern": ["information structure + visual expression", "list/sequence/compare/hierarchy/relation/chart structural classes", "template-specific data structures"],
+      "adopt": ["classify information structure before template", "sequence only when real order exists", "relation/hierarchy/list remain distinct"],
+      "reject_or_limit": ["template as final aesthetic authority", "template availability driving claim", "generic preset as professional finish"],
+      "implemented_in": ["SKILL.md 3.1", "ROUTING_AND_RENDERER_ADAPTERS_v0.1.md", "evals 7", "SK-DV-005"]
+    },
+    {
+      "source": "antvis/chart-visualization-skills/skills/narrative-text-visualization/SKILL.md",
+      "source_pattern": ["semantic entity annotation", "raw origin value", "unit", "assessment", "detail payload"],
+      "adopt": ["machine-readable semantic entity companion", "display/raw value separation", "source/evidence-state linking", "detail for mini-chart/relation"],
+      "reject_or_limit": ["all non-public-authentic values forbidden", "assessment without evidence", "semantic styling as proof"],
+      "oleander_override": "OLEANDER may use estimates/scenarios/simulations when protocol permits and state is explicit; they must never serialize as observed fact.",
+      "implemented_in": ["SKILL.md 7.1", "ROUTING_AND_RENDERER_ADAPTERS_v0.1.md", "evals 8", "SK-DV-006"]
+    },
+    {
+      "source": "antvis/chart-visualization-skills/eval",
+      "source_pattern": ["large renderer-specific datasets", "targeted rerun IDs", "retrieval/code accuracy separated by library"],
+      "adopt": ["targeted regression cases tied to discovered failures", "renderer syntax tests separate from visual design tests"],
+      "reject_or_limit": ["code-generation accuracy as professional design score"],
+      "implemented_in": ["SKILL.md 15", "evals/evals.json", "evals/golden/skills.jsonl"]
+    },
+    {
+      "source": "oskar-q/grid-systems/SKILL.md + plugin87 design review/taste",
+      "source_pattern": ["task/content determine grid", "position/size before color", "30-second first impression", "anti-template review"],
+      "adopt": ["task -> content -> measure -> grid", "one-grid-per-surface", "3-second/30-second first-read", "project-specific composition"],
+      "reject_or_limit": ["weighted scoring overriding hard vetoes"],
+      "implemented_in": ["SKILL.md 4-5 and 8"]
+    },
+    {
+      "source": "Observable Plot / Vega-Lite / AntV G2 / RAWGraphs / D3 / kepler.gl",
+      "source_pattern": ["grammar of graphics", "editable SVG bridge", "low-level custom graphics", "real geospatial stack"],
+      "adopt": ["analytical grammar before styling", "highest-level deterministic renderer first", "editable vector reconciliation", "true GIS only with authoritative coordinates/CRS"],
+      "reject_or_limit": ["tool sophistication as quality", "map rendering without geographic authority"],
+      "implemented_in": ["SKILL.md 2.5, 3.3, 10", "ROUTING_AND_RENDERER_ADAPTERS_v0.1.md"]
+    }
+  ],
+  "oleander_invariants": [
+    "Current Authority / Source Authority remain superior to renderer defaults",
+    "Evidence / Inference / Assumption / Decision / Unknown remain distinct",
+    "NO COMPRESSION / NO LOSS",
+    "Artifact existence != Design quality",
+    "Producer cannot self-promote KEEP",
+    "FIELD / survey / implementation boundaries remain explicit"
+  ],
+  "does_not_prove": [
+    "external repository popularity does not prove suitability",
+    "renderer syntax validity does not prove analytical validity",
+    "CI success does not prove design quality",
+    "practice artifacts remain subject to independent visual review"
+  ]
+}

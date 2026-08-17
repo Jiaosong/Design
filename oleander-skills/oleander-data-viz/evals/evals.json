@@ -4,13 +4,73 @@
     {
       "id": 1,
       "prompt": "把 Oleander 的季度客流、活动类型和停留时长做成一张可交互图和一段 15 秒动态图，同时提供 Illustrator 可编辑 SVG。",
-      "expected_output": "Reproducible cleaned data and consistent HTML, MP4, and SVG outputs with stable scales and source notes.",
+      "expected_output": "Reproducible cleaned data and consistent HTML, MP4, and SVG outputs with stable scales, explicit analytical grammar, source notes, intended-size visual review, and editable vector reconciliation.",
       "files": []
     },
     {
       "id": 2,
       "prompt": "分析场地周边 15 分钟步行圈、公交站和公共服务设施，输出 GIS 图、数据表和展板用轴测化分析底图。",
-      "expected_output": "CRS-aware spatial analysis with validated tables and board-ready vector/raster exports.",
+      "expected_output": "CRS-aware spatial analysis with validated tables, source/field boundary, one-grid presentation composition, and board-ready vector/raster exports.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个路线网络图的数据和拓扑都正确，但所有节点、连线、说明和状态标签视觉权重几乎相同。重做为专业展示图：路线/服务/回程必须先读，可选阅读节点保持可见但不得像打卡清单；图仍然是关系图而不是测绘地图。",
+      "expected_output": "Preserve topology and truth state while creating an unequal H0-H4 hierarchy, role-based node/line semantics, visible return relation, explicit RELATIONAL/NTS/NOT GEOREFERENCED boundary, one coherent grid, and a 3-second/30-second actual-preview review. Producer verdict remains REVIEW PENDING unless independent review exists.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "把一个由 6 个等权卡片组成的 Evidence→Finding→Decision 图改成展板级分析图。不得删信息，不得用更大的标题掩盖弱图，不得把流程画成不存在的线性时间顺序。",
+      "expected_output": "No-loss restructuring into one dominant analytical field with true directional/relational structure, subordinate evidence/meta layers, exact alignment, concrete annotations, and no generic dashboard/card-wall composition.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "已有一张成熟项目图表和一张新生成候选。候选数据更完整但视觉更像技术报告。请优化而不是推倒重做。",
+      "expected_output": "Open the strongest mature design first, separate data/content delta from visual regression, preserve solved design DNA, apply only material deltas, compare side-by-side, and reject/revise any candidate that is cleaner but visually weaker. No self-KEEP.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "将同一份清洗数据先用声明式图表规范生成，再导出 SVG 进行 Illustrator 风格的排版与注释深化。",
+      "expected_output": "Explicit data->transform->mark->channel->scale grammar, editable SVG bridge, refinement that changes typography/composition but not values/axes/topology/evidence state, followed by reconciliation against the cleaned data/spec.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "现有信息是一个多分支关系网络，但一个现成 infographic 模板把它自动画成 8 个连续步骤。请保留全部信息并重构成正确的专业图，不得因为模板更整齐就接受线性顺序。",
+      "expected_output": "Classify information structure before renderer/template selection, reject sequence semantics, preserve stable node/edge roles, select a relation/topology or custom editorial form, label computational/diagrammatic layout boundaries, and keep every original information item without converting branch choice into completion order.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "一篇研究页中混有官方值、推算区间、情景模拟和设计决定。生成可视化叙事时，正文要简洁，但后续必须能恢复每个重要数字的原值、单位、来源、证据状态和 does-not-prove。",
+      "expected_output": "Create a semantic entity companion linking concise display text to raw_value/unit/source_ref/evidence_state/claim_role/detail/does_not_prove, preserving OBSERVED/SOURCE-GROUNDED/INFERRED/SCENARIO/DECISION distinctions; never serialize scenario or simulated values as observed facts.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "用 G6 或 force layout 把节点自动排开后，图看起来像一张精确的空间分布图。请审查并修复，使拓扑可读但不误导为真实距离、方位或地理位置。",
+      "expected_output": "Keep stable IDs and source/target topology, treat force positions as computational layout rather than evidence, remove or relabel unsupported spatial implications, use deterministic diagrammatic coordinates if needed for presentation, and preserve explicit RELATIONAL/NTS/NOT GEOREFERENCED truth boundaries.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "只有一张 735×1041 的信息可视化 JPEG。能读到部分年份和百分比，但气泡矩阵、环形柱、右上复合图和 alluvial 的原始数据表都没有。要求复刻为可编辑、数据驱动 SVG。",
+      "expected_output": "Activate RASTER_TO_PARAMETRIC_RECONSTRUCTION. Build SOURCE_DATA.json + VISUAL_ENCODING_SPEC.json + deterministic generator. Separate SOURCE_VISIBLE, REFERENCE_DERIVED_GEOMETRY, INFERRED_FROM_MARK, REFERENCE_TRACE_CANDIDATE and UNREADABLE. Recover grid/circle/radial/path geometry from pixels but do not invent original values/variable meanings. Generate editable SVG, run ROI fidelity readback and deterministic double-generation roundtrip. VR-C3 remains unavailable where original semantics are unreadable.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "alluvial 图已经从参考图追出了 52 条曲线，像素也比较接近。交叉点很多。是否可以直接把 source→target 当成原始拓扑？",
+      "expected_output": "No. Treat visible path traces separately from crossing identity. Record endpoints, relation/color family, crossing-order inversion, local tangent continuation and HIGH/MEDIUM/LOW identity confidence. MEDIUM/LOW crossings stay REFERENCE_TRACE_CANDIDATE. Pixel similarity or trace support cannot promote ambiguous crossings to recovered source topology.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "从栅格图 skeletonize 出了几十段等高/层叠线段。把它们都存成 SVG path 后，能不能说每条原始数据层已经恢复？一个 19 层参数模型内部拟合更漂亮，但放回整图后 ROI 误差反而更大。",
+      "expected_output": "Keep L1 geometry segments separate from semantic layers. Use continuation/stitching and stable ordering to reach L2 layer candidates; L3 requires source-supported variable meaning. Reject the 19-layer repair if target ROI regresses and it supplies no necessary semantic gain. Algorithm sophistication/internal objective improvement cannot override actual reference ROI regression.",
       "files": []
     }
   ]

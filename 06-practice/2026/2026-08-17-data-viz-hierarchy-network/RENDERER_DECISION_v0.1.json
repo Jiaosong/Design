@@ -1,0 +1,56 @@
+{
+  "practice_id": "PRAC-DV-2026-08-17-HIERARCHY-NETWORK",
+  "information_structure": "relation/topology with service-route-return role hierarchy",
+  "authoritative_dimensions": [
+    "cross-river relation",
+    "north-bank / south-bank distinction",
+    "branching topology",
+    "service / route / return / optional-reading roles"
+  ],
+  "non_authoritative_dimensions": [
+    "exact x/y position",
+    "distance",
+    "bearing",
+    "slope",
+    "walking order",
+    "geographic coordinate",
+    "survey geometry"
+  ],
+  "renderer_candidates": [
+    {
+      "family": "deterministic editable SVG relational diagram",
+      "decision": "SELECT",
+      "reason": "preserves topology and board composition while allowing explicit NTS/not-georeferenced truth boundary"
+    },
+    {
+      "family": "G6 / force graph",
+      "decision": "REJECT FOR FINAL BOARD / ALLOWED FOR EXPLORATION",
+      "reason": "automatic positions could be misread as spatial evidence; topology may be explored but final board needs deterministic diagrammatic coordinates"
+    },
+    {
+      "family": "AntV infographic sequence template",
+      "decision": "REJECT",
+      "reason": "would convert branching relation into unsupported sequential completion order"
+    },
+    {
+      "family": "kepler.gl / GIS map",
+      "decision": "REJECT",
+      "reason": "no authoritative coordinates/CRS for this practice claim"
+    }
+  ],
+  "layout_state": "DETERMINISTIC_DIAGRAMMATIC",
+  "required_figure_labels": [
+    "RELATIONAL / NTS",
+    "NOT GEOREFERENCED",
+    "RELATIONAL BACKBONE / NOT ROUTE ORDER",
+    "FIELD / SURVEY OPEN"
+  ],
+  "interaction_state": "STATIC_BOARD_EXERCISE",
+  "does_not_prove": [
+    "surveyed geography",
+    "measured distance",
+    "route chronology",
+    "field safety",
+    "construction geometry"
+  ]
+}

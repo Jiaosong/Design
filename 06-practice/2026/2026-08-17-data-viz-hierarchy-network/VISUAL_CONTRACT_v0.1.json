@@ -1,0 +1,39 @@
+{
+  "practice_id": "PRAC-DV-2026-08-17-HIERARCHY-NETWORK",
+  "audience": "OLEANDER design review / portfolio integration teams",
+  "question": "How can a relational route network communicate route/service/return authority before optional reading content without pretending to be a surveyed map?",
+  "primary_claim": "Route / Service / Return remain structurally legible while optional reading stays subordinate and skippable.",
+  "source_authority": "C04 C22 relational drawing/data package v3.0",
+  "truth_boundary": "RELATIONAL / NTS / NOT GEOREFERENCED / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "visual_form": "asymmetric analytical poster + relational node-edge field + evidence strip",
+  "data_transform": "role-priority remapping only; no new factual topology claim",
+  "primary_mark_or_relation": "route/service/return backbone",
+  "encoding_channels": {
+    "stroke_width": "authority hierarchy",
+    "stroke_color": "route vs conditional vs return semantic role; not evidence by color alone",
+    "node_size": "service/return vs optional reading role",
+    "position": "diagrammatic relation only",
+    "text_weight": "claim and role hierarchy"
+  },
+  "scale_rule": "NTS; no metric axis; no geographic scale",
+  "secondary_context": "optional reading branches and companion nodes",
+  "units_denominator": "not applicable",
+  "lineweight_or_mark_hierarchy": {
+    "H1_route": 9,
+    "H1_return": 7,
+    "H2_optional_branch": 4.5,
+    "conditional": "4 dashed",
+    "leaders": 1.5
+  },
+  "grid_alignment_rule": "single 1920x1080 surface; asymmetric narrative field + dominant analytical field + full-width evidence strip",
+  "annotation_budget": "only claim, role, boundary, key node labels, evidence-finding-consequence; no full node exposition",
+  "far_read": "two-bank/cable/south-bank network + route/return distinction",
+  "mid_read": "service anchors, optional branches, return spine and closure",
+  "near_read": "source-traced vs diagrammatic vs field-open tags and evidence strip",
+  "signature": "return spine is a distinct, continuously readable relational layer without becoming a fake single itinerary",
+  "intended_output_size": "1920x1080 / board-derived 16:9",
+  "editable_source": "OLEANDER_DV_HIERARCHY_NETWORK_v0.1.svg",
+  "accessibility_equivalent": "NETWORK_DATA_v0.1.json + explicit labels; semantics are not color-only",
+  "producer_status": "EXECUTED / SELF-CHECKED / REVIEW PENDING",
+  "keep_authority": "independent reviewer only"
+}
