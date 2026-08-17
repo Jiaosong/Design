@@ -1,0 +1,17 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-17-BFH",
+  "version": "v2",
+  "topic": "Board focal hierarchy without information loss",
+  "boundary": "Calibration composition only; abstract vector content; not project evidence.",
+  "crit_repairs": [
+    "increased dominant landscape field so first-read is unequivocal",
+    "reduced node footprint so it reads as near-read proof rather than co-hero",
+    "tightened relation bridge and moved it closer to the dominant field",
+    "reduced technical proof rail height while preserving legibility and information"
+  ],
+  "local_render": {
+    "svg_sha256": "cd55c21ee37101a1ad792896a9dc4c444b90dc036f97738f95922fa76cd3352c",
+    "png_sha256": "b32b69d3b807857cbfd1e07e1866703cd2444706ba979cb81531fec151e24ab3",
+    "png_dimensions": "1920x1080"
+  }
+}
