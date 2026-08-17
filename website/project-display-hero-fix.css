@@ -1,0 +1,51 @@
+/* PRO-04.2 Hero override: compose the opening directly from retained D2 whole-product evidence.
+   No new evidence class is created; this is presentation cropping only. */
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+  position: relative;
+  min-height: 620px;
+  aspect-ratio: 1.34;
+  background: #eceae3;
+  overflow: hidden;
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] > img {
+  opacity: 0;
+  pointer-events: none;
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  width: 31%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before {
+  left: 10%;
+  background-image: url("assets/xj01/d02-whole-material-integration.jpg");
+  box-shadow: 0 18px 55px rgba(22,22,20,.08);
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+  right: 10%;
+  background-image: url("assets/xj01/d03-whole-material-integration.jpg");
+  box-shadow: 0 18px 55px rgba(22,22,20,.08);
+}
+@media (max-width: 1000px) {
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] { min-height: 560px; }
+}
+@media (max-width: 760px) {
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+    min-height: 410px;
+    aspect-ratio: 1 / 1.12;
+  }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+    width: 38%;
+    top: 7%;
+    bottom: 7%;
+  }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before { left: 8%; }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after { right: 8%; }
+}
