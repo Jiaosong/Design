@@ -1,0 +1,20 @@
+{
+  "version": "v1.7",
+  "role": "DOWNSTREAM WEB / PRESENTATION CARRIER",
+  "authority_boundary": "does not redefine upstream C04 objects or field/engineering state",
+  "absorbed": [
+    {"object":"Culture/Journey","web_role":"MAIN WEB COMPOSITION","binding":"hero_qingjiang.jpg + BOAT→CABLE→WALK→RETURN + 看/辨/听/记 second layer","note":"journey authority first; culture timing second"},
+    {"object":"R06 technical 01","web_role":"TECHNICAL LARGE READ","raster":"assets/r06_general_assembly_v11.png","vector":"assets/r06_general_assembly_v11.svg","upstream_review":"KEEP SPLIT DIRECTION / CONTINUE DETAIL PROFESSIONALIZATION"},
+    {"object":"R06 technical 02","web_role":"TECHNICAL LARGE READ","raster":"assets/r06_detail_atlas_v11.png","vector":"assets/r06_detail_atlas_v11.svg","details":["D1 clamp station","D2 cross section","D3 service wing","D4 countersunk clamp bolt"]},
+    {"object":"R13","web_role":"SCENE MAIN-SUPPORT","binding":"full Qingjiang frame + crop advance + light edge + NORMAL/DEGRADED/UNKNOWN/CLOSED","note":"upstream High Aesthetic state logic consumed; black-wall first-read pixels deliberately not bound because current Web direction forbids black masks"},
+    {"object":"App Journey Translation v1.17","web_role":"CONSUME-ONLY INTERACTIVE MATERIAL","binding":"assets/app_v117_route_modes_contact.jpg + assets/app_v117_journey_portable.html","note":"no App redesign; no authority promotion"},
+    {"object":"Fluid Rest v2.6","web_role":"PHYSICAL / TECHNICAL SUPPORT","binding":"body posture + transverse section","note":"real Qingjiang remains first read; location/engineering open"}
+  ],
+  "not_promoted_or_not_bound": [
+    {"object":"AUD_01_AUDIENCE_DEPTH_v1","reason":"newer timestamp but regresses to taxonomy/text-row presentation; stronger continuous same-R06 depth approach retained"},
+    {"object":"恩施大清江景区游览路线图.png","reason":"Library metadata model_generated=true; cannot be treated as official source"},
+    {"object":"PR #184/#185 training artifacts","reason":"training candidates, not C04 current project assets"},
+    {"object":"PR #178","reason":"closed / not current by user direction"}
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
