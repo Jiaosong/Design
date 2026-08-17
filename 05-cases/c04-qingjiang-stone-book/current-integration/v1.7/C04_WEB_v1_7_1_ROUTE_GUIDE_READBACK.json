@@ -1,0 +1,31 @@
+{
+  "version": "v1.7.1-route-guide-swap",
+  "scope": "Journey relational guide only; App ROUTE and Game Map are unchanged",
+  "source_asset": "assets/qingjiang_route_guide_translated.svg",
+  "source_dimensions": [1448, 1086],
+  "source_bytes": 35617,
+  "source_sha256": "1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9",
+  "desktop": {
+    "viewport": [1920, 1080],
+    "document_scroll_width": 1920,
+    "document_client_width": 1920,
+    "render_behavior": "full SVG overview in sticky Journey first-read; dedicated zoom control retained"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "document_scroll_width": 390,
+    "document_client_width": 390,
+    "overview_width": 352,
+    "close_read_scroll_width": 980,
+    "close_read_client_width": 352,
+    "render_behavior": "full overview first; optional details disclosure opens horizontal close-read"
+  },
+  "asset_scan": {
+    "unique_runtime_asset_refs": 30,
+    "missing_local_refs": 0,
+    "old_synthetic_journey_route_card_count": 0,
+    "new_route_guide_reference_count": 3
+  },
+  "browser_boundary": "Targeted finished-pixel preview used Playwright page.set_content because direct file/localhost navigation is blocked on this execution surface. This does not claim a live-navigation browser PASS.",
+  "design_boundary": "Exact source swap and responsive readback only; independent finished-pixel Design Crit remains separate."
+}

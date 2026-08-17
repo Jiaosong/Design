@@ -1,3 +1,4 @@
+
 /* === v1.7 realtime project absorption === */
 .culture-intro-v17{min-height:76vh}
 .culture-journey-integrated-v17{padding:92px 5vw 118px;background:#f3efe6;border-bottom:1px solid var(--line)}
@@ -47,3 +48,12 @@
   .technical-sheet-v17{padding:58px 12px 70px}.technical-sheet-head-v17{width:100%;grid-template-columns:62px 1fr;gap:12px;margin-bottom:18px}.technical-sheet-head-v17>span{font-size:34px}.technical-sheet-head-v17 h3{font-size:38px}.technical-sheet-media-v17{width:100%;overflow:auto}.technical-sheet-media-v17 img{width:1180px;max-width:none}.detail-index-v17{width:100%;grid-template-columns:1fr}.technical-sheet-head-v17 button{grid-column:2}.physical-proof-v17{width:100%;margin-top:30px}.physical-proof-v17 figure:first-child img{min-height:270px}
   #culture>.beat.full .lead{max-width:100%}.culture-intro-v17 .inner{padding-top:0}.culture-intro-v17 .display{font-size:clamp(44px,13vw,62px)}
 }
+
+
+/* === v1.7.1 exact route-guide source swap === */
+.route-guide-translated-v171{position:sticky;top:90px;margin:0;background:#061219;border:1px solid rgba(119,205,208,.18);box-shadow:0 34px 90px rgba(0,0,0,.24);overflow:hidden;align-self:start}
+.route-guide-overview-v171{background:#061219}.route-guide-overview-v171 img{display:block;width:100%;height:auto;background:#061219}
+.route-guide-mobile-detail-v171{display:none}
+.route-guide-translated-v171 figcaption{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 16px;border-top:1px solid rgba(119,205,208,.16);font:600 9px/1.5 sans-serif;letter-spacing:.08em;color:#c9d6d4;background:#07171d}.route-guide-translated-v171 figcaption>div{display:grid;gap:3px}.route-guide-translated-v171 figcaption b{color:#74d2d6}.route-guide-translated-v171 figcaption span{color:#9fb0ae}.route-guide-translated-v171 figcaption button{border:1px solid rgba(116,210,214,.36);background:transparent;color:#b9d9d8;padding:8px 10px;font:700 8px sans-serif;letter-spacing:.08em;cursor:zoom-in}
+@media(max-width:1050px){.route-guide-translated-v171{position:relative;top:0}}
+@media(max-width:680px){.journey-grid{gap:30px}.route-guide-translated-v171{margin:0 -2px}.route-guide-overview-v171 img{width:100%;max-width:100%}.route-guide-mobile-detail-v171{display:block;border-top:1px solid rgba(119,205,208,.18)}.route-guide-mobile-detail-v171 summary{cursor:pointer;list-style:none;padding:12px 14px;color:#8bd8da;font:700 9px sans-serif;letter-spacing:.1em;background:#07171d}.route-guide-mobile-detail-v171 summary::-webkit-details-marker{display:none}.route-guide-mobile-detail-v171 summary:after{content:" +"}.route-guide-mobile-detail-v171[open] summary:after{content:" −"}.route-guide-scroll-v171{overflow-x:auto;background:#061219;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#6fcbd0 #07171d}.route-guide-scroll-v171 img{display:block;width:980px;max-width:none;height:auto}.route-guide-translated-v171 figcaption{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 12px}.route-guide-translated-v171 figcaption span{font-size:8px}.route-guide-translated-v171 figcaption button{display:none}}

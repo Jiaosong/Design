@@ -1,9 +1,10 @@
 {
-  "version": "v1.7",
+  "version": "v1.7.1",
   "role": "DOWNSTREAM WEB / PRESENTATION CARRIER",
   "authority_boundary": "does not redefine upstream C04 objects or field/engineering state",
   "absorbed": [
     {"object":"Culture/Journey","web_role":"MAIN WEB COMPOSITION","binding":"hero_qingjiang.jpg + BOAT→CABLE→WALK→RETURN + 看/辨/听/记 second layer","note":"journey authority first; culture timing second"},
+    {"object":"Journey relational guide / user supplied translation SVG","web_role":"JOURNEY FIRST-READ ROUTE GUIDE","binding":"assets/qingjiang_route_guide_translated.svg","source_name":"恩施大清江景区游览路线图_转译版.svg","source_sha256":"1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9","note":"replaces previous synthetic Journey route-card only; SVG remains native vector; Game Map and App ROUTE remain separate downstream interaction layers"},
     {"object":"R06 technical 01","web_role":"TECHNICAL LARGE READ","raster":"assets/r06_general_assembly_v11.png","vector":"assets/r06_general_assembly_v11.svg","upstream_review":"KEEP SPLIT DIRECTION / CONTINUE DETAIL PROFESSIONALIZATION"},
     {"object":"R06 technical 02","web_role":"TECHNICAL LARGE READ","raster":"assets/r06_detail_atlas_v11.png","vector":"assets/r06_detail_atlas_v11.svg","details":["D1 clamp station","D2 cross section","D3 service wing","D4 countersunk clamp bolt"]},
     {"object":"R13","web_role":"SCENE MAIN-SUPPORT","binding":"full Qingjiang frame + crop advance + light edge + NORMAL/DEGRADED/UNKNOWN/CLOSED","note":"upstream High Aesthetic state logic consumed; black-wall first-read pixels deliberately not bound because current Web direction forbids black masks"},
@@ -12,9 +13,12 @@
   ],
   "not_promoted_or_not_bound": [
     {"object":"AUD_01_AUDIENCE_DEPTH_v1","reason":"newer timestamp but regresses to taxonomy/text-row presentation; stronger continuous same-R06 depth approach retained"},
-    {"object":"恩施大清江景区游览路线图.png","reason":"Library metadata model_generated=true; cannot be treated as official source"},
     {"object":"PR #184/#185 training artifacts","reason":"training candidates, not C04 current project assets"},
     {"object":"PR #178","reason":"closed / not current by user direction"}
+  ],
+  "source_notes": [
+    "User-supplied 恩施大清江景区游览路线图_转译版.svg is explicitly bound as a relational translation, not a byte-identical official raw guide source.",
+    "Full recoverable runtime including the exact SVG is persisted in Library package C04_WEB_v1_7_1_ROUTE_GUIDE_SVG_SWAP.zip."
   ],
   "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
 }
