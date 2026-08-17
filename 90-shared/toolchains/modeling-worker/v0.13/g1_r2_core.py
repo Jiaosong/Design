@@ -9,6 +9,7 @@ import g1_geometry_core as base
 CAP_LAW = "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE"
 CAP_SEMANTICS = "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION"
 CAP_ENDPOINT_SECTION = "SYMMETRIC_ELLIPSE_DERIVED_FROM_ONSET_MEANS"
+CAP_POLE_CURVATURE_SCALE_DEFAULT = 1.0
 
 
 def wrap(a):
@@ -114,6 +115,7 @@ def _cap_relation(s):
     if "termination_cap_onset_u" not in lower:
         return None
     onset = float(lower["termination_cap_onset_u"])
+    pole_scale = float(lower.get("termination_cap_pole_curvature_scale", CAP_POLE_CURVATURE_SCALE_DEFAULT))
     law = str(lower.get("termination_cap_law", CAP_LAW))
     semantics = str(lower.get("termination_cap_semantics", CAP_SEMANTICS))
     endpoint = str(lower.get("termination_cap_endpoint_section", CAP_ENDPOINT_SECTION))
@@ -125,7 +127,9 @@ def _cap_relation(s):
         raise ValueError(f"Unsupported termination cap endpoint section: {endpoint}")
     if not 0.0 < onset < 1.0:
         raise ValueError(f"termination_cap_onset_u out of range: {onset}")
-    return onset
+    if not 0.25 <= pole_scale <= 2.0:
+        raise ValueError(f"termination_cap_pole_curvature_scale out of bounded range: {pole_scale}")
+    return onset, pole_scale
 
 
 def _vadd(a, b):
@@ -151,8 +155,11 @@ def _quintic_hermite_zero_end_derivatives(t, y0, m0, k0, y1):
 
 def _cap_radial(s, u, t, revision=False):
     baseline, _, _, _, _, _, _ = _baseline_radial_triplet(s, u, t, revision)
-    onset = _cap_relation(s)
-    if onset is None or u <= onset:
+    relation = _cap_relation(s)
+    if relation is None:
+        return baseline
+    onset, pole_scale = relation
+    if u <= onset:
         return baseline
     if u >= 1.0:
         return (0.0, 0.0, 0.0)
@@ -164,8 +171,8 @@ def _cap_radial(s, u, t, revision=False):
     h1_s = _vadd(_vscale(radial_u, length), _vscale(h0, 0.5))
     h2_s = _vadd(_vscale(radial_uu, length * length), _vadd(_vscale(h0, 0.25), h1_s))
 
-    side_radius = 0.5 * (thumb[0] + opposite[0])
-    vertical_radius = 0.5 * (top[0] + lower[0])
+    side_radius = 0.5 * (thumb[0] + opposite[0]) * pole_scale
+    vertical_radius = 0.5 * (top[0] + lower[0]) * pole_scale
     h_end = (0.0, side_radius * math.sin(t), vertical_radius * math.cos(t))
     h = _quintic_hermite_zero_end_derivatives(tau, h0, h1_s, h2_s, h_end)
     return _vscale(h, q)
@@ -190,8 +197,9 @@ def point(s, u, t, revision=False, deck=True):
 def _u_values(s):
     nu = int(s["derived_execution"]["u_rings"])
     values = [i / (nu + 1) for i in range(1, nu + 1)]
-    onset = _cap_relation(s)
-    if onset is not None:
+    relation = _cap_relation(s)
+    if relation is not None:
+        onset, _ = relation
         for tau in (0.25, 0.50, 0.70, 0.82, 0.90, 0.95, 0.975, 0.99, 0.995):
             values.append(onset + (1.0 - onset) * tau)
     return sorted(set(v for v in values if 0.0 < v < 1.0))
