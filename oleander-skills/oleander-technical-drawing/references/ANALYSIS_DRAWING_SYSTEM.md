@@ -19,6 +19,8 @@ Use this module when the primary object is a spatial/design relationship:
 - scenario overlays where geometry, not statistical magnitude, is the primary carrier;
 - sequence, system, interface and dependency diagrams tied to design geometry.
 
+When circulation / mobility / route direction is the principal analytical carrier, also load `FLOW_DIRECTION_ANALYSIS.md`. A route network must be reconstructed as edges/nodes/direction markers bound to the base, not simplified into decorative arrows.
+
 Route to `oleander-data-viz` when the primary object is quantitative data:
 
 - distributions, counts, rates, time series, uncertainty intervals;
@@ -216,6 +218,8 @@ Automatic `REVISE / HOLD` triggers:
 - unknown is silently drawn as confirmed;
 - analysis overlay modifies source geometry without a design-revision record;
 - decorative arrows or gradients obscure the actual relation;
+- circulation is simplified to generic polylines/arrowheads that no longer preserve route topology, base binding, branch/merge structure or mode/state relations;
+- direction markers are visually oversized, detached from route tangency, or used as decoration rather than route events;
 - diagram becomes a generic method card with no project/spatial object;
 - statistical magnitude is encoded without data-viz truth controls;
 - analysis is technically correct but first-read is visually flat/noisy;
@@ -237,6 +241,8 @@ Typical repairs:
 - four overlays compete → identify the actual claim, demote support overlays and create one signature;
 - legend reads first → narrow/quiet annotation rail and enlarge spatial field;
 - E/F/D reads as admin cards → remove equal boxes, strengthen directional traces and row hierarchy;
+- circulation looks like four decorative zigzags → rebuild route edge/node topology from the source/base before changing stroke/color;
+- arrowheads look like icons → restore route-bound marker position, tangency and marker-to-line scale before adjusting aesthetics;
 - conclusion only exists in prose → move the claim back into spatial geometry/relationship.
 
 ## 13. Golden fixture coverage
@@ -247,3 +253,13 @@ The current fixture suite includes:
 - `GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg` — traceable E→F→D reasoning with unequal row hierarchy rather than a card wall.
 
 These are calibration assets with locked training geometry. They are not site evidence and do not prove a real project condition.
+
+## 14. Flow/circulation specialization
+
+For circulation, mobility, route hierarchy, pedestrian/bicycle/service movement or directional sequence, load `FLOW_DIRECTION_ANALYSIS.md`.
+
+The key distinction is:
+
+`ANALYSIS CLAIM → NETWORK TOPOLOGY → ROUTE-TO-BASE BINDING → DIRECTION / STATE / MODE → GRAPHIC HIERARCHY`.
+
+Do not start from `choose a color → draw arrows`.
