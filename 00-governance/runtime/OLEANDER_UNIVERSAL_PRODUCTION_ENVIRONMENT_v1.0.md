@@ -13,9 +13,11 @@ OLEANDER does not use a single application as its production environment.
 
 The invariant is:
 
-> **Authority → Skill → Required native output → Capability probe → Best-fit adapter → Execution → Readback → Evidence Gate + Design Quality Gate**
+> **Authority → Project Flow / State → Existing Mature Design → Existing Skill → Required native output → Capability probe → Best-fit adapter → Real Execution → Readback → Evidence Gate + Design Quality Gate → Gap Diagnosis**
 
 Tool choice follows the project. The project never follows the tool.
+
+**Skill optimization follows execution evidence. Execution does not wait for speculative Skill optimization.**
 
 For reference-reconstruction work, add one mandatory preflight before production:
 
@@ -56,24 +58,56 @@ Do not turn one unavailable adapter into a whole-project blocker when another ad
 
 ---
 
-## 3｜Tool Resolver
+## 3｜Process-first / Skill-gap discipline
 
-Before production, every OLEANDER conversation performs this resolver:
+Every OLEANDER project, training run, redesign, deepening task and restarted conversation must execute the **current OLEANDER process and current installed Skills first**. Skill creation or Skill optimization is downstream of real execution evidence.
 
-1. Read Current Authority / Source Authority / current project state.
-2. Resolve an existing OLEANDER Skill before inventing a method.
-3. Define the required **native output**: geometry, editable vector, HTML, dataset, render, video, PDF, etc.
-4. If the task is reference reconstruction, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0` before any fidelity claim.
-5. Probe only the capabilities needed for that output.
-6. Prefer an existing shared OLEANDER runtime or runner over project-specific installation logic.
-7. Select the adapter that best preserves editability, truth and fidelity.
-8. If the preferred adapter is absent, use an equivalent fallback when no information is lost.
-9. Mark only the genuinely unavailable step `PENDING`; continue all other executable work.
-10. Open/render/read back the resulting artifact before a visual Design PASS.
+Canonical sequence:
+
+`CURRENT AUTHORITY / PROJECT FLOW → EXISTING MATURE DESIGN / DESIGN SOURCE → CURRENT PROJECT STATE / CURRENT DELTA → EXISTING SKILL RESOLVER → INVOKE EXISTING SKILL(S) → REQUIRED NATIVE OUTPUT → RUNTIME / ADAPTER PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + DESIGN QUALITY GATE → GAP DIAGNOSIS → OPTIMIZE EXISTING SKILL ONLY IF NEEDED → REGRESSION / GOLDEN CASE → RE-RUN → NEW SKILL ONLY IF NO EXISTING SKILL CAN REASONABLY OWN THE GAP`
+
+Before changing a Skill, the run must record:
+
+- which existing Skill(s) were actually invoked;
+- the exact step or decision that proved insufficient;
+- the observable consequence in the real artifact, runtime or visual readback;
+- why a project-level correction alone is insufficient or why the failure recurs across tasks;
+- why the change belongs inside the owning Skill rather than a parallel Skill.
+
+Illegal shortcuts:
+
+- optimizing a Skill before attempting the real task with the current Skill;
+- creating a Skill because a case/reference is interesting, a task is newly named, or a cleaner framework can be written;
+- treating documentation, commit, PR, CI, eval schema or artifact existence as Skill validation;
+- allowing a training artifact or Skill Candidate to become project Authority without explicit binding;
+- creating a parallel Skill when an existing Skill reasonably owns the capability.
+
+If the existing Skill is insufficient, **extend or repair that Skill first**. A changed Skill remains Candidate until the same or equivalent task is re-run and actual readback shows that the gap was closed without regressions. New Skill creation is the final option, not the starting point.
 
 ---
 
-## 4｜Production lanes and adapters
+## 4｜Tool Resolver
+
+Before production, every OLEANDER conversation performs this resolver:
+
+1. Read Current Authority / Source Authority / current Project Flow / Project State / Current Delta.
+2. Locate and open relevant Existing Mature Design / Design Source when it exists.
+3. Resolve and actually invoke the current installed OLEANDER Skill(s) before inventing or changing a method.
+4. Define the required **native output**: geometry, editable vector, HTML, dataset, render, video, PDF, etc.
+5. If the task is reference reconstruction, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0` before any fidelity claim.
+6. Probe only the capabilities needed for that output.
+7. Prefer an existing shared OLEANDER runtime or runner over project-specific installation logic.
+8. Select the adapter that best preserves editability, truth and fidelity.
+9. If the preferred adapter is absent, use an equivalent fallback when no information is lost.
+10. Execute the real task; do not stop at method description when production is possible.
+11. Open/render/read back the actual output and run Evidence Gate + Design Quality Gate independently.
+12. Only after a concrete gap is observed may the owning Skill be optimized; then run regression/golden cases and re-run the task.
+13. Create a new Skill only if no current Skill can reasonably own the proven gap.
+14. Mark only the genuinely unavailable step `PENDING`; continue all other executable work.
+
+---
+
+## 5｜Production lanes and adapters
 
 ### Research / knowledge / source evidence
 
@@ -137,7 +171,7 @@ Add desktop/mobile for web, far/near for boards, overall/detail for drawings, ov
 
 ---
 
-## 5｜Figma policy
+## 6｜Figma policy
 
 Figma is an **optional specialist adapter**, not an OLEANDER dependency.
 
@@ -155,7 +189,7 @@ Do not:
 
 ---
 
-## 6｜Blender policy
+## 7｜Blender policy
 
 The existing runtime remains authoritative:
 
@@ -171,11 +205,11 @@ Do not fork a separate Blender installation path inside each project.
 
 ---
 
-## 7｜Execution receipt
+## 8｜Execution receipt
 
 Any meaningful production run should be able to report:
 
-`TASK / AUTHORITY / SKILL_RESOLVED / REQUIRED_OUTPUT / CAPABILITY_STATE / ADAPTER_SELECTED / VERIFIED_VERSION_OR_PATH / EXECUTED_OR_PENDING / READBACK_STATE / EVIDENCE_GATE / DESIGN_QUALITY_GATE / DOES_NOT_PROVE`
+`TASK / AUTHORITY / PROJECT_FLOW_STATE / EXISTING_DESIGN_READBACK / SKILL_RESOLVED / SKILL_ACTUALLY_INVOKED / REQUIRED_OUTPUT / CAPABILITY_STATE / ADAPTER_SELECTED / VERIFIED_VERSION_OR_PATH / EXECUTED_OR_PENDING / READBACK_STATE / EVIDENCE_GATE / DESIGN_QUALITY_GATE / GAP_OBSERVED / SKILL_CHANGE_IF_ANY / REGRESSION_STATE / RERUN_STATE / DOES_NOT_PROVE`
 
 Reference-reconstruction runs additionally report:
 
@@ -185,7 +219,7 @@ Reference-reconstruction runs additionally report:
 
 ---
 
-## 8｜No-compression / no-loss environment rule
+## 9｜No-compression / no-loss environment rule
 
 Changing tools must not delete design information. If one adapter cannot preserve a layer, geometry, text, dimension, material relation, interaction state or source authority, do not use the apparent simplicity of the tool change as justification for information loss.
 
