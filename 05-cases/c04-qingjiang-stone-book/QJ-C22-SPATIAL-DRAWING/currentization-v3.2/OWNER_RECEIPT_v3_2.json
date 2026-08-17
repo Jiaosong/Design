@@ -1,0 +1,19 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "delta": "C22 drawing currentization v3.2 after repository Skill retro-review",
+  "objects": ["DRW-C04-C22-01", "DRW-C04-C22-05"],
+  "source": "C04_QJ-C22_SPATIAL_DRAWING_PACKAGE_v3.0.pdf / existing vector pages",
+  "skill_routing": {
+    "closest": "oleander-technical-drawing v0.2 / PR #172",
+    "closest_status": "CANDIDATE / DRAFT / NOT MERGED / NOT PROMOTED",
+    "use": "strict calibration and gap detection only; does not override C04 current authority"
+  },
+  "retro_status": {
+    "v3.1": "REVISE / SUPERSEDED PROVENANCE",
+    "reason": "C22-01 manually redrew relation topology; C22-05 used equal-strip explanatory-board hierarchy and weak source binding"
+  },
+  "target": "source-bound professional relational drawings with primary field + annotation/evidence rail + 3S/30S/near-read hierarchy",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "r06": "FROZEN / FINISHED / CONTEXT ONLY / NO REOPEN",
+  "state": "OWNER_RECEIPT_CREATED / EXECUTION_IN_PROGRESS / INDEPENDENT_DESIGN_REVIEW_PENDING"
+}
