@@ -65,6 +65,25 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 
 For any layout containing source-bound spatial evidence, include a short authority-preservation note naming the source object and confirming what was kept unchanged versus presentation-only edits.
 
+## Cross-screen visual grammar gate
+
+Use this gate when one digital product, exhibition system, service family, or long-form interactive experience contains multiple task surfaces such as ROUTE, TODAY, MEMORY, SERVICE, RETURN, MAP, PROFILE, or COLLECTION.
+
+1. Separate **family invariants** from **task-specific variation** before styling individual screens.
+2. Family invariants should be few, recognisable, and reusable: for example type hierarchy, material logic, status token, line/edge language, spatial/world cue, icon logic, motion behavior, or one accent relationship. Do not preserve every surface detail as an invariant.
+3. Task-specific variation must answer the screen's job. ROUTE may privilege world/wayfinding, TODAY may privilege a current recommendation, and MEMORY may privilege collected traces. Different tasks may use different density, material balance, or composition while remaining recognisably related.
+4. `Consistency ≠ cloned layout.` Repeating the same card stack, hero proportion, or dashboard skeleton on every screen is not a valid family system when the tasks differ.
+5. `Variation ≠ visual reset.` A screen that introduces unrelated typography, palette, icon family, material behavior, status semantics, or spatial grammar must justify that break; otherwise default to REVISE.
+6. Review the screens **side by side as a family**, not only one at a time. A locally successful screen can still fail if it makes the product feel like multiple unrelated products.
+7. Run a distance/thumbnail read: the family should remain recognisable without reading screen titles. Then run a near read: each surface's task priority should still be distinct.
+8. Preserve the strongest screen's mature rules only when they are genuinely transferable. Do not force a ROUTE-specific world treatment onto TODAY or MEMORY if it harms their task hierarchy.
+9. Shared status, route, return, safety, evidence, and brand semantics must remain semantically consistent even when their visual strength changes by surface.
+10. If consistency requires deleting information, flattening task differences, or turning all surfaces into one repeated dashboard pattern, REVISE. If variation makes the screens unrecognisable as one system, REVISE.
+
+Default review sequence:
+
+`SCREEN PURPOSE → FAMILY INVARIANTS → TASK VARIATION → SIDE-BY-SIDE FAMILY READ → DISTANCE READ → NEAR READ → CROSS-STATE / CROSS-SURFACE SEMANTIC CHECK`
+
 ## Quality checks
 
 - Claims match approved research.
