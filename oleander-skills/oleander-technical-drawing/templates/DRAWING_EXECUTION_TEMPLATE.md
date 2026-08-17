@@ -2,6 +2,8 @@
 
 Use this template for substantial technical drawing work. Delete non-applicable fields; do not invent values to fill blanks.
 
+When the task is an explicit 1:1 / pixel-level / exact reference reconstruction, also use `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` and complete the optional Section 9A. Reconstruction fidelity gates never replace TD-G0…TD-G8.
+
 ## 1. DRAWING BRIEF
 
 - Project / object ID:
@@ -82,6 +84,63 @@ For each critical item:
 - Independent-open test:
 - Round-trip/export comparison:
 
+## 9A. OPTIONAL REFERENCE RECONSTRUCTION FIDELITY
+
+Complete only for `EXACT RECONSTRUCTION / STRUCTURAL RECONSTRUCTION / SYSTEM EXTRACTION / PROJECT ADAPTATION` work.
+
+- Reconstruction mode:
+- Reference source class: `R0 / R1 / R2 / R3 / R4`
+- Reference file / revision / SHA-256:
+- Full-sheet or ROI scope:
+- Target canvas / physical size / DPI:
+- Editable target format:
+- Reference authority role: `VISUAL REFERENCE / TECHNICAL AUTHORITY / MIXED`
+- Font state: `EXACT / INFERRED / SUBSTITUTED`
+- Normalization transform: crop / rotate / deskew / dewarp / none
+- Acceptance contract / reviewer:
+
+### Anchor register
+
+| anchor_id | class | reference position/measure | candidate position/measure | delta | tolerance | result |
+|---|---|---|---|---|---|---|
+| | A0/A1/A2/A3/A4/A5 | | | | | |
+
+### Typography register
+
+| text_id | role | family/state | size | baseline/box | line break | delta/open item |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+
+### Stroke / hatch / symbol register
+
+| style_id | role | reference visible class | candidate class | pattern/symbol | mismatch/open item |
+|---|---|---|---|---|---|
+| | | | | | |
+
+### Fidelity evidence
+
+- Registered reference preview:
+- Same-size candidate preview:
+- 50/50 overlay:
+- Absolute-difference image:
+- Changed-pixel mask + declared tolerance:
+- `FIDELITY_METRICS.json`:
+- ROI report:
+
+### RF-G0…RF-G6
+
+| gate | result | evidence | blocker / repair |
+|---|---|---|---|
+| RF-G0 Reference Identity | | | |
+| RF-G1 Canvas & Registration | | | |
+| RF-G2 Vector Structure & Geometry Anchors | | | |
+| RF-G3 Typography & Annotation | | | |
+| RF-G4 Stroke, Hatch & Symbol Fidelity | | | |
+| RF-G5 Pixel & ROI Readback | | | |
+| RF-G6 Fidelity Truth Boundary & Independent Review | | | |
+
+State explicitly: `RF PASS != TD PASS` and `TD PASS != RF PASS`.
+
 ## 10. TD-G0…TD-G8 REVIEW
 
 | gate | result | evidence | blocker / repair |
@@ -112,6 +171,7 @@ For each critical item:
 `KEEP / REVISE / REJECT / HOLD`
 
 State separately:
+- Reference-fidelity status when applicable:
 - Drawing Design status:
 - Engineering status:
 - Field status:
