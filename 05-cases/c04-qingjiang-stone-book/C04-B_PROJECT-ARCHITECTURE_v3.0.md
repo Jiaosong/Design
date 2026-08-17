@@ -1,613 +1,325 @@
-# C04｜清江石书｜Complete Project Architecture v3.0
+# C04｜清江石书｜完整项目架构 v3.0
 
-- Project: `PRJ-C04-QINGJIANG-SHISHU`
-- Role: `CURRENT PROJECT NARRATIVE / WEB-PDF-BOARD ARCHITECTURE`
-- Date: `2026-08-17`
-- State: `MATERIAL DELTA / ARCHITECTURE REBUILD / FIELD OPEN / NO_PROMOTION`
-- Supersedes for structure/order: the six-layer v2.0 display architecture and the earlier journey-only v1.9 architecture.
-- Preserves: v2.0 content direction, full Asset Atlas, current object/route locks, R01–R13, App/Digital, Physical/Sensory, Memory/IP, Audience, C22/C23/Model, Visual/Motion, Process, Evidence boundaries.
+- 项目：`PRJ-C04-QINGJIANG-SHISHU`
+- 角色：`当前项目叙事 / Web-PDF-展板架构`
+- 日期：`2026-08-17`
+- 状态：`实质更新 / 架构重建 / 现场开放 / 不晋级`
+- 结构上取代：v2.0 六层展示架构、v1.9 单一游程叙事架构。
+- 保留：v2.0 内容方向、完整资产图谱、当前对象/路线锁、R01–R13、App/数字、实体/感官、记忆/IP、人群、C22/C23/模型、视觉/动效、过程与证据边界。
 
-## 0｜Architecture decision
+## 0｜架构决定
 
-The project is no longer organised primarily by:
-- a fixed page count;
-- a single journey story;
-- parallel department/system chapters;
-- or a generic `analysis → design → technical` school-report sequence.
+项目不再主要按照固定页数、单一游程故事、平行专业章节或通用“分析→设计→技术”顺序组织。
 
-The new backbone is a **design causality chain**:
+新的主骨架采用**设计因果链**：
 
-`CONTEXT / EVIDENCE → PROBLEM → INSIGHT → PRINCIPLES → METHODS → MASTER SYSTEM → SUBSYSTEM DESIGN → SCENE APPLICATION → DETAIL DEVELOPMENT → TECHNICAL PROOF → PROFESSIONAL JUDGMENT → RETURN / CONCLUSION`
+`背景/证据 → 问题 → 洞察 → 设计原理 → 设计方法 → 总体系统 → 分系统设计 → 场景应用 → 设计深化 → 技术证明 → 专业判断 → 回程/结论`
 
-The visitor journey remains a strong first-read thread running through the architecture, but it no longer suppresses analysis, design reasoning or technical depth.
+游客游程仍然作为第一阅读线贯穿全项目：
 
-Hard rule:
+`进入 → 定向/选择 → 移动/打开景观 → 步行/发现 → 停留/观察/恢复 → 通过 → 回程 → 记忆`
 
-> **Every professional section must show what it contributes to the design.**
+但游程不再压缩分析、设计推理、人群研究或技术深度。
+
+硬规则：
+
+> **每一个专业章节都必须说明：它如何改变、生成或证明设计。**
 >
-> Analysis may be MAIN. Methods may be MAIN. Audience analysis may be MAIN. Design details may be MAIN. The test is not whether the page is “story-like”; the test is whether the page materially explains C04 design.
+> 分析、方法、人群分析、设计细节都可以进入主展示。判断标准不是“像不像故事”，而是它是否真正解释了清江项目的设计。
 
-The existing 52 Web semantic surfaces are an **asset inventory**, not the architecture and not a ceiling.
+现有 Web 的 52 个页面/语义单元只是已有资产库存，不是新架构，也不是上限。
 
 ---
 
-# 1｜NEW MASTER ARCHITECTURE
+# 1｜新的完整项目架构
 
-## CH00｜COVER / PROJECT STATEMENT｜项目定义
+## CH00｜项目定义
 
-**Question:** What is Qingjiang Stone Book?
+**回答：清江石书到底是什么？**
 
-Must establish:
-- real Qingjiang first read;
-- project title and one-sentence proposition;
-- what is being redesigned: a complete Qingjiang journey, not thirteen new attractions;
-- the role of BOAT / CABLE / WALK / Return;
-- Thirteen Imprints as optional content, not route authority.
+必须建立：真实清江第一阅读；一句话项目命题；被重新设计的是一次完整清江游程而不是十三个新景点；游船/索道/步行/回程的角色；十三印是可选内容，不拥有路线主权。
 
-Primary first-read line:
+第一阅读：
 > **先游清江，再读清江。**
 
-Secondary line:
+第二句：
 > **水上看，空中看，山中走；需要时，再打开一页清江。**
 
-Do not lead with governance, evidence, App dashboard, model or technical board.
+不要以治理、证据、App后台、模型或技术图开篇。
+
+## CH01｜项目问题与机会
+
+**回答：这个项目为什么需要设计介入？**
+
+核心矛盾：
+1. 景观很强，但游客缺少阅读和方向判断；
+2. 真实空间是多分支/回环网络，却容易被十三印误写成十三站打卡；
+3. 游船、索道、步行形成不同观看尺度，但体验彼此割裂；
+4. 内容丰富，但过量信息会压过景观；
+5. 数字可以增强体验，但不能制造第二个景区；
+6. 休息、恢复、回程是真实需求；
+7. 离开后的记忆不应被完成率替代。
+
+页面语法：`问题 → 设计机会`
+
+## CH02｜场地与山水分析
+
+**回答：哪些真实空间条件决定了后面的设计？**
+
+分析：江/河谷/峰林关系；南北岸；到达/索道/游船/步行；分支与回环路线；开敞→压缩→再开敞；身体尺度与河谷尺度；移动视点；R06/R13空间角色；有依据时加入坡度、视线、环境、路线等情景分析。
+
+页面语法：`观察/证据 → 空间发现 → 设计后果`
+
+没有设计后果的场地分析只能作支撑。
+
+## CH03｜地域文化与内容分析
+
+**回答：什么内容值得在清江被阅读，它应该发生在哪里？**
+
+分析地域历史、地方故事/地名、手工艺/非遗、山水知识、传统山水观看方式、日常智慧与身心舒缓体验，以及R07名称冲突、R09/R12故事对读、R05/R06山水认知和内容来源可信度。
+
+页面语法：`内容来源 → 内容类型 → 场景匹配 → 游客动作 → 设计载体`
+
+禁止做成文化百科或纯分类墙。
+
+## CH04｜人群与使用状态分析
+
+**回答：哪些人会以不同方式体验清江，设计因此必须改变什么？**
+
+分析：儿童/亲子、青年探索者、成年深读者、长者/低体力、低数字熟悉度/无手机、短停留、重游者等。
+
+分析维度：移动能力、体力/疲劳、注意时长、认知负担、阅读深度、互动难度、可达性、数字熟悉度、陪同行为、回程紧迫度、恢复需求。
+
+页面语法：`使用状态 → 需求/风险 → 设计响应 → 同场景差异`
+
+必须有真实场景对照，例如R06、R13、App与无手机路径。
+
+## CH05｜游程与行为分析
+
+**回答：整段游程中，身体、注意力、信息和服务需求如何变化？**
+
+游程行为序列：
+`到达 → 定向 → 选择交通 → 跨越 → 探索 → 停留 → 通过 → 回程 → 记忆`
+
+逐段分析身体状态、视觉注意力、信息需求、互动容忍度、服务/休息需求、内容密度、数字角色、降级/回程要求。
+
+保留互动动作：`看 / 比较 / 追踪 / 听 / 等待 / 取景 / 踏步 / 记忆`
+
+页面语法：`游程阶段 → 身体/注意力状态 → 设计需求 → 响应`
+
+## CH06｜设计原理
+
+**回答：哪些规则统领整个清江设计？**
+
+1. **真实清江优先**——先建立景观与身体关系，再解释；
+2. **服务与回程优先于完成**——先保证确定性，再增加内容；
+3. **三种观看尺度**——游船/索道/步行从不同尺度认识同一条清江；
+4. **内容可选，不设强制站点**——十三印可以读、玩，也可以跳过；
+5. **场景决定注意力密度**；
+6. **数字可退场**；
+7. **最小必要实体介入**；
+8. **同一场景，不同人群有不同深度**；
+9. **景观 → 关系 → 解释**；
+10. **回程 + 记忆，而不是完成率**。
+
+页面语法：`矛盾 → 原理 → 项目应用 → 边界/例外`
+
+原理必须用真实清江场景和当前对象证明。
+
+## CH07｜设计方法
+
+**回答：这些设计是如何被生成和筛选的？**
+
+- 方法01｜`证据 → 空间发现 → 设计后果`
+- 方法02｜`游客处境 → 动作 → 内容/互动模式 → 载体 → 价值 → 退路`
+- 方法03｜`场景 × 注意力密度 × 人群深度`
+- 方法04｜`完整景观 → 关系揭示 → 可选解释`
+- 方法05｜`现状/普通恢复 → 分布式最小介入 → 强Hero介入`
+- 方法06｜`正常/降级/关闭/未知 × 完整/轻量/关闭`
+- 方法07｜`实体 + 数字 + 纸图 + 人工服务`
+- 方法08｜`设计决定 → 身体/体验效果 → 细节/技术证明 → 现场待校核`
+
+页面语法：`输入 → 操作 → 输出 → 用在哪里`
+
+禁止写成没有真实产物对应的抽象框架。
+
+## CH08｜总体策略与体验系统
+
+**回答：整个项目如何作为一个系统成立？**
+
+连接真实清江、路线/服务/回程、游船/索道/步行、十三印、App/游戏地图、场景互动、人群深度、实体/感官支持、记忆/IP和技术证明。
+
+推荐图：完整系统关系图、游程×系统矩阵、景观/身体/内容/载体层级、可选内容与降级/退场逻辑。
+
+页面语法：`系统组成 → 关系 → 游客流 → 退场/兜底`
+
+## CH09｜路线、交通与服务设计
+
+**回答：游客如何进入、移动、选择、恢复并返回？**
+
+当前绑定：
+- `ROUTE-03` = 当前锁定路线对象；
+- `JOURNEY-04` = 历史来源，除非权威改变。
+
+展示到达与定向、游船/索道/步行三种体验尺度、分支/回环步行逻辑、游戏地图与真实路线主权区别、服务/休息/撤退、无手机路径、回程识别和必要的运行状态。
+
+页面语法：`路线决定 → 用户选择 → 服务/兜底 → 体验变化`
+
+## CH10｜十三印内容与互动系统
+
+**回答：R01–R13 如何完整存在，同时又不变成十三个强制任务站？**
+
+展示R01–R13完整索引、内容角色/类型/互动机会/证据边界、场景化阅读深度、互动动作和少量深入示例。
+
+重点可展开：R05景观识别、R06空间判断与恢复、R07地名阅读、R09/R12地方故事对读、R13身体通过与回程。
+
+页面语法：`场景 → 可选内容 → 动作 → 价值 → 跳过/继续`
+
+## CH11｜数字陪伴系统
+
+**回答：数字体验真正增加了什么，它什么时候应该消失？**
+
+App作为主要设计成果，需有独立专业深度：信息架构、今日清江、探索地图、十三印/场景阅读、我的石书、服务/回程、跨屏游程、交互状态、离线/无手机关系、完整/轻量/关闭、正常/降级/关闭/未知，以及地图/字体/图标/组件系统。
+
+页面语法：`用户需求 → 页面/状态 → 交互 → 退场/兜底`
+
+禁止做成后台仪表盘或第二个景区世界。
+
+## CH12｜关键场景设计
+
+**回答：总体原理如何变成真正的空间体验？**
+
+场景页必须同时处理体验、人群、内容、载体和细节。
+
+- R01：交通优先、移动观看、最小数字干扰；
+- R05：景观优先、可选识别/发现互动；
+- R06：**体验冻结，不重开**；完整河谷→关系揭示→可选阅读→身体恢复→同场景不同人群深度；
+- R13：身体通过优先、高注意力游戏关闭、安全/回程优先、出口/回望/再识别。
+
+页面语法：`场景条件 → 设计决定 → 身体动作 → 内容/载体 → 人群差异 → 细节/兜底`
+
+## CH13｜实体、身体与感官设计
+
+**回答：哪里真的值得增加物理介入？**
+
+当前状态：
+- P02栏杆倚靠休息 = `保留 / 高优先支撑 / 未定位`；
+- PHY-01步步生光 = `概念保留 / 当前HOLD / 过程支撑`；
+- 流体休憩 = `HOLD / 单点竞争`；
+- 清风吟 = `HOLD / 风感官候选`；
+- F01–F04 / C23 / 模型 = 技术/服务支撑。
+
+专业深度：场景匹配、身体动作/人机、尺度、平面/剖面/轴测/爆炸、材料/CMF、连接/安装、维护/更换、排水/防滑/眩光/热舒适/生态敏感性和开放项。
+
+页面语法：`为什么在这里 → 身体动作 → 形态/尺度 → 材料 → 连接 → 维护 → 开放项`
+
+## CH14｜记忆与文化产品
+
+**回答：游客最后真正带走什么？**
+
+当前层级：清江旅记=实体记忆主候选；我的石书=数字记忆核心；清江一线/清江雾气/清风吟记忆延展=支撑；红花峰崽=家庭/儿童观察层。
+
+展示记忆生成逻辑、游程痕迹、实体+数字配对、使用场景、视觉/产品深化、可选分享，不使用13/13完成框架。
+
+页面语法：`游程痕迹 → 记忆转译 → 对象/界面 → 离开后的价值`
+
+## CH15｜设计深化与细节
+
+**回答：选中的设计在人和构件尺度上到底怎么成立？**
+
+展示关键平面、立面、剖面、人体尺寸、连接节点、爆炸装配、材料/表面/CMF、可拆/可换逻辑、排水/防滑/边缘概念、维护通道、数字组件/交互状态细节、纸图/印刷/记忆物细节。
+
+页面语法：`使用 → 几何 → 材料 → 连接 → 维护 → 现场校核`
+
+专业度足够的设计细节可以进入主展示。
+
+## CH16｜技术与模型证明
+
+**回答：哪些技术证据让设计可信，同时不伪装成现场实测？**
+
+使用C22总图/路线空间关系、C22剖面、C23总装/细部、SEC-A按实际审查状态、R06节点/模型、材料/维护/路线/容量/风险/环境情景证明。
+
+规则：真实清江景观 > 灰模；技术证明跟在设计之后；模型不能成为项目身份；不制造伪施工确定性。
+
+页面语法：`设计主张 → 技术证据 → 能证明什么 → 不能证明什么`
+
+## CH17｜过程、比较与专业判断
+
+**回答：项目主动选择、修改、HOLD 或放弃了什么，为什么？**
+
+适合进入：普通恢复/分布式最小介入/单一Hero比较；步步生光HOLD；流体休憩场地适配竞争；清风吟HOLD；旧13/13完成逻辑删除；旧dashboard式Web替换；弱模型轴测只作支撑；R13抽象操作页被拒绝等。
+
+页面语法：`备选方案 → 判断标准 → 结论 → 设计学习`
+
+不要因为旧文件存在就放进过程页。
+
+## CH18｜开放项、回程与结尾
+
+**回答：哪些设计已经成立，哪些仍需现场确认，游客最后留下什么？**
+
+体验结尾：回程确定性、再次看见清江、清江旅记/我的石书、可选记忆物、最后回到真实清江。
+
+专业结尾可以克制说明：现场观察/测量状态、精确几何待确认、安全/无障碍/容量/运营待确认、维护/审批/施工接口待确认以及“不能证明什么”的边界。
+
+FIELD / G1F / Authority 不作为主标题。
 
 ---
 
-## CH01｜PROJECT QUESTION / OPPORTUNITY｜项目问题与机会
+# 2｜页面类型语法
 
-**Question:** Why does this project need design intervention?
-
-This chapter translates the brief and evidence into design problems, not a research summary.
-
-Required problem families:
-1. strong landscape, weak visitor reading/orientation;
-2. multi-branch/loop spatial reality vs potential thirteen-stop linearisation;
-3. multiple transport scales but fragmented experience;
-4. content richness vs attention overload;
-5. digital possibility vs landscape dominance;
-6. rest/recovery/return needs vs “attraction-first” tourism logic;
-7. memory after leaving vs completion-score logic.
-
-**Output:** a concise `problem → design opportunity` map.
-
----
-
-## CH02｜SITE / LANDSCAPE ANALYSIS｜场地与山水分析
-
-**Question:** What spatial conditions actually shape the design?
-
-Required analysis families:
-- river / valley / peak-forest relation;
-- north-bank / south-bank relation;
-- arrival / cable / boat / walking relation;
-- branching and loop route structure;
-- opening / compression / re-opening sequence;
-- body scale vs river/valley scale;
-- movement viewpoints;
-- R06 and R13 spatial roles;
-- evidence-bounded slope / sightline / route / environmental scenario analysis where available.
-
-**Page grammar:**
-`OBSERVATION / EVIDENCE → SPATIAL FINDING → DESIGN CONSEQUENCE`
-
-A site-analysis page without a design consequence is SUPPORT, not MAIN.
-
----
-
-## CH03｜CULTURE / CONTENT ANALYSIS｜地域文化与内容分析
-
-**Question:** What is worth reading here, and where should it happen?
-
-Analyse:
-- regional history;
-- local stories / place names;
-- craft / intangible culture;
-- landscape knowledge;
-- traditional landscape view as cultural interpretation;
-- daily wisdom / wellbeing as experience, not health claim;
-- R07 naming conflict;
-- R09 / R12 local-story pairing;
-- R05 / R06 landscape knowledge;
-- content source confidence / replacement status where relevant.
-
-**Page grammar:**
-`CONTENT SOURCE → CONTENT TYPE → SCENE FIT → VISITOR ACTION → DESIGN CARRIER`
-
-Do not create a culture encyclopedia or taxonomy-only wall.
-
----
-
-## CH04｜PEOPLE / AUDIENCE ANALYSIS｜人群与使用状态分析
-
-**Question:** Who experiences Qingjiang differently, and what must the design change for them?
-
-Independent professional analysis is required for:
-- children / family;
-- youth / explorer;
-- adult / deep-read;
-- older / low-stamina;
-- low-digital / no-phone users;
-- short-stay / limited-time users;
-- local / returning users where useful.
-
-Analyse dimensions, not decorative personas:
-- mobility;
-- stamina / fatigue;
-- attention span;
-- cognitive load;
-- reading depth;
-- interaction difficulty;
-- visual / auditory / body accessibility;
-- digital familiarity;
-- companion condition;
-- return urgency;
-- recovery need.
-
-**Page grammar:**
-`CONDITION → NEED / RISK → DESIGN RESPONSE → SAME-SCENE DIFFERENCE`
-
-Mandatory scene comparison examples:
-- R06 same scene / different depth;
-- R13 same passage / return and attention priority;
-- App / no-phone route differences.
-
----
-
-## CH05｜JOURNEY / BEHAVIOR ANALYSIS｜游程与行为分析
-
-**Question:** What happens to attention, body, information need and service need through the trip?
-
-Analyse the journey as behavior rather than itinerary:
-
-`ARRIVE → ORIENT → CHOOSE MOBILITY → CROSS → EXPLORE → STOP → PASS → RETURN → REMEMBER`
-
-For each phase analyse:
-- body state;
-- visual attention;
-- information need;
-- interaction tolerance;
-- service / rest requirement;
-- content density;
-- digital role;
-- fallback / return requirement.
-
-Preserve interaction verbs:
-`LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
-
-**Page grammar:**
-`JOURNEY PHASE → BODY / ATTENTION STATE → DESIGN NEED → RESPONSE`
-
----
-
-## CH06｜DESIGN PRINCIPLES｜设计原理
-
-**Question:** What rules govern every design decision in C04?
-
-Required current principles:
-1. **Real Qingjiang First** — landscape/body relation before explanation.
-2. **Service / Return before completion** — confidence before content.
-3. **Three experience scales** — BOAT / CABLE / WALK reveal the same Qingjiang differently.
-4. **Optional content, not mandatory stations** — thirteen imprints may be read, played or skipped.
-5. **Scene-specific attention density** — content intensity changes with spatial/body conditions.
-6. **Digital retreatability** — digital appears when useful and withdraws when landscape/body is stronger.
-7. **Minimum necessary physical intervention** — objects appear only where body/service actually needs them.
-8. **Same scene, different audience depth** — depth changes without duplicating the whole product.
-9. **Landscape → Relation → Explanation** — especially visible at R06.
-10. **Return + Memory, not completion score** — closure through re-recognition and personal memory.
-
-**Page grammar:**
-`TENSION → PRINCIPLE → APPLICATION → EXCEPTION / LIMIT`
-
-Principles must be shown with real C04 scenes/objects, not generic icons.
-
----
-
-## CH07｜DESIGN METHODS｜设计方法
-
-**Question:** How were the design decisions generated and tested?
-
-Required project-specific methods:
-
-### M01｜Evidence to Design
-`EVIDENCE → SPATIAL FINDING → DESIGN CONSEQUENCE`
-
-### M02｜Scene Design
-`VISITOR SITUATION → ACTION → CONTENT / GAME MODE → CARRIER → VALUE → FALLBACK`
-
-### M03｜Attention Design
-`SCENE × ATTENTION DENSITY × AUDIENCE DEPTH`
-
-### M04｜Landscape First
-`LANDSCAPE FIRST → RELATION REVEAL → OPTIONAL EXPLANATION`
-
-### M05｜Intervention Selection
-`EXISTING / ORDINARY RECOVERY → DISTRIBUTED MINIMAL → HERO INTERVENTION`
-
-### M06｜Operational / Digital Degrade
-`NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF`
-
-### M07｜Redundancy / Retreatability
-`PHYSICAL + DIGITAL + PAPER + HUMAN SERVICE`
-
-### M08｜Detail Development
-`DESIGN DECISION → BODY / EXPERIENCE EFFECT → DETAIL / TECHNICAL PROOF → FIELD OPEN`
-
-**Page grammar:**
-`INPUT → OPERATION → OUTPUT → WHERE USED`
-
-Do not write methods as abstract framework prose without showing actual outputs.
-
----
-
-## CH08｜MASTER STRATEGY / EXPERIENCE SYSTEM｜总体策略与体验系统
-
-**Question:** How do the project systems connect as one design?
-
-This is the master synthesis chapter.
-
-Must connect:
-- real Qingjiang landscape;
-- route / service / Return;
-- BOAT / CABLE / WALK;
-- Thirteen Imprints content;
-- App / game map;
-- scene interaction;
-- audience depth;
-- physical / sensory support;
-- memory / IP;
-- technical proof.
-
-Recommended diagrams:
-- complete system axon/flow;
-- journey × system matrix;
-- landscape / body / content / carrier hierarchy;
-- optional-content and fallback logic.
-
-**Page grammar:**
-`SYSTEM PARTS → RELATION → VISITOR FLOW → FAILSAFE / FALLBACK`
-
----
-
-## CH09｜ROUTE / MOBILITY / SERVICE DESIGN｜路线、交通与服务设计
-
-**Question:** How does a visitor enter, move, choose, recover and return?
-
-Current authority binding:
-- `ROUTE-03` = locked current public/downstream route object;
-- `JOURNEY-04` = provenance unless current authority changes.
-
-Required design depth:
-- arrival / orientation;
-- BOAT / CABLE / WALK as three experience scales;
-- branching / loop walking logic;
-- game-map representation vs route authority;
-- service / rest / retreat;
-- no-phone fallback;
-- Return recognition;
-- operational states where relevant and visually subordinate.
-
-**Page grammar:**
-`ROUTE DECISION → USER CHOICE → SERVICE / FALLBACK → EXPERIENCE EFFECT`
-
----
-
-## CH10｜THIRTEEN IMPRINTS / CONTENT & INTERACTION SYSTEM｜十三印内容与互动系统
-
-**Question:** How does the full R01–R13 library work without becoming thirteen mandatory stops?
-
-Required content:
-- complete R01–R13 index;
-- role / content type / interaction opportunity / evidence boundary;
-- Core / Companion / optional exposure if current selection uses it;
-- scene-specific depth;
-- interaction verbs;
-- selected deep examples.
-
-Strong deep-scene candidates:
-- R05 = landscape recognition / PLAY + WISDOM;
-- R06 = landscape / recovery / spatial reasoning;
-- R07 = place-name reading;
-- R09 / R12 = paired local stories;
-- R13 = body / passage / Return with high-attention PLAY OFF.
-
-**Page grammar:**
-`SCENE → OPTIONAL CONTENT → ACTION → VALUE → SKIP / CONTINUE`
-
----
-
-## CH11｜DIGITAL / APP SYSTEM｜数字陪伴系统
-
-**Question:** What does digital add, and when should it disappear?
-
-App is a primary designed outcome and receives professional-depth pages.
-
-Required content:
-- IA / product architecture;
-- TODAY;
-- ROUTE / game map;
-- READ / scene content;
-- MY BOOK;
-- Service / Return;
-- cross-screen journey flow;
-- interaction states;
-- Offline / no-phone relation;
-- FULL / LIGHT / OFF;
-- NORMAL / DEGRADED / CLOSED / UNKNOWN;
-- map / typography / icon / component system;
-- current visual/game grammar.
-
-**Page grammar:**
-`USER NEED → SCREEN / STATE → INTERACTION → RETREAT / FALLBACK`
-
-Do not present the App as a dashboard or as a second scenic world.
-
----
-
-## CH12｜KEY SCENE DESIGN｜关键场景设计
-
-**Question:** How do the master principles become actual spatial experience?
-
-Scene pages must combine experience + audience + content + carrier + detail.
-
-### R01 / moving view
-- transport first;
-- moving observation;
-- minimal digital interruption.
-
-### R05 / landscape recognition
-- landscape first;
-- optional silhouette / discovery play;
-- no fake geology.
-
-### R06 / valley observation + recovery
-- **experience frozen / no reopen**;
-- whole valley first;
-- relation reveal;
-- optional reading;
-- body recovery;
-- same-scene audience depth;
-- technical proof follows experience.
-
-### R13 / passage + withdrawal + Return
-- body passage first;
-- high-attention play off;
-- safety/return priority;
-- exit / back-look / re-recognition.
-
-**Page grammar:**
-`SCENE CONDITION → DESIGN DECISION → BODY ACTION → CONTENT / CARRIER → AUDIENCE VARIATION → DETAIL / FALLBACK`
-
----
-
-## CH13｜PHYSICAL / BODY / SENSORY DESIGN｜实体、身体与感官设计
-
-**Question:** Where is a physical intervention actually worth adding?
-
-Preserve the complete design universe but obey current selection state.
-
-Current selection discipline:
-- P02 railing leaning-rest lineage = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
-- PHY-01 step-light = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
-- Fluid Rest = `HOLD / SINGLE-SITE COMPETITION`;
-- Qingfengyin = `HOLD / WIND-SENSORY CANDIDATE`;
-- F01–F04 / C23 / Model = selected technical/service descendants/support.
-
-Required professional depth where applicable:
-- scene fit;
-- body action / ergonomics;
-- scale;
-- plan / section / axon / exploded proof;
-- material / CMF;
-- connection / mounting;
-- maintenance / replacement;
-- drainage / slip / glare / heat / ecology sensitivity;
-- current HOLD / open-field items.
-
-**Page grammar:**
-`WHY HERE → BODY ACTION → FORM / SCALE → MATERIAL → CONNECTION → MAINTENANCE → OPEN ITEMS`
-
----
-
-## CH14｜MEMORY / IP / CULTURAL PRODUCT｜记忆与文化产品
-
-**Question:** What does the visitor take away from Qingjiang?
-
-Current hierarchy:
-- `清江旅记` = physical Memory MAIN candidate;
-- `我的石书` = digital memory hero;
-- `清江一线` = support extension;
-- `清江雾气` = support extension;
-- `清风吟` memory extension = support;
-- `红花峰崽` = family/child observation layer.
-
-Required depth:
-- memory grammar;
-- journey trace / route trace;
-- physical + digital pairing;
-- use context;
-- visual/product development;
-- optional sharing;
-- no 13/13 completion framing;
-- no unsupported commercial/health claims.
-
-**Page grammar:**
-`JOURNEY TRACE → MEMORY TRANSFORMATION → OBJECT / INTERFACE → AFTER-TRIP VALUE`
-
----
-
-## CH15｜DESIGN DETAIL DEVELOPMENT｜设计深化与细节
-
-**Question:** How does the selected design actually work at human and component scale?
-
-This chapter is not generic technical proof; it is **design development**.
-
-Required detail families where material exists:
-- key plans;
-- elevations;
-- sections;
-- body dimensions / reach / lean / sit / pass;
-- connection nodes;
-- exploded assembly;
-- material / finish / CMF;
-- removable / replaceable logic;
-- drainage / anti-slip / edge logic as evidence-bounded concept;
-- maintenance access;
-- digital components / interaction-state detail;
-- paper / print / memory-object detail.
-
-**Page grammar:**
-`USE → GEOMETRY → MATERIAL → CONNECTION → MAINTENANCE → FIELD CHECK`
-
-A detail page may be MAIN if it is visually professional and materially explains a selected design.
-
----
-
-## CH16｜TECHNICAL / MODEL PROOF｜技术与模型证明
-
-**Question:** What technical evidence makes the design credible without pretending field certainty?
-
-Use:
-- C22 masterplan / locked route-spatial relation;
-- C22 sections;
-- C23 GA / details;
-- SEC-A at its actual reviewed status;
-- R06 node / model where it clarifies “how it works”;
-- selected material / maintenance / scenario proof;
-- relevant route / capacity / risk / environmental scenarios.
-
-Rules:
-- real Qingjiang landscape > grey model;
-- technical proof follows design;
-- model does not become project identity;
-- no pseudo-construction certainty.
-
-**Page grammar:**
-`DESIGN CLAIM → TECHNICAL EVIDENCE → WHAT IT PROVES → WHAT IT DOES NOT PROVE`
-
----
-
-## CH17｜PROCESS / ALTERNATIVES / PROFESSIONAL JUDGMENT｜过程、比较与专业判断
-
-**Question:** What did the project deliberately choose, revise, hold or reject — and why?
-
-This chapter is for design judgment, not version history.
-
-Strong examples:
-- Existing / ordinary recovery vs Distributed Minimal vs Single Hero;
-- PHY-01 step-light HOLD;
-- Fluid Rest site-fit competition;
-- Qingfengyin HOLD until a useful scene/mechanism is selected;
-- legacy 13/13 completion dropped;
-- old dashboard/report Web presentation replaced;
-- weak model axon support only;
-- R13 abstract-operation page rejected/replaced;
-- old physical/memory variants where the comparison shows a meaningful decision.
-
-**Page grammar:**
-`ALTERNATIVES → CRITERIA → VERDICT → DESIGN LEARNING`
-
-Do not show process merely because an old asset exists.
-
----
-
-## CH18｜OPEN ITEMS / RETURN / CLOSURE｜开放项、回程与结尾
-
-**Question:** What is resolved as design, what remains field-open, and what is the final visitor experience?
-
-Public closure remains experiential:
-- Return certainty;
-- landscape re-recognition;
-- personal record / Qingjiang Journal / My Book;
-- optional memory object;
-- final real-Qingjiang image.
-
-Professional closure may state, compactly:
-- field-observed/measured state;
-- exact geometry open items;
-- safety / accessibility / capacity / operations open items;
-- maintenance / permit / construction interface open items;
-- does-not-prove boundary.
-
-FIELD / G1F / Authority are not Hero headlines.
-
----
-
-# 2｜PAGE-TYPE GRAMMAR
-
-Every future Web/PDF/board surface must declare one primary page type.
-
-| Page type | Required question | Required grammar |
+| 页面类型 | 回答的问题 | 页面语法 |
 |---|---|---|
-| `PROJECT` | What is the project? | proposition → scope → visitor value |
-| `ANALYSIS` | What did we find and why does it matter? | evidence/observation → finding → design consequence |
-| `AUDIENCE` | What changes for this user/state? | condition → need/risk → design response → same-scene difference |
-| `PRINCIPLE` | What rule governs the design? | tension → principle → application → limit |
-| `METHOD` | How was the design generated? | input → operation → output → where used |
-| `SYSTEM` | How do parts work together? | components → relation → user flow → fallback |
-| `SCENE` | What happens here? | condition → decision → action → carrier → value → fallback |
-| `DETAIL` | How does it work physically/digitally? | use → geometry/state → material/interface → connection → maintenance/open item |
-| `TECHNICAL` | What proves the design? | claim → proof → limit / does-not-prove |
-| `PROCESS` | Why was one option chosen? | alternatives → criteria → verdict → learning |
-| `CLOSURE` | What remains and what does the visitor take away? | return → memory → open items |
+| 项目页 | 这是什么项目？ | 命题 → 范围 → 游客价值 |
+| 分析页 | 发现了什么，为什么重要？ | 证据/观察 → 发现 → 设计后果 |
+| 人群页 | 对这个人/状态，设计有什么变化？ | 状态 → 需求/风险 → 设计响应 → 同场景差异 |
+| 原理页 | 什么规则统领设计？ | 矛盾 → 原理 → 应用 → 边界 |
+| 方法页 | 设计是怎么生成的？ | 输入 → 操作 → 输出 → 使用位置 |
+| 系统页 | 各部分如何共同工作？ | 组成 → 关系 → 用户流 → 兜底 |
+| 场景页 | 这里到底发生什么？ | 条件 → 决定 → 动作 → 载体 → 价值 → 退路 |
+| 细节页 | 这个设计具体怎么成立？ | 使用 → 几何/状态 → 材料/界面 → 连接 → 维护/开放项 |
+| 技术页 | 什么证据证明这个设计？ | 设计主张 → 证明 → 能证明什么 → 不能证明什么 |
+| 过程页 | 为什么选这个而不是另一个？ | 备选 → 标准 → 结论 → 学习 |
+| 结尾页 | 最后留下什么、还有什么开放？ | 回程 → 记忆 → 开放项 |
 
-A page that cannot satisfy its grammar should be merged, rewritten, downgraded or removed.
-
----
-
-# 3｜WEB REBUILD RULE
-
-The current 52 Web semantic surfaces are remapped into CH00–CH18.
-
-Do not preserve their current order by default.
-
-Execution sequence:
-1. inventory each existing surface;
-2. bind it to one chapter + page type;
-3. mark `KEEP / REWRITE / MERGE / MOVE / REDRAW / PROCESS / ARCHIVE`;
-4. identify missing required content;
-5. add substantive new analysis / principle / method / audience / detail surfaces;
-6. rebuild reading rhythm;
-7. only then prune duplicates and weak pixels;
-8. run independent finished-product Design Crit.
-
-There is no fixed final page count.
+无法满足自身页面语法的页面，应合并、重写、降级或删除。
 
 ---
 
-# 4｜CROSS-MEDIA TRANSLATION
+# 3｜Web 重构规则
 
-## Web
-May expose the full architecture with progressive depth, nested details, horizontal sequences, expandable technical modules and process strips.
+现有52个Web页面/语义单元全部迁移到CH00–CH18，默认不保留现有顺序。
 
-## PDF / Portfolio
-Preserve the causal chain, but compress navigation mechanics; analysis/principles/methods/details remain visible.
+执行顺序：
+1. 清点现有52页；
+2. 每页绑定一个章节+页面类型；
+3. 标记`保留 / 重写 / 合并 / 移动 / 重绘 / 过程 / 归档`；
+4. 找出必需但缺失的专业内容；
+5. 新增真正有内容的分析/原理/方法/人群/细节页面；
+6. 重建阅读节奏；
+7. 最后才删除重复、弱图和治理噪声；
+8. 完成后执行独立成品Design Crit。
 
-## Boards
-Do not try to show all chapters equally. Each board should carry one major causal arc: analysis → principle/method → system/scene → proof.
-
-## Film
-Film remains experience-first:
-`ENTER → MOVE → OPEN → DISCOVER / STOP → PASS → RETURN → REMEMBER`.
-Analysis/method/detail appear only when they improve motion storytelling.
+最终页数不预设。
 
 ---
 
-# 5｜TRUTH / QUALITY BOUNDARY
+# 4｜跨媒介翻译
 
-Unchanged:
-`FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
+- **Web**：完整展开架构，可用渐进深度、横向序列、折叠细节、技术抽屉和过程条。
+- **PDF / 作品集**：保留设计因果链，减少交互机制；分析、原理、方法、细节必须真实可见。
+- **展板**：不平均展示19章；每张展板形成一个因果弧：`分析 → 原理/方法 → 系统/场景 → 证明`。
+- **视频**：体验优先：`进入 → 移动 → 打开景观 → 发现/停留 → 通过 → 回程 → 记忆`；分析与方法只在帮助动态叙事时进入。
 
-No page architecture may imply:
-- surveyed exact geometry;
-- approved safety/accessibility/capacity;
-- live operational certainty;
-- construction readiness;
-- field validation;
-- AI concept image = site photo.
+---
 
-`Artifact existence ≠ Design quality`.
-`Analysis completeness ≠ Visual quality`.
-`Technical proof ≠ Project identity`.
+# 5｜真实性与质量边界
 
-This architecture is a content/design carrier. Every MAIN output still requires actual finished-output Design Crit.
+保持：`FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`。
+
+任何页面不得暗示已现场测量精确几何、已批准安全/无障碍/容量、实时运营确定性、可施工/可实施、已现场验证，或把AI概念图当成现场照片。
+
+`产物存在 ≠ 设计质量`。  
+`分析完整 ≠ 视觉质量`。  
+`技术证明 ≠ 项目身份`。
+
+本架构只是内容与设计载体，所有主展示成品仍必须经过真实成品设计审查。
