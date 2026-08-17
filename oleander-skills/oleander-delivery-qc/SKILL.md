@@ -38,6 +38,21 @@ Compare the result with the delivery specification. Detect black frames, silence
 - Confirm preview/thumbnail and manifest match the packaged asset.
 - For websites or interactive charts, check local assets, responsive layout, keyboard access, missing links, and offline behavior if required.
 
+### Gate 5.1: interaction state legibility
+
+For websites, mini-programs, interactive charts, prototypes and component libraries, do not reduce keyboard access to a binary functional check. Inspect the visible and semantic state model.
+
+- Compare `default / hover / focus / pressed-or-selected / disabled / error` where those states exist. They must not collapse into near-identical appearances when the distinction affects use.
+- Keyboard focus must remain visibly locatable. Do not accept `outline: none` unless a clearly visible author-supplied focus indicator replaces it.
+- Use the WCAG 2.2 Focus Appearance geometry as a strong calibration target: a visible indicator at least comparable to a 2 CSS px perimeter, with sufficient state contrast. Record this as a calibration check unless the complete interface has actually been tested for conformance.
+- Pointer targets must satisfy the applicable product/accessibility requirement. As an OLEANDER practice default for primary controls, aim for at least `44 × 44 CSS px`; never describe this practice default as the WCAG 2.5.8 minimum, whose baseline is `24 × 24 CSS px` subject to its exceptions.
+- State meaning must not depend on motion alone. A static frame should still distinguish important states.
+- Disabled controls must look unavailable without becoming illegible; selected/pressed controls must remain distinguishable from hover.
+- Preserve native semantics when practical (`button`, `aria-pressed`, labels, disabled state) instead of rebuilding controls as visually styled generic containers.
+- Separate visual proof from runtime proof. A design board or screenshot may verify state differentiation, but cannot prove focus order, keyboard operation, screen-reader naming, responsive behavior or full WCAG conformance.
+
+A technically clickable interface is `REVISE` when state hierarchy is visually ambiguous, focus is invisible, or the design claims accessibility without runtime evidence.
+
 ## Report format
 
 Use:
@@ -52,4 +67,3 @@ Use:
 8. Final sign-off status
 
 Never mark a deliverable approved while blocking defects remain.
-
