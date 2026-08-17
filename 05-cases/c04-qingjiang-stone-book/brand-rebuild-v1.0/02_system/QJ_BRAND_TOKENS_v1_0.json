@@ -1,0 +1,68 @@
+{
+  "brand_id": "C04-QINGJIANG-STONE-BOOK-BRAND-v1.0",
+  "state": "PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / FIELD OPEN / NO_PROMOTION",
+  "architecture": {
+    "operator_endorsement": "恩施大清江 / ENSHI DAQINGJIANG",
+    "experience_brand": "清江石书 / QINGJIANG STONE BOOK",
+    "subsystems": [
+      "JOURNEY",
+      "THIRTEEN IMPRINTS",
+      "DIGITAL COMPANION",
+      "PHYSICAL/SENSORY",
+      "MY BOOK / MEMORY",
+      "RETURN"
+    ]
+  },
+  "brand_promise": "先游清江，再读清江。",
+  "brand_behavior": [
+    "REAL QINGJIANG FIRST",
+    "LANDSCAPE FIRST",
+    "OPTIONAL READING",
+    "DIGITAL RETREATABILITY",
+    "RETURN INDEPENDENT"
+  ],
+  "logo": {
+    "concept": "RIVER FOLIO / 江页：不对称河谷切面 + 页缝 + 水线",
+    "heritage_retained": "existing linear river/peak mark + bilingual Qingjiang Stone Book lockup",
+    "source_limit": "editable original of legacy Qingjiang logo not available in active runtime; rebuild is a vector reinterpretation, not 1:1 trace",
+    "primary_use": "monochrome Ink/Paper or reverse",
+    "contextual_variant": "River accent may be used; Signal red is forbidden inside logo"
+  },
+  "colors": {
+    "QJ_PAPER": "#F2EFE7",
+    "QJ_INK": "#16211F",
+    "QJ_RIVER": "#2C6F70",
+    "QJ_STONE": "#8C8A82",
+    "QJ_MIST": "#DCE4E1",
+    "QJ_SIGNAL": "#8F3D35",
+    "QJ_LINE": "#C6C2B8"
+  },
+  "type": {
+    "display_cn": "Noto Serif CJK SC / Source Han Serif SC",
+    "functional_cn": "Noto Sans CJK SC / Source Han Sans SC",
+    "meta": "DejaVu Sans Mono / Noto Sans Mono CJK SC"
+  },
+  "voice_examples": {
+    "hero": "先游清江，再读清江。",
+    "journey": "沿江进入，跨江换景，入山慢下来。",
+    "scene": "先看。需要时，再打开一页。",
+    "return": "今天不必走完。先回去。",
+    "memory": "带走一段你真正停留过的清江。"
+  },
+  "forbidden": [
+    "generic eco-green as default meaning",
+    "decorative ethnic pattern without authority",
+    "13/13 completion",
+    "XP/coins/rarity",
+    "brand larger than safety/return",
+    "fake GPS/live operation",
+    "generic mountain-wave wallpaper"
+  ],
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO",
+    "technical": "NTS / NOT FOR CONSTRUCTION"
+  }
+}
