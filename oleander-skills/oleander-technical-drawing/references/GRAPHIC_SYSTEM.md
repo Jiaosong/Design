@@ -4,6 +4,8 @@ This reference turns drawing hierarchy into an executable visual system. It does
 
 Use `VISUAL_HIERARCHY_TRANSFER.md` for the cross-skill provenance behind the expanded hierarchy rules.
 
+For explicit `1:1 / pixel-level / exact reference reconstruction / 像素级复刻` work, also load `REFERENCE_RECONSTRUCTION_FIDELITY.md`. Reference fidelity and technical truth are separate review tracks: `RF PASS != TD PASS`.
+
 ## 0. Visual hierarchy contract
 
 Before drawing, define:
@@ -337,5 +339,7 @@ After export to PDF/SVG/DXF/PNG as applicable:
 - verify grayscale/print preview still preserves critical distinctions;
 - reopen at 3-second, 30-second and near-read scales;
 - confirm primary field still dominates after export/resizing.
+
+For explicit reconstruction work, do not stop at subjective side-by-side review. Use the separate reconstruction protocol to lock canvas/registration, reconstruct A0–A5 anchors, render the candidate under the declared comparison condition and generate overlay/difference/ROI evidence. A global pixel score cannot average away a failed critical ROI or a technical truth conflict.
 
 `SOURCE LOOKS GOOD` is not enough; the actual derivative must be reviewed.
