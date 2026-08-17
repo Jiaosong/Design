@@ -11,15 +11,17 @@ This fixture exists to prove that the reconstruction-fidelity workflow can detec
 - `RF-CAL-01_CANDIDATE_BAD.svg` — deliberate geometry, typography and stroke mismatch.
 - `RF-CAL-01_CANDIDATE_MATCH.svg` — independently grouped editable vector candidate with the same visible geometry as the reference.
 - `RF-CAL-01_ROIS.json` — title / primary geometry / dimensions / callout / title-block diagnostic regions.
+- `RF-CAL-01_EXPECTED.json` — machine-readable regression expectations and invariants.
 - `../../tools/reference_fidelity.py` — same-canvas raster comparison tool.
 
 ## Deliberate negative mutations
 
-`CANDIDATE_BAD` contains three independent reconstruction failures:
+`CANDIDATE_BAD` contains four explicit reconstruction failures across three classes:
 
 1. primary geometry shifted +5 px in X;
 2. one interface rectangle stroke changed from 2.2 to 2.8 output units;
-3. main title baseline moved +3 px and title size changed 32 → 31.
+3. main title baseline moved +3 px;
+4. main title size changed 32 → 31.
 
 The rest of the fixture is intentionally held constant so the difference evidence remains attributable.
 
@@ -38,6 +40,14 @@ At tolerance `2` channel values:
 - maximum channel error: `238`
 
 The important result is not the global percentage. The negative candidate must be diagnosed as `REVISE` because the mismatch lands in critical title/primary-geometry ROIs and includes a known A2 geometry-anchor displacement.
+
+Recorded ROI readback at tolerance 2 also shows why global similarity cannot decide the verdict:
+
+- `title` changed-pixel ratio: `0.1652923077`;
+- `primary_geometry` changed-pixel ratio: `0.0228588446`;
+- `dimensions` changed-pixel ratio: `0.0`;
+- `callout` changed-pixel ratio: `0.0072982456` because its target relation crosses the shifted geometry;
+- `title_block` changed-pixel ratio: `0.0`.
 
 ### Matched candidate
 
