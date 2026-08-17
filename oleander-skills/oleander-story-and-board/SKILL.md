@@ -23,16 +23,33 @@ Define:
 
 Every section should have one primary claim and one primary visual.
 
+## Existing mature design / evidence first
+
+Before rebuilding a board visual, identify the strongest current spatial/design evidence already available. Reuse, edit, currentize, restructure, or deepen it before creating a substitute.
+
+For maps, routes, plans, sections, model views, product geometry, technical nodes, diagrams, and other spatial evidence:
+
+- The board is a **presentation layer**, not a new geometry authority.
+- Preserve locked/current/strongest mature geometry. Do not stretch, flatten, straighten, re-author, simplify, or normalize it merely to make the page cleaner.
+- If a layout conflicts with authoritative geometry, change the grid, crop, sequence, image scale, or page allocation — **not the evidence geometry**.
+- For alternative journeys, phases, audience modes, states, or scenarios, show differences by masking/highlighting/subsetting the authoritative source. Do not redraw every variant into a visually uniform but spatially false shape.
+- If an older/current artifact has stronger spatial credibility than a new derivative, keep the stronger artifact as the design source and revise only the presentation layer. Newer file ≠ stronger design.
+- Context images and renders may establish atmosphere or spatial character, but they must not visually imply a false exact correspondence to map/node geometry.
+
+A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
 2. Pull validated charts from `oleander-data-viz`.
 3. Pull model manifests and approved renders from `oleander-3d-pipeline`.
 4. Create a content inventory before layout.
-5. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering.
-6. Produce a low-fidelity sequence before polishing.
-7. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
-8. Run content, visual, and production reviews separately.
+5. Resolve the strongest current design/evidence source for every primary visual; record which objects are locked and may not be re-authored by layout.
+6. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
+7. Produce a low-fidelity sequence before polishing.
+8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
+9. Run content, visual, and production reviews separately.
+10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
 
 ## Deliverable variants
 
@@ -46,6 +63,8 @@ Every section should have one primary claim and one primary visual.
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
 
+For any layout containing source-bound spatial evidence, include a short authority-preservation note naming the source object and confirming what was kept unchanged versus presentation-only edits.
+
 ## Quality checks
 
 - Claims match approved research.
@@ -53,4 +72,6 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 - Captions identify what, where, when, and why it matters.
 - Text remains readable at target print/view distance.
 - The conclusion follows from the evidence rather than visual mood alone.
-
+- The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
+- Locked/current geometry is not distorted by layout convenience.
+- A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
