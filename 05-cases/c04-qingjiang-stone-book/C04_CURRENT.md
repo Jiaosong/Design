@@ -1,4 +1,4 @@
-# C04｜Current Execution Authority｜2026-08-16｜FULL-ASSET NO-LOSS
+# C04｜Current Execution Authority｜2026-08-17｜JOURNEY-LED NO-LOSS
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
@@ -11,8 +11,8 @@ Read and execute in this order:
 1. OLEANDER current Governance / Project Flow / Artifact Review-Persistence rules
 2. **this file `C04_CURRENT.md`**
 3. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md` + machine CSV
-4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md`
-5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.8.json`
+4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as **internal content/indexing support, not public chapter order**
+5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.9.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v1.9.json`
 6. `C04_ACTIVE_EXECUTION_CURRENT.md`
 7. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
 
@@ -37,87 +37,111 @@ A stale image, UI or board can be `CONCEPT KEEP / PIXELS REDRAW`. A design may o
 The complete existing design universe remains in scope:
 `Journey + R01–R13 + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
 
-## 2｜Current public reframe｜three axes
+## 2｜Current public narrative｜one journey, visible design decisions
 
-The three user-defined axes reorganize existing designs; they do not replace them.
+The three-axis reframe remains useful for internal indexing, but it no longer defines public chapter order.
 
-### N1｜地域文化｜清江有什么？
-Regional history / local stories / names / landscape knowledge / traditional landscape view / feng-shui as cultural interpretation / local wisdom.
+Internal indexes:
+- `N1 CULTURE` — what Qingjiang content may enter a scene;
+- `N2 JOURNEY` — route / mobility / service / Return relation;
+- `N3 SCENE + AUDIENCE` — what happens here and at what depth.
 
-### N2｜游玩线路与交通｜游客怎么游？
-Arrival + service + `BOAT / CABLE / WALK` + game-style Qingjiang map + route + return.
+Public story instead follows one Qingjiang journey:
 
-### N3｜场景游戏与不同人群｜到了这里具体做什么？
-`CULTURE / WISDOM / PLAY / WELLBEING × scene × audience`, activating the existing Thirteen Imprints, App, physical interactions, sensory designs and memory/IP.
+`ENTER QINGJIANG → CHOOSE HOW TO MOVE → CROSS / OPEN THE LANDSCAPE → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS / WITHDRAW → RETURN → REMEMBER`
+
+This is an editorial spine, not a mandatory visitor route.
 
 Public Hero direction:
 
 > **先游清江，再读清江。**
-> 从地域文化和真实游程出发，把十三印、游戏地图、数字界面、实体互动、休息、记忆和文创重新编排到真正适合发生的场景。
+> **水上看，空中看，山中走；需要时，再打开一页清江。**
 
-Public language must stay concrete: show what visitors see, do, use, choose, learn, rest with and take away. Abstract relation/reveal/withdrawal terms may remain internal/support but must not carry the project alone.
+Every MAIN public surface must answer:
+
+> **这个设计决定是什么？**
+
+A surface that primarily proves research/governance rigor moves to SUPPORT / TECHNICAL / PROCESS / APPENDIX. FIELD / G1F / Authority / Receipt / State Machine must not become MAIN public headlines.
+
+The current Web lineage carries **52 visible semantic surfaces** as a no-loss inventory. Those surfaces are not equal-weight public pages and no target page count is imposed.
 
 ## 3｜Existing design systems that must remain visible in decisions
 
 ### Journey / Service
 Arrival, BOAT, CABLE, WALK, branching/loop walking network, paper/human/signage fallback, Return.
 
+Current public route binding:
+- `ROUTE-03` = locked current Route object for downstream public binding;
+- `JOURNEY-04` = provenance / non-current for public route authority;
+- BOAT / CABLE / WALK describe three experience scales and must not be written as invented live-service certainty.
+
 ### Thirteen Imprints
 R01–R13 remain the complete existing content/design library. Current Core/Companion architecture may control exposure/depth, but does not delete the thirteen-system. They are optional/reorderable content, not a mandatory 13-stop route or 13/13 completion task.
 
-### Qingjiang Thirteen Imprints App / Digital
-The App is a primary designed outcome, not a disposable fallback.
+Public rule: the Imprints appear **inside the journey**, where a scene genuinely benefits from optional Culture / Wisdom / Play / Wellbeing content. They do not define route order.
 
-Current design anchors:
+### Qingjiang Thirteen Imprints App / Digital
+The App is a primary designed outcome, but public storytelling treats it as an **implicit journey companion**, not a second scenic system.
+
+Stable public functions:
 - `TODAY｜今日清江`
 - `ROUTE｜探索地图`
 - `READ｜十三印 / 场景内容`
 - `MY BOOK｜我的石书`
 - Service / Return always accessible.
 
-Freeze **uncontrolled new feature expansion only**. Existing App currentization + visual presentation are ACTIVE through B/D/Web/F.
+Freeze **uncontrolled new feature expansion only**. Existing App currentization + visual presentation remain ACTIVE through B/D/Web/F.
 
-Currentize `C04_Digital_UI_Detail_System_v0.6` + QJ-E prototype:
+Currentization rules:
 - preserve `山水游历志 × 石拓印记 × 图卷式探索` class-game character;
-- preserve game feeling through map reveal, markers, optional imprint/content discovery, personal route/memory and low-intensity interaction;
+- preserve game feeling through map reveal, markers, optional content discovery, personal route/memory and low-intensity interaction;
 - remove legacy `9/13`, `07/13`, completion score and task-route authority;
 - retain NORMAL/DEGRADED/CLOSED/UNKNOWN, FULL/LIGHT/OFF, Offline and Return Priority as behavior constraints, not public chapters;
 - no-phone route/service/return must remain complete.
 
 ### Physical / Body / Sensory
-The complete existing physical universe includes:
-- `PHY-01 步步生光` — primary physical hero candidate;
-- `栏杆式可拆卸倚靠休息板` — short recovery/service support;
-- `山体流体休憩装置` — conditional secondary physical hero candidate;
-- `清风吟` — sensory interaction/memory candidate;
-- F01/F02/F03/F04 — current technical/service descendants/support.
+The complete physical universe remains in the project, but **concept preservation is separate from current selection**.
 
-**C23/F01–F04 are a technical validation subset and do not replace the wider Physical design universe.**
+Current selection discipline:
+- `栏杆式可拆卸倚靠休息板 / P02 lineage` = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
+- `PHY-01 步步生光` = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
+- `山体流体休憩装置` = `HOLD / SINGLE-SITE COMPETITION`;
+- `清风吟` = `HOLD / WIND-SENSORY CANDIDATE`;
+- F01/F02/F03/F04 and C23/Model remain technical/service descendants/support, not the full Physical definition.
+
+A HOLD/DROP physical design may appear in Process when it demonstrates professional selection, but cannot be visually promoted to current/built MAIN.
 
 ### Memory / IP / Cultural Product
 Keep in the project:
-- `清江旅记` — physical memory hero;
+- `清江旅记` — physical Memory MAIN candidate;
 - `我的石书` — digital memory hero;
 - `清江一线`;
 - `清江雾气`;
 - `清风吟` memory extension;
-- `红花峰崽` — child/family observation IP.
+- `红花峰崽` — child/family observation layer.
 
-These are selective memory interfaces, not a compulsory gift-shop checklist.
+These are selective memory interfaces, not a compulsory gift-shop checklist. Public closure is `Return → re-recognition → selected personal memory`, not 13/13 completion.
 
 ### Audience / Interaction
 Use A1–A6 experience modes and real interaction depth rather than decorative personas.
 Existing interaction verbs remain valid design mechanics:
 `LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
 
+Audience must appear through changed action depth/support **inside the same scene**, not as a standalone persona matrix.
+
 ### Spatial / Technical / Model
 C22/C23 + plan/section + Model provide proof, not project identity.
-Model selection remains restrained:
-- `SEC-A` = strongest primary section candidate;
-- `R06 node` = pair with R06 landscape: feeling + how it works;
-- `Hero clay` only if clearer than current spatial graphics;
-- `overall Axon` = support;
+
+Current discipline:
+- R06 experience is `FINISHED / FROZEN / NO REOPEN`;
+- technical proof may clarify R06 without reopening its experience design;
+- `SEC-A` remains a conditional strong technical candidate subject to its latest independent review status;
+- R06 GA/detail and node/model are support proof;
+- overall Axon remains support;
 - real Qingjiang landscape > grey model.
+
+Technical order:
+`DESIGN DECISION → EXPERIENCE / BODY EFFECT → TECHNICAL PROOF → OPEN FIELD ITEMS`.
 
 ## 4｜Evidence / truth boundary
 
@@ -136,11 +160,22 @@ Traditional feng-shui / landscape ideas may only be presented as cultural landsc
 
 Wellbeing means rest, pacing, hydration/shade prompts, quiet observation, fatigue downgrade and return support; no treatment/medical/selenium-health claims.
 
+Evidence / governance / field-state language remains visible where required but is subordinate in public storytelling.
+
 ## 5｜Count policy｜UNBOUNDED BY COUNT
 
 No fixed 20-screen / ~20-page / 3-board target. Page/screen/board count is an editorial output, not a design input.
 
 Do not add filler to hit a count and do not compress necessary design proof to stay under a count.
+
+For the 52-surface Web inventory, classify each surface by one primary editorial role:
+- `MAIN_DECISION`
+- `SUPPORT_EVIDENCE`
+- `PROCESS_JUDGMENT`
+- `TECHNICAL_PROOF`
+- `ARCHIVE`
+
+Reweighting or merging reading flow must not delete underlying design objects.
 
 ## 6｜Public Quality Gate｜NON-NEGOTIABLE
 
@@ -171,19 +206,19 @@ Quality pruning happens **after** the no-loss asset inventory and concept/pixel 
 This ordinary ChatGPT conversation remains C04 control + Design Director + F/Web integration center. GitHub + Google Drive are cross-line Source of Truth.
 
 ### ACTIVE 1｜B — Experience + Service + Editorial
-Convert culture/content into actual scene/action/value and preserve the complete R01–R13 system.
+Convert the full design universe into the journey-led public spine. Every MAIN surface must expose a visible visitor-facing design decision; Culture/Audience/App/Physical/Memory/Technical become layers inside the journey rather than equal taxonomy chapters.
 
 ### ACTIVE 2｜D — Whole-project Visual + Motion
-Unify real Qingjiang, Culture, Game Map, App, Thirteen Imprints, Physical/Sensory, Memory/IP, Return and technical proof. Raise App/Physical/Memory/Return visual quality to the Hero/R06 level.
+Unify real Qingjiang, route/mobility, Thirteen Imprints, App, selected Physical/Sensory, Memory/IP, Return and technical proof through actual journey rhythm. Raise weak current pixels without reviving HOLD objects as MAIN.
 
 ### ACTIVE 3｜Web Public Experience
-Reassemble from the full Asset Atlas. Stop equal 16:9/PPT stacking. App / 13 Imprints / Physical / Memory/IP must be visibly present at professional depth.
+Use the 52 semantic surfaces as the no-loss carrier. Re-edit their hierarchy into MAIN_DECISION / SUPPORT_EVIDENCE / PROCESS_JUDGMENT / TECHNICAL_PROOF / ARCHIVE. Stop equal board stacking and stop system-taxonomy-first storytelling.
 
 ### ACTIVE 4｜Physical / Product / Detail
-Includes existing outcomes + C23 + Model. C23 is proof/deepening subset, not the definition of Physical.
+Includes existing outcomes + C23 + Model. Current selection/HOLD state must remain explicit. C23 is proof/deepening subset, not the definition of Physical.
 
 ### ACTIVE 5｜F Final Integration
-First classify `CONCEPT` vs `PIXELS`, then MAIN / SUPPORT / PROCESS / DROP. REV04 omissions cannot erase project assets.
+First classify `CONCEPT` vs `PIXELS`, then public editorial role. F must not use old 20-screen or old REV04 omissions as the current project definition.
 
 ### WATCH / FREEZE
 - A Research/Evidence: intervene only on new claim/evidence/contradiction.
@@ -192,18 +227,23 @@ First classify `CONCEPT` vs `PIXELS`, then MAIN / SUPPORT / PROCESS / DROP. REV0
 
 ## 8｜Current execution priority
 
-1. Full-asset Web/F reassembly without design loss.
-2. App / game-map currentization as a MAIN design outcome.
-3. Physical/Sensory + Memory/IP visual recovery and selection.
-4. Culture-to-scene interaction binding across the full Thirteen Imprints library.
-5. Audience-depth scene design.
-6. Film/boards successor only after the above hierarchy is visible.
-7. C23/Model technical proof where it materially clarifies use/scale/constructability.
+1. Rebind Web/F/B to Public Narrative v1.9 without deleting the 52-surface inventory.
+2. Classify every public surface by visible design decision and editorial role.
+3. Keep `ROUTE-03` as current route binding and remove JOURNEY-04 from current public route authority.
+4. Embed Culture/Audience/App/Physical/Memory into journey scenes rather than parallel taxonomy chapters.
+5. Keep Physical HOLD/competition states honest; use them in Process only where they show design judgment.
+6. Film/boards successor follows the same journey rhythm: `ENTER → MOVE → OPEN → STOP/PASS → RETURN → REMEMBER`.
+7. C23/Model technical proof only where it materially clarifies a design decision.
 
 ## 9｜Do not reopen
 
 - mandatory linear 13-stop route or 13/13 completion authority;
 - fixed page/screen/board count;
+- three-axis taxonomy as mandatory public chapter order;
+- Culture/Audience/Physical/Digital/Technical as equal standalone silos when the journey can carry them;
+- R06 experience redesign;
+- JOURNEY-04 as current route authority while ROUTE-03 remains locked current;
+- HOLD Physical concepts promoted to MAIN without new valid review;
 - old Stop Rule that prohibits evidence-bounded design production;
 - species/geology/safety/exact geometry/ancient-site equivalence inferred from names/appearance;
 - 2025 operating data as current 2026 live facts without verification;
