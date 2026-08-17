@@ -23,7 +23,11 @@
       "uncertainty_or_tolerance": "fixture exact",
       "graphic_carrier_id": "river-field",
       "visual_encoding_class": "water-field",
-      "does_not_prove": "hydraulic behavior"
+      "does_not_prove": "hydraulic behavior",
+      "source_carrier_state": "SOURCE_CARRIER_AUTHORITY",
+      "source_carrier_scope": "bank geometry controlling water-surface extent",
+      "carrier_precedence_decision": "TRACE_BOUNDED",
+      "redraw_justification": "editable bounded polygon is required to encode the surface between the authoritative bank edges"
     },
     {
       "id": "ST-02-ROUTE",
@@ -45,7 +49,11 @@
       "uncertainty_or_tolerance": "not map registered",
       "graphic_carrier_id": "route-network-schematic",
       "visual_encoding_class": "unfolded-route",
-      "does_not_prove": "survey position, distance, slope or exact path shape"
+      "does_not_prove": "survey position, distance, slope or exact path shape",
+      "source_carrier_state": "SOURCE_CARRIER_INSUFFICIENT",
+      "source_carrier_scope": "source graph carries topology/order but no usable geographic geometry",
+      "carrier_precedence_decision": "SCHEMATIZE_SEPARATELY",
+      "redraw_justification": "topology must be communicated independently because the source does not support map-bound curvature"
     },
     {
       "id": "ST-03-VIEW",
@@ -67,7 +75,11 @@
       "uncertainty_or_tolerance": "broad extent only",
       "graphic_carrier_id": "view-opportunity-field",
       "visual_encoding_class": "soft-view-field",
-      "does_not_prove": "precise view ray or unobstructed visibility"
+      "does_not_prove": "precise view ray or unobstructed visibility",
+      "source_carrier_state": "SOURCE_CARRIER_INSUFFICIENT",
+      "source_carrier_scope": "source supports a broad observation zone but not a precise view field",
+      "carrier_precedence_decision": "REDRAW_JUSTIFIED",
+      "redraw_justification": "a soft inferred field is required to communicate bounded opportunity while explicitly withholding exact ray/target geometry"
     },
     {
       "id": "ST-04-JUNCTION",
@@ -89,7 +101,11 @@
       "uncertainty_or_tolerance": "topology only",
       "graphic_carrier_id": "junction-node",
       "visual_encoding_class": "secondary-node-symbol",
-      "does_not_prove": "physical plaza or exact junction footprint"
+      "does_not_prove": "physical plaza or exact junction footprint",
+      "source_carrier_state": "SOURCE_CARRIER_SUFFICIENT",
+      "source_carrier_scope": "source graph already carries the three-edge connection event",
+      "carrier_precedence_decision": "DERIVE_REQUIRED",
+      "redraw_justification": "the semantic junction node is derived from connected source edges for graph validation; the point symbol remains secondary"
     }
   ]
 }
