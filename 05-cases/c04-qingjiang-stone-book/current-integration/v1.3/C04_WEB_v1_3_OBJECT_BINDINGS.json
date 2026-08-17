@@ -1,0 +1,35 @@
+{
+  "schema": "oleander.c04.web-object-bindings/1.3",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "role": "DOWNSTREAM WEB / PRESENTATION CARRIER",
+  "count_policy": "UNBOUNDED_BY_COUNT / NO_TARGET_RANGE",
+  "annotation_rule": "CANONICAL BASELINE REGISTER + LATEST INDEPENDENT ANNOTATION STATUS OVERLAY",
+  "chapters": {
+    "hero": ["J01","J02","J03","J04","J05"],
+    "culture": ["N01","N02","R07","R09","R12","M01"],
+    "journey": ["J01","J02","J03","J04","J05","J06"],
+    "map": ["J03","J04","J05","D04","R01-R13"],
+    "app": ["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10"],
+    "imprints": ["R01","R02","R03","R04","R05","R06","R07","R08","R09","R10","R11","R12","R13"],
+    "scene": ["R06","R13","P02","D05","D08","J05"],
+    "audience": ["A01","A02","A03","A04"],
+    "physical": ["P01","P02","P03","P04","P05","P06","P07","P08","P09"],
+    "memory": ["M01","M02","M03","M04","M05","M06","D06","D10"],
+    "technical": ["T01","T02","T04","T06","C22-SEC-A","C22-SEC-B","C22-SEC-C","C23-R06-GA","C23-R06-DETAIL"],
+    "motion": ["F03","VISUAL-MOTION"],
+    "return": ["J05","J06","D07","D08","D09","M01"]
+  },
+  "annotation_sensitive": [
+    {"object":"A01-A04","effective":"Audience Drive v4 = strongest pixel candidate / MAIN not locked","web_binding":"assets/audience_depth_v4.png"},
+    {"object":"P01","effective":"concept KEEP / current presentation HOLD-PROCESS-SUPPORT","web_binding":"assets/physical_family_v4.png / research-process treatment"},
+    {"object":"P02/F01","effective":"KEEP / TECHNICAL-SUPPORT CANDIDATE","web_binding":"assets/physical_recovery_v4.png"},
+    {"object":"P03/P04","effective":"PHYSICAL/TECH SUPPORT ONLY / LOCATION HOLD","web_binding":"assets/fluid_rest.png; no landscape Hero claim"},
+    {"object":"P05","effective":"KEEP_REDUCE / DO NOT MODEL YET","web_binding":"assets/qingfengyin.png"},
+    {"object":"R05","effective":"interaction MAIN candidate / landscape pixel HOLD","web_binding":"text/state only; no generic or AI landscape substitute"},
+    {"object":"R06","effective":"concept KEEP / experience MAIN-BOUND / integrated pixels REVISE / tech SUPPORT","web_binding":"real landscape first + professional P02/body recovery + technical support"},
+    {"object":"R13","effective":"KEEP_AFTER_REVISION / MAIN-SUPPORT candidate / not final MAIN","web_binding":"passage/exit/return sequence, method density reduced"},
+    {"object":"D01-D10","effective":"PR162 latest existing App snapshot / next delta USER-OWNED","web_binding":"six approved source screens exposed independently; no Web redesign"},
+    {"object":"Technical namespace","effective":"C22-SEC-A=cable; C22-SEC-B=R06; C22-SEC-C=R13","web_binding":"locked labels in technical chapter"}
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
