@@ -38,6 +38,33 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## Attention-state composition gate
+
+Use this gate when a page, screen, board sequence, or spatial-digital scene contains multiple valid information layers that cannot all own attention at once.
+
+1. Define the **attention owner** for each state before styling. A state may have many present layers but only one first-read owner.
+2. Separate **present** from **primary**. Do not solve density by deleting required content; reallocate when and where it becomes visually primary.
+3. For landscape/experience sequences, use the default reading logic `S0 WORLD/BODY → S1 PROMPT → S2 REVEAL` unless project authority defines another state model.
+4. `S0` keeps the real project object, landscape, route, body, or product relation as first-read. Explanation, brand, metadata, and evidence detail remain suppressed or secondary.
+5. `S1` may raise one optional cue. It must not block route continuity, service, safety, Return, or the primary project object.
+6. `S2` may make explanation primary only after user/audience intent is established. Evidence class, source boundary, and retreat path remain adjacent when the reveal changes interpretation.
+7. Persistent recovery layers such as Return, service, safety, close/retreat, or required navigation do not compete for first-read, but they must remain findable in every state where recovery is required.
+8. Review the same source across states side by side. If the only difference is decoration, opacity, glow, or color while visual responsibility is unchanged, the state model is not materially resolved.
+9. Run a distance/first-read check and a near-read check separately. A state passes only if the intended owner wins first-read and supporting evidence remains recoverable at near-read.
+10. Treat simultaneous visibility of map + explanation + controls + evidence + brand + world as a default REVISE condition unless the task explicitly requires a dense analytical view.
+
+Hard FAIL:
+
+- Optional explanation becomes first-read before the real project object or route.
+- Required information is deleted merely to make the composition feel minimal.
+- Return/service/safety becomes inaccessible in a reveal state.
+- A polished reveal implies stronger evidence than the source supports.
+- Responsive or cross-medium translation preserves every element but changes which layer should own attention without an explicit reallocation decision.
+
+Default review chain:
+
+`ATTENTION OWNER → SUPPORT LAYERS → SUPPRESSED LAYERS → RECOVERY → EVIDENCE BOUNDARY → FIRST-READ / NEAR-READ`
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
@@ -50,6 +77,7 @@ A visually stronger board that weakens spatial truth is a regression and must be
 8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
 9. Run content, visual, and production reviews separately.
 10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
+11. For multi-state visual systems, run the attention-state composition gate before final polish.
 
 ## Deliverable variants
 
@@ -75,3 +103,4 @@ For any layout containing source-bound spatial evidence, include a short authori
 - The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
+- In multi-state compositions, the attention owner is explicit and changes only when the task/state changes.
