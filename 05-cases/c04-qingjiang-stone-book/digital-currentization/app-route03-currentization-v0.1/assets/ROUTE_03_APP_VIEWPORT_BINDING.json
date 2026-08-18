@@ -1,0 +1,13 @@
+{
+  "artifact": "ROUTE_03_APP_VIEWPORT.svg",
+  "derivative_type": "VIEWBOX_CROP_ONLY",
+  "source": "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED.svg",
+  "source_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+  "derivative_sha256": "94fbf9b7506345a71071fbaad04d2d7ea0ad1c8ad75c79bcb4d95a0946f9ff4a",
+  "source_viewBox": "0 0 1920 1080",
+  "derivative_viewBox": "0 178 1920 610",
+  "geometry_edit": false,
+  "node_edit": false,
+  "text_edit": false,
+  "purpose": "Mobile viewport carrier: excludes source sheet header/footer while preserving exact route graphics in y=178..788."
+}
