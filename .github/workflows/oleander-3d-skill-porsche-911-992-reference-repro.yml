@@ -10,6 +10,7 @@ on:
       - '00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py'
       - '00-governance/control-plane/tests/test_oleander_3d_regression_baseline_protocol.py'
       - '00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py'
+      - '00-governance/control-plane/tests/test_oleander_3d_aperture_boundary_protocol.py'
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
@@ -19,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V23 runtime
+      - name: Validate Skill and V24 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
@@ -29,6 +30,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v20.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v22.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v23.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v24.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py
           python3 -m unittest \
@@ -38,7 +40,8 @@ jobs:
             00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py \
             00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py \
             00-governance/control-plane/tests/test_oleander_3d_regression_baseline_protocol.py \
-            00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py
+            00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py \
+            00-governance/control-plane/tests/test_oleander_3d_aperture_boundary_protocol.py
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
@@ -46,15 +49,15 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build and verify V23 cross-section candidate
+      - name: Build and verify V24 shared-boundary candidate
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v23.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v24.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V23 evidence and regression decision
+      - name: Verify V24 evidence and aperture boundary state
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -65,14 +68,17 @@ jobs:
           r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text())
           p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
           g=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
+          a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
           assert q['verification_run']=='PASS'
-          assert q['failure_routing']=='FRONT_REAR_CROSS_SECTION_ONLY'
+          assert q['failure_routing']=='APERTURE_BOUNDARY_CLOSURE_AND_BACKING_ONLY'
+          assert a['shared_boundary_method']=='COMMON_PARAMETRIC_ROOF_POINT_AND_BODY_SECTION_INTERSECTION'
+          assert a['backing_authority']=='DERIVED_EXECUTION_NOT_AUTHORITY'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
           assert g['promotion_decision'] in ('KEEP_LKG_HOLD_EXPERIMENT','KEEP_LKG_REJECT_EXPERIMENT','PROMOTE_OVER_LKG','REBASE_EXPERIMENT_ON_LKG')
           assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print(json.dumps({'verification':'PASS','projection_quality_state':p['status'],'metrics':p['metrics'],'regression':g},indent=2))
+          print(json.dumps({'verification':'PASS','projection_quality_state':p['status'],'metrics':p['metrics'],'regression':g,'aperture':a},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
