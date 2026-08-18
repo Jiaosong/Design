@@ -196,3 +196,43 @@ Reference reproduction completion requires all of:
 Even then, the result does not prove original manufacturer CAD, Class-A production surfacing, tooling feasibility, crash/aero validity, homologation, production CMF or commercial IP clearance unless separately evidenced.
 
 `Reference Fidelity PASS` means the reproduction is sufficiently faithful for the declared benchmark, not that it is manufacturer source geometry.
+
+---
+
+## R11 — Last-known-good regression baseline
+
+A locally improved modeling technique may not replace a previously better candidate merely because the new revision is newer, more complex, or passes its targeted local metric.
+
+Before each causal experiment, persist a measured `LAST_KNOWN_GOOD` baseline and convert every previously passed family outside the edit scope into a regression lock.
+
+### MUST CHECK
+- baseline revision / commit / Source-control digest is recoverable;
+- edit scope names the causal family being changed;
+- every out-of-scope passed metric is rerun with the same valid measurement method;
+- a changed diagnostic method is classified as `DIAGNOSTIC_TOOL_CHANGE`, not geometry improvement;
+- target improvement and regression state are both recorded;
+- rejected experiments remain provenance and cannot silently become the next baseline;
+- Design / Reference Fidelity REJECT still vetoes MAIN even when all machine locks pass.
+
+### ALLOWED
+- `Machine PASS + KEEP_LKG_REJECT_EXPERIMENT`;
+- `Machine PASS + KEEP_LKG_HOLD_EXPERIMENT` when evidence/method is not yet comparable;
+- reapplying a useful local method on top of the LKG after removing the regressing portion;
+- working-candidate promotion while independent Design/Reference review remains explicitly HOLD, provided no claim is widened to MAIN/Design PASS.
+
+### FORBIDDEN
+- dropping a previously passed view because the new revision targets another view;
+- loosening the old threshold to avoid reporting a regression;
+- using an invalid projection/mask result to justify Source edits;
+- promoting a candidate with any `REGRESSED` lock;
+- treating model sophistication, patch count or object count as fidelity improvement.
+
+### EVIDENCE
+`REFERENCE_REGRESSION_PROMOTION_RECEIPT.json`, validated against `reference-reproduction/REGRESSION_BASELINE_PROMOTION_PROTOCOL_v1.md` and `tools/validate_regression_promotion.py`.
+
+### FAIL
+- `FAIL_LKG_BASELINE_MISSING`
+- `REJECT_REGRESSION_LOCK_BROKEN`
+- `FAIL_REJECTED_EXPERIMENT_BECAME_BASELINE`
+- `REVISE_FAILURE_SCOPE_TOO_BROAD`
+- `HOLD_MEASUREMENT_METHOD_NOT_VALIDATED`
