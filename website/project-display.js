@@ -110,28 +110,30 @@
   }
 
   function renderEnvironment(data) {
-    const rows = data.environment.contexts.map((ctx) => `<div class="pro04-evidence-summary__row"><span>${esc(ctx.id)}</span><strong>${esc(ctx.name)} — ${esc(ctx.purpose)}</strong><small>${esc(ctx.status)}</small></div>`).join('');
     return section('p04','04 / ENVIRONMENT RESPONSE','Reflection Environment Adaptation',`
-      <div class="pro04-evidence-summary">
-        <div class="pro04-evidence-summary__claim">D02 and D03 both survive Neutral, Soft Interior and Wet-zone digital light-field attacks without forcing a winner.<small>${esc(data.environment.boundary)}</small></div>
-        <div class="pro04-evidence-summary__matrix">${rows}</div>
-      </div>
-      <p class="pro04-evidence-bind-warning">OLEANDER DESIGN-CRIT STATUS / SUPPORT ONLY. Retained VE06 image frames are not yet durably bound into the web asset set; this summary must not be promoted as the visual evidence itself.</p>`,'pro04-section--evidence-summary');
+      <p class="pro04-intro">A controlled digital light-field comparison: Neutral Studio, Soft Interior and Wet-zone. This is environment-response evidence, not physical colour/process validation.</p>
+      <div class="pro04-evidence-visual-stage">
+        ${directImage('assets/xj01/pro04-environment-d2-2x3.jpg','VE06 retained environment comparison: D02 and D03 across neutral, soft interior and wet-zone light fields','pro04-image--evidence-board','eager','O+J / D2')}
+        <div class="pro04-evidence-visual-copy">
+          <b>Result</b>
+          <p>${esc(data.environment.decision)}</p>
+          <small>${esc(data.environment.boundary)}</small>
+        </div>
+      </div>`,'pro04-section--environment');
   }
 
   function renderLifecycle(data) {
-    const d02 = direction(data,'D02'), d03 = direction(data,'D03');
     return section('p05','05 / LIFECYCLE','Use → Wipe → Long-term Appearance',`
-      <div class="pro04-evidence-summary">
-        <div class="pro04-evidence-summary__claim">Lifecycle is retained as relative risk evidence, not material prediction. D02 owns PU adjacency ageing contrast; D03 owns wet / dirty-wiped sensitivity.<small>Wet / dirty-wiped / PU-aged states remain D2 or H/D2 evidence only.</small></div>
-        <div class="pro04-evidence-summary__matrix">
-          <div class="pro04-evidence-summary__row"><span>DAY 0</span><strong>${esc(d02.name)} / ${esc(d03.name)} baseline</strong><small>O/D2</small></div>
-          <div class="pro04-evidence-summary__row"><span>WIPE</span><strong>D03 clarity sensitivity is the primary digital caution</strong><small>H/D2</small></div>
-          <div class="pro04-evidence-summary__row"><span>LONG-TERM</span><strong>D02 PU adjacency contrast is the primary digital caution</strong><small>H/D2</small></div>
+      <p class="pro04-intro">Relative digital risk evidence only. Dirty-wiped and PU-aged states are H/D2 stress constructions; they do not predict real ageing.</p>
+      <div class="pro04-evidence-visual-stage pro04-evidence-visual-stage--lifecycle">
+        ${directImage('assets/xj01/pro04-lifecycle-d2-2x3.jpg','VE07 retained lifecycle comparison: baseline, dirty-wiped and PU-aged digital risk constructions for D02 and D03','pro04-image--evidence-board','eager','O+H / D2')}
+        <div class="pro04-evidence-visual-copy">
+          <b>Risk ownership</b>
+          <p>D02 — PU ageing adjacency contrast caution.<br>D03 — wet / dirty-wiped sensitivity caution.</p>
+          <small>H/D2 relative-risk construction / no physical ageing claim.</small>
         </div>
       </div>
-      <p class="pro04-evidence-bind-warning">OLEANDER DESIGN-CRIT STATUS / SUPPORT ONLY. The old 06D proxy remains diagnostic and collapsed; it is not promoted to replace the retained VE07 review frames.</p>
-      <details class="pro04-diagnostic"><summary>Show diagnostic lifecycle history</summary>${image(art(data,'06D-LIFECYCLE-PROXY'),'Historical lifecycle diagnostic proxy')}</details>`,'pro04-section--evidence-summary');
+      <details class="pro04-diagnostic"><summary>Show diagnostic lifecycle history</summary>${image(art(data,'06D-LIFECYCLE-PROXY'),'Historical lifecycle diagnostic proxy')}</details>`,'pro04-section--lifecycle');
   }
 
   function renderAppendix(data) {
