@@ -1,0 +1,397 @@
+{
+  "schema": "oleander.notion-to-github-execution-owner-map.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT",
+  "decision_date": "2026-08-18",
+  "authority": {
+    "notion_current_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_architecture_binding": "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json",
+    "installed_skill_registry": "oleander-skills/REVIEW.md",
+    "default_skill_resolver": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json"
+  },
+  "contract": {
+    "purpose": "Map a resolved Current Notion knowledge/application object to an existing GitHub execution owner or explicit NO_DEDICATED_OWNER state.",
+    "notion_remains_knowledge_authority": true,
+    "github_owner_is_execution_only": true,
+    "one_method_one_skill_forbidden": true,
+    "one_skill_one_notion_domain_forbidden": true,
+    "no_dedicated_owner_is_valid": true,
+    "candidate_skill_must_remain_candidate": true
+  },
+  "resolution_input_order": [
+    "CURRENT_ROOT_AUTHORITY",
+    "LIVE_REGISTRY",
+    "CANONICAL_ID_OR_PROJECT_ID",
+    "GOVERNANCE_AND_RELATION_STATE",
+    "KNOWLEDGE_OR_PROJECT_LEVEL",
+    "KNOWLEDGE_ROLE",
+    "PRIMARY_CURRENT_L2_DOMAIN",
+    "METHOD_FAMILY_WHEN_ROLE_METHOD",
+    "REQUIRED_NATIVE_OUTPUT_OR_EXECUTION_MEDIUM",
+    "PROJECT_RUNTIME_CONSTRAINTS"
+  ],
+  "owner_selection_order": [
+    "EXPLICIT_PROJECT_EXECUTION_OWNER_WHEN_CURRENT_AND_VALID",
+    "EXACT_SPECIALIST_BY_REQUIRED_OUTPUT",
+    "INSTALLED_REUSABLE_OWNER_BY_CAPABILITY",
+    "METHOD_FAMILY_OR_DOMAIN_FALLBACK",
+    "NO_DEDICATED_OWNER"
+  ],
+  "owners": {
+    "oleander-research": {
+      "state": "INSTALLED",
+      "owns": [
+        "evidence acquisition",
+        "source comparison",
+        "precedent research",
+        "interview synthesis",
+        "research matrices",
+        "decision research"
+      ],
+      "does_not_own": [
+        "generic strategy execution",
+        "visual design production",
+        "release QC"
+      ]
+    },
+    "oleander-data-viz": {
+      "state": "INSTALLED",
+      "owns": [
+        "data analysis visualization",
+        "charts",
+        "maps",
+        "GIS presentation",
+        "analytical diagrams",
+        "data-bound exports"
+      ],
+      "does_not_own": [
+        "source authority",
+        "generic spatial design",
+        "brand identity"
+      ]
+    },
+    "oleander-3d-pipeline": {
+      "state": "INSTALLED",
+      "owns": [
+        "3D geometry pipeline",
+        "model exchange",
+        "axonometric/model outputs",
+        "render/archive workflow"
+      ],
+      "does_not_own": [
+        "field truth",
+        "2D technical drawing authority",
+        "generic architecture design decision"
+      ]
+    },
+    "oleander-story-and-board": {
+      "state": "INSTALLED",
+      "owns": [
+        "narrative synthesis",
+        "boards",
+        "reports",
+        "decks",
+        "brand stories",
+        "film story structure"
+      ],
+      "does_not_own": [
+        "research evidence creation",
+        "release QC",
+        "generic brand identity system"
+      ]
+    },
+    "oleander-delivery-qc": {
+      "state": "INSTALLED",
+      "owns": [
+        "non-destructive release inspection",
+        "package/export QC",
+        "PDF/image/video/audio/3D/interactive delivery checks"
+      ],
+      "does_not_own": [
+        "design quality verdict by itself",
+        "user validation",
+        "design generation"
+      ]
+    },
+    "oleander-motion": {
+      "state": "INSTALLED",
+      "owns": [
+        "motion design",
+        "state transition motion",
+        "procedural/interactive motion",
+        "motion runtime routing",
+        "reduced-motion path"
+      ],
+      "does_not_own": [
+        "static UI composition",
+        "general interaction architecture",
+        "film narrative alone"
+      ]
+    },
+    "oleander-ui-visual-composition": {
+      "state": "CANDIDATE",
+      "owns": [
+        "digital UI visual hierarchy",
+        "screen composition",
+        "interface visual refinement"
+      ],
+      "promotion_boundary": "CANDIDATE"
+    },
+    "oleander-ui-interaction": {
+      "state": "CANDIDATE",
+      "owns": [
+        "interaction behavior",
+        "state logic",
+        "screen interaction prototype"
+      ],
+      "promotion_boundary": "CANDIDATE"
+    },
+    "oleander-route-wayfinding-ui": {
+      "state": "CANDIDATE",
+      "owns": [
+        "route and wayfinding interface",
+        "network/state wayfinding UI"
+      ],
+      "promotion_boundary": "CANDIDATE"
+    },
+    "oleander-game-ui": {
+      "state": "CANDIDATE",
+      "owns": [
+        "game-like interface language and game UI execution"
+      ],
+      "promotion_boundary": "CANDIDATE"
+    },
+    "oleander-mobile-game-ui": {
+      "state": "CANDIDATE",
+      "owns": [
+        "mobile game-like UI execution"
+      ],
+      "promotion_boundary": "CANDIDATE"
+    },
+    "OLEANDER Technical Drawing": {
+      "state": "CANDIDATE_BODY",
+      "owns": [
+        "technical drawing translation",
+        "plans/sections/nodes/technical graphic production when current implementation is available"
+      ],
+      "promotion_boundary": "EXPLICIT_INDEPENDENT_PROMOTION_REQUIRED"
+    }
+  },
+  "role_routes": {
+    "SOURCE": {
+      "primary_owner": "oleander-research",
+      "rule": "Evidence/source handling; execution may hand off downstream by output."
+    },
+    "EVIDENCE": {
+      "primary_owner": "oleander-research",
+      "rule": "Research/evidence synthesis by default; visualization or geometry may hand off."
+    },
+    "CASE": {
+      "primary_owner": "oleander-research",
+      "secondary_by_output": [
+        "oleander-data-viz",
+        "oleander-story-and-board",
+        "oleander-3d-pipeline"
+      ]
+    },
+    "THEORY": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "rule": "Theory does not imply an execution skill; resolve by task/output."
+    },
+    "METHOD": {
+      "primary_owner": "RESOLVE_BY_METHOD_FAMILY_AND_OUTPUT",
+      "rule": "METHOD identity never creates a new GitHub Skill automatically."
+    },
+    "TOOL": {
+      "primary_owner": "RUNTIME_OR_TOOL_ADAPTER",
+      "rule": "Tool objects route to the current runtime/tool contract, not to a new Skill."
+    },
+    "PRACTICE": {
+      "primary_owner": "RESOLVE_BY_OUTPUT_AND_PROJECT",
+      "rule": "Use actual output medium and project execution owner."
+    },
+    "INDEX": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "rule": "Indexes are discovery structures, not execution capabilities."
+    }
+  },
+  "method_family_routes": {
+    "研究取证": {
+      "primary_owner": "oleander-research"
+    },
+    "综合洞察": {
+      "primary_owner": "oleander-research",
+      "secondary_by_output": [
+        "oleander-data-viz",
+        "oleander-story-and-board"
+      ]
+    },
+    "问题定义": {
+      "primary_owner": "oleander-research",
+      "secondary_by_output": [
+        "oleander-story-and-board"
+      ]
+    },
+    "策略决策": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "support": [
+        "oleander-research",
+        "oleander-story-and-board"
+      ],
+      "reason": "No installed generic strategy execution skill."
+    },
+    "创意生成": {
+      "primary_owner": "RESOLVE_BY_OUTPUT",
+      "rule": "Choose UI/3D/motion/story/data specialist by artifact; no generic ideation owner."
+    },
+    "原型表达": {
+      "primary_owner": "RESOLVE_BY_OUTPUT",
+      "rule": "UI→UI specialists; 3D→3d-pipeline; motion→motion; boards/story→story-and-board; data→data-viz."
+    },
+    "分析建模": {
+      "primary_owner": "RESOLVE_BY_MODEL_TYPE",
+      "routes": {
+        "data_or_GIS": "oleander-data-viz",
+        "3D_geometry": "oleander-3d-pipeline",
+        "other": "NO_DEDICATED_OWNER"
+      }
+    },
+    "评估验证": {
+      "primary_owner": "RESOLVE_BY_VALIDATION_TYPE",
+      "routes": {
+        "release_or_export_QC": "oleander-delivery-qc",
+        "UI_expert_review": "candidate UI specialist + independent review",
+        "user_validation": "NO_DEDICATED_OWNER"
+      },
+      "rule": "Delivery QC must not substitute for design/user validation."
+    },
+    "设计转译": {
+      "primary_owner": "RESOLVE_BY_OUTPUT",
+      "rule": "The translated artifact determines owner."
+    },
+    "交付治理": {
+      "primary_owner": "oleander-delivery-qc",
+      "secondary": [
+        "oleander-story-and-board",
+        "oleander-data-viz",
+        "oleander-3d-pipeline",
+        "oleander-motion"
+      ]
+    },
+    "AI协同": {
+      "primary_owner": "AIG_RUNTIME_GOVERNANCE_THEN_DOWNSTREAM_OWNER",
+      "rule": "AI collaboration is governance/routing, not a standalone design execution skill."
+    }
+  },
+  "output_routes": {
+    "research_brief_or_evidence_matrix": "oleander-research",
+    "chart_map_data_diagram": "oleander-data-viz",
+    "3D_model_geometry_axonometric_render_pipeline": "oleander-3d-pipeline",
+    "board_report_deck_story": "oleander-story-and-board",
+    "release_package_export_QC": "oleander-delivery-qc",
+    "motion_state_animation": "oleander-motion",
+    "UI_visual_composition": "oleander-ui-visual-composition",
+    "UI_interaction_prototype": "oleander-ui-interaction",
+    "route_wayfinding_UI": "oleander-route-wayfinding-ui",
+    "game_UI": "oleander-game-ui",
+    "mobile_game_UI": "oleander-mobile-game-ui",
+    "technical_plan_section_node": "OLEANDER Technical Drawing",
+    "brand_identity_system": "NO_DEDICATED_OWNER",
+    "product_CMF_specification": "NO_DEDICATED_OWNER",
+    "service_experience_system": "NO_DEDICATED_OWNER",
+    "generic_strategy_framework": "NO_DEDICATED_OWNER"
+  },
+  "domain_fallback_routes": {
+    "research_user_research_evidence": {
+      "primary_owner": "oleander-research"
+    },
+    "information_data_GIS": {
+      "primary_owner": "oleander-data-viz"
+    },
+    "motion_media": {
+      "primary_owner": "oleander-motion",
+      "secondary": [
+        "oleander-story-and-board"
+      ]
+    },
+    "digital_web_interaction": {
+      "primary_owner": "RESOLVE_UI_BY_OUTPUT",
+      "secondary": [
+        "oleander-motion",
+        "oleander-data-viz"
+      ]
+    },
+    "architecture_spatial": {
+      "primary_owner": "RESOLVE_BY_OUTPUT",
+      "routes": {
+        "3D": "oleander-3d-pipeline",
+        "technical_drawing": "OLEANDER Technical Drawing",
+        "data_GIS": "oleander-data-viz"
+      }
+    },
+    "brand_visual": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "secondary_by_output": [
+        "oleander-story-and-board",
+        "oleander-ui-visual-composition",
+        "oleander-motion"
+      ]
+    },
+    "product_material_CMF": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "secondary_by_output": [
+        "oleander-3d-pipeline",
+        "oleander-delivery-qc",
+        "oleander-story-and-board"
+      ]
+    },
+    "service_experience": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "secondary_by_output": [
+        "oleander-research",
+        "oleander-story-and-board",
+        "oleander-ui-interaction"
+      ]
+    },
+    "human_factors_usability_accessibility": {
+      "primary_owner": "NO_DEDICATED_OWNER",
+      "secondary_by_task": [
+        "oleander-research",
+        "oleander-ui-interaction",
+        "oleander-delivery-qc"
+      ]
+    }
+  },
+  "hard_guards": [
+    "NOTION_CANONICAL_ID_DOMAIN_ROLE_AND_RELATIONS_REMAIN_UPSTREAM_AUTHORITY",
+    "EXECUTION_OWNER_DOES_NOT_CHANGE_NOTION_LOCATION_OR_NAME",
+    "NO_DEDICATED_OWNER_IS_NOT_A_REASON_TO_CREATE_A_NEW_SKILL",
+    "CANDIDATE_OWNER_MUST_BE_REPORTED_AS_CANDIDATE",
+    "DELIVERY_QC_DOES_NOT_EQUAL_DESIGN_REVIEW_OR_USER_VALIDATION",
+    "OUTPUT_MEDIUM_CAN_OVERRIDE_DOMAIN_FALLBACK_WHEN_THE_CURRENT_TASK_REQUIRES_A_SPECIFIC_NATIVE_ARTIFACT",
+    "PROJECT_CURRENT_EXECUTION_OWNER_OVERRIDES_GENERIC_FALLBACK_ONLY_WHEN_CURRENT_AUTHORITY_EXPLICITLY_ASSIGNES_IT",
+    "ONE_EXECUTION_OWNER_MAY_SERVE_MANY_NOTION_METHODS_AND_DOMAINS",
+    "ONE_NOTION_METHOD_MAY_USE_MULTIPLE_EXECUTION_SKILLS_ACROSS_DIFFERENT_OUTPUTS"
+  ],
+  "routing_result_schema": {
+    "notion_object_id": "string",
+    "canonical_id": "string_or_null",
+    "knowledge_role": "string",
+    "primary_domain": "string_or_null",
+    "method_family": "array",
+    "required_native_output": "string",
+    "primary_execution_owner": "string",
+    "owner_state": "INSTALLED|CANDIDATE|CANDIDATE_BODY|NO_DEDICATED_OWNER|RUNTIME",
+    "supporting_execution_skills": "array",
+    "evidence_for_route": "array",
+    "does_not_prove": "string"
+  },
+  "does_not_prove": [
+    "METHOD_VALIDATION",
+    "SKILL_PROMOTION",
+    "DESIGN_PASS",
+    "FIELD_OR_ENGINEERING_TRUTH",
+    "PROJECT_OWNER_ASSIGNMENT",
+    "RIGHTS_CLEARANCE"
+  ]
+}
