@@ -1,0 +1,8 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-ATTENTION-STATE",
+  "topic": "Attention-state composition",
+  "method_inputs": ["CH01 S0/S1/S2 attention model", "KN-METHOD-INFOVIZ-ABSTRACTION-BUDGET-001", "FW-DESIGN-VISUAL-COMM-001"],
+  "artifact": {"file": "attention_state_composition_v2.svg", "sha256_local": "2175985e2c1feaa05e82a32de9497ad2eb31c574a1e236031ac471d5c9a0697a"},
+  "design_crit": {"v1": "REVISE: missing glyphs in rendered typography", "v2": "KEEP FOR TRAINING: distinct S0/S1/S2 attention owners; information delayed rather than deleted"},
+  "truth_boundary": "Synthetic training proxy only; no C04 route, geometry, field, safety, engineering or implementation authority changed."
+}
