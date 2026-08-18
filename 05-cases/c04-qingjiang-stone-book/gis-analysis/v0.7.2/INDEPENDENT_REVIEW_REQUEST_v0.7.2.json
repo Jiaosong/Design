@@ -1,0 +1,17 @@
+{
+  "artifact": "C04_GIS_SKILL_EXECUTION_v0.7.2",
+  "review_system": "OLEANDER Artifact Review System v1.1",
+  "required": ["AR-G01..G10", "AR-S03 Data", "AR-S05 GIS", "AR-S08 Presentation", "Professional Design Crit"],
+  "review_current_set": ["ENV-01", "ENV-02", "ENV-03", "ENV-04", "ENV-05", "ENV-06", "ENV-SYN-01"],
+  "must_verify": [
+    "stable ID repair and no-loss provenance",
+    "HOLD pages do not masquerade as completed GIS analysis",
+    "solar scenario claim does not exceed model",
+    "operations page first-read and ROUTE-03 authority",
+    "3–5 second portfolio read + near-read evidence",
+    "grayscale hierarchy",
+    "Evidence -> Interpretation -> Design Impact"
+  ],
+  "producer_not_valid_as_sole_reviewer": true,
+  "state": "PENDING / NO_PROMOTION"
+}
