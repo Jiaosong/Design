@@ -87,13 +87,21 @@ Modified existing `oleander-skills/oleander-data-viz/VISUAL_LAYER_BINDING.md` wi
 
 Promotion test:
 
-> **Hide the labels: evidence maturity must remain distinguishishable, while numerical magnitude / topology must remain unchanged by the evidence-state styling.**
+> **Hide the labels: evidence maturity must remain distinguishable, while numerical magnitude / topology must remain unchanged by the evidence-state styling.**
 
 ## Cross-project transfer
 
 Reusable for C04 environmental/GIS families, source-vs-derived analysis boards, reported operational overlays, research visualizations, simulation/result families, product/CMF test evidence, architecture/landscape environmental boards and evidence-bearing dashboards.
 
 Not a substitute for the separate operational-route-state gate (`NORMAL / DEGRADED / CLOSED / UNKNOWN`), brand status styling, or field/engineering validation. Do not apply this as a rigid secondary rail when uncertainty itself is the measured analytical variable; in that case uncertainty needs a first-class analytical encoding with explicit semantics. Clearly declared hypothetical scenario comparison also needs its own scenario grammar rather than being disguised as evidence maturity.
+
+## GitHub execution state
+
+- Branch: `training/20260818-evidence-state-surface-grammar`
+- PR: `#275 · Training: add evidence-state surface grammar gate`
+- PR head after record update: branch continues open; no merge or promotion is authorized by this training result.
+- `AI Governance Evals` run `#2021`: `completed / success` on the material-delta head used to open the PR.
+- CI success is execution/governance evidence only. It does not resolve the independent Professional Design Gate.
 
 ## Truth boundary
 
