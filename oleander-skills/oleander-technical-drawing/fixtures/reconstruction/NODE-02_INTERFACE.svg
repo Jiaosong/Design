@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#f6f4ee"/>
+  <g id="COMP_PRIMARY">
+    <rect x="90" y="90" width="300" height="120" fill="#ded8ca" stroke="#202622" stroke-width="5"/>
+  </g>
+  <g id="COMP_ATTACHED">
+    <rect x="390" y="110" width="120" height="80" fill="#c9d6d1" stroke="#202622" stroke-width="3"/>
+  </g>
+  <g id="NODE_JOINT_01">
+    <line x1="390" y1="105" x2="390" y2="195" stroke="#8b4d3f" stroke-width="7"/>
+    <line x1="402" y1="110" x2="402" y2="190" stroke="#f6f4ee" stroke-width="5"/>
+  </g>
+  <text x="90" y="255" font-family="sans-serif" font-size="20">PRIMARY BODY</text>
+  <text x="390" y="225" font-family="sans-serif" font-size="20">ATTACHED SYSTEM</text>
+  <text x="90" y="315" font-family="sans-serif" font-size="16">SYNTHETIC FIXTURE / INTERFACE RELATION ONLY / NO DIMENSION AUTHORITY</text>
+</svg>
