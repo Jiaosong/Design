@@ -1,0 +1,9 @@
+{
+  "system": "OLEANDER Artifact Review System v1.1",
+  "artifact": "C04_GIS_CURRENT_REEXECUTION_v0.7.3",
+  "required_common": ["AR-G01","AR-G02","AR-G03","AR-G04","AR-G05","AR-G06","AR-G07","AR-G08","AR-G09","AR-G10"],
+  "required_specific": ["AR-S01 Drawing","AR-S03 Data","AR-S05 GIS","AR-S08 Presentation","AR-S09 Release Package"],
+  "reviewer_independence_state": "HOLD / no independent reviewer available in current tool surface",
+  "professional_design_review": "NOT ISSUED",
+  "focus": ["first-read analytical claim","C04 specificity","sample-cell precision honesty","context river hierarchy","semantic live-text SVG","grayscale/50% legibility","source-value consistency","ENV-03/04 HOLD visibility","no risk-score implication","portfolio/professional finish"]
+}
