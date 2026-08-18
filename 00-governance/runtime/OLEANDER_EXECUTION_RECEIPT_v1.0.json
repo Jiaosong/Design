@@ -1,17 +1,20 @@
 {
   "schema": "oleander.execution-receipt.v1",
   "version": "1.0",
+  "policy_revision": "1.1",
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
-  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, owner selection, DAG, artifacts, adapters, execution, regression, readback, review and drift.",
+  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, owner selection, DAG, artifacts, adapters, execution, regression, readback, review, flow completion and drift.",
   "required_core_fields": [
     "receipt_id",
     "status",
     "execution_type",
     "task_id",
     "authority",
+    "constraint_lock",
     "required_native_output",
     "owner_set",
+    "flow_completion",
     "artifacts",
     "execution",
     "readback",
@@ -20,6 +23,12 @@
     "closure",
     "does_not_prove"
   ],
+  "legacy_receipts_without_policy_1_1_fields": [
+    "EXR-20260818-PR246-IMAGE-OPS-ADAPTER",
+    "EXR-20260818-PR248-CONTRACT-LAYER",
+    "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"
+  ],
+  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION",
   "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
   "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
   "authority_required_fields": [
@@ -31,6 +40,42 @@
     "canonical_ids",
     "github_resolver",
     "github_commit_or_ref"
+  ],
+  "constraint_lock_required_fields": [
+    "resolved_from",
+    "inheritance_state",
+    "active_constraints",
+    "revocations",
+    "tool_deny",
+    "output_deny",
+    "creation_deny",
+    "required_behaviors"
+  ],
+  "constraint_record_required_fields": [
+    "constraint_id",
+    "constraint_type",
+    "normalized_rule",
+    "source",
+    "scope",
+    "status",
+    "revocation_rule"
+  ],
+  "constraint_status_values": ["ACTIVE", "REVOKED", "SUPERSEDED"],
+  "constraint_types": ["TOOL_DENY", "OUTPUT_DENY", "CREATION_DENY", "OWNER_REQUIRE", "PROCESS_REQUIRE", "REVIEW_REQUIRE"],
+  "normalized_constraint_rules": [
+    "NO_IMAGE_GENERATION",
+    "NO_NEW_SKILL",
+    "NO_NEW_METHOD",
+    "NO_NEW_FRAMEWORK",
+    "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+    "FULL_OLEANDER_FLOW_REQUIRED",
+    "NO_PRODUCER_SELF_PROMOTION"
+  ],
+  "constraint_invariants": [
+    "generic_continue_does_not_revoke_active_constraints",
+    "only_later_explicit_user_instruction_can_revoke_or_change_named_constraint",
+    "tool_deny_is_checked_before_tool_selection",
+    "creation_deny_is_checked_before_gap_driven_creation"
   ],
   "required_native_output_fields": [
     "artifact_class",
@@ -46,6 +91,51 @@
     "omitted_owner_reasoning"
   ],
   "node_roles": ["PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"],
+  "flow_completion_required_fields": [
+    "mode",
+    "required_phases",
+    "phase_results",
+    "incomplete_required_phases",
+    "completion_gate",
+    "completion_claim_allowed"
+  ],
+  "flow_modes": ["READ_ONLY_QUERY", "MINIMUM_EXECUTION", "FULL_OLEANDER_FLOW"],
+  "canonical_flow_phases": [
+    "AUTHORITY_PREFLIGHT",
+    "STICKY_CONSTRAINT_RESOLUTION",
+    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+    "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+    "CAPABILITY_AND_MINIMUM_OWNER_SET",
+    "REAL_EXECUTION",
+    "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+    "ACTUAL_READBACK",
+    "REGRESSION_AS_APPLICABLE",
+    "INDEPENDENT_REVIEW_AS_APPLICABLE",
+    "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+  ],
+  "full_flow_core_phases": [
+    "AUTHORITY_PREFLIGHT",
+    "STICKY_CONSTRAINT_RESOLUTION",
+    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+    "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+    "CAPABILITY_AND_MINIMUM_OWNER_SET",
+    "REAL_EXECUTION",
+    "ACTUAL_READBACK"
+  ],
+  "phase_result_values": ["PASS", "FAIL", "HOLD", "NOT_APPLICABLE"],
+  "completion_gate_values": ["PASS", "FAIL", "HOLD"],
+  "closed_state_rule": "IF_STATUS_IS_CLOSED_COMPLETION_GATE_MUST_BE_PASS_AND_INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY",
+  "early_completion_forbidden_on": [
+    "PLAN_WRITTEN",
+    "METHOD_EXPLAINED",
+    "ARTIFACT_CREATED",
+    "FILE_EXPORTED",
+    "PR_OPENED",
+    "CI_GREEN",
+    "SELF_CHECK_PASS",
+    "RENDER_PASS",
+    "REGRESSION_PASS"
+  ],
   "artifact_permissions": ["READ_ONLY", "DERIVE", "MUTATE_PRESENTATION_ONLY", "MUTATE_AUTHORIZED_SOURCE"],
   "artifact_required_fields": [
     "artifact_id",
@@ -110,7 +200,12 @@
   ],
   "hard_guards": [
     "only_applicable_sections_are_required",
-    "not_applicable_is_preferred_to_fake_process",
+    "not_applicable_requires_reason_for_full_flow_optional_phases",
+    "sticky_user_constraints_precede_tool_and_creation_routing",
+    "generic_continue_does_not_revoke_constraint_lock",
+    "full_flow_means_all_applicable_phases_not_all_skills",
+    "closed_or_complete_claim_requires_completion_gate_pass",
+    "plan_artifact_pr_ci_self_check_render_or_regression_alone_do_not_equal_complete",
     "producer_self_check_is_not_independent_review",
     "artifact_existence_does_not_equal_design_quality",
     "regression_pass_does_not_equal_design_keep",
