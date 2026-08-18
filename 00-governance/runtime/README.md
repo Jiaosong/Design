@@ -10,7 +10,8 @@ Use:
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.1`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`
 - `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md/.json`
-- `OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json` — Current policy revision `1.1`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — Current policy revision `1.1`
 
 Canonical default:
 
@@ -57,7 +58,8 @@ Current Notion structural routing uses the live Registry and `Canonical Parent�
 
 Instance carrier:
 
-- `OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json` — policy revision 1.1; all new receipts record `constraint_lock` + `flow_completion`.
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — policy revision 1.1; all new receipts record `constraint_lock` + `flow_completion`.
 - `receipts/` — execution receipts. Only the explicitly allowlisted pre-policy receipts may omit policy-1.1 fields.
 - `regression-baselines/` — typed four-layer regression baselines.
 
