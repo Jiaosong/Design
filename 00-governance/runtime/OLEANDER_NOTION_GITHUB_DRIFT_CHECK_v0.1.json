@@ -43,14 +43,16 @@
         "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
         "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
         "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json",
-        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+        "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+        "00-governance/runtime/validate_execution_locks.py"
       ],
-      "implemented_revision": "resolver-v1.2-owner-map-v1.0-execution-contract-layer-v0.1-receipt-v1.0",
-      "implementation_commit": "34a23f2b2699b27136637ea89e25465c5007e945",
-      "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py",
+      "implemented_revision": "resolver-v1.2-impl-1.2.1-owner-map-v1.0-execution-contract-layer-v0.1-receipt-v1.0-policy-1.1-upe-v1.0-impl-1.0.1",
+      "implementation_commit": "2e1f4d2c79e63b7177b9af98e0d28a717761ae7e",
+      "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py + 00-governance/runtime/validate_execution_locks.py",
       "last_verified": "2026-08-18",
       "drift_state": "CURRENT",
-      "drift_reason": "LIVE_CROSS_PLATFORM_CHECK completed after PR #254 merge: GitHub main readback confirms Resolver v1.2 ACTIVE_CURRENT, Resolver v1.1 SUPERSEDED and Owner Map v1.0 pointing to v1.2; live Notion Resolver METHOD was updated/read back with the same v1.2 Current pointer while Root Authority remained v1.1.1 ACTIVE.",
+      "drift_reason": "LIVE_CROSS_PLATFORM_CHECK after PR #263: GitHub main readback confirms Resolver v1.2 implementation revision 1.2.1 ACTIVE_CURRENT, Execution Receipt v1.0 policy revision 1.1 ACTIVE_CURRENT and Universal Production Environment v1.0 implementation revision 1.0.1 ACTIVE_CURRENT. Live Notion Resolver METHOD was updated and read back with Sticky Execution Constraint Lock + Full-Flow Completion Gate while Root Authority remains v1.1.1 ACTIVE.",
       "next_action": "NO_ACTION",
       "does_not_prove": ["method_quality", "design_quality", "project_promotion", "field_truth"]
     },
