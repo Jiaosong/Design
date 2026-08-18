@@ -1,0 +1,30 @@
+{
+  "artifact_under_review": "C04_GIS_SKILL_EXECUTION_v0.7",
+  "review_system": "OLEANDER Artifact Review System v1.1",
+  "compliance_gate": {
+    "required": ["AR-G01", "AR-G02", "AR-G03", "AR-G04", "AR-G05", "AR-G06", "AR-G07", "AR-G08", "AR-G09", "AR-G10", "AR-S03", "AR-S05", "AR-S08"],
+    "machine_qc": "PASS",
+    "producer_actual_preview": "COMPLETE",
+    "does_not_equal": "Professional Design PASS"
+  },
+  "professional_design_gate": {
+    "required_questions": [
+      "Claim / first read",
+      "Professional completeness",
+      "Template or AI residue",
+      "Evidence -> Interpretation -> Design Impact",
+      "Deletion test",
+      "Page rhythm",
+      "Cross-media consistency",
+      "Portfolio value"
+    ],
+    "required_verdict": ["KEEP", "REVISE", "REJECT", "HOLD"],
+    "root_cause_required": true
+  },
+  "reviewer_provenance": {
+    "producer_is_not_valid_as_sole_independent_reviewer": true,
+    "separate_reviewer_execution_path_available_in_current_tool_surface": false,
+    "current_state": "PENDING / NO FAKE VERDICT"
+  },
+  "promotion_state": "NO_PROMOTION"
+}
