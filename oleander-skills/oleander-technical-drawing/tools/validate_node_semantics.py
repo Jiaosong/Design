@@ -64,6 +64,8 @@ for n in nodes:
         if not isinstance(components,list) or len(set(components or [])) < 2:
             errors.append(f'{nid}: construction interface requires >=2 component_ids')
             components=[]
+        for c in components:
+            if c not in ids: errors.append(f'{nid}: component {c} missing from SVG')
         primary=n.get('primary_component_id')
         if primary not in components:
             errors.append(f'{nid}: primary_component_id must belong to component_ids')
