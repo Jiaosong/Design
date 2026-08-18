@@ -35,8 +35,7 @@
       <div class="pro04-hero__copy">
         <p class="pro04-kicker">XJ01 / CMF DIRECTION STUDY</p>
         <h1>Continuous<br>Material Hierarchy</h1>
-        <p class="pro04-hero__lead">Two retained territories. One product architecture. Digital CMF design review — no physical approval claimed.</p>
-        <div class="pro04-hero__status"><span>PRO-04.2</span><span>DESIGN REVIEW READY</span><span>NO WINNER</span></div>
+        <p class="pro04-hero__lead">Two retained territories. One product architecture.</p>
       </div>
       <div class="pro04-hero__visuals" style="min-height:0;align-self:center">
         <figure class="pro04-image" data-artifact-id="PRO04-PRESENTATION-HERO" data-evidence-level="D2-PRESENTATION-DERIVATIVE" style="background:#eceae3">
@@ -47,7 +46,7 @@
           <div style="border-top:6px solid ${esc(d03.colour.hex)};padding-top:12px"><b style="font:700 .68rem var(--mono)">D03</b><strong style="display:block;margin-top:5px;font:1.05rem var(--serif)">Quiet Green Mineral</strong><small style="color:var(--trace);font:.62rem var(--mono)">Soft domestic care</small></div>
         </div>
       </div>
-      <p class="pro04-boundary">Presentation derivative / cropped from retained D2 exact-geometry whole-product renders. The crop/composition does not upgrade the source evidence class.</p>
+      <p class="pro04-boundary">Digital CMF design review. Presentation derivative / cropped from retained D2 exact-geometry whole-product renders. No physical approval is claimed and the crop does not upgrade the source evidence class.</p>
     </section>`;
   }
 
@@ -93,13 +92,18 @@
 
   function renderInterfaces(data) {
     return section('p03','03 / OPERATION + INTERFACES','Where materials meet',`
-      <p class="pro04-intro">Interfaces carry more CMF meaning than isolated surface macros.</p>
+      <p class="pro04-intro">Matched D02 / D03 product views lead the page so Iron × PP and PP × PU are read as material relationships rather than isolated surface macros.</p>
       <div class="pro04-interface-layout">
-        <div class="pro04-interface-layout__primary">${image(art(data,'06C-OPERATION'),'Operation context digital evidence','pro04-image--operation')}<span>Operation context / D2 digital evidence</span></div>
+        <div class="pro04-interface-layout__primary">
+          <div class="pro04-interface-pair">
+            ${image(art(data,'A1-MID-D02'),'D02 material interface context')}
+            ${image(art(data,'A1-MID-D03'),'D03 material interface context')}
+          </div>
+          <span>Matched material-interface context / retained D2 review evidence</span>
+        </div>
         <div class="pro04-interface-layout__secondary">
-          ${image(art(data,'A1-MID-D02'),'D02 material interface context')}
-          ${image(art(data,'A1-MID-D03'),'D03 material interface context')}
-          <p>I01 Iron × PP and I03 PP × PU are the two critical material readings. Product context is kept visible; anonymous macro texture is not used as a substitute.</p>
+          ${image(art(data,'06C-OPERATION'),'Operation context digital evidence','pro04-image--operation')}
+          <p>Operation stays visible as context, but it no longer outranks the interface evidence. I01 Iron × PP and I03 PP × PU remain the two critical readings.</p>
         </div>
       </div>
       <div class="pro04-interface-list">${data.interfaces.map((i)=>`<article><span>${esc(i.id)}</span><strong>${esc(i.name)}</strong><small>${esc(i.status)}</small></article>`).join('')}</div>`);
