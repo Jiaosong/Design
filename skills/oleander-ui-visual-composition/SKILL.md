@@ -2,7 +2,7 @@
 name: oleander-ui-visual-composition
 description: OLEANDER visual UI composition and first-visual quality skill for hierarchy, composition, typography, imagery, spacing, depth, color, responsive pixel quality, and professional finish. Use for UI critique, redesign, pixel refinement, first-read review, and final visual QA.
 status: candidate
-version: 0.1.0
+version: 0.1.1
 ---
 
 # OLEANDER UI Visual Composition
@@ -35,17 +35,7 @@ If these answers are unclear, stop and fix hierarchy before polish.
 Design the object/task first. Navigation chrome, headers, cards, frames, labels, and decorative panels are secondary.
 
 ### 2. Hierarchy before color
-Establish hierarchy in grayscale using:
-- scale;
-- placement;
-- whitespace;
-- grouping;
-- crop;
-- weight;
-- overlap;
-- contrast.
-
-Color and glow may reinforce hierarchy but may not create it from nothing.
+Establish hierarchy in grayscale using scale, placement, whitespace, grouping, crop, weight, overlap, and contrast. Color and glow may reinforce hierarchy but may not create it from nothing.
 
 ### 3. One dominant visual per state
 A screen can contain many systems but should have one dominant visual/event at a time. Avoid equal-weight regions unless comparison itself is the task.
@@ -54,51 +44,60 @@ A screen can contain many systems but should have one dominant visual/event at a
 Spacing and alignment must express relationships. Related objects are closer and more aligned than unrelated objects. Avoid ambiguous gaps and arbitrary decorative grids.
 
 ### 5. Typography is structure
-Use a small deliberate scale. Differences must be perceptible, not accidental.
-
-Check:
-- Chinese legibility at real device size;
-- line-height and line length;
-- title-to-body ratio;
-- label density;
-- over-tracking / fake sophistication;
-- overuse of all caps;
-- mixed language hierarchy;
-- text competing with imagery.
+Use a small deliberate scale. Differences must be perceptible, not accidental. Check Chinese legibility at real device size, line-height and line length, title-to-body ratio, label density, over-tracking, all-caps abuse, mixed-language hierarchy, and text competing with imagery.
 
 ### 6. Imagery owns the screen when imagery is the product
 Protect real landscape/product imagery from UI clutter. Use controlled crop, scrim, local contrast protection, or quiet edge placement rather than large opaque cards.
 
 ### 7. Depth explains layers
-Use overlap, scale, focus, shadow, blur, edge contrast, and parallax only when they clarify foreground/background, active/inactive, world/HUD, or entry/exit.
-
-Do not use glass, glow, shadow, blur, or border as generic “premium” decoration.
+Use overlap, scale, focus, shadow, blur, edge contrast, and parallax only when they clarify foreground/background, active/inactive, world/HUD, or entry/exit. Do not use glass, glow, shadow, blur, or border as generic premium decoration.
 
 ### 8. Cards are not the default
-Use cards only when the content is genuinely a self-contained object. Do not solve weak composition by boxing every section.
-
-Nested cards are a hard warning sign.
+Use cards only when the content is genuinely a self-contained object. Do not solve weak composition by boxing every section. Nested cards are a hard warning sign.
 
 ### 9. Project specificity
-The result must inherit visual evidence from the project: world imagery, material, cultural logic, geometry, typography, route/interaction language, or other authentic design source.
-
-A polished screen that could belong to ten unrelated apps is still weak.
+The result must inherit visual evidence from the project: world imagery, material, cultural logic, geometry, typography, route/interaction language, or other authentic design source. A polished screen that could belong to ten unrelated apps is still weak.
 
 ### 10. Professional finish is a separate gate
-Inspect:
-- alignment precision;
-- optical balance;
-- crop quality;
-- line quality;
-- icon consistency;
-- focus/selected/disabled states;
-- safe-area finish;
-- responsive reflow;
-- long text;
-- empty/error/loading states;
-- pixel artifacts;
-- accidental overlap;
-- repeated generic motifs.
+Inspect alignment precision, optical balance, crop quality, line quality, icon consistency, focus/selected/disabled states, safe-area finish, responsive reflow, long text, empty/error/loading states, pixel artifacts, accidental overlap, and repeated generic motifs.
+
+## Typographic density recomposition gate
+Use this gate whenever a desktop/tablet composition is adapted to a narrow mobile viewport, or when a screen contains enough explanatory/evidence text that body copy risks becoming metadata-sized.
+
+### Locked information
+Responsive work must preserve required information, truth-boundary labels, primary actions, and source/evidence access. `No loss` protects information, not the desktop reading order or desktop line count.
+
+### Allowed recomposition
+At narrow width, explicitly reassign each text object to one of these reading roles:
+- `PRIMARY CLAIM` — first-screen statement; must remain immediately readable;
+- `ACTION` — primary/Return action; must not be demoted below evidence metadata;
+- `CONTEXT` — short orientation text supporting the primary object;
+- `OPTIONAL EXPLANATION` — may move into progressive disclosure/reveal;
+- `EVIDENCE / PROVENANCE` — preserved and reachable, but need not occupy first-screen visual weight;
+- `STATUS / TRUTH BOUNDARY` — compact but legible; never hidden when it changes user interpretation.
+
+Recomposition may change order, line breaks, measure, grouping, disclosure, crop relationship, and spacing. It may not solve density by globally shrinking all typography.
+
+### Native-width tests
+Before promotion, inspect the actual narrow viewport, not only an enlarged artboard:
+1. `3-SECOND READ` — primary object + primary claim + primary action are identifiable without close inspection.
+2. `BODY-SIZE FLOOR` — explanatory body copy has not collapsed into label/metadata size merely to preserve desktop layout.
+3. `ROLE-OFF TEST` — hide optional explanation/evidence detail; the screen still communicates its main task and Return path.
+4. `EXPAND TEST` — reveal deferred explanation/evidence; information remains complete without destroying the primary hierarchy.
+5. `LONG-COPY TEST` — realistic Chinese/English expansion does not force a global type shrink.
+6. `390PX / TARGET NATIVE READBACK` — review at the real target width and pixel density used by the project.
+
+### Hard failures
+- responsive version is a uniformly scaled-down desktop composition;
+- all desktop text remains above the fold only because body copy is reduced to metadata size;
+- evidence/provenance is deleted rather than deferred or reorganized;
+- primary action or Return becomes visually weaker than explanatory copy;
+- title shortening changes the claim rather than recomposing its presentation;
+- narrow layout requires zoom/close inspection to distinguish body text from labels;
+- progressive disclosure is used to hide safety/status/truth information that changes interpretation.
+
+### Promotion test
+`At native narrow width, preserve information but reassign reading roles: the first screen must remain legible without shrinking body text into metadata.`
 
 ## Workflow
 1. Open actual screenshots at target viewport.
@@ -107,11 +106,11 @@ Inspect:
 4. Identify primary visual, primary action/decision, and scene hierarchy.
 5. Run anti-pattern scan: dashboard, card wall, giant header, tiny labels, decorative glow, nested borders, over-framing, generic gradients, unmotivated blur.
 6. Review composition and crop.
-7. Review typography and density.
+7. Review typography and density; invoke the Typographic Density Recomposition Gate for narrow/responsive states.
 8. Review color roles and contrast.
 9. Review layer/depth logic.
 10. Review project specificity.
-11. Review responsive/edge states.
+11. Review responsive/edge states at native target width.
 12. Produce findings by severity; do not average away a weak first visual.
 13. Independent reviewer decides `KEEP / REVISE / REJECT / HOLD` and any numeric score if the project uses one.
 
@@ -136,6 +135,8 @@ PRIMARY VISUAL:
 PRIMARY ACTION / DECISION:
 COMPOSITION:
 TYPOGRAPHY:
+TYPOGRAPHIC ROLE MAP:
+NATIVE-WIDTH READBACK:
 IMAGERY / CROP:
 COLOR / CONTRAST:
 DEPTH / LAYER LOGIC:
@@ -147,4 +148,4 @@ INDEPENDENT VERDICT REQUIRED: YES
 ```
 
 ## Source lineage
-Distilled for OLEANDER from external visual-composition/front-end craft skills such as `ui-visual-composition` and `impeccable`, combined with OLEANDER's existing First Visual Gate, Existing Mature Design First, no-loss, and independent-review rules.
+Distilled for OLEANDER from external visual-composition/front-end craft skills such as `ui-visual-composition` and `impeccable`, combined with OLEANDER's existing First Visual Gate, Existing Mature Design First, no-loss, responsive recomposition, and independent-review rules.
