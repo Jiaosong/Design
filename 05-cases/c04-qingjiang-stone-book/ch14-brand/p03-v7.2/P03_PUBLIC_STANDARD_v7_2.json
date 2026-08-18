@@ -1,0 +1,25 @@
+{
+  "version": "v7.2",
+  "module": "X = middle stone band height",
+  "mark_proportion": "approx 6X × 7.1X",
+  "primary_lockup_gap": "0.75X",
+  "clearspace": "0.5X all four sides",
+  "digital": {
+    "primary": {
+      "preferred": "360px wide",
+      "minimum": "240px wide",
+      "switch_to_mark": "below 240px; 200px sample shown"
+    },
+    "mark": {
+      "preferred": "48px",
+      "minimum": "40px",
+      "switch_to_micro": "32px"
+    },
+    "micro": {
+      "range": "24–32px",
+      "status": "PENDING"
+    }
+  },
+  "physical": "proof required before approval",
+  "image_generation_used": false
+}
