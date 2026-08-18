@@ -1,0 +1,21 @@
+{
+  "object": "CH14-P04",
+  "version": "v1.0",
+  "method": "KN-METHOD-COLOR-SYSTEM-001",
+  "execution": "COMPLETE",
+  "image_generation_used": false,
+  "browser_readback": "desktop/mobile images loaded; no horizontal overflow",
+  "representation_gate": "implemented",
+  "open_proofs": [
+    "print ICC/paper proof",
+    "physical CMF limit samples",
+    "state palette owner",
+    "independent accessibility review"
+  ],
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "does_not_prove": [
+    "Design PASS",
+    "print color match",
+    "physical material match"
+  ]
+}
