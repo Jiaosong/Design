@@ -8,16 +8,35 @@
     "sha256": "1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9",
     "classification": "SOURCE_CARRIER_SUFFICIENT / PROJECT LOCKED TRANSLATION",
     "decision": "REUSE_DIRECT",
-    "mutation": "NONE to route path geometry / branch topology / node placement"
+    "mutation": "NONE to route path geometry / branch topology / node placement",
+    "library_path": "/Oleander/C04_C22/currentization-v3.9/qingjiang_route_guide_translated.svg",
+    "library_file_id": "libfile_2877043734dc81918637ca5650a2b2c0"
   },
+  "production_asset": {
+    "file": "C04_C22_01_SOURCE_CARRIER_REUSE_v3_9.svg",
+    "sha256": "4bb6e6ed3e16bedfb1c8758f18cc45f6bd6aa73dcd4673da873fccbad7c4c41d",
+    "library_path": "/Oleander/C04_C22/currentization-v3.9/C04_C22_01_SOURCE_CARRIER_REUSE_v3_9.svg",
+    "library_file_id": "libfile_a94565c4a3e481918575d028dc33a7d4"
+  },
+  "previews": [
+    {
+      "file": "C04_C22_01_SOURCE_CARRIER_REUSE_v3_9_PREVIEW.png",
+      "sha256": "2a08d7324a5ab42263aa33f0b262f50840d08d696e62b1ed9974e95e8f59ee5e",
+      "library_file_id": "libfile_9bb8874a6cb08191adf5f80ec23946b7"
+    },
+    {
+      "file": "C04_C22_01_SOURCE_CARRIER_REUSE_v3_9_FAR.png",
+      "sha256": "54a35747a65557790267bae8d5fc4ca5ee22196b23e4a105e40e6d0f8c8634df",
+      "library_file_id": "libfile_b6e1f2a9e22c819185b00f80a3bbc3bd"
+    }
+  ],
   "sheet_operations": [
     "place exact carrier at dominant scale",
     "add one C04 interface-zone highlight without creating route edges",
     "add same-source cropped close-read",
     "add source/truth boundary and document metadata"
   ],
-  "supersedes": [
-    "v3.8"
-  ],
+  "supersedes": ["Route v3.8"],
+  "preserves": ["Landscape Analysis v3.8 independent object"],
   "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
 }
