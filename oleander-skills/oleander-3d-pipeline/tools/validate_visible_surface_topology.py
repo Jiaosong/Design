@@ -16,9 +16,9 @@ def require(c,m):
 def validate(d):
     for k in ('schema','revision','opaque_cabin_object','opaque_cabin_exists','opaque_cabin_architecture',
               'opaque_cabin_connected_components','shared_vertex_boundary_count','aperture_boundary_gap_max_m',
-              'open_patch_rim_walls','forbidden_floating_interface_objects','forbidden_floating_interface_count',
-              'real_glazing_objects','no_opaque_surface_behind_glazing_declared','machine_topology_state',
-              'visual_review_state','does_not_prove'):
+              'adjacent_face_normal_flip_count','open_patch_rim_walls','forbidden_floating_interface_objects',
+              'forbidden_floating_interface_count','real_glazing_objects','no_opaque_surface_behind_glazing_declared',
+              'machine_topology_state','visual_review_state','does_not_prove'):
         require(k in d,f'missing:{k}')
     require(d['schema']==SCHEMA,'bad:schema')
     require(d['opaque_cabin_object']=='DERIVED_911_9922_CABIN','bad:opaque_cabin_object')
@@ -27,6 +27,7 @@ def validate(d):
     require(d['opaque_cabin_connected_components']==1,'fail:opaque_cabin_disconnected_islands')
     require(isinstance(d['shared_vertex_boundary_count'],int) and d['shared_vertex_boundary_count']>=4,'fail:shared_vertex_boundaries_insufficient')
     gap=float(d['aperture_boundary_gap_max_m']); require(math.isfinite(gap) and gap<=0.002,'fail:aperture_boundary_gap')
+    require(isinstance(d['adjacent_face_normal_flip_count'],int) and d['adjacent_face_normal_flip_count']==0,'fail:adjacent_face_normal_flip')
     require(d['open_patch_rim_walls'] is False,'fail:open_patch_solidify_rim_walls')
     forbidden=d['forbidden_floating_interface_objects']
     require(isinstance(forbidden,list),'bad:forbidden_floating_interface_objects')
