@@ -113,7 +113,7 @@
     return section('p04','04 / ENVIRONMENT RESPONSE','Reflection Environment Adaptation',`
       <p class="pro04-intro">A controlled digital light-field comparison: Neutral Studio, Soft Interior and Wet-zone. This is environment-response evidence, not physical colour/process validation.</p>
       <div class="pro04-evidence-visual-stage">
-        ${directImage('assets/xj01/pro04-environment-d2-2x3.jpg','VE06 retained environment comparison: D02 and D03 across neutral, soft interior and wet-zone light fields','pro04-image--evidence-board','eager','O+J / D2')}
+        ${directImage('assets/xj01/pro04-environment-d2-2x3.webp','VE06 retained environment comparison: D02 and D03 across neutral, soft interior and wet-zone light fields','pro04-image--evidence-board','eager','O+J / D2')}
         <div class="pro04-evidence-visual-copy">
           <b>Result</b>
           <p>${esc(data.environment.decision)}</p>
@@ -126,7 +126,7 @@
     return section('p05','05 / LIFECYCLE','Use → Wipe → Long-term Appearance',`
       <p class="pro04-intro">Relative digital risk evidence only. Dirty-wiped and PU-aged states are H/D2 stress constructions; they do not predict real ageing.</p>
       <div class="pro04-evidence-visual-stage pro04-evidence-visual-stage--lifecycle">
-        ${directImage('assets/xj01/pro04-lifecycle-d2-2x3.jpg','VE07 retained lifecycle comparison: baseline, dirty-wiped and PU-aged digital risk constructions for D02 and D03','pro04-image--evidence-board','eager','O+H / D2')}
+        ${directImage('assets/xj01/pro04-lifecycle-d2-2x3.webp','VE07 retained lifecycle comparison: baseline, dirty-wiped and PU-aged digital risk constructions for D02 and D03','pro04-image--evidence-board','eager','O+H / D2')}
         <div class="pro04-evidence-visual-copy">
           <b>Risk ownership</b>
           <p>D02 — PU ageing adjacency contrast caution.<br>D03 — wet / dirty-wiped sensitivity caution.</p>
