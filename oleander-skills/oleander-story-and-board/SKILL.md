@@ -38,6 +38,19 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## Same-source paired-view gate
+
+When a story uses a sequence such as `Landscape First → Relation Reveal`, `Object → Explanation`, `Overview → Highlight`, or any paired visual that is meant to deepen the same spatial/design object:
+
+- Both views must derive from the **same authoritative visual geometry or source object**. The reveal may add masks, highlights, callouts, labels, state emphasis, or bounded overlays; it must not silently replace the base object with a cleaner abstract proxy.
+- The first view must remain project-readable with explanatory labels removed. If the base landscape/object/journey cannot be recognized without the second explanatory layer, the pair is not evidence-led and must be REVISE.
+- The second view must reveal only relations that change the audience's understanding or decision. Decorative overlays, redundant labels, and generic methodology graphics do not qualify as a reveal.
+- Record `BASE_SOURCE / BASE_VERSION / PRESENTATION_ONLY_CHANGES / REVEAL_LAYER / DOES_NOT_PROVE` for any paired primary visual.
+- If the reveal layer requires re-authoring geometry to make the argument work, stop and route back to the upstream design/evidence owner instead of repairing the story layer.
+- A layout placeholder or abstract proxy may be used during composition, but it cannot receive `MAIN / KEEP` status until the authoritative asset is actually bound and re-reviewed.
+
+**Promotion test:** `If view A is not project-readable without labels, view B cannot rescue it.` `Abstract proxy ≠ Main visual.`
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
@@ -50,6 +63,7 @@ A visually stronger board that weakens spatial truth is a regression and must be
 8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
 9. Run content, visual, and production reviews separately.
 10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
+11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
 
 ## Deliverable variants
 
@@ -65,6 +79,8 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 
 For any layout containing source-bound spatial evidence, include a short authority-preservation note naming the source object and confirming what was kept unchanged versus presentation-only edits.
 
+For any paired/reveal primary visual, also return a same-source declaration naming the base source/version and the exact overlay/highlight differences between frames.
+
 ## Quality checks
 
 - Claims match approved research.
@@ -75,3 +91,5 @@ For any layout containing source-bound spatial evidence, include a short authori
 - The first visual remains the real project object, journey, landscape, product, or spatial relation — not a methodology dashboard explaining it.
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
+- Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
+- A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
