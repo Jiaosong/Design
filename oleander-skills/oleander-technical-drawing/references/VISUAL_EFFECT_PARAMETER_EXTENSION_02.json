@@ -1,0 +1,77 @@
+{
+  "extension_id": "TD-VFX-PARAM-EXT-02",
+  "version": "0.1",
+  "extends": "VISUAL_EFFECT_PARAMETER_LIBRARY.json",
+  "status": "CANDIDATE / NO_PROMOTION",
+  "boundary": "Second-batch parameters cover conditional optical, cross-skill pass, typography, camera and interaction mechanisms. Values are candidate starting ranges only.",
+  "static_parameters": {
+    "blend_overlay": {
+      "fields": ["source_pass_id", "blend_mode", "opacity", "color_space", "alpha_mode", "off_state"],
+      "allowed_blend_modes": ["normal", "multiply", "screen", "overlay", "soft-light"],
+      "candidate_ranges": {"opacity": [0.04, 0.55]},
+      "fail_if": ["source pass provenance absent", "blend changes technical meaning", "export color/alpha parity fails"]
+    },
+    "dash_rhythm": {
+      "fields": ["dash_array", "dash_offset", "stroke_px", "linecap", "meaning", "off_state"],
+      "candidate_ranges": {"stroke_px": [0.5, 4.0], "dash_segment_px": [2, 28], "gap_segment_px": [2, 28]},
+      "fail_if": ["dash implies speed/direction without evidence", "semantic classes become indistinguishable at FAR scale"]
+    },
+    "hillshade_pass": {
+      "fields": ["source_pass_id", "registration_ref", "azimuth_deg", "altitude_deg", "opacity", "blend_mode", "off_state"],
+      "candidate_ranges": {"azimuth_deg": [0, 360], "altitude_deg": [15, 75], "opacity": [0.08, 0.5]},
+      "fail_if": ["no DEM/GIS/source pass", "registration absent", "used as real sun/shadow evidence"]
+    },
+    "ao_depth_pass": {
+      "fields": ["source_pass_id", "camera_ref", "geometry_revision_ref", "object_id_mask_ref", "blend_mode", "opacity", "off_state"],
+      "candidate_ranges": {"opacity": [0.08, 0.55]},
+      "fail_if": ["camera mismatch", "geometry revision mismatch", "AO is treated as real lighting truth"]
+    },
+    "source_clip_reveal": {
+      "fields": ["source_visual_id", "clip_geometry", "feather_px", "required_labels_preserved", "off_state"],
+      "candidate_ranges": {"feather_px": [0, 18]},
+      "fail_if": ["scale/status/source label removed", "crop changes source meaning"]
+    }
+  },
+  "motion_parameters": {
+    "topology_morph": {
+      "fields": ["state_a_id", "state_b_id", "correspondence_map", "topology_class", "duration_ms", "easing", "intermediate_state_policy"],
+      "candidate_ranges": {"duration_ms": [220, 760]},
+      "fail_if": ["static endpoint invalid", "intermediate state creates false topology"]
+    },
+    "refraction_motion": {
+      "fields": ["mask_id", "scale_from_px", "scale_to_px", "frequency", "seed", "duration_ms", "easing"],
+      "candidate_ranges": {"scale_px": [0, 18], "frequency": [0.01, 0.12], "duration_ms": [280, 900]},
+      "fail_if": ["map-bound geometry displaced", "generic glitch/liquid effect"]
+    },
+    "kinetic_type": {
+      "fields": ["text_role", "axis_or_property", "from_value", "to_value", "duration_ms", "easing", "static_hierarchy_ref"],
+      "candidate_ranges": {"duration_ms": [180, 620]},
+      "fail_if": ["technical label detaches from carrier", "animation replaces static hierarchy"]
+    },
+    "camera_motion": {
+      "fields": ["model_authority_ref", "camera_start", "camera_end", "target_id", "duration_ms", "easing", "static_projection_refs"],
+      "candidate_ranges": {"duration_ms": [600, 2400], "orbit_deg": [0, 65], "dolly_relative": [-0.3, 0.3]},
+      "fail_if": ["showroom orbit", "camera hides scale/joint evidence", "no authoritative model"]
+    },
+    "cursor_response": {
+      "fields": ["affordance_role", "max_displacement_px", "response_curve", "pointer_baseline", "touch_fallback", "keyboard_fallback"],
+      "candidate_ranges": {"max_displacement_px": [1, 14]},
+      "fail_if": ["full-page cursor replacement", "touch/keyboard equivalent absent"]
+    },
+    "smooth_scroll": {
+      "fields": ["synchronization_reason", "native_scroll_baseline", "nested_scroll_policy", "focus_keyboard_policy", "rollback_plan"],
+      "candidate_default": "OFF",
+      "fail_if": ["added only for polish", "native scroll/focus breaks"]
+    },
+    "view_transition": {
+      "fields": ["stable_anchor_id", "source_view", "target_view", "duration_ms", "easing", "navigation_baseline"],
+      "candidate_ranges": {"duration_ms": [180, 520]},
+      "fail_if": ["no continuity anchor", "navigation blocked", "focus/history breaks"]
+    },
+    "drag_inertia": {
+      "fields": ["interaction_role", "axis", "bounds", "interrupt_behavior", "spring_or_inertia", "keyboard_equivalent"],
+      "candidate_ranges": {"stiffness": [120, 420], "damping": [18, 42], "mass": [0.7, 1.4]},
+      "fail_if": ["decorative bounce", "interaction changes source data", "cannot interrupt"]
+    }
+  }
+}
