@@ -6,9 +6,11 @@ spec=importlib.util.spec_from_file_location('topoval',TOOL);mod=importlib.util.m
 
 def valid():
  return {
-  'schema':'oleander.3d.visible-surface-topology-receipt.v1','revision':'V26',
+  'schema':'oleander.3d.visible-surface-topology-receipt.v1','revision':'V27',
   'opaque_cabin_object':'DERIVED_911_9922_CABIN','opaque_cabin_exists':True,
-  'opaque_cabin_architecture':'INTEGRATED_CABIN_APERTURE_SURFACE_V26',
+  'opaque_cabin_architecture':'CONNECTED_SHARED_BOUNDARY_CABIN_V27',
+  'opaque_cabin_connected_components':1,'shared_vertex_boundary_count':6,
+  'aperture_boundary_gap_max_m':0.0004,'open_patch_rim_walls':False,
   'forbidden_floating_interface_objects':[],'forbidden_floating_interface_count':0,
   'real_glazing_objects':['REF_WINDSHIELD','REF_DOOR_GLASS_L','REF_DOOR_GLASS_R','REF_QUARTER_GLASS_L','REF_QUARTER_GLASS_R','REF_REAR_GLASS'],
   'no_opaque_surface_behind_glazing_declared':True,
@@ -16,7 +18,19 @@ def valid():
   'does_not_prove':['Class-A continuity','reference fidelity']}
 
 class T(unittest.TestCase):
- def test_valid(self):self.assertEqual(mod.validate(valid())['machine_topology_state'],'MACHINE_CONSTRUCTED_VISUAL_HOLD')
+ def test_valid(self):self.assertEqual(mod.validate(valid())['opaque_cabin_connected_components'],1)
+ def test_disconnected_islands_fail(self):
+  d=valid();d['opaque_cabin_connected_components']=4
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_shared_vertex_count_fails(self):
+  d=valid();d['shared_vertex_boundary_count']=2
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_boundary_gap_fails(self):
+  d=valid();d['aperture_boundary_gap_max_m']=.006
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_open_patch_rim_wall_fails(self):
+  d=valid();d['open_patch_rim_walls']=True
+  with self.assertRaises(ValueError):mod.validate(d)
  def test_floating_patch_fails(self):
   d=valid();d['forbidden_floating_interface_objects']=['REF_C_PILLAR_SAIL_L'];d['forbidden_floating_interface_count']=1
   with self.assertRaises(ValueError):mod.validate(d)
