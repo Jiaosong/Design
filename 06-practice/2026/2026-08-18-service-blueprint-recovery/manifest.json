@@ -1,0 +1,29 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-SERVICE-BLUEPRINT-RECOVERY",
+  "topic": "Service blueprint failure/recovery and responsibility binding",
+  "project_trigger": "C04 v0.2 CH09-P06: backstage support for Return",
+  "canonical_method": "FW-SERVICE-DESIGN-001",
+  "candidate_rule": "ACTOR/TASK → FRONTSTAGE STATE → BACKSTAGE CONFIRMATION → SUPPORT/OWNER → FAILURE INJECTION → RECOVERY → FEEDBACK",
+  "design_crit": {
+    "v1": "REJECT — success-only lanes assume backstage status, capacity and handoff always work",
+    "v2": "REVISE — failure inventory exists but is detached from stage/backstage causality",
+    "v3": "KEEP FOR TRAINING — failure is stage-bound; recovery connects visible action, backstage confirmation and owner/capacity interfaces"
+  },
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "operator_sla": "OPEN / NOT ASSERTED",
+    "staff_capacity": "OPEN / NOT ASSERTED",
+    "transport_availability": "OPEN / NOT ASSERTED"
+  },
+  "local_artifact_sha256": {
+    "service_blueprint_v1.svg": "deffeb35adebbffd46ec5d9c1c5dfd13a846003fded89a4c1828d223760b502d",
+    "service_blueprint_v1.png": "9c9395133b4617d411c3131b125f6a94f85999d64814f0cb941f838194e33c92",
+    "service_blueprint_v2.svg": "9d000974dad9c222e9cddf3561b64fc3de16816cb7c84643b8bab12886bb7daa",
+    "service_blueprint_v2.png": "e8780eb1613635fd6daf9aa0035c815d5224c307e7ed2c7cd65bf4aec6168317",
+    "service_blueprint_v3.svg": "77b19b7f8de67e0fe09d6558b24ad927e4079c61c3ba1a245574f97f5692ae1f"
+  },
+  "runtime_note": "SVG and PNG were rendered and reopened locally. Repository stores the editable SVG and training record; local PNG derivatives are review evidence, not production authority."
+}
