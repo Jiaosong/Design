@@ -1,6 +1,6 @@
 {
   "recipe_library_id": "TD-SVG-RECIPES-001",
-  "version": "0.1",
+  "version": "0.2",
   "status": "CANDIDATE / NO_PROMOTION",
   "parameter_library": "../references/VISUAL_EFFECT_PARAMETER_LIBRARY.json",
   "rules": [
@@ -8,7 +8,8 @@
     "ANALYTICAL_FIELD recipes require mapped_variable and legend_id.",
     "REFERENCE_FIDELITY recipes must not invent effects absent from source.",
     "Recipe output is a graphic carrier, not material or field truth.",
-    "Any recipe modifying map-bound or authoritative geometry is rejected unless the source itself contains that modulation."
+    "Any recipe modifying map-bound or authoritative geometry is rejected unless the source itself contains that modulation.",
+    "3D/GIS derived passes remain owned by their source model/data workflow and may only be composited without altering projected geometry."
   ],
   "recipes": [
     {
@@ -114,6 +115,89 @@
       "output_elements": ["mask", "secondary edge or filter"],
       "off_state": "authoritative clean edge remains",
       "failure_triggers": ["authoritative boundary altered", "fake weathering/material fact", "small-size legibility loss"]
+    },
+    {
+      "recipe_id": "SVG-R11-BLUR-FOCUS",
+      "name": "Static focus hierarchy / context blur",
+      "roles": ["HIERARCHY_RECESSION", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "feGaussianBlur applied only to non-authoritative context group",
+      "required_params": ["semantic_owner_id", "surface_role", "focus_target_id", "std_deviation_px", "off_state"],
+      "output_elements": ["defs/filter", "feGaussianBlur", "context group"],
+      "off_state": "restore sharp context and preserve hierarchy by tone/opacity/stroke",
+      "failure_triggers": ["text/evidence becomes unreadable", "blur implies uncertainty without legend", "authoritative geometry is blurred"]
+    },
+    {
+      "recipe_id": "SVG-R12-HALFTONE",
+      "name": "Deterministic halftone / print-density field",
+      "roles": ["ANALYTICAL_FIELD", "REFERENCE_FIDELITY", "MATERIAL_SURFACE"],
+      "mechanism": "pattern/circle lattice with size or spacing mapping",
+      "required_params": ["semantic_owner_id", "surface_role", "cell_px", "dot_radius_px", "angle_deg", "mapping", "mask_id", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["mapped_variable", "legend_id", "domain"]},
+      "output_elements": ["defs/pattern", "circle lattice", "mask/clip"],
+      "off_state": "flat/data-equivalent field remains",
+      "failure_triggers": ["moire at target size", "dot size implies data without model", "print effect used as generic retro styling"]
+    },
+    {
+      "recipe_id": "SVG-R13-PAPER-FIBER",
+      "name": "Paper fiber / substrate atmosphere",
+      "roles": ["PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "low-opacity turbulence + directional fine-line overlay",
+      "required_params": ["semantic_owner_id", "surface_role", "frequency", "octaves", "seed", "opacity", "warmth_shift", "off_state"],
+      "output_elements": ["feTurbulence", "feColorMatrix", "fine-line pattern"],
+      "off_state": "clean paper/background fill",
+      "failure_triggers": ["substrate competes with technical linework", "exact reconstruction invents paper character absent from source", "texture becomes sepia/nostalgia styling"]
+    },
+    {
+      "recipe_id": "SVG-R14-BLEND-OVERLAY",
+      "name": "Controlled source/pass blend overlay",
+      "roles": ["HIERARCHY_RECESSION", "REFERENCE_FIDELITY", "MATERIAL_SURFACE"],
+      "mechanism": "feBlend / mix-blend-mode with source-bound pass",
+      "required_params": ["semantic_owner_id", "surface_role", "source_pass_id", "blend_mode", "opacity", "off_state"],
+      "output_elements": ["source pass", "feBlend or composited group"],
+      "off_state": "remove pass; base vector geometry remains",
+      "failure_triggers": ["blend changes source truth-state", "export color/alpha parity fails", "blend obscures labels or dimensions"]
+    },
+    {
+      "recipe_id": "SVG-R15-DASH-RHYTHM",
+      "name": "Semantic dash / interval rhythm",
+      "roles": ["ANALYTICAL_FIELD", "HIERARCHY_RECESSION", "REFERENCE_FIDELITY"],
+      "mechanism": "stroke-dasharray + dashoffset + linecap",
+      "required_params": ["semantic_owner_id", "surface_role", "dash_array", "dash_offset", "stroke_px", "linecap", "meaning", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["legend_id"]},
+      "output_elements": ["path stroke pattern"],
+      "off_state": "solid/alternate line class with same topology",
+      "failure_triggers": ["dash rhythm implies direction/speed without evidence", "different meanings share indistinguishable dash", "FAR-scale rhythm collapses"]
+    },
+    {
+      "recipe_id": "SVG-R16-HILLSHADE-PASS",
+      "name": "Source-derived terrain hillshade overlay",
+      "roles": ["ANALYTICAL_FIELD", "HIERARCHY_RECESSION"],
+      "mechanism": "registered GIS/DEM-derived hillshade raster + clip + opacity/blend",
+      "required_params": ["semantic_owner_id", "surface_role", "source_pass_id", "registration_ref", "azimuth_deg", "altitude_deg", "opacity", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["source_binding", "legend_or_method_note"]},
+      "output_elements": ["registered image/pass", "clipPath", "opacity/blend"],
+      "off_state": "terrain source/base geometry remains without relief shading",
+      "failure_triggers": ["fake hillshade from decorative gradient", "azimuth interpreted as real sun study", "registration/CRS absent"]
+    },
+    {
+      "recipe_id": "SVG-R17-AO-DEPTH-PASS",
+      "name": "3D-derived AO / depth contact overlay",
+      "roles": ["HIERARCHY_RECESSION", "REFERENCE_FIDELITY"],
+      "mechanism": "same-camera AO/depth pass + object-ID mask + multiply/opacity",
+      "required_params": ["semantic_owner_id", "surface_role", "source_pass_id", "camera_ref", "geometry_revision_ref", "blend_mode", "opacity", "off_state"],
+      "output_elements": ["registered pass image", "object/material ID mask", "blend group"],
+      "off_state": "clean projected geometry remains",
+      "failure_triggers": ["camera mismatch", "geometry revision mismatch", "AO treated as physical lighting evidence", "pass changes component boundary"]
+    },
+    {
+      "recipe_id": "SVG-R18-SOURCE-CLIP-REVEAL",
+      "name": "Source-authority safe crop / clip / fade",
+      "roles": ["HIERARCHY_RECESSION", "REFERENCE_FIDELITY"],
+      "mechanism": "clipPath/mask around direct source visual",
+      "required_params": ["semantic_owner_id", "surface_role", "source_visual_id", "clip_geometry", "feather_px", "required_labels_preserved", "off_state"],
+      "output_elements": ["source image", "clipPath/mask", "optional feather"],
+      "off_state": "full source visual",
+      "failure_triggers": ["crop removes scale/status/source labels", "crop changes technical meaning", "presentation derivative gains stronger authority"]
     }
   ]
 }
