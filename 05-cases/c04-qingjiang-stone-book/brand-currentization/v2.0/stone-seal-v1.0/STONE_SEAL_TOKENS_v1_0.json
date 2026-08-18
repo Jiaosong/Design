@@ -1,0 +1,33 @@
+{
+  "package": "C04_QINGJIANG_STONE_SEAL_v1_0",
+  "version": "v1.0",
+  "status": "CURRENT PRODUCER CANDIDATE / IDENTITY SYSTEM DEEPENED / INDEPENDENT DESIGN REVIEW PENDING",
+  "current_methods": [
+    "KN-METHOD-BRAND-IDENTITY-001",
+    "T-VISUAL-IMAGE-OPS-001"
+  ],
+  "geometry_authority": "../stone-seal-v0.6/QJ_STONE_SEAL_FLAT_MASTER_v0_6.svg",
+  "geometry_relation": "UNCHANGED_TOPOLOGY_REUSED_NO_MATERIAL_DELTA",
+  "surface_states": {
+    "ink_print": "paper tooth + pigment density + absorbed edge",
+    "blind_emboss": "carrier relief + directional light + zero ink",
+    "digital": "controlled tonal depth + minimal grain",
+    "small_service": "effect-off clarity"
+  },
+  "lockup_family": ["signature", "compact", "reverse"],
+  "applications": ["guide_cover", "map_corner", "memory_card", "digital_header", "return_marker"],
+  "presence": ["FULL", "LIGHT", "TRACE", "OFF"],
+  "recovery": {
+    "drive_file_id": "1ToYc_iFg5jkx5fvnl-1b5ls_rW1_ylFU",
+    "file": "C04_QINGJIANG_STONE_SEAL_v1_0.zip",
+    "bytes": 85064797,
+    "sha256": "22e9252da66dc5aefb06538b8cff6d2b7d27e1990d53f393c19367eb1fb3b317"
+  },
+  "truth": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  },
+  "does_not_prove": "Design PASS / MAIN KEEP / physical print or emboss performance / operator approval / trademark approval"
+}
