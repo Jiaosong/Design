@@ -1,0 +1,19 @@
+{
+  "artifact": "C04_GIS_REDO_SPLIT_v0.2.1.zip",
+  "drive_file_id": "1n_Qyz_BN4VFP45nUHKrmRW4FrhF60s9_",
+  "retrieved_bytes": 3032975,
+  "retrieved_sha256": "1c01ab71486183348e96fc27f738e200592e6a88f3a46fc8b77cc86913c3d075",
+  "rebuilt_bytes": 3032975,
+  "rebuilt_sha256": "1c01ab71486183348e96fc27f738e200592e6a88f3a46fc8b77cc86913c3d075",
+  "byte_equivalence": true,
+  "persistence_state": "PASS",
+  "design_state": "INDEPENDENT DESIGN REVIEW PENDING",
+  "does_not_prove": [
+    "Professional Design PASS",
+    "AOI land-cover pixel completeness",
+    "AOI water-history pixel completeness",
+    "field observation",
+    "field measurement",
+    "engineering validity"
+  ]
+}
