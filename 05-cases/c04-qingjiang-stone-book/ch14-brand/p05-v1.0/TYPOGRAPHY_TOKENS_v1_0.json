@@ -1,0 +1,60 @@
+{
+  "object": "CH14-P05",
+  "version": "v1.0",
+  "principle": "CONTEMPORARY EDITORIAL + LANDSCAPE SPACE",
+  "families": {
+    "display_cn": {"typeface":"Noto Serif CJK SC","weights":[400,700],"role":"Hero / chapter / editorial emphasis"},
+    "body_cn": {"typeface":"Noto Sans CJK SC","weights":[400,700],"role":"Body / service / captions / UI"},
+    "display_latin": {"typeface":"Inter Display","weights":[400,500,600,700],"role":"English display / headings"},
+    "body_latin": {"typeface":"Inter","weights":[400,500,600,700],"role":"English body / navigation / UI"},
+    "technical": {"typeface":"Noto Sans Mono CJK SC","weights":[400,700],"role":"IDs / data / source / status / units"}
+  },
+  "logo_boundary": "Official QINGJIANG STONE BOOK wordmark is outlined artwork from P03 and must not be rebuilt from these editorial typefaces.",
+  "case_rules": {
+    "official_wordmark": "QINGJIANG STONE BOOK — outlined master only",
+    "editorial_name": "Qingjiang Stone Book — Title Case in English prose",
+    "english_headings": "Sentence case by default",
+    "system_labels": "Short ALL CAPS permitted",
+    "technical_ids": "R01–R13 / FIELD=0 / G1F HOLD / NTS — uppercase / tabular figures",
+    "public_abbreviation": "Do not use QSB as public-facing shorthand"
+  },
+  "tracking": {
+    "cn_display": "0 to +0.02em current calibration",
+    "cn_body": "0",
+    "latin_display": "-0.02em to 0",
+    "latin_body": "0",
+    "meta_uppercase": "+0.12em to +0.15em"
+  },
+  "desktop_scale": {
+    "hero": {"family":"display_cn","size_px":72,"weight":400,"line_height":1.06},
+    "h1": {"family":"display_cn","size_px":56,"weight":400,"line_height":1.08},
+    "h2": {"family":"display_cn","size_px":40,"weight":400,"line_height":1.15},
+    "deck": {"family":"display_cn","size_px":28,"weight":400,"line_height":1.42},
+    "body": {"family":"body_cn","size_px":17,"weight":400,"line_height":1.82},
+    "body_small": {"family":"body_cn","size_px":15,"weight":400,"line_height":1.72},
+    "caption": {"family":"body_cn","size_px":12.5,"weight":400,"line_height":1.6},
+    "meta": {"family":"body_latin","size_px":10,"weight":600,"line_height":1.4,"tracking_em":0.14},
+    "data": {"family":"technical","size_px":12,"weight":400,"line_height":1.55}
+  },
+  "mobile_scale": {
+    "hero": {"size_px":48,"line_height":1.06},
+    "h1": {"size_px":38,"line_height":1.1},
+    "h2": {"size_px":30,"line_height":1.18},
+    "deck": {"size_px":24,"line_height":1.42},
+    "body": {"size_px":16,"line_height":1.7},
+    "caption": {"size_px":12,"line_height":1.55},
+    "meta": {"size_px":10,"line_height":1.35}
+  },
+  "measure": {
+    "cn_body": "current web calibration ≈ 28–34 CJK characters per line depending on page role",
+    "latin_body": "current long-form calibration ≈ 58–66ch",
+    "note": "project calibration only; not a universal typography rule"
+  },
+  "bilingual": {
+    "first_read": "Chinese",
+    "second_read": "English",
+    "rule": "Do not force identical scale, line count or tracking across scripts."
+  },
+  "production_boundary": "Exact font file/version/license/browser-print runtime must be re-checked at release. Font files are not distributed in this package.",
+  "does_not_prove": ["font license approval","accessibility conformance","print proof","independent Design PASS"]
+}
