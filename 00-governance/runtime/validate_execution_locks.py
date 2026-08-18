@@ -124,9 +124,9 @@ def validate_receipt_contract() -> dict:
     data = load_json(RECEIPT_CONTRACT)
     if data.get("version") != "1.0" or data.get("policy_revision") != "1.1":
         fail("Execution Receipt must be v1.0 policy revision 1.1")
-    core = set(data.get("required_core_fields", []))
-    if not {"constraint_lock", "flow_completion"}.issubset(core):
-        fail("new Receipt core must require constraint_lock and flow_completion")
+    additional = set(data.get("policy_1_1_additional_required_core_fields", []))
+    if additional != {"constraint_lock", "flow_completion"}:
+        fail("policy 1.1 must add exactly constraint_lock and flow_completion")
     legacy = set(data.get("legacy_receipts_without_policy_1_1_fields", []))
     expected_legacy = {
         "EXR-20260818-PR246-IMAGE-OPS-ADAPTER",
@@ -168,6 +168,7 @@ def validate_cases() -> None:
 
 def validate_new_receipts(contract: dict) -> int:
     legacy = set(contract.get("legacy_receipts_without_policy_1_1_fields", []))
+    additional = contract.get("policy_1_1_additional_required_core_fields", [])
     constraint_fields = contract.get("constraint_lock_required_fields", [])
     flow_fields = contract.get("flow_completion_required_fields", [])
     constraint_record_fields = contract.get("constraint_record_required_fields", [])
@@ -180,7 +181,7 @@ def validate_new_receipts(contract: dict) -> int:
         if rid in legacy:
             continue
         current_policy_count += 1
-        require_present(r, ["constraint_lock", "flow_completion"], f"receipt:{rid}")
+        require_present(r, additional, f"receipt:{rid}")
         lock = r["constraint_lock"]
         require_present(lock, constraint_fields, f"receipt:{rid}:constraint_lock")
         for item in lock.get("active_constraints", []):
