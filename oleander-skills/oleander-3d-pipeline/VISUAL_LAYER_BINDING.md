@@ -23,6 +23,46 @@ Do not impose the OLEANDER portfolio Visual Bible color/light recipe on unrelate
 
 Use `T-VISUAL-IMAGE-OPS-001` for render passes, masks/alpha, layer compositing, exposure/color adjustment, Smart Object-linked render replacement, bounded atmospheric treatment and vector-safe annotation/effect work. Preserve the original render and geometry-derived source. Post-processing, retouch, generative background/people/sky replacement or distortion may create a presentation derivative, but may not repair or conceal invalid geometry, scale, construction, field truth or material logic. `2D FAUX 3D ≠ GEOMETRIC 3D` remains hard.
 
+## Interaction cue escalation gate
+
+When CMF, surface treatment or rendered appearance is being used to communicate a physical action, do not credit hue/value/finish as the primary interaction proof until the action survives removal of those later visual cues.
+
+Default cue escalation order for physical-product interaction studies:
+
+`GEOMETRY / STATE FEEDBACK → TACTILE / SURFACE → MARKING → VALUE → HUE / CHROMA`.
+
+Rules:
+
+1. Geometry/state feedback owns the primary action relation whenever practical: travel direction, stop/detent, exposed/hidden state, mechanical separation, hinge/pivot, squeeze zone, slide channel or release boundary.
+2. Tactile/surface cues may reinforce grip, contact or manipulation zones but may not invent an action unsupported by geometry/state feedback.
+3. Marking may clarify an already legible action; text/arrow labels are not accepted as the sole discoverability mechanism for routine manipulation.
+4. Value and hue/chroma are salience amplifiers. They may strengthen part distinction or state recognition but may not be used to claim reliable Slide/Wring/Release semantics by themselves.
+5. A visually attractive render is a presentation carrier, not evidence that an ambiguous interaction is discoverable.
+6. For wet-hand, force-dependent, safety-relevant or repeated-use interactions, digital visual proof remains incomplete until the corresponding physical task is tested.
+
+### Required failure-seeking readback
+
+For every interaction-signalling CMF study, run these removals in order and record the result:
+
+- `COLOR_OFF` — remove hue/chroma. Intended action must remain inferable.
+- `MARK_OFF` — remove text/arrows/printed symbols. Geometry + state + tactile structure should still carry the core action.
+- `SURFACE_OFF` — remove ribs/texture/finish differences. If the action collapses completely, state whether geometry must change or whether tactile-only discovery is intentionally being tested physically.
+- `POLISH_OFF` — inspect neutral-light / low-style output so highlight control, glossy edges or dramatic lighting cannot masquerade as interaction clarity.
+
+Hard failures:
+
+- hue/value is the only reason a movable or releasable part appears actionable;
+- a stronger local contrast is treated as proof of action direction;
+- render polish hides that two mechanically different states have the same silhouette/state relation;
+- a diagnostic exploded/reveal view is used to claim normal-use discoverability without a normal-use carrier;
+- physical interaction risk is promoted from digital evidence alone.
+
+Record at minimum:
+
+`INTERACTION_ID / TARGET_ACTION / PRIMARY_GEOMETRY_CUE / STATE_FEEDBACK / TACTILE_CUE / MARKING_CUE / VALUE_CUE / HUE_CUE / COLOR_OFF_RESULT / MARK_OFF_RESULT / SURFACE_OFF_RESULT / PHYSICAL_VALIDATION_REQUIRED / DOES_NOT_PROVE`.
+
+Promotion test: **Remove hue, marking and texture in that order: the intended action must remain inferable from geometry/state feedback before any CMF signal is credited.**
+
 ## Review inheritance
 
 Review real renders and model views at the intended camera distance. `Render PASS ≠ Design PASS`; material/light success does not promote geometry, field evidence or engineering truth.
