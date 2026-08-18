@@ -35,28 +35,41 @@
       "notion_canonical_id": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
       "notion_object_id": "3c0b86be-5c47-8162-993d-f939a1c2bf03",
       "knowledge_role": "METHOD",
+      "notion_governance_state": "ACTIVE",
+      "notion_last_verified": "2026-08-18",
       "github_owner": "runtime-governance",
       "github_paths": [
-        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md",
-        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json",
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md",
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
         "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
         "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
       ],
-      "implemented_revision": "resolver-v1.1-owner-map-v1.0",
+      "implemented_revision": "resolver-v1.2-owner-map-v1.0-execution-contract-layer-v0.1",
+      "implementation_commit": "branch:agent/skill-runtime-closure-v1-2",
+      "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py",
+      "last_verified": "2026-08-18",
       "drift_state": "UNKNOWN",
-      "drift_reason": "live check required at run time"
+      "drift_reason": "GitHub v1.2 implementation is under branch validation; live Notion pointer must be checked after merge before CURRENT can be claimed.",
+      "next_action": "LIVE_CROSS_PLATFORM_CHECK_AFTER_MERGE_AND_NOTION_POINTER_UPDATE",
+      "does_not_prove": ["method_quality", "design_quality", "project_promotion"]
     },
     {
       "mapping_id": "visual-image-ops-current",
       "notion_canonical_id": "T-VISUAL-IMAGE-OPS-001",
       "notion_object_id": "3c0b86be-5c47-8142-bab6-e6cac9306bd2",
       "knowledge_role": "TOOL",
+      "notion_governance_state": "ACTIVE",
+      "notion_last_verified": "2026-08-18",
       "github_owner": "shared_tool_adapter",
-      "github_paths": ["**/VISUAL_LAYER_BINDING.md"],
+      "github_paths": ["**/VISUAL_LAYER_BINDING.md", "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json"],
       "implemented_revision": "verified-2026-08-18",
       "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
-      "drift_state": "UNKNOWN",
-      "drift_reason": "live check required at run time"
+      "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py",
+      "last_verified": "2026-08-18",
+      "drift_state": "CURRENT",
+      "drift_reason": "Live Notion Current TOOL and GitHub 11-consumer binding were both read back on 2026-08-18; adapter field completion does not alter the Canonical TOOL identity.",
+      "next_action": "NO_ACTION",
+      "does_not_prove": ["visual_quality", "design_keep", "field_truth", "promotion"]
     }
   ],
   "hard_guards": ["notion_identity_remains_upstream", "github_static_check_cannot_claim_live_current", "missing_mapping_does_not_authorize_new_skill"],
