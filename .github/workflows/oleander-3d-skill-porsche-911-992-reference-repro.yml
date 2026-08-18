@@ -15,18 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V45 runtime
+      - name: Validate Skill and V46 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v45.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v46.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_candidate_revision_coherence.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py \
-            oleander-skills/oleander-3d-pipeline/tools/validate_final_derived_surface.py
+            oleander-skills/oleander-3d-pipeline/tools/validate_final_derived_surface.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_surface_patch_assembly.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -35,35 +36,35 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build V45 open-aperture shell candidate
+      - name: Build V46 explicit-cabin assembly candidate
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v45.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v46.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py "$OUT"
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V45 evidence without self-promotion
+      - name: Verify V46 evidence without self-promotion
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
           out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
-          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text());g=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT.json').read_text());i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text());d=json.loads((out/'FINAL_DERIVED_SURFACE_RECEIPT.json').read_text());a=json.loads((out/'FINAL_APERTURE_BOUNDARY_DIAGNOSTIC.json').read_text())
+          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text());g=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT.json').read_text());i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text());d=json.loads((out/'FINAL_DERIVED_SURFACE_RECEIPT.json').read_text());a=json.loads((out/'SURFACE_PATCH_ASSEMBLY_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED'
-          assert q['primary_form_stage']=='OPEN_SURFACE_APERTURE_SHELL'
-          assert p['candidate_revision']=='V45_OPEN_SURFACE_APERTURE_SHELL'
+          assert q['primary_form_stage']=='EXPLICIT_CABIN_SURFACE_ASSEMBLY'
+          assert p['candidate_revision']=='V46_EXPLICIT_CABIN_SURFACE_ASSEMBLY'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
           assert s['machine_surface_state'] in ('MACHINE_CONSTRUCTED_VISUAL_HOLD','MACHINE_SURFACE_TOPOLOGY_FAIL')
           assert g['promotion_decision'] in ('KEEP_LKG_HOLD_EXPERIMENT','KEEP_LKG_REJECT_EXPERIMENT')
           assert i['machine_identity_state'] in ('MACHINE_SCREENED_VISUAL_HOLD','MACHINE_REJECT')
           assert d['topology_mode']=='OPEN_SURFACE_APERTURE_SHELL'
           assert d['machine_finish_state'] in ('MACHINE_SURFACED_VISUAL_HOLD','MACHINE_SURFACE_FINISH_REJECT')
-          assert a['candidate_revision']=='V45_OPEN_SURFACE_APERTURE_SHELL'
+          assert a['machine_assembly_state'] in ('MACHINE_ASSEMBLED_VISUAL_HOLD','MACHINE_ASSEMBLY_REJECT')
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print(json.dumps({'execution':'PASS','projection':p['status'],'regression':g['promotion_decision'],'source_surface':s['machine_surface_state'],'derived_surface':d['machine_finish_state'],'expected_boundary_edges':d['expected_aperture_boundary_edge_count'],'boundary_loops':d['aperture_boundary_loop_count'],'unexpected_nonmanifold':d['unexpected_nonmanifold_edge_count'],'slivers':d['aperture_region_sliver_face_count'],'identity':i['machine_identity_state']},indent=2))
+          print(json.dumps({'execution':'PASS','projection':p['status'],'regression':g['promotion_decision'],'source_surface':s['machine_surface_state'],'lower_body_surface':d['machine_finish_state'],'assembly':a['machine_assembly_state'],'assembly_gap_m':a['max_shared_boundary_gap_m'],'opaque_patches':a['opaque_patch_count'],'glass_patches':a['glass_patch_count'],'identity':i['machine_identity_state']},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
@@ -71,6 +72,7 @@ jobs:
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_candidate_revision_coherence.py out/OLEANDER_Porsche_911_992_Reference_Repro
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_FORM_IDENTITY_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_final_derived_surface.py out/OLEANDER_Porsche_911_992_Reference_Repro/FINAL_DERIVED_SURFACE_RECEIPT.json
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_surface_patch_assembly.py out/OLEANDER_Porsche_911_992_Reference_Repro/SURFACE_PATCH_ASSEMBLY_RECEIPT.json
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
