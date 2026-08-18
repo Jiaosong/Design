@@ -1,0 +1,23 @@
+{
+  "artifact": "C04_APP_ROUTE03_CURRENTIZATION_v0_1",
+  "purpose": "Preserve C04 project-specific interaction semantics while consuming current oleander-game-ui v0.1.1 Exploration Motion Grammar Gate.",
+  "project_semantics_authority": ["INTENT", "SCOUT", "COMMIT", "REVEAL", "RETREAT", "RETURN"],
+  "reusable_skill_grammar": ["SEEK", "APPROACH", "FOCUS", "ENTER", "REVEAL", "WITHDRAW", "RETURN"],
+  "mapping": [
+    {"c04":"INTENT","skill":["SEEK"],"role":"world first / route available before optional detail"},
+    {"c04":"SCOUT","skill":["APPROACH","FOCUS"],"role":"increase local legibility and establish one active source-bound anchor without opening a panel"},
+    {"c04":"COMMIT","skill":["ENTER"],"role":"enter one local context while preserving route-world continuity"},
+    {"c04":"REVEAL","skill":["REVEAL"],"role":"optional explanation secondary to world"},
+    {"c04":"RETREAT","skill":["WITHDRAW"],"role":"clear sheet/selection residue and restore route exploration"},
+    {"c04":"RETURN","skill":["RETURN"],"role":"priority interrupt; bypass lower-priority choreography"}
+  ],
+  "non_substitution_rule": "Reusable Skill grammar does not rename or supersede C04 Current Authority terms; it calibrates motion/behavior coverage only.",
+  "coverage_in_this_module": {
+    "ROUTE": ["SEEK","APPROACH","FOCUS","ENTER","REVEAL","WITHDRAW","RETURN"],
+    "TODAY": "OUT_OF_BOUNDED_MODULE / FULL APP REGRESSION REQUIRED",
+    "MY_BOOK": "OUT_OF_BOUNDED_MODULE / FULL APP REGRESSION REQUIRED",
+    "SERVICE_RETURN": ["RETURN"],
+    "READ_R06_R13": "OUT_OF_BOUNDED_MODULE / PATCH CONTRACT ONLY"
+  },
+  "truth_boundary": "Runtime and grammar coverage do not establish independent Design PASS."
+}
