@@ -1,4 +1,4 @@
-# OLEANDER Technical Drawing — Procedural Effect & Motion System v0.1
+# OLEANDER Technical Drawing — Procedural Effect & Motion System v0.2
 
 **Status:** `CANDIDATE / NO_PROMOTION`  
 **Knowledge authority:** Notion `KN-METHOD-TECHDRAW-SPATIAL-TRANSLATION-001`  
@@ -16,14 +16,19 @@ Never use:
 
 ## 1. Files
 
-- Parameter library: `VISUAL_EFFECT_PARAMETER_LIBRARY.json`
+- Core parameter library: `VISUAL_EFFECT_PARAMETER_LIBRARY.json`
+- Extension parameters: `VISUAL_EFFECT_PARAMETER_EXTENSION_02.json`
 - SVG recipes: `../recipes/SVG_PROCEDURAL_RECIPES.json`
 - Motion handoff recipes: `../recipes/MOTION_HANDOFF_RECIPES.json`
-- Recipe validator: `../tools/validate_effect_recipe_register.py`
+- Cross-skill routing: `../recipes/CROSS_SKILL_EFFECT_ROUTES.json`
+- Core recipe validator: `../tools/validate_effect_recipe_register.py`
 - Parameter-library validator: `../tools/validate_effect_parameter_library.py`
-- SVG builder: `../tools/build_svg_effect_atlas.py`
-- Native motion smoke-demo builder: `../tools/build_motion_recipe_demo.py`
-- Golden fixture: `../fixtures/reconstruction/EFFECT-RECIPE-01_REGISTER.json`
+- Extension validator: `../tools/validate_effect_extension_02.py`
+- Core SVG builder: `../tools/build_svg_effect_atlas.py`
+- Core native motion builder: `../tools/build_motion_recipe_demo.py`
+- Extension SVG builder: `../tools/build_svg_effect_extension_02.py`
+- Extension native motion builder: `../tools/build_motion_extension_02_demo.py`
+- Golden fixtures: `EFFECT-RECIPE-01_REGISTER.json` + `EFFECT-RECIPE-02_EXTENDED_REGISTER.json`
 
 ## 2. Effect ownership
 
@@ -40,32 +45,34 @@ Allowed role families:
 
 If a role cannot be named, remove the effect.
 
-## 3. Static recipe groups
+## 3. Static SVG recipe groups
 
 ### Continuous fields
 - `SVG-R01-LINEAR-FIELD`
 - `SVG-R02-RADIAL-FIELD`
 
-Use for mapped continuous variables, controlled tonal hierarchy, source-fidelity gradients or state-bound emission. Analytical use requires domain + mapped variable + legend.
-
 ### Discrete / repeated textures
 - `SVG-R03-HATCH`
 - `SVG-R04-STIPPLE`
 - `SVG-R09-CONTOUR-BANDS`
-
-Use when discrete construction is itself meaningful: orientation, category, density, interval or source pattern. Record spacing/density/interval/seed.
+- `SVG-R12-HALFTONE`
+- `SVG-R15-DASH-RHYTHM`
 
 ### Micro / material / print surface
 - `SVG-R05-GRAIN`
 - `SVG-R10-EDGE-MODULATION`
-
-Use for material hypothesis or source-fidelity only. Flat authoritative geometry remains underneath.
+- `SVG-R13-PAPER-FIBER`
 
 ### Optical hierarchy / state
 - `SVG-R06-SHADOW-DEPTH`
 - `SVG-R08-GLOW-EMISSION`
+- `SVG-R11-BLUR-FOCUS`
+- `SVG-R14-BLEND-OVERLAY`
 
-Shadow may separate layers but cannot invent physical elevation. Glow requires a state/luminous/material/source owner.
+### Cross-skill source passes
+- `SVG-R16-HILLSHADE-PASS` — requires GIS/DEM/source pass.
+- `SVG-R17-AO-DEPTH-PASS` — requires same-camera 3D AO/depth/ID pass.
+- `SVG-R18-SOURCE-CLIP-REVEAL` — direct-source presentation framing only; required scale/status/source labels remain.
 
 ### Conditional distortion
 - `SVG-R07-DISPLACEMENT`
@@ -77,32 +84,52 @@ Allowed only for material/atmosphere/reference fidelity. Never apply to MAP_BOUN
 Motion recipes are specifications, not a second Motion Skill. Runtime implementation, Reduced Motion, device performance and AR-S10 are still owned by `oleander-motion`.
 
 ### Relation / continuity
-- `TD-MR01-PATH-TRACE` → Motion Atlas `EF-03`
-- `TD-MR04-SHARED-CONTAINER-HANDOFF` → `EF-01`
-- `TD-MR08-EXPLODE-ASSEMBLE` → `EF-07`
+- `TD-MR01-PATH-TRACE` → EF-03
+- `TD-MR04-SHARED-CONTAINER-HANDOFF` → EF-01
+- `TD-MR08-EXPLODE-ASSEMBLE` → EF-07
+- `TD-MR13-TOPOLOGY-SAFE-MORPH` → EF-04
+- `TD-MR19-VIEW-TRANSITION` → EF-10
 
-### Reveal / hierarchy
-- `TD-MR02-MASK-REVEAL` → `EF-02`
-- `TD-MR03-STRUCTURED-STAGGER` → `EF-05`
-- `TD-MR10-BLUR-FOCUS` → `EF-14`
+### Reveal / hierarchy / attention
+- `TD-MR02-MASK-REVEAL` → EF-02
+- `TD-MR03-STRUCTURED-STAGGER` → EF-05
+- `TD-MR10-BLUR-FOCUS` → EF-14
+- `TD-MR15-KINETIC-TYPE` → EF-17
 
 ### Data / time / progress
-- `TD-MR05-DATA-FILTER-REORDER` → `EF-09`
-- `TD-MR07-SCROLL-PROGRESS` → `EF-06`
+- `TD-MR05-DATA-FILTER-REORDER` → EF-09
+- `TD-MR07-SCROLL-PROGRESS` → EF-06
 
 ### Material / field
-- `TD-MR06-LIGHT-MATERIAL-STATE` → `EF-08`
-- `TD-MR11-GRAIN-EVOLUTION` → `EF-15`
-- `TD-MR12-PARTICLE-FIELD` → `EF-16`
+- `TD-MR06-LIGHT-MATERIAL-STATE` → EF-08
+- `TD-MR11-GRAIN-EVOLUTION` → EF-15
+- `TD-MR12-PARTICLE-FIELD` → EF-16
+- `TD-MR14-REFRACTION-DISPLACEMENT` → EF-13
 
-### Conditional spatial depth
-- `TD-MR09-PARALLAX-DEPTH` → `EF-12`
+### Conditional interaction / spatial depth
+- `TD-MR09-PARALLAX-DEPTH` → EF-12
+- `TD-MR16-CAMERA-ORBIT-DOLLY-FOCUS` → EF-18
+- `TD-MR17-CURSOR-LINKED-RESPONSE` → EF-19
+- `TD-MR18-SMOOTH-SCROLL-INFRA` → EF-20
+- `TD-MR20-DRAG-INERTIA` → EF-11
 
-Map-bound analytical position must never be moved merely to create depth.
+Conditional does not mean recommended-by-default. Parallax, refraction, cursor response, smooth scroll, kinetic type and camera motion require a named task/continuity role and an explicit fallback.
 
-## 5. Parameter discipline
+## 5. Cross-skill authority
 
-Numbers in the library are `CANDIDATE STARTING RANGES`, not rules.
+Use `CROSS_SKILL_EFFECT_ROUTES.json` before applying a pass-derived or runtime effect.
+
+- `oleander-data-viz / GIS` owns cleaned data, model, domain, CRS, hillshade/density/time-state evidence.
+- `oleander-3d-pipeline` owns geometry, camera, depth, AO and object/material ID passes.
+- `oleander-story-and-board` owns surrounding narrative framing and may not alter technical figure authority.
+- `oleander-motion` owns runtime implementation, Reduced Motion, performance and AR-S10.
+- `oleander-delivery-qc` owns export parity for alpha, ICC/color space, raster/vector retention and video/runtime delivery checks.
+
+`UPSTREAM PASS AUTHORITY ≠ DOWNSTREAM PRESENTATION OWNERSHIP`.
+
+## 6. Parameter discipline
+
+Numbers in the libraries are `CANDIDATE STARTING RANGES`, not rules.
 
 For every real use record:
 
@@ -112,7 +139,7 @@ Motion additionally records:
 
 `State Before / State After / Trigger / Duration or Progress Model / Easing or Physics / Interrupt / Reverse / Rapid Repeat / Reduced Motion / Runtime State`.
 
-## 6. OFF / Reduced attack
+## 7. OFF / Reduced attack
 
 Static:
 
@@ -128,32 +155,23 @@ Hard rule:
 
 If disabling an effect removes geometry, topology, required state or critical evidence, the effect has exceeded its authority.
 
-## 7. Regression purpose
+## 8. Regression purpose
 
-The golden fixture deliberately mixes:
+Fixture 01 covers the core set: analytical gradient, hatch, deterministic stipple, source-fidelity grain, hierarchy shadow, state glow, path trace, shared-container continuity, native scroll progress and modelled particle field.
 
-- analytical gradient;
-- hierarchy hatch;
-- deterministic material stipple;
-- source-fidelity grain;
-- hierarchy shadow;
-- state emission glow;
-- path trace;
-- shared-container continuity;
-- native scroll progress;
-- modelled particle field.
+Fixture 02 covers the conditional/cross-skill set: blur, halftone, paper fiber, source-pass blend, dash rhythm, synthetic hillshade mechanism, synthetic AO/depth mechanism, safe source clip, topology morph, refraction, kinetic type, camera, cursor response, smooth-scroll contract, view transition and interruptible drag.
 
-Negative regressions reject absent owner, absent legend/model, missing seed, generic glow, shadow without reason, displacement on map-bound geometry, motion without Reduced Motion, loss of native scroll baseline, particles without count model and machine-awarded KEEP.
+Hillshade/AO/depth fixture graphics are explicitly `SYNTHETIC MECHANISM DEMO`; they do not substitute for GIS/DEM/model passes.
 
-The CI also executes two builders:
+Negative regressions reject absent owner/legend/model/seed/pass provenance, unsafe source crop, map-bound displacement/refraction, motion without Reduced Motion, loss of native scroll/pointer/keyboard baseline, and machine-awarded KEEP.
 
-1. parameter fixture → SVG effect atlas → XML parse;
-2. motion fixture → standalone native HTML/CSS/JS smoke demo with `prefers-reduced-motion`.
+CI executes two SVG builders and two native HTML/CSS/JS motion builders. Build success proves mechanism execution only.
 
-## 8. Evidence boundary
+## 9. Evidence boundary
 
 `RECIPE EXECUTES ≠ EFFECT IS APPROPRIATE`  
 `PARAMETER IN RANGE ≠ AESTHETIC PASS`  
 `SVG FILTER ≠ MATERIAL TRUTH`  
+`SYNTHETIC PASS DEMO ≠ GIS / 3D PASS`  
 `MOTION DEMO ≠ AR-S10 PASS`  
 `AUTOMATED PASS ≠ DESIGN KEEP`.
