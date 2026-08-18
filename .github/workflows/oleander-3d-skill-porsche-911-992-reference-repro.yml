@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V21 runtime
+      - name: Validate Skill and V22 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
@@ -25,7 +25,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v16.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v19.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v20.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v21.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v22.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
@@ -40,15 +40,15 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build and verify V21 greenhouse surface candidate
+      - name: Build and verify V22 full-fastback candidate
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v21.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v22.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify locked macro gates and greenhouse refinement state
+      - name: Verify V22 evidence without self-promoting quality
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -57,12 +57,13 @@ jobs:
           out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro');q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
           assert q['verification_run']=='PASS'
-          assert q['greenhouse_interface']=='SURFACE_PATCH_NETWORK'
-          assert q['failure_routing']=='GREENHOUSE_INTERFACE_ONLY'
-          assert p['status']=='PROJECTION_MACHINE_SCREENING_PASS',p
+          assert q['greenhouse_interface']=='FULL_FASTBACK_SURFACE_PATCH_NETWORK'
+          assert q['failure_routing']=='MEASURE_FRONT_REAR_BEFORE_V23'
+          assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
+          assert 'front_profile' in p and 'rear_profile' in p
           assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print(json.dumps({'verification':'PASS','projection_quality_state':p['status'],'metrics':p['metrics']},indent=2))
+          print(json.dumps({'verification':'PASS','projection_quality_state':p['status'],'metrics':p['metrics'],'front_profile':p['front_profile'],'rear_profile':p['rear_profile']},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
       - name: Upload evidence
