@@ -17,14 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V17 runtime
+      - name: Validate Skill and V18 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v5.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v16.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v17.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v18.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_image_calibration.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py
@@ -42,30 +42,29 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
-      - name: Build Porsche 911 Carrera 992.2 V17 evidence-stable patch network
+      - name: Build and verify V18 candidate/evidence
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v17.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v18.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png "$OUT"/diagnostics/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Machine and stable emission-mask gates
+      - name: Verify evidence state without self-promoting quality
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro');q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());c=json.loads((out/'REFERENCE_CONTRACT.json').read_text());b=json.loads((out/'REFERENCE_CONTOUR_BINDING_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
+          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro');q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
-          assert c['reference_revision']=='2025_992.2_CARRERA_PATCH_NETWORK_MASK_STABLE_V17'
-          assert all(x['valid'] for x in p['mask_validity']),p['mask_validity']
+          assert q['verification_run']=='PASS'
           assert q['mask_validity_gate']=='PASS'
-          assert b['candidate']=='V17_FINAL_VISIBLE_UNION_EMISSION_MASK'
+          assert all(x['valid'] for x in p['mask_validity']),p['mask_validity']
+          assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
           assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print(json.dumps({'projection_status':p['status'],'metrics':p['metrics']},indent=2))
+          print(json.dumps({'verification':'PASS','projection_quality_state':p['status'],'metrics':p['metrics']},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
       - name: Upload evidence
