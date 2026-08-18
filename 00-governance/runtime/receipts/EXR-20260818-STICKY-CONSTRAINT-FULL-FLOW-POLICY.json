@@ -1,6 +1,6 @@
 {
   "receipt_id": "EXR-20260818-STICKY-CONSTRAINT-FULL-FLOW-POLICY",
-  "status": "WORKING",
+  "status": "CLOSED",
   "execution_type": "GOVERNANCE_RUNTIME",
   "task_id": "sticky-constraints-full-flow-policy",
   "authority": {
@@ -11,11 +11,11 @@
     "design_authority": "NOT_APPLICABLE",
     "canonical_ids": ["KN-METHOD-OLEANDER-SKILL-RESOLVER-001"],
     "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.1",
-    "github_commit_or_ref": "agent/sticky-constraints-full-flow-v1-3@c72dce6731bed49eb8fa74c42438ffbef2214e70"
+    "github_commit_or_ref": "main@2e1f4d2c79e63b7177b9af98e0d28a717761ae7e"
   },
   "constraint_lock": {
     "resolved_from": ["LATEST_EXPLICIT_USER_INSTRUCTION", "CURRENT_OLEANDER_RESOLVER", "CURRENT_EXECUTION_RECEIPT_POLICY"],
-    "inheritance_state": "ACTIVE_FOR_THIS_GOVERNANCE_TASK_UNTIL_EXPLICIT_REVOCATION_OR_TASK_CLOSURE",
+    "inheritance_state": "ENFORCED_THROUGH_TASK_COMPLETION",
     "active_constraints": [
       {
         "constraint_id": "CSTR-20260818-001",
@@ -75,7 +75,7 @@
       {"owner_id": "validate_execution_contracts.py", "role": "VALIDATOR"},
       {"owner_id": "validate_execution_locks.py", "role": "VALIDATOR"}
     ],
-    "omitted_owner_reasoning": "No design-production Skill is required; this task changes the existing Resolver, Receipt policy and CI validation only."
+    "omitted_owner_reasoning": "No design-production Skill was required; the task hardened the existing Resolver, Receipt policy, Universal Production Environment and CI only."
   },
   "flow_completion": {
     "mode": "FULL_OLEANDER_FLOW",
@@ -100,14 +100,17 @@
       "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
       "REAL_EXECUTION": "PASS",
       "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
-      "ACTUAL_READBACK": "HOLD",
-      "REGRESSION_AS_APPLICABLE": "HOLD",
+      "ACTUAL_READBACK": "PASS",
+      "REGRESSION_AS_APPLICABLE": "PASS",
       "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
-      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PASS"
     },
-    "incomplete_required_phases": ["ACTUAL_READBACK", "REGRESSION_AS_APPLICABLE", "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"],
-    "completion_gate": "HOLD",
-    "completion_claim_allowed": false
+    "phase_reasons": {
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "This is a non-design governance runtime change; no artifact is promoted to Design KEEP and no Skill promotion occurs. CI validators and cross-platform readback provide execution/evidence validation only."
+    },
+    "incomplete_required_phases": [],
+    "completion_gate": "PASS",
+    "completion_claim_allowed": true
   },
   "artifacts": [
     {
@@ -115,64 +118,84 @@
       "artifact_role": "NATIVE_SOURCE",
       "producer_owner": "runtime-governance",
       "authority_source": "Current Resolver v1.2 + Execution Receipt v1.0 + user current governance requirement",
-      "authority_state": "WORKING_CURRENT_BRANCH",
+      "authority_state": "CURRENT",
       "native_format": "JSON+Markdown+Python+JSONL",
       "editable_state": "FULLY_EDITABLE",
       "semantic_layers": ["sticky_constraints", "tool_deny", "creation_deny", "flow_completion", "receipt_policy", "runtime_regression_cases", "ci_validator"],
       "provenance_state": "SOURCE_EXPLICIT",
-      "dependencies": ["OLEANDER Current Root v1.1.1", "Default Skill Resolver v1.2", "Execution Receipt v1.0", "AI Governance workflow"],
-      "hashes_or_commit": "c72dce6731bed49eb8fa74c42438ffbef2214e70",
-      "runtime": "GitHub branch + Actions pending",
+      "dependencies": ["OLEANDER Current Root v1.1.1", "Default Skill Resolver v1.2 implementation revision 1.2.1", "Execution Receipt v1.0 policy revision 1.1", "AI Governance workflow"],
+      "hashes_or_commit": "2e1f4d2c79e63b7177b9af98e0d28a717761ae7e",
+      "runtime": "GitHub main + GitHub Actions + live Notion readback",
       "renderer": "NOT_APPLICABLE",
       "permission": "MUTATE_AUTHORIZED_SOURCE",
-      "current_state": "WORKING",
+      "current_state": "CURRENT",
       "does_not_prove": ["design_quality", "project_promotion", "field_truth"]
     }
   ],
   "tool_adapters": [],
   "execution": {
-    "runtime": "GitHub branch and existing governance runtime",
-    "entrypoint_or_action": "Harden existing Current Resolver/Receipt and add machine regression for sticky negative constraints and full-flow completion without creating a new Skill or parallel framework.",
-    "result": "BRANCH_IMPLEMENTED_PENDING_CI_MAIN_READBACK_NOTION_SYNC",
-    "failures": ["Existing Resolver allowed negative constraints and full-flow intent to remain mostly natural-language conventions."],
-    "repairs": ["Added sticky execution constraint lock before routing", "Added full-flow completion gate", "Added future-receipt policy 1.1", "Added runtime regression cases and validator"]
+    "runtime": "GitHub branch/PR/Actions + live Notion Current Resolver update/readback",
+    "entrypoint_or_action": "Harden the existing Current Resolver/Receipt/UPE and AI Governance CI with sticky negative constraints and a full-flow completion gate; no new design Skill, METHOD or parallel framework was created.",
+    "result": "MERGED_VALIDATED_AND_CROSS_PLATFORM_ALIGNED",
+    "failures": [
+      "Initial CI exposed a runtime README exact-pointer compatibility mismatch for the existing receipt validator.",
+      "Second CI exposed renamed resolver-order tokens that would have broken the existing execution-contract validator."
+    ],
+    "repairs": [
+      "Restored explicit receipt .md/.json pointers without weakening the validator.",
+      "Preserved canonical RESOLVE_TOOL_ADAPTERS_WHEN_REQUIRED and EMIT_EXECUTION_RECEIPT tokens while keeping deny enforcement and Flow Completion Gate as separate ordered steps.",
+      "Final PR #263 AI Governance, Universal Production Environment and Blender Runtime checks all passed."
+    ]
   },
   "readback": {
-    "target": "Branch Resolver/Receipt/eval/validator files",
-    "runtime": "GitHub branch file readback",
-    "observed_result": "Branch implementation exists and preserves the existing OLEANDER architecture; main/CI/Notion closure is still pending.",
-    "blocking_defects": ["PENDING_CI_MAIN_NOTION_CLOSURE"],
-    "nonblocking_defects": ["NONE_IDENTIFIED_AT_BRANCH_READBACK"],
-    "verdict": "HOLD"
+    "target": "GitHub main Resolver/Receipt/UPE/validators + live Notion Resolver + main Drift Check mapping",
+    "runtime": "GitHub file readback + GitHub Actions + Notion fetch",
+    "observed_result": "GitHub main confirms Resolver v1.2 implementation revision 1.2.1 ACTIVE_CURRENT, Execution Receipt v1.0 policy revision 1.1 ACTIVE_CURRENT and Universal Production Environment v1.0 implementation revision 1.0.1 ACTIVE_CURRENT. Live Notion Resolver contains Sticky Execution Constraint Lock and Full-Flow Completion Gate. Drift mapping resolver-current is CURRENT after PR #264 merge/readback.",
+    "blocking_defects": ["NONE_REMAINING"],
+    "nonblocking_defects": ["NONE_IDENTIFIED"],
+    "verdict": "PASS"
   },
   "regression": {
-    "STRUCTURAL": {"result": "PASS", "assertions": ["No new Skill created", "Resolver remains v1.2 Current object", "Receipt remains v1.0 Current object with policy revision", "legacy receipts explicitly allowlisted"]},
-    "SEMANTIC": {"result": "PASS", "assertions": ["generic continue cannot revoke negative constraint", "full flow does not mean all Skills", "PR/CI cannot equal closure", "creation deny precedes gap-driven creation"]},
+    "STRUCTURAL": {"result": "PASS", "assertions": ["No new design Skill or METHOD created", "Current Resolver file remains v1.2 with implementation subrevision", "Receipt remains v1.0 with policy subrevision", "UPE remains v1.0 with implementation subrevision", "pre-policy receipts remain explicit Legacy allowlist"]},
+    "SEMANTIC": {"result": "PASS", "assertions": ["generic continue cannot revoke active negative constraints", "only explicit named revocation releases a constraint", "NO_IMAGE_GENERATION blocks generative-image tool routing", "creation deny precedes new Skill/METHOD/framework creation", "full flow means all applicable phases rather than all Skills", "PR/CI/self-check/render/regression cannot independently close a full-flow task"]},
     "VISUAL_ROI": {"result": "NOT_APPLICABLE", "assertions": ["Governance runtime task has no visual design artifact"]},
-    "RUNTIME": {"result": "HOLD", "assertions": ["AI Governance workflow must run validate_execution_locks.py", "branch must merge and main readback must pass"]},
-    "overall": "HOLD"
+    "RUNTIME": {"result": "PASS", "assertions": ["PR #263 AI Governance Evals SUCCESS", "PR #263 Universal Production Environment SUCCESS", "PR #263 Blender Runtime Contract SUCCESS", "validate_execution_locks.py is in existing AI Governance workflow", "live Notion Resolver readback PASS", "PR #264 drift closure CI SUCCESS", "main drift mapping readback CURRENT"]},
+    "overall": "PASS"
   },
   "review": {
     "producer_id": "runtime-governance execution",
     "reviewer_id": "NOT_REQUIRED_FOR_NON_DESIGN_GOVERNANCE_CHANGE",
     "review_input_artifact_id": "ART-OLEANDER-STICKY-FULL-FLOW-POLICY",
-    "review_input_hash_or_commit": "c72dce6731bed49eb8fa74c42438ffbef2214e70",
+    "review_input_hash_or_commit": "2e1f4d2c79e63b7177b9af98e0d28a717761ae7e",
     "reviewer_independence_state": "NOT_REQUIRED",
-    "evidence_gate": "HOLD_PENDING_CI_AND_MAIN_READBACK",
+    "evidence_gate": "PASS",
     "design_quality_gate": "NOT_APPLICABLE",
-    "promotion_authority": "No Skill or design promotion occurs in this governance repair."
+    "promotion_authority": "No design Skill, METHOD, artifact or candidate is promoted by this governance change."
+  },
+  "drift": {
+    "mode": "LIVE_CROSS_PLATFORM_CHECK",
+    "state": "CURRENT",
+    "evidence": [
+      "GitHub main Resolver v1.2 implementation revision 1.2.1 readback",
+      "GitHub main Execution Receipt v1.0 policy revision 1.1 readback",
+      "GitHub main Universal Production Environment v1.0 implementation revision 1.0.1 readback",
+      "Live Notion KN-METHOD-OLEANDER-SKILL-RESOLVER-001 readback after PR #263",
+      "GitHub main OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1 resolver-current=CURRENT after PR #264"
+    ]
   },
   "closure": {
     "material_delta": true,
     "branch": "agent/sticky-constraints-full-flow-v1-3",
-    "commits": ["c72dce6731bed49eb8fa74c42438ffbef2214e70"],
-    "pull_request": "PENDING",
-    "ci_state": "PENDING",
-    "merge_commit": "PENDING",
-    "main_readback": "PENDING",
-    "notion_writeback": "PENDING",
-    "remaining_blockers": ["PR_CI", "MAIN_READBACK", "NOTION_RESOLVER_SYNC", "LIVE_DRIFT_CHECK"],
-    "final_state": "WORKING_HOLD"
+    "commits": ["cfdad8e10eb36355b607f9a9cf9ee1f64ed09b9b", "2e1f4d2c79e63b7177b9af98e0d28a717761ae7e", "e2f3a5761da736d9a9f3b966e3f8a30349dfe83d"],
+    "pull_request": 263,
+    "ci_state": "SUCCESS_AFTER_COMPATIBILITY_REPAIRS",
+    "merge_commit": "2e1f4d2c79e63b7177b9af98e0d28a717761ae7e",
+    "main_readback": "PASS",
+    "notion_writeback": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001 appended Current Runtime Enforcement Override and was read back live; no new Notion object was created.",
+    "drift_closure_pull_request": 264,
+    "drift_closure_merge_commit": "e2f3a5761da736d9a9f3b966e3f8a30349dfe83d",
+    "remaining_blockers": ["NONE_REMAINING"],
+    "final_state": "MERGED_VALIDATED_LIVE_DRIFT_CURRENT_FULL_FLOW_COMPLETE"
   },
   "does_not_prove": ["project_state", "design_quality", "field_truth", "engineering_validity", "user_validation", "rights_clearance", "candidate_skill_promotion"]
 }
