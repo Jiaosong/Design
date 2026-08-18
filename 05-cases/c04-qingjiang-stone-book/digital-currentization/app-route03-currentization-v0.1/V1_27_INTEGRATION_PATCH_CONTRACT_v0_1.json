@@ -1,0 +1,52 @@
+{
+  "contract": "C04_APP_v1_27_ROUTE03_INTEGRATION_PATCH_v0_1",
+  "status": "PATCH CONTRACT ONLY / NOT APPLIED",
+  "target_candidate": "C04_QINGJIANG_APP_v1_27_GAME_ARCHITECTURE_FIX_PORTABLE.html",
+  "reason_not_applied": "v1.27 is discoverable in File Library but its writable source bytes were not materialized in the active runtime/GitHub/connected Drive",
+  "preserve": [
+    "top-level navigation: TODAY / ROUTE / MY BOOK / SERVICE",
+    "READ as a book/content layer inside route context",
+    "R06 and R13 as route-context scene descendants",
+    "route-child rail and Return access",
+    "UNKNOWN fail-closed behavior",
+    "Reduced Motion semantics",
+    "44px+ mobile target baseline",
+    "no-phone / Digital OFF continuity"
+  ],
+  "replace_when_source_available": [
+    {
+      "target": "embedded .guide-route-svg geometry and .guide-route-base/.guide-route-spine route paths",
+      "with": "ROUTE_03_APP_VIEWPORT.svg source carrier",
+      "rule": "no independent App route curve may remain authoritative"
+    },
+    {
+      "target": "old 18-node GUIDE topology as route-geometry authority",
+      "with": "ROUTE-03 locked carrier plus source-bound interaction anchors",
+      "rule": "old guide nodes may remain provenance/content labels only where semantically needed; they may not define current route geometry"
+    },
+    {
+      "target": "A/B/C/D path-specific custom geometry styling",
+      "with": "A/B/C/D as camera/focus/read presets over the same locked carrier",
+      "rule": "mode changes must not create a second topology"
+    }
+  ],
+  "do_not_change": [
+    "ROUTE-03 source paths/nodes/text",
+    "R06 frozen experience decision",
+    "R13 body-first/Return decision",
+    "R01-R13 optional-content identity",
+    "current project truth boundary"
+  ],
+  "post_patch_required_tests": [
+    "390x844 + 430x932 finished pixels",
+    "TODAY/ROUTE/MY BOOK/SERVICE regression",
+    "READ/R06/R13 route-child regression",
+    "rapid mode switching",
+    "Return during enter/commit/reveal",
+    "keyboard + touch + visible focus",
+    "Reduced Motion zero-delay-lock test",
+    "Digital OFF/no-phone recovery",
+    "UNKNOWN/CLOSED fail-closed",
+    "independent finished-pixel Design Crit"
+  ]
+}
