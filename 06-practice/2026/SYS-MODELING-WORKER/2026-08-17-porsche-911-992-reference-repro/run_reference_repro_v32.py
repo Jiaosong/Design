@@ -2,34 +2,35 @@
 """V32 — rear Y/Z envelope error routing on V31 dense-body / pre-aperture-skin baseline.
 
 V31 improved FRONT projected profile to the current machine best but REAR remained severely over-wide.
-V32 changes only the rear high/mid Y/Z envelope: body upper rails and the opaque C-pillar/fastback shell are
-constrained toward the same-revision rear projected-width profile. Front geometry, wheelbase, wheel apertures,
-rocker/lower return and calibrated lower glazing anchors remain protected.
+V32 changes only the rear high/mid Y/Z envelope. Front geometry, wheelbase, wheel apertures, rocker/lower
+return and calibrated lower glazing anchors remain protected.
 
-The rear profile is perspective-derived evidence, so a low post-fit RMSE is constraint compliance only.
-Visual reference fidelity remains HOLD.
+Runtime composition is explicit: `outer` is V31 declarations, `core` is the V30 callable namespace that
+actually owns build_loft/run30/projection hooks. This avoids hidden multi-exec namespace mutation.
 """
 from __future__ import annotations
-import json, math
+import math
 from pathlib import Path
 
 HERE=Path(__file__).resolve().parent
 V31=HERE/'run_reference_repro_v31.py'
 text=V31.read_text();marker="\nns['run30']()\n"
 if marker not in text:raise SystemExit('V31 run marker missing')
-ns={'__file__':str(V31),'__name__':'oleander_v32_declarations'}
-exec(compile(text.split(marker,1)[0],str(V31),'exec'),ns)
-v=ns['v'];PROFILE=ns['PROFILE'];metric=ns['metric'];old_body_ring=v.body_ring;old_cabin=ns['simple_cabin30'];base_projection=ns['projection31'];surface31=ns['surface31'];s01=ns['s01']
+outer={'__file__':str(V31),'__name__':'oleander_v32_v31_declarations'}
+exec(compile(text.split(marker,1)[0],str(V31),'exec'),outer)
+core=outer['ns']
+v=outer['v'];PROFILE=outer['PROFILE'];metric=outer['metric'];old_body_ring=v.body_ring
+old_cabin=core['simple_cabin30'];base_projection=outer['projection31'];surface31=outer['surface31'];s01=outer['s01']
 
 v.REF='2025_992.2_CARRERA_REAR_YZ_ENVELOPE_V32'
 v.REFERENCE_CONTRACT['schema']='oleander.3d.reference-reproduction.porsche-911-992-2.v32'
 v.REFERENCE_CONTRACT['reference_revision']=v.REF
 v.REFERENCE_CONTRACT['failure_routing']='REAR_YZ_ENVELOPE_ONLY'
+v.REFERENCE_CONTRACT['runtime_composition']='EXPLICIT_OUTER_V31_CORE_V30_NAMESPACE'
 v.REFERENCE_CONTRACT['protected_front_machine_baseline']='V31_FRONT_HALF_PROJECTED_PROFILE_RMSE_0.07230088060916158'
 v.FAMILY_CONTROLS['REAR_YZ_ENVELOPE_V32']={
  'reference':'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json:rear.profile',
- 'body_activation_x_m':[-1.55,-.45],
- 'body_activation_z_m':[.78,1.18],
+ 'body_activation_x_m':[-1.55,-.45],'body_activation_z_m':[.78,1.18],
  'cabin_activation_x_m':[-1.20,-.35],
  'protected':['FRONT_HALF','SIDE_LOWER','WHEELBASE','AXLE_CENTRES','WHEEL_APERTURE','LOWER_TERMINAL_RETURN','WINDSHIELD_LOWER','REAR_GLASS_LOWER']}
 v.REFERENCE_CONTRACT['source_families']=list(v.FAMILY_CONTROLS.keys())
@@ -42,8 +43,7 @@ def lerp(a,b,t):return a*(1-t)+b*t
 def rear_ratio(frac):
     frac=float(frac)
     if frac>=REAR[0][0]:
-        f0,r0=REAR[0]
-        return max(.08,r0*(1-frac)/max(1e-6,1-f0)) if frac<=1 else .08
+        f0,r0=REAR[0];return max(.08,r0*(1-frac)/max(1e-6,1-f0)) if frac<=1 else .08
     if frac<=REAR[-1][0]:return REAR[-1][1]
     for (f0,r0),(f1,r1) in zip(REAR,REAR[1:]):
         if f0>=frac>=f1:
@@ -51,8 +51,7 @@ def rear_ratio(frac):
     return REAR[-1][1]
 
 def rear_half_target(z,margin=.025):
-    frac=max(.10,min(.98,(float(z)-ZMIN)/ZR))
-    return .5*v.WIDTH*rear_ratio(frac)+margin
+    frac=max(.10,min(.98,(float(z)-ZMIN)/ZR));return .5*v.WIDTH*rear_ratio(frac)+margin
 
 def rear_x_weight(x):
     if x>=-.35:return 0.0
@@ -61,22 +60,21 @@ def rear_x_weight(x):
 
 def rear_z_weight(z):return s01((float(z)-.76)/.34)
 
-# V31 exposes the authoritative dense ring through v.body_ring. Edit before its pre-aperture diagnostic copy.
+# V31/V30 dense body builder resolves body_ring30 in `core`.
 def body_ring32(x):
     ring=old_body_ring(x);xw=rear_x_weight(x)
     if xw<=0:return ring
     out=[]
     for xe,y,z in ring:
         zw=rear_z_weight(z)
-        if zw<=0 or abs(y)<1e-8:
-            out.append((xe,y,z));continue
+        if zw<=0 or abs(y)<1e-8:out.append((xe,y,z));continue
         cap=rear_half_target(z,.040);ay=abs(y);desired=min(ay,cap);strength=xw*zw*.82
         out.append((xe,math.copysign(lerp(ay,desired,strength),y),z))
     return out
-ns['body_ring30']=body_ring32
+core['body_ring30']=body_ring32
 v.body_ring=body_ring32
 
-# Cabin topology remains V31; only the failed rear high/mid transverse envelope is contracted.
+# V31 cabin builder is owned by `core`; contract only failed rear high/mid Y/Z vertices.
 def cabin32(name,material):
     o=old_cabin(name,material)
     for vert in o.data.vertices:
@@ -84,10 +82,9 @@ def cabin32(name,material):
         if xw<=0 or zw<=0 or abs(y)<1e-8:continue
         cap=rear_half_target(z,.018);ay=abs(y);desired=min(ay,cap);strength=min(1.0,xw*zw*.96)
         vert.co.y=math.copysign(lerp(ay,desired,strength),y)
-    o.data.update();o['OLEANDER_REAR_YZ_ENVELOPE']='V32_REFERENCE_PROFILE_SOFT_CONSTRAINT'
-    return o
-ns['simple_cabin30']=cabin32
-v.build_loft=ns['build_loft30']
+    o.data.update();o['OLEANDER_REAR_YZ_ENVELOPE']='V32_REFERENCE_PROFILE_SOFT_CONSTRAINT';return o
+core['simple_cabin30']=cabin32
+v.build_loft=core['build_loft30']
 
 base_source=v.build_source
 def source32(M):
@@ -103,7 +100,7 @@ def relabel(data):
 
 def projection32():
     d=relabel(base_projection());d['candidate_revision']='V32_REAR_YZ_ENVELOPE';d['failure_routing']='REAR_YZ_ENVELOPE_ONLY';d['rear_profile_semantics']='TARGET_DERIVED_CONSTRAINT_COMPLIANCE_NOT_INDEPENDENT_FIDELITY';return d
-ns['projection30']=projection32
+core['projection30']=projection32
 
 BEST32={
  'SIDE_UPPER_EVALUATED_MESH_RMSE_M':{'revision':'V25','value':0.030139600203300147,'evidence_source':'V25 REFERENCE_PROJECTION_RECEIPT.json'},
@@ -122,10 +119,10 @@ def regression32(pr):
         c=vals[mid];locks.append({'id':mid,'baseline':b['value'],'baseline_revision':b['revision'],'candidate':c,'limit':limits[mid],'status':'PASS' if math.isfinite(c) and c<=limits[mid] else 'REGRESSED','evidence_source':b['evidence_source']})
     rear=vals['REAR_HALF_PROJECTED_PROFILE_RMSE'];all_locks=all(x['status']=='PASS' for x in locks)
     return {'schema':'oleander.3d.reference-regression-promotion-receipt.v2','baseline_revision':'MIXED_PER_GATE_BEST_KNOWN_V25_V23_V31','candidate_revision':'V32_REAR_YZ_ENVELOPE','edit_scope':['REAR_BODY_HIGH_YZ','REAR_CABIN_HIGH_YZ','FRONT_LOCKED','LOWER_GEOMETRY_LOCKED'],'target_metric_delta':{'metric_id':'REAR_HALF_PROJECTED_PROFILE_RMSE','baseline':0.2646265637402603,'candidate':rear,'direction':'LOWER_IS_BETTER','improved':rear<0.2646265637402603},'regression_locks':locks,'best_known_gate_baselines':BEST32,'measurement_method_ids':['V32_FINAL_EVALUATED_MESH_XZ','V32_FINAL_EVALUATED_MESH_YZ','V32_PRE_APERTURE_SKIN'],'measurement_comparability':'COMPARABLE','promotion_decision':'KEEP_LKG_HOLD_EXPERIMENT' if all_locks else 'KEEP_LKG_REJECT_EXPERIMENT','visual_review_state':'NOT_RUN','does_not_prove':PROFILE['does_not_prove']}
-ns['regression30']=regression32
+core['regression30']=regression32
 
 def surface32():
     d=surface31();d['revision']='V32_REAR_YZ_ENVELOPE';return d
-ns['surface_receipt']=surface32
+core['surface_receipt']=surface32
 
-ns['run30']()
+core['run30']()
