@@ -1,0 +1,23 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01",
+  "revision": "v3.9",
+  "skill_route": "SOURCE_CARRIER_PRECEDENCE / SPATIAL_TRANSLATION_PROTOCOL / FLOW_DIRECTION_ANALYSIS",
+  "carrier": {
+    "file": "qingjiang_route_guide_translated.svg",
+    "sha256": "1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9",
+    "classification": "SOURCE_CARRIER_SUFFICIENT / PROJECT LOCKED TRANSLATION",
+    "decision": "REUSE_DIRECT",
+    "mutation": "NONE to route path geometry / branch topology / node placement"
+  },
+  "sheet_operations": [
+    "place exact carrier at dominant scale",
+    "add one C04 interface-zone highlight without creating route edges",
+    "add same-source cropped close-read",
+    "add source/truth boundary and document metadata"
+  ],
+  "supersedes": [
+    "v3.8"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
