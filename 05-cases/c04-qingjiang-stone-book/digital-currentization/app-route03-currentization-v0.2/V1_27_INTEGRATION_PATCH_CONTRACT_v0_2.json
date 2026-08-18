@@ -1,0 +1,13 @@
+{
+  "contract": "C04_APP_v1_27_ROUTE03_INTEGRATION_PATCH_v0_2",
+  "status": "PATCH CONTRACT ONLY / NOT APPLIED TO WRITABLE v1.27",
+  "target_candidate": "C04_QINGJIANG_APP_v1_27_GAME_ARCHITECTURE_FIX_PORTABLE.html",
+  "architecture_ancestor": "C04_QINGJIANG_APP_v1_26_OLEANDER_FRAMEWORK_REBUILD_PORTABLE.html",
+  "preserve_from_v1_26": ["fail-closed before startJourney","APP_INIT -> MODE(optional) -> OFFLINE_PREP","QUICK / DEEP / FAMILY; MODE != PERSONA","framework state persistence intent","page architecture","Return Guard","Digital OFF","UNKNOWN/CLOSED fail-closed","Reduced Motion","Framework -> Skill governance"],
+  "preserve_from_v1_27": ["TODAY / ROUTE / MY BOOK / SERVICE","READ as route child","R06/R13 as route-context descendants","route-child rail / return-to-route"],
+  "replace": ["custom guide-route geometry authority","18-node GUIDE topology as route authority","A/B/C/D geometry variants as independent topology","legacy C04-WS pointers as current workstream identity"],
+  "with": ["ROUTE-03 locked carrier + source-bound interaction anchors","A/B/C/D as view/focus presets over one source carrier","PRJ-C04-DIGITAL-INTERACTION [P3] current workstream identity"],
+  "post_patch_required_tests": ["UNKNOWN/CLOSED boot -> SERVICE","APP_INIT MODE + OFFLINE_PREP","QUICK/DEEP/FAMILY","setupSeen/readingMode persistence on a non-opaque origin","TODAY/ROUTE/MY BOOK/SERVICE","READ/R06/R13 route-child regression","Return interrupt","Digital OFF withdrawal","DEGRADED/CLOSED/UNKNOWN fail-closed","390x844 + 430x932","44px targets","keyboard/focus","Reduced Motion","independent finished-pixel Design Crit"],
+  "known_metadata_drift": "v1.26/v1.27 internal HTML title remains v1.24",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / STATUS UNKNOWN"
+}

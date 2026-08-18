@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>清江石书｜ROUTE-03 Currentization Module v0.2</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="prototype" id="app" data-behavior="intent" data-reality="UNKNOWN" data-digital="FULL" data-reading-mode="QUICK">
+  <header class="hud">
+    <div class="hud-title">
+      <span class="kicker">QINGJIANG · ROUTE-03</span>
+      <strong>清江游程</strong>
+      <small>关系导览 · NTS · NOT GPS</small>
+    </div>
+    <div class="hud-actions">
+      <button class="system-trigger" id="systemTrigger" aria-label="打开原型状态控制">状态</button>
+      <button class="return-guard" id="returnGuard" aria-label="进入回程与服务">回程 · UNKNOWN</button>
+    </div>
+  </header>
+
+  <main class="route-screen" aria-label="清江路线关系视口">
+    <section class="world-window" id="worldWindow" aria-label="锁定路线世界视口">
+      <div class="world-scroll" id="worldScroll" tabindex="0" aria-label="左右拖动浏览清江路线关系图">
+        <div class="route-world" id="routeWorld">
+          <img src="assets/ROUTE_03_APP_VIEWPORT.svg" alt="清江游程结构关系导览图，路线拓扑来自锁定 ROUTE-03 来源">
+          <button class="anchor anchor-dam" data-anchor="dam" aria-label="水布垭大坝"></button>
+          <button class="anchor anchor-cliff" data-anchor="cliff" aria-label="蝴蝶崖"></button>
+          <button class="anchor anchor-dock" data-anchor="dock" aria-label="游船码头"></button>
+          <button class="anchor anchor-center" data-anchor="center" aria-label="游客中心"></button>
+        </div>
+      </div>
+      <div class="edge-fade edge-left" aria-hidden="true"></div>
+      <div class="edge-fade edge-right" aria-hidden="true"></div>
+      <div class="world-status">
+        <span id="behaviorReadout">INTENT</span>
+        <i id="readingModeReadout">QUICK</i>
+        <b id="realityReadout">STATUS UNKNOWN</b>
+      </div>
+      <div class="pan-cue" id="panCue">拖动图卷 · 点击地标查看关系</div>
+    </section>
+
+    <aside class="mode-rail" aria-label="游程模式">
+      <button data-mode="A" class="active"><b>A</b><span>推荐</span></button>
+      <button data-mode="B"><b>B</b><span>逆向</span></button>
+      <button data-mode="C"><b>C</b><span>短线</span></button>
+      <button data-mode="D"><b>D</b><span>短线</span></button>
+    </aside>
+
+    <section class="mode-readout" aria-live="polite">
+      <span id="modeCode">A · 推荐</span>
+      <strong id="modeTitle">水布垭 → 游客中心</strong>
+      <small id="modeMeta">同一 ROUTE-03 关系骨架；方向改变，不重画路线。</small>
+    </section>
+
+    <section class="context-sheet" id="contextSheet" aria-hidden="true">
+      <div class="sheet-grip" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div>
+          <span class="kicker" id="sheetState">COMMIT</span>
+          <h2 id="sheetTitle">地标</h2>
+        </div>
+        <button class="quiet" id="retreatBtn">退回路线</button>
+      </div>
+      <p id="sheetSummary"></p>
+      <div class="relation-grid">
+        <div><span>来源</span><b>ROUTE-03 LOCKED CURRENT</b></div>
+        <div><span>定位</span><b>RELATIONAL / NTS</b></div>
+        <div><span>现场</span><b>FIELD OPEN</b></div>
+      </div>
+      <button class="reveal-btn" id="revealBtn">展开关系说明</button>
+      <p class="state-boundary" id="stateBoundary" hidden></p>
+      <div class="reveal" id="revealPanel" hidden>
+        <p id="revealText"></p>
+        <div class="read-boundary"><b>可选阅读</b><span>十三印与本路线图的精确空间邻近关系仍待现场校核；此处不生成伪定位。</span></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="service-layer" id="serviceLayer" aria-hidden="true">
+    <div class="service-card">
+      <span class="kicker">RETURN / SERVICE</span>
+      <h1>先回到路，再回到解释。</h1>
+      <p>回程信息优先于阅读与收集。当前没有正式实时运营接口，因此 UNKNOWN 不显示为 OPEN。</p>
+      <div class="service-grid">
+        <div><span>DIGITAL</span><b id="serviceDigital">FULL · 数字解释可用</b></div>
+        <div><span>STATUS</span><b id="serviceReality">UNKNOWN · 不推断营业、排队或可通行状态</b></div>
+        <div><span>RECOVERY</span><b>纸图 / 标识 / 人工 / 景观继续成立</b></div>
+      </div>
+      <div class="service-actions"><button id="serviceStatusBtn">原型状态</button><button id="resumeRoute">继续游程</button></div>
+    </div>
+  </section>
+
+  <section class="setup-layer" id="setupLayer" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="setupTitle">
+    <div class="setup-sheet">
+      <div class="setup-step active" data-setup-step="mode">
+        <div class="setup-kicker"><span>APP INIT / MODE</span><button class="setup-skip" id="setupSkip">以后再选</button></div>
+        <h1 id="setupTitle">先选一种看清江的方式。</h1>
+        <p>随时可以改，也可以跳过。它只改变解释密度；路线、安全与回程规则保持一致。</p>
+        <div class="reading-options" role="group" aria-label="阅读方式">
+          <button data-reading-mode="QUICK" aria-pressed="true"><span>QUICK</span><b>轻读</b><small>只让关键观察主动出现；更多内容保持可选。</small></button>
+          <button data-reading-mode="DEEP" aria-pressed="false"><span>DEEP</span><b>深读</b><small>核心、附加阅读与来源层保持可达；仍不要求 13/13。</small></button>
+          <button data-reading-mode="FAMILY" aria-pressed="false"><span>FAMILY</span><b>亲子共读</b><small>观察动作优先；地方叙事不写成科学事实。</small></button>
+        </div>
+        <button class="setup-enter" id="setupNext">继续</button>
+        <small class="setup-boundary">MODE ≠ PERSONA · 不产生等级、奖励、身份锁或路线权限。</small>
+      </div>
+      <div class="setup-step" data-setup-step="offline">
+        <div class="setup-kicker"><span>OFFLINE PREP</span><span>DEFAULT ARCHITECTURE</span></div>
+        <h1>先确认离线也能回来。</h1>
+        <p>必要的路线关系与 Return 参考直接内置；当前 bounded build 不冒充完整 App，也不冒充景区实时系统。</p>
+        <div class="offline-checks">
+          <div class="offline-check"><i>✓</i><div><b>路线关系</b><p>ROUTE-03 locked carrier；关系级、NTS、NOT GPS。</p></div><em>EMBEDDED</em></div>
+          <div class="offline-check"><i>△</i><div><b>十三印阅读</b><p>身份与架构沿用 v1.26/v1.27；完整 R01–R13 页面不在本 bounded build 复制。</p></div><em>INTEGRATION</em></div>
+          <div class="offline-check"><i>✓</i><div><b>Return / No-phone</b><p>纸图、标识、人工与景观是数字层之外的 fallback。</p></div><em>CORE</em></div>
+          <div class="offline-check"><i>×</i><div><b>GPS / 实时开放 / 排队</b><p>没有正式接口，不生成伪定位、伪倒计时或伪营业状态。</p></div><em>NOT INCLUDED</em></div>
+        </div>
+        <button class="setup-enter" id="setupEnter">继续游程</button>
+        <small class="setup-boundary">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO LIVE STATUS</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="system-panel" id="systemPanel" aria-hidden="true" aria-labelledby="systemTitle">
+    <div class="system-sheet">
+      <div class="system-head"><div><span class="kicker">PROTOTYPE CONTROL · NOT LIVE STATUS</span><h2 id="systemTitle">状态边界</h2></div><button class="quiet" id="systemClose">关闭</button></div>
+      <p>以下只用于验证 fail-closed 与数字退场行为，不代表清江当前运营状态。</p>
+      <div class="system-group"><span>REALITY</span><div class="segmented" id="realityControls">
+        <button data-reality="OPEN">OPEN</button><button data-reality="DEGRADED">DEGRADED</button><button data-reality="CLOSED">CLOSED</button><button data-reality="UNKNOWN" class="active">UNKNOWN</button>
+      </div></div>
+      <div class="system-group"><span>DIGITAL</span><div class="segmented" id="digitalControls">
+        <button data-digital="FULL" class="active">FULL</button><button data-digital="LIGHT">LIGHT</button><button data-digital="OFF">OFF</button>
+      </div></div>
+      <div class="system-note" id="systemNote">UNKNOWN：不把未知写成正常开放；Return / Service 提升优先级。</div>
+    </div>
+  </section>
+
+  <div class="scope-toast" id="scopeToast" role="status" aria-live="polite"></div>
+
+  <nav class="primary-nav" aria-label="主导航">
+    <button data-nav="today"><span>01</span><b>今日</b></button>
+    <button data-nav="route" class="active"><span>02</span><b>路线</b></button>
+    <button data-nav="book"><span>03</span><b>我的石书</b></button>
+    <button data-nav="service"><span>04</span><b>服务</b></button>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

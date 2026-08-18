@@ -1,0 +1,39 @@
+{
+  "version": "v0.2",
+  "test_surface": "CDP Page.setContent-equivalent on about:blank; exact portable bytes",
+  "tests": {
+    "390x844": {
+      "storage_surface": {"available": false,"error": "SecurityError"},
+      "01_boot_unknown_failclosed": {"state":{"behavior":"return","reality":"UNKNOWN","digital":"FULL","readingMode":"QUICK","scrollLeft":78,"scrollTop":41,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":false},"active":["service"],"returnText":"回程 · UNKNOWN","sw":390,"cw":390},
+      "02_app_init_mode": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"QUICK","scrollLeft":78,"scrollTop":41,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":true,"systemOpen":false,"setupSeen":false},"activeStep":"mode","framework":{"readingMode":"QUICK","setupSeen":false,"offlinePrepared":true,"generated":false,"readLater":[]}},
+      "03_offline_prep": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":78,"scrollTop":41,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":true,"systemOpen":false,"setupSeen":false},"activeStep":"offline","mode":"DEEP"},
+      "04_route_open": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":78,"scrollTop":41,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"framework":{"readingMode":"DEEP","setupSeen":true,"offlinePrepared":true,"generated":false,"readLater":[]},"returnText":"回程","readingMode":"DEEP"},
+      "keyboard_pan": {"before":78,"after":198,"moved":true},
+      "05_open_deep_reveal": {"state":{"behavior":"reveal","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":371,"scrollTop":0,"sheetOpen":true,"revealOpen":true,"revealDisabled":false,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"sheetState":"REVEAL","disabled":false},
+      "06_return_interrupt": {"state":{"behavior":"return","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":true},"active":["service"]},
+      "07_digital_off_withdrawal": {"state":{"behavior":"intent","reality":"OPEN","digital":"OFF","readingMode":"DEEP","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"disabled":true,"serviceDigital":"OFF · 数字解释退场；现场支持继续"},
+      "08_system_unknown": {"state":{"behavior":"intent","reality":"UNKNOWN","digital":"FULL","readingMode":"DEEP","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":false,"setupOpen":false,"systemOpen":true,"setupSeen":true},"activeReality":["UNKNOWN"],"activeDigital":["FULL"]},
+      "09_unknown_close_failclosed": {"state":{"behavior":"return","reality":"UNKNOWN","digital":"FULL","readingMode":"DEEP","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":true},"active":["service"],"guard":"回程 · UNKNOWN"},
+      "errors": []
+    },
+    "430x932": {
+      "storage_surface": {"available": false,"error": "SecurityError"},
+      "01_boot_unknown_failclosed": {"state":{"behavior":"return","reality":"UNKNOWN","digital":"FULL","readingMode":"QUICK","scrollLeft":71,"scrollTop":13,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":false},"active":["service"],"returnText":"回程 · UNKNOWN","sw":430,"cw":430},
+      "02_app_init_mode": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"QUICK","scrollLeft":71,"scrollTop":13,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":true,"systemOpen":false,"setupSeen":false},"activeStep":"mode"},
+      "03_offline_prep": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":71,"scrollTop":13,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":true,"systemOpen":false,"setupSeen":false},"activeStep":"offline","mode":"DEEP"},
+      "04_route_open": {"state":{"behavior":"intent","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":71,"scrollTop":13,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"returnText":"回程","readingMode":"DEEP"},
+      "keyboard_pan": {"before":71,"after":191,"moved":true},
+      "05_open_deep_reveal": {"state":{"behavior":"reveal","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":378,"scrollTop":0,"sheetOpen":true,"revealOpen":true,"revealDisabled":false,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"sheetState":"REVEAL","disabled":false},
+      "06_return_interrupt": {"state":{"behavior":"return","reality":"OPEN","digital":"FULL","readingMode":"DEEP","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":false,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":true},"active":["service"]},
+      "07_digital_off_withdrawal": {"state":{"behavior":"intent","reality":"OPEN","digital":"OFF","readingMode":"DEEP","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"disabled":true,"serviceDigital":"OFF · 数字解释退场；现场支持继续"},
+      "08_system_unknown": {"state":{"behavior":"intent","reality":"UNKNOWN","digital":"FULL","readingMode":"DEEP","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":false,"setupOpen":false,"systemOpen":true,"setupSeen":true},"activeReality":["UNKNOWN"],"activeDigital":["FULL"]},
+      "09_unknown_close_failclosed": {"state":{"behavior":"return","reality":"UNKNOWN","digital":"FULL","readingMode":"DEEP","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"revealOpen":false,"revealDisabled":true,"serviceOpen":true,"setupOpen":false,"systemOpen":false,"setupSeen":true},"active":["service"],"guard":"回程 · UNKNOWN"},
+      "errors": []
+    },
+    "reduced_motion": {"state":{"behavior":"commit","reality":"OPEN","digital":"FULL","readingMode":"FAMILY","scrollLeft":371,"scrollTop":0,"sheetOpen":true,"revealOpen":false,"revealDisabled":false,"serviceOpen":false,"setupOpen":false,"systemOpen":false,"setupSeen":true},"animations":0,"media":true,"errors":[]}
+  },
+  "errors": [],
+  "framework_identity": {"version":"v0.2","architectureAncestor":"v1.26","navigationSuccessor":"v1.27","modeIsPersona":false,"routeAuthority":"ROUTE-03 = LOCKED CURRENT","state":{"readingMode":"FAMILY","setupSeen":true,"offlinePrepared":true,"generated":false,"readLater":[]}},
+  "target_min_px": 44,
+  "small_targets": []
+}

@@ -1,0 +1,15 @@
+{
+  "artifact": "C04_APP_ROUTE03_CURRENTIZATION_v0_2",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream": "PRJ-C04-DIGITAL-INTERACTION [P3]",
+  "status": "EXECUTABLE MODULE CANDIDATE / NOT APP CURRENT / INDEPENDENT DESIGN REVIEW REQUIRED",
+  "lineage": "v1.25 specialist baseline -> v1.26 Product/Journey/IA/Service architecture -> v1.27 navigation/game architecture -> ROUTE-03 currentization + current exploration grammar",
+  "preserve_from_v1_26": ["fail-closed before startJourney","APP_INIT -> MODE(optional) -> OFFLINE_PREP","QUICK / DEEP / FAMILY with MODE != PERSONA","framework state: readingMode/setupSeen/offlinePrepared (+ generated/readLater provenance)","page architecture / optional reading semantics","Return Guard architectural priority","Digital OFF / no-phone continuity","UNKNOWN/CLOSED fail-closed behavior","Reduced Motion semantics","Framework -> specialist Skill governance order"],
+  "preserve_from_v1_27": ["TODAY / ROUTE / MY BOOK / SERVICE primary IA","READ/R06/R13 route-context descendant model","route-child and return-to-route navigation intent"],
+  "route_authority": {"object":"ROUTE-03","state":"LOCKED CURRENT","upstream_sha256":"44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75","presentation_derivative":"assets/ROUTE_03_APP_VIEWPORT.svg","presentation_derivative_sha256":"94fbf9b7506345a71071fbaad04d2d7ea0ad1c8ad75c79bcb4d95a0946f9ff4a","rule":"VIEWBOX CROP ONLY / no independent App route geometry"},
+  "superseded": ["v1.25-inherited / v1.26-v1.27 custom guide-route geometry as route authority","legacy C04-WS pointers as current workstream identity"],
+  "behavior_grammar": ["INTENT","SCOUT","COMMIT","REVEAL","RETREAT","RETURN"],
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","STATUS UNKNOWN"],
+  "does_not_prove": ["real-time operation/open status","field route-to-reading proximity","exact distance/slope/GPS","full v1.27 integration","full TODAY/MY BOOK screens","independent Design PASS","cross-reload framework persistence on the CDP about:blank test surface"],
+  "design_verdict": "NOT ISSUED BY PRODUCER"
+}

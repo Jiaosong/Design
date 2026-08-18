@@ -1,0 +1,10 @@
+{
+  "record": "C04_APP_VERSION_LINEAGE_RECONCILIATION_v0_2",
+  "status": "CURRENTIZATION SUPPORT / NO_PROMOTION",
+  "correct_inheritance_model": "v1.25 specialist baseline -> v1.26 Product/Journey/IA/Service architecture -> v1.27 navigation/game architecture -> ROUTE-03 currentization + current exploration grammar",
+  "v1_26": {"role":"REQUIRED ARCHITECTURE ANCESTOR / NOT CURRENT AS A WHOLE","preserve":["fail-closed before startJourney","APP_INIT -> MODE(optional) -> OFFLINE_PREP","QUICK/DEEP/FAMILY; MODE != PERSONA","framework state persistence intent","Page Architecture","Return Guard","Digital OFF","fail-closed","Reduced Motion","Framework -> Skill governance"],"superseded":["custom route topology authority","legacy workstream pointers as current identity"]},
+  "v1_27": {"role":"NAVIGATION/GAME ARCHITECTURE SUCCESSOR / HIGHEST DISCOVERED USER-OWNED CANDIDATE PROVENANCE","preserve":["4-primary IA","READ/R06/R13 route descendants","route-child/return-to-route hierarchy","inherited v1.26 framework"]},
+  "metadata_drift": "v1.26 and v1.27 portable HTML retain stale internal title '清江石书 App v1.24｜Visual System'; do not use that title as version identity.",
+  "current_route_authority": "ROUTE-03 = LOCKED CURRENT",
+  "design_verdict": "NOT ISSUED BY PRODUCER"
+}
