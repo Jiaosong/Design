@@ -1,0 +1,40 @@
+{
+  "id": "C04-QINGJIANG-STONE-SEAL-v0.6",
+  "skill_dependency": {
+    "notion_candidate": "Brand System / L5 + Material Identity Extension 2026-08-18",
+    "github_draft_pr": 242,
+    "skill_branch": "skills/story-board-material-identity-v0-1"
+  },
+  "status": "PRODUCER CANDIDATE / MATERIAL-SKILL RERUN / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "geometry_authority": "02_symbol/QJ_STONE_SEAL_FLAT_MASTER_v0_6.svg",
+  "gradient_field": "02_symbol/QJ_STONE_SEAL_GRADIENT_FIELD_v0_6.svg",
+  "texture_field": "02_symbol/QJ_STONE_SEAL_TEXTURE_FIELD_v0_6.svg",
+  "material_master": "02_symbol/QJ_STONE_SEAL_MATERIAL_MASTER_v0_6.svg",
+  "optical_small": "02_symbol/QJ_STONE_SEAL_OPTICAL_SMALL_v0_6.svg",
+  "material_stack": [
+    "Geometry Authority",
+    "Chromatic Field",
+    "Gradient / Tonal Modulation",
+    "Texture Scale",
+    "Finish / Edge Behaviour",
+    "Medium / Optical Decay"
+  ],
+  "gradient_contract": {
+    "role": "stone mass / chromatic depth",
+    "axis": "upper-left light/material depth to lower-right mass",
+    "contrast": "low-to-moderate neighboring green/teal value corridor",
+    "off_state": "Flat Master"
+  },
+  "texture_contract": {
+    "macro": "low-frequency tonal fields + irregular mineral veins",
+    "meso": "directional abrasion in asymmetric density zones",
+    "micro": "grain with top/middle/lower density variation",
+    "negative_space": "river cut and strata gaps remain clean"
+  },
+  "truth": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  }
+}
