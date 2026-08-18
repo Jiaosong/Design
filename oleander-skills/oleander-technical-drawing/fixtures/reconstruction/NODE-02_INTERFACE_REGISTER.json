@@ -1,0 +1,25 @@
+{
+  "schema": "oleander-node-semantics/0.2",
+  "promotion_state": "CANDIDATE_NOT_PROMOTED",
+  "edges": [],
+  "nodes": [
+    {
+      "id": "IF-01",
+      "node_mode": "CONSTRUCTION_INTERFACE",
+      "node_class": "JOINT",
+      "primary_role": "PRIMARY_TO_ATTACHED_INTERFACE",
+      "secondary_roles": ["REVEAL", "TERMINATION"],
+      "owner_system": "ASSEMBLY",
+      "graphic_carrier_id": "NODE_JOINT_01",
+      "connected_edge_ids": [],
+      "component_ids": ["COMP_PRIMARY", "COMP_ATTACHED"],
+      "primary_component_id": "COMP_PRIMARY",
+      "attached_component_ids": ["COMP_ATTACHED"],
+      "interface_type": "JOINT_WITH_REVEAL",
+      "critical_interface_claim": "primary body and attached system remain visually distinct and meet at an explicit joint/reveal rather than a merged outline",
+      "truth_state": "SYNTHETIC_FIXTURE",
+      "geometry_confidence": "LOCKED_FIXTURE",
+      "does_not_prove": ["joint width", "fastener", "structural capacity", "material build-up", "field condition"]
+    }
+  ]
+}
