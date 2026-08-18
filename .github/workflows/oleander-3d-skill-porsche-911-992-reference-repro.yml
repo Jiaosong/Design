@@ -27,6 +27,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v5.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v10.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v11.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_image_calibration.py
           python3 -m unittest \
@@ -44,37 +45,37 @@ jobs:
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
-      - name: Build Porsche 911 Carrera 992.2 V10 calibrated-contour reproduction
+      - name: Build Porsche 911 Carrera 992.2 V11 evaluated-projection reproduction
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v10.py \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v11.py \
             -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"; sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Machine, contour-binding and reference-fidelity screening gates
+      - name: Machine, contour, evaluated-projection and reference-fidelity screening gates
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
           out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
-          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());c=json.loads((out/'REFERENCE_CONTRACT.json').read_text());b=json.loads((out/'REFERENCE_CONTOUR_BINDING_RECEIPT.json').read_text())
+          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());c=json.loads((out/'REFERENCE_CONTRACT.json').read_text());b=json.loads((out/'REFERENCE_CONTOUR_BINDING_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
           assert r['status']=='EXECUTED_MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',r
           assert c['reference_vehicle']=='Porsche 911 Carrera Coupe (992.2)'
-          assert c['reference_revision']=='2025_992.2_CARRERA_BODY_SHELL_CALIBRATED'
+          assert c['reference_revision']=='2025_992.2_CARRERA_EVALUATED_PROJECTION_CONSTRAINED'
           assert abs(c['hard_points']['length']-4.542)<1e-9 and abs(c['hard_points']['width_excluding_mirrors']-1.852)<1e-9 and abs(c['hard_points']['height']-1.298)<1e-9 and abs(c['hard_points']['wheelbase']-2.450)<1e-9 and abs(c['hard_points']['track_front']-1.591)<1e-9 and abs(c['hard_points']['track_rear']-1.557)<1e-9
           assert all(q['checks'].values()),q['checks'];assert len(q['renders'])==6
           assert b['status']=='MACHINE_BINDING_PASS',b
-          assert b['side_top_rmse_m']<=b['thresholds']['side_top_rmse_m_max']
-          assert b['side_top_max_abs_m']<=b['thresholds']['side_top_max_abs_m']
-          assert q['reference_contour_binding']=='MACHINE_BINDING_PASS'
-          assert q['macro_form_gate']=='MACHINE_BINDING_PASS_VISUAL_REVIEW_REQUIRED'
+          assert p['status']=='PROJECTION_MACHINE_SCREENING_PASS',p
+          assert all(m['reference_target_source']!=m['candidate_measurement_source'] for m in p['metrics'])
+          assert q['projection_machine_gate']=='PROJECTION_MACHINE_SCREENING_PASS'
+          assert q['macro_form_gate']=='MACHINE_SCREENING_ONLY_VISUAL_REVIEW_REQUIRED'
           assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print('PORSCHE 911 992.2 V10 CALIBRATED-CONTOUR MACHINE GATE PASS')
+          print('PORSCHE 911 992.2 V11 EVALUATED-PROJECTION MACHINE GATE PASS')
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py \
             out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_FIDELITY_RECEIPT.json
