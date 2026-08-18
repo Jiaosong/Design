@@ -11,6 +11,7 @@ This Skill already owns narrative sequencing. Its visual layer must reuse existi
 3. Local `LONGFORM_TEXT_MEASURE_GATE.md` for continuous-prose pages.
 4. Notion `OLEANDER Artifact Review System v1.1｜合规门 × 专业设计门`, especially Presentation checks.
 5. Current Project Design DNA / Visual Bible when applicable.
+6. Current Notion `T-VISUAL-IMAGE-OPS-001｜OLEANDER Image Processing Operator Standard｜图层—蒙版—透明度—混合—滤镜—非破坏编辑` for image assembly, compositing and presentation-safe image treatment.
 
 ## Existing visual rules to apply
 
@@ -20,6 +21,10 @@ This Skill already owns narrative sequencing. Its visual layer must reuse existi
 - Color salience should reinforce narrative priority rather than make secondary modules equal-weight again.
 - For long-form prose, use the existing local text-measure gate; do not fill all available columns merely because the grid permits it.
 - Never distort authoritative map/plan/section/model geometry to improve composition.
+
+## Image-processing operator routing
+
+Use `T-VISUAL-IMAGE-OPS-001` for non-destructive crop, masks, clipping, opacity, blend modes, color/tonal adjustment, layered collage, texture and bounded filter treatment when they support the narrative hierarchy. Preserve source images and authoritative geometry separately. High-style filters, retouch and generative edits remain presentation derivatives unless Current Authority explicitly promotes a designed derivative; they may not turn a weak or unsupported claim into evidence.
 
 ## Review inheritance
 
