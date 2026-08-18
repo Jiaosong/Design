@@ -6,27 +6,46 @@ ROLES={
 'BACKGROUND_EVIDENCE','CITY_SYSTEM_CONTEXT','SITE_SYNTHESIS','GROUND_PHOTO_AUDIT',
 'PROBLEM_LAYER','TARGET_STRATEGY','THEORY_FRAME','DESIGN_PROPOSITION','VISION_CLOSE'
 }
-REQ={'panel_id','panel_role','question_answered','claim','source_refs','carrier_family','why_this_carrier','pixel_state','semantic_state'}
+TEMPOS={'FAST','ORIENT','SLOW','PROVE','PAUSE'}
+REQ={
+'panel_id','panel_role','question_answered','claim','source_refs','carrier_family',
+'why_this_carrier','pixel_state','semantic_state','reading_tempo','downstream_role'
+}
 
 def fail(msg):
     print('FAIL:',msg); raise SystemExit(1)
+
+def nonempty_text(value):
+    return isinstance(value,str) and bool(value.strip())
 
 def main():
     if len(sys.argv)!=2: fail('usage: validate_editorial_analysis_board.py REGISTER.json')
     d=json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
     if d.get('promotion') not in {'NO','NO_PROMOTION','CANDIDATE_NOT_PROMOTED'}: fail('register must remain non-promoted')
     if not d.get('reading_chain'): fail('reading_chain required')
+    if not nonempty_text(d.get('one_sentence_finding')): fail('one_sentence_finding required')
+    if not nonempty_text(d.get('first_read_object_id')): fail('first_read_object_id required')
+    labels=d.get('first_read_labels')
+    if not isinstance(labels,list) or not (1 <= len(labels) <= 5):
+        fail('first_read_labels must contain 1–5 labels/relations')
+    if any(not nonempty_text(x) for x in labels): fail('first_read_labels cannot contain empty labels')
+    if not nonempty_text(d.get('actual_preview_review_ref')):
+        fail('actual_preview_review_ref required: structural board validation must hand off to actual-preview review')
+
     panels=d.get('panels')
     if not isinstance(panels,list) or not panels: fail('panels required')
-    ids=set(); dom=[]
+    ids=set(); dom=[]; tempos=[]
     for p in panels:
         miss=REQ-set(p)
         if miss: fail(f"panel missing {sorted(miss)}")
         if p['panel_id'] in ids: fail('duplicate panel_id '+p['panel_id'])
         ids.add(p['panel_id'])
         if p['panel_role'] not in ROLES: fail(f"{p['panel_id']}: invalid panel_role")
+        if p['reading_tempo'] not in TEMPOS: fail(f"{p['panel_id']}: invalid reading_tempo")
+        tempos.append(p['reading_tempo'])
         if not p['source_refs']: fail(f"{p['panel_id']}: source_refs required")
         if not p['why_this_carrier']: fail(f"{p['panel_id']}: why_this_carrier required")
+        if not nonempty_text(p['downstream_role']): fail(f"{p['panel_id']}: downstream_role required")
         if p.get('dominant'): dom.append(p['panel_id'])
         if p.get('text_state')=='UNRECOVERABLE' and p.get('invented_text'):
             fail(f"{p['panel_id']}: unreadable source text cannot be invented")
@@ -36,10 +55,17 @@ def main():
             fail(f"{p['panel_id']}: theory frame must link to diagnosis")
         if p['panel_role']=='GROUND_PHOTO_AUDIT' and not p.get('ground_evidence'):
             fail(f"{p['panel_id']}: photo audit must state ground evidence role")
+
     if len(dom)!=1: fail('exactly one dominant panel required for this fixture contract')
     if d.get('dominant_panel_id')!=dom[0]: fail('dominant_panel_id mismatch')
+    if d.get('first_read_object_id')!=dom[0]:
+        fail('first_read_object_id must match the declared dominant panel for this board contract')
+    if len(panels) >= 4 and len(set(tempos)) < 2:
+        fail('multi-role analysis board must not collapse every panel into one reading tempo')
     if d.get('source_tile_control') and d.get('rf_claim')=='RF-C3':
         fail('source tile control cannot claim RF-C3')
-    print(f"PASS: {len(panels)} editorial-board panels structurally valid")
+
+    print(f"PASS: {len(panels)} editorial-board panels structurally valid with finding / first-read / rhythm contract")
+    print('NOTE: declared tempo and hierarchy do not prove visual quality; actual-preview Design Crit remains separate.')
 
 if __name__=='__main__': main()
