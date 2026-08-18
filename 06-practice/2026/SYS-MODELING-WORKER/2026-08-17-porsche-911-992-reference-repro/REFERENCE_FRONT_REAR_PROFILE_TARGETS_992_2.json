@@ -1,0 +1,37 @@
+{
+  "schema": "oleander.reference-projected-profile.porsche-911-992-2.v1",
+  "reference_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_STUDIO_IMAGE_PROFILE_ESTIMATE_NOT_ORTHOGRAPHIC_CAD",
+  "method": "Largest main-vehicle silhouette component measured from persisted near-front / near-rear studio images. Vertical position is normalized from detected vehicle bottom=0 to top=1; width is normalized by each view's detected maximum body width. These profiles screen gross front/rear mass distribution only; perspective and studio-image bias remain.",
+  "front": {
+    "source": "Elferspot 2025 Porsche 992.2 Carrera front studio image",
+    "sha256": "fc3742d21282178e4751c3e0ea0449a843c19fa6751b82687fdfc958480589db",
+    "profile": [
+      [0.98,0.309],[0.95,0.522],[0.90,0.612],[0.85,0.653],[0.80,0.682],
+      [0.75,0.758],[0.70,0.869],[0.65,0.922],[0.60,0.943],[0.55,0.945],
+      [0.50,0.924],[0.45,0.914],[0.40,0.901],[0.35,0.905],[0.30,0.909],
+      [0.25,0.921],[0.20,0.879],[0.15,0.915],[0.10,0.939]
+    ]
+  },
+  "rear": {
+    "source": "Eurocar Porsche 911 Carrera 992 II rear studio image",
+    "sha256": "af097a1f70c9a5eb9957d98c85416edf9bf031b2c75b6aafbdd60ac9a3eedcff",
+    "profile": [
+      [0.98,0.120],[0.95,0.267],[0.90,0.350],[0.85,0.432],[0.80,0.467],
+      [0.75,0.508],[0.70,0.585],[0.65,0.682],[0.60,0.753],[0.55,0.809],
+      [0.50,0.882],[0.45,0.899],[0.40,0.872],[0.35,0.867],[0.30,0.889],
+      [0.25,0.903],[0.20,0.895],[0.15,0.913],[0.10,0.900]
+    ]
+  },
+  "gates": {
+    "front_profile_rmse_max": 0.10,
+    "rear_profile_rmse_max": 0.11,
+    "single_sample_abs_error_max": 0.20,
+    "visual_review_required": true
+  },
+  "transfer_scope": {
+    "allowed": "gross projected width distribution by normalized height; cabin/body taper; shoulder-to-roof relation",
+    "forbidden": "manufacturer section dimensions; local surface curvature; exact bumper/aero/trim package; Class-A claims"
+  },
+  "does_not_prove": ["manufacturer CAD","orthographic engineering section","Class-A continuity","production patch layout","manufacturing feasibility","homologation"]
+}
