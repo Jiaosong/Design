@@ -103,7 +103,7 @@
     "merge_commit": "34a23f2b2699b27136637ea89e25465c5007e945",
     "main_readback": "PASS",
     "notion_writeback": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001 updated to Resolver v1.2; T-VISUAL-IMAGE-OPS-001 Technical Drawing path corrected; both read back live.",
-    "remaining_blockers": [],
+    "remaining_blockers": ["NONE_REMAINING"],
     "final_state": "MERGED_VALIDATED_LIVE_DRIFT_CURRENT"
   },
   "does_not_prove": ["project_state", "design_quality", "field_truth", "engineering_validity", "user_validation", "rights_clearance", "candidate_skill_promotion"]
