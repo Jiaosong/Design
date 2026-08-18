@@ -1,6 +1,6 @@
 ---
 name: oleander-story-and-board
-description: Turn Oleander research, data, design logic, renders, and brand strategy into coherent boards, reports, decks, storyboards, and promotional narratives. Use whenever the user mentions Oleander project compilation, exhibition boards, design books, presentations, brand stories, scripts, storyboards, key visuals, InDesign, Illustrator, Figma, PowerPoint, or connecting analysis to a persuasive narrative.
+description: Turn Oleander research, data, design logic, renders, and brand strategy into coherent boards, reports, decks, storyboards, promotional narratives, and VI / brand-identity manual presentation layers. Use whenever the user mentions Oleander project compilation, exhibition boards, design books, presentations, brand stories, VI manuals, logo standards, brand guidelines, visual identity systems, scripts, storyboards, key visuals, InDesign, Illustrator, Figma, PowerPoint, or connecting analysis to a persuasive narrative.
 compatibility: May use Notion, documents, presentations, PDF, Figma, InDesign, Illustrator, Photoshop, After Effects, Premiere, and LibreOffice.
 ---
 
@@ -51,6 +51,30 @@ When a story uses a sequence such as `Landscape First → Relation Reveal`, `Obj
 
 **Promotion test:** `If view A is not project-readable without labels, view B cannot rescue it.` `Abstract proxy ≠ Main visual.`
 
+## VI / Brand Identity Manual production
+
+When the requested artifact is a **VI manual / visual identity handbook / logo standards page / brand guideline / brand identity Web chapter**, first resolve the Current Brand Identity METHOD and then read:
+
+`oleander-skills/oleander-story-and-board/VI_MANUAL_PRODUCTION_EXTENSION.md`
+
+This does **not** make `oleander-story-and-board` the Brand Identity authority. Brand Identity remains Notion-led with `NO_DEDICATED_OWNER`; this skill owns only the presentation/manual composition layer and must route specialist content to Current Visual Communication, Color, Image Ops and Technical Drawing methods/tools.
+
+Mandatory VI production rule:
+
+**Text rule ≠ visual specification.**
+
+If a VI rule is operational, it must be visibly represented at the point of use. Examples:
+
+- clearspace must show logo bounds + influence/exclusion bounds + dimensions;
+- minimum size must show concrete values/units and a threshold specimen, plus a FAIL/below-threshold specimen when relevant;
+- standard construction must be tied to the current authoritative geometry, not a decorative grid;
+- wordmark rules must show the actual wordmark/baseline relation;
+- color rules must show actual swatches/roles/contrast rather than only list values;
+- typography rules must show real uppercase/lowercase/numerals/punctuation/CJK/weights rather than only name font families;
+- material/image effects must keep effect-off and Flat Geometry Authority available.
+
+Use Technical Drawing logic for construction, dimensions, safe areas, influence zones, optical limits and production geometry. Never invent a dimension just to make a VI page appear complete.
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
@@ -64,6 +88,7 @@ When a story uses a sequence such as `Landscape First → Relation Reveal`, `Obj
 9. Run content, visual, and production reviews separately.
 10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
 11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
+12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
 
 ## Deliverable variants
 
@@ -71,6 +96,7 @@ When a story uses a sequence such as `Landscape First → Relation Reveal`, `Obj
 - Report/book: evidence depth, citations, cross-references, appendices.
 - Deck: one decision or claim per slide.
 - Brand story: human motivation, distinctive promise, proof, voice.
+- VI / brand manual: visibly represented identity rules, actual master assets, dimensioned construction where required, color/type specimens, misuse, production boundaries, and editable/readback-ready pages.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
 ## Required output
@@ -80,6 +106,8 @@ Return the narrative outline, content inventory, page/board/scene map, missing-a
 For any layout containing source-bound spatial evidence, include a short authority-preservation note naming the source object and confirming what was kept unchanged versus presentation-only edits.
 
 For any paired/reveal primary visual, also return a same-source declaration naming the base source/version and the exact overlay/highlight differences between frames.
+
+For VI/manual work, also return or persist the represented standard drawings/specimens used by the manual, actual readbacks at target size, and all proof-open production limits. A prose-only specification is not a complete VI deliverable.
 
 ## Quality checks
 
@@ -93,3 +121,6 @@ For any paired/reveal primary visual, also return a same-source declaration nami
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
 - Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
+- For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
+- For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
+- Material/raster display effects never become logo/vector/text geometry authority.
