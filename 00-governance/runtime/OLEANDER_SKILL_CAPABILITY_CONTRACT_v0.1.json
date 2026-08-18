@@ -4,7 +4,14 @@
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "scope": "github_execution_owners",
-  "upstream": ["Notion Current Root Authority", "live Registry", "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1", "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0"],
+  "upstream": ["Notion Current Root Authority", "live Registry", "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2", "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0"],
+  "declaration_sources": {
+    "installed_owner_pattern": "oleander-skills/<skill_id>/CAPABILITY.json",
+    "candidate_owner_pattern": "skills/<skill_id>/CAPABILITY.json",
+    "local_declaration_required_for": ["INSTALLED_OWNER", "CANDIDATE_OWNER"],
+    "central_record_only_allowed_for": ["CANDIDATE_BODY", "RUNTIME_TOOL_ADAPTER", "NO_DEDICATED_OWNER"],
+    "rule": "Local CAPABILITY.json and this aggregate owner record must match for all owners implemented on main."
+  },
   "required_fields": ["skill_id", "lifecycle_state", "routing_state", "accepts", "produces", "owns_authority", "does_not_own", "required_tools", "optional_tools", "runtime", "fallback", "gates", "handoff_schema", "implementation_paths", "last_verified", "does_not_prove"],
   "lifecycle_states": ["EXPERIMENTAL", "CANDIDATE", "VALIDATED", "INSTALLED", "DEPRECATED", "LEGACY"],
   "routing_states": ["INSTALLED_OWNER", "CANDIDATE_OWNER", "CANDIDATE_BODY", "RUNTIME_TOOL_ADAPTER", "NO_DEDICATED_OWNER"],
@@ -226,11 +233,13 @@
       "fallback": "NTS_concept_drawing_with_explicit_field_open_boundary",
       "gates": ["source_geometry_binding", "dimension_binding", "lineweight_legibility", "candidate_promotion_boundary"],
       "handoff_schema": "OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1",
-      "implementation_paths": ["oleander-skills/oleander-technical-drawing/"],
+      "implementation_paths": [],
+      "implementation_state": "NOT_ON_MAIN",
+      "implementation_refs": ["GitHub PR #172 DRAFT / candidate Technical Drawing v0.2"],
       "last_verified": "2026-08-18",
       "does_not_prove": ["installed_status", "field_truth", "engineering_validity", "construction_readiness"]
     }
   ],
-  "hard_guards": ["file_existence_does_not_promote_lifecycle", "ci_green_does_not_promote_lifecycle", "shared_tool_does_not_own_final_artifact", "fallback_must_declare_loss", "minimum_sufficient_owner_set"],
+  "hard_guards": ["file_existence_does_not_promote_lifecycle", "ci_green_does_not_promote_lifecycle", "shared_tool_does_not_own_final_artifact", "fallback_must_declare_loss", "minimum_sufficient_owner_set", "local_capability_declaration_must_match_aggregate_for_main_owners"],
   "does_not_prove": ["skill_quality", "project_design_pass", "field_truth", "user_validation", "engineering_validity", "release_readiness"]
 }

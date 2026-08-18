@@ -130,7 +130,11 @@
     ]
   },
   "execution_receipt": {
-    "required_fields": [
+    "current_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+    "human_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.md",
+    "instance_directory": "00-governance/runtime/receipts/",
+    "current_rule": "Use the Current Execution Receipt contract as the single instance schema; execute only applicable sections and prefer NOT_APPLICABLE to fake process.",
+    "legacy_minimum_subset": [
       "TASK",
       "AUTHORITY",
       "SKILL_RESOLVED",
@@ -158,6 +162,7 @@
       "PIXEL_DIFF_METRIC",
       "MISMATCH_STATE",
       "FIDELITY_GATE"
-    ]
+    ],
+    "boundary": "Legacy minimum subset is compatibility provenance only and does not define a second receipt schema."
   }
 }

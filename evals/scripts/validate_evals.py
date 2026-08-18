@@ -25,6 +25,7 @@ REQUIRED_SKILLS = {
     "oleander-3d-pipeline",
     "oleander-story-and-board",
     "oleander-delivery-qc",
+    "oleander-motion",
 }
 
 FAILURE_CATEGORIES = {

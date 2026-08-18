@@ -10,13 +10,13 @@ Execution registry: **GitHub `oleander-skills/REVIEW.md` + candidate specialist 
 
 This map answers one question only:
 
-> **After a Current Notion object has been resolved correctly, which existing GitHub execution owner should actually perform the work?**
+> **After a Current Notion object has been resolved correctly and the required native output is known, which existing GitHub execution owner should perform the work?**
 
 It does **not** redefine Notion taxonomy, page names, Domain identity, Canonical ID, L0–L7 position, Canonical Parent/Children, Source relations, Method relations, Project relations, evidence state, or governance state.
 
-The current sequence is:
+Current sequence under Resolver v1.2:
 
-`NOTION CURRENT ROOT → LIVE REGISTRY → CANONICAL ID / ROLE / L0–L7 / PRIMARY DOMAIN / METHOD FAMILY → REQUIRED NATIVE OUTPUT → GITHUB EXECUTION OWNER → REAL EXECUTION → READBACK`
+`NOTION CURRENT ROOT → LIVE REGISTRY → CANONICAL ID / ROLE / L0–L7 / PRIMARY DOMAIN / METHOD FAMILY → REQUIRED NATIVE OUTPUT → EXECUTION OWNER MAP → SKILL CAPABILITY CONTRACT → MINIMUM SUFFICIENT OWNER SET / DAG → EXECUTION`.
 
 ## 1｜Core separation
 
@@ -33,23 +33,21 @@ The current sequence is:
 ### GitHub execution owner owns
 - an executable production workflow;
 - runtime/tool selection inside its contract;
-- native artifact creation;
+- native artifact creation within declared authority;
 - machine/runtime checks belonging to that capability;
-- handoff to another execution owner when output medium changes.
+- typed handoff to another execution owner when output medium changes.
 
 A GitHub owner name is **not** a Notion Domain and must never change the Notion object's name or location.
 
 ## 2｜Valid routing outcomes
 
-Every resolved object may end in one of these states:
-
-1. **INSTALLED OWNER** — an installed reusable Skill directly owns execution.
-2. **CANDIDATE OWNER** — an exact candidate specialist is useful; candidate status remains explicit.
-3. **CANDIDATE BODY** — e.g. Technical Drawing; usable only within its current implementation boundary.
-4. **RUNTIME / TOOL ADAPTER** — the Notion object is a TOOL or AI/runtime rule, not a design execution Skill.
+1. **INSTALLED OWNER** — installed reusable Skill directly owns execution.
+2. **CANDIDATE OWNER** — exact candidate specialist is useful; candidate status remains explicit.
+3. **CANDIDATE BODY** — bounded specialist body such as Technical Drawing.
+4. **RUNTIME / TOOL ADAPTER** — Notion TOOL/runtime rule, not a new design Skill.
 5. **NO_DEDICATED_OWNER** — no current GitHub Skill honestly owns the whole capability.
 
-`NO_DEDICATED_OWNER` is a valid answer. It is **not** permission to create a new Skill. New Skill creation still requires repeated real execution/readback evidence that no existing owner or combination can reasonably handle the capability.
+`NO_DEDICATED_OWNER` is valid and does not authorize automatic Skill creation.
 
 ## 3｜Current execution owners
 
@@ -66,45 +64,43 @@ Every resolved object may end in one of these states:
 | `oleander-route-wayfinding-ui` | CANDIDATE | route/network/state wayfinding interface |
 | `oleander-game-ui` | CANDIDATE | game-like interface execution |
 | `oleander-mobile-game-ui` | CANDIDATE | mobile game-like interface execution |
-| `OLEANDER Technical Drawing` | CANDIDATE BODY | plans, sections, nodes and technical graphic translation when current implementation is available |
+| `OLEANDER Technical Drawing` | CANDIDATE BODY | plans, sections, nodes and technical graphic translation within its current implementation boundary |
 
-`oleander-game-ui-stack` remains an aggregation/routing layer, not an extra independent owner.
+`oleander-game-ui-stack` remains an aggregation/router/test surface, not an extra independent owner.
 
 ## 4｜Owner selection order
 
 Resolve in this order:
 
-1. explicit Current project execution owner, when Current Authority actually assigns one;
+1. explicit Current project execution owner when Current Authority assigns one;
 2. exact specialist required by the native output;
-3. installed reusable owner whose contract directly owns the capability;
-4. method-family / current-domain fallback;
+3. installed reusable owner whose capability contract directly owns the task;
+4. method-family / Current-domain fallback;
 5. `NO_DEDICATED_OWNER`.
 
-Do not select by GitHub folder name similarity.
+After owner resolution, Resolver v1.2 applies `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1` and the `MINIMUM SUFFICIENT OWNER SET` rule. Do not expand to a full multi-Skill chain by default.
 
 ## 5｜Knowledge-role routing
 
 | Notion knowledge role | Default execution route |
 |---|---|
-| `SOURCE` | `oleander-research`; downstream owner may consume the evidence |
+| `SOURCE` | `oleander-research`; downstream owner may consume evidence |
 | `EVIDENCE` | `oleander-research`; visualization/geometry may hand off |
 | `CASE` | `oleander-research`, then output-specific handoff |
-| `THEORY` | `NO_DEDICATED_OWNER`; resolve from the task/output |
+| `THEORY` | `NO_DEDICATED_OWNER`; resolve from task/output |
 | `METHOD` | resolve by `方法家族 + required native output`; METHOD ≠ Skill |
-| `TOOL` | runtime/tool adapter; do not create a Skill merely to wrap a tool |
+| `TOOL` | runtime/tool adapter; TOOL ≠ Skill |
 | `PRACTICE / OUTPUT` | resolve by actual project + output medium |
-| `INDEX` | `NO_DEDICATED_OWNER`; an index is discovery structure, not production capability |
+| `INDEX` | `NO_DEDICATED_OWNER`; discovery structure, not production capability |
 
 ## 6｜Method-family → execution fallback
-
-These are execution fallbacks only; the live Notion object and current `方法家族` field remain upstream.
 
 | 方法家族 | Execution owner rule |
 |---|---|
 | 研究取证 | `oleander-research` |
 | 综合洞察 | `oleander-research`; data graphic → `oleander-data-viz`; narrative → `oleander-story-and-board` |
 | 问题定义 | `oleander-research`; communication artifact may hand off to `oleander-story-and-board` |
-| 策略决策 | `NO_DEDICATED_OWNER`; research/story are support, not a fake generic strategy Skill |
+| 策略决策 | `NO_DEDICATED_OWNER`; research/story are support |
 | 创意生成 | resolve by actual output medium |
 | 原型表达 | UI → UI specialists; 3D → `oleander-3d-pipeline`; motion → `oleander-motion`; board/story → `oleander-story-and-board`; data → `oleander-data-viz` |
 | 分析建模 | data/GIS → `oleander-data-viz`; 3D geometry → `oleander-3d-pipeline`; otherwise `NO_DEDICATED_OWNER` |
@@ -113,18 +109,9 @@ These are execution fallbacks only; the live Notion object and current `方法�
 | 交付治理 | `oleander-delivery-qc`, with producing owner as support |
 | AI协同 | AIG/runtime governance first, then downstream execution owner |
 
-### Hard review boundary
-
-`oleander-delivery-qc` must never be used as a generic substitute for:
-- Design Review;
-- usability testing;
-- user validation;
-- field validation;
-- professional design quality judgment.
+`oleander-delivery-qc` must never substitute for Design Review, usability testing, user validation, field validation or professional design judgment.
 
 ## 7｜Required native output → owner
-
-This is the strongest practical fallback after Notion identity is resolved.
 
 | Required native output | Primary execution owner |
 |---|---|
@@ -145,27 +132,25 @@ This is the strongest practical fallback after Notion identity is resolved.
 | service / experience system | `NO_DEDICATED_OWNER` |
 | generic strategy framework | `NO_DEDICATED_OWNER` |
 
-A `NO_DEDICATED_OWNER` capability may still be executed by a controlled combination of existing owners for its suboutputs.
+A `NO_DEDICATED_OWNER` capability may still be executed by a controlled minimum-sufficient combination of existing owners for suboutputs.
 
 ## 8｜Current-domain fallback
 
-Domain is only a fallback after the exact current L2 Domain object has been resolved from Notion.
-
 - Research / user research / evidence → `oleander-research`
 - Information / data / GIS → `oleander-data-viz`
-- Motion / media → `oleander-motion`; narrative support from `oleander-story-and-board`
-- Digital / web / interaction → choose candidate UI owner by output; motion/data support as needed
+- Motion / media → `oleander-motion`; story support as needed
+- Digital / web / interaction → choose candidate UI owner by required native output
 - Architecture / spatial → 3D=`oleander-3d-pipeline`; technical drawing=`Technical Drawing` candidate; GIS/data=`oleander-data-viz`
 - Brand / visual → `NO_DEDICATED_OWNER`; output-specific story/UI/motion support
-- Product / material / CMF → `NO_DEDICATED_OWNER`; 3D/QC/story support by output
-- Service / experience → `NO_DEDICATED_OWNER`; research/story/UI interaction support
-- Human factors / usability / accessibility → `NO_DEDICATED_OWNER`; route by actual research, UI or release-QC task
+- Product / material / CMF → `NO_DEDICATED_OWNER`; output-specific 3D/QC/story support
+- Service / experience → `NO_DEDICATED_OWNER`; output-specific research/story/UI support
+- Human factors / usability / accessibility → `NO_DEDICATED_OWNER`; route by actual research/UI/QC task
 
-Do not hard-code this fallback as Notion taxonomy. If the live Domain Registry changes, read Current Notion first.
+Domain fallback is never a replacement for live Notion Domain identity.
 
 ## 9｜Machine routing result
 
-Each resolver run should be able to emit:
+Each resolver run emits, at minimum:
 
 ```json
 {
@@ -178,36 +163,37 @@ Each resolver run should be able to emit:
   "primary_execution_owner": "oleander-data-viz",
   "owner_state": "INSTALLED",
   "supporting_execution_skills": [],
-  "evidence_for_route": [
-    "current Notion role/domain/method-family",
-    "required native output",
-    "current GitHub owner registry"
-  ],
+  "evidence_for_route": ["current Notion identity", "required native output", "Current GitHub owner registry"],
   "does_not_prove": "METHOD validation, Skill promotion, Design PASS or Field truth"
 }
 ```
 
+This routing result becomes input to the Capability Contract and, if needed, the Multi-Skill DAG Contract.
+
 ## 10｜Hard guards
 
 - Notion Canonical ID / Domain / Role / relations remain upstream.
-- Execution owner never changes Notion object naming or physical Registry location.
+- Execution owner never changes Notion naming or physical Registry location.
 - `NO_DEDICATED_OWNER` does not trigger automatic Skill creation.
-- Candidate owner must always remain labelled candidate.
-- Output medium may override broad Domain fallback when the task requires a specific native artifact.
-- One execution owner may serve many Notion METHODs and Domains.
-- One Notion METHOD may call several execution owners across different outputs.
-- Project-specific Current owner overrides generic fallback only when Current Authority actually assigns it.
+- Candidate owner remains candidate.
+- One execution owner may serve many Notion METHODs/Domains.
+- One METHOD may call several execution owners across different outputs.
 - Delivery QC ≠ Design Review ≠ user validation.
-- GitHub execution mapping does not prove METHOD validity, Design PASS, Field/engineering truth, rights clearance or promotion.
+- `MINIMUM SUFFICIENT OWNER SET` precedes DAG expansion.
+- Owner mapping does not prove METHOD validity, Design PASS, field/engineering truth, rights clearance or promotion.
 
-## 11｜Relationship to other Current contracts
+## 11｜Relationship to Current contracts
 
 Read together with:
 
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md/.json`
+- `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.md/.json`
+- `OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.md/.json`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json`
 - `oleander-skills/REVIEW.md`
 
-The architecture binding answers **where and what the Notion object is**.  
-This owner map answers **who executes it in GitHub**.  
-The default resolver answers **in what order the agent resolves and executes the task**.
+Architecture binding answers **where and what the Notion object is**.  
+This owner map answers **who may execute the required native output**.  
+Capability/DAG contracts answer **what the owner may do and which minimum set actually runs**.  
+Resolver v1.2 answers **the execution order**.

@@ -53,7 +53,19 @@
         "oleander-mobile-game-ui"
       ],
       "supported_operator_classes": ["Layer_Composite", "Mask_Selection_Channel", "Adjustment", "Vector_safe_Effect", "Raster_preview_Effect", "2D_Faux_3D", "Static_Effect_State"],
+      "parameter_schema": {
+        "source": "T-VISUAL-IMAGE-OPS-001 Current TOOL",
+        "required_selection_fields": ["design_intent", "operator_role", "minimum_sufficient_operator_set", "parameter_bounds", "effect_budget", "effect_off_baseline"],
+        "consumer_specific_parameters_allowed": true,
+        "menu_driven_selection_forbidden": true
+      },
+      "runtime": "consumer_specific_visual_runtime",
+      "renderer": "consumer_specific; proprietary Adobe behavior may require PROXY_NOT_PIXEL_IDENTICAL declaration",
+      "fallback": "effect-off baseline or bounded non-destructive equivalent that preserves semantics and declares capability loss",
       "unsupported_operations": ["independent_design_method", "final_artifact_ownership", "temporal_transition_theory", "evidence_promotion"],
+      "output_permissions": ["DERIVE", "MUTATE_PRESENTATION_ONLY"],
+      "regression_baseline": "00-governance/runtime/regression-baselines/RB-IMAGE-OPS-ADAPTER-SEED-v0.1.json",
+      "last_verified": "2026-08-18",
       "does_not_prove": ["design_pass", "evidence_truth", "geometry_truth", "physical_material_truth", "promotion"]
     }
   ]

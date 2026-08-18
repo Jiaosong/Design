@@ -6,16 +6,18 @@ This directory contains cross-project runtime and capability-routing contracts. 
 
 Use:
 
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md`
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json`
 - `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md`
 - `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.json`
 
 Canonical default:
 
-`CURRENT NOTION ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE → REQUIRED NATIVE OUTPUT → GITHUB EXECUTION OWNER MAP → EXISTING MATURE DESIGN / EXECUTION SKILL → CAPABILITY PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE`
+`CURRENT NOTION ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE → REQUIRED NATIVE OUTPUT → GITHUB EXECUTION OWNER MAP → SKILL CAPABILITY CONTRACT → MINIMUM SUFFICIENT OWNER SET / DAG → TOOL ADAPTER WHEN REQUIRED → REAL NATIVE ARTIFACT → TYPED HANDOFF → STRUCTURAL + SEMANTIC + VISUAL_ROI + RUNTIME REGRESSION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE → EXECUTION RECEIPT → DRIFT CHECK WHEN CROSS-PLATFORM POINTERS CHANGE`
 
 The GitHub installed-skill list is the formal reusable **execution** registry, not the complete OLEANDER design-intelligence inventory. GitHub Skill names are execution identifiers and must not be copied into Notion as a parallel taxonomy.
 
@@ -25,7 +27,7 @@ For any execution owner that produces or materially judges visual output, check 
 
 Current Notion structural routing must use the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy `上位笔记 / 子级笔记` are not current routing authority.
 
-`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.md/.json` remains as superseded implementation provenance in Git history/repository history and is not the current pointer after v1.1 promotion.
+`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance after v1.2. v1.0 and v1.1 must not be used as the Current default pointer.
 
 ## Current executable contract layer v0.1
 
@@ -38,11 +40,17 @@ The following `ACTIVE_CURRENT` contracts strengthen the interface between Curren
 - `OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1.md/.json` — STRUCTURAL + SEMANTIC + VISUAL_ROI + RUNTIME regression.
 - `OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md/.json` — Current/STALE/MISSING/DIVERGED/ORPHANED cross-platform mapping contract with static vs live-check separation.
 
+Instance carrier:
+
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json` — one material execution unit; only applicable sections run.
+- `receipts/` — real historical/current execution receipts.
+- `regression-baselines/` — typed four-layer regression baselines.
+
 Validation entrypoint:
 
 `python 00-governance/runtime/validate_execution_contracts.py`
 
-These contracts supplement the Current Default Skill Resolver v1.1 and Current Execution Owner Map v1.0; they do not replace either one. Promotion of this contract layer does not promote any candidate Skill or Notion knowledge object.
+These contracts are consumed by Current Default Skill Resolver v1.2 and Current Execution Owner Map v1.0. They do not promote any candidate Skill or Notion knowledge object.
 
 ## Existing active runtime contracts
 
@@ -57,6 +65,9 @@ The default skill resolver **supplements** the Universal Production Environment 
 `Artifact existence ≠ Design quality`  
 `Traceability ≠ Professional finish`  
 `Evidence correctness ≠ Visual excellence`  
-`Process PASS ≠ MAIN KEEP`
+`Process PASS ≠ MAIN KEEP`  
+`Regression PASS ≠ Design KEEP`
 
 `NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS`
+
+`NO LOSS` protects information; it does not require running every Skill.

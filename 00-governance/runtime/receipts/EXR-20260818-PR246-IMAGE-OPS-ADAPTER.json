@@ -1,0 +1,115 @@
+{
+  "receipt_id": "EXR-20260818-PR246-IMAGE-OPS-ADAPTER",
+  "status": "CLOSED",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "image-ops-all-skill-binding",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "OLEANDER cross-project visual execution binding",
+    "source_authority": "T-VISUAL-IMAGE-OPS-001 Current TOOL",
+    "design_authority": "project-specific Current Design Authority remains upstream",
+    "canonical_ids": ["T-VISUAL-IMAGE-OPS-001"],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1",
+    "github_commit_or_ref": "767402f55a2bad308b111eee85f30e93d9f2c86f"
+  },
+  "required_native_output": {
+    "artifact_class": "visual_layer_tool_binding",
+    "native_format": "Markdown bindings + machine adapter mapping",
+    "editable_required": true,
+    "target_runtime": "11 visual-producing/visual-judging execution owners",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "shared_tool_adapter",
+    "nodes": [
+      {"owner_id": "shared_tool_adapter", "role": "PRIMARY_OWNER"},
+      {"owner_id": "11 VISUAL_LAYER_BINDING consumers", "role": "READ_ONLY_CONSUMER"}
+    ],
+    "omitted_owner_reasoning": "No new effect Skill or design owner was created; bindings consume the TOOL semantics within existing owners."
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-T-VISUAL-IMAGE-OPS-001-BINDINGS-v1",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "shared_tool_adapter",
+      "authority_source": "Notion T-VISUAL-IMAGE-OPS-001",
+      "authority_state": "CURRENT",
+      "native_format": "Markdown",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": ["tool_reference", "skill_specific_permissions", "skill_specific_forbidden_mutations"],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": ["T-VISUAL-IMAGE-OPS-001", "11 existing execution-owner VISUAL_LAYER_BINDING.md files"],
+      "hashes_or_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+      "runtime": "GitHub repository",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "DERIVE",
+      "current_state": "CURRENT",
+      "does_not_prove": ["design_pass", "evidence_truth", "geometry_truth", "material_truth"]
+    }
+  ],
+  "tool_adapters": [
+    {
+      "adapter_id": "ADAPTER-T-VISUAL-IMAGE-OPS-001",
+      "canonical_tool_id": "T-VISUAL-IMAGE-OPS-001",
+      "implemented_revision": "verified-2026-08-18",
+      "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+      "operator_role": "non-destructive image/vector processing shared operator layer",
+      "minimum_sufficient_operator_set": ["only operators justified by each Skill's visual task"],
+      "effect_budget": "task-bounded; no menu-driven accumulation",
+      "fallback": "effect-off baseline or lower-capability non-destructive equivalent",
+      "regression_baseline": "RB-IMAGE-OPS-ADAPTER-SEED-v0.1"
+    }
+  ],
+  "execution": {
+    "runtime": "GitHub branch/PR",
+    "entrypoint_or_action": "PR #246 bind one Current Notion TOOL into 11 existing Visual Layer bindings",
+    "result": "MERGED",
+    "failures": [],
+    "repairs": ["kept TOOL semantics centralized instead of duplicating Photoshop/Illustrator rules into 11 Skills"]
+  },
+  "readback": {
+    "target": "GitHub main 11 consumer bindings",
+    "runtime": "repository readback",
+    "observed_result": "All 11 consumers reference the same Current Canonical TOOL with task-specific boundaries.",
+    "blocking_defects": [],
+    "nonblocking_defects": ["Tool Adapter required fields and regression baseline were not fully machine-bound until the later runtime-closure repair."],
+    "verdict": "PASS_WITH_CONTRACT_COMPLETION_DELTA"
+  },
+  "regression": {
+    "STRUCTURAL": {"result": "PASS", "assertions": ["11 unique binding consumers exist"]},
+    "SEMANTIC": {"result": "PASS", "assertions": ["TOOL remains TOOL", "no final-artifact ownership", "Motion temporal ownership remains separate"]},
+    "VISUAL_ROI": {"result": "NOT_APPLICABLE", "assertions": []},
+    "RUNTIME": {"result": "PASS", "assertions": ["AI Governance Evals success for integration PR"]},
+    "overall": "PASS"
+  },
+  "review": {
+    "producer_id": "shared_tool_adapter integration",
+    "reviewer_id": "NOT_REQUIRED_FOR_BINDING_ONLY_GOVERNANCE_CHANGE",
+    "review_input_artifact_id": "ART-T-VISUAL-IMAGE-OPS-001-BINDINGS-v1",
+    "review_input_hash_or_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "TOOL remains Notion Current; no Skill promotion occurred"
+  },
+  "drift": {
+    "mode": "LIVE_CROSS_PLATFORM_CHECK",
+    "state": "CURRENT_AT_2026-08-18_CHECK",
+    "evidence": ["Notion T-VISUAL-IMAGE-OPS-001 live readback", "GitHub 11-binding main readback"]
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/image-ops-skill-bindings",
+    "commits": ["767402f55a2bad308b111eee85f30e93d9f2c86f"],
+    "pull_request": 246,
+    "ci_state": "SUCCESS",
+    "merge_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+    "main_readback": "PASS",
+    "notion_writeback": "T-VISUAL-IMAGE-OPS-001 recorded GitHub binding state",
+    "remaining_blockers": ["adapter-field completion handled by later runtime-closure repair"],
+    "final_state": "MERGED_VALIDATED"
+  },
+  "does_not_prove": ["design_quality", "evidence_truth", "geometry_truth", "field_truth", "promotion"]
+}
