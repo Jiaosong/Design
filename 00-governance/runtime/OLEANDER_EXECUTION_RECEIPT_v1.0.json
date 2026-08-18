@@ -1,0 +1,129 @@
+{
+  "schema": "oleander.execution-receipt.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT",
+  "decision_date": "2026-08-18",
+  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, owner selection, DAG, artifacts, adapters, execution, regression, readback, review and drift.",
+  "required_core_fields": [
+    "receipt_id",
+    "status",
+    "execution_type",
+    "task_id",
+    "authority",
+    "required_native_output",
+    "owner_set",
+    "artifacts",
+    "execution",
+    "readback",
+    "regression",
+    "review",
+    "closure",
+    "does_not_prove"
+  ],
+  "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
+  "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
+  "authority_required_fields": [
+    "notion_root_page_id",
+    "notion_root_version",
+    "project_or_scope_authority",
+    "source_authority",
+    "design_authority",
+    "canonical_ids",
+    "github_resolver",
+    "github_commit_or_ref"
+  ],
+  "required_native_output_fields": [
+    "artifact_class",
+    "native_format",
+    "editable_required",
+    "target_runtime",
+    "derived_formats"
+  ],
+  "owner_set_required_fields": [
+    "minimum_sufficient_owner_set",
+    "primary_owner",
+    "nodes",
+    "omitted_owner_reasoning"
+  ],
+  "node_roles": ["PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"],
+  "artifact_permissions": ["READ_ONLY", "DERIVE", "MUTATE_PRESENTATION_ONLY", "MUTATE_AUTHORIZED_SOURCE"],
+  "artifact_required_fields": [
+    "artifact_id",
+    "artifact_role",
+    "producer_owner",
+    "authority_source",
+    "authority_state",
+    "native_format",
+    "editable_state",
+    "semantic_layers",
+    "provenance_state",
+    "dependencies",
+    "hashes_or_commit",
+    "runtime",
+    "renderer",
+    "permission",
+    "current_state",
+    "does_not_prove"
+  ],
+  "adapter_required_when_used": [
+    "adapter_id",
+    "canonical_tool_id",
+    "implemented_revision",
+    "implementation_commit",
+    "operator_role",
+    "minimum_sufficient_operator_set",
+    "effect_budget",
+    "fallback",
+    "regression_baseline"
+  ],
+  "execution_required_fields": ["runtime", "entrypoint_or_action", "result", "failures", "repairs"],
+  "readback_required_fields": ["target", "runtime", "observed_result", "blocking_defects", "nonblocking_defects", "verdict"],
+  "regression_layers": ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"],
+  "regression_layer_result_values": ["PASS", "FAIL", "HOLD", "NOT_APPLICABLE"],
+  "review_required_fields": [
+    "producer_id",
+    "reviewer_id",
+    "review_input_artifact_id",
+    "review_input_hash_or_commit",
+    "reviewer_independence_state",
+    "evidence_gate",
+    "design_quality_gate",
+    "promotion_authority"
+  ],
+  "reviewer_independence_states": ["INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED"],
+  "drift_section": {
+    "required_when": "cross_platform_current_pointer_or_implementation_changes",
+    "modes": ["GITHUB_STATIC_CHECK", "LIVE_CROSS_PLATFORM_CHECK"],
+    "states": ["CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"]
+  },
+  "closure_required_fields": [
+    "material_delta",
+    "branch",
+    "commits",
+    "pull_request",
+    "ci_state",
+    "merge_commit",
+    "main_readback",
+    "notion_writeback",
+    "remaining_blockers",
+    "final_state"
+  ],
+  "hard_guards": [
+    "only_applicable_sections_are_required",
+    "not_applicable_is_preferred_to_fake_process",
+    "producer_self_check_is_not_independent_review",
+    "artifact_existence_does_not_equal_design_quality",
+    "regression_pass_does_not_equal_design_keep",
+    "github_static_check_cannot_claim_live_notion_current",
+    "receipt_does_not_replace_project_state"
+  ],
+  "does_not_prove": [
+    "project_state",
+    "design_quality",
+    "field_truth",
+    "engineering_validity",
+    "user_validation",
+    "rights_clearance",
+    "promotion"
+  ]
+}
