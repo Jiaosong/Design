@@ -141,3 +141,29 @@ Machine promotion must emit a `REGRESSION_PROMOTION_RECEIPT` with:
 `Projection PASS` does not independently authorize promotion.
 
 `Design / Reference Fidelity REJECT` vetoes MAIN promotion even when regression locks pass.
+
+---
+
+## 7. Best-known per-gate baseline
+
+A single historical revision is not sufficient when different revisions establish different best measured gates.
+
+Maintain a `BEST_KNOWN_GATE_BASELINE` table in addition to any whole-candidate LKG. For every stable comparable metric, the regression baseline is the best valid value already achieved under the same reference revision and measurement method, even when that value came from an experiment that was not promoted for unrelated visual/design reasons.
+
+Example: if V23 establishes a REAR profile RMSE of `0.117` while V22 was `0.272`, a later aperture experiment may not compare only against V22 and accept `0.242` as an improvement. The REAR profile lock must use the V23 best-known value unless the measurement method or reference changed and comparability is explicitly invalidated.
+
+### MUST CHECK
+- each lock records `baseline_revision` and `baseline_evidence_source`, not only a scalar value;
+- best-known values are selected per metric/gate;
+- a candidate may reuse a local method from a visually rejected experiment, but cannot discard that experiment's valid best-known measurement;
+- if the target metric itself is temporarily allowed to regress for a deliberate trade study, the state is `HOLD/REJECT`, never automatic promotion;
+- whole-candidate Design/Reference state and per-gate numeric baselines remain separate concepts.
+
+### FORBIDDEN
+- choosing an older weaker baseline merely because it makes the new candidate look improved;
+- replacing `BEST_KNOWN_GATE_BASELINE` with `last commit` or `last CI success`;
+- silently resetting gate history after an experimental branch.
+
+### FAIL
+- `FAIL_WEAKER_REGRESSION_BASELINE_SELECTED`
+- `REJECT_BEST_KNOWN_GATE_REGRESSION`
