@@ -1,6 +1,6 @@
 {
   "recipe_library_id": "TD-MOTION-HANDOFF-001",
-  "version": "0.1",
+  "version": "0.2",
   "status": "CANDIDATE / NO_PROMOTION",
   "primary_runtime_owner": "oleander-motion",
   "motion_atlas": "../../oleander-motion/MOTION_LIBRARY_EFFECT_ATLAS.md",
@@ -126,6 +126,86 @@
       "candidate": {"particle_count": "DATA_DERIVED_OR_EXPLICIT_PRESENTATIONAL_BUDGET", "opacity": [0.08, 0.65]},
       "reduced_motion": "static field density/direction glyphs or remove atmosphere-only particles",
       "fail_if": ["particle count suggests data but is decorative", "flow direction is invented", "continuous background motion competes with reading"]
+    },
+    {
+      "recipe_id": "TD-MR13-TOPOLOGY-SAFE-MORPH",
+      "motion_atlas_effect": "EF-04 Topology-safe morph",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["SYMBOL_PATH", "STATE_ICON", "NETWORK_SCHEMATIC", "RELATION_SHAPE"],
+      "required": ["semantic_owner_id", "state_a_id", "state_b_id", "correspondence_map", "topology_class", "duration_ms", "easing", "reduced_motion", "intermediate_state_policy"],
+      "candidate": {"duration_ms": [220, 760], "easing": "standard_in_out|gentle_out"},
+      "reduced_motion": "direct endpoint swap with persistent identity label/anchor",
+      "fail_if": ["either static endpoint is invalid", "point correspondence crosses semantic owners", "intermediate geometry implies a false topology", "motion rescues weak static identity"]
+    },
+    {
+      "recipe_id": "TD-MR14-REFRACTION-DISPLACEMENT",
+      "motion_atlas_effect": "EF-13 Displacement / refraction",
+      "motion_role": "Narrative",
+      "allowed_carriers": ["MATERIAL_SURFACE", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "required": ["semantic_owner_id", "surface_role", "mask_id", "scale_from_px", "scale_to_px", "frequency", "seed", "duration_ms", "easing", "reduced_motion", "registration_class"],
+      "candidate": {"scale_px": [0, 18], "duration_ms": [280, 900], "easing": "standard_in_out"},
+      "reduced_motion": "static material/refraction frame or no displacement",
+      "fail_if": ["MAP_BOUND or authoritative geometry is displaced", "generic liquid/glitch identity", "distortion changes topology", "source fidelity effect is absent from source"]
+    },
+    {
+      "recipe_id": "TD-MR15-KINETIC-TYPE",
+      "motion_atlas_effect": "EF-17 Kinetic type / variable-font axis motion",
+      "motion_role": "Attention",
+      "allowed_carriers": ["TITLE", "SECTION_HEADING", "STATE_LABEL", "NON_TECHNICAL_ANNOTATION"],
+      "required": ["semantic_owner_id", "text_role", "axis_or_property", "from_value", "to_value", "duration_ms", "easing", "reduced_motion", "static_hierarchy_ref"],
+      "candidate": {"duration_ms": [180, 620], "easing": "standard_out|gentle_out"},
+      "reduced_motion": "static typographic endpoint with same emphasis",
+      "fail_if": ["technical dimension/label moves away from carrier", "every heading animates", "type motion substitutes for weak static hierarchy", "font axis changes text meaning or legibility"]
+    },
+    {
+      "recipe_id": "TD-MR16-CAMERA-ORBIT-DOLLY-FOCUS",
+      "motion_atlas_effect": "EF-18 Camera orbit / dolly / focus shift",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["3D_MODEL_REVIEW", "SPATIAL_RELATION_REVIEW", "PRODUCT_ASSEMBLY_REVIEW"],
+      "required": ["semantic_owner_id", "model_authority_ref", "camera_start", "camera_end", "target_id", "duration_ms", "easing", "reduced_motion", "static_projection_refs"],
+      "candidate": {"duration_ms": [600, 2400], "easing": "standard_in_out|linear_progress"},
+      "reduced_motion": "static start/end frames plus stable orthographic/section reference",
+      "fail_if": ["continuous showroom orbit", "camera motion implies survey/metric truth", "joint/scale evidence is hidden", "model authority is absent"]
+    },
+    {
+      "recipe_id": "TD-MR17-CURSOR-LINKED-RESPONSE",
+      "motion_atlas_effect": "EF-19 Cursor-linked / magnetic response",
+      "motion_role": "Feedback",
+      "allowed_carriers": ["LOCAL_HIGHLIGHT", "EXPLORATORY_INSET", "OPTIONAL_DETAIL_AFFORDANCE"],
+      "required": ["semantic_owner_id", "affordance_role", "max_displacement_px", "response_curve", "pointer_baseline", "touch_fallback", "keyboard_fallback", "reduced_motion"],
+      "candidate": {"max_displacement_px": [1, 14], "response_curve": "standard_out|spring_tuned"},
+      "reduced_motion": "no magnetic displacement; hover/focus style only",
+      "fail_if": ["full-page cursor replacement", "required information only appears through pointer motion", "touch/keyboard equivalent absent", "technical geometry follows cursor"]
+    },
+    {
+      "recipe_id": "TD-MR18-SMOOTH-SCROLL-INFRA",
+      "motion_atlas_effect": "EF-20 Smooth-scroll transport",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["DOCUMENT_SCROLL_SYNC", "JUSTIFIED_NARRATIVE_PROGRESS"],
+      "required": ["semantic_owner_id", "synchronization_reason", "native_scroll_baseline", "nested_scroll_policy", "focus_keyboard_policy", "reduced_motion", "rollback_plan"],
+      "candidate": {"enabled": "OFF_BY_DEFAULT", "lerp_or_duration": "RUNTIME_TUNED"},
+      "reduced_motion": "native scroll with no transport interpolation",
+      "fail_if": ["added only for polish", "native scrolling/focus breaks", "scroll transport changes analytical order", "nested scrolling is trapped"]
+    },
+    {
+      "recipe_id": "TD-MR19-VIEW-TRANSITION",
+      "motion_atlas_effect": "EF-10 View / page transition",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["LIST_TO_DETAIL", "FIGURE_TO_EVIDENCE_DETAIL", "MODAL_DETAIL", "BOARD_TO_DEEP_DIVE"],
+      "required": ["semantic_owner_id", "stable_anchor_id", "source_view", "target_view", "duration_ms", "easing", "navigation_baseline", "reduced_motion"],
+      "candidate": {"duration_ms": [180, 520], "easing": "standard_in_out"},
+      "reduced_motion": "direct navigation with stable anchor/focus restoration",
+      "fail_if": ["full-screen cinematic transition has no continuity anchor", "navigation blocked until animation ends", "focus/history state breaks"]
+    },
+    {
+      "recipe_id": "TD-MR20-DRAG-INERTIA",
+      "motion_atlas_effect": "EF-11 Spring / inertia / drag",
+      "motion_role": "Feedback",
+      "allowed_carriers": ["INTERACTIVE_COMPARISON_HANDLE", "SCRUB_HANDLE", "OPTIONAL_ANNOTATION_HANDLE"],
+      "required": ["semantic_owner_id", "interaction_role", "axis", "bounds", "interrupt_behavior", "spring_or_inertia", "keyboard_equivalent", "reduced_motion"],
+      "candidate": {"spring": {"stiffness": [120, 420], "damping": [18, 42], "mass": [0.7, 1.4]}},
+      "reduced_motion": "direct constrained handle movement with no overshoot/inertia",
+      "fail_if": ["decorative bounce", "drag changes underlying source data", "keyboard equivalent absent", "handle cannot be interrupted"]
     }
   ]
 }
