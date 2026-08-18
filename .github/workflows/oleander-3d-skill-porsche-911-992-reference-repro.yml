@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V24 runtime
+      - name: Validate Skill and V25 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
@@ -31,6 +31,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v22.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v23.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v24.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v25.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py
           python3 -m unittest \
@@ -49,15 +50,15 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build and verify V24 shared-boundary candidate
+      - name: Build and verify V25 best-known-gate candidate
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v24.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v25.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V24 evidence and aperture boundary state
+      - name: Verify V25 strict best-known-gate state
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -71,8 +72,10 @@ jobs:
           a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
           assert q['verification_run']=='PASS'
-          assert q['failure_routing']=='APERTURE_BOUNDARY_CLOSURE_AND_BACKING_ONLY'
-          assert a['shared_boundary_method']=='COMMON_PARAMETRIC_ROOF_POINT_AND_BODY_SECTION_INTERSECTION'
+          assert q['failure_routing']=='REAR_INTERFACE_ONLY_WITH_FRONT_BEST_KNOWN_LOCK'
+          assert q['best_known_gate_policy']=='V2_PER_GATE_BASELINE'
+          assert g['schema']=='oleander.3d.reference-regression-promotion-receipt.v2'
+          assert g['best_known_gate_baselines']
           assert a['backing_authority']=='DERIVED_EXECUTION_NOT_AUTHORITY'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
           assert g['promotion_decision'] in ('KEEP_LKG_HOLD_EXPERIMENT','KEEP_LKG_REJECT_EXPERIMENT','PROMOTE_OVER_LKG','REBASE_EXPERIMENT_ON_LKG')
