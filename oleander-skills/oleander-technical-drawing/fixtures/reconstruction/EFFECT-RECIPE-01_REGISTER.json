@@ -1,0 +1,129 @@
+{
+  "fixture_id": "EFFECT-RECIPE-01",
+  "promotion": "NO_PROMOTION",
+  "producer_state": "EXECUTED_SELF_CHECKED",
+  "canvas": {"width": 1200, "height": 720, "background": "#f3f0e8"},
+  "effect_instances": [
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-01",
+      "recipe_id": "SVG-R01-LINEAR-FIELD",
+      "semantic_owner_id": "FIELD-SLOPE-01",
+      "surface_role": "ANALYTICAL_FIELD",
+      "mapped_variable": "normalized_slope_candidate",
+      "legend_id": "LEG-SLOPE-01",
+      "domain": [0, 1],
+      "off_state": "flat neutral field + contour/source geometry remains",
+      "parameters": {
+        "x": 40, "y": 70, "width": 320, "height": 220,
+        "axis_deg": 90,
+        "stops": [[0.0, "#dce7df", 0.42], [0.55, "#c7a96b", 0.58], [1.0, "#9a5e4e", 0.72]],
+        "interpolation": "linearRGB"
+      },
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-02",
+      "recipe_id": "SVG-R03-HATCH",
+      "semantic_owner_id": "FIELD-MAINT-01",
+      "surface_role": "HIERARCHY_RECESSION",
+      "off_state": "boundary/stroke remains without hatch",
+      "parameters": {"angle_deg": 35, "spacing_px": 10, "stroke_px": 1.0, "opacity": 0.42, "mask_id": "MASK-MAINT"},
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-03",
+      "recipe_id": "SVG-R04-STIPPLE",
+      "semantic_owner_id": "MATERIAL-STONE-01",
+      "surface_role": "MATERIAL_SURFACE",
+      "off_state": "flat stone-tone field remains",
+      "parameters": {"x": 420, "y": 70, "width": 320, "height": 220, "density": 0.065, "radius_px": 0.9, "jitter": 0.65, "seed": 17},
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-04",
+      "recipe_id": "SVG-R05-GRAIN",
+      "semantic_owner_id": "PAPER-BASE-01",
+      "surface_role": "REFERENCE_FIDELITY",
+      "off_state": "clean paper fill",
+      "parameters": {"base_frequency": 0.42, "num_octaves": 2, "seed": 9, "opacity": 0.07, "mask_id": "MASK-PAPER"},
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-05",
+      "recipe_id": "SVG-R06-SHADOW-DEPTH",
+      "semantic_owner_id": "INSET-DETAIL-01",
+      "surface_role": "HIERARCHY_RECESSION",
+      "off_state": "inset border and offset geometry retain hierarchy",
+      "parameters": {"dx_px": 0, "dy_px": 6, "blur_px": 12, "opacity": 0.12, "why": "separate floating detail inset from source base without implying measured elevation"},
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "STATIC_SVG",
+      "instance_id": "FX-06",
+      "recipe_id": "SVG-R08-GLOW-EMISSION",
+      "semantic_owner_id": "STATE-LIGHT-01",
+      "surface_role": "STATE_EMISSION",
+      "state_binding": "ALERT_ACTIVE",
+      "off_state": "solid ring + ALERT label retains state",
+      "parameters": {"blur_px": 8, "opacity": 0.26},
+      "review": {"near": "PASS", "mid": "PASS", "far": "PASS"}
+    },
+    {
+      "kind": "MOTION_HANDOFF",
+      "instance_id": "MX-01",
+      "recipe_id": "TD-MR01-PATH-TRACE",
+      "semantic_owner_id": "ROUTE-EDGE-07",
+      "motion_role": "Narrative",
+      "source_state": "INFERRED / TOPOLOGY_BOUND",
+      "direction_model": "SEQUENCE_CANDIDATE",
+      "interrupt_behavior": "pause/resume; direct completion allowed",
+      "reduced_motion": "show completed path immediately with direction label",
+      "runtime_state": "DESIGNED_NOT_RUN",
+      "parameters": {"duration_ms": 760, "easing": "linear"},
+      "review": {"near": "PENDING", "mid": "PENDING", "far": "PENDING"}
+    },
+    {
+      "kind": "MOTION_HANDOFF",
+      "instance_id": "MX-02",
+      "recipe_id": "TD-MR04-SHARED-CONTAINER-HANDOFF",
+      "semantic_owner_id": "R06-DETAIL-HANDOFF",
+      "motion_role": "Continuity",
+      "interrupt_behavior": "complete to nearest stable endpoint",
+      "reverse_behavior": "reverse to source anchor without duplicate primary",
+      "reduced_motion": "direct state swap with persistent R06 anchor",
+      "runtime_state": "DESIGNED_NOT_RUN",
+      "parameters": {"duration_ms": 360, "easing": "standard_in_out"},
+      "review": {"near": "PENDING", "mid": "PENDING", "far": "PENDING"}
+    },
+    {
+      "kind": "MOTION_HANDOFF",
+      "instance_id": "MX-03",
+      "recipe_id": "TD-MR07-SCROLL-PROGRESS",
+      "semantic_owner_id": "EVIDENCE-SEQUENCE-01",
+      "motion_role": "Narrative",
+      "native_scroll_baseline": true,
+      "reduced_motion": "discrete section states with normal document scroll",
+      "runtime_state": "DESIGNED_NOT_RUN",
+      "parameters": {"progress_source": "document", "start": 0.12, "end": 0.72, "state_mapping": "linear_progress"},
+      "review": {"near": "PENDING", "mid": "PENDING", "far": "PENDING"}
+    },
+    {
+      "kind": "MOTION_HANDOFF",
+      "instance_id": "MX-04",
+      "recipe_id": "TD-MR12-PARTICLE-FIELD",
+      "semantic_owner_id": "FLOW-FIELD-01",
+      "motion_role": "Narrative",
+      "particle_count_model": "DATA_DERIVED_FROM_AGGREGATE_COUNT",
+      "truth_state": "MODELLED / NOT FIELD OBSERVED",
+      "reduced_motion": "static density + direction glyph field",
+      "runtime_state": "DESIGNED_NOT_RUN",
+      "parameters": {"spawn_region": "FIELD-01", "velocity_model": "VECTOR_FIELD_MODEL", "lifetime_model": "BOUNDED_BY_TRANSIT_TIME", "state_binding": "MODEL_TIME"},
+      "review": {"near": "PENDING", "mid": "PENDING", "far": "PENDING"}
+    }
+  ]
+}
