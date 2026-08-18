@@ -1,0 +1,26 @@
+{
+  "object": "CH14-P03",
+  "version": "v7.2",
+  "basis": "OLEANDER Artifact Review v1.1 + Current Brand Identity Representation Gate",
+  "actual_preview_readback": [
+    "1920x1080 desktop",
+    "390x844 mobile",
+    "full long page"
+  ],
+  "finished_pixel_changes": [
+    "removed internal production/review language from public manual",
+    "asset family reorganized with reverse master and cleaner hierarchy",
+    "construction sheet reduced to public execution relationships only",
+    "clearspace simplified to one four-side 0.5X rule",
+    "primary digital minimum adjusted by actual readback to 240px; switch at 200px",
+    "mark digital minimum adjusted to 40px; switch at 32px",
+    "production sheet wording changed from simulation-centric to production rule"
+  ],
+  "browser_gate": "PASS for loading / overflow / internal-residue checks",
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "does_not_prove": [
+    "Design PASS",
+    "physical production approval",
+    "legal trademark approval"
+  ]
+}
