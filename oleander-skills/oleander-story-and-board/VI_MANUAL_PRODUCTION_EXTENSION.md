@@ -1,6 +1,6 @@
 # OLEANDER VI Manual Production Extension
 
-Status: CANDIDATE EXTENSION / EXISTING SKILL ONLY / NO NEW BRAND-IDENTITY OWNER
+Status: ACTIVE EXTENSION / EXISTING SKILL ONLY / NO NEW BRAND-IDENTITY OWNER
 
 This extension adds executable **VI / Brand Identity Manual production** capability to `oleander-story-and-board` without changing the current authority model: Brand Identity remains a Notion knowledge METHOD and has no dedicated GitHub execution owner. `oleander-story-and-board` owns only the **presentation/manual composition layer** and must route specialist work to the Current Visual Communication, Color, Image Processing and Technical Drawing methods/tools.
 
