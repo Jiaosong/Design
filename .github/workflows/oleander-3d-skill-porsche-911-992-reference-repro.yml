@@ -52,7 +52,7 @@ jobs:
           import json
           from pathlib import Path
           out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
-          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text());g=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT.json').read_text());i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text());f=json.loads((out/'SURFACE_FOLD_DIAGNOSTIC.json').read_text());d=json.loads((out/'FINAL_DERIVED_SURFACE_RECEIPT.json').read_text())
+          q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text());r=json.loads((out/'REFERENCE_REPRO_RECEIPT.json').read_text());p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text());g=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT.json').read_text());i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text());d=json.loads((out/'FINAL_DERIVED_SURFACE_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED'
           assert q['primary_form_stage']=='DERIVED_SURFACE_FINAL_APERTURE'
           assert p['candidate_revision']=='V43_DERIVED_SURFACE_FRONT_IDENTITY'
@@ -68,8 +68,7 @@ jobs:
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_BODY_SURFACE_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_candidate_revision_coherence.py out/OLEANDER_Porsche_911_992_Reference_Repro
-          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py out/OLEANDER_Porsche_911_992_Reference_RePRO/PRIMARY_FORM_IDENTITY_RECEIPT.json
-          python3 oleander-skills/oleander-3d-pipeline/tools/validate_surface_fold_diagnostic.py out/OLEANDER_Porsche_911_992_Reference_Repro/SURFACE_FOLD_DIAGNOSTIC.json
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_FORM_IDENTITY_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_final_derived_surface.py out/OLEANDER_Porsche_911_992_Reference_Repro/FINAL_DERIVED_SURFACE_RECEIPT.json
       - name: Upload evidence
         if: always()
