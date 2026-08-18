@@ -1,0 +1,57 @@
+{
+  "system_name": "QINGJIANG EVIDENCE ATLAS",
+  "version": "0.3",
+  "state": "PROJECT_SPECIFIC_REVIEW_PENDING",
+  "drive_package": {
+    "name": "C04_QINGJIANG_EVIDENCE_ATLAS_STYLE_v0.3.zip",
+    "file_id": "1wgldnU09bkf09HQ6DRo_Mez7VySIy8x2"
+  },
+  "background": {
+    "paper": "#F2EEE4",
+    "paper_secondary": "#E8E1D3"
+  },
+  "ink": {
+    "primary": "#202927",
+    "secondary": "#68716C",
+    "hairline": "#CFC8BA"
+  },
+  "semantic": {
+    "water": "#5B9EA3",
+    "water_dark": "#2E7077",
+    "moss": "#8EA189",
+    "ochre": "#B28A55",
+    "seal": "#9A594B",
+    "fog": "#D8DEDA",
+    "unknown": "#B7B8B0"
+  },
+  "typography": {
+    "display": "Noto Serif CJK SC",
+    "technical": "Noto Sans CJK SC"
+  },
+  "layout": {
+    "map_ratio": 0.72,
+    "evidence_column_ratio": 0.28,
+    "one_primary_claim_per_figure": true
+  },
+  "states": {
+    "EVIDENCE": "#2E7077",
+    "DERIVED": "#B28A55",
+    "HOLD": "#9A594B",
+    "UNKNOWN": "#B7B8B0"
+  },
+  "guards": {
+    "no_rainbow_project_identity": true,
+    "no_black_scientific_heatmap_background": true,
+    "no_fake_interpolation": true,
+    "hold_must_be_visually_explicit": true,
+    "generated_imagery_cannot_replace_analytical_pixels": true,
+    "route_topology_must_not_be_distorted": true
+  },
+  "does_not_prove": [
+    "design pass",
+    "field observation",
+    "field measurement",
+    "survey geometry",
+    "engineering validity"
+  ]
+}
