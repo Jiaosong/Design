@@ -22,10 +22,27 @@ This Skill already owns narrative sequencing. Its visual layer must reuse existi
 - For long-form prose, use the existing local text-measure gate; do not fill all available columns merely because the grid permits it.
 - Never distort authoritative map/plan/section/model geometry to improve composition.
 
+## Prompt ↔ Media semantic binding gate
+
+When a caption, observation prompt, instruction, voice-over, callout, route cue, or storyboard line asks the audience to perceive or act on a visual relation, the current media must actually support that relation.
+
+- Parse the prompt into `ACTION / OBJECTS / RELATION / REQUIRED_VISUAL_EVIDENCE / EVIDENCE_STATUS` before polishing the page or frame.
+- Every object and relation demanded by the prompt must be directly perceivable in the bound media, or explicitly qualified as `INFERENCE / ASSUMPTION / UNKNOWN`. A confident instruction may not point to absent evidence.
+- A Relation Mark, overlay, arrow, label, diagram trace, glow, crop, or generative fill may clarify evidence that already exists; it must not manufacture a river, edge, route, opening state, body relation, material condition, or other missing fact just to preserve copy.
+- If the media is authoritative/current and the requested relation is absent, repair the prompt first by narrowing it to what the media can support.
+- If the prompt is the approved claim and must remain unchanged, replace the media with a source-bound asset that visibly contains the requested relation.
+- Do not treat `prompt sounds plausible` or `overlay makes the story understandable` as evidence closure. The test is whether the underlying media supports the claim before explanatory decoration.
+- Responsive crops must be checked independently. A prompt-media pair can PASS at one viewport and FAIL at another if the required object/relation is cropped out.
+- For each primary prompt-media pair record: `PROMPT_ID / MEDIA_SOURCE / MEDIA_VERSION / REQUIRED_OBJECTS / REQUIRED_RELATION / VIEWPORTS_CHECKED / STATUS / DOES_NOT_PROVE`.
+
+**Promotion test:** `Every noun, relation and action demanded by the prompt must be directly perceivable or explicitly marked as inference/unknown.`
+
+**Hard failure:** a visually polished frame whose copy instructs the audience to inspect a relation that is not present in the bound media.
+
 ## Image-processing operator routing
 
 Use `T-VISUAL-IMAGE-OPS-001` for non-destructive crop, masks, clipping, opacity, blend modes, color/tonal adjustment, layered collage, texture and bounded filter treatment when they support the narrative hierarchy. Preserve source images and authoritative geometry separately. High-style filters, retouch and generative edits remain presentation derivatives unless Current Authority explicitly promotes a designed derivative; they may not turn a weak or unsupported claim into evidence.
 
 ## Review inheritance
 
-Use actual board/page/deck pixels for distance and near-read review. Apply Artifact Review v1.1 separately from packaging/export QC.
+Use actual board/page/deck pixels for distance and near-read review. Apply Artifact Review v1.1 separately from packaging/export QC. For prompt-media pairs, run a label/overlay-off read plus each target responsive crop before Design KEEP.
