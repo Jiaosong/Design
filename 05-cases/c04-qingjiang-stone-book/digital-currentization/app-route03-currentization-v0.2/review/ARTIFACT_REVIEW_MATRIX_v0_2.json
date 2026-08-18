@@ -7,5 +7,10 @@
   "AR_VISUAL_UI": "PENDING INDEPENDENT FINISHED-PIXEL REVIEW",
   "AR_FINAL": "PENDING INDEPENDENT",
   "producer_design_verdict": "PROHIBITED / NOT ISSUED",
-  "open_gates": ["writable v1.27 materialization","full-App integration regression","framework persistence test on non-opaque origin","independent finished-pixel Design Crit"]
+  "open_gates": [
+    "writable v1.27 materialization",
+    "full-App integration regression",
+    "framework persistence test on allowed non-opaque origin — environment blocked in current runtime",
+    "independent finished-pixel Design Crit"
+  ]
 }

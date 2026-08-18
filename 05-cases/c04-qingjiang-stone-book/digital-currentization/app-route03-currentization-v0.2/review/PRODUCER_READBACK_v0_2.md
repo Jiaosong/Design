@@ -33,3 +33,6 @@ v1.26 uses `localStorage` for `readingMode`, `setupSeen`, `offlinePrepared`, `ge
 See `RUNTIME_READBACK_v0_2.json` and the 390×844 / 430×932 screenshots.
 
 `Runtime/implementation facts ≠ Design PASS`.
+
+## Persistence follow-up
+A non-opaque-origin reload test was attempted after the first CDP pass. Both `http://c04.local/` and `https://example.com/c04/` were replaced by Chromium organization-policy block pages **before** CDP request interception could serve the App. Therefore this environment cannot close the persistence gate. This is recorded in `PERSISTENCE_TEST_BLOCKER_v0_2.json` as an environment blocker, not as an App persistence failure.

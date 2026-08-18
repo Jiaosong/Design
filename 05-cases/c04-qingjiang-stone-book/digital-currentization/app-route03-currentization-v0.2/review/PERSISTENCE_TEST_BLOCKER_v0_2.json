@@ -1,0 +1,16 @@
+{
+  "artifact": "C04_APP_ROUTE03_CURRENTIZATION_v0_2",
+  "gate": "framework cross-reload persistence on non-opaque origin",
+  "status": "OPEN / ENVIRONMENT BLOCKER",
+  "implementation_present": true,
+  "storage_key": "c04.currentization.v02.framework",
+  "state_fields": ["readingMode", "setupSeen", "offlinePrepared", "generated", "readLater"],
+  "attempts": [
+    {"origin":"about:blank","result":"BLOCKED FOR VERIFICATION","evidence":"localStorage access returns SecurityError because the origin is opaque"},
+    {"origin":"http://c04.local/index.html","method":"CDP Fetch.fulfillRequest interception before network","result":"BLOCKED BEFORE INTERCEPTION","evidence":"Chromium organization policy replaced navigation with chrome-error://chromewebdata and message 'c04.local is blocked / Your organization doesn’t allow you to view this site'"},
+    {"origin":"https://example.com/c04/index.html","method":"CDP Fetch.fulfillRequest interception before network","result":"BLOCKED BEFORE INTERCEPTION","evidence":"Chromium organization policy replaced navigation with chrome-error://chromewebdata and message 'example.com is blocked / Your organization doesn’t allow you to view this site'"}
+  ],
+  "conclusion": "The current execution environment cannot provide a non-opaque document origin for reload persistence verification. This does not prove persistence failure and does not close the gate.",
+  "required_close_condition": "Run the same v0.2 bytes on an allowed http(s) origin, set DEEP + setupSeen=true, reload, then observe DEEP restored and startJourney() skipping APP_INIT under permitted OPEN state.",
+  "design_verdict": "NOT APPLICABLE / NOT ISSUED"
+}
