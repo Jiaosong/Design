@@ -1,0 +1,28 @@
+{
+  "object": "CH14-P04",
+  "version": "v1.0",
+  "color_method": "Role Before Palette",
+  "brand_palette": {
+    "RIVER_BLACK": {"hex":"#111918","cn":"江墨","role":"Text / Mono / Authority","rgb":[17,25,24],"hsl":[172,19,8],"cmyk_candidate":[32,0,4,90],"lab_d65":[8.0,-3.8,-0.5]},
+    "DEEP_WATER": {"hex":"#133B3C","cn":"深水","role":"Deep Surface / Reverse","rgb":[19,59,60],"hsl":[181,52,15],"cmyk_candidate":[68,2,0,76],"lab_d65":[22.3,-13.4,-4.8]},
+    "JADE_CURRENT": {"hex":"#2E7571","cn":"江流青","role":"Identity / Relation","rgb":[46,117,113],"hsl":[177,44,32],"cmyk_candidate":[61,0,3,54],"lab_d65":[44.9,-23.0,-4.4]},
+    "WET_STONE": {"hex":"#65706A","cn":"湿石灰","role":"Secondary Text / Support","rgb":[101,112,106],"hsl":[147,5,42],"cmyk_candidate":[10,0,5,56],"lab_d65":[46.2,-5.4,1.9]},
+    "BONE_MIST": {"hex":"#F1EDE4","cn":"溪石米白","role":"Primary Surface / Paper","rgb":[241,237,228],"hsl":[42,32,92],"cmyk_candidate":[0,2,5,5],"lab_d65":[93.8,-0.2,4.8]},
+    "SEDIMENT_SAND": {"hex":"#D8C9B1","cn":"沉积砂","role":"Warm Support / Physical","rgb":[216,201,177],"hsl":[37,33,77],"cmyk_candidate":[0,7,18,15],"lab_d65":[81.6,1.3,13.9]},
+    "CINNABAR": {"hex":"#B8543E","cn":"朱砂记忆","role":"Memory / Accent / Critical Note","rgb":[184,84,62],"hsl":[11,50,48],"cmyk_candidate":[0,54,66,28],"lab_d65":[48.1,38.9,32.1]}
+  },
+  "tonal_scales": {
+    "DEEP_WATER":{"120":"#103031","100":"#133B3C","80":"#426263","60":"#71898A","40":"#A1B1B1","20":"#D0D8D8"},
+    "JADE_CURRENT":{"120":"#26605D","100":"#2E7571","80":"#58918D","60":"#82ACAA","40":"#ABC8C6","20":"#D5E3E3"},
+    "WET_STONE":{"120":"#535C57","100":"#65706A","80":"#848D88","60":"#A3A9A6","40":"#C1C6C3","20":"#E0E2E1"},
+    "CINNABAR":{"120":"#974533","100":"#B8543E","80":"#C67665","60":"#D4988B","40":"#E3BBB2","20":"#F1DDD8"}
+  },
+  "boundaries": {
+    "brand_color_not_operational_status_color": true,
+    "cmyk": "candidate only; device/paper/ICC dependent",
+    "lab": "sRGB D65 reference only",
+    "physical_cmf": "requires CMF/material proof",
+    "pantone": "not assigned without production proof"
+  },
+  "does_not_prove": ["print match","physical material match","accessibility approval","independent Design PASS"]
+}
