@@ -8,6 +8,7 @@ on:
       - 'oleander-skills/oleander-3d-pipeline/**'
       - '00-governance/control-plane/tests/test_oleander_3d_reference_fidelity.py'
       - '00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py'
+      - '00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py'
   workflow_dispatch:
 
 permissions:
@@ -20,20 +21,22 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with: {fetch-depth: 1}
-      - name: Validate refined 3D Skill and current V12 runtime
+      - name: Validate refined 3D Skill and current V13 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/build_porsche_911_992_reference.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v5.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v12.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v13.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py \
-            oleander-skills/oleander-3d-pipeline/tools/validate_reference_image_calibration.py
+            oleander-skills/oleander-3d-pipeline/tools/validate_reference_image_calibration.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py \
             00-governance/control-plane/tests/test_oleander_3d_reference_fidelity.py \
-            00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py
+            00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py \
+            00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_reference_image_calibration.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/REFERENCE_CONTOUR_TARGETS_992_2.json
       - name: Install Blender 5.2.0 LTS
@@ -44,16 +47,16 @@ jobs:
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
           /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
-      - name: Build Porsche 911 Carrera 992.2 V12 primary-volume reproduction
+      - name: Build Porsche 911 Carrera 992.2 V13 continuous-primary-shell reproduction
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v12.py \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v13.py \
             -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"; sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Machine, projection and reference-fidelity screening gates
+      - name: Machine and final-visible-projection gates
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -64,20 +67,24 @@ jobs:
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',q
           assert r['status']=='EXECUTED_MACHINE_PASS_REFERENCE_REVIEW_REQUIRED',r
           assert c['reference_vehicle']=='Porsche 911 Carrera Coupe (992.2)'
-          assert c['reference_revision']=='2025_992.2_CARRERA_PRIMARY_VOLUME_V12'
+          assert c['reference_revision']=='2025_992.2_CARRERA_CONTINUOUS_PRIMARY_SHELL_V13'
+          assert c['visible_primary_shell_count']==1
           assert abs(c['hard_points']['length']-4.542)<1e-9 and abs(c['hard_points']['width_excluding_mirrors']-1.852)<1e-9 and abs(c['hard_points']['height']-1.298)<1e-9 and abs(c['hard_points']['wheelbase']-2.450)<1e-9 and abs(c['hard_points']['track_front']-1.591)<1e-9 and abs(c['hard_points']['track_rear']-1.557)<1e-9
           assert all(q['checks'].values()),q['checks'];assert len(q['renders'])==6
+          assert b['candidate']=='V13_FINAL_VISIBLE_UNION_PROJECTION'
           assert b['status']=='MACHINE_BINDING_PASS',b
           assert p['status']=='PROJECTION_MACHINE_SCREENING_PASS',p
-          assert all(m['reference_target_source']!=m['candidate_measurement_source'] for m in p['metrics'])
           assert q['projection_machine_gate']=='PROJECTION_MACHINE_SCREENING_PASS'
+          assert q['visible_primary_shell_count']==1
+          assert q['continuous_primary_shell_gate']=='MACHINE_STRUCTURE_PASS_VISUAL_REVIEW_REQUIRED'
           assert q['runtime_passes']==1
-          assert q['primary_volume_families']==['FRONT_FENDER_CROWN','REAR_HAUNCH','ROOF_SHELL','REAR_FASCIA_VOLUME']
           assert q['macro_form_gate']=='MACHINE_SCREENING_ONLY_VISUAL_REVIEW_REQUIRED'
           assert q['design_quality_gate']=='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
-          print('PORSCHE 911 992.2 V12 PRIMARY-VOLUME MACHINE GATE PASS')
+          print('PORSCHE 911 992.2 V13 CONTINUOUS-SHELL MACHINE GATE PASS')
           PY
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
+            out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_reference_fidelity.py \
             out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_FIDELITY_RECEIPT.json
       - name: Upload Porsche 911 992 reproduction evidence
