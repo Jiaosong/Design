@@ -1,0 +1,15 @@
+{
+  "artifact": "C04_GIS_REDO_SPLIT_v0.2",
+  "pngs": {
+    "C04_FIG_ENV_01_DEM_SLOPE_ASPECT_v0.2.png": {"size": [1920,1080], "mode": "RGBA", "bytes": 179083},
+    "C04_FIG_ENV_02_DRAINAGE_ACCUMULATION_v0.2.png": {"size": [1920,1080], "mode": "RGBA", "bytes": 251729},
+    "C04_FIG_ENV_03_LANDCOVER_EVIDENCE_HOLD_v0.2.png": {"size": [1920,1080], "mode": "RGBA", "bytes": 148672},
+    "C04_FIG_ENV_04_WATER_HISTORY_EVIDENCE_HOLD_v0.2.png": {"size": [1920,1080], "mode": "RGBA", "bytes": 146759},
+    "C04_FIG_ENV_05_SOLAR_EXPOSURE_SCENARIO_v0.2.png": {"size": [1920,1080], "mode": "RGBA", "bytes": 158990},
+    "C04_FIG_ENV_06_OPERATIONS_CONFLICT_ROUTE03_v0.2.png": {"size": [2400,1080], "mode": "RGB", "bytes": 272344}
+  },
+  "svg_count": 6,
+  "blocking_machine_defects": [],
+  "machine_qc_status": "PASS",
+  "professional_design_status": "PENDING"
+}

@@ -1,0 +1,17 @@
+{
+  "review_type": "INDEPENDENT OLEANDER ARTIFACT REVIEW REQUEST",
+  "artifact": "C04_GIS_REDO_SPLIT_v0.2",
+  "producer_state": "EXECUTED / PRODUCER READBACK COMPLETE",
+  "independent_design_review": "PENDING",
+  "required_gates": [
+    "AR-G01..G10 applicable",
+    "AR-S03 Data",
+    "AR-S05 GIS",
+    "Professional Design: claim / first-read / hierarchy / C04 specificity",
+    "Evidence → Interpretation → Design Impact",
+    "Spatial authority preservation",
+    "HOLD layers remain unpromoted",
+    "Cross-media consistency with ROUTE-03 and CH02"
+  ],
+  "producer_must_not_self_assign": "KEEP"
+}
