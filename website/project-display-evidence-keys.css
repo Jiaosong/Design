@@ -1,0 +1,16 @@
+/* XJ01 PRO-04.2 evidence-coordinate keys.
+   Desktop review scope only. These labels explain the retained 2×3 composites;
+   they do not add or alter evidence. */
+@media (min-width:1001px){
+  .pro04-evidence-map{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:28px;margin:0 0 14px;color:var(--trace);font:.62rem/1.4 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+  .pro04-evidence-map__rows{display:grid;grid-template-columns:auto auto auto;justify-content:start;gap:18px;align-items:center}
+  .pro04-evidence-map__rows span,.pro04-evidence-map__columns span{opacity:.68}
+  .pro04-evidence-map__rows b,.pro04-evidence-map__columns b{color:var(--ink);font-weight:600}
+  .pro04-evidence-map__columns{grid-column:1;display:grid;grid-template-columns:84px repeat(3,minmax(0,1fr));gap:8px;align-items:end;padding:10px 0 0;border-top:1px solid var(--trace-soft)}
+  .pro04-evidence-map__columns b{text-align:center}
+  #p05 .pro04-evidence-map{grid-template-columns:minmax(0,1.38fr) minmax(320px,.62fr)}
+}
+@media (min-width:1001px) and (max-width:1500px){
+  .pro04-evidence-map{grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);gap:22px}
+  #p05 .pro04-evidence-map{grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr)}
+}
