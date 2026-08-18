@@ -1,0 +1,108 @@
+{
+  "schema": "oleander.notion-current-architecture-binding.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT_MIRROR",
+  "source_authority_version": "v1.1.1",
+  "decision_date": "2026-08-18",
+  "current_root_authority": {
+    "title": "OLEANDER｜设计知识库（Design）",
+    "page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "role": "UNIQUE_CURRENT_ROOT_AUTHORITY"
+  },
+  "current_registry_control": {
+    "title": "SYS-REGISTRY｜Current System Registries｜ACTIVE v1.0",
+    "page_id": "3bbb86be-5c47-8164-b2ea-fee7d29ed2c0",
+    "parallel_registry_forbidden": true,
+    "data_sources": {
+      "notes": "collection://4668fc63-45a6-496e-a2cc-f9542928b9e8",
+      "projects": "collection://d0f8f709-91b0-4c9b-bc0a-3ab05ec4a447",
+      "domains": "collection://86d64b60-c5fd-4261-95e6-074cc45a344c",
+      "people": "collection://e2480d27-6fe7-454c-85ad-09c6b1ad52cc",
+      "inspiration": "collection://9fb91568-2d06-4ee4-8b11-761b34b73daa",
+      "resources": "collection://07b6f8f3-3e7a-434d-b536-4d823422b329"
+    }
+  },
+  "knowledge_axis": {
+    "L0_L3": {
+      "registry": "domains",
+      "purpose": "DOMAIN_IDENTITY_TAXONOMY_MOC",
+      "primary_domain_rule": "EXACTLY_ONE_CURRENT_L2_WHEN_RESOLVED",
+      "secondary_domain_field": "关联领域"
+    },
+    "L4_L7": {
+      "registry": "notes",
+      "levels": {
+        "L4": "FRAMEWORK_CLUSTER",
+        "L5": "KNOWLEDGE_OBJECT_INDEX",
+        "L6": "EVIDENCE_CASE",
+        "L7": "PRACTICE_OUTPUT"
+      }
+    }
+  },
+  "current_hierarchy_fields": {
+    "parent": "Canonical Parent｜层级上位",
+    "children": "Canonical Children｜层级子级",
+    "legacy_fields_forbidden_for_current_routing": [
+      "上位笔记",
+      "子级笔记"
+    ],
+    "default_parent_cardinality": "0_OR_1",
+    "direction": "ONE_WAY_EXPLICIT_READBACK"
+  },
+  "method_contract": {
+    "registry": "notes",
+    "canonical_id_prefix": "MTH-",
+    "knowledge_role": "METHOD",
+    "classification_field": "方法家族",
+    "classification_is_parent": false,
+    "invocation_relation": "引用方法",
+    "reverse_invocation_relation": "引用该方法的文档",
+    "primary_domain_field": "主领域",
+    "source_relation": "来源文档"
+  },
+  "dedicated_relations": {
+    "source": ["来源文档", "引用该来源的文档"],
+    "method": ["引用方法", "引用该方法的文档"],
+    "semantic_adjacency": ["相关笔记"],
+    "supersession": ["替代文档", "被替代文档"],
+    "project": "USE_CURRENT_PROJECT_RELATIONS_AND_PROJECT_ID"
+  },
+  "identity_resolution_order": [
+    "CURRENT_ROOT_AUTHORITY_OR_EXPLICIT_CURRENT_OVERRIDE",
+    "LIVE_REGISTRY_IDENTITY",
+    "CANONICAL_ID_OR_PROJECT_ID",
+    "GOVERNANCE_AND_RELATION_STATE",
+    "KNOWLEDGE_OR_PROJECT_LEVEL",
+    "PRIMARY_DOMAIN_OR_PROJECT_PARENT",
+    "KNOWLEDGE_PATH_OR_PROJECT_PATH",
+    "ROLE_RUNTIME_EVIDENCE_STATE",
+    "TITLE",
+    "PHYSICAL_PAGE_POSITION"
+  ],
+  "legacy_navigation": {
+    "old_00_70_default_status": "LEGACY_SUPERSEDED_READ_ONLY_FOR_CURRENT_ROUTING",
+    "old_20_and_50_are_default_write_targets": false,
+    "explicit_current_override_may_be_discovery_surface": true,
+    "discovery_surface_never_replaces_live_registry_fields": true
+  },
+  "github_skill_binding": {
+    "skill_name_is_execution_identifier_only": true,
+    "skill_name_must_not_create_notion_taxonomy": true,
+    "required_resolution_sequence": [
+      "READ_CURRENT_ROOT_AUTHORITY",
+      "RESOLVE_LIVE_REGISTRY",
+      "RESOLVE_CURRENT_DOMAIN_LEVEL_ROLE_CANONICAL_ID",
+      "RETRIEVE_CURRENT_KNOWLEDGE_OBJECTS",
+      "USE_DEDICATED_RELATIONS",
+      "EXECUTE_PRODUCTION_CAPABILITY",
+      "WRITE_TO_CORRECT_REGISTRY_AND_RELATION",
+      "READBACK"
+    ]
+  },
+  "forbidden_parallel_structures": [
+    "GENERIC_RESEARCH_INDEX_SOURCES_PRECEDENTS_PAGE_TREE",
+    "SKILL_METHODS_CASES_NOTION_FOLDER_TREE",
+    "ONE_NOTION_PAGE_OR_DATABASE_PER_GITHUB_SKILL",
+    "ONE_GITHUB_SKILL_PER_NOTION_METHOD"
+  ]
+}

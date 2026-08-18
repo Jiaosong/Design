@@ -1,0 +1,139 @@
+{
+  "schema": "oleander.default-skill-resolver.v1",
+  "version": "1.1",
+  "status": "ACTIVE_CURRENT_CANDIDATE_FOR_MAIN",
+  "decision_date": "2026-08-18",
+  "scope": "OLEANDER_ALL_PROJECTS_CONVERSATIONS_AGENTS_MEDIA",
+  "authority": {
+    "notion_current_root_title": "OLEANDER｜设计知识库（Design）",
+    "notion_current_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_current_authority_version": "v1.1.1",
+    "notion_registry_control_page_id": "3bbb86be-5c47-8164-b2ea-fee7d29ed2c0",
+    "notion_secondary_method_resolver_id": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+    "execution_implementation_authority": "GitHub Jiaosong/Design",
+    "installed_skill_registry": "oleander-skills/REVIEW.md",
+    "review_authority": "OLEANDER Artifact Review System v1.1",
+    "notion_architecture_binding": "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json"
+  },
+  "default_resolution_order": [
+    "READ_NOTION_CURRENT_ROOT_AUTHORITY",
+    "READ_APPLICABLE_PROJECT_STATE_SOURCE_AUTHORITY_CURRENT_TASK",
+    "RESOLVE_LIVE_REGISTRY_IDENTITY",
+    "RESOLVE_CURRENT_DOMAIN_L0_L7_ROLE_CANONICAL_ID_AND_EVIDENCE_STATE",
+    "RESOLVE_CANONICAL_PARENT_CHILDREN_WHEN_STRUCTURAL_PARENT_EXISTS",
+    "RETRIEVE_CURRENT_NOTION_METHOD_THEORY_SOURCE_CASE_EVIDENCE_TOOL_PRACTICE",
+    "REUSE_EXISTING_MATURE_DESIGN_DESIGN_SOURCE_AND_CURRENT_ASSETS",
+    "RESOLVE_EXISTING_GITHUB_REUSABLE_OR_CANDIDATE_SPECIALIST_SKILL",
+    "DEFINE_REQUIRED_NATIVE_OUTPUT",
+    "PROBE_CURRENT_EXECUTION_CAPABILITIES",
+    "SELECT_BEST_FIT_REAL_PRODUCTION_ADAPTER",
+    "EXECUTE_ACTUAL_ARTIFACT",
+    "ACTUAL_READBACK",
+    "EVIDENCE_GATE",
+    "INDEPENDENT_DESIGN_QUALITY_GATE",
+    "ROOT_CAUSE_GAP_DIAGNOSIS",
+    "OPTIMIZE_EXISTING_SKILL_ONLY_IF_MATERIAL_REUSABLE_GAP_IS_PROVEN",
+    "CREATE_NEW_SKILL_ONLY_IF_NO_EXISTING_OWNER_CAN_REASONABLY_OWN_CAPABILITY",
+    "WRITE_BACK_TO_CORRECT_LIVE_NOTION_REGISTRY_AND_DEDICATED_RELATION",
+    "SYNC_MATERIAL_DELTA_PRESERVE_PROVENANCE"
+  ],
+  "notion_current_architecture": {
+    "binding_file": "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json",
+    "domain_levels_L0_L3_registry": "domains",
+    "knowledge_levels_L4_L7_registry": "notes",
+    "project_axis_registry": "projects",
+    "current_hierarchy_fields": [
+      "Canonical Parent｜层级上位",
+      "Canonical Children｜层级子级"
+    ],
+    "legacy_hierarchy_fields_forbidden_for_current_routing": [
+      "上位笔记",
+      "子级笔记"
+    ],
+    "method_invocation_relations": [
+      "引用方法",
+      "引用该方法的文档"
+    ],
+    "source_relations": [
+      "来源文档",
+      "引用该来源的文档"
+    ],
+    "old_00_70_navigation_default_status": "LEGACY_SUPERSEDED_READ_ONLY_FOR_CURRENT_ROUTING",
+    "explicit_current_override_is_discovery_only_after_root_authority": true
+  },
+  "capability_layers": {
+    "installed_reusable_execution_skills": [
+      "oleander-research",
+      "oleander-data-viz",
+      "oleander-3d-pipeline",
+      "oleander-story-and-board",
+      "oleander-delivery-qc",
+      "oleander-motion"
+    ],
+    "candidate_ui_specialists_on_main": [
+      "oleander-game-ui",
+      "oleander-mobile-game-ui",
+      "oleander-ui-visual-composition",
+      "oleander-route-wayfinding-ui",
+      "oleander-ui-interaction"
+    ],
+    "candidate_aggregation_layer": "oleander-game-ui-stack",
+    "candidate_draft_specialist": {
+      "name": "OLEANDER Technical Drawing",
+      "installed": false,
+      "promotion_boundary": "EXPLICIT_INDEPENDENT_PROMOTION_REQUIRED"
+    },
+    "notion_design_intelligence": {
+      "role": "BROADER_REUSABLE_DESIGN_INTELLIGENCE",
+      "live_query_required": true,
+      "hardcoded_method_count_forbidden": true,
+      "github_skill_name_is_not_notion_taxonomy": true,
+      "one_method_one_skill_mapping_forbidden": true
+    }
+  },
+  "hard_rules": [
+    "CURRENT_ROOT_AUTHORITY_PRECEDES_HISTORICAL_NAVIGATION",
+    "LIVE_REGISTRY_FIELDS_PRECEDE_PAGE_POSITION_AND_TITLE",
+    "CANONICAL_ID_AND_CURRENT_RELATIONS_PRECEDE_LEGACY_LABELS",
+    "CURRENT_HIERARCHY_USES_CANONICAL_PARENT_AND_CHILDREN_ONLY",
+    "DEDICATED_SOURCE_METHOD_PROJECT_RELATED_SUPERSESSION_RELATIONS_MUST_NOT_BE_COLLAPSED_INTO_PARENT",
+    "GITHUB_SKILL_NAMES_ARE_EXECUTION_IDENTIFIERS_NOT_NOTION_DOMAINS",
+    "NOTION_METHOD_KNOWLEDGE_PRECEDES_EXECUTION_SKILL_ROUTING",
+    "GITHUB_INSTALLED_SKILL_LIST_IS_NOT_COMPLETE_OLEANDER_CAPABILITY_INVENTORY",
+    "EXISTING_METHOD_AND_SKILL_FIRST",
+    "NO_PARALLEL_FRAMEWORK_WHEN_EXISTING_OWNER_CAN_REASONABLY_OWN_CAPABILITY",
+    "PRODUCTION_TASKS_DEFAULT_TO_REAL_EDITABLE_AUDITABLE_ARTIFACTS",
+    "AI_IMAGE_IS_SUPPLEMENTARY_NOT_DESIGN_AUTHORITY",
+    "ACTUAL_READBACK_REQUIRED_BEFORE_VISUAL_DESIGN_PASS",
+    "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT",
+    "PRODUCER_SELF_PROMOTION_TO_KEEP_IS_FORBIDDEN_WHERE_INDEPENDENT_REVIEW_IS_REQUIRED",
+    "NO_COMPRESSION_NO_LOSS_RESTRUCTURE_WITHOUT_INFORMATION_LOSS",
+    "DERIVED_ASSET_DOES_NOT_REPLACE_SOURCE_OR_DESIGN_AUTHORITY",
+    "CHAT_SUMMARY_DOES_NOT_REPLACE_PROJECT_STATE"
+  ],
+  "review_separations": [
+    "ARTIFACT_EXISTENCE_NE_DESIGN_QUALITY",
+    "TRACEABILITY_NE_PROFESSIONAL_FINISH",
+    "EVIDENCE_CORRECTNESS_NE_VISUAL_EXCELLENCE",
+    "PROCESS_PASS_NE_MAIN_KEEP",
+    "RENDER_PASS_NE_DESIGN_PASS",
+    "PROTOTYPE_PASS_NE_FIELD_PASS"
+  ],
+  "synchronization": {
+    "material_delta_sequence": [
+      "READBACK_NOTION_CURRENT_ROOT_AND_LIVE_REGISTRY",
+      "UPDATE_GITHUB_ARCHITECTURE_BINDING_AND_RESOLVER",
+      "BRANCH_COMMIT_PR_CI_READBACK",
+      "UPDATE_NOTION_ONLY_IF_NEW_CURRENT_CROSS_PLATFORM_POINTER_OR_FACT_IS_REQUIRED",
+      "KEEP_ONE_CURRENT_GITHUB_DEFAULT_RESOLVER_POINTER",
+      "PRESERVE_SUPERSEDED_HISTORY_AS_PROVENANCE"
+    ]
+  },
+  "does_not_prove": [
+    "INDIVIDUAL_METHOD_VALIDATION",
+    "CANDIDATE_SKILL_PROMOTION",
+    "PROJECT_DESIGN_PASS",
+    "FIELD_OR_ENGINEERING_TRUTH",
+    "RELEASE_OR_PROMOTION"
+  ]
+}

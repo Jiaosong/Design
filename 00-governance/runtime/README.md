@@ -6,14 +6,20 @@ This directory contains cross-project runtime and capability-routing contracts. 
 
 Use:
 
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.md`
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.json`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json`
+- `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md`
+- `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json`
 
 Canonical default:
 
-`CURRENT AUTHORITY → NOTION METHOD / THEORY / PRACTICE → EXISTING MATURE DESIGN → GITHUB EXECUTABLE SKILL → REQUIRED NATIVE OUTPUT → CAPABILITY PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE`
+`CURRENT NOTION ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE → EXISTING MATURE DESIGN → GITHUB EXECUTABLE SKILL → REQUIRED NATIVE OUTPUT → CAPABILITY PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE`
 
-The GitHub installed-skill list is the formal reusable **execution** registry, not the complete OLEANDER design-intelligence inventory. Resolve live Notion knowledge/method objects first when the task depends on OLEANDER knowledge.
+The GitHub installed-skill list is the formal reusable **execution** registry, not the complete OLEANDER design-intelligence inventory. GitHub Skill names are execution identifiers and must not be copied into Notion as a parallel taxonomy.
+
+Current Notion structural routing must use the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy `上位笔记 / 子级笔记` are not current routing authority.
+
+`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.md/.json` remains as superseded implementation provenance in Git history/repository history and is not the current pointer after v1.1 promotion.
 
 ## Existing active runtime contracts
 
