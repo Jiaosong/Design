@@ -21,6 +21,8 @@ The GitHub installed-skill list is the formal reusable **execution** registry, n
 
 The execution-owner map is a routing layer only. `NO_DEDICATED_OWNER` is a valid result and does not authorize automatic creation of a new Skill. Candidate specialist status must remain explicit.
 
+For any execution owner that produces or materially judges visual output, check the local `VISUAL_LAYER_BINDING.md` when present. These files are **binding-only**: they point back to existing Current Notion knowledge, existing Skill submodules, training cases and Artifact Review rules. They do not create a new visual taxonomy, style bible or effect methodology. If the local binding conflicts with Current Project Authority or a more specific Current design source, Current Authority wins.
+
 Current Notion structural routing must use the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy `上位笔记 / 子级笔记` are not current routing authority.
 
 `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.md/.json` remains as superseded implementation provenance in Git history/repository history and is not the current pointer after v1.1 promotion.
