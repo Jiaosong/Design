@@ -69,6 +69,36 @@ Treat aurora/glow trails, infinite floating, generic logo reveals, heavy cursor 
 
 Component/effect libraries and galleries are mechanism references only. Strip their visual identity before any OLEANDER use.
 
+## Exploration behavior grammar gate
+
+Use this gate when an interface claims exploration, route discovery, inspection, world-linked explanation, or game-like spatial reading. The behavior must be legible as a reversible state system before glow, fade, reveal, parallax, or other effects are judged.
+
+Default grammar:
+
+`INTENT → SCOUT → COMMIT → REVEAL → RETREAT / RETURN`
+
+1. `SCOUT` is a reversible preview. It may increase local salience, but it must not silently create a persistent selection or replace the route/world first-read.
+2. `COMMIT` records the user's selected relation or object. The committed identity must remain stable through later visual mechanisms.
+3. `REVEAL` may expose explanation, detail, memory, or relation only after commitment when that order is part of the experience claim. A reveal with no selected world/object anchor defaults to `REVISE`.
+4. `RETREAT` must move backward through the behavior grammar without destroying the underlying world/route context. `RETURN` must clear the exploration selection and restore the defined route/service baseline.
+5. Hover, glow, pulse, fade, mask, scale, blur, parallax, camera movement, or card appearance are render mechanisms, not exploration states. If the behavior is unchanged when those effects are removed, do not claim them as the exploration grammar.
+6. The selected relation must have persistent state memory. Rapid repeat, switching targets, interruption, or re-entry must not orphan an explanation panel, leader, world anchor, focus state, or previous selection.
+7. Required exploration states cannot depend on hover alone. Pointer, keyboard, touch, switch/accessibility input, and focus behavior must preserve the same state meaning even when the exact gesture differs.
+8. Reduced Motion may remove interpolation, parallax, scale, or other movement, but it must preserve `SCOUT / COMMIT / REVEAL / RETREAT / RETURN` information equivalence.
+9. Exploration UI must keep safety, return, route, closure, and service priorities outside optional interpretation. A committed explanatory state cannot hide or disable the required return path.
+10. Review the full grammar as a sequence, not as isolated frames: `IDLE → SCOUT → COMMIT → REVEAL → RETREAT → RETURN`, plus rapid target-switch and interruption attacks.
+
+Hard FAIL:
+- a reveal appears with no persistent selected object/relation;
+- commit cannot be reversed or cleared;
+- return navigates elsewhere but leaves stale exploration state behind;
+- switching targets leaves a panel/leader attached to the previous target;
+- keyboard/touch cannot reach a state required for pointer users;
+- Reduced Motion removes required state information;
+- optional exploration blocks route, safety, closure, or service recovery.
+
+The exploration grammar proves a designed interaction relationship only. It does not prove comprehension, delight, game feel, accessibility conformance, spatial truth, field usability, or production readiness without the corresponding tests.
+
 ## Required practice loop
 
 For a formal motion exercise, produce the same state change as:
