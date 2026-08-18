@@ -1,0 +1,31 @@
+{
+  "contract_id": "OLEANDER_EXECUTION_REGRESSION_CONTRACT",
+  "version": "0.1",
+  "status": "CANDIDATE_FOR_CURRENT",
+  "decision_date": "2026-08-18",
+  "layers": ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"],
+  "result_states": ["PASS", "FAIL", "HOLD", "NOT_APPLICABLE"],
+  "baseline_required_fields": [
+    "baseline_id",
+    "artifact_id",
+    "implementation_commit",
+    "canonical_tool_or_skill_revision",
+    "runtime",
+    "renderer",
+    "viewport_or_frame",
+    "structural_assertions",
+    "semantic_assertions",
+    "visual_roi_assertions",
+    "runtime_assertions",
+    "baseline_hashes",
+    "approved_by",
+    "last_verified"
+  ],
+  "structural_examples": ["semantic_layers_exist", "svg_required_ids_exist", "route_topology_preserved", "dimension_binding_preserved", "layered_master_not_flattened", "3d_units_axes_dependencies_preserved"],
+  "semantic_examples": ["source_values_units_preserved", "operational_states_not_collapsed", "provenance_labels_preserved", "no_invented_route_connection", "reference_derived_geometry_label_preserved"],
+  "visual_roi_examples": ["primary_first_read_preserved", "small_size_readable", "no_label_dimension_collision", "texture_not_covering_critical_content", "grayscale_state_legibility", "negative_space_crop_integrity", "same_source_paired_geometry", "no_motion_intermediate_dual_focus"],
+  "runtime_examples": ["browser_breakpoint", "motion_interrupt_reentry_reduced_motion", "cross_renderer_material_difference", "3d_exchange", "pdf_vector_export", "video_decode_timing"],
+  "overall_rule": "required_layer_fail_or_hold_blocks_overall_pass",
+  "design_review_boundary": "regression_pass_does_not_equal_design_keep",
+  "does_not_prove": ["field_truth", "engineering_validity", "user_comprehension", "accessibility_conformance", "rights_clearance", "design_pass"]
+}

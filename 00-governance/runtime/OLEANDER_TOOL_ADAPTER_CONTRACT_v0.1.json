@@ -1,0 +1,60 @@
+{
+  "contract_id": "OLEANDER_TOOL_ADAPTER_CONTRACT",
+  "version": "0.1",
+  "status": "CANDIDATE_FOR_CURRENT",
+  "decision_date": "2026-08-18",
+  "required_fields": [
+    "adapter_id",
+    "canonical_tool_id",
+    "notion_object_id",
+    "implemented_revision",
+    "implementation_commit",
+    "adapter_owner",
+    "supported_operator_classes",
+    "parameter_schema",
+    "runtime",
+    "renderer",
+    "fallback",
+    "unsupported_operations",
+    "output_permissions",
+    "regression_baseline",
+    "last_verified",
+    "does_not_prove"
+  ],
+  "shared_tool_may_own": ["operator_vocabulary", "parameter_contracts", "adapter_runtime_selection", "deterministic_fixtures", "compatibility_fallback_rules"],
+  "shared_tool_must_not_own": ["final_project_artifact", "independent_design_methodology", "project_design_authority", "evidence_promotion", "final_design_review_verdict", "new_notion_domain"],
+  "selection_order": ["DESIGN_INTENT", "EFFECT_OR_OPERATOR_ROLE", "MINIMUM_SUFFICIENT_OPERATOR_SET", "PARAMETER_BOUNDS", "EFFECT_BUDGET", "EFFECT_OFF_BASELINE", "ACTUAL_READBACK"],
+  "static_temporal_boundary": {
+    "static_effect_state_spec": "T-VISUAL-IMAGE-OPS-001",
+    "state_transition_temporal_behaviour": "oleander-motion",
+    "image_ops_must_not_own": ["easing", "timing", "transition_sequencing", "interruption_reentry", "reduced_motion_theory"]
+  },
+  "version_binding_required": ["canonical_tool_id", "implemented_revision", "implementation_commit", "runtime_renderer", "regression_baseline"],
+  "unbound_state": "UNBOUND_IMPLEMENTATION",
+  "current_adapters": [
+    {
+      "adapter_id": "ADAPTER-T-VISUAL-IMAGE-OPS-001",
+      "canonical_tool_id": "T-VISUAL-IMAGE-OPS-001",
+      "notion_object_id": "3c0b86be-5c47-8142-bab6-e6cac9306bd2",
+      "implemented_revision": "verified-2026-08-18",
+      "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+      "adapter_owner": "shared_tool_adapter",
+      "consumers": [
+        "oleander-research",
+        "oleander-data-viz",
+        "oleander-3d-pipeline",
+        "oleander-story-and-board",
+        "oleander-motion",
+        "oleander-delivery-qc",
+        "oleander-ui-visual-composition",
+        "oleander-ui-interaction",
+        "oleander-route-wayfinding-ui",
+        "oleander-game-ui",
+        "oleander-mobile-game-ui"
+      ],
+      "supported_operator_classes": ["Layer_Composite", "Mask_Selection_Channel", "Adjustment", "Vector_safe_Effect", "Raster_preview_Effect", "2D_Faux_3D", "Static_Effect_State"],
+      "unsupported_operations": ["independent_design_method", "final_artifact_ownership", "temporal_transition_theory", "evidence_promotion"],
+      "does_not_prove": ["design_pass", "evidence_truth", "geometry_truth", "physical_material_truth", "promotion"]
+    }
+  ]
+}

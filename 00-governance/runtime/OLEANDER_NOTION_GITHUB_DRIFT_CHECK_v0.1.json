@@ -1,0 +1,64 @@
+{
+  "contract_id": "OLEANDER_NOTION_GITHUB_DRIFT_CHECK",
+  "version": "0.1",
+  "status": "CANDIDATE_FOR_CURRENT",
+  "decision_date": "2026-08-18",
+  "comparison_key": ["notion_canonical_id", "github_implementation", "implemented_revision", "implementation_commit", "last_verified", "drift_state"],
+  "drift_states": ["CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"],
+  "required_fields": [
+    "mapping_id",
+    "notion_canonical_id",
+    "notion_object_id",
+    "knowledge_role",
+    "notion_governance_state",
+    "notion_last_verified",
+    "github_owner",
+    "github_paths",
+    "implemented_revision",
+    "implementation_commit",
+    "runtime_or_validator",
+    "last_verified",
+    "drift_state",
+    "drift_reason",
+    "next_action",
+    "does_not_prove"
+  ],
+  "modes": {
+    "GITHUB_STATIC_CHECK": "repository_side_completeness_only",
+    "LIVE_CROSS_PLATFORM_CHECK": "requires_live_notion_readback"
+  },
+  "allowed_repair_actions": ["UPDATE_GITHUB_IMPLEMENTATION", "UPDATE_GITHUB_POINTER", "UPDATE_NOTION_POINTER_OR_RELATION", "MARK_DEPRECATED_OR_LEGACY", "REVIEW_REQUIRED", "NO_ACTION"],
+  "forbidden_automatic_actions": ["CREATE_NEW_SKILL_FROM_MISSING_MAPPING"],
+  "seed_mappings": [
+    {
+      "mapping_id": "resolver-current",
+      "notion_canonical_id": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+      "notion_object_id": "3c0b86be-5c47-8162-993d-f939a1c2bf03",
+      "knowledge_role": "METHOD",
+      "github_owner": "runtime-governance",
+      "github_paths": [
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md",
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json",
+        "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
+        "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
+      ],
+      "implemented_revision": "resolver-v1.1-owner-map-v1.0",
+      "drift_state": "UNKNOWN",
+      "drift_reason": "candidate checker file; requires live check at run time"
+    },
+    {
+      "mapping_id": "visual-image-ops-current",
+      "notion_canonical_id": "T-VISUAL-IMAGE-OPS-001",
+      "notion_object_id": "3c0b86be-5c47-8142-bab6-e6cac9306bd2",
+      "knowledge_role": "TOOL",
+      "github_owner": "shared_tool_adapter",
+      "github_paths": ["**/VISUAL_LAYER_BINDING.md"],
+      "implemented_revision": "verified-2026-08-18",
+      "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+      "drift_state": "UNKNOWN",
+      "drift_reason": "candidate checker file; requires live check at run time"
+    }
+  ],
+  "hard_guards": ["notion_identity_remains_upstream", "github_static_check_cannot_claim_live_current", "missing_mapping_does_not_authorize_new_skill"],
+  "does_not_prove": ["method_quality", "design_quality", "field_truth", "user_validation", "full_runtime_correctness", "project_promotion"]
+}
