@@ -1,6 +1,7 @@
 {
   "mapping_version": "0.1",
   "knowledge_authority": "Notion / 50｜Methods & Design Intelligence",
+  "ci_workflow": ".github/workflows/technical-drawing-analysis-evals.yml",
   "implementation_boundary": "GitHub validators enforce explicit contracts and structural contradictions only; they do not machine-award aesthetic quality or KEEP.",
   "primary_skill_knowledge": {
     "notion_page_id": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
