@@ -79,6 +79,54 @@ Promotion test:
 
 > Move the scene mentally or in the prototype: world-bound cues must keep believable depth/occlusion relations, while Return/safety controls remain readable without pretending to be in the landscape.
 
+## Responsive media art-direction gate
+
+Use this gate when the same evidence-bearing landscape, product, spatial image or scene must carry one claim across materially different viewports. Responsive image handling is not a neutral implementation detail: a crop can remove the object or relation that makes the claim true.
+
+Separate `SOURCE GEOMETRY / FOCAL EVIDENCE / CARRIER CROP` before styling.
+
+- `SOURCE GEOMETRY`: the authoritative or source-bound image/scene. Breakpoints may not redraw, invent or replace its factual relation merely to improve composition.
+- `FOCAL EVIDENCE`: the minimum objects and relations that must remain perceivable for the current claim to survive.
+- `CARRIER CROP`: breakpoint-specific framing. It may change subject placement, crop window, copy measure and vertical rhythm while preserving focal evidence and truth boundary.
+
+Do not treat `object-fit: cover`, center-crop, automatic face/object detection or generic focal-point metadata as Design PASS. They are implementation mechanisms and still require target-size visual readback.
+
+### Required breakpoint checks
+
+For every evidence-bearing hero/scene, record at least one wide carrier and one narrow carrier. More are required when the product actually ships more materially different breakpoints.
+
+Run:
+
+- `CLAIM-OFF TEST`: hide copy; the focal evidence should still be visually locatable in each carrier.
+- `FOCAL-EVIDENCE TEST`: list the required objects/relations and confirm none are cropped, hidden behind copy or reduced below useful reading size.
+- `AUTO-CROP ATTACK`: compare the designed crop against a naive center/cover crop. If both are nearly identical, prove that no art direction was actually needed; otherwise the designed crop must materially preserve the claim better.
+- `COPY-COLLISION TEST`: verify breakpoint-specific copy placement does not cover the evidence it describes.
+- `RETURN/SAFETY TEST`: narrow art direction may not use the focal image area to bury Return, safety or critical state controls.
+- `SOURCE-IDENTITY TEST`: desktop and mobile crops must trace to the same approved source/version unless an explicitly authorized alternate source is declared.
+- `NATIVE-VIEWPORT READBACK`: review at actual target width/height, not only inside enlarged artboards.
+
+### Hard failures
+
+REVISE/REJECT when:
+
+- a mobile center-crop removes a required object or relation while the copy still asks the user to see it;
+- desktop and mobile silently use different landscape/product geometry to preserve a composition;
+- breakpoint copy is placed over the exact evidence it references;
+- zooming/cropping turns local evidence into a stronger or different factual claim;
+- the same `object-position` is reused across carriers even though it causes evidence loss;
+- a low-resolution source is enlarged beyond useful evidentiary reading and presented as if detail were verified;
+- decorative AI/generative fill is used to extend missing landscape/product evidence outside the source frame.
+
+### Review record
+
+Record at minimum:
+
+`MEDIA_ID / SOURCE_ID / SOURCE_VERSION / CLAIM_ID / FOCAL_OBJECTS / FOCAL_RELATIONS / BREAKPOINT / CROP_OR_VIEWBOX / COPY_SAFE_REGION / REQUIRED_CONTROL_SAFE_REGION / AUTO_CROP_RESULT / NATIVE_READBACK / DOES_NOT_PROVE`.
+
+Promotion test:
+
+> Across wide and narrow carriers, the composition may change but the evidence-bearing relation must not disappear, move to a different source geometry, or be manufactured by the crop.
+
 ## Image-processing operator routing
 
 Use `T-VISUAL-IMAGE-OPS-001` for mobile-specific crops, layered image derivatives, masks, transparency, texture and bounded raster/vector effects while retaining the recoverable source. Re-evaluate blur radius, texture scale, glow spread, contrast and detail density at actual narrow viewports; an effect that works on desktop may collapse legibility or increase visual noise on mobile. Image-processing effects may not delay the primary task, obscure safe-area controls or replace Reduced Motion/state parity.
