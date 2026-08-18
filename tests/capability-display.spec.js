@@ -28,6 +28,31 @@ async function capture(page, testInfo, name, selector) {
   await testInfo.attach(name, { path, contentType: 'image/png' });
 }
 
+async function desktopOverflowDiagnostics(page) {
+  return page.evaluate(() => {
+    const viewport = document.documentElement.clientWidth;
+    const pageWidth = document.documentElement.scrollWidth;
+    const offenders = [...document.querySelectorAll('body *')]
+      .map((node) => {
+        const rect = node.getBoundingClientRect();
+        return {
+          tag: node.tagName.toLowerCase(),
+          id: node.id || '',
+          className: typeof node.className === 'string' ? node.className : '',
+          left: Math.round(rect.left * 10) / 10,
+          right: Math.round(rect.right * 10) / 10,
+          width: Math.round(rect.width * 10) / 10,
+          overflowRight: Math.round(Math.max(0, rect.right - viewport) * 10) / 10,
+          text: (node.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 90)
+        };
+      })
+      .filter((item) => item.width > 0 && item.right > viewport + 1)
+      .sort((a, b) => b.overflowRight - a.overflowRight)
+      .slice(0, 20);
+    return { viewport, pageWidth, overflow: pageWidth - viewport, offenders };
+  });
+}
+
 test('XJ01 PRO-04.2 binds the editorial presentation spine and keeps unsupported evidence out of MAIN', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'chromium-desktop');
   await waitForXJ01(page);
@@ -65,8 +90,8 @@ test('XJ01 PRO-04.2 desktop actual-preview evidence — 1920 and 1440 only', asy
   await capture(page, testInfo, 'xj01-1440x900-p03-interfaces.png', '#p03');
   await capture(page, testInfo, 'xj01-1440x900-p05-lifecycle-support.png', '#p05');
 
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-  expect(overflow).toBeLessThanOrEqual(1);
+  const diagnostics = await desktopOverflowDiagnostics(page);
+  expect(diagnostics.overflow, JSON.stringify(diagnostics, null, 2)).toBeLessThanOrEqual(1);
 });
 
 test('project data remains capability-based and physical scope is not a presentation blocker', async ({ page }, testInfo) => {
