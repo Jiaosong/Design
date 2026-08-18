@@ -1,6 +1,7 @@
 # OLEANDER Execution Receipt v1.0
 
 Status: **ACTIVE CURRENT**  
+Policy revision: **1.1**  
 Decision date: **2026-08-18**  
 Scope: **one material execution unit**
 
@@ -8,7 +9,12 @@ Scope: **one material execution unit**
 
 Use one receipt to record the execution instance of the Current resolver/contracts. The receipt is not a new Project State, review framework or Skill.
 
-Only sections that actually apply are executed. Prefer `NOT_APPLICABLE` to fake process.
+Policy revision 1.1 adds two mandatory runtime sections for all new receipts:
+
+1. **Constraint Lock**
+2. **Flow Completion**
+
+The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the new sections.
 
 ## 1｜Identity
 
@@ -16,23 +22,39 @@ Only sections that actually apply are executed. Prefer `NOT_APPLICABLE` to fake 
 - `status = WORKING / REVIEW_PENDING / HOLD / CLOSED`
 - `execution_type = PROJECT / TRAINING / SKILL_VALIDATION / GOVERNANCE_RUNTIME`
 - `task_id`
-- date/time
 
 ## 2｜Authority snapshot
 
-Record:
-
-- Notion Current Root page ID + authority version;
-- project/scope Current Authority;
-- Source Authority;
-- Design Authority;
-- relevant Canonical IDs;
-- Current GitHub resolver;
-- actual GitHub commit/ref consumed.
+Record Current Root, project/scope authority, Source Authority, Design Authority, relevant Canonical IDs, Current GitHub resolver and actual commit/ref.
 
 The receipt does not replace Project State.
 
-## 3｜Required native output
+## 3｜Constraint Lock
+
+Resolve before tool/owner selection and record:
+
+- `resolved_from`
+- `inheritance_state`
+- `active_constraints`
+- `revocations`
+- `tool_deny`
+- `output_deny`
+- `creation_deny`
+- `required_behaviors`
+
+Each active constraint records:
+
+`constraint_id / constraint_type / normalized_rule / source / scope / status / revocation_rule`.
+
+Supported normalized rules include:
+
+`NO_IMAGE_GENERATION / NO_NEW_SKILL / NO_NEW_METHOD / NO_NEW_FRAMEWORK / USE_EXISTING_OLEANDER_METHODS_AND_SKILLS / FULL_OLEANDER_FLOW_REQUIRED / NO_PRODUCER_SELF_PROMOTION`.
+
+A generic “继续 / 优化 / 再做” does not revoke anything. Only a later explicit user instruction that directly changes the named constraint can release it.
+
+If `NO_IMAGE_GENERATION` is active, image-generation tools and generative-image adapters are forbidden. If `NO_NEW_SKILL / METHOD / FRAMEWORK` is active, gap diagnosis cannot silently authorize creation.
+
+## 4｜Required native output
 
 Record:
 
@@ -40,19 +62,56 @@ Record:
 
 A preview, screenshot or chat explanation cannot replace a required editable/native master.
 
-## 4｜Minimum sufficient owner set / DAG
+## 5｜Minimum sufficient owner set / DAG
 
-Record the selected `PRIMARY_OWNER` and only the supporting nodes actually needed.
+Record `PRIMARY_OWNER` and only supporting nodes actually needed.
 
 Node roles:
 
 `PRIMARY_OWNER / SUPPORTING_OWNER / READ_ONLY_CONSUMER / VALIDATOR / INDEPENDENT_REVIEWER`.
 
-Also record omitted-owner reasoning so `NO COMPRESSION / NO LOSS` cannot be misread as “run every Skill”.
+`NO COMPRESSION / NO LOSS` does not mean every Skill must run.
 
-Default cross-owner permission is `READ_ONLY`.
+## 6｜Flow Completion
 
-## 5｜Native artifacts and handoffs
+For production/mutation/training/state-changing review work, and whenever `FULL_OLEANDER_FLOW_REQUIRED` is active, record:
+
+- `mode = READ_ONLY_QUERY / MINIMUM_EXECUTION / FULL_OLEANDER_FLOW`
+- `required_phases`
+- `phase_results`
+- `incomplete_required_phases`
+- `completion_gate = PASS / FAIL / HOLD`
+- `completion_claim_allowed`
+
+Canonical phases:
+
+1. `AUTHORITY_PREFLIGHT`
+2. `STICKY_CONSTRAINT_RESOLUTION`
+3. `EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION`
+4. `REQUIRED_NATIVE_OUTPUT_DEFINITION`
+5. `CAPABILITY_AND_MINIMUM_OWNER_SET`
+6. `REAL_EXECUTION`
+7. `NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD`
+8. `ACTUAL_READBACK`
+9. `REGRESSION_AS_APPLICABLE`
+10. `INDEPENDENT_REVIEW_AS_APPLICABLE`
+11. `SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE`
+
+For full-flow work, Authority, Constraint Resolution, Existing Knowledge/Skill Resolution, Native Output, Minimum Owner Set, Real Execution and Actual Readback cannot be skipped.
+
+Optional phases may be `NOT_APPLICABLE` only with a real reason.
+
+### Closure rule
+
+`status=CLOSED` requires:
+
+- `completion_gate=PASS`
+- `incomplete_required_phases=[]`
+- no required phase in `FAIL/HOLD`
+
+A plan, method explanation, generated/exported file, PR, CI green, self-check, render pass or regression pass is not enough to close a full-flow task.
+
+## 7｜Native artifacts and handoffs
 
 Every material handoff records the Native Artifact Contract fields, including:
 
@@ -60,30 +119,27 @@ Every material handoff records the Native Artifact Contract fields, including:
 
 Material derivatives receive a new artifact ID.
 
-## 6｜TOOL adapter section
+## 8｜TOOL adapter section
 
-Only when a TOOL is used, record:
+Only when a TOOL is actually used, record:
 
 `adapter_id / canonical_tool_id / implemented_revision / implementation_commit / operator_role / minimum_sufficient_operator_set / effect_budget / fallback / regression_baseline`.
 
-For Image Ops:
+An active Tool Deny is checked before adapter selection.
 
-- static effect state → `T-VISUAL-IMAGE-OPS-001` adapter;
-- temporal transition/easing/timing → `oleander-motion`.
-
-## 7｜Real execution
+## 9｜Real execution
 
 Record actual runtime/tool action, result, failures, repairs and re-execution state.
 
-Do not infer EXECUTED from a plan, prompt or file path alone.
+Do not infer EXECUTED from a promise, plan, prompt, path, PR or CI state.
 
-## 8｜Actual readback
+## 10｜Actual readback
 
 Record actual target/runtime, observed result, blockers, warnings and verdict.
 
 `Artifact existence ≠ actual readback`.
 
-## 9｜Four-layer regression
+## 11｜Four-layer regression
 
 Record each applicable layer independently:
 
@@ -94,9 +150,9 @@ Record each applicable layer independently:
 
 Each uses `PASS / FAIL / HOLD / NOT_APPLICABLE`.
 
-Regression PASS does not grant Design KEEP.
+Regression PASS does not grant Design KEEP and does not independently close the flow.
 
-## 10｜Independent review
+## 12｜Independent review
 
 Record:
 
@@ -104,24 +160,22 @@ Record:
 
 Producer self-check is not an independent verdict.
 
-## 11｜Notion ↔ GitHub drift
+## 13｜Notion ↔ GitHub drift
 
 Required when a Current cross-platform pointer or implementation changes.
 
-Use:
-
-`GITHUB_STATIC_CHECK` or `LIVE_CROSS_PLATFORM_CHECK`.
+Use `GITHUB_STATIC_CHECK` or `LIVE_CROSS_PLATFORM_CHECK`.
 
 A repository-only check cannot report live Notion `CURRENT`.
 
-## 12｜Closure
+## 14｜Closure
 
 Record:
 
 `material_delta / branch / commits / pull_request / ci_state / merge_commit / main_readback / notion_writeback / remaining_blockers / final_state`.
 
-Final execution states must remain distinct: `EXECUTED / TRACEABLE / VALIDATED / DESIGN_REVIEWED / MERGED / PROMOTED / HOLD`.
+Closure is allowed only after the Flow Completion Gate passes.
 
-## 13｜Does not prove
+## 15｜Does not prove
 
 A complete receipt does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.
