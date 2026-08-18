@@ -1,0 +1,178 @@
+{
+  "receipt_id": "EXR-20260818-STICKY-CONSTRAINT-FULL-FLOW-POLICY",
+  "status": "WORKING",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "sticky-constraints-full-flow-policy",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "OLEANDER cross-project execution governance",
+    "source_authority": "Current Root + KN-METHOD-OLEANDER-SKILL-RESOLVER-001 + user explicit execution complaints in current task",
+    "design_authority": "NOT_APPLICABLE",
+    "canonical_ids": ["KN-METHOD-OLEANDER-SKILL-RESOLVER-001"],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.1",
+    "github_commit_or_ref": "agent/sticky-constraints-full-flow-v1-3@c72dce6731bed49eb8fa74c42438ffbef2214e70"
+  },
+  "constraint_lock": {
+    "resolved_from": ["LATEST_EXPLICIT_USER_INSTRUCTION", "CURRENT_OLEANDER_RESOLVER", "CURRENT_EXECUTION_RECEIPT_POLICY"],
+    "inheritance_state": "ACTIVE_FOR_THIS_GOVERNANCE_TASK_UNTIL_EXPLICIT_REVOCATION_OR_TASK_CLOSURE",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-20260818-001",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_SKILL",
+        "source": "User reports repeated unwanted creation of new Skills after promising existing-first execution",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_SKILL"
+      },
+      {
+        "constraint_id": "CSTR-20260818-002",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_FRAMEWORK",
+        "source": "Repair must harden existing Resolver/Receipt/CI rather than create a parallel governance framework",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_FRAMEWORK"
+      },
+      {
+        "constraint_id": "CSTR-20260818-003",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "User requires actual use of OLEANDER process and existing Skill architecture rather than verbal promises",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-20260818-004",
+        "constraint_type": "PROCESS_REQUIRE",
+        "normalized_rule": "FULL_OLEANDER_FLOW_REQUIRED",
+        "source": "User explicitly reports that agents repeatedly fail to walk the complete OLEANDER flow",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": [],
+    "output_deny": [],
+    "creation_deny": ["CREATE_NEW_SKILL", "CREATE_PARALLEL_GOVERNANCE_FRAMEWORK"],
+    "required_behaviors": ["READ_CURRENT_OLEANDER_RESOLVER_AND_RECEIPT", "USE_EXISTING_GOVERNANCE_FILES", "COMPLETE_ALL_APPLICABLE_FLOW_PHASES"]
+  },
+  "required_native_output": {
+    "artifact_class": "oleander_execution_governance_hardening",
+    "native_format": "JSON+Markdown+Python+JSONL",
+    "editable_required": true,
+    "target_runtime": "GitHub main + Notion Current Resolver readback",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "runtime-governance",
+    "nodes": [
+      {"owner_id": "runtime-governance", "role": "PRIMARY_OWNER"},
+      {"owner_id": "validate_execution_contracts.py", "role": "VALIDATOR"},
+      {"owner_id": "validate_execution_locks.py", "role": "VALIDATOR"}
+    ],
+    "omitted_owner_reasoning": "No design-production Skill is required; this task changes the existing Resolver, Receipt policy and CI validation only."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "HOLD",
+      "REGRESSION_AS_APPLICABLE": "HOLD",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+    },
+    "incomplete_required_phases": ["ACTUAL_READBACK", "REGRESSION_AS_APPLICABLE", "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"],
+    "completion_gate": "HOLD",
+    "completion_claim_allowed": false
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-OLEANDER-STICKY-FULL-FLOW-POLICY",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "runtime-governance",
+      "authority_source": "Current Resolver v1.2 + Execution Receipt v1.0 + user current governance requirement",
+      "authority_state": "WORKING_CURRENT_BRANCH",
+      "native_format": "JSON+Markdown+Python+JSONL",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": ["sticky_constraints", "tool_deny", "creation_deny", "flow_completion", "receipt_policy", "runtime_regression_cases", "ci_validator"],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": ["OLEANDER Current Root v1.1.1", "Default Skill Resolver v1.2", "Execution Receipt v1.0", "AI Governance workflow"],
+      "hashes_or_commit": "c72dce6731bed49eb8fa74c42438ffbef2214e70",
+      "runtime": "GitHub branch + Actions pending",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "WORKING",
+      "does_not_prove": ["design_quality", "project_promotion", "field_truth"]
+    }
+  ],
+  "tool_adapters": [],
+  "execution": {
+    "runtime": "GitHub branch and existing governance runtime",
+    "entrypoint_or_action": "Harden existing Current Resolver/Receipt and add machine regression for sticky negative constraints and full-flow completion without creating a new Skill or parallel framework.",
+    "result": "BRANCH_IMPLEMENTED_PENDING_CI_MAIN_READBACK_NOTION_SYNC",
+    "failures": ["Existing Resolver allowed negative constraints and full-flow intent to remain mostly natural-language conventions."],
+    "repairs": ["Added sticky execution constraint lock before routing", "Added full-flow completion gate", "Added future-receipt policy 1.1", "Added runtime regression cases and validator"]
+  },
+  "readback": {
+    "target": "Branch Resolver/Receipt/eval/validator files",
+    "runtime": "GitHub branch file readback",
+    "observed_result": "Branch implementation exists and preserves the existing OLEANDER architecture; main/CI/Notion closure is still pending.",
+    "blocking_defects": ["PENDING_CI_MAIN_NOTION_CLOSURE"],
+    "nonblocking_defects": ["NONE_IDENTIFIED_AT_BRANCH_READBACK"],
+    "verdict": "HOLD"
+  },
+  "regression": {
+    "STRUCTURAL": {"result": "PASS", "assertions": ["No new Skill created", "Resolver remains v1.2 Current object", "Receipt remains v1.0 Current object with policy revision", "legacy receipts explicitly allowlisted"]},
+    "SEMANTIC": {"result": "PASS", "assertions": ["generic continue cannot revoke negative constraint", "full flow does not mean all Skills", "PR/CI cannot equal closure", "creation deny precedes gap-driven creation"]},
+    "VISUAL_ROI": {"result": "NOT_APPLICABLE", "assertions": ["Governance runtime task has no visual design artifact"]},
+    "RUNTIME": {"result": "HOLD", "assertions": ["AI Governance workflow must run validate_execution_locks.py", "branch must merge and main readback must pass"]},
+    "overall": "HOLD"
+  },
+  "review": {
+    "producer_id": "runtime-governance execution",
+    "reviewer_id": "NOT_REQUIRED_FOR_NON_DESIGN_GOVERNANCE_CHANGE",
+    "review_input_artifact_id": "ART-OLEANDER-STICKY-FULL-FLOW-POLICY",
+    "review_input_hash_or_commit": "c72dce6731bed49eb8fa74c42438ffbef2214e70",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "HOLD_PENDING_CI_AND_MAIN_READBACK",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "No Skill or design promotion occurs in this governance repair."
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/sticky-constraints-full-flow-v1-3",
+    "commits": ["c72dce6731bed49eb8fa74c42438ffbef2214e70"],
+    "pull_request": "PENDING",
+    "ci_state": "PENDING",
+    "merge_commit": "PENDING",
+    "main_readback": "PENDING",
+    "notion_writeback": "PENDING",
+    "remaining_blockers": ["PR_CI", "MAIN_READBACK", "NOTION_RESOLVER_SYNC", "LIVE_DRIFT_CHECK"],
+    "final_state": "WORKING_HOLD"
+  },
+  "does_not_prove": ["project_state", "design_quality", "field_truth", "engineering_validity", "user_validation", "rights_clearance", "candidate_skill_promotion"]
+}
