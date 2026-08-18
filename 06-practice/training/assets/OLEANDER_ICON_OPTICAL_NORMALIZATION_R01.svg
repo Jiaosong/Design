@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F1EEE6"/>
+<text x="96" y="74" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="23" letter-spacing="3" fill="#59615F">OLEANDER TRAINING / ICON SYSTEM / OPTICAL NORMALIZATION ACROSS CARRIERS</text>
+<text x="96" y="130" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="48" font-weight="700" fill="#18211F">同一图标家族，不等于同一个 master 机械缩放</text>
+<text x="96" y="172" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#69706D">C04-inspired RETURN semantic · synthetic geometry · MAP 16 / APP 24 / SIGNAGE 32 · training-only · no field direction claimed</text>
+
+<defs>
+  <g id="naive32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 7 H15 C9 7 6 11 6 16 C6 21 9 25 15 25 H20" stroke-width="2"/>
+    <path d="M10 3 L5 7 L10 11" stroke-width="2"/>
+    <circle cx="21.8" cy="12.5" r="2.1" fill="currentColor" stroke="none"/>
+    <path d="M21.8 15.4 L18.8 20 L21.3 25.5 M21 18 L25.6 20.6 M20.2 19 L16.3 21.1 M21.3 25.5 L25 29 M21.3 25.5 L18 29" stroke-width="1.9"/>
+  </g>
+  <g id="opt32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 7 H14.5 C9 7 6 10.8 6 16 C6 21.2 9 25 14.5 25 H19.5" stroke-width="2.25"/>
+    <path d="M10.5 3 L5.2 7 L10.5 11" stroke-width="2.25"/>
+    <circle cx="22" cy="12.6" r="2.25" fill="currentColor" stroke="none"/>
+    <path d="M22 15.8 L19.2 20.2 L21.6 25.3 M21 18.2 L25.7 20.8 M20.2 19.1 L16.5 21.3 M21.6 25.3 L25.2 28.7 M21.6 25.3 L18.4 28.8" stroke-width="2.05"/>
+  </g>
+  <g id="opt24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21.2 5.2 H10.8 C6.9 5.2 4.8 8 4.8 12 C4.8 16 6.9 18.8 10.8 18.8 H14.4" stroke-width="2.05"/>
+    <path d="M8.5 2.5 L4.4 5.2 L8.5 8.2" stroke-width="2.05"/>
+    <circle cx="17.1" cy="10" r="1.8" fill="currentColor" stroke="none"/>
+    <path d="M17.1 12.6 L14.9 16.3 L17 20.4 M16.3 14.5 L20 16.4 M17 20.4 L20 23 M17 20.4 L14.4 23" stroke-width="1.9"/>
+  </g>
+  <g id="opt16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.2 3.6 H7.3 C4.7 3.6 3.2 5.5 3.2 8 C3.2 10.5 4.7 12.4 7.3 12.4 H9.2" stroke-width="1.65"/>
+    <path d="M5.8 1.7 L2.8 3.7 L5.8 5.8" stroke-width="1.65"/>
+    <circle cx="11.7" cy="7" r="1.35" fill="currentColor" stroke="none"/>
+    <path d="M11.7 8.9 L10.2 11.3 L11.5 14 M11.1 10.2 L13.7 11.5 M11.5 14 L13.7 15.6 M11.5 14 L9.4 15.6" stroke-width="1.55"/>
+  </g>
+</defs>
+
+<rect x="96" y="228" width="802" height="684" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="132" y="275" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#914F3D">REJECT / ONE MASTER → SCALE()</text>
+<text x="132" y="310" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">32px master 直接缩到 24 / 16；线重、关节负空间与箭头—人体间距一起被压缩。</text>
+<g color="#27312E">
+  <rect x="145" y="370" width="210" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(174,405) scale(5)"><use href="#naive32"/></g>
+  <text x="166" y="590" font-family="Arial,sans-serif" font-size="13" fill="#59615F">SIGNAGE · 32 master</text>
+  <rect x="375" y="370" width="210" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(410,420) scale(5)"><use href="#naive32" transform="scale(.75)"/></g>
+  <text x="396" y="590" font-family="Arial,sans-serif" font-size="13" fill="#7D4A3A">APP · 24 = scaled master</text>
+  <rect x="605" y="370" width="210" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(650,442) scale(5)"><use href="#naive32" transform="scale(.5)"/></g>
+  <text x="626" y="590" font-family="Arial,sans-serif" font-size="13" fill="#7D4A3A">MAP · 16 = scaled master</text>
+</g>
+<rect x="148" y="676" width="660" height="84" rx="14" fill="#F7F3EA"/>
+<text x="168" y="706" font-family="Arial,sans-serif" font-size="12" fill="#59615F">NATIVE-SIZE READBACK</text>
+<g color="#27312E">
+  <g transform="translate(340,693)"><use href="#naive32"/></g>
+  <g transform="translate(474,697)"><use href="#naive32" transform="scale(.75)"/></g>
+  <g transform="translate(605,701)"><use href="#naive32" transform="scale(.5)"/></g>
+</g>
+<text x="168" y="790" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#7D4A3A">16px：头/躯干/回转箭头开始粘连；语义还“在”，但 first-read 已变成噪声。</text>
+<text x="168" y="824" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#7D4A3A">错误修法：只加粗整图，会进一步堵塞 joint gaps；只扩大外框，会破坏 carrier rhythm。</text>
+
+<rect x="934" y="228" width="890" height="684" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="970" y="275" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#315D57">KEEP CANDIDATE / OPTICAL FAMILY</text>
+<text x="970" y="310" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">共享语义拓扑；允许按 carrier 调 stroke、gap、细节和外扩量，但不得换成另一套符号逻辑。</text>
+<g color="#27312E">
+  <rect x="982" y="370" width="240" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(1022,405) scale(5)"><use href="#opt32"/></g>
+  <text x="1004" y="590" font-family="Arial,sans-serif" font-size="13" fill="#315D57">SIGNAGE 32 · full relation</text>
+  <rect x="1242" y="370" width="240" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(1298,420) scale(5)"><use href="#opt24"/></g>
+  <text x="1264" y="590" font-family="Arial,sans-serif" font-size="13" fill="#315D57">APP 24 · simplified joints</text>
+  <rect x="1502" y="370" width="240" height="250" rx="16" fill="#F7F3EA"/>
+  <g transform="translate(1580,440) scale(6)"><use href="#opt16"/></g>
+  <text x="1524" y="590" font-family="Arial,sans-serif" font-size="13" fill="#315D57">MAP 16 · gap protected</text>
+</g>
+<rect x="982" y="650" width="760" height="110" rx="14" fill="#F7F3EA"/>
+<text x="1004" y="680" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" font-weight="700" fill="#29332F">LOCKED INVARIANTS</text>
+<text x="1004" y="706" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#59615F">U-turn direction · human forward lean · arrow/body separation · head/body gap · endpoint open to route</text>
+<text x="1004" y="738" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#59615F">ALLOWED COMPENSATION · stroke↑ as size↓ · detail↓ · gap↑ · arrow shortening · local overshoot</text>
+<rect x="982" y="784" width="760" height="86" rx="14" fill="#F7F3EA"/>
+<text x="1004" y="810" font-family="Arial,sans-serif" font-size="12" fill="#59615F">NATIVE CARRIERS</text>
+<g color="#27312E">
+  <g transform="translate(1178,803)"><use href="#opt32"/></g>
+  <g transform="translate(1366,807)"><use href="#opt24"/></g>
+  <g transform="translate(1551,811)"><use href="#opt16"/></g>
+</g>
+<text x="1130" y="856" font-family="Arial,sans-serif" font-size="12" fill="#315D57">SIGNAGE 32</text>
+<text x="1327" y="856" font-family="Arial,sans-serif" font-size="12" fill="#315D57">APP 24</text>
+<text x="1524" y="856" font-family="Arial,sans-serif" font-size="12" fill="#315D57">MAP 16</text>
+<line x1="96" y1="960" x2="1824" y2="960" stroke="#BDB6A8" stroke-width="2"/>
+<text x="96" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="21" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="300" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#59615F">Compare at native carrier size: semantic topology must stay constant, while critical gaps and stroke survive without making small sizes a different icon.</text>
+<text x="96" y="1045" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#747B78">Synthetic RETURN study only. Does not define C04 official icon geometry, field direction, safety instruction, accessibility compliance, or signage production size.</text>
+</svg>
