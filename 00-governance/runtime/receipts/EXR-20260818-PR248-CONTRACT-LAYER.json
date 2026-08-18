@@ -1,0 +1,103 @@
+{
+  "receipt_id": "EXR-20260818-PR248-CONTRACT-LAYER",
+  "status": "CLOSED",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "execution-contract-layer-v0.1",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "OLEANDER cross-project runtime governance",
+    "source_authority": "Notion Current Root + live Registry + Current Resolver METHOD",
+    "design_authority": "NOT_APPLICABLE",
+    "canonical_ids": ["KN-METHOD-OLEANDER-SKILL-RESOLVER-001", "T-VISUAL-IMAGE-OPS-001"],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1",
+    "github_commit_or_ref": "1791ae0727706d8a08f420a29d259f267c2933cd"
+  },
+  "required_native_output": {
+    "artifact_class": "machine_readable_execution_contract_layer",
+    "native_format": "JSON+Markdown+Python validator",
+    "editable_required": true,
+    "target_runtime": "GitHub main + AI Governance Evals",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "runtime-governance",
+    "nodes": [
+      {"owner_id": "runtime-governance", "role": "PRIMARY_OWNER"},
+      {"owner_id": "validate_execution_contracts.py", "role": "VALIDATOR"}
+    ],
+    "omitted_owner_reasoning": "No design-production Skill was required; the task was cross-project execution governance."
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-EXEC-CONTRACT-LAYER-v0.1",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "runtime-governance",
+      "authority_source": "Notion Current Resolver + execution architecture decision",
+      "authority_state": "CURRENT_AT_EXECUTION",
+      "native_format": "JSON+Markdown+Python",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": ["capability", "dag", "tool_adapter", "native_artifact", "regression", "drift", "validator"],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": ["OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1", "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0"],
+      "hashes_or_commit": "1791ae0727706d8a08f420a29d259f267c2933cd",
+      "runtime": "GitHub Actions",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "CURRENT",
+      "does_not_prove": ["skill_quality", "project_design_pass", "field_truth"]
+    }
+  ],
+  "tool_adapters": [],
+  "execution": {
+    "runtime": "GitHub branch/PR/Actions",
+    "entrypoint_or_action": "PR #248: add six execution contracts + validator and promote after CI",
+    "result": "MERGED",
+    "failures": [],
+    "repairs": ["candidate-first promotion; second CI run after ACTIVE_CURRENT status update"]
+  },
+  "readback": {
+    "target": "GitHub main",
+    "runtime": "repository file readback",
+    "observed_result": "Six contract JSON files read back ACTIVE_CURRENT; runtime README points to them.",
+    "blocking_defects": [],
+    "nonblocking_defects": ["At this receipt date the resolver machine order still required later v1.2 integration."],
+    "verdict": "PASS_WITH_REMAINING_INTEGRATION_DELTA"
+  },
+  "regression": {
+    "STRUCTURAL": {"result": "PASS", "assertions": ["six contract files present", "validator present", "README pointers present"]},
+    "SEMANTIC": {"result": "PASS", "assertions": ["Notion remains upstream identity authority", "no new Skill created", "candidate states preserved"]},
+    "VISUAL_ROI": {"result": "NOT_APPLICABLE", "assertions": []},
+    "RUNTIME": {"result": "PASS", "assertions": ["AI Governance Evals success", "Blender Runtime Contract success"]},
+    "overall": "PASS"
+  },
+  "review": {
+    "producer_id": "runtime-governance execution",
+    "reviewer_id": "NOT_REQUIRED_FOR_NON_DESIGN_GOVERNANCE_PROMOTION",
+    "review_input_artifact_id": "ART-EXEC-CONTRACT-LAYER-v0.1",
+    "review_input_hash_or_commit": "07e0ea686d73f4d174f3d65cf497abeef05db495",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "governance promotion after candidate CI/readback"
+  },
+  "drift": {
+    "mode": "LIVE_CROSS_PLATFORM_CHECK",
+    "state": "CURRENT_AT_2026-08-18_CHECK",
+    "evidence": ["Notion Resolver live readback", "Notion T-VISUAL-IMAGE-OPS-001 live readback", "GitHub main readback"]
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/execution-contract-layer-v0-1",
+    "commits": ["1e99402b621411224ed6d0ca59d698a94c6131aa", "07e0ea686d73f4d174f3d65cf497abeef05db495"],
+    "pull_request": 248,
+    "ci_state": "SUCCESS",
+    "merge_commit": "1791ae0727706d8a08f420a29d259f267c2933cd",
+    "main_readback": "PASS",
+    "notion_writeback": "Resolver and Image Ops Current pointers updated",
+    "remaining_blockers": ["resolver machine-order integration later handled by v1.2"],
+    "final_state": "MERGED_VALIDATED"
+  },
+  "does_not_prove": ["project_state", "design_quality", "field_truth", "engineering_validity", "user_validation", "rights_clearance", "project_promotion"]
+}
