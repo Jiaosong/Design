@@ -1,0 +1,119 @@
+{
+  "recipe_library_id": "TD-SVG-RECIPES-001",
+  "version": "0.1",
+  "status": "CANDIDATE / NO_PROMOTION",
+  "parameter_library": "../references/VISUAL_EFFECT_PARAMETER_LIBRARY.json",
+  "rules": [
+    "Every recipe requires semantic_owner_id and surface_role.",
+    "ANALYTICAL_FIELD recipes require mapped_variable and legend_id.",
+    "REFERENCE_FIDELITY recipes must not invent effects absent from source.",
+    "Recipe output is a graphic carrier, not material or field truth.",
+    "Any recipe modifying map-bound or authoritative geometry is rejected unless the source itself contains that modulation."
+  ],
+  "recipes": [
+    {
+      "recipe_id": "SVG-R01-LINEAR-FIELD",
+      "name": "Role-bound linear / tonal field",
+      "roles": ["ANALYTICAL_FIELD", "MATERIAL_SURFACE", "HIERARCHY_RECESSION", "REFERENCE_FIDELITY"],
+      "mechanism": "linearGradient + clipPath/mask",
+      "required_params": ["semantic_owner_id", "surface_role", "x", "y", "width", "height", "axis_deg", "stops", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["mapped_variable", "legend_id", "domain"]},
+      "output_elements": ["defs/linearGradient", "rect|path fill=url(#gradient)"],
+      "off_state": "replace gradient with declared flat fallback",
+      "failure_triggers": ["no owner", "analytical gradient without legend", "gradient is sole geometry carrier"]
+    },
+    {
+      "recipe_id": "SVG-R02-RADIAL-FIELD",
+      "name": "Bounded radial influence / light field",
+      "roles": ["ANALYTICAL_FIELD", "STATE_EMISSION", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "radialGradient + bounded mask",
+      "required_params": ["semantic_owner_id", "surface_role", "cx", "cy", "radius", "stops", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["mapped_variable", "legend_id", "domain"], "STATE_EMISSION": ["state_binding"]},
+      "output_elements": ["defs/radialGradient", "bounded field shape"],
+      "off_state": "flat field or no emission depending role",
+      "failure_triggers": ["looks like glow but has no state/light owner", "analytical radius is invented"]
+    },
+    {
+      "recipe_id": "SVG-R03-HATCH",
+      "name": "Vector hatch / directional surface",
+      "roles": ["ANALYTICAL_FIELD", "MATERIAL_SURFACE", "HIERARCHY_RECESSION", "REFERENCE_FIDELITY"],
+      "mechanism": "pattern + line transform",
+      "required_params": ["semantic_owner_id", "surface_role", "angle_deg", "spacing_px", "stroke_px", "opacity", "mask_id", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["mapped_variable", "legend_id"]},
+      "output_elements": ["defs/pattern", "line", "masked fill"],
+      "off_state": "flat fill or empty pattern",
+      "failure_triggers": ["moire/alias at FAR scale", "pattern creates false boundary"]
+    },
+    {
+      "recipe_id": "SVG-R04-STIPPLE",
+      "name": "Deterministic stipple / point field",
+      "roles": ["ANALYTICAL_FIELD", "MATERIAL_SURFACE", "REFERENCE_FIDELITY"],
+      "mechanism": "seeded point generation",
+      "required_params": ["semantic_owner_id", "surface_role", "x", "y", "width", "height", "density", "radius_px", "jitter", "seed", "off_state"],
+      "conditional_required": {"ANALYTICAL_FIELD": ["mapped_variable", "legend_id", "density_mapping"]},
+      "output_elements": ["circle[]"],
+      "off_state": "remove point field while preserving base geometry",
+      "failure_triggers": ["unrecorded seed", "randomness changes analytical extent"]
+    },
+    {
+      "recipe_id": "SVG-R05-GRAIN",
+      "name": "Procedural grain / paper / material microtexture",
+      "roles": ["MATERIAL_SURFACE", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "feTurbulence + feColorMatrix + feComposite",
+      "required_params": ["semantic_owner_id", "surface_role", "base_frequency", "num_octaves", "seed", "opacity", "mask_id", "off_state"],
+      "output_elements": ["defs/filter", "feTurbulence", "feColorMatrix", "feComposite"],
+      "off_state": "remove filter",
+      "failure_triggers": ["generic global polish", "grain interferes with technical linework", "material claim exceeds evidence"]
+    },
+    {
+      "recipe_id": "SVG-R06-SHADOW-DEPTH",
+      "name": "Bounded shadow / layer separation",
+      "roles": ["HIERARCHY_RECESSION", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "feDropShadow or blur-offset-composite",
+      "required_params": ["semantic_owner_id", "surface_role", "dx_px", "dy_px", "blur_px", "opacity", "why", "off_state"],
+      "output_elements": ["defs/filter", "feDropShadow"],
+      "off_state": "remove shadow while retaining layer identity by geometry/stroke",
+      "failure_triggers": ["unsupported elevation claim", "shadow hides joint/edge geometry"]
+    },
+    {
+      "recipe_id": "SVG-R07-DISPLACEMENT",
+      "name": "Bounded displacement / refraction proxy",
+      "roles": ["MATERIAL_SURFACE", "PRESENTATIONAL_ATMOSPHERE", "REFERENCE_FIDELITY"],
+      "mechanism": "feTurbulence + feDisplacementMap",
+      "required_params": ["semantic_owner_id", "surface_role", "scale_px", "frequency", "seed", "axis", "off_state"],
+      "output_elements": ["defs/filter", "feTurbulence", "feDisplacementMap"],
+      "off_state": "remove displacement",
+      "failure_triggers": ["map-bound geometry distorted", "topology changes", "generic liquid/glitch effect"]
+    },
+    {
+      "recipe_id": "SVG-R08-GLOW-EMISSION",
+      "name": "State-bound glow / emission halo",
+      "roles": ["STATE_EMISSION", "MATERIAL_SURFACE", "REFERENCE_FIDELITY"],
+      "mechanism": "source duplicate + gaussian blur + merge",
+      "required_params": ["semantic_owner_id", "surface_role", "blur_px", "opacity", "state_binding", "off_state"],
+      "output_elements": ["defs/filter", "feGaussianBlur", "feMerge"],
+      "off_state": "flat state indicator remains readable",
+      "failure_triggers": ["generic quality signal", "no state/luminous owner", "halo masks geometry"]
+    },
+    {
+      "recipe_id": "SVG-R09-CONTOUR-BANDS",
+      "name": "Source-derived contour / interval bands",
+      "roles": ["ANALYTICAL_FIELD"],
+      "mechanism": "precomputed level paths + fill/stroke classes",
+      "required_params": ["semantic_owner_id", "surface_role", "levels", "interval_model", "legend_id", "stroke_px", "fill_opacity", "source_binding", "off_state"],
+      "output_elements": ["path[] level bands", "legend binding"],
+      "off_state": "base field remains, analytical levels removed",
+      "failure_triggers": ["invented levels", "no source/model binding", "contours imply survey precision beyond source"]
+    },
+    {
+      "recipe_id": "SVG-R10-EDGE-MODULATION",
+      "name": "Bounded edge wear / print irregularity",
+      "roles": ["MATERIAL_SURFACE", "REFERENCE_FIDELITY"],
+      "mechanism": "mask + seeded turbulence / clipped secondary edge",
+      "required_params": ["semantic_owner_id", "surface_role", "amplitude_px", "frequency", "seed", "mask_id", "off_state"],
+      "output_elements": ["mask", "secondary edge or filter"],
+      "off_state": "authoritative clean edge remains",
+      "failure_triggers": ["authoritative boundary altered", "fake weathering/material fact", "small-size legibility loss"]
+    }
+  ]
+}
