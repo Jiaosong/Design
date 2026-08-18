@@ -1,10 +1,16 @@
 /* PRO-04.2 Hero override.
    Uses clean web crops exported directly from the retained D2 exact-geometry whole-product renders.
-   The derived crops are presentation assets only; source evidence class remains D2. */
+   The derived crops are presentation assets only; source evidence class remains D2.
+   Desktop sizing is width-controlled: do not couple min-height with aspect-ratio because
+   CSS grid transferred min-size can enlarge the figure beyond the viewport. */
 .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
   position: relative;
-  min-height: 620px;
-  aspect-ratio: 1.34;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: clamp(540px, 40vw, 690px);
+  aspect-ratio: auto;
   background: #eceae3;
   overflow: hidden;
 }
@@ -33,13 +39,19 @@
   right: 10%;
   background-image: url("assets/xj01/d03-hero-window.jpg");
 }
+
+/* Legacy responsive rules remain for non-XJ01/global behaviour; mobile is outside the current XJ01 review gate. */
 @media (max-width: 1000px) {
-  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] { min-height: 560px; }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+    min-height: 0;
+    height: 560px;
+  }
 }
 @media (max-width: 760px) {
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
-    min-height: 410px;
-    aspect-ratio: 1 / 1.12;
+    min-height: 0;
+    height: 410px;
+    aspect-ratio: auto;
   }
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
