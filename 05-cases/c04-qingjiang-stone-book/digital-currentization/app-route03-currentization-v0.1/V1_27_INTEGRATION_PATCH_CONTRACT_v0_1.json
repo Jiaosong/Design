@@ -2,16 +2,26 @@
   "contract": "C04_APP_v1_27_ROUTE03_INTEGRATION_PATCH_v0_1",
   "status": "PATCH CONTRACT ONLY / NOT APPLIED",
   "target_candidate": "C04_QINGJIANG_APP_v1_27_GAME_ARCHITECTURE_FIX_PORTABLE.html",
+  "architecture_ancestor": "C04_QINGJIANG_APP_v1_26_OLEANDER_FRAMEWORK_REBUILD_PORTABLE.html",
+  "inheritance_rule": "v1.27 is a navigation/game-architecture successor that inherits v1.26 Product/Journey/IA/Service framework behavior; integration must preserve both layers before replacing route geometry authority.",
   "reason_not_applied": "v1.27 is discoverable in File Library but its writable source bytes were not materialized in the active runtime/GitHub/connected Drive",
-  "preserve": [
+  "preserve_from_v1_26": [
+    "APP_INIT framework setup",
+    "QUICK / DEEP / FAMILY reading modes; MODE != PERSONA",
+    "page architecture and optional reading semantics",
+    "Return Guard architectural priority",
+    "Digital OFF / no-phone continuity",
+    "UNKNOWN/CLOSED fail-closed behavior",
+    "Reduced Motion semantics",
+    "Framework -> specialist Skill governance order"
+  ],
+  "preserve_from_v1_27": [
     "top-level navigation: TODAY / ROUTE / MY BOOK / SERVICE",
     "READ as a book/content layer inside route context",
     "R06 and R13 as route-context scene descendants",
     "route-child rail and Return access",
-    "UNKNOWN fail-closed behavior",
-    "Reduced Motion semantics",
-    "44px+ mobile target baseline",
-    "no-phone / Digital OFF continuity"
+    "public UI research-label suppression",
+    "inherited v1.26 framework behavior"
   ],
   "replace_when_source_available": [
     {
@@ -28,6 +38,11 @@
       "target": "A/B/C/D path-specific custom geometry styling",
       "with": "A/B/C/D as camera/focus/read presets over the same locked carrier",
       "rule": "mode changes must not create a second topology"
+    },
+    {
+      "target": "legacy C04-WS provenance pointers when interpreted as current workstream identity",
+      "with": "PRJ-C04-DIGITAL-INTERACTION [P3] current workstream identity while preserving legacy pointers as provenance",
+      "rule": "provenance must not resurrect superseded project structure"
     }
   ],
   "do_not_change": [
@@ -35,12 +50,17 @@
     "R06 frozen experience decision",
     "R13 body-first/Return decision",
     "R01-R13 optional-content identity",
+    "v1.26 product/journey/IA/service architecture that remains compatible with current authority",
+    "v1.27 route-child navigation hierarchy that remains compatible with current authority",
     "current project truth boundary"
   ],
+  "known_metadata_drift": "v1.26 and v1.27 portable HTML retain an internal <title> reading '清江石书 App v1.24｜Visual System'; do not use that stale title as version identity.",
   "post_patch_required_tests": [
     "390x844 + 430x932 finished pixels",
+    "APP_INIT and QUICK/DEEP/FAMILY regression",
     "TODAY/ROUTE/MY BOOK/SERVICE regression",
     "READ/R06/R13 route-child regression",
+    "Return Guard priority under R13/DEGRADED/CLOSED/UNKNOWN",
     "rapid mode switching",
     "Return during enter/commit/reveal",
     "keyboard + touch + visible focus",
