@@ -79,6 +79,16 @@ jobs:
       - name: Exercise visual surface treatment regressions
         run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_visual_surface_treatment_regression.py
 
+      - name: Validate effect parameter and recipe libraries
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_effect_parameter_library.py
+          oleander-skills/oleander-technical-drawing/references/VISUAL_EFFECT_PARAMETER_LIBRARY.json
+          oleander-skills/oleander-technical-drawing/recipes/SVG_PROCEDURAL_RECIPES.json
+          oleander-skills/oleander-technical-drawing/recipes/MOTION_HANDOFF_RECIPES.json
+
+      - name: Exercise effect parameter library regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_parameter_library_regression.py
+
       - name: Validate procedural effect and motion recipe register
         run: >-
           python oleander-skills/oleander-technical-drawing/tools/validate_effect_recipe_register.py
@@ -112,6 +122,7 @@ jobs:
           echo '- Separates SPATIAL_EVENT nodes from CONSTRUCTION_INTERFACE nodes and validates their different ownership contracts.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Requires actual-preview review receipts for distance/near read and grayscale when color carries semantics.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates gradient/texture/materiality surface contracts: semantic owner, mapped variable when analytical, gradient/texture formation logic, OFF-state attacks and near/mid/far review.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates effect parameter ranges, semantic-owner requirements and Reduced Motion requirements before recipe execution.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Executes parameterized procedural SVG recipe generation and native motion smoke-demo generation from a golden fixture.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Motion handoff recipes stay subordinate to oleander-motion for runtime, accessibility and AR-S10 review.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Machine PASS proves contract consistency only; it does not award Professional Design PASS, material truth, motion quality, KEEP, Engineering PASS, Field PASS or Promotion.' >> "$GITHUB_STEP_SUMMARY"
