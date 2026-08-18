@@ -1,0 +1,29 @@
+{
+  "contract_id": "ANALYSIS-CONTRACT-01",
+  "promotion": "CANDIDATE_NOT_PROMOTED",
+  "decision_question": "Which spatial relations must remain legible when a source-grounded site network is translated for route-choice analysis?",
+  "object_scale": "site / route-network / relational plan",
+  "temporal_snapshot": "synthetic fixture state; no live operation implied",
+  "representation_contract": {
+    "representation_type": "source-bound relational plan + separate topology schematic where needed",
+    "why_fit_for_question": "the decision needs both source-grounded adjacency and explicit branch/return topology without implying survey precision",
+    "supports": ["two-bank relation", "route topology", "branch recognition", "source-bound adjacency"],
+    "does_not_support": ["survey coordinates", "distance", "slope", "live opening state"]
+  },
+  "alternative_explanation_state": "DOCUMENTED",
+  "alternative_explanations": [
+    "apparent route importance may come from graphic weight rather than topology",
+    "apparent proximity in a schematic may not correspond to geographic distance"
+  ],
+  "limitations": [
+    "fixture data is synthetic",
+    "no field observation or measured geometry",
+    "visual hierarchy still requires actual-preview design review"
+  ],
+  "abstraction_budget": {
+    "task_critical_variables": ["TOPOLOGY", "BRANCH_IDENTITY", "RETURN_RECOGNITION", "TWO_BANK_RELATION"],
+    "removed_or_relaxed_variables": ["GEOGRAPHIC_CURVATURE", "DISTANCE", "SLOPE", "SURVEY_POSITION"],
+    "external_support_layers": {}
+  },
+  "does_not_prove": ["site truth", "field safety", "design keep", "professional finish"]
+}
