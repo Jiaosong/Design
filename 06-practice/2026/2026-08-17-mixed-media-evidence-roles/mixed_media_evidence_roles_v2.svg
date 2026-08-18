@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#eeece6"/>
+<rect x="44" y="42" width="1832" height="996" rx="16" fill="#fff" stroke="#d5d2ca"/>
+<text x="92" y="105" font-family="Arial" font-size="30" font-weight="700">OLEANDER / MIXED-MEDIA EVIDENCE ROLE CALIBRATION</text>
+<text x="92" y="140" font-family="Arial" font-size="14" fill="#666">same information · different medium hierarchy · calibration only</text>
+<text x="92" y="204" font-family="Arial" font-size="17" font-weight="700">A / MODEL-FIRST — REJECT</text>
+<text x="92" y="230" font-family="Arial" font-size="12" fill="#777">The clay model becomes the project; landscape is demoted.</text>
+<rect x="92" y="258" width="790" height="664" fill="#f8f8f5" stroke="#d0cec7"/>
+<rect x="116" y="284" width="742" height="430" fill="#deddd7" stroke="#c8c7c1"/>
+<path d="M154 630 C245 552 345 602 430 505 S610 505 812 380" fill="none" stroke="#aaa9a4" stroke-width="72" stroke-linecap="round"/>
+<path d="M290 610 L360 475 L430 560 L515 430 L590 535 L680 405 L760 512" fill="none" stroke="#b5b3ad" stroke-width="22"/>
+<text x="144" y="320" font-family="Arial" font-size="12" fill="#666">HERO CLAY MODEL</text>
+<text x="144" y="354" font-family="Arial" font-size="30" font-weight="700" fill="#333">Spatial relation</text>
+<rect x="116" y="742" width="742" height="88" fill="#526b68"/>
+<path d="M116 806 C235 760 365 812 480 760 S690 748 858 700" fill="none" stroke="#8bb8b8" stroke-width="32"/>
+<text x="134" y="770" font-family="Arial" font-size="11" fill="#fff">REAL LANDSCAPE / support strip</text>
+<rect x="116" y="850" width="340" height="48" fill="#fff" stroke="#bbb"/>
+<text x="130" y="880" font-family="Arial" font-size="11" fill="#444">NODE · steel / base / connection</text>
+<rect x="482" y="850" width="376" height="48" fill="#fff" stroke="#bbb"/>
+<text x="496" y="880" font-family="Arial" font-size="11" fill="#444">SECTION · scale / relation</text>
+<text x="962" y="204" font-family="Arial" font-size="17" font-weight="700">B / LANDSCAPE → MODEL → NODE — KEEP CANDIDATE</text>
+<text x="962" y="230" font-family="Arial" font-size="12" fill="#777">Each medium proves one thing; derivative media stay subordinate.</text>
+<rect x="962" y="258" width="866" height="664" fill="#f8f8f5" stroke="#d0cec7"/>
+<rect x="986" y="282" width="818" height="360" fill="#526b68" stroke="#425652"/>
+<path d="M986 552 L1080 438 L1150 530 L1250 380 L1348 526 L1455 350 L1560 518 L1660 410 L1804 548 L1804 642 L986 642 Z" fill="#405955"/>
+<path d="M986 590 C1120 540 1240 602 1360 542 S1595 538 1804 480" fill="none" stroke="#8bb8b8" stroke-width="64"/>
+<path d="M1265 520 C1370 474 1445 452 1540 398" fill="none" stroke="#efece2" stroke-width="4" stroke-dasharray="12 10"/>
+<circle cx="1540" cy="398" r="13" fill="#efece2"/>
+<text x="1014" y="320" font-family="Arial" font-size="12" fill="#d6e4df">REAL / SOURCE-GROUNDED LANDSCAPE</text>
+<text x="1014" y="360" font-family="Arial" font-size="32" font-weight="700" fill="#fff">Landscape first</text>
+<text x="1014" y="389" font-family="Arial" font-size="13" fill="#dbe5e2">Proves the experienced field and relation.</text>
+<rect x="986" y="672" width="430" height="222" fill="#deddd7" stroke="#c8c7c1"/>
+<path d="M1020 835 C1070 796 1120 807 1170 770 S1290 755 1385 716" fill="none" stroke="#aaa9a4" stroke-width="42"/>
+<path d="M1070 836 L1115 755 L1160 818 L1215 738 L1270 802 L1330 720" fill="none" stroke="#b5b3ad" stroke-width="16"/>
+<text x="1008" y="700" font-family="Arial" font-size="11" font-weight="700">MODEL / SUPPORT</text>
+<text x="1008" y="720" font-family="Arial" font-size="10" fill="#666">Proves relative spatial relation, not atmosphere.</text>
+<rect x="1440" y="672" width="364" height="222" fill="#fff" stroke="#c8c7c1"/>
+<rect x="1532" y="748" width="174" height="15" fill="#d4d2cc" stroke="#222" stroke-width="3"/>
+<rect x="1592" y="763" width="54" height="72" fill="#ecebe7" stroke="#333" stroke-width="3"/>
+<circle cx="1608" cy="786" r="5" fill="#fff" stroke="#222" stroke-width="2"/>
+<circle cx="1630" cy="786" r="5" fill="#fff" stroke="#222" stroke-width="2"/>
+<text x="1460" y="700" font-family="Arial" font-size="11" font-weight="700">NODE / NEAR-READ</text>
+<text x="1460" y="720" font-family="Arial" font-size="10" fill="#666">Proves how the relation can be supported.</text>
+<g font-family="Arial">
+<rect x="1014" y="420" width="210" height="76" rx="8" fill="#ffffff" fill-opacity=".90"/>
+<text x="1028" y="443" font-size="10" font-weight="700" fill="#334744">PROVES</text>
+<text x="1028" y="462" font-size="11" fill="#334744">experienced field / first-read</text>
+<text x="1028" y="484" font-size="10" font-weight="700" fill="#7a5b52">DOES NOT PROVE</text>
+<text x="1130" y="484" font-size="10" fill="#7a5b52">field validation</text>
+<rect x="1006" y="810" width="250" height="64" rx="7" fill="#ffffff" fill-opacity=".88"/>
+<text x="1018" y="831" font-size="10" font-weight="700" fill="#444">PROVES / relative relation + scale logic</text>
+<text x="1018" y="852" font-size="10" fill="#777">DOES NOT PROVE / atmosphere or site truth</text>
+<rect x="1460" y="842" width="305" height="36" rx="6" fill="#f7f6f2"/>
+<text x="1472" y="864" font-size="10" fill="#555">PROVES / support logic · DOES NOT PROVE / engineering approval</text>
+</g>
+<line x1="92" y1="962" x2="1828" y2="962" stroke="#d4d1ca"/>
+<text x="92" y="1002" font-family="Arial" font-size="13" font-weight="700">ROLE RULE /</text>
+<text x="188" y="1002" font-family="Arial" font-size="13" fill="#333">Landscape proves experience; model proves relation; node proves support. A derivative must not silently replace its authority source.</text>
+</svg>
