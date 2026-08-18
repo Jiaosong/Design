@@ -1,0 +1,32 @@
+{
+  "object": "CH14-P06",
+  "version": "v2.0",
+  "title": "MAP-DERIVED GRAPHIC LANGUAGE",
+  "execution": "COMPLETE",
+  "image_generation_used": false,
+  "route_authority": "ROUTE-03 LOCKED CURRENT",
+  "geometry_mutation": "NONE",
+  "source_bindings": [
+    "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+    "P03 Stone Seal geometry authority",
+    "P04 color roles",
+    "P05 typography hierarchy"
+  ],
+  "actual_readback": ["1920x1080", "390x844", "desktop full page", "mobile full page"],
+  "repairs": [
+    "v1 abstract invented LINE removed",
+    "LINE and TRACE replaced by exact ROUTE-03 main-path geometry",
+    "branch / short loop / return loop use exact source path data",
+    "蝴蝶崖 PAGE anchor bound to exact source node 517.8,363.9",
+    "wide/tall/square are crops of one source-derived vector geometry",
+    "hero duplicate internal label removed after pixel readback"
+  ],
+  "boundaries": [
+    "P07 owns map legend/icons/signage/information decoding",
+    "P08 owns final FULL/LIGHT/TRACE/OFF presence scale",
+    "P06 does not prove survey/GPS/distance/slope/current operation",
+    "professional design verdict remains independent"
+  ],
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
