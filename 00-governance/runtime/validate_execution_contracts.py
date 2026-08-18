@@ -71,6 +71,12 @@ def require_fields(obj: dict, fields: list[str] | set[str], context: str) -> Non
         fail(f"{context} missing required fields {sorted(missing)}")
 
 
+def require_present_fields(obj: dict, fields: list[str] | set[str], context: str) -> None:
+    missing = [f for f in fields if f not in obj or obj[f] in (None, "")]
+    if missing:
+        fail(f"{context} missing required fields {sorted(missing)}")
+
+
 def installed_from_review() -> set[str]:
     text = REVIEW.read_text(encoding="utf-8")
     if "## Installed skills" not in text:
@@ -148,6 +154,16 @@ def validate_contract_headers() -> dict[str, dict]:
     return data
 
 
+def local_capability_path(owner: dict) -> Path | None:
+    state = owner.get("routing_state")
+    skill_id = owner.get("skill_id")
+    if state == "INSTALLED_OWNER":
+        return ROOT / "oleander-skills" / skill_id / "CAPABILITY.json"
+    if state == "CANDIDATE_OWNER":
+        return ROOT / "skills" / skill_id / "CAPABILITY.json"
+    return None
+
+
 def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict) -> None:
     owners = capability.get("owners", [])
     required = set(capability.get("required_fields", []))
@@ -156,11 +172,43 @@ def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict
     ids = [o.get("skill_id") for o in owners]
     if len(ids) != len(set(ids)):
         fail("duplicate skill_id in capability declarations")
+
+    governed_fields = sorted(required)
     for owner in owners:
-        require_fields(owner, required, f"capability:{owner.get('skill_id')}")
-        for rel in owner.get("implementation_paths", []):
-            if not (ROOT / rel).exists():
-                fail(f"capability:{owner.get('skill_id')} missing implementation path {rel}")
+        context = f"capability:{owner.get('skill_id')}"
+        # implementation_paths is allowed to be [] only for bounded non-main bodies.
+        require_fields(owner, required - {"implementation_paths"}, context)
+        require_present_fields(owner, {"implementation_paths"}, context)
+        routing_state = owner.get("routing_state")
+        implementation_paths = owner.get("implementation_paths", [])
+
+        if routing_state in {"INSTALLED_OWNER", "CANDIDATE_OWNER"}:
+            if not implementation_paths:
+                fail(f"{context} implemented owner must declare implementation_paths")
+            for rel in implementation_paths:
+                if not (ROOT / rel).exists():
+                    fail(f"{context} missing implementation path {rel}")
+            local_path = local_capability_path(owner)
+            if not local_path or not local_path.is_file():
+                fail(f"{context} missing local CAPABILITY.json")
+            local = load_json(local_path)
+            if local.get("schema") != "OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1":
+                fail(f"{context} local CAPABILITY schema mismatch")
+            for field in governed_fields:
+                if local.get(field) != owner.get(field):
+                    fail(f"{context} local/aggregate drift in field {field}")
+        elif routing_state == "CANDIDATE_BODY":
+            if owner.get("skill_id") != "OLEANDER Technical Drawing":
+                fail(f"{context} unexpected central-only candidate body")
+            if implementation_paths:
+                fail("Technical Drawing CANDIDATE_BODY must not claim a main implementation path")
+            if owner.get("implementation_state") != "NOT_ON_MAIN":
+                fail("Technical Drawing must declare implementation_state=NOT_ON_MAIN")
+            refs = owner.get("implementation_refs", [])
+            if not any("PR #172" in ref for ref in refs):
+                fail("Technical Drawing non-main implementation must reference Draft PR #172")
+        else:
+            fail(f"{context} unsupported owner routing state in current 12-owner registry: {routing_state}")
 
     installed_review = installed_from_review()
     installed_cap = {o["skill_id"] for o in owners if o.get("lifecycle_state") == "INSTALLED" and o.get("routing_state") == "INSTALLED_OWNER"}
@@ -356,7 +404,7 @@ def main() -> None:
     print(f"installed owners consistent: {len(installed)}")
     print(f"candidate UI owners consistent: {len(candidates)}")
     print(f"real execution receipts: {len(list(RECEIPT_DIR.glob('*.json')))}")
-    print("resolver v1.2 / owner map / capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
+    print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 
 
 if __name__ == "__main__":
