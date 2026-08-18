@@ -3,7 +3,7 @@
 Status: **ACTIVE_CURRENT**  
 Decision date: **2026-08-18**  
 Scope: **GitHub execution owners only**  
-Upstream authority: **Notion Current Root Authority + live Registry + `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1` + `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0`**
+Upstream authority: **Notion Current Root Authority + live Registry + `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` + `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0`**
 
 ## 0｜Purpose
 
@@ -15,6 +15,17 @@ Required fields:
 
 `skill_id / lifecycle_state / routing_state / accepts / produces / owns_authority / does_not_own / required_tools / optional_tools / runtime / fallback / gates / handoff_schema / implementation_paths / last_verified / does_not_prove`
 
+### Current declaration source rule
+
+For an execution owner actually implemented on `main`, its local machine declaration is mandatory:
+
+- installed owner → `oleander-skills/<skill_id>/CAPABILITY.json`;
+- candidate owner → `skills/<skill_id>/CAPABILITY.json`.
+
+`OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json` is the aggregate Current registry and must match each local declaration. The validator rejects drift between local and aggregate records.
+
+A `CANDIDATE_BODY` that is not implemented on `main` may remain central-record-only when its non-main implementation reference is explicit. Current example: **OLEANDER Technical Drawing** remains `CANDIDATE_BODY / NOT_ON_MAIN`; the implementation is still Draft PR #172 and must not be represented by a fabricated main directory or silently promoted.
+
 ## 1｜Lifecycle and routing are separate
 
 Lifecycle values:
@@ -25,7 +36,7 @@ Routing-state values remain compatible with the Current Execution Owner Map:
 
 `INSTALLED_OWNER / CANDIDATE_OWNER / CANDIDATE_BODY / RUNTIME_TOOL_ADAPTER / NO_DEDICATED_OWNER`.
 
-A file existing on `main`, a successful CI run, or repeated project use does not silently advance lifecycle state.
+A file existing on `main`, a successful CI run, repeated project use or a local `CAPABILITY.json` does not silently advance lifecycle state.
 
 ## 2｜Authority declaration
 
@@ -89,6 +100,8 @@ Minimum lifecycle semantics:
 
 Promotion must record `from_state / to_state / evidence_refs / reviewer_id / decision_ref / effective_commit`.
 
+The baseline adoption record is `skill-lifecycle/BASELINE_ADOPTION_2026-08-18.json`. It records existing installed/candidate states without inventing retroactive promotion evidence.
+
 ## 8｜Dedupe / merge / retire gate
 
 At any capability change, check:
@@ -104,6 +117,16 @@ Duplicate ownership is a governance defect unless one owner is explicitly PRIMAR
 
 This contract does not require every Skill to run on every task. Owner selection remains governed by the Multi-Skill Execution DAG Contract and must prefer the minimum sufficient owner set for the required native output.
 
-## 10｜Does not prove
+## 10｜Consistency requirement
 
-A complete capability contract proves only that the owner boundary is declared. It does not prove Skill quality, project Design PASS, field truth, user validation, engineering validity or release readiness.
+For every `INSTALLED_OWNER` or `CANDIDATE_OWNER` implemented on main:
+
+`local CAPABILITY.json == aggregate owner declaration`
+
+for the contract-governed fields. Any mismatch is a CI-blocking architecture drift.
+
+`CANDIDATE_BODY / NOT_ON_MAIN` must instead declare its non-main implementation provenance and may not pretend that an implementation path exists on main.
+
+## 11｜Does not prove
+
+A complete capability contract proves only that the owner boundary is declared and internally consistent. It does not prove Skill quality, project Design PASS, field truth, user validation, engineering validity or release readiness.
