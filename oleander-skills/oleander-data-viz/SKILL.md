@@ -68,6 +68,33 @@ Apply this gate whenever route, path, network, access, facility, service, or way
 
 This gate follows the same truth discipline as spatial authority preservation: **state semantics may change interpretation, not source topology**, and `UNKNOWN` must never be presented as safely open merely because a continuous route line is aesthetically cleaner.
 
+## Service-blueprint causality and recovery gate
+
+Apply this gate whenever an OLEANDER diagram claims to explain how a service, journey, return path, operational handoff, failure mode, or backstage capability actually works.
+
+1. Start from the **actor/task and journey stage**, not from a fixed four-lane template. Add only the lanes needed to explain the real causal chain: `Actor / Frontstage / Backstage / Support / Policy / Data / Owner / Capacity / Failure / Recovery / Evidence`.
+2. A visually complete success path is insufficient. If a service can fail through outage, unknown state, capacity, staffing, missed handoff, access need, cancellation, fatigue, or equivalent project-specific conditions, inject the failure at the stage where it occurs.
+3. Bind the user-visible state to the backstage state that justifies it. A frontstage `OPEN / CLOSED / UNKNOWN / DEGRADED` message must not exist without an identified confirmation source, owner, or explicit `OPEN / TBD` responsibility gap.
+4. Failure inventory alone does not count as recovery design. Connect each high-risk failure to at least one visible action and one backstage/support response using the project-appropriate chain: `DETECT → INFORM → RECOVER → ESCALATE / MANUAL TAKEOVER → FEEDBACK`.
+5. **Unknown operational values remain unknown.** Do not invent SLA, staffing level, transport capacity, response time, device uptime, or operator authority merely to make the blueprint look finished. Mark them `OPEN`, `TBD`, `ASSUMED`, `SIMULATED`, or the current project-specific evidence state.
+6. Keep service roles distinct. Journey, frontstage, backstage, support system, policy, data, responsibility, and capacity may be related but are not interchangeable lanes. Do not collapse a responsibility gap into a generic “system” box.
+7. Preserve journey continuity. The blueprint should make the main actor path readable before the backstage detail; failure/recovery detail may become near-read but must remain traceable to the stage and task it modifies.
+8. For no-phone, degraded-network, closed, or fail-closed service conditions, prove that a non-digital frontstage/recovery path exists when the project authority requires one. A digital fallback screen is not sufficient evidence of physical/service continuity.
+9. Review the blueprint at both whole-system and stage level. Whole-system read asks whether the causal spine is visible; stage read asks whether `actor → frontstage → backstage/support → owner → failure/recovery` is unambiguous for the highest-risk events.
+10. Promotion requires separate verdicts for **diagram quality** and **operational truth**. A service blueprint may be `KEEP FOR TRAINING / DESIGN` while operator data, field state, capacity, accessibility, safety, SLA, or engineering remain `HOLD / OPEN`.
+
+Default review chain:
+
+`ACTOR / TASK → FRONTSTAGE STATE → BACKSTAGE CONFIRMATION → SUPPORT / OWNER → FAILURE INJECTION → RECOVERY → FEEDBACK`
+
+Hard failures:
+- success-only blueprint presented as operational completeness;
+- failure cards detached from the stage/cause that produces them;
+- visible service state with no source/owner or truth state;
+- invented SLA/capacity/availability used to close empty boxes;
+- digital-only recovery where the current journey requires paper/signage/staff/physical continuity;
+- a visually polished blueprint whose responsibility and recovery gaps remain unreadable.
+
 ## Motion rules
 
 - Keep axes and color scales stable across frames.
@@ -92,3 +119,4 @@ For source-bound spatial work, also return a geometry-authority note identifying
 - For source-bound spatial work, verify that locked geometry/topology has not been materially distorted, re-authored, or replaced by a presentation-driven approximation.
 - Treat non-uniform geometry distortion as a blocker unless the object is explicitly schematic and labelled presentation-only.
 - Compare against the strongest mature existing spatial artifact before promoting a redesign; visual polish cannot override a spatial-authority regression.
+- For service blueprints, verify that the highest-risk failure is stage-bound, owner/source-bound, and connected to a visible recovery path; a clean lane structure alone is not a PASS.
