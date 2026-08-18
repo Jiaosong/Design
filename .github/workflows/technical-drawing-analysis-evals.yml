@@ -3,7 +3,9 @@ name: Technical Drawing Analysis Evals
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+      - agent/oleander-technical-drawing-v0.1
 
 permissions:
   contents: read
