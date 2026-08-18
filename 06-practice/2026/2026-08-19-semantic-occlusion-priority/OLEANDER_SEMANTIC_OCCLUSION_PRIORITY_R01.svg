@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="96" y="74" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="23" letter-spacing="3" fill="#59615F">OLEANDER TRAINING / MOBILE UI / SEMANTIC OCCLUSION PRIORITY</text>
+<text x="96" y="130" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="48" font-weight="700" fill="#18211F">不是“有没有重叠”，而是“谁有权遮挡谁”</text>
+<text x="96" y="172" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#69706D">C04 ROUTE inspired · 390×844 mobile logic · synthetic scene · NTS · FIELD OPEN · training-only</text>
+<rect x="96" y="226" width="800" height="690" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="132" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#914F3D">REJECT / EVERY LABEL FIGHTS FOR SCREEN SPACE</text>
+<text x="132" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">节点、解释、状态、Return 都以完整标签出现；碰撞时只做平移，没有语义优先级。</text>
+<rect x="265" y="346" width="460" height="516" rx="38" fill="#101917"/>
+<rect x="283" y="364" width="424" height="480" rx="24" fill="#D8D2C5"/>
+<path d="M283 604 C347 504 405 484 459 524 C517 566 552 464 617 442 C652 429 680 444 707 422 L707 844 L283 844 Z" fill="#B5B1A5"/>
+<path d="M283 654 C367 616 437 619 507 650 C567 678 627 670 707 634 L707 844 L283 844 Z" fill="#8F9E96"/>
+<path d="M283 726 C375 692 452 699 533 726 C599 748 652 741 707 712" fill="none" stroke="#5C9498" stroke-width="32" stroke-linecap="round"/>
+<path d="M320 686 C375 640 430 642 485 662 C535 680 587 673 653 638" fill="none" stroke="#F2EBDD" stroke-width="8" stroke-linecap="round"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+<circle cx="394" cy="650" r="13" fill="#4C8583"/>
+<rect x="320" y="604" width="180" height="54" rx="14" fill="#F7F3EA" opacity=".95"/>
+<text x="338" y="628" font-size="12" font-weight="700" fill="#27312E">R06 · 河谷观察</text>
+<text x="338" y="647" font-size="10.5" fill="#59615F">可选解释 / 科学几何</text>
+<circle cx="503" cy="670" r="13" fill="#4C8583"/>
+<rect x="432" y="638" width="176" height="54" rx="14" fill="#F7F3EA" opacity=".95"/>
+<text x="450" y="662" font-size="12" font-weight="700" fill="#27312E">R13 · 裂隙</text>
+<text x="450" y="681" font-size="10.5" fill="#59615F">收束 / Return 前置</text>
+<rect x="526" y="590" width="154" height="70" rx="14" fill="#F7F3EA" opacity=".95"/>
+<text x="544" y="615" font-size="11" font-weight="700" fill="#27312E">UNKNOWN</text>
+<text x="544" y="635" font-size="10.5" fill="#59615F">现场状态未确认</text>
+<text x="544" y="651" font-size="10.5" fill="#59615F">请谨慎判断</text>
+<rect x="304" y="776" width="170" height="44" rx="12" fill="#26312E"/>
+<text x="352" y="804" font-size="13" fill="#fff">RETURN</text>
+<rect x="448" y="748" width="214" height="64" rx="14" fill="#F7F3EA"/>
+<text x="466" y="774" font-size="11" font-weight="700" fill="#27312E">解释层</text>
+<text x="466" y="795" font-size="10.5" fill="#59615F">展开后覆盖 Return 安全区</text>
+</g>
+<text x="132" y="884" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#7D4A3A">FAIL：AABB 可以“无重叠”，但真实字形、卡片与 Return / focal anchor 已形成阅读遮挡。</text>
+<rect x="928" y="226" width="896" height="690" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="964" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#315D57">KEEP CANDIDATE / PRIORITY + DEGRADATION LADDER</text>
+<text x="964" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">先定义不可遮挡区，再按语义从“完整标签 → 短标签 → 锚点 → 隐藏”逐级降级。</text>
+<rect x="1160" y="346" width="460" height="516" rx="38" fill="#101917"/>
+<rect x="1178" y="364" width="424" height="480" rx="24" fill="#D8D2C5"/>
+<path d="M1178 604 C1242 504 1300 484 1354 524 C1412 566 1447 464 1512 442 C1547 429 1575 444 1602 422 L1602 844 L1178 844 Z" fill="#B5B1A5"/>
+<path d="M1178 654 C1262 616 1332 619 1402 650 C1462 678 1522 670 1602 634 L1602 844 L1178 844 Z" fill="#8F9E96"/>
+<path d="M1178 726 C1270 692 1347 699 1428 726 C1494 748 1547 741 1602 712" fill="none" stroke="#5C9498" stroke-width="32" stroke-linecap="round"/>
+<rect x="1196" y="380" width="388" height="78" rx="14" fill="none" stroke="#315D57" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="1214" y="402" font-family="Arial,sans-serif" font-size="10" fill="#315D57">SAFE / SYSTEM STATUS</text>
+<rect x="1196" y="764" width="388" height="62" rx="14" fill="none" stroke="#315D57" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="1374" y="786" font-family="Arial,sans-serif" font-size="10" fill="#315D57">SAFE / RETURN</text>
+<path d="M1215 686 C1270 640 1325 642 1380 662 C1430 680 1482 673 1548 638" fill="none" stroke="#F2EBDD" stroke-width="8" stroke-linecap="round"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+<circle cx="1289" cy="650" r="14" fill="#F7F3EA" stroke="#315D57" stroke-width="3"/>
+<circle cx="1289" cy="650" r="4" fill="#315D57"/>
+<rect x="1212" y="592" width="178" height="50" rx="13" fill="#F7F3EA" opacity=".95"/>
+<text x="1230" y="616" font-size="12" font-weight="700" fill="#27312E">R06 · 河谷观察</text>
+<text x="1230" y="634" font-size="10.5" fill="#59615F">当前焦点 · 可选解释</text>
+<circle cx="1398" cy="670" r="11" fill="#F7F3EA" stroke="#6F7773" stroke-width="2"/>
+<text x="1416" y="675" font-size="11" fill="#46504C">R13</text>
+<circle cx="1500" cy="660" r="8" fill="#F7F3EA" stroke="#8B8177" stroke-width="2"/>
+<rect x="1214" y="398" width="148" height="40" rx="12" fill="#F7F3EA" opacity=".95"/>
+<text x="1232" y="423" font-size="11" font-weight="700" fill="#27312E">UNKNOWN · FIELD OPEN</text>
+<rect x="1214" y="776" width="150" height="40" rx="12" fill="#26312E"/>
+<path d="M1236 796 h18 M1236 796 l7 -7 M1236 796 l7 7" fill="none" stroke="#fff" stroke-width="2"/>
+<text x="1264" y="801" font-family="Arial,sans-serif" font-size="12" fill="#fff">RETURN</text>
+<text x="1452" y="800" font-size="11" fill="#46504C">可选解释</text>
+<line x1="1452" y1="807" x2="1510" y2="807" stroke="#46504C" stroke-width="1.2"/>
+</g>
+<rect x="978" y="854" width="796" height="44" rx="10" fill="#F7F3EA"/>
+<text x="998" y="881" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#4F5855">P0 Return/Safety/Truth → P1 Active anchor → P2 Short secondary → P3 Anchor-only → P4 Hide · never move labels across meaning</text>
+<line x1="96" y1="960" x2="1824" y2="960" stroke="#BDB6A8" stroke-width="2"/>
+<text x="96" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="21" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="300" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#59615F">At native target size, force the worst collision: P0 controls and truth must survive; lower-priority labels may degrade, but must not migrate to a misleading anchor.</text>
+<text x="96" y="1045" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#747B78">Synthetic ROUTE study only. Does not prove GPS, node location, visibility, accessibility, runtime collision engine, field status or C04 production UI.</text>
+</svg>
