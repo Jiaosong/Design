@@ -1,0 +1,82 @@
+name: Technical Drawing Analysis Evals
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  analysis-contracts:
+    name: Technical Drawing analysis contracts and translation regressions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Validate analysis Decision Question contract
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_analysis_contract.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ANALYSIS-CONTRACT-01_REGISTER.json
+
+      - name: Exercise analysis-contract regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_analysis_contract_regression.py
+
+      - name: Validate question-bound spatial translation
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_spatial_translation.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json
+
+      - name: Exercise spatial-translation regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_spatial_translation_regression.py
+
+      - name: Validate editorial analysis-board contract
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_editorial_analysis_board.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BOARD-01_REGISTER.json
+
+      - name: Exercise editorial-board regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_editorial_analysis_board_regression.py
+
+      - name: Validate actual-preview review receipt
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_actual_preview_review.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/PREVIEW-REVIEW-01_REGISTER.json
+
+      - name: Exercise actual-preview regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_actual_preview_review_regression.py
+
+      - name: Validate spatial-event node fixture
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_node_semantics.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_SEMANTICS.svg
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_REGISTER.json
+
+      - name: Validate construction-interface node fixture
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_node_semantics.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE.svg
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE_REGISTER.json
+
+      - name: Exercise node-mode regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_node_mode_regression.py
+
+      - name: Publish validator boundary
+        if: always()
+        run: |
+          echo '## Technical Drawing Analysis Evals' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Enforces Decision Question, object/scale/time and representation contracts before spatial translation.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Rejects abstraction that removes task-critical variables unless a named external layer carries them.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Enforces source-carrier precedence, explicit registration class and semantic-to-graphic translation structure.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Enforces analysis-board finding, first-read label budget, dominant-panel binding and declared reading-tempo diversity.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Separates SPATIAL_EVENT nodes from CONSTRUCTION_INTERFACE nodes and validates their different ownership contracts.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Requires actual-preview review receipts for distance/near read and grayscale when color carries semantics.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Machine PASS proves contract consistency only; it does not award Professional Design PASS, KEEP, Engineering PASS, Field PASS or Promotion.' >> "$GITHUB_STEP_SUMMARY"
