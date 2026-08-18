@@ -1,4 +1,4 @@
-# C04｜Current Execution Authority｜2026-08-17｜PROJECT ARCHITECTURE v3.2
+# C04｜Current Execution Authority｜2026-08-18｜PROJECT ARCHITECTURE v3.2
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 State: `EXPLORE / G3`  
@@ -14,7 +14,7 @@ Read and execute in this order:
 4. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support only
 5. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json` for current content/narrative direction
 6. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` for professional content architecture + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` for chapter/page hierarchy and no-compression execution + `C04-B_PROJECT-ARCHITECTURE_v3.2.md` for current independent Brand chapter and CH00–CH19 chapter-container structure**
-7. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` for the latest authored chapter/page-content sync; these authoring identities do not replace final Web PAGE-ID mapping
+7. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` as the preserved 2026-08-17 authored-content baseline, then **`chapter-content-sync/v0.2/INDEX.md` + `KNOWLEDGE-SOURCE-REGISTER.md` + the v0.2 chapter/enrichment files as the latest knowledge-enriched authored-content supplement**; these authoring identities do not replace final Web PAGE-ID mapping
 8. `C04_ACTIVE_EXECUTION_CURRENT.md`
 9. current A/C/B/D/E/F Owner / PR / Drive material delta only as needed.
 
@@ -266,7 +266,14 @@ Architecture v3.2 requires:
 
 `52 preserved baseline pages + substantive missing professional pages = new actual page count (>52 when new pages are added)`.
 
-The 2026-08-17 chapter-content sync currently contains **70 base authoring page units**. This is an authoring-content inventory only: **it is not the current Web page_count and must not be calculated as `52 + 70`**. Some units map to or expand legacy pages; only materially new units become N-series pages after the exact 52-row PAGE REGISTER is built.
+Current authored-content inventory is now layered rather than replaced:
+- `chapter-content-sync/v0.1` = **70 base authoring page units** from the 2026-08-17 chapter pass;
+- `chapter-content-sync/v0.2` = **41 newly authored missing-chapter base units** for CH01 / CH08 / CH15–CH19;
+- combined base authoring inventory = **111 units**;
+- v0.2 separately records **11 cross-chapter professional authoring candidates**;
+- v0.1 separately retains its previously recorded **28 expansion candidates**.
+
+These are authoring-content inventories only. **111, 11 and 28 are not current Web page_count and must not be mechanically added to the protected 52 baseline or to one another.** Some authored units map to, deepen or split existing protected pages; only materially new independent PAGE units become N-series after the exact 52-row PAGE REGISTER is built.
 
 Do not add filler to increase count. Do not compress useful content to preserve 52. Do not compress pages to make chapters cleaner.
 
@@ -296,7 +303,7 @@ Analysis / principles / methods / Brand are not rejected merely for being analyt
 ## 8｜Current execution architecture
 
 ### ACTIVE 1｜B — Experience + Service + Editorial
-Use architecture v3.0/v3.1/v3.2 as the content and page structure, together with `chapter-content-sync/v0.1/` as the latest authored-content source where available. Build missing analysis, principles, methods, audience logic, system explanation, Brand, scene design, detail development, technical proof and process judgment. Preserve the journey as a first-read thread but not as a compression rule.
+Use architecture v3.0/v3.1/v3.2 as the content and page structure, with **`chapter-content-sync/v0.1/` as preserved authored baseline and `chapter-content-sync/v0.2/` as the latest knowledge-enriched authored supplement**. CH01, CH08 and CH15–CH19 now have explicit authored content in v0.2. Continue by mapping all authored units to protected PAGE identities, deepening real project evidence/visual carriers, and resolving only genuine residual content gaps. Preserve the journey as a first-read thread but not as a compression rule.
 
 ### ACTIVE 2｜D — Whole-project Visual + Motion
 Develop C04-specific visual language for both experiential and analytical pages. Protect strong real-Qingjiang Hero/R06/R13 assets. Raise App/Game Map, selected Physical, Brand/Visual Identity, Memory/IP, Return and analytical graphics without generic flowchart/dashboard language. Brand should unify cross-media reading without becoming a visual overlay that competes with landscape.
@@ -307,9 +314,9 @@ Film remains primarily experiential; Web/PDF/boards carry deeper professional an
 Rebuild the current 52-PAGE baseline into architecture v3.2 without page loss:
 1. reserve PAGE-ID `P001–P052`;
 2. map each PAGE to one CH00–CH19 chapter + page type;
-3. compare the 70 authored units against the 52-row PAGE REGISTER as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`;
+3. compare the **v0.1 + v0.2 authored-content inventory** against the 52-row PAGE REGISTER as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`; do not use authoring-unit arithmetic as page count;
 4. mark migration actions `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE` without default merge;
-5. identify missing required content;
+5. identify only residual missing required content after the v0.2 enrichment;
 6. add substantive N-series pages only for materially new page units;
 7. rebuild reading rhythm while retaining page independence;
 8. perform PAGE-ID finished-pixel readback;
@@ -331,10 +338,10 @@ Protect both first-read quality and professional depth. Classify concept/pixel s
 
 1. **Lock all existing 52 Web pages as independent PAGE identities.**
 2. **Build the exact 52-row PAGE REGISTER and map P001–P052 to CH00–CH19 without collapsing them.**
-3. **Compare the 70 synced authoring units against the legacy register; do not calculate `52 + 70`.**
-4. **Produce a gap register for truly missing professional pages and allocate N-series only after object-level comparison.**
-5. **Continue missing CH01 / CH08 authoring from current authority and actual project material; do not invent filler.**
-6. **Complete Master System / Route / Thirteen Imprints / App / Brand explanation without replacing existing pages.**
+3. **Compare the v0.1 + v0.2 authored-content inventory against the legacy register; do not calculate any `52 + authoring units` total.**
+4. **Classify each authored unit as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`; allocate N-series only after object-level comparison.**
+5. **Treat CH01 / CH08 / CH15–CH19 as authored in v0.2; no longer regenerate them as missing filler. Deepen only where new evidence or page-level design requires it.**
+6. **Complete Master System / Route / Thirteen Imprints / App / Brand explanation by binding current authored content to real existing assets rather than replacing existing pages.**
 7. **Deepen key scenes, Physical/Sensory, Brand, Memory/IP and design details at current authority levels.**
 8. **Re-edit Technical/Model proof after the design chapters.**
 9. **Build Process/Alternatives pages only where they demonstrate professional judgment.**
