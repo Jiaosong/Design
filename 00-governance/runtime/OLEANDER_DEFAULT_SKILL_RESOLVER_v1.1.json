@@ -1,8 +1,9 @@
 {
   "schema": "oleander.default-skill-resolver.v1",
   "version": "1.1",
-  "status": "ACTIVE_CURRENT",
+  "status": "SUPERSEDED",
   "decision_date": "2026-08-18",
+  "superseded_by": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
   "scope": "OLEANDER_ALL_PROJECTS_CONVERSATIONS_AGENTS_MEDIA",
   "authority": {
     "notion_current_root_title": "OLEANDER｜设计知识库（Design）",
@@ -42,41 +43,16 @@
     "domain_levels_L0_L3_registry": "domains",
     "knowledge_levels_L4_L7_registry": "notes",
     "project_axis_registry": "projects",
-    "current_hierarchy_fields": [
-      "Canonical Parent｜层级上位",
-      "Canonical Children｜层级子级"
-    ],
-    "legacy_hierarchy_fields_forbidden_for_current_routing": [
-      "上位笔记",
-      "子级笔记"
-    ],
-    "method_invocation_relations": [
-      "引用方法",
-      "引用该方法的文档"
-    ],
-    "source_relations": [
-      "来源文档",
-      "引用该来源的文档"
-    ],
+    "current_hierarchy_fields": ["Canonical Parent｜层级上位", "Canonical Children｜层级子级"],
+    "legacy_hierarchy_fields_forbidden_for_current_routing": ["上位笔记", "子级笔记"],
+    "method_invocation_relations": ["引用方法", "引用该方法的文档"],
+    "source_relations": ["来源文档", "引用该来源的文档"],
     "old_00_70_navigation_default_status": "LEGACY_SUPERSEDED_READ_ONLY_FOR_CURRENT_ROUTING",
     "explicit_current_override_is_discovery_only_after_root_authority": true
   },
   "capability_layers": {
-    "installed_reusable_execution_skills": [
-      "oleander-research",
-      "oleander-data-viz",
-      "oleander-3d-pipeline",
-      "oleander-story-and-board",
-      "oleander-delivery-qc",
-      "oleander-motion"
-    ],
-    "candidate_ui_specialists_on_main": [
-      "oleander-game-ui",
-      "oleander-mobile-game-ui",
-      "oleander-ui-visual-composition",
-      "oleander-route-wayfinding-ui",
-      "oleander-ui-interaction"
-    ],
+    "installed_reusable_execution_skills": ["oleander-research", "oleander-data-viz", "oleander-3d-pipeline", "oleander-story-and-board", "oleander-delivery-qc", "oleander-motion"],
+    "candidate_ui_specialists_on_main": ["oleander-game-ui", "oleander-mobile-game-ui", "oleander-ui-visual-composition", "oleander-route-wayfinding-ui", "oleander-ui-interaction"],
     "candidate_aggregation_layer": "oleander-game-ui-stack",
     "candidate_draft_specialist": {
       "name": "OLEANDER Technical Drawing",
@@ -129,11 +105,5 @@
       "PRESERVE_SUPERSEDED_HISTORY_AS_PROVENANCE"
     ]
   },
-  "does_not_prove": [
-    "INDIVIDUAL_METHOD_VALIDATION",
-    "CANDIDATE_SKILL_PROMOTION",
-    "PROJECT_DESIGN_PASS",
-    "FIELD_OR_ENGINEERING_TRUTH",
-    "RELEASE_OR_PROMOTION"
-  ]
+  "does_not_prove": ["INDIVIDUAL_METHOD_VALIDATION", "CANDIDATE_SKILL_PROMOTION", "PROJECT_DESIGN_PASS", "FIELD_OR_ENGINEERING_TRUTH", "RELEASE_OR_PROMOTION"]
 }
