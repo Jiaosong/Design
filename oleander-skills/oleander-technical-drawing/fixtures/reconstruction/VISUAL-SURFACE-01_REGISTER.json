@@ -1,0 +1,100 @@
+{
+  "schema": "oleander-visual-surface/0.1",
+  "promotion": "CANDIDATE_NOT_PROMOTED",
+  "surfaces": [
+    {
+      "surface_id": "VS-01-SLOPE-GRADIENT",
+      "semantic_owner_id": "FIELD-SLOPE-01",
+      "surface_role": "ANALYTICAL_FIELD",
+      "source_basis": "synthetic fixture slope field",
+      "truth_state": "SOURCE",
+      "technique": "GRADIENT",
+      "mapped_variable": "relative slope intensity",
+      "legend_or_scale_ref": "LEG-SLOPE-01",
+      "gradient_axis": "local slope field direction",
+      "gradient_stops": ["LOW", "MID", "HIGH"],
+      "interpolation": "CONTINUOUS",
+      "why_gradient": "the fixture variable is continuous and the gradient reveals field intensity while the polygon boundary remains explicit",
+      "off_state_result": "CORE_GEOMETRY_INTACT",
+      "near_mid_far_review": {
+        "near": "DONE / boundary and local field readable",
+        "mid": "DONE / intensity structure readable",
+        "far": "DONE / field hierarchy survives"
+      },
+      "attack_tests": {
+        "gradient_off": "DONE / polygon and legend remain",
+        "grayscale": "DONE / lightness ordering preserved"
+      },
+      "does_not_prove": "real site slope values or survey grade"
+    },
+    {
+      "surface_id": "VS-02-STONE-GRAIN",
+      "semantic_owner_id": "MAT-STONE-01",
+      "surface_role": "MATERIAL_SURFACE",
+      "source_basis": "synthetic material-hypothesis fixture",
+      "truth_state": "ASSUMPTION",
+      "technique": "GRAIN",
+      "material_truth_state": "DESIGN_HYPOTHESIS",
+      "texture_scale": "MICRO",
+      "density_range": "LOW_TO_MEDIUM",
+      "directionality": "NON_DIRECTIONAL_WITH_LOCAL_CLUSTERING",
+      "local_mask": "STONE_BODY_ONLY",
+      "variation_strategy": "seeded non-uniform clustering; no full-sheet noise",
+      "off_state_result": "CORE_GEOMETRY_INTACT",
+      "near_mid_far_review": {
+        "near": "DONE / grain reads as surface, not dirt",
+        "mid": "DONE / grain collapses into tonal variation",
+        "far": "DONE / body reads as one field"
+      },
+      "attack_tests": {
+        "texture_off": "DONE / material label and geometry remain",
+        "grayscale": "DONE / hierarchy remains"
+      },
+      "does_not_prove": "real stone species, roughness, fabrication process, weathering or installed material"
+    },
+    {
+      "surface_id": "VS-03-BASE-RECESSION",
+      "semantic_owner_id": "BASE-MAP-01",
+      "surface_role": "HIERARCHY_RECESSION",
+      "source_basis": "synthetic base-map fixture",
+      "truth_state": "DECISION",
+      "technique": "OPACITY",
+      "mapped_variable": "NONE",
+      "off_state_result": "CORE_GEOMETRY_INTACT",
+      "near_mid_far_review": {
+        "near": "DONE / base labels remain legible",
+        "mid": "DONE / task overlay leads",
+        "far": "DONE / base recedes without disappearing"
+      },
+      "attack_tests": {
+        "opacity_off": "DONE / base becomes competitive but geometry is unchanged",
+        "grayscale": "DONE / task hierarchy still works"
+      },
+      "does_not_prove": "uncertainty, lower importance of the source evidence, or physical transparency"
+    },
+    {
+      "surface_id": "VS-04-PAPER-FIDELITY",
+      "semantic_owner_id": "REFERENCE-SHEET-01",
+      "surface_role": "REFERENCE_FIDELITY",
+      "source_basis": "synthetic compressed-paper reference fixture",
+      "truth_state": "REFERENCE",
+      "technique": "GRAIN",
+      "texture_scale": "MICRO",
+      "density_range": "LOW",
+      "directionality": "NONE",
+      "local_mask": "PAGE_BACKGROUND_ONLY",
+      "variation_strategy": "source-derived bounded visual carrier",
+      "off_state_result": "CORE_GEOMETRY_INTACT",
+      "near_mid_far_review": {
+        "near": "DONE / grain visible",
+        "mid": "DONE / paper tone preserved",
+        "far": "DONE / grain disappears into page tone"
+      },
+      "attack_tests": {
+        "texture_off": "DONE / content remains, fidelity decreases",
+        "grayscale": "DONE / reference-tone structure retained"
+      },
+      "does_not_prove": "paper stock, print process, material specification or semantic editability"
+    }
+  ]
+}
