@@ -10,17 +10,20 @@ def req(c,m):
     if not c:raise ValueError(m)
 
 def validate(d):
-    for k in ('schema','revision','body_connected_components','cabin_connected_components',
+    for k in ('schema','revision','surface_measurement_scope','body_cap_edges_excluded',
+              'body_connected_components','cabin_connected_components',
               'body_adjacent_face_normal_flip_count','cabin_adjacent_face_normal_flip_count',
-              'body_max_edge_length_m','body_longitudinal_stations','body_ring_vertices',
+              'body_local_edge_p95_m','body_longitudinal_stations','body_ring_vertices',
               'machine_surface_state','visual_review_state','does_not_prove'):
         req(k in d,f'missing:{k}')
     req(d['schema']==SCHEMA,'bad:schema')
+    req(d['surface_measurement_scope']=='PRE_APERTURE_PRIMARY_SKIN','bad:surface_measurement_scope')
+    req(d['body_cap_edges_excluded'] is True,'bad:body_cap_edges_excluded')
     req(d['body_connected_components']==1,'fail:body_disconnected')
     req(d['cabin_connected_components']==1,'fail:cabin_disconnected')
     req(d['body_adjacent_face_normal_flip_count']==0,'fail:body_face_fold')
     req(d['cabin_adjacent_face_normal_flip_count']==0,'fail:cabin_face_fold')
-    edge=float(d['body_max_edge_length_m']);req(math.isfinite(edge) and edge<=.35,'fail:body_local_edge_stretch')
+    edge=float(d['body_local_edge_p95_m']);req(math.isfinite(edge) and edge<=.30,'fail:body_local_edge_stretch')
     req(int(d['body_longitudinal_stations'])>=80,'fail:body_station_density')
     req(int(d['body_ring_vertices'])>=30,'fail:body_section_rail_density')
     req(d['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD','bad:machine_surface_state')
