@@ -13,6 +13,7 @@ on:
       - '00-governance/control-plane/tests/test_oleander_3d_aperture_boundary_protocol.py'
       - '00-governance/control-plane/tests/test_oleander_3d_visible_surface_topology.py'
       - '00-governance/control-plane/tests/test_oleander_3d_primary_body_surface.py'
+      - '00-governance/control-plane/tests/test_oleander_3d_candidate_revision_coherence.py'
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
@@ -22,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V32 runtime
+      - name: Validate Skill and V33 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
@@ -35,9 +36,11 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v30.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v31.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v32.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v33.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py \
-            oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py
+            oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_candidate_revision_coherence.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py \
@@ -48,7 +51,8 @@ jobs:
             00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py \
             00-governance/control-plane/tests/test_oleander_3d_aperture_boundary_protocol.py \
             00-governance/control-plane/tests/test_oleander_3d_visible_surface_topology.py \
-            00-governance/control-plane/tests/test_oleander_3d_primary_body_surface.py
+            00-governance/control-plane/tests/test_oleander_3d_primary_body_surface.py \
+            00-governance/control-plane/tests/test_oleander_3d_candidate_revision_coherence.py
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
@@ -56,15 +60,15 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build and verify V32 rear-envelope candidate
+      - name: Build and verify V33 candidate
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v32.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v33.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V32 evidence without visual self-promotion
+      - name: Verify V33 evidence without visual self-promotion
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -77,7 +81,6 @@ jobs:
           assert s['surface_measurement_scope']=='PRE_APERTURE_PRIMARY_SKIN'
           assert s['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
-          assert p['rear_profile_semantics']=='TARGET_DERIVED_CONSTRAINT_COMPLIANCE_NOT_INDEPENDENT_FIDELITY'
           assert g['best_known_gate_baselines']['FRONT_HALF_PROJECTED_PROFILE_RMSE']['revision']=='V31'
           assert g['promotion_decision'] in ('KEEP_LKG_HOLD_EXPERIMENT','KEEP_LKG_REJECT_EXPERIMENT')
           assert g['visual_review_state']=='NOT_RUN'
@@ -88,6 +91,7 @@ jobs:
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_BODY_SURFACE_RECEIPT.json
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_candidate_revision_coherence.py out/OLEANDER_Porsche_911_992_Reference_Repro
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
