@@ -1,0 +1,37 @@
+{
+  "artifact": "C04_APP_ROUTE03_CURRENTIZATION_v0_1",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream": "PRJ-C04-DIGITAL-INTERACTION",
+  "status": "EXECUTABLE MODULE CANDIDATE / NOT APP CURRENT / INDEPENDENT DESIGN REVIEW REQUIRED",
+  "decision_question": "Can the current App inherit v1.27 product/IA architecture while replacing its stale guide-route geometry with the exact locked ROUTE-03 carrier without losing exploration, Return, mobile, or truth-state behavior?",
+  "inherits": [
+    "v1.27 top-level IA: TODAY / ROUTE / MY BOOK / SERVICE",
+    "READ / R06 / R13 as route-context descendants",
+    "Return Guard priority",
+    "44px mobile interaction baseline",
+    "Reduced Motion and UNKNOWN fail-closed principles"
+  ],
+  "replaces": [
+    "v1.27 embedded 18-node custom guide-route path as current route geometry authority",
+    "any second independently maintained route curve in the App"
+  ],
+  "route_authority": {
+    "object": "ROUTE-03",
+    "state": "LOCKED CURRENT",
+    "asset": "assets/ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED.svg",
+    "sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "rule": "REUSE_DIRECT / do not redraw topology or Bezier geometry",
+    "presentation_derivative": "assets/ROUTE_03_APP_VIEWPORT.svg",
+    "presentation_derivative_rule": "VIEWBOX_CROP_ONLY / geometry-node-text unchanged"
+  },
+  "behavior_grammar": ["INTENT", "SCOUT", "COMMIT", "REVEAL", "RETREAT", "RETURN"],
+  "truth_boundary": ["FIELD OBSERVED=0", "FIELD MEASURED=0", "G1F HOLD", "NO_PROMOTION", "NTS", "NOT GPS", "STATUS UNKNOWN"],
+  "does_not_prove": [
+    "field route-to-reading proximity",
+    "exact distance/slope/GPS",
+    "real-time operation/open status",
+    "accessibility or safety compliance",
+    "v1.27 source persistence or synchronization",
+    "independent Design PASS"
+  ]
+}
