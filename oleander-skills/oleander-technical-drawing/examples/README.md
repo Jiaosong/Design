@@ -24,9 +24,21 @@ The fixture derives from the OLEANDER training asset `technical_drawing_hierarch
 
 The earlier `practice/2026-08-16-technical-drawing-lineweight` experiment established the precursor rule that CAD/export defaults must not be mistaken for visual hierarchy. The later fixture added section/node/callout/maintenance reading to that lineweight principle.
 
+## Detail callout registration calibration
+
+The 2026-08-19 training adds a second, non-duplicate calibration axis through `references/DETAIL_CALLOUT_REGISTRATION.md` and the practice asset `06-practice/2026/2026-08-19-detail-callout-registration/OLEANDER_DETAIL_CALLOUT_REGISTRATION_R01.svg`.
+
+This axis does **not** ask whether the child detail merely contains enough lines or notes. It tests whether a parent callout and enlarged child remain the same interface across a scale jump. Required checks include parent/crop traceability, stable anchors, orientation/sidedness, label-off registration and return-to-parent readability.
+
+Core regression boundary:
+
+`ENLARGEMENT ≠ REDRAW`.
+
+A child may reveal fixing, build-up, drainage, maintenance or verification information that cannot be read at parent scale. It may not silently move, mirror, widen, reorder or invent the interface to make the drawing easier to explain.
+
 ## Promotion boundary
 
-This fixture can support skill regression testing for graphic hierarchy and vector annotation only. It does not prove:
+These fixtures can support skill regression testing for graphic hierarchy, vector annotation and parent→child registration only. They do not prove:
 
 - field-measured geometry;
 - structural design;
