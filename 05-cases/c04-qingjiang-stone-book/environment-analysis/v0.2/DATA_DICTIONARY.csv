@@ -1,0 +1,12 @@
+field,unit,source_method,evidence_role,boundary
+elevation_m,m,Open-Meteo Elevation API / Copernicus DEM GLO-90 sampling,EVIDENCE,regional remote terrain; not survey
+slope_deg,degree,derived from sampled elevation using metric spacing in UTM49N,DERIVED,regional generalized slope only
+aspect_deg_0N,degree,derived from sampled elevation,DERIVED,"0=N,90=E; regional generalized aspect"
+flow_accumulation_cells,cell count,D8 on sampled elevation surface,DERIVED,potential convergence only; not hydraulic flow
+solar_summer_noon,0–1,terrain incidence + solar geometry,SCENARIO,relative exposure only
+solar_equinox_noon,0–1,terrain incidence + solar geometry,SCENARIO,relative exposure only
+solar_winter_noon,0–1,terrain incidence + solar geometry,SCENARIO,relative exposure only
+Qingjiang_centerline,WGS84 line,OpenStreetMap context geometry,EVIDENCE,remote context; not survey centerline
+ROUTE-03,relational topology,C04 locked current route asset,AUTHORITY,route relation only; not GPS/distance/slope
+ESA_WorldCover_2021_v200,10m categorical,official intended source,HOLD,AOI pixels not locally read back
+JRC_GSW1_4_GlobalSurfaceWater,30m occurrence/seasonality,official intended source,HOLD,AOI pixels not locally read back
