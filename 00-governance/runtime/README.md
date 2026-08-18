@@ -27,9 +27,9 @@ Current Notion structural routing must use the live Registry and `Canonical Pare
 
 `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.0.md/.json` remains as superseded implementation provenance in Git history/repository history and is not the current pointer after v1.1 promotion.
 
-## Candidate executable contract layer v0.1
+## Current executable contract layer v0.1
 
-The following files strengthen the interface between Current Notion knowledge objects and GitHub execution implementation without creating new Skills or Notion taxonomy:
+The following `ACTIVE_CURRENT` contracts strengthen the interface between Current Notion knowledge objects and GitHub execution implementation without creating new Skills or Notion taxonomy:
 
 - `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.md/.json` — per-owner capability, lifecycle, authority, tools, fallback, gates and handoff declaration.
 - `OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.md/.json` — PRIMARY/SUPPORT/READ-ONLY/VALIDATOR/REVIEWER DAG, minimum sufficient owner set and typed handoffs.
@@ -42,7 +42,7 @@ Validation entrypoint:
 
 `python 00-governance/runtime/validate_execution_contracts.py`
 
-While these files are `CANDIDATE_FOR_CURRENT`, the Current default resolver remains v1.1 and the Current Owner Map remains v1.0. Promotion requires CI/readback and a status update; file existence alone is not promotion.
+These contracts supplement the Current Default Skill Resolver v1.1 and Current Execution Owner Map v1.0; they do not replace either one. Promotion of this contract layer does not promote any candidate Skill or Notion knowledge object.
 
 ## Existing active runtime contracts
 

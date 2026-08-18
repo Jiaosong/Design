@@ -1,7 +1,7 @@
 {
   "contract_id": "OLEANDER_NATIVE_ARTIFACT_CONTRACT",
   "version": "0.1",
-  "status": "CANDIDATE_FOR_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "required_fields": [
     "artifact_id",

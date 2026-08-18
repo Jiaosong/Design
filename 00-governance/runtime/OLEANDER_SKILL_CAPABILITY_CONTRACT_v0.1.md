@@ -1,6 +1,6 @@
 # OLEANDER Skill Capability Contract v0.1
 
-Status: **CANDIDATE_FOR_CURRENT**  
+Status: **ACTIVE_CURRENT**  
 Decision date: **2026-08-18**  
 Scope: **GitHub execution owners only**  
 Upstream authority: **Notion Current Root Authority + live Registry + `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1` + `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0`**

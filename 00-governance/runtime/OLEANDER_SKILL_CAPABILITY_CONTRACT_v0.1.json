@@ -1,7 +1,7 @@
 {
   "contract_id": "OLEANDER_SKILL_CAPABILITY_CONTRACT",
   "version": "0.1",
-  "status": "CANDIDATE_FOR_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "scope": "github_execution_owners",
   "upstream": ["Notion Current Root Authority", "live Registry", "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1", "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0"],

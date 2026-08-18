@@ -1,7 +1,7 @@
 {
   "contract_id": "OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT",
   "version": "0.1",
-  "status": "CANDIDATE_FOR_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "node_roles": ["PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"],
   "required_dag_fields": ["dag_id", "task_id", "required_native_output", "primary_owner", "nodes", "edges", "artifact_contracts", "conflict_precedence", "reviewer_node", "completion_condition", "does_not_prove"],

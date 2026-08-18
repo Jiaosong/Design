@@ -1,6 +1,6 @@
 # OLEANDER Execution Regression Contract v0.1
 
-Status: **CANDIDATE_FOR_CURRENT**  
+Status: **ACTIVE_CURRENT**  
 Decision date: **2026-08-18**  
 Scope: **execution implementations, recipes, fixtures and runtime outputs**
 

@@ -1,6 +1,6 @@
 # OLEANDER Native Artifact Contract v0.1
 
-Status: **CANDIDATE_FOR_CURRENT**  
+Status: **ACTIVE_CURRENT**  
 Decision date: **2026-08-18**  
 Scope: **all cross-Skill native artifact handoffs**
 

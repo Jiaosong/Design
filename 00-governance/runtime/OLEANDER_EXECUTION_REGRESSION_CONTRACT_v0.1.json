@@ -1,7 +1,7 @@
 {
   "contract_id": "OLEANDER_EXECUTION_REGRESSION_CONTRACT",
   "version": "0.1",
-  "status": "CANDIDATE_FOR_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "layers": ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"],
   "result_states": ["PASS", "FAIL", "HOLD", "NOT_APPLICABLE"],

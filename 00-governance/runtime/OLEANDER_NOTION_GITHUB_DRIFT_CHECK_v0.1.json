@@ -1,7 +1,7 @@
 {
   "contract_id": "OLEANDER_NOTION_GITHUB_DRIFT_CHECK",
   "version": "0.1",
-  "status": "CANDIDATE_FOR_CURRENT",
+  "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "comparison_key": ["notion_canonical_id", "github_implementation", "implemented_revision", "implementation_commit", "last_verified", "drift_state"],
   "drift_states": ["CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"],
@@ -44,7 +44,7 @@
       ],
       "implemented_revision": "resolver-v1.1-owner-map-v1.0",
       "drift_state": "UNKNOWN",
-      "drift_reason": "candidate checker file; requires live check at run time"
+      "drift_reason": "live check required at run time"
     },
     {
       "mapping_id": "visual-image-ops-current",
@@ -56,7 +56,7 @@
       "implemented_revision": "verified-2026-08-18",
       "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
       "drift_state": "UNKNOWN",
-      "drift_reason": "candidate checker file; requires live check at run time"
+      "drift_reason": "live check required at run time"
     }
   ],
   "hard_guards": ["notion_identity_remains_upstream", "github_static_check_cannot_claim_live_current", "missing_mapping_does_not_authorize_new_skill"],
