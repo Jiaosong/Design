@@ -1,0 +1,141 @@
+{
+  "route_library_id": "TD-CROSS-SKILL-VFX-001",
+  "version": "0.1",
+  "status": "CANDIDATE / NO_PROMOTION",
+  "rule": "Technical Drawing owns analytical/graphic carrier semantics. Upstream data/model passes and downstream motion/runtime remain owned by their specialist skills.",
+  "routes": [
+    {
+      "route_id": "XR-01-DEPTH-PASS",
+      "mechanism": "depth-value overlay / focus hierarchy",
+      "upstream_owner": "oleander-3d-pipeline",
+      "required_upstream": ["locked camera", "depth pass", "camera/scale manifest"],
+      "technical_drawing_use": "apply source-bound tonal/depth overlay without changing projected geometry",
+      "svg_mechanism": "image/pass clip + opacity/feBlend",
+      "fail_if": ["depth is invented from visual taste", "camera differs from technical projection", "depth shading hides linework"]
+    },
+    {
+      "route_id": "XR-02-AO-PASS",
+      "mechanism": "ambient-occlusion contact emphasis",
+      "upstream_owner": "oleander-3d-pipeline",
+      "required_upstream": ["same-geometry AO pass", "camera parity", "object/material ID when masking is selective"],
+      "technical_drawing_use": "support contact/readability in axonometric or exploded analysis",
+      "svg_mechanism": "AO raster/pass clipped to geometry + multiply blend",
+      "fail_if": ["AO used as proof of real shadow/light", "AO changes component boundary", "pass provenance absent"]
+    },
+    {
+      "route_id": "XR-03-OBJECT-ID-MASK",
+      "mechanism": "object/material role masking",
+      "upstream_owner": "oleander-3d-pipeline",
+      "required_upstream": ["object/material ID pass", "stable component IDs"],
+      "technical_drawing_use": "bind texture/gradient/effect to actual component owner",
+      "svg_mechanism": "clipPath/mask generated from ID-derived silhouette",
+      "fail_if": ["mask owner differs from model component", "presentation mask silently edits geometry"]
+    },
+    {
+      "route_id": "XR-04-HILLSHADE",
+      "mechanism": "terrain shade / relief cue",
+      "upstream_owner": "oleander-data-viz / GIS or source DEM workflow",
+      "required_upstream": ["source raster/DEM", "CRS or relation registration", "hillshade parameters", "truth state"],
+      "technical_drawing_use": "recede terrain relief beneath path/field analysis",
+      "svg_mechanism": "source-derived raster image + clip + opacity/blend",
+      "fail_if": ["fake hillshade drawn from decorative gradients", "lighting azimuth interpreted as sun study", "CRS/registration absent"]
+    },
+    {
+      "route_id": "XR-05-DENSITY-FIELD",
+      "mechanism": "kernel/density/continuous analytical field",
+      "upstream_owner": "oleander-data-viz",
+      "required_upstream": ["clean data", "transform log", "bandwidth/model", "domain", "legend"],
+      "technical_drawing_use": "render field through gradient/contour/stipple without changing analytical values",
+      "svg_mechanism": "SVG-R01 / SVG-R04 / SVG-R09",
+      "fail_if": ["visual interpolation exceeds data model", "palette changes domain", "missing values disappear"]
+    },
+    {
+      "route_id": "XR-06-TIME-FRAME-STABILITY",
+      "mechanism": "animated analytical state",
+      "upstream_owner": "oleander-data-viz",
+      "downstream_owner": "oleander-motion",
+      "required_upstream": ["stable entity key", "stable axes/domain/color scale", "time/unit/source each frame"],
+      "technical_drawing_use": "preserve drawing carrier identity while state changes",
+      "motion_recipe": "TD-MR05-DATA-FILTER-REORDER",
+      "fail_if": ["axes or color scale drift hides change", "missing/uncertain data is smoothed away", "small multiples would communicate more clearly"]
+    },
+    {
+      "route_id": "XR-07-PANEL-CLIP-REVEAL",
+      "mechanism": "presentation reveal of source-bound figure",
+      "upstream_owner": "oleander-technical-drawing",
+      "downstream_owner": "oleander-story-and-board / oleander-motion",
+      "required_upstream": ["approved drawing revision", "truth-state labels preserved", "crop does not remove required scale/status/source"],
+      "technical_drawing_use": "define safe reveal/crop region only",
+      "motion_recipe": "TD-MR02-MASK-REVEAL",
+      "fail_if": ["crop changes technical meaning", "status labels disappear", "presentation gains stronger authority"]
+    },
+    {
+      "route_id": "XR-08-TOPOLOGY-MORPH",
+      "mechanism": "topology-safe morph between valid static states",
+      "upstream_owner": "oleander-technical-drawing",
+      "downstream_owner": "oleander-motion",
+      "motion_atlas_effect": "EF-04",
+      "required_upstream": ["static state A valid", "static state B valid", "correspondence map", "topology class"],
+      "technical_drawing_use": "supply topology correspondence; do not let interpolation invent a new relationship",
+      "fail_if": ["either endpoint is weak", "path correspondence crosses semantic owners", "intermediate topology implies a false state"]
+    },
+    {
+      "route_id": "XR-09-REFRACTION-MOTION",
+      "mechanism": "temporal displacement/refraction",
+      "upstream_owner": "oleander-technical-drawing",
+      "downstream_owner": "oleander-motion / Web renderer when justified",
+      "motion_atlas_effect": "EF-13",
+      "required_upstream": ["material/field owner", "static off-state", "bounded displacement mask"],
+      "technical_drawing_use": "material/atmosphere/reference only; never analytical geometry",
+      "fail_if": ["map/route/section geometry is displaced", "generic liquid/glitch identity", "reduced motion removes required state"]
+    },
+    {
+      "route_id": "XR-10-KINETIC-TYPE",
+      "mechanism": "typographic state / variable-axis motion",
+      "upstream_owner": "oleander-story-and-board / brand system",
+      "downstream_owner": "oleander-motion",
+      "motion_atlas_effect": "EF-17",
+      "required_upstream": ["static typographic hierarchy", "semantic emphasis target", "font/source permissions"],
+      "technical_drawing_use": "only for title/annotation state outside technical geometry",
+      "fail_if": ["every heading animates", "type motion replaces hierarchy", "technical labels move away from their carrier"]
+    },
+    {
+      "route_id": "XR-11-CAMERA-MOTION",
+      "mechanism": "orbit / dolly / focus shift",
+      "upstream_owner": "oleander-3d-pipeline",
+      "downstream_owner": "oleander-motion",
+      "motion_atlas_effect": "EF-18",
+      "required_upstream": ["authoritative model", "camera start/end", "target object", "frame/scale reference"],
+      "technical_drawing_use": "camera motion may reveal relation but static technical projections remain separate authority",
+      "fail_if": ["continuous showroom orbit", "perspective motion is used to imply measured geometry", "camera hides joint/scale evidence"]
+    },
+    {
+      "route_id": "XR-12-CURSOR-RESPONSE",
+      "mechanism": "cursor-linked local response",
+      "upstream_owner": "oleander-story-and-board / UI",
+      "downstream_owner": "oleander-motion",
+      "motion_atlas_effect": "EF-19",
+      "required_upstream": ["local affordance role", "touch/keyboard fallback", "normal pointer baseline"],
+      "technical_drawing_use": "optional exploratory highlight only; not required technical navigation",
+      "fail_if": ["full-page cursor replacement", "required information only appears on pointer motion", "touch/keyboard lacks equivalent"]
+    },
+    {
+      "route_id": "XR-13-SMOOTH-SCROLL",
+      "mechanism": "scroll transport / synchronization",
+      "upstream_owner": "oleander-story-and-board / Web",
+      "downstream_owner": "oleander-motion",
+      "motion_atlas_effect": "EF-20",
+      "required_upstream": ["normal native-scroll baseline", "reason for synchronization", "nested-scroll/focus/keyboard test plan"],
+      "technical_drawing_use": "none beyond exposing progress/state anchors",
+      "fail_if": ["smooth scroll added for polish", "native scrolling breaks", "scroll speed changes analytical order"]
+    },
+    {
+      "route_id": "XR-14-DELIVERY-COLOR-ALPHA",
+      "mechanism": "alpha / color-management preservation",
+      "downstream_owner": "oleander-delivery-qc",
+      "required_upstream": ["SVG/PNG/PDF target", "alpha expectation", "ICC/color-space expectation", "vector retention expectation"],
+      "technical_drawing_use": "declare output contract for effects and gradients",
+      "fail_if": ["blend/filter changes after export", "vector labels/linework rasterized unexpectedly", "alpha fringe or color-space conversion changes hierarchy"]
+    }
+  ]
+}
