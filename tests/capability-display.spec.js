@@ -36,11 +36,9 @@ async function desktopOverflowDiagnostics(page) {
       .map((node) => {
         const rect = node.getBoundingClientRect();
         return {
-          tag: node.tagName.toLowerCase(),
-          id: node.id || '',
+          tag: node.tagName.toLowerCase(), id: node.id || '',
           className: typeof node.className === 'string' ? node.className : '',
-          left: Math.round(rect.left * 10) / 10,
-          right: Math.round(rect.right * 10) / 10,
+          left: Math.round(rect.left * 10) / 10, right: Math.round(rect.right * 10) / 10,
           width: Math.round(rect.width * 10) / 10,
           overflowRight: Math.round(Math.max(0, rect.right - viewport) * 10) / 10,
           text: (node.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 90)
@@ -53,7 +51,7 @@ async function desktopOverflowDiagnostics(page) {
   });
 }
 
-test('XJ01 PRO-04.2 binds the editorial presentation spine and keeps unsupported evidence out of MAIN', async ({ page }, testInfo) => {
+test('XJ01 PRO-04.2 binds the editorial presentation spine and retained VE06 VE07 evidence', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'chromium-desktop');
   await waitForXJ01(page);
 
@@ -66,8 +64,10 @@ test('XJ01 PRO-04.2 binds the editorial presentation spine and keeps unsupported
   await expect(page.locator('#p01')).toContainText('Direction DNA');
   await expect(page.locator('#p02')).toContainText('Colour × Material × Geometry');
   await expect(page.locator('#p03')).toContainText('Where materials meet');
-  await expect(page.locator('#p04')).toContainText('SUPPORT ONLY');
-  await expect(page.locator('#p05')).toContainText('SUPPORT ONLY');
+  await expect(page.locator('#p04 img[src*="pro04-environment-d2-2x3.jpg"]')).toHaveCount(1);
+  await expect(page.locator('#p05 img[src*="pro04-lifecycle-d2-2x3.jpg"]')).toHaveCount(1);
+  await expect(page.locator('#p04')).not.toContainText('SUPPORT ONLY');
+  await expect(page.locator('#p05')).not.toContainText('SUPPORT ONLY');
   await expect(page.locator('#p06')).toContainText('What this digital CMF study proves');
 
   const appendix = page.locator('.pro04-appendix-details');
@@ -83,12 +83,12 @@ test('XJ01 PRO-04.2 desktop actual-preview evidence — 1920 and 1440 only', asy
   await waitForXJ01(page);
   await capture(page, testInfo, 'xj01-1920x1080-p00-hero.png', '#p00');
   await capture(page, testInfo, 'xj01-1920x1080-p02-cmf-system.png', '#p02');
-  await capture(page, testInfo, 'xj01-1920x1080-p04-environment-support.png', '#p04');
+  await capture(page, testInfo, 'xj01-1920x1080-p04-environment.png', '#p04');
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await capture(page, testInfo, 'xj01-1440x900-p01-direction-dna.png', '#p01');
   await capture(page, testInfo, 'xj01-1440x900-p03-interfaces.png', '#p03');
-  await capture(page, testInfo, 'xj01-1440x900-p05-lifecycle-support.png', '#p05');
+  await capture(page, testInfo, 'xj01-1440x900-p05-lifecycle.png', '#p05');
 
   const diagnostics = await desktopOverflowDiagnostics(page);
   expect(diagnostics.overflow, JSON.stringify(diagnostics, null, 2)).toBeLessThanOrEqual(1);
