@@ -1,0 +1,86 @@
+{
+  "id": "C04-QINGJIANG-BRAND-v1.2",
+  "status": "PRODUCER CANDIDATE / CURRENT AUTHORITY v3.2 ALIGNED / INDEPENDENT REVIEW PENDING / FIELD OPEN / NO_PROMOTION",
+  "legacy_basis": {
+    "mark": "linear mountain/river mark",
+    "wordmark_cn": "清江石书",
+    "wordmark_en": "QINGJIANG STONE BOOK",
+    "source_limitation": "native legacy vector unavailable; reconstruction based on existing visual-system board"
+  },
+  "core_colors": {
+    "qingjiang_green": "#154E4A",
+    "graphite": "#2B2E2E",
+    "peak_grey": "#71807B",
+    "stone_paper": "#F2EFE7",
+    "sediment": "#D8C9B1"
+  },
+  "signal": {
+    "vermillion": "#B64936",
+    "rule": "action/risk/state only; not primary logo"
+  },
+  "typography": {
+    "display_cn": "Source Han Serif / Noto Serif CJK SC",
+    "functional_cn": "Source Han Sans / Noto Sans CJK SC",
+    "latin": "Inter",
+    "meta": "DejaVu Sans Mono / Noto Sans Mono CJK SC"
+  },
+  "logo_rules": {
+    "primary_min_screen_px": 180,
+    "compact_min_screen_px": 96,
+    "mark_min_screen_px": 24,
+    "clear_space": "2X; X = 1/4 Chinese wordmark height",
+    "photo_rule": "build paper/solid readability rail before placing logo on complex imagery"
+  },
+  "journey": ["BOAT", "CABLE", "WALK", "RETURN"],
+  "brand_behavior": ["REAL QINGJIANG FIRST", "LANDSCAPE FIRST", "OPTIONAL READING", "DIGITAL CAN RETREAT", "RETURN INDEPENDENT"],
+  "imprints": [
+    {"id":"R01","canonical_name":"红岩嘴","graphic_category":"VIEW","interaction_mode":"OBSERVE"},
+    {"id":"R02","canonical_name":"华中第一藤","graphic_category":"PLANT","interaction_mode":"OBSERVE"},
+    {"id":"R03","canonical_name":"铁券天书","graphic_category":"ROCK","interaction_mode":"READ"},
+    {"id":"R04","canonical_name":"母子相望／母子峰","graphic_category":"RELATION","interaction_mode":"READ"},
+    {"id":"R05","canonical_name":"红花石林","graphic_category":"PEAK FOREST","interaction_mode":"SCENE"},
+    {"id":"R06","canonical_name":"多级阶地·不对称河谷","graphic_category":"VALLEY","interaction_mode":"SCENE"},
+    {"id":"R07","canonical_name":"仓禀峰／仓廪峰","graphic_category":"FORM","interaction_mode":"READ"},
+    {"id":"R08","canonical_name":"文山天书","graphic_category":"STRATA","interaction_mode":"READ"},
+    {"id":"R09","canonical_name":"盐水女神峰","graphic_category":"STORY","interaction_mode":"READ"},
+    {"id":"R10","canonical_name":"绝壁天书","graphic_category":"SURFACE","interaction_mode":"OBSERVE"},
+    {"id":"R11","canonical_name":"金石为开","graphic_category":"FISSURE","interaction_mode":"BODY"},
+    {"id":"R12","canonical_name":"廪君峰","graphic_category":"DISTANT VIEW","interaction_mode":"READ"},
+    {"id":"R13","canonical_name":"一线天","graphic_category":"PASSAGE","interaction_mode":"BODY"}
+  ],
+  "truth": {"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","PROMOTION":"NO_PROMOTION"},
+  "brand_architecture": {
+    "endorsement":"恩施大清江 / ENSHI DAQINGJIANG",
+    "primary_experience_identity":"清江石书 / QINGJIANG STONE BOOK",
+    "subsystems":["JOURNEY","R01–R13 OPTIONAL READING","DIGITAL","PHYSICAL/SENSORY","MY BOOK / MEMORY","RETURN"],
+    "rule":"endorsement visible but subordinate unless equal co-brand authority is explicitly established"
+  },
+  "presence_scale":{"FULL":"cover / communication / opening","LIGHT":"App / map / content / editorial proof","TRACE":"field / service / reassurance","OFF":"landscape / body / safety / technical attention"},
+  "optical_sizes":{"24_32":"QJ_MARK_OPTICAL_SMALL_v1_2.svg","48_96_plus":"QJ_MARK_MASTER_v1_2.svg","rule":"mechanical scale != optical scale; small variant preserves identity skeleton"},
+  "naming":{"project":"清江石书","journey":"BOAT / CABLE / WALK / RETURN","content":"R01–R13 optional reading namespace","memory":"清江旅记 / 我的石书","state":"NORMAL / DEGRADED / CLOSED / UNKNOWN"},
+  "type_scale": {
+    "W0_HERO":{"size_px":66,"family":"Serif","weight":700},
+    "W1_WAYFINDING":{"size_px":38,"family":"Sans","weight":700},
+    "W2_SCENE":{"size_px":27,"family":"Serif","weight":700},
+    "W3_READING":{"size_px":18,"family":"Sans","weight":500},
+    "W4_META":{"size_px":11,"family":"Mono","weight":600}
+  },
+  "lockup_ratio_recommendation": {
+    "experience_cn":"1.00","experience_en":"0.22–0.26 of CN visual height","endorsement":"0.28–0.36 of experience CN visual height","endorsement_gap":"1.3–1.8X","boundary":"design-system recommendation; not legal/operator co-brand approval"
+  },
+  "operational_state_colors":{"NORMAL":"#4F7C65","DEGRADED":"#B48236","CLOSED":"#A6473E","UNKNOWN":"#6D7270","rule":"operational state color has priority over brand color; UNKNOWN is fail-closed"},
+  "ch14_scope_mapping": {
+    "CH14-P01":["00_BRAND_CORE_LANGUAGE"],
+    "CH14-P02":["00_BRAND_CORE_LANGUAGE","15_NAMING_EDITORIAL_MATRIX"],
+    "CH14-P03":["01_HERITAGE_CONSTRUCTION","02_LOGO_RULES","13_OPTICAL_SIZE_SYSTEM"],
+    "CH14-P04":["03_TYPE_COLOR_SYSTEM"],
+    "CH14-P05":["03_TYPE_COLOR_SYSTEM","07_EDITORIAL_PRINT"],
+    "CH14-P06":["04_GRAPHIC_IMPRINT_SYSTEM","09_IMAGE_MOTION"],
+    "CH14-P07":["05_JOURNEY_WAYFINDING","14_ICON_MAP_INFORMATION"],
+    "CH14-P08":["06_DIGITAL_BRAND_COMPONENTS","07_EDITORIAL_PRINT","08_PHYSICAL_CMF","09_IMAGE_MOTION","12_BRAND_PRESENCE_SCALE"],
+    "EXPANSION":["11_BRAND_ARCHITECTURE","15_NAMING_EDITORIAL_MATRIX","09_IMAGE_MOTION","08_PHYSICAL_CMF"]
+  },
+  "responsive_identity_assets": {
+    "primary":"01_identity/QJ_LOGO_PRIMARY_v1_2.svg","compact":"01_identity/QJ_LOGO_COMPACT_v1_2.svg","stacked":"01_identity/QJ_LOGO_STACKED_v1_2.svg","reverse":"01_identity/QJ_LOGO_REVERSE_v1_2.svg","master_mark":"12_optical/QJ_MARK_MASTER_v1_2.svg","optical_small_mark":"12_optical/QJ_MARK_OPTICAL_SMALL_v1_2.svg"
+  }
+}
