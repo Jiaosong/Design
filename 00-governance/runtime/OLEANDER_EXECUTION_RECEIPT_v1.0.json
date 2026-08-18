@@ -11,10 +11,8 @@
     "execution_type",
     "task_id",
     "authority",
-    "constraint_lock",
     "required_native_output",
     "owner_set",
-    "flow_completion",
     "artifacts",
     "execution",
     "readback",
@@ -23,6 +21,7 @@
     "closure",
     "does_not_prove"
   ],
+  "policy_1_1_additional_required_core_fields": ["constraint_lock", "flow_completion"],
   "legacy_receipts_without_policy_1_1_fields": [
     "EXR-20260818-PR246-IMAGE-OPS-ADAPTER",
     "EXR-20260818-PR248-CONTRACT-LAYER",
