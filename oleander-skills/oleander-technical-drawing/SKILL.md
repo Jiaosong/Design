@@ -36,6 +36,8 @@ Then load the supporting reference appropriate to the task:
 - `references/DISCIPLINE_PROFILES.md` — profession-specific view sets, checks and failure patterns.
 - `references/GRAPHIC_SYSTEM.md` — line hierarchy, section/plan grammar, dimensions, callouts, hatches, typography, scale and multi-scale review.
 - `references/ANALYSIS_DRAWING_SYSTEM.md` — spatial/design analysis truth states, evidence→finding→decision chains and analysis-specific visual hierarchy.
+- `references/SPATIAL_TRANSLATION_PROTOCOL.md` — **mandatory whenever a source/project phenomenon is turned into simplified point/line/band/field/network/section/vector geometry**. Resolves `SOURCE / PHENOMENON → SPATIAL MODEL → GEOMETRIC ABSTRACTION → GRAPHIC CARRIER → VISUAL ENCODING`, including registration class and preserved/relaxed invariants before styling.
+- `references/SOURCE_CARRIER_PRECEDENCE.md` — **mandatory whenever the source already contains a decision-relevant visual/spatial carrier** such as an official guide, map, GIS layer, CAD/model view, section, annotated photograph or technical diagram. Run it before redraw/generalization; classify carrier adequacy and default to reuse when the source is already sufficient/authoritative.
 - `references/FLOW_DIRECTION_ANALYSIS.md` — mandatory for circulation, mobility, route hierarchy, direction markers, parking/transit networks or exact reconstruction of flow analysis. Adds route-edge/node graph, direction-marker taxonomy, base binding, FN-C0…FN-C3 and flow-specific machine/review gates.
 - `references/REFERENCE_RECONSTRUCTION_FIDELITY.md` — required when reconstructing a supplied drawing/reference rather than adapting its system.
 - `references/PIXEL_FORENSIC_PROTOCOL.md` — required for explicit pixel-level/exact reconstruction claims.
@@ -45,6 +47,30 @@ Then load the supporting reference appropriate to the task:
 - `templates/DRAWING_EXECUTION_TEMPLATE.md` — execution registers and TD-G0…TD-G8 review carrier.
 
 A substantial task should not skip these because a previous drawing already exists. Existing pixels may be provenance, not current authority.
+
+### Spatial translation + source-carrier precedence routing rule — mandatory
+
+For any spatial/design analysis, landscape/site analysis, route/node/field/view/threshold/drainage/ecological relation, source-map interpretation, or source-bound analytical redraw, the main router must execute this order before graphic polishing:
+
+`SOURCE / PHENOMENON → SPATIAL MODEL → SOURCE-CARRIER ADEQUACY / PRECEDENCE → GEOMETRIC ABSTRACTION → GRAPHIC CARRIER → VISUAL ENCODING`.
+
+1. Resolve Stage 1–2 in `SPATIAL_TRANSLATION_PROTOCOL.md`: what exists/is claimed, what the source proves/does not prove, and the real spatial ontology (`surface / corridor / centerline / edge / boundary / network / point event / threshold / view relation / field / sequence / other declared model`).
+2. Before Stage 3, invoke `SOURCE_CARRIER_PRECEDENCE.md` when a visual/spatial source carrier exists. Classify `SOURCE_CARRIER_ABSENT | INSUFFICIENT | SUFFICIENT | AUTHORITY`.
+3. If the source carrier is `SUFFICIENT` or `AUTHORITY`, default to `REUSE_DIRECT`. Any `TRACE_BOUNDED | DERIVE_REQUIRED | GENERALIZE_REQUIRED | SCHEMATIZE_SEPARATELY | REDRAW_JUSTIFIED` decision requires a material analytical, editability, transformation or output reason; aesthetic cleanliness, style matching, composition or easier coloring are not enough.
+4. If new geometry is still required, return to `SPATIAL_TRANSLATION_PROTOCOL.md` and declare `TRACE | DERIVE | GENERALIZE | SCHEMATIZE | INFER | DESIGN`, registration class, preserved/relaxed invariants, carrier type, source binding and `does_not_prove` before selecting lineweight/color/icon/arrow treatment.
+5. Only after this route is resolved may the task continue into `FLOW_DIRECTION_ANALYSIS`, `GRAPHIC_SYSTEM`, reconstruction/pixel modules, or technical reality/detail modules as applicable.
+
+Hard boundaries:
+
+`SEMANTIC IDENTIFICATION ≠ VALID SPATIAL TRANSLATION`.
+
+`SOURCE EXISTS ≠ REDRAW REQUIRED`.
+
+`CLEANER GRAPHIC ≠ BETTER SPATIAL TRANSLATION`.
+
+`TOPOLOGY-BOUND / SEQUENCE-BOUND / DIAGRAM-ONLY ≠ MAP-BOUND`.
+
+Machine structure check when the register is material: `tools/validate_spatial_translation.py`. Machine PASS proves register consistency only; it does not prove source interpretation, visual quality, field truth or Design KEEP.
 
 ### Reconstruction routing rule
 
