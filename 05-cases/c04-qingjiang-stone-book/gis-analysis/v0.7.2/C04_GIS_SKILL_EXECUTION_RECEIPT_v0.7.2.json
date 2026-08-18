@@ -1,0 +1,20 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_GIS_SKILL_EXECUTION_v0.7.2",
+  "supersedes_visual_set": "v0.7 (preserved as provenance)",
+  "image_generation_used": false,
+  "stable_ids": ["ENV-01", "ENV-02", "ENV-03", "ENV-04", "ENV-05", "ENV-06", "ENV-SYN-01"],
+  "current_states": {
+    "ENV-01": "EXECUTED / REVIEW PENDING",
+    "ENV-02": "EXECUTED / REVIEW PENDING",
+    "ENV-03": "HOLD / WorldCover AOI pixels missing",
+    "ENV-04": "HOLD / JRC GSW AOI pixels missing",
+    "ENV-05": "EXECUTED / DERIVED SCENARIO / REVIEW PENDING",
+    "ENV-06": "EXECUTED / ROUTE-03 + reported current roles / REVIEW PENDING",
+    "ENV-SYN-01": "EXECUTED / REVIEW PENDING"
+  },
+  "id_repair": "old ENV-03 synthesis retained in provenance; current synthesis ID is ENV-SYN-01",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "independent_review": "PENDING",
+  "production_zip_sha256": "3db7d7a68f7d9c08d405b5b66a0e5702b50467d2adb19ea3da63c30f994a814b"
+}
