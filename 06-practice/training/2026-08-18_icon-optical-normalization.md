@@ -129,5 +129,13 @@ Not automatically applicable to:
 - cases where different carriers intentionally communicate different semantics rather than the same semantic ID;
 - physical signage sizes until viewing-distance, substrate, fabrication and accessibility proof exists.
 
+## GitHub closure state
+- Branch: `training/20260818-icon-optical-normalization`
+- PR: `#277 Training: add icon optical normalization gate`
+- Material delta: 3 files; Skill + training record + editable SVG.
+- CI observed on pre-closure head `d8a064dde604fed0c43c1c7175b743913f7be715`: `AI Governance Evals #2037 = completed / success`.
+- This closure-record commit changes the PR head after that CI result; final-head CI must be read back again before any merge consideration.
+- Independent Professional Design Gate remains `HOLD`, therefore CI success cannot authorize merge or promotion.
+
 ## Truth boundary
 This exercise does not currentize C04 official icon geometry, map direction, operational state, field truth, safety instruction, accessibility compliance, signage dimensions, or production materials. `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION` remain unchanged.
