@@ -176,7 +176,6 @@ def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict
     governed_fields = sorted(required)
     for owner in owners:
         context = f"capability:{owner.get('skill_id')}"
-        # implementation_paths is allowed to be [] only for bounded non-main bodies.
         require_fields(owner, required - {"implementation_paths"}, context)
         require_present_fields(owner, {"implementation_paths"}, context)
         routing_state = owner.get("routing_state")
@@ -329,7 +328,7 @@ def validate_receipts() -> None:
         r = load_json(path)
         require_fields(r, core, f"receipt:{path.name}")
         require_fields(r.get("authority", {}), schema.get("authority_required_fields", []), f"receipt:{path.name}:authority")
-        require_fields(r.get("required_native_output", {}), schema.get("required_native_output_fields", []), f"receipt:{path.name}:native-output")
+        require_present_fields(r.get("required_native_output", {}), schema.get("required_native_output_fields", []), f"receipt:{path.name}:native-output")
         require_fields(r.get("owner_set", {}), schema.get("owner_set_required_fields", []), f"receipt:{path.name}:owner-set")
         for art in r.get("artifacts", []):
             require_fields(art, artifact_fields, f"receipt:{path.name}:artifact:{art.get('artifact_id')}")
