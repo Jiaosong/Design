@@ -63,6 +63,46 @@ Record at minimum:
 
 Promotion test: **Remove hue, marking and texture in that order: the intended action must remain inferable from geometry/state feedback before any CMF signal is credited.**
 
+## Lifecycle evidence framing gate
+
+When a render or comparison board is used to make a lifecycle claim such as `WET`, `WATERMARK`, `DIRTY-WIPED`, `SCRATCHED` or `AGED`, the camera scale must be chosen from the decision claim rather than from the desire to make the defect visually dramatic.
+
+Default evidence ladder:
+
+`WHOLE PRODUCT → LOCAL CONTEXT → INTERFACE / DETAIL`.
+
+Rules:
+
+1. Use the **minimum sufficient carrier** for the claim. Whole-product continuity requires a whole/context view; local residue may use a bounded local-context carrier; interface discontinuity must retain the adjacent materials/mechanism that make the interface meaningful.
+2. Every attacked state requires a **baseline pair** at the same camera, crop, light geometry and exposure unless the comparison explicitly states otherwise. Do not change crop or exposure inside a pair to rescue or exaggerate a direction.
+3. Carrier changes are allowed **between different claims**, not within a baseline–attack pair. A state-specific view is valid only when the decision question changes with it.
+4. A macro/detail view may diagnose a local phenomenon but may not by itself claim whole-product failure, cleanliness collapse or lifecycle severity.
+5. Preserve enough stable geometry in every non-whole carrier to recover where the crop belongs on the product. Orphan macro crops are not accepted as primary lifecycle evidence.
+6. Rendering, compositing or post-processing may expose a lifecycle proxy but may not manufacture dirt, wetness, scratch depth, ageing extent or service-life consequence beyond the declared digital hypothesis.
+
+### Required failure-seeking readback
+
+- `BASELINE_PAIR` — baseline and attack use matched camera/crop/light/exposure.
+- `WHOLE_CONSEQUENCE` — if the claim is global, inspect the whole-product carrier rather than inferring from a macro crop.
+- `CROP_RETURN` — reviewer can identify where a local/detail carrier belongs on the parent product without guessing.
+- `SEVERITY_LOCK` — hold crop and exposure constant; the claimed severity must survive.
+- `CLAIM_CARRIER` — verify that the selected carrier answers the stated decision question and is not simply the most dramatic frame.
+- `NEUTRAL_LIGHT` — when highlight or sheen is part of the lifecycle signal, retain a neutral-light readback so stylized lighting cannot manufacture failure.
+
+Hard failures:
+
+- every lifecycle state is shown as a macro/detail crop regardless of claim;
+- a local stain, watermark or scratch is described as whole-product failure without contextual evidence;
+- baseline and attacked states use different framing/exposure without explicit analytical reason;
+- crop scale itself becomes the apparent severity variable;
+- a lifecycle proxy is promoted as measured durability, chemistry, friction, ageing rate or service life.
+
+Record at minimum:
+
+`LIFECYCLE_STATE / DECISION_CLAIM / CARRIER_SCALE / PARENT_PRODUCT_ANCHOR / BASELINE_ID / ATTACK_ID / CAMERA_LOCK / CROP_LOCK / LIGHT_LOCK / EXPOSURE_LOCK / WHOLE_CONSEQUENCE_REQUIRED / PHYSICAL_VALIDATION_REQUIRED / DOES_NOT_PROVE`.
+
+Promotion test: **For every lifecycle claim, prove the minimum sufficient context and a locked baseline pair; severity must survive when crop and exposure are held constant.**
+
 ## Review inheritance
 
 Review real renders and model views at the intended camera distance. `Render PASS ≠ Design PASS`; material/light success does not promote geometry, field evidence or engineering truth.
