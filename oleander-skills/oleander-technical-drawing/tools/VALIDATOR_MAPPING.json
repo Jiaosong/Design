@@ -1,5 +1,5 @@
 {
-  "mapping_version": "0.1",
+  "mapping_version": "0.2",
   "knowledge_authority": "Notion / 50｜Methods & Design Intelligence",
   "ci_workflow": ".github/workflows/technical-drawing-analysis-evals.yml",
   "implementation_boundary": "GitHub validators enforce explicit contracts and structural contradictions only; they do not machine-award aesthetic quality or KEEP.",
@@ -53,6 +53,36 @@
       "fixture": "fixtures/reconstruction/PREVIEW-REVIEW-01_REGISTER.json",
       "machine_can_check": ["distance-read receipt", "near-read receipt", "grayscale receipt when color carries semantics", "opened flag", "issue root-cause record", "no machine KEEP state"],
       "machine_cannot_check": ["professional design quality", "independent reviewer judgment"]
+    },
+    {
+      "gate_id": "TD-SURFACE-01",
+      "knowledge_source_page_id": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
+      "supporting_knowledge_page_ids": [
+        "37bb86be-5c47-819a-aabc-c853eecd7755",
+        "3beb86be-5c47-81d0-9ed6-e94e92ece34e",
+        "3beb86be-5c47-81cf-bba1-c9189ffec419",
+        "3bfb86be-5c47-8127-822b-fa4c5adc04d9"
+      ],
+      "knowledge_rule": "surface effect must bind to an analytical, material, hierarchy, atmosphere or reference-fidelity role; gradient/texture must declare formation logic and survive OFF-state/multi-scale attack tests",
+      "reference": "references/VISUAL_SURFACE_TREATMENT.md",
+      "validator": "tools/validate_visual_surface_treatment.py",
+      "fixture": "fixtures/reconstruction/VISUAL-SURFACE-01_REGISTER.json",
+      "machine_can_check": [
+        "semantic owner and surface role",
+        "analytical gradient mapped-variable and legend binding",
+        "gradient axis/stops/interpolation/why/off-state",
+        "texture scale/density/direction/mask/variation/off-state",
+        "material truth-state declaration",
+        "near/mid/far review receipt",
+        "hierarchy treatment not masquerading as mapped data",
+        "no machine promotion"
+      ],
+      "machine_cannot_check": [
+        "whether texture is beautiful or materially convincing",
+        "whether gradient is aesthetically refined",
+        "real material roughness/finish/process",
+        "professional finish or Design KEEP"
+      ]
     }
   ]
 }
