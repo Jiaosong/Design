@@ -18,8 +18,8 @@
   "route_authority": {
     "object": "ROUTE-03",
     "state": "LOCKED CURRENT",
-    "asset": "assets/ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED.svg",
-    "sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "upstream_asset_ref": "C22 / File Library exact locked ROUTE-03 source carrier; not duplicated into this bounded GitHub module",
+    "upstream_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
     "rule": "REUSE_DIRECT / do not redraw topology or Bezier geometry",
     "presentation_derivative": "assets/ROUTE_03_APP_VIEWPORT.svg",
     "presentation_derivative_rule": "VIEWBOX_CROP_ONLY / geometry-node-text unchanged"
