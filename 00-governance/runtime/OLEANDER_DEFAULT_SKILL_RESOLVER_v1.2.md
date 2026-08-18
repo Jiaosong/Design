@@ -1,203 +1,208 @@
 # OLEANDER Default Skill Resolver v1.2
 
 Status: **ACTIVE CURRENT**  
+Implementation revision: **1.2.1**  
 Decision date: **2026-08-18**  
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
-Execution implementation: **GitHub `Jiaosong/Design`**  
-Supersedes execution pointer: **Default Skill Resolver v1.1**
+Execution implementation: **GitHub `Jiaosong/Design`**
 
 ## 0｜Purpose
 
-v1.2 preserves the v1.1 knowledge-first architecture and makes the already-Current execution contract layer part of the machine execution order.
+v1.2.1 keeps the existing knowledge-first execution architecture and adds two runtime hard gates directly into the Current Resolver:
 
-Notion continues to own current knowledge identity, naming, location, hierarchy, source relations, method relations and project relations. GitHub continues to own executable Skills, candidate specialists, runtime/tool adapters, validators, regression fixtures, typed execution receipts and implementation history.
+1. **Sticky Execution Constraint Lock** — explicit negative user constraints are resolved before owner/tool selection and remain active until explicitly revoked.
+2. **Flow Completion Gate** — a task that requires the full OLEANDER flow cannot be called complete until every applicable phase is actually closed.
+
+This is not a new Skill, METHOD, taxonomy or parallel process framework. It hardens the existing Resolver / Receipt / CI chain.
 
 Current invariant:
 
-> **CURRENT ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT KNOWLEDGE → REQUIRED NATIVE OUTPUT → EXECUTION OWNER MAP → SKILL CAPABILITY CONTRACT → MINIMUM SUFFICIENT OWNER SET / DAG → TOOL ADAPTER WHEN REQUIRED → REAL NATIVE ARTIFACT → TYPED HANDOFF → 4-LAYER REGRESSION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE → EXECUTION RECEIPT → DRIFT CHECK WHEN CROSS-PLATFORM POINTERS CHANGE → GAP DIAGNOSIS**
+> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
 
-This resolver does not create another Notion taxonomy, method registry, project-state system, review framework or orchestration Skill.
+## 1｜Notion current architecture remains upstream
 
-## 1｜Notion current architecture remains upstream authority
+Before historical navigation, method indexes or Skill files, read the Current Root Authority, live Registry and applicable Project State / Source Authority / Current Task.
 
-Before any historical navigation page, method index, Skill file or recovery manifest, read:
+Notion owns Current knowledge identity, Canonical ID, Domain, L0–L7, hierarchy, dedicated relations and project identity. GitHub owns executable Skill/runtime implementation. Old `00–70` navigation remains provenance/discovery only.
 
-- `OLEANDER｜设计知识库（Design）`, page `9150e089-9a7d-4b29-b026-175fca3a41b3`;
-- `SYS-REGISTRY｜Current System Registries｜ACTIVE v1.0`, page `3bbb86be-5c47-8164-b2ea-fee7d29ed2c0`;
-- `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`.
+## 2｜Sticky Execution Constraint Lock
 
-Current physical locations remain:
+Before selecting any execution owner, runtime, TOOL adapter or generation capability, resolve explicit constraints from:
 
-- Domain Registry → L0–L3;
-- Notes Registry → L4–L7;
-- Project Registry → P0–P4;
-- People / Inspiration / Resources → relation objects.
+1. latest explicit user instruction;
+2. Current Task explicit constraints;
+3. active Execution Receipt for the same task;
+4. Current Project Authority / recorded user decisions.
 
-Current structural hierarchy uses only `Canonical Parent｜层级上位 / Canonical Children｜层级子级`. Legacy `上位笔记 / 子级笔记` remain migration provenance only.
+Normalize applicable constraints into one of:
 
-Old `00–70` navigation, including historical `20` and `50`, remains searchable provenance/discovery only and cannot override live Registry identity, Canonical ID, Current Domain or Current hierarchy.
+- `TOOL_DENY`
+- `OUTPUT_DENY`
+- `CREATION_DENY`
+- `OWNER_REQUIRE`
+- `PROCESS_REQUIRE`
+- `REVIEW_REQUIRE`
 
-## 2｜Execution contract layer is now part of resolver execution
+Current normalized rules include:
 
-The following GitHub contracts are `ACTIVE_CURRENT` and are consumed by v1.2 rather than merely listed beside the resolver:
+- `NO_IMAGE_GENERATION`
+- `NO_NEW_SKILL`
+- `NO_NEW_METHOD`
+- `NO_NEW_FRAMEWORK`
+- `USE_EXISTING_OLEANDER_METHODS_AND_SKILLS`
+- `FULL_OLEANDER_FLOW_REQUIRED`
+- `NO_PRODUCER_SELF_PROMOTION`
 
-- `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.md/.json`;
-- `OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.md/.json`;
-- `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.md/.json`;
-- `OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.md/.json`;
-- `OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1.md/.json`;
-- `OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md/.json`;
-- `OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json`.
+### Sticky means sticky
 
-These contracts supplement the Execution Owner Map. They do not create new execution owners.
+An active constraint survives ordinary follow-ups such as:
 
-## 3｜Current capability layers
+- “继续”
+- “优化”
+- “再做一下”
+- “修一下”
+- “按 OLEANDER 做”
 
-### Installed reusable execution owners
+These phrases do **not** revoke a prohibition.
 
-The installed execution registry remains `oleander-skills/REVIEW.md`:
+A constraint can be released only by a later explicit instruction that directly changes that named constraint, for example “现在可以生图” releases `NO_IMAGE_GENERATION` only; it does not release `NO_NEW_SKILL` or `FULL_OLEANDER_FLOW_REQUIRED`.
 
-1. `oleander-research`
-2. `oleander-data-viz`
-3. `oleander-3d-pipeline`
-4. `oleander-story-and-board`
-5. `oleander-delivery-qc`
-6. `oleander-motion`
+### Hard effects
 
-### Candidate specialists on main
+`NO_IMAGE_GENERATION` means:
 
-- `oleander-game-ui`
-- `oleander-mobile-game-ui`
-- `oleander-ui-visual-composition`
-- `oleander-route-wayfinding-ui`
-- `oleander-ui-interaction`
+- do not call an image-generation tool;
+- do not route through a generative-image adapter;
+- use existing source imagery, native vector, HTML/CSS/SVG, 3D, CAD, layout or other non-generative production when suitable;
+- if the requested native output truly cannot be produced without generation, return **HOLD** rather than silently generate.
 
-`oleander-game-ui-stack` remains a router/test aggregation layer, not an independent Skill.
+`NO_NEW_SKILL / NO_NEW_METHOD / NO_NEW_FRAMEWORK` means:
 
-Technical Drawing remains `CANDIDATE_BODY` until explicit independent promotion.
+- do not create a sidecar Skill, METHOD, router, framework or parallel schema simply because a gap appears;
+- compose existing owners, use a bounded fallback, record the gap, or HOLD;
+- creation becomes eligible only after the user explicitly releases the creation deny and the existing-first gap diagnosis independently supports it.
 
-File existence, merge, repeated use or CI green does not promote any candidate.
+`USE_EXISTING_OLEANDER_METHODS_AND_SKILLS` means the relevant Current METHOD / Skill / `CAPABILITY.json` / runtime material must actually be read. Saying “我会用 OLEANDER” is not execution evidence.
 
-## 4｜Default GPT / Agent behavior
+## 3｜Execution contract layer
 
-1. Read Current Root Authority and applicable Project State / Source Authority / Current Task.
-2. Resolve live Registry identity before historical navigation.
-3. Resolve Current Domain, L0–L7, knowledge role, Canonical ID, Canonical Parent/Children and evidence state.
-4. Retrieve task-relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
-5. Reuse mature design, design source and current assets.
-6. Define the **required native output** before selecting an execution owner.
-7. Resolve the Current `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0`.
-8. Load the selected owner's capability declaration from `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1`.
-9. Select the **MINIMUM SUFFICIENT EXECUTION OWNER SET**. `NO COMPRESSION / NO LOSS` protects information, not process length.
-10. If more than one owner is required, build a bounded DAG with PRIMARY / SUPPORT / READ_ONLY / VALIDATOR / INDEPENDENT_REVIEWER roles and typed handoffs.
-11. Resolve Current TOOL adapters only when the native output actually requires them.
-12. Probe runtime/capability and choose the best-fit real production adapter.
-13. Produce the actual native/editable artifact.
-14. Emit Native Artifact records and typed handoffs; downstream owners may not silently overwrite upstream masters.
-15. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
-16. Open/render/run the actual result and perform readback.
-17. Keep Evidence Gate and independent Professional Design Gate separate.
-18. Emit one Execution Receipt for the actual execution unit.
-19. Run Notion↔GitHub drift check when Current cross-platform pointers or implementations materially change.
-20. Diagnose failures; optimize an existing Skill only when execution/readback proves a reusable gap.
-21. Create a new Skill only when no existing owner can reasonably own the capability.
-22. Write material knowledge/application deltas to the correct live Notion Registry and dedicated relation.
-23. Preserve superseded/history provenance.
+The Current execution contract layer remains:
 
-## 5｜Minimum sufficient execution
+- `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1`
+- `OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1`
+- `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1`
+- `OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1`
+- `OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1`
+- `OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1`
+- `OLEANDER_EXECUTION_RECEIPT_v1.0`
 
-Forbidden default behavior:
+The constraint lock precedes these contracts; it can restrict which owners/tools are eligible, but it cannot rewrite Notion identity or invent a new owner.
 
-`every task → Research → DataViz → Technical Drawing → Motion → QC`.
+## 4｜Minimum sufficient owner set
 
-A node enters the DAG only when it contributes a required artifact, gate, validation or independent review for the requested native output.
+`NO COMPRESSION / NO LOSS` protects information. It does not require every Skill to run.
 
-Default handoff permission is `READ_ONLY`. Use `DERIVE`, `MUTATE_PRESENTATION_ONLY` or `MUTATE_AUTHORIZED_SOURCE` only when explicitly granted.
+For each task, use the smallest owner set that can produce the required native output and applicable validation/review. Multi-owner work must use explicit DAG roles and typed handoffs.
 
-No downstream owner may silently replace the authoritative upstream master.
+**Full OLEANDER flow ≠ full Skill stack.**
 
-## 6｜TOOL / adapter boundary
+## 5｜Flow Completion Gate
 
-Current Notion TOOL objects remain knowledge/operator authority. GitHub adapters implement them.
+For OLEANDER production, mutation, training, state-changing review work, or any task explicitly marked `FULL_OLEANDER_FLOW_REQUIRED`, build an applicable-phase checklist before production.
 
-For `T-VISUAL-IMAGE-OPS-001`:
+Canonical phases:
 
-`DESIGN INTENT → EFFECT / OPERATOR ROLE → MINIMUM SUFFICIENT OPERATOR SET → PARAMETER BOUNDS → EFFECT BUDGET → EFFECT-OFF BASELINE → ACTUAL READBACK`.
+1. `AUTHORITY_PREFLIGHT`
+2. `STICKY_CONSTRAINT_RESOLUTION`
+3. `EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION`
+4. `REQUIRED_NATIVE_OUTPUT_DEFINITION`
+5. `CAPABILITY_AND_MINIMUM_OWNER_SET`
+6. `REAL_EXECUTION`
+7. `NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD`
+8. `ACTUAL_READBACK`
+9. `REGRESSION_AS_APPLICABLE`
+10. `INDEPENDENT_REVIEW_AS_APPLICABLE`
+11. `SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE`
 
-Hard temporal split:
+For full-flow work, the following core phases cannot be skipped:
 
-- `STATIC EFFECT STATE SPEC` → Image Ops adapter;
-- `STATE TRANSITION / TEMPORAL BEHAVIOUR` → `oleander-motion`.
+- Authority preflight
+- Sticky constraint resolution
+- Existing knowledge / METHOD / Skill resolution
+- Required native output definition
+- Capability + minimum owner set
+- Real execution
+- Actual readback
 
-A shared TOOL may own operator vocabulary, parameters, runtime adapters and fixtures. It must not own the final project artifact, independent design methodology, project Design Authority or review verdict.
+Other phases may be `NOT_APPLICABLE`, but only with a concrete reason.
 
-## 7｜Native artifact and provenance
+### No early completion
 
-Cross-owner handoffs use `OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1` rather than screenshots/chat descriptions alone.
+The following are intermediate states only and cannot independently justify “完成 / CLOSED / 已闭环”:
 
-Shared provenance vocabulary includes:
+- plan written;
+- method explained;
+- artifact created;
+- file exported;
+- PR opened;
+- CI green;
+- producer self-check passed;
+- render passed;
+- regression passed.
 
-`SOURCE_VISIBLE / SOURCE_EXPLICIT / REFERENCE_DERIVED_GEOMETRY / INFERRED_FROM_MARK / VISUAL_PROXY / ASSUMED_FOR_PROTOTYPE / UNREADABLE / UNKNOWN / FIELD_OPEN`.
+If any required applicable phase is missing, `FAIL` or `HOLD`, the task state is **HOLD / INCOMPLETE**, not complete.
 
-A material derivative requires a new artifact ID. A hash proves byte identity only.
+## 6｜Default GPT / Agent behavior
 
-## 8｜Regression and readback
+1. Read Current Root Authority + applicable Project State / Source Authority / Current Task.
+2. Resolve sticky execution constraints before any owner/tool selection.
+3. Enforce tool/output/creation/process locks.
+4. Resolve live Registry identity and Current knowledge context.
+5. Retrieve relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
+6. Reuse mature design/current assets and actually read required existing Skill/capability material.
+7. Define the required native output.
+8. Build the applicable Flow Completion checklist.
+9. Resolve Execution Owner Map and Skill Capability Contract.
+10. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
+11. Resolve only allowed TOOL adapters and runtime capabilities.
+12. Execute the real native/editable artifact.
+13. Emit Native Artifact records / typed handoffs as applicable.
+14. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
+15. Open/render/run the actual result and perform readback.
+16. Run Evidence Gate and independent Professional Design Gate separately where applicable.
+17. Verify the Flow Completion Gate.
+18. Emit an Execution Receipt containing the active constraint lock and flow-completion state.
+19. Run Notion↔GitHub drift check where cross-platform pointers changed.
+20. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
+21. Sync material delta and preserve provenance.
 
-Regression layers are independent:
+## 7｜Existing-first is now enforceable
 
-`STRUCTURAL → SEMANTIC → VISUAL_ROI → RUNTIME`.
+New Skill creation is not authorized by:
 
-Regression answers whether declared structure, meaning, bounded visual relationships and runtime behavior were preserved. It does **not** answer whether the design deserves KEEP.
+- a new project;
+- an interesting case;
+- a new name;
+- repeated local use;
+- file existence;
+- PR creation;
+- CI success;
+- a missing convenience helper.
 
-Actual readback remains mandatory before visual Design PASS.
+If an active `NO_NEW_SKILL / NO_NEW_METHOD / NO_NEW_FRAMEWORK` constraint exists, new creation is blocked even if a gap is real. The correct output is existing-owner composition, fallback, or HOLD until the user explicitly changes the constraint.
 
-## 9｜Independent review identity
+`NO_DEDICATED_OWNER` remains a valid state and does not automatically authorize creation.
 
-Where independent review is required, record:
+## 8｜Image-generation boundary
 
-`producer_id / reviewer_id / review_input_artifact_id / review_input_hash / reviewer_independence_state / review_verdict / promotion_authority`.
+AI imagery remains supplementary when permitted. It never replaces Source Authority, Design Authority, authoritative geometry, technical dimensions, editable text or field truth.
 
-Producer self-check may accompany the artifact but cannot become the independent verdict. A reviewer must not treat producer self-verdict as independent evidence.
+When `NO_IMAGE_GENERATION` is active, the permitted/forbidden distinction becomes simpler: **no image-generation tool or generative-image adapter is called at all.**
 
-## 10｜Execution Receipt
+The presence of an image-related output requirement does not override the lock.
 
-Each material execution unit uses `OLEANDER_EXECUTION_RECEIPT_v1.0` as the instance carrier for:
-
-- authority snapshot;
-- required native output;
-- minimum DAG;
-- typed artifacts/handoffs;
-- adapters;
-- real execution/readback;
-- four-layer regression;
-- drift check where applicable;
-- independent review identity;
-- GitHub/Notion closure references.
-
-The template does not force irrelevant sections to run. `NOT_APPLICABLE` is preferable to fake process.
-
-## 11｜Existing-first and no parallel framework
-
-Reuse Current METHOD / TOOL / Skill / runtime / asset first. New Skill creation is forbidden merely because a case is interesting, a new name exists, a PR can be made, CI is green, or a TOOL/recipe is reused widely.
-
-One Notion METHOD does not imply one GitHub Skill. One GitHub Skill does not imply one Notion Domain.
-
-`NO_DEDICATED_OWNER` is valid and does not authorize automatic Skill creation.
-
-## 12｜Production-first
-
-Design tasks default to real editable/auditable production:
-
-- UI/web → actual HTML/CSS/JS or other target-native implementation when required;
-- spatial/architecture/landscape → geometry/vector technical artifacts/model assets;
-- product/CMF → real form/material/specification assets;
-- data → source-bound structures and editable vector/interactive outputs;
-- motion → real state/motion implementation and runtime readback.
-
-AI images remain supplementary where appropriate and cannot replace Source/Design Authority, geometry, technical dimensions or editable text.
-
-## 13｜Review separations
+## 9｜Readback, regression and review
 
 - `Artifact existence ≠ Design quality`
 - `Traceability ≠ Professional finish`
@@ -207,26 +212,30 @@ AI images remain supplementary where appropriate and cannot replace Source/Desig
 - `Prototype PASS ≠ Field PASS`
 - `Regression PASS ≠ Design KEEP`
 
-## 14｜No-loss
+Producer self-check may accompany an artifact but cannot become independent Design Review where independence is required.
 
-`NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS`.
+## 10｜Execution Receipt
 
-The rule protects valid content, evidence and design systems. It does not require unnecessary execution nodes.
+The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrier. Its current policy revision requires all new execution receipts to record:
 
-## 15｜Synchronization and drift
+- active / inherited / revoked constraints;
+- denied tools / outputs / creation actions;
+- required behavior locks;
+- applicable flow phases;
+- phase results;
+- incomplete required phases;
+- final completion-gate verdict.
 
-For a material resolver/architecture change:
+Older receipts that predate this policy remain immutable provenance and are explicitly allowlisted by the Receipt contract/validator; new receipts cannot omit these sections.
 
-1. read Current Notion Root and live Registry;
-2. update GitHub implementation through branch → commit → PR → CI → readback;
-3. run repository consistency validation;
-4. update Notion only for a new Current cross-platform pointer/fact;
-5. run `LIVE_CROSS_PLATFORM_CHECK` for changed pointers;
-6. keep one Current GitHub default resolver pointer;
-7. preserve older resolver files and Legacy Notion navigation as provenance.
+## 11｜Synchronization
 
-A repository-only drift check cannot claim live Notion CURRENT.
+A material runtime change still follows:
 
-## 16｜Does not prove
+`Current Authority readback → GitHub branch → commit → PR → CI → main readback → minimal Notion Current pointer/fact update when required → live drift check`.
 
-Resolver v1.2 being ACTIVE does not promote any Notion METHOD, candidate Skill, training result or project artifact. Individual method validation, user validation, field/engineering truth, Professional Design Review and release/promotion remain separate authorities.
+A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
+
+## 12｜Does not prove
+
+Resolver v1.2.1 being Current does not prove project design quality, field truth, engineering validity, user validation or candidate promotion. It only makes user constraints and flow completeness first-class execution requirements instead of verbal promises.
