@@ -34,6 +34,18 @@ def base_receipt():
     }
 
 
+def base_receipt_v2():
+    d = base_receipt()
+    d['schema'] = 'oleander.3d.reference-regression-promotion-receipt.v2'
+    d['best_known_gate_baselines'] = {
+        'SIDE_UPPER': {'revision': 'V23', 'value': 0.03, 'evidence_source': 'projection'},
+        'SIDE_LOWER': {'revision': 'V23', 'value': 0.06, 'evidence_source': 'projection'},
+    }
+    for lock in d['regression_locks']:
+        lock['baseline_revision'] = 'V23'
+    return d
+
+
 class RegressionPromotionValidatorTests(unittest.TestCase):
     def test_valid_promotion(self):
         self.assertEqual(mod.validate(base_receipt())['promotion_decision'], 'PROMOTE_OVER_LKG')
@@ -57,6 +69,21 @@ class RegressionPromotionValidatorTests(unittest.TestCase):
     def test_rejected_experiment_can_validate_as_evidence(self):
         d = base_receipt(); d['regression_locks'][0]['status'] = 'REGRESSED'; d['promotion_decision'] = 'KEEP_LKG_REJECT_EXPERIMENT'
         self.assertEqual(mod.validate(d)['promotion_decision'], 'KEEP_LKG_REJECT_EXPERIMENT')
+
+    def test_valid_v2_best_known_baselines(self):
+        self.assertEqual(mod.validate(base_receipt_v2())['schema'], 'oleander.3d.reference-regression-promotion-receipt.v2')
+
+    def test_v2_weaker_baseline_revision_fails(self):
+        d = base_receipt_v2(); d['regression_locks'][0]['baseline_revision'] = 'V20'
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_v2_weaker_baseline_value_fails(self):
+        d = base_receipt_v2(); d['regression_locks'][0]['baseline'] = 0.04
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_v2_wrong_best_known_evidence_fails(self):
+        d = base_receipt_v2(); d['best_known_gate_baselines']['SIDE_UPPER']['evidence_source'] = 'old_projection'
+        with self.assertRaises(ValueError): mod.validate(d)
 
 
 if __name__ == '__main__':
