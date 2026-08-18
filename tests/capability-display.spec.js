@@ -51,7 +51,7 @@ async function desktopOverflowDiagnostics(page) {
   });
 }
 
-test('XJ01 PRO-04.2 binds the editorial presentation spine and retained VE06 VE07 evidence', async ({ page }, testInfo) => {
+test('XJ01 PRO-04.2 binds the editorial presentation spine and verified VE06 VE07 evidence', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'chromium-desktop');
   await waitForXJ01(page);
 
@@ -64,8 +64,8 @@ test('XJ01 PRO-04.2 binds the editorial presentation spine and retained VE06 VE0
   await expect(page.locator('#p01')).toContainText('Direction DNA');
   await expect(page.locator('#p02')).toContainText('Colour × Material × Geometry');
   await expect(page.locator('#p03')).toContainText('Where materials meet');
-  await expect(page.locator('#p04 img[src*="pro04-environment-d2-2x3.jpg"]')).toHaveCount(1);
-  await expect(page.locator('#p05 img[src*="pro04-lifecycle-d2-2x3.jpg"]')).toHaveCount(1);
+  await expect(page.locator('#p04 img[src*="pro04-environment-d2-2x3.webp"]')).toHaveCount(1);
+  await expect(page.locator('#p05 img[src*="pro04-lifecycle-d2-2x3.webp"]')).toHaveCount(1);
   await expect(page.locator('#p04')).not.toContainText('SUPPORT ONLY');
   await expect(page.locator('#p05')).not.toContainText('SUPPORT ONLY');
   await expect(page.locator('#p06')).toContainText('What this digital CMF study proves');
