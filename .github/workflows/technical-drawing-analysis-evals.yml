@@ -71,6 +71,14 @@ jobs:
       - name: Exercise node-mode regressions
         run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_node_mode_regression.py
 
+      - name: Validate visual surface treatment fixture
+        run: >-
+          python oleander-skills/oleander-technical-drawing/tools/validate_visual_surface_treatment.py
+          oleander-skills/oleander-technical-drawing/fixtures/reconstruction/VISUAL-SURFACE-01_REGISTER.json
+
+      - name: Exercise visual surface treatment regressions
+        run: python oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_visual_surface_treatment_regression.py
+
       - name: Publish validator boundary
         if: always()
         run: |
@@ -81,4 +89,5 @@ jobs:
           echo '- Enforces analysis-board finding, first-read label budget, dominant-panel binding and declared reading-tempo diversity.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Separates SPATIAL_EVENT nodes from CONSTRUCTION_INTERFACE nodes and validates their different ownership contracts.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Requires actual-preview review receipts for distance/near read and grayscale when color carries semantics.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Machine PASS proves contract consistency only; it does not award Professional Design PASS, KEEP, Engineering PASS, Field PASS or Promotion.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates gradient/texture/materiality surface contracts: semantic owner, mapped variable when analytical, gradient/texture formation logic, OFF-state attacks and near/mid/far review.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Machine PASS proves contract consistency only; it does not award Professional Design PASS, material truth, KEEP, Engineering PASS, Field PASS or Promotion.' >> "$GITHUB_STEP_SUMMARY"
