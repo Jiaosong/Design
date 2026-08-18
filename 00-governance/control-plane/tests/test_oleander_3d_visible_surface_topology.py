@@ -6,11 +6,11 @@ spec=importlib.util.spec_from_file_location('topoval',TOOL);mod=importlib.util.m
 
 def valid():
  return {
-  'schema':'oleander.3d.visible-surface-topology-receipt.v1','revision':'V27',
+  'schema':'oleander.3d.visible-surface-topology-receipt.v1','revision':'V29',
   'opaque_cabin_object':'DERIVED_911_9922_CABIN','opaque_cabin_exists':True,
-  'opaque_cabin_architecture':'CONNECTED_SHARED_BOUNDARY_CABIN_V27',
-  'opaque_cabin_connected_components':1,'shared_vertex_boundary_count':6,
-  'aperture_boundary_gap_max_m':0.0004,'open_patch_rim_walls':False,
+  'opaque_cabin_architecture':'PROFILE_INVERTED_CONNECTED_CABIN_V29',
+  'opaque_cabin_connected_components':1,'shared_vertex_boundary_count':8,
+  'aperture_boundary_gap_max_m':0.0004,'adjacent_face_normal_flip_count':0,'open_patch_rim_walls':False,
   'forbidden_floating_interface_objects':[],'forbidden_floating_interface_count':0,
   'real_glazing_objects':['REF_WINDSHIELD','REF_DOOR_GLASS_L','REF_DOOR_GLASS_R','REF_QUARTER_GLASS_L','REF_QUARTER_GLASS_R','REF_REAR_GLASS'],
   'no_opaque_surface_behind_glazing_declared':True,
@@ -27,6 +27,9 @@ class T(unittest.TestCase):
   with self.assertRaises(ValueError):mod.validate(d)
  def test_boundary_gap_fails(self):
   d=valid();d['aperture_boundary_gap_max_m']=.006
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_normal_flip_fails(self):
+  d=valid();d['adjacent_face_normal_flip_count']=3
   with self.assertRaises(ValueError):mod.validate(d)
  def test_open_patch_rim_wall_fails(self):
   d=valid();d['open_patch_rim_walls']=True
