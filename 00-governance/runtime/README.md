@@ -10,12 +10,16 @@ Use:
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json`
+- `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md`
+- `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json`
 
 Canonical default:
 
-`CURRENT NOTION ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE → EXISTING MATURE DESIGN → GITHUB EXECUTABLE SKILL → REQUIRED NATIVE OUTPUT → CAPABILITY PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE`
+`CURRENT NOTION ROOT AUTHORITY → LIVE REGISTRY → CURRENT DOMAIN / L0–L7 / ROLE / CANONICAL ID → CURRENT METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE → REQUIRED NATIVE OUTPUT → GITHUB EXECUTION OWNER MAP → EXISTING MATURE DESIGN / EXECUTION SKILL → CAPABILITY PROBE → REAL EXECUTION → ACTUAL READBACK → EVIDENCE GATE + INDEPENDENT DESIGN QUALITY GATE`
 
 The GitHub installed-skill list is the formal reusable **execution** registry, not the complete OLEANDER design-intelligence inventory. GitHub Skill names are execution identifiers and must not be copied into Notion as a parallel taxonomy.
+
+The execution-owner map is a routing layer only. `NO_DEDICATED_OWNER` is a valid result and does not authorize automatic creation of a new Skill. Candidate specialist status must remain explicit.
 
 Current Notion structural routing must use the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy `上位笔记 / 子级笔记` are not current routing authority.
 
