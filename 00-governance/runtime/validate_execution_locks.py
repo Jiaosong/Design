@@ -108,7 +108,7 @@ def validate_resolver() -> dict:
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "ACTUAL_READBACK",
         "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE_OR_COMPLETE_CLAIM",
-        "EMIT_EXECUTION_RECEIPT_WITH_CONSTRAINT_LOCK_AND_FLOW_COMPLETION",
+        "EMIT_EXECUTION_RECEIPT",
     ]
     positions = []
     for token in required_order:
