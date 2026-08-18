@@ -1,0 +1,31 @@
+{
+  "schema": "oleander.reference-front-identity.porsche-911-992-2.v1",
+  "reference_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_IMAGE_MEASUREMENT_NOT_MANUFACTURER_CAD",
+  "source": {
+    "image": "FRONT_9922.jpg",
+    "sha256": "fc3742d21282178e4751c3e0ea0449a843c19fa6751b82687fdfc958480589db",
+    "description": "same-revision public near-front studio image persisted by OLEANDER reference-image acquisition"
+  },
+  "measurement": {
+    "image_px": [1800, 1200],
+    "method": "Hough-circle candidates cross-checked against the two visible round headlamp lenses; main body width estimated from the continuous dark vehicle body span near the lamp/bumper zone, excluding mirrors",
+    "left_lamp_center_px": [583, 497],
+    "right_lamp_center_px": [1218, 505],
+    "mean_lamp_radius_px": 56.8,
+    "main_body_span_px": [492, 1306],
+    "main_body_width_px": 815,
+    "main_body_center_x_px": 899,
+    "lamp_center_lateral_ratio_of_half_body_width": 0.779,
+    "visible_lamp_diameter_ratio_of_body_width": 0.139,
+    "uncertainty_note": "studio perspective, lens bezel thickness and threshold selection remain; ratios are screening/causal design targets, not engineering dimensions"
+  },
+  "identity_relations": [
+    "round lamp lens is integrated inside the raised fender crown rather than attached to a flat front wall",
+    "hood center mass reads lower/less dominant than the twin outer fender crowns around the lamps",
+    "lower intake mass begins below the lamp/fender band and must not replace the primary hood/fender relationship"
+  ],
+  "allowed_transfer": "lamp/fender gross position, lamp visible diameter proportion, hood-valley vs fender-crown identity relation",
+  "forbidden_transfer": "engineering lamp package dimensions, exact optical module, fascia tooling, homologation lighting geometry, manufacturer surface CAD",
+  "does_not_prove": ["manufacturer CAD", "engineering lamp dimensions", "Class-A continuity", "homologation", "commercial IP clearance"]
+}
