@@ -9,6 +9,7 @@ on:
       - '00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py'
       - '00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py'
       - '00-governance/control-plane/tests/test_oleander_3d_regression_baseline_protocol.py'
+      - '00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py'
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
@@ -27,14 +28,16 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v19.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v20.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v22.py \
-            oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py
+            oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py
           python3 -m unittest \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
             00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py \
             00-governance/control-plane/tests/test_oleander_3d_reference_fidelity.py \
             00-governance/control-plane/tests/test_oleander_3d_reference_image_calibration.py \
             00-governance/control-plane/tests/test_oleander_3d_rendered_projection_fidelity.py \
-            00-governance/control-plane/tests/test_oleander_3d_regression_baseline_protocol.py
+            00-governance/control-plane/tests/test_oleander_3d_regression_baseline_protocol.py \
+            00-governance/control-plane/tests/test_oleander_3d_regression_promotion_validator.py
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
