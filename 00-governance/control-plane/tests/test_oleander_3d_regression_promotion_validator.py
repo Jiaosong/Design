@@ -29,7 +29,13 @@ def base_receipt():
         'measurement_method_ids': ['FINAL_EVALUATED_MESH_XZ', 'FINAL_EVALUATED_MESH_YZ'],
         'measurement_comparability': 'COMPARABLE',
         'promotion_decision': 'PROMOTE_OVER_LKG',
-        'visual_review_state': 'HOLD',
+        'visual_review_state': 'KEEP',
+        'independent_visual_review': {
+            'independent': True,
+            'owner_is_reviewer': False,
+            'reviewer_role': 'OLEANDER_INDEPENDENT_DESIGN_CRIT',
+            'evidence_source': 'independent-reference-comparison-receipt.json',
+        },
         'does_not_prove': ['manufacturer CAD'],
     }
 
@@ -47,7 +53,7 @@ def base_receipt_v2():
 
 
 class RegressionPromotionValidatorTests(unittest.TestCase):
-    def test_valid_promotion(self):
+    def test_valid_promotion_requires_independent_visual_keep(self):
         self.assertEqual(mod.validate(base_receipt())['promotion_decision'], 'PROMOTE_OVER_LKG')
 
     def test_regression_blocks_promotion(self):
@@ -62,12 +68,32 @@ class RegressionPromotionValidatorTests(unittest.TestCase):
         d = base_receipt(); d['visual_review_state'] = 'REJECT'
         with self.assertRaises(ValueError): mod.validate(d)
 
+    def test_visual_hold_blocks_promotion(self):
+        d = base_receipt(); d['visual_review_state'] = 'HOLD'
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_visual_not_run_blocks_promotion(self):
+        d = base_receipt(); d['visual_review_state'] = 'NOT_RUN'
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_missing_independent_review_blocks_promotion(self):
+        d = base_receipt(); d.pop('independent_visual_review')
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_owner_self_review_blocks_promotion(self):
+        d = base_receipt(); d['independent_visual_review']['owner_is_reviewer'] = True
+        with self.assertRaises(ValueError): mod.validate(d)
+
+    def test_non_independent_review_blocks_promotion(self):
+        d = base_receipt(); d['independent_visual_review']['independent'] = False
+        with self.assertRaises(ValueError): mod.validate(d)
+
     def test_incomparable_requires_hold_or_rebase(self):
-        d = base_receipt(); d['measurement_comparability'] = 'NOT_COMPARABLE'; d['promotion_decision'] = 'KEEP_LKG_HOLD_EXPERIMENT'
+        d = base_receipt(); d['measurement_comparability'] = 'NOT_COMPARABLE'; d['promotion_decision'] = 'KEEP_LKG_HOLD_EXPERIMENT'; d['visual_review_state'] = 'HOLD'
         self.assertEqual(mod.validate(d)['promotion_decision'], 'KEEP_LKG_HOLD_EXPERIMENT')
 
     def test_rejected_experiment_can_validate_as_evidence(self):
-        d = base_receipt(); d['regression_locks'][0]['status'] = 'REGRESSED'; d['promotion_decision'] = 'KEEP_LKG_REJECT_EXPERIMENT'
+        d = base_receipt(); d['regression_locks'][0]['status'] = 'REGRESSED'; d['promotion_decision'] = 'KEEP_LKG_REJECT_EXPERIMENT'; d['visual_review_state'] = 'REJECT'
         self.assertEqual(mod.validate(d)['promotion_decision'], 'KEEP_LKG_REJECT_EXPERIMENT')
 
     def test_valid_v2_best_known_baselines(self):
