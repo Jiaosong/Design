@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#f4f1ea"/>
+<text x="100" y="90" font-family="Arial, sans-serif" font-size="28" letter-spacing="3" fill="#1f2d2b">OLEANDER TRAINING / C04 R06</text>
+<text x="100" y="145" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#1b2524">LANDSCAPE FIRST → RELATION REVEAL</text>
+<text x="100" y="188" font-family="Arial, sans-serif" font-size="22" fill="#59615f">Same-source geometry · NTS · PROVISIONAL / SOURCE-GROUNDED / FIELD OPEN</text>
+<rect x="100" y="245" width="820" height="610" rx="18" fill="#e6e2d7" stroke="#c5c0b3" stroke-width="2"/>
+<rect x="1000" y="245" width="820" height="610" rx="18" fill="#e6e2d7" stroke="#c5c0b3" stroke-width="2"/>
+<path d="M130 690 C220 570 300 530 390 555 C480 580 515 470 620 455 C720 440 790 500 890 430 L890 825 L130 825 Z" fill="#b9b5a8"/>
+<path d="M130 700 C250 650 350 645 450 675 C560 708 680 710 890 640 L890 825 L130 825 Z" fill="#8f9d95"/>
+<path d="M145 730 C275 690 390 690 510 718 C620 742 750 735 875 700" fill="none" stroke="#4d8b8f" stroke-width="38" stroke-linecap="round"/>
+<path d="M160 690 C300 625 450 615 585 648 C690 674 785 665 860 628" fill="none" stroke="#dcd8cd" stroke-width="9" opacity=".9"/>
+<circle cx="590" cy="615" r="16" fill="#8b5f49"/><circle cx="260" cy="625" r="12" fill="#8b5f49"/><line x1="260" y1="625" x2="590" y2="615" stroke="#495150" stroke-width="3"/>
+<text x="140" y="285" font-family="Arial, sans-serif" font-size="20" letter-spacing="2" fill="#59615f">A / LANDSCAPE FIRST</text>
+<text x="140" y="325" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2928">First read: valley + river + crossing</text>
+<text x="140" y="800" font-family="Arial, sans-serif" font-size="18" fill="#59615f">No explanatory overlay. The scene must remain readable after all labels are removed.</text>
+<g transform="translate(900,0)">
+<path d="M130 690 C220 570 300 530 390 555 C480 580 515 470 620 455 C720 440 790 500 890 430 L890 825 L130 825 Z" fill="#b9b5a8"/>
+<path d="M130 700 C250 650 350 645 450 675 C560 708 680 710 890 640 L890 825 L130 825 Z" fill="#8f9d95"/>
+<path d="M145 730 C275 690 390 690 510 718 C620 742 750 735 875 700" fill="none" stroke="#4d8b8f" stroke-width="38" stroke-linecap="round"/>
+<path d="M160 690 C300 625 450 615 585 648 C690 674 785 665 860 628" fill="none" stroke="#dcd8cd" stroke-width="9" opacity=".9"/>
+<circle cx="590" cy="615" r="16" fill="#8b5f49"/><circle cx="260" cy="625" r="12" fill="#8b5f49"/><line x1="260" y1="625" x2="590" y2="615" stroke="#495150" stroke-width="3"/>
+</g>
+<path d="M1260 625 C1370 590 1450 590 1535 610 C1605 625 1685 620 1760 590" fill="none" stroke="#9d5e42" stroke-width="4" stroke-dasharray="12 10"/>
+<circle cx="1490" cy="615" r="56" fill="none" stroke="#9d5e42" stroke-width="3"/>
+<line x1="1490" y1="558" x2="1490" y2="500" stroke="#9d5e42" stroke-width="2"/><text x="1510" y="495" font-family="Arial, sans-serif" font-size="18" fill="#6a4031">R06 observation relation</text>
+<line x1="1160" y1="625" x2="1160" y2="530" stroke="#59615f" stroke-width="2"/><text x="1080" y="520" font-family="Arial, sans-serif" font-size="18" fill="#59615f">crossing / moving viewpoint</text>
+<text x="1040" y="285" font-family="Arial, sans-serif" font-size="20" letter-spacing="2" fill="#59615f">B / RELATION REVEAL</text>
+<text x="1040" y="325" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2928">Second read: reveal only what changes the decision</text>
+<text x="1040" y="800" font-family="Arial, sans-serif" font-size="18" fill="#59615f">Overlay is subordinate. It annotates the same geometry instead of replacing it.</text>
+<line x1="100" y1="930" x2="1820" y2="930" stroke="#b8b2a4" stroke-width="2"/>
+<text x="100" y="980" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2928">PROMOTION GATE</text><text x="330" y="980" font-family="Arial, sans-serif" font-size="20" fill="#59615f">If A is not project-readable without labels, B cannot rescue it. Abstract proxy ≠ Main visual.</text>
+<text x="100" y="1025" font-family="Arial, sans-serif" font-size="16" fill="#7a7f7c">Training artifact only · schematic relation study · does not prove field geometry, dimensions, constructability, or final design.</text>
+</svg>
