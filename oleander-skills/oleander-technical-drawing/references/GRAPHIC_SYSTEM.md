@@ -309,7 +309,146 @@ But every critical distinction needs redundant line/pattern/text semantics for g
 
 Use color late. Position, scale, grouping, stroke and pattern should establish the hierarchy first.
 
-## 16. Raster/context imagery
+## 16. Surface / materiality / gradient / texture expression
+
+This layer is optional and subordinate to geometry, semantics and hierarchy. It exists to add material reading, tonal depth, density/state continuity or source-faithful visual character after the structural carrier is already correct.
+
+Use this stack when surface expression is material to the task:
+
+`FLAT GEOMETRY → CHROMATIC FIELD → GRADIENT / TONAL MODULATION → TEXTURE SCALE → FINISH / EDGE BEHAVIOUR → MEDIUM / OPTICAL DECAY`.
+
+### 16.1 Flat master first
+
+Maintain a recoverable flat/vector master. Texture, gradient, glow, blur, shadow or noise may not be the only reason an object remains legible.
+
+Hard rule:
+
+`EFFECT OFF → GEOMETRY / RELATION / STATE STILL READS`.
+
+If turning an effect off destroys the analytical or technical meaning, the effect has become an unauthorized semantic carrier and the upstream geometry/encoding must be repaired.
+
+### 16.2 Gradient / tonal modulation
+
+A gradient is not an automatic quality or “premium” device. Before using one, register:
+
+`ROLE → AXIS / FIELD → STOPS → CONTRAST RANGE → OWNER / MASK → WHY → OFF-STATE`.
+
+Legitimate roles include:
+- restrained material-volume cue;
+- source-visible tonal modulation in reconstruction;
+- continuous scalar/density field where a continuous scale is actually valid;
+- controlled emphasis falloff around one decision-critical object;
+- state/time interpolation in a declared screen/animation context.
+
+Rules:
+- prefer low-span, neighboring tonal/chromatic shifts when the role is material depth rather than categorical data;
+- do not use rainbow or multi-direction gradients without a declared encoding reason;
+- do not let a smooth gradient imply measured continuity when the evidence is categorical, sparse or uncertain;
+- in exact reconstruction, gradient geometry/stops/opacity are fidelity objects and must reproduce the reference rather than “improve” it;
+- in technical/analysis drawings, any data-bearing gradient requires units/domain/scale/legend where needed;
+- avoid generic glass/glow/aurora treatment unless the source or design system explicitly requires it.
+
+### 16.3 Texture scale and variation
+
+Do not treat `texture` as one global noise overlay. Separate at least these scales when relevant:
+
+- `MICRO` — grain, stipple, paper tooth, fine surface noise;
+- `MESO` — abrasion, weave, aggregate, repeated pattern, local irregularity;
+- `MACRO` — vein, layer, grain direction, broad erosion/flow/stratification pattern.
+
+For each texture family record:
+
+`SCALE → DENSITY RANGE → DIRECTIONALITY → LOCAL MASK / OWNER → VARIATION SEED / PHASE → CONTRAST → FAILURE TRIGGER`.
+
+Rules:
+- texture must be owned by a material, state, field, object or source-visible region; no full-sheet anonymous noise by default;
+- avoid identical repeated stamps and globally uniform grain when natural or material variation is part of the intended reading;
+- preserve clean negative/critical channels where texture would reduce legibility;
+- texture orientation may not imply a real lay/grain/flow direction unless that direction is intended or source-grounded;
+- prefer editable SVG pattern/mask/procedural/vector methods when editability is required; raster texture may support appearance but cannot replace semantic geometry;
+- for reference reconstruction, separate source-derived visual texture from recovered semantic objects and do not claim texture fidelity as data recovery.
+
+### 16.4 Finish, edge and optical behaviour
+
+Use opacity falloff, controlled highlight/shade, edge wear, local softness, blur or shadow only when they have a defined owner and reading role.
+
+They may support:
+- foreground/background separation;
+- material edge behaviour;
+- source-visible optical softness;
+- a bounded depth cue;
+- focus hierarchy in screen presentation.
+
+They may not:
+- fabricate material properties such as gloss/roughness/coating thickness;
+- hide geometry conflicts;
+- create false elevation or spatial depth in a map-bound analytical figure;
+- turn a technical drawing into a pseudo-render that weakens line authority.
+
+### 16.5 Effect attack tests
+
+For a material visual layer, test at minimum:
+
+`FLAT → GRADIENT OFF → TEXTURE OFF → GRAYSCALE → TARGET SIZE → SMALL SIZE → REVERSE / DARK-LIGHT VARIANT WHEN RELEVANT → PRINT / EMBOSS / MONO FALLBACK WHEN RELEVANT → NEAR READ → DISTANCE READ`.
+
+A surface treatment is `REVISE` when:
+- it is required to rescue weak geometry;
+- it creates a second focal center without a decision reason;
+- it turns categorical evidence into false continuity;
+- it reads as decorative aging, random grain, glass/glow or “tech effect” unrelated to the project;
+- it collapses at small size or blocks dimensions/labels/interfaces;
+- the editable flat master cannot be recovered.
+
+## 17. Temporal / dynamic expression routing
+
+A static technical drawing does not own motion merely because motion looks more advanced. When time, interaction or state transition materially improves the communication, route the temporal layer to the existing `oleander-motion` skill rather than inventing a parallel motion system here.
+
+Use the cross-skill sequence:
+
+`STATIC / NO-MOTION BASELINE → STATE OR INFORMATION CHANGE → MOTION ROLE → STRUCTURAL EFFECT → TIMING / EASING OR PHYSICS → REDUCED-MOTION ALTERNATIVE → REAL RUNTIME READBACK`.
+
+Relevant motion roles for drawing/data/analysis work include:
+- `Continuity` — preserve object identity through view/state transitions;
+- `Hierarchy` — move attention from old primary to new primary without dual-focus frames;
+- `Attention` — reveal a material change/risk/decision only when necessary;
+- `Narrative` — sequence evidence → finding → decision;
+- `MOT-06 Data / Information Motion` — sorting, filtering, temporal change, update and uncertainty;
+- `MOT-03 Spatial Continuity` — route, section, camera, layer or spatial-state continuity;
+- `MOT-04 Brand Motion` — only when a repeatable temporal identity is part of the design system.
+
+Prefer structural mechanisms such as:
+- shared-element / shared-container continuity;
+- mask/clip reveal;
+- SVG path trace when path growth itself represents sequence/flow;
+- topology-safe morph only when object identity is preserved;
+- structured stagger tied to order or hierarchy;
+- data interpolation/reorder with stable entity keys;
+- controlled opacity/tone/material parameter transition;
+- explode/assemble for actual assembly logic;
+- scroll progress only when scroll position legitimately owns the narrative sequence.
+
+Avoid by default:
+- infinite floating;
+- decorative parallax;
+- generic logo reveals;
+- glow trails;
+- cursor followers;
+- magnetic effects;
+- gratuitous glitch/displacement;
+- scroll-jacking;
+- full-screen zoom transitions with no state/space reason.
+
+Temporal hierarchy rule:
+
+`OLD PRIMARY → CONTINUITY ANCHOR → OLD PRIMARY DOWNWEIGHT → NEW PRIMARY ACQUIRE → OLD STATE SUPPORT`.
+
+A crossfade is not automatically correct. If old and new states both retain full first-visual weight in intermediate frames, the transition is `REVISE` even when easing is smooth.
+
+For motion-dependent output, `AR-S10 Motion` and the runtime evidence contract from `oleander-motion` are mandatory. A storyboard, keyframe plan or rendered demo is not runtime validation. Reduced Motion must preserve the same information even if positional animation is removed.
+
+For exact reconstruction of a static source, do not invent animation. For adaptation/interactive interpretation, record motion as a separate derivative and keep the static/source-fidelity claim independent.
+
+## 18. Raster/context imagery
 
 Raster imagery may be used as:
 - site/reference underlay;
@@ -326,12 +465,13 @@ It must not replace:
 
 If AI imagery is used, it is a non-authoritative visualization layer only. Never derive hidden dimensions, connections, foundations or site facts from invented pixels.
 
-## 17. Export visual checks
+## 19. Export visual checks
 
 After export to PDF/SVG/DXF/PNG as applicable:
 - compare against source at matched crop/scale;
 - verify line hierarchy did not collapse;
 - verify dashes, hatches and transparency did not change materially;
+- verify gradient stops/masks, opacity, blend and texture phase/density did not change materially when those layers are part of the reviewed visual system;
 - verify CJK and Latin text survived;
 - verify dimensions and leader targets remain aligned;
 - verify vector text/linework remains vector where required;
