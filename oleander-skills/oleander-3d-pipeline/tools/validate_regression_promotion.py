@@ -2,6 +2,7 @@
 """Validate OLEANDER 3D reference-reproduction regression promotion receipts."""
 from __future__ import annotations
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -13,11 +14,20 @@ DECISIONS = {
 }
 LOCK_STATES = {'PASS', 'REGRESSED', 'NOT_COMPARABLE'}
 VISUAL_STATES = {'KEEP', 'REVISE', 'REJECT', 'HOLD', 'NOT_RUN'}
+SCHEMA_V1 = 'oleander.3d.reference-regression-promotion-receipt.v1'
+SCHEMA_V2 = 'oleander.3d.reference-regression-promotion-receipt.v2'
 
 
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise ValueError(message)
+
+
+def same_number(a, b, tol=1e-12):
+    try:
+        return math.isfinite(float(a)) and math.isfinite(float(b)) and abs(float(a)-float(b)) <= tol
+    except Exception:
+        return False
 
 
 def validate(d: dict) -> dict:
@@ -29,7 +39,7 @@ def validate(d: dict) -> dict:
     ]
     for key in required:
         require(key in d, f'missing:{key}')
-    require(d['schema'] == 'oleander.3d.reference-regression-promotion-receipt.v1', 'bad:schema')
+    require(d['schema'] in (SCHEMA_V1, SCHEMA_V2), 'bad:schema')
     require(isinstance(d['baseline_revision'], str) and d['baseline_revision'], 'bad:baseline_revision')
     require(isinstance(d['candidate_revision'], str) and d['candidate_revision'], 'bad:candidate_revision')
     require(d['baseline_revision'] != d['candidate_revision'], 'bad:same_revision')
@@ -50,12 +60,31 @@ def validate(d: dict) -> dict:
     locks = d['regression_locks']
     require(isinstance(locks, list) and locks, 'bad:regression_locks')
     seen = set()
+
+    best = None
+    if d['schema'] == SCHEMA_V2:
+        best = d.get('best_known_gate_baselines')
+        require(isinstance(best, dict) and best, 'missing:best_known_gate_baselines')
+
     for i, lock in enumerate(locks):
-        for key in ('id', 'baseline', 'candidate', 'limit', 'status', 'evidence_source'):
+        keys = ['id', 'baseline', 'candidate', 'limit', 'status', 'evidence_source']
+        if d['schema'] == SCHEMA_V2:
+            keys += ['baseline_revision']
+        for key in keys:
             require(key in lock, f'missing:regression_locks[{i}].{key}')
         require(lock['id'] not in seen, f'duplicate:regression_lock:{lock["id"]}')
         seen.add(lock['id'])
         require(lock['status'] in LOCK_STATES, f'bad:regression_locks[{i}].status')
+
+        if d['schema'] == SCHEMA_V2:
+            require(lock['id'] in best, f'missing:best_known_gate_baselines.{lock["id"]}')
+            b = best[lock['id']]
+            require(isinstance(b, dict), f'bad:best_known_gate_baselines.{lock["id"]}')
+            for key in ('revision', 'value', 'evidence_source'):
+                require(key in b, f'missing:best_known_gate_baselines.{lock["id"]}.{key}')
+            require(lock['baseline_revision'] == b['revision'], f'weaker_baseline:revision:{lock["id"]}')
+            require(same_number(lock['baseline'], b['value']), f'weaker_baseline:value:{lock["id"]}')
+            require(lock['evidence_source'] == b['evidence_source'], f'weaker_baseline:evidence:{lock["id"]}')
 
     if d['promotion_decision'] == 'PROMOTE_OVER_LKG':
         require(delta['improved'] is True, 'unsafe_promotion:target_not_improved')
