@@ -1,0 +1,67 @@
+{
+  "record": "C04_APP_VERSION_LINEAGE_RECONCILIATION_v0_2",
+  "status": "CURRENTIZATION SUPPORT / NO_PROMOTION",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream": "PRJ-C04-DIGITAL-INTERACTION [P3]",
+  "lineage": [
+    {
+      "version": "v1.25",
+      "role": "specialist visual / contextual HUD / inherited 12-state baseline",
+      "authority_today": "ANCESTOR / PROVENANCE",
+      "notes": "v1.26 explicitly states that v1.25 visual language, route topology and 12-state system remain current at the time of that rebuild. Current C04 route authority later supersedes the route-topology portion only."
+    },
+    {
+      "version": "v1.26",
+      "file": "C04_QINGJIANG_APP_v1_26_OLEANDER_FRAMEWORK_REBUILD_PORTABLE.html",
+      "role": "Product / Journey / IA / Service architecture ancestor",
+      "authority_today": "REQUIRED ARCHITECTURE ANCESTOR / NOT CURRENT AS A WHOLE",
+      "preserve": [
+        "APP_INIT framework setup",
+        "QUICK / DEEP / FAMILY reading modes with MODE != PERSONA",
+        "page architecture metadata and optional reading model",
+        "Return Guard as architectural priority rather than countdown gamification",
+        "Digital OFF / no-phone continuity",
+        "UNKNOWN/CLOSED fail-closed behavior",
+        "Reduced Motion semantics",
+        "Framework -> specialist Skill governance order"
+      ],
+      "superseded_or_stale": [
+        "v1.25-inherited custom route topology as route-geometry authority",
+        "legacy C04-WS provenance pointers as current workstream identity"
+      ],
+      "source_boundary": "v1.26 is not demoted because its product architecture is wrong; it is non-current as a whole because route authority and workstream identity advanced after it."
+    },
+    {
+      "version": "v1.27",
+      "file": "C04_QINGJIANG_APP_v1_27_GAME_ARCHITECTURE_FIX_PORTABLE.html",
+      "role": "navigation / contextual game architecture successor to v1.26",
+      "authority_today": "HIGHEST DISCOVERED USER-OWNED CANDIDATE PROVENANCE / NOT CURRENT",
+      "preserve": [
+        "4-primary IA: TODAY / ROUTE / MY BOOK / SERVICE",
+        "READ as a route-context child rather than a primary app section",
+        "R06 and R13 as route-context scene descendants",
+        "route-child rail and return-to-route behavior",
+        "public UI hides research classification labels",
+        "v1.26 framework system remains inherited"
+      ],
+      "replace": [
+        "embedded custom guide-route geometry as route authority"
+      ]
+    },
+    {
+      "version": "currentization-v0.1",
+      "role": "bounded ROUTE-03 authority correction",
+      "authority_today": "CANDIDATE / REVIEW PENDING",
+      "rule": "consume ROUTE-03 = LOCKED CURRENT without redrawing a second authoritative App route topology"
+    }
+  ],
+  "correct_inheritance_model": "v1.25 specialist baseline -> v1.26 Product/Journey/IA/Service architecture -> v1.27 navigation/game architecture -> ROUTE-03 currentization + current exploration grammar",
+  "metadata_drift": {
+    "observed": true,
+    "detail": "The v1.26 and v1.27 portable HTML files retain an internal <title> reading '清江石书 App v1.24｜Visual System' even though their file-level identities are v1.26 and v1.27.",
+    "handling": "Treat the stale internal title as metadata drift/provenance defect. Do not collapse v1.26/v1.27 back to v1.24 during indexing or currentization."
+  },
+  "current_route_authority": "ROUTE-03 = LOCKED CURRENT",
+  "current_truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / STATUS UNKNOWN",
+  "design_verdict": "NOT ISSUED BY PRODUCER"
+}
