@@ -1,0 +1,26 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "run": "C04_GIS_SKILL_EXECUTION_v0.7",
+  "status": "EXECUTED / ACTUAL PREVIEW READBACK COMPLETE / INDEPENDENT DESIGN REVIEW PENDING",
+  "current_authority": [
+    "OLEANDER MASTER PROTOCOL v1.1",
+    "C04 Current Project Materials v3.2",
+    "CH02 Current Material",
+    "C04 current sampled GIS package v0.2.1"
+  ],
+  "skills": {
+    "primary": "oleander-data-viz",
+    "support": ["oleander-story-and-board", "oleander-delivery-qc"],
+    "method": "Cartographic Task Hierarchy"
+  },
+  "image_generation_used": false,
+  "native_authority": "editable SVG + source CSV/JSON + current GeoTIFF inputs",
+  "boards": [
+    "ENV-01 Slope & Aspect Analysis",
+    "ENV-02 Potential Drainage & Flow Direction",
+    "ENV-03 Environmental Synthesis"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "package_sha256": "1437d78568fb634022b52dc0d5d84b230a7c898a640e0fbe69c5a0c52c1f6738",
+  "design_verdict": "INDEPENDENT REVIEW PENDING"
+}

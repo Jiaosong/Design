@@ -1,0 +1,16 @@
+{
+  "system": "OLEANDER Artifact Review System v1.0",
+  "artifact": "C04_GIS_SKILL_EXECUTION_v0.7",
+  "required_common": ["AR-G01","AR-G02","AR-G03","AR-G04","AR-G05","AR-G06","AR-G07","AR-G08","AR-G09","AR-G10"],
+  "required_specific": ["AR-S03 Data Review","AR-S05 GIS Review","AR-S08 Presentation Review"],
+  "professional_design_review": "PENDING / producer must not self-assign KEEP",
+  "focus": [
+    "first visual and landscape-analysis quality",
+    "map hierarchy survives grayscale",
+    "direct labels do not obscure evidence",
+    "scale / source / display-interpolation boundary legibility",
+    "no false site precision",
+    "WorldCover/JRC HOLD remains unpromoted",
+    "C04-specific reading rather than generic GIS dashboard"
+  ]
+}
