@@ -1,0 +1,34 @@
+{
+  "artifact": "C04_APP_ROUTE03_CURRENTIZATION_v0_1",
+  "browser_mode": "Playwright page.set_content with exact local ROUTE-03 SVG bytes inlined; direct local/localhost navigation blocked on execution surface",
+  "tests": {
+    "390x844": {
+      "initial": {"behavior":"intent","reality":"UNKNOWN","digital":"FULL","scrollLeft":78,"scrollTop":41,"sheetOpen":false,"serviceOpen":false},
+      "dimensions": {"sw":390,"cw":390,"ww":2100,"wc":390},
+      "mode_C": {"behavior":"scout","reality":"UNKNOWN","digital":"FULL","scrollLeft":1002,"scrollTop":41,"sheetOpen":false,"serviceOpen":false},
+      "commit": {"behavior":"commit","reality":"UNKNOWN","digital":"FULL","scrollLeft":371,"scrollTop":0,"sheetOpen":true,"serviceOpen":false},
+      "reveal": {"behavior":"reveal","reality":"UNKNOWN","digital":"FULL","scrollLeft":371,"scrollTop":0,"sheetOpen":true,"serviceOpen":false},
+      "return_interrupt": {"behavior":"return","reality":"UNKNOWN","digital":"FULL","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"serviceOpen":true},
+      "resume": {"behavior":"intent","reality":"UNKNOWN","digital":"FULL","scrollLeft":371,"scrollTop":0,"sheetOpen":false,"serviceOpen":false},
+      "keyboard_pan": {"behavior":"scout","reality":"UNKNOWN","digital":"FULL","scrollLeft":411,"scrollTop":0,"sheetOpen":false,"serviceOpen":false},
+      "errors": []
+    },
+    "430x932": {
+      "initial": {"behavior":"intent","reality":"UNKNOWN","digital":"FULL","scrollLeft":70,"scrollTop":13,"sheetOpen":false,"serviceOpen":false},
+      "dimensions": {"sw":430,"cw":430,"ww":2200,"wc":430},
+      "mode_C": {"behavior":"scout","reality":"UNKNOWN","digital":"FULL","scrollLeft":1039,"scrollTop":13,"sheetOpen":false,"serviceOpen":false},
+      "commit": {"behavior":"commit","reality":"UNKNOWN","digital":"FULL","scrollLeft":378,"scrollTop":0,"sheetOpen":true,"serviceOpen":false},
+      "reveal": {"behavior":"reveal","reality":"UNKNOWN","digital":"FULL","scrollLeft":378,"scrollTop":0,"sheetOpen":true,"serviceOpen":false},
+      "return_interrupt": {"behavior":"return","reality":"UNKNOWN","digital":"FULL","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"serviceOpen":true},
+      "resume": {"behavior":"intent","reality":"UNKNOWN","digital":"FULL","scrollLeft":378,"scrollTop":0,"sheetOpen":false,"serviceOpen":false},
+      "keyboard_pan": {"behavior":"scout","reality":"UNKNOWN","digital":"FULL","scrollLeft":418,"scrollTop":0,"sheetOpen":false,"serviceOpen":false},
+      "errors": []
+    },
+    "reduced_motion": {
+      "running_animations": 0,
+      "state": {"behavior":"commit","reality":"UNKNOWN","digital":"FULL","scrollLeft":1574,"scrollTop":81,"sheetOpen":true,"serviceOpen":false},
+      "errors": []
+    }
+  },
+  "errors": []
+}
