@@ -34,6 +34,12 @@ class RegressionBaselineProtocolTests(unittest.TestCase):
         self.assertIn('measurement_method_ids', self.text)
         self.assertIn('visual_review_state', self.text)
 
+    def test_best_known_gate_cannot_be_replaced_by_weaker_old_revision(self):
+        self.assertIn('BEST_KNOWN_GATE_BASELINE', self.text)
+        self.assertIn('FAIL_WEAKER_REGRESSION_BASELINE_SELECTED', self.text)
+        self.assertIn('REJECT_BEST_KNOWN_GATE_REGRESSION', self.text)
+        self.assertIn('best valid value already achieved', self.text)
+
 
 if __name__ == '__main__':
     unittest.main()
