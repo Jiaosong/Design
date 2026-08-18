@@ -1,4 +1,4 @@
-# C04｜ACTIVE EXECUTION CURRENT｜2026-08-17｜PROJECT ARCHITECTURE v3.2
+# C04｜ACTIVE EXECUTION CURRENT｜2026-08-18｜PROJECT ARCHITECTURE v3.2
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 Role: `CURRENT EXECUTION CARRIER`  
@@ -13,11 +13,11 @@ Every execution round MUST read, in order:
 3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support
 4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json`
 5. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` + current `C04-B_PROJECT-ARCHITECTURE_v3.2.md`**
-6. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` for current authored chapter/page-content sync where available
+6. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` as the preserved authored baseline, then **`chapter-content-sync/v0.2/INDEX.md` + `KNOWLEDGE-SOURCE-REGISTER.md` + its chapter/enrichment files as the latest knowledge-enriched authored supplement**
 7. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
 8. lane-specific latest Owner / PR / Drive material delta.
 
-GitHub + Google Drive remain cross-line Source of Truth.
+GitHub + Google Drive remain cross-line Source of Truth. Notion remains the project knowledge/method/decision-record layer and must be consulted where relevant knowledge can materially change the work; durable knowledge/application records should be written back there without replacing GitHub artifact/version authority.
 
 ## 1｜NO-LOSS RULE
 
@@ -84,7 +84,14 @@ Hierarchy:
 
 A single chapter may contain many pages. A chapter file or `<section>` is not a page. Existing pages cannot be collapsed merely because they now sit inside one chapter.
 
-The current 2026-08-17 chapter-content sync contains 70 independent **authoring page units** across the chapters actually authored in that round. `CHxx-Pxx` is an authoring identity only; it is not a final Web PAGE-ID. **70 is not the current page_count and must not be calculated as `52 + 70`.**
+Current authored content is layered:
+- v0.1 = 70 independent **base authoring page units** from the 2026-08-17 pass;
+- v0.2 = 41 new **base authoring page units** that close CH01 / CH08 / CH15–CH19 content gaps;
+- combined base authoring inventory = 111;
+- v0.2 separately adds 11 cross-chapter professional authoring candidates;
+- v0.1 separately retains its 28 expansion candidates.
+
+`CHxx-Pxx` remains an authoring identity only; it is not a final Web PAGE-ID. **111 / 11 / 28 are not current page_count and must not be mechanically added to the protected 52 baseline or to one another.**
 
 ## 3｜PAGE-TYPE QUALITY RULE
 
@@ -112,8 +119,8 @@ This means:
 - 52 pages currently exist as independent identities;
 - all 52 must first receive stable PAGE-ID and remain separate;
 - they must be mapped into CH00–CH19 without compression;
-- the 70 authored units must then be compared one-to-one against this register;
-- missing analysis/details/Brand pages are added as new PAGE-ID pages only where they are materially new.
+- the v0.1 + v0.2 authored-content inventory must then be compared one-to-one against this register;
+- missing professional pages are added as new PAGE-ID pages only where they are materially new.
 
 It does **not** mean:
 - final count = 52;
@@ -123,7 +130,7 @@ It does **not** mean:
 - current order is correct;
 - all 52 deserve equal weight;
 - missing analysis/details/Brand must fit inside 52;
-- current page count = 52 + 70.
+- current page count = `52 + authored units`.
 
 Legacy page IDs are reserved as:
 `C04-WEB-P001 ... C04-WEB-P052`.
@@ -135,7 +142,7 @@ New substantive pages use:
 1. lock `P001–P052` as independent PAGE identities;
 2. build the exact 52-row PAGE REGISTER;
 3. bind each legacy PAGE to one CH00–CH19 chapter + page type;
-4. compare each of the 70 authoring units against the legacy register as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`;
+4. compare the v0.1 + v0.2 authored-content inventory against the legacy register as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`;
 5. use migration actions `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE`;
 6. add substantive N-series pages only for materially new content;
 7. rebuild reading rhythm using pages inside chapters;
@@ -151,12 +158,13 @@ New substantive pages use:
 - build the CH00–CH19 chapter architecture without compressing pages;
 - create the exact 52-row PAGE register, not another abstract narrative essay;
 - preserve P001–P052 before adding new pages;
-- compare `chapter-content-sync/v0.1/` authored units against legacy pages before allocating N-series;
+- compare `chapter-content-sync/v0.1/` + `v0.2/` authored content against legacy pages before allocating N-series;
+- treat CH01, CH08 and CH15–CH19 as now explicitly authored in v0.2; deepen them only when evidence or page-level design reveals a real gap;
 - write/continue explicit design principles and methods using real C04 examples;
 - add/continue site/landscape, culture/content, audience, journey/behavior analyses with design consequences;
 - preserve all R01–R13 as the full content/design library;
 - integrate App, Physical/Sensory, Brand/Visual Identity, Memory/IP, technical detail and process into the causal architecture;
-- complete CH01 and CH08 from current authority/project evidence rather than filler;
+- consume v0.2 failure/recovery, service responsibility, brand governance, cross-media proof and detail-binding additions where relevant;
 - treat HOLD/DROP as Process only when they show professional judgment.
 
 ### QUALITY STOP
@@ -265,7 +273,7 @@ Order:
 2. apply latest Owner / lock / review state;
 3. separate concept state from pixel state;
 4. bind each legacy PAGE to CH00–CH19 + page type;
-5. compare the 70 current authored units to the 52-row register;
+5. compare the v0.1 + v0.2 authored-content inventory to the 52-row register;
 6. identify truly missing professional content and add new N-series pages;
 7. protect strong C04-specific outputs;
 8. apply the Brand system across media at medium-appropriate strength without turning it into field visual noise;
@@ -305,10 +313,10 @@ Version pollution, false PASS, stale Current, source boundary, persistence/recov
 
 1. **Lock P001–P052 as 52 independent pages; no merge.**
 2. **Build the exact 52-row PAGE REGISTER and map all legacy pages to CH00–CH19 without collapsing them.**
-3. **Compare all 70 current authoring units to the legacy register; never calculate `52 + 70`.**
-4. **Identify exact missing analysis/principle/method/audience/Brand/detail pages.**
+3. **Compare the v0.1 + v0.2 authored-content inventory to the legacy register; never calculate `52 + authored units`.**
+4. **Classify authored units as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT` and identify only residual gaps.**
 5. **Add N-series professional pages only for materially new content before deleting anything.**
-6. **Complete CH01 / CH08 authoring from actual project material.**
+6. **CH01 / CH08 / CH15–CH19 are now authored in v0.2; bind and design them rather than regenerating filler.**
 7. **Rebuild overall reading rhythm using PAGE units inside CHAPTER containers.**
 8. **Protect ROUTE-03, R06 frozen state and current Physical selection.**
 9. **Re-edit technical/model proof after design/detail pages.**
