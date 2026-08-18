@@ -27,5 +27,16 @@ def main():
     run(bad,False,'theory frame must link back to diagnosis')
     bad=copy.deepcopy(base); bad['panels'][3]['ground_evidence']=''
     run(bad,False,'photo audit must state evidence role')
+    bad=copy.deepcopy(base); bad['one_sentence_finding']=''
+    run(bad,False,'board requires one-sentence finding')
+    bad=copy.deepcopy(base); bad['first_read_object_id']='P05'
+    run(bad,False,'first-read object must bind to dominant synthesis panel')
+    bad=copy.deepcopy(base); bad['first_read_labels']=['1','2','3','4','5','6']
+    run(bad,False,'first-read label budget cannot exceed five')
+    bad=copy.deepcopy(base)
+    for p in bad['panels']: p['reading_tempo']='SLOW'
+    run(bad,False,'multi-role board cannot collapse all panels to one reading tempo')
+    bad=copy.deepcopy(base); bad['actual_preview_review_ref']=''
+    run(bad,False,'board structure must hand off to actual-preview review receipt')
 
 if __name__=='__main__': main()
