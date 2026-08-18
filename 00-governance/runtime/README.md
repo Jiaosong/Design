@@ -44,7 +44,7 @@ For execution owners that produce or materially judge visual output, check local
 
 Current Notion structural routing uses the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy hierarchy fields are not Current routing authority.
 
-`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` remains superseded provenance. Current execution uses v1.2 implementation revision 1.2.1.
+`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.1.
 
 ## Current executable contract layer v0.1
 
