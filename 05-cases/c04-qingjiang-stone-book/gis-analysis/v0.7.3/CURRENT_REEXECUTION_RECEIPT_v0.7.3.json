@@ -1,0 +1,30 @@
+{
+  "schema": "OLEANDER_EXECUTION_RECEIPT_v1.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "task": "strict current-flow reexecution of uploaded C04_GIS_SKILL_EXECUTION_v0.7",
+  "run": "C04_GIS_CURRENT_REEXECUTION_v0.7.3",
+  "date": "2026-08-18",
+  "active_constraints": ["NO_IMAGE_GENERATION","NO_NEW_SKILL","NO_NEW_METHOD","NO_NEW_FRAMEWORK","USE_EXISTING_OLEANDER_METHODS_AND_SKILLS","FULL_OLEANDER_FLOW_REQUIRED","NO_PRODUCER_SELF_PROMOTION","ROUTE-03_LOCKED_CURRENT","R06_FROZEN","NO_COMPRESSION_NO_LOSS"],
+  "required_native_output": "editable semantic SVG masters + source/clean data + corrected derived GeoTIFFs + PNG/grayscale/50% review + specs/docs/QC/handoff/manifest",
+  "owner_resolution": {"primary":"oleander-data-viz","support":["oleander-story-and-board"],"validator":["oleander-delivery-qc"],"independent_reviewer":"HOLD / unavailable"},
+  "flow_phases": {
+    "AUTHORITY_PREFLIGHT":"PASS",
+    "STICKY_CONSTRAINT_RESOLUTION":"PASS",
+    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION":"PASS",
+    "REQUIRED_NATIVE_OUTPUT_DEFINITION":"PASS",
+    "CAPABILITY_AND_MINIMUM_OWNER_SET":"PASS",
+    "REAL_EXECUTION":"PASS",
+    "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD":"PASS",
+    "ACTUAL_READBACK":"PASS / producer final + grayscale + 50% reopened; first-pass collision repaired",
+    "REGRESSION_AS_APPLICABLE":"PASS / structural + semantic SVG + source-value + raster-center + grayscale/50% checks",
+    "INDEPENDENT_REVIEW_AS_APPLICABLE":"HOLD / independent reviewer unavailable; request packaged",
+    "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE":"PARTIAL / GitHub text carrier synced; Notion writeback pending at file creation time; native vectors/binaries local only"
+  },
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "completion_gate":"HOLD / INCOMPLETE: real execution/readback/regression passed; current new-binary durable persistence and independent professional design review remain open. No promotion.",
+  "package":{"local_zip":"C04_GIS_CURRENT_REEXECUTION_v0.7.3.zip","local_zip_bytes":2171526,"local_zip_sha256":"0429c969eba6774ee9e19e2d03994d7c01f917a8224299f4aa3b7c3b596c2649","binary_persistence":"HOLD / local only"},
+  "source_lineage":{"uploaded_v0_7_sha256":"1437d78568fb634022b52dc0d5d84b230a7c898a640e0fbe69c5a0c52c1f6738","durable_v0_2_1_drive_id":"1n_Qyz_BN4VFP45nUHKrmRW4FrhF60s9_","durable_v0_2_1_sha256":"1c01ab71486183348e96fc27f738e200592e6a88f3a46fc8b77cc86913c3d075","v0_7_csvs_byte_identical_to_v0_2_1":true},
+  "reproduction":{"grid":[21,21],"sample_count":441,"source_coordinate_crs":"EPSG:4326","derivative_metric_crs":"EPSG:32649","slope_max_abs_diff_deg":2.0865492444954725e-7,"aspect_max_circular_diff_deg":2.0867662442469737e-7,"flow_exact_match_cells":441,"flow_max_abs_diff_cells":0,"solar_max_abs_diff":3.3306690738754696e-16,"verdict":"PASS_WITH_NUMERIC_TOLERANCE"},
+  "ars05_material_delta":"Upstream v0.2.1 GeoTIFF values are source-consistent but pixel centers are offset inward because sample-center min/max were treated as raster outer bounds. Current local v0.7.3 writes corrected derived cell-center rasters; upstream package remains immutable provenance.",
+  "does_not_prove":["Design KEEP","MAIN","field truth","safety","hydraulic capacity"]
+}
