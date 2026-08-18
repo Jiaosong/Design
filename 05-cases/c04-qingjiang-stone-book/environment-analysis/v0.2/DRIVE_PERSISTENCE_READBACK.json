@@ -1,0 +1,11 @@
+{
+  "drive_file_id": "1ZU_c8U7DBIo2xqsZpNcSczN082QBTuMS",
+  "drive_retrieved_file": "C04_GIS_REDO_SPLIT_v0.2.zip",
+  "retrieved_bytes": 1587551,
+  "retrieved_sha256": "0ce26c1573b9fcf989fc5af507d2a9e2d5d90ad6c12855ffc14323a47ff6b7b7",
+  "rebuilt_bytes": 1587551,
+  "rebuilt_sha256": "0ce26c1573b9fcf989fc5af507d2a9e2d5d90ad6c12855ffc14323a47ff6b7b7",
+  "byte_equivalence": true,
+  "persistence_state": "PASS",
+  "does_not_prove": "Professional Design PASS"
+}
