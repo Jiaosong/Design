@@ -90,7 +90,13 @@ def validate(d: dict) -> dict:
         require(delta['improved'] is True, 'unsafe_promotion:target_not_improved')
         require(d['measurement_comparability'] == 'COMPARABLE', 'unsafe_promotion:measurement_not_comparable')
         require(all(x['status'] == 'PASS' for x in locks), 'unsafe_promotion:regression_lock_not_pass')
-        require(d['visual_review_state'] != 'REJECT', 'unsafe_promotion:visual_review_reject')
+        require(d['visual_review_state'] == 'KEEP', 'unsafe_promotion:visual_keep_required')
+        review = d.get('independent_visual_review')
+        require(isinstance(review, dict), 'unsafe_promotion:independent_visual_review_missing')
+        require(review.get('independent') is True, 'unsafe_promotion:review_not_independent')
+        require(review.get('owner_is_reviewer') is False, 'unsafe_promotion:owner_self_review')
+        require(isinstance(review.get('reviewer_role'), str) and review.get('reviewer_role'), 'unsafe_promotion:reviewer_role_missing')
+        require(isinstance(review.get('evidence_source'), str) and review.get('evidence_source'), 'unsafe_promotion:review_evidence_missing')
 
     if any(x['status'] == 'REGRESSED' for x in locks):
         require(d['promotion_decision'] != 'PROMOTE_OVER_LKG', 'unsafe_promotion:regressed_candidate')
