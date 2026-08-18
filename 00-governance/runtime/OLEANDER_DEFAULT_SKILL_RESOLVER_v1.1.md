@@ -1,6 +1,6 @@
 # OLEANDER Default Skill Resolver v1.1
 
-Status: **ACTIVE CURRENT CANDIDATE FOR MAIN**  
+Status: **ACTIVE CURRENT**  
 Decision date: **2026-08-18**  
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
