@@ -1,6 +1,7 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
+  "implementation_revision": "1.0.1",
   "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
@@ -8,6 +9,11 @@
     "NO_SINGLE_APP_IS_THE_OLEANDER_ENVIRONMENT",
     "FIGMA_IS_OPTIONAL_NOT_DEFAULT",
     "BLENDER_SHARED_RUNTIME_IS_REUSABLE_ACROSS_OLEANDER",
+    "RESOLVE_STICKY_USER_CONSTRAINTS_BEFORE_CAPABILITY_ROUTING",
+    "ACTIVE_TOOL_DENY_BLOCKS_ADAPTER_SELECTION",
+    "ACTIVE_CREATION_DENY_BLOCKS_GAP_DRIVEN_NEW_SKILL_METHOD_FRAMEWORK",
+    "GENERIC_CONTINUE_DOES_NOT_REVOKE_ACTIVE_CONSTRAINTS",
+    "FULL_OLEANDER_FLOW_REQUIRES_COMPLETION_GATE_BEFORE_COMPLETE_CLAIM",
     "VERIFY_CAPABILITY_BEFORE_EXECUTED",
     "USE_EXISTING_SKILL_AND_RUNTIME_BEFORE_CREATING_NEW_METHOD",
     "SOURCE_AUTHORITY_PRECEDES_TOOL_CHOICE",
@@ -29,16 +35,29 @@
     "PENDING_VERIFICATION",
     "UNAVAILABLE"
   ],
+  "constraint_preflight": {
+    "resolver": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+    "resolver_implementation_revision": "1.2.1",
+    "required_before_tool_probe": true,
+    "inherit_active_constraints_across_generic_followups": true,
+    "explicit_revocation_only": true,
+    "no_image_generation_effect": "DO_NOT_SELECT_OR_CALL_GENERATIVE_IMAGE_TOOL_OR_ADAPTER",
+    "no_new_skill_effect": "DO_NOT_CREATE_NEW_SKILL; COMPOSE_EXISTING_OWNER_OR_HOLD",
+    "full_flow_effect": "DO_NOT_REPORT_COMPLETE_UNTIL_ALL_APPLICABLE_FLOW_PHASES_PASS_OR_ARE_EXPLICITLY_NOT_APPLICABLE"
+  },
   "resolver_order": [
     "READ_CURRENT_AUTHORITY_AND_SOURCE_AUTHORITY",
+    "RESOLVE_STICKY_EXECUTION_CONSTRAINTS",
+    "ENFORCE_ACTIVE_TOOL_OUTPUT_CREATION_AND_PROCESS_LOCKS",
     "RESOLVE_EXISTING_OLEANDER_SKILL",
     "IDENTIFY_REQUIRED_NATIVE_OUTPUT_AND_FIDELITY",
     "IF_REFERENCE_RECONSTRUCTION_RESOLVE_REFERENCE_MATERIALIZATION_GATE",
     "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
     "PROBE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
-    "SELECT_BEST_FIT_ADAPTER",
+    "SELECT_BEST_FIT_ADAPTER_WITHIN_ACTIVE_CONSTRAINTS",
     "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
-    "MARK_ONLY_THE_UNAVAILABLE_STEP_PENDING"
+    "MARK_ONLY_THE_UNAVAILABLE_STEP_PENDING",
+    "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE"
   ],
   "reference_materialization": {
     "status": "ACTIVE_CURRENT_GATE",
@@ -132,8 +151,9 @@
   "execution_receipt": {
     "current_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
     "human_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.md",
+    "policy_revision": "1.1",
     "instance_directory": "00-governance/runtime/receipts/",
-    "current_rule": "Use the Current Execution Receipt contract as the single instance schema; execute only applicable sections and prefer NOT_APPLICABLE to fake process.",
+    "current_rule": "Use the Current Execution Receipt contract as the single instance schema. New receipts must record sticky constraint_lock and flow_completion; only explicitly allowlisted pre-policy receipts may omit them.",
     "legacy_minimum_subset": [
       "TASK",
       "AUTHORITY",
