@@ -10,7 +10,9 @@ REQUIRED = {
     "connected_object_ids", "derivation_method", "uncertainty_or_tolerance",
     "graphic_carrier_id", "visual_encoding_class", "does_not_prove",
     "source_carrier_state", "source_carrier_scope",
-    "carrier_precedence_decision", "redraw_justification"
+    "carrier_precedence_decision", "redraw_justification",
+    "decision_question_ref", "task_critical_invariants",
+    "externally_preserved_invariants"
 }
 MODES = {"TRACE","DERIVE","GENERALIZE","SCHEMATIZE","INFER","DESIGN"}
 REG = {"MAP_BOUND","BASE_RELATION_BOUND","TOPOLOGY_BOUND","SEQUENCE_BOUND","DIAGRAM_ONLY"}
@@ -58,6 +60,9 @@ def main():
     data = json.loads(p.read_text(encoding="utf-8"))
     if data.get("promotion") not in {"NO", "NO_PROMOTION", "CANDIDATE_NOT_PROMOTED"}:
         fail("register must remain non-promoted")
+    analysis_contract_ref = data.get("analysis_contract_ref")
+    if not isinstance(analysis_contract_ref, str) or not analysis_contract_ref.strip():
+        fail("analysis_contract_ref required: translation must bind to an upstream Decision Question contract")
     items = data.get("items")
     if not isinstance(items, list) or not items:
         fail("items must be a non-empty list")
@@ -91,6 +96,14 @@ def main():
             fail(f"{item['id']}: does_not_prove cannot be empty")
         if not item["source_carrier_scope"]:
             fail(f"{item['id']}: source_carrier_scope cannot be empty")
+        if not isinstance(item["decision_question_ref"], str) or not item["decision_question_ref"].strip():
+            fail(f"{item['id']}: decision_question_ref required")
+        if item["decision_question_ref"] != analysis_contract_ref:
+            fail(f"{item['id']}: decision_question_ref must match root analysis_contract_ref")
+        if not isinstance(item["task_critical_invariants"], list) or not item["task_critical_invariants"]:
+            fail(f"{item['id']}: task_critical_invariants required")
+        if not isinstance(item["externally_preserved_invariants"], dict):
+            fail(f"{item['id']}: externally_preserved_invariants must be an object")
 
         if item["translation_mode"] == "SCHEMATIZE" and item["registration_class"] == "MAP_BOUND":
             fail(f"{item['id']}: SCHEMATIZE cannot claim MAP_BOUND")
@@ -98,6 +111,20 @@ def main():
             fail(f"{item['id']}: non-map registration cannot claim preserved POSITION")
         if item["geometry_type"] == "SYMBOL_ONLY" and item["semantic_class"] in {"JUNCTION","VIEWPOINT","THRESHOLD","ECOLOGICAL_CORRIDOR","PEDESTRIAN_PATH"}:
             fail(f"{item['id']}: symbol-only carrier cannot stand in for spatial relation {item['semantic_class']}")
+
+        # Task-relative abstraction budget: a task-critical invariant may be relaxed
+        # only when another named layer explicitly carries it.
+        critical = set(item["task_critical_invariants"])
+        relaxed = set(item["relaxed_invariants"])
+        external = set(item["externally_preserved_invariants"])
+        unresolved = (critical & relaxed) - external
+        if unresolved:
+            fail(f"{item['id']}: task-critical invariants relaxed without external support: {sorted(unresolved)}")
+        for invariant, carrier in item["externally_preserved_invariants"].items():
+            if invariant not in relaxed:
+                fail(f"{item['id']}: external support declared for invariant that is not relaxed: {invariant}")
+            if not isinstance(carrier, str) or not carrier.strip():
+                fail(f"{item['id']}: external support carrier for {invariant} must be named")
 
         # Source-carrier precedence gate.
         if item["source_carrier_state"] in SUFFICIENT_STATES:
@@ -114,7 +141,8 @@ def main():
         if item["carrier_precedence_decision"] == "SCHEMATIZE_SEPARATELY" and item["registration_class"] not in {"TOPOLOGY_BOUND","SEQUENCE_BOUND","DIAGRAM_ONLY"}:
             fail(f"{item['id']}: SCHEMATIZE_SEPARATELY cannot claim map/base registration")
 
-    print(f"PASS: {len(items)} translation items structurally valid, including source-carrier precedence")
+    print(f"PASS: {len(items)} translation items structurally valid, question-bound, with task-relative abstraction checks")
+    print("NOTE: structure PASS does not prove perceptual hierarchy, source interpretation, field truth, or Design KEEP.")
 
 if __name__ == "__main__":
     main()
