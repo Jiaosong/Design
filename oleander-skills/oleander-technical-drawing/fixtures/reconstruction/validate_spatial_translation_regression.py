@@ -55,6 +55,19 @@ def main():
     bad["items"][1]["redraw_justification"] = "N/A"
     run(bad, False, "direct reuse cannot be claimed when source carrier is insufficient")
 
+    bad = copy.deepcopy(base)
+    bad["items"][2]["decision_question_ref"] = "ANOTHER-QUESTION"
+    run(bad, False, "translation item cannot drift away from upstream Decision Question")
+
+    bad = copy.deepcopy(base)
+    bad["items"][1]["task_critical_invariants"].append("POSITION")
+    run(bad, False, "task-critical invariant cannot be relaxed without named external support")
+
+    good = copy.deepcopy(base)
+    good["items"][1]["task_critical_invariants"].append("POSITION")
+    good["items"][1]["externally_preserved_invariants"]["POSITION"] = "GEOGRAPHIC-EVIDENCE-LAYER"
+    run(good, True, "relaxed task-critical invariant may be carried by explicit external layer")
+
     good = copy.deepcopy(base)
     good["items"][0]["carrier_precedence_decision"] = "REUSE_DIRECT"
     good["items"][0]["geometry_type"] = "DIRECT_SOURCE_VISUAL"
