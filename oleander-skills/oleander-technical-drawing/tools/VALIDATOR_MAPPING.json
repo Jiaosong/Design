@@ -1,0 +1,57 @@
+{
+  "mapping_version": "0.1",
+  "knowledge_authority": "Notion / 50｜Methods & Design Intelligence",
+  "implementation_boundary": "GitHub validators enforce explicit contracts and structural contradictions only; they do not machine-award aesthetic quality or KEEP.",
+  "primary_skill_knowledge": {
+    "notion_page_id": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
+    "title": "Technical Drawing / Analysis Board / L5｜Source Carrier → Spatial Model → Graphic Carrier → Argument"
+  },
+  "mappings": [
+    {
+      "gate_id": "TD-AN-Q01",
+      "knowledge_source_page_id": "3acb86be-5c47-81c9-8f0d-fbf633619d46",
+      "knowledge_rule": "QUESTION → OBJECT / SCALE → REPRESENTATION → ALTERNATIVE EXPLANATION → DECISION → LIMITATION",
+      "validator": "tools/validate_analysis_contract.py",
+      "fixture": "fixtures/reconstruction/ANALYSIS-CONTRACT-01_REGISTER.json",
+      "machine_can_check": ["required Decision Question", "object/scale/time declaration", "representation support boundary", "alternative-explanation state", "abstraction-budget contradictions"],
+      "machine_cannot_check": ["whether the question is strategically important", "whether the representation is visually convincing"]
+    },
+    {
+      "gate_id": "TD-SP-AB01",
+      "knowledge_source_page_id": "3bfb86be-5c47-81f4-8586-d31380f1b25a",
+      "knowledge_rule": "task-critical spatial variables cannot disappear through abstraction unless another explicit layer carries them",
+      "validator": "tools/validate_spatial_translation.py",
+      "fixture": "fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json",
+      "machine_can_check": ["Decision Question binding", "registration contradictions", "task-critical invariant vs relaxed-invariant conflict", "external support declaration", "source-carrier precedence"],
+      "machine_cannot_check": ["source interpretation correctness", "visual hierarchy quality"]
+    },
+    {
+      "gate_id": "TD-BOARD-01",
+      "knowledge_source_page_id": "3b8b86be-5c47-8166-8404-e0547c681b1a",
+      "secondary_source_page_id": "3bfb86be-5c47-81ad-ae77-c18e2d384029",
+      "knowledge_rule": "one-sentence finding → dominant first-read object → limited first-read labels → page-role rhythm",
+      "validator": "tools/validate_editorial_analysis_board.py",
+      "fixture": "fixtures/reconstruction/BOARD-01_REGISTER.json",
+      "machine_can_check": ["finding exists", "dominant/first-read identity consistency", "1–5 first-read label budget", "declared panel tempo diversity", "actual-preview review handoff"],
+      "machine_cannot_check": ["whether hierarchy actually reads at distance", "whether the composition is beautiful"]
+    },
+    {
+      "gate_id": "TD-NODE-MODE-01",
+      "knowledge_source_page_id": "3bfb86be-5c47-8124-bd05-e5cbffb3302c",
+      "knowledge_rule": "SPATIAL_EVENT node and CONSTRUCTION_INTERFACE node are different ontologies",
+      "validator": "tools/validate_node_semantics.py",
+      "fixtures": ["fixtures/reconstruction/NODE-01_REGISTER.json", "fixtures/reconstruction/NODE-02_INTERFACE_REGISTER.json"],
+      "machine_can_check": ["node mode", "route-edge degree for Junction", "component membership for construction interface", "primary/attached ownership", "SVG carrier existence", "route-topology contamination"],
+      "machine_cannot_check": ["actual joint correctness", "buildability", "field condition"]
+    },
+    {
+      "gate_id": "TD-PREVIEW-01",
+      "knowledge_source_page_id": "3b9b86be-5c47-815c-8fd0-f201a9cbdf2c",
+      "knowledge_rule": "final artifact must be reopened and reviewed; automation/export success is not Design PASS",
+      "validator": "tools/validate_actual_preview_review.py",
+      "fixture": "fixtures/reconstruction/PREVIEW-REVIEW-01_REGISTER.json",
+      "machine_can_check": ["distance-read receipt", "near-read receipt", "grayscale receipt when color carries semantics", "opened flag", "issue root-cause record", "no machine KEEP state"],
+      "machine_cannot_check": ["professional design quality", "independent reviewer judgment"]
+    }
+  ]
+}
