@@ -1,0 +1,72 @@
+/* XJ01 PRO-04.2 — OLEANDER Actual Preview Design Crit desktop overrides.
+   Authority: Artifact Review System v1.1 + Editorial/Web L5.
+   Desktop scope only for this gate: 1920x1080 + 1440x900. */
+
+@media (min-width: 1001px){
+  .project-display{width:min(100%,1840px)}
+  .pro04-section,.pro04-hero{padding-inline:max(64px,7vw)}
+
+  /* Page roles must create different reading speeds. */
+  #p01{padding-top:86px;padding-bottom:110px}
+  #p02{padding-top:116px;padding-bottom:140px}
+  #p03{padding-top:92px;padding-bottom:120px}
+  #p04,#p05{padding-top:78px;padding-bottom:92px}
+  #p06{padding-top:70px;padding-bottom:80px}
+
+  .pro04-section__header{margin-bottom:42px;align-items:end}
+  .pro04-section__header span{grid-column:1 / span 2}
+  .pro04-section__header h2{grid-column:4 / -1;max-width:1120px;font-size:clamp(3.2rem,4.9vw,5.4rem)}
+  .pro04-intro{width:min(680px,100%);margin:0 0 36px auto;font-size:1.08rem;line-height:1.55}
+
+  /* P01 — image and territory decision share first read; no giant empty preamble. */
+  .pro04-direction-stage{display:grid;grid-template-columns:minmax(520px,.95fr) minmax(520px,1.05fr);gap:34px;align-items:stretch}
+  .pro04-direction-visual{display:grid;grid-template-columns:1fr 1fr;gap:18px;min-height:620px;padding:24px;background:#e9e7e1}
+  .pro04-direction-visual figure{height:100%;min-height:0;background:#171b1d}
+  .pro04-direction-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
+  .pro04-direction-copy{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .pro04-direction-copy article{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:620px;padding:38px;background:color-mix(in srgb,var(--territory) 18%,var(--paper));border-top:7px solid var(--territory)}
+  .pro04-direction-copy article>span{font:700 .68rem var(--mono);color:var(--trace)}
+  .pro04-direction-copy h3{margin:16px 0 8px;font-size:clamp(2rem,2.6vw,3.25rem);line-height:.98}
+  .pro04-direction-copy h4{margin:0 0 34px;font:1.08rem/1.45 var(--serif);font-weight:500}
+  .pro04-direction-copy dl{margin:0;display:grid;gap:18px}
+  .pro04-direction-copy dl div{display:block;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--territory) 34%,transparent)}
+  .pro04-direction-copy dt{margin-bottom:6px;color:var(--trace);font:.61rem var(--mono);text-transform:uppercase}
+  .pro04-direction-copy dd{margin:0;font-size:.94rem;line-height:1.48}
+
+  /* P02 — evidence first, swatch second. */
+  .pro04-cmf-stage{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(300px,.58fr);gap:28px;align-items:start}
+  .pro04-cmf-visuals{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .pro04-cmf-visuals>div:first-child{transform:none}
+  .pro04-cmf-visuals .pro04-image{aspect-ratio:1/1;min-height:0;background:#171b1d}
+  .pro04-cmf-visuals img{object-fit:cover}
+  .pro04-cmf-side{display:grid;gap:18px}
+  .pro04-cmf-side .pro04-swatches{display:grid;grid-template-columns:1fr;gap:12px;margin:0;max-width:none}
+  .pro04-cmf-side .pro04-swatch{min-height:126px}
+  .pro04-cmf-rule{padding:24px;border-top:1px solid var(--trace-soft);font:1.05rem/1.5 var(--serif)}
+  .pro04-cmf-rule strong{display:block;margin-bottom:8px;font:.64rem var(--mono);color:var(--trace);letter-spacing:.08em}
+  .pro04-material-roles{margin-top:62px}
+
+  /* P03 — operation context dominates, interface evidence remains legible. */
+  .pro04-interface-layout{grid-template-columns:minmax(0,1.5fr) minmax(360px,.5fr);gap:24px}
+  .pro04-interface-layout__primary .pro04-image{aspect-ratio:1.55}
+  .pro04-interface-layout__secondary{align-self:start;display:grid;gap:14px}
+  .pro04-interface-layout__secondary .pro04-image{aspect-ratio:1.1;background:#171b1d}
+  .pro04-interface-list{margin-top:46px}
+
+  /* P04/P05 — support evidence summary. Do not let proxy cards mimic retained image evidence. */
+  .pro04-section--evidence-summary{background:#ecebe5}
+  .pro04-section--evidence-summary .pro04-section__header h2{font-size:clamp(2.7rem,4vw,4.5rem)}
+  .pro04-evidence-summary{display:grid;grid-template-columns:minmax(360px,.8fr) minmax(0,1.2fr);gap:54px;align-items:start}
+  .pro04-evidence-summary__claim{max-width:520px;font:1.45rem/1.45 var(--serif)}
+  .pro04-evidence-summary__claim small{display:block;margin-top:24px;color:var(--trace);font:.66rem/1.55 var(--mono)}
+  .pro04-evidence-summary__matrix{display:grid;gap:0;border-top:1px solid var(--trace-soft)}
+  .pro04-evidence-summary__row{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--trace-soft)}
+  .pro04-evidence-summary__row span,.pro04-evidence-summary__row small{color:var(--trace);font:.64rem var(--mono)}
+  .pro04-evidence-summary__row strong{font:1.15rem/1.35 var(--serif);font-weight:500}
+  .pro04-evidence-bind-warning{margin-top:30px;padding:16px 0;border-top:1px dashed var(--trace);color:var(--trace);font:.66rem/1.55 var(--mono)}
+
+  /* Appendix deliberately recedes. */
+  #p06 .pro04-section__header h2{font-size:clamp(2.4rem,3.6vw,4rem)}
+  #p06 .pro04-proof-summary article{min-height:230px}
+  #p06 .pro04-proof-summary p{margin-top:42px}
+}
