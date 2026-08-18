@@ -1,0 +1,39 @@
+{
+  "review_id": "PREVIEW-REVIEW-01",
+  "promotion": "CANDIDATE_NOT_PROMOTED",
+  "artifact_id": "BOARD-01",
+  "artifact_ref": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BOARD-01_REGISTER.json",
+  "reviewer_role": "PRODUCER_SELF_CHECK",
+  "review_result": "READBACK_COMPLETED",
+  "color_semantic_dependency": true,
+  "views": [
+    {
+      "view_id": "PV-DISTANCE",
+      "mode": "DISTANCE_READ",
+      "preview_ref": "synthetic-distance-read-receipt",
+      "opened": true,
+      "observation": "dominant synthesis panel and board reading chain remain identifiable at reduced scale"
+    },
+    {
+      "view_id": "PV-NEAR",
+      "mode": "NEAR_READ",
+      "preview_ref": "synthetic-near-read-receipt",
+      "opened": true,
+      "observation": "source, carrier rationale, theory linkage and ground-evidence roles remain inspectable"
+    },
+    {
+      "view_id": "PV-GRAY",
+      "mode": "GRAYSCALE",
+      "preview_ref": "synthetic-grayscale-read-receipt",
+      "opened": true,
+      "observation": "hierarchy is not declared to rely on hue alone; this receipt records the check but does not machine-award visual quality"
+    }
+  ],
+  "does_not_prove": [
+    "professional design pass",
+    "independent review",
+    "portfolio keep",
+    "source truth",
+    "field validation"
+  ]
+}
