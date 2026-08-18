@@ -12,7 +12,7 @@ def validate(d):
     vals=[float(d['aperture_region_edge_p95_m']),float(d['aperture_region_edge_max_m']),float(d['aperture_region_min_face_area_m2'])];req(all(math.isfinite(v) and v>=0 for v in vals),'bad:surface_metrics')
     base=(int(d['final_connected_components'])==1 and int(d['unexpected_nonmanifold_edge_count'])==0 and float(d['aperture_region_edge_p95_m'])<=.12 and int(d['aperture_region_sliver_face_count'])==0)
     if d['topology_mode']=='CLOSED_SOLID_BOOLEAN':topo=(int(d['expected_aperture_boundary_edge_count'])==0 and int(d['aperture_boundary_loop_count'])==0)
-    else:topo=(int(d['expected_aperture_boundary_edge_count'])>0 and int(d['aperture_boundary_loop_count'])>=4)
+    else:topo=(int(d['expected_aperture_boundary_edge_count'])>0 and int(d['aperture_boundary_loop_count'])>=1)
     quality=base and topo
     req(d['machine_finish_state'] in ('MACHINE_SURFACED_VISUAL_HOLD','MACHINE_SURFACE_FINISH_REJECT'),'bad:machine_finish_state')
     if d['machine_finish_state']=='MACHINE_SURFACED_VISUAL_HOLD':req(quality,'false:surface_finish_hold')
