@@ -1,0 +1,9 @@
+{
+  "object": "CH14-P06",
+  "superseded": "C04_CH14_P06_v1_0_GRAPHIC_LANGUAGE",
+  "current": "C04_CH14_P06_v2_0_MAP_DERIVED_GRAPHIC_LANGUAGE",
+  "reason": "v1 invented an abstract brand LINE despite existing ROUTE-03 LOCKED CURRENT geometry. v2 derives LINE/TRACE/crops/page anchor from the existing route source.",
+  "route_authority": "ROUTE-03 / ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+  "route_geometry_mutation": "NONE",
+  "state": "v1 PROVENANCE ONLY / v2 CURRENT PRODUCER CANDIDATE"
+}
