@@ -42,16 +42,17 @@
         "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md",
         "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
         "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
-        "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
+        "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
       ],
-      "implemented_revision": "resolver-v1.2-owner-map-v1.0-execution-contract-layer-v0.1",
-      "implementation_commit": "branch:agent/skill-runtime-closure-v1-2",
+      "implemented_revision": "resolver-v1.2-owner-map-v1.0-execution-contract-layer-v0.1-receipt-v1.0",
+      "implementation_commit": "34a23f2b2699b27136637ea89e25465c5007e945",
       "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py",
       "last_verified": "2026-08-18",
-      "drift_state": "UNKNOWN",
-      "drift_reason": "GitHub v1.2 implementation is under branch validation; live Notion pointer must be checked after merge before CURRENT can be claimed.",
-      "next_action": "LIVE_CROSS_PLATFORM_CHECK_AFTER_MERGE_AND_NOTION_POINTER_UPDATE",
-      "does_not_prove": ["method_quality", "design_quality", "project_promotion"]
+      "drift_state": "CURRENT",
+      "drift_reason": "LIVE_CROSS_PLATFORM_CHECK completed after PR #254 merge: GitHub main readback confirms Resolver v1.2 ACTIVE_CURRENT, Resolver v1.1 SUPERSEDED and Owner Map v1.0 pointing to v1.2; live Notion Resolver METHOD was updated/read back with the same v1.2 Current pointer while Root Authority remained v1.1.1 ACTIVE.",
+      "next_action": "NO_ACTION",
+      "does_not_prove": ["method_quality", "design_quality", "project_promotion", "field_truth"]
     },
     {
       "mapping_id": "visual-image-ops-current",
@@ -67,7 +68,7 @@
       "runtime_or_validator": "00-governance/runtime/validate_execution_contracts.py",
       "last_verified": "2026-08-18",
       "drift_state": "CURRENT",
-      "drift_reason": "Live Notion Current TOOL and GitHub 11-consumer binding were both read back on 2026-08-18; adapter field completion does not alter the Canonical TOOL identity.",
+      "drift_reason": "Live Notion Current TOOL and GitHub 11-consumer binding were both read back on 2026-08-18; adapter field completion does not alter the Canonical TOOL identity. Technical Drawing was re-read and corrected to CANDIDATE_BODY / NOT_ON_MAIN rather than a false Current main path.",
       "next_action": "NO_ACTION",
       "does_not_prove": ["visual_quality", "design_keep", "field_truth", "promotion"]
     }
