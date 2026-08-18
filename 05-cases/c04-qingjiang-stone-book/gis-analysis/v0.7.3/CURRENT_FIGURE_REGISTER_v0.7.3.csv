@@ -1,0 +1,8 @@
+figure_id,title,status,current_file_or_scope
+ENV-01,Slope / Aspect,EXECUTED / CURRENT REEXECUTION / INDEPENDENT REVIEW HOLD,C04_GIS_ENV01_SLOPE_ASPECT_CURRENT_v0.7.3.svg
+ENV-02,Potential Drainage,EXECUTED / DERIVED / INDEPENDENT REVIEW HOLD,C04_GIS_ENV02_DRAINAGE_CURRENT_v0.7.3.svg
+ENV-03,Land Cover Evidence,HOLD / WorldCover AOI pixels missing,not produced in this minimum-sufficient rerun
+ENV-04,Water History Evidence,HOLD / JRC GSW AOI pixels missing,not produced in this minimum-sufficient rerun
+ENV-05,Solar Scenarios,CURRENT EXISTING / NOT REBUILT IN THIS 3-BOARD RERUN,source values consumed by ENV-SYN-01
+ENV-06,Operations Conflict,CURRENT EXISTING / ROUTE-03 LOCKED / NOT REBUILT,not touched
+ENV-SYN-01,Environmental Synthesis,EXECUTED / DERIVED SYNTHESIS / INDEPENDENT REVIEW HOLD,C04_GIS_ENV_SYN_01_CURRENT_v0.7.3.svg
