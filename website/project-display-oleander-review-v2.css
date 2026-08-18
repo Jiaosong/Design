@@ -1,4 +1,4 @@
-/* XJ01 PRO-04.2 — OLEANDER desktop Actual Preview Design Crit revision 4.
+/* XJ01 PRO-04.2 — OLEANDER desktop Actual Preview Design Crit revision 5.
    Decision question: without section labels, does first-read move from direction → material evidence → interface/environment/lifecycle evidence?
    Scope: desktop 1920×1080 + 1440×900 only. */
 
@@ -48,19 +48,21 @@
   .pro04-interface-layout__secondary .pro04-image img{object-fit:cover;object-position:center 67%}
   .pro04-interface-layout__secondary p{margin-top:16px}
 
-  /* P04/P05 now carry their retained visual evidence. Image dominates; interpretation stays secondary. */
+  /* Evidence pages: complete matrix first. Do not crop D03 below the first viewport. */
   .pro04-section--environment{background:#ecece7}
-  .pro04-evidence-visual-stage{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:28px;align-items:start}
+  #p04,#p05{padding-top:62px;padding-bottom:90px}
+  #p04 .pro04-section__header,#p05 .pro04-section__header{margin-bottom:24px}
+  #p04 .pro04-section__header h2,#p05 .pro04-section__header h2{font-size:clamp(3rem,4vw,4.2rem);max-width:980px}
+  #p04 .pro04-intro,#p05 .pro04-intro{max-width:690px;margin-bottom:18px;font-size:1rem;line-height:1.5}
+  .pro04-evidence-visual-stage{display:grid;grid-template-columns:minmax(520px,620px) minmax(320px,1fr);gap:36px;align-items:start;justify-content:space-between}
+  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(480px,560px) minmax(320px,1fr)}
   .pro04-evidence-visual-stage .pro04-image--evidence-board{width:100%;background:#121617;border:1px solid rgba(20,20,18,.08)}
-  .pro04-evidence-visual-stage .pro04-image--evidence-board img{width:100%;height:auto;object-fit:contain}
-  .pro04-evidence-visual-copy{align-self:end;padding:24px 0 6px;border-top:1px solid var(--trace-soft)}
+  .pro04-evidence-visual-stage .pro04-image--evidence-board img{display:block;width:100%;height:auto;object-fit:contain}
+  .pro04-evidence-visual-copy{align-self:center;padding:24px 0 6px;border-top:1px solid var(--trace-soft);max-width:520px}
   .pro04-evidence-visual-copy b{display:block;margin-bottom:20px;color:var(--trace);font:.67rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase}
-  .pro04-evidence-visual-copy p{margin:0;font:clamp(1.25rem,1.7vw,1.75rem)/1.38 var(--serif)}
+  .pro04-evidence-visual-copy p{margin:0;font:clamp(1.2rem,1.55vw,1.6rem)/1.4 var(--serif)}
   .pro04-evidence-visual-copy small{display:block;margin-top:22px;color:var(--trace);font:.65rem/1.55 var(--mono)}
-  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(0,1.38fr) minmax(320px,.62fr)}
-  #p04 .pro04-intro,#p05 .pro04-intro{max-width:720px;margin-bottom:32px}
-  #p04,#p05{padding-top:90px;padding-bottom:110px}
-  #p05 .pro04-diagnostic{margin-top:42px}
+  #p05 .pro04-diagnostic{margin-top:32px}
 
   #p06 .pro04-section__header h2{font-size:clamp(2.4rem,3.6vw,4rem)}
 }
@@ -73,5 +75,8 @@
   .pro04-cmf-stage{grid-template-columns:minmax(0,1.25fr) minmax(230px,.75fr)}
   .pro04-interface-layout{grid-template-columns:minmax(0,1.42fr) minmax(270px,.58fr)}
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{height:560px}
-  .pro04-evidence-visual-stage,.pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);gap:22px}
+  #p04,#p05{padding-top:54px;padding-bottom:78px}
+  #p04 .pro04-section__header h2,#p05 .pro04-section__header h2{font-size:clamp(2.8rem,3.8vw,3.8rem)}
+  .pro04-evidence-visual-stage{grid-template-columns:minmax(500px,560px) minmax(280px,1fr);gap:26px}
+  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(460px,520px) minmax(280px,1fr)}
 }
