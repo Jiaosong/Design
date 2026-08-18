@@ -1,0 +1,131 @@
+{
+  "recipe_library_id": "TD-MOTION-HANDOFF-001",
+  "version": "0.1",
+  "status": "CANDIDATE / NO_PROMOTION",
+  "primary_runtime_owner": "oleander-motion",
+  "motion_atlas": "../../oleander-motion/MOTION_LIBRARY_EFFECT_ATLAS.md",
+  "parameter_library": "../references/VISUAL_EFFECT_PARAMETER_LIBRARY.json",
+  "boundary": "Technical Drawing may specify temporal behavior for analytical/graphic carriers, but runtime implementation, accessibility and AR-S10 remain owned by oleander-motion. Durations and curves below are candidate starting ranges only.",
+  "recipes": [
+    {
+      "recipe_id": "TD-MR01-PATH-TRACE",
+      "motion_atlas_effect": "EF-03 SVG line drawing / path trace",
+      "motion_role": "Narrative",
+      "allowed_carriers": ["ROUTE_EDGE", "RELATION_EDGE", "CONSTRUCTION_SEQUENCE_LINE", "EVIDENCE_LINK"],
+      "required": ["semantic_owner_id", "source_state", "path_id", "direction_model", "duration_ms", "easing", "reduced_motion", "interrupt_behavior", "off_state"],
+      "candidate": {"duration_ms": [280, 1200], "easing": "linear|standard_out", "dash_offset_method": "pathLength-based"},
+      "reduced_motion": "show completed path immediately; preserve labels/state",
+      "fail_if": ["trace implies observed route when only inferred/designed", "path direction is invented", "motion is the only way topology can be read"]
+    },
+    {
+      "recipe_id": "TD-MR02-MASK-REVEAL",
+      "motion_atlas_effect": "EF-02 Mask / Clip / Aperture reveal",
+      "motion_role": "Hierarchy",
+      "allowed_carriers": ["PANEL", "FIELD", "SECTION_LAYER", "IMAGE_CROP", "EVIDENCE_LAYER"],
+      "required": ["semantic_owner_id", "mask_axis", "start_extent", "end_extent", "duration_ms", "easing", "reduced_motion", "off_state"],
+      "candidate": {"duration_ms": [220, 700], "easing": "standard_out|gentle_out"},
+      "reduced_motion": "static final extent or short opacity replacement if information remains equivalent",
+      "fail_if": ["required evidence hidden during task", "cinematic wipe has no hierarchy role"]
+    },
+    {
+      "recipe_id": "TD-MR03-STRUCTURED-STAGGER",
+      "motion_atlas_effect": "EF-05 Stagger / structured sequence",
+      "motion_role": "Hierarchy",
+      "allowed_carriers": ["NODE_GROUP", "LABEL_GROUP", "LAYER_GROUP", "EVIDENCE_SEQUENCE"],
+      "required": ["semantic_owner_id", "order_model", "item_ids", "stagger_ms", "item_duration_ms", "easing", "reduced_motion", "off_state"],
+      "candidate": {"stagger_ms": [20, 90], "item_duration_ms": [120, 360], "max_group_span_ms": 700},
+      "reduced_motion": "group appears as one state; preserve sequence numbering/labels",
+      "fail_if": ["order is decorative", "group causes avoidable waiting", "stagger conflicts with spatial reading order"]
+    },
+    {
+      "recipe_id": "TD-MR04-SHARED-CONTAINER-HANDOFF",
+      "motion_atlas_effect": "EF-01 Shared-element / FLIP continuity",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["DETAIL_CALLOUT", "MAP_TO_DETAIL", "SECTION_TO_NODE", "BOARD_PANEL_TO_INSET"],
+      "required": ["semantic_owner_id", "source_rect", "target_rect", "anchor_id", "duration_ms", "easing", "interrupt_behavior", "reverse_behavior", "reduced_motion"],
+      "candidate": {"duration_ms": [220, 520], "easing": "standard_in_out|gentle_out"},
+      "reduced_motion": "direct state swap with persistent anchor/label",
+      "fail_if": ["source and target are not the same object/relationship", "intermediate frame creates dual-primary ambiguity"]
+    },
+    {
+      "recipe_id": "TD-MR05-DATA-FILTER-REORDER",
+      "motion_atlas_effect": "EF-09 Data reorder / filter / time interpolation",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["DATA_MARK", "MAP_FEATURE", "LEGEND_CLASS", "TIME_SERIES_OBJECT"],
+      "required": ["semantic_owner_id", "identity_key", "before_state", "after_state", "missing_data_behavior", "duration_ms", "easing", "reduced_motion"],
+      "candidate": {"duration_ms": [180, 480], "easing": "standard_in_out"},
+      "reduced_motion": "instant state update plus persistent changed-state cue",
+      "fail_if": ["missing/uncertain data is interpolated away", "object identity is lost", "animation smooths a discontinuity that matters"]
+    },
+    {
+      "recipe_id": "TD-MR06-LIGHT-MATERIAL-STATE",
+      "motion_atlas_effect": "EF-08 Temporal light / material parameter transition",
+      "motion_role": "Feedback",
+      "allowed_carriers": ["STATE_EMISSION", "MATERIAL_STUDY", "LIGHT_FIELD", "TIME_STATE"],
+      "required": ["semantic_owner_id", "state_binding", "parameter_name", "from_value", "to_value", "duration_ms", "easing", "reduced_motion", "truth_state"],
+      "candidate": {"duration_ms": [300, 1200], "easing": "gentle_out|linear_progress"},
+      "reduced_motion": "discrete state value or non-animated luminance/color marker",
+      "fail_if": ["glow is generic quality signal", "material/light state is not source/model bound", "state disappears when animation stops"]
+    },
+    {
+      "recipe_id": "TD-MR07-SCROLL-PROGRESS",
+      "motion_atlas_effect": "EF-06 Scroll progress / scroll-linked state",
+      "motion_role": "Narrative",
+      "allowed_carriers": ["CHAPTER_PROGRESS", "EVIDENCE_SEQUENCE", "EXPLODED_STAGE", "TIME_SCRUB"],
+      "required": ["semantic_owner_id", "progress_source", "start", "end", "state_mapping", "reduced_motion", "native_scroll_baseline"],
+      "candidate": {"easing": "linear_progress", "pinning": "OFF_BY_DEFAULT"},
+      "reduced_motion": "discrete chapter/state navigation",
+      "fail_if": ["scroll is hijacked", "pinning blocks reading", "progress is unrelated to the state being animated"]
+    },
+    {
+      "recipe_id": "TD-MR08-EXPLODE-ASSEMBLE",
+      "motion_atlas_effect": "EF-07 Explode / assemble",
+      "motion_role": "Hierarchy",
+      "allowed_carriers": ["ASSEMBLY_COMPONENT", "MATERIAL_LAYER", "MAINTENANCE_ACCESS_LAYER"],
+      "required": ["semantic_owner_id", "component_ids", "structural_axes", "offsets", "order_model", "duration_ms", "easing", "collision_check", "reduced_motion"],
+      "candidate": {"duration_ms": [420, 1400], "easing": "standard_in_out"},
+      "reduced_motion": "static exploded endpoint + numbered component order",
+      "fail_if": ["explosion axis is cinematic rather than structural", "components intersect", "assembly order is invented"]
+    },
+    {
+      "recipe_id": "TD-MR09-PARALLAX-DEPTH",
+      "motion_atlas_effect": "EF-12 Parallax / depth separation",
+      "motion_role": "Continuity",
+      "allowed_carriers": ["PRESENTATIONAL_LAYER", "SECTION_DEPTH_LAYER", "NON_MAP_SPATIAL_PLANE"],
+      "required": ["semantic_owner_id", "depth_order", "relative_displacement", "progress_source", "reduced_motion", "off_state"],
+      "candidate": {"relative_displacement": [0.02, 0.12]},
+      "reduced_motion": "zero displacement; preserve depth by lineweight/overlap/tone",
+      "fail_if": ["map-bound position is distorted", "vestibular-heavy continuous motion", "parallax is required to understand depth"]
+    },
+    {
+      "recipe_id": "TD-MR10-BLUR-FOCUS",
+      "motion_atlas_effect": "EF-14 Blur / progressive blur / depth transition",
+      "motion_role": "Attention",
+      "allowed_carriers": ["PRESENTATIONAL_CONTEXT", "BACKGROUND_LAYER", "IMAGE_CONTEXT"],
+      "required": ["semantic_owner_id", "focus_target_id", "blur_from_px", "blur_to_px", "duration_ms", "easing", "reduced_motion", "off_state"],
+      "candidate": {"blur_px": [0, 8], "duration_ms": [180, 500]},
+      "reduced_motion": "static hierarchy by opacity/tone/stroke instead of blur transition",
+      "fail_if": ["text/evidence becomes unreadable", "blur implies uncertainty without legend", "used on authoritative geometry"]
+    },
+    {
+      "recipe_id": "TD-MR11-GRAIN-EVOLUTION",
+      "motion_atlas_effect": "EF-15 Grain / noise evolution",
+      "motion_role": "Narrative",
+      "allowed_carriers": ["MATERIAL_SURFACE", "REFERENCE_FIDELITY", "TIME_ATMOSPHERE"],
+      "required": ["semantic_owner_id", "surface_role", "seed", "phase_rate_hz", "amplitude", "loop", "reduced_motion", "off_state"],
+      "candidate": {"phase_rate_hz": [0.02, 0.35], "amplitude": [0.01, 0.12]},
+      "reduced_motion": "static grain seed or remove non-essential motion",
+      "fail_if": ["generic cinematic polish", "loop competes with reading", "moving grain claims physical process without evidence"]
+    },
+    {
+      "recipe_id": "TD-MR12-PARTICLE-FIELD",
+      "motion_atlas_effect": "EF-16 Particle / field",
+      "motion_role": "Narrative",
+      "allowed_carriers": ["DATA_FIELD", "FLOW_FIELD", "PRESENTATIONAL_ATMOSPHERE"],
+      "required": ["semantic_owner_id", "particle_count_model", "spawn_region", "velocity_model", "lifetime_model", "state_binding", "reduced_motion", "truth_state"],
+      "candidate": {"particle_count": "DATA_DERIVED_OR_EXPLICIT_PRESENTATIONAL_BUDGET", "opacity": [0.08, 0.65]},
+      "reduced_motion": "static field density/direction glyphs or remove atmosphere-only particles",
+      "fail_if": ["particle count suggests data but is decorative", "flow direction is invented", "continuous background motion competes with reading"]
+    }
+  ]
+}
