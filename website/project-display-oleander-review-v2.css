@@ -1,30 +1,22 @@
-/* XJ01 PRO-04.2 — OLEANDER desktop Actual Preview Design Crit revision 3.
-   Decision question: without section labels, does first-read move from direction → material evidence → interface evidence?
+/* XJ01 PRO-04.2 — OLEANDER desktop Actual Preview Design Crit revision 4.
+   Decision question: without section labels, does first-read move from direction → material evidence → interface/environment/lifecycle evidence?
    Scope: desktop 1920×1080 + 1440×900 only. */
 
 @media (min-width:1001px){
-  /* Desktop grid relationships must shrink instead of pushing the document wider. */
   #project-display,
   #project-display .pro04-section,
   #project-display .pro04-hero,
   #project-display .pro04-section > *,
   #project-display .pro04-hero > *,
-  .pro04-direction-stage,
-  .pro04-direction-stage > *,
-  .pro04-direction-copy,
-  .pro04-direction-copy > *,
-  .pro04-cmf-stage,
-  .pro04-cmf-stage > *,
-  .pro04-cmf-visuals,
-  .pro04-cmf-visuals > *,
-  .pro04-interface-layout,
-  .pro04-interface-layout > *,
-  .pro04-interface-pair,
-  .pro04-interface-pair > *,
-  .pro04-evidence-summary,
-  .pro04-evidence-summary > *{min-width:0;box-sizing:border-box}
+  .pro04-direction-stage,.pro04-direction-stage > *,
+  .pro04-direction-copy,.pro04-direction-copy > *,
+  .pro04-cmf-stage,.pro04-cmf-stage > *,
+  .pro04-cmf-visuals,.pro04-cmf-visuals > *,
+  .pro04-interface-layout,.pro04-interface-layout > *,
+  .pro04-interface-pair,.pro04-interface-pair > *,
+  .pro04-evidence-summary,.pro04-evidence-summary > *,
+  .pro04-evidence-visual-stage,.pro04-evidence-visual-stage > *{min-width:0;box-sizing:border-box}
 
-  /* P01 — remove the empty-colour-field first read. Territory copy begins at the top. */
   .pro04-direction-stage{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:28px}
   .pro04-direction-copy{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
   .pro04-direction-copy article{min-height:560px;padding:30px;overflow-wrap:anywhere;justify-content:flex-start}
@@ -33,24 +25,19 @@
   .pro04-direction-copy h4{margin-bottom:30px}
   .pro04-direction-visual{min-height:560px;padding:18px;gap:14px}
 
-  /* P00 — product presence outranks internal review chrome. Explicit height avoids aspect-ratio min-size transfer. */
   .pro04-hero{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(46px,5vw,90px)}
   .pro04-hero h1{font-size:clamp(3.6rem,6vw,6.8rem);line-height:.86}
   .pro04-hero__copy{padding-top:3vh}
-  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{
-    width:100%;max-width:100%;min-width:0;min-height:0;height:clamp(560px,38vw,720px);aspect-ratio:auto
-  }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{width:100%;max-width:100%;min-width:0;min-height:0;height:clamp(560px,38vw,720px);aspect-ratio:auto}
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after{top:2.5%;bottom:2.5%;width:39%}
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before{left:5%}
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after{right:5%}
 
-  /* P02 — evidence first, swatches second. */
   .pro04-cmf-stage{grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:24px}
   .pro04-cmf-visuals{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
   .pro04-cmf-side .pro04-swatch{min-width:0;overflow-wrap:anywhere}
 
-  /* P03 — matched material-interface evidence becomes dominant; operation becomes context. */
   .pro04-interface-layout{grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:24px;align-items:start}
   .pro04-interface-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
   .pro04-interface-pair .pro04-image{aspect-ratio:.94;background:#101416}
@@ -61,10 +48,21 @@
   .pro04-interface-layout__secondary .pro04-image img{object-fit:cover;object-position:center 67%}
   .pro04-interface-layout__secondary p{margin-top:16px}
 
-  /* P04/P05 stay deliberately quieter until VE06 / VE07 retained frames are durably web-bound. */
-  .pro04-section--evidence-summary .pro04-evidence-summary{grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:42px}
-  .pro04-evidence-summary__row{grid-template-columns:120px minmax(0,1fr) auto;gap:18px}
-  .pro04-evidence-summary__row strong{overflow-wrap:anywhere}
+  /* P04/P05 now carry their retained visual evidence. Image dominates; interpretation stays secondary. */
+  .pro04-section--environment{background:#ecece7}
+  .pro04-evidence-visual-stage{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:28px;align-items:start}
+  .pro04-evidence-visual-stage .pro04-image--evidence-board{width:100%;background:#121617;border:1px solid rgba(20,20,18,.08)}
+  .pro04-evidence-visual-stage .pro04-image--evidence-board img{width:100%;height:auto;object-fit:contain}
+  .pro04-evidence-visual-copy{align-self:end;padding:24px 0 6px;border-top:1px solid var(--trace-soft)}
+  .pro04-evidence-visual-copy b{display:block;margin-bottom:20px;color:var(--trace);font:.67rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .pro04-evidence-visual-copy p{margin:0;font:clamp(1.25rem,1.7vw,1.75rem)/1.38 var(--serif)}
+  .pro04-evidence-visual-copy small{display:block;margin-top:22px;color:var(--trace);font:.65rem/1.55 var(--mono)}
+  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(0,1.38fr) minmax(320px,.62fr)}
+  #p04 .pro04-intro,#p05 .pro04-intro{max-width:720px;margin-bottom:32px}
+  #p04,#p05{padding-top:90px;padding-bottom:110px}
+  #p05 .pro04-diagnostic{margin-top:42px}
+
+  #p06 .pro04-section__header h2{font-size:clamp(2.4rem,3.6vw,4rem)}
 }
 
 @media (min-width:1001px) and (max-width:1500px){
@@ -75,4 +73,5 @@
   .pro04-cmf-stage{grid-template-columns:minmax(0,1.25fr) minmax(230px,.75fr)}
   .pro04-interface-layout{grid-template-columns:minmax(0,1.42fr) minmax(270px,.58fr)}
   .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{height:560px}
+  .pro04-evidence-visual-stage,.pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);gap:22px}
 }
