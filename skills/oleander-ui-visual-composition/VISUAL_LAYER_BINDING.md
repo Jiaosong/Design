@@ -12,10 +12,15 @@ Do not add a second generic effect system on top of `oleander-ui-visual-composit
 4. Existing browser-tested practice `06-practice/2026/2026-08-18-responsive-recomposition/`.
 5. Notion `OLEANDER Artifact Review System v1.1｜合规门 × 专业设计门`.
 6. `oleander-motion/MOTION_LIBRARY_EFFECT_ATLAS.md` only for temporal effects.
+7. Current Notion `T-VISUAL-IMAGE-OPS-001｜OLEANDER Image Processing Operator Standard｜图层—蒙版—透明度—混合—滤镜—非破坏编辑` for image, vector and raster operator selection.
 
 ## Existing visual priority
 
 Use grayscale/structure first; effects such as glow, blur, glass, shadow, gradients or depth treatment may reinforce hierarchy but may not manufacture hierarchy. Dominant field must match the actual task/claim. Responsive breakpoints may reassign order, span, emphasis and density without information loss.
+
+## Image-processing operator routing
+
+Use `T-VISUAL-IMAGE-OPS-001` for layered imagery, opacity, masks, clipping, blend modes, gradients, texture, Smart Object-style replacement and vector-safe/raster-preview effects. Start from the effect-off structural baseline. Image effects can reinforce hierarchy, material/depth cues and atmosphere only after task priority and content roles are correct; they may not create false interaction states, fake evidence certainty or replace legibility with glow/blur/glass.
 
 ## Review inheritance
 
