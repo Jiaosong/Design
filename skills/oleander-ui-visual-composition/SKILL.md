@@ -2,7 +2,7 @@
 name: oleander-ui-visual-composition
 description: OLEANDER visual UI composition and first-visual quality skill for hierarchy, composition, typography, imagery, spacing, depth, color, responsive pixel quality, and professional finish. Use for UI critique, redesign, pixel refinement, first-read review, and final visual QA.
 status: candidate
-version: 0.1.0
+version: 0.1.1
 ---
 
 # OLEANDER UI Visual Composition
@@ -100,6 +100,70 @@ Inspect:
 - accidental overlap;
 - repeated generic motifs.
 
+## Icon optical normalization gate
+Use this gate when the same semantic icon family appears across materially different target sizes or carriers, for example map 16 px, app 24 px, signage 32 px, dense tables, compact controls, or service/return symbols.
+
+### Principle
+`SAME SEMANTIC TOPOLOGY ≠ SAME MASTER SCALE()`.
+
+The family must preserve its semantic invariants while permitting bounded optical compensation at each target size. A mechanically scaled master is acceptable only when native-size readback proves that the critical silhouette, gaps and directional relations survive.
+
+### Lock before compensation
+Record the semantic invariants that may not change across sizes, such as:
+- primary action/direction;
+- object ordering and sidedness;
+- critical negative-space gaps;
+- open/closed endpoints;
+- human/object relation;
+- state or route attachment point.
+
+### Allowed optical compensation
+At smaller sizes, when native-size readback requires it, the designer may:
+- increase relative stroke or mass;
+- enlarge critical gaps;
+- simplify secondary joints/details;
+- shorten arrows or hooks;
+- add local overshoot / optical alignment correction;
+- rebalance internal whitespace.
+
+These are optical corrections, not permission to invent a different icon.
+
+### Required readbacks
+For every promoted multi-size family:
+1. `NATIVE SIZE` — inspect each carrier at its actual output size, not only enlarged specimens.
+2. `ONE SIZE DOWN` — test the smallest intended carrier and one step below it to expose brittle geometry.
+3. `GRAYSCALE / COLOR-OFF` — icon identity and state must not depend on decorative color.
+4. `LABEL-OFF` — remove adjacent text; the intended action/object should remain inferable when the icon is expected to work independently.
+5. `FAMILY STRIP` — compare all optical variants side by side to confirm that compensation has not turned them into unrelated drawings.
+
+### Hard failures
+- a 32/48 px master is simply scaled to 16/20/24 px and critical gaps collapse;
+- the small variant is rescued only by globally thickening every stroke, creating new black joins;
+- enlarged review looks correct but native-size pixels fail;
+- the icon's arrow, person, node or secondary semantic fuses into one mass;
+- the small variant changes direction, topology, attachment point or action meaning;
+- map/app/signage variants use unrelated pictogram idioms for the same semantic role without an authority reason;
+- an external icon system's trade dress is copied instead of transferring the optical-sizing principle.
+
+### Review fields
+```text
+ICON_SEMANTIC_ID:
+CARRIERS_AND_TARGET_SIZES:
+SEMANTIC_INVARIANTS:
+OPTICAL_COMPENSATIONS_BY_SIZE:
+NATIVE_SIZE_RESULT:
+ONE_SIZE_DOWN_RESULT:
+GRAYSCALE_RESULT:
+LABEL_OFF_RESULT:
+FAMILY_STRIP_RESULT:
+DOES_NOT_PROVE:
+```
+
+### Promotion test
+`Compare at native carrier size: semantic topology must stay constant, while critical gaps and stroke survive without making small sizes a different icon.`
+
+Reference mechanism only: Google Material Symbols exposes an optical-size (`opsz`) axis, and Fluent System Icons distributes separate size-specific assets. OLEANDER may transfer the optical-normalization mechanism; do not copy their icon appearance or trade dress.
+
 ## Workflow
 1. Open actual screenshots at target viewport.
 2. Open strongest Existing Mature Design at matched scale.
@@ -112,8 +176,9 @@ Inspect:
 9. Review layer/depth logic.
 10. Review project specificity.
 11. Review responsive/edge states.
-12. Produce findings by severity; do not average away a weak first visual.
-13. Independent reviewer decides `KEEP / REVISE / REJECT / HOLD` and any numeric score if the project uses one.
+12. When icons cross target sizes/carriers, run the Icon Optical Normalization Gate before calling the family consistent.
+13. Produce findings by severity; do not average away a weak first visual.
+14. Independent reviewer decides `KEEP / REVISE / REJECT / HOLD` and any numeric score if the project uses one.
 
 ## Hard failure conditions
 - first read is a header/card/dashboard rather than the intended world/object/task;
