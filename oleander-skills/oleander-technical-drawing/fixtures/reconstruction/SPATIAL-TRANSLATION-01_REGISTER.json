@@ -1,6 +1,7 @@
 {
   "fixture_id": "SPATIAL-TRANSLATION-01",
   "promotion": "CANDIDATE_NOT_PROMOTED",
+  "analysis_contract_ref": "ANALYSIS-CONTRACT-01",
   "does_not_prove": ["site truth", "field validation", "design keep"],
   "items": [
     {
@@ -27,7 +28,10 @@
       "source_carrier_state": "SOURCE_CARRIER_AUTHORITY",
       "source_carrier_scope": "bank geometry controlling water-surface extent",
       "carrier_precedence_decision": "TRACE_BOUNDED",
-      "redraw_justification": "editable bounded polygon is required to encode the surface between the authoritative bank edges"
+      "redraw_justification": "editable bounded polygon is required to encode the surface between the authoritative bank edges",
+      "decision_question_ref": "ANALYSIS-CONTRACT-01",
+      "task_critical_invariants": ["EXTENT", "BOUNDARY_TYPE"],
+      "externally_preserved_invariants": {}
     },
     {
       "id": "ST-02-ROUTE",
@@ -53,7 +57,10 @@
       "source_carrier_state": "SOURCE_CARRIER_INSUFFICIENT",
       "source_carrier_scope": "source graph carries topology/order but no usable geographic geometry",
       "carrier_precedence_decision": "SCHEMATIZE_SEPARATELY",
-      "redraw_justification": "topology must be communicated independently because the source does not support map-bound curvature"
+      "redraw_justification": "topology must be communicated independently because the source does not support map-bound curvature",
+      "decision_question_ref": "ANALYSIS-CONTRACT-01",
+      "task_critical_invariants": ["TOPOLOGY", "ORDER"],
+      "externally_preserved_invariants": {}
     },
     {
       "id": "ST-03-VIEW",
@@ -79,7 +86,10 @@
       "source_carrier_state": "SOURCE_CARRIER_INSUFFICIENT",
       "source_carrier_scope": "source supports a broad observation zone but not a precise view field",
       "carrier_precedence_decision": "REDRAW_JUSTIFIED",
-      "redraw_justification": "a soft inferred field is required to communicate bounded opportunity while explicitly withholding exact ray/target geometry"
+      "redraw_justification": "a soft inferred field is required to communicate bounded opportunity while explicitly withholding exact ray/target geometry",
+      "decision_question_ref": "ANALYSIS-CONTRACT-01",
+      "task_critical_invariants": ["ADJACENCY", "EXTENT"],
+      "externally_preserved_invariants": {}
     },
     {
       "id": "ST-04-JUNCTION",
@@ -105,7 +115,10 @@
       "source_carrier_state": "SOURCE_CARRIER_SUFFICIENT",
       "source_carrier_scope": "source graph already carries the three-edge connection event",
       "carrier_precedence_decision": "DERIVE_REQUIRED",
-      "redraw_justification": "the semantic junction node is derived from connected source edges for graph validation; the point symbol remains secondary"
+      "redraw_justification": "the semantic junction node is derived from connected source edges for graph validation; the point symbol remains secondary",
+      "decision_question_ref": "ANALYSIS-CONTRACT-01",
+      "task_critical_invariants": ["TOPOLOGY"],
+      "externally_preserved_invariants": {}
     }
   ]
 }
