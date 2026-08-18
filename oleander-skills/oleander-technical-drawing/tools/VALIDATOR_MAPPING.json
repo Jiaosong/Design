@@ -1,8 +1,8 @@
 {
-  "mapping_version": "0.3",
+  "mapping_version": "0.4",
   "knowledge_authority": "Notion / 50｜Methods & Design Intelligence",
   "ci_workflow": ".github/workflows/technical-drawing-analysis-evals.yml",
-  "implementation_boundary": "GitHub validators enforce explicit contracts, parameter coherence, recipe execution and structural contradictions only; they do not machine-award aesthetic quality or KEEP.",
+  "implementation_boundary": "GitHub validators enforce explicit contracts, parameter coherence, recipe execution, cross-skill ownership and structural contradictions only; they do not machine-award aesthetic quality or KEEP.",
   "primary_skill_knowledge": {
     "notion_page_id": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
     "title": "Technical Drawing / Analysis Board / L5｜Source Carrier → Spatial Model → Graphic Carrier → Argument"
@@ -71,13 +71,15 @@
       "supporting_knowledge_page_ids": ["3a8b86be-5c47-8118-b33c-d7d9d4fefe16", "3b9b86be-5c47-81e1-84dc-faa59e2df471", "3bfb86be-5c47-814e-a385-ded39679093f", "3bfb86be-5c47-8127-822b-fa4c5adc04d9"],
       "knowledge_rule": "surface/motion effects are parameterized recipes with semantic owners, OFF/reduced states, bounded candidate ranges and regression fixtures; motion runtime remains owned by oleander-motion",
       "parameter_library": "references/VISUAL_EFFECT_PARAMETER_LIBRARY.json",
+      "parameter_extension": "references/VISUAL_EFFECT_PARAMETER_EXTENSION_02.json",
       "static_recipes": "recipes/SVG_PROCEDURAL_RECIPES.json",
       "motion_recipes": "recipes/MOTION_HANDOFF_RECIPES.json",
-      "validators": ["tools/validate_effect_parameter_library.py", "tools/validate_effect_recipe_register.py"],
-      "builders": ["tools/build_svg_effect_atlas.py", "tools/build_motion_recipe_demo.py"],
-      "fixtures": ["fixtures/reconstruction/EFFECT-RECIPE-01_REGISTER.json", "fixtures/reconstruction/validate_effect_parameter_library_regression.py", "fixtures/reconstruction/validate_effect_recipe_regression.py"],
-      "machine_can_check": ["candidate ranges are not reversed", "semantic owner exists", "effect recipe id is valid", "analytical gradient has mapped variable and legend", "seeded textures are deterministic", "map-bound geometry is not displaced", "glow has a valid state/material/reference owner", "motion has reduced-motion alternative", "scroll keeps native baseline", "particle count/flow has a declared model", "SVG atlas can be generated and parsed", "native motion smoke demo can be generated with reduced-motion marker"],
-      "machine_cannot_check": ["whether the selected effect is aesthetically excellent", "whether timing feels correct in a real runtime", "whether material texture is physically true", "whether motion improves comprehension", "AR-S10 runtime performance/accessibility", "Design KEEP or Promotion"]
+      "cross_skill_routes": "recipes/CROSS_SKILL_EFFECT_ROUTES.json",
+      "validators": ["tools/validate_effect_parameter_library.py", "tools/validate_effect_recipe_register.py", "tools/validate_effect_extension_02.py"],
+      "builders": ["tools/build_svg_effect_atlas.py", "tools/build_motion_recipe_demo.py", "tools/build_svg_effect_extension_02.py", "tools/build_motion_extension_02_demo.py"],
+      "fixtures": ["fixtures/reconstruction/EFFECT-RECIPE-01_REGISTER.json", "fixtures/reconstruction/EFFECT-RECIPE-02_EXTENDED_REGISTER.json", "fixtures/reconstruction/validate_effect_parameter_library_regression.py", "fixtures/reconstruction/validate_effect_recipe_regression.py", "fixtures/reconstruction/validate_effect_extension_02_regression.py"],
+      "machine_can_check": ["candidate ranges are not reversed", "semantic owner exists", "effect recipe id is valid", "analytical gradient/halftone has mapped variable and legend", "seeded textures are deterministic", "map-bound geometry is not displaced", "glow has a valid state/material/reference owner", "hillshade/AO/depth require source/pass registration metadata", "source clip preserves required labels", "motion has reduced-motion alternative", "scroll keeps native baseline", "cursor/drag have non-pointer fallbacks", "particle count/flow has a declared model", "SVG atlases can be generated and XML parsed", "native motion smoke demos can be generated with reduced-motion marker"],
+      "machine_cannot_check": ["whether the selected effect is aesthetically excellent", "whether timing feels correct in a real runtime", "whether material texture is physically true", "whether 3D/GIS source pass itself is correct", "whether motion improves comprehension", "AR-S10 runtime performance/accessibility", "Design KEEP or Promotion"]
     }
   ]
 }
