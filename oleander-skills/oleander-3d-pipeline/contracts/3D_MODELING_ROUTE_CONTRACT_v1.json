@@ -1,7 +1,26 @@
 {
   "schema": "oleander.3d.modeling-route-contract.v1",
-  "status": "CURRENT_CANDIDATE",
-  "purpose": "Fail-closed routing contract for OLEANDER 3D v2 entry selection and Source representation.",
+  "status": "CANDIDATE_SPECIALIST_EXTENSION",
+  "purpose": "Fail-closed K3 specialist routing contract for OLEANDER 3D modeling intent and Source representation selection.",
+  "oleander_architecture_binding": {
+    "current_authority_unchanged": true,
+    "canonical_project_flow": "v0.3",
+    "project_control_plane": "v0.3",
+    "kernel": "K3_EXECUTION_ROUTER",
+    "project_axis": "P0_PORTFOLIO>P1_PROGRAM>P2_PROJECT>P3_WORKSTREAM>P4_VALIDATION",
+    "project_axis_unchanged": true,
+    "system_gates_added": false,
+    "system_breakers_added": false,
+    "project_modes_unchanged": [
+      "EXPLORE",
+      "CANDIDATE",
+      "AUTHORITY"
+    ],
+    "specialist_stage_ids_are": "INTERNAL_EXECUTION_STAGES_NOT_PROJECT_GATES",
+    "project_control_card_replaced": false,
+    "candidate_spec_role": "TECHNICAL_DEPENDENCY_DELTA_NOT_PROJECT_AUTHORITY",
+    "repeated_revise_breaker": "CB-01_ROOT_CAUSE_RECLASSIFICATION"
+  },
   "routes": [
     "REFERENCE_RECONSTRUCTION",
     "STRUCTURE_TO_FORM"
@@ -64,12 +83,22 @@
       ]
     }
   },
-  "representation_escalation": {
-    "code": "STOP_PARAMETER_TUNING_REOPEN_REPRESENTATION",
-    "trigger_after_controlled_non_material_improvement_count": 3,
-    "triggers": [
+  "representation_reopening": {
+    "control_plane_owner": "CB-01_REPEATED_REVISE_BREAKER",
+    "trigger_after_consecutive_visual_or_project_revise": 2,
+    "required_first_action": "ROOT_CAUSE_RECLASSIFICATION",
+    "problem_layers": [
+      "PARAMETER",
+      "RELATION",
+      "GEOMETRY",
+      "TOPOLOGY",
+      "ARCHITECTURE",
+      "EVIDENCE"
+    ],
+    "specialist_action_when_representation_is_causal": "REOPEN_REPRESENTATION_MODEL",
+    "representation_specific_signals": [
       "REPEATED_FAILURE_FAMILY",
-      "CROSS_VIEW_LOCKED_GATE_REGRESSION",
+      "CROSS_VIEW_LOCKED_RELATION_REGRESSION",
       "APERTURE_REQUIRES_DESTRUCTIVE_AFTERTHOUGHT",
       "CONTINUOUS_FORM_REQUIRES_FLOATING_OVERLAP",
       "MACHINE_PASS_HELD_OUT_VISUAL_GENERIC",
@@ -78,21 +107,28 @@
   },
   "runtime_architecture": {
     "preferred_candidate_form": "CANDIDATE_SPEC_DATA_DELTA",
+    "candidate_spec_does_not_replace": [
+      "PROJECT_CONTROL_CARD",
+      "PROJECT_STATE",
+      "CURRENT_TASK",
+      "AUTHORITY_TRANSITION",
+      "PROMOTION_REVIEW"
+    ],
     "forbidden_default": "NEW_WRAPPER_RUNTIME_FOR_PARAMETER_ONLY_CHANGE",
     "diagnostic_dependency": "SEMANTIC_CAPABILITY_ID",
     "intentional_missing_capability_state": "NOT_APPLICABLE_STAGE_HOLD",
-    "loops": [
-      "FAST_LOOP",
-      "VISUAL_LOOP",
-      "DELIVERY_LOOP"
-    ]
+    "execution_bands": {
+      "FAST": "EXISTING_PREFLIGHT_MACHINE_QA_LOW_COST_VALIDATION",
+      "VISUAL": "EXISTING_VISUAL_QA_PROJECT_QA_PROFESSIONAL_DESIGN_REVIEW",
+      "DELIVERY": "EXISTING_FIDELITY_PERSISTENCE_PACKAGE_REVIEW_WHEN_TRIGGERED"
+    }
   },
-  "gate_separation": [
+  "specialist_evidence_dimensions": [
     "EXECUTION",
-    "EVIDENCE",
+    "EVIDENCE_VALIDITY",
     "REFERENCE_FIDELITY_IF_APPLICABLE",
     "SURFACE_QUALITY",
-    "DESIGN_QUALITY",
+    "DESIGN_QUALITY_INPUT_TO_K4",
     "FIELD_ENGINEERING_PROOF_IF_APPLICABLE"
   ],
   "does_not_prove": [
@@ -100,6 +136,8 @@
     "Class-A/G2/G3 continuity",
     "engineering release",
     "manufacturability",
-    "reference fidelity without independent review"
+    "reference fidelity without independent review",
+    "Canonical promotion",
+    "new OLEANDER system authority"
   ]
 }

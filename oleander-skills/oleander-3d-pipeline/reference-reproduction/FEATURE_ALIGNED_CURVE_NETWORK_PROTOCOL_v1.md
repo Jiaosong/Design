@@ -1,14 +1,17 @@
 # Feature-Aligned Curve Network Protocol v1
 
-Status: CURRENT CANDIDATE / reference-reconstruction representation upgrade.
+Status: CANDIDATE SPECIALIST EXTENSION / reference-reconstruction representation upgrade.
+
+Architecture binding: this protocol is an OLEANDER 3D / Modeling Contract specialization under **K3 Execution Router**. It does not create a new Current Authority, Project Flow, Workstream, Validation object, system Gate, breaker or promotion state. R0–R7 below are internal reference-modeling stage IDs only.
 
 Purpose: replace generic evenly sampled ring/loft refinement as the default for identity-critical reflective products. Source must align to the object's actual form logic.
 
 ## INPUT
-- locked reference identity/version and allowed transfer scope;
+- current Project Control Card / Decision Question when project execution is in scope;
+- locked reference identity/version and allowed transfer scope resolved by K2;
 - hard points / dimensions / calibrated landmarks;
 - SIDE / FRONT / REAR reference evidence and at least one 3/4 validation view when available;
-- current best-known gate baselines;
+- current best-known comparable diagnostic baselines;
 - representation route receipt.
 
 ## Principle
@@ -92,7 +95,7 @@ A solver may optimize sparse Source parameters against multiple external/calibra
 - protected families remain locked;
 - the solver may not rewrite reference targets;
 - held-out validation remains outside the fitted objective;
-- visual review remains independent.
+- visual review remains independent and routes to existing K4 Visual/Project QA.
 
 ## Tiered identity
 Classify form families:
@@ -102,25 +105,27 @@ Classify form families:
 
 Tier B/C work may not be used to claim completion while Tier A is REVISE/REJECT.
 
-## Representation Escalation
-Emit `STOP_PARAMETER_TUNING_REOPEN_REPRESENTATION` if the same identity failure survives three controlled Source edits without material improvement, or if one fitted view repeatedly causes another locked view to regress. Reopen curve vocabulary, section placement, patch topology, aperture architecture or measurement model.
+## Representation reopening through existing CB-01
+Do not define a separate Representation Escalation Gate. Control Plane CB-01 remains authoritative: after the same Decision Question receives 2 consecutive Visual/Project REVISE results, perform Root Cause Reclassification.
+
+If the representation layer is identified as causal, emit `REOPEN_REPRESENTATION_MODEL` and re-evaluate curve vocabulary, section placement, patch topology, aperture architecture or measurement model. Do not relax thresholds or add detail as a substitute.
 
 ## EVIDENCE
 - `FEATURE_CURVE_NETWORK_RECEIPT.json`;
 - curve/section inventory and Source digest;
 - generated patch/cage receipt;
-- per-gate projection/landmark results;
+- comparable projection/landmark results;
 - Broad/Strip/Grazing/Zebra as applicable;
 - fit-view list vs held-out-view list;
-- independent visual result.
+- independent visual result routed through existing K4 review.
 
-## FAIL / HOLD
+## Specialist FAIL / HOLD outputs
 - `FAIL_IDENTITY_CURVE_FAMILY_MISSING`
 - `FAIL_SECTION_CAUSALITY_UNCLEAR`
 - `FAIL_APERTURE_NOT_IN_SOURCE_TOPOLOGY`
 - `FAIL_TARGET_CANDIDATE_PROVENANCE_COLLAPSE`
 - `REJECT_HELD_OUT_IDENTITY`
-- `STOP_PARAMETER_TUNING_REOPEN_REPRESENTATION`
+- `REOPEN_REPRESENTATION_MODEL`
 
 ## Does not prove
-Feature-aligned curves, structured patches, low projection error or good reflection diagnostics do not prove manufacturer CAD, Class-A/G2/G3 certification, tooling, manufacturing feasibility or final design approval.
+Feature-aligned curves, structured patches, low projection error or good reflection diagnostics do not prove manufacturer CAD, Class-A/G2/G3 certification, tooling, manufacturing feasibility, final design approval or Canonical promotion.

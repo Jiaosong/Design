@@ -1,11 +1,15 @@
 # Structure-to-Form Protocol v1
 
-Status: CURRENT CANDIDATE.
+Status: CANDIDATE SPECIALIST EXTENSION.
+
+Architecture binding: this protocol is an OLEANDER 3D / Modeling Contract specialization executed inside **K3 Execution Router**. It does not create a new OLEANDER Project Flow, P-level, Workstream, Validation object, system Gate or promotion state. Project mode, Decision Question, Authority, Locked/Open Variables and promotion remain owned by the existing Control Plane and Canonical Project Flow.
 
 Use when no existing product/reference object governs the exterior, or when the task is original product development. The product must grow from functional and structural causality rather than arbitrary exterior styling.
 
-## Core order
-`S0 Intent → S1 Functional Decomposition → S2 Component Graph → S3 Interface / Motion Graph → S4 Package & Clearance → S5 Structural Topology → S6 Form Envelope → S7 Primary Surface → S8 Assembly / Manufacturing → S9 Secondary / CMF → Independent Review`
+## Specialist execution order
+`S0 Intent → S1 Functional Decomposition → S2 Component Graph → S3 Interface / Motion Graph → S4 Package & Clearance → S5 Structural Topology → S6 Form Envelope → S7 Primary Surface → S8 Assembly / Manufacturing → S9 Secondary / CMF → Existing K4 Review Router`
+
+**S0–S9 are internal specialist stage IDs only. They are not OLEANDER P0–P4 project levels, G0–G9 Gates, or project lifecycle states.** A project may iterate these stages inside either Exploration or Canonical Production as allowed by the current Project Control Card.
 
 ## Evidence classes
 Every requirement or value must be classified as one of:
@@ -130,7 +134,7 @@ The envelope is not styling detail. It records:
 - visual/physical center of gravity;
 - major silhouette and primary-volume alternatives.
 
-Generate multiple structural layouts when there is a material design choice, e.g. vertical stack / horizontal layout / central core / distributed modules. Compare consequences before surfacing.
+Generate multiple structural layouts when there is a material design choice, e.g. vertical stack / horizontal layout / central core / distributed modules. Compare consequences before surfacing using the existing Comparison-First logic.
 
 ### EVIDENCE
 `FORM_ENVELOPE_OPTIONS` + selection receipt.
@@ -169,8 +173,8 @@ A visual concept may remain `DESIGN_PROPOSAL / ENGINEERING_OPEN`; do not invent 
 ## S9 Secondary / CMF
 Buttons, seams, lenses, fasteners, trim, graphics, micro-detail and CMF only enter after primary form and interface architecture are coherent.
 
-## Original-design quality gate
-No reference fidelity gate exists, but design quality remains independent. Review:
+## Original-design specialist review criteria
+This protocol does not add a new Design Quality Gate. These criteria feed the existing **Visual QA + Project QA / Professional Design** decision in K4:
 - functional legibility;
 - package efficiency;
 - ergonomics/interaction;
@@ -181,7 +185,8 @@ No reference fidelity gate exists, but design quality remains independent. Revie
 - CMF/form relation;
 - professional finish.
 
-## FAIL / HOLD
+## Specialist FAIL / HOLD outputs
+These do not bypass the Control Plane; route them through K4/K5 as applicable:
 - `HOLD_FUNCTION_ARCHITECTURE_UNRESOLVED`
 - `HOLD_COMPONENT_PACKAGE_UNRESOLVED`
 - `FAIL_INTERFACE_CONFLICT`
