@@ -68,8 +68,10 @@ gdal_translate \
 gdalinfo -json -stats "$OUT/C04_CH02_SOURCE_CROP_WGS84.tif" > "$OUT/crop_wgs84_gdalinfo.json"
 
 # UTM 49N is used only as the metric analytical CRS for this longitude/latitude extent.
+# TAP introduces a small rotated-edge envelope; explicit dst NoData prevents those cells
+# from becoming false zero elevations or contaminating derivatives.
 gdalwarp -overwrite \
-  -t_srs EPSG:32649 -tr 30 30 -tap -r bilinear \
+  -t_srs EPSG:32649 -tr 30 30 -tap -r bilinear -dstnodata -9999 \
   -co COMPRESS=DEFLATE \
   "$OUT/C04_CH02_SOURCE_CROP_WGS84.tif" "$OUT/C04_CH02_TERRAIN_UTM49N_30M.tif"
 
@@ -83,12 +85,12 @@ gdal_contour -i 20 -a elev -f GeoJSON "$OUT/C04_CH02_TERRAIN_UTM49N_30M.tif" "$O
 # D8 accumulation + relative solar are derived from the actual metric raster.
 /usr/bin/python3 - <<'PY'
 from osgeo import gdal
-import numpy as np, json, math, hashlib
+import numpy as np, json, math
 from pathlib import Path
 out=Path('outputs/c04_ch02')
 
 def read(path):
-    ds=gdal.Open(str(path)); a=ds.GetRasterBand(1).ReadAsArray().astype(float); nd=ds.GetRasterBand(1).GetNoDataValue();
+    ds=gdal.Open(str(path)); a=ds.GetRasterBand(1).ReadAsArray().astype(float); nd=ds.GetRasterBand(1).GetNoDataValue()
     if nd is not None: a[a==nd]=np.nan
     return ds,a
 
@@ -99,16 +101,20 @@ h,w=zz.shape
 receiver=np.full(h*w,-1,dtype=np.int32)
 for r in range(h):
   for c in range(w):
-    i=r*w+c; best=zz[r,c]; bj=-1
+    i=r*w+c
+    if not valid[r,c]: continue
+    best=zz[r,c]; bj=-1
     for dr in (-1,0,1):
       for dc in (-1,0,1):
         if dr==0 and dc==0: continue
         rr,cc=r+dr,c+dc
-        if 0<=rr<h and 0<=cc<w and zz[rr,cc] < best:
+        if 0<=rr<h and 0<=cc<w and valid[rr,cc] and zz[rr,cc] < best:
           best=zz[rr,cc]; bj=rr*w+cc
     receiver[i]=bj
-acc=np.ones(h*w,dtype=np.float64)
+acc=np.zeros(h*w,dtype=np.float64)
+acc[valid.reshape(-1)]=1.0
 for i in np.argsort(zz.reshape(-1))[::-1]:
+  if not valid.reshape(-1)[i]: continue
   j=receiver[i]
   if j>=0: acc[j]+=acc[i]
 acc=acc.reshape(h,w); acc[~valid]=np.nan
@@ -118,7 +124,7 @@ def write(name,a,nodata=-9999.0):
   o.SetGeoTransform(ds.GetGeoTransform()); o.SetProjection(ds.GetProjection()); b=o.GetRasterBand(1); b.SetNoDataValue(nodata); b.WriteArray(np.where(np.isfinite(a),a,nodata).astype('float32')); b.FlushCache(); o=None
 write('C04_CH02_D8_ACCUMULATION_CELLS.tif',acc)
 
-sds,slope=read(out/'C04_CH02_SLOPE_DEG.tif'); ads,aspect=read(out/'C04_CH02_ASPECT_DEG.tif')
+_,slope=read(out/'C04_CH02_SLOPE_DEG.tif'); _,aspect=read(out/'C04_CH02_ASPECT_DEG.tif')
 sr=np.radians(np.where(np.isfinite(slope),slope,0)); ar=np.radians(np.where(np.isfinite(aspect),aspect,0))
 def solar(alt_deg,az_deg=180):
   alt=math.radians(alt_deg); az=math.radians(az_deg)
@@ -131,6 +137,7 @@ stats={
  'terrain_shape_rows_cols':[int(h),int(w)],
  'cell_count_total':int(h*w),
  'cell_count_valid':int(valid.sum()),
+ 'cell_count_nodata':int((~valid).sum()),
  'elevation_m':{'min':float(np.nanmin(z)),'median':float(np.nanmedian(z)),'max':float(np.nanmax(z))},
  'slope_deg':{'median':float(np.nanmedian(slope)),'p90':float(np.nanpercentile(slope,90)),'max':float(np.nanmax(slope))},
  'd8_accumulation_cells':{'p90':float(np.nanpercentile(acc,90)),'p99':float(np.nanpercentile(acc,99)),'max':float(np.nanmax(acc))},
@@ -160,6 +167,7 @@ receipt={
  'analysis_extent_semantics':'CURRENT CH02 ANALYSIS EXTENT / NOT SURVEYED SITE POLYGON',
  'source_type':source,'source_url':url,
  'metric_analysis_crs':'EPSG:32649','target_cell_size_m':[30,30],
+ 'nodata_policy':'metric warp outside valid rotated footprint = -9999; excluded from all stats and D8 routing',
  'derived':stats,'files':files,
  'truth':'REMOTE SOURCE-GROUNDED / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS',
  'does_not_prove':['surveyed site boundary','field-measured elevation','observed drainage network','hydraulic capacity','geohazard safety','construction suitability','independent Design PASS']
