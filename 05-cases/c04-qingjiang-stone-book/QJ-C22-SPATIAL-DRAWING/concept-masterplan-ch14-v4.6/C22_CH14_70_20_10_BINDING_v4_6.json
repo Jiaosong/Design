@@ -1,0 +1,29 @@
+{
+  "object": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_6",
+  "composition_target": {
+    "real_qingjiang_peak_forest_field": "~70% first-read ownership",
+    "route_and_bank_trace": "~20% subordinate relational layer",
+    "thirteen_imprints_brand_punctuation": "~10% marginalia/punctuation"
+  },
+  "landscape_source": {
+    "file": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+    "drive_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+    "derived_crop": "assets/QINGJIANG_R06_REAL_SCENE.jpg",
+    "transform": "crop + slight contrast/color normalization only",
+    "role": "real Qingjiang / valley / peak-forest visual source carrier"
+  },
+  "route_source": "existing route geometry carrier, topology only",
+  "route_photo_registration": "NONE — route trace is deliberately separated from photographic geography",
+  "ch14": [
+    "CONTEMPORARY EDITORIAL + LANDSCAPE SPACE",
+    "LINE / PAGE / TRACE / SEAL",
+    "Brand LIGHT"
+  ],
+  "image_generation": "NOT USED",
+  "truth_boundary": [
+    "NTS",
+    "not GPS",
+    "not survey masterplan",
+    "R06/R13 are spatial-type anchors only"
+  ]
+}
