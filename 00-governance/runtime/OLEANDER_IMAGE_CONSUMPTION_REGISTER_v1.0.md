@@ -1,7 +1,8 @@
 # OLEANDER Image Consumption Register v1.0
 
-Status: **ACTIVE CANDIDATE EXTENSION TO CURRENT RUNTIME**  
+Status: **ACTIVE CURRENT RUNTIME EXTENSION**  
 Decision date: **2026-08-19**  
+Current since: **PR #319 / merge `463a4e5c22080b1fb1205bf9eb10e547684bc3f3`**  
 Scope: **ALL OLEANDER projects / visual-producing owners / semantic content images**
 
 This file does **not** create a new METHOD, Skill, visual framework, style system or Source Authority. It extends the Current Resolver + Image Processing Operator + Execution Receipt with one missing instance-control function: **which semantic content image has already been allocated to which consumer unit**.
