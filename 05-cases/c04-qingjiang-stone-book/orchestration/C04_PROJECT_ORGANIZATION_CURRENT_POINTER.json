@@ -1,0 +1,12 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "current_organization_version": "1.2",
+  "current_path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_PROJECT_ORGANIZATION_CURRENT_v1_2.md",
+  "machine_path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_PROJECT_ORGANIZATION_CURRENT_v1_2.json",
+  "status_overlay": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_PROJECT_STATUS_OVERLAY_2026-08-19.csv",
+  "web_story_flow": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_WEB_STORY_FLOW_v2_0_2026-08-19.md",
+  "previous_organization": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-17/",
+  "previous_state": "PROVENANCE / SUPERSEDED AS CURRENT ORGANIZATION POINTER / DO NOT DELETE",
+  "authority_dependency": "C04_CURRENT.md / PROJECT ARCHITECTURE v3.2",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

@@ -1,0 +1,126 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "organization_version": "1.2",
+  "date": "2026-08-19",
+  "base_main_sha": "f20eeccd8147418ce09af2977045c7eda08da47e",
+  "project_architecture": "v3.2",
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "drawing_status": "NTS_NOT_FOR_CONSTRUCTION"
+  },
+  "hierarchy": ["PROJECT", "CHAPTER", "PAGE", "MODULE_FIGURE_ASSET"],
+  "count_contract": {
+    "chapter_containers": 20,
+    "chapter_range": "CH00-CH19",
+    "protected_page_identity_baseline": "C04-WEB-P001..P052",
+    "canonical_page_count": "NOT_YET_LOCKED",
+    "hard_rules": ["CHAPTER_NE_PAGE", "AUTHORING_UNIT_NE_PAGE", "WEB_SECTION_NE_PAGE", "VIEWPORT_NE_PAGE"]
+  },
+  "chapter_containers": {
+    "CH00": "项目定义",
+    "CH01": "项目问题与机会",
+    "CH02": "场地与山水分析",
+    "CH03": "地域文化与内容分析",
+    "CH04": "人群与使用状态分析",
+    "CH05": "游程与行为分析",
+    "CH06": "设计原理",
+    "CH07": "设计方法",
+    "CH08": "总体策略与体验系统",
+    "CH09": "路线、交通与服务设计",
+    "CH10": "十三印内容与互动系统",
+    "CH11": "数字陪伴系统_App",
+    "CH12": "关键场景设计",
+    "CH13": "实体_身体_感官设计",
+    "CH14": "品牌与视觉识别系统",
+    "CH15": "记忆_IP与文化产品",
+    "CH16": "设计深化与细节",
+    "CH17": "技术_模型与工程证明",
+    "CH18": "方案演化与专业判断",
+    "CH19": "开放项_回程与结尾"
+  },
+  "canonical_systems": [
+    "LANDSCAPE_SITE",
+    "JOURNEY_MOBILITY_SERVICE",
+    "R01_R13_THIRTEEN_IMPRINTS",
+    "SCENE_INTERACTION",
+    "AUDIENCE_DEPTH",
+    "PHYSICAL_BODY_SENSORY",
+    "DIGITAL_APP",
+    "BRAND_VISUAL_IDENTITY",
+    "MEMORY_IP_CULTURAL_PRODUCT",
+    "SPATIAL_TECHNICAL_MODEL",
+    "NARRATIVE_EDITORIAL",
+    "VISUAL_MOTION",
+    "RETURN_NO_PHONE_SERVICE_CLOSURE"
+  ],
+  "source_authority_locks": {
+    "ROUTE-03": "LOCKED_CURRENT_SINGLE_ROUTE_GEOMETRY_AUTHORITY",
+    "THIRTEEN_IMPRINTS": "OPTIONAL_REORDERABLE_READING_LAYER_NOT_ROUTE_AUTHORITY",
+    "R06_EXPERIENCE": "FINISHED_FROZEN_NO_REOPEN",
+    "R13": "COMPRESSION_BODY_ROUTE_EXIT_RETURN_PRIORITY_PLAY_OFF_READ_OFF_DURING_PASSAGE",
+    "SERVICE_RETURN_PRIORITY": "SERVICE_RETURN_GT_ROUTE_GT_OBSERVATION_GT_EXPLANATION_GT_MEMORY_GT_SHARE"
+  },
+  "brand_CH14": {
+    "state": "INDEPENDENT_PROJECT_SYSTEM",
+    "merged_baseline": {
+      "P01": "v5.6_BRAND_FOUNDATION",
+      "P02": "v5.8_VERBAL_IDENTITY",
+      "P03": "v7.2_LOGO_WORDMARK_VI_MANUAL",
+      "P04": "v1.0_COLOR_SYSTEM",
+      "P05": "v1.0_TYPOGRAPHY_LAYOUT",
+      "P06": "v2.0_MAP_DERIVED_GRAPHIC_LANGUAGE_ROUTE03_BOUND",
+      "P07": "v1.0_ICON_LEGEND_FUNCTIONAL_INFORMATION"
+    },
+    "P08": "FULL_LIGHT_TRACE_OFF_CROSS_MEDIA_PRESENCE_CURRENT_MATERIAL",
+    "hard_boundaries": [
+      "BRAND_COLOR_NE_OPERATIONAL_STATUS_COLOR",
+      "STONE_SEAL_IDENTITY_ONLY",
+      "P06_INHERITS_ROUTE03",
+      "P07_OWNS_FUNCTIONAL_DECODING",
+      "RETURN_SAFETY_TRUTH_MAY_SUPPRESS_BRAND",
+      "MERGED_SOURCE_LOCK_NE_DESIGN_PASS"
+    ]
+  },
+  "gis_CH02": {
+    "stable_ids": {
+      "ENV-01": "SLOPE_ASPECT",
+      "ENV-02": "POTENTIAL_DRAINAGE",
+      "ENV-03": "LAND_COVER_EVIDENCE_HOLD",
+      "ENV-04": "WATER_HISTORY_EVIDENCE_HOLD",
+      "ENV-05": "SOLAR_SCENARIOS",
+      "ENV-06": "OPERATIONS_CONFLICT",
+      "ENV-SYN-01": "ENVIRONMENTAL_SYNTHESIS"
+    },
+    "latest_candidate": "GIS_v0.7.3_STRICT_CURRENT_REEXECUTION",
+    "candidate_state": ["SOURCE_REPRODUCED", "PRODUCER_READBACK_COMPLETE", "NEW_BINARY_PERSISTENCE_HOLD", "INDEPENDENT_DESIGN_REVIEW_HOLD", "NO_PROMOTION"]
+  },
+  "app_lineage": [
+    "v1.25_SPECIALIST_BASELINE",
+    "v1.26_PRODUCT_JOURNEY_IA_SERVICE",
+    "v1.27_NAVIGATION_GAME_ARCHITECTURE",
+    "PR255_ROUTE03_CURRENTIZATION_CANDIDATE",
+    "USER_NEXT_DESIGN_DELTA"
+  ],
+  "lane_boundaries": {
+    "PROJECT_ORGANIZATION": "MAY_EDIT_STATE_LINEAGE_ARCHITECTURE_POINTERS_NOT_WEB_APP_PIXELS",
+    "APP": "REGISTER_ONLY_USER_OWNED_NEXT_DELTA",
+    "WEB": "DOWNSTREAM_PRESENTATION_CONSUMER_NOT_PROJECT_AUTHORITY",
+    "GIS": "EVIDENCE_EXECUTION_OWNER_ORGANIZATION_REGISTERS_ONLY",
+    "BRAND": "CH14_EXECUTION_OWNER_ORGANIZATION_REGISTERS_ONLY"
+  },
+  "resolver_execution_baseline": {
+    "implementation": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.1",
+    "sticky_constraints": true,
+    "generic_followup_revokes_constraints": false,
+    "full_flow_ne_full_skill_stack": true,
+    "artifact_pr_ci_selfcheck_render_ne_closed": true
+  },
+  "provenance": {
+    "previous_organization": "project-organization-2026-08-17_v1.1",
+    "previous_state": "PRESERVE_PROVENANCE_DO_NOT_DELETE",
+    "web_story_flow_2026_08_17": "STALE_AS_CURRENT_LABEL_PRESERVE_EDITORIAL_PROVENANCE"
+  }
+}
