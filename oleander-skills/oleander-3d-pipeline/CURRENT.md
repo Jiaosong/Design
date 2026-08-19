@@ -1,6 +1,6 @@
 # OLEANDER 3D Pipeline — CURRENT Routing
 
-Status: `CANDIDATE_SYNC / NO_PROMOTION / 2026-08-19`
+Status: `CANDIDATE_SYNC / NO_PROMOTION / 2026-08-20`
 
 Integration PR: **#293 — OLEANDER 3D: currentize Skill, camera gate, and cross-system routing**
 
@@ -92,7 +92,7 @@ Machine validation evidence on commit `038d0e574f6ebc9399286113169d022d7849134b`
 
 Current contract state: `CANDIDATE_CONTRACT_MACHINE_VALIDATED`.
 
-The current ChatGPT agent container still has no local Blender executable, so it has no local Blender runtime receipt. However, the Porsche benchmark now supplies independent external execution provenance from GitHub Actions: PR #208 run `32271258341` executed V58 and V59 under **Blender 5.2.0 LTS**, persisted native `.blend` + JSON + six-view renders, and produced an Actions artifact with digest `sha256:49a709070d18b4053d7a50927e8184cb2b7d54dde6b6b655dc089593e42caa64`. This is benchmark execution evidence; it does not silently close every field of the generic Blender runtime contract.
+The current ChatGPT agent container still has no local Blender executable, so it has no local Blender runtime receipt. However, the Porsche benchmark supplies independent external execution provenance from GitHub Actions: PR #208 run `32271258341` executed V58 and V59 under **Blender 5.2.0 LTS**, persisted native `.blend` + JSON + six-view renders, and produced artifact digest `sha256:49a709070d18b4053d7a50927e8184cb2b7d54dde6b6b655dc089593e42caa64`. This is benchmark execution evidence; it does not silently close every field of the generic Blender runtime contract.
 
 Blender 5.2 LTS is the preferred baseline for new work as of 2026-08-19, but project-pinned Blender 4.5 LTS or another verified version remains valid when compatibility/dependency evidence requires it. Version recency does not overwrite an established production environment.
 
@@ -117,18 +117,79 @@ Core separation:
 
 PR #208 exposed the gap directly: `run_reference_repro_v59.py` existed in the branch while the Porsche workflow still executed only V58. A green workflow therefore could not be cited as V59 runtime evidence. Commit `5db053b1a07b9fef824b77cb2d20e5838502f3ca` repaired the benchmark workflow to invoke V59 explicitly under Blender 5.2, bind the exact target revision, read back receipts, keep the V49/V58 baseline separate, and retain negative/held design outcomes without rewriting them as infrastructure failures.
 
-The reusable gate now requires target revision, source commit, runtime witness, actual invocation, output receipt/readback, baseline/candidate comparability, execution result, experiment result, evidence result and Design result to remain independent.
-
-Machine validation on this integration branch:
+Machine validation:
 - OLEANDER Control Plane v0.3 run `32271427551`: **SUCCESS**.
 - AI Governance Evals run `32271427517`: **SUCCESS**.
-- 7 benchmark-execution contract tests cover missing target invocation, receipt-target mismatch, valid negative experiment, runtime comparability and machine→Design false promotion.
+- 7 benchmark-execution contract tests.
 
-Hard boundaries:
-- workflow success without target invocation is not target runtime execution evidence;
-- script existence is not runtime execution;
-- a validly executed experiment may be `REJECT_HYPOTHESIS` without becoming CI/runtime failure;
-- machine execution cannot self-promote to independent Design PASS.
+### 7. Derived Edit Host Preservation｜V60 negative benchmark
+
+Files:
+- `DERIVED_EDIT_HOST_PRESERVATION_PROTOCOL_v1.md`
+- `contracts/DERIVED_EDIT_HOST_PRESERVATION_CONTRACT_v1.json`
+- `tools/validate_derived_edit_host_preservation.py`
+- `00-governance/control-plane/tests/test_oleander_3d_derived_edit_host_preservation.py`
+
+Core separation:
+
+`OPERATOR_APPLIED ≠ GEOMETRY_CHANGED ≠ LOCAL_EDIT_SUCCEEDED ≠ HOST_PRESERVED ≠ DESIGN_PASS`
+
+Porsche V60 is retained as the decisive negative case: a rear-glass Boolean reported applied + geometry changed while reducing the Derived host from **8,637 faces to 96**. The experiment is valid evidence but the candidate is REJECT.
+
+The gate requires task-specific before/after host witness, protected invariants, Source mutation boundary and preservation budget. Repeated destructive failure must escalate from operator tuning to representation/topology/architecture diagnosis rather than keep changing solver/tolerance.
+
+Machine validation:
+- Control Plane run `32272492254`: **SUCCESS**.
+- AI Governance run `32272492192`: **SUCCESS**.
+- 8 host-preservation regression tests.
+
+### 8. Measurement Coverage Sufficiency｜V59 / V64 training delta
+
+Files:
+- `MEASUREMENT_COVERAGE_SUFFICIENCY_PROTOCOL_v1.md`
+- `contracts/MEASUREMENT_COVERAGE_SUFFICIENCY_CONTRACT_v1.json`
+- `tools/validate_measurement_coverage_sufficiency.py`
+- `00-governance/control-plane/tests/test_oleander_3d_measurement_coverage_sufficiency.py`
+
+Core separation:
+
+`CARRIER_CONGRUENT ≠ MEASUREMENT_COVERAGE_SUFFICIENT ≠ CLAIM_PROVEN ≠ DESIGN_PASS`
+
+V59 demonstrated the false-promotion risk directly: SIDE top-envelope RMSE ≈ **13.9 mm** while FRONT body-only ≈ **0.1503**, REAR ≈ **0.1724**, and held-out 3/4 identity remained unacceptable. The SIDE metric is kept as a valid narrow screen, not whole-form reference fidelity.
+
+V64 strengthened the rule: REAR body-only RMSE improved from ≈ **0.1724 → 0.0773**, Source stayed at 20 controls and 0 folds, and SIDE/front locks held; actual rear/rear-3Q preview nevertheless developed a pinched double-ridge C-pillar→haunch relation. V64 is `REJECT_EXPERIMENT_KEEP_EVIDENCE`, proving target-metric improvement does not establish correct relation ownership or Design PASS.
+
+Machine validation:
+- Control Plane run `32274708308`: **SUCCESS**.
+- AI Governance run `32274708322`: **SUCCESS**.
+- 7 measurement-coverage regression tests.
+
+### 9. Destructive Edit Preflight｜V63–V69 training delta
+
+Files:
+- `DESTRUCTIVE_EDIT_PREFLIGHT_PROTOCOL_v1.md`
+- `contracts/DESTRUCTIVE_EDIT_PREFLIGHT_CONTRACT_v1.json`
+- `tools/validate_destructive_edit_preflight.py`
+- `00-governance/control-plane/tests/test_oleander_3d_destructive_edit_preflight.py`
+
+Core separations:
+
+`PREDICATE_MATCH ≠ EXCLUSIVE_OWNER ≠ SAFE_TO_EDIT ≠ EDIT_SUCCEEDED ≠ HOST_PRESERVED ≠ DESIGN_PASS`
+
+`FIRST_MATCH_CODE_ORDER ≠ SEMANTIC_OWNERSHIP`
+
+`PRIMITIVE_STRADDLES_CANONICAL_BOUNDARY → SPLIT_OR_PARTITION_BEFORE_OWNER_ASSIGNMENT`
+
+V63 introduced fail-closed preflight before deletion. V65 proved the apparently missing rear-glass target actually overlapped the host; V66 then exposed multi-owner predicate conflict. V67 showed the deeper topology problem: inside the rear cut band there were **12 rear-interior faces, 48 exterior faces and 56 faces straddling the canonical lateral boundary**. Whole-face owner assignment is therefore invalid until topology is partitioned.
+
+V69 is the first positive representation result from this branch: a Derived-only piecewise boundary split reduced rear lateral straddles **56 → 0** while Source remained V59, world bounds had **0 drift**, folds stayed **0 → 0**, and non-manifold edges stayed **0 → 0**. This is a representation/topology PASS only; it does not prove aperture closure or reference fidelity. V70 continues the full-loop XZ boundary audit before any deletion is allowed.
+
+Machine validation of the reusable gate:
+- base preflight: Control Plane `32276586424` / AI Governance `32276586566`: **SUCCESS**;
+- boundary-straddle extension: Control Plane `32277088247` / AI Governance `32277088269`: **SUCCESS**;
+- current destructive-preflight test suite: 11 regression cases.
+
+Skill eval set is now 15 cases; the canonical-boundary-straddle eval passed Control Plane `32277434711` and AI Governance `32277434724`.
 
 ## Merged / CURRENT-compatible baseline
 
@@ -141,7 +202,7 @@ Hard boundaries:
 
 - PR #173 — Blender Surface System v1.21 Source-aware adapter + receipt/validator layer. `OPEN / DRAFT / CANDIDATE`.
 - PR #198 — real R29A refined-Skill Blender validation. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
-- PR #208 — Porsche 911 reference-reproduction benchmark and specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remain separate. V47 onward is being used to failure-test stage routing, representation selection, sparse-source/dense-evaluation separation, gate-local baselines, semantic identity evidence, carrier congruence, fold localization/repair, target execution evidence and aperture architecture.
+- PR #208 — Porsche 911 reference-reproduction benchmark and specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remain separate. Current training has reached V70 full-boundary audit; V59 remains the primary-body rollback/LKG while aperture representation is trained.
 - PR #227 — Camera Claim Gate provenance; reusable rule incorporated here.
 - PR #276 — interaction/lifecycle visual-gate provenance; reusable rules incorporated into `VISUAL_LAYER_BINDING.md`.
 - Modeling Worker v0.13 remains a working/revise candidate chain and does not overwrite current Source Authority by recency.
