@@ -1,0 +1,57 @@
+{
+  "schema": "oleander.skill.3d-pipeline.stage-capability-routing.v1",
+  "version": "2026-08-19-v1",
+  "required_receipt_fields": [
+    "schema",
+    "candidate_revision",
+    "stage",
+    "required_capabilities",
+    "available_capabilities",
+    "held_capabilities",
+    "held_result",
+    "failed_required_capabilities",
+    "legacy_name_dependencies_not_required",
+    "result",
+    "does_not_prove"
+  ],
+  "allowed_capability_states": [
+    "AVAILABLE",
+    "NOT_APPLICABLE_STAGE_HOLD",
+    "UNAVAILABLE_REQUIRED_FAIL",
+    "UNRESOLVED_STAGE_HOLD"
+  ],
+  "allowed_results": [
+    "PASS_STAGE_AWARE_ROUTING",
+    "FAIL_REQUIRED_CAPABILITY_MISSING",
+    "HOLD_STAGE_CAPABILITY_UNRESOLVED"
+  ],
+  "rules": {
+    "required_capabilities_must_be_available_for_pass": true,
+    "required_and_held_must_be_disjoint": true,
+    "held_result_for_explicit_stage_deferral": "NOT_APPLICABLE_STAGE_HOLD",
+    "held_metric_must_not_receive_synthetic_numeric_value": true,
+    "historical_object_name_is_not_semantic_capability": true,
+    "missing_required_capability_cannot_be_relabelled_hold": true,
+    "non_comparable_prior_stage_must_not_create_fake_baseline": true,
+    "quality_fail_does_not_equal_runtime_fail": true
+  },
+  "failure_codes": [
+    "FAIL_STAGE_CAPABILITY_RECEIPT_STRUCTURE",
+    "FAIL_REQUIRED_CAPABILITY_MISSING",
+    "FAIL_REQUIRED_CAPABILITY_MISCLASSIFIED_AS_HOLD",
+    "FAIL_CAPABILITY_STATE_OVERLAP",
+    "FAIL_STAGE_PASS_WITH_FAILED_REQUIRED_CAPABILITY",
+    "HOLD_STAGE_CAPABILITY_UNRESOLVED"
+  ],
+  "does_not_prove": [
+    "geometry_quality",
+    "reference_fidelity",
+    "Class-A_continuity",
+    "field_truth",
+    "engineering_validity",
+    "manufacturing_readiness",
+    "physical_CMF",
+    "Design_KEEP",
+    "MAIN_KEEP"
+  ]
+}
