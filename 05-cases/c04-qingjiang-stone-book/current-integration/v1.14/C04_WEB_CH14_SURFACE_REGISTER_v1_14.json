@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "web_successor": "v1.14",
+  "purpose": "Repair CH14 multi-surface omission and demote stale 112-surface completeness claim without inventing canonical PAGE IDs.",
+  "canonical_page_count": {
+    "status": "NOT_YET_LOCKED",
+    "source_rule": "C04_COUNT_CONTRACT_CURRENT.json"
+  },
+  "ch14": {
+    "chapter_id": "CH14",
+    "chapter_title": "品牌与视觉识别系统",
+    "authoring_base": {
+      "count": 8,
+      "units": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08"],
+      "source": "chapter-content-sync/v0.1/CH14_BRAND-VISUAL-IDENTITY.md",
+      "rule": "AUTHORING UNIT != WEB SURFACE"
+    },
+    "source_lock_baseline_on_main": {
+      "units": ["P01", "P02", "P03", "P04", "P05", "P06", "P07"],
+      "state": "SOURCE-LOCK / EXECUTABLE BASELINE PRESENT ON MAIN",
+      "rule": "P OWNER != ONE PAGE"
+    },
+    "known_multi_surface_evidence": [
+      {
+        "owner": "P07",
+        "evidence": "12 long-form brand-manual spec surfaces + scoped Web fragment",
+        "surface_count": 12,
+        "count_role": "KNOWN EXECUTED PRESENTATION SURFACES",
+        "canonical_page_identity": "PAGE_REGISTER_PENDING"
+      }
+    ],
+    "p08": {
+      "role": "cross-media brand application / FULL-LIGHT-TRACE-OFF presence scale",
+      "state": "AUTHORED BASE UNIT / DEDICATED SOURCE-MATERIALIZATION MAPPING OPEN",
+      "auto_count_as_page": false
+    },
+    "candidate_families": [
+      {
+        "name": "Stone Seal v1.0",
+        "pr": 238,
+        "state": "DRAFT CURRENT PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+        "known_preview_surface_count": 6,
+        "auto_count_as_current_page": false
+      }
+    ],
+    "expansion_candidates": [
+      "Brand Architecture",
+      "Naming System",
+      "Editorial System",
+      "Motion Identity",
+      "Photography Direction",
+      "Illustration / Diagram Direction",
+      "Material / Print"
+    ],
+    "integrated_web_surface_count": {
+      "status": "NOT_YET_REGISTERED",
+      "reason": "CH14 source owners, long-form spec surfaces, candidate families and expansion candidates must be mapped one-to-one before a current integrated Web surface count can be stated."
+    }
+  },
+  "carrier_history": {
+    "v1.11": {
+      "surface_count": 112,
+      "status": "STALE DOWNSTREAM SNAPSHOT / PRE-LATEST CHAPTER EXPANSION",
+      "canonical": false
+    },
+    "v1.12": {
+      "status": "CH14 P01-P07 VISUAL UNIFICATION DELTA / NOT A COMPLETE CH14 SURFACE REGISTER"
+    },
+    "v1.13": {
+      "status": "CH07-CH09 CURRENTIZATION DELTA / PRESERVED / NOT A COMPLETE CURRENT WEB COUNT"
+    }
+  },
+  "mandatory_rules": [
+    "CHAPTER != PAGE",
+    "AUTHORING UNIT != WEB SURFACE",
+    "P OWNER != ONE PAGE",
+    "CANDIDATE FAMILY != CURRENT PAGE IDENTITY",
+    "NO COMPRESSION / NO LOSS",
+    "112 MUST NOT BE REPORTED AS THE CURRENT COMPLETE WEB CARRIER AFTER THIS CORRECTION"
+  ],
+  "locks": {
+    "route": "ROUTE-03 = LOCKED CURRENT / NO GEOMETRY MUTATION",
+    "journey_04": "PROVENANCE / NON-CURRENT",
+    "r06": "FINISHED / FROZEN / NO REOPEN",
+    "app": "SEPARATE AUTHORITY / WEB CONSUME-ONLY"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "design_gate": "INDEPENDENT FINISHED-PIXEL DESIGN VERDICT = PENDING"
+}
