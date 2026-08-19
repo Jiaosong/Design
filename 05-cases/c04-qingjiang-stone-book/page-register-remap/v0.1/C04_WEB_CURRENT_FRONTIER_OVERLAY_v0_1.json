@@ -13,7 +13,16 @@
     "unique_candidate_authoring_ids": 34,
     "n_series_allocated": 0,
     "canonical_page_count": "NOT_YET_LOCKED",
-    "current_complete_integrated_web_surface_count": "NOT_YET_REGISTERED"
+    "current_complete_integrated_web_surface_count": "NOT_YET_REGISTERED",
+    "candidate_content_records": 39,
+    "candidate_id_collisions": 5,
+    "collision_ids": [
+      "CH11-P09",
+      "CH11-P10",
+      "CH14-P09",
+      "CH14-P10",
+      "CH14-P11"
+    ]
   },
   "frontiers": {
     "CH08": "v0.4 Master Design Strategy / WHOLE → RELATION → BODY",
@@ -56,6 +65,7 @@
     "NO PID BY GUESS",
     "MERGE IS NEVER DEFAULT",
     "PROCESS-SUPPORT DOES NOT DELETE PROTECTED ID",
+    "CANDIDATE ID COLLISION != CONTENT MERGE",
     "NEW_CANDIDATE DOES NOT ALLOCATE N-SERIES"
   ],
   "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
