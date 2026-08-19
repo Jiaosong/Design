@@ -1,0 +1,46 @@
+{
+  "schema": "c04.ch12.production-current.v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH12",
+  "production_revision": "v0.1",
+  "state": "EXECUTED_PARTIAL_WITH_SOURCE_HOLD",
+  "executed_pages": ["A01", "A02", "A03", "A06", "A07", "A08", "A09"],
+  "hold_pages": ["A04", "A05"],
+  "hold_reason": "R06 source family materialized but CH12 image-consumption ownership not explicitly released; A04+A05 must be one semantic component if reallocated.",
+  "raster_consumption": {
+    "A02": {
+      "source": "548f20f1f.png",
+      "sha256": "75f03e6ce2027e972f203791e40fc733b8abf7b9f53f166f2316bccb5720c792",
+      "role": "OFFICIAL_STATIC_CABLE_RELATION_NOT_CABIN_POV"
+    },
+    "A03": {
+      "source": "OW-20230711-mnq9o6767b",
+      "sha256": "29e60eae20dce7e171ec1bc15cfcb0d3036654c71a0d1ae2dc35fdfbaa1fa5af",
+      "role": "OFFICIAL_R05_HIGH_CANDIDATE_CONTAINED_IMAGE"
+    }
+  },
+  "vector_only_pages": ["A01", "A06", "A07", "A08", "A09"],
+  "browser_readback": {
+    "viewports": ["1920x1080", "390x844"],
+    "page_errors": 0,
+    "horizontal_overflow": 0,
+    "vertical_overflow": 0
+  },
+  "drive": {
+    "zip_id": "1coCsnU2JaN--jKnEYrjF9Q_vdRI9mO9X",
+    "zip_bytes": 11610227,
+    "zip_sha256": "de2f9f5a6535aa48f9f2e870c4e77076fbdeb58ae839f2c67a485556cd261621",
+    "contact_id": "1fFrV3lIB1jXkopMtoRE_RHHc0hfPbLBH",
+    "manifest_id": "1JSTJh0TrPvgRGRzwoAXhWnC_NsbqStwz",
+    "readback_id": "1X_hjEFiBs0Q-QUoV6HKUe8OLg7ktjQCC",
+    "hold_record_id": "1T5joWe802wOTIIKxYh7iDE6W24LaTUt4",
+    "receipt_id": "198dNr1Q-YcWRwg9mLBS2UIXnklCoCWdL"
+  },
+  "review": {
+    "artifact_execution": "EXECUTED",
+    "independent_professional_design_review": "PENDING",
+    "producer_keep": false,
+    "main_keep": false
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
