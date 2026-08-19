@@ -1,0 +1,228 @@
+{
+  "receipt_id": "EXR-20260819-C04-CH13-VISUAL-PRODUCTION-MAP",
+  "status": "CLOSED",
+  "execution_type": "PROJECT",
+  "task_id": "c04-ch13-visual-production-map-v0-1",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "PRJ-C04-QINGJIANG-SHISHU / CH13 Physical Body Sensory Current Material",
+    "source_authority": "Notion CH13 Current Material + GitHub CH13_PHYSICAL-BODY-SENSORY.md + C04 Current Image Consumption Ledger + existing ODB-02/03/04 design-source bindings",
+    "design_authority": "CH13 canonical P01-P07 authoring identities and user-original physical/sensory design sources; this production map is presentation/execution planning only",
+    "canonical_ids": ["PRJ-C04-QINGJIANG-SHISHU", "CH13-P01", "CH13-P02", "CH13-P03", "CH13-P04", "CH13-P05", "CH13-P06", "CH13-P07"],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.2",
+    "github_commit_or_ref": "main@54de8875390fa14a5181b9c7eac9ec356400a5a5"
+  },
+  "constraint_lock": {
+    "resolved_from": ["LATEST_EXPLICIT_USER_INSTRUCTION", "CURRENT_PROJECT_AUTHORITY_AND_DECISIONS", "CURRENT_OLEANDER_RESOLVER", "C04_IMAGE_CONSUMPTION_LEDGER_v1_0"],
+    "inheritance_state": "ENFORCED_THROUGH_TASK_COMPLETION",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-CH13-VPM-001",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "User explicitly requested OLEANDER flow and project-wide existing skill reuse",
+        "scope": "C04_CH13_VISUAL_PRODUCTION_PLANNING",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-CH13-VPM-002",
+        "constraint_type": "PROCESS_REQUIRE",
+        "normalized_rule": "FULL_OLEANDER_FLOW_REQUIRED",
+        "source": "Current OLEANDER project execution baseline",
+        "scope": "C04_CH13_VISUAL_PRODUCTION_PLANNING",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-CH13-VPM-003",
+        "constraint_type": "REVIEW_REQUIRE",
+        "normalized_rule": "NO_PRODUCER_SELF_PROMOTION",
+        "source": "Current OLEANDER Artifact Review / Independent Design Verdict discipline",
+        "scope": "C04_CH13_VISUAL_PRODUCTION_PLANNING_AND_FUTURE_PIXELS",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CANNOT_OVERRIDE_INDEPENDENCE_WHERE_CURRENT_REVIEW_AUTHORITY_REQUIRES_IT"
+      },
+      {
+        "constraint_id": "CSTR-CH13-VPM-004",
+        "constraint_type": "TOOL_DENY",
+        "normalized_rule": "NO_IMAGE_GENERATION",
+        "source": "Current C04/OLEANDER default no-generation production constraint",
+        "scope": "C04_CH13_VISUAL_PRODUCTION_PLANNING",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_IMAGE_GENERATION"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": ["IMAGE_GENERATION_TOOLS", "GENERATIVE_IMAGE_ADAPTERS"],
+    "output_deny": ["PRODUCER_SELF_ISSUED_DESIGN_KEEP", "UNAUTHORIZED_NEW_MODEL", "PROTECTED_WEB_PAGE_ID_GUESSING"],
+    "creation_deny": [],
+    "required_behaviors": ["READ_CH13_CURRENT_AUTHORITY", "READ_EXISTING_OLEANDER_SKILLS", "CHECK_IMAGE_CONSUMPTION_LEDGER_BEFORE_VISUAL_ALLOCATION", "PRESERVE_CANONICAL_P01_P07_IDENTITIES", "PRESERVE_FIELD_AND_ENGINEERING_BOUNDARIES"]
+  },
+  "required_native_output": {
+    "artifact_class": "chapter_visual_production_map",
+    "native_format": "Markdown+JSON",
+    "editable_required": true,
+    "target_runtime": "Jiaosong/Design main + Notion CH13 Current Material",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "oleander-story-and-board",
+    "nodes": [
+      {"owner_id": "oleander-story-and-board", "role": "PRIMARY_OWNER"},
+      {"owner_id": "oleander-3d-pipeline", "role": "SUPPORTING_OWNER"},
+      {"owner_id": "oleander-motion", "role": "SUPPORTING_OWNER"},
+      {"owner_id": "oleander-ui-interaction-candidate", "role": "SUPPORTING_OWNER"},
+      {"owner_id": "C04_IMAGE_CONSUMPTION_LEDGER_v1_0", "role": "VALIDATOR"},
+      {"owner_id": "AI_GOVERNANCE_AND_C04_CI", "role": "VALIDATOR"}
+    ],
+    "omitted_owner_reasoning": "No new Skill, model owner, data-viz owner or rendering pipeline was required. UI Interaction was consulted as an existing candidate specialist only and receives no lifecycle promotion from this task."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "PASS",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "PASS",
+      "REGRESSION_AS_APPLICABLE": "PASS",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PASS"
+    },
+    "phase_reasons": {
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "The native output is a production/planning map, not a finished visual, interaction runtime, model or Design KEEP candidate. Independent finished-pixel review remains required later for actual produced surfaces."
+    },
+    "incomplete_required_phases": [],
+    "completion_gate": "PASS",
+    "completion_claim_allowed": true
+  },
+  "image_consumption": {
+    "register_path_or_authority": "05-cases/c04-qingjiang-stone-book/orchestration/C04_IMAGE_CONSUMPTION_LEDGER_v1_0.json",
+    "lookup_performed": true,
+    "reservations_or_consumptions": [
+      "NO_NEW_IMAGE_BINDING_IN_THIS_PLANNING_EXECUTION",
+      "PRESERVE_EXISTING_RESERVATION: IMG-C04-PHYS-RECOVERY-TECH-01 -> CH13-01",
+      "FUTURE_S03_S05_S06_S07_REQUIRE_UNIQUE_CHILD_IDENTITY_AND_RESERVATION_BEFORE_LAYOUT"
+    ],
+    "conflicts": [],
+    "blocked_assets": ["IMG-C04-D-HERO-01:LEGACY_MULTI_CONSUMED_NO_FURTHER_USE", "IMG-C04-F01-SCENIC-01:REJECTED_NOT_ELIGIBLE_DO_NOT_REUSE"],
+    "release_actions": [],
+    "verdict": "PASS_PLANNING_ONLY_NO_NEW_CONTENT_IMAGE_BINDING"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-C04-CH13-VISUAL-PRODUCTION-MAP-MD-v0.1",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "oleander-story-and-board",
+      "authority_source": "CH13 Current Material + CH13 authoring source + OLEANDER skill/readback constraints",
+      "authority_state": "CURRENT_PROJECT_PRODUCTION_MAP",
+      "native_format": "Markdown",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": ["public_sequence", "first_visual", "composition", "interaction", "model_gate", "image_consumption", "truth_boundary", "production_priority"],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": ["CH13_PHYSICAL-BODY-SENSORY.md", "oleander-story-and-board", "oleander-3d-pipeline", "oleander-motion", "oleander-ui-interaction candidate", "C04_IMAGE_CONSUMPTION_LEDGER_v1_0"],
+      "hashes_or_commit": "main@54de8875390fa14a5181b9c7eac9ec356400a5a5 / blob c982095c715e49d079c2f458488cf02209958bd3",
+      "runtime": "GitHub main",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "CURRENT",
+      "does_not_prove": ["finished_pixel_quality", "design_keep", "model_authority", "interaction_runtime_pass"]
+    },
+    {
+      "artifact_id": "ART-C04-CH13-VISUAL-PRODUCTION-MAP-JSON-v0.1",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "oleander-story-and-board",
+      "authority_source": "Machine-readable companion to Current CH13 visual production map",
+      "authority_state": "CURRENT_PROJECT_PRODUCTION_MAP",
+      "native_format": "JSON",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": ["sequence", "interaction_defaults", "model_policy", "surface_map", "production_priority", "truth_boundary"],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": ["ART-C04-CH13-VISUAL-PRODUCTION-MAP-MD-v0.1"],
+      "hashes_or_commit": "main@54de8875390fa14a5181b9c7eac9ec356400a5a5 / blob f736e0564bcc6cdbac37d780283e031a7be3e799",
+      "runtime": "GitHub main",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "CURRENT",
+      "does_not_prove": ["finished_pixel_quality", "design_keep", "model_authority", "interaction_runtime_pass"]
+    }
+  ],
+  "tool_adapters": [],
+  "execution": {
+    "runtime": "Notion + GitHub branch/PR/Actions/main readback",
+    "entrypoint_or_action": "Read CH13 Current Authority and existing OLEANDER Story/Board, 3D, Motion and Interaction knowledge; convert P01-P07 into a visual-first public production sequence with bounded interaction roles, model gates and image-consumption pre-allocation; persist as MD+JSON and sync Current CH13 readback.",
+    "result": "CURRENT_PROJECT_PRODUCTION_MAP_ESTABLISHED",
+    "failures": [
+      "The first GitHub connector write accidentally created the Markdown production map directly on main instead of a PR branch."
+    ],
+    "repairs": [
+      "Immediately deleted the accidental main file in commit 27a57a551aefb67b1de6a7dd03bf36e04a383482 before treating the map as synchronized.",
+      "Re-executed on branch agent/c04-ch13-visual-production-map-v0-1, opened PR #325, ran all applicable C04/Governance CI, then merged as 97866a4d62c3f0754ea51472587b62557d03ac39.",
+      "Opened Current-state closure PR #326, reran all three applicable workflows, merged as 54de8875390fa14a5181b9c7eac9ec356400a5a5, then read back main and updated Notion CH13 Current Material."
+    ]
+  },
+  "readback": {
+    "target": "GitHub main CH13_VISUAL_PRODUCTION_MAP_v0_1.md/.json + Notion CH13 Current Material",
+    "runtime": "GitHub fetch_file + Notion live page update/readback workflow",
+    "observed_result": "GitHub main JSON reports status=CURRENT_PROJECT_PRODUCTION_MAP; canonical P01-P07 identities remain preserved; protected Web PAGE IDs remain unassigned; visual sequence, interaction defaults, model HOLD policy and truth boundary are persisted. Notion CH13 Current Material contains the adopted map and Current-state closure pointers.",
+    "blocking_defects": ["NONE_REMAINING_FOR_PRODUCTION_MAP_SCOPE"],
+    "nonblocking_defects": ["Actual surface pixels, interaction runtimes, source-child materialization and any future model remain future production work by design."],
+    "verdict": "PASS"
+  },
+  "regression": {
+    "STRUCTURAL": {"result": "PASS", "assertions": ["CH13-P01 through P07 identities preserved", "presentation sequence separated from authoring identity", "no protected C04-WEB-Pxxx IDs invented", "no new Skill or parallel framework created", "model freeze not silently revoked"]},
+    "SEMANTIC": {"result": "PASS", "assertions": ["visual-first order remains body/object before explanation", "interaction does not create score/task/reward/route gate", "P04 remains STEP_RESPONSE_FADE", "P07 remains WAIT_LISTEN_NOTICE and DO_NOT_MODEL_YET", "image uniqueness is enforced in future bindings"]},
+    "VISUAL_ROI": {"result": "NOT_APPLICABLE", "assertions": ["No finished-pixel visual artifact was produced or promoted by this planning task"]},
+    "RUNTIME": {"result": "PASS", "assertions": ["PR #325 AI Governance Evals SUCCESS", "PR #325 C04 F Integration Loop SUCCESS", "PR #325 C04 Six-lane Orchestration Controls SUCCESS", "PR #326 AI Governance Evals SUCCESS", "PR #326 C04 F Integration Loop SUCCESS", "PR #326 C04 Six-lane Orchestration Controls SUCCESS", "GitHub main readback PASS", "Notion Current writeback performed"]},
+    "overall": "PASS_FOR_PRODUCTION_MAP_SCOPE"
+  },
+  "review": {
+    "producer_id": "CH13 visual production planning execution",
+    "reviewer_id": "NOT_REQUIRED_FOR_NON_PIXEL_PRODUCTION_MAP",
+    "review_input_artifact_id": "ART-C04-CH13-VISUAL-PRODUCTION-MAP-MD-v0.1",
+    "review_input_hash_or_commit": "54de8875390fa14a5181b9c7eac9ec356400a5a5",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS",
+    "design_quality_gate": "NOT_APPLICABLE_TO_PLANNING_MAP",
+    "promotion_authority": "No page pixels, interaction runtime, model or design candidate is promoted. Future actual surfaces still require independent Professional Design Review where applicable."
+  },
+  "drift": {
+    "mode": "LIVE_CROSS_PLATFORM_CHECK",
+    "state": "CURRENT",
+    "evidence": ["GitHub main CH13 visual production map status readback after PR #326", "Notion CH13 Current Material production-map and closure writeback"]
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/c04-ch13-visual-map-closure-v0-1",
+    "commits": ["97866a4d62c3f0754ea51472587b62557d03ac39", "54de8875390fa14a5181b9c7eac9ec356400a5a5"],
+    "pull_request": 326,
+    "ci_state": "SUCCESS_ALL_APPLICABLE_WORKFLOWS",
+    "merge_commit": "54de8875390fa14a5181b9c7eac9ec356400a5a5",
+    "main_readback": "PASS_STATUS_CURRENT_PROJECT_PRODUCTION_MAP",
+    "notion_writeback": "CH13 Current Material contains visual-first production map and Current-state closure pointers.",
+    "remaining_blockers": ["NONE_FOR_PRODUCTION_MAP_SCOPE"],
+    "final_state": "CURRENT_VISUAL_PRODUCTION_MAP_FULL_FLOW_COMPLETE"
+  },
+  "does_not_prove": ["finished_pixel_quality", "independent_design_keep", "field_truth", "engineering_validity", "model_authority", "model_reopen_authorization", "interaction_runtime_pass", "protected_web_page_id_assignment", "project_promotion"]
+}
