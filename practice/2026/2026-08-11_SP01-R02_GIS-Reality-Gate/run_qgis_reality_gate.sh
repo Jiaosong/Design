@@ -99,7 +99,3 @@ find "$OUT" -maxdepth 1 -type f ! -name artifact_file_list.txt -printf '%f\t%s b
 mv "$OUT/artifact_file_list.tmp" "$OUT/artifact_file_list.txt"
 cat "$OUT/artifact_file_list.txt"
 echo "SP01-R02 QGIS runtime gate completed." | tee -a "$OUT/runtime_log.txt"
-
-# TEMP EXECUTION ADAPTER / DO NOT MERGE.
-# Reuse the already-proven QGIS/GDAL runner to materialize real C04 CH02 terrain bytes.
-bash "$ROOT/run_c04_ch02_dem_materialization.sh" | tee "$OUT/c04_ch02_materialization.log"
