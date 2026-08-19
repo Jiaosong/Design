@@ -1,0 +1,10 @@
+authoring_id,title,primary_medium,raster_content_image_count,truth_boundary
+A01,Selected Scene Atlas,SVG scene atlas,0,KEY SCENE SET / NOT ROUTE GEOMETRY
+A02,R01 Cable Moving View,SVG moving-view schematic,0,MOVING-STIMULUS HOLD
+A03,R05 Discovery,SVG observation/frame,0,CONTENT-IMAGE SLOT HOLD / CH01 source not reused
+A04,R06 Landscape First,SVG landscape-body field,0,R06 FROZEN / real source slot reserved
+A05,R06 Same-source Reveal,SVG one-component state model,0,same-source state not duplicate static slot
+A06,R06 Body × Audience,SVG body/audience depth map,0,P02 relation only / not located
+A07,Route Decision,SVG decision grammar,0,LOCATION OPEN / NOT ROUTE-03 GEOMETRY
+A08,R13 Enter + Pass,SVG aperture/compression,0,BODY/ROUTE ON · READ/PLAY OFF
+A09,R13 Exit + Re-recognition,SVG reopening/return,0,REMOTE DESIGN / field-safety open
