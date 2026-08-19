@@ -1,0 +1,26 @@
+{
+  "CH05-P01": {
+    "primary": "ROUTE03 source carried forward from CH05 v2",
+    "authority": "ROUTE-03 LOCKED CURRENT",
+    "presentation_only": ["journey-state rail", "priority field", "recurring experience-condition index"],
+    "does_not_prove": ["stage-to-location registration", "GPS", "live operations"]
+  },
+  "CH05-P02": {
+    "primary": "editable vector body choreography",
+    "support": "F01 source carried forward from CH05 v2",
+    "ownership": "CH13",
+    "status": "CANDIDATE / NOT LOCATED",
+    "does_not_prove": ["observed behavior frequency", "engineering", "fall protection"]
+  },
+  "CH05-P03": {
+    "primary": ["CABLE existing C04 source", "R06 existing C04 source", "ROUTE-03 existing C04 source"],
+    "transform": "qualitative ordinal PRIMARY / SUPPORT / RETREAT only",
+    "does_not_prove": ["cognitive measurement", "attention percentages"]
+  },
+  "CH05-P04": {
+    "primary": ["CABLE", "R06", "ROUTE-03 return context"],
+    "overlay": "12-action vocabulary + STOP != READ branch",
+    "r13_rule": "No unrelated R13 substitute invented; image slot remains open",
+    "does_not_prove": ["spatial node registration"]
+  }
+}
