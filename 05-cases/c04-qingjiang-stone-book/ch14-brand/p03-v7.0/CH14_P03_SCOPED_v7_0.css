@@ -1,0 +1,37 @@
+:root{--paper:#F1EDE4;--ink:#111918;--deep:#133B3C;--jade:#2E7571;--red:#B8543E;--line:rgba(17,25,24,.17);--muted:#65706A;--serif:"Noto Serif CJK SC","Songti SC",serif;--sans:"Noto Sans CJK SC",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+.ch14-p03-v70{background-image:linear-gradient(rgba(241,237,228,.955),rgba(241,237,228,.955)),url("../assets/material/mineral-vellum.jpg");background-size:auto,900px auto;background-color:var(--paper)}
+.wrap{width:min(100%,1800px);margin:auto;padding:0 50px}
+.hero{min-height:760px;display:grid;grid-template-columns:.64fr 1.36fr;gap:60px;align-items:center;padding:88px 0 100px}
+.meta{font:700 10px/1.4 "Inter",sans-serif;letter-spacing:.15em;color:var(--red)}
+.hero h2{font:500 clamp(58px,5vw,80px)/1.02 var(--serif);letter-spacing:-.035em;margin:27px 0}
+.hero .claim{font:600 clamp(25px,2.25vw,36px)/1.34 var(--serif);max-width:640px}
+.hero p{max-width:620px;color:var(--muted);font-size:15px;line-height:1.88}
+.hero-art{min-height:570px;display:flex;align-items:center;justify-content:center}
+.hero-art img{width:min(100%,900px)}
+.manual{display:grid;grid-template-columns:235px minmax(0,1fr);gap:42px;padding:98px 0;border-top:1px solid var(--line)}
+.rail{padding-top:10px}
+.rail h3{font:500 27px/1.24 var(--serif);margin:14px 0}
+.rail p{font-size:12.5px;line-height:1.76;color:var(--muted);margin:0}
+.plate img{display:block;width:100%;height:auto}
+.caption{margin-top:20px;padding-top:17px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:30px;font-size:11px;line-height:1.6;color:var(--muted)}
+.caption strong{font-weight:700;color:var(--ink)}
+.next{padding:48px 0 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:30px}
+.next strong{font:500 20px var(--serif)}
+.next span{font:10px "Inter",sans-serif;color:var(--muted);letter-spacing:.08em}
+@media(max-width:900px){
+ .wrap{padding:0 24px}
+ .hero{grid-template-columns:1fr}
+ .manual{grid-template-columns:1fr;gap:18px}
+}
+@media(max-width:560px){
+ .wrap{padding:0 20px}
+ .hero{padding:65px 0}
+ .hero h2{font-size:48px}
+ .hero .claim{font-size:26px}
+ .manual{padding:72px 0}
+ .rail h3{font-size:31px}
+ .caption{flex-direction:column}
+ .next{flex-direction:column}
+}

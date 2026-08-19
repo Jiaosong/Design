@@ -1,0 +1,41 @@
+{
+  "object": "CH14-P07",
+  "version": "v1.0",
+  "title": "Icon / Map / Information / Wayfinding System",
+  "principles": [
+    "FUNCTIONAL READABILITY > BRAND DECORATION",
+    "DECISION PRIORITY -> GRAPHIC PRIORITY",
+    "ROUTE-03 = SINGLE ROUTE AUTHORITY",
+    "COLOR IS NEVER THE ONLY INFORMATION CHANNEL",
+    "RETURN / SERVICE > ROUTE > OPTIONAL READING",
+    "PAPER / APP SHARE SEMANTICS, NOT IDENTICAL LAYOUT"
+  ],
+  "icon_system": {
+    "grid": "24 x 24",
+    "stroke_px": 2.0,
+    "caps": "round",
+    "joins": "round",
+    "tested_sizes_px": [24, 32, 48],
+    "icons": ["return", "route", "walk", "boat", "visitor", "parking", "info", "rest", "reading", "view", "cable", "help"],
+    "small_scale_rule": "action silhouette + critical negative space before decorative consistency"
+  },
+  "node_types": {
+    "route_node": {"label":"ROUTE NODE","cn":"路线节点","shape":"open circle","role":"route relation only"},
+    "key_anchor": {"label":"KEY ANCHOR","cn":"关键锚点","shape":"double ring","role":"entry / service / transfer"},
+    "reading_anchor": {"label":"READING","cn":"可选阅读","shape":"diamond+dot","role":"optional content, never route order"},
+    "return_anchor": {"label":"RETURN","cn":"回程优先","shape":"ring+return arrow","role":"return / service decision"}
+  },
+  "states": {
+    "NORMAL": {"cn":"正常","hex":"#3E6E64","shape":"circle"},
+    "DEGRADED": {"cn":"降级","hex":"#A7742D","shape":"triangle"},
+    "CLOSED": {"cn":"关闭","hex":"#A4473C","shape":"square-cross"},
+    "UNKNOWN": {"cn":"未知","hex":"#717776","shape":"dashed-circle-question"}
+  },
+  "map_authority": {"object":"ROUTE-03","geometry_mutation":"NONE","source_binding":"assets/data/ROUTE03_SOURCE_BINDING.json"},
+  "priority_order": ["RETURN_SERVICE","ROUTE_ORIENTATION","OBSERVATION","OPTIONAL_READING","MEMORY"],
+  "medium_rules": {
+    "paper": {"interaction":"none","must_work_offline":true,"first_read":["return","route","service"],"optional":["reading"]},
+    "app": {"must_work_offline":true,"gps_required":false,"states":["NORMAL","DEGRADED","CLOSED","UNKNOWN"],"current_app_replacement":false}
+  },
+  "truth_boundaries": ["No invented site direction/distance","No real-time status claim","No GPS claim","No field validation","No 13/13 completion semantics"]
+}

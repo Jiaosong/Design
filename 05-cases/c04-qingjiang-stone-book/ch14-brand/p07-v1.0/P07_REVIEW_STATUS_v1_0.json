@@ -1,0 +1,34 @@
+{
+  "object": "CH14-P07",
+  "version": "v1.0",
+  "execution": "COMPLETE",
+  "image_generation_used": false,
+  "basis": [
+    "CH14 Current P07: Signage / Map / App shared grammar; functional reading first",
+    "Information Design: task / action / risk / medium / language / accessibility",
+    "Wayfinding candidate: DECISION PRIORITY -> GRAPHIC PRIORITY",
+    "Pictogram candidate: ACTION SILHOUETTE -> JOINT NEGATIVE SPACE"
+  ],
+  "source_authority": {"route":"ROUTE-03","geometry_mutation":"NONE"},
+  "actual_outputs": {
+    "icons_svg": 24,
+    "icon_raster_tests": 36,
+    "arrows_svg": 12,
+    "node_tokens": 4,
+    "state_tokens": 4,
+    "spec_sheets": 12,
+    "paper_map": 1,
+    "app_information_spec": 1,
+    "web_fragment": 1
+  },
+  "actual_readback": ["1920x1080","390x844","desktop full page","mobile full page","24/32/48 icon multiscale"],
+  "repairs": [
+    "reverse icons added for deep surfaces after pixel readback",
+    "large construction icon changed from referenced 24px asset to true vector geometry",
+    "App return control changed to reverse icon on deep surface"
+  ],
+  "status_color_boundary": "P07 operational colors are visual encoding candidate only; production and operator validation pending",
+  "app_boundary": "Information grammar spec only; does not replace current App authority",
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NO REAL-TIME CLAIM"
+}

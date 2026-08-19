@@ -1,0 +1,35 @@
+{
+  "object": "CH14-P05",
+  "version": "v1.0",
+  "methods": [
+    "KN-THEORY-TYPOGRAPHY-001",
+    "FW-DESIGN-VISUAL-COMM-001",
+    "KN-METHOD-TYPO-LONGFORM-MEASURE-001"
+  ],
+  "execution": "COMPLETE",
+  "image_generation_used": false,
+  "font_files_distributed": false,
+  "actual_readback": [
+    "1920x1080",
+    "390x844",
+    "desktop full long page",
+    "mobile full long page"
+  ],
+  "representation_gate": "IMPLEMENTED",
+  "fixed_after_readback": [
+    "Dominant Field English subtitle corrected to reverse white",
+    "Print candidate paragraph wrapped inside its field",
+    "Typeface-family count corrected from four to five"
+  ],
+  "open_proofs": [
+    "exact font file/version/license release verification",
+    "print typography proof",
+    "target accessibility/user reading validation"
+  ],
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "does_not_prove": [
+    "Design PASS",
+    "font license approval",
+    "print proof"
+  ]
+}
