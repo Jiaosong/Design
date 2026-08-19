@@ -11,7 +11,7 @@ assert sha == expected, (sha, expected)
 out = root / 'reassembled_v1_9'
 out.mkdir(exist_ok=True)
 with tarfile.open(fileobj=io.BytesIO(raw), mode='r:gz') as t:
-    t.extractall(out)
+    t.extractall(out, filter='data')
 print('base64_chars', len(b64))
 print('bundle_bytes', len(raw))
 print('bundle_sha256', sha)
