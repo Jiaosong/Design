@@ -1,0 +1,6 @@
+{
+  "desktop": {"metrics":{"innerWidth":1920,"innerHeight":1080,"scrollWidth":1920,"scrollHeight":3240,"h1Count":1,"surfaceCount":3,"broken":[]},"errors":[],"desktop_viewport.png":{"bytes":1618378,"sha256":"23dc51d0aa2b9205001c9818a764b9c810722d79e308a10144e90859ebe07a98"},"desktop_full.png":{"bytes":3525735,"sha256":"6662569b46296630e25da87957db6752ee1b11a9b0f023e9c5ec934d7356cb05"}},
+  "mobile": {"metrics":{"innerWidth":390,"innerHeight":844,"scrollWidth":390,"scrollHeight":2333,"h1Count":1,"surfaceCount":3,"broken":[]},"errors":[],"mobile_viewport.png":{"bytes":181353,"sha256":"a2ee79985edf45f72447976e0be16c8ec16f19370d59045c63d42672687dbae9"},"mobile_full.png":{"bytes":516399,"sha256":"b90f5dc6f4e8f6174ccf3809e35de42ba497243fe79389dc22d5ea2ce22422f6"}},
+  "surface_files":{"ch08-p02-s04.png":{"bytes":1618378,"sha256":"23dc51d0aa2b9205001c9818a764b9c810722d79e308a10144e90859ebe07a98"},"ch08-p02-s05.png":{"bytes":305537,"sha256":"2e8a9d9328c73d20140a174a058c6fe44310dcac104b814014536c750a893549"},"ch08-p02-s06.png":{"bytes":1600993,"sha256":"5ba24674a6ea1bf296990fa770db1fb6537e1671e87adf5402018e8ce11a1b3a"}},
+  "method":{"direct_navigation":"BLOCKED_BY_RUNTIME_ADMINISTRATOR","pixel_readback":"COMPLETE via exact authored HTML/CSS + request-routed original image bytes in Playwright","does_not_prove":"live-navigation/browser deployment pass"}
+}
