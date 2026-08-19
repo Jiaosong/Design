@@ -29,6 +29,6 @@ v1.6 source/review records:
 - `v1.6/review/REVIEW_STATUS.md`
 
 Local review package:
-`C04_CH01_WEB_v1.6_EDITORIAL_ATTACK.zip` / 1,363,648 bytes / SHA256 `41f689de044ee697c04defad5c5083e41a0a393ffb89804d32d25b5742747adc`.
+`C04_CH01_WEB_v1.6_EDITORIAL_ATTACK.zip` / 1,369,664 bytes / SHA256 `ddbb4de5ba8cb9ee7f89031ba316c627adcc6df486629ef5cbb3900c89d230a8`.
 
 The complete binary review package is not falsely claimed as GitHub-persisted; durable binary persistence remains OPEN.
