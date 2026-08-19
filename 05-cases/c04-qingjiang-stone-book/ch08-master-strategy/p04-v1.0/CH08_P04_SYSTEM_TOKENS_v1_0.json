@@ -1,0 +1,41 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P04",
+  "version": "v1.0",
+  "page_type": "SYSTEM",
+  "authoring_identity": "CH08-P04",
+  "final_web_page_id": null,
+  "title": "最小充分载体｜先解决问题，再决定是否需要设计",
+  "current_authority": {
+    "ch08": "ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md",
+    "upstream_pr": 294,
+    "producer_parent_prs": [310,311,313]
+  },
+  "needs": [
+    {"id":"A","name":"Decision / Route","question":"我在哪里、往哪里、能否继续、怎样 Return","candidates":["ROUTE-03","SITE SIGN / RETURN CUE","PAPER","HUMAN","DIGITAL SUPPORT"],"rule":"按可信度与冗余组合，不按媒介升级"},
+    {"id":"B","name":"Interpretation / Reading","question":"已经看见，但还没看懂一个关系","candidates":["REAL SCENE","PROMPT","RELATION REVEAL","OPTIONAL EVIDENCE"],"rule":"默认不通过新增大型实体解释自然"},
+    {"id":"C","name":"Body / Recovery","question":"身体需要靠、停、恢复或重新获得继续行走能力","candidates":["NO INTERVENTION / EXISTING REST","ODB-02 P02","FLUID REST only if site-fit proven"],"rule":"身体需求不需要先经过 Signage / Digital"},
+    {"id":"D","name":"Sensory / Attention","question":"真实风、水、光、雾、声音或触感存在但不易意识到","candidates":["EXISTING RESOURCE","NO DESIGN / TRACE / FRAME","QINGFENGYIN only if fit merits"],"rule":"不发展一种感官一个装置"},
+    {"id":"E","name":"Memory","question":"旅程结束后，什么值得留下","candidates":["QINGJIANG JOURNAL","MY BOOK","QINGFENGYIN MEMORY / SECONDARY EXTENSIONS"],"rule":"Memory 不反向制造现场完成压力"}
+  ],
+  "new_object_admission_gate": [
+    "真实问题是否明确",
+    "现有环境 / 服务 / 已有设计为什么不足",
+    "为什么这个位置需要它，而不是项目需要一个设计",
+    "它对真实景观造成什么成本",
+    "是否可逆、可维护、可停用 / 替换",
+    "异常或失效时会发生什么",
+    "哪些关键条件仍属于 FIELD / ENGINEERING OPEN"
+  ],
+  "admission_fail_result": "NO DESIGN",
+  "object_groups": {
+    "locked_or_keep": ["ROUTE-03","Thirteen Imprints","Qingjiang Journal","My Book"],
+    "develop": ["Route / Return Physical Touchpoint Family","Cable Experience Choreography","App v1.29 lineage"],
+    "compete_or_hold": ["ODB-02 P02","ODB-03 Fluid Rest","ODI Step Light","ODB-04B Qingfengyin onsite","Qingfengyin 1/3","Qingjiang Line / Mist / Honghuafeng Cub"],
+    "orthogonal": ["Brand"]
+  },
+  "hard_boundaries": ["No product-catalogue framing","No assumption all objects will be built","No mechanical Signage→Paper→Digital→Physical→Object ladder","No Route geometry","No final Web PAGE-ID"],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status": "PRODUCTION CANDIDATE / ACTUAL PIXEL READBACK REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
