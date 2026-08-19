@@ -1,0 +1,31 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CH01_WEB_v1.5_FULLFLOW_REVIEW",
+  "authoring_source": "PR #294 / CH01 v0.3",
+  "authoring_head": "d6c9383b81b7dd7c199c5f90daa18d7c4d9d31d0",
+  "authoring_blob": "2548c0dd5d0087cd9115038072e99f2a29ef4761",
+  "execution_route": ["oleander-research","oleander-story-and-board","oleander-data-viz","oleander-ui-visual-composition (candidate specialist support)","oleander-delivery-qc","OLEANDER Artifact Review","Independent Design Gate"],
+  "design_knowledge": ["FW-DESIGN-VISUAL-COMM-001","CASE-DATAVIZ-BEAUTIFUL-NEWS-001","Dominant Field / First Visual practice","CH14 P04/P05 current tokens"],
+  "raster_content_images": 0,
+  "generated_page_images": 0,
+  "status": "PRODUCER REFINED / ACTUAL PIXEL READBACK COMPLETE / INDEPENDENT REVIEW REQUIRED / NO_PROMOTION",
+  "route03_binding": {"locked_svg_sha256":"44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75","policy":"NO MUTATION / EXCERPT + CROP + STYLING ONLY","p02":"exact source path excerpt"},
+  "runtime": {"desktop":{"viewport":"1920x1080","surface_count":6,"scroll_width":1920,"raster_images":0,"errors":0},"mobile":{"viewport":"390x844","surface_count":6,"scroll_width":390,"raster_images":0,"errors":0}},
+  "review_gate": "IDENTITY-INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "source_hashes": {
+    "index.layered.html":{"bytes":13393,"sha256":"8060fb49c0f08378afb71ca3d1e1ac073ae7f0ea15de623895415ed3e9758998"},
+    "style-v1.5.css":{"bytes":9979,"sha256":"5f6599b10138f1e144b8128b8fb0ca32838e19a61e73d29d7084bd39ad27a2dc"},
+    "base_style_v1.4":{"sha256":"cb4c415ba24a3e1264c02743c912cc5c9d509ee1614aeea9a9c38967e3015a5d","note":"GitHub persisted v1.4/style.css; v1.5 layered source references it unchanged"},
+    "readback/runtime.json":{"bytes":207,"sha256":"b3cec9adece226a59046fee9b6d4be47ac50e2caa5a4764f872adb4d37f4fd6f"},
+    "readback/desktop_contact.jpg":{"bytes":159997,"sha256":"2d5d61d81d23cafcdb4a946a0b96697da24970d2a0542b54acf070111c2f405d"},
+    "readback/mobile_contact.jpg":{"bytes":72727,"sha256":"1888e59953b22f6f9c50f172dc2428af7fc48218d0cf17207dfa155bae404905"},
+    "review/desktop_contact_grayscale.jpg":{"bytes":140151,"sha256":"8723227d6e32c5af3d1a064d7ac6ec0b91ba2de6f8c5b2d7418ce439be059797"},
+    "review/desktop_contact_50pct.jpg":{"bytes":56695,"sha256":"7b1ca9f72405cda5924cc5b237f6eceb80030bc4135ef7fc835f3e409214b509"}
+  },
+  "design_delta": [
+    "P01 removes generic blob; relation is typographic field with five responsibilities",
+    "P04 removes concentric-ring method diagram; decision rail + explicit Return override vector",
+    "P05 replaces aperture/card residue with one continuous Service/Return band interrupted by six literal gaps",
+    "P06 removes pseudo-quantitative axes/paths; existing idea cloud + selection question + NO DESIGN outcome"
+  ]
+}
