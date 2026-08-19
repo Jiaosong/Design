@@ -1,0 +1,20 @@
+{
+  "schema": "oleander.3d.coordinate-frame-congruence-contract.v1",
+  "receipt_schema": "oleander.3d.coordinate-frame-congruence-receipt.v1",
+  "required": [
+    "schema","operation_id","geometry_id","geometry_state_class","canonical_target_frame",
+    "predicate_frame","operator_frame","transforms","metric_or_tolerance_frame","audit_target_count",
+    "operator_selected_count","selection_equivalence_required","frame_checks","frame_result",
+    "downstream_evidence_state","does_not_prove"
+  ],
+  "allowed_geometry_state_classes": ["SOURCE_OR_WORKING_SOURCE","DERIVED_EXECUTION","DERIVED_DIAGNOSTIC_NOT_AUTHORITY","REFERENCE_EVIDENCE"],
+  "allowed_results": ["PASS_FRAME_CONGRUENCE","FAIL_FRAME_MISMATCH","HOLD_TRANSFORM_UNVERIFIED","PASS_DIAGNOSTIC_COPY_NORMALIZED_FRAME"],
+  "allowed_downstream_states": ["VALID_FOR_DECLARED_SCOPE","NON_PROMOTABLE_DIAGNOSTIC_PROVENANCE","HOLD_NOT_COMPARABLE"],
+  "hard_rules": [
+    "DIFFERENT_FRAMES_REQUIRE_EXPLICIT_VERIFIED_TRANSFORM",
+    "SELECTION_EQUIVALENCE_REQUIRES_COMPARABLE_COUNTS",
+    "FRAME_FAIL_QUARANTINES_TOLERANCE_SOLVER_CONCLUSIONS",
+    "POINT_DIRECTION_NORMAL_PLANE_SEMANTICS_MUST_NOT_BE_COLLAPSED",
+    "UNIT_MATCH_ALONE_CANNOT_PASS_FRAME_CONGRUENCE"
+  ]
+}
