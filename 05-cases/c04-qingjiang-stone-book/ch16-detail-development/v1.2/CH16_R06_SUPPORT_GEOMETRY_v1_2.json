@@ -1,0 +1,23 @@
+{
+  "object_id": "R06-SUPPORT-CONCEPT",
+  "revision": "CH16-v1.2",
+  "units": "mm",
+  "source_state": "DESIGNER ESTIMATE / CONCEPT INTERFACE / NTS / FIELD OPEN",
+  "dimensions_mm": {
+    "width": 1200,
+    "depth": 160,
+    "top_height": 975
+  },
+  "components": {
+    "C01": {"name": "CONTACT", "role": "replaceable contact surface"},
+    "C02": {"name": "SUPPORT", "role": "support carrier"},
+    "C03": {"name": "BUFFER", "role": "isolation / drainage separation"},
+    "C04": {"name": "CLAMP", "role": "reversible clamp / fastener"},
+    "C05": {"name": "EXISTING_BASE", "role": "existing substrate / FIELD VERIFY REQUIRED"}
+  },
+  "authority_boundary": [
+    "R06 experience FROZEN / NO REOPEN",
+    "presentation geometry does not claim surveyed site geometry",
+    "dimensions are designer estimates, not field measurements"
+  ]
+}
