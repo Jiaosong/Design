@@ -1,0 +1,22 @@
+object_id,chapter_or_system,canonical_identity,current_or_merged_state,latest_candidate_or_delta,effective_project_organization_state,owner_boundary,does_not_prove
+ARCH-v3.2,PROJECT,Professional project architecture,MERGED CURRENT,C04_CURRENT.md v3.2,CURRENT ORGANIZATION AUTHORITY,Project Organization,Does not prove page migration or finished pixels
+PAGE-COUNT,PROJECT,Page-count semantics,MERGED CURRENT,Exact 52-row PAGE REGISTER still open,CANONICAL PAGE COUNT NOT YET LOCKED,Project Organization,20 chapters or 52 protected pages are not final page count
+ROUTE-03,CH09/JOURNEY,Single current route geometry authority,LOCKED CURRENT,Consumed by Journey/App/Brand/GIS where source-bound,DO NOT DUPLICATE OR REDRAW AS COMPETING GEOMETRY,Route/Journey source authority,Not GPS/field/safety truth
+CH14-P01,CH14,Brand Foundation,MERGED SOURCE LOCK,v5.6,BASELINE PRESENT ON MAIN / DESIGN PASS NOT IMPLIED,Brand/VI,No independent Design PASS
+CH14-P02,CH14,Verbal Identity,MERGED SOURCE LOCK,v5.8,BASELINE PRESENT ON MAIN / DESIGN PASS NOT IMPLIED,Brand/VI,No operator approval
+CH14-P03,CH14,Logo/Wordmark/VI Manual,MERGED SOURCE LOCK,v7.2,BASELINE PRESENT ON MAIN / PROFESSIONAL DESIGN GATE STILL SEPARATE,Brand/VI,No trademark/manufacturing approval
+CH14-P04,CH14,Color System,MERGED SOURCE LOCK,v1.0,BRAND COLOR ROLE SYSTEM / STATUS COLORS REMAIN SEPARATE,Brand/VI,No accessibility/production-color approval
+CH14-P05,CH14,Typography/Layout,MERGED SOURCE LOCK,v1.0,BASELINE PRESENT ON MAIN,Brand/VI,No final cross-carrier Design PASS
+CH14-P06,CH14,Map-derived Graphic Language,MERGED SOURCE LOCK,v2.0 ROUTE-03 rebound,CURRENT BASELINE / P06 v1 SUPERSEDED PROVENANCE,Brand/VI,Does not own route/wayfinding status
+CH14-P07,CH14,Icon/Legend/Functional Information,MERGED SOURCE LOCK,v1.0,CURRENT BASELINE / FUNCTIONAL DECODING OWNER INSIDE CH14,Brand/VI,No field/signage approval
+CH14-P08,CH14,Cross-media Brand Presence,FULL/LIGHT/TRACE/OFF current material,Not yet same merged source-lock closure as P01-P07,KEEP CANONICAL ID / CANDIDATE CURRENT MATERIAL,Brand/VI,No Design PASS
+ENV-01,CH02,Slope/Aspect,MERGED CURRENT FIGURE ID,GIS v0.7.3 strict reexecution,CANDIDATE EVIDENCE FRONTIER / REVIEW HOLD,GIS/CH02,No survey/field/constructability truth
+ENV-02,CH02,Potential Drainage,MERGED CURRENT FIGURE ID,GIS v0.7.3 strict reexecution,CANDIDATE EVIDENCE FRONTIER / REVIEW HOLD,GIS/CH02,D8 is not hydraulic network/capacity
+ENV-03,CH02,Land Cover Evidence,STABLE ID / HOLD,AOI pixels still not materialized,HOLD / NO MAIN PROMOTION,GIS/CH02,No proxy/screenshot/generated substitution
+ENV-04,CH02,Water History Evidence,STABLE ID / HOLD,AOI pixels still not materialized,HOLD / NO MAIN PROMOTION,GIS/CH02,No proxy/screenshot/generated substitution
+ENV-05,CH02,Solar Scenarios,MERGED CURRENT FIGURE ID,GIS v0.7.3 strict reexecution,CANDIDATE EVIDENCE FRONTIER / REVIEW HOLD,GIS/CH02,No field microclimate truth
+ENV-06,CH02,Operations Conflict,MERGED CURRENT FIGURE ID,ROUTE-03-bound current operations semantics,CANDIDATE EVIDENCE FRONTIER / EXACT ANCHORS OPEN,GIS/CH02,No live operational status
+ENV-SYN-01,CH02,Environmental Synthesis,STABLE CURRENT ID,GIS v0.7.3 unweighted field-verification triggers,CANDIDATE EVIDENCE FRONTIER / REVIEW HOLD,GIS/CH02,Not a risk score or suitability map
+APP-LINEAGE,CH11,Digital companion lineage,v1.25→v1.26→v1.27 preserved,PR#255 ROUTE-03 currentization,CANDIDATE / REVIEW PENDING / REGISTER ONLY,User/App line,Does not replace user-owned next App design delta
+WEB-STORY,WEB/NARRATIVE,Downstream Web editorial flow,2026-08-17 flow provenance,Needs v3.2 + CH14 + PAGE-contract currentization,DOWNSTREAM CONTRACT ONLY / NOT PROJECT ARCHITECTURE,Web line,Does not alter Web pixels or candidate Design verdicts
+RESOLVER-1.2.1,OLEANDER,Execution resolver/runtime baseline,MERGED CURRENT,Sticky constraints + full-flow completion,CURRENT EXECUTION CONSTRAINT,Governance/Runtime,CI/runtime pass does not equal Design PASS
