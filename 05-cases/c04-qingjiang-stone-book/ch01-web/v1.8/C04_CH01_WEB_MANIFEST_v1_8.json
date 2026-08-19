@@ -1,0 +1,17 @@
+{
+  "artifact_id": "C04_CH01_WEB_v1.8_CH14_EDITORIAL",
+  "source_authority": "CH01 v0.3 / Draft PR #294",
+  "visual_authority": "CH14 Current Material / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE",
+  "surfaces": ["CH01-P01","CH01-P02","CH01-P03","CH01-P04","CH01-P05","CH01-P06"],
+  "raster_content_images": 0,
+  "ai_generated_whole_page_images": 0,
+  "route_03_geometry": {"page":"CH01-P02","state":"LOCKED CURRENT / SOURCE GEOMETRY EMBEDDED / NO REDRAW"},
+  "palette": {"Bone Mist":"#F1EDE4","River Black":"#111918","Deep Water":"#133B3C","Jade Current":"#2E7571","Wet Stone":"#7C8B86","Mica":"#BAC4BF","Cinnabar":"#B8543E","Sediment":"#C7B99F"},
+  "readback": {
+    "desktop_chromium": {"method":"Chromium DOM injection of exact index.html + style.css","viewport":"1920x1080","pages":6,"horizontal_overflow":0,"console_page_errors":0,"status":"COMPLETE"},
+    "mobile_chromium": {"method":"Chromium DOM injection of exact index.html + style.css","viewport":"390x844","pages":6,"horizontal_overflow":0,"console_page_errors":0,"status":"COMPLETE"},
+    "direct_navigation": {"status":"HOLD","reason":"runtime policy blocks file:// and localhost navigation; DOM injection used as exact source rendering fallback"}
+  },
+  "review_state": "PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT FOR CONSTRUCTION"]
+}
