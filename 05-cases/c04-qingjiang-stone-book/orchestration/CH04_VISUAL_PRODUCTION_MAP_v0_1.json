@@ -1,0 +1,76 @@
+{
+  "schema": "c04.ch04.visual-production-map.v1",
+  "status": "CURRENT_CANDIDATE_PAGE_LEVEL_DECISIONS_NOT_PIXEL_PROMOTION",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH04",
+  "version": "v0.1",
+  "authoring_pages": [
+    "CH04-P01",
+    "CH04-P02",
+    "CH04-P03",
+    "CH04-P04",
+    "CH04-P05",
+    "CH04-P06"
+  ],
+  "public_sequence": [
+    "P01 CONDITION",
+    "P02 JOINT ATTENTION",
+    "P03 AGENCY",
+    "P04 OPT-IN DEPTH",
+    "P05 SUPPORT/RETURN",
+    "P06 SAME R06/VARIABLE DEPTH"
+  ],
+  "current_pointer": "NOT_SET",
+  "independent_professional_design_review": "PENDING",
+  "image_generation_used": false,
+  "page_decisions": {
+    "CH04-P01": {
+      "primary": "native vector changing-condition journey",
+      "semantic_raster": null,
+      "does_not_prove": "measured user study"
+    },
+    "CH04-P02": {
+      "primary": "native vector joint-attention scene",
+      "semantic_raster": null,
+      "does_not_prove": "child usability testing or spatial geometry"
+    },
+    "CH04-P03": {
+      "primary": "ROUTE03_MAP_FIELD_CROP.jpg",
+      "authority": "ROUTE-03 LOCKED CURRENT",
+      "operation": "direct geometry carrier + presentation overlay",
+      "does_not_prove": "GPS/live service/node registration"
+    },
+    "CH04-P04": {
+      "primary": "native vector L0-L4 editorial reveal",
+      "semantic_raster": null,
+      "does_not_prove": "measured attention depth"
+    },
+    "CH04-P05": {
+      "primary": "native vector no-phone support path",
+      "semantic_raster": null,
+      "ownership": "CH13 body-support products not migrated",
+      "does_not_prove": "site placement/engineering/accessibility validation"
+    },
+    "CH04-P06": {
+      "primary": "R06_LANDSCAPE_TEXTFREE_CROP.jpg",
+      "operation": "one base scene + presentation overlays only",
+      "semantic_raster_policy": "only current CH04 v2 R06 consumer",
+      "does_not_prove": "field geology/measurements"
+    }
+  },
+  "truth_boundary": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT FOR CONSTRUCTION"
+  ],
+  "does_not_prove": [
+    "finished-pixel Design KEEP",
+    "independent Professional Review PASS",
+    "field truth",
+    "final protected Web PAGE IDs",
+    "project promotion"
+  ]
+}
