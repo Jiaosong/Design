@@ -1,9 +1,10 @@
 # CH13 Visual Production Map v0.1
 
-Status: **CURRENT CANDIDATE / PRODUCTION MAP / NOT PAGE PROMOTION**  
+Status: **CURRENT PROJECT PRODUCTION MAP / NOT PAGE PROMOTION**  
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 Chapter: `CH13｜实体 / 身体 / 感官`  
-Decision date: **2026-08-19**
+Decision date: **2026-08-19**  
+Current since: **PR #325 / merge `97866a4d62c3f0754ea51472587b62557d03ac39`**
 
 This map converts the existing CH13 authoring units into a visual-first production sequence. It does not change canonical CH13-P01…P07 identities, does not assign protected `C04-WEB-Pxxx` IDs, and does not promote any page pixels.
 
