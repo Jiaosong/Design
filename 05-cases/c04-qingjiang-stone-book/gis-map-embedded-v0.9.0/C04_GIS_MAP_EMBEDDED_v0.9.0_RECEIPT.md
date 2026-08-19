@@ -6,7 +6,7 @@ Date: `2026-08-19`
 
 ## Execution state
 
-`EXECUTED / PRODUCER ACTUAL READBACK COMPLETE / MAP-EMBEDDED-SPATIAL-CLAIM PRODUCER PRECHECK PASS / INDEPENDENT PROFESSIONAL DESIGN REVIEW HOLD / NO_PROMOTION`
+`EXECUTED / PRODUCER ACTUAL READBACK COMPLETE / DELIVERY-QC TECHNICAL PREFLIGHT PASS / MAP-EMBEDDED-SPATIAL-CLAIM PRODUCER PRECHECK PASS / INDEPENDENT PROFESSIONAL DESIGN REVIEW HOLD / NO_PROMOTION`
 
 Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
 
@@ -42,10 +42,12 @@ Sample-cluster envelopes are presentation cues around connected source samples. 
 
 `C04_GIS_MAP_EMBEDDED_REDO_v0.9.0.zip`
 
-- bytes: `7,553,612`
-- SHA256: `2a3ddd6779378d50d97917ace7993c9cfb423432ed05697f682214d5acd08058`
+- bytes: `7,555,670`
+- SHA256: `6373d800431d0bf3e9b9bbedda51f5c8389148e02246580872c2ce119280b609`
 
-Native contents include editable SVG masters, 3840×2160 PNG review derivatives, grayscale/far-read QC, source CSV copies, trigger classification CSV, source/precision notes, execution receipt and SHA manifest.
+Native contents include editable SVG masters, 3840×2160 PNG review derivatives, grayscale/far-read QC, source CSV copies, trigger classification CSV, source/precision notes, execution receipt, delivery-QC report and SHA manifest.
+
+Delivery-QC machine preflight completed `34 / 34 PASS`: SVG XML parse, exact canvas dimensions, live vector text, no embedded raster image tags, source/derived row counts, grayscale/far-read derivatives and direct map-label presence. This technical gate is separate from professional design approval.
 
 **Persistence boundary:** this GitHub receipt records the execution but does not claim the local SVG/PNG/ZIP bytes are stored byte-equivalently in GitHub. Artifact existence/persistence and professional design approval remain separate gates.
 
