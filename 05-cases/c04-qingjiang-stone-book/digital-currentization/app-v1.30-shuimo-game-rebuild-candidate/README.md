@@ -18,7 +18,7 @@ Runtime evidence: 390×844 and 430×932 no recorded page/JS errors in tested pat
 
 Exact local canonical source: 453,936 bytes / SHA256 `7e5b5a246949ce5faf404319499ee2c2c4950a085d45d341bd7fa3ad3ff4fe12`.
 
-Final complete local ZIP after recovery/sync receipts: 16,868,705 bytes / SHA256 `822e9be2db544af6a9f4e77e24a544bf8f1a02e6161d67d174b3c338565856fe`.
+The mixed binary package is receipt-tracked in the local recoverable handoff and in the PR/Notion current record. Its mutable sync/package receipt is intentionally not embedded here to avoid self-referential package-hash churn.
 
 `INDEPENDENT FINISHED-PIXEL DESIGN REVIEW = REQUIRED`.
 
