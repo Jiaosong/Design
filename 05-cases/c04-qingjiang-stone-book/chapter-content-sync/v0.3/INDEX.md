@@ -3,7 +3,7 @@
 Status: `AUTHORING SUCCESSOR / NO-LOSS / NOT PAGE-ID MIGRATION / NO_PROMOTION`。
 
 ## Purpose
-在 v0.1 / v0.2 authored baseline 上，逐章吸收：Project Organization v1.2.2、Original Design Source/Integration、完整 Longscroll / Story Spine / Audience / Physical Outcome、ROUTE-03、App v1.28 lineage、CH14 Current、Notion design knowledge，以及本轮 CH08 full-source review。
+在 v0.1 / v0.2 authored baseline 上，逐章吸收：Project Organization v1.2.2、Original Design Source/Integration、完整 Longscroll / Story Spine / Audience / Physical Outcome、ROUTE-03、App v1.29 Game Texture × CH14 × ROUTE-03 leading candidate lineage、CH14 Current、Notion design knowledge，以及本轮 CH08 full-source review。
 
 本版不覆盖旧稿，不声明最终 Web page count，不创建新 PID，不替代各章节正在进行的像素/模型/技术 PR。
 
@@ -19,7 +19,7 @@ Status: `AUTHORING SUCCESSOR / NO-LOSS / NOT PAGE-ID MIGRATION / NO_PROMOTION`�
 - CH08：重建为 Experience Spine / Touchpoint Assignment / Variation / Selection；控制语法退为运行层。
 - CH09：新增 Route/Return Physical Touchpoint Family；深化 Cable Experience Choreography。
 - CH10：建立 Imprint Design Grammar 与 Observability 字段；不增加印。
-- CH11：恢复 ODB-01 source identity；当前 App 只深化 Discovery / Retreat / No-phone handoff，不扩大功能。
+- CH11：恢复 ODB-01 source identity；消费 App v1.29 最新材质/探索响应增量，但仍只深化 Discovery / Retreat / No-phone handoff，不扩大主功能。
 - CH12：R06冻结、R13退场保持；新增 Route Decision Scene 验证模板。
 - CH13：恢复 P02 / Fluid / Step Light / Qingfengyin 原始设计身份；新增 Sensory Resource Strategy 作为输入，不新增第五产品 family。
 - CH14：新增 Material Branding 深化层，不增加第二套 VI。
