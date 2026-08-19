@@ -1,0 +1,67 @@
+{
+  "schema": "oleander.c04.ch16.resource-register.v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH16",
+  "status": "RESOURCE_COLLECTION_EXECUTED_PRODUCTION_INPUT_REGISTER_REVIEW_PENDING",
+  "truth_boundary": ["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","NTS","NOT_FOR_CONSTRUCTION"],
+  "drive_pack": {
+    "folder_id": "1cjx-HnwKqexxWw3-Fvn1agQYRZ9l8md5",
+    "title": "QJ-CH16__RESOURCE-PACK__v0.1",
+    "files": [
+      {"role":"P01_CONTEXT_ONLY","title":"P01_CONTEXT__R06_LANDSCAPE_FIRST__REFERENCE.png","file_id":"1QXebIr0K3RACCAo-wewCfRIn2t3IVUjE","source_file_id":"1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ"},
+      {"role":"P01_SUPPORT","title":"P01_SUPPORT__R06_RELATION_REVEAL__REFERENCE.png","file_id":"1HAF-XfcsRKMrdDOpGVZnt8B-BZb2tnO8","source_file_id":"13MOMwySypj13Vb1O6SsuUMoV8vQh1AxN"},
+      {"role":"SOURCE_MANIFEST","title":"SOURCE_MANIFEST__QJ-D_v1.1.csv","file_id":"1EIi7Ts_takDPYJDlna37cv9Gcl5npjDL","source_file_id":"14l_5yHPrsrWT7xhH80_oIn1z9MzfIdW8"}
+    ]
+  },
+  "global_forbidden": [
+    {"object":"ODB-02 / 可拆卸倚靠休息板.png","reason":"USER_AUTHORITY_PROHIBITS_ALL_CH16_VISIBLE_ROLES"},
+    {"object":"AI_ASSISTED_C23_RENDER_AS_GEOMETRY_AUTHORITY","reason":"RENDER_DOES_NOT_REPLACE_DESIGN_OR_GEOMETRY_AUTHORITY"}
+  ],
+  "resources": [
+    {"id":"D_V1_1_R06_LANDSCAPE_FIRST","status":"READY_CONTEXT_ONLY","pages":["P01"],"role":"REAL_QINGJIANG_CONTEXT","materialized":true,"does_not_prove":["P02_LOCATION","R06_NEW_GEOMETRY","SITE_DIMENSION","ENGINEERING"]},
+    {"id":"D_V1_1_R06_RELATION_REVEAL","status":"READY_CONTEXT_ONLY","pages":["P01","P03"],"role":"RELATION_SUPPORT_AFTER_SCENE","materialized":true},
+    {"id":"P02_RAILING_LEAN_REST_V1_2","status":"READY_SECONDARY","pages":["P01","P04","P05","P06"],"role":"DERIVED_TECHNICAL_CURRENTIZATION","path":"05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg","blob_sha":"f2402d208cbf4d53b5c57a930c8ede8f48d8bf00","materialized":true,"not_source_authority":true,"not_automatic_main_keep":true},
+    {"id":"FLUID_REST_ORIGINAL_BOARD","status":"READY_FILE_LIBRARY_SUPPORT","pages":["P01","P04"],"role":"LONGER_REST_BODY_MATERIAL_CONTRAST","file_library_id":"file_000000006eb08211986fc9e9e009a6e3","materialized":"FILE_LIBRARY","legacy_values_not_controls":true},
+    {"id":"FLUID_V26_BODY_POSTURE","status":"REFERENCED_NEEDS_MATERIALIZATION","pages":["P01"],"role":"BODY_POSTURE_SUPPORT","filename":"fluid_v26_body_posture.png"},
+    {"id":"FLUID_V26_TRANSVERSE","status":"REFERENCED_NEEDS_MATERIALIZATION","pages":["P01","P03"],"role":"TRANSVERSE_SECTION_SUPPORT","filename":"fluid_v26_transverse.png"},
+    {"id":"ROUTE03_C22_RELATIONAL_BASE","status":"CURRENT_AUTHORITY_EXACT_SOURCE_BINDING_REQUIRED","pages":["P02"],"role":"RELATIONAL_PLAN_BASE","constraints":["NO_SECOND_ROUTE_GEOMETRY","NOT_SITE_SURVEY"]},
+    {"id":"TECHNICAL_FOCUS_V2","status":"REFERENCED_NEEDS_MATERIALIZATION","pages":["P02"],"role":"RELATIONAL_PLAN_REFERENCE","filename":"technical_focus_v2.svg"},
+    {"id":"CH16_P03_V1_2_PARENT","status":"READY_HISTORICAL_TRACEABLE_CURRENTIZE_REQUIRED","pages":["P03","P05","P06","P07"],"role":"REGISTERED_PARENT_SECTION_SOURCE","path":"05-cases/c04-qingjiang-stone-book/ch16-detail-development/v1.2/assets/CH16-P03_v1_2.svg","immutable_ref":"735b4c864dbb1321cf66721aa19c2a379da90d26","parent_id":"CH16-P03-SEC-A","source_pr":303,"source_pr_state":"CLOSED_UNMERGED_SUPERSEDED"},
+    {"id":"C23_SPATIAL_CONSTRUCTION_SPRINT","status":"READY_FILE_LIBRARY_SUPPORT_TARGETED_READBACK_REQUIRED","pages":["P03","P05","P06"],"role":"TECHNICAL_SOURCE_REVIEW","file_library_id":"file_00000000aaac820ba6dd74bd1892db12"},
+    {"id":"C23_DETAIL_BOARD_V3","status":"READY_FILE_LIBRARY_SUPPORT","pages":["P05","P06","P07"],"role":"CONCEPT_DETAIL_SUPPORT","svg_sha256":"b35a243e49af5f3e6cacd2babdfaf55a409c4bb55625b7fdb2a63337ac108383","png_sha256":"24b3240ad9cd2caf0824e19ee16044deac36a4bfb0019dbee9d23cf7a7f8050e","boundary":"CONCEPT_NTS_FIELD_OPEN_NOT_FOR_CONSTRUCTION"},
+    {"id":"R06_GENERAL_ASSEMBLY_V11","status":"REFERENCED_NEEDS_MATERIALIZATION","pages":["P05"],"role":"ASSEMBLY_RELATION","filename":"r06_general_assembly_v11.svg"},
+    {"id":"R06_DETAIL_ATLAS_V11","status":"REFERENCED_NEEDS_MATERIALIZATION","pages":["P05","P06","P07"],"role":"D1_D4_DETAIL_LINEAGE","filename":"r06_detail_atlas_v11.svg","described_details":["D1_CLAMP_STATION","D2_CROSS_SECTION","D3_SERVICE_WING","D4_COUNTERSUNK_CLAMP_BOLT"]},
+    {"id":"R06_BOARD_MAP","status":"READY_FILE_LIBRARY_SUPPORT","pages":["P01","P06"],"role":"LANDSCAPE_BODY_CONSTRUCTION_AND_TECH_PROOF_SEQUENCE"},
+    {"id":"RELATION_REGISTER_V12","status":"READY_FILE_LIBRARY_SUPPORT","pages":["P07"],"role":"DRAWING_CALLOUT_IDENTITY_TRACE"}
+  ],
+  "external_references": [
+    {"standard":"GB/T 10000-2023","title":"中国成年人人体尺寸","pages":["P01"],"role":"ANTHROPOMETRIC_REASONABLENESS","status":"REFERENCE_EXTERNAL","not_project_specific_prescription":true},
+    {"standard":"GB 55019-2021","title":"建筑与市政工程无障碍通用规范","pages":["P01","P02","P06"],"role":"ACCESSIBLE_PASSAGE_NON_OBSTRUCTION_SURFACE_CHECKS","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 10125-2021","title":"人造气氛腐蚀试验 盐雾试验","pages":["P04","P06"],"role":"CORROSION_TEST_METHOD_REFERENCE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 30790.2-2014","title":"色漆和清漆 防护涂料体系对钢结构的防腐蚀保护 第2部分：环境分类","pages":["P04","P06"],"role":"CORROSIVITY_ENVIRONMENT_REFERENCE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 30790.5-2014","pages":["P04","P06"],"role":"PROTECTIVE_COATING_SYSTEM_REFERENCE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 30790.7-2014","pages":["P04","P06"],"role":"COATING_EXECUTION_MANAGEMENT_REFERENCE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 30790.8-2014","pages":["P04","P06"],"role":"NEW_MAINTENANCE_SPECIFICATION_REFERENCE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 3098.25-2020","pages":["P05"],"role":"STAINLESS_NICKEL_FASTENER_SELECTION_GUIDE","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 3098.6-2023","pages":["P05"],"role":"STAINLESS_BOLT_SCREW_STUD_MECHANICAL_PROPERTIES","status":"REFERENCE_EXTERNAL"},
+    {"standard":"GB/T 3098.15-2023","pages":["P05"],"role":"STAINLESS_NUT_MECHANICAL_PROPERTIES","status":"REFERENCE_EXTERNAL"},
+    {"standard":"SN/T 5354.1-2021","pages":["P06"],"role":"SLIP_TEST_PENDULUM_METHOD_REFERENCE_ONLY","status":"REFERENCE_EXTERNAL"},
+    {"standard":"SN/T 5354.2-2021","pages":["P06"],"role":"SLIP_TEST_INCLINED_PLATFORM_METHOD_REFERENCE_ONLY","status":"REFERENCE_EXTERNAL"},
+    {"standard":"JC/T 1050-2007","pages":["P06"],"role":"STONE_SLIP_TEST_REFERENCE_IF_STONE_SELECTED","status":"REFERENCE_EXTERNAL_CONDITIONAL"}
+  ],
+  "open_evidence": {
+    "P01":["SITE_SPECIFIC_ERGONOMIC_FIT","ACTUAL_USER_CLEARANCE"],
+    "P02":["EXACT_LOCATION","CLEAR_PASSAGE","EXISTING_FACILITY_ADEQUACY","MAINTENANCE_ACCESS","SITE_PERMISSION","SURVEY_GEOMETRY"],
+    "P03":["ACTUAL_SECTION_GEOMETRY","ELEVATION","SUBSTRATE","EDGE_FALL_CONDITION","VIEW_CONE","MAINTENANCE_SIDE"],
+    "P04":["ACTUAL_MATERIAL_GRADE","COATING_SYSTEM","GALVANIC_COMPATIBILITY","LOCAL_EXPOSURE","SAMPLE_TOUCH_FRICTION","MAINTENANCE_INTERVAL"],
+    "P05":["BASE_MATERIAL_THICKNESS_CAPACITY","ALLOWABLE_CLAMP_PRESSURE","EDGE_DISTANCE","LOAD_CASES","FASTENER_GRADE_DIAMETER","TORQUE","LOCKING_METHOD","DRILL_WELD_ANCHOR_PERMISSION"],
+    "P06":["RAINFALL_WATER_PATH","DRAINAGE_CAPACITY","WET_SLIP_VALUE","DIRT_TRAPS","CLEANING_METHOD","INSPECTION_ACCESS","REPLACEMENT_CLEARANCE","MAINTENANCE_CLOSURE_PROCEDURE","OPERATIONAL_CLOSURE_THRESHOLD"],
+    "P07":["ALL_UNCLOSED_FIELD_ENGINEERING_MAINTENANCE_ITEMS_ANCHORED_TO_DRAWING"]
+  },
+  "materialization_queue": {
+    "A":["VERIFY_D_V1_1_P01_EXACT_CURRENT_BIND","RECOVER_EXACT_ROUTE03_C22_RELATIONAL_BASE","DECIDE_P03_PARENT_CURRENTIZATION","MATERIALIZE_R06_GENERAL_ASSEMBLY_V11_IF_CURRENT","MATERIALIZE_R06_DETAIL_ATLAS_V11_IF_CURRENT"],
+    "B":["MATERIALIZE_FLUID_V26_BODY_POSTURE","MATERIALIZE_FLUID_V26_TRANSVERSE","TARGETED_READBACK_C23_SPATIAL_CONSTRUCTION_SPRINT_PDF"],
+    "C":["FIELD_ENGINEERING_OPERATOR_SAMPLE_EVIDENCE"]
+  },
+  "next_execution_unit":"CH16-P01"
+}
