@@ -1,0 +1,79 @@
+{
+  "contract_version": "v0.2",
+  "job_id": "MDL-AUTO-F0F1-PRIMARY-SURFACE-001",
+  "domain": "AUTOMOTIVE",
+  "decision_question": "Can the reference vehicle establish coherent wheel/body/greenhouse proportions and stable primary surfaces before secondary detail is introduced?",
+  "loop": "EXPLORATION_SANDBOX",
+  "fidelity": "F1_DESIGN_VALIDATION",
+  "design_state": "REVISE",
+  "source_authority": {
+    "state": "WORKING_SOURCE",
+    "editable_source": "OLEANDER_Automotive_Reference_Vehicle_next.blend",
+    "artifact_hash": null,
+    "derived_models": ["automotive_f1_render_mesh"],
+    "exports": []
+  },
+  "modeling_stage": "M5",
+  "hard_points": {
+    "applicable": true,
+    "items": [
+      {"id":"HP-WHEELBASE","role":"front/rear axle relation","value":2.72,"unit":"m","status":"DEPENDENCY_LOCKED"},
+      {"id":"HP-TRACK","role":"wheel/body stance","value":1.58,"unit":"m","status":"DEPENDENCY_LOCKED"},
+      {"id":"HP-WHEEL-OD","role":"wheel/body scale","value":0.69,"unit":"m","status":"LOCKED"},
+      {"id":"HP-COWL","role":"hood/windshield transition","value":null,"unit":"design coordinate","status":"OPEN"},
+      {"id":"HP-ROOF-PEAK","role":"greenhouse height","value":null,"unit":"design coordinate","status":"OPEN"},
+      {"id":"HP-BELT-LINE","role":"body/greenhouse division","value":null,"unit":"design curve","status":"OPEN"}
+    ]
+  },
+  "envelopes": {
+    "applicable": true,
+    "items": [
+      {"id":"ENV-EXTERIOR","role":"whole-vehicle proportion envelope","geometry_type":"guide volume","status":"OPEN"},
+      {"id":"ENV-CABIN","role":"greenhouse/cabin envelope","geometry_type":"guide volume","status":"OPEN"}
+    ]
+  },
+  "sections": {
+    "applicable": true,
+    "items": [
+      {"id":"SEC-FRONT-AXLE","role":"front fender / wheel relation","station":"front axle","plane":"YZ","continuity_target":"smooth width/shoulder change","depends_on":["HP-WHEELBASE","HP-TRACK","HP-WHEEL-OD"],"status":"DEPENDENCY_LOCKED"},
+      {"id":"SEC-COWL","role":"hood/body/cabin transition","station":"cowl","plane":"YZ","continuity_target":"stable shoulder/tumblehome","depends_on":["HP-COWL","HP-BELT-LINE"],"status":"OPEN"},
+      {"id":"SEC-B-PILLAR","role":"maximum cabin/body relation","station":"B pillar","plane":"YZ","continuity_target":"stable roof/tumblehome","depends_on":["HP-ROOF-PEAK","HP-BELT-LINE"],"status":"OPEN"},
+      {"id":"SEC-REAR-AXLE","role":"rear fender / wheel relation","station":"rear axle","plane":"YZ","continuity_target":"smooth quarter transition","depends_on":["HP-WHEELBASE","HP-TRACK","HP-WHEEL-OD"],"status":"DEPENDENCY_LOCKED"}
+    ]
+  },
+  "primary_geometry": [
+    {"id":"PG-BODY-SIDE","role":"primary body mass / shoulder / fender relation","representation":"SubD primary surface","source_sections":["SEC-FRONT-AXLE","SEC-COWL","SEC-B-PILLAR","SEC-REAR-AXLE"],"status":"OPEN"},
+    {"id":"PG-ROOF-CABIN","role":"greenhouse / roof primary mass","representation":"SubD primary surface","source_sections":["SEC-COWL","SEC-B-PILLAR","SEC-REAR-AXLE"],"status":"OPEN"}
+  ],
+  "semantic_components": [
+    {"id":"ASY-VEHICLE","role":"reference vehicle assembly","parent":null,"source_type":"EDITABLE_SOURCE","source_ref":"OLEANDER_Automotive_Reference_Vehicle_next.blend","parameters":{},"instance_rule":null,"authority_state":"WORKING_SOURCE"},
+    {"id":"COMP-BODY-PRIMARY","role":"primary exterior body","parent":"ASY-VEHICLE","source_type":"EDITABLE_SOURCE","source_ref":"PG-BODY-SIDE","parameters":{},"instance_rule":"mirror where appropriate","authority_state":"WORKING_SOURCE"},
+    {"id":"COMP-CABIN-PRIMARY","role":"primary cabin/roof","parent":"ASY-VEHICLE","source_type":"EDITABLE_SOURCE","source_ref":"PG-ROOF-CABIN","parameters":{},"instance_rule":"mirror where appropriate","authority_state":"WORKING_SOURCE"},
+    {"id":"ASY-WHEEL","role":"wheel assembly generator","parent":"ASY-VEHICLE","source_type":"GENERATOR","source_ref":"wheel-definition","parameters":{"wheel_od_m":0.69},"instance_rule":"4 linked instances","authority_state":"WORKING_SOURCE"}
+  ],
+  "dependencies": [
+    {"from":"HP-WHEELBASE","to":"SEC-FRONT-AXLE","type":"DESIGN"},
+    {"from":"HP-WHEELBASE","to":"SEC-REAR-AXLE","type":"DESIGN"},
+    {"from":"SEC-COWL","to":"PG-BODY-SIDE","type":"GEOMETRY"},
+    {"from":"SEC-B-PILLAR","to":"PG-ROOF-CABIN","type":"GEOMETRY"},
+    {"from":"ASY-WHEEL","to":"COMP-BODY-PRIMARY","type":"DESIGN"}
+  ],
+  "locks": [
+    {"target":"wheel center positions","state":"DEPENDENCY_LOCKED","reason":"stance reference for current comparison","unlock_trigger":"proportion review shows wheel/body relation cannot remain coherent"},
+    {"target":"secondary details","state":"LOCKED","reason":"M7/M8 blocked until primary geometry passes M5","unlock_trigger":null},
+    {"target":"body/cabin transition","state":"CONDITIONALLY_UNLOCKABLE","reason":"must move if section review exposes incompatible cowl/roof relation","unlock_trigger":"M5 section or reflection failure"}
+  ],
+  "revision": null,
+  "qa": {
+    "integrity": ["file opens", "dimensions/transforms valid", "no missing dependencies"],
+    "construction": ["SubD stable under one subdivision step", "no behavior-sensitive n-gon pinching", "no unexplained density jumps", "sections trace to primary surfaces"],
+    "design_geometry": ["side silhouette", "wheel/body stance", "greenhouse/body ratio", "roof trajectory", "belt/shoulder relation", "fender section progression"],
+    "project": ["primary relationships reliable before detail", "locked variables respected or explicitly reopened"],
+    "diagnostic_views": ["SIDE_SILHOUETTE", "FRONT_ORTHO", "TOP_ORTHO", "CLAY_BROAD", "CLAY_STRIP", "CLAY_GRAZING", "ZEBRA", "SECTION_OVERLAY"]
+  },
+  "resource_budget": {"max_variants":4,"max_iterations":3,"max_runtime_minutes":45,"max_render_views":8,"parallelism":2},
+  "cache": {"enabled":true,"scope":"PROJECT_LOCAL","key_inputs":["working-source hash","normalized v0.2 contract","dependency graph","worker version","Blender version"]},
+  "exit_condition": "Primary proportion, section progression and diagnostic reflection/silhouette review reach a stable acceptable corridor; no major detail is required to make the primary form read correctly.",
+  "promotion": {"worker_may_mutate_source_authority":false,"decision":"PENDING"},
+  "persistence": {"policy":"PROMOTION_ONLY","artifact_registry":true,"sync_targets":["NOTION","GITHUB","GOOGLE_DRIVE"]}
+}
