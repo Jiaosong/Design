@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.owner-receipt/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "CH08-MASTER-STRATEGY-EXPERIENCE-SYSTEM",
+  "version": "v0.3",
+  "date": "2026-08-19",
+  "state": "CANDIDATE / REBASELINE",
+  "trigger": "User requested CH08 be clarified from uploaded original boards plus Notion design knowledge, rather than from later currentization alone.",
+  "authority": [
+    "C04_CURRENT.md / PROJECT ARCHITECTURE v3.2",
+    "C04_PROJECT_ORGANIZATION_CURRENT_v1_2_2",
+    "C04_USER_ORIGINAL_DESIGN_SOURCE_REGISTER_v1_0",
+    "C04_USER_ORIGINAL_DESIGN_INTEGRATION_PLAN_v1_0",
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN"
+  ],
+  "design_source_inputs": [
+    "user uploaded board: 清江文化旅程设计展板.png",
+    "ODB-01 清江石书：山水服务探索界面",
+    "ODB-02 可拆卸倚靠休息板",
+    "ODB-03A/B 山体流体休憩装置",
+    "ODB-04A/B/C 清风吟 family"
+  ],
+  "current_project_inputs": [
+    "App v1.28 CH14 × ROUTE-03 successor lineage",
+    "Web v1.12 CH14 visual unification",
+    "C04 WEB STORY FLOW v2.0",
+    "CH08 v0.2 authored content"
+  ],
+  "notion_knowledge_inputs": [
+    "C04-WS-05 G3R Experience Architecture v0.1 / current C04-WS-02 canonical content",
+    "Same-source Paired View: Landscape First → Relation Reveal",
+    "Earned Attention: supporting chrome recedes",
+    "Light as Spatial Threshold / Threshold = change in relation, not automatically a new object",
+    "Map-derived Identity ↔ Functional Wayfinding Semantic Firewall",
+    "System Locks & Decision Register"
+  ],
+  "rebaseline_decision": "CH08 owns orchestration rules across attention, authority, intervention threshold, state axes and handoff. It does not re-own detailed Route, Thirteen Imprints, App, Physical, Brand or Memory subsystem content.",
+  "preserve": [
+    "REAL QINGJIANG FIRST / LANDSCAPE FIRST",
+    "SERVICE / RETURN priority",
+    "PARTIAL IS COMPLETE",
+    "S0 / S1 / S2 as downstream reading depth contract",
+    "NORMAL / DEGRADED / CLOSED / UNKNOWN",
+    "FULL / LIGHT / OFF",
+    "Brand FULL / LIGHT / TRACE / OFF",
+    "no-phone redundancy",
+    "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+  ],
+  "supersession_scope": "Supersedes CH08 v0.2 only as the current CH08 chapter framing. v0.2 remains provenance and authored-content history. No other chapter or upstream design object is superseded.",
+  "does_not_prove": "No field validation, measured route geometry, live operation, safety, accessibility, capacity, construction readiness, Web/App Design PASS, or Promotion.",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
