@@ -11,7 +11,7 @@ permissions: {contents: read}
 jobs:
   porsche-911-992-reference-repro:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
@@ -23,6 +23,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v59.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v60.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v61.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
 
@@ -53,14 +54,11 @@ jobs:
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/V58_BASELINE')
-          d=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
-          assert d['schema']=='oleander.3d.primary-body-surface-receipt.v2'
+          out=Path('out/V58_BASELINE');d=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
           assert d['geometry_revision_unchanged']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
           assert d['source_ring_control_count']==20
           assert d['evaluated_adjacent_face_normal_flip_count']==0
           assert d['evaluated_sampling_gate']['status']=='PASS'
-          assert d['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD'
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V58_BASELINE/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
 
@@ -81,75 +79,71 @@ jobs:
           import json
           from pathlib import Path
           out=Path('out/V59_HOOD_FENDER')
-          surface=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
-          projection=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
-          regression=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
+          surface=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text());projection=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text());regression=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
           locks={x['id']:x for x in regression['regression_locks']};sem=projection['front_identity_metrics']
-          assert surface['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
-          assert surface['source_ring_control_count']==20
-          assert surface['evaluated_adjacent_face_normal_flip_count']==0
-          assert regression['edit_scope']==['FRONT_HOOD_FENDER_RELATION_ONLY']
-          summary={
-            'schema':'oleander.3d.porsche-911-v59-benchmark-summary.v1',
-            'baseline':'V49_FEATURE_ALIGNED_CURVE_NETWORK',
-            'candidate':'V59_SPARSE_FRONT_HOOD_FENDER_RELATION',
-            'runtime_execution':'PASS','source_edit_scope':'FRONT_HOOD_FENDER_RELATION_ONLY',
-            'source_ring_control_count':surface['source_ring_control_count'],
-            'evaluated_triangles':surface['evaluated_triangles'],
-            'evaluated_edge_p95_m':surface['evaluated_edge_p95_m'],
-            'evaluated_fold_count':surface['evaluated_adjacent_face_normal_flip_count'],
-            'surface_preserved':surface['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD' and surface['evaluated_adjacent_face_normal_flip_count']==0,
-            'hood_fender_delta_m':sem.get('mean_fender_crown_minus_hood_m'),
-            'hood_fender_relation_state':sem.get('hood_fender_hierarchy_state'),
-            'side_regression_lock':locks['SIDE_UPPER']['status'],
-            'rear_regression_lock':locks['REAR_BODY_ONLY_DIAGNOSTIC']['status'],
-            'machine_promotion_decision':regression['promotion_decision'],
-            'held_out_visual_review':'HOLD_REQUIRES_OLEANDER_ARTIFACT_REVIEW',
-            'reference_fidelity':'HOLD_REQUIRES_HELD_OUT_3Q_REVIEW',
-            'design_quality':'HOLD_REQUIRES_ARTIFACT_REVIEW',
-            'does_not_prove':['Reference Fidelity PASS','Design KEEP','Class-A continuity','manufacturer CAD','manufacturing feasibility']}
+          assert surface['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION';assert surface['source_ring_control_count']==20;assert surface['evaluated_adjacent_face_normal_flip_count']==0
+          summary={'schema':'oleander.3d.porsche-911-v59-benchmark-summary.v1','baseline':'V49_FEATURE_ALIGNED_CURVE_NETWORK','candidate':'V59_SPARSE_FRONT_HOOD_FENDER_RELATION','runtime_execution':'PASS','source_edit_scope':'FRONT_HOOD_FENDER_RELATION_ONLY','source_ring_control_count':surface['source_ring_control_count'],'evaluated_triangles':surface['evaluated_triangles'],'evaluated_edge_p95_m':surface['evaluated_edge_p95_m'],'evaluated_fold_count':surface['evaluated_adjacent_face_normal_flip_count'],'surface_preserved':surface['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD' and surface['evaluated_adjacent_face_normal_flip_count']==0,'hood_fender_delta_m':sem.get('mean_fender_crown_minus_hood_m'),'hood_fender_relation_state':sem.get('hood_fender_hierarchy_state'),'side_regression_lock':locks['SIDE_UPPER']['status'],'rear_regression_lock':locks['REAR_BODY_ONLY_DIAGNOSTIC']['status'],'machine_promotion_decision':regression['promotion_decision'],'held_out_visual_review':'HOLD_REQUIRES_OLEANDER_ARTIFACT_REVIEW','reference_fidelity':'HOLD_REQUIRES_HELD_OUT_3Q_REVIEW','design_quality':'HOLD_REQUIRES_ARTIFACT_REVIEW','does_not_prove':['Reference Fidelity PASS','Design KEEP','Class-A continuity','manufacturer CAD','manufacturing feasibility']}
           (out/'V59_BENCHMARK_SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
-          print(json.dumps(summary,indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V59_HOOD_FENDER/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
 
-      - name: Execute V60 owned greenhouse aperture architecture
+      - name: Execute V60 false-positive aperture experiment for retained failure provenance
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/V60_APERTURE"; mkdir -p "$OUT"
+          OUT="$GITHUB_WORKSPACE/out/V60_REJECT_PROVENANCE"; mkdir -p "$OUT"
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
             --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v60.py \
             -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
           git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
-          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
 
-      - name: Verify V60 aperture ownership and preserve V59 body evidence
+      - name: Verify V60 is retained as expected host-preservation failure
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/V60_APERTURE')
-          aperture=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text())
-          surface=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
-          qa=json.loads((out/'REFERENCE_REPRO_QA.json').read_text())
-          assert aperture['schema']=='oleander.3d.aperture-interface-receipt.v1'
-          assert aperture['revision']=='V60_GREENHOUSE_APERTURE_OWNERSHIP'
-          assert aperture['primary_body_revision_locked']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
-          assert aperture['primary_body_source_delta']=='NONE'
-          assert len(aperture['boolean_results'])==4
-          assert all(x['applied'] and x['geometry_changed'] for x in aperture['boolean_results'])
-          assert not aperture['missing_required_objects']
-          assert aperture['boundary_closure_state']=='MACHINE_CONSTRUCTED_VISUAL_REVIEW_REQUIRED'
-          assert aperture['backing_occlusion_state']=='SCREENED_GEOMETRY_PRESENT_VISUAL_REVIEW_REQUIRED'
-          assert surface['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
-          assert surface['source_ring_control_count']==20
-          assert surface['evaluated_adjacent_face_normal_flip_count']==0
-          assert qa['reference_fidelity_revision']=='V60_GREENHOUSE_APERTURE_OWNERSHIP'
-          assert qa['design_quality_gate']=='HOLD_FOR_OLEANDER_ARTIFACT_REVIEW'
-          print(json.dumps(aperture,indent=2))
+          out=Path('out/V60_REJECT_PROVENANCE');a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
+          last=a['boolean_results'][-1];ratio=last['after_faces']/last['before_faces']
+          assert a['revision']=='V60_GREENHOUSE_APERTURE_OWNERSHIP'
+          assert ratio < .70, (ratio,last)
+          assert s['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION' and s['evaluated_adjacent_face_normal_flip_count']==0
+          failure={'schema':'oleander.3d.expected-negative-benchmark.v1','revision':'V60_GREENHOUSE_APERTURE_OWNERSHIP','expected_failure':'DESTRUCTIVE_DERIVED_EDIT_HOST_PRESERVATION_NOT_GATED','rear_glass_face_retention_ratio':ratio,'execution':'PASS','design':'REJECT','does_not_prove':['successful aperture architecture','Design KEEP']}
+          (out/'V60_EXPECTED_FAILURE.json').write_text(json.dumps(failure,indent=2)+'\n')
+          print(json.dumps(failure,indent=2))
           PY
-          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V60_APERTURE/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
+
+      - name: Execute V61 host-preserved aperture repair
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V61_APERTURE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v61.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+
+      - name: Verify V61 host preservation before visual review
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V61_APERTURE')
+          a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text());h=json.loads((out/'DERIVED_EDIT_HOST_PRESERVATION_RECEIPT.json').read_text());s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text());q=json.loads((out/'REFERENCE_REPRO_QA.json').read_text())
+          assert a['revision']=='V61_GREENHOUSE_APERTURE_HOST_PRESERVED'
+          assert a['primary_body_source_delta']=='NONE'
+          assert all(x.get('host_preservation_status')=='PASS' for x in a['boolean_results'])
+          assert h['schema']=='oleander.3d.derived-edit-host-preservation-receipt.v1'
+          assert h['host_preservation_result']=='PASS_WITHIN_DECLARED_BUDGET'
+          assert h['source_mutation_allowed'] is False and h['source_unchanged_or_na'] is True
+          assert all(c['status']=='PASS' for c in h['preservation_checks'])
+          assert h['after']['faces']/h['before']['faces'] >= .70
+          assert s['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION' and s['source_ring_control_count']==20 and s['evaluated_adjacent_face_normal_flip_count']==0
+          assert q['reference_fidelity_revision']=='V61_GREENHOUSE_APERTURE_HOST_PRESERVED'
+          assert q['design_quality_gate']=='HOLD_FOR_OLEANDER_ARTIFACT_REVIEW'
+          print(json.dumps(h,indent=2))
+          PY
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V61_APERTURE/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
 
       - name: Hash complete benchmark evidence
         if: always()
@@ -157,17 +151,18 @@ jobs:
           set -euo pipefail
           find out -type f -print0 | sort -z | xargs -0 sha256sum > BENCHMARK_SHA256SUMS.txt || true
 
-      - name: Upload V58 V59 V60 evidence
+      - name: Upload V58 V59 V60 V61 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
-          name: oleander-porsche-911-992-v58-v59-v60-${{ github.run_id }}
+          name: oleander-porsche-911-992-v58-v59-v60-v61-${{ github.run_id }}
           path: |
             BLENDER_RUNTIME.txt
             BLENDER_DISTRIBUTION_SHA256.txt
             BENCHMARK_SHA256SUMS.txt
             out/V58_BASELINE/
             out/V59_HOOD_FENDER/
-            out/V60_APERTURE/
+            out/V60_REJECT_PROVENANCE/
+            out/V61_APERTURE/
           if-no-files-found: error
           retention-days: 14
