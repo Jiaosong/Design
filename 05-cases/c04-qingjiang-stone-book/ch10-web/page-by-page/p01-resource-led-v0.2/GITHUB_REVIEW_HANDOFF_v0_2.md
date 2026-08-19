@@ -1,22 +1,17 @@
-# CH10-P01 v0.2 — Page-scoped GitHub / Independent Review Handoff
+# CH10-P01 v0.2 — Page-scoped GitHub Review Handoff
 
-Review scope: **P01 only**.
+Commit target must reconstruct HTML SHA256 `1f5a4cd295bfe2409a3ae10405c421474f3e07aac33b65722a0ded28864392c1`.
 
-Public proposition: `真实资源先拥有页面；内容只有在注意力允许时才出现。`
+Review **P01 only**.
 
-Required actual-pixel states:
-- LOOK — landscape owns the page.
-- OBSERVE — optional reading earns a bounded trace/prompt.
-- RECOVER — body/recovery resource takes priority.
-- PASS — reading disappears; body/route/return remain.
+Attack actual 1920×1080 and 390×844 pixels on:
+1. resource-first vs copy-first first read;
+2. Qingjiang specificity;
+3. relation strip = spatial relation resource vs decorative collage;
+4. RECOVER = body/recovery ownership vs pasted technical card;
+5. OBSERVE optional reading remains subordinate;
+6. PASS reads as intentional withdrawal;
+7. mobile hierarchy after redundant top labels were removed;
+8. whole-project resource uniqueness / repeated-source conflict.
 
-Review questions:
-1. Is the first read now unmistakably resource-led rather than copy-led?
-2. Does the composition read as Qingjiang-specific rather than a generic design-system diagram?
-3. Is the cable layer a spatial-relation resource, not decorative collage?
-4. Does the body/recovery resource meaningfully change ownership in RECOVER?
-5. Is the optional PAGE sufficiently subordinate in OBSERVE?
-6. Does mobile preserve hierarchy without becoming an overlay stack?
-7. Does reuse of already-current C04 resources create an integrated Web uniqueness conflict requiring a new source-bound P01 allocation?
-
-Return only: `KEEP / REVISE / REJECT / HOLD` + severity-ranked defects + root-cause layer + reviewer provenance.
+Runtime and CI do not imply Design PASS. Independent finished-pixel review must return attributable `KEEP / REVISE / REJECT / HOLD` + severity defects + root-cause layer.

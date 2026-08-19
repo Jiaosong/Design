@@ -1,34 +1,18 @@
 {
   "object": "C04_CH10_P01_RESOURCE_LED_v0_2",
   "status": "PAGE-SCOPED REVIEW TARGET / NO SELF-PASS",
+  "claim": "Real Qingjiang / relation / body resources own the page first; optional reading appears only when earned.",
   "authority": {
     "content": ["Notion CH08 v0.4 Master Design Strategy", "Notion CH10 v0.4 Reorganized Reading System"],
     "visual_reference": "CH14 Current only — palette/type/LINE/PAGE/TRACE"
   },
   "resources": [
-    {
-      "slot": "WHOLE_QINGJIANG",
-      "source_file": "CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png",
-      "drive_id": "1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv",
-      "derived_sha256": "ac7888db5bc74df78e0368bcef52787940d751fee110466d1ae82bf0346e1c3",
-      "transform": "crop/fit only"
-    },
-    {
-      "slot": "RELATION_CABLE",
-      "source_file": "01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png",
-      "drive_id": "18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l",
-      "derived_sha256": "8277658bcb11fa4d162a063774fea3e5a8179a7ab5d3ef891b2f2a8dc69c739d",
-      "transform": "crop/fit only"
-    },
-    {
-      "slot": "BODY_RECOVER",
-      "source_file": "14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png",
-      "drive_id": "1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq",
-      "derived_sha256": "bd9a266b5a87713e69af69a2936e5807b4376d8cb70706dd7df65589ed2e01d6",
-      "transform": "crop/fit only"
-    }
+    {"slot":"WHOLE_QINGJIANG","source_file":"CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png","drive_id":"1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv","derived_sha256":"ac7888db5bc74df78e0368bcef52787940d751fee110466d1ae82bf0346e1c3d","transform":"crop/fit only"},
+    {"slot":"RELATION_CABLE","source_file":"01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","drive_id":"18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l","derived_sha256":"8277658bcb11fa4d162a063774fea3e5a8179a7ab5d3ef891b2f2a8dc69c739d","transform":"crop/fit only"},
+    {"slot":"BODY_RECOVER","source_file":"14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png","drive_id":"1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq","derived_sha256":"90901f4b6a0ff16df4802d7d8ac2aa2c55ad9855974e6c095f0684131fb1968b","transform":"tighter crop/fit only; source copy reduced from visible crop"}
   ],
-  "canonical_html_sha256": "7f1dc2abb1dcdd91137e933a3fed1e0db4c0f99c50cef754c79834bfcc78d445",
-  "image_generation": "NOT USED",
-  "open_gates": ["AR-S09 durable binary retrieval", "whole-project Web image uniqueness", "independent finished-pixel review"]
+  "canonical_html":{"bytes":11430,"sha256":"1f5a4cd295bfe2409a3ae10405c421474f3e07aac33b65722a0ded28864392c1"},
+  "portable_html":{"bytes":782301,"sha256":"a4bbf1b489724f12cc169a723cded6cd238b6c4337c7f850f07876bd5e7d101a"},
+  "image_generation":"NOT USED",
+  "open_gates":["AR-S09 durable binary retrieval","whole-project Web image/resource uniqueness","independent finished-pixel Professional Design Review"]
 }
