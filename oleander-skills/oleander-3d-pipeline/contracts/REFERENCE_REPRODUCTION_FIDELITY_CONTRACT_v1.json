@@ -1,0 +1,86 @@
+{
+  "schema": "oleander.skill.3d-pipeline.reference-reproduction-fidelity.v1",
+  "version": "2026-08-17-v1",
+  "purpose": "Fail-closed reference reproduction gate separating machine execution from multi-view form fidelity.",
+  "gates": [
+    "REFERENCE_REVISION_LOCK",
+    "MULTI_VIEW_EVIDENCE",
+    "HARD_POINT_CONTRACT",
+    "SILHOUETTE_FIRST",
+    "LANDMARK_ERROR",
+    "MULTI_VIEW_FIDELITY",
+    "SURFACE_FLOW",
+    "IDENTITY_FEATURE_INTEGRATION",
+    "FAILURE_ROUTING",
+    "PROMOTION_BOUNDARY"
+  ],
+  "required_reference_fields": [
+    "reference_id",
+    "maker",
+    "product",
+    "variant",
+    "generation",
+    "model_year_or_revision",
+    "dimension_revision",
+    "visual_revision",
+    "dimension_sources",
+    "visual_sources",
+    "source_note"
+  ],
+  "view_minimum": {
+    "side": 1,
+    "front_or_front_3q": 1,
+    "rear_or_rear_3q": 1,
+    "plan_constraining": 1,
+    "identity_detail": 1
+  },
+  "thresholds": {
+    "official_hard_point_relative_error_max": 0.0025,
+    "axle_relative_error_max": 0.005,
+    "primary_landmark_normalized_error_max": 0.015,
+    "identity_landmark_normalized_error_max": 0.02,
+    "critical_landmark_normalized_error_max": 0.025
+  },
+  "required_landmarks": [
+    "FRONT_AXLE",
+    "REAR_AXLE",
+    "ROOF_APEX",
+    "A_PILLAR_BASE",
+    "C_PILLAR_BASE",
+    "FRONT_ARCH_APEX",
+    "REAR_ARCH_APEX",
+    "FRONT_EXTREME",
+    "REAR_EXTREME"
+  ],
+  "forbidden": [
+    "mixed_reference_revision_silent",
+    "micro_detail_before_silhouette_pass",
+    "per_view_geometry_cheat",
+    "beauty_render_as_fidelity_proof",
+    "logo_as_recognition_shortcut",
+    "floating_identity_detail_when_reference_is_surface_integrated",
+    "topology_pass_implies_fidelity",
+    "machine_pass_implies_reference_fidelity"
+  ],
+  "failure_codes": [
+    "FAIL_REFERENCE_REVISION_MIXED",
+    "INSUFFICIENT_REFERENCE_VIEW_COVERAGE",
+    "FAIL_HARD_POINT_CONTRACT",
+    "REVISE_PRIMARY_SILHOUETTE",
+    "FAIL_REFERENCE_LANDMARK_ERROR",
+    "FAIL_MULTI_VIEW_FIDELITY",
+    "REVISE_SURFACE_FLOW_AFTER_SILHOUETTE",
+    "REVISE_IDENTITY_FEATURE_INTEGRATION",
+    "REVISE_FAILURE_CAUSALITY_UNCLEAR"
+  ],
+  "does_not_prove": [
+    "manufacturer_source_CAD",
+    "Class-A_production_surfacing",
+    "engineering_release",
+    "tooling_feasibility",
+    "crash_or_aero_validation",
+    "homologation",
+    "production_CMF",
+    "commercial_IP_clearance"
+  ]
+}

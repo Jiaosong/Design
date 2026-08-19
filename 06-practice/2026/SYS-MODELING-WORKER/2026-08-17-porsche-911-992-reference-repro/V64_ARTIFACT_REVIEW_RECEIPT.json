@@ -1,0 +1,50 @@
+{
+  "schema": "oleander.artifact-review.3d-preliminary-crit.v1",
+  "review_system": "OLEANDER Artifact Review System v1.1",
+  "artifact_revision": "V64_SPARSE_REAR_UPPER_TAPER_RELATION",
+  "benchmark_runtime_run": 32275586983,
+  "artifact_digest": "sha256:ed4198d9a68837843f12dfb7b34e722b00e7413b0abd20f7f8372f92f5fd516f",
+  "actual_previews_reviewed": [
+    "REAR_ORTHO",
+    "HERO_REAR_3Q",
+    "SIDE_ORTHO",
+    "HERO_FRONT_3Q"
+  ],
+  "reference_evidence_reviewed": [
+    "REAR_9922.jpg",
+    "SIDE_9922.jpg",
+    "REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json"
+  ],
+  "machine_evidence": {
+    "source_ring_controls": 20,
+    "evaluated_triangles": 17520,
+    "folds": 0,
+    "side_rmse_m": 0.013857890932342255,
+    "front_body_only_rmse": 0.15027779710716418,
+    "rear_body_only_rmse_before": 0.17242950469411836,
+    "rear_body_only_rmse_after": 0.07731869503709972,
+    "regression_locks": "PASS"
+  },
+  "compliance_gate": "MACHINE_EVIDENCE_VALID_FOR_DECLARED_EXPERIMENT_SCOPE",
+  "professional_design_gate": "REJECT",
+  "verdict": "REJECT_EXPERIMENT_KEEP_EVIDENCE",
+  "root_cause": "RELATION_OWNERSHIP_WRONG_FOR_VISIBLE_REAR_ARCHITECTURE",
+  "actual_preview_findings": [
+    "The rear width-by-height metric improves substantially, but the upper rear is pinched into two longitudinal ridges rather than a coherent 992.2 greenhouse-to-haunch transition.",
+    "The C-pillar / roof / rear-haunch relationship remains structurally unresolved because the current greenhouse is still a proxy/HOLD layer; shrinking primary-body transverse rails tries to solve an aperture/greenhouse ownership problem in the wrong representation layer.",
+    "The rear first-read remains generic/toy and does not match the same-revision reference despite the improved rear profile metric.",
+    "No amount of additional local taper tuning on V64 is authorized; rollback remains V59 for primary body while greenhouse/aperture representation is resolved separately."
+  ],
+  "failure_route": "ROLLBACK_V59_PRIMARY_BODY__RESOLVE_GREENHOUSE_APERTURE_RELATION_OWNER_BEFORE_REAR_TAPER_RETRY",
+  "promotion": false,
+  "does_not_prove": [
+    "independent Design PASS",
+    "reference fidelity",
+    "Class-A continuity",
+    "manufacturer CAD",
+    "production aperture architecture",
+    "engineering validity",
+    "manufacturing readiness",
+    "MAIN KEEP"
+  ]
+}

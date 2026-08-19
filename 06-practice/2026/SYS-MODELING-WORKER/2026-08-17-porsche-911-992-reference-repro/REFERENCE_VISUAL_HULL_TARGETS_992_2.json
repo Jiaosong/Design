@@ -1,0 +1,31 @@
+{
+  "schema": "oleander.reference-visual-hull.porsche-911-992-2.v1",
+  "reference_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_MULTI_VIEW_IMAGE_CALIBRATION_NOT_MANUFACTURER_CAD",
+  "side": {
+    "source_asset": "SIDE_9922.jpg",
+    "image_size_px": [1200, 800],
+    "method": "Main white vehicle-body connected component in a bounded vehicle ROI; X calibrated from rear/front wheel centers to official 2.450 m wheelbase; Z calibrated from roof apex to official 1.298 m height with road contact as provisional zero. Samples are median top-body pixels around each requested X station. Dark bumper endpoints are source-grounded manual boundary estimates where the white connected component does not reach the official length extreme.",
+    "calibration": {
+      "rear_wheel_center_px": [340.5730, 491.1951],
+      "front_wheel_center_px": [898.2873, 485.9494],
+      "wheelbase_m": 2.450,
+      "x_pixels_per_m": 227.6385,
+      "x_origin_px_at_vehicle_x0": 612.6010,
+      "roof_apex_y_px": 285.0,
+      "provisional_ground_y_px": 575.0,
+      "z_pixels_per_m": 223.4206
+    },
+    "top_silhouette_m": [
+      [-2.271,0.480],[-2.100,0.734],[-1.900,0.886],[-1.700,0.940],[-1.500,1.020],[-1.300,1.088],[-1.195,1.119],[-1.050,1.159],[-0.900,1.200],[-0.750,1.244],[-0.600,1.267],[-0.450,1.285],[-0.300,1.298],[-0.150,1.298],[0.000,1.289],[0.150,1.262],[0.300,1.173],[0.450,1.029],[0.600,1.029],[0.720,0.967],[0.850,0.904],[1.000,0.913],[1.255,0.886],[1.450,0.868],[1.650,0.783],[1.850,0.712],[2.050,0.618],[2.271,0.455]
+    ],
+    "confidence": "MEDIUM_HIGH_FOR_GROSS_SIDE_SILHOUETTE",
+    "known_bias": ["road contact and vertical scale are image-calibrated, not surveyed", "front/rear endpoint body includes dark trim not captured by the white connected component", "source image is photographic, not engineering orthographic"]
+  },
+  "front_rear_profile_source": "REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json",
+  "hard_points": {"length_m":4.542,"width_m":1.852,"height_m":1.298,"wheelbase_m":2.450,"front_axle_x_m":1.255,"rear_axle_x_m":-1.195},
+  "allowed_transfer_scope": ["gross visual hull", "side top envelope", "front/rear projected width-by-height envelope", "roof/body taper", "fender/shoulder gross mass"],
+  "forbidden_transfer_scope": ["manufacturer CAD", "exact hidden section geometry", "Class-A curvature", "production patch layout", "tooling", "homologation"],
+  "gates": {"side_upper_rmse_max_m":0.035,"front_profile_rmse_max":0.10,"rear_profile_rmse_max":0.11,"independent_visual_review_required":true},
+  "does_not_prove": ["manufacturer CAD","orthographic engineering section","Class-A continuity","production patch layout","manufacturing feasibility","homologation"]
+}

@@ -1,0 +1,33 @@
+{
+  "schema":"oleander.skill.3d-pipeline.reference-ground-truth-priority.v1",
+  "version":"2026-08-17-v1",
+  "purpose":"Prevent self-estimated controls and self-measured candidate landmarks from becoming the effective reference authority in an existing-object reproduction task.",
+  "reference_evidence_order":[
+    "MANUFACTURER_SOURCE_GEOMETRY_OR_OFFICIAL_ORTHOGRAPHIC",
+    "LICENSED_OR_CC_REFERENCE_GEOMETRY_SAME_GENERATION",
+    "CALIBRATED_NEAR_ORTHOGRAPHIC_IMAGE_SAME_REVISION",
+    "PERSPECTIVE_IMAGE_SAME_REVISION",
+    "ADJACENT_REVISION_SUPPORT",
+    "DESIGNER_ESTIMATE"
+  ],
+  "rules":[
+    "candidate Source may never become its own target authority",
+    "designer estimates can constrain an iteration but cannot establish final Reference Fidelity PASS",
+    "same-generation licensed reference geometry may control primary body/greenhouse proportions while exact-revision imagery controls changed fascia/details",
+    "ground-truth geometry is READ_ONLY_REFERENCE and never promoted to project Source Authority",
+    "if downloadable ground-truth is unavailable, record that limitation and use independently measured multi-view image targets",
+    "a reference target and candidate measurement must have different provenance"
+  ],
+  "required_final_evidence":[
+    "at least one non-designer primary-form reference",
+    "same-revision visual evidence for identity-bearing changed features",
+    "multi-view comparison on the same candidate Source digest"
+  ],
+  "forbidden":[
+    "target_equals_candidate_by_construction",
+    "designer_estimate_only_final_fidelity_pass",
+    "copyright_or_NoAI_restricted_geometry_used as generative input contrary to its terms",
+    "reference geometry replacing editable Source Authority"
+  ],
+  "failure_codes":["FAIL_REFERENCE_AUTHORITY_SELF_CLOSED_LOOP","HOLD_GROUND_TRUTH_INSUFFICIENT"]
+}

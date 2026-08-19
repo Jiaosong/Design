@@ -1,0 +1,199 @@
+name: OLEANDER 3D Skill Porsche 911 992 Reference Reproduction
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-skill-porsche-911-992-reference-repro.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/**'
+      - 'oleander-skills/oleander-3d-pipeline/**'
+      - '00-governance/control-plane/tests/test_oleander_3d_*.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  porsche-911-992-reference-repro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+
+      - name: Validate benchmark scripts and 3D contracts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v59.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v60.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v61.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v62.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v63.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py
+          python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee "$GITHUB_WORKSPACE/BLENDER_RUNTIME.txt"
+          sha256sum /tmp/blender.tar.xz > "$GITHUB_WORKSPACE/BLENDER_DISTRIBUTION_SHA256.txt"
+
+      - name: Execute V58 no-fold baseline
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V58_BASELINE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py "$OUT/PRIMARY_BODY_SURFACE_RECEIPT_V2.json"
+
+      - name: Execute V59 sparse hood-fender LKG experiment
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V59_HOOD_FENDER"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v59.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V59_HOOD_FENDER')
+          s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
+          p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
+          r=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
+          assert s['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
+          assert s['source_ring_control_count']==20 and s['evaluated_adjacent_face_normal_flip_count']==0
+          assert p['source_edit_scope']=='FRONT_HOOD_FENDER_RELATION_ONLY'
+          assert r['edit_scope']==['FRONT_HOOD_FENDER_RELATION_ONLY']
+          PY
+
+      - name: Execute V60 destructive Boolean negative benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V60_REJECT_PROVENANCE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v60.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V60_REJECT_PROVENANCE')
+          a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text())
+          last=a['boolean_results'][-1];ratio=last['after_faces']/last['before_faces']
+          assert ratio < .70, (ratio,last)
+          (out/'V60_EXPECTED_FAILURE.json').write_text(json.dumps({
+            'schema':'oleander.3d.expected-negative-benchmark.v1',
+            'revision':'V60_GREENHOUSE_APERTURE_OWNERSHIP',
+            'expected_failure':'DESTRUCTIVE_DERIVED_EDIT_HOST_PRESERVATION_NOT_GATED',
+            'rear_glass_face_retention_ratio':ratio,
+            'execution':'PASS','design':'REJECT',
+            'does_not_prove':['successful aperture architecture','Design KEEP']
+          },indent=2)+'\n')
+          PY
+
+      - name: Probe V61 guarded Boolean route without conflating it with CI health
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V61_GUARDED_BOOLEAN"; mkdir -p "$OUT"
+          set +e
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v61.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          RC=$?
+          set -e
+          printf '%s\n' "$RC" > "$OUT/PROCESS_EXIT_CODE.txt"
+          python3 - <<PY
+          import json
+          from pathlib import Path
+          out=Path('out/V61_GUARDED_BOOLEAN'); rc=int('$RC')
+          state='PASS_EXECUTED' if rc==0 else 'FAIL_EXECUTION_OR_GUARD_PIPELINE'
+          (out/'V61_EXECUTION_CLASSIFICATION.json').write_text(json.dumps({
+            'schema':'oleander.3d.benchmark-execution-classification.v1',
+            'revision':'V61_GREENHOUSE_APERTURE_HOST_PRESERVED',
+            'process_exit_code':rc,
+            'execution_result':state,
+            'promotion':'NONE',
+            'does_not_prove':['host preservation pass','aperture quality','reference fidelity','Design KEEP']
+          },indent=2)+'\n')
+          PY
+
+      - name: Execute V63 aperture preflight and persist diagnostic stdout
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V63_APERTURE_PREFLIGHT"; mkdir -p "$OUT"
+          set +e
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v63.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640 \
+            >"$OUT/BLENDER_STDOUT.log" 2>&1
+          RC=$?
+          set -e
+          printf '%s\n' "$RC" > "$OUT/PROCESS_EXIT_CODE.txt"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          python3 - <<PY
+          import json
+          from pathlib import Path
+          out=Path('out/V63_APERTURE_PREFLIGHT'); rc=int('$RC')
+          pre=out/'DESTRUCTIVE_EDIT_PREFLIGHT_RECEIPT.json'
+          data=json.loads(pre.read_text()) if pre.exists() else None
+          classification={
+            'schema':'oleander.3d.benchmark-execution-classification.v1',
+            'revision':'V63_GREENHOUSE_TOPOLOGY_PREFLIGHT',
+            'process_exit_code':rc,
+            'preflight_receipt_present':pre.exists(),
+            'preflight_result':data.get('preflight_result') if data else 'MISSING',
+            'destructive_edit_executed':data.get('destructive_edit_executed') if data else False,
+            'execution_result':'PASS_OR_CLASSIFIED_NEGATIVE' if pre.exists() else 'FAIL_BEFORE_PREFLIGHT_RECEIPT',
+            'promotion':'NONE',
+            'does_not_prove':['aperture quality','reference fidelity','Design KEEP']
+          }
+          (out/'V63_EXECUTION_CLASSIFICATION.json').write_text(json.dumps(classification,indent=2)+'\n')
+          if not pre.exists():
+            print((out/'BLENDER_STDOUT.log').read_text(errors='replace')[-6000:])
+            raise SystemExit('FAIL_V63_NO_PREFLIGHT_RECEIPT')
+          print(json.dumps({'classification':classification,'preflight':data},indent=2))
+          PY
+
+      - name: Verify V63 only when destructive preflight allowed execution
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V63_APERTURE_PREFLIGHT')
+          pre=json.loads((out/'DESTRUCTIVE_EDIT_PREFLIGHT_RECEIPT.json').read_text())
+          if pre['preflight_result']=='PASS_DESTRUCTIVE_EDIT_ALLOWED':
+              h=out/'DERIVED_EDIT_HOST_PRESERVATION_RECEIPT.json'
+              a=out/'APERTURE_INTERFACE_RECEIPT.json'
+              assert h.exists() and a.exists(), 'preflight allowed edit but post-edit receipts missing'
+              hd=json.loads(h.read_text()); ad=json.loads(a.read_text())
+              assert hd['host_preservation_result']=='PASS_WITHIN_DECLARED_BUDGET'
+              assert ad['face_retention_ratio']>=.70 and min(ad['bounds_retention_ratio_xyz'])>=.95
+          else:
+              assert pre['destructive_edit_executed'] is False
+              assert pre['missing_owner_masks'] or pre['predicted_face_retention_ratio'] < .70
+          PY
+
+      - name: Hash complete benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > BENCHMARK_SHA256SUMS.txt || true
+
+      - name: Upload V58-V63 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-porsche-911-992-v58-v63-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BLENDER_DISTRIBUTION_SHA256.txt
+            BENCHMARK_SHA256SUMS.txt
+            out/
+          if-no-files-found: error
+          retention-days: 14

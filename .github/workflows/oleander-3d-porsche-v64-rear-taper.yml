@@ -1,0 +1,78 @@
+name: OLEANDER 3D Porsche V64 Rear Taper
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-porsche-v64-rear-taper.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v64.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  v64-rear-taper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Compile V64
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v64.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Execute V64
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V64_REAR_TAPER"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v64.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+      - name: Classify V64 causal experiment
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V64_REAR_TAPER')
+          s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
+          p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
+          r=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
+          m={x['id']:x for x in p['metrics']}
+          assert s['revision']=='V64_SPARSE_REAR_UPPER_TAPER_RELATION'
+          assert s['source_ring_control_count']==20
+          assert p['source_edit_scope']=='REAR_UPPER_TAPER_RELATION_ONLY'
+          assert r['edit_scope']==['REAR_UPPER_TAPER_RELATION_ONLY']
+          summary={
+            'schema':'oleander.3d.porsche-v64-rear-taper-summary.v1',
+            'candidate':'V64_SPARSE_REAR_UPPER_TAPER_RELATION',
+            'source_controls':s['source_ring_control_count'],
+            'folds':s['evaluated_adjacent_face_normal_flip_count'],
+            'side_rmse':m['SIDE_UPPER_EVALUATED_MESH_RMSE_M']['candidate'],
+            'front_body_only_rmse':m['FRONT_BODY_ONLY_PROFILE_RMSE']['candidate'],
+            'rear_body_only_rmse':m['REAR_BODY_ONLY_PROFILE_RMSE']['candidate'],
+            'rear_baseline_rmse':0.17242950469411836,
+            'rear_delta':m['REAR_BODY_ONLY_PROFILE_RMSE']['candidate']-0.17242950469411836,
+            'promotion_decision':r['promotion_decision'],
+            'surface_state':s['machine_surface_state'],
+            'visual_review':'HOLD_ACTUAL_PREVIEW_REQUIRED',
+            'does_not_prove':['reference fidelity','Design KEEP','Class-A continuity']
+          }
+          (out/'V64_EXPERIMENT_SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+      - name: Upload V64 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-porsche-v64-rear-taper-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            out/V64_REAR_TAPER/
+          if-no-files-found: error
+          retention-days: 14
