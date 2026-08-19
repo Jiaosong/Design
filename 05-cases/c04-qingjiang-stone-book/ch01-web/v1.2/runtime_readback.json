@@ -1,0 +1,22 @@
+{
+  "results": {
+    "desktop": [
+      {"id":"CH01-P01","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080},
+      {"id":"CH01-P02","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080},
+      {"id":"CH01-P03","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080},
+      {"id":"CH01-P04","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080},
+      {"id":"CH01-P05","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080},
+      {"id":"CH01-P06","overflow":false,"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080}
+    ],
+    "mobile": [
+      {"id":"CH01-P01","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844},
+      {"id":"CH01-P02","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844},
+      {"id":"CH01-P03","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844},
+      {"id":"CH01-P04","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844},
+      {"id":"CH01-P05","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844},
+      {"id":"CH01-P06","overflow":false,"scrollWidth":390,"clientWidth":390,"scrollHeight":844,"clientHeight":844}
+    ]
+  },
+  "errors": [],
+  "summary": {"desktop":"6/6","mobile":"6/6","error_count":0,"raster_content_images":0}
+}
