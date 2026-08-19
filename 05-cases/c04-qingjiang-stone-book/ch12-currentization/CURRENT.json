@@ -1,23 +1,32 @@
 {
   "project": "PRJ-C04-QINGJIANG-SHISHU",
   "chapter": "CH12",
-  "current_version": "v0.4",
-  "current_role": "SELECTED_SCENE_PROOF",
-  "current_path": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_KEY-SCENE-DESIGN_v0_4.md",
-  "scene_register": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_SCENE_REGISTER_v0_4.csv",
-  "asset_bindings": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_ASSET_BINDINGS_v0_4.json",
-  "owner_receipt": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/OWNER_RECEIPT_CH12_v0_4.json",
+  "current_version": "v0.5",
+  "current_role": "PROJECT_UNIQUE_INDIVIDUAL_SCENE_PAGES",
+  "current_path": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.5/CH12_KEY-SCENE-DESIGN_v0_5.md",
+  "page_register": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.5/CH12_PAGE_REGISTER_v0_5.csv",
+  "image_use_ledger": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.5/CH12_IMAGE_USE_LEDGER_v0_5.json",
+  "owner_receipt": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.5/OWNER_RECEIPT_CH12_v0_5.json",
+  "readback": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.5/CH12_v0_5_READBACK.md",
+  "previous_current": "v0.4 Selected Scene Proof / provenance / do not delete",
   "authoring_unit_count": 9,
+  "standalone_editable_svg_count": 9,
+  "raster_content_image_sources_embedded": 0,
   "canonical_page_ids_allocated": false,
   "selected_scenes": ["SC-R01", "SC-R05", "SC-R06", "SC-ROUTE-DECISION", "SC-R13"],
+  "image_uniqueness": {
+    "rule": "one underlying content-image source = one semantic Web image slot across complete project Web",
+    "ch12_v0_5_duplicate_content_source_count": 0,
+    "final_project_wide_pass": "PENDING COMPLETE WEB IMAGE LEDGER"
+  },
   "locks": {
     "route": "ROUTE-03 LOCKED CURRENT",
     "r06": "FINISHED / FROZEN / NO REOPEN",
     "r01": "MOVING STIMULUS HOLD",
-    "r05": "LANDSCAPE PIXEL HOLD",
-    "route_decision": "LOCATION OPEN",
+    "r05": "LANDSCAPE PIXEL HOLD / CH01 SOURCE NOT REUSED",
+    "route_decision": "LOCATION OPEN / NOT ROUTE GEOMETRY",
     "r13": "REMOTE CONCEPT / FIELD + SAFETY OPEN"
   },
-  "review": "AUTHORING PIXEL READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "review": "MACHINE READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
   "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NTS / NOT FOR CONSTRUCTION"
 }
