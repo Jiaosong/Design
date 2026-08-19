@@ -1,0 +1,26 @@
+{
+  "version": "v0.4",
+  "role": "CH10 content/interaction authority downstream of CH03/04/05/06/07/08 and upstream of CH11",
+  "master_grammar": ["ENCOUNTER","ORIENT","OBSERVE","OPTIONAL_PROMPT","OPTIONAL_REVEAL","WITHDRAW_OR_CONTINUE","REMEMBER"],
+  "priority_order": ["REAL_QINGJIANG_BODY_ROUTE","CURRENT_DECISION_SERVICE_RETURN","OPTIONAL_OBSERVATION_READING","SUPPORT_WHEN_EARNED","BRAND_TRACE","MEMORY_AFTER_RETURN"],
+  "reading_modes": {
+    "QUICK": {"goal":"low attention / group / time pressure","default":"Core subset 4–5, S0/S1 only","screen":"minimal"},
+    "DEEP": {"goal":"voluntary interpretation","default":"Core 8 + optional companions","screen":"S2/DEEP allowed"},
+    "FAMILY": {"goal":"shared discovery","default":"shape/scale/distance/name through shared actions","screen":"no childish task universe"},
+    "LOW_STAMINA": {"goal":"preserve journey and return","default":"RECOVER → ORIENT → CONTINUE/RETURN → OPTIONAL CONTENT","screen":"content yields first"}
+  },
+  "operational_behavior": {
+    "NORMAL":"content may use its allowed depth",
+    "DEGRADED":"reduce load / shorten prompt / preserve route + return",
+    "CLOSED":"content OFF; route/service/return only",
+    "UNKNOWN":"fail closed; do not imply availability"
+  },
+  "prompt_media_gate": {
+    "rule":"Every noun, relation and action demanded by a prompt must be directly perceivable or explicitly marked inference/unknown.",
+    "invalid_repairs":["overlay implying absent evidence","arrow/glow manufacturing relation","generic landscape substituted for site evidence","responsive crop removing required object"]
+  },
+  "intervention_ladder":["NO_INTERVENTION","DIGITAL_OR_PRINT_ONLY","EXISTING_SURFACE_MARK","REVERSIBLE_LIGHT_TOUCH","PHYSICAL_INSTALLATION"],
+  "failure_recovery":["DETECT","INFORM","REDUCE_LOAD","RECOVER_OR_SAFE_ALTERNATIVE","RETURN_OR_HUMAN_HELP","RECORD_OPEN_ITEM"],
+  "no_completion":["NO_13_13","NO_UNLOCK","NO_MISSED_WARNING","NO_REWARD","NO_FORCED_ORDER"],
+  "memory_rule":"Trip output is the subset actually noticed; unread/closed pages remain blank rather than failed."
+}
