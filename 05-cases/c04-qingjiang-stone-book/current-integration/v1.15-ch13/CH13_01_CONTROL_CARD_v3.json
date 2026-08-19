@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.2",
+  "object": {
+    "name": "CH13-01 Physical Strategy Web Surface v3",
+    "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+    "project_level": null,
+    "case_id": "C04",
+    "knowledge_position": "L5 / Professional Design Production",
+    "application_mapping": [],
+    "priority": "Priority-0"
+  },
+  "mode": "CANDIDATE",
+  "decision_question": "Can CH13-P01 communicate the intervention threshold with one C04-specific physical/body primary visual while preserving source hierarchy, product geometry, body meaning, CH14 visual grammar, and field boundaries?",
+  "problem_layer": "Relation",
+  "authority_source": {
+    "state": "WORKING_SOURCE",
+    "object_id": "F01_CURRENTIZED_PHYSICAL_RECOVERY",
+    "source_id": "ODB-02",
+    "location": "Drive 05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png; upstream identity = 可拆卸倚靠休息板.png",
+    "sha256": "4a082ca4d124ceadb82af3a30af6f80c658a4a756735eb482459af89aba78ae5",
+    "source_hierarchy": "ODB-02 USER ORIGINAL DESIGN SOURCE -> F01 CURRENTIZED DESCENDANT -> CH13-01 PRESENTATION CARRIER"
+  },
+  "locked_variables": [
+    "CH13-P01 role = Physical Strategy / intervention threshold",
+    "Intervention gradient = LEVEL0 EXISTING -> LEVEL1 SUPPORT -> LEVEL2 SENSORY FEEDBACK -> LEVEL3 SPATIAL INTERVENTION",
+    "P02 lineage = KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED",
+    "F01 is a descendant/support carrier and does not replace ODB-02 design-source authority",
+    "No product geometry mutation by layout",
+    "CH14 grammar = CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / functional readability > brand decoration",
+    "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+    "No AI image generation"
+  ],
+  "open_variables": [
+    "Final PAGE-ID mapping",
+    "Independent finished-pixel verdict",
+    "Exact site location",
+    "Field dimensions and engineering verification",
+    "Whether ODB-02 raw source pixels can later replace/augment the F01 descendant carrier"
+  ],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "visual_cmf",
+  "claim_types": ["physical", "field"],
+  "evidence_state": {
+    "source_identity": "PASS",
+    "source_bytes_F01": "PASS",
+    "source_bytes_ODB02": "BLOCKED",
+    "browser_render": "PASS",
+    "responsive_reflow": "PASS",
+    "field": "OPEN",
+    "independent_professional_design_review": "NOT_RUN"
+  },
+  "next_allowed_action": "Run independent professional finished-pixel design review; do not expose as approved result before that verdict.",
+  "sync_persistence_trigger": "RECEIPT",
+  "review_history": [
+    {
+      "decision_question": "Can CH13-P01 communicate the intervention threshold with one C04-specific physical/body primary visual while preserving source hierarchy, product geometry, body meaning, CH14 visual grammar, and field boundaries?",
+      "problem_layer": "Relation",
+      "visual_result": "REJECT",
+      "project_result": "REVISE",
+      "timestamp": "2026-08-19T13:10:00+08:00"
+    }
+  ]
+}
