@@ -31,6 +31,8 @@ Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spa
    - XLSX with source/clean/data-dictionary sheets when a table is part of delivery.
 7. Validate totals, axes, labels, legends, frame order, map CRS, and export dimensions.
 
+For landscape/site/terrain/hydrology/slope/aspect/environmental-analysis drawings, also resolve `LANDSCAPE_GIS_ANALYSIS_BINDING.md` before rendering or styling. It is a binding extension of this Skill, not a separate method or parallel Skill.
+
 ## Spatial authority preservation
 
 Apply this gate to maps, routes, plans, sections, diagrams, spatial networks, site geometry, model projections, product geometry, technical nodes, and any other graphic where shape or relative position carries project meaning.
@@ -50,6 +52,35 @@ For source-bound spatial graphics, record:
 - any subset/mask/crop operation;
 - any transform and whether it is uniform;
 - what the graphic supports and what it does not prove.
+
+## Landscape GIS analysis drawing gate
+
+Apply this gate when GIS or spatial analysis must become a landscape-architecture / architecture / competition / portfolio analytical drawing rather than a raw GIS export or dashboard.
+
+1. **Separate precision types before design.** Record `SOURCE PRECISION / ANALYTICAL PRECISION / GRAPHIC-READABILITY PRECISION`. Resampling, smoothing, contour generation, hillshade, blur, texture, glow, upscaling or higher export resolution never upgrades source precision.
+2. **Route upstream when precision is insufficient.** If the spatial claim needs more detail than the current DEM/raster/vector/sample authority can support, stop graphic polishing and acquire/materialize a finer real source. Do not manufacture certainty with interpolation.
+3. **Continuous terrain owns terrain questions.** For terrain, valley, ridge, slope or drainage analysis, first-read structure should normally be relief/contours/ridge-valley/water, followed by the analytical overlay. Contours are structural geometry, not decorative texture; hillshade must reveal form rather than soften it.
+4. **Raw grid is evidence, not automatically MAIN grammar.** Preserve cells/sample points for audit, source inset or QC, but do not let a coarse grid dominate the main drawing when the analytical question is better represented by terrain, thresholds, flow hierarchy, sections or locked small multiples. Never smooth the grid into false geometry.
+5. **One analytical variable owns each panel.** Prefer terrain / slope / aspect / flow direction / accumulation / catchment / land cover / water history / solar / synthesis as distinct panels or figures. For comparisons, lock extent, scale, north, base geometry and relevant visual domain.
+6. **Hydrology reads as hierarchy.** Where the derivation supports it, communicate surface → direction → convergence → accumulation hierarchy → catchment/subcatchment. Sampled D8 convergence must not be presented as surveyed drainage, hydraulic capacity or flood path.
+7. **Couple plan and section when vertical relation matters.** Show the section cut on plan, use the same source authority, disclose exaggeration, and maintain position correspondence. A generic side-panel sparkline does not substitute for a mapped terrain section.
+8. **Use master-field + support rhythm.** One dominant terrain/masterplan/spatial field may occupy roughly 60–75% when the argument has a clear primary object. Supporting maps, sections, statistics, typologies and numbered image/render insets remain subordinate and spatially linked to the main field.
+9. **Professional richness comes from line, density, object specificity and annotation.** Use contour hierarchy, crisp hydrography, source-grounded vegetation/object fields, exact callouts, sections, direct labels and near-read technical annotation. Do not simulate richness with blur, generic texture, glow, washed transparency or a wall of equal cards.
+10. **Project style is secondary to cartography.** Palette, paper tone, ink/water language, material texture and accent color may bind the figure to a project identity, but must never blur contour, hydrography, labels, route/state meaning or evidence boundaries. `STYLE BINDS TO CARTOGRAPHY; CARTOGRAPHY DOES NOT DISSOLVE INTO STYLE.`
+11. **Bridge analysis to consequence without collapsing truth states.** Use `EVIDENCE → SPATIAL FINDING → DESIGN / FIELD CONSEQUENCE`; keep source/derived evidence visually distinct from decisions. Preserve `HOLD / UNKNOWN / FIELD OPEN` slots rather than filling missing layers with decorative proxies.
+12. **Review both distance and detail.** At far-read the viewer should see landform + one analytical claim; at near-read the viewer should inspect values, methods, annotations and source limits. Run grayscale, 50%/target-size, plan–section consistency, hydrology-semantics, source-precision and style-removal checks before promotion.
+
+Hard failures:
+- smooth/high-resolution-looking output is called higher-precision GIS while the source authority did not improve;
+- raw coarse cells dominate MAIN solely because they are the source format;
+- terrain/hydrology is made vague by blur, glow, paper texture or atmospheric effects;
+- all analytical variables compete on one map at equal weight;
+- plan and section do not correspond;
+- sampled convergence is drawn as real drainage/flood infrastructure;
+- design consequences visually masquerade as observed/source facts;
+- missing evidence is replaced by proxy graphics.
+
+Detailed implementation and review rules live in `LANDSCAPE_GIS_ANALYSIS_BINDING.md` and `VISUAL_LAYER_BINDING.md`.
 
 ## Operational route-state semantics gate
 
@@ -82,6 +113,8 @@ Return the visualization, cleaned dataset, data dictionary, transformation note,
 
 For source-bound spatial work, also return a geometry-authority note identifying the current source/locked object, the preservation operation, and any geometry regression check performed.
 
+For landscape/site GIS analysis drawings, additionally return a precision note separating source precision from derived/display precision, and include mapped section authority when sections are part of the argument.
+
 ## Quality checks
 
 - Reconcile displayed values with the cleaned table.
@@ -92,3 +125,4 @@ For source-bound spatial work, also return a geometry-authority note identifying
 - For source-bound spatial work, verify that locked geometry/topology has not been materially distorted, re-authored, or replaced by a presentation-driven approximation.
 - Treat non-uniform geometry distortion as a blocker unless the object is explicitly schematic and labelled presentation-only.
 - Compare against the strongest mature existing spatial artifact before promoting a redesign; visual polish cannot override a spatial-authority regression.
+- For landscape/site GIS analysis, verify the source-precision ceiling, terrain-first hierarchy, raw-grid role, one-variable-per-panel logic, hydrology semantics, plan–section correspondence, master-vs-support rhythm, near-read technical density, and style-removal robustness.
