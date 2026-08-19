@@ -15,16 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate V54 carrier-congruence diagnostic
+      - name: Validate V55 causal surface repair
         run: |
           set -euo pipefail
           python3 -m py_compile \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v51.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v52.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v53.py \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v54.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v55.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py \
-            oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py
+            oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py \
+            oleander-skills/oleander-3d-pipeline/tools/validate_surface_fold_diagnostic.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -33,17 +31,17 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build unchanged V51 geometry with V54 carrier evidence
+      - name: Build V55 repaired primary surface
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v54.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v55.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py "$OUT"
-          END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           test ! -e "$OUT/FINAL_DERIVED_SURFACE_RECEIPT.json"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify carrier comparison is explicit
+      - name: Verify V55 fold repair without design self-promotion
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -51,18 +49,20 @@ jobs:
           from pathlib import Path
           out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
           p=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
+          s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT.json').read_text())
           fd=json.loads((out/'SURFACE_FOLD_DIAGNOSTIC.json').read_text())
           i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text())
-          cc=p['profile_carrier_congruence']
-          assert p['candidate_revision']=='V51_FRONT_TRANSVERSE_IDENTITY_REPAIR'
-          assert p['carrier_evidence_revision']=='V54_CLAIM_CARRIER_CONGRUENCE'
-          assert p['geometry_revision_unchanged']=='V51_FRONT_TRANSVERSE_IDENTITY_REPAIR'
-          assert cc['status']=='CONGRUENT_FOR_GROSS_SILHOUETTE_SCREEN_ONLY'
-          assert 'front_rmse' in cc['body_only_preserved'] and 'front_rmse' in cc['whole_visible_proxy']
-          assert fd['evidence_revision']=='V53_SURFACE_FOLD_LOCALIZATION'
-          assert i['machine_identity_state']=='MACHINE_REJECT'
-          print(json.dumps({'projection':p['status'],'body_only':cc['body_only_preserved'],'whole_visible_proxy':cc['whole_visible_proxy'],'missing_proxy_members':cc['missing_optional_proxy_members'],'fold_count':fd['fold_count']},indent=2))
+          sem=p['front_identity_metrics']
+          assert p['candidate_revision']=='V55_CAUSAL_BLEND_ORDERED_SURFACE_REPAIR'
+          assert p['source_edit_scope']=='CABIN_BLEND_AND_LOWER_RETURN_AND_TERMINAL_ORDER_ONLY'
+          assert fd['candidate_revision']=='V55_CAUSAL_BLEND_ORDERED_SURFACE_REPAIR'
+          assert fd['fold_count']==s['body_adjacent_face_normal_flip_count']
+          assert s['body_ring_vertices']>=30
+          assert sem['semantic_relation_state'] in ('SCREENED','FAIL')
+          assert i['machine_identity_state'] in ('MACHINE_SCREENED_VISUAL_HOLD','MACHINE_REJECT')
+          print(json.dumps({'projection':p['status'],'surface':s['machine_surface_state'],'fold_count':fd['fold_count'],'hood_fender':sem['semantic_relation_state'],'hood_fender_delta_m':sem.get('mean_fender_crown_minus_hood_m'),'metrics':{m['id']:m['candidate'] for m in p['metrics']},'identity':i['machine_identity_state']},indent=2))
           PY
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_surface_fold_diagnostic.py out/OLEANDER_Porsche_911_992_Reference_Repro/SURFACE_FOLD_DIAGNOSTIC.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_form_identity.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_FORM_IDENTITY_RECEIPT.json
       - name: Upload evidence
         if: always()
