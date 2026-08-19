@@ -1,0 +1,22 @@
+{
+  "desktop": {
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "scrollHeight": 1080,
+    "clientHeight": 1080,
+    "brokenImages": 0,
+    "imageNatural": [[1080,608]],
+    "errors": [],
+    "horizontalOverflow": 0
+  },
+  "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 1302,
+    "clientHeight": 844,
+    "brokenImages": 0,
+    "imageNatural": [[1080,608]],
+    "errors": [],
+    "horizontalOverflow": 0
+  }
+}
