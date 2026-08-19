@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+ <linearGradient id="river" x1="0" y1="0" x2="1" y2="0">
+   <stop offset="0" stop-color="#8FC5BF"/><stop offset=".45" stop-color="#5C9F9B"/><stop offset="1" stop-color="#83BBB5"/>
+ </linearGradient>
+ <linearGradient id="riverFade" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#FFFFFF" stop-opacity=".14"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+ </linearGradient>
+ <pattern id="paper" width="18" height="18" patternUnits="userSpaceOnUse">
+   <path d="M0 17.5H18" stroke="#101817" stroke-opacity=".018"/>
+   <path d="M17.5 0V18" stroke="#101817" stroke-opacity=".012"/>
+ </pattern>
+ <style>
+ .sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}
+ .ser{font-family:"Noto Serif CJK SC","Songti SC",serif}
+ .mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+ .meta{font-size:10px;letter-spacing:1.6px}
+ .small{font-size:13px}
+ .body{font-size:15px}
+ .label{font-size:18px;font-weight:650}
+ .id{font-size:11px;font-weight:800;letter-spacing:1px}
+ </style>
+</defs>
+
+<rect width="1920" height="1080" fill="#F2EFE8"/>
+<rect width="1920" height="1080" fill="url(#paper)"/>
+
+<text x="56" y="46" class="mono meta" fill="#6F7974">C04 / C22 · CONCEPT MASTERPLAN · v4.4</text>
+<text x="56" y="88" class="ser" font-size="34" font-weight="700" fill="#101817">江 · 索道 · 峰林</text>
+<text x="296" y="87" class="sans small" fill="#6F7974">关系级概念总平面</text>
+<text x="1864" y="50" class="mono meta" text-anchor="end" fill="#6F7974">RELATIONS BEFORE COORDINATES</text>
+<text x="1864" y="82" class="sans small" text-anchor="end" fill="#245B58">路线是骨架，十三印只是可选阅读层。</text>
+<line x1="56" y1="108" x2="1864" y2="108" stroke="#101817" stroke-opacity=".14"/>
+
+<g id="MASTERPLAN_FIELD">
+  <path d="M56 140 H1456 V280 C1260 258 1090 292 900 276 C665 256 470 305 278 284 C182 274 110 260 56 266 Z" fill="#E6E8DF"/>
+  <text x="78" y="146" class="mono meta" fill="#6F7974">NORTH BANK / ARRIVAL · SERVICE · CABLE</text>
+
+  <path d="M56 266 C170 282 260 316 390 304 C560 290 702 244 890 272 C1078 300 1246 246 1456 278 L1456 438 C1272 422 1118 456 918 438 C738 421 602 462 412 448 C244 435 148 405 56 410 Z" fill="url(#river)"/>
+  <path d="M56 278 C210 292 318 331 468 310 C625 289 735 263 900 289 C1070 316 1212 276 1456 296" fill="none" stroke="#F2EFE8" stroke-opacity=".30" stroke-width="1.4"/>
+  <path d="M56 326 C188 336 312 369 452 349 C614 326 734 307 896 330 C1080 355 1234 319 1456 342" fill="none" stroke="#F2EFE8" stroke-opacity=".20" stroke-width="1"/>
+  <text x="120" y="362" class="ser" font-size="26" font-weight="700" fill="#F8F5EE" letter-spacing="7">清 江</text>
+  <text x="120" y="389" class="mono meta" fill="#E8F2EF">QINGJIANG / TWO-BANK SEPARATION</text>
+
+  <path d="M56 258 C170 273 270 305 390 296 C560 282 705 238 890 264 C1075 292 1242 240 1456 271" fill="none" stroke="#173E3C" stroke-width="2.4" stroke-opacity=".58"/>
+  <path d="M56 416 C244 443 350 474 500 459 C686 440 850 415 1015 454 C1180 493 1315 448 1456 471" fill="none" stroke="#173E3C" stroke-width="2.2" stroke-opacity=".52"/>
+  <path d="M56 419 C230 447 355 489 505 475 C690 457 852 435 1010 473 C1173 512 1318 469 1456 492" fill="none" stroke="#2E7571" stroke-width="16" stroke-opacity=".08"/>
+  <text x="1306" y="223" class="mono meta" fill="#6F7974">NORTH BANK EDGE</text>
+  <text x="1185" y="503" class="mono meta" fill="#6F7974">SOUTH BANK EDGE / PEAK-FOREST ENTRY</text>
+
+  <path d="M56 410 C220 438 330 477 500 458 C690 437 858 411 1014 450 C1180 490 1320 444 1456 466 V930 H56 Z" fill="#DDE3D8"/>
+  <g id="PEAK_FOREST_FIELD" opacity=".92">
+    <path d="M92 635 C170 556 244 541 330 592 C409 639 446 698 516 702 C589 706 628 626 704 594 C790 558 864 590 934 659 C1004 726 1080 754 1152 708 C1224 663 1278 589 1368 574 L1456 582 L1456 930 L56 930 Z" fill="#C7D1C4" opacity=".55"/>
+    <path d="M88 786 C188 722 286 740 370 780 C458 824 543 829 628 790 C719 748 807 741 896 785 C984 828 1070 836 1158 794 C1244 753 1336 747 1456 780" fill="none" stroke="#81928B" stroke-width="1.2" stroke-opacity=".52"/>
+    <path d="M86 744 C178 682 275 698 357 739 C444 782 532 784 614 748 C705 707 797 702 884 744 C974 788 1061 798 1145 757 C1238 713 1335 710 1456 744" fill="none" stroke="#81928B" stroke-width="1.0" stroke-opacity=".40"/>
+    <path d="M100 690 C190 638 276 646 356 688 C438 730 519 734 598 698 C691 655 777 656 859 696 C950 740 1042 748 1120 710 C1212 667 1315 662 1440 696" fill="none" stroke="#81928B" stroke-width=".9" stroke-opacity=".30"/>
+    <path d="M170 548 C248 520 334 542 392 592 C442 634 468 646 520 644 C574 643 614 606 660 580" fill="none" stroke="#245B58" stroke-width="14" stroke-linecap="round" stroke-opacity=".12"/>
+    <path d="M1000 612 C1084 574 1164 562 1242 590 C1318 617 1370 650 1438 648" fill="none" stroke="#245B58" stroke-width="16" stroke-linecap="round" stroke-opacity=".10"/>
+    <path d="M575 740 C640 700 705 699 770 741" fill="none" stroke="#B65C49" stroke-width="2" stroke-opacity=".30" stroke-dasharray="5 7"/>
+    <text x="675" y="723" class="mono meta" text-anchor="middle" fill="#8E6B60">VALLEY / COMPRESSION</text>
+  </g>
+
+  <text x="78" y="505" class="mono meta" fill="#6F7974">SOUTH BANK / PEAK-FOREST + VALLEY + WALKING FIELD</text>
+  <text x="78" y="529" class="sans small" fill="#6F7974">峰林、谷地与林缘共同形成步行空间场。</text>
+
+  <g id="ARRIVAL_SERVICE_INTERFACE">
+    <path d="M78 192 C130 190 162 193 202 199 C240 205 276 211 322 214 C367 217 414 216 458 220 C492 223 516 227 540 228" fill="none" stroke="#245B58" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="78" cy="192" r="6" fill="#245B58"/>
+    <circle cx="270" cy="210" r="8" fill="#F2EFE8" stroke="#245B58" stroke-width="1.8"/>
+    <circle cx="540" cy="228" r="8" fill="#101817"/>
+    <text x="78" y="174" class="mono meta" fill="#245B58">ARRIVAL</text>
+    <text x="270" y="174" class="mono meta" text-anchor="middle" fill="#245B58">SERVICE / ORIENT</text>
+    <text x="540" y="181" class="mono meta" text-anchor="middle" fill="#101817">CABLE INTERFACE</text>
+    <path d="M75 270 C145 264 212 250 270 210" stroke="#B65C49" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/>
+    <text x="76" y="288" class="sans small" fill="#B65C49">BOAT / CONDITIONAL → SERVICE</text>
+  </g>
+
+  <g id="CABLE_RELATION">
+    <path d="M 535 226 L 620 530" stroke="#101817" stroke-width="2.6" fill="none"/>
+    <path d="M 546 223 L 631 527" stroke="#101817" stroke-width=".9" stroke-opacity=".45" fill="none"/>
+    <circle cx="540" cy="228" r="8" fill="#101817"/>
+    <circle cx="625" cy="529" r="9" fill="#B65C49"/>
+    <path d="M 586 397 l -5 -12 m 5 12 l 10 -8" stroke="#B65C49" stroke-width="1.5" fill="none"/>
+    <text x="602" y="356" class="ser" font-size="27" font-weight="700" fill="#101817">跨江</text>
+    <text x="603" y="381" class="mono meta" fill="#B65C49">M2 · CABLE / MOVING VIEW</text>
+  </g>
+
+  <g id="ROUTE_GEOMETRY_ONLY" transform="translate(591,420.5) scale(.50,.50)">
+    <path d="M 58,229 C 62.333333333333336,233.5 74.33333333333333,245.16666666666666 84,256 C 93.66666666666667,266.8333333333333 103.33333333333333,286.1666666666667 116,294 C 128.66666666666666,301.8333333333333 145.16666666666666,303.1666666666667 160,303 C 174.83333333333334,302.8333333333333 190.0,292.0 205,293 C 220.0,294.0 235.5,302.1666666666667 250,309 C 264.5,315.8333333333333 277.3333333333333,332.5 292,334 C 306.6666666666667,335.5 321.6666666666667,319.8333333333333 338,318 C 354.3333333333333,316.1666666666667 373.8333333333333,313.1666666666667 390,323 C 406.1666666666667,332.8333333333333 420.6666666666667,365.6666666666667 435,377 C 449.3333333333333,388.3333333333333 461.0,390.6666666666667 476,391 C 491.0,391.3333333333333 508.6666666666667,377.8333333333333 525,379 C 541.3333333333334,380.1666666666667 558.3333333333334,395.5 574,398 C 589.6666666666666,400.5 603.6666666666666,382.3333333333333 619,394 C 634.3333333333334,405.6666666666667 649.8333333333334,452.5 666,468 C 682.1666666666666,483.5 698.3333333333334,484.3333333333333 716,487 C 733.6666666666666,489.6666666666667 754.8333333333334,486.8333333333333 772,484 C 789.1666666666666,481.1666666666667 804.1666666666666,471.5 819,470 C 833.8333333333334,468.5 846.1666666666666,470.3333333333333 861,475 C 875.8333333333334,479.6666666666667 892.1666666666666,486.6666666666667 908,498 C 923.8333333333334,509.3333333333333 940.0,533.8333333333334 956,543 C 972.0,552.1666666666666 986.6666666666666,551.3333333333334 1004,553 C 1021.3333333333334,554.6666666666666 1041.3333333333333,553.5 1060,553 C 1078.6666666666667,552.5 1096.0,550.0 1116,550 C 1136.0,550.0 1160.1666666666667,550.1666666666666 1180,553 C 1199.8333333333333,555.8333333333334 1216.5,563.3333333333334 1235,567 C 1253.5,570.6666666666666 1281.6666666666667,573.6666666666666 1291,575" fill="none" stroke="#173E3C" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 956,543 C 951.1666666666666,545.8333333333334 936.3333333333334,553.3333333333334 927,560 C 917.6666666666666,566.6666666666666 906.5,573.3333333333334 900,583 C 893.5,592.6666666666666 894.3333333333334,607.5 888,618 C 881.6666666666666,628.5 868.3333333333334,634.0 862,646 C 855.6666666666666,658.0 855.8333333333334,677.6666666666666 850,690 C 844.1666666666666,702.3333333333334 831.8333333333334,707.0 827,720 C 822.1666666666666,733.0 822.0,760.0 821,768" fill="none" stroke="#2E7571" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 1291,575 C 1293.1666666666667,582.1666666666666 1303.0,603.6666666666666 1304,618 C 1305.0,632.3333333333334 1305.0,649.5 1297,661 C 1289.0,672.5 1272.1666666666667,682.6666666666666 1256,687 C 1239.8333333333333,691.3333333333334 1215.8333333333333,691.3333333333334 1200,687 C 1184.1666666666667,682.6666666666666 1169.3333333333333,668.8333333333334 1161,661 C 1152.6666666666667,653.1666666666666 1151.8333333333333,643.5 1150,640" fill="none" stroke="#2E7571" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 1130,645 C 1138.3333333333333,639.5 1160.0,618.3333333333334 1180,612 C 1200.0,605.6666666666666 1226.3333333333333,603.8333333333334 1250,607 C 1273.6666666666667,610.1666666666666 1298.6666666666667,621.5 1322,631 C 1345.3333333333333,640.5 1378.6666666666667,644.0 1390,664 C 1401.3333333333333,684.0 1400.3333333333333,733.6666666666666 1390,751 C 1379.6666666666667,768.3333333333334 1354.6666666666667,766.8333333333334 1328,768 C 1301.3333333333333,769.1666666666666 1255.5,764.0 1230,758 C 1204.5,752.0 1191.6666666666667,743.5 1175,732 C 1158.3333333333333,720.5 1137.5,696.1666666666666 1130,689 Z" fill="none" stroke="#B65C49" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 8" opacity=".78"/>
+  </g>
+
+  <g transform="translate(1000,650)">
+    <circle cx="0" cy="0" r="22" fill="#F2EFE8" stroke="#245B58" stroke-width="1.5"/>
+    <text x="0" y="4" class="mono id" text-anchor="middle" fill="#245B58">M3</text>
+    <text x="38" y="-2" class="sans label" fill="#101817">峰林步行网络</text>
+    <text x="38" y="20" class="mono meta" fill="#6F7974">BRANCH / LOOP · ROUTE AUTHORITY</text>
+  </g>
+
+  <g id="RETURN_SAME_INTERFACE">
+    <path d="M625 529 C606 493 588 440 575 394 C563 352 552 297 540 228" fill="none" stroke="#B65C49" stroke-width="1.5" stroke-dasharray="5 6" stroke-opacity=".72"/>
+    <path d="M628 525 l-10 2 l5 -10" fill="none" stroke="#B65C49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="650" y="540" class="ser" font-size="22" font-weight="700" fill="#101817">返程回到同一索道界面</text>
+    <text x="650" y="562" class="mono meta" fill="#B65C49">M6 · RETURN / SAME CABLE INTERFACE</text>
+  </g>
+
+  <g id="SPATIAL_TYPE_ANCHORS">
+    <g transform="translate(874,748)">
+      <circle r="18" fill="#F2EFE8" stroke="#245B58" stroke-width="1.4"/>
+      <text y="4" class="mono id" text-anchor="middle" fill="#245B58">R06</text>
+      <path d="M18 0 L78 -18" stroke="#245B58" stroke-width="1.1"/>
+      <text x="86" y="-22" class="sans small" fill="#101817">河谷观察 / 恢复型空间</text>
+      <text x="86" y="-3" class="mono meta" fill="#6F7974">空间类型示意</text>
+    </g>
+    <g transform="translate(1210,822)">
+      <circle r="18" fill="#F2EFE8" stroke="#B65C49" stroke-width="1.4"/>
+      <text y="4" class="mono id" text-anchor="middle" fill="#B65C49">R13</text>
+      <path d="M-18 0 L-82 20" stroke="#B65C49" stroke-width="1.1"/>
+      <text x="-90" y="16" class="sans small" text-anchor="end" fill="#101817">收束 / 通过型空间</text>
+      <text x="-90" y="36" class="mono meta" text-anchor="end" fill="#6F7974">空间类型示意</text>
+    </g>
+  </g>
+
+  <g transform="translate(1406,180)">
+    <path d="M0 34 L0 0 L-7 11 M0 0 L7 11" stroke="#101817" stroke-width="1.4" fill="none"/>
+    <text x="0" y="51" class="mono meta" text-anchor="middle" fill="#6F7974">N</text>
+  </g>
+
+  <g id="ROUTE_LEGEND" transform="translate(78,900)">
+    <line x1="0" y1="0" x2="56" y2="0" stroke="#173E3C" stroke-width="5.6" stroke-linecap="round"/>
+    <text x="70" y="4" class="mono meta" fill="#6F7974">PRIMARY WALK</text>
+    <line x1="190" y1="0" x2="246" y2="0" stroke="#2E7571" stroke-width="3.7" stroke-linecap="round"/>
+    <text x="260" y="4" class="mono meta" fill="#6F7974">BRANCH</text>
+    <line x1="360" y1="0" x2="416" y2="0" stroke="#B65C49" stroke-width="2.8" stroke-dasharray="10 8" stroke-linecap="round"/>
+    <text x="430" y="4" class="mono meta" fill="#6F7974">LOOP / OPTIONAL</text>
+  </g>
+</g>
+
+<g id="READING_LAYER" transform="translate(1518,166) scale(.92)">
+  <text x="0" y="0" class="mono meta" fill="#6F7974">READING EDGE / OPTIONAL</text>
+  <text x="0" y="42" class="ser" font-size="28" font-weight="700" fill="#101817">十三印只在适合阅读时出现。</text>
+  <path d="M0 68H352" stroke="#101817" stroke-opacity=".16"/>
+  <g transform="translate(0,104)">
+    <g><text class="mono id" x="0" y="0" fill="#B65C49">R01</text><text class="sans body" x="54" y="0" fill="#101817">越江视域</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,54)"><text class="mono id" x="0" y="0" fill="#245B58">R02</text><text class="sans body" x="54" y="0" fill="#101817">生长页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,108)"><text class="mono id" x="0" y="0" fill="#245B58">R05</text><text class="sans body" x="54" y="0" fill="#101817">峰林视域</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,162)"><text class="mono id" x="0" y="0" fill="#245B58">R06</text><text class="sans body" x="54" y="0" fill="#101817">河谷页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,216)"><text class="mono id" x="0" y="0" fill="#245B58">R07</text><text class="sans body" x="54" y="0" fill="#101817">象形页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,270)"><text class="mono id" x="0" y="0" fill="#245B58">R09</text><text class="sans body" x="54" y="0" fill="#101817">回声页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,324)"><text class="mono id" x="0" y="0" fill="#245B58">R12</text><text class="sans body" x="54" y="0" fill="#101817">望山页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+    <g transform="translate(0,378)"><text class="mono id" x="0" y="0" fill="#B65C49">R13</text><text class="sans body" x="54" y="0" fill="#101817">归缝页</text><line x1="190" y1="-5" x2="340" y2="-5" stroke="#101817" stroke-opacity=".16"/></g>
+  </g>
+  <path d="M0 520H352" stroke="#101817" stroke-opacity=".16"/>
+  <text x="0" y="552" class="mono meta" fill="#6F7974">COMPANION POOL</text>
+  <text x="0" y="582" class="sans body" fill="#101817">R03 · R04 · R08 · R10 · R11 · 可合并 / 替换 / OFF</text>
+  <text x="0" y="613" class="sans small" fill="#6F7974">不构成 13/13；不拥有路线。</text>
+  <path d="M0 657H352" stroke="#101817" stroke-opacity=".16"/>
+  <text x="0" y="688" class="mono meta" fill="#6F7974">SERVICE OVERRIDE</text>
+  <text x="0" y="718" class="sans body" fill="#101817">RECOVER / CHOOSE / PASS</text>
+  <text x="0" y="748" class="sans small" fill="#6F7974">身体、路线、返程优先，阅读主动退出。</text>
+</g>
+
+<g transform="translate(56,980)">
+  <line x1="0" y1="0" x2="1808" y2="0" stroke="#101817" stroke-opacity=".16"/>
+  <g class="mono meta" fill="#6F7974">
+    <text x="0" y="32">ARRIVAL</text><text x="250" y="32">ORIENT</text><text x="500" y="32">CROSS</text><text x="750" y="32">WALK</text><text x="1000" y="32">OBSERVE / RECOVER / CHOOSE</text><text x="1540" y="32">RETURN</text>
+  </g>
+  <g fill="#245B58"><circle cx="0" cy="0" r="3"/><circle cx="250" cy="0" r="3"/><circle cx="500" cy="0" r="3"/><circle cx="750" cy="0" r="3"/><circle cx="1000" cy="0" r="3"/></g>
+  <circle cx="1540" cy="0" r="4" fill="#B65C49"/>
+  <text x="1808" y="32" class="sans small" text-anchor="end" fill="#6F7974">关系示意 / 非测绘定位</text>
+</g>
+</svg>

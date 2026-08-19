@@ -1,0 +1,25 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-CONCEPT-MASTERPLAN",
+  "revision": "CH14-v4.5",
+  "authority": {
+    "content": "CH08 / C22 spatial relation",
+    "visual_reference": "CH14 Current Material"
+  },
+  "visual_delta": [
+    "GIS-like water/contour density reduced",
+    "route changed from dominant polyline to TRACE hierarchy",
+    "right-hand list rebuilt as PAGE / TRACE marginalia",
+    "SEAL reduced to two cinnabar punctuation moments",
+    "bottom operational spine reduced to one line",
+    "landscape field gains whitespace and sparse landform traces"
+  ],
+  "ch14_binding": [
+    "CONTEMPORARY EDITORIAL + LANDSCAPE SPACE",
+    "LINE / PAGE / TRACE / SEAL",
+    "Brand LIGHT",
+    "先游清江，再读清江"
+  ],
+  "image_generation": "NOT USED",
+  "truth_boundary": "route geometry preserved; landscape field remains relational / NTS"
+}
