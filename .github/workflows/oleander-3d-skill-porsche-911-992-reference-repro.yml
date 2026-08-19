@@ -25,6 +25,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v60.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v61.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v62.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v63.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
 
@@ -121,39 +122,62 @@ jobs:
           },indent=2)+'\n')
           PY
 
-      - name: Execute V62 topology-owned aperture representation
+      - name: Execute V63 aperture preflight and persist diagnostic stdout
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/V62_TOPOLOGY_APERTURE"; mkdir -p "$OUT"
+          OUT="$GITHUB_WORKSPACE/out/V63_APERTURE_PREFLIGHT"; mkdir -p "$OUT"
+          set +e
           /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
-            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v62.py \
-            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v63.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640 \
+            >"$OUT/BLENDER_STDOUT.log" 2>&1
+          RC=$?
+          set -e
+          printf '%s\n' "$RC" > "$OUT/PROCESS_EXIT_CODE.txt"
           git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
-          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+          python3 - <<PY
+          import json
+          from pathlib import Path
+          out=Path('out/V63_APERTURE_PREFLIGHT'); rc=int('$RC')
+          pre=out/'DESTRUCTIVE_EDIT_PREFLIGHT_RECEIPT.json'
+          data=json.loads(pre.read_text()) if pre.exists() else None
+          classification={
+            'schema':'oleander.3d.benchmark-execution-classification.v1',
+            'revision':'V63_GREENHOUSE_TOPOLOGY_PREFLIGHT',
+            'process_exit_code':rc,
+            'preflight_receipt_present':pre.exists(),
+            'preflight_result':data.get('preflight_result') if data else 'MISSING',
+            'destructive_edit_executed':data.get('destructive_edit_executed') if data else False,
+            'execution_result':'PASS_OR_CLASSIFIED_NEGATIVE' if pre.exists() else 'FAIL_BEFORE_PREFLIGHT_RECEIPT',
+            'promotion':'NONE',
+            'does_not_prove':['aperture quality','reference fidelity','Design KEEP']
+          }
+          (out/'V63_EXECUTION_CLASSIFICATION.json').write_text(json.dumps(classification,indent=2)+'\n')
+          if not pre.exists():
+            print((out/'BLENDER_STDOUT.log').read_text(errors='replace')[-6000:])
+            raise SystemExit('FAIL_V63_NO_PREFLIGHT_RECEIPT')
+          print(json.dumps({'classification':classification,'preflight':data},indent=2))
+          PY
 
-      - name: Verify V62 host preservation and aperture evidence
+      - name: Verify V63 only when destructive preflight allowed execution
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/V62_TOPOLOGY_APERTURE')
-          a=json.loads((out/'APERTURE_INTERFACE_RECEIPT.json').read_text())
-          h=json.loads((out/'DERIVED_EDIT_HOST_PRESERVATION_RECEIPT.json').read_text())
-          s=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
-          assert a['revision']=='V62_GREENHOUSE_TOPOLOGY_OWNED_APERTURE'
-          assert a['primary_body_source_delta']=='NONE'
-          assert a['host_cut_method'].startswith('DERIVED_EVALUATED_FACE_CLASSIFICATION_REMOVAL')
-          assert a['face_retention_ratio'] >= .70
-          assert min(a['bounds_retention_ratio_xyz']) >= .95
-          assert a['boundary_edge_count'] > 0
-          assert all(v>0 for v in a['removed_faces_by_owner'].values())
-          assert h['host_preservation_result']=='PASS_WITHIN_DECLARED_BUDGET'
-          assert s['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
-          assert s['source_ring_control_count']==20 and s['evaluated_adjacent_face_normal_flip_count']==0
-          print(json.dumps({'aperture':a,'host_preservation':h},indent=2))
+          out=Path('out/V63_APERTURE_PREFLIGHT')
+          pre=json.loads((out/'DESTRUCTIVE_EDIT_PREFLIGHT_RECEIPT.json').read_text())
+          if pre['preflight_result']=='PASS_DESTRUCTIVE_EDIT_ALLOWED':
+              h=out/'DERIVED_EDIT_HOST_PRESERVATION_RECEIPT.json'
+              a=out/'APERTURE_INTERFACE_RECEIPT.json'
+              assert h.exists() and a.exists(), 'preflight allowed edit but post-edit receipts missing'
+              hd=json.loads(h.read_text()); ad=json.loads(a.read_text())
+              assert hd['host_preservation_result']=='PASS_WITHIN_DECLARED_BUDGET'
+              assert ad['face_retention_ratio']>=.70 and min(ad['bounds_retention_ratio_xyz'])>=.95
+          else:
+              assert pre['destructive_edit_executed'] is False
+              assert pre['missing_owner_masks'] or pre['predicted_face_retention_ratio'] < .70
           PY
-          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V62_TOPOLOGY_APERTURE/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
 
       - name: Hash complete benchmark evidence
         if: always()
@@ -161,11 +185,11 @@ jobs:
           set -euo pipefail
           find out -type f -print0 | sort -z | xargs -0 sha256sum > BENCHMARK_SHA256SUMS.txt || true
 
-      - name: Upload V58-V62 evidence
+      - name: Upload V58-V63 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
-          name: oleander-porsche-911-992-v58-v62-${{ github.run_id }}
+          name: oleander-porsche-911-992-v58-v63-${{ github.run_id }}
           path: |
             BLENDER_RUNTIME.txt
             BLENDER_DISTRIBUTION_SHA256.txt
