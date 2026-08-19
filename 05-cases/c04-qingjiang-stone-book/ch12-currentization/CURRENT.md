@@ -10,8 +10,10 @@ Read in this order:
 5. `v0.5/CH12_v0_5_READBACK.md`
 6. `CH12_VISUAL-PAGE-PRODUCTION-BRIEF_v0.1.md`
 7. `CH12_REAL_RESOURCE_BINDING_REGISTER_v0.1.md` + `.json`
-8. `production-v0.1/CH12_PRODUCTION_v0_1_RECEIPT.md`
-9. `production-v0.1/CURRENT_PRODUCTION.json`
+8. `production-v0.2/README.md`
+9. `production-v0.2/PAGE_REPAIR_LOG_v0.2.md`
+10. `production-v0.2/MACHINE_STATE_v0.2.json`
+11. `production-v0.1/CH12_PRODUCTION_v0_1_RECEIPT.md` — provenance
 
 v0.4 remains `PROVENANCE / SUPERSEDED AS CURRENT PRESENTATION STRATEGY / DO NOT DELETE`.
 
@@ -27,10 +29,10 @@ Project-wide Web image uniqueness is now a hard gate:
 - crop / resize / grade / mask / overlay / text / responsive variants do not create a new source identity;
 - same-source Reveal must be one semantic component with state/layer changes, not duplicate static image slots.
 
-Accordingly the original v0.5 authoring baseline remains **9 independently designed SVG authoring pages with 0 raster content-image sources embedded**. The production candidate below supersedes that zero-raster condition only where an explicitly bound unique real source has been materialized; it does not change the authoring authority.
+Accordingly the original v0.5 authoring baseline remains **9 independently designed SVG authoring pages with 0 raster content-image sources embedded**. The production candidates below supersede that zero-raster condition only where an explicitly bound unique real source has been materialized; they do not change the authoring authority.
 
 ## Real-resource binding frontier
-The visual-first production brief has now been followed by a real-source lookup/materialization pass. Current binding register: `CH12_REAL_RESOURCE_BINDING_REGISTER_v0.1.md/.json`.
+The visual-first production brief has been followed by a real-source lookup/materialization pass. Current binding register: `CH12_REAL_RESOURCE_BINDING_REGISTER_v0.1.md/.json`.
 
 Current source decisions:
 - A01 = exact locked ROUTE-03 authority consumed read-only; no raster slot.
@@ -43,27 +45,30 @@ Current source decisions:
 
 `SOURCE FOUND ≠ IMAGE SLOT AVAILABLE / SOURCE MATERIALIZED ≠ FINAL HERO PASS / DESIGN SOURCE ≠ SITE PHOTO`.
 
-## Actual production candidate v0.1
-State: `7 PAGE EXECUTED / 2 PAGE SOURCE-OWNERSHIP HOLD / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
+## Actual production repair v0.2｜CURRENT REVIEW CANDIDATE
+State: `7 PAGE EXECUTED / PAGE-BY-PAGE REPAIRED / 2 PAGE SOURCE-OWNERSHIP HOLD / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
 
-Executed:
-- A01 Selected Scene Atlas — vector-only.
-- A02 R01 Cable Moving View — one official static cable relation slot; `NOT CABIN POV`; moving stimulus HOLD.
-- A03 R05 Discovery — one independent official R05 candidate slot; contained image only.
-- A06 R06 Body × Audience — native SVG, no frontstage raster reuse.
-- A07 Route Decision — native SVG; `LOCATION OPEN / NOT ROUTE GEOMETRY`.
-- A08 R13 Enter + Pass — native SVG; `REAL NODE PIXEL HOLD / NOT SITE PHOTO`.
-- A09 R13 Exit + Re-recognition — native SVG; `REAL EXIT PIXEL HOLD`; memory only after exit.
+Repairs:
+- **A01** — first-read rebuilt as a scene-responsibility field; R06 carries the strongest visual weight; Decision is `LOCATION OPEN / NOT ROUTE GEOMETRY`; mobile is a vertical responsibility sequence.
+- **A02** — official static cable relation processed non-generatively with `WASH-TONAL → WASH-MASK → INK-EDGE`; source-safe contained scale; `NOT CABIN POV`; moving stimulus remains HOLD.
+- **A03** — distinct official R05 candidate processed with the same Image Ops and reframed as `DISTANCE → NOTICE → FRAME → COMPARE → CONTINUE`; no task/completion semantics.
+- **A06** — four equal persona/card logic removed; rebuilt as one continuous native-SVG body-condition field; no embedded R06 landscape raster reuse.
+- **A07** — Continue and Return are equal-valid journey outcomes; inputs = body state / time-service / route state / no-phone continuity; `LOCATION OPEN / NOT ROUTE-03 GEOMETRY`.
+- **A08** — rebuilt as one continuous compression sequence `APPROACH → ENTER / PASS → EXIT AHEAD`; `BODY / ROUTE ON`, `READ / PLAY OFF`; real node pixel remains HOLD.
+- **A09** — rebuilt as the visual release after A08; look-back and Memory begin after exit only; real Exit pixel remains HOLD.
 
 Held:
-- A04 R06 Landscape First.
-- A05 R06 Same-source Reveal.
+- **A04 R06 Landscape First**.
+- **A05 R06 Same-source Reveal**.
 
-A04+A05 remain held because R06 source-family ownership is not explicitly released to CH12. If later reallocated, they must become one `CH12-R06-SEMANTIC-COMPONENT-A04-A05`; A05 is state/layer change over the once-bound A04 base, never a second static raster slot.
+A04+A05 remain held because R06 source-family ownership is not explicitly released to CH12. If later reallocated, they must become one `CH12-R06-SEMANTIC-COMPONENT-A04-A05`; A05 is a state/layer change over the once-bound A04 base, never a second static raster slot.
 
-Runtime readback for all 7 executed pages: `1920×1080 + 390×844 / 0 recorded page errors / 0 horizontal overflow / 0 vertical overflow`.
+Actual Chromium readback: `1920×1080 + 1366×768 + 390×844` across all 7 executed pages = `21/21 runs / horizontal overflow 0 / vertical overflow 0 / console errors 0 / page errors 0`. The 1366 pass uses a real height-aware recomposition and does not use `transform: scale()` to shrink the 1920 composition.
 
-Durable production package: Drive `1coCsnU2JaN--jKnEYrjF9Q_vdRI9mO9X`, `11,610,227 bytes`, SHA256 `de2f9f5a6535aa48f9f2e870c4e77076fbdeb58ae839f2c67a485556cd261621`. Contact / manifest / readback / hold records are listed in `production-v0.1/CH12_PRODUCTION_v0_1_RECEIPT.md`.
+Local current package: `C04_CH12_PRODUCTION_v0.2.zip`, `13,902,324 bytes`, SHA256 `165d2f8222ecfbaecfdba01b7ccc4bb13c0661a20b7dfdecfc7019631bece79d`. Manifest SHA256 `fe5323a37ba9b9d465267e5439a65c61dc71e1f139c4ab09d6623e9311223adc`; readback SHA256 `d4fade2eeadcc347eeaf8b318904ef7dbb1d24c6cbe92f4188aa3a8e9f6403fd`.
+
+## Actual production v0.1｜PROVENANCE
+v0.1 remains provenance for the first actual seven-page execution. It is superseded as the current review candidate by production repair v0.2; do not delete.
 
 ## Standalone page set
 - A01 Selected Scene Atlas
@@ -85,7 +90,7 @@ Durable production package: Drive `1coCsnU2JaN--jKnEYrjF9Q_vdRI9mO9X`, `11,610,2
 - `ORIGINAL DESIGN SOURCE ≠ LATER TECHNICAL / MODEL / PRESENTATION CARRIER`
 
 ## Review state
-`v0.5 AUTHORING BASELINE = EXECUTED / production-v0.1 = 7 ACTUAL PAGES EXECUTED + 2 R06 HOLD / 1920×1080 + 390×844 MACHINE READBACK COMPLETE FOR EXECUTED PAGES / REAL-SOURCE MATERIALIZATION PARTIAL / IMAGE-CONSUMPTION RECONCILIATION OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
+`v0.5 AUTHORING BASELINE = EXECUTED / production-v0.2 = 7 ACTUAL PAGES REPAIRED + 2 R06 HOLD / 1920×1080 + 1366×768 + 390×844 MACHINE READBACK COMPLETE / REAL-SOURCE MATERIALIZATION PARTIAL / IMAGE-CONSUMPTION RECONCILIATION OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
 
 `Artifact existence ≠ Design quality / Runtime readback ≠ Professional Design PASS`.
 
