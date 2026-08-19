@@ -2,6 +2,10 @@
 
 Status: `CANDIDATE_SYNC / NO_PROMOTION / 2026-08-19`
 
+Integration PR: **#293 — OLEANDER 3D: currentize Skill, camera gate, and cross-system routing**
+
+https://github.com/Jiaosong/Design/pull/293
+
 This file is the stable routing index for the OLEANDER 3D Skill. It prevents old version reports, newer timestamps, stacked PRs, or Drive snapshots from being mistaken for the single CURRENT execution authority.
 
 ## Authority order
@@ -30,8 +34,8 @@ This file is the stable routing index for the OLEANDER 3D Skill. It prevents old
 - PR #173 — Blender Surface System v1.21 Source-aware adapter + 15-section receipt/validator layer. `OPEN / DRAFT / CANDIDATE`, stacked on Modeling Worker v0.13.
 - PR #198 — real R29A Blender replay/detail validation of the refined 3D Skill. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
 - PR #208 — Porsche 911 reference-reproduction benchmark and large specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remains separate.
-- PR #227 — Camera Claim Gate training delta. The reusable gate is incorporated into this integration branch; the PR remains provenance/training evidence until separately resolved.
-- PR #276 — interaction-cue escalation + lifecycle evidence framing training delta. The reusable gates are incorporated into `VISUAL_LAYER_BINDING.md` on this integration branch; the PR remains provenance/training evidence until separately resolved.
+- PR #227 — Camera Claim Gate training delta. The reusable gate is incorporated into PR #293; PR #227 remains provenance/training evidence until separately resolved.
+- PR #276 — interaction-cue escalation + lifecycle evidence framing training delta. The reusable gates are incorporated into PR #293 `VISUAL_LAYER_BINDING.md`; PR #276 remains provenance/training evidence until separately resolved.
 - Modeling Worker v0.13 remains a working/revise candidate chain and does not overwrite current Source Authority by recency.
 
 ## Specialist routing
