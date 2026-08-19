@@ -1,0 +1,17 @@
+{
+  "1920x1080": {
+    "errors": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "preview_generated": true
+  },
+  "1366x768": {
+    "errors": [],
+    "scrollWidth": 1920,
+    "clientWidth": 1366,
+    "preview_generated": true
+  },
+  "image_generation": "NOT USED",
+  "readback_state": "RENDERED / REOPENED / PRODUCER ONLY",
+  "design_review": "INDEPENDENT PENDING"
+}
