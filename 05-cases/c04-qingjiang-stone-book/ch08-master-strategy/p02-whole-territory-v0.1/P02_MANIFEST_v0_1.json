@@ -1,0 +1,21 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU","object":"CH08-P02","design_version":"0.1","status":"EXECUTED AUTHORING CANDIDATE / PIXEL READBACK COMPLETE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION","surfaces":["S04","S05","S06"],
+  "files":[
+    {"path":"BROWSER_READBACK_v0_1.json","bytes":1730,"sha256":"a60f2e5b60c74673ef68131bf5b6e6d8a8b84c210cb02575780f5d3b0551ffe4"},
+    {"path":"CH08_P02_SCOPED_v0_1.css","bytes":3880,"sha256":"a4dccf2c40e94b3c1605f3c4da219945296041cfa11850c82456f28dbd41ff31"},
+    {"path":"CH08_P02_SOURCE_BINDINGS_v0_1.json","bytes":1066,"sha256":"2aad0b41705a7a4c6bca0dc9b5276e8ded382b86b61ae0bf597e266b50b87e58"},
+    {"path":"PRODUCER_CRIT_v0_1.md","bytes":1963,"sha256":"6d873e23e3aff17084da8116d089db27622a72fd9ba1f5813ec590cd6ed8ae2b"},
+    {"path":"assets/01_HERO_KEEP_QJ-D_v1.1_1920x1080.png","bytes":2294010,"sha256":"8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c"},
+    {"path":"assets/CH09_P02_BOAT_OLEANDER_v4_6_1920x1080.png","bytes":1591461,"sha256":"713e2ab8e9989ce70b6aa028d0697f00ceb4723e090470dba520d82a2ffc802f"},
+    {"path":"assets/QJD_V11_02_EVIDENCE_TO_DESIGN_NETWORK_1920x1080.png","bytes":295494,"sha256":"1dcb613ff3dfbf40127f0fd35079cce027b369880dd0e72b2fe4729b1649e0ef"},
+    {"path":"ch08-p02-s04.png","bytes":1618378,"sha256":"23dc51d0aa2b9205001c9818a764b9c810722d79e308a10144e90859ebe07a98"},
+    {"path":"ch08-p02-s05.png","bytes":305537,"sha256":"2e8a9d9328c73d20140a174a058c6fe44310dcac104b814014536c750a893549"},
+    {"path":"ch08-p02-s06.png","bytes":1600993,"sha256":"5ba24674a6ea1bf296990fa770db1fb6537e1671e87adf5402018e8ce11a1b3a"},
+    {"path":"desktop_full.png","bytes":3525735,"sha256":"6662569b46296630e25da87957db6752ee1b11a9b0f023e9c5ec934d7356cb05"},
+    {"path":"desktop_viewport.png","bytes":1618378,"sha256":"23dc51d0aa2b9205001c9818a764b9c810722d79e308a10144e90859ebe07a98"},
+    {"path":"index.html","bytes":2432,"sha256":"2f60da5af86fb13c8f72e65bac2a667d575a1c4fcbac3d98794f2de6e444c2c8"},
+    {"path":"mobile_full.png","bytes":516399,"sha256":"b90f5dc6f4e8f6174ccf3809e35de42ba497243fe79389dc22d5ea2ce22422f6"},
+    {"path":"mobile_viewport.png","bytes":181353,"sha256":"a2ee79985edf45f72447976e0be16c8ec16f19370d59045c63d42672687dbae9"}
+  ],
+  "source_authority":"CH08 v0.4 master design strategy + CH08 v0.5 visual narrative architecture","truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
