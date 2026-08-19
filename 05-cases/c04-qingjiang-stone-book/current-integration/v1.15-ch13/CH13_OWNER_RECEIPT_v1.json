@@ -1,0 +1,21 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "chapter":"CH13_PHYSICAL-BODY-SENSORY",
+  "run":"CH13-WEB-v1-20260819",
+  "branch":"agent/c04-ch13-web-v1-20260819",
+  "draft_pr":301,
+  "base":"c04/current-integration-v1-0-20260817",
+  "pre_receipt_head":"760ae493c63028ba826074ccd987dbaf8c4f16e8",
+  "ci":{"workflow":"AI Governance Evals","run":32213862195,"conclusion":"success","applies_to_head":"760ae493c63028ba826074ccd987dbaf8c4f16e8"},
+  "artifacts":[
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v1.html","bytes":17286,"sha256":"ffd2dd579d3e57bd173f9d7725be8478ed23d3814f31f1a8dbf9c9a0dc333f33"},
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v1.css","bytes":13244,"sha256":"903295fb20f68c554f4e3f6523095d4b6d3d19cc51403bc96ed31b93bbfd4694"},
+    {"path":"CH13_SOURCE_REGISTER_v1.json","bytes":2328,"sha256":"7f3fa2212e6d7af8defad33f00ebb2fc1c5514b465f54cadb754348f6258fd89"},
+    {"path":"assets/ch13/derived/CH13_P02_P02_DERIVED_TECHNICAL.svg","bytes":4610,"sha256":"6f005d83f2fd147ee9de22b9a6483fd41897a3c40c0aa44a91ce2839d0d547e8"},
+    {"path":"assets/ch13/derived/CH13_P04_STEP_LIGHT_EXISTING_MECHANISM.svg","bytes":3293,"sha256":"9b8f8d9fd3073e29bba6693b3c5569afefbd0677bd0301a900515eed9ce2e00a"}
+  ],
+  "gates":{"source_hierarchy":"PASS","static_integrity":"PASS","source_pixel_bind":"HOLD","target_browser_runtime":"PENDING_ENVIRONMENT_BLOCKED","finished_pixel":"NOT_PASS"},
+  "truth_boundary":["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT FOR CONSTRUCTION"],
+  "does_not_prove":["field location","site safety","engineering","construction","user response","target-browser visual pass"],
+  "promotion":"DRAFT ONLY / NO CURRENT AUTHORITY REPLACEMENT"
+}
