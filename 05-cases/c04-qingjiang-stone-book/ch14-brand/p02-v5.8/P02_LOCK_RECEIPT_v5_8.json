@@ -1,0 +1,23 @@
+{
+  "object": "CH14-P02",
+  "version": "v5.8",
+  "title": "品牌命题与语言系统",
+  "state": "CURRENT LOCK CANDIDATE",
+  "source_sync": "GITHUB TEXT/SOURCE RECORD",
+  "production_zip": "C04_CH14_P02_v5_8_EXPLANATORY_COPY.zip",
+  "production_zip_sha256": "704b4b94aa86d80a06f5e7b75b21e8363e0897d8ff6151be48bdd6b62e7f5758",
+  "core_proposition": "先游清江，再读清江。",
+  "language_order": ["CN FIRST READ", "EN SECOND READ"],
+  "voice_modes": ["Landscape", "Service", "Reading", "Memory"],
+  "truth_boundary": "FIELD=0 / UNKNOWN ≠ OPEN / R01–R13 OPTIONAL",
+  "cross_page_ownership": {
+    "P05": "full typography implementation",
+    "P07": "information/map labels",
+    "P08": "cross-media touchpoint translation"
+  },
+  "does_not_prove": [
+    "independent new Design PASS adjudication",
+    "English copy operator approval",
+    "field validation"
+  ]
+}

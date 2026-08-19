@@ -1,0 +1,26 @@
+{
+  "version": "v5.8",
+  "change": "supplement explanatory copy without changing P02 visual skeleton",
+  "principle": "rule → why → usage boundary → cross-page ownership",
+  "added_explanation_to": [
+    "Name / language hierarchy",
+    "Fixed verbal assets",
+    "Voice modes",
+    "Sentence grammar",
+    "Naming hierarchy",
+    "Case / punctuation / numerals / IDs",
+    "Touchpoint language proof",
+    "Prohibited language"
+  ],
+  "copy_density": "2 short explanatory columns per module; 13px / 1.82 line-height",
+  "relocations_preserved": {
+    "P05": "full typography implementation",
+    "P07": "information/map labels",
+    "P08": "cross-media touchpoint translation"
+  },
+  "truth_boundary": "FIELD=0 / UNKNOWN ≠ OPEN / no operator approval implied",
+  "does_not_prove": [
+    "independent Design PASS",
+    "English copy operator approval"
+  ]
+}
