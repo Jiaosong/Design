@@ -7,7 +7,7 @@
   "current_since_pull_request": 319,
   "current_since_merge_commit": "463a4e5c22080b1fb1205bf9eb10e547684bc3f3",
   "global_rule": "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
-  "branch_candidate_delta": "PR330 / CH13-S01 / ODB-02 materialized source reservation swap",
+  "branch_candidate_delta": "PR330 / CH13-S01 / ODB-02 materialized source reservation",
   "records": [
     {
       "asset_id": "IMG-C04-D-HERO-01",
@@ -16,12 +16,7 @@
       "source_file": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
       "source_hash": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
       "consumer_project": "PRJ-C04-QINGJIANG-SHISHU",
-      "consumers": [
-        "D-v1.1-PUBLIC-DISPLAY-HERO",
-        "WEB-W00-HERO-BINDING",
-        "F-86S-FILM-OPENING",
-        "CH14-CONTOUR-CROP-DERIVATIVE"
-      ],
+      "consumers": ["D-v1.1-PUBLIC-DISPLAY-HERO", "WEB-W00-HERO-BINDING", "F-86S-FILM-OPENING", "CH14-CONTOUR-CROP-DERIVATIVE"],
       "state": "LEGACY_MULTI_CONSUMED",
       "reuse_lock": "LOCKED_NO_FURTHER_USE",
       "release_reason": null,
@@ -53,11 +48,11 @@
       "consumer_project": "PRJ-C04-QINGJIANG-SHISHU",
       "consumer_owner": "CH13",
       "consumer_unit_id": "CH13-01",
-      "page_or_surface": "CH13-01 PREVIOUS PRODUCER CANDIDATE",
-      "role": "PRIMARY_PHYSICAL_BODY_USE_FIGURE",
-      "state": "RELEASED",
-      "reuse_lock": "RELEASED_AFTER_ODB02_SOURCE_MATERIALIZATION",
-      "release_reason": "ODB-02 original board was uploaded into the active runtime and source-bound child figures were reserved to CH13-S01 on PR330; descendant no longer required as first visual.",
+      "page_or_surface": "CH13-01 COMPATIBILITY RESERVATION / NOT BOUND IN SOURCE-BOUND PAGE",
+      "role": "LEGACY_CURRENTIZED_TECH_FIGURE_COMPATIBILITY_LOCK",
+      "state": "RESERVED",
+      "reuse_lock": "LOCKED_TO_CH13-01_UNBOUND_DO_NOT_REUSE",
+      "release_reason": null,
       "does_not_prove": ["FIELD_TRUTH", "ENGINEERING_VALIDITY", "DESIGN_PASS"]
     },
     {
