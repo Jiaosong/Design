@@ -15,11 +15,64 @@
     "P02": "ROUTE-03 locked current geometry; no redraw; route ≠ content order",
     "P03": "attention occlusion / WITHDRAW composition retained"
   },
-  "surfaces": ["CH01-P01","CH01-P02","CH01-P03","CH01-P04","CH01-P05","CH01-P06"],
+  "surfaces": [
+    "CH01-P01",
+    "CH01-P02",
+    "CH01-P03",
+    "CH01-P04",
+    "CH01-P05",
+    "CH01-P06"
+  ],
   "raster_content_images": 0,
   "ai_generated_whole_page_images": 0,
-  "palette": {"Bone Mist":"#F1EDE4","River Black":"#111918","Deep Water":"#133B3C","Jade Current":"#2E7571","Wet Stone":"#7C8B86","Mica":"#BAC4BF","Cinnabar":"#B8543E","Sediment":"#C7B99F"},
-  "readback": {"desktop":"6/6 @ 1920x1080 / horizontal overflow 0 / raster images 0 / console-page errors 0","mobile":"6/6 @ 390x844 / horizontal overflow 0 / raster images 0 / console-page errors 0","grayscale_far_read":"generated from exact v1.9 pixels"},
+  "palette": {
+    "Bone Mist": "#F1EDE4",
+    "River Black": "#111918",
+    "Deep Water": "#133B3C",
+    "Jade Current": "#2E7571",
+    "Wet Stone": "#7C8B86",
+    "Mica": "#BAC4BF",
+    "Cinnabar": "#B8543E",
+    "Sediment": "#C7B99F"
+  },
+  "readback": [
+    {
+      "view": "desktop",
+      "viewport": [1920, 1080],
+      "body": {"clientWidth": 1920, "scrollWidth": 1920, "rasterImages": 0, "sections": 6},
+      "pages": [
+        {"page": 1, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080},
+        {"page": 2, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080},
+        {"page": 3, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080},
+        {"page": 4, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080},
+        {"page": 5, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080},
+        {"page": 6, "clientWidth": 1920, "scrollWidth": 1920, "clientHeight": 1080, "scrollHeight": 1080}
+      ],
+      "errors": []
+    },
+    {
+      "view": "mobile",
+      "viewport": [390, 844],
+      "body": {"clientWidth": 390, "scrollWidth": 390, "rasterImages": 0, "sections": 6},
+      "pages": [
+        {"page": 1, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844},
+        {"page": 2, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844},
+        {"page": 3, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844},
+        {"page": 4, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844},
+        {"page": 5, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844},
+        {"page": 6, "clientWidth": 390, "scrollWidth": 390, "clientHeight": 844, "scrollHeight": 844}
+      ],
+      "errors": []
+    }
+  ],
   "review_state": "PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
-  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","NOT FOR CONSTRUCTION"]
+  "truth_boundary": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT GPS",
+    "NOT FOR CONSTRUCTION"
+  ]
 }
