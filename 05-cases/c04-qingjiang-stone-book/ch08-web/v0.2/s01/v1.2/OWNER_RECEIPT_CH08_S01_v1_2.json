@@ -1,0 +1,18 @@
+{
+  "object": "PRJ-C04-QINGJIANG-SHISHU / CH08 / S01",
+  "version": "v1.2",
+  "status": "PRODUCER_CANDIDATE / NO_SELF_KEEP / NO_PROMOTION",
+  "authority": {
+    "chapter": "CH08 v0.4 Master Design Strategy",
+    "image_ops": "T-VISUAL-IMAGE-OPS-001",
+    "presentation_language": "CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE"
+  },
+  "source": {
+    "id": "SRC05",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "slot": "CH08-S01-MAIN",
+    "generation": "OFF"
+  },
+  "delta": "Image Ops deepen only; no headline, content architecture or source allocation change",
+  "review": "AR-G/AR-S04/AR-S06/AR-S09 producer evidence; independent design verdict pending"
+}
