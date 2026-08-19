@@ -1,0 +1,49 @@
+{
+  "project": "OLEANDER C04 清江石书",
+  "chapter": "CH15",
+  "version": "0.2",
+  "review_class": "PRODUCER DELIVERY QC / NOT INDEPENDENT DESIGN VERDICT",
+  "skill": "oleander-delivery-qc",
+  "package_integrity": {
+    "page_count": 6,
+    "page_ids": ["CH15-P01","CH15-P02","CH15-P03","CH15-P04","CH15-P05","CH15-P06"],
+    "missing_asset_refs": [],
+    "status": "PASS"
+  },
+  "chromium_readback": {
+    "method": "Playwright Chromium set_content with all local assets data-URI inlined; avoids environment file:// navigation policy",
+    "desktop": {
+      "CH15-P01_1920x1080.png": [1920,1080],
+      "CH15-P02_1920x1080.png": [1920,1080],
+      "CH15-P03_1920x1080.png": [1920,1080],
+      "CH15-P04_1920x1080.png": [1920,1080],
+      "CH15-P05_1920x1080.png": [1920,1080],
+      "CH15-P06_1920x1080.png": [1920,1080]
+    },
+    "mobile_element_readback": {
+      "CH15-P01_390_element.png": [390,1077],
+      "CH15-P02_390_element.png": [390,1263],
+      "CH15-P03_390_element.png": [390,1023],
+      "CH15-P04_390_element.png": [390,1349],
+      "CH15-P05_390_element.png": [390,1743],
+      "CH15-P06_390_element.png": [390,1149]
+    },
+    "desktop_status": "PASS",
+    "mobile_status": "PASS",
+    "exact_portable_navigation": "HOLD / local file navigation blocked by ERR_BLOCKED_BY_ADMINISTRATOR; not a carrier-layout failure"
+  },
+  "source_binding_checks": [
+    "P02 uses existing 07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png; no replacement illustration",
+    "P03 uses existing 04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png; no fake phone redraw",
+    "P04 uses same P02/P03 sources; crop/scale only",
+    "P05 uses existing 15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png plus explicit state register",
+    "Qingfengyin original boards are source-locked but are not falsely claimed as materialized local pixels"
+  ],
+  "blocking_defects": [],
+  "warnings": [
+    "Independent design verdict not yet returned.",
+    "Original 清风吟1/2/3 File Library pixels are not materialized inside this local package; P05 therefore does not claim direct pixel bind of those boards."
+  ],
+  "truth_state": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "signoff": "QC PASS FOR PRODUCER PACKAGE / INDEPENDENT REVIEW PENDING"
+}
