@@ -2,7 +2,7 @@
 
 Release candidate: `CH08 v0.5 visual-story authoring package`  
 Gate type: `OLEANDER STORY & BOARD + DELIVERY QC / SOURCE PACKAGE`  
-Status: `B01+B02 EXECUTED / PARTIAL PASS / DESIGN REVIEW OPEN / NO_PROMOTION`
+Status: `B01+B02 EXECUTED / B03 SOURCE HOLD / PARTIAL PASS / DESIGN REVIEW OPEN / NO_PROMOTION`
 
 ## 1｜Package integrity
 
@@ -11,6 +11,7 @@ PASS for current authoring scope:
 - visual source binding register exists;
 - presentation supersession / no-loss note exists;
 - multi-surface production plan exists;
+- P03 Cable source-gate record exists;
 - version and truth-state labels are explicit;
 - base authority remains CH08 v0.4;
 - no final Web PAGE-ID is invented.
@@ -35,6 +36,13 @@ Executed P Owners:
 - SHA-256 / byte manifest;
 - producer pixel crit.
 
+### B03 / P03 source gate
+- CH12 v0.4 `SC-R01 / Cable Moving View` consumed as current scene authority;
+- Drive and repository source search executed;
+- continuous real cabin POV / same-source moving stimulus remains not materialized;
+- P03 source-gate receipt persisted;
+- frontstage S07–S09 pixels intentionally not fabricated.
+
 ## 2｜Source / authority
 
 PASS where source is named:
@@ -45,10 +53,17 @@ PASS where source is named:
 - ROUTE-03 geometry remains upstream-owned;
 - Field / engineering truth is not upgraded by layout;
 - P01 S01 rejected an evidence-damaging crop and restored the mature Hero full-frame;
-- P02 S06 rejected a crop that exposed orphaned source-copy fragments and repaired the presentation crop without editing source geometry.
+- P02 S06 rejected a crop that exposed orphaned source-copy fragments and repaired the presentation crop without editing source geometry;
+- P03 does not promote static cable context into fake moving evidence.
+
+P03 current Cable boundary:
+- static approved Qingjiang/cable context may support orientation;
+- `SEC_A_CABLE_RELATION.svg` may support near-read relation;
+- continuous real cabin POV / same-source moving stimulus = `HOLD`;
+- static pan / AI extension / multiple-still fake motion / generic cable footage remain forbidden substitutes.
 
 OPEN:
-- resolve strongest Cable-specific current visual before P03 S07–S09 MAIN-quality composition;
+- close the Cable moving-stimulus source gap before P03 frontstage temporal sequence;
 - resolve strongest Walk/body-scale current visual before P04 S10 MAIN-quality composition;
 - bind a presentation-ready locked ROUTE-03 source;
 - resolve a real CH09 Route / Return Physical Touchpoint visual before S23 can become a visual surface.
@@ -76,10 +91,15 @@ Across B01 + B02:
 - desktop `1920×1080` and mobile `390×844` readbacks report no horizontal overflow, broken images or recorded console/page errors;
 - dominant-field composition is image/evidence-led rather than matrix-led.
 
+B03 decision quality:
+- no polished temporal sequence was created from insufficient source evidence;
+- the unresolved center of P03 remains visible as a production dependency rather than being hidden by layout.
+
 OPEN:
-- B03–B09 actual visual surfaces remain to be composed and reviewed;
+- B03 frontstage pixels remain source-held;
+- B04–B09 actual visual surfaces remain to be composed and reviewed;
 - independent Professional Design Review has not been run for P01, P02 or the chapter sequence;
-- final cross-P pacing cannot be judged until at least P01–P04 can be viewed continuously.
+- final cross-P pacing cannot be judged until multiple subsequent P Owners are visible together.
 
 ## 4｜Artifact / browser boundary
 
@@ -97,14 +117,14 @@ This browser limitation does not erase the executed pixel evidence, but it remai
 
 ## 5｜Blocking defects for promotion
 
-1. Missing resolved primary source for Cable-specific surfaces S07/S08.
+1. P03 Cable moving-stimulus source remains HOLD.
 2. Missing resolved primary source for Walk-specific surface S10.
 3. S23 remains `VISUAL OPEN` pending a real CH09 Route / Return Touchpoint candidate.
-4. B03–B09 surfaces are not yet fully produced / pixel-reviewed.
+4. B03–B09 frontstage production is incomplete.
 5. Independent Professional Design Review pending.
 6. Direct live-navigation/browser deployment evidence remains OPEN.
 
-These block `MAIN / KEEP / PROMOTION`, but do not block continued authoring.
+These block `MAIN / KEEP / PROMOTION`, but do not erase B01/B02 authoring progress.
 
 ## 6｜Non-blocking warnings
 
@@ -118,7 +138,7 @@ These block `MAIN / KEEP / PROMOTION`, but do not block continued authoring.
 
 Re-run chapter-level review after:
 - Cable / Walk / ROUTE-03 / Touchpoint bindings are resolved;
-- B03–B09 visual surfaces are composed;
+- B03–B09 visual surfaces are composed where evidence permits;
 - R06 same-source pair is compared side-by-side at pixels;
 - at least P01–P04 can be read as a continuous sequence;
 - Artifact Review and independent Professional Design Review are executed separately.
