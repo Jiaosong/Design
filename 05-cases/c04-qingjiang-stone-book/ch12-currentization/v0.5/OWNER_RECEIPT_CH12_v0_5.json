@@ -1,0 +1,26 @@
+{
+  "artifact": "C04_CH12_v0.5_PROJECT_UNIQUE_INDIVIDUAL_PAGES",
+  "pages": 9,
+  "raster_content_images": 0,
+  "render_target": "1920x1080",
+  "local_package": {
+    "filename": "C04_CH12_v0.5_PROJECT_UNIQUE_INDIVIDUAL_PAGES.zip",
+    "bytes": 1067997,
+    "sha256": "10635e90d4ac77c4a64c56386231befdf9194f312af3bc5d3164f902eb42eba9",
+    "durable_binary_persistence": "OPEN"
+  },
+  "pages_receipt": [
+    {"page":"A01_SELECTED_SCENE_ATLAS","svg_bytes":7622,"svg_sha256":"46ada29288283d929e6613eef638d6557e17a012929eec0a576ba4c3cf3049c9","png_bytes":139328,"png_sha256":"71f71757d93170fa99b4bee3a3f4d73a29c17094ba5fa723886ad1d4d90f25bf"},
+    {"page":"A02_R01_CABLE_MOVING_VIEW","svg_bytes":5440,"svg_sha256":"31daf619fd2d2f42756e147734b73df7911c7a93972020a9f92b9cef386a33ee","png_bytes":119435,"png_sha256":"74b87aa32f18b9054375b43ba87e355ea6610fa49b7937e8e42a49f57f0874a4"},
+    {"page":"A03_R05_DISCOVERY","svg_bytes":6982,"svg_sha256":"970e2a8ffa7e74aed2d99241583b0c0191229de7255e7b0fec8fd16aa0d4807c","png_bytes":134586,"png_sha256":"99a2f9f6d1f59b416031370fc4e7da6df2ecbd66bc0f19cefa24049cc13f88dc"},
+    {"page":"A04_R06_LANDSCAPE_FIRST","svg_bytes":7233,"svg_sha256":"7d70b8e24e8fc2b53840dd6dfb9920f8ad55c0567cb3e7e4387c0d334d00c178","png_bytes":144060,"png_sha256":"bc60e575db2b023355f9a4da393830300dfde1e65ecdebee353a06caa54c8de8"},
+    {"page":"A05_R06_SAME_SOURCE_REVEAL","svg_bytes":5288,"svg_sha256":"feaa469e98bea4218ddcdfae2eecc48ddd857a650bcd2c45ee66f6c1230bbce6","png_bytes":143420,"png_sha256":"d4ed2e5f0369d570b4e51881f172d66eca3bf59dcb958d18f585d9497eb68d72"},
+    {"page":"A06_R06_BODY_AUDIENCE","svg_bytes":7907,"svg_sha256":"4f33cd3d867c73b63b1cc66988e225ac1d01e1e18ba00bd60af5a3f540275f1e","png_bytes":129781,"png_sha256":"d76441dcf8afc71051ee83e02fb146aa76a46d535210b4e9e6c4e2e58ab52d88"},
+    {"page":"A07_ROUTE_DECISION","svg_bytes":5371,"svg_sha256":"28df89221012a1204b88ef20ddef9e6e158b1d854c4c7186145a07ac091b8937","png_bytes":101189,"png_sha256":"ecfe17c1c79a4ba9d37d140391e95409907143091b276791c0a611953616e010"},
+    {"page":"A08_R13_ENTER_PASS","svg_bytes":4039,"svg_sha256":"3929f02d21d9b8e9852d05cd434f1412494951ba2c6d4945cda95356f3253f06","png_bytes":63409,"png_sha256":"fd9c6b312def69ab08212d28f3dffb16e4aa40d2a926803696d7db80fccad543"},
+    {"page":"A09_R13_EXIT_RERECOGNITION","svg_bytes":5093,"svg_sha256":"cbb6edc61edc411966a42229b999b46c417fbf6ac61442af674c32ff4f9fbc1b","png_bytes":140775,"png_sha256":"3075f6046aa3b71bba7ac76ac03746f933b72fd60f8611228bc97aca959c5547"}
+  ],
+  "design_verdict": "NOT_ISSUED",
+  "independent_review": "PENDING",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}
