@@ -1,0 +1,13 @@
+{
+  "schema": "oleander.3d.derived-edit-host-preservation-contract.v1",
+  "receipt_schema": "oleander.3d.derived-edit-host-preservation-receipt.v1",
+  "required": ["schema","host_id","host_state_class","operation","edit_scope","locality","source_mutation_allowed","source_unchanged_or_na","before","after","preservation_checks","operator_execution","host_preservation_result","evidence_result","design_result","does_not_prove"],
+  "allowed_locality": ["LOCAL","REGIONAL","GLOBAL_INTENTIONAL"],
+  "allowed_operator_execution": ["PASS_EXECUTED","FAIL_EXECUTION"],
+  "allowed_host_preservation_result": ["PASS_WITHIN_DECLARED_BUDGET","FAIL_HOST_PRESERVATION","HOLD_METRICS_INSUFFICIENT"],
+  "allowed_evidence_result": ["PASS_EVIDENCE_SCOPE","HOLD_EVIDENCE_INCOMPLETE","FAIL_EVIDENCE_INVALID"],
+  "allowed_design_result": ["PASS_INDEPENDENT_DESIGN_REVIEW","REVISE","REJECT","HOLD_NOT_REVIEWED","NOT_APPLICABLE"],
+  "required_metric_fields": ["vertices","faces","bounds"],
+  "required_check_fields": ["id","metric","before","after","rule","status"],
+  "hard_rules": ["LOCAL_EDIT_REQUIRES_GLOBAL_HOST_PRESERVATION_CHECK","PASS_REQUIRES_ALL_PRESERVATION_CHECKS_PASS","PASS_REQUIRES_OPERATOR_EXECUTION_PASS","SOURCE_PROTECTED_REQUIRES_SOURCE_UNCHANGED","GEOMETRY_CHANGED_ALONE_CANNOT_PROVE_HOST_PRESERVATION","MACHINE_HOST_PRESERVATION_CANNOT_SELF_PROMOTE_DESIGN"]
+}
