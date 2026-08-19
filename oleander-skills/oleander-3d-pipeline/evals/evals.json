@@ -1,83 +1,19 @@
 {
   "skill_name": "oleander-3d-pipeline",
   "evals": [
-    {
-      "id": 1,
-      "prompt": "把 Oleander 的 Blender 场景交给 Unreal 做实时漫游，同时还要给 Illustrator 一张分层轴测爆炸图，请设计交换和检查流程。",
-      "expected_output": "A scale-safe exchange plan, format selection, model manifest, texture/camera rules, and axonometric output checklist.",
-      "files": []
-    },
-    {
-      "id": 2,
-      "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
-      "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
-      "files": []
-    },
-    {
-      "id": 3,
-      "prompt": "在 Blender 5.2 LTS 里做同一产品的五种 CMF 对比。要求结果可作为设计判断证据，但不能把 roughness、IOR 或 micro-normal 当成真实材料测量。",
-      "expected_output": "A controlled CMF comparison route that locks geometry, camera, light rig, color pipeline, render engine/device, identifies representation parameters, retains render/readback evidence, and leaves physical material truth outside the PASS.",
-      "files": []
-    },
-    {
-      "id": 4,
-      "prompt": "Blender 5.2 的 Online Asset Library 里用了一个 HDRI 和一个材质，离线交付时网络断开。判断能不能 Promotion，并给出修复路径。",
-      "expected_output": "FAIL/HOLD for network-only required dependencies; materialize recoverable assets where allowed, record source/library identity, create dependency manifest, reopen offline, and do not treat packing as ownership transfer or proof that every dependency is included.",
-      "files": []
-    },
-    {
-      "id": 5,
-      "prompt": "用 Blender 5.2 Geometry Nodes 的 cloth dynamics 做软包产品压陷动画，并证明这个结构符合人体工学和量产要求。",
-      "expected_output": "Allow bounded visual/form exploration but reject promotion to ergonomic, engineering, or manufacturing truth; record solver/runtime/input/cache state and retain the evaluated carrier as derived evidence only.",
-      "files": []
-    },
-    {
-      "id": 6,
-      "prompt": "一个 911 参考复现模型在最终 SubD 结果上已经很密，但 Source cage 很稀。审查者要求为了达到 vertex 数门槛继续给 Source 加点。",
-      "expected_output": "Separate Source control density from evaluated-surface sampling and design quality; measure the final evaluated carrier, avoid source densification unless representation causality requires it, and route remaining fidelity failure back to the semantic surface relation.",
-      "files": []
-    },
-    {
-      "id": 7,
-      "prompt": "同一 Blender 文件一组图用 AgX，一组图用 ACES 2.0，然后直接比较哪个材质更高级。",
-      "expected_output": "Reject the comparison because the color pipeline drift invalidates causal material comparison; record working/display/view/output spaces and rerun under one locked pipeline unless color management itself is the test variable.",
-      "files": []
-    },
-    {
-      "id": 8,
-      "prompt": "用户要 Blender 直接输出 STEP 给结构工程师。当前环境没有任何 STEP 插件，但项目技能里一般写了 STEP/IGES。",
-      "expected_output": "HOLD_IO_OPERATOR_UNAVAILABLE: verify an actual installed bridge/add-on or route through a CAD tool; do not infer native Blender STEP support from the generic pipeline format list; declare semantic loss and round-trip requirements.",
-      "files": []
-    },
-    {
-      "id": 9,
-      "prompt": "为了让两版曲面差异更明显，一版 Cycles 关 denoise，另一版开强 denoise 并加 compositor glare。这样能不能作为 Surface PASS 证据？",
-      "expected_output": "Reject as uncontrolled diagnostic evidence; keep render engine, device, denoise/postprocess and color pipeline locked, and forbid post-processing that conceals or exaggerates the defect being judged.",
-      "files": []
-    },
-    {
-      "id": 10,
-      "prompt": "把一个 Blender 4.5 LTS 的长期项目迁移到 5.2 LTS。文件能打开，是否可以直接覆盖旧文件并宣布迁移完成？",
-      "expected_output": "No. Preserve the last-known-good source, create a migration revision, read back geometry/modifiers/nodes/libraries/materials/color management/cameras/simulations/I-O, record version/runtime changes, and only pass the migration gate after semantic drift checks.",
-      "files": []
-    },
-    {
-      "id": 11,
-      "prompt": "给车身开后窗的 Boolean modifier 返回成功，模型也还存在，faces 从 8637 变成 96。自动化脚本应该把这一步记成 PASS 吗？",
-      "expected_output": "No. Separate OPERATOR_APPLIED from HOST_PRESERVED; classify this as a catastrophic local-edit host-preservation failure, retain it as negative evidence, roll back to the LKG, and require task-specific before/after face/bounds/protected-region checks before any destructive edit can pass.",
-      "files": []
-    },
-    {
-      "id": 12,
-      "prompt": "911 候选的 SIDE top silhouette RMSE 只有约 14mm，但 FRONT/REAR width-by-height profile 超门槛，3/4 实际预览也不像 992.2。SIDE 指标能不能证明 whole-form reference fidelity？",
-      "expected_output": "No. Carrier congruence is necessary but measurement coverage is still partial. Preserve the SIDE screen as a local PASS, keep FRONT/REAR and held-out 3/4 failures visible, and block whole-form/reference-fidelity promotion until the required dimensions, feature families, and held-out views are covered.",
-      "files": []
-    },
-    {
-      "id": 13,
-      "prompt": "某个 Blender benchmark 脚本已经提交到 PR，整个 workflow 也是绿色，但 workflow 实际只调用了上一版脚本。能不能说新脚本已经通过 Blender runtime？",
-      "expected_output": "No. Require exact target invocation and revision-bound output readback. Script existence and workflow success are not target execution evidence; keep IMPLEMENTED, INVOKED, EXECUTED, RECEIPT_VALID, EXPERIMENT_RESULT, EVIDENCE_RESULT, and DESIGN_RESULT separate.",
-      "files": []
-    }
+    {"id":1,"prompt":"把 Oleander 的 Blender 场景交给 Unreal 做实时漫游，同时还要给 Illustrator 一张分层轴测爆炸图，请设计交换和检查流程。","expected_output":"A scale-safe exchange plan, format selection, model manifest, texture/camera rules, and axonometric output checklist.","files":[]},
+    {"id":2,"prompt":"检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。","expected_output":"A non-destructive dependency audit and relative-path archive structure with validation renders.","files":[]},
+    {"id":3,"prompt":"在 Blender 5.2 LTS 里做同一产品的五种 CMF 对比。要求结果可作为设计判断证据，但不能把 roughness、IOR 或 micro-normal 当成真实材料测量。","expected_output":"A controlled CMF comparison route that locks geometry, camera, light rig, color pipeline, render engine/device, identifies representation parameters, retains render/readback evidence, and leaves physical material truth outside the PASS.","files":[]},
+    {"id":4,"prompt":"Blender 5.2 的 Online Asset Library 里用了一个 HDRI 和一个材质，离线交付时网络断开。判断能不能 Promotion，并给出修复路径。","expected_output":"FAIL/HOLD for network-only required dependencies; materialize recoverable assets where allowed, record source/library identity, create dependency manifest, reopen offline, and do not treat packing as ownership transfer or proof that every dependency is included.","files":[]},
+    {"id":5,"prompt":"用 Blender 5.2 Geometry Nodes 的 cloth dynamics 做软包产品压陷动画，并证明这个结构符合人体工学和量产要求。","expected_output":"Allow bounded visual/form exploration but reject promotion to ergonomic, engineering, or manufacturing truth; record solver/runtime/input/cache state and retain the evaluated carrier as derived evidence only.","files":[]},
+    {"id":6,"prompt":"一个 911 参考复现模型在最终 SubD 结果上已经很密，但 Source cage 很稀。审查者要求为了达到 vertex 数门槛继续给 Source 加点。","expected_output":"Separate Source control density from evaluated-surface sampling and design quality; measure the final evaluated carrier, avoid source densification unless representation causality requires it, and route remaining fidelity failure back to the semantic surface relation.","files":[]},
+    {"id":7,"prompt":"同一 Blender 文件一组图用 AgX，一组图用 ACES 2.0，然后直接比较哪个材质更高级。","expected_output":"Reject the comparison because the color pipeline drift invalidates causal material comparison; record working/display/view/output spaces and rerun under one locked pipeline unless color management itself is the test variable.","files":[]},
+    {"id":8,"prompt":"用户要 Blender 直接输出 STEP 给结构工程师。当前环境没有任何 STEP 插件，但项目技能里一般写了 STEP/IGES。","expected_output":"HOLD_IO_OPERATOR_UNAVAILABLE: verify an actual installed bridge/add-on or route through a CAD tool; do not infer native Blender STEP support from the generic pipeline format list; declare semantic loss and round-trip requirements.","files":[]},
+    {"id":9,"prompt":"为了让两版曲面差异更明显，一版 Cycles 关 denoise，另一版开强 denoise 并加 compositor glare。这样能不能作为 Surface PASS 证据？","expected_output":"Reject as uncontrolled diagnostic evidence; keep render engine, device, denoise/postprocess and color pipeline locked, and forbid post-processing that conceals or exaggerates the defect being judged.","files":[]},
+    {"id":10,"prompt":"把一个 Blender 4.5 LTS 的长期项目迁移到 5.2 LTS。文件能打开，是否可以直接覆盖旧文件并宣布迁移完成？","expected_output":"No. Preserve the last-known-good source, create a migration revision, read back geometry/modifiers/nodes/libraries/materials/color management/cameras/simulations/I-O, record version/runtime changes, and only pass the migration gate after semantic drift checks.","files":[]},
+    {"id":11,"prompt":"给车身开后窗的 Boolean modifier 返回成功，模型也还存在，faces 从 8637 变成 96。自动化脚本应该把这一步记成 PASS 吗？","expected_output":"No. Separate OPERATOR_APPLIED from HOST_PRESERVED; classify this as a catastrophic local-edit host-preservation failure, retain it as negative evidence, roll back to the LKG, and require task-specific before/after face/bounds/protected-region checks before any destructive edit can pass.","files":[]},
+    {"id":12,"prompt":"911 候选的 SIDE top silhouette RMSE 只有约 14mm，但 FRONT/REAR width-by-height profile 超门槛，3/4 实际预览也不像 992.2。SIDE 指标能不能证明 whole-form reference fidelity？","expected_output":"No. Carrier congruence is necessary but measurement coverage is still partial. Preserve the SIDE screen as a local PASS, keep FRONT/REAR and held-out 3/4 failures visible, and block whole-form/reference-fidelity promotion until the required dimensions, feature families, and held-out views are covered.","files":[]},
+    {"id":13,"prompt":"某个 Blender benchmark 脚本已经提交到 PR，整个 workflow 也是绿色，但 workflow 实际只调用了上一版脚本。能不能说新脚本已经通过 Blender runtime？","expected_output":"No. Require exact target invocation and revision-bound output readback. Script existence and workflow success are not target execution evidence; keep IMPLEMENTED, INVOKED, EXECUTED, RECEIPT_VALID, EXPERIMENT_RESULT, EVIDENCE_RESULT, and DESIGN_RESULT separate.","files":[]},
+    {"id":14,"prompt":"一个汽车复现候选把 REAR body-only RMSE 从 0.172 降到 0.077，SIDE/front regression locks 都 PASS，Source 仍 20 controls 且 0 folds；但 held-out rear 3/4 出现明显双脊和夹瘪，C-pillar→haunch 关系更不像参考。下一步应该继续调 rear taper 参数把 RMSE 做得更低吗？","expected_output":"No. Retain the numerical improvement as valid local evidence but REJECT the candidate for design/reference progression, keep the previous LKG, and reclassify relation ownership. The held-out failure indicates the taper is being solved in the wrong representation layer (e.g. greenhouse/C-pillar/aperture architecture versus generic primary-body rail shrink). Do not continue target-metric optimization until the owning relation/representation is corrected and then re-run both fitted and held-out gates.","files":[]}
   ]
 }
