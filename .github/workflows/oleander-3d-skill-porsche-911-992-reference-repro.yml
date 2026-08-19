@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V49 runtime
+      - name: Validate Skill and V50 runtime
         run: |
           set -euo pipefail
           python3 -m py_compile \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v49.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v50.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py \
@@ -34,17 +34,17 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build V49 feature-aligned primary-form candidate
+      - name: Build V50 profile-inverted dense feature grid
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v49.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v50.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py "$OUT"
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           test ! -e "$OUT/FINAL_DERIVED_SURFACE_RECEIPT.json"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V49 representation reopen without self-promotion
+      - name: Verify V50 gate-local regression and constraint boundary
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -59,26 +59,35 @@ jobs:
           i=json.loads((out/'PRIMARY_FORM_IDENTITY_RECEIPT.json').read_text())
           f=json.loads((out/'FEATURE_CURVE_NETWORK_RECEIPT.json').read_text())
           c=json.loads((out/'STAGE_CAPABILITY_ROUTING_RECEIPT.json').read_text())
+          inv=json.loads((out/'PROFILE_INVERSION_RECEIPT.json').read_text())
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED'
-          assert q['primary_form_stage']=='FEATURE_ALIGNED_PRIMARY_FORM_APERTURE_HOLD'
-          assert q['representation_state']=='REOPEN_REPRESENTATION_MODEL'
-          assert q['aperture_architecture_state']=='HOLD_PROXY_ONLY'
-          assert p['candidate_revision']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
+          assert q['primary_form_stage']=='PROFILE_INVERTED_FEATURE_GRID_APERTURE_HOLD'
+          assert q['representation_state']=='REOPEN_REPRESENTATION_MODEL_CONTINUED'
+          assert q['profile_inversion_role']=='CONSTRAINT_COMPLIANCE_NOT_INDEPENDENT_FIDELITY'
+          assert p['candidate_revision']=='V50_PROFILE_INVERTED_FEATURE_GRID'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
-          assert p['representation_state']=='REOPEN_REPRESENTATION_MODEL'
+          assert p['constraint_compliance_boundary']=='FRONT_REAR_GENERATED_FROM_PROFILE_NOT_INDEPENDENT_FIDELITY'
+          assert p['stage_capabilities']['DENSE_EVALUATED_SURFACE_GRID']=='AVAILABLE'
           assert p['stage_capabilities']['FINAL_APERTURE_ARCHITECTURE']=='NOT_APPLICABLE_STAGE_HOLD'
           assert s['machine_surface_state'] in ('MACHINE_CONSTRUCTED_VISUAL_HOLD','MACHINE_SURFACE_TOPOLOGY_FAIL')
-          assert g['promotion_decision'] in ('KEEP_LKG_HOLD_EXPERIMENT','KEEP_LKG_REJECT_EXPERIMENT')
-          assert g['baseline_revision']=='V48_PRIMARY_FORM_STAGE_AWARE'
+          assert s['source_semantic_rail_count']==9
+          assert s['derived_ring_vertices_expected']>=30
+          assert g['schema']=='oleander.3d.reference-regression-promotion-receipt.v2'
+          assert g['baseline_revision']=='GATE_LOCAL_BEST_KNOWN'
+          assert g['best_known_gate_baselines']['SIDE_UPPER_EVALUATED_MESH_RMSE_M']['revision']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
+          assert g['best_known_gate_baselines']['FRONT_HALF_PROJECTED_PROFILE_RMSE']['revision']=='V48_PRIMARY_FORM_STAGE_AWARE'
+          assert g['best_known_gate_baselines']['REAR_HALF_PROJECTED_PROFILE_RMSE']['revision']=='V48_PRIMARY_FORM_STAGE_AWARE'
+          assert g['promotion_decision']=='KEEP_LKG_HOLD_EXPERIMENT'
           assert i['machine_identity_state'] in ('MACHINE_SCREENED_VISUAL_HOLD','MACHINE_REJECT')
-          assert f['schema']=='oleander.3d.feature-curve-network-receipt.v1'
-          assert f['representation_state']=='REOPEN_REPRESENTATION_MODEL'
-          assert f['visual_review_state']=='NOT_RUN'
+          assert f['candidate_revision']=='V50_PROFILE_INVERTED_FEATURE_GRID'
+          assert f['derived_ring_vertices']>=30
+          assert f['profile_inversion_role']=='CONSTRAINT_COMPLIANCE_NOT_INDEPENDENT_FIDELITY'
           assert c['result']=='PASS_STAGE_AWARE_ROUTING'
           assert c['held_result']=='NOT_APPLICABLE_STAGE_HOLD'
+          assert inv['measurement_role']=='MACHINE_CONSTRAINT_COMPLIANCE_NOT_INDEPENDENT_REFERENCE_FIDELITY'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
           assert not (out/'FINAL_DERIVED_SURFACE_RECEIPT.json').exists()
-          print(json.dumps({'execution':'PASS','projection':p['status'],'regression':g['promotion_decision'],'source_surface':s['machine_surface_state'],'identity':i['machine_identity_state'],'representation':f['representation_state'],'stage_routing':c['result']},indent=2))
+          print(json.dumps({'execution':'PASS','projection':p['status'],'regression':g['promotion_decision'],'surface':s['machine_surface_state'],'identity':i['machine_identity_state'],'source_rails':f['source_rail_count'],'derived_ring_vertices':f['derived_ring_vertices'],'stage_routing':c['result']},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
