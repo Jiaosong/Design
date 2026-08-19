@@ -1,0 +1,9 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU","chapter":"CH08","object":"CH08-P04","version":"v1.0",
+  "method":{"browser":"Chromium headless via Playwright","execution":"page.set_content with exact authored HTML and CSS","live_navigation_browser_pass":false,"live_navigation_reason":"runtime navigation restriction"},
+  "readback":{"desktop_1920x1080":{"inner_width":1920,"scroll_width":1920,"horizontal_overflow":0,"scroll_height":3623,"article_count":1,"h1_count":1,"console_errors":0,"page_errors":0},"mobile_390x844":{"inner_width":390,"scroll_width":390,"horizontal_overflow":0,"scroll_height":5483,"article_count":1,"h1_count":1,"console_errors":0,"page_errors":0}},
+  "local_pixel_evidence":{"desktop_viewport.png":{"bytes":154520,"sha256":"bd72e6cc9e7b504f456ce2c569fb3d623c09e223341221db5579436b9e7b22ff"},"desktop_full.png":{"bytes":455326,"sha256":"8982ab2add2705321ec793b5bb646682cbb680fec79f322143ad754a0b077619"},"mobile_viewport.png":{"bytes":62221,"sha256":"99d2d144d6fa0c37a3248aeeac176e097ed823b60d616c9005da0c5e6634a670"},"mobile_full.png":{"bytes":343130,"sha256":"98b134ea1ed0a5e6a21f1d05972ca9f083dde05f78dc305e54aa52153950c0cb"},"durable_repository_binary_persistence":"OPEN"},
+  "static_checks":{"scripts":0,"generated_content_images":0,"external_runtime_dependencies":0,"final_web_page_id_invented":false,"mechanical_media_upgrade_ladder":false,"all_objects_assumed_to_build":false,"route_geometry_created":false,"truth_boundary_present":true,"reduced_motion_rule_present":true},
+  "status":"ACTUAL PIXEL READBACK COMPLETE VIA DOM INJECTION / LIVE-NAVIGATION + REVIEW-BINARY PERSISTENCE OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
