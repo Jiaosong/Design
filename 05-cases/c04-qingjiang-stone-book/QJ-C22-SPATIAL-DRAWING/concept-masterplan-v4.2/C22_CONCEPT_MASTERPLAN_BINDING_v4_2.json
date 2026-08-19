@@ -1,0 +1,40 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-CONCEPT-MASTERPLAN",
+  "revision": "v4.2",
+  "user_correction": "route may be referenced; source visual style must not be imitated",
+  "visual_authority": "OLEANDER / LINE-PAGE-TRACE-SEAL / Qingjiang palette",
+  "geometry_source": {
+    "source": "qingjiang_route_guide_translated.svg",
+    "sha256": "1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9",
+    "use": "geometry/topology carrier only",
+    "style_reuse": "NONE",
+    "inherited_visual_elements": []
+  },
+  "macro_topology": [
+    "M1 arrival/service",
+    "M2 cross-river cable",
+    "M3 south-bank branching/loop walk",
+    "M6 same-cable return"
+  ],
+  "reading_architecture": {
+    "core": ["R01","R02","R05","R06","R07","R09","R12","R13"],
+    "companions": ["R03","R04","R08","R10","R11"],
+    "route_authority": false
+  },
+  "removed_visual_dependencies": [
+    "source dark background",
+    "source glow",
+    "source cyan/gold route styling",
+    "source icon language",
+    "source bilingual label placement",
+    "source guide-map composition"
+  ],
+  "public_boundary": "关系示意 / 非测绘定位",
+  "image_generation": "NOT USED",
+  "route_registration": "EXACT SOURCE ROUTE START BOUND TO CABLE SOUTH-STATION RELATION",
+  "visual_regression_delta": [
+    "source route start re-registered to cable landing",
+    "return icon corrected from additive plus to return loop"
+  ]
+}
