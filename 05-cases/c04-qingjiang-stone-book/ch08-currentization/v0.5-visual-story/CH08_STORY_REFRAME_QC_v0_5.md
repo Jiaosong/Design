@@ -2,7 +2,7 @@
 
 Release candidate: `CH08 v0.5 visual-story authoring package`  
 Gate type: `OLEANDER STORY & BOARD + DELIVERY QC / SOURCE PACKAGE`  
-Status: `B01 EXECUTED / PARTIAL PASS / DESIGN REVIEW OPEN / NO_PROMOTION`
+Status: `B01+B02 EXECUTED / PARTIAL PASS / DESIGN REVIEW OPEN / NO_PROMOTION`
 
 ## 1｜Package integrity
 
@@ -15,12 +15,23 @@ PASS for current authoring scope:
 - base authority remains CH08 v0.4;
 - no final Web PAGE-ID is invented.
 
-B01 / P01 now additionally has:
+Executed P Owners:
+
+### B01 / P01
 - editable HTML + scoped CSS;
 - source-binding register;
 - desktop/mobile pixel readback;
-- three independent 1920 review surfaces;
-- immutable recoverable Drive package + synchronized v0.1.1 package revision;
+- S01–S03 independent 1920 review surfaces;
+- recoverable Drive package + synchronized v0.1.1 review-state package;
+- SHA-256 / byte manifest;
+- producer pixel crit.
+
+### B02 / P02
+- editable HTML + scoped CSS;
+- source-binding register;
+- desktop/mobile pixel readback;
+- S04–S06 independent 1920 review surfaces;
+- recoverable Drive package;
 - SHA-256 / byte manifest;
 - producer pixel crit.
 
@@ -29,14 +40,16 @@ B01 / P01 now additionally has:
 PASS where source is named:
 - current processed project-image filenames and Drive ids are recorded;
 - CH09 Boat reuse is presentation-only and remains CH09-owned;
+- P02 S05 uses source-bound C22 relational evidence and retains `NOT SURVEY / NOT GEOGRAPHIC POSITION`;
 - R06 Landscape First / Relation Reveal remains explicitly same-source-bound for B05;
 - ROUTE-03 geometry remains upstream-owned;
 - Field / engineering truth is not upgraded by layout;
-- P01 S01 rejected an evidence-damaging crop and restored the mature Hero full-frame.
+- P01 S01 rejected an evidence-damaging crop and restored the mature Hero full-frame;
+- P02 S06 rejected a crop that exposed orphaned source-copy fragments and repaired the presentation crop without editing source geometry.
 
 OPEN:
-- resolve strongest Cable-specific current visual before P03 MAIN-quality composition;
-- resolve strongest Walk/body-scale current visual before P04 MAIN-quality composition;
+- resolve strongest Cable-specific current visual before P03 S07–S09 MAIN-quality composition;
+- resolve strongest Walk/body-scale current visual before P04 S10 MAIN-quality composition;
 - bind a presentation-ready locked ROUTE-03 source;
 - resolve a real CH09 Route / Return Physical Touchpoint visual before S23 can become a visual surface.
 
@@ -52,21 +65,29 @@ PASS at architecture level:
 PASS at B01 pixel level:
 - S01 reads the mature Qingjiang Hero before strategy explanation;
 - S02 presents Water / Whole → Cable / Relation → Walk / Body as scale changes rather than a transport matrix;
-- S03 presents the currentized journey before strategy consequences;
-- desktop `1920×1080` and mobile `390×844` readbacks have no horizontal overflow, broken images or recorded console/page errors.
+- S03 presents the currentized journey before strategy consequences.
+
+PASS at B02 pixel level:
+- S04 reads the complete current Boat production visual as water-scale experience evidence;
+- S05 reads the territory/network source before the Route / optional-reading consequence;
+- S06 makes `NO DESIGN` visible only after experience + relation evidence, instead of presenting an intervention ladder.
+
+Across B01 + B02:
+- desktop `1920×1080` and mobile `390×844` readbacks report no horizontal overflow, broken images or recorded console/page errors;
+- dominant-field composition is image/evidence-led rather than matrix-led.
 
 OPEN:
-- B02–B09 actual visual surfaces remain to be composed and reviewed;
-- independent Professional Design Review has not been run for P01 or the chapter sequence;
-- final cross-P pacing cannot be judged until multiple P Owners are visible together.
+- B03–B09 actual visual surfaces remain to be composed and reviewed;
+- independent Professional Design Review has not been run for P01, P02 or the chapter sequence;
+- final cross-P pacing cannot be judged until at least P01–P04 can be viewed continuously.
 
 ## 4｜Artifact / browser boundary
 
-B01 Artifact Review = `PARTIAL PASS`:
+B01 + B02 Artifact Review = `PARTIAL PASS`:
 - actual review PNGs are durably stored in Drive;
-- recoverable binary package is durably stored in Drive;
-- text/source lock is stored in GitHub;
-- exact authored HTML/CSS pixel readback was executed with original image bytes.
+- recoverable binary packages are durably stored in Drive;
+- text/source locks are stored in GitHub;
+- exact authored HTML/CSS pixel readbacks were executed with original image bytes.
 
 OPEN:
 - direct `file://` / localhost navigation is blocked by the runtime administrator;
@@ -79,7 +100,7 @@ This browser limitation does not erase the executed pixel evidence, but it remai
 1. Missing resolved primary source for Cable-specific surfaces S07/S08.
 2. Missing resolved primary source for Walk-specific surface S10.
 3. S23 remains `VISUAL OPEN` pending a real CH09 Route / Return Touchpoint candidate.
-4. B02–B09 surfaces are not yet fully produced / pixel-reviewed.
+4. B03–B09 surfaces are not yet fully produced / pixel-reviewed.
 5. Independent Professional Design Review pending.
 6. Direct live-navigation/browser deployment evidence remains OPEN.
 
@@ -91,12 +112,13 @@ These block `MAIN / KEEP / PROMOTION`, but do not block continued authoring.
 - Pre-existing AI-assisted conceptual visualizations must retain their conceptual labels and cannot be presented as site photos or field proof.
 - Multiple Hero files may be duplicate/derivative variants; byte/source comparison is required before treating them as distinct evidence.
 - P01 S02 currently uses R13 remote concept as BODY evidence and may be superseded by a stronger current WALK visual without changing the master thesis.
+- P02 S06 demonstrates the intervention-admission principle only; it does not establish a field-specific no-design decision.
 
 ## 7｜Recheck trigger
 
 Re-run chapter-level review after:
 - Cable / Walk / ROUTE-03 / Touchpoint bindings are resolved;
-- B02–B09 visual surfaces are composed;
+- B03–B09 visual surfaces are composed;
 - R06 same-source pair is compared side-by-side at pixels;
 - at least P01–P04 can be read as a continuous sequence;
 - Artifact Review and independent Professional Design Review are executed separately.
