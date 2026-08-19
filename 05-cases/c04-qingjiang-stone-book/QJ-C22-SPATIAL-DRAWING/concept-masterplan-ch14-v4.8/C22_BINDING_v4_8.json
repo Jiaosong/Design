@@ -1,0 +1,57 @@
+{
+  "object": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8",
+  "supersedes": "v4.7 / USER REJECTED SOURCE + MISSING INK TRANSFORMATION",
+  "composition": {
+    "landscape_first_read": "~70%",
+    "route_bank_relation": "~20%",
+    "reading_brand_punctuation": "~10%"
+  },
+  "source_image": {
+    "semantic_image_id": "IMG-C04-C22-MACRO-02",
+    "official_filename": "hfwejlwwzx.jpg",
+    "official_page": "https://www.eslygroup.com/scenic_news/2815.html",
+    "official_url": "https://www.eslygroup.com/uploadfile/image/20230711/hfwejlwwzx.jpg",
+    "materialized_source_sha256": "57f192b425086578f2caa5ff8bacae49ce25e475c63e74cd14b6a5ef6584ec60",
+    "processed_ink_sha256": "5dab8e66ae327bedf27c3d15098f7f731a7b289e76e562f80ccb200d84d2789a"
+  },
+  "image_ops": "NON-GENERATIVE / source-derived watercolor-ink transformation",
+  "image_generation": "NOT USED",
+  "route": {
+    "geometry": "existing C22 route carrier only",
+    "photo_georegistration": "NONE",
+    "primary_branch_loop": "explicit hierarchy",
+    "return": "same cable interface"
+  },
+  "truth_boundary": [
+    "NTS",
+    "NOT GPS",
+    "NOT SURVEY ALIGNMENT",
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0"
+  ],
+  "current_svg": {
+    "file": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8.svg",
+    "sha256": "a87fdbd180765fbe2b2b957d8c4e17fa126a9e95eafa1d460b25d670fcdb8226"
+  },
+  "portable_svg": {
+    "file": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8_PORTABLE.svg",
+    "sha256": "0cccf40ac139974e6cb35c327c10e2d29cca7bde79ffaf181ee64d6fa7c64822"
+  },
+  "route_transform": "translate(167,759.3) scale(.90,.30)",
+  "route_start_registration": "source route start registered to south cable landing in relation panel",
+  "runtime": {
+    "1920x1080": {
+      "errors": [],
+      "scale": 1.0,
+      "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1920x1080.png",
+      "sha256": "5e31bade85e8dfca9d962fc365e513982b7a7ff8e8b379213c8741197cf4b8a5"
+    },
+    "1366x768": {
+      "errors": [],
+      "scale": 0.7111111111111111,
+      "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1366x768.png",
+      "sha256": "2367d061a90fd68a9dd68c88fbf6744173b463a9128a3e2d297cb50900f0af54"
+    }
+  },
+  "source_ledger_state": "IMG-C04-C22-MACRO-02 reservation PR #338 OPEN; v4.7 source moved to REJECTED_NOT_ELIGIBLE in proposed ledger delta"
+}
