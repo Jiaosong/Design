@@ -9,6 +9,7 @@ Review role: `PRODUCER SELF-CHECK / NOT INDEPENDENT VERDICT`.
 1. v1.3 rejected internally: report/dashboard residue; P05 card wall; P06 table-like judgement.
 2. v1.4 R1 rejected internally: P01/P05 free curves could read as a second route.
 3. v1.4 R2: P02 uses exact ROUTE-03 source geometry (excerpt/crop/styling only); P01 relation field is non-route; P05 is a negative-space aperture field with no route line.
+4. final source cleanup removed dead iterative CSS and full desktop/mobile readback was rerun.
 
 ## 3-second first-read targets
 - P01: `关系` / relation field.
