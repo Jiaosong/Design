@@ -1,0 +1,18 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "chapter":"CH13_PHYSICAL-BODY-SENSORY",
+  "version":"v1",
+  "truth_boundary":["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT FOR CONSTRUCTION"],
+  "authority_chain":["C04 current materials v3.2","CH13 v0.3 authoring frontier","OLEANDER story-and-board","OLEANDER data-viz","OLEANDER motion","OLEANDER delivery-qc"],
+  "sources":[
+    {"authoring_id":"CH13-P02/03","object":"ODB-02","file":"可拆卸倚靠休息板.png","role":"PRIMARY DESIGN SOURCE","verified_in_file_library":true,"raw_materialized_local":false,"decision":"KEEP / HIGH PRIORITY / NOT LOCATED","does_not_prove":"field location, structural load, installation, safety or construction"},
+    {"authoring_id":"CH13-P04","object":"ODI-01","file":"CH13_P04_STEP_LIGHT_EXISTING_MECHANISM.svg","role":"ACCESSIBLE DERIVED MECHANISM","verified_in_existing_web":true,"raw_materialized_local":true,"decision":"KEEP CONCEPT / SELECTION HOLD","does_not_prove":"sensor, illuminance, power, weathering or field performance"},
+    {"authoring_id":"CH13-P05/06","object":"ODB-03A/B","file":["山体流体休憩装置.png","山体流体休憩装置2.png"],"role":"PRIMARY DESIGN SOURCE","verified_in_file_library":true,"raw_materialized_local":false,"decision":"PRESERVE / SINGLE-SITE COMPETITION / LOCATION HOLD","does_not_prove":"site fit, drainage, slip, thermal comfort, structure or foundation"},
+    {"authoring_id":"CH13-P07","object":"ODB-04B","file":"清风吟2.png","context_file":"清风吟3.png","role":"PRIMARY ON-SITE SENSORY SOURCE","verified_in_file_library":true,"raw_materialized_local":false,"decision":"WIND-SENSORY CANDIDATE / HOLD","boundary":"清风吟1.png packaging/keepsake belongs to CH15","does_not_prove":"wind regime, sound level, structural behavior or field acceptance"}
+  ],
+  "derived_assets":[
+    {"file":"assets/ch13/derived/CH13_P02_P02_DERIVED_TECHNICAL.svg","source":"existing portable Web physical section","authority":"SECONDARY ONLY"},
+    {"file":"assets/ch13/derived/CH13_P04_STEP_LIGHT_EXISTING_MECHANISM.svg","source":"existing portable Web physical section","authority":"SECONDARY / MECHANISM"}
+  ],
+  "page_register_rule":"Do not invent C04-WEB-Pxxx mapping; project page id remains PENDING_EXACT_PAGE_REGISTER_MAPPING until canonical register is locked."
+}
