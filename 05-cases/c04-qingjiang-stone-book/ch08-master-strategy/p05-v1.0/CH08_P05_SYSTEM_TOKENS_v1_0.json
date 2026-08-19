@@ -1,0 +1,20 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU","chapter":"CH08","object":"CH08-P05","version":"v1.0","page_type":"SYSTEM","authoring_identity":"CH08-P05","final_web_page_id":null,
+  "title":"三轴状态｜异常时降低承诺",
+  "current_authority":{"ch08":"ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md","upstream_pr":294,"producer_parent_prs":[310,311,313,314]},
+  "axes":{
+    "A_OPERATIONAL_CREDIBILITY":["NORMAL","DEGRADED","CLOSED","UNKNOWN"],
+    "B_CONTENT_DIGITAL":["FULL","LIGHT","OFF"],
+    "C_BRAND_PRESENCE":["FULL","LIGHT","TRACE","OFF"]
+  },
+  "semantic_firewall":["Digital OFF != CLOSED","Brand OFF != abnormal","Brand color != operational status color","UNKNOWN must not be rendered as freely enterable OPEN"],
+  "typical_combinations":[
+    {"scene":"Cable mid-crossing","state":"NORMAL × OFF/minimal × TRACE/OFF","response":"moving viewpoint first; content and brand withdraw"},
+    {"scene":"R06 stable observation","state":"NORMAL × LIGHT / optional short FULL × TRACE","response":"optional relation reveal after stable observation"},
+    {"scene":"R13 PASS","state":"NORMAL × OFF × OFF/TRACE when operationally known/allowed","response":"Body / Route / Return first"},
+    {"scene":"UNKNOWN at decision point","state":"UNKNOWN × OFF/LIGHT × TRACE","response":"confirm / Return / Human help before optional exploration"}
+  ],
+  "recovery_grammar":["DETECT","INFORM","REDUCE LOAD","AUTHORIZED / VERIFIED ALTERNATIVE WHEN AVAILABLE","RETURN / HUMAN HELP","RECORD OPEN ITEM"],
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status":"PRODUCTION CANDIDATE / ACTUAL PIXEL READBACK REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
