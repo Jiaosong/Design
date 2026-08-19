@@ -3,8 +3,11 @@
 Status: `REVIEW TARGET / NO SELF-PASS`.
 
 - canonical HTML: 29,087 bytes / SHA256 `55446dc04b073422ad7aeb9dc3522e5f08d1f5c4bdfb31323ffa05229a2a086d`
-- local Artifact Review package: 9,288,834 bytes / SHA256 `99b9f7a5ff40b16f1b3f3be6a0bdeda5f4380629aaa35b8dae7d15aeea909375`
+- exact source reconstruction: `PASS` in a writable byte-identical final copy; source carrier reproduces the canonical HTML bytes
+- final local Artifact Review package: 9,290,209 bytes / SHA256 `2bd2f594e37906af02a0617b5f9562440dce5e961bf72557d4378ce225a74bb1`
+- ZIP reopen/integrity: `PASS`
 - v0.1 / v0.2: `REVISE / HISTORY`
-- Artifact Review: Gate 1 partial because AR-S09 durable binary retrieval remains open; Gate 2 independent Professional Design review pending.
+- Artifact Review Gate 1: `PARTIAL / AR-S09 PERSISTENCE OPEN`
+- Artifact Review Gate 2: `INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING`
 
-This receipt is outside the package to avoid self-referential package-hash churn.
+The original review folder was runtime-mounted read-only; exact reconstruction was verified in a writable byte-identical final copy. This local verification does not close AR-S09 durable binary persistence/retrieval. This receipt stays outside the ZIP to avoid self-referential package-hash churn.
