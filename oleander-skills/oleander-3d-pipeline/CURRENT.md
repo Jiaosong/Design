@@ -22,6 +22,28 @@ This file is the stable routing index for the OLEANDER 3D Skill. It prevents old
 - Visual evidence binding: `oleander-skills/oleander-3d-pipeline/VISUAL_LAYER_BINDING.md`
 - Machine routing pointer: `oleander-skills/oleander-3d-pipeline/CURRENT.json`
 
+## Current candidate Skill deltas validated on this integration branch
+
+### Stage Capability Routing
+
+Files:
+- `oleander-skills/oleander-3d-pipeline/STAGE_CAPABILITY_ROUTING_PROTOCOL_v1.md`
+- `oleander-skills/oleander-3d-pipeline/contracts/STAGE_CAPABILITY_ROUTING_CONTRACT_v1.json`
+- `oleander-skills/oleander-3d-pipeline/tools/validate_stage_capability_routing.py`
+- `00-governance/control-plane/tests/test_oleander_3d_stage_capability_routing.py`
+
+Core rule:
+
+`STAGE → SEMANTIC CAPABILITIES → CONSUMER REQUIREMENTS → EVIDENCE`
+
+A consumer must request a semantic capability rather than a historical Blender object name. Current-stage capabilities may be `AVAILABLE`; intentionally deferred later-stage capabilities may be `NOT_APPLICABLE_STAGE_HOLD`; required missing capabilities fail closed. Required and held capability sets must be disjoint.
+
+This delta was exposed by the Porsche 911 992.2 V47→V48 benchmark in PR #208: primary-form evidence was valid while final aperture architecture was intentionally HOLD, but inherited projection/regression consumers still assumed historical windshield objects and later-stage metric sets. The generic routing repair passed AI Governance + Control Plane tests on PR #293. The Porsche benchmark remains provenance/candidate evidence; it is not Design KEEP.
+
+### Quality-state / runtime-health separation
+
+An honest `PROJECTION_MACHINE_SCREENING_FAIL`, `REFERENCE_FIDELITY_REJECT`, or Design `REVISE/REJECT` is not by itself a broken runtime. CI should fail for invalid execution/evidence/provenance or false promotion, while quality-state failure remains recorded as the quality result.
+
 ## Merged / CURRENT-compatible baseline
 
 - Repository: `Jiaosong/Design`
@@ -33,7 +55,7 @@ This file is the stable routing index for the OLEANDER 3D Skill. It prevents old
 
 - PR #173 — Blender Surface System v1.21 Source-aware adapter + 15-section receipt/validator layer. `OPEN / DRAFT / CANDIDATE`, stacked on Modeling Worker v0.13.
 - PR #198 — real R29A Blender replay/detail validation of the refined 3D Skill. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
-- PR #208 — Porsche 911 reference-reproduction benchmark and large specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remains separate.
+- PR #208 — Porsche 911 reference-reproduction benchmark and large specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remains separate. V47→V50 is being used to failure-test stage routing, representation selection, profile inversion, evaluated-grid density and held-out visual review.
 - PR #227 — Camera Claim Gate training delta. The reusable gate is incorporated into PR #293; PR #227 remains provenance/training evidence until separately resolved.
 - PR #276 — interaction-cue escalation + lifecycle evidence framing training delta. The reusable gates are incorporated into PR #293 `VISUAL_LAYER_BINDING.md`; PR #276 remains provenance/training evidence until separately resolved.
 - Modeling Worker v0.13 remains a working/revise candidate chain and does not overwrite current Source Authority by recency.
