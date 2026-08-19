@@ -1,0 +1,19 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "object":"CH08-S01",
+  "version":"v0.6",
+  "state":"FROZEN REVIEW CANDIDATE / USER PREVIEW WITHHELD / S02 GATED",
+  "claim":"先看见清江，系统才有资格出现。",
+  "authority":["C04 Current Authority","CH08 v0.4 Master Design Strategy","CH14 Current","OLEANDER Artifact Review System v1.1"],
+  "skills":["oleander-story-and-board","oleander-delivery-qc"],
+  "image_ops_standard":"T-VISUAL-IMAGE-OPS-001 consumed for source identity / no fake derivation",
+  "generation":"OFF",
+  "source":{"asset_id":"O2_ESLY_20230616_32050c33e","sha256":"33403ef1892e1fdb1267a8a55bba0a85138a82078c8a66d9411eb678d2a8857e","bytes":71747,"semantic_slot":"CH08-S01-MAIN"},
+  "revoked_source":"6bb51e3931d32b0a71bdb0049824d94f3f436ca90c125e8e627a1b861d0a3679",
+  "web":{"html_sha256":"1f9c6a85212a2b6063903fb7401516a4ab862badab9258e5f072ae7200492fac","html_bytes":3518},
+  "runtime":{"desktop":{"viewport":[1920,1080],"scroll_width":1920,"scroll_height":1080,"broken_images":0,"page_errors":0,"console_errors":0},"mobile":{"viewport":[390,844],"scroll_width":390,"scroll_height":958,"broken_images":0,"page_errors":0,"console_errors":0}},
+  "durable_review_packet":{"drive_id":"150glCEvfefuRPX7O3AvLYCnPlinF3IFl","bytes":1563659,"sha256":"cc59e3070eb07f5be03b95b247ede110cf757ceb83dc40d17b30801bdf9cb081"},
+  "editable_review_carrier":{"google_slides_id":"1hD7nVbBr46w2qQZ9ULSmb9HVQPf5Z1ZONpWguzt_a8U","revision_id":"Ef6j6WE7XC-W6w"},
+  "gates":{"compliance":"SCOPED PASS / FINAL WHOLE-WEB RELEASE SCAN OPEN","professional_design":"PENDING INDEPENDENT REVIEW","promotion":"HOLD","user_preview":"WITHHELD","S02":"NOT STARTED / GATED"},
+  "truth":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
