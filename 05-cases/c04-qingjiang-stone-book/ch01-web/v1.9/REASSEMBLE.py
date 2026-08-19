@@ -1,7 +1,7 @@
 from pathlib import Path
 import base64, tarfile, io, hashlib
 root = Path(__file__).resolve().parent
-parts = [root / f'SOURCE_REVIEW_BUNDLE_v1_9.part{i:02d}.txt' for i in range(1,5)]
+parts = [root / f'SOURCE_REVIEW_BUNDLE_v1_9.part{i:02d}.txt' for i in range(1, 5)]
 b64 = ''.join(p.read_text().strip() for p in parts)
 assert len(b64) == 22484, len(b64)
 raw = base64.b64decode(b64, validate=True)
