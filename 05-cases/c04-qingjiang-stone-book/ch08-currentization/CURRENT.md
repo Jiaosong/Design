@@ -4,7 +4,11 @@ Current CH08 master design strategy:
 
 `v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md`
 
-Status: `AUTHORING SUCCESSOR / REVIEW REQUIRED / NO_PROMOTION`  
+Current editable master atlas:
+
+`v0.4/CH08_MASTER_EXPERIENCE_ATLAS_v0_4.svg`
+
+Status: `AUTHORING SUCCESSOR / PROJECT QA PASS / INDEPENDENT REVIEW REQUIRED / NO_PROMOTION`  
 Branch: `agent/c04-ch00-ch19-deepening-v03-20260819`  
 PR: `#294`
 
