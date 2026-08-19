@@ -53,5 +53,5 @@
       "sha256": "2367d061a90fd68a9dd68c88fbf6744173b463a9128a3e2d297cb50900f0af54"
     }
   },
-  "source_ledger_state": "IMG-C04-C22-MACRO-02 reservation PR #338 OPEN; v4.7 source moved to REJECTED_NOT_ELIGIBLE in proposed ledger delta"
+  "source_ledger_state": "IMG-C04-C22-MACRO-02 RESERVED on main; image rebind PR #338 merged as 4cd997bef976d65ce7b75dd2964c3420e5b5bd76; v4.7 IMG-C04-C22-MACRO-01 = REJECTED_NOT_ELIGIBLE / DO_NOT_REUSE"
 }
