@@ -1,0 +1,86 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P03",
+  "version": "v1.0",
+  "page_type": "SYSTEM",
+  "authoring_identity": "CH08-P03",
+  "final_web_page_id": null,
+  "title": "行为条件｜什么时候内容有资格出现",
+  "current_authority": {
+    "ch08": "ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md",
+    "upstream_pr": 294,
+    "producer_parent_prs": [310, 311]
+  },
+  "conditions": [
+    {
+      "id": "MOVE",
+      "experience_fact": "正常移动",
+      "first_owner": "ROUTE / BODY",
+      "content": "WEAK / TRACE",
+      "response": "Route 清楚，Content 弱",
+      "forbidden": "沿路平均触发内容"
+    },
+    {
+      "id": "LOOK",
+      "experience_fact": "景观主动吸引注意",
+      "first_owner": "LANDSCAPE",
+      "content": "TRACE / LIGHT CUE",
+      "response": "Landscape first；最多轻 cue",
+      "forbidden": "Overlay / 长解释抢景"
+    },
+    {
+      "id": "OBSERVE",
+      "experience_fact": "稳定停留、比较",
+      "first_owner": "LANDSCAPE / OBSERVATION",
+      "content": "OPTIONAL / EARNED",
+      "response": "十三印 / Reveal 可有限出现",
+      "forbidden": "STOP 自动等于 READ"
+    },
+    {
+      "id": "RECOVER",
+      "experience_fact": "疲劳、等人、短休",
+      "first_owner": "BODY / SERVICE / RETURN",
+      "content": "OFF UNLESS REQUESTED",
+      "response": "Physical / Service / Return 提升",
+      "forbidden": "强制文化内容"
+    },
+    {
+      "id": "CHOOSE",
+      "experience_fact": "分支或下一步不确定",
+      "first_owner": "ROUTE / SERVICE",
+      "content": "OPTIONAL CONTENT DOWN",
+      "response": "Route / Service 获得当前决策权",
+      "forbidden": "Brand / Imprint 充当导航"
+    },
+    {
+      "id": "PASS",
+      "experience_fact": "足下和身体成为第一任务",
+      "first_owner": "BODY / ROUTE / RETURN",
+      "content": "OFF",
+      "response": "内容退场；必要方向保留",
+      "forbidden": "PLAY / READ / COLLECTION"
+    }
+  ],
+  "stop_not_read": {
+    "statement": "STOP != READ",
+    "meaning": "停留只说明身体或注意力发生变化，不证明游客需要解释。只有稳定观察 + 主动问题/兴趣才使 Reveal 获得资格。",
+    "no_numeric_threshold": true
+  },
+  "hard_boundaries": [
+    "No fixed dwell-time threshold",
+    "No fatigue score",
+    "No attention confidence percentage",
+    "No behavior surveillance claim",
+    "No automatic content trigger based on STOP alone",
+    "No Route geometry",
+    "No final Web PAGE-ID"
+  ],
+  "brand_dependencies": {
+    "color": "CH14-P04 v1.0",
+    "typography": "CH14-P05 v1.0",
+    "information_semantics": "CH14-P07 v1.0"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status": "PRODUCTION CANDIDATE / ACTUAL PIXEL READBACK REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
