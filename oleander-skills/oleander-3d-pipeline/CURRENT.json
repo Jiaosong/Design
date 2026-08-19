@@ -25,6 +25,18 @@
       "oleander-skills/oleander-3d-pipeline/CURRENT.md",
       "oleander-skills/oleander-3d-pipeline/CURRENT.json"
     ],
+    "candidate_skill_deltas": [
+      {
+        "id": "STAGE_CAPABILITY_ROUTING_V1",
+        "protocol": "oleander-skills/oleander-3d-pipeline/STAGE_CAPABILITY_ROUTING_PROTOCOL_v1.md",
+        "contract": "oleander-skills/oleander-3d-pipeline/contracts/STAGE_CAPABILITY_ROUTING_CONTRACT_v1.json",
+        "validator": "oleander-skills/oleander-3d-pipeline/tools/validate_stage_capability_routing.py",
+        "state": "CANDIDATE_MACHINE_VALIDATED",
+        "core_rule": "STAGE_TO_SEMANTIC_CAPABILITIES_TO_CONSUMER_REQUIREMENTS_TO_EVIDENCE",
+        "benchmark_provenance": "PR-208_V47_TO_V48",
+        "does_not_prove": ["geometry_quality", "reference_fidelity", "design_keep"]
+      }
+    ],
     "merged_surface_system": {
       "version": "v1.20.0",
       "path": "90-shared/toolchains/blender-surface-system/v1.20.0/",
@@ -46,8 +58,9 @@
     },
     {
       "id": "PR-208",
-      "role": "REFERENCE_REPRODUCTION_SPECIALIST_EXTENSION",
+      "role": "REFERENCE_REPRODUCTION_SPECIALIST_EXTENSION_AND_FAILURE_TEST",
       "state": "OPEN_DRAFT_CANDIDATE",
+      "current_benchmark_range": "V47_TO_V50",
       "may_replace_current": false
     },
     {
@@ -84,6 +97,10 @@
     "NO_VERSIONED_DRIVE_REPORT_AS_CURRENT_BY_RECENCY",
     "NO_SOURCE_DERIVED_DIAGNOSTIC_RENDER_GATE_COLLAPSE",
     "NO_MACHINE_PASS_TO_DESIGN_PASS",
+    "NO_HISTORICAL_OBJECT_NAME_AS_SEMANTIC_CAPABILITY",
+    "NO_REQUIRED_CAPABILITY_MISCLASSIFIED_AS_STAGE_HOLD",
+    "NO_LATER_STAGE_METRIC_SET_INHERITED_WITHOUT_STAGE_CHECK",
+    "NO_QUALITY_FAIL_RELABELED_AS_RUNTIME_FAIL",
     "NO_CURRENT_POINTER_UPDATE_WITHOUT_CROSS_SYSTEM_READBACK"
   ],
   "does_not_prove": [
