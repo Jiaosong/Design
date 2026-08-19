@@ -22,4 +22,13 @@ class T(unittest.TestCase):
  def test_relations_required(self):
   d=valid();d['identity_relations']=[]
   with self.assertRaises(ValueError):mod.validate(d)
+ def test_semantic_relation_hold_cannot_screen(self):
+  d=valid();d['identity_relations'][1]['state']='HOLD'
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_semantic_relation_fail_cannot_screen(self):
+  d=valid();d['identity_relations'][1]['state']='FAIL'
+  with self.assertRaises(ValueError):mod.validate(d)
+ def test_machine_reject_may_preserve_relation_hold(self):
+  d=valid();d['machine_identity_state']='MACHINE_REJECT';d['identity_relations'][1]['state']='HOLD'
+  self.assertEqual(mod.validate(d)['machine_identity_state'],'MACHINE_REJECT')
 if __name__=='__main__':unittest.main()
