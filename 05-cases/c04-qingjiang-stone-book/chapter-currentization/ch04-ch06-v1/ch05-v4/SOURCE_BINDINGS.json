@@ -1,0 +1,39 @@
+{
+  "version": "v4 REBUILD",
+  "image_generation": "NOT USED",
+  "cross_page_content_image_reuse": 0,
+  "route_geometry_reauthored": false,
+  "r06_reopened": false,
+  "web_page_ids_assigned": false,
+  "pages": {
+    "CH05-P01": {
+      "primary_visual": "ROUTE-03 source crop",
+      "source_file": "ROUTE03_MAP_FIELD_CROP.jpg",
+      "authority": "ROUTE-03 = LOCKED CURRENT",
+      "ops": ["uniform scale only", "full source geometry retained"],
+      "does_not_prove": "stage-to-location registration"
+    },
+    "CH05-P02": {
+      "primary_visual": "vector body choreography",
+      "support_visual": "F01 conceptual product reference",
+      "source_file": "F01_PHOTO_VISUAL_CROP.jpg",
+      "authority": "F01 remains CH13-owned / candidate / not located",
+      "ops": ["source-preserving top crop only"],
+      "does_not_prove": "site placement, fall protection, observed behavior"
+    },
+    "CH05-P03": {
+      "primary_visual": "single R06 landscape source",
+      "source_file": "R06_LANDSCAPE_TEXTFREE_CROP.jpg",
+      "authority": "R06 experience = FINISHED / FROZEN / NO REOPEN",
+      "ops": ["crop only", "tonal overlay for legibility"],
+      "does_not_prove": "cognitive measurement or percentage attention"
+    },
+    "CH05-P04": {
+      "primary_visual": "single cable landscape source",
+      "source_file": "CABLE_TEXTFREE_CROP.jpg",
+      "authority": "presentation carrier only",
+      "ops": ["crop only", "dark readability veil"],
+      "does_not_prove": "behavior observation or route registration"
+    }
+  }
+}
