@@ -1,0 +1,40 @@
+{
+  "object": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_7",
+  "supersedes": "v4.6 / SOURCE-CONFLICT + ROUTE-LEGIBILITY REVISE",
+  "source_image": {
+    "semantic_image_id": "IMG-C04-C22-MACRO-01",
+    "filename": "C22_QINGJIANG_CABLE_PEAK_SOURCE_nb983qsaoo.jpg",
+    "bytes": 82421,
+    "sha256": "9c68159a8897f33373e3d41f4347e071b8d2860958df84e41a682aa79d69cc2f",
+    "pixels": [850, 567],
+    "official_url": "https://www.eslygroup.com/uploadfile/image/20230809/nb983qsaoo.jpg",
+    "drive_id": "1jadqGSfPfB0cPcGYsDA5fzlaTwh-uLK3",
+    "drive_raw_readback_bytes": 82421,
+    "drive_raw_readback": "BYTE_COUNT_MATCH / HASH VERIFIED AGAINST LOCAL BEFORE UPLOAD"
+  },
+  "svg": {
+    "bytes": 11268,
+    "sha256": "2cb5a373d31c6ba78853bd3dbd8c13e522de9f66e5c2710093da938688a18776"
+  },
+  "portable_svg": {
+    "bytes": 231000,
+    "sha256": "5b58a4acb513f31151782817d647a5388373c128f003e8110ea8b6c96e5f137f"
+  },
+  "runtime": {
+    "1920x1080": {"errors": [], "scale": 1.0},
+    "1366x768": {"errors": [], "scale": 0.7111111111111111}
+  },
+  "image_generation": "NOT USED",
+  "image_reservation_pr": 332,
+  "gate": {
+    "actual_readback": "EXECUTED",
+    "image_allocation": "PR #332 OPEN / RESERVED DELTA",
+    "drawing_scoped_github_review": "PENDING",
+    "independent_design": "PENDING"
+  },
+  "image_reservation": {
+    "pr": 332,
+    "branch": "agent/c04-c22-image-reservation-v4-7-20260819",
+    "state": "OPEN_DRAFT"
+  }
+}
