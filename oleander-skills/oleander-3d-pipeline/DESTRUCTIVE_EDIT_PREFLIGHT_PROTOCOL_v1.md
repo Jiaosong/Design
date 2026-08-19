@@ -2,16 +2,20 @@
 
 Status: CANDIDATE / reusable 3D Skill training delta
 
-Benchmark provenance: Porsche 911 992.2 V60–V66.
+Benchmark provenance: Porsche 911 992.2 V60–V67.
 - V60 proved an operator can report success while destroying the host.
 - V63 added a pre-delete mask/retention witness and correctly blocked deletion when one required owner had zero first-match hits.
 - V65 proved the apparently missing rear-glass target actually overlapped the host; the zero result came from classifier ownership/order, not missing geometry.
+- V66 proved six evaluated faces matched both rear-glass and side-glass predicates; code order therefore cannot own the boundary.
+- V67 tests whether those primitives straddle the declared canonical rear-glass lateral boundary; a straddling primitive must be split/partitioned before whole-face destructive ownership.
 
 ## Core separation
 
 `PREDICATE_MATCH ≠ EXCLUSIVE_OWNER ≠ SAFE_TO_EDIT ≠ EDIT_SUCCEEDED ≠ HOST_PRESERVED ≠ DESIGN_PASS`
 
 `FIRST_MATCH_CODE_ORDER ≠ SEMANTIC_OWNERSHIP`
+
+`PRIMITIVE_STRADDLES_CANONICAL_BOUNDARY → SPLIT_OR_PARTITION_BEFORE_OWNER_ASSIGNMENT`
 
 Use this protocol before a destructive or topology-changing Derived operation when the target region can be predicted/classified before mutation.
 
@@ -54,6 +58,7 @@ Before editing, every required semantic target must have a declared coverage res
 Allowed states:
 - `COVERED_EXCLUSIVE`
 - `COVERED_SHARED_BOUNDARY_EXPLICIT`
+- `COVERED_BOUNDARY_STRADDLE_REQUIRES_SPLIT`
 - `MISSING_TARGET_COVERAGE`
 - `AMBIGUOUS_MULTI_OWNER`
 - `UNRESOLVED`
@@ -62,7 +67,7 @@ A required owner with zero coverage blocks destructive execution unless the task
 
 Coverage method must match mesh scale. For coarse/evaluated carriers, centroid-only membership may be insufficient; use vertex/edge/polygon overlap, topology groups, spatial intersection, or another justified method.
 
-## 4. Multi-owner conflict audit
+## 4. Multi-owner conflict and canonical-boundary audit
 
 Evaluate all relevant owner predicates independently before assigning ownership.
 
@@ -80,6 +85,17 @@ A valid disambiguation rule must be semantic and reviewable, for example:
 - surface orientation/normal family with justified threshold;
 - adjacency to an authoritative opening boundary;
 - explicit host/interface/infill layer ownership.
+
+### Primitive crossing rule
+
+If the canonical owner boundary passes through the interior of one candidate primitive:
+- that primitive is not `COVERED_EXCLUSIVE` for either adjacent owner;
+- code order, centroid side, majority area, nearest owner, or a prettier render may not assign the whole primitive by convenience;
+- classify `COVERED_BOUNDARY_STRADDLE_REQUIRES_SPLIT` unless an explicit shared-boundary representation already exists;
+- split/partition the topology on the canonical boundary, or move the boundary upstream into generated construction;
+- rerun coverage and host-preservation preflight after the split.
+
+This rule matters especially when a coarse/evaluated mesh is being used to construct a first-class aperture/interface. A mesh can be dense enough for surface sampling yet still be topologically under-resolved for a semantic boundary.
 
 Code order, object creation order, vertex index order, or timestamp are not valid ownership evidence.
 
@@ -103,6 +119,7 @@ Use:
 - `PASS_DESTRUCTIVE_EDIT_ALLOWED`
 - `FAIL_DESTRUCTIVE_EDIT_BLOCKED_MISSING_TARGET`
 - `FAIL_DESTRUCTIVE_EDIT_BLOCKED_AMBIGUOUS_OWNER`
+- `FAIL_DESTRUCTIVE_EDIT_BLOCKED_BOUNDARY_STRADDLE`
 - `FAIL_DESTRUCTIVE_EDIT_BLOCKED_PREDICTED_HOST_LOSS`
 - `HOLD_CLASSIFIER_EVIDENCE_UNRESOLVED`
 
@@ -125,10 +142,11 @@ If a target repeatedly produces missing/ambiguous coverage:
 - audit evidence-carrier scope;
 - audit classifier coverage scale;
 - audit host/target relation ownership;
+- audit whether primitives straddle the canonical boundary;
 - audit representation architecture;
 - do not keep expanding tolerances without evidence.
 
-`MASK FAILURE → COVERAGE / OWNERSHIP / REPRESENTATION DIAGNOSIS`, not `ARBITRARY MASK GROWTH`.
+`MASK FAILURE → COVERAGE / OWNERSHIP / BOUNDARY / REPRESENTATION DIAGNOSIS`, not `ARBITRARY MASK GROWTH`.
 
 ## 9. Required receipt
 
@@ -143,6 +161,7 @@ Use `oleander.3d.destructive-edit-preflight-receipt.v1` with:
 - `required_owner_ids`
 - `owner_coverage`
 - `multi_owner_conflicts`
+- `boundary_straddle_count`
 - `predicted_preservation_checks`
 - `preflight_result`
 - `destructive_edit_allowed`
