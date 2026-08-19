@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.c04.ch16.p01.source-register/2.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH16",
+  "authoring_id": "CH16-P01",
+  "drawing_status": "TECHNICAL EXPLANATION",
+  "decision_question": "Can body figures demonstrate distinct use/interface consequences for MOVE / LEAN / PERCH / OBSERVE / MAINTAIN without gaining site, ergonomic or product-geometry authority?",
+  "current_authority": [
+    "C04_CURRENT.md",
+    "C04_ACTIVE_EXECUTION_CURRENT.md",
+    "chapter-content-sync/v0.2/CH16_DESIGN-DETAIL-DEVELOPMENT.md"
+  ],
+  "source_carriers": [
+    {
+      "id": "ODB-02",
+      "name": "红花峰栏杆式可拆卸倚靠休息板",
+      "state": "SOURCE_CARRIER_AUTHORITY",
+      "availability": "FILE_LIBRARY_VISIBLE / LOCAL_EMBED_BYTES_UNAVAILABLE",
+      "use": "identity and existing design-content authority only",
+      "precedence": "REUSE_DIRECT preferred; current runtime cannot embed source bytes",
+      "reported_source_values": [
+        "950–1050 mm height",
+        "80 kg max load"
+      ],
+      "current_promotion": "NOT CARRIED FORWARD AS CURRENT ENGINEERING CONTROL"
+    }
+  ],
+  "new_graphic_layer": {
+    "mode": "SCHEMATIZE_SEPARATELY",
+    "registration": "DIAGRAM_ONLY",
+    "geometry_authority": "NONE",
+    "preserved_invariants": [
+      "P02 = short recovery / lean / half-sit lineage",
+      "safety boundary separate from body support",
+      "path/return priority",
+      "maintainability must remain visible"
+    ],
+    "relaxed_invariants": [
+      "exact product silhouette",
+      "exact installation geometry",
+      "exact anthropometry",
+      "exact site relation"
+    ],
+    "does_not_prove": [
+      "ODB-02 exact geometry",
+      "ergonomic validation",
+      "clear width",
+      "contact pressure",
+      "load capacity",
+      "fixing/anchoring",
+      "site placement",
+      "R06 geometry",
+      "field safety"
+    ]
+  },
+  "method_bindings": [
+    "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+    "KN-METHOD-TECHDRAW-SPATIAL-TRANSLATION-001",
+    "Activity-bearing Scale practice"
+  ],
+  "execution_owners": {
+    "primary": "OLEANDER Technical Drawing / CANDIDATE BODY",
+    "support": [
+      "oleander-story-and-board / INSTALLED",
+      "oleander-delivery-qc / INSTALLED"
+    ],
+    "not_used": [
+      "oleander-3d-pipeline: no new authoritative 3D geometry required"
+    ]
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
