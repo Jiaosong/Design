@@ -1,6 +1,6 @@
 # C04 CH01｜Real Resource Materialization v0.1
 
-State: `PARTIAL MATERIALIZATION / REAL SOURCE DERIVATIVE AVAILABLE / NO_PROMOTION`
+State: `PARTIAL MATERIALIZATION / REAL SOURCE + NATIVE CARRIERS AVAILABLE / NO_PROMOTION`
 
 This receipt follows `CH01_REAL_RESOURCE_BINDING_v0_1.json` and does not alter CH01 authoring or resource ownership.
 
@@ -44,7 +44,9 @@ P02 is therefore ready for direct vector consumption without a placeholder route
 ## P03｜OW-20230718-v0ii0wjlhe
 
 Source identity is bound but binary materialization is still OPEN:
-- official URL `https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg`;
+- official article = `media_focus/2830.html`;
+- article image link resolved to exact official asset `https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg`;
+- official caption role = visitors riding the cross-Qingjiang cableway in the Qingjiang Red-flower Peak Forest scenic area;
 - dimensions `1200×800` from technical audit;
 - approx `158 KB`;
 - `PROJECT-USE APPROVED`;
@@ -52,18 +54,40 @@ Source identity is bound but binary materialization is still OPEN:
 
 Direct binary retrieval from the current execution environment still fails. No substitute image is inserted. The page must remain source-slot-only until this exact source or a formally superseding unique source is materially recovered.
 
-## P04 / P05 / P06
+## P04｜Body choreography native carrier
 
-No raster materialization is required:
-- P04 = source-grounded new editable body-choreography SVG;
-- P05 = source-grounded new editable service-continuity SVG with exactly four breaks;
-- P06 = source-identity editorial field; no thumbnail reuse.
+Persisted as editable SVG:
+- path `resource-binding/v0.1/P04_BODY_CHOREOGRAPHY_SOURCE.svg`;
+- commit `4dbf9f27805358e95b322ce1d74cbac8e78df484`;
+- local SHA256 `b943c30ad645962d7d71e98a26a0f840f18568d0de8f12a6dc39557c68e63171`.
+
+Carrier is derived only from CH01 v0.3 body pressures plus CH13 body-sequence precedent. It reuses no CH13 raster reservation and claims no site geometry.
+
+## P05｜Four-gap service continuity native carrier
+
+Persisted as editable SVG:
+- path `resource-binding/v0.1/P05_SERVICE_GAPS_SOURCE.svg`;
+- commit `1e3c23968bc07fa626d8449647e4d214050834c7`;
+- local SHA256 `ca7721ba7828e692352a34e8fdba9372bbbdcc35f6b9848ce2ef8fbe197857d5`.
+
+The carrier is one continuous SERVICE→RETURN band with exactly four literal negative-space breaks: direction confirmation / Return recognition / CLOSED-UNKNOWN expression / Paper↔Site. It is not route geometry and not the CH09 product solution.
+
+## P06｜Selection identity native carrier
+
+Persisted as editable SVG:
+- path `resource-binding/v0.1/P06_SELECTION_FIELD_SOURCE.svg`;
+- commit `85132d8f33fc695012edf67810351e5773caf392`;
+- local SHA256 `b1dbd181df574c8eb9aef7086f3d4fa921fcca35f2c9d87043c6863d96722a45`.
+
+It binds existing identities `P02 / Fluid Rest / Step Light / Qingfengyin / Digital / Memory` without thumbnail reuse and without assigning KEEP/HOLD outcomes in CH01.
 
 ## Gate status
 
 - Real resource identities bound: `6/6`.
-- Actual reusable carrier materialized/read back: `P01 + P02`.
-- Binary source still open: `P03`.
+- Recovered real-image derivative: `P01`.
+- Exact source vector connected readback: `P02`.
+- Exact official image identity resolved but binary open: `P03`.
+- Editable native source carriers persisted: `P04 + P05 + P06`.
 - Placeholder/fake imagery allowed: `0`.
 - Whole-project Web image uniqueness: `PENDING / NO PASS`.
 - Finished pixels: `NOT STARTED`.
