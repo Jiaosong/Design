@@ -18,6 +18,6 @@ GitHub blob hashes for the four parts match the local Git blob hashes exactly:
 
 The earlier single-file carrier was rejected because connector-side truncation changed its byte count; it was removed and is not authority.
 
-Local complete review package: `C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`.
+Local complete review package produced before GitHub text-carrier repair: `C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`. The visual/source bytes under review are unchanged; GitHub repair only fixes their durable text carrier.
 
 Current state: `INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
