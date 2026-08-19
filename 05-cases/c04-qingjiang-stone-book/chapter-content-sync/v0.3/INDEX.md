@@ -7,6 +7,15 @@ Status: `AUTHORING SUCCESSOR / NO-LOSS / NOT PAGE-ID MIGRATION / NO_PROMOTION`�
 
 本版不覆盖旧稿，不声明最终 Web page count，不创建新 PID，不替代各章节正在进行的像素/模型/技术 PR。
 
+## Current CH08 pointer
+CH08 已继续从本包中的 compact full-source summary 深化为 dedicated current successor：
+
+`05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md`
+
+Current pointer：`05-cases/c04-qingjiang-stone-book/ch08-currentization/CURRENT.md/.json`。
+
+v0.4 进一步把 CH08 落实为 Qingjiang-specific `Experience Thesis / Journey Atlas / Dynamic Ownership / Need-type Intervention / Design Object Deployment / User Modifiers / State & Recovery / Cross-system Handoff / Project Proof Boundary / Downstream Directives`。本目录内 v0.3 CH08 文件保留为 broad chapter-pack snapshot / provenance，不再单独代表最新 CH08 authoring frontier。
+
 ## CH00–CH19 material delta
 - CH00：项目定义加入“缺口型新增”边界；Boat 改为条件性 access/viewing mode。
 - CH01：增加 Route/Return 实体服务缺口与“方案过多需要选择”的问题定义。
@@ -16,7 +25,7 @@ Status: `AUTHORING SUCCESSOR / NO-LOSS / NOT PAGE-ID MIGRATION / NO_PROMOTION`�
 - CH05：增加 MOVE/LOOK/OBSERVE/RECOVER/CHOOSE/PASS 体验条件。
 - CH06：新增 `NO DESIGN IS A VALID DESIGN DECISION` 与 Normal/Override 两种优先模式。
 - CH07：把既有方法收束为问题类型驱动的 Selection + Attack Test。
-- CH08：重建为 Experience Spine / Touchpoint Assignment / Variation / Selection；控制语法退为运行层。
+- CH08：当前 dedicated successor = v0.4 Master Design Strategy；本包 v0.3 compact summary 保留 provenance。
 - CH09：新增 Route/Return Physical Touchpoint Family；深化 Cable Experience Choreography。
 - CH10：建立 Imprint Design Grammar 与 Observability 字段；不增加印。
 - CH11：恢复 ODB-01 source identity；消费 App v1.29 最新材质/探索响应增量，但仍只深化 Discovery / Retreat / No-phone handoff，不扩大主功能。
