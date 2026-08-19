@@ -1,11 +1,21 @@
 # CH10 Web — Latest Review Target
 
-Current downstream Web review target: `v0.3`.
+Current downstream review focus is **page-by-page**.
 
+Current page target:
+`CH10-P01 = page-by-page/p01-resource-led-v0.2/`.
+
+Superseded P01 target:
+`p01-appearance-gate-v0.1 = REVISE / HISTORY`.
+
+Whole-chapter carriers:
 - v0.1 = `REVISE / HISTORY`
 - v0.2 = `REVISE / HISTORY`
-- v0.3 = `EXECUTED / ACTUAL PREVIEW REOPENED / GATE 1 PARTIAL (AR-S09 OPEN) / GATE 2 INDEPENDENT REVIEW PENDING`
+- v0.3 = `HISTORY FOR P01 / retained as chapter-level provenance`
 
-Canonical v0.3 HTML SHA256: `55446dc04b073422ad7aeb9dc3522e5f08d1f5c4bdfb31323ffa05229a2a086d`.
+P01 v0.2 canonical HTML SHA256: `7f1dc2abb1dcdd91137e933a3fed1e0db4c0f99c50cef754c79834bfcc78d445`.
+
+P01 v0.2 status:
+`EXECUTED / ACTUAL PIXELS REOPENED / ARTIFACT REVIEW EXECUTED / PAGE-SCOPED GITHUB REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
 
 This pointer does not promote CH10 Web to Project Current and does not issue a Design verdict.
