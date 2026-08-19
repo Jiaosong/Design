@@ -1,0 +1,35 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CH01_WEB_v1.6_EDITORIAL_ATTACK",
+  "authoring_source": {
+    "branch": "agent/c04-ch00-ch19-deepening-v03-20260819",
+    "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.3/CH01_PROJECT-PROBLEM-OPPORTUNITY.md",
+    "blob": "2548c0dd5d0087cd9115038072e99f2a29ef4761"
+  },
+  "image_generation_used": false,
+  "raster_content_images": 0,
+  "generated_page_images": 0,
+  "route03_policy": "LOCKED CURRENT / source path excerpt only / presentation styling / no redraw",
+  "runtime": {
+    "desktop": {"viewport":"1920x1080","surfaces":6,"scroll_width":1920,"images":0,"errors":0},
+    "mobile": {"viewport":"390x844","surfaces":6,"scroll_width":390,"images":0,"errors":0},
+    "navigation_note": "direct file/localhost navigation blocked by runtime; exact source bytes executed via Chromium DOM injection; actual pixel evidence only, not live-navigation Browser PASS"
+  },
+  "hashes": {
+    "index.html": "284f683b59e41fff0ca37539de50a6d2ca81c30bce9c4f69c17ca09bca6b9c11",
+    "style.css": "1a757bb763d430194514826b4a4814e7da0733668b22e6a6f54b619ff7078ef2",
+    "style.css.gz.base64.txt": "1ae9b72ce9fe5ee164f0496bb7d37bdfb9d1eeb5d3975c092441fcff12a0bdeb",
+    "desktop_contact.jpg": "605e59f293c2e7601d2e1ad0c39b31eeac7f716dbe6165a3d5fbe85ea87da467",
+    "mobile_contact.jpg": "eb48ae0896098bbb4b5b8834eac7d31ebb000ca9235145612bdff69a0433905a",
+    "desktop_contact_grayscale.jpg": "e0e9afaef209fe71d125e063da2f55e8a909804df1e150164ed1a89eab3163e3",
+    "desktop_contact_50pct.jpg": "0815999c3e95aa62b1e35996c03042168d236d0fafb966352ddf4b2008f29e63"
+  },
+  "local_review_package": {
+    "name": "C04_CH01_WEB_v1.6_EDITORIAL_ATTACK.zip",
+    "bytes": 1363648,
+    "sha256": "41f689de044ee697c04defad5c5083e41a0a393ffb89804d32d25b5742747adc",
+    "durable_binary_persistence": "OPEN / local sandbox package only"
+  },
+  "review_gate": "INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS"
+}
