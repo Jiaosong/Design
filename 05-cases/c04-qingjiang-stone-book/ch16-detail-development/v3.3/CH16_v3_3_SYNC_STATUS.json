@@ -1,0 +1,22 @@
+{
+  "object": "C04-CH16",
+  "version": "v3.3",
+  "github_branch": "c04-ch16-v1-0-detail-development",
+  "production_zip": {
+    "name": "C04_CH16_v3_3_OLEANDER_CLOSURE_CANDIDATE.zip",
+    "sha256": "d001cc6dc46d4298d4fde8d6c5b50f4fa3fa1bb6522e63730fcb6565ff91e0b9",
+    "state": "LOCAL RECOVERY PACKAGE / DURABLE BINARY PERSISTENCE OPEN"
+  },
+  "github_persisted": [
+    "README.md",
+    "CH16_v3_3_AUTHORITY_AND_METHOD.json",
+    "CH16_R06_SUPPORT_GEOMETRY_v1_1.json",
+    "CH16_OLEANDER_CLOSURE_v3_3.json",
+    "CH16_v3_3_SYNC_STATUS.json"
+  ],
+  "native_page_sources": "LOCAL / NOT YET DURABLY PERSISTED THROUGH CONNECTOR",
+  "binary_previews": "LOCAL / NOT YET DURABLY PERSISTED THROUGH CONNECTOR",
+  "sync_state": "PARTIAL",
+  "independent_professional_design_gate": "HOLD / REVIEWER PROVENANCE UNAVAILABLE",
+  "promotion": "NO_PROMOTION"
+}
