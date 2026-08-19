@@ -1,0 +1,31 @@
+{
+  "schema": "oleander.execution-receipt/1.0-like-project-instance",
+  "object": "CH16-P01 v2.0",
+  "producer_state": "EXECUTED / SELF-CHECKED / INDEPENDENT REVIEW PENDING",
+  "required_native_output": "editable vector technical-analysis page + responsive web carrier",
+  "route": {
+    "primary": "OLEANDER Technical Drawing / CANDIDATE BODY",
+    "support": ["oleander-story-and-board / INSTALLED","oleander-delivery-qc / INSTALLED"],
+    "not_used": ["oleander-3d-pipeline: no new authoritative 3D geometry required"]
+  },
+  "native_artifacts": ["CH16-P01_v2_0.svg","CH16-P01_mobile_v2_0.svg","CH16-P01_v2_0.html","CH16-P01_v2_0_SOURCE_REGISTER.json","CH16-P01_v2_0_QC.json","CH16-P01_v2_0_BROWSER_READBACK.json","CH16-P01_v2_0_REVIEW_HANDOFF.md","SHA256SUMS.txt"],
+  "independent_design_gate": "PENDING / producer self-KEEP prohibited",
+  "next_page_gate": "P02 MUST NOT START UNTIL P01 independent disposition is recorded; page-by-page execution is intentionally gated.",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "runtime_readback": {
+    "desktop": {"innerWidth":1920,"innerHeight":1080,"scrollWidth":1920,"scrollHeight":1080,"bodyScrollWidth":1920,"overflowX":false,"visibleDesktop":true,"visibleMobile":false,"imgs":[{"complete":true,"naturalWidth":1920,"naturalHeight":1080,"alt":"CH16-P01 desktop"},{"complete":true,"naturalWidth":390,"naturalHeight":2070,"alt":"CH16-P01 mobile"}],"fontsLoaded":"loaded","pageErrors":[],"consoleErrors":[]},
+    "mobile": {"innerWidth":390,"innerHeight":844,"scrollWidth":390,"scrollHeight":2070,"bodyScrollWidth":390,"overflowX":false,"visibleDesktop":false,"visibleMobile":true,"imgs":[{"complete":true,"naturalWidth":1920,"naturalHeight":1080,"alt":"CH16-P01 desktop"},{"complete":true,"naturalWidth":390,"naturalHeight":2070,"alt":"CH16-P01 mobile"}],"fontsLoaded":"loaded","pageErrors":[],"consoleErrors":[]},
+    "method": "Chromium 144 via Python Playwright page.set_content; exact current desktop/mobile SVG bytes embedded as data URLs because local file/http navigation is admin-blocked"
+  },
+  "artifact_review_state": "AR-G OBJECTIVE CHECKS EXECUTED / AR-S01 OBJECTIVE CHECKS EXECUTED / QUALITATIVE INDEPENDENT VERDICT PENDING / AR-S09 NOT TRIGGERED",
+  "persistence_state": "DURABLE NATIVE SOURCE WRITTEN TO GITHUB / CORE REMOTE GIT-BLOB READBACK MATCHED / DERIVATIVE PNG READBACKS LOCAL / NO RELEASE PACKAGE",
+  "github": {
+    "branch": "agent/c04-ch16-p01-v2-0",
+    "path": "05-cases/c04-qingjiang-stone-book/ch16-detail-development/page-by-page/P01-v2.0/",
+    "remote_blob_matches": {
+      "CH16-P01_v2_0.svg": "7f6e1ffc59c5e6c404170de0d61fb741e60717c5",
+      "CH16-P01_mobile_v2_0.svg": "faecd088aea21b52b4a754fcca9cef15be7b026e",
+      "CH16-P01_v2_0.html": "4cdedf28bb0a30492f83ab4c6440238a34499728"
+    }
+  }
+}
