@@ -2,7 +2,7 @@
   "project":"PRJ-C04-QINGJIANG-SHISHU",
   "version":"v1.14",
   "scope":"CH07-CH09 / 032-046",
-  "producer_bundle":{"name":"C04_WEB_v1_14_CH07_CH09_SOURCE_ASSET_READBACK.zip","bytes":17621785,"sha256":"32250ad2d17edb747f5ac83d0c2f7b1203088cab2e2b64b2c205fdb73d0ccfff"},
+  "producer_bundle":{"name":"C04_WEB_v1_14_CH07_CH09_SOURCE_ASSET_READBACK.zip","bytes":16916637,"sha256":"32250ad2d17edb747f5ac83d0c2f7b1203088cab2e2b64b2c205fdb73d0ccfff"},
   "core_source_sha256":{
     "html":"89dbf8480e7d6a832107d2c79c589112b8a8c71289d81e0000ab021bd4bc3c11",
     "css":"3b3214fcc878be406ca697d50e1571db3eac1a18c975a785760e14b9dfb135a3",
