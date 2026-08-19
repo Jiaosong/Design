@@ -1,5 +1,11 @@
 # CH08｜总体策略与体验系统｜v0.3 Full-source 深化
 
+> **CURRENT POINTER｜2026-08-19**  
+> 本文件保留为 `chapter-content-sync/v0.3` 的 compact full-source snapshot。最新 CH08 authoring frontier 已深化为：  
+> `05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md`  
+> 唯一当前入口：`ch08-currentization/CURRENT.md/.json`。  
+> v0.4 不删除本文件；它在本文件基础上继续完成 Journey Phase Atlas、Normal/Override、Need-type intervention、现有设计对象 Deployment、User Modifier、Recovery、Handoff 与 Project Proof Boundary。
+
 Role: `MASTER INTEGRATION STRATEGY`。不是第二套子系统，也不重新定义 CH09–CH15。
 
 ## 1｜Experience Spine｜已有体验母线
