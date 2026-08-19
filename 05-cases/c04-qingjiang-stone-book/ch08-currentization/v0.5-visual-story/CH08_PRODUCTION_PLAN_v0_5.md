@@ -1,6 +1,6 @@
 # CH08｜Image-led Multi-surface Production Plan｜v0.5
 
-State: `ACTIVE AUTHORING PLAN / NO SELF-KEEP / NO_PROMOTION`  
+State: `ACTIVE AUTHORING PLAN / B01+B02 EXECUTED / NO SELF-KEEP / NO_PROMOTION`  
 Authority: `CH08 v0.4 Master Design Strategy` + `CH08 v0.5 Visual Narrative Architecture`  
 Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`
 
@@ -24,31 +24,39 @@ Hard production rules:
 ## 1｜Batch sequence
 
 ### B01｜P01 MASTER VISUAL PROPOSITION｜S01–S03
-Status: `IN PRODUCTION / FIRST PIXELS EXECUTED`.
+Status: `EXECUTED AUTHORING CANDIDATE / PIXEL READBACK COMPLETE / DRIVE + GITHUB PERSISTED / PROFESSIONAL DESIGN REVIEW PENDING`.
 
 - S01 — existing Qingjiang Hero shown full-frame, no crop that damages embedded evidence/text.
 - S02 — Three Ways of Seeing: Whole / Relation / Body using existing Boat, Hero/Cable and R13 sources.
 - S03 — Experience Spine as Journey using `01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png`, with rules only after the journey visual.
 
+Executed repair: an R0 S01 layout that cropped mature Hero evidence was rejected; S01 now preserves the full mature visual.
+
 Gate: first-read must be Qingjiang/journey, not system language.
 
 ### B02｜P02 WHOLE / TERRITORY｜S04–S06
-Dependencies: `CH09 Boat v4.6`, strongest territory/network source, no-design condition.
+Status: `EXECUTED AUTHORING CANDIDATE / PIXEL READBACK COMPLETE / DRIVE + GITHUB PERSISTED / PROFESSIONAL DESIGN REVIEW PENDING`.
+
+Dependencies used: `CH09 Boat v4.6`, current C22 territory/network evidence, current mature Qingjiang Hero.
 
 - S04 Water-scale encounter.
 - S05 Territory relation.
 - S06 When landscape is already sufficient: `NO DESIGN` as a visible design consequence, not a text disclaimer.
 
-Gate: Boat remains conditional; no invented operation/schedule/route precision.
+Executed repair: S06 R0 exposed orphaned embedded Hero copy after an overly loose crop; current S06 uses a clean right/central landscape presentation crop without editing source geometry.
+
+Gate: Boat remains conditional; no invented operation/schedule/route precision. S05 remains `NOT SURVEY / NOT GEOGRAPHIC POSITION`. S06 demonstrates a chapter-level intervention rule and does not claim a no-design decision at a specific field node.
 
 ### B03｜P03 RELATION / CROSS｜S07–S09
+Status: `NEXT / SOURCE GATE ACTIVE / PIXELS NOT YET AUTHORIZED`.
+
 Dependencies: strongest current Cable-specific visual + locked route/spatial relation source.
 
 - S07 Before crossing.
 - S08 Moving relation / cross-river viewpoint.
 - S09 After crossing / re-orient.
 
-Gate: resolve Cable-specific primary visual before MAIN-quality composition. Master Journey may support but cannot silently substitute for a stronger current source.
+Gate: resolve Cable-specific primary visual before MAIN-quality composition. Master Journey or a generic cable image may support source search but cannot silently substitute as the primary visual.
 
 ### B04｜P04 BODY / WALK｜S10–S13
 Dependencies: strongest current WALK/body-scale visual, R13 current four-frame, recovery visual.
@@ -129,11 +137,11 @@ Producer pixel review is not Professional Design Review. CI/manifest/hash existe
 
 ## 4｜Current execution point
 
-`B01 / P01 / S01–S03` is the active production batch.
+Executed and durably persisted:
+- `B01 / P01 / S01–S03`;
+- `B02 / P02 / S04–S06`.
 
-Current first-pixel decisions:
-- S01 preserves the existing mature Hero full-frame after rejecting an initial crop that damaged embedded source text.
-- S02 places the master thesis on an image-led three-scale composition.
-- S03 shows the mature Journey source before strategy consequences.
+Current active work:
+`B03 / P03 / SOURCE GATE` — resolve the strongest Cable-specific current visual and a compatible locked relation source **before** authoring S07–S09 pixels.
 
-Next production after B01 review: `B02 / P02 WHOLE / TERRITORY`.
+This is a quality gate, not a pause in the chapter: P04–P09 dependencies remain listed and may be source-resolved in parallel, but P03 frontstage pixels cannot be promoted from a generic substitute.
