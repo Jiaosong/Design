@@ -1,0 +1,49 @@
+{
+  "object": "CH16-P01",
+  "version": "v2.0",
+  "page_only": true,
+  "producer_state": "EXECUTED / SELF-CHECKED / INDEPENDENT REVIEW PENDING",
+  "structural": {
+    "svg_xml_parse": "PASS",
+    "desktop_viewBox": "0 0 1920 1080",
+    "mobile_viewBox": "0 0 390 2070",
+    "desktop_text_elements": 46,
+    "desktop_image_elements": 0,
+    "desktop_script_elements": 0,
+    "desktop_external_hrefs": 0,
+    "mobile_text_elements": 36,
+    "mobile_image_elements": 0,
+    "vector_text": "PASS",
+    "raster_embeds": "NONE"
+  },
+  "semantic_checks": {
+    "actions_present": [
+      "MOVE",
+      "LEAN",
+      "PERCH",
+      "OBSERVE",
+      "MAINTAIN"
+    ],
+    "source_identity": "ODB-02",
+    "source_carrier_state": "SOURCE_CARRIER_AUTHORITY",
+    "source_bytes_for_local_embed": "UNAVAILABLE",
+    "derived_action_layer": "SCHEMATIZE_SEPARATELY / DIAGRAM_ONLY",
+    "unsupported_dimensions_carried_forward": false,
+    "v1_2_1200_160_975_removed_from_P01": true,
+    "source_board_950_1050_80kg_not_used_as_current_control": true,
+    "R06_reopen": false
+  },
+  "browser_readback_file": "CH16-P01_v2_0_BROWSER_READBACK.json",
+  "attack_tests": {
+    "label_off": "GENERATED / REQUIRES HUMAN VISUAL READBACK",
+    "grayscale": "GENERATED / REQUIRES HUMAN VISUAL READBACK",
+    "50pct": "GENERATED / REQUIRES HUMAN VISUAL READBACK",
+    "480x270": "GENERATED / REQUIRES HUMAN VISUAL READBACK"
+  },
+  "artifact_review": {
+    "common": "OBJECTIVE CHECKS EXECUTED; QUALITATIVE PROFESSIONAL VERDICT NOT SELF-ISSUED",
+    "AR-S01_Drawing": "OBJECTIVE CHECKS EXECUTED; INDEPENDENT PROFESSIONAL REVIEW PENDING",
+    "AR-S09_ReleasePackage": "NOT TRIGGERED — no release package / no independent verdict"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
