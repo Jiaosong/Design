@@ -1,0 +1,63 @@
+{
+  "schema": "C04_WEB_CURRENT_FRONTIER_OVERLAY_v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "base_snapshot": {
+    "source_pr": "#294",
+    "head_sha": "aa5379bcffbb565f7262700538775be797d0a3bc",
+    "state": "DRAFT AUTHORING SUCCESSOR / STACKED MAPPING BASE"
+  },
+  "count_contract": {
+    "chapter_count": 20,
+    "protected_page_ids": 52,
+    "base_authoring_units": 111,
+    "unique_candidate_authoring_ids": 34,
+    "n_series_allocated": 0,
+    "canonical_page_count": "NOT_YET_LOCKED",
+    "current_complete_integrated_web_surface_count": "NOT_YET_REGISTERED"
+  },
+  "frontiers": {
+    "CH08": "v0.4 Master Design Strategy / WHOLE → RELATION → BODY",
+    "CH12": "v0.4 Selected Scene Proof / A01–A09",
+    "CH14": "P01–P08 base + multi-surface execution / P09–P15 candidates",
+    "ROUTE": "ROUTE-03 LOCKED CURRENT",
+    "R06": "FINISHED / FROZEN / NO REOPEN",
+    "APP": "SEPARATE AUTHORITY / WEB CONSUME ONLY"
+  },
+  "objects": [
+    {"object_id":"QJ-REAL-01","name":"真实清江山水与游程","primary_chapter":"CH08","primary_role":"MASTER_EXPERIENCE","cross":["CH00","CH01","CH02","CH05","CH09","CH12","CH19"],"state":"ACTIVE / PROJECT SUBJECT","boundary":"REAL QINGJIANG FIRST"},
+    {"object_id":"ROUTE-03","name":"Current Route Geometry","primary_chapter":"CH09","primary_role":"FUNCTIONAL_ROUTE_AUTHORITY","cross":["CH05","CH08","CH12","CH14","CH19"],"state":"KEEP / LOCKED CURRENT","boundary":"NO SECOND ROUTE GEOMETRY"},
+    {"object_id":"RT-FAMILY","name":"Route / Return Physical Touchpoint Family","primary_chapter":"CH09","primary_role":"FUNCTIONAL_TOUCHPOINT_FAMILY","cross":["CH12","CH14","CH19","CH16","CH17","CH18"],"state":"NEW / DEVELOP","boundary":"LOCATION / OPERATION OPEN"},
+    {"object_id":"CABLE-CHOR","name":"Cable Experience Choreography","primary_chapter":"CH09","primary_role":"MOBILITY_EXPERIENCE","cross":["CH08","CH12","CH18"],"state":"DEVELOP / NO OBJECT ASSUMED","boundary":"NO MID-CROSSING FORCED UI OR NEW OBJECT"},
+    {"object_id":"R01-R13","name":"Thirteen Imprints","primary_chapter":"CH10","primary_role":"CONTENT_INTERACTION_OWNER","cross":["CH03","CH08","CH11","CH12","CH15","CH18"],"state":"KEEP / DEEPEN","boundary":"ROUTE != CONTENT ORDER / PARTIAL IS COMPLETE"},
+    {"object_id":"ODB-01","name":"清江石书：山水服务探索界面","primary_chapter":"CH11","primary_role":"DIGITAL_SOURCE_AND_IMPLEMENTATION","cross":["CH08","CH09","CH10","CH12","CH15","CH16","CH18"],"state":"ACTIVE ORIGINAL SOURCE / CURRENTIZE","boundary":"LATER APP DOES NOT REPLACE SOURCE IDENTITY"},
+    {"object_id":"APP-CURRENT","name":"Digital Companion / App","primary_chapter":"CH11","primary_role":"BEHAVIOR_IA_UI","cross":["CH08","CH09","CH10","CH12","CH14","CH15","CH19","CH16","CH18"],"state":"KEEP / DEEPEN / CANDIDATE LINEAGE","boundary":"ROUTE-03 BOUND / NO MISSION-COMPLETION AUTHORITY"},
+    {"object_id":"ODB-02","name":"P02 栏杆式可拆卸倚靠休息板","primary_chapter":"CH13","primary_role":"BODY_RECOVERY_SUPPORT","cross":["CH08","CH12","CH16","CH17","CH18"],"state":"KEEP / HIGH PRIORITY / NOT LOCATED","boundary":"BODY SUPPORT != FALL PROTECTION"},
+    {"object_id":"ODB-03A-B","name":"山体流体休憩装置 family","primary_chapter":"CH13","primary_role":"LONGER_REST_CANDIDATE","cross":["CH08","CH12","CH16","CH17","CH18"],"state":"PRESERVE / COMPETE / LOCATION HOLD","boundary":"NO V3 FORM EXPANSION BEFORE SITE-FIT"},
+    {"object_id":"ODI-01","name":"步步生光","primary_chapter":"CH13","primary_role":"TRANSIENT_FEEDBACK","cross":["CH08","CH12","CH16","CH17","CH18"],"state":"KEEP CONCEPT / SELECTION HOLD","boundary":"STEP -> RESPONSE -> FADE / NO SCORE-COLLECT"},
+    {"object_id":"ODB-04B","name":"清风吟2 Wind Tree / onsite sensory","primary_chapter":"CH13","primary_role":"ONSITE_WIND_SENSORY","cross":["CH02","CH08","CH12","CH14","CH16","CH17","CH18"],"state":"HOLD / TEST","boundary":"EXISTING SENSORY RESOURCE > GENERATED EFFECT"},
+    {"object_id":"BRAND-CH14","name":"清江石书 Brand / VI","primary_chapter":"CH14","primary_role":"IDENTITY_GRAMMAR","cross":["CH09","CH11","CH13","CH15","CH19","CH18"],"state":"ACTIVE SYSTEM / DESIGN GATE SEPARATE","boundary":"NO ROUTE / SAFETY / LIVE STATE AUTHORITY"},
+    {"object_id":"ODI-02","name":"清江旅记 / Qingjiang Journal","primary_chapter":"CH15","primary_role":"MEMORY_HERO","cross":["CH09","CH11","CH14","CH19","CH16","CH17","CH18"],"state":"KEEP / MEMORY MAIN / REQUIRED","boundary":"PARTIAL IS COMPLETE / NOT TASK BOOK"},
+    {"object_id":"ODI-03","name":"我的石书 / My Book","primary_chapter":"CH15","primary_role":"MEMORY_OBJECT_MODEL","cross":["CH11","CH19","CH16","CH18"],"state":"KEEP / ONE IDENTITY","boundary":"CH11 OWNS UI IMPLEMENTATION ONLY"},
+    {"object_id":"ODB-04A","name":"清风吟1 keepsake / packaging","primary_chapter":"CH15","primary_role":"TAKE_AWAY_PRODUCT","cross":["CH14","CH19","CH16","CH18"],"state":"KEEP / OPTIONAL MEMORY FAMILY","boundary":"NOT COMPLETION REWARD"},
+    {"object_id":"ODB-04C","name":"清风吟3 sensory-memory narrative","primary_chapter":"CH15","primary_role":"MEMORY_NARRATIVE","cross":["CH13","CH19","CH18"],"state":"KEEP / FAMILY CONTINUITY","boundary":"NOT TEN SITE TASKS"},
+    {"object_id":"ODI-04","name":"清江一线","primary_chapter":"CH15","primary_role":"SECONDARY_MEMORY","cross":["CH14","CH19","CH18"],"state":"SUPPORT / OPTIONAL","boundary":"NO NEW MEMORY UNIVERSE"},
+    {"object_id":"ODI-05","name":"清江雾气","primary_chapter":"CH15","primary_role":"SENSORY_MEMORY","cross":["CH03","CH19","CH18"],"state":"SUPPORT / OPTIONAL","boundary":"NO HEALTH / SELENIUM CLAIM"},
+    {"object_id":"ODI-06","name":"红花峰崽","primary_chapter":"CH15","primary_role":"FAMILY_CHILD_OPTIONAL_IP","cross":["CH04","CH19","CH18"],"state":"SUPPORT / OPTIONAL","boundary":"NOT ADULT ROUTE MASCOT OR MISSION MASTER"},
+    {"object_id":"SC-R01","name":"R01 Cable Scene","primary_chapter":"CH12","primary_role":"SCENE_INTEGRATION","cross":["CH08","CH09","CH10","CH11","CH18"],"state":"KEEP / SCENE PROOF","boundary":"MOVING VIEW FIRST"},
+    {"object_id":"SC-R06","name":"R06 Experience","primary_chapter":"CH12","primary_role":"FROZEN_SCENE_INTEGRATION","cross":["CH08","CH10","CH11","CH13","CH16","CH17","CH18"],"state":"FINISHED / FROZEN / NO REOPEN","boundary":"LANDSCAPE FIRST -> RELATION REVEAL"},
+    {"object_id":"SC-R13","name":"R13 Passage / Return Scene","primary_chapter":"CH12","primary_role":"WITHDRAWAL_SCENE_INTEGRATION","cross":["CH08","CH09","CH10","CH11","CH19","CH18"],"state":"KEEP AFTER REVISION / SOURCE-FIELD OPEN","boundary":"PASS: BODY+ROUTE ON / READ+PLAY OFF"},
+    {"object_id":"C22-C23-MDL","name":"C22/C23/model descendants","primary_chapter":"CH17","primary_role":"PROOF_ONLY","cross":["CH12","CH13","CH16","CH18"],"state":"SUPPORT / PROOF","boundary":"TECHNICAL OR MODEL PASS DOES NOT OWN DESIGN SOURCE"}
+  ],
+  "mapping_rules": [
+    "ONE OBJECT = ONE PRIMARY OWNER",
+    "PRIMARY OWNER != ONLY APPEARANCE",
+    "SCENE APPEARANCE != SOURCE OWNERSHIP",
+    "NO SECOND ROUTE GEOMETRY",
+    "NO PID BY GUESS",
+    "MERGE IS NEVER DEFAULT",
+    "PROCESS-SUPPORT DOES NOT DELETE PROTECTED ID",
+    "NEW_CANDIDATE DOES NOT ALLOCATE N-SERIES"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove": ["final canonical page count","finished-pixel Design PASS","field validation","engineering approval","project promotion"]
+}
