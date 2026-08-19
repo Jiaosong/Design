@@ -4,7 +4,8 @@
   "policy_revision": "1.1",
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
-  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, owner selection, DAG, artifacts, adapters, execution, regression, readback, review, flow completion and drift.",
+  "current_extension_date": "2026-08-19",
+  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, existing visual authority/image consumption when applicable, owner selection, DAG, artifacts, adapters, execution, regression, readback, review, flow completion and drift.",
   "required_core_fields": [
     "receipt_id",
     "status",
@@ -27,7 +28,7 @@
     "EXR-20260818-PR248-CONTRACT-LAYER",
     "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"
   ],
-  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION",
+  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES_MUST_ADDITIONALLY_INCLUDE_IMAGE_CONSUMPTION",
   "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
   "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
   "authority_required_fields": [
@@ -103,6 +104,7 @@
     "AUTHORITY_PREFLIGHT",
     "STICKY_CONSTRAINT_RESOLUTION",
     "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+    "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
     "REQUIRED_NATIVE_OUTPUT_DEFINITION",
     "CAPABILITY_AND_MINIMUM_OWNER_SET",
     "REAL_EXECUTION",
@@ -112,6 +114,9 @@
     "INDEPENDENT_REVIEW_AS_APPLICABLE",
     "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
   ],
+  "conditional_flow_phases": {
+    "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "REQUIRED_WHEN_VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE"
+  },
   "full_flow_core_phases": [
     "AUTHORITY_PREFLIGHT",
     "STICKY_CONSTRAINT_RESOLUTION",
@@ -154,6 +159,22 @@
     "current_state",
     "does_not_prove"
   ],
+  "image_consumption_extension": {
+    "required_when": "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE",
+    "register_contract": "00-governance/runtime/OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.json",
+    "fields": [
+      "register_path_or_authority",
+      "lookup_performed",
+      "reservations_or_consumptions",
+      "conflicts",
+      "blocked_assets",
+      "release_actions",
+      "verdict"
+    ],
+    "not_applicable_allowed_for": ["NO_CONTENT_IMAGES", "SYSTEM_REUSABLE_ONLY"],
+    "conflict_verdict": "BLOCK_SELECT_ANOTHER_IMAGE",
+    "derivative_identity_must_be_inherited": true
+  },
   "adapter_required_when_used": [
     "adapter_id",
     "canonical_tool_id",
@@ -203,6 +224,9 @@
     "sticky_user_constraints_precede_tool_and_creation_routing",
     "generic_continue_does_not_revoke_constraint_lock",
     "full_flow_means_all_applicable_phases_not_all_skills",
+    "visual_content_image_binding_requires_image_consumption_lookup_and_record",
+    "duplicate_semantic_content_image_across_independent_consumers_is_blocked",
+    "presentation_derivative_does_not_reset_semantic_image_identity",
     "closed_or_complete_claim_requires_completion_gate_pass",
     "plan_artifact_pr_ci_self_check_render_or_regression_alone_do_not_equal_complete",
     "producer_self_check_is_not_independent_review",
