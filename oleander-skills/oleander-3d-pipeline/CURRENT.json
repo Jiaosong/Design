@@ -39,6 +39,26 @@
         "core_rule": "METRIC_MUST_DIRECTLY_EVALUATE_THE_NAMED_SEMANTIC_RELATION",
         "benchmark_provenance": "PR-208_PRIMARY_FORM_IDENTITY_FRONT_HOOD_FENDER",
         "does_not_prove": ["reference_fidelity","design_keep"]
+      },
+      {
+        "id": "BLENDER_5_2_LTS_RUNTIME_V1",
+        "protocol": "oleander-skills/oleander-3d-pipeline/BLENDER_5_2_LTS_RUNTIME_PROTOCOL_v1.md",
+        "contract": "oleander-skills/oleander-3d-pipeline/contracts/BLENDER_RUNTIME_CONTRACT_v1.json",
+        "validator": "oleander-skills/oleander-3d-pipeline/tools/validate_blender_runtime.py",
+        "tests": "00-governance/control-plane/tests/test_oleander_blender_runtime_contract.py",
+        "state": "CANDIDATE_CONTRACT_MACHINE_VALIDATED_RUNTIME_EXECUTION_HOLD",
+        "core_rule": "VERSION_BUILD_PLATFORM_DEVICE_EXTENSIONS_COLOR_DEPENDENCIES_PROCEDURAL_RENDER_IO_OUTPUT_READBACK_ARE_BOUND_PER_RUN",
+        "official_baseline": "BLENDER_5_2_LTS_PREFERRED_FOR_NEW_WORK_UNLESS_PROJECT_DEPENDENCY_REQUIRES_ANOTHER_VERIFIED_VERSION",
+        "ci_evidence": {
+          "head_commit": "038d0e574f6ebc9399286113169d022d7849134b",
+          "control_plane_run": 32267479047,
+          "ai_governance_run": 32267478540,
+          "control_plane_total_tests": 69,
+          "blender_runtime_contract_tests": 8,
+          "result": "SUCCESS"
+        },
+        "runtime_execution_evidence": "HOLD_NO_BLENDER_EXECUTABLE_IN_CURRENT_AGENT_ENVIRONMENT",
+        "does_not_prove": ["actual_blender_5_2_runtime_execution","render_quality","physical_material_truth","engineering_validity","manufacturing_readiness","design_keep"]
       }
     ],
     "merged_surface_system": {"version":"v1.20.0","path":"90-shared/toolchains/blender-surface-system/v1.20.0/","state":"MERGED_CURRENT_COMPATIBLE_BASELINE"}
@@ -52,6 +72,6 @@
   ],
   "notion": {"owner_title":"SYS-BLENDER-SURFACE｜OLEANDER Blender Surface System","owner_page_id":"3bab86be-5c47-8194-9361-f389b3ec102d","owner_url":"https://app.notion.com/p/3bab86be5c4781949361f389b3ec102d?pvs=204","broken_legacy_canonical_entry_page_id":"3b9b86be-5c47-81df-b014-e904e06fd1af","broken_legacy_state":"DELETED_DO_NOT_USE_AS_CURRENT"},
   "drive": {"shared_folder_id":"1DbSzwAkEV1gA0VRs_Mv2VFar9TzlCJew","shared_folder_url":"https://drive.google.com/drive/folders/1DbSzwAkEV1gA0VRs_Mv2VFar9TzlCJew","stable_readme_id":"1CL6if6pL0Cy__TDOdmEGMdWnPdoQ_p1z","stable_readme_url":"https://drive.google.com/file/d/1CL6if6pL0Cy__TDOdmEGMdWnPdoQ_p1z/view?usp=drivesdk","v1_21_current_record":"NOT_FOUND_DO_NOT_FABRICATE"},
-  "hard_rules": ["NO_TIMESTAMP_AS_AUTHORITY","NO_DELETED_NOTION_PAGE_AS_CANONICAL_ENTRY","NO_CANDIDATE_PR_AS_SILENT_MAIN_CAPABILITY","NO_VERSIONED_DRIVE_REPORT_AS_CURRENT_BY_RECENCY","NO_SOURCE_DERIVED_DIAGNOSTIC_RENDER_GATE_COLLAPSE","NO_MACHINE_PASS_TO_DESIGN_PASS","NO_HISTORICAL_OBJECT_NAME_AS_SEMANTIC_CAPABILITY","NO_REQUIRED_CAPABILITY_MISCLASSIFIED_AS_STAGE_HOLD","NO_LATER_STAGE_METRIC_SET_INHERITED_WITHOUT_STAGE_CHECK","NO_SEMANTIC_CLAIM_FROM_UNRELATED_PROXY_METRIC","NO_CARRIER_SCOPE_MISMATCH_AS_METRIC_PASS","NO_QUALITY_FAIL_RELABELED_AS_RUNTIME_FAIL","NO_CURRENT_POINTER_UPDATE_WITHOUT_CROSS_SYSTEM_READBACK"],
-  "does_not_prove": ["DESIGN_KEEP","MAIN_KEEP","CLASS_A","REFERENCE_FIDELITY","FIELD_VALIDATION","ENGINEERING_VALIDITY","MANUFACTURING_READINESS","PHYSICAL_CMF_TRUTH"]
+  "hard_rules": ["NO_TIMESTAMP_AS_AUTHORITY","NO_DELETED_NOTION_PAGE_AS_CANONICAL_ENTRY","NO_CANDIDATE_PR_AS_SILENT_MAIN_CAPABILITY","NO_VERSIONED_DRIVE_REPORT_AS_CURRENT_BY_RECENCY","NO_SOURCE_DERIVED_DIAGNOSTIC_RENDER_GATE_COLLAPSE","NO_MACHINE_PASS_TO_DESIGN_PASS","NO_HISTORICAL_OBJECT_NAME_AS_SEMANTIC_CAPABILITY","NO_REQUIRED_CAPABILITY_MISCLASSIFIED_AS_STAGE_HOLD","NO_LATER_STAGE_METRIC_SET_INHERITED_WITHOUT_STAGE_CHECK","NO_SEMANTIC_CLAIM_FROM_UNRELATED_PROXY_METRIC","NO_CARRIER_SCOPE_MISMATCH_AS_METRIC_PASS","NO_QUALITY_FAIL_RELABELED_AS_RUNTIME_FAIL","NO_CURRENT_POINTER_UPDATE_WITHOUT_CROSS_SYSTEM_READBACK","NO_NETWORK_ONLY_REQUIRED_BLENDER_DEPENDENCY","NO_UNVERIFIED_BLENDER_IO_SUPPORT_CLAIM","NO_BLENDER_SIMULATION_PROMOTED_TO_PHYSICAL_TRUTH","NO_CONTROLLED_COMPARISON_COLOR_PIPELINE_DRIFT","NO_BLENDER_CONTRACT_TEST_PASS_PROMOTED_TO_RUNTIME_EXECUTION_PASS"],
+  "does_not_prove": ["DESIGN_KEEP","MAIN_KEEP","CLASS_A","REFERENCE_FIDELITY","FIELD_VALIDATION","ENGINEERING_VALIDITY","MANUFACTURING_READINESS","PHYSICAL_CMF_TRUTH","ACTUAL_BLENDER_5_2_RUNTIME_EXECUTION"]
 }
