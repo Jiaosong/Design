@@ -24,6 +24,17 @@
 - derivative SHA256: `e7ff448b8dd8c340602c361913175ee40542b7ea2191d2908aa41c7dc8b13887`
 - does not prove: exact R05 identity re-verification, field geometry, live operation, final Hero tech readiness.
 
+## Recoverability / persistence
+The exact validated runtime-capture provenance ZIP from GitHub Actions was persisted into the C04 Google Drive project folder:
+- Drive file: `C04_R05_OW-20230616-2a923422a_RUNTIME_CAPTURE_PROVENANCE.zip`
+- Drive ID: `1XiKVRIXAeeDByE21WUWJeGQD-1zW9CvK`
+- bytes: `3,879,017`
+- SHA256: `8f268b485b9676224f8083908a239e4730c6e3f0d73cc41d44a43eda72745870`
+
+This durable provenance archive allows the P01 presentation derivative to be reconstructed from the same controlled source lineage after the temporary GitHub Actions artifact expires. It does not promote the media to Final Hero authority.
+
+The complete local CH01 Web bundle is user-download ready. Direct Drive persistence of the locally assembled mixed bundle remains a separate carrier step and is not silently claimed by this receipt.
+
 ## Project-wide uniqueness audit
 Included: `C04_WEB_IMAGE_USE_LEDGER_v0_1.json`.
 Known audited duplicate source groups exist in older/current carrier lineage and remain REVISE. The new CH01 P01 source is unique inside the currently audited scope.
