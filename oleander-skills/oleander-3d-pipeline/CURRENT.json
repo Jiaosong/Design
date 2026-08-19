@@ -1,7 +1,7 @@
 {
   "schema": "oleander.3d-pipeline.current-routing.v1",
   "status": "CANDIDATE_SYNC",
-  "date": "2026-08-19",
+  "date": "2026-08-20",
   "skill_id": "oleander-3d-pipeline",
   "authority_rule": "CURRENT_BY_AUTHORITY_NOT_TIMESTAMP",
   "core_separation": [
@@ -109,14 +109,61 @@
           "contract_tests": 7,
           "result": "SUCCESS"
         },
-        "does_not_prove": [
-          "experiment_success",
-          "reference_fidelity",
-          "design_keep",
-          "class_a",
-          "engineering_validity",
-          "manufacturing_readiness"
-        ]
+        "does_not_prove": ["experiment_success", "reference_fidelity", "design_keep", "class_a", "engineering_validity", "manufacturing_readiness"]
+      },
+      {
+        "id": "DERIVED_EDIT_HOST_PRESERVATION_V1",
+        "protocol": "oleander-skills/oleander-3d-pipeline/DERIVED_EDIT_HOST_PRESERVATION_PROTOCOL_v1.md",
+        "contract": "oleander-skills/oleander-3d-pipeline/contracts/DERIVED_EDIT_HOST_PRESERVATION_CONTRACT_v1.json",
+        "validator": "oleander-skills/oleander-3d-pipeline/tools/validate_derived_edit_host_preservation.py",
+        "tests": "00-governance/control-plane/tests/test_oleander_3d_derived_edit_host_preservation.py",
+        "state": "CANDIDATE_MACHINE_VALIDATED",
+        "core_rule": "OPERATOR_APPLIED_NE_GEOMETRY_CHANGED_NE_LOCAL_EDIT_SUCCEEDED_NE_HOST_PRESERVED_NE_DESIGN_PASS",
+        "benchmark_provenance": "PR-208_V60_REAR_GLASS_BOOLEAN_8637_TO_96_FACES",
+        "ci_evidence": {
+          "control_plane_run": 32272492254,
+          "ai_governance_run": 32272492192,
+          "contract_tests": 8,
+          "result": "SUCCESS"
+        },
+        "does_not_prove": ["reference_fidelity", "class_a", "production_aperture_topology", "design_keep"]
+      },
+      {
+        "id": "MEASUREMENT_COVERAGE_SUFFICIENCY_V1",
+        "protocol": "oleander-skills/oleander-3d-pipeline/MEASUREMENT_COVERAGE_SUFFICIENCY_PROTOCOL_v1.md",
+        "contract": "oleander-skills/oleander-3d-pipeline/contracts/MEASUREMENT_COVERAGE_SUFFICIENCY_CONTRACT_v1.json",
+        "validator": "oleander-skills/oleander-3d-pipeline/tools/validate_measurement_coverage_sufficiency.py",
+        "tests": "00-governance/control-plane/tests/test_oleander_3d_measurement_coverage_sufficiency.py",
+        "state": "CANDIDATE_MACHINE_VALIDATED",
+        "core_rule": "CARRIER_CONGRUENT_NE_MEASUREMENT_COVERAGE_SUFFICIENT_NE_CLAIM_PROVEN_NE_DESIGN_PASS",
+        "benchmark_provenance": "PR-208_V59_SIDE_13_9MM_PASS_WITH_FRONT_REAR_AND_HELD_OUT_FAILURE",
+        "ci_evidence": {
+          "control_plane_run": 32274708308,
+          "ai_governance_run": 32274708322,
+          "contract_tests": 7,
+          "result": "SUCCESS"
+        },
+        "does_not_prove": ["metric_correctness", "reference_fidelity", "design_keep"]
+      },
+      {
+        "id": "DESTRUCTIVE_EDIT_PREFLIGHT_V1",
+        "protocol": "oleander-skills/oleander-3d-pipeline/DESTRUCTIVE_EDIT_PREFLIGHT_PROTOCOL_v1.md",
+        "contract": "oleander-skills/oleander-3d-pipeline/contracts/DESTRUCTIVE_EDIT_PREFLIGHT_CONTRACT_v1.json",
+        "validator": "oleander-skills/oleander-3d-pipeline/tools/validate_destructive_edit_preflight.py",
+        "tests": "00-governance/control-plane/tests/test_oleander_3d_destructive_edit_preflight.py",
+        "state": "CANDIDATE_MACHINE_VALIDATED",
+        "core_rule": "PREDICATE_MATCH_NE_EXCLUSIVE_OWNER_NE_SAFE_TO_EDIT_NE_EDIT_SUCCEEDED_NE_HOST_PRESERVED_NE_DESIGN_PASS",
+        "hard_rule": "FIRST_MATCH_CODE_ORDER_NE_SEMANTIC_OWNERSHIP__BOUNDARY_STRADDLING_PRIMITIVE_REQUIRES_SPLIT_OR_PARTITION",
+        "benchmark_provenance": "PR-208_V63_TO_V67_APERTURE_OWNER_COVERAGE_AND_CANONICAL_BOUNDARY_STRADDLE",
+        "ci_evidence": {
+          "base_control_plane_run": 32276586424,
+          "base_ai_governance_run": 32276586566,
+          "boundary_extension_control_plane_run": 32277088247,
+          "boundary_extension_ai_governance_run": 32277088269,
+          "contract_tests": 11,
+          "result": "SUCCESS"
+        },
+        "does_not_prove": ["edit_success", "post_edit_host_preservation", "aperture_closure", "reference_fidelity", "design_keep"]
       }
     ],
     "merged_surface_system": {
@@ -128,7 +175,7 @@
   "candidate_extensions": [
     {"id": "PR-173", "role": "BLENDER_SURFACE_V1_21_SOURCE_ADAPTER_AND_RECEIPT_VALIDATOR", "state": "OPEN_DRAFT_CANDIDATE", "may_replace_current": false},
     {"id": "PR-198", "role": "REAL_R29A_REFINED_SKILL_VALIDATION", "state": "OPEN_DRAFT_MACHINE_EVIDENCE", "may_replace_current": false},
-    {"id": "PR-208", "role": "REFERENCE_REPRODUCTION_SPECIALIST_EXTENSION_AND_FAILURE_TEST", "state": "OPEN_DRAFT_CANDIDATE", "current_benchmark_range": "V60_PLUS", "may_replace_current": false},
+    {"id": "PR-208", "role": "REFERENCE_REPRODUCTION_SPECIALIST_EXTENSION_AND_FAILURE_TEST", "state": "OPEN_DRAFT_CANDIDATE", "current_benchmark_range": "V69_PLUS", "may_replace_current": false},
     {"id": "PR-227", "role": "CAMERA_CLAIM_GATE_TRAINING_PROVENANCE", "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULE_INTEGRATED_IN_PR_293", "may_replace_current": false},
     {"id": "PR-276", "role": "INTERACTION_AND_LIFECYCLE_VISUAL_GATE_TRAINING_PROVENANCE", "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULES_INTEGRATED_IN_PR_293", "may_replace_current": false}
   ],
@@ -158,6 +205,8 @@
     "NO_LATER_STAGE_METRIC_SET_INHERITED_WITHOUT_STAGE_CHECK",
     "NO_SEMANTIC_CLAIM_FROM_UNRELATED_PROXY_METRIC",
     "NO_CARRIER_SCOPE_MISMATCH_AS_METRIC_PASS",
+    "NO_MEASUREMENT_COVERAGE_PARTIAL_PROMOTED_TO_WHOLE_CLAIM",
+    "NO_FAILED_CRITICAL_METRIC_AVERAGED_AWAY",
     "NO_QUALITY_FAIL_RELABELED_AS_RUNTIME_FAIL",
     "NO_CURRENT_POINTER_UPDATE_WITHOUT_CROSS_SYSTEM_READBACK",
     "NO_NETWORK_ONLY_REQUIRED_BLENDER_DEPENDENCY",
@@ -168,6 +217,11 @@
     "NO_WORKFLOW_SUCCESS_AS_TARGET_EXECUTION_WITHOUT_INVOCATION_WITNESS",
     "NO_SCRIPT_EXISTENCE_AS_RUNTIME_EXECUTION",
     "NO_NEGATIVE_EXPERIMENT_RELABELED_AS_INFRA_FAILURE_WHEN_EXECUTION_VALID",
+    "NO_OPERATOR_SUCCESS_AS_HOST_PRESERVATION",
+    "NO_FIRST_MATCH_CODE_ORDER_AS_SEMANTIC_OWNERSHIP",
+    "NO_DESTRUCTIVE_EDIT_WITH_REQUIRED_OWNER_COVERAGE_MISSING",
+    "NO_DESTRUCTIVE_EDIT_WITH_UNRESOLVED_MULTI_OWNER_CONFLICT",
+    "NO_WHOLE_FACE_OWNER_ASSIGNMENT_ACROSS_CANONICAL_BOUNDARY_WITHOUT_SPLIT",
     "NO_MACHINE_EXECUTION_SELF_PROMOTED_TO_DESIGN_PASS"
   ],
   "does_not_prove": [
