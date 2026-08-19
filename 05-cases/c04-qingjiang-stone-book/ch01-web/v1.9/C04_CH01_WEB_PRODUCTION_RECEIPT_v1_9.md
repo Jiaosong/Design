@@ -1,0 +1,19 @@
+# C04 CH01 Web v1.9 — CH14 Editorial / Landscape-Space Revision Receipt
+
+- Object: `PRJ-C04-QINGJIANG-SHISHU / CH01`
+- Upstream authoring: `CH01 v0.3 / Draft PR #294`
+- Visual binding: `CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE + PAGE + TRACE`
+- Material delta is bounded to `P01 / P04 / P05 / P06`; `P02 / P03` are preserved.
+- P01: generic relation-wave proxy removed; current first-read is `WATER / CABLE / WALK` with `水上看 / 空中看 / 山中走` and `WHOLE → RELATION → BODY`; geometry is explicitly conceptual and not ROUTE-03/site geometry.
+- P04: body-action choreography is the dominant carrier; Return is a conditional override branch only.
+- P05: previous six-card/aperture residue removed; a single continuous Service / Return carrier is physically interrupted by six unresolved interface cuts; mobile is independently vertical, not desktop-scaled.
+- P06: pseudo-management matrix removed; current carrier is editorial selection: existing objects → one question → `KEEP / DEEPEN / COMPETE / HOLD / NO DESIGN`.
+- Raster content images: `0`; generated whole-page images: `0`.
+- P02 keeps `ROUTE-03 = LOCKED CURRENT`; no route redraw, no invented 13 spatial nodes, no 13/13.
+- Brand presence: LIGHT; no fake Stone Seal / replacement logo geometry.
+- Chromium exact-source DOM/CSS actual-pixel readback: `6/6 @ 1920×1080` and `6/6 @ 390×844`; horizontal overflow `0`; raster `<img>` `0`; console/page errors `0`.
+- Grayscale + 50% far-read derivatives and desktop/mobile contact sheets generated from exact v1.9 pixels.
+- Direct file/localhost navigation remains blocked by runtime policy; direct-navigation Browser PASS is not claimed.
+- Independent Professional Design disposition remains `PENDING`; producer does not self-issue KEEP / MAIN / Professional Design PASS.
+- State: `PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
+- Truth: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION`.
