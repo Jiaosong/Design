@@ -1,0 +1,49 @@
+{
+  "schema": "oleander.c04.ch16.page-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "current_revision": "v3.2",
+  "user_authority_2026_08_19": "ODB-02 IMAGE MAY NOT BE USED IN CH16 DISPLAY",
+  "design_source": {
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "role": "PROVENANCE / DESIGN-IDENTITY AUTHORITY ONLY",
+    "visible_in_ch16": false,
+    "display_forbidden": true,
+    "preserve_provenance": true
+  },
+  "final_public_pixel": {
+    "state": "PLANNED / PRODUCTION REQUIRED",
+    "carrier": "NEW CLEAN CURRENT VECTOR REPRESENTATION FROM REVIEWED TECHNICAL DESCENDANTS",
+    "public_frames": [
+      "FRAME-A SHORT RECOVERY / MOVE-LEAN-PERCH-OBSERVE-MOVE",
+      "FRAME-B LONGER REST COMPARISON / SIT-HALF-RECLINE-OBSERVE-EXIT",
+      "FRAME-C PATH-CONFLICT-MAINTENANCE TECHNICAL PROOF"
+    ],
+    "generic_abstract_replacement_forbidden": true,
+    "ai_substitute_forbidden": true
+  },
+  "presentation": {
+    "if_single_viewport_unreadable": "CAROUSEL_OR_SEQUENTIAL_FULL_FRAME",
+    "no_compression": true,
+    "no_information_loss": true,
+    "raster_crop": "FORBIDDEN",
+    "raster_fit": "CONTAIN",
+    "mobile": "VERTICAL_RECOMPOSITION / NO HORIZONTAL CLIP"
+  },
+  "eligible_inputs": [
+    "reviewed/current P02 technical descendants",
+    "current C23/F01/detail geometry where status permits",
+    "independently retained Fluid Rest section/body/contact evidence"
+  ],
+  "independent_review": {
+    "state": "REQUIRED AFTER PRODUCTION",
+    "producer_self_keep": "FORBIDDEN"
+  },
+  "supersedes": [
+    "P01-v3.1 ODB-02 visible source/evolution/near-read permission",
+    "P01-v3.0 ODB-02 direct-public-carrier permission",
+    "P01-v2.0 generic five-action replacement"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
