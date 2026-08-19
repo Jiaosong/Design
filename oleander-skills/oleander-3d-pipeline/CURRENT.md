@@ -70,6 +70,39 @@ A hood-center / fender-crown claim requires a direct final-surface relation metr
 
 An honest `PROJECTION_MACHINE_SCREENING_FAIL`, `REFERENCE_FIDELITY_REJECT`, or Design `REVISE/REJECT` is not itself a broken runtime. CI fails for invalid execution/evidence/provenance or false promotion; a weak design remains recorded as the quality result.
 
+### 5. Blender 5.2 LTS Runtime Contract｜2026-08-19 training delta
+
+Files:
+- `BLENDER_5_2_LTS_RUNTIME_PROTOCOL_v1.md`
+- `contracts/BLENDER_RUNTIME_CONTRACT_v1.json`
+- `tools/validate_blender_runtime.py`
+- `00-governance/control-plane/tests/test_oleander_blender_runtime_contract.py`
+- expanded `evals/evals.json` with Blender 5.2 runtime / CMF / Asset Library / Geometry Nodes / color pipeline / I/O / migration failure tests.
+
+Core rule:
+
+`CLAIM → SOURCE STATE → BLENDER VERSION / BUILD / PLATFORM / DEVICE → EXTENSIONS / DEPENDENCIES → PROCEDURAL STATE → COLOR PIPELINE → ENGINE / DEVICE → I/O CAPABILITY → OUTPUT READBACK → MACHINE / EVIDENCE / DESIGN STATUS`
+
+The contract closes runtime gaps that the general 15-section Skill did not bind strongly enough: exact Blender version and runtime identity; color-management drift; remote Asset Library / Packed Data recoverability; Geometry Nodes and simulation state; Cycles / EEVEE and denoise/postprocess comparison boundaries; actual I/O operator/bridge verification; headless/script execution logs and output readback.
+
+Machine validation evidence on commit `038d0e574f6ebc9399286113169d022d7849134b`:
+- AI Governance Evals workflow run `32267478540`: **SUCCESS**.
+- OLEANDER Control Plane v0.3 workflow run `32267479047`: **SUCCESS**.
+- Control Plane unit/regression suite: **69 tests PASS**, including all **8** `test_oleander_blender_runtime_contract` cases.
+
+Current state: `CANDIDATE_CONTRACT_MACHINE_VALIDATED / RUNTIME EXECUTION HOLD`.
+
+Reason for HOLD: the current agent environment has no Blender executable, so this training pass has not produced a fresh Blender 5.2 runtime receipt or render/model readback. Contract/validator/CI PASS must not be relabeled as actual Blender execution PASS.
+
+Blender 5.2 LTS is the preferred baseline for new work as of 2026-08-19, but project-pinned Blender 4.5 LTS or another verified version remains valid when compatibility/dependency evidence requires it. Version recency does not overwrite an established production environment.
+
+Hard boundaries:
+- no network-only required Blender dependency in CURRENT production;
+- no generic format list used as proof of a working Blender import/export operator;
+- no Geometry Nodes/physics visualization promoted to ergonomic, engineering, manufacturing, or physical truth;
+- no AgX/ACES/view-transform drift inside a controlled CMF/surface comparison;
+- no CI/contract PASS promoted to actual Blender runtime or Design PASS.
+
 ## Merged / CURRENT-compatible baseline
 
 - Repository: `Jiaosong/Design`
@@ -125,4 +158,4 @@ Drive versioned v1.18/v1.20 reports remain immutable provenance. No v1.21 CURREN
 
 ## Does not prove
 
-This routing repair does not prove professional design quality, Class-A continuity, manufacturer CAD fidelity, physical CMF, usability, field geometry, engineering validity, manufacturability, or MAIN KEEP.
+This routing repair and Blender runtime training delta do not prove actual Blender 5.2 execution in the current agent environment, professional design quality, Class-A continuity, manufacturer CAD fidelity, physical CMF, usability, field geometry, engineering validity, manufacturability, or MAIN KEEP.
