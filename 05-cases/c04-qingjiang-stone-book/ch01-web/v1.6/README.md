@@ -9,6 +9,6 @@ GitHub persistence:
 - exact `style.css` is stored as `style.css.gz.base64.txt` and reconstructed/verified by `REASSEMBLE.py`;
 - screenshots remain in the local recoverable review package and are not falsely claimed as repository binaries.
 
-Local review package: `C04_CH01_WEB_v1.6_EDITORIAL_ATTACK.zip` / 1,363,648 bytes / SHA256 `41f689de044ee697c04defad5c5083e41a0a393ffb89804d32d25b5742747adc`.
+Local review package: `C04_CH01_WEB_v1.6_EDITORIAL_ATTACK.zip` / 1,369,664 bytes / SHA256 `ddbb4de5ba8cb9ee7f89031ba316c627adcc6df486629ef5cbb3900c89d230a8`.
 
 State: `PRODUCER CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
