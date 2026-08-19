@@ -11,7 +11,7 @@ regenerate the visual hull. No profile inversion, no V51 front identity edit, no
 This is a diagnostic experiment, not a design candidate or fidelity promotion.
 """
 from __future__ import annotations
-import json, math
+import json
 from pathlib import Path
 import bpy
 
@@ -57,10 +57,20 @@ def fold_rows(o):
                 c=(me.vertices[e[0]].co+me.vertices[e[1]].co)*.5;rows.append({'edge_vertices':list(e),'face_indices':fs,'normal_dot':dot,'center_m':[float(c.x),float(c.y),float(c.z)]})
     return rows
 
-def run56():
-    a=v.m.parse_args();out=Path(a.out).resolve();v.main();body=bpy.data.objects.get('DERIVED_911_9922_BODY');rows=fold_rows(body) if body else []
+def emit_ab(out):
+    body=bpy.data.objects.get('DERIVED_911_9922_BODY');rows=fold_rows(body) if body else []
     d={'schema':'oleander.3d.densification-causal-ab.v1','candidate_revision':REV,'baseline_revision':'V49_FEATURE_ALIGNED_CURVE_NETWORK','source_geometry_equivalence':'V49_SOURCE_RELATIONS_UNCHANGED','only_delta':'ONE_DERIVED_MIDPOINT_PER_ADJACENT_POSITIVE_HALF_SECTION_CONTROL','source_semantic_rail_count':len(RAILS),'derived_ring_vertices':len(dense56(0.0)),'fold_count':len(rows),'folds':rows,'causal_interpretation':'DENSIFICATION_ALONE_CAUSES_OR_REVEALS_FOLDS' if rows else 'DENSIFICATION_ALONE_NOT_CAUSAL_FOR_FOLDS','design_state':'DIAGNOSTIC_ONLY','does_not_prove':['reference fidelity','design quality','Class-A continuity']}
     Path(out,'DENSIFICATION_CAUSAL_AB.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
     bpy.ops.wm.save_as_mainfile(filepath=str(out/'OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO.blend'))
     print(json.dumps({'fold_count':len(rows),'interpretation':d['causal_interpretation'],'derived_ring_vertices':d['derived_ring_vertices']},indent=2))
+
+def run56():
+    a=v.m.parse_args();out=Path(a.out).resolve()
+    try:
+        v.main()
+    except SystemExit as e:
+        emit_ab(out)
+        if isinstance(e.code,int) and e.code not in (0,None): raise
+    else:
+        emit_ab(out)
 run56()
