@@ -16,6 +16,7 @@
 - Direct file/localhost navigation remains blocked by runtime policy; direct-navigation Browser PASS is not claimed.
 - Exact GitHub source carrier: four parts `6000 + 6000 + 6000 + 4484 = 22484 base64 chars`; local Git blob hashes match GitHub blob hashes for all four parts; strict decoded tar.gz SHA256 `a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102`; decoded bytes `16862`.
 - The initial single-file v1.9 carrier was rejected and removed after connector-side truncation was detected; it is not authority.
+- Local complete review package (visual/source bytes frozen before carrier repair): `C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`. Carrier repair does not alter the reviewed HTML/CSS/pixels.
 - Independent Professional Design disposition remains `PENDING`; producer does not self-issue KEEP / MAIN / Professional Design PASS.
 - State: `PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
 - Truth: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION`.
