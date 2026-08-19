@@ -15,12 +15,7 @@
       "source_file": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
       "source_hash": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
       "consumer_project": "PRJ-C04-QINGJIANG-SHISHU",
-      "consumers": [
-        "D-v1.1-PUBLIC-DISPLAY-HERO",
-        "WEB-W00-HERO-BINDING",
-        "F-86S-FILM-OPENING",
-        "CH14-CONTOUR-CROP-DERIVATIVE"
-      ],
+      "consumers": ["D-v1.1-PUBLIC-DISPLAY-HERO", "WEB-W00-HERO-BINDING", "F-86S-FILM-OPENING", "CH14-CONTOUR-CROP-DERIVATIVE"],
       "state": "LEGACY_MULTI_CONSUMED",
       "reuse_lock": "LOCKED_NO_FURTHER_USE",
       "release_reason": null,
@@ -74,6 +69,24 @@
       "role": "PRIMARY_MACRO_QINGJIANG_CABLE_PEAK_FIELD",
       "state": "RESERVED",
       "reuse_lock": "LOCKED_TO_C22_CONCEPT_MASTERPLAN_UNTIL_EXPLICIT_RELEASE",
+      "release_reason": null,
+      "does_not_prove": ["WEBSITE_ORIGINAL_BYTE_HASH", "FIELD_TRUTH", "SURVEY_ALIGNMENT", "DESIGN_PASS", "RIGHTS_CLEARANCE"]
+    },
+    {
+      "asset_id": "IMG-C04-CH07-P01-LANDSCAPE-01",
+      "semantic_image_id": "IMG-C04-CH07-P01-LANDSCAPE-01",
+      "parent_source_id": "ESLY-2023-07-18-k9zsdud798",
+      "source_file": "CH07_P01_QINGJIANG_CLIFF_RIVER_SOURCE_k9zsdud798.png",
+      "source_hash": "efb640e3fd0ac01ecc77925c901076f8ed65dac313e37e05d020838d0da39fa3",
+      "source_url": "https://www.eslygroup.com/uploadfile/image/20230718/k9zsdud798.png",
+      "source_materialization": "Official HTTP image fetched by Google Docs insertInlineImage and exported; source_hash is the exact persisted 600x400 PNG reserved for CH07-P01, not a claim about the website-original byte hash.",
+      "consumer_project": "PRJ-C04-QINGJIANG-SHISHU",
+      "consumer_owner": "CH07",
+      "consumer_unit_id": "CH07-P01",
+      "page_or_surface": "CH07-P01-S01 v0.4 PRODUCER REVIEW TARGET",
+      "role": "PRIMARY_QINGJIANG_LANDSCAPE_EVIDENCE",
+      "state": "RESERVED",
+      "reuse_lock": "LOCKED_TO_CH07_P01_UNTIL_EXPLICIT_RELEASE",
       "release_reason": null,
       "does_not_prove": ["WEBSITE_ORIGINAL_BYTE_HASH", "FIELD_TRUTH", "SURVEY_ALIGNMENT", "DESIGN_PASS", "RIGHTS_CLEARANCE"]
     }
