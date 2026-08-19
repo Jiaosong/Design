@@ -1,0 +1,48 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "version": "C04 Web v1.13",
+  "scope": "CH07-CH09 / sequences 032-046",
+  "static_validation": {
+    "status": "PASS",
+    "surface_count": 15,
+    "CH07": 4,
+    "CH08": 6,
+    "CH09": 5,
+    "sequence_continuity": "032-046",
+    "image_generation_used": false
+  },
+  "browser_readback": {
+    "desktop": {
+      "viewport": [1920, 1080],
+      "dims": {"sw": 1920, "cw": 1920, "sh": 16898},
+      "overflow": false,
+      "page_errors": [],
+      "console_errors": [],
+      "surface_heights": {"032":1080,"033":1080,"034":1150,"035":1080,"036":1080,"037":1080,"038":1080,"039":1080,"040":1080,"041":1080,"042":1150,"043":1200,"044":1200,"045":1200,"046":1280},
+      "asset_mode": "SOURCE-BOUND FALLBACK / NOT PIXEL-ASSET REVIEW"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "dims": {"sw": 390, "cw": 390, "sh": 24878},
+      "overflow": false,
+      "page_errors": [],
+      "console_errors": [],
+      "surface_heights": {"032":2119,"033":1601,"034":1581,"035":1734,"036":1279,"037":1510,"038":1150,"039":1352,"040":2614,"041":1966,"042":1445,"043":1360,"044":1344,"045":1817,"046":2006},
+      "asset_mode": "SOURCE-BOUND FALLBACK / NOT PIXEL-ASSET REVIEW"
+    }
+  },
+  "asset_integration_gate": {
+    "status": "PENDING_IN_CURRENT_CARRIER",
+    "reason": "isolated browser sandbox does not materialize the current carrier binary image assets; readback intentionally shows SOURCE-BOUND fallback rather than fabricated pixels",
+    "required": ["assets/route03_locked_current.svg","assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg"]
+  },
+  "files": {
+    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.html": {"bytes":27965,"sha256":"ab15bbe9739590b43bdbc34b52653816ee9ac95951ffc9afd0142c1a19719bea"},
+    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.css": {"bytes":18719,"sha256":"b05ed026692809fd9067ff5228630d1cb2b8b4d9141d13da228cf399b40dc7c1"},
+    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.js": {"bytes":1223,"sha256":"7dcc91e2078c1d2eb378f0041bfaf0ac35e7f1e6bab312be19f9b450d3359846"},
+    "C04_WEB_v1_13_CH07_CH09_PATCH_MANIFEST.json": {"bytes":2044,"sha256":"aa54e02f28af29bf3888b96c2bdd9494fd5358a8b83665572609e3f1ea62c282"},
+    "C04_WEB_v1_13_CH07_CH09_RECEIPT.md": {"bytes":3400,"sha256":"c50d82aed74d377f228b0114d2de19d90894e3314e1d52119d40470c0a35bfef"}
+  },
+  "review_boundary": "SOURCE + RESPONSIVE RUNTIME PASS ONLY / INDEPENDENT FINISHED-PIXEL DESIGN VERDICT PENDING",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
