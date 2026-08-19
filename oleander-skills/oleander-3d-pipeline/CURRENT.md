@@ -24,25 +24,51 @@ This file is the stable routing index for the OLEANDER 3D Skill. It prevents old
 
 ## Current candidate Skill deltas validated on this integration branch
 
-### Stage Capability Routing
+### 1. Stage Capability Routing
 
 Files:
-- `oleander-skills/oleander-3d-pipeline/STAGE_CAPABILITY_ROUTING_PROTOCOL_v1.md`
-- `oleander-skills/oleander-3d-pipeline/contracts/STAGE_CAPABILITY_ROUTING_CONTRACT_v1.json`
-- `oleander-skills/oleander-3d-pipeline/tools/validate_stage_capability_routing.py`
+- `STAGE_CAPABILITY_ROUTING_PROTOCOL_v1.md`
+- `contracts/STAGE_CAPABILITY_ROUTING_CONTRACT_v1.json`
+- `tools/validate_stage_capability_routing.py`
 - `00-governance/control-plane/tests/test_oleander_3d_stage_capability_routing.py`
 
 Core rule:
 
 `STAGE → SEMANTIC CAPABILITIES → CONSUMER REQUIREMENTS → EVIDENCE`
 
-A consumer must request a semantic capability rather than a historical Blender object name. Current-stage capabilities may be `AVAILABLE`; intentionally deferred later-stage capabilities may be `NOT_APPLICABLE_STAGE_HOLD`; required missing capabilities fail closed. Required and held capability sets must be disjoint.
+A consumer requests a semantic capability rather than a historical Blender object name. Current-stage capabilities may be `AVAILABLE`; intentionally deferred later-stage capabilities may be `NOT_APPLICABLE_STAGE_HOLD`; required missing capabilities fail closed. Required and held sets must be disjoint.
 
-This delta was exposed by the Porsche 911 992.2 V47→V48 benchmark in PR #208: primary-form evidence was valid while final aperture architecture was intentionally HOLD, but inherited projection/regression consumers still assumed historical windshield objects and later-stage metric sets. The generic routing repair passed AI Governance + Control Plane tests on PR #293. The Porsche benchmark remains provenance/candidate evidence; it is not Design KEEP.
+Benchmark provenance: Porsche 911 992.2 V47→V48 in PR #208. A primary-form stage legally held final aperture architecture, while inherited consumers still assumed historical windshield objects and later-stage metrics. The generic routing repair passed AI Governance + Control Plane on PR #293.
 
-### Quality-state / runtime-health separation
+### 2. Evidence Carrier Congruence
 
-An honest `PROJECTION_MACHINE_SCREENING_FAIL`, `REFERENCE_FIDELITY_REJECT`, or Design `REVISE/REJECT` is not by itself a broken runtime. CI should fail for invalid execution/evidence/provenance or false promotion, while quality-state failure remains recorded as the quality result.
+Files:
+- `EVIDENCE_CARRIER_CONGRUENCE_PROTOCOL_v1.md`
+- `contracts/EVIDENCE_CARRIER_CONGRUENCE_CONTRACT_v1.json`
+- `tools/validate_evidence_carrier_congruence.py`
+- `00-governance/control-plane/tests/test_oleander_3d_evidence_carrier_congruence.py`
+
+Core rule:
+
+`CLAIM → REQUIRED CARRIER SCOPE → REFERENCE CARRIER → CANDIDATE CARRIER → METRIC`
+
+A numerically valid measurement cannot support a wider/different claim when the carriers are semantically mismatched. Whole-visible, primary-shell, aperture/interface, local-context and detail carriers remain distinct. A visual proxy may pass only for an explicitly bounded proxy claim and must retain does-not-prove boundaries.
+
+Benchmark provenance: Porsche 911 V51→V54 carrier audit. A whole-vehicle FRONT/REAR profile target and a body-only candidate carrier produced materially different readings; the repair preserves both results instead of overwriting history. This does not make the proxy a final aperture/reference authority.
+
+### 3. Semantic claim → matching evidence
+
+Identity or construction relations must be bound to evidence that actually evaluates the named relation. A broad/profile proxy cannot be relabeled into a narrower semantic claim.
+
+Hard example exposed by the Porsche benchmark:
+
+`FRONT gross-profile PASS ≠ HOOD–FENDER HIERARCHY SCREENED`
+
+A hood-center / fender-crown claim requires a direct final-surface relation metric or equivalent controlled evidence. If that evidence is absent, the semantic relation remains `HOLD` and machine identity cannot self-promote.
+
+### 4. Quality-state / runtime-health separation
+
+An honest `PROJECTION_MACHINE_SCREENING_FAIL`, `REFERENCE_FIDELITY_REJECT`, or Design `REVISE/REJECT` is not itself a broken runtime. CI fails for invalid execution/evidence/provenance or false promotion; a weak design remains recorded as the quality result.
 
 ## Merged / CURRENT-compatible baseline
 
@@ -53,19 +79,18 @@ An honest `PROJECTION_MACHINE_SCREENING_FAIL`, `REFERENCE_FIDELITY_REJECT`, or D
 
 ## Candidate extensions — do not silently promote
 
-- PR #173 — Blender Surface System v1.21 Source-aware adapter + 15-section receipt/validator layer. `OPEN / DRAFT / CANDIDATE`, stacked on Modeling Worker v0.13.
-- PR #198 — real R29A Blender replay/detail validation of the refined 3D Skill. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
-- PR #208 — Porsche 911 reference-reproduction benchmark and large specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remains separate. V47→V50 is being used to failure-test stage routing, representation selection, profile inversion, evaluated-grid density and held-out visual review.
-- PR #227 — Camera Claim Gate training delta. The reusable gate is incorporated into PR #293; PR #227 remains provenance/training evidence until separately resolved.
-- PR #276 — interaction-cue escalation + lifecycle evidence framing training delta. The reusable gates are incorporated into PR #293 `VISUAL_LAYER_BINDING.md`; PR #276 remains provenance/training evidence until separately resolved.
+- PR #173 — Blender Surface System v1.21 Source-aware adapter + receipt/validator layer. `OPEN / DRAFT / CANDIDATE`.
+- PR #198 — real R29A refined-Skill Blender validation. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
+- PR #208 — Porsche 911 reference-reproduction benchmark and specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remain separate. V47 onward is being used to failure-test stage routing, representation selection, sparse-source/dense-evaluation separation, gate-local baselines, semantic identity evidence, carrier congruence and fold localization/repair.
+- PR #227 — Camera Claim Gate provenance; reusable rule incorporated here.
+- PR #276 — interaction/lifecycle visual-gate provenance; reusable rules incorporated into `VISUAL_LAYER_BINDING.md`.
 - Modeling Worker v0.13 remains a working/revise candidate chain and does not overwrite current Source Authority by recency.
 
 ## Specialist routing
 
 Before detailed geometry, classify the task:
-
-- reference reconstruction → reference-reproduction specialist protocols when current/available;
-- original product/form → structure-to-form route when current/available;
+- reference reconstruction → reference-reproduction protocols;
+- original product/form → structure-to-form route;
 - landscape/architecture/site → spatial evidence and terrain/assembly route;
 - mixed problems → explicit hybrid route.
 
@@ -87,16 +112,16 @@ https://drive.google.com/drive/folders/1DbSzwAkEV1gA0VRs_Mv2VFar9TzlCJew
 Stable README:
 https://drive.google.com/file/d/1CL6if6pL0Cy__TDOdmEGMdWnPdoQ_p1z/view?usp=drivesdk
 
-Drive versioned v1.18/v1.20 sync reports remain immutable provenance. At the time of this sync, no v1.21 CURRENT Drive record was found; do not fabricate one.
+Drive versioned v1.18/v1.20 reports remain immutable provenance. No v1.21 CURRENT Drive record is fabricated.
 
 ## Link discipline
 
-1. CURRENT pointers live in this file, `CURRENT.json`, the Notion P2 owner, and the stable Drive README.
-2. Versioned receipts/reports never become CURRENT just because their timestamp is newer.
-3. Deleted Notion Practice pages may remain historical references only; they cannot be `Canonical 入口`.
-4. Candidate PR links must carry their candidate/draft state.
-5. A branch or PR may introduce a better execution method without changing project/Source Authority or Design State.
-6. After merge/currentization, update all four pointers in the same synchronization pass.
+1. CURRENT pointers live in this file, `CURRENT.json`, the Notion P2 owner and stable Drive README.
+2. Versioned receipts never become CURRENT by timestamp alone.
+3. Deleted Notion Practice pages cannot be Canonical entry points.
+4. Candidate PR links carry candidate/draft state.
+5. A better execution method does not change project/Source Authority or Design State by implication.
+6. After merge/currentization, update all four pointers in one synchronization pass.
 
 ## Does not prove
 
