@@ -24,9 +24,9 @@ Forbidden dominant substitutions remain:
 The accidental generated board produced before source-bound production is explicitly `REJECT / NOT ENTER PROJECT`.
 
 ## Image-consumption state｜PR #330 candidate delta
-The previous descendant reservation `IMG-C04-PHYS-RECOVERY-TECH-01` is released on this branch after the original-board reservation was established.
+The older `IMG-C04-PHYS-RECOVERY-TECH-01` remains `RESERVED → CH13-01` as a **compatibility lock only** because the Current validator still requires that seed reservation. It is **not bound or displayed** in the source-bound S01 page and remains unavailable to all other surfaces.
 
-One paired consumer unit is now reserved to S01:
+The actual displayed source-bound pair is reserved as one consumer unit:
 
 1. `IMG-C04-ODB02-S01-HERO-DEPLOYED`
    - bounds `[1600,360,3370,1325]`
@@ -39,7 +39,7 @@ One paired consumer unit is now reserved to S01:
    - child SHA256 `6d3d669521daf4e4656c36d81c9510659fd02050a1638376269ac693b499a987`
    - role `SECONDARY_FOLDED_STATE_SUPPORT`
 
-Both are locked to `CH13-S01-PAIRED-01`. They may not be reused on S03 or another independent page/surface unless S01 is explicitly rejected and the reservation is released.
+Both displayed figures are locked to `CH13-S01-PAIRED-01`. They may not be reused on S03 or another independent page/surface unless S01 is explicitly rejected and the reservation is released.
 
 ## Page execution
 - dominant visual: direct original-board exhibit crop; product/rail/scenic relation preserved;
@@ -59,6 +59,14 @@ Chromium readback:
 Pixel hashes:
 - desktop: `7710345bd137ce7558115ba2eb8341337375bb55b4cb4b06d982bb379c1942f3`;
 - mobile: `00540e10886617f056eadcad2c513abc8bf4d76dd4f7748cc763d1e31b0ea21a`.
+
+## Persistence
+Drive folder `C04_CH13_PAGE_BY_PAGE_v5` now contains:
+- `C04_CH13_S01_SOURCEBOUND_v1.zip`;
+- desktop PNG;
+- mobile PNG;
+- editable self-contained HTML;
+- source crop register.
 
 ## Review state
 Producer compliance / artifact review is recorded in `CH13_S01_ARTIFACT_REVIEW_v1.md`.
