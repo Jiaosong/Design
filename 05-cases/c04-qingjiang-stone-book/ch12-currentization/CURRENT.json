@@ -1,0 +1,23 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH12",
+  "current_version": "v0.4",
+  "current_role": "SELECTED_SCENE_PROOF",
+  "current_path": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_KEY-SCENE-DESIGN_v0_4.md",
+  "scene_register": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_SCENE_REGISTER_v0_4.csv",
+  "asset_bindings": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/CH12_ASSET_BINDINGS_v0_4.json",
+  "owner_receipt": "05-cases/c04-qingjiang-stone-book/ch12-currentization/v0.4/OWNER_RECEIPT_CH12_v0_4.json",
+  "authoring_unit_count": 9,
+  "canonical_page_ids_allocated": false,
+  "selected_scenes": ["SC-R01", "SC-R05", "SC-R06", "SC-ROUTE-DECISION", "SC-R13"],
+  "locks": {
+    "route": "ROUTE-03 LOCKED CURRENT",
+    "r06": "FINISHED / FROZEN / NO REOPEN",
+    "r01": "MOVING STIMULUS HOLD",
+    "r05": "LANDSCAPE PIXEL HOLD",
+    "route_decision": "LOCATION OPEN",
+    "r13": "REMOTE CONCEPT / FIELD + SAFETY OPEN"
+  },
+  "review": "AUTHORING PIXEL READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NTS / NOT FOR CONSTRUCTION"
+}
