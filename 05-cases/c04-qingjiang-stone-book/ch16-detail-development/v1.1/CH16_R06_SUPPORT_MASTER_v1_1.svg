@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="975" viewBox="0 0 120 97.5">
+  <g id="R06_SUPPORT_MASTER" data-object-id="R06-SUPPORT-CONCEPT" data-revision="CH16-v1.1">
+    <rect id="C01_CONTACT" x="0" y="0" width="120" height="16" rx="3" fill="#2D726D"/>
+    <path id="C02_SUPPORT" d="M16 16 H104 V44 H94 V26 H26 V44 H16 Z" fill="#727C78"/>
+    <rect id="C03_BUFFER" x="24" y="44" width="72" height="5" rx="2" fill="#4A5451"/>
+    <path id="C04_CLAMP" d="M30 51 H90 V65 H82 V58 H38 V65 H30 Z" fill="#B28A4B"/>
+    <rect id="C05_EXISTING_BASE" x="48" y="65" width="24" height="32.5" fill="#C7C9C4"/>
+    <circle id="C04_FASTENER_L" cx="40" cy="58" r="2.2" fill="#121B1A"/>
+    <circle id="C04_FASTENER_R" cx="80" cy="58" r="2.2" fill="#121B1A"/>
+  </g>
+</svg>
