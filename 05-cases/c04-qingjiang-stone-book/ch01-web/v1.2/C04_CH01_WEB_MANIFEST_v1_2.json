@@ -1,0 +1,39 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CH01_WEB_v1.2_PR294",
+  "date": "2026-08-19",
+  "source_authoring": {
+    "pr": 294,
+    "branch": "agent/c04-ch00-ch19-deepening-v03-20260819",
+    "file": "chapter-content-sync/v0.3/CH01_PROJECT-PROBLEM-OPPORTUNITY.md",
+    "source_sha": "2548c0dd5d0087cd9115038072e99f2a29ef4761"
+  },
+  "surface_count": 6,
+  "surfaces": [
+    {"id":"CH01-P01","claim":"不是缺景点，而是关系缺失"},
+    {"id":"CH01-P02","claim":"ROUTE ≠ CONTENT ORDER"},
+    {"id":"CH01-P03","claim":"信息会遮挡景观，设计必须管理注意力"},
+    {"id":"CH01-P04","claim":"游程也是身体与服务系统"},
+    {"id":"CH01-P05","claim":"Route / Return 实体服务触点存在设计缺口；CH09 owns family"},
+    {"id":"CH01-P06","claim":"方案不缺，缺少正式 Selection；KEEP/DEEPEN/COMPETE/HOLD/NO DESIGN"}
+  ],
+  "image_policy": {
+    "raster_content_images": 0,
+    "whole_page_generated_images_embedded": 0,
+    "project_web_duplicate_risk_from_CH01": "NONE",
+    "note": "All main visuals are native HTML/CSS/inline SVG. No project photo source is consumed by CH01 v1.2."
+  },
+  "locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "NO COMPRESSION / NO LOSS",
+    "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+  ],
+  "review_state": "PRODUCER CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / INDEPENDENT FINISHED-PIXEL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "actual_pixel_readback": {
+    "desktop": "6/6",
+    "mobile": "6/6",
+    "error_count": 0,
+    "raster_content_images": 0
+  }
+}
