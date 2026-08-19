@@ -1,0 +1,40 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CH01_WEB_v1.4_FULLFLOW_REVIEW",
+  "authoring_source": "PR #294 / CH01 v0.3",
+  "authoring_head": "d6c9383b81b7dd7c199c5f90daa18d7c4d9d31d0",
+  "authoring_blob": "2548c0dd5d0087cd9115038072e99f2a29ef4761",
+  "execution_route": [
+    "oleander-research",
+    "oleander-story-and-board",
+    "oleander-data-viz",
+    "oleander-ui-visual-composition (candidate specialist support)",
+    "oleander-delivery-qc",
+    "OLEANDER Artifact Review",
+    "Independent Design Gate"
+  ],
+  "design_knowledge": [
+    "FW-DESIGN-VISUAL-COMM-001",
+    "CASE-DATAVIZ-BEAUTIFUL-NEWS-001",
+    "Dominant Field / First Visual practice",
+    "CH14 P04/P05 current tokens"
+  ],
+  "raster_content_images": 0,
+  "generated_page_images": 0,
+  "route03_binding": {
+    "locked_svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "policy": "NO MUTATION / EXCERPT + CROP + STYLING ONLY",
+    "p02": "exact source path excerpt"
+  },
+  "runtime": {
+    "desktop": {"viewport":"1920x1080","surface_count":6,"scroll_width":1920,"raster_images":0,"errors":0},
+    "mobile": {"viewport":"390x844","surface_count":6,"scroll_width":390,"raster_images":0,"errors":0}
+  },
+  "source_hashes": {
+    "index_html": "290ab5dcb5f68e700e13083535518ebc1aeb360066f0fa1b5bf76c3dda96de8a",
+    "style_css": "05dc55431088419200aa95dbee0fc8c7d2fc7fc1df61766c1f5b6589d3db988c",
+    "desktop_contact": "cbf69ef7f0d3f5bda1223978bf35ee5bdc80403b87f8c2aaec0bccc2e0da64b1",
+    "mobile_contact": "f15efd895020596944cc9a516bbbb421014c436a842ce9dd30a65e49f3933518"
+  },
+  "status": "PRODUCER SELF-CHECKED / REVIEW HANDOFF CANDIDATE / IDENTITY-INDEPENDENT REVIEWER UNAVAILABLE / HOLD / NO_PROMOTION"
+}
