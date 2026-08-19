@@ -51,6 +51,27 @@ When a story uses a sequence such as `Landscape First → Relation Reveal`, `Obj
 
 **Promotion test:** `If view A is not project-readable without labels, view B cannot rescue it.` `Abstract proxy ≠ Main visual.`
 
+## Project Web image uniqueness gate
+
+For every OLEANDER project Web, image reuse is governed at the **whole-project Web level**, not per chapter, page, section, or component.
+
+**Hard rule:** one underlying content-image source may occupy **one Web image slot only** across the entire project Web.
+
+This applies to project photographs, landscape images, renders, AI-assisted concept images, screenshots used as content imagery, and other content-bearing raster image sources.
+
+- Track every Web image by `SOURCE_ASSET_ID` and, when available, `SOURCE_SHA256`.
+- The same source image appearing in a second project-Web slot is a **BLOCKER**, even if the second use changes crop, aspect ratio, scale, color grade, saturation, filter, mask, overlay, frame, caption, text, or responsive breakpoint. Presentation processing does not create a new source image.
+- A derivative generated from the same underlying image source remains the same source for this gate unless it is a materially new evidence artifact with its own independent source authority rather than a presentation-only transformation.
+- If the same subject must appear again, use a genuinely different source photograph/render/evidence asset, or change medium: map, editable SVG, diagram, model view, technical drawing, chart, motion state, or another non-duplicate evidence carrier.
+- Before Web layout, create or refresh a project-wide image-use ledger with at least `WEB_SLOT_ID / PAGE_OR_SECTION_ID / SOURCE_ASSET_ID / SOURCE_SHA256 / SOURCE_URI_OR_AUTHORITY / DERIVATION / STATUS`.
+- Before `MAIN / KEEP / PROMOTE`, scan the complete project Web ledger. Any repeated `SOURCE_ASSET_ID` or repeated underlying source hash across different image slots is `REVISE` until replaced.
+- Responsive variants of the **same single Web slot** do not count as additional uses; they are one semantic slot rendered at multiple breakpoints.
+- Brand marks, functional UI icons, repeated navigation symbols, and system texture tokens are governed by the identity/UI system and are excluded from this content-image uniqueness gate unless they are being used as content imagery.
+
+For same-source reveal logic on Web, do **not** duplicate the base image into multiple static project-Web slots. Bind the authoritative source once and implement the reveal as a state/layer change in the same semantic component, or choose another evidence carrier for the second view.
+
+**Promotion test:** `Same source twice anywhere in the project Web = REVISE.` `Crop / grade / mask / overlay ≠ new image source.`
+
 ## VI / Brand Identity Manual production
 
 When the requested artifact is a **VI manual / visual identity handbook / logo standards page / brand guideline / brand identity Web chapter**, first resolve the Current Brand Identity METHOD and then read:
@@ -82,13 +103,15 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 3. Pull model manifests and approved renders from `oleander-3d-pipeline`.
 4. Create a content inventory before layout.
 5. Resolve the strongest current design/evidence source for every primary visual; record which objects are locked and may not be re-authored by layout.
-6. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
-7. Produce a low-fidelity sequence before polishing.
-8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
-9. Run content, visual, and production reviews separately.
-10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
-11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
-12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+6. For Web work, create or refresh the whole-project image-use ledger before assigning imagery; reject duplicate source allocation before polishing.
+7. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
+8. Produce a low-fidelity sequence before polishing.
+9. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
+10. Run content, visual, and production reviews separately.
+11. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
+12. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes; on Web, keep the shared base in one semantic image slot and change only the state/layer rather than duplicating it across the project.
+13. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+14. For Web, run the project-wide image uniqueness scan again on the finished build before `MAIN / KEEP / PROMOTE`.
 
 ## Deliverable variants
 
@@ -107,6 +130,8 @@ For any layout containing source-bound spatial evidence, include a short authori
 
 For any paired/reveal primary visual, also return a same-source declaration naming the base source/version and the exact overlay/highlight differences between frames.
 
+For any project Web, also return or persist the project-wide image-use ledger and the final duplicate-source scan result.
+
 For VI/manual work, also return or persist the represented standard drawings/specimens used by the manual, actual readbacks at target size, and all proof-open production limits. A prose-only specification is not a complete VI deliverable.
 
 ## Quality checks
@@ -121,6 +146,7 @@ For VI/manual work, also return or persist the represented standard drawings/spe
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
 - Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
+- Project Web contains no repeated content-image source across separate image slots; crop/filter/mask/grade/overlay changes do not reset source identity.
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
 - Material/raster display effects never become logo/vector/text geometry authority.
