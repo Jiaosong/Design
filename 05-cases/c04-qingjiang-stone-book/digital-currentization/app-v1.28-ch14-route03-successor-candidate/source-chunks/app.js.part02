@@ -1,0 +1,76 @@
+}
+function scrollWorldPct(xPct,yPct,announceScout=true){
+ const maxX=Math.max(0,routeScroll.scrollWidth-routeScroll.clientWidth),maxY=Math.max(0,routeScroll.scrollHeight-routeScroll.clientHeight);
+ const left=Math.max(0,Math.min(maxX,routeScroll.scrollWidth*xPct-routeScroll.clientWidth/2));
+ const top=Math.max(0,Math.min(maxY,routeScroll.scrollHeight*yPct-routeScroll.clientHeight/2));
+ routeScroll.scrollTo({left,top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ if(announceScout)setBehavior('SCOUT');
+}
+function setRouteMode(mode){
+ const d=routeModes[mode];if(!d)return;
+ document.querySelectorAll('[data-route-mode]').forEach(b=>b.classList.toggle('active',b.dataset.routeMode===mode));
+ document.getElementById('routeModeLabel').textContent=d.label;document.getElementById('routeModeTitle').textContent=d.title;document.getElementById('routeModeMeta').textContent=d.meta;
+ scrollWorldPct(d.focus[0],d.focus[1],true);resetBehaviorLater(600);
+}
+function openAnchor(id){
+ if(isFailClosed())return setScreen('SERVICE',{force:true});
+ const d=anchors[id];if(!d)return;
+ document.querySelectorAll('.map-anchor').forEach(a=>a.classList.toggle('selected',a.dataset.anchor===id));
+ setBehavior('FOCUS');scrollWorldPct(d.pos[0],d.pos[1],false);currentRead=d.read;
+ document.getElementById('contextId').textContent=d.id;document.getElementById('contextTitle').textContent=d.title;document.getElementById('contextSummary').textContent=d.summary;
+ routeContext.classList.add('open');routeContext.setAttribute('aria-hidden','false');setBehavior('ENTER');
+}
+function closeContext(){routeContext.classList.remove('open');routeContext.setAttribute('aria-hidden','true');document.querySelectorAll('.map-anchor').forEach(a=>a.classList.remove('selected'))}
+function openRead(id){
+ const d=reads[id];if(!d)return;currentRead=id;
+ if(app.dataset.digital==='OFF'){announce('Digital OFF：可选阅读已退出。');return}
+ setScreen('READ',{force:true});
+ document.getElementById('readDetailId').textContent=id;document.getElementById('readDetailTitle').textContent=d.title;document.getElementById('readDetailText').textContent=d.text;document.getElementById('readDetailBoundary').textContent=d.boundary;
+ const scene=document.getElementById('readDetailScene');scene.hidden=!d.scene;scene.textContent=d.scene?`进入 ${d.scene} 场景`:'进入场景';scene.dataset.scene=d.scene||'';
+ readDetail.classList.add('open');readDetail.setAttribute('aria-hidden','false');setBehavior('REVEAL');
+}
+function closeReadDetail(){readDetail.classList.remove('open');readDetail.setAttribute('aria-hidden','true')}
+function openReturn(){
+ clearTimeout(resetTimer);closeContext();closeReadDetail();r06RevealPanel.hidden=true;setBehavior('RETURN');setScreen('SERVICE',{force:true});
+}
+function showSetup(step='MODE'){
+ if(isFailClosed())return false;
+ document.querySelectorAll('[data-setup]').forEach(s=>s.hidden=s.dataset.setup!==step);
+ setupLayer.classList.add('open');setupLayer.setAttribute('aria-hidden','false');setBehavior('INTENT');return true;
+}
+function hideSetup(){setupLayer.classList.remove('open');setupLayer.setAttribute('aria-hidden','true')}
+function startJourney(){
+ if(isFailClosed()){hideSetup();setScreen('SERVICE',{force:true});return}
+ if(!setupSeen){showSetup('MODE');return}
+ setScreen('TODAY',{force:true});
+}
+function setReality(value){
+ if(!validReality.includes(value))return;app.dataset.reality=value;updateStatusText();
+ if(isFailClosed()){hideSetup();openReturn();announce(`${value}：fail-closed，Optional Scene 退出。`)}
+ else {if(app.dataset.screen==='SERVICE')startJourney(); else if(value==='DEGRADED'&&['R06','R13'].includes(app.dataset.screen)){setScreen('ROUTE',{force:true});announce('DEGRADED：场景退回观察/路线，Optional Reveal 关闭。')}}
+}
+function setDigital(value){
+ if(!validDigital.includes(value))return;app.dataset.digital=value;updateStatusText();
+ if(value==='OFF'){
+  closeReadDetail();closeContext();r06RevealPanel.hidden=true;
+  if(['READ','R06','R13'].includes(app.dataset.screen))setScreen('ROUTE',{force:true});
+  announce('Digital OFF：阅读/场景退出；路线参考与 Return 保持。');
+ }else if(value==='LIGHT'){
+  r06RevealPanel.hidden=true;if(app.dataset.screen==='R13')app.dataset.presence='TRACE';announce('Digital LIGHT：保留路线与必要信息，Optional Reveal 收起。')
+ }else announce('Digital FULL：可选阅读恢复，但仍不获得路线或运营 authority。')
+ app.dataset.presence=value==='FULL'?'FULL':value==='LIGHT'?'LIGHT':'OFF';
+}
+function recordMemory(id){
+ if(app.dataset.digital==='OFF'){announce('Digital OFF：不写入数字记忆。');return}
+ if(!reads[id])return;
+ if(!memoryEntries.includes(id))memoryEntries.push(id);
+ safeSave({memoryEntries});renderBook();announce(`${id} 已留下痕迹；这不是完成度。`)
+}
+function renderBook(){
+ const empty=document.getElementById('bookEmpty'),list=document.getElementById('bookList');
+ if(!memoryEntries.length){empty.hidden=false;list.hidden=true;list.innerHTML='';return}
+ empty.hidden=true;list.hidden=false;list.innerHTML=memoryEntries.map((id,i)=>`<article class="book-entry"><span>${id}</span><div><b>${reads[id].title}</b><p>${reads[id].text}</p><small>TRACE ${String(i+1).padStart(2,'0')} · MEMORY / NOT SCORE</small></div></article>`).join('');
+}
+function toggleTools(open){tools.classList.toggle('open',open);tools.setAttribute('aria-hidden',String(!open))}
+function initialRoutePosition(){setTimeout(()=>scrollWorldPct(.13,.5,false),40)}
+

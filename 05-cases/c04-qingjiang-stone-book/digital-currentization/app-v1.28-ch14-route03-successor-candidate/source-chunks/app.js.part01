@@ -1,0 +1,110 @@
+(()=>{
+'use strict';
+const app=document.getElementById('app');
+const setupLayer=document.getElementById('setupLayer');
+const tools=document.getElementById('tools');
+const routeScroll=document.getElementById('routeScroll');
+const routeContext=document.getElementById('routeContext');
+const readDetail=document.getElementById('readDetail');
+const toast=document.getElementById('toast');
+const r06RevealPanel=document.getElementById('r06RevealPanel');
+const STORAGE_KEY='c04.qingjiang.app.v128.framework';
+const validReality=['NORMAL','DEGRADED','CLOSED','UNKNOWN'];
+const validDigital=['FULL','LIGHT','OFF'];
+const validReading=['QUICK','DEEP','FAMILY'];
+let resetTimer=0,toastTimer=0,currentRead='R01';
+let memoryEntries=[];
+
+const routeModes={
+ A:{label:'A / 推荐',title:'水布垭 → 游客中心',focus:[.13,.50],meta:'同一 ROUTE-03 carrier；只改变视口与阅读方向。'},
+ B:{label:'B / 逆向',title:'游客中心 → 水布垭',focus:[.88,.53],meta:'逆向阅读同一来源关系，不产生第二套路线。'},
+ C:{label:'C / 短线',title:'游客中心 ↔ 蝴蝶崖',focus:[.57,.45],meta:'短线是关系视口 preset；实时运营与通行仍不由此证明。'},
+ D:{label:'D / 短线',title:'游船码头 ↔ 蝴蝶崖',focus:[.54,.53],meta:'码头端点只来自当前关系说明；距离、坡度与状态保持 FIELD OPEN。'}
+};
+const anchors={
+ dam:{pos:[.0753,.2661],id:'ROUTE / WEST',title:'水布垭大坝',summary:'ROUTE-03 的西端关系节点。App 只读取锁定图中的相对关系，不解释为 GPS 坐标或实时抵达信息。',read:'R03'},
+ cliff:{pos:[.2697,.3048],id:'ROUTE / TURN',title:'蝴蝶崖',summary:'ROUTE-03 中的重要关系点，并承担短线折返判断。阅读可以从这里打开，但不把十三印强制绑定到路线任务。',read:'R06'},
+ dock:{pos:[.8422,.6807],id:'ROUTE / TRANSFER',title:'游船码头',summary:'水陆转换关系节点。服务与回程优先于内容触发；UNKNOWN / CLOSED 时不显示为正常开放。',read:'R01'},
+ center:{pos:[.8809,.8613],id:'ROUTE / SERVICE',title:'游客中心',summary:'服务与恢复路径的关系锚点。App 不模拟营业、排队、船班或索道实时状态。',read:'R13'}
+};
+const reads={
+ R01:{title:'移动观看',text:'索道与游船首先是移动视点。数字层不设置强制触发，不要求在移动过程中完成阅读。',boundary:'移动速度、具体视点与运营状态未由本原型现场验证。'},
+ R02:{title:'植物观察',text:'先观察真实植物与环境，再决定是否打开解释。远程资料只能建立内容结构，不能替代现场物种与季相识别。',boundary:'植物种、季相、样方和具体位置保持 FIELD OPEN。'},
+ R03:{title:'石与时间',text:'“石”负责材料与时间的阅读关系，不把峰林变成品牌造型或拟物书页。',boundary:'地质解释必须回到可靠来源；此处不生成具体年代判断。'},
+ R04:{title:'水与层理',text:'水、峰林与层理形成阅读线索，但图形关系不获得地貌 geometry authority。',boundary:'水位、地层、侵蚀机制与现场尺度需要专项证据。'},
+ R05:{title:'红花峰林',text:'当前保留阅读身份和替换接口，不使用泛化景观图填补缺失的权威像素。',boundary:'R05 authoritative landscape pixel remains open; no substitute is promoted.'},
+ R06:{title:'河谷观察',text:'先让完整河谷进入第一眼，再用最小解释支持一次观察与比较。阅读是可退回的。',boundary:'视距、植物、节点尺度与安全条件仍为 FIELD OPEN。',scene:'R06'},
+ R07:{title:'仓禀峰／仓廪峰',text:'名称保持双写以保留当前来源冲突，不通过界面排版把一个候选写成唯一事实。',boundary:'名称 authority conflict remains open.'},
+ R08:{title:'路上的关系',text:'路线、身体与景观的关系优先于内容数量。没有完成度，也不要求按编号顺序阅读。',boundary:'不从编号推断空间顺序。'},
+ R09:{title:'地方叙事',text:'地方叙事与自然事实分层呈现；亲子模式下尤其避免把传说写成科学说明。',boundary:'FACT / LOCAL NARRATIVE / DESIGN READING must remain separated.'},
+ R10:{title:'停留与再看',text:'允许停下，也允许跳过。停留本身不被记录成任务完成。',boundary:'停留时长与行为模式未有现场用户证据。'},
+ R11:{title:'一次比较',text:'解释只在能帮助观察发生变化时出现，不为了证明 App 存在而增加信息。',boundary:'远程原型不证明实际认知效果。'},
+ R12:{title:'再认出清江',text:'记忆来自再次识别一处关系，而不是自动收集。可以什么都不保存。',boundary:'不宣称长期记忆或学习效果。'},
+ R13:{title:'通过收窄空间',text:'进入高注意空间后，数字层主动退出。身体、路线与 Return 重新获得唯一主导权。',boundary:'空间压缩、安全和通行条件不由 UI 图形证明。',scene:'R13'}
+};
+
+function safeLoad(){
+ try{
+  const raw=localStorage.getItem(STORAGE_KEY); if(!raw)return {};
+  const d=JSON.parse(raw)||{};return d;
+ }catch(e){return {storageBlocked:true};}
+}
+function safeSave(patch={}){
+ const current=safeLoad();
+ if(current.storageBlocked)return false;
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify({...current,...patch}));return true}catch(e){return false}
+}
+const persisted=safeLoad();
+let readingMode=validReading.includes(persisted.readingMode)?persisted.readingMode:'QUICK';
+let setupSeen=persisted.setupSeen===true;
+if(Array.isArray(persisted.memoryEntries))memoryEntries=persisted.memoryEntries.filter(x=>x&&reads[x]);
+
+function isFailClosed(){return ['UNKNOWN','CLOSED'].includes(app.dataset.reality)}
+function isSceneAllowed(){return !isFailClosed() && app.dataset.digital!=='OFF'}
+function allowsReveal(){return app.dataset.reality==='NORMAL' && app.dataset.digital==='FULL'}
+function announce(msg){clearTimeout(toastTimer);toast.textContent=msg;toast.classList.add('show');toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
+function setBehavior(state){clearTimeout(resetTimer);app.dataset.behavior=state;const el=document.getElementById('behaviorReadout');if(el)el.textContent=state.toUpperCase()}
+function resetBehaviorLater(ms=280){clearTimeout(resetTimer);resetTimer=setTimeout(()=>{if(app.dataset.behavior!=='RETURN')setBehavior('INTENT')},ms)}
+function updateStatusText(){
+ document.getElementById('statusName').textContent=app.dataset.reality;
+ document.getElementById('digitalName').textContent=app.dataset.digital;
+ document.getElementById('serviceState').querySelector('b').textContent=app.dataset.reality;
+ const headline=document.getElementById('serviceHeadline'),lead=document.getElementById('serviceLead');
+ if(app.dataset.reality==='NORMAL'){headline.textContent='路线清楚，再决定读什么。';lead.textContent='当前仅为原型 NORMAL 状态，不代表景区实时开放。Return 始终比阅读优先。'}
+ else if(app.dataset.reality==='DEGRADED'){headline.textContent='先缩减解释，保留路线。';lead.textContent='DEGRADED 下仍可查看关系路线，但场景只读观察，Optional Reveal 主动关闭。'}
+ else if(app.dataset.reality==='CLOSED'){headline.textContent='这里不继续。';lead.textContent='CLOSED 直接回到服务与恢复路径；不把关闭状态包装成正常游程。'}
+ else {headline.textContent='现在先回来。';lead.textContent='状态未知时，不继续讲故事。路线参考、纸图、现场标识和人工服务重新获得优先级。'}
+ document.querySelectorAll('[data-control="reality"] button').forEach(b=>b.classList.toggle('active',b.dataset.value===app.dataset.reality));
+ document.querySelectorAll('[data-control="digital"] button').forEach(b=>b.classList.toggle('active',b.dataset.value===app.dataset.digital));
+ document.querySelectorAll('[data-control="reading"] button').forEach(b=>b.classList.toggle('active',b.dataset.value===readingMode));
+}
+function updateReadingMode(mode,save=true){
+ if(!validReading.includes(mode))return;
+ readingMode=mode;app.dataset.readingMode=mode;
+ document.querySelectorAll('[data-reading-mode]').forEach(b=>b.classList.toggle('active',b.dataset.readingMode===mode));
+ if(save)safeSave({readingMode:mode});
+ updateStatusText();
+}
+function primaryFor(screen){return ['ROUTE','READ','R06','R13'].includes(screen)?'ROUTE':screen}
+function updateNav(screen){
+ const primary=primaryFor(screen);
+ document.querySelectorAll('[data-primary]').forEach(b=>b.classList.toggle('active',b.dataset.primary===primary));
+ const child=document.getElementById('routeChildRail');
+ child.classList.toggle('visible',['ROUTE','READ','R06','R13'].includes(screen));
+ document.querySelectorAll('#routeChildRail [data-nav-target]').forEach(b=>b.classList.toggle('active',b.dataset.navTarget===screen));
+}
+function setScreen(screen,{force=false}={}){
+ if(!document.querySelector(`[data-screen-panel="${screen}"]`))return false;
+ if(!force && ['R06','R13'].includes(screen) && !isSceneAllowed()){
+  announce(app.dataset.digital==='OFF'?'Digital OFF：场景层退出，保留路线与 Return。':'当前状态不进入场景，先回到服务。');
+  if(isFailClosed())return setScreen('SERVICE',{force:true});
+  return setScreen('ROUTE',{force:true});
+ }
+ if(isFailClosed() && !force && screen!=='SERVICE')return setScreen('SERVICE',{force:true});
+ document.querySelectorAll('[data-screen-panel]').forEach(p=>p.classList.toggle('active',p.dataset.screenPanel===screen));
+ app.dataset.screen=screen;updateNav(screen);closeContext();closeReadDetail();
+ if(screen==='R13'){app.dataset.presence='TRACE';setBehavior('WITHDRAW')}
+ else if(screen==='R06'){app.dataset.presence=app.dataset.digital==='FULL'?'LIGHT':'TRACE';setBehavior('INTENT')}
+ else if(screen==='SERVICE'){app.dataset.presence='LIGHT';setBehavior('RETURN')}
+ else {app.dataset.presence=app.dataset.digital==='OFF'?'OFF':'FULL';setBehavior('INTENT')}
+ return true;

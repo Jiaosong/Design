@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>清江石书 App v1.28 Candidate｜CH14 × ROUTE-03</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<svg class="icon-defs" aria-hidden="true" width="0" height="0">
+<defs>
+  <symbol id="i-boat" viewBox="0 0 32 32"><path d="M4 20h24l-4 5H8zM10 16h12"/></symbol>
+  <symbol id="i-cable" viewBox="0 0 32 32"><path d="M5 7h22M16 7v6M8 13h16v12H8z"/></symbol>
+  <symbol id="i-walk" viewBox="0 0 32 32"><path d="M16 7a3 3 0 1 0 0-6M16 10l-3 8-5 7M15 14l7 4M14 18l7 7"/></symbol>
+  <symbol id="i-return" viewBox="0 0 32 32"><path d="M13 8 6 15l7 7M7 15h11c5 0 8 3 8 8"/></symbol>
+  <symbol id="i-read" viewBox="0 0 32 32"><path d="M5 7h9c2 0 3 1 3 3v15c0-2-1-3-3-3H5zM27 7h-9c-1 0-1 1-1 3v15c0-2 1-3 3-3h7z"/></symbol>
+  <symbol id="i-memory" viewBox="0 0 32 32"><path d="M8 5h16v22H8zM12 11h8M12 16h8M12 21h5"/></symbol>
+  <symbol id="i-offline" viewBox="0 0 32 32"><path d="M6 10c6-5 14-5 20 0M9 14c4-3 10-3 14 0M13 19c2-1 4-1 6 0M5 5l22 22"/></symbol>
+  <symbol id="i-service" viewBox="0 0 32 32"><path d="M16 4v24M4 16h24M9 9l14 14M23 9 9 23"/></symbol>
+  <symbol id="i-today" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="M16 10v6l4 3"/></symbol>
+  <symbol id="i-route" viewBox="0 0 32 32"><path d="M6 24c5-12 9-3 13-12 2-4 4-5 7-5"/><circle cx="6" cy="24" r="2"/><circle cx="26" cy="7" r="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 32 32"><path d="M6 6h9c2 0 3 1 3 3v17c0-2-1-3-3-3H6zM26 6h-7c-1 0-1 1-1 3v17c0-2 1-3 3-3h5z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 32 32"><circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/><circle cx="24" cy="16" r="1.5" fill="currentColor" stroke="none"/></symbol>
+</defs>
+</svg>
+
+<div class="app" id="app" data-screen="SERVICE" data-reality="UNKNOWN" data-digital="FULL" data-reading-mode="QUICK" data-presence="LIGHT" data-behavior="RETURN">
+  <header class="topbar">
+    <button class="brand-button" id="brandButton" aria-label="回到今日">
+      <span class="stone-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-copy"><b>清江石书</b><small>QINGJIANG STONE BOOK</small></span>
+    </button>
+    <div class="top-actions">
+      <button class="tool-button" id="toolButton" aria-label="打开原型状态控制"><svg><use href="#i-menu"/></svg></button>
+      <button class="return-button" id="returnButton"><svg><use href="#i-return"/></svg><span>回程</span></button>
+    </div>
+  </header>
+
+  <div class="status-line" id="statusLine"><span id="statusName">UNKNOWN</span><i></i><span id="digitalName">FULL</span><i></i><span>NTS / NOT GPS</span></div>
+
+  <main class="viewport">
+    <!-- TODAY -->
+    <section class="screen screen-today" data-screen-panel="TODAY" aria-label="今日">
+      <div class="today-copy">
+        <div class="eyebrow">TODAY / JOURNEY FIRST</div>
+        <h1>先游清江，<br>再读清江。</h1>
+        <p>先建立水上、空中、山中与回程的关系。需要时，再打开一页清江。</p>
+      </div>
+      <div class="today-river" aria-hidden="true">
+        <svg viewBox="0 0 430 260" preserveAspectRatio="none"><path class="river-mass" d="M-20 190C66 122 102 224 188 153S310 98 455 142"/><path class="river-line" d="M-20 190C66 122 102 224 188 153S310 98 455 142"/><path class="trace-line" d="M52 204C128 146 169 198 231 141S327 111 410 128"/></svg>
+        <span>LANDSCAPE AS TEXT · JOURNEY AS READING</span>
+      </div>
+      <div class="journey-spine" aria-label="游程骨架">
+        <button data-journey="BOAT"><svg><use href="#i-boat"/></svg><span>01</span><b>水上看</b><small>BOAT</small></button>
+        <button data-journey="CABLE"><svg><use href="#i-cable"/></svg><span>02</span><b>空中看</b><small>CABLE</small></button>
+        <button data-journey="WALK"><svg><use href="#i-walk"/></svg><span>03</span><b>山中走</b><small>WALK</small></button>
+        <button data-nav-target="SERVICE"><svg><use href="#i-return"/></svg><span>04</span><b>安全回来</b><small>RETURN</small></button>
+      </div>
+      <div class="today-footer"><span>REAL QINGJIANG FIRST</span><button data-nav-target="ROUTE">查看路线 <b>→</b></button></div>
+    </section>
+
+    <!-- ROUTE -->
+    <section class="screen screen-route" data-screen-panel="ROUTE" aria-label="路线">
+      <div class="route-head">
+        <div><div class="eyebrow">ROUTE / SOURCE CARRIER</div><h1>路线先成立，<br>内容再出现。</h1></div>
+        <div class="route-boundary"><b>ROUTE-03</b><span>LOCKED CURRENT</span><small>RELATIONAL / NTS / NOT GPS</small></div>
+      </div>
+      <div class="route-window" id="routeWindow">
+        <div class="route-scroll" id="routeScroll" tabindex="0" aria-label="拖动浏览 ROUTE-03 关系路线">
+          <div class="route-world" id="routeWorld">
+            <img src="assets/ROUTE_03_APP_VIEWPORT.svg" alt="ROUTE-03 锁定关系路线">
+            <button class="map-anchor a-dam" data-anchor="dam" aria-label="水布垭大坝"></button>
+            <button class="map-anchor a-cliff" data-anchor="cliff" aria-label="蝴蝶崖"></button>
+            <button class="map-anchor a-dock" data-anchor="dock" aria-label="游船码头"></button>
+            <button class="map-anchor a-center" data-anchor="center" aria-label="游客中心"></button>
+          </div>
+        </div>
+        <div class="map-caption"><span id="behaviorReadout">INTENT</span><b>拖动路线 · 点地标只看关系</b></div>
+      </div>
+      <div class="route-modes" role="group" aria-label="路线视口模式">

@@ -1,0 +1,80 @@
+        <button data-route-mode="A" class="active"><span>A</span><b>推荐</b></button>
+        <button data-route-mode="B"><span>B</span><b>逆向</b></button>
+        <button data-route-mode="C"><span>C</span><b>短线</b></button>
+        <button data-route-mode="D"><span>D</span><b>短线</b></button>
+      </div>
+      <div class="route-mode-copy"><span id="routeModeLabel">A / 推荐</span><b id="routeModeTitle">水布垭 → 游客中心</b><small id="routeModeMeta">同一 ROUTE-03 carrier；只改变视口与阅读方向。</small></div>
+    </section>
+
+    <!-- READ -->
+    <section class="screen screen-read" data-screen-panel="READ" aria-label="十三印可选阅读">
+      <div class="read-head">
+        <div class="eyebrow">OPTIONAL READING / R01–R13</div>
+        <h1>需要时，<br>再打开一页清江。</h1>
+        <p>十三印是可选阅读对象，不是十三个必须抵达的实体任务，也不定义路线几何。</p>
+      </div>
+      <div class="read-index" id="readIndex">
+        <button data-read="R01"><span>R01</span><b>移动观看</b><small>CABLE / OPTIONAL</small></button>
+        <button data-read="R02"><span>R02</span><b>植物观察</b><small>LANDSCAPE / OPTIONAL</small></button>
+        <button data-read="R03"><span>R03</span><b>石与时间</b><small>READING / OPTIONAL</small></button>
+        <button data-read="R04"><span>R04</span><b>水与层理</b><small>READING / OPTIONAL</small></button>
+        <button data-read="R05"><span>R05</span><b>红花峰林</b><small>SOURCE PIXEL OPEN</small></button>
+        <button data-read="R06" class="featured"><span>R06</span><b>河谷观察</b><small>LANDSCAPE FIRST</small></button>
+        <button data-read="R07"><span>R07</span><b>仓禀峰／仓廪峰</b><small>NAME AUTHORITY OPEN</small></button>
+        <button data-read="R08"><span>R08</span><b>路上的关系</b><small>OPTIONAL</small></button>
+        <button data-read="R09"><span>R09</span><b>地方叙事</b><small>BOUNDARY</small></button>
+        <button data-read="R10"><span>R10</span><b>停留与再看</b><small>OPTIONAL</small></button>
+        <button data-read="R11"><span>R11</span><b>一次比较</b><small>OPTIONAL</small></button>
+        <button data-read="R12"><span>R12</span><b>再认出清江</b><small>OPTIONAL</small></button>
+        <button data-read="R13" class="featured danger"><span>R13</span><b>通过收窄空间</b><small>BODY FIRST / RETURN ON</small></button>
+      </div>
+    </section>
+
+    <!-- R06 -->
+    <section class="screen screen-r06" data-screen-panel="R06" aria-label="R06 河谷观察">
+      <div class="scene-field r06-field" aria-hidden="true"><div class="r06-horizon"></div><div class="r06-river"></div><span>LANDSCAPE PIXEL AUTHORITY REMAINS UPSTREAM</span></div>
+      <div class="scene-copy">
+        <div class="eyebrow">R06 / LANDSCAPE FIRST</div>
+        <h1>先看完整河谷。</h1>
+        <p>这一屏不模拟现场照片，也不把解释压在第一眼。当前独立构建只证明数字层如何礼让景观。</p>
+      </div>
+      <div class="scene-actions">
+        <button id="r06Reveal"><svg><use href="#i-read"/></svg><span><b>打开最小解释</b><small>OPTIONAL REVEAL</small></span></button>
+        <button data-record="R06"><svg><use href="#i-memory"/></svg><span><b>留下这一刻</b><small>MEMORY / NOT SCORE</small></span></button>
+      </div>
+      <article class="scene-reveal" id="r06RevealPanel" hidden><span>REVEAL / SOURCE BOUNDARY</span><h2>观察先于解释。</h2><p>当前远程研究只能支持“河谷观察 → 可选关系阅读”的设计语法；视距、具体植物、现场尺度和安全条件仍为 FIELD OPEN。</p><button data-withdraw="R06">收起这一页</button></article>
+    </section>
+
+    <!-- R13 -->
+    <section class="screen screen-r13" data-screen-panel="R13" aria-label="R13 身体优先">
+      <div class="r13-silence"><span>R13 / BODY FIRST</span><b>PLAY OFF</b></div>
+      <div class="r13-copy"><div class="eyebrow">PASSAGE / DIGITAL RETREAT</div><h1>这里先让身体通过。</h1><p>不再用 UI 图形假装空间压缩。数字层只做一件事：退出，把 Return 留在最前面。</p></div>
+      <button class="r13-memory" data-record="R13"><svg><use href="#i-memory"/></svg><span><b>通过后再记</b><small>AFTER EXIT / OPTIONAL</small></span></button>
+    </section>
+
+    <!-- MY BOOK -->
+    <section class="screen screen-book" data-screen-panel="BOOK" aria-label="我的石书">
+      <div class="book-head"><div class="eyebrow">MEMORY / NOT COMPLETION</div><h1>我的石书</h1><p>这里只保留你主动留下的痕迹，不显示 13/13、完成百分比、积分或徽章。</p></div>
+      <div class="book-empty" id="bookEmpty"><span>TRACE / EMPTY</span><h2>还没有留下内容。</h2><p>可以什么都不记。旅程本身已经完整。</p></div>
+      <div class="book-list" id="bookList" hidden></div>
+      <div class="book-definition"><b>PARTIAL IS COMPLETE</b><span>只记住一处，也是一趟完整的清江。</span></div>
+    </section>
+
+    <!-- SERVICE -->
+    <section class="screen screen-service active" data-screen-panel="SERVICE" aria-label="服务与回程">
+      <div class="service-head"><div class="eyebrow">SERVICE / RETURN</div><h1 id="serviceHeadline">现在先回来。</h1><p id="serviceLead">状态未知时，不继续讲故事。路线参考、纸图、现场标识和人工服务重新获得优先级。</p></div>
+      <div class="service-state" id="serviceState"><span>STATUS</span><b>UNKNOWN</b><small>FAIL CLOSED / NOT LIVE STATUS</small></div>
+      <div class="service-priority">
+        <div><span>01</span><svg><use href="#i-return"/></svg><b>RETURN</b><small>回到可确认的服务触点</small></div>
+        <div><span>02</span><svg><use href="#i-service"/></svg><b>SERVICE</b><small>人工 / 现场信息优先</small></div>
+        <div><span>03</span><svg><use href="#i-route"/></svg><b>ROUTE</b><small>只作关系参考</small></div>
+        <div><span>04</span><svg><use href="#i-offline"/></svg><b>NO-PHONE</b><small>数字层不是承重结构</small></div>
+      </div>
+      <button class="service-continue" id="serviceContinue">查看关系路线 <b>→</b></button>
+    </section>
+  </main>
+
+  <nav class="route-child-rail" id="routeChildRail" aria-label="路线子层">
+    <button data-nav-target="ROUTE"><span>ROUTE</span></button>
+    <button data-nav-target="READ"><span>READ</span></button>
+    <button data-nav-target="R06"><span>R06</span></button>

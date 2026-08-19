@@ -1,0 +1,10 @@
+{
+  "artifact":"C04_APP_v1_28_CH14_STYLE_MAPPING",
+  "status":"APPLIED TO SUCCESSOR CANDIDATE / DESIGN REVIEW PENDING",
+  "P01":{"rule":"Landscape First; brand withdraws when route/body/landscape need priority","app":"TODAY first-read hierarchy; Digital OFF hides brand carrier"},
+  "P04":{"tokens":{"Bone Mist":"#F1EDE4","River Black":"#111918","Deep Water":"#133B3C","Jade Current":"#2E7571","Mica":"#BAC4BF","Cinnabar":"#B8543E"},"rule":"no neon/glow; brand color != operational state color"},
+  "P05":{"rule":"Contemporary Editorial + Landscape Space; serif display + sans function + mono evidence/state","app":"large claims, negative space, technical microcopy separated"},
+  "P06":{"rule":"LINE → REVEAL → TRACE → MEMORY; route graphics source-bound","app":"ROUTE-03 → optional READ → explicit memory only"},
+  "P07":{"rule":"function first; 1.65 stroke; round cap/join; Return > Service > Route > Reading","app":"shared boat/cable/walk/return/read/memory/offline/service family"},
+  "does_not_prove":["CH14 independent design pass","field state","live operation","GPS","landscape pixel authority"]
+}

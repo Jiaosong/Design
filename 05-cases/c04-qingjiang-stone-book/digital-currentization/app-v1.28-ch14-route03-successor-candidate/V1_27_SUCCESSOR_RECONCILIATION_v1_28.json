@@ -1,0 +1,9 @@
+{
+  "status":"SUCCESSOR MATERIALIZED / EXACT BYTE PATCH NOT CLAIMED",
+  "source_candidate":"C04_QINGJIANG_APP_v1_27_GAME_ARCHITECTURE_FIX_PORTABLE.html (File Library)",
+  "preserve":["v1.26 fail-closed + APP_INIT + modes + OFFLINE_PREP + Digital OFF + Reduced Motion","v1.27 TODAY/ROUTE/MY BOOK/SERVICE primary IA","READ/R06/R13 route-context descendants","Return priority"],
+  "supersede":["custom embedded guide-route geometry authority","old 18-node topology as route authority","dark HUD/glass/neon visual grammar","legacy C04-WS identifiers when interpreted as Current"],
+  "current_route_authority":"ROUTE-03 = LOCKED CURRENT",
+  "current_workstream":"PRJ-C04-DIGITAL-INTERACTION [P3]",
+  "claim_boundary":"v1.27 File Library bytes were inspected but not exported as a writable byte-identical file; v1.28 is a successor implementation, not a falsely claimed in-place patch."
+}

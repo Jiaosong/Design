@@ -1,0 +1,69 @@
+    <button data-nav-target="R13"><span>R13</span></button>
+  </nav>
+
+  <nav class="primary-nav" aria-label="主导航">
+    <button data-primary="TODAY"><svg><use href="#i-today"/></svg><span>今日</span></button>
+    <button data-primary="ROUTE"><svg><use href="#i-route"/></svg><span>路线</span></button>
+    <button data-primary="BOOK"><svg><use href="#i-book"/></svg><span>我的石书</span></button>
+    <button data-primary="SERVICE" class="active"><svg><use href="#i-service"/></svg><span>服务</span></button>
+  </nav>
+
+  <!-- ROUTE CONTEXT -->
+  <aside class="route-context" id="routeContext" aria-hidden="true">
+    <div class="context-rule"></div>
+    <div class="context-head"><div><span id="contextId">ROUTE</span><h2 id="contextTitle">关系节点</h2></div><button id="contextClose">关闭</button></div>
+    <p id="contextSummary"></p>
+    <div class="context-proof"><span>ROUTE-03 LOCKED CURRENT</span><span>FIELD OPEN</span></div>
+    <button class="context-read" id="contextRead"><svg><use href="#i-read"/></svg><span><b>打开可选阅读</b><small>不制造路线邻近真值</small></span></button>
+  </aside>
+
+  <!-- READ DETAIL -->
+  <aside class="read-detail" id="readDetail" aria-hidden="true">
+    <div class="read-detail-top"><span id="readDetailId">R01</span><button id="readDetailClose">退回阅读</button></div>
+    <h1 id="readDetailTitle">一页清江</h1><p id="readDetailText"></p>
+    <div class="read-detail-boundary"><b>OPTIONAL / SOURCE-GROUNDED</b><span id="readDetailBoundary">不将远程推断升级为现场事实。</span></div>
+    <div class="read-detail-actions"><button id="readDetailScene" hidden>进入场景</button><button id="readDetailRecord">留下痕迹</button></div>
+  </aside>
+
+  <!-- APP INIT -->
+  <section class="setup-layer" id="setupLayer" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="setup-step" data-setup="MODE">
+      <div class="setup-meta"><span>APP INIT / MODE</span><button id="setupSkip">以后再选</button></div>
+      <h1>先选一种<br>看清江的方式。</h1>
+      <p>只改变解释密度，不改变路线、回程、安全规则，也不产生等级与身份锁。</p>
+      <div class="reading-options">
+        <button data-reading-mode="QUICK" class="active"><span>QUICK</span><b>轻读</b><small>只主动出现关键观察。</small></button>
+        <button data-reading-mode="DEEP"><span>DEEP</span><b>深读</b><small>保持来源与附加阅读可达。</small></button>
+        <button data-reading-mode="FAMILY"><span>FAMILY</span><b>亲子共读</b><small>观察动作优先，叙事边界更明确。</small></button>
+      </div>
+      <button class="setup-next" id="setupNext">继续</button>
+      <small class="setup-note">MODE ≠ PERSONA · READING OPTIONAL</small>
+    </div>
+    <div class="setup-step" data-setup="OFFLINE" hidden>
+      <div class="setup-meta"><span>OFFLINE PREP</span><span>ROUTE-03 EMBEDDED</span></div>
+      <h1>先确认离线<br>也能回来。</h1>
+      <div class="offline-list">
+        <div><svg><use href="#i-route"/></svg><span><b>路线关系</b><small>ROUTE-03 / NTS / NOT GPS</small></span><em>READY</em></div>
+        <div><svg><use href="#i-return"/></svg><span><b>Return</b><small>纸图 / 标识 / 人工 fallback</small></span><em>CORE</em></div>
+        <div><svg><use href="#i-offline"/></svg><span><b>数字解释</b><small>FULL → LIGHT → OFF</small></span><em>OPTIONAL</em></div>
+        <div><svg><use href="#i-service"/></svg><span><b>实时状态</b><small>没有正式接口</small></span><em>NOT INCLUDED</em></div>
+      </div>
+      <button class="setup-next" id="setupEnter">进入今日</button>
+    </div>
+  </section>
+
+  <!-- DEMO CONTROL -->
+  <aside class="tools" id="tools" aria-hidden="true">
+    <div class="tools-head"><div><span>PROTOTYPE CONTROL</span><b>NOT LIVE STATUS</b></div><button id="toolsClose">关闭</button></div>
+    <section><span>REALITY</span><div class="segmented" data-control="reality"><button data-value="NORMAL">NORMAL</button><button data-value="DEGRADED">DEGRADED</button><button data-value="CLOSED">CLOSED</button><button data-value="UNKNOWN" class="active">UNKNOWN</button></div></section>
+    <section><span>DIGITAL</span><div class="segmented" data-control="digital"><button data-value="FULL" class="active">FULL</button><button data-value="LIGHT">LIGHT</button><button data-value="OFF">OFF</button></div></section>
+    <section><span>READING</span><div class="segmented" data-control="reading"><button data-value="QUICK" class="active">QUICK</button><button data-value="DEEP">DEEP</button><button data-value="FAMILY">FAMILY</button></div></section>
+    <button class="reset-button" id="resetSetup">重置 APP INIT</button>
+    <p>状态控制只用于演示状态机，不代表景区当前开放、可通行、实时定位或运营数据。</p>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

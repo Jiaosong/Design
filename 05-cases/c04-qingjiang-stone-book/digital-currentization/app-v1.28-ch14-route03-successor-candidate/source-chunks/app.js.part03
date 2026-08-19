@@ -1,0 +1,42 @@
+// controls
+document.getElementById('brandButton').addEventListener('click',()=>setScreen('TODAY'));
+document.getElementById('returnButton').addEventListener('click',openReturn);
+document.getElementById('toolButton').addEventListener('click',()=>toggleTools(true));document.getElementById('toolsClose').addEventListener('click',()=>toggleTools(false));
+document.querySelectorAll('[data-primary]').forEach(b=>b.addEventListener('click',()=>setScreen(b.dataset.primary)));
+document.querySelectorAll('[data-nav-target]').forEach(b=>b.addEventListener('click',()=>setScreen(b.dataset.navTarget)));
+document.querySelectorAll('[data-route-mode]').forEach(b=>b.addEventListener('click',()=>setRouteMode(b.dataset.routeMode)));
+document.querySelectorAll('.map-anchor').forEach(a=>{a.addEventListener('pointerenter',()=>{if(!routeContext.classList.contains('open'))setBehavior('APPROACH')});a.addEventListener('focus',()=>{if(!routeContext.classList.contains('open'))setBehavior('FOCUS')});a.addEventListener('click',()=>openAnchor(a.dataset.anchor))});
+document.getElementById('contextClose').addEventListener('click',()=>{closeContext();setBehavior('WITHDRAW');resetBehaviorLater()});
+document.getElementById('contextRead').addEventListener('click',()=>openRead(currentRead));
+document.querySelectorAll('[data-read]').forEach(b=>b.addEventListener('click',()=>openRead(b.dataset.read)));
+document.getElementById('readDetailClose').addEventListener('click',()=>{closeReadDetail();setBehavior('WITHDRAW');resetBehaviorLater()});
+document.getElementById('readDetailScene').addEventListener('click',e=>{const s=e.currentTarget.dataset.scene;closeReadDetail();if(s)setScreen(s)});
+document.getElementById('readDetailRecord').addEventListener('click',()=>recordMemory(currentRead));
+document.getElementById('r06Reveal').addEventListener('click',()=>{if(!allowsReveal()){announce(app.dataset.reality==='DEGRADED'?'DEGRADED：保留观察，Optional Reveal 关闭。':'当前状态不展开 Optional Reveal。');return}r06RevealPanel.hidden=false;setBehavior('REVEAL')});
+document.querySelectorAll('[data-withdraw]').forEach(b=>b.addEventListener('click',()=>{r06RevealPanel.hidden=true;setBehavior('WITHDRAW');resetBehaviorLater()}));
+document.querySelectorAll('[data-record]').forEach(b=>b.addEventListener('click',()=>recordMemory(b.dataset.record)));
+document.getElementById('serviceContinue').addEventListener('click',()=>{if(isFailClosed())announce('当前为 fail-closed：只能查看服务与回程信息。');else setScreen('ROUTE')});
+document.querySelectorAll('[data-journey]').forEach(b=>b.addEventListener('click',()=>{setScreen('ROUTE');const map={BOAT:'A',CABLE:'A',WALK:'C'};setTimeout(()=>setRouteMode(map[b.dataset.journey]||'A'),50)}));
+
+document.querySelectorAll('[data-reading-mode]').forEach(b=>b.addEventListener('click',()=>updateReadingMode(b.dataset.readingMode,true)));
+document.getElementById('setupSkip').addEventListener('click',()=>{updateReadingMode('QUICK');document.getElementById('setupNext').click()});
+document.getElementById('setupNext').addEventListener('click',()=>{document.querySelectorAll('[data-setup]').forEach(s=>s.hidden=s.dataset.setup!=='OFFLINE');safeSave({readingMode});});
+document.getElementById('setupEnter').addEventListener('click',()=>{setupSeen=true;safeSave({setupSeen:true,readingMode});hideSetup();setScreen('TODAY',{force:true});announce('离线核心已确认：路线 / Return 先于可选阅读。')});
+document.getElementById('resetSetup').addEventListener('click',()=>{setupSeen=false;safeSave({setupSeen:false});toggleTools(false);if(!isFailClosed())showSetup('MODE');announce('APP INIT 已重置。')});
+
+document.querySelector('[data-control="reality"]').addEventListener('click',e=>{const b=e.target.closest('button[data-value]');if(b)setReality(b.dataset.value)});
+document.querySelector('[data-control="digital"]').addEventListener('click',e=>{const b=e.target.closest('button[data-value]');if(b)setDigital(b.dataset.value)});
+document.querySelector('[data-control="reading"]').addEventListener('click',e=>{const b=e.target.closest('button[data-value]');if(b)updateReadingMode(b.dataset.value)});
+routeScroll.addEventListener('scroll',()=>{if(app.dataset.screen==='ROUTE'&&!routeContext.classList.contains('open')&&app.dataset.behavior==='INTENT')setBehavior('SEEK')},{passive:true});
+routeScroll.addEventListener('keydown',e=>{const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;const behavior=reduce?'auto':'smooth';if(e.key==='ArrowRight')routeScroll.scrollBy({left:130,behavior});if(e.key==='ArrowLeft')routeScroll.scrollBy({left:-130,behavior});if(e.key==='ArrowDown')routeScroll.scrollBy({top:90,behavior});if(e.key==='ArrowUp')routeScroll.scrollBy({top:-90,behavior});if(e.key==='Escape')closeContext()});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){if(tools.classList.contains('open'))toggleTools(false);else if(readDetail.classList.contains('open'))closeReadDetail();else if(routeContext.classList.contains('open'))closeContext();else if(!setupLayer.classList.contains('open'))openReturn()}});
+
+// public test API
+window.C04_APP={
+ setReality,setDigital,setReadingMode:updateReadingMode,setScreen,setRouteMode,openAnchor,openRead,openReturn,recordMemory,startJourney,
+ state:()=>({screen:app.dataset.screen,reality:app.dataset.reality,digital:app.dataset.digital,readingMode,setupSeen,behavior:app.dataset.behavior,presence:app.dataset.presence,contextOpen:routeContext.classList.contains('open'),readDetailOpen:readDetail.classList.contains('open'),setupOpen:setupLayer.classList.contains('open'),toolsOpen:tools.classList.contains('open'),memoryEntries:[...memoryEntries],scrollLeft:Math.round(routeScroll.scrollLeft),scrollTop:Math.round(routeScroll.scrollTop)}),
+ resetStorage:()=>{try{localStorage.removeItem(STORAGE_KEY)}catch(e){};setupSeen=false;memoryEntries=[];renderBook()}
+};
+
+updateReadingMode(readingMode,false);updateStatusText();renderBook();initialRoutePosition();startJourney();
+})();
