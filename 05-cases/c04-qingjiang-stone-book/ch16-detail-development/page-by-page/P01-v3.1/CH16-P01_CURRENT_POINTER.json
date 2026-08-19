@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.c04.ch16.page-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "current_revision": "v3.1",
+  "authority_precedence": [
+    "C04 Current Authority",
+    "C04 User Original Design Integration Plan v1.0",
+    "C04 User Original Design Source Register v1.0",
+    "CH16 Current Material",
+    "user presentation constraint 2026-08-19"
+  ],
+  "design_source": {
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "role": "DESIGN SOURCE / NEAR-READ SUPPORT",
+    "source_identity": "USER ORIGINAL PHYSICAL / BODY DESIGN SOURCE",
+    "preserve": true
+  },
+  "final_public_pixel": {
+    "state": "REVISE_REQUIRED",
+    "rule": "ORIGINAL BOARD != FINAL PUBLIC PIXEL",
+    "required_carrier": "clean current representation of the P02 body/product/use relation",
+    "must_preserve_original_design_identity": true,
+    "may_use_original_board_as_main": false
+  },
+  "source_board_presentation": {
+    "may_use": true,
+    "role": "SOURCE / EVOLUTION / NEAR-READ SUPPORT",
+    "crop": "FORBIDDEN",
+    "aspect_ratio": "PRESERVE",
+    "fit_mode": "CONTAIN",
+    "clipping": "FORBIDDEN",
+    "if_space_insufficient": "CAROUSEL_OR_SEQUENTIAL_FULL_FRAME",
+    "carousel_rule": "each source-board frame must show the complete uncropped board; no cover-fit and no detail crop may impersonate the source board"
+  },
+  "offline_web_binding": {
+    "state": "HOLD_NO_SOURCE_BYTES",
+    "allowed_action": "materialize exact ODB-02 bytes before offline embedding",
+    "forbidden_action": [
+      "screenshot recreation",
+      "crop-as-source substitute",
+      "C23/currentized derivative as source replacement",
+      "AI-generated substitute"
+    ]
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
