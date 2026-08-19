@@ -1,0 +1,35 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "revision": "v0.1",
+  "decision_question": "Can the Master System be read through real Qingjiang journey/scene carriers rather than a generic system diagram?",
+  "producer_state": "EXECUTED / RENDERED / REOPENED / LIBRARY-PERSISTED / INDEPENDENT DESIGN CRIT PENDING",
+  "library_root": "/Oleander/C04/CH08-Master-System/v0.1/",
+  "library_ids": {
+    "A01_SVG": "libfile_4a125a2d7f148191b90e139bd74661d1",
+    "A01_PNG": "libfile_870da25f08e08191a700b2729ada58ed",
+    "A02_SVG": "libfile_44a5564752f481919b5fd63513edb252",
+    "A02_PNG": "libfile_c166d22dc164819195471dcc419d7ae7",
+    "A03_SVG": "libfile_aa444dbb1d048191b4db47c96dff5c5c",
+    "A03_PNG": "libfile_9efe9209dbd881918ea243c229982181",
+    "MANIFEST": "libfile_cb235d4e318081919d56ab745721f64d",
+    "QA": "libfile_3dd6996ae0ec8191b9db5964373211c1",
+    "ZIP": "libfile_01c65c07d6a48191ba260a74872129d8"
+  },
+  "artifacts": [
+    {"file":"C04_CH08_A01_MASTER_EXPERIENCE_ATLAS_v0_1.svg","bytes":311655,"sha256":"9632fae61dd196b3b3937ca6cdefaa53b2b43925247735fa2f1536839fbae00c"},
+    {"file":"C04_CH08_A01_MASTER_EXPERIENCE_ATLAS_v0_1.png","bytes":742407,"sha256":"c21c13820ea5a2a16d0d99cfb34e83e1f4af53340098f2bcbc904804727642e0"},
+    {"file":"C04_CH08_A02_ATTENTION_MEDIA_CHOREOGRAPHY_v0_1.svg","bytes":606471,"sha256":"87ff3ed910fe77d0576e568c7c937f84892fed8d018a9e8a3a7e6efbeeb229cf"},
+    {"file":"C04_CH08_A02_ATTENTION_MEDIA_CHOREOGRAPHY_v0_1.png","bytes":1068881,"sha256":"54c66ba1338b8d5d4532e0f2eb59ad3b69cd59950c249c6f2ce230360562387e"},
+    {"file":"C04_CH08_A03_CROSS_MEDIA_RELATION_ATLAS_v0_1.svg","bytes":379095,"sha256":"f424f53c10d5e9e238df26b8064d7098f4d43ad5b30d1d74fc9ffb2f86b5ee74"},
+    {"file":"C04_CH08_A03_CROSS_MEDIA_RELATION_ATLAS_v0_1.png","bytes":950353,"sha256":"c93ba348d77a7c38dbbc047b388cb9e80344ab59184c526911ecedbc132c1c7d"}
+  ],
+  "source_lock": {
+    "route_carrier": "qingjiang_route_guide_translated.svg",
+    "route_geometry_mutation": "NONE",
+    "real_scene_assets": ["hero_clean.jpg","r06_valley_clean.jpg","r13_exit_clean.jpg","return_clean.jpg"],
+    "existing_design_assets": ["game-map.svg","P02_railing_rest.svg","M01_journal.svg","memory-grammar.svg"]
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "does_not_prove": ["field validation","survey geometry","live operations","safety approval","capacity approval","MAIN KEEP"]
+}
