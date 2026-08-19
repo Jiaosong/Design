@@ -1,0 +1,12 @@
+{
+  "state":"AUTHORING_CANDIDATE / SOURCE_BOUND / NO_PROMOTION",
+  "p_owner":"CH08-P01",
+  "surfaces":[
+    {"id":"S01","source_key":"V-HERO-01","file":"01_HERO_KEEP_QJ-D_v1.1_1920x1080.png","drive_id":"151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh","presentation_changes":["layout only","no geometry edit"],"does_not_prove":"field conditions or route geometry"},
+    {"id":"S02-WATER","source_key":"V-BOAT-01","file":"CH09_P02_BOAT_OLEANDER_v4_6_1920x1080.png","drive_id":"19pom_Yr0HQQ798NnhfSw6UDU9adJINqa","presentation_changes":["crop inside media frame"],"does_not_prove":"boat operation, schedule, speed or universal access"},
+    {"id":"S02-RELATION","source_key":"V-HERO-01","file":"01_HERO_KEEP_QJ-D_v1.1_1920x1080.png","drive_id":"151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh","presentation_changes":["crop inside media frame"],"does_not_prove":"bank direction or route geometry"},
+    {"id":"S02-BODY","source_key":"V-R13-01","file":"QJD_V11_04_R13_FOUR_FRAME_1920x1080.png","drive_id":"1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf","presentation_changes":["fit full composite"],"does_not_prove":"site dimensions, sightlines, lighting, accessibility or construction"},
+    {"id":"S03","source_key":"V-JOURNEY-01","file":"01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","drive_id":"18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l","presentation_changes":["full-frame fit"],"does_not_prove":"route geometry beyond upstream authority or live service status"}
+  ],
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
