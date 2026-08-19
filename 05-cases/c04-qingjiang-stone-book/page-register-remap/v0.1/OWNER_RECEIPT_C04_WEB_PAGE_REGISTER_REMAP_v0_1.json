@@ -1,0 +1,44 @@
+{
+  "receipt_type": "OWNER_RECEIPT",
+  "artifact": "C04_WEB_PAGE_REGISTER_REMAP_v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "owner_scope": "C04 downstream Web page identity remap / no project authority promotion",
+  "branch": "c04/page-register-remap-v01-20260819",
+  "base_pr": 294,
+  "base_head_sha": "aa5379bcffbb565f7262700538775be797d0a3bc",
+  "material_delta": [
+    "created exact 52-row protected PAGE register",
+    "mapped all 111 base authoring units one-by-one",
+    "created 20-row by-chapter surface register",
+    "preserved 39 candidate content records and exposed 5 candidate-ID collisions",
+    "bound current professional ownership without mutating Route/App/R06 authorities",
+    "allocated zero N-series IDs"
+  ],
+  "files": [
+    "C04_WEB_PROTECTED_PAGE_REGISTER_P001_P052_v0_1.csv",
+    "C04_WEB_PROTECTED_PAGE_REGISTER_P001_P052_v0_1.json",
+    "C04_WEB_AUTHORING_BASE_111_MAPPING_v0_1.csv",
+    "C04_WEB_AUTHORING_CANDIDATE_REGISTER_v0_1.csv",
+    "C04_WEB_BY_CHAPTER_SURFACE_REGISTER_v0_1.csv",
+    "C04_WEB_CURRENT_FRONTIER_OVERLAY_v0_1.json",
+    "C04_WEB_PAGE_REGISTER_REMAP_v0_1.md",
+    "C04_WEB_PAGE_REGISTER_REMAP_READBACK_v0_1.json"
+  ],
+  "states": {
+    "artifact": "EXECUTED / VERSIONED / PRODUCER READBACK COMPLETE",
+    "canonical_page_count": "NOT_YET_LOCKED",
+    "n_series": "UNALLOCATED",
+    "independent_design_review": "NOT APPLICABLE TO MAPPING AS DESIGN PASS / FUTURE PIXEL REVIEW REQUIRED",
+    "promotion": "NO_PROMOTION"
+  },
+  "locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "JOURNEY-04 = PROVENANCE / NON-CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "APP AUTHORITY = SEPARATE / WEB CONSUME ONLY",
+    "P001-P052 = PROTECTED / NO SILENT MERGE",
+    "MERGE = NEVER DEFAULT",
+    "CANDIDATE ID COLLISION != CONTENT MERGE"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
