@@ -14,6 +14,8 @@
 - Chromium exact-source DOM/CSS actual-pixel readback: `6/6 @ 1920×1080` and `6/6 @ 390×844`; horizontal overflow `0`; raster `<img>` `0`; console/page errors `0`.
 - Grayscale + 50% far-read derivatives and desktop/mobile contact sheets generated from exact v1.9 pixels.
 - Direct file/localhost navigation remains blocked by runtime policy; direct-navigation Browser PASS is not claimed.
+- Exact GitHub source carrier: four parts `6000 + 6000 + 6000 + 4484 = 22484 base64 chars`; local Git blob hashes match GitHub blob hashes for all four parts; strict decoded tar.gz SHA256 `a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102`; decoded bytes `16862`.
+- The initial single-file v1.9 carrier was rejected and removed after connector-side truncation was detected; it is not authority.
 - Independent Professional Design disposition remains `PENDING`; producer does not self-issue KEEP / MAIN / Professional Design PASS.
 - State: `PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
 - Truth: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION`.
