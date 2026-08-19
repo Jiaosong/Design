@@ -1,0 +1,82 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P01",
+  "version": "v1.1",
+  "page_type": "SYSTEM",
+  "authoring_identity": "CH08-P01",
+  "final_web_page_id": null,
+  "title": "总体设计命题｜WHOLE → RELATION → BODY",
+  "current_authority": {
+    "ch08_current": "ch08-currentization/CURRENT.md",
+    "strategy": "ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md",
+    "atlas": "ch08-currentization/v0.4/CH08_MASTER_EXPERIENCE_ATLAS_v0_4.svg",
+    "upstream_pr": 294,
+    "upstream_branch": "agent/c04-ch00-ch19-deepening-v03-20260819"
+  },
+  "material_delta_from_v1_0_wip": [
+    "v0.3 framing removed as primary authority",
+    "current v0.4 WHOLE / RELATION / BODY thesis becomes first read",
+    "existing v0.4 editable Master Experience Atlas is reused directly instead of redrawn",
+    "fixed ownership stack replaced by NORMAL EXPERIENCE vs OVERRIDE DECISION",
+    "P01 stops before Encounter/Freedom/Intervention details owned by later CH08 units",
+    "Boat is explicitly conditional rather than universal first segment"
+  ],
+  "visual_dependencies": {
+    "color": "CH14-P04 v1.0",
+    "typography": "CH14-P05 v1.0",
+    "information_semantics": "CH14-P07 v1.0",
+    "rule": "CH14 supplies shared editorial grammar only. Brand never acquires Route, Service, Return, Safety, Landscape or operational-state authority."
+  },
+  "master_thesis": {
+    "cn": "同一条江，在不同尺度中被重新认识：先获得整体，再跨越关系，再进入身体；设计只在方向、理解、恢复或记忆出现真实缺口时介入。",
+    "sequence": ["WHOLE / TERRITORY", "RELATION", "BODY"]
+  },
+  "scale_roles": [
+    {
+      "scale": "WHOLE / TERRITORY",
+      "cn": "整体尺度",
+      "design_judgment": "先建立完整清江的江谷、两岸与宏观关系认知",
+      "boat_boundary": "Boat = CONDITIONAL ACCESS / WATER-SCALE EXPERIENCE, not universal core"
+    },
+    {
+      "scale": "RELATION",
+      "cn": "关系尺度",
+      "design_judgment": "Cable 通过移动视点建立江、两岸、峰林与步行网络的空间关系",
+      "withdraw": ["mid-ride digital", "long explanation", "new interaction object"]
+    },
+    {
+      "scale": "BODY",
+      "cn": "身体尺度",
+      "design_judgment": "Walk 后坡度、足下、植被、岩壁、停留、疲劳与恢复成为体验事实",
+      "admission_rule": "Reading / Digital / Physical only after real body or interpretation need exists"
+    }
+  ],
+  "ownership_modes": {
+    "NORMAL_EXPERIENCE": {
+      "relation": "LANDSCAPE / ROUTE / BODY -> OPTIONAL OBSERVATION -> OPTIONAL REVEAL -> SUPPORTING DIGITAL / PHYSICAL -> TRACE BRAND -> MEMORY ACCUMULATION",
+      "goal": "real Qingjiang remains first read"
+    },
+    "OVERRIDE_DECISION": {
+      "triggers": ["CLOSED", "UNKNOWN", "Return urgency", "route uncertainty", "fatigue / access / recover", "human / no-phone fallback", "insufficient current information"],
+      "relation": "CURRENT DECISION / SERVICE / RETURN -> ROUTE -> BODY SUPPORT -> OPTIONAL CONTENT",
+      "goal": "resolve the current decision, then return to NORMAL EXPERIENCE as soon as possible"
+    }
+  },
+  "page_scope": {
+    "includes": ["master thesis", "three-scale relation", "existing current atlas", "normal/override ownership distinction", "page truth boundary"],
+    "defers": ["Encounter/Freedom", "STOP != READ", "Minimum Sufficient Carrier", "Object Deployment", "CH04 modifiers", "Three-axis states", "Cross-system handoff", "Project Proof Boundary"]
+  },
+  "hard_locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "Boat = CONDITIONAL ACCESS / WATER-SCALE EXPERIENCE",
+    "No R01-R13 forced route sequence",
+    "No new route geometry",
+    "No live status claim",
+    "No field or engineering promotion",
+    "No image generation"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status": "PRODUCER UI CANDIDATE / ACTUAL PIXEL READBACK REQUIRED / ARTIFACT REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
