@@ -1,0 +1,11 @@
+{
+  "object":"C04-CH16",
+  "version":"v1.0",
+  "authoring_source":"CH16_DESIGN-DETAIL-DEVELOPMENT.md / main / blob faf8f70f783654c63fc03e8d9affd7fcbc1692fb",
+  "visual_reference":"earliest uploaded Qingjiang landscape design board — structural/design-language reference only; source bytes not materialized in this runtime",
+  "skills":["oleander-story-and-board","oleander-data-viz"],
+  "current_object":"A1 removable leaning support / not located; R06 concept interface used only as technical support",
+  "dimensions":{"width_mm":1200,"depth_mm":160,"top_height_mm":975,"human_reference_mm":1700,"state":"RECOMMENDED ESTIMATE / CONCEPT INTERFACE / NTS / FIELD OPEN"},
+  "preservation":{"R06_experience":"FROZEN / NO REOPEN","field_geometry":"NOT INVENTED","location":"OPEN","route":"NOT MODIFIED"},
+  "does_not_prove":["field fit","survey geometry","structural capacity","guardrail compliance","anchor/foundation capacity","wet-slip performance","material grade approval","construction approval"]
+}
