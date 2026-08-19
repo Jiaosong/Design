@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-08-19T04:57:05.653556+00:00",
+  "method": "Chromium 144 via Python Playwright page.set_content; exact current desktop/mobile SVG bytes embedded as data URLs because local file/http navigation is admin-blocked",
+  "chromium": "/usr/bin/chromium",
+  "results": {
+    "desktop": {
+      "innerWidth": 1920,
+      "innerHeight": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "bodyScrollWidth": 1920,
+      "overflowX": false,
+      "visibleDesktop": true,
+      "visibleMobile": false,
+      "imgs": [
+        {"complete": true,"naturalWidth": 1920,"naturalHeight": 1080,"alt": "CH16-P01 desktop"},
+        {"complete": true,"naturalWidth": 390,"naturalHeight": 2070,"alt": "CH16-P01 mobile"}
+      ],
+      "fontsLoaded": "loaded",
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    "mobile": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 2070,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "visibleDesktop": false,
+      "visibleMobile": true,
+      "imgs": [
+        {"complete": true,"naturalWidth": 1920,"naturalHeight": 1080,"alt": "CH16-P01 desktop"},
+        {"complete": true,"naturalWidth": 390,"naturalHeight": 2070,"alt": "CH16-P01 mobile"}
+      ],
+      "fontsLoaded": "loaded",
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  }
+}
