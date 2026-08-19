@@ -1,0 +1,31 @@
+{
+  "object": "C04_C22_CONCEPT_MASTERPLAN_CH14_v4_7",
+  "supersedes": "v4.6 / SOURCE-CONFLICT + ROUTE-LEGIBILITY REVISE",
+  "semantic_image_id": "IMG-C04-C22-MACRO-01",
+  "source": {
+    "publisher": "恩施旅游集团",
+    "page": "湖北日报：人民警察专属优惠来了！这些景区针对全省人民警察免门票",
+    "date": "2023-08-09",
+    "url": "https://www.eslygroup.com/uploadfile/image/20230809/nb983qsaoo.jpg",
+    "materialized_file": "C22_QINGJIANG_CABLE_PEAK_SOURCE_nb983qsaoo.jpg",
+    "materialized_pixels": [850, 567],
+    "materialized_sha256": "9c68159a8897f33373e3d41f4347e071b8d2860958df84e41a682aa79d69cc2f",
+    "materialization_note": "Official HTTP source fetched by Google Docs insertInlineImage then exported; hash is the exact persisted pixels used by C22, not a claim about the website original byte hash.",
+    "operations": "NONE after materialization; SVG display crop only"
+  },
+  "uniqueness_check": {
+    "current_machine_ledger": "no matching filename / semantic image record before C22 bind",
+    "notion_search": "no C04 hit for nb983qsaoo",
+    "github_search": "no repository hit for nb983qsaoo",
+    "state": "C22 RESERVATION REQUIRED"
+  },
+  "route": {
+    "geometry": "existing route carrier topology only",
+    "primary_width_px": 7.0,
+    "branch_width_px": 5.0,
+    "loop_width_px": 4.0,
+    "photo_georegistration": "NONE"
+  },
+  "image_generation": "NOT USED",
+  "boundary": ["NTS", "not GPS", "not survey alignment", "FIELD OBSERVED=0", "FIELD MEASURED=0"]
+}
