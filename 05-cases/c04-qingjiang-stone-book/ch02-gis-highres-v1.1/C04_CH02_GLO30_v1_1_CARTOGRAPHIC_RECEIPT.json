@@ -1,0 +1,46 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH02",
+  "version": "GLO-30 v1.1 CARTOGRAPHIC REPAIR",
+  "source_authority": {
+    "dataset": "Copernicus DEM GLO-30 Public",
+    "surface": "DSM / not bare-earth DTM",
+    "metric_crs": "EPSG:32649",
+    "grid": "193×94 @ 30×30 m",
+    "valid_cells": 17766,
+    "nodata_edge_cells": 376,
+    "native_terrain_sha256": "bea2012f6551a5a26aaf89d00252c69f4f68a928bc611ced688614346a4518f7",
+    "raw_source_sha256": "e63e9787f8f6daffa90da722d72c1375767dc65ab558bd8535d4f295ffec2f06",
+    "durable_source_package_drive_id": "1ftO58EWiMVhv3jMb8Z15cLKQ5u2KTywD",
+    "durable_source_package_sha256": "4989aa835444a9eb25b7e626162147b7b2a5471331e4acc6496612221c6e1086",
+    "v1_1_drive_id": "10MIl_68B4FN9XCB29bu-w-O6s5iLLpST",
+    "v1_1_drive_bytes": 10840884,
+    "v1_1_drive_sha256": "78bd090c0aa92d11db1f977797beb99417625b61720d5cc5c05613203528c117",
+    "v1_1_drive_raw_readback_byte_equivalent": true
+  },
+  "stats": {
+    "elevation_m": {"min": 370.0, "median": 627.1935729980469, "max": 1005.6653442382812},
+    "slope_deg": {"median": 12.916300296783447, "p90": 28.40260124206543, "max": 74.58634185791016},
+    "d8_accumulation_cells": {"p90": 18.0, "p96_5": 56.0, "p98_5": 120.0, "p99": 159.0, "p99_7": 307.4100000000035, "max": 965.0},
+    "winter_solar": {"mean": 0.5178520632247662, "p10": 0.23026926070451736, "median": 0.5804668366909027, "p90": 0.7680816352367401}
+  },
+  "data_rules": [
+    "No 21×21 analytical values used.",
+    "No analytical interpolation or analytical upscaling.",
+    "P90 slope shown as exact source-cell centers, not a filled pseudo-feature.",
+    "D8 receiver reproduced from verified execution adapter; thresholds read from verified accumulation raster.",
+    "All map panels preserve metric raster aspect ratio.",
+    "Display raster resampling is presentation-only."
+  ],
+  "actual_pixel_readback_repairs": [
+    "R1: ENV-01 solid P90 red band rejected → exact source-cell stipple.",
+    "R1: ENV-02 broad teal terrain field rejected → neutral terrain + D8 network.",
+    "R2: ENV-02 high-accumulation red cell chain rejected → only interior confluence junctions retained; crop-edge nodes removed.",
+    "All map frames preserve verified metric aspect ratio."
+  ],
+  "env02_confluence_junction_count": 6,
+  "stable_ids": ["ENV-01", "ENV-02", "ENV-SYN-01"],
+  "holds": ["ENV-03 Land Cover", "ENV-04 Water History"],
+  "review_state": "PRODUCER ACTUAL-PIXEL READBACK R3 COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth": "REMOTE SOURCE-GROUNDED / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
