@@ -1,0 +1,64 @@
+{
+  "390x844": {
+    "metrics": {
+      "state": {
+        "screen": "SERVICE",
+        "reality": "CLOSED",
+        "digital": "FULL",
+        "readingMode": "QUICK",
+        "setupSeen": true,
+        "behavior": "RETURN",
+        "presence": "LIGHT",
+        "contextOpen": false,
+        "readDetailOpen": false,
+        "setupOpen": false,
+        "toolsOpen": false,
+        "memoryEntries": [
+          "R06"
+        ],
+        "scrollLeft": 371,
+        "scrollTop": 0
+      },
+      "innerWidth": 390,
+      "docWidth": 390,
+      "minButton": 44,
+      "textureCount": 7,
+      "exploreCue": true,
+      "keyboardPanDelta": 40
+    },
+    "errors": []
+  },
+  "430x932": {
+    "metrics": {
+      "state": {
+        "screen": "SERVICE",
+        "reality": "CLOSED",
+        "digital": "FULL",
+        "readingMode": "QUICK",
+        "setupSeen": true,
+        "behavior": "RETURN",
+        "presence": "LIGHT",
+        "contextOpen": false,
+        "readDetailOpen": false,
+        "setupOpen": false,
+        "toolsOpen": false,
+        "memoryEntries": [
+          "R06"
+        ],
+        "scrollLeft": 378,
+        "scrollTop": 0
+      },
+      "innerWidth": 430,
+      "docWidth": 430,
+      "minButton": 43.99993896484375,
+      "textureCount": 7,
+      "exploreCue": true,
+      "keyboardPanDelta": 40
+    },
+    "errors": []
+  },
+  "reduced_motion": {
+    "runningAnimations": 0,
+    "errors": []
+  }
+}

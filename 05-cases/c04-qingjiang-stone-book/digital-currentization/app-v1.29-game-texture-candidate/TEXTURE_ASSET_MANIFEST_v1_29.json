@@ -1,0 +1,39 @@
+{
+  "version": "v1.29",
+  "role": "visual texture support only",
+  "authority_boundary": "Textures are non-evidence presentation assets. They do not prove Qingjiang landscape, route geometry, GPS, operational state, safety, field condition, or cultural fact.",
+  "assets": [
+    {
+      "file": "assets/textures/tx_paper.webp",
+      "source_type": "AI-GENERATED TEXTURE ASSET",
+      "role": "TODAY/READ/MY BOOK/SETUP low-contrast paper material",
+      "bytes": 22680,
+      "sha256": "116c5edf82f2ea87b75977ba2802608bd1e756a3ac42d76ea88df1456b5c3a8a",
+      "does_not_prove": ["site photography", "route truth", "live state", "field condition"]
+    },
+    {
+      "file": "assets/textures/tx_ink.webp",
+      "source_type": "AI-GENERATED TEXTURE ASSET",
+      "role": "READ/SERVICE/R06 reveal ink mist",
+      "bytes": 55224,
+      "sha256": "be8ce12917df71365d0facebc28727f82f216d05179f523b26d6228299583956",
+      "does_not_prove": ["site photography", "route truth", "live state", "field condition"]
+    },
+    {
+      "file": "assets/textures/tx_water.webp",
+      "source_type": "AI-GENERATED TEXTURE ASSET",
+      "role": "TODAY river/ROUTE/R06 material motion",
+      "bytes": 108620,
+      "sha256": "07e9eaeefae4012486c950bada1f0d81c3ce8ec2e2bfb2bf292df45b99e110f6",
+      "does_not_prove": ["site photography", "route truth", "live state", "field condition"]
+    },
+    {
+      "file": "assets/textures/tx_deep.webp",
+      "source_type": "AI-GENERATED TEXTURE ASSET",
+      "role": "R13 deep-water ink atmosphere",
+      "bytes": 68220,
+      "sha256": "04a489541b0e3c8174fba77226c57e8f9194d3e65b2a9a811b962f7d2e9d98b1",
+      "does_not_prove": ["site photography", "route truth", "live state", "field condition"]
+    }
+  ]
+}

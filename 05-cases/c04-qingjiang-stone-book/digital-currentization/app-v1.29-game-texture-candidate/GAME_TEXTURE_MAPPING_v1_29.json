@@ -1,0 +1,13 @@
+{
+  "version": "v1.29",
+  "inherits": "v1.28 CH14 × ROUTE-03 successor",
+  "material_delta": "game atmosphere through texture + exploration response",
+  "rules": [
+    "no neon/glow",
+    "route geometry unchanged",
+    "brand color != operational status color",
+    "texture is non-evidence and subordinate to landscape/route/return/safety",
+    "TODAY/READ/BOOK low-contrast paper; ROUTE/R06 water current; R13 deep ink; SERVICE fail-closed ink pressure",
+    "behavior response through texture motion; Reduced Motion removes animation"
+  ]
+}
