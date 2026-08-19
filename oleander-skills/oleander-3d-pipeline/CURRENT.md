@@ -90,9 +90,9 @@ Machine validation evidence on commit `038d0e574f6ebc9399286113169d022d7849134b`
 - OLEANDER Control Plane v0.3 workflow run `32267479047`: **SUCCESS**.
 - Control Plane unit/regression suite: **69 tests PASS**, including all **8** `test_oleander_blender_runtime_contract` cases.
 
-Current state: `CANDIDATE_CONTRACT_MACHINE_VALIDATED / RUNTIME EXECUTION HOLD`.
+Current contract state: `CANDIDATE_CONTRACT_MACHINE_VALIDATED`.
 
-Reason for HOLD: the current agent environment has no Blender executable, so this training pass has not produced a fresh Blender 5.2 runtime receipt or render/model readback. Contract/validator/CI PASS must not be relabeled as actual Blender execution PASS.
+The current ChatGPT agent container still has no local Blender executable, so it has no local Blender runtime receipt. However, the Porsche benchmark now supplies independent external execution provenance from GitHub Actions: PR #208 run `32271258341` executed V58 and V59 under **Blender 5.2.0 LTS**, persisted native `.blend` + JSON + six-view renders, and produced an Actions artifact with digest `sha256:49a709070d18b4053d7a50927e8184cb2b7d54dde6b6b655dc089593e42caa64`. This is benchmark execution evidence; it does not silently close every field of the generic Blender runtime contract.
 
 Blender 5.2 LTS is the preferred baseline for new work as of 2026-08-19, but project-pinned Blender 4.5 LTS or another verified version remains valid when compatibility/dependency evidence requires it. Version recency does not overwrite an established production environment.
 
@@ -101,7 +101,34 @@ Hard boundaries:
 - no generic format list used as proof of a working Blender import/export operator;
 - no Geometry Nodes/physics visualization promoted to ergonomic, engineering, manufacturing, or physical truth;
 - no AgX/ACES/view-transform drift inside a controlled CMF/surface comparison;
-- no CI/contract PASS promoted to actual Blender runtime or Design PASS.
+- no CI/contract PASS promoted to actual target-script execution or Design PASS.
+
+### 6. Benchmark Execution Evidence｜2026-08-19 training delta
+
+Files:
+- `BENCHMARK_EXECUTION_EVIDENCE_PROTOCOL_v1.md`
+- `contracts/BENCHMARK_EXECUTION_EVIDENCE_CONTRACT_v1.json`
+- `tools/validate_benchmark_execution_evidence.py`
+- `00-governance/control-plane/tests/test_oleander_3d_benchmark_execution_evidence.py`
+
+Core separation:
+
+`IMPLEMENTED ≠ INVOKED ≠ EXECUTED ≠ RECEIPT_VALID ≠ EXPERIMENT_SUCCESS ≠ EVIDENCE_PASS ≠ DESIGN_PASS`
+
+PR #208 exposed the gap directly: `run_reference_repro_v59.py` existed in the branch while the Porsche workflow still executed only V58. A green workflow therefore could not be cited as V59 runtime evidence. Commit `5db053b1a07b9fef824b77cb2d20e5838502f3ca` repaired the benchmark workflow to invoke V59 explicitly under Blender 5.2, bind the exact target revision, read back receipts, keep the V49/V58 baseline separate, and retain negative/held design outcomes without rewriting them as infrastructure failures.
+
+The reusable gate now requires target revision, source commit, runtime witness, actual invocation, output receipt/readback, baseline/candidate comparability, execution result, experiment result, evidence result and Design result to remain independent.
+
+Machine validation on this integration branch:
+- OLEANDER Control Plane v0.3 run `32271427551`: **SUCCESS**.
+- AI Governance Evals run `32271427517`: **SUCCESS**.
+- 7 benchmark-execution contract tests cover missing target invocation, receipt-target mismatch, valid negative experiment, runtime comparability and machine→Design false promotion.
+
+Hard boundaries:
+- workflow success without target invocation is not target runtime execution evidence;
+- script existence is not runtime execution;
+- a validly executed experiment may be `REJECT_HYPOTHESIS` without becoming CI/runtime failure;
+- machine execution cannot self-promote to independent Design PASS.
 
 ## Merged / CURRENT-compatible baseline
 
@@ -114,7 +141,7 @@ Hard boundaries:
 
 - PR #173 — Blender Surface System v1.21 Source-aware adapter + receipt/validator layer. `OPEN / DRAFT / CANDIDATE`.
 - PR #198 — real R29A refined-Skill Blender validation. `OPEN / DRAFT / MACHINE-EXECUTION EVIDENCE`, not Design KEEP.
-- PR #208 — Porsche 911 reference-reproduction benchmark and specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remain separate. V47 onward is being used to failure-test stage routing, representation selection, sparse-source/dense-evaluation separation, gate-local baselines, semantic identity evidence, carrier congruence and fold localization/repair.
+- PR #208 — Porsche 911 reference-reproduction benchmark and specialist protocol set. `OPEN / DRAFT / CANDIDATE SPECIALIST EXTENSION`; reference fidelity/design approval remain separate. V47 onward is being used to failure-test stage routing, representation selection, sparse-source/dense-evaluation separation, gate-local baselines, semantic identity evidence, carrier congruence, fold localization/repair, target execution evidence and aperture architecture.
 - PR #227 — Camera Claim Gate provenance; reusable rule incorporated here.
 - PR #276 — interaction/lifecycle visual-gate provenance; reusable rules incorporated into `VISUAL_LAYER_BINDING.md`.
 - Modeling Worker v0.13 remains a working/revise candidate chain and does not overwrite current Source Authority by recency.
@@ -158,4 +185,4 @@ Drive versioned v1.18/v1.20 reports remain immutable provenance. No v1.21 CURREN
 
 ## Does not prove
 
-This routing repair and Blender runtime training delta do not prove actual Blender 5.2 execution in the current agent environment, professional design quality, Class-A continuity, manufacturer CAD fidelity, physical CMF, usability, field geometry, engineering validity, manufacturability, or MAIN KEEP.
+This routing repair and Blender training delta do not prove professional design quality, Class-A continuity, manufacturer CAD fidelity, physical CMF, usability, field geometry, engineering validity, manufacturability, or MAIN KEEP. External CI benchmark execution is evidence only for the exact invoked revision/runtime/output scope recorded by its receipt.
