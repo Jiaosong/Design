@@ -1,0 +1,83 @@
+{
+  "schema": "C04_WEB_PAGE_REGISTER_REMAP_READBACK_v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "branch": "c04/page-register-remap-v01-20260819",
+  "stacked_base": {
+    "pr": 294,
+    "head_sha_at_mapping_start": "aa5379bcffbb565f7262700538775be797d0a3bc",
+    "head_sha_rechecked_before_pr": "aa5379bcffbb565f7262700538775be797d0a3bc",
+    "upstream_authority_change_during_mapping": false
+  },
+  "checks": {
+    "protected_register_exists": true,
+    "protected_register_rows": 52,
+    "protected_first_id": "C04-WEB-P001",
+    "protected_last_id": "C04-WEB-P052",
+    "legacy_labels_recovered_from_v1_8_contact": 25,
+    "legacy_labels_unrecovered": 27,
+    "mapping_source_recovery_required_rows": 28,
+    "base_authoring_mapping_exists": true,
+    "base_authoring_rows": 111,
+    "base_authoring_first_id": "CH00-P01",
+    "base_authoring_last_id": "CH19-P05",
+    "chapter_surface_register_rows": 20,
+    "candidate_content_records": 39,
+    "candidate_unique_authoring_ids": 34,
+    "candidate_id_collision_count": 5,
+    "candidate_id_collisions": ["CH11-P09","CH11-P10","CH14-P09","CH14-P10","CH14-P11"],
+    "n_series_allocated": 0,
+    "canonical_page_count": "NOT_YET_LOCKED",
+    "current_complete_integrated_web_surface_count": "NOT_YET_REGISTERED",
+    "historical_112_repromoted": false,
+    "protected_ids_deleted_or_merged": false,
+    "route_03_mutated": false,
+    "r06_reopened": false,
+    "app_authority_mutated": false
+  },
+  "protected_mapping_action_counts": {
+    "PRESERVE": 28,
+    "MAP_TO_LEGACY": 16,
+    "EXPAND_FROM_LEGACY": 6,
+    "PROCESS-SUPPORT": 2
+  },
+  "base_authoring_action_counts": {
+    "EXPAND_FROM_LEGACY": 94,
+    "MAP_TO_LEGACY": 9,
+    "NEW_CANDIDATE": 8
+  },
+  "current_frontiers": {
+    "CH08": "v0.4 Master Design Strategy on PR #294",
+    "CH12": "v0.4 Selected Scene Proof A01-A09 on PR #294",
+    "CH14": "P01-P08 authored base + multi-surface execution; P09-P15 candidate scope",
+    "ROUTE": "ROUTE-03 LOCKED CURRENT",
+    "R06": "FINISHED / FROZEN / NO REOPEN"
+  },
+  "downstream_readback": {
+    "CH08_PR_320": {
+      "state": "DRAFT DOWNSTREAM PRESENTATION CANDIDATE",
+      "base_sha": "aa5379bcffbb565f7262700538775be797d0a3bc",
+      "declared_surface_model": "9 P Owners / 28 visual surfaces",
+      "page_count_effect": "NONE",
+      "authority_effect": "NONE / explicitly does not replace CH08 v0.4 strategy authority"
+    }
+  },
+  "producer_readback_boundary": "Repository records were re-fetched after writes to confirm protected register content, 111-row mapping head/tail, candidate collision records and unchanged #294 upstream head. This is producer execution/readback evidence, not independent professional design review.",
+  "next_gate": [
+    "recover 27 missing legacy labels plus resolve P006 semantics",
+    "resolve P011/P022 App Intro split",
+    "resolve P033/P035/P036 technical object identity/namespace",
+    "rename or reconcile five collided candidate IDs without content loss",
+    "material-independence review for NEW_CANDIDATE records",
+    "allocate N-series only after explicit review",
+    "derive canonical page count only after resolved PAGE register"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove": [
+    "final canonical page count",
+    "finished-pixel Design PASS",
+    "browser/live-navigation PASS",
+    "field validation",
+    "engineering approval",
+    "project promotion"
+  ]
+}
