@@ -13,8 +13,15 @@
     "ROUTE-03 LOCKED CURRENT",
     "App v1.29 Game Texture x CH14 x ROUTE-03 leading candidate lineage",
     "CH14 current visual/semantic system",
-    "Notion OLEANDER design knowledge consumed in CH08 review"
+    "Notion OLEANDER design knowledge consumed in CH08 review",
+    "CH08 v0.4 Master Design Strategy"
   ],
+  "ownership_binding": {
+    "human": "C04_DESIGN_SYSTEM_CHAPTER_OWNERSHIP_MATRIX_v0_3.md",
+    "machine": "C04_DESIGN_SYSTEM_CHAPTER_OWNERSHIP_MATRIX_v0_3.csv",
+    "rule": "ONE PRIMARY OWNER + BOUNDED CROSS-LINK / SCENE / DETAIL / PROOF / EVOLUTION / CLOSURE",
+    "downstream_rule": "WEB / BOARD / PDF / FILM MAY CONSUME BUT MAY NOT REDEFINE PROJECT OBJECT OWNERSHIP"
+  },
   "material_delta": {
     "new_design_family": ["CH09 Route / Return Physical Touchpoint Family"],
     "deepening_without_new_family": ["Cable Experience Choreography", "Qingjiang Journal OPEN-DURING-BECOME A BOOK", "Sensory Resource Strategy", "Material Branding", "Design Selection Register"],
