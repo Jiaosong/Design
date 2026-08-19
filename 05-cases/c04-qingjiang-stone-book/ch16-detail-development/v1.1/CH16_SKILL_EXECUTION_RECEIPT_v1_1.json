@@ -1,0 +1,27 @@
+{
+  "object": "C04-CH16",
+  "version": "v1.1",
+  "resolver": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001 / ACTIVE",
+  "minimum_sufficient_execution_dag": [
+    {"owner": "oleander-story-and-board", "status": "INSTALLED", "role": "chapter/board hierarchy, same-source evidence, presentation"},
+    {"owner": "oleander-data-viz", "status": "INSTALLED", "role": "geometry authority, semantic diagrams, source/presentation separation, readback"},
+    {"body": "Technical Drawing Current Method + candidate body", "status": "NOT INSTALLED / NOT PROMOTED", "role": "spatial translation, line hierarchy, detail registration"}
+  ],
+  "native_outputs": ["shared editable SVG geometry master", "7 editable SVG pages", "PNG readbacks", "grayscale attacks", "compact attacks", "web fragment", "machine-readable geometry/receipt"],
+  "material_delta": [
+    "one shared R06 support master drives P01/P03/P04/P05/P06/P07",
+    "P02 removes false site-plan appearance and remains relational/location-open",
+    "P03 is registered parent view CH16-P03-SEC-A",
+    "P05 is registered D01 child and preserves orientation/order",
+    "P04/P06 bind material/failure claims to C01-C05",
+    "P07 adds label-off parent-child return test and attached Open Register"
+  ],
+  "readback": {
+    "desktop": {"viewport": "1920x1080", "scroll_width": 1920, "client_width": 1920, "images": 7, "broken": 0, "page_errors": 0},
+    "mobile": {"viewport": "390x844", "scroll_width": 390, "client_width": 390, "images": 7, "broken": 0, "page_errors": 0},
+    "attacks": ["grayscale", "compact50"]
+  },
+  "production_zip_sha256": "76bf2ee19d52fe3242ad266d70aec9ea0b0cd16e7da3d30857a4f37fa7be2492",
+  "truth": ["FIELD OBSERVED=0", "FIELD MEASURED=0", "G1F HOLD", "NO_PROMOTION", "NTS", "NOT FOR CONSTRUCTION"],
+  "independent_professional_design_gate": "PENDING"
+}
