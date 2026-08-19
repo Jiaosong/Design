@@ -1,0 +1,29 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13 / PHYSICAL · BODY · SENSORY",
+  "surface": "CH13-01 / SHORT RECOVERY",
+  "version": "v4",
+  "state": "PRODUCER CANDIDATE / REVIEW PENDING / NO_PROMOTION",
+  "source_authority": {
+    "upstream_identity": "ODB-02 / 可拆卸倚靠休息板.png / USER ORIGINAL DESIGN SOURCE",
+    "materialized_descendant": "/mnt/data/05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png",
+    "source_file_sha256": "4a082ca4d124ceadb82af3a30af6f80c658a4a756735eb482459af89aba78ae5",
+    "scene_crop": {"xyxy": [60,215,1600,930], "transform": "DIRECT RECTANGULAR CROP ONLY; NO RESCALE BEFORE BIND; HTML object-fit=contain", "sha256": "ea68ac13acc8839da0754477c899cdfdcbafb28261c8f6b84c16af7347bac3d4"},
+    "body_use_crop": {"xyxy": [1640,230,2495,740], "transform": "DIRECT RECTANGULAR CROP ONLY; HTML object-fit=contain", "sha256": "3e50abf603b000ac09f7ad406f6c51e1f1d612e24b8cb2dc23f5988f95a161fd"},
+    "does_not_prove": ["site location","field dimensions","structural adequacy","safety approval","construction readiness"]
+  },
+  "design_intent": "SHORT RECOVERY / body action first / physical support only when fatigue requires it",
+  "visual_rules": ["one page one claim","dominant source image","no D Hero reuse","no object-fit cover","same-source action evidence","CH14 contemporary editorial + landscape space"],
+  "runtime": {
+    "desktop": {"viewport":"1920x1080","scroll_width":1920,"scroll_height":1080,"overflow_x":false},
+    "mobile": {"viewport":"390x844","scroll_width":390,"scroll_height":1214,"overflow_x":false,"mode":"semantic vertical reflow"}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "files": {
+    "CH13_01_SHORT_RECOVERY_v4.html": {"bytes":6613,"sha256":"5c8c64d6d035bc0b717889f6b8a8ac31dbc9c45f02d04c781b06f847aec9efcc"},
+    "CH13_01_SHORT_RECOVERY_v4_1920.png": {"bytes":1371215,"sha256":"866e09c2226175f85b20f603dd357bbf7eaf8597b7ebe702ae97a476cbc0a136"},
+    "CH13_01_SHORT_RECOVERY_v4_390.png": {"bytes":271384,"sha256":"f545481819fb856bdbc868a2d34b4fc567c0074a3ea62f91b1e3b6d8e51f055b"},
+    "F01_SCENE_FULL_SOURCE_CROP.png": {"bytes":1544828,"sha256":"ea68ac13acc8839da0754477c899cdfdcbafb28261c8f6b84c16af7347bac3d4"},
+    "F01_BODY_USE_SOURCE_CROP.png": {"bytes":25237,"sha256":"3e50abf603b000ac09f7ad406f6c51e1f1d612e24b8cb2dc23f5988f95a161fd"}
+  }
+}
