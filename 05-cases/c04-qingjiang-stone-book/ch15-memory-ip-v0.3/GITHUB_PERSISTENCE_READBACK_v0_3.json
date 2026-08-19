@@ -22,8 +22,10 @@
   },
   "local_review_package": {
     "zip": "C04_CH15_MEMORY_IP_v0_3.zip",
-    "bytes": 4476562,
-    "sha256": "0d591916d4a04e9bfca9c17b9bcfd9b9699f9f51ef4cfb09715f6cd56b82c249",
+    "bytes": 4511636,
+    "sha256": "51afb571432c4325c437d7e93aa5478212a457727401192d24f8a47e0a5ee007",
+    "manifest_bytes": 7759,
+    "manifest_sha256": "c38155c0c4a7c744694de6ff063676eeacf7407ff027dfc8d99c719a95344c94",
     "durable_binary_drive_persistence": "OPEN / local recoverable package exists; GitHub exact authored runtime source is durable"
   },
   "pixel_evidence": {
