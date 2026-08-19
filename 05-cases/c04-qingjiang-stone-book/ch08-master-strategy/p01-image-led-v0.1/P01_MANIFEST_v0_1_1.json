@@ -1,0 +1,29 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH08-P01",
+  "design_version": "0.1",
+  "package_revision": "0.1.1",
+  "status": "EXECUTED AUTHORING CANDIDATE / PIXEL READBACK COMPLETE / DURABLE DRIVE EVIDENCE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "surfaces": ["S01", "S02", "S03"],
+  "files": [
+    {"path":"BROWSER_READBACK_v0_1.json","bytes":1731,"sha256":"81c14325ffd96994c023eacb9cf982db723a2b8e1f9200c60c8d0679f7076c78"},
+    {"path":"CH08_P01_SCOPED_v0_1.css","bytes":5180,"sha256":"6ba7dff828e1795ea53acb5dac64cd31cbf319863e430d876455de4c1f7e8f90"},
+    {"path":"CH08_P01_SOURCE_BINDINGS_v0_1.json","bytes":1509,"sha256":"e5a672c41db454b46b862e85fc1fd4323186e8e782e39f33e38c4b1827817cd0"},
+    {"path":"PRODUCER_CRIT_v0_1.md","bytes":2050,"sha256":"e376e4ddee57c352a0bcdea98f814780b7dfaca0905967e6eb648dcb64c943c7"},
+    {"path":"assets/01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","bytes":2310551,"sha256":"522f0f7a49a57196f1c7c07e5c7114bb93863e656b60204131b592d912b2fd50"},
+    {"path":"assets/01_HERO_KEEP_QJ-D_v1.1_1920x1080.png","bytes":2294010,"sha256":"8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c"},
+    {"path":"assets/CH09_P02_BOAT_OLEANDER_v4_6_1920x1080.png","bytes":1591461,"sha256":"713e2ab8e9989ce70b6aa028d0697f00ceb4723e090470dba520d82a2ffc802f"},
+    {"path":"assets/QJD_V11_04_R13_FOUR_FRAME_1920x1080.png","bytes":481744,"sha256":"583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666"},
+    {"path":"ch08-p01-s01.png","bytes":2349099,"sha256":"ba72b940c2ece0347fdab909889403c536c99ca9b4b4663c5e71da641e9fefde"},
+    {"path":"ch08-p01-s02.png","bytes":1095444,"sha256":"2bf42f679f668b0bb4b31dd0ba8710de5ea5fb69df43d7434c15ee993e17bae4"},
+    {"path":"ch08-p01-s03.png","bytes":1444345,"sha256":"7eb099ba5140cfc86c21b9fb874cb6ba95c3eb2c36c994fc10aaeac40a08e409"},
+    {"path":"desktop_full.png","bytes":4894890,"sha256":"7fe069976ba08dfc0ce4c55cdd5998295fa2409fedf1cb3a3f3fec99875d2440"},
+    {"path":"desktop_viewport.png","bytes":2349099,"sha256":"ba72b940c2ece0347fdab909889403c536c99ca9b4b4663c5e71da641e9fefde"},
+    {"path":"index.html","bytes":4197,"sha256":"6f4db2502c79db6c2eaa59db14a37732521c7e72b7762dfa2169e38bcf214270"},
+    {"path":"mobile_full.png","bytes":769331,"sha256":"e851cff6ae14bb79b428d5b95910efbe9188d42f05dddc51dac00e482c711c64"},
+    {"path":"mobile_viewport.png","bytes":288062,"sha256":"6bd99f38da4c2bf8831dcf78674e7866014a8ed08e0c6b933597bb2c136fa83c"}
+  ],
+  "source_authority": "CH08 v0.4 master design strategy + CH08 v0.5 visual narrative architecture",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "note": "v0.1.1 synchronizes review/manifest state after durable Drive persistence; design pixels are unchanged from v0.1."
+}
