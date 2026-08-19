@@ -1,0 +1,120 @@
+{
+  "schema": "oleander.image-consumption-register.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_EXTENSION",
+  "decision_date": "2026-08-19",
+  "scope": "ALL_OLEANDER_PROJECTS_VISUAL_PRODUCING_OWNERS_SEMANTIC_CONTENT_IMAGES",
+  "core_rule": "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
+  "check_timing": "BEFORE_IMAGE_BINDING_AND_LAYOUT_PRODUCTION",
+  "existing_first_order": [
+    "CURRENT_SOURCE_OR_MATURE_DESIGN_OR_CURRENT_BOARD",
+    "IMAGE_CONSUMPTION_LOOKUP",
+    "REUSE_DIRECT_IF_AVAILABLE",
+    "PRESENTATION_ADAPTATION",
+    "NEW_VISUAL_ONLY_IF_REAL_GAP_REMAINS"
+  ],
+  "identity_fields": [
+    "asset_id",
+    "semantic_image_id",
+    "parent_source_id",
+    "source_file",
+    "source_hash",
+    "figure_bounds_or_crop_bounds",
+    "child_hash",
+    "semantic_role"
+  ],
+  "consumer_fields": [
+    "consumer_project",
+    "consumer_owner",
+    "consumer_unit_id",
+    "page_or_surface",
+    "role",
+    "reserved_at",
+    "consumed_at",
+    "state",
+    "reuse_lock",
+    "release_reason",
+    "does_not_prove"
+  ],
+  "states": [
+    "AVAILABLE",
+    "RESERVED",
+    "CONSUMED",
+    "RELEASED",
+    "REJECTED_NOT_ELIGIBLE",
+    "LEGACY_MULTI_CONSUMED"
+  ],
+  "blocking_states_for_other_consumers": [
+    "RESERVED",
+    "CONSUMED",
+    "LEGACY_MULTI_CONSUMED",
+    "REJECTED_NOT_ELIGIBLE"
+  ],
+  "conflict_verdict": "BLOCK_SELECT_ANOTHER_IMAGE",
+  "derivative_operations_inherit_semantic_identity": [
+    "CROP",
+    "RESIZE",
+    "RECOLOR",
+    "MASK",
+    "OPACITY",
+    "BLEND",
+    "SCREENSHOT",
+    "FRAME_EXTRACTION",
+    "MONOCHROME",
+    "CONTOUR_TRACE",
+    "BACKGROUND_REMOVAL",
+    "BLUR",
+    "TEXTURE",
+    "TYPOGRAPHIC_OVERLAY",
+    "WEB_DERIVATIVE"
+  ],
+  "independent_child_figure_rule": "ONLY_GENUINELY_DISTINCT_FIGURES_ON_A_MULTI_IMAGE_BOARD_MAY_RECEIVE_CHILD_ASSET_ID_WITH_PARENT_SOURCE_ID_FIGURE_BOUNDS_CHILD_HASH_AND_SEMANTIC_ROLE",
+  "fragmentation_for_identity_evasion_forbidden": true,
+  "system_reusable_classes": [
+    "LOGO",
+    "WORDMARK",
+    "UI_ICON",
+    "OPERATIONAL_STATE_SYMBOL",
+    "NAVIGATION_SERVICE_SYMBOL",
+    "BRAND_BASE_TEXTURE_PATTERN",
+    "DESIGN_TOKEN",
+    "NON_CONTENT_SYSTEM_MOTIF"
+  ],
+  "system_reusable_must_be_explicitly_classified": true,
+  "content_image_cannot_self_reclassify_as_system_reusable": true,
+  "same_source_paired_view_rule": "ALLOWED_ONLY_WITHIN_ONE_DECLARED_PAIRED_CONSUMER_UNIT_AND_ONE_SHARED_CONSUMPTION_RECORD",
+  "release_rule": "ONLY_EXPLICIT_PROJECT_AUTHORITY_REJECT_NOT_ENTER_PROJECT_OR_SUPERSEDED_AND_RELEASED_MAY_RELEASE",
+  "ordinary_revision_does_not_release": true,
+  "execution_receipt_section": {
+    "name": "image_consumption",
+    "required_when": "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE",
+    "fields": [
+      "register_path_or_authority",
+      "lookup_performed",
+      "reservations_or_consumptions",
+      "conflicts",
+      "blocked_assets",
+      "release_actions",
+      "verdict"
+    ],
+    "not_applicable_allowed_for": [
+      "NO_CONTENT_IMAGES",
+      "SYSTEM_REUSABLE_ONLY"
+    ]
+  },
+  "review_blockers": [
+    "DUPLICATE_SEMANTIC_IMAGE_ACROSS_INDEPENDENT_CONSUMER_UNITS",
+    "DERIVATIVE_IDENTITY_LAUNDERING",
+    "IMAGE_BINDING_WITHOUT_LOOKUP_OR_RECORD",
+    "WEAKER_REAUTHORING_REPLACES_MATURE_CURRENT_ARTIFACT_WITHOUT_MATERIAL_REASON",
+    "LAYOUT_CROP_BREAKS_OBJECT_INTEGRITY_OR_PRIMARY_SEMANTIC_PROOF"
+  ],
+  "does_not_prove": [
+    "DESIGN_PASS",
+    "FIELD_TRUTH",
+    "ENGINEERING_VALIDITY",
+    "RIGHTS_CLEARANCE",
+    "SOURCE_CORRECTNESS",
+    "PROMOTION"
+  ]
+}
