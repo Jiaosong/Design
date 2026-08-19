@@ -1,0 +1,30 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH15",
+  "state": "PRE-CONSTRUCT / SOURCE INVENTORY PARTIAL / NO_PROMOTION",
+  "date": "2026-08-19",
+  "files": [
+    {
+      "file": "CH15_VISUAL_CONTENT_BLUEPRINT_v0_1.md",
+      "bytes": 12163,
+      "sha256": "a9bcaf0356832af30a358d6a7c0a482daad5d48e7ca4cf4c66c086880633ba4d"
+    },
+    {
+      "file": "CH15_SOURCE_MATERIAL_INVENTORY_v0_1.md",
+      "bytes": 7578,
+      "sha256": "0acf453f7028983146b7e9ed224713db1a7e2af3290c0930db0f056730561c3d"
+    }
+  ],
+  "truth_boundary": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION"
+  ],
+  "does_not_prove": [
+    "finished pixels",
+    "independent design pass",
+    "field validation",
+    "commercial readiness"
+  ]
+}
