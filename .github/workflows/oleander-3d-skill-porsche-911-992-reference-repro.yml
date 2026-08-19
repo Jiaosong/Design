@@ -11,38 +11,48 @@ permissions: {contents: read}
 jobs:
   porsche-911-992-reference-repro:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate V58 surface receipt v2
+
+      - name: Validate benchmark scripts and 3D contracts
         run: |
           set -euo pipefail
           python3 -m py_compile \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v59.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
+
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
-          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'; EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build unchanged V49 geometry and emit v2 surface receipt
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee "$GITHUB_WORKSPACE/BLENDER_RUNTIME.txt"
+          sha256sum /tmp/blender.tar.xz > "$GITHUB_WORKSPACE/BLENDER_DISTRIBUTION_SHA256.txt"
+
+      - name: Execute V58 no-fold LKG evidence baseline
         run: |
           set -euo pipefail
-          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          OUT="$GITHUB_WORKSPACE/out/V58_BASELINE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v58.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
           git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
-      - name: Verify evaluated surface gate
+
+      - name: Verify V58 evaluated-surface baseline
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          out=Path('out/OLEANDER_Porsche_911_992_Reference_Repro')
+          out=Path('out/V58_BASELINE')
           d=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
           assert d['schema']=='oleander.3d.primary-body-surface-receipt.v2'
           assert d['geometry_revision_unchanged']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
@@ -57,12 +67,83 @@ jobs:
           assert d['design_quality_state']=='REVISE'
           print(json.dumps(d,indent=2))
           PY
-          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/OLEANDER_Porsche_911_992_Reference_Repro/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
-      - name: Upload evidence
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V58_BASELINE/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
+
+      - name: Execute V59 sparse hood-fender relation experiment
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V59_HOOD_FENDER"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v59.py \
+            -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
+
+      - name: Classify V59 without conflating execution and design gates
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/V59_HOOD_FENDER')
+          surface=json.loads((out/'PRIMARY_BODY_SURFACE_RECEIPT_V2.json').read_text())
+          projection=json.loads((out/'REFERENCE_PROJECTION_RECEIPT.json').read_text())
+          regression=json.loads((out/'REFERENCE_REGRESSION_PROMOTION_RECEIPT.json').read_text())
+          assert surface['schema']=='oleander.3d.primary-body-surface-receipt.v2'
+          assert surface['revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
+          assert surface['source_ring_control_count']==20
+          assert surface['source_density_role']=='INFORMATIONAL_CAUSAL_CONTROL_COMPLEXITY_NOT_EVALUATED_QUALITY_GATE'
+          assert surface['evaluated_triangles']>1000
+          assert projection['schema']=='oleander.3d.v59-sparse-front-identity-projection.v1'
+          assert projection['source_edit_scope']=='FRONT_HOOD_FENDER_RELATION_ONLY'
+          assert projection['held_out_views']==['HERO_FRONT_3Q','HERO_REAR_3Q','TOP_FRONT_3Q']
+          assert regression['baseline_revision']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
+          assert regression['candidate_revision']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
+          assert regression['edit_scope']==['FRONT_HOOD_FENDER_RELATION_ONLY']
+          locks={x['id']:x for x in regression['regression_locks']}
+          sem=projection['front_identity_metrics']
+          summary={
+            'schema':'oleander.3d.porsche-911-v59-benchmark-summary.v1',
+            'baseline':'V49_FEATURE_ALIGNED_CURVE_NETWORK',
+            'candidate':'V59_SPARSE_FRONT_HOOD_FENDER_RELATION',
+            'runtime_execution':'PASS',
+            'source_edit_scope':'FRONT_HOOD_FENDER_RELATION_ONLY',
+            'source_ring_control_count':surface['source_ring_control_count'],
+            'evaluated_triangles':surface['evaluated_triangles'],
+            'evaluated_edge_p95_m':surface['evaluated_edge_p95_m'],
+            'evaluated_fold_count':surface['evaluated_adjacent_face_normal_flip_count'],
+            'surface_preserved':surface['machine_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD' and surface['evaluated_adjacent_face_normal_flip_count']==0,
+            'hood_fender_delta_m':sem.get('mean_fender_crown_minus_hood_m'),
+            'hood_fender_relation_state':sem.get('hood_fender_hierarchy_state'),
+            'side_regression_lock':locks['SIDE_UPPER']['status'],
+            'rear_regression_lock':locks['REAR_BODY_ONLY_DIAGNOSTIC']['status'],
+            'machine_promotion_decision':regression['promotion_decision'],
+            'held_out_visual_review':'HOLD_NOT_RUN_IN_MACHINE_CI',
+            'reference_fidelity':'HOLD_REQUIRES_HELD_OUT_3Q_REVIEW',
+            'design_quality':'HOLD_REQUIRES_ARTIFACT_REVIEW',
+            'does_not_prove':['Reference Fidelity PASS','Design KEEP','Class-A continuity','manufacturer CAD','manufacturing feasibility']
+          }
+          (out/'V59_BENCHMARK_SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+          python3 oleander-skills/oleander-3d-pipeline/tools/validate_primary_body_surface.py out/V59_HOOD_FENDER/PRIMARY_BODY_SURFACE_RECEIPT_V2.json
+
+      - name: Hash complete benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > BENCHMARK_SHA256SUMS.txt || true
+
+      - name: Upload V58 and V59 evidence
         if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
-          name: oleander-porsche-911-992-reference-repro-${{ github.run_id }}
-          path: out/OLEANDER_Porsche_911_992_Reference_Repro/
+          name: oleander-porsche-911-992-v58-v59-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BLENDER_DISTRIBUTION_SHA256.txt
+            BENCHMARK_SHA256SUMS.txt
+            out/V58_BASELINE/
+            out/V59_HOOD_FENDER/
           if-no-files-found: error
           retention-days: 14
