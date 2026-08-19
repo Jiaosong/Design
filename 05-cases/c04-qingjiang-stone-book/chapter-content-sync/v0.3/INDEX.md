@@ -7,6 +7,23 @@ Status: `AUTHORING SUCCESSOR / NO-LOSS / NOT PAGE-ID MIGRATION / NO_PROMOTION`�
 
 本版不覆盖旧稿，不声明最终 Web page count，不创建新 PID，不替代各章节正在进行的像素/模型/技术 PR。
 
+## Canonical design ownership binding
+本包现增加唯一跨章 ownership binding：
+- `C04_DESIGN_SYSTEM_CHAPTER_OWNERSHIP_MATRIX_v0_3.md`
+- `C04_DESIGN_SYSTEM_CHAPTER_OWNERSHIP_MATRIX_v0_3.csv`
+
+规则：`一个设计对象 = 一个 PRIMARY OWNER + 必要 CROSS-LINK / SCENE / DETAIL / PROOF / EVOLUTION / CLOSURE`。Web / Board / PDF / Film 只能消费该分配关系，不得通过 carrier 结构重新定义项目对象 ownership。
+
+关键分配：
+- Real Qingjiang：CH02 = evidence/site conditions；CH08 = master experience；CH09 = movement/Route/Return functional；CH12 = scene validation；
+- Route / Return：CH09 functional primary；CH19 closure；
+- R01–R13：CH10 primary；
+- Digital Companion：CH11 primary；ODB-01 为 upstream source；
+- Physical / Body / Sensory：CH13 primary；
+- Brand / VI：CH14 primary；
+- Memory / IP / Cultural Product：CH15 primary；
+- CH16 = detail only；CH17 = proof only；CH18 = selection/evolution only。
+
 ## Current CH08 pointer
 CH08 已继续从本包中的 compact full-source summary 深化为 dedicated current successor：
 
