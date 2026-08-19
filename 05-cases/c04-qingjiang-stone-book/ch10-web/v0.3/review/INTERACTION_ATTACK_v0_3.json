@@ -1,0 +1,9 @@
+[
+  {"test":"rapid mode switch P01","observed":"QUICK","expected":"QUICK","pass":true},
+  {"test":"keyboard activate P02","observed":"R12 / 廪君峰","expected_prefix":"R12","pass":true},
+  {"test":"repeat same selection","observed":"R12 / 廪君峰","pass":true},
+  {"test":"keyboard P03 off","observed":"merge-stage off","pass":true},
+  {"test":"keyboard P04 DEEP","focus":"DEEP","observed":"DEEP","pass":true},
+  {"test":"R13 re-entry to PASS","observed":["PASS","先通过。"],"pass":true},
+  {"test":"console/page errors","observed":[],"pass":true}
+]

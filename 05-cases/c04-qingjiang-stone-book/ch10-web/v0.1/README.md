@@ -1,3 +1,5 @@
+> **REVISE / HISTORY — superseded by v0.3 Artifact Review target.** This v0.1 carrier is retained for provenance only and must not be treated as the current CH10 Web candidate.
+
 # C04 CH10｜十三印内容与互动系统｜Web v0.1
 
 Downstream Web/presentation carrier for CH10. **CH10 is not CH11/App.**

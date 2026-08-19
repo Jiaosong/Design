@@ -1,3 +1,5 @@
+> **REVISE / HISTORY — superseded by v0.3 Artifact Review target.** This v0.2 carrier is retained for provenance only; its content correction remains useful, but its presentation still read too much like a system/dashboard explanation.
+
 # C04 CH10 Web v0.2
 
 Downstream presentation carrier for `CH10 currentization v0.4` on PR #294.

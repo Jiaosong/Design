@@ -1,0 +1,44 @@
+[
+  {
+    "label": "1920x1080",
+    "viewport": [1920, 1080],
+    "reduced_motion": false,
+    "errors": [],
+    "scrollWidth": 1920,
+    "min_button": [44, 44],
+    "p01": "DEEP",
+    "p02": "R09 / 盐水女神峰",
+    "p03": "merge-stage off",
+    "p04": "LOW_STAMINA",
+    "p05": "REOPEN",
+    "running_animations": 0
+  },
+  {
+    "label": "390x844",
+    "viewport": [390, 844],
+    "reduced_motion": false,
+    "errors": [],
+    "scrollWidth": 390,
+    "min_button": [67.59, 44],
+    "p01": "DEEP",
+    "p02": "R09 / 盐水女神峰",
+    "p03": "merge-stage off",
+    "p04": "LOW_STAMINA",
+    "p05": "REOPEN",
+    "running_animations": 0
+  },
+  {
+    "label": "390x844_REDUCED",
+    "viewport": [390, 844],
+    "reduced_motion": true,
+    "errors": [],
+    "scrollWidth": 390,
+    "min_button": [67.59, 44],
+    "p01": "DEEP",
+    "p02": "R09 / 盐水女神峰",
+    "p03": "merge-stage off",
+    "p04": "LOW_STAMINA",
+    "p05": "REOPEN",
+    "running_animations": 0
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH10",
+  "artifact": "Web presentation carrier v0.3",
+  "producer_state": "EXECUTED / REVIEW TARGET / NO SELF-PASS",
+  "visible_process_text": false,
+  "image_generation_used": false,
+  "raster_content_images": 0,
+  "authority": {
+    "CH10": "CURRENTIZATION v0.4",
+    "CH14": "Current Material",
+    "route_owner": "CH09/ROUTE-03, not CH10"
+  },
+  "skill_route": [
+    "Skill Resolver",
+    "oleander-story-and-board",
+    "oleander-ui-visual-composition",
+    "oleander-ui-interaction",
+    "oleander-delivery-qc",
+    "Artifact Review v1.1"
+  ],
+  "page_claims": {
+    "P01": "variable reading system / trip subset",
+    "P02": "Core 8 attention atlas",
+    "P03": "companion merge/substitute/off",
+    "P04": "attention choreography",
+    "P05": "R13 silence proof"
+  },
+  "review": "Gate 1 common/specific checks executed; AR-S09 persistence OPEN; Gate 2 independent Professional Design review PENDING"
+}
