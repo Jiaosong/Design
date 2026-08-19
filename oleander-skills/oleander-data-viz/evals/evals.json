@@ -12,6 +12,12 @@
       "prompt": "分析场地周边 15 分钟步行圈、公交站和公共服务设施，输出 GIS 图、数据表和展板用轴测化分析底图。",
       "expected_output": "CRS-aware spatial analysis with validated tables and board-ready vector/raster exports.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "把一组低分辨率场地 DEM、坡度、坡向和 D8 汇水分析做成景观作品集里的专业分析图。参考竞赛级 landscape analysis board 的构图，但不得生图、不得把插值或平滑当成 GIS 精度提升。",
+      "expected_output": "Resolve the Landscape GIS Analysis Drawing Gate: separate source/analytical/graphic precision; preserve source authority; avoid coarse-cell MAIN grammar when inappropriate; use continuous terrain/contour hierarchy, one analytical variable per panel, honest hydrology semantics, mapped plan-section coupling where vertical relation matters, master-figure/support rhythm, editable vector output, target-size/grayscale/style-removal readback, and explicit HOLD/does-not-prove boundaries. If the requested claim requires finer GIS precision than the source supports, route upstream to real higher-resolution source acquisition instead of faking precision with resampling or display interpolation.",
+      "files": []
     }
   ]
 }
