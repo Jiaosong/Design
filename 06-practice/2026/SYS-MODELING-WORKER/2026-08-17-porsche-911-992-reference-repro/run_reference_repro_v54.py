@@ -2,12 +2,12 @@
 """V54 — claim/carrier congruence repair; geometry unchanged from V51.
 
 The reference FRONT/REAR profile target is a largest-main-vehicle silhouette and explicitly covers
-cabin/body taper + shoulder-to-roof relation. V51 measured only the pre-aperture body shell. V54
-preserves that body-only diagnostic but adds the semantically congruent whole-visible gross carrier:
-primary body + current greenhouse visual proxy/frame members.
+cabin/body taper + shoulder-to-roof relation. V51 measured only its current primary carrier. V54
+preserves that body-only diagnostic and compares it against a whole-visible gross carrier assembled
+from the same primary body plus current greenhouse visual proxy/frame members.
 
-The greenhouse remains a visual proxy; therefore this measurement can screen gross projected mass
-only. It does not prove final aperture architecture or independent reference fidelity.
+This is an evidence experiment, not a geometry edit. The proxy can only screen gross silhouette; it
+cannot prove final aperture architecture, exact greenhouse surface, or reference fidelity.
 """
 from __future__ import annotations
 import json, math
@@ -21,7 +21,9 @@ if marker not in text: raise SystemExit('V53 run marker missing')
 ctx={'__file__':str(V53),'__name__':'oleander_v54_carrier_congruence'}
 exec(compile(text.split(marker,1)[0],str(V53),'exec'),ctx)
 
-v=ctx['v'];runtime=ctx['runtime'];patch51=ctx['patch51'];emit_fold_diag=ctx['emit_fold_diag'];evaluated_mesh_data=ctx['evaluated_mesh_data'];z_plane_points=ctx['z_plane_points'];PROFILE=ctx['PROFILE']
+v=ctx['v'];runtime=ctx['runtime'];patch51=ctx['patch51'];emit_fold_diag=ctx['emit_fold_diag']
+# PROFILE is nested upstream and not guaranteed to be re-exported by every wrapper; load the authority file directly.
+PROFILE=json.loads((HERE/'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json').read_text())
 base_projection=runtime['projection30'];EVID='V54_CLAIM_CARRIER_CONGRUENCE'
 Z0=.140;ZR=v.HEIGHT-Z0
 
@@ -46,6 +48,18 @@ def object_triangles(name):
     finally: eo.to_mesh_clear()
     return tris
 
+def z_plane_points(tri,z):
+    pts=[]
+    for i in range(3):
+        x1,y1,z1=tri[i];x2,y2,z2=tri[(i+1)%3]
+        if abs(z2-z1)<1e-12:
+            if abs(z-z1)<1e-8:pts.extend(((x1,y1),(x2,y2)))
+            continue
+        if z<min(z1,z2)-1e-9 or z>max(z1,z2)+1e-9:continue
+        t=(z-z1)/(z2-z1)
+        if -1e-9<=t<=1+1e-9:pts.append((x1+t*(x2-x1),y1+t*(y2-y1)))
+    return pts
+
 def profile_from_union(tris,profile,which):
     samples=[];errs=[]
     for frac,target in profile:
@@ -63,28 +77,22 @@ def profile_from_union(tris,profile,which):
 
 def projection54():
     d=base_projection();d['carrier_evidence_revision']=EVID;d['geometry_revision_unchanged']='V51_FRONT_TRANSVERSE_IDENTITY_REPAIR'
-    body_tris=object_triangles(BODY);members=[BODY];alltris=list(body_tris)
-    missing=[]
+    body_tris=object_triangles(BODY);members=[BODY];alltris=list(body_tris);missing=[]
     for name in PROXY_NAMES:
         t=object_triangles(name)
-        if t: alltris.extend(t);members.append(name)
-        else: missing.append(name)
+        if t:alltris.extend(t);members.append(name)
+        else:missing.append(name)
     fr,fs,fc=profile_from_union(alltris,PROFILE['front']['profile'],'front');rr,rs,rc=profile_from_union(alltris,PROFILE['rear']['profile'],'rear')
-    body_metrics={m['id']:dict(m) for m in d['metrics']}
-    old_front=body_metrics['FRONT_HALF_PROJECTED_PROFILE_RMSE'];old_rear=body_metrics['REAR_HALF_PROJECTED_PROFILE_RMSE']
+    body_metrics={m['id']:dict(m) for m in d['metrics']};old_front=body_metrics['FRONT_HALF_PROJECTED_PROFILE_RMSE'];old_rear=body_metrics['REAR_HALF_PROJECTED_PROFILE_RMSE']
     for m in d['metrics']:
-        if m['id']=='FRONT_HALF_PROJECTED_PROFILE_RMSE':
-            m.update({'candidate':fr,'abs_error':fr,'candidate_measurement_source':'V54_WHOLE_VISIBLE_GROSS_SILHOUETTE_PROXY_FRONT_Z_SLICE','measurement_role':'CLAIM_CARRIER_CONGRUENT_GROSS_SCREEN','carrier':'PRIMARY_BODY_PLUS_GREENHOUSE_VISUAL_PROXY'})
-        elif m['id']=='REAR_HALF_PROJECTED_PROFILE_RMSE':
-            m.update({'candidate':rr,'abs_error':rr,'candidate_measurement_source':'V54_WHOLE_VISIBLE_GROSS_SILHOUETTE_PROXY_REAR_Z_SLICE','measurement_role':'CLAIM_CARRIER_CONGRUENT_GROSS_SCREEN','carrier':'PRIMARY_BODY_PLUS_GREENHOUSE_VISUAL_PROXY'})
+        if m['id']=='FRONT_HALF_PROJECTED_PROFILE_RMSE':m.update({'candidate':fr,'abs_error':fr,'candidate_measurement_source':'V54_WHOLE_VISIBLE_GROSS_SILHOUETTE_PROXY_FRONT_Z_SLICE','measurement_role':'CLAIM_CARRIER_CONGRUENT_GROSS_SCREEN','carrier':'PRIMARY_BODY_PLUS_GREENHOUSE_VISUAL_PROXY'})
+        elif m['id']=='REAR_HALF_PROJECTED_PROFILE_RMSE':m.update({'candidate':rr,'abs_error':rr,'candidate_measurement_source':'V54_WHOLE_VISIBLE_GROSS_SILHOUETTE_PROXY_REAR_Z_SLICE','measurement_role':'CLAIM_CARRIER_CONGRUENT_GROSS_SCREEN','carrier':'PRIMARY_BODY_PLUS_GREENHOUSE_VISUAL_PROXY'})
     d['front_profile_samples']=fs;d['rear_profile_samples']=rs;d['front_profile_finite_sample_coverage']=fc;d['rear_profile_finite_sample_coverage']=rc
     d['profile_carrier_congruence']={
       'reference_carrier':'LARGEST_MAIN_VEHICLE_SILHOUETTE_IN_SOURCE_STUDIO_IMAGE',
       'candidate_carrier':'PRIMARY_BODY_PLUS_GREENHOUSE_VISUAL_PROXY',
       'candidate_members':members,'missing_optional_proxy_members':missing,
-      'body_only_preserved':{
-        'front_rmse':old_front['candidate'],'front_measurement_source':old_front.get('candidate_measurement_source'),
-        'rear_rmse':old_rear['candidate'],'rear_measurement_source':old_rear.get('candidate_measurement_source')},
+      'body_only_preserved':{'front_rmse':old_front['candidate'],'front_measurement_source':old_front.get('candidate_measurement_source'),'rear_rmse':old_rear['candidate'],'rear_measurement_source':old_rear.get('candidate_measurement_source')},
       'whole_visible_proxy':{'front_rmse':fr,'rear_rmse':rr},
       'status':'CONGRUENT_FOR_GROSS_SILHOUETTE_SCREEN_ONLY',
       'does_not_prove':['final aperture architecture','exact greenhouse surface','independent reference fidelity']}
