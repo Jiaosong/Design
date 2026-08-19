@@ -23,6 +23,7 @@ def r():
         'REAR':{'state':'COVERED_EXCLUSIVE','count':32}
       },
       'multi_owner_conflicts':{'count':0,'unresolved_count':0,'resolution_method':'NONE_REQUIRED'},
+      'boundary_straddle_count':0,
       'predicted_preservation_checks':[{'id':'FACE_RETENTION','hard':True,'status':'PASS','observed':.94}],
       'preflight_result':'PASS_DESTRUCTIVE_EDIT_ALLOWED','destructive_edit_allowed':True,
       'does_not_prove':['host preservation after execution','Design KEEP']
@@ -43,8 +44,19 @@ class DestructivePreflightTests(unittest.TestCase):
         d=r();d['multi_owner_conflicts']={'count':6,'unresolved_count':0,'resolution_method':'FIRST_MATCH_CODE_ORDER'}
         with self.assertRaises(SystemExit) as e:m.validate(d,CONTRACT)
         self.assertIn('FAIL_FIRST_MATCH_CODE_ORDER_AS_OWNERSHIP',str(e.exception))
-    def test_explicit_shared_boundary_may_pass(self):
+    def test_explicit_shared_boundary_may_pass_after_partition(self):
         d=r();d['owner_coverage']['REAR']={'state':'COVERED_SHARED_BOUNDARY_EXPLICIT','count':32};d['multi_owner_conflicts']={'count':6,'unresolved_count':0,'resolution_method':'CANONICAL_SHARED_BOUNDARY_PARTITION'}
+        self.assertTrue(m.validate(d,CONTRACT))
+    def test_unsplit_boundary_straddle_blocks_pass(self):
+        d=r();d['owner_coverage']['REAR']={'state':'COVERED_BOUNDARY_STRADDLE_REQUIRES_SPLIT','count':6};d['boundary_straddle_count']=6
+        with self.assertRaises(SystemExit) as e:m.validate(d,CONTRACT)
+        self.assertTrue('FAIL_PASS_WITH_UNCOVERED_OWNER' in str(e.exception) or 'FAIL_PASS_WITH_UNSPLIT_BOUNDARY_STRADDLE' in str(e.exception))
+    def test_boundary_straddle_failure_requires_positive_count(self):
+        d=r();d['preflight_result']='FAIL_DESTRUCTIVE_EDIT_BLOCKED_BOUNDARY_STRADDLE';d['destructive_edit_allowed']=False
+        with self.assertRaises(SystemExit) as e:m.validate(d,CONTRACT)
+        self.assertIn('FAIL_BOUNDARY_STRADDLE_BLOCK_WITH_ZERO_STRADDLES',str(e.exception))
+    def test_boundary_straddle_can_be_valid_blocked_result(self):
+        d=r();d['owner_coverage']['REAR']={'state':'COVERED_BOUNDARY_STRADDLE_REQUIRES_SPLIT','count':6};d['boundary_straddle_count']=6;d['preflight_result']='FAIL_DESTRUCTIVE_EDIT_BLOCKED_BOUNDARY_STRADDLE';d['destructive_edit_allowed']=False
         self.assertTrue(m.validate(d,CONTRACT))
     def test_predicted_host_loss_blocks_pass(self):
         d=r();d['predicted_preservation_checks'][0]['status']='FAIL'
