@@ -1,0 +1,37 @@
+{
+  "schema": "oleander.3d.benchmark-execution-evidence-contract.v1",
+  "receipt_schema": "oleander.3d.benchmark-execution-receipt.v1",
+  "required": [
+    "schema",
+    "benchmark_id",
+    "source_commit",
+    "target_revision",
+    "runtime",
+    "invocation",
+    "output_readback",
+    "baseline_comparison",
+    "execution_result",
+    "experiment_result",
+    "evidence_result",
+    "design_result",
+    "does_not_prove"
+  ],
+  "runtime_required": ["application", "version", "platform", "runtime_support_state"],
+  "invocation_required": ["entrypoint", "target_revision_invoked", "exit_code"],
+  "output_readback_required": ["receipt_path", "receipt_exists", "receipt_target_revision", "artifact_readback"],
+  "baseline_required": ["required", "baseline_revision", "candidate_revision", "same_runtime_or_declared_delta", "comparability"],
+  "execution_results": ["PASS_EXECUTED", "HOLD_NOT_EXECUTED", "FAIL_EXECUTION"],
+  "experiment_results": ["PASS_HYPOTHESIS", "SCREENED", "REJECT_HYPOTHESIS", "HOLD_NOT_EVALUATED", "NOT_APPLICABLE"],
+  "evidence_results": ["PASS_EVIDENCE_SCOPE", "HOLD_EVIDENCE_INCOMPLETE", "FAIL_EVIDENCE_INVALID"],
+  "design_results": ["PASS_INDEPENDENT_DESIGN_REVIEW", "REVISE", "REJECT", "HOLD_NOT_REVIEWED", "NOT_APPLICABLE"],
+  "hard_rules": [
+    "PASS_EXECUTED_REQUIRES_TARGET_REVISION_INVOCATION",
+    "PASS_EXECUTED_REQUIRES_ZERO_EXIT_CODE",
+    "PASS_EXECUTED_REQUIRES_RECEIPT_READBACK",
+    "PASS_EXECUTED_REQUIRES_RECEIPT_TARGET_MATCH",
+    "CONTROLLED_AB_REQUIRES_BASELINE_IDENTITY",
+    "CONTROLLED_AB_REQUIRES_RUNTIME_COMPARABILITY_OR_DECLARED_DELTA",
+    "EXPERIMENT_REJECT_MAY_COEXIST_WITH_EXECUTION_PASS",
+    "MACHINE_EXECUTION_CANNOT_SELF_PROMOTE_DESIGN"
+  ]
+}
