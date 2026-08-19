@@ -1,7 +1,7 @@
 # C04 CH01 Web｜Latest Review Candidate
 
 Latest review-only candidate:
-`v1.8/`
+`v1.9/`
 
 State:
 `PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`
@@ -11,43 +11,36 @@ This pointer does **not** replace `CURRENT.md`.
 Why CURRENT remains v1.2:
 - OLEANDER Independent Design Verdict Policy forbids the producer from self-assigning KEEP / MAIN / Professional Design PASS.
 - User authority requires Artifact Review 1.2; connected canonical retrieval still exposes a v1.1-titled page, so this execution does not fabricate or inherit an Artifact Review 1.2 PASS.
-- v1.8 is a material revision of the exact six-surface review target, not a promotion.
-- producer actual-pixel closure and objective QC are not an identity-independent Professional Design disposition.
+- v1.9 is a material revision of the exact six-surface review target, not a promotion.
 
-v1.8 material delta over v1.7:
-- binds every surface explicitly to CH14 `CONTEMPORARY EDITORIAL + LANDSCAPE SPACE` rather than a generic editorial carrier;
-- uses the current CH14 palette: Bone Mist / River Black / Deep Water / Jade Current / Wet Stone / Mica / Cinnabar / Sediment;
-- keeps Brand presence LIGHT and uses `LINE / PAGE / TRACE`; no fake Stone Seal/logo geometry;
-- P01 is a flowing `WHOLE → RELATION → BODY` relation field rather than a report diagram;
-- P02 preserves locked ROUTE-03 source geometry and separates route authority from shuffled optional R01–R13 readings;
-- P03 turns information occlusion into a deep-water / negative-space `WITHDRAW` experience;
-- P04 uses continuous body-action choreography with Return only as an override;
-- P05 uses one continuous SERVICE / RETURN ribbon literally interrupted by six interface gaps;
-- P06 uses one qualitative selection question and five legitimate outcomes including `NO DESIGN`;
-- all six surfaces remain editable HTML/CSS/inline SVG and allocate zero raster content-image sources.
+## v1.9 material delta over v1.8
+- P01 removes the generic relation-wave proxy and uses a Qingjiang-specific `WATER / CABLE / WALK` encounter field: `水上看 / 空中看 / 山中走` and `WHOLE → RELATION → BODY`; this is conceptual relation representation, not route/site geometry.
+- P04 makes body choreography the dominant visual carrier; TIME / STAMINA / COMPANION / STATE become pressure annotations; Return is only an override branch under CLOSED / UNKNOWN / FATIGUE / NO-PHONE.
+- P05 removes the remaining six-card/aperture residue; one continuous SERVICE / RETURN carrier is literally cut by six unresolved physical interfaces, with independent vertical mobile recomposition.
+- P06 removes matrix-like management framing; existing design objects feed one qualitative question and five dispositions: `KEEP / DEEPEN / COMPETE / HOLD / NO DESIGN`.
+- P02 preserves locked ROUTE-03 geometry; P03 preserves the deep-water occlusion → WITHDRAW attention composition.
 
-Authority:
-- C04 Architecture v3.2
-- PR #294 CH01 v0.3 blob `2548c0dd5d0087cd9115038072e99f2a29ef4761`
-- CH14 Current Visual Identity
-- ROUTE-03 locked source SVG SHA256 `44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75`
+## CH14 binding
+`CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE + PAGE + TRACE / Brand presence LIGHT`.
+Palette: Bone Mist / River Black / Deep Water / Jade Current / Wet Stone / Mica / Cinnabar / Sediment.
+No faux-antique styling, no fake Stone Seal/logo geometry.
 
-v1.8 persisted source/review carrier:
-- `v1.8/SOURCE_REVIEW_BUNDLE_v1_8.tar.gz.base64.txt`
-- `v1.8/REASSEMBLE.py`
-- reconstructed exact source/review package
-- source-review tar.gz decoded SHA256 `269450be8645a26d4d32b266b0cabe60fe642b77f00b9034e96b0fd459f1203f`
+## Actual-pixel evidence
+- Desktop `6/6 @ 1920×1080`, horizontal overflow `0`, raster images `0`, console/page errors `0`.
+- Mobile `6/6 @ 390×844`, horizontal overflow `0`, raster images `0`, console/page errors `0`.
+- grayscale + 50% far-read derivatives generated from exact v1.9 pixels.
+- direct file/localhost navigation remains runtime-policy blocked; direct-navigation Browser PASS is not claimed.
+
+## Exact source recovery
+To avoid connector truncation, the exact source/review tar.gz is persisted as four text parts:
+- `v1.9/SOURCE_REVIEW_BUNDLE_v1_9.part01.txt` — 6000 chars — Git blob `d3731d0dd6065445219d2ca4a852f9bacda1c2ea`
+- `v1.9/SOURCE_REVIEW_BUNDLE_v1_9.part02.txt` — 6000 chars — Git blob `8d23535f2ba7065562ca30877de39ac1de8fc466`
+- `v1.9/SOURCE_REVIEW_BUNDLE_v1_9.part03.txt` — 6000 chars — Git blob `656cb4b3bde81502357e21f36ef4bdc9952c7176`
+- `v1.9/SOURCE_REVIEW_BUNDLE_v1_9.part04.txt` — 4484 chars — Git blob `b3eaa5b6ad63931534ec8074a355fba5274d1a8c`
+
+Combined base64 length = `22484`; decoded bundle bytes = `16862`; decoded tar.gz SHA256 = `a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102`. Local Git blob hashes for all four parts match the persisted GitHub blob hashes exactly. `REASSEMBLE.py` enforces length + SHA before extraction.
 
 Local complete review package:
-`C04_CH01_WEB_v1.8_CH14_EDITORIAL.zip` / 3,444,207 bytes / SHA256 `ca352f2246f2abdea22b237bb1309c38ed2318e34f6a359a3789fecb67f24098`.
+`C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`.
 
-Actual-pixel evidence:
-- Chromium exact-source DOM-injection readback: Desktop `6/6 @ 1920×1080`;
-- Mobile `6/6 @ 390×844`;
-- horizontal overflow `0`;
-- raster content images `0`;
-- console/page errors `0`;
-- grayscale + 50% far-read derivatives generated from the exact v1.8 pixels;
-- direct file/localhost navigation remains runtime-policy blocked and is not claimed as live-navigation Browser PASS.
-
-Whole-project Web image-consumption / uniqueness PASS remains a separate project-level gate. CH01 v1.8 itself allocates no raster content-image source.
+Whole-project Web image-consumption / uniqueness PASS remains a separate project-level gate. CH01 v1.9 allocates no raster content-image source.
