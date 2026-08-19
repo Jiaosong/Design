@@ -1,0 +1,27 @@
+{
+  "object": "C04_CH10_P01_APPEARANCE_GATE_v0_1",
+  "status": "REVIEW TARGET / NO SELF-PASS",
+  "canonical_html": {
+    "bytes": 15635,
+    "sha256": "a171e9fe2636c923f7cca993e41d5eaa65ea26a59ebbdfe02473964672d775de"
+  },
+  "local_review_package": {
+    "bytes": 4321121,
+    "sha256": "e50b9d6043fa7038781967fabc177cbc25956ea83fceef8d0097bdfaa92313a0",
+    "zip_integrity": "PASS",
+    "durable_binary_retrieval": "OPEN"
+  },
+  "runtime": {
+    "desktop": "1920x1080 / overflow 0 / min target 72px / tested errors 0",
+    "mobile": "390x844 / overflow 0 / min target 86px / tested errors 0",
+    "keyboard": "MOVE -> LOOK -> OBSERVE",
+    "reduced_motion_running_animations": 0
+  },
+  "pixel_states": ["MOVE","OBSERVE","PASS"],
+  "image_generation": "NOT USED",
+  "raster_content_images": 0,
+  "review_state": {
+    "gate1": "SCOPED / AR-S09 OPEN",
+    "gate2": "INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING"
+  }
+}
