@@ -1,0 +1,34 @@
+{
+  "schema": "C04_CH08_S01_v1.2",
+  "state": "PRODUCER_CANDIDATE / IMAGE_OPS_DEEPENED / INDEPENDENT_PROFESSIONAL_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "source": {
+    "id": "SRC05",
+    "filename": "5pszhdcxjz.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "semantic_slot": "CH08-S01-MAIN",
+    "generation": "OFF"
+  },
+  "image_ops": {
+    "canonical_tool": "T-VISUAL-IMAGE-OPS-001",
+    "recipe": ["WASH-TONAL", "WASH-MASK", "INK-EDGE"],
+    "non_destructive": true,
+    "effect_off_baseline": true
+  },
+  "runtime": {
+    "desktop": {"viewport":"1920x1080","horizontal_overflow":0,"broken_images":0,"recorded_console_page_errors":0},
+    "mobile": {"viewport":"390x844","horizontal_overflow":0,"broken_images":0,"recorded_console_page_errors":0,"scrollHeight":1277},
+    "attack_tests": ["grayscale","all_fx_off","tonal_off","wash_off","edge_off"]
+  },
+  "binary_authority": {
+    "provider": "Google Drive",
+    "file_id": "1QZmaH7Cv_1yvoFq5-pz1GnsMNSOpG-GI",
+    "filename": "C04_CH08_S01_v1.2_PRODUCER_CANDIDATE.zip",
+    "bytes": 8949361,
+    "sha256": "1959063609142b2c7c35feb53e06c4444f2a1b13d19fe5eb61659b42bf31cfc9",
+    "independent_retrieval": "PASS",
+    "unzip_open": "PASS"
+  },
+  "github_mirror": "text/code/contract/readback only; source image and screenshot binaries remain in the durable package",
+  "review": "AR-G10 and independent AR-S06 Professional Design verdict remain OPEN; no release pass",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
