@@ -1,0 +1,34 @@
+{
+  "object": "C04-CH16",
+  "version": "v3.3",
+  "authority": "CH16 Current Material + GitHub faf8f70f783654c63fc03e8d9affd7fcbc1692fb",
+  "skills": [
+    "oleander-story-and-board",
+    "oleander-data-viz",
+    "Technical Drawing Current Method (knowledge method; not promoted as installed skill)",
+    "oleander-delivery-qc"
+  ],
+  "references": [
+    "Information is Beautiful concept-led visualization / storytelling",
+    "landscape architecture presentation precedents from current web visual research"
+  ],
+  "ch14_tokens": {
+    "River Black": "#111918",
+    "Deep Water": "#133B3C",
+    "Jade Current": "#2E7571",
+    "Wet Stone": "#65706A",
+    "Bone": "#F1EDE4",
+    "Sediment Sand": "#D8C9B1",
+    "Cinnabar": "#B8543E"
+  },
+  "source_carrier": "R06_context_official_01.jpg reused for context only; does not prove section/plan geometry",
+  "boundary": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT FOR CONSTRUCTION"
+  ],
+  "status": "PRODUCTION CANDIDATE / PRODUCER-SIDE REVIEW CLOSED / INDEPENDENT PROFESSIONAL DESIGN GATE HOLD"
+}
