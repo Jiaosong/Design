@@ -1,0 +1,60 @@
+name: OLEANDER 3D Porsche V67 Boundary Crossing Audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-porsche-v67-boundary-crossing.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v67.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  v67-boundary-crossing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Compile V67
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v67.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Execute V67 diagnostic only
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V67_BOUNDARY_CROSSING"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v67.py \
+            -- --out "$OUT" --samples 4 --resolution-x 640 --resolution-y 426
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          test -f "$OUT/V67_CANONICAL_BOUNDARY_CROSSING_AUDIT.json"
+      - name: Verify V67 no-mutation audit
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('out/V67_BOUNDARY_CROSSING/V67_CANONICAL_BOUNDARY_CROSSING_AUDIT.json').read_text())
+          assert d['geometry_mutated'] is False
+          assert d['whole_face_first_match_assignment_allowed'] is False
+          assert d['audit_result'] in (
+            'HOLD_TOPOLOGY_SPLIT_REQUIRED_BEFORE_OWNER_ASSIGNMENT',
+            'PASS_REAR_OWNER_CAN_BE_EXCLUSIVE_ON_EXISTING_FACES',
+            'FAIL_REAR_CANONICAL_FOOTPRINT_NOT_OWNED_BY_CURRENT_HOST_FACES')
+          print(json.dumps(d,indent=2))
+          PY
+      - name: Upload V67 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-porsche-v67-boundary-crossing-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            out/V67_BOUNDARY_CROSSING/
+          if-no-files-found: error
+          retention-days: 14
