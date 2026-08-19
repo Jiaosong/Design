@@ -28,25 +28,29 @@
     "1920x1080": {
       "errors": [],
       "scale": 1.0,
-      "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1920x1080.png",
-      "sha256": "5e31bade85e8dfca9d962fc365e513982b7a7ff8e8b379213c8741197cf4b8a5"
+      "sha256": "5e31bade85e8dfca9d962fc365e513982b7a7ff8e8b379213c8741197cf4b8a5",
+      "drive_id": "1hDwaYw2FLsmU18maNtfR5Mw7P2HCrgVW"
     },
     "1366x768": {
       "errors": [],
       "scale": 0.7111111111111111,
-      "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1366x768.png",
-      "sha256": "2367d061a90fd68a9dd68c88fbf6744173b463a9128a3e2d297cb50900f0af54"
+      "sha256": "2367d061a90fd68a9dd68c88fbf6744173b463a9128a3e2d297cb50900f0af54",
+      "drive_id": "1OBYwcDsIfg2Tm-XY5jBNmjOMRZUYndlw"
     }
   },
   "github": {
     "image_rebind_pr": 338,
+    "image_rebind_merge": "4cd997bef976d65ce7b75dd2964c3420e5b5bd76",
+    "image_rebind_ci": "AI Governance Evals #2739 SUCCESS + C04 Six-lane #63 SUCCESS + F Integration #78 SUCCESS",
     "drawing_pr": 324,
-    "image_rebind_branch": "agent/c04-c22-v4-8-image-rebind-20260819",
+    "drawing_review_id": 4974386825,
+    "drawing_ci_at_78c7d078": "AI Governance Evals #2735 SUCCESS",
     "drawing_branch": "agent/c04-c22-concept-masterplan-v4-2-20260819"
   },
   "gate": {
-    "source_uniqueness": "DIRECT LEDGER READBACK + REBIND PR OPEN",
+    "source_uniqueness": "MERGED TO MAIN / IMG-C04-C22-MACRO-02 RESERVED / IMG-C04-C22-MACRO-01 REJECTED_NOT_ELIGIBLE",
     "actual_pixel": "EXECUTED",
+    "github_drawing_scrutiny": "COMMENT / NOT APPROVE",
     "independent_design": "PENDING"
   },
   "drive": {
