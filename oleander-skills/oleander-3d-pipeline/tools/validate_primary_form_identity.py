@@ -25,6 +25,7 @@ def validate(d):
     if d['machine_identity_state']=='MACHINE_SCREENED_VISUAL_HOLD':
         req(all(float(d[k]['candidate'])<=float(d[k]['limit']) for k in ('gesture_metric','front_profile_metric','rear_profile_metric')),'false_machine_screen')
         req(d['pre_aperture_surface_state']=='MACHINE_CONSTRUCTED_VISUAL_HOLD','false_surface_screen')
+        req(all(r['state']=='SCREENED' for r in rel),'false_relation_screen')
     return d
 
 def main():
