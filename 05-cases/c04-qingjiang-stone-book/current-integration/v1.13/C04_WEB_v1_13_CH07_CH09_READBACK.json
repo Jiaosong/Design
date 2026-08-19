@@ -36,12 +36,16 @@
     "reason": "isolated browser sandbox does not materialize the current carrier binary image assets; readback intentionally shows SOURCE-BOUND fallback rather than fabricated pixels",
     "required": ["assets/route03_locked_current.svg","assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg"]
   },
-  "files": {
-    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.html": {"bytes":27965,"sha256":"ab15bbe9739590b43bdbc34b52653816ee9ac95951ffc9afd0142c1a19719bea"},
-    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.css": {"bytes":18719,"sha256":"b05ed026692809fd9067ff5228630d1cb2b8b4d9141d13da228cf399b40dc7c1"},
-    "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.js": {"bytes":1223,"sha256":"7dcc91e2078c1d2eb378f0041bfaf0ac35e7f1e6bab312be19f9b450d3359846"},
-    "C04_WEB_v1_13_CH07_CH09_PATCH_MANIFEST.json": {"bytes":2044,"sha256":"aa54e02f28af29bf3888b96c2bdd9494fd5358a8b83665572609e3f1ea62c282"},
-    "C04_WEB_v1_13_CH07_CH09_RECEIPT.md": {"bytes":3400,"sha256":"c50d82aed74d377f228b0114d2de19d90894e3314e1d52119d40470c0a35bfef"}
+  "github_readback": {
+    "branch": "c04/current-integration-v1-0-20260817",
+    "files": {
+      "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.html": {"repo_bytes":27965,"git_blob_sha":"7449b2afcec8638688777bdcb146bfcc0ca75ccf"},
+      "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.css": {"repo_bytes":18666,"git_blob_sha":"0bb925c7a641b6138d7683f948a20e70a49d850e"},
+      "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13.js": {"repo_bytes":1223,"git_blob_sha":"d98771e8ab21b09cac30508f1ad95490d58fc3e5"},
+      "C04_WEB_v1_13_CH07_CH09_PATCH_MANIFEST.json": {"repo_bytes":2044,"git_blob_sha":"e9a5c91f2d45e1e931e85c47d687a87f77b8b068"},
+      "C04_WEB_v1_13_CH07_CH09_RECEIPT.md": {"repo_bytes":3400,"git_blob_sha":"ebf2a90df0234b0d8c4fac9bb6a604c632890c4d"}
+    },
+    "note": "Git blob SHA and repository byte count are the repository readback evidence. Producer-local SHA-256 is not substituted for a repository-side SHA-256 calculation."
   },
   "review_boundary": "SOURCE + RESPONSIVE RUNTIME PASS ONLY / INDEPENDENT FINISHED-PIXEL DESIGN VERDICT PENDING",
   "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
