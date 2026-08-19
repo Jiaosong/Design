@@ -6,13 +6,13 @@
   "files": [
     {
       "file": "CH15_VISUAL_CONTENT_BLUEPRINT_v0_1.md",
-      "bytes": 12163,
-      "sha256": "a9bcaf0356832af30a358d6a7c0a482daad5d48e7ca4cf4c66c086880633ba4d"
+      "bytes": 12409,
+      "sha256": "0f9ecb54cd22232b37e9e19979d4feebebe6c80f876b713c82e6ab8c467bc7cb"
     },
     {
       "file": "CH15_SOURCE_MATERIAL_INVENTORY_v0_1.md",
-      "bytes": 7578,
-      "sha256": "0acf453f7028983146b7e9ed224713db1a7e2af3290c0930db0f056730561c3d"
+      "bytes": 8396,
+      "sha256": "86e125139d402eab4de4d42161f5a7cb645be30cfe6f54b32a6d3fbbe3beed1e"
     }
   ],
   "truth_boundary": [
