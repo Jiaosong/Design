@@ -1,0 +1,31 @@
+{
+  "object": "C04 / CH10 / 十三印内容与互动系统",
+  "version": "v0.1",
+  "status": "PRODUCER WEB CANDIDATE / NOT PROJECT CURRENT / INDEPENDENT DESIGN REVIEW PENDING",
+  "authority_sources": [
+    "Notion CH10 Current Material (5 pages)",
+    "GitHub chapter-content-sync v0.3 CH10_THIRTEEN-IMPRINTS-CONTENT-INTERACTION.md",
+    "Notion CH03 Current Material",
+    "Notion CH11 Current Material",
+    "ROUTE-03 locked current source"
+  ],
+  "page_units": [
+    {"id":"CH10-P01","role":"13 OPTIONAL READINGS / route ≠ content order"},
+    {"id":"CH10-P02","role":"R01-R13 index with unknowns preserved OPEN"},
+    {"id":"CH10-P03","role":"S0/S1/S2/DEEP optional depth, not progress"},
+    {"id":"CH10-P04","role":"experience interaction verbs > screen interaction"},
+    {"id":"CH10-P05","role":"R13 silence proof / content may turn OFF"}
+  ],
+  "hard_rules": [
+    "no 13/13",
+    "no mandatory order",
+    "no route ownership",
+    "no invented R facts",
+    "no 14th imprint",
+    "no rewards/check-in/achievement",
+    "return/safety outrank optional content",
+    "content returns to real Qingjiang",
+    "FIELD OPEN remains visible"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS"
+}
