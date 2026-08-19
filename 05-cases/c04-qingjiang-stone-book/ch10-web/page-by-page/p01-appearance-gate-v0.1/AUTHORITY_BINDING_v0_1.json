@@ -1,0 +1,27 @@
+{
+  "object": "C04 / CH10-P01",
+  "title": "一页清江，不总是出现",
+  "status": "PRODUCER CANDIDATE / REVIEW REQUIRED / NO SELF-KEEP",
+  "content_authority": [
+    "Notion CH10 v0.4 Reorganized Reading System",
+    "Notion CH08 v0.4 Master Design Strategy",
+    "GitHub CH08_MASTER_EXPERIENCE_ATLAS_v0_4.svg"
+  ],
+  "visual_reference": "CH14 Current only: contemporary editorial + landscape space; Bone Mist / River Black / Deep Water / Jade Current / Cinnabar; PAGE / TRACE; brand presence subordinate.",
+  "content_contract": {
+    "claim": "Thirteen Imprints appear only when route/body/attention conditions permit; correct absence is part of the design.",
+    "experience_conditions": ["MOVE","LOOK","OBSERVE","RECOVER","CHOOSE","PASS"],
+    "appearance_rule": {
+      "MOVE": "content weak",
+      "LOOK": "landscape first / light cue max",
+      "OBSERVE": "optional page may appear",
+      "RECOVER": "body/service/return first",
+      "CHOOSE": "route/service/return first",
+      "PASS": "body/route/return first; reading off"
+    },
+    "scale_context": ["WHOLE / TERRITORY","RELATION","BODY"]
+  },
+  "does_not_prove": ["route geometry","site coordinates","measured timing","field-observed fatigue behavior","operational closure state"],
+  "image_generation": "NOT USED",
+  "raster_content_images": 0
+}
