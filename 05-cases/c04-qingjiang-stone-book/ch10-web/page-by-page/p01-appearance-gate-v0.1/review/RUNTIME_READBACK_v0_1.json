@@ -1,0 +1,33 @@
+{
+  "1920x1080": {
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "button_min_height": 72,
+    "errors": [],
+    "keyboard_sequence": ["LOOK", "OBSERVE"],
+    "states": {
+      "MOVE": {"opacity": 0.0, "owner": "LANDSCAPE / ROUTE", "note": "MOVE · Route 清楚，Content 弱。移动中不要求读。"},
+      "LOOK": {"opacity": 0.0, "owner": "LANDSCAPE", "note": "LOOK · Landscape first。最多允许一条轻提示，不打开解释页。"},
+      "OBSERVE": {"opacity": 1.0, "owner": "THIRTEEN IMPRINTS / OPTIONAL", "note": "OBSERVE · 当前路线决定已清楚，注意力稳定，阅读获得有限出现资格。"},
+      "RECOVER": {"opacity": 0.13, "owner": "BODY / SERVICE / RETURN", "note": "RECOVER · 停下来可能只是累。身体恢复、Service 与 Return 优先，内容先退。"},
+      "CHOOSE": {"opacity": 0.0, "owner": "ROUTE / SERVICE / RETURN", "note": "CHOOSE · 当前决策权交给 Route / Service。阅读关闭，避免与方向判断竞争。"},
+      "PASS": {"opacity": 0.0, "owner": "BODY / ROUTE / RETURN", "note": "PASS · Body / footing first。READ / PLAY / COLLECTION 退场；通过以后再决定是否重开。"}
+    }
+  },
+  "390x844": {
+    "scroll_width": 390,
+    "client_width": 390,
+    "button_min_height": 86,
+    "errors": [],
+    "keyboard_sequence": ["LOOK", "OBSERVE"],
+    "states": {
+      "MOVE": {"opacity": 0.0, "owner": "LANDSCAPE / ROUTE", "note": "MOVE · Route 清楚，Content 弱。移动中不要求读。"},
+      "LOOK": {"opacity": 0.0, "owner": "LANDSCAPE", "note": "LOOK · Landscape first。最多允许一条轻提示，不打开解释页。"},
+      "OBSERVE": {"opacity": 1.0, "owner": "THIRTEEN IMPRINTS / OPTIONAL", "note": "OBSERVE · 当前路线决定已清楚，注意力稳定，阅读获得有限出现资格。"},
+      "RECOVER": {"opacity": 0.13, "owner": "BODY / SERVICE / RETURN", "note": "RECOVER · 停下来可能只是累。身体恢复、Service 与 Return 优先，内容先退。"},
+      "CHOOSE": {"opacity": 0.0, "owner": "ROUTE / SERVICE / RETURN", "note": "CHOOSE · 当前决策权交给 Route / Service。阅读关闭，避免与方向判断竞争。"},
+      "PASS": {"opacity": 0.0, "owner": "BODY / ROUTE / RETURN", "note": "PASS · Body / footing first。READ / PLAY / COLLECTION 退场；通过以后再决定是否重开。"}
+    }
+  },
+  "reduced_motion": {"running_animations": 0, "state": "OBSERVE", "page_opacity": 1.0}
+}
