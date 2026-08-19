@@ -61,15 +61,20 @@ READY:
 - executable digital-currentization lineage;
 - mature Digital Memory currentized image;
 - My Book behavior fields.
+CURRENT OWNER READBACK:
+- CH11 v0.3 confirms source precedence ends at `App v1.29 Game Texture × CH14 × ROUTE-03 leading candidate`; `MY BOOK = ONE IDENTITY`, with CH11 owning interaction/interface implementation and CH15 owning what is remembered.
 OPEN:
-- verify exact latest CH11 implementation owner before binding Web interactive code. Newer File Library App files exist but recency alone does not make them authority.
+- materialize/recover the exact v1.29 executable/runtime source before binding Web interactive code; current Drive/File Library exact `v1.29` search did not locate a recoverable binary/HTML in this pass.
+- v1.2 remains verified executable lineage/support only; recency or availability must not silently promote it over v1.29.
 
 ### P04
 READY:
 - paper and digital authorities exist.
+CANDIDATE EVENT:
+- `SC-R13-EXIT / R13 Exit + Re-recognition` from CH12 v0.4 is the strongest semantic handoff candidate: `EXIT → LOOK BACK → RECOGNIZE → CONTINUE/RETURN`, and the register explicitly states `Memory begins but CH15/CH19 own record/take-away`. Use the event identity/label; do not duplicate the CH12 raster if the project-wide image ledger already allocates it elsewhere.
 OPEN:
-- select a canonical source-grounded scene/event from current scene register;
-- if there is no actual visitor memory record, label demonstration as designed prototype / not observed.
+- confirm the final same-event content fields and image allocation before Construct;
+- if there is no actual visitor memory record, label demonstration as `DESIGNED PROTOTYPE EXAMPLE / NOT OBSERVED`.
 
 ### P05
 READY:
