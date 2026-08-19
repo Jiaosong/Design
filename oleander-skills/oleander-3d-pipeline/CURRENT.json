@@ -1,0 +1,97 @@
+{
+  "schema": "oleander.3d-pipeline.current-routing.v1",
+  "status": "CANDIDATE_SYNC",
+  "date": "2026-08-19",
+  "skill_id": "oleander-3d-pipeline",
+  "authority_rule": "CURRENT_BY_AUTHORITY_NOT_TIMESTAMP",
+  "core_separation": [
+    "SOURCE_AUTHORITY",
+    "DERIVED_EXECUTION",
+    "DIAGNOSTIC_EVIDENCE",
+    "RENDER_EVIDENCE",
+    "DESIGN_QUALITY",
+    "FIELD_ENGINEERING_MANUFACTURING_PROOF"
+  ],
+  "repository": {
+    "full_name": "Jiaosong/Design",
+    "sync_base_main_sha": "b18f90b67c039485df234d74c3a4530e2295b382",
+    "integration_branch": "agent/2026-08-19-oleander-3d-skill-current-sync",
+    "installed_owner_paths": [
+      "oleander-skills/oleander-3d-pipeline/SKILL.md",
+      "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
+      "oleander-skills/oleander-3d-pipeline/VISUAL_LAYER_BINDING.md",
+      "oleander-skills/oleander-3d-pipeline/CURRENT.md",
+      "oleander-skills/oleander-3d-pipeline/CURRENT.json"
+    ],
+    "merged_surface_system": {
+      "version": "v1.20.0",
+      "path": "90-shared/toolchains/blender-surface-system/v1.20.0/",
+      "state": "MERGED_CURRENT_COMPATIBLE_BASELINE"
+    }
+  },
+  "candidate_extensions": [
+    {
+      "id": "PR-173",
+      "role": "BLENDER_SURFACE_V1_21_SOURCE_ADAPTER_AND_RECEIPT_VALIDATOR",
+      "state": "OPEN_DRAFT_CANDIDATE",
+      "may_replace_current": false
+    },
+    {
+      "id": "PR-198",
+      "role": "REAL_R29A_REFINED_SKILL_VALIDATION",
+      "state": "OPEN_DRAFT_MACHINE_EVIDENCE",
+      "may_replace_current": false
+    },
+    {
+      "id": "PR-208",
+      "role": "REFERENCE_REPRODUCTION_SPECIALIST_EXTENSION",
+      "state": "OPEN_DRAFT_CANDIDATE",
+      "may_replace_current": false
+    },
+    {
+      "id": "PR-227",
+      "role": "CAMERA_CLAIM_GATE_TRAINING_PROVENANCE",
+      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULE_INTEGRATED",
+      "may_replace_current": false
+    },
+    {
+      "id": "PR-276",
+      "role": "INTERACTION_AND_LIFECYCLE_VISUAL_GATE_TRAINING_PROVENANCE",
+      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULES_INTEGRATED",
+      "may_replace_current": false
+    }
+  ],
+  "notion": {
+    "owner_title": "SYS-BLENDER-SURFACE｜OLEANDER Blender Surface System",
+    "owner_page_id": "3bab86be-5c47-8194-9361-f389b3ec102d",
+    "owner_url": "https://app.notion.com/p/3bab86be5c4781949361f389b3ec102d?pvs=204",
+    "broken_legacy_canonical_entry_page_id": "3b9b86be-5c47-81df-b014-e904e06fd1af",
+    "broken_legacy_state": "DELETED_DO_NOT_USE_AS_CURRENT"
+  },
+  "drive": {
+    "shared_folder_id": "1DbSzwAkEV1gA0VRs_Mv2VFar9TzlCJew",
+    "shared_folder_url": "https://drive.google.com/drive/folders/1DbSzwAkEV1gA0VRs_Mv2VFar9TzlCJew",
+    "stable_readme_id": "1CL6if6pL0Cy__TDOdmEGMdWnPdoQ_p1z",
+    "stable_readme_url": "https://drive.google.com/file/d/1CL6if6pL0Cy__TDOdmEGMdWnPdoQ_p1z/view?usp=drivesdk",
+    "v1_21_current_record": "NOT_FOUND_DO_NOT_FABRICATE"
+  },
+  "hard_rules": [
+    "NO_TIMESTAMP_AS_AUTHORITY",
+    "NO_DELETED_NOTION_PAGE_AS_CANONICAL_ENTRY",
+    "NO_CANDIDATE_PR_AS_SILENT_MAIN_CAPABILITY",
+    "NO_VERSIONED_DRIVE_REPORT_AS_CURRENT_BY_RECENCY",
+    "NO_SOURCE_DERIVED_DIAGNOSTIC_RENDER_GATE_COLLAPSE",
+    "NO_MACHINE_PASS_TO_DESIGN_PASS",
+    "NO_CURRENT_POINTER_UPDATE_WITHOUT_CROSS_SYSTEM_READBACK"
+  ],
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "MAIN_KEEP",
+    "CLASS_A",
+    "REFERENCE_FIDELITY",
+    "FIELD_VALIDATION",
+    "ENGINEERING_VALIDITY",
+    "MANUFACTURING_READINESS",
+    "PHYSICAL_CMF_TRUTH"
+  ]
+}
