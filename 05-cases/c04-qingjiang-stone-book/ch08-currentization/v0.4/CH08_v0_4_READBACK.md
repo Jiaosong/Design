@@ -1,11 +1,12 @@
 # CH08 v0.4｜Remote Readback
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
-State: `REMOTE READBACK COMPLETE / PROJECT QA PENDING / INDEPENDENT DESIGN GATE PENDING / NO_PROMOTION`。
+State: `REMOTE READBACK COMPLETE / PROJECT QA PASS / INDEPENDENT DESIGN GATE PENDING / NO_PROMOTION`。
 
 ## Remote artifact confirmed
 - `ch08-currentization/v0.4/OWNER_RECEIPT_CH08_v0_4.json`
 - `ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md`
+- `ch08-currentization/v0.4/CH08_v0_4_PROJECT_QA.md`
 - `ch08-currentization/CURRENT.md`
 - `ch08-currentization/CURRENT.json`
 
@@ -62,10 +63,17 @@ v0.4 does not delete v0.2 / v0.3 provenance and does not create a new top-level 
 - no new IP universe;
 - no task / points / rank / mandatory completion / default AR system.
 
+## Project QA readback
+`CH08_v0_4_PROJECT_QA.md` completed authority / relation / scope review across 15 checks: CH08 scope, Qingjiang-specific thesis, Boat/Cable/Walk authority, ROUTE-03 lock, R06 lock, original design ownership, need-type intervention, Normal/Override, CH04 modifiers, state semantics, recovery wording, Technical Proof separation, new-design budget, non-expansion, and downstream directives.
+
+Verdict: `PROJECT QA = PASS FOR AUTHORITY / RELATION / SCOPE CONSISTENCY`。
+
+This is not Professional Design PASS and does not replace independent review.
+
 ## Gate state
 `AUTHORING / ARCHITECTURE-RELATION DELTA = EXECUTED`  
 `REMOTE READBACK = COMPLETE`  
-`PROJECT QA = PENDING`  
+`PROJECT QA = PASS FOR AUTHORITY / RELATION / SCOPE`  
 `INDEPENDENT PROFESSIONAL DESIGN REVIEW = PENDING`  
 `REPRESENTATION / PIXEL GATE = NOT RUN`  
 `PROMOTION = HOLD`
