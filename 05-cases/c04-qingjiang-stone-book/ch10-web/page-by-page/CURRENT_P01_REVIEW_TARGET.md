@@ -1,16 +1,22 @@
 # CH10 P01｜Current Page-by-Page Review Target
 
-Current producer review target: `p01-resource-led-v0.2/`.
+Current producer review target: `p01-resource-choreography-v0.3/`.
 
-Superseded P01 target: `p01-appearance-gate-v0.1 = REVISE / HISTORY`.
+Superseded P01 targets:
+- `p01-resource-led-v0.2 = REVISE / HISTORY`;
+- `p01-appearance-gate-v0.1 = REVISE / HISTORY`.
 
-Public proposition: `真实资源先拥有页面；内容只有在注意力允许时才出现。`
+Public interaction proposition: `先看清江 → 再读一页；恢复、决策、通过时内容主动退场。`
 
 Authority: `CH08 v0.4 appearance qualification → CH10 v0.4 optional reading behavior → CH14 visual reference only`.
 
-Resource hierarchy: `WHOLE QINGJIANG → RELATION / CABLE → BODY / RECOVER → OPTIONAL READING WHEN EARNED`.
+Resource choreography:
+- `MOVE / CHOOSE = full-scene cable / relation resource`;
+- `LOOK / OBSERVE / PASS = photo-only Qingjiang landscape resource`;
+- `OBSERVE = bounded reading fold + one prompt`;
+- `RECOVER = landscape dim + extracted body/recovery scale drawing`.
 
-Immutable HTML SHA256: `d1ec1f0ea5ab21a45ed5045048cfe13da0614947cb8b8b47892601e22e993913`.
+Canonical HTML SHA256: `ec3e4e1f3dc02f4d19fa74516f62e7e07ddcbd923bd519293d13d14935b5153e`.
 
 Status: `EXECUTED / ACTUAL PIXELS REOPENED / ARTIFACT REVIEW EXECUTED / PAGE-SCOPED GITHUB REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
 
