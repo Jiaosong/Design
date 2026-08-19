@@ -1,0 +1,38 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "version": "C04 Web v1.12",
+  "purpose": "rebind downstream Web visual grammar to current CH14 P01-P07 baseline",
+  "visual_authority_inputs": [
+    "CH14-P01 v5.6 Brand Foundation",
+    "CH14-P02 v5.8 Verbal Identity",
+    "CH14-P03 v7.2 Logo/VI Manual",
+    "CH14-P04 v1.0 Color System",
+    "CH14-P05 v1.0 Typography & Layout",
+    "CH14-P06 v2.0 Map-derived Graphic Language / ROUTE-03",
+    "CH14-P07 v1.0 Information / Wayfinding"
+  ],
+  "material_changes": [
+    "palette rebound to River Black / Deep Water / Jade Current / Wet Stone / Bone Mist / Sediment Sand / Cinnabar",
+    "Serif display + Sans body + Mono technical role hierarchy",
+    "rounded pills converted to editorial index rails",
+    "card-wall analysis converted to dominant visual field + explanatory rail",
+    "Deep Water replaces black/cyan dashboard atmosphere",
+    "ROUTE-derived line grammar uses Jade/TRACE styling without mutating ROUTE-03 geometry",
+    "technical/process surfaces retain proof hierarchy and do not become brand posters",
+    "Hero overlay becomes Deep Water landscape veil instead of black UI mask"
+  ],
+  "pixel_regression_harness": {
+    "rendered_surfaces": 87,
+    "desktop_target": "1920x1080 section captures",
+    "render_errors": 0,
+    "authority_note": "87 is a preserved visual regression harness only; it is NOT canonical PAGE count and does not supersede C04_COUNT_CONTRACT_CURRENT.json"
+  },
+  "locks_preserved": {
+    "ROUTE-03": "LOCKED CURRENT / geometry untouched",
+    "JOURNEY-04": "NON-CURRENT / provenance",
+    "R06": "FINISHED / FROZEN / NO REOPEN",
+    "App": "Web presentation treatment only; App design authority unchanged",
+    "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+  },
+  "design_gate": "INDEPENDENT FINISHED-PIXEL DESIGN VERDICT PENDING"
+}
