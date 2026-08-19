@@ -1,0 +1,29 @@
+{
+  "object_id": "CH09-P02",
+  "decision_question": "How should the boat segment establish Qingjiang's water-scale experience while keeping digital content subordinate and Return/service legible?",
+  "current_project_authority": "C04_CURRENT → CH09 Current Material",
+  "sources": [
+    {
+      "id": "SRC-P02-IMG-01",
+      "type": "CURRENT PROJECT OFFICIAL PIXEL CARRIER",
+      "file": "JOURNEY_04_OFFICIAL_LOCAL_v7_1920x1080.png",
+      "crop_box": [65, 700, 365, 865],
+      "supports": "water-view / river bend / visible boat + wake context",
+      "does_not_prove": "exact boat position, exact course, camera position, live operation"
+    },
+    {
+      "id": "SRC-P02-OPS-2026-C",
+      "type": "OFFICIAL OPERATOR CURRENT NOTICE",
+      "title": "2026 夏季恩施大清江 C 线游船时刻表",
+      "source_date": "2026-06-12",
+      "supports": "C line, operation period, departures, boarding dock, round-trip/no disembarkation, highlighted stops, weather/water-level adjustment possibility",
+      "does_not_prove": "future permanent schedule or day-of-travel operation"
+    }
+  ],
+  "claim_layers": {
+    "evidence": "official water-view pixel carrier + official 2026 operator notice",
+    "interpretation": "Boat functions as water-scale landscape primer",
+    "decision": "Landscape strong / digital weak; LOOK COMPARE LISTEN FRAME; READ TASK COLLECT off by default",
+    "assumption": "No new route geometry or operational status added"
+  }
+}
