@@ -1,0 +1,32 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_WEB_CH07_CH09_CURRENTIZATION_v1_13",
+  "role": "DOWNSTREAM WEB / CURRENT 112-SURFACE CH07-CH09 PATCH",
+  "target_branch": "c04/current-integration-v1-0-20260817",
+  "architecture": "C04 PROJECT ARCHITECTURE v3.2",
+  "surface_range": ["032","033","034","035","036","037","038","039","040","041","042","043","044","045","046"],
+  "chapters": {
+    "CH07": {"surface_count":4,"sequences":["032","033","034","035"]},
+    "CH08": {"surface_count":6,"sequences":["036","037","038","039","040","041"]},
+    "CH09": {"surface_count":5,"sequences":["042","043","044","045","046"]}
+  },
+  "authority": {
+    "route": "ROUTE-03 / LOCKED CURRENT / NO GEOMETRY MUTATION",
+    "journey04": "PROVENANCE / NON-CURRENT",
+    "r06": "FINISHED / FROZEN / NO REOPEN",
+    "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+  },
+  "visual_grammar": {
+    "source": "C04 Web v1.12 CH14 P01-P07 visual unification",
+    "palette": ["#F1EDE4","#111918","#133B3C","#2E7571","#65706A","#D8C9B1","#B8543E"],
+    "type_roles": ["Serif display","Sans body","Mono metadata"],
+    "rules": ["CONTEMPORARY EDITORIAL + LANDSCAPE SPACE","FUNCTIONAL READABILITY > BRAND DECORATION","no rounded dashboard card wall","one dominant claim per surface"]
+  },
+  "required_current_assets": [
+    {"id":"ROUTE-03","runtime_path":"assets/route03_locked_current.svg","policy":"consume exact current carrier asset"},
+    {"id":"REAL_QINGJIANG_HERO","runtime_path":"assets/hero_qingjiang.jpg","policy":"consume existing real Qingjiang asset; no AI/generic replacement"},
+    {"id":"R06_QINGJIANG","runtime_path":"assets/r06_qingjiang.jpg","policy":"consume current R06 landscape-first asset; R06 decision frozen"}
+  ],
+  "generation": {"image_generation_used": false, "vector_text": true, "html_css": true},
+  "does_not_prove": ["field validation","GPS","measured distance/slope/time","live route opening","engineering/safety approval","independent professional Design PASS"]
+}
