@@ -21,8 +21,17 @@
     "sha256": "5b58a4acb513f31151782817d647a5388373c128f003e8110ea8b6c96e5f137f"
   },
   "runtime": {
-    "1920x1080": {"errors": [], "scale": 1.0},
-    "1366x768": {"errors": [], "scale": 0.7111111111111111}
+    "1920x1080": {
+      "errors": [],
+      "scale": 1.0,
+      "png_sha256": "fb257a8c5b5872b2495ddb3b1d60da4ed5221289e536e70e241252c33acd6323"
+    },
+    "1366x768": {
+      "errors": [],
+      "scale": 0.7111111111111111,
+      "png_sha256": "26abd763ee154c3d7930a4bbd02dfa90c93725c69e31e549919e36ff2aebcd0b"
+    },
+    "correction": "Initial 1366 export invalidated; corrected exporter resizes root SVG only and leaves internal geometry unchanged."
   },
   "image_generation": "NOT USED",
   "image_reservation": {
@@ -34,11 +43,15 @@
     "pr": 324,
     "review_id": 4973912357,
     "review_action": "COMMENT / NOT APPROVE",
-    "head_before_manifest_close": "4eb7f2a523fa7d17124250dc7f1bb8d97fc37b17",
-    "ci": {"name": "AI Governance Evals", "run_number": 2632, "conclusion": "success"}
+    "ci_pre_runtime_correction": {"name": "AI Governance Evals", "run_number": 2632, "conclusion": "success"}
+  },
+  "durable_review_package": {
+    "drive_id": "11iymYw1V7WP6YaBgvDVUk9xMa5cVikNK",
+    "bytes": 2836782,
+    "sha256": "e45558e50907f2a7172dd76d4ead2c4cc586a7dacdb337332329474bf7973a3a"
   },
   "gate": {
-    "actual_readback": "EXECUTED",
+    "actual_readback": "EXECUTED / 1920+1366 VALID",
     "image_allocation": "MERGED TO MAIN / RESERVED",
     "drawing_scoped_github_review": "COMMENTED / NOT INDEPENDENT DESIGN VERDICT",
     "independent_design": "PENDING"
