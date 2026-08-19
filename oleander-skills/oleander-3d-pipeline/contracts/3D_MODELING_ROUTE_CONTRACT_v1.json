@@ -1,0 +1,105 @@
+{
+  "schema": "oleander.3d.modeling-route-contract.v1",
+  "status": "CURRENT_CANDIDATE",
+  "purpose": "Fail-closed routing contract for OLEANDER 3D v2 entry selection and Source representation.",
+  "routes": [
+    "REFERENCE_RECONSTRUCTION",
+    "STRUCTURE_TO_FORM"
+  ],
+  "representation_families": [
+    "PARAMETRIC_SOLID_CAD",
+    "FEATURE_CURVE_STRUCTURED_SUBD",
+    "PROFILE_REVOLVE",
+    "SKELETON_SECTION_ASSEMBLY",
+    "SOFT_MATERIAL_SIM_SCULPT_RETOPO",
+    "TERRAIN_GIS_SPATIAL",
+    "HYBRID"
+  ],
+  "required_receipt_fields": [
+    "schema",
+    "task_id",
+    "modeling_intent",
+    "route",
+    "representation_family",
+    "source_authority_owner",
+    "hard_constraints",
+    "functional_constraints",
+    "design_decisions",
+    "assumptions",
+    "required_stage_graph",
+    "required_diagnostics",
+    "does_not_prove"
+  ],
+  "route_requirements": {
+    "REFERENCE_RECONSTRUCTION": {
+      "required_stage_prefix": [
+        "R0_REFERENCE_LOCK",
+        "R1_CALIBRATION",
+        "R2_HARD_POINTS_LANDMARKS",
+        "R3_IDENTITY_FEATURE_CURVES",
+        "R4_SECTION_NETWORK",
+        "R5_PRIMARY_SURFACE"
+      ],
+      "forbidden_shortcuts": [
+        "TARGET_AND_CANDIDATE_SAME_PROVENANCE",
+        "DETAIL_BEFORE_PRIMARY_IDENTITY",
+        "LEGACY_RUNTIME_OBJECT_NAME_AS_CAPABILITY"
+      ]
+    },
+    "STRUCTURE_TO_FORM": {
+      "required_stage_prefix": [
+        "S0_PRODUCT_INTENT",
+        "S1_FUNCTIONAL_DECOMPOSITION",
+        "S2_COMPONENT_GRAPH",
+        "S3_INTERFACE_MOTION_GRAPH",
+        "S4_PACKAGE_CLEARANCE",
+        "S5_STRUCTURAL_TOPOLOGY",
+        "S6_FORM_ENVELOPE",
+        "S7_PRIMARY_SURFACE"
+      ],
+      "forbidden_shortcuts": [
+        "EXTERIOR_STYLING_BEFORE_PACKAGE",
+        "UNKNOWN_COMPONENTS_SHRUNK_TO_FIT_FORM",
+        "DETAIL_BEFORE_PRIMARY_FORM"
+      ]
+    }
+  },
+  "representation_escalation": {
+    "code": "STOP_PARAMETER_TUNING_REOPEN_REPRESENTATION",
+    "trigger_after_controlled_non_material_improvement_count": 3,
+    "triggers": [
+      "REPEATED_FAILURE_FAMILY",
+      "CROSS_VIEW_LOCKED_GATE_REGRESSION",
+      "APERTURE_REQUIRES_DESTRUCTIVE_AFTERTHOUGHT",
+      "CONTINUOUS_FORM_REQUIRES_FLOATING_OVERLAP",
+      "MACHINE_PASS_HELD_OUT_VISUAL_GENERIC",
+      "STAGE_DIAGNOSTIC_REQUIRES_MISSING_LEGACY_OBJECT"
+    ]
+  },
+  "runtime_architecture": {
+    "preferred_candidate_form": "CANDIDATE_SPEC_DATA_DELTA",
+    "forbidden_default": "NEW_WRAPPER_RUNTIME_FOR_PARAMETER_ONLY_CHANGE",
+    "diagnostic_dependency": "SEMANTIC_CAPABILITY_ID",
+    "intentional_missing_capability_state": "NOT_APPLICABLE_STAGE_HOLD",
+    "loops": [
+      "FAST_LOOP",
+      "VISUAL_LOOP",
+      "DELIVERY_LOOP"
+    ]
+  },
+  "gate_separation": [
+    "EXECUTION",
+    "EVIDENCE",
+    "REFERENCE_FIDELITY_IF_APPLICABLE",
+    "SURFACE_QUALITY",
+    "DESIGN_QUALITY",
+    "FIELD_ENGINEERING_PROOF_IF_APPLICABLE"
+  ],
+  "does_not_prove": [
+    "professional design quality",
+    "Class-A/G2/G3 continuity",
+    "engineering release",
+    "manufacturability",
+    "reference fidelity without independent review"
+  ]
+}
