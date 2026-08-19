@@ -1,0 +1,44 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13_PHYSICAL-BODY-SENSORY",
+  "run": "CH13-WEB-v2-20260819",
+  "branch": "agent/c04-ch13-web-v1-20260819",
+  "draft_pr": 301,
+  "base": "c04/current-integration-v1-0-20260817",
+  "candidate_state": "DRAFT BRANCH CURRENT CANDIDATE",
+  "supersedes_in_draft": "CH13 v1 visual carrier / provenance retained",
+  "visual_reference": "CH14 / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE",
+  "artifacts": [
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v2.html","bytes":15270,"sha256":"02f92e1f961fb19c2cf1beb3e8bad0227e529243a9b3474adb61ede167a3ba1b"},
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v2.css","bytes":18494,"sha256":"ba7f0cda3a938e48605c53a9ac4e86e1d128d2f2cb1ee72bd5e91a1dcc0ce091"},
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v2_PORTABLE.html","bytes":34752,"sha256":"dcd14fbdc26beffcfd31939e3d03f07fa9f566a20afa4c3186ef1258ff17aae8"},
+    {"path":"CH13_PHYSICAL_BODY_SENSORY_v2_SELFCONTAINED.html","bytes":44382,"sha256":"2de050902bdee6f2146cff816118e1b610fc9920a4f56b379f4e6748487dc22d"},
+    {"path":"CH13_SOURCE_REGISTER_v2.json","bytes":2603,"sha256":"78a4dc7bd1884f839d5d938300c3032db4ef4fa5eb2cb2582904e269997a07a5"},
+    {"path":"CH13_DELIVERY_QC_v2.md","bytes":3428,"sha256":"bf3d0377eeaf2bda94685d9fb4f7bdf95e8ee221d19e86701c452aa1a1834105"},
+    {"path":"CH13_INDEPENDENT_REVIEW_REQUEST_v2.md","bytes":2106,"sha256":"472c0b8e2eac41ffe7362387ae2d2cc65ae26842d1f413324549312401dcd598"},
+    {"path":"review_v2b/desktop_full.png","bytes":3013789,"sha256":"47b3df7c96737c37c19c2c31e42a528052d90d82c468046ffee1124aab3008b5"},
+    {"path":"review_v2b/mobile_full.png","bytes":1245320,"sha256":"abea5a1a0dc7c919a5db39036662e7fd475bb09631d1f55e728cfa1a091c6c1b"},
+    {"path":"review_v2b/step_click.png","bytes":485764,"sha256":"5a0648fe1a0d4d430174bfb76f9520bf652a3b43b529d71eea711201327fbbed"},
+    {"path":"assets/ch13/derived/CH13_P02_P02_DERIVED_TECHNICAL.svg","bytes":4610,"sha256":"6f005d83f2fd147ee9de22b9a6483fd41897a3c40c0aa44a91ce2839d0d547e8"},
+    {"path":"assets/ch13/derived/CH13_P04_STEP_LIGHT_EXISTING_MECHANISM.svg","bytes":3293,"sha256":"9b8f8d9fd3073e29bba6693b3c5569afefbd0677bd0301a900515eed9ce2e00a"}
+  ],
+  "runtime": {
+    "browser": "system Chromium via Playwright + Xvfb + page.set_content exact self-contained HTML",
+    "desktop": "1920x1080 / scroll 1905x10085 / no horizontal overflow",
+    "mobile": "390x844 / scroll 375x13767 / no horizontal overflow",
+    "derived_images": "2/2 rendered",
+    "step_light": "pulse 1 after activation; 0 after ~1.7s"
+  },
+  "gates": {
+    "source_hierarchy": "PASS",
+    "static_integrity": "PASS",
+    "target_browser_render_reflow": "PASS",
+    "step_light_runtime": "PASS",
+    "source_pixel_bind": "HOLD",
+    "independent_finished_pixel_design": "PENDING",
+    "promotion": "NO_PROMOTION"
+  },
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT FOR CONSTRUCTION"],
+  "does_not_prove": ["field location","site safety","engineering","construction","user response","source-board pixel fidelity for HOLD slots","independent finished-pixel design pass"],
+  "promotion": "DRAFT ONLY / NO CURRENT AUTHORITY REPLACEMENT"
+}
