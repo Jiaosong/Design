@@ -1,0 +1,61 @@
+name: OLEANDER 3D Porsche V69 Piecewise Boundary Split
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-porsche-v69-piecewise-boundary.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v69.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  v69-piecewise-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Compile V69
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v69.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Execute V69 Derived-only piecewise split
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V69_PIECEWISE_BOUNDARY"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v69.py \
+            -- --out "$OUT" --samples 4 --resolution-x 640 --resolution-y 426
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          test -f "$OUT/V69_DERIVED_BOUNDARY_REFINEMENT_RECEIPT.json"
+      - name: Classify V69 experiment
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('out/V69_PIECEWISE_BOUNDARY/V69_DERIVED_BOUNDARY_REFINEMENT_RECEIPT.json').read_text())
+          assert d['source_mutated'] is False
+          assert d['source_revision_locked']=='V59_SPARSE_FRONT_HOOD_FENDER_RELATION'
+          assert max(d['dimension_abs_error_m']) <= 1e-6
+          assert d['after']['folds']==d['before']['folds']
+          assert d['after']['nonmanifold_edges']==d['before']['nonmanifold_edges']
+          assert d['boundary_straddle_after'] <= d['boundary_straddle_before']
+          assert d['boundary_refinement_result'] in ('PASS_DERIVED_BOUNDARY_REFINEMENT','FAIL_DERIVED_BOUNDARY_REFINEMENT')
+          print(json.dumps(d,indent=2))
+          PY
+      - name: Upload V69 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-porsche-v69-piecewise-boundary-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            out/V69_PIECEWISE_BOUNDARY/
+          if-no-files-found: error
+          retention-days: 14
