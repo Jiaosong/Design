@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CH08 / 总体体验策略 / S01</title>
+<style>
+:root{--bone:#f1ede4;--ink:#111918;--deep:#133b3c;--jade:#2e7571;--wet:#65706a}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bone);color:var(--ink)} figure{margin:0}
+body{font-family:"Noto Sans CJK SC","Noto Sans SC","Source Han Sans SC",sans-serif}
+.s01{min-height:100svh;display:grid;grid-template-columns:minmax(360px,32vw) 1fr;background:var(--bone);overflow:hidden}
+.copy{position:relative;display:flex;flex-direction:column;padding:7.2vh 3.4vw 5.4vh 4.2vw;min-height:100svh}
+.copy:after{content:"";position:absolute;right:0;top:7.2vh;bottom:7.2vh;width:2px;background:var(--jade)}
+.meta{font-size:clamp(11px,.75vw,14px);font-weight:700;letter-spacing:.08em;color:var(--wet)}
+h1{font-family:"Noto Serif CJK SC","Noto Serif SC","Source Han Serif SC",serif;font-size:clamp(46px,2.75vw,56px);line-height:1.08;letter-spacing:-.035em;margin:12vh 0 0;max-width:8.5em;font-weight:700}
+.lede{font-size:clamp(16px,1.15vw,22px);line-height:1.58;color:var(--wet);margin:7vh 0 0;max-width:18em}
+.scale{margin-top:auto;font-weight:700;color:var(--deep);font-size:clamp(14px,.92vw,18px);line-height:1.45}
+.media{position:relative;min-height:100svh;background:var(--deep)}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.credit{position:absolute;right:2vw;bottom:2.2vh;margin:0;color:rgba(241,237,228,.94);font:600 9px/1.4 "Roboto Mono",monospace;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.7);max-width:52ch;text-align:right}
+@media(max-width:720px){
+ .s01{display:flex;flex-direction:column;min-height:100svh;overflow:visible}
+ .media{order:0;min-height:58svh;height:58svh}
+ .media img{object-position:54% center}
+ .copy{order:1;min-height:auto;padding:34px 26px 46px;display:block}
+ .copy:after{left:26px;right:auto;top:0;bottom:auto;width:72px;height:2px}
+ .meta{font-size:11px}
+ h1{font-size:42px;line-height:1.06;margin:36px 0 0;max-width:8em}
+ .lede{font-size:16px;line-height:1.55;margin:30px 0 0;max-width:none}
+ .scale{margin-top:36px;font-size:14px;line-height:1.5}
+ .credit{right:16px;bottom:14px;left:16px;font-size:8.5px;max-width:none;text-align:right}
+}
+</style>
+</head>
+<body>
+<main class="s01" aria-label="CH08 总体体验策略 S01">
+  <section class="copy">
+    <div class="meta">CH08 / 总体体验策略</div>
+    <h1>先看见清江<br>系统才有资格出现</h1>
+    <p class="lede">总体策略不从界面、装置或十三印开始。先让真实清江建立空间关系，设计只在需要时进入，并在完成作用后退出。</p>
+    <div class="scale">水上建立整体<br>空中改变关系<br>山中进入身体尺度</div>
+  </section>
+  <figure class="media">
+    <img src="assets/ch08_s01_qingjiang_landscape_official_20230711.jpg" alt="红花峰林、清江河谷与山中步道平台的真实景观影像" />
+    <figcaption class="credit">SOURCE / 恩施旅游集团官网 · 红花峰林 · 2023-07-11 · FIELD=0</figcaption>
+  </figure>
+</main>
+</body>
+</html>
