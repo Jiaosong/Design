@@ -1,0 +1,52 @@
+{
+  "desktop": {
+    "metrics": {
+      "innerWidth": 1920,
+      "innerHeight": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 3757,
+      "h1Count": 1,
+      "surfaceCount": 3,
+      "broken": []
+    },
+    "errors": [],
+    "desktop_viewport.png": {
+      "bytes": 2349099,
+      "sha256": "ba72b940c2ece0347fdab909889403c536c99ca9b4b4663c5e71da641e9fefde"
+    },
+    "desktop_full.png": {
+      "bytes": 4894890,
+      "sha256": "7fe069976ba08dfc0ce4c55cdd5998295fa2409fedf1cb3a3f3fec99875d2440"
+    }
+  },
+  "mobile": {
+    "metrics": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 3901,
+      "h1Count": 1,
+      "surfaceCount": 3,
+      "broken": []
+    },
+    "errors": [],
+    "mobile_viewport.png": {
+      "bytes": 288062,
+      "sha256": "6bd99f38da4c2bf8831dcf78674e7866014a8ed08e0c6b933597bb2c136fa83c"
+    },
+    "mobile_full.png": {
+      "bytes": 769331,
+      "sha256": "e851cff6ae14bb79b428d5b95910efbe9188d42f05dddc51dac00e482c711c64"
+    }
+  },
+  "surface_files": {
+    "ch08-p01-s01.png": {"bytes": 2349099,"sha256": "ba72b940c2ece0347fdab909889403c536c99ca9b4b4663c5e71da641e9fefde"},
+    "ch08-p01-s02.png": {"bytes": 1095444,"sha256": "2bf42f679f668b0bb4b31dd0ba8710de5ea5fb69df43d7434c15ee993e17bae4"},
+    "ch08-p01-s03.png": {"bytes": 1444345,"sha256": "7eb099ba5140cfc86c21b9fb874cb6ba95c3eb2c36c994fc10aaeac40a08e409"}
+  },
+  "method": {
+    "direct_navigation": "BLOCKED_BY_RUNTIME_ADMINISTRATOR",
+    "pixel_readback": "COMPLETE via exact authored HTML/CSS + request-routed original image bytes in Playwright",
+    "does_not_prove": "live-navigation/browser deployment pass"
+  }
+}
