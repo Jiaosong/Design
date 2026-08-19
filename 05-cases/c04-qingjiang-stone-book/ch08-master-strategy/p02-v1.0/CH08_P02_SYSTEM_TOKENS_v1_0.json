@@ -1,0 +1,70 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P02",
+  "version": "v1.0",
+  "page_type": "SYSTEM",
+  "authoring_identity": "CH08-P02",
+  "final_web_page_id": null,
+  "title": "先遇见，再解释｜Encounter + Freedom",
+  "current_authority": {
+    "ch08": "ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md",
+    "upstream_pr": 294,
+    "producer_parent_pr": 310
+  },
+  "master_contract": [
+    "REAL SCENE before explanatory layer",
+    "NOTICE before prompt",
+    "QUESTION / NEED before Reveal",
+    "same-source Reveal only",
+    "WITHDRAW after Reveal",
+    "STOP != READ",
+    "spatial order != forced completion sequence"
+  ],
+  "freedom_paths": [
+    "LOOK -> CONTINUE",
+    "LOOK -> STOP -> CONTINUE",
+    "LOOK -> QUESTION -> SAME-SOURCE REVEAL -> CONTINUE",
+    "ANY -> RETURN",
+    "NO APP is legal",
+    "READ FEW is legal",
+    "REVERSE is legal",
+    "13/13 is never required"
+  ],
+  "scene_pressure_tests": [
+    {
+      "scene": "CABLE / MOVING VIEWPOINT",
+      "first_read": "LANDSCAPE / RELATION",
+      "content": "DOWN / OFF",
+      "reason": "movement already produces relation change"
+    },
+    {
+      "scene": "R06 / STABLE OBSERVATION",
+      "first_read": "LANDSCAPE",
+      "content": "OPTIONAL SAME-SOURCE REVEAL",
+      "reason": "stable observation can earn a short relation reveal"
+    },
+    {
+      "scene": "R13 / PASSAGE",
+      "first_read": "BODY / ROUTE / RETURN",
+      "content": "OFF",
+      "reason": "passage is not a reading station"
+    }
+  ],
+  "r06_source_binding": {
+    "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+    "file_name": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+    "bytes": 1911515,
+    "sha256": "12b4170d77279c6730230e205dde5e5946feec93da2a802eae5263959b60160d",
+    "role": "CURRENT R06 Landscape First / Relation Reveal same-source pair",
+    "github_binary_state": "OPEN - not persisted in this branch by the current connector path",
+    "render_rule": "Do not substitute generic Qingjiang imagery, AI scene replacement or unrelated explanatory image."
+  },
+  "brand_dependencies": {
+    "color": "CH14-P04 v1.0",
+    "typography": "CH14-P05 v1.0",
+    "information_semantics": "CH14-P07 v1.0"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status": "PRODUCTION CANDIDATE / R06 BINARY REPOSITORY BIND OPEN / ACTUAL PIXEL READBACK REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
