@@ -1,0 +1,65 @@
+{
+  "schema": "C04_WEB_CH07_CH09_V1_14_ASSET_MANIFEST",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "role": "DOWNSTREAM WEB / CH07-CH09 CURRENTIZATION + SOURCE-INTEGRATED PIXEL CARRIER",
+  "version": "v1.14",
+  "date": "2026-08-19",
+  "surface_range": ["032","033","034","035","036","037","038","039","040","041","042","043","044","045","046"],
+  "chapter_counts": {"CH07":4,"CH08":6,"CH09":5},
+  "authority": {
+    "architecture": "C04 PROJECT ARCHITECTURE v3.2",
+    "CH07": "Notion Current Material / 4 page units",
+    "CH08": "CH08 v0.3 current framing from PR #288 + Notion current; v0.2 retained as provenance",
+    "CH09": "Notion Current Material / 5 page units",
+    "route": "ROUTE-03 LOCKED CURRENT / source geometry preserved",
+    "journey04": "PROVENANCE / NON-CURRENT",
+    "r06": "FINISHED / FROZEN / NO REOPEN"
+  },
+  "source_assets": [
+    {
+      "id": "QJ-D-HERO-v1.1",
+      "drive_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_file": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "source_bytes": 2294010,
+      "derived_file": "assets/hero_qingjiang_clean.jpg",
+      "derived_sha256": "9ba192f15ff13ad3a21dacdd79b443a81ec381a4dff72e5038241398824e3fed",
+      "crop_px": [660,80,1920,980],
+      "policy": "source-preserving crop only; removes baked board text; no generative replacement; used for CABLE/current operator landscape context"
+    },
+    {
+      "id": "QJ-D-R06-LANDSCAPE-FIRST-v1.1",
+      "drive_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "source_file": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "source_bytes": 3313809,
+      "derived_file": "assets/r06_same_source_clean.jpg",
+      "derived_sha256": "a09267b9da5462741d7abc8a64d9ca136c9b14eefdece73c04d73361d0e7cdbb",
+      "crop_px": [420,230,1920,1000],
+      "policy": "source-preserving crop only; same image reused for encounter/reveal sequence; relationship overlay remains live SVG/HTML; also used as BOAT water-context but explicitly NOT boat POV evidence"
+    },
+    {
+      "id": "QJ-D-R06-RELATION-REVEAL-v1.1",
+      "drive_id": "13MOMwySypj13Vb1O6SsuUMoV8vQh1AxN",
+      "source_file": "03_R06_RELATION_REVEAL_KEEP_WITH_HOLD_1920x1080.png",
+      "source_sha256": "08cec9d6c5587abc4259feb6656fdf3261a1bf2de4b2309771567a31d0ad7cd1",
+      "source_bytes": 3295929,
+      "policy": "reference-only to verify same-source relation language; v1.14 does not bake this board raster into Web; overlay is reconstructed as live vector over the clean same-source crop"
+    },
+    {
+      "id": "ROUTE-03",
+      "source": "user-provided qingjiang_route_guide_translated.svg / ROUTE-03 currentized carrier",
+      "derived_file": "assets/route03_exact_geometry_subset.svg",
+      "derived_sha256": "f0ccc7c058438fc0fcb94e6bed18bb599debcc09541632cfac5709ac777df4ec",
+      "policy": "exact source Bézier route/branch geometry subset; only styling, crop, label subset and editorial composition changed; RELATIONAL / NOT GPS / STATUS UNKNOWN"
+    }
+  ],
+  "generation": {"ai_image_generation_used":false,"text":"live HTML / vector","relation_overlays":"live SVG/HTML","route":"editable SVG"},
+  "browser_qc": {
+    "desktop": {"viewport":[1920,1080],"overflow":false,"page_errors":0,"console_errors":0,"scroll_width":1920,"client_width":1920,"assets_natural_dimensions":[[1500,770],[1500,770],[1500,770],[1500,770],[1448,820],[1448,820],[1500,770],[1260,900],[1448,820]]},
+    "mobile": {"viewport":[390,844],"overflow":false,"page_errors":0,"console_errors":0,"scroll_width":390,"client_width":390,"assets_natural_dimensions":[[1500,770],[1500,770],[1500,770],[1500,770],[1448,820],[1448,820],[1500,770],[1260,900],[1448,820]]},
+    "render_harness": "data-URI copies generated from the exact distributed local assets; distributed HTML remains relative-path, offline-friendly"
+  },
+  "review_boundary": "PRODUCER BUILD + BROWSER/ASSET QC COMPLETE; INDEPENDENT FINISHED-PIXEL DESIGN VERDICT NOT SELF-AWARDED",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
