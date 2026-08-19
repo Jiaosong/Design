@@ -1,0 +1,20 @@
+{
+  "project":"OLEANDER C04 清江石书",
+  "chapter":"CH15",
+  "version":"0.2",
+  "state":"PRODUCER CANDIDATE / INDEPENDENT REVIEW ROUTING PENDING / NO_PROMOTION",
+  "authority":"05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.2/CH15_MEMORY-IP-CULTURAL-PRODUCT.md",
+  "skill_chain":["oleander-story-and-board","oleander-delivery-qc","Artifact Review v1.1"],
+  "page_units":["CH15-P01","CH15-P02","CH15-P03","CH15-P04","CH15-P05","CH15-P06"],
+  "primary_visuals":{
+    "CH15-P01":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png / crop only",
+    "CH15-P02":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png + M01_qingjiang_journal_v1_2.svg authority",
+    "CH15-P03":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png / unchanged",
+    "CH15-P04":"same-source pair: P02 + P03 assets / crop only",
+    "CH15-P05":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png + source-state register",
+    "CH15-P06":"12_C04_DIGITAL_PRODUCT_CURRENTIZED_v4.png support strip"
+  },
+  "source_locked_but_not_materialized_locally":["清风吟1.png","清风吟2.png","清风吟3.png"],
+  "locked_invariants":["Landscape first","Service/Return before optional interpretation","No 13/13 completion mechanic","Partial is complete","No-phone complete","FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION"],
+  "does_not_prove":["field validation","manufacturing readiness","pricing","operator approval","commercial rights clearance","independent design approval"]
+}
