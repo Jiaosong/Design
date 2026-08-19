@@ -106,8 +106,6 @@ def hull_ring48(x):
     for p in ring:
         _,y,z=p
         q=abs(y)/w
-        # Front: center hood retreats; outer fender/lamp host advances slightly.
-        # Preserve q>=.95 SIDE silhouette authority.
         if z>.50 and q<.95 and fi>.001:
             if q<.56:
                 p[0]-=.045*fi*((1-q/.56)**1.35)
@@ -116,10 +114,8 @@ def hull_ring48(x):
                 bell=max(0.0,1-abs(q-.79)/.15)
                 p[0]+=.026*fi*(bell**1.5)
                 p[2]+=.014*fi*(bell**1.5)
-        # Do not allow upper central nose to become a vertical wall.
         if front_terminal>0 and z>.54 and q<.94:
             p[0]-=.030*front_terminal*(1-q/.94)**1.1
-        # Rear: center deck/terminal retreats while the haunch remains the outer high mass.
         if z>.48 and q<.95 and ri>.001:
             if q<.55:
                 p[0]+=.052*ri*((1-q/.55)**1.25)
@@ -169,7 +165,6 @@ def strip48(name,pts,side,mat,offset=-.006,authority='DERIVED_APERTURE_INFILL'):
     for p in me.polygons: p.use_smooth=True
     return o
 
-# Greenhouse is visual evidence only; no large black surface backing panels.
 def proxy_glass48(M):
     out=[]
     bp=(-.20,interpG(-.20,1),interpG(-.20,2))
@@ -191,22 +186,16 @@ def proxy_glass48(M):
 
 v.build_glass=proxy_glass48
 
-# Stable semantic capability names survive candidate revisions.
 def identity48(M):
     out=[]
     half=v.WIDTH*.5
     cy=float(FRONT_ID['measurement']['lamp_center_lateral_ratio_of_half_body_width'])*half
     r=.5*float(FRONT_ID['measurement']['visible_lamp_diameter_ratio_of_body_width'])*v.WIDTH
     for side in (1,-1):
-        recess=v.m.add_uv_sphere(
-            'DERIVED_HEADLAMP_RECESS_'+str(side),
-            (1.874,side*cy,.755),(.009,r*1.015,r*1.015),M['body_dark'])
+        recess=v.m.add_uv_sphere('DERIVED_HEADLAMP_RECESS_'+str(side),(1.874,side*cy,.755),(.009,r*1.015,r*1.015),M['body_dark'])
         recess['OLEANDER_AUTHORITY']='DERIVED_REFERENCE_REPRO_INTERFACE'; out.append(recess)
-        lens=v.m.add_uv_sphere(
-            'REF_HEADLAMP_LENS_'+str(side),
-            (1.884,side*cy,.755),(.006,r*.94,r*.94),M['headlamp'])
+        lens=v.m.add_uv_sphere('REF_HEADLAMP_LENS_'+str(side),(1.884,side*cy,.755),(.006,r*.94,r*.94),M['headlamp'])
         lens['OLEANDER_AUTHORITY']='DERIVED_REFERENCE_REPRO_DETAIL'; out.append(lens)
-    # Fascia graphics are deliberately subordinate during primary-form review.
     out.append(v.m.add_cube('REF_FRONT_CENTER_INTAKE',(2.185,0,.275),(.014,.265,.050),M['body_dark'],.022))
     for side in (1,-1):
         out.append(v.m.add_cube('REF_FRONT_SIDE_INTAKE_'+str(side),(2.165,side*.545,.288),(.012,.105,.060),M['body_dark'],.026))
@@ -281,10 +270,7 @@ def projection48():
     for x,z in SIDE:
         cand=tri_plane_top(diag,x)
         err=cand-z if math.isfinite(cand) else float('nan')
-        side_samples.append({
-            'x':x,'target_top':z,'candidate_top':cand,'top_error_m':err,
-            'reference_target_source':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json:side.top_silhouette_m',
-            'candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION'})
+        side_samples.append({'x':x,'target_top':z,'candidate_top':cand,'top_error_m':err,'reference_target_source':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json:side.top_silhouette_m','candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION'})
         if math.isfinite(err): side_errs.append(err)
     if len(side_errs)<max(6,int(.90*len(SIDE))):
         raise SystemExit('FAIL_EVALUATED_SIDE_PROFILE_COVERAGE')
@@ -293,129 +279,63 @@ def projection48():
     front_rmse,front_samples,front_cov=profile_rmse(tris,PROFILE['front']['profile'],'front')
     rear_rmse,rear_samples,rear_cov=profile_rmse(tris,PROFILE['rear']['profile'],'rear')
     metrics=[
-        {'id':'SIDE_UPPER_EVALUATED_MESH_RMSE_M','target':0.0,'candidate':side_rmse,'abs_error':side_rmse,'limit':.040,
-         'reference_target_source':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json:side.top_silhouette_m',
-         'candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION'},
-        {'id':'FRONT_HALF_PROJECTED_PROFILE_RMSE','target':0.0,'candidate':front_rmse,'abs_error':front_rmse,'limit':float(PROFILE['gates']['front_profile_rmse_max']),
-         'reference_target_source':'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json:front.profile',
-         'candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_FRONT_Z_SLICE'},
-        {'id':'REAR_HALF_PROJECTED_PROFILE_RMSE','target':0.0,'candidate':rear_rmse,'abs_error':rear_rmse,'limit':float(PROFILE['gates']['rear_profile_rmse_max']),
-         'reference_target_source':'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json:rear.profile',
-         'candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_REAR_Z_SLICE'}
+        {'id':'SIDE_UPPER_EVALUATED_MESH_RMSE_M','target':0.0,'candidate':side_rmse,'abs_error':side_rmse,'limit':.040,'reference_target_source':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json:side.top_silhouette_m','candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION'},
+        {'id':'FRONT_HALF_PROJECTED_PROFILE_RMSE','target':0.0,'candidate':front_rmse,'abs_error':front_rmse,'limit':float(PROFILE['gates']['front_profile_rmse_max']),'reference_target_source':'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json:front.profile','candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_FRONT_Z_SLICE'},
+        {'id':'REAR_HALF_PROJECTED_PROFILE_RMSE','target':0.0,'candidate':rear_rmse,'abs_error':rear_rmse,'limit':float(PROFILE['gates']['rear_profile_rmse_max']),'reference_target_source':'REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json:rear.profile','candidate_measurement_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_REAR_Z_SLICE'}
     ]
     ok=all(float(m['abs_error'])<=float(m['limit']) for m in metrics)
-    return {
-        'schema':'oleander.3d.stage-aware-primary-form-projection.v1',
-        'reference':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json + REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json',
-        'candidate_revision':REV,
-        'status':'PROJECTION_MACHINE_SCREENING_PASS' if ok else 'PROJECTION_MACHINE_SCREENING_FAIL',
-        'primary_form_stage':'PRIMARY_FORM_PROXY_APERTURE_HOLD',
-        'stage_capabilities':{
-            'PRIMARY_FORM_PROJECTION':'AVAILABLE',
-            'GREENHOUSE_VISUAL_PROXY':'AVAILABLE',
-            'FINAL_APERTURE_ARCHITECTURE':'NOT_APPLICABLE_STAGE_HOLD',
-            'FINAL_WINDSHIELD_FLANGE':'NOT_APPLICABLE_STAGE_HOLD',
-            'FINAL_REAR_GLASS_FLANGE':'NOT_APPLICABLE_STAGE_HOLD'
-        },
-        'not_applicable_metrics':[
-            {'id':'FRONT_UPPER_CABIN_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'},
-            {'id':'FRONT_WINDSHIELD_LOWER_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'},
-            {'id':'REAR_BACKLIGHT_LOWER_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'}
-        ],
-        'final_visible_membership':[{'object':'DIAG_PRE_PROXY_GREENHOUSE_SURFACED_V48','role':'FINAL_EVALUATED_PRIMARY_BODY_BEFORE_VISUAL_PROXY','triangles':len(tris)}],
-        'metrics':metrics,
-        'side_upper_samples':side_samples,
-        'front_profile_samples':front_samples,
-        'rear_profile_samples':rear_samples,
-        'side_upper_finite_sample_coverage':len(side_errs)/len(SIDE),
-        'front_profile_finite_sample_coverage':front_cov,
-        'rear_profile_finite_sample_coverage':rear_cov,
-        'independent_visual_review':False,
-        'reference_fidelity_review':'HOLD',
-        'design_quality_gate':'HOLD',
-        'does_not_prove':['reference fidelity','manufacturer CAD','Class-A continuity','final aperture architecture','production patch layout','manufacturing feasibility','homologation']
-    }
+    return {'schema':'oleander.3d.stage-aware-primary-form-projection.v1','reference':'REFERENCE_VISUAL_HULL_TARGETS_992_2.json + REFERENCE_FRONT_REAR_PROFILE_TARGETS_992_2.json','candidate_revision':REV,'status':'PROJECTION_MACHINE_SCREENING_PASS' if ok else 'PROJECTION_MACHINE_SCREENING_FAIL','primary_form_stage':'PRIMARY_FORM_PROXY_APERTURE_HOLD','stage_capabilities':{'PRIMARY_FORM_PROJECTION':'AVAILABLE','GREENHOUSE_VISUAL_PROXY':'AVAILABLE','FINAL_APERTURE_ARCHITECTURE':'NOT_APPLICABLE_STAGE_HOLD','FINAL_WINDSHIELD_FLANGE':'NOT_APPLICABLE_STAGE_HOLD','FINAL_REAR_GLASS_FLANGE':'NOT_APPLICABLE_STAGE_HOLD'},'not_applicable_metrics':[{'id':'FRONT_UPPER_CABIN_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'},{'id':'FRONT_WINDSHIELD_LOWER_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'},{'id':'REAR_BACKLIGHT_LOWER_WIDTH_RATIO','state':'NOT_APPLICABLE_STAGE_HOLD','reason':'FINAL_APERTURE_ARCHITECTURE_HOLD_PROXY_ONLY'}],'final_visible_membership':[{'object':'DIAG_PRE_PROXY_GREENHOUSE_SURFACED_V48','role':'FINAL_EVALUATED_PRIMARY_BODY_BEFORE_VISUAL_PROXY','triangles':len(tris)}],'metrics':metrics,'side_upper_samples':side_samples,'front_profile_samples':front_samples,'rear_profile_samples':rear_samples,'side_upper_finite_sample_coverage':len(side_errs)/len(SIDE),'front_profile_finite_sample_coverage':front_cov,'rear_profile_finite_sample_coverage':rear_cov,'independent_visual_review':False,'reference_fidelity_review':'HOLD','design_quality_gate':'HOLD','does_not_prove':['reference fidelity','manufacturer CAD','Class-A continuity','final aperture architecture','production patch layout','manufacturing feasibility','homologation']}
 
 runtime['projection30']=projection48
 
 def regression48(pr):
-    d=base_regression(pr)
-    d['candidate_revision']=REV
-    d['edit_scope']=[
-        'FRONT_HOOD_FENDER_HOST_RELATION',
-        'HEADLAMP_EMBEDDING_DEPTH',
-        'LOWER_FASCIA_SUBORDINATION',
-        'REAR_TERMINAL_MASS',
-        'GREENHOUSE_PROXY_CARRIER',
-        'STAGE_AWARE_PROJECTION_ROUTING'
-    ]
-    d['protected_families']=['OFFICIAL_HARD_POINTS','AXLE_CENTRES','WHEEL_TYRE_PACKAGE','SIDE_OUTER_GESTURE']
-    d['visual_review_state']='NOT_RUN'
-    if d.get('promotion_decision')=='PROMOTE_OVER_LKG':
-        d['promotion_decision']='KEEP_LKG_HOLD_EXPERIMENT'
-    return d
+    current={m['id']:m for m in pr['metrics']}
+    side=current['SIDE_UPPER_EVALUATED_MESH_RMSE_M']; front=current['FRONT_HALF_PROJECTED_PROFILE_RMSE']; rear=current['REAR_HALF_PROJECTED_PROFILE_RMSE']
+    return {
+        'schema':'oleander.3d.reference-regression-promotion-receipt.v1',
+        'baseline_revision':'V47_911_VISUAL_MASS_LKG_EXPERIMENT',
+        'candidate_revision':REV,
+        'edit_scope':['FRONT_HOOD_FENDER_HOST_RELATION','HEADLAMP_EMBEDDING_DEPTH','LOWER_FASCIA_SUBORDINATION','REAR_TERMINAL_MASS','GREENHOUSE_PROXY_CARRIER','STAGE_AWARE_PROJECTION_ROUTING'],
+        'protected_families':['OFFICIAL_HARD_POINTS','AXLE_CENTRES','WHEEL_TYRE_PACKAGE','SIDE_OUTER_GESTURE'],
+        'target_metric_delta':{'metric_id':'PRIMARY_FORM_REFERENCE_FIDELITY','baseline':'V47_PROJECTION_INVALID_DUE_STAGE_DEPENDENCY','candidate':{'side_upper_rmse_m':side['candidate'],'front_profile_rmse':front['candidate'],'rear_profile_rmse':rear['candidate']},'direction':'TARGET_ERROR','improved':False},
+        'regression_locks':[
+            {'id':'OFFICIAL_HARD_POINTS','baseline':'LOCKED','candidate':'LOCKED','limit':'EXACT','status':'PASS','evidence_source':'REFERENCE_INPUTS_992_2.json'},
+            {'id':'SIDE_OUTER_GESTURE','baseline':'V47_NOT_COMPARABLE','candidate':side['candidate'],'limit':side['limit'],'status':'NOT_COMPARABLE','evidence_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION'},
+            {'id':'FRONT_GROSS_PROFILE','baseline':'V47_NOT_COMPARABLE','candidate':front['candidate'],'limit':front['limit'],'status':'NOT_COMPARABLE','evidence_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_FRONT_Z_SLICE'},
+            {'id':'REAR_GROSS_PROFILE','baseline':'V47_NOT_COMPARABLE','candidate':rear['candidate'],'limit':rear['limit'],'status':'NOT_COMPARABLE','evidence_source':'V48_FINAL_EVALUATED_PRIMARY_BODY_REAR_Z_SLICE'}
+        ],
+        'measurement_method_ids':['FINAL_EVALUATED_PRIMARY_BODY_XZ_INTERSECTION','FINAL_EVALUATED_PRIMARY_BODY_FRONT_Z_SLICE','FINAL_EVALUATED_PRIMARY_BODY_REAR_Z_SLICE'],
+        'measurement_comparability':'NOT_COMPARABLE',
+        'incomparability_reason':'V47_PROJECTION_CHAIN_CRASHED_ON_APERTURE_OBJECT_NAME_DEPENDENCY',
+        'promotion_decision':'KEEP_LKG_HOLD_EXPERIMENT',
+        'visual_review_state':'NOT_RUN',
+        'does_not_prove':['reference fidelity','design quality','Class-A continuity','final aperture architecture','manufacturing feasibility']
+    }
 runtime['regression30']=regression48
 
 def surface48():
-    d=base_surface()
-    d['revision']=REV
-    d['aperture_architecture_state']='HOLD_PROXY_ONLY'
-    return d
+    d=base_surface(); d['revision']=REV; d['aperture_architecture_state']='HOLD_PROXY_ONLY'; return d
 runtime['surface_receipt']=surface48
 
 def stage_capability_receipt48(out):
-    d={
-        'schema':'oleander.3d.stage-capability-routing-receipt.v1',
-        'candidate_revision':REV,
-        'stage':'PRIMARY_FORM_PROXY_APERTURE_HOLD',
-        'available_capabilities':['PRIMARY_FORM_PROJECTION','SIDE_SILHOUETTE','FRONT_GROSS_PROFILE','REAR_GROSS_PROFILE','GREENHOUSE_VISUAL_PROXY'],
-        'held_capabilities':['FINAL_APERTURE_ARCHITECTURE','FINAL_WINDSHIELD_FLANGE','FINAL_REAR_GLASS_FLANGE'],
-        'held_result':'NOT_APPLICABLE_STAGE_HOLD',
-        'legacy_name_dependencies_not_required':['REF_WINDSHIELD','REF_REAR_GLASS'],
-        'result':'PASS_STAGE_AWARE_ROUTING',
-        'does_not_prove':['reference fidelity','aperture construction','design quality']
-    }
+    d={'schema':'oleander.3d.stage-capability-routing-receipt.v1','candidate_revision':REV,'stage':'PRIMARY_FORM_PROXY_APERTURE_HOLD','available_capabilities':['PRIMARY_FORM_PROJECTION','SIDE_SILHOUETTE','FRONT_GROSS_PROFILE','REAR_GROSS_PROFILE','GREENHOUSE_VISUAL_PROXY'],'held_capabilities':['FINAL_APERTURE_ARCHITECTURE','FINAL_WINDSHIELD_FLANGE','FINAL_REAR_GLASS_FLANGE'],'held_result':'NOT_APPLICABLE_STAGE_HOLD','legacy_name_dependencies_not_required':['REF_WINDSHIELD','REF_REAR_GLASS'],'result':'PASS_STAGE_AWARE_ROUTING','does_not_prove':['reference fidelity','aperture construction','design quality']}
     Path(out,'STAGE_CAPABILITY_ROUTING_RECEIPT.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 
 def proxy_receipt48(out):
-    d={
-        'schema':'oleander.3d.visual-mass-proxy-receipt.v1',
-        'candidate_revision':REV,
-        'primary_surface':'V40_ZERO_FOLD_SOURCE_PLUS_SUBD1_WITH_V48_CAUSAL_RELIEF',
-        'greenhouse_representation':'CALIBRATED_GLASS_PROXY_NO_SURFACE_DARK_BACKING',
-        'aperture_architecture_state':'HOLD_NOT_CONSTRUCTED',
-        'stage_capability_routing':'PASS_NOT_APPLICABLE_STAGE_HOLD',
-        'visual_review_state':'NOT_RUN',
-        'machine_state':'MACHINE_VISUAL_MASS_READY_FOR_REVIEW',
-        'does_not_prove':['reference fidelity','true host opening','aperture flange','Class-A continuity','manufacturer CAD','production feasibility']
-    }
+    d={'schema':'oleander.3d.visual-mass-proxy-receipt.v1','candidate_revision':REV,'primary_surface':'V40_ZERO_FOLD_SOURCE_PLUS_SUBD1_WITH_V48_CAUSAL_RELIEF','greenhouse_representation':'CALIBRATED_GLASS_PROXY_NO_SURFACE_DARK_BACKING','aperture_architecture_state':'HOLD_NOT_CONSTRUCTED','stage_capability_routing':'PASS_NOT_APPLICABLE_STAGE_HOLD','visual_review_state':'NOT_RUN','machine_state':'MACHINE_VISUAL_MASS_READY_FOR_REVIEW','does_not_prove':['reference fidelity','true host opening','aperture flange','Class-A continuity','manufacturer CAD','production feasibility']}
     Path(out,'VISUAL_MASS_PROXY_RECEIPT.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 
 def patch48(out):
-    base_patch(out)
-    proxy_receipt48(out)
-    stage_capability_receipt48(out)
+    base_patch(out); proxy_receipt48(out); stage_capability_receipt48(out)
     fp=Path(out,'REFERENCE_FIDELITY_RECEIPT.json')
     if fp.exists():
-        fd=json.loads(fp.read_text())
-        fd['candidate_revision']=REV
-        fd['screening_scope']='LEGACY_LANDMARK_AND_HARD_POINT_SCREENING_ONLY'
-        fd['visual_reference_fidelity']='HOLD'
-        fd['does_not_prove']=sorted(set(fd.get('does_not_prove',[])+['current visual reference fidelity','final aperture architecture']))
-        fp.write_text(json.dumps(fd,ensure_ascii=False,indent=2)+'\n')
+        fd=json.loads(fp.read_text()); fd['candidate_revision']=REV; fd['screening_scope']='LEGACY_LANDMARK_AND_HARD_POINT_SCREENING_ONLY'; fd['visual_reference_fidelity']='HOLD'; fd['does_not_prove']=sorted(set(fd.get('does_not_prove',[])+['current visual reference fidelity','final aperture architecture'])); fp.write_text(json.dumps(fd,ensure_ascii=False,indent=2)+'\n')
     p=Path(out,'FINAL_DERIVED_SURFACE_RECEIPT.json')
     if p.exists(): p.unlink()
     for fn in ('REFERENCE_REPRO_QA.json','REFERENCE_REPRO_RECEIPT.json'):
         p=Path(out)/fn
         if not p.exists(): continue
-        d=json.loads(p.read_text())
-        d['reference_fidelity_revision']=REV
-        d['primary_form_stage']='PRIMARY_FORM_PROXY_APERTURE_HOLD'
-        d['aperture_architecture_state']='HOLD_PROXY_ONLY'
-        d['stage_capability_routing']='PASS_NOT_APPLICABLE_STAGE_HOLD'
-        d['visual_reference_fidelity']='HOLD' if fn.endswith('QA.json') else 'HOLD_INDEPENDENT_REVIEW'
-        d['design_quality_gate']='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'
-        p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+        d=json.loads(p.read_text()); d['reference_fidelity_revision']=REV; d['primary_form_stage']='PRIMARY_FORM_PROXY_APERTURE_HOLD'; d['aperture_architecture_state']='HOLD_PROXY_ONLY'; d['stage_capability_routing']='PASS_NOT_APPLICABLE_STAGE_HOLD'; d['visual_reference_fidelity']='HOLD' if fn.endswith('QA.json') else 'HOLD_INDEPENDENT_REVIEW'; d['design_quality_gate']='HOLD_FOR_INDEPENDENT_REFERENCE_COMPARISON'; p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 
 ns43['patch43']=patch48
 
