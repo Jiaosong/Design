@@ -1,0 +1,30 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "chapter":"CH13",
+  "surface":"CH13-01",
+  "version":"v5",
+  "current_visual_source":{
+    "file":"14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png",
+    "drive_id":"1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq",
+    "sha256":"0dc1cfc89b0499e3a74fcfcc867da5f8e9e4c014dcf3c9b8a5d879ecbe82ee1c",
+    "role":"CURRENTIZED PHYSICAL RECOVERY BOARD / SOURCE CARRIER",
+    "crop":[55,450,1270,930],
+    "crop_sha256":"08ae30e2b1fb2046bf3cdd16f9e66598a5e0d8332fa3ec244acef83ed6c68943"
+  },
+  "rejected_visuals":[
+    {
+      "file":"05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png",
+      "role":"OLD SCENIC CONCEPT RENDER",
+      "state":"REJECT / SUPERSEDED VISUAL FOR CH13-01",
+      "reason":"not retained by the current Physical Recovery board; scenery render no longer carries design proof"
+    },
+    {
+      "file":"01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "state":"REJECT FOR CH13",
+      "reason":"project Hero already over-consumed and not CH13-specific"
+    }
+  ],
+  "representation_boundary":"C23 concept sizing visible in source crop remains concept/NTS only; not field or engineering control dimensions",
+  "image_generation_used":false,
+  "truth":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
