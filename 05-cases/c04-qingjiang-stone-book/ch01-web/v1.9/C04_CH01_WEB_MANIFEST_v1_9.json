@@ -1,0 +1,25 @@
+{
+  "artifact_id": "C04_CH01_WEB_v1.9_CH14_EDITORIAL",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH01",
+  "source_authority": "CH01 v0.3 / Draft PR #294",
+  "visual_authority": "CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE + PAGE + TRACE",
+  "material_delta_from": "v1.8",
+  "material_delta": {
+    "P01": "replaced generic relation-wave proxy with Qingjiang-specific WATER / CABLE / WALK encounter field using 水上看 / 空中看 / 山中走; explicitly conceptual, not route geometry",
+    "P04": "body choreography becomes dominant continuous carrier; Return reduced to override branch under CLOSED / UNKNOWN / FATIGUE / NO-PHONE",
+    "P05": "removed gap cards; one continuous SERVICE / RETURN carrier is literally cut by six unresolved physical interfaces; mobile recomposed vertically",
+    "P06": "removed matrix-like outcome grid; editorial selection sequence with existing-design list → one question → five qualitative dispositions"
+  },
+  "preserved": {
+    "P02": "ROUTE-03 locked current geometry; no redraw; route ≠ content order",
+    "P03": "attention occlusion / WITHDRAW composition retained"
+  },
+  "surfaces": ["CH01-P01","CH01-P02","CH01-P03","CH01-P04","CH01-P05","CH01-P06"],
+  "raster_content_images": 0,
+  "ai_generated_whole_page_images": 0,
+  "palette": {"Bone Mist":"#F1EDE4","River Black":"#111918","Deep Water":"#133B3C","Jade Current":"#2E7571","Wet Stone":"#7C8B86","Mica":"#BAC4BF","Cinnabar":"#B8543E","Sediment":"#C7B99F"},
+  "readback": {"desktop":"6/6 @ 1920x1080 / horizontal overflow 0 / raster images 0 / console-page errors 0","mobile":"6/6 @ 390x844 / horizontal overflow 0 / raster images 0 / console-page errors 0","grayscale_far_read":"generated from exact v1.9 pixels"},
+  "review_state": "PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","NOT FOR CONSTRUCTION"]
+}
