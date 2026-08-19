@@ -1,0 +1,46 @@
+# C04 Image Consumption Ledger v1.0
+
+Status: **CURRENT CANDIDATE PROJECT REGISTER**  
+Project: `PRJ-C04-QINGJIANG-SHISHU`  
+Decision date: **2026-08-19**
+
+This project register applies the OLEANDER global rule:
+
+`ONE SEMANTIC CONTENT IMAGE → ONE CONSUMER UNIT`
+
+It does not replace Source Authority, Design Authority, Project State or the existing Assets & Deliverables Register. It records allocation only.
+
+## Current records
+
+| semantic_image_id | source identity | consumer(s) | state | reuse lock |
+|---|---|---|---|---|
+| `IMG-C04-D-HERO-01` | `01_HERO_KEEP_QJ-D_v1.1_1920x1080.png` / SHA256 `8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c` | D v1.1 Public Display Hero; Web W00 Hero binding; F 86s film opening; CH14 contour/crop derivative | `LEGACY_MULTI_CONSUMED` | `LOCKED / NO_FURTHER_USE` |
+| `IMG-C04-F01-SCENIC-01` | parent `05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png` / parent SHA256 `4a082ca4d124ceadb82af3a30af6f80c658a4a756735eb482459af89aba78ae5`; bounds `[60,215,1600,930]`; child SHA256 `ea68ac13acc8839da0754477c899cdfdcbafb28261c8f6b84c16af7347bac3d4` | CH13-01 v4 attempted use only; current Physical Recovery board no longer retains it as active design proof | `REJECTED_NOT_ELIGIBLE` | `DO_NOT_REUSE` |
+| `IMG-C04-PHYS-RECOVERY-TECH-01` | parent `14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png` / parent SHA256 `0dc1cfc89b0499e3a74fcfcc867da5f8e9e4c014dcf3c9b8a5d879ecbe82ee1c`; bounds `[55,450,1270,930]`; child SHA256 `08ae30e2b1fb2046bf3cdd16f9e66598a5e0d8332fa3ec244acef83ed6c68943` | CH13-01 current producer candidate | `RESERVED` | `LOCKED TO CH13-01 UNTIL EXPLICIT RELEASE` |
+
+## Historical correction
+
+`IMG-C04-D-HERO-01` already violates the new ideal state because it was historically reused before this gate existed. The correction is **not** to erase those surfaces. It is marked `LEGACY_MULTI_CONSUMED`, frozen as provenance, and prohibited from any additional project use.
+
+Rejected CH13 attempts using D Hero remain provenance only and do not create a new consumer right.
+
+## Lookup rule
+
+Before any C04 visual-producing task binds a content image:
+
+1. derive or recover `semantic_image_id`;
+2. check this ledger by exact source hash, parent source, child crop/figure hash and semantic identity;
+3. if another consumer is `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED`, stop and select another image;
+4. reserve the new image **before** composing the surface;
+5. convert `RESERVED → CONSUMED` only when the project presentation use is selected/current;
+6. release only with explicit `REJECT / NOT ENTER PROJECT / SUPERSEDED AND RELEASED` authority.
+
+Crop / resize / recolor / mask / contour / screenshot / derivative frame do not reset identity.
+
+## SYSTEM_REUSABLE
+
+Only explicitly classified logo / wordmark / icon / operational state symbol / navigation symbol / brand pattern / design token may repeat. They must not be used as chapter content-image substitutes.
+
+## Does not prove
+
+This ledger records asset allocation only. It does not prove Design PASS, field truth, engineering validity, rights clearance, source correctness or Promotion.

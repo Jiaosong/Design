@@ -37,6 +37,9 @@ jobs:
       - name: Validate sticky constraints and full-flow completion
         run: python 00-governance/runtime/validate_execution_locks.py
 
+      - name: Validate existing visual authority and image consumption
+        run: python 00-governance/runtime/validate_image_consumption.py
+
       - name: Validate current Control Cards and no-loss architecture contract
         run: python 00-governance/control-plane/scan_control_cards.py | tee /tmp/control-card-scan.txt
 
@@ -60,6 +63,7 @@ jobs:
           echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates the six machine-readable execution contracts, current owner declarations, Image Ops binding, four-layer regression schema, and runtime README pointers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces sticky negative user constraints before tool/creation routing and blocks full-flow closure while required phases remain incomplete.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Enforces existing visual authority, one semantic content image per consumer unit, derivative identity inheritance, and project image-consumption ledgers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Discovers current Control Card v0.2 objects by content signature and applies existing Control Plane validation, including the global no-loss Architecture preservation contract.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Replay/example/test/receipt/archive/frozen-Legacy zones are not retroactively rewritten by the prospective Control Card scan.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"

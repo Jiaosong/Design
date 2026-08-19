@@ -3,18 +3,21 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
+Current extension: **2026-08-19 — Existing Visual Authority + Image Consumption**  
 Scope: **one material execution unit**
 
 ## 0｜Purpose
 
 Use one receipt to record the execution instance of the Current resolver/contracts. The receipt is not a new Project State, review framework or Skill.
 
-Policy revision 1.1 adds two mandatory runtime sections for all new receipts:
+Policy revision 1.1 requires two mandatory runtime sections for all new receipts:
 
 1. **Constraint Lock**
 2. **Flow Completion**
 
-The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the new sections.
+Current visual extension additionally requires **Image Consumption** whenever the execution binds semantic content imagery. This extension does not create a new METHOD/Skill/framework.
+
+The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the applicable sections.
 
 ## 1｜Identity
 
@@ -88,16 +91,17 @@ Canonical phases:
 1. `AUTHORITY_PREFLIGHT`
 2. `STICKY_CONSTRAINT_RESOLUTION`
 3. `EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION`
-4. `REQUIRED_NATIVE_OUTPUT_DEFINITION`
-5. `CAPABILITY_AND_MINIMUM_OWNER_SET`
-6. `REAL_EXECUTION`
-7. `NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD`
-8. `ACTUAL_READBACK`
-9. `REGRESSION_AS_APPLICABLE`
-10. `INDEPENDENT_REVIEW_AS_APPLICABLE`
-11. `SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE`
+4. `EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK` — required when semantic content imagery is bound
+5. `REQUIRED_NATIVE_OUTPUT_DEFINITION`
+6. `CAPABILITY_AND_MINIMUM_OWNER_SET`
+7. `REAL_EXECUTION`
+8. `NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD`
+9. `ACTUAL_READBACK`
+10. `REGRESSION_AS_APPLICABLE`
+11. `INDEPENDENT_REVIEW_AS_APPLICABLE`
+12. `SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE`
 
-For full-flow work, Authority, Constraint Resolution, Existing Knowledge/Skill Resolution, Native Output, Minimum Owner Set, Real Execution and Actual Readback cannot be skipped.
+For full-flow work, Authority, Constraint Resolution, Existing Knowledge/Skill Resolution, Native Output, Minimum Owner Set, Real Execution and Actual Readback cannot be skipped. The Existing Visual/Image Consumption phase is additionally mandatory when semantic content imagery is involved.
 
 Optional phases may be `NOT_APPLICABLE` only with a real reason.
 
@@ -117,7 +121,31 @@ Every material handoff records the Native Artifact Contract fields, including:
 
 `artifact_id / artifact_role / producer_owner / authority_source / authority_state / native_format / editable_state / semantic_layers / provenance_state / dependencies / hashes_or_commit / runtime / renderer / permission / current_state / does_not_prove`.
 
-Material derivatives receive a new artifact ID.
+Material derivatives receive a new artifact ID. A new artifact ID does **not** automatically create a new semantic-image identity.
+
+## 7A｜Image Consumption｜when applicable
+
+Required whenever a visual execution binds a semantic content image. Record:
+
+- `register_path_or_authority`
+- `lookup_performed`
+- `reservations_or_consumptions`
+- `conflicts`
+- `blocked_assets`
+- `release_actions`
+- `verdict`
+
+The authoritative semantics are in `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.md/.json`.
+
+Rules:
+
+- lookup and reservation happen **before** image binding / layout production;
+- one `semantic_image_id` may belong to one independent consumer unit only;
+- `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` blocks another consumer;
+- crop / recolor / mask / screenshot / contour / other presentation derivatives inherit the same semantic identity;
+- only explicitly classified `SYSTEM_REUSABLE` assets may repeat;
+- `NOT_APPLICABLE` is allowed only when no content imagery is used or the run uses `SYSTEM_REUSABLE` assets only, with the reason recorded;
+- a conflict verdict is `BLOCK / SELECT ANOTHER IMAGE`, not “make another crop.”
 
 ## 8｜TOOL adapter section
 

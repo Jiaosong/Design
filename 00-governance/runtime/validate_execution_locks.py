@@ -47,8 +47,8 @@ def require_present(obj: dict, fields: list[str], context: str) -> None:
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.1":
-        fail("Current resolver must be v1.2 implementation revision 1.2.1")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.2":
+        fail("Current resolver must be v1.2 implementation revision 1.2.2")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -92,6 +92,11 @@ def validate_resolver() -> dict:
     }
     if not required_phases.issubset(set(phases)) or not required_phases.issubset(set(core)):
         fail("full-flow core phases incomplete")
+    if "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK" not in phases:
+        fail("visual image-consumption phase missing")
+    conditional = flow.get("conditional_required_phases", {})
+    if conditional.get("EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK") != "REQUIRED_WHEN_VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGES":
+        fail("visual image-consumption phase must be conditionally required")
     early = set(flow.get("early_stop_states_that_do_not_equal_completion", []))
     if not {"PR_OPENED", "CI_GREEN", "SELF_CHECK_PASS", "ARTIFACT_CREATED", "REGRESSION_PASS"}.issubset(early):
         fail("early-completion denylist incomplete")
@@ -102,6 +107,9 @@ def validate_resolver() -> dict:
         "RESOLVE_STICKY_EXECUTION_CONSTRAINTS",
         "ENFORCE_TOOL_OUTPUT_CREATION_AND_PROCESS_LOCKS",
         "VERIFY_REQUIRED_EXISTING_METHOD_AND_SKILL_FILES_WERE_ACTUALLY_READ",
+        "RESOLVE_EXISTING_VISUAL_AUTHORITY_WHEN_VISUAL_OUTPUT_IS_REQUIRED",
+        "LOOKUP_IMAGE_CONSUMPTION_REGISTER_BEFORE_CONTENT_IMAGE_BINDING",
+        "BLOCK_DUPLICATE_SEMANTIC_IMAGE_OR_RESERVE_AVAILABLE_IMAGE",
         "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "BUILD_APPLICABLE_FLOW_COMPLETION_CHECKLIST",
         "RESOLVE_EXECUTION_OWNER_MAP",
@@ -116,7 +124,7 @@ def validate_resolver() -> dict:
             fail(f"resolver order missing {token}")
         positions.append(order.index(token))
     if positions != sorted(positions):
-        fail("sticky constraint / full-flow resolver order is invalid")
+        fail("constraint / image-consumption / full-flow resolver order is invalid")
     return data
 
 
@@ -137,6 +145,20 @@ def validate_receipt_contract() -> dict:
         fail("legacy Receipt allowlist must be explicit and exact")
     if data.get("closed_state_rule") != "IF_STATUS_IS_CLOSED_COMPLETION_GATE_MUST_BE_PASS_AND_INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY":
         fail("Receipt CLOSED state rule missing")
+    image_ext = data.get("image_consumption_extension", {})
+    if image_ext.get("required_when") != "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE":
+        fail("Receipt image-consumption extension missing or invalid")
+    required_image_fields = {
+        "register_path_or_authority",
+        "lookup_performed",
+        "reservations_or_consumptions",
+        "conflicts",
+        "blocked_assets",
+        "release_actions",
+        "verdict",
+    }
+    if not required_image_fields.issubset(set(image_ext.get("fields", []))):
+        fail("Receipt image-consumption fields incomplete")
     return data
 
 
@@ -210,6 +232,7 @@ def main() -> None:
     count = validate_new_receipts(contract)
     print("execution-lock validation: PASS")
     print("sticky negative constraints: ENFORCED")
+    print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
     print(f"policy-1.1 receipts: {count}")
 
