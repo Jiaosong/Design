@@ -22,9 +22,9 @@
 .ch08-p01 .meta.rev{color:#A7C7BF}
 .ch08-p01 .micro{font:500 10px/1.55 var(--qj-mono);letter-spacing:.035em;color:var(--qj-stone)}
 
-.ch08-p01 .hero{min-height:930px;padding:84px 0 100px;display:grid;grid-template-columns:minmax(420px,.72fr) minmax(760px,1.28fr);gap:64px;align-items:center}
+.ch08-p01 .hero{min-height:930px;padding:84px 0 100px;display:grid;grid-template-columns:minmax(500px,.80fr) minmax(700px,1.20fr);gap:64px;align-items:center}
 .ch08-p01 .hero-copy{max-width:720px}
-.ch08-p01 h1{font:400 clamp(60px,5.6vw,96px)/.98 var(--qj-serif);letter-spacing:-.045em;margin:24px 0 28px}
+.ch08-p01 h1{font:400 clamp(60px,5.15vw,88px)/.98 var(--qj-serif);letter-spacing:-.045em;margin:24px 0 28px}
 .ch08-p01 .thesis{font:400 clamp(24px,2vw,34px)/1.46 var(--qj-serif);color:var(--qj-deep);margin:0;max-width:720px}
 .ch08-p01 .lead{font-size:15px;line-height:1.92;color:var(--qj-stone);max-width:670px;margin:28px 0 0}
 .ch08-p01 .hero-locks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:38px}
@@ -48,7 +48,7 @@
 .ch08-p01 .scale-en{font:600 10px/1.4 var(--qj-latin);letter-spacing:.13em;color:#A7C7BF}
 .ch08-p01 .scale-block p{font-size:12px;line-height:1.72;color:#C3D3CF;margin:24px 0 0}
 .ch08-p01 .scale-boundary{margin-top:24px;padding-top:16px;border-top:1px solid var(--qj-line-rev);font:500 9px/1.58 var(--qj-mono);color:#9EB7B0}
-.ch08-p01 .scale-arrow{position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:15px;height:15px;border-top:1px solid rgba(241,237,228,.5);border-right:1px solid rgba(241,237,228,.5);transform:translateY(-50%) rotate(45deg);z-index:3}
+.ch08-p01 .scale-arrow{position:absolute;right:-7px;top:50%;width:15px;height:15px;border-top:1px solid rgba(241,237,228,.5);border-right:1px solid rgba(241,237,228,.5);transform:translateY(-50%) rotate(45deg);z-index:3}
 .ch08-p01 .scale-foot{display:grid;grid-template-columns:160px 1fr;gap:18px;border-top:1px solid var(--qj-line-rev);padding-top:18px;position:relative;z-index:1}
 .ch08-p01 .scale-foot strong{font:600 9px/1.5 var(--qj-latin);letter-spacing:.12em;color:var(--qj-paper)}
 .ch08-p01 .scale-foot span{font:400 10px/1.62 var(--qj-mono);color:#9FB9B2}
