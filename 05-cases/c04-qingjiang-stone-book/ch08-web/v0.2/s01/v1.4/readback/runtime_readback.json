@@ -1,0 +1,20 @@
+{
+  "desktop": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":530.078125,"y":191.5,"width":1323.921875,"height":648},"stage":"final","errors":[],"horizontalOverflow":0},
+  "mobile": {"scrollWidth":390,"clientWidth":390,"scrollHeight":1299,"clientHeight":844,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":0,"y":64,"width":390,"height":438.875},"stage":"final","errors":[],"horizontalOverflow":0},
+  "desktop_source": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":530.078125,"y":191.5,"width":1323.921875,"height":648},"stage":"source","errors":[],"horizontalOverflow":0},
+  "desktop_tonal": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":530.078125,"y":191.5,"width":1323.921875,"height":648},"stage":"tonal","errors":[],"horizontalOverflow":0},
+  "desktop_wash": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":530.078125,"y":191.5,"width":1323.921875,"height":648},"stage":"wash","errors":[],"horizontalOverflow":0},
+  "small_320": {"scrollWidth":320,"clientWidth":320,"scrollHeight":1255,"clientHeight":700,"brokenImages":0,"imageNatural":[[1080,608]],"photoRect":{"x":0,"y":64,"width":320,"height":364},"stage":"final","errors":[],"horizontalOverflow":0},
+  "pixel_diffs": {
+    "source_to_tonal":{"mean_abs_rgb":8.3592,"changed_pixel_ratio":0.413665,"bbox":[530,192,1854,840]},
+    "tonal_to_wash":{"mean_abs_rgb":1.5495,"changed_pixel_ratio":0.344504,"bbox":[530,192,1854,840]},
+    "wash_to_final":{"mean_abs_rgb":0.7691,"changed_pixel_ratio":0.369854,"bbox":[530,192,1854,840]},
+    "source_to_final":{"mean_abs_rgb":9.0577,"changed_pixel_ratio":0.413688,"bbox":[530,192,1854,840]}
+  },
+  "hashes": {
+    "source":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "tonal":"d0658a1629737fb5b6c48eb268a83ecb3cbc67ca1ddf8012c107c943180bd00e",
+    "wash":"f2ea23abf624ddcdd5c6e048e64e4ad98a71c6e669b3a3b15450ebd3fd67ebe9",
+    "final":"b90680c64c9c9cbba3a48ce1a13ec4d1e46fe7615cbb315fd470d6f6f5bb8084"
+  }
+}
