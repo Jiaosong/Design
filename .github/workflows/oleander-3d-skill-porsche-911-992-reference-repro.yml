@@ -15,11 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate Skill and V51 runtime
+      - name: Validate Skill and V52 evidence adapter
         run: |
           set -euo pipefail
           python3 -m py_compile \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v51.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v52.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py \
             oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py \
@@ -34,17 +35,17 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build V51 front-identity causal edit
+      - name: Build V51 geometry with V52 semantic evidence
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"; START=$(date +%s)
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v51.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v52.py -- --out "$OUT" --samples 16 --resolution-x 1152 --resolution-y 768
           python3 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/emit_primary_form_identity_receipt.py "$OUT"
           END=$(date +%s); echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"; git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           test ! -e "$OUT/FINAL_DERIVED_SURFACE_RECEIPT.json"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
           sha256sum "$OUT"/renders/*.png > "$OUT/RENDER_SHA256SUMS.txt"
-      - name: Verify V51 front-only edit and runtime composition
+      - name: Verify V51 geometry and V52 semantic identity evidence
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -60,30 +61,34 @@ jobs:
           f=json.loads((out/'FEATURE_CURVE_NETWORK_RECEIPT.json').read_text())
           c=json.loads((out/'STAGE_CAPABILITY_ROUTING_RECEIPT.json').read_text())
           d=json.loads((out/'SOURCE_EDIT_DELTA.json').read_text())
+          sem=p['front_identity_metrics']
           assert q['status']=='MACHINE_PASS_REFERENCE_REVIEW_REQUIRED'
           assert q['primary_form_stage']=='FRONT_TRANSVERSE_IDENTITY_REPAIR_APERTURE_HOLD'
           assert q['source_edit_scope']=='FRONT_TRANSVERSE_IDENTITY_FAMILY_ONLY'
-          assert q['runtime_composition_repair']=='V50_PARENT_NAMESPACE_BINDING_REPAIRED_NO_GEOMETRY_EFFECT'
           assert p['candidate_revision']=='V51_FRONT_TRANSVERSE_IDENTITY_REPAIR'
+          assert p['evidence_revision']=='V52_SEMANTIC_FRONT_IDENTITY_EVIDENCE'
+          assert p['geometry_revision_unchanged']=='V51_FRONT_TRANSVERSE_IDENTITY_REPAIR'
           assert p['status'] in ('PROJECTION_MACHINE_SCREENING_PASS','PROJECTION_MACHINE_SCREENING_FAIL')
-          assert p['source_edit_scope']=='FRONT_TRANSVERSE_IDENTITY_FAMILY_ONLY'
-          assert p['stage_capabilities']['FINAL_APERTURE_ARCHITECTURE']=='NOT_APPLICABLE_STAGE_HOLD'
+          assert sem['schema']=='oleander.3d.front-semantic-identity-metric.v1'
+          assert sem['semantic_relation_state'] in ('SCREENED','FAIL','HOLD')
+          assert sem['lamp_host_integration_state']=='HOLD_APERTURE_ARCHITECTURE_NOT_CONSTRUCTED'
+          assert sem['lower_fascia_subordination_state']=='HOLD_VISUAL_REVIEW_REQUIRED'
           assert s['body_ring_vertices']>=30
           assert s['derived_ring_vertices_expected']>=30
           assert s['machine_surface_state'] in ('MACHINE_CONSTRUCTED_VISUAL_HOLD','MACHINE_SURFACE_TOPOLOGY_FAIL')
           assert g['schema']=='oleander.3d.reference-regression-promotion-receipt.v2'
           assert g['baseline_revision']=='GATE_LOCAL_BEST_KNOWN'
-          assert g['best_known_gate_baselines']['SIDE_UPPER_EVALUATED_MESH_RMSE_M']['revision']=='V50_PROFILE_INVERTED_FEATURE_GRID'
-          assert g['best_known_gate_baselines']['FRONT_HALF_PROJECTED_PROFILE_RMSE']['revision']=='V48_PRIMARY_FORM_STAGE_AWARE'
-          assert g['best_known_gate_baselines']['REAR_HALF_PROJECTED_PROFILE_RMSE']['revision']=='V50_PROFILE_INVERTED_FEATURE_GRID'
           assert g['promotion_decision']=='KEEP_LKG_HOLD_EXPERIMENT'
           assert i['machine_identity_state'] in ('MACHINE_SCREENED_VISUAL_HOLD','MACHINE_REJECT')
+          front_rel=next(x for x in i['identity_relations'] if x['id']=='FRONT_HOOD_FENDER_HIERARCHY')
+          assert front_rel['state']==sem['semantic_relation_state']
+          if sem['semantic_relation_state']!='SCREENED': assert i['machine_identity_state']=='MACHINE_REJECT'
           assert f['source_edit_scope']=='FRONT_TRANSVERSE_IDENTITY_FAMILY_ONLY'
           assert c['result']=='PASS_STAGE_AWARE_ROUTING'
           assert d['source_family']=='FRONT_TRANSVERSE_IDENTITY_V51'
           assert r['visual_reference_fidelity']=='HOLD_INDEPENDENT_REVIEW'
           assert not (out/'FINAL_DERIVED_SURFACE_RECEIPT.json').exists()
-          print(json.dumps({'execution':'PASS','projection':p['status'],'surface':s['machine_surface_state'],'identity':i['machine_identity_state'],'front_metric':next(m['candidate'] for m in p['metrics'] if m['id']=='FRONT_HALF_PROJECTED_PROFILE_RMSE'),'stage_routing':c['result']},indent=2))
+          print(json.dumps({'execution':'PASS','projection':p['status'],'surface':s['machine_surface_state'],'identity':i['machine_identity_state'],'hood_fender':sem['hood_fender_hierarchy_state'],'hood_fender_delta_m':sem['mean_fender_crown_minus_hood_m'],'front_metric':next(m['candidate'] for m in p['metrics'] if m['id']=='FRONT_HALF_PROJECTED_PROFILE_RMSE')},indent=2))
           PY
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_rendered_projection_fidelity.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_PROJECTION_RECEIPT.json
           python3 oleander-skills/oleander-3d-pipeline/tools/validate_regression_promotion.py out/OLEANDER_Porsche_911_992_Reference_Repro/REFERENCE_REGRESSION_PROMOTION_RECEIPT.json
