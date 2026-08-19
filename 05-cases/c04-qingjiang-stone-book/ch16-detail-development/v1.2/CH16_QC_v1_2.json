@@ -1,0 +1,17 @@
+{
+  "version": "v1.2",
+  "svg_count": 7,
+  "svg_parse_errors": [],
+  "external_href_count": 0,
+  "page_size_ok": true,
+  "required_page_ids": ["CH16-P01", "CH16-P02", "CH16-P03", "CH16-P04", "CH16-P05", "CH16-P06", "CH16-P07"],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "pass_structural": true,
+  "browser_v1_2": {
+    "state": "HOLD / RUNTIME ATTEMPT TIMED OUT",
+    "does_not_inherit": "v1.1 browser PASS/readback does not prove v1.2",
+    "attempt": "Chromium headless file:// screenshot",
+    "failure": "container D-Bus/zygote timeout; no screenshot issued"
+  },
+  "independent_professional_design_gate": "PENDING"
+}
