@@ -1,0 +1,86 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P02",
+  "version": "v1.0",
+  "method": {
+    "browser": "Chromium headless via Playwright",
+    "execution": "page.set_content with exact authored HTML and final CSS rules",
+    "reason": "direct file / localhost navigation remains blocked by current runtime administrator policy",
+    "live_navigation_browser_pass": false
+  },
+  "readback": {
+    "desktop_1920x1080": {
+      "inner_width": 1920,
+      "scroll_width": 1920,
+      "horizontal_overflow": 0,
+      "scroll_height": 3269,
+      "article_count": 1,
+      "h1_count": 1,
+      "image_count": 0,
+      "console_errors": 0,
+      "page_errors": 0
+    },
+    "mobile_390x844": {
+      "inner_width": 390,
+      "scroll_width": 390,
+      "horizontal_overflow": 0,
+      "scroll_height": 6005,
+      "article_count": 1,
+      "h1_count": 1,
+      "image_count": 0,
+      "console_errors": 0,
+      "page_errors": 0
+    }
+  },
+  "pixel_review_delta": {
+    "r0_defect": "R06 source-binding panel used a near-equal dark visual mass beside the Freedom Grammar and competed for first read, making technical/source proof look like a peer design surface.",
+    "r1_repair": [
+      "Freedom Grammar / source-binding desktop ratio changed from 1.06/0.94 to 1.42/0.58",
+      "source-binding panel changed from River Black to a low-contrast paper/sediment field",
+      "source metadata typography and spacing reduced while remaining readable",
+      "OPEN binary state remains visible rather than hidden"
+    ],
+    "r1_result": "Experience design retains primary visual authority; source proof remains visible but subordinate."
+  },
+  "local_pixel_evidence": {
+    "desktop_viewport.png": {
+      "bytes": 211457,
+      "sha256": "789c8bf3cd5c868bb6aafa92a4ab9490d6ab5c5ad5c42117f6cc85f7cac02766"
+    },
+    "desktop_full.png": {
+      "bytes": 514214,
+      "sha256": "5472c7b954fc552ea05de90523c582d9ebc64a31c99e4777b363c3cb474b4352"
+    },
+    "mobile_viewport.png": {
+      "bytes": 79002,
+      "sha256": "4c5139b777c93966d0cc31b5c54affebacb8a3d96317b93e77555da294119482"
+    },
+    "mobile_full.png": {
+      "bytes": 414688,
+      "sha256": "9f0cfffd57d46109ac0d80d23a00bb506f71f1d5c6e13c73dde1cde5babd6a91"
+    },
+    "durable_binary_persistence": "OPEN - these local review screenshots are not yet persisted as repository binaries"
+  },
+  "r06_source_binary": {
+    "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+    "file_name": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+    "bytes": 1911515,
+    "sha256": "12b4170d77279c6730230e205dde5e5946feec93da2a802eae5263959b60160d",
+    "github_binary_bind": "OPEN",
+    "rendered_in_p02": false,
+    "reason": "P02 does not substitute or pretend the source is embedded while repository binary binding is open."
+  },
+  "static_checks": {
+    "external_remote_runtime_dependencies": 0,
+    "scripts": 0,
+    "generated_content_images": 0,
+    "final_web_page_id_invented": false,
+    "forced_13_of_13_semantics": false,
+    "route_geometry_created": false,
+    "truth_boundary_present": true,
+    "reduced_motion_rule_present": true
+  },
+  "status": "ACTUAL PIXEL READBACK COMPLETE VIA DOM INJECTION / R1 VISUAL REPAIR COMPLETE / R06 GITHUB BINARY BIND OPEN / LIVE-NAVIGATION BROWSER PASS OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
