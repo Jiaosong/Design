@@ -3,7 +3,7 @@
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "page_id": "CH16-P01",
   "current_revision": "v3.3",
-  "state": "EXECUTED / INDEPENDENT DESIGN REVIEW PENDING",
+  "state": "EXECUTED / BROWSER READBACK BLOCKED / INDEPENDENT DESIGN REVIEW PENDING",
   "presentation_mode": "RESOURCE_LED / INTERACTION_ENHANCED",
   "primary_resource": {
     "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
@@ -14,15 +14,17 @@
   "visible_artifacts": {
     "html": "CH16-P01_v3_3_RESOURCE_STAGE.html",
     "interaction_contract": "CH16-P01_v3_3_INTERACTION_CONTRACT.json",
-    "plan": "CH16-P01_v3_3_RESOURCE_LED_INTERACTION_PLAN.md"
+    "plan": "CH16-P01_v3_3_RESOURCE_LED_INTERACTION_PLAN.md",
+    "runtime_readback": "CH16-P01_v3_3_RUNTIME_READBACK.md"
   },
   "interaction_states": ["CLEAN", "BODY", "ASSEMBLY", "SERVICE"],
   "display_source_rule": "ODB-02 NOT DISPLAYABLE IN CH16",
   "source_identity_boundary": "P02 v1.2 IS A DERIVED CURRENT TECHNICAL RESOURCE; IT DOES NOT REPLACE ODB-02 AS UPSTREAM DESIGN SOURCE",
   "review": {
     "producer_state": "EXECUTED",
-    "browser_readback": "PENDING",
-    "machine_qc": "PENDING",
+    "static_contract_readback": "COMPLETE",
+    "browser_readback": "BLOCKED_RUNTIME_POLICY / NOT PASSED",
+    "machine_qc": "PENDING PR HEAD",
     "independent_design_review": "PENDING",
     "keep_class_verdict": "NOT ASSIGNED"
   },
