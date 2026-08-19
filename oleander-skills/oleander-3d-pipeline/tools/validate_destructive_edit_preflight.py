@@ -40,6 +40,13 @@ def validate(receipt: dict, contract: dict) -> bool:
     if resolution == 'FIRST_MATCH_CODE_ORDER':
         fail('FAIL_FIRST_MATCH_CODE_ORDER_AS_OWNERSHIP')
 
+    try:
+        straddles = int(receipt.get('boundary_straddle_count', 0) or 0)
+    except Exception:
+        fail('FAIL_BOUNDARY_STRADDLE_COUNT_TYPE')
+    if straddles < 0:
+        fail('FAIL_BOUNDARY_STRADDLE_COUNT_NEGATIVE')
+
     checks = receipt.get('predicted_preservation_checks')
     if not isinstance(checks, list) or not checks:
         fail('FAIL_PREDICTED_PRESERVATION_CHECKS_MISSING')
@@ -55,11 +62,16 @@ def validate(receipt: dict, contract: dict) -> bool:
                 fail('FAIL_PASS_WITH_UNCOVERED_OWNER:' + owner)
         if unresolved_conflicts:
             fail('FAIL_PASS_WITH_UNRESOLVED_MULTI_OWNER_CONFLICT')
+        if straddles:
+            fail('FAIL_PASS_WITH_UNSPLIT_BOUNDARY_STRADDLE')
         if hard_fail:
             fail('FAIL_PASS_WITH_PREDICTED_HOST_LOSS')
     else:
         if receipt.get('destructive_edit_allowed') is True:
             fail('FAIL_BLOCKED_PREFLIGHT_ALLOWS_EDIT')
+
+    if result == 'FAIL_DESTRUCTIVE_EDIT_BLOCKED_BOUNDARY_STRADDLE' and straddles <= 0:
+        fail('FAIL_BOUNDARY_STRADDLE_BLOCK_WITH_ZERO_STRADDLES')
 
     if receipt.get('source_mutation_allowed') is False and receipt.get('source_mutation_planned') is True:
         fail('FAIL_UNAUTHORIZED_SOURCE_MUTATION_PLANNED')
