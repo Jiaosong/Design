@@ -1,0 +1,29 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08_MASTER_STRATEGY_EXPERIENCE_SYSTEM",
+  "revision": "v0.1",
+  "authority_inputs": [
+    "C04_CURRENT.md / Project Architecture v3.2",
+    "chapter-content-sync/v0.2/CH08_MASTER-STRATEGY-EXPERIENCE-SYSTEM.md",
+    "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md",
+    "oleander-story-and-board/SKILL.md",
+    "oleander-story-and-board/VISUAL_LAYER_BINDING.md"
+  ],
+  "source_assets": {
+    "route_carrier": "qingjiang_route_guide_translated.svg",
+    "real_images": ["hero_clean.jpg","r06_valley_clean.jpg","r13_exit_clean.jpg","return_clean.jpg"],
+    "existing_design_assets": ["game-map.svg","P01_step_light.svg","P02_railing_rest.svg","M01_journal.svg","memory-grammar.svg"]
+  },
+  "artifacts": [
+    {"file":"C04_CH08_A01_MASTER_EXPERIENCE_ATLAS_v0_1.svg","bytes":311655,"sha256":"9632fae61dd196b3b3937ca6cdefaa53b2b43925247735fa2f1536839fbae00c"},
+    {"file":"C04_CH08_A01_MASTER_EXPERIENCE_ATLAS_v0_1.png","bytes":742407,"sha256":"c21c13820ea5a2a16d0d99cfb34e83e1f4af53340098f2bcbc904804727642e0"},
+    {"file":"C04_CH08_A02_ATTENTION_MEDIA_CHOREOGRAPHY_v0_1.svg","bytes":606471,"sha256":"87ff3ed910fe77d0576e568c7c937f84892fed8d018a9e8a3a7e6efbeeb229cf"},
+    {"file":"C04_CH08_A02_ATTENTION_MEDIA_CHOREOGRAPHY_v0_1.png","bytes":1068881,"sha256":"54c66ba1338b8d5d4532e0f2eb59ad3b69cd59950c249c6f2ce230360562387e"},
+    {"file":"C04_CH08_A03_CROSS_MEDIA_RELATION_ATLAS_v0_1.svg","bytes":379095,"sha256":"f424f53c10d5e9e238df26b8064d7098f4d43ad5b30d1d74fc9ffb2f86b5ee74"},
+    {"file":"C04_CH08_A03_CROSS_MEDIA_RELATION_ATLAS_v0_1.png","bytes":950353,"sha256":"c93ba348d77a7c38dbbc047b388cb9e80344ab59184c526911ecedbc132c1c7d"}
+  ],
+  "library_root": "/Oleander/C04/CH08-Master-System/v0.1/",
+  "library_zip_id": "libfile_01c65c07d6a48191ba260a74872129d8",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "promotion": "INDEPENDENT DESIGN CRIT PENDING"
+}
