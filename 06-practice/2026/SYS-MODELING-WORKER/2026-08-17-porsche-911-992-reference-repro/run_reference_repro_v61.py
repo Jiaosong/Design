@@ -31,6 +31,7 @@ core = ctx['core']
 runtime = ctx['runtime']
 APERTURE_STATS = ctx['APERTURE_STATS']
 PRIMARY_BODY_REV = ctx['PRIMARY_BODY_REV']
+base_mesh_prism_xz = ctx['mesh_prism_xz']
 REV = 'V61_GREENHOUSE_APERTURE_HOST_PRESERVED'
 ctx['REV'] = REV
 v.REF = '2025_992.2_CARRERA_APERTURE_HOST_PRESERVED_V61'
@@ -64,7 +65,7 @@ def world_bounds(obj):
 
 
 def normalized_prism(name, polygon_xz, y0, y1):
-    obj = ctx['mesh_prism_xz'](name, polygon_xz, y0, y1)
+    obj = base_mesh_prism_xz(name, polygon_xz, y0, y1)
     bm = bmesh.new()
     bm.from_mesh(obj.data)
     bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
