@@ -1,0 +1,14 @@
+{
+  "1920x1080": {
+    "errors": [],
+    "scale": 1.0,
+    "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1920x1080.png",
+    "sha256": "5e31bade85e8dfca9d962fc365e513982b7a7ff8e8b379213c8741197cf4b8a5"
+  },
+  "1366x768": {
+    "errors": [],
+    "scale": 0.7111111111111111,
+    "screenshot": "/mnt/data/C04_C22_CONCEPT_MASTERPLAN_CH14_v4_8/review/C22_CH14_v4_8_1366x768.png",
+    "sha256": "2367d061a90fd68a9dd68c88fbf6744173b463a9128a3e2d297cb50900f0af54"
+  }
+}
