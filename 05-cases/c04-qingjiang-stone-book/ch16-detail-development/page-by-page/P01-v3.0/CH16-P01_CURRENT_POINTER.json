@@ -1,0 +1,31 @@
+{
+  "schema": "oleander.c04.ch16.page-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "current_revision": "v3.0",
+  "current_visual_carrier": {
+    "type": "USER_ORIGINAL_DESIGN_SOURCE",
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "file_library_id": "file_0000000018808209943d7fa242015289",
+    "binding_mode": "REUSE_DIRECT",
+    "pixel_mutation": "NONE"
+  },
+  "page_claim": "人体与使用尺度必须作为动作—接口—流线—停留—维护证据；原始 ODB-02 已直接承载产品、身体、使用流程与安装关系，因此不以抽象重画替换。",
+  "independent_source_carrier_review": {
+    "state": "COMPLETED",
+    "verdict": "REVERT / CURRENTIZE EXISTING",
+    "reviewer_independence_state": "INDEPENDENT",
+    "scope": "unchanged ODB-02 as CH16-P01 visual carrier"
+  },
+  "offline_web_binding": {
+    "state": "HOLD_NO_SOURCE_BYTES",
+    "allowed_action": "wait for exact source-byte materialization",
+    "forbidden_action": "substitute derivative/reconstruction/AI pixels"
+  },
+  "supersedes": [
+    "CH16-P01 v2.0 producer-made abstract action diagram",
+    "any CH16-P01 candidate that replaces ODB-02 with lower-information redraw"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

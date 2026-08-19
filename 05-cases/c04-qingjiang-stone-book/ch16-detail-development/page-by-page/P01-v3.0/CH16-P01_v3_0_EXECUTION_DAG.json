@@ -1,0 +1,77 @@
+{
+  "schema": "oleander.multi-skill-execution-dag.v0.1-instance",
+  "dag_id": "C04-CH16-P01-v3.0",
+  "task_id": "CH16-P01",
+  "required_native_output": "DIRECT SOURCE-CARRIER CURRENTIZATION / no replacement pixel artifact",
+  "primary_owner": "OLEANDER_CURRENTIZATION",
+  "nodes": [
+    {
+      "owner_id": "CURRENT_AUTHORITY",
+      "role": "READ_ONLY_CONSUMER",
+      "inputs": ["C04_CURRENT", "C04_ACTIVE_EXECUTION_CURRENT", "CH16 authoring"],
+      "outputs": ["P01 semantic and truth constraints"],
+      "can_promote": false
+    },
+    {
+      "owner_id": "SOURCE_AUTHORITY_ODB02",
+      "role": "READ_ONLY_CONSUMER",
+      "inputs": ["USER ORIGINAL DESIGN SOURCE REGISTER", "File Library ODB-02"],
+      "outputs": ["direct visual carrier identity"],
+      "can_promote": false
+    },
+    {
+      "owner_id": "ACTIVITY_BEARING_SCALE_METHOD",
+      "role": "SUPPORTING_OWNER",
+      "inputs": ["Notion Activity-bearing Scale method"],
+      "outputs": ["BODY SCALE -> ACTION -> SPATIAL INTERFACE -> FLOW/PAUSE/MAINTENANCE fit test"],
+      "can_promote": false
+    },
+    {
+      "owner_id": "OLEANDER_CURRENTIZATION",
+      "role": "PRIMARY_OWNER",
+      "inputs": ["authority", "source precedence", "P01 authoring"],
+      "outputs": ["source register", "current pointer", "integration boundary"],
+      "can_promote": false
+    },
+    {
+      "owner_id": "RUNTIME_VALIDATOR",
+      "role": "VALIDATOR",
+      "inputs": ["File Library source locator", "Drive/GitHub materialization search"],
+      "outputs": ["HOLD_NO_SOURCE_BYTES for offline byte binding"],
+      "can_promote": false
+    },
+    {
+      "owner_id": "GPT-5.6-Sol / OLEANDER SOURCE-CARRIER REVIEW",
+      "role": "INDEPENDENT_REVIEWER",
+      "inputs": ["unchanged user-produced ODB-02"],
+      "outputs": ["REVERT / CURRENTIZE EXISTING"],
+      "can_promote": false,
+      "reviewer_independence_state": "INDEPENDENT"
+    }
+  ],
+  "artifact_contracts": [
+    "ODB-02 remains upstream source authority",
+    "No producer-made replacement pixels",
+    "Historical board dimensions/load are not current engineering controls",
+    "Offline byte binding is separately HOLD_NO_SOURCE_BYTES"
+  ],
+  "conflict_precedence": [
+    "Current Project/Source Authority",
+    "USER ORIGINAL DESIGN SOURCE / ODB-02",
+    "P01 authoring semantics",
+    "presentation currentization"
+  ],
+  "reviewer_node": "GPT-5.6-Sol / OLEANDER SOURCE-CARRIER REVIEW",
+  "review_input_artifact_id": "file_0000000018808209943d7fa242015289",
+  "review_input_hash": "UNAVAILABLE_SOURCE_BYTES_NOT_MATERIALIZED",
+  "review_verdict": "REVERT / CURRENTIZE EXISTING",
+  "completion_condition": "ODB-02 is restored as CH16-P01 direct visual carrier; replacement v2.0 is superseded; independent source-carrier review recorded; offline byte binding remains explicit HOLD rather than substituted.",
+  "does_not_prove": [
+    "MAIN KEEP",
+    "PROFESSIONAL FINISH PASS",
+    "FIELD VALIDATION",
+    "ENGINEERING VALIDATION",
+    "OFFLINE BYTE MATERIALIZATION",
+    "RELEASE PROMOTION"
+  ]
+}
