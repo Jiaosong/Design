@@ -176,7 +176,7 @@ Then split:
 Must reuse the **same P02 M01 authority** and the **same P03 App authority** inside one semantic comparison component. No new proxy illustration and no silent geometry/UI redraw.
 
 ### Canonical event requirement
-Select one existing source-grounded scene/event from the C04 scene register. If no real visitor record exists, label the content as `DESIGNED PROTOTYPE EXAMPLE / NOT OBSERVED`, not as user evidence.
+Current best semantic candidate: `SC-R13-EXIT / R13 Exit + Re-recognition`, because CH12 explicitly hands `Memory begins` to CH15/CH19 after `EXIT → LOOK BACK → RECOGNIZE → CONTINUE/RETURN`. Use the scene/event identity without duplicating its raster when the project-wide image ledger assigns that raster elsewhere. If no real visitor record exists, label the content as `DESIGNED PROTOTYPE EXAMPLE / NOT OBSERVED`, not as user evidence.
 
 ### Interaction grammar
 One scrub / controlled compare:
