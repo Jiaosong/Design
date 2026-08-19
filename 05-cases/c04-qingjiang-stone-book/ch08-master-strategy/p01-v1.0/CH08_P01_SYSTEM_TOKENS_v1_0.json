@@ -1,0 +1,116 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P01",
+  "version": "v1.0",
+  "page_type": "SYSTEM",
+  "authoring_identity": "CH08-P01",
+  "final_web_page_id": null,
+  "title": "母系统｜谁在什么时候拥有主权",
+  "content_basis": {
+    "primary": "agent/c04-ch08-knowledge-rebaseline-v0-3 / CH08_MASTER-STRATEGY-EXPERIENCE-SYSTEM_v0_3.md",
+    "preserved": "chapter-content-sync/v0.2/CH08_MASTER-STRATEGY-EXPERIENCE-SYSTEM.md",
+    "existing_design": "agent/c04-ch08-master-system-v0-1 / A01-A03 manifest + Library-persisted source assets",
+    "web_story": "C04_WEB_STORY_FLOW_v2_0_2026-08-19.md"
+  },
+  "brand_dependencies": {
+    "color": "CH14-P04 v1.0",
+    "typography": "CH14-P05 v1.0",
+    "information_semantics": "CH14-P07 v1.0",
+    "rule": "CH14 supplies shared visual grammar only; CH08 owns master-system composition and does not inherit Brand authority over Route, Service, Return, Landscape or operational state."
+  },
+  "palette": {
+    "RIVER_BLACK": "#111918",
+    "DEEP_WATER": "#133B3C",
+    "JADE_CURRENT": "#2E7571",
+    "WET_STONE": "#65706A",
+    "BONE_MIST": "#F1EDE4",
+    "SEDIMENT_SAND": "#D8C9B1",
+    "CINNABAR": "#B8543E"
+  },
+  "ownership_order": [
+    {
+      "id": "O0",
+      "label": "REAL QINGJIANG / ROUTE / BODY",
+      "cn": "真实清江 / 路线 / 身体",
+      "role": "default first encounter and embodied reality",
+      "may_yield_to": "CURRENT DECISION / SERVICE / RETURN when an immediate decision or recovery need exists"
+    },
+    {
+      "id": "O1",
+      "label": "CURRENT DECISION / SERVICE / RETURN",
+      "cn": "当前决策 / 服务 / 回程",
+      "role": "decision, recovery and safe closure",
+      "may_yield_to": "landscape/body after the decision is resolved"
+    },
+    {
+      "id": "O2",
+      "label": "OPTIONAL OBSERVATION / READING",
+      "cn": "可选观察 / 阅读",
+      "role": "earned explanation; never route completion authority"
+    },
+    {
+      "id": "O3",
+      "label": "DIGITAL / PHYSICAL SUPPORT WHEN EARNED",
+      "cn": "按需数字 / 实体支持",
+      "role": "bounded support after a real relation/body/service gap is identified"
+    },
+    {
+      "id": "O4",
+      "label": "BRAND TRACE",
+      "cn": "品牌痕迹",
+      "role": "recognition and continuity only"
+    },
+    {
+      "id": "O5",
+      "label": "MEMORY AFTER RETURN",
+      "cn": "回程后的记忆",
+      "role": "post-return recognition and record"
+    }
+  ],
+  "correct_absence_examples": [
+    {
+      "scene": "CABLE / MOVING VIEWPOINT",
+      "first_owner": "LANDSCAPE / BODY",
+      "withdraw": ["LONG READING", "DIGITAL CHROME"],
+      "note": "moving viewpoint earns less interface"
+    },
+    {
+      "scene": "R06 / STABLE OBSERVATION",
+      "first_owner": "LANDSCAPE",
+      "temporary_owner": "OPTIONAL RELATION REVEAL",
+      "handoff": "REVEAL -> LANDSCAPE",
+      "note": "same-source reveal only"
+    },
+    {
+      "scene": "R13 / PASSAGE",
+      "first_owner": "BODY / ROUTE / RETURN",
+      "withdraw": ["READ", "PLAY", "BRAND"],
+      "note": "absence is a designed state"
+    },
+    {
+      "scene": "UNKNOWN / CLOSED",
+      "first_owner": "SERVICE / RETURN",
+      "withdraw": ["OPTIONAL CONTENT", "BRAND EMPHASIS"],
+      "note": "do not make uncertainty look normal"
+    },
+    {
+      "scene": "AFTER RETURN",
+      "first_owner": "MEMORY",
+      "support": ["BRAND", "RECOGNITION", "RECORD"],
+      "note": "memory may become primary only after the journey is safely closed"
+    }
+  ],
+  "hard_boundaries": [
+    "No second route geometry",
+    "No second App system",
+    "No Brand ownership over Route / Service / Return / Safety",
+    "No fixed attention-duration claim",
+    "No fatigue threshold claim",
+    "No live operational-state claim",
+    "No field-validation claim",
+    "No 13/13 or forced-sequence semantics"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status": "PRODUCTION CANDIDATE / ARTIFACT REVIEW REQUIRED / INDEPENDENT DESIGN VERDICT REQUIRED"
+}
