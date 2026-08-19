@@ -1,53 +1,53 @@
 page_id,legacy_order,legacy_identity_state,legacy_label,legacy_label_confidence,current_primary_chapter,current_role,mapping_action,mapping_state,cross_link,source_evidence,does_not_prove
-C04-WEB-P001,1,BOUND_FROM_V1_8_CONTACT_OCR,Hero / Orientation,MEDIUM,CH00,PROJECT_FIRST_READ,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content or Design PASS
-C04-WEB-P002,2,BOUND_FROM_V1_8_CONTACT_OCR,Culture intro,MEDIUM,CH03,CULTURE_CONTENT_INPUT,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content or Design PASS
-C04-WEB-P003,3,BOUND_FROM_V1_8_CONTACT_OCR,Culture journey integrated,MEDIUM,CH03,CULTURE_TO_ACTION,EXPAND_FROM_LEGACY,OWNER_SPLIT_REVIEW,CH08,C04 Web v1.8 full 52-object contact,final current owner without content readback
-C04-WEB-P004,4,BOUND_FROM_V1_8_CONTACT_OCR,Place Name / Local Story,MEDIUM,CH03,PLACE_STORY_CONTENT,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content or Design PASS
-C04-WEB-P005,5,BOUND_FROM_V1_8_CONTACT_OCR,Culture Memory,MEDIUM,CH15,MEMORY_NARRATIVE,MAP_TO_LEGACY,PROVISIONAL_BIND,CH03,C04 Web v1.8 full 52-object contact,exact current Memory object binding
-C04-WEB-P006,6,BOUND_FROM_V1_8_CONTACT_OCR,RICH Window + Return,LOW,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,C04 Web v1.8 full 52-object contact,current owner or semantic meaning of RICH
-C04-WEB-P007,7,BOUND_FROM_V1_8_CONTACT_OCR,Culture Memory,MEDIUM,CH15,MEMORY_EXTENSION,MAP_TO_LEGACY,PROVISIONAL_BIND,CH03,C04 Web v1.8 full 52-object contact,exact current Memory object binding
-C04-WEB-P008,8,BOUND_FROM_V1_8_CONTACT_OCR,Journey Modes / Four Journeys,HIGH,CH09,ROUTE_MOBILITY_RETURN,MAP_TO_LEGACY,REWRITE_CURRENT_CONTENT,CH05|CH08,C04 Web v1.8 contact + ROUTE-03/JOURNEY-04 current lock,legacy Journey Modes remains current
-C04-WEB-P009,9,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P010,10,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P011,11,BOUND_FROM_V1_8_CONTACT_OCR,App Intro,MEDIUM,CH11,DIGITAL_COMPANION,MAP_TO_LEGACY,ROLE_SPLIT_REVIEW,,C04 Web v1.8 full 52-object contact,which CH11 unit owns this intro
-C04-WEB-P012,12,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P013,13,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P014,14,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P015,15,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P016,16,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P017,17,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P018,18,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P019,19,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P020,20,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P021,21,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P022,22,BOUND_FROM_V1_8_CONTACT_OCR,App Intro,MEDIUM,CH11,DIGITAL_COMPANION,MAP_TO_LEGACY,ROLE_SPLIT_REVIEW,,C04 Web v1.8 full 52-object contact,which CH11 unit owns this intro
-C04-WEB-P023,23,BOUND_FROM_V1_8_CONTACT_OCR,Scene,LOW,CH12,KEY_SCENE_INTEGRATION,EXPAND_FROM_LEGACY,SCENE_ID_RECOVERY_REQUIRED,,C04 Web v1.8 full 52-object contact,which scene this legacy identity represents
-C04-WEB-P024,24,BOUND_FROM_V1_8_CONTACT_OCR,Audience Depth,HIGH,CH04,AUDIENCE_USE_STATE,MAP_TO_LEGACY,PROVISIONAL_BIND,CH12,C04 Web v1.8 contact + current ownership matrix,exact authoring-unit binding
-C04-WEB-P025,25,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P026,26,BOUND_FROM_V1_8_CONTACT_OCR,App Demo,HIGH,CH11,DIGITAL_COMPANION_DEMO,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,exact App candidate version or UI Design PASS
-C04-WEB-P027,27,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P028,28,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P029,29,BOUND_FROM_V1_8_CONTACT_OCR,Memory / Opening Journal,HIGH,CH15,QINGJIANG_JOURNAL,MAP_TO_LEGACY,PROVISIONAL_BIND,CH19,C04 Web v1.8 contact + CH15 current authoring,final product/print specification
-C04-WEB-P030,30,BOUND_FROM_V1_8_CONTACT_OCR,Memory Augment,MEDIUM,CH15,MEMORY_COMPLEMENT,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,CH11,C04 Web v1.8 full 52-object contact,exact current authoring-unit binding
-C04-WEB-P031,31,BOUND_FROM_V1_8_CONTACT_OCR,Memory Extension,MEDIUM,CH15,MEMORY_EXTENSION,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,exact current extension object
-C04-WEB-P032,32,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P033,33,BOUND_FROM_V1_8_CONTACT_OCR,General Assembly,MEDIUM,CH17,TECHNICAL_PROOF,MAP_TO_LEGACY,OBJECT_ID_RECOVERY_REQUIRED,CH16,C04 Web v1.8 full 52-object contact,which assembly object is represented
-C04-WEB-P034,34,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P035,35,BOUND_FROM_V1_8_CONTACT_OCR,R01 General Assembly,MEDIUM,CH17,TECHNICAL_PROOF,MAP_TO_LEGACY,PROVISIONAL_BIND,CH09|CH12,C04 Web v1.8 full 52-object contact,field geometry or engineering proof
-C04-WEB-P036,36,BOUND_FROM_V1_8_CONTACT_OCR,R02 Detail Atlas,LOW,CH17,TECHNICAL_DETAIL_PROOF,MAP_TO_LEGACY,OBJECT_ID_RECOVERY_REQUIRED,CH16,C04 Web v1.8 full 52-object contact,whether OCR label R02 is exact or current namespace
-C04-WEB-P037,37,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P038,38,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P039,39,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P040,40,BOUND_FROM_V1_8_CONTACT_OCR,Motion Intro,HIGH,,PRESENTATION_MOTION,PROCESS-SUPPORT,PRESERVE_ID_PROCESS_ROLE,CH12|CH19,C04 Web v1.8 full 52-object contact,independent design-system ownership
-C04-WEB-P041,41,BOUND_FROM_V1_8_CONTACT_OCR,Digital Memory,HIGH,CH15,MY_BOOK_MEMORY_MODEL,MAP_TO_LEGACY,PROVISIONAL_BIND,CH11,C04 Web v1.8 contact + My Book ownership rule,exact UI implementation version
-C04-WEB-P042,42,BOUND_FROM_V1_8_CONTACT_OCR,Memory Extension,HIGH,CH15,MEMORY_EXTENSION,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,exact current extension object
-C04-WEB-P043,43,BOUND_FROM_V1_8_CONTACT_OCR,Tech Intro,HIGH,CH17,TECHNICAL_PROOF_INTRO,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 contact + CH17 current authoring,engineering or field PASS
-C04-WEB-P044,44,BOUND_FROM_V1_8_CONTACT_OCR,See also,MEDIUM,,CROSS_REFERENCE,PROCESS-SUPPORT,PRESERVE_ID_PROCESS_ROLE,,C04 Web v1.8 full 52-object contact,public-page necessity after final mapping
-C04-WEB-P045,45,BOUND_FROM_V1_8_CONTACT_OCR,Scene Mounts,LOW,CH17,TECHNICAL_SCENE_PROOF,EXPAND_FROM_LEGACY,OWNER_REVIEW_REQUIRED,CH12|CH16,C04 Web v1.8 full 52-object contact,exact technical object or scene owner
-C04-WEB-P046,46,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P047,47,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P048,48,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P049,49,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P050,50,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P051,51,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
-C04-WEB-P052,52,SOURCE_RECOVERY_REQUIRED,,, , ,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,legacy title or current mapping
+C04-WEB-P001,1,BOUND_FROM_V1_8_CONTACT_OCR,Hero / Orientation,MEDIUM,CH00,PROJECT_FIRST_READ,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P002,2,BOUND_FROM_V1_8_CONTACT_OCR,Culture intro,MEDIUM,CH03,CULTURE_CONTENT_INPUT,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P003,3,BOUND_FROM_V1_8_CONTACT_OCR,Culture journey integrated,MEDIUM,CH03,CULTURE_TO_ACTION,EXPAND_FROM_LEGACY,OWNER_SPLIT_REVIEW,CH08,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P004,4,BOUND_FROM_V1_8_CONTACT_OCR,Place Name / Local Story,MEDIUM,CH03,PLACE_STORY_CONTENT,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P005,5,BOUND_FROM_V1_8_CONTACT_OCR,Culture Memory,MEDIUM,CH15,MEMORY_NARRATIVE,MAP_TO_LEGACY,PROVISIONAL_BIND,CH03,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P006,6,BOUND_FROM_V1_8_CONTACT_OCR,RICH Window + Return,LOW,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P007,7,BOUND_FROM_V1_8_CONTACT_OCR,Culture Memory,MEDIUM,CH15,MEMORY_EXTENSION,MAP_TO_LEGACY,PROVISIONAL_BIND,CH03,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P008,8,BOUND_FROM_V1_8_CONTACT_OCR,Journey Modes / Four Journeys,HIGH,CH09,ROUTE_MOBILITY_RETURN,MAP_TO_LEGACY,REWRITE_CURRENT_CONTENT,CH05|CH08,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P009,9,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P010,10,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P011,11,BOUND_FROM_V1_8_CONTACT_OCR,App Intro,MEDIUM,CH11,DIGITAL_COMPANION,MAP_TO_LEGACY,ROLE_SPLIT_REVIEW,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P012,12,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P013,13,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P014,14,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P015,15,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P016,16,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P017,17,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P018,18,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P019,19,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P020,20,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P021,21,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P022,22,BOUND_FROM_V1_8_CONTACT_OCR,App Intro,MEDIUM,CH11,DIGITAL_COMPANION,MAP_TO_LEGACY,ROLE_SPLIT_REVIEW,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P023,23,BOUND_FROM_V1_8_CONTACT_OCR,Scene,LOW,CH12,KEY_SCENE_INTEGRATION,EXPAND_FROM_LEGACY,SCENE_ID_RECOVERY_REQUIRED,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P024,24,BOUND_FROM_V1_8_CONTACT_OCR,Audience Depth,HIGH,CH04,AUDIENCE_USE_STATE,MAP_TO_LEGACY,PROVISIONAL_BIND,CH12,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P025,25,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P026,26,BOUND_FROM_V1_8_CONTACT_OCR,App Demo,HIGH,CH11,DIGITAL_COMPANION_DEMO,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P027,27,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P028,28,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P029,29,BOUND_FROM_V1_8_CONTACT_OCR,Memory / Opening Journal,HIGH,CH15,QINGJIANG_JOURNAL,MAP_TO_LEGACY,PROVISIONAL_BIND,CH19,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P030,30,BOUND_FROM_V1_8_CONTACT_OCR,Memory Augment,MEDIUM,CH15,MEMORY_COMPLEMENT,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,CH11,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P031,31,BOUND_FROM_V1_8_CONTACT_OCR,Memory Extension,MEDIUM,CH15,MEMORY_EXTENSION,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P032,32,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P033,33,BOUND_FROM_V1_8_CONTACT_OCR,General Assembly,MEDIUM,CH17,TECHNICAL_PROOF,MAP_TO_LEGACY,OBJECT_ID_RECOVERY_REQUIRED,CH16,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P034,34,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P035,35,BOUND_FROM_V1_8_CONTACT_OCR,R01 General Assembly,MEDIUM,CH17,TECHNICAL_PROOF,MAP_TO_LEGACY,PROVISIONAL_BIND,CH09|CH12,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P036,36,BOUND_FROM_V1_8_CONTACT_OCR,R02 Detail Atlas,LOW,CH17,TECHNICAL_DETAIL_PROOF,MAP_TO_LEGACY,OBJECT_ID_RECOVERY_REQUIRED,CH16,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P037,37,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P038,38,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P039,39,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P040,40,BOUND_FROM_V1_8_CONTACT_OCR,Motion Intro,HIGH,,PRESENTATION_MOTION,PROCESS-SUPPORT,PRESERVE_ID_PROCESS_ROLE,CH12|CH19,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P041,41,BOUND_FROM_V1_8_CONTACT_OCR,Digital Memory,HIGH,CH15,MY_BOOK_MEMORY_MODEL,MAP_TO_LEGACY,PROVISIONAL_BIND,CH11,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P042,42,BOUND_FROM_V1_8_CONTACT_OCR,Memory Extension,HIGH,CH15,MEMORY_EXTENSION,EXPAND_FROM_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P043,43,BOUND_FROM_V1_8_CONTACT_OCR,Tech Intro,HIGH,CH17,TECHNICAL_PROOF_INTRO,MAP_TO_LEGACY,PROVISIONAL_BIND,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P044,44,BOUND_FROM_V1_8_CONTACT_OCR,See also,MEDIUM,,CROSS_REFERENCE,PROCESS-SUPPORT,PRESERVE_ID_PROCESS_ROLE,,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P045,45,BOUND_FROM_V1_8_CONTACT_OCR,Scene Mounts,LOW,CH17,TECHNICAL_SCENE_PROOF,EXPAND_FROM_LEGACY,OWNER_REVIEW_REQUIRED,CH12|CH16,C04 Web v1.8 full 52-object contact,final canonical page content / final page count / Design PASS
+C04-WEB-P046,46,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P047,47,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P048,48,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P049,49,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P050,50,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P051,51,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
+C04-WEB-P052,52,SOURCE_RECOVERY_REQUIRED,,,,,PRESERVE,SOURCE_RECOVERY_REQUIRED,,Protected baseline identity,final canonical page content / final page count / Design PASS
