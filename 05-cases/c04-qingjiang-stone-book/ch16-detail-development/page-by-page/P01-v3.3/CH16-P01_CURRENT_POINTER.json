@@ -1,0 +1,36 @@
+{
+  "schema": "oleander.c04.ch16.page-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "current_revision": "v3.3",
+  "state": "EXECUTED / INDEPENDENT DESIGN REVIEW PENDING",
+  "presentation_mode": "RESOURCE_LED / INTERACTION_ENHANCED",
+  "primary_resource": {
+    "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+    "binding": "REUSE_CURRENT_DERIVED_RESOURCE",
+    "fit": "CONTAIN",
+    "crop": "FORBIDDEN"
+  },
+  "visible_artifacts": {
+    "html": "CH16-P01_v3_3_RESOURCE_STAGE.html",
+    "interaction_contract": "CH16-P01_v3_3_INTERACTION_CONTRACT.json",
+    "plan": "CH16-P01_v3_3_RESOURCE_LED_INTERACTION_PLAN.md"
+  },
+  "interaction_states": ["CLEAN", "BODY", "ASSEMBLY", "SERVICE"],
+  "display_source_rule": "ODB-02 NOT DISPLAYABLE IN CH16",
+  "source_identity_boundary": "P02 v1.2 IS A DERIVED CURRENT TECHNICAL RESOURCE; IT DOES NOT REPLACE ODB-02 AS UPSTREAM DESIGN SOURCE",
+  "review": {
+    "producer_state": "EXECUTED",
+    "browser_readback": "PENDING",
+    "machine_qc": "PENDING",
+    "independent_design_review": "PENDING",
+    "keep_class_verdict": "NOT ASSIGNED"
+  },
+  "supersedes": [
+    "v3.2 static three-frame weighting",
+    "v3.1 original-board support-display permission",
+    "v3.0 direct original-board carrier",
+    "v2.0 generic abstract action replacement"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
