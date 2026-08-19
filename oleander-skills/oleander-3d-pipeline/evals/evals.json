@@ -12,6 +12,54 @@
       "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
       "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "在 Blender 5.2 LTS 里做同一产品的五种 CMF 对比。要求结果可作为设计判断证据，但不能把 roughness、IOR 或 micro-normal 当成真实材料测量。",
+      "expected_output": "A controlled CMF comparison route that locks geometry, camera, light rig, color pipeline, render engine/device, identifies representation parameters, retains render/readback evidence, and leaves physical material truth outside the PASS.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Blender 5.2 的 Online Asset Library 里用了一个 HDRI 和一个材质，离线交付时网络断开。判断能不能 Promotion，并给出修复路径。",
+      "expected_output": "FAIL/HOLD for network-only required dependencies; materialize recoverable assets where allowed, record source/library identity, create dependency manifest, reopen offline, and do not treat packing as ownership transfer or proof that every dependency is included.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "用 Blender 5.2 Geometry Nodes 的 cloth dynamics 做软包产品压陷动画，并证明这个结构符合人体工学和量产要求。",
+      "expected_output": "Allow bounded visual/form exploration but reject promotion to ergonomic, engineering, or manufacturing truth; record solver/runtime/input/cache state and retain the evaluated carrier as derived evidence only.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "一个 911 参考复现模型在最终 SubD 结果上已经很密，但 Source cage 很稀。审查者要求为了达到 vertex 数门槛继续给 Source 加点。",
+      "expected_output": "Separate Source control density from evaluated-surface sampling and design quality; measure the final evaluated carrier, avoid source densification unless representation causality requires it, and route remaining fidelity failure back to the semantic surface relation.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "同一 Blender 文件一组图用 AgX，一组图用 ACES 2.0，然后直接比较哪个材质更高级。",
+      "expected_output": "Reject the comparison because the color pipeline drift invalidates causal material comparison; record working/display/view/output spaces and rerun under one locked pipeline unless color management itself is the test variable.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "用户要 Blender 直接输出 STEP 给结构工程师。当前环境没有任何 STEP 插件，但项目技能里一般写了 STEP/IGES。",
+      "expected_output": "HOLD_IO_OPERATOR_UNAVAILABLE: verify an actual installed bridge/add-on or route through a CAD tool; do not infer native Blender STEP support from the generic pipeline format list; declare semantic loss and round-trip requirements.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "为了让两版曲面差异更明显，一版 Cycles 关 denoise，另一版开强 denoise 并加 compositor glare。这样能不能作为 Surface PASS 证据？",
+      "expected_output": "Reject as uncontrolled diagnostic evidence; keep render engine, device, denoise/postprocess and color pipeline locked, and forbid post-processing that conceals or exaggerates the defect being judged.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "把一个 Blender 4.5 LTS 的长期项目迁移到 5.2 LTS。文件能打开，是否可以直接覆盖旧文件并宣布迁移完成？",
+      "expected_output": "No. Preserve the last-known-good source, create a migration revision, read back geometry/modifiers/nodes/libraries/materials/color management/cameras/simulations/I-O, record version/runtime changes, and only pass the migration gate after semantic drift checks.",
+      "files": []
     }
   ]
 }
