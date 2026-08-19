@@ -58,6 +58,24 @@
       "reuse_lock": "LOCKED_TO_CH13-01_UNTIL_EXPLICIT_RELEASE",
       "release_reason": null,
       "does_not_prove": ["FIELD_TRUTH", "ENGINEERING_VALIDITY", "DESIGN_PASS"]
+    },
+    {
+      "asset_id": "IMG-C04-C22-MACRO-01",
+      "semantic_image_id": "IMG-C04-C22-MACRO-01",
+      "parent_source_id": "ESLY-2023-08-09-nb983qsaoo",
+      "source_file": "C22_QINGJIANG_CABLE_PEAK_SOURCE_nb983qsaoo.jpg",
+      "source_hash": "9c68159a8897f33373e3d41f4347e071b8d2860958df84e41a682aa79d69cc2f",
+      "source_url": "https://www.eslygroup.com/uploadfile/image/20230809/nb983qsaoo.jpg",
+      "source_materialization": "Official HTTP image fetched by Google Docs insertInlineImage and exported; source_hash is the exact persisted 850x567 JPEG used by C22, not a claim about the website original byte hash.",
+      "consumer_project": "PRJ-C04-QINGJIANG-SHISHU",
+      "consumer_owner": "C22",
+      "consumer_unit_id": "C22-CONCEPT-MASTERPLAN",
+      "page_or_surface": "C22 CH14 v4.7 PRODUCER REVIEW TARGET",
+      "role": "PRIMARY_MACRO_QINGJIANG_CABLE_PEAK_FIELD",
+      "state": "RESERVED",
+      "reuse_lock": "LOCKED_TO_C22_CONCEPT_MASTERPLAN_UNTIL_EXPLICIT_RELEASE",
+      "release_reason": null,
+      "does_not_prove": ["WEBSITE_ORIGINAL_BYTE_HASH", "FIELD_TRUTH", "SURVEY_ALIGNMENT", "DESIGN_PASS", "RIGHTS_CLEARANCE"]
     }
   ],
   "derivative_identity_rule": "CROP_RESIZE_RECOLOR_MASK_CONTOUR_SCREENSHOT_FRAME_EXTRACTION_AND_OTHER_PRESENTATION_DERIVATIVES_INHERIT_SEMANTIC_IMAGE_ID",
