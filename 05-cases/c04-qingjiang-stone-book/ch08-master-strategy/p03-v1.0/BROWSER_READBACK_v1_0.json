@@ -1,0 +1,66 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P03",
+  "version": "v1.0",
+  "method": {
+    "browser": "Chromium headless via Playwright",
+    "execution": "page.set_content with exact authored HTML and final CSS rules",
+    "live_navigation_browser_pass": false,
+    "live_navigation_reason": "runtime administrator blocks direct file / localhost / raw navigation"
+  },
+  "r0": {
+    "defect": "Desktop H1 internally wrapped despite the authored semantic break: '不是每次停 / 下，/ 都要变成内 / 容。'.",
+    "disposition": "REVISE before review target"
+  },
+  "r1_repair": {
+    "desktop_hero_columns": "minmax(600px,.84fr) / minmax(700px,1.16fr)",
+    "desktop_h1": "clamp(58px,4.35vw,72px)",
+    "result": "desktop H1 resolves as two deliberate lines: 不是每次停下， / 都要变成内容。"
+  },
+  "readback": {
+    "desktop_1920x1080": {
+      "inner_width": 1920,
+      "scroll_width": 1920,
+      "horizontal_overflow": 0,
+      "scroll_height": 3414,
+      "article_count": 1,
+      "h1_count": 1,
+      "image_count": 0,
+      "console_errors": 0,
+      "page_errors": 0
+    },
+    "mobile_390x844": {
+      "inner_width": 390,
+      "scroll_width": 390,
+      "horizontal_overflow": 0,
+      "scroll_height": 5267,
+      "article_count": 1,
+      "h1_count": 1,
+      "image_count": 0,
+      "console_errors": 0,
+      "page_errors": 0
+    }
+  },
+  "local_pixel_evidence": {
+    "desktop_viewport_final.png": {"bytes": 201688, "sha256": "ef9198929e46af7f2759030d6a3cfbae9875b4e1b04646c6f78779e69eb90878"},
+    "desktop_full_final.png": {"bytes": 540096, "sha256": "1038291a960cbb3ac849b6190ab7bca101bf0318ec9435d1de8bedde531e2d59"},
+    "mobile_viewport_final.png": {"bytes": 90235, "sha256": "8d688fec4ba1cec090ee07216ae2f0d9710e6346d7237e46c8734b2f0e269b19"},
+    "mobile_full_final.png": {"bytes": 433493, "sha256": "e807ee29e36f82ceafdf08be5541da60886ebbaaa6fc4e45fb9e7cfdfb798526"},
+    "durable_repository_binary_persistence": "OPEN"
+  },
+  "static_checks": {
+    "scripts": 0,
+    "generated_content_images": 0,
+    "external_runtime_dependencies": 0,
+    "final_web_page_id_invented": false,
+    "fixed_dwell_time_threshold": false,
+    "fatigue_score": false,
+    "behavior_surveillance_claim": false,
+    "route_geometry_created": false,
+    "truth_boundary_present": true,
+    "reduced_motion_rule_present": true
+  },
+  "status": "R1 ACTUAL PIXEL READBACK COMPLETE VIA DOM INJECTION / LIVE-NAVIGATION + REVIEW-BINARY PERSISTENCE OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
