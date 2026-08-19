@@ -1,0 +1,307 @@
+{
+  "receipt_id": "EXR-20260819-IMAGE-CONSUMPTION-CURRENT",
+  "status": "CLOSED",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "existing-visual-authority-image-consumption-current",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "OLEANDER cross-project visual execution governance + PRJ-C04-QINGJIANG-SHISHU project instance",
+    "source_authority": "User explicit 2026-08-19 decision + Current T-VISUAL-IMAGE-OPS-001 + Current KN-METHOD-OLEANDER-SKILL-RESOLVER-001 + C04 Assets & Deliverables Register",
+    "design_authority": "NOT_APPLICABLE_GOVERNANCE_RUNTIME",
+    "canonical_ids": [
+      "T-VISUAL-IMAGE-OPS-001",
+      "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+      "PRJ-C04-QINGJIANG-SHISHU"
+    ],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.2",
+    "github_commit_or_ref": "main@5c2b545eb330a817f1808eda1f236f195817f032"
+  },
+  "constraint_lock": {
+    "resolved_from": [
+      "LATEST_EXPLICIT_USER_INSTRUCTION",
+      "CURRENT_OLEANDER_RESOLVER",
+      "CURRENT_IMAGE_PROCESSING_TOOL",
+      "CURRENT_C04_ASSET_REGISTER"
+    ],
+    "inheritance_state": "ENFORCED_THROUGH_TASK_COMPLETION",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-20260819-IMG-001",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_FRAMEWORK",
+        "source": "User asked to add the rule into the existing OLEANDER project rather than create another parallel method/framework.",
+        "scope": "CURRENT_GOVERNANCE_MUTATION",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_FRAMEWORK"
+      },
+      {
+        "constraint_id": "CSTR-20260819-IMG-002",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "Existing narrower C04/Web uniqueness behavior and Current Image Processing TOOL/Resolver were required to be extended rather than replaced.",
+        "scope": "CURRENT_GOVERNANCE_MUTATION",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-20260819-IMG-003",
+        "constraint_type": "PROCESS_REQUIRE",
+        "normalized_rule": "FULL_OLEANDER_FLOW_REQUIRED",
+        "source": "User requires OLEANDER changes to follow the complete real execution loop rather than verbal agreement.",
+        "scope": "CURRENT_GOVERNANCE_MUTATION",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-20260819-IMG-004",
+        "constraint_type": "REVIEW_REQUIRE",
+        "normalized_rule": "NO_PRODUCER_SELF_PROMOTION",
+        "source": "Governance validation may close execution/evidence state but may not claim Professional Design PASS or project Promotion.",
+        "scope": "CURRENT_GOVERNANCE_MUTATION",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_REVIEW_BOUNDARY"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": [],
+    "output_deny": [],
+    "creation_deny": [
+      "CREATE_PARALLEL_VISUAL_GOVERNANCE_FRAMEWORK",
+      "CREATE_NEW_SKILL_FOR_IMAGE_CONSUMPTION",
+      "CREATE_NEW_NOTION_METHOD_FOR_IMAGE_CONSUMPTION"
+    ],
+    "required_behaviors": [
+      "EXTEND_CURRENT_IMAGE_PROCESSING_TOOL",
+      "EXTEND_CURRENT_RESOLVER_AND_RECEIPT",
+      "CREATE_PROJECT_CONSUMPTION_LEDGER",
+      "ADD_MACHINE_VALIDATOR_AND_CI",
+      "BRANCH_COMMIT_PR_CI_MERGE_MAIN_READBACK_NOTION_WRITEBACK"
+    ]
+  },
+  "required_native_output": {
+    "artifact_class": "oleander_visual_asset_allocation_governance",
+    "native_format": "Markdown+JSON+Python+JSONL+GitHubActions+NotionCurrentWriteback",
+    "editable_required": true,
+    "target_runtime": "GitHub main + AI Governance workflow + Notion Current knowledge + C04 project ledger",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "runtime-governance",
+    "nodes": [
+      {"owner_id": "runtime-governance", "role": "PRIMARY_OWNER"},
+      {"owner_id": "T-VISUAL-IMAGE-OPS-001", "role": "READ_ONLY_CONSUMER"},
+      {"owner_id": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001", "role": "READ_ONLY_CONSUMER"},
+      {"owner_id": "validate_image_consumption.py", "role": "VALIDATOR"},
+      {"owner_id": "validate_execution_locks.py", "role": "VALIDATOR"}
+    ],
+    "omitted_owner_reasoning": "No design-production Skill or image-generation owner was required. This task extends existing governance/runtime and project asset allocation only."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "NOT_APPLICABLE",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "PASS",
+      "REGRESSION_AS_APPLICABLE": "PASS",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PASS"
+    },
+    "phase_reasons": {
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "The governance mutation itself binds no semantic content image; it defines and validates the check for future visual executions.",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "This is a non-design governance/runtime change. No visual artifact, design candidate, Skill or METHOD is promoted to Professional Design PASS. Machine CI and live cross-platform readback close execution/evidence state only."
+    },
+    "incomplete_required_phases": [],
+    "completion_gate": "PASS",
+    "completion_claim_allowed": true
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-OLEANDER-IMAGE-CONSUMPTION-CURRENT",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "runtime-governance",
+      "authority_source": "User explicit image uniqueness decision + Current Image Processing TOOL + Current Resolver + C04 Assets Register",
+      "authority_state": "CURRENT",
+      "native_format": "Markdown+JSON+Python+JSONL+GitHubActions",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": [
+        "existing_visual_authority",
+        "semantic_image_identity",
+        "consumer_unit",
+        "reservation_consumption_release_states",
+        "derivative_identity_inheritance",
+        "system_reusable_exception",
+        "same_source_paired_view_boundary",
+        "execution_receipt_binding",
+        "project_ledger",
+        "ci_validator"
+      ],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": [
+        "OLEANDER Current Root v1.1.1",
+        "T-VISUAL-IMAGE-OPS-001",
+        "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+        "Default Skill Resolver v1.2 implementation revision 1.2.2",
+        "Execution Receipt v1.0 policy revision 1.1",
+        "PRJ-C04-QINGJIANG-SHISHU Assets & Deliverables Register"
+      ],
+      "hashes_or_commit": [
+        "463a4e5c22080b1fb1205bf9eb10e547684bc3f3",
+        "5c2b545eb330a817f1808eda1f236f195817f032"
+      ],
+      "runtime": "GitHub main + GitHub Actions + live Notion Current readback",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "CURRENT",
+      "does_not_prove": ["design_quality", "rights_clearance", "field_truth", "project_promotion"]
+    }
+  ],
+  "image_consumption": {
+    "register_path_or_authority": "00-governance/runtime/OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.json",
+    "lookup_performed": false,
+    "reservations_or_consumptions": [],
+    "conflicts": [],
+    "blocked_assets": [],
+    "release_actions": [],
+    "verdict": "NOT_APPLICABLE",
+    "reason": "This governance/runtime execution does not bind semantic content imagery; it defines the gate and seeds the C04 ledger."
+  },
+  "tool_adapters": [],
+  "execution": {
+    "runtime": "GitHub branches/PRs/Actions + live Notion Current updates/readback",
+    "entrypoint_or_action": "Extend the existing Current Image Processing TOOL, Current Resolver and Execution Receipt with semantic-image consumption governance; add machine register, C04 ledger, regression corpus, validator and CI binding; close Current states and cross-platform writeback.",
+    "result": "MERGED_VALIDATED_CURRENT_AND_CROSS_PLATFORM_ALIGNED",
+    "failures": [
+      "Initial adoption merge left the newly added global register and C04 project ledger with candidate-state labels even though the Current Resolver already referenced the register."
+    ],
+    "repairs": [
+      "PR #321 promoted the global register to ACTIVE_CURRENT and C04 ledger to CURRENT_PROJECT_REGISTER.",
+      "validate_image_consumption.py was hardened to reject candidate-state registers/ledgers being treated as Current.",
+      "PR #319 and PR #321 both executed the AI Governance image-consumption validator successfully."
+    ]
+  },
+  "readback": {
+    "target": "GitHub main Resolver 1.2.2 + Global Image Consumption Register + C04 Image Consumption Ledger + live Notion Image Ops/Resolver/C04 Assets Register",
+    "runtime": "GitHub main file readback + GitHub Actions job-step readback + Notion Current page updates/readback",
+    "observed_result": "GitHub main confirms Resolver v1.2 implementation revision 1.2.2 ACTIVE_CURRENT; Global Image Consumption Register v1.0 ACTIVE_CURRENT; C04 Image Consumption Ledger v1.0 CURRENT_PROJECT_REGISTER. AI Governance step 'Validate existing visual authority and image consumption' completed SUCCESS on PR #319 and PR #321. Notion Current Image Processing TOOL, Skill Resolver and C04 Assets Register contain the same gate and current merge pointers.",
+    "blocking_defects": ["NONE_REMAINING"],
+    "nonblocking_defects": ["Historical D Hero duplicate use remains preserved as LEGACY_MULTI_CONSUMED provenance and is locked from further use rather than retroactively deleted."],
+    "verdict": "PASS"
+  },
+  "regression": {
+    "STRUCTURAL": {
+      "result": "PASS",
+      "assertions": [
+        "No new design Skill or Notion METHOD created",
+        "Current Resolver remains v1.2 with implementation revision 1.2.2",
+        "Global register is ACTIVE_CURRENT",
+        "C04 ledger is CURRENT_PROJECT_REGISTER",
+        "Execution Receipt remains v1.0 policy revision 1.1 with bounded image-consumption extension"
+      ]
+    },
+    "SEMANTIC": {
+      "result": "PASS",
+      "assertions": [
+        "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
+        "reservation blocks parallel reuse before layout production",
+        "crop/recolor/mask/screenshot/contour derivatives inherit semantic identity",
+        "SYSTEM_REUSABLE is limited to explicit non-content system assets",
+        "same-source paired view shares one consumer unit only",
+        "release requires explicit project authority",
+        "object integrity precedes frame/layout"
+      ]
+    },
+    "VISUAL_ROI": {
+      "result": "NOT_APPLICABLE",
+      "assertions": ["Governance/runtime task has no visual design artifact"]
+    },
+    "RUNTIME": {
+      "result": "PASS",
+      "assertions": [
+        "PR #319 AI Governance Evals SUCCESS run 2427",
+        "PR #319 image-consumption step SUCCESS",
+        "PR #321 AI Governance Evals SUCCESS run 2430",
+        "PR #321 image-consumption step SUCCESS",
+        "PR #321 C04 F Integration Loop SUCCESS",
+        "PR #321 C04 Six-lane Orchestration Controls SUCCESS",
+        "PR #321 OLEANDER Blender Runtime Contract SUCCESS",
+        "GitHub main Current-state readback PASS",
+        "Notion Current writeback PASS"
+      ]
+    },
+    "overall": "PASS"
+  },
+  "review": {
+    "producer_id": "runtime-governance execution",
+    "reviewer_id": "NOT_REQUIRED_FOR_NON_DESIGN_GOVERNANCE_CHANGE",
+    "review_input_artifact_id": "ART-OLEANDER-IMAGE-CONSUMPTION-CURRENT",
+    "review_input_hash_or_commit": "5c2b545eb330a817f1808eda1f236f195817f032",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "No Professional Design PASS, Skill/METHOD promotion, rights approval, field/engineering approval or project Promotion is granted by this governance change."
+  },
+  "drift": {
+    "mode": "LIVE_CROSS_PLATFORM_CHECK",
+    "state": "CURRENT",
+    "evidence": [
+      "GitHub main Resolver v1.2 implementation revision 1.2.2 readback",
+      "GitHub main Global Image Consumption Register ACTIVE_CURRENT readback",
+      "GitHub main C04 Image Consumption Ledger CURRENT_PROJECT_REGISTER readback",
+      "Live Notion T-VISUAL-IMAGE-OPS-001 runtime closure writeback",
+      "Live Notion KN-METHOD-OLEANDER-SKILL-RESOLVER-001 runtime closure writeback",
+      "Live Notion C04 Assets & Deliverables Register runtime closure writeback"
+    ]
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": [
+      "agent/oleander-asset-consumption-v1",
+      "agent/oleander-asset-consumption-closure-v1"
+    ],
+    "commits": [
+      "78829b968deafd7949f167e9276d8c1533a5eb07",
+      "e2f15b56c379ea19a205e37bb698d0cfe597c8c2"
+    ],
+    "pull_request": [319, 321],
+    "ci_state": "SUCCESS",
+    "merge_commit": [
+      "463a4e5c22080b1fb1205bf9eb10e547684bc3f3",
+      "5c2b545eb330a817f1808eda1f236f195817f032"
+    ],
+    "main_readback": "PASS",
+    "notion_writeback": "PASS — Current Image Processing TOOL, Skill Resolver and C04 Assets Register updated with gate semantics, Current runtime status, merged PR/commit pointers and C04 locks.",
+    "remaining_blockers": ["NONE_REMAINING_FOR_GOVERNANCE_ADOPTION"],
+    "final_state": "MERGED_VALIDATED_CURRENT_LIVE_DRIFT_CURRENT_FULL_FLOW_COMPLETE"
+  },
+  "does_not_prove": [
+    "project_state",
+    "professional_design_pass",
+    "field_truth",
+    "engineering_validity",
+    "user_validation",
+    "rights_clearance",
+    "project_promotion"
+  ]
+}
