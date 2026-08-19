@@ -1,25 +1,25 @@
-# C04 App v1.30 — Shuimo Game Rebuild Candidate
+# C04 App v1.30 — UNFINISHED / WIP / PROVENANCE ONLY
 
-Leading producer candidate on PR #255. v1.29 remains HISTORY / provenance.
+**Status changed 2026-08-19 by user direction. This App candidate is unfinished. It must not be treated as a completed design candidate, Current, MAIN, KEEP, or Professional Design PASS.**
 
-## Why rebuild
-v1.29 added texture but still carried two structural defects: the mobile identity used an invented runtime-built substitute rather than the Web CH14 project Logo asset, and the visual layer expected `SEEK / APPROACH` while JS still emitted `INTENT / SCOUT`, weakening the first two exploration stages.
+The branch is retained only as recoverable work-in-progress provenance while the App direction is re-baselined.
 
-## v1.30
-- actual Web CH14 01–07 finished carrier is the visual basis;
-- fake Logo removed; exact Web CH14 Stone Seal binding is OPEN and fails invisible when bytes are missing;
-- canonical exploration grammar is `SEEK → APPROACH → FOCUS → ENTER → REVEAL → WITHDRAW → RETURN`;
-- ROUTE / R06 / R13 are world-first, with optional PAGE reveal subordinate to the scene;
-- ROUTE-03 remains locked and unmodified;
-- ink/paper layers are non-evidence, replaceable material assets;
-- no XP, coins, 13/13 completion, neon/glow, glass HUD wall, or second route geometry.
+## Why it is unfinished
+- Current pixels still read primarily as an editorial / ink-material App rather than the intended complete game-grade interaction experience.
+- Interaction, light, motion, spatial response and state feedback are not yet sufficiently authored as one continuous playable/interactive system.
+- Web CH14 visual binding remains incomplete at the actual asset level; the exact project Stone Seal asset is not materialized in this runtime.
+- Runtime correctness and the existing exploration-state implementation do not establish finished-pixel quality.
 
-Runtime evidence: 390×844 and 430×932 no recorded page/JS errors in tested paths, no horizontal overflow, minimum visible target 44×44, keyboard route pan +40px, Return interrupt verified; Reduced Motion running animations = 0.
+## Preserved technical work
+- `ROUTE-03 = LOCKED CURRENT`; no route geometry mutation.
+- v1.26 fail-closed/setup/Offline Prep/Return Guard/Digital OFF/Reduced Motion lineage remains provenance.
+- v1.27 four-primary navigation and route-child hierarchy remains provenance.
+- game-interaction grammar research remains provenance, not a finished result.
+- wrong runtime-built pseudo Logo was removed rather than retained.
 
-Exact local canonical source: 453,936 bytes / SHA256 `7e5b5a246949ce5faf404319499ee2c2c4950a085d45d341bd7fa3ad3ff4fe12`.
+## Explicit gate
+`APP_STATUS = UNFINISHED / WIP / DO_NOT PROMOTE`
 
-The mixed binary package is receipt-tracked in the local recoverable handoff and in the PR/Notion current record. Its mutable sync/package receipt is intentionally not embedded here to avoid self-referential package-hash churn.
-
-`INDEPENDENT FINISHED-PIXEL DESIGN REVIEW = REQUIRED`.
+`INDEPENDENT FINISHED-PIXEL DESIGN REVIEW = NOT READY`
 
 `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / STATUS UNKNOWN`.
