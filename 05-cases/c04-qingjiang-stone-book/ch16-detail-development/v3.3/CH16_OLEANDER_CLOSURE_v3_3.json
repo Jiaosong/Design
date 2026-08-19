@@ -1,0 +1,56 @@
+{
+  "object": "C04-CH16",
+  "version": "v3.3",
+  "authority": {
+    "current_material": "CH16｜设计深化与细节｜Current Material",
+    "github": "chapter-content-sync/v0.2/CH16_DESIGN-DETAIL-DEVELOPMENT.md",
+    "page_grammar": "USE → GEOMETRY / STATE → MATERIAL / INTERFACE → CONNECTION → MAINTENANCE / OPEN ITEM"
+  },
+  "oleander_gates": {
+    "AR-G01_G09_compliance": "PASS",
+    "AR-G10_actual_preview": "EXECUTED / PRODUCER READBACK",
+    "AR-S01_drawing_objective": "PASS",
+    "AR-S06_visual_cmf_objective": "PASS",
+    "AR-S08_presentation_objective": "PASS",
+    "AR-S09_package_local": "PASS",
+    "independent_professional_design_gate": "HOLD / REVIEWER PROVENANCE UNAVAILABLE",
+    "promotion": "FORBIDDEN UNTIL INDEPENDENT REVIEW"
+  },
+  "objective_checks": {
+    "pages": [
+      {"page":"CH16-P01","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":11028,"png_bytes":1406357,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P02","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":7004,"png_bytes":798872,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P03","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":6874,"png_bytes":882475,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P04","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":8765,"png_bytes":748821,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P05","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":8179,"png_bytes":669403,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P06","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":7647,"png_bytes":647762,"grayscale_exists":true,"compact50_exists":true},
+      {"page":"CH16-P07","svg_parse":"PASS","png_size":[1920,1080],"svg_bytes":9079,"png_bytes":796071,"grayscale_exists":true,"compact50_exists":true}
+    ],
+    "semantic": {
+      "all_field_boundary": true,
+      "p01_actions_bound": true,
+      "p01_dimensions": true,
+      "p02_no_false_site_survey": true,
+      "p03_parent_d01": true,
+      "p04_role_first": true,
+      "p05_registered_child": true,
+      "p05_escalation": true,
+      "p06_failure_modes": true,
+      "p07_handoff": true,
+      "no_construction_promotion": true
+    },
+    "browser": {
+      "desktop": {"metrics":{"sw":1920,"cw":1920,"sh":7756,"imgs":7,"broken":0},"errors":[],"overflow":0},
+      "mobile": {"metrics":{"sw":390,"cw":390,"sh":1606,"imgs":7,"broken":0},"errors":[],"overflow":0}
+    }
+  },
+  "blocking_defects": [],
+  "producer_observation": {
+    "first_read": "Each page now uses one dominant landscape/plan/section/exploded/detail object rather than equal-card dashboard composition.",
+    "template_residue": "No repeated dark dashboard cards; page roles vary by evidence carrier while retaining CH14 token grammar.",
+    "deletion_test": "Primary diagram/photo carries page claim; registers/notes are subordinate. No circular methodology infographic remains.",
+    "cross_page": "R06 support object and D01 registration remain continuous across P03/P05/P07; 1200/160/975 remain provisional and NTS.",
+    "portfolio_read": "Contact sheet and 50% readbacks preserve claim hierarchy; technical micro-copy is intentionally near-read."
+  },
+  "status": "PRODUCER-SIDE REVIEW CLOSED / INDEPENDENT PROFESSIONAL DESIGN GATE HOLD"
+}
