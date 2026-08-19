@@ -1,15 +1,22 @@
 # CH10 P01｜Current Page-by-Page Review Target
 
 Current producer review target:
-`p01-appearance-gate-v0.1/`
+`p01-resource-led-v0.2/`
 
-Public claim:
-`一页清江，不总是出现。`
+Superseded page target:
+`p01-appearance-gate-v0.1/ = REVISE / HISTORY`.
+
+Public proposition:
+`真实资源先拥有页面；内容只有在注意力允许时才出现。`
 
 Authority order:
 `CH08 v0.4 appearance qualification → CH10 v0.4 optional reading behavior → CH14 visual reference only`.
 
-Status:
-`EXECUTED / ACTUAL PIXELS REOPENED / GATE 1 SCOPED WITH AR-S09 OPEN / GATE 2 INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
+Resource hierarchy:
+`WHOLE QINGJIANG → RELATION / CABLE → BODY / RECOVER → OPTIONAL READING WHEN EARNED`.
 
-The previous whole-chapter `v0.3` P01 variable-folio surface is HISTORY for P01 and must not be used as the current P01 review target.
+Status:
+`EXECUTED / ACTUAL PIXELS REOPENED / ARTIFACT REVIEW EXECUTED / PAGE-SCOPED GITHUB REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
+
+Open integrated-Web gate:
+`whole-project image/resource uniqueness + durable binary retrieval`.
