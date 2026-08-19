@@ -40,7 +40,8 @@ To avoid connector truncation, the exact source/review tar.gz is persisted as fo
 
 Combined base64 length = `22484`; decoded bundle bytes = `16862`; decoded tar.gz SHA256 = `a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102`. Local Git blob hashes for all four parts match the persisted GitHub blob hashes exactly. `REASSEMBLE.py` enforces length + SHA before extraction.
 
-Local complete review package:
-`C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`.
+Latest local review wrapper:
+`C04_CH01_WEB_v1.9_CH14_EDITORIAL_REVIEW.zip` / `3,506,941 bytes` / SHA256 `1af19cd7a0ec5117308735ab3d02f977084fb06078e76c103923c490142e1b9a`.
+This wrapper refresh only adds corrected persistence/readback metadata; the reviewed HTML/CSS/pixels are unchanged.
 
 Whole-project Web image-consumption / uniqueness PASS remains a separate project-level gate. CH01 v1.9 allocates no raster content-image source.
