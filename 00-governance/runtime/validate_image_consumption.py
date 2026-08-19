@@ -43,6 +43,8 @@ def validate_resolver() -> dict:
     r = load_json(RESOLVER)
     if r.get("version") != "1.2" or r.get("implementation_revision") != "1.2.2":
         fail("Current resolver must be v1.2 implementation revision 1.2.2")
+    if r.get("status") != "ACTIVE_CURRENT":
+        fail("Current resolver must remain ACTIVE_CURRENT")
     pointer = r.get("execution_contract_layer", {}).get("image_consumption_register")
     if pointer != "00-governance/runtime/OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.json":
         fail("resolver must bind the Current image-consumption register")
@@ -67,16 +69,13 @@ def validate_register() -> dict:
     reg = load_json(REGISTER)
     if reg.get("version") != "1.0":
         fail("image-consumption register must be v1.0")
+    if reg.get("status") != "ACTIVE_CURRENT":
+        fail("image-consumption register must be ACTIVE_CURRENT")
     if reg.get("core_rule") != "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT":
         fail("register core rule mismatch")
     states = set(reg.get("states", []))
     expected_states = {
-        "AVAILABLE",
-        "RESERVED",
-        "CONSUMED",
-        "RELEASED",
-        "REJECTED_NOT_ELIGIBLE",
-        "LEGACY_MULTI_CONSUMED",
+        "AVAILABLE", "RESERVED", "CONSUMED", "RELEASED", "REJECTED_NOT_ELIGIBLE", "LEGACY_MULTI_CONSUMED",
     }
     if not expected_states.issubset(states):
         fail(f"register states incomplete: {sorted(expected_states - states)}")
@@ -112,12 +111,9 @@ def validate_cases(reg: dict) -> None:
     if len(rows) < 6:
         fail("image-consumption regression corpus must have at least six cases")
     required_ids = {
-        "IMG-001-DUPLICATE-CONSUMER-BLOCK",
-        "IMG-002-CROP-LAUNDERING-BLOCK",
-        "IMG-003-SAME-CONSUMER-PAIRED-ALLOW",
-        "IMG-004-SYSTEM-REUSABLE-ALLOW",
-        "IMG-005-EXPLICIT-RELEASE-ALLOW",
-        "IMG-006-REJECTED-IMAGE-BLOCK",
+        "IMG-001-DUPLICATE-CONSUMER-BLOCK", "IMG-002-CROP-LAUNDERING-BLOCK",
+        "IMG-003-SAME-CONSUMER-PAIRED-ALLOW", "IMG-004-SYSTEM-REUSABLE-ALLOW",
+        "IMG-005-EXPLICIT-RELEASE-ALLOW", "IMG-006-REJECTED-IMAGE-BLOCK",
     }
     ids = {r.get("case_id") for r in rows}
     if not required_ids.issubset(ids):
@@ -131,6 +127,8 @@ def validate_cases(reg: dict) -> None:
 
 def validate_ledger(path: Path, reg: dict) -> dict:
     ledger = load_json(path)
+    if ledger.get("status") != "CURRENT_PROJECT_REGISTER":
+        fail(f"{path.name} must be CURRENT_PROJECT_REGISTER")
     if ledger.get("global_rule") != reg.get("core_rule"):
         fail(f"{path.name} global rule mismatch")
     records = ledger.get("records")
@@ -158,9 +156,8 @@ def validate_ledger(path: Path, reg: dict) -> dict:
                 fail(f"same child_hash assigned to different semantic identities: {prior} vs {rec['semantic_image_id']}")
             seen_child_hash[child_hash] = rec["semantic_image_id"]
 
-        if rec["state"] in {"RESERVED", "CONSUMED"}:
-            if not (rec.get("consumer_unit_id") or rec.get("consumers")):
-                fail(f"{path.name}:{rec['asset_id']} {rec['state']} requires consumer identity")
+        if rec["state"] in {"RESERVED", "CONSUMED"} and not (rec.get("consumer_unit_id") or rec.get("consumers")):
+            fail(f"{path.name}:{rec['asset_id']} {rec['state']} requires consumer identity")
         if rec["state"] == "LEGACY_MULTI_CONSUMED" and len(rec.get("consumers", [])) < 2:
             fail(f"{path.name}:{rec['asset_id']} legacy multi-consumed requires 2+ consumers")
         if rec["state"] == "REJECTED_NOT_ELIGIBLE" and "DO_NOT_REUSE" not in rec["reuse_lock"]:
@@ -173,15 +170,12 @@ def validate_c04(ledger: dict) -> None:
     required = {"IMG-C04-D-HERO-01", "IMG-C04-F01-SCENIC-01", "IMG-C04-PHYS-RECOVERY-TECH-01"}
     if not required.issubset(by_id):
         fail(f"C04 seed ledger missing {sorted(required - set(by_id))}")
-
     hero = by_id["IMG-C04-D-HERO-01"]
     if hero.get("state") != "LEGACY_MULTI_CONSUMED" or hero.get("reuse_lock") != "LOCKED_NO_FURTHER_USE":
         fail("C04 D Hero must be legacy-multi-consumed and locked from further use")
-
     scenic = by_id["IMG-C04-F01-SCENIC-01"]
     if scenic.get("state") != "REJECTED_NOT_ELIGIBLE" or scenic.get("reuse_lock") != "DO_NOT_REUSE":
         fail("C04 F01 scenic image must be rejected/not eligible")
-
     tech = by_id["IMG-C04-PHYS-RECOVERY-TECH-01"]
     if tech.get("state") != "RESERVED" or tech.get("consumer_unit_id") != "CH13-01":
         fail("C04 Physical Recovery technical figure must be reserved to CH13-01")
@@ -197,6 +191,7 @@ def main() -> None:
     print("existing visual authority: ENFORCED")
     print("semantic image uniqueness: ENFORCED")
     print("derivative identity inheritance: ENFORCED")
+    print("Current register states: ENFORCED")
     print("C04 ledger: PASS")
 
 

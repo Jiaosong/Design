@@ -2,8 +2,10 @@
   "schema": "c04.image-consumption-ledger.v1",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "version": "1.0",
-  "status": "CURRENT_CANDIDATE_PROJECT_REGISTER",
+  "status": "CURRENT_PROJECT_REGISTER",
   "decision_date": "2026-08-19",
+  "current_since_pull_request": 319,
+  "current_since_merge_commit": "463a4e5c22080b1fb1205bf9eb10e547684bc3f3",
   "global_rule": "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
   "records": [
     {

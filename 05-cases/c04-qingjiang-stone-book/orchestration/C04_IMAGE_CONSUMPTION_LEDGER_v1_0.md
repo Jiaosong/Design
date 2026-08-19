@@ -1,8 +1,9 @@
 # C04 Image Consumption Ledger v1.0
 
-Status: **CURRENT CANDIDATE PROJECT REGISTER**  
+Status: **CURRENT PROJECT REGISTER**  
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
-Decision date: **2026-08-19**
+Decision date: **2026-08-19**  
+Current since: **OLEANDER PR #319 / merge `463a4e5c22080b1fb1205bf9eb10e547684bc3f3`**
 
 This project register applies the OLEANDER global rule:
 
@@ -30,7 +31,7 @@ Before any C04 visual-producing task binds a content image:
 
 1. derive or recover `semantic_image_id`;
 2. check this ledger by exact source hash, parent source, child crop/figure hash and semantic identity;
-3. if another consumer is `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED`, stop and select another image;
+3. if another consumer is `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE`, stop and select another image;
 4. reserve the new image **before** composing the surface;
 5. convert `RESERVED → CONSUMED` only when the project presentation use is selected/current;
 6. release only with explicit `REJECT / NOT ENTER PROJECT / SUPERSEDED AND RELEASED` authority.
