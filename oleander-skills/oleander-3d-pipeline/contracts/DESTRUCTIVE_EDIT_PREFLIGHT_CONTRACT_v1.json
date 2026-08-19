@@ -1,0 +1,29 @@
+{
+  "schema": "oleander.3d.destructive-edit-preflight-contract.v1",
+  "receipt_schema": "oleander.3d.destructive-edit-preflight-receipt.v1",
+  "required": [
+    "schema","host_id","host_state_class","operation","edit_scope","source_mutation_allowed",
+    "classifier_identity","classifier_dependencies","required_owner_ids","owner_coverage",
+    "multi_owner_conflicts","predicted_preservation_checks","preflight_result",
+    "destructive_edit_allowed","does_not_prove"
+  ],
+  "allowed_host_state_classes": ["DERIVED_EXECUTION","DERIVED_DIAGNOSTIC_NOT_AUTHORITY","SOURCE_OR_WORKING_SOURCE"],
+  "allowed_owner_states": [
+    "COVERED_EXCLUSIVE","COVERED_SHARED_BOUNDARY_EXPLICIT","MISSING_TARGET_COVERAGE","AMBIGUOUS_MULTI_OWNER","UNRESOLVED"
+  ],
+  "allowed_results": [
+    "PASS_DESTRUCTIVE_EDIT_ALLOWED",
+    "FAIL_DESTRUCTIVE_EDIT_BLOCKED_MISSING_TARGET",
+    "FAIL_DESTRUCTIVE_EDIT_BLOCKED_AMBIGUOUS_OWNER",
+    "FAIL_DESTRUCTIVE_EDIT_BLOCKED_PREDICTED_HOST_LOSS",
+    "HOLD_CLASSIFIER_EVIDENCE_UNRESOLVED"
+  ],
+  "hard_rules": [
+    "PASS_REQUIRES_ALL_REQUIRED_OWNERS_COVERED",
+    "PASS_REQUIRES_NO_UNRESOLVED_MULTI_OWNER_CONFLICT",
+    "PASS_REQUIRES_ALL_HARD_PREDICTED_PRESERVATION_CHECKS_PASS",
+    "FIRST_MATCH_CODE_ORDER_IS_NOT_OWNER_EVIDENCE",
+    "SOURCE_MUTATION_REQUIRES_EXPLICIT_PERMISSION",
+    "BLOCKED_PREFLIGHT_CANNOT_REPORT_DESTRUCTIVE_EDIT_ALLOWED"
+  ]
+}
