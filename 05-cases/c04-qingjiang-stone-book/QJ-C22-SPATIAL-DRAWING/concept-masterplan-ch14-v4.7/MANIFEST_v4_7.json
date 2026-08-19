@@ -25,16 +25,22 @@
     "1366x768": {"errors": [], "scale": 0.7111111111111111}
   },
   "image_generation": "NOT USED",
-  "image_reservation_pr": 332,
-  "gate": {
-    "actual_readback": "EXECUTED",
-    "image_allocation": "PR #332 OPEN / RESERVED DELTA",
-    "drawing_scoped_github_review": "PENDING",
-    "independent_design": "PENDING"
-  },
   "image_reservation": {
     "pr": 332,
-    "branch": "agent/c04-c22-image-reservation-v4-7-20260819",
-    "state": "OPEN_DRAFT"
+    "merge_commit": "6064f77981d7d83c32cf8f06be9ec7293f78841d",
+    "main_readback": "RESERVED / LOCKED_TO_C22_CONCEPT_MASTERPLAN_UNTIL_EXPLICIT_RELEASE"
+  },
+  "github_drawing": {
+    "pr": 324,
+    "review_id": 4973912357,
+    "review_action": "COMMENT / NOT APPROVE",
+    "head_before_manifest_close": "4eb7f2a523fa7d17124250dc7f1bb8d97fc37b17",
+    "ci": {"name": "AI Governance Evals", "run_number": 2632, "conclusion": "success"}
+  },
+  "gate": {
+    "actual_readback": "EXECUTED",
+    "image_allocation": "MERGED TO MAIN / RESERVED",
+    "drawing_scoped_github_review": "COMMENTED / NOT INDEPENDENT DESIGN VERDICT",
+    "independent_design": "PENDING"
   }
 }
