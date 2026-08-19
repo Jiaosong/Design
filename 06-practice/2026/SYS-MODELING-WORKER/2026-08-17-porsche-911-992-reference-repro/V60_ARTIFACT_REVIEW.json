@@ -1,0 +1,57 @@
+{
+  "schema": "oleander.artifact-review.3d-model-render.v1",
+  "artifact": "Porsche 911 Carrera 992.2 reference-reproduction benchmark",
+  "revision": "V60_GREENHOUSE_APERTURE_OWNERSHIP",
+  "review_system": "OLEANDER Artifact Review System v1.1",
+  "review_scope": ["AR-G10", "AR-S02_MODEL", "AR-S04_CODE_PARAMETRIC", "AR-S06_VISUAL_CMF", "PROFESSIONAL_DESIGN_GATE_MODEL_RENDERING"],
+  "runtime_evidence": {
+    "workflow_run": 32272321300,
+    "source_commit": "cef9c3c54d227c21152400799c05e84325d586b0",
+    "blender": "5.2.0 LTS",
+    "artifact_id": 9372698462,
+    "artifact_sha256": "35f638ee92549f5520a2f7f74529837e50bde5a23a767f81c7b2a71f987d5288"
+  },
+  "machine_execution": "PASS_COMMANDS_AND_RECEIPTS_EXIST",
+  "machine_geometry_gate": "FAIL_FALSE_POSITIVE_DETECTED_BY_ARTIFACT_REVIEW",
+  "observed_failure": {
+    "host_pre_vertices": 8762,
+    "host_pre_faces": 8760,
+    "after_side_L_faces": 8658,
+    "after_side_R_faces": 8556,
+    "after_windshield_faces": 8637,
+    "after_rear_glass_vertices": 115,
+    "after_rear_glass_faces": 96,
+    "host_face_retention_ratio_final": 0.010958904109589041,
+    "faulty_machine_rule": "BOOLEAN_APPLIED_AND_GEOMETRY_CHANGED_WAS_TREATED_AS_SUFFICIENT",
+    "why_invalid": "A destructive operation may execute successfully and change geometry while catastrophically deleting the host. Geometry-changed is not geometry-preserved."
+  },
+  "actual_preview_set": [
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__HERO_FRONT_3Q.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__HERO_REAR_3Q.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__SIDE_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__FRONT_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__REAR_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__TOP_FRONT_3Q.png"
+  ],
+  "professional_design_crit": {
+    "first_read": "REJECT: vehicle body is visibly disintegrated; wheels, greenhouse fragments and small body remnants float as separate visual pieces.",
+    "geometry_construction": "Catastrophic host deletion after rear-glass boolean. The aperture architecture cannot be reviewed because the host surface no longer exists at a credible scale.",
+    "cross_view_consistency": "Failure is geometric and global, not camera-specific.",
+    "verdict": "REJECT",
+    "root_cause": "DESTRUCTIVE_DERIVED_EDIT_HOST_PRESERVATION_NOT_GATED",
+    "root_cause_detail": "The V60 machine check verified modifier application and any geometry delta, but did not verify retained host topology/bounds after a local destructive edit. The rear-glass cutter therefore passed a false-positive gate while deleting approximately 99% of host faces."
+  },
+  "repair_route": "V61_RECALCULATE_CUTTER_NORMALS_AND_ADD_LOCAL_EDIT_HOST_RETENTION_GATE",
+  "protected": [
+    "V59_PRIMARY_BODY_SOURCE_AND_DIAGNOSTIC_CARRIER",
+    "V59_HOOD_FENDER_RELATION",
+    "V49_SPARSE_SOURCE_DENSITY",
+    "OFFICIAL_HARD_POINTS",
+    "AXLES",
+    "WHEEL_TYRE_PACKAGE"
+  ],
+  "reference_fidelity": "REJECT",
+  "design_quality": "REJECT",
+  "main_keep": false,
+  "does_not_prove": ["Reference Fidelity PASS", "Design KEEP", "Class-A continuity", "manufacturer CAD", "production aperture construction"]
+}
