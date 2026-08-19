@@ -54,6 +54,19 @@ Place transverse/longitudinal sections at causal transitions, not uniform interv
 
 A section must answer a form question. Extra sections that only densify the mesh are Derived construction, not new Source authority.
 
+## Sparse Source / dense evaluated grid separation
+
+**Source rail count is not evaluated-surface density.** Keep Source controls causally sparse, but regenerate enough Derived/evaluated rails and longitudinal stations for stable topology, curvature and rendering diagnostics.
+
+Required checks:
+- persist `source_semantic_rail_count` separately from `derived_ring_vertices` / evaluated station count;
+- densification must be deterministic and regenerated from Source, never silently promoted to Source;
+- failure of evaluated density/stretch must route to generated construction before adding Source controls;
+- a sparse semantic network that produces stretched faces, poor local sampling or an under-resolved render mesh is not a professional surface merely because the Source vocabulary is elegant;
+- increasing Derived density may repair sampling quality, but cannot repair wrong primary mass, wrong rail placement or wrong reference identity.
+
+992.2 V49 benchmark finding: the feature-aligned Source direction improved SIDE gesture and removed fold inversions, but a 20-vertex evaluated ring failed the existing primary-body surface-density/stretch screen. V50 therefore keeps the semantic rail vocabulary sparse while adding deterministic Derived midpoint sampling. This finding is execution provenance, not proof that V50 is visually correct.
+
 ## Structured patch generation
 Preferred surface stack for reflective product work:
 1. sparse Source curves/sections/boundaries;
@@ -89,6 +102,8 @@ Preferred split when evidence allows:
 
 `Target compliance ≠ held-out visual identity`.
 
+If a FRONT/REAR projected profile is inverted into the transverse section, its resulting low RMSE is **constraint compliance**, not independent fidelity evidence. The held-out 3/4 review must stay outside that fitted objective.
+
 ## Multi-view sparse fitting
 A solver may optimize sparse Source parameters against multiple external/calibrated observations. The objective may combine silhouette/profile/landmark errors and smoothness regularization, but:
 - weights and inputs must be recorded;
@@ -96,6 +111,11 @@ A solver may optimize sparse Source parameters against multiple external/calibra
 - the solver may not rewrite reference targets;
 - held-out validation remains outside the fitted objective;
 - visual review remains independent and routes to existing K4 Visual/Project QA.
+
+## Gate-local best-known baselines
+Representation reopen does not erase stronger earlier results. Preserve the best comparable baseline per diagnostic gate.
+
+Example: if one candidate owns the best SIDE projection while an earlier candidate remains stronger in FRONT/REAR profile, a new candidate must be compared against those per-gate baselines rather than an averaged single revision. A candidate that improves one fitted metric may remain HOLD/REJECT because it regresses another best-known gate.
 
 ## Tiered identity
 Classify form families:
@@ -113,8 +133,11 @@ If the representation layer is identified as causal, emit `REOPEN_REPRESENTATION
 ## EVIDENCE
 - `FEATURE_CURVE_NETWORK_RECEIPT.json`;
 - curve/section inventory and Source digest;
+- Source semantic rail count + Derived/evaluated rail/station counts;
+- densification/regeneration rule;
 - generated patch/cage receipt;
 - comparable projection/landmark results;
+- gate-local best-known baseline receipt when representation experiments span multiple candidates;
 - Broad/Strip/Grazing/Zebra as applicable;
 - fit-view list vs held-out-view list;
 - independent visual result routed through existing K4 review.
@@ -124,8 +147,10 @@ If the representation layer is identified as causal, emit `REOPEN_REPRESENTATION
 - `FAIL_SECTION_CAUSALITY_UNCLEAR`
 - `FAIL_APERTURE_NOT_IN_SOURCE_TOPOLOGY`
 - `FAIL_TARGET_CANDIDATE_PROVENANCE_COLLAPSE`
+- `FAIL_EVALUATED_SURFACE_DENSITY_OR_STRETCH`
+- `FAIL_GATE_LOCAL_BEST_KNOWN_REGRESSION`
 - `REJECT_HELD_OUT_IDENTITY`
 - `REOPEN_REPRESENTATION_MODEL`
 
 ## Does not prove
-Feature-aligned curves, structured patches, low projection error or good reflection diagnostics do not prove manufacturer CAD, Class-A/G2/G3 certification, tooling, manufacturing feasibility, final design approval or Canonical promotion.
+Feature-aligned curves, structured patches, low projection error, dense evaluated topology or good reflection diagnostics do not prove manufacturer CAD, Class-A/G2/G3 certification, tooling, manufacturing feasibility, final design approval or Canonical promotion.
