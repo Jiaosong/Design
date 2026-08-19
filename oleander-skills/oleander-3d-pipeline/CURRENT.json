@@ -16,6 +16,8 @@
     "full_name": "Jiaosong/Design",
     "sync_base_main_sha": "b18f90b67c039485df234d74c3a4530e2295b382",
     "integration_branch": "agent/2026-08-19-oleander-3d-skill-current-sync",
+    "integration_pr": 293,
+    "integration_pr_url": "https://github.com/Jiaosong/Design/pull/293",
     "installed_owner_paths": [
       "oleander-skills/oleander-3d-pipeline/SKILL.md",
       "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
@@ -51,13 +53,13 @@
     {
       "id": "PR-227",
       "role": "CAMERA_CLAIM_GATE_TRAINING_PROVENANCE",
-      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULE_INTEGRATED",
+      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULE_INTEGRATED_IN_PR_293",
       "may_replace_current": false
     },
     {
       "id": "PR-276",
       "role": "INTERACTION_AND_LIFECYCLE_VISUAL_GATE_TRAINING_PROVENANCE",
-      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULES_INTEGRATED",
+      "state": "OPEN_TRAINING_PROVENANCE_REUSABLE_RULES_INTEGRATED_IN_PR_293",
       "may_replace_current": false
     }
   ],
