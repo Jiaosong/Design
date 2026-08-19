@@ -1,0 +1,32 @@
+{
+  "schema": "C04_WEB_V1_14_CH07_CH09_READBACK",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "version": "v1.14",
+  "surface_count": 15,
+  "sequences": "032-046",
+  "desktop": {
+    "viewport": [1920,1080],
+    "dims": {"sw":1920,"cw":1920,"sh":17316},
+    "overflow": false,
+    "page_errors": [],
+    "console_errors": [],
+    "asset_natural_dimensions": [[1500,770],[1500,770],[1500,770],[1500,770],[1448,820],[1448,820],[1500,770],[1260,900],[1448,820]],
+    "surface_heights": {"032":1080,"033":1080,"034":1080,"035":1080,"036":1125,"037":1080,"038":1246,"039":1080,"040":1111,"041":1080,"042":1219,"043":1202,"044":1329,"045":1245,"046":1280},
+    "asset_mode": "SELF-CONTAINED DATA-URI HARNESS FROM LOCAL MATERIALIZED DISTRIBUTED ASSETS"
+  },
+  "mobile": {
+    "viewport": [390,844],
+    "dims": {"sw":390,"cw":390,"sh":25449},
+    "overflow": false,
+    "page_errors": [],
+    "console_errors": [],
+    "asset_natural_dimensions": [[1500,770],[1500,770],[1500,770],[1500,770],[1448,820],[1448,820],[1500,770],[1260,900],[1448,820]],
+    "surface_heights": {"032":2119,"033":1601,"034":1377,"035":1734,"036":1638,"037":1424,"038":1377,"039":2259,"040":2069,"041":1871,"042":1447,"043":1362,"044":1346,"045":1819,"046":2006},
+    "asset_mode": "SELF-CONTAINED DATA-URI HARNESS FROM LOCAL MATERIALIZED DISTRIBUTED ASSETS"
+  },
+  "grayscale_proofs": ["038","040","042","045","046"],
+  "asset_binding_status": "MATERIALIZED_AND_RENDERED_IN_SELF-CONTAINED_BROWSER_HARNESS",
+  "distributed_source": "relative local paths under assets/; no remote runtime dependency",
+  "independent_design_verdict": "PENDING / NOT SELF-AWARDED",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
