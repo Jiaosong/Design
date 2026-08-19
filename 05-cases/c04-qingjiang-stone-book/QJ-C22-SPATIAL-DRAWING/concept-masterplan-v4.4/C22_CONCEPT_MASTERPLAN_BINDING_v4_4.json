@@ -1,0 +1,36 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-CONCEPT-MASTERPLAN",
+  "revision": "v4.4",
+  "design_delta": [
+    "bank edges + river width relation strengthened",
+    "south-bank peak-forest / valley / woodland / walking field added as schematic landscape carrier",
+    "arrival→service→cable interface spatial chain added",
+    "branch / loop route hierarchy strengthened",
+    "return rebound to same cable interface; no second return node",
+    "R06/R13 added only as spatial-type anchors, not precise locations",
+    "Thirteen Imprints reduced to edge annotation",
+    "route legend added"
+  ],
+  "truth_boundary": {
+    "route_geometry": "existing route carrier",
+    "landscape_field": "SCHEMATIC / RELATIONAL / NTS",
+    "R06_R13": "TYPE ANCHOR ONLY / NOT GEOLOCATION",
+    "does_not_prove": [
+      "survey contour",
+      "exact ridge/valley position",
+      "GPS",
+      "distance",
+      "slope",
+      "safety",
+      "field-measured accessibility"
+    ]
+  },
+  "cleanup_delta": [
+    "north-bank arrival/service/cable labels deconflicted",
+    "internal NOT GEOLOCATION wording removed from public surface",
+    "south-bank explanatory copy translated from process language to spatial description",
+    "bank-edge labels re-registered for legibility"
+  ],
+  "image_generation": "NOT USED"
+}
