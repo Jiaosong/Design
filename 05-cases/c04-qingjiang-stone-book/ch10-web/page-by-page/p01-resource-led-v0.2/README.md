@@ -2,25 +2,22 @@
 
 Status: `PAGE-SCOPED REVIEW TARGET / NO SELF-PASS`.
 
-## Material correction
-v0.1 was explanation-led: large copy + abstract WHOLE/RELATION/BODY shapes + white PAGE card. v0.2 translates the same CH08/CH10 logic into a **resource-led composition**.
+v0.2 corrects the explanation-led v0.1 by making existing project resources carry the design argument.
 
 Resource hierarchy:
 1. `WHOLE_QINGJIANG` — real Qingjiang / water-scale field.
-2. `RELATION_CABLE` — cable / cross-river moving relation.
-3. `BODY_RECOVER` — existing C04 body/recovery design capital.
-4. `OPTIONAL READING` — only bounded LINE/PAGE/TRACE when OBSERVE is earned.
+2. `RELATION_CABLE` — cross-river moving relation.
+3. `BODY_RECOVER` — existing body/recovery design capital, paper background removed non-generatively so it integrates into the landscape field.
+4. `OPTIONAL READING` — bounded LINE/PAGE/TRACE only when OBSERVE is earned.
 
-Interaction:
-`MOVE / LOOK / OBSERVE / RECOVER / CHOOSE / PASS` changes which resource owns the page. Copy is secondary.
+Interaction: `MOVE / LOOK / OBSERVE / RECOVER / CHOOSE / PASS` changes resource ownership. Copy is secondary.
 
-Authority:
-`CH08 v0.4 → CH10 v0.4 → CH14 visual reference only`.
+Authority: `CH08 v0.4 → CH10 v0.4 → CH14 visual reference only`.
 
-No image generation. Resource transforms are crop/fit only.
+No image generation. Crop/fit + background alpha extraction only.
 
-Canonical HTML: 11,430 bytes / SHA256 `1f5a4cd295bfe2409a3ae10405c421474f3e07aac33b65722a0ded28864392c1`.
-Local source-complete review ZIP: 15,499,156 bytes / SHA256 `57541e6f50bcb334dda69a603f7d5727e43266ba7656bdc5d33ad7a5715fe54a`.
+Canonical HTML: 11,408 bytes / SHA256 `d1ec1f0ea5ab21a45ed5045048cfe13da0614947cb8b8b47892601e22e993913`.
+Local source-complete review ZIP: 15,816,172 bytes / SHA256 `eeaa349ff1f9ce7acbc4f14f7af9b4c794e49e66d17a91b9af3e9667c9671eb8`.
 
 Open gates: AR-S09 durable retrieval; whole-project Web resource uniqueness; independent finished-pixel Professional Design Review.
 

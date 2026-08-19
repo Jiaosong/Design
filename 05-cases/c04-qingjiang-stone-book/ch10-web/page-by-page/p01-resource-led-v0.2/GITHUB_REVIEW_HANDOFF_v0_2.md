@@ -1,17 +1,7 @@
 # CH10-P01 v0.2 — Page-scoped GitHub Review Handoff
 
-Commit target must reconstruct HTML SHA256 `1f5a4cd295bfe2409a3ae10405c421474f3e07aac33b65722a0ded28864392c1`.
+Review exact HTML SHA256 `d1ec1f0ea5ab21a45ed5045048cfe13da0614947cb8b8b47892601e22e993913`. P01 only.
 
-Review **P01 only**.
+Attack: resource-first first read; Qingjiang specificity; cable relation vs collage; RECOVER integration after non-generative paper removal; OBSERVE reading subordination; PASS withdrawal; mobile hierarchy; whole-project repeated-resource conflict.
 
-Attack actual 1920×1080 and 390×844 pixels on:
-1. resource-first vs copy-first first read;
-2. Qingjiang specificity;
-3. relation strip = spatial relation resource vs decorative collage;
-4. RECOVER = body/recovery ownership vs pasted technical card;
-5. OBSERVE optional reading remains subordinate;
-6. PASS reads as intentional withdrawal;
-7. mobile hierarchy after redundant top labels were removed;
-8. whole-project resource uniqueness / repeated-source conflict.
-
-Runtime and CI do not imply Design PASS. Independent finished-pixel review must return attributable `KEEP / REVISE / REJECT / HOLD` + severity defects + root-cause layer.
+Runtime/CI do not imply Design PASS. Independent finished-pixel verdict remains attributable `KEEP / REVISE / REJECT / HOLD`.
