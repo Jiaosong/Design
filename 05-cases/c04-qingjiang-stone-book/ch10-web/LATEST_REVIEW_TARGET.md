@@ -1,19 +1,19 @@
 # CH10 Web — Latest Review Target
 
-Current downstream review focus is **page-by-page**.
+Current downstream review focus remains **page-by-page**.
 
-Current page target: `CH10-P01 = page-by-page/p01-resource-choreography-v0.3/`.
+Current page target: `CH10-P01 = page-by-page/p01-resource-choreography-v0.3.1/`.
 
-Superseded P01 targets: `p01-resource-led-v0.2 = REVISE/HISTORY`; `p01-appearance-gate-v0.1 = REVISE/HISTORY`.
+Superseded P01 targets: v0.3 = producer-target provenance; v0.2/v0.1 = REVISE/HISTORY. P02-P05 are not opened.
 
-Whole-chapter carriers: v0.1/v0.2 = REVISE/HISTORY; v0.3 = HISTORY FOR P01 / chapter provenance.
+v0.3.1 retains the full-scene resource choreography and corrects only the finished-pixel state rail: desktop hierarchy is reduced; mobile removes unreadably compressed repeated English state words while retaining six-state touch reachability and Chinese labels.
 
-P01 v0.3 canonical HTML SHA256: `ec3e4e1f3dc02f4d19fa74516f62e7e07ddcbd923bd519293d13d14935b5153e`.
+Canonical HTML: `9826 bytes / SHA256 88cf25354c5f26626222cf7f0e10bc6c55a48769e2004753ffb68366628a73e1`.
 
-Material delta: v0.3 removes the v0.2 collage carrier. MOVE/CHOOSE use a full-scene cable relation resource; LOOK/OBSERVE/PASS use a photo-only Qingjiang landscape resource; OBSERVE adds only a bounded fold/prompt; RECOVER overlays only extracted body/recovery linework. Producer/process copy is removed from the public surface.
+Durable P01 review ZIP: Drive `1aXZIcyGGIxW1rZ9_kdiPFaQiJJhFJaO1` / `14361267 bytes` / SHA256 `55f7d41983cf943be3d06ebf3167f4d7ce222d56158de893ed586b23cb726a5c`; Drive re-retrieval + ZIP/open verification PASS.
 
-Status: `EXECUTED / ACTUAL PIXELS REOPENED / ARTIFACT REVIEW EXECUTED / PAGE-SCOPED GITHUB REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
+Status: `EXECUTED / SELF-CHECKED / AR-S09 P01 PACKAGE CLOSED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
 
-Open integrated-Web gates: durable binary retrieval and whole-project resource uniqueness.
+Next gate is an artifact-first independent visual readback under `OLEANDER Independent Design Verdict Policy v1.0`, including Best-Existing Benchmark. Whole-project image/resource uniqueness remains separate and OPEN before Promotion.
 
-This pointer does not promote CH10 Web to Project Current and does not issue a Design verdict.
+This pointer does not issue a Design verdict or promote CH10 Web to Project Current.
