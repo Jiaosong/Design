@@ -1,0 +1,73 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "object": "CH08-P01",
+  "version": "v1.1",
+  "method": {
+    "browser": "Chromium 144 headless via Playwright",
+    "execution": "page.set_content DOM injection",
+    "reason": "direct file / localhost navigation is blocked by the current runtime administrator policy",
+    "source_fidelity": "authored HTML content + final CSS rules executed; the relative v0.4 atlas src was replaced in the review harness by a data URI containing the exact current CH08_MASTER_EXPERIENCE_ATLAS_v0_4.svg source so the bound vector could render without navigation",
+    "live_navigation_browser_pass": false
+  },
+  "readback": {
+    "desktop_1920x1080": {
+      "inner_width": 1920,
+      "scroll_width": 1920,
+      "horizontal_overflow": 0,
+      "scroll_height": 3933,
+      "image_count": 1,
+      "broken_images": 0,
+      "article_count": 1,
+      "h1_count": 1,
+      "console_errors": 0,
+      "page_errors": 0,
+      "final_first_read_defect": "none recorded after R1 repair"
+    },
+    "mobile_390x844": {
+      "inner_width": 390,
+      "scroll_width": 390,
+      "horizontal_overflow": 0,
+      "scroll_height": 6135,
+      "image_count": 1,
+      "broken_images": 0,
+      "article_count": 1,
+      "h1_count": 1,
+      "console_errors": 0,
+      "page_errors": 0,
+      "atlas_behavior": "source plate intentionally remains horizontally scrollable below the mobile-native three-scale summary"
+    }
+  },
+  "local_pixel_evidence": {
+    "desktop_final_viewport.png": {
+      "bytes": 227435,
+      "sha256": "2d5185d9e6dad156f6f3946a63b481a07cf0e9d3ec9580cfee5ac13417a6b793"
+    },
+    "desktop_final_full.png": {
+      "bytes": 726016,
+      "sha256": "3f7fc0cd2baba176fea86c9285f6c157028e9a57238ac81e9ae540a694711f6e"
+    },
+    "mobile_final_viewport.png": {
+      "bytes": 81569,
+      "sha256": "269cd8964a9b3ce2e82fffab4a0b28130a921d0bc11f3d9ccedcbbd9026278ab"
+    },
+    "mobile_final_full.png": {
+      "bytes": 474663,
+      "sha256": "48acae88e9726a1dee840caa9c4525f973887af4e029379e7d6c5bdda9d66b86"
+    },
+    "durable_binary_persistence": "OPEN - source HTML/CSS/JSON and upstream atlas are durable in GitHub; the local review screenshots are not represented as a durable repository binary package by this record"
+  },
+  "static_checks": {
+    "external_remote_dependencies": 0,
+    "scripts": 0,
+    "generated_content_images": 0,
+    "final_web_page_id_invented": false,
+    "route_geometry_created": false,
+    "current_atlas_reused": true,
+    "brand_color_used_as_operational_state": false,
+    "truth_boundary_present": true,
+    "reduced_motion_rule_present": true
+  },
+  "status": "ACTUAL PIXEL READBACK COMPLETE VIA DOM INJECTION / LIVE-NAVIGATION BROWSER PASS OPEN / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
