@@ -1,0 +1,21 @@
+{
+  "source": "可拆卸倚靠休息板.png",
+  "source_size": [4530, 6038],
+  "source_sha256": "e3801e63c725de34e463510c3e3c41ad40e4ece692b4290667c7e06a4085eca6",
+  "children": [
+    {
+      "id": "IMG-C04-ODB02-S01-HERO-DEPLOYED",
+      "bounds_xyxy": [1600, 360, 3370, 1325],
+      "size": [1770, 965],
+      "sha256": "1d18aa9682f23bbed96e9ee0dd624197e349bfbdad2d2da98e1a71b862b07a6b",
+      "role": "S01 dominant first visual"
+    },
+    {
+      "id": "IMG-C04-ODB02-S01-FOLDED-SUPPORT",
+      "bounds_xyxy": [3770, 4260, 4390, 5710],
+      "size": [620, 1450],
+      "sha256": "6d3d669521daf4e4656c36d81c9510659fd02050a1638376269ac693b499a987",
+      "role": "S01 same-consumer secondary folded-state support"
+    }
+  ]
+}
