@@ -1,0 +1,11 @@
+{
+  "schema": "oleander.current-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "CH16-P01",
+  "current_revision": "v3.2",
+  "current_path": "05-cases/c04-qingjiang-stone-book/ch16-detail-development/page-by-page/P01-v3.2/CH16-P01_CURRENT_POINTER.json",
+  "state": "PLANNED / PRODUCTION REQUIRED",
+  "display_source_rule": "ODB-02 NOT DISPLAYABLE IN CH16",
+  "supersedes_current_revisions": ["v3.1", "v3.0", "v2.0"],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
