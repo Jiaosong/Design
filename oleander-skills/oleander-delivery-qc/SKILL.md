@@ -25,6 +25,20 @@ Treat QC as a reproducible release gate. Inspect without modifying masters unles
 
 Check dimensions, effective DPI, aspect ratio, ICC profile, alpha, bit depth, compression, missing links, missing fonts, overset text, bleed, trim, and safe margins. Render PDFs to images for visual comparison when needed.
 
+### Project Web image uniqueness check
+
+For every OLEANDER project Web, run a **whole-project** image-source uniqueness audit before release.
+
+- Build/read the Web image-use ledger and group content imagery by `SOURCE_ASSET_ID` and, when available, `SOURCE_SHA256` or another stable upstream source identity.
+- The same underlying content-image source may occupy only one semantic Web image slot in the project.
+- A second use is blocking even if crop, ratio, resize, color grade, filter, mask, text overlay, frame, or breakpoint presentation differs. These are presentation derivatives, not new source imagery.
+- Responsive renders of the same semantic slot are one use, not duplicates.
+- Repeated brand marks, functional UI icons, navigation symbols, and system texture tokens are excluded unless used as content imagery.
+- If a repeated subject is required, replace the repeated source with a genuinely different photograph/render/evidence asset, or a different medium such as SVG/map/diagram/model/technical drawing/chart.
+- For a same-source reveal on Web, bind the base image once and change state/layers in the same semantic component instead of creating separate duplicate image slots.
+
+**Blocking rule:** `same underlying content-image source in 2+ project-Web slots = FAIL / REVISE`.
+
 ## Gate 4: video and audio
 
 Use MediaInfo, FFmpeg/ffprobe, and ExifTool to check container, codec, duration, dimensions, pixel aspect, frame rate, scan type, bitrate, chroma, bit depth, color primaries/transfer/matrix, audio codec, sample rate, channels, subtitles, and metadata.
@@ -37,6 +51,7 @@ Compare the result with the delivery specification. Detect black frames, silence
 - Check scale, origin, axis, geometry count, materials, textures, caches, plugins, cameras, animation range, and relative paths.
 - Confirm preview/thumbnail and manifest match the packaged asset.
 - For websites or interactive charts, check local assets, responsive layout, keyboard access, missing links, and offline behavior if required.
+- For project Web, include the final image-use ledger and duplicate-source scan result in the release evidence.
 
 ## Report format
 
