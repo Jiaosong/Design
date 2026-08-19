@@ -1,0 +1,23 @@
+{
+  "object": "IMG-C04-C22-MACRO-02",
+  "source_file": "C22_QINGJIANG_MACRO_SOURCE_hfwejlwwzx.jpg",
+  "source_pixels": [1080, 608],
+  "source_sha256": "57f192b425086578f2caa5ff8bacae49ce25e475c63e74cd14b6a5ef6584ec60",
+  "source_url": "https://www.eslygroup.com/uploadfile/image/20230711/hfwejlwwzx.jpg",
+  "source_page": "https://www.eslygroup.com/scenic_news/2815.html",
+  "current_derivative": "C22_QINGJIANG_MACRO_INK_CH14_hfwejlwwzx.png",
+  "derivative_pixels": [1600, 901],
+  "derivative_sha256": "5dab8e66ae327bedf27c3d15098f7f731a7b289e76e562f80ccb200d84d2789a",
+  "operations": [
+    "Lanczos optical enlargement",
+    "bilateral edge-preserving smoothing",
+    "source-luminance tonal separation",
+    "bounded Bone Mist / Qingjiang Jade / Ink-Stone palette mapping",
+    "source-derived Canny ink contours",
+    "source-tonality watercolor bloom",
+    "low-amplitude paper tooth"
+  ],
+  "geometry_policy": "NO NEW OBJECT / NO NEW TERRAIN / NO INPAINT / NO SYNTHETIC SCENE",
+  "semantic_identity": "derivative inherits IMG-C04-C22-MACRO-02",
+  "image_generation": "NOT USED"
+}
