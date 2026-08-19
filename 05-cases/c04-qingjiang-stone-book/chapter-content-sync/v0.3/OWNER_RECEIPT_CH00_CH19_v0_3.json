@@ -1,0 +1,41 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "CH00-CH19 chapter-by-chapter deepening v0.3",
+  "date": "2026-08-19",
+  "state": "AUTHORING SUCCESSOR / NO_PROMOTION",
+  "authority_inputs": [
+    "C04 PROJECT ARCHITECTURE v3.2",
+    "C04 PROJECT ORGANIZATION CURRENT v1.2.2",
+    "C04 USER ORIGINAL DESIGN SOURCE REGISTER v1.0",
+    "C04 USER ORIGINAL DESIGN INTEGRATION PLAN v1.0",
+    "chapter-content-sync v0.1 + v0.2",
+    "C04 Longscroll / Story Spine / Audience / Physical Outcome source set",
+    "ROUTE-03 LOCKED CURRENT",
+    "App v1.28 lineage",
+    "CH14 current visual/semantic system",
+    "Notion OLEANDER design knowledge consumed in CH08 review"
+  ],
+  "material_delta": {
+    "new_design_family": ["CH09 Route / Return Physical Touchpoint Family"],
+    "deepening_without_new_family": ["Cable Experience Choreography", "Qingjiang Journal OPEN-DURING-BECOME A BOOK", "Sensory Resource Strategy", "Material Branding", "Design Selection Register"],
+    "protected_original_designs": ["ODB-01", "ODB-02", "ODB-03A/B", "ODB-04A/B/C", "ODI-01", "ODI-02", "ODI-03", "ODI-04", "ODI-05", "ODI-06"]
+  },
+  "hard_locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "ORIGINAL BOARD != FINAL PUBLIC PIXEL",
+    "LATER CURRENT PIXEL / MODEL / C23 != ORIGINAL DESIGN SOURCE",
+    "NO NEW PID BY GUESS",
+    "NO COMPRESSION / NO LOSS"
+  ],
+  "does_not_prove": [
+    "final Web framework or page count",
+    "finished-pixel Design PASS",
+    "App Design PASS",
+    "physical site fit",
+    "field geometry or live operational state",
+    "engineering or construction approval",
+    "project promotion"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
