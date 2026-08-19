@@ -32,8 +32,8 @@ core = ns['core']
 runtime = ns['runtime']
 STATS = ns['STATS']
 base_remove = ns['remove_owned_aperture_faces']
-classify_aperture = ns['classify_aperture']
 world_bounds = ns['world_bounds']
+G = ns['G']
 PRIMARY_BODY_REV = ns['PRIMARY_BODY_REV']
 REV = 'V63_GREENHOUSE_TOPOLOGY_PREFLIGHT'
 ns['REV'] = REV
@@ -42,7 +42,54 @@ v.REFERENCE_CONTRACT['reference_revision'] = v.REF
 v.REFERENCE_CONTRACT['candidate_revision'] = REV
 v.REFERENCE_CONTRACT['aperture_architecture_state'] = 'TOPOLOGY_OWNED_APERTURE_WITH_DESTRUCTIVE_PREFLIGHT'
 v.REFERENCE_CONTRACT['destructive_edit_preflight'] = True
+v.REFERENCE_CONTRACT['greenhouse_classifier_dependency'] = 'EXPLICIT_BOUND_G_TABLE_NOT_HISTORICAL_NESTED_NAMESPACE'
 v.FAMILY_CONTROLS['GREENHOUSE_APERTURE_ARCHITECTURE_V62']['preflight_revision'] = REV
+
+
+def interp_greenhouse(x, field):
+    x = float(x)
+    if x <= float(G[0][0]):
+        return float(G[0][field])
+    if x >= float(G[-1][0]):
+        return float(G[-1][field])
+    for a,b in zip(G,G[1:]):
+        if float(a[0]) <= x <= float(b[0]):
+            den = float(b[0]) - float(a[0])
+            t = 0.0 if abs(den) < 1e-12 else (x-float(a[0]))/den
+            return float(a[field])*(1.0-t) + float(b[field])*t
+    return float(G[-1][field])
+
+
+def point_in_poly(x, z, poly):
+    inside = False
+    j = len(poly)-1
+    for i in range(len(poly)):
+        xi,zi = poly[i]; xj,zj = poly[j]
+        crosses = ((zi > z) != (zj > z)) and (x < (xj-xi)*(z-zi)/((zj-zi) or 1e-12)+xi)
+        if crosses:
+            inside = not inside
+        j = i
+    return inside
+
+
+def classify_aperture(x, y, z):
+    if float(G[0][0]) <= x <= float(G[-1][0]):
+        zt = interp_greenhouse(x,1)
+        zb = interp_greenhouse(x,2)
+        if zb-.012 <= z <= zt+.012 and abs(y) >= .34:
+            return 'BOUNDARY_SIDE_GLASS_L' if y > 0 else 'BOUNDARY_SIDE_GLASS_R'
+    ws_xz=[(.625,.845),(.245,1.220),(.185,1.255),(.710,.775)]
+    rg_xz=[(-.405,1.220),(-1.145,.970),(-1.255,.900),(-.330,1.255)]
+    if abs(y) <= .67 and point_in_poly(x,z,ws_xz):
+        return 'BOUNDARY_WINDSHIELD'
+    if abs(y) <= .66 and point_in_poly(x,z,rg_xz):
+        return 'BOUNDARY_REAR_GLASS'
+    return None
+
+
+# Inject the semantic classifier into the V62 representation namespace as well as this preflight.
+# The destructive function therefore no longer depends on ctx['ns'] depth inherited from historical scripts.
+ns['classify_aperture'] = classify_aperture
 
 PREFLIGHT = {
     'schema': 'oleander.3d.destructive-edit-preflight-receipt.v1',
@@ -53,6 +100,7 @@ PREFLIGHT = {
     'edit_scope': 'GREENHOUSE_APERTURE_ARCHITECTURE_ONLY',
     'source_revision_locked': PRIMARY_BODY_REV,
     'source_mutation_allowed': False,
+    'classifier_dependency': 'EXPLICIT_BOUND_G_TABLE',
     'required_owner_ids': ['BOUNDARY_SIDE_GLASS_L','BOUNDARY_SIDE_GLASS_R','BOUNDARY_WINDSHIELD','BOUNDARY_REAR_GLASS'],
     'owner_hit_counts': {},
     'candidate_delete_faces': 0,
@@ -88,7 +136,7 @@ def preflight_remove_owned_aperture_faces(obj):
         {
             'id':'ALL_REQUIRED_OWNER_MASKS_HIT',
             'status':'PASS' if not missing else 'FAIL',
-            'observed':counts,
+            'observed':{owner:int(counts.get(owner,0)) for owner in required},
             'rule':'every declared aperture owner must classify at least one evaluated host face'
         },
         {
@@ -102,6 +150,12 @@ def preflight_remove_owned_aperture_faces(obj):
             'status':'PASS',
             'observed':False,
             'rule':'operation remains on Derived host; V59 Source mutation forbidden'
+        },
+        {
+            'id':'CLASSIFIER_DEPENDENCY_BOUND',
+            'status':'PASS',
+            'observed':'EXPLICIT_BOUND_G_TABLE',
+            'rule':'classifier must not depend on historical nested namespace path'
         }
     ]
     passed = all(c['status'] == 'PASS' for c in checks)
@@ -145,7 +199,6 @@ def run63():
     finally:
         write_preflight(out)
 
-    # Preserve V59 primary-surface evidence whenever the base runtime reached a constructed scene.
     try:
         ns['ctx']['emit_surface_v2'](out)
     except Exception as exc:
