@@ -81,7 +81,32 @@ A validly executed destructive experiment that fails host preservation remains u
 
 Do not rewrite `FAIL_HOST_PRESERVATION` as runtime failure unless execution itself failed.
 
-## 7. Required receipt
+## 7. Repeated destructive failure escalates to representation repair
+
+Do not keep tuning the same destructive operator after evidence shows the representation is the likely owner of the failure.
+
+Escalate from `OPERATOR_PARAMETER` to `REPRESENTATION_ARCHITECTURE` when one or more are true:
+- the same semantic local edit repeatedly violates the global host-preservation budget;
+- changing solver/tolerance/normals only moves or hides the failure without stabilizing the host;
+- the intended opening/interface is identity-bearing and should own a persistent shared boundary;
+- the destructive operation is being applied after evaluation even though the aperture/interface is a first-class construction relation;
+- preserving the host requires masks, opaque infill, render tricks, or unrelated geometry edits.
+
+Preferred escalation order:
+1. keep the last known good Source/Derived host frozen;
+2. stop operator-parameter search;
+3. reclassify the failure as `REPRESENTATION / TOPOLOGY / ARCHITECTURE` rather than `PARAMETER`;
+4. move the boundary upstream into generated construction or a shared-boundary patch network when semantically appropriate;
+5. if an evaluated Derived carrier must be edited, use an operation whose locality can be explicitly classified and measured;
+6. rerun host preservation, interface closure, visual-reference and Design gates independently.
+
+For a major aperture, `POST_EVALUATED_BOOLEAN` is not privileged merely because it is convenient. A generated opening, topology-owned boundary, trim-aware patch network, CAD feature, or other domain-appropriate representation may be the correct route.
+
+`REPEATED_OPERATOR_FAILURE → REPRESENTATION_RECLASSIFICATION`, not `MORE_UNBOUNDED_TUNING`.
+
+This escalation rule does not mean Boolean/remesh/trim are forbidden. It means their continued use must remain causally justified by preserved evidence.
+
+## 8. Required receipt
 
 Use `oleander.3d.derived-edit-host-preservation-receipt.v1` with:
 - `host_id`
@@ -100,7 +125,7 @@ Use `oleander.3d.derived-edit-host-preservation-receipt.v1` with:
 - `design_result`
 - `does_not_prove`
 
-## 8. Promotion boundary
+## 9. Promotion boundary
 
 Host preservation can prove only that the declared destructive operation stayed within its preservation contract. It does not prove:
 - reference fidelity;
