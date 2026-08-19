@@ -1,0 +1,29 @@
+{
+  "object": "CH14-P01",
+  "version": "v5.6",
+  "title": "为什么叫「清江石书」",
+  "state": "CURRENT LOCK CANDIDATE",
+  "source_sync": "GITHUB TEXT/SOURCE RECORD",
+  "production_zip": "C04_CH14_P01_v5_6_NO_GREEN_FRAME.zip",
+  "production_zip_sha256": "6e02ed1046e63435c9ab308847ef0ccebd3cb4799f4c6d9dfeef08e9bfc3cb1a",
+  "locked_claims": [
+    "LANDSCAPE AS TEXT / JOURNEY AS READING",
+    "REAL QINGJIANG FIRST",
+    "READING OPTIONAL",
+    "RETURN FIRST"
+  ],
+  "priority_order": [
+    "SERVICE / RETURN",
+    "ROUTE",
+    "OBSERVATION",
+    "EXPLANATION / READING",
+    "MEMORY / SHARE"
+  ],
+  "authority_boundary": "brand identity does not replace route / safety / operation / terrain authority",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "does_not_prove": [
+    "independent new Design PASS adjudication",
+    "operator approval",
+    "field validation"
+  ]
+}
