@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#111918"/>
+  <style>.serif{font-family:'Noto Serif CJK SC','Songti SC',serif}.sans{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif}</style>
+  <text x="90" y="92" class="sans" font-size="17" fill="#BAC4BF" letter-spacing="2">CH01 / PHYSICAL SERVICE GAP / SOURCE CARRIER</text>
+  <text x="90" y="170" class="serif" font-size="58" fill="#F1EDE4">原则已经有了，现场触点还没有闭合。</text>
+  <text x="90" y="245" class="sans" font-size="18" fill="#BAC4BF">RETURN / NO-PHONE / SERVICE 已存在；缺口发生在连续服务真正接触现场的地方。</text>
+  <rect x="100" y="430" width="1400" height="96" rx="48" fill="#2E7571"/>
+  <g fill="#111918"><rect x="310" y="414" width="56" height="128"/><rect x="607" y="414" width="56" height="128"/><rect x="905" y="414" width="56" height="128"/><rect x="1203" y="414" width="56" height="128"/></g>
+  <text x="132" y="492" class="sans" font-size="25" fill="#F1EDE4" font-weight="700">SERVICE</text>
+  <text x="1350" y="492" class="sans" font-size="25" fill="#F1EDE4" font-weight="700">RETURN</text>
+  <g class="sans" text-anchor="middle">
+    <g transform="translate(338 0)"><line y1="395" y2="560" stroke="#B8543E" stroke-width="3"/><text y="340" font-size="18" fill="#F1EDE4">方向确认</text><text y="366" font-size="12" fill="#BAC4BF">DIRECTION CONFIRMATION</text></g>
+    <g transform="translate(635 0)"><line y1="395" y2="560" stroke="#B8543E" stroke-width="3"/><text y="340" font-size="18" fill="#F1EDE4">Return 识别</text><text y="366" font-size="12" fill="#BAC4BF">RETURN RECOGNITION</text></g>
+    <g transform="translate(933 0)"><line y1="395" y2="560" stroke="#B8543E" stroke-width="3"/><text y="340" font-size="18" fill="#F1EDE4">CLOSED / UNKNOWN 表达</text><text y="366" font-size="12" fill="#BAC4BF">STATE EXPRESSION</text></g>
+    <g transform="translate(1231 0)"><line y1="395" y2="560" stroke="#B8543E" stroke-width="3"/><text y="340" font-size="18" fill="#F1EDE4">纸图 ↔ 现场</text><text y="366" font-size="12" fill="#BAC4BF">PAPER ↔ SITE</text></g>
+  </g>
+  <text x="100" y="670" class="serif" font-size="30" fill="#F1EDE4">Design Opportunity</text>
+  <text x="100" y="714" class="sans" font-size="24" fill="#BAC4BF">Route / Return Physical Touchpoint Family</text>
+  <text x="1500" y="714" class="sans" font-size="16" fill="#B8543E" text-anchor="end">PRIMARY OWNER = CH09</text>
+  <line x1="90" y1="814" x2="1510" y2="814" stroke="#65706A" opacity=".6"/>
+  <text x="90" y="852" class="sans" font-size="15" fill="#BAC4BF">NOT ROUTE GEOMETRY · NOT PRODUCT SOLUTION · CH01 DEFINES THE GAP ONLY</text>
+</svg>
