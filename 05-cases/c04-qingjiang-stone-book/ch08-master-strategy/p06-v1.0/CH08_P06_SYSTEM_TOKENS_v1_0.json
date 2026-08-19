@@ -1,0 +1,28 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU","chapter":"CH08","object":"CH08-P06","version":"v1.0","page_type":"SYSTEM","authoring_identity":"CH08-P06","final_web_page_id":null,
+  "title":"交接与证明边界｜每个系统只拥有自己的权威",
+  "current_authority":{"ch08":"ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md","upstream_pr":294,"producer_parent_prs":[310,311,313,314,315]},
+  "handoffs":[
+    {"from":"Route","to":"Imprint","gate":"Route decision clear + OBSERVE / stable attention","forbid":"content covering CHOOSE / PASS"},
+    {"from":"Imprint","to":"Digital","gate":"user actively requests deeper relation","forbid":"automatic full explanation"},
+    {"from":"Digital","to":"Landscape","gate":"Reveal complete","forbid":"interaction without Withdraw"},
+    {"from":"Route","to":"Physical","gate":"body problem + site condition both valid","forbid":"routing visitors through an object to showcase product"},
+    {"from":"Physical","to":"Landscape","gate":"body support complete","forbid":"physical object becoming destination"},
+    {"from":"Experience","to":"Memory","gate":"Return / Leave","forbid":"memory creating next-site completion pressure"}
+  ],
+  "redundancy":"Paper / Human / Digital jointly support basic judgment under no-phone / low-network / uncertainty; they are not a technology ranking.",
+  "brand_authority_exclusions":["CURRENT POSITION","DIRECTION","RETURN","OPERATIONAL STATE","SAFETY AUTHORITY"],
+  "proof_chain":["DESIGN CLAIM","DRAWING / MODEL / DETAIL / EVIDENCE","WHAT IT PROVES","DOES NOT PROVE","NEXT CHECK"],
+  "proof_examples":[
+    {"artifact":"ROUTE-03 / source map","proves":"macro relation","does_not_prove":"survey coordinates / distance / slope / live status"},
+    {"artifact":"section / body diagram","proves":"conceptual scale relation","does_not_prove":"site fit"},
+    {"artifact":"model / axon","proves":"spatial relation","does_not_prove":"real landscape or original design source"},
+    {"artifact":"connection detail","proves":"construction intent","does_not_prove":"structural approval"},
+    {"artifact":"App runtime","proves":"interaction implementation","does_not_prove":"field network / GPS / service reliability"},
+    {"artifact":"Brand application","proves":"visual grammar","does_not_prove":"functional Wayfinding authority"}
+  ],
+  "new_design_budget":{"only_new_family":"CH09 Route / Return Physical Touchpoint Family","may_deepen":["Cable Experience Choreography","Qingjiang Journal OPEN→DURING→BECOME A BOOK","Sensory Resource Strategy","Material Branding","Design Selection Register"],"forbidden_expansion":["new route geometry","new Thirteen Imprint count","new App primary feature family","fifth large Physical family","new Sensory product family","new Memory family","new IP universe","mandatory tasks / points / rank / 13/13","default AR system"]},
+  "hard_locks":["R06 = FINISHED / FROZEN / NO REOPEN","Technical Proof does not rewrite original design source","Brand remains semantic firewall","final closure = RETURN → RECOGNITION → RECORD → TAKE AWAY, not 13/13"],
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "status":"PRODUCTION CANDIDATE / ACTUAL PIXEL READBACK REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW REQUIRED"
+}
