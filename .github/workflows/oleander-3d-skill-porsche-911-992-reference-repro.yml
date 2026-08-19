@@ -15,10 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
-      - name: Validate V56 densification causal A/B
+      - name: Validate V57 density audit
         run: |
           set -euo pipefail
-          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v56.py
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v57.py
           python3 -m unittest discover -s 00-governance/control-plane/tests -p 'test_oleander_3d_*.py'
       - name: Install Blender 5.2.0 LTS
         run: |
@@ -27,25 +27,25 @@ jobs:
           curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
           test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
           tar -xJf /tmp/blender.tar.xz -C /tmp
-      - name: Build V56 V49-source densification-only experiment
+      - name: Build unchanged V49 geometry and audit evaluated density
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/OLEANDER_Porsche_911_992_Reference_Repro"; mkdir -p "$OUT"
-          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v56.py -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v57.py -- --out "$OUT" --samples 8 --resolution-x 960 --resolution-y 640
           git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
           sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/PRIMARY_SHA256SUMS.txt"
-      - name: Verify V56 causal result
+      - name: Verify Source and evaluated density remain separate
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          p=Path('out/OLEANDER_Porsche_911_992_Reference_Repro/DENSIFICATION_CAUSAL_AB.json')
-          d=json.loads(p.read_text())
-          assert d['candidate_revision']=='V56_V49_DENSIFICATION_ONLY_AB'
-          assert d['source_geometry_equivalence']=='V49_SOURCE_RELATIONS_UNCHANGED'
-          assert d['only_delta']=='ONE_DERIVED_MIDPOINT_PER_ADJACENT_POSITIVE_HALF_SECTION_CONTROL'
-          assert d['derived_ring_vertices']==40
+          d=json.loads(Path('out/OLEANDER_Porsche_911_992_Reference_Repro/SOURCE_VS_EVALUATED_DENSITY_AUDIT.json').read_text())
+          assert d['candidate_geometry_revision']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
+          assert d['geometry_revision_unchanged']=='V49_FEATURE_ALIGNED_CURVE_NETWORK'
+          assert d['source_ring_control_count']==20
+          assert d['legacy_surface_gate']['state']=='LEGACY_GATE_MIXES_SOURCE_CONTROL_DENSITY_WITH_EVALUATED_DENSITY'
+          assert d['final_evaluated_diagnostic_mesh']['triangles']>1000
           print(json.dumps(d,indent=2))
           PY
       - name: Upload evidence
