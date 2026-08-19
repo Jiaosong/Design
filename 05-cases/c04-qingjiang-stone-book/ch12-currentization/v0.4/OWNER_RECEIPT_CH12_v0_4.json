@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.owner-receipt/1.1",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH12",
+  "version": "v0.4",
+  "state": "EXECUTED / AUTHORING PIXELS RENDERED / ACTUAL READBACK COMPLETE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "authority": {
+    "architecture": "C04 PROJECT ARCHITECTURE v3.2",
+    "project_organization": "v1.2.2",
+    "route": "ROUTE-03 LOCKED CURRENT",
+    "r06": "FINISHED / FROZEN / NO REOPEN"
+  },
+  "delta": {
+    "chapter_role": "SELECTED SCENE PROOF",
+    "authoring_units": 9,
+    "new_scene_type": "SC-ROUTE-DECISION",
+    "new_top_level_system": false,
+    "new_route_geometry": false,
+    "new_physical_family": false
+  },
+  "pixel_readback": {
+    "target": "1920x1080",
+    "rendered_pages": 9,
+    "browser": "Chromium / Playwright / embedded local source assets",
+    "page_errors": 0,
+    "console_errors": 0,
+    "contact_sheet": {
+      "filename": "CH12_v0_4_CONTACT.jpg",
+      "bytes": 308597,
+      "sha256": "ae9c7fa875167f74f44d46d951cd7eabde73f76d4dce499ed806bd30f785f1b9"
+    },
+    "editable_html": {
+      "filename": "index.html",
+      "bytes": 24756,
+      "sha256": "8fdb7412893cd3005efa5ead24eb76f5001648a8c65e061fd43718d198cdbe78"
+    },
+    "package": {
+      "filename": "C04_CH12_SELECTED_SCENE_PROOF_v0.4.zip",
+      "bytes": 15029515,
+      "sha256": "826ed07c9bfde6a8b1286331277e704433fc24966419a534334c4928c95d72fb",
+      "persistence": "LOCAL RECOVERABLE / NEW BINARY DURABLE PERSISTENCE OPEN"
+    }
+  },
+  "open_gates": {
+    "R01": "AUTHENTIC MOVING STIMULUS OPEN",
+    "R05": "AUTHORITATIVE HONGHUA PIXEL OPEN",
+    "R06": "FIELD / ENGINEERING OPEN; EXPERIENCE FROZEN",
+    "ROUTE_DECISION": "LOCATION / OPERATIONS OPEN",
+    "R13": "VIEW / WIDTH / SAFETY / ACCESSIBILITY OPEN",
+    "professional_design_review": "PENDING"
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
