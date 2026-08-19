@@ -1,0 +1,30 @@
+[
+  {
+    "viewport": "390x844",
+    "errors": [],
+    "overflow": {"sw":390,"cw":390},
+    "min_visible_button_w": 44,
+    "min_visible_button_h": 44,
+    "keyboard_pan_delta": 40,
+    "return_attack": {"screen":"SERVICE","reality":"NORMAL","digital":"FULL","readingMode":"QUICK","setupSeen":false,"behavior":"RETURN","presence":"LIGHT","contextOpen":false,"readDetailOpen":false,"setupOpen":false,"toolsOpen":false,"memoryEntries":[],"scrollLeft":371,"scrollTop":0},
+    "behavior_after_route_key":"SEEK",
+    "logo_asset":{"missing":true,"hidden":true}
+  },
+  {
+    "viewport": "430x932",
+    "errors": [],
+    "overflow": {"sw":430,"cw":430},
+    "min_visible_button_w": 44,
+    "min_visible_button_h": 44,
+    "keyboard_pan_delta": 40,
+    "return_attack": {"screen":"SERVICE","reality":"NORMAL","digital":"FULL","readingMode":"QUICK","setupSeen":false,"behavior":"RETURN","presence":"LIGHT","contextOpen":false,"readDetailOpen":false,"setupOpen":false,"toolsOpen":false,"memoryEntries":[],"scrollLeft":378,"scrollTop":0},
+    "behavior_after_route_key":"SEEK",
+    "logo_asset":{"missing":true,"hidden":true}
+  },
+  {
+    "viewport":"390x844 REDUCED",
+    "errors":[],
+    "running_animations":0,
+    "state":{"screen":"ROUTE","reality":"NORMAL","digital":"FULL","readingMode":"QUICK","setupSeen":false,"behavior":"ENTER","presence":"FULL","contextOpen":true,"readDetailOpen":false,"setupOpen":false,"toolsOpen":false,"memoryEntries":[],"scrollLeft":371,"scrollTop":0}
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "object": "C04_QINGJIANG_APP_v1_30_SHUIMO_GAME_REBUILD_CANDIDATE",
+  "basis": "Web CH14 01–07 actual finished carrier",
+  "bindings": [
+    {"source":"CH14-P01","consume":["REAL QINGJIANG FIRST","WASH / PAPER as visual carrier","MATERIAL WITHOUT NOSTALGIA","RETURN FIRST"],"app_translation":"world field and ink material can carry atmosphere; landscape/site truth is never invented or replaced by texture"},
+    {"source":"CH14-P03","consume":["Stone Seal geometry authority","v5 outlined lockup family","effect-off baseline","no glow/neon","no runtime re-typesetting"],"app_translation":"invented CSS/text logo removed; mobile identity accepts authoritative Stone Seal asset only and hides when binary is unavailable"},
+    {"source":"CH14-P04","consume":["Bone Mist","River Black","Deep Water","Jade Current","Mica","local Cinnabar"],"app_translation":"role-bound color; operational status colors remain separate from brand accent"},
+    {"source":"CH14-P05","consume":["contemporary editorial hierarchy","serif claim / sans function / mono evidence","large negative space"],"app_translation":"typography establishes hierarchy before decoration; functional labels stay concise"},
+    {"source":"CH14-P06","consume":["LINE","SEAL","PAGE","TRACE","LINE → REVEAL → TRACE → MEMORY"],"app_translation":"ROUTE-03 remains LINE authority; PAGE is optional reading field; TRACE is subordinate residue; SEAL is identity only"},
+    {"source":"CH14-P07","consume":["function-first iconography","compact functional decoding","cross-media legibility"],"app_translation":"navigation and Return remain functional; no decorative icon pack or fantasy HUD"}
+  ],
+  "game_ui_binding": {
+    "grammar":["SEEK","APPROACH","FOCUS","ENTER","REVEAL","WITHDRAW","RETURN"],
+    "world_first":true,
+    "no_compulsory_gamification":true,
+    "prohibited":["XP","coins","forced checkpoints","13/13 completion","neon glow","glass HUD wall","second route geometry"]
+  },
+  "truth_boundary":["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","STATUS UNKNOWN"],
+  "does_not_prove":["independent Design PASS","field truth","route/GPS precision","live operations","logo binary persistence"]
+}

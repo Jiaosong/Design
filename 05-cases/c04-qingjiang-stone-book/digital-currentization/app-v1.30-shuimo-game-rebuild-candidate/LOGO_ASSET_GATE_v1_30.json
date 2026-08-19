@@ -1,0 +1,11 @@
+{
+  "gate":"LOGO_ASSET_BINDING",
+  "status":"OPEN",
+  "required_asset":"QJ_STONE_SEAL_MARK_v2_1.svg",
+  "source_context":"actual Web CH14 P03 asset chain; v5 outlined lockups remain the larger identity family",
+  "current_runtime_behavior":"brand mark element references the authoritative filename; if the file is absent it is hidden",
+  "removed":"v1.29 runtime-built CSS/text pseudo-logo",
+  "forbidden_fallbacks":["redraw from screenshot","runtime font lockup","CSS approximation","invented seal","old unrelated OLEANDER logo"],
+  "reason_open":"exact Web CH14 SVG bytes were not materialized into this sandbox during this run",
+  "claim_boundary":"wrong logo removed != correct logo binary bound"
+}

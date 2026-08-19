@@ -1,0 +1,24 @@
+{
+  "object": "C04_QINGJIANG_APP_v1_30_SHUIMO_GAME_REBUILD_CANDIDATE",
+  "base": "v1.29 game-texture candidate",
+  "style_authority": "Web CH14 01–07 actual finished carrier",
+  "skills": [
+    "oleander-game-ui v0.1.1",
+    "oleander-mobile-game-ui v0.1.0",
+    "oleander-ui-interaction v0.1.0",
+    "oleander-ui-visual-composition v0.1.0"
+  ],
+  "canonical_exploration_grammar": ["SEEK","APPROACH","FOCUS","ENTER","REVEAL","WITHDRAW","RETURN"],
+  "key_repairs": [
+    "remove invented runtime-built logo",
+    "bind mobile identity only to actual Web CH14 Stone Seal asset filename; fail invisible if missing",
+    "fix behavior mismatch INTENT/SCOUT vs SEEK/APPROACH",
+    "world-stage dominates ROUTE/R06/R13",
+    "PAGE reveal enters from local world rather than dashboard card",
+    "R13 withdraws optional play/reading and keeps Return interrupt",
+    "preserve ROUTE-03 embedded carrier without geometry mutation"
+  ],
+  "logo_binary_state": "OPEN — actual Web CH14 SVG not materialized in current sandbox; no substitute drawn",
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","STATUS UNKNOWN"],
+  "independent_design_verdict": "REQUIRED"
+}

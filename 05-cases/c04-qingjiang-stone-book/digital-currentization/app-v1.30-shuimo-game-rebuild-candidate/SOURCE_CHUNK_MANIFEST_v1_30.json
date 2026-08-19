@@ -1,0 +1,14 @@
+{
+  "source": "index.html",
+  "chunks": [
+    {"file":"index.part01.txt","bytes":80000,"sha256":"29c1ef7556e3ce47407509279d7bde637a52b2cadacee45949385d06c0aa70c2"},
+    {"file":"index.part02.txt","bytes":80000,"sha256":"7811cb34e911d67dcb815b10d0ce3f0e61bfcf7a82b8095f1fb39d7724540e85"},
+    {"file":"index.part03.txt","bytes":80000,"sha256":"684e6c4c511669bcb298a90d327ab739081631eddc3a90dfe0c528a17d473c7a"},
+    {"file":"index.part04.txt","bytes":80000,"sha256":"cda637a27d3147c492dd07543b72832e2e553f6ae62419113d7159732c30fee2"},
+    {"file":"index.part05.txt","bytes":80000,"sha256":"7f343575884d0080bb81291b809c55aa08a1ffedabe46826755c751d3ace8661"},
+    {"file":"index.part06.txt","bytes":53936,"sha256":"122d3c70304b539604fa8d454c127eae765189b8209637ca18c9d0f74f6988c8"}
+  ],
+  "reassembled_bytes":453936,
+  "reassembled_sha256":"7e5b5a246949ce5faf404319499ee2c2c4950a085d45d341bd7fa3ad3ff4fe12",
+  "persistence_boundary":"chunk hashes describe the exact local canonical source; source chunk bytes are retained in the recoverable local handoff. GitHub does not claim those chunk binaries are present until materialized."
+}
