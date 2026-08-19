@@ -1,0 +1,42 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13",
+  "authoring_unit": "CH13-P01",
+  "surface": "CH13-01 Physical Strategy v3",
+  "source_precedence": [
+    "ODB-02 / 可拆卸倚靠休息板.png / USER ORIGINAL DESIGN SOURCE",
+    "F01 / 05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png / LATER CURRENTIZED DESCENDANT",
+    "CH13-01 v3 / PRESENTATION CARRIER"
+  ],
+  "materialized_source": {
+    "file": "05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png",
+    "size_px": [2560, 1440],
+    "sha256": "4a082ca4d124ceadb82af3a30af6f80c658a4a756735eb482459af89aba78ae5",
+    "role": "currentized descendant used only as a presentation carrier because ODB-02 raw source bytes are not materialized in the current runtime"
+  },
+  "upstream_identity": {
+    "object_id": "ODB-02",
+    "file": "可拆卸倚靠休息板.png",
+    "role": "USER ORIGINAL DESIGN SOURCE / PHYSICAL-BODY SOURCE / PRESERVE",
+    "raw_bytes_in_runtime": false,
+    "rule": "F01 and CH13-01 do not replace ODB-02 design-source authority"
+  },
+  "presentation_crops": [
+    {
+      "id": "F01-SCENE",
+      "source_crop_xyxy": [58, 205, 1600, 922],
+      "output_size_px": [1542, 717],
+      "sha256": "28b9f5431ba6336a3a5a77e64736c8f8282d920980c6ee9866f2db02f2a3902c",
+      "preservation": "complete product top + both supports + ground contact + valley context retained; no object-fit cover; no geometry redraw"
+    },
+    {
+      "id": "F01-LEAN",
+      "source_crop_xyxy": [1765, 390, 2085, 675],
+      "output_size_px": [320, 285],
+      "sha256": "88926e61254c7398b42c0e9c31bf2157a9620e410a9cc19260a6906f8caf4627",
+      "preservation": "same-source LEAN body gesture retained as secondary evidence; no redraw"
+    }
+  ],
+  "truth_boundary": "CONCEPT VISUAL / NOT SITE PHOTO / NOT LOCATED / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "no_image_generation": true
+}
