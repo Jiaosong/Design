@@ -1,0 +1,82 @@
+{
+  "schema": "OLEANDER_IMAGE_OPS_PROJECT_BINDING_v1.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "surface": "CH08-S01-MAIN",
+  "candidate_version": "v1.1",
+  "current_tool": {
+    "canonical_id": "T-VISUAL-IMAGE-OPS-001",
+    "name": "OLEANDER Image Processing Operator Standard",
+    "role": "TOOL / execution template",
+    "authority": "Notion Current / ACTIVE / E2",
+    "boundary": "Project source/design authority remains higher; filter output does not prove Design KEEP."
+  },
+  "source": {
+    "id": "SRC05",
+    "filename": "5pszhdcxjz.jpg",
+    "local_carrier": "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "natural_px": "1080x608",
+    "semantic_slot": "CH08-S01-MAIN",
+    "generation": "OFF"
+  },
+  "execution_contract": "SOURCE / DESIGN OBJECT → OPERATION INTENT → OWNER / MASK → OPERATOR CLASS → PARAMETERS → NON-DESTRUCTIVE STATE → EFFECT-OFF BASELINE → EXPORT / RUNTIME → ACTUAL READBACK → REVIEW",
+  "operations": [
+    {
+      "effect_id": "CH08-S01-FX01_TONAL_FIELD",
+      "scope": "PROJECT-SCOPED / NOT A GLOBAL CANONICAL RECIPE",
+      "family": "Adjustment",
+      "role": "reduce oversaturation and align source with the existing CH14/Qingjiang presentation field without reconstructing content",
+      "owner": "SRC05 display layer only",
+      "mask": "full bounded photo field",
+      "vector_or_raster": "raster display adjustment",
+      "parameters": {"css_filter": "saturate(.84) contrast(1.015) brightness(.99) sepia(.035)"},
+      "off_state": "?tonal=off or ?fx=off",
+      "export_support": "browser CSS",
+      "failure_triggers": ["loss of river/peak separability", "material hue shift that implies false scene conditions", "source detail reconstruction claim"],
+      "does_not_prove": ["field color truth", "material truth", "restored source resolution", "Design KEEP"]
+    },
+    {
+      "effect_id": "CH08-S01-FX02_BONE_WASH_MASK",
+      "scope": "PROJECT-SCOPED / NOT A GLOBAL CANONICAL RECIPE",
+      "family": "Layer / Composite + Mask",
+      "role": "create a bounded paper-to-landscape reading transition so typography does not require an opaque card over the scene",
+      "owner": "photo display layer only",
+      "mask": "radial + linear gradient composite bounded to photoRect",
+      "vector_or_raster": "CSS composite layer",
+      "parameters": {"desktop": "left radial/linear Bone Mist wash + restrained bottom darkening", "mobile": "bottom-only darkening; left wash removed to keep image-first reading"},
+      "off_state": "?wash=off or ?fx=off",
+      "export_support": "browser CSS gradients",
+      "failure_triggers": ["landscape first-read becomes subordinate to copy", "wash hides a source conflict", "mask extends outside the image owner"],
+      "does_not_prove": ["absence of hidden site content", "geometry authority", "Design KEEP"]
+    },
+    {
+      "effect_id": "CH08-S01-FX03_INK_EDGE_PREVIEW",
+      "scope": "PROJECT-SCOPED / NOT A GLOBAL CANONICAL RECIPE",
+      "family": "Raster-preview Effect",
+      "role": "very low-opacity edge emphasis to improve peak/vegetation separation at the reviewed presentation scale",
+      "owner": "duplicate of the same SRC05 display layer; no second semantic image identity",
+      "mask": "desktop left-to-right edge visibility mask; mobile vertical visibility mask",
+      "vector_or_raster": "SVG filter applied to raster duplicate",
+      "parameters": {"filter": "grayscale → 3x3 edge convolution → component transfer", "blend": "multiply", "desktop_opacity": 0.11, "mobile_opacity": 0.075},
+      "off_state": "?edge=off or ?fx=off",
+      "export_support": "inline SVG filter + browser composite",
+      "fallback": "hide edge layer; base source remains complete",
+      "failure_triggers": ["halo/edge artifact becomes a first-read style effect", "false-detail/restoration claim", "source geometry changes", "effect required for scene legibility"],
+      "does_not_prove": ["new image detail", "higher source resolution", "vector authority", "field truth", "Design KEEP"]
+    }
+  ],
+  "attack_tests": {
+    "TARGET_SIZE": "desktop 1920x1080 + mobile 390x844",
+    "GRAYSCALE": ["readback/S01_v1.1_desktop_gray.png", "readback/S01_v1.1_mobile_gray.png"],
+    "EFFECT_OFF": "readback/S01_v1.1_desktop_fxoff.png",
+    "INDIVIDUAL_OFF": ["readback/S01_v1.1_desktop_tonaloff.png", "readback/S01_v1.1_desktop_washoff.png", "readback/S01_v1.1_desktop_edgeoff.png"],
+    "bounded_pixel_diff": {
+      "all_fx_off_vs_on": {"mean_abs_rgb": 8.5913, "changed_pixel_ratio": 0.4106, "bbox": [551, 186, 1868, 834]},
+      "tonal_off_vs_on": {"mean_abs_rgb": 1.2035, "changed_pixel_ratio": 0.382501, "bbox": [551, 186, 1868, 834]},
+      "wash_off_vs_on": {"mean_abs_rgb": 6.6038, "changed_pixel_ratio": 0.200365, "bbox": [551, 186, 1868, 834]},
+      "edge_off_vs_on": {"mean_abs_rgb": 1.9994, "changed_pixel_ratio": 0.344066, "bbox": [551, 186, 1868, 834]}
+    }
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
