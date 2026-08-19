@@ -1,6 +1,6 @@
 # CH08｜Image-led Multi-surface Production Plan｜v0.5
 
-State: `ACTIVE AUTHORING PLAN / B01+B02 EXECUTED / NO SELF-KEEP / NO_PROMOTION`  
+State: `ACTIVE AUTHORING PLAN / B01+B02 EXECUTED / B03 SOURCE HOLD / NO SELF-KEEP / NO_PROMOTION`  
 Authority: `CH08 v0.4 Master Design Strategy` + `CH08 v0.5 Visual Narrative Architecture`  
 Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`
 
@@ -48,17 +48,33 @@ Executed repair: S06 R0 exposed orphaned embedded Hero copy after an overly loos
 Gate: Boat remains conditional; no invented operation/schedule/route precision. S05 remains `NOT SURVEY / NOT GEOGRAPHIC POSITION`. S06 demonstrates a chapter-level intervention rule and does not claim a no-design decision at a specific field node.
 
 ### B03｜P03 RELATION / CROSS｜S07–S09
-Status: `NEXT / SOURCE GATE ACTIVE / PIXELS NOT YET AUTHORIZED`.
+Status: `SOURCE GATE EXECUTED / MOVING-STIMULUS HOLD / FRONTSTAGE PIXELS NOT AUTHORIZED`.
 
-Dependencies: strongest current Cable-specific visual + locked route/spatial relation source.
+Target scene contract:
+`BEFORE ORIENT → DURING OBSERVE → AFTER RECOGNIZE`.
 
 - S07 Before crossing.
 - S08 Moving relation / cross-river viewpoint.
 - S09 After crossing / re-orient.
 
-Gate: resolve Cable-specific primary visual before MAIN-quality composition. Master Journey or a generic cable image may support source search but cannot silently substitute as the primary visual.
+Current authority audit:
+- CH12 v0.4 `SC-R01 / Cable Moving View` confirms this same scene contract.
+- Current primary binding is only `official/project-approved static Qingjiang/cable context where available`.
+- `SEC_A_CABLE_RELATION.svg` is support evidence.
+- continuous real cabin POV / same-source moving stimulus is explicitly **not materialized**.
+- static pan, AI video extension, multiple-still fake motion and generic cableway footage are explicitly forbidden substitutes.
+
+Drive and repository search did not reveal a stronger independently materialized continuous Cable moving sequence.
+
+Gate decision:
+`S08 = HOLD`; because S08 is the experiential center of P03, the producer will not fabricate a polished S07→S08→S09 temporal sequence from duplicated static Hero crops.
+
+Persistent gate record:
+`ch08-master-strategy/p03-relation-cross-source-gate-v0.1/P03_SOURCE_GATE_v0_1.md`.
 
 ### B04｜P04 BODY / WALK｜S10–S13
+Status: `QUEUED AFTER P03 SOURCE RESOLUTION / DEPENDENCY AUDIT MAY CONTINUE IN PARALLEL`.
+
 Dependencies: strongest current WALK/body-scale visual, R13 current four-frame, recovery visual.
 
 - S10 Walk / body-scale encounter.
@@ -141,7 +157,7 @@ Executed and durably persisted:
 - `B01 / P01 / S01–S03`;
 - `B02 / P02 / S04–S06`.
 
-Current active work:
-`B03 / P03 / SOURCE GATE` — resolve the strongest Cable-specific current visual and a compatible locked relation source **before** authoring S07–S09 pixels.
+Executed source gate:
+- `B03 / P03 / S07–S09 = MOVING-STIMULUS HOLD` because the required continuous/same-source Cable movement evidence is not materialized.
 
-This is a quality gate, not a pause in the chapter: P04–P09 dependencies remain listed and may be source-resolved in parallel, but P03 frontstage pixels cannot be promoted from a generic substitute.
+Current next action is **not** to substitute a generic image. It is to close the Cable source gap. In parallel, dependency audits for P04–P09 may continue so later batches do not discover avoidable source gaps only after layout begins.
