@@ -1,8 +1,9 @@
 # CH10 P01｜Current Page-by-Page Review Target
 
-Current producer review target: `p01-resource-choreography-v0.3/`.
+Current producer review target: `p01-resource-choreography-v0.3.1/`.
 
-Superseded P01 targets:
+Superseded P01 review targets:
+- `p01-resource-choreography-v0.3 = SUPERSEDED AS PRODUCER TARGET / PROVENANCE RETAINED`;
 - `p01-resource-led-v0.2 = REVISE / HISTORY`;
 - `p01-appearance-gate-v0.1 = REVISE / HISTORY`.
 
@@ -10,14 +11,24 @@ Public interaction proposition: `先看清江 → 再读一页；恢复、决策
 
 Authority: `CH08 v0.4 appearance qualification → CH10 v0.4 optional reading behavior → CH14 visual reference only`.
 
-Resource choreography:
+Resource choreography is unchanged from v0.3:
 - `MOVE / CHOOSE = full-scene cable / relation resource`;
 - `LOOK / OBSERVE / PASS = photo-only Qingjiang landscape resource`;
 - `OBSERVE = bounded reading fold + one prompt`;
 - `RECOVER = landscape dim + extracted body/recovery scale drawing`.
 
-Canonical HTML SHA256: `ec3e4e1f3dc02f4d19fa74516f62e7e07ddcbd923bd519293d13d14935b5153e`.
+Finished-pixel delta in v0.3.1:
+- desktop six-state rail reduced from 82px to 66px and visually subordinated;
+- mobile rail reduced to 68px; repeated English labels hidden while `01-06 + 中文` remain visible;
+- state title / RECOVER field / Return trace re-anchored to the reduced rail;
+- `aria-pressed` added to the six state controls.
 
-Status: `EXECUTED / ACTUAL PIXELS REOPENED / ARTIFACT REVIEW EXECUTED / PAGE-SCOPED GITHUB REVIEW REQUIRED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
+Canonical HTML: `9826 bytes / SHA256 88cf25354c5f26626222cf7f0e10bc6c55a48769e2004753ffb68366628a73e1`.
 
-Open integrated-Web gates: `whole-project image/resource uniqueness + durable binary retrieval`.
+Durable review ZIP: Drive `1aXZIcyGGIxW1rZ9_kdiPFaQiJJhFJaO1` / `14361267 bytes` / SHA256 `55f7d41983cf943be3d06ebf3167f4d7ce222d56158de893ed586b23cb726a5c`; raw Drive re-retrieval and unzip verification PASS. `AR-S09 durable binary retrieval = CLOSED for this P01 review package`.
+
+Status: `EXECUTED / ACTUAL PIXELS REOPENED / FINISHED-PIXEL CORRECTION COMPLETE / ARTIFACT REVIEW EXECUTED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP`.
+
+Open integrated-Web gate: `whole-project image/resource uniqueness before Promotion`.
+
+`FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION`.
