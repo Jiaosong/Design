@@ -1,0 +1,16 @@
+{
+  "schema": "c04.ch04.visual-blueprint.v0.2",
+  "status": "PRODUCER CANDIDATE / VISUAL-FIRST REBUILD / NOT PROMOTION",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH04",
+  "rule": "REAL PROJECT OBJECT FIRST -> AUDIENCE CONDITION -> VARIABLE DEPTH/SUPPORT -> SAME RETURN",
+  "pages": {
+    "CH04-P01": {"primary":"C22 SEC-A source-bound schematic translation","role":"real journey section; same-person changing condition","change":"replaces generic condition curve"},
+    "CH04-P02": {"primary":"C22 N02 source-bound schematic translation","support":"ODI-06 redflower cub exact mechanism cross-link","role":"joint attention scene","change":"replaces abstract gaze diagram"},
+    "CH04-P03": {"primary":"ROUTE-03 locked current raster carrier","role":"agency on real route","change":"enlarge map, integrate choice overlays"},
+    "CH04-P04": {"primary":"C22 exploded-system logic / native source-bound translation","role":"real L0-L4 removable system layers","change":"replaces editorial row list"},
+    "CH04-P05": {"primary":"C22 M0-M7 state logic / native source-bound translation","role":"recover/orient/return-first journey","change":"replaces generic no-phone line art; no CH13 product hero"},
+    "CH04-P06": {"primary":"R06 real landscape source carrier","role":"same real scene / variable depth & support","change":"keeps one real scene, expands cinematic first read"}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
