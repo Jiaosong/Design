@@ -1,0 +1,31 @@
+{
+  "version": "CH05 raster-free v5",
+  "desktop_pages": 4,
+  "mobile_pages": 4,
+  "desktop_svg_editable": true,
+  "raster_content_image_sources": 0,
+  "image_generation_used": false,
+  "route03_source_geometry_reauthored": false,
+  "route03_use": "READ_ONLY_TOPOLOGY_SUBSET_WITH_EXACT_LOCKED_PATH_DATA_AND_NODE_COORDINATES",
+  "image_ledger_lookup": "PASS / NO CH05 CONTENT-IMAGE SLOT CONSUMED",
+  "dimensions": {
+    "desktop_1920": [[1920,1080],[1920,1080],[1920,1080],[1920,1080]],
+    "desktop_1366": [[1366,768],[1366,768],[1366,768],[1366,768]],
+    "mobile_390": [[390,844],[390,844],[390,844],[390,844]]
+  },
+  "producer_actual_pixel_repairs": [
+    "P01 removed decorative curved field because it could imply a second spatial/water geometry.",
+    "P01 moved authority note off the route carrier.",
+    "P03 repaired monotonic ribbon closure to remove geometric spikes.",
+    "Mobile P04 title recomposed to two lines; no horizontal crop.",
+    "Mobile P01 ROUTE-03 subset uniformly refit inside 390px carrier."
+  ],
+  "actual_pixel_readback_after_repairs": "COMPLETE",
+  "mobile_semantic_recomposition": "4/4",
+  "drive_file_id": "1wSVemsVC8ywkW2ssch8Ub66x-9dG9eeH",
+  "drive_refetch_bytes": 6753954,
+  "package_sha256": "f5f4f24f55827c2538c143e9c256f5ac66a5b81b7a821225b702a403f1850586",
+  "zip_integrity": "PASS",
+  "independent_professional_design_review": "PENDING",
+  "promotion": "NO_PROMOTION"
+}
