@@ -1,0 +1,9 @@
+{
+  "artifact": "C04 CH15 v0.5 project-scale reconstruct",
+  "state": "ACTUAL PIXEL READBACK COMPLETE / EXACT LEAN SOURCE LOCAL / DURABLE REVIEW BINARY PASS / PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "lean_source": {"file":"index_source.html","bytes":18727,"sha256":"e7418ae4237b1d5251c994df3b1726f2a1933df3ac909f30f25dba3d05b7b62a"},
+  "portable_runtime": {"file":"index.html","bytes":1728815,"sha256":"d3d2fe36dbbacf2ef5869b7292ac9e01a5879d7471362db886f4bfeb7478f68a"},
+  "review_package": {"file":"C04_CH15_MEMORY_IP_v0_5.zip","bytes":5322890,"sha256":"faa34eab641b22702b829a5bb1f76c3da9797bcc53c5e00b36c4b58cdb00c72c"},
+  "drive": {"folder_id":"1a-TEZycjRCM8de_PifVZPUZ0xOQQWken","zip_id":"1s7djW-rdLhqttLI-gzzwNZEubhEcWWx-","desktop_montage_id":"18facoAgfYft-r6UxFgBR2lfukigpGkkV","mobile_montage_id":"1nFOT2cHE2OTejhEIO3M56M4-G-i4dsAa","retrieved_bytes":5322890,"retrieved_sha256":"faa34eab641b22702b829a5bb1f76c3da9797bcc53c5e00b36c4b58cdb00c72c","result":"EXACT MATCH"},
+  "does_not_prove": ["independent professional design approval","protected C04-WEB-Pxxx allocation","global Web image uniqueness PASS","field validation","manufacturing/commercial readiness","promotion"]
+}
