@@ -1,0 +1,16 @@
+{
+  "DEM_source": "C04_CH02_TERRAIN_UTM49N_30M.tif",
+  "DEM_crs": "EPSG:32649",
+  "DEM_shape": [94, 193],
+  "DEM_cell_m": [30.0, 30.0],
+  "DEM_bounds": [379770.0, 3351540.0, 385560.0, 3354360.0],
+  "route_authority": "ROUTE-03 / USER LOCKED CURRENT v3.4 / exact path data",
+  "route_node_count": 17,
+  "source_rules": {
+    "P01": "ROUTE-03 full locked topology; no proxy landscape",
+    "P02": "CH02 Current GLO-30 v1.1 verified 30 m DSM + source-derived profiles; body layer is presentation-only and not spatially registered",
+    "P03": "Current project objects R01 / ROUTE-03 / R06 / R13 / RETURN own the attention analysis",
+    "P04": "Every CH05 condition must bind a Qingjiang Current object/example before behavior and response are shown"
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
