@@ -1,0 +1,24 @@
+{
+  "object": "C04 / CH10-P02",
+  "revision": "v0.2",
+  "status": "PRODUCER CANDIDATE / ACTUAL-PIXEL REVIEW TARGET / NO SELF-KEEP",
+  "authority": "CH10 v0.4 Core 8 + Companion Pool + Trip Subset; P02 = one active attention object, not eight cards",
+  "image_generation": "NOT USED",
+  "shared_attention_carrier": {
+    "source_filename": "CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png",
+    "drive_id": "1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv",
+    "transform": "crop [590,120,1370,559] -> resize 1920x1080 -> contrast 1.03 -> JPEG q92",
+    "bytes": 238268,
+    "sha256": "34ae38755afa07f6cefdc0d8e8c6f8ff28c06d629d29828426704e3fcb2d10d5",
+    "semantic_role": "SHARED ATTENTION STUDY ONLY; NOT R01/R02/R05/R06/R07/R09/R12/R13 SITE-IMAGE EVIDENCE"
+  },
+  "content_boundaries": {
+    "R05": "authoritative Honghua landscape pixel remains OPEN; no substitute inserted",
+    "R13": "P02 encodes PASS / LOOK BACK / RETURN only; R13 spatial proof stays in P05/CH12 scene-specific assets",
+    "R07": "仓禀峰 / 仓廪峰 dual spelling retained"
+  },
+  "public_surface": "No producer/Gate/FIELD audit text. Shared-view role is expressed as editorial caption because otherwise one landscape image could be misread as node imagery.",
+  "canonical_html": {"bytes": 12890, "sha256": "5c2a4f1751a1081e442585c0d36316adef16ea0e1d9e18b2413251e84373b6a6"},
+  "portable_html": {"bytes": 648246, "sha256": "2833efe43ce091be6525c101ff118df56439abbaa4d7cc80a553efdc266f0bd2"},
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}

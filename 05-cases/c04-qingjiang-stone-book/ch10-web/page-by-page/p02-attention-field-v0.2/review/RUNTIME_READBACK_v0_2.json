@@ -1,0 +1,23 @@
+{
+  "object": "C04 / CH10-P02",
+  "revision": "v0.2",
+  "method": "Actual Chromium 144 via Chrome DevTools Protocol Page.setDocumentContent on about:blank; organization policy blocks local/file navigation. Portable HTML is the rendered source.",
+  "viewports": {
+    "desktop_R06": {"sw":1920,"cw":1920,"sh":1080,"ch":1080,"active":"R06","focus":"","pressedCount":1,"minButton":103,"errs":[]},
+    "desktop_R13_after_click": {"sw":1920,"cw":1920,"sh":1080,"ch":1080,"active":"R13","focus":"","pressedCount":1,"minButton":103,"errs":[]},
+    "mobile_R06": {"sw":390,"cw":390,"sh":844,"ch":844,"active":"R06","focus":"","pressedCount":1,"minButton":69,"errs":[]},
+    "mobile_R13_after_click": {"sw":390,"cw":390,"sh":844,"ch":844,"active":"R13","focus":"","pressedCount":1,"minButton":69,"errs":[]}
+  },
+  "keyboard": {"path":"focus R06 + ArrowRight","result":{"sw":1920,"cw":1920,"sh":1080,"ch":1080,"active":"R07","focus":"R07","pressedCount":1,"minButton":103,"errs":[]}},
+  "reduced_motion": {"focusTransition":"0s","frameTransition":"0s"},
+  "cdp_exception_events": [],
+  "stable_state_capture_wait_ms": 350,
+  "screenshots": {
+    "P02_R06_1920x1080.png":{"bytes":1742183,"sha256":"e6c3952aaca32df2c467e0cdb626412ea4463a4788a72634b133ac77eff9cf41"},
+    "P02_R06_390x844.png":{"bytes":328628,"sha256":"ae6a0092c2a954070c5dfed237804de08ca99bc9339472e87c9a9ebccb268e3a"},
+    "P02_R13_1920x1080.png":{"bytes":1740081,"sha256":"79fcc10f3c112e8ac1d4ca999f508d2c6b11667bbc38742ade1d72de87c7cfc6"},
+    "P02_R13_390x844.png":{"bytes":320110,"sha256":"3df3063852732e6fcb734bfb49681f638c200b57a805942010d1195c87afb1dd"},
+    "P02_CONTACT_v0_2.jpg":{"bytes":291587,"sha256":"0c1ca87bc4c56d9245c62d0bb6053145458f8a37d41bd0186baa2750efb7c783"}
+  },
+  "result_boundary": "Runtime/readback evidence only. It does not issue a professional design verdict."
+}

@@ -1,0 +1,18 @@
+{
+  "object_id": "C04_CH10_P02_ATTENTION_FIELD_v0_3_1",
+  "status": "SOURCE-SAFE PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING",
+  "supersedes": ["v0.3 = PROVENANCE / BYTE-LOCK FAILED","v0.2 = REVISE / HISTORY / SOURCE-CONFLICT"],
+  "content_image_count": 0,
+  "image_generation": "NOT USED",
+  "native_carrier": "HTML/CSS/JS + inline editable SVG",
+  "canonical_html": {"bytes":10701,"sha256":"a6300befc33750dc69c776c41daf3154abe8ba693f6ac656fbe03ecaced14e8f","git_blob_sha":"e97068c4a94552a3a1246beb141c424bb8a8686d"},
+  "preview_artifacts": [
+    {"role":"contact_sheet","path":"screens/P02_CONTACT_v0_3_1.jpg","bytes":150861,"sha256":"243456d04e573f0b40a227f29cabe3c9a16ce9c55b09e4a6683508d847f0bded","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"},
+    {"role":"desktop_preview","path":"screens/P02_R06_1920x1080.png","bytes":1077220,"sha256":"52684a40e1e769273fbd4761386d99d81441071ea94bc25234d8a7acb1975f99","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"},
+    {"role":"mobile_preview","path":"screens/P02_R06_390x844.png","bytes":242118,"sha256":"ed205a0783dbfab49c9b8ed2ce50a3571c1324d0f6f690a3e8c7e4c63497c355","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"}
+  ],
+  "preview_policy": "Actual-pixel screenshots/contact sheets are review artifacts, not semantic content images; image-consumption uniqueness does not remove them.",
+  "core8": ["R01 红岩嘴","R02 华中第一藤","R05 红花石林","R06 河谷","R07 仓禀峰／仓廪峰","R09 盐水女神峰","R12 廪君峰","R13 一线天"],
+  "open": ["R05 authoritative Honghua site pixel remains OPEN; no generic substitute","independent professional design verdict PENDING","integrated CH10 resource/rhythm review OPEN"],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
