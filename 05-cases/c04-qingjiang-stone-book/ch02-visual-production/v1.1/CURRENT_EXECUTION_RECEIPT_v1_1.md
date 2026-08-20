@@ -152,3 +152,37 @@ Boundary:
 - P01 scenic raster is a separate visual layer while typography, annotations, leaders and route overlay are live DOM/SVG;
 - P05 default pixel mode prioritizes reference fidelity; a native SVG diagram mode remains available in the same HTML;
 - this successor remains `EXECUTED / REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION`.
+
+## 2026-08-20｜Editable Web repair v1.1｜LIVE TEXT ROUNDTRIP VERIFIED
+
+User-reported blocker: the v1.0 carrier looked editable but P01 still contained baked annotation text in the visual reference layer, so edited overlay text could reveal the old wording underneath.
+
+Repair scope:
+- no image generation used;
+- all visible P01/P05 page typography is represented as live HTML DOM text;
+- 44 editable fields are assigned stable local IDs (`T01…T44`);
+- P05 default presentation is now native SVG + DOM; the baked pixel reference page is hidden by default;
+- P01 retains a local scenic raster layer for the photographic landscape only, while titles, annotations, findings, footer, route labels and page metadata remain live DOM/SVG;
+- localized non-generative blur/scrub layers suppress baked annotation lettering in the P01 reference raster so edited wording is not visually duplicated;
+- editor adds direct `contenteditable`, a field inspector (text / X / Y / font size / letter spacing / color), automatic 1:1 edit mode, localStorage draft persistence, text JSON export/import, and local HTML export.
+
+Actual Chromium DOM-injection verification:
+- editable field count = `44`;
+- inspector edit smoke test: `T01 → EDIT TEST / 可编辑` = PASS;
+- direct contenteditable smoke test: `T02 → DIRECT EDIT / 直接编辑` = PASS;
+- save/download roundtrip: edited wording remains present in exported HTML and all 44 editable fields remain = PASS;
+- console errors = `0`;
+- page errors = `0`.
+
+Local artifact:
+- `CH02_P01_P05_EDITABLE_LOCAL_v1_1.html`
+- bytes `5,300,941`
+- SHA256 `331833f0152b65c78a44d5d5d168379aaa5c35ca42852a7aaa12a38ca9202ceb`
+
+Local source/review package:
+- `C04_CH02_P01_P05_EDITABLE_WEB_v1_1.zip`
+- bytes `9,746,820`
+- SHA256 `ffa1ffb1b9b04335fccf3bf25ef3d75f3f4e032d8a8aaae3a1f4b4d214a502a5`
+
+Boundary remains:
+`EXECUTED / EDITABILITY ROUNDTRIP PASS / PRESENTATION REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION`.
