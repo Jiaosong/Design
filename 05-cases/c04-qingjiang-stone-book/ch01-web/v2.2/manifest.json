@@ -1,0 +1,41 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH01",
+  "candidate": "v2.2",
+  "state": "ACTUAL_PIXEL_READBACK_COMPLETE / PRODUCER REVIEW CANDIDATE / ARTIFACT REVIEW 1.2 PENDING / NO_PROMOTION",
+  "raster_content_images": 0,
+  "whole_page_generated_images": 0,
+  "route03_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+  "truth": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT GPS",
+    "NOT FOR CONSTRUCTION"
+  ],
+  "readback": {
+    "desktop": {"scrollWidth": 1920, "clientWidth": 1920, "imgCount": 0, "errors": []},
+    "mobile": {"scrollWidth": 390, "clientWidth": 390, "imgCount": 0, "errors": []},
+    "source_audit": {
+      "html_img_elements": 0,
+      "html_picture_elements": 0,
+      "css_url_tokens": 0,
+      "data_image_tokens": 0,
+      "raster_content_images": 0,
+      "whole_page_generated_images": 0,
+      "route03_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75"
+    }
+  },
+  "source_hashes": {
+    "index.html": "4e1a3f755fa9e593b417020857f1b8d135a0f01d81add4832f3e027422c3824a",
+    "style.css": "968004b4a14015c8fc4e3d52647df87452bedefd62551ed32ae50c0b6da7c6cc",
+    "source_review_bundle_tar_gz": "52881f0265788d4b59422e30816e4aa494b11e82abb643fdda8f8b3c3309fd16"
+  },
+  "local_review_wrapper": {
+    "file": "C04_CH01_WEB_v2.2_IMAGE_RULE_DEEPENED.zip",
+    "bytes": 1825082,
+    "sha256": "8969fe5bbf25b9bae2a6309f56f0b215b3210f4e3249a77b680fd51ff3e05cd5"
+  }
+}
