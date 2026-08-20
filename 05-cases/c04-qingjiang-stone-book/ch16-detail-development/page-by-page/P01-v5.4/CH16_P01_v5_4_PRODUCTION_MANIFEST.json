@@ -16,8 +16,20 @@
     "role": "REAL_QINGJIANG_PEAK_PATH_CONTEXT_ONLY",
     "does_not_prove": ["FIELD_OBSERVATION","SITE_PLACEMENT","BODY_SCALE","SURVEY_GEOMETRY","ENGINEERING_VALIDITY","DESIGN_PASS"]
   },
-  "html": {"file":"CH16_P01_visual_rebuild_v5_4.html","sha256":"cf5b7f1de51d05642caf52bf1a8785f6629a1cb0f0828e4564cc8640b25cd467","bytes":16046},
-  "readback": {"desktop":"1920x1080 SCENE/BODY/CONTACT","mobile":"390x844 SCENE","horizontal_overflow":0,"broken_images":0,"page_errors":0,"console_errors":0},
+  "actual_pixel_package_html": {
+    "file": "CH16_P01_visual_rebuild_v5_4.html",
+    "sha256": "cf5b7f1de51d05642caf52bf1a8785f6629a1cb0f0828e4564cc8640b25cd467",
+    "bytes": 16046,
+    "role": "ACTUAL_CHROMIUM_READBACK_SOURCE"
+  },
+  "github_text_carrier": {
+    "file": "CH16_P01_visual_rebuild_v5_4.html",
+    "blob_sha": "059147eea204459b3b15258ec11d626b99bb57c3",
+    "role": "TEXT_CODE_RECOVERY_CARRIER",
+    "note": "Same v5.4 page content with repository whitespace normalization; actual-pixel evidence is bound to the durable package HTML hash above. Carrier byte identity is not asserted."
+  },
+  "readback": {"desktop":"1920x1080 SCENE/BODY/CONTACT","mobile":"390x844 SCENE","full_page":"1600px wide","horizontal_overflow":0,"broken_images":0,"page_errors":0,"console_errors":0},
   "durable_package": {"file":"C04_CH16_P01_visual_rebuild_v5_4_PACKAGE.zip","drive_id":"1l2eb3_Z6TU0gMOgX-_3b4IrfWKlm7Xs7","bytes":4924672,"sha256":"f69ec6c18a3e7e6fb47bc868bcc27f65eaeb3a66b8fbd8fadc05a46a02cd82f4","drive_retrieval_hash_verified":true},
+  "review_boundary": "NO PIXEL KEEP / NO MAIN KEEP / NO PROFESSIONAL FINISH PASS BY PRODUCER",
   "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
 }
