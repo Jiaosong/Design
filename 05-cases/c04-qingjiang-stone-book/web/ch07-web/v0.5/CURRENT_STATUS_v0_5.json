@@ -1,0 +1,51 @@
+{
+  "schema": "c04.ch07.current-status.v0.5",
+  "current": "v0.5 PRODUCER REVIEW CANDIDATE",
+  "upstream": {
+    "pr": 294,
+    "head": "754ce474924e306dc659e57c6c9f543c937a0a69",
+    "ch07_blob": "2e13bcfd89d2c479bcb8122b239f953c6d83544b"
+  },
+  "page_register": {
+    "pr": 323,
+    "head": "557474667a993630261c94e5549eedd32f9e775b",
+    "pid": "NOT_ASSIGNED"
+  },
+  "surfaces": [
+    "CH07-P01-S01",
+    "CH07-P02-S01",
+    "CH07-P03-S01",
+    "CH07-P04-S01",
+    "CH07-P04-S02"
+  ],
+  "image_slots": [
+    {
+      "id": "IMG-C04-CH07-P01-LANDSCAPE-01",
+      "sha256": "efb640e3fd0ac01ecc77925c901076f8ed65dac313e37e05d020838d0da39fa3",
+      "display": "CONTAIN; max desktop scale 1.195"
+    },
+    {
+      "id": "IMG-C04-CH07-P02-AUDIENCE-01",
+      "sha256": "5ac6e67615d4d4f30f7df9d87ab14d5a889e32b56b0eb1af77dee9d045d1b6e2",
+      "display": "CONTAIN; max desktop scale 1.243"
+    },
+    {
+      "id": "IMG-C04-CH07-P03-LANDSCAPE-01",
+      "sha256": "27feea81864b949bf056260cab0d3e229ee55e7c9fd35a88fc4ff923b7eb226c",
+      "display": "ONE SAME-SOURCE COMPONENT; max scale 1.015"
+    }
+  ],
+  "removed_current_rasters": ["D Hero", "R13 remote concept", "R06 landscape"],
+  "runtime": {
+    "desktop": "1920x1080; overflow 0; page/console errors 0; 5/5 surfaces",
+    "mobile": "390x844; overflow 0; page/console errors 0; semantic reflow"
+  },
+  "drive": {
+    "folder": "1iV0I_oxztMGTx0DVsIPAyNTcKLwcQuoI",
+    "zip": "1lCRJ-ApLNAUBMEYZAWx3jmJQJNvjGNtk",
+    "bytes": 10517271,
+    "sha256": "c2207af85fc7c664a650c91ff803690042644a3792c2d73222387b6cb18010ed",
+    "raw_refetch": "EXACT MATCH / ZIP PASS"
+  },
+  "review": "INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION"
+}

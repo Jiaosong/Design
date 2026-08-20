@@ -1,0 +1,10 @@
+{
+  "provider": "Google Drive",
+  "folder_id": "1wRZC-GKMJss7dJ8BSBi5e1BD_6507egR",
+  "zip_file_id": "1ICZOdU-zxAbsP9b9-iUI2S33pub8obFr",
+  "portable_html_file_id": "1BL8Swdq5urAraEBdWdWElLGZHA_y8Ihd",
+  "desktop_contact_file_id": "1-y9sF81-1ahg80ge1v0mEkDyKUsGp-2D",
+  "mobile_contact_file_id": "1wIzd3vAnpXr1Gc6o1ZlOLQ_ibrm1wjsv",
+  "zip_digest_location": "PACKAGE_DIGEST_v0_4.json (external to ZIP to avoid self-referential checksum)",
+  "github_binary_policy": "GitHub stores editable UTF-8 source/review records and deterministic route SVG. Complete raster/review binary package is the Drive ZIP; no byte-equivalence claim is made for absent GitHub raster assets."
+}

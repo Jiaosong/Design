@@ -1,0 +1,21 @@
+{
+  "artifact":"C04 CH07 Web v0.4",
+  "review_target":"exact final v0.4 pixels and source revision",
+  "viewports":["1920x1080","390x844"],
+  "surfaces":["CH07-P01-S01","CH07-P02-S01","CH07-P03-S01","CH07-P04-S01","CH07-P04-S02"],
+  "required_dimensions":[
+    "first-read / primary visual sovereignty",
+    "Qingjiang specificity",
+    "composition / proportion / tension",
+    "typography hierarchy",
+    "CH14 contemporary editorial + landscape-space consistency",
+    "ROUTE-03 authority preservation and visual-style firewall",
+    "Same-source Reveal integrity",
+    "responsive recomposition",
+    "cross-surface rhythm",
+    "portfolio value / professional finish"
+  ],
+  "best_existing_benchmark":"strongest Current-Authority-permitted mature C04 visual; include C22 v4.6 image-led landscape-first calibration where relevant",
+  "producer_verdict_forbidden":["PIXEL KEEP","MAIN KEEP","PROFESSIONAL FINISH PASS"],
+  "allowed_independent_verdicts":["KEEP","KEEP_AFTER_REVISION","REVISE","REJECT","HOLD"]
+}

@@ -1,0 +1,144 @@
+{
+  "desktop": {
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "clientWidth": 1920,
+    "scrollWidth": 1920,
+    "scrollHeight": 5400,
+    "horizontalOverflow": 0,
+    "pageErrors": [],
+    "consoleErrors": [],
+    "images": [
+      {
+        "alt": "清江河谷与跨江索道关系景观，来源于既有官方运营方像素的非生成式展示处理",
+        "w": 1310,
+        "h": 860,
+        "complete": true
+      },
+      {
+        "alt": "ROUTE-03 locked geometry shown as subordinate relationship trace",
+        "w": 265,
+        "h": 150,
+        "complete": true
+      },
+      {
+        "alt": "R13 remote spatial concept; not site photo",
+        "w": 445,
+        "h": 625,
+        "complete": true
+      },
+      {
+        "alt": "R06 landscape first state",
+        "w": 1500,
+        "h": 770,
+        "complete": true
+      },
+      {
+        "alt": "R06 same source relation reveal state",
+        "w": 1500,
+        "h": 770,
+        "complete": true
+      }
+    ],
+    "surfaces": [
+      {
+        "id": "CH07-P01-S01",
+        "authoringOwner": "CH07-P01",
+        "height": 1080
+      },
+      {
+        "id": "CH07-P02-S01",
+        "authoringOwner": "CH07-P02",
+        "height": 1080
+      },
+      {
+        "id": "CH07-P03-S01",
+        "authoringOwner": "CH07-P03",
+        "height": 1080
+      },
+      {
+        "id": "CH07-P04-S01",
+        "authoringOwner": "CH07-P04",
+        "height": 1080
+      },
+      {
+        "id": "CH07-P04-S02",
+        "authoringOwner": "CH07-P04",
+        "height": 1080
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 6486,
+    "horizontalOverflow": 0,
+    "pageErrors": [],
+    "consoleErrors": [],
+    "images": [
+      {
+        "alt": "清江河谷与跨江索道关系景观，来源于既有官方运营方像素的非生成式展示处理",
+        "w": 1310,
+        "h": 860,
+        "complete": true
+      },
+      {
+        "alt": "ROUTE-03 locked geometry shown as subordinate relationship trace",
+        "w": 265,
+        "h": 150,
+        "complete": true
+      },
+      {
+        "alt": "R13 remote spatial concept; not site photo",
+        "w": 445,
+        "h": 625,
+        "complete": true
+      },
+      {
+        "alt": "R06 landscape first state",
+        "w": 1500,
+        "h": 770,
+        "complete": true
+      },
+      {
+        "alt": "R06 same source relation reveal state",
+        "w": 1500,
+        "h": 770,
+        "complete": true
+      }
+    ],
+    "surfaces": [
+      {
+        "id": "CH07-P01-S01",
+        "authoringOwner": "CH07-P01",
+        "height": 1394
+      },
+      {
+        "id": "CH07-P02-S01",
+        "authoringOwner": "CH07-P02",
+        "height": 1389
+      },
+      {
+        "id": "CH07-P03-S01",
+        "authoringOwner": "CH07-P03",
+        "height": 1057
+      },
+      {
+        "id": "CH07-P04-S01",
+        "authoringOwner": "CH07-P04",
+        "height": 1332
+      },
+      {
+        "id": "CH07-P04-S02",
+        "authoringOwner": "CH07-P04",
+        "height": 1313
+      }
+    ]
+  }
+}

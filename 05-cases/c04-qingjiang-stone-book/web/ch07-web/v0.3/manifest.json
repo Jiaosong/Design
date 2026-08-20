@@ -1,0 +1,14 @@
+{
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "chapter":"CH07",
+  "chapter_title":"设计方法 / DESIGN METHODS",
+  "artifact_role":"DOWNSTREAM_WEB_REVIEW_CANDIDATE",
+  "artifact_version":"v0.3",
+  "authority":{"architecture":"C04-B_PROJECT-ARCHITECTURE_v3.2","authoring":"Draft PR #294 / chapter-content-sync/v0.3/CH07_DESIGN-METHODS.md","page_identity":"Draft PR #323 / page-register-remap/v0.1"},
+  "identity_rule":"CHxx-Pxx = AUTHORING OWNER; Sxx = PRESENTATION SURFACE; neither implies canonical C04-WEB PAGE-ID",
+  "surface_ids":["CH07-P01-S01","CH07-P02-S01","CH07-P03-S01","CH07-P04-S01","CH07-P04-S02"],
+  "canonical_page_ids":[],
+  "n_series_allocated":false,
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "image_generation":"NOT USED"
+}

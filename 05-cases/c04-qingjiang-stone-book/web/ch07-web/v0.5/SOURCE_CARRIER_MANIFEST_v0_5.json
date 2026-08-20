@@ -1,0 +1,17 @@
+{
+  "schema": "c04.ch07.github-source-carrier.v0.5",
+  "encoding": "gzip+base64 chunks",
+  "source_files": [
+    {"path":"index.html","bytes":8206,"sha256":"d63ce432e23216d1e3904d392580b6c5001138bd787c8081fc3094444d7be502","offset":0,"length":8206},
+    {"path":"style.css","bytes":15874,"sha256":"490c335ac07ece280ee9a6f3d1e5dfbe1817bffb8172e6ad2099966bf681465a","offset":8206,"length":15874},
+    {"path":"app.js","bytes":56,"sha256":"421e956b04b952dd64374e4943f262cd1bc0a41f26dec39e280d0d3a08e1406c","offset":24080,"length":56},
+    {"path":"assets/route03_trace_only.svg","bytes":5135,"sha256":"e35d68899df6a97a5c17cd67840f1baa21e6bf9591b83fce9f22d58c9bc432f1","offset":24136,"length":5135}
+  ],
+  "payload_bytes": 29271,
+  "payload_sha256": "d331a42c6264b7a456276f24aa199b3412932612eb1c9be8f3352cfa96dbedf0",
+  "carrier_blob_bytes": 30042,
+  "carrier_blob_sha256": "1ad17feed4058a7a8338f1efd9e98baea6055d3afda8d042757ae9ba5ee8e65e",
+  "encoded_chars": 12004,
+  "part_count": 7,
+  "chunk_chars": 1800
+}
