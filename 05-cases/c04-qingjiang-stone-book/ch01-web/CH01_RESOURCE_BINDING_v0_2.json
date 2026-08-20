@@ -1,0 +1,58 @@
+{
+  "schema": "C04_CH01_RESOURCE_BINDING_v0.2",
+  "state": "ACTUAL_PIXEL_CANDIDATE / ZERO_RASTER / NO_PROMOTION",
+  "supersedes": "CH01_REAL_RESOURCE_BINDING_v0_1.json image allocation only; v0.1 retained as provenance",
+  "authority": {
+    "authoring": "PR #294 CH01 v0.3",
+    "image_ledger": "C04_IMAGE_CONSUMPTION_LEDGER_v1_0 CURRENT_PROJECT_REGISTER",
+    "brand": "CH14 Current",
+    "route": "ROUTE-03 LOCKED CURRENT"
+  },
+  "image_contract": {
+    "raster_content_slots": 0,
+    "whole_page_generated_images": 0,
+    "new_semantic_image_reservations": 0,
+    "prior_selected_p01_p03_sources_consumed": false
+  },
+  "pages": {
+    "CH01-P01": {
+      "carrier": "NATIVE_INLINE_SVG / QINGJIANG MOVEMENT GRAMMAR",
+      "content_image_slot": null,
+      "proof": ["AIR/CABLE", "WATER/BOAT", "GROUND/WALK", "看/走/停/读/回"],
+      "does_not_prove": ["route geometry", "field conditions"]
+    },
+    "CH01-P02": {
+      "carrier": "EXACT_LOCKED_ROUTE03_INLINE_SVG + EDITORIAL OPTIONAL CONTENT MARGIN",
+      "content_image_slot": null,
+      "route03_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+      "mutation": "NONE_TOPOLOGY / PRESENTATION ONLY"
+    },
+    "CH01-P03": {
+      "carrier": "NATIVE_INLINE_SVG / SCENE-GRAMMAR ATTENTION APERTURE",
+      "content_image_slot": null,
+      "proof": ["峰", "江", "岸", "索道", "CULTURE", "APP", "BRAND", "PHYSICAL", "WITHDRAW/OFF"],
+      "does_not_prove": ["site image", "survey geometry"]
+    },
+    "CH01-P04": {
+      "carrier": "NATIVE_INLINE_SVG / BODY CHOREOGRAPHY",
+      "content_image_slot": null,
+      "raster_reuse": "NONE",
+      "states": ["CONTINUE", "SLOW", "STAY-RECOVER", "TURN-RETURN"]
+    },
+    "CH01-P05": {
+      "carrier": "HTML/CSS SERVICE CONTINUITY / FOUR NEGATIVE-SPACE BREAKS",
+      "content_image_slot": null,
+      "gaps": ["方向确认", "Return 识别", "CLOSED / UNKNOWN 表达", "纸图 ↔ 现场"],
+      "primary_owner": "CH09"
+    },
+    "CH01-P06": {
+      "carrier": "HTML/CSS EDITORIAL PROOFING DESK",
+      "content_image_slot": null,
+      "identities": ["P02", "Fluid Rest", "Step Light", "Qingfengyin", "Digital", "Memory"],
+      "dispositions": ["KEEP", "DEEPEN", "COMPETE", "HOLD", "NO DESIGN"],
+      "assignment": "NONE_IN_CH01"
+    }
+  },
+  "next_gate": "Artifact Review 1.2 independent finished-output review",
+  "truth": ["FIELD OBSERVED=0", "FIELD MEASURED=0", "G1F HOLD", "NO_PROMOTION", "NTS", "NOT GPS", "NOT FOR CONSTRUCTION"]
+}
