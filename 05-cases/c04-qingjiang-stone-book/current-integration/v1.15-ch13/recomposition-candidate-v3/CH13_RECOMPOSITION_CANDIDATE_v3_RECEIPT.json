@@ -1,0 +1,38 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13",
+  "artifact": "Physical / Body / Sensory whole-chapter visual recomposition candidate",
+  "version": "v3",
+  "date": "2026-08-20",
+  "status": "EXECUTED / ACTUAL-PIXEL READBACK COMPLETE / PRODUCER CANDIDATE",
+  "promotion": "NO_PROMOTION",
+  "current_frontier_effect": "NONE; does not supersede Draft PR #301 CH13-01 v5 page-by-page frontier",
+  "image_generation": "NOT USED",
+  "source_binding": {
+    "p02_carrier": "14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png",
+    "drive_id": "1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq",
+    "crop": [55, 450, 1270, 930],
+    "crop_sha256": "08ae30e2b1fb2046bf3cdd16f9e66598a5e0d8332fa3ec244acef83ed6c68943"
+  },
+  "artifacts": {
+    "html_sha256": "ccf9c9752ce6d6eba2cedacff40c88ed587dfc36ddf14206880b7b72c2a1f3d9",
+    "css_sha256": "2340747bbf99c4884531312d4c2b484a3b39f0fdfe2284e3b8b2b382bac45c7f",
+    "selfcontained_sha256": "ff0d64228b9e09add3380e284c0560a8b4e25b0cfb8981128659dcb5b1c85beb",
+    "contact_sheet_sha256": "2b177cba9bbe9a26a2fef87e69199109d4f154440b3a8a5d69455d8ab8e0e728",
+    "local_zip": "C04_CH13_VISUAL_RECOMPOSITION_v3.zip",
+    "local_zip_bytes": 6931834,
+    "local_zip_sha256": "c560ae3cc909ad17c99ed548e43ff9ced544649f02687cfa45078955c5a9b278"
+  },
+  "open_source_gates": [
+    "Fluid Rest original source pixel bind",
+    "Qingfengyin original scene/sensory source pixel bind"
+  ],
+  "browser_readback": {
+    "desktop": "1920x1080; P01-P07 each exact 1920x1080; overflow=0; errors=0",
+    "mobile": "390x844 viewport; semantic reflow; overflow=0; errors=0",
+    "p04": "STEP → RESPONSE → FADE transient pulse verified"
+  },
+  "sync_state": "PARTIAL: exact text receipt/QC persisted to GitHub; new binary/native package persistence outside runtime OPEN",
+  "independent_professional_design_review": "PENDING",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
