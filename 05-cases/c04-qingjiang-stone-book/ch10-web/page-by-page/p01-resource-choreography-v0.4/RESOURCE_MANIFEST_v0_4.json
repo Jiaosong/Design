@@ -1,0 +1,19 @@
+{
+  "object_id": "C04_CH10_P01_RESOURCE_CHOREOGRAPHY_v0_4",
+  "status": "SOURCE-SAFE PRODUCER CANDIDATE / UNIQUE REAL LANDSCAPE SOURCE HOLD / INDEPENDENT DESIGN REVIEW PENDING",
+  "supersedes": "p01-resource-choreography-v0.3.1 = REVISE/HISTORY/SOURCE-CONFLICT",
+  "source_conflicts_removed": [
+    "CH09_P02_BOAT_OLEANDER_v4_4 underlying content image",
+    "01_C04_MASTER_JOURNEY_CURRENTIZED_v3 presentation carrier",
+    "14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4 currently reserved to CH13-01"
+  ],
+  "content_image_count": 0,
+  "image_generation": "NOT USED",
+  "native_carrier": "HTML/CSS/JS + inline editable SVG",
+  "preserved": ["MOVE/LOOK/OBSERVE/RECOVER/CHOOSE/PASS authority choreography", "OBSERVE optional fold only", "RECOVER body/service/return priority", "PASS reading withdrawal", "CH08 content authority + CH14 visual grammar only"],
+  "open_gate": "Bind a unique project-ledger-cleared real Qingjiang landscape source before landscape-first finished-pixel readiness. Current vector field is an explicit source-safe study, not site evidence.",
+  "canonical_html": {"bytes": 12956, "sha256": "5e920103b8db016d25a9c1b44585c9375eb6c9a46041d1810f475b7ffb9e13b7"},
+  "durable_review_package": {"drive_id": "1KVFZg75ycf6YIlZM5AZPBUb74mM0SIlX", "bytes": 3723807, "sha256": "922044ecd2e987e1b8f82d0616ea8de9c74421d2e36e0ad77fc40b31d27cdb8b", "drive_raw_reread_size_match": true},
+  "independent_professional_design_verdict": "PENDING / NO SELF-KEEP",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
