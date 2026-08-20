@@ -186,3 +186,47 @@ Local source/review package:
 
 Boundary remains:
 `EXECUTED / EDITABILITY ROUNDTRIP PASS / PRESENTATION REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION`.
+
+## 2026-08-20｜Detailed editable Web v1.2｜DETAIL RECOVERY PASS
+
+User-reported blocker: v1.1 retained editability but lost too much visual detail, especially P01 mountain texture and P05 topographic/river microstructure.
+
+OLEANDER response:
+- preserve the reference as presentation guidance only;
+- recover visual detail without image generation;
+- keep all text as live DOM;
+- separate high-fidelity pixel field from editable vector field where necessary rather than flattening the page.
+
+Actual v1.2 changes:
+- P01 mountain/valley detail is preserved from the local reference field; broad blur/inpaint blocks were removed. Only localized baked lettering is algorithmically suppressed; river, mountain texture, path and fine spatial cues are retained.
+- P05 now has two presentation modes in one carrier: default detailed pixel relation field + live DOM text, and a toggleable native SVG vector field for geometry editing/currentization.
+- P05 restores fine topographic contours, river hierarchy, route nodes, left-side evidence leaders, right-side dashed consequence connectors, and hierarchy between primary/secondary consequences.
+- live text count increased to `54` stable editable nodes.
+- editor retains direct contenteditable + inspector for text / X / Y / size / tracking / color, 1:1 mode, HTML save, JSON export/import.
+- no HTTP/HTTPS dependency; no image generation used.
+
+Current local artifact:
+- `CH02_P01_P05_EDITABLE_DETAILED_v1_2.html`
+- bytes `2,974,923`
+- SHA256 `a15b09d422dbfa96cf591fb652f314d29fe7d5bd45ae4981dd39edb7c065ce86`
+
+Source-complete local package:
+- `C04_CH02_P01_P05_EDITABLE_DETAILED_v1_2.zip`
+- SHA256 `ab77b1aa3beedcc59c99616f262622ee31dbc95386855b234d7bf8a3de11c349`
+
+Actual Chromium DOM readback:
+- `clientWidth=1672 / scrollWidth=1672`;
+- editable text nodes `54`;
+- edit smoke test PASS;
+- console errors `0`;
+- page errors `0`.
+
+Reference-pixel similarity is recorded only as a diagnostic, not a design verdict:
+- P01 SSIM `0.8740` (up from v1.0 `0.8446`);
+- P05 detailed default mode SSIM approximately `0.77` while preserving live text and a separate native-vector mode.
+
+Boundary:
+- these two reference pages remain presentation prototypes; they do not replace CH02 evidence/geometry authority;
+- P01 scenic pixel field is not promoted as field evidence;
+- P05 vector mode is editable presentation geometry, not surveyed site geometry;
+- `EXECUTED / DETAIL RECOVERY READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION`.
