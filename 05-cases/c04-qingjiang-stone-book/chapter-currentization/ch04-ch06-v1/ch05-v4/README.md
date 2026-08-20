@@ -1,42 +1,25 @@
-# CH05 Rebuild v4 — INVALIDATED / PROVENANCE ONLY
+# CH05 Rebuild v4 — SUPERSEDED / INVALID IMAGE BINDING
 
-Status: `REJECT / SUPERSEDED / INVALID IMAGE BINDING / PROVENANCE ONLY / NOT A CURRENT VISUAL TARGET / NO_PROMOTION`.
+Status: `REJECT / SUPERSEDED / INVALID IMAGE BINDING / PROVENANCE ONLY`.
 
-The user rejected the v4 image carriers after the Current project-wide Image Consumption / Uniqueness rule was re-read. v4 must not be used as a review target, Current visual frontier, source pool, or integrated-Web input.
+This package remains historical execution evidence only. It is not a Current visual target, review target, integrated-Web candidate, or source pool.
 
-## Root cause
-The production pass checked only CH05-internal duplicate use and failed to perform the mandatory project-wide pre-bind lookup against `C04_IMAGE_CONSUMPTION_LEDGER_v1_0`.
+## Why v4 is invalid
+The producer checked only cross-page duplication inside CH05 and failed the required project-wide pre-bind lookup against `C04_IMAGE_CONSUMPTION_LEDGER_v1_0`.
 
-Current hard rule:
-`ONE SEMANTIC CONTENT IMAGE → ONE CONSUMER UNIT`.
+Invalid bindings included:
+- F01 scenic carrier = `REJECTED_NOT_ELIGIBLE / DO_NOT_REUSE`;
+- R06 landscape = no authorized independent CH05 content-image slot;
+- cable landscape = no `AVAILABLE → RESERVED` record for CH05 before use.
 
-Crop / resize / recolor / mask / contour / screenshot / frame extraction / derivative do not create a new semantic image identity.
+`SOURCE FOUND != IMAGE SLOT AVAILABLE`.
+Crop / resize / recolor / mask / derivative do not reset semantic image identity.
 
-## Invalid bindings
-- `CH05-P02 / F01 scenic` → `IMG-C04-F01-SCENIC-01 = REJECTED_NOT_ELIGIBLE / DO_NOT_REUSE`.
-- `CH05-P03 / R06 landscape` → project-wide R06 consumption / ownership conflict; no independent CH05 image slot is authorized.
-- `CH05-P04 / cable landscape` → no verified Current ledger `AVAILABLE → RESERVED` record was established for the CH05 consumer before use; `SOURCE FOUND != IMAGE SLOT AVAILABLE`.
-- `CH05-P01 / ROUTE-03` remains a locked geometry/route authority and may only be consumed read-only within its authority boundary; it does not legalize the rejected v4 set and is not a content-image uniqueness loophole.
+## Successor
+`CH05 raster-free v5` is the new producer candidate. It consumes zero raster content-image sources and uses no AI-generated substitute. P01 consumes ROUTE-03 read-only as locked topology; P02–P04 are newly authored native SVG analytical/behavior carriers.
 
-## Current CH05 visual reset
-`CONTENT AUTHORITY CURRENT / VISUAL PIXELS RESET / PRE-PIXEL SOURCE-BINDING REQUIRED / IMAGE-LEDGER CHECK REQUIRED / NO CURRENT CH05 VISUAL TARGET`.
+v4 durable historical package remains:
+- Drive ID `1h3xeaxm6Kh--QAf3pOIcBp6eCM1lSQi5`;
+- renamed `SUPERSEDED__INVALID_IMAGE_BINDING__C04_CH05_REBUILD_v4_PACKAGE.zip`.
 
-Any future CH05 content-image binding must first:
-1. query the Current project image ledger;
-2. identify exact semantic source identity and source bytes/hash when applicable;
-3. establish `AVAILABLE → RESERVED` for the exact CH05 consumer unit;
-4. otherwise use a new independent native vector / analytical / evidence medium;
-5. never use an AI-generated substitute to bypass the ledger.
-
-## Historical durable package
-Drive file ID: `1h3xeaxm6Kh--QAf3pOIcBp6eCM1lSQi5`
-
-`C04_CH05_REBUILD_v4_PACKAGE.zip`
-- bytes: `15,689,745`
-- SHA256: `f6a8e5e00e3264aedbb42c936f94e40993a24bac49f889172780460c83496167`
-- ZIP files: `26`
-- raw re-fetch / ZIP integrity were executed successfully.
-
-These persistence facts prove only historical artifact existence and recovery. They do **not** restore image eligibility or Design status.
-
-Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`.
+No v4 pixel is eligible for `KEEP / MAIN KEEP / Professional Design PASS / Promotion`.
