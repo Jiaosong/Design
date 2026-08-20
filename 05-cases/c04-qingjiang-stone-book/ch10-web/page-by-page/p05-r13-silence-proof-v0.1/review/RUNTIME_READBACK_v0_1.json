@@ -1,0 +1,18 @@
+{
+  "object":"C04 / CH10-P05",
+  "revision":"v0.1",
+  "method":"Actual Chromium 144 via fresh CDP target + Page.setDocumentContent on about:blank; organization policy blocks local/file navigation. Canonical HTML is rendered source.",
+  "viewports":{
+    "desktop_PASS":{"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"PASS","pressedCount":1,"minButton":107,"far":0.035,"look":0,"returnBand":0,"errs":[]},
+    "desktop_LOOK_BACK":{"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"LOOK_BACK","pressedCount":1,"minButton":107,"far":0.62,"look":1,"returnBand":0,"errs":[]},
+    "desktop_RETURN":{"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"RETURN","pressedCount":1,"minButton":107,"far":0.13,"look":0,"returnBand":1,"errs":[]},
+    "mobile_PASS":{"sw":390,"cw":390,"sh":844,"ch":844,"state":"PASS","pressedCount":1,"minButton":131,"far":0.035,"look":0,"returnBand":0,"errs":[]},
+    "mobile_LOOK_BACK":{"sw":390,"cw":390,"sh":844,"ch":844,"state":"LOOK_BACK","pressedCount":1,"minButton":131,"far":0.62,"look":1,"returnBand":0,"errs":[]},
+    "mobile_RETURN":{"sw":390,"cw":390,"sh":844,"ch":844,"state":"RETURN","pressedCount":1,"minButton":131,"far":0.13,"look":0,"returnBand":1,"errs":[]}
+  },
+  "keyboard":{"path":"focus LOOK_BACK + ArrowLeft","result":{"state":"PASS","focus":"PASS","pressedCount":1,"minButton":107,"far":0.035,"look":0,"returnBand":0,"errs":[]}},
+  "reduced_motion":{"wallTransition":"0s","farTransition":"0s","buttonTransition":"0s"},
+  "cdp_exception_events":[],
+  "stable_state_capture_wait_ms":720,
+  "result_boundary":"Runtime/readback evidence only. It does not issue a professional design verdict."
+}

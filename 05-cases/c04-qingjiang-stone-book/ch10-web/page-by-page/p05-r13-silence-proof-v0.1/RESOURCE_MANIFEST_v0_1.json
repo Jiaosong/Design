@@ -1,0 +1,15 @@
+{
+  "object":"C04 / CH10-P05",
+  "revision":"v0.1",
+  "status":"PRODUCER CANDIDATE / ACTUAL-PIXEL REVIEW TARGET / NO SELF-KEEP",
+  "authority":"CH10 v0.4 P05 = R13 silence proof; canonical default PASS / 先通过; optional reading withdraws",
+  "image_generation":"NOT USED",
+  "raster_content_images":0,
+  "public_design_assets":"HTML/CSS/JS; source-grounded vector spatial slit; live/vector text",
+  "source_grounding":{"guide":"恩施大清江红花峰林导游解说词: 一线天 is a narrow rock opening, upper part narrower and lower part wider; Qingjiang water and north bank can be seen through it","current_behavior":"R13 归缝页 / 一线天; PASS first, optional LOOK BACK after passing, RETURN/route/body can suppress reading"},
+  "does_not_prove":"exact R13 geometry, field-measured slit width/height, route clearance, crowd safety, real camera POV, site-photo correspondence",
+  "state_semantics":{"PASS":"canonical default; reading off; body first","LOOK_BACK":"after passing, Qingjiang view can re-enter as optional attention","RETURN":"content recedes; route/body/return regain authority"},
+  "canonical_html":{"bytes":11296,"sha256":"cc28c006e9d88778e5144e8a1be2d4661121d94121b9c7b6fa30a903f2526ba4"},
+  "portable_html":{"bytes":11296,"sha256":"cc28c006e9d88778e5144e8a1be2d4661121d94121b9c7b6fa30a903f2526ba4"},
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
