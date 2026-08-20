@@ -1,0 +1,27 @@
+{
+  "object": "C04 / CH10-P03",
+  "revision": "v0.1",
+  "method": "Actual Chromium 144 via fresh Chrome DevTools Protocol target + Page.setDocumentContent on about:blank; organization policy blocks local/file navigation. Canonical HTML is the rendered source.",
+  "viewports": {
+    "desktop_MERGE": {"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"MERGE","focus":"","pressedCount":1,"minButton":111,"errs":[]},
+    "desktop_SUBSTITUTE": {"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"SUBSTITUTE","focus":"","pressedCount":1,"minButton":111,"errs":[]},
+    "desktop_OFF": {"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"OFF","focus":"","pressedCount":1,"minButton":111,"errs":[]},
+    "mobile_MERGE": {"sw":390,"cw":390,"sh":844,"ch":844,"state":"MERGE","focus":"","pressedCount":1,"minButton":131,"errs":[]},
+    "mobile_SUBSTITUTE": {"sw":390,"cw":390,"sh":844,"ch":844,"state":"SUBSTITUTE","focus":"","pressedCount":1,"minButton":131,"errs":[]},
+    "mobile_OFF": {"sw":390,"cw":390,"sh":844,"ch":844,"state":"OFF","focus":"","pressedCount":1,"minButton":131,"errs":[]}
+  },
+  "keyboard": {"path":"focus MERGE + ArrowRight","result":{"sw":1920,"cw":1920,"sh":1080,"ch":1080,"state":"SUBSTITUTE","focus":"SUBSTITUTE","pressedCount":1,"minButton":111,"errs":[]}},
+  "reduced_motion": {"panelTransition":"0s","buttonTransition":"0s"},
+  "cdp_exception_events": [],
+  "stable_state_capture_wait_ms": 400,
+  "screenshots": {
+    "P03_CONTACT_v0_1.jpg":{"bytes":161023,"sha256":"7b4d0b698ba1eda6a44e5d9c2f052f94204351c39c2b5cfe924a3995869db266"},
+    "P03_MERGE_1920x1080.png":{"bytes":483448,"sha256":"e19d8b08f35e68ac51452970eb0348e42c7868c29561174f491a9ead7bc28401"},
+    "P03_MERGE_390x844.png":{"bytes":122206,"sha256":"631eb7959ed81299b7eade614d17e1e090e18c1e2a869012c662813655400c12"},
+    "P03_OFF_1920x1080.png":{"bytes":516802,"sha256":"2c8d3f8c7d1d5a2905687e20be187eb76fe03884da8bd7491e85e87832c7fd52"},
+    "P03_OFF_390x844.png":{"bytes":133463,"sha256":"b6d61202e10a07efd26a38e58f2d9d16846f292a795fb33d961d35861947a447"},
+    "P03_SUBSTITUTE_1920x1080.png":{"bytes":456898,"sha256":"ecb95ec414f7b6c06fa44acdb5362d0a77420d8e6abf31e4d05018591670ac48"},
+    "P03_SUBSTITUTE_390x844.png":{"bytes":113921,"sha256":"4a465c04af219d2d52930245ad1e7fcb5dab4bc1d846543ee53cf8c9eab5f7db"}
+  },
+  "result_boundary": "Runtime/readback evidence only. It does not issue a professional design verdict."
+}
