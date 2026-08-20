@@ -1,0 +1,14 @@
+{
+  "object":"C04 / CH10-P04",
+  "revision":"v0.1",
+  "status":"PRODUCER CANDIDATE / ACTUAL-PIXEL REVIEW TARGET / NO SELF-KEEP",
+  "authority":"CH10 v0.4 P04 = 遇见 → 辨认方向 → 观察 → 可选提示 → 可选揭示 → 退场/继续 → 记住; modes QUICK / DEEP / FAMILY / LOW_STAMINA",
+  "image_generation":"NOT USED",
+  "raster_content_images":0,
+  "public_design_assets":"HTML/CSS/JS only; text remains live/vector",
+  "mode_semantics":{"QUICK":"stages 04/05 visually suppress; route/observation stays continuous","DEEP":"all seven stages remain; optional reading folio becomes visible","FAMILY":"shared-attention emphasis appears without adding completion/task logic","LOW_STAMINA":"observation/prompt/reveal visually downgrade; stages 06/07 + recovery/return regain priority"},
+  "source_boundary":"Mode-specific visual weighting is a downstream interaction realization of CH10 v0.4; it does not claim field-measured dwell time, crowd behavior, GPS, or physiological state sensing.",
+  "canonical_html":{"bytes":14073,"sha256":"6537a82269a8e11b01f83af7d7315aab750476ee1fc993823e48e9b331385c1e"},
+  "portable_html":{"bytes":14073,"sha256":"6537a82269a8e11b01f83af7d7315aab750476ee1fc993823e48e9b331385c1e"},
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
