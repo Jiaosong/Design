@@ -1,0 +1,16 @@
+{
+  "compressed_bytes": 12215,
+  "compressed_sha256": "0d39ebcd1cf1e8a0d11bd2a91e1909f03fa170fb913aca16dd482a84e9e5207d",
+  "b85_chars": 15269,
+  "parts": 9,
+  "files": [
+    "index.html",
+    "style.css",
+    "app.js",
+    "render_readback.py",
+    "assets/route03_trace_only.svg",
+    "manifest.json",
+    "SOURCE_BINDING_REGISTER_v0_4.json",
+    "SURFACE_REGISTER_v0_4.csv"
+  ]
+}

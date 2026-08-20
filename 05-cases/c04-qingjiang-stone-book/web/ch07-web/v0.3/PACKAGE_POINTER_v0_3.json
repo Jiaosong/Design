@@ -1,0 +1,15 @@
+{
+  "artifact":"C04 CH07 Web Review Candidate v0.3",
+  "drive_folder_id":"1_jz2BLT1nS8BwdjpCkV678FkaYXHGNHo",
+  "drive_package_id":"1fcwv09liWBHtO5n-3vwJn0tlcvuhGFDO",
+  "drive_portable_html_id":"1yaXh0mllzyBIpdM-JcvkDgnlitmxoXz0",
+  "drive_desktop_contact_id":"1cuFXPqg51nN4UDUsi5mH2BxWGwRl1Han",
+  "drive_mobile_contact_id":"1C2GUUa2LBTJLCCasD61OTphunb2UhccQ",
+  "package_bytes":6920912,
+  "package_sha256":"f597f0431c9c097529f747384eb206a790561120e14a96c04ccd927eb55fb224",
+  "zip_test":"PASS",
+  "surface_ids":["CH07-P01-S01","CH07-P02-S01","CH07-P03-S01","CH07-P04-S01","CH07-P04-S02"],
+  "canonical_page_id_state":"UNASSIGNED / PAGE REGISTER REVIEW REQUIRED",
+  "independent_design_gate":"PENDING",
+  "whole_project_image_resource_allocation_gate":"OPEN"
+}

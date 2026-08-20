@@ -1,0 +1,9 @@
+{
+  "object":"C04 CH07 Web Review Candidate v0.3",
+  "exact_surface_ids":["CH07-P01-S01","CH07-P02-S01","CH07-P03-S01","CH07-P04-S01","CH07-P04-S02"],
+  "viewports":["1920x1080","390x844"],
+  "required_benchmark":"strongest Current-Authority-permitted mature C04 Web / visual reference at matched scale",
+  "review_dimensions":["first visual / one primary claim","Qingjiang specificity","composition / proportion / tension","typography","source-image authority and crop","CH14 consistency without source-style imitation","responsive recomposition","project-wide resource-allocation risk","truth / authority boundary","cross-surface rhythm","portfolio value / professional finish"],
+  "allowed_verdicts":["KEEP","KEEP_AFTER_REVISION","REVISE","REJECT","HOLD"],
+  "producer_self_keep":false
+}

@@ -1,0 +1,47 @@
+{
+  "desktop": {
+    "viewport": {"width":1920,"height":1080},
+    "clientWidth":1920,
+    "scrollWidth":1920,
+    "scrollHeight":5465,
+    "horizontalOverflow":0,
+    "pageErrors":[],
+    "consoleErrors":[],
+    "images":[
+      {"alt":"ROUTE-03 locked route geometry subset","w":1448,"h":820,"complete":true},
+      {"alt":"R13 remote spatial concept, not site photo","w":445,"h":625,"complete":true},
+      {"alt":"R06 landscape first state","w":1500,"h":770,"complete":true},
+      {"alt":"R06 same source relation reveal state","w":1500,"h":770,"complete":true}
+    ],
+    "surfaces":[
+      {"id":"CH07-P01-S01","authoringOwner":"CH07-P01","height":1090},
+      {"id":"CH07-P02-S01","authoringOwner":"CH07-P02","height":1090},
+      {"id":"CH07-P03-S01","authoringOwner":"CH07-P03","height":1108},
+      {"id":"CH07-P04-S01","authoringOwner":"CH07-P04","height":1080},
+      {"id":"CH07-P04-S02","authoringOwner":"CH07-P04","height":1097}
+    ]
+  },
+  "mobile": {
+    "viewport":{"width":390,"height":844},
+    "clientWidth":390,
+    "scrollWidth":390,
+    "scrollHeight":6899,
+    "horizontalOverflow":0,
+    "pageErrors":[],
+    "consoleErrors":[],
+    "images":[
+      {"alt":"ROUTE-03 locked route geometry subset","w":1448,"h":820,"complete":true},
+      {"alt":"R13 remote spatial concept, not site photo","w":445,"h":625,"complete":true},
+      {"alt":"R06 landscape first state","w":1500,"h":770,"complete":true},
+      {"alt":"R06 same source relation reveal state","w":1500,"h":770,"complete":true}
+    ],
+    "surfaces":[
+      {"id":"CH07-P01-S01","authoringOwner":"CH07-P01","height":1339},
+      {"id":"CH07-P02-S01","authoringOwner":"CH07-P02","height":1508},
+      {"id":"CH07-P03-S01","authoringOwner":"CH07-P03","height":1279},
+      {"id":"CH07-P04-S01","authoringOwner":"CH07-P04","height":1380},
+      {"id":"CH07-P04-S02","authoringOwner":"CH07-P04","height":1393}
+    ]
+  },
+  "runtime_note":"Exact authored HTML/CSS/assets executed through Chromium set_content harness; direct live-navigation Browser PASS is not claimed."
+}

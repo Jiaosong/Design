@@ -1,0 +1,9 @@
+{
+  "content_image_slots":[
+    {"semantic_slot":"CH07-P01-S01 / route evidence","source_asset_id":"ROUTE-03_LOCKED_GEOMETRY_SUBSET","path":"assets/route03_exact_geometry_subset.svg","reuse_count_in_this_candidate":1,"treatment":"presentation crop/scale only; source visual styling not authority"},
+    {"semantic_slot":"CH07-P02-S01 / R13 passage evidence","source_asset_id":"R13_REMOTE_SPATIAL_CONCEPT","path":"assets/r13_inside_remote_concept_clean.jpg","reuse_count_in_this_candidate":1,"treatment":"crop only; NOT SITE PHOTO"},
+    {"semantic_slot":"CH07-P03-S01 / same-source reveal component","source_asset_id":"R06_SOURCE_GROUNDED_LANDSCAPE","path":"assets/r06_same_source_clean.jpg","reuse_count_in_this_candidate":1,"treatment":"same semantic component with two states; bounded overlay only"}
+  ],
+  "duplicate_source_across_separate_semantic_slots":false,
+  "whole_project_allocation_gate":"OPEN / MUST BE CHECKED AGAINST INTEGRATED WEB LEDGER"
+}

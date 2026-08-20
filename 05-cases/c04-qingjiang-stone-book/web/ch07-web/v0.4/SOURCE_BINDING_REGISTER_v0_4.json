@@ -1,0 +1,28 @@
+{
+  "CH07-P01-S01":{
+    "primary_source_asset_id":"QJD_V11_01_HERO_OPERATOR_PIXEL",
+    "drive_id":"151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+    "source_file":"01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+    "presentation_derivative":"assets/qj_cable_landscape_hero_crop.jpg",
+    "presentation_changes":"crop (610,70,1920,930) + contrast 0.98 + color 0.92 + JPEG q94; removes embedded title/footer only",
+    "relation_registration":"NONE",
+    "secondary_geometry":"ROUTE-03 exact locked paths; labels removed; styling only",
+    "does_not_prove":"GPS, surveyed registration, field observation, live status",
+    "whole_web_uniqueness":"OPEN — reconcile against integrated Web ledger before Promotion"
+  },
+  "CH07-P02-S01":{
+    "primary_source_asset_id":"R13_REMOTE_SPATIAL_CONCEPT",
+    "source_file":"assets/r13_inside_remote_concept_clean.jpg",
+    "does_not_prove":"site photo, field safety validation, constructed condition"
+  },
+  "CH07-P03-S01":{
+    "primary_source_asset_id":"R06_SAME_SOURCE_LANDSCAPE",
+    "source_file":"assets/r06_same_source_clean.jpg",
+    "semantic_slot_count":1,
+    "paired_states":2,
+    "presentation_changes_state_2":"bounded relation overlay only",
+    "does_not_prove":"measured geometry, GPS, field observation"
+  },
+  "CH07-P04-S01":{"primary_source_asset_id":null,"primary_visual":"live HTML/CSS editorial qualification field; no content raster"},
+  "CH07-P04-S02":{"primary_source_asset_id":null,"primary_visual":"live HTML/CSS Attack Test field; no content raster"}
+}

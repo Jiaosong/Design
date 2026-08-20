@@ -1,0 +1,35 @@
+{
+  "readback_local_time": "2026-08-19T23:37+08:00",
+  "upstream_authoring": {
+    "pr": 294,
+    "head": "ae2d57429f45bea3e101c4bcc74057f9b0d18a53",
+    "chapter": "CH07 v0.3 authoring body",
+    "material_delta_to_CH07": false,
+    "chapter_blob_sha": "2e13bcfd89d2c479bcb8122b239f953c6d83544b",
+    "previous_anchor_head": "18cd6ed1b39a14fcaf13eeea67e6bd92bd52cabb",
+    "previous_chapter_blob_sha": "2e13bcfd89d2c479bcb8122b239f953c6d83544b"
+  },
+  "page_register": {
+    "pr": 323,
+    "head": "557474667a993630261c94e5549eedd32f9e775b",
+    "ch07_pid_state": "NO_PID_ASSIGNED / LEGACY_MATCH_REVIEW_REQUIRED",
+    "n_series_allocated": 0,
+    "canonical_page_count": "NOT_YET_LOCKED"
+  },
+  "visual_calibration": {
+    "pr": 324,
+    "head": "442956512429dc3baefc731e675dfcec8a558e1e",
+    "target": "C22 v4.6 real Qingjiang first / relation trace / punctuation",
+    "scope_note": "70/20/10 is calibration, not a mechanical percentage rule for every CH07 surface"
+  },
+  "image_uniqueness": {
+    "pr": 296,
+    "rule": "one underlying content-image source per semantic image slot across complete Web",
+    "project_level_reconciliation": "OPEN"
+  },
+  "locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "JOURNEY-04 = PROVENANCE / NON-CURRENT"
+  ]
+}
