@@ -110,3 +110,45 @@ The current Google Drive connector cannot upload a local filesystem path directl
 Final task state: `IN PROGRESS / P01-P03-P04-P05 PRODUCED / P02 OPEN / WHOLE CH02 NOT COMPLETE`.
 
 No `KEEP / MAIN KEEP / Professional Design PASS` is self-issued by the producer.
+
+## 2026-08-20｜P01 + P05 pixel-reference Web rebuild v1.0｜NO IMAGE GENERATION
+
+User correction: `NO IMAGE GENERATION / WEB RECONSTRUCTION ONLY`.
+
+Purpose: rebuild the two selected P01/P05 visual references as a local editable Web carrier. This is presentation-layer reconstruction only; it does not create new CH02 evidence, geometry authority, or design content.
+
+OLEANDER route consumed:
+`oleander-story-and-board → target-size pixel matching → live DOM text → SVG/CSS presentation layers → oleander-delivery-qc`.
+
+Artifact: `CH02_P01_P05_PIXEL_REPLICA_v1_0.html`
+- standalone self-contained HTML;
+- `5,291,673 bytes`;
+- SHA256 `b0072ca646eb73e0134826cb8cbdb875941c73c6258ba4845a858dcceb6709da`;
+- 43 live text nodes;
+- no HTTP/HTTPS runtime dependency;
+- target board size `1672×941` per page;
+- P05 retains a toggleable native SVG diagram mode;
+- image generation = **NOT USED in this Web rebuild**.
+
+Browser/readback:
+- desktop client/scroll width `1672 / 1672`;
+- two `1672×941` board surfaces;
+- mobile 390-width review generated with no page/console error recorded;
+- exact authored HTML executed through DOM injection because direct local-file navigation is administrator-blocked in the current runtime;
+- live-text edit toggle + edit smoke test = PASS.
+
+Reference-pixel similarity, objective metric only:
+- P01 SSIM `0.8446`;
+- P05 SSIM `0.7782`.
+
+These similarity values are **not** a Design PASS or professional-finish verdict.
+
+Local source-complete package: `C04_CH02_P01_P05_PIXEL_WEB_v1_0.zip`
+- `6,876,902 bytes`;
+- SHA256 `7cda6546a8c678126bc3438eff9289076708f0adb6240586260a320002a29faa`.
+
+Boundary:
+- reference images are consumed as pixel/alignment references only for this rebuild; no new image was generated;
+- P01 scenic raster is a separate visual layer while typography, annotations, leaders and route overlay are live DOM/SVG;
+- P05 default pixel mode prioritizes reference fidelity; a native SVG diagram mode remains available in the same HTML;
+- this successor remains `EXECUTED / REVIEW PENDING / NO SELF-KEEP / NO_PROMOTION`.
