@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png": {"drive_id":"18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l","size":[2560,1440]},
+    "07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png": {"drive_id":"1sFIVEBylCKrirRcTYjdC2NuoOOiWyIDQ","size":[2560,1440]},
+    "04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png": {"drive_id":"1DBY61KOcLS-TA4pQPBXksB7-l73oaVI1","size":[2560,1440]},
+    "11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png": {"drive_id":"1_l_ivu6nLNuNbVRdhYx1uSjlgzmPA-LL","size":[2560,1440]},
+    "15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png": {"drive_id":"1b0zC65tzKAfU3Gq3WfN7ND5B-xRG1Sli","size":[2560,1440]}
+  },
+  "crops": {
+    "P01_journey_landscape.jpg":{"source":"01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","box":[610,30,1760,980],"resize":[1600,1322]},
+    "P02_fold_object.jpg":{"source":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png","box":[110,250,1680,1260],"resize":[1640,1054]},
+    "P02_route_detail.jpg":{"source":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png","box":[480,360,1500,1080],"resize":[1400,988]},
+    "P02_return_detail.jpg":{"source":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png","box":[1100,360,1600,980],"resize":[1100,1364]},
+    "P03_today.jpg":{"source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","box":[120,240,760,1335]},
+    "P03_route.jpg":{"source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","box":[820,305,1270,1290]},
+    "P03_read.jpg":{"source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","box":[1230,360,1700,1325]},
+    "P03_book.jpg":{"source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","box":[1660,315,2115,1330]},
+    "P04_r13_exit.jpg":{"source":"11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png","box":[905,360,1320,1040],"resize":[1000,1638]},
+    "P05_journal_cover.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[120,450,520,1040]},
+    "P05_moment_memory.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[1050,450,1535,1040]},
+    "P05_line.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[1600,420,2100,995]},
+    "P05_mist_family.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[2035,420,2480,995]}
+  }
+}
