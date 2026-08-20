@@ -1,0 +1,10 @@
+{
+  "artifact": "C04_CH01_WEB_v1.1_PROJECT_UNIQUE",
+  "scope": "CH01 standalone Web successor under CH14 + OLEANDER project-wide image uniqueness gate",
+  "surfaces": ["CH01-P01","CH01-P02","CH01-P03","CH01-P04","CH01-P05"],
+  "raster_content_slots": {"CH01-P01-MAIN":"OW-20230616-2a923422a","CH01-P02":null,"CH01-P03":null,"CH01-P04":null,"CH01-P05":null},
+  "generated_page_images_used_in_web": false,
+  "locks": ["ROUTE-03 = LOCKED CURRENT","R06 = FINISHED / FROZEN / NO REOPEN","FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"],
+  "status": "PRODUCER CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / PROJECT-WIDE IMAGE AUDIT PARTIAL / INDEPENDENT DESIGN REVIEW PENDING",
+  "actual_readback": {"desktop":"5/5 @ 1920x1080","mobile":"5/5 @ 390x844","overflow":0,"broken_images":0,"console_errors":0,"page_errors":0}
+}

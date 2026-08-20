@@ -1,0 +1,22 @@
+# C04 CH01 Web v1.9 — CH14 Editorial / Landscape-Space Revision Receipt
+
+- Object: `PRJ-C04-QINGJIANG-SHISHU / CH01`
+- Upstream authoring: `CH01 v0.3 / Draft PR #294`
+- Visual binding: `CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE + PAGE + TRACE`
+- Material delta is bounded to `P01 / P04 / P05 / P06`; `P02 / P03` are preserved.
+- P01: generic relation-wave proxy removed; current first-read is `WATER / CABLE / WALK` with `水上看 / 空中看 / 山中走` and `WHOLE → RELATION → BODY`; geometry is explicitly conceptual and not ROUTE-03/site geometry.
+- P04: body-action choreography is the dominant carrier; Return is a conditional override branch only.
+- P05: previous six-card/aperture residue removed; a single continuous Service / Return carrier is physically interrupted by six unresolved interface cuts; mobile is independently vertical, not desktop-scaled.
+- P06: pseudo-management matrix removed; current carrier is editorial selection: existing objects → one question → `KEEP / DEEPEN / COMPETE / HOLD / NO DESIGN`.
+- Raster content images: `0`; generated whole-page images: `0`.
+- P02 keeps `ROUTE-03 = LOCKED CURRENT`; no route redraw, no invented 13 spatial nodes, no 13/13.
+- Brand presence: LIGHT; no fake Stone Seal / replacement logo geometry.
+- Chromium exact-source DOM/CSS actual-pixel readback: `6/6 @ 1920×1080` and `6/6 @ 390×844`; horizontal overflow `0`; raster `<img>` `0`; console/page errors `0`.
+- Grayscale + 50% far-read derivatives and desktop/mobile contact sheets generated from exact v1.9 pixels.
+- Direct file/localhost navigation remains blocked by runtime policy; direct-navigation Browser PASS is not claimed.
+- Exact GitHub source carrier: four parts `6000 + 6000 + 6000 + 4484 = 22484 base64 chars`; local Git blob hashes match GitHub blob hashes for all four parts; strict decoded tar.gz SHA256 `a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102`; decoded bytes `16862`.
+- The initial single-file v1.9 carrier was rejected and removed after connector-side truncation was detected; it is not authority.
+- Local complete review package (visual/source bytes frozen before carrier repair): `C04_CH01_WEB_v1.9_CH14_EDITORIAL.zip` / `3,487,232 bytes` / SHA256 `0f04f3264786bc69788de643f392da54c658f65058acb7e1d79bc158525a1e7d`. Carrier repair does not alter the reviewed HTML/CSS/pixels.
+- Independent Professional Design disposition remains `PENDING`; producer does not self-issue KEEP / MAIN / Professional Design PASS.
+- State: `PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION`.
+- Truth: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION`.

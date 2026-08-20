@@ -1,0 +1,33 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH01",
+  "candidate": "v2.7",
+  "state": "PRODUCER_REFINED / ACTUAL_PIXEL_READBACK_COMPLETE / IMAGE_RULE_CLEAN / MOBILE_RECOMPOSED / ARTIFACT_REVIEW_1.2_INDEPENDENT_GATE_PENDING / NO_PROMOTION",
+  "raster_content_images": 0,
+  "whole_page_generated_images": 0,
+  "new_semantic_image_reservations": 0,
+  "route03_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+  "source_hashes": {
+    "index.html": "12db287829bbd6fb9ab7057491e3b1f8e786371ea554838b727b99f072f332cb",
+    "style.css": "a40f5102864f2df0d6bd7defae0d26cfbc7b519539e75e21ab5ab15c96a8864d",
+    "source_review_bundle_tar_gz": "6f8c30e261d26bea4cceb4d56f8dee6942188d6a55cf4b3f8a38e5a33bbdae16"
+  },
+  "source_review_bundle_bytes": 20575,
+  "source_review_bundle_parts": 5,
+  "actual_pixel": {
+    "desktop": {"viewport": "1920x1080", "surfaces": 6, "scrollWidth": 1920, "clientWidth": 1920, "imgCount": 0, "errors": 0},
+    "mobile": {"viewport": "390x844", "surfaces": 6, "scrollWidth": 390, "clientWidth": 390, "imgCount": 0, "errors": 0}
+  },
+  "source_audit": {
+    "html_img": 0,
+    "html_picture": 0,
+    "data_image": 0,
+    "external_or_data_css_urls": 0,
+    "svg_paint_server_urls": ["#terrainHatch26"]
+  },
+  "local_review_wrapper": {
+    "file": "C04_CH01_WEB_v2.7_FINISHED_PIXEL_REVIEW_CANDIDATE.zip",
+    "bytes": 1966232,
+    "sha256": "dede7a621ee5dba84adf3e88542364b64020279c973f797f4d28f4801c349751"
+  }
+}

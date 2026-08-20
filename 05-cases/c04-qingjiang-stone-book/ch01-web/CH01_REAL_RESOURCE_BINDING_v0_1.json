@@ -1,0 +1,110 @@
+{
+  "schema": "C04_CH01_REAL_RESOURCE_BINDING_v0.1",
+  "state": "PRE_PIXEL_SOURCE_BINDING / REAL_RESOURCE_BOUND / NO_PROMOTION",
+  "authority": {
+    "authoring": "PR #294 CH01 v0.3 / blob 2548c0dd5d0087cd9115038072e99f2a29ef4761",
+    "visual_brief": "CH01_VISUAL_EXECUTION_BRIEF_v2_0.md",
+    "brand": "CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE-PAGE-TRACE / LIGHT",
+    "image_rule": "one underlying content-image source = one semantic Web image slot across entire project Web"
+  },
+  "pages": {
+    "CH01-P01": {
+      "role": "opening / total problem",
+      "first_read": "清江不缺景观，缺的是关系。",
+      "content_image_slot": "CH01-P01-REAL-01",
+      "source": {
+        "asset_id": "OW-20230616-2a923422a",
+        "source_type": "OFFICIAL_WEB",
+        "source_url": "https://www.eslygroup.com/uploadfile/image/20230616/2a923422a.jpg",
+        "source_sha256": "0360b3ea3665e1ae7b1779ad4a2418b728ea9e6f5a3949effe3f731091621309",
+        "expected_bytes": 120087,
+        "source_px": "1080x525",
+        "provenance": "PR #82 / EVD-C04-003 / prior CH01 v1.1 audited-scope unique lineage",
+        "rights": "PROJECT-USE APPROVED",
+        "node_state": "R05 RESEARCH LINEAGE / EXACT IDENTITY TO REVERIFY",
+        "tech_state": "WEB-PUBLISHED LOW-RES / NOT FINAL HERO"
+      },
+      "binding_rule": "Use as a contained landscape field at <=1080 CSS px source-width equivalent; no full-bleed upscale. One semantic slot only.",
+      "uniqueness_state": "RE-RESERVED FOR CH01 P01 / AUDITED-SCOPE UNIQUE / FULL PROJECT LEDGER PENDING"
+    },
+    "CH01-P02": {
+      "role": "structural contradiction",
+      "first_read": "十三个内容对象，不等于十三个必到站点。",
+      "content_image_slot": null,
+      "source": {
+        "asset_id": "ROUTE-03",
+        "source_type": "LOCKED_CURRENT_VECTOR",
+        "github_path": "05-cases/c04-qingjiang-stone-book/route/route03/ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED.svg",
+        "source_binding": "05-cases/c04-qingjiang-stone-book/route/route03/ROUTE_03_SOURCE_BINDING.json",
+        "upstream_pr": 192,
+        "locked_drive_package_id": "1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy",
+        "source_svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+        "source_role": "user-provided relational route topology",
+        "truth": "NTS / NOT GPS / no measured distance-slope-time-operating-state"
+      },
+      "binding_rule": "Consume exact locked geometry. Crop/excerpt/uniform presentation styling only; no topology mutation and no R01-R13 pinning to route coordinates."
+    },
+    "CH01-P03": {
+      "role": "attention conflict",
+      "first_read": "信息越多，越可能看不见清江。",
+      "content_image_slot": "CH01-P03-REAL-01",
+      "source": {
+        "asset_id": "OW-20230718-v0ii0wjlhe",
+        "source_type": "OFFICIAL_WEB",
+        "source_url": "https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg",
+        "source_px": "1200x800",
+        "approx_bytes": 158000,
+        "provenance": "Official/Hubei Daily republished set / EVD-C04-003 + Official Web Media Shortlist",
+        "rights": "PROJECT-USE APPROVED",
+        "node_state": "R06 VIEW-RELATION PASS / SCIENCE HERO HOLD",
+        "tech_state": "WEB-PUBLISHED / NOT FINAL HERO"
+      },
+      "binding_rule": "One semantic image component only: clear -> progressively occluded -> WITHDRAW. State changes and crops remain the same semantic slot. Keep displayed image <= native 1200x800 envelope; no second copy elsewhere in CH01.",
+      "uniqueness_state": "PROVISIONAL RESERVATION / NOT FOUND IN AUDITED WEB LEDGER / FULL PROJECT LEDGER PENDING",
+      "visual_risk": "Foreground cable car is visually strong; crop must preserve real Qingjiang first-read before information layers. Reject binding at pixel-readback if landscape is not first."
+    },
+    "CH01-P04": {
+      "role": "body / service pressure",
+      "first_read": "游客不是只在读内容，也在持续判断能不能继续。",
+      "content_image_slot": null,
+      "semantic_sources": [
+        "CH01 v0.3: direction / stamina / companion / weather / abnormal / Return",
+        "CH13-P02 body sequence precedent: WALK -> FATIGUE -> STOP/LEAN -> LOOK -> CONTINUE/RETURN"
+      ],
+      "carrier": "NEW EDITABLE INLINE SVG BODY CHOREOGRAPHY",
+      "binding_rule": "No reuse of CH13 raster/image reservation. Use source-grounded behavior logic only; create independent vector silhouettes/ground-contact states. raster content images = 0."
+    },
+    "CH01-P05": {
+      "role": "physical service gap",
+      "first_read": "原则已经有了，现场触点还没有闭合。",
+      "content_image_slot": null,
+      "semantic_sources": [
+        "CH01 v0.3: direction confirmation",
+        "CH01 v0.3: Return recognition",
+        "CH01 v0.3: CLOSED / UNKNOWN expression",
+        "CH01 v0.3: Paper <-> Site correspondence",
+        "PRIMARY OWNER = CH09"
+      ],
+      "carrier": "NEW EDITABLE SVG SERVICE CONTINUITY WITH FOUR NEGATIVE-SPACE BREAKS",
+      "binding_rule": "Do not depict route geometry and do not pre-design the CH09 product family. raster content images = 0."
+    },
+    "CH01-P06": {
+      "role": "selection problem / chapter closure",
+      "first_read": "项目不缺方案，缺的是明确选择。",
+      "content_image_slot": null,
+      "bound_existing_design_identities": ["P02","Fluid Rest","Step Light","Qingfengyin","Digital","Memory"],
+      "selection_authority": "CH08 / CH18 formal design capability",
+      "carrier": "EDITORIAL TEXT/TYPE PROOFING FIELD + NATIVE SVG TRACE",
+      "binding_rule": "Bind identities, not repeated thumbnails. Do not assign KEEP/HOLD/etc in CH01. raster content images = 0."
+    }
+  },
+  "image_consumption": {
+    "planned_raster_slots": 2,
+    "planned_vector_or_native_surfaces": 4,
+    "P01": "OW-20230616-2a923422a",
+    "P03": "OW-20230718-v0ii0wjlhe",
+    "project_wide_uniqueness_pass": false,
+    "reason": "full current integrated Web ledger remains incomplete; reservations are real bindings, not a project-wide PASS"
+  },
+  "next_gate": "materialize exact source carriers -> crop/readability check -> page production -> actual desktop/mobile pixel readback -> Artifact Review 1.2"
+}

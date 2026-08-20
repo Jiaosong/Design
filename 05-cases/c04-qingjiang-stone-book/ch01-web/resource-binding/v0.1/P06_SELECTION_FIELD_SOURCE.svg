@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#F1EDE4"/>
+  <style>.serif{font-family:'Noto Serif CJK SC','Songti SC',serif}.sans{font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif}</style>
+  <text x="88" y="90" class="sans" font-size="17" fill="#65706A" letter-spacing="2">CH01 / SELECTION PROBLEM / SOURCE CARRIER</text>
+  <text x="88" y="170" class="serif" font-size="60" fill="#111918">项目不缺方案，缺的是明确选择。</text>
+  <g class="sans" font-size="21" fill="#111918"><text x="95" y="310">P02</text><text x="95" y="357">Fluid Rest</text><text x="95" y="404">Step Light</text><text x="95" y="451">Qingfengyin</text><text x="95" y="498">Digital</text><text x="95" y="545">Memory</text></g>
+  <path d="M280 292 C470 330 490 480 610 486 C735 492 786 390 900 390" fill="none" stroke="#2E7571" stroke-width="4"/>
+  <path d="M280 528 C460 500 505 412 610 410 C735 405 795 470 900 470" fill="none" stroke="#2E7571" stroke-width="4" opacity=".55"/>
+  <g transform="translate(640 300)"><rect width="420" height="240" fill="#133B3C" rx="4"/><text x="210" y="83" class="sans" font-size="14" fill="#BAC4BF" text-anchor="middle" letter-spacing="1.5">SELECTION QUESTION</text><text x="210" y="142" class="serif" font-size="30" fill="#F1EDE4" text-anchor="middle">什么必须继续？</text><text x="210" y="184" class="serif" font-size="30" fill="#F1EDE4" text-anchor="middle">什么只允许竞争？</text><text x="210" y="226" class="serif" font-size="30" fill="#F1EDE4" text-anchor="middle">什么应该停下？</text></g>
+  <g class="sans" font-size="17" text-anchor="end"><text x="1505" y="316" fill="#2E7571">KEEP</text><text x="1505" y="366" fill="#2E7571">DEEPEN</text><text x="1505" y="416" fill="#65706A">COMPETE</text><text x="1505" y="466" fill="#65706A">HOLD</text><text x="1505" y="516" fill="#B8543E">NO DESIGN</text></g>
+  <line x1="1115" y1="290" x2="1115" y2="535" stroke="#C7B99F"/>
+  <text x="88" y="674" class="serif" font-size="27" fill="#111918">如何在不削弱真实清江的前提下，使游客能够看懂空间、走清路线、根据身体和兴趣选择阅读深度、</text>
+  <text x="88" y="718" class="serif" font-size="27" fill="#111918">在异常或疲劳时可靠退出，并把真正经历过的部分带走？</text>
+  <text x="88" y="780" class="sans" font-size="16" fill="#65706A">CH01 只把问题定义清楚，不提前回答。 · Selection authority = CH08 / CH18</text>
+  <line x1="88" y1="814" x2="1512" y2="814" stroke="#D8C9B1"/>
+  <text x="88" y="852" class="sans" font-size="15" fill="#65706A">IDENTITY BINDING ONLY · NO SCORE · NO PREMATURE KEEP/HOLD ASSIGNMENT · NO THUMBNAIL REUSE</text>
+</svg>

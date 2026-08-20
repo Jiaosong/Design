@@ -1,0 +1,13 @@
+{
+  "tar_bytes": 23579,
+  "tar_sha256": "e2c0bfa72cc5d114941d8a7ff3c94838dbdd71a02332b069bf8da6f22990339f",
+  "base64_chars": 31440,
+  "parts": [
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part01.txt","chars":6000},
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part02.txt","chars":6000},
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part03.txt","chars":6000},
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part04.txt","chars":6000},
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part05.txt","chars":6000},
+    {"name":"SOURCE_REVIEW_BUNDLE_v3_2.part06.txt","chars":1440}
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_CH01_WEB_v1.4_FULLFLOW_REVIEW",
+  "authoring_source": "PR #294 / CH01 v0.3",
+  "execution_route": [
+    "oleander-research",
+    "oleander-story-and-board",
+    "oleander-data-viz",
+    "oleander-ui-visual-composition (candidate specialist support)",
+    "oleander-delivery-qc",
+    "OLEANDER Artifact Review",
+    "Independent Design Gate"
+  ],
+  "design_knowledge": [
+    "FW-DESIGN-VISUAL-COMM-001",
+    "CASE-DATAVIZ-BEAUTIFUL-NEWS-001",
+    "Dominant Field / First Visual practice",
+    "CH14 P04/P05 current tokens"
+  ],
+  "raster_content_images": 0,
+  "generated_page_images": 0,
+  "status": "PRODUCER SELF-CHECKED / REVIEW HANDOFF CANDIDATE / IDENTITY-INDEPENDENT REVIEWER UNAVAILABLE / HOLD / NO_PROMOTION",
+  "route03_binding": {
+    "locked_svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "policy": "NO MUTATION / EXCERPT + CROP + STYLING ONLY",
+    "p02": "exact source path excerpt"
+  },
+  "runtime": {
+    "desktop": {
+      "viewport": "1920x1080",
+      "surface_count": 6,
+      "scroll_width": 1920,
+      "raster_images": 0,
+      "errors": 0
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "surface_count": 6,
+      "scroll_width": 390,
+      "raster_images": 0,
+      "errors": 0
+    }
+  },
+  "review_gate": "IDENTITY-INDEPENDENT REVIEWER UNAVAILABLE / HOLD / DO NOT PROMOTE",
+  "authoring_head": "d6c9383b81b7dd7c199c5f90daa18d7c4d9d31d0",
+  "authoring_blob": "2548c0dd5d0087cd9115038072e99f2a29ef4761",
+  "source_hashes": {
+    "index.html": {"sha256":"290ab5dcb5f68e700e13083535518ebc1aeb360066f0fa1b5bf76c3dda96de8a","bytes":14682},
+    "style.css": {"sha256":"cb4c415ba24a3e1264c02743c912cc5c9d509ee1614aeea9a9c38967e3015a5d","bytes":17560},
+    "readback/desktop_contact.jpg": {"sha256":"d12a99d184fc2322aee5ff87bdd3ba2d1671ef61e6ca2a7639bbe949f06e878c","bytes":164716},
+    "readback/mobile_contact.jpg": {"sha256":"19351f94b3f55a109ffd28ba32f8afab25aa3a756bd07d93ef63e626c1b3e9b4","bytes":92593},
+    "review/desktop_contact_grayscale.jpg": {"sha256":"db9fca9fc1c94dbf130958be8c15d98ea429ca26492272995b735c4dbd3b7583","bytes":151392},
+    "review/desktop_contact_50pct.jpg": {"sha256":"c2092e682825d42df90f87157231a4ba3c40117f1938f0a2d2e3dbdc5aa0d6b2","bytes":60129},
+    "readback/runtime.json": {"sha256":"8696f585ea32c30b7bdeec48974f52b0100615b99b4f37e672e5a1e63f01af11","bytes":1351}
+  }
+}

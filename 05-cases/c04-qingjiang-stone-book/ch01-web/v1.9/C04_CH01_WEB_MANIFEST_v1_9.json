@@ -1,0 +1,39 @@
+{
+  "artifact_id": "C04_CH01_WEB_v1.9_CH14_EDITORIAL",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH01",
+  "source_authority": "CH01 v0.3 / Draft PR #294",
+  "visual_authority": "CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE + PAGE + TRACE",
+  "material_delta_from": "v1.8",
+  "material_delta": {
+    "P01": "replaced generic relation-wave proxy with Qingjiang-specific WATER / CABLE / WALK encounter field using 水上看 / 空中看 / 山中走; explicitly conceptual, not route geometry",
+    "P04": "body choreography becomes dominant continuous carrier; Return reduced to override branch under CLOSED / UNKNOWN / FATIGUE / NO-PHONE",
+    "P05": "removed gap cards; one continuous SERVICE / RETURN carrier is literally cut by six unresolved physical interfaces; mobile recomposed vertically",
+    "P06": "removed matrix-like outcome grid; editorial selection sequence with existing-design list → one question → five qualitative dispositions"
+  },
+  "preserved": {
+    "P02": "ROUTE-03 locked current geometry; no redraw; route ≠ content order",
+    "P03": "attention occlusion / WITHDRAW composition retained"
+  },
+  "surfaces": ["CH01-P01", "CH01-P02", "CH01-P03", "CH01-P04", "CH01-P05", "CH01-P06"],
+  "raster_content_images": 0,
+  "ai_generated_whole_page_images": 0,
+  "palette": {"Bone Mist": "#F1EDE4", "River Black": "#111918", "Deep Water": "#133B3C", "Jade Current": "#2E7571", "Wet Stone": "#7C8B86", "Mica": "#BAC4BF", "Cinnabar": "#B8543E", "Sediment": "#C7B99F"},
+  "source_recovery": {
+    "base64_chars": 22484,
+    "decoded_tar_gz_bytes": 16862,
+    "decoded_tar_gz_sha256": "a99c215c5deb3ebeb7bb62719b3309ad09c6aebcab8edf911943c59c8c906102",
+    "git_blob_readback": {
+      "part01": "d3731d0dd6065445219d2ca4a852f9bacda1c2ea",
+      "part02": "8d23535f2ba7065562ca30877de39ac1de8fc466",
+      "part03": "656cb4b3bde81502357e21f36ef4bdc9952c7176",
+      "part04": "b3eaa5b6ad63931534ec8074a355fba5274d1a8c"
+    }
+  },
+  "readback": [
+    {"view": "desktop", "viewport": [1920,1080], "body": {"clientWidth":1920,"scrollWidth":1920,"rasterImages":0,"sections":6}, "pages": [{"page":1,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080},{"page":2,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080},{"page":3,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080},{"page":4,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080},{"page":5,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080},{"page":6,"clientWidth":1920,"scrollWidth":1920,"clientHeight":1080,"scrollHeight":1080}], "errors":[]},
+    {"view": "mobile", "viewport": [390,844], "body": {"clientWidth":390,"scrollWidth":390,"rasterImages":0,"sections":6}, "pages": [{"page":1,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844},{"page":2,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844},{"page":3,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844},{"page":4,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844},{"page":5,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844},{"page":6,"clientWidth":390,"scrollWidth":390,"clientHeight":844,"scrollHeight":844}], "errors":[]}
+  ],
+  "review_state": "PRODUCER REVISION CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / OBJECTIVE QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "truth_boundary": ["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION","NTS","NOT GPS","NOT FOR CONSTRUCTION"]
+}
