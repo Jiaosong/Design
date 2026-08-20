@@ -16,16 +16,18 @@
   },
   "review_package": {
     "file": "C04_CH15_MEMORY_IP_v0_5.zip",
-    "bytes": 5322890,
-    "sha256": "faa34eab641b22702b829a5bb1f76c3da9797bcc53c5e00b36c4b58cdb00c72c"
+    "bytes": 5324011,
+    "sha256": "dc6f43bc27cbc4f36fa401d3b0d40ab691fb2e9375dc51b7eda44d24267f5cdb",
+    "manifest_sha256": "3ca627dc37fcbf40dc5ad12c2b357c2c8ac566e7d3a660354e56a9ee1403b9cd",
+    "note": "Outer package hash is recorded here after build; it is intentionally not self-embedded inside the ZIP."
   },
   "drive": {
     "folder_id": "1a-TEZycjRCM8de_PifVZPUZ0xOQQWken",
     "zip_id": "1s7djW-rdLhqttLI-gzzwNZEubhEcWWx-",
     "desktop_montage_id": "18facoAgfYft-r6UxFgBR2lfukigpGkkV",
     "mobile_montage_id": "1nFOT2cHE2OTejhEIO3M56M4-G-i4dsAa",
-    "retrieved_bytes": 5322890,
-    "retrieved_sha256": "faa34eab641b22702b829a5bb1f76c3da9797bcc53c5e00b36c4b58cdb00c72c",
+    "retrieved_bytes": 5324011,
+    "retrieved_sha256": "dc6f43bc27cbc4f36fa401d3b0d40ab691fb2e9375dc51b7eda44d24267f5cdb",
     "result": "EXACT MATCH"
   },
   "does_not_prove": [
