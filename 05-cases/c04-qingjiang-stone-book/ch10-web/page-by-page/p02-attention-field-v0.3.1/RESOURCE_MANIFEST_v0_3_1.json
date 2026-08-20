@@ -1,0 +1,39 @@
+{
+  "object_id": "C04_CH10_P02_ATTENTION_FIELD_v0_3_1",
+  "status": "SOURCE-SAFE PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING",
+  "supersedes": [
+    "v0.3 = PROVENANCE / BYTE-LOCK FAILED",
+    "v0.2 = REVISE / HISTORY / SOURCE-CONFLICT"
+  ],
+  "content_image_count": 0,
+  "image_generation": "NOT USED",
+  "native_carrier": "HTML/CSS/JS + inline editable SVG",
+  "canonical_html": {
+    "bytes": 10701,
+    "sha256": "a6300befc33750dc69c776c41daf3154abe8ba693f6ac656fbe03ecaced14e8f",
+    "git_blob_sha": "e97068c4a94552a3a1246beb141c424bb8a8686d"
+  },
+  "durable_review_package": {
+    "drive_id": "1LMmEkh-MhTMf7_8hoc_ghu5T-ABzO_Qx",
+    "bytes": 2646095,
+    "sha256": "c180e5f87f5b17c68701cd4af46b62d2dcd7081d26f4b6861d51f04653853c46",
+    "drive_raw_reread_size_match": true,
+    "zip_integrity": "PASS"
+  },
+  "core8": [
+    "R01 红岩嘴",
+    "R02 华中第一藤",
+    "R05 红花石林",
+    "R06 河谷",
+    "R07 仓禀峰／仓廪峰",
+    "R09 盐水女神峰",
+    "R12 廪君峰",
+    "R13 一线天"
+  ],
+  "open": [
+    "R05 authoritative Honghua site pixel remains OPEN; no generic substitute",
+    "independent professional design verdict PENDING",
+    "integrated CH10 resource/rhythm review OPEN"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
