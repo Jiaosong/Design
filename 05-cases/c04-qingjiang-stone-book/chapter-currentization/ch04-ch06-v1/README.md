@@ -30,8 +30,25 @@ Hard rules:
 - existing mature design first
 - source imagery is presentation/evidence context, not field geometry authority
 
+## CH05 current producer visual frontier — v5
+`ch05-v5/ = RASTER-FREE RESET / PRODUCER CANDIDATE`.
+
+- v3 = `SUPERSEDED / PROVENANCE ONLY`.
+- v4 = `REJECT / SUPERSEDED / INVALID IMAGE BINDING / PROVENANCE ONLY`.
+- v5 consumes zero raster content-image sources and uses no AI-generated substitute.
+- P01 consumes `ROUTE-03 = USER LOCKED CURRENT v3.4` read-only as an exact topology subset; no second route geometry.
+- P02–P04 use newly authored native SVG analytical/behavior carriers.
+- actual target-size readback complete at `1920×1080`, `1366×768`, and semantic `390×844`.
+- producer repair pass removed one false-spatial decorative field, repaired P03 vector geometry, and corrected mobile fit/title issues.
+- Drive package raw refetch verified.
+
+Package: `C04_CH05_RASTER_FREE_v5_PACKAGE.zip`
+- Drive ID `1wSVemsVC8ywkW2ssch8Ub66x-9dG9eeH`
+- bytes `6,753,954`
+- SHA256 `f5f4f24f55827c2538c143e9c256f5ac66a5b81b7a821225b702a403f1850586`
+
 State:
-EXECUTED / PRODUCER ACTUAL READBACK COMPLETE / DRIVE PERSISTED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION
+EXECUTED / PRODUCER ACTUAL READBACK COMPLETE / DRIVE PERSISTED + RAW REFETCH VERIFIED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION
 
 Truth:
 FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION
