@@ -1,0 +1,31 @@
+{
+  "object": "C04 / CH10-P03",
+  "revision": "v0.1",
+  "status": "PRODUCER CANDIDATE / ACTUAL-PIXEL REVIEW TARGET / NO SELF-KEEP",
+  "authority": "CH10 v0.4 Core 8 + Companion Pool + Trip Subset; P03 materializes MERGE / SUBSTITUTE / OFF as editorial behavior",
+  "image_generation": "NOT USED",
+  "raster_content_images": 0,
+  "public_design_assets": "HTML/CSS/JS + inline SVG only; all public text remains vector/live text",
+  "content_bindings": {
+    "MERGE": "R03 铁券天书 + R08 文山天书 + R10 绝壁天书 -> 天书组页",
+    "SUBSTITUTE": "许愿台／板栗树 enters as stronger behavior anchor when current Companion is weaker",
+    "OFF": "viewpoint / congestion / wet-slip / UNKNOWN-CLOSED / stamina-return priority -> Companion withdraws; route/return continues",
+    "R04": "母子相望／母子峰 stays COMPETE; only if both profiles are clearly visible in one view",
+    "R11": "金石为开 stays SAFETY FIRST; no dwell task when stopping conditions are not confirmed",
+    "巨帆启航": "remains primarily CH09 Route Hinge; not promoted to CH10 deep-read Hero to fill count"
+  },
+  "source_boundary": {
+    "Notion_Current": "CH10 v0.4 authoring authority supplies current labels and competition logic",
+    "public_guide": "恩施大清江红花峰林导游解说词 confirms a locally known chestnut wishing-tree behavior; it does not independently prove a separate constructed platform implied by the word 台",
+    "天书_group": "semantic/editorial merge; no site image or node geometry is claimed on P03"
+  },
+  "canonical_html": {
+    "bytes": 16935,
+    "sha256": "caaaebe2a092916a2931d2c1f7c54a102ab4003177c1164705d49861a0af1c10"
+  },
+  "portable_html": {
+    "bytes": 16935,
+    "sha256": "caaaebe2a092916a2931d2c1f7c54a102ab4003177c1164705d49861a0af1c10"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}
