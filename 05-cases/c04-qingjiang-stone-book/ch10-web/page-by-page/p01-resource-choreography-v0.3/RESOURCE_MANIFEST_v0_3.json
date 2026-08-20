@@ -1,0 +1,43 @@
+{
+  "object": "C04_CH10_P01_RESOURCE_CHOREOGRAPHY_v0_3",
+  "status": "PRODUCER CANDIDATE / PAGE-SCOPED REVIEW REQUIRED",
+  "design_translation": "Resource ownership is shown by full-scene transitions, not by copy or stacked cards.",
+  "resource_slots": [
+    {
+      "slot": "LANDSCAPE",
+      "file": "assets/LANDSCAPE_WHOLE.jpg",
+      "source": "CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png",
+      "drive_id": "1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv",
+      "transform": "crop/fit/contrast only"
+    },
+    {
+      "slot": "RELATION",
+      "file": "assets/RELATION_CABLE.jpg",
+      "source": "01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png",
+      "drive_id": "18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l",
+      "transform": "crop/fit/contrast only"
+    },
+    {
+      "slot": "BODY_RECOVER",
+      "file": "assets/BODY_RECOVER_LINE.png",
+      "source": "14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png",
+      "drive_id": "1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq",
+      "transform": "crop + background-removal only"
+    }
+  ],
+  "authority": {
+    "content": [
+      "CH08 v0.4 Master Design Strategy",
+      "CH10 v0.4 Reorganized Reading System"
+    ],
+    "visual": "CH14 Current visual grammar only"
+  },
+  "image_generation": "NOT USED",
+  "does_not_prove": [
+    "site continuity between source images",
+    "route geometry",
+    "GPS",
+    "live operational state",
+    "field-measured fatigue"
+  ]
+}

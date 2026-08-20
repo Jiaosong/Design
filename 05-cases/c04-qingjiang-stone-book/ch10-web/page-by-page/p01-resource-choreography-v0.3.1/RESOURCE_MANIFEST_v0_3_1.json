@@ -1,0 +1,22 @@
+{
+  "object": "C04 / CH10-P01",
+  "revision": "v0.3.1",
+  "status": "FINISHED-PIXEL CORRECTION / REVIEW TARGET / NO SELF-KEEP",
+  "canonical_html": {"bytes": 9826, "sha256": "88cf25354c5f26626222cf7f0e10bc6c55a48769e2004753ffb68366628a73e1"},
+  "image_generation": "NOT USED",
+  "source_binding": {
+    "LANDSCAPE_WHOLE.jpg": {"source_filename": "CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png", "drive_id": "1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv", "transform": "crop [590,120,1370,559] -> resize 1920x1080 -> contrast 1.03 -> JPEG q92", "bytes": 242436, "sha256": "ceaab783ae40d868572248f765bd213386305507dce499fc8ea26f4bff8d2a56"},
+    "RELATION_CABLE.jpg": {"source_filename": "01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png", "drive_id": "18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l", "transform": "crop [600,175,1760,828] -> resize 1920x1080 -> contrast 1.05 -> JPEG q92", "bytes": 321700, "sha256": "e31e7525fa11e09b9f509ab491896fe5cd6e7a4c7a5d0a1774c006b2283e574b"},
+    "BODY_RECOVER_LINE.png": {"source_filename": "14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png", "drive_id": "1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq", "transform": "crop [80,500,1270,980] -> light-background alpha extraction -> PNG", "bytes": 105150, "sha256": "db2ef0734f896c2f14ef22556d6a95dabd3296d87ef62512744c662d2f0f8f83"}
+  },
+  "material_delta_from_v0.3": [
+    "desktop state rail 82px -> 66px and lower-opacity/blur treatment so the landscape remains first-read",
+    "mobile state rail 82px -> 68px; repeated English state labels suppressed; number + Chinese remain visible",
+    "state mark/body/return trace repositioned to the reduced rail height without changing state ownership",
+    "aria-pressed state exposed for the six state buttons"
+  ],
+  "open_gates": ["INDEPENDENT PROFESSIONAL DESIGN VERDICT", "WHOLE-PROJECT IMAGE/RESOURCE UNIQUENESS BEFORE PROMOTION"],
+  "durable_binary_retrieval": "CLOSED / PASS FOR THIS P01 REVIEW PACKAGE",
+  "durable_review_package": {"drive_id": "1aXZIcyGGIxW1rZ9_kdiPFaQiJJhFJaO1", "bytes": 14361267, "sha256": "55f7d41983cf943be3d06ebf3167f4d7ce222d56158de893ed586b23cb726a5c", "drive_reread_unzip": "PASS"},
+  "field_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}

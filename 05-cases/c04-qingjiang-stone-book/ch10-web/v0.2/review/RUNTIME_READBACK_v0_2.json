@@ -1,0 +1,20 @@
+[
+  {
+    "viewport": [1920,1080],
+    "overflow": 0,
+    "min_button": [44,44],
+    "errors": [],
+    "R06": ["河谷页｜观景平台＋多级阶地／不对称河谷","先不看解释：河谷两侧看起来一样吗？你能找到层级变化最明显的一侧吗？"],
+    "mode": ["LOW_STAMINA","RECOVER → ORIENT → CONTINUE / RETURN → OPTIONAL CONTENT；内容最先让位。"],
+    "R13": "现在可以再读。"
+  },
+  {
+    "viewport": [390,844],
+    "overflow": 0,
+    "min_button": [44,44],
+    "errors": [],
+    "R06": ["河谷页｜观景平台＋多级阶地／不对称河谷","先不看解释：河谷两侧看起来一样吗？你能找到层级变化最明显的一侧吗？"],
+    "mode": ["LOW_STAMINA","RECOVER → ORIENT → CONTINUE / RETURN → OPTIONAL CONTENT；内容最先让位。"],
+    "R13": "现在可以再读。"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "object_id": "C04_CH10_P01_RESOURCE_CHOREOGRAPHY_v0_4",
+  "status": "SOURCE-SAFE PRODUCER CANDIDATE / UNIQUE REAL LANDSCAPE SOURCE HOLD / INDEPENDENT DESIGN REVIEW PENDING",
+  "supersedes": "p01-resource-choreography-v0.3.1 = REVISE/HISTORY/SOURCE-CONFLICT",
+  "content_image_count": 0,
+  "image_generation": "NOT USED",
+  "native_carrier": "HTML/CSS/JS + inline editable SVG",
+  "preview_artifacts": [
+    {"role":"contact_sheet","path":"screens/P01_CONTACT_v0_4.jpg","bytes":123994,"sha256":"8e9c65bf56eda32aade728fd683b7d7ac2bfd60ad73952b28169bfac068e3f76","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"},
+    {"role":"desktop_preview","path":"screens/P01_OBSERVE_1920x1080.png","bytes":968870,"sha256":"de80adb66c3f80d3911341df9705805072c37fbf907eb5db1e2acc60f4c732ec","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"},
+    {"role":"mobile_preview","path":"screens/P01_OBSERVE_390x844.png","bytes":238299,"sha256":"7e32a7be61c9557aac7ce11d03766211c07b197e8044f1cacda3eae4b780fd54","classification":"ARTIFACT_PREVIEW / NOT_CONTENT_IMAGE / DOES_NOT_CONSUME_SEMANTIC_IMAGE_SLOT"}
+  ],
+  "preview_policy": "Actual-pixel screenshots/contact sheets are review artifacts, not semantic content images; image-consumption uniqueness does not remove them.",
+  "open_gate": "Bind a unique project-ledger-cleared real Qingjiang landscape source before landscape-first finished-pixel readiness. Current vector field is an explicit source-safe study, not site evidence.",
+  "canonical_html": {"bytes":12956,"sha256":"5e920103b8db016d25a9c1b44585c9375eb6c9a46041d1810f475b7ffb9e13b7"},
+  "independent_professional_design_verdict": "PENDING / NO SELF-KEEP",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION"
+}

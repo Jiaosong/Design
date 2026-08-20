@@ -1,0 +1,38 @@
+[
+  {
+    "label": "desktop",
+    "viewport": [1920, 1080],
+    "horizontal_overflow_px": 0,
+    "min_button_width_px": 320,
+    "min_button_height_px": 65,
+    "page_errors": [],
+    "keyboard_path_after_focused_MOVE": ["LOOK", "OBSERVE"],
+    "reduced_motion_running_animations": 0,
+    "state_visibility": {
+      "MOVE": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "LOOK": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "OBSERVE": {"prompt_opacity": 1.0, "fold_opacity": 1.0, "body_opacity": 0.0},
+      "RECOVER": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.94},
+      "CHOOSE": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "PASS": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0}
+    }
+  },
+  {
+    "label": "mobile",
+    "viewport": [390, 844],
+    "horizontal_overflow_px": 0,
+    "min_button_width_px": 65,
+    "min_button_height_px": 67,
+    "page_errors": [],
+    "keyboard_path_after_focused_MOVE": ["LOOK", "OBSERVE"],
+    "reduced_motion_running_animations": 0,
+    "state_visibility": {
+      "MOVE": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "LOOK": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "OBSERVE": {"prompt_opacity": 1.0, "fold_opacity": 1.0, "body_opacity": 0.0},
+      "RECOVER": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.94},
+      "CHOOSE": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0},
+      "PASS": {"prompt_opacity": 0.0, "fold_opacity": 0.0, "body_opacity": 0.0}
+    }
+  }
+]

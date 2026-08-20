@@ -1,0 +1,26 @@
+{
+  "1920x1080": {
+    "viewport": [1920,1080],
+    "document_width": 1920,
+    "overflow": 0,
+    "min_button": 44,
+    "running_animations": 0,
+    "depth_click": "S2",
+    "verb_click": "PASS",
+    "r13_pass": "先通过。",
+    "r13_reopen": "现在可以重新打开。",
+    "errors": []
+  },
+  "390x844": {
+    "viewport": [390,844],
+    "document_width": 390,
+    "overflow": 0,
+    "min_button": 44,
+    "running_animations": 0,
+    "depth_click": "S2",
+    "verb_click": "PASS",
+    "r13_pass": "先通过。",
+    "r13_reopen": "现在可以重新打开。",
+    "errors": []
+  }
+}

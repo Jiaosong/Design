@@ -1,0 +1,33 @@
+{
+  "1920x1080": {
+    "scroll_width": 1920,
+    "client_width": 1920,
+    "min_button_height": 81,
+    "errors": [],
+    "keyboard": ["LOOK", "OBSERVE"],
+    "states": {
+      "MOVE": {"title": "跨江。", "reading": 0.0, "body": 0.0},
+      "LOOK": {"title": "先看清江。", "reading": 0.0, "body": 0.0},
+      "OBSERVE": {"title": "再读一页。", "reading": 1.0, "body": 0.0},
+      "RECOVER": {"title": "先恢复。", "reading": 0.0, "body": 0.94},
+      "CHOOSE": {"title": "先决定。", "reading": 0.0, "body": 0.0},
+      "PASS": {"title": "先通过。", "reading": 0.0, "body": 0.0}
+    }
+  },
+  "390x844": {
+    "scroll_width": 390,
+    "client_width": 390,
+    "min_button_height": 81,
+    "errors": [],
+    "keyboard": ["LOOK", "OBSERVE"],
+    "states": {
+      "MOVE": {"title": "跨江。", "reading": 0.0, "body": 0.0},
+      "LOOK": {"title": "先看清江。", "reading": 0.0, "body": 0.0},
+      "OBSERVE": {"title": "再读一页。", "reading": 1.0, "body": 0.0},
+      "RECOVER": {"title": "先恢复。", "reading": 0.0, "body": 0.94},
+      "CHOOSE": {"title": "先决定。", "reading": 0.0, "body": 0.0},
+      "PASS": {"title": "先通过。", "reading": 0.0, "body": 0.0}
+    }
+  },
+  "reduced_motion": {"running_animations": 0}
+}
