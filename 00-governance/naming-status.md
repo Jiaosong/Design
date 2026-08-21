@@ -84,3 +84,73 @@ Historical `CASE_GD_Public_Claim_Matrix.csv` IDs `C01–C05` map to `CLM-C01-001
 Do not use `final`, `final-final`, `new`, `latest`, `copy`, or `副本` as authority-bearing state names.
 
 When duplicate or superseded files exist, authority is determined by the canonical registry and immutable evidence reference, not by filename recency alone.
+
+## Mode-sensitive file discipline｜2026-08-21 hardening
+
+The canonical filename remains the Authority / Release contract. It is **not** mandatory for every disposable exploration scratch file.
+
+### EXPLORE
+
+- Short working names are allowed, e.g. `r06-node-test-03.svg`.
+- These names are explicitly non-authoritative and must not contain `CURRENT`, `APPROVED`, `RELEASED` or equivalent promotion semantics.
+- Exploration identity may be local to the task/branch; do not create registry pollution for every throwaway variant.
+
+### CANDIDATE
+
+A retained direction must receive stable identity before it is compared, handed off or persisted:
+
+- `artifact_id`
+- semantic object / deliverable role
+- `revision`
+- `status`
+- authority source / parent when applicable
+
+Candidate representations may use readable working filenames, but the stable artifact identity—not filename recency—must bind them together.
+
+### AUTHORITY / RELEASE
+
+Use the full canonical filename contract and all triggered manifest / persistence / receipt requirements. Authority-bearing outputs may not rely on informal `test-03`, `new`, `latest` or chat-only references.
+
+## Logical artifact versus representations
+
+A logical artifact has **one Current revision**. That revision may have multiple representations without creating multiple competing Currents.
+
+Canonical representation roles:
+
+- `SOURCE` — original/source-authority input or preserved acquisition.
+- `NATIVE` — editable authoring master such as `.blend`, `.3dm`, `.ai`, `.psd`, `.svg`, source HTML/CSS/JS or equivalent.
+- `CANONICAL` — defined interchange/runtime authority such as `.glb`, `.step`, authoritative SVG/PDF/HTML bundle where the project explicitly assigns that role.
+- `PREVIEW` — review/display derivative such as PNG/JPG/render/screenshot/non-authoritative PDF.
+- `PACKAGE` — recoverable production bundle with manifest/checksums/receipts as triggered.
+
+Hard direction:
+
+`SOURCE / NATIVE / CANONICAL → PREVIEW`
+
+A derivative preview does not reverse authority:
+
+- `PNG ≠ SVG source`
+- `render ≠ .blend`
+- `screenshot ≠ HTML/CSS/JS runtime`
+- `PDF preview ≠ CAD/model authority`
+- crop/recolor/mask/screenshot derivatives do not create a new semantic content-image identity.
+
+If multiple files express the same logical revision, use one `artifact_id` and record representation role. Create a new logical artifact ID only when the object, claim, design role or semantic content actually changes.
+
+## Current revision rule
+
+For each logical artifact:
+
+`ONE ARTIFACT ID → ONE CURRENT REVISION → N REPRESENTATIONS`
+
+Older revisions remain `SUPERSEDED / HISTORY / PROVENANCE` as appropriate. Do not create `CURRENT.svg`, `CURRENT.png`, `CURRENT.pdf`, `CURRENT.zip` as four independent authority claims when they are merely representations of one revision.
+
+## Folder depth rule
+
+Physical storage should remain shallow. Prefer the existing persistence roles such as:
+
+`native / canonical / package / checksums / receipts`
+
+Do not encode the complete project hierarchy, design reasoning, version history and status into deep folder nesting. Those semantics belong in registry fields, artifact metadata, manifests and version control.
+
+`NO COMPRESSION / NO LOSS` protects information, not directory depth.
