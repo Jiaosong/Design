@@ -1,8 +1,8 @@
-# C04 Web v1.12｜20章 / 112页游戏线整合
+# C04 Web v1.12-r2｜20章 / 112载体页游戏线细化
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
-State: `USER CURRENT DELTA / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION`
+State: `REFINED INTERACTION CANDIDATE / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION`
 
 ## Correct target
 
@@ -23,7 +23,20 @@ The morphing-boat game line is integrated into nine existing surfaces:
 - CH15 / 086 — cards, camp exchange and food-box responsibility.
 - CH16 / 094 — object-specific open technical register.
 
-No Web-side App redesign was performed. Existing uploaded boards and current project assets are consumed as source/form/interaction evidence; they are not replaced by generated imagery.
+## R2 design refinement
+
+- Replaces nine repeated four-column explanation panels with nine role-specific component families.
+- Adds a six-stage relationship/action flow and explicit `NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF` readback.
+- Draws all thirteen optional boat tokens as editable inline SVG; R06 and R13 retain distinct behavior.
+- Turns the five boat states into a keyboard-operable live-SVG workbench.
+- Builds four age-depth AR states over the existing R06 project image, with offline, numbering, paper and human-service fallbacks.
+- Makes the personal imprint map selectively composable; every partial arrangement is described as complete.
+- Draws separate bracelet, wristband, wand and neck-pillow/rest diagrams with safety and evidence boundaries.
+- Draws the wish-butterfly as a four-stage response/withdrawal sequence rather than an atmosphere illustration.
+- Produces two flippable observation-card prototypes, a camp-service flow and a food-box functional diagram.
+- Replaces the generic open-items block with an object/professional responsibility table.
+
+No Web-side App redesign was performed. Existing uploaded boards and current project assets are consumed as source/form/interaction evidence; they are not replaced by generated imagery. All new interface text remains live HTML/SVG text.
 
 ## Static readback
 
@@ -32,7 +45,9 @@ No Web-side App redesign was performed. Existing uploaded boards and current pro
 - First / last sequence: `001 / 112`.
 - Game-line integration panels: `9`.
 - Local runtime references missing: `0`.
-- Existing `app.js` syntax: `PASS`.
+- `app.js` and integration script syntax: `PASS`.
+- Native-button interaction controls: `17`.
+- Reduced-motion rule: `PRESENT`.
 
 No local browser renderer was available, so no new finished-pixel or browser Design PASS is claimed.
 

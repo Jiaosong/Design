@@ -1,0 +1,25 @@
+{
+  "schema": "C04_WEB_V1_12_R2_STATIC_READBACK",
+  "carrier_surfaces": 112,
+  "unique_sequence_indexes": 112,
+  "first_sequence": "001",
+  "last_sequence": "112",
+  "chapters": 20,
+  "game_line_panels": 9,
+  "native_interaction_controls": 17,
+  "refined_components": {
+    "relation_flow": true,
+    "boat_library": true,
+    "morph_workbench": true,
+    "age_depth_ar": true,
+    "personal_imprint_map": true,
+    "body_carriers": true,
+    "butterfly_sequence": true,
+    "card_camp_system": true,
+    "technical_register": true
+  },
+  "reduced_motion": true,
+  "missing_local_runtime_refs": [],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "pass": true
+}
