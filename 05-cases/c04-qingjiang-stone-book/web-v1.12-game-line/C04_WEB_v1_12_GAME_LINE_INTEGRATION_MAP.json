@@ -1,0 +1,83 @@
+{
+  "schema": "C04_WEB_GAME_LINE_INTEGRATION_V1_12",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "base_carrier": "C04_WEB_v1_11_V32_AUTHORING_V02_REBIND_FULL",
+  "chapter_count": 20,
+  "carrier_surface_count": 112,
+  "count_policy": "PRESERVE_ALL_112 / NO_COMPRESSION / NO_NEW_FINAL_PAGE_COUNT_CLAIM",
+  "state": "USER CURRENT DELTA / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION",
+  "mapped_surfaces": [
+    {
+      "sequence_index": "041",
+      "chapter": "CH08",
+      "role": "system binding",
+      "delta": "ROUTE-03 → morphing boat key → observation → butterfly response → imprint → return/memory"
+    },
+    {
+      "sequence_index": "047",
+      "chapter": "CH10",
+      "role": "content library boundary",
+      "delta": "thirteen optional boat forms; not thirteen checkpoints"
+    },
+    {
+      "sequence_index": "050",
+      "chapter": "CH10",
+      "role": "interaction grammar",
+      "delta": "editable vector morph sequence: culture / wisdom / play / care / return"
+    },
+    {
+      "sequence_index": "054",
+      "chapter": "CH11",
+      "role": "route / QR / AR",
+      "delta": "source-bound AR depth and offline/no-phone fallback; App remains consume-only"
+    },
+    {
+      "sequence_index": "058",
+      "chapter": "CH11",
+      "role": "personal memory",
+      "delta": "imprints compose a personal relation/treasure map without completion rate"
+    },
+    {
+      "sequence_index": "067",
+      "chapter": "CH13",
+      "role": "body / physical family",
+      "delta": "elder bracelet, youth wristband, child wand, neck-pillow/rest interfaces"
+    },
+    {
+      "sequence_index": "073",
+      "chapter": "CH13",
+      "role": "Qingfengyin continuation",
+      "delta": "bounded wish-butterfly response; energy path remains provisional"
+    },
+    {
+      "sequence_index": "086",
+      "chapter": "CH15",
+      "role": "memory / cultural product / camp exchange",
+      "delta": "observation cards, food exchange, storage box and operator responsibilities"
+    },
+    {
+      "sequence_index": "094",
+      "chapter": "CH16",
+      "role": "technical open register",
+      "delta": "safety/material/maintenance/food-contact checks for new objects"
+    }
+  ],
+  "locks": [
+    "SERVICE / RETURN > ROUTE > OBSERVATION > EXPLANATION > MEMORY > SHARE",
+    "ROUTE-03 remains route authority",
+    "R06 remains frozen: Landscape First → bounded Reveal → withdraw",
+    "R13 remains PLAY OFF / READ OFF / RETURN ON",
+    "NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF",
+    "PARTIAL IS COMPLETE / no 13-of-13 gate",
+    "App v1.17 consume-only; no Web-side App redesign",
+    "C22 relationships are not redrawn"
+  ],
+  "does_not_prove": [
+    "field location or measured route geometry",
+    "health efficacy or medical benefit",
+    "energy yield or self-powered park operation",
+    "structural capacity or construction readiness",
+    "food safety, inventory or exchange operations",
+    "browser visual Design PASS"
+  ]
+}
