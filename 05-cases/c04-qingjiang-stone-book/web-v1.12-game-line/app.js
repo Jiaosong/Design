@@ -1,31 +1,50 @@
+const sections=[...document.querySelectorAll('.section')];
+const progress=document.querySelector('#progress');
+const sectionNow=document.querySelector('#sectionNow');
+const navLinks=[...document.querySelectorAll('.mainnav a')];
 
-const pages=[...document.querySelectorAll('.page')];
-const progress=document.querySelector('#progress');const now=document.querySelector('#pageNow');
-const rail=[...document.querySelectorAll('.rail a')];
-function sync(){const y=scrollY, max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max?y/max*100:0)+'%';let best=pages[0],d=1e9;for(const p of pages){const r=p.getBoundingClientRect();const x=Math.abs(r.top-innerHeight*.22);if(x<d){d=x;best=p}}now.textContent=`${best.dataset.page} / 112`;rail.forEach(a=>a.classList.toggle('active',a.dataset.ch===best.dataset.chapter));}
-addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
-document.addEventListener('keydown',e=>{if(!['ArrowDown','ArrowUp','PageDown','PageUp'].includes(e.key))return;const current=pages.findIndex(p=>Math.abs(p.getBoundingClientRect().top)<innerHeight*.35);let n=current;if(e.key==='ArrowDown'||e.key==='PageDown')n=Math.min(pages.length-1,current+1);else n=Math.max(0,current-1);pages[n]?.scrollIntoView({behavior:'smooth'});});
+function syncPage(){
+  const y=window.scrollY;
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  if(progress) progress.style.width=`${max?Math.min(100,(y/max)*100):0}%`;
+  let best=sections[0];
+  let distance=Infinity;
+  for(const section of sections){
+    const d=Math.abs(section.getBoundingClientRect().top-window.innerHeight*.24);
+    if(d<distance){distance=d;best=section;}
+  }
+  if(!best) return;
+  if(sectionNow) sectionNow.textContent=`${best.dataset.section} / ${String(sections.length).padStart(2,'0')}`;
+  navLinks.forEach(link=>{
+    const target=document.querySelector(link.getAttribute('href'));
+    const active=target===best || (target && best.compareDocumentPosition(target)&Node.DOCUMENT_POSITION_PRECEDING && Math.abs(target.offsetTop-best.offsetTop)<window.innerHeight*1.6);
+    link.classList.toggle('active',active);
+  });
+}
 
-const boatLabels={observe:'观 / LOOK',read:'解 / COMPARE',play:'变 / DISCOVER',care:'护 / RECOVER',return:'收 / RETURN'};
-const boatStage=document.querySelector('[data-current-boat]');
-document.querySelectorAll('[data-boat-state]').forEach(button=>button.addEventListener('click',()=>{
-  document.querySelectorAll('[data-boat-state]').forEach(item=>item.classList.toggle('is-active',item===button));
-  if(boatStage){boatStage.dataset.currentBoat=button.dataset.boatState;const label=boatStage.querySelector('.boat-state-label');if(label)label.textContent=boatLabels[button.dataset.boatState];}
-}));
+window.addEventListener('scroll',syncPage,{passive:true});
+window.addEventListener('resize',syncPage);
+syncPage();
 
-const ageCopy={
-  child:{mode:'AI 宠物提问 / FAMILY READ',title:'先找出两岸最靠近的地方',body:'用指向与比较回答，不要求连续看屏幕；成人可关闭宠物提示。'},
-  youth:{mode:'PUZZLE / RELATION READ',title:'哪一种地形关系让江面在这里收窄？',body:'比较峰体、谷向和水面线索，把判断放入个人舟印图；不设唯一答案。'},
-  adult:{mode:'SOURCE-BOUND / DEEP READ',title:'从地形证据进入文化解释',body:'先显示来源与证据状态，再打开植物、地形和地方文化的分层解释。'},
-  elder:{mode:'REST / RETURN FIRST',title:'先确认休息点与回程方向',body:'减少操作与动画；解释内容保持可选，纸图、标识和人工服务始终并列。'}
-};
-document.querySelectorAll('[data-age]').forEach(button=>button.addEventListener('click',()=>{
-  document.querySelectorAll('[data-age]').forEach(item=>{const active=item===button;item.classList.toggle('is-active',active);item.setAttribute('aria-selected',String(active));});
-  const copy=ageCopy[button.dataset.age];for(const [key,value] of Object.entries(copy)){const node=document.querySelector(`[data-ar-${key}]`);if(node)node.textContent=value;}
-}));
+document.addEventListener('keydown',event=>{
+  if(!['PageDown','PageUp'].includes(event.key)) return;
+  event.preventDefault();
+  const current=sections.reduce((best,section)=>Math.abs(section.getBoundingClientRect().top)<Math.abs(best.getBoundingClientRect().top)?section:best,sections[0]);
+  const index=sections.indexOf(current);
+  const next=event.key==='PageDown'?Math.min(sections.length-1,index+1):Math.max(0,index-1);
+  sections[next]?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+});
 
-const imprintButtons=[...document.querySelectorAll('[data-imprint]')];
-function syncImprints(){const placed=imprintButtons.filter(button=>button.classList.contains('is-placed'));imprintButtons.forEach(button=>{const active=button.classList.contains('is-placed');button.setAttribute('aria-pressed',String(active));const state=button.querySelector('span');if(state)state.textContent=active?'已放入':'可选';document.querySelector(`.map-slot.slot-${button.dataset.imprint}`)?.classList.toggle('is-filled',active);});const copy=document.querySelector('[data-imprint-count]');if(copy)copy.textContent=`${placed.length} 枚舟印已形成一张完整的个人地图。`;}
-imprintButtons.forEach(button=>button.addEventListener('click',()=>{button.classList.toggle('is-placed');syncImprints();}));syncImprints();
-
-document.querySelectorAll('[data-flip-card]').forEach(card=>card.addEventListener('click',()=>{card.classList.toggle('is-flipped');card.setAttribute('aria-pressed',String(card.classList.contains('is-flipped')));}));
+const imprints=[...document.querySelectorAll('.imprint')];
+const imprintStatus=document.querySelector('#imprintStatus');
+function syncImprints(){
+  const selected=imprints.filter(button=>button.classList.contains('active')).length;
+  imprints.forEach(button=>button.setAttribute('aria-pressed',String(button.classList.contains('active'))));
+  if(imprintStatus){
+    imprintStatus.textContent=selected===0
+      ?'没有选择任何内容也不会破坏游程；景观、路线与回程仍然完整。'
+      :`当前留下 ${selected} 个阅读痕迹。它们组成这一次个人清江，不代表完成率。`;
+  }
+}
+imprints.forEach(button=>button.addEventListener('click',()=>{button.classList.toggle('active');syncImprints();}));
+syncImprints();
