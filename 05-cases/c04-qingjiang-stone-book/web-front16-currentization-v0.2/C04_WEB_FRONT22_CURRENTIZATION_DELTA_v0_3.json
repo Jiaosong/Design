@@ -1,0 +1,39 @@
+{
+  "schema": "C04_WEB_FRONT22_CURRENTIZATION_DELTA_v0_3",
+  "supersedes_candidate_scope": "Front16 v0.2 for presentation candidate only; provenance retained",
+  "sequence_scope": "001-022",
+  "material_delta": {
+    "P005": "R06 raster removed; attention grammar is now vector-only so the mature R06 pair has one semantic consumer",
+    "P017": "interactive seven-variable use-state field",
+    "P018": "CHILD + ADULT shared-discovery field, not children's task mode",
+    "P019": "agency / exploration field without task counter and without claiming ROUTE-03 geometry",
+    "P020": "L0-L4 optional depth stack",
+    "P021": "low-stamina decision reduction: RECOVER -> ORIENT -> CONTINUE/RETURN -> OPTIONAL CONTENT",
+    "P022": "single R06 real-scene consumer with child/youth/adult/recover depth states and persistent Return"
+  },
+  "authority_source": "CH04_AUDIENCE-USE-STATE-ANALYSIS.md",
+  "asset_policy": {
+    "new_generated_images": 0,
+    "r06_raster_semantic_consumers_in_front22": ["P022"],
+    "P005_media": "live vector only"
+  },
+  "actual_pixel_readback": {
+    "viewport": "1920x1080",
+    "rendered": 22,
+    "expected": 22,
+    "max_horizontal_overflow_px": 0
+  },
+  "recoverable_portable": {
+    "drive_file_id": "1azwXtoRVwmo3ANw-cs8Ie1z_1jp4miJ8",
+    "title": "C04_WEB_FRONT22_CURRENTIZATION_v0_3_PORTABLE",
+    "bytes": 9243926,
+    "sha256": "dc98539d5db25c4a7fc01cba368360f556fbd76fd12749bca87acccf0340f6d4"
+  },
+  "local_package": {
+    "bytes": 14991514,
+    "sha256": "629991536942692da5ec434f7a3c997931db9de2cc6c103737780eee32d75856"
+  },
+  "locks": "ROUTE-03 LOCKED CURRENT / R06 FINISHED FROZEN / FIELD=0 / G1F HOLD / NO_PROMOTION",
+  "does_not_prove": "Design KEEP / canonical PAGE-ID mapping / field or measured truth / construction applicability",
+  "state": "EXECUTED / TRACEABLE / ACTUAL PIXEL READBACK / DESIGN REVIEW PENDING / NO_PROMOTION"
+}
