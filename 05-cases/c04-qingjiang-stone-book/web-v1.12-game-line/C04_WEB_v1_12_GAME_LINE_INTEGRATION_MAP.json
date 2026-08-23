@@ -1,90 +1,49 @@
 {
-  "schema": "C04_WEB_GAME_LINE_INTEGRATION_V1_12_R2",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_V1_13",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
-  "base_carrier": "C04_WEB_v1_11_V32_AUTHORING_V02_REBIND_FULL",
-  "chapter_count": 20,
-  "carrier_surface_count": 112,
-  "count_policy": "PRESERVE_ALL_112 / NO_COMPRESSION / NO_NEW_FINAL_PAGE_COUNT_CLAIM",
-  "state": "REFINED INTERACTION CANDIDATE / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION",
-  "mapped_surfaces": [
-    {
-      "sequence_index": "041",
-      "chapter": "CH08",
-      "role": "system binding",
-      "delta": "six-step action/responsibility relation flow with four operating/media states"
-    },
-    {
-      "sequence_index": "047",
-      "chapter": "CH10",
-      "role": "content library boundary",
-      "delta": "thirteen editable boat tokens including explicit R06 and R13 behavior; no completion counter"
-    },
-    {
-      "sequence_index": "050",
-      "chapter": "CH10",
-      "role": "interaction grammar",
-      "delta": "interactive live-SVG boat workbench: observe / read / play / care / return"
-    },
-    {
-      "sequence_index": "054",
-      "chapter": "CH11",
-      "role": "route / QR / AR",
-      "delta": "existing project landscape image plus live vector/HTML AR overlay, four age-depth modes and fail-safe matrix"
-    },
-    {
-      "sequence_index": "058",
-      "chapter": "CH11",
-      "role": "personal memory",
-      "delta": "six selectable live-SVG imprints compose a personal relation map; every partial state reads as complete"
-    },
-    {
-      "sequence_index": "067",
-      "chapter": "CH13",
-      "role": "body / physical family",
-      "delta": "four separate editable product diagrams with role, misuse and verification boundaries"
-    },
-    {
-      "sequence_index": "073",
-      "chapter": "CH13",
-      "role": "Qingfengyin continuation",
-      "delta": "four-stage response sequence: observe / recognize / one response / withdraw-cooldown; energy path remains provisional"
-    },
-    {
-      "sequence_index": "086",
-      "chapter": "CH15",
-      "role": "memory / cultural product / camp exchange",
-      "delta": "two flippable vector observation-card prototypes, camp service flow and food-box functional diagram"
-    },
-    {
-      "sequence_index": "094",
-      "chapter": "CH16",
-      "role": "technical open register",
-      "delta": "object-by-object responsibility table with design role, required test, professional owner and OPEN state"
-    }
+  "source_carrier": {
+    "framework": "C04_WEB_v1_11_V32_AUTHORING_V02_FRAMEWORK.json",
+    "carrier_surface_count": 112,
+    "role": "SOURCE / MAPPING / NO-LOSS ARCHIVE",
+    "public_visibility": "NOT A 112-SURFACE READING REQUIREMENT"
+  },
+  "public_runtime": {
+    "file": "index.html",
+    "section_count": 18,
+    "reading_mode": "CURATED DESIGN WORK + CREATION PROCESS",
+    "internal_ids_visible_in_main": false,
+    "generated_images_added": 0,
+    "live_text": "HTML / SVG"
+  },
+  "public_sections": [
+    {"index":"01","role":"hero","content":"real Qingjiang + core proposition"},
+    {"index":"02","role":"original assets","content":"landscape / route / key scenes / digital / memory"},
+    {"index":"03","role":"design question","content":"relationship reconstruction rather than attraction addition"},
+    {"index":"04","role":"design idea","content":"BOAT / CABLE / WALK as three viewing scales"},
+    {"index":"05","role":"design thinking","content":"landscape first / self observation / relation reveal / withdraw"},
+    {"index":"06","role":"task workflow","content":"source read → finding → proposition → exploration → scene test → prototype/3D → technical check → integration"},
+    {"index":"07","role":"content interaction","content":"Thirteen Imprints as optional readings; partial is complete"},
+    {"index":"08","role":"digital system","content":"digital companion / game-map exploration / offline and Return"},
+    {"index":"09","role":"key scenes","content":"open-stop scene versus compressed-pass scene"},
+    {"index":"10","role":"physical body sensory","content":"intervention ladder + existing physical assets"},
+    {"index":"11","role":"brand memory","content":"line / seal / page / trace + physical/digital memory"},
+    {"index":"12","role":"technology route","content":"source → spatial relation → scene → 3D/drawing → prototype → Web/Motion"},
+    {"index":"13","role":"AI + 3D process","content":"source constraint → AI exploration → geometry readback → 3D → drawing → detail"},
+    {"index":"14","role":"technical proof","content":"GA / detail atlas / spatial proof"},
+    {"index":"15","role":"innovation","content":"six project-specific innovation points"},
+    {"index":"16","role":"technical difficulties","content":"route fidelity / attention / geometry / AI hallucination / outdoor reality / evidence gaps"},
+    {"index":"17","role":"evolution","content":"alternatives and professional judgment"},
+    {"index":"18","role":"closure","content":"final system + Return"}
   ],
-  "locks": [
-    "SERVICE / RETURN > ROUTE > OBSERVATION > EXPLANATION > MEMORY > SHARE",
-    "ROUTE-03 remains route authority",
-    "R06 remains frozen: Landscape First → bounded Reveal → withdraw",
-    "R13 remains PLAY OFF / READ OFF / RETURN ON",
-    "NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF",
-    "PARTIAL IS COMPLETE / no 13-of-13 gate",
-    "App v1.17 consume-only; no Web-side App redesign",
-    "C22 relationships are not redrawn"
-  ],
-  "does_not_prove": [
-    "field location or measured route geometry",
-    "health efficacy or medical benefit",
-    "energy yield or self-powered park operation",
-    "structural capacity or construction readiness",
-    "food safety, inventory or exchange operations",
-    "browser visual Design PASS"
-  ],
-  "interaction_contract": [
-    "all controls are native buttons with visible keyboard focus",
-    "boat morph, age depth, imprint placement and card flip have reduced-motion behavior",
-    "formal text remains live HTML or SVG text",
-    "no generated image is introduced",
-    "existing project landscape pixels remain the only AR scene source"
-  ]
+  "asset_policy": {
+    "real_landscape_first": true,
+    "existing_project_assets_reused": true,
+    "new_generated_image": false,
+    "ai_role": "CONCEPT / ATMOSPHERE / COMPOSITION EXPLORATION ONLY",
+    "three_d_role": "RELATION / SCALE / GEOMETRY CHECK",
+    "drawing_role": "GEOMETRY / CONNECTION / DETAIL EXPRESSION",
+    "prototype_role": "INTERACTION / RUNTIME BEHAVIOR",
+    "rule": "NO MEDIUM MAY REPLACE ANOTHER EVIDENCE ROLE"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
 }
