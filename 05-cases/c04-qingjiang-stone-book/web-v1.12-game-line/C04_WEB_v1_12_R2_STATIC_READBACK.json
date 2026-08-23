@@ -1,13 +1,10 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_14",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_LEGACY_STRUCTURE_REMOVAL",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_15",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_WRITE",
   "public_sections": 18,
   "first_section": "01",
   "last_section": "18",
-  "legacy_carrier_framework_in_current_tree": false,
-  "legacy_carrier_integration_map_in_current_tree": false,
-  "legacy_carrier_package_meta_in_current_tree": false,
-  "legacy_carrier_injector_in_current_tree": false,
+  "retired_report_structure_absent": true,
   "required_public_content": {
     "original_assets": true,
     "design_idea": true,
@@ -20,10 +17,29 @@
     "design_evolution": true,
     "final_system": true
   },
-  "existing_asset_unique_reference_count": 16,
+  "supplement": {
+    "bottom_right_trigger": true,
+    "default_collapsed": true,
+    "category_count": 7,
+    "categories": [
+      "original_assets",
+      "design_idea",
+      "design_thinking",
+      "technology_route",
+      "task_workflow",
+      "innovation_and_difficulties",
+      "ai_plus_3d"
+    ],
+    "existing_asset_thumbnails": true,
+    "ai_plus_3d_six_stage": true,
+    "desktop_bottom_right_panel": true,
+    "mobile_bottom_drawer": true,
+    "escape_close": true,
+    "backdrop_close": true,
+    "reduced_motion": true
+  },
   "new_generated_images": 0,
-  "live_svg": true,
-  "live_html_text": true,
+  "live_html_css_js": true,
   "internal_public_noise": {
     "chapter_page_authoring_ids": 0,
     "pull_request_numbers": 0,
@@ -31,10 +47,10 @@
     "field_observed_internal_string": 0,
     "design_review_pending_string": 0
   },
-  "responsive_css": true,
-  "reduced_motion_rule": true,
-  "interactive_optional_reading": true,
-  "browser_finished_pixel_review": "OPEN_AFTER_STRUCTURE_REMOVAL",
+  "runtime_execution": {
+    "local_node_attempt": "BLOCKED_BY_LOCAL_DNS_RESOLUTION_OF_RAW_GITHUB",
+    "browser_finished_pixel_review": "OPEN"
+  },
   "truth_boundary": "RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_readback_pass": true
 }
