@@ -1,0 +1,68 @@
+{
+  "schema": "C04_WEB_FRONT16_CURRENTIZATION_SOURCE_SPEC_v0_2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "base_frontier": {
+    "pr": 353,
+    "head_sha": "288cd54dca0de3f530d053327260ab855e7ef531",
+    "web_state": "v1.12-r2 / 20 chapters / 112 carrier surfaces"
+  },
+  "scope": {
+    "sequence_indexes": ["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016"],
+    "canonical_page_ids_claimed": false,
+    "content_authority_changed": false
+  },
+  "page_mechanisms": [
+    {"sequence":"001","owner":"CH00","mechanism":"full-bleed real Qingjiang first read","media":"existing mature project image + live text"},
+    {"sequence":"002","owner":"CH00","mechanism":"real journey axis with Return underlay","media":"live HTML/SVG"},
+    {"sequence":"003","owner":"CH01-P01","mechanism":"existing-condition landscape field + sparse system constellation","media":"existing mature project image + live HTML"},
+    {"sequence":"004","owner":"CH01-P02","mechanism":"branch/loop route authority vs optional content","media":"editable SVG"},
+    {"sequence":"005","owner":"CH01-P03","mechanism":"S0/S1/S2 attention control","media":"same-source R06 Landscape First + Relation Reveal pair"},
+    {"sequence":"006","owner":"CH01-P04","mechanism":"Service/Return orbit and hierarchy","media":"editable SVG"},
+    {"sequence":"007","owner":"CH01-P05","mechanism":"BOAT/CABLE/WALK viewing-scale landscape field","media":"editable SVG"},
+    {"sequence":"008","owner":"CH02-P01","mechanism":"river/banks/peaks/valley spatial relation","media":"editable SVG"},
+    {"sequence":"009","owner":"CH02-P02","mechanism":"three-height reading scale","media":"editable SVG"},
+    {"sequence":"010","owner":"CH02-P03","mechanism":"SOURCE -> SPATIAL FINDING -> DESIGN CONSEQUENCE layered network","media":"editable SVG"},
+    {"sequence":"011","owner":"CH02-P04","mechanism":"spatial compression score: view width/body pressure/content capacity/Return priority","media":"editable SVG; relative only"},
+    {"sequence":"012","owner":"CH02-P05","mechanism":"six site-derived rules on one continuous landscape score","media":"editable SVG + live text"},
+    {"sequence":"013","owner":"CH03-P01","mechanism":"culture-content filtering funnel","media":"editable SVG + live text"},
+    {"sequence":"014","owner":"CH03-P02","mechanism":"interactive CONTENT -> ACTION grammar","media":"native buttons + SVG path + live text"},
+    {"sequence":"015","owner":"CH03-P03","mechanism":"movement/stay/pass/return attention spectrum","media":"live HTML/CSS"},
+    {"sequence":"016","owner":"CH03-P04","mechanism":"R06/R07/R09/R12/R13 scene score ending with R13 silence","media":"live HTML/CSS/SVG-like vector forms"}
+  ],
+  "locks": {
+    "ROUTE-03": "LOCKED CURRENT / NO SECOND ROUTE GEOMETRY",
+    "R06": "FINISHED / FROZEN / NO REOPEN",
+    "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+  },
+  "asset_policy": {
+    "new_image_generation": 0,
+    "live_text": true,
+    "editable_svg": true,
+    "same_source_pair_gate": "P005 keeps R06 Landscape First + Relation Reveal together",
+    "external_http_dependencies": 0
+  },
+  "actual_pixel_readback": {
+    "viewport": "1920x1080",
+    "surfaces_rendered": 16,
+    "surfaces_expected": 16,
+    "max_horizontal_overflow_px": 0,
+    "interaction": "P005 S0/S1/S2 and P014 action grammar implemented; default static states captured"
+  },
+  "recoverable_artifact": {
+    "drive_file_id": "1iaNatBKaOPg7Rjhyfy6-Xu4g25-eFqh5",
+    "drive_title": "C04_WEB_FRONT16_CURRENTIZATION_v0_2_PORTABLE",
+    "portable_html_bytes": 9220367,
+    "portable_html_sha256": "af4d98717ec616224c345601b5130635dde3ebf47566df052ff277580c9ffe3e",
+    "local_zip_bytes": 13793972,
+    "local_zip_sha256": "64068fed5f6b4396bfcb9f61ef4d8a66cf09bc87f9dc9ae03f7246774b12682d"
+  },
+  "does_not_prove": [
+    "professional Design KEEP",
+    "final canonical PAGE-ID mapping",
+    "field observation or measurement",
+    "GPS/route survey geometry",
+    "precise visibility/body-pressure/cognitive scores",
+    "construction applicability"
+  ],
+  "state": "PRODUCER CANDIDATE / ACTUAL PIXEL READBACK / INDEPENDENT PROFESSIONAL DESIGN VERDICT PENDING / NO_PROMOTION"
+}
