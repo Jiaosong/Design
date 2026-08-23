@@ -5,25 +5,34 @@ import {fileURLToPath} from "node:url";
 const root=path.dirname(fileURLToPath(import.meta.url));
 const html=fs.readFileSync(path.join(root,"index.html"),"utf8");
 const css=fs.readFileSync(path.join(root,"styles.css"),"utf8");
-const pages=[...html.matchAll(/data-page="(\d{3})"/g)].map(match=>match[1]);
-const chapters=new Set([...html.matchAll(/data-chapter="(CH\d{2})"/g)].map(match=>match[1]));
-const refs=[...html.matchAll(/(?:src|href)="([^"#]+)"/g)].map(match=>match[1]).filter(ref=>!ref.startsWith("http")&&!ref.startsWith("mailto:")&&!ref.startsWith("data:"));
-const missing=[...new Set(refs.filter(ref=>!fs.existsSync(path.join(root,ref))))];
+const js=fs.readFileSync(path.join(root,"app.js"),"utf8");
+
+const sections=[...html.matchAll(/data-section="(\d{2})"/g)].map(match=>match[1]);
+const expected=Array.from({length:18},(_,index)=>String(index+1).padStart(2,"0"));
+const anchors=["hero","assets","brief","idea","thinking","workflow","system","digital","scenes","physical","brandmemory","technology","ai3d","technicalproof","innovation","difficulties","evolution","final"];
+const assetRefs=[...html.matchAll(/src="(assets\/[^"]+)"/g)].map(match=>match[1]);
+const forbiddenPublicPatterns=[/CH\d{2}-P\d+/i,/PR\s*#\d+/i,/blob\s+[0-9a-f]{7,}/i,/DESIGN REVIEW PENDING/i,/NO_PROMOTION/i,/FIELD OBSERVED/i];
+const requiredPhrases=["原资产","设计创意","TASK FLOW / WORKFLOW","TECHNOLOGY APPLICATION ROUTE","AI + 3D CREATION PROCESS","INNOVATION POINTS","TECHNICAL DIFFICULTIES","DESIGN EVOLUTION / PROFESSIONAL JUDGMENT"];
+
 const result={
-  schema:"C04_WEB_V1_12_R2_STATIC_READBACK",
-  carrier_surfaces:pages.length,
-  unique_sequence_indexes:new Set(pages).size,
-  first_sequence:pages[0],last_sequence:pages.at(-1),
-  chapters:chapters.size,
-  game_line_panels:(html.match(/class="game-delta/g)||[]).length,
-  native_interaction_controls:(html.match(/<(?:button)[ >]/g)||[]).length,
-  refined_components:{relation_flow:/class="relation-flow/.test(html),boat_library:/class="boat-library/.test(html),morph_workbench:/class="morph-workbench/.test(html),age_depth_ar:/class="age-tabs/.test(html),personal_imprint_map:/class="personal-map/.test(html),body_carriers:/class="carrier-grid/.test(html),butterfly_sequence:/class="butterfly-sequence/.test(html),card_camp_system:/class="card-system/.test(html),technical_register:/class="register-table/.test(html)},
-  reduced_motion:/prefers-reduced-motion:reduce/.test(css),
-  missing_local_runtime_refs:missing,
-  truth_boundary:"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_13",
+  section_count:sections.length,
+  unique_sections:new Set(sections).size,
+  ordered_sections:JSON.stringify(sections)===JSON.stringify(expected),
+  anchors_present:anchors.every(id=>html.includes(`id=\"${id}\"`)),
+  required_content_present:requiredPhrases.every(text=>html.includes(text)),
+  original_asset_reference_count:new Set(assetRefs).size,
+  data_uri_images:(html.match(/src="data:/g)||[]).length,
+  internal_production_tokens_visible:forbiddenPublicPatterns.filter(pattern=>pattern.test(html)).map(pattern=>pattern.source),
+  live_svg_present:/<svg[\s>]/i.test(html),
+  responsive_css:/@media\(max-width:/i.test(css),
+  reduced_motion:/prefers-reduced-motion:reduce/i.test(css),
+  interaction_script:/imprints/.test(js)&&/syncPage/.test(js),
+  public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
-const pass=result.carrier_surfaces===112&&result.unique_sequence_indexes===112&&result.first_sequence==="001"&&result.last_sequence==="112"&&result.chapters===20&&result.game_line_panels===9&&missing.length===0&&Object.values(result.refined_components).every(Boolean);
-result.pass=pass;
+
+result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.original_asset_reference_count>=10&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.live_svg_present&&result.responsive_css&&result.reduced_motion&&result.interaction_script;
+
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
-if(!pass)process.exit(1);
+if(!result.pass) process.exit(1);
