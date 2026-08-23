@@ -1,0 +1,49 @@
+{
+  "schema": "C04_WEB_FRONT31_CURRENTIZATION_DELTA_v0_4",
+  "sequence_scope": "001-031",
+  "extends": "Front22 v0.3",
+  "content_authority": [
+    "CH05_JOURNEY-BEHAVIOR-ANALYSIS.md",
+    "CH06_DESIGN-PRINCIPLES.md"
+  ],
+  "new_surfaces": {
+    "023": "nine-stage journey priority score: ARRIVE→ORIENT→MOVE→EXPLORE→DISCOVER→OBSERVE→PASS→RETURN→REMEMBER",
+    "024": "body grammar: STAND/MOVE/WALK/STOP/OBSERVE/LEAN-RECOVER/PASS/LOOK BACK",
+    "025": "interactive relative attention budget deriving FULL/LIGHT/OFF",
+    "026": "behavior language grouped by movement/observation/understand/dwell/memory plus system binding",
+    "027": "principle 01 real Qingjiang first; landscape relation before optional explanation",
+    "028": "principle 02 certainty before richness; BASE/EXPERIENCE/ENRICHMENT with persistent EXIT/RETURN",
+    "029": "principle 03 three viewing scales as design progression TERRITORY→RELATION→BODY",
+    "030": "principle 04 FULL/LIGHT/OFF relative content density; R13/UNKNOWN/CLOSED can withdraw content",
+    "031": "principle 05 system retreats / experience remains; intervention 0/1/2"
+  },
+  "asset_policy": {
+    "generated_images": 0,
+    "external_http_dependencies": 0,
+    "r06_mature_raster_consumer": "P022 only",
+    "P023_P031_media": "live HTML/CSS + editable SVG only"
+  },
+  "actual_pixel_readback": {
+    "viewport": "1920x1080",
+    "rendered": 31,
+    "expected": 31,
+    "max_horizontal_overflow_px": 0
+  },
+  "recoverable_portable": {
+    "drive_file_id": "12dSpnZZ4RLPncokyrp0lbq8dKroF_Y8O",
+    "title": "C04_WEB_FRONT31_CURRENTIZATION_v0_4_PORTABLE",
+    "bytes": 9270059,
+    "sha256": "cb405a78644bc798afdcdad08a3a25ff0e9973890507343f845d8fa98d3fe8b5"
+  },
+  "local_editable_html": {
+    "bytes": 98775,
+    "sha256": "3fffdf5a0fa3744ee5b0510cdbf61ce2b2fb771ee0c472ca187da3eb541087ce"
+  },
+  "local_package": {
+    "bytes": 16701713,
+    "sha256": "d9431cb7907884cc334ee5c722aa797650712c0095e4b30e6475789fee493611"
+  },
+  "locks": "ROUTE-03 LOCKED CURRENT / R06 FINISHED FROZEN / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "does_not_prove": "professional Design KEEP / canonical PAGE-ID mapping / field truth / measured attention or body data / construction applicability",
+  "state": "EXECUTED / TRACEABLE / ACTUAL PIXEL READBACK / INDEPENDENT DESIGN VERDICT PENDING / NO_PROMOTION"
+}
