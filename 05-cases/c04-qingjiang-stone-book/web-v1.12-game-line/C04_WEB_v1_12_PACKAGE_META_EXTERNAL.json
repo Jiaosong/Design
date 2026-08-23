@@ -1,14 +1,18 @@
 {
   "package": "C04_WEB_v1_12_GAME_LINE_FULL.zip",
-  "revision": "r2-refined-interaction",
+  "revision": "r2-refined-interaction-source-archive",
   "bytes": 49869495,
   "sha256": "50f22b1ed154d5a0fe63d2032e3e9bbe2d34a82c261873c3faadee76e0bf977b",
   "base": "C04_WEB_v1_11_V32_AUTHORING_V02_REBIND_FULL.zip",
-  "chapters": 20,
+  "role_after_2026_08_23_reframe": "RECOVERABLE SOURCE / 112-CARRIER ARCHIVE; NOT THE CURRENT PUBLIC READING STRUCTURE",
   "carrier_surfaces": 112,
-  "game_delta_surfaces": 9,
-  "native_interaction_controls": 17,
-  "generated_images": 0,
-  "browser_visual_review": "NOT_EXECUTED_IN_CURRENT_CONTAINER",
-  "state": "REFINED INTERACTION CANDIDATE / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION"
+  "current_public_runtime": {
+    "source": "index.html + styles.css + app.js on this branch",
+    "public_sections": 18,
+    "repacked_zip": false,
+    "note": "Do not attribute the source-archive ZIP hash to the new 18-section runtime until a new recoverable package is actually created and hashed."
+  },
+  "generated_images_in_public_reframe": 0,
+  "browser_visual_review_after_reframe": "OPEN",
+  "truth_boundary": "FIELD OPEN / ENGINEERING OPEN / NOT FOR CONSTRUCTION"
 }
