@@ -13,9 +13,15 @@ const anchors=["hero","assets","brief","idea","thinking","workflow","system","di
 const assetRefs=[...html.matchAll(/src="(assets\/[^"]+)"/g)].map(match=>match[1]);
 const forbiddenPublicPatterns=[/CH\d{2}-P\d+/i,/PR\s*#\d+/i,/blob\s+[0-9a-f]{7,}/i,/DESIGN REVIEW PENDING/i,/NO_PROMOTION/i,/FIELD OBSERVED/i];
 const requiredPhrases=["原资产","设计创意","TASK FLOW / WORKFLOW","TECHNOLOGY APPLICATION ROUTE","AI + 3D CREATION PROCESS","INNOVATION POINTS","TECHNICAL DIFFICULTIES","DESIGN EVOLUTION / PROFESSIONAL JUDGMENT"];
+const retiredFiles=[
+  "C04_WEB_v1_11_V32_AUTHORING_V02_FRAMEWORK.json",
+  "C04_WEB_v1_12_GAME_LINE_INTEGRATION_MAP.json",
+  "C04_WEB_v1_12_PACKAGE_META_EXTERNAL.json",
+  "integrate_game_delta.mjs"
+];
 
 const result={
-  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_13",
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_14",
   section_count:sections.length,
   unique_sections:new Set(sections).size,
   ordered_sections:JSON.stringify(sections)===JSON.stringify(expected),
@@ -24,6 +30,7 @@ const result={
   original_asset_reference_count:new Set(assetRefs).size,
   data_uri_images:(html.match(/src="data:/g)||[]).length,
   internal_production_tokens_visible:forbiddenPublicPatterns.filter(pattern=>pattern.test(html)).map(pattern=>pattern.source),
+  retired_report_structure_absent:retiredFiles.every(file=>!fs.existsSync(path.join(root,file))),
   live_svg_present:/<svg[\s>]/i.test(html),
   responsive_css:/@media\(max-width:/i.test(css),
   reduced_motion:/prefers-reduced-motion:reduce/i.test(css),
@@ -31,7 +38,7 @@ const result={
   public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
 
-result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.original_asset_reference_count>=10&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.live_svg_present&&result.responsive_css&&result.reduced_motion&&result.interaction_script;
+result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.original_asset_reference_count>=10&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion&&result.interaction_script;
 
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
