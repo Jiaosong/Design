@@ -1,6 +1,11 @@
 # Cloudflare Workers Static Assets upload boundary
-# Keep validation/provenance files out of the public deployment.
+# Keep deployment tooling, validation, and provenance files out of the public upload.
 wrangler.jsonc
+package.json
+package-lock.json
+node_modules/
+.wrangler/
+.dev.vars*
 C04_WEB_v1_12_R2_STATIC_READBACK.json
 C04_WEB_v1_12_RECEIPT.md
 verify_game_line.mjs
