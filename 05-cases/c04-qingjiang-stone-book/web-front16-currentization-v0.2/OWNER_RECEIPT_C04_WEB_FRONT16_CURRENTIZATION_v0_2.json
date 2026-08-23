@@ -1,0 +1,30 @@
+{
+  "schema": "OWNER_RECEIPT_C04_WEB_FRONT16_CURRENTIZATION_v0_2",
+  "object": "C04 Web carrier opening currentization 001-016",
+  "owner": "Web presentation currentization",
+  "base": "PR #353 / 288cd54dca0de3f530d053327260ab855e7ef531",
+  "material_delta": true,
+  "actual_outputs": {
+    "editable_html_source_local_sha256": "efeb2f803ed21c787776c17b9dae9602d3c59b8bd6e0e0046adbadda67c51f4d",
+    "editable_html_source_bytes": 49083,
+    "portable_drive_file_id": "1iaNatBKaOPg7Rjhyfy6-Xu4g25-eFqh5",
+    "portable_sha256": "af4d98717ec616224c345601b5130635dde3ebf47566df052ff277580c9ffe3e",
+    "portable_bytes": 9220367,
+    "local_package_sha256": "64068fed5f6b4396bfcb9f61ef4d8a66cf09bc87f9dc9ae03f7246774b12682d",
+    "local_package_bytes": 13793972,
+    "desktop_readback": "16/16 @ 1920x1080 / max horizontal overflow 0"
+  },
+  "source_authority": [
+    "CH01_PROJECT-PROBLEM-OPPORTUNITY.md",
+    "CH02_SITE-LANDSCAPE-ANALYSIS.md",
+    "CH03_CULTURE-CONTENT-ANALYSIS.md"
+  ],
+  "does_not_prove": [
+    "Design PASS or MAIN KEEP",
+    "final canonical page count or PAGE-ID mapping",
+    "field observation or measurement",
+    "survey route geometry",
+    "construction readiness"
+  ],
+  "state": "EXECUTED / TRACEABLE / PIXEL-READ / DESIGN REVIEW PENDING / NO_PROMOTION"
+}
