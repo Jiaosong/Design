@@ -19,9 +19,19 @@ const retiredFiles=[
   "C04_WEB_v1_12_PACKAGE_META_EXTERNAL.json",
   "integrate_game_delta.mjs"
 ];
+const supplementTabs=["assets","idea","thinking","tech","workflow","innovation","ai3d"];
+const supplementAssets=[
+  "assets/hero_qingjiang.jpg",
+  "assets/route03_locked_current.svg",
+  "assets/r06_qingjiang.jpg",
+  "assets/r13_passage_sequence.png",
+  "assets/app_mybook.png",
+  "assets/r06_general_assembly_v11.svg",
+  "assets/r06_detail_atlas_v11.svg"
+];
 
 const result={
-  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_14",
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_15",
   section_count:sections.length,
   unique_sections:new Set(sections).size,
   ordered_sections:JSON.stringify(sections)===JSON.stringify(expected),
@@ -35,10 +45,17 @@ const result={
   responsive_css:/@media\(max-width:/i.test(css),
   reduced_motion:/prefers-reduced-motion:reduce/i.test(css),
   interaction_script:/imprints/.test(js)&&/syncPage/.test(js),
+  supplement_trigger_present:js.includes('id="supplementTrigger"')&&js.includes('补充资料'),
+  supplement_tab_count:supplementTabs.filter(tab=>js.includes(`data-supplement-tab="${tab}"`)).length,
+  supplement_panels_present:supplementTabs.every(tab=>js.includes(`data-supplement-panel="${tab}"`)),
+  supplement_original_assets_present:supplementAssets.every(asset=>js.includes(asset)),
+  supplement_ai3d_six_stage:js.includes('01 / SOURCE')&&js.includes('02 / AI EXPLORE')&&js.includes('03 / READBACK')&&js.includes('04 / 3D')&&js.includes('05 / DRAWING')&&js.includes('06 / DETAIL'),
+  supplement_mobile_behavior:js.includes('@media(max-width:760px)')&&js.includes('@media(max-width:480px)'),
+  supplement_escape_close:js.includes("event.key==='Escape'"),
   public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
 
-result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.original_asset_reference_count>=10&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion&&result.interaction_script;
+result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.original_asset_reference_count>=10&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion&&result.interaction_script&&result.supplement_trigger_present&&result.supplement_tab_count===7&&result.supplement_panels_present&&result.supplement_original_assets_present&&result.supplement_ai3d_six_stage&&result.supplement_mobile_behavior&&result.supplement_escape_close;
 
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
