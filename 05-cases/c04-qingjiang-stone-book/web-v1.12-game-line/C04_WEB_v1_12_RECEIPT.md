@@ -1,54 +1,107 @@
-# C04 Web v1.12-r2｜20章 / 112载体页游戏线细化
+# C04 Web｜公开作品阅读重构｜2026-08-23
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
-State: `REFINED INTERACTION CANDIDATE / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION`
+State: `PUBLIC PORTFOLIO REFRAME / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION`
 
-## Correct target
+## 1｜What changed
 
-- Base: `C04_WEB_v1_11_V32_AUTHORING_V02_REBIND_FULL`.
-- Chapters: exactly `CH00–CH19` / 20.
-- Carrier surfaces: `001–112` / 112.
-- The protected 112 carrier surfaces are preserved without deletion, merging or renumbering.
-- This does not claim that 112 is the final canonical PAGE-ID count; exact P001–P052 / N-series reconciliation remains a separate register task.
+The public Web is no longer a 112-surface chapter-by-chapter report reading.
 
-## Material delta
+The previous 112 carrier framework remains preserved as **source / mapping / no-loss archive**, but it is no longer treated as 112 equal public reading surfaces.
 
-The morphing-boat game line is integrated into nine existing surfaces:
+The public `index.html` now contains **18 curated work sections**:
 
-- CH08 / 041 — master-system relationship.
-- CH10 / 047, 050 — optional content objects and editable morph grammar.
-- CH11 / 054, 058 — QR/AR behavior and personal imprint map.
-- CH13 / 067, 073 — wearable/rest carriers and bounded butterfly response.
-- CH15 / 086 — cards, camp exchange and food-box responsibility.
-- CH16 / 094 — object-specific open technical register.
+1. Hero / real Qingjiang
+2. Original material + existing design assets
+3. Design question
+4. Design idea / three viewing scales
+5. Design thinking / attention handoff
+6. Task workflow
+7. Thirteen Imprints / optional reading system
+8. Digital companion / Game Map
+9. Key scene contrast
+10. Physical / Body / Sensory
+11. Brand + Memory
+12. Technology application route
+13. AI + 3D creation process
+14. Technical proof / detail development
+15. Innovation points
+16. Technical difficulties
+17. Design evolution / professional judgment
+18. Final system / Return
 
-## R2 design refinement
+## 2｜Public editing correction
 
-- Replaces nine repeated four-column explanation panels with nine role-specific component families.
-- Adds a six-stage relationship/action flow and explicit `NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF` readback.
-- Draws all thirteen optional boat tokens as editable inline SVG; R06 and R13 retain distinct behavior.
-- Turns the five boat states into a keyboard-operable live-SVG workbench.
-- Builds four age-depth AR states over the existing R06 project image, with offline, numbering, paper and human-service fallbacks.
-- Makes the personal imprint map selectively composable; every partial arrangement is described as complete.
-- Draws separate bracelet, wristband, wand and neck-pillow/rest diagrams with safety and evidence boundaries.
-- Draws the wish-butterfly as a four-stage response/withdrawal sequence rather than an atmosphere illustration.
-- Produces two flippable observation-card prototypes, a camp-service flow and a food-box functional diagram.
-- Replaces the generic open-items block with an object/professional responsibility table.
+Removed from MAIN public reading:
+- CHxx / CHxx-Pxx authoring IDs;
+- PR numbers and source blob hashes;
+- version / authoring / review-pending language;
+- governance/state strings as public headlines;
+- repeated analysis-page templates;
+- the visual implication that 112 carrier indexes are the work itself.
 
-No Web-side App redesign was performed. Existing uploaded boards and current project assets are consumed as source/form/interaction evidence; they are not replaced by generated imagery. All new interface text remains live HTML/SVG text.
+These records remain available in source files and project authority where needed for provenance.
 
-## Static readback
+## 3｜Original assets are now visible first
 
-- HTML carrier surfaces: `112 / 112`.
-- Unique chapters: `20 / 20`.
-- First / last sequence: `001 / 112`.
-- Game-line integration panels: `9`.
-- Local runtime references missing: `0`.
-- `app.js` and integration script syntax: `PASS`.
-- Native-button interaction controls: `17`.
-- Reduced-motion rule: `PRESENT`.
+The public site explicitly reuses existing project assets including:
+- real Qingjiang landscape;
+- current route relation SVG;
+- open-valley / compressed-passage scene assets;
+- current App / My Book / Return material;
+- Qingjiang Journal memory material;
+- physical/body/Fluid Rest assets;
+- technical relationship / GA / section / detail atlas assets.
 
-No local browser renderer was available, so no new finished-pixel or browser Design PASS is claimed.
+No new generated image was added in this revision. Formal presentation text is live HTML/SVG text.
 
-Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`.
+## 4｜AI + 3D process boundary
+
+Public process now shows:
+
+`REAL SOURCE / CONSTRAINT → AI CONCEPT EXPLORATION → GEOMETRY READBACK → 3D RELATION / BODY SCALE → PLAN / SECTION / ASSEMBLY → DETAIL / MATERIAL / MAINTENANCE`
+
+AI role:
+- concept exploration;
+- atmosphere;
+- composition;
+- experience-direction testing.
+
+AI does not prove:
+- final geometry;
+- surveyed site facts;
+- engineering dimensions;
+- structure / safety;
+- field validation.
+
+3D / drawings / technical proof are used to bring spatial and object relations back to controlled geometry and evidence bounds.
+
+## 5｜Design content now explicitly shown
+
+The public runtime now includes:
+- design creativity and core proposition;
+- design thinking and attention strategy;
+- technology application route;
+- project task workflow;
+- innovation points;
+- technical difficulties;
+- AI + 3D creation process;
+- existing design assets and final system outputs;
+- alternatives / professional judgment.
+
+## 6｜No-loss relationship
+
+`112 source carrier surfaces ≠ 112 required public pages`.
+
+No-loss is maintained by retaining the source framework and authored content in the repository. Public curation removes repetition and internal production noise from the visitor-facing work without deleting the underlying design universe.
+
+## 7｜Truth boundary
+
+Unchanged:
+
+`FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`
+
+The public footer expresses this in human-readable language rather than internal governance codes.
+
+This revision does not claim browser finished-pixel PASS until the deployed site is read back independently.
