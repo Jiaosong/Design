@@ -57,6 +57,10 @@ When the requested artifact is a **VI manual / visual identity handbook / logo s
 
 `oleander-skills/oleander-story-and-board/VI_MANUAL_PRODUCTION_EXTENSION.md`
 
+When the identity family has scale-dependent carriers such as Primary / Mark / Optical / Micro / favicon, also read:
+
+`oleander-skills/oleander-story-and-board/VI_OPTICAL_ASSET_HANDOFF_GATE.md`
+
 This does **not** make `oleander-story-and-board` the Brand Identity authority. Brand Identity remains Notion-led with `NO_DEDICATED_OWNER`; this skill owns only the presentation/manual composition layer and must route specialist content to Current Visual Communication, Color, Image Ops and Technical Drawing methods/tools.
 
 Mandatory VI production rule:
@@ -67,6 +71,7 @@ If a VI rule is operational, it must be visibly represented at the point of use.
 
 - clearspace must show logo bounds + influence/exclusion bounds + dimensions;
 - minimum size must show concrete values/units and a threshold specimen, plus a FAIL/below-threshold specimen when relevant;
+- a multi-asset minimum-size rule must also show the asset handoff and recognition continuity across the switchpoint;
 - standard construction must be tied to the current authoritative geometry, not a decorative grid;
 - wordmark rules must show the actual wordmark/baseline relation;
 - color rules must show actual swatches/roles/contrast rather than only list values;
@@ -89,6 +94,7 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
 11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
 12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+13. For scale-dependent VI assets, run native-pixel and handoff-pair tests before accepting minimum-size claims.
 
 ## Deliverable variants
 
@@ -96,7 +102,7 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 - Report/book: evidence depth, citations, cross-references, appendices.
 - Deck: one decision or claim per slide.
 - Brand story: human motivation, distinctive promise, proof, voice.
-- VI / brand manual: visibly represented identity rules, actual master assets, dimensioned construction where required, color/type specimens, misuse, production boundaries, and editable/readback-ready pages.
+- VI / brand manual: visibly represented identity rules, actual master assets, dimensioned construction where required, color/type specimens, misuse, production boundaries, optical handoff rules where relevant, and editable/readback-ready pages.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
 ## Required output
@@ -123,4 +129,5 @@ For VI/manual work, also return or persist the represented standard drawings/spe
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
+- For responsive/optical VI families, a minimum-size page shows the carrier switchpoint and preserves recognition across the handoff; `Correct number ≠ correct carrier`.
 - Material/raster display effects never become logo/vector/text geometry authority.
