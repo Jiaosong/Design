@@ -4,7 +4,8 @@
 - Layer: Culture / CU02 + CU04; supporting IP03 / Business B02-B03
 - Knowledge role: METHOD
 - Status: DISCOVERED / not tested in OLEANDER
-- Verified: 2026-08-07
+- Evidence: E2
+- Verified: 2026-08-26
 
 > This mirror records the stable transferable mechanism only. It is not a copy of the A-POC visual language and does not contain copyrighted museum or campaign imagery.
 
@@ -18,13 +19,13 @@
 
 The transferable insight is not DIY or textile styling. A portion of the final-form decision is deliberately delayed until use, while the manufacturer/designer embeds the safe and legitimate option space into the production output.
 
-## P0–P5 method
-- **P0 — Invariant grammar:** freeze material, equipment, continuity, safety and non-negotiable boundaries.
-- **P1 — Options inside production:** embed multiple legitimate completion paths in one manufacturing logic instead of producing unrelated finished variants.
-- **P2 — Delay final form:** treat the output as a controlled incomplete object rather than a fully closed product.
-- **P3 — Bounded agency:** users alter real configuration, but only inside the structural and rights boundaries defined by P0.
-- **P4 — System continuity:** different outcomes must still share identity, maintenance and governance rules.
-- **P5 — Continuation of remainder:** leftovers or unselected portions need an explicit next use; this is not a claim of full LCA sustainability.
+## OMG-0–OMG-5 Open Manufacturing Grammar
+- **OMG-0 — Invariant grammar:** freeze material, equipment, continuity, safety and non-negotiable boundaries.
+- **OMG-1 — Options inside production:** embed multiple legitimate completion paths in one manufacturing logic instead of producing unrelated finished variants.
+- **OMG-2 — Delay final form:** treat the output as a controlled incomplete object rather than a fully closed product.
+- **OMG-3 — Bounded agency:** users alter real configuration, but only inside the structural and rights boundaries defined by OMG-0.
+- **OMG-4 — System continuity:** different outcomes must still share identity, maintenance and governance rules.
+- **OMG-5 — Continuation of remainder:** leftovers or unselected portions need an explicit next use; this is not a claim of full LCA sustainability.
 
 ## OLEANDER transfer
 ### Culture
