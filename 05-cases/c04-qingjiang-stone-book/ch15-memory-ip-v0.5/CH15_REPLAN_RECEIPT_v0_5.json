@@ -1,0 +1,46 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH15",
+  "version": "v0.5",
+  "state": "NARRATIVE REPLAN COMPLETE / VISUAL RECONSTRUCT PENDING / NO PAGE-ID ALLOCATION / NO_PROMOTION",
+  "authority_basis": [
+    "C04 Current Project Materials v3.2",
+    "CH15 chapter-content-sync v0.3",
+    "CH11 Current Material",
+    "CH12 Current Material",
+    "CH13 Current Material",
+    "CH14 Current Material",
+    "CH16 Current Material",
+    "CH17 Current Material",
+    "CH18 Current Material",
+    "CH19 Current Material"
+  ],
+  "single_question": "旅程结束以后，什么继续存在？",
+  "narrative_acts": [
+    "AFTER THE JOURNEY / Memory begins",
+    "ONE JOURNEY, TWO TRACES / Physical + Digital memory",
+    "MEMORY GROWS / Cultural extension",
+    "THE BOUNDARY / Experience complete before purchase"
+  ],
+  "presentation_candidates": [
+    "S15-A MEMORY AFTER JOURNEY",
+    "S15-B ONE JOURNEY / TWO TRACES",
+    "S15-C MEMORY GROWS, EXPERIENCE STAYS COMPLETE"
+  ],
+  "protected_page_id_allocation": "OPEN / MUST BE RESOLVED THROUGH PROJECT PAGE REGISTER",
+  "v0_4_disposition": "PROVENANCE / VISUAL EXPLORATION / MODULE & COMPOSITION SOURCE; NOT CURRENT CHAPTER STRUCTURE",
+  "handoff": {
+    "CH16": "detail / material / manufacturing interfaces",
+    "CH17": "technical / model / engineering proof",
+    "CH18": "evolution / professional judgment",
+    "CH19": "final Return / second recognition / project ending"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION",
+  "does_not_prove": [
+    "final protected Web page count",
+    "page-ID allocation",
+    "finished-pixel Design PASS",
+    "field validation",
+    "commercial readiness"
+  ]
+}

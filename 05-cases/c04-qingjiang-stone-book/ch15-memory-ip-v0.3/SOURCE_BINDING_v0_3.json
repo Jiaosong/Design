@@ -1,0 +1,23 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH15",
+  "version": "0.3",
+  "state": "VISUAL-LED PRODUCER CANDIDATE / INDEPENDENT REVIEW PENDING / NO_PROMOTION",
+  "content_authority": {"path":"chapter-content-sync/v0.3/CH15_MEMORY-IP-CULTURAL-PRODUCT.md","git_blob_sha":"dfa40fd878892e958e58ce931d180e3b835121bf"},
+  "brand_authority": {"path":"chapter-content-sync/v0.3/CH14_BRAND-VISUAL-IDENTITY.md","git_blob_sha":"31ac175dfb7e644f971ba421b453e586d84ddf53"},
+  "assets": [
+    {"local":"assets/M01_qingjiang_journal_v1_2.svg","role":"P02 Physical Memory authoritative editable source","origin":"GitHub main / physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg","git_blob_sha":"f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5","sha256":"0f5d91fca260a4ed285432077b98649bb12c65a70a7cbb4206b480d22906092b"},
+    {"local":"assets/04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","role":"P03 mature Digital Memory presentation source","origin":"Google Drive","drive_id":"1DBY61KOcLS-TA4pQPBXksB7-l73oaVI1","sha256":"99d1d4b4be3e433487b39bcbfdd29491930563c77a818326d1f50d308c0d5764"},
+    {"local":"assets/15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","role":"P05 one full-resource Memory/IP design recovery source","origin":"Google Drive","drive_id":"1b0zC65tzKAfU3Gq3WfN7ND5B-xRG1Sli","sha256":"99ad8316e07941415e280a97d48c36811104939a57334628178e86eb1b58eb50"}
+  ],
+  "file_library_source_locked_not_materialized_in_runtime": ["清风吟1.png","清风吟2.png","清风吟3.png"],
+  "page_source_allocation": {
+    "P01":"native HTML/SVG relation visual; no content-image slot",
+    "P02":"M01 only",
+    "P03":"Digital Memory currentized source only",
+    "P04":"native same-event semantic relation; SC-R13-EXIT identity only; no CH12 raster",
+    "P05":"Memory/IP recovery board only; Qingfengyin originals referenced but not faked",
+    "P06":"native boundary relation; no content-image slot"
+  },
+  "locked_invariants": ["PARTIAL IS COMPLETE","no 13/13","no-phone complete","MEMORY is chapter trunk","one major interaction grammar max per surface","no model unless relation requires it","Qingfengyin DO NOT MODEL YET","FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION"]
+}

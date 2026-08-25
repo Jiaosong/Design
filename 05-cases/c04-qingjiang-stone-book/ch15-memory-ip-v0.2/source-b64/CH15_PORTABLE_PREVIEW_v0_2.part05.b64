@@ -1,0 +1,5 @@
+SUPERSEDED / DO NOT USE
+
+This chunk was rejected after connector-transfer corruption was detected during currentization.
+Use part05a.b64 + part05b.b64 instead.
+It is retained only as provenance and is excluded from REBUILD_SOURCE.py.
