@@ -1,0 +1,13 @@
+{
+  "review_object": "CH09-P02 / BOAT / v4.4 finished pixels",
+  "review_input_artifact": "CH09_P02_BOAT_OLEANDER_v4_4_1920x1080.png",
+  "review_input_sha256": "e7338afb170e2f4735a08a405dfcf6a771c23274476756a138125db6aa5b32aa",
+  "producer_id": "GPT-5.6 Sol / current production run",
+  "required_reviewer_independence": "INDEPENDENT from producer identity",
+  "required_verdict": ["KEEP", "KEEP_AFTER_REVISION", "REVISE", "REJECT", "HOLD"],
+  "review_basis": ["1920x1080 finished pixel", "390x844 actual browser first viewport", "480x270 far-read", "grayscale", "same-source official boat scale anchor"],
+  "hard_checks": ["first-read landscape dominance", "CH14 editorial hierarchy", "no dashboard/card wall", "Qingjiang specificity without explanatory copy", "mobile typographic integrity", "digital retreats", "Return available", "truth boundary retained"],
+  "drive_pixel_id": "1GnsuREa48V9gHtm7i_cnvKOUM9Qwhcdv",
+  "drive_package_id": "1V4ZOROfasEOlBY4H7f_0mjufGdD1V24F",
+  "state": "READY_FOR_INDEPENDENT_REVIEW / NO SELF-KEEP"
+}

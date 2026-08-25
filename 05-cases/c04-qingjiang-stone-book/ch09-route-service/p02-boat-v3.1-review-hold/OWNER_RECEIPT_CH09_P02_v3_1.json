@@ -1,0 +1,38 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH09-P02",
+  "revision": "v3.1",
+  "flow": [
+    "C04_CURRENT",
+    "CH09 Current Material",
+    "CH14 Current Material",
+    "Skill Resolver",
+    "oleander-research",
+    "T-VISUAL-IMAGE-OPS-001",
+    "oleander-story-and-board",
+    "oleander-data-viz",
+    "oleander-delivery-qc",
+    "actual readback",
+    "Evidence Gate",
+    "Independent Design Quality Gate"
+  ],
+  "skill_versions": {
+    "oleander-research": "2340d7307c39c5a2ec8ef492eb9b85fa2e19945e",
+    "oleander-story-and-board": "b65f86d0b02b6b604ca33f9a7fc5a68e39bc69fb",
+    "oleander-data-viz": "2d2cc08dc6984232f5e2a88118a77c5a55dda2a6",
+    "oleander-delivery-qc": "3900541f19b568a3f513f0513277e9766fdbba4e"
+  },
+  "native_output": ["SVG", "PNG", "HTML", "source baseline", "far-read", "grayscale", "label-off", "browser desktop/mobile"],
+  "source_image_sha256": "eebada34d102005e050302a78aeb0e445e4279a137b105b2fb498e1e557a6a46",
+  "candidate_input_sha256": "2f52172c74735e46810ef218acb23785fdee2bc0d9a4e75c85bb02b9d60cd347",
+  "image_generation_used": false,
+  "evidence_gate": "PASS_WITH_FIELD_HOLD",
+  "professional_design_gate": "HOLD / INDEPENDENT REVIEWER UNRESOLVED",
+  "drive": {
+    "file_id": "1bA0pahsXxmItApPikSkv8rh5uVH5QjoL",
+    "bytes": 5776749,
+    "sha256": "98add9664b79af3b58f32333816d053e7b94a2ea2e5793c89f57fb4aae02b050",
+    "retrieval_integrity": "PASS"
+  },
+  "promotion": false
+}

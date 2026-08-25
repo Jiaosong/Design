@@ -1,0 +1,12 @@
+{
+  "review_id": "C04-CH09-P02-INDEPENDENT-DESIGN-REVIEW-v3.1",
+  "input_file": "CH09_P02_BOAT_OLEANDER_v3_1_1920x1080.png",
+  "input_sha256": "2f52172c74735e46810ef218acb23785fdee2bc0d9a4e75c85bb02b9d60cd347",
+  "reviewer_id": null,
+  "independence_state": "UNRESOLVED / NO PROVABLY INDEPENDENT REVIEWER AVAILABLE ON CURRENT TOOL SURFACE",
+  "allowed_verdicts": ["KEEP", "KEEP_AFTER_REVISION", "REVISE", "REJECT", "HOLD"],
+  "review_basis": ["actual 1920x1080 finished pixels", "480x270 far-read", "grayscale", "label-off deletion test", "390x844 browser viewport"],
+  "criteria": ["first-read visual threshold", "composition/scale", "hierarchy/rhythm", "Qingjiang specificity", "experience completeness", "prompt-media semantic binding", "digital retreat", "service/return hierarchy", "professional finish", "truth boundary", "deletion test", "portfolio value"],
+  "hard_rules": ["producer cannot issue KEEP-class verdict", "artifact/QC/hash cannot substitute Design PASS", "no image generation", "photo must directly support BOAT/water/dock/onboard semantics"],
+  "current_verdict": "HOLD / REVIEWER UNRESOLVED"
+}
