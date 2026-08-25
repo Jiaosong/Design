@@ -1,0 +1,58 @@
+{
+  "schema": "c04.app-owner-receipt/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_DESIGN_SOURCE_V2",
+  "state": "VISUAL_KEEP / APP_MAIN_CANDIDATE / NO_PROMOTION",
+  "base_main": "a728201f64b4288b88e8efd895da50e3cd8cd2be",
+  "current_delta": {
+    "EDITING_NOW": "App / Game Map design-source currentization",
+    "NOT_EDITING_THIS_ROUND": [
+      "LANDSCAPE",
+      "JOURNEY",
+      "13_IMPRINTS",
+      "SCENE_INTERACTION",
+      "AUDIENCE",
+      "PHYSICAL_SENSORY",
+      "MEMORY_IP",
+      "TECHNICAL",
+      "NARRATIVE",
+      "VISUAL_MOTION",
+      "RETURN"
+    ],
+    "DOES_NOT_CHANGE": [
+      "PROJECT_IDENTITY",
+      "DESIGN_SOURCE",
+      "DESIGN_DNA",
+      "FULL_DESIGN_UNIVERSE"
+    ]
+  },
+  "design_source": "Original C04 boards + mature original digital design + current merged App/Game Map v1.2",
+  "design_dna_consumed": [
+    "REAL_QINGJIANG_FIRST",
+    "LANDSCAPE_FIRST",
+    "PAPER_INK_LINE_SEAL",
+    "PHYSICAL_DIGITAL_COMPLEMENTARITY",
+    "THIRTEEN_IMPRINTS_AS_CONTENT_SYSTEM",
+    "REAL_BODY_SPACE",
+    "RETURN_CLOSURE",
+    "MEMORY_IP_AS_TRAVEL_AFTERGLOW"
+  ],
+  "github_source_carrier": {
+    "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-design-source-v2/index.html",
+    "blob_sha": "3e28fbac940d58d209dff382dd606a91aef2c8c3",
+    "asset_mode": "existing bound Drive/GitHub sources"
+  },
+  "reviewed_portable_single_file": {
+    "bytes": 371930,
+    "sha256": "03becc24044a07a3b83256d879cb8fba324cfeda7ac33a5dc009e758ce723f8f",
+    "embedded": true
+  },
+  "does_not_prove": [
+    "FIELD_PASS",
+    "LIVE_OPERATION",
+    "PRECISE_GPS",
+    "ENGINEERING_APPROVAL",
+    "PROJECT_PROMOTION",
+    "WHOLE_PROJECT_DESIGN_PASS"
+  ]
+}

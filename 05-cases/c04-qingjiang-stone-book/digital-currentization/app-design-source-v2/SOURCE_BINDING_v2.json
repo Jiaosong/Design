@@ -1,0 +1,45 @@
+{
+  "schema": "c04.app-source-binding/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "sources": [
+    {
+      "role": "TODAY_HERO",
+      "source": "QJD_V11_01_HERO_1920x1080.png",
+      "drive_id": "16xgXoszQX3-LH150FPH_q5YO2GSfzeAB",
+      "crop": [600, 90, 1920, 850],
+      "source_status": "presentation pixel"
+    },
+    {
+      "role": "R06_READ",
+      "source": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+      "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+      "crop": [240, 255, 930, 670],
+      "source_status": "presentation pixel / not geometry authority"
+    },
+    {
+      "role": "R13_BODY_FIRST",
+      "source": "QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+      "drive_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+      "crop": [976, 175, 1426, 812],
+      "source_status": "conceptual relation pixel / not site-safety proof"
+    },
+    {
+      "role": "SERVICE_RETURN",
+      "source": "QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png",
+      "drive_id": "19mkQdgTj0ASkGh0Ott6JIMNrPcaHd4Y7",
+      "crop": [650, 0, 1920, 560],
+      "source_status": "demo-state presentation visual / not live operation"
+    },
+    {
+      "role": "ROUTE_MAP",
+      "repo_path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/assets/qingjiang-game-map-v1_2.svg",
+      "blob_sha": "9a7a9b2062a45f66f99d412ea1cb082a90956347"
+    },
+    {
+      "role": "MEMORY_JOURNAL",
+      "repo_path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg",
+      "blob_sha": "f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5"
+    }
+  ],
+  "boundary": "No source listed here upgrades field, site, geometry, safety or live-operation authority."
+}

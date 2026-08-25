@@ -1,0 +1,49 @@
+{
+  "schema": "c04.app-visual-qc/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_QINGJIANG_APP_DESIGN_SOURCE_V2",
+  "reviewed_portable": {
+    "bytes": 371930,
+    "sha256": "03becc24044a07a3b83256d879cb8fba324cfeda7ac33a5dc009e758ce723f8f"
+  },
+  "browser_readback": {
+    "engine": "system Chromium via Playwright page.set_content",
+    "390x844": {
+      "horizontal_overflow": false,
+      "views": ["TODAY", "ROUTE", "R06_READ", "R13_BODY_FIRST", "MY_BOOK", "SERVICE_RETURN"],
+      "R01_R13_library_rows": 13,
+      "reading_depth_options": 4
+    },
+    "430x932": {
+      "horizontal_overflow": false,
+      "views": ["TODAY", "ROUTE", "R06_READ", "R13_BODY_FIRST", "MY_BOOK", "SERVICE_RETURN"],
+      "R01_R13_library_rows": 13,
+      "reading_depth_options": 4
+    },
+    "interaction_checks": [
+      "main view switching PASS",
+      "R01-R13 optional index PASS",
+      "reading-depth selector PASS",
+      "R13 switches to PLAY-OFF / BODY-FIRST actions PASS",
+      "Return/Service reachable PASS"
+    ],
+    "external_asset_source_carrier_readback": "HOLD_ENVIRONMENT_ADMIN_BLOCK — GitHub source carrier references bound Drive/GitHub assets; exact portable single-file pixels were the reviewed carrier"
+  },
+  "design_review": {
+    "FIRST_READ": "KEEP — real Qingjiang / design result before governance",
+    "COMPOSITION_SCALE": "KEEP — landscape, map and editorial page own distinct scales",
+    "HIERARCHY_RHYTHM": "KEEP — photo-heavy / map-atlas / paper-memory / dark-return alternation",
+    "C04_SPECIFICITY": "KEEP — source-bound Qingjiang imagery, current game map, Journal and R06/R13",
+    "EXPERIENCE_COMPLETENESS": "KEEP_AFTER_REVISION — core journey is visible; all Rxx scenes are not yet individually currentized to the same finish",
+    "AUDIENCE_VALUE": "KEEP — reading depth remains a secondary capability rather than persona-card clutter",
+    "DIGITAL_EXPERIENCE_RETREATABILITY": "KEEP — R13 PLAY OFF plus Service/Return/no-phone behavior are visible",
+    "PROFESSIONAL_FINISH": "KEEP at current six-screen bounded App review",
+    "TRUTH_BOUNDARY": "PASS"
+  },
+  "decision": "VISUAL_KEEP / APP_MAIN_CANDIDATE / CONTINUE_DEEPENING",
+  "not_shown_to_user": [
+    "internal rejected card/dashboard iterations",
+    "method-first journey-state visual prototypes that did not meet the Design Source standard"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
