@@ -1,9 +1,10 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "scene": {"baseName":"VisualPrototype","dbURL":"db://assets/scenes","templateType":"2d"},
   "controller": {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/VisualPrototypeController.ts","className":"C04WS07AVisualPrototypeController"},
   "corrections": [
-    {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/ResponsiveVisualLayoutCorrection.ts","className":"C04WS07AResponsiveVisualLayoutCorrection","gate":"WS-07A.1"}
+    {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/ResponsiveVisualLayoutCorrection.ts","className":"C04WS07AResponsiveVisualLayoutCorrection","gate":"WS-07A.1"},
+    {"nodePath":"Canvas","component":"db://assets/scripts/ws07a/LandscapeMediaController.ts","className":"C04WS07ALandscapeMediaController","gate":"WS-07A.2_RESEARCH_MEDIA"}
   ],
   "nodes": [
     {"path":"Canvas/PrototypeNav","type":"Empty"},
@@ -20,6 +21,7 @@
 
     {"path":"Canvas/S0_OneLineSky","type":"Empty","active":true},
     {"path":"Canvas/S0_OneLineSky/LandscapeSlot","type":"Empty"},
+    {"path":"Canvas/S0_OneLineSky/LandscapeImage","type":"Sprite","active":false},
     {"path":"Canvas/S0_OneLineSky/ScreenHint","type":"Label","position":{"x":0,"y":80,"z":0},"label":"S0｜一线天｜LANDSCAPE SLOT","fontSize":24},
 
     {"path":"Canvas/S1_RedRockMouth","type":"Empty","active":false},

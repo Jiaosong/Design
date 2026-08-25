@@ -35,6 +35,57 @@ oleander-cocos create "$DEST" 2d
 mkdir -p "$DEST/assets"
 cp -R "$SOURCE/assets/." "$DEST/assets/"
 
+# Optional C04 visual-media materialization. The source authority stays text-only:
+# project-approved official media are fetched into the generated Creator project,
+# then pinned by SHA-256 so a changed upstream byte stream fails closed. The
+# runtime never depends on the remote URL after build.
+MEDIA_MANIFEST="$DEST/assets/resources/c04/ws07a/visual-media-manifest.json"
+if [[ -f "$MEDIA_MANIFEST" ]]; then
+  node - "$DEST" "$MEDIA_MANIFEST" <<'NODE'
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const project = path.resolve(process.argv[2]);
+const manifestFile = path.resolve(process.argv[3]);
+const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+const assets = Array.isArray(manifest.assets) ? manifest.assets : [];
+
+async function main() {
+  for (const asset of assets) {
+    if (!asset?.sourceUrl || !asset?.sha256 || !asset?.materializedFile) {
+      throw new Error(`visual media manifest asset is incomplete: ${JSON.stringify(asset)}`);
+    }
+    if (asset.usageGate !== 'RESEARCH_PROTOTYPE_ONLY' || asset.rightsGate !== 'PASS_PROJECT_USE_APPROVED') {
+      throw new Error(`visual media asset is not approved for research materialization: ${asset.assetId}`);
+    }
+    const response = await fetch(asset.sourceUrl, {
+      headers: { 'user-agent': 'OLEANDER-C04-Media-Materializer/0.1' },
+      redirect: 'follow',
+    });
+    if (!response.ok) throw new Error(`download ${asset.assetId} failed: HTTP ${response.status}`);
+    const data = Buffer.from(await response.arrayBuffer());
+    const sha = crypto.createHash('sha256').update(data).digest('hex');
+    if (sha !== asset.sha256) {
+      throw new Error(`SHA256 mismatch for ${asset.assetId}: expected ${asset.sha256}, got ${sha}`);
+    }
+    if (Number.isInteger(asset.expectedBytes) && data.length !== asset.expectedBytes) {
+      throw new Error(`byte-size mismatch for ${asset.assetId}: expected ${asset.expectedBytes}, got ${data.length}`);
+    }
+    const out = path.resolve(project, asset.materializedFile);
+    if (!out.startsWith(`${project}${path.sep}`)) throw new Error(`materializedFile escapes project: ${asset.materializedFile}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, data);
+    console.log(`C04 visual media materialized: ${asset.assetId} -> ${path.relative(project, out)} sha256=${sha}`);
+  }
+}
+
+main().catch((error) => {
+  console.error(`ERROR: C04 visual media materialization failed: ${error.message}`);
+  process.exit(65);
+});
+NODE
+fi
+
 # Validate the minimum C04 source contract without calling upstream commands
 # that are not registered by the pinned CLI commit (notably import/info).
 [[ -f "$DEST/assets/data/chapters.json" ]] || { echo "ERROR: chapters.json missing after source overlay" >&2; exit 65; }

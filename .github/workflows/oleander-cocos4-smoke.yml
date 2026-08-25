@@ -145,6 +145,17 @@ jobs:
             "$OUT/runtime-capture-report.json" \
             "$OUT/responsive-layout-audit.json"
           test -f "$OUT/responsive-layout-audit.json"
+      - name: Capture WS-07A.2 R05 photo-dominant research media
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/c04-cocos4"
+          OUT="$RUNNER_TEMP/c04-ws07a-runtime-capture/visual-media"
+          BUILD_INDEX="$(find "$DEST/build" -type f -name index.html -print | sort | head -n 1)"
+          test -n "$BUILD_INDEX"
+          BUILD_ROOT="$(dirname "$BUILD_INDEX")"
+          node 90-shared/toolchains/cocos4/capture-c04-visual-media.mjs "$BUILD_ROOT" "$OUT"
+          test -f "$OUT/visual-media-capture-report.json"
       - name: Upload WS-07A runtime capture evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
