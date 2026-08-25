@@ -71,33 +71,51 @@ Component/effect libraries and galleries are mechanism references only. Strip th
 
 ## Exploration behavior grammar gate
 
-Use this gate when an interface claims exploration, route discovery, inspection, world-linked explanation, or game-like spatial reading. The behavior must be legible as a reversible state system before glow, fade, reveal, parallax, or other effects are judged.
+Use this gate for route, travel, spatial exploration, museum/exhibition, inspection, world-linked explanation, or game-like discovery. Do not judge isolated glow/fade/reveal effects first. Establish the **behavior grammar and persistent relationship** before choosing render mechanisms.
 
-Default grammar:
+Base contract:
+
+`Journey / Task State → Behavioral Verb → Persistent World/Object → Relationship Change → Motion Mechanism → Reverse/Recovery → Reduced Motion`
+
+Rules:
+- derive behavioral verbs from the actual task or journey; do not impose one universal vocabulary;
+- each transition must clarify at least one source/destination, causal, spatial, hierarchy, or task relationship;
+- preserve a persistent world, object, route, or anchor across adjacent states when continuity is part of the experience;
+- forward/back navigation should normally use the same reversible causal/spatial grammar unless the exit semantics genuinely differ;
+- fade, glow, pulse, reveal, blur, mask, scale, parallax, camera movement, light sweep and card appearance are **motion/render mechanisms**, not behavioral states;
+- a sequence that can only be described as `fade / reveal / glow / withdraw` without explaining why state changed, where the viewer is going, what remained selected, or how to return is a default `REVISE`;
+- evaluate the grammar across the full sequence, not as individually polished frames;
+- for landscape/world-first experiences, preserve world/object/route first-read before a dominant UI overlay; motion must not convert a world-first experience into an overlay-first dashboard without a task reason;
+- Reduced Motion must preserve the same state, route continuity, action hierarchy and Return meaning through static structure, explicit state change, or near-instant transitions;
+- run forward, reverse/back, rapid-repeat, interruption/re-entry, target-switch and narrow-screen tests.
+
+### Committed exploration specialization
+
+When the experience specifically contains preview → selection → explanation behavior, use the bounded specialization:
 
 `INTENT → SCOUT → COMMIT → REVEAL → RETREAT / RETURN`
 
-1. `SCOUT` is a reversible preview. It may increase local salience, but it must not silently create a persistent selection or replace the route/world first-read.
-2. `COMMIT` records the user's selected relation or object. The committed identity must remain stable through later visual mechanisms.
-3. `REVEAL` may expose explanation, detail, memory, or relation only after commitment when that order is part of the experience claim. A reveal with no selected world/object anchor defaults to `REVISE`.
-4. `RETREAT` must move backward through the behavior grammar without destroying the underlying world/route context. `RETURN` must clear the exploration selection and restore the defined route/service baseline.
-5. Hover, glow, pulse, fade, mask, scale, blur, parallax, camera movement, or card appearance are render mechanisms, not exploration states. If the behavior is unchanged when those effects are removed, do not claim them as the exploration grammar.
-6. The selected relation must have persistent state memory. Rapid repeat, switching targets, interruption, or re-entry must not orphan an explanation panel, leader, world anchor, focus state, or previous selection.
-7. Required exploration states cannot depend on hover alone. Pointer, keyboard, touch, switch/accessibility input, and focus behavior must preserve the same state meaning even when the exact gesture differs.
-8. Reduced Motion may remove interpolation, parallax, scale, or other movement, but it must preserve `SCOUT / COMMIT / REVEAL / RETREAT / RETURN` information equivalence.
-9. Exploration UI must keep safety, return, route, closure, and service priorities outside optional interpretation. A committed explanatory state cannot hide or disable the required return path.
-10. Review the full grammar as a sequence, not as isolated frames: `IDLE → SCOUT → COMMIT → REVEAL → RETREAT → RETURN`, plus rapid target-switch and interruption attacks.
+This is **not a mandatory universal sequence**. Use it only when the Current interaction claim actually contains these roles.
+
+1. `SCOUT` is a reversible preview. It may increase local salience but must not silently create a persistent selection or replace route/world first-read.
+2. `COMMIT` records the selected relation/object. The committed identity must remain stable through later mechanisms.
+3. `REVEAL` may expose explanation, detail, memory, or relation after commitment when that ordering is part of the experience claim. A reveal with no selected world/object anchor defaults to `REVISE`.
+4. `RETREAT` moves backward without destroying underlying world/route context. `RETURN` clears optional exploration state and restores the defined route/service baseline.
+5. Selected relations require persistent state memory. Rapid switching, interruption, or re-entry must not orphan an explanation panel, leader, world anchor, focus state, or previous selection.
+6. Required states cannot depend on hover alone. Pointer, keyboard, touch, switch/accessibility input and focus behavior must preserve the same state meaning even when gestures differ.
+7. Safety, route, closure, service and Return remain outside optional interpretation. A committed explanatory state cannot hide or disable them.
 
 Hard FAIL:
-- a reveal appears with no persistent selected object/relation;
+- a reveal appears with no persistent selected object/relation when selection is required by the interaction claim;
 - commit cannot be reversed or cleared;
-- return navigates elsewhere but leaves stale exploration state behind;
-- switching targets leaves a panel/leader attached to the previous target;
-- keyboard/touch cannot reach a state required for pointer users;
+- Return changes location but leaves stale exploration state;
+- switching targets leaves panel/leader/focus bound to the previous target;
+- keyboard/touch cannot reach a required state available to pointer users;
 - Reduced Motion removes required state information;
-- optional exploration blocks route, safety, closure, or service recovery.
+- optional exploration blocks route, safety, closure, service recovery or Return;
+- mobile/narrow carriers clip or detach the world anchor, selected relation, state label or Return cue.
 
-The exploration grammar proves a designed interaction relationship only. It does not prove comprehension, delight, game feel, accessibility conformance, spatial truth, field usability, or production readiness without the corresponding tests.
+This gate extends MOT-02 State Transition and MOT-03 Spatial Continuity. It does not create a separate motion/game-UI framework. It proves a designed temporal/interaction relationship only; it does not prove comprehension, delight, game feel, accessibility conformance, spatial truth, field usability, implementation quality or production readiness without the corresponding tests.
 
 ## Required practice loop
 
