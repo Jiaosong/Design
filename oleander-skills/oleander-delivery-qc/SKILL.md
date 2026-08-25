@@ -18,7 +18,7 @@ Treat QC as a reproducible release gate. Inspect without modifying masters unles
 ## Gate 2: research and rights
 
 - Important claims link to approved evidence.
-- Credits, licenses, model releases, font rights, music rights, and stock licenses are present when required by the project authority.
+- Credits, licenses, model releases, font rights, music rights, and stock licenses are present.
 - Confidential or personal information is not unintentionally included.
 
 ## Gate 3: images and boards
