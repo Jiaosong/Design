@@ -1,4 +1,4 @@
-name: OLEANDER Control Plane v0.3｜E3 R3.3 Promote Review
+name: OLEANDER Control Plane v0.3｜E3 R3.3 Promotion Lineage Review
 on:
   pull_request:
     paths:
@@ -8,7 +8,7 @@ on:
 permissions:
   contents: read
 jobs:
-  promotion-state-verification:
+  promotion-lineage-verification:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -17,28 +17,56 @@ jobs:
           python-version: '3.12'
       - name: Validate active Control Card
         run: python 00-governance/control-plane/control_plane.py check 90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json
-      - name: Verify transition-aware state
+      - name: Verify transition-aware authority lineage
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
-          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
-          assert card['mode']=='CANDIDATE'
-          state=card['authority_source']['state']
-          if state=='WORKING_SOURCE':
-              assert not (root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').exists()
-              print('PRE_APPROVAL_WORKING_SOURCE_PASS')
-          elif state=='CANDIDATE_AUTHORITY':
-              authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
-              sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+
+          root = Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card = json.loads((root / 'E3_CONTROL_CARD.json').read_text())
+          state = card['authority_source']['state']
+          mode = card['mode']
+
+          candidate_authority = root / 'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md'
+          candidate_sync = root / 'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md'
+          canonical_authority = root / 'CANONICAL_AUTHORITY_E3_R33_2026-08-13.md'
+          canonical_sync = root / 'CANONICAL_AUTHORITY_SYNC_E3_R33_2026-08-13.md'
+
+          def verify_candidate_lineage():
+              authority = candidate_authority.read_text()
+              sync = candidate_sync.read_text()
               assert 'Decision: `APPROVED`' in authority
               assert 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' in sync
               assert 'ARTIFACT_REGISTER = EXECUTED' in sync
               assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
-              print('POST_APPROVAL_CANDIDATE_AUTHORITY_PASS')
+
+          if state == 'WORKING_SOURCE':
+              assert mode == 'CANDIDATE'
+              print('WORKING_SOURCE_CURRENT_STATE_PASS')
+          elif state == 'CANDIDATE_AUTHORITY':
+              assert mode == 'CANDIDATE'
+              verify_candidate_lineage()
+              print('CANDIDATE_AUTHORITY_LINEAGE_PASS')
+          elif state == 'CANONICAL_AUTHORITY':
+              assert mode == 'AUTHORITY'
+              verify_candidate_lineage()
+              authority = canonical_authority.read_text()
+              sync = canonical_sync.read_text()
+              assert 'SYNCED / CANONICAL_AUTHORITY / PROMOTED / NOT RELEASED' in authority
+              assert 'AUTHORITY STATE = CANONICAL_AUTHORITY' in authority
+              assert 'CROSS_SYSTEM_SYNC = PASS' in authority
+              assert 'POST_CANONICAL_CONTRADICTION_SCAN = PASS' in authority
+              assert 'SYNCED / CANONICAL_AUTHORITY / PROMOTED / NOT RELEASED' in sync
+              assert 'CONTRADICTION_SCAN_PASS' in sync
+              ev = card['evidence_state']
+              for key in ('canonical_promotion_review', 'cross_system_sync', 'post_canonical_contradiction_scan'):
+                  assert ev[key] == 'PASS', (key, ev[key])
+              print('CANONICAL_AUTHORITY_LINEAGE_PASS')
           else:
               raise AssertionError(state)
           PY
       - name: Boundary
-        run: echo 'Candidate Authority verification only; no Canonical Promotion or merge is authorized.' >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo 'This workflow verifies the current E3 authority state and immutable Candidate→Canonical lineage.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'It does not authorize a new promotion, reopen accepted design/model evidence, or set Release=true.' >> "$GITHUB_STEP_SUMMARY"
