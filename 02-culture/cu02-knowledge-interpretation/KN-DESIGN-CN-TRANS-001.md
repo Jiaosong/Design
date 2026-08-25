@@ -1,12 +1,12 @@
 # KN-DESIGN-CN-TRANS-001｜中国当代设计语言｜传统—机制—当代转译
 
-- Status: ACTIVE / PARTIAL / E1 / analysis framework
+- Status: ACTIVE / PARTIAL / E2 / analysis framework
 - Primary layer: Culture / CU02 Knowledge & Interpretation
 - Supporting layers: IP, Spatial; Business conditional
 - People: PER-ARCHITECT-001｜王澍; PER-ARCHITECT-002｜陆文宇
 - Studio: Amateur Architecture Studio｜业余建筑工作室
 - Notion canonical object: https://app.notion.com/p/3a8b86be5c4781ffbfd3f91642e1cad3
-- Verified: 2026-08-10
+- Verified: 2026-08-25
 
 > GitHub is a versioned knowledge mirror, not the canonical narrative source. Full evidence notes, relations and ongoing research status remain in Notion.
 
