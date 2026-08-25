@@ -1,8 +1,11 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
+> **CURRENT CORRECTION｜2026-08-25**  
+> Public structure remains the 18-section design-work reading + bottom-right supplement, but the current runtime is **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `index.html` and `app.js` reference `assets/...`; the current runtime tree does not contain that directory. Verified missing samples include `assets/hero_qingjiang.jpg` and `assets/route03_locked_current.svg`. `verify_game_line.mjs` is now v1.16 and fails on any missing or zero-byte referenced asset. The former source-readback PASS is not an asset-integrity, runtime, browser or deployment PASS.
+
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
-State: `PUBLIC PORTFOLIO REFRAME / SOURCE-BOUND / FIELD OPEN / NO_PROMOTION`
+State: `PUBLIC PORTFOLIO REFRAME / SOURCE-BOUND / RUNTIME ASSET BLOCKED / FIELD OPEN / NO_PROMOTION`
 
 ## Current structure
 
@@ -80,14 +83,14 @@ Static validation now requires:
 - retired report-structure files remain absent;
 - bottom-right supplement trigger present;
 - 7 supplement categories present;
-- existing source assets bound into the supplement;
+- every `assets/...` reference found across HTML/CSS/JS resolves to an existing non-zero-byte file;
 - six-stage AI + 3D process present;
 - mobile drawer rules and ESC close behavior present.
 
-GitHub source readback confirms the supplement code is present. A local Node execution was attempted but the local container could not resolve `raw.githubusercontent.com`; therefore no local-runtime PASS is claimed from that attempt.
+GitHub source readback confirms the public structure and supplement code are present. **Asset integrity currently fails** because the runtime asset directory has not been materialized into this tree. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS or deployment PASS is claimed.
 
 ## Truth boundary
 
 Research-grade design remains distinct from field and engineering validation. The public interface expresses this in readable language rather than internal governance codes.
 
-Browser finished-pixel review remains separate from source/static validation.
+Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes.
