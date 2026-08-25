@@ -61,6 +61,33 @@ Compare the result with the delivery specification. Detect black frames, silence
 - Confirm preview/thumbnail and manifest match the packaged asset.
 - For websites or interactive charts, check local assets, responsive layout, keyboard access, missing links, and offline behavior if required.
 
+### Gate 5.1: interaction-state legibility
+
+For websites, mini-programs, interactive charts, prototypes and component systems, do not reduce keyboard/accessibility review to a binary “clicks/does not click” check. Inspect both the visible state model and the runtime evidence appropriate to the release claim.
+
+Visible-state review:
+
+- Compare `default / hover / focus / pressed-or-selected / disabled / error` where those states exist. States that change operation or meaning must not collapse into near-identical appearances.
+- Keyboard focus must remain visibly locatable. Do not accept removal of the user-agent focus indicator unless a clearly visible author-supplied replacement remains available.
+- Selected/pressed state must remain distinguishable from hover. Disabled controls should look unavailable without making necessary labels illegible.
+- State meaning must not depend on motion alone when a static visual carrier is needed for comprehension or reduced-motion use.
+- Preserve native semantics where practical (`button`, labels, `disabled`, `aria-pressed` or other appropriate state semantics) rather than rebuilding every control as a generic styled container.
+
+WCAG 2.2 calibration boundary:
+
+- SC 2.4.7 Focus Visible is a **Level AA** requirement for a visible keyboard focus indicator mode.
+- SC 2.4.13 Focus Appearance is a **Level AAA** calibration target: when visible, an area of the focus indicator is at least as large as the area of a `2 CSS px` perimeter of the unfocused component/sub-component and has at least `3:1` contrast between the same pixels in focused and unfocused states, subject to the criterion's exceptions.
+- SC 2.5.8 Target Size (Minimum) is **Level AA** with a baseline `24 × 24 CSS px` target, subject to its spacing/equivalent/inline/user-agent/essential exceptions.
+- `44 × 44 CSS px` is associated with SC 2.5.5 Target Size (Enhanced), **Level AAA**, subject to its exceptions. OLEANDER may use 44 px or larger as a product/practice target, but must not call it the SC 2.5.8 minimum or infer AAA conformance from target size alone.
+
+Separate proof classes:
+
+`STATIC VISUAL PROOF ≠ RUNTIME KEYBOARD PROOF ≠ ACCESSIBLE NAME/ROLE/VALUE PROOF ≠ RESPONSIVE/DEVICE PROOF ≠ WCAG CONFORMANCE`.
+
+A screenshot or design board can support visible differentiation, but cannot by itself prove focus order, keyboard activation, accessible naming, screen-reader/assistive-technology behavior, responsive layout, device behavior, or complete WCAG conformance. Record which proof class was actually executed.
+
+Return `REVISE/HOLD` when visible states are ambiguous, focus is not visibly locatable where required, a state distinction depends on unsupported styling/motion alone, or an accessibility/conformance claim exceeds the runtime evidence.
+
 ## Report format
 
 Use:
