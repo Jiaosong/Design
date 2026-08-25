@@ -1,0 +1,97 @@
+{
+  "schema": "oleander.c04.ch12.asset-bindings/0.4",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH12",
+  "role": "SELECTED_SCENE_PROOF",
+  "authority_rules": [
+    "REAL_QINGJIANG_FIRST",
+    "ROUTE-03_LOCKED_CURRENT",
+    "R06_FINISHED_FROZEN_NO_REOPEN",
+    "ORIGINAL_BOARD_IS_NOT_FINAL_PUBLIC_PIXEL",
+    "TECHNICAL_MODEL_PROOF_DOES_NOT_OWN_SCENE",
+    "NO_GENERIC_OR_AI_SITE_REPLACEMENT"
+  ],
+  "bindings": [
+    {
+      "authoring_id": "A01",
+      "scene_id": "SC-ATLAS",
+      "primary": ["QJ-A03_Key-Beat_Spatial-Sections_v0.1.svg", "ROUTE-03 relation only"],
+      "role": "scene-selection / spatial-verb overview",
+      "does_not_prove": ["route geometry", "site coordinates", "field sequence"]
+    },
+    {
+      "authoring_id": "A02",
+      "scene_id": "SC-R01",
+      "primary": ["official/project-approved static Qingjiang/cable context where available"],
+      "support": ["SEC_A_CABLE_RELATION.svg"],
+      "role": "moving-view relation",
+      "hold": "continuous real cabin POV / same-source moving stimulus not materialized",
+      "forbidden_substitutes": ["static pan as motion", "AI video extension", "multiple-still fake motion", "generic cableway footage"]
+    },
+    {
+      "authoring_id": "A03",
+      "scene_id": "SC-R05",
+      "primary": [],
+      "role": "discovery interaction",
+      "hold": "AUTHORITATIVE_HONGHUA_LANDSCAPE_PIXEL_REQUIRED",
+      "forbidden_substitutes": ["generic Qingjiang landscape", "AI site imagery"]
+    },
+    {
+      "authoring_id": "A04",
+      "scene_id": "SC-R06-LANDSCAPE",
+      "primary": ["QJD_V11_03_R06_TWO_STAGE_1920x1080.png / current R06 landscape visual"],
+      "support": ["human-scale/body relation", "P02 body-recovery relation only"],
+      "role": "Landscape First / recovery / choose",
+      "hold": "exact R06 geometry and P02 site location remain FIELD OPEN"
+    },
+    {
+      "authoring_id": "A05",
+      "scene_id": "SC-R06-REVEAL",
+      "primary": ["same authoritative R06 base as A04"],
+      "support": ["SEC_B_R06_VALLEY_PLATFORM.svg", "C23-R06-GA / DETAIL where near-read is useful"],
+      "role": "same-source relation reveal",
+      "hold": "NTS / NOT MEASURED / NO GEOLOGICAL CAUSATION CLAIM"
+    },
+    {
+      "authoring_id": "A06",
+      "scene_id": "SC-R06-AUDIENCE",
+      "primary": ["same R06 landscape source"],
+      "support": ["R06 Audience v4", "CH13 original physical design sources"],
+      "role": "same-scene use-state depth",
+      "hold": "Fluid Rest / Qingfengyin not assigned to R06 by illustration or model"
+    },
+    {
+      "authoring_id": "A07",
+      "scene_id": "SC-ROUTE-DECISION",
+      "primary": ["ROUTE-03 LOCKED CURRENT / source-bound relation only"],
+      "support": ["paper map", "human service", "App service/route implementation"],
+      "role": "Continue vs Return functional pressure-test",
+      "hold": "exact branch/node location and operations OPEN; no invented coordinates"
+    },
+    {
+      "authoring_id": "A08",
+      "scene_id": "SC-R13-PASS",
+      "primary": ["QJD_V11_04_R13_FOUR_FRAME_1920x1080.png / currentized R13 passage visual"],
+      "support": ["C04-MDL-SEC-C"],
+      "role": "compression / content withdrawal",
+      "label": "REMOTE CURRENTIZED DESIGN / NOT SITE PHOTO",
+      "hold": "width / safety / accessibility / exact viewpoint OPEN"
+    },
+    {
+      "authoring_id": "A09",
+      "scene_id": "SC-R13-EXIT",
+      "primary": ["R13 currentized exit/re-recognition visual"],
+      "support": ["CAM_R13_C04-MDL-FIG-03", "C04-MDL-SEC-C"],
+      "role": "re-recognition / Return",
+      "hold": "exact view / access route / safety OPEN"
+    }
+  ],
+  "presentation_priority": [
+    "REAL_QINGJIANG_OR_SOURCE_BOUND_SCENE",
+    "BODY_ROUTE_SCENE_RELATION",
+    "OPTIONAL_CONTENT_DIGITAL_PHYSICAL",
+    "NEAR_READ_TECHNICAL_MODEL_PROOF",
+    "EVIDENCE_FIELD_BOUNDARY"
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

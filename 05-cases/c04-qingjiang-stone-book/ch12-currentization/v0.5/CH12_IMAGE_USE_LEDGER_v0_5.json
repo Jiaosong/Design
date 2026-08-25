@@ -1,0 +1,27 @@
+{
+  "schema": "C04_CH12_PROJECT_WEB_IMAGE_USE_LEDGER_v0.5",
+  "rule": "one underlying content-image source = one semantic Web image slot across entire C04 Web",
+  "scope": "CH12 v0.5 individual authoring pages + known partial project-wide audit constraints",
+  "content_image_sources_used": [],
+  "page_media": [
+    {"page":"A01","medium":"native SVG / journey scene atlas","content_image_source":null},
+    {"page":"A02","medium":"native SVG / moving-view schematic","content_image_source":null},
+    {"page":"A03","medium":"native SVG / observation-frame + explicit source hold","content_image_source":null},
+    {"page":"A04","medium":"native SVG / landscape-body spatial field; real image slot reserved","content_image_source":null},
+    {"page":"A05","medium":"native SVG / single semantic same-source reveal component model","content_image_source":null},
+    {"page":"A06","medium":"native SVG / body-audience depth map","content_image_source":null},
+    {"page":"A07","medium":"native SVG / decision grammar","content_image_source":null},
+    {"page":"A08","medium":"native SVG / compression-aperture sequence","content_image_source":null},
+    {"page":"A09","medium":"native SVG / reopening-lookback-return sequence","content_image_source":null}
+  ],
+  "known_sources_explicitly_not_reused": [
+    {"source":"assets/hero_qingjiang.jpg","sha256":"6cec84eb796e8a7636b0557cd7de84fc6c121dffb9ea4da3ff8cada5fce8b8cd"},
+    {"source":"assets/app_route.png","sha256":"3894508525a4589226aa808d4b5c395fb7eba9af51fb24a8d1750cb31ed18b6d"},
+    {"source":"assets/r06_qingjiang.jpg","sha256":"f7e4d67e2a08dfc0bb10c65fe8c45079402a91cd01ad5d5e939e5b965b821a95"},
+    {"source":"assets/r13_exit.jpg","sha256":"cd07bdae4d4d02a9224d8cf2315fe08a1fdf133572def4d565e9fb2a0005f34d"},
+    {"source":"assets/app_r06_crop.png","sha256":"0e6b76d451de261a9db5e1fa6199af45be7e21a030b6a1f98946690d637900c4"},
+    {"source":"OW-20230616-2a923422a","sha256":"0360b3ea3665e1ae7b1779ad4a2418b728ea9e6f5a3949effe3f731091621309"}
+  ],
+  "same_source_reveal_policy": "A05 describes one semantic component only; final Web must bind a base source once and toggle relation layer/state inside that component.",
+  "promotion": "AUTHORING SAFE IN CURRENT AUDITED SCOPE / FINAL PROJECT-WIDE LEDGER STILL PENDING"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "oleander.c04.ch12.production-repair.v0.2",
+  "state": "EXECUTED / REPAIRED CANDIDATE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "executed_pages": ["A01", "A02", "A03", "A06", "A07", "A08", "A09"],
+  "hold_pages": ["A04", "A05"],
+  "readback": {
+    "viewports": ["1920x1080", "1366x768", "390x844"],
+    "runs": 21,
+    "horizontal_overflow": 0,
+    "vertical_overflow": 0,
+    "console_errors": 0,
+    "page_errors": 0,
+    "responsive_rule": "1366 uses real height-aware re-composition; no transform-scale desktop shrink"
+  },
+  "image_ops": {
+    "A02": "WASH-TONAL -> WASH-MASK -> INK-EDGE / non-generative",
+    "A03": "WASH-TONAL -> WASH-MASK -> INK-EDGE / non-generative"
+  },
+  "local_package": {
+    "name": "C04_CH12_PRODUCTION_v0.2.zip",
+    "bytes": 13902324,
+    "sha256": "165d2f8222ecfbaecfdba01b7ccc4bb13c0661a20b7dfdecfc7019631bece79d"
+  },
+  "manifest_sha256": "fe5323a37ba9b9d465267e5439a65c61dc71e1f139c4ab09d6623e9311223adc",
+  "readback_sha256": "d4fade2eeadcc347eeaf8b318904ef7dbb1d24c6cbe92f4188aa3a8e9f6403fd",
+  "a04_a05_target": "one CH12-R06-SEMANTIC-COMPONENT-A04-A05; bind base once; A05 = layer/state reveal",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION",
+  "does_not_prove": ["Professional Design PASS", "Field validation", "Engineering approval", "Promotion"]
+}

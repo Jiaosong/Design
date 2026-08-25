@@ -1,0 +1,27 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "role": "MASTER DESIGN STRATEGY",
+  "current_version": "v0.4",
+  "current_file": "05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_MASTER-DESIGN-STRATEGY_v0_4.md",
+  "current_editable_atlas": "05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_MASTER_EXPERIENCE_ATLAS_v0_4.svg",
+  "owner_receipt": "05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/OWNER_RECEIPT_CH08_v0_4.json",
+  "project_qa": "05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_v0_4_PROJECT_QA.md",
+  "readback": "05-cases/c04-qingjiang-stone-book/ch08-currentization/v0.4/CH08_v0_4_READBACK.md",
+  "branch": "agent/c04-ch00-ch19-deepening-v03-20260819",
+  "pr": 294,
+  "state": "AUTHORING SUCCESSOR / PROJECT QA PASS / INDEPENDENT REVIEW REQUIRED / NO_PROMOTION",
+  "superseded_current_framings": [
+    "CH08 v0.2 authored baseline",
+    "CH08 v0.3 Knowledge Rebaseline",
+    "chapter-content-sync/v0.3 CH08 compact summary"
+  ],
+  "hard_locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "Boat = CONDITIONAL ACCESS / WATER-SCALE EXPERIENCE",
+    "NO NEW PID BY GUESS",
+    "NO COMPRESSION / NO LOSS"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

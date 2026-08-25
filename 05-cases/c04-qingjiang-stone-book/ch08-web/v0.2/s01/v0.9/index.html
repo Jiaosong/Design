@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CH08 / 总体体验策略 / S01 v0.9</title>
+<style>
+:root{
+  --bone:#f1ede4;--ink:#111918;--deep:#133b3c;--jade:#2e7571;--wet:#65706a;--red:#b8543e;
+  --serif:"Noto Serif CJK SC","Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  --sans:"Noto Sans CJK SC","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif;
+  --mono:"Roboto Mono","Noto Sans Mono",monospace;
+}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bone);color:var(--ink);overflow-x:hidden} body{font-family:var(--sans)} figure{margin:0}
+.s01{position:relative;min-height:100svh;overflow:hidden;background:var(--deep);isolation:isolate}
+.scene{position:absolute;inset:0;z-index:0}
+.scene img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:scale(1.002)}
+.scene:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(241,237,228,.99) 0%,rgba(241,237,228,.94) 18%,rgba(241,237,228,.74) 31%,rgba(241,237,228,.18) 47%,rgba(241,237,228,0) 61%);pointer-events:none}
+.copy{position:relative;z-index:2;width:min(760px,43vw);min-height:100svh;padding:7.2vh 0 5.6vh 4.15vw;display:flex;flex-direction:column}
+.meta{display:flex;gap:14px;align-items:center;font:700 clamp(10px,.68vw,13px)/1.3 var(--sans);letter-spacing:.12em;color:#4f605b;text-transform:uppercase}
+.meta:before{content:"";width:34px;height:2px;background:var(--jade);flex:0 0 auto}
+h1{margin:13.6vh 0 0;font-family:var(--serif);font-weight:650;font-size:clamp(58px,3.72vw,72px);line-height:1.02;letter-spacing:-.05em;max-width:none}
+h1 span{display:block;white-space:nowrap}
+.lede{margin:4.2vh 0 0;max-width:30em;font-size:clamp(15px,.98vw,19px);line-height:1.72;color:#53605b}
+.scale{margin-top:auto;padding-top:22px;border-top:1px solid rgba(17,25,24,.22);display:grid;grid-template-columns:repeat(3,max-content);gap:18px;font-size:clamp(12px,.78vw,15px);font-weight:700;color:var(--deep);letter-spacing:.01em}
+.scale span{display:flex;align-items:center;gap:8px;white-space:nowrap}.scale i{font:700 9px/1 var(--mono);color:var(--red);font-style:normal}
+.credit{position:absolute;right:2.1vw;bottom:2.2vh;z-index:3;margin:0;color:rgba(241,237,228,.94);font:600 9px/1.45 var(--mono);letter-spacing:.025em;text-shadow:0 1px 6px rgba(0,0,0,.7);text-align:right}
+.truth{position:absolute;right:2.1vw;top:2.5vh;z-index:3;color:rgba(241,237,228,.86);font:600 9px/1.4 var(--mono);letter-spacing:.08em;text-shadow:0 1px 5px rgba(0,0,0,.55)}
+@media(max-width:900px){
+  .s01{display:flex;flex-direction:column;overflow:visible;background:var(--bone)}
+  .scene{position:relative;height:58svh;min-height:420px;order:0}
+  .scene:after{display:none}.scene img{object-position:52% center;transform:none}
+  .copy{order:1;width:100%;min-height:auto;padding:34px 26px 48px;display:block;background:var(--bone)}
+  .meta{font-size:10px}.meta:before{width:28px}
+  h1{margin:34px 0 0;font-size:clamp(40px,11vw,50px);line-height:1.04;max-width:none}
+  h1 span{white-space:nowrap}
+  .lede{margin:26px 0 0;font-size:16px;line-height:1.62;max-width:31em}
+  .scale{margin-top:34px;grid-template-columns:1fr;gap:9px;font-size:14px;padding-top:20px}.scale span{white-space:normal}
+  .credit{right:14px;left:14px;bottom:12px;font-size:8px;max-width:none}
+  .truth{right:14px;top:12px;font-size:8px}
+}
+</style>
+</head>
+<body>
+<main class="s01" aria-label="CH08 总体体验策略 S01">
+  <figure class="scene">
+    <img src="assets/ch08_s01_qingjiang_landscape_official_20230711.jpg" alt="红花峰林、清江河谷与山中步道平台的真实景观影像" />
+    <figcaption class="credit">SOURCE / 恩施旅游集团官网 · 红花峰林 · 2023-07-11</figcaption>
+  </figure>
+  <section class="copy">
+    <div class="meta">CH08 · MASTER EXPERIENCE STRATEGY</div>
+    <h1><span>先看见清江，</span><span>系统才有资格出现。</span></h1>
+    <p class="lede">总体策略不从界面、装置或十三印开始。真实清江先建立空间关系；设计只在关系、身体或回程出现缺口时进入，并在完成作用后退出。</p>
+    <div class="scale" aria-label="总体体验三尺度">
+      <span><i>01</i>水上建立整体</span><span><i>02</i>空中改变关系</span><span><i>03</i>山中进入身体尺度</span>
+    </div>
+  </section>
+  <div class="truth">FIELD=0 · G1F HOLD · NO_PROMOTION</div>
+</main>
+</body>
+</html>

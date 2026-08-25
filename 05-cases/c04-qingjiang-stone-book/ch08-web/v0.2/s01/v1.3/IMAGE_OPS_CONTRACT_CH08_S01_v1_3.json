@@ -1,0 +1,28 @@
+{
+  "schema": "C04_CH08_S01_IMAGE_OPS_v1.3",
+  "object": "CH08-S01-MAIN",
+  "state": "PRODUCER_CANDIDATE / NO_PROMOTION",
+  "source": {
+    "id": "SRC05",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "generation": "OFF",
+    "authority": "unchanged source bytes"
+  },
+  "method": "T-VISUAL-IMAGE-OPS-001",
+  "recipe": ["WASH-TONAL", "WASH-MASK", "INK-EDGE"],
+  "v1_3_delta": [
+    "reduce WASH-MASK occlusion over main karst so source remains primary visual",
+    "remove decorative vertical TRACE overlay with no narrative/proof duty",
+    "slightly reduce display-title scale so real landscape wins first-read",
+    "increase mobile landscape-first carrier from 48svh to 52svh",
+    "retain operation-off and total-FX-off baselines"
+  ],
+  "prohibitions": [
+    "no image generation",
+    "no geometry reconstruction",
+    "no inserted objects",
+    "no source byte overwrite",
+    "effect output does not become design/source authority"
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

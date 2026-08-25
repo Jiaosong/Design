@@ -1,0 +1,20 @@
+{
+  "schema": "C04_CH08_S01_IMAGE_USE_LEDGER_v0.5",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "surface": "S01",
+  "rule": "one underlying content-image source = one semantic Web image slot across entire project Web",
+  "web_slot_id": "CH08-S01-MAIN",
+  "source_asset_id": "CH08-A02-PROVENANCE/hero_clean.jpg",
+  "source_sha256": "6bb51e3931d32b0a71bdb0049824d94f3f436ca90c125e8e627a1b861d0a3679",
+  "source_type": "REAL PHOTOGRAPH / EXISTING C04 SOURCE-BOUND MEDIA",
+  "source_lineage": ["CH08 Master System v0.1 A02 real-image provenance", "C04 existing source-bound media"],
+  "current_carriers": ["desktop 1920x1080", "mobile 390x844"],
+  "responsive_rule": "desktop + mobile are the same semantic slot; not duplicate uses",
+  "derivation": "presentation crop only; no generative pixels; no browser-only filter or overlay",
+  "known_project_ledger_search": "exact SHA not found in current known GitHub/local image-use records at allocation time",
+  "usage_lock": "RESERVED EXCLUSIVELY FOR CH08-S01; do not reuse in CH12/R01 or any other Web semantic slot",
+  "scoped_duplicate_count": 0,
+  "project_wide_final_scan": "PENDING until complete integrated Web surface register exists",
+  "status": "S01 ALLOCATED / PROJECT-WIDE PROMOTION HOLD"
+}

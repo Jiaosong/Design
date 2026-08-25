@@ -1,0 +1,15 @@
+{
+  "schema":"OLEANDER_OWNER_RECEIPT_v1.0",
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "case":"C04",
+  "chapter":"CH08",
+  "object":"CH08-S01-MAIN",
+  "version":"v1.1",
+  "state":"PRODUCER_CANDIDATE / PERSISTENCE_PASS / INDEPENDENT_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "authority_consumed":["CH08 v0.4 Master Design Strategy","T-VISUAL-IMAGE-OPS-001 Current TOOL","oleander-story-and-board","oleander-delivery-qc"],
+  "source":{"id":"SRC05","sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b","semantic_slot":"CH08-S01-MAIN","generation":"OFF"},
+  "artifact":{"drive_file_id":"1-O0nQeKP06BrvIfPvGGS0ODwxmTMbF3G","filename":"C04_CH08_S01_v1.1_PRODUCER_CANDIDATE.zip","bytes":8449127,"sha256":"cd80a3f451459aff198c841f7598e0c9048e1c348d148d313041d7a8f88edb48","retrieval_open_test":"PASS"},
+  "readback":{"desktop":"1920x1080 / overflow 0 / broken images 0 / recorded errors 0","mobile":"390x844 / overflow 0 / broken images 0 / recorded errors 0","effect_off_baseline":"EXECUTED","grayscale":"EXECUTED"},
+  "does_not_prove":["Professional Design KEEP","field validation","route or geometry truth","engineering approval","browser deployment","project Promotion"],
+  "truth":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

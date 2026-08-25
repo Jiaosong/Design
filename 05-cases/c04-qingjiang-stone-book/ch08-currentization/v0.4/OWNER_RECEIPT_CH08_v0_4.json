@@ -1,0 +1,78 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "CH08 Master Design Strategy v0.4",
+  "date": "2026-08-19",
+  "state": "AUTHORING SUCCESSOR / ARCHITECTURE-RELATION DEEPENING / NO_PROMOTION",
+  "supersedes_as_current_ch08_framing": [
+    "ch08-currentization/v0.3 knowledge rebaseline",
+    "chapter-content-sync/v0.3 CH08 compact full-source summary"
+  ],
+  "preserves_as_provenance": [
+    "CH08 v0.2 authored baseline",
+    "CH08 v0.3 Knowledge Rebaseline",
+    "CH08 v0.3 OLEANDER Review",
+    "chapter-content-sync/v0.3 CH08 summary"
+  ],
+  "authority_inputs": [
+    "C04 PROJECT ARCHITECTURE v3.2",
+    "C04 PROJECT ORGANIZATION CURRENT v1.2.2",
+    "C04 USER ORIGINAL DESIGN SOURCE REGISTER v1.0",
+    "C04 USER ORIGINAL DESIGN INTEGRATION PLAN v1.0",
+    "user original Qingjiang Journey board / Longscroll / Story Spine / Audience / Physical Outcome source family",
+    "ROUTE-03 = LOCKED CURRENT",
+    "chapter-content-sync/v0.3 CH04 Audience / Use State",
+    "chapter-content-sync/v0.3 CH05 Journey / Behavior",
+    "chapter-content-sync/v0.3 CH09 Route / Mobility / Service",
+    "chapter-content-sync/v0.3 CH11 Digital Companion with App v1.29 lineage",
+    "chapter-content-sync/v0.3 CH13 Physical / Body / Sensory",
+    "chapter-content-sync/v0.3 CH15 Memory / IP",
+    "CH08 v0.3 OLEANDER Review 2026-08-19",
+    "Notion knowledge: Landscape First → Relation Reveal; Earned Attention; Threshold Continuity; Wayfinding↔Brand Semantic Firewall"
+  ],
+  "required_review_repairs_consumed": [
+    "restore Qingjiang-specific experience thesis",
+    "separate NORMAL EXPERIENCE from OVERRIDE DECISION mode",
+    "replace universal intervention ladder with need-dependent carrier selection",
+    "bind orchestration to real journey phases",
+    "consume CH04 use-state modifiers without creating new routes/personas",
+    "separate Technical Proof from visitor-facing carriers",
+    "replace SAFE ALTERNATIVE wording with AUTHORIZED / VERIFIED ALTERNATIVE WHEN AVAILABLE"
+  ],
+  "new_design_budget": {
+    "new_design_family": ["CH09 Route / Return Physical Touchpoint Family"],
+    "deepening_without_new_family": [
+      "Cable Experience Choreography",
+      "Qingjiang Journal OPEN → DURING → BECOME A BOOK",
+      "Sensory Resource Strategy",
+      "Material Branding",
+      "Design Selection Register"
+    ],
+    "non_expansion_lock": [
+      "no new route geometry",
+      "no new Thirteen Imprints count",
+      "no new App primary feature family",
+      "no fifth Physical family",
+      "no new Sensory family",
+      "no new Memory family",
+      "no new IP universe",
+      "no task / points / rank / mandatory completion / AR system"
+    ]
+  },
+  "hard_locks": [
+    "ROUTE-03 = LOCKED CURRENT",
+    "R06 = FINISHED / FROZEN / NO REOPEN",
+    "Boat = CONDITIONAL ACCESS / WATER-SCALE EXPERIENCE, NOT UNIVERSAL ROUTE CORE",
+    "ORIGINAL DESIGN SOURCE → DERIVED DEVELOPMENT / PROOF / PRESENTATION, NEVER REVERSE",
+    "TECHNICAL PROOF ≠ VISITOR CARRIER",
+    "NO COMPRESSION / NO LOSS",
+    "NO NEW PID BY GUESS"
+  ],
+  "does_not_prove": [
+    "finished-pixel Design PASS",
+    "field route / dimensions / safety / operational status",
+    "physical site fit",
+    "engineering or construction approval",
+    "project promotion"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

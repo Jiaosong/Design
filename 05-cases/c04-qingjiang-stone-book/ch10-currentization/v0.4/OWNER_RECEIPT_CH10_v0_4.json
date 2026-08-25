@@ -1,0 +1,13 @@
+{
+  "object": "C04 CH10 currentization",
+  "version": "v0.4",
+  "status": "AUTHORING CANDIDATE / NOT PROJECT CURRENT / NO SELF-KEEP",
+  "material_delta": [
+    "restored older Anchor Competition + G3R Experience Architecture into CH10",
+    "replaced 13-equal-row reading with Core 8 + Companion Pool + Trip Subset",
+    "added per-R prompt gates, state modifiers, failure/recovery, memory residue and ownership",
+    "preserved Tier C R-IDs instead of falsely treating them as contentless",
+    "bound Prompt↔Media semantic evidence gate and no-design/minimum-carrier method"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS"
+}

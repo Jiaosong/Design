@@ -1,0 +1,31 @@
+{
+  "object": "PRJ-C04-QINGJIANG-SHISHU/CH08/CH08-S01-MAIN/v1.5",
+  "state": "PRODUCER_CANDIDATE_CH14_CORRECTION",
+  "source_sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+  "durable_package": {
+    "filename": "C04_CH08_S01_v1.5_PRODUCER_CANDIDATE.zip",
+    "bytes": 9729609,
+    "sha256": "9aea9a1a364c6e098e48c4277e62e11cb973a7873fea9ed967c0c4ede262d824",
+    "google_drive_file_id": "1Lp5CM4uoCaFa_Kse_uzeTvDt6l4MlHhr",
+    "entries": 29,
+    "stale_v1_4": false
+  },
+  "key_files": {
+    "index.html": "9a2e205cdeeb54f34f9a2355c99b2abbb55b4d48b4e1a351143192533608d2d5",
+    "CH08_S01_SCOPED_v1_5.css": "c6b30b03edae606f6d5b73e60d4f88a9796e62f493e56d53443c0285f7b4d4ba",
+    "image_ops_v15.py": "649582a98d93041962abc4c1990763328eab1e9d18fbb8ed3c45686def8f4e0b",
+    "IMAGE_OPS_CONTRACT_CH08_S01_v1_5.json": "11d8d97b1e47c0a468057509742c359721c992a95ce3cf67305e5156b3ddab76",
+    "readback/runtime_readback.json": "fba7eddc528e3a5531efb1a2359fe0638e409c163a6dbb5d132d137ccb254704"
+  },
+  "derived_image_hashes": {
+    "WASH-TONAL": "e229a9b65c2fa975ca85ec6db2364d5dfa43a05b1d32383dbc0dadc108b85fc5",
+    "WASH-MASK": "322ce42975a7039bf3290f170dd4839f3753d212a5679a7f537e1b96616ee5d3",
+    "INK-EDGE": "21b35c35b9ab293d1da573e1782da37d44666ab2315382804675ddd5bf4356c9"
+  },
+  "review": {
+    "machine_runtime": "PASS_EVIDENCE_ONLY",
+    "persistence": "PASS",
+    "professional_design": "OPEN",
+    "promotion": "NO_PROMOTION"
+  }
+}
