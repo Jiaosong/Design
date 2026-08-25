@@ -1,0 +1,22 @@
+{
+  "figure_id": "AUD-11",
+  "authority": "C04 current Audience: same journey / different use depth; R06 landscape first; Return/body recovery preserved",
+  "visual_sources": [
+    {
+      "role": "landscape",
+      "drive_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "file": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png"
+    },
+    {
+      "role": "recovery",
+      "drive_id": "1KCDb-4-c3Z3vU-DP0HWPTqrxN6O6cpE3",
+      "file": "05_C04_F01_PRODUCT_DESIGN_CURRENTIZED_v4_1.png"
+    }
+  ],
+  "new_vector_layer": "clean relation overlay + redesigned optional-reading paper object",
+  "discarded_current_attempts": ["AUD-03","AUD-04","AUD-05","AUD-06","AUD-07","AUD-08","AUD-09","AUD-10"],
+  "production_package_drive_id": "1sNaBFKf8G7F0i1HMslQpdBQ7kMyuoNQ6",
+  "production_package": "AUD_11_AUDIENCE_DEPTH_PROFESSIONAL_PACKAGE.zip",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "producer_state": "EXECUTED / SELF-CHECKED / BEST-EXISTING COMPARED / INDEPENDENT REVIEW PENDING"
+}
