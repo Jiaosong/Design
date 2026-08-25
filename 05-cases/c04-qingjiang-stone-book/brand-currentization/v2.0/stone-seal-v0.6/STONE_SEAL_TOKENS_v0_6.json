@@ -1,0 +1,12 @@
+{
+  "id": "C04-QINGJIANG-STONE-SEAL-v0.6",
+  "state": "SUPERSEDED_PROVENANCE",
+  "superseded_by": "stone-seal-v1.0",
+  "does_not_override_current": true,
+  "truth": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  }
+}
