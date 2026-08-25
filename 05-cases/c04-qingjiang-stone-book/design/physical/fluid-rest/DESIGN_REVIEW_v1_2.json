@@ -1,0 +1,31 @@
+{
+  "project_identity": "PRJ-C04-QINGJIANG-SHISHU",
+  "current_delta": "Physical/Sensory — Fluid Rest currentization only",
+  "skills": [
+    "Original Design Motherboard",
+    "Canonical Project Flow / Comparison-first",
+    "QJ-A Spatial Masterline",
+    "Strict / Blind Review",
+    "Material Node / CMF",
+    "C04 environmental-state review"
+  ],
+  "comparison": {
+    "A0_no_intervention": "baseline retained",
+    "A1_low_occupancy_rest": "service-first for short recovery",
+    "A2_fluid_rest": "one long-stay + landscape-value location only"
+  },
+  "design_decision": {
+    "form": "low-object-identity flowing rest interface with stand/sit/lean relation",
+    "reflection": "boundary-reduction intent retained; high mirror is not the default final material",
+    "deployment": "ONE-SITE COMPETITION ONLY",
+    "location": "HOLD / FIELD OPEN"
+  },
+  "visual_gate": {
+    "sheet01": "KEEP / MAIN CANDIDATE — Qingjiang landscape is first read; object is isolated and subordinate; no fake placement claim",
+    "sheet02": "KEEP / MAIN-SUPPORT PAIR — body relation and morphology are readable after deterministic revision",
+    "rejected_versions": "v1.1 family and first overlapping v1.2 body-sequence layout withheld from public display"
+  },
+  "overall": "CONCEPT KEEP / PIXEL MAIN CANDIDATE / LOCATION + FIELD + ENGINEERING HOLD",
+  "package_sha256": "0e8a966721f9e18f645088cf7ea58ddf7bf9537c61beb2277d51c4193eb956c7",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
