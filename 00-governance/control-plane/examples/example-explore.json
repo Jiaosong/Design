@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "object": {
     "name": "Fixture CMF comparison",
     "project_id": "FIXTURE-P2-CTRL-001",
@@ -12,6 +12,13 @@
   "mode": "EXPLORE",
   "decision_question": "Which retained material direction better preserves the intended first reading under fixed geometry and lighting?",
   "problem_layer": "Parameter",
+  "change_scope": {
+    "kind": "NON_RESTRUCTURE",
+    "surfaces": ["PROTOTYPE"],
+    "established_object_baseline": [],
+    "baseline_source": null,
+    "greenfield_no_established_objects": false
+  },
   "authority_source": {
     "state": "WORKING_SOURCE",
     "source_id": "FIXTURE-SOURCE-001",

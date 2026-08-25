@@ -1,10 +1,10 @@
 # OLEANDER Project Control Plane v0.3
 
-Status: `v0.2 EXECUTABLE CORE / MERGED` + `v0.3 HARDENED ORCHESTRATION CANDIDATE / REVIEW`
+Status: `v0.2 REPLAY-COMPATIBLE CORE` + `v0.3 CURRENT EXECUTION CONTRACT / HARDENED ORCHESTRATION`
 
 This directory is subordinate to `00-governance/README.md` and `OLEANDER Current Authority v1.1.0`. It compiles and orchestrates existing governance; it does not create a second authority and never makes the final human Candidate/Canonical/Release decision.
 
-## v0.2 executable core
+## v0.2 executable core / replay compatibility
 
 - Project Control Card validation;
 - Context / namespace resolution;
@@ -12,7 +12,7 @@ This directory is subordinate to `00-governance/README.md` and `OLEANDER Current
 - CB-01 repeated-revise breaker;
 - local/registry asset-locator primitive.
 
-The checked-in `control-card.schema.json` is now enforced by the executable validator. Schema presence without runtime enforcement is not accepted.
+The original `control-card.schema.json` remains available for immutable replay/backward compatibility. Current stored Control Cards use `control-card.v0.3.schema.json`; the repository scanner rejects v0.2 cards outside explicit provenance/replay zones.
 
 ## v0.3 hardened orchestration
 
@@ -73,39 +73,86 @@ The historical files explicitly support M5–M10 PASS/CLOSED, PAP PASS, Formal P
 
 A successful replay returns `replay_only=true`, has no live `post_promotion_actions`, and therefore cannot mutate or promote current state.
 
-### 6. Global NO COMPRESSION / NO LOSS preservation contract
+### 6. Global NO COMPRESSION / NO LOSS preservation contract — v0.3 deepening
 
-The Control Plane now compiles `00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md` into the existing Control Card rather than creating another Gate or parallel methodology.
+The Control Plane compiles `00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md` into the existing Control Card rather than creating another Gate or parallel methodology.
 
-For `problem_layer=Architecture`, `preservation_review` is mandatory. It records whether established project objects exist and, where they do, accounts for restructuring through three separate ledgers per object:
+The earlier machine contract triggered preservation only from `problem_layer=Architecture`. That was narrower than the policy, which also applies to narrative, Web, boards, PDFs, slides, films, App/digital work, integration and final editing. Current Control Card v0.3 therefore separates **problem layer** from **change scope**.
+
+Every Current v0.3 card declares:
+
+`change_scope.kind = NON_RESTRUCTURE | RESTRUCTURE`
+
+and identifies affected surfaces such as:
+
+`PROJECT_ARCHITECTURE / NARRATIVE / PRESENTATION / WEB / BOARD / PDF_DOCUMENT / SLIDES / FILM_MOTION / APP_DIGITAL / PROTOTYPE / INTEGRATION / FINAL_EDIT / TECHNICAL_PACKAGE / EVIDENCE_PACKAGE / SYSTEM_TOOLCHAIN / OTHER`.
+
+This means a Web or final-delivery restructuring cannot bypass no-loss merely because its `problem_layer` is `Relation`, `Topology`, `Evidence`, or another non-Architecture layer.
+
+#### Established-object baseline
+
+For `RESTRUCTURE`, the card must declare `established_object_baseline` and bind it to `baseline_source`. If the work is genuinely greenfield with no established project objects, that state must be explicit through `greenfield_no_established_objects=true`.
+
+A bare boolean such as “established objects present = false” is no longer sufficient for Current v0.3 restructuring.
+
+`preservation_review.decisions` must account for the baseline exactly:
+
+- every established baseline object has exactly one decision;
+- duplicate decisions fail;
+- missing baseline objects fail;
+- decisions for objects outside the baseline fail;
+- a greenfield baseline may legitimately contain zero decisions.
+
+Per-object state remains separated into:
 
 `concept_state + presentation_state + truth_evidence_state`
 
-This makes the following machine-visible:
+so the machine contract keeps visible that:
 
 - `CONCEPT KEEP != PIXEL KEEP`;
 - `PIXEL FAIL != DESIGN DELETE`;
 - `VALIDATION SUBSET != WHOLE PROJECT`;
 - `SOURCE / AUTHORITY != DERIVED PRESENTATION`.
 
-Allowed actions remain project-specific and include `PRESERVE / REORDER / SPLIT / GROUP / REWEIGHT / REDRAW / DEMOTE_TO_SUPPORT / DEMOTE_TO_PROCESS / HOLD / CUT`.
+#### Structural actions and traceability
 
-Removal rules are fail-closed:
+Current actions include:
 
-- established objects cannot be left unaccounted for;
-- `DEMOTE_TO_SUPPORT` must end in `presentation_state=SUPPORT`;
-- `DEMOTE_TO_PROCESS` must end in `presentation_state=PROCESS`;
-- `CUT` requires `concept_state=DROP` so a weak pixel cannot silently delete a kept concept;
-- compression, page count, cleaner presentation, shorter Web/film, less text or minimalism cannot be the sole removal reason.
+`PRESERVE / REORDER / SPLIT / GROUP / MERGE / REMAP / REWEIGHT / REDRAW / DEMOTE_TO_SUPPORT / DEMOTE_TO_PROCESS / HOLD / CUT`.
 
-`global_fixed_chapter_count_applied` is schema-locked to `false`. The machine contract therefore does **not** encode C04's 12-layer architecture, or any other project's chapter count, as a global template.
+`SPLIT / GROUP / MERGE / REMAP` require `target_object_ids`, so restructuring remains traceable rather than disappearing into prose.
 
-This is core validation, not a new system-level Gate. It does not decide which object deserves MAIN, does not manufacture evidence, and does not grant Promotion or Release.
+All non-CUT actions require `identity_preserved=true`; CUT requires `concept_state=DROP`, `identity_preserved=false`, and no replacement target. A kept concept therefore cannot be silently deleted because its current pixels are weak.
+
+#### Structured removal reasons
+
+Free-text reason matching was too easy to bypass with phrases such as “reduce page count and simplify the website.” Current v0.3 therefore adds structured `reason_code` values for material reduction actions.
+
+`DEMOTE_TO_SUPPORT / DEMOTE_TO_PROCESS / CUT / MERGE` require a substantive design/authority/evidence reason code such as redundancy with no unique function, authority contradiction, project genericity, design weakness after redraw, experience/user-value harm, technical infeasibility, evidence/truth/rights/safety conflict, supersession with provenance, or hierarchy restructuring with identity preserved.
+
+`compression`, `page count`, `cleaner website`, `shorter film`, `less text`, or `minimalism` are not valid reason codes and cannot independently authorize reduction.
+
+#### No fixed global template
+
+`global_fixed_chapter_count_applied` remains schema-locked to `false`.
+
+The machine contract therefore does **not** encode C04's 12-layer architecture, or any other project's chapter count, as a global template. It protects each project’s established objects from silent loss while allowing explicit evidence-based restructuring.
+
+This remains core validation, not a new system-level Gate. It does not decide which object deserves MAIN, does not manufacture evidence, and does not grant Promotion or Release.
+
+### 7. Repository-wide Current Control Card discovery
+
+`scan_control_cards.py` discovers Control Cards by content signature rather than filename. On every PR and every push to `main`, AI Governance CI validates Current stored cards against the current schema and Control Plane rules.
+
+Current cards outside explicit provenance/replay zones must use schema v0.3. v0.2 replay/example/history objects remain readable and are not retroactively rewritten.
+
+The scanner does not create a second registry. The repository checkout remains the discovery surface, and the existing Control Plane remains the validator.
 
 ## Commands
 
 ```bash
 python 00-governance/control-plane/control_plane.py check CARD.json
+python 00-governance/control-plane/scan_control_cards.py
 python 00-governance/control-plane/orchestrator.py providers PROVIDER_RECEIPTS.json
 python 00-governance/control-plane/orchestrator.py promotion CARD.json GATE_RECEIPTS.json
 python 00-governance/control-plane/orchestrator.py contradictions MANIFEST.json
@@ -125,6 +172,8 @@ python 00-governance/control-plane/orchestrator.py contradictions MANIFEST.json
 
 ```bash
 python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' -v
+python 00-governance/control-plane/control_plane.py check 00-governance/control-plane/examples/example-explore.json
+python 00-governance/control-plane/scan_control_cards.py
 python 00-governance/control-plane/orchestrator.py promotion 00-governance/control-plane/replays/pr85-control-card.json 00-governance/control-plane/replays/pr85-gate-receipts.json
 python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
 ```

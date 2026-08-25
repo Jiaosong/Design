@@ -3,7 +3,9 @@
 
 This is a discovery wrapper around the existing Control Plane validator. It does
 not create a second registry or Gate. Historical/provenance zones are excluded
-from prospective fail-closed enforcement.
+from prospective fail-closed enforcement. Current cards must use the current
+Control Card schema version; older versions remain readable only in excluded
+historical/replay zones.
 """
 from __future__ import annotations
 
@@ -17,7 +19,7 @@ HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
-from control_plane import validate_card  # noqa: E402
+from control_plane import CURRENT_SCHEMA_VERSION, validate_card  # noqa: E402
 
 CARD_SIGNATURE_KEYS = {
     "object",
@@ -27,8 +29,6 @@ CARD_SIGNATURE_KEYS = {
     "authority_source",
 }
 
-# Explicit provenance / frozen legacy zones. These are readable history, not
-# prospective Current Control Cards that should be rewritten by a new policy.
 EXCLUDED_PREFIXES = (
     "99-archive/",
     "practice/",
@@ -53,7 +53,7 @@ def is_excluded(relative_path: str) -> bool:
 def looks_like_control_card(value: Any) -> bool:
     return (
         isinstance(value, dict)
-        and value.get("schema_version") == "0.2"
+        and isinstance(value.get("schema_version"), str)
         and CARD_SIGNATURE_KEYS.issubset(value.keys())
     )
 
@@ -71,22 +71,30 @@ def scan_repository(root: Path) -> dict[str, Any]:
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
-            # Unrelated malformed JSON is outside this scanner's authority; it
-            # becomes relevant only if it can be identified as a Control Card.
             parse_errors.append({"path": rel, "error": str(exc)})
             continue
         if not looks_like_control_card(value):
             continue
 
-        findings = validate_card(value)
-        errors = [
-            {"code": f.code, "message": f.message}
-            for f in findings
-            if f.level == "ERROR"
-        ]
+        version = value.get("schema_version")
+        if version != CURRENT_SCHEMA_VERSION:
+            errors = [{
+                "code": "CURRENT_CONTROL_CARD_VERSION_DEPRECATED",
+                "message": f"Current stored Control Cards must use schema_version={CURRENT_SCHEMA_VERSION}; observed={version}. Historical/replay cards belong only in excluded provenance zones.",
+            }]
+        else:
+            findings = validate_card(value)
+            errors = [
+                {"code": f.code, "message": f.message}
+                for f in findings
+                if f.level == "ERROR"
+            ]
+
         record = {
             "path": rel,
+            "schema_version": version,
             "problem_layer": value.get("problem_layer"),
+            "change_kind": (value.get("change_scope") or {}).get("kind") if isinstance(value.get("change_scope"), dict) else None,
             "mode": value.get("mode"),
             "authority_state": (value.get("authority_source") or {}).get("state"),
             "status": "FAIL" if errors else "PASS",
@@ -97,6 +105,7 @@ def scan_repository(root: Path) -> dict[str, Any]:
 
     return {
         "status": "FAIL" if invalid else "PASS",
+        "current_schema_version": CURRENT_SCHEMA_VERSION,
         "discovered_current_control_cards": discovered,
         "invalid_current_control_cards": invalid,
         "excluded_prefixes": list(EXCLUDED_PREFIXES),
