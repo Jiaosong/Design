@@ -1,0 +1,3 @@
+@media (min-width: 1180px) {
+  .daylily-opening, .reno-opening { width: min(calc(100vw - 96px), 1760px) !important; max-width: 1760px !important; min-height: 100svh; padding-top: 120px !important; padding-bottom: 84px !important; align-content: center !important; }
+}

@@ -67,16 +67,19 @@ test('form errors are announced, associated, and focus the first invalid field',
   await expect(page.locator('#object-error')).toBeVisible();
 });
 
-test('range controls expose readable live values', async ({ page }) => {
-  const density = page.locator('#weave-density');
-  await density.fill('80');
-  await expect(page.locator('#weave-density-value')).toHaveText('80%');
-  await expect(density).toHaveAttribute('aria-valuetext', '关系织场密度 80%');
+test('semantic relationship interaction changes reading state while continuous tuning controls stay out of public reading', async ({ page }) => {
+  await expect(page.locator('html')).toHaveAttribute('data-oleander-ready', 'true');
+  const field = page.locator('[data-weave-field]');
+  const toggle = page.locator('[data-weave-toggle]');
 
-  const tension = page.locator('#reading-tension');
-  await tension.fill('65');
-  await expect(page.locator('#reading-tension-value')).toHaveText('65%');
-  await expect(tension).toHaveAttribute('aria-valuetext', '关系张力 65%');
+  await expect(field).toHaveAttribute('data-expression-state', 'context');
+  await toggle.click();
+  await expect(field).toHaveAttribute('data-expression-state', 'break');
+  await toggle.click();
+  await expect(field).toHaveAttribute('data-expression-state', 'reconnect');
+
+  await expect(page.locator('.density-control')).toBeHidden();
+  await expect(page.locator('.relationship-lab__controls')).toBeHidden();
 });
 
 test('fixed-header anchors retain a visible offset', async ({ page }) => {

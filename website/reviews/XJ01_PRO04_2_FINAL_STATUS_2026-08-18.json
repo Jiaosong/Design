@@ -1,0 +1,59 @@
+{
+  "project": "XJ01-CMF",
+  "stage": "PRO-04.2｜Professional CMF Presentation Completion",
+  "date": "2026-08-18",
+  "review_scope": {
+    "desktop_primary": "1920x1080",
+    "desktop_secondary": "1440x900",
+    "mobile": "OUT_OF_CURRENT_REVIEW_SCOPE"
+  },
+  "authority": [
+    "OLEANDER Artifact Review System v1.1",
+    "OLEANDER Project Control Plane v0.3",
+    "Editorial / Portfolio L5",
+    "Web UI Earned Attention L5",
+    "XJ01 Professional CMF Standard"
+  ],
+  "gate_1_compliance": "PASS_FOR_XJ01_DESKTOP",
+  "gate_2_professional_design": "PASS_FOR_INTERNAL_DIGITAL_CMF_PRESENTATION",
+  "page_verdicts": {
+    "P00_Hero": "KEEP",
+    "P01_Direction_DNA": "KEEP",
+    "P02_CMF_System": "KEEP",
+    "P03_Interfaces": "KEEP",
+    "P04_Environment": "KEEP_EVIDENCE",
+    "P05_Lifecycle": "KEEP_EVIDENCE_WITH_SOURCE_RESOLUTION_CAUTION",
+    "P06_Evidence_Appendix": "KEEP_SUPPORT"
+  },
+  "presentation_ready_internal": true,
+  "presentation_ready_publication": false,
+  "release_state": "NOT_PUBLIC_RELEASE",
+  "physical_validation": "OUT_OF_SCOPE",
+  "engineering_handoff": "OUT_OF_SCOPE",
+  "winner": null,
+  "ve06_web_binding": {
+    "status": "DURABLE_AND_ACTUAL_PREVIEW_PASS",
+    "asset": "website/assets/xj01/pro04-environment-d2-2x3.webp",
+    "git_blob_sha": "6a3c00c8533fbd16edd4a024b9a81185ec2378da"
+  },
+  "ve07_web_binding": {
+    "status": "DURABLE_AND_ACTUAL_PREVIEW_PASS_WITH_SOURCE_RESOLUTION_CAUTION",
+    "asset": "website/assets/xj01/pro04-lifecycle-d2-2x3.webp",
+    "git_blob_sha": "8695878c6324b47eee4c5f3f16b0ca9e0bb39cfd"
+  },
+  "final_actual_preview": {
+    "workflow_run_id": 32107817739,
+    "artifact_id": 9313824606,
+    "artifact_sha256": "4d7b616c3ae2bd0cd1fba79dd490716fb211ab4f81759de9fef3bc4e4c141654",
+    "xj01_desktop_tests": "PASS",
+    "repo_wide_e2": "RED_UNRELATED_NON_XJ01_FAILURES"
+  },
+  "non_blocking_boundary": [
+    "source-resolution upgrade required for publication/supplier-review image quality",
+    "no measured production colour claim",
+    "no supplier/process feasibility claim",
+    "no physical ageing claim",
+    "no physical interaction validation claim",
+    "no engineering or production approval claim"
+  ]
+}

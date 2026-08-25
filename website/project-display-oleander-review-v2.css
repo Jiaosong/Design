@@ -1,0 +1,82 @@
+/* XJ01 PRO-04.2 — OLEANDER desktop Actual Preview Design Crit revision 5.
+   Decision question: without section labels, does first-read move from direction → material evidence → interface/environment/lifecycle evidence?
+   Scope: desktop 1920×1080 + 1440×900 only. */
+
+@media (min-width:1001px){
+  #project-display,
+  #project-display .pro04-section,
+  #project-display .pro04-hero,
+  #project-display .pro04-section > *,
+  #project-display .pro04-hero > *,
+  .pro04-direction-stage,.pro04-direction-stage > *,
+  .pro04-direction-copy,.pro04-direction-copy > *,
+  .pro04-cmf-stage,.pro04-cmf-stage > *,
+  .pro04-cmf-visuals,.pro04-cmf-visuals > *,
+  .pro04-interface-layout,.pro04-interface-layout > *,
+  .pro04-interface-pair,.pro04-interface-pair > *,
+  .pro04-evidence-summary,.pro04-evidence-summary > *,
+  .pro04-evidence-visual-stage,.pro04-evidence-visual-stage > *{min-width:0;box-sizing:border-box}
+
+  .pro04-direction-stage{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:28px}
+  .pro04-direction-copy{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .pro04-direction-copy article{min-height:560px;padding:30px;overflow-wrap:anywhere;justify-content:flex-start}
+  .pro04-direction-copy article > span{margin-top:4px}
+  .pro04-direction-copy h3{margin-top:28px}
+  .pro04-direction-copy h4{margin-bottom:30px}
+  .pro04-direction-visual{min-height:560px;padding:18px;gap:14px}
+
+  .pro04-hero{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(46px,5vw,90px)}
+  .pro04-hero h1{font-size:clamp(3.6rem,6vw,6.8rem);line-height:.86}
+  .pro04-hero__copy{padding-top:3vh}
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{width:100%;max-width:100%;min-width:0;min-height:0;height:clamp(560px,38vw,720px);aspect-ratio:auto}
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after{top:2.5%;bottom:2.5%;width:39%}
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before{left:5%}
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after{right:5%}
+
+  .pro04-cmf-stage{grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:24px}
+  .pro04-cmf-visuals{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .pro04-cmf-side .pro04-swatch{min-width:0;overflow-wrap:anywhere}
+
+  .pro04-interface-layout{grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:24px;align-items:start}
+  .pro04-interface-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .pro04-interface-pair .pro04-image{aspect-ratio:.94;background:#101416}
+  .pro04-interface-pair .pro04-image img{object-fit:cover;object-position:center 72%}
+  .pro04-interface-layout__primary > span{display:block;margin-top:12px;color:var(--trace);font:.63rem var(--mono)}
+  .pro04-interface-layout__secondary{align-self:start}
+  .pro04-interface-layout__secondary .pro04-image{aspect-ratio:1.05;background:#101416}
+  .pro04-interface-layout__secondary .pro04-image img{object-fit:cover;object-position:center 67%}
+  .pro04-interface-layout__secondary p{margin-top:16px}
+
+  /* Evidence pages: complete matrix first. Do not crop D03 below the first viewport. */
+  .pro04-section--environment{background:#ecece7}
+  #p04,#p05{padding-top:62px;padding-bottom:90px}
+  #p04 .pro04-section__header,#p05 .pro04-section__header{margin-bottom:24px}
+  #p04 .pro04-section__header h2,#p05 .pro04-section__header h2{font-size:clamp(3rem,4vw,4.2rem);max-width:980px}
+  #p04 .pro04-intro,#p05 .pro04-intro{max-width:690px;margin-bottom:18px;font-size:1rem;line-height:1.5}
+  .pro04-evidence-visual-stage{display:grid;grid-template-columns:minmax(520px,620px) minmax(320px,1fr);gap:36px;align-items:start;justify-content:space-between}
+  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(480px,560px) minmax(320px,1fr)}
+  .pro04-evidence-visual-stage .pro04-image--evidence-board{width:100%;background:#121617;border:1px solid rgba(20,20,18,.08)}
+  .pro04-evidence-visual-stage .pro04-image--evidence-board img{display:block;width:100%;height:auto;object-fit:contain}
+  .pro04-evidence-visual-copy{align-self:center;padding:24px 0 6px;border-top:1px solid var(--trace-soft);max-width:520px}
+  .pro04-evidence-visual-copy b{display:block;margin-bottom:20px;color:var(--trace);font:.67rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .pro04-evidence-visual-copy p{margin:0;font:clamp(1.2rem,1.55vw,1.6rem)/1.4 var(--serif)}
+  .pro04-evidence-visual-copy small{display:block;margin-top:22px;color:var(--trace);font:.65rem/1.55 var(--mono)}
+  #p05 .pro04-diagnostic{margin-top:32px}
+
+  #p06 .pro04-section__header h2{font-size:clamp(2.4rem,3.6vw,4rem)}
+}
+
+@media (min-width:1001px) and (max-width:1500px){
+  .pro04-section,.pro04-hero{padding-inline:clamp(48px,5vw,76px)}
+  .pro04-direction-stage{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+  .pro04-direction-copy article{min-height:520px;padding:24px}
+  .pro04-direction-visual{min-height:520px}
+  .pro04-cmf-stage{grid-template-columns:minmax(0,1.25fr) minmax(230px,.75fr)}
+  .pro04-interface-layout{grid-template-columns:minmax(0,1.42fr) minmax(270px,.58fr)}
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]{height:560px}
+  #p04,#p05{padding-top:54px;padding-bottom:78px}
+  #p04 .pro04-section__header h2,#p05 .pro04-section__header h2{font-size:clamp(2.8rem,3.8vw,3.8rem)}
+  .pro04-evidence-visual-stage{grid-template-columns:minmax(500px,560px) minmax(280px,1fr);gap:26px}
+  .pro04-evidence-visual-stage--lifecycle{grid-template-columns:minmax(460px,520px) minmax(280px,1fr)}
+}

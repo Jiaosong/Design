@@ -1,0 +1,64 @@
+/* PRO-04.2 Hero override.
+   Uses clean web crops exported directly from the retained D2 exact-geometry whole-product renders.
+   The derived crops are presentation assets only; source evidence class remains D2.
+   Desktop sizing is width-controlled: do not couple min-height with aspect-ratio because
+   CSS grid transferred min-size can enlarge the figure beyond the viewport. */
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: clamp(540px, 40vw, 690px);
+  aspect-ratio: auto;
+  background: #eceae3;
+  overflow: hidden;
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] > img {
+  opacity: 0;
+  pointer-events: none;
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  width: 31%;
+  background-color: #050505;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0 18px 55px rgba(22,22,20,.08);
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before {
+  left: 10%;
+  background-image: url("assets/xj01/d02-hero-window.jpg");
+}
+.pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+  right: 10%;
+  background-image: url("assets/xj01/d03-hero-window.jpg");
+}
+
+/* Legacy responsive rules remain for non-XJ01/global behaviour; mobile is outside the current XJ01 review gate. */
+@media (max-width: 1000px) {
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+    min-height: 0;
+    height: 560px;
+  }
+}
+@media (max-width: 760px) {
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"] {
+    min-height: 0;
+    height: 410px;
+    aspect-ratio: auto;
+  }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before,
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after {
+    width: 38%;
+    top: 7%;
+    bottom: 7%;
+  }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::before { left: 8%; }
+  .pro04-hero__visuals > .pro04-image[data-artifact-id="PRO04-PRESENTATION-HERO"]::after { right: 8%; }
+}

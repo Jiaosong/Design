@@ -1,0 +1,85 @@
+/* OLEANDER Portfolio Crop System v0.1
+   Presentation crops create hierarchy; full boards remain intact in chapters/viewer. */
+
+.portfolio-framework-v2 [data-crop-role="presentation"] {
+  overflow: visible !important;
+}
+
+.portfolio-framework-v2 [data-crop-role="presentation"] > img,
+.portfolio-framework-v2 [data-crop-role="presentation"] img {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  transform: none !important;
+  filter: none !important;
+  margin: 0 !important;
+}
+
+/* Daylily encounter: remove part of the board margin and let the photographed material become the first read. */
+.portfolio-framework-v2 .encounter-work--daylily img {
+  aspect-ratio: 19 / 10 !important;
+  object-position: 50% 50% !important;
+}
+
+/* Reno encounter uses the single-device hero; keep the device/hand on the right as the visual anchor. */
+.portfolio-framework-v2 .encounter-work--reno img {
+  aspect-ratio: 3 / 2 !important;
+  object-position: 68% 50% !important;
+}
+
+/* Daylily opening: site board becomes a deliberate central-plan crop; complete board is still available in the viewer. */
+.portfolio-framework-v2 .daylily-opening__image img {
+  aspect-ratio: 3 / 2 !important;
+  object-position: 50% 50% !important;
+}
+
+/* Reno opening: preserve the four-device horizontal relation by cropping mainly top/bottom. */
+.portfolio-framework-v2 .reno-opening__image img {
+  aspect-ratio: 2 / 1 !important;
+  object-position: 50% 50% !important;
+}
+
+/* Full design boards: never inherit presentation cropping. */
+.portfolio-framework-v2 .daylily-chapter figure,
+.portfolio-framework-v2 .reno-chapter figure {
+  overflow: visible !important;
+  aspect-ratio: auto !important;
+}
+
+.portfolio-framework-v2 .daylily-chapter figure img,
+.portfolio-framework-v2 .reno-chapter figure img {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+
+@media (max-width: 760px) {
+  .portfolio-framework-v2 .encounter-work--daylily img,
+  .portfolio-framework-v2 .encounter-work--reno img,
+  .portfolio-framework-v2 .daylily-opening__image img,
+  .portfolio-framework-v2 .reno-opening__image img {
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .portfolio-framework-v2 .encounter-work--daylily img {
+    object-position: 52% 50% !important;
+  }
+
+  .portfolio-framework-v2 .encounter-work--reno img {
+    object-position: 72% 50% !important;
+  }
+
+  .portfolio-framework-v2 .daylily-opening__image img,
+  .portfolio-framework-v2 .reno-opening__image img {
+    object-position: 50% 50% !important;
+  }
+}

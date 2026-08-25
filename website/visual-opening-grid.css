@@ -1,0 +1,4 @@
+@media (min-width: 1180px) {
+  .daylily-opening__copy, .reno-opening__copy { grid-column: 1 / span 3 !important; grid-row: 1 !important; align-self: center !important; padding-bottom: 0 !important; z-index: 2; }
+  .daylily-opening__image, .reno-opening__image { grid-column: 4 / -1 !important; grid-row: 1 !important; align-self: center !important; }
+}
