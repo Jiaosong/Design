@@ -1,0 +1,35 @@
+{
+  "schema":"oleander.c04.qje-provider-receipt/0.1",
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "date":"2026-08-15",
+  "state":"WORKING_SOURCE_PROVIDER_CLOSED / DRIVE_SYNCED / GITHUB_DRAFT_PR_SYNCED / READBACK_PASS",
+  "drive":{
+    "folder_id":"1INCKS7fyKYtv6rdShaW7_bui9d-Lbyvz",
+    "delivery_zip":{"id":"1dNeVUfaeT_eOs1IuTSDDbQ-Iq3slXdRu","bytes":4199996,"sha256":"8cf85b34cfb968e6302969daacd18849503792f8f809949d263f45ac86756f64","metadata_readback":"PASS_AFTER_PROVIDER_RECEIPT_INJECTION"},
+    "display_pdf":{"id":"1ZJsWZQF_38mXRCmTbmSFDABOKeLxS5Pt","bytes":504325,"sha256":"c1f649407e7497aa170dbad82479ec895e38068414497c2de884c174a50bda46","metadata_readback":"PASS"},
+    "demo_mp4":{"id":"11si9Q8R2S8kGBk0dUf82hAdaI6t3iS7q","bytes":835519,"sha256":"1612f4a34f2458f91361ea4ae10832376893d5d57fd6643d7871a1a6f8eb5c2c","metadata_readback":"PASS"}
+  },
+  "local_validation":{
+    "runtime_contract":"31/31 PASS",
+    "http_open":"6/6 HTTP 200",
+    "pdf_review":"PASS / 8 pages / embedded fonts",
+    "video_review":"PASS_AFTER_REPAIR / 72.000s / 1920x1080 / 30fps",
+    "zip_integrity":"PASS / 62 entries",
+    "browser_visual":"OPEN_ENVIRONMENT_POLICY_BLOCKED",
+    "post_generation_review":"PASS_WITH_BROWSER_POLICY_LIMIT"
+  },
+  "github":{
+    "repository":"Jiaosong/Design",
+    "branch":"agent/c04-qje-sprint-20260815",
+    "pull_request":111,
+    "pull_request_state":"DRAFT_OPEN",
+    "expected_changed_files":7,
+    "expected_path_audit":"PASS_7_OF_7_ONLY_QJE_DIRECTORY",
+    "exact_file_readback":"PASS",
+    "runtime_contract_blob_sha":"031ded6f110c5d32ed194367342c4966b889a6fb",
+    "source_manifest_blob_sha":"329959802fd0d9eb0af7730ae71e00a23c1e8663",
+    "promotion_to_main":"OPEN_EXPLICIT_TRANSITION_NOT_PERFORMED"
+  },
+  "gates":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"},
+  "maximum_conclusion":"WORKING-SOURCE PROVIDER CLOSURE VERIFIED; REMOTE RESEARCH MATERIALIZATION ONLY; NOT FIELD PASS; NOT IMPLEMENTATION; NOT SYSTEM PROMOTION"
+}

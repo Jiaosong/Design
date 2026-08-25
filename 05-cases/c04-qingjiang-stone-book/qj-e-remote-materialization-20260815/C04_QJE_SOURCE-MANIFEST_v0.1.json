@@ -1,0 +1,40 @@
+{
+  "schema":"oleander.c04.qje-source-manifest/0.1",
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "object_id":"C04-QJE-REMOTE-DIGITAL-MATERIALIZATION-20260815",
+  "version":"0.1.0",
+  "status":"CAND",
+  "evidence":"E2_REMOTE_EXECUTION",
+  "source_authority_state":"WORKING_SOURCE",
+  "native_authority_effect":"NONE",
+  "full_byte_archive":{
+    "provider":"Google Drive",
+    "file_id":"1dNeVUfaeT_eOs1IuTSDDbQ-Iq3slXdRu",
+    "bytes":4199996,
+    "sha256":"8cf85b34cfb968e6302969daacd18849503792f8f809949d263f45ac86756f64",
+    "metadata_readback":"PASS_AFTER_PROVIDER_RECEIPT_INJECTION",
+    "contains":["HTML/CSS/JS editable sources","runtime JSON","print HTML","8-page PDF","72s MP4","12 shot frames","preview contact sheets","handoff","decision/limits","QA receipts","provider closure receipt","SHA256SUMS"]
+  },
+  "display_pdf":{
+    "drive_id":"1ZJsWZQF_38mXRCmTbmSFDABOKeLxS5Pt",
+    "bytes":504325,
+    "sha256":"c1f649407e7497aa170dbad82479ec895e38068414497c2de884c174a50bda46",
+    "metadata_readback":"PASS"
+  },
+  "demo_video":{
+    "drive_id":"11si9Q8R2S8kGBk0dUf82hAdaI6t3iS7q",
+    "bytes":835519,
+    "sha256":"1612f4a34f2458f91361ea4ae10832376893d5d57fd6643d7871a1a6f8eb5c2c",
+    "duration_s":72.0,
+    "resolution":"1920x1080",
+    "fps":30,
+    "metadata_readback":"PASS"
+  },
+  "github_control_mirror":{
+    "branch":"agent/c04-qje-sprint-20260815",
+    "pull_request":111,
+    "state":"DRAFT_OPEN",
+    "expected_path_audit":"PASS_7_OF_7"
+  },
+  "gates":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION"}
+}
