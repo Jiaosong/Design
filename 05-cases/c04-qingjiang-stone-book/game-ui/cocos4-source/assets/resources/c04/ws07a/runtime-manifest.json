@@ -1,11 +1,10 @@
 {
-  "version": "0.2",
-  "authority": ["C04-WS-06 Digital Product Architecture v1.0", "C04-WS-07 Visual Reading System v1.0"],
-  "status": "RUNTIME_SOURCE_MATERIALIZED",
-  "principles": ["LANDSCAPE_FIRST", "PHONE_IN_LOOK_PHONE_OUT", "PARTIAL_IS_COMPLETE", "OFFLINE_FIRST", "RETURN_SERVICE_OVER_COMPANION"],
+  "version": "0.3",
+  "authority": ["C04-WS-06 Digital Product Architecture v1.0 (Legacy Canonical Input)", "C04-WS-07 Visual Reading System v1.0 (Legacy Canonical Input)", "C04 R05 Case Exploration Recovery Control Card (Current Control Plane Input; Project Axis unresolved)"],
+  "status": "RUNTIME_SOURCE_MATERIALIZED / CASE_EXPLORATION_RECOVERY",
   "corePages": [
     {"id":"R01","title":"红岩嘴","markName":"越江印","chapter":"序｜越江开卷","mode":"S1","role":"CORE","observation":"先别找景点，先看山体如何从江面升起。","status":"REMOTE-GROUNDED"},
-    {"id":"R05","title":"红花石林","markName":"峰林印","chapter":"序｜越江开卷","mode":"S0","role":"CORE","observation":"收起手机，先看峰林与江面的距离关系。","status":"REMOTE-GROUNDED"},
+    {"id":"R05","title":"红花石林","markName":"峰林印","chapter":"序｜越江开卷","mode":"S0","role":"CORE","observation":"收起手机，先看峰体的高低、疏密与层次。","status":"REMOTE-GROUNDED / CASE-EXPLORATION OBSERVATION REVISED"},
     {"id":"R02","title":"华中第一藤","markName":"生长印","chapter":"第一章｜见山而行","mode":"S1","role":"CORE","observation":"先看藤如何借岩体获得方向。","status":"CONDITIONAL"},
     {"id":"R06","title":"多级阶地·不对称河谷","markName":"河谷印","chapter":"第二章｜河谷成形","mode":"S2","role":"CORE","observation":"先找不同高度的平坦面，再打开剖面。","status":"REMOTE-GROUNDED / FIELD-NOT-VERIFIED","claimLayers":[
       {"type":"FACT","text":"多级阶地／不对称河谷作为观察关系已纳入远程证据；精确剖面、尺度与成因机制仍待现场或专业复核。","evidenceStatus":"REMOTE-GROUNDED / FIELD-NOT-VERIFIED"},

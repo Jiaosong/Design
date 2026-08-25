@@ -14,9 +14,6 @@ if [[ ! -d "$SOURCE/assets" ]]; then
   exit 66
 fi
 
-# The pinned COCOS CLI refuses to create a project when the target path already
-# exists, even when it is empty. Fail on non-empty targets; remove only an empty
-# placeholder directory before invoking the official create command.
 if [[ -e "$DEST" ]]; then
   if [[ -n "$(ls -A "$DEST" 2>/dev/null || true)" ]]; then
     echo "ERROR: destination is not empty: $DEST" >&2
@@ -27,25 +24,101 @@ fi
 
 oleander-cocos create "$DEST" 2d
 
-# Fail closed if the official create command did not materialize the expected
-# governed project metadata before project source is overlaid.
 [[ -f "$DEST/package.json" ]] || { echo "ERROR: COCOS project package.json missing after create" >&2; exit 65; }
 [[ -f "$DEST/settings/v2/packages/engine.json" ]] || { echo "ERROR: COCOS engine settings missing after create" >&2; exit 65; }
 
 mkdir -p "$DEST/assets"
 cp -R "$SOURCE/assets/." "$DEST/assets/"
 
-# Validate the minimum C04 source contract without calling upstream commands
-# that are not registered by the pinned CLI commit (notably import/info).
+# Case Exploration extension is merged only inside the generated Creator project.
+# The source WS-07A v0.2 scene contract remains frozen and independently validated.
+BASE_SCENE_CONTRACT="$DEST/assets/resources/c04/ws07a/scene-contract.json"
+MEDIA_EXTENSION="$DEST/assets/resources/c04/ws07a/case-exploration-media-contract.json"
+if [[ -f "$MEDIA_EXTENSION" ]]; then
+  node - "$BASE_SCENE_CONTRACT" "$MEDIA_EXTENSION" <<'NODE'
+const fs = require('fs');
+const baseFile = process.argv[2];
+const extensionFile = process.argv[3];
+const base = JSON.parse(fs.readFileSync(baseFile, 'utf8'));
+const extension = JSON.parse(fs.readFileSync(extensionFile, 'utf8'));
+if (base.version !== '0.2') throw new Error(`expected frozen WS-07A scene contract v0.2, got ${base.version}`);
+if (extension.status !== 'CASE_EXPLORATION_EXTENSION / PROJECT_AXIS_UNRESOLVED') throw new Error('case exploration extension status drifted');
+if (extension.promotion?.projectAxisAllowed !== false || extension.promotion?.canonicalProductionAllowed !== false || extension.promotion?.finalVisualPassInferred !== false) {
+  throw new Error('case exploration extension must fail closed on project/canonical/final promotion');
+}
+const existingPaths = new Set((base.nodes ?? []).map((item) => item.path));
+for (const node of extension.nodes ?? []) {
+  if (existingPaths.has(node.path)) throw new Error(`case exploration extension duplicates baseline node: ${node.path}`);
+  existingPaths.add(node.path);
+}
+base.corrections = [...(base.corrections ?? []), ...(extension.corrections ?? [])];
+base.nodes = [...(base.nodes ?? []), ...(extension.nodes ?? [])];
+base.version = `0.2+case-exploration-media-${extension.version}`;
+base.runtimeExtension = {
+  caseId: extension.caseId,
+  status: extension.status,
+  controlCard: extension.controlCard,
+  projectAxisAllowed: false,
+};
+fs.writeFileSync(baseFile, `${JSON.stringify(base, null, 2)}\n`);
+console.log(`C04 case exploration scene extension merged in generated project: ${base.version}`);
+NODE
+fi
+
+MEDIA_MANIFEST="$DEST/assets/resources/c04/ws07a/visual-media-manifest.json"
+if [[ -f "$MEDIA_MANIFEST" ]]; then
+  node - "$DEST" "$MEDIA_MANIFEST" <<'NODE'
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const project = path.resolve(process.argv[2]);
+const manifestFile = path.resolve(process.argv[3]);
+const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+const assets = Array.isArray(manifest.assets) ? manifest.assets : [];
+if (manifest.authority?.projectAxis !== 'UNRESOLVED / NO P2-P4 CLAIM') throw new Error('visual media manifest must not assert restored Project Axis');
+if (manifest.policy?.projectAxisPromotionAllowed !== false || manifest.policy?.finalVisualPassInferred !== false) throw new Error('visual media manifest promotion boundary drifted');
+
+async function main() {
+  for (const asset of assets) {
+    if (!asset?.sourceUrl || !asset?.sha256 || !asset?.materializedFile) {
+      throw new Error(`visual media manifest asset is incomplete: ${JSON.stringify(asset)}`);
+    }
+    if (asset.usageGate !== 'RESEARCH_PROTOTYPE_ONLY' || asset.rightsGate !== 'PASS_PROJECT_USE_APPROVED') {
+      throw new Error(`visual media asset is not approved for research materialization: ${asset.assetId}`);
+    }
+    const response = await fetch(asset.sourceUrl, {
+      headers: { 'user-agent': 'OLEANDER-C04-Media-Materializer/0.2' },
+      redirect: 'follow',
+    });
+    if (!response.ok) throw new Error(`download ${asset.assetId} failed: HTTP ${response.status}`);
+    const data = Buffer.from(await response.arrayBuffer());
+    const sha = crypto.createHash('sha256').update(data).digest('hex');
+    if (sha !== asset.sha256) {
+      throw new Error(`SHA256 mismatch for ${asset.assetId}: expected ${asset.sha256}, got ${sha}`);
+    }
+    if (Number.isInteger(asset.expectedBytes) && data.length !== asset.expectedBytes) {
+      throw new Error(`byte-size mismatch for ${asset.assetId}: expected ${asset.expectedBytes}, got ${data.length}`);
+    }
+    const out = path.resolve(project, asset.materializedFile);
+    if (!out.startsWith(`${project}${path.sep}`)) throw new Error(`materializedFile escapes project: ${asset.materializedFile}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, data);
+    console.log(`C04 visual media materialized: ${asset.assetId} -> ${path.relative(project, out)} sha256=${sha}`);
+  }
+}
+
+main().catch((error) => {
+  console.error(`ERROR: C04 visual media materialization failed: ${error.message}`);
+  process.exit(65);
+});
+NODE
+fi
+
 [[ -f "$DEST/assets/data/chapters.json" ]] || { echo "ERROR: chapters.json missing after source overlay" >&2; exit 65; }
 [[ -f "$DEST/assets/data/nodes.json" ]] || { echo "ERROR: nodes.json missing after source overlay" >&2; exit 65; }
 [[ -f "$DEST/assets/scripts/core/AppState.ts" ]] || { echo "ERROR: AppState.ts missing after source overlay" >&2; exit 65; }
 [[ -f "$DEST/assets/scripts/core/NodeRegistry.ts" ]] || { echo "ERROR: NodeRegistry.ts missing after source overlay" >&2; exit 65; }
 
-# A COCOS web build requires at least one real SceneAsset. The pinned CLI's
-# `create 2d` command materializes project metadata but does not create a scene,
-# so source packs must provide one explicitly. Fail here with a precise contract
-# error instead of surfacing the builder's generic BUILD_FAILED (exit 34).
 SCENE_FILE="$(find "$DEST/assets" -type f -name '*.scene' -print -quit)"
 [[ -n "$SCENE_FILE" ]] || { echo "ERROR: no .scene asset found after source overlay; at least one COCOS SceneAsset is required" >&2; exit 65; }
 
