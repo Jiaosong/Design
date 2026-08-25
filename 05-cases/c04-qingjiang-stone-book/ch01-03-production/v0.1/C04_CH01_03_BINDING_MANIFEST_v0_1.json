@@ -1,0 +1,26 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "artifact":"C04 CH01–CH03 Production v0.1",
+  "architecture":"C04 PROJECT ARCHITECTURE v3.2 / Project Organization Current v1.2",
+  "scope":"CH01 project problem/opportunity + CH02 site/landscape/evidence + CH03 culture/content",
+  "identity_rule":"Uses CHxx-Pxx / ENV-xx authoring identities only; no canonical C04-WEB-P/Nxxx allocation.",
+  "surface_count":20,
+  "chapters":{"CH01":5,"CH02":{"base":5,"evidence":6},"CH03":4},
+  "authority_sources":[
+    {"object":"CH01","path":"chapter-content-sync/v0.2/CH01_PROJECT-PROBLEM-OPPORTUNITY.md","sha":"797f8259efb5104ddcfb7d177158d5efe0868e91"},
+    {"object":"CH02","path":"chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md","sha":"6a3bfa45bf6938359b0d3440f31969292fd01d60"},
+    {"object":"CH03","path":"chapter-content-sync/v0.1/CH03_CULTURE-CONTENT-ANALYSIS.md","sha":"686753510e9e8afa868e3dbabb1dbe7b8b7cdf9a"},
+    {"object":"Culture Main v2","drive_file_id":"1SBlBU1RlNQ6YEd-tSV3bZn64tfTxR4BL","sha256":"ae2aa53ed8bf7229e435c29d8cbe341345967edcd223ef99ca4446edc1d6c1ae","use":"mature design source / Qingjiang-specific scene and culture visuals"},
+    {"object":"GIS durable source","package":"C04_GIS_REDO_SPLIT_v0.2.1.zip","drive_file_id":"1n_Qyz_BN4VFP45nUHKrmRW4FrhF60s9_","sha256":"1c01ab71486183348e96fc27f738e200592e6a88f3a46fc8b77cc86913c3d075","use":"ENV-01–06 durable editable evidence carriers; current v0.7.3 candidate frontier is newer but binary persistence/review remains HOLD"}
+  ],
+  "locks":{"route":"ROUTE-03 = LOCKED CURRENT","journey04":"PROVENANCE / NON-CURRENT","r06":"FINISHED / FROZEN / NO REOPEN","thirteen_imprints":"OPTIONAL / REORDERABLE READING LAYER"},
+  "authority_preservation":[
+    "Existing mature Culture Main v2 assets are reused rather than replaced by abstract culture diagrams.",
+    "GIS SVG geometry/data are copied byte-for-byte from durable v0.2.1 source; chapter layout does not edit analytical marks.",
+    "CH02-P04 is explicitly a qualitative presentation model and not spatial evidence.",
+    "No new route/GPS/site geometry is authored in this package."
+  ],
+  "evidence_states":{"ENV-01":"EXECUTED / REVIEW PENDING","ENV-02":"EXECUTED / REVIEW PENDING","ENV-03":"HOLD","ENV-04":"HOLD","ENV-05":"EXECUTED / REVIEW PENDING","ENV-06":"EXECUTED / REVIEW PENDING"},
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "design_gate":"PRODUCER ACTUAL-PIXEL READBACK REQUIRED; INDEPENDENT OLEANDER DESIGN CRIT REQUIRED; producer does not self-issue KEEP/MAIN."
+}
