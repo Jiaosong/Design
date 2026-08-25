@@ -1,0 +1,42 @@
+{
+  "schema": "oleander.skill.3d-pipeline.evaluated-surface-sampling.v1",
+  "version": "2026-08-19-v1",
+  "required_receipt_fields": [
+    "schema",
+    "source_id",
+    "source_state_class",
+    "source_control_count",
+    "source_control_count_role",
+    "source_mutated_for_sampling",
+    "evaluated_carrier",
+    "evaluated_state_class",
+    "evaluation_method",
+    "evaluated_sampling_gate",
+    "result",
+    "does_not_prove"
+  ],
+  "allowed_results": [
+    "PASS_EVALUATED_SAMPLING",
+    "FAIL_EVALUATED_SAMPLING",
+    "HOLD_EVALUATED_SAMPLING_BASIS_UNRESOLVED",
+    "FAIL_SOURCE_MUTATED_FOR_SAMPLING_ONLY"
+  ],
+  "allowed_sampling_status": ["PASS", "FAIL", "HOLD"],
+  "hard_rules": {
+    "source_control_count_is_informational_only": true,
+    "forbidden_sampling_basis": "SOURCE_CONTROL_COUNT",
+    "pre_evaluation_control_midpoint_insertion_is_source_edit_without_equivalence_proof": true,
+    "sampling_pass_requires_source_not_mutated_for_sampling_only": true,
+    "sampling_pass_does_not_prove_surface_fairness_or_design": true
+  },
+  "does_not_prove": [
+    "surface_fairness",
+    "reflection_quality",
+    "G2_G3_Class_A",
+    "reference_fidelity",
+    "engineering_validity",
+    "manufacturing_readiness",
+    "Design_KEEP",
+    "MAIN_KEEP"
+  ]
+}

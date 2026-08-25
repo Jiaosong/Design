@@ -1,0 +1,33 @@
+{
+  "schema": "oleander.3d.measurement-coverage-contract.v1",
+  "receipt_schema": "oleander.3d.measurement-coverage-receipt.v1",
+  "required": [
+    "schema","claim_id","claim_scope","required_dimensions","measured_dimensions",
+    "required_feature_families","measured_feature_families","fit_views",
+    "held_out_views_required","held_out_views_reviewed","unmeasured_critical_items",
+    "coverage_relation","metric_results","result","does_not_prove"
+  ],
+  "allowed_coverage_relations": [
+    "SUFFICIENT_FOR_DECLARED_SCREEN",
+    "SUFFICIENT_FOR_DECLARED_CLAIM",
+    "PARTIAL_DIAGNOSTIC_ONLY",
+    "INSUFFICIENT_CRITICAL_DIMENSION_MISSING",
+    "INSUFFICIENT_CRITICAL_FEATURE_MISSING",
+    "INSUFFICIENT_HELD_OUT_VIEW_MISSING",
+    "UNRESOLVED"
+  ],
+  "allowed_results": [
+    "PASS_COVERAGE_FOR_DECLARED_SCREEN",
+    "PASS_COVERAGE_FOR_DECLARED_CLAIM",
+    "HOLD_PARTIAL_COVERAGE",
+    "FAIL_COVERAGE_INSUFFICIENT"
+  ],
+  "hard_rules": [
+    "PASS_CLAIM_REQUIRES_ALL_REQUIRED_DIMENSIONS_MEASURED",
+    "PASS_CLAIM_REQUIRES_ALL_REQUIRED_FEATURE_FAMILIES_MEASURED",
+    "PASS_CLAIM_REQUIRES_ALL_REQUIRED_HELD_OUT_VIEWS_REVIEWED",
+    "UNMEASURED_CRITICAL_ITEMS_BLOCK_CLAIM_PASS",
+    "PARTIAL_DIAGNOSTIC_CANNOT_PROMOTE_WHOLE_CLAIM",
+    "FAILED_CRITICAL_METRIC_CANNOT_BE_AVERAGED_AWAY"
+  ]
+}

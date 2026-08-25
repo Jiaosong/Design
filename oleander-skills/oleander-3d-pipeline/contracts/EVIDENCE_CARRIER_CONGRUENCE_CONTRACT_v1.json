@@ -1,0 +1,51 @@
+{
+  "schema": "oleander.skill.3d-pipeline.evidence-carrier-congruence.v1",
+  "version": "2026-08-19-v1",
+  "required_receipt_fields": [
+    "schema",
+    "claim_id",
+    "claim_scope",
+    "reference_carrier",
+    "reference_carrier_scope",
+    "candidate_carrier",
+    "candidate_carrier_scope",
+    "candidate_state_class",
+    "coverage_relation",
+    "measurement_method",
+    "normalization_frame",
+    "regression_comparability",
+    "result",
+    "does_not_prove"
+  ],
+  "allowed_coverage_relations": [
+    "CONGRUENT",
+    "SUFFICIENT_PROXY_FOR_DECLARED_SCOPE",
+    "MISMATCH",
+    "UNRESOLVED"
+  ],
+  "allowed_results": [
+    "PASS_CARRIER_CONGRUENCE",
+    "PASS_SUFFICIENT_PROXY_FOR_DECLARED_SCOPE",
+    "HOLD_CARRIER_MISMATCH",
+    "HOLD_CARRIER_UNRESOLVED"
+  ],
+  "rules": {
+    "pass_congruent_requires_congruent_relation": true,
+    "pass_proxy_requires_proxy_relation": true,
+    "mismatch_cannot_pass": true,
+    "unresolved_cannot_pass": true,
+    "changed_carrier_requires_explicit_regression_comparability": true,
+    "visual_proxy_cannot_widen_claim": true
+  },
+  "does_not_prove": [
+    "metric_quality",
+    "geometry_quality",
+    "reference_fidelity",
+    "Class-A_continuity",
+    "field_truth",
+    "engineering_validity",
+    "physical_CMF",
+    "Design_KEEP",
+    "MAIN_KEEP"
+  ]
+}

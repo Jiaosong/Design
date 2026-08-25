@@ -1,0 +1,27 @@
+{
+  "schema": "oleander.3d.bounded-causal-iteration-contract.v1",
+  "receipt_schema": "oleander.3d.bounded-causal-iteration-receipt.v1",
+  "required": [
+    "schema","experiment_id","baseline_revision","candidate_revision","target_metric_id",
+    "target_direction","operation_family","locked_variables","protected_invariants",
+    "material_improvement_rule","max_iterations","iterations","stop_conditions","stop_reason",
+    "result","rollback_lkg","does_not_prove"
+  ],
+  "allowed_target_directions": ["LOWER_IS_BETTER","HIGHER_IS_BETTER","ZERO_REQUIRED","BOUNDED_RELATION"],
+  "required_stop_conditions": [
+    "TARGET_REACHED","STAGNATION_NO_MATERIAL_IMPROVEMENT","PROTECTED_INVARIANT_REGRESSION","MAX_ITERATION_BUDGET_REACHED"
+  ],
+  "allowed_results": [
+    "PASS_TARGET_REACHED","HOLD_STAGNATION_RECLASSIFY","FAIL_PROTECTED_INVARIANT_REGRESSION",
+    "HOLD_MAX_ITERATION_BUDGET_REACHED","FAIL_ITERATION_CONTRACT_VIOLATED"
+  ],
+  "hard_rules": [
+    "ITERATION_COUNT_MUST_NOT_EXCEED_MAX",
+    "EVERY_NONFINAL_CONTINUED_CYCLE_REQUIRES_MATERIAL_IMPROVEMENT",
+    "PROTECTED_INVARIANT_REGRESSION_STOPS_LOOP",
+    "STAGNATION_STOPS_LOOP",
+    "TARGET_REACHED_STOPS_LOOP",
+    "MEASUREMENT_DEFINITION_AND_OPERATION_FAMILY_LOCKED_WITHIN_LOOP",
+    "ITERATION_PASS_DOES_NOT_IMPLY_DESIGN_PASS"
+  ]
+}

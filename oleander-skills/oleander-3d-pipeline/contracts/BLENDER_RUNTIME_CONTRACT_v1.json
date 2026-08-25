@@ -1,0 +1,101 @@
+{
+  "schema": "oleander.3d.blender-runtime-contract.v1",
+  "receipt_schema": "oleander.3d.blender-runtime-receipt.v1",
+  "required_top_level": [
+    "schema",
+    "task_id",
+    "claim",
+    "source_state_class",
+    "runtime",
+    "units_axes",
+    "dependencies",
+    "procedural",
+    "color_management",
+    "render",
+    "io",
+    "output",
+    "machine_verdict",
+    "evidence_verdict",
+    "design_review_status",
+    "does_not_prove"
+  ],
+  "allowed_source_state_classes": [
+    "SOURCE_OR_WORKING_SOURCE",
+    "DERIVED_EXECUTION",
+    "DERIVED_DIAGNOSTIC_NOT_AUTHORITY",
+    "VISUALIZATION_OR_RENDER_SCENE",
+    "REFERENCE_EVIDENCE"
+  ],
+  "required_runtime_fields": [
+    "application",
+    "version",
+    "build_hash_or_status",
+    "platform",
+    "device_backend",
+    "runtime_support_state"
+  ],
+  "allowed_runtime_support_states": [
+    "VERIFIED_AVAILABLE",
+    "LOWER_CAPABILITY_DECLARED",
+    "UNKNOWN"
+  ],
+  "required_color_fields": [
+    "working_space",
+    "display_device",
+    "view_transform",
+    "look",
+    "exposure",
+    "output_color_space",
+    "hdr_or_sdr",
+    "ocio_config_identity"
+  ],
+  "required_dependency_fields": [
+    "all_required_dependencies_recoverable",
+    "network_only_required_dependency",
+    "remote_asset_library_used",
+    "materialized_remote_asset_ids",
+    "external_dependency_manifest"
+  ],
+  "required_procedural_fields": [
+    "geometry_nodes_used",
+    "simulation_used",
+    "deterministic_seed_or_na",
+    "simulation_cache_or_state_or_na",
+    "evaluated_carrier_readback",
+    "physical_truth_claim"
+  ],
+  "required_render_fields": [
+    "engine",
+    "device_backend",
+    "samples_or_realtime_policy",
+    "denoise_or_postprocess_policy",
+    "comparison_lock_id_or_na"
+  ],
+  "required_io_fields": [
+    "requested_formats",
+    "verified_operators_or_bridges",
+    "representative_roundtrip_required",
+    "roundtrip_status"
+  ],
+  "allowed_roundtrip_status": [
+    "PASS",
+    "HOLD_NOT_REQUIRED",
+    "HOLD_PENDING",
+    "FAIL"
+  ],
+  "forbidden_pass_conditions": [
+    "runtime_support_unknown",
+    "network_only_required_dependency",
+    "remote_asset_not_materialized",
+    "simulation_promoted_to_physical_truth",
+    "requested_io_route_unverified",
+    "output_not_readback"
+  ],
+  "does_not_prove_minimum": [
+    "field truth",
+    "engineering approval",
+    "physical material properties",
+    "manufacturing readiness",
+    "Design KEEP"
+  ]
+}

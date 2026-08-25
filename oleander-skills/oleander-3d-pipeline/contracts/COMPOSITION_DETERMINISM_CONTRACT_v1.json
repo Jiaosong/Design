@@ -1,0 +1,27 @@
+{
+  "schema": "oleander.3d.composition-determinism-contract.v1",
+  "receipt_schema": "oleander.3d.composition-determinism-receipt.v1",
+  "required": [
+    "schema","source_identity","parent_revision","parent_entrypoint","runtime_identity",
+    "composition_mechanism","semantic_scope_expected_unchanged","standalone_signature",
+    "composed_signature","comparison_checks","composition_result","downstream_evidence_state",
+    "preferred_recovery_route","does_not_prove"
+  ],
+  "required_signature_fields": [
+    "vertices","edges","faces","bounds_or_dimensions","folds","nonmanifold_edges","target_diagnostic_state"
+  ],
+  "allowed_results": [
+    "PASS_COMPOSITION_DETERMINISTIC","FAIL_COMPOSITION_DETERMINISM",
+    "HOLD_SOURCE_OR_RUNTIME_NOT_COMPARABLE","PASS_REOPENED_PARENT_WITNESS"
+  ],
+  "allowed_downstream_states": [
+    "VALID_FOR_DECLARED_SCOPE","NON_PROMOTABLE_DIAGNOSTIC_PROVENANCE","HOLD_NOT_COMPARABLE"
+  ],
+  "hard_rules": [
+    "PASS_COMPOSITION_REQUIRES_COMPARABLE_SOURCE_AND_RUNTIME",
+    "PASS_COMPOSITION_REQUIRES_ALL_REQUIRED_SIGNATURE_CHECKS_PASS",
+    "FAIL_COMPOSITION_QUARANTINES_DOWNSTREAM_EVIDENCE",
+    "BOUNDS_EQUALITY_ALONE_CANNOT_PASS_COMPOSITION",
+    "REOPENED_PARENT_WITNESS_REQUIRES_NATIVE_ARTIFACT_AND_SIGNATURE_MATCH"
+  ]
+}
