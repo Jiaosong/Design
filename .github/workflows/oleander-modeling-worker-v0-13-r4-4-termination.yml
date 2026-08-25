@@ -1,0 +1,174 @@
+name: OLEANDER Modeling Worker v0.13 R4.4 Construction Sufficiency
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_TERMINATION_ISOLATION_DECISION_2026-08-14.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_1_TERMINATION_ENVELOPE_DECISION_2026-08-14.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_3_TERMINATION_PROFILE_DECISION_2026-08-14.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_core.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_qa.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_topology_isolation.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_4_construction_sufficiency.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-4-termination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-4-construction-sufficiency:
+    name: G1 R4.4 Axis × Cross-Section × Single-Pole Construction Isolation
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R4.4 contract
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r4_4_construction_sufficiency.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/v0.13')
+          c=json.loads((root/'G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_CONTRACT.json').read_text())
+          p=c['policy']
+          assert p['authoritative_source_edit_forbidden'] is True
+          assert p['confirmed_interface_relation_locked'] is True
+          assert p['termination_envelope_exponent_locked']==0.34
+          assert p['profile_control_edit_forbidden'] is True
+          assert p['grip_axis_control_edit_forbidden'] is True
+          assert p['counterfactual_geometry_is_derived_diagnostic_only'] is True
+          assert p['candidate_promotion']=='NOT_RUN'
+          assert set(c['counterfactuals'])=={
+              'BASELINE',
+              'AXIS_TANGENT_NEUTRAL',
+              'CROSS_SECTION_SYMMETRY_NEUTRAL',
+              'SINGLE_POLE_COLLAPSE_NEUTRAL',
+              'COMBINED_NEUTRAL',
+          }
+          receipts={
+              'G1_R4_TERMINATION_ISOLATION_DECISION_2026-08-14.md':'TERMINATION_TOPOLOGY_INVARIANT_SOURCE_ENVELOPE_RELATION_SUSPECTED',
+              'G1_R4_1_TERMINATION_ENVELOPE_DECISION_2026-08-14.md':'SHARED_ENVELOPE_EXPONENT_VARIATION_INSUFFICIENT',
+              'G1_R4_3_TERMINATION_PROFILE_DECISION_2026-08-14.md':'BOUNDED_PROFILE_RELATION_VARIATION_INSUFFICIENT',
+          }
+          for name,token in receipts.items():
+              assert token in (root/name).read_text(), (name,token)
+          print('R4_4_CONTRACT_AND_PRIOR_EXCLUSIONS_VALIDATED')
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build Blender-native R2 Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 384
+
+      - name: Execute diagnostic-only R4.4 construction sufficiency isolation
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_4"; mkdir -p "$OUT/60_OUTPUTS/DIAGNOSTIC"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_4_construction_sufficiency.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 640
+
+      - name: Verify R4.4 construction routing and authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4_4/60_OUTPUTS/DIAGNOSTIC')
+          r=json.loads((root/'G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_REPORT.json').read_text())
+          assert r['status']=='R4_4_CONSTRUCTION_SUFFICIENCY_ISOLATION_EXECUTED_VISUAL_REVIEW_REQUIRED', r['status']
+          assert all(r['checks'].values()), r['checks']
+          assert r['analytic_classification']=='SINGLE_POLE_COLLAPSE_CONSTRUCTION_DOMINANT_EXISTING_RELATION_SET_INSUFFICIENT', r['analytic_classification']
+          assert r['interface_relation_state']=='CONFIRMED_LOCKED_FOR_R4_4'
+          assert r['termination_envelope_exponent']==0.34
+          assert r['candidate_promotion']=='NOT_RUN'
+          a=r['analytic_probe']
+          red=a['near_pole_reduction_fraction_vs_baseline']
+          assert red['SINGLE_POLE_COLLAPSE_NEUTRAL'] >= 0.65, red
+          assert red['AXIS_TANGENT_NEUTRAL'] <= 0.25, red
+          assert red['CROSS_SECTION_SYMMETRY_NEUTRAL'] <= 0.25, red
+          assert red['COMBINED_NEUTRAL'] >= 0.80, red
+          assert a['direct_vs_differential_near_pole_error_deg'] <= 0.5
+          expected={'BASELINE','AXIS_TANGENT_NEUTRAL','CROSS_SECTION_SYMMETRY_NEUTRAL','SINGLE_POLE_COLLAPSE_NEUTRAL','COMBINED_NEUTRAL'}
+          assert set(r['counterfactual_geometry'])==expected
+          assert set(r['renders'])==expected
+          assert set(r['image_difference_metrics_vs_baseline'])==expected-{'BASELINE'}
+          for row in r['counterfactual_geometry'].values():
+              assert row['authority']=='DERIVED_EXECUTION_NOT_AUTHORITY'
+              assert row['diagnostic_only'] is True
+          for group in r['renders'].values():
+              assert set(group)=={'STRIP','GRAZING','ZEBRA'}
+              for name in group.values():
+                  assert (root/name).exists(), name
+          print('R4_4_EXECUTION_PASS_VISUAL_REVIEW_REQUIRED', r['analytic_classification'])
+          PY
+
+      - name: Upload R4.4 construction sufficiency artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-4-${{ github.run_id }}
+          path: |
+            out/G1_R4_4/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R4.4 makes no authoritative Source edit.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'It compares five diagnostic-only construction counterfactuals on the same confirmed Working Source and the same Surface System Strip/Grazing/Zebra rigs.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A structural-insufficiency analytic classification still requires fixed-rig visual review before any R4.5 Source-level termination-cap relation may be proposed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Candidate Promotion remains NOT_RUN.' >> "$GITHUB_STEP_SUMMARY"

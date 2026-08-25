@@ -1,0 +1,155 @@
+name: OLEANDER Modeling Worker v0.13 R3.1 Minimum-Change Batch
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r3-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r3-1-minimum-change-batch:
+    name: G1 R3.1 Fairness Boundary → Professional Visual Batch
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile R3.1 and validate contracts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r3_interface_fairness.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r3_blender_visual.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r3_1_blender_batch.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_FAIRNESS_CONTRACT.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_1_INTERFACE_RELATION_VARIANTS.json >/dev/null
+
+      - name: Execute R3.1 minimum-change fairness batch
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R3_1"; mkdir -p "$OUT"
+          python3 90-shared/toolchains/modeling-worker/v0.13/g1_r3_interface_fairness.py \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_FAIRNESS_CONTRACT.json \
+            --variants 90-shared/toolchains/modeling-worker/v0.13/G1_R3_1_INTERFACE_RELATION_VARIANTS.json \
+            --out "$OUT"
+
+      - name: Verify R3.1 minimum-change selection
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path('out/G1_R3_1/G1_R3_INTERFACE_FAIRNESS_REPORT.json').read_text())
+          assert report['schema']=='oleander.modeling-worker.v0.13.g1.r3.interface-fairness-report.v2'
+          assert report['status']=='R3_INTERFACE_FAIRNESS_VARIANT_READY_FOR_VISUAL_QA'
+          assert report['selection_policy']=='FAIRNESS_GATE_THEN_MINIMUM_SOURCE_RELATION_CHANGE_THEN_FIXED_RIG_VISUAL_REVIEW'
+          assert report['candidate_promotion']=='NOT_RUN'
+          rows={row['variant_id']:row for row in report['variants']}
+          expected=['R3.1-V1-U231','R3.1-V2-U233','R3.1-V3-U235']
+          assert list(rows)==expected
+          assert all(rows[k]['machine']['pass'] for k in expected)
+          assert all(rows[k]['interior_fairness']['pass'] for k in expected)
+          assert report['visual_candidates']==expected
+          assert report['selected_for_fixed_rig_visual_diagnostics']=='R3.1-V1-U231'
+          costs=[rows[k]['relation_change_cost'] for k in expected]
+          assert costs[0] < costs[1] < costs[2], costs
+          assert rows['R3.1-V1-U231']['interior_fairness']['metrics']['p95_longitudinal_deg_per_0_01u'] <= 6.0
+          print('R3_1_MINIMUM_CHANGE_GATE_PASS', report['selected_for_fixed_rig_visual_diagnostics'])
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build R2 Blender-native Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 512
+
+      - name: Render every R3.1 Machine+Fairness PASS professional variant
+        run: |
+          set -euo pipefail
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r3_1_blender_batch.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --variants 90-shared/toolchains/modeling-worker/v0.13/G1_R3_1_INTERFACE_RELATION_VARIANTS.json \
+            --machine-report "$GITHUB_WORKSPACE/out/G1_R3_1/G1_R3_INTERFACE_FAIRNESS_REPORT.json" \
+            --out "$GITHUB_WORKSPACE/out/G1_R3_1/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 512
+
+      - name: Verify R3.1 professional batch authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R3_1/60_OUTPUTS/DIAGNOSTIC')
+          report=json.loads((root/'G1_R3_1_VISUAL_BATCH_REPORT.json').read_text())
+          assert report['status']=='R3_1_PROFESSIONAL_BATCH_RENDERED_VISUAL_REVIEW_REQUIRED'
+          assert all(report['checks'].values()), report['checks']
+          assert report['machine_recommended_minimum_change_variant']=='R3.1-V1-U231'
+          assert report['visual_candidates']==['R3.1-V1-U231','R3.1-V2-U233','R3.1-V3-U235']
+          assert report['visual_decision']=='NOT_RUN_BATCH_REVIEW_REQUIRED'
+          assert report['candidate_promotion']=='NOT_RUN'
+          assert report['termination_state']=='OPEN_UNCHANGED_NOT_SOLVED_BY_R3_1_INTERFACE_BATCH'
+          assert len(report['variants'])==3
+          for row in report['variants']:
+              assert all(row['checks'].values()), row
+              assert set(row['image_difference_metrics'])=={'STRIP','GRAZING','ZEBRA'}
+              for rig in ('STRIP','GRAZING','ZEBRA'):
+                  assert (root/row['renders'][rig]).exists(), (row['variant_id'],rig)
+          print('R3_1_PROFESSIONAL_BATCH_PASS_VISUAL_REVIEW_REQUIRED')
+          PY
+
+      - name: Upload R3.1 professional batch artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r3-1-${{ github.run_id }}
+          path: |
+            out/G1_R3_1/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R3.1 is a minimum-change fairness-boundary search after R3-V3 passed Machine/Fairness but failed visual hierarchy review.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'theta_halfspan_rad=1.16, core_fraction=0.25, depth=12 mm and TOP_MERIDIAN remain fixed; only u_halfspan varies in the professional batch.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Fairness is a gate, not an optimization objective. Among passing relations the machine recommendation is the smallest legal Source change, and every passing variant is rendered for separate visual judgment.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Candidate Promotion remains NOT_RUN and the right/front termination defect remains open.' >> "$GITHUB_STEP_SUMMARY"

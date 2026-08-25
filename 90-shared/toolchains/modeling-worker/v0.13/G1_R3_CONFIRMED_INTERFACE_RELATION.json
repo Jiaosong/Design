@@ -1,0 +1,25 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.confirmed-interface-relation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_source": "G1_PRIMARY_CURVE_SOURCE.json + G1_R2_RELATION_CORRECTION.json",
+  "decision_receipt": "G1_R3_3_INTERFACE_CONFIRMATION_DECISION_2026-08-14.md",
+  "authority_state": "WORKING_SOURCE_RELATION_CONFIRMED_NOT_PROMOTED",
+  "source_family": "INTERFACE_DECK_BOUNDARY",
+  "source_overrides": {
+    "u_center": 0.62,
+    "u_halfspan": 0.26,
+    "theta_center": "TOP_MERIDIAN",
+    "theta_halfspan_rad": 1.06,
+    "core_fraction": 0.29,
+    "depth_m": 0.012,
+    "blend": "QUINTIC_SMOOTHERSTEP",
+    "opening_semantics": "RECESSED_INTERFACE_BASIN_WITH_EXPLICIT_REGION_BOUNDARY"
+  },
+  "locked_semantics": {
+    "theta_center": "TOP_MERIDIAN",
+    "depth_m": 0.012
+  },
+  "application_policy": "Apply after G1_R2_RELATION_CORRECTION to create the current v0.13 Working Source input for downstream termination diagnostics. Do not overwrite immutable R2 evidence.",
+  "candidate_promotion": "NOT_RUN",
+  "boundary": "This is a confirmed Working Source relation, not Candidate Authority, Canonical Authority, Class-A, engineering, manufacturing or Release."
+}

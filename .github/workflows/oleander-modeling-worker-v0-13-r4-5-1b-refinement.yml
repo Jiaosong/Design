@@ -1,0 +1,144 @@
+name: OLEANDER Modeling Worker v0.13 R4.5.1B Cap Scale Refinement
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1_CAP_CURVATURE_SCALE_DECISION_2026-08-17.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_cap_curvature_refinement.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1_cap_curvature_scale.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_core.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-5-1b-refinement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-5-1b-refinement:
+    name: G1 R4.5.1B Same-DOF Scale Refinement
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate refinement contract
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_core.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1_cap_curvature_scale.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_cap_curvature_refinement.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/v0.13')
+          c=json.loads((root/'G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json').read_text())
+          assert c['relation_vocabulary']['numeric_dof_count']==2
+          assert c['relation_vocabulary']['locked_onset_value']==0.88
+          assert c['visual_reference']['termination_cap_pole_curvature_scale']==0.90
+          assert c['variants']['SCALE_E_0_86']['termination_cap_pole_curvature_scale']==0.86
+          assert c['variants']['SCALE_F_0_88']['termination_cap_pole_curvature_scale']==0.88
+          assert c['policy']['third_numeric_cap_dof_forbidden'] is True
+          assert c['policy']['max_sparse_authority_scalar_count']==50
+          assert c['policy']['candidate_promotion']=='NOT_RUN'
+          receipt=(root/c['authorization_receipt']).read_text()
+          assert c['authorization_phrase'] in receipt
+          print('R4_5_1B_CONTRACT_VALIDATED')
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build Blender-native R2 Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 384
+
+      - name: Execute R4.5.1B refinement
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_5_1B"; mkdir -p "$OUT/60_OUTPUTS/DIAGNOSTIC"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 15 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_cap_curvature_refinement.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 640
+
+      - name: Verify refinement Machine gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4_5_1B/60_OUTPUTS/DIAGNOSTIC')
+          r=json.loads((root/'G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_REPORT.json').read_text())
+          assert r['status']=='R4_5_1B_REFINEMENT_MACHINE_PASS_VISUAL_REVIEW_REQUIRED',r['status']
+          assert all(r['global_checks'].values()),r['global_checks']
+          assert r['authority_state']=='WORKING_SOURCE'
+          assert r['candidate_review']=='REOPENED'
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert r['control']['termination_cap_pole_curvature_scale']==0.90
+          assert r['control']['machine_pass'] is True
+          assert len(r['machine_pass_variants'])>=1
+          ref='SCALE_A_0_90_CONTROL'
+          assert ref in r['renders']
+          for name in r['renders'][ref].values(): assert (root/name).exists(),name
+          for vid in r['machine_pass_variants']:
+              assert r['variants'][vid]['machine_pass'] is True
+              assert all(r['variants'][vid]['checks'].values())
+              assert set(r['renders'][vid])=={'BROAD','STRIP','GRAZING','ZEBRA'}
+              for name in r['renders'][vid].values(): assert (root/name).exists(),name
+          print('R4_5_1B_MACHINE_PASS_VISUAL_REVIEW_REQUIRED',r['machine_pass_variants'],r['machine_ranked_variants'])
+          PY
+
+      - name: Upload refinement artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-5-1b-${{ github.run_id }}
+          path: out/G1_R4_5_1B/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'Same two-DOF relation only: onset .88 locked, pole-curvature scale refined .86/.88 against .90 control.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No third DOF, Source family, profile/axis control edit or mesh patch is authorized.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Machine PASS opens exact shared Broad/Strip/Grazing/Zebra review only. Candidate Promotion remains NOT_RUN.' >> "$GITHUB_STEP_SUMMARY"

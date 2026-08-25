@@ -1,0 +1,167 @@
+name: OLEANDER Modeling Worker v0.13 R4.5 Termination Cap Relation
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_DECISION_2026-08-14.md'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_TERMINATION_CAP_RELATION_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_core.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_qa.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_topology_isolation.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_termination_cap_relation.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json'
+      - '90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-5-termination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-5-termination-cap-relation:
+    name: G1 R4.5 Sparse Termination Cap Relation
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R4.5 contract
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_core.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_roundtrip.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_scene.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_termination_cap_relation.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_TERMINATION_CAP_RELATION_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('90-shared/toolchains/modeling-worker/v0.13')
+          c=json.loads((root/'G1_R4_5_TERMINATION_CAP_RELATION_CONTRACT.json').read_text())
+          assert c['source_owner_family']=='LOWER_RETURN_PROFILE'
+          assert c['relation_vocabulary']['numeric_dof_count']==1
+          assert c['relation_vocabulary']['numeric_property']=='termination_cap_onset_u'
+          assert c['relation_vocabulary']['law']=='C2_MATCHED_ELLIPTIC_PARABOLOID_POLE'
+          assert c['relation_vocabulary']['semantics']=='EXPLICIT_SPARSE_TERMINATION_CAP_RELATION'
+          p=c['policy']
+          assert p['confirmed_interface_relation_locked'] is True
+          assert p['termination_envelope_exponent_locked']==0.34
+          assert p['profile_control_edit_forbidden'] is True
+          assert p['grip_axis_control_edit_forbidden'] is True
+          assert p['seventh_source_family_forbidden'] is True
+          assert p['mesh_local_cosmetic_patch_forbidden'] is True
+          assert p['max_sparse_authority_scalar_count_with_cap_relation']==49
+          assert p['candidate_promotion']=='NOT_RUN'
+          prior=(root/'G1_R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_DECISION_2026-08-14.md').read_text()
+          assert 'SINGLE_POLE_COLLAPSE_CONSTRUCTION_DOMINANT_EXISTING_RELATION_SET_INSUFFICIENT' in prior
+          assert set(c['variants'])=={'CAP_A_0_88','CAP_B_0_89','CAP_C_0_90','CAP_D_0_92'}
+          print('R4_5_CONTRACT_VALIDATED')
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build Blender-native R2 Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 384
+
+      - name: Execute R4.5 sparse termination cap relation batch
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_5"; mkdir -p "$OUT/60_OUTPUTS/DIAGNOSTIC"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 9 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_termination_cap_relation.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_TERMINATION_CAP_RELATION_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 640
+
+      - name: Verify R4.5 Machine gate and authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4_5/60_OUTPUTS/DIAGNOSTIC')
+          r=json.loads((root/'G1_R4_5_TERMINATION_CAP_RELATION_REPORT.json').read_text())
+          assert r['status']=='R4_5_CAP_RELATION_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r['status']
+          assert all(r['global_checks'].values()), r['global_checks']
+          assert r['authority_state']=='WORKING_SOURCE'
+          assert r['candidate_review']=='REOPENED'
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert r['relation_vocabulary']['numeric_dof_count']==1
+          assert r['roundtrip']['pass'] is True, r['roundtrip']
+          assert len(r['machine_pass_variants'])>=1, r['variants']
+          assert r['machine_preferred_variant'] in r['machine_pass_variants']
+          for vid in r['machine_pass_variants']:
+              row=r['variants'][vid]
+              assert row['machine_pass'] is True
+              assert all(row['checks'].values()), (vid,row['checks'])
+              assert vid in r['renders']
+              assert set(r['renders'][vid])=={'STRIP','GRAZING','ZEBRA'}
+              for name in r['renders'][vid].values():
+                  assert (root/name).exists(), name
+          assert set(r['renders']['BASELINE'])=={'STRIP','GRAZING','ZEBRA'}
+          for name in r['renders']['BASELINE'].values():
+              assert (root/name).exists(), name
+          print('R4_5_MACHINE_PASS_VISUAL_REVIEW_REQUIRED', r['machine_pass_variants'], r['machine_preferred_variant'])
+          PY
+
+      - name: Upload R4.5 cap relation artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-5-${{ github.run_id }}
+          path: |
+            out/G1_R4_5/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R4.5 adds one sparse Source-level numeric DOF: termination_cap_onset_u, owned by existing LOWER_RETURN_PROFILE.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The cap law is fixed: C2-matched onset boundary conditions + symmetric ellipse from onset pair means + elliptic-paraboloid pole closure.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only Machine-PASS variants are rendered under shared Strip/Grazing/Zebra.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Machine PASS opens fixed-rig Visual QA only. Candidate Promotion remains NOT_RUN.' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,205 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.blender-surface-binding.v3",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "modeling_worker_version": "v0.13",
+  "blender_surface_system": {
+    "system": "OLEANDER Blender Surface System",
+    "version": "v1.20.0",
+    "fidelity": "F1_DESIGN_VALIDATION",
+    "required_lighting_rigs": [
+      "BROAD",
+      "STRIP",
+      "GRAZING"
+    ],
+    "additional_surface_diagnostic": "ZEBRA_NORMAL_FIELD"
+  },
+  "runtime_binding": {
+    "mode": "EXECUTABLE_SHARED_RUNTIME",
+    "api": "oleander.blender-surface-system.f1-runtime.v1",
+    "module": "90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py",
+    "contract": "90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json",
+    "local_parallel_runtime_forbidden": true,
+    "diagnostic_material_profile": {
+      "clay": {
+        "name": "OLEANDER_MAT_DIAG_CLAY_v1",
+        "base_color": [
+          0.34,
+          0.35,
+          0.37
+        ],
+        "roughness": 0.42,
+        "metallic": 0.0
+      },
+      "reflection": {
+        "name": "OLEANDER_MAT_DIAG_REFLECTION_v1",
+        "base_color": [
+          0.055,
+          0.06,
+          0.07
+        ],
+        "roughness": 0.14,
+        "metallic": 0.65
+      },
+      "zebra": {
+        "name": "OLEANDER_MAT_QA_ZEBRA_NORMAL_v1",
+        "frequency": 18.0
+      }
+    },
+    "project_rig_profile": {
+      "BROAD": [
+        {
+          "name": "BROAD_R2_KEY_BROAD",
+          "location": [
+            0.1,
+            -0.38,
+            0.32
+          ],
+          "energy": 560.0,
+          "size": 0.34,
+          "size_y": 0.2
+        },
+        {
+          "name": "BROAD_R2_TOP_CARD",
+          "location": [
+            0.12,
+            0.02,
+            0.48
+          ],
+          "energy": 420.0,
+          "size": 0.26,
+          "size_y": 0.2
+        },
+        {
+          "name": "BROAD_R2_CONTACT_FILL",
+          "location": [
+            -0.08,
+            0.18,
+            0.1
+          ],
+          "energy": 180.0,
+          "size": 0.18,
+          "size_y": 0.1
+        }
+      ],
+      "STRIP": [
+        {
+          "name": "STRIP_R2_SIDE_STRIP_A",
+          "location": [
+            0.11,
+            -0.32,
+            0.12
+          ],
+          "energy": 720.0,
+          "size": 0.035,
+          "size_y": 0.34
+        },
+        {
+          "name": "STRIP_R2_SIDE_STRIP_B",
+          "location": [
+            0.17,
+            0.3,
+            0.17
+          ],
+          "energy": 580.0,
+          "size": 0.025,
+          "size_y": 0.28
+        }
+      ],
+      "GRAZING": [
+        {
+          "name": "GRAZING_R2_GRAZING_STRIP",
+          "location": [
+            -0.1,
+            -0.24,
+            0.07
+          ],
+          "energy": 900.0,
+          "size": 0.025,
+          "size_y": 0.42
+        }
+      ],
+      "NEGATIVE_CARD": {
+        "name": "R2_NEG_FILL",
+        "location": [
+          0.1,
+          0.34,
+          0.06
+        ],
+        "scale": [
+          0.22,
+          0.1,
+          0.26
+        ],
+        "material_name": "R2_NEG_FILL_MAT",
+        "active_rigs": [
+          "BROAD",
+          "STRIP",
+          "GRAZING"
+        ]
+      }
+    }
+  },
+  "source_authority": {
+    "state": "WORKING_SOURCE",
+    "bootstrap_seed": "G1_PRIMARY_CURVE_SOURCE.json + G1_R2_RELATION_CORRECTION.json",
+    "live_representation_after_bootstrap": "BLENDER_NATIVE_EDITABLE_WORKING_SOURCE",
+    "families": [
+      "GRIP_AXIS",
+      "PALM_PROFILE",
+      "THUMB_SIDE_PLAN",
+      "OPPOSITE_SIDE_PLAN",
+      "INTERFACE_DECK_BOUNDARY",
+      "LOWER_RETURN_PROFILE"
+    ],
+    "collection": "OLEANDER_SOURCE_AUTHORITY",
+    "objects": {
+      "GRIP_AXIS": "OL_SRC_GRIP_AXIS",
+      "PALM_PROFILE": "OL_SRC_PALM_PROFILE",
+      "THUMB_SIDE_PLAN": "OL_SRC_THUMB_SIDE_PLAN",
+      "OPPOSITE_SIDE_PLAN": "OL_SRC_OPPOSITE_SIDE_PLAN",
+      "LOWER_RETURN_PROFILE": "OL_SRC_LOWER_RETURN_PROFILE",
+      "INTERFACE_DECK_BOUNDARY": "OL_SRC_INTERFACE_DECK_BOUNDARY"
+    },
+    "locked_semantics": {
+      "INTERFACE_DECK_BOUNDARY.theta_center": "TOP_MERIDIAN"
+    },
+    "native_readback_required": true,
+    "native_edit_to_derived_rebuild_required": true,
+    "dense_execution_mesh_is_authority": false
+  },
+  "surface_evaluation": {
+    "derived_collection": "OLEANDER_DERIVED_EXECUTION",
+    "qa_collection": "OLEANDER_QA_RIG",
+    "method": "R2_ANALYTIC_RELATIONSHIP_SURFACE",
+    "rebuild_text_block": "OLEANDER_G1_R2_REBUILD.py",
+    "live_source_text_block": "OLEANDER_G1_R2_LIVE_SOURCE.json",
+    "derived_mesh_object": "OL_DERIVED_G1_R2_BASELINE",
+    "revision_variant_object": "OL_DERIVED_G1_R2_THUMB_REVISION"
+  },
+  "roundtrip_gate": {
+    "representation_precision": "BLENDER_FLOAT32_CONTROL_POINT_STORAGE",
+    "bootstrap_readback_tolerance_m": 1e-08,
+    "controlled_native_edit_object": "OL_SRC_THUMB_SIDE_PLAN",
+    "controlled_native_edit_index": 3,
+    "controlled_native_edit_delta_m": 0.003,
+    "controlled_native_edit_tolerance_m": 1e-08,
+    "only_declared_source_family_may_change": "THUMB_SIDE_PLAN",
+    "derived_surface_must_change_min_m": 0.001,
+    "restore_tolerance_m": 1e-12,
+    "locked_semantic_tolerance_rad": 1e-08,
+    "writeback_policy": "WRITE_NEW_ROUNDTRIP_SNAPSHOT; DO NOT_OVERWRITE_BOOTSTRAP_SEED"
+  },
+  "diagnostics": {
+    "required_render_passes": [
+      "BROAD",
+      "STRIP",
+      "GRAZING",
+      "ZEBRA",
+      "RELATION_A_B"
+    ],
+    "fixed_camera_required": true,
+    "surface_source_and_execution_geometry_must_remain_separable": true,
+    "surface_system_runtime_must_be_shared": true
+  },
+  "boundary": "This binding executes Blender Surface System v1.20.0 through its shared F1 runtime module instead of duplicating diagnostic material/rig/render logic inside Modeling Worker. The v0.13 sparse Blender-native Working Source remains geometry authority; derived meshes remain non-authoritative execution geometry. The JSON R2 files remain immutable bootstrap seed/provenance. This does not establish ergonomic comfort, Class-A, engineering CAD, manufacturing/tooling, final CMF, Candidate Promotion, Canonical Promotion or Release."
+}

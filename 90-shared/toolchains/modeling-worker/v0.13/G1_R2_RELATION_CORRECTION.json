@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "revision_id": "G1-R2-ERGONOMIC-PALM-INTERFACE-RELATION",
+  "problem_layer": "Relation / Surface Source",
+  "base_source": "G1_PRIMARY_CURVE_SOURCE.json",
+  "allowed_changes": ["GRIP_AXIS","PALM_PROFILE","THUMB_SIDE_PLAN","OPPOSITE_SIDE_PLAN","LOWER_RETURN_PROFILE","INTERFACE_DECK_BOUNDARY"],
+  "mesh_local_patch_allowed": false,
+  "source_overrides": {
+    "GRIP_AXIS": {"control_points": [[0.0,0.0,0.045],[0.002,-0.001,0.046],[0.020,-0.004,0.052],[0.150,-0.001,0.059],[0.187,0.003,0.055],[0.190,0.0,0.048]]},
+    "PALM_PROFILE": {"control_values": [0.003,0.030,0.060,0.079,0.058,0.003]},
+    "THUMB_SIDE_PLAN": {"control_values": [0.003,0.025,0.047,0.061,0.044,0.003]},
+    "OPPOSITE_SIDE_PLAN": {"control_values": [0.003,0.022,0.038,0.045,0.034,0.003]},
+    "LOWER_RETURN_PROFILE": {
+      "control_values": [0.003,0.032,0.055,0.066,0.050,0.003],
+      "termination_envelope": "sin(pi*u)^0.34",
+      "termination_envelope_exponent": 0.34
+    },
+    "INTERFACE_DECK_BOUNDARY": {
+      "u_center": 0.62,
+      "u_halfspan": 0.18,
+      "theta_center": "TOP_MERIDIAN",
+      "theta_halfspan_rad": 0.76,
+      "depth_m": 0.012,
+      "core_fraction": 0.50,
+      "blend": "QUINTIC_SMOOTHERSTEP",
+      "opening_semantics": "RECESSED_INTERFACE_BASIN_WITH_EXPLICIT_REGION_BOUNDARY"
+    }
+  },
+  "machine_zoning": {
+    "broad_surface_zone": "rho(interface) >= 1.08",
+    "intentional_interface_transition_zone": "rho(interface) < 1.08",
+    "broad_surface_thresholds_unchanged": true,
+    "interface_transition_validation": {
+      "outer_boundary_normal_continuity_max_deg": 0.5,
+      "core_boundary_normal_continuity_max_deg": 0.5,
+      "boundary_probe_epsilon_rho": 0.002,
+      "required_region_boundary_loops": 1,
+      "deck_inset_depth_uses_existing_0.006_to_0.012_m_contract": true
+    }
+  },
+  "revision_test": {
+    "revision_id": "G1-R2-R1-THUMB-SIDE-RELATION",
+    "allowed_source_family": "THUMB_SIDE_PLAN",
+    "operation": "multiply THUMB_SIDE_PLAN by 1 + 0.12*sin(pi*u)^2 during derived surface evaluation",
+    "mesh_local_patch_allowed": false,
+    "expected_displacement_band_m": [0.002,0.010]
+  },
+  "visual_intent": [
+    "palm volume reads before interface basin",
+    "interface basin reads before lower return",
+    "thumb-side bias is legible but does not split the global volume",
+    "termination reads as handheld wrap rather than automotive closure or symmetric lens point"
+  ],
+  "boundary": "R2 remains EXPLORE / WORKING_SOURCE. It does not authorize Project PASS, Candidate Authority, Canonical Authority or Release."
+}

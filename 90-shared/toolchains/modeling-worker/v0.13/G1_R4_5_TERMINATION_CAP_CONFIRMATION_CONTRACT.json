@@ -1,0 +1,57 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.5.termination-cap-confirmation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_5_EXACT_CAP_A_CONFIRMATION",
+  "selected_variant": "CAP_A_0_88",
+  "selection_evidence": {
+    "batch_run_id": 31989064902,
+    "artifact_id": 9274847245,
+    "artifact_digest": "sha256:ef85b8e1b4edd3c2c40cb558fff48db80495d82e512443d37bfd2f2c3f72f733",
+    "machine_pass_variants": ["CAP_A_0_88", "CAP_B_0_89"],
+    "machine_preferred_variant": "CAP_A_0_88",
+    "visual_selection": "CAP_A_0_88 removes the extended R4.4 right/front convergence into a controlled terminal cap without an onset kink; CAP_B is tighter and has less fairness margin. C/D are Machine-failed."
+  },
+  "source_relation": {
+    "source_family": "LOWER_RETURN_PROFILE",
+    "termination_cap_onset_u": 0.88,
+    "termination_cap_law": "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE",
+    "termination_cap_semantics": "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION",
+    "termination_cap_endpoint_section": "SYMMETRIC_ELLIPSE_DERIVED_FROM_ONSET_MEANS",
+    "numeric_dof_count": 1
+  },
+  "locked_upstream": {
+    "confirmed_interface_relation": "G1_R3_CONFIRMED_INTERFACE_RELATION.json",
+    "interface_u_center": 0.62,
+    "interface_u_halfspan": 0.26,
+    "interface_theta_center": "TOP_MERIDIAN",
+    "interface_theta_halfspan_rad": 1.06,
+    "interface_core_fraction": 0.29,
+    "interface_depth_m": 0.012,
+    "termination_envelope_exponent": 0.34
+  },
+  "policy": {
+    "exact_selected_relation_only": true,
+    "parameter_tuning_in_confirmation_forbidden": true,
+    "six_source_families_only": true,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "mesh_local_patch_forbidden": true,
+    "native_source_must_remain_active_in_saved_blend": true,
+    "derived_mesh_is_authority": false,
+    "shared_surface_system_runtime_required": true,
+    "required_diagnostics": ["BROAD","STRIP","GRAZING","ZEBRA"],
+    "candidate_promotion": "NOT_RUN"
+  },
+  "local_view": {
+    "name": "R4_5_CONFIRMATION_CAP_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "outputs": {
+    "blend": "OLEANDER_G1_R4_5_CAP_A_WORKING_SOURCE__v0_13.blend",
+    "report": "G1_R4_5_TERMINATION_CAP_CONFIRMATION_REPORT.json",
+    "native_source_snapshot": "G1_R4_5_CONFIRMED_NATIVE_SOURCE_SNAPSHOT.json"
+  },
+  "boundary": "Exact Working Source confirmation only. It may confirm the termination-cap relation within the v0.13 benchmark but does not execute Candidate Promotion, establish Candidate/Canonical Authority, prove ergonomic comfort, Class-A, engineering CAD, manufacturing/tooling, final CMF or Release."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r2.runtime-machine-receipt",
+  "revision": "G1-R2-ERGONOMIC-PALM-INTERFACE-RELATION",
+  "job_state": "EXECUTED",
+  "design_state": "EXPLORE",
+  "authority_state": "WORKING_SOURCE",
+  "execution_class": "ALGORITHM_EQUIVALENT_RUNTIME_REPLAY_NOT_GITHUB_CI",
+  "source_binding": {
+    "primary_curve_source_blob": "dcccf6e86477726b6ef2617a5ff43817ae7dc42d",
+    "r2_correction_blob": "d0008b393606e806a4cb775a3faa8b4f86b0c782",
+    "r2_core_blob": "58c1c09abb3a1113156d9dcc35ca75e347c213f0",
+    "r2_qa_blob": "00fc322febf4560ba0af39961446cf466242de29"
+  },
+  "baseline": {
+    "dimensions_m": [0.1900000000,0.0807606200,0.1048164600],
+    "sparse_authority_scalar_count": 48,
+    "thumb_minus_opposite_probe_m": 0.010225460398218061,
+    "interface_inset_depth_m": 0.011999999999999997,
+    "interface_region_face_count": 282,
+    "interface_boundary_edge_count": 78,
+    "interface_boundary_loops": 1,
+    "broad_surface_max_longitudinal_normal_delta_deg_per_0_01u": 2.8126924077029094,
+    "broad_surface_max_circumferential_normal_delta_deg_per_0_05rad": 4.183681994883819,
+    "outer_interface_boundary_normal_continuity_deg": 0.17378907374421887,
+    "core_interface_boundary_normal_continuity_deg": 0.2327244838034886,
+    "full_benchmark_machine_checks": "PASS"
+  },
+  "controlled_relation_revision": {
+    "revision_id": "G1-R2-R1-THUMB-SIDE-RELATION",
+    "changed_authority_family": "THUMB_SIDE_PLAN",
+    "mesh_local_patch_used": false,
+    "dimensions_m": [0.1900000000,0.0860047900,0.1048164600],
+    "max_surface_displacement_m": 0.0053918894832730435,
+    "thumb_extreme_gain_m": 0.005314699554015825,
+    "opposite_extreme_change_m": 0.0,
+    "broad_surface_max_longitudinal_normal_delta_deg_per_0_01u": 2.8118980652444634,
+    "broad_surface_max_circumferential_normal_delta_deg_per_0_05rad": 4.1449982068572755,
+    "outer_interface_boundary_normal_continuity_deg": 0.1785841121287331,
+    "core_interface_boundary_normal_continuity_deg": 0.24023719484401188,
+    "machine_checks": "PASS",
+    "relation_revision_checks": "PASS"
+  },
+  "result": "FULL_BENCHMARK_MACHINE_PASS / RELATION_REVISION_PASS / VISUAL_REVIEW_REQUIRED",
+  "validation_note": "Unlike the earlier R1 receipt, R2 explicitly asserts the interface opening/basin semantic region and its single closed boundary loop, and uses zoned fairness so the intentional hard-to-soft interface transition is validated by continuity rather than misclassified as broad interior curvature.",
+  "github_ci_state": "NOT_EXECUTED_FOR_G1_BECAUSE_V013_WORKFLOW_WRITE_WAS_BLOCKED_BY_CONNECTOR_SAFETY_LAYER",
+  "boundary": "Machine PASS opens Human Visual QA only. Human Project QA and Candidate Review remain blocked until Visual PASS."
+}

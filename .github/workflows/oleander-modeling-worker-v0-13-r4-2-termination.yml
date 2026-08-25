@@ -1,0 +1,83 @@
+name: OLEANDER Modeling Worker v0.13 R4.2 Termination Profile Ownership
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-2-termination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-2-termination-profile-ownership:
+    name: G1 R4.2 Profile Convergence → Source Ownership
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R4.2 contract
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r4_2_profile_convergence_probe.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_2_TERMINATION_PROFILE_CONVERGENCE_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('90-shared/toolchains/modeling-worker/v0.13/G1_R4_2_TERMINATION_PROFILE_CONVERGENCE_CONTRACT.json').read_text())
+          assert c['policy']['source_edit_forbidden'] is True
+          assert c['policy']['termination_exponent_variant_forbidden'] is True
+          assert c['policy']['mesh_generation_not_required'] is True
+          assert c['policy']['confirmed_interface_relation_locked'] is True
+          assert c['policy']['candidate_promotion']=='NOT_RUN'
+          assert set(c['sectors'])=={'TOP','THUMB','LOWER','OPPOSITE'}
+          PY
+
+      - name: Execute topology-independent profile convergence probe
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_2"; mkdir -p "$OUT"
+          python3 90-shared/toolchains/modeling-worker/v0.13/g1_r4_2_profile_convergence_probe.py \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_2_TERMINATION_PROFILE_CONVERGENCE_CONTRACT.json \
+            --out "$OUT"
+
+      - name: Verify ownership routing without Source edit
+        run: |
+          python3 - <<'PY'
+          import json, math
+          from pathlib import Path
+          r=json.loads(Path('out/G1_R4_2/G1_R4_2_TERMINATION_PROFILE_CONVERGENCE_REPORT.json').read_text())
+          assert r['status']=='R4_2_PROFILE_CONVERGENCE_OWNERSHIP_CLASSIFIED', r['status']
+          assert all(r['checks'].values()), r['checks']
+          assert r['classification']=='OPPOSITE_LOWER_PROFILE_CONVERGENCE_RELATION_SUSPECTED', r['classification']
+          assert all(r['classification_evidence'].values()), r['classification_evidence']
+          assert r['termination_envelope_exponent']==0.34
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert r['summary_metrics']['near_pole_max_surface_normal_turn_deg_u_ge_0_995'] > 5.0
+          assert r['summary_metrics']['near_pole_max_surface_normal_turn_deg_u_ge_0_995'] > 2*r['summary_metrics']['near_pole_max_grip_axis_tangent_turn_deg']
+          near=[row for row in r['rows'] if row['u']>=0.995]
+          assert all(math.pi <= row['hotspot']['theta_rad'] <= 1.5*math.pi for row in near)
+          assert all(row['largest_relative_convergence_family']=='OPPOSITE_SIDE_PLAN' for row in near)
+          assert all(max(row['sector_normal_turn_deg']['OPPOSITE'],row['sector_normal_turn_deg']['LOWER']) > max(row['sector_normal_turn_deg']['TOP'],row['sector_normal_turn_deg']['THUMB']) for row in near)
+          print('R4_2_PROFILE_CONVERGENCE_OWNERSHIP_CLASSIFIED', r['classification'])
+          PY
+
+      - name: Upload R4.2 ownership report
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-2-${{ github.run_id }}
+          path: out/G1_R4_2/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R4.2 performs no Source edit and no mesh generation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'It measures profile amplitudes, relative convergence, sector normal turn, full angular hotspot and GRIP_AXIS tangent turn on the confirmed Working Source.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The classification may route the next Source-level experiment but cannot authorize a control-point edit by itself or any Promotion.' >> "$GITHUB_STEP_SUMMARY"

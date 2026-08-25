@@ -1,0 +1,76 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.5.1.cap-curvature-scale.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_5_1_SPARSE_CAP_POLE_CURVATURE_SCALE",
+  "authorization_receipt": "G1_R4_5_TERMINATION_CAP_DECISION_2026-08-17.md",
+  "source_owner_family": "LOWER_RETURN_PROFILE",
+  "relation_id": "TERMINATION_CAP_RELATION",
+  "relation_vocabulary": {
+    "numeric_dof_count": 2,
+    "locked_onset_property": "termination_cap_onset_u",
+    "locked_onset_value": 0.88,
+    "new_numeric_property": "termination_cap_pole_curvature_scale",
+    "law": "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE",
+    "semantics": "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION",
+    "endpoint_section": "SYMMETRIC_ELLIPSE_DERIVED_FROM_ONSET_MEANS",
+    "scale_semantics": "Uniformly scales the derived symmetric pole-curvature ellipse while preserving its onset-derived side:vertical aspect ratio."
+  },
+  "variants": {
+    "SCALE_A_0_90": {"termination_cap_pole_curvature_scale": 0.90},
+    "SCALE_B_0_92": {"termination_cap_pole_curvature_scale": 0.92},
+    "SCALE_C_0_94": {"termination_cap_pole_curvature_scale": 0.94},
+    "SCALE_D_0_96": {"termination_cap_pole_curvature_scale": 0.96}
+  },
+  "policy": {
+    "termination_cap_onset_u_locked": 0.88,
+    "confirmed_interface_relation_locked": true,
+    "confirmed_interface_outer_u_max": 0.88,
+    "termination_envelope_exponent_locked": 0.34,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "seventh_source_family_forbidden": true,
+    "mesh_local_cosmetic_patch_forbidden": true,
+    "dense_control_field_forbidden": true,
+    "max_sparse_authority_scalar_count": 50,
+    "blender_native_source_binding_required": true,
+    "roundtrip_required": true,
+    "shared_surface_system_runtime_required": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "machine_gate": {
+    "theta_samples": 72,
+    "onset_probe_epsilon_u": 0.0001,
+    "onset_position_continuity_max_m": 0.00001,
+    "onset_normal_continuity_max_deg": 0.5,
+    "interface_regression_u_samples": [0.38,0.50,0.62,0.74,0.86,0.879],
+    "interface_regression_theta_samples": 36,
+    "interface_regression_max_displacement_m": 1e-9,
+    "cap_turn_span_u": 0.002,
+    "cap_tau_samples": [0.08,0.16,0.24,0.32,0.40,0.48,0.56,0.64,0.72,0.80,0.88,0.94,0.975,0.99],
+    "cap_region_max_normal_turn_deg": 3.2,
+    "near_pole_samples": [0.995,0.996,0.997,0.998,0.999],
+    "near_pole_max_normal_turn_deg": 2.0,
+    "reflection_flow_concentration_ratio_max": 1.75,
+    "radial_monotonic_samples": 64,
+    "radial_monotonic_tolerance_m": 1e-7,
+    "closure_position_tolerance_m": 1e-10,
+    "minimum_cap_aware_extra_u_rings": 9
+  },
+  "visual_gate": {
+    "required_rigs": ["BROAD","STRIP","GRAZING","ZEBRA"],
+    "reject_if": [
+      "terminal cap reads as a discrete appended plug/nipple",
+      "Strip/Grazing closes into an isolated terminal oval detached from body flow",
+      "Zebra retains a localized hook/loop comparable to R4.5 scale=1.0",
+      "new onset kink or confirmed-interface regression appears"
+    ],
+    "pass_if": "tail-to-cap reads as one low-frequency continuous volume and the terminal reflection field is reduced from a discrete island to a coherent continuation without sacrificing closure."
+  },
+  "local_view": {
+    "name": "R4_5_1_CAP_SCALE_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "boundary": "R4.5.1 adds only one additional numeric Source-level DOF on the existing LOWER_RETURN_PROFILE owner. It does not add Source families, control points or mesh patches and does not execute Candidate Promotion or establish Candidate/Canonical Authority, Class-A, engineering CAD, manufacturing/tooling, ergonomic comfort, final CMF or Release."
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.1.interface-relation-variants.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_relation": "G1_R2_RELATION_CORRECTION.json",
+  "predecessor_visual_decision": "G1_R3_VISUAL_DECISION_2026-08-14.md",
+  "experiment_role": "MINIMUM_CHANGE_FAIRNESS_BOUNDARY_SEARCH_NOT_AUTHORITY_PROMOTION",
+  "allowed_source_family": "INTERFACE_DECK_BOUNDARY",
+  "mesh_local_patch_allowed": false,
+  "locked_values": {
+    "u_center": 0.62,
+    "theta_center": "TOP_MERIDIAN",
+    "theta_halfspan_rad": 1.16,
+    "core_fraction": 0.25,
+    "depth_m": 0.012,
+    "blend": "QUINTIC_SMOOTHERSTEP"
+  },
+  "baseline": {
+    "variant_id": "R3.1-R2-BASELINE",
+    "u_halfspan": 0.18,
+    "theta_halfspan_rad": 0.76,
+    "core_fraction": 0.50,
+    "depth_m": 0.012
+  },
+  "variants": [
+    {
+      "variant_id": "R3.1-V1-U231",
+      "design_question": "What is the smallest longitudinal transition expansion that clears the fairness gate after the R3 visual over-distribution finding?",
+      "source_overrides": {
+        "u_halfspan": 0.231,
+        "theta_halfspan_rad": 1.16,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3.1-V2-U233",
+      "design_question": "Does a slightly larger longitudinal span produce a materially cleaner reflection field without erasing the interface-basin reading?",
+      "source_overrides": {
+        "u_halfspan": 0.233,
+        "theta_halfspan_rad": 1.16,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3.1-V3-U235",
+      "design_question": "Does the upper end of the minimum-change band add useful fairness margin, or does it begin to repeat the R3-V3 over-distribution defect?",
+      "source_overrides": {
+        "u_halfspan": 0.235,
+        "theta_halfspan_rad": 1.16,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    }
+  ],
+  "selection_policy": "FAIRNESS_GATE_FIRST_THEN_MINIMUM_SOURCE_RELATION_CHANGE; render every Machine+Fairness PASS variant before visual selection",
+  "batch_logic": "Three independent professional Source-relation variants around the R3-V2/R3-V3 longitudinal fairness boundary. Only u_halfspan varies; all other interface relation values are fixed.",
+  "termination_policy": "RIGHT_FRONT_TERMINATION remains open and unchanged.",
+  "boundary": "R3.1 variants are reversible Working Source experiments. No Machine, fairness or visual result directly promotes Candidate or Canonical authority."
+}
