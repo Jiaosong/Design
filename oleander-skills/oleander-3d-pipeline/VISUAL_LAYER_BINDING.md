@@ -102,6 +102,52 @@ Record at minimum:
 
 Promotion test: **For every lifecycle claim, prove the minimum sufficient context and a locked baseline pair; severity must survive when crop and exposure are held constant.**
 
+## Cross-media correspondence gate
+
+Use this gate whenever the same design object is represented across two or more of: plan, section, axonometric, model view, render, diagram, technical detail, or interactive spatial view.
+
+Default sequence:
+
+`SOURCE AUTHORITY → SHARED ANCHORS → INVARIANTS → MEDIA TRANSLATION → SIDE-BY-SIDE READ → MEDIUM-SPECIFIC CRIT`
+
+Rules:
+1. Declare stable correspondence anchors before styling: durable IDs for the minimum places, joints, edges, route decisions, datum points, section cuts, cameras, components or objects that must remain recognisable across media.
+2. Separate invariants from reprojectable properties. Anchor identity, order, adjacency, side-of-relation and design role are invariant; camera, projection, crop, graphic style and local silhouette may change when the medium requires it.
+3. Shared labels are not proof of correspondence. If two views carry the same ID but depict a different order, adjacency, side, elevation relation, component role or termination logic, mark `REVISE / REJECT`.
+4. Derived views may not locally redraw authoritative geometry merely to improve composition. Change camera, crop, hierarchy, linework, annotation or framing first.
+5. When exact survey/field geometry is unavailable, preserve only the relation Current Authority supports and keep synthetic/inferred/provisional/NTS status explicit.
+6. Where a relation crosses plan/section/model boundaries, use at least one explicit binding mechanism: shared anchor IDs, cut IDs, camera IDs, callouts, datum names, object IDs or correspondence table.
+7. Review the set side by side. A reviewer should be able to follow the same object/sequence without relying on captions alone.
+8. `MODEL/RENDER QUALITY ≠ CORRESPONDENCE QUALITY`. A clean render may still depict a different relation from plan/section; a technically corresponding model may still fail medium-specific design quality.
+9. For route/sequence work verify stable order and branch logic; for assemblies/details verify component identity, joint location, side and termination logic.
+10. Correspondence PASS never proves material realism, field accuracy, engineering approval, accessibility or overall Design PASS.
+
+Record at minimum:
+`OBJECT_ID / SOURCE_AUTHORITY / VIEW_IDS / SHARED_ANCHORS / INVARIANTS / REPROJECTABLE_PROPERTIES / CORRESPONDENCE_RESULT / MEDIUM_SPECIFIC_REVIEW / DOES_NOT_PROVE`.
+
+## Dimension-to-object binding gate
+
+Use this gate whenever a model, axonometric, orthographic, exploded view or technical presentation contains dimensions intended to prove scale, clearance, position, component size, body relationship or installation relation.
+
+Default review order:
+
+`SOURCE VALUE → MEASURED OBJECT / INTERVAL → ATTACHMENT CARRIER → FIRST-READ MODEL → NEAR-READ DIMENSION → TRUTH BOUNDARY`
+
+Rules:
+1. A dimension is not visually present merely because its number exists in a register/table/nearby note. The measured object, interval, edge, datum or relation must be unambiguous in the intended view.
+2. Bind critical dimensions directly with extension lines, witness lines, leaders, aligned dimensions, section references or another explicit geometric carrier appropriate to the medium.
+3. Separate `CRITICAL ATTACHED DIMENSIONS` from `SECONDARY SCALE / PARAMETER RAILS`. First-interpretation values stay on-object; repeated/supporting values may move to a near-read rail.
+4. Annotation may not destroy first-read model/body/joint/route evidence. Revise projection, spacing, crop, leader routing or page allocation instead of detaching critical values.
+5. Human/ergonomic dimensions must name the body condition they refer to and may not imply percentile/accessibility/population standards without supporting evidence.
+6. Nominal/model dimensions, scenario values, field measurements and engineering tolerances are different evidence classes. Keep source class and `DOES NOT PROVE` adjacent when consequential.
+7. `MODEL SCALE READ ≠ FIELD MEASUREMENT ≠ ENGINEERING APPROVAL`.
+8. Numeric source authority owns value/unit/interval/datum. Presentation may alter leader position, spacing, hierarchy and weight, not the number or measured relation.
+9. Review at two distances: first read keeps the object dominant; near read lets every critical value trace to the exact object/interval.
+10. Promotion requires target-size reopened proof. Export success, dimension text presence or a clean parameter table cannot substitute for on-object legibility.
+
+Record at minimum:
+`DIMENSION_ID / SOURCE_VALUE / UNIT / EVIDENCE_CLASS / OBJECT_OR_INTERVAL / DATUM / ATTACHMENT_CARRIER / FIRST_READ_RESULT / NEAR_READ_RESULT / DOES_NOT_PROVE`.
+
 ## Review inheritance
 
 Review real renders and model views at the intended camera distance and final carrier size. `Render PASS ≠ Design PASS`; material/light success does not promote geometry, field evidence, physical interaction, lifecycle truth or engineering validity.
