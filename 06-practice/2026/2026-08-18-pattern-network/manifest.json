@@ -1,0 +1,32 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-18-PATTERN-NETWORK",
+  "topic": "Pattern Network: isolated project locks → composable relational rules",
+  "notion_method": "MTH-DESIGN-PATTERN-LANGUAGE-001",
+  "project_trigger": "C04 v3.2 contains distributed locks across Route / Imprints / Digital / Physical / Brand / Return that must cooperate without information loss.",
+  "truth_boundary": "Training relation map only; no C04 geometry, route authority, R06 design, FIELD fact, engineering or project promotion changed.",
+  "version": "v5",
+  "design_crit": {
+    "v1": "REJECT — complete rule cards remain isolated; no support, conflict or dependency can be reviewed.",
+    "v2": "REVISE — network logic is materially better, but support links cross pattern titles and the footer method line runs into its body copy.",
+    "v3": "REVISE — support semantics and conflict ownership improved, but diagonal edges still pass through first-read title zones.",
+    "v4": "REVISE — edge semantics were consolidated, but sweeping support paths still competed with the core spine.",
+    "v5": "KEEP FOR TRAINING — support/bound edges use perimeter routing and no longer cross core titles or subtitles; the network reads as priority spine + support rules + conflict resolution."
+  },
+  "v5_repairs": [
+    "replace sweeping diagonals with perimeter routing",
+    "keep all support edges outside core title/subtitle zones",
+    "move support legend into unused lower gap",
+    "state conflict winner / priority explicitly",
+    "preserve ROUTE-03 / R06 / FIELD boundaries"
+  ],
+  "artifacts": {
+    "pattern_network_v5.svg": {
+      "bytes": 8052,
+      "sha256": "c77f395fc4310bfb230189cb14242d6edbe98d6c1f6a969cf3ee8230c00c8477"
+    },
+    "pattern_network_v5.png": {
+      "bytes": 120890,
+      "sha256": "98140ed266794485ccbee92b5c64acdf2d72d5050424b775a0dec38bf11d5cfe"
+    }
+  }
+}

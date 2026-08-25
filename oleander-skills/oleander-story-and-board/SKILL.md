@@ -90,6 +90,27 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
 12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
 
+## Pattern-network integration gate
+
+Use this gate when a project contains several valid rules, locks, modes, chapters, or media systems that must operate together. Reuse the current Notion METHOD for Pattern Language rather than inventing isolated project-specific rules.
+
+1. **Do not treat a list of good rules as a system.** For every candidate rule, record its Context, Broken Relation, Rule, Variants, Linked Patterns, Validation, Failure Trigger, and status.
+2. **Resolve the core spine before satellites.** Identify the minimum sequence or authority chain that owns the experience. Supporting patterns may reinforce the spine but must not silently replace it.
+3. **Make support relations explicit.** A support pattern must name which higher-priority relation it protects or strengthens; visual or verbal similarity is not enough.
+4. **Make conflicts explicit.** When two valid patterns compete on the same page, scene, state, or object, record the conflict and the winner for that context. Do not let layout, brand, UI, or novelty decide by accident.
+5. **Separate invariants from variants.** The relation rule may remain stable while carrier, medium, scale, sequence depth, graphic treatment, camera, or interaction varies. If only one visual form can realize the rule, it is a template, not a reusable pattern.
+6. **Preserve authority order.** Pattern formation may organize current decisions but cannot override source, route, geometry, field, safety, accessibility, engineering, or governance authority.
+7. **Review the network side-by-side.** Evaluate the core spine, support patterns, and conflict resolutions in one view before promotion. Individually polished pages can still fail as a system.
+8. **Treat unresolved collisions as REVISE.** Examples include Brand FULL competing with Landscape First, optional reading blocking Return, or a digital interaction making the no-phone path incomplete.
+9. **Keep rejected patterns as failure knowledge.** Record why a relation failed so the same attractive but incompatible rule is not reintroduced later.
+10. **Project transfer must name affected media/chapters.** A pattern is not reusable until its valid transfer range and non-applicable contexts are stated.
+
+Default review sequence:
+
+`CURRENT AUTHORITY → NOTION METHOD → BROKEN / INTENDED RELATION → CORE SPINE → SUPPORT PATTERNS → CONFLICTS → VARIANTS → SIDE-BY-SIDE READ → MEDIUM-SPECIFIC CRIT`
+
+Pattern-network PASS does not prove the individual media are professionally finished, field-valid, engineering-valid, or ready for promotion.
+
 ## Deliverable variants
 
 - Board: distance-readable hierarchy, restrained text, explicit sequence.
