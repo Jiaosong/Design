@@ -1,0 +1,65 @@
+{
+  "system": "C01｜一脉广渡",
+  "version": "v0.2-R0.12",
+  "project_state": "EXPLORATION / G0",
+  "public_release": "NOT AUTHORIZED",
+  "beta_promotion": "HOLD",
+  "completed": [
+    "R0.5 Public-Safe Binding + RG2 Return Template",
+    "R0.6 Public Export Gate + linter",
+    "R0.7 RG2 Return Intake Kit",
+    "R0.8 Cross-Candidate Release Matrix",
+    "R0.8 Canonical Recovery Handoff",
+    "R0.9 Beta Readiness Gate",
+    "R0.10 Controlled Human Comprehension Protocol",
+    "R0.11 Physical Print / Device QA Protocol",
+    "R0.12 Night Checkpoint"
+  ],
+  "candidate_release": {
+    "R0-C01": {
+      "internal": "ALLOW",
+      "public_safe": "ALLOW WITHOUT RESTRICTED IMAGE",
+      "public_release": "BLOCK",
+      "beta": "HOLD"
+    },
+    "R0-C02": {
+      "internal": "ALLOW",
+      "public_safe": "ALLOW WITHOUT RESTRICTED IMAGES",
+      "public_release": "BLOCK",
+      "beta": "HOLD"
+    },
+    "R0-C03": {
+      "internal": "ALLOW AS SCENARIO",
+      "public_safe": "ALLOW AS SCENARIO",
+      "public_release": "BLOCK",
+      "beta": "HOLD"
+    }
+  },
+  "canonical_state": {
+    "notion": "CURRENT C01 POINTER BROKEN / TEMP GOVERNANCE TARGET = REL-QA01+B06",
+    "drive_current_candidate": "1hhxu8-fuUYdDTqcyhbaycxTeWW_ICzfI",
+    "drive_duplicate_untouched": "1dGdcQRW0-3WHkCd8f-oqqo8n1R4eBTPS",
+    "github_branch": "agent/c01-design-reset-v0-2-r0-20260813"
+  },
+  "hard_holds": [
+    "C01 current Case pointer recovery",
+    "C01 current P2 Project pointer recovery",
+    "P1/P2/P3 rights and provenance closure",
+    "P3 full spatial context remains open or must stay explicit gap",
+    "N06/N07 RG2 real binding not run",
+    "physical print QA not run",
+    "real-device QA not run",
+    "controlled human comprehension not run",
+    "public release not authorized"
+  ],
+  "forbidden_until_holds_close": [
+    "final C01 palette",
+    "final C01 typography identity",
+    "final Visitor Map",
+    "village-wide component library",
+    "public deployment",
+    "local acceptance claims",
+    "user validation claims",
+    "heritage implementation claims"
+  ]
+}
