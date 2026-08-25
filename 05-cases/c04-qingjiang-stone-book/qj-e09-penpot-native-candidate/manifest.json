@@ -1,0 +1,13 @@
+{
+  "name":"QJ-E09 Penpot Native Candidate",
+  "version":"0.1.0",
+  "tokenFile":"tokens/qj-e09.tokens.json",
+  "screens":["01_today","02_route","03_s1","04_s2","05_record","06_s0","07_closure","08_book","09_service"],
+  "componentCount":7,
+  "nativeFile":false,
+  "nativePromotion":"OPEN_PROVIDER_BLOCKED",
+  "driveArtifacts":{
+    "nativeCandidateZip":"1nB48aS7qtf_leT4IjSXBOipWVqO1-rLb",
+    "tokenImportZip":"1yp3iI2CJsOWmjmKHDSg6G2L_bvlQsLpT"
+  }
+}

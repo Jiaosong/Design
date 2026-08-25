@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="932" viewBox="0 0 430 932">
+  <rect width="430" height="932" fill="#101714"/>
+  <text x="215" y="286" fill="#9B7B45" font-family="Noto Sans CJK SC,sans-serif" font-size="12" text-anchor="middle" letter-spacing="2">READ 0 · 在场</text>
+  <line x1="194" y1="320" x2="236" y2="320" stroke="#9B7B45" stroke-width="1"/>
+  <text x="215" y="382" fill="#F2EFE7" font-family="Noto Sans CJK SC,sans-serif" font-size="31" font-weight="600" text-anchor="middle">这里不需要更多界面。</text>
+  <text x="215" y="430" fill="#B8B5AD" font-family="Noto Sans CJK SC,sans-serif" font-size="14" text-anchor="middle">收起手机，让声音、风、尺度</text>
+  <text x="215" y="454" fill="#B8B5AD" font-family="Noto Sans CJK SC,sans-serif" font-size="14" text-anchor="middle">和身体位置重新成为主角。</text>
+  <rect x="30" y="620" width="370" height="52" rx="9" fill="none" stroke="#334038"/>
+  <text x="50" y="653" fill="#F2EFE7" font-family="Noto Sans CJK SC,sans-serif" font-size="14" font-weight="600">离开后继续</text>
+  <text x="370" y="653" fill="#F2EFE7" font-family="Noto Sans CJK SC,sans-serif" font-size="17" text-anchor="middle">→</text>
+  <text x="215" y="870" fill="#66736C" font-family="Noto Sans CJK SC,sans-serif" font-size="11" text-anchor="middle">S0 · chrome:none · nav:null · no status strip</text>
+</svg>
