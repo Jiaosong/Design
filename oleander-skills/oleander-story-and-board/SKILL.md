@@ -99,6 +99,23 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 - VI / brand manual: visibly represented identity rules, actual master assets, dimensioned construction where required, color/type specimens, misuse, production boundaries, and editable/readback-ready pages.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
+## Brand intensity modulation gate
+
+Use when one identity system must appear across communication, interface, field, service, landscape, body-attention, or other media with different attention demands.
+
+1. Declare the intended brand strength for each surface before layout: `FULL / LIGHT / TRACE / OFF` or a project-specific equivalent.
+2. `FULL` is identity-led. Use only where the communication itself is the task: cover, opening, campaign, explicit identity or memory surface.
+3. `LIGHT` is task-led. Keep identity recognition present, but route, map, content, product use, or service action must own first-read.
+4. `TRACE` is reassurance/service-led. Use a minimal recognisable token, rhythm, material cue, wordmark fragment, or other bounded identity trace; it must not become a second interpretive panel or hero.
+5. `OFF` is valid when landscape, body attention, safety, route decision, technical proof, or another project object must dominate. OFF means no decorative brand layer in the primary attention field, not that legal/context attribution disappears from the deliverable.
+6. Consistency must come from stable identity grammar — type family, proportion, token geometry, rhythm, material logic, tone, or other authorised primitives — not from repeating the same lockup at the same visual weight everywhere.
+7. When adapting intensity, preserve logo/identity authority. Do not redraw, distort, simplify, recolour, crop, or invent a replacement mark merely to make a weaker mode.
+8. Review the whole medium matrix together. If every surface carries near-equal logo size, contrast, frequency, or decorative mass, default to `REVISE` even when each surface is individually polished.
+9. Review the inverse failure too: if LIGHT/TRACE/OFF destroys recognisability or makes authorship/context ambiguous where it is needed, default to `REVISE`.
+10. Run at least one distance-read or thumbnail comparison across the matrix. The intended hierarchy `FULL > LIGHT > TRACE > OFF` must remain perceptible without reading explanatory labels.
+11. Brand modulation does not change route, landscape, safety, field, geometry, evidence, or engineering authority. Visual identity can frame or confirm those systems, never replace them.
+12. Keep legal/trademark approval, brand design quality, production correctness, and project promotion as separate gates.
+
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
