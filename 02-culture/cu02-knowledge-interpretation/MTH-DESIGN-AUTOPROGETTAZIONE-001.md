@@ -1,11 +1,11 @@
 # MTH-DESIGN-AUTOPROGETTAZIONE-001｜Autoprogettazione｜以建造学习设计规则
 
-- Status: ACTIVE / E1 / OLEANDER application pending verification
+- Status: ACTIVE / E2 / OLEANDER application pending verification
 - Primary layer: Culture / CU02 Knowledge & Interpretation
 - Supporting layers: IP, Spatial
 - Person: PER-DESIGNER-007｜Enzo Mari
 - Notion canonical object: https://app.notion.com/p/3b5b86be5c4781f79221ca886b717533
-- Verified: 2026-08-07
+- Verified: 2026-08-26
 
 ## Core method
 Treat design as a testable rule system rather than a surface style:
