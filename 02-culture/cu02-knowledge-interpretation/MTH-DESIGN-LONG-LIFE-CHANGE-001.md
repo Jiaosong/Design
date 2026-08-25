@@ -1,11 +1,11 @@
 # MTH-DESIGN-LONG-LIFE-CHANGE-001｜长期结构—变化层｜寿命分层与接口压力测试
 
-- Status: ACTIVE / PARTIAL / E1
+- Status: ACTIVE / PARTIAL / E2
 - Primary layer: Culture / CU02 Knowledge & Interpretation
 - Supporting layers: Spatial / SP02-SP04; IP / IP03-IP04
 - Canonical Notion: https://app.notion.com/p/3b8b86be5c47816eb451e351390b7cef
 - Primary person: Kiyonori Kikutake
-- Verified: 2026-08-10
+- Verified: 2026-08-26
 
 > This is an OLEANDER method translation derived from cross-case study of Kikutake. It is not presented as a standardized formula authored by Kikutake. Real structural, fire, MEP, maintenance, cost and user evidence remain project-specific.
 
