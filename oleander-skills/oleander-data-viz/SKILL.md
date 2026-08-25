@@ -51,6 +51,27 @@ For source-bound spatial graphics, record:
 - any transform and whether it is uniform;
 - what the graphic supports and what it does not prove.
 
+## Map-embedded spatial claim placement gate
+
+Apply this gate to GIS, cartography, landscape/site analysis, route analysis, environmental overlays, operational maps, spatial synthesis figures, and any visual where a finding has a geographic `WHERE`.
+
+1. **If an analytical finding can be tied to a concrete geographic position, the primary representation of that finding must be encoded at that position on the map.** `WHERE` is part of the finding and must not be detached from it for layout convenience.
+2. Use the geometry appropriate to the claim:
+   - point finding → point mark / direct callout at the source position;
+   - line finding → authoritative line / path / boundary / directional geometry;
+   - area finding → source-supported zone / field / hatch at the actual mapped area;
+   - spatial relationship → overlay / adjacency / intersection / distance / sequence on the same authoritative map.
+3. **Do not move a locatable conclusion into a sidebar, card, detached diagram, prose paragraph, or statistics block as its primary carrier.** If the reader must leave the map to understand where the finding occurs, return `REVISE`.
+4. Sidebars and floating legend areas are restricted to the minimum necessary legend, units, thresholds, source/precision status, indispensable quantitative metadata, and truly non-spatial information.
+5. Sections, profiles, enlarged nodes, charts, and insets may support the map as secondary proof, but they may not replace the map as the carrier of geographic location.
+6. A map may contain direct labels, leaders, keyed sample IDs, local statistics, or bounded annotations when those annotations stay attached to the underlying source geometry. Prefer direct annotation over a parallel explanatory panel.
+7. Presentation styling, CH14 visual language, board composition, responsive layout, and motion must adapt around the map. They have no authority to extract a spatial finding from its mapped location or to redraw the source geometry for visual balance.
+8. When source precision does not support a continuous area, do not manufacture one. Preserve point/sample semantics or explicitly label a derived envelope as a sample-group presentation cue rather than a measured boundary.
+9. When a continuous guide is interpolated solely for cartographic legibility, label it as a presentation derivative and do not claim increased source resolution or positional precision.
+10. Promotion blocker: `LOCATABLE FINDING OFF MAP`, `SIDEBAR AS PRIMARY WHERE-CARRIER`, `INVENTED CONTINUOUS ZONE`, or `LAYOUT-DRIVEN SPATIAL DETACHMENT` → `REVISE`.
+
+**Promotion test:** `Can a reviewer identify where every locatable analytical conclusion occurs by reading the map itself, without first consulting an external card or prose lane?` If not, the spatial-analysis artifact is incomplete.
+
 ## Operational route-state semantics gate
 
 Apply this gate whenever route, path, network, access, facility, service, or wayfinding graphics encode operational states such as `NORMAL`, `DEGRADED`, `CLOSED`, `UNKNOWN`, or equivalent project-specific states.
@@ -82,6 +103,8 @@ Return the visualization, cleaned dataset, data dictionary, transformation note,
 
 For source-bound spatial work, also return a geometry-authority note identifying the current source/locked object, the preservation operation, and any geometry regression check performed.
 
+For map/GIS work with locatable findings, also return a spatial-claim placement note or equivalent audit field confirming which findings were encoded on-map and what, if anything, remains legitimately off-map.
+
 ## Quality checks
 
 - Reconcile displayed values with the cleaned table.
@@ -92,3 +115,4 @@ For source-bound spatial work, also return a geometry-authority note identifying
 - For source-bound spatial work, verify that locked geometry/topology has not been materially distorted, re-authored, or replaced by a presentation-driven approximation.
 - Treat non-uniform geometry distortion as a blocker unless the object is explicitly schematic and labelled presentation-only.
 - Compare against the strongest mature existing spatial artifact before promoting a redesign; visual polish cannot override a spatial-authority regression.
+- For map/GIS work, verify that every locatable analytical conclusion is readable at its mapped position and that sidebar content is limited to legend/units/thresholds/necessary non-spatial metadata.

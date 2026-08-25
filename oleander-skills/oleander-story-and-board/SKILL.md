@@ -38,6 +38,20 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## Map-first spatial finding composition
+
+When a board, report, deck, web chapter, or film frame contains a GIS/map/site-analysis finding with a concrete geographic `WHERE`, preserve the map as the primary carrier of that finding.
+
+- **A geographically locatable conclusion belongs on the map at the corresponding location.** Do not extract it into a sidebar/card/prose lane as the primary explanation merely to create a cleaner composition.
+- Use direct labels, leaders, keyed point/line/area marks, local thresholds, or source-bound overlays attached to the authoritative map geometry.
+- The board may retain only the minimum legend, units, thresholds, indispensable quantitative metadata, source/precision status, and truly non-spatial information outside the map.
+- Sections, profiles, enlarged nodes, photographs, charts, and explanatory diagrams are secondary proof. They may deepen the same finding but may not become the only place where the audience learns where it occurs.
+- If the map becomes visually weaker because labels are moved away into a separate explanatory column, change the page grid, crop, scale, sequence, or page count instead of detaching the spatial claim.
+- Do not turn sample-based evidence into a visually continuous zone unless the upstream data-viz/spatial authority supports that geometry. A presentation envelope must stay explicitly presentation-only.
+- CH14 color, atmosphere, texture, game/interaction language, and editorial composition are subordinate to the spatial evidence. Style cannot relocate or normalize a source-bound finding.
+
+**Board review blocker:** if the audience must consult an off-map card or prose block to identify where a locatable analytical conclusion occurs, return `REVISE` and route the map back to `oleander-data-viz` if necessary.
+
 ## Same-source paired-view gate
 
 When a story uses a sequence such as `Landscape First → Relation Reveal`, `Object → Explanation`, `Overview → Highlight`, or any paired visual that is meant to deepen the same spatial/design object:
@@ -89,6 +103,7 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
 11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
 12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+13. For map/GIS analysis, confirm that each geographically locatable finding remains attached to its mapped location and that the board has not reintroduced an off-map conclusion lane.
 
 ## Deliverable variants
 
@@ -107,6 +122,8 @@ For any layout containing source-bound spatial evidence, include a short authori
 
 For any paired/reveal primary visual, also return a same-source declaration naming the base source/version and the exact overlay/highlight differences between frames.
 
+For map/GIS analysis layouts, also record that locatable findings remain map-embedded and identify any off-map content that is legitimately non-spatial or legend/metadata only.
+
 For VI/manual work, also return or persist the represented standard drawings/specimens used by the manual, actual readbacks at target size, and all proof-open production limits. A prose-only specification is not a complete VI deliverable.
 
 ## Quality checks
@@ -121,6 +138,7 @@ For VI/manual work, also return or persist the represented standard drawings/spe
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
 - Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
+- For map/GIS work, every locatable analytical conclusion is readable on the map itself; off-map lanes are limited to minimal legend/units/thresholds/necessary metadata or genuinely non-spatial content.
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
 - Material/raster display effects never become logo/vector/text geometry authority.
