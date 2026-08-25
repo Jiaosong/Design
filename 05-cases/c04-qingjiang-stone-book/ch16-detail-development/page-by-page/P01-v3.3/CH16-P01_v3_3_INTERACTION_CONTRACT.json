@@ -1,0 +1,87 @@
+{
+  "schema": "oleander.c04.ch16.resource-interaction.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "revision": "v3.3",
+  "presentation_mode": "RESOURCE_LED / INTERACTION_ENHANCED",
+  "state": "EXECUTED / INDEPENDENT DESIGN REVIEW PENDING",
+  "primary_resource": {
+    "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+    "type": "DERIVED_CURRENT_TECHNICAL_RESOURCE",
+    "native_viewbox": "1600x1000",
+    "first_viewport_visual_weight_target": "70-82%",
+    "fit": "CONTAIN",
+    "crop": "FORBIDDEN",
+    "cover": "FORBIDDEN",
+    "role_boundary": "DISPLAY CANDIDATE / NOT ORIGINAL DESIGN SOURCE / NOT AUTOMATIC KEEP"
+  },
+  "forbidden_visible_source": {
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "rule": "NOT DISPLAYABLE IN CH16",
+    "forbidden_modes": ["MAIN", "SUPPORT", "SOURCE_EVOLUTION", "THUMBNAIL", "CROP", "ZOOM", "CAROUSEL", "APPENDIX"]
+  },
+  "interaction_principle": "INTERACTION OPERATES ON THE RESOURCE; UI DOES NOT REPLACE OR OUTRANK THE RESOURCE",
+  "states": [
+    {
+      "id": "clean",
+      "label": "全图",
+      "hotkey": "1 / Escape",
+      "action": "SHOW_COMPLETE_RESOURCE_WITHOUT_FOCUS_OVERLAY",
+      "primary_read": "RESOURCE FIRST"
+    },
+    {
+      "id": "body",
+      "label": "人体",
+      "hotkey": "2",
+      "action": "FOCUS_BODY_AND_USE_REGION_WITHOUT_CROPPING",
+      "primary_read": "BODY + ACTION + CONTACT + EXIT"
+    },
+    {
+      "id": "assembly",
+      "label": "连接",
+      "hotkey": "3",
+      "action": "FOCUS_REVERSIBLE_ASSEMBLY_REGION_WITHOUT_CROPPING",
+      "primary_read": "CONTACT + BUFFER + CLAMP + EXISTING BASE + FASTENER"
+    },
+    {
+      "id": "service",
+      "label": "维护",
+      "hotkey": "4",
+      "action": "FOCUS_MAINTENANCE_AND_OPEN_ITEM_REGION_WITHOUT_CROPPING",
+      "primary_read": "DRAIN + CLEAN + ACCESSIBLE FLOW + FIELD OPEN"
+    }
+  ],
+  "direct_manipulation": {
+    "hotspots": true,
+    "hotspot_role": "LOCATOR / READING TRIGGER, NOT CARD",
+    "click_tap": true,
+    "keyboard": true,
+    "zoom": false,
+    "crop": false,
+    "resource_replacement_on_state_change": false
+  },
+  "mobile": {
+    "resource": "COMPLETE / CONTAIN / NO HORIZONTAL CLIP",
+    "control_rail": "HORIZONTAL SCROLL-SNAP",
+    "supporting_evidence": "ONE-AT-A-TIME HORIZONTAL SCROLL-SNAP WHEN NEEDED",
+    "semantic_order": ["RESOURCE", "INTERACTION RAIL", "ACTIVE EVIDENCE", "SUPPORT"]
+  },
+  "below_fold": {
+    "when_space_insufficient": "CAROUSEL_OR_SEQUENTIAL_FULL_RESOURCE",
+    "forbidden": ["CROP_TO_FIT", "CARD_WALL", "TINY_3_UP_THUMBNAILS", "CONTENT_DELETION_FOR_COMPACTNESS"]
+  },
+  "visual_behavior": {
+    "grammar": "QINGJIANG PAPER / INK / REVEAL",
+    "motion": "RESTRAINED FOCUS / REVEAL",
+    "forbidden": ["GAME_HUD", "SCORE", "UNLOCK", "REWARD", "MISSION", "NEON_EXPLOSION"]
+  },
+  "review_gate": {
+    "browser_readback": "REQUIRED",
+    "machine_qc": "REQUIRED",
+    "independent_oleander_design_review": "REQUIRED",
+    "producer_keep_authority": false,
+    "promotion_state": "PENDING"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

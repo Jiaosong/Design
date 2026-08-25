@@ -1,0 +1,12 @@
+{
+  "schema": "c04.ch13.visual-production-map.current.v1",
+  "status": "ACTIVE_CURRENT_POINTER",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13",
+  "current_map": "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.json",
+  "current_version": "v0.2",
+  "supersedes": "CH13_VISUAL_PRODUCTION_MAP_v0_1",
+  "adoption_pr": 328,
+  "adoption_merge_commit": "a8b2c55fd43a60b2ac60e59c48f16feccca560d8",
+  "boundary": "CURRENT PRODUCTION DECISIONS ONLY; NOT FINISHED-PIXEL OR DESIGN PROMOTION"
+}

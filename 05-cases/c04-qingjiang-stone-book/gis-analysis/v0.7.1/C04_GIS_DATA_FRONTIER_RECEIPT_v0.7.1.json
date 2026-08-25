@@ -1,0 +1,109 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_GIS_DATA_FRONTIER_v0.7.1",
+  "date": "2026-08-18",
+  "authority_chain": [
+    "OLEANDER Current Authority",
+    "C04 Current Project Materials v3.2",
+    "CH02 Current Material",
+    "oleander-data-viz",
+    "OLEANDER Artifact Review System v1.1"
+  ],
+  "image_generation_used": false,
+  "current_formal_gis": {
+    "version": "v0.7",
+    "state": "EXECUTED / ACTUAL PREVIEW READBACK COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING",
+    "github_pr": 259,
+    "github_merge_commit": "ea1a6af2c927292040676c7d5e181caabed3666b",
+    "local_zip_sha256": "1437d78568fb634022b52dc0d5d84b230a7c898a640e0fbe69c5a0c52c1f6738"
+  },
+  "datasets": [
+    {
+      "id": "DEM-COPERNICUS-GLO30",
+      "dataset": "Copernicus DEM GLO-30 Public",
+      "native_resolution": "~30 m",
+      "data_type": "DSM",
+      "format": "Cloud Optimized GeoTIFF",
+      "official_source": "https://registry.opendata.aws/copernicus-dem/",
+      "expected_c04_tile": "Copernicus_DSM_COG_10_N30_00_E109_00_DEM",
+      "tile_logic": "C04 corridor ~109.75E / 30.30N falls inside N30/E109 one-degree tile",
+      "materialization_state": "BLOCKED_IN_CURRENT_RUNTIME",
+      "allowed_use_after_readback": "regional DEM / slope / aspect / hillshade / terrain-derived hydrology",
+      "does_not_prove": ["bare-earth DTM", "survey elevation", "node construction grade", "slope stability"],
+      "forbidden_substitution": ["generated terrain", "visual interpolation promoted as 30m evidence"]
+    },
+    {
+      "id": "DEM-SRTMGL1-FALLBACK",
+      "dataset": "SRTMGL1 1 arc-second",
+      "native_resolution": "~30 m at equator / 1 arc-second",
+      "format": "HGT ZIP",
+      "official_index": "https://step.esa.int/auxdata/dem/SRTMGL1/",
+      "verified_c04_tile": "N30E109.SRTMGL1.hgt.zip",
+      "verified_index_size_bytes": 16005107,
+      "retrieval_attempt": "2026-08-18 current runtime",
+      "retrieval_result": "FAILED",
+      "materialization_state": "AVAILABLE_AT_INDEX / LOCAL_BYTES_NOT_MATERIALIZED",
+      "allowed_use_after_readback": "fallback terrain comparison / independent DEM cross-check",
+      "does_not_prove": ["field survey", "current terrain change since acquisition"]
+    },
+    {
+      "id": "LANDCOVER-WORLDCOVER-2021-V200",
+      "dataset": "ESA WorldCover 10 m 2021 v200",
+      "native_resolution": "10 m",
+      "classes": 11,
+      "crs": "EPSG:4326",
+      "format": "COG GeoTIFF",
+      "official_source": "https://esa-worldcover.org/en/data-access",
+      "official_repository": "https://github.com/ESA-WorldCover/esa-worldcover-datasets",
+      "public_s3_root": "s3://esa-worldcover/v200/2021/map",
+      "expected_c04_tile": "N30E108",
+      "tile_state": "GRID-INFERRED / MUST VERIFY AGAINST OFFICIAL TILE GRID BEFORE ANALYSIS",
+      "materialization_state": "HOLD / AOI PIXELS NOT LOCALLY READ BACK",
+      "forbidden_substitution": ["WMS RGB", "screenshot", "OSM absence", "hand-drawn polygons", "generated imagery"]
+    },
+    {
+      "id": "WATER-JRC-GSW-V1.4",
+      "dataset": "JRC Global Surface Water Mapping Layers v1.4",
+      "native_resolution": "30 m",
+      "period": "1984-2021",
+      "official_source": "https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_GlobalSurfaceWater",
+      "required_bands": {
+        "occurrence": "0-100 percent water frequency",
+        "seasonality": "0-12 months water present",
+        "recurrence": "0-100 percent",
+        "transition": "categorical change"
+      },
+      "materialization_state": "HOLD / AOI PIXELS NOT LOCALLY READ BACK",
+      "forbidden_substitution": ["WMS RGB", "current OSM river line as historical water extent", "generated water envelope"]
+    }
+  ],
+  "review_handoff": {
+    "system": "OLEANDER Artifact Review System v1.1",
+    "compliance_scope": ["AR-G01..G10", "AR-S03 Data", "AR-S05 GIS", "AR-S08 Presentation", "AR-S09 Release Package when binary promotion occurs"],
+    "professional_design_crit_required": true,
+    "producer_self_check_is_independent_review": false,
+    "independent_reviewer_available_in_current_tooling": false,
+    "state": "PENDING / NO FAKE VERDICT",
+    "promotion_rule": "Only Compliance PASS + Professional Design PASS may become KEEP; v0.7 currently remains review pending."
+  },
+  "next_gate": {
+    "required_before_v0.8": [
+      "materialize at least one true ~30m terrain raster and read pixels locally",
+      "verify CRS/datum/NoData and crop exact AOI",
+      "cross-check v0.7 441-sample terrain against finer raster",
+      "materialize WorldCover AOI pixels or keep ENV-03 landcover HOLD",
+      "materialize JRC GSW occurrence/seasonality AOI pixels or keep ENV-04 water history HOLD",
+      "rerun slope/aspect/drainage/solar only from the new authoritative raster",
+      "actual preview readback",
+      "genuinely independent Professional Design Crit"
+    ]
+  },
+  "truth_boundary": [
+    "REMOTE DATA ≠ FIELD OBSERVED",
+    "DSM ≠ BARE-EARTH DTM",
+    "TILE EXISTS ≠ LOCAL PIXEL READBACK",
+    "SOURCE URL ≠ ANALYTICAL MATERIALIZATION",
+    "CI PASS ≠ DESIGN KEEP",
+    "PRODUCER READBACK ≠ INDEPENDENT REVIEW"
+  ]
+}

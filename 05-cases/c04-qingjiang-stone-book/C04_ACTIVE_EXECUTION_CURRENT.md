@@ -1,4 +1,4 @@
-# C04｜ACTIVE EXECUTION CURRENT｜2026-08-16｜NO-LOSS REFRAME
+# C04｜ACTIVE EXECUTION CURRENT｜2026-08-18｜PROJECT ARCHITECTURE v3.2
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`  
 Role: `CURRENT EXECUTION CARRIER`  
@@ -10,16 +10,18 @@ Truth boundary: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`
 Every execution round MUST read, in order:
 1. `C04_CURRENT.md`
 2. `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md`
-3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md`
-4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md` + machine content contract
-5. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
-6. lane-specific latest Owner / PR / Drive material delta.
+3. `C04_NARRATIVE_REFRAME_3AXIS_v1.0.md` as internal indexing support
+4. `C04-B_PUBLIC-NARRATIVE-AUTHORITY_v2.0.md` + `C04-B_PUBLIC-NARRATIVE-CONTENT_v2.0.json`
+5. **`C04-B_PROJECT-ARCHITECTURE_v3.0.md/.json` + `C04-B_PROJECT-ARCHITECTURE_v3.1.md/.json` + current `C04-B_PROJECT-ARCHITECTURE_v3.2.md`**
+6. `chapter-content-sync/v0.1/INDEX.md` + `manifest.json` as the preserved authored baseline, then **`chapter-content-sync/v0.2/INDEX.md` + `KNOWLEDGE-SOURCE-REGISTER.md` + its chapter/enrichment files as the latest knowledge-enriched authored supplement**
+7. this file: `C04_ACTIVE_EXECUTION_CURRENT.md`
+8. lane-specific latest Owner / PR / Drive material delta.
 
-GitHub + Google Drive remain cross-line communication / Source of Truth.
+GitHub + Google Drive remain cross-line Source of Truth. Notion remains the project knowledge/method/decision-record layer and must be consulted where relevant knowledge can materially change the work; durable knowledge/application records should be written back there without replacing GitHub artifact/version authority.
 
-## 1｜NO-LOSS RULE｜DESIGN ASSET BEFORE PRUNING
+## 1｜NO-LOSS RULE
 
-The later evidence / governance / validation subsets do **not** define the complete design inventory.
+The later evidence / governance / validation subsets do not define the complete design inventory.
 
 Hard rule:
 
@@ -27,231 +29,299 @@ Hard rule:
 > **`PIXEL FAIL ≠ DESIGN DELETE`**  
 > **`VALIDATION SUBSET ≠ WHOLE PROJECT`**
 
-Before Web / F / D deletes, demotes or rebuilds any existing object, it must first locate the object in `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0` and separately decide:
-- `CONCEPT STATE = KEEP / CURRENTIZE / COMPETE / HOLD / DROP`
-- `PRESENTATION STATE = MAIN / SUPPORT / PROCESS / REDRAW / NOT-YET-SHOWN`
+Before Web / F / D deletes, demotes or rebuilds an object, classify concept, presentation and truth state against the Asset Atlas and latest Owner/review/lock state.
 
-A stale UI / old board / weak render may be `CONCEPT KEEP / PIXELS REDRAW`.
+The full design universe remains visible in decisions:
+`Journey + R01–R13 + App/Game Map + Physical/Body + Sensory + Brand/Visual Identity + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
 
-No design disappears merely because:
-- a later validation package omitted it;
-- C23 only deepened F01/F02/F03;
-- E feature expansion was frozen;
-- an older graphic failed current evidence/visual QA;
-- the current REV04 did not have a slot for it.
+## 2｜CURRENT ARCHITECTURE｜DESIGN CAUSALITY + CHAPTER/PAGE SEPARATION
 
-The full existing design universe that must remain visible in editorial decisions includes:
-`Journey + 13 Imprints + App/Game Map + Physical/Body + Sensory + Memory/IP + Audience + Spatial/Technical + Visual/Motion`.
+Use architecture v3.0 for inherited professional content structure, v3.1 for chapter/page hierarchy and no-compression discipline, and v3.2 as the current chapter-container authority with an independent Brand / Visual Identity chapter.
 
-## 2｜CURRENT THREE-AXIS PUBLIC REFRAME
+Backbone:
 
-The user-directed public structure is now:
+`CONTEXT / EVIDENCE → PROBLEM → INSIGHT → PRINCIPLES → METHODS → MASTER SYSTEM → SUBSYSTEM DESIGN → SCENE APPLICATION → DETAIL DEVELOPMENT → TECHNICAL PROOF → PROFESSIONAL JUDGMENT → RETURN / CONCLUSION`
 
-### N1｜地域文化｜清江有什么？
-Regional history / local stories / place names / traditional landscape view / landscape knowledge / local wisdom.
+The journey remains a first-read thread only:
 
-### N2｜游玩线路与交通｜游客怎么游？
-Arrival + BOAT / CABLE / WALK + game-style Qingjiang map + route/service/return.
+`ENTER → ORIENT / CHOOSE → MOVE / OPEN → WALK / DISCOVER → STOP / OBSERVE / RECOVER → PASS → RETURN → REMEMBER`
 
-### N3｜场景游戏与人群｜到了这里具体做什么？
-`CULTURE / WISDOM / PLAY / WELLBEING × scene × audience`, activating the existing Thirteen Imprints, App, physical interaction, sensory design and memory/IP.
+The project is not compressed to the journey and is not organised as a generic list of systems.
 
-These axes reorganize existing designs. They are not three new subprojects and they do not replace existing assets.
+Architecture chapters are now CH00–CH19:
+- CH00 Project Statement
+- CH01 Project Question / Opportunity
+- CH02 Site / Landscape Analysis
+- CH03 Culture / Content Analysis
+- CH04 People / Audience Analysis
+- CH05 Journey / Behavior Analysis
+- CH06 Design Principles
+- CH07 Design Methods
+- CH08 Master Strategy / Experience System
+- CH09 Route / Mobility / Service Design
+- CH10 Thirteen Imprints / Content & Interaction System
+- CH11 Digital / App System
+- CH12 Key Scene Design
+- CH13 Physical / Body / Sensory Design
+- CH14 Brand / Visual Identity System
+- CH15 Memory / IP / Cultural Product
+- CH16 Design Detail Development
+- CH17 Technical / Model Proof
+- CH18 Process / Alternatives / Professional Judgment
+- CH19 Open Items / Return / Closure
 
-Public Hero direction:
-> **先游清江，再读清江。**
-> 从地域文化和真实游程出发，把十三印、游戏地图、数字界面、实体互动、休息、记忆和文创重新编排到真正适合发生的场景。
+The former CH14–CH18 are renumbered to CH15–CH19 only; their content is not deleted, merged or demoted.
 
-## 3｜COUNT FREE, QUALITY HARD
+### HARD DISTINCTION
 
-Page / screen / board count is unrestricted. MAIN quality is not.
+> **CHAPTER ≠ PAGE.**  
+> **A chapter is an organisational container. A page is an independent design/display unit.**  
+> **Chapter count must never be reported as page count.**
 
-Every candidate MAIN output must pass an actual finished-product design read as `KEEP` or `KEEP_AFTER_REVISION`.
+Hierarchy:
 
-`CI PASS / browser PASS / SHA / manifest / file exists / render complete / prototype works` are execution evidence only and cannot substitute for Design PASS.
+`PROJECT → CHAPTER → PAGE → MODULE / FIGURE / ASSET`
 
-### Public Quality Gate
-Check all applicable:
-1. FIRST READ
-2. COMPOSITION + SCALE
-3. HIERARCHY + RHYTHM
-4. C04 SPECIFICITY
-5. EXPERIENCE COMPLETENESS
-6. AUDIENCE VALUE
-7. PHYSICAL / PRODUCT CREDIBILITY
-8. DIGITAL EXPERIENCE + RETREATABILITY
-9. MOTION QUALITY
-10. CROSS-MEDIA CONSISTENCY
-11. PROFESSIONAL FINISH
-12. TRUTH BOUNDARY
+A single chapter may contain many pages. A chapter file or `<section>` is not a page. Existing pages cannot be collapsed merely because they now sit inside one chapter.
 
-### MAIN hard fail
-Immediately `REVISE / SUPPORT / DROP` if the output primarily reads as:
-- student report / research report / spreadsheet / dashboard / program output;
-- generic tourism / generic game UI / generic AI moodboard;
-- weak visual rescued by paragraphs;
-- Product / Service / Digital / Memory represented only by labels/matrices;
-- static slideshow or repetitive zoom motion;
-- technical PASS used as design quality proof;
-- visually implied field/operational certainty that does not exist.
+Current authored content is layered:
+- v0.1 = 70 independent **base authoring page units** from the 2026-08-17 pass;
+- v0.2 = 41 new **base authoring page units** that close CH01 / CH08 / CH15–CH19 content gaps;
+- combined base authoring inventory = 111;
+- v0.2 separately adds 11 cross-chapter professional authoring candidates;
+- v0.1 separately retains its 28 expansion candidates.
 
-Quality pruning happens **after** asset no-loss classification, not before.
+`CHxx-Pxx` remains an authoring identity only; it is not a final Web PAGE-ID. **111 / 11 / 28 are not current page_count and must not be mechanically added to the protected 52 baseline or to one another.**
 
-## 4｜ACTIVE 1｜B — EXPERIENCE + SERVICE + EDITORIAL
+## 3｜PAGE-TYPE QUALITY RULE
+
+Every new or migrated PAGE declares one page type:
+`PROJECT / ANALYSIS / AUDIENCE / PRINCIPLE / METHOD / SYSTEM / SCENE / DETAIL / TECHNICAL / PROCESS / CLOSURE`.
+
+Required grammars:
+- ANALYSIS = `evidence/observation → finding → design consequence`
+- AUDIENCE = `condition → need/risk → design response → same-scene difference`
+- PRINCIPLE = `tension → principle → application → limit`
+- METHOD = `input → operation → output → where used`
+- SYSTEM = `components → relation → user flow → fallback`
+- SCENE = `condition → decision → action → carrier → value → fallback`
+- DETAIL = `use → geometry/state → material/interface → connection → maintenance/open item`
+- TECHNICAL = `design claim → proof → what it proves → does-not-prove`
+- PROCESS = `alternatives → criteria → verdict → design learning`
+
+Generic analysis, decorative persona cards, empty matrices and generic methods without C04 output are REVISE/REJECT.
+
+## 4｜CURRENT 52-PAGE WEB｜PRESERVED BASELINE, NOT ARCHITECTURE
+
+The validated Web lineage contains **52 independent page/article surfaces**. These are a preserved page baseline.
+
+This means:
+- 52 pages currently exist as independent identities;
+- all 52 must first receive stable PAGE-ID and remain separate;
+- they must be mapped into CH00–CH19 without compression;
+- the v0.1 + v0.2 authored-content inventory must then be compared one-to-one against this register;
+- missing professional pages are added as new PAGE-ID pages only where they are materially new.
+
+It does **not** mean:
+- final count = 52;
+- chapter count = page count;
+- 20 chapters = 20 pages;
+- 21 chapter carrier files = 21 pages;
+- current order is correct;
+- all 52 deserve equal weight;
+- missing analysis/details/Brand must fit inside 52;
+- current page count = `52 + authored units`.
+
+Legacy page IDs are reserved as:
+`C04-WEB-P001 ... C04-WEB-P052`.
+
+New substantive pages use:
+`C04-WEB-N001 ...`.
+
+### Migration sequence
+1. lock `P001–P052` as independent PAGE identities;
+2. build the exact 52-row PAGE REGISTER;
+3. bind each legacy PAGE to one CH00–CH19 chapter + page type;
+4. compare the v0.1 + v0.2 authored-content inventory against the legacy register as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT`;
+5. use migration actions `KEEP / MOVE / REWRITE / REDRAW / EXPAND / PROCESS / ARCHIVE CANDIDATE`;
+6. add substantive N-series pages only for materially new content;
+7. rebuild reading rhythm using pages inside chapters;
+8. run page-by-page finished-pixel readback;
+9. run independent Design Crit;
+10. only then consider truly duplicated pages.
+
+`MERGE` is **not** a default migration action. It requires `MERGE CANDIDATE → INDEPENDENT REVIEW → APPROVED/REJECTED`. No approval = no merge.
+
+## 5｜ACTIVE 1｜B — PROJECT NARRATIVE / EDITORIAL
 
 ### EXECUTE NOW
-- Build the public story from the full Asset Atlas, not only the later 8-anchor summary.
-- Axis N1 must convert culture/history/story/feng-shui-as-cultural-view into actual scene content, not taxonomy-only pages.
-- Preserve all R01–R13 as the complete existing content/design library; current Core/Companion selection controls exposure, not existence.
-- For MAIN scenes write only: `visitor situation → action → content/game mode → audience depth → physical/digital carrier → what they gain → fallback`.
-- Use `CULTURE / WISDOM / PLAY / WELLBEING` as tags inside scenes, not four equal chapters.
-- Preserve existing family interaction verbs: `LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`.
+- build the CH00–CH19 chapter architecture without compressing pages;
+- create the exact 52-row PAGE register, not another abstract narrative essay;
+- preserve P001–P052 before adding new pages;
+- compare `chapter-content-sync/v0.1/` + `v0.2/` authored content against legacy pages before allocating N-series;
+- treat CH01, CH08 and CH15–CH19 as now explicitly authored in v0.2; deepen them only when evidence or page-level design reveals a real gap;
+- write/continue explicit design principles and methods using real C04 examples;
+- add/continue site/landscape, culture/content, audience, journey/behavior analyses with design consequences;
+- preserve all R01–R13 as the full content/design library;
+- integrate App, Physical/Sensory, Brand/Visual Identity, Memory/IP, technical detail and process into the causal architecture;
+- consume v0.2 failure/recovery, service responsibility, brand governance, cross-media proof and detail-binding additions where relevant;
+- treat HOLD/DROP as Process only when they show professional judgment.
 
 ### QUALITY STOP
-No new narrative version if it only adds categories/wording without changing a visible scene/action/design decision.
+No generic methods, generic user personas, decorative diagrams or research pages without design consequence. No generic tourism-brand identity detached from Qingjiang spatial/interaction logic.
 
 ### MAIN TEST
-The story must directly activate an existing or explicitly new design object from the Asset Atlas.
+The viewer must understand:
+`what is the problem → what was found → what principles/methods follow → what system was designed → how it changes real scenes/users → how Brand coheres across media without replacing landscape → how details make it work`.
 
-## 5｜ACTIVE 2｜D — WHOLE-PROJECT VISUAL + MOTION DIRECTION
+## 6｜ACTIVE 2｜D — VISUAL / MOTION DIRECTION
 
 ### EXECUTE NOW
-D visually unifies the **full design universe**:
-`Qingjiang landscape → Culture → Game Map → BOAT/CABLE/WALK → Thirteen Imprints → App → Physical/Sensory → Return/Memory/IP → Technical Proof`.
+Develop two compatible visual modes:
+1. **Experience mode** — real Qingjiang / journey / body / scene;
+2. **Professional mode** — analysis / principles / methods / Brand / details / technical proof.
+
+Professional graphics must still look like C04, not generic consulting diagrams.
 
 Priorities:
 - protect strongest real-Qingjiang Hero / R06 / R13 imagery;
-- raise App/Game Map, Physical, Memory/IP and Return to the same visual maturity;
-- show real designed objects, body relation and interaction, not just labels;
-- new images only when they replace a weaker MAIN asset or close a specific missing design visualization;
-- reject invented platforms/railings/cable structures/fake terrain and generic tourism-game moodboards.
+- improve landscape/site/journey analysis graphics;
+- create strong diagrams for principles and methods;
+- raise App/Game Map, selected Physical, Brand/Visual Identity, Memory/IP and Return visual maturity;
+- make Brand operate at medium-appropriate strength: FULL for communications/cover, LIGHT for App/map/content, TRACE in field, OFF where landscape/body attention must dominate;
+- show actual designed objects, body relation and interaction;
+- reject invented terrain/structures and generic tourism/game moodboards.
 
-### MOTION
-The next film edit must restore App / 13 Imprints / physical interaction / memory into the journey. It may not remain an abstract `relation → reveal → withdrawal` slideshow.
+Film remains mainly experiential:
+`ENTER → MOVE → OPEN → DISCOVER/STOP → PASS → RETURN → REMEMBER`.
 
-### MAIN TEST
-A candidate should still read as this Qingjiang project with most explanatory text hidden.
+Web/PDF/boards carry deeper professional reading.
 
-## 6｜ACTIVE 3｜WEB PUBLIC EXPERIENCE
+## 7｜ACTIVE 3｜WEB
 
 ### EXECUTE NOW
-The next Web successor must consume the full Asset Atlas before layout pruning.
+Rebuild Web around v3.0/v3.1/v3.2, using **chapters as containers and pages as the display unit**.
 
-Required design systems to make visible at professional depth:
-- real Qingjiang + journey;
-- N1 culture/content engine;
-- game-style Qingjiang map + BOAT/CABLE/WALK;
-- **Qingjiang Thirteen Imprints App as a primary designed outcome**;
-- full 13-content system with selected deep scene examples;
-- physical/body/sensory designs including `步步生光`, rail-rest, fluid-rest candidate, `清风吟`;
-- audience-specific scene actions;
-- `清江旅记 + 我的石书 + 清江一线 + 清江雾气 + 红花峰崽` memory/IP layer;
-- C22/C23/SEC-A/R06 node technical proof.
+Mandatory content coverage before pruning:
+- project problem/opportunity;
+- site/landscape analysis;
+- culture/content analysis;
+- people/audience analysis;
+- journey/behavior analysis;
+- design principles;
+- design methods;
+- master system;
+- Route/Mobility/Service;
+- Thirteen Imprints;
+- App/Digital;
+- key scenes;
+- Physical/Sensory;
+- Brand / Visual Identity;
+- Memory/IP;
+- design detail development;
+- technical/model proof;
+- alternatives/process;
+- Return/open-items closure.
 
-Stop treating the Web as a fixed stack of equal 16:9 screens. Section length is content-derived.
+Web implementation must distinguish:
+- `<section data-chapter="CHxx">` = chapter container;
+- `<article data-page-id="...">` = page;
+- inner figure/card/grid = module, not page.
 
-Suggested macro rhythm, freely split/merge by quality:
-`Hero → Culture → How to Play / Map → App → 13 Imprints → Scene Interactions → Audience Depth → Physical/Sensory → R06/R13 → Memory/IP → Technical Proof → Return`.
+Build/readback must report separately:
+- `chapter_count`
+- `page_count`
 
 ### QUALITY STOP
-Do not preserve old REV04 sections merely because they exist. But do not delete an underlying design concept merely because its old pixels fail.
+- no fixed page-count compression;
+- no chapter-to-page compression;
+- no 20 chapters presented as 20 pages;
+- no 21 chapter-carriers presented as 21 pages;
+- no equal PPT-like board stacking;
+- no governance-first headlines;
+- no generic system taxonomy as the whole story;
+- no Brand chapter reduced to Logo/colour mockup wall;
+- no deleting valid analysis/details because they are not part of the journey spine.
 
 ### MAIN TEST
-The Web must read as a complete designed tourism/experience system, not a research presentation embedded in a webpage.
+Web must read as both:
+- a compelling Qingjiang project;
+- a complete professional design study with a coherent but landscape-subordinate Brand system.
 
-## 7｜ACTIVE 4｜PHYSICAL / PRODUCT / DETAIL｜C23 + MODEL + EXISTING OUTCOMES
+## 8｜ACTIVE 4｜PHYSICAL / PRODUCT / DETAIL
 
-### EXECUTE NOW
-C23 + Model are **technical proof for selected existing outcomes**, not the full Physical definition.
+Current selection discipline remains:
+- P02 railing leaning-rest = `KEEP / HIGH-PRIORITY SUPPORT / NOT LOCATED`;
+- PHY-01 step-light = `KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT`;
+- Fluid Rest = `HOLD / SINGLE-SITE COMPETITION`;
+- Qingfengyin = `HOLD / WIND-SENSORY CANDIDATE`;
+- F01–F04 / C23 / Model = technical/service descendants/support.
 
-Existing Physical / Sensory universe to retain in decisions:
-- `PHY-01 步步生光` — Primary Physical Hero Candidate;
-- `栏杆式可拆卸倚靠休息板` — service/recovery support;
-- `山体流体休憩装置` — conditional secondary physical hero candidate;
-- `清风吟` — sensory interaction / memory candidate;
-- `F01/F02/F03/F04` — current technical/service descendants and supporting layer.
+R06 experience remains `FINISHED / FROZEN / NO REOPEN`.
 
-For any MAIN physical object show, as applicable:
-`scene → body action → use → body scale → plan/section/axon/exploded proof → material/CMF → mounting/maintenance concept → environment sensitivity → FIELD OPEN items`.
+For selected outcomes show as applicable:
+`WHY HERE → BODY ACTION → USE → SCALE → PLAN/SECTION/AXON/EXPLODED → MATERIAL/CMF → CONNECTION → MAINTENANCE → ENVIRONMENT SENSITIVITY → FIELD OPEN`.
 
-Model priority remains selective:
-- `SEC-A` = strongest primary section candidate;
-- `R06 node` = pair with R06 landscape: feeling + how it works;
-- `Hero clay` only if it adds spatial clarity;
-- `overall Axon` support;
-- no new model views if they are weaker than C23 linework or real Qingjiang landscape.
+No pseudo-construction certainty and no automatic revival of HOLD concepts.
 
-### QUALITY STOP
-No infinite detailing, pseudo-construction certainty or new object family merely to grow deliverables.
+## 9｜ACTIVE 5｜F — FINAL INTEGRATION
 
-## 8｜ACTIVE 5｜F — FINAL INTEGRATION / EDITOR
-
-### EXECUTE NOW
-F must classify **concept and pixels separately** before `MAIN / SUPPORT / PROCESS / DROP`.
+F must assemble the same causal architecture across media.
 
 Order:
-1. inventory all current candidates against `C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0`;
-2. mark `CONCEPT KEEP / PIXELS KEEP` or `CONCEPT KEEP / PIXELS REDRAW` etc.;
-3. protect strongest Qingjiang-specific assets;
-4. restore missing App / 13 Imprints / Physical / Sensory / Memory/IP before pruning;
-5. then remove duplicated research pages, matrix-led pages, weak filler and stale pixels from MAIN;
-6. assemble Web/PDF/boards/film with one cross-media hierarchy.
+1. inventory current PAGEs/objects;
+2. apply latest Owner / lock / review state;
+3. separate concept state from pixel state;
+4. bind each legacy PAGE to CH00–CH19 + page type;
+5. compare the v0.1 + v0.2 authored-content inventory to the 52-row register;
+6. identify truly missing professional content and add new N-series pages;
+7. protect strong C04-specific outputs;
+8. apply the Brand system across media at medium-appropriate strength without turning it into field visual noise;
+9. remove duplication, filler, stale pixels and governance noise only after page-level content completion and independent review;
+10. create Web / PDF / boards / film at medium-appropriate depth.
 
-Current REV04 binaries remain delivery provenance until a quality-gated successor is actually built and read back. Their existence does not grant MAIN status and their omissions do not delete project assets.
+Old 20-screen / REV04 / 52-page counts are not compression targets.
 
-## 9｜DIGITAL STATUS CORRECTION｜NO FEATURE BLOAT, BUT NOT INVISIBLE
+## 10｜CURRENT LOCKS / DO NOT REOPEN
 
-The previous label `E DIGITAL = WATCH/FREEZE` caused a false interpretation that the App should disappear.
+- `ROUTE-03` remains locked current route binding.
+- `JOURNEY-04` remains provenance unless authority changes.
+- R06 experience remains frozen/no-reopen.
+- R01–R13 remain optional content, not a mandatory linear route.
+- legacy 13/13 completion authority stays dropped.
+- HOLD Physical concepts do not become current/built MAIN without new valid review.
+- Brand is an independent professional system but does not gain route, landscape, safety or field authority.
+- App feature bloat remains frozen; App design/presentation/explanation remains active.
+- no species/geology/safety/exact geometry/ancient-site equivalence inferred from name/appearance.
+- no 2025 operations data written as current 2026 live fact without verification.
+- traditional landscape/feng-shui is not scientific/engineering evidence.
+- wellbeing/selenium claims remain non-medical/non-treatment unless verified.
+- `C23 validation subset ≠ whole Physical project`.
 
-Correct execution:
-- **freeze uncontrolled feature expansion**;
-- **actively currentize and present the existing App/UI design**;
-- currentize `C04_Digital_UI_Detail_System_v0.6` + QJ-E materialization into a coherent current App candidate;
-- retain `TODAY / ROUTE / READ / MY BOOK` + always-accessible Service/Return;
-- retain game feeling through map reveal, exploration, imprint states, personal route/memory and light interactions;
-- remove legacy `9/13`, `07/13`, completion-score closure and any route-task authority;
-- preserve NORMAL/DEGRADED/CLOSED/UNKNOWN, FULL/LIGHT/OFF, Offline and Return Priority as behavior constraints, not public chapters;
-- no-phone remains a parallel complete route/service path.
-
-This Digital currentization is now part of Web/D/F ACTIVE execution even if E feature engineering itself remains frozen.
-
-## 10｜WATCH / FREEZE
+## 11｜WATCH / FREEZE
 
 ### A — RESEARCH / EVIDENCE
-Only intervene for new claims, contradiction, source support or evidence boundary. Research does not lead the public story.
+Intervene for new claims, contradiction, source support and evidence-bounded analysis.
 
 ### E — FEATURE ENGINEERING ONLY
-New feature expansion frozen. Existing App currentization and presentation are ACTIVE through B/D/Web/F under Section 9.
+New feature expansion frozen. Existing App currentization, presentation and professional explanation remain active through B/D/Web/F.
 
 ### GOVERNANCE / QC
-Only version pollution, false PASS, stale Current, source-boundary, persistence/recoverability and cross-media contradiction.
-
-## 11｜EACH HOURLY ROUND
-
-For every ACTIVE area report:
-- `STRONGEST IMAGE/OUTPUT`
-- `WEAKEST IMAGE/OUTPUT`
-- `DESIGN PROBLEM`
-- `ONE REVISION`
-- `VERDICT = KEEP / REVISE / REJECT / FREEZE`
-- `NEXT-HOUR EXECUTION`
-
-For D/Web/F also report affected objects as `MAIN / SUPPORT / PROCESS / DROP`, but only **after** concept/pixel separation.
-
-End with:
-1. what actual design/output changed this hour;
-2. which concrete current object still looks most like student/research/program output;
-3. next 1–3 highest-value actual design actions;
-4. frozen lanes.
+Version pollution, false PASS, stale Current, source boundary, persistence/recoverability and cross-media contradiction only.
 
 ## 12｜CURRENT EXECUTION PRIORITY
 
-1. **Full-asset inventory + Web reassembly** — no design loss.
-2. **App / Game Map currentization** — existing design returns to MAIN candidate status.
-3. **Physical/Sensory + Memory/IP visual recovery** — select and present strongest existing designs.
-4. **Culture-to-scene interaction binding** — feed Thirteen Imprints and App/gameplay.
-5. **Film/boards successor** — only after the above visual hierarchy exists.
-6. C23/Model technical proof only where it makes a design clearer.
-7. A / new E feature engineering / Governance = WATCH/FREEZE unless triggered.
+1. **Lock P001–P052 as 52 independent pages; no merge.**
+2. **Build the exact 52-row PAGE REGISTER and map all legacy pages to CH00–CH19 without collapsing them.**
+3. **Compare the v0.1 + v0.2 authored-content inventory to the legacy register; never calculate `52 + authored units`.**
+4. **Classify authored units as `MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT` and identify only residual gaps.**
+5. **Add N-series professional pages only for materially new content before deleting anything.**
+6. **CH01 / CH08 / CH15–CH19 are now authored in v0.2; bind and design them rather than regenerating filler.**
+7. **Rebuild overall reading rhythm using PAGE units inside CHAPTER containers.**
+8. **Protect ROUTE-03, R06 frozen state and current Physical selection.**
+9. **Re-edit technical/model proof after design/detail pages.**
+10. **Build Process pages from real alternatives/selection logic, not file history.**
+11. **Run PAGE-ID finished-output readback and independent Crit.**
+12. **Only after approval, consider truly duplicate page merge candidates.**
 
-This file is the current execution carrier. The project is evaluated by actual designed outputs, while the Asset Atlas prevents valuable existing design work from being silently erased.
+This file is the current execution carrier. The project is evaluated as a complete professional design project, with first-read clarity and professional depth simultaneously required.

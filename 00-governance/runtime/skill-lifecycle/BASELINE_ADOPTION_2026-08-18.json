@@ -1,0 +1,25 @@
+{
+  "record_id": "OLEANDER-SKILL-LIFECYCLE-BASELINE-2026-08-18",
+  "status": "ACTIVE_BASELINE_RECORD",
+  "effective_date": "2026-08-18",
+  "purpose": "Adopt the Current lifecycle vocabulary without fabricating retroactive promotion evidence.",
+  "rule": "Existing states are baseline-adopted from Current repository authority; all future lifecycle transitions require explicit promotion records.",
+  "installed_pre_contract_baseline": [
+    {"skill_id":"oleander-research","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"},
+    {"skill_id":"oleander-data-viz","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"},
+    {"skill_id":"oleander-3d-pipeline","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"},
+    {"skill_id":"oleander-story-and-board","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"},
+    {"skill_id":"oleander-delivery-qc","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"},
+    {"skill_id":"oleander-motion","lifecycle_state":"INSTALLED","routing_state":"INSTALLED_OWNER","evidence_refs":["oleander-skills/REVIEW.md"],"promotion_history":"PRE_CONTRACT_NOT_RETROACTIVELY_INVENTED"}
+  ],
+  "candidate_baseline": [
+    {"skill_id":"oleander-ui-visual-composition","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_OWNER"},
+    {"skill_id":"oleander-ui-interaction","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_OWNER"},
+    {"skill_id":"oleander-route-wayfinding-ui","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_OWNER"},
+    {"skill_id":"oleander-game-ui","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_OWNER"},
+    {"skill_id":"oleander-mobile-game-ui","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_OWNER"},
+    {"skill_id":"OLEANDER Technical Drawing","lifecycle_state":"CANDIDATE","routing_state":"CANDIDATE_BODY"}
+  ],
+  "future_transition_required_fields": ["from_state","to_state","evidence_refs","reviewer_id","decision_ref","effective_commit"],
+  "does_not_prove": ["historical_promotion_quality","candidate_validation","design_quality","project_promotion"]
+}

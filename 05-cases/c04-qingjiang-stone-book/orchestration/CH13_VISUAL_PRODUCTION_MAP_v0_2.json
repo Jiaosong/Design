@@ -1,0 +1,81 @@
+{
+  "schema": "c04.ch13.visual-production-map.v0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13",
+  "status": "CURRENT_CANDIDATE_PAGE_EXECUTION_DECISIONS",
+  "supersedes_after_merge": "CH13_VISUAL_PRODUCTION_MAP_v0_1",
+  "public_sequence": ["S01:P02","S02:P01","S03:P03","S04:P04","S05:P05","S06:P06","S07:P07"],
+  "production_order": ["S01","S03","S04","S05","S06","S07","S02"],
+  "global_rule": "SOURCE_BODY_OBJECT_FIRST_THEN_RELATION_OPTIONAL_REVEAL_TECHNICAL_PROOF",
+  "surfaces": [
+    {
+      "id": "S01",
+      "authoring_unit": "CH13-P02",
+      "claim": "SHORT_RECOVERY_NOT_DESTINATION",
+      "first_visual": "ODB-02_ORIGINAL_BOARD_INDEPENDENT_EXHIBIT_CHILD",
+      "forbidden_primary": ["F01_SCENIC_RENDER","CURRENTIZED_RECOVERY_BOARD_AS_DOMINANT_IMAGE"],
+      "interaction": "WALK_FATIGUE_LEAN_LOOK_CONTINUE_RETURN",
+      "model": "NO_NEW_3D",
+      "image_transition": "KEEP_EXISTING_DESCENDANT_RESERVATION_UNTIL_ODB02_CHILD_HASHED_THEN_RELEASE_AND_REPLACE"
+    },
+    {
+      "id": "S02",
+      "authoring_unit": "CH13-P01",
+      "claim": "BODY_PROBLEM_PRECEDES_OBJECT",
+      "first_visual": "NATIVE_VECTOR_LEVEL0_TO_LEVEL3_CONTINUOUS_FIELD",
+      "interaction": "SCROLL_THRESHOLD_REVEAL",
+      "model": "NONE",
+      "image": "NO_SEMANTIC_CONTENT_IMAGE"
+    },
+    {
+      "id": "S03",
+      "authoring_unit": "CH13-P03",
+      "claim": "BODY_SUPPORT_WITHOUT_PASSAGE_OR_SAFETY_CONFLICT",
+      "first_visual": "ODB-02_INDEPENDENT_SECTION_OR_ORTHOGRAPHIC_CHILD",
+      "interaction": "ADULT_ELDER_CHILD_MISUSE_TWO_PERSON_PASS_STATE_SWITCH",
+      "model": "SVG_2_5D_FIRST_NEW_3D_ONLY_IF_2D_PROOF_FAILS",
+      "proof": ["BODY_SUPPORT","CLEAR_WALKING_ZONE","VIEW","FALL_EDGE","FIELD_VERIFY"]
+    },
+    {
+      "id": "S04",
+      "authoring_unit": "CH13-P04",
+      "claim": "STEP_RESPONSE_FADE",
+      "first_visual": "LIVE_NATIVE_PATH_INTERACTION",
+      "interaction": "IDLE_STEP_RESPONSE_FADE_IDLE",
+      "model": "NONE",
+      "image": "NATIVE_SVG_HTML_RUNTIME"
+    },
+    {
+      "id": "S05",
+      "authoring_unit": "CH13-P05",
+      "claim": "SPATIAL_INTERVENTION_ONLY_WHEN_SHORT_SUPPORT_INSUFFICIENT",
+      "first_visual": "ODB-03A_INDEPENDENT_BODY_IN_SPACE_EXHIBIT_CHILD",
+      "interaction": "SHORT_SUPPORT_LONGER_REST_SPATIAL_INTERVENTION_BOUNDED_COMPARISON",
+      "model": "NO_NEW_MODEL",
+      "image": "ODB03A_UNIQUE_CHILD_RESERVED_S05_ONLY"
+    },
+    {
+      "id": "S06",
+      "authoring_unit": "CH13-P06",
+      "claim": "STRONG_INTERVENTION_COST_VISIBLE_IN_TECHNICAL_PROOF",
+      "first_visual": "ODB-03B_INDEPENDENT_SCALE_BODY_MATERIAL_APPLICATION_CHILD_OR_NATIVE_TECHNICAL_VECTOR",
+      "support": ["FLUID_REST_V2_6_BODY_POSTURE_TRANSVERSE_SECTION","C04_FLUID_REST_VIEWER_V1_2_AFTER_LINEAGE_VERIFICATION_ONLY"],
+      "interaction": "LAYERED_REVEAL_BODY_WALK_DRAINAGE_SLIP_STRUCTURE_MAINTENANCE",
+      "model": "NO_NEW_3D_EXISTING_VIEWER_SUPPORT_ONLY_IF_PROVENANCE_VERIFIED",
+      "image": "ODB03B_UNIQUE_CHILD_RESERVED_S06_ONLY"
+    },
+    {
+      "id": "S07",
+      "authoring_unit": "CH13-P07",
+      "claim": "NOTICE_THE_WIND_ALREADY_PRESENT",
+      "first_visual": "ODB-04B_QINGFENGYIN2_UNIQUE_SCENE_CHILD",
+      "interaction": "NONE_TRACE_FRAME",
+      "model": "DO_NOT_MODEL_YET",
+      "image": "ODB04B_UNIQUE_CHILD_RESERVED_S07_ONLY"
+    }
+  ],
+  "model_line_reopened": false,
+  "image_uniqueness": "ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
+  "truth_boundary": ["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","NTS","NOT_FOR_CONSTRUCTION"],
+  "does_not_prove": ["FINISHED_PIXEL_DESIGN_KEEP","INTERACTION_RUNTIME_PASS","MODEL_AUTHORITY","ENGINEERING_VALIDITY","FIELD_TRUTH","RIGHTS_CLEARANCE","PROTECTED_WEB_PAGE_ID_ASSIGNMENT","PROJECT_PROMOTION"]
+}

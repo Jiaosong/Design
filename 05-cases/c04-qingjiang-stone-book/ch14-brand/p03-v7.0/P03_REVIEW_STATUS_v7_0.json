@@ -1,0 +1,12 @@
+{
+  "version": "v7.0",
+  "execution": "COMPLETE",
+  "representation_gate": "IMPLEMENTED",
+  "visual_readback": "desktop/mobile rendered; all images loaded; no horizontal overflow",
+  "professional_design_gate": "PENDING INDEPENDENT REVIEW",
+  "does_not_prove": [
+    "Design PASS",
+    "operator approval",
+    "physical production approval"
+  ]
+}

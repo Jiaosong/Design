@@ -1,0 +1,24 @@
+object_id,canonical_identity_state,latest_material_delta,latest_independent_annotation,effective_candidate_presentation,effective_truth_state,organization_action
+A01,KEEP,09_C04_R06_AUDIENCE_DEPTH_CURRENTIZED_v4.png|Drive:16WA2GIiNFrRsT9r-k1nPxw2PfPlyEpNt,PR155 comment 5309150362,KEEP_AFTER_REVISION_MAIN_CANDIDATE__MAIN_NOT_LOCKED,FIELD_OPEN,Use Drive v4 as strongest pixel candidate; retain PR155 v1.2 as provenance
+A02,KEEP,A01_v4_same_scene_use_depth,PR155 comment 5309150362,MAIN_IN_SCENES__LABELS_SECONDARY,DESIGN_MECHANICS,Do not add personas or matrices
+A03,KEEP,A01_v4_same_scene_use_depth,PR155 comment 5309150362,SUPPORT_SERVICE_PROOF,FIELD_ACCESSIBILITY_OPEN,Retain independent accessibility object
+A04,KEEP,A01_v4_same_scene_use_depth,PR155 comment 5309150362,PROCESS_SCENE_BEHAVIOR,NO_PSEUDO_LIVE,Retain context overlay independent of audience labels
+P01,KEEP_PRIMARY_CANDIDATE,14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png|Drive:1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq,PR143 comment 5309151148,HOLD_PROCESS_SUPPORT_CURRENT_PRESENTATION,FIELD_NEED_AND_TECH_OPEN,Preserve concept identity; do not promote current step-feedback pixels to MAIN
+P02,KEEP,14_C04_PHYSICAL_RECOVERY_CURRENTIZED_v4.png|Drive:1NGUpza1j9CTUMppBaFbkGt3aL40dEdKq,PR143 comment 5309151148,KEEP_TECHNICAL_SUPPORT_CANDIDATE,FIELD_LOAD_ATTACHMENT_OPEN,Use as short-recovery/body-support proof only
+P03,COMPETE_CONDITIONAL,PR151 model proof + PR164 pairing review,PR164 comment 5310943146,PHYSICAL_TECH_SUPPORT_ONLY__LOCATION_HOLD,FIELD_SITE_ENGINEERING_OPEN,Real Qingjiang first; model only where body use or assembly becomes clearer
+P04,COMPETE_WITH_P03,PR151 model proof + PR164 pairing review,PR164 comment 5310943146,PROCESS_SUPPORT__NOT_EQUAL_SECOND_FINAL,FIELD_SITE_ENGINEERING_OPEN,Keep design lineage; do not multiply final variants
+P05,KEEP_REDUCE,PR152 + PR159 presentation lineage,PR164 comment 5310943146,LOW_DENSITY_SENSORY_CANDIDATE__DO_NOT_MODEL_YET,FIELD_MOUNTING_ECOLOGY_OPEN,Select one response mechanism before any model lineage
+P06,KEEP_TECH_PROOF,08_C04_PHYSICAL_PRODUCT_FAMILY_CURRENTIZED_v4.png|Drive:1jFuEFNNR99sGF3SpPBdboSnjAzUA3p2R,PR143 comment 5309151148,SUPPORT_ONLY__FAMILY_TIMELINE_NOT_MAIN,FIELD_ENGINEERING_OPEN,Do not let F01-F04 define whole Physical universe
+R05,KEEP,PR133 interaction currentization,PR133 comments/review 5306437746|4945922377,MAIN_CANDIDATE__LANDSCAPE_PIXEL_HOLD,OFFICIAL_HONGHUA_PIXEL_OPEN,No generic Qingjiang AI or abstract peak substitution
+R06,KEEP,PR133 v1.3 + PR145 integrated scene,PR133 review 4945922377 + PR145 review 4946048753,EXPERIENCE_KEEP_AFTER_REVISION_MAIN_BOUND__CURRENT_SCENE_PIXELS_REVISE,FIELD_EXPERT_OPEN,Landscape first; professional body/product carrier required; technical proof independent/support
+R13,KEEP,PR145 integrated scene,PR145 review 4946048753,KEEP_AFTER_REVISION_MAIN_SUPPORT_CANDIDATE__NOT_FINAL_MAIN,SOURCE_GROUNDED_FIELD_SAFETY_OPEN,Body passage route Return first; reduce method-panel density
+T01,KEEP,C22 section namespace correction,PR133 comments/review 5306437746|4945922377,SUPPORT_TECH_MAIN,RELATIONAL_NOT_SURVEY,C22-SEC-A=cable; C22-SEC-B=R06; C22-SEC-C=R13
+T02,KEEP_VALIDATION_SUBSET,PR133 technical currentization,PR133 review 4945922377,SUPPORT_TECH_MAIN,VALIDATION_SUBSET_FIELD_OPEN,GA section detail and foundation CMF are support technical not overall MAIN
+T04,KEEP,model namespace clarification,PR133 comment 5306437746,MAIN_TECH_CANDIDATE_WITH_NAMESPACE_LOCK,CONCEPT_SECTION_NOT_FIELD,Do not use generic SEC-A=R06 shorthand; distinguish C22 and model namespaces
+T06,KEEP,C23-R06-GA_DETAIL + model proof lineage,PR133 review 4945922377,SUPPORT_TECHNICAL__PAIR_WITH_R06,CONCEPT_NTS_FIELD_OPEN,Do not fabricate missing raw CURRENT pixel; pair feeling + how it works
+N01,KEEP,PR128 Culture Main v2 bounded package,PR128 comment 5306228530,CULTURE_V2_BOUNDED_KEEP_MAIN_SET__PR_OPEN_DRAFT,REMOTE_RESEARCH,Record artifact-level KEEP without merging candidate into Current
+N02,KEEP,PR128 Culture Main v2 bounded package,PR128 comment 5306228530,CULTURE_V2_BOUNDED_KEEP_MAIN_SET__PR_OPEN_DRAFT,REMOTE_RESEARCH,CUL2_01/03/05 MAIN; CUL2_02/04 MAIN-SUPPORT
+F02,KEEP_PROVENANCE_REEDIT,PR114 delivery lineage,PR114 comment 5300784353,EXECUTED_REVISE_PROVENANCE,DOWNSTREAM_CARRIER,Machine/file QC does not close Professional Design gate
+F03,KEEP_PROVENANCE_REEDIT,PR114 + PR164 motion lineage,PR114 comment 5300784353,EXECUTED_REVISE_OR_REEDIT_PROVENANCE,DOWNSTREAM_CARRIER,Do not treat decode success as Motion Design PASS
+F01,KEEP_PROVENANCE_REBUILD,PR164 current Web integration,PR164 comment 5311091062,DOWNSTREAM_WEB_CARRIER,DOWNSTREAM_CARRIER,Separate Web lane consumes project register; omission is not deletion
+D01,KEEP_CURRENTIZE,PR162 latest existing App candidate,PR162 comment 5311091547,LATEST_EXISTING_APP_CANDIDATE__USER_OWNED_NEXT,BEHAVIOR_BOUNDARY_OPEN,Register only; no project-organization or Web redesign

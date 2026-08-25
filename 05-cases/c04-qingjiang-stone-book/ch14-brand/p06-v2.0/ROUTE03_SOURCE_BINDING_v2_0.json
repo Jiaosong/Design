@@ -1,0 +1,11 @@
+{
+  "object": "ROUTE-03",
+  "artifact": "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+  "upstream_pr": 192,
+  "upstream_commit": "128b9069c686b9a8ab65d6425fa928890f0604dc",
+  "upstream_blob_sha": "6a2343247907d15b16368c5b59af0d896fe3a9cc",
+  "locked_package_sha256": "977307610d1908c3951535b57222355c39fe262f0f2e3da68d803055a882aabb",
+  "locked_svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+  "geometry_policy": "NO MUTATION / EXCERPT + CROP + STYLING ONLY",
+  "truth": "NTS / NOT GPS / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

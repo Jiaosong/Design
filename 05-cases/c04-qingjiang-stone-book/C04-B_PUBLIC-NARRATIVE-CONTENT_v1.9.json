@@ -1,0 +1,185 @@
+{
+  "schema": "c04-public-narrative-content/1.9",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "date": "2026-08-17",
+  "status": "JOURNEY_LED_PUBLIC_NARRATIVE_DIRECTION_FIELD_OPEN_NO_PROMOTION",
+  "supersedes_public_story_order": "C04-B_PUBLIC-NARRATIVE-CONTENT_v1.8.json",
+  "preserves": [
+    "FULL_DESIGN_UNIVERSE",
+    "R01_R13_CANONICAL_CONTENT",
+    "APP_DIGITAL",
+    "PHYSICAL_SENSORY",
+    "MEMORY_IP",
+    "AUDIENCE",
+    "SPATIAL_TECHNICAL_MODEL",
+    "VISUAL_MOTION",
+    "RETURN"
+  ],
+  "public_definition": {
+    "title_cn": "先游清江，再读清江。",
+    "subtitle_cn": "水上看，空中看，山中走；需要时，再打开一页清江。",
+    "statement_cn": "《清江石书》把一次真实的清江游程，设计成一套可以自由进入、随时退出、无需完成任务的山水探索体验。地图、数字界面、实体设施和十三印都服务于游程，不取代真实景观，也不把十三印变成十三个任务站。"
+  },
+  "public_spine": [
+    "ENTER_QINGJIANG",
+    "CHOOSE_HOW_TO_MOVE",
+    "CROSS_AND_OPEN_LANDSCAPE",
+    "WALK_AND_DISCOVER",
+    "STOP_OBSERVE_RECOVER",
+    "PASS_WITHDRAW",
+    "RETURN",
+    "REMEMBER"
+  ],
+  "indexing_axes_not_public_chapters": [
+    {"id":"N1","name":"CULTURE_CONTENT_INDEX","role":"INTERNAL_EDITORIAL_INDEX"},
+    {"id":"N2","name":"JOURNEY_MOBILITY_INDEX","role":"INTERNAL_EDITORIAL_INDEX"},
+    {"id":"N3","name":"SCENE_AUDIENCE_INDEX","role":"INTERNAL_EDITORIAL_INDEX"}
+  ],
+  "current_bindings": {
+    "route": {
+      "current_object":"ROUTE-03",
+      "state":"LOCKED_CURRENT_FOR_DOWNSTREAM_PUBLIC_BINDING",
+      "journey04":"PROVENANCE_NON_CURRENT"
+    },
+    "r06":"FINISHED_FROZEN_NO_REOPEN",
+    "thirteen_imprints":"OPTIONAL_CONTENT_LIBRARY_NOT_ROUTE_AUTHORITY",
+    "app_role":"HIDDEN_COMPANION_NOT_SECOND_SCENIC_SYSTEM"
+  },
+  "design_decisions": [
+    {
+      "id":"D01",
+      "title_cn":"先让清江成为主角",
+      "decision":"REAL_QINGJIANG_FIRST",
+      "visitor_change":"LANDSCAPE_BODY_RELATION_BEFORE_EXPLANATION",
+      "main_proof":["HERO","R06_LANDSCAPE","MAJOR_JOURNEY_SCENES"]
+    },
+    {
+      "id":"D02",
+      "title_cn":"把游程设计成三种尺度的切换",
+      "decision":"BOAT_CABLE_WALK_AS_EXPERIENCE_SCALES",
+      "visitor_change":"WATER_AIR_BODY_SCALE_READING_OF_SAME_QINGJIANG",
+      "main_proof":["ROUTE-03","BOAT","CABLE","WALK"]
+    },
+    {
+      "id":"D03",
+      "title_cn":"十三印沿途出现，但不定义路线",
+      "decision":"OPTIONAL_CONTENT_NOT_MANDATORY_STOPS",
+      "visitor_change":"READ_PLAY_OR_SKIP_WITHOUT_ROUTE_OR_RETURN_PENALTY",
+      "interaction_verbs":["LOOK","COMPARE","TRACE","LISTEN","WAIT","FRAME","STEP","REMEMBER"]
+    },
+    {
+      "id":"D04",
+      "title_cn":"不同场景使用不同注意力",
+      "decision":"SCENE_ATTENTION_DENSITY_VARIES",
+      "scene_intensities":["LANDSCAPE_FIRST","READ_RECOVER","PASS_RETURN_FIRST"],
+      "examples":{"R06":"LANDSCAPE_OPTIONAL_READ_RECOVER","R13":"PASS_EXIT_RETURN","R01":"MOVING_VIEW_LIGHT_TOUCH"}
+    },
+    {
+      "id":"D05",
+      "title_cn":"数字体验是一名隐性助手，不是第二个景区",
+      "decision":"DIGITAL_SUPPORTS_ORIENTATION_READING_MEMORY_AND_WITHDRAWS",
+      "stable_functions":["TODAY","ROUTE","READ","MY_BOOK","SERVICE_RETURN"],
+      "parallel_fallback":["PAPER_MAP","HUMAN_SERVICE","NO_PHONE_ROUTE_RETURN"]
+    },
+    {
+      "id":"D06",
+      "title_cn":"实体设计只在身体真正需要时出现",
+      "decision":"PHYSICAL_INTERVENTION_ONLY_WHERE_BODY_NEEDS_IT",
+      "current_selection": {
+        "RAILING_LEANING_REST":"KEEP_HIGH_PRIORITY_SUPPORT_NOT_LOCATED",
+        "PHY01_STEP_LIGHT":"KEEP_CONCEPT_HOLD_SELECTION_PROCESS_SUPPORT",
+        "FLUID_REST":"HOLD_SINGLE_SITE_COMPETITION",
+        "QINGFENGYIN":"HOLD_WIND_SENSORY_CANDIDATE"
+      }
+    },
+    {
+      "id":"D07",
+      "title_cn":"同一场景，为不同人提供不同深度",
+      "decision":"AUDIENCE_DEPTH_INSIDE_SAME_SCENE",
+      "modes":["FAMILY_CHILD","YOUTH_EXPLORER","ADULT_DEEP_READ","OLDER_LOW_STAMINA"],
+      "no_persona_chapter":true
+    },
+    {
+      "id":"D08",
+      "title_cn":"用回程完成故事，用记忆带走清江",
+      "decision":"RETURN_AND_MEMORY_NOT_COMPLETION_SCORE",
+      "memory_hierarchy": {
+        "QINGJIANG_JOURNAL":"PHYSICAL_MEMORY_MAIN_CANDIDATE",
+        "MY_BOOK":"DIGITAL_MEMORY_HERO",
+        "QINGJIANG_LINE":"SUPPORT_EXTENSION",
+        "QINGJIANG_MIST":"SUPPORT_EXTENSION",
+        "QINGFENGYIN_MEMORY":"SUPPORT_EXTENSION",
+        "HONGHUA_PEAK_CUB":"SUPPORT_FAMILY_LAYER"
+      }
+    }
+  ],
+  "scene_proof": {
+    "R06": {
+      "decision_cn":"先看完整河谷，再选择是否读深",
+      "order":["LANDSCAPE","BODY_PATH_RELATION","OPTIONAL_READ","RECOVER","CONTINUE_OR_RETURN"],
+      "technical_after_decision":true
+    },
+    "R13": {
+      "decision_cn":"通过本身就是体验",
+      "order":["BEFORE","PASS","EXIT","BACK_LOOK_RETURN"],
+      "high_attention_play":"OFF",
+      "memory_inside_passage":false
+    },
+    "RETURN": {
+      "decision_cn":"最后重新认出清江",
+      "order":["RETURN_CERTAINTY","LANDSCAPE_AGAIN","JOURNAL_MY_BOOK","OPTIONAL_MEMORY_OBJECT"]
+    }
+  },
+  "culture_rule": {
+    "public_role":"SCENE_LAYER_NOT_STANDALONE_TAXONOMY_CHAPTER",
+    "internal_indexes":["HISTORY","LOCAL_STORY","CRAFT","LANDSCAPE_KNOWLEDGE","TRADITIONAL_LANDSCAPE_VIEW","DAILY_WISDOM"],
+    "activation_pattern":"CONTENT_SOURCE_TO_SCENE_TO_VISITOR_ACTION_TO_PERCEPTION_CHANGE"
+  },
+  "web": {
+    "current_semantic_surface_inventory":52,
+    "count_policy":"NO_FIXED_TARGET_NO_EQUAL_WEIGHT",
+    "surface_roles":["MAIN_DECISION","SUPPORT_EVIDENCE","PROCESS_JUDGMENT","TECHNICAL_PROOF","ARCHIVE"],
+    "main_surface_questions":[
+      "WHAT_CHANGED_FOR_VISITOR",
+      "WHAT_IS_VISIBLE_DESIGN_DECISION",
+      "WHICH_CURRENT_OBJECT_OR_SCENE_PROVES_IT"
+    ],
+    "forbidden_main_headline_types":["FIELD","G1F","AUTHORITY","EVIDENCE_GATE","STATE_MACHINE","GOVERNANCE","VERSION","RECEIPT","GENERIC_SYSTEM_TAXONOMY"]
+  },
+  "process": {
+    "purpose":"SHOW_PROFESSIONAL_SELECTION_NOT_GATE_HISTORY",
+    "valid_examples":[
+      "PHY01_STEP_LIGHT_HOLD_SELECTION",
+      "FLUID_REST_SITE_FIT_COMPETITION",
+      "QINGFENGYIN_HOLD_UNTIL_USEFUL_SCENE_MECHANISM",
+      "LEGACY_13_OF_13_COMPLETION_DROPPED",
+      "BOARD_IN_WEB_AND_DASHBOARD_PRESENTATION_REPLACED",
+      "WEAK_MODEL_AXON_SUPPORT_ONLY"
+    ]
+  },
+  "technical_rule": {
+    "order":["DESIGN_DECISION","EXPERIENCE_BODY_EFFECT","TECHNICAL_PROOF","OPEN_FIELD_ITEMS"],
+    "project_identity":"NOT_TECHNICAL_PROOF",
+    "real_qingjiang_over_grey_model":true
+  },
+  "cross_media": {
+    "web":"JOURNEY_LED_52_SURFACE_INVENTORY_REWEIGHT_BY_ROLE",
+    "boards_pdf":"QINGJIANG_JOURNEY_SCENE_DECISIONS_FIRST_TECHNICAL_AFTER",
+    "film":["ENTER","MOVE","OPEN","WALK_STOP","PASS","RETURN","REMEMBER"],
+    "app":"BEHAVIOR_INSIDE_JOURNEY_NOT_PRODUCT_SPEC_CHAPTER",
+    "process":"HOLD_DROP_AND_ALTERNATIVES_ONLY_WHEN_THEY_SHOW_DESIGN_JUDGMENT"
+  },
+  "truth_boundary": [
+    "FIELD_OBSERVED_0",
+    "FIELD_MEASURED_0",
+    "G1F_HOLD",
+    "NO_PROMOTION",
+    "NTS_NOT_FOR_CONSTRUCTION_WHERE_APPLICABLE",
+    "UNKNOWN_NEVER_OPEN",
+    "NO_FAKE_LIVE_OPERATION_GPS_SAFETY_APPROVAL_SURVEY_CONSTRUCTION_CERTAINTY",
+    "LEGEND_NOT_HISTORICAL_SITE_PROOF",
+    "TRADITIONAL_LANDSCAPE_VIEW_NOT_SCIENCE",
+    "WELLBEING_NOT_MEDICAL",
+    "AI_CONCEPT_NOT_SITE_PHOTO_OR_FIELD_PROOF"
+  ]
+}

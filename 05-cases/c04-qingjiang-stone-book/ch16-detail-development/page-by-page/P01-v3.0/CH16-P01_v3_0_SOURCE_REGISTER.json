@@ -1,0 +1,51 @@
+{
+  "schema": "oleander.c04.ch16.p01.source-register.v3",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "revision": "v3.0",
+  "source": {
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "title": "红花峰栏杆式可拆卸倚靠休息板",
+    "file_library_id": "file_0000000018808209943d7fa242015289",
+    "file_library_created_at": "2026-08-17T15:05:02Z",
+    "file_library_modified_at": "2026-08-17T15:05:02Z",
+    "authority": "USER ORIGINAL DESIGN SOURCE / PHYSICAL-BODY SOURCE / PRESERVE",
+    "carrier_precedence": "SOURCE_CARRIER_AUTHORITY / REUSE_DIRECT"
+  },
+  "source_supported_content": [
+    "structure analysis",
+    "orthographic/product views",
+    "material logic",
+    "ergonomics/use scenario",
+    "product detail",
+    "use flow",
+    "safety and installation guidance"
+  ],
+  "historical_source_board_values": {
+    "height_mm": "950-1050",
+    "maximum_load_kg": "80",
+    "status": "SOURCE-BOARD HISTORICAL / NOT CURRENT ENGINEERING CONTROL"
+  },
+  "current_truth_boundary": [
+    "FIELD OBSERVED=0",
+    "FIELD MEASURED=0",
+    "G1F HOLD",
+    "NO_PROMOTION",
+    "NTS",
+    "NOT FOR CONSTRUCTION"
+  ],
+  "materialization": {
+    "state": "HOLD_NO_SOURCE_BYTES",
+    "reason": "Exact ODB-02 is accessible and visually reviewable through File Library but the current execution runtime exposes no byte bridge/local path. Google Drive/GitHub searches found later derivatives/currentizations, not the exact original file.",
+    "consequence": "No copied/reconstructed/substitute pixels are permitted. Direct File Library source remains the current P01 visual carrier; offline/Web byte embedding remains HOLD until exact bytes are materialized.",
+    "does_not_block": "source-side visual review of the unchanged ODB-02 carrier",
+    "blocks": ["offline embedding", "pixel-hash receipt", "1:1 reproduction claim"]
+  },
+  "forbidden_substitutions": [
+    "CH16-P01 v2.0 abstract five-action redraw",
+    "C23/currentized derived geometry as source replacement",
+    "AI-generated substitute",
+    "reconstructed product silhouette presented as original"
+  ]
+}

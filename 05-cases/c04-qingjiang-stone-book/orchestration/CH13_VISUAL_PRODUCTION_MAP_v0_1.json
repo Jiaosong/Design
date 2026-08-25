@@ -1,0 +1,104 @@
+{
+  "schema": "c04.ch13.visual-production-map.v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH13",
+  "status": "CURRENT_PROJECT_PRODUCTION_MAP",
+  "decision_date": "2026-08-19",
+  "current_since_pull_request": 325,
+  "current_since_merge_commit": "97866a4d62c3f0754ea51472587b62557d03ac39",
+  "canonical_authoring_units_preserved": ["CH13-P01","CH13-P02","CH13-P03","CH13-P04","CH13-P05","CH13-P06","CH13-P07"],
+  "protected_web_page_ids_assigned": false,
+  "visual_rule": "LANDSCAPE_BODY_OBJECT_FIRST_THEN_RELATION_OPTIONAL_REVEAL_TECHNICAL_PROOF",
+  "recommended_public_sequence": ["S01:CH13-P02","S02:CH13-P01","S03:CH13-P03","S04:CH13-P04","S05:CH13-P05","S06:CH13-P06","S07:CH13-P07"],
+  "interaction_defaults": {
+    "page_understandable_without_interaction": true,
+    "scroll_role": "CONTINUITY_OR_REVEAL_ONLY",
+    "scroll_jacking_forbidden": true,
+    "pointer_touch_role": "OPTIONAL_FOCUS_OR_COMPARISON",
+    "keyboard_equivalence_required_for_essential_interaction": true,
+    "reduced_motion_preserves_information": true,
+    "task_score_reward_completion_route_gate_forbidden": true
+  },
+  "model_policy": {
+    "new_model_default": "HOLD",
+    "reason": "C04 model expansion previously frozen; no authoritative Fluid Rest or Qingfengyin 3D master confirmed",
+    "allowed_order": ["SOURCE_BOUND_2D","EDITABLE_SVG_SECTION","LAYERED_2_5D_AXON","EXISTING_AUTHORITATIVE_MODEL_IF_AVAILABLE","NEW_MODEL_ONLY_AFTER_EXPLICIT_REOPEN"],
+    "priority_if_reopened": ["S06_FLUID_REST_TECHNICAL_PROOF","S03_P02_BODY_BOUNDARY_IF_2D_INSUFFICIENT"],
+    "forbidden_or_not_needed": ["S01","S02","S04","S07_UNTIL_DO_NOT_MODEL_YET_REVOKED"]
+  },
+  "surfaces": [
+    {
+      "surface_id": "S01",
+      "authoring_unit": "CH13-P02",
+      "claim": "SHORT RECOVERY != DESTINATION",
+      "first_visual": "current retained leaning-board body-scale/use figure",
+      "interaction": "WALK_FATIGUE_LEAN_LOOK_CONTINUE_RETURN_STATE_SEQUENCE",
+      "model": "NO_NEW_3D",
+      "image_strategy": "IMG-C04-PHYS-RECOVERY-TECH-01",
+      "image_action": "RETAIN_EXISTING_RESERVATION_CH13-01"
+    },
+    {
+      "surface_id": "S02",
+      "authoring_unit": "CH13-P01",
+      "claim": "BODY_PROBLEM_PRECEDES_OBJECT",
+      "first_visual": "continuous LEVEL0_LEVEL3 intervention field",
+      "interaction": "SCROLL_LINKED_THRESHOLD_REVEAL",
+      "model": "NONE",
+      "image_strategy": "NATIVE_VECTOR_NO_SEMANTIC_CONTENT_IMAGE",
+      "image_action": "NONE"
+    },
+    {
+      "surface_id": "S03",
+      "authoring_unit": "CH13-P03",
+      "claim": "BODY_SUPPORT_WITHOUT_PASSAGE_OR_SAFETY_CONFLICT",
+      "first_visual": "large path/body-boundary section",
+      "interaction": "ADULT_ELDER_CHILD_MISUSE_TWO_PERSON_PASS_STATE_SWITCH",
+      "model": "LAYERED_SVG_2_5D_FIRST_NEW_BLENDER_HOLD",
+      "image_strategy": "INDEPENDENT_ODB02_SECTION_OR_ORTHOGRAPHIC_CHILD",
+      "image_action": "DISCOVER_HASH_RESERVE_BEFORE_LAYOUT"
+    },
+    {
+      "surface_id": "S04",
+      "authoring_unit": "CH13-P04",
+      "claim": "STEP_RESPONSE_FADE",
+      "first_visual": "full-width executable dark path strip",
+      "interaction": "IDLE_STEP_RESPONSE_FADE_IDLE",
+      "model": "NONE",
+      "image_strategy": "NATIVE_SVG_HTML_RUNTIME",
+      "image_action": "NONE"
+    },
+    {
+      "surface_id": "S05",
+      "authoring_unit": "CH13-P05",
+      "claim": "SPATIAL_INTERVENTION_ONLY_WHEN_SHORT_SUPPORT_IS_INSUFFICIENT",
+      "first_visual": "strongest ODB-03A/B spatial/body design view",
+      "interaction": "BOUNDED_SHORT_SUPPORT_LONGER_REST_SPATIAL_INTERVENTION_COMPARISON",
+      "model": "NO_NEW_MODEL_FIRST_PASS",
+      "image_strategy": "ONE_UNIQUE_ODB03_CHILD",
+      "image_action": "SELECT_AND_RESERVE_BEFORE_LAYOUT"
+    },
+    {
+      "surface_id": "S06",
+      "authoring_unit": "CH13-P06",
+      "claim": "STRONG_INTERVENTION_COST_MUST_BE_VISIBLE_IN_SECTION",
+      "first_visual": "large layered section/exploded technical proof",
+      "interaction": "SCROLL_LAYER_REVEAL_BASE_SECTION_PERSISTS",
+      "model": "FIRST_PRIORITY_IF_MODELING_EXPLICITLY_REOPENED",
+      "image_strategy": "DIFFERENT_ODB03_TECHNICAL_CHILD_OR_NATIVE_VECTOR",
+      "image_action": "SEPARATE_IDENTITY_AND_RESERVATION"
+    },
+    {
+      "surface_id": "S07",
+      "authoring_unit": "CH13-P07",
+      "claim": "NOTICE_THE_WIND_ALREADY_PRESENT",
+      "first_visual": "ODB-04B Qingfengyin scene",
+      "interaction": "NONE_TRACE_FRAME_LOW_INTENSITY_REVEAL",
+      "model": "DO_NOT_MODEL_YET",
+      "image_strategy": "UNIQUE_ODB04B_SCENE",
+      "image_action": "RESERVE_ONCE_FOR_S07"
+    }
+  ],
+  "production_priority": ["S01","S03","S04","S05_S06_AFTER_ODB03_MATERIALIZATION","S07","S02_VECTOR_BRIDGE"],
+  "truth_boundary": ["FIELD_OBSERVED_0","FIELD_MEASURED_0","G1F_HOLD","NO_PROMOTION","NTS","NOT_FOR_CONSTRUCTION"],
+  "does_not_prove": ["FINISHED_PIXEL_QUALITY","INDEPENDENT_DESIGN_KEEP","FIELD_TRUTH","ENGINEERING_VALIDITY","MODEL_AUTHORITY","INTERACTION_RUNTIME_PASS","PROTECTED_WEB_PAGE_ID_ASSIGNMENT"]
+}

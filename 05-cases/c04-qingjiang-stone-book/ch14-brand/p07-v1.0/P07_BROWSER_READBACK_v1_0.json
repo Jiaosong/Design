@@ -1,0 +1,11 @@
+{
+  "object":"CH14-P07",
+  "version":"v1.0",
+  "desktop":{"viewport":"1920x1080","scroll_width":1920,"client_width":1920,"manual_sections":12,"page_errors":0,"all_images_loaded":true},
+  "mobile":{"viewport":"390x844","scroll_width":390,"client_width":390,"manual_sections":12,"page_errors":0,"all_images_loaded":true},
+  "full_page_exports":["desktop full long page","mobile full long page"],
+  "icon_readback":{"sizes_px":[24,32,48],"icons":12,"raster_outputs":36},
+  "post_readback_repairs":["reverse icons added for deep surfaces","large walk construction replaced by true vector geometry","App Return control corrected to reverse icon"],
+  "does_not_prove":["live navigation PASS","field validity","operator status validity","professional Design PASS"],
+  "truth":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NO REAL-TIME CLAIM"
+}

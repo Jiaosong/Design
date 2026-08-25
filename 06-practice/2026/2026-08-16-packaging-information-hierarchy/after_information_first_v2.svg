@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<rect width="1200" height="900" fill="#f3f1ed"/>
+<rect x="250" y="120" width="700" height="650" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+  <text x="300" y="185" font-size="16" font-weight="700" letter-spacing="2">EXERCISE BRAND</text>
+  <text x="300" y="250" font-size="52" font-weight="700">CAMELLIA</text>
+  <text x="300" y="292" font-size="20">SCENTED SURFACE CLEANER</text>
+  <line x1="300" y1="338" x2="900" y2="338" stroke="#111" stroke-width="1.5"/>
+  <text x="300" y="392" font-size="13" font-weight="700">PRODUCT ROLE</text>
+  <text x="300" y="425" font-size="22">For hard surfaces</text>
+  <text x="620" y="392" font-size="13" font-weight="700">NET CONTENT</text>
+  <text x="620" y="425" font-size="22">500 mL</text>
+  <line x1="300" y1="470" x2="900" y2="470" stroke="#111" stroke-width="1"/>
+  <text x="300" y="515" font-size="13" font-weight="700">USE / DEMO FIELD</text>
+  <text x="300" y="548" font-size="18">Dilution 1:50</text>
+  <text x="300" y="578" font-size="11">Exercise placeholder.</text>
+  <text x="300" y="596" font-size="11">Verify formula + applicable label rules.</text>
+  <text x="620" y="515" font-size="13" font-weight="700">TRACE / DEMO FIELD</text>
+  <text x="620" y="548" font-size="18">LOT DEMO-08</text>
+  <text x="620" y="578" font-size="11">Do not invent batch, handmade,</text>
+  <text x="620" y="596" font-size="11">or provenance language in production.</text>
+  <line x1="300" y1="635" x2="900" y2="635" stroke="#111" stroke-width="1"/>
+  <text x="300" y="678" font-size="12">FORMULA SAMPLE / EXERCISE ONLY</text>
+  <text x="300" y="710" font-size="11">All technical values shown here are training assumptions, not verified product claims.</text>
+</g>
+<text x="250" y="830" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111">
+AFTER v2 — hierarchy retained; secondary evidence remains readable at near view
+</text>
+</svg>

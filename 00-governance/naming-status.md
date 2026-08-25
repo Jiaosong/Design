@@ -84,3 +84,140 @@ Historical `CASE_GD_Public_Claim_Matrix.csv` IDs `C01–C05` map to `CLM-C01-001
 Do not use `final`, `final-final`, `new`, `latest`, `copy`, or `副本` as authority-bearing state names.
 
 When duplicate or superseded files exist, authority is determined by the canonical registry and immutable evidence reference, not by filename recency alone.
+
+## Mode-sensitive file discipline｜2026-08-21 hardening
+
+The canonical filename remains the Authority / Release contract. It is **not** mandatory for every disposable exploration scratch file.
+
+### EXPLORE
+
+- Short working names are allowed, e.g. `r06-node-test-03.svg`.
+- These names are explicitly non-authoritative and must not contain `CURRENT`, `APPROVED`, `RELEASED` or equivalent promotion semantics.
+- Exploration identity may be local to the task/branch; do not create registry pollution for every throwaway variant.
+
+### CANDIDATE
+
+A retained direction must receive stable identity before it is compared, handed off or persisted:
+
+- `artifact_id`
+- semantic object / deliverable role
+- `revision`
+- `status`
+- authority source / parent when applicable
+
+Candidate representations may use readable working filenames, but the stable artifact identity—not filename recency—must bind them together.
+
+### AUTHORITY / RELEASE
+
+Use the full canonical filename contract and all triggered manifest / persistence / receipt requirements. Authority-bearing outputs may not rely on informal `test-03`, `new`, `latest` or chat-only references.
+
+## Logical artifact versus representations
+
+A logical artifact has **one Current revision**. That revision may have multiple representations without creating multiple competing Currents.
+
+Canonical representation roles:
+
+- `SOURCE` — original/source-authority input or preserved acquisition.
+- `NATIVE` — editable authoring master such as `.blend`, `.3dm`, `.ai`, `.psd`, `.svg`, source HTML/CSS/JS or equivalent.
+- `CANONICAL` — defined interchange/runtime authority such as `.glb`, `.step`, authoritative SVG/PDF/HTML bundle where the project explicitly assigns that role.
+- `PREVIEW` — review/display derivative such as PNG/JPG/render/screenshot/non-authoritative PDF.
+- `PACKAGE` — recoverable production bundle with manifest/checksums/receipts as triggered.
+
+Hard direction:
+
+`SOURCE / NATIVE / CANONICAL → PREVIEW`
+
+A derivative preview does not reverse authority:
+
+- `PNG ≠ SVG source`
+- `render ≠ .blend`
+- `screenshot ≠ HTML/CSS/JS runtime`
+- `PDF preview ≠ CAD/model authority`
+- crop/recolor/mask/screenshot derivatives do not create a new semantic content-image identity.
+
+If multiple files express the same logical revision, use one `artifact_id` and record representation role. Create a new logical artifact ID only when the object, claim, design role or semantic content actually changes.
+
+## Current revision rule
+
+For each logical artifact:
+
+`ONE ARTIFACT ID → ONE CURRENT REVISION → N REPRESENTATIONS`
+
+Older revisions remain `SUPERSEDED / HISTORY / PROVENANCE` as appropriate. Do not create `CURRENT.svg`, `CURRENT.png`, `CURRENT.pdf`, `CURRENT.zip` as four independent authority claims when they are merely representations of one revision.
+
+## Folder depth rule
+
+Physical storage should remain shallow. Prefer the existing persistence roles such as:
+
+`native / canonical / package / checksums / receipts`
+
+Do not encode the complete project hierarchy, design reasoning, version history and status into deep folder nesting. Those semantics belong in registry fields, artifact metadata, manifests and version control.
+
+`NO COMPRESSION / NO LOSS` protects information, not directory depth.
+
+## Active frontier / WIP rule｜2026-08-25 consolidation
+
+This section compiles existing Current Authority, Control Plane and supersession rules. It does **not** create a new Gate or parallel framework.
+
+For each logical object:
+
+`ONE LOGICAL OBJECT → MAX 1 ACTIVE PRODUCTION FRONTIER + MAX 1 ACTIVE INDEPENDENT REVIEW FRONTIER`.
+
+- A newer date, branch, file, package or PR does not become Current by recency alone.
+- If more than one production frontier claims Current/Candidate-current ownership for the same logical object, authority resolution is `BLOCKED` until one frontier is selected and the others are explicitly demoted.
+- A review-only frontier may coexist only when it references the exact active production artifact/revision/hash and cannot mutate production authority.
+- Project-level parallelism may contain multiple different logical objects; the WIP limit applies per logical object, not to unrelated workstreams.
+
+### Successor closure transaction
+
+`SUCCESSOR ADOPTION REQUIRES PREDECESSOR CLOSURE`.
+
+When a successor becomes the active frontier, the same closure transaction must, where applicable:
+
+1. move the Current pointer to the successor;
+2. mark the predecessor `SUPERSEDED / PROVENANCE / HISTORY / REJECTED` as appropriate;
+3. close any predecessor PR that no longer owns active production;
+4. remove predecessor authority from live Notion/Drive/GitHub pointers while preserving immutable provenance;
+5. record the successor relation in the receipt/readback when persistence is triggered.
+
+“Create new Current now; clean old Current later” is forbidden because it creates authority drift.
+
+## Location integrity rule｜2026-08-25 consolidation
+
+Current identity, governance state and current physical/relational location must agree.
+
+`CURRENT IDENTITY + CURRENT GOVERNANCE + CURRENT LOCATION = REQUIRED FOR LIVE MUTATION`.
+
+Examples that resolve to `LOCATION_DRIFT` and therefore block Current mutation:
+
+- ACTIVE / CURRENT object physically or relationally owned by a `LEGACY / ARCHIVED / SUPERSEDED` governance container without an explicit Current override;
+- live Current pointer targeting a deleted/archived/superseded page, branch, package or file;
+- Canonical Parent / Children disagreeing with the Current Registry identity used for routing.
+
+A drifted object may still be read as provenance. New Current facts must be written only after the live target is resolved; do not “write first, migrate later”.
+
+## Lifecycle exit rule｜2026-08-25 consolidation
+
+Every retained object must have both an entry state and an exit state. Allowed lifecycle vocabulary is intentionally small:
+
+`WORKING / TEMP → CANDIDATE → CURRENT | SUPPORT | PROVENANCE | SUPERSEDED | REJECTED | DELETE_CANDIDATE`.
+
+- `TEMP` is never authority-bearing. Every retained TEMP object must record `owner + purpose + created_at + review_or_expiry_condition`.
+- TEMP cannot remain indefinitely; at review/expiry it must become `CANDIDATE / SUPPORT / PROVENANCE / DELETE_CANDIDATE` or be removed when deletion is explicitly authorized.
+- `PACKAGE` is a representation of a logical revision, not a lifecycle state by itself.
+- A closed/rejected/superseded object remains recoverable provenance unless an explicit deletion decision exists.
+
+## Source-byte dedup rule｜2026-08-25 consolidation
+
+`CONTENT UNIQUENESS ≠ BINARY DUPLICATION`.
+
+The existing semantic rule remains unchanged: one semantic content image belongs to one declared consumer unit unless explicitly released/system-reusable. That rule does **not** require copying identical source bytes for every consumer lookup or audit step.
+
+For the same exact source/hash:
+
+- prefer one stable `source_asset_id` / authoritative materialization;
+- attach reservation, consumption, release and derived-use records to that source identity;
+- crops, masks, grades, screenshots and other derivatives inherit the source identity and do not create a new source byte authority;
+- create a second physical materialization only when a real recovery, immutable-evidence, format, access, rights or storage-boundary requirement exists, and record that reason.
+
+This preserves semantic image uniqueness while preventing source-materialization and storage duplication.

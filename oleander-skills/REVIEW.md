@@ -38,13 +38,13 @@ This file is the current repository-state source for the installed reusable skil
 
 ## Reference Reconstruction Fidelity Gate
 
-For OLEANDER aesthetic / design-skill training, the word **reproduction / reconstruction / 复现** is reserved for a strict 1:1 fidelity exercise. A loose reinterpretation, style study, inspired variant, simplified teaching diagram, or principle-only A/B is **not** a reproduction.
+For OLEANDER aesthetic / design-skill training, the words **reproduction / reconstruction / 复现 / 复刻 / 1:1 / 一模一样 / 按原图做** default to a strict **pixel-level fidelity exercise**. A loose reinterpretation, style study, inspired variant, simplified teaching diagram, principle-only A/B, or merely visually similar output is **not** a reproduction.
 
 Required sequence:
 
-`ORIGINAL REFERENCE → SOURCE BYTES MATERIALIZED → REFERENCE FRAME LOCKED → 1:1 RECONSTRUCTION → SIDE-BY-SIDE / OVERLAY CRIT → FIDELITY REPAIR → METHOD EXTRACTION → TRANSFER VARIANT`
+`ORIGINAL REFERENCE → SOURCE BYTES MATERIALIZED → REFERENCE FRAME LOCKED → INDEPENDENT 1:1 RECONSTRUCTION → MATCHED-SCALE SIDE-BY-SIDE → PIXEL-ALIGNED OVERLAY / FLICKER → PIXEL DIFFERENCE → MISMATCH LIST → FIDELITY REPAIR → PIXEL RETEST → METHOD EXTRACTION → TRANSFER VARIANT`
 
-Do not skip the source-byte or 1:1 reconstruction stage when the training claim is that a reference has been reproduced.
+Do not skip the source-byte, independent reconstruction, or pixel-level verification stages when the training claim is that a reference has been reproduced.
 
 ### Reference Materialization Preflight
 
@@ -60,15 +60,17 @@ Mandatory preflight:
 
 Preferred adapter:
 
-`python tools/oleander-runtime/materialize_reference.py ...`
+`python 90-shared/toolchains/reference-materialization/materialize_reference.py ...`
 
 If the source cannot be materialized or the exact reference frame cannot be locked, record `REFERENCE MATERIALIZATION GATE = HOLD`. Continue only as `STRUCTURAL RECONSTRUCTION / METHOD STUDY / REFERENCE-BOUND STUDY`; `REPRODUCTION PASS` is forbidden.
 
-Do not wait until the end of a reconstruction to discover that overlay/difference comparison is impossible.
+Do not wait until the end of a reconstruction to discover that pixel-aligned overlay/difference comparison is impossible.
 
-### Minimum reproduction standard
+### Pixel-level reproduction standard
 
-The reconstruction must aim to be visually indistinguishable from the available reference at the intended viewing scale, with no deliberate redesign before the fidelity gate. Match, as applicable:
+The reconstruction target is **pixel-identical at the locked reference scale/frame wherever the source medium permits deterministic comparison**. “Looks the same”, “same hierarchy”, “same style”, “same composition” or “visually indistinguishable at a glance” is not sufficient evidence by itself.
+
+Match, as applicable:
 
 - canvas / frame / aspect ratio and crop;
 - primary mass, geometry, silhouette and object placement;
@@ -79,19 +81,25 @@ The reconstruction must aim to be visually indistinguishable from the available 
 - material, lighting, camera, lens/perspective and render relationship for 3D/spatial/product work;
 - state timing, easing, path, overlap and key-frame relationships for motion/interaction work.
 
+For deterministic vector/raster/icon/page reconstruction using a shared render pipeline, the target is **zero pixel difference at the locked frame**. If exact zero is technically prevented by antialiasing, rasterizer, ICC/color-management or font-rendering differences, those differences must be isolated, quantified, and proven non-material; otherwise the result remains `REVISE` or `HOLD`.
+
+Copying, embedding, tracing by direct source reuse, or re-exporting the original bytes without an independently constructed editable representation does **not** count as reconstruction evidence even if the pixel diff is zero.
+
 A result that is only “similar”, “captures the principle”, “has the same hierarchy”, or “looks inspired by the reference” remains `STRUCTURAL STUDY / VISUAL REVISE`, not `REPRODUCTION PASS`.
 
 ### Fidelity verification
 
-Every claimed reproduction requires actual visual comparison against the materialized and locked reference:
+Every claimed reproduction requires actual visual and pixel-level comparison against the materialized and locked reference:
 
 - side-by-side at matched scale;
-- overlay / flicker / difference view where the source medium permits;
+- pixel-aligned overlay and/or flicker;
+- pixel difference image and quantitative diff metric whenever a locked raster frame can be produced;
 - first-read plus near-read/detail review;
-- pixel/geometry diff when technically meaningful, while accounting for unavoidable rasterization, antialiasing, color-management or rendering differences;
-- explicit mismatch list and another repair cycle until no material visual mismatch remains.
+- geometry/type/spacing comparison for editable/vector/3D sources;
+- explicit mismatch list and another repair cycle until no material mismatch remains;
+- final re-test after the last repair, not merely after the first successful export.
 
-If the source reference is incomplete, too low-resolution, unavailable, ambiguous in version/frame, or cannot support an honest 1:1 comparison, do **not** fabricate missing details and do **not** call the result a reproduction. Label it `STRUCTURAL RECONSTRUCTION`, `METHOD STUDY`, or `REFERENCE-BOUND STUDY` and keep the fidelity gate `HOLD`.
+If pixel-level comparison cannot be executed, `REPRODUCTION PASS` is forbidden. If material pixel mismatch remains, `REPRODUCTION PASS` is forbidden. If the source reference is incomplete, too low-resolution, unavailable, ambiguous in version/frame, or cannot support an honest 1:1 comparison, do **not** fabricate missing details and do **not** call the result a reproduction. Label it `STRUCTURAL RECONSTRUCTION`, `METHOD STUDY`, or `REFERENCE-BOUND STUDY` and keep the fidelity gate `HOLD`.
 
 ### Training and rights boundary
 
@@ -101,7 +109,7 @@ Source materialization proves only that a specific byte source and/or frame was 
 
 ### Skill promotion consequence
 
-A principle extracted from a reference cannot receive a stronger visual-learning status merely because the explanation is correct. If the training task claims reproduction but the Reference Materialization Gate or 1:1 Fidelity Gate fails, record at most `OBSERVATION / STRUCTURAL STUDY`; do not use that failed reproduction as evidence for `CANDIDATE` promotion. Artifact existence, export success, traceability, source hashing and CI cannot override these gates.
+A principle extracted from a reference cannot receive a stronger visual-learning status merely because the explanation is correct. If the training task claims reproduction but the Reference Materialization Gate or Pixel-level Fidelity Gate fails, record at most `OBSERVATION / STRUCTURAL STUDY`; do not use that failed reproduction as evidence for `CANDIDATE` promotion. Artifact existence, export success, traceability, source hashing, a visually convincing screenshot, and CI cannot override these gates.
 
 ## AIG-01 AI governance checks
 

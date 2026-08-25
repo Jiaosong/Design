@@ -1,0 +1,35 @@
+{
+  "baseline_id": "RB-IMAGE-OPS-ADAPTER-SEED-v0.1",
+  "artifact_id": "ART-T-VISUAL-IMAGE-OPS-001-BINDINGS-v1",
+  "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
+  "canonical_tool_or_skill_revision": "T-VISUAL-IMAGE-OPS-001@verified-2026-08-18",
+  "runtime": "GitHub repository + consumer-specific visual runtimes",
+  "renderer": "consumer_specific",
+  "viewport_or_frame": "NOT_APPLICABLE_FOR_BINDING_BASELINE",
+  "structural_assertions": [
+    "11 unique VISUAL_LAYER_BINDING consumers exist",
+    "all consumers reference T-VISUAL-IMAGE-OPS-001",
+    "Tool Adapter instance contains all required machine fields"
+  ],
+  "semantic_assertions": [
+    "shared TOOL does not own final project artifact",
+    "static effect state remains Image Ops responsibility",
+    "temporal behavior remains oleander-motion responsibility",
+    "menu-driven effect accumulation is forbidden"
+  ],
+  "visual_roi_assertions": [],
+  "runtime_assertions": [
+    "binding-only baseline does not claim renderer equivalence",
+    "consumer-specific runtime validation remains required when visual output is produced"
+  ],
+  "layer_results": {
+    "STRUCTURAL": "PASS",
+    "SEMANTIC": "PASS",
+    "VISUAL_ROI": "NOT_APPLICABLE",
+    "RUNTIME": "PASS"
+  },
+  "baseline_hashes": [],
+  "approved_by": "runtime-governance baseline adoption; no Design KEEP implied",
+  "last_verified": "2026-08-18",
+  "does_not_prove": ["visual_quality", "cross_renderer_equivalence", "design_keep", "field_truth"]
+}

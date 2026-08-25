@@ -1,0 +1,29 @@
+{
+  "id": "PRAC-MOTION-SCALE-PROGRESSION-C04-20260818",
+  "date": "2026-08-18",
+  "status": "CANDIDATE",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "skills": ["oleander-story-and-board", "oleander-motion"],
+  "new_skill": false,
+  "authority": "Notion Current Root v1.1.1 + live C04 P2 + current reusable skills",
+  "rule": "CLAIM ORDER -> STABLE OBJECT/RELATION -> SHOT SCALE -> SCALE TRANSITION -> NEXT CLAIM -> RETURN/RECOVERY",
+  "adapter": "Python vector-like frame generator + FFmpeg 7.1.5",
+  "capability_state": {"ffmpeg": "NATIVE_AVAILABLE", "pillow": "NATIVE_AVAILABLE"},
+  "execution": {
+    "main_video": {"duration_s": 15, "width": 1920, "height": 1080, "fps": 24, "sha256": "2e74526e98716032824dc7035a374ce88b70f352885501056b82f315ebadee34"},
+    "reduced_motion_video": {"duration_s": 15, "sha256": "cfe42c8c2160258676a086842ce8fee100e8e981297ec06e2236d06a678d0e6a"},
+    "storyboard_svg_sha256": "c336df5a5aa8216f6038f7338f767831e5658650474b51a729f669da1979b3b0",
+    "contact_1920_sha256": "caf07c1614705b7df646a2271a38df830761bbe76fc9677f20cc982d7c3d2356",
+    "contact_480_sha256": "26f39133a96efdfb3abf661f5177e224f5ade00fc95348c803244f65550791ea"
+  },
+  "readback": ["ffmpeg full decode", "1920 contact first-read", "1920 keyframe near-read", "480 distance-read"],
+  "evidence_gate": "PASS FOR TRAINING PRECEDENT + CURRENT PROJECT BOUNDARY",
+  "design_quality_gate": "POST-READBACK PASS FOR PRACTICE ONLY",
+  "design_crit": {
+    "A": "REVISE: scale and orientation both change; stable spatial anchor is lost.",
+    "B": "KEEP FOR PRACTICE: shot scale changes while the same R06 relation remains traceable.",
+    "root_cause": "Unmotivated scale change was being used as montage variety instead of carrying a stable spatial/narrative relation."
+  },
+  "does_not_prove": ["C04 final film Design PASS", "real site geometry", "FIELD validation", "user comprehension", "final narrative lock", "Skill promotion"],
+  "notion_object": "3c0b86be-5c47-813e-809d-e679c83ddb91"
+}

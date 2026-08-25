@@ -1,6 +1,7 @@
 # OLEANDER Universal Production Environment v1.0
 
 Status: **ACTIVE CURRENT**  
+Implementation revision: **1.0.1**  
 Scope: **ALL OLEANDER projects / all lanes / all conversations / all media**
 
 ## 0｜Core correction
@@ -9,153 +10,146 @@ OLEANDER does not use a single application as its production environment.
 
 **Figma is not the default OLEANDER environment.** It is an optional specialist adapter only when a project explicitly needs Figma-native editable delivery or a verified Figma connector materially helps the work.
 
-**Blender is already a shared OLEANDER runtime.** The existing `OLEANDER_BLENDER_RUNTIME_v1.0` remains the Blender authority. This document does not replace it; it places Blender inside a wider capability-routing environment shared by every OLEANDER conversation.
+**Blender is already a shared OLEANDER runtime.** The existing `OLEANDER_BLENDER_RUNTIME_v1.0` remains the Blender authority. This document does not replace it.
 
-The invariant is:
+Current invariant:
 
-> **Authority → Skill → Required native output → Capability probe → Best-fit adapter → Execution → Readback → Evidence Gate + Design Quality Gate**
+> **Authority → Sticky Constraint Preflight → Existing Skill → Required native output → Capability probe → Best-fit allowed adapter → Execution → Readback → Evidence / Design Review → Flow Completion Gate**
 
-Tool choice follows the project. The project never follows the tool.
+Tool choice follows the project and active user constraints. The project never follows the tool.
 
-For reference-reconstruction work, add one mandatory preflight before production:
+## 1｜Sticky constraint preflight
 
-> **Source Authority → Source Bytes Materialized → Reference Frame Locked → Reconstruction Runtime → 1:1 Fidelity Review**
+Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.1`.
 
-`BROWSER_VISIBLE ≠ LOCAL_SOURCE_BYTES_AVAILABLE`.
+Hard rules:
 
----
+- an explicit `NO_IMAGE_GENERATION` blocks image-generation tools and generative-image adapters;
+- an explicit `NO_NEW_SKILL / NO_NEW_METHOD / NO_NEW_FRAMEWORK` blocks gap-driven creation of those objects;
+- generic follow-ups such as “继续 / 优化 / 再做” do not revoke active constraints;
+- only a later explicit user instruction that changes the named constraint can release it;
+- if a denied capability is genuinely required and no compliant fallback preserves the requested native output, mark that step `HOLD` rather than silently violating the constraint.
 
-## 1｜What “all conversations can use Blender” means
+This preflight happens **before** tool choice. A capability being convenient or visually attractive cannot override the lock.
 
-Every OLEANDER conversation must know and prefer the same Blender resolution contract when 3D, geometry, CMF, render, animation, AOV or model inspection is required:
+## 2｜Full-flow completion rule
+
+When a task is OLEANDER production/mutation/training/state-changing review work, or explicitly requires the full OLEANDER process, the environment may not report “complete” at an intermediate technical milestone.
+
+The following are not closure on their own:
+
+- plan written;
+- method explained;
+- artifact/file created;
+- export succeeded;
+- PR opened;
+- CI green;
+- producer self-check passed;
+- render passed;
+- regression passed.
+
+The Current Execution Receipt Flow Completion Gate must pass after all applicable phases are closed.
+
+**Full flow does not mean all Skills.** The Minimum Sufficient Owner Set still applies.
+
+## 3｜What “all conversations can use Blender” means
+
+Every OLEANDER conversation must know and prefer the same Blender resolution contract when 3D, geometry, CMF, render, animation, AOV or model inspection is required **and not prohibited by an active constraint**:
 
 1. use the runtime-provided `$OLEANDER_BLENDER_BIN` when present;
 2. otherwise use `blender` on `PATH`;
 3. otherwise use the managed ChatGPT fallback defined by `OLEANDER_BLENDER_RUNTIME_v1.0` when that execution surface exposes it;
 4. project code should invoke `bash tools/oleander-runtime/blender.sh ...` rather than hard-code a project-specific Blender path.
 
-This gives all OLEANDER projects one Blender interface without coupling them to Timer, C04, Automotive or any other individual project.
+A conversation must still probe the current execution surface before writing `EXECUTED`. A repository contract proves that a route exists; it does not prove that the route executed in that turn.
 
-However, a conversation must still probe the current execution surface before writing `EXECUTED`. A repository contract proves that a shared route exists; it does not prove that every UI surface has exposed command execution in that exact turn. If invocation is unavailable, mark only that Blender operation `PENDING_VERIFICATION` or route it to a verified OLEANDER runner. Do not pretend it ran.
-
----
-
-## 2｜Universal capability states
+## 4｜Universal capability states
 
 Every production round resolves each needed capability to one of:
 
-- `NATIVE_AVAILABLE` — directly callable in the current execution surface;
-- `CONNECTOR_AVAILABLE` — available through a connected service/API;
-- `SHARED_RUNTIME_AVAILABLE` — available through an OLEANDER shared runtime such as Blender;
-- `RUNNER_AVAILABLE` — executable through a verified workstation/CI/runner;
-- `FALLBACK_AVAILABLE` — an equivalent method preserves the required information and fidelity;
-- `PENDING_VERIFICATION` — expected route exists but has not been verified in this run;
-- `UNAVAILABLE` — no valid execution route exists.
+- `NATIVE_AVAILABLE`
+- `CONNECTOR_AVAILABLE`
+- `SHARED_RUNTIME_AVAILABLE`
+- `RUNNER_AVAILABLE`
+- `FALLBACK_AVAILABLE`
+- `PENDING_VERIFICATION`
+- `UNAVAILABLE`
 
-Do not turn one unavailable adapter into a whole-project blocker when another adapter can preserve the required native information.
+A capability that is available but actively denied by the user is **not eligible for selection**.
 
----
+Do not turn one unavailable or denied adapter into a whole-project blocker when another adapter can preserve the required native information. If none can, return the specific step as `HOLD`.
 
-## 3｜Tool Resolver
+## 5｜Tool Resolver
 
 Before production, every OLEANDER conversation performs this resolver:
 
-1. Read Current Authority / Source Authority / current project state.
-2. Resolve an existing OLEANDER Skill before inventing a method.
-3. Define the required **native output**: geometry, editable vector, HTML, dataset, render, video, PDF, etc.
-4. If the task is reference reconstruction, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0` before any fidelity claim.
-5. Probe only the capabilities needed for that output.
-6. Prefer an existing shared OLEANDER runtime or runner over project-specific installation logic.
-7. Select the adapter that best preserves editability, truth and fidelity.
-8. If the preferred adapter is absent, use an equivalent fallback when no information is lost.
-9. Mark only the genuinely unavailable step `PENDING`; continue all other executable work.
-10. Open/render/read back the resulting artifact before a visual Design PASS.
+1. Read Current Authority / Source Authority / Current Task.
+2. Resolve sticky execution constraints.
+3. Enforce active tool/output/creation/process locks.
+4. Resolve an existing OLEANDER Skill before inventing a method.
+5. Define the required native output and fidelity.
+6. If reference reconstruction applies, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0`.
+7. Probe only capabilities needed for the required output.
+8. Prefer existing shared OLEANDER runtime/runner over project-specific installation logic.
+9. Select the best-fit adapter **within the active constraint set**.
+10. Use an equivalent fallback when no information is lost.
+11. Mark only the genuinely unavailable/denied non-replaceable step pending or HOLD.
+12. Open/render/read back the resulting artifact.
+13. Verify the Flow Completion Gate before any complete/closed claim.
 
----
+## 6｜Reference materialization / 1:1 reconstruction
 
-## 4｜Production lanes and adapters
-
-### Research / knowledge / source evidence
-
-Preferred adapters: Web, official archives, PDFs, Notion, GitHub, Google Drive. These establish evidence and provenance; they do not establish visual quality.
-
-### Reference materialization / 1:1 reconstruction
-
-Canonical contract:
+For reference-reconstruction work, use:
 
 - `00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.md`
 - `00-governance/runtime/OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0.json`
-
-Preferred deterministic adapter:
-
-- `tools/oleander-runtime/materialize_reference.py`
+- `90-shared/toolchains/reference-materialization/materialize_reference.py`
 
 Required sequence:
 
-`SOURCE_AUTHORITY_FOUND → SOURCE_BYTES_MATERIALIZED → SOURCE_HASHED → REFERENCE_FRAME_EXTRACTED → REFERENCE_SCALE_LOCKED → COMPARISON_RUNTIME_VERIFIED`
+`SOURCE_AUTHORITY_FOUND → SOURCE_BYTES_MATERIALIZED → SOURCE_HASHED → REFERENCE_FRAME_EXTRACTED → REFERENCE_SCALE_LOCKED → COMPARISON_RUNTIME_VERIFIED → INDEPENDENT_ONE_TO_ONE_RECONSTRUCTION → PIXEL_LEVEL_COMPARISON → MISMATCH_REPAIR → RETEST`
 
-Use the first valid source-byte route that preserves the original file: mounted upload, public direct URL, connector-native materialization/download, or exact GitHub/Drive file retrieval. A browser view, citation ref, screenshot handle or preview is not a local byte source.
+`BROWSER_VISIBLE ≠ LOCAL_SOURCE_BYTES_AVAILABLE`.
 
-If source bytes or an exact reference frame cannot be obtained, mark `REFERENCE MATERIALIZATION GATE = HOLD`. Continue only as `STRUCTURAL RECONSTRUCTION / METHOD STUDY / REFERENCE-BOUND STUDY`; do not claim `REPRODUCTION PASS`.
+`REPRODUCTION / RECONSTRUCTION / 复现 / 复刻 / 1:1 / 一模一样 / 按原图做` defaults to pixel-level fidelity. A visually similar result without pixel-level comparison cannot receive `REPRODUCTION PASS`.
 
-After materialization, use matched-scale side-by-side plus overlay/flicker/difference where technically meaningful. Hashing and rendering source bytes prove reproducibility only; they do not prove fidelity or design quality.
+If source bytes or exact reference frame cannot be obtained, mark `REFERENCE MATERIALIZATION GATE = HOLD`. If pixel-level comparison cannot be executed or material pixel mismatch remains, keep `FIDELITY HOLD / REVISE`.
+
+Direct source copying/re-export does not count as reconstruction evidence.
+
+## 7｜Production lanes and adapters
+
+### Research / knowledge / source evidence
+Preferred adapters: Web, official archives, PDFs, Notion, GitHub, Google Drive.
 
 ### Deterministic data / GIS / calculation
-
-Preferred adapters: Python and verified deterministic libraries; GDAL / GeoPandas / QGIS only when actually available in the run. Machine-specific paths in old skills are workstation configuration, not universal runtime truth.
+Preferred adapters: Python and verified deterministic libraries; GDAL / GeoPandas / QGIS only when actually available.
 
 ### 2D vector / information / layout
-
-Preferred adapters: SVG, HTML/CSS, PDF/vector tooling and other verified editable vector environments. Figma may be used when genuinely useful, but is **not required and not default**. A project must not stop because Figma is absent.
+Preferred adapters: SVG, HTML/CSS, PDF/vector tooling and other verified editable vector environments. Figma remains optional, not required and not default.
 
 ### 3D / spatial / product / geometry
-
-Default open shared backend: **OLEANDER Blender Runtime** where suitable. Rhino / Grasshopper / CAD / BIM / FreeCAD remain valid specialist adapters when the project's geometry authority or deliverable requires them and the runtime is verified.
-
-Derived mesh, render or screenshot never silently replaces authoritative source geometry.
+Default open shared backend: OLEANDER Blender Runtime where suitable. Rhino / Grasshopper / CAD / BIM / FreeCAD remain valid specialist adapters when required and verified.
 
 ### Materials / CMF / rendering
-
-Blender/Cycles is the preferred shared open renderer when suitable. Material truth still requires measured/reference data, channel logic, scale and project-specific evidence. Render PASS ≠ material/engineering PASS.
+Blender/Cycles is the preferred shared open renderer when suitable. Render PASS ≠ material/engineering PASS.
 
 ### Motion / video
-
-Use Blender animation/compositor, FFmpeg, browser motion or another verified native tool according to the media authority. Encoding success ≠ motion Design PASS.
+Use Blender animation/compositor, FFmpeg, browser motion or another verified native tool according to media authority and active constraints.
 
 ### Web / interactive
-
-Use HTML/CSS/JS and a real browser runtime. Playwright/Chromium/browser readback is used when verified. Static export is allowed as evidence when browser execution is unavailable, but must be labeled `STATIC EXPORT EVIDENCE ≠ BROWSER PASS`.
+Use HTML/CSS/JS and a real browser runtime; static export is not browser PASS.
 
 ### Visual QA
+Any visual conclusion requires actual final pixels or rendered pages. Minimum review is first-read plus detail/near-read, with medium-specific paired views as required.
 
-Any visual conclusion requires actual final pixels or rendered pages. Minimum review is:
+## 8｜Figma policy
 
-- First-read / thumbnail / distance view;
-- Detail / near-read.
+Figma is an optional specialist adapter, not an OLEANDER dependency.
 
-Add desktop/mobile for web, far/near for boards, overall/detail for drawings, overall/scale-detail for models and renders.
+Do not route every 2D exercise to Figma, block work because Figma is absent, treat Figma node count/export existence as design evidence, or let Figma become Source Authority unless the project explicitly defines it as such.
 
----
-
-## 5｜Figma policy
-
-Figma is an **optional specialist adapter**, not an OLEANDER dependency.
-
-Use it only when:
-- editable Figma-native delivery is explicitly required;
-- the connector is actually available;
-- its component/interface workflow is the best-fit tool;
-- visual screenshot/readback can be verified when the result is being judged visually.
-
-Do not:
-- route every 2D exercise to Figma;
-- block training or project work because Figma is unavailable;
-- treat Figma node count, successful generation or export existence as visual evidence;
-- let Figma become Source Authority unless the project explicitly defines it as such.
-
----
-
-## 6｜Blender policy
+## 9｜Blender policy
 
 The existing runtime remains authoritative:
 
@@ -165,28 +159,26 @@ The existing runtime remains authoritative:
 - `tools/oleander-runtime/blender.sh`
 - `.github/workflows/oleander-blender-runtime-contract.yml`
 
-Use Blender across product, spatial, CMF, motion, model inspection, geometry conversion and AOV/render QA when it is the correct adapter.
-
 Do not fork a separate Blender installation path inside each project.
 
----
+## 10｜Execution Receipt
 
-## 7｜Execution receipt
+Current contract:
 
-Any meaningful production run should be able to report:
+- `00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json`
+- policy revision `1.1`
 
-`TASK / AUTHORITY / SKILL_RESOLVED / REQUIRED_OUTPUT / CAPABILITY_STATE / ADAPTER_SELECTED / VERIFIED_VERSION_OR_PATH / EXECUTED_OR_PENDING / READBACK_STATE / EVIDENCE_GATE / DESIGN_QUALITY_GATE / DOES_NOT_PROVE`
+Every new material execution receipt records the normal authority/output/owner/artifact/execution/readback/regression/review/closure fields **plus**:
 
-Reference-reconstruction runs additionally report:
+- `constraint_lock`
+- `flow_completion`
 
-`SOURCE_LOCATOR / SOURCE_BYTES_STATE / SOURCE_SHA256 / REFERENCE_FRAME_STATE / PAGE_OR_FRAME / SCALE_OR_DPI / RENDERER / REFERENCE_FRAME_SHA256 / COMPARISON_RUNTIME / FIDELITY_GATE`
+Only the explicitly allowlisted pre-policy receipts may omit those sections.
 
-`EXECUTED`, `TRACEABLE` and `REPRODUCIBLE` are process states. They cannot be converted into `Design PASS`, `Professional Finish` or `MAIN KEEP` without independent design review.
+`EXECUTED`, `TRACEABLE` and `REPRODUCIBLE` are process states. They cannot be converted into `Design PASS`, `Professional Finish`, `MAIN KEEP` or full-flow closure without the required downstream gates.
 
----
+## 11｜No-compression / no-loss environment rule
 
-## 8｜No-compression / no-loss environment rule
+Changing tools must not delete design information. If one adapter cannot preserve a layer, geometry, text, dimension, material relation, interaction state or Source Authority, do not use apparent simplicity to justify information loss.
 
-Changing tools must not delete design information. If one adapter cannot preserve a layer, geometry, text, dimension, material relation, interaction state or source authority, do not use the apparent simplicity of the tool change as justification for information loss.
-
-**NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS** applies to the production environment itself.
+**NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS** applies to the production environment itself, while Minimum Sufficient Owner Set prevents unnecessary full-stack execution.

@@ -1,0 +1,19 @@
+{
+  "task": "OLEANDER hourly aesthetic/design training",
+  "domain": "Brand System / Family Identity",
+  "learning_object": "Pentagram × MIT Media Lab visual identity (2014)",
+  "skill_resolved": ["oleander-story-and-board", "oleander-delivery-qc"],
+  "new_skill_created": false,
+  "required_output": "editable SVG family-system A/B calibration",
+  "capability_state": "NATIVE_AVAILABLE",
+  "adapter_selected": "SVG + CairoSVG",
+  "readback": {
+    "near_read": "1600x1000 EXECUTED",
+    "distance_read": "480x300 EXECUTED",
+    "revision_cycle": "v1 REVISE -> v2 POST-REVIEW PASS"
+  },
+  "evidence_gate": "PASS",
+  "design_quality_gate": "POST-REVIEW PASS_FOR_TRAINING_ARTIFACT_ONLY",
+  "skill_status": "CANDIDATE",
+  "does_not_prove": ["production copy approval", "print color", "final locked Logo placement", "portrait crop approval", "SKU claim approval", "commercial release readiness"]
+}

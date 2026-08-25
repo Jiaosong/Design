@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE6"/>
+<text x="96" y="78" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="24" letter-spacing="3" fill="#46504D">OLEANDER TRAINING / ROUTE-WAYFINDING / WORLD-VIEWPORT FRAMING</text>
+<text x="96" y="132" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="48" font-weight="700" fill="#182321">不要缩小整个世界；让手机成为世界的取景窗</text>
+<text x="96" y="172" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="19" fill="#65706C">同一 route/world geometry · NTS · NOT GPS · FIELD OPEN · training-only schematic</text>
+<defs>
+<g id="world">
+  <path d="M0 250 C160 105 280 125 390 190 C500 255 610 138 735 118 C890 92 960 215 1120 150 C1250 98 1370 40 1510 120 C1645 198 1760 138 1920 70 L1920 760 L0 760 Z" fill="#C7C2B4"/>
+  <path d="M0 470 C160 380 330 395 500 452 C685 514 850 510 1030 438 C1205 369 1378 385 1550 455 C1688 510 1800 520 1920 490 L1920 760 L0 760 Z" fill="#98A59E"/>
+  <path d="M0 548 C175 505 340 514 505 555 C650 592 808 600 955 560 C1122 514 1270 505 1435 552 C1610 602 1755 590 1920 545" fill="none" stroke="#5B959B" stroke-width="54" stroke-linecap="round"/>
+  <path d="M80 442 C280 345 465 352 635 402 C805 451 930 440 1088 383 C1244 326 1440 330 1620 392 C1730 430 1820 430 1885 405" fill="none" stroke="#E8E2D6" stroke-width="15" stroke-linecap="round"/>
+  <path d="M100 445 C300 350 470 360 640 409 C810 458 934 447 1092 390 C1250 335 1443 337 1618 400 C1730 439 1815 440 1880 414" fill="none" stroke="#7C6E5E" stroke-width="4" stroke-dasharray="8 12"/>
+  <circle cx="385" cy="380" r="18" fill="#8C5B45"/><circle cx="805" cy="452" r="18" fill="#8C5B45"/><circle cx="1280" cy="345" r="18" fill="#8C5B45"/><circle cx="1605" cy="400" r="18" fill="#8C5B45"/>
+</g>
+</defs>
+<rect x="96" y="232" width="760" height="676" rx="26" fill="#DDD8CC" stroke="#BEB7A8" stroke-width="2"/>
+<text x="130" y="278" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#7A4A3A">REJECT PATTERN / ALL-AT-ONCE MINI-MAP</text>
+<text x="130" y="312" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="18" fill="#59615F">全世界被压缩进手机：路线、节点、文字同时变小，world 退化成 UI card。</text>
+<rect x="270" y="360" width="410" height="490" rx="42" fill="#111917"/><rect x="288" y="382" width="374" height="446" rx="26" fill="#EDE9DE"/>
+<g transform="translate(305,450) scale(.178)"><use href="#world"/></g>
+<rect x="316" y="405" width="318" height="34" rx="17" fill="#F7F4EA" stroke="#CBC4B6"/><text x="334" y="428" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="12" fill="#404947">ROUTE · full network · everything visible</text>
+<rect x="314" y="748" width="322" height="56" rx="18" fill="#F7F4EA" stroke="#CBC4B6"/><text x="334" y="782" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="13" fill="#404947">MODE A   MODE B   MODE C   RETURN</text>
+<line x1="698" y1="470" x2="794" y2="430" stroke="#8C5B45" stroke-width="2"/><text x="704" y="414" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#8C5B45">scale ↓</text><text x="704" y="438" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#8C5B45">target ↓</text><text x="704" y="462" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#8C5B45">world presence ↓</text>
+<rect x="918" y="232" width="906" height="676" rx="26" fill="#DDD8CC" stroke="#BEB7A8" stroke-width="2"/>
+<text x="952" y="278" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#254D49">KEEP PATTERN / WORLD-VIEWPORT</text>
+<text x="952" y="312" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="18" fill="#59615F">geometry 不缩成缩略图；手机只裁取当前区域，active anchor 进入安全阅读区。</text>
+<rect x="1160" y="360" width="410" height="490" rx="42" fill="#111917"/>
+<defs><clipPath id="screenclip"><rect x="1178" y="382" width="374" height="446" rx="26"/></clipPath></defs>
+<g clip-path="url(#screenclip)"><rect x="1178" y="382" width="374" height="446" fill="#EDE9DE"/><g transform="translate(970,326) scale(.43)"><use href="#world"/></g><circle cx="1352" cy="598" r="44" fill="none" stroke="#8C5B45" stroke-width="3"/><circle cx="1352" cy="598" r="8" fill="#8C5B45"/><path d="M1320 598 H1384" stroke="#8C5B45" stroke-width="2"/><path d="M1352 566 V630" stroke="#8C5B45" stroke-width="2"/></g>
+<rect x="1197" y="405" width="176" height="34" rx="17" fill="#F7F4EA" stroke="#CBC4B6"/><text x="1215" y="428" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="12" fill="#404947">ROUTE · current context</text>
+<rect x="1197" y="748" width="334" height="56" rx="18" fill="#F7F4EA" stroke="#CBC4B6"/><text x="1217" y="782" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="13" fill="#404947">Return      Focus      Optional read</text>
+<rect x="1266" y="520" width="172" height="182" rx="24" fill="none" stroke="#315E59" stroke-width="2" stroke-dasharray="8 8"/><line x1="1438" y1="520" x2="1656" y2="458" stroke="#315E59" stroke-width="2"/><text x="1666" y="450" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#315E59">ANCHOR SAFE ZONE</text><text x="1666" y="476" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#315E59">active object stays readable</text>
+<line x1="1550" y1="680" x2="1688" y2="722" stroke="#315E59" stroke-width="2"/><text x="1698" y="718" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#315E59">crop changes</text><text x="1698" y="744" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#315E59">world geometry does not</text>
+<line x1="96" y1="955" x2="1824" y2="955" stroke="#BDB6A8" stroke-width="2"/><text x="96" y="1000" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#182321">PROMOTION TEST</text><text x="310" y="1000" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="19" fill="#59615F">If the phone must shrink the whole network to explain context, framing has failed. Crop / pan / focus before scale-down.</text><text x="96" y="1042" font-family="Noto Sans CJK SC, Arial, sans-serif" font-size="15" fill="#727975">Does not prove site geometry, GPS precision, opening status, target-runtime ergonomics, or C04 MAIN quality.</text>
+</svg>

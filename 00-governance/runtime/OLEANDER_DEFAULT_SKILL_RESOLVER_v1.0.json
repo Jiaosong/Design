@@ -1,0 +1,101 @@
+{
+  "schema": "oleander.default-skill-resolver.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT",
+  "decision_date": "2026-08-18",
+  "scope": "OLEANDER_ALL_PROJECTS_CONVERSATIONS_AGENTS_MEDIA",
+  "authority": {
+    "knowledge_method_authority": "Notion OLEANDER Design Knowledge Base",
+    "notion_canonical_method_id": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+    "notion_url": "https://app.notion.com/p/3c0b86be5c478162993df939a1c2bf03",
+    "execution_implementation_authority": "GitHub Jiaosong/Design",
+    "installed_skill_registry": "oleander-skills/REVIEW.md",
+    "review_authority": "OLEANDER Artifact Review System v1.1"
+  },
+  "default_resolution_order": [
+    "READ_CURRENT_AUTHORITY_PROJECT_STATE_SOURCE_AUTHORITY_CURRENT_TASK_WHEN_APPLICABLE",
+    "RESOLVE_DOMAIN_L0_L7_AND_DECISION_QUESTION",
+    "RETRIEVE_CURRENT_NOTION_METHOD_THEORY_SOURCE_CASE_EVIDENCE_PRACTICE",
+    "REUSE_EXISTING_MATURE_DESIGN_DESIGN_SOURCE_AND_CURRENT_ASSETS",
+    "RESOLVE_EXISTING_GITHUB_REUSABLE_OR_CANDIDATE_SPECIALIST_SKILL",
+    "DEFINE_REQUIRED_NATIVE_OUTPUT",
+    "PROBE_CURRENT_EXECUTION_CAPABILITIES",
+    "SELECT_BEST_FIT_REAL_PRODUCTION_ADAPTER",
+    "EXECUTE_ACTUAL_ARTIFACT",
+    "ACTUAL_READBACK",
+    "EVIDENCE_GATE",
+    "INDEPENDENT_DESIGN_QUALITY_GATE",
+    "ROOT_CAUSE_GAP_DIAGNOSIS",
+    "OPTIMIZE_EXISTING_SKILL_ONLY_IF_MATERIAL_REUSABLE_GAP_IS_PROVEN",
+    "CREATE_NEW_SKILL_ONLY_IF_NO_EXISTING_OWNER_CAN_REASONABLY_OWN_CAPABILITY",
+    "SYNC_MATERIAL_DELTA_PRESERVE_PROVENANCE"
+  ],
+  "capability_layers": {
+    "installed_reusable_execution_skills": [
+      "oleander-research",
+      "oleander-data-viz",
+      "oleander-3d-pipeline",
+      "oleander-story-and-board",
+      "oleander-delivery-qc",
+      "oleander-motion"
+    ],
+    "candidate_ui_specialists_on_main": [
+      "oleander-game-ui",
+      "oleander-mobile-game-ui",
+      "oleander-ui-visual-composition",
+      "oleander-route-wayfinding-ui",
+      "oleander-ui-interaction"
+    ],
+    "candidate_aggregation_layer": "oleander-game-ui-stack",
+    "candidate_draft_specialist": {
+      "name": "OLEANDER Technical Drawing",
+      "implementation_pr": 172,
+      "installed": false,
+      "promotion_boundary": "EXPLICIT_INDEPENDENT_PROMOTION_REQUIRED"
+    },
+    "notion_method_registry": {
+      "role": "BROADER_REUSABLE_DESIGN_INTELLIGENCE",
+      "live_query_required": true,
+      "hardcoded_count_forbidden": true
+    }
+  },
+  "hard_rules": [
+    "NOTION_METHOD_KNOWLEDGE_PRECEDES_EXECUTION_SKILL_ROUTING",
+    "GITHUB_INSTALLED_SKILL_LIST_IS_NOT_COMPLETE_OLEANDER_CAPABILITY_INVENTORY",
+    "EXISTING_METHOD_AND_SKILL_FIRST",
+    "NO_PARALLEL_FRAMEWORK_WHEN_EXISTING_OWNER_CAN_REASONABLY_OWN_CAPABILITY",
+    "PRODUCTION_TASKS_DEFAULT_TO_REAL_EDITABLE_AUDITABLE_ARTIFACTS",
+    "AI_IMAGE_IS_SUPPLEMENTARY_NOT_DESIGN_AUTHORITY",
+    "ACTUAL_READBACK_REQUIRED_BEFORE_VISUAL_DESIGN_PASS",
+    "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT",
+    "PRODUCER_SELF_PROMOTION_TO_KEEP_IS_FORBIDDEN_WHERE_INDEPENDENT_REVIEW_IS_REQUIRED",
+    "NO_COMPRESSION_NO_LOSS_RESTRUCTURE_WITHOUT_INFORMATION_LOSS",
+    "DERIVED_ASSET_DOES_NOT_REPLACE_SOURCE_OR_DESIGN_AUTHORITY",
+    "CHAT_SUMMARY_DOES_NOT_REPLACE_PROJECT_STATE"
+  ],
+  "review_separations": [
+    "ARTIFACT_EXISTENCE_NE_DESIGN_QUALITY",
+    "TRACEABILITY_NE_PROFESSIONAL_FINISH",
+    "EVIDENCE_CORRECTNESS_NE_VISUAL_EXCELLENCE",
+    "PROCESS_PASS_NE_MAIN_KEEP",
+    "RENDER_PASS_NE_DESIGN_PASS",
+    "PROTOTYPE_PASS_NE_FIELD_PASS"
+  ],
+  "synchronization": {
+    "material_delta_sequence": [
+      "UPDATE_CANONICAL_NOTION_METHOD",
+      "UPDATE_NOTION_CURRENT_AUTHORITY_OR_METHODS_INDEX_POINTER_IF_DEFAULT_CHANGED",
+      "UPDATE_GITHUB_EXECUTABLE_RESOLVER_RUNTIME_REVIEW_IMPLEMENTATION",
+      "BRANCH_COMMIT_PR_CI_READBACK",
+      "KEEP_ONE_CURRENT_DEFAULT_RESOLVER",
+      "PRESERVE_SUPERSEDED_HISTORY_AS_PROVENANCE"
+    ]
+  },
+  "does_not_prove": [
+    "INDIVIDUAL_METHOD_VALIDATION",
+    "CANDIDATE_SKILL_PROMOTION",
+    "PROJECT_DESIGN_PASS",
+    "FIELD_OR_ENGINEERING_TRUTH",
+    "RELEASE_OR_PROMOTION"
+  ]
+}

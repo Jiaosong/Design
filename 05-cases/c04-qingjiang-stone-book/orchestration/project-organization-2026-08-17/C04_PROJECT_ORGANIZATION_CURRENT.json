@@ -1,0 +1,168 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "version": "1.1",
+  "date": "2026-08-17",
+  "role": "PROJECT_ORGANIZATION_OBJECT_LINEAGE_CONTROL",
+  "base_main_sha": "25329e4b0c9f9c93ce64d1d9bbff2731c553d9c2",
+  "current_delta": {
+    "editing_now": [
+      "canonical object identity",
+      "merged-current vs open-candidate separation",
+      "candidate lineage",
+      "latest GitHub annotation reconciliation",
+      "ownership",
+      "downstream consumer boundaries",
+      "no-loss project hygiene"
+    ],
+    "not_editing": [
+      "Web integration",
+      "App UI redesign",
+      "new design pixels",
+      "field or engineering claims"
+    ]
+  },
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "drawing_status": "NTS_NOT_FOR_CONSTRUCTION"
+  },
+  "authority_classes": [
+    "DESIGN_SOURCE",
+    "CURRENT_MAIN_AUTHORITY",
+    "CANONICAL_OBJECT_REGISTER",
+    "CANDIDATE_DELTA",
+    "TECHNICAL_VALIDATION_PROOF",
+    "DOWNSTREAM_PRESENTATION_CARRIER",
+    "LATEST_INDEPENDENT_ANNOTATION_VERDICT"
+  ],
+  "effective_state_contract": {
+    "baseline_register": "C04_PROJECT_OBJECT_REGISTER_2026-08-17.csv",
+    "annotation_overlay": "C04_PROJECT_OBJECT_STATUS_OVERLAY_2026-08-17.csv",
+    "annotation_reconciliation": "C04_ANNOTATION_RECONCILIATION_2026-08-17.md",
+    "rule": "ANNOTATION_OVERLAY_MAY_OVERRIDE_CANDIDATE_PRESENTATION_STATE_BUT_NOT_CANONICAL_IDENTITY_OR_MERGED_AUTHORITY"
+  },
+  "full_design_universe": [
+    "LANDSCAPE",
+    "JOURNEY",
+    "13_IMPRINTS",
+    "SCENE_INTERACTION",
+    "AUDIENCE",
+    "PHYSICAL_SENSORY",
+    "DIGITAL",
+    "MEMORY_IP",
+    "TECHNICAL",
+    "NARRATIVE",
+    "VISUAL_MOTION",
+    "RETURN"
+  ],
+  "lane_locks": {
+    "PROJECT_ORGANIZATION": {
+      "owner": "THIS_LANE",
+      "may_edit": [
+        "object registry",
+        "lineage",
+        "status",
+        "annotation reconciliation",
+        "ownership",
+        "no-loss accounting"
+      ],
+      "may_not_edit": ["Web pixels", "App pixels"]
+    },
+    "APP": {
+      "owner": "USER_OWNED_NEXT_DELTA",
+      "latest_existing_candidate": "PR#162",
+      "organization_action": "REGISTER_ONLY_DO_NOT_MODIFY"
+    },
+    "WEB": {
+      "owner": "SEPARATE_DOWNSTREAM_INTEGRATION_LANE",
+      "latest_candidate_snapshot": "PR#164",
+      "organization_action": "REGISTER_AS_CONSUMER_NOT_AUTHORITY"
+    }
+  },
+  "candidate_lineages": {
+    "APP": ["PR#140", "PR#144", "PR#162", "USER_NEXT_DELTA"],
+    "AUDIENCE": ["A01_A04_CANONICAL", "PR#155_V1_2_PROVENANCE", "DRIVE_V4_STRONGEST_PIXEL_CANDIDATE"],
+    "CULTURE": ["REJECTED_V1_PROVENANCE", "PR#128_BOUNDED_ARTIFACT_CANDIDATE"],
+    "R05_R06_R13": ["CANONICAL_RXX", "PR#133", "PR#145", "LATEST_INDEPENDENT_REVIEWS"],
+    "FLUID_REST": ["P03_P04_DESIGN_SOURCE", "PR#151_MODEL_PROOF", "PR#164_PAIRING_VERDICT", "PR#159_PUBLIC_PRESENTATION"],
+    "QINGFENGYIN": ["P05_DESIGN_SOURCE", "PR#152", "PR#159_PUBLIC_PRESENTATION", "DO_NOT_MODEL_YET"],
+    "MEMORY": ["M01_M02_DESIGN_SOURCE", "PR#143", "PR#153", "M02_USER_OWNED_APP_NEXT"],
+    "WEB": ["REV04_PROVENANCE", "PR#127", "PR#163", "PR#164"]
+  },
+  "effective_candidate_status": {
+    "AUDIENCE": {
+      "strongest_pixel": "09_C04_R06_AUDIENCE_DEPTH_CURRENTIZED_v4.png",
+      "drive_id": "16WA2GIiNFrRsT9r-k1nPxw2PfPlyEpNt",
+      "verdict": "KEEP_AFTER_REVISION_MAIN_CANDIDATE_MAIN_NOT_LOCKED"
+    },
+    "P01": {
+      "concept": "KEEP_PRIMARY_CANDIDATE",
+      "presentation": "HOLD_PROCESS_SUPPORT"
+    },
+    "P02": {
+      "concept": "KEEP",
+      "presentation": "KEEP_TECHNICAL_SUPPORT_CANDIDATE"
+    },
+    "FLUID_REST_MODEL": {
+      "presentation": "PHYSICAL_TECHNICAL_SUPPORT_ONLY_LOCATION_HOLD",
+      "hero": "FAIL"
+    },
+    "QINGFENGYIN": {
+      "presentation": "LOW_DENSITY_SENSORY_CANDIDATE",
+      "model": "DO_NOT_MODEL_YET"
+    },
+    "R05": {
+      "interaction": "KEEP_MAIN_CANDIDATE",
+      "landscape_pixel": "HOLD"
+    },
+    "R06": {
+      "concept": "KEEP",
+      "experience": "KEEP_AFTER_REVISION_MAIN_BOUND",
+      "current_integrated_pixels": "REVISE",
+      "technical": "KEEP_SUPPORT_TECHNICAL",
+      "overall": "NOT_MAIN_KEEP_YET"
+    },
+    "R13": {
+      "concept": "KEEP_AFTER_REVISION",
+      "current_integrated_pixels": "MAIN_SUPPORT_CANDIDATE_NOT_FINAL_MAIN"
+    },
+    "CULTURE_V2": {
+      "pr": "PR#128_OPEN_DRAFT",
+      "bounded_artifact_verdicts": {
+        "CUL2_01": "KEEP_MAIN",
+        "CUL2_02": "KEEP_AFTER_REVISION_MAIN_SUPPORT",
+        "CUL2_03": "KEEP_MAIN_STRONGEST_CULTURE_SCENE",
+        "CUL2_04": "KEEP_AFTER_REVISION_MAIN_SUPPORT",
+        "CUL2_05": "KEEP_MAIN"
+      }
+    },
+    "F_DELIVERY": {
+      "carrier_state": "EXECUTED_REVISE_PROVENANCE",
+      "machine_qc": "NOT_DESIGN_PASS"
+    }
+  },
+  "technical_namespace_lock": {
+    "C22-SEC-A": "CROSS_RIVER_CABLE_TRANSPORT_VIEW",
+    "C22-SEC-B": "R06_SLOPE_WALK_VIEW_RECOVERY",
+    "C22-SEC-C": "R13_NATURAL_CONVERGENCE",
+    "MDL-SEC-B": "R06_CONCEPTUAL_MODEL_SECTION",
+    "C23-R06-GA_DETAIL": "R06_TECHNICAL_SUPPORT",
+    "C23-SEC-A": "C23_SPECIFIC_NAMESPACE_ONLY",
+    "forbidden_shorthand": "GENERIC_SEC_A_EQUALS_R06"
+  },
+  "hard_rules": [
+    "CURRENT_DELTA_NE_PROJECT_SCOPE",
+    "NOT_EDITED_NE_DOES_NOT_EXIST",
+    "NOT_SHOWN_NE_REMOVED",
+    "VALIDATION_SUBSET_NE_WHOLE_PROJECT",
+    "CONCEPT_KEEP_NE_PIXEL_KEEP",
+    "PIXEL_FAIL_NE_DESIGN_DELETE",
+    "OPEN_PR_NE_CURRENT",
+    "OPEN_PR_BODY_NE_LATEST_VERDICT",
+    "LATEST_ANNOTATION_MAY_OVERRIDE_CANDIDATE_PRESENTATION_ONLY",
+    "BOUNDED_ARTIFACT_KEEP_NE_PROJECT_PROMOTION",
+    "WEB_F_CONSUME_DO_NOT_DEFINE_PROJECT"
+  ]
+}

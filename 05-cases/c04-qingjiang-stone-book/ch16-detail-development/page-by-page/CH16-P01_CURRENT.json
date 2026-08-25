@@ -1,0 +1,14 @@
+{
+  "schema": "oleander.current-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "CH16-P01",
+  "current_revision": "v3.3",
+  "current_path": "05-cases/c04-qingjiang-stone-book/ch16-detail-development/page-by-page/P01-v3.3/CH16-P01_CURRENT_POINTER.json",
+  "state": "EXECUTED / INDEPENDENT DESIGN REVIEW PENDING",
+  "presentation_mode": "RESOURCE_LED / INTERACTION_ENHANCED",
+  "primary_resource": "physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+  "display_source_rule": "ODB-02 NOT DISPLAYABLE IN CH16",
+  "no_crop_rule": "COMPLETE RESOURCE / CONTAIN; SUPPORT MAY CAROUSEL WHEN SPACE IS INSUFFICIENT",
+  "supersedes_current_revisions": ["v3.2", "v3.1", "v3.0", "v2.0"],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

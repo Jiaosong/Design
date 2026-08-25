@@ -1,0 +1,48 @@
+{
+  "object": "CH14-P03",
+  "version": "v7.0",
+  "image_generation_used": false,
+  "design_decisions": {
+    "module_X": "top stone block height = 88 source units",
+    "mark_ratio": {
+      "width_X": 3.659,
+      "height_X": 4.352
+    },
+    "clearspace": "0.5X minimum on all sides",
+    "digital_minimum": {
+      "primary_lockup": "180px wide",
+      "mark": "48px",
+      "micro_candidate": "24–32px"
+    },
+    "print_current_decision": {
+      "primary_lockup": "34mm wide",
+      "mark": "12mm",
+      "status": "PHYSICAL PROOF REQUIRED"
+    }
+  },
+  "asset_family": [
+    "Primary Horizontal",
+    "Stacked",
+    "Wordmark",
+    "Mark",
+    "Reverse",
+    "Mono",
+    "Micro Candidate"
+  ],
+  "authority": {
+    "source_mark": "QJ_STONE_SEAL_FLAT_MASTER_v1_2.svg",
+    "new_v7_masters": "outlined vector masters created in local production package",
+    "material_display": "QJ_STONE_SEAL_TEXTURED_DISPLAY_v1_2.png"
+  },
+  "background_QA_retained": [
+    "source bbox",
+    "B01–B08 component geometry",
+    "critical gap measurements",
+    "native-pixel readbacks"
+  ],
+  "does_not_prove": [
+    "independent Design PASS",
+    "legal trademark registration",
+    "physical production approval"
+  ]
+}

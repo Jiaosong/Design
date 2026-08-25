@@ -1,0 +1,8 @@
+figure_id,title,execution_state,evidence_state,design_state
+ENV-01,Slope & Aspect,EXECUTED,current v0.7 source-driven,DESIGN REVIEW PENDING
+ENV-02,Potential Drainage,EXECUTED,current v0.7 source-driven,DESIGN REVIEW PENDING
+ENV-03,Land Cover Evidence,HOLD,WorldCover source verified / AOI pixels absent,NO MAIN PROMOTION
+ENV-04,Water History Evidence,HOLD,JRC GSW source verified / AOI pixels absent,NO MAIN PROMOTION
+ENV-05,Solar Scenarios,EXECUTED,21×21 derived scenario,DESIGN REVIEW PENDING
+ENV-06,Operations Conflict,EXECUTED,ROUTE-03 + operator-reported roles,DESIGN REVIEW PENDING
+ENV-SYN-01,Environmental Synthesis,EXECUTED,same current terrain authority,DESIGN REVIEW PENDING

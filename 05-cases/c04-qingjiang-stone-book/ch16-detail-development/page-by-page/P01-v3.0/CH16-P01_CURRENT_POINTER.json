@@ -1,0 +1,15 @@
+{
+  "schema": "oleander.c04.ch16.page-pointer.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "page_id": "CH16-P01",
+  "revision": "v3.0",
+  "state": "SUPERSEDED_PROVENANCE",
+  "superseded_by": "v3.1",
+  "supersession_reason": "Higher-level C04 User Original Design Integration Plan requires ORIGINAL BOARD != FINAL PUBLIC PIXEL. ODB-02 remains the design source / near-read support, not the final public carrier.",
+  "preserved_source": {
+    "object_id": "ODB-02",
+    "filename": "可拆卸倚靠休息板.png",
+    "role": "USER ORIGINAL DESIGN SOURCE / PRESERVE"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

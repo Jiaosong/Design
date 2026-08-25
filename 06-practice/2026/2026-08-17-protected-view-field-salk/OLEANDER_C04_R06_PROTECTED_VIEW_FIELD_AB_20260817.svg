@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#F3F1EA"/>
+<style>
+text{font-family:"Noto Sans CJK SC","Noto Sans SC","Arial",sans-serif;fill:#18201D}
+.meta{font-size:16px;letter-spacing:1.2px;fill:#68706B}.h1{font-size:38px;font-weight:760}.h2{font-size:25px;font-weight:720}.body{font-size:20px}.small{font-size:15px;fill:#69706C}
+.line{stroke:#BDC2BC;stroke-width:1}.panel{fill:#FFFDF8;stroke:#D6D3CB;stroke-width:1.5}.mountain{fill:#C9CEC6}.mountain2{fill:#AEB6AD}.river{fill:#7BAEB6}.ghost{fill:#FFFFFF;fill-opacity:.88}
+</style>
+<text x="72" y="56" class="meta">OLEANDER / C04 R06 / ARCHITECTURAL COMPOSITION TRANSFER</text>
+<text x="72" y="102" class="h1">主景不是“剩余背景”，而是必须被保护的视觉场</text>
+<text x="72" y="136" class="body">Salk Institute central plaza → R06 Landscape First / Relation Reveal composition study</text>
+<line x1="72" y1="160" x2="1528" y2="160" class="line"/>
+<rect x="72" y="184" width="1456" height="112" rx="18" fill="#E8E5DD"/>
+<text x="96" y="216" class="meta">VISIBLE FACT — SALK INSTITUTE</text>
+<text x="96" y="250" class="body">两翼镜像体量围合一块大尺度铺装中庭；中心细水渠把空场的方向推向太平洋。</text>
+<text x="96" y="280" class="small">Official Salk: mirror-image structures flank a grand travertine courtyard.</text>
+<text x="908" y="216" class="meta">DESIGN INFERENCE</text>
+<text x="908" y="250" class="body">真正有力的“空”需要边界、方向与中心关系共同保护。</text>
+<text x="908" y="280" class="small">Transfer: frame the view; do not occupy its recognition field.</text>
+<text x="84" y="350" class="meta">A — OVERLAY-OCCUPIED / REVISE</text>
+<rect x="72" y="372" width="700" height="470" rx="24" class="panel"/>
+<text x="104" y="414" class="h2">Landscape First 被“解释层”重新占满</text>
+<rect x="108" y="452" width="626" height="278" rx="12" fill="#E7EBE5"/>
+<path d="M108 620 L178 560 L232 585 L292 515 L350 565 L424 500 L500 552 L574 485 L640 550 L734 510 L734 730 L108 730Z" class="mountain"/>
+<path d="M108 650 L190 610 L246 630 L318 580 L382 620 L458 566 L526 610 L606 558 L676 600 L734 575 L734 730 L108 730Z" class="mountain2"/>
+<path d="M108 687 C250 663 356 705 500 674 C594 654 666 672 734 650 L734 730 L108 730Z" class="river"/>
+<rect x="176" y="492" width="220" height="82" rx="12" class="ghost"/>
+<text x="194" y="522" class="small">R06 · RELATION 01</text><text x="194" y="548" class="body">峰体 / 路线关系</text>
+<rect x="410" y="548" width="250" height="88" rx="12" class="ghost"/>
+<text x="430" y="578" class="small">R06 · RELATION 02</text><text x="430" y="606" class="body">停留 / 视线解释</text>
+<rect x="244" y="636" width="260" height="70" rx="12" class="ghost"/>
+<text x="264" y="666" class="small">OPTIONAL READING</text><text x="264" y="692" class="body">十三印 →</text>
+<text x="104" y="778" class="small">问题：信息没有丢，但中央景观识别场被三次切断。</text>
+<text x="104" y="808" class="small">缩小后先读到卡片，不再先读到“山—水—开敞方向”。</text>
+<text x="842" y="350" class="meta">B — PROTECTED VIEW FIELD / PROPOSED</text>
+<rect x="830" y="372" width="698" height="470" rx="24" class="panel"/>
+<text x="862" y="414" class="h2">解释层只“围边”，中央主景保持连续</text>
+<rect x="866" y="452" width="626" height="278" rx="12" fill="#E7EBE5"/>
+<path d="M866 620 L936 560 L990 585 L1050 515 L1108 565 L1182 500 L1258 552 L1332 485 L1398 550 L1492 510 L1492 730 L866 730Z" class="mountain"/>
+<path d="M866 650 L948 610 L1004 630 L1076 580 L1140 620 L1216 566 L1284 610 L1364 558 L1434 600 L1492 575 L1492 730 L866 730Z" class="mountain2"/>
+<path d="M866 687 C1008 663 1114 705 1258 674 C1352 654 1424 672 1492 650 L1492 730 L866 730Z" class="river"/>
+<rect x="1058" y="478" width="242" height="220" rx="18" fill="none" stroke="#9D7447" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="1102" y="505" class="small" fill="#9D7447">PROTECTED VIEW FIELD</text>
+<rect x="878" y="472" width="156" height="66" rx="10" class="ghost"/>
+<text x="894" y="498" class="small">RELATION 01</text><text x="894" y="523" class="body">路线</text>
+<line x1="1034" y1="506" x2="1070" y2="532" stroke="#244A46" stroke-width="2"/>
+<rect x="1322" y="558" width="156" height="66" rx="10" class="ghost"/>
+<text x="1338" y="584" class="small">RELATION 02</text><text x="1338" y="609" class="body">停留</text>
+<line x1="1322" y1="590" x2="1288" y2="606" stroke="#244A46" stroke-width="2"/>
+<text x="882" y="710" class="small" fill="#244A46">OPTIONAL READING →</text>
+<text x="862" y="778" class="small">同样的信息被推到边缘，并通过短 relation line 指向景观。</text>
+<text x="862" y="808" class="small">第一视觉仍然是完整的山体、水面与开敞方向，而不是 UI 模块。</text>
+<line x1="72" y1="890" x2="1528" y2="890" class="line"/>
+<text x="72" y="924" class="meta">TRANSFER RULE</text>
+<text x="220" y="924" class="body">先定义不可占用的 Primary Recognition Field，再允许解释层进入；“有留白”不等于“主景被保护”。</text>
+<text x="72" y="960" class="small">C04 boundary: VISUAL COMPOSITION STUDY ONLY / NOT SITE GEOMETRY / NTS / FIELD OPEN / no new route, platform, railing or structure proposed.</text>
+<text x="72" y="986" class="small">STATIC EXPORT EVIDENCE. Exact official R06 pixels are not embedded here; this tests overlay hierarchy only and cannot replace source-locked landscape review.</text>
+</svg>
