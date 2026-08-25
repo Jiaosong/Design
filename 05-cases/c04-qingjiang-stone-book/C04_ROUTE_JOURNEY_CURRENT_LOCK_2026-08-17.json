@@ -1,0 +1,43 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "case": "C04",
+  "state": "ROUTE_03_LOCKED_CURRENT_DOWNSTREAM_REFERENCE",
+  "correction": "Previous JOURNEY-04 lock was withdrawn by explicit user correction. ROUTE-03 only is locked.",
+  "current": {
+    "route": {
+      "object_id": "ROUTE-03",
+      "artifact": "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+      "package_bytes": 806723,
+      "package_sha256": "977307610d1908c3951535b57222355c39fe262f0f2e3da68d803055a882aabb",
+      "drive_file_id": "1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy",
+      "locked": true
+    },
+    "journey_modes": {
+      "object_id": "JOURNEY-04",
+      "artifact": "JOURNEY_04_FOUR_MODES",
+      "drive_file_id": "1bMoEs2iu2NC4pMxE16NOorvNh0e4RfL4",
+      "locked": false,
+      "status": "WORKING_CANDIDATE_PROVENANCE_ONLY"
+    }
+  },
+  "provenance_only": ["ROUTE-01", "ROUTE-02", "JOURNEY-01", "JOURNEY-02", "JOURNEY-03"],
+  "lock_semantics": {
+    "route_03_downstream_reference_locked": true,
+    "journey_04_locked": false,
+    "pixel_keep": false,
+    "main_keep": false,
+    "professional_finish_pass": false,
+    "field_pass": false,
+    "project_promotion": false
+  },
+  "truth_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "nts": true,
+    "not_for_construction": true,
+    "does_not_prove": ["precise distance", "slope", "travel time", "GPS", "real-time operating status", "survey geometry"]
+  },
+  "downstream_rule": "Use ROUTE-03 as the single CURRENT Route object. JOURNEY-04 is not locked."
+}
