@@ -11,6 +11,7 @@ Status: **BINDING ONLY / NO NEW METHODOLOGY**
 3. Notion `OLEANDER Artifact Review System v1.1｜合规门 × 专业设计门`.
 4. `oleander-motion/MOTION_LIBRARY_EFFECT_ATLAS.md` only when temporal change carries analytical meaning.
 5. Current Notion `T-VISUAL-IMAGE-OPS-001｜OLEANDER Image Processing Operator Standard｜图层—蒙版—透明度—混合—滤镜—非破坏编辑` for vector-safe and raster-preview composition operators.
+6. `LANDSCAPE_GIS_ANALYSIS_BINDING.md` whenever the task is landscape/site/terrain/hydrology/slope/aspect/environmental analysis or a competition/portfolio analytical drawing.
 
 ## Existing visual rules to apply
 
@@ -42,10 +43,28 @@ Hard failures:
 
 Promotion test: **If the comparison only becomes truthful after reading the numbers, the small-multiple visual encoding has failed.**
 
+## Landscape GIS analytical-drawing routing
+
+When a map is intended as landscape-architecture/site-analysis output rather than operational GIS software output, resolve `LANDSCAPE_GIS_ANALYSIS_BINDING.md` before visual styling.
+
+Key bindings:
+
+- **Precision ceiling first:** source precision, analytical precision and graphic/readability precision are different. Interpolation, contours, hillshade, smoothing or larger export size never upgrade source authority.
+- **Continuous landform first:** for terrain questions, relief/contour/ridge/valley/water must read before UI-like cards, statistics or decorative atmosphere.
+- **Raw grid is evidence, not automatically MAIN grammar:** preserve source granularity for audit, but move dominating sample/raster cells to QC/method insets when the analytical question is better expressed through continuous terrain, threshold bands, flow hierarchy, sections or small multiples.
+- **One variable owns each panel:** terrain, slope, aspect, hydrology, solar and synthesis should not compete at equal weight in one map.
+- **Plan–section coupling:** when vertical relation matters, mapped cut lines and sections must share the same spatial authority; a decorative sparkline does not substitute for terrain section evidence.
+- **Hydrology semantics:** sampled D8 convergence must not be drawn as surveyed drainage, flood path or hydraulic capacity.
+- **Master field + support rhythm:** one dominant spatial figure may occupy most of the board; supporting maps, sections, statistics and numbered insets remain subordinate and tied back to the master field.
+- **Professional richness comes from line/density/object specificity/annotation:** blur, glow, texture and transparency may support atmosphere only if the cartographic structure remains crisp.
+- **Style is secondary:** project palette and material tone bind to cartography; cartography must not dissolve into style.
+
+Review at far-read, near-read, grayscale and with decorative style effects mentally/physically removed. If the analytical drawing only works because of tint, texture, blur or glow, return `REVISE`.
+
 ## Image-processing operator routing
 
 Use `T-VISUAL-IMAGE-OPS-001` for layer isolation, clipping/masking, opacity, raster underlays, tonal normalization, texture/noise control and export adapters around a chart/map. Preserve authoritative values, topology and vector masters. Blur, glow, texture, pixelation, blend modes or masks may clarify hierarchy but may not change a value, conceal uncertainty, normalize `UNKNOWN`, or replace a source-grounded geometry relationship.
 
 ## Review inheritance
 
-Open the actual SVG/PNG/PDF/interactive output. Run compact-size, grayscale/non-color, label-collision and source-value checks. For small multiples, additionally run the locked-domain comparability readback above. Renderer/library capability does not substitute for Professional Design Gate.
+Open the actual SVG/PNG/PDF/interactive output. Run compact-size, grayscale/non-color, label-collision and source-value checks. For small multiples, additionally run the locked-domain comparability readback above. For landscape/site GIS analytical drawings, additionally run the precision-ceiling, terrain-first, plan–section, hydrology-semantics, master-vs-support and style-removal checks defined in `LANDSCAPE_GIS_ANALYSIS_BINDING.md`. Renderer/library capability does not substitute for Professional Design Gate.
