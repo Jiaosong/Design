@@ -99,6 +99,25 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 - VI / brand manual: visibly represented identity rules, actual master assets, dimensioned construction where required, color/type specimens, misuse, production boundaries, and editable/readback-ready pages.
 - Film storyboard: scene purpose, image, motion, narration, sound, duration, source assets.
 
+## Brand endorsement hierarchy gate
+
+Use this when a project contains an operator, parent, institution, destination, sponsor, or other endorsement identity alongside a distinct experience/product/sub-brand identity.
+
+1. Name the roles before drawing the lockup: `PRIMARY IDENTITY`, `ENDORSEMENT`, `CO-BRAND`, or `LEGAL / CONTEXT MARK`. Do not let page layout silently decide brand architecture.
+2. If the intended experience/product identity owns the proposition, it must own the first-read silhouette. An endorsement must remain legible without becoming a second hero by default.
+3. Hierarchy may be expressed through scale, weight, spacing, position, contrast, and lockup separation. Do not solve the problem by hiding or deleting required endorsement information.
+4. Record `PROVES / DOES NOT PROVE` for the endorsement relationship where authorship or ownership could be misread. An operator mark may prove context/association without proving authorship of the experience identity.
+5. Test the same relationship across at least two application classes, such as entrance/signage, digital hero, publication, board, packaging, or return/service surface. A ratio that works only on one hero page is not a stable system.
+6. Run a distance-read test. If the endorsement and experience identity compete for first-read when the lockup is reduced, REVISE unless the brief explicitly requires equal co-brand status.
+7. Run a near-read test. The endorsement must remain identifiable and not collapse into illegible legal microcopy.
+8. Do not redraw, trace, or mutate locked logo artwork merely to force the desired hierarchy. Change layout, clearspace, relative scale, or application grammar around the authoritative mark.
+9. A new visual lockup does not establish trademark rights, legal permission, operator approval, or final brand governance. Keep those gates separate from Design Quality.
+10. When the brief truly specifies equal partnership, declare `CO-BRAND` explicitly and review for balanced dual ownership; do not misuse the endorsement pattern.
+
+Default review sequence:
+
+`ROLE CONTRACT → LOCKUP HIERARCHY → DISTANCE READ → NEAR READ → CROSS-APPLICATION READ → AUTHORITY / LEGAL BOUNDARY`.
+
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
