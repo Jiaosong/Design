@@ -1,7 +1,7 @@
 # OLEANDER AIG-01｜AI Evaluation & Regression v0.1
 
 Status: ACTIVE governance protocol when present on `main` / E1 static corpus gate required / not evidence of model reliability
-Canonical method source: Notion `AIG-01｜AI Evaluation & Regression Protocol v0.1｜评估与回归`
+Canonical method authority: GitHub `main/90-shared/OLEANDER_AIG-01_Evaluation_Regression_v0.1.md`; the deleted Notion `AIG-01｜AI Evaluation & Regression Protocol v0.1｜评估与回归` page is historical lineage only and must not be used as a Current authority pointer.
 
 ## Namespace rule
 `AIG-01` is the current AI-governance identifier. `P0` is reserved by the project axis for `Portfolio` and must not be reused for AI governance. Historical records that already contain AI `P0` remain immutable audit evidence only.
@@ -13,7 +13,7 @@ Canonical query: **What happens when a model, prompt, skill, tool or retrieval p
 
 Search aliases: `model change`, `prompt change`, `skill update`, `tool change`, `retrieval policy change`, `AI change control`, `regression gate`, `rollback`.
 
-Authority rule: a model, prompt, skill, tool, retrieval policy, parser, canonical source, rendering path, or automation change is a governed candidate change. It must be evaluated against the approved baseline, cannot silently replace the current default, and must retain a rollback point. The full canonical method remains Notion `AIG-01｜AI Evaluation & Regression Protocol v0.1｜评估与回归`; this file is the GitHub execution contract.
+Authority rule: a model, prompt, skill, tool, retrieval policy, parser, canonical source, rendering path, or automation change is a governed candidate change. It must be evaluated against the approved baseline, cannot silently replace the current default, and must retain a rollback point. This file on GitHub `main` is the Current method authority and execution contract. The deleted Notion AIG-01 protocol page is historical lineage only; current Notion indexes must route here and to the actual `evals/` execution evidence.
 
 ## Purpose
 AIG-01 prevents AI from becoming an unexamined default. It adds four controls before and around all AI-assisted design work:
