@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#f4f1ea"/>
+<rect x="72" y="64" width="1456" height="872" rx="24" fill="#ffffff" stroke="#1f2328" stroke-width="2"/>
+<text x="112" y="128" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#111">OLEANDER / SOURCE-INDEPENDENT VISUAL QA</text>
+<text x="112" y="164" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#555">Practice artifact · editable SVG · independent render fallback · 2026-08-17</text>
+<text x="112" y="230" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#111">01 / LINE + ANNOTATION HIERARCHY</text>
+<rect x="112" y="260" width="650" height="430" fill="#fafafa" stroke="#d7d7d7"/>
+<path d="M150 605 C250 540, 330 585, 440 515 S640 500, 720 455" fill="none" stroke="#858585" stroke-width="2"/>
+<line x1="275" y1="555" x2="275" y2="385" stroke="#151515" stroke-width="8"/>
+<line x1="275" y1="385" x2="500" y2="385" stroke="#151515" stroke-width="8"/>
+<line x1="500" y1="385" x2="560" y2="465" stroke="#151515" stroke-width="8"/>
+<line x1="300" y1="430" x2="520" y2="430" stroke="#343434" stroke-width="4"/>
+<line x1="330" y1="385" x2="330" y2="430" stroke="#343434" stroke-width="4"/>
+<line x1="450" y1="385" x2="450" y2="430" stroke="#343434" stroke-width="4"/>
+<circle cx="330" cy="430" r="9" fill="none" stroke="#222" stroke-width="2"/>
+<circle cx="450" cy="430" r="9" fill="none" stroke="#222" stroke-width="2"/>
+<line x1="330" y1="430" x2="330" y2="455" stroke="#555" stroke-width="1.5"/>
+<line x1="450" y1="430" x2="450" y2="455" stroke="#555" stroke-width="1.5"/>
+<line x1="250" y1="385" x2="220" y2="385" stroke="#777" stroke-width="1"/>
+<line x1="250" y1="555" x2="220" y2="555" stroke="#777" stroke-width="1"/>
+<line x1="228" y1="385" x2="228" y2="555" stroke="#777" stroke-width="1.2"/>
+<path d="M224 393 L228 385 L232 393 M224 547 L228 555 L232 547" fill="none" stroke="#777" stroke-width="1.2"/>
+<text x="184" y="477" transform="rotate(-90 184 477)" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#555">RELATIVE HEIGHT</text>
+<line x1="500" y1="385" x2="630" y2="330" stroke="#555" stroke-width="1.5"/>
+<circle cx="500" cy="385" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="640" y="328" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#111">PRIMARY LOAD PATH</text>
+<text x="640" y="350" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#666">8 px visual priority</text>
+<line x1="450" y1="430" x2="630" y2="510" stroke="#555" stroke-width="1.5"/>
+<circle cx="450" cy="430" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="640" y="507" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#111">CONNECTION DETAIL</text>
+<text x="640" y="529" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#666">2 px + local emphasis</text>
+<circle cx="585" cy="554" r="10" fill="#222"/>
+<line x1="585" y1="565" x2="585" y2="620" stroke="#222" stroke-width="5"/>
+<line x1="585" y1="580" x2="565" y2="600" stroke="#222" stroke-width="4"/>
+<line x1="585" y1="580" x2="605" y2="600" stroke="#222" stroke-width="4"/>
+<line x1="585" y1="620" x2="568" y2="652" stroke="#222" stroke-width="4"/>
+<line x1="585" y1="620" x2="602" y2="652" stroke="#222" stroke-width="4"/>
+<text x="620" y="640" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#666">human scale</text>
+<text x="830" y="230" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#111">02 / FIRST-READ TEST</text>
+<rect x="830" y="260" width="650" height="430" fill="#f8f8f8" stroke="#d7d7d7"/>
+<text x="880" y="325" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#777">AT 25% VIEW, YOU SHOULD STILL READ:</text>
+<text x="880" y="385" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" fill="#111">FORM → LOAD → DETAIL</text>
+<line x1="880" y1="420" x2="1390" y2="420" stroke="#111" stroke-width="8"/>
+<line x1="880" y1="458" x2="1310" y2="458" stroke="#333" stroke-width="4"/>
+<line x1="880" y1="492" x2="1210" y2="492" stroke="#777" stroke-width="2"/>
+<line x1="880" y1="522" x2="1120" y2="522" stroke="#aaa" stroke-width="1"/>
+<text x="880" y="585" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#222">Primary silhouette dominates before labels.</text>
+<text x="880" y="617" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#222">Secondary structure explains relation.</text>
+<text x="880" y="649" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#222">Dimensions and notes support near-read only.</text>
+<line x1="112" y1="742" x2="1480" y2="742" stroke="#d0d0d0"/>
+<text x="112" y="790" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#111">03 / VISUAL QA RUBRIC</text>
+<g font-family="Arial, Helvetica, sans-serif" font-size="15">
+<text x="112" y="834" font-weight="700" fill="#111">FIRST VISUAL GATE</text>
+<text x="112" y="862" fill="#555">PASS — primary geometry reads in &lt;2 s</text>
+<text x="112" y="889" fill="#555">PASS — annotation never competes with form</text>
+<text x="520" y="834" font-weight="700" fill="#111">NEAR-READ</text>
+<text x="520" y="862" fill="#555">PASS — 4-level stroke hierarchy remains distinct</text>
+<text x="520" y="889" fill="#555">PASS — labels terminate on explicit targets</text>
+<text x="980" y="834" font-weight="700" fill="#111">FALLBACK VERIFICATION</text>
+<text x="980" y="862" fill="#555">SVG source → independent PNG render → reopen</text>
+<text x="980" y="889" fill="#555">Source-tool screenshot is not a hard dependency</text>
+</g>
+</svg>
