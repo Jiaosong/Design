@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<rect width="100%" height="100%" fill="#f3f1eb"/>
+<style>.t{font-family:Arial,Helvetica,sans-serif;fill:#151515}.mut{fill:#6b6b67}.hair{stroke:#aaa79f;stroke-width:1}.rule{stroke:#222;stroke-width:1.5}.dim{stroke:#4f4f4b;stroke-width:1;fill:none}.note{font-size:17px}.small{font-size:14px}.cap{font-size:13px;letter-spacing:1.2px}</style>
+<text class="t" x="70" y="72" font-size="35" font-weight="700">PRODUCT CONTROL HIERARCHY — TASK FREQUENCY × ERROR COST</text>
+<text class="t mut" x="70" y="108" font-size="18">OLEANDER L5 practice extension · Baojiajie mop-handle transfer study · editable SVG · NOT production geometry</text>
+<line x1="70" y1="135" x2="1530" y2="135" class="rule"/>
+<text class="t cap" x="70" y="185">A / EQUAL-WEIGHT CONTROL FIELD — REJECT</text>
+<text class="t cap" x="820" y="185">B / HIERARCHY-CODED CONTROL FIELD — CANDIDATE</text>
+<rect x="120" y="255" width="170" height="585" rx="84" fill="#dedbd3" stroke="#222" stroke-width="2"/>
+<rect x="145" y="285" width="120" height="205" rx="58" fill="#cbc8c0"/><text class="t small" x="160" y="520">GRIP ZONE</text>
+<rect x="154" y="560" width="102" height="48" rx="12" fill="#fbfaf7" stroke="#333"/><rect x="154" y="625" width="102" height="48" rx="12" fill="#fbfaf7" stroke="#333"/><rect x="154" y="690" width="102" height="48" rx="12" fill="#fbfaf7" stroke="#333"/>
+<text class="t small" x="175" y="591">ACT 1</text><text class="t small" x="175" y="656">LOCK</text><text class="t small" x="175" y="721">MODE</text>
+<line x1="320" y1="560" x2="620" y2="560" class="hair"/><text class="t note" x="340" y="553">Same area, edge contrast and spacing</text><line x1="320" y1="625" x2="620" y2="625" class="hair"/><text class="t note" x="340" y="618">Primary act has no perceptual priority</text><line x1="320" y1="690" x2="620" y2="690" class="hair"/><text class="t note" x="340" y="683">Lock is too easy to trigger visually</text>
+<text class="t" x="360" y="770" font-size="24" font-weight="700">FIRST READ: “three buttons”</text><text class="t mut" x="360" y="802" font-size="17">Task order is flattened by geometric equality.</text>
+<rect x="860" y="255" width="170" height="585" rx="84" fill="#dedbd3" stroke="#222" stroke-width="2"/><rect x="885" y="285" width="120" height="235" rx="58" fill="#c7c4bc"/><text class="t small" x="900" y="548">POWER GRIP</text>
+<path d="M880 540 Q945 514 1010 540 L1010 632 Q945 674 880 632 Z" fill="#f8f7f2" stroke="#222" stroke-width="2.6"/><text class="t" x="907" y="595" font-size="15" font-weight="700">SQUEEZE</text>
+<rect x="915" y="688" width="60" height="26" rx="8" fill="#b9b6ae" stroke="#555"/><text class="t small" x="925" y="707">LOCK</text><circle cx="945" cy="758" r="8" fill="#4f4f4b"/><text class="t small" x="968" y="764">STATE</text>
+<line x1="1050" y1="548" x2="1460" y2="548" class="hair"/><text class="t note" x="1075" y="540">Frequent act: large reachable surface, contiguous with grip</text><line x1="1050" y1="690" x2="1460" y2="690" class="hair"/><text class="t note" x="1075" y="682">High error cost: smaller + recessed + separated</text><line x1="1050" y1="758" x2="1460" y2="758" class="hair"/><text class="t note" x="1075" y="750">Low-frequency state: visual indicator, not equal control</text>
+<text class="t" x="1080" y="818" font-size="24" font-weight="700">FIRST READ: “grip → squeeze”</text><text class="t mut" x="1080" y="850" font-size="17">Primary action is legible before labels; lock stays subordinate.</text>
+<line x1="845" y1="285" x2="845" y2="520" class="dim"/><line x1="838" y1="285" x2="852" y2="285" class="dim"/><line x1="838" y1="520" x2="852" y2="520" class="dim"/><text class="t small" transform="translate(825 455) rotate(-90)">grip contact length 120–150 mm target</text>
+<line x1="885" y1="866" x2="1030" y2="866" class="dim"/><text class="t small" x="867" y="892">handle Ø target 30–38 mm; project FIELD check required</text>
+<line x1="70" y1="925" x2="1530" y2="925" class="rule"/>
+<text class="t cap" x="70" y="962">TRANSFER RULE v0.2</text><text class="t" x="70" y="992" font-size="18">CONTROL PROMINENCE = task frequency + reach immediacy − accidental-trigger tolerance. Do not encode all controls with equal area / boundary / spacing.</text>
+<text class="t cap" x="70" y="1030">EVIDENCE / BOUNDARY</text>
+<text class="t mut" x="70" y="1055" font-size="14">Ergonomic literature supports ~33 mm optimum cylindrical tool-handle diameter for the general population; 30–50 mm is a common power-grip range.</text>
+<text class="t mut" x="70" y="1077" font-size="14">Exact Baojiajie task forces, hand sizes, control travel, wet-use friction and safety remain OPEN. This transfer study does not modify locked production geometry.</text>
+</svg>
