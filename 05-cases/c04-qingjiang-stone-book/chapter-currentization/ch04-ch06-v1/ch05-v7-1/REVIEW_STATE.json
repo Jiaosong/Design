@@ -1,0 +1,24 @@
+{
+  "version": "CH05 v7.1 EVIDENCE-BOUND",
+  "supersedes": "v6.1 visual target",
+  "producer_verdict_on_v6_1": "REVISE",
+  "root_cause": "Generic/proxy Qingjiang geometry replaced real project evidence; Evidence→Design Impact was not closed.",
+  "current_primary_visual_authority": {
+    "P01": "ROUTE-03 USER LOCKED CURRENT v3.4 / 17 named nodes",
+    "P02": "CH02 Current GLO-30 v1.1 verified 30 m DSM + source-derived section profiles",
+    "P03": "Continuous attention-ownership field across Current objects R01 / ROUTE-03 / R06 / R13 / RETURN",
+    "P04": "Current object → behavior → response; ROUTE-03 topology proof remains unchanged"
+  },
+  "producer_actual_preview_findings": [
+    "P01 first read is ROUTE-03 rather than proxy landscape; full topology remains visible.",
+    "P02 first read is verified GLO-30 terrain + source-derived section profiles; body layer is explicitly non-registered.",
+    "P03 first read is a continuous attention-ownership field anchored by R01 / ROUTE-03 / R06 / R13 / RETURN, not generic cards.",
+    "P04 first read binds every condition to a Qingjiang Current object and visibly proves behavior does not add ROUTE-03 nodes."
+  ],
+  "image_generation_used": false,
+  "photo_content_image_used": false,
+  "actual_preview_after_repairs": "COMPLETE / PRODUCER CRIT ONLY",
+  "independent_professional_design_review": "PENDING",
+  "producer_keep_awarded": false,
+  "promotion": "NO_PROMOTION"
+}

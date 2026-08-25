@@ -1,0 +1,30 @@
+{
+  "version": "v5 RASTER-FREE RESET",
+  "content_authority": "CH05 v0.3 / a83e1185be5c700414ee794f3b2424bca5973aa2",
+  "image_consumption_ledger": "CURRENT_PROJECT_REGISTER / global_rule=ONE_SEMANTIC_CONTENT_IMAGE_ONE_CONSUMER_UNIT",
+  "raster_content_image_bindings": [],
+  "pages": {
+    "CH05-P01": {
+      "visual": "ROUTE-03 read-only topology subset + independent Journey/Priority rail",
+      "route_authority": "CH09-P01 USER LOCKED CURRENT v3.4",
+      "route_svg_sha": "dbf1a22e2746f98ac9f7e9f814b97f3afd9f9e41",
+      "preservation": "exact locked path d data + 17 source node coordinates; presentation transform only",
+      "does_not_prove": "stage-to-location registration, GPS, operational status"
+    },
+    "CH05-P02": {
+      "visual": "new native SVG continuous body choreography",
+      "raster_source": null,
+      "does_not_prove": "observed behavior, product location, fall protection"
+    },
+    "CH05-P03": {
+      "visual": "new native SVG qualitative ordinal attention flow",
+      "raster_source": null,
+      "does_not_prove": "cognitive measurement or percentages"
+    },
+    "CH05-P04": {
+      "visual": "new native SVG behavior-language trace + STOP≠READ branch",
+      "raster_source": null,
+      "does_not_prove": "observed behavior or route registration"
+    }
+  }
+}

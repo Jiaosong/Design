@@ -1,0 +1,18 @@
+{
+  "page_count": 4,
+  "target_size": "1920x1080",
+  "all_target_size_readbacks": true,
+  "svg_text_editable": true,
+  "generated_images_used": false,
+  "route03_reauthored": false,
+  "r13_substitute_invented": false,
+  "grayscale_contact_readback": true,
+  "package": {
+    "name": "C04_CH05_VISUAL_FIRST_v3_PACKAGE.zip",
+    "bytes": 5283352,
+    "sha256": "aca693f59449f15cc472dc565925847084fe0798aaca000c35ea2e05fe385142",
+    "files": 16
+  },
+  "independent_professional_design_review": "PENDING",
+  "promotion": "NO_PROMOTION"
+}

@@ -1,0 +1,34 @@
+{
+  "CH05-P01": {
+    "primary": "ROUTE03_MAP_FIELD_CROP.jpg",
+    "authority": "ROUTE-03 LOCKED CURRENT",
+    "operation": "direct source crop + vector priority/stage overlay",
+    "does_not_prove": "stage-to-location registration / GPS / live operations"
+  },
+  "CH05-P02": {
+    "primary": "editable vector body grammar",
+    "support": "F01_PHOTO_CROP.jpg",
+    "ownership": "ODB-02/F01 remains CH13-owned",
+    "status": "candidate / not located",
+    "does_not_prove": "observed behavior frequency / site location / engineering"
+  },
+  "CH05-P03": {
+    "primary": [
+      "CABLE_TEXTFREE_CROP.jpg",
+      "R06_LANDSCAPE_TEXTFREE_CROP.jpg",
+      "ROUTE03_MAP_FIELD_CROP.jpg"
+    ],
+    "transform": "qualitative ordinal PRIMARY/SUPPORT/RETREAT matrix",
+    "does_not_prove": "measured attention percentages / cognitive test"
+  },
+  "CH05-P04": {
+    "primary": [
+      "CABLE_TEXTFREE_CROP.jpg",
+      "R06_LANDSCAPE_TEXTFREE_CROP.jpg",
+      "F01_PHOTO_CROP.jpg"
+    ],
+    "overlay": "schematic behavior spine with full 12-action vocabulary",
+    "does_not_prove": "spatial node registration",
+    "ownership": "F01 support only; CH13-owned"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": "CH05 v8.1 REFINED",
+  "producer_state": "PRODUCER CANDIDATE",
+  "actual_target_size_readback": "COMPLETE",
+  "independent_professional_design_review": "PENDING",
+  "producer_keep": false,
+  "promotion": "NO_PROMOTION",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT GPS / NOT FOR CONSTRUCTION",
+  "repairs_from_v7_1": [
+    "P01 integrated Journey/Priority with full ROUTE-03 authority instead of stacked map + generic stage strip.",
+    "P02 binds body-reading inferences to real GLO-30 terrain excerpts instead of detached body labels.",
+    "P03 uses fixed lanes + discrete emphasis and removes stacked-area percentage implication.",
+    "P04 separates MOVE/PASS bypass from STOP decision and confines ROUTE-03 proof to a non-overlapping inset."
+  ],
+  "hard_boundaries": [
+    "STOP != READ / TASK",
+    "BEHAVIOR != NEW ROUTE NODE",
+    "THIRTEEN IMPRINTS != 13 MANDATORY STOPS",
+    "BODY SUPPORT != FALL PROTECTION",
+    "DEM != FIELD-MEASURED BODY LOCATION"
+  ]
+}
