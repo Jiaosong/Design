@@ -12,8 +12,8 @@ permissions:
   contents: read
 
 jobs:
-  candidate-state-and-receipts:
-    name: Candidate Authority State + Immutable Evidence Receipts
+  authority-state-and-receipts:
+    name: Current Authority State + Immutable Evidence Receipts
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -46,38 +46,59 @@ jobs:
           grep -F 'PERSISTENCE PASS' 90-shared/toolchains/modeling-worker/automotive/v0.12/PAP_RECEIPT_2026-08-13.md
           grep -F 'Decision: `APPROVED`' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md
           grep -F 'SYNCED / CANDIDATE_AUTHORITY / CANDIDATE / NOT CANONICAL' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md
-      - name: Assert current candidate authority state
+          grep -F 'SYNCED / CANONICAL_AUTHORITY / PROMOTED / NOT RELEASED' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANONICAL_AUTHORITY_E3_R33_2026-08-13.md
+          grep -F 'SYNCED / CANONICAL_AUTHORITY / PROMOTED / NOT RELEASED' 90-shared/toolchains/modeling-worker/automotive/v0.12/CANONICAL_AUTHORITY_SYNC_E3_R33_2026-08-13.md
+      - name: Assert current authority state and immutable lineage
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          root=Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
-          card=json.loads((root/'E3_CONTROL_CARD.json').read_text())
-          pap=json.loads((root/'PAP_MANIFEST_v1.json').read_text())
-          assert card['mode']=='CANDIDATE'
-          assert card['authority_source']['state']=='CANDIDATE_AUTHORITY'
-          assert card['problem_layer']=='Evidence'
-          ev=card['evidence_state']
-          for key in ('contract','machine','visual','project','pap'):
-              assert ev[key]=='PASS',(key,ev[key])
-          assert 'promotion' not in ev
-          assert pap['status']=='PERSISTENCE_PASS'
-          assert pap['authority_state']=='WORKING_SOURCE'
-          assert pap['design_state']=='CANDIDATE'
-          assert all(v=='PASS' for v in pap['pap_gates'].values())
-          assert pap['accepted_source_snapshot_commit']=='5782c039562e723705b6f46537fea7efa0936b29'
-          authority=(root/'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
-          sync=(root/'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
-          assert 'WORKING_SOURCE' in authority and 'CANDIDATE_AUTHORITY' in authority
-          assert 'ARTIFACT_REGISTER = EXECUTED' in sync
-          assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in sync
-          print('V0_12_CANDIDATE_AUTHORITY_RECEIPT_VERIFICATION_PASS')
+
+          root = Path('90-shared/toolchains/modeling-worker/automotive/v0.12')
+          card = json.loads((root / 'E3_CONTROL_CARD.json').read_text())
+          pap = json.loads((root / 'PAP_MANIFEST_v1.json').read_text())
+
+          assert card['problem_layer'] == 'Evidence'
+          ev = card['evidence_state']
+          for key in ('contract', 'machine', 'visual', 'project', 'pap'):
+              assert ev[key] == 'PASS', (key, ev[key])
+
+          # PAP_MANIFEST_v1 is intentionally immutable historical persistence evidence.
+          assert pap['status'] == 'PERSISTENCE_PASS'
+          assert pap['authority_state'] == 'WORKING_SOURCE'
+          assert pap['design_state'] == 'CANDIDATE'
+          assert all(v == 'PASS' for v in pap['pap_gates'].values())
+          assert pap['accepted_source_snapshot_commit'] == '5782c039562e723705b6f46537fea7efa0936b29'
+
+          candidate_authority = (root / 'CANDIDATE_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+          candidate_sync = (root / 'CANDIDATE_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+          assert 'WORKING_SOURCE' in candidate_authority and 'CANDIDATE_AUTHORITY' in candidate_authority
+          assert 'ARTIFACT_REGISTER = EXECUTED' in candidate_sync
+          assert 'PERSISTENCE_RECEIPT_SYNC = EXECUTED' in candidate_sync
+
+          state = card['authority_source']['state']
+          if state == 'CANDIDATE_AUTHORITY':
+              assert card['mode'] == 'CANDIDATE'
+              print('V0_12_CANDIDATE_AUTHORITY_LINEAGE_PASS')
+          elif state == 'CANONICAL_AUTHORITY':
+              assert card['mode'] == 'AUTHORITY'
+              canonical_authority = (root / 'CANONICAL_AUTHORITY_E3_R33_2026-08-13.md').read_text()
+              canonical_sync = (root / 'CANONICAL_AUTHORITY_SYNC_E3_R33_2026-08-13.md').read_text()
+              assert 'AUTHORITY STATE = CANONICAL_AUTHORITY' in canonical_authority
+              assert 'CROSS_SYSTEM_SYNC = PASS' in canonical_authority
+              assert 'POST_CANONICAL_CONTRADICTION_SCAN = PASS' in canonical_authority
+              assert 'CONTRADICTION_SCAN_PASS' in canonical_sync
+              for key in ('canonical_promotion_review', 'cross_system_sync', 'post_canonical_contradiction_scan'):
+                  assert ev[key] == 'PASS', (key, ev[key])
+              print('V0_12_CANONICAL_AUTHORITY_LINEAGE_PASS')
+          else:
+              raise AssertionError(state)
           PY
       - name: Publish boundary
         run: |
-          echo 'PR CI verifies current Candidate Authority plus immutable historical evidence without re-rendering accepted or known-failed Blender states.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'The PAP manifest remains the historical WORKING_SOURCE persistence receipt; Candidate Authority is established by the later approved transition receipts.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'CANONICAL_AUTHORITY, Release, and merge are not authorized by this workflow.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PR CI verifies the current E3 authority state plus immutable historical Working→Candidate→Canonical evidence without re-rendering accepted or known-failed Blender states.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The PAP manifest remains the historical WORKING_SOURCE persistence receipt; later transition receipts establish Candidate and Canonical Authority.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This workflow does not authorize a new promotion, reopen Human review, or set Release=true.' >> "$GITHUB_STEP_SUMMARY"
 
   manual-active-blender-replay:
     name: Manual E1 + E2 + R3.3 Active Blender Replay
@@ -141,4 +162,4 @@ jobs:
           if-no-files-found: error
           retention-days: 14
       - name: Boundary
-        run: echo 'Manual replay reproduces active Machine evidence only; it does not alter Human receipts, Candidate Authority, or authorize Canonical Promotion.' >> "$GITHUB_STEP_SUMMARY"
+        run: echo 'Manual replay reproduces active Machine evidence only; it does not alter Human receipts, current authority state, or authorize any new promotion/release.' >> "$GITHUB_STEP_SUMMARY"
