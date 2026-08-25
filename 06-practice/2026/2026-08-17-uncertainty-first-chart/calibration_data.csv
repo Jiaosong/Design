@@ -1,0 +1,5 @@
+segment,recommended_min,low_min,high_min,evidence,confidence
+A,18,12,26,SOURCE-GROUNDED,MEDIUM
+B,27,19,39,INFERRED,MEDIUM-LOW
+C,15,9,24,ASSUMPTION,LOW
+D,34,25,48,SOURCE-GROUNDED,MEDIUM
