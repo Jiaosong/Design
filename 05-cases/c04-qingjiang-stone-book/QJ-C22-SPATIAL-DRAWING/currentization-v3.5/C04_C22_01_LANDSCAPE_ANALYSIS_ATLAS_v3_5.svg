@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="594mm" height="841mm" viewBox="0 0 1684 2384">
+<defs>
+<style>
+.paper{fill:#f3f0e7}
+.ink{fill:#1e2825} .muted{fill:#767d77} .soft{fill:#9ca39d}
+.rule{stroke:#bfc4bc;stroke-width:1}
+.ctx{stroke:#c9cdc6;stroke-width:1.25;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.river{fill:#bfd5d1;stroke:#709793;stroke-width:2}
+.walk{stroke:#28332f;stroke-width:5.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.walk2{stroke:#6f7872;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cable{stroke:#29322f;stroke-width:2.7;fill:none}
+.boat{stroke:#659b96;stroke-width:2.2;fill:none;stroke-dasharray:10 9}
+.cor{stroke:#c9ccc5;stroke-width:1;stroke-dasharray:2 8}
+.lead{stroke:#59635f;stroke-width:1.2;fill:none}
+.returnLead{stroke:#ae6154;stroke-width:1.25;fill:none}
+.viewfill{fill:#b98562;fill-opacity:.12;stroke:#b98562;stroke-width:1.6;stroke-dasharray:6 5}
+.threshold{fill:#b65f55;fill-opacity:.10;stroke:#b65f55;stroke-width:1.5;stroke-dasharray:7 5}
+.junc{fill:#f3f0e7;stroke:#29322f;stroke-width:1.7}
+.service{fill:#29322f}
+.transfer{fill:#f3f0e7;stroke:#29322f;stroke-width:1.8}
+.content{fill:#f3f0e7;stroke:#8e9690;stroke-width:1.25}
+.observe{fill:#b98562}
+.decision{fill:#ae6154}
+.eyering{fill:none;stroke:#b98562;stroke-width:1.2;opacity:.45}
+.num{font-family:'Noto Sans CJK SC';font-size:54px;font-weight:700;fill:#c3c6be}
+.cap{font-family:'Noto Sans CJK SC';font-size:14px;font-weight:600;letter-spacing:2.0px;fill:#767d77}
+.title{font-family:'Noto Sans CJK SC';font-size:54px;font-weight:700;fill:#1e2825}
+.sub{font-family:'Noto Sans CJK SC';font-size:17px;font-weight:500;fill:#5d6762}
+.layer{font-family:'Noto Sans CJK SC';font-size:23px;font-weight:700;fill:#1e2825}
+.label{font-family:'Noto Sans CJK SC';font-size:15px;font-weight:600;fill:#1e2825}
+.small{font-family:'Noto Sans CJK SC';font-size:12px;fill:#707873}
+.micro{font-family:'Noto Sans CJK SC';font-size:10.5px;fill:#848b85}
+.teal{fill:#5f8f8b} .ochre{fill:#a16b4d} .red{fill:#a9554d}
+</style>
+<path id="g-river" d="M961.025 245.907C1013.172 447.051 938.674 670.545 1005.722 871.688C1065.32 1050.485 990.825 1273.975 1072.774 1534.724H1288.818C1229.22 1288.88 1318.614 1057.935 1259.017 856.788C1199.419 640.748 1303.714 439.601 1244.116 245.907Z"/>
+<path id="g-arrival" d="M141.546 625.844C268.192 610.943 342.69 581.146 476.789 603.497C610.881 625.844 677.933 640.748 752.431 588.597"/>
+<path id="g-boat" d="M148.997 1043.035C365.04 1028.139 536.387 983.437 767.327 931.29"/>
+<path id="g-ca" d="M777.759 536.449L1501.881 372.553"/>
+<path id="g-cb" d="M777.759 554.326L1501.881 390.434"/>
+<path id="g-s1" d="M1512.308 447.051C1579.36 528.995 1601.706 633.298 1653.854 715.242C1728.356 834.441 1877.352 774.84 1966.746 856.788C2071.049 953.637 2138.093 1072.832 2100.846 1221.828"/>
+<path id="g-s2" d="M1653.854 715.242C1787.953 625.844 1922.053 521.549 2100.846 566.246"/>
+<path id="g-s3" d="M1758.152 774.84C1691.105 908.939 1676.208 1028.139 1773.057 1132.433C1862.447 1229.282 2011.443 1259.079 2100.846 1221.828"/>
+<path id="g-s4" d="M1810.3 663.095C1922.053 737.593 2041.244 774.84 2160.44 745.043"/>
+<path id="g-s5" d="M1773.057 1132.433C1638.957 1199.481 1549.559 1162.23 1512.308 1057.935C1482.511 968.533 1534.658 879.142 1653.854 819.541"/>
+<path id="g-s6" d="M1653.854 715.242C1624.061 640.748 1594.26 581.146 1564.455 521.549"/>
+<path id="g-s7" d="M1966.746 856.788C2033.798 826.987 2093.396 819.541 2160.44 834.441"/>
+<path id="g-s8" d="M2100.846 1221.828C2011.443 1311.226 1862.447 1341.027 1758.152 1273.975"/>
+<clipPath id="p1"><rect x="120" y="330" width="1060" height="415"/></clipPath>
+<clipPath id="p2"><rect x="120" y="840" width="1060" height="415"/></clipPath>
+<clipPath id="p3"><rect x="120" y="1350" width="1060" height="415"/></clipPath>
+<clipPath id="p4"><rect x="120" y="1860" width="1060" height="390"/></clipPath>
+</defs>
+<rect class="paper" width="1684" height="2384"/>
+<line x1="72" y1="64" x2="1612" y2="64" class="rule"/>
+<text x="72" y="105" class="cap">OLEANDER / C04 / C22 · LANDSCAPE ANALYSIS · v3.5</text>
+<text x="72" y="172" class="title">清江景观关系分层</text>
+<text x="72" y="215" class="sub">同一场地只重复一次语义母体；水、路、身体事件与回程分别成为可读的景观 carrier。</text>
+<text x="1612" y="105" text-anchor="end" class="small">RELATIONAL / NTS · FIELD OBSERVED=0 · G1F HOLD</text>
+<line x1="591" y1="350" x2="591" y2="2200" class="cor"/>
+<line x1="792" y1="470" x2="792" y2="2200" class="cor"/>
+<text x="72" y="382" class="num">01</text><text x="128" y="365" class="cap">GROUND / WATER</text><text x="128" y="398" class="layer">已知的水体，不虚构地形</text><text x="128" y="425" class="small">清江水体是现阶段可追溯的 ground-water carrier；等高线、坡度与径流保持未画。</text>
+<g clip-path="url(#p1)"><g transform="translate(100 310) scale(.42)"><use href="#g-river" class="river"/><use href="#g-arrival" class="ctx"/><use href="#g-ca" class="ctx"/><use href="#g-cb" class="ctx"/><use href="#g-s1" class="ctx"/><use href="#g-s2" class="ctx"/><use href="#g-s3" class="ctx"/><use href="#g-s4" class="ctx"/><use href="#g-s5" class="ctx"/><use href="#g-s6" class="ctx"/><use href="#g-s7" class="ctx"/><use href="#g-s8" class="ctx"/></g></g>
+<path d="M510 525 C750 505 980 500 1190 500" class="lead"/><circle cx="510" cy="525" r="3.8" fill="#5f8f8b"/><text x="1212" y="495" class="label teal">清江 / WATER BODY</text><text x="1212" y="519" class="micro">source-bounded river carrier · not a hydraulic model</text><text x="1212" y="612" class="label">未画出的地形</text><text x="1212" y="636" class="micro">NO contour / ridge / slope / runoff without survey / DEM / field evidence</text>
+<line x1="72" y1="790" x2="1612" y2="790" class="rule"/>
+<text x="72" y="892" class="num">02</text><text x="128" y="875" class="cap">MOVEMENT / ACCESS</text><text x="128" y="908" class="layer">路线由连接关系证明，而不是靠箭头说明</text><text x="128" y="935" class="small">到达、索道、步行、条件性船行各自保留 carrier；分叉节点只在真实 edge 连接处出现。</text>
+<g clip-path="url(#p2)"><g transform="translate(100 820) scale(.42)"><use href="#g-river" class="river" opacity=".48"/><use href="#g-arrival" class="walk"/><use href="#g-s1" class="walk"/><use href="#g-s2" class="walk"/><use href="#g-s3" class="walk"/><use href="#g-s4" class="walk"/><use href="#g-s5" class="walk"/><use href="#g-s6" class="walk2"/><use href="#g-s7" class="walk2"/><use href="#g-s8" class="walk2"/><use href="#g-boat" class="boat"/><use href="#g-ca" class="cable"/><use href="#g-cb" class="cable"/><circle cx="1653.854" cy="715.242" r="15" class="junc"/><circle cx="1966.746" cy="856.788" r="15" class="junc"/><circle cx="1773.057" cy="1132.433" r="15" class="junc"/><circle cx="2100.846" cy="1221.828" r="15" class="junc"/></g></g>
+<text x="1212" y="1042" class="label">主步行网络</text><line x1="1212" y1="1065" x2="1270" y2="1065" class="walk"/><text x="1292" y="1070" class="micro">primary traversable relation carrier</text><text x="1212" y="1120" class="label teal">条件性水上到达</text><line x1="1212" y1="1143" x2="1270" y2="1143" class="boat"/><text x="1292" y="1148" class="micro">conditional access relation · not live-operation proof</text><text x="1212" y="1197" class="label">索道换乘</text><line x1="1212" y1="1220" x2="1270" y2="1220" class="cable"/><text x="1292" y="1225" class="micro">transport carrier / moving view secondary</text>
+<line x1="72" y1="1300" x2="1612" y2="1300" class="rule"/>
+<text x="72" y="1402" class="num">03</text><text x="128" y="1385" class="cap">VIEW / BODY / THRESHOLD</text><text x="128" y="1418" class="layer">景观节点用身体事件表达，不再全部画成 POI</text><text x="128" y="1445" class="small">R06 是观察与恢复关系；R13 是阈值带。二者的 geometry 与 node role 不同。</text>
+<g clip-path="url(#p3)"><g transform="translate(100 1330) scale(.42)"><use href="#g-river" class="river" opacity=".26"/><use href="#g-arrival" class="ctx"/><use href="#g-ca" class="ctx"/><use href="#g-cb" class="ctx"/><use href="#g-s1" class="ctx"/><use href="#g-s2" class="ctx"/><use href="#g-s3" class="ctx"/><use href="#g-s4" class="ctx"/><use href="#g-s5" class="ctx"/><use href="#g-s6" class="ctx"/><use href="#g-s7" class="ctx"/><use href="#g-s8" class="ctx"/></g></g>
+<path d="M330 1532 C455 1505 575 1485 698 1468" stroke="#b98562" stroke-width="4.8" stroke-opacity=".22" fill="none"/><text x="335" y="1504" class="micro ochre">MOVING VIEW / transport first</text><path d="M806 1570 L622 1500 A205 205 0 0 0 620 1658 Z" class="viewfill"/><circle cx="806" cy="1570" r="8" class="observe"/><circle cx="806" cy="1570" r="18" class="eyering"/><path d="M806 1570 C930 1552 1045 1540 1188 1532" class="lead"/><text x="1212" y="1527" class="label ochre">R06 · 观察 / 恢复</text><text x="1212" y="1551" class="micro">viewer position + relational view field + short recovery</text><path d="M760 1686 C780 1666 820 1664 842 1683 L842 1734 C818 1748 782 1746 760 1725 Z" class="threshold"/><path d="M802 1706 C955 1688 1076 1665 1188 1644" class="returnLead"/><text x="1212" y="1639" class="label red">R13 · 阈值 / 压缩</text><text x="1212" y="1663" class="micro">approach → compression → release; exact geometry / safety FIELD OPEN</text>
+<line x1="72" y1="1810" x2="1612" y2="1810" class="rule"/>
+<text x="72" y="1912" class="num">04</text><text x="128" y="1895" class="cap">CONTENT / SERVICE / RETURN</text><text x="128" y="1928" class="layer">内容节点服从旅程；Return 是决策关系，不是一枚图标</text><text x="128" y="1955" class="small">服务、换乘、可选内容、观察恢复和回程决策使用不同 node grammar。</text>
+<g clip-path="url(#p4)"><g transform="translate(100 1840) scale(.42)"><use href="#g-river" class="river" opacity=".24"/><use href="#g-arrival" class="ctx"/><use href="#g-ca" class="ctx"/><use href="#g-cb" class="ctx"/><use href="#g-s1" class="ctx"/><use href="#g-s2" class="ctx"/><use href="#g-s3" class="ctx"/><use href="#g-s4" class="ctx"/><use href="#g-s5" class="ctx"/><use href="#g-s6" class="ctx"/><use href="#g-s7" class="ctx"/><use href="#g-s8" class="ctx"/></g></g>
+<rect x="245" y="2040" width="14" height="14" class="service"/><rect x="318" y="1986" width="14" height="14" transform="rotate(45 325 1993)" class="transfer"/><rect x="641" y="1936" width="14" height="14" transform="rotate(45 648 1943)" class="transfer"/><circle cx="687" cy="2053" r="6.5" class="content"/><text x="700" y="2057" class="micro">R02</text><circle cx="835" cy="2008" r="6.5" class="content"/><text x="848" y="2012" class="micro">R05</text><circle cx="788" cy="2105" r="6.5" class="content"/><text x="801" y="2109" class="micro">R07</text><circle cx="800" cy="2155" r="6.5" class="content"/><text x="813" y="2159" class="micro">R09</text><circle cx="718" cy="2193" r="6.5" class="content"/><text x="731" y="2197" class="micro">R12</text><circle cx="845" cy="2058" r="8" class="observe"/><rect x="822" y="2198" width="18" height="18" transform="rotate(45 831 2207)" class="decision"/><path d="M831 2207 C980 2160 1086 2100 1188 2038" class="returnLead"/><text x="1212" y="2033" class="label red">RETURN · 决策关系</text><text x="1212" y="2057" class="micro">return remains available; exact alignment / live state not drawn without evidence</text><text x="1212" y="2140" class="cap">NODE GRAMMAR</text><rect x="1212" y="2171" width="10" height="10" class="service"/><text x="1236" y="2180" class="micro">SERVICE</text><rect x="1326" y="2168" width="10" height="10" transform="rotate(45 1331 2173)" class="transfer"/><text x="1348" y="2180" class="micro">TRANSFER</text><circle cx="1458" cy="2176" r="5.4" class="content"/><text x="1472" y="2180" class="micro">CONTENT</text><circle cx="1217" cy="2214" r="5.8" class="observe"/><text x="1236" y="2218" class="micro">OBSERVE</text><rect x="1326" y="2207" width="10" height="10" transform="rotate(45 1331 2212)" class="decision"/><text x="1348" y="2218" class="micro">RETURN</text><rect x="1452" y="2207" width="14" height="9" class="threshold"/><text x="1472" y="2218" class="micro">THRESHOLD</text>
+<line x1="72" y1="2295" x2="1612" y2="2295" class="rule"/><text x="72" y="2330" class="micro">SOURCE-BOUND RELATIONAL DRAWING · NO SURVEY GEOMETRY · NO FIELD MEASURED DIMENSIONS · CONTENT NODES DO NOT OWN ROUTE AUTHORITY</text><text x="1612" y="2330" text-anchor="end" class="micro">EXECUTED / SELF-CHECKED / INDEPENDENT REVIEW PENDING</text>
+</svg>

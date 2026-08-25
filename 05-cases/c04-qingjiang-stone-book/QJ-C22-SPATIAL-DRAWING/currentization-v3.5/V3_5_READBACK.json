@@ -1,0 +1,13 @@
+{
+  "version": "v3.5",
+  "source": "C04_C22_01_LANDSCAPE_ANALYSIS_ATLAS_v3_4 semantic carriers",
+  "visual_delta": [
+    "removed boxed-card panels",
+    "increased map scale and whitespace",
+    "reduced explanatory prose",
+    "integrated labels with geometry",
+    "kept distinct line/node semantics",
+    "kept no-survey / FIELD OPEN boundaries"
+  ],
+  "state": "EXECUTED / SELF-CHECKED / INDEPENDENT REVIEW PENDING"
+}

@@ -1,0 +1,37 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "drawing_id": "DRW-C04-C22-01-LANDSCAPE-ATLAS",
+  "revision": "v3.4",
+  "status": "DESIGN STUDY / LANDSCAPE ANALYSIS / NTS / FIELD OPEN / NO_PROMOTION",
+  "source_authority": {
+    "base": "C22 v3.0 relation carriers rebound in v3.2/v3.3",
+    "route_pointer": "ROUTE-03 user-locked downstream route object; this atlas does not replace topology authority",
+    "field_observed": 0,
+    "field_measured": 0
+  },
+  "lines": [
+    {"id":"WATER_BODY_QINGJIANG","semantic":"WATER_BODY","carrier":"source river polygon","truth":"SOURCE-DERIVED RELATIONAL","measurable":false},
+    {"id":"MOVE_ARRIVAL","semantic":"ARRIVAL_ROAD_RELATION","carrier":"source path","truth":"SOURCE-DERIVED RELATIONAL","measurable":false},
+    {"id":"MOVE_BOAT_CONDITIONAL","semantic":"BOAT_ACCESS_CONDITIONAL","carrier":"source path","truth":"CONDITIONAL","measurable":false},
+    {"id":"MOVE_CABLE_A/B","semantic":"CABLE_TRANSPORT_CARRIER","carrier":"source line pair","truth":"SOURCE-DERIVED RELATIONAL","measurable":false},
+    {"id":"MOVE_S01..S05","semantic":"PRIMARY_WALK_RELATION","carrier":"source path","truth":"SOURCE-DERIVED RELATIONAL","measurable":false},
+    {"id":"MOVE_S06..S08","semantic":"SECONDARY_WALK_RELATION","carrier":"source path","truth":"SOURCE-DERIVED RELATIONAL","measurable":false},
+    {"id":"CROSS_LAYER_CORRESPONDENCE","semantic":"SAME_SPATIAL_POSITION_ACROSS_ANALYSIS_LAYERS","carrier":"page-space dotted line","truth":"ANALYTICAL","measurable":false,"not_route":true},
+    {"id":"R06_VIEW_RELATION","semantic":"VIEW_ORIENTATION_FIELD","carrier":"diagrammatic wedge","truth":"DESIGN ANALYSIS / NOT SURVEY","measurable":false}
+  ],
+  "nodes": [
+    {"id":"A1_SERVICE","class":"SERVICE","spatial_carrier":"arrival relation","roles":["service","map","return certainty"],"truth":"PROJECT DESIGN RELATION"},
+    {"id":"A2_CABLE_N","class":"TRANSFER","spatial_carrier":"arrival/cable interface","roles":["transport transfer"],"truth":"RELATIONAL"},
+    {"id":"A3_CABLE_S","class":"TRANSFER","spatial_carrier":"cable/walk interface","roles":["transport transfer"],"truth":"RELATIONAL"},
+    {"id":"J01..J04","class":"JUNCTION","spatial_carrier":"actual source edge connection","roles":["branch/merge"],"truth":"SOURCE-CARRIER TOPOLOGY"},
+    {"id":"R06_OBSERVE_RECOVER","class":"OBSERVATION_DWELL","spatial_carrier":"relational point + view field","roles":["observe","recover","optional content"],"truth":"DESIGN ANALYSIS / FIELD OPEN"},
+    {"id":"R13_THRESHOLD","class":"THRESHOLD_DECISION","spatial_carrier":"threshold band + route relation","roles":["compression","release","return decision"],"truth":"DESIGN ANALYSIS / FIELD SAFETY OPEN"},
+    {"id":"R02/R05/R07/R09/R12","class":"OPTIONAL_CONTENT","spatial_carrier":"project content identity on relation map","roles":["read/play/skip"],"truth":"PROJECT IDENTITY / NOT ROUTE AUTHORITY"}
+  ],
+  "fields": [
+    {"id":"R06_VIEW_FIELD","semantic":"OBSERVATION_RELATION","truth":"DIAGRAMMATIC / NOT SURVEY"},
+    {"id":"R13_THRESHOLD_FIELD","semantic":"BODY_COMPRESSION_THRESHOLD","truth":"DIAGRAMMATIC / EXACT GEOMETRY FIELD OPEN"}
+  ],
+  "explicit_non_drawn": ["contours","ridge lines","slope bands","surface runoff","vegetation communities","habitat corridors","exact return alignment","live operating state"],
+  "producer_state": "EXECUTED / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING"
+}
