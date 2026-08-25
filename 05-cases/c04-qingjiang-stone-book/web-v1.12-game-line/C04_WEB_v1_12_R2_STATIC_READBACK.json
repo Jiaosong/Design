@@ -1,6 +1,7 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_15",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_WRITE",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_16",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_ASSET_INTEGRITY_CORRECTION",
+  "observed_at": "2026-08-25",
   "public_sections": 18,
   "first_section": "01",
   "last_section": "18",
@@ -30,13 +31,24 @@
       "innovation_and_difficulties",
       "ai_plus_3d"
     ],
-    "existing_asset_thumbnails": true,
+    "asset_reference_markup_present": true,
     "ai_plus_3d_six_stage": true,
     "desktop_bottom_right_panel": true,
     "mobile_bottom_drawer": true,
     "escape_close": true,
     "backdrop_close": true,
     "reduced_motion": true
+  },
+  "runtime_asset_integrity": {
+    "status": "BLOCKED",
+    "asset_directory_present_in_current_runtime_tree": false,
+    "verified_missing_samples": [
+      "assets/hero_qingjiang.jpg",
+      "assets/route03_locked_current.svg"
+    ],
+    "validator": "verify_game_line.mjs / C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_16",
+    "validator_contract": "collect HTML/CSS/JS assets/* references; fail on missing or zero-byte files",
+    "complete_missing_asset_list": "TO_BE_EMITTED_BY_VALIDATOR_AFTER_ASSET_MATERIALIZATION_ATTEMPT"
   },
   "new_generated_images": 0,
   "live_html_css_js": true,
@@ -48,9 +60,13 @@
     "design_review_pending_string": 0
   },
   "runtime_execution": {
-    "local_node_attempt": "BLOCKED_BY_LOCAL_DNS_RESOLUTION_OF_RAW_GITHUB",
-    "browser_finished_pixel_review": "OPEN"
+    "github_governance_ci": "SUCCESS / NOT A WEB ASSET PASS",
+    "asset_integrity_static_gate": "FAIL / BLOCKED",
+    "browser_finished_pixel_review": "BLOCKED_UNTIL_RUNTIME_ASSETS_EXIST"
   },
   "truth_boundary": "RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
-  "source_readback_pass": true
+  "source_structure_readback_pass": true,
+  "asset_integrity_pass": false,
+  "current_static_gate_pass": false,
+  "deployment_allowed": false
 }
