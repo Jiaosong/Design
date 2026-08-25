@@ -38,6 +38,51 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## First-visual diagnostic-to-repair loop
+
+Do not stop at `looks weak`, `too flat`, `too much text`, `generic`, or another vague visual critique. Convert the first-read failure into one inspectable repair before adding more content.
+
+Use this sequence:
+
+`FIRST-READ TEST → MISMATCH MAP → LIKELY CAUSE → ONE MATERIAL REPAIR → TARGET-SCALE REOPEN → COMPARE AGAIN`
+
+For each material mismatch, record:
+
+- **Observed failure** — what is actually seen, not the design intention.
+- **Likely cause** — grid, scale, crop, hierarchy, spacing, type, image choice, tonal balance, material, perspective, state, motion, or another specific carrier.
+- **Repair operation** — one concrete edit with a measurable or visually inspectable effect.
+- **Expected first-read change** — what should become clearer, quieter, stronger, or more project-specific.
+- **Verification** — reopen at the target reading condition and compare against the strongest current mature design/source or other locked reference.
+
+Typical repairs include changing perceptual area rather than adding labels, consolidating low-priority evidence into a controlled rail rather than equalizing modules, replacing generic substitute imagery with current project evidence, or reducing annotation competition before increasing primary-geometry weight.
+
+A repair loop does not authorize geometry re-authoring. If the mismatch originates in an upstream spatial/product/brand object, return to that owner instead of disguising the problem in the story layer.
+
+## Target-scale / distance readback
+
+Review the actual artifact at its intended reading condition, not only in the authoring zoom:
+
+- **Board / exhibition surface** — far-read, mid-read, and near-read.
+- **Web / slide** — actual target viewport; include narrow/mobile states when applicable.
+- **PDF / report** — full-page first-read, then normal reading scale, then detail read.
+- **Film / storyboard / keyframe** — playback-size frame hierarchy, not only isolated zoomed stills.
+
+At the first-read condition, verify at minimum:
+
+1. the primary subject is identifiable without explanatory paragraphs;
+2. the dominant spatial/product/brand relation is clear;
+3. the next visual step is intentional rather than caused by accidental contrast or metadata weight.
+
+A technically complete artifact that fails target-scale first-read remains `REVISE`.
+
+## Propagation stop
+
+Before propagating a new page/board/story system across many surfaces, bring **one representative surface** to professional-review level and run the first-visual diagnostic plus target-scale readback.
+
+If that representative surface still fails hierarchy, project specificity, source integrity, or professional finish, do not multiply the weak system across the remaining pages. Repair the representative surface first, then reopen and only propagate after the relevant review is satisfied.
+
+`ONE EXPORT PASS ≠ SYSTEM READY TO PROPAGATE`.
+
 ## Same-source paired-view gate
 
 When a story uses a sequence such as `Landscape First → Relation Reveal`, `Object → Explanation`, `Overview → Highlight`, or any paired visual that is meant to deepen the same spatial/design object:
@@ -84,11 +129,12 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 5. Resolve the strongest current design/evidence source for every primary visual; record which objects are locked and may not be re-authored by layout.
 6. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
 7. Produce a low-fidelity sequence before polishing.
-8. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
-9. Run content, visual, and production reviews separately.
-10. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
-11. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
-12. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+8. Bring one representative page/board/surface to professional-review level; run the first-visual diagnostic and target-scale readback before propagating the system.
+9. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
+10. Run content, visual, and production reviews separately.
+11. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
+12. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
+13. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
 
 ## Deliverable variants
 
@@ -121,6 +167,7 @@ For VI/manual work, also return or persist the represented standard drawings/spe
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
 - Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
+- A new page/board system is not propagated broadly before one representative surface survives target-scale first-read review.
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
 - Material/raster display effects never become logo/vector/text geometry authority.
