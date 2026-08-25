@@ -24,6 +24,35 @@ Do not impose the OLEANDER portfolio Visual Bible color/light recipe on unrelate
 
 Use `T-VISUAL-IMAGE-OPS-001` for render passes, masks/alpha, layer compositing, exposure/color adjustment, Smart Object-linked render replacement, bounded atmospheric treatment and vector-safe annotation/effect work. Preserve the original render and geometry-derived source. Post-processing, retouch, generative background/people/sky replacement or distortion may create a presentation derivative, but may not repair or conceal invalid geometry, scale, construction, field truth or material logic. `2D FAUX 3D ≠ GEOMETRIC 3D` remains hard.
 
+## Material identity gate
+
+A shader name, texture slot, successful render or different base color does not by itself prove professional material identity or CMF separation.
+
+Use a controlled camera/light condition before artistic lighting variants, then separate at least the applicable material roles:
+`BASE COLOR / CONDUCTOR-DIELECTRIC BEHAVIOR / ROUGHNESS-SPECULAR RESPONSE / NORMAL-RELIEF / OCCLUSION / TEXTURE SCALE-DIRECTION / EDGE BEHAVIOR`.
+
+Rules:
+1. Do not collapse material identity into hue alone. Metalness/conductor behavior, roughness response and dielectric behavior remain semantically distinct where the renderer exposes them.
+2. Texture frequency, scale and direction must be plausible at modeled object scale and the intended camera distance. Visible tiling/repetition, arbitrary procedural grain or wrong grain scale is `REVISE` even when the texture technically loads.
+3. Material families should remain reasonably distinguishable when hue is reduced. Run grayscale/desaturation when color may be carrying too much of the identity.
+4. Edge response is part of material reading. Sharp, chipped, rounded, laminated, oxidized, cut, end-grain, polished or weathered edges must agree with the intended material/fabrication logic; generic edge wear is not a substitute.
+5. Reject `gray model + color labels` as a finished material system when named materials share nearly identical roughness, highlight behavior, texture scale and edge response.
+6. Review at two scales: first read tests material-family separation on the whole object; near read tests surface behavior. Microtexture visible only in a close crop cannot prove distant hero-view realism.
+7. Controlled comparisons lock geometry, camera, light and applicable postprocess. A change in exposure/crop cannot be used to make one material appear more distinct.
+8. Keep truth boundaries explicit. Digital material separation does not prove measured reflectance, approved physical sample, weathering life, fire/slip performance, fabrication quality or field installation.
+9. If the required renderer/runtime is unavailable, a deterministic calibration board may test hierarchy/response logic but cannot substitute for final runtime/PBR validation.
+10. Use renderer shader models (for example metallic-roughness categories) as implementation compatibility models only, not as proof that a real material physically matches the shader.
+
+Failure-seeking readback:
+- `COLOR_OFF` — material family remains distinguishable without hue doing all the work;
+- `NEUTRAL_LIGHT` — artistic lighting cannot manufacture separation;
+- `TEXTURE_SCALE` — texture frequency/direction survives object-scale check;
+- `EDGE_BEHAVIOR` — edge treatment agrees with fabrication/material logic;
+- `WHOLE_VS_DETAIL` — close-up microdetail does not overclaim whole-object material realism.
+
+Record at minimum:
+`MATERIAL_ID / CLAIMED_FAMILY / SHADER_MODEL / BASE_COLOR_ROLE / ROUGHNESS_SPECULAR_ROLE / TEXTURE_SCALE_DIRECTION / EDGE_BEHAVIOR / CAMERA_LIGHT_LOCK / COLOR_OFF_RESULT / WHOLE_DETAIL_RESULT / PHYSICAL_VALIDATION_REQUIRED / DOES_NOT_PROVE`.
+
 ## Interaction cue escalation gate
 
 When CMF, surface treatment or rendered appearance is used to communicate a physical action, do not credit hue/value/finish as the primary interaction proof until the action survives removal of those later cues.
