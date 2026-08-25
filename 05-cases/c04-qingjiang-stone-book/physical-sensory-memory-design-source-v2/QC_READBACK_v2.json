@@ -1,0 +1,58 @@
+{
+  "schema": "c04.physical-memory-visual-qc/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifacts": [
+    {
+      "id": "P02_LEAN_REST_V2",
+      "visual_state": "KEEP",
+      "design_state": "MAIN_SUPPORT_CANDIDATE",
+      "truth_state": "NTS / FIELD_OPEN",
+      "review": {
+        "FIRST_READ": "KEEP — Qingjiang landscape + body action before technical proof",
+        "COMPOSITION_SCALE": "KEEP — landscape and product drawing operate at distinct scales",
+        "HIERARCHY_RHYTHM": "KEEP",
+        "PRODUCT_CREDIBILITY": "KEEP_AFTER_FIELD — body envelope and reversible assembly are legible; rail/base capacity is not claimed",
+        "PROFESSIONAL_FINISH": "KEEP"
+      }
+    },
+    {
+      "id": "P01_STEP_LIGHT_V2",
+      "visual_state": "KEEP",
+      "design_state": "PROCESS_SUPPORT",
+      "truth_state": "FIELD_HOLD",
+      "review": {
+        "FIRST_READ": "KEEP — sensory behavior before system diagram",
+        "COMPOSITION_SCALE": "KEEP",
+        "HIERARCHY_RHYTHM": "KEEP",
+        "BEHAVIOR_CLARITY": "KEEP — SILENCE / LOCAL / FADE and fail-safe OFF are legible",
+        "PROFESSIONAL_FINISH": "KEEP",
+        "PROMOTION": "HOLD — no site/electrical/slip/drainage/night-ecology closure"
+      }
+    },
+    {
+      "id": "MEMORY_PAPER_DIGITAL_BRIDGE_V2",
+      "visual_state": "KEEP",
+      "design_state": "MEMORY_MAIN_CANDIDATE",
+      "truth_state": "DESIGN_SOURCE_CURRENTIZATION",
+      "review": {
+        "FIRST_READ": "KEEP — one memory proposition rather than collection UI",
+        "COMPOSITION_SCALE": "KEEP — paper / bridge / phone read as one system",
+        "HIERARCHY_RHYTHM": "KEEP",
+        "CROSS_SYSTEM_CONTINUITY": "KEEP — Journal fields correspond to My Book without claiming real-time sync",
+        "PROFESSIONAL_FINISH": "KEEP"
+      }
+    }
+  ],
+  "combined_review": {
+    "artifact": "C04_PHYSICAL_SENSORY_MEMORY_V2_REVIEW.png",
+    "result": "KEEP",
+    "reason": "Three outputs share C04 Paper/Ink/Qingjiang/Seal DNA while retaining different product, sensory and memory responsibilities."
+  },
+  "not_promoted": [
+    "P01 implementation",
+    "P02 installation/engineering",
+    "Qingfengyin redraw without recoverable source form",
+    "whole-project Design PASS"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
