@@ -1,7 +1,7 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
 > **CURRENT CORRECTION｜2026-08-27**  
-> Public structure remains the 18-section design-work reading + bottom-right supplement, but the current runtime is **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `index.html` and `app.js` reference `assets/...`; the current runtime tree does not contain that directory. Verified missing samples include `assets/hero_qingjiang.jpg` and `assets/route03_locked_current.svg`. `verify_game_line.mjs` is v1.16 and fails on any missing or zero-byte referenced asset. The former source-readback PASS is not an asset-integrity, runtime, browser or deployment PASS. Reduced-motion is currently proven only at **source-rule presence** level; browser/system preference emulation and state-equivalence readback are **NOT RUN**.
+> Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**, but one previously missing Current asset is now safely recovered: `assets/route03_locked_current.svg` was materialized from the durable Google Drive package `C04__LOCKED_CURRENT__ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED_PACKAGE.zip` (`fileId=1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy`) using the packaged Currentized SVG whose SHA256 is `44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75`. GitHub branch Remote Readback confirms the SVG now exists at the expected runtime path. This does **not** close overall asset integrity: `assets/hero_qingjiang.jpg` remains a verified missing sample and the complete missing-asset list has not yet been re-emitted by the validator. Reduced-motion remains proven only at **source-rule presence** level; browser/system preference emulation and state-equivalence readback are **NOT RUN**.
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
@@ -29,24 +29,27 @@ State: `PUBLIC PORTFOLIO REFRAME / SOURCE-BOUND / RUNTIME ASSET BLOCKED / FIELD 
 14. Technical proof / detail development
 15. Innovation points
 16. Technical difficulties
-17. Design evolution / professional judgment
-18. Final system / Return
+17. design evolution / professional judgment
+18. final system / Return
 
 ## Bottom-right supplemental reading
 
 主作品阅读之外，新增固定于右下角的 `补充资料 / SUPPLEMENT` 入口。默认折叠，不增加主页面数量；打开后以右下角浮层承载第二阅读层。
 
-补充资料分为 7 组：
+补充资料分为 7 组：原资产、设计创意、设计思路、技术应用路线、任务流程、创新点与技术难点、AI + 3D 创作过程。抽屉使用现有项目资产缩略图和 live HTML/CSS/JS，不新增生成图。桌面固定右下角；移动端改为底部抽屉。支持 ESC / 背景点击关闭。源码包含 `prefers-reduced-motion` 降级规则；**这只证明 source implementation exists，不证明 system-level reduced-motion runtime behavior 已验证。**
 
-1. 原资产：真实清江、路线关系、关键场景、数字资产、技术装配资产；
-2. 设计创意：水上看整体 / 空中看关系 / 山中看细节；
-3. 设计思路：景观先出现 / 路线拥有主权 / 场景决定信息密度 / Return 贯穿全程；
-4. 技术应用路线：Source → Relation → Scene → 3D / Drawing → Prototype → Web / Motion；
-5. 任务流程：原资产读取 → 空间问题 → 设计命题 → 并行探索 → 场景测试 → 原型与3D → 技术深化 → 作品整合；
-6. 创新点与技术难点：路线与内容解耦、注意力设计、无手机完整体验、跨媒介一致性、AI幻觉控制、户外实体技术约束；
-7. AI + 3D 创作过程：SOURCE → AI EXPLORE → READBACK → 3D → DRAWING → DETAIL。
+## ROUTE-03 asset recovery｜2026-08-27
 
-抽屉使用现有项目资产缩略图和 live HTML/CSS/JS，不新增生成图。桌面固定右下角；移动端改为底部抽屉。支持 ESC / 背景点击关闭。源码包含 `prefers-reduced-motion` 降级规则；**这只证明 source implementation exists，不证明 system-level reduced-motion runtime behavior 已验证。**
+- Runtime target: `assets/route03_locked_current.svg`.
+- Durable source: Google Drive `C04__LOCKED_CURRENT__ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED_PACKAGE.zip`.
+- Drive file ID: `1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy`.
+- Packaged source object: `ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED.svg`.
+- Source SHA256: `44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75`.
+- Source binding preserves the uploaded route topology, all dashed branches, 17 named nodes, A–D route modes, north cue, parking lot, marina and tourist centre; it explicitly does **not** prove GPS, distance, slope, time, current operating status or survey geometry.
+- Historical route-package review state remains `EXECUTED / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING`; materializing the exact Currentized SVG into the Web runtime does not promote that route review state.
+- GitHub branch exact-path Remote Readback: PASS.
+
+Decision: **KEEP / CURRENT LOCKED ROUTE ASSET / RECOVERED FROM DURABLE SOURCE / NO REDRAW / NO SEMANTIC REWRITE**.
 
 ## Removed from current working structure
 
@@ -66,9 +69,7 @@ Current runtime begins from the actual work:
 
 `REAL PROJECT ASSETS → DESIGN QUESTION → IDEA / THINKING → SYSTEM / EXPERIENCE → TECHNOLOGY / PROCESS → AI + 3D → PROOF → INNOVATION / DIFFICULTY → EVOLUTION → FINAL SYSTEM`
 
-The bottom-right supplemental layer deepens this reading without replacing or duplicating the main narrative.
-
-Original project assets remain the first source of visual evidence. Formal presentation text remains live HTML / SVG text.
+The bottom-right supplemental layer deepens this reading without replacing or duplicating the main narrative. Original project assets remain the first source of visual evidence. Formal presentation text remains live HTML / SVG text.
 
 ## AI + 3D boundary
 
@@ -78,7 +79,7 @@ AI supports concept exploration, atmosphere, composition and experience-directio
 
 ## Validation
 
-Static validation now requires:
+Static validation requires:
 - 18-section primary narrative unchanged;
 - retired report-structure files remain absent;
 - bottom-right supplement trigger present;
@@ -88,10 +89,8 @@ Static validation now requires:
 - mobile drawer rules and ESC close behavior present;
 - `prefers-reduced-motion` source rules present in the relevant CSS/JS.
 
-GitHub source readback confirms the public structure, supplement code and reduced-motion source rules are present. **Asset integrity currently fails** because the runtime asset directory has not been materialized into this tree. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
+GitHub source readback confirms the public structure, supplement code and reduced-motion source rules are present. The `assets/` directory now exists and ROUTE-03 has been recovered, but **overall asset integrity still fails** because the full referenced asset set has not yet been materialized or verified. `assets/hero_qingjiang.jpg` remains one verified missing sample; this is not asserted to be the complete missing list. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
 
 ## Truth boundary
 
-Research-grade design remains distinct from field and engineering validation. The public interface expresses this in readable language rather than internal governance codes.
-
-Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes. Reduced-motion runtime validation must separately execute `normal vs prefers-reduced-motion → browser behavior → state-equivalence readback`; source-rule detection is not that proof.
+Research-grade design remains distinct from field and engineering validation. Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes. Reduced-motion runtime validation must separately execute `normal vs prefers-reduced-motion → browser behavior → state-equivalence readback`; source-rule detection is not that proof.
