@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140mm" height="180mm" viewBox="0 0 140 180">
+  <rect width="140" height="180" fill="#ffffff"/>
+  <path d="M10,176 L8,168 L8,149 L4,141 L7,128 L11,117 L10,103 L6,91 L8,77 L5,64 L8,49 L10,35 L10,22 L16,11 L35,8 L45,10 L49,3 L57,-4 L66,-7 L75,-7 L84,-4 L92,3 L97,10 L106,8 L124,11 L130,22 L130,35 L132,49 L135,64 L132,77 L134,91 L130,103 L131,117 L136,128 L139,141 L132,149 L132,168 L130,176 Z" transform="translate(0,4)" fill="#FAF7F0" stroke="#003DA7" stroke-width="1.1"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M18 164 C32 157 48 158 60 164 C75 172 92 172 118 159" stroke="#49A8C8" stroke-width="1.5"/>
+    <path d="M18 169 C34 162 49 164 63 170 C79 176 99 173 119 165" stroke="#003DA7" stroke-width=".8" opacity=".7"/>
+    <circle cx="118" cy="159" r="3.5" fill="#FF4E9A" stroke="none"/>
+  </g>
+  <text x="17" y="48" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#003DA7">100</text>
+  <text x="19" y="67" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13.5" font-weight="900" fill="#003DA7">天不发硬</text>
+  <rect x="18" y="75" width="78" height="13" rx="6.5" fill="#003DA7"/>
+  <text x="25" y="84.5" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="6.8" font-weight="700" fill="#fff">欧科棉黑科技</text>
+  <text x="18" y="101" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="6.4" fill="#4F5855">近读：柔韧 / 吸水 / 日常拖地体验</text>
+  <rect x="17" y="111" width="40" height="43" rx="5" fill="#E5DED4" stroke="#9C9387" stroke-width=".8"/>
+  <text x="22" y="134" font-family="Arial,sans-serif" font-size="4.8" fill="#6B6F6D">LOCKED PORTRAIT</text>
+  <rect x="68" y="112" width="48" height="18" rx="4" fill="#E5DED4" stroke="#9C9387" stroke-width=".8"/>
+  <text x="77" y="123" font-family="Arial,sans-serif" font-size="4.8" fill="#6B6F6D">LOCKED LOGO</text>
+  <rect x="68" y="136" width="48" height="22" rx="5" fill="#DCE8F7"/>
+  <text x="76" y="149" font-family="Arial,sans-serif" font-size="4.8" fill="#174A8B">PRODUCT SLOT</text>
+  <text x="18" y="173" font-family="Arial,sans-serif" font-size="3.6" fill="#737A77">TRAINING / 140×180mm / VENDOR PROOF OPEN</text>
+</svg>
