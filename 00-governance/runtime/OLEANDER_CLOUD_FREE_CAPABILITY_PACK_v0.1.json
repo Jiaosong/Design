@@ -46,10 +46,15 @@
       "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
       "runtime_readback": "REAL_BROWSER_REQUIRED",
       "outputs": ["EDITABLE_SVG_MASTER"],
-      "capabilities": ["MM_SIZE", "WORKING_BLEED", "WORKING_SAFE", "CUSTOM_CUT_PATH", "CUSTOM_SAFE_PATH", "CUSTOM_BLEED_PATH", "CUT_BBOX_CHECK", "CUT_LAYER", "BLEED_LAYER", "SAFE_LAYER", "ARTWORK_LAYER", "DIMENSIONS", "SVG_EXPORT"],
+      "capabilities": ["MM_SIZE", "WORKING_BLEED", "WORKING_SAFE", "CUSTOM_CUT_PATH", "CUSTOM_SAFE_PATH", "CUSTOM_BLEED_PATH", "CUT_BBOX_CHECK", "CUT_LAYER", "BLEED_LAYER", "SAFE_LAYER", "ARTWORK_LAYER", "DIMENSIONS", "SVG_EXPORT", "TARGET_ACTUAL_MISMATCH_STATUS", "BLEED_OPEN_STATUS", "LAYER_STATUS_LEGEND", "OBJECT_REV_UNITS_STATUS_BLOCK"],
       "boundary": "CONCEPT_AND_HANDOFF_PREFLIGHT_ONLY_VENDOR_PRINT_DIE_TOLERANCE_AND_PRODUCTION_PROOF_REMAIN_OPEN",
       "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
-      "validation_receipt": "00-governance/runtime/validation/2026-08-26-technical-svg-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json"
+      "validation_receipt": "00-governance/runtime/validation/2026-08-26-technical-svg-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json",
+      "professional_review_01": "00-governance/runtime/validation/2026-08-26-technical-svg-lab-baojiajie/PROFESSIONAL_REVIEW_01.md",
+      "professional_review_01_state": "REVISE",
+      "professional_retest_01": "00-governance/runtime/validation/2026-08-26-technical-svg-lab-baojiajie/PROFESSIONAL_RETEST_01.json",
+      "professional_retest_01_state": "PASS_R01_R05_INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED",
+      "persistent_readback_2026_08_27": "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Technical-SVG-Lab-Retest-01"
     }
   },
   "readback_state_2026_08_26": {
@@ -57,6 +62,10 @@
     "direct_navigation_attempt": "ENVIRONMENT_BLOCKED_BY_ADMINISTRATOR_FOR_FILE_AND_LOCALHOST_URLS",
     "browser_engine_execution": "PASS_VIA_PLAYWRIGHT_PAGE_SET_CONTENT",
     "technical_svg_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
+    "technical_svg_lab_professional_review_01": "REVISE",
+    "technical_svg_lab_professional_retest_01": "PASS_R01_R05",
+    "technical_svg_lab_independent_keep": "OPEN",
+    "technical_svg_lab_persistence_remote_readback": "PASS_2026_08_27",
     "image_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "image_lab_persistence_remote_readback": "PASS",
     "spatial_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
