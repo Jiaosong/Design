@@ -1,4 +1,8 @@
-# 2026-08-18｜Game UI / Interaction L5｜Exploration Motion Grammar
+# 2026-08-18｜Game UI / Interaction Practice Evidence｜Exploration Motion Grammar
+
+## Identity / Authority Boundary
+Historical title alias: `2026-08-18｜Game UI / Interaction L5｜Exploration Motion Grammar`.
+This file is supporting Practice Evidence / training narrative. It is not a second Current L5 Canonical knowledge object and does not self-authorize `KEEP / MAIN / Design PASS`.
 
 ## Training question
 How can an exploration interface feel authored across multiple screens without degenerating into unrelated `fade / reveal / glow / withdraw` effects or a dashboard overlay?
@@ -35,8 +39,8 @@ The full grammar tested is:
 
 The asset is intentionally schematic and source-bounded. It does not claim C04 field geometry, production UI, GPS truth, live service state, or target-runtime validation.
 
-## Independent Design Crit
-### Gate 1 — Compliance
+## Producer-side Design Readback / Independent Review Boundary
+### Gate 1 — Compliance evidence
 **PASS FOR TRAINING**
 - explicit project/training identity;
 - source/truth boundary is visible;
@@ -44,22 +48,25 @@ The asset is intentionally schematic and source-bounded. It does not claim C04 f
 - no compulsory checkpoint, XP, completion rate, or invented route fact;
 - Return remains visually and semantically higher priority than optional explanation.
 
-### Gate 2 — Professional Design
-**KEEP FOR TRAINING / NOT C04 MAIN ASSET**
+### Producer-side visual/design readback
+**SUPPORTS TRAINING CANDIDATE ONLY — NOT AN INDEPENDENT VERDICT**
 
-Checks:
-- First visual: PASS — each state reads first as world/route, not as dashboard chrome.
-- Composition: PASS — dominant landscape field remains stable; overlays occupy bounded secondary regions.
-- Proportion: PASS — route, markers, focus halo, and reveal layer have a clear visual scale order.
-- Hierarchy: PASS — world > active route/object > explanation > metadata.
-- Typography: PASS after revision — initial Cairo render used a non-CJK font and produced missing-glyph boxes; switched SVG to `Noto Sans CJK SC` and re-rendered.
-- Material/spatial reality: PASS only as schematic training language; NOT a field/terrain claim.
+Observed checks:
+- First visual: world/route reads before dashboard chrome in the training board.
+- Composition: dominant landscape field remains stable; overlays occupy bounded secondary regions.
+- Proportion: route, markers, focus halo, and reveal layer have a legible visual scale order.
+- Hierarchy: world > active route/object > explanation > metadata.
+- Typography: initial Cairo render used a non-CJK font and produced missing-glyph boxes; SVG was switched to `Noto Sans CJK SC` and re-rendered.
+- Material/spatial reality: schematic training language only; NOT a field/terrain claim.
 - Scale: HOLD for project transfer — no C04 field scale or device ergonomics is proven by this board.
-- Node readability: PASS — one active node, no peer competition.
-- Interaction/narrative: PASS at grammar level — each sampled state has a different information role rather than only a different visual effect.
-- Professional finish: PASS for training board; not sufficient for C04 MAIN because it is not bound to the current C04 production interface or target runtime.
+- Node readability: one active node, no peer competition in the specimen.
+- Interaction/narrative: sampled states encode different information roles rather than only different visual effects.
 
-Root cause preventing MAIN promotion: **the grammar is proven as a design relation, but not yet bound to the current C04 app surfaces and runtime.**
+### Independent Professional Design Review
+**NOT RUN / HOLD**
+Producer-side readback, editable-asset existence, runtime evidence, CI, or training quality observations do not authorize `KEEP / MAIN / Design PASS`.
+
+Root cause preventing MAIN promotion: **the grammar has formed reviewable training evidence, but independent Professional Design Review, current C04 production-surface binding, and target-runtime validation remain open.**
 
 ## Failure knowledge
 ### Failure 1 — effect vocabulary mistaken for behavior grammar
@@ -119,12 +126,12 @@ Not applicable without modification to:
 
 ## Runtime / environment note
 Chromium 144 exists in the environment, but both direct headless capture and Playwright navigation to local `file://` / localhost were blocked by the runtime administrator policy during this run. Therefore:
-- editable SVG + Cairo PNG preview = EXECUTED and visually reviewed;
+- editable SVG + Cairo PNG preview = EXECUTED and visually reviewed by the producer;
 - browser target-runtime interaction validation = HOLD;
 - no browser PASS is claimed.
 
 ## Promotion status
-- Training artifact: `KEEP FOR TRAINING`
+- Training artifact: `EXECUTED / CANDIDATE EVIDENCE / INDEPENDENT REVIEW HOLD`
 - Skill delta: `CANDIDATE / MATERIAL DELTA`
 - C04 project asset promotion: `NO`
 - FIELD OBSERVED / MEASURED: unchanged / not proven
