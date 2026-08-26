@@ -1,0 +1,78 @@
+{
+  "schema": "oleander.browser-design-workbench-validation-receipt.v0.1",
+  "date": "2026-08-26",
+  "runtime_surface": "browser_design_workbench",
+  "runtime_path": "00-governance/runtime/browser-design-workbench/workbench.html",
+  "version_before": "v0.1",
+  "version_after": "v0.2",
+  "project_binding": {
+    "project": "PRJ-C04-QINGJIANG-SHISHU",
+    "current_public_web_pr": 353,
+    "current_producer_branch": "agent/c04-web-v1-12-game-line-20260822",
+    "source_path": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/styles.css",
+    "source_css_blob_sha": "6841f1241dddaed7a84f0c46e0bccabdb358f312",
+    "source_scope": "CURRENT_C04_RESPONSIVE_CONTRACT_ONLY",
+    "full_runtime_asset_state": "BLOCKED_BY_PR353_ASSET_BINDING",
+    "full_finished_pixel_design_pass": "NOT_CLAIMED"
+  },
+  "responsive_contract_from_current_source": {
+    "max_1180": "mainnav display none; topbar collapses",
+    "max_860": "three-scales becomes single column; multiple current sections collapse to mobile layout",
+    "max_520": "additional narrow-screen refinements"
+  },
+  "initial_failure": {
+    "verdict": "REVISE",
+    "cause": "V0.1_CHANGED_CONTAINER_WIDTH_NOT_BROWSER_VIEWPORT",
+    "outer_browser_width_px": 1600,
+    "selected_frame_width_px": 390,
+    "observed_mainnav": "flex",
+    "observed_three_scale_columns": "130px 130px 130px",
+    "meaning": "C04 media queries did not activate; v0.1 390 was false-mobile readback"
+  },
+  "repair": [
+    "REAL_IFRAME_VIEWPORT_WIDTH_AND_HEIGHT",
+    "PRESET_1440x900_1024x768_768x1024_390x844",
+    "ZOOM_IS_PREVIEW_SCALE_ONLY",
+    "SRCDOC_LOAD_API_FOR_CONTROLLED_PROJECT_BYTES",
+    "HTTP_S_URL_MODE_WITH_PROTOCOL_FAIL_CLOSED",
+    "GRID_OVERLAY_OUTSIDE_PROJECT_BYTES",
+    "GRAYSCALE_ON_IFRAME_PRESENTATION_ONLY",
+    "OUTLINE_ONLY_WHEN_FRAME_DOCUMENT_IS_INSPECTABLE_OTHERWISE_FAIL_CLOSED"
+  ],
+  "browser_execution": {
+    "engine": "Chromium / Playwright Python / page.set_content",
+    "outer_viewport_px": [1680, 1050],
+    "page_errors": 0
+  },
+  "retest": {
+    "1440x900": {"iframe_inner_width": 1440, "mainnav": "flex", "three_scales_columns": 3},
+    "1024x768": {"iframe_inner_width": 1024, "mainnav": "none", "three_scales_columns": 3},
+    "768x1024": {"iframe_inner_width": 768, "mainnav": "none", "three_scales_columns": 1},
+    "390x844": {"iframe_inner_width": 390, "mainnav": "none", "three_scales_columns": 1},
+    "zoom_25pct_after_390": {"iframe_inner_width": 390, "preview_wrap_width_px": 97.5, "pass": true},
+    "grayscale": {"filter": "grayscale(1)", "pass": true},
+    "grid": {"pixel_surface_changed": true, "pass": true},
+    "outline_srcdoc": {"style_present": true, "computed_outline": "solid", "pass": true},
+    "invalid_url_protocol": {"blocked": true, "pass": true}
+  },
+  "persistent_readback": {
+    "library_folder": "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Design-Workbench",
+    "files": {
+      "before_false_mobile": {"name": "WORKBENCH_V01_FALSE_MOBILE.png", "file_id": "file_0000000032e0820ebda80bba024e811d", "sha256": "d14a63e69d1b96e1b3e313a844dc6b01003c412781943d0524b8f266267ee78f"},
+      "after_390": {"name": "WORKBENCH_V02_C04_390x844.png", "file_id": "file_000000008bf48211a50c2be41654286c", "sha256": "c0c0f613dd1381f9de216cf77f1c477c1ae935eeb4d74f2eff3531cdb37a9984"},
+      "after_1440": {"name": "WORKBENCH_V02_C04_1440x900.png", "file_id": "file_00000000b94c820796db30c15323e52d", "sha256": "dcd05e19faff1e54dfffbe61c53b777be89bd7f0af3cc1a7c124cd375f1f3a35"},
+      "test_results": {"name": "WORKBENCH_BROWSER_TEST_RESULTS_v02.json", "file_id": "file_0000000063808211ba125eff58352d99", "sha256": "7123ae648cb94bbd056843a3f4e674318d734c068975e765f0a30dfc8c756aa2"},
+      "contract_fixture": {"name": "C04_RESPONSIVE_CONTRACT_FIXTURE.html", "file_id": "file_000000001cec8211a2c795cac608055f", "sha256": "9a9382b2b560177dad3a24db0ec6ffe53770b4923999c22a252dd8612665da95"}
+    },
+    "remote_reopen": "PASS"
+  },
+  "truth_boundary": "WORKBENCH_READBACK_SHELL_ONLY / DOES_NOT_MUTATE_PROJECT_SOURCE / RESPONSIVE_CONTRACT_TEST_IS_NOT_FULL_C04_FINISHED_PIXEL_REVIEW / CI_IS_NOT_DESIGN_PASS",
+  "review": {
+    "functional_browser_readback": "PASS",
+    "persistence_remote_readback": "PASS",
+    "independent_professional_design_review": "OPEN",
+    "full_c04_finished_pixel_review": "BLOCKED_BY_CURRENT_ASSET_BINDING",
+    "active_promotion": "NOT_GRANTED"
+  },
+  "status": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN"
+}
