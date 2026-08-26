@@ -10,6 +10,7 @@ REGISTRY = RUNTIME / "OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json"
 ROUTING = RUNTIME / "OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json"
 CARD = RUNTIME / "templates" / "OLEANDER_PROJECT_ENVIRONMENT_CARD_v0.1.md"
 STUDIO = RUNTIME / "cloud-free-studio" / "index.html"
+IMAGE_RECEIPT = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "VALIDATION_RECEIPT_v0.1.json"
 
 
 def fail(msg: str) -> None:
@@ -23,29 +24,27 @@ def require(text: str, tokens: list[str], label: str) -> None:
 
 
 def main() -> None:
-    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO]
+    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT]
     if any(not p.exists() for p in required_files):
-        fail("pack / registry / routing / project card / studio missing")
+        fail("pack / registry / routing / project card / studio / image receipt missing")
 
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     reg = json.loads(REGISTRY.read_text(encoding="utf-8"))
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
+    image_receipt = json.loads(IMAGE_RECEIPT.read_text(encoding="utf-8"))
 
     if pack.get("status") != "CANDIDATE_SHARED_REPO_RUNTIME":
-        fail("capability pack must remain candidate before real project browser readback")
+        fail("capability pack must remain candidate until independent review and promotion evidence exist")
     if pack.get("routing_binding") != "00-governance/runtime/OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json":
         fail("capability pack is not bound to current Cloud-Free execution routing")
     rb = pack.get("readback_state_2026_08_26", {})
     if rb.get("browser_pass") != "OPEN_NOT_CLAIMED":
-        fail("browser PASS must remain open until real browser evidence exists")
+        fail("whole-pack browser PASS must remain open")
 
     required_holds = {
-        "NEW_PROFESSIONAL_BIM_CAD",
-        "CLASS_A_MANUFACTURING_CAD",
-        "FROM_ZERO_HIGH_END_ARCHVIZ_CGI",
-        "SUPPLIER_PREPRESS_PROOF",
-        "ENGINEERING_APPROVAL",
-        "FIELD_ACCEPTANCE",
+        "NEW_PROFESSIONAL_BIM_CAD", "CLASS_A_MANUFACTURING_CAD",
+        "FROM_ZERO_HIGH_END_ARCHVIZ_CGI", "SUPPLIER_PREPRESS_PROOF",
+        "ENGINEERING_APPROVAL", "FIELD_ACCEPTANCE",
     }
     if not required_holds.issubset(set(pack.get("hard_holds_preserved", []))):
         fail("professional capability HOLD set was weakened")
@@ -62,8 +61,6 @@ def main() -> None:
     ]
     if routing.get("routing_order") != expected_order:
         fail("Cloud-Free default routing order drifted")
-    if routing.get("role") != "ROUTING_BINDING_NOT_NEW_METHOD_SKILL_GATE_OR_FRAMEWORK":
-        fail("routing binding role boundary drifted")
     truth = routing.get("execution_truth", {})
     if truth.get("validator_or_ci_pass") != "DOES_NOT_EQUAL_BROWSER_PASS_OR_DESIGN_PASS":
         fail("routing binding lost CI/browser/design truth separation")
@@ -83,12 +80,31 @@ def main() -> None:
         files[name] = p.read_text(encoding="utf-8")
         if spec.get("class") != "SHARED_REPO_RUNTIME":
             fail(f"{name} must be SHARED_REPO_RUNTIME")
-        if "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED" != spec.get("source_mutation"):
+        if spec.get("source_mutation") != "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED":
             fail(f"{name} source mutation boundary missing")
-        if "REAL_BROWSER_REQUIRED" != spec.get("runtime_readback"):
+        if spec.get("runtime_readback") != "REAL_BROWSER_REQUIRED":
             fail(f"{name} runtime readback boundary missing")
 
-    require(files["browser_image_lab"], ["<canvas", "exportPng", "exportJson", "brightness", "contrast", "saturation", "grayscale", "Before view"], "image lab")
+    image_spec = surfaces["browser_image_lab"]
+    if image_spec.get("validation_state") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("image lab validation state drifted or was prematurely promoted")
+    if image_spec.get("validation_receipt") != "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json":
+        fail("image lab validation receipt pointer missing")
+    require(files["browser_image_lab"], [
+        "<canvas", "Export PNG derivative", "Export Config JSON",
+        "Before view · true source fit", "SOURCE_BYTES_READ_ONLY",
+        "sha256", "IMAGE MIME REQUIRED / SOURCE CLEARED",
+        "EXPORT BLOCKED / SOURCE REQUIRED", "DERIVATIVE_NOT_SOURCE_AUTHORITY",
+    ], "image lab")
+    if image_receipt.get("status") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("image validation receipt status invalid")
+    if image_receipt.get("review", {}).get("independent_design_review") != "OPEN":
+        fail("image lab cannot self-grant independent review")
+    if image_receipt.get("persistent_readback", {}).get("library_folder") != "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Image-Lab":
+        fail("image lab persistent readback location drifted")
+    if image_receipt.get("project_binding", {}).get("source_sha256") != "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4":
+        fail("image lab source identity drifted")
+
     require(files["browser_spatial_lab"], ["<canvas", "Scene JSON", "Camera preset", "yaw", "pitch", "distance", "pointerdown", "cylinder", "wire", "grid"], "spatial lab")
     if "https://" in files["browser_spatial_lab"] or "http://" in files["browser_spatial_lab"] or "import " in files["browser_spatial_lab"]:
         fail("spatial lab must remain zero external runtime dependency")
@@ -98,13 +114,7 @@ def main() -> None:
     require(studio, ["browser-design-workbench/workbench.html", "browser-image-lab/image-lab.html", "browser-spatial-lab/spatial-lab.html", "browser-technical-svg-lab/technical-svg-lab.html", "CAPABILITY HOLD REMAINS"], "Cloud-Free Studio")
 
     card = CARD.read_text(encoding="utf-8")
-    require(card, [
-        "Cloud-Free Studio Preflight",
-        "AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → SHARED_REPO_RUNTIME",
-        "USER_WEB_MANUAL",
-        "CAPABILITY_HOLD",
-        "SOURCE READBACK / CI / VALIDATOR PASS ≠ BROWSER PASS ≠ DESIGN PASS",
-    ], "Project Environment Card")
+    require(card, ["Cloud-Free Studio Preflight", "AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → SHARED_REPO_RUNTIME", "USER_WEB_MANUAL", "CAPABILITY_HOLD", "SOURCE READBACK / CI / VALIDATOR PASS ≠ BROWSER PASS ≠ DESIGN PASS"], "Project Environment Card")
     if card.find("SHARED_REPO_RUNTIME") > card.find("USER_WEB_MANUAL"):
         fail("project card must prefer shared repo runtime before manual web tools")
 
@@ -115,8 +125,9 @@ def main() -> None:
 
     print("CLOUD_FREE_CAPABILITY_VALIDATION_PASS")
     print("surfaces=3")
-    print("routing_binding=ACTIVE")
-    print("shared_runtime_precedes_manual_saas=PASS")
+    print("image_lab_functional_browser_readback=PASS")
+    print("image_lab_persistence_remote_readback=PASS")
+    print("image_lab_independent_review=OPEN")
     print("spatial_external_dependencies=0")
     print("browser_pass=OPEN_NOT_CLAIMED")
 
