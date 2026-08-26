@@ -1,21 +1,41 @@
 {
   "schema": "oleander.cloud-free-project-profile.v1",
   "version": "1.0",
-  "status": "CANDIDATE_RUNTIME_PROFILE",
+  "implementation_revision": "1.1",
+  "status": "ACTIVE_CURRENT_GLOBAL_DEFAULT",
   "date": "2026-08-26",
+  "scope": "ALL_OLEANDER_CONVERSATIONS_AND_PROJECTS_UNLESS_EXPLICITLY_OVERRIDDEN",
   "parent_runtime": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
   "role": "CONSTRAINT_PROFILE_NOT_NEW_ENVIRONMENT",
+  "global_activation": {
+    "user_activated": true,
+    "activated_on": "2026-08-26",
+    "generic_followup_does_not_revoke": true,
+    "explicit_named_override_required": true,
+    "policy_is_cross_conversation": true,
+    "per_conversation_capability_probe_still_required": true,
+    "does_not_create_persistent_private_workstation": true
+  },
   "active_constraints": [
     "NO_LOCAL_INSTALL_REQUIRED",
     "NO_NEW_PAID_DEPENDENCY",
     "STOP_AT_FREE_LIMIT",
     "BROWSER_FIRST"
   ],
+  "execution_surface_classes": [
+    "AGENT_EXECUTABLE",
+    "SHARED_REPO_RUNTIME",
+    "USER_WEB_MANUAL",
+    "VIEW_ONLY_OR_REFERENCE",
+    "CAPABILITY_HOLD"
+  ],
   "defaults": {
     "required_software": "BROWSER_ONLY",
     "required_plugins": "NONE",
     "paid_overage": "FORBIDDEN_AS_DEFAULT",
-    "capability_gap_behavior": "CAPABILITY_HOLD"
+    "local_install": "FORBIDDEN_AS_DEFAULT",
+    "capability_gap_behavior": "CAPABILITY_HOLD",
+    "execution_surface_class_must_be_recorded": true
   },
   "hard_rules": [
     "DO_NOT_REQUIRE_USER_LOCAL_INSTALL",
@@ -26,73 +46,115 @@
     "EXISTING_SOURCE_AND_ARTIFACT_REUSE_PRECEDES_RECREATION",
     "BROWSER_VISIBLE_DOES_NOT_EQUAL_NATIVE_AUTHORITY",
     "FREE_TOOL_AVAILABLE_DOES_NOT_EQUAL_CAPABILITY_PROVEN",
-    "DEPLOYED_DOES_NOT_EQUAL_DESIGN_PASS"
+    "DEPLOYED_DOES_NOT_EQUAL_DESIGN_PASS",
+    "TOOL_DOCUMENTED_DOES_NOT_EQUAL_TOOL_CALLABLE_IN_THIS_CONVERSATION",
+    "USER_WEB_MANUAL_DOES_NOT_EQUAL_AGENT_EXECUTED"
   ],
   "adapter_priority": [
-    "BROWSER_NATIVE",
+    "AGENT_EXECUTABLE_BROWSER_NATIVE",
+    "SHARED_REPO_RUNTIME",
     "CURRENT_OLEANDER_SKILL",
-    "FREE_WEB_TOOL",
+    "VERIFIED_FREE_WEB_TOOL",
     "INCLUDED_FREE_QUOTA_CLOUD_COMPUTE",
+    "USER_WEB_MANUAL_OPTION",
     "SIMPLIFY_EXECUTION_WITHOUT_INFORMATION_LOSS",
     "CAPABILITY_HOLD"
   ],
   "forbidden_fallbacks": [
     "BUY_PAID_TOOL",
     "ENABLE_PAID_OVERAGE",
+    "REQUIRE_USER_LOCAL_INSTALL",
+    "CLAIM_MANUAL_WEB_TOOL_AS_AGENT_EXECUTED",
     "USE_AI_IMAGE_AS_FAKE_SOURCE",
     "DELETE_PROFESSIONAL_REQUIREMENT",
     "TREAT_PREVIEW_AS_NATIVE_AUTHORITY"
   ],
   "tooling": {
-    "code_vector_html_json": {
-      "primary": ["GitHub Web", "github.dev"],
+    "github_source_editing": {
+      "primary": ["GitHub connector", "GitHub Web", "github.dev"],
+      "execution_surface": "AGENT_EXECUTABLE_WHEN_CONNECTOR_EXPOSED",
       "cost_policy": "FREE",
       "boundary": "github.dev is browser editing, not full compute runtime"
     },
+    "notion_knowledge_project_state": {
+      "primary": ["Notion connector"],
+      "execution_surface": "AGENT_EXECUTABLE_WHEN_CONNECTOR_EXPOSED",
+      "boundary": "not sole storage for irreplaceable large binary source files"
+    },
+    "drive_assets_archive": {
+      "primary": ["Google Drive connector"],
+      "execution_surface": "AGENT_EXECUTABLE_WHEN_CONNECTOR_EXPOSED",
+      "boundary": "Canonical Path version and remote readback required"
+    },
     "build_terminal": {
-      "primary": ["GitHub Codespaces personal included quota"],
+      "primary": ["GitHub Actions", "GitHub Codespaces personal included quota"],
+      "execution_surface": "SHARED_REPO_RUNTIME_OR_CONDITIONAL",
       "cost_policy": "STOP_AT_FREE_LIMIT",
       "preferred_machine": "LOWEST_SUFFICIENT_CORE_COUNT",
       "boundary": "COMPUTE_HOLD when included quota is exhausted"
     },
     "static_deploy": {
-      "primary": ["GitHub Pages", "Cloudflare Pages Free"],
+      "primary": ["GitHub Pages", "Cloudflare Pages Free", "Vercel free route when verified"],
+      "execution_surface": "SHARED_REPO_RUNTIME_OR_CONNECTOR_CONDITIONAL",
       "cost_policy": "FREE_TIER_ONLY",
       "strategy": "STATIC_FIRST"
     },
+    "browser_native_implementation": {
+      "primary": ["HTML", "CSS", "JavaScript", "SVG"],
+      "execution_surface": "SHARED_REPO_RUNTIME",
+      "boundary": "real browser readback required"
+    },
     "raster_editing": {
       "primary": ["Photopea Web"],
+      "execution_surface": "USER_WEB_MANUAL",
       "cost_policy": "FREE_BASIC_PATH",
       "boundary": "manual derivative editing only; source authority unchanged"
     },
+    "ui_design_prototyping": {
+      "primary": ["Penpot Cloud Professional free"],
+      "execution_surface": "USER_WEB_MANUAL",
+      "cost_policy": "FREE_HOSTED_PLAN",
+      "boundary": "not agent-executable until a connector is actually available and probed"
+    },
     "vector_technical": {
       "primary": ["editable SVG", "browser preview", "PDF derivative"],
+      "execution_surface": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME",
       "cost_policy": "FREE",
       "boundary": "text dimensions and annotations remain editable"
     },
-    "knowledge_project_state": {
-      "primary": ["Notion"],
-      "boundary": "not sole storage for irreplaceable large binary source files"
-    },
-    "assets_archive": {
-      "primary": ["Google Drive"],
-      "boundary": "Canonical Path version and readback required"
+    "spatial_concept_modeling": {
+      "primary": ["SketchUp for Web free"],
+      "execution_surface": "USER_WEB_MANUAL",
+      "cost_policy": "FREE_NON_SUBSCRIPTION_PATH",
+      "boundary": "subscription-only features, BIM, production CAD and high-end rendering are not implied"
     },
     "three_d_viewer": {
       "primary": ["Three.js", "model-viewer", "glTF/GLB"],
+      "execution_surface": "SHARED_REPO_RUNTIME",
       "boundary": "viewer does not prove professional modeling capability"
     },
     "complex_three_d_cad_bim": {
       "primary": [],
+      "execution_surface": "CAPABILITY_HOLD",
       "status": "CAPABILITY_HOLD_BY_DEFAULT",
       "boundary": "do not substitute viewer SVG or AI image for professional geometry authoring"
+    },
+    "architecture_visualization_from_zero": {
+      "primary": ["existing verified geometry/render/source imagery first"],
+      "execution_surface": "CAPABILITY_PARTIAL_OR_HOLD",
+      "boundary": "browser composition can handle framing and presentation; high-end CGI requires a verified render execution path"
     }
   },
   "type_routes": {
-    "web_ui_interaction": ["Notion Type Brief", "GitHub source", "github.dev", "HTML/CSS/JS/SVG", "real browser", "free/static deploy", "desktop/mobile/state readback"],
-    "graphic_brand_packaging_pop": ["source assets", "editable SVG master", "browser readback", "Photopea if raster treatment needed", "SVG/PDF/PNG derivatives", "Drive delivery"],
+    "web_ui_interaction": {
+      "agent_default": ["Notion Type Brief", "GitHub source", "HTML/CSS/JS/SVG", "real browser", "free/static deploy", "desktop/mobile/state readback"],
+      "optional_manual_design_workspace": ["Penpot"],
+      "boundary": "Penpot does not replace implementation/browser evidence"
+    },
+    "graphic_brand_packaging_pop": ["source assets", "editable SVG master", "browser readback", "Photopea USER_WEB_MANUAL if raster treatment needed", "SVG/PDF/PNG derivatives", "Drive delivery"],
     "data_viz_gis": ["CSV/JSON/GeoJSON", "oleander-data-viz", "SVG/HTML", "browser", "PNG readback"],
-    "architecture_landscape_interior_presentation": ["existing photos/drawings/geometry", "SVG/HTML/PDF composition", "browser readback", "CAPABILITY_HOLD if new professional BIM/CAD/complex 3D is required"],
+    "architecture_landscape_interior_presentation": ["existing photos/drawings/geometry", "SVG/HTML/PDF composition", "browser readback", "SketchUp Web USER_WEB_MANUAL for concept modeling", "CAPABILITY_HOLD if new professional BIM/CAD/complex 3D is required"],
+    "architecture_visualization": ["existing source imagery/geometry/render", "composition and image treatment", "whole-frame/detail readback", "CAPABILITY_PARTIAL_OR_HOLD for from-zero high-end CGI"],
     "product_cmf": ["existing geometry/photo", "browser 3D viewer", "parametric/simple geometry", "SVG technical communication", "CAPABILITY_HOLD for complex manufacturing CAD"],
     "technical_drawing_engineering_diagram": ["verified source dimensions", "editable SVG", "PDF", "whole/detail readback"],
     "motion": ["CSS", "Web Animations API", "JS", "SVG motion", "browser readback"]
@@ -106,9 +168,14 @@
       "OPEN_OR_DOCUMENTED_RECOVERABLE_OUTPUT",
       "DOES_NOT_BECOME_SOURCE_AUTHORITY_BY_GENERATION",
       "VERSION_PURPOSE_OWNER_FREE_BOUNDARY_FALLBACK_RECORDED",
+      "EXECUTION_SURFACE_CLASS_RECORDED",
       "REMOVAL_DOES_NOT_DESTROY_ONLY_RECOVERABLE_DESIGN_COPY"
     ],
-    "record_fields": ["NAME", "VERSION", "TYPE", "PURPOSE", "REQUIRED", "FREE_LIMIT", "SOURCE", "OUTPUT_FORMAT", "FALLBACK", "LOCK_IN_RISK", "STATUS"]
+    "record_fields": ["NAME", "VERSION", "TYPE", "PURPOSE", "REQUIRED", "EXECUTION_SURFACE_CLASS", "FREE_LIMIT", "SOURCE", "OUTPUT_FORMAT", "FALLBACK", "LOCK_IN_RISK", "STATUS"],
+    "plugin_discovery_2026_08_26": {
+      "penpot": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND",
+      "sketchup": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
+    }
   },
   "verified_free_boundaries_2026_08_26": {
     "github_dev": "FREE_BROWSER_EDITOR",
@@ -123,6 +190,18 @@
       "files_per_site": 20000,
       "source": "https://developers.cloudflare.com/pages/platform/limits/"
     },
+    "penpot_cloud_professional": {
+      "price_per_user_month_usd": 0,
+      "team_members": 8,
+      "storage_gb": 10,
+      "plugins": true,
+      "source": "https://penpot.app/pricing"
+    },
+    "sketchup_for_web": {
+      "subscription_required_for_base_use": false,
+      "trimble_id_required": true,
+      "source": "https://help.sketchup.com/en/sketchup-web/sketchup-web"
+    },
     "photopea": {
       "basic_free_browser_usage": true,
       "source": "https://www.photopea.com/learn/"
@@ -130,9 +209,12 @@
   },
   "project_environment_card_defaults": {
     "required_software": "BROWSER_ONLY",
-    "required_plugins": "NONE"
+    "required_plugins": "NONE",
+    "execution_surface_class": "MUST_RESOLVE_PER_REQUIRED_CAPABILITY"
   },
   "does_not_prove": [
+    "CHATGPT_HAS_A_PERSISTENT_PRIVATE_WORKSTATION",
+    "EVERY_THIRD_PARTY_WEB_APP_IS_AGENT_CONTROLLABLE",
     "EVERY_DOMAIN_CAN_BE_COMPLETED_PROFESSIONALLY_IN_BROWSER",
     "FREE_TOOLS_EQUAL_FULL_PROFESSIONAL_SUITES",
     "THREE_JS_EQUALS_CAD_OR_BIM",
