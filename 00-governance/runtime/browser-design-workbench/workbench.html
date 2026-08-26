@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLEANDER Browser Design Workbench</title>
+<style>
+:root{--ui:#111;--panel:#181818;--line:#303030;--text:#eee;--muted:#969696;--stage:#d8d8d8;--frame:#fff;--zoom:1;--frame-width:1440px;--grid-size:8px}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:12px/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--ui);color:var(--text)}
+body{display:grid;grid-template-rows:46px 1fr;overflow:hidden}.bar{display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{font-weight:700;letter-spacing:.08em;margin-right:12px}.group{display:flex;gap:4px;padding-right:8px;border-right:1px solid var(--line)}button,select{border:1px solid #414141;background:#222;color:#eee;border-radius:6px;padding:6px 9px;font:inherit}button:hover{background:#303030}button[aria-pressed="true"]{background:#eee;color:#111}.status{margin-left:auto;color:var(--muted)}
+.stage{overflow:auto;background:var(--stage);padding:48px;display:flex;align-items:flex-start;justify-content:center}.frame-wrap{position:relative;flex:0 0 auto;width:calc(var(--frame-width) * var(--zoom));min-height:720px}.frame{transform:scale(var(--zoom));transform-origin:top left;width:var(--frame-width);min-height:900px;background:var(--frame);box-shadow:0 16px 50px rgba(0,0,0,.22);position:relative;overflow:hidden}
+#design-root{min-height:900px;color:#111;background:#fff;position:relative}.placeholder{min-height:900px;display:grid;place-items:center;padding:64px;text-align:center}.placeholder h1{font-size:clamp(36px,6vw,96px);line-height:.92;letter-spacing:-.055em;margin:0;max-width:900px}.placeholder p{max-width:620px;font-size:16px;color:#555}
+.grid-on .frame:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(255,0,0,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,90,255,.08) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);z-index:9999}.gray-on #design-root{filter:grayscale(1)}.outline-on #design-root *{outline:1px solid rgba(255,0,0,.24)}
+@media(max-width:700px){.bar{overflow-x:auto}.brand{display:none}.stage{padding:20px}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand">OLEANDER / WORKBENCH v0.1</div>
+  <div class="group" aria-label="Viewport presets">
+    <button data-w="1440" aria-pressed="true">1440</button><button data-w="1024">1024</button><button data-w="768">768</button><button data-w="390">390</button>
+  </div>
+  <div class="group">
+    <button id="grid">Grid</button><button id="gray">Grayscale</button><button id="outline">Outline</button>
+  </div>
+  <div class="group">
+    <select id="zoom" aria-label="Zoom"><option value="1">100%</option><option value=".75">75%</option><option value=".5" selected>50%</option><option value=".35">35%</option><option value=".25">25%</option></select>
+  </div>
+  <div class="status" id="status">SHARED_REPO_RUNTIME · viewport 1440</div>
+</header>
+<main class="stage" id="stage">
+  <div class="frame-wrap"><section class="frame" id="frame">
+    <div id="design-root">
+      <div class="placeholder">
+        <div><h1>Replace only the project design root.</h1><p>This shell is a shared OLEANDER readback surface. Keep Source Authority, project content, geometry, evidence, and Design Authority in their canonical project locations.</p></div>
+      </div>
+    </div>
+  </section></div>
+</main>
+<script>
+const root=document.documentElement, stage=document.getElementById('stage'), status=document.getElementById('status');
+const viewportButtons=[...document.querySelectorAll('[data-w]')];
+function setViewport(w){root.style.setProperty('--frame-width',w+'px');viewportButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.w===String(w))));status.textContent=`SHARED_REPO_RUNTIME · viewport ${w}`;}
+viewportButtons.forEach(b=>b.addEventListener('click',()=>setViewport(b.dataset.w)));
+document.getElementById('zoom').addEventListener('change',e=>root.style.setProperty('--zoom',e.target.value));
+[['grid','grid-on'],['gray','gray-on'],['outline','outline-on']].forEach(([id,cls])=>document.getElementById(id).addEventListener('click',e=>{stage.classList.toggle(cls);e.currentTarget.setAttribute('aria-pressed',String(stage.classList.contains(cls)));}));
+root.style.setProperty('--zoom',document.getElementById('zoom').value);
+</script>
+</body>
+</html>
