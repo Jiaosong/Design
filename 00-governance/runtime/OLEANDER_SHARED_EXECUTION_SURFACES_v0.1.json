@@ -8,6 +8,9 @@
     "notion_connector": {"class": "AGENT_EXECUTABLE", "role": "CURRENT_KNOWLEDGE_AND_PROJECT_STATE", "cross_conversation": true},
     "google_drive_connector": {"class": "AGENT_EXECUTABLE_WHEN_EXPOSED", "role": "ASSET_ARCHIVE_DELIVERY", "cross_conversation": true},
     "oleander_browser_design_workbench": {"class": "SHARED_REPO_RUNTIME", "path": "00-governance/runtime/browser-design-workbench/workbench.html", "role": "VISUAL_PRODUCTION_AND_READBACK_STAGE", "cross_conversation": true, "external_saas_required": false},
+    "oleander_browser_image_lab": {"class": "SHARED_REPO_RUNTIME", "path": "00-governance/runtime/browser-image-lab/image-lab.html", "role": "BOUNDED_RASTER_TREATMENT_AND_COMPOSITION", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "global_current_store": false},
+    "oleander_browser_spatial_lab": {"class": "SHARED_REPO_RUNTIME", "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html", "role": "PARAMETRIC_CONCEPT_MASSING_CAMERA_SCALE", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "engine": "ZERO_DEPENDENCY_NATIVE_CANVAS_3D_PROJECTION", "global_current_store": false},
+    "oleander_browser_technical_svg_lab": {"class": "SHARED_REPO_RUNTIME", "path": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html", "role": "EDITABLE_VECTOR_TECHNICAL_PACKAGING_POP_PREFLIGHT", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "global_current_store": false},
     "html_css_js_svg_threejs": {"class": "SHARED_REPO_RUNTIME", "role": "NATIVE_BROWSER_PRODUCTION", "cross_conversation": true},
     "vercel_connector": {"class": "AGENT_EXECUTABLE_WHEN_EXPOSED", "role": "OPTIONAL_DEPLOY_READBACK", "policy": "FREE_OR_EXISTING_PLAN_ONLY_NO_UPGRADE_REQUIREMENT"},
     "figma": {"class": "OPTIONAL_TEMP_ADAPTER", "global_current_store": false, "reason": "STARTER_TEAM_SPACE_LOW_FILE_PAGE_LIMIT_AND_VENDOR_LOCK_IN_RISK", "drafts": "NOT_CROSS_CONVERSATION_AUTHORITY"},
@@ -16,6 +19,7 @@
     "sketchup_web": {"class": "USER_WEB_MANUAL", "role": "SPATIAL_CONCEPT_FALLBACK", "global_current_store": false},
     "complex_bim_cad_class_a_archviz": {"class": "CAPABILITY_HOLD", "rule": "DO_NOT_FAKE_PROFESSIONAL_NATIVE_OUTPUT"}
   },
+  "capability_pack": "00-governance/runtime/OLEANDER_CLOUD_FREE_CAPABILITY_PACK_v0.1.json",
   "global_current_disqualifiers": [
     "LOW_SHARED_FILE_LIMIT",
     "LOW_PAGE_LIMIT",

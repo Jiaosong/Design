@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OLEANDER Browser Image Lab</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#111;background:#ececec}*{box-sizing:border-box}body{margin:0;display:grid;grid-template-columns:300px 1fr;min-height:100vh}.panel{padding:16px;background:#fff;border-right:1px solid #ccc;overflow:auto}.stage{display:grid;place-items:center;padding:24px;min-width:0}.frame{width:min(100%,1200px);aspect-ratio:4/3;background:#ddd;position:relative;overflow:hidden;box-shadow:0 8px 30px #0002}.frame canvas{width:100%;height:100%;display:block}.row{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center;margin:10px 0}label{font-size:12px;font-weight:600}input,button,select{width:100%;padding:7px;border:1px solid #bbb;background:#fff}button{cursor:pointer}.note{font-size:11px;line-height:1.45;color:#555}.status{font:11px/1.4 ui-monospace,monospace;background:#f4f4f4;padding:8px;margin-top:12px;white-space:pre-wrap}.sep{height:1px;background:#ddd;margin:14px 0}@media(max-width:760px){body{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid #ccc}.stage{padding:12px}}
+</style>
+</head>
+<body>
+<aside class="panel">
+<h2>OLEANDER Image Lab</h2>
+<p class="note">Shared repo runtime for bounded raster treatment and composition readback. It is not Source Authority and does not replace Photoshop-class production proof.</p>
+<label>Open local image</label><input id="file" type="file" accept="image/*" />
+<label>Or same-origin / CORS image URL</label><input id="url" placeholder="assets/example.jpg" /><button id="loadUrl">Load URL</button>
+<div class="sep"></div>
+<div class="row"><label>Brightness</label><input id="brightness" type="number" value="100" min="0" max="300"></div>
+<div class="row"><label>Contrast</label><input id="contrast" type="number" value="100" min="0" max="300"></div>
+<div class="row"><label>Saturation</label><input id="saturation" type="number" value="100" min="0" max="300"></div>
+<div class="row"><label>Grayscale</label><input id="grayscale" type="number" value="0" min="0" max="100"></div>
+<div class="row"><label>Scale</label><input id="scale" type="number" value="100" min="10" max="500"></div>
+<div class="row"><label>Rotate °</label><input id="rotate" type="number" value="0" min="-180" max="180"></div>
+<div class="row"><label>Offset X</label><input id="offsetX" type="number" value="0" min="-2000" max="2000"></div>
+<div class="row"><label>Offset Y</label><input id="offsetY" type="number" value="0" min="-2000" max="2000"></div>
+<div class="row"><label>BG</label><input id="bg" type="color" value="#dddddd"></div>
+<label><input id="before" type="checkbox" style="width:auto"> Before view</label>
+<div class="sep"></div>
+<button id="exportPng">Export PNG</button><button id="exportJson">Export Config JSON</button>
+<div id="status" class="status">NO IMAGE LOADED</div>
+</aside>
+<main class="stage"><div class="frame"><canvas id="canvas" width="1600" height="1200"></canvas></div></main>
+<script>
+const $=id=>document.getElementById(id);const c=$('canvas'),ctx=c.getContext('2d');let img=null,srcName='';
+const ids=['brightness','contrast','saturation','grayscale','scale','rotate','offsetX','offsetY','bg','before'];ids.forEach(id=>$(id).addEventListener('input',draw));
+function config(){return {brightness:+$('brightness').value,contrast:+$('contrast').value,saturation:+$('saturation').value,grayscale:+$('grayscale').value,scale:+$('scale').value,rotate:+$('rotate').value,offsetX:+$('offsetX').value,offsetY:+$('offsetY').value,bg:$('bg').value,source:srcName}};
+function draw(){ctx.save();ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle=$('bg').value;ctx.fillRect(0,0,c.width,c.height);if(img){const raw=$('before').checked;ctx.filter=raw?'none':`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%) saturate(${$('saturation').value}%) grayscale(${$('grayscale').value}%)`;const s=(+$('scale').value)/100;const fit=Math.min(c.width/img.width,c.height/img.height);const w=img.width*fit*s,h=img.height*fit*s;ctx.translate(c.width/2+(+$('offsetX').value),c.height/2+(+$('offsetY').value));ctx.rotate((+$('rotate').value)*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h)}ctx.restore();$('status').textContent=img?JSON.stringify(config(),null,2):'NO IMAGE LOADED';}
+function setImage(src,name){const n=new Image();n.crossOrigin='anonymous';n.onload=()=>{img=n;srcName=name;draw()};n.onerror=()=>{$('status').textContent='LOAD FAILED / CHECK PATH OR CORS';};n.src=src;}
+$('file').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)setImage(URL.createObjectURL(f),f.name)});$('loadUrl').onclick=()=>{if($('url').value.trim())setImage($('url').value.trim(),$('url').value.trim())};
+$('exportPng').onclick=()=>{draw();const a=document.createElement('a');a.download='oleander-image-lab.png';a.href=c.toDataURL('image/png');a.click()};
+$('exportJson').onclick=()=>{const b=new Blob([JSON.stringify(config(),null,2)],{type:'application/json'});const a=document.createElement('a');a.download='oleander-image-lab.config.json';a.href=URL.createObjectURL(b);a.click()};draw();
+</script>
+</body></html>

@@ -43,6 +43,9 @@ jobs:
       - name: Validate existing visual authority and image consumption
         run: python 00-governance/runtime/validate_image_consumption.py
 
+      - name: Validate Cloud-Free shared capability surfaces
+        run: python 00-governance/runtime/validate_cloud_free_capabilities.py
+
       - name: Validate current Control Cards and no-loss architecture contract
         run: python 00-governance/control-plane/scan_control_cards.py | tee /tmp/control-card-scan.txt
 
@@ -68,6 +71,7 @@ jobs:
           echo '- Enforces sticky negative user constraints before tool/creation routing and blocks full-flow closure while required phases remain incomplete.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces one active production frontier per logical object, predecessor closure on successor adoption, location integrity, lifecycle exit, and source-byte dedup semantics.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces existing visual authority, one semantic content image per consumer unit, derivative identity inheritance, and project image-consumption ledgers.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates Cloud-Free shared capability surfaces, zero external runtime dependency for Spatial Lab, preserved professional HOLD boundaries, and forbids fake browser PASS.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Discovers current Control Card v0.2 objects by content signature and applies existing Control Plane validation, including the global no-loss Architecture preservation contract.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Replay/example/test/receipt/archive/frozen-Legacy zones are not retroactively rewritten by the prospective Control Card scan.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
