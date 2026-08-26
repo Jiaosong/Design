@@ -1,0 +1,63 @@
+{
+  "schema": "oleander.cloud-free-execution-routing-binding.v0.1",
+  "status": "ACTIVE_BINDING_TO_GLOBAL_PROFILE",
+  "role": "ROUTING_BINDING_NOT_NEW_METHOD_SKILL_GATE_OR_FRAMEWORK",
+  "parent_profile": "00-governance/runtime/OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0.json",
+  "capability_pack": "00-governance/runtime/OLEANDER_CLOUD_FREE_CAPABILITY_PACK_v0.1.json",
+  "surface_registry": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+  "studio_entry": "00-governance/runtime/cloud-free-studio/index.html",
+  "applies_to": [
+    "OLEANDER_PROJECT_START",
+    "OLEANDER_PRODUCTION_TASK",
+    "OLEANDER_TRAINING_TASK",
+    "OLEANDER_AESTHETIC_TRAINING_TASK",
+    "OLEANDER_REVIEW_WITH_REAL_MUTATION"
+  ],
+  "activation_condition": "GLOBAL_CLOUD_FREE_PROFILE_ACTIVE_AND_NOT_EXPLICITLY_OVERRIDDEN",
+  "insert_after": "REQUIRED_NATIVE_OUTPUT_AND_MINIMUM_OWNER_SET_RESOLVED",
+  "insert_before": "EXTERNAL_MANUAL_WEB_TOOL_SELECTION",
+  "routing_order": [
+    "AGENT_EXECUTABLE_CURRENT_CONNECTOR",
+    "CURRENT_OLEANDER_SKILL_WITH_NATIVE_OUTPUT",
+    "SHARED_REPO_RUNTIME_MATCH",
+    "FREE_OR_INCLUDED_QUOTA_CLOUD_EXECUTION_WHEN_ACTUALLY_EXPOSED",
+    "USER_WEB_MANUAL_ONLY_IF_SHARED_RUNTIME_CANNOT_PRESERVE_REQUIRED_NATIVE_OUTPUT",
+    "CAPABILITY_HOLD"
+  ],
+  "shared_repo_surface_preference": {
+    "WEB_UI_RESPONSIVE_VISUAL_STAGE": "00-governance/runtime/browser-design-workbench/workbench.html",
+    "BOUNDED_RASTER_TREATMENT_COMPOSITION_AB": "00-governance/runtime/browser-image-lab/image-lab.html",
+    "CONCEPT_SPATIAL_MASSING_CAMERA_SCALE": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
+    "TECHNICAL_VECTOR_PACKAGING_POP_PREFLIGHT": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html"
+  },
+  "manual_saas_fallbacks": {
+    "figma": "OPTIONAL_TEMP_ONLY_NOT_GLOBAL_CURRENT",
+    "penpot": "USER_WEB_MANUAL",
+    "photopea": "USER_WEB_MANUAL_RASTER_FALLBACK",
+    "sketchup_web": "USER_WEB_MANUAL_SPATIAL_FALLBACK"
+  },
+  "execution_truth": {
+    "source_mutation_in_repo": "MAY_BE_AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_IS_EXPOSED",
+    "manual_web_tool_exists": "DOES_NOT_EQUAL_AGENT_EXECUTED",
+    "validator_or_ci_pass": "DOES_NOT_EQUAL_BROWSER_PASS_OR_DESIGN_PASS",
+    "static_source_readback": "DOES_NOT_EQUAL_ACTUAL_PIXEL_OR_INTERACTION_READBACK",
+    "real_readback_required": true,
+    "independent_design_review_required_when_applicable": true
+  },
+  "training_behavior": {
+    "original_training_loop_preserved": true,
+    "type_routing_is_additive_only": true,
+    "use_shared_runtime_for_real_ab_when_fit": true,
+    "do_not_train_software_for_software_sake": true,
+    "do_not_promote_runtime_surface_from_training_without_real_project_reapplication_readback_review_and_retest": true
+  },
+  "hard_holds": [
+    "NEW_PROFESSIONAL_BIM_CAD",
+    "CLASS_A_MANUFACTURING_CAD",
+    "FROM_ZERO_HIGH_END_ARCHVIZ_CGI",
+    "SUPPLIER_PREPRESS_PROOF",
+    "ENGINEERING_APPROVAL",
+    "FIELD_ACCEPTANCE"
+  ],
+  "fallback_truth_rule": "IF_REQUIRED_NATIVE_OUTPUT_CANNOT_BE_PRESERVED_BY_AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME_THEN_USE_MANUAL_OPTION_OR_HOLD_WITHOUT_LOWERING_PROFESSIONAL_REQUIREMENT"
+}
