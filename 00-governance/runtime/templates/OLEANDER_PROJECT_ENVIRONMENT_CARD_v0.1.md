@@ -1,7 +1,8 @@
 # OLEANDER Project Environment Card v0.1
 
 Status: **TEMPLATE / RUNTIME INPUT**  
-Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL OLEANDER DEFAULT unless explicitly overridden.
+Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL OLEANDER DEFAULT unless explicitly overridden.  
+Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json`.
 
 ## Identity
 - Project ID:
@@ -33,6 +34,19 @@ Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL O
 - Editable Source Format:
 - Preview / Derivative Format:
 
+## Cloud-Free Studio Preflight｜after native output + owner set, before manual SaaS
+Resolve each required capability in this order:
+
+`AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → SHARED_REPO_RUNTIME → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
+
+Current shared repo candidates:
+- Responsive / visual staging → `browser-design-workbench/workbench.html`
+- Bounded raster treatment / composition A-B → `browser-image-lab/image-lab.html`
+- Concept spatial massing / camera / scale → `browser-spatial-lab/spatial-lab.html`
+- Technical vector / packaging / POP preflight → `browser-technical-svg-lab/technical-svg-lab.html`
+
+Do **not** route first to Figma / Penpot / Photopea / SketchUp Web merely because they are familiar. They are optional/manual fallbacks when the shared runtime cannot preserve the Required Native Output. A manual web option never counts as agent execution.
+
 ## Execution Surface｜must resolve per required capability
 Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW_ONLY_OR_REFERENCE / CAPABILITY_HOLD`.
 
@@ -46,6 +60,7 @@ Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW
 | UI/prototype workspace | | | | | |
 | 3D/spatial authoring | | | | | |
 | 3D viewing | | | | | |
+| Technical/vector preflight | | | | | |
 | Build / compute | | | | | |
 | Deploy / share | | | | | |
 
@@ -76,11 +91,15 @@ Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW
 - Status:
 
 ## Review Boundary
+- Source / static-validator readback:
+- Actual browser / pixel / interaction readback:
 - Evidence Gate:
 - Design Quality Gate:
 - Runtime / Browser Gate:
 - Engineering / Manufacturing / Field boundary:
 - Does not prove:
+
+`SOURCE READBACK / CI / VALIDATOR PASS ≠ BROWSER PASS ≠ DESIGN PASS`.
 
 ## Closure
 - Actual Readback:
