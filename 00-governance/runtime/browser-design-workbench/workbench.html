@@ -1,51 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OLEANDER Browser Design Workbench</title>
 <style>
-:root{--ui:#111;--panel:#181818;--line:#303030;--text:#eee;--muted:#969696;--stage:#d8d8d8;--frame:#fff;--zoom:1;--frame-width:1440px;--grid-size:8px}
+:root{--ui:#111;--panel:#181818;--line:#303030;--text:#eee;--muted:#969696;--stage:#d8d8d8;--zoom:.5;--viewport-width:1440px;--viewport-height:900px;--grid-size:8px}
 *{box-sizing:border-box}html,body{margin:0;height:100%;font:12px/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--ui);color:var(--text)}
-body{display:grid;grid-template-rows:46px 1fr;overflow:hidden}.bar{display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
-.brand{font-weight:700;letter-spacing:.08em;margin-right:12px}.group{display:flex;gap:4px;padding-right:8px;border-right:1px solid var(--line)}button,select{border:1px solid #414141;background:#222;color:#eee;border-radius:6px;padding:6px 9px;font:inherit}button:hover{background:#303030}button[aria-pressed="true"]{background:#eee;color:#111}.status{margin-left:auto;color:var(--muted)}
-.stage{overflow:auto;background:var(--stage);padding:48px;display:flex;align-items:flex-start;justify-content:center}.frame-wrap{position:relative;flex:0 0 auto;width:calc(var(--frame-width) * var(--zoom));min-height:720px}.frame{transform:scale(var(--zoom));transform-origin:top left;width:var(--frame-width);min-height:900px;background:var(--frame);box-shadow:0 16px 50px rgba(0,0,0,.22);position:relative;overflow:hidden}
-#design-root{min-height:900px;color:#111;background:#fff;position:relative}.placeholder{min-height:900px;display:grid;place-items:center;padding:64px;text-align:center}.placeholder h1{font-size:clamp(36px,6vw,96px);line-height:.92;letter-spacing:-.055em;margin:0;max-width:900px}.placeholder p{max-width:620px;font-size:16px;color:#555}
-.grid-on .frame:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(255,0,0,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,90,255,.08) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);z-index:9999}.gray-on #design-root{filter:grayscale(1)}.outline-on #design-root *{outline:1px solid rgba(255,0,0,.24)}
-@media(max-width:700px){.bar{overflow-x:auto}.brand{display:none}.stage{padding:20px}}
-</style>
-</head>
+body{display:grid;grid-template-rows:auto 1fr;overflow:hidden}.bar{display:flex;gap:8px;align-items:center;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line);min-height:46px;flex-wrap:wrap}.brand{font-weight:700;letter-spacing:.08em;margin-right:8px}.group{display:flex;gap:4px;padding-right:8px;border-right:1px solid var(--line);align-items:center}button,select,input{border:1px solid #414141;background:#222;color:#eee;border-radius:6px;padding:6px 9px;font:inherit}button{cursor:pointer}button:hover{background:#303030}button[aria-pressed="true"]{background:#eee;color:#111}input{min-width:230px}.status{margin-left:auto;color:var(--muted);font:11px/1.3 ui-monospace,monospace;max-width:480px;text-align:right}.stage{overflow:auto;background:var(--stage);padding:48px;display:flex;align-items:flex-start;justify-content:center}.viewport-wrap{position:relative;flex:0 0 auto;width:calc(var(--viewport-width) * var(--zoom));height:calc(var(--viewport-height) * var(--zoom))}.viewport{position:absolute;left:0;top:0;width:var(--viewport-width);height:var(--viewport-height);transform:scale(var(--zoom));transform-origin:top left;background:#fff;box-shadow:0 16px 50px rgba(0,0,0,.22);overflow:hidden}.viewport iframe{display:block;border:0;width:100%;height:100%;background:#fff}.grid-on .viewport::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(255,0,0,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,90,255,.08) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);z-index:20}.gray-on .viewport iframe{filter:grayscale(1)}.notice{font-size:11px;color:#aaa}.error{color:#ffb6aa}@media(max-width:760px){.bar{overflow-x:auto;flex-wrap:nowrap}.brand{display:none}.stage{padding:20px}.status{display:none}input{min-width:170px}}
+</style></head>
 <body>
 <header class="bar">
-  <div class="brand">OLEANDER / WORKBENCH v0.1</div>
+  <div class="brand">OLEANDER / WORKBENCH v0.2</div>
   <div class="group" aria-label="Viewport presets">
-    <button data-w="1440" aria-pressed="true">1440</button><button data-w="1024">1024</button><button data-w="768">768</button><button data-w="390">390</button>
+    <button data-w="1440" data-h="900" aria-pressed="true">1440×900</button>
+    <button data-w="1024" data-h="768">1024×768</button>
+    <button data-w="768" data-h="1024">768×1024</button>
+    <button data-w="390" data-h="844">390×844</button>
   </div>
-  <div class="group">
-    <button id="grid">Grid</button><button id="gray">Grayscale</button><button id="outline">Outline</button>
-  </div>
-  <div class="group">
-    <select id="zoom" aria-label="Zoom"><option value="1">100%</option><option value=".75">75%</option><option value=".5" selected>50%</option><option value=".35">35%</option><option value=".25">25%</option></select>
-  </div>
-  <div class="status" id="status">SHARED_REPO_RUNTIME · viewport 1440</div>
+  <div class="group"><button id="grid">Grid</button><button id="gray">Grayscale</button><button id="outline">Outline</button></div>
+  <div class="group"><select id="zoom" aria-label="Preview zoom"><option value="1">100%</option><option value=".75">75%</option><option value=".5" selected>50%</option><option value=".35">35%</option><option value=".25">25%</option></select></div>
+  <div class="group"><input id="projectUrl" aria-label="Project URL" placeholder="Project URL (optional)"><button id="loadUrl">Load URL</button></div>
+  <div class="status" id="status">READY · SRCDOC/URL READBACK · viewport 1440×900</div>
 </header>
-<main class="stage" id="stage">
-  <div class="frame-wrap"><section class="frame" id="frame">
-    <div id="design-root">
-      <div class="placeholder">
-        <div><h1>Replace only the project design root.</h1><p>This shell is a shared OLEANDER readback surface. Keep Source Authority, project content, geometry, evidence, and Design Authority in their canonical project locations.</p></div>
-      </div>
-    </div>
-  </section></div>
-</main>
+<main class="stage" id="stage"><div class="viewport-wrap"><section class="viewport" id="viewport"><iframe id="projectFrame" title="Project readback viewport" sandbox="allow-scripts allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin" referrerpolicy="no-referrer"></iframe></section></div></main>
 <script>
-const root=document.documentElement, stage=document.getElementById('stage'), status=document.getElementById('status');
-const viewportButtons=[...document.querySelectorAll('[data-w]')];
-function setViewport(w){root.style.setProperty('--frame-width',w+'px');viewportButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.w===String(w))));status.textContent=`SHARED_REPO_RUNTIME · viewport ${w}`;}
-viewportButtons.forEach(b=>b.addEventListener('click',()=>setViewport(b.dataset.w)));
-document.getElementById('zoom').addEventListener('change',e=>root.style.setProperty('--zoom',e.target.value));
-[['grid','grid-on'],['gray','gray-on'],['outline','outline-on']].forEach(([id,cls])=>document.getElementById(id).addEventListener('click',e=>{stage.classList.toggle(cls);e.currentTarget.setAttribute('aria-pressed',String(stage.classList.contains(cls)));}));
-root.style.setProperty('--zoom',document.getElementById('zoom').value);
-</script>
-</body>
-</html>
+const root=document.documentElement,stage=document.getElementById('stage'),statusEl=document.getElementById('status'),frame=document.getElementById('projectFrame');
+const viewportButtons=[...document.querySelectorAll('[data-w]')];let mode='SRCDOC',outlineOn=false,projectMeta={};
+const placeholder=`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;min-height:100%;font-family:system-ui;background:#fff;color:#111}.p{min-height:100vh;display:grid;place-items:center;padding:48px;text-align:center}.p h1{font-size:clamp(36px,8vw,100px);line-height:.9;margin:0}.p p{max-width:680px;color:#555}</style></head><body><div class="p"><div><h1>Load a project document.</h1><p>Workbench is a readback viewport, not Source Authority. Use loadHTML/srcdoc for controlled project bytes, or URL mode for deployed pages.</p></div></div></body></html>`;
+function status(msg){const s=getViewport();statusEl.textContent=`${msg} · ${mode} · viewport ${s.width}×${s.height}`}
+function getViewport(){return{width:+getComputedStyle(root).getPropertyValue('--viewport-width').replace('px',''),height:+getComputedStyle(root).getPropertyValue('--viewport-height').replace('px',''),zoom:+getComputedStyle(root).getPropertyValue('--zoom')}}
+function setViewport(w,h){root.style.setProperty('--viewport-width',w+'px');root.style.setProperty('--viewport-height',h+'px');viewportButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.w===String(w)&&b.dataset.h===String(h))));status('VIEWPORT SET')}
+viewportButtons.forEach(b=>b.addEventListener('click',()=>setViewport(+b.dataset.w,+b.dataset.h)));
+document.getElementById('zoom').addEventListener('change',e=>{root.style.setProperty('--zoom',e.target.value);status('PREVIEW ZOOM ONLY')});
+function toggle(id,cls){const btn=document.getElementById(id);stage.classList.toggle(cls);btn.setAttribute('aria-pressed',String(stage.classList.contains(cls)));status(id.toUpperCase()+' '+(stage.classList.contains(cls)?'ON':'OFF'))}
+document.getElementById('grid').onclick=()=>toggle('grid','grid-on');document.getElementById('gray').onclick=()=>toggle('gray','gray-on');
+function applyOutline(on){outlineOn=on;const btn=document.getElementById('outline');try{const doc=frame.contentDocument;if(!doc||!doc.documentElement)throw new Error('FRAME_NOT_INSPECTABLE');let style=doc.getElementById('oleander-workbench-outline');if(on&&!style){style=doc.createElement('style');style.id='oleander-workbench-outline';style.textContent='*{outline:1px solid rgba(255,0,0,.28)!important}';doc.head.appendChild(style)}else if(!on&&style)style.remove();btn.setAttribute('aria-pressed',String(on));status('OUTLINE '+(on?'ON':'OFF'))}catch(e){outlineOn=false;btn.setAttribute('aria-pressed','false');status('OUTLINE BLOCKED / CROSS-ORIGIN OR NON-INSPECTABLE')}}
+document.getElementById('outline').onclick=()=>applyOutline(!outlineOn);
+function withBase(html,baseHref){if(!baseHref)return html;const tag=`<base href="${String(baseHref).replace(/"/g,'&quot;')}">`;return /<head[^>]*>/i.test(html)?html.replace(/<head([^>]*)>/i,`<head$1>${tag}`):tag+html}
+function loadHTML(html,opts={}){if(typeof html!=='string'||!html.trim())throw new Error('NONEMPTY_HTML_REQUIRED');mode='SRCDOC';projectMeta=opts.meta||{};frame.removeAttribute('src');frame.srcdoc=withBase(html,opts.baseHref||'');frame.onload=()=>{if(outlineOn)applyOutline(true);status('SRCDOC LOADED')};status('SRCDOC LOADING')}
+function loadURL(url){let u;try{u=new URL(url,location.href)}catch{status('URL BLOCKED / INVALID');return false}if(!/^https?:$/.test(u.protocol)){status('URL BLOCKED / HTTP(S) REQUIRED');return false}mode='URL';projectMeta={url:u.href};outlineOn=false;document.getElementById('outline').setAttribute('aria-pressed','false');frame.removeAttribute('srcdoc');frame.src=u.href;frame.onload=()=>status('URL LOADED / OUTLINE MAY BE CROSS-ORIGIN BLOCKED');status('URL LOADING');return true}
+document.getElementById('loadUrl').onclick=()=>loadURL(document.getElementById('projectUrl').value.trim());
+window.OleanderWorkbench={loadHTML,loadURL,setViewport,getState:()=>({mode,viewport:getViewport(),grid:stage.classList.contains('grid-on'),grayscale:stage.classList.contains('gray-on'),outline:outlineOn,projectMeta})};
+root.style.setProperty('--zoom',document.getElementById('zoom').value);loadHTML(placeholder,{meta:{role:'PLACEHOLDER_NOT_PROJECT'}});
+</script></body></html>

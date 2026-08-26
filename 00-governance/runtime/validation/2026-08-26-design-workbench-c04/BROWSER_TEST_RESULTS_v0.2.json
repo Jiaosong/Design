@@ -1,0 +1,15 @@
+{
+  "viewport_cases": [
+    {"outer":1680,"inner":1440,"innerH":900,"nav":"flex","cols":"456px 456px 456px","fixture":"C04_CURRENT_RESPONSIVE_CONTRACT","requested":[1440,900]},
+    {"outer":1680,"inner":1024,"innerH":768,"nav":"none","cols":"317.328px 317.328px 317.344px","fixture":"C04_CURRENT_RESPONSIVE_CONTRACT","requested":[1024,768]},
+    {"outer":1680,"inner":768,"innerH":1024,"nav":"none","cols":"732px","fixture":"C04_CURRENT_RESPONSIVE_CONTRACT","requested":[768,1024]},
+    {"outer":1680,"inner":390,"innerH":844,"nav":"none","cols":"354px","fixture":"C04_CURRENT_RESPONSIVE_CONTRACT","requested":[390,844]}
+  ],
+  "zoom_invariant":{"zoom":0.25,"inner":390,"wrap":"97.5px"},
+  "grayscale":{"pressed":"true","filter":"grayscale(1)"},
+  "grid":{"pressed":"true","content":"\"\"","screenshot_sha_before":"f0c6749715f099ce4e9d6f5a85a141435082ad7e9cdc8abbece217ed5d95e526","screenshot_sha_after":"28ab488459163515542c2bedddc793b703991b00024101fb545c16b4a364a8a8","pixel_surface_changed":true},
+  "outline":{"pressed":"true","stylePresent":true,"outline":"solid"},
+  "invalid_url_return":false,
+  "invalid_url_status":"URL BLOCKED / HTTP(S) REQUIRED · SRCDOC · viewport 390×844",
+  "page_errors":[]
+}
