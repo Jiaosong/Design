@@ -1,7 +1,7 @@
 # OLEANDER Project Environment Card v0.1
 
 Status: **TEMPLATE / RUNTIME INPUT**  
-Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` when browser-first / no-local-install / no-paid constraints are active.
+Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL OLEANDER DEFAULT unless explicitly overridden.
 
 ## Identity
 - Project ID:
@@ -33,10 +33,30 @@ Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` when browser-first / no-local
 - Editable Source Format:
 - Preview / Derivative Format:
 
+## Execution Surface｜must resolve per required capability
+Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW_ONLY_OR_REFERENCE / CAPABILITY_HOLD`.
+
+| Capability | Tool / Runtime | Execution Surface Class | Actually probed this run? | Free boundary | Result |
+|---|---|---|---|---|---|
+| Source / code editing | | | | | |
+| Knowledge / project state | | | | | |
+| Assets / archive | | | | | |
+| Browser implementation | | | | | |
+| Raster/image treatment | | | | | |
+| UI/prototype workspace | | | | | |
+| 3D/spatial authoring | | | | | |
+| 3D viewing | | | | | |
+| Build / compute | | | | | |
+| Deploy / share | | | | | |
+
+`TOOL DOCUMENTED ≠ TOOL CALLABLE`. `USER_WEB_MANUAL ≠ AGENT_EXECUTED`. A conversation cannot write `EXECUTED` unless that surface was actually probed and used in that run.
+
 ## Capability State
 - Browser-native capability:
 - Current OLEANDER Skill capability:
-- Free Web tool capability:
+- Shared repository runtime capability:
+- Agent-executable connector capability:
+- Free Web manual capability:
 - Included free-quota cloud capability:
 - Capability HOLD:
 - Fallback:
@@ -47,6 +67,7 @@ Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` when browser-first / no-local
 - Type:
 - Purpose:
 - Required?:
+- Execution Surface Class:
 - Free limit:
 - Source:
 - Output format:
