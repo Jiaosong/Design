@@ -18,3 +18,5 @@ Persistent readback: `/Oleander/90_Archive/Runtime-Validation/2026-08-27/Technic
 Project truth remains HOLD: actual CUT is 136×184 vs target 140×180; BLEED source path is absent; vendor/converter confirmation and supplier proof/tolerance/sample remain OPEN.
 
 This is a professional artifact retest, not an Independent KEEP. ACTIVE promotion remains withheld until a separate independent review grants KEEP.
+
+Existing Cloud-Free CI must remain green, but `CI PASS ≠ Browser/Artifact Design PASS ≠ Independent KEEP`.
