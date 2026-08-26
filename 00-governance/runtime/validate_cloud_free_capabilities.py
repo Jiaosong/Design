@@ -12,6 +12,8 @@ CARD = RUNTIME / "templates" / "OLEANDER_PROJECT_ENVIRONMENT_CARD_v0.1.md"
 STUDIO = RUNTIME / "cloud-free-studio" / "index.html"
 IMAGE_RECEIPT = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "VALIDATION_RECEIPT_v0.1.json"
 SPATIAL_RECEIPT = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "VALIDATION_RECEIPT_v0.1.json"
+WORKBENCH_RECEIPT = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "VALIDATION_RECEIPT_v0.1.json"
+WORKBENCH_RESULTS = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "BROWSER_TEST_RESULTS_v0.2.json"
 
 
 def fail(msg: str) -> None:
@@ -25,15 +27,17 @@ def require(text: str, tokens: list[str], label: str) -> None:
 
 
 def main() -> None:
-    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, SPATIAL_RECEIPT]
+    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, SPATIAL_RECEIPT, WORKBENCH_RECEIPT, WORKBENCH_RESULTS]
     if any(not p.exists() for p in required_files):
-        fail("pack / registry / routing / project card / studio / validation receipt missing")
+        fail("pack / registry / routing / project card / studio / validation receipt or result missing")
 
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     reg = json.loads(REGISTRY.read_text(encoding="utf-8"))
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
     image_receipt = json.loads(IMAGE_RECEIPT.read_text(encoding="utf-8"))
     spatial_receipt = json.loads(SPATIAL_RECEIPT.read_text(encoding="utf-8"))
+    workbench_receipt = json.loads(WORKBENCH_RECEIPT.read_text(encoding="utf-8"))
+    workbench_results = json.loads(WORKBENCH_RESULTS.read_text(encoding="utf-8"))
 
     if pack.get("status") != "CANDIDATE_SHARED_REPO_RUNTIME":
         fail("capability pack must remain candidate until independent review and promotion evidence exist")
@@ -70,7 +74,7 @@ def main() -> None:
         fail("routing binding must require real readback")
 
     surfaces = pack.get("surfaces", {})
-    expected = {"browser_image_lab", "browser_spatial_lab", "browser_technical_svg_lab"}
+    expected = {"browser_design_workbench", "browser_image_lab", "browser_spatial_lab", "browser_technical_svg_lab"}
     if set(surfaces) != expected:
         fail(f"unexpected capability surface set: {set(surfaces)}")
 
@@ -86,6 +90,52 @@ def main() -> None:
             fail(f"{name} source mutation boundary missing")
         if spec.get("runtime_readback") != "REAL_BROWSER_REQUIRED":
             fail(f"{name} runtime readback boundary missing")
+
+    workbench_spec = surfaces["browser_design_workbench"]
+    if workbench_spec.get("validation_state") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("design workbench validation state drifted or was prematurely promoted")
+    if workbench_spec.get("validation_receipt") != "00-governance/runtime/validation/2026-08-26-design-workbench-c04/VALIDATION_RECEIPT_v0.1.json":
+        fail("design workbench validation receipt pointer missing")
+    if workbench_spec.get("full_project_readback") != "C04_FINISHED_PIXEL_BLOCKED_BY_PR353_ASSET_BINDING":
+        fail("design workbench must preserve current C04 finished-pixel blocker")
+    require(files["browser_design_workbench"], [
+        "<iframe", "id=\"projectFrame\"", "data-w=\"390\" data-h=\"844\"",
+        "--viewport-width", "--viewport-height", "loadHTML", "loadURL",
+        "PREVIEW ZOOM ONLY", "URL BLOCKED / HTTP(S) REQUIRED",
+        "OUTLINE BLOCKED / CROSS-ORIGIN OR NON-INSPECTABLE",
+    ], "design workbench")
+    if "--frame-width" in files["browser_design_workbench"] or "id=\"design-root\"" in files["browser_design_workbench"]:
+        fail("design workbench regressed to same-document false viewport mechanism")
+    if workbench_receipt.get("status") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("design workbench receipt status invalid")
+    wb_review = workbench_receipt.get("review", {})
+    if wb_review.get("independent_professional_design_review") != "OPEN" or wb_review.get("active_promotion") != "NOT_GRANTED":
+        fail("design workbench cannot self-grant independent review or ACTIVE promotion")
+    if wb_review.get("full_c04_finished_pixel_review") != "BLOCKED_BY_CURRENT_ASSET_BINDING":
+        fail("design workbench receipt lost C04 asset-binding blocker")
+    if workbench_receipt.get("persistent_readback", {}).get("library_folder") != "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Design-Workbench":
+        fail("design workbench persistent readback location drifted")
+    if workbench_receipt.get("project_binding", {}).get("source_css_blob_sha") != "6841f1241dddaed7a84f0c46e0bccabdb358f312":
+        fail("design workbench C04 responsive source identity drifted")
+    if workbench_results.get("page_errors") != []:
+        fail("design workbench browser test has page errors")
+    cases = workbench_results.get("viewport_cases", [])
+    if [c.get("inner") for c in cases] != [1440, 1024, 768, 390]:
+        fail("design workbench iframe inner viewport matrix invalid")
+    if len(cases) != 4 or cases[0].get("nav") != "flex" or cases[1].get("nav") != "none" or cases[2].get("nav") != "none" or cases[3].get("nav") != "none":
+        fail("design workbench C04 responsive nav contract failed")
+    if cases[3].get("cols") != "354px" or cases[2].get("cols") != "732px":
+        fail("design workbench mobile/tablet single-column contract failed")
+    if workbench_results.get("zoom_invariant", {}).get("inner") != 390:
+        fail("design workbench preview zoom changed project viewport")
+    if workbench_results.get("grid", {}).get("pixel_surface_changed") is not True:
+        fail("design workbench grid diagnostic has no pixel readback evidence")
+    if workbench_results.get("grayscale", {}).get("filter") != "grayscale(1)":
+        fail("design workbench grayscale diagnostic failed")
+    if workbench_results.get("outline", {}).get("stylePresent") is not True:
+        fail("design workbench srcdoc outline diagnostic failed")
+    if workbench_results.get("invalid_url_return") is not False:
+        fail("design workbench invalid URL protocol did not fail closed")
 
     image_spec = surfaces["browser_image_lab"]
     if image_spec.get("validation_state") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
@@ -151,12 +201,19 @@ def main() -> None:
         fail("project card must prefer shared repo runtime before manual web tools")
 
     registry_surfaces = reg.get("surfaces", {})
-    for key in ("oleander_browser_image_lab", "oleander_browser_spatial_lab", "oleander_browser_technical_svg_lab"):
+    for key in ("oleander_browser_design_workbench", "oleander_browser_image_lab", "oleander_browser_spatial_lab", "oleander_browser_technical_svg_lab"):
         if registry_surfaces.get(key, {}).get("class") != "SHARED_REPO_RUNTIME":
             fail(f"registry missing shared surface {key}")
+    wb_reg = registry_surfaces.get("oleander_browser_design_workbench", {})
+    if wb_reg.get("role") != "REAL_RESPONSIVE_IFRAME_READBACK_SHELL" or wb_reg.get("project_source_mutation") is not False:
+        fail("design workbench registry role/source-mutation boundary invalid")
 
     print("CLOUD_FREE_CAPABILITY_VALIDATION_PASS")
-    print("surfaces=3")
+    print("surfaces=4")
+    print("design_workbench_functional_browser_readback=PASS")
+    print("design_workbench_persistence_remote_readback=PASS")
+    print("design_workbench_full_c04_finished_pixel=BLOCKED_BY_PR353_ASSET_BINDING")
+    print("design_workbench_independent_review=OPEN")
     print("image_lab_functional_browser_readback=PASS")
     print("image_lab_persistence_remote_readback=PASS")
     print("image_lab_independent_review=OPEN")
