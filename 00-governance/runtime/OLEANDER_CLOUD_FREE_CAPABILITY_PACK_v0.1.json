@@ -5,6 +5,18 @@
   "routing_binding": "00-governance/runtime/OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json",
   "date": "2026-08-26",
   "surfaces": {
+    "browser_design_workbench": {
+      "path": "00-governance/runtime/browser-design-workbench/workbench.html",
+      "class": "SHARED_REPO_RUNTIME",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "outputs": ["RESPONSIVE_VIEWPORT_READBACK", "GRID_GRAYSCALE_OUTLINE_DIAGNOSTIC"],
+      "capabilities": ["REAL_IFRAME_VIEWPORT_1440x900_1024x768_768x1024_390x844", "SRCDOC_CONTROLLED_PROJECT_LOAD", "HTTP_S_URL_READBACK", "ZOOM_PREVIEW_ONLY", "GRID", "GRAYSCALE", "SAME_ORIGIN_SRCDOC_OUTLINE", "FAIL_CLOSED_URL_PROTOCOL"],
+      "boundary": "READBACK_SHELL_ONLY_NOT_PROJECT_SOURCE_AUTHORITY_NOT_FULL_C04_FINISHED_PIXEL_PASS",
+      "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
+      "validation_receipt": "00-governance/runtime/validation/2026-08-26-design-workbench-c04/VALIDATION_RECEIPT_v0.1.json",
+      "full_project_readback": "C04_FINISHED_PIXEL_BLOCKED_BY_PR353_ASSET_BINDING"
+    },
     "browser_image_lab": {
       "path": "00-governance/runtime/browser-image-lab/image-lab.html",
       "class": "SHARED_REPO_RUNTIME",
@@ -49,6 +61,9 @@
     "image_lab_persistence_remote_readback": "PASS",
     "spatial_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "spatial_lab_persistence_remote_readback": "PASS",
+    "design_workbench_browser_readback": "PASS_FUNCTIONAL_ONLY",
+    "design_workbench_persistence_remote_readback": "PASS",
+    "design_workbench_full_c04_finished_pixel_review": "BLOCKED_BY_PR353_ASSET_BINDING",
     "browser_pass": "OPEN_NOT_CLAIMED"
   },
   "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_DESIGN_CAPABILITY_UNTIL_USED_ON_REAL_CURRENT_PROJECT_WITH_ACTUAL_READBACK_INDEPENDENT_REVIEW_AND_RETEST",
