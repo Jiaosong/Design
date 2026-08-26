@@ -1,0 +1,27 @@
+{
+  "schema": "oleander.browser-design-workbench.v0.1",
+  "status": "CANDIDATE_SHARED_REPO_RUNTIME",
+  "parent_profile": "00-governance/runtime/OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0.json",
+  "execution_surface": "SHARED_REPO_RUNTIME",
+  "agent_editable_when_github_connector_exposed": true,
+  "required_local_install": false,
+  "required_paid_dependency": false,
+  "external_saas_required": false,
+  "supported_staging": [
+    "WEB_UI_RESPONSIVE",
+    "EDITABLE_SVG_GRAPHIC_PACKAGING_POP",
+    "DATA_VIZ_DIAGRAM",
+    "EXISTING_IMAGE_COMPOSITION_PREVIEW",
+    "EXISTING_GLTF_GLB_WEB_PRESENTATION"
+  ],
+  "readback_controls": ["VIEWPORT_1440", "VIEWPORT_1024", "VIEWPORT_768", "VIEWPORT_390", "GRID", "GRAYSCALE", "OUTLINE", "ZOOM"],
+  "non_capabilities": ["NEW_PROFESSIONAL_BIM_CAD", "CLASS_A_MANUFACTURING_CAD", "FROM_ZERO_HIGH_END_ARCHVIZ_CGI", "SUPPLIER_PREPRESS_PROOF", "ENGINEERING_APPROVAL", "FIELD_ACCEPTANCE"],
+  "authority_rule": "WORKBENCH_NEVER_BECOMES_PROJECT_SOURCE_OR_DESIGN_AUTHORITY_BY_USE",
+  "design_pass_rule": "ACTUAL_BROWSER_READBACK_AND_INDEPENDENT_DESIGN_QUALITY_GATE_REQUIRED",
+  "saas_policy": {
+    "figma": "OPTIONAL_TEMP_ONLY_NOT_GLOBAL_CURRENT_STORE",
+    "penpot": "OPTIONAL_USER_WEB_MANUAL",
+    "photopea": "OPTIONAL_USER_WEB_MANUAL_RASTER",
+    "sketchup_web": "OPTIONAL_USER_WEB_MANUAL_SPATIAL"
+  }
+}
