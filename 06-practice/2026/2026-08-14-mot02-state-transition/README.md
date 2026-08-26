@@ -49,7 +49,8 @@ Observed states:
 - Machine QA: PASS — HTML/CSS/JS parsed and executed in Chromium; buttons and scripted state controls worked.
 - Visual QA: PASS for this exercise — no clipping/occlusion; hierarchy, boundary, clearance and cross-state composition reviewed in generated screenshots.
 - Project QA: PASS — directly answers the single decision question without reopening unrelated variables.
-- Motion specialist review: PASS for runtime execution and reduced-motion behavior; no claim of user-experience improvement.
+- Motion Specialist Execution Check: PASS for runtime execution and reduced-motion behavior; this is a producer-side / execution-side check and does not constitute an independent Professional Design Review.
+- Independent Professional Design Review: NOT RUN / HOLD — Machine QA, Visual QA, Project QA, runtime PASS, specialist execution check and the internal score do not by themselves authorize MAIN KEEP / Design PASS.
 - Evidence boundary: EXECUTED digitally; NOT HUMAN TESTED; NOT PRODUCT VALIDATED.
 
 ## Internal score
