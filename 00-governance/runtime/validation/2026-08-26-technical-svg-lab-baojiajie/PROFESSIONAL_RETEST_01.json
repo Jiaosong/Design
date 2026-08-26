@@ -1,0 +1,42 @@
+{
+  "schema": "oleander.technical-svg-professional-retest.v0.1",
+  "date": "2026-08-27",
+  "surface": "browser_technical_svg_lab",
+  "review_source": "PROFESSIONAL_REVIEW_01 R01-R05",
+  "project_binding": "BAOJIAJIE / 零售跳跳卡 / 欧科棉方向",
+  "artifact": "BAOJIAJIE_JUMPCARD_TECHNICAL_MASTER_R02.svg",
+  "artifact_sha256": "694c10e986fc6da057b6887ff4d85dc32c5e339a0037d5551dd02a1444c92c80",
+  "artifact_first_retest": {
+    "R01_target_actual_mismatch": "PASS_VISIBLE_ON_SHEET_AND_REDUCED_READBACK",
+    "R02_bleed_open": "PASS_VISIBLE_WARNING_PRODUCTION_BLEED_LAYER_REMAINS_EMPTY",
+    "R03_layer_legend": "PASS",
+    "R04_safe_status": "PASS_SUPPLIED_UNVERIFIED",
+    "R05_title_status_hierarchy": "PASS_OBJECT_REV_UNITS_RISK_VENDOR_STATE_PRESENT_ARTWORK_DEMOTED",
+    "all_text_inside_viewbox": true,
+    "page_errors": []
+  },
+  "functional_regression": {
+    "invalid_custom_cut_fail_closed": true,
+    "rounded_rectangle_layers": {"BLEED": 1, "CUT": 1, "SAFE": 1},
+    "rounded_rectangle_geometry_match": true
+  },
+  "persistent_readback": {
+    "library_folder": "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Technical-SVG-Lab-Retest-01",
+    "artifact_file_id": "file_000000004da8820b9541dbf95d66756a",
+    "full_sheet_file_id": "file_00000000fe28820ba8d96a214b44bfec",
+    "reduced_sheet_file_id": "file_00000000db74820b99feb7d0868a80c1",
+    "browser_test_file_id": "file_000000007bd4820baea91cd8a2c7604a",
+    "retest_receipt_file_id": "file_00000000cc00820bbafc50bd6ffe1581",
+    "remote_reopen": "PASS"
+  },
+  "project_holds_preserved": [
+    "CUT_TARGET_GEOMETRY_MISMATCH_136x184_vs_140x180",
+    "BLEED_PATH_OPEN",
+    "VENDOR_CONVERTER_CONFIRM_OPEN",
+    "SUPPLIER_PROOF_TOLERANCE_SAMPLE_OPEN",
+    "NOT_FOR_PRODUCTION_APPROVAL"
+  ],
+  "review_decision": "PROFESSIONAL_RETEST_PASS_FOR_RUNTIME_HANDOFF_READABILITY",
+  "promotion": "INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED",
+  "truth_boundary": "RUNTIME_HANDOFF_READABILITY_PASS_DOES_NOT_RESOLVE_BAOJIAJIE_DIELINE_OR_SUPPLIER_PROOF"
+}
