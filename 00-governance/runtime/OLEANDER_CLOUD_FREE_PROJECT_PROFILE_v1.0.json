@@ -1,0 +1,142 @@
+{
+  "schema": "oleander.cloud-free-project-profile.v1",
+  "version": "1.0",
+  "status": "CANDIDATE_RUNTIME_PROFILE",
+  "date": "2026-08-26",
+  "parent_runtime": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+  "role": "CONSTRAINT_PROFILE_NOT_NEW_ENVIRONMENT",
+  "active_constraints": [
+    "NO_LOCAL_INSTALL_REQUIRED",
+    "NO_NEW_PAID_DEPENDENCY",
+    "STOP_AT_FREE_LIMIT",
+    "BROWSER_FIRST"
+  ],
+  "defaults": {
+    "required_software": "BROWSER_ONLY",
+    "required_plugins": "NONE",
+    "paid_overage": "FORBIDDEN_AS_DEFAULT",
+    "capability_gap_behavior": "CAPABILITY_HOLD"
+  },
+  "hard_rules": [
+    "DO_NOT_REQUIRE_USER_LOCAL_INSTALL",
+    "DO_NOT_REQUIRE_NEW_PAID_SOFTWARE_PLUGIN_OR_CLOUD_SERVICE",
+    "FREE_QUOTA_SERVICE_MUST_STOP_AT_INCLUDED_LIMIT",
+    "FREE_BROWSER_CONSTRAINT_DOES_NOT_LOWER_REQUIRED_NATIVE_OUTPUT",
+    "MISSING_PROFESSIONAL_BROWSER_CAPABILITY_RETURNS_CAPABILITY_HOLD",
+    "EXISTING_SOURCE_AND_ARTIFACT_REUSE_PRECEDES_RECREATION",
+    "BROWSER_VISIBLE_DOES_NOT_EQUAL_NATIVE_AUTHORITY",
+    "FREE_TOOL_AVAILABLE_DOES_NOT_EQUAL_CAPABILITY_PROVEN",
+    "DEPLOYED_DOES_NOT_EQUAL_DESIGN_PASS"
+  ],
+  "adapter_priority": [
+    "BROWSER_NATIVE",
+    "CURRENT_OLEANDER_SKILL",
+    "FREE_WEB_TOOL",
+    "INCLUDED_FREE_QUOTA_CLOUD_COMPUTE",
+    "SIMPLIFY_EXECUTION_WITHOUT_INFORMATION_LOSS",
+    "CAPABILITY_HOLD"
+  ],
+  "forbidden_fallbacks": [
+    "BUY_PAID_TOOL",
+    "ENABLE_PAID_OVERAGE",
+    "USE_AI_IMAGE_AS_FAKE_SOURCE",
+    "DELETE_PROFESSIONAL_REQUIREMENT",
+    "TREAT_PREVIEW_AS_NATIVE_AUTHORITY"
+  ],
+  "tooling": {
+    "code_vector_html_json": {
+      "primary": ["GitHub Web", "github.dev"],
+      "cost_policy": "FREE",
+      "boundary": "github.dev is browser editing, not full compute runtime"
+    },
+    "build_terminal": {
+      "primary": ["GitHub Codespaces personal included quota"],
+      "cost_policy": "STOP_AT_FREE_LIMIT",
+      "preferred_machine": "LOWEST_SUFFICIENT_CORE_COUNT",
+      "boundary": "COMPUTE_HOLD when included quota is exhausted"
+    },
+    "static_deploy": {
+      "primary": ["GitHub Pages", "Cloudflare Pages Free"],
+      "cost_policy": "FREE_TIER_ONLY",
+      "strategy": "STATIC_FIRST"
+    },
+    "raster_editing": {
+      "primary": ["Photopea Web"],
+      "cost_policy": "FREE_BASIC_PATH",
+      "boundary": "manual derivative editing only; source authority unchanged"
+    },
+    "vector_technical": {
+      "primary": ["editable SVG", "browser preview", "PDF derivative"],
+      "cost_policy": "FREE",
+      "boundary": "text dimensions and annotations remain editable"
+    },
+    "knowledge_project_state": {
+      "primary": ["Notion"],
+      "boundary": "not sole storage for irreplaceable large binary source files"
+    },
+    "assets_archive": {
+      "primary": ["Google Drive"],
+      "boundary": "Canonical Path version and readback required"
+    },
+    "three_d_viewer": {
+      "primary": ["Three.js", "model-viewer", "glTF/GLB"],
+      "boundary": "viewer does not prove professional modeling capability"
+    },
+    "complex_three_d_cad_bim": {
+      "primary": [],
+      "status": "CAPABILITY_HOLD_BY_DEFAULT",
+      "boundary": "do not substitute viewer SVG or AI image for professional geometry authoring"
+    }
+  },
+  "type_routes": {
+    "web_ui_interaction": ["Notion Type Brief", "GitHub source", "github.dev", "HTML/CSS/JS/SVG", "real browser", "free/static deploy", "desktop/mobile/state readback"],
+    "graphic_brand_packaging_pop": ["source assets", "editable SVG master", "browser readback", "Photopea if raster treatment needed", "SVG/PDF/PNG derivatives", "Drive delivery"],
+    "data_viz_gis": ["CSV/JSON/GeoJSON", "oleander-data-viz", "SVG/HTML", "browser", "PNG readback"],
+    "architecture_landscape_interior_presentation": ["existing photos/drawings/geometry", "SVG/HTML/PDF composition", "browser readback", "CAPABILITY_HOLD if new professional BIM/CAD/complex 3D is required"],
+    "product_cmf": ["existing geometry/photo", "browser 3D viewer", "parametric/simple geometry", "SVG technical communication", "CAPABILITY_HOLD for complex manufacturing CAD"],
+    "technical_drawing_engineering_diagram": ["verified source dimensions", "editable SVG", "PDF", "whole/detail readback"],
+    "motion": ["CSS", "Web Animations API", "JS", "SVG motion", "browser readback"]
+  },
+  "plugin_policy": {
+    "default": "NONE",
+    "requirements": [
+      "REQUIRED_NATIVE_OUTPUT_NEEDS_IT",
+      "EXISTING_OWNER_AND_BROWSER_NATIVE_CANNOT_REASONABLY_COVER",
+      "NO_MANDATORY_PAID_CONTINUATION",
+      "OPEN_OR_DOCUMENTED_RECOVERABLE_OUTPUT",
+      "DOES_NOT_BECOME_SOURCE_AUTHORITY_BY_GENERATION",
+      "VERSION_PURPOSE_OWNER_FREE_BOUNDARY_FALLBACK_RECORDED",
+      "REMOVAL_DOES_NOT_DESTROY_ONLY_RECOVERABLE_DESIGN_COPY"
+    ],
+    "record_fields": ["NAME", "VERSION", "TYPE", "PURPOSE", "REQUIRED", "FREE_LIMIT", "SOURCE", "OUTPUT_FORMAT", "FALLBACK", "LOCK_IN_RISK", "STATUS"]
+  },
+  "verified_free_boundaries_2026_08_26": {
+    "github_dev": "FREE_BROWSER_EDITOR",
+    "github_codespaces_free_personal": {
+      "core_hours_per_month": 120,
+      "storage_gb_month": 15,
+      "source": "https://docs.github.com/en/billing/concepts/product-billing/github-codespaces"
+    },
+    "cloudflare_pages_free": {
+      "static_asset_requests": "FREE_UNLIMITED",
+      "builds_per_month": 500,
+      "files_per_site": 20000,
+      "source": "https://developers.cloudflare.com/pages/platform/limits/"
+    },
+    "photopea": {
+      "basic_free_browser_usage": true,
+      "source": "https://www.photopea.com/learn/"
+    }
+  },
+  "project_environment_card_defaults": {
+    "required_software": "BROWSER_ONLY",
+    "required_plugins": "NONE"
+  },
+  "does_not_prove": [
+    "EVERY_DOMAIN_CAN_BE_COMPLETED_PROFESSIONALLY_IN_BROWSER",
+    "FREE_TOOLS_EQUAL_FULL_PROFESSIONAL_SUITES",
+    "THREE_JS_EQUALS_CAD_OR_BIM",
+    "STATIC_DEPLOY_EQUALS_BROWSER_OR_DESIGN_PASS",
+    "ENGINEERING_MANUFACTURING_OR_FIELD_APPROVAL_OCCURRED"
+  ]
+}
