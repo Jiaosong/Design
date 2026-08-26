@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OLEANDER Browser Image Lab</title>
 <style>
-:root{font-family:Inter,system-ui,sans-serif;color:#111;background:#ececec}*{box-sizing:border-box}body{margin:0;display:grid;grid-template-columns:300px 1fr;min-height:100vh}.panel{padding:16px;background:#fff;border-right:1px solid #ccc;overflow:auto}.stage{display:grid;place-items:center;padding:24px;min-width:0}.frame{width:min(100%,1200px);aspect-ratio:4/3;background:#ddd;position:relative;overflow:hidden;box-shadow:0 8px 30px #0002}.frame canvas{width:100%;height:100%;display:block}.row{display:grid;grid-template-columns:1fr 72px;gap:8px;align-items:center;margin:10px 0}label{font-size:12px;font-weight:600}input,button,select{width:100%;padding:7px;border:1px solid #bbb;background:#fff}button{cursor:pointer}.note{font-size:11px;line-height:1.45;color:#555}.status{font:11px/1.4 ui-monospace,monospace;background:#f4f4f4;padding:8px;margin-top:12px;white-space:pre-wrap}.sep{height:1px;background:#ddd;margin:14px 0}@media(max-width:760px){body{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid #ccc}.stage{padding:12px}}
+:root{font-family:Inter,system-ui,sans-serif;color:#111;background:#ececec}*{box-sizing:border-box}body{margin:0;display:grid;grid-template-columns:320px 1fr;min-height:100vh}.panel{padding:16px;background:#fff;border-right:1px solid #ccc;overflow:auto}.stage{display:grid;place-items:center;padding:24px;min-width:0}.frame{width:min(100%,1200px);aspect-ratio:4/3;background:#ddd;position:relative;overflow:hidden;box-shadow:0 8px 30px #0002}.frame canvas{width:100%;height:100%;display:block}.row{display:grid;grid-template-columns:1fr 82px;gap:8px;align-items:center;margin:10px 0}label{font-size:12px;font-weight:600}input,button,select{width:100%;padding:7px;border:1px solid #bbb;background:#fff}button{cursor:pointer}.note{font-size:11px;line-height:1.45;color:#555}.truth{font-size:10.5px;line-height:1.4;padding:8px;background:#fff6df;margin:10px 0}.status{font:10.5px/1.4 ui-monospace,monospace;background:#f4f4f4;padding:8px;margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere}.sep{height:1px;background:#ddd;margin:14px 0}@media(max-width:760px){body{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid #ccc}.stage{padding:12px}}
 </style>
 </head>
 <body>
 <aside class="panel">
 <h2>OLEANDER Image Lab</h2>
-<p class="note">Shared repo runtime for bounded raster treatment and composition readback. It is not Source Authority and does not replace Photoshop-class production proof.</p>
+<p class="note">Shared repo runtime for bounded raster treatment, reframing and A/B readback. Source bytes remain read-only; exports are presentation derivatives, not new Source Authority.</p>
 <label>Open local image</label><input id="file" type="file" accept="image/*" />
-<label>Or same-origin / CORS image URL</label><input id="url" placeholder="assets/example.jpg" /><button id="loadUrl">Load URL</button>
+<label>Or fetch CORS-enabled image URL</label><input id="url" placeholder="https://.../image.jpg" /><button id="loadUrl">Fetch URL as source bytes</button>
+<div class="truth"><b>Truth boundary.</b> Crop/reframe/filter may support presentation, but must not fabricate evidence, alter material/product facts, or replace locked Logo/Portrait source assets.</div>
 <div class="sep"></div>
 <div class="row"><label>Brightness</label><input id="brightness" type="number" value="100" min="0" max="300"></div>
 <div class="row"><label>Contrast</label><input id="contrast" type="number" value="100" min="0" max="300"></div>
@@ -24,20 +25,86 @@
 <div class="row"><label>Offset X</label><input id="offsetX" type="number" value="0" min="-2000" max="2000"></div>
 <div class="row"><label>Offset Y</label><input id="offsetY" type="number" value="0" min="-2000" max="2000"></div>
 <div class="row"><label>BG</label><input id="bg" type="color" value="#dddddd"></div>
-<label><input id="before" type="checkbox" style="width:auto"> Before view</label>
+<label><input id="before" type="checkbox" style="width:auto"> Before view · true source fit</label>
 <div class="sep"></div>
-<button id="exportPng">Export PNG</button><button id="exportJson">Export Config JSON</button>
-<div id="status" class="status">NO IMAGE LOADED</div>
+<button id="exportPng">Export PNG derivative</button><button id="exportJson">Export Config JSON</button>
+<div id="status" class="status">NO IMAGE LOADED / EXPORT BLOCKED</div>
 </aside>
 <main class="stage"><div class="frame"><canvas id="canvas" width="1600" height="1200"></canvas></div></main>
 <script>
-const $=id=>document.getElementById(id);const c=$('canvas'),ctx=c.getContext('2d');let img=null,srcName='';
+const $=id=>document.getElementById(id),c=$('canvas'),ctx=c.getContext('2d');
+let img=null,src=null,currentObjectUrl=null,busy=false;
 const ids=['brightness','contrast','saturation','grayscale','scale','rotate','offsetX','offsetY','bg','before'];ids.forEach(id=>$(id).addEventListener('input',draw));
-function config(){return {brightness:+$('brightness').value,contrast:+$('contrast').value,saturation:+$('saturation').value,grayscale:+$('grayscale').value,scale:+$('scale').value,rotate:+$('rotate').value,offsetX:+$('offsetX').value,offsetY:+$('offsetY').value,bg:$('bg').value,source:srcName}};
-function draw(){ctx.save();ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle=$('bg').value;ctx.fillRect(0,0,c.width,c.height);if(img){const raw=$('before').checked;ctx.filter=raw?'none':`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%) saturate(${$('saturation').value}%) grayscale(${$('grayscale').value}%)`;const s=(+$('scale').value)/100;const fit=Math.min(c.width/img.width,c.height/img.height);const w=img.width*fit*s,h=img.height*fit*s;ctx.translate(c.width/2+(+$('offsetX').value),c.height/2+(+$('offsetY').value));ctx.rotate((+$('rotate').value)*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h)}ctx.restore();$('status').textContent=img?JSON.stringify(config(),null,2):'NO IMAGE LOADED';}
-function setImage(src,name){const n=new Image();n.crossOrigin='anonymous';n.onload=()=>{img=n;srcName=name;draw()};n.onerror=()=>{$('status').textContent='LOAD FAILED / CHECK PATH OR CORS';};n.src=src;}
-$('file').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)setImage(URL.createObjectURL(f),f.name)});$('loadUrl').onclick=()=>{if($('url').value.trim())setImage($('url').value.trim(),$('url').value.trim())};
-$('exportPng').onclick=()=>{draw();const a=document.createElement('a');a.download='oleander-image-lab.png';a.href=c.toDataURL('image/png');a.click()};
-$('exportJson').onclick=()=>{const b=new Blob([JSON.stringify(config(),null,2)],{type:'application/json'});const a=document.createElement('a');a.download='oleander-image-lab.config.json';a.href=URL.createObjectURL(b);a.click()};draw();
+
+function sha256Fallback(buffer){
+  const bytes=new Uint8Array(buffer),K=[
+    0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  const bitLen=bytes.length*8,total=Math.ceil((bytes.length+1+8)/64)*64,msg=new Uint8Array(total);msg.set(bytes);msg[bytes.length]=0x80;
+  const dv=new DataView(msg.buffer);dv.setUint32(total-8,Math.floor(bitLen/0x100000000));dv.setUint32(total-4,bitLen>>>0);
+  const rotr=(x,n)=>(x>>>n)|(x<<(32-n)),w=new Uint32Array(64);
+  for(let off=0;off<total;off+=64){
+    for(let t=0;t<16;t++)w[t]=dv.getUint32(off+t*4);
+    for(let t=16;t<64;t++){const s0=rotr(w[t-15],7)^rotr(w[t-15],18)^(w[t-15]>>>3),s1=rotr(w[t-2],17)^rotr(w[t-2],19)^(w[t-2]>>>10);w[t]=(w[t-16]+s0+w[t-7]+s1)>>>0}
+    let [a,b,c,d,e,f,g,h]=H;
+    for(let t=0;t<64;t++){const S1=rotr(e,6)^rotr(e,11)^rotr(e,25),ch=(e&f)^((~e)&g),t1=(h+S1+ch+K[t]+w[t])>>>0,S0=rotr(a,2)^rotr(a,13)^rotr(a,22),maj=(a&b)^(a&c)^(b&c),t2=(S0+maj)>>>0;h=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0}
+    H[0]=(H[0]+a)>>>0;H[1]=(H[1]+b)>>>0;H[2]=(H[2]+c)>>>0;H[3]=(H[3]+d)>>>0;H[4]=(H[4]+e)>>>0;H[5]=(H[5]+f)>>>0;H[6]=(H[6]+g)>>>0;H[7]=(H[7]+h)>>>0;
+  }
+  return H.map(x=>x.toString(16).padStart(8,'0')).join('')
+}
+async function hashBlob(blob){const buf=await blob.arrayBuffer();let sha256;if(globalThis.crypto?.subtle){sha256=[...new Uint8Array(await crypto.subtle.digest('SHA-256',buf))].map(b=>b.toString(16).padStart(2,'0')).join('')}else{sha256=sha256Fallback(buf)}return {sha256,bytes:buf.byteLength}}
+function parameters(){return {brightness:+$('brightness').value,contrast:+$('contrast').value,saturation:+$('saturation').value,grayscale:+$('grayscale').value,scale:+$('scale').value,rotate:+$('rotate').value,offsetX:+$('offsetX').value,offsetY:+$('offsetY').value,bg:$('bg').value}}
+function config(){return {
+  schema:'oleander.image-treatment-config.v0.2',
+  source:src,
+  canvas:{width:c.width,height:c.height,ratio:'4:3'},
+  displayMode:$('before').checked?'ORIGINAL_READBACK':'WORKING_DERIVATIVE',
+  parameters:parameters(),
+  derivativeOnly:true,
+  truthBoundary:'SOURCE_BYTES_READ_ONLY / DERIVATIVE_NOT_SOURCE_AUTHORITY / NO_FACT_FABRICATION'
+}}
+function setStatus(msg){$('status').textContent=msg}
+function dropSource(){if(currentObjectUrl)URL.revokeObjectURL(currentObjectUrl);currentObjectUrl=null;img=null;src=null}
+function clearSource(msg){dropSource();busy=false;draw();setStatus(msg)}
+function draw(){
+  ctx.save();ctx.clearRect(0,0,c.width,c.height);
+  const raw=$('before').checked, p=parameters();
+  ctx.fillStyle=raw?'#dddddd':p.bg;ctx.fillRect(0,0,c.width,c.height);
+  if(img){
+    const neutralFilter=p.brightness===100&&p.contrast===100&&p.saturation===100&&p.grayscale===0;ctx.filter=(raw||neutralFilter)?'none':`brightness(${p.brightness}%) contrast(${p.contrast}%) saturate(${p.saturation}%) grayscale(${p.grayscale}%)`;
+    const s=raw?1:p.scale/100, fit=Math.min(c.width/img.naturalWidth,c.height/img.naturalHeight);
+    const w=img.naturalWidth*fit*s,h=img.naturalHeight*fit*s;
+    ctx.translate(c.width/2+(raw?0:p.offsetX),c.height/2+(raw?0:p.offsetY));
+    ctx.rotate((raw?0:p.rotate)*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h)
+  }
+  ctx.restore();
+  if(src&&!busy)setStatus(JSON.stringify(config(),null,2)); else if(!busy&&!src)setStatus('NO IMAGE LOADED / EXPORT BLOCKED')
+}
+async function loadBlob(blob,name,origin){
+  dropSource();
+  if(!blob||!blob.type.startsWith('image/')){clearSource('LOAD FAILED / IMAGE MIME REQUIRED / SOURCE CLEARED');return}
+  busy=true;setStatus('LOADING / HASHING SOURCE BYTES…');
+  try{
+    const meta=await hashBlob(blob);
+    currentObjectUrl=URL.createObjectURL(blob);
+    const n=new Image();
+    await new Promise((resolve,reject)=>{n.onload=resolve;n.onerror=()=>reject(new Error('IMAGE DECODE FAILED'));n.src=currentObjectUrl});
+    img=n;src={name,origin,mime:blob.type||'application/octet-stream',bytes:meta.bytes,sha256:meta.sha256,width:n.naturalWidth,height:n.naturalHeight};
+    busy=false;draw()
+  }catch(e){clearSource('LOAD FAILED / '+e.message+' / SOURCE CLEARED')}
+}
+$('file').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)loadBlob(f,f.name,'LOCAL_FILE')});
+$('loadUrl').onclick=async()=>{const u=$('url').value.trim();if(!u)return;dropSource();busy=true;setStatus('FETCHING SOURCE BYTES…');try{const r=await fetch(u,{mode:'cors'});if(!r.ok)throw new Error('HTTP '+r.status);const b=await r.blob();await loadBlob(b,u,'FETCHED_URL')}catch(e){clearSource('LOAD FAILED / '+e.message+' / SOURCE CLEARED')}};
+function sourceRequired(){if(!img||!src){setStatus('EXPORT BLOCKED / SOURCE REQUIRED');return false}return true}
+$('exportPng').onclick=()=>{if(!sourceRequired())return;draw();const a=document.createElement('a');a.download='oleander-image-lab.derivative.png';a.href=c.toDataURL('image/png');a.click()};
+$('exportJson').onclick=()=>{if(!sourceRequired())return;const b=new Blob([JSON.stringify(config(),null,2)],{type:'application/json'}),a=document.createElement('a');a.download='oleander-image-lab.config.json';a.href=URL.createObjectURL(b);a.click()};
+draw();
 </script>
 </body></html>
