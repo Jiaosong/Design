@@ -2,6 +2,7 @@
   "schema": "oleander.cloud-free-capability-pack.v0.1",
   "status": "CANDIDATE_SHARED_REPO_RUNTIME",
   "parent_profile": "00-governance/runtime/OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0.json",
+  "routing_binding": "00-governance/runtime/OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json",
   "date": "2026-08-26",
   "surfaces": {
     "browser_image_lab": {
