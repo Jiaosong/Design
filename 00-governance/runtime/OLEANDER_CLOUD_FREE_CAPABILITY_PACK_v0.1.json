@@ -17,10 +17,10 @@
       "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
       "class": "SHARED_REPO_RUNTIME",
       "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
-      "runtime_readback": "REAL_WEBGL_BROWSER_REQUIRED",
-      "dependency": "three@0.180.0_PINNED_CDN",
-      "outputs": ["PARAMETRIC_SCENE_JSON", "BROWSER_3D_READBACK"],
-      "capabilities": ["BOX_MASSING", "CYLINDER_MASSING", "POSITION", "ROTATION", "CAMERA_PRESETS", "GRID", "WIREFRAME", "SHADOW_TOGGLE"],
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "dependency": "NONE_NATIVE_CANVAS_PROJECTION",
+      "outputs": ["PARAMETRIC_SCENE_JSON", "BROWSER_3D_PROJECTION_READBACK"],
+      "capabilities": ["BOX_MASSING", "CYLINDER_PRISM_MASSING", "POSITION", "ROTATION", "CAMERA_YAW_PITCH_DISTANCE", "CAMERA_PRESETS", "GRID", "WIREFRAME", "POINTER_ORBIT"],
       "boundary": "CONCEPT_MASSING_CAMERA_SCALE_ONLY_NOT_BIM_CAD_CLASS_A_OR_ENGINEERING_MODEL"
     },
     "browser_technical_svg_lab": {
@@ -33,13 +33,12 @@
       "boundary": "CONCEPT_AND_HANDOFF_PREFLIGHT_ONLY_VENDOR_PRINT_DIE_TOLERANCE_AND_PRODUCTION_PROOF_REMAIN_OPEN"
     }
   },
-  "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_design_capability_until_used_on_real_current_project_with_actual_readback_independent_review_and_retest",
-  "hard_holds_preserved": [
-    "NEW_PROFESSIONAL_BIM_CAD",
-    "CLASS_A_MANUFACTURING_CAD",
-    "FROM_ZERO_HIGH_END_ARCHVIZ_CGI",
-    "SUPPLIER_PREPRESS_PROOF",
-    "ENGINEERING_APPROVAL",
-    "FIELD_ACCEPTANCE"
-  ]
+  "readback_state_2026_08_26": {
+    "source_readback": "PASS",
+    "headless_browser_attempt": "ENVIRONMENT_BLOCKED",
+    "blocker": "AVAILABLE_CHROMIUM_CONTAINER_STALLED_AT_DBUS_ZYGOTE_EVEN_ON_PURE_STATIC_PAGE",
+    "browser_pass": "OPEN_NOT_CLAIMED"
+  },
+  "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_DESIGN_CAPABILITY_UNTIL_USED_ON_REAL_CURRENT_PROJECT_WITH_ACTUAL_READBACK_INDEPENDENT_REVIEW_AND_RETEST",
+  "hard_holds_preserved": ["NEW_PROFESSIONAL_BIM_CAD","CLASS_A_MANUFACTURING_CAD","FROM_ZERO_HIGH_END_ARCHVIZ_CGI","SUPPLIER_PREPRESS_PROOF","ENGINEERING_APPROVAL","FIELD_ACCEPTANCE"]
 }
