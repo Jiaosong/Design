@@ -22,9 +22,11 @@
       "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
       "runtime_readback": "REAL_BROWSER_REQUIRED",
       "dependency": "NONE_NATIVE_CANVAS_PROJECTION",
-      "outputs": ["PARAMETRIC_SCENE_JSON", "BROWSER_3D_PROJECTION_READBACK"],
-      "capabilities": ["BOX_MASSING", "CYLINDER_PRISM_MASSING", "POSITION", "ROTATION", "CAMERA_YAW_PITCH_DISTANCE", "CAMERA_PRESETS", "GRID", "WIREFRAME", "POINTER_ORBIT"],
-      "boundary": "CONCEPT_MASSING_CAMERA_SCALE_ONLY_NOT_BIM_CAD_CLASS_A_OR_ENGINEERING_MODEL"
+      "outputs": ["VALIDATED_PROXY_SCENE_JSON", "BROWSER_3D_PROJECTION_READBACK"],
+      "capabilities": ["BOX_MASSING", "CYLINDER_PRISM_MASSING", "POSITION", "ROTATION", "PERSPECTIVE_CAMERA_READBACK", "ORTHOGRAPHIC_FRONT_TOP_AXON", "SCENE_FIT", "UNIT_AWARE_GRID", "WIREFRAME", "POINTER_ORBIT", "STRICT_SCENE_VALIDATION", "PROXY_SOURCE_METADATA", "FAIL_CLOSED_EXPORT"],
+      "boundary": "PROXY_AND_CONCEPT_MASSING_CAMERA_PROPORTION_ONLY_NOT_GLTF_EDITOR_NOT_BIM_CAD_CLASS_A_OR_ENGINEERING_MODEL",
+      "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
+      "validation_receipt": "00-governance/runtime/validation/2026-08-26-spatial-lab-timer/VALIDATION_RECEIPT_v0.1.json"
     },
     "browser_technical_svg_lab": {
       "path": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html",
@@ -45,6 +47,8 @@
     "technical_svg_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "image_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "image_lab_persistence_remote_readback": "PASS",
+    "spatial_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
+    "spatial_lab_persistence_remote_readback": "PASS",
     "browser_pass": "OPEN_NOT_CLAIMED"
   },
   "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_DESIGN_CAPABILITY_UNTIL_USED_ON_REAL_CURRENT_PROJECT_WITH_ACTUAL_READBACK_INDEPENDENT_REVIEW_AND_RETEST",
