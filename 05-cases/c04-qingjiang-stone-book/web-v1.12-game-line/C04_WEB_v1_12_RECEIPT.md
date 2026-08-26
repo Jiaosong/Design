@@ -1,7 +1,7 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
-> **CURRENT CORRECTION｜2026-08-25**  
-> Public structure remains the 18-section design-work reading + bottom-right supplement, but the current runtime is **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `index.html` and `app.js` reference `assets/...`; the current runtime tree does not contain that directory. Verified missing samples include `assets/hero_qingjiang.jpg` and `assets/route03_locked_current.svg`. `verify_game_line.mjs` is now v1.16 and fails on any missing or zero-byte referenced asset. The former source-readback PASS is not an asset-integrity, runtime, browser or deployment PASS.
+> **CURRENT CORRECTION｜2026-08-27**  
+> Public structure remains the 18-section design-work reading + bottom-right supplement, but the current runtime is **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `index.html` and `app.js` reference `assets/...`; the current runtime tree does not contain that directory. Verified missing samples include `assets/hero_qingjiang.jpg` and `assets/route03_locked_current.svg`. `verify_game_line.mjs` is v1.16 and fails on any missing or zero-byte referenced asset. The former source-readback PASS is not an asset-integrity, runtime, browser or deployment PASS. Reduced-motion is currently proven only at **source-rule presence** level; browser/system preference emulation and state-equivalence readback are **NOT RUN**.
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
@@ -46,7 +46,7 @@ State: `PUBLIC PORTFOLIO REFRAME / SOURCE-BOUND / RUNTIME ASSET BLOCKED / FIELD 
 6. 创新点与技术难点：路线与内容解耦、注意力设计、无手机完整体验、跨媒介一致性、AI幻觉控制、户外实体技术约束；
 7. AI + 3D 创作过程：SOURCE → AI EXPLORE → READBACK → 3D → DRAWING → DETAIL。
 
-抽屉使用现有项目资产缩略图和 live HTML/CSS/JS，不新增生成图。桌面固定右下角；移动端改为底部抽屉。支持 ESC / 背景点击关闭和 reduced-motion。
+抽屉使用现有项目资产缩略图和 live HTML/CSS/JS，不新增生成图。桌面固定右下角；移动端改为底部抽屉。支持 ESC / 背景点击关闭。源码包含 `prefers-reduced-motion` 降级规则；**这只证明 source implementation exists，不证明 system-level reduced-motion runtime behavior 已验证。**
 
 ## Removed from current working structure
 
@@ -85,12 +85,13 @@ Static validation now requires:
 - 7 supplement categories present;
 - every `assets/...` reference found across HTML/CSS/JS resolves to an existing non-zero-byte file;
 - six-stage AI + 3D process present;
-- mobile drawer rules and ESC close behavior present.
+- mobile drawer rules and ESC close behavior present;
+- `prefers-reduced-motion` source rules present in the relevant CSS/JS.
 
-GitHub source readback confirms the public structure and supplement code are present. **Asset integrity currently fails** because the runtime asset directory has not been materialized into this tree. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS or deployment PASS is claimed.
+GitHub source readback confirms the public structure, supplement code and reduced-motion source rules are present. **Asset integrity currently fails** because the runtime asset directory has not been materialized into this tree. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
 
 ## Truth boundary
 
 Research-grade design remains distinct from field and engineering validation. The public interface expresses this in readable language rather than internal governance codes.
 
-Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes.
+Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes. Reduced-motion runtime validation must separately execute `normal vs prefers-reduced-motion → browser behavior → state-equivalence readback`; source-rule detection is not that proof.
