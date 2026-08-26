@@ -1,0 +1,85 @@
+{
+  "schema": "oleander.runtime-validation-receipt.v0.1",
+  "surface": "browser_spatial_lab",
+  "date": "2026-08-26",
+  "status": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
+  "project_binding": {
+    "project": "OLEANDER／织作 — Timer Light Basin",
+    "workstream": "PRAC-BUSINESS-2026-WS-01",
+    "validation_role": "CANONICAL_GEOMETRY_DERIVED_PROXY / CAMERA_AND_PROPORTION_READBACK_ONLY",
+    "canonical_glb_library_file_id": "file_00000000df3c820895ad4d65f45daa8d",
+    "canonical_glb_name": "timer_100_pbr.glb",
+    "canonical_glb_bytes": 8507960,
+    "canonical_glb_sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "geometry_equivalence_evidence": "GEOMETRY_EQUIVALENCE_v3.3.json"
+  },
+  "proxy_derivation": {
+    "method": "SELECTED_CANONICAL_MESH_AABB_ONLY",
+    "selected_meshes": ["01_Upper_Housing", "02_Formed_Diffuser", "17_Side_Knob", "18_Bottom_Cover", "19_Silicone_Foot_Ring"],
+    "axis_map": "source XYZ -> lab XZY; source Z -> lab vertical Y",
+    "all_proxy_bounds_match_source_aabb": true,
+    "geometry_equivalent": false,
+    "truth_boundary": "PROXY_ONLY / NOT_CANONICAL_GLTF / NOT_MESH_EQUIVALENT / NOT_ENGINEERING_PROOF"
+  },
+  "initial_failures": [
+    "FRONT_PRESET_WAS_PERSPECTIVE_NOT_ORTHOGRAPHIC",
+    "EQUAL_WORLD_WIDTH_CHANGED_WITH_DEPTH_IN_FRONT_PRESET_230PX_VS_153_333PX",
+    "UNSUPPORTED_OBJECT_TYPE_SILENTLY_FELL_BACK_TO_BOX",
+    "MISSING_UNITS_WAS_ACCEPTED_AS_UNSPECIFIED",
+    "INVALID_JSON_COULD_STILL_EXPORT_INVALID_TEXTAREA",
+    "FIXED_DISTANCE_AND_GRID_DID_NOT_SCALE_TO_SCENE_UNITS",
+    "PROXY_SOURCE_DERIVATION_WAS_NOT_REQUIRED"
+  ],
+  "repairs": [
+    "TRUE_ORTHOGRAPHIC_FRONT_TOP_AXON_PROJECTION",
+    "PERSPECTIVE_MODE_SEPARATED_AS_CAMERA_READBACK_ONLY",
+    "SCENE_SCHEMA_AND_UNITS_REQUIRED",
+    "PROXY_DERIVED_REQUIRES_SOURCE_NAME_SHA256_DERIVATION_AND_GEOMETRY_EQUIVALENT_FALSE",
+    "STRICT_OBJECT_TYPE_ID_SIZE_POSITION_ROTATION_VALIDATION",
+    "DIRTY_OR_INVALID_SCENE_EXPORT_BLOCKED",
+    "EXPORT_SERIALIZES_LAST_VALID_APPLIED_SCENE_NOT_RAW_TEXTAREA",
+    "SCENE_FIT_AND_UNIT_AWARE_GRID_ADDED",
+    "PROXY_ONLY_TRUTH_LABEL_PERSISTED_IN_VIEW_AND_JSON"
+  ],
+  "browser_tests": {
+    "canonical_source_hash_matches_geometry_evidence": "PASS",
+    "front_orthographic_equal_width_z_minus20_px": 129.1486291486292,
+    "front_orthographic_equal_width_z_plus20_px": 129.1486291486292,
+    "front_orthographic_depth_invariance": "PASS",
+    "top_projection_label": "ORTHOGRAPHIC_PROPORTION_READBACK",
+    "axon_projection_label": "ORTHOGRAPHIC_PROPORTION_READBACK",
+    "perspective_projection_label": "PERSPECTIVE_CAMERA_READBACK",
+    "unsupported_type_fail_closed": "PASS",
+    "missing_units_fail_closed": "PASS",
+    "missing_source_sha_fail_closed": "PASS",
+    "geometry_equivalent_true_fail_closed": "PASS",
+    "duplicate_id_fail_closed": "PASS",
+    "negative_size_fail_closed": "PASS",
+    "bad_units_fail_closed": "PASS",
+    "dirty_scene_export_blocked": "PASS",
+    "invalid_json_export_blocked": "PASS",
+    "valid_scene_export": "PASS",
+    "wireframe_pixel_delta": "PASS",
+    "grid_pixel_delta": "PASS",
+    "pointer_orbit_changes_yaw_and_returns_to_perspective": "PASS",
+    "mobile_390x844_horizontal_overflow": "NONE",
+    "page_errors": 0
+  },
+  "persistent_readback": {
+    "library_folder": "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Spatial-Lab",
+    "validated_scene": {"file_id":"file_00000000190481fa9dd647846dad9631","sha256":"09c5e4e62e2b32440bdeed02be1f773b4139f41a38066c2cbba21bbb0ec7731a","remote_readback":"PASS"},
+    "derivation_receipt": {"file_id":"file_00000000c64481f5b36a02fcd1541425","sha256":"450353959e1fc58da9e82044c4637384b9d78634da903ec8d59a51e03efd0ce8","remote_readback":"PASS"},
+    "browser_test_results": {"file_id":"file_000000006c9c81fd9d48f8de1a0d1dee","sha256":"055123a0d0ac4ef3912f0f8a8d21c8cd49600e1ad620b4e4cea35f64f04fe9dd"},
+    "perspective": {"file_id":"file_00000000113081faa689f5ffe7b40286","sha256":"b9ab6b3d5ee231710d657c789c5668875e639a79aac86573af32dcad83c09a90"},
+    "front_ortho": {"file_id":"file_000000004b4881fa859173eba46ac9a3","sha256":"5fd312e274e2e2cfad95ffca950353def8bb00dc8ce033c1af442a18c1cf3aaf","remote_readback":"PASS"},
+    "top_ortho": {"file_id":"file_00000000d6a481fb8944fc6eab495efa","sha256":"4ba67ae87c2c37deb279f33d8c9a231a00716f45f0e262e07b7e86001327d734"},
+    "axon_ortho": {"file_id":"file_00000000bd5c81f7b81eb239d5154d79","sha256":"d860bcd49fdc9525f6bead67316648f351f4b4ddf1755a6c86ed41ccdac7fe90","remote_readback":"PASS"},
+    "mobile": {"file_id":"file_00000000aa34820ba77da13977999dc7","sha256":"2b3ba50475d9d7cb5d366e5eeacda619bfd556009b12c31d0deb60a17888b9b6","remote_readback":"PASS"}
+  },
+  "review": {
+    "producer_functional_readback": "PASS",
+    "remote_persistence_readback": "PASS",
+    "independent_design_review": "OPEN",
+    "active_runtime_promotion": "BLOCKED_PENDING_INDEPENDENT_REVIEW_AND_RETEST"
+  }
+}
