@@ -11,6 +11,7 @@ ROUTING = RUNTIME / "OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json"
 CARD = RUNTIME / "templates" / "OLEANDER_PROJECT_ENVIRONMENT_CARD_v0.1.md"
 STUDIO = RUNTIME / "cloud-free-studio" / "index.html"
 IMAGE_RECEIPT = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "VALIDATION_RECEIPT_v0.1.json"
+SPATIAL_RECEIPT = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "VALIDATION_RECEIPT_v0.1.json"
 
 
 def fail(msg: str) -> None:
@@ -24,14 +25,15 @@ def require(text: str, tokens: list[str], label: str) -> None:
 
 
 def main() -> None:
-    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT]
+    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, SPATIAL_RECEIPT]
     if any(not p.exists() for p in required_files):
-        fail("pack / registry / routing / project card / studio / image receipt missing")
+        fail("pack / registry / routing / project card / studio / validation receipt missing")
 
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     reg = json.loads(REGISTRY.read_text(encoding="utf-8"))
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
     image_receipt = json.loads(IMAGE_RECEIPT.read_text(encoding="utf-8"))
+    spatial_receipt = json.loads(SPATIAL_RECEIPT.read_text(encoding="utf-8"))
 
     if pack.get("status") != "CANDIDATE_SHARED_REPO_RUNTIME":
         fail("capability pack must remain candidate until independent review and promotion evidence exist")
@@ -105,9 +107,39 @@ def main() -> None:
     if image_receipt.get("project_binding", {}).get("source_sha256") != "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4":
         fail("image lab source identity drifted")
 
-    require(files["browser_spatial_lab"], ["<canvas", "Scene JSON", "Camera preset", "yaw", "pitch", "distance", "pointerdown", "cylinder", "wire", "grid"], "spatial lab")
+    spatial_spec = surfaces["browser_spatial_lab"]
+    if spatial_spec.get("validation_state") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("spatial lab validation state drifted or was prematurely promoted")
+    if spatial_spec.get("validation_receipt") != "00-governance/runtime/validation/2026-08-26-spatial-lab-timer/VALIDATION_RECEIPT_v0.1.json":
+        fail("spatial lab validation receipt pointer missing")
+    require(files["browser_spatial_lab"], [
+        "<canvas", "oleander.spatial-proxy-scene.v0.2", "PROXY_DERIVED",
+        "PROXY_ONLY_NOT_SOURCE_GEOMETRY", "ORTHOGRAPHIC_PROPORTION_READBACK",
+        "PERSPECTIVE_CAMERA_READBACK", "geometryEquivalent=false",
+        "units must be one of mm / cm / m", "type unsupported",
+        "SCENE DIRTY / VALIDATE + APPLY REQUIRED / EXPORT BLOCKED",
+        "EXPORT BLOCKED / VALIDATE + APPLY CURRENT SCENE FIRST",
+        "Export Valid Scene JSON", "Fit Scene", "pointerdown",
+    ], "spatial lab")
     if "https://" in files["browser_spatial_lab"] or "http://" in files["browser_spatial_lab"] or "import " in files["browser_spatial_lab"]:
         fail("spatial lab must remain zero external runtime dependency")
+    if spatial_receipt.get("status") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
+        fail("spatial validation receipt status invalid")
+    if spatial_receipt.get("review", {}).get("independent_design_review") != "OPEN":
+        fail("spatial lab cannot self-grant independent review")
+    if spatial_receipt.get("project_binding", {}).get("canonical_glb_sha256") != "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66":
+        fail("spatial lab canonical source identity drifted")
+    proxy = spatial_receipt.get("proxy_derivation", {})
+    if proxy.get("geometry_equivalent") is not False or proxy.get("all_proxy_bounds_match_source_aabb") is not True:
+        fail("spatial proxy truth/derivation boundary invalid")
+    if spatial_receipt.get("persistent_readback", {}).get("library_folder") != "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Spatial-Lab":
+        fail("spatial lab persistent readback location drifted")
+    bt = spatial_receipt.get("browser_tests", {})
+    if bt.get("front_orthographic_depth_invariance") != "PASS":
+        fail("spatial lab orthographic depth-invariance evidence missing")
+    if bt.get("invalid_json_export_blocked") != "PASS" or bt.get("dirty_scene_export_blocked") != "PASS":
+        fail("spatial lab fail-closed export evidence missing")
+
     require(files["browser_technical_svg_lab"], ["id=\"CUT\"", "id=\"BLEED\"", "id=\"SAFE\"", "id=\"ARTWORK\"", "id=\"DIMENSIONS\"", "Export SVG", "VENDOR CONFIRM"], "technical SVG lab")
 
     studio = STUDIO.read_text(encoding="utf-8")
@@ -128,6 +160,9 @@ def main() -> None:
     print("image_lab_functional_browser_readback=PASS")
     print("image_lab_persistence_remote_readback=PASS")
     print("image_lab_independent_review=OPEN")
+    print("spatial_lab_functional_browser_readback=PASS")
+    print("spatial_lab_persistence_remote_readback=PASS")
+    print("spatial_lab_independent_review=OPEN")
     print("spatial_external_dependencies=0")
     print("browser_pass=OPEN_NOT_CLAIMED")
 
