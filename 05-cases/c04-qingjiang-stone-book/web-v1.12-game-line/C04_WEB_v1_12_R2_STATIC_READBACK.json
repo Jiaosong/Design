@@ -1,7 +1,7 @@
 {
   "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_16",
   "method": "GITHUB_SOURCE_READBACK_AFTER_ASSET_INTEGRITY_CORRECTION",
-  "observed_at": "2026-08-25",
+  "observed_at": "2026-08-27",
   "public_sections": 18,
   "first_section": "01",
   "last_section": "18",
@@ -37,7 +37,7 @@
     "mobile_bottom_drawer": true,
     "escape_close": true,
     "backdrop_close": true,
-    "reduced_motion": true
+    "reduced_motion_source_rule_present": true
   },
   "runtime_asset_integrity": {
     "status": "BLOCKED",
@@ -62,9 +62,11 @@
   "runtime_execution": {
     "github_governance_ci": "SUCCESS / NOT A WEB ASSET PASS",
     "asset_integrity_static_gate": "FAIL / BLOCKED",
-    "browser_finished_pixel_review": "BLOCKED_UNTIL_RUNTIME_ASSETS_EXIST"
+    "browser_finished_pixel_review": "BLOCKED_UNTIL_RUNTIME_ASSETS_EXIST",
+    "reduced_motion_preference_emulation": "NOT_RUN",
+    "reduced_motion_state_equivalence_readback": "NOT_RUN"
   },
-  "truth_boundary": "RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
+  "truth_boundary": "SOURCE RULE EXISTS; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_structure_readback_pass": true,
   "asset_integrity_pass": false,
   "current_static_gate_pass": false,
