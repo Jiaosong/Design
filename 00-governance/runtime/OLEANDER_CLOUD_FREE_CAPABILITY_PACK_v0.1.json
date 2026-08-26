@@ -1,0 +1,45 @@
+{
+  "schema": "oleander.cloud-free-capability-pack.v0.1",
+  "status": "CANDIDATE_SHARED_REPO_RUNTIME",
+  "parent_profile": "00-governance/runtime/OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0.json",
+  "date": "2026-08-26",
+  "surfaces": {
+    "browser_image_lab": {
+      "path": "00-governance/runtime/browser-image-lab/image-lab.html",
+      "class": "SHARED_REPO_RUNTIME",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "outputs": ["PNG_DERIVATIVE", "IMAGE_TREATMENT_CONFIG_JSON"],
+      "capabilities": ["BRIGHTNESS", "CONTRAST", "SATURATION", "GRAYSCALE", "SCALE", "ROTATE", "OFFSET", "BACKGROUND", "BEFORE_AFTER"],
+      "boundary": "BOUNDED_RASTER_TREATMENT_NOT_PHOTOSHOP_EQUIVALENCE_NOT_SOURCE_AUTHORITY"
+    },
+    "browser_spatial_lab": {
+      "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
+      "class": "SHARED_REPO_RUNTIME",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_WEBGL_BROWSER_REQUIRED",
+      "dependency": "three@0.180.0_PINNED_CDN",
+      "outputs": ["PARAMETRIC_SCENE_JSON", "BROWSER_3D_READBACK"],
+      "capabilities": ["BOX_MASSING", "CYLINDER_MASSING", "POSITION", "ROTATION", "CAMERA_PRESETS", "GRID", "WIREFRAME", "SHADOW_TOGGLE"],
+      "boundary": "CONCEPT_MASSING_CAMERA_SCALE_ONLY_NOT_BIM_CAD_CLASS_A_OR_ENGINEERING_MODEL"
+    },
+    "browser_technical_svg_lab": {
+      "path": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html",
+      "class": "SHARED_REPO_RUNTIME",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "outputs": ["EDITABLE_SVG_MASTER"],
+      "capabilities": ["MM_SIZE", "WORKING_BLEED", "WORKING_SAFE", "CUT_LAYER", "BLEED_LAYER", "SAFE_LAYER", "ARTWORK_LAYER", "DIMENSIONS", "SVG_EXPORT"],
+      "boundary": "CONCEPT_AND_HANDOFF_PREFLIGHT_ONLY_VENDOR_PRINT_DIE_TOLERANCE_AND_PRODUCTION_PROOF_REMAIN_OPEN"
+    }
+  },
+  "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_design_capability_until_used_on_real_current_project_with_actual_readback_independent_review_and_retest",
+  "hard_holds_preserved": [
+    "NEW_PROFESSIONAL_BIM_CAD",
+    "CLASS_A_MANUFACTURING_CAD",
+    "FROM_ZERO_HIGH_END_ARCHVIZ_CGI",
+    "SUPPLIER_PREPRESS_PROOF",
+    "ENGINEERING_APPROVAL",
+    "FIELD_ACCEPTANCE"
+  ]
+}
