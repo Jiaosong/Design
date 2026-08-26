@@ -1,0 +1,107 @@
+{
+  "schema": "oleander.runtime-validation-receipt.v0.1",
+  "surface": "browser_image_lab",
+  "date": "2026-08-26",
+  "status": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
+  "project_binding": {
+    "program": "BAOJIAJIE Brand & Cleaning Innovation Program",
+    "work_item": "Retail POP / 欧科棉方向 / bounded non-generative raster treatment",
+    "source_role": "REAL USER-CONTENT RASTER INPUT / READ-ONLY",
+    "source_library_file_id": "file_00000000ea6881fa9bd130d6ed95618f",
+    "source_name": "1 (24).jpg",
+    "source_sha256": "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4",
+    "source_bytes": 1014775,
+    "source_dimensions_px": [1179, 1626]
+  },
+  "initial_failures": [
+    "NO_SOURCE_COULD_EXPORT_EMPTY_GRAY_PNG",
+    "BEFORE_VIEW_DISABLED_FILTERS_BUT_RETAINED_SCALE_OFFSET_ROTATE",
+    "CONFIG_LACKED_SOURCE_SHA_BYTES_DIMENSIONS",
+    "LOAD_FAILURE_DID_NOT_STRONGLY_CLEAR_SOURCE_STATE"
+  ],
+  "repairs": [
+    "EXPORT_REQUIRES_DECODED_SOURCE",
+    "BEFORE_VIEW_IS_TRUE_SOURCE_FIT_WITH_NEUTRAL_FILTER_SCALE_OFFSET_ROTATION",
+    "SOURCE_BYTES_HASHED_SHA256_AND_RECORDED_WITH_MIME_BYTES_DIMENSIONS_ORIGIN",
+    "INVALID_OR_FAILED_SOURCE_CLEARS_STATE_AND_FAILS_CLOSED",
+    "SOURCE_BYTES_REMAIN_READ_ONLY_AND_DERIVATIVE_TRUTH_BOUNDARY_IS_EXPLICIT"
+  ],
+  "browser_tests": {
+    "source_hash_matches_original": "PASS",
+    "source_bytes_unchanged_after_execution": "PASS",
+    "no_source_export_blocked": "PASS",
+    "invalid_mime_clears_source_and_blocks_export": "PASS",
+    "before_true_source_fit_pixel_equivalence": "PASS",
+    "brightness_single_parameter_pixel_delta": "PASS",
+    "contrast_single_parameter_pixel_delta": "PASS",
+    "saturation_single_parameter_pixel_delta": "PASS",
+    "grayscale_single_parameter_pixel_delta": "PASS",
+    "scale_single_parameter_pixel_delta": "PASS",
+    "rotate_single_parameter_pixel_delta": "PASS",
+    "offset_x_single_parameter_pixel_delta": "PASS",
+    "offset_y_single_parameter_pixel_delta": "PASS",
+    "background_single_parameter_pixel_delta": "PASS",
+    "reset_to_neutral_returns_baseline": "PASS",
+    "working_derivative_pixel_delta": "PASS",
+    "mobile_390x844_horizontal_overflow": "NONE",
+    "page_errors": 0,
+    "png_export": "PASS",
+    "config_json_export": "PASS"
+  },
+  "working_config": {
+    "brightness": 104,
+    "contrast": 118,
+    "saturation": 108,
+    "grayscale": 0,
+    "scale": 160,
+    "rotate": 0,
+    "offsetX": 100,
+    "offsetY": -80,
+    "background": "#dddddd",
+    "display_mode": "WORKING_DERIVATIVE"
+  },
+  "persistent_readback": {
+    "library_folder": "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Image-Lab",
+    "before": {
+      "file_id": "file_00000000f564821194d193223fdfea3c",
+      "name": "IMAGE_LAB_BAOJIAJIE_BEFORE_SOURCEFIT.png",
+      "bytes": 1333603,
+      "sha256": "c57d6a4e43c8134286e807b7f8491eebf9d56a747096a363f014d159dfd6b013",
+      "remote_readback": "PASS"
+    },
+    "working": {
+      "file_id": "file_000000000b6882118812d0b5ae7ba64f",
+      "name": "IMAGE_LAB_BAOJIAJIE_WORKING_DERIVATIVE.png",
+      "bytes": 2566891,
+      "sha256": "3a929322c6f95c1868ebba3fe7a6bc6583cd59f47f85945bd6d9f82023b458f6",
+      "remote_readback": "PASS"
+    },
+    "config": {
+      "file_id": "file_00000000d8c882118882413d1db9b4bb",
+      "name": "IMAGE_LAB_BAOJIAJIE_WORKING_CONFIG.json",
+      "bytes": 743,
+      "sha256": "9dd5426e9c1c4f584afa46f5f87b3ea87f8d8c038147f6ff55a00cb383df5aee",
+      "remote_readback": "PASS"
+    },
+    "mobile": {
+      "file_id": "file_00000000165881fa9719ac02de865d19",
+      "name": "IMAGE_LAB_MOBILE_READBACK_390x844.png",
+      "bytes": 157988,
+      "sha256": "240a066d912cd5b7d26871698ed5a0d697f778959f9d24a9812b4b2a10d41d58",
+      "remote_readback": "PASS"
+    }
+  },
+  "truth_boundary": {
+    "source_authority": "UNCHANGED",
+    "derivative_only": true,
+    "no_ai_generation": true,
+    "may_support": ["CROP", "REFRAME", "BOUNDED_TONE_ADJUSTMENT", "A_B_READBACK"],
+    "may_not_claim": ["NEW_EVIDENCE", "ALTERED_PRODUCT_FACT", "ALTERED_MATERIAL_FACT", "LOCKED_LOGO_REPLACEMENT", "LOCKED_PORTRAIT_REPLACEMENT", "PHOTOSHOP_CLASS_PRODUCTION_EQUIVALENCE"]
+  },
+  "review": {
+    "producer_functional_readback": "PASS",
+    "remote_persistence_readback": "PASS",
+    "independent_design_review": "OPEN",
+    "active_runtime_promotion": "BLOCKED_PENDING_INDEPENDENT_REVIEW_AND_RETEST"
+  }
+}
