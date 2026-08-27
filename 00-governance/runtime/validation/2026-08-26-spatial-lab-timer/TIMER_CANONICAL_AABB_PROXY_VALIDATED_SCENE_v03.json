@@ -1,0 +1,27 @@
+{
+  "schema": "oleander.spatial-proxy-scene.v0.2",
+  "units": "mm",
+  "source": {
+    "name": "timer_100_pbr.glb",
+    "sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "library_file_id": "file_00000000df3c820895ad4d65f45daa8d",
+    "derivation": "AXIS_ALIGNED_BOUNDING_BOX_PROXY_FROM_SELECTED_CANONICAL_EXTERNAL_MESHES",
+    "axis_map": "source XYZ -> lab XZY; source Z -> lab vertical Y",
+    "geometryEquivalent": false,
+    "canonicalBoundsLab": {
+      "lo": [-59.0, -3.5, -64.19999695],
+      "hi": [59.0, 30.68000031, 59.70000076],
+      "extent": [118.0, 34.18000031, 123.89999771],
+      "evidence": "CANONICAL_GLB_REHASHED_AND_PARSED_2026-08-27"
+    }
+  },
+  "objects": [
+    {"id":"01_Upper_Housing","type":"box","size":[118,29,118],"position":[0,14.5,0],"rotation":[0,0,0],"color":"#d4d0c8","proxy_role":"AABB_FROM_CANONICAL_MESH"},
+    {"id":"02_Formed_Diffuser","type":"box","size":[100,6,100],"position":[0,27.5,0],"rotation":[0,0,0],"color":"#eee9df","proxy_role":"AABB_FROM_CANONICAL_MESH"},
+    {"id":"17_Side_Knob","type":"box","size":[16,16,7.999996],"position":[18,11,-60.199999],"rotation":[0,0,0],"color":"#8d8982","proxy_role":"AABB_FROM_CANONICAL_MESH"},
+    {"id":"18_Bottom_Cover","type":"box","size":[112,2.5,112],"position":[0,1.45,0],"rotation":[0,0,0],"color":"#b8b4ac","proxy_role":"AABB_FROM_CANONICAL_MESH"},
+    {"id":"19_Silicone_Foot_Ring","type":"box","size":[108,1.5,108],"position":[0,-0.65,0],"rotation":[0,0,0],"color":"#77736d","proxy_role":"AABB_FROM_CANONICAL_MESH"}
+  ],
+  "sceneRole": "PROXY_DERIVED",
+  "truthBoundary": "PROXY_ONLY_NOT_SOURCE_GEOMETRY"
+}
