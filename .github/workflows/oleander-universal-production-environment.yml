@@ -46,8 +46,11 @@ jobs:
           p = Path('00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json')
           data = json.loads(p.read_text())
           assert data['scope'] == 'OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS'
-          assert 'FIGMA_IS_OPTIONAL_NOT_DEFAULT' in data['hard_rules']
-          assert data['figma']['role'] == 'OPTIONAL_SPECIALIST_ADAPTER'
+          assert 'FIGMA_IS_EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_ONLY_NOT_GENERIC_UI_ROUTE' in data['hard_rules']
+          assert 'GENERIC_UI_TASK_MUST_NOT_PROBE_RECOMMEND_OR_CREATE_FIGMA' in data['hard_rules']
+          assert data['figma']['role'] == 'EXPLICIT_REQUEST_ONLY_HANDOFF_ADAPTER'
+          assert data['figma']['activation_gate'] == 'EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE'
+          assert data['figma']['probe_policy'] == 'DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_VECTOR_PROTOTYPING_OR_DESIGN_SYSTEM_TASKS'
           assert data['blender_shared_runtime']['scope'] == 'OLEANDER_ALL_PROJECTS'
           assert data['blender_shared_runtime']['preferred_wrapper'] == 'tools/oleander-runtime/blender.sh'
           assert 'PENDING_VERIFICATION' in data['capability_states']
