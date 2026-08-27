@@ -1,6 +1,6 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_17",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_ASSET_RECOVERY",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_18",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_AND_HERO_SOURCE_RESOLUTION",
   "observed_at": "2026-08-27",
   "public_sections": 18,
   "first_section": "01",
@@ -51,7 +51,21 @@
         "remote_readback": "PASS"
       }
     ],
-    "verified_missing_samples": [
+    "source_resolved_runtime_missing": [
+      {
+        "runtime_path": "assets/hero_qingjiang.jpg",
+        "canonical_visual_source": "QJ-D v1.1 Hero",
+        "drive_folder": "QJ-D__PUBLIC-DISPLAY__v1.1",
+        "drive_file_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+        "drive_filename": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+        "bytes": 2294010,
+        "sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+        "content_readback": "PASS",
+        "runtime_materialization": "PENDING",
+        "decision": "USE EXACT EXISTING QJ-D V1.1 HERO SOURCE; NO REDRAW / NO AI SUBSTITUTE"
+      }
+    ],
+    "verified_missing_runtime_samples": [
       "assets/hero_qingjiang.jpg"
     ],
     "verified_missing_samples_are_complete_list": false,
@@ -75,7 +89,7 @@
     "reduced_motion_preference_emulation": "NOT_RUN",
     "reduced_motion_state_equivalence_readback": "NOT_RUN"
   },
-  "truth_boundary": "ROUTE-03 LOCKED CURRENT SVG IS NOW MATERIALIZED FROM ITS DURABLE DRIVE SOURCE; RUNTIME ASSET SET REMAINS INCOMPLETE; SOURCE RULE EXISTS; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
+  "truth_boundary": "ROUTE-03 IS MATERIALIZED; THE EXISTING QJ-D V1.1 HERO SOURCE HAS NOW BEEN LOCATED, OPENED, AND SHA-VERIFIED, BUT ITS REQUIRED GITHUB RUNTIME REPRESENTATION assets/hero_qingjiang.jpg IS STILL MISSING; RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_structure_readback_pass": true,
   "asset_integrity_pass": false,
   "current_static_gate_pass": false,
