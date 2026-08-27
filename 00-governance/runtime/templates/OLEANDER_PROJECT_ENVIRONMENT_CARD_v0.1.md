@@ -78,41 +78,46 @@ Do **not** choose software first. Resolve in this sequence:
 
 Rules:
 - Familiar software does not override the Current Skill or Required Native Output.
-- Agent-executable connector or ACTIVE shared runtime precedes a manual web tool when both preserve the same native output.
+- Adapter-specific activation gates precede connector availability; a connector being exposed does not mean it should be probed.
+- Generic `UI / UX / interface / prototype / component / design system` requests do **not** activate Figma.
+- Agent-executable connector or ACTIVE shared runtime precedes a manual web tool when both preserve the same native output and the adapter's activation gate has passed.
 - A Candidate shared runtime is validation / training / support only unless explicitly labeled as bounded project reapplication.
 - Existing editable project files/pages are reused before new SaaS files are created.
 - Low-file/page-limit software must not become Global Current.
-- `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CONNECTOR EXPOSED ≠ UNLIMITED PLAN CAPACITY`; manual web execution never counts as agent execution.
+- `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CONNECTOR EXPOSED ≠ ADAPTER ACTIVATED ≠ UNLIMITED PLAN CAPACITY`; manual web execution never counts as agent execution.
 - Tool convenience never authorizes loss of text editability, component structure, dimensions, geometry, coordinate systems, source identity or evidence state.
 
 ### Current software role matrix
 | Need | Preferred execution | Optional / fallback | Hard boundary |
 |---|---|---|---|
-| Web/UI implementation | HTML/CSS/JS/SVG + real browser | Figma connector only for existing-file or explicit Figma delivery; Penpot manual fallback | Figma/Penpot do not replace browser implementation evidence; text/state/semantics stay editable |
-| UI/vector design handoff | Editable repo-native SVG/HTML first | Figma connector if explicit editable Figma handoff and capacity check passes | Figma is OPTIONAL TEMP, not Global Current; components/variables/Auto Layout/text stay native when required |
-| Graphic / brand / packaging / POP | Editable vector/layout source | Figma for explicit handoff; Illustrator/InDesign or equivalent only when already available or externally operated | Flattened raster is derivative; dieline/bleed/trim/text remain separable when applicable |
+| Web/UI implementation | HTML/CSS/JS/SVG + real browser | Figma **explicit-only exception** after activation gate; Penpot manual only when a separate design workspace is genuinely required | Generic UI does not probe/recommend/create Figma; browser implementation evidence remains required |
+| UI/vector design handoff | Editable repo-native SVG/HTML first | Figma only for explicit Figma delivery or existing authoritative Figma continuation/repair after capacity check | Figma is not a generic UI workspace; components/variables/Auto Layout/text stay native when Figma is explicitly required |
+| Graphic / brand / packaging / POP | Editable vector/layout source | Figma for explicit handoff only; Illustrator/InDesign or equivalent only when already available or externally operated | Flattened raster is derivative; dieline/bleed/trim/text remain separable when applicable |
 | Raster/image treatment | Agent-executable deterministic source transform when sufficient | Candidate Image Lab for validation/support; Photopea manual fallback; Photoshop-equivalent only when already available | Source authority remains unchanged; original source identity and pixel/color intent preserved |
 | 3D/spatial/product/CMF | **Blender ACTIVE shared runtime** when callable and fit | Candidate Spatial Lab for proxy/readback; SketchUp Web manual fallback; verified CAD/BIM/Class-A runtime only if actually available | No fake BIM/CAD/Class-A/manufacturing geometry; units and geometry authority remain explicit |
-| Technical/vector drawing | Verified source dimensions + editable SVG/PDF-native chain | Candidate Technical SVG Lab for validation/support; Figma only for explicit handoff; specialist CAD only when verified | AI/raster imagery has zero dimension authority; editable annotations retained |
+| Technical/vector drawing | Verified source dimensions + editable SVG/PDF-native chain | Candidate Technical SVG Lab for validation/support; Figma only for explicit Figma handoff; specialist CAD only when verified | AI/raster imagery has zero dimension authority; editable annotations retained |
 | Data/GIS | Governed data + oleander-data-viz + SVG/HTML; QGIS/GDAL/GeoPandas when verified | bounded specialist adapter | Dataset/CRS/units remain authority, not decorative pixels |
 | Motion | Browser motion or Blender ACTIVE runtime, depending output | specialist video/motion software only when already available or externally operated | Actual state/frame readback required; rendered video does not prove editable source health |
 | Deploy/share | Vercel connector when exposed and free/existing plan fits; GitHub Pages / Cloudflare Pages Free | manual deploy only if needed | Deploy PASS ≠ Browser PASS ≠ Design PASS |
 
-### Figma capacity rule
-Figma is an **agent-executable connector when exposed**, but it remains an **OPTIONAL TEMP adapter** because low shared file/page limits and vendor lock-in disqualify it from Global Current.
+### Figma explicit-only gate + capacity rule
+Figma is an **explicit-request-only / existing-Figma-source handoff adapter**. It is not part of the generic UI routing path and must not be probed merely because the task concerns UI, UX, interfaces, prototypes, components or a design system.
 
-Before any new Figma file:
-1. Is Figma explicitly required by the deliverable, or does an existing Figma file materially improve the task?
-2. Can the existing project file/page be reused instead of creating a new file?
-3. Is current file/team capacity available without paid upgrade or deletion pressure?
-4. Is recoverable repo/open-native source preserved outside Figma or is a recoverable handoff strategy recorded?
+Figma activation gate — at least one must already be true before probing the connector:
+1. The user or Project Authority explicitly requires a Figma deliverable / editable Figma handoff; **or**
+2. An existing authoritative Figma file/project must be continued, repaired or handed off.
 
-If any required answer is NO → do not create a new Figma file; route to repo-native production, another verified execution surface, or HOLD.
+Only after the activation gate passes:
+1. Can the existing project file/page be reused instead of creating a new file?
+2. Is current file/team capacity available without paid upgrade or deletion pressure?
+3. Is recoverable repo/open-native source preserved outside Figma or is a recoverable handoff strategy recorded?
 
-When Figma is the required editable handoff, keep components, variants, variables, Auto Layout and text native. A screenshot, flattened export or node-count receipt does not prove native editability or design quality.
+If the activation gate is not satisfied → **do not probe, recommend or create Figma**; route to repo-native production, another verified execution surface, or HOLD.
+
+When Figma is explicitly required, keep components, variants, variables, Auto Layout and text native. A screenshot, flattened export or node-count receipt does not prove native editability or design quality.
 
 Current connector/plugin check 2026-08-27:
-- Figma connector: **installed / agent-executable when exposed**.
+- Figma connector: **installed / agent-executable when exposed, but explicit-gated and not probed for generic UI**.
 - Penpot ChatGPT plugin: **not found**.
 - Photopea ChatGPT plugin: **not found**.
 - SketchUp ChatGPT plugin: **not found**.
@@ -176,7 +181,7 @@ Resolve each required capability in this order:
 
 `AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → SHARED_REPO_RUNTIME → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
 
-Interpretation: the Current OLEANDER Skill / Owner is resolved **before this execution-surface list is applied**. The `SHARED_REPO_RUNTIME` production slot means **ACTIVE shared runtime only**.
+Interpretation: the Current OLEANDER Skill / Owner is resolved **before this execution-surface list is applied**. The `SHARED_REPO_RUNTIME` production slot means **ACTIVE shared runtime only**. Adapter-specific activation gates are checked before an exposed connector may enter this list.
 
 Current Cloud-Free repo surfaces are **CANDIDATE**, not default production runtimes:
 - Responsive / visual staging → `browser-design-workbench/workbench.html`
@@ -186,7 +191,7 @@ Current Cloud-Free repo surfaces are **CANDIDATE**, not default production runti
 
 Candidate surface rule: `VALIDATION / TRAINING / SUPPORT / BOUNDED PROJECT REAPPLICATION WITH EXPLICIT CANDIDATE LABEL` only. A Candidate surface must **not** become `DEFAULT_PRODUCTION_OWNER`, `SOLE_FINAL_NATIVE_OUTPUT_AUTHORITY`, or an unlabeled Current production route. Default production routing requires an **ACTIVE** runtime.
 
-Do **not** route first to Penpot / Photopea / SketchUp Web merely because they are familiar. They are manual fallbacks when Current Skill + agent-executable surface + ACTIVE shared runtime cannot preserve the Required Native Output. Figma is treated separately as an optional agent-executable TEMP adapter when its connector is exposed and its capacity/explicit-delivery conditions pass.
+Do **not** route first to Penpot / Photopea / SketchUp Web merely because they are familiar. They are manual fallbacks when Current Skill + agent-executable surface + ACTIVE shared runtime cannot preserve the Required Native Output. Figma is not a generic fallback: it is only considered after its explicit-delivery / existing-Figma-source activation gate has already passed.
 
 ## Execution Surface｜must resolve per required capability
 Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW_ONLY_OR_REFERENCE / CAPABILITY_HOLD`.
