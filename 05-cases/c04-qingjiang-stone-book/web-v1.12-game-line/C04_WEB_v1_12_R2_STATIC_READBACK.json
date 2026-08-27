@@ -1,6 +1,6 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_19",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_AND_HERO_R06_SOURCE_RESOLUTION",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_20",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_AND_HERO_R06_R13_SOURCE_RESOLUTION",
   "observed_at": "2026-08-27",
   "public_sections": 18,
   "first_section": "01",
@@ -65,9 +65,21 @@
         "content_readback": "PASS",
         "runtime_materialization": "PENDING",
         "decision": "USE EXACT EXISTING QJ-D V1.1 R06 LANDSCAPE-FIRST SOURCE; KEEP HOLD/TRUTH BOUNDARY; NO MODEL OR AI SUBSTITUTE"
+      },
+      {
+        "runtime_path": "assets/r13_passage_sequence.png",
+        "canonical_visual_source": "QJ-D v1.1 R13 Four-Frame / BEFORE-INSIDE-EXIT-BACK-LOOK",
+        "drive_file_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+        "drive_filename": "QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+        "bytes": 481744,
+        "sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+        "content_readback": "PASS",
+        "truth_boundary": "REMOTE SPATIAL CONCEPT / NOT SITE PHOTO; DOES NOT ESTABLISH REAL CLEARANCE, WIDTH, SURFACE, SAFETY OR FIELD GEOMETRY",
+        "runtime_materialization": "PENDING",
+        "decision": "USE EXISTING QJ-D V1.1 R13 FOUR-FRAME IDENTITY ONLY AS CONCEPTUAL PASSAGE SEQUENCE; PRESERVE NOT-SITE-PHOTO BOUNDARY; NO APPROXIMATE SUBSTITUTE"
       }
     ],
-    "verified_missing_runtime_samples": ["assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg"],
+    "verified_missing_runtime_samples": ["assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg","assets/r13_passage_sequence.png"],
     "verified_missing_samples_are_complete_list": false,
     "validator": "verify_game_line.mjs / C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_16",
     "validator_contract": "collect HTML/CSS/JS assets/* references; fail on missing or zero-byte files",
@@ -83,7 +95,7 @@
     "reduced_motion_preference_emulation": "NOT_RUN",
     "reduced_motion_state_equivalence_readback": "NOT_RUN"
   },
-  "truth_boundary": "ROUTE-03 IS MATERIALIZED; EXISTING QJ-D V1.1 HERO AND R06 LANDSCAPE-FIRST SOURCES HAVE BEEN LOCATED, OPENED, AND SHA-VERIFIED, BUT THEIR REQUIRED GITHUB RUNTIME REPRESENTATIONS assets/hero_qingjiang.jpg AND assets/r06_qingjiang.jpg ARE STILL MISSING; RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
+  "truth_boundary": "ROUTE-03 IS MATERIALIZED; EXISTING QJ-D V1.1 HERO, R06 LANDSCAPE-FIRST, AND R13 FOUR-FRAME SOURCES HAVE BEEN LOCATED AND CONTENT-READ, BUT REQUIRED GITHUB RUNTIME REPRESENTATIONS assets/hero_qingjiang.jpg, assets/r06_qingjiang.jpg, AND assets/r13_passage_sequence.png ARE STILL MISSING. R13 IS REMOTE CONCEPT / NOT SITE PHOTO AND MUST NOT BE READ AS FIELD GEOMETRY. RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_structure_readback_pass": true,
   "asset_integrity_pass": false,
   "current_static_gate_pass": false,
