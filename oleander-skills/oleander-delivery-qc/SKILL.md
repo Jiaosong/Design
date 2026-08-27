@@ -6,7 +6,30 @@ compatibility: Uses MediaInfo 26.05, ExifTool 13.59, Ghostscript 10.07.1, FFmpeg
 
 # Oleander Delivery QC
 
-Treat QC as a reproducible release gate. Inspect without modifying masters unless the user explicitly requests a repair; write corrected derivatives separately.
+Inherit `00-governance/runtime/OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v1.0.json` for editable-master identity, source/derivative separation, real-dimension authority, cross-software handoff and AI-generated-visual boundaries. This Skill does not create another environment or review system.
+
+Treat QC as a reproducible release gate. Inspect without modifying masters unless the user explicitly requests a repair; write corrected derivatives separately. A visually correct derivative does not prove that the native master is healthy, editable or authoritative.
+
+## Gate 0: design-environment integrity
+
+Before package-level QC, identify the production chain for every material design object.
+
+Required checks:
+
+- One Current editable master is identifiable per logical design object.
+- Source Authority and Current master are distinguishable from references, generated supplements and delivery derivatives.
+- The native/open-native master is reopenable when native-source health is part of the release claim.
+- PNG/JPG/screenshots/renders/deployments/previews are not silently treated as editable masters.
+- Derived exports have not become Current through filename drift or convenience alone.
+- Unit system, scale, dimension authority and geometry authority are recorded when physical scale matters.
+- UI labels, body copy, marketing copy, dimensions and annotations remain editable text/vector in the master when editability is required.
+- Figma handoffs that claim editability retain native components/variants/variables/Auto Layout/text where applicable rather than flattened screenshots.
+- Cross-software transitions record format, units/scale/axis or canvas, dependencies, known losses/bakes and reopen/round-trip result.
+- Any AI-generated visual is explicitly supplemental and carries zero authority for dimensions, engineering, hidden geometry, factual site/product proof, final UI/system text or component structure.
+
+Return `HOLD` when the claimed native master cannot be identified or reopened, or when a derivative has become the only recoverable copy of a design that requires an editable source.
+
+Return `REVISE/HOLD` when an undeclared cross-software handoff changes scale/axis/coordinate state, loses required text/component editability, drops linked dependencies or hides a bake/loss that affects downstream use.
 
 ## Gate 1: package integrity
 
@@ -14,16 +37,25 @@ Treat QC as a reproducible release gate. Inspect without modifying masters unles
 - Names, versions, dates, and status markers follow the project convention.
 - No temporary, autosave, cache, proxy, or obsolete final files are mixed into delivery.
 - Checksums are produced for final immutable files when appropriate.
+- Current master, derived export, generated supplement and superseded/archive roles remain distinguishable without relying on ambiguous names such as `final-final`.
+- Only one Current master pointer exists per logical object; superseded masters remain traceable but do not compete with Current.
 
 ## Gate 2: research and rights
 
 - Important claims link to approved evidence.
 - Credits, licenses, model releases, font rights, music rights, and stock licenses are present.
 - Confidential or personal information is not unintentionally included.
+- Generated supplemental imagery, if allowed and used, is traceable as synthetic rather than presented as source evidence or factual documentation.
 
 ## Gate 3: images and boards
 
 Check dimensions, effective DPI, aspect ratio, ICC profile, alpha, bit depth, compression, missing links, missing fonts, overset text, bleed, trim, and safe margins. Render PDFs to images for visual comparison when needed.
+
+Also check:
+
+- Rasterized/outlined text is not mistaken for the editable text master; when production requires outlines, the editable text source and type specification/font provenance remain preserved separately.
+- AI-rendered text is never accepted as final text/annotation asset.
+- A generated or treated image does not silently alter verified product/site/material facts.
 
 ### Source-independent visual QA fallback
 
@@ -54,11 +86,16 @@ Use MediaInfo, FFmpeg/ffprobe, and ExifTool to check container, codec, duration,
 
 Compare the result with the delivery specification. Detect black frames, silence, clipping, missing audio, unexpected variable frame rate, and duration mismatch where practical.
 
+Where editability or future continuation is part of the delivery claim, distinguish the editable timeline/scene/project source from the rendered media derivative and preserve source asset identity, linked dependencies and known baked operations.
+
 ## Gate 5: 3D and interactive
 
 - Open the exchange file in a clean context when possible.
 - Check scale, origin, axis, geometry count, materials, textures, caches, plugins, cameras, animation range, and relative paths.
 - Confirm preview/thumbnail and manifest match the packaged asset.
+- Confirm the exchange/render/viewer is bound to the declared authoritative editable model and has not silently replaced it.
+- For physical-scale work, compare model units/bounds and key dimensions with the declared dimension/geometry authority source.
+- Treat AI imagery, perspective renders and browser viewers as zero hidden-dimensional authority unless explicitly bound to verified geometry.
 - For websites or interactive charts, check local assets, responsive layout, keyboard access, missing links, and offline behavior if required.
 
 ### Gate 5.1: interaction-state legibility
@@ -88,17 +125,39 @@ A screenshot or design board can support visible differentiation, but cannot by 
 
 Return `REVISE/HOLD` when visible states are ambiguous, focus is not visibly locatable where required, a state distinction depends on unsupported styling/motion alone, or an accessibility/conformance claim exceeds the runtime evidence.
 
+## Gate 6: cross-software handoff audit
+
+When a material design object crossed tools or formats, inspect the handoff record and compare upstream/downstream evidence.
+
+Minimum fields:
+
+- object ID;
+- upstream Current master;
+- upstream and downstream tools/runtimes;
+- exchange format;
+- units / scale / axis / coordinate state or canvas size;
+- color profile and font/text policy when relevant;
+- linked dependency policy;
+- editable information preserved;
+- known losses, triangulation, outline conversion, rasterization, modifier/animation/texture baking;
+- reopen or round-trip check;
+- material hash/commit when appropriate.
+
+A downstream file can be visually acceptable while still failing the handoff if required editability, scale, geometry identity or dependencies were lost.
+
 ## Report format
 
 Use:
 
 1. Release candidate and specification
-2. Pass/fail summary
-3. Blocking defects
-4. Non-blocking warnings
-5. File-by-file evidence
-6. Required fixes and owner
-7. Recheck results
-8. Final sign-off status
+2. Design-environment integrity / Current master identity
+3. Pass/fail summary
+4. Blocking defects
+5. Non-blocking warnings
+6. File-by-file evidence
+7. Cross-software handoff evidence
+8. Required fixes and owner
+9. Recheck results
+10. Final sign-off status
 
-Never mark a deliverable approved while blocking defects remain.
+Never mark a deliverable approved while blocking defects remain. Never infer native-source health from a visually correct derivative, and never use AI-generated visuals or previews as evidence for dimensions, engineering truth, source authority or editable-system structure.
