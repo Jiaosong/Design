@@ -57,6 +57,7 @@
       "native_authority": ["IFC2x3/IFC4/IFC4x3 project data as applicable", "IFC file as BIM source of truth"],
       "outputs": ["IFC", "IFCZIP", "BCF/CSV/JSON derivatives when implemented"],
       "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "candidate_validation_2026_08_27": "IFC_CREATE_WRITE_REOPEN_SMOKE_PASS",
       "boundary": "Does not claim proprietary Revit/RVT authoring, code compliance, discipline signoff or field truth. Bonsai is not bound to the current Blender 5.2 runtime until compatibility is separately verified."
     },
     "PARAMETRIC_SOLID_CAD": {
@@ -64,18 +65,21 @@
       "native_authority": ["versioned parametric Python source", "BRep/STEP solid geometry"],
       "outputs": ["STEP", "BREP", "STL", "glTF", "DXF where applicable"],
       "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "candidate_validation_2026_08_27": "CADQUERY_STEP_EXPORT_REOPEN_DIMENSION_CHECK_AND_FREECAD_HEADLESS_STEP_EXPORT_PASS",
       "boundary": "Professional parametric solid CAD and exchange geometry; not an automotive Class-A surfacing claim."
     },
     "TECHNICAL_DXF_DRAWING": {
       "owner_runtime": "ezdxf + governed source dimensions",
       "outputs": ["DXF", "SVG/PDF derivatives through existing vector pipeline"],
       "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "candidate_validation_2026_08_27": "DXF_CREATE_SAVE_REOPEN_SMOKE_PASS",
       "boundary": "Drawing generation does not replace engineering approval, GD&T authority, tolerance stack analysis or supplier proof."
     },
     "CAM_TOOLPATH": {
       "owner_runtime": "FreeCAD CAM on demand",
       "outputs": ["CAM job", "toolpath", "controller-specific G-code after explicit postprocessor selection"],
       "target_state_after_validation": "CANDIDATE_THEN_ACTIVE_ONLY_AFTER_REAL_GCODE_SMOKE",
+      "candidate_validation_2026_08_27": "FREECAD_1_1_3_CAM_JOB_PATH_OBJECT_PLUS_LINUXCNC_POSTPROCESS_NONEMPTY_GCODE_PASS",
       "required_inputs": ["authoritative part geometry", "stock", "tool library", "feeds/speeds", "work coordinate system", "machine/controller", "postprocessor"],
       "boundary": "Never treat generic toolpath or G-code as machine-safe. Controller postprocessor, collision/simulation, tooling and fabrication validation remain required."
     },
@@ -83,12 +87,14 @@
       "owner_runtime": "ImageMagick deterministic pipeline plus optional darktable-cli/GIMP batch adapters",
       "outputs": ["layer-independent deterministic raster derivatives", "ICC-aware transforms where configured", "RAW-developed derivatives when darktable is available"],
       "target_state_after_validation": "ACTIVE_SHARED_RUNTIME_FOR_DETERMINISTIC_RASTER",
+      "candidate_validation_2026_08_27": "DETERMINISTIC_PNG_GENERATE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
       "boundary": "Does not equal Photoshop-level subjective high-end retouching, hand masking/painting, proprietary smart-object workflow or human beauty-retouch judgment. Layered high-end retouch remains PARTIAL/HOLD when required."
     },
     "MOTION_VIDEO_POST": {
       "owner_runtime": "FFmpeg + existing Blender compositor/animation runtime",
       "outputs": ["edit/transcode", "filtergraph composition", "audio/video mux", "frame extraction", "deterministic motion/render derivatives"],
       "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "candidate_validation_2026_08_27": "FFMPEG_GENERATE_PLUS_FFPROBE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
       "boundary": "Does not equal the complete interactive AE/Premiere/Resolve experience, advanced proprietary plugins, collaborative NLE project interchange or specialist HDR/color-finishing approval."
     },
     "AUTOMOTIVE_CLASS_A_SURFACING": {
@@ -111,7 +117,39 @@
     "python": "90-shared/toolchains/pro-design/python.sh",
     "freecad": "90-shared/toolchains/pro-design/freecad.sh",
     "raster": "90-shared/toolchains/pro-design/raster.sh",
-    "motion": "90-shared/toolchains/pro-design/motion.sh"
+    "motion": "90-shared/toolchains/pro-design/motion.sh",
+    "smoke": "90-shared/toolchains/pro-design/smoke.sh"
+  },
+  "validation_state": "RUNTIME_SMOKE_VALIDATED_CANDIDATE_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+  "validation_evidence": {
+    "validated_at": "2026-08-27",
+    "candidate_commit": "16672434ec9798324b6419d37b4b5101d07d8767",
+    "workflow_name": "OLEANDER Professional Design Toolchain Runtime",
+    "workflow_run_id": 33047483244,
+    "workflow_run_number": 16,
+    "workflow_url": "https://github.com/Jiaosong/Design/actions/runs/33047483244",
+    "runner": "ubuntu-24.04",
+    "result": "SUCCESS",
+    "verified_passes": [
+      "IFCOPENSHELL_0_8_5_INSTALL_AND_IFC_CREATE_WRITE_REOPEN",
+      "CADQUERY_2_8_0_STEP_EXPORT_REOPEN_20x10x5_DIMENSION_CHECK",
+      "EZDXF_1_4_4_DXF_CREATE_SAVE_REOPEN",
+      "IMAGEMAGICK_MATERIALIZE_AND_PNG_DIMENSION_READBACK",
+      "FFMPEG_MATERIALIZE_GENERATE_AND_FFPROBE_READBACK",
+      "FREECAD_1_1_3_APPIMAGE_SHA256_VERIFY_EXTRACT_TRUE_FREECADCMD_HEADLESS_VERSION",
+      "FREECAD_FCSTD_AND_STEP_WRITE",
+      "FREECAD_CAM_REAL_JOB_OPERATIONS_GROUP_PATH_OBJECT",
+      "FREECAD_1_1_3_NATIVE_LINUXCNC_POSTPROCESS_NONEMPTY_GCODE_WITH_G21_G0_G1_AND_X10_000"
+    ],
+    "explicit_nonproofs": [
+      "MACHINE_SAFETY",
+      "COLLISION_FREE_FABRICATION",
+      "ENGINEERING_APPROVAL",
+      "CLASS_A_SURFACE_QUALITY",
+      "DESIGN_QUALITY",
+      "FIELD_TRUTH"
+    ],
+    "promotion_boundary": "THIS_EVIDENCE_VALIDATES_RUNTIME_EXECUTION_ONLY; CONTRACT_REMAINS_CANDIDATE_UNTIL REQUIRED REVIEW_AND_EXPLICIT_PROMOTION"
   },
   "promotion_requirements": [
     "MACHINE_READABLE_CONTRACT_VALID",
@@ -123,7 +161,9 @@
     "FFMPEG_GENERATE_PROBE_SMOKE_PASS",
     "FREECAD_HEADLESS_PARAMETRIC_EXPORT_PASS_BEFORE_FREECAD_IS_ACTIVE",
     "REAL_GCODE_POSTPROCESS_SMOKE_PASS_BEFORE_CAM_IS_ACTIVE",
-    "CURRENT_ROUTING_AND_ENVIRONMENT_CARD_UPDATED_WITHOUT_ERASING_HOLD_BOUNDARIES"
+    "CURRENT_ROUTING_AND_ENVIRONMENT_CARD_UPDATED_WITHOUT_ERASING_HOLD_BOUNDARIES",
+    "VERIFIABLE_INDEPENDENT_REVIEW_OR_OTHER_EXISTING_PROMOTION_AUTHORITY_REQUIREMENT",
+    "EXPLICIT_PROMOTION"
   ],
   "does_not_prove": [
     "DESIGN_QUALITY",
