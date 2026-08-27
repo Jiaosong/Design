@@ -1,0 +1,78 @@
+{
+  "schema": "OLEANDER_EXECUTION_RECEIPT_v1.0",
+  "object_id": "PRAC-20260827-3D-WEB-ROLE-BINDING",
+  "mode": "CANDIDATE",
+  "current_authority": [
+    "oleander-story-and-board@main",
+    "oleander-3d-pipeline@main",
+    "C04 Web current producer PR#353"
+  ],
+  "existing_candidate_reused": "PR#205 Mixed-media evidence-role gate",
+  "type": {
+    "primary_domain": "Digital/Interaction",
+    "primary_type": "Embedded 3D Technical Viewer",
+    "supporting_type": "3D Technical Proof",
+    "stage": "Design Development / Portfolio Web",
+    "brief_status": "PARTIAL"
+  },
+  "artifact": {
+    "path": "index.html",
+    "sha256": "67f501ded691aec56192ddce1e547a2eebaf32cab2d0701694d87c5cbe1ffa79",
+    "desktop_readback_sha256": "072f3df5ce47d5e0c847c56ad05b92adfa8de07e3728203a8814104a35c416b3",
+    "mobile_readback_sha256": "2f1dac9ecaa788959a37e58f1ef359cef4ea3db8e8abf41843c8e8d7e2b77bd1",
+    "section_readback_sha256": "68766e2ddf9830a4210e47ea83b05a59a8ed1933003751549aac67437d00b2f1",
+    "modeloff_readback_sha256": "af6d402fc474c39597253f5e1da2a8d777633b174dcfc26a7d102ca5044741af"
+  },
+  "actual_readback": {
+    "desktop_scroll_width": 1440,
+    "mobile_scroll_width_before_fix": 524,
+    "mobile_scroll_width_after_fix": 390,
+    "states": ["AXON", "SECTION_SETTLED", "MODEL_OFF_SETTLED"],
+    "chromium": "EXECUTED via page.set_content",
+    "file_or_localhost_navigation": "BLOCKED_BY_ADMIN_POLICY"
+  },
+  "internal_crit": {
+    "type": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT",
+    "producer_id": "openai:gpt-5.6-sol:automation-producer",
+    "verdict": "RETEST_ACCEPTED_FOR_CANDIDATE_EVIDENCE",
+    "root_causes": [
+      "mobile intrinsic-width overflow",
+      "dual-primary ghosting during view transition",
+      "fallback screenshot before settling / weak fallback contrast"
+    ],
+    "feedback_actions": [
+      "bounded min-width and mobile controls",
+      "nonselected view opacity=0",
+      "settling wait + stronger fallback poster"
+    ]
+  },
+  "project_reapplication": {
+    "project": "PRJ-C04-QINGJIANG-SHISHU",
+    "production_pr": 353,
+    "path": "support/C04_MODEL_TECHNICAL_PROOF_SUPPORT_v0_1.html",
+    "status": "CANDIDATE_VALIDATION_SUPPORT_NOT_RUNTIME_OWNER",
+    "source_locator": "assets/fluid_rest_object.png",
+    "missing_source_behavior": "FAIL_CLOSED_NO_SUBSTITUTE",
+    "desktop_scroll_width": 1440,
+    "mobile_scroll_width": 390
+  },
+  "evidence_gate": "PASS_FOR_TRAINING_EXECUTION",
+  "design_quality_gate": "HOLD_INDEPENDENT_REVIEW_OPEN",
+  "independent_review": {
+    "producer_id": "openai:gpt-5.6-sol:automation-producer",
+    "reviewer_id": null,
+    "review_input_artifact_id": "PRAC-20260827-3D-WEB-ROLE-BINDING/index.html",
+    "review_input_hash": "67f501ded691aec56192ddce1e547a2eebaf32cab2d0701694d87c5cbe1ffa79",
+    "reviewer_independence_state": "NOT_RUN",
+    "review_verdict": null,
+    "promotion_authority": "NONE"
+  },
+  "skill_status": "CANDIDATE_EXTENSION_ONLY_NOT_INSTALLED_CURRENT",
+  "transaction_closed": true,
+  "oleander_flow_closed": false,
+  "holds": [
+    "independent professional review",
+    "C04 exact model source/runtime binding",
+    "full C04 asset integrity/browser runtime"
+  ]
+}
