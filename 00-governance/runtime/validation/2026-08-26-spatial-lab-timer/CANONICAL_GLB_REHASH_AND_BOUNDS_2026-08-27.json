@@ -1,0 +1,24 @@
+{
+  "schema": "oleander.spatial-canonical-rehash-bounds.v0.1",
+  "date": "2026-08-27",
+  "source": {
+    "name": "timer_100_pbr.glb",
+    "bytes": 8507960,
+    "sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "expected_sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+    "hash_match": true,
+    "mesh_count": 21
+  },
+  "source_bounds_xyz": {
+    "lo": [-59.0, -64.19999694824219, -3.5],
+    "hi": [59.0, 59.70000076293945, 30.68000030517578],
+    "extent": [118.0, 123.89999771118164, 34.18000030517578]
+  },
+  "lab_axis_map": "source XYZ -> lab XZY; source Z -> lab vertical Y",
+  "canonical_bounds_lab": {
+    "lo": [-59.0, -3.5, -64.19999694824219],
+    "hi": [59.0, 30.68000030517578, 59.70000076293945],
+    "extent": [118.0, 34.18000030517578, 123.89999771118164]
+  },
+  "truth_boundary": "CANONICAL_GLB_READ_ONLY_REHASH_AND_BOUNDS_EXTRACTION_ONLY_NOT_RUNTIME_SOURCE_MUTATION"
+}

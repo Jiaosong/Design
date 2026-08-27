@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.spatial-lab-professional-retest.v0.1",
+  "date": "2026-08-27",
+  "surface": "browser_spatial_lab",
+  "review_source": "PROFESSIONAL_REVIEW_01 S01-S05",
+  "project_binding": "Timer Light Basin / canonical GLB-derived AABB proxy / read-only review",
+  "source_sha256": "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66",
+  "source_mesh_count": 21,
+  "runtime_candidate": "browser-spatial-lab v0.3 repair",
+  "artifact_first_retest": {
+    "S01_proxy_object_identity": "PASS_VIEWPORT_LEGEND_SELECT_AND_SELECTED_LABEL",
+    "S02_bounds_and_selected_dimensions": "PASS_PROXY_SCENE_BOUNDS_CANONICAL_DECLARED_BOUNDS_SELECTED_OBJECT_SIZE_POSITION",
+    "S03_aabb_overread_warning": "PASS_PROMINENT_AABB_PROXY_ONLY_NOT_FORM_SILHOUETTE_CAD_GEOMETRY",
+    "S04_source_proxy_correspondence": "PASS_SOURCE_OBJECT_ID_PROXY_ROLE_AXIS_MAP_AND_GEOMETRY_EQUIVALENT_FALSE_VISIBLE",
+    "S05_scale_semantics": "PASS_ORTHO_EXACT_VIEW_PLANE_SCALE_PERSPECTIVE_NO_UNIFORM_SCALE_DEPTH_DEPENDENT",
+    "page_errors": [],
+    "mobile_errors": []
+  },
+  "evidence": {
+    "proxy_scene_bounds_xyz_mm": [118.0, 31.9, 123.2],
+    "canonical_source_bounds_lab_xyz_mm": [118.0, 34.18000031, 123.89999771],
+    "legend_objects": 5,
+    "front_scale": "ORTHO VIEW-PLANE SCALE · 50 mm = 323.77 px",
+    "axon_scale": "ORTHO VIEW-PLANE SCALE · 50 mm = 323.77 px",
+    "perspective_scale": "PERSPECTIVE · NO UNIFORM SCALE · DEPTH-DEPENDENT",
+    "mobile_width_contract": [390, 390],
+    "geometry_equivalent_true_fail_closed": true,
+    "dirty_scene_fail_closed": true,
+    "readback_hashes": {
+      "SPATIAL_LAB_V03_PERSPECTIVE.png": "615cd3e043fdf5bd17e3e636e0862e5e0f4f626a5ac960895ef051d1cb98c260",
+      "SPATIAL_LAB_V03_MOBILE_390x844.png": "c5afe144939510430acfe2b8df95e48de841e0469ce4212c287a63f27d0ab930",
+      "SPATIAL_LAB_V03_TOP.png": "bd58baa174490b5fde5248473dfabc721256dd7eb9e9fa7e32c6008955b3c019",
+      "SPATIAL_LAB_V03_FRONT.png": "f419595ed4afdc3d58c7a4eebee728044bfa2e41aa852bffd5b1155f5cf9f8e2",
+      "SPATIAL_LAB_V03_AXON.png": "4f314c6399fcf7da1adefdac4b9819c8bc9c23de1df927e0f76d59a2e8c7ca11"
+    }
+  },
+  "truth_boundary": {
+    "canonical_glb": "SOURCE_AUTHORITY_UNCHANGED",
+    "proxy_geometry_equivalent": false,
+    "proxy_role": "READBACK_ONLY",
+    "aabb_not_form_or_silhouette": true,
+    "orthographic_scale": "EXACT_VIEW_PLANE_SCALE_ONLY",
+    "perspective_scale": "NO_UNIFORM_SCALE_DEPTH_DEPENDENT",
+    "engineering_proof": false
+  },
+  "review_decision": "PROFESSIONAL_RETEST_PASS_S01_S05_FOR_PROXY_READBACK_RUNTIME",
+  "promotion": "INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED"
+}

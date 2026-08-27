@@ -1,0 +1,35 @@
+{
+  "status": "SCENE VALID + APPLIED",
+  "proxy_warning": "AABB PROXY ONLY — NOT FORM / SILHOUETTE / CAD GEOMETRY",
+  "bounds_readback": {
+    "proxy_scene_xyz_mm": [118.0, 31.9, 123.2],
+    "canonical_source_lab_xyz_mm": [118.0, 34.18, 123.9],
+    "axis_map": "source XYZ -> lab XZY; source Z -> lab vertical Y"
+  },
+  "legend_count": 5,
+  "selected_object": {
+    "id": "17_Side_Knob",
+    "proxy_role": "AABB_FROM_CANONICAL_MESH",
+    "size_xyz_mm": [16.0, 16.0, 8.0],
+    "position_xyz_mm": [18.0, 11.0, -60.2],
+    "geometryEquivalent": false
+  },
+  "front_tag": "ORTHOGRAPHIC_PROPORTION_READBACK / EXACT_VIEW_PLANE_SCALE",
+  "front_scale": "ORTHO VIEW-PLANE SCALE · 50 mm = 323.77 px",
+  "top_tag": "ORTHOGRAPHIC_PROPORTION_READBACK / EXACT_VIEW_PLANE_SCALE",
+  "axon_tag": "ORTHOGRAPHIC_PROPORTION_READBACK / EXACT_VIEW_PLANE_SCALE",
+  "axon_scale": "ORTHO VIEW-PLANE SCALE · 50 mm = 323.77 px",
+  "perspective_tag": "PERSPECTIVE_CAMERA_READBACK / NO_UNIFORM_SCALE_DEPTH_DEPENDENT",
+  "perspective_scale": "PERSPECTIVE · NO UNIFORM SCALE · DEPTH-DEPENDENT",
+  "geometry_equivalent_true_status": "SCENE ERROR / EXPORT BLOCKED",
+  "dirty_status": "SCENE DIRTY / VALIDATE + APPLY REQUIRED / EXPORT BLOCKED",
+  "mobile": {"scrollWidth": 390, "clientWidth": 390, "legend_count": 5, "errors": []},
+  "page_errors": [],
+  "hashes": {
+    "SPATIAL_LAB_V03_PERSPECTIVE.png": "615cd3e043fdf5bd17e3e636e0862e5e0f4f626a5ac960895ef051d1cb98c260",
+    "SPATIAL_LAB_V03_MOBILE_390x844.png": "c5afe144939510430acfe2b8df95e48de841e0469ce4212c287a63f27d0ab930",
+    "SPATIAL_LAB_V03_TOP.png": "bd58baa174490b5fde5248473dfabc721256dd7eb9e9fa7e32c6008955b3c019",
+    "SPATIAL_LAB_V03_FRONT.png": "f419595ed4afdc3d58c7a4eebee728044bfa2e41aa852bffd5b1155f5cf9f8e2",
+    "SPATIAL_LAB_V03_AXON.png": "4f314c6399fcf7da1adefdac4b9819c8bc9c23de1df927e0f76d59a2e8c7ca11"
+  }
+}
