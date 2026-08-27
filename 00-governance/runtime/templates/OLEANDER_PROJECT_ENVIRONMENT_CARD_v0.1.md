@@ -37,7 +37,9 @@ Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.j
 ## Cloud-Free Studio Preflight｜after native output + owner set, before manual SaaS
 Resolve each required capability in this order:
 
-`AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → ACTIVE_SHARED_REPO_RUNTIME → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
+`AGENT_EXECUTABLE → CURRENT OLEANDER SKILL → SHARED_REPO_RUNTIME → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
+
+**Lifecycle semantics:** the `SHARED_REPO_RUNTIME` production slot means **ACTIVE shared runtime only**. A Candidate shared runtime is not default-production eligible.
 
 Current Cloud-Free repo surfaces are **CANDIDATE**, not default production runtimes:
 - Responsive / visual staging → `browser-design-workbench/workbench.html`
