@@ -5,6 +5,7 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 cd "$repo_root"
 
 export OLEANDER_PRO_RUNTIME_HOME="${OLEANDER_PRO_RUNTIME_HOME:-${RUNNER_TEMP:-/tmp}/oleander-pro-design}"
+export OLEANDER_PRO_MATERIALIZE_MEDIA="${OLEANDER_PRO_MATERIALIZE_MEDIA:-1}"
 smoke_dir="${OLEANDER_PRO_SMOKE_DIR:-${RUNNER_TEMP:-/tmp}/oleander-pro-smoke}"
 mkdir -p "$smoke_dir"
 
