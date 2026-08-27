@@ -64,6 +64,47 @@ For each primary mixed-media composition:
 
 A mixed-media page is REVISE if it is visually polished but causes the viewer to mistake a derivative model/render/prototype for the underlying source authority.
 
+### Interactive 3D evidence-viewer binding — candidate extension
+
+When a model is embedded in a Web/portfolio viewer, extend the mixed-media gate rather than treating interactivity as a new evidence authority.
+
+Declare before styling:
+
+- `MODEL_ROLE = PRIMARY_DESIGN_OBJECT | TECHNICAL_PROOF | PROCESS_EVIDENCE | DECORATIVE_PREVIEW`;
+- `PRIMARY_PROJECT_EVIDENCE`;
+- `MODEL_SOURCE_ID / MODEL_SOURCE_VERSION / MODEL_SOURCE_HASH` when the source is resolved;
+- `VIEW_STATES` and whether they are camera/view changes of the same source object;
+- `FALLBACK_STATE` for model-load failure or unsupported runtime;
+- `TRUTH_BOUNDARY` and `DOES_NOT_PROVE`.
+
+Rules:
+
+1. `camera-controls`, orbit, pan, zoom, hotspots, annotations, animation, AR entry, or other viewer capabilities change interaction with the carrier; they do not upgrade source, Field, Engineering, Reality, or Design authority.
+2. A technical-proof viewer must not become the first-read project hero merely because motion, depth, or WebGL makes it more visually attractive than the current source-grounded project object.
+3. Axon / side / section / detail states must be same-object views or named derived views with traceable source identity. A view-state switch may not silently redraw or replace the model.
+4. A load failure must fail closed. Preserve model role, source status, truth boundary, and a deliberate poster/fallback; never insert unrelated or generated substitute geometry merely to avoid an empty frame.
+5. The fallback poster is a carrier state, not a second model authority. If only the poster is verified, do not claim interactive-model runtime PASS.
+6. Keep public-facing truth language human-readable; keep exact source/version/hash identity in the internal receipt/metadata when public codes would harm the work reading.
+7. If pan/target controls can move the viewer away from the intended proof, provide a reset/recenter path or use bounded view states.
+8. Screen-space annotations may improve legibility, but they must not imply occlusion, dimension, attachment, or geometry that the underlying model does not contain.
+9. Responsive recomposition may change viewer size, rail position, control layout, or copy measure; it may not hide the model role/truth state on the narrow carrier.
+10. Review the settled state after view transitions. A transition frame in which two views appear co-primary is a REVISE even if the final state is correct.
+
+Required attacks:
+
+- **MODEL-OFF** — remove/fail the model; the project claim and primary source authority must survive.
+- **HERO-TAKEOVER** — thumbnail/first-read check; a support model may not outrank the project object it explains.
+- **VIEW-STATE SAME-OBJECT** — switch all declared views and confirm source identity/anchors do not drift.
+- **LOAD-FAIL / FALLBACK** — force an invalid or missing source and read back the real fallback pixels.
+- **RESPONSIVE NATIVE VIEWPORT** — desktop and narrow carrier must preserve role/truth/status without horizontal overflow or global shrink.
+- **SETTLING** — read the post-transition settled state, not only the trigger or first animation frame.
+- **SOURCE-ID** — unresolved source bytes keep the viewer Candidate/HOLD; no approximate recovery by redraw or AI substitution.
+- **CONTEXT-OFF** — model alone must not make a stronger site/material/engineering claim than its declared role.
+
+Promotion test:
+
+> Remove or fail the interactive model: the project claim and source authority must survive. Restore the model: it may deepen technical reading but must not silently become the project's stronger truth source.
+
 ## Assembly workflow
 
 1. Pull approved claims and sources from Notion.
@@ -102,3 +143,4 @@ For any layout containing source-bound spatial evidence, include a short authori
 - Locked/current geometry is not distorted by layout convenience.
 - A redesign cannot be promoted if it is visually polished but spatially less credible than the best existing artifact.
 - Mixed-media compositions preserve explicit evidence roles and do not promote derivative media beyond what they can prove.
+- Interactive 3D viewers preserve model/source role, fail closed on load failure, and pass MODEL-OFF / HERO-TAKEOVER / native-viewport readback before candidate promotion.
