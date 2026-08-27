@@ -11,6 +11,7 @@ ROUTING = RUNTIME / "OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json"
 CARD = RUNTIME / "templates" / "OLEANDER_PROJECT_ENVIRONMENT_CARD_v0.1.md"
 STUDIO = RUNTIME / "cloud-free-studio" / "index.html"
 IMAGE_RECEIPT = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "VALIDATION_RECEIPT_v0.1.json"
+IMAGE_RETEST = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "PROFESSIONAL_RETEST_01.json"
 SPATIAL_RECEIPT = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "VALIDATION_RECEIPT_v0.1.json"
 WORKBENCH_RECEIPT = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "VALIDATION_RECEIPT_v0.1.json"
 WORKBENCH_RESULTS = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "BROWSER_TEST_RESULTS_v0.2.json"
@@ -27,14 +28,15 @@ def require(text: str, tokens: list[str], label: str) -> None:
 
 
 def main() -> None:
-    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, SPATIAL_RECEIPT, WORKBENCH_RECEIPT, WORKBENCH_RESULTS]
+    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, IMAGE_RETEST, SPATIAL_RECEIPT, WORKBENCH_RECEIPT, WORKBENCH_RESULTS]
     if any(not p.exists() for p in required_files):
-        fail("pack / registry / routing / project card / studio / validation receipt or result missing")
+        fail("pack / registry / routing / project card / studio / validation receipt, retest or result missing")
 
     pack = json.loads(PACK.read_text(encoding="utf-8"))
     reg = json.loads(REGISTRY.read_text(encoding="utf-8"))
     routing = json.loads(ROUTING.read_text(encoding="utf-8"))
     image_receipt = json.loads(IMAGE_RECEIPT.read_text(encoding="utf-8"))
+    image_retest = json.loads(IMAGE_RETEST.read_text(encoding="utf-8"))
     spatial_receipt = json.loads(SPATIAL_RECEIPT.read_text(encoding="utf-8"))
     workbench_receipt = json.loads(WORKBENCH_RECEIPT.read_text(encoding="utf-8"))
     workbench_results = json.loads(WORKBENCH_RESULTS.read_text(encoding="utf-8"))
@@ -142,20 +144,50 @@ def main() -> None:
         fail("image lab validation state drifted or was prematurely promoted")
     if image_spec.get("validation_receipt") != "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json":
         fail("image lab validation receipt pointer missing")
+    if image_spec.get("professional_review_01_state") != "REVISE":
+        fail("image lab professional review 01 must preserve REVISE history")
+    if image_spec.get("professional_retest_01_state") != "PASS_I01_I06_INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED":
+        fail("image lab professional retest state missing or prematurely promoted")
+    if image_spec.get("persistent_readback_2026_08_27") != "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Image-Lab-Retest-01":
+        fail("image lab professional retest persistent pointer drifted")
     require(files["browser_image_lab"], [
         "<canvas", "Export PNG derivative", "Export Config JSON",
         "Before view · true source fit", "SOURCE_BYTES_READ_ONLY",
         "sha256", "IMAGE MIME REQUIRED / SOURCE CLEARED",
         "EXPORT BLOCKED / SOURCE REQUIRED", "DERIVATIVE_NOT_SOURCE_AUTHORITY",
+        "oleander.image-treatment-config.v0.4", "Output role", "Target width px", "Target height px",
+        "Focal X · source 0–1", "Crop-safe %", "COVER · no gutters", "pointerdown",
+        "SPLIT · before / working", "CHECK TONAL LOSS", "SOURCE RESOLUTION HOLD",
+        "LOWER TARGET OR USE BETTER SOURCE", "qualityHoldOverride",
     ], "image lab")
     if image_receipt.get("status") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
         fail("image validation receipt status invalid")
     if image_receipt.get("review", {}).get("independent_design_review") != "OPEN":
         fail("image lab cannot self-grant independent review")
     if image_receipt.get("persistent_readback", {}).get("library_folder") != "/Oleander/90_Archive/Runtime-Validation/2026-08-26/Image-Lab":
-        fail("image lab persistent readback location drifted")
+        fail("image lab original persistent readback location drifted")
     if image_receipt.get("project_binding", {}).get("source_sha256") != "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4":
         fail("image lab source identity drifted")
+    if image_retest.get("source_sha256") != "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4":
+        fail("image professional retest source identity drifted")
+    if image_retest.get("promotion") != "INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED":
+        fail("image professional retest cannot self-grant Independent KEEP or ACTIVE")
+    if image_retest.get("persistent_readback", {}).get("library_folder") != "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Image-Lab-Retest-01":
+        fail("image professional retest Library pointer drifted")
+    aq = image_retest.get("artifact_first_retest", {})
+    for key in (
+        "I01_target_role_ratio", "I02_focal_crop_safe_drag", "I03_tonal_clipping_diagnostic",
+        "I04_transform_portability", "I05_ab_compare", "I06_effective_source_resolution",
+    ):
+        if not str(aq.get(key, "")).startswith("PASS_"):
+            fail(f"image professional retest missing {key}")
+    quality = image_retest.get("quality_boundary", {})
+    if quality.get("1200x1200_retail_pop_request") != "SOURCE_RESOLUTION_HOLD" or quality.get("1200_png_export") != "BLOCKED_BY_DEFAULT":
+        fail("image lab lost fail-closed high-resolution source-quality boundary")
+    if quality.get("400x400_digital_support") != "UPSCALE_CAUTION_NOT_HOLD":
+        fail("image lab 400px support quality boundary drifted")
+    if quality.get("source_quality") != "LIMITED_SOCIAL_SCREENSHOT_NOT_PRODUCT_HERO_SOURCE":
+        fail("image lab source-quality truth boundary drifted")
 
     spatial_spec = surfaces["browser_spatial_lab"]
     if spatial_spec.get("validation_state") != "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN":
@@ -216,6 +248,10 @@ def main() -> None:
     print("design_workbench_independent_review=OPEN")
     print("image_lab_functional_browser_readback=PASS")
     print("image_lab_persistence_remote_readback=PASS")
+    print("image_lab_professional_review_01=REVISE")
+    print("image_lab_professional_retest_01=PASS_I01_I06")
+    print("image_lab_1200_source_resolution=HOLD")
+    print("image_lab_400_digital_support=UPSCALE_CAUTION")
     print("image_lab_independent_review=OPEN")
     print("spatial_lab_functional_browser_readback=PASS")
     print("spatial_lab_persistence_remote_readback=PASS")
