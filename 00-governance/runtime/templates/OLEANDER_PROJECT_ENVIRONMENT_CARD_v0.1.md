@@ -2,7 +2,8 @@
 
 Status: **TEMPLATE / RUNTIME INPUT**  
 Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL OLEANDER DEFAULT unless explicitly overridden.  
-Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json`.
+Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json`.  
+Design production contract: `OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v1.0.json` — subordinate production contract; no new Method / Skill / Gate / authority.
 
 ## Identity
 - Project ID:
@@ -18,12 +19,25 @@ Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.j
 - Current Type Brief / METHOD:
 - Current OLEANDER Skill / Owner:
 - Current Design Source / Existing Mature Design:
+- Current Editable Master Object ID:
+- Current Editable Master Path / Locator:
+- Current Editable Master Format:
+- Design / Geometry Authority when different from presentation master:
+- Master Version / Commit / Revision:
 
 ## Required Output
 - Required Native Output(s):
 - Required Fidelity:
+- Editable source required?:
+- Text / annotation editability required?:
+- Unit system when applicable:
+- Real-size / scale basis when applicable:
+- Dimension Authority when applicable:
+- Geometry Authority when applicable:
 - Delivery Target:
+- Required Derived Formats:
 - Readback Matrix:
+- AI-generated visual role: `NONE` by default; otherwise `SUPPLEMENTAL_EFFECT_RENDER / REFERENCE_VISUAL / CONCEPT_EXPLORATION / DIAGRAM_SUPPORT` only
 
 ## Execution
 - Minimum Sufficient Owner Set:
@@ -34,6 +48,28 @@ Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.j
 - Source / Asset Location:
 - Editable Source Format:
 - Preview / Derivative Format:
+- Current semantic production zones mapped onto project folders:
+
+## Source / Master / Derivative split｜mandatory for material design production
+Do not collapse source, editable master, generated supplement and delivery derivative into one undifferentiated folder or file identity.
+
+| Role | Current object / path | Format | Authority / editability | Can become Current silently? |
+|---|---|---|---|---|
+| SOURCE_AUTHORITY | | | factual / geometric / project constraint | NO |
+| EDITABLE_MASTER | | | reconstructable Current design source | N/A — this is the Current master |
+| WORKING_DERIVATIVE | | | bounded intermediate | NO |
+| REFERENCE | | | read-only | NO |
+| GENERATED_SUPPLEMENT | | | synthetic supplemental visualization only | NO |
+| DERIVED_EXPORT | | | review / publish / delivery output | NO |
+| DELIVERY | | | package surface | NO |
+| ARCHIVE_OR_SUPERSEDED | | | provenance only | NO |
+
+Rules:
+- One logical design object has one identified Current editable master.
+- PNG / JPG / screenshot / render / deployment / preview is not the editable master.
+- A derivative becomes a master only through an explicit identity + authority update; filename drift is not promotion.
+- Semantic roles above map onto the project's existing folder architecture. Do **not** create a parallel directory tree just to match these labels.
+- TEMP / autosave / cache / proxy / obsolete-final files do not enter delivery.
 
 ## Software Selection Preflight｜skill owner first, software second
 Do **not** choose software first. Resolve in this sequence:
@@ -47,34 +83,93 @@ Rules:
 - Existing editable project files/pages are reused before new SaaS files are created.
 - Low-file/page-limit software must not become Global Current.
 - `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CONNECTOR EXPOSED ≠ UNLIMITED PLAN CAPACITY`; manual web execution never counts as agent execution.
+- Tool convenience never authorizes loss of text editability, component structure, dimensions, geometry, coordinate systems, source identity or evidence state.
 
 ### Current software role matrix
 | Need | Preferred execution | Optional / fallback | Hard boundary |
 |---|---|---|---|
-| Web/UI implementation | HTML/CSS/JS/SVG + real browser | Figma connector only for existing-file or explicit Figma delivery; Penpot manual fallback | Figma/Penpot do not replace browser implementation evidence |
-| UI/vector design handoff | Editable repo-native SVG/HTML first | Figma connector if explicit editable Figma handoff and capacity check passes | Figma is OPTIONAL TEMP, not Global Current |
-| Raster/image treatment | Agent-executable deterministic source transform when sufficient | Candidate Image Lab for validation/support; Photopea manual fallback | Source authority remains unchanged; high-res quality must be proven |
-| 3D/spatial/product/CMF | **Blender ACTIVE shared runtime** when callable and fit | Candidate Spatial Lab for proxy/readback; SketchUp Web manual fallback | No fake BIM/CAD/Class-A/manufacturing geometry |
-| Technical/vector drawing | Editable SVG/PDF native | Candidate Technical SVG Lab for validation/support; Figma only for explicit handoff | Supplier/prepress/engineering approval remains OPEN when applicable |
-| Motion | Browser motion or Blender ACTIVE runtime, depending output | Manual tool only if native output cannot otherwise be preserved | Actual state/frame readback required |
+| Web/UI implementation | HTML/CSS/JS/SVG + real browser | Figma connector only for existing-file or explicit Figma delivery; Penpot manual fallback | Figma/Penpot do not replace browser implementation evidence; text/state/semantics stay editable |
+| UI/vector design handoff | Editable repo-native SVG/HTML first | Figma connector if explicit editable Figma handoff and capacity check passes | Figma is OPTIONAL TEMP, not Global Current; components/variables/Auto Layout/text stay native when required |
+| Graphic / brand / packaging / POP | Editable vector/layout source | Figma for explicit handoff; Illustrator/InDesign or equivalent only when already available or externally operated | Flattened raster is derivative; dieline/bleed/trim/text remain separable when applicable |
+| Raster/image treatment | Agent-executable deterministic source transform when sufficient | Candidate Image Lab for validation/support; Photopea manual fallback; Photoshop-equivalent only when already available | Source authority remains unchanged; original source identity and pixel/color intent preserved |
+| 3D/spatial/product/CMF | **Blender ACTIVE shared runtime** when callable and fit | Candidate Spatial Lab for proxy/readback; SketchUp Web manual fallback; verified CAD/BIM/Class-A runtime only if actually available | No fake BIM/CAD/Class-A/manufacturing geometry; units and geometry authority remain explicit |
+| Technical/vector drawing | Verified source dimensions + editable SVG/PDF-native chain | Candidate Technical SVG Lab for validation/support; Figma only for explicit handoff; specialist CAD only when verified | AI/raster imagery has zero dimension authority; editable annotations retained |
+| Data/GIS | Governed data + oleander-data-viz + SVG/HTML; QGIS/GDAL/GeoPandas when verified | bounded specialist adapter | Dataset/CRS/units remain authority, not decorative pixels |
+| Motion | Browser motion or Blender ACTIVE runtime, depending output | specialist video/motion software only when already available or externally operated | Actual state/frame readback required; rendered video does not prove editable source health |
 | Deploy/share | Vercel connector when exposed and free/existing plan fits; GitHub Pages / Cloudflare Pages Free | manual deploy only if needed | Deploy PASS ≠ Browser PASS ≠ Design PASS |
 
 ### Figma capacity rule
-Figma is now an **agent-executable connector when exposed**, but it remains an **OPTIONAL TEMP adapter** because low shared file/page limits and vendor lock-in disqualify it from Global Current.
+Figma is an **agent-executable connector when exposed**, but it remains an **OPTIONAL TEMP adapter** because low shared file/page limits and vendor lock-in disqualify it from Global Current.
 
 Before any new Figma file:
 1. Is Figma explicitly required by the deliverable, or does an existing Figma file materially improve the task?
 2. Can the existing project file/page be reused instead of creating a new file?
 3. Is current file/team capacity available without paid upgrade or deletion pressure?
-4. Is recoverable repo/open-native source preserved outside Figma?
+4. Is recoverable repo/open-native source preserved outside Figma or is a recoverable handoff strategy recorded?
 
 If any required answer is NO → do not create a new Figma file; route to repo-native production, another verified execution surface, or HOLD.
+
+When Figma is the required editable handoff, keep components, variants, variables, Auto Layout and text native. A screenshot, flattened export or node-count receipt does not prove native editability or design quality.
 
 Current connector/plugin check 2026-08-27:
 - Figma connector: **installed / agent-executable when exposed**.
 - Penpot ChatGPT plugin: **not found**.
 - Photopea ChatGPT plugin: **not found**.
 - SketchUp ChatGPT plugin: **not found**.
+
+## Real dimensions / geometry authority｜when physical scale matters
+Required for spatial, architecture, landscape, interior, product, packaging structure, technical drawing and fabrication communication.
+
+- Unit system:
+- Scale / real-size basis:
+- Dimension Authority source:
+- Geometry Authority source:
+- Origin / axis / coordinate reference when applicable:
+- FIELD / Engineering / Manufacturing validation state when applicable:
+- Recommended value + reasonable range + basis + sensitivity + FIELD check used where exact field data is unavailable?:
+
+Hard rules:
+- AI-generated imagery has **zero dimensional authority**.
+- A perspective render has no hidden dimensional authority unless bound to verified geometry.
+- A scale figure does not replace actual dimension data.
+- Unknown field conditions stay OPEN; do not invent exact dimensions to make a drawing look finished.
+
+## Text / vector editability contract
+- UI labels, body copy, marketing copy, dimensions and annotations remain editable text or vector text in the master when editability is required.
+- AI-rendered text is never a final text asset.
+- Rasterized or outlined text is a derivative unless the production specification explicitly requires outlines.
+- When production artwork requires outlined text, preserve the editable text source plus type specification / font provenance separately.
+
+## AI-generated visual boundary
+Default: **NONE / do not use unless active constraints allow it and it materially improves the required result**.
+
+Allowed only as:
+- supplemental effect render;
+- reference visual;
+- concept exploration;
+- diagram support.
+
+Never use as:
+- Source Authority;
+- dimension / engineering evidence;
+- native editable master;
+- final UI/system text;
+- design-system component source;
+- factual site/product proof without independent evidence.
+
+If generated pixels conflict with verified source geometry, dimensions or facts, the verified source wins. Final text, labels, dimensions, components and system geometry must be rebuilt as real editable assets.
+
+## Cross-software handoff ledger｜required for material tool / format transitions
+| Object ID | Upstream master | Downstream tool/runtime | Exchange format | Units / scale / axis or canvas | Color / font / dependency policy | Editable information preserved | Known losses / bakes | Round-trip / reopen result | Hash / commit |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
+
+Handoff FAIL conditions:
+- undeclared unit / scale / axis / coordinate change;
+- missing linked assets, fonts or texture dependencies;
+- text, components or annotations flattened when editability is required;
+- derivative replaces the master without explicit authority update;
+- known information loss is hidden or unrecorded.
 
 ## Cloud-Free Studio Preflight｜after native output + owner set, before manual SaaS
 Resolve each required capability in this order:
@@ -136,7 +231,10 @@ A conversation cannot write `EXECUTED` unless that surface was actually probed a
 - Free or capacity limit:
 - Existing-file reuse checked?:
 - Source:
+- Input / upstream master:
 - Output format:
+- Editable information preserved?:
+- Known loss / bake:
 - Fallback:
 - Lock-in risk:
 - Status:
@@ -158,7 +256,9 @@ Required fields when Independent Review is applicable:
 `reviewer_independence_state=INDEPENDENT` requires `reviewer_id != producer_id`. A title such as “Professional Review” is not independence evidence. A review record missing the identity fields above is treated as `INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT`, not Independent Review.
 
 - Source / static-validator readback:
-- Actual browser / pixel / interaction readback:
+- Actual browser / pixel / interaction / model readback:
+- Master-source reopen / editability readback:
+- Cross-software handoff readback:
 - Evidence Gate:
 - Design Quality Gate:
 - Runtime / Browser Gate:
@@ -166,7 +266,8 @@ Required fields when Independent Review is applicable:
 - Does not prove:
 
 `SOURCE READBACK / CI / VALIDATOR PASS ≠ BROWSER PASS ≠ DESIGN PASS`.  
-`INTERNAL CRIT ≠ INDEPENDENT REVIEW`.
+`INTERNAL CRIT ≠ INDEPENDENT REVIEW`.  
+`DERIVATIVE LOOKS CORRECT ≠ NATIVE MASTER HEALTHY`.
 
 ## Transaction Policy｜minimum sufficient process
 Default for one logical object: **one Production PR** carries:
@@ -176,6 +277,22 @@ Default for one logical object: **one Production PR** carries:
 Independent Review should be a PR Review or isolated review record bound to the exact artifact hash. A separate review-only PR is **not** the default and is used only when explicit organizational/regulatory separation requires it.
 
 `NO COMPRESSION / NO LOSS` protects information and evidence, not process length.
+
+## Design-environment Definition of Done
+A production transaction cannot claim its design environment is closed until all applicable items are resolved:
+
+- [ ] Current editable master identified and reopenable.
+- [ ] Source Authority bound to the master / design decision chain.
+- [ ] Native master and delivery derivatives are explicitly separated.
+- [ ] Unit / scale / dimension / geometry authority recorded when physical scale matters.
+- [ ] Text, annotations, tokens/components and system assets remain editable when required.
+- [ ] Software role + execution surface + lifecycle + capacity boundary recorded.
+- [ ] Material cross-software transitions have a typed handoff record and known-loss statement.
+- [ ] Any AI-generated visual is supplemental, traceable and non-authoritative.
+- [ ] Actual visual/runtime/model/physical readback executed as applicable.
+- [ ] Blocking review defects are repaired or explicitly HOLD.
+- [ ] Recoverable Current master + required derivatives are persisted.
+- [ ] No parallel competing Current master was created.
 
 ## Closure
 - Actual Readback:
