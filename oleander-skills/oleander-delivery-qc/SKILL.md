@@ -1,7 +1,7 @@
 ---
 name: oleander-delivery-qc
 description: Perform final technical, visual, metadata, dependency, licensing, and package checks for Oleander deliverables. Use whenever the user mentions Oleander final checks, delivery review, preflight, missing fonts or links, PDF inspection, image DPI/ICC, video codec/frame-rate/color/audio checks, model texture dependencies, file naming, archive completeness, MediaInfo, ExifTool, Ghostscript, FFmpeg, or release sign-off.
-compatibility: Uses MediaInfo 26.05, ExifTool 13.59, Ghostscript 10.07.1, FFmpeg, ImageMagick, PDF tools, and the Oleander Python environment.
+compatibility: Capability-first and per-run probed. MediaInfo, ExifTool, Ghostscript, FFmpeg, ImageMagick, PDF tools, Python, browser/runtime viewers, or other QC tools may be used only when the actual execution surface is available and fit for the required proof class. No fixed local Oleander Python environment or installed tool version is assumed globally.
 ---
 
 # Oleander Delivery QC
