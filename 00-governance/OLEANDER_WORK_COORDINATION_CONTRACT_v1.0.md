@@ -1,6 +1,7 @@
 # OLEANDER Work Coordination Contract v1.0
 
-Status: CURRENT CANDIDATE GOVERNANCE CONTRACT pending PR/CI/readback.
+Status: CURRENT ACTIVE GOVERNANCE CONTRACT / MAIN-MERGED / CI + MAIN READBACK VERIFIED.
+Evidence: PR #400 → merge commit `1d374d6d8ac1ac468c64758c0cd3b79c01ae8c2c`; AI Governance Evals run #3162 / run ID `33093638477` = `SUCCESS`; main path reopened after merge.
 Role: cross-project coordination contract; not a new Design Method, Skill, Gate, or project Source Authority.
 
 ## Purpose
@@ -56,7 +57,7 @@ Required handoff fields:
 - `CURRENT_NATIVE_MASTER`
 - `REQUIRED_NATIVE_OUTPUT` when applicable
 - `SOURCE / DIMENSION / GEOMETRY AUTHORITY`
-- `KNOWN ASSUMPTIONS`
+- `KNOWN_ASSUMPTIONS`
 - `WHAT_CHANGED`
 - `WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT`
 - `CURRENT_PR_FRONTIER`
