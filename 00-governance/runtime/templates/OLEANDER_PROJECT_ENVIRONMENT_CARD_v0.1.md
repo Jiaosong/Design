@@ -3,7 +3,8 @@
 Status: **TEMPLATE / RUNTIME INPUT**  
 Parent: `OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0` — ACTIVE CURRENT / GLOBAL OLEANDER DEFAULT unless explicitly overridden.  
 Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.json`.  
-Design production contract: `OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v1.0.json` — subordinate production contract; no new Method / Skill / Gate / authority.
+Design production contract: `OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v1.0.json` — subordinate production contract; no new Method / Skill / Gate / authority.  
+Professional toolchain candidate: `OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json` → `90-shared/toolchains/pro-design` — runtime smoke validated Candidate only; not default production eligible until existing review/promotion requirements are satisfied.
 
 ## Identity
 - Project ID:
@@ -93,11 +94,11 @@ Rules:
 | Web/UI implementation | HTML/CSS/JS/SVG + real browser | Figma **explicit-only exception** after activation gate; Penpot manual only when a separate design workspace is genuinely required | Generic UI does not probe/recommend/create Figma; browser implementation evidence remains required |
 | UI/vector design handoff | Editable repo-native SVG/HTML first | Figma only for explicit Figma delivery or existing authoritative Figma continuation/repair after capacity check | Figma is not a generic UI workspace; components/variables/Auto Layout/text stay native when Figma is explicitly required |
 | Graphic / brand / packaging / POP | Editable vector/layout source | Figma for explicit handoff only; Illustrator/InDesign or equivalent only when already available or externally operated | Flattened raster is derivative; dieline/bleed/trim/text remain separable when applicable |
-| Raster/image treatment | Agent-executable deterministic source transform when sufficient | Candidate Image Lab for validation/support; Photopea manual fallback; Photoshop-equivalent only when already available | Source authority remains unchanged; original source identity and pixel/color intent preserved |
-| 3D/spatial/product/CMF | **Blender ACTIVE shared runtime** when callable and fit | Candidate Spatial Lab for proxy/readback; SketchUp Web manual fallback; verified CAD/BIM/Class-A runtime only if actually available | No fake BIM/CAD/Class-A/manufacturing geometry; units and geometry authority remain explicit |
-| Technical/vector drawing | Verified source dimensions + editable SVG/PDF-native chain | Candidate Technical SVG Lab for validation/support; Figma only for explicit Figma handoff; specialist CAD only when verified | AI/raster imagery has zero dimension authority; editable annotations retained |
+| Raster/image treatment | Agent-executable deterministic source transform when sufficient | **Candidate Pro Design Toolchain** deterministic raster for validation/support; Candidate Image Lab; Photopea manual fallback; Photoshop-equivalent only when already available | Candidate runtime ≠ Active; source authority remains unchanged; original source identity and pixel/color intent preserved; high-end subjective retouch remains specialist/HOLD when required |
+| 3D/spatial/product/CMF | **Blender ACTIVE shared runtime** when callable and fit | **Candidate Pro Design Toolchain** for validated OpenBIM IFC / parametric solid CAD / bounded CAM validation; Candidate Spatial Lab; SketchUp Web manual fallback | Candidate IFC/STEP/CAM evidence does not unlock proprietary BIM/RVT, engineering approval, machine safety, Class-A or manufacturing approval; units and geometry authority remain explicit |
+| Technical/vector drawing | Verified source dimensions + editable SVG/PDF-native chain | **Candidate Pro Design Toolchain** for validated DXF generation/readback; Candidate Technical SVG Lab; Figma only for explicit Figma handoff | AI/raster imagery has zero dimension authority; editable annotations retained; DXF generation does not prove GD&T/engineering/supplier approval |
 | Data/GIS | Governed data + oleander-data-viz + SVG/HTML; QGIS/GDAL/GeoPandas when verified | bounded specialist adapter | Dataset/CRS/units remain authority, not decorative pixels |
-| Motion | Browser motion or Blender ACTIVE runtime, depending output | specialist video/motion software only when already available or externally operated | Actual state/frame readback required; rendered video does not prove editable source health |
+| Motion | Browser motion or Blender ACTIVE runtime, depending output | **Candidate Pro Design Toolchain** FFmpeg deterministic post for validation/support; specialist video/motion software only when already available or externally operated | Candidate FFmpeg runtime ≠ specialist NLE/color finishing; actual state/frame readback required; rendered video does not prove editable source health |
 | Deploy/share | Vercel connector when exposed and free/existing plan fits; GitHub Pages / Cloudflare Pages Free | manual deploy only if needed | Deploy PASS ≠ Browser PASS ≠ Design PASS |
 
 ### Figma explicit-only gate + capacity rule
@@ -188,6 +189,7 @@ Current Cloud-Free repo surfaces are **CANDIDATE**, not default production runti
 - Bounded raster treatment / composition A-B → `browser-image-lab/image-lab.html`
 - Concept spatial proxy / camera / scale → `browser-spatial-lab/spatial-lab.html`
 - Technical vector / packaging / POP preflight → `browser-technical-svg-lab/technical-svg-lab.html`
+- Professional OpenBIM IFC / parametric solid CAD / DXF / bounded CAM postprocess / deterministic raster / FFmpeg validation → `90-shared/toolchains/pro-design` — **runtime-smoke validated Candidate**, evidence: GitHub Actions run `33047483244` / run #16 / commit `16672434ec9798324b6419d37b4b5101d07d8767`; machine safety, engineering approval, proprietary BIM/RVT and Class-A remain HOLD.
 
 Candidate surface rule: `VALIDATION / TRAINING / SUPPORT / BOUNDED PROJECT REAPPLICATION WITH EXPLICIT CANDIDATE LABEL` only. A Candidate surface must **not** become `DEFAULT_PRODUCTION_OWNER`, `SOLE_FINAL_NATIVE_OUTPUT_AUTHORITY`, or an unlabeled Current production route. Default production routing requires an **ACTIVE** runtime.
 
@@ -205,8 +207,11 @@ Allowed values: `AGENT_EXECUTABLE / SHARED_REPO_RUNTIME / USER_WEB_MANUAL / VIEW
 | Raster/image treatment | | | | | | | |
 | UI/prototype workspace | | | | | | | |
 | 3D/spatial authoring | | | | | | | |
+| OpenBIM / IFC | | | | | | | |
+| Parametric solid CAD / STEP | | | | | | | |
+| CAM / postprocessor / G-code | | | | | | | |
 | 3D viewing | | | | | | | |
-| Technical/vector preflight | | | | | | | |
+| Technical/vector / DXF preflight | | | | | | | |
 | Build / compute | | | | | | | |
 | Deploy / share | | | | | | | |
 
@@ -218,6 +223,7 @@ A conversation cannot write `EXECUTED` unless that surface was actually probed a
 - Agent-executable connector capability:
 - ACTIVE shared repository runtime capability:
 - Candidate shared repository runtime capability:
+- Validated Candidate runtime evidence / run / commit:
 - Runtime lifecycle: `ACTIVE / CANDIDATE / SUPPORT / HOLD`:
 - Default production eligible?:
 - Free Web manual capability:
@@ -298,16 +304,3 @@ A production transaction cannot claim its design environment is closed until all
 - [ ] Blocking review defects are repaired or explicitly HOLD.
 - [ ] Recoverable Current master + required derivatives are persisted.
 - [ ] No parallel competing Current master was created.
-
-## Closure
-- Actual Readback:
-- Internal Crit:
-- Root Cause / Feedback:
-- Repair:
-- Retest:
-- Independent Review:
-- Persistence / Remote Readback:
-- Current Cleanup:
-
-`TRANSACTION CLOSED` = this mutation/repair transaction is persisted.  
-`OLEANDER FLOW CLOSED` = every required applicable phase is complete, including Independent Review when required, with no unresolved FAIL/HOLD.
