@@ -1,23 +1,155 @@
 {
   "schema": "oleander.shared-execution-surfaces.v0.1",
-  "status": "CANDIDATE_RUNTIME_REGISTRY",
+  "status": "ACTIVE_EXECUTION_SURFACE_REGISTRY",
+  "implementation_revision": "0.2",
   "parent": "OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0",
-  "selection_rule": "CURRENT_SKILL_FIRST; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY",
+  "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY",
   "surfaces": {
-    "github_connector": {"class": "AGENT_EXECUTABLE", "role": "SOURCE_AND_RUNTIME_MUTATION", "cross_conversation": true},
-    "notion_connector": {"class": "AGENT_EXECUTABLE", "role": "CURRENT_KNOWLEDGE_AND_PROJECT_STATE", "cross_conversation": true},
-    "google_drive_connector": {"class": "AGENT_EXECUTABLE_WHEN_EXPOSED", "role": "ASSET_ARCHIVE_DELIVERY", "cross_conversation": true},
-    "oleander_browser_design_workbench": {"class": "SHARED_REPO_RUNTIME", "lifecycle_state": "CANDIDATE", "default_production_eligible": false, "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"], "path": "00-governance/runtime/browser-design-workbench/workbench.html", "role": "REAL_RESPONSIVE_IFRAME_READBACK_SHELL", "cross_conversation": true, "external_saas_required": false, "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "project_source_mutation": false, "global_current_store": false, "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN", "validation_receipt": "00-governance/runtime/validation/2026-08-26-design-workbench-c04/VALIDATION_RECEIPT_v0.1.json"},
-    "oleander_browser_image_lab": {"class": "SHARED_REPO_RUNTIME", "lifecycle_state": "CANDIDATE", "default_production_eligible": false, "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"], "path": "00-governance/runtime/browser-image-lab/image-lab.html", "role": "BOUNDED_RASTER_TREATMENT_AND_COMPOSITION", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "global_current_store": false},
-    "oleander_browser_spatial_lab": {"class": "SHARED_REPO_RUNTIME", "lifecycle_state": "CANDIDATE", "default_production_eligible": false, "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"], "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html", "role": "PARAMETRIC_CONCEPT_MASSING_CAMERA_SCALE", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "engine": "ZERO_DEPENDENCY_NATIVE_CANVAS_3D_PROJECTION", "global_current_store": false},
-    "oleander_browser_technical_svg_lab": {"class": "SHARED_REPO_RUNTIME", "lifecycle_state": "CANDIDATE", "default_production_eligible": false, "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"], "path": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html", "role": "EDITABLE_VECTOR_TECHNICAL_PACKAGING_POP_PREFLIGHT", "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED", "runtime_readback": "REAL_BROWSER_REQUIRED", "global_current_store": false},
-    "html_css_js_svg_threejs": {"class": "SHARED_REPO_RUNTIME", "role": "NATIVE_BROWSER_PRODUCTION", "cross_conversation": true},
-    "vercel_connector": {"class": "AGENT_EXECUTABLE_WHEN_EXPOSED", "role": "OPTIONAL_DEPLOY_READBACK", "policy": "FREE_OR_EXISTING_PLAN_ONLY_NO_UPGRADE_REQUIREMENT"},
-    "figma": {"class": "OPTIONAL_TEMP_ADAPTER", "global_current_store": false, "reason": "STARTER_TEAM_SPACE_LOW_FILE_PAGE_LIMIT_AND_VENDOR_LOCK_IN_RISK", "drafts": "NOT_CROSS_CONVERSATION_AUTHORITY"},
-    "penpot": {"class": "USER_WEB_MANUAL", "global_current_store": false},
-    "photopea": {"class": "USER_WEB_MANUAL", "role": "RASTER_FALLBACK", "global_current_store": false},
-    "sketchup_web": {"class": "USER_WEB_MANUAL", "role": "SPATIAL_CONCEPT_FALLBACK", "global_current_store": false},
-    "complex_bim_cad_class_a_archviz": {"class": "CAPABILITY_HOLD", "rule": "DO_NOT_FAKE_PROFESSIONAL_NATIVE_OUTPUT"}
+    "github_connector": {
+      "class": "AGENT_EXECUTABLE",
+      "role": "SOURCE_AND_RUNTIME_MUTATION",
+      "cross_conversation": true,
+      "default_production_eligible": true
+    },
+    "notion_connector": {
+      "class": "AGENT_EXECUTABLE",
+      "role": "CURRENT_KNOWLEDGE_AND_PROJECT_STATE",
+      "cross_conversation": true,
+      "default_production_eligible": true
+    },
+    "google_drive_connector": {
+      "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
+      "role": "ASSET_ARCHIVE_DELIVERY",
+      "cross_conversation": true,
+      "default_production_eligible": true,
+      "boundary": "Canonical Path and remote readback required"
+    },
+    "blender_shared_runtime": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "ACTIVE",
+      "default_production_eligible": true,
+      "role": "EDITABLE_3D_SPATIAL_PRODUCT_CMF_MOTION_RENDER_RUNTIME",
+      "contract": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json",
+      "preferred_wrapper": "tools/oleander-runtime/blender.sh",
+      "runtime_probe_required_per_run": true,
+      "global_current_store": false,
+      "boundary": "project-specific absolute paths forbidden; derived mesh/render does not silently replace authoritative geometry/source"
+    },
+    "html_css_js_svg_browser_native": {
+      "class": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME",
+      "lifecycle_state": "ACTIVE",
+      "default_production_eligible": true,
+      "role": "NATIVE_BROWSER_UI_VECTOR_INTERACTION_PRODUCTION",
+      "cross_conversation": true,
+      "runtime_readback": "REAL_BROWSER_REQUIRED"
+    },
+    "oleander_browser_design_workbench": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "CANDIDATE",
+      "default_production_eligible": false,
+      "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "path": "00-governance/runtime/browser-design-workbench/workbench.html",
+      "role": "REAL_RESPONSIVE_IFRAME_READBACK_SHELL",
+      "cross_conversation": true,
+      "external_saas_required": false,
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "project_source_mutation": false,
+      "global_current_store": false,
+      "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
+      "validation_receipt": "00-governance/runtime/validation/2026-08-26-design-workbench-c04/VALIDATION_RECEIPT_v0.1.json"
+    },
+    "oleander_browser_image_lab": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "CANDIDATE",
+      "default_production_eligible": false,
+      "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "path": "00-governance/runtime/browser-image-lab/image-lab.html",
+      "role": "BOUNDED_RASTER_TREATMENT_AND_COMPOSITION",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "global_current_store": false
+    },
+    "oleander_browser_spatial_lab": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "CANDIDATE",
+      "default_production_eligible": false,
+      "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
+      "role": "PARAMETRIC_CONCEPT_MASSING_CAMERA_SCALE_PROXY_READBACK",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "engine": "ZERO_DEPENDENCY_NATIVE_CANVAS_3D_PROJECTION",
+      "global_current_store": false,
+      "boundary": "proxy/readback only; not CAD/BIM/Class-A or canonical mesh replacement"
+    },
+    "oleander_browser_technical_svg_lab": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "CANDIDATE",
+      "default_production_eligible": false,
+      "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "path": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html",
+      "role": "EDITABLE_VECTOR_TECHNICAL_PACKAGING_POP_PREFLIGHT",
+      "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
+      "runtime_readback": "REAL_BROWSER_REQUIRED",
+      "global_current_store": false,
+      "boundary": "preflight/support only until ACTIVE; supplier proof remains outside runtime"
+    },
+    "vercel_connector": {
+      "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
+      "role": "OPTIONAL_DEPLOY_AND_DEPLOY_READBACK",
+      "policy": "FREE_OR_EXISTING_PLAN_ONLY_NO_UPGRADE_REQUIREMENT",
+      "boundary": "deploy success does not equal browser or design pass"
+    },
+    "figma_connector": {
+      "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
+      "role": "OPTIONAL_TEMP_EDITABLE_UI_VECTOR_DESIGN_ADAPTER",
+      "lifecycle_state": "OPTIONAL_TEMP",
+      "default_production_eligible": false,
+      "explicit_project_eligible": true,
+      "conditions": [
+        "EXISTING_FIGMA_FILE_OR_EXPLICIT_FIGMA_DELIVERY_REQUIRED",
+        "CURRENT_FILE_CAPACITY_CHECK_PASS",
+        "CURRENT_SKILL_AND_REQUIRED_NATIVE_OUTPUT_ALLOW_FIGMA_ADAPTER",
+        "REPO_OR_OPEN_NATIVE_SOURCE_REMAINS_RECOVERABLE"
+      ],
+      "reuse_policy": "REUSE_EXISTING_FILE_AND_PAGE_BEFORE_CREATING_NEW_FILE",
+      "global_current_store": false,
+      "reason": "LOW_SHARED_FILE_PAGE_LIMIT_AND_VENDOR_LOCK_IN_RISK",
+      "boundary": "connector availability does not equal unlimited capacity or Global Current authority"
+    },
+    "penpot": {
+      "class": "USER_WEB_MANUAL",
+      "role": "OPTIONAL_UI_DESIGN_FALLBACK",
+      "default_production_eligible": false,
+      "global_current_store": false,
+      "plugin_state_2026_08_27": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
+    },
+    "photopea": {
+      "class": "USER_WEB_MANUAL",
+      "role": "RASTER_FALLBACK",
+      "default_production_eligible": false,
+      "global_current_store": false,
+      "plugin_state_2026_08_27": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
+    },
+    "sketchup_web": {
+      "class": "USER_WEB_MANUAL",
+      "role": "SPATIAL_CONCEPT_FALLBACK_AFTER_BLENDER_RUNTIME",
+      "default_production_eligible": false,
+      "global_current_store": false,
+      "plugin_state_2026_08_27": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
+    },
+    "three_d_viewer": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "ACTIVE_WHEN_PROJECT_RUNTIME_PROVIDES_IT",
+      "role": "GLTF_GLB_VIEW_AND_INTERACTION",
+      "default_production_eligible": true,
+      "boundary": "viewer does not prove modeling capability or canonical geometry authorship"
+    },
+    "complex_bim_cad_class_a_archviz": {
+      "class": "CAPABILITY_HOLD",
+      "rule": "DO_NOT_FAKE_PROFESSIONAL_NATIVE_OUTPUT"
+    }
   },
   "capability_pack": "00-governance/runtime/OLEANDER_CLOUD_FREE_CAPABILITY_PACK_v0.1.json",
   "global_current_disqualifiers": [

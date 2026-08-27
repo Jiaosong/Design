@@ -1,9 +1,9 @@
 {
   "schema": "oleander.cloud-free-project-profile.v1",
   "version": "1.0",
-  "implementation_revision": "1.2",
+  "implementation_revision": "1.3",
   "status": "ACTIVE_CURRENT_GLOBAL_DEFAULT",
-  "date": "2026-08-26",
+  "date": "2026-08-27",
   "scope": "ALL_OLEANDER_CONVERSATIONS_AND_PROJECTS_UNLESS_EXPLICITLY_OVERRIDDEN",
   "parent_runtime": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
   "role": "CONSTRAINT_PROFILE_NOT_NEW_ENVIRONMENT",
@@ -74,6 +74,27 @@
       "OLEANDER_FLOW_CLOSED": "ALL_REQUIRED_APPLICABLE_PHASES_INCLUDE_INDEPENDENT_REVIEW_WHEN_REQUIRED_AND_HAVE_NO_FAIL_OR_HOLD"
     }
   },
+  "software_selection_policy": {
+    "principle": "SKILL_OWNER_FIRST_SOFTWARE_SECOND",
+    "sequence": [
+      "CURRENT_OLEANDER_SKILL_OWNER_RESOLVED",
+      "REQUIRED_NATIVE_OUTPUT_AND_FIDELITY_RESOLVED",
+      "AGENT_EXECUTABLE_CURRENT_CONNECTOR_OR_NATIVE_SOURCE_TOOL",
+      "ACTIVE_SHARED_REPO_RUNTIME",
+      "VERIFIED_FREE_OR_INCLUDED_CLOUD_EXECUTION",
+      "USER_WEB_MANUAL_ONLY_IF_NATIVE_OUTPUT_IS_PRESERVED",
+      "CAPABILITY_HOLD"
+    ],
+    "rules": [
+      "SOFTWARE_FAMILIARITY_DOES_NOT_OVERRIDE_CURRENT_SKILL_OR_REQUIRED_NATIVE_OUTPUT",
+      "AGENT_EXECUTABLE_CONNECTOR_IS_PREFERRED_OVER_MANUAL_WEB_WHEN_BOTH_PRESERVE_THE_SAME_NATIVE_OUTPUT",
+      "ACTIVE_SHARED_RUNTIME_IS_PREFERRED_OVER_MANUAL_WEB_WHEN_BOTH_PRESERVE_THE_SAME_NATIVE_OUTPUT",
+      "CANDIDATE_SHARED_RUNTIME_IS_NOT_A_DEFAULT_PRODUCTION_SHORTCUT",
+      "EXISTING_EDITABLE_PROJECT_FILE_IS_REUSED_BEFORE_CREATING_A_NEW_SAAS_FILE",
+      "LOW_FILE_OR_PAGE_LIMIT_SOFTWARE_MUST_NOT_BECOME_GLOBAL_CURRENT",
+      "SOFTWARE_SELECTION_MUST_RECORD_ROLE_EXECUTION_SURFACE_LIFECYCLE_FREE_LIMIT_AND_FALLBACK"
+    ]
+  },
   "hard_rules": [
     "DO_NOT_REQUIRE_USER_LOCAL_INSTALL",
     "DO_NOT_REQUIRE_NEW_PAID_SOFTWARE_PLUGIN_OR_CLOUD_SERVICE",
@@ -89,11 +110,15 @@
     "CURRENT_OLEANDER_SKILL_PRECEDES_SHARED_REPO_RUNTIME_SELECTION",
     "CANDIDATE_SHARED_RUNTIME_IS_NOT_DEFAULT_PRODUCTION_ELIGIBLE",
     "INTERNAL_CRIT_IS_NOT_INDEPENDENT_REVIEW",
-    "ONE_PRODUCTION_PR_PER_LOGICAL_OBJECT_BY_DEFAULT"
+    "ONE_PRODUCTION_PR_PER_LOGICAL_OBJECT_BY_DEFAULT",
+    "BLENDER_ACTIVE_SHARED_RUNTIME_PRECEDES_SKETCHUP_WEB_MANUAL_FOR_SPATIAL_AUTHORING_WHEN_FIT",
+    "FIGMA_CONNECTOR_IS_OPTIONAL_TEMP_ADAPTER_NOT_GLOBAL_CURRENT",
+    "PHOTOPEA_AND_PENPOT_MANUAL_WEB_ARE_FALLBACKS_NOT_DEFAULT_PRIMARY_EXECUTION",
+    "REUSE_EXISTING_FIGMA_FILE_OR_PAGE_BEFORE_CREATING_NEW_FILE"
   ],
   "adapter_priority": [
-    "AGENT_EXECUTABLE_BROWSER_NATIVE",
-    "CURRENT_OLEANDER_SKILL",
+    "CURRENT_OLEANDER_SKILL_OWNER_RESOLVED_FIRST",
+    "AGENT_EXECUTABLE_CURRENT_CONNECTOR_OR_BROWSER_NATIVE",
     "ACTIVE_SHARED_REPO_RUNTIME",
     "VERIFIED_FREE_WEB_TOOL",
     "INCLUDED_FREE_QUOTA_CLOUD_COMPUTE",
@@ -108,7 +133,9 @@
     "CLAIM_MANUAL_WEB_TOOL_AS_AGENT_EXECUTED",
     "USE_AI_IMAGE_AS_FAKE_SOURCE",
     "DELETE_PROFESSIONAL_REQUIREMENT",
-    "TREAT_PREVIEW_AS_NATIVE_AUTHORITY"
+    "TREAT_PREVIEW_AS_NATIVE_AUTHORITY",
+    "CREATE_NEW_FIGMA_FILE_WITHOUT_CAPACITY_AND_EXISTING_FILE_REUSE_CHECK",
+    "ROUTE_TO_MANUAL_PENPOT_PHOTOPEA_OR_SKETCHUP_WHEN_AN_AGENT_EXECUTABLE_OR_ACTIVE_RUNTIME_CAN_PRESERVE_THE_REQUIRED_NATIVE_OUTPUT"
   ],
   "tooling": {
     "github_source_editing": {
@@ -135,39 +162,43 @@
       "boundary": "COMPUTE_HOLD when included quota is exhausted"
     },
     "static_deploy": {
-      "primary": ["GitHub Pages", "Cloudflare Pages Free", "Vercel free route when verified"],
-      "execution_surface": "SHARED_REPO_RUNTIME_OR_CONNECTOR_CONDITIONAL",
-      "cost_policy": "FREE_TIER_ONLY",
-      "strategy": "STATIC_FIRST"
+      "primary": ["Vercel connector when exposed and existing/free plan is sufficient", "GitHub Pages", "Cloudflare Pages Free"],
+      "execution_surface": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME_CONDITIONAL",
+      "cost_policy": "FREE_OR_EXISTING_PLAN_ONLY",
+      "strategy": "STATIC_FIRST",
+      "boundary": "deploy success does not equal browser or design pass"
     },
     "browser_native_implementation": {
       "primary": ["HTML", "CSS", "JavaScript", "SVG"],
-      "execution_surface": "SHARED_REPO_RUNTIME",
+      "execution_surface": "AGENT_EXECUTABLE_SOURCE_MUTATION_PLUS_BROWSER_RUNTIME",
       "boundary": "real browser readback required"
     },
     "raster_editing": {
-      "primary": ["Photopea Web"],
-      "execution_surface": "USER_WEB_MANUAL",
+      "primary": ["existing source + deterministic browser/repo transforms when sufficient", "Photopea Web only when manual raster editing is actually required"],
+      "candidate_support": ["OLEANDER Browser Image Lab — CANDIDATE / validation-support only"],
+      "execution_surface": "AGENT_EXECUTABLE_OR_USER_WEB_MANUAL_BY_CAPABILITY",
       "cost_policy": "FREE_BASIC_PATH",
-      "boundary": "manual derivative editing only; source authority unchanged"
+      "boundary": "manual derivative editing only; source authority unchanged; Candidate Image Lab is not default production owner"
     },
     "ui_design_prototyping": {
-      "primary": ["Penpot Cloud Professional free"],
-      "execution_surface": "USER_WEB_MANUAL",
-      "cost_policy": "FREE_HOSTED_PLAN",
-      "boundary": "not agent-executable until a connector is actually available and probed"
+      "primary": ["HTML/CSS/JS/SVG implementation when native web output is required", "Figma connector when an existing file or explicit Figma delivery is required and capacity check passes", "Penpot Cloud Professional free only as USER_WEB_MANUAL fallback"],
+      "execution_surface": "AGENT_EXECUTABLE_WHEN_FIGMA_CONNECTOR_EXPOSED_OR_USER_WEB_MANUAL",
+      "cost_policy": "NO_NEW_PAID_DEPENDENCY",
+      "boundary": "Figma remains optional TEMP adapter because low shared file/page limits and vendor lock-in disqualify it from Global Current; reuse an existing file/page before creating a new Figma file; Penpot is manual and not agent-executable"
     },
     "vector_technical": {
-      "primary": ["editable SVG", "browser preview", "PDF derivative"],
-      "execution_surface": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME",
+      "primary": ["editable SVG", "HTML/CSS/SVG browser preview", "PDF derivative", "Figma connector only when explicit editable Figma handoff is required"],
+      "candidate_support": ["OLEANDER Technical SVG Lab — CANDIDATE / validation-support only"],
+      "execution_surface": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME_BY_LIFECYCLE",
       "cost_policy": "FREE",
-      "boundary": "text dimensions and annotations remain editable"
+      "boundary": "text dimensions and annotations remain editable; supplier prepress proof remains open"
     },
     "spatial_concept_modeling": {
-      "primary": ["SketchUp for Web free"],
-      "execution_surface": "USER_WEB_MANUAL",
-      "cost_policy": "FREE_NON_SUBSCRIPTION_PATH",
-      "boundary": "subscription-only features, BIM, production CAD and high-end rendering are not implied"
+      "primary": ["Blender shared runtime", "SketchUp for Web free only as USER_WEB_MANUAL fallback"],
+      "candidate_support": ["OLEANDER Spatial Lab — CANDIDATE proxy/readback only"],
+      "execution_surface": "ACTIVE_SHARED_REPO_RUNTIME_OR_USER_WEB_MANUAL",
+      "cost_policy": "FREE_OR_INCLUDED_ONLY",
+      "boundary": "Blender shared runtime is the Current reusable 3D authoring path when callable; SketchUp Web is manual fallback; Candidate Spatial Lab is not CAD/BIM/Class-A authoring"
     },
     "three_d_viewer": {
       "primary": ["Three.js", "model-viewer", "glTF/GLB"],
@@ -178,27 +209,28 @@
       "primary": [],
       "execution_surface": "CAPABILITY_HOLD",
       "status": "CAPABILITY_HOLD_BY_DEFAULT",
-      "boundary": "do not substitute viewer SVG or AI image for professional geometry authoring"
+      "boundary": "do not substitute viewer SVG browser proxy or AI image for professional geometry authoring"
     },
     "architecture_visualization_from_zero": {
-      "primary": ["existing verified geometry/render/source imagery first"],
-      "execution_surface": "CAPABILITY_PARTIAL_OR_HOLD",
-      "boundary": "browser composition can handle framing and presentation; high-end CGI requires a verified render execution path"
+      "primary": ["existing verified geometry/render/source imagery first", "Blender shared runtime when verified for the required render task"],
+      "execution_surface": "ACTIVE_SHARED_RUNTIME_PARTIAL_OR_CAPABILITY_HOLD",
+      "boundary": "browser composition can handle framing and presentation; from-zero high-end CGI remains HOLD unless a verified render execution path and actual visual readback exist"
     }
   },
   "type_routes": {
     "web_ui_interaction": {
       "agent_default": ["Notion Type Brief", "GitHub source", "HTML/CSS/JS/SVG", "real browser", "free/static deploy", "desktop/mobile/state readback"],
+      "optional_agent_adapter": ["Figma connector only for existing-file or explicit Figma-delivery tasks after capacity check"],
       "optional_manual_design_workspace": ["Penpot"],
-      "boundary": "Penpot does not replace implementation/browser evidence"
+      "boundary": "Figma/Penpot do not replace implementation/browser evidence; Figma does not become Global Current"
     },
-    "graphic_brand_packaging_pop": ["source assets", "editable SVG master", "browser readback", "Photopea USER_WEB_MANUAL if raster treatment needed", "SVG/PDF/PNG derivatives", "Drive delivery"],
+    "graphic_brand_packaging_pop": ["source assets", "editable SVG master", "browser readback", "Figma connector only when explicit editable Figma handoff materially helps and file-capacity check passes", "Photopea USER_WEB_MANUAL only if raster treatment cannot be preserved by agent-executable source transforms", "SVG/PDF/PNG derivatives", "Drive delivery"],
     "data_viz_gis": ["CSV/JSON/GeoJSON", "oleander-data-viz", "SVG/HTML", "browser", "PNG readback"],
-    "architecture_landscape_interior_presentation": ["existing photos/drawings/geometry", "SVG/HTML/PDF composition", "browser readback", "SketchUp Web USER_WEB_MANUAL for concept modeling", "CAPABILITY_HOLD if new professional BIM/CAD/complex 3D is required"],
-    "architecture_visualization": ["existing source imagery/geometry/render", "composition and image treatment", "whole-frame/detail readback", "CAPABILITY_PARTIAL_OR_HOLD for from-zero high-end CGI"],
-    "product_cmf": ["existing geometry/photo", "browser 3D viewer", "parametric/simple geometry", "SVG technical communication", "CAPABILITY_HOLD for complex manufacturing CAD"],
-    "technical_drawing_engineering_diagram": ["verified source dimensions", "editable SVG", "PDF", "whole/detail readback"],
-    "motion": ["CSS", "Web Animations API", "JS", "SVG motion", "browser readback"]
+    "architecture_landscape_interior_presentation": ["existing photos/drawings/geometry", "Blender shared runtime when spatial authoring is required and callable", "SVG/HTML/PDF composition", "browser readback", "SketchUp Web USER_WEB_MANUAL only as fallback", "CAPABILITY_HOLD if new professional BIM/CAD/complex 3D is required"],
+    "architecture_visualization": ["existing source imagery/geometry/render", "Blender shared runtime when verified for the task", "composition and image treatment", "whole-frame/detail readback", "CAPABILITY_HOLD for unverified from-zero high-end CGI"],
+    "product_cmf": ["existing geometry/photo", "Blender shared runtime for editable 3D when callable", "browser 3D viewer", "SVG technical communication", "CAPABILITY_HOLD for complex manufacturing CAD/Class-A"],
+    "technical_drawing_engineering_diagram": ["verified source dimensions", "editable SVG", "PDF", "whole/detail readback", "supplier/engineering approval stays open when applicable"],
+    "motion": ["browser motion via CSS/Web Animations/JS/SVG when fit", "Blender animation/compositor when fit and callable", "actual state/frame readback"]
   },
   "plugin_policy": {
     "default": "NONE",
@@ -213,8 +245,10 @@
       "REMOVAL_DOES_NOT_DESTROY_ONLY_RECOVERABLE_DESIGN_COPY"
     ],
     "record_fields": ["NAME", "VERSION", "TYPE", "PURPOSE", "REQUIRED", "EXECUTION_SURFACE_CLASS", "FREE_LIMIT", "SOURCE", "OUTPUT_FORMAT", "FALLBACK", "LOCK_IN_RISK", "STATUS"],
-    "plugin_discovery_2026_08_26": {
+    "connector_discovery_2026_08_27": {
+      "figma": "INSTALLED_AND_AGENT_EXECUTABLE_WHEN_EXPOSED; OPTIONAL_TEMP_ADAPTER_ONLY",
       "penpot": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND",
+      "photopea": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND",
       "sketchup": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
     }
   },
@@ -260,6 +294,8 @@
     "FREE_TOOLS_EQUAL_FULL_PROFESSIONAL_SUITES",
     "THREE_JS_EQUALS_CAD_OR_BIM",
     "STATIC_DEPLOY_EQUALS_BROWSER_OR_DESIGN_PASS",
-    "ENGINEERING_MANUFACTURING_OR_FIELD_APPROVAL_OCCURRED"
+    "ENGINEERING_MANUFACTURING_OR_FIELD_APPROVAL_OCCURRED",
+    "FIGMA_CONNECTOR_AVAILABILITY_EQUALS_UNLIMITED_FIGMA_CAPACITY",
+    "MANUAL_WEB_TOOL_AVAILABILITY_EQUALS_AGENT_EXECUTION"
   ]
 }
