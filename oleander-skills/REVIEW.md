@@ -2,39 +2,85 @@
 
 ## Installed skills
 
-- `oleander-research`: Notion-first evidence, precedent, interview, and decision research.
-- `oleander-data-viz`: reproducible table, chart, animation, map, and export workflow.
-- `oleander-3d-pipeline`: 3D naming, units, exchange, axonometric, render, and archive workflow.
-- `oleander-story-and-board`: shared narrative for boards, reports, decks, brand stories, and films.
-- `oleander-delivery-qc`: non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D, and interactive outputs.
-- `oleander-motion`: purposeful motion design, native-first library routing, state-transition prototyping, 3D/procedural motion, interactive motion, Reduced Motion alternatives, delivery, effect selection and AR-S10 Motion QA.
+**Core framework v1.1 — 11 skills = 6 installed execution owners + 5 Candidate core skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
+
+### Existing installed skills
+
+- `oleander-research`: **KNOWLEDGE** primary — evidence, precedent, source comparison, interview and decision research.
+- `oleander-data-viz`: **DESIGN** primary — reproducible table, chart, GIS/map, animation, interactive and evidence visualization.
+- `oleander-3d-pipeline`: **DESIGN** primary — 3D naming, units, modeling, exchange, spatial/product model, render and archive workflow.
+- `oleander-story-and-board`: **PRESENTATION** primary — narrative, boards, reports, decks, VI manuals, brand stories and storyboards.
+- `oleander-delivery-qc`: **VALIDATION** primary — non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D and interactive outputs.
+- `oleander-motion`: **PRESENTATION** primary — purposeful motion, state transitions, interactive/3D motion, Reduced Motion, delivery and Motion QA.
+
+### New Candidate core skills — not installed execution owners yet
+
+- `oleander-web-ui` — **PRESENTATION** primary: repo-native HTML/CSS/JS/SVG, responsive UI, interaction/state and real-browser readback.
+- `oleander-visual-design` — **PRESENTATION** primary: graphic/brand/layout/typography/packaging-POP presentation and cross-media visual hierarchy.
+- `oleander-image-art-direction` — **PRESENTATION** primary: real-source image treatment, crop, masking, compositing, tonal hierarchy and image-text direction.
+- `oleander-technical-drawing` — **VALIDATION** primary: technical drawing hierarchy, dimension authority, DXF/SVG/PDF/CAD handoff and technical readback.
+- `oleander-design-process` — **DESIGN** primary: Research→Finding→Design Consequence, analysis diagrams, options, spatial/product/system reasoning and Validation Handoff.
+
+The five new skills enter as `CANDIDATE`; installation, Registry presence and Golden Case coverage do **not** self-promote them to installed execution owners, ACTIVE or Independent KEEP.
+
+## Lifecycle / task relationship
+
+The five OLEANDER scheduled workstreams are lifecycle owners, not five replacement Skills:
+
+`KNOWLEDGE → DESIGN → VALIDATION → PRESENTATION`
+
+`GOVERNANCE` supervises Current state, projects, Skill/runtime routing, versions, duplication, promotion and cross-system integrity. It is not a normal production Skill.
+
+The former broad skill-training loop must remain intact across DESIGN + VALIDATION:
+
+`Capability/Skill Gap → Existing Skill First → Required Native Output → Real Execution → Actual Artifact → Readback → Crit → Root Cause → Repair → Retest → Project Re-application → Skill Record`
+
+PRESENTATION retains the former aesthetic-training loop: mature-work study → Visible Fact → Design Inference → Transfer Rule → real A/B → final readback → project reverse review → repair/retest.
+
+KNOWLEDGE retains design + engineering + application knowledge development; the current `CLEANUP FIRST` Notion phase is temporary prioritization, not a replacement mission.
 
 ## Retrieval alias / authority routing
 
-Canonical query: **What are the currently installed OLEANDER reusable skills in GitHub?**
+Canonical installed-owner query: **What are the currently installed OLEANDER reusable execution skills in GitHub?** → use the six colon-formatted installed entries above and the current execution contracts.
 
-Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`.
+Canonical core-framework query: **What are the 11 current OLEANDER core reusable skills?** → use `SKILL_REGISTRY_v1.1.json` + this file and preserve `EXISTING_INSTALLED` versus `CANDIDATE` state.
 
-This file is the current repository-state source for the installed reusable skills list. Installed-skill existence does **not** prove that a skill, prompt, or model version has passed regression evaluation; promotion remains governed by AIG-01 and `evals/`.
+Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`, `11 core OLEANDER skills`, `OLEANDER skill registry`.
+
+`REVIEW.md` is the human-readable repository-state source. `SKILL_REGISTRY_v1.1.json` is the machine-readable routing source for the eleven-core framework, lifecycle owner, handoffs, runtime policy and capability boundaries. Individual `SKILL.md` files remain the execution contracts. Existing execution Owner Map / resolver remains authoritative for which skills are actually installed execution owners.
+
+Installed/core-skill existence does **not** prove that a skill, prompt, model, runtime or candidate version has passed regression evaluation or promotion; promotion remains governed by AIG-01, `evals/`, actual project validation and independent review where required.
 
 ## Review prompts
 
-1. Research: Organize site studies, policies, precedents, and interviews into a traceable Notion research system.
-2. Data visualization: Turn quarterly traffic, activity, and dwell-time data into interactive, animated, and editable outputs.
-3. 3D pipeline: Hand a Blender scene to Unreal while producing a layered Illustrator-ready exploded axonometric.
-4. Story and board: Compile approved findings, analysis diagrams, and renders into two A0 boards and a 12-page deck.
-5. Delivery QC: Inspect A0 PDFs, a 4K film, render images, and a GLB model without modifying masters.
-6. Motion: Design one state change as a no-motion baseline, candidate variants and Reduced Motion; justify any runtime library through the Motion Library & Effect Atlas and execute in a real runtime when available.
+1. Research: Organize site studies, policies, precedents and interviews into a traceable Current knowledge result without creating a parallel Notion taxonomy.
+2. Data visualization: Turn mixed-quality data into editable visual evidence while preserving units, uncertainty, geometry authority and truth states.
+3. 3D pipeline: Develop and hand off a spatial/product model while preserving units, axes, dimensions, dependencies, editable master identity and exchange evidence.
+4. Story and board: Compile approved findings, analysis diagrams, renders and brand rules into a coherent evidence-to-story presentation without flattening authority.
+5. Delivery QC: Inspect a multi-format release package non-destructively and separate blockers, warnings, rights, technical readiness and Design Quality boundaries.
+6. Motion: Design a state change with no-motion baseline, interruption/re-entry, Reduced Motion, actual runtime evidence and Motion QA.
+7. Web UI: Build a responsive repo-native interface and prove desktop/mobile/state/keyboard behavior in a real browser without defaulting to Figma.
+8. Visual design: Turn a claim/content set into a distinctive editable visual system and prove a material A/B improvement at target reading distance.
+9. Image art direction: Reframe and treat a real source image to strengthen hierarchy while preserving the evidence claim and source/derivative identity.
+10. Technical drawing: Convert authoritative geometry/dimensions into an editable technical drawing and reopen/roundtrip the required format without promoting provisional data to field truth.
+11. Design process: Turn evidence and constraints into visible analysis, at least two options, an editable design artifact, critique/repair and a clear technical Validation Handoff when needed.
 
 ## Acceptance checks
 
-- Research uses Notion rather than Zotero.
-- GIS instructions target QGIS 4 and avoid QGIS 3 paths.
-- Data work uses `C:\Users\Xianmu\.venvs\oleander`.
-- 3D handoffs record units, axes, dependencies, versions, and exchange tests.
-- Narrative outputs trace claims back to approved research.
-- QC distinguishes blocking defects from warnings and never edits masters without permission.
-- Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, uses native-first library routing, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility, dependency/runtime cost and export consistency.
+- Research uses the Current Notion knowledge architecture rather than Zotero or a parallel page tree.
+- The Notion knowledge base may be in `CLEANUP FIRST`; unresolved/uncanonical pages are not silently treated as Current Authority.
+- Data/visualization work is capability-first and per-run probed; no machine-specific local Python path is a global requirement.
+- GIS instructions do not assume a documented QGIS version is callable execution evidence.
+- 3D handoffs record units, axes, dependencies, versions, editable master identity and exchange tests.
+- Narrative outputs trace claims back to approved research/evidence and do not let layout overrule locked geometry or truth state.
+- QC distinguishes blocking defects from warnings, stays non-destructive and cannot grant Design KEEP merely because delivery checks pass.
+- Motion identifies a real Motion Role, includes no-motion and Reduced Motion paths, distinguishes designed/not-run from executed evidence, and applies runtime/interaction QA.
+- Web/UI uses HTML/CSS/JS/SVG + real browser by default; Figma is explicit-only.
+- Visual design preserves authoritative geometry/data/dimensions and formal editable text while applying an independent Design Quality Gate.
+- Image art direction uses real source first and cannot convert compositing, generative fill or tonal change into new factual evidence.
+- Technical drawing resolves Dimension/Geometry Authority before software convenience and preserves `NOT FOR CONSTRUCTION` / FIELD / engineering boundaries.
+- Design process creates actual editable design artifacts, compares options, performs readback/repair and hands technical proof to VALIDATION rather than self-certifying it.
+- New Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
 
 ## Reference Reconstruction Fidelity Gate
 
@@ -127,4 +173,4 @@ Before using or promoting a changed skill:
 
 ### Minimum coverage
 
-Each installed skill must have at least two maintained Golden Cases. CI validates case structure and AIG-01 coverage; actual AI run results require explicit versioned evidence and human approval before `PROMOTE`.
+Each of the eleven core skills must have at least two maintained Golden Cases. CI validates Registry structure, directory/SKILL.md presence, case structure and AIG-01 coverage. The six installed execution owners remain governed by the existing Owner Map/resolver; the five Candidate core skills require explicit project validation and promotion before they may join that installed-owner set.

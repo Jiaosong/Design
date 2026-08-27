@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.1",
+  "status": "CURRENT_SKILL_ROUTING_REGISTRY",
+  "purpose": "Machine-readable routing for the eleven OLEANDER core reusable skill identities. Core identity does not imply installed execution ownership. Existing specialist owners, draft candidates, Notion knowledge, Project Source Authority, runtime contracts, AIG evaluation and independent promotion gates retain their authority.",
+  "authority_order": [
+    "PROJECT_OR_SYSTEM_CURRENT_AUTHORITY",
+    "NOTION_CURRENT_CANONICAL_KNOWLEDGE_WHEN_APPLICABLE",
+    "EXISTING_EXECUTION_OWNER_MAP_AND_SKILL_CAPABILITY_CONTRACT",
+    "SKILL_REGISTRY_CORE_IDENTITY",
+    "SKILL_MD_OR_EXISTING_CANDIDATE_IMPLEMENTATION",
+    "REQUIRED_NATIVE_OUTPUT",
+    "RUNTIME_ROUTING",
+    "ACTUAL_READBACK_AND_REVIEW"
+  ],
+  "lifecycle_roles": ["KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION"],
+  "governance_note": "GOVERNANCE is an oversight layer, not a normal production skill. It maintains Current state, versions, routing, duplication, project state, runtime and promotion integrity across all skills.",
+  "core_identity_rule": "ELEVEN_CORE_IDENTITIES_DO_NOT_OVERRIDE_MINIMUM_SUFFICIENT_OWNER_SET_OR_EXISTING_SPECIALIST_OWNERSHIP",
+  "skills": [
+    {
+      "skill_id": "oleander-research",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "KNOWLEDGE",
+      "lifecycle_secondary": ["DESIGN"],
+      "capability": ["research", "evidence", "precedent", "source_comparison", "decision_brief"],
+      "handoff_out": ["oleander-design-process", "oleander-data-viz", "oleander-story-and-board"],
+      "runtime_policy": "SOURCE_AND_CONNECTOR_FIRST",
+      "cannot_prove": ["DESIGN_KEEP", "FIELD_TRUTH", "ENGINEERING_APPROVAL"]
+    },
+    {
+      "skill_id": "oleander-data-viz",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "DESIGN",
+      "lifecycle_secondary": ["PRESENTATION", "VALIDATION"],
+      "capability": ["data_visualization", "GIS", "mapping", "interactive_visualization", "evidence_graphics"],
+      "handoff_in": ["oleander-research", "oleander-design-process"],
+      "handoff_out": ["oleander-visual-design", "oleander-story-and-board", "oleander-delivery-qc"],
+      "runtime_policy": "CAPABILITY_FIRST_PER_RUN_PROBE",
+      "cannot_prove": ["SOURCE_AUTHORITY_BY_VISUALIZATION", "FIELD_TRUTH", "DESIGN_KEEP_BY_NUMERICAL_CORRECTNESS"]
+    },
+    {
+      "skill_id": "oleander-3d-pipeline",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "DESIGN",
+      "lifecycle_secondary": ["VALIDATION", "PRESENTATION"],
+      "capability": ["3d_modeling", "spatial_model", "product_model", "exchange", "render"],
+      "handoff_in": ["oleander-design-process"],
+      "handoff_out": ["oleander-technical-drawing", "oleander-visual-design", "oleander-delivery-qc"],
+      "runtime_policy": "BLENDER_ACTIVE_SHARED_RUNTIME_FIRST_WHEN_FIT",
+      "cannot_prove": ["FIELD_DIMENSION", "CLASS_A", "RVT_NATIVE_BIM", "ENGINEERING_APPROVAL", "MANUFACTURING_APPROVAL"]
+    },
+    {
+      "skill_id": "oleander-story-and-board",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "PRESENTATION",
+      "lifecycle_secondary": ["DESIGN"],
+      "capability": ["narrative", "board", "deck", "VI_manual", "storyboard"],
+      "handoff_in": ["oleander-research", "oleander-design-process", "oleander-data-viz", "oleander-visual-design", "oleander-image-art-direction"],
+      "handoff_out": ["oleander-delivery-qc"],
+      "runtime_policy": "EDITABLE_SOURCE_FIRST_CAPABILITY_ROUTING",
+      "cannot_prove": ["SOURCE_TRUTH_BY_NARRATIVE", "DESIGN_KEEP_BY_LAYOUT_EXISTENCE", "FIELD_TRUTH"]
+    },
+    {
+      "skill_id": "oleander-delivery-qc",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "VALIDATION",
+      "lifecycle_secondary": [],
+      "capability": ["release_QC", "package_integrity", "rights_status", "format_validation", "delivery_readiness"],
+      "handoff_in": ["oleander-data-viz", "oleander-3d-pipeline", "oleander-story-and-board", "oleander-motion", "oleander-web-ui", "oleander-visual-design", "oleander-image-art-direction", "oleander-technical-drawing"],
+      "runtime_policy": "NON_DESTRUCTIVE_PER_RUN_PROBE",
+      "cannot_prove": ["DESIGN_KEEP", "ENGINEERING_APPROVAL", "FIELD_PASS", "MACHINE_SAFETY"]
+    },
+    {
+      "skill_id": "oleander-motion",
+      "installation_state": "EXISTING_INSTALLED",
+      "lifecycle_primary": "PRESENTATION",
+      "lifecycle_secondary": ["DESIGN", "VALIDATION"],
+      "capability": ["motion_design", "state_transition", "timeline", "3d_motion", "motion_QA"],
+      "handoff_in": ["oleander-design-process", "oleander-web-ui", "oleander-image-art-direction"],
+      "handoff_out": ["oleander-delivery-qc"],
+      "runtime_policy": "BROWSER_OR_BLENDER_ACTIVE_THEN_VERIFIED_FFMPEG_CANDIDATE_WHEN_ALLOWED",
+      "cannot_prove": ["FULL_AE_PREMIERE_RESOLVE_PARITY", "DESIGN_KEEP_BY_RUNTIME_SUCCESS"]
+    },
+    {
+      "skill_id": "oleander-web-ui",
+      "installation_state": "CANDIDATE_COMPOSITE_ROUTE",
+      "lifecycle_primary": "PRESENTATION",
+      "lifecycle_secondary": ["DESIGN", "VALIDATION"],
+      "capability": ["web_UI_integration", "responsive_layout", "browser_delivery", "cross_specialist_UI_handoff", "browser_readback"],
+      "existing_specialist_dependencies": [
+        "oleander-ui-visual-composition",
+        "oleander-ui-interaction",
+        "oleander-route-wayfinding-ui",
+        "oleander-game-ui",
+        "oleander-mobile-game-ui"
+      ],
+      "ownership_rule": "CORE_WEB_UI_ROUTE_MUST_SELECT_MINIMUM_SUFFICIENT_EXISTING_SPECIALIST_OWNER_SET_AND_MUST_NOT_REIMPLEMENT_SPECIALIST_AUTHORITY",
+      "owns_only": ["end_to_end_web_ui_integration_contract", "repo_native_browser_delivery_handoff", "cross_specialist_readback_coordination"],
+      "handoff_in": ["oleander-design-process", "oleander-visual-design", "oleander-data-viz"],
+      "handoff_out": ["oleander-motion", "oleander-delivery-qc"],
+      "runtime_policy": "REPO_NATIVE_HTML_CSS_JS_SVG_PLUS_REAL_BROWSER_USING_EXISTING_SPECIALIST_OWNERS_WHEN_APPLICABLE",
+      "cannot_prove": ["DESIGN_KEEP_BY_BROWSER_PASS", "FIGMA_REQUIRED_BY_DEFAULT", "BACKEND_SERVICE_CORRECTNESS_WITHOUT_EVIDENCE", "SPECIALIST_AUTHORITY_REPLACEMENT"]
+    },
+    {
+      "skill_id": "oleander-visual-design",
+      "installation_state": "CANDIDATE",
+      "lifecycle_primary": "PRESENTATION",
+      "lifecycle_secondary": ["DESIGN"],
+      "capability": ["graphic_design", "brand", "layout", "typography", "packaging_POP_presentation"],
+      "handoff_in": ["oleander-design-process", "oleander-image-art-direction", "oleander-data-viz"],
+      "handoff_out": ["oleander-story-and-board", "oleander-web-ui", "oleander-delivery-qc"],
+      "runtime_policy": "EDITABLE_VECTOR_OR_REPO_NATIVE_FIRST",
+      "cannot_prove": ["SOURCE_TRUTH_BY_POLISH", "PREPRESS_APPROVAL_WITHOUT_VALIDATION", "DESIGN_KEEP_BY_EXPORT"]
+    },
+    {
+      "skill_id": "oleander-image-art-direction",
+      "installation_state": "CANDIDATE",
+      "lifecycle_primary": "PRESENTATION",
+      "lifecycle_secondary": ["DESIGN"],
+      "capability": ["image_treatment", "art_direction", "crop", "compositing", "image_text_relation"],
+      "existing_tool_dependency": "T-VISUAL-IMAGE-OPS-001",
+      "ownership_rule": "SKILL_OWNS_ART_DIRECTION_DECISIONS_NOT_TOOL_OPERATOR_AUTHORITY",
+      "handoff_in": ["oleander-research", "oleander-design-process"],
+      "handoff_out": ["oleander-visual-design", "oleander-story-and-board", "oleander-motion"],
+      "runtime_policy": "REAL_SOURCE_FIRST_EXISTING_IMAGE_OPS_ADAPTER_THEN_DETERMINISTIC_EDITING_WHEN_AVAILABLE",
+      "cannot_prove": ["PHOTOSHOP_HIGH_END_RETOUCH_PARITY", "ALTERED_IMAGE_AS_FIELD_FACT", "GENERATIVE_FILL_AS_DEFAULT_REPAIR", "IMAGE_OPS_TOOL_REPLACEMENT"]
+    },
+    {
+      "skill_id": "oleander-technical-drawing",
+      "installation_state": "CANDIDATE_DRAFT",
+      "lifecycle_primary": "VALIDATION",
+      "lifecycle_secondary": ["DESIGN", "PRESENTATION"],
+      "capability": ["technical_drawing", "dimension_hierarchy", "spatial_translation", "DXF", "SVG_PDF_drawing", "node_detail"],
+      "existing_candidate_identity": "OLEANDER Technical Drawing",
+      "implementation_ref": "GitHub PR #172 agent/oleander-technical-drawing-v0.1",
+      "implementation_path_when_promoted": "oleander-skills/oleander-technical-drawing/",
+      "ownership_rule": "REUSE_AND_ADVANCE_EXISTING_PR_172_CANDIDATE; DO_NOT_CREATE_PARALLEL_MAIN_IMPLEMENTATION",
+      "handoff_in": ["oleander-design-process", "oleander-3d-pipeline"],
+      "handoff_out": ["oleander-delivery-qc", "oleander-design-process"],
+      "runtime_policy": "DIMENSION_AUTHORITY_AND_EXISTING_TECHNICAL_DRAWING_CANDIDATE_FIRST_THEN_EDITABLE_VECTOR_OR_CAD_SUPPORT",
+      "cannot_prove": ["FIELD_MEASUREMENT", "ENGINEERING_SIGNOFF", "NOT_FOR_CONSTRUCTION_TO_FOR_CONSTRUCTION_PROMOTION", "PR_172_PROMOTION_BY_REGISTRY_ENTRY"]
+    },
+    {
+      "skill_id": "oleander-design-process",
+      "installation_state": "CANDIDATE",
+      "lifecycle_primary": "DESIGN",
+      "lifecycle_secondary": ["KNOWLEDGE", "VALIDATION"],
+      "capability": ["design_reasoning", "analysis_diagram", "option_generation", "spatial_reasoning", "product_form_reasoning", "system_design"],
+      "handoff_in": ["oleander-research"],
+      "handoff_out": ["oleander-data-viz", "oleander-3d-pipeline", "oleander-visual-design", "oleander-web-ui", "oleander-technical-drawing"],
+      "runtime_policy": "REQUIRED_NATIVE_OUTPUT_FIRST_EXISTING_SKILL_REUSE",
+      "cannot_prove": ["TECHNICAL_VALIDATION_BY_DESIGN_LOGIC", "FINAL_PRESENTATION_KEEP", "FIELD_TRUTH", "ENGINEERING_APPROVAL"]
+    }
+  ]
+}
