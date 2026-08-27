@@ -1,0 +1,50 @@
+{
+  "schema": "oleander.image-lab-professional-retest.v0.1",
+  "date": "2026-08-27",
+  "surface": "browser_image_lab",
+  "review_source": "PROFESSIONAL_REVIEW_01 I01-I05 + repair-readback I06",
+  "project_binding": "BAOJIAJIE / Retail POP / 欧科棉 / bounded raster support crop",
+  "source_sha256": "e1d7fde5f7ac18b0a49b140e53d7dde95ee0e7295af56a3f0feb506bf3bc34b4",
+  "artifact": "IMAGE_LAB_400_DERIVATIVE.png",
+  "artifact_sha256": "a6d050859726598844bcc4fe254c5620fe865a99272ff6225bd7b6a0a94a9906",
+  "artifact_role": "DIGITAL_SUPPORT_CROP_1x1_SOURCE_LIMITED",
+  "artifact_first_retest": {
+    "I01_target_role_ratio": "PASS_EXPLICIT_400x400_AND_400x533_TARGETS",
+    "I02_focal_crop_safe_drag": "PASS_NORMALIZED_FOCAL_CROP_SAFE_OVERLAY_DRAG_REFRAME",
+    "I03_tonal_clipping_diagnostic": "PASS_BASELINE_VS_WORKING_DELTA_EXTREME_SETTINGS_WARN",
+    "I04_transform_portability": "PASS_NORMALIZED_FOCAL_PERSISTS_ACROSS_TARGET_RATIO",
+    "I05_ab_compare": "PASS_SPLIT_TRUE_SOURCE_FIT_VS_WORKING",
+    "I06_effective_source_resolution": "PASS_1200_TARGET_FAILS_CLOSED_SOURCE_RESOLUTION_HOLD_400_TARGET_CAUTION",
+    "page_errors": []
+  },
+  "quality_boundary": {
+    "1200x1200_retail_pop_request": "SOURCE_RESOLUTION_HOLD",
+    "effective_source_for_1200_crop_px": [393, 393],
+    "1200_png_export": "BLOCKED_BY_DEFAULT",
+    "400x400_digital_support": "UPSCALE_CAUTION_NOT_HOLD",
+    "source_quality": "LIMITED_SOCIAL_SCREENSHOT_NOT_PRODUCT_HERO_SOURCE",
+    "claim": "400px derivative is support crop only; not a print-quality hero or new evidence"
+  },
+  "functional_regression": {
+    "source_sha_matches": true,
+    "drag_changed": true,
+    "focal_portability": true,
+    "high_export_status": "EXPORT BLOCKED / SOURCE RESOLUTION HOLD / LOWER TARGET OR USE BETTER SOURCE",
+    "extreme_diag_class": "diag warn"
+  },
+  "persistent_readback": {
+    "library_folder": "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Image-Lab-Retest-01",
+    "derivative_file_id": "file_0000000083fc820b9dd4d49b70fbc4b8",
+    "guided_file_id": "file_000000007204820ba0caa44a35647dbc",
+    "split_compare_file_id": "file_00000000cac4820b9b1295ca0ebfbf54",
+    "config_file_id": "file_000000008070820b97e50af2bc96c8b2",
+    "ratio_3x4_file_id": "file_000000006b3c820b84fed3c2969fad78",
+    "high_res_hold_file_id": "file_000000009678820ba9ae96c004eb53af",
+    "browser_test_file_id": "file_0000000036ac820b8a02ec95dbe41daf",
+    "retest_json_file_id": "file_00000000de84820ba9a5f7a94eff14a4",
+    "remote_reopen": "PASS"
+  },
+  "review_decision": "PROFESSIONAL_RETEST_PASS_FOR_BOUNDED_IMAGE_TREATMENT_RUNTIME",
+  "promotion": "INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED",
+  "truth_boundary": "RUNTIME_PASS_DOES_NOT_UPGRADE_SOURCE_QUALITY_OR_AUTHORIZE_PRINT_HERO_USE"
+}
