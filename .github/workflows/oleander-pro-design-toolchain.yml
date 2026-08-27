@@ -5,13 +5,15 @@ on:
     branches: [main]
     paths:
       - '00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json'
-      - 'tools/oleander-runtime/pro-design/**'
+      - '90-shared/toolchains/pro-design/**'
       - '.github/workflows/oleander-pro-design-toolchain.yml'
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'agent/2026-08-27-pro-design-toolchain-runtime'
     paths:
       - '00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json'
-      - 'tools/oleander-runtime/pro-design/**'
+      - '90-shared/toolchains/pro-design/**'
       - '.github/workflows/oleander-pro-design-toolchain.yml'
   workflow_dispatch:
 
@@ -30,17 +32,17 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m json.tool 00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json >/dev/null
-          for f in tools/oleander-runtime/pro-design/*.sh; do bash -n "$f"; done
+          for f in 90-shared/toolchains/pro-design/*.sh; do bash -n "$f"; done
       - name: Materialize pinned OpenBIM CAD DXF Python runtime
         run: |
           set -euo pipefail
-          bash tools/oleander-runtime/pro-design/materialize.sh
-          bash tools/oleander-runtime/pro-design/probe.sh
+          bash 90-shared/toolchains/pro-design/materialize.sh
+          bash 90-shared/toolchains/pro-design/probe.sh
       - name: IFC create write reopen smoke
         run: |
           set -euo pipefail
           mkdir -p "${RUNNER_TEMP}/oleander-pro-smoke"
-          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.ifc" bash tools/oleander-runtime/pro-design/python.sh - <<'PY'
+          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.ifc" bash 90-shared/toolchains/pro-design/python.sh - <<'PY'
           import os
           import ifcopenshell
           import ifcopenshell.guid
@@ -57,7 +59,7 @@ jobs:
       - name: STEP solid export reopen smoke
         run: |
           set -euo pipefail
-          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.step" bash tools/oleander-runtime/pro-design/python.sh - <<'PY'
+          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.step" bash 90-shared/toolchains/pro-design/python.sh - <<'PY'
           import os
           import cadquery as cq
           out = os.environ['OUT']
@@ -74,7 +76,7 @@ jobs:
       - name: DXF create reopen smoke
         run: |
           set -euo pipefail
-          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.dxf" bash tools/oleander-runtime/pro-design/python.sh - <<'PY'
+          OUT="${RUNNER_TEMP}/oleander-pro-smoke/smoke.dxf" bash 90-shared/toolchains/pro-design/python.sh - <<'PY'
           import os
           import ezdxf
           out = os.environ['OUT']
@@ -92,16 +94,16 @@ jobs:
         run: |
           set -euo pipefail
           out="${RUNNER_TEMP}/oleander-pro-smoke/smoke.png"
-          bash tools/oleander-runtime/pro-design/raster.sh -size 64x64 gradient: -colorspace sRGB "$out"
+          bash 90-shared/toolchains/pro-design/raster.sh -size 64x64 gradient: -colorspace sRGB "$out"
           test -s "$out"
-          dims="$(bash tools/oleander-runtime/pro-design/raster.sh "$out" -format '%wx%h' info:)"
+          dims="$(bash 90-shared/toolchains/pro-design/raster.sh "$out" -format '%wx%h' info:)"
           test "$dims" = "64x64"
           echo 'RASTER_READ_WRITE=PASS'
       - name: FFmpeg deterministic motion smoke
         run: |
           set -euo pipefail
           out="${RUNNER_TEMP}/oleander-pro-smoke/smoke.mkv"
-          bash tools/oleander-runtime/pro-design/motion.sh -hide_banner -loglevel error -f lavfi -i testsrc=size=64x64:rate=5 -t 1 -c:v ffv1 -y "$out"
+          bash 90-shared/toolchains/pro-design/motion.sh -hide_banner -loglevel error -f lavfi -i testsrc=size=64x64:rate=5 -t 1 -c:v ffv1 -y "$out"
           test -s "$out"
           ffprobe -v error -show_entries stream=width,height -of csv=p=0 "$out" | grep -q '64,64'
           echo 'MOTION_GENERATE_PROBE=PASS'
@@ -118,11 +120,11 @@ jobs:
       - name: Materialize verified FreeCAD 1.1.3 AppImage
         run: |
           set -euo pipefail
-          bash tools/oleander-runtime/pro-design/materialize.sh
+          bash 90-shared/toolchains/pro-design/materialize.sh
       - name: FreeCAD version probe
         run: |
           set -euo pipefail
-          bash tools/oleander-runtime/pro-design/freecad.sh --version
+          bash 90-shared/toolchains/pro-design/freecad.sh --version
       - name: FreeCAD headless parametric STEP export and CAM module smoke
         run: |
           set -euo pipefail
@@ -145,6 +147,6 @@ jobs:
           print('FREECAD_PARAMETRIC_STEP_EXPORT=PASS')
           print('FREECAD_CAM_MODULE_IMPORT=PASS')
           PY
-          bash tools/oleander-runtime/pro-design/freecad.sh "${RUNNER_TEMP}/oleander-pro-smoke/freecad_smoke.py"
+          bash 90-shared/toolchains/pro-design/freecad.sh "${RUNNER_TEMP}/oleander-pro-smoke/freecad_smoke.py"
           test -s "${RUNNER_TEMP}/oleander-pro-smoke/freecad-smoke.FCStd"
           test -s "${RUNNER_TEMP}/oleander-pro-smoke/freecad-smoke.step"
