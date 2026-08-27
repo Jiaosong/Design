@@ -1,7 +1,7 @@
 ---
 name: oleander-data-viz
 description: Produce accurate static, animated, interactive, spatial, and presentation-ready visualizations for Oleander. Use whenever the user mentions Oleander tables, XLSX/CSV analysis, animated charts, timelines, maps, diagrams, dashboards, research visualization, SVG/PNG/HTML/MP4 chart exports, or converting project data into visual evidence.
-compatibility: Uses Python 3.13 environment C:\Users\Xianmu\.venvs\oleander and may use spreadsheets, QGIS 4, FFmpeg, ImageMagick, Plotly, GeoPandas, or Sites.
+compatibility: Cross-conversation capability-first. Resolve the actual execution surface per run. May use Python/pandas/Polars/OpenPyXL/XlsxWriter/Matplotlib/Plotly/GeoPandas/QGIS/FFmpeg/ImageMagick or other verified tools when they preserve the required native output. The validated OLEANDER Pro Design Toolchain is Candidate-only until explicit promotion; machine-specific local paths are never a global requirement.
 ---
 
 # Oleander Data Visualization
@@ -10,11 +10,19 @@ Transform project data into reproducible visual evidence. Preserve the source da
 
 ## Environment
 
-Use `C:\Users\Xianmu\.venvs\oleander\Scripts\python.exe`.
+Inherit the Current OLEANDER production environment and execution routing. Resolve the Skill/Owner and Required Native Output first, then probe the actual execution surface for this run.
 
-Core libraries include pandas, Polars, OpenPyXL, XlsxWriter, Matplotlib, Seaborn, Plotly, Kaleido, Altair, NetworkX, OpenCV, GeoPandas, Shapely, PyProj, Rasterio, Contextily, and OSMnx.
+Preferred runtime order for data visualization work:
 
-Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spatial transformations. Do not bind scripts to QGIS 3 paths.
+`ACTUALLY EXPOSED AGENT EXECUTION → ACTIVE SHARED RUNTIME WHEN FIT → VALIDATED CANDIDATE RUNTIME FOR VALIDATION/TRAINING/SUPPORT OR EXPLICITLY LABELED BOUNDED REAPPLICATION → VERIFIED FREE/INCLUDED CLOUD → USER_WEB_MANUAL → CAPABILITY_HOLD`
+
+The Candidate professional shared runtime is located at `90-shared/toolchains/pro-design/` and is governed by `00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json`. Its Python / ImageMagick / FFmpeg capabilities must be probed per run and must remain labelled Candidate until existing review/promotion requirements are satisfied. Candidate runtime PASS does not make it a default Production Owner.
+
+Legacy machine-specific environment previously used by this Skill: `C:\Users\Xianmu\.venvs\oleander\Scripts\python.exe`. Preserve this as provenance only. It may be used if that exact authorized runtime is actually exposed in a run, but it is **not** the global environment, is not required for another conversation, and must never force local installation.
+
+Core libraries may include pandas, Polars, OpenPyXL, XlsxWriter, Matplotlib, Seaborn, Plotly, Kaleido, Altair, NetworkX, OpenCV, GeoPandas, Shapely, PyProj, Rasterio, Contextily, and OSMnx when the resolved runtime actually provides them.
+
+Use QGIS for interactive GIS editing only when a verified callable/manual execution surface is actually available and the required native output benefits from it; use Python/GeoPandas for reproducible spatial transformations when available. Do not bind scripts to QGIS 3 paths. A documented QGIS version is not execution evidence.
 
 ## Workflow
 
@@ -30,6 +38,7 @@ Use QGIS 4 for interactive GIS editing and Python/GeoPandas for reproducible spa
    - MP4/WebM/GIF only when motion adds meaning;
    - XLSX with source/clean/data-dictionary sheets when a table is part of delivery.
 7. Validate totals, axes, labels, legends, frame order, map CRS, and export dimensions.
+8. Record the actual execution surface, runtime/tool version, source/master identity, derived outputs, and any cross-software information loss. Never infer execution from a documented tool or a visually correct derivative.
 
 ## Uncertainty-first scenario charts
 
@@ -101,7 +110,7 @@ This gate follows the same truth discipline as spatial authority preservation: *
 - Use a consistent entity key across time.
 - Show time, units, and data source in every frame.
 - Avoid animation when small multiples communicate the change better.
-- Prefer After Effects for narrative motion graphics after analytical animation is validated.
+- Prefer browser-native motion, the existing Blender ACTIVE shared runtime, or a verified FFmpeg execution surface when those preserve the required output. The validated Pro Design Toolchain FFmpeg path is Candidate-only for validation/training/support or explicitly labelled bounded reapplication until promoted. Use After Effects or another specialist motion tool only when that actual environment is available and its native medium is required; it is never a default dependency.
 
 ## Required output
 
@@ -110,6 +119,8 @@ Return the visualization, cleaned dataset, data dictionary, transformation note,
 For source-bound spatial work, also return a geometry-authority note identifying the current source/locked object, the preservation operation, and any geometry regression check performed.
 
 For provisional/scenario charts, also return the range definition/basis, evidence/truth state, confidence/quality state when used, and any FIELD correction item that materially changes interpretation.
+
+For material cross-software output, also record the Current editable/native source, actual runtime used, derivative formats, units/CRS where applicable, known information loss/bakes, and reopen/readback result.
 
 ## Quality checks
 
@@ -123,3 +134,4 @@ For provisional/scenario charts, also return the range definition/basis, evidenc
 - For source-bound spatial work, verify that locked geometry/topology has not been materially distorted, re-authored, or replaced by a presentation-driven approximation.
 - Treat non-uniform geometry distortion as a blocker unless the object is explicitly schematic and labelled presentation-only.
 - Compare against the strongest mature existing spatial artifact before promoting a redesign; visual polish cannot override a spatial-authority regression.
+- `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CANDIDATE RUNTIME PASS ≠ ACTIVE PRODUCTION ROUTE`; record actual runtime evidence before claiming execution.
