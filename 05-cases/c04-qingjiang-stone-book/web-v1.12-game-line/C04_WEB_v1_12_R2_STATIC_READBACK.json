@@ -1,6 +1,6 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_21",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_HERO_R06_R13_SOURCE_RESOLUTION_AND_APP_MYBOOK_LOCATOR",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_22",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_HERO_R06_R13_SOURCE_RESOLUTION_APP_MYBOOK_AND_RETURN_LOCATOR",
   "observed_at": "2026-08-27",
   "public_sections": 18,
   "first_section": "01",
@@ -90,9 +90,20 @@
         "source_identity": "PARTIALLY RESOLVED TO ORIGINAL RESEARCH-PROTOTYPE LINEAGE / EXACT STANDALONE SOURCE BYTES NOT VERIFIED",
         "runtime_materialization": "HOLD",
         "decision": "DO NOT EXTRACT/UPSCALE THE D-STORY EMBEDDED DOWNSAMPLED JPEG, DO NOT REDRAW, DO NOT AI-SUBSTITUTE, AND DO NOT CLAIM RECOVERY UNTIL ORIGINAL PROTOTYPE BYTES OR A CURRENT AUTHORIZED APP ASSET IS CONTENT-READ"
+      },
+      {
+        "runtime_path": "assets/return_qingjiang.jpg",
+        "current_role": "CH09 RETURN / SERVICE / NO-PHONE closure and section 18 final Return landscape carrier",
+        "current_authority": "CH09 Current defines RETURN as LANDSCAPE / SIGNAGE / PAPER / HUMAN / DIGITAL redundancy and SERVICE / RETURN priority; final public Web keeps Return as a real-journey closure, not a digital completion screen",
+        "historical_framework_reference": "C04_WEB_v1_9_87_PAGE_FRAMEWORK.json binds return_qingjiang.jpg to CH09 Return / Service / No-phone and CH18 Return：怎么回来",
+        "drive_locator": "NO EXACT return_qingjiang standalone image located in current Drive exact-title search; broader 回程 清江 search returned narrative/governance/project files but no content-verified image source",
+        "library_exact_binary_locator": "NO STANDALONE return_qingjiang.jpg located in current File Library search; historical framework proves binding role only",
+        "source_identity": "ROLE RESOLVED TO CURRENT RETURN / SERVICE CLOSURE, BUT EXACT VISUAL SOURCE BYTES AND CANONICAL IMAGE IDENTITY ARE NOT VERIFIED",
+        "runtime_materialization": "HOLD",
+        "decision": "DO NOT REUSE HERO, R13, OLD WEB SCREENSHOT, GENERIC QINGJIANG PHOTO OR AI IMAGE AS RETURN BY NAME SIMILARITY; LOCATE AND CONTENT-READ THE AUTHORIZED RETURN VISUAL SOURCE BEFORE MATERIALIZATION"
       }
     ],
-    "verified_missing_runtime_samples": ["assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg","assets/r13_passage_sequence.png","assets/app_mybook.png"],
+    "verified_missing_runtime_samples": ["assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg","assets/r13_passage_sequence.png","assets/app_mybook.png","assets/return_qingjiang.jpg"],
     "verified_missing_samples_are_complete_list": false,
     "validator": "verify_game_line.mjs / C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_16",
     "validator_contract": "collect HTML/CSS/JS assets/* references; fail on missing or zero-byte files",
@@ -108,7 +119,7 @@
     "reduced_motion_preference_emulation": "NOT_RUN",
     "reduced_motion_state_equivalence_readback": "NOT_RUN"
   },
-  "truth_boundary": "ROUTE-03 IS MATERIALIZED; EXISTING QJ-D V1.1 HERO, R06 LANDSCAPE-FIRST, AND R13 FOUR-FRAME SOURCES HAVE BEEN LOCATED AND CONTENT-READ, BUT THEIR REQUIRED GITHUB RUNTIME REPRESENTATIONS REMAIN MISSING. APP_MYBOOK HAS A VERIFIED HISTORICAL RESEARCH-PROTOTYPE LINEAGE BUT THE EXACT STANDALONE ORIGINAL SOURCE BYTES ARE NOT YET LOCATED, SO EXTRACTION FROM A DOWNSAMPLED EMBED, REDRAW, AI SUBSTITUTE OR APPROXIMATE RECOVERY IS FORBIDDEN. R13 REMAINS REMOTE CONCEPT / NOT SITE PHOTO. RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
+  "truth_boundary": "ROUTE-03 IS MATERIALIZED; EXISTING QJ-D V1.1 HERO, R06 LANDSCAPE-FIRST, AND R13 FOUR-FRAME SOURCES HAVE BEEN LOCATED AND CONTENT-READ, BUT THEIR REQUIRED GITHUB RUNTIME REPRESENTATIONS REMAIN MISSING. APP_MYBOOK HAS A VERIFIED HISTORICAL RESEARCH-PROTOTYPE LINEAGE BUT THE EXACT STANDALONE ORIGINAL SOURCE BYTES ARE NOT YET LOCATED. RETURN_QINGJIANG HAS A VERIFIED CURRENT ROLE IN CH09 RETURN / SERVICE / NO-PHONE CLOSURE AND HISTORICAL WEB BINDING, BUT ITS EXACT AUTHORIZED VISUAL SOURCE IDENTITY/BYTES ARE NOT YET LOCATED. EXTRACTION FROM DOWNSAMPLED EMBEDS, REDRAW, AI SUBSTITUTE, GENERIC QINGJIANG PHOTO OR APPROXIMATE RECOVERY IS FORBIDDEN. R13 REMAINS REMOTE CONCEPT / NOT SITE PHOTO. RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_structure_readback_pass": true,
   "asset_integrity_pass": false,
   "current_static_gate_pass": false,
