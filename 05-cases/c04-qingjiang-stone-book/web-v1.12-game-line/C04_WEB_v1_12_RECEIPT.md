@@ -1,7 +1,7 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
 > **CURRENT CORRECTION｜2026-08-27**  
-> Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `assets/route03_locked_current.svg` is materialized from its durable Drive source. The previously unresolved Hero is now narrowed from **source-unlocated** to **source-resolved / runtime-missing**: the existing QJ-D v1.1 Web-bind Hero `01_HERO_KEEP_QJ-D_v1.1_1920x1080.png` was opened from Drive, verified at 2,294,010 bytes and SHA256 `8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c`, and its visual content is the Qingjiang river/cableway Hero already designated KEEP by the QJ-D v1.1 bind manifest. The required GitHub runtime representation `assets/hero_qingjiang.jpg` is still absent, so overall asset integrity remains BLOCKED. No redraw, AI replacement, screenshot reconstruction, or format substitution is authorized as historical recovery. Reduced-motion remains proven only at source-rule presence level; browser/system preference emulation and state-equivalence readback are NOT RUN.
+> Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `assets/route03_locked_current.svg` is materialized from its durable Drive source. Hero, R06 Landscape First and R13 Four-Frame source identities are now resolved from existing QJ-D v1.1 assets, but their required GitHub runtime representations are still missing. No redraw, AI replacement, screenshot reconstruction, or approximate substitute is authorized as historical recovery. R13 must retain `REMOTE SPATIAL CONCEPT / NOT SITE PHOTO`. Reduced-motion remains proven only at source-rule presence level; browser/system preference emulation and state-equivalence readback are NOT RUN.
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
@@ -52,17 +52,39 @@ Decision: **KEEP / CURRENT LOCKED ROUTE ASSET / RECOVERED FROM DURABLE SOURCE / 
 
 - Required runtime path: `assets/hero_qingjiang.jpg`.
 - Current visual authority chain: C04 B evidence-to-story handoff → `QJ-D v1.1 CURRENT PUBLIC VISUAL` → D v1.1 Hero.
-- Drive Current display root: `QJ-D__PUBLIC-DISPLAY__v1.1` (`folderId=11gzVzChnevkV1jlA986PnnxiCY6sMIb5`).
 - Web-bind source object: `01_HERO_KEEP_QJ-D_v1.1_1920x1080.png` (`fileId=151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh`).
 - Dimensions / format: `1920×1080 / PNG`.
 - Bytes: `2294010`.
 - SHA256: `8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c`.
-- Drive `WEB_BIND_PACK_MANIFEST.csv` state: `Hero=KEEP`.
-- Actual content readback: Qingjiang river + cross-river cableway + mountain settlement Hero with explicit remote-research/source-grounded boundary; not an AI replacement and not a generic landscape substitute.
-- Library current handoff also identifies `QJD_V11_01_HERO_1920x1080.png` as the main Hero visual and explicitly states `Hero 只用 D v1.1 当前官方像素主视觉；模型 Hero 不替代它`.
 - Current runtime status: `SOURCE RESOLVED / GITHUB RUNTIME MATERIALIZATION PENDING`.
 
-Decision: **KEEP EXISTING D v1.1 HERO IDENTITY / NO REDRAW / NO AI SUBSTITUTE / NO APPROXIMATE RECONSTRUCTION**. Do not mark asset-integrity PASS until the exact intended runtime representation exists on the PR branch and exact-path Remote Readback succeeds.
+Decision: **KEEP EXISTING D v1.1 HERO IDENTITY / NO REDRAW / NO AI SUBSTITUTE / NO APPROXIMATE RECONSTRUCTION**.
+
+## R06 Landscape First source resolution｜2026-08-27
+
+- Required runtime path: `assets/r06_qingjiang.jpg`.
+- Current source: `02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png` (`fileId=1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ`).
+- Dimensions / format: `1920×1080 / PNG`.
+- Bytes: `3313809`.
+- SHA256: `013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0`.
+- Current runtime status: `SOURCE RESOLVED / GITHUB RUNTIME MATERIALIZATION PENDING`.
+- `KEEP WITH HOLD` remains active; source recovery does not establish field geometry, Engineering or Professional Design PASS.
+
+Decision: **KEEP EXISTING QJ-D v1.1 R06 LANDSCAPE-FIRST IDENTITY / NO MODEL OR AI SUBSTITUTE**.
+
+## R13 Four-Frame source resolution｜2026-08-27
+
+- Required runtime path: `assets/r13_passage_sequence.png`.
+- Actual `index.html` role: `峡缝通过场景序列`, used to communicate body-first compression → passage → Qingjiang reopening / back-look.
+- Current QJ-D source opened from Drive: `QJD_V11_04_R13_FOUR_FRAME_1920x1080.png` (`fileId=1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf`).
+- Bytes: `481744`.
+- SHA256 from actual retrieved bytes: `583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666`.
+- Actual pixel/content readback: `R13 | BEFORE / INSIDE / EXIT / BACK-LOOK`; panel text explicitly states `REMOTE SPATIAL CONCEPT · NOT SITE PHOTO`, with known/unknown boundary for natural rock constriction versus clearance, lighting, wet/slippery conditions, congestion, circulation and accessibility.
+- Library B evidence-to-story handoff independently instructs `Old P15 R13 generic withdrawal visual → REMOVE_REBIND` and `Use D v1.1 R13 four-frame`; its deletion/duplicate audit also marks `D v1.1 R13 Four-Frame → USE_ONCE_PRIMARY` and requires `NOT SITE PHOTO / NOT LIVE OPERATIONS / safety-accessibility OPEN` at near read.
+- Independent Web v1.5 critique confirms the R13 identity as a remote conceptual visualization and explicitly states it does not establish real clearance, width, surface, safety or field geometry.
+- Current runtime status: `SOURCE RESOLVED / GITHUB RUNTIME MATERIALIZATION PENDING`.
+
+Decision: **KEEP EXISTING D v1.1 R13 FOUR-FRAME IDENTITY AS CONCEPTUAL PASSAGE EVIDENCE / PRESERVE NOT-SITE-PHOTO BOUNDARY / NO GENERIC WITHDRAWAL VISUAL / NO APPROXIMATE SUBSTITUTE**. The future runtime representation may be a derived Web asset, but its bytes/SHA must be recorded separately and it must not erase the remote-concept label or imply site photography.
 
 ## Removed from current working structure
 
@@ -100,8 +122,8 @@ Static validation requires:
 - mobile drawer rules and ESC close behavior present;
 - `prefers-reduced-motion` source rules present in relevant CSS/JS.
 
-GitHub source readback confirms the public structure, supplement code and reduced-motion source rules. ROUTE-03 exists at its runtime path. Hero source identity is now resolved and byte/SHA verified outside GitHub, but `assets/hero_qingjiang.jpg` remains absent on the producer branch. The complete missing-asset list is still not established. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
+GitHub source readback confirms the public structure, supplement code and reduced-motion source rules. ROUTE-03 exists at its runtime path. Hero, R06 and R13 source identities are resolved and content-read, but their required runtime representations remain absent on the producer branch. The complete missing-asset list is still not established. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
 
 ## Truth boundary
 
-Research-grade design remains distinct from field and engineering validation. Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes. Reduced-motion runtime validation must separately execute `normal vs prefers-reduced-motion → browser behavior → state-equivalence readback`; source-rule detection is not that proof.
+Research-grade design remains distinct from field and engineering validation. R13 is a remote spatial concept / not site photo and must not be read as field geometry. Browser finished-pixel review remains separate from source/static validation and is blocked until runtime asset integrity closes. Reduced-motion runtime validation must separately execute `normal vs prefers-reduced-motion → browser behavior → state-equivalence readback`; source-rule detection is not that proof.
