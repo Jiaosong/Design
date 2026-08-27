@@ -1,7 +1,7 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
-  "implementation_revision": "1.0.1",
+  "implementation_revision": "1.0.2",
   "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
@@ -16,6 +16,8 @@
     "FULL_OLEANDER_FLOW_REQUIRES_COMPLETION_GATE_BEFORE_COMPLETE_CLAIM",
     "VERIFY_CAPABILITY_BEFORE_EXECUTED",
     "USE_EXISTING_SKILL_AND_RUNTIME_BEFORE_CREATING_NEW_METHOD",
+    "CURRENT_OLEANDER_SKILL_PRECEDES_SHARED_RUNTIME_SELECTION",
+    "CANDIDATE_SHARED_RUNTIME_IS_NOT_DEFAULT_PRODUCTION_ELIGIBLE",
     "SOURCE_AUTHORITY_PRECEDES_TOOL_CHOICE",
     "NATIVE_EDITABLE_SOURCE_PRECEDES_FLATTENED_PREVIEW",
     "BROWSER_VISIBLE_DOES_NOT_EQUAL_LOCAL_SOURCE_BYTES_AVAILABLE",
@@ -24,7 +26,9 @@
     "PIXEL_LEVEL_COMPARISON_REQUIRED_BEFORE_REPRODUCTION_PASS",
     "DIRECT_SOURCE_COPY_OR_REEXPORT_DOES_NOT_COUNT_AS_RECONSTRUCTION_EVIDENCE",
     "ARTIFACT_EXISTENCE_DOES_NOT_PROVE_DESIGN_QUALITY",
-    "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT"
+    "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT",
+    "INTERNAL_ARTIFACT_CRIT_DOES_NOT_EQUAL_INDEPENDENT_REVIEW",
+    "ONE_LOGICAL_OBJECT_ONE_PRODUCTION_PR_BY_DEFAULT"
   ],
   "capability_states": [
     "NATIVE_AVAILABLE",
@@ -37,7 +41,7 @@
   ],
   "constraint_preflight": {
     "resolver": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
-    "resolver_implementation_revision": "1.2.1",
+    "resolver_implementation_revision": "1.2.2",
     "required_before_tool_probe": true,
     "inherit_active_constraints_across_generic_followups": true,
     "explicit_revocation_only": true,
@@ -53,8 +57,9 @@
     "IDENTIFY_REQUIRED_NATIVE_OUTPUT_AND_FIDELITY",
     "IF_REFERENCE_RECONSTRUCTION_RESOLVE_REFERENCE_MATERIALIZATION_GATE",
     "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
-    "PROBE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
+    "PROBE_ACTIVE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
     "SELECT_BEST_FIT_ADAPTER_WITHIN_ACTIVE_CONSTRAINTS",
+    "USE_CANDIDATE_SHARED_RUNTIME_ONLY_FOR_VALIDATION_TRAINING_SUPPORT_OR_EXPLICITLY_LABELED_BOUNDED_PROJECT_REAPPLICATION",
     "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
     "MARK_ONLY_THE_UNAVAILABLE_STEP_PENDING",
     "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE"
@@ -127,6 +132,23 @@
       "minimum": ["FIRST_READ_OR_THUMBNAIL", "DETAIL_OR_NEAR_READ"]
     }
   },
+  "shared_runtime_lifecycle": {
+    "default_production_requires": "ACTIVE",
+    "candidate_allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+    "candidate_default_production_eligible": false,
+    "candidate_must_not_be_sole_final_native_output_authority": true
+  },
+  "review_and_transaction_policy": {
+    "internal_artifact_first_crit": "PRODUCER_CONTEXT_ALLOWED_REVISE_HOLD_ONLY_NO_INDEPENDENT_KEEP",
+    "independent_review_fields": ["producer_id", "reviewer_id", "review_input_artifact_id", "review_input_hash", "reviewer_independence_state", "review_verdict", "promotion_authority"],
+    "independence_rule": "INDEPENDENT_REQUIRES_REVIEWER_ID_DIFFERENT_FROM_PRODUCER_ID_AND_EXACT_REVIEW_INPUT_HASH",
+    "missing_identity_rule": "TREAT_AS_INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT",
+    "default_transaction": "ONE_PRODUCTION_PR_FOR_IMPLEMENTATION_READBACK_INTERNAL_CRIT_REPAIR_RETEST",
+    "review_only_pr_default": "FORBIDDEN",
+    "independent_review_surface": "PR_REVIEW_OR_ISOLATED_REVIEW_RECORD_BOUND_TO_EXACT_ARTIFACT_HASH",
+    "transaction_closed_definition": "CURRENT_MUTATION_OR_REPAIR_TRANSACTION_PERSISTED",
+    "flow_closed_definition": "ALL_REQUIRED_APPLICABLE_PHASES_COMPLETE_WITH_NO_FAIL_OR_HOLD"
+  },
   "blender_shared_runtime": {
     "status": "ACTIVE_RUNTIME_INTERFACE",
     "scope": "OLEANDER_ALL_PROJECTS",
@@ -154,6 +176,7 @@
     "policy_revision": "1.1",
     "instance_directory": "00-governance/runtime/receipts/",
     "current_rule": "Use the Current Execution Receipt contract as the single instance schema. New receipts must record sticky constraint_lock and flow_completion; only explicitly allowlisted pre-policy receipts may omit them.",
+    "evidence_record_rule": "VALIDATION_RETEST_BROWSER_RESULT_AND_REVIEW_FILES_ARE_EVIDENCE_RECORDS_NOT_ALTERNATE_EXECUTION_RECEIPT_SCHEMAS",
     "legacy_minimum_subset": [
       "TASK",
       "AUTHORITY",
