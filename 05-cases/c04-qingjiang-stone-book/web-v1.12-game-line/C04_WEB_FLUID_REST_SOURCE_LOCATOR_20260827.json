@@ -1,0 +1,42 @@
+{
+  "record_type": "EVIDENCE_RECORD_NOT_CLOSURE_RECEIPT",
+  "observed_at": "2026-08-27",
+  "logical_object": "C04 Current Web / Physical-Body-Sensory / Fluid Rest",
+  "runtime_path": "assets/fluid_rest_object.png",
+  "current_project_authority": {
+    "notion_page": "CH13｜实体、身体与感官设计｜Current Material",
+    "identity": "ODB-03A/B｜山体流体休憩装置",
+    "role": "CH13-P05/P06 / longer-rest landscape-body design family",
+    "state": "HOLD / SINGLE-SITE COMPETITION / LOCATION HOLD",
+    "truth_boundary": "CONCEPT / NTS / FIELD OPEN / NOT FOR CONSTRUCTION"
+  },
+  "content_read": {
+    "github_index_role": "Physical / Body / Sensory dominant visual; also reused in AI+3D process as an existing 3D/object design asset",
+    "library_candidates": [
+      {
+        "title": "山体流体休憩装置.png",
+        "readback": "PASS",
+        "observed_content": "single composite concept board: person seated on reflective rock-like rest object on mountain path, with form/structure, concept, detail/material and night-effect panels"
+      },
+      {
+        "title": "山体流体休憩装置2.png",
+        "readback": "PASS",
+        "observed_content": "application/landing board: multiple metallic sculptural rest objects integrated into rocky hillside / viewing-platform scenes, with body-scale and material/process information"
+      }
+    ],
+    "drive_locator": "No standalone file named fluid_rest_object was located. Broader 山体流体休憩装置 search returned C04 project/governance documents confirming the design family, but no content-verified runtime source binary."
+  },
+  "identity_decision": "SOURCE FAMILY RESOLVED TO ODB-03A/B, BUT EXACT CHILD FIGURE / SOURCE BOARD FOR fluid_rest_object.png IS NOT YET CANONICALLY SELECTED",
+  "duplication_decision": "KEEP BOTH LIBRARY BOARDS. They are not duplicates: one is concept/form/detail presentation; the other is application/landing/body-scale presentation.",
+  "runtime_materialization": "HOLD",
+  "forbidden_recovery": [
+    "do not merge the two boards by filename similarity",
+    "do not crop an arbitrary child figure and call it the historical runtime asset without a Current source-selection record",
+    "do not use AI/redraw/model substitute to close the missing runtime path",
+    "do not promote either board to site/engineering evidence"
+  ],
+  "next_allowed_action": "Read the historical/current binding or figure-level source record that selected the Web dominant Fluid Rest image; if absent, make an explicit Current project source-selection decision before deriving a runtime representation with its own bytes/SHA.",
+  "production_pr_integrity": "Same active Production PR #353; no review-only PR created.",
+  "review_state": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT / NO INDEPENDENT KEEP",
+  "type_gap_brief": "N/A / NON-TRIGGER; project runtime asset recovery, not a universal Design/Engineering Type gap"
+}
