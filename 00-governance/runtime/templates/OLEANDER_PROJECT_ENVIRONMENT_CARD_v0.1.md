@@ -191,7 +191,7 @@ Current Cloud-Free repo surfaces are **CANDIDATE**, not default production runti
 - Technical vector / packaging / POP preflight → `browser-technical-svg-lab/technical-svg-lab.html`
 - Professional OpenBIM IFC / parametric solid CAD / DXF / bounded CAM postprocess / deterministic raster / FFmpeg validation → `90-shared/toolchains/pro-design` — **runtime-smoke validated Candidate**, evidence: GitHub Actions run `33047483244` / run #16 / commit `16672434ec9798324b6419d37b4b5101d07d8767`; machine safety, engineering approval, proprietary BIM/RVT and Class-A remain HOLD.
 
-Candidate surface rule: `VALIDATION / TRAINING / SUPPORT / BOUNDED_PROJECT_REAPPLICATION WITH EXPLICIT CANDIDATE LABEL` only. A Candidate surface must **not** become `DEFAULT_PRODUCTION_OWNER`, `SOLE_FINAL_NATIVE_OUTPUT_AUTHORITY`, or an unlabeled Current production route. Default production routing requires an **ACTIVE** runtime.
+Candidate surface rule: `VALIDATION / TRAINING / SUPPORT / BOUNDED PROJECT REAPPLICATION WITH EXPLICIT CANDIDATE LABEL` only. A Candidate surface must **not** become `DEFAULT_PRODUCTION_OWNER`, `SOLE_FINAL_NATIVE_OUTPUT_AUTHORITY`, or an unlabeled Current production route. Default production routing requires an **ACTIVE** runtime.
 
 Do **not** route first to Penpot / Photopea / SketchUp Web merely because they are familiar. They are manual fallbacks when Current Skill + agent-executable surface + ACTIVE shared runtime cannot preserve the Required Native Output. Figma is not a generic fallback: it is only considered after its explicit-delivery / existing-Figma-source activation gate has already passed.
 
