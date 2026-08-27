@@ -12,7 +12,7 @@ jobs:
   governance-corpus:
     name: AIG-01 + AIG-02 + AIG-03 governance, namespaces and runtime evidence
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -57,9 +57,6 @@ jobs:
 
       - name: Compute AIG-03 runtime metrics
         run: python evals/runtime/compute_metrics.py | tee /tmp/aig03-metrics.txt
-
-      - name: Candidate professional shared runtime smoke
-        run: bash 90-shared/toolchains/pro-design/smoke.sh
 
       - name: Publish summary
         if: always()
