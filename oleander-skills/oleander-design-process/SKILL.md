@@ -45,6 +45,23 @@ Convert evidence and constraints into design decisions through visible, editable
 9. When exact dimensions or technical facts are unresolved, preserve the uncertainty and generate a Validation Handoff rather than inventing closure.
 10. A design artifact cannot certify browser behavior, CAD roundtrip, engineering approval, field truth or machine safety.
 
+## Semantic-dimension-to-form gate
+
+Use this gate when one project claim, behavior or requirement contains more than one relation type and form generation risks collapsing them into literal decoration.
+
+1. Split the input into semantic dimensions before sketching form: `DISCRETE / CONTINUOUS / DIRECTIONAL / RELATIONAL / HIERARCHICAL / TEMPORAL`.
+2. Assign different form roles when dimensions differ. Example: discrete state may use a stepped/notched event while continuous duration may use elongation, span or uninterrupted mass.
+3. Generate at least two mappings. One option must attack the most literal translation so its failure is visible rather than silently avoided.
+4. Run a deletion test: remove labels, numbering, arrows and decorative color. The selected form should still preserve the intended relation type.
+5. Reject literal counting decoration when it only reproduces the number of graphic elements without preserving the relation.
+6. If the selected form creates production, structural, ergonomic or safety geometry, stop at the design decision and emit a Validation Handoff.
+
+Promotion test:
+
+`REMOVE LABELS + DECORATIVE COLOR → DOES THE FORM STILL PRESERVE THE RELATION TYPE, NOT MERELY THE NUMBER OF GRAPHIC ELEMENTS?`
+
+Validated training evidence remains Candidate-only and must record the project application and technical HOLD boundary.
+
 ## Validation handoff
 
 When technical proof is needed, return:
