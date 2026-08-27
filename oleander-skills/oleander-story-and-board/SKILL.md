@@ -1,12 +1,28 @@
 ---
 name: oleander-story-and-board
 description: Turn Oleander research, data, design logic, renders, and brand strategy into coherent boards, reports, decks, storyboards, promotional narratives, and VI / brand-identity manual presentation layers. Use whenever the user mentions Oleander project compilation, exhibition boards, design books, presentations, brand stories, VI manuals, logo standards, brand guidelines, visual identity systems, scripts, storyboards, key visuals, InDesign, Illustrator, Figma, PowerPoint, or connecting analysis to a persuasive narrative.
-compatibility: May use Notion, documents, presentations, PDF, Figma, InDesign, Illustrator, Photoshop, After Effects, Premiere, and LibreOffice.
+compatibility: Capability-first and editable-source-first. May use Notion, documents, presentations, PDF, repo-native SVG/HTML/CSS, browser runtime, Blender, Figma, InDesign, Illustrator, Photoshop, After Effects, Premiere, LibreOffice, or other tools only when the Current execution routing and Required Native Output justify them and the actual environment is available. Figma is explicit-only; commercial/specialist software is never assumed or required merely because it is named in the task.
 ---
 
 # Oleander Story and Board
 
 Build a single evidence-to-story spine so reports, boards, decks, and films tell the same project rather than becoming unrelated artifacts.
+
+## Environment inheritance
+
+Inherit the Current OLEANDER production environment, Design Production Contract, software-routing binding, and shared execution-surface registry before choosing a layout or media tool.
+
+Resolve in this order:
+
+`CURRENT AUTHORITY / SKILL OWNER → REQUIRED NATIVE OUTPUT + FIDELITY → EXISTING EDITABLE MASTER / MATURE DESIGN → ACTUALLY EXPOSED AGENT OR NATIVE SOURCE TOOL → ACTIVE SHARED RUNTIME WHEN FIT → VALIDATED CANDIDATE ONLY FOR ALLOWED CANDIDATE CONTEXTS → VERIFIED SPECIALIST ENVIRONMENT WHEN ACTUALLY AVAILABLE → MANUAL FALLBACK → CAPABILITY_HOLD`
+
+Rules:
+- Generic board/deck/UI/brand-presentation work does not activate Figma. Figma is used only for explicit editable Figma delivery or continuation/repair of an existing authoritative Figma source, after reuse/capacity/recoverability checks.
+- Illustrator/InDesign/Photoshop/After Effects/Premiere or equivalents may be used only when that actual execution environment exists and the required native medium benefits from it; they are not default project dependencies.
+- Repo-native SVG/HTML/CSS, browser readback, existing document/presentation tooling, and Blender ACTIVE shared runtime remain valid preferred surfaces when they preserve the required native output.
+- The validated `90-shared/toolchains/pro-design/` runtime may support deterministic raster/motion or technical derivatives only as a **Candidate** in its allowed contexts until explicit promotion; it is not a default Production Owner.
+- Every material story/board object keeps one Current editable/native master identity. PDF/PNG/JPG/video/screenshot/flattened export is a derivative unless explicitly defined otherwise by Current authority.
+- A downstream layout or media tool must not silently flatten required editable text, authoritative geometry, dimensions, components, linked assets, color intent, or source provenance. Record cross-software loss/bake and reopen/readback when applicable.
 
 ## Narrative spine
 
@@ -135,6 +151,7 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 11. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
 12. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
 13. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+14. For material cross-software assembly, record the upstream Current master, downstream tool/runtime, exchange format, editability retained, known loss/bake, and actual reopen/readback before final delivery.
 
 ## Deliverable variants
 
@@ -155,6 +172,8 @@ For any paired/reveal primary visual, also return a same-source declaration nami
 
 For VI/manual work, also return or persist the represented standard drawings/specimens used by the manual, actual readbacks at target size, and all proof-open production limits. A prose-only specification is not a complete VI deliverable.
 
+For material cross-software output, include the Current editable master identity, actual execution surface/lifecycle, derivative list, and any known flattening or information-loss boundary.
+
 ## Quality checks
 
 - Claims match approved research.
@@ -171,3 +190,4 @@ For VI/manual work, also return or persist the represented standard drawings/spe
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
 - Material/raster display effects never become logo/vector/text geometry authority.
+- A visually correct PDF/PNG/video does not prove the native editable board/story master is healthy; reopen the required source and keep `CANDIDATE RUNTIME PASS ≠ ACTIVE PRODUCTION ROUTE`.
