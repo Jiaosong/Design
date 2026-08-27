@@ -1,13 +1,14 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
-  "implementation_revision": "1.0.3",
+  "implementation_revision": "1.0.4",
   "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
   "hard_rules": [
     "NO_SINGLE_APP_IS_THE_OLEANDER_ENVIRONMENT",
-    "FIGMA_IS_OPTIONAL_NOT_DEFAULT",
+    "FIGMA_IS_EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_ONLY_NOT_GENERIC_UI_ROUTE",
+    "GENERIC_UI_TASK_MUST_NOT_PROBE_RECOMMEND_OR_CREATE_FIGMA",
     "BLENDER_SHARED_RUNTIME_IS_REUSABLE_ACROSS_OLEANDER",
     "RESOLVE_STICKY_USER_CONSTRAINTS_BEFORE_CAPABILITY_ROUTING",
     "ACTIVE_TOOL_DENY_BLOCKS_ADAPTER_SELECTION",
@@ -112,9 +113,9 @@
       "evidence_boundary": "calculation or export success does not prove aesthetic quality"
     },
     "two_d_vector_layout": {
-      "preferred": ["SVG", "HTML/CSS", "PDF/vector tooling", "Figma when explicitly useful and verified"],
+      "preferred": ["SVG", "HTML/CSS", "PDF/vector tooling"],
       "status": "DETECT_PER_RUN",
-      "figma_policy": "OPTIONAL_ADAPTER_NOT_REQUIRED_NOT_DEFAULT"
+      "figma_policy": "EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_ONLY_DO_NOT_PROBE_FOR_GENERIC_UI_OR_VECTOR_TASK"
     },
     "three_d_spatial_product": {
       "preferred": ["Blender shared runtime", "Rhino/Grasshopper when verified", "CAD/BIM/FreeCAD when verified"],
@@ -167,13 +168,18 @@
     "conversation_rule": "Every OLEANDER conversation may route Blender work through the shared runtime contract; the individual run must still verify that its execution surface can invoke the runtime before claiming EXECUTED."
   },
   "figma": {
-    "role": "OPTIONAL_SPECIALIST_ADAPTER",
+    "role": "EXPLICIT_REQUEST_ONLY_HANDOFF_ADAPTER",
+    "activation_gate": "EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE",
+    "probe_policy": "DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_VECTOR_PROTOTYPING_OR_DESIGN_SYSTEM_TASKS",
     "use_when": [
-      "the project explicitly requires editable Figma delivery",
-      "a verified Figma connector materially improves component or interface work",
-      "visual readback is actually available"
+      "the user or Project Authority explicitly requires editable Figma delivery",
+      "an existing authoritative Figma file or project must be continued or repaired",
+      "the connector is actually exposed and current capacity permits the bounded handoff"
     ],
     "do_not": [
+      "probe Figma merely because the task says UI UX interface prototype component or design system",
+      "recommend or route generic UI work to Figma when repo-native HTML CSS JS SVG can own the required native output",
+      "create a new Figma file unless the activation gate is satisfied",
       "block a project because Figma is absent",
       "treat Figma as Source Authority by default",
       "substitute node count or export existence for visual review"
