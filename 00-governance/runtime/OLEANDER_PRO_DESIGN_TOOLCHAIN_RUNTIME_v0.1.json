@@ -56,7 +56,7 @@
       "owner_runtime": "IfcOpenShell Python",
       "native_authority": ["IFC2x3/IFC4/IFC4x3 project data as applicable", "IFC file as BIM source of truth"],
       "outputs": ["IFC", "IFCZIP", "BCF/CSV/JSON derivatives when implemented"],
-      "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "IFC_CREATE_WRITE_REOPEN_SMOKE_PASS",
       "boundary": "Does not claim proprietary Revit/RVT authoring, code compliance, discipline signoff or field truth. Bonsai is not bound to the current Blender 5.2 runtime until compatibility is separately verified."
     },
@@ -64,21 +64,21 @@
       "owner_runtime": "CadQuery + OCP/OpenCASCADE; FreeCAD on demand",
       "native_authority": ["versioned parametric Python source", "BRep/STEP solid geometry"],
       "outputs": ["STEP", "BREP", "STL", "glTF", "DXF where applicable"],
-      "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "CADQUERY_STEP_EXPORT_REOPEN_DIMENSION_CHECK_AND_FREECAD_HEADLESS_STEP_EXPORT_PASS",
       "boundary": "Professional parametric solid CAD and exchange geometry; not an automotive Class-A surfacing claim."
     },
     "TECHNICAL_DXF_DRAWING": {
       "owner_runtime": "ezdxf + governed source dimensions",
       "outputs": ["DXF", "SVG/PDF derivatives through existing vector pipeline"],
-      "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "DXF_CREATE_SAVE_REOPEN_SMOKE_PASS",
       "boundary": "Drawing generation does not replace engineering approval, GD&T authority, tolerance stack analysis or supplier proof."
     },
     "CAM_TOOLPATH": {
       "owner_runtime": "FreeCAD CAM on demand",
       "outputs": ["CAM job", "toolpath", "controller-specific G-code after explicit postprocessor selection"],
-      "target_state_after_validation": "CANDIDATE_THEN_ACTIVE_ONLY_AFTER_REAL_GCODE_SMOKE",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "FREECAD_1_1_3_CAM_JOB_PATH_OBJECT_PLUS_LINUXCNC_POSTPROCESS_NONEMPTY_GCODE_PASS",
       "required_inputs": ["authoritative part geometry", "stock", "tool library", "feeds/speeds", "work coordinate system", "machine/controller", "postprocessor"],
       "boundary": "Never treat generic toolpath or G-code as machine-safe. Controller postprocessor, collision/simulation, tooling and fabrication validation remain required."
@@ -86,14 +86,14 @@
     "RASTER_PRODUCTION": {
       "owner_runtime": "ImageMagick deterministic pipeline plus optional darktable-cli/GIMP batch adapters",
       "outputs": ["layer-independent deterministic raster derivatives", "ICC-aware transforms where configured", "RAW-developed derivatives when darktable is available"],
-      "target_state_after_validation": "ACTIVE_SHARED_RUNTIME_FOR_DETERMINISTIC_RASTER",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "DETERMINISTIC_PNG_GENERATE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
       "boundary": "Does not equal Photoshop-level subjective high-end retouching, hand masking/painting, proprietary smart-object workflow or human beauty-retouch judgment. Layered high-end retouch remains PARTIAL/HOLD when required."
     },
     "MOTION_VIDEO_POST": {
       "owner_runtime": "FFmpeg + existing Blender compositor/animation runtime",
       "outputs": ["edit/transcode", "filtergraph composition", "audio/video mux", "frame extraction", "deterministic motion/render derivatives"],
-      "target_state_after_validation": "ACTIVE_SHARED_RUNTIME",
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
       "candidate_validation_2026_08_27": "FFMPEG_GENERATE_PLUS_FFPROBE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
       "boundary": "Does not equal the complete interactive AE/Premiere/Resolve experience, advanced proprietary plugins, collaborative NLE project interchange or specialist HDR/color-finishing approval."
     },
