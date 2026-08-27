@@ -23,10 +23,16 @@
       "source_mutation": "AGENT_EXECUTABLE_WHEN_GITHUB_CONNECTOR_EXPOSED",
       "runtime_readback": "REAL_BROWSER_REQUIRED",
       "outputs": ["PNG_DERIVATIVE", "IMAGE_TREATMENT_CONFIG_JSON"],
-      "capabilities": ["BRIGHTNESS", "CONTRAST", "SATURATION", "GRAYSCALE", "SCALE", "ROTATE", "OFFSET", "BACKGROUND", "BEFORE_AFTER", "SOURCE_SHA256", "SOURCE_METADATA", "FAIL_CLOSED_EXPORT"],
-      "boundary": "BOUNDED_RASTER_TREATMENT_NOT_PHOTOSHOP_EQUIVALENCE_NOT_SOURCE_AUTHORITY",
+      "capabilities": ["BRIGHTNESS", "CONTRAST", "SATURATION", "GRAYSCALE", "ROTATE", "BACKGROUND", "BEFORE_AFTER", "SOURCE_SHA256", "SOURCE_METADATA", "FAIL_CLOSED_EXPORT", "DECLARED_TARGET_ROLE_AND_RATIO", "COVER_CONTAIN_MANUAL_FIT", "NORMALIZED_FOCAL_POINT", "CROP_SAFE_GUIDE", "POINTER_DRAG_REFRAME", "SPLIT_COMPARE", "TONAL_CLIPPING_DIAGNOSTIC", "EFFECTIVE_SOURCE_RESOLUTION_DIAGNOSTIC", "SOURCE_RESOLUTION_HOLD"],
+      "boundary": "BOUNDED_RASTER_TREATMENT_NOT_PHOTOSHOP_EQUIVALENCE_NOT_SOURCE_AUTHORITY_PRINT_HERO_REQUIRES_ADEQUATE_SOURCE_RESOLUTION",
       "validation_state": "FUNCTIONAL_BROWSER_READBACK_PASS_PERSISTENCE_REMOTE_READBACK_PASS_INDEPENDENT_REVIEW_OPEN",
-      "validation_receipt": "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json"
+      "validation_receipt": "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/VALIDATION_RECEIPT_v0.1.json",
+      "professional_review_01": "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/PROFESSIONAL_REVIEW_01.md",
+      "professional_review_01_state": "REVISE",
+      "professional_retest_01": "00-governance/runtime/validation/2026-08-26-image-lab-baojiajie/PROFESSIONAL_RETEST_01.json",
+      "professional_retest_01_state": "PASS_I01_I06_INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED",
+      "persistent_readback_2026_08_27": "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Image-Lab-Retest-01",
+      "source_quality_boundary": "1200x1200_SOURCE_RESOLUTION_HOLD_400x400_DIGITAL_SUPPORT_UPSCALE_CAUTION"
     },
     "browser_spatial_lab": {
       "path": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
@@ -68,6 +74,12 @@
     "technical_svg_lab_persistence_remote_readback": "PASS_2026_08_27",
     "image_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "image_lab_persistence_remote_readback": "PASS",
+    "image_lab_professional_review_01": "REVISE",
+    "image_lab_professional_retest_01": "PASS_I01_I06",
+    "image_lab_independent_keep": "OPEN",
+    "image_lab_persistence_remote_readback_2026_08_27": "PASS",
+    "image_lab_1200_source_resolution": "HOLD",
+    "image_lab_400_digital_support": "UPSCALE_CAUTION",
     "spatial_lab_browser_readback": "PASS_FUNCTIONAL_ONLY",
     "spatial_lab_persistence_remote_readback": "PASS",
     "design_workbench_browser_readback": "PASS_FUNCTIONAL_ONLY",
@@ -76,5 +88,5 @@
     "browser_pass": "OPEN_NOT_CLAIMED"
   },
   "promotion_rule": "NO_SURFACE_BECOMES_ACTIVE_DESIGN_CAPABILITY_UNTIL_USED_ON_REAL_CURRENT_PROJECT_WITH_ACTUAL_READBACK_INDEPENDENT_REVIEW_AND_RETEST",
-  "hard_holds_preserved": ["NEW_PROFESSIONAL_BIM_CAD","CLASS_A_MANUFACTURING_CAD","FROM_ZERO_HIGH_END_ARCHVIZ_CGI","SUPPLIER_PREPRESS_PROOF","ENGINEERING_APPROVAL","FIELD_ACCEPTANCE"]
+  "hard_holds_preserved": ["NEW_PROFESSIONAL_BIM_CAD", "CLASS_A_MANUFACTURING_CAD", "FROM_ZERO_HIGH_END_ARCHVIZ_CGI", "SUPPLIER_PREPRESS_PROOF", "ENGINEERING_APPROVAL", "FIELD_ACCEPTANCE"]
 }
