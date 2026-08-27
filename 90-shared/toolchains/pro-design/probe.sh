@@ -15,12 +15,19 @@ PY
 fi
 
 freecad_state="UNAVAILABLE"
+managed_cmd_file="$runtime_home/freecad-1.1.3/FREECAD_CMD_PATH"
+managed_cmd=""
+if [[ -f "$managed_cmd_file" ]]; then
+  managed_cmd="$(cat "$managed_cmd_file")"
+fi
 if [[ -n "${OLEANDER_FREECAD_BIN:-}" && -x "${OLEANDER_FREECAD_BIN}" ]]; then
   freecad_state="AVAILABLE_ENV"
 elif command -v FreeCADCmd >/dev/null 2>&1 || command -v freecadcmd >/dev/null 2>&1; then
   freecad_state="AVAILABLE_PATH"
-elif [[ -x "$runtime_home/freecad-1.1.3/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage" ]]; then
-  freecad_state="AVAILABLE_MANAGED"
+elif [[ -n "$managed_cmd" && -x "$managed_cmd" ]]; then
+  freecad_state="AVAILABLE_MANAGED_CLI"
+elif [[ -x "$runtime_home/freecad-1.1.3/appdir/usr/bin/FreeCADCmd" ]]; then
+  freecad_state="AVAILABLE_MANAGED_CLI"
 fi
 
 magick_state="UNAVAILABLE"
