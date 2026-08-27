@@ -4,7 +4,21 @@
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
   "stale_rule": "IF_QUEUE_IS_EMPTY_OR_STALE_PRODUCTION_WORKSTREAMS_DO_NOT_GUESS; GOVERNANCE_REFRESHES_FIRST",
-  "entries": [],
+  "entries": [
+    {
+      "priority": 1,
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "object_id": "C04-WEB-CURRENT",
+      "current_owner": "PRESENTATION",
+      "state": "ACTIVE",
+      "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
+      "current_pr_frontier": "PR #353 / agent/c04-web-v1-12-game-line-20260822",
+      "next_owner": "PRESENTATION",
+      "next_action": "Continue the same PR #353 asset-binding chain from actual Current Web references; do not open a second production frontier. Preserve source authority and HOLD unresolved runtime assets until exact source/child identity is read back.",
+      "updated_at": "2026-08-28T02:02:33+08:00",
+      "source_of_queue_decision": "GitHub PR #353 Current producer readback on 2026-08-28; PR remains OPEN/UNMERGED and is the verified current public C04 Web producer frontier."
+    }
+  ],
   "entry_schema": {
     "priority": "1..3",
     "project_id": "stable project id",
