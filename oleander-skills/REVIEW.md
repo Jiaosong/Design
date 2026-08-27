@@ -2,18 +2,18 @@
 
 ## Installed skills
 
-**Core framework v1.1 — 11 skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
+**Core framework v1.1 — 11 skills = 6 installed execution owners + 5 Candidate core skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
 
 ### Existing installed skills
 
-- `oleander-research` — **KNOWLEDGE** primary: evidence, precedent, source comparison, interview and decision research.
-- `oleander-data-viz` — **DESIGN** primary: reproducible table, chart, GIS/map, animation, interactive and evidence visualization.
-- `oleander-3d-pipeline` — **DESIGN** primary: 3D naming, units, modeling, exchange, spatial/product model, render and archive workflow.
-- `oleander-story-and-board` — **PRESENTATION** primary: narrative, boards, reports, decks, VI manuals, brand stories and storyboards.
-- `oleander-delivery-qc` — **VALIDATION** primary: non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D and interactive outputs.
-- `oleander-motion` — **PRESENTATION** primary: purposeful motion, state transitions, interactive/3D motion, Reduced Motion, delivery and Motion QA.
+- `oleander-research`: **KNOWLEDGE** primary — evidence, precedent, source comparison, interview and decision research.
+- `oleander-data-viz`: **DESIGN** primary — reproducible table, chart, GIS/map, animation, interactive and evidence visualization.
+- `oleander-3d-pipeline`: **DESIGN** primary — 3D naming, units, modeling, exchange, spatial/product model, render and archive workflow.
+- `oleander-story-and-board`: **PRESENTATION** primary — narrative, boards, reports, decks, VI manuals, brand stories and storyboards.
+- `oleander-delivery-qc`: **VALIDATION** primary — non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D and interactive outputs.
+- `oleander-motion`: **PRESENTATION** primary — purposeful motion, state transitions, interactive/3D motion, Reduced Motion, delivery and Motion QA.
 
-### New candidate skills
+### New Candidate core skills — not installed execution owners yet
 
 - `oleander-web-ui` — **PRESENTATION** primary: repo-native HTML/CSS/JS/SVG, responsive UI, interaction/state and real-browser readback.
 - `oleander-visual-design` — **PRESENTATION** primary: graphic/brand/layout/typography/packaging-POP presentation and cross-media visual hierarchy.
@@ -21,7 +21,7 @@
 - `oleander-technical-drawing` — **VALIDATION** primary: technical drawing hierarchy, dimension authority, DXF/SVG/PDF/CAD handoff and technical readback.
 - `oleander-design-process` — **DESIGN** primary: Research→Finding→Design Consequence, analysis diagrams, options, spatial/product/system reasoning and Validation Handoff.
 
-The five new skills enter as `CANDIDATE`; installation and Golden Case coverage do **not** self-promote them to ACTIVE or grant Independent KEEP.
+The five new skills enter as `CANDIDATE`; installation, Registry presence and Golden Case coverage do **not** self-promote them to installed execution owners, ACTIVE or Independent KEEP.
 
 ## Lifecycle / task relationship
 
@@ -41,13 +41,15 @@ KNOWLEDGE retains design + engineering + application knowledge development; the 
 
 ## Retrieval alias / authority routing
 
-Canonical query: **What are the currently installed OLEANDER reusable skills in GitHub?**
+Canonical installed-owner query: **What are the currently installed OLEANDER reusable execution skills in GitHub?** → use the six colon-formatted installed entries above and the current execution contracts.
+
+Canonical core-framework query: **What are the 11 current OLEANDER core reusable skills?** → use `SKILL_REGISTRY_v1.1.json` + this file and preserve `EXISTING_INSTALLED` versus `CANDIDATE` state.
 
 Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`, `11 core OLEANDER skills`, `OLEANDER skill registry`.
 
-`REVIEW.md` is the human-readable repository-state source for the installed core skills list. `SKILL_REGISTRY_v1.1.json` is the machine-readable routing source for lifecycle owner, handoffs, runtime policy and capability boundaries. Individual `SKILL.md` files remain the execution contracts.
+`REVIEW.md` is the human-readable repository-state source. `SKILL_REGISTRY_v1.1.json` is the machine-readable routing source for the eleven-core framework, lifecycle owner, handoffs, runtime policy and capability boundaries. Individual `SKILL.md` files remain the execution contracts. Existing execution Owner Map / resolver remains authoritative for which skills are actually installed execution owners.
 
-Installed-skill existence does **not** prove that a skill, prompt, model, runtime or candidate version has passed regression evaluation or promotion; promotion remains governed by AIG-01, `evals/`, actual project validation and independent review where required.
+Installed/core-skill existence does **not** prove that a skill, prompt, model, runtime or candidate version has passed regression evaluation or promotion; promotion remains governed by AIG-01, `evals/`, actual project validation and independent review where required.
 
 ## Review prompts
 
@@ -78,7 +80,7 @@ Installed-skill existence does **not** prove that a skill, prompt, model, runtim
 - Image art direction uses real source first and cannot convert compositing, generative fill or tonal change into new factual evidence.
 - Technical drawing resolves Dimension/Geometry Authority before software convenience and preserves `NOT FOR CONSTRUCTION` / FIELD / engineering boundaries.
 - Design process creates actual editable design artifacts, compares options, performs readback/repair and hands technical proof to VALIDATION rather than self-certifying it.
-- New Candidate skills cannot self-promote to ACTIVE; producer review cannot grant Independent KEEP.
+- New Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
 
 ## Reference Reconstruction Fidelity Gate
 
@@ -171,4 +173,4 @@ Before using or promoting a changed skill:
 
 ### Minimum coverage
 
-Each installed core skill must have at least two maintained Golden Cases. CI validates Registry structure, directory/SKILL.md presence, case structure and AIG-01 coverage; actual AI run results require explicit versioned evidence and human/independent approval before `PROMOTE`.
+Each of the eleven core skills must have at least two maintained Golden Cases. CI validates Registry structure, directory/SKILL.md presence, case structure and AIG-01 coverage. The six installed execution owners remain governed by the existing Owner Map/resolver; the five Candidate core skills require explicit project validation and promotion before they may join that installed-owner set.
