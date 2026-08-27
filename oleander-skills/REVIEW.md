@@ -1,8 +1,8 @@
 # Oleander skills review
 
-## Installed core skills — v1.1
+## Installed skills
 
-The Current OLEANDER reusable Skill framework contains **11 core skills**. Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
+**Core framework v1.1 — 11 skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
 
 ### Existing installed skills
 
