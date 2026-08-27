@@ -1,0 +1,29 @@
+name: OLEANDER Professional Design Toolchain Runtime
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json'
+      - '90-shared/toolchains/pro-design/**'
+      - '.github/workflows/oleander-pro-design-toolchain.yml'
+  push:
+    branches: [main]
+    paths:
+      - '00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json'
+      - '90-shared/toolchains/pro-design/**'
+      - '.github/workflows/oleander-pro-design-toolchain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  professional-toolchain-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Run shared professional toolchain smoke
+        run: bash 90-shared/toolchains/pro-design/smoke.sh

@@ -1,0 +1,179 @@
+{
+  "schema": "oleander.runtime.pro-design-toolchain.v0.1",
+  "version": "0.1",
+  "status": "CANDIDATE_SHARED_RUNTIME_INTERFACE",
+  "date": "2026-08-27",
+  "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS_WHEN_EXECUTION_SURFACE_CAN_MATERIALIZE_OR_INVOKE_THE_RUNTIME",
+  "role": "SHARED_PROFESSIONAL_TOOLCHAIN_RUNTIME_NOT_NEW_METHOD_SKILL_GATE_OR_DESIGN_AUTHORITY",
+  "parent": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+  "canonical_toolchain_root": "90-shared/toolchains/pro-design",
+  "principles": [
+    "OPEN_NATIVE_OR_INDUSTRY_EXCHANGE_FORMAT_FIRST",
+    "RUNTIME_AVAILABILITY_MUST_BE_PROBED_PER_RUN",
+    "SHARED_REPO_CONTRACT_IS_PERSISTENT_BUT_CHAT_CONTAINER_INSTALLATION_IS_NOT_ASSUMED_PERSISTENT",
+    "NATIVE_OUTPUT_AND_DIMENSION_GEOMETRY_AUTHORITY_PRECEDE_SOFTWARE_CONVENIENCE",
+    "MACHINE_OR_VENDOR_SPECIFIC_OUTPUT_REQUIRES_MACHINE_OR_VENDOR_VALIDATION",
+    "CLASS_A_SURFACE_CLAIM_REQUIRES_SPECIALIZED_SURFACE_QUALITY_EVIDENCE_NOT_JUST_NURBS_OR_STEP_EXPORT",
+    "TOOLCHAIN_PASS_DOES_NOT_EQUAL_DESIGN_ENGINEERING_MANUFACTURING_OR_RELEASE_PASS"
+  ],
+  "managed_python": {
+    "preferred_python": "3.11_OR_3.12_WHEN_PINNED_WHEELS_ARE_AVAILABLE",
+    "packages": {
+      "ifcopenshell": "0.8.5",
+      "cadquery": "2.8.0",
+      "ezdxf": "1.4.4"
+    },
+    "requirements_lock": "90-shared/toolchains/pro-design/requirements.lock.txt",
+    "materializer": "90-shared/toolchains/pro-design/materialize.sh",
+    "python_wrapper": "90-shared/toolchains/pro-design/python.sh"
+  },
+  "system_and_portable_tools": {
+    "freecad": {
+      "target": "1.1.3 Linux x86_64 py311 AppImage",
+      "source": "https://github.com/FreeCAD/FreeCAD/releases/download/1.1.3/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage",
+      "sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef",
+      "materialization": "ON_DEMAND_ONLY_BECAUSE_BINARY_IS_LARGE",
+      "wrapper": "90-shared/toolchains/pro-design/freecad.sh"
+    },
+    "imagemagick": {
+      "resolution": "OLEANDER_MAGICK_BIN_OR_PATH",
+      "wrapper": "90-shared/toolchains/pro-design/raster.sh",
+      "current_chatgpt_probe_2026_08_27": "PASS ImageMagick 7.1.2-1 Q16-HDRI"
+    },
+    "ffmpeg": {
+      "resolution": "OLEANDER_FFMPEG_BIN_OR_PATH",
+      "wrapper": "90-shared/toolchains/pro-design/motion.sh",
+      "current_chatgpt_probe_2026_08_27": "PASS FFmpeg 7.1.5"
+    },
+    "optional_raster_extensions": {
+      "darktable_cli": "OPTIONAL_ON_DEMAND_RAW_DEVELOPMENT_ADAPTER",
+      "gimp_batch": "OPTIONAL_ON_DEMAND_NONINTERACTIVE_SCRIPTED_RETOUCH_ADAPTER",
+      "boundary": "Neither is assumed present until probed. GUI-only or subjective retouching does not become agent-executable merely because the software exists."
+    }
+  },
+  "capability_domains": {
+    "OPENBIM_IFC_AUTHORING": {
+      "owner_runtime": "IfcOpenShell Python",
+      "native_authority": ["IFC2x3/IFC4/IFC4x3 project data as applicable", "IFC file as BIM source of truth"],
+      "outputs": ["IFC", "IFCZIP", "BCF/CSV/JSON derivatives when implemented"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "IFC_CREATE_WRITE_REOPEN_SMOKE_PASS",
+      "boundary": "Does not claim proprietary Revit/RVT authoring, code compliance, discipline signoff or field truth. Bonsai is not bound to the current Blender 5.2 runtime until compatibility is separately verified."
+    },
+    "PARAMETRIC_SOLID_CAD": {
+      "owner_runtime": "CadQuery + OCP/OpenCASCADE; FreeCAD on demand",
+      "native_authority": ["versioned parametric Python source", "BRep/STEP solid geometry"],
+      "outputs": ["STEP", "BREP", "STL", "glTF", "DXF where applicable"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "CADQUERY_STEP_EXPORT_REOPEN_DIMENSION_CHECK_AND_FREECAD_HEADLESS_STEP_EXPORT_PASS",
+      "boundary": "Professional parametric solid CAD and exchange geometry; not an automotive Class-A surfacing claim."
+    },
+    "TECHNICAL_DXF_DRAWING": {
+      "owner_runtime": "ezdxf + governed source dimensions",
+      "outputs": ["DXF", "SVG/PDF derivatives through existing vector pipeline"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "DXF_CREATE_SAVE_REOPEN_SMOKE_PASS",
+      "boundary": "Drawing generation does not replace engineering approval, GD&T authority, tolerance stack analysis or supplier proof."
+    },
+    "CAM_TOOLPATH": {
+      "owner_runtime": "FreeCAD CAM on demand",
+      "outputs": ["CAM job", "toolpath", "controller-specific G-code after explicit postprocessor selection"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "FREECAD_1_1_3_CAM_JOB_PATH_OBJECT_PLUS_LINUXCNC_POSTPROCESS_NONEMPTY_GCODE_PASS",
+      "required_inputs": ["authoritative part geometry", "stock", "tool library", "feeds/speeds", "work coordinate system", "machine/controller", "postprocessor"],
+      "boundary": "Never treat generic toolpath or G-code as machine-safe. Controller postprocessor, collision/simulation, tooling and fabrication validation remain required."
+    },
+    "RASTER_PRODUCTION": {
+      "owner_runtime": "ImageMagick deterministic pipeline plus optional darktable-cli/GIMP batch adapters",
+      "outputs": ["layer-independent deterministic raster derivatives", "ICC-aware transforms where configured", "RAW-developed derivatives when darktable is available"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "DETERMINISTIC_PNG_GENERATE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
+      "boundary": "Does not equal Photoshop-level subjective high-end retouching, hand masking/painting, proprietary smart-object workflow or human beauty-retouch judgment. Layered high-end retouch remains PARTIAL/HOLD when required."
+    },
+    "MOTION_VIDEO_POST": {
+      "owner_runtime": "FFmpeg + existing Blender compositor/animation runtime",
+      "outputs": ["edit/transcode", "filtergraph composition", "audio/video mux", "frame extraction", "deterministic motion/render derivatives"],
+      "target_state_after_validation": "CANDIDATE_VALIDATED_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "candidate_validation_2026_08_27": "FFMPEG_GENERATE_PLUS_FFPROBE_DIMENSION_READBACK_PASS_ON_CLEAN_SHARED_RUNNER",
+      "boundary": "Does not equal the complete interactive AE/Premiere/Resolve experience, advanced proprietary plugins, collaborative NLE project interchange or specialist HDR/color-finishing approval."
+    },
+    "AUTOMOTIVE_CLASS_A_SURFACING": {
+      "available_support": ["OpenCASCADE B-spline/NURBS geometry", "CadQuery/FreeCAD BRep", "Blender visual surfacing support"],
+      "status": "CAPABILITY_HOLD_FOR_CLASS_A_CLAIM",
+      "required_before_release": ["specialized continuity/fairness diagnostics", "G2/G3 continuity evidence where required", "zebra/reflection/curvature-comb inspection", "surface tolerance and patch-quality criteria", "manufacturing/downstream compatibility evidence"],
+      "boundary": "NURBS support or STEP export alone never upgrades the result to Class-A."
+    }
+  },
+  "runtime_resolution_order": [
+    "EXPLICIT_ENVIRONMENT_OVERRIDE",
+    "ALREADY_MATERIALIZED_MANAGED_RUNTIME",
+    "TOOL_FOUND_ON_PATH",
+    "BOUNDED_ON_DEMAND_MATERIALIZATION_WHEN_NETWORK_AND_STORAGE_ALLOW",
+    "GITHUB_RUNNER_OR_OTHER_VERIFIED_SHARED_EXECUTION_SURFACE",
+    "CAPABILITY_HOLD"
+  ],
+  "wrappers": {
+    "probe": "90-shared/toolchains/pro-design/probe.sh",
+    "python": "90-shared/toolchains/pro-design/python.sh",
+    "freecad": "90-shared/toolchains/pro-design/freecad.sh",
+    "raster": "90-shared/toolchains/pro-design/raster.sh",
+    "motion": "90-shared/toolchains/pro-design/motion.sh",
+    "smoke": "90-shared/toolchains/pro-design/smoke.sh"
+  },
+  "validation_state": "RUNTIME_SMOKE_VALIDATED_CANDIDATE_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+  "validation_evidence": {
+    "validated_at": "2026-08-27",
+    "candidate_commit": "16672434ec9798324b6419d37b4b5101d07d8767",
+    "workflow_name": "OLEANDER Professional Design Toolchain Runtime",
+    "workflow_run_id": 33047483244,
+    "workflow_run_number": 16,
+    "workflow_url": "https://github.com/Jiaosong/Design/actions/runs/33047483244",
+    "runner": "ubuntu-24.04",
+    "result": "SUCCESS",
+    "verified_passes": [
+      "IFCOPENSHELL_0_8_5_INSTALL_AND_IFC_CREATE_WRITE_REOPEN",
+      "CADQUERY_2_8_0_STEP_EXPORT_REOPEN_20x10x5_DIMENSION_CHECK",
+      "EZDXF_1_4_4_DXF_CREATE_SAVE_REOPEN",
+      "IMAGEMAGICK_MATERIALIZE_AND_PNG_DIMENSION_READBACK",
+      "FFMPEG_MATERIALIZE_GENERATE_AND_FFPROBE_READBACK",
+      "FREECAD_1_1_3_APPIMAGE_SHA256_VERIFY_EXTRACT_TRUE_FREECADCMD_HEADLESS_VERSION",
+      "FREECAD_FCSTD_AND_STEP_WRITE",
+      "FREECAD_CAM_REAL_JOB_OPERATIONS_GROUP_PATH_OBJECT",
+      "FREECAD_1_1_3_NATIVE_LINUXCNC_POSTPROCESS_NONEMPTY_GCODE_WITH_G21_G0_G1_AND_X10_000"
+    ],
+    "explicit_nonproofs": [
+      "MACHINE_SAFETY",
+      "COLLISION_FREE_FABRICATION",
+      "ENGINEERING_APPROVAL",
+      "CLASS_A_SURFACE_QUALITY",
+      "DESIGN_QUALITY",
+      "FIELD_TRUTH"
+    ],
+    "promotion_boundary": "THIS_EVIDENCE_VALIDATES_RUNTIME_EXECUTION_ONLY; CONTRACT_REMAINS_CANDIDATE_UNTIL REQUIRED REVIEW_AND_EXPLICIT_PROMOTION"
+  },
+  "promotion_requirements": [
+    "MACHINE_READABLE_CONTRACT_VALID",
+    "PINNED_PACKAGE_INSTALL_PASS_ON_SUPPORTED_SHARED_RUNNER",
+    "IFC_CREATE_WRITE_REOPEN_SMOKE_PASS",
+    "CAD_STEP_EXPORT_SMOKE_PASS",
+    "DXF_CREATE_REOPEN_SMOKE_PASS",
+    "RASTER_READ_WRITE_PROFILE_SAFE_SMOKE_PASS",
+    "FFMPEG_GENERATE_PROBE_SMOKE_PASS",
+    "FREECAD_HEADLESS_PARAMETRIC_EXPORT_PASS_BEFORE_FREECAD_IS_ACTIVE",
+    "REAL_GCODE_POSTPROCESS_SMOKE_PASS_BEFORE_CAM_IS_ACTIVE",
+    "CURRENT_ROUTING_AND_ENVIRONMENT_CARD_UPDATED_WITHOUT_ERASING_HOLD_BOUNDARIES",
+    "VERIFIABLE_INDEPENDENT_REVIEW_OR_OTHER_EXISTING_PROMOTION_AUTHORITY_REQUIREMENT",
+    "EXPLICIT_PROMOTION"
+  ],
+  "does_not_prove": [
+    "DESIGN_QUALITY",
+    "PROPRIETARY_NATIVE_FORMAT_COMPATIBILITY",
+    "AUTOMOTIVE_CLASS_A_QUALITY",
+    "ENGINEERING_APPROVAL",
+    "CODE_COMPLIANCE",
+    "MACHINE_SAFETY",
+    "FABRICATION_APPROVAL",
+    "HUMAN_RETOUCH_OR_COLOR_FINISH_APPROVAL",
+    "FIELD_TRUTH"
+  ]
+}
