@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CH16 P01｜身体与短恢复｜v5.4</title>
+<style>
+:root{
+ --paper:#F1EDE4;--ink:#111918;--deep:#133B3C;--jade:#2E7571;--red:#B8543E;
+ --sand:#C7B99F;--mist:#AEB9B2;--muted:#65706A;--line:rgba(17,25,24,.17);
+ --serif:"Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;
+ --sans:"Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",system-ui,sans-serif;
+ --mono:"Noto Sans Mono CJK SC","SFMono-Regular",monospace;
+}
+*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+body{background:linear-gradient(rgba(241,237,228,.965),rgba(241,237,228,.965)),repeating-linear-gradient(0deg,rgba(17,25,24,.025) 0 1px,transparent 1px 46px)}
+img{display:block;max-width:100%}.page{width:min(100%,1780px);margin:auto;padding:0 52px}.meta{font:700 10px/1.45 var(--sans);letter-spacing:.17em;color:var(--red);text-transform:uppercase}.mono{font:10px/1.55 var(--mono);letter-spacing:.07em}
+.hero{min-height:900px;display:grid;grid-template-columns:.58fr 1.42fr;gap:44px;align-items:center;padding:72px 0 82px}.copy{padding-right:12px}.copy h1{margin:25px 0 27px;font:500 clamp(62px,5.6vw,92px)/.99 var(--serif);letter-spacing:-.045em}.claim{margin:0 0 24px;max-width:590px;font:600 clamp(27px,2.15vw,36px)/1.34 var(--serif)}.intro{max-width:565px;margin:0;padding-top:20px;position:relative;color:var(--muted);font-size:14.5px;line-height:1.88}.intro:before{content:"";position:absolute;left:0;top:0;width:72px;height:3px;background:var(--red)}.truth{max-width:555px;margin-top:29px;padding-top:14px;border-top:1px solid var(--line);color:#707B75}
+.visual{position:relative;min-height:720px;background:var(--deep);overflow:hidden;isolation:isolate}.visual-mode{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .25s ease}.visual-mode.active{opacity:1;pointer-events:auto}.scene-photo{display:grid;place-items:center;background:#0e2f30}.scene-photo img{width:100%;height:100%;object-fit:contain}.scene-shade{position:absolute;inset:auto 0 0;height:110px;background:linear-gradient(transparent,rgba(8,30,30,.72));pointer-events:none}.visual-head{position:absolute;left:31px;top:27px;z-index:10;color:#D7C9A9}.visual-head strong{display:block;margin-top:7px;font:500 22px/1.3 var(--serif);color:#F1EDE4}.visual-caption{position:absolute;right:25px;bottom:23px;z-index:10;text-align:right;color:#B8C4BD}.visual-caption strong{display:block;color:#F1EDE4}.mode-nav{position:absolute;left:31px;bottom:28px;z-index:20;display:flex;gap:23px}.mode-nav button{border:0;background:transparent;padding:0;color:rgba(241,237,228,.48);font:700 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;position:relative}.mode-nav button.active{color:#F1EDE4}.mode-nav button.active:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:1px;background:#F1EDE4}
+.body-field{background:radial-gradient(circle at 74% 32%,rgba(241,237,228,.07),transparent 31%),linear-gradient(120deg,rgba(46,117,113,.10),transparent 48%),var(--deep)}.body-field svg,.contact-field svg{width:100%;height:100%;display:block}.body-word{position:absolute;right:-18px;top:-45px;font:500 180px/.9 var(--serif);letter-spacing:-.06em;color:rgba(241,237,228,.035)}
+.section{padding:96px 0;border-top:1px solid var(--line)}.head{display:grid;grid-template-columns:180px 1fr;gap:28px;margin-bottom:42px}.head h2{margin:0;font:500 clamp(40px,3.4vw,56px)/1.08 var(--serif);letter-spacing:-.03em}.head p{margin:13px 0 0;max-width:900px;color:var(--muted);font-size:14px;line-height:1.86}
+.sequence{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}.seq{min-height:278px;padding:22px 21px 24px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative;overflow:hidden}.seq .n{font:700 10px var(--mono);color:var(--red)}.seq h3{margin:27px 0 11px;font:500 27px/1.16 var(--serif)}.seq p{margin:0;max-width:205px;color:#59635E;font-size:12.5px;line-height:1.7}.seq .trace{position:absolute;left:20px;right:20px;bottom:21px;height:4px;background:rgba(46,117,113,.12)}.seq .trace:before{content:"";display:block;height:100%;width:var(--w);background:var(--jade)}
+.dark{margin:0 -52px;padding:98px 52px;background:var(--deep);color:#F1EDE4}.dark .meta{color:#D88470}.dark .head p{color:#AFC0B8}.proof{display:grid;grid-template-columns:.88fr 1.12fr;gap:68px}.proof-claim{margin:0;font:500 clamp(40px,3.4vw,57px)/1.3 var(--serif);letter-spacing:-.025em}.proof-claim small{display:block;margin-top:25px;font:500 13px/1.75 var(--sans);letter-spacing:.05em;color:#BAC4BF}.rows{border-top:1px solid rgba(241,237,228,.28)}.row{display:grid;grid-template-columns:110px 1fr auto;gap:16px;padding:15px 0;border-bottom:1px solid rgba(241,237,228,.16);align-items:baseline}.row span{font:10px var(--mono);color:#D88470}.row b{font-size:15px}.row small{font-size:10.5px;color:#9FB1AA}.source-line{margin-top:36px;padding-top:18px;border-top:1px solid rgba(241,237,228,.18);display:flex;justify-content:space-between;gap:26px;color:#AFC0B8;font-size:11px;line-height:1.65}.source-line strong{color:#F1EDE4}
+.seam{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:42px 0 54px;border-top:1px solid var(--line)}.seam strong{display:block;margin-top:8px;font:500 20px var(--serif)}.seam span{font:10px/1.4 var(--mono);color:var(--muted);letter-spacing:.08em}
+@media(max-width:980px){.page{padding:0 24px}.hero,.head,.proof{grid-template-columns:1fr}.hero{padding-top:60px}.visual{min-height:600px}.sequence{grid-template-columns:1fr 1fr}.seq:last-child{grid-column:1/-1}.dark{margin:0 -24px;padding:80px 24px}.head{gap:8px}}
+@media(max-width:560px){.page{padding:0 20px}.hero{min-height:auto;padding:53px 0 62px;gap:24px;display:flex;flex-direction:column;align-items:stretch}.copy{display:contents}.copy .meta{order:1}.copy h1{order:2;font-size:50px;margin:18px 0 4px}.claim{order:3;font-size:24px;margin-bottom:4px}.visual{order:4;min-height:420px;margin:10px -20px 0}.intro{order:5;margin-top:10px}.truth{order:6}.visual-head{left:20px;top:19px}.visual-head strong{font-size:18px;max-width:250px}.visual-caption{display:none}.mode-nav{left:20px;bottom:22px;gap:18px}.body-word{font-size:96px}.section{padding:70px 0}.head h2{font-size:34px}.sequence{grid-template-columns:1fr}.seq{min-height:205px}.seq:last-child{grid-column:auto}.dark{margin:0 -20px;padding:70px 20px}.proof-claim{font-size:36px}.row{grid-template-columns:75px 1fr}.row small{grid-column:2}.source-line,.seam{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<article class="page">
+<section class="hero">
+ <div class="copy">
+  <div class="meta">088 / CH16 / P01 / BODY × REAL SCENE / v5.4</div>
+  <h1>先看路，<br/>再看身体。</h1>
+  <p class="claim">真实清江先出现；设计只解释身体为什么会需要一小段恢复。</p>
+  <p class="intro">这张官方场景只承担<strong>峰林与步道语境</strong>：它说明真实游程并不是抽象白底上的人体实验。随后切到 BODY / CONTACT，才进入当前设计资源中的倚靠动作、局部接触与继续前行。两种证据不做假合成。</p>
+  <div class="truth mono"><strong>FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NO PROMOTION · NTS</strong><br/>SCENE ≠ SITE PLACEMENT · BODY DRAWING ≠ FIELD MEASUREMENT</div>
+ </div>
+
+ <div class="visual" id="visual">
+  <div class="visual-mode scene-photo active" data-view="scene">
+   <img src="assets/CH16_P01_QINGJIANG_PEAK_PATH_SOURCE_xur7k2e4tf.jpg" alt="红花峰林清江步道与峰林官方资料影像"/>
+   <div class="scene-shade"></div>
+   <div class="visual-head meta">SCENE / 01 / REAL QINGJIANG<strong>路径与峰林先成立。</strong></div>
+   <div class="visual-caption mono"><strong>OFFICIAL OPERATOR SOURCE · FULL FRAME</strong>xur7k2e4tf.jpg · path / peak-forest context · not site placement</div>
+  </div>
+
+  <div class="visual-mode body-field" data-view="body">
+   <div class="body-word">LEAN</div>
+   <div class="visual-head meta">BODY / 02 / ACTIVITY-BEARING SCALE<strong>疲劳只被接住一小段。</strong></div>
+   <svg viewBox="0 0 1100 720" aria-label="短恢复身体与倚靠界面关系图">
+    <path d="M66 579 C244 541 380 564 530 527 S826 430 1034 455" fill="none" stroke="#D7C9A9" stroke-opacity=".30" stroke-width="2"/>
+    <path d="M71 608 C274 589 452 587 651 531 S869 489 1028 507" fill="none" stroke="#2E7571" stroke-opacity=".75" stroke-width="3"/>
+    <text x="72" y="640" fill="#829992" font-family="monospace" font-size="11" letter-spacing="2">PATH / DIAGRAMMATIC · NOT SITE GEOMETRY</text>
+    <g transform="translate(325 315)"><rect x="0" y="0" width="405" height="45" rx="9" fill="#A98655"/><rect x="20" y="45" width="18" height="126" fill="#29433B"/><rect x="360" y="45" width="18" height="126" fill="#29433B"/><rect x="18" y="38" width="366" height="10" rx="5" fill="#7C8E86" opacity=".78"/></g>
+    <g fill="#E6DED0"><circle cx="758" cy="293" r="25"/><path d="M739 319 C753 312 771 314 781 328 L786 385 L757 421 L735 493 L712 487 L728 416 L693 480 L671 468 L711 394 L711 349 Z"/><path d="M720 338 L663 377 L654 363 L708 321 Z"/><path d="M775 338 L806 385 L792 393 L758 356 Z"/></g>
+    <path d="M665 376 C627 389 599 405 573 428" fill="none" stroke="#D7C9A9" stroke-width="2"/><circle cx="573" cy="428" r="7" fill="#B8543E"/><path d="M792 309 C861 280 911 251 967 208" fill="none" stroke="#D7C9A9" stroke-opacity=".75" stroke-width="2"/><path d="M967 208 l-15 -2 8 13z" fill="#D7C9A9"/>
+    <text x="814" y="190" fill="#D7C9A9" font-family="monospace" font-size="11" letter-spacing="1.4">VIEW OUT / OBJECT WITHDRAWS</text><text x="80" y="118" fill="#D88470" font-family="monospace" font-size="11" letter-spacing="2">MOVE → LEAN → LOOK → MOVE ON</text><text x="80" y="159" fill="#F1EDE4" font-family="serif" font-size="32">不是坐下，而是短暂转移重心。</text>
+   </svg>
+   <div class="visual-caption mono"><strong>NATIVE VECTOR / CURRENT P02 LINEAGE</strong>body / contact / view · no compositing into scene</div>
+  </div>
+
+  <div class="visual-mode contact-field body-field" data-view="contact">
+   <div class="visual-head meta">CONTACT / 03 / INTERFACE<strong>只看身体真正碰到的地方。</strong></div>
+   <svg viewBox="0 0 1100 720" aria-label="身体接触与界面层级图"><rect x="95" y="152" width="910" height="420" fill="none" stroke="#D7C9A9" stroke-opacity=".18"/><rect x="208" y="319" width="485" height="62" rx="10" fill="#A98655"/><rect x="225" y="378" width="450" height="13" rx="6" fill="#7C8E86"/><path d="M260 414v116h46v-67h300v67h46V414" fill="none" stroke="#D7C9A9" stroke-width="4"/><circle cx="788" cy="261" r="27" fill="#E6DED0"/><path d="M769 291 C786 283 805 287 815 302 L814 361 L779 407 L748 492 L723 484 L748 399 L704 473 L681 458 L731 374 L734 317 Z" fill="#E6DED0"/><path d="M746 317 L681 356 L670 340 L733 299 Z" fill="#E6DED0"/><path d="M684 355 C650 365 626 378 606 395" fill="none" stroke="#B8543E" stroke-width="3"/><circle cx="606" cy="395" r="9" fill="#B8543E"/><path d="M606 395 C557 430 509 452 454 470" fill="none" stroke="#B8543E" stroke-width="2" stroke-dasharray="6 6"/><text x="172" y="235" fill="#D88470" font-family="monospace" font-size="11" letter-spacing="2">CONTACT ENVELOPE</text><text x="172" y="278" fill="#F1EDE4" font-family="serif" font-size="34">接触面 / 缓冲 / 可逆支撑</text><text x="172" y="606" fill="#AFC0B8" font-family="sans-serif" font-size="14">身体接触只支持短恢复命题；栏杆承载、现场净宽、湿滑、许可与结构仍为 FIELD + ENGINEERING OPEN。</text></svg>
+   <div class="visual-caption mono"><strong>CONCEPT / NTS / FIELD OPEN</strong>contact ≠ site construction detail</div>
+  </div>
+  <div class="mode-nav" aria-label="P01 visual modes"><button class="active" data-mode="scene">Scene</button><button data-mode="body">Body</button><button data-mode="contact">Contact</button></div>
+ </div>
+</section>
+<section class="section"><div class="head"><div class="meta">USE / 01</div><div><h2>设计只接住中间这一小段。</h2><p>先有行走和观看，再有身体疲劳；只有 LEAN / PERCH 这一小段需要设计介入。恢复以后，界面退出，游程继续。P01 因此不是“产品展示页”，而是把设计出现的时机压到最小。</p></div></div><div class="sequence"><article class="seq" style="--w:18%"><div class="n">01 / MOVE</div><h3>走</h3><p>常态。身体属于路径，不需要任何对象出现。</p><div class="trace"></div></article><article class="seq" style="--w:42%"><div class="n">02 / FATIGUE</div><h3>累</h3><p>疲劳出现，但仍先判断是否真的需要介入。</p><div class="trace"></div></article><article class="seq" style="--w:78%"><div class="n">03 / LEAN</div><h3>靠</h3><p>局部接触接住部分重心；不转成长坐。</p><div class="trace"></div></article><article class="seq" style="--w:55%"><div class="n">04 / LOOK</div><h3>看</h3><p>身体稳定后，注意力重新交还给景观。</p><div class="trace"></div></article><article class="seq" style="--w:22%"><div class="n">05 / MOVE ON</div><h3>再走</h3><p>短恢复结束；设计退出，路线继续。</p><div class="trace"></div></article></div></section>
+<section class="dark"><div class="page" style="padding:0"><div class="head"><div class="meta">PROOF / 02</div><div><h2>真实场景说明“在哪里走”，<br/>身体图说明“为什么需要”。</h2><p>两类资源被明确分工：真实图像证明峰林/步道语境；当前 P02 可编辑设计资源说明短恢复动作与接触逻辑。任何一类都不能越权替另一类证明现场落位或施工成立。</p></div></div><div class="proof"><p class="proof-claim">SCENE → BODY → CONTACT → MOVE ON<small>REAL CONTEXT / CURRENT DESIGN RESOURCE / EXPLICIT TRUTH BOUNDARY</small></p><div class="rows"><div class="row"><span>SCENE</span><b>红花峰林 / 步道 / 峰林语境</b><small>real source · full frame</small></div><div class="row"><span>BODY</span><b>走 → 累 → 靠 / 半倚 → 看 → 再走</b><small>current P02 lineage</small></div><div class="row"><span>DWELL</span><b>2–8 min 级短恢复</b><small>concept target / sample test open</small></div><div class="row"><span>ENVELOPE</span><b>L 1200 rec. [800–1400] · H 975 rec. [900–1050]</b><small>concept range / not site control</small></div><div class="row"><span>OPEN</span><b>荷载 / 净宽 / 湿滑 / 边缘 / 许可 / 精确位置</b><small>FIELD + ENGINEERING OPEN</small></div></div></div><div class="source-line"><span><strong>IMAGE CONSUMPTION</strong><br/>IMG-C04-CH16-P01-SCENE-01 · reserved exclusively to CH16-P01</span><span><strong>SOURCE IDENTITY</strong><br/>xur7k2e4tf.jpg · 1080×686 · 204871 bytes · SHA256 4ce6a0…e78e3</span><span><strong>DOES NOT PROVE</strong><br/>field observation / site placement / body scale / survey geometry / Design PASS</span></div></div></section>
+<div class="seam"><div><div class="meta">NEXT / HOLD</div><strong>P01 finished-pixel review before P02</strong></div><span>CH14 EDITORIAL · REAL SCENE FIRST · BODY SECOND · NO FAKE COMPOSITING · UNIQUE IMAGE CONSUMER</span></div>
+</article>
+<script>const buttons=[...document.querySelectorAll('.mode-nav button')];const views=[...document.querySelectorAll('.visual-mode')];function show(m){buttons.forEach(b=>b.classList.toggle('active',b.dataset.mode===m));views.forEach(v=>v.classList.toggle('active',v.dataset.view===m));}buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.mode)));show('scene');</script>
+</body>
+</html>

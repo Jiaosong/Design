@@ -1,0 +1,35 @@
+{
+  "schema": "oleander.c04.ch16.p01.production.v1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "CH16-P01",
+  "revision": "v5.4",
+  "state": "EXECUTED / ACTUAL-PIXEL READBACK COMPLETE / INDEPENDENT DESIGN REVIEW PENDING / NO SELF-KEEP",
+  "presentation": "REAL_SCENE_FIRST / BODY_SECOND / CONTACT_THIRD",
+  "source_image": {
+    "semantic_image_id": "IMG-C04-CH16-P01-SCENE-01",
+    "file": "assets/CH16_P01_QINGJIANG_PEAK_PATH_SOURCE_xur7k2e4tf.jpg",
+    "pixels": "1080x686",
+    "bytes": 204871,
+    "sha256": "4ce6a0cdc424ff4b73e3e42b79da3b168f45b5b53c2d8e8be8ec4625e9de78e3",
+    "drive_id": "1xD8faVITBzxBxqtFpwB37dQIyEm_tUGx",
+    "state": "RESERVED / LOCKED_TO_CH16-P01_UNTIL_EXPLICIT_RELEASE",
+    "role": "REAL_QINGJIANG_PEAK_PATH_CONTEXT_ONLY",
+    "does_not_prove": ["FIELD_OBSERVATION","SITE_PLACEMENT","BODY_SCALE","SURVEY_GEOMETRY","ENGINEERING_VALIDITY","DESIGN_PASS"]
+  },
+  "actual_pixel_package_html": {
+    "file": "CH16_P01_visual_rebuild_v5_4.html",
+    "sha256": "cf5b7f1de51d05642caf52bf1a8785f6629a1cb0f0828e4564cc8640b25cd467",
+    "bytes": 16046,
+    "role": "ACTUAL_CHROMIUM_READBACK_SOURCE"
+  },
+  "github_text_carrier": {
+    "file": "CH16_P01_visual_rebuild_v5_4.html",
+    "blob_sha": "059147eea204459b3b15258ec11d626b99bb57c3",
+    "role": "TEXT_CODE_RECOVERY_CARRIER",
+    "note": "Same v5.4 page content with repository whitespace normalization; actual-pixel evidence is bound to the durable package HTML hash above. Carrier byte identity is not asserted."
+  },
+  "readback": {"desktop":"1920x1080 SCENE/BODY/CONTACT","mobile":"390x844 SCENE","full_page":"1600px wide","horizontal_overflow":0,"broken_images":0,"page_errors":0,"console_errors":0},
+  "durable_package": {"file":"C04_CH16_P01_visual_rebuild_v5_4_PACKAGE.zip","drive_id":"1l2eb3_Z6TU0gMOgX-_3b4IrfWKlm7Xs7","bytes":4924672,"sha256":"f69ec6c18a3e7e6fb47bc868bcc27f65eaeb3a66b8fbd8fadc05a46a02cd82f4","drive_retrieval_hash_verified":true},
+  "review_boundary": "NO PIXEL KEEP / NO MAIN KEEP / NO PROFESSIONAL FINISH PASS BY PRODUCER",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

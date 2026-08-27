@@ -22,8 +22,11 @@ It does not replace Source Authority, Design Authority, Project State or the exi
 | `IMG-C04-CH07-P01-LANDSCAPE-01` | official source `k9zsdud798.png`; exact persisted 600×400 PNG SHA256 `efb640e3fd0ac01ecc77925c901076f8ed65dac313e37e05d020838d0da39fa3` | CH07-P01 / CH07-P01-S01 v0.4 | `RESERVED` | `LOCKED TO CH07-P01 UNTIL EXPLICIT RELEASE` |
 | `IMG-C04-CH07-P02-AUDIENCE-01` | official source `zut3buiu9q.png`; exact persisted 600×400 PNG SHA256 `5ac6e67615d4d4f30f7df9d87ab14d5a889e32b56b0eb1af77dee9d045d1b6e2` | CH07-P02 / CH07-P02-S01 v0.4 | `RESERVED` | `LOCKED TO CH07-P02 UNTIL EXPLICIT RELEASE` |
 | `IMG-C04-CH07-P03-LANDSCAPE-01` | official source `it07s5ssb3.png`; exact persisted 600×400 PNG SHA256 `27feea81864b949bf056260cab0d3e229ee55e7c9fd35a88fc4ff923b7eb226c` | CH07-P03 / CH07-P03-S01 v0.4 | `RESERVED` | `LOCKED TO CH07-P03 UNTIL EXPLICIT RELEASE` |
+| `IMG-C04-CH16-P01-SCENE-01` | official Enshi Tourism Group source `xur7k2e4tf.jpg`; exact persisted `CH16_P01_QINGJIANG_PEAK_PATH_SOURCE_xur7k2e4tf.jpg`, 1080×686 / 204871 bytes / SHA256 `4ce6a0cdc424ff4b73e3e42b79da3b168f45b5b53c2d8e8be8ec4625e9de78e3` | CH16-P01 v5.4 real-source producer review target | `RESERVED` | `LOCKED TO CH16-P01 UNTIL EXPLICIT RELEASE` |
 
 CH07 source hashes are exact Google-Docs-materialized pixels from the official HTTP sources, not claims about website-original byte hashes. Before reservation, current ledger and GitHub had no matching filenames; Drive returned only the new materialization documents; C04 Notion returned no direct filename-bound existing consumer.
+
+`IMG-C04-CH16-P01-SCENE-01` is reserved only as real Qingjiang peak/path context. It does **not** prove field observation, exact CH16-P01 placement, body scale, survey geometry, engineering validity or Design PASS. Any crop/recolor/mask/screenshot derivative inherits the same semantic image identity.
 
 ## Historical correction
 
