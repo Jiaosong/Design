@@ -73,13 +73,13 @@ import FreeCAD as App
 import Part
 import Path
 import Path.Main.Job as PathJob
-from Path.Post.Processor import PostProcessorFactory
-from Machine.models.machine import Machine, Toolhead, ToolheadType
+from importlib import reload
+from Path.Post.scripts import linuxcnc_post as postprocessor
 
 smoke_dir = os.environ['OLEANDER_PRO_SMOKE_DIR']
 doc = App.newDocument('OLEANDER_PRO_SMOKE')
 
-# Real parametric/document geometry and native FreeCAD source.
+# Real document geometry and native FreeCAD source.
 obj = doc.addObject('Part::Feature', 'Box')
 obj.Shape = Part.makeBox(20, 10, 5)
 doc.recompute()
@@ -87,23 +87,12 @@ fcstd = os.path.join(smoke_dir, 'freecad-smoke.FCStd')
 step = os.path.join(smoke_dir, 'freecad-smoke.step')
 Part.export([obj], step)
 
-# Build a real CAM Job and a real Path feature. We intentionally do not invoke
-# the GUI-context-dependent Path.Op.* factory here; headless 1.1.3 currently
-# has a known upstream controller-selection bug in those factories.
+# Real FreeCAD 1.1.3 CAM Job + operation group + Path object.
 job = PathJob.Create('Job', [obj], None)
 doc.recompute()
 assert job is not None and job.Operations is not None and job.Tools is not None
-assert len(job.Tools.Group) >= 1
-
-tc = job.Tools.Group[0]
 op = doc.addObject('Path::Feature', 'OLEANDER_Smoke_Toolpath')
 op.Label = 'OLEANDER Smoke Toolpath'
-if not hasattr(op, 'ToolController'):
-    op.addProperty('App::PropertyLink', 'ToolController', 'Path')
-op.ToolController = tc
-if not hasattr(op, 'Active'):
-    op.addProperty('App::PropertyBool', 'Active', 'Path')
-op.Active = True
 op.Path = Path.Path([
     Path.Command('G0', {'X': 0.0, 'Y': 0.0, 'Z': 5.0}),
     Path.Command('G1', {'X': 0.0, 'Y': 0.0, 'Z': 0.0, 'F': 100.0}),
@@ -116,31 +105,17 @@ doc.recompute()
 assert op in job.Operations.Group
 assert len(op.Path.Commands) >= 5
 
-# Explicit controller dialect: LinuxCNC. FreeCAD's own CAM tests exercise
-# PostProcessorFactory + export2(), so this follows the native postprocess path.
+# FreeCAD 1.1.3 native LinuxCNC post API, matching its own CAM test suite.
 job.PostProcessor = 'linuxcnc'
-post = PostProcessorFactory.get_post_processor(job, 'linuxcnc')
-assert post is not None
-machine = Machine.create_3axis_config()
-machine.name = 'OLEANDER Smoke 3-axis'
-machine.toolheads = [
-    Toolhead(
-        name='OLEANDER Smoke Spindle',
-        toolhead_type=ToolheadType.ROTARY,
-        min_rpm=0,
-        max_rpm=24000,
-        max_power_kw=1.0,
-    )
-]
-post._machine = machine
-post.apply_configuration_bundle()
-outputs = post.export2()
-assert outputs and isinstance(outputs[0], tuple) and len(outputs[0]) >= 2
-gcode = '\n'.join(str(item[1]) for item in outputs if len(item) >= 2 and item[1])
-assert gcode.strip()
+reload(postprocessor)
+postables = list(job.Operations.Group)
+assert op in postables
+gcode = postprocessor.export(postables, '-', '--no-header --no-show-editor')
+assert isinstance(gcode, str) and gcode.strip()
 assert 'G21' in gcode, gcode
 assert 'G0' in gcode, gcode
 assert 'G1' in gcode, gcode
+assert 'X10.000' in gcode, gcode
 
 gcode_path = os.path.join(smoke_dir, 'freecad-smoke-linuxcnc.ngc')
 with open(gcode_path, 'w', encoding='utf-8', newline='\n') as fh:
