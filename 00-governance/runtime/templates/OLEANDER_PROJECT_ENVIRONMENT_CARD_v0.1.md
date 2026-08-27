@@ -38,7 +38,7 @@ Execution routing binding: `OLEANDER_CLOUD_FREE_EXECUTION_ROUTING_BINDING_v0.1.j
 ## Software Selection Preflight｜skill owner first, software second
 Do **not** choose software first. Resolve in this sequence:
 
-`CURRENT OLEANDER SKILL / OWNER → REQUIRED NATIVE OUTPUT + FIDELITY → AGENT-EXECUTABLE CONNECTOR OR NATIVE SOURCE TOOL → ACTIVE SHARED RUNTIME → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
+`CURRENT OLEANDER SKILL / OWNER → REQUIRED NATIVE OUTPUT + FIDELITY → AGENT_EXECUTABLE CURRENT CONNECTOR OR NATIVE SOURCE TOOL → SHARED_REPO_RUNTIME (ACTIVE ONLY) → FREE/INCLUDED CLOUD WHEN ACTUALLY EXPOSED → USER_WEB_MANUAL → CAPABILITY_HOLD`
 
 Rules:
 - Familiar software does not override the Current Skill or Required Native Output.
@@ -46,7 +46,7 @@ Rules:
 - A Candidate shared runtime is validation / training / support only unless explicitly labeled as bounded project reapplication.
 - Existing editable project files/pages are reused before new SaaS files are created.
 - Low-file/page-limit software must not become Global Current.
-- `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CONNECTOR EXPOSED ≠ UNLIMITED PLAN CAPACITY`; `USER_WEB_MANUAL ≠ AGENT_EXECUTED`.
+- `TOOL DOCUMENTED ≠ TOOL CALLABLE`; `CONNECTOR EXPOSED ≠ UNLIMITED PLAN CAPACITY`; manual web execution never counts as agent execution.
 
 ### Current software role matrix
 | Need | Preferred execution | Optional / fallback | Hard boundary |
