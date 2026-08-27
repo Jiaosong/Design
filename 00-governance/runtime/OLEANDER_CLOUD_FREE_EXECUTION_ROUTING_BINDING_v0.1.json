@@ -24,11 +24,63 @@
     "USER_WEB_MANUAL_ONLY_IF_SHARED_RUNTIME_CANNOT_PRESERVE_REQUIRED_NATIVE_OUTPUT",
     "CAPABILITY_HOLD"
   ],
+  "routing_token_semantics": {
+    "SHARED_REPO_RUNTIME_MATCH": "DEFAULT_PRODUCTION_MATCH_REQUIRES_ACTIVE_LIFECYCLE; CANDIDATE_MATCH_IS_VALIDATION_TRAINING_SUPPORT_OR_EXPLICITLY_LABELED_BOUNDED_PROJECT_REAPPLICATION_ONLY"
+  },
   "shared_repo_surface_preference": {
     "WEB_UI_RESPONSIVE_VISUAL_STAGE": "00-governance/runtime/browser-design-workbench/workbench.html",
     "BOUNDED_RASTER_TREATMENT_COMPOSITION_AB": "00-governance/runtime/browser-image-lab/image-lab.html",
     "CONCEPT_SPATIAL_MASSING_CAMERA_SCALE": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
     "TECHNICAL_VECTOR_PACKAGING_POP_PREFLIGHT": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html"
+  },
+  "shared_repo_surface_lifecycle": {
+    "current_pack_status": "CANDIDATE_SHARED_REPO_RUNTIME",
+    "default_production_eligible": false,
+    "candidate_allowed": [
+      "VALIDATION",
+      "TRAINING",
+      "SUPPORT",
+      "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"
+    ],
+    "candidate_forbidden": [
+      "DEFAULT_PRODUCTION_OWNER",
+      "SOLE_FINAL_NATIVE_OUTPUT_AUTHORITY",
+      "UNLABELED_CURRENT_PRODUCTION_ROUTE"
+    ],
+    "promotion_requirement": "ACTIVE_ONLY_AFTER_REAL_PROJECT_READBACK_PLUS_VERIFIABLE_INDEPENDENT_KEEP_PLUS_RETEST_PLUS_EXPLICIT_PROMOTION"
+  },
+  "review_identity_policy": {
+    "internal_crit_label": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT",
+    "internal_crit_can_be_same_producer_context": true,
+    "internal_crit_cannot_grant_independent_keep": true,
+    "independent_required_fields": [
+      "producer_id",
+      "reviewer_id",
+      "review_input_artifact_id",
+      "review_input_hash",
+      "reviewer_independence_state",
+      "review_verdict",
+      "promotion_authority"
+    ],
+    "independent_rule": "PRODUCER_ID_MUST_DIFFER_FROM_REVIEWER_ID_WHEN_REVIEWER_INDEPENDENCE_STATE_IS_INDEPENDENT",
+    "missing_identity_interpretation": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT_NOT_INDEPENDENT_REVIEW",
+    "title_does_not_prove_independence": true
+  },
+  "transaction_policy": {
+    "default_logical_object_pr_count": 1,
+    "production_pr_contains": [
+      "IMPLEMENTATION",
+      "ACTUAL_READBACK",
+      "INTERNAL_ARTIFACT_FIRST_CRIT",
+      "ROOT_CAUSE",
+      "REPAIR",
+      "RETEST"
+    ],
+    "independent_review_binding": "PR_REVIEW_OR_ISOLATED_REVIEW_RECORD_BOUND_TO_EXACT_ARTIFACT_HASH",
+    "review_only_pr_default": "FORBIDDEN",
+    "review_only_pr_exception": "ONLY_WHEN_EXPLICIT_ORGANIZATIONAL_OR_REGULATORY_SEPARATION_REQUIRES_IT",
+    "transaction_closed_not_equal_flow_closed": true,
+    "flow_closed_requires_all_required_applicable_phases": true
   },
   "manual_saas_fallbacks": {
     "figma": "OPTIONAL_TEMP_ONLY_NOT_GLOBAL_CURRENT",
@@ -41,6 +93,8 @@
     "manual_web_tool_exists": "DOES_NOT_EQUAL_AGENT_EXECUTED",
     "validator_or_ci_pass": "DOES_NOT_EQUAL_BROWSER_PASS_OR_DESIGN_PASS",
     "static_source_readback": "DOES_NOT_EQUAL_ACTUAL_PIXEL_OR_INTERACTION_READBACK",
+    "internal_crit": "DOES_NOT_EQUAL_INDEPENDENT_REVIEW",
+    "candidate_runtime": "DOES_NOT_EQUAL_DEFAULT_PRODUCTION_ELIGIBLE",
     "real_readback_required": true,
     "independent_design_review_required_when_applicable": true
   },
@@ -48,6 +102,7 @@
     "original_training_loop_preserved": true,
     "type_routing_is_additive_only": true,
     "use_shared_runtime_for_real_ab_when_fit": true,
+    "candidate_runtime_must_be_labeled_candidate": true,
     "do_not_train_software_for_software_sake": true,
     "do_not_promote_runtime_surface_from_training_without_real_project_reapplication_readback_review_and_retest": true
   },
@@ -59,5 +114,5 @@
     "ENGINEERING_APPROVAL",
     "FIELD_ACCEPTANCE"
   ],
-  "fallback_truth_rule": "IF_REQUIRED_NATIVE_OUTPUT_CANNOT_BE_PRESERVED_BY_AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME_THEN_USE_MANUAL_OPTION_OR_HOLD_WITHOUT_LOWERING_PROFESSIONAL_REQUIREMENT"
+  "fallback_truth_rule": "IF_REQUIRED_NATIVE_OUTPUT_CANNOT_BE_PRESERVED_BY_AGENT_EXECUTABLE_CURRENT_SKILL_OR_ACTIVE_SHARED_REPO_RUNTIME_THEN_USE_MANUAL_OPTION_OR_HOLD_WITHOUT_LOWERING_PROFESSIONAL_REQUIREMENT"
 }
