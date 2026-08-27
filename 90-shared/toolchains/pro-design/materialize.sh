@@ -45,6 +45,7 @@ fi
 if [[ "${OLEANDER_PRO_MATERIALIZE_FREECAD:-0}" == "1" ]]; then
   freecad_dir="$runtime_home/freecad-1.1.3"
   freecad_app="$freecad_dir/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage"
+  freecad_appdir="$freecad_dir/appdir"
   mkdir -p "$freecad_dir"
   if [[ ! -f "$freecad_app" ]]; then
     curl -L --fail --retry 3 \
@@ -53,6 +54,40 @@ if [[ "${OLEANDER_PRO_MATERIALIZE_FREECAD:-0}" == "1" ]]; then
   fi
   echo "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef  $freecad_app" | sha256sum -c -
   chmod +x "$freecad_app"
+
+  if [[ ! -d "$freecad_appdir" ]]; then
+    extract_tmp="$freecad_dir/squashfs-root"
+    rm -rf "$extract_tmp"
+    (
+      cd "$freecad_dir"
+      "$freecad_app" --appimage-extract >/dev/null
+    )
+    if [[ ! -d "$extract_tmp" ]]; then
+      echo "FreeCAD AppImage extraction did not produce squashfs-root." >&2
+      exit 1
+    fi
+    mv "$extract_tmp" "$freecad_appdir"
+  fi
+
+  freecad_cmd=""
+  for candidate in \
+    "$freecad_appdir/usr/bin/FreeCADCmd" \
+    "$freecad_appdir/usr/bin/freecadcmd" \
+    "$freecad_appdir/bin/FreeCADCmd" \
+    "$freecad_appdir/bin/freecadcmd"; do
+    if [[ -x "$candidate" ]]; then
+      freecad_cmd="$candidate"
+      break
+    fi
+  done
+  if [[ -z "$freecad_cmd" ]]; then
+    freecad_cmd="$(find "$freecad_appdir" -type f \( -name FreeCADCmd -o -name freecadcmd \) -perm -u+x -print -quit 2>/dev/null || true)"
+  fi
+  if [[ -z "$freecad_cmd" || ! -x "$freecad_cmd" ]]; then
+    echo "Verified FreeCAD AppImage extracted, but no executable FreeCADCmd was found." >&2
+    exit 1
+  fi
+  printf '%s\n' "$freecad_cmd" > "$freecad_dir/FREECAD_CMD_PATH"
 fi
 
 printf 'OLEANDER_PRO_RUNTIME_HOME=%s\n' "$runtime_home"
