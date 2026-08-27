@@ -13,7 +13,7 @@
     "ACTUAL_READBACK_AND_REVIEW"
   ],
   "lifecycle_roles": ["KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION"],
-  "governance_note": "GOVERNANCE is an oversight layer, not a normal production skill. It maintains Current state, versions, routing, duplication, project state, runtime and promotion integrity across all skills.",
+  "governance_note": "GOVERNANCE is an oversight layer, not a normal production skill. It maintains Current state, versions, routing, duplication, project state, runtime and promotion integrity across all skills. Human-facing OLEANDER project and knowledge prose also inherits 00-governance/OLEANDER_HUMAN_PROFESSIONAL_VOICE_POLICY_v1.0.md; machine-readable IDs/status tokens remain exact.",
   "core_identity_rule": "ELEVEN_CORE_IDENTITIES_DO_NOT_OVERRIDE_MINIMUM_SUFFICIENT_OWNER_SET_OR_EXISTING_SPECIALIST_OWNERSHIP",
   "skills": [
     {
