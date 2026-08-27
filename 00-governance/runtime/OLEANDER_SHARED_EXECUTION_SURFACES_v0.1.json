@@ -1,7 +1,7 @@
 {
   "schema": "oleander.shared-execution-surfaces.v0.1",
   "status": "ACTIVE_EXECUTION_SURFACE_REGISTRY",
-  "implementation_revision": "0.3",
+  "implementation_revision": "0.4",
   "parent": "OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0",
   "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY; FIGMA_REQUIRES_EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE_BEFORE_PROBE",
   "surfaces": {
@@ -95,6 +95,32 @@
       "global_current_store": false,
       "boundary": "preflight/support only until ACTIVE; supplier proof remains outside runtime"
     },
+    "oleander_pro_design_toolchain": {
+      "class": "SHARED_REPO_RUNTIME",
+      "lifecycle_state": "CANDIDATE",
+      "default_production_eligible": false,
+      "allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "role": "OPENBIM_IFC_PARAMETRIC_SOLID_CAD_TECHNICAL_DXF_CAM_DETERMINISTIC_RASTER_MOTION_RUNTIME",
+      "contract": "00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json",
+      "root": "90-shared/toolchains/pro-design",
+      "preferred_probe": "90-shared/toolchains/pro-design/probe.sh",
+      "runtime_probe_required_per_run": true,
+      "cross_conversation": true,
+      "external_saas_required": false,
+      "global_current_store": false,
+      "validation_state": "RUNTIME_SMOKE_VALIDATED_CANDIDATE_PENDING_INDEPENDENT_REVIEW_AND_EXPLICIT_PROMOTION",
+      "validation_evidence": "GitHub Actions run 33047483244 / run #16 / commit 16672434ec9798324b6419d37b4b5101d07d8767",
+      "validated_candidate_capabilities": [
+        "IFC_CREATE_WRITE_REOPEN",
+        "STEP_EXPORT_REOPEN_DIMENSION_CHECK",
+        "DXF_CREATE_SAVE_REOPEN",
+        "DETERMINISTIC_RASTER_GENERATE_READBACK",
+        "FFMPEG_GENERATE_PROBE",
+        "FREECAD_1_1_3_HEADLESS_FCSTD_STEP",
+        "FREECAD_CAM_JOB_PATH_LINUXCNC_GCODE_POSTPROCESS"
+      ],
+      "boundary": "Candidate runtime evidence does not prove design quality, proprietary BIM/RVT authoring, engineering approval, machine safety, fabrication approval, automotive Class-A surfacing, specialist high-end retouch/color finish or field truth."
+    },
     "vercel_connector": {
       "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
       "role": "OPTIONAL_DEPLOY_AND_DEPLOY_READBACK",
@@ -155,7 +181,8 @@
     },
     "complex_bim_cad_class_a_archviz": {
       "class": "CAPABILITY_HOLD",
-      "rule": "DO_NOT_FAKE_PROFESSIONAL_NATIVE_OUTPUT"
+      "rule": "DO_NOT_FAKE_PROFESSIONAL_NATIVE_OUTPUT",
+      "boundary": "Hold remains for proprietary/discipline-specific BIM or RVT authoring, unverified complex CAD beyond the validated candidate solid workflow, automotive Class-A quality claims, engineering approval, machine-safe CAM/fabrication and from-zero specialist high-end archviz. OpenBIM IFC, parametric solid CAD, DXF and bounded CAM postprocess validation are separately represented by oleander_pro_design_toolchain and do not erase these holds."
     }
   },
   "capability_pack": "00-governance/runtime/OLEANDER_CLOUD_FREE_CAPABILITY_PACK_v0.1.json",
