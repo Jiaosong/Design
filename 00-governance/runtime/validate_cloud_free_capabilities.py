@@ -13,6 +13,9 @@ STUDIO = RUNTIME / "cloud-free-studio" / "index.html"
 IMAGE_RECEIPT = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "VALIDATION_RECEIPT_v0.1.json"
 IMAGE_RETEST = RUNTIME / "validation" / "2026-08-26-image-lab-baojiajie" / "PROFESSIONAL_RETEST_01.json"
 SPATIAL_RECEIPT = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "VALIDATION_RECEIPT_v0.1.json"
+SPATIAL_RETEST = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "PROFESSIONAL_RETEST_01.json"
+SPATIAL_REHASH = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "CANONICAL_GLB_REHASH_AND_BOUNDS_2026-08-27.json"
+SPATIAL_RESULTS = RUNTIME / "validation" / "2026-08-26-spatial-lab-timer" / "SPATIAL_LAB_BROWSER_TEST_RESULTS_v03.json"
 WORKBENCH_RECEIPT = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "VALIDATION_RECEIPT_v0.1.json"
 WORKBENCH_RESULTS = RUNTIME / "validation" / "2026-08-26-design-workbench-c04" / "BROWSER_TEST_RESULTS_v0.2.json"
 
@@ -28,7 +31,12 @@ def require(text: str, tokens: list[str], label: str) -> None:
 
 
 def main() -> None:
-    required_files = [PACK, REGISTRY, ROUTING, CARD, STUDIO, IMAGE_RECEIPT, IMAGE_RETEST, SPATIAL_RECEIPT, WORKBENCH_RECEIPT, WORKBENCH_RESULTS]
+    required_files = [
+        PACK, REGISTRY, ROUTING, CARD, STUDIO,
+        IMAGE_RECEIPT, IMAGE_RETEST,
+        SPATIAL_RECEIPT, SPATIAL_RETEST, SPATIAL_REHASH, SPATIAL_RESULTS,
+        WORKBENCH_RECEIPT, WORKBENCH_RESULTS,
+    ]
     if any(not p.exists() for p in required_files):
         fail("pack / registry / routing / project card / studio / validation receipt, retest or result missing")
 
@@ -38,6 +46,9 @@ def main() -> None:
     image_receipt = json.loads(IMAGE_RECEIPT.read_text(encoding="utf-8"))
     image_retest = json.loads(IMAGE_RETEST.read_text(encoding="utf-8"))
     spatial_receipt = json.loads(SPATIAL_RECEIPT.read_text(encoding="utf-8"))
+    spatial_retest = json.loads(SPATIAL_RETEST.read_text(encoding="utf-8"))
+    spatial_rehash = json.loads(SPATIAL_REHASH.read_text(encoding="utf-8"))
+    spatial_results = json.loads(SPATIAL_RESULTS.read_text(encoding="utf-8"))
     workbench_receipt = json.loads(WORKBENCH_RECEIPT.read_text(encoding="utf-8"))
     workbench_results = json.loads(WORKBENCH_RESULTS.read_text(encoding="utf-8"))
 
@@ -194,6 +205,12 @@ def main() -> None:
         fail("spatial lab validation state drifted or was prematurely promoted")
     if spatial_spec.get("validation_receipt") != "00-governance/runtime/validation/2026-08-26-spatial-lab-timer/VALIDATION_RECEIPT_v0.1.json":
         fail("spatial lab validation receipt pointer missing")
+    if spatial_spec.get("professional_review_01_state") != "REVISE":
+        fail("spatial lab professional review 01 must preserve REVISE history")
+    if spatial_spec.get("professional_retest_01_state") != "PASS_S01_S05_INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED":
+        fail("spatial lab professional retest state missing or prematurely promoted")
+    if spatial_spec.get("persistent_readback_2026_08_27") != "/Oleander/90_Archive/Runtime-Validation/2026-08-27/Spatial-Lab-Retest-01":
+        fail("spatial lab professional retest persistent pointer drifted")
     require(files["browser_spatial_lab"], [
         "<canvas", "oleander.spatial-proxy-scene.v0.2", "PROXY_DERIVED",
         "PROXY_ONLY_NOT_SOURCE_GEOMETRY", "ORTHOGRAPHIC_PROPORTION_READBACK",
@@ -202,6 +219,10 @@ def main() -> None:
         "SCENE DIRTY / VALIDATE + APPLY REQUIRED / EXPORT BLOCKED",
         "EXPORT BLOCKED / VALIDATE + APPLY CURRENT SCENE FIRST",
         "Export Valid Scene JSON", "Fit Scene", "pointerdown",
+        "AABB PROXY ONLY — NOT FORM / SILHOUETTE / CAD GEOMETRY",
+        "SPATIAL READBACK", "PROXY SCENE BOUNDS", "CANONICAL SOURCE BOUNDS (DECLARED META)",
+        "source/object=", "proxy=", "geometryEquivalent=", "EXACT_VIEW_PLANE_SCALE",
+        "PERSPECTIVE · NO UNIFORM SCALE · DEPTH-DEPENDENT",
     ], "spatial lab")
     if "https://" in files["browser_spatial_lab"] or "http://" in files["browser_spatial_lab"] or "import " in files["browser_spatial_lab"]:
         fail("spatial lab must remain zero external runtime dependency")
@@ -221,6 +242,36 @@ def main() -> None:
         fail("spatial lab orthographic depth-invariance evidence missing")
     if bt.get("invalid_json_export_blocked") != "PASS" or bt.get("dirty_scene_export_blocked") != "PASS":
         fail("spatial lab fail-closed export evidence missing")
+    if spatial_retest.get("source_sha256") != "900e02510ab6b2b5176aa3723dba7981700dc79b5f217dbe481844a534ed7c66":
+        fail("spatial professional retest source identity drifted")
+    if spatial_retest.get("promotion") != "INDEPENDENT_KEEP_OPEN_ACTIVE_NOT_GRANTED":
+        fail("spatial professional retest cannot self-grant Independent KEEP or ACTIVE")
+    sq = spatial_retest.get("artifact_first_retest", {})
+    for key in (
+        "S01_proxy_object_identity", "S02_bounds_and_selected_dimensions", "S03_aabb_overread_warning",
+        "S04_source_proxy_correspondence", "S05_scale_semantics",
+    ):
+        if not str(sq.get(key, "")).startswith("PASS_"):
+            fail(f"spatial professional retest missing {key}")
+    if spatial_retest.get("truth_boundary", {}).get("proxy_geometry_equivalent") is not False:
+        fail("spatial professional retest lost proxy geometry truth boundary")
+    if spatial_rehash.get("source", {}).get("hash_match") is not True or spatial_rehash.get("source", {}).get("mesh_count") != 21:
+        fail("spatial canonical rehash evidence invalid")
+    ext = spatial_rehash.get("canonical_bounds_lab", {}).get("extent", [])
+    if len(ext) != 3 or abs(ext[0] - 118.0) > 1e-6 or abs(ext[1] - 34.18000030517578) > 1e-6 or abs(ext[2] - 123.89999771118164) > 1e-6:
+        fail("spatial canonical Lab bounds drifted")
+    if spatial_results.get("legend_count") != 5:
+        fail("spatial v03 viewport object legend incomplete")
+    if spatial_results.get("selected_object", {}).get("geometryEquivalent") is not False:
+        fail("spatial v03 selected-object proxy truth invalid")
+    if spatial_results.get("mobile", {}).get("scrollWidth") != 390 or spatial_results.get("mobile", {}).get("clientWidth") != 390:
+        fail("spatial v03 mobile width contract failed")
+    if spatial_results.get("page_errors") != [] or spatial_results.get("mobile", {}).get("errors") != []:
+        fail("spatial v03 browser retest has errors")
+    if "NO_UNIFORM_SCALE_DEPTH_DEPENDENT" not in spatial_results.get("perspective_tag", ""):
+        fail("spatial v03 perspective scale semantics drifted")
+    if not spatial_results.get("front_scale", "").startswith("ORTHO VIEW-PLANE SCALE") or not spatial_results.get("axon_scale", "").startswith("ORTHO VIEW-PLANE SCALE"):
+        fail("spatial v03 exact orthographic scale readback missing")
 
     require(files["browser_technical_svg_lab"], ["id=\"CUT\"", "id=\"BLEED\"", "id=\"SAFE\"", "id=\"ARTWORK\"", "id=\"DIMENSIONS\"", "Export SVG", "VENDOR CONFIRM"], "technical SVG lab")
 
@@ -255,6 +306,8 @@ def main() -> None:
     print("image_lab_independent_review=OPEN")
     print("spatial_lab_functional_browser_readback=PASS")
     print("spatial_lab_persistence_remote_readback=PASS")
+    print("spatial_lab_professional_review_01=REVISE")
+    print("spatial_lab_professional_retest_01=PASS_S01_S05")
     print("spatial_lab_independent_review=OPEN")
     print("spatial_external_dependencies=0")
     print("browser_pass=OPEN_NOT_CLAIMED")
