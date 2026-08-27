@@ -4,7 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 runtime_home="${OLEANDER_PRO_RUNTIME_HOME:-/mnt/data/runtime/oleander-pro-design}"
 python_bin="${OLEANDER_PRO_PYTHON:-python3}"
-requirements="$repo_root/tools/oleander-runtime/pro-design/requirements.lock.txt"
+requirements="$repo_root/90-shared/toolchains/pro-design/requirements.lock.txt"
 venv="$runtime_home/venv"
 
 mkdir -p "$runtime_home"
