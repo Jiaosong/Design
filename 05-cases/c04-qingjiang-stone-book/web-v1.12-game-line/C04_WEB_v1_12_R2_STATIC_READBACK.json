@@ -1,6 +1,6 @@
 {
-  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_18",
-  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_AND_HERO_SOURCE_RESOLUTION",
+  "schema": "C04_WEB_PUBLIC_PORTFOLIO_SOURCE_READBACK_V1_19",
+  "method": "GITHUB_SOURCE_READBACK_AFTER_ROUTE03_RECOVERY_AND_HERO_R06_SOURCE_RESOLUTION",
   "observed_at": "2026-08-27",
   "public_sections": 18,
   "first_section": "01",
@@ -22,15 +22,7 @@
     "bottom_right_trigger": true,
     "default_collapsed": true,
     "category_count": 7,
-    "categories": [
-      "original_assets",
-      "design_idea",
-      "design_thinking",
-      "technology_route",
-      "task_workflow",
-      "innovation_and_difficulties",
-      "ai_plus_3d"
-    ],
+    "categories": ["original_assets","design_idea","design_thinking","technology_route","task_workflow","innovation_and_difficulties","ai_plus_3d"],
     "asset_reference_markup_present": true,
     "ai_plus_3d_six_stage": true,
     "desktop_bottom_right_panel": true,
@@ -42,15 +34,13 @@
   "runtime_asset_integrity": {
     "status": "BLOCKED",
     "asset_directory_present_in_current_runtime_tree": true,
-    "resolved_assets": [
-      {
-        "path": "assets/route03_locked_current.svg",
-        "source": "Google Drive C04__LOCKED_CURRENT__ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED_PACKAGE.zip",
-        "drive_file_id": "1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy",
-        "source_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
-        "remote_readback": "PASS"
-      }
-    ],
+    "resolved_assets": [{
+      "path": "assets/route03_locked_current.svg",
+      "source": "Google Drive C04__LOCKED_CURRENT__ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED_PACKAGE.zip",
+      "drive_file_id": "1VDfnbuCG-dKRyRZKg2MKhjvljI4CYzIy",
+      "source_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+      "remote_readback": "PASS"
+    }],
     "source_resolved_runtime_missing": [
       {
         "runtime_path": "assets/hero_qingjiang.jpg",
@@ -63,25 +53,29 @@
         "content_readback": "PASS",
         "runtime_materialization": "PENDING",
         "decision": "USE EXACT EXISTING QJ-D V1.1 HERO SOURCE; NO REDRAW / NO AI SUBSTITUTE"
+      },
+      {
+        "runtime_path": "assets/r06_qingjiang.jpg",
+        "canonical_visual_source": "QJ-D v1.1 R06 Landscape First",
+        "drive_folder": "QJ-D__PUBLIC-DISPLAY__v1.1",
+        "drive_file_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+        "drive_filename": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+        "bytes": 3313809,
+        "sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+        "content_readback": "PASS",
+        "runtime_materialization": "PENDING",
+        "decision": "USE EXACT EXISTING QJ-D V1.1 R06 LANDSCAPE-FIRST SOURCE; KEEP HOLD/TRUTH BOUNDARY; NO MODEL OR AI SUBSTITUTE"
       }
     ],
-    "verified_missing_runtime_samples": [
-      "assets/hero_qingjiang.jpg"
-    ],
+    "verified_missing_runtime_samples": ["assets/hero_qingjiang.jpg","assets/r06_qingjiang.jpg"],
     "verified_missing_samples_are_complete_list": false,
     "validator": "verify_game_line.mjs / C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_16",
     "validator_contract": "collect HTML/CSS/JS assets/* references; fail on missing or zero-byte files",
-    "complete_missing_asset_list": "TO_BE_EMITTED_BY_VALIDATOR_AFTER_ALL_REFERENCED_ASSETS_ARE_LOCATOR-CHECKED_OR_MATERIALIZED"
+    "complete_missing_asset_list": "TO_BE_EMITTED_BY_VALIDATOR_AFTER ALL REFERENCED ASSETS ARE LOCATOR-CHECKED OR MATERIALIZED"
   },
   "new_generated_images": 0,
   "live_html_css_js": true,
-  "internal_public_noise": {
-    "chapter_page_authoring_ids": 0,
-    "pull_request_numbers": 0,
-    "blob_hashes": 0,
-    "field_observed_internal_string": 0,
-    "design_review_pending_string": 0
-  },
+  "internal_public_noise": {"chapter_page_authoring_ids":0,"pull_request_numbers":0,"blob_hashes":0,"field_observed_internal_string":0,"design_review_pending_string":0},
   "runtime_execution": {
     "github_governance_ci": "SUCCESS / NOT A WEB ASSET PASS",
     "asset_integrity_static_gate": "FAIL / BLOCKED",
@@ -89,7 +83,7 @@
     "reduced_motion_preference_emulation": "NOT_RUN",
     "reduced_motion_state_equivalence_readback": "NOT_RUN"
   },
-  "truth_boundary": "ROUTE-03 IS MATERIALIZED; THE EXISTING QJ-D V1.1 HERO SOURCE HAS NOW BEEN LOCATED, OPENED, AND SHA-VERIFIED, BUT ITS REQUIRED GITHUB RUNTIME REPRESENTATION assets/hero_qingjiang.jpg IS STILL MISSING; RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
+  "truth_boundary": "ROUTE-03 IS MATERIALIZED; EXISTING QJ-D V1.1 HERO AND R06 LANDSCAPE-FIRST SOURCES HAVE BEEN LOCATED, OPENED, AND SHA-VERIFIED, BUT THEIR REQUIRED GITHUB RUNTIME REPRESENTATIONS assets/hero_qingjiang.jpg AND assets/r06_qingjiang.jpg ARE STILL MISSING; RUNTIME ASSET SET REMAINS INCOMPLETE; SYSTEM-LEVEL REDUCED-MOTION RUNTIME EVIDENCE NOT ESTABLISHED; RESEARCH-GRADE DESIGN; FIELD / ENGINEERING VALIDATION REMAINS OPEN",
   "source_structure_readback_pass": true,
   "asset_integrity_pass": false,
   "current_static_gate_pass": false,
