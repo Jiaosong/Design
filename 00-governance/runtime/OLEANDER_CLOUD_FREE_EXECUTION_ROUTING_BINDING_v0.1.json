@@ -1,6 +1,6 @@
 {
   "schema": "oleander.cloud-free-execution-routing-binding.v0.1",
-  "implementation_revision": "0.3",
+  "implementation_revision": "0.4",
   "status": "ACTIVE_BINDING_TO_GLOBAL_PROFILE",
   "role": "ROUTING_BINDING_NOT_NEW_METHOD_SKILL_GATE_OR_FRAMEWORK",
   "parent_profile": "00-governance/runtime/OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0.json",
@@ -39,7 +39,7 @@
       "EXISTING_AUTHORITATIVE_FIGMA_FILE_OR_PROJECT_MUST_BE_CONTINUED_OR_REPAIRED"
     ],
     "figma_probe_rule": "DO_NOT_PROBE_RECOMMEND_OR_CREATE_FIGMA_UNLESS_THE_ACTIVATION_GATE_IS_ALREADY_SATISFIED",
-    "fallback_rule": "IF_BROWSER_NATIVE_CANNOT_PRESERVE_THE_REQUIRED_NATIVE_OUTPUT_USE_ANOTHER_VERIFIED_OWNER_OR_HOLD; DO_NOT_AUTO_ESCALATE_TO_FIGMA"
+    "fallback_rule": "IF_BROWSER_NATIVE_CANNOT_PRESERVE_THE_REQUIRED_NATIVE_OUTPUT_USE_ANOTHER_VERIFIED_OWNER_OR HOLD; DO_NOT_AUTO_ESCALATE_TO_FIGMA"
   },
   "software_role_routing": {
     "WEB_UI_IMPLEMENTATION": [
@@ -55,17 +55,20 @@
     ],
     "RASTER_IMAGE_TREATMENT": [
       "AGENT_EXECUTABLE_DETERMINISTIC_SOURCE_TRANSFORM_WHEN_SUFFICIENT",
+      "CANDIDATE_PRO_DESIGN_TOOLCHAIN_DETERMINISTIC_RASTER_VALIDATION_SUPPORT_ONLY",
       "CANDIDATE_IMAGE_LAB_VALIDATION_SUPPORT_ONLY",
       "PHOTOPEA_USER_WEB_MANUAL_FALLBACK"
     ],
     "SPATIAL_PRODUCT_CMF_3D": [
       "BLENDER_ACTIVE_SHARED_RUNTIME_WHEN_CALLABLE_AND_FIT",
+      "CANDIDATE_PRO_DESIGN_TOOLCHAIN_OPENBIM_PARAMETRIC_SOLID_CAD_CAM_VALIDATION_SUPPORT_ONLY",
       "CANDIDATE_SPATIAL_LAB_PROXY_VALIDATION_SUPPORT_ONLY",
       "SKETCHUP_WEB_USER_WEB_MANUAL_FALLBACK",
-      "CAPABILITY_HOLD_FOR_BIM_CLASS_A_OR_UNVERIFIED_COMPLEX_CAD"
+      "CAPABILITY_HOLD_FOR_PROPRIETARY_BIM_CLASS_A_ENGINEERING_MACHINE_SAFETY_OR_UNVERIFIED_COMPLEX_CAD"
     ],
     "TECHNICAL_VECTOR_DRAWING": [
       "EDITABLE_SVG_PDF_NATIVE",
+      "CANDIDATE_PRO_DESIGN_TOOLCHAIN_DXF_VALIDATION_SUPPORT_ONLY",
       "CANDIDATE_TECHNICAL_SVG_LAB_VALIDATION_SUPPORT_ONLY",
       "FIGMA_CONNECTOR_ONLY_WHEN_EXPLICIT_FIGMA_HANDOFF_IS_REQUIRED",
       "SUPPLIER_PREPRESS_PROOF_HOLD_WHEN_APPLICABLE"
@@ -73,6 +76,7 @@
     "MOTION": [
       "BROWSER_MOTION_WHEN_FIT",
       "BLENDER_ACTIVE_SHARED_RUNTIME_WHEN_FIT_AND_CALLABLE",
+      "CANDIDATE_PRO_DESIGN_TOOLCHAIN_FFMPEG_VALIDATION_SUPPORT_ONLY",
       "CAPABILITY_HOLD_IF_REQUIRED_NATIVE_OUTPUT_CANNOT_BE_PRODUCED"
     ],
     "DEPLOY_SHARE": [
@@ -85,7 +89,8 @@
     "WEB_UI_RESPONSIVE_VISUAL_STAGE": "00-governance/runtime/browser-design-workbench/workbench.html",
     "BOUNDED_RASTER_TREATMENT_COMPOSITION_AB": "00-governance/runtime/browser-image-lab/image-lab.html",
     "CONCEPT_SPATIAL_MASSING_CAMERA_SCALE": "00-governance/runtime/browser-spatial-lab/spatial-lab.html",
-    "TECHNICAL_VECTOR_PACKAGING_POP_PREFLIGHT": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html"
+    "TECHNICAL_VECTOR_PACKAGING_POP_PREFLIGHT": "00-governance/runtime/browser-technical-svg-lab/technical-svg-lab.html",
+    "PROFESSIONAL_OPENBIM_SOLID_CAD_DXF_CAM_RASTER_MOTION_CANDIDATE": "90-shared/toolchains/pro-design"
   },
   "shared_repo_surface_lifecycle": {
     "current_pack_status": "CANDIDATE_SHARED_REPO_RUNTIME",
@@ -141,6 +146,16 @@
       "surface": "ACTIVE_SHARED_REPO_RUNTIME_WHEN_CALLABLE",
       "role": "PRIMARY_REUSABLE_3D_SPATIAL_PRODUCT_CMF_MOTION_RUNTIME",
       "contract": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json"
+    },
+    "pro_design_toolchain": {
+      "surface": "CANDIDATE_SHARED_REPO_RUNTIME",
+      "role": "VALIDATED_CANDIDATE_OPENBIM_IFC_PARAMETRIC_SOLID_CAD_DXF_CAM_RASTER_MOTION_RUNTIME",
+      "contract": "00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json",
+      "root": "90-shared/toolchains/pro-design",
+      "default_production_eligible": false,
+      "candidate_allowed": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
+      "validated_smoke": "GitHub Actions run 33047483244 / run #16 / commit 16672434ec9798324b6419d37b4b5101d07d8767",
+      "boundary": "Does not unlock proprietary BIM/RVT authoring, Class-A surfacing, engineering approval, machine safety, fabrication approval or specialist high-end finishing."
     }
   },
   "review_identity_policy": {
@@ -190,6 +205,7 @@
     "static_source_readback": "DOES_NOT_EQUAL_ACTUAL_PIXEL_OR_INTERACTION_READBACK",
     "internal_crit": "DOES_NOT_EQUAL_INDEPENDENT_REVIEW",
     "candidate_runtime": "DOES_NOT_EQUAL_DEFAULT_PRODUCTION_ELIGIBLE",
+    "validated_candidate_runtime": "EXECUTION_SMOKE_PASS_DOES_NOT_EQUAL_ACTIVE_OR_DEFAULT_PRODUCTION_ELIGIBLE",
     "real_readback_required": true,
     "independent_design_review_required_when_applicable": true
   },
@@ -209,5 +225,11 @@
     "ENGINEERING_APPROVAL",
     "FIELD_ACCEPTANCE"
   ],
+  "hard_hold_interpretation": {
+    "NEW_PROFESSIONAL_BIM_CAD": "HOLD remains for proprietary/discipline-specific BIM authoring such as RVT workflows and unvalidated complex CAD beyond the explicitly validated Candidate OpenBIM/solid-CAD runtime. It does not erase the separately labeled Candidate IFC/STEP/DXF evidence.",
+    "CLASS_A_MANUFACTURING_CAD": "HOLD remains absolute for Class-A quality claims and manufacturing approval; NURBS/BRep/STEP support is insufficient.",
+    "ENGINEERING_APPROVAL": "HOLD remains regardless of runtime smoke.",
+    "CAM_MACHINE_SAFETY": "LinuxCNC postprocess smoke proves bounded G-code generation only; controller correctness, collision, tooling, feeds/speeds, setup and machine safety remain external validation requirements."
+  },
   "fallback_truth_rule": "IF_REQUIRED_NATIVE_OUTPUT_CANNOT_BE_PRESERVED_BY_CURRENT_SKILL_AGENT_EXECUTABLE_CURRENT_CONNECTOR_OR_ACTIVE_SHARED_REPO_RUNTIME_THEN_USE_MANUAL_OPTION_OR HOLD WITHOUT_LOWERING_PROFESSIONAL_REQUIREMENT"
 }
