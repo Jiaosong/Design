@@ -12,6 +12,18 @@
   },
   "content_read": {
     "github_index_role": "Physical / Body / Sensory dominant visual; also reused in AI+3D process as an existing 3D/object design asset",
+    "github_current_source_register": {
+      "path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_USER_ORIGINAL_DESIGN_SOURCE_REGISTER_v1_0.md",
+      "machine_path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_USER_ORIGINAL_DESIGN_SOURCE_REGISTER_v1_0.csv",
+      "main_readback": "PASS",
+      "merged_by_pr": 284,
+      "merge_commit": "8a641a16ef2a7f77e877e312568840fcc822d4f8",
+      "current_pointer_path": "05-cases/c04-qingjiang-stone-book/orchestration/C04_PROJECT_ORGANIZATION_CURRENT_POINTER.json",
+      "current_pointer_version": "1.2.2",
+      "odb03a": "山体流体休憩装置.png / MOUNTAIN_FLUID_REST / USER ORIGINAL DESIGN SOURCE / PRESERVE",
+      "odb03b": "山体流体休憩装置2.png / MOUNTAIN_FLUID_REST_APPLICATION / USER ORIGINAL DESIGN SOURCE / PRESERVE",
+      "scope_boundary": "This register closes upstream parent-source provenance/identity only; it does not create S05/S06 child figure identity or prove field/engineering truth."
+    },
     "library_candidates": [
       {
         "title": "山体流体休憩装置.png",
@@ -24,9 +36,9 @@
         "observed_content": "application/landing board: multiple metallic sculptural rest objects integrated into rocky hillside / viewing-platform scenes, with body-scale and material/process information"
       }
     ],
-    "drive_locator": "No standalone file named fluid_rest_object was located. Broader 山体流体休憩装置 search returned C04 project/governance documents confirming the design family, but no content-verified runtime source binary."
+    "drive_locator": "No standalone file named fluid_rest_object was located and no Drive copy of the GitHub source register was located. Broader 山体流体休憩装置 search returned C04 project/governance documents confirming the design family, but no content-verified runtime source binary or child registry."
   },
-  "identity_decision": "SOURCE FAMILY RESOLVED TO ODB-03A/B, BUT EXACT CHILD FIGURE / SOURCE BOARD FOR fluid_rest_object.png IS NOT YET CANONICALLY SELECTED",
+  "identity_decision": "PARENT SOURCE IDENTITY IS CURRENT AND VERIFIED IN GITHUB MAIN AS ODB-03A/B; EXACT S05/S06 CHILD FIGURE IDENTITY FOR fluid_rest_object.png REMAINS UNREGISTERED",
   "duplication_decision": "KEEP BOTH LIBRARY BOARDS. They are not duplicates: one is concept/form/detail presentation; the other is application/landing/body-scale presentation.",
   "runtime_materialization": "HOLD",
   "forbidden_recovery": [
@@ -35,8 +47,8 @@
     "do not use AI/redraw/model substitute to close the missing runtime path",
     "do not promote either board to site/engineering evidence"
   ],
-  "next_allowed_action": "Read the historical/current binding or figure-level source record that selected the Web dominant Fluid Rest image; if absent, make an explicit Current project source-selection decision before deriving a runtime representation with its own bytes/SHA.",
+  "next_allowed_action": "Use the verified Current parent-source register as provenance authority, then locate an authoritative existing S05/S06 child record; if none exists, make an explicit new Current project source-selection decision and register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state before deriving any runtime representation.",
   "production_pr_integrity": "Same active Production PR #353; no review-only PR created.",
   "review_state": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT / NO INDEPENDENT KEEP",
-  "type_gap_brief": "N/A / NON-TRIGGER; project runtime asset recovery, not a universal Design/Engineering Type gap"
+  "type_gap_brief": "N/A / NON-TRIGGER; project runtime asset recovery and child registration, not a universal Design/Engineering Type gap"
 }
