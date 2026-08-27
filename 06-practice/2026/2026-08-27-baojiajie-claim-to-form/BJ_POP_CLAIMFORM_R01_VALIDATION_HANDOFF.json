@@ -1,0 +1,29 @@
+{
+  "object_id": "BJ-POP-CARD-CLAIMFORM-R01",
+  "upstream_design_master": "OLEANDER_BJ_CLAIM_TO_FORM_R01.svg",
+  "selected_direction": "REPAIR / 两档切口 + 延展底座",
+  "required_native_output": "supplier-confirmed die-cut dieline + print proof + physical jump-card sample",
+  "units_scale_axis": "Design-process master is normalized/NTS. Validation must bind final mm envelope, cut radii, substrate thickness and actual jump-card mounting/spring/adhesive construction.",
+  "source_authority": {
+    "brand_logo": "locked user-uploaded formal logo master; placeholder only in this training artifact",
+    "portrait": "locked user-uploaded portrait source; placeholder only in this training artifact",
+    "claim_copy": ["自带两档", "使用久一点", "七彩高弹棉", "耐用吸水胶棉拖把", "宝家洁新一代拖把"],
+    "form_logic": "Design decision, not evidence: discrete two-state cut geometry + continuous vertical duration mass"
+  },
+  "exchange_format": ["SVG", "PDF/DXF as required by validator/supplier"],
+  "expected_validation": [
+    "minimum die-cut neck/concave radius feasibility",
+    "safe-zone and bleed values for selected printer/converter",
+    "locked-logo/portrait clearance from cut and mounting areas",
+    "jump-card substrate stiffness / spring or adhesive construction",
+    "finished physical dimensions and viewing distance",
+    "claim/legal substantiation remains separate from form validation"
+  ],
+  "known_assumptions": [
+    "current design-process geometry is schematic and not supplier-approved",
+    "the two-step left silhouette is intended as semantic form, not a proven mechanism",
+    "portrait and product positions may be recomposed after locked source binding"
+  ],
+  "hold_boundary": "No production PASS, no dieline PASS, no material/adhesive/spring PASS, no claim substantiation PASS until VALIDATION returns explicit evidence.",
+  "return_change_rule": "If minimum radii, safe zone or mounting constraints invalidate the stepped left edge, preserve the two-state semantic relation using another bounded structural cue; do not revert to pasted 1/2 decorative buttons."
+}
