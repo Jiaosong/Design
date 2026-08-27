@@ -6,6 +6,7 @@
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS_WHEN_EXECUTION_SURFACE_CAN_MATERIALIZE_OR_INVOKE_THE_RUNTIME",
   "role": "SHARED_PROFESSIONAL_TOOLCHAIN_RUNTIME_NOT_NEW_METHOD_SKILL_GATE_OR_DESIGN_AUTHORITY",
   "parent": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+  "canonical_toolchain_root": "90-shared/toolchains/pro-design",
   "principles": [
     "OPEN_NATIVE_OR_INDUSTRY_EXCHANGE_FORMAT_FIRST",
     "RUNTIME_AVAILABILITY_MUST_BE_PROBED_PER_RUN",
@@ -16,15 +17,15 @@
     "TOOLCHAIN_PASS_DOES_NOT_EQUAL_DESIGN_ENGINEERING_MANUFACTURING_OR_RELEASE_PASS"
   ],
   "managed_python": {
-    "preferred_python": "3.11",
+    "preferred_python": "3.11_OR_3.12_WHEN_PINNED_WHEELS_ARE_AVAILABLE",
     "packages": {
       "ifcopenshell": "0.8.5",
       "cadquery": "2.8.0",
       "ezdxf": "1.4.4"
     },
-    "requirements_lock": "tools/oleander-runtime/pro-design/requirements.lock.txt",
-    "materializer": "tools/oleander-runtime/pro-design/materialize.sh",
-    "python_wrapper": "tools/oleander-runtime/pro-design/python.sh"
+    "requirements_lock": "90-shared/toolchains/pro-design/requirements.lock.txt",
+    "materializer": "90-shared/toolchains/pro-design/materialize.sh",
+    "python_wrapper": "90-shared/toolchains/pro-design/python.sh"
   },
   "system_and_portable_tools": {
     "freecad": {
@@ -32,16 +33,16 @@
       "source": "https://github.com/FreeCAD/FreeCAD/releases/download/1.1.3/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage",
       "sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef",
       "materialization": "ON_DEMAND_ONLY_BECAUSE_BINARY_IS_LARGE",
-      "wrapper": "tools/oleander-runtime/pro-design/freecad.sh"
+      "wrapper": "90-shared/toolchains/pro-design/freecad.sh"
     },
     "imagemagick": {
       "resolution": "OLEANDER_MAGICK_BIN_OR_PATH",
-      "wrapper": "tools/oleander-runtime/pro-design/raster.sh",
+      "wrapper": "90-shared/toolchains/pro-design/raster.sh",
       "current_chatgpt_probe_2026_08_27": "PASS ImageMagick 7.1.2-1 Q16-HDRI"
     },
     "ffmpeg": {
       "resolution": "OLEANDER_FFMPEG_BIN_OR_PATH",
-      "wrapper": "tools/oleander-runtime/pro-design/motion.sh",
+      "wrapper": "90-shared/toolchains/pro-design/motion.sh",
       "current_chatgpt_probe_2026_08_27": "PASS FFmpeg 7.1.5"
     },
     "optional_raster_extensions": {
@@ -106,11 +107,11 @@
     "CAPABILITY_HOLD"
   ],
   "wrappers": {
-    "probe": "tools/oleander-runtime/pro-design/probe.sh",
-    "python": "tools/oleander-runtime/pro-design/python.sh",
-    "freecad": "tools/oleander-runtime/pro-design/freecad.sh",
-    "raster": "tools/oleander-runtime/pro-design/raster.sh",
-    "motion": "tools/oleander-runtime/pro-design/motion.sh"
+    "probe": "90-shared/toolchains/pro-design/probe.sh",
+    "python": "90-shared/toolchains/pro-design/python.sh",
+    "freecad": "90-shared/toolchains/pro-design/freecad.sh",
+    "raster": "90-shared/toolchains/pro-design/raster.sh",
+    "motion": "90-shared/toolchains/pro-design/motion.sh"
   },
   "promotion_requirements": [
     "MACHINE_READABLE_CONTRACT_VALID",
