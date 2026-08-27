@@ -1,7 +1,7 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
 > **CURRENT CORRECTION｜2026-08-27**  
-> Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `assets/route03_locked_current.svg` is materialized from its durable Drive source. Hero, R06 Landscape First and R13 Four-Frame source identities are now resolved from existing QJ-D v1.1 assets, but their required GitHub runtime representations are still missing. No redraw, AI replacement, screenshot reconstruction, or approximate substitute is authorized as historical recovery. R13 must retain `REMOTE SPATIAL CONCEPT / NOT SITE PHOTO`. Reduced-motion remains proven only at source-rule presence level; browser/system preference emulation and state-equivalence readback are NOT RUN.
+> Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `assets/route03_locked_current.svg` is materialized from its durable Drive source. Hero, R06 Landscape First and R13 Four-Frame source identities are resolved from existing QJ-D v1.1 assets, but their required GitHub runtime representations are still missing. `assets/app_mybook.png` has only a partially resolved research-prototype lineage, and `assets/return_qingjiang.jpg` now has a verified Current RETURN / SERVICE role but no content-verified exact visual source bytes; both remain recovery HOLD. No redraw, AI replacement, screenshot reconstruction, generic Qingjiang-photo substitution, or approximate substitute is authorized as historical recovery. R13 must retain `REMOTE SPATIAL CONCEPT / NOT SITE PHOTO`. Reduced-motion remains proven only at source-rule presence level; browser/system preference emulation and state-equivalence readback are NOT RUN.
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`
 
@@ -86,6 +86,18 @@ Decision: **KEEP EXISTING QJ-D v1.1 R06 LANDSCAPE-FIRST IDENTITY / NO MODEL OR A
 
 Decision: **KEEP EXISTING D v1.1 R13 FOUR-FRAME IDENTITY AS CONCEPTUAL PASSAGE EVIDENCE / PRESERVE NOT-SITE-PHOTO BOUNDARY / NO GENERIC WITHDRAWAL VISUAL / NO APPROXIMATE SUBSTITUTE**. The future runtime representation may be a derived Web asset, but its bytes/SHA must be recorded separately and it must not erase the remote-concept label or imply site photography.
 
+## Return visual source-recovery boundary｜2026-08-27
+
+- Required runtime path: `assets/return_qingjiang.jpg`.
+- Actual Current role from `index.html`: final section 18 `Return`, where the project closes by returning visual primacy to Qingjiang rather than to a completion screen or App state.
+- Current CH09 authority defines Return as `LANDSCAPE / SIGNAGE / PAPER / HUMAN / DIGITAL` redundancy and locks `SERVICE / RETURN` ahead of optional reading, memory and share.
+- Historical `C04_WEB_v1_9_87_PAGE_FRAMEWORK.json` binds `return_qingjiang.jpg` to both `CH09 Return / Service / No-phone` and `CH18 Return：怎么回来`; this establishes the historical carrier role, not the exact source bytes.
+- Google Drive exact `return_qingjiang` search found no standalone image; broader `回程 清江` search returned narrative/governance/project documents but no content-verified image source.
+- Current File Library search likewise did not locate a standalone `return_qingjiang.jpg`; the old framework is binding provenance only.
+- Current state: `ROLE RESOLVED / EXACT AUTHORIZED VISUAL SOURCE IDENTITY + BYTES NOT VERIFIED / RUNTIME MATERIALIZATION HOLD`.
+
+Decision: **HOLD / DO NOT SUBSTITUTE**. Do not reuse the Hero, R13 Four-Frame, an old Web screenshot, a generic Qingjiang photograph, or an AI-generated landscape merely because all can visually imply “return”. The authorized Return visual source must be independently located and content-read before a runtime representation can be created. If a new Current visual is ever deliberately selected instead, it must be a new design decision with its own source identity and bytes/SHA—not a silent recovery claim.
+
 ## Removed from current working structure
 
 - legacy carrier framework file;
@@ -122,7 +134,7 @@ Static validation requires:
 - mobile drawer rules and ESC close behavior present;
 - `prefers-reduced-motion` source rules present in relevant CSS/JS.
 
-GitHub source readback confirms the public structure, supplement code and reduced-motion source rules. ROUTE-03 exists at its runtime path. Hero, R06 and R13 source identities are resolved and content-read, but their required runtime representations remain absent on the producer branch. The complete missing-asset list is still not established. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
+GitHub source readback confirms the public structure, supplement code and reduced-motion source rules. ROUTE-03 exists at its runtime path. Hero, R06 and R13 source identities are resolved and content-read, but their required runtime representations remain absent on the producer branch. App MY BOOK and Return remain source/recovery HOLD at different depths. The complete missing-asset list is still not established. Therefore no Web static PASS, runtime PASS, browser finished-pixel PASS, deployment PASS, reduced-motion preference-emulation PASS or reduced-motion state-equivalence PASS is claimed.
 
 ## Truth boundary
 
