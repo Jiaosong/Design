@@ -35,7 +35,12 @@ REQUIRED_SKILLS = {
 }
 
 LIFECYCLE_ROLES = {"KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION"}
-INSTALLATION_STATES = {"EXISTING_INSTALLED", "CANDIDATE"}
+INSTALLATION_STATES = {
+    "EXISTING_INSTALLED",
+    "CANDIDATE",
+    "CANDIDATE_COMPOSITE_ROUTE",
+    "CANDIDATE_DRAFT",
+}
 
 FAILURE_CATEGORIES = {
     "F-SOURCE", "F-STALE", "F-TRUTH", "F-RIGHTS", "F-SAFETY",
@@ -84,6 +89,8 @@ def validate_skill_registry():
     roles = set(registry.get("lifecycle_roles", []))
     if roles != LIFECYCLE_ROLES:
         raise AssertionError(f"skill registry lifecycle_roles mismatch: {sorted(roles)}")
+    if registry.get("core_identity_rule") != "ELEVEN_CORE_IDENTITIES_DO_NOT_OVERRIDE_MINIMUM_SUFFICIENT_OWNER_SET_OR_EXISTING_SPECIALIST_OWNERSHIP":
+        raise AssertionError("skill registry must preserve minimum-sufficient-owner and existing-specialist authority")
 
     rows = registry.get("skills")
     if not isinstance(rows, list):
@@ -98,8 +105,9 @@ def validate_skill_registry():
         )
         skill_id = row["skill_id"]
         ids.append(skill_id)
-        if row["installation_state"] not in INSTALLATION_STATES:
-            raise AssertionError(f"{skill_id}: invalid installation_state {row['installation_state']}")
+        state = row["installation_state"]
+        if state not in INSTALLATION_STATES:
+            raise AssertionError(f"{skill_id}: invalid installation_state {state}")
         if row["lifecycle_primary"] not in LIFECYCLE_ROLES:
             raise AssertionError(f"{skill_id}: invalid lifecycle_primary {row['lifecycle_primary']}")
         secondaries = row.get("lifecycle_secondary", [])
@@ -112,13 +120,31 @@ def validate_skill_registry():
 
         skill_dir = ROOT / "oleander-skills" / skill_id
         skill_md = skill_dir / "SKILL.md"
-        if not skill_dir.is_dir():
-            raise AssertionError(f"{skill_id}: missing skill directory")
-        if not skill_md.exists():
-            raise AssertionError(f"{skill_id}: missing SKILL.md")
-        skill_text = skill_md.read_text(encoding="utf-8")
-        if f"name: {skill_id}" not in skill_text:
-            raise AssertionError(f"{skill_id}: SKILL.md frontmatter name mismatch")
+
+        if state == "CANDIDATE_DRAFT":
+            require_nonempty_fields(
+                row,
+                ["existing_candidate_identity", "implementation_ref", "implementation_path_when_promoted", "ownership_rule"],
+                skill_id,
+            )
+            if skill_md.exists():
+                raise AssertionError(f"{skill_id}: CANDIDATE_DRAFT must not create a parallel main SKILL.md")
+        else:
+            if not skill_dir.is_dir():
+                raise AssertionError(f"{skill_id}: missing skill directory")
+            if not skill_md.exists():
+                raise AssertionError(f"{skill_id}: missing SKILL.md")
+            skill_text = skill_md.read_text(encoding="utf-8")
+            if f"name: {skill_id}" not in skill_text:
+                raise AssertionError(f"{skill_id}: SKILL.md frontmatter name mismatch")
+
+        if state == "CANDIDATE_COMPOSITE_ROUTE":
+            require_nonempty_fields(row, ["existing_specialist_dependencies", "ownership_rule", "owns_only"], skill_id)
+            deps = row["existing_specialist_dependencies"]
+            if not isinstance(deps, list) or len(deps) < 2:
+                raise AssertionError(f"{skill_id}: composite route must declare multiple existing specialist dependencies")
+            if "SPECIALIST_AUTHORITY_REPLACEMENT" not in row["cannot_prove"]:
+                raise AssertionError(f"{skill_id}: composite route must explicitly forbid specialist authority replacement")
 
     if len(ids) != len(set(ids)):
         raise AssertionError("duplicate skill_id in skill registry")
