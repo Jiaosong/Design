@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
+SKILL_REGISTRY = ROOT / "oleander-skills" / "SKILL_REGISTRY_v1.1.json"
 RETRIEVAL = ROOT / "evals" / "retrieval" / "golden_queries.jsonl"
 FAILURES = ROOT / "evals" / "failure" / "failure_cases.jsonl"
 AIG01 = ROOT / "90-shared" / "OLEANDER_AIG-01_Evaluation_Regression_v0.1.md"
@@ -26,7 +27,15 @@ REQUIRED_SKILLS = {
     "oleander-story-and-board",
     "oleander-delivery-qc",
     "oleander-motion",
+    "oleander-web-ui",
+    "oleander-visual-design",
+    "oleander-image-art-direction",
+    "oleander-technical-drawing",
+    "oleander-design-process",
 }
+
+LIFECYCLE_ROLES = {"KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION"}
+INSTALLATION_STATES = {"EXISTING_INSTALLED", "CANDIDATE"}
 
 FAILURE_CATEGORIES = {
     "F-SOURCE", "F-STALE", "F-TRUTH", "F-RIGHTS", "F-SAFETY",
@@ -60,6 +69,68 @@ def require_present_fields(row, fields, context):
     missing = [f for f in fields if f not in row]
     if missing:
         raise AssertionError(f"{context}: missing required fields: {', '.join(missing)}")
+
+
+def validate_skill_registry():
+    if not SKILL_REGISTRY.exists():
+        raise AssertionError("missing machine-readable skill registry")
+    try:
+        registry = json.loads(SKILL_REGISTRY.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise AssertionError(f"invalid skill registry JSON: {exc}") from exc
+
+    if registry.get("schema_version") != "1.1":
+        raise AssertionError("skill registry schema_version must be 1.1")
+    roles = set(registry.get("lifecycle_roles", []))
+    if roles != LIFECYCLE_ROLES:
+        raise AssertionError(f"skill registry lifecycle_roles mismatch: {sorted(roles)}")
+
+    rows = registry.get("skills")
+    if not isinstance(rows, list):
+        raise AssertionError("skill registry skills must be a list")
+
+    ids = []
+    for row in rows:
+        require_nonempty_fields(
+            row,
+            ["skill_id", "installation_state", "lifecycle_primary", "capability", "runtime_policy", "cannot_prove"],
+            row.get("skill_id", "skill-registry-row"),
+        )
+        skill_id = row["skill_id"]
+        ids.append(skill_id)
+        if row["installation_state"] not in INSTALLATION_STATES:
+            raise AssertionError(f"{skill_id}: invalid installation_state {row['installation_state']}")
+        if row["lifecycle_primary"] not in LIFECYCLE_ROLES:
+            raise AssertionError(f"{skill_id}: invalid lifecycle_primary {row['lifecycle_primary']}")
+        secondaries = row.get("lifecycle_secondary", [])
+        if not isinstance(secondaries, list) or any(role not in LIFECYCLE_ROLES for role in secondaries):
+            raise AssertionError(f"{skill_id}: invalid lifecycle_secondary")
+        if not isinstance(row["capability"], list) or not row["capability"]:
+            raise AssertionError(f"{skill_id}: capability must be a non-empty list")
+        if not isinstance(row["cannot_prove"], list) or not row["cannot_prove"]:
+            raise AssertionError(f"{skill_id}: cannot_prove must be a non-empty list")
+
+        skill_dir = ROOT / "oleander-skills" / skill_id
+        skill_md = skill_dir / "SKILL.md"
+        if not skill_dir.is_dir():
+            raise AssertionError(f"{skill_id}: missing skill directory")
+        if not skill_md.exists():
+            raise AssertionError(f"{skill_id}: missing SKILL.md")
+        skill_text = skill_md.read_text(encoding="utf-8")
+        if f"name: {skill_id}" not in skill_text:
+            raise AssertionError(f"{skill_id}: SKILL.md frontmatter name mismatch")
+
+    if len(ids) != len(set(ids)):
+        raise AssertionError("duplicate skill_id in skill registry")
+    registry_ids = set(ids)
+    if registry_ids != REQUIRED_SKILLS:
+        missing = REQUIRED_SKILLS - registry_ids
+        extra = registry_ids - REQUIRED_SKILLS
+        raise AssertionError(f"skill registry mismatch; missing={sorted(missing)} extra={sorted(extra)}")
+    if len(rows) != 11:
+        raise AssertionError(f"skill registry must contain exactly 11 core skills, found {len(rows)}")
+
+    return registry
 
 
 def validate_skill_cases(rows):
@@ -185,6 +256,7 @@ def validate_aig03_assets():
 
 def main():
     try:
+        registry = validate_skill_registry()
         skill_rows = load_jsonl(SKILLS)
         retrieval_rows = load_jsonl(RETRIEVAL)
         failure_rows = load_jsonl(FAILURES)
@@ -212,6 +284,7 @@ def main():
         return 1
 
     print("AI GOVERNANCE EVAL CORPUS: PASS")
+    print(f"core skill registry: {len(registry['skills'])} skills")
     print(f"skill cases: {len(skill_rows)} | retrieval cases: {len(retrieval_rows)} | failure cases: {len(failure_rows)}")
     for skill in sorted(counts):
         print(f"- {skill}: {counts[skill]}")
