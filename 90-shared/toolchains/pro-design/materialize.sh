@@ -16,6 +16,32 @@ fi
 "$venv/bin/python" -m pip install --upgrade pip
 "$venv/bin/pip" install --no-cache-dir -r "$requirements"
 
+if [[ "${OLEANDER_PRO_MATERIALIZE_MEDIA:-0}" == "1" ]]; then
+  media_packages=()
+  if ! command -v magick >/dev/null 2>&1 && ! command -v convert >/dev/null 2>&1; then
+    media_packages+=(imagemagick)
+  fi
+  if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+    media_packages+=(ffmpeg)
+  fi
+  if (( ${#media_packages[@]} > 0 )); then
+    if ! command -v apt-get >/dev/null 2>&1; then
+      echo "Media materialization requested but apt-get is unavailable." >&2
+      exit 127
+    fi
+    if [[ "$(id -u)" -eq 0 ]]; then
+      apt_prefix=()
+    elif command -v sudo >/dev/null 2>&1; then
+      apt_prefix=(sudo)
+    else
+      echo "Media materialization requested but neither root nor sudo is available." >&2
+      exit 126
+    fi
+    "${apt_prefix[@]}" apt-get update -y
+    "${apt_prefix[@]}" apt-get install -y --no-install-recommends "${media_packages[@]}"
+  fi
+fi
+
 if [[ "${OLEANDER_PRO_MATERIALIZE_FREECAD:-0}" == "1" ]]; then
   freecad_dir="$runtime_home/freecad-1.1.3"
   freecad_app="$freecad_dir/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage"
