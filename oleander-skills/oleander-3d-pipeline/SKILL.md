@@ -1,7 +1,7 @@
 ---
 name: oleander-3d-pipeline
 description: Plan, build, exchange, render, and audit Oleander 3D assets. Use whenever the user mentions Oleander 3D models, Blender, Maya, Houdini, Unreal, D5, KeyShot, VRED, geometry nodes, procedural studies, axonometric drawings, exploded views, material libraries, cameras, animation, FBX, glTF, USD, texture paths, or render handoff.
-compatibility: Works with installed Blender, Maya, Houdini, Cinema 4D, Unreal/Epic, D5, KeyShot, VRED, Adobe tools, and FFmpeg.
+compatibility: Capability-first and per-run probed. Blender ACTIVE shared runtime is preferred when callable and fit; other 3D/CAD/render tools such as Maya, Houdini, Cinema 4D, Unreal/Epic, D5, KeyShot, VRED, Adobe tools, FFmpeg, or specialist CAD/BIM tools may be used only when the actual execution environment is available and preserves the Required Native Output. No local installation or installed-software state is assumed globally.
 ---
 
 # Oleander 3D Pipeline
