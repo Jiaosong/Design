@@ -16,6 +16,7 @@
       "path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_USER_ORIGINAL_DESIGN_SOURCE_REGISTER_v1_0.md",
       "machine_path": "05-cases/c04-qingjiang-stone-book/orchestration/project-organization-2026-08-19/C04_USER_ORIGINAL_DESIGN_SOURCE_REGISTER_v1_0.csv",
       "main_readback": "PASS",
+      "machine_blob_sha": "9cdc5a5ec4e5fc9a632e1b8b1277331d25b18a73",
       "merged_by_pr": 284,
       "merge_commit": "8a641a16ef2a7f77e877e312568840fcc822d4f8",
       "current_pointer_path": "05-cases/c04-qingjiang-stone-book/orchestration/C04_PROJECT_ORGANIZATION_CURRENT_POINTER.json",
@@ -24,31 +25,53 @@
       "odb03b": "山体流体休憩装置2.png / MOUNTAIN_FLUID_REST_APPLICATION / USER ORIGINAL DESIGN SOURCE / PRESERVE",
       "scope_boundary": "This register closes upstream parent-source provenance/identity only; it does not create S05/S06 child figure identity or prove field/engineering truth."
     },
+    "github_current_image_consumption_ledger": {
+      "path": "05-cases/c04-qingjiang-stone-book/orchestration/C04_IMAGE_CONSUMPTION_LEDGER_v1_0.json",
+      "status": "CURRENT_PROJECT_REGISTER",
+      "blob_sha": "72008fb64f99a600c7fc36438b2f36a2081d9408",
+      "readback": "PASS",
+      "odb03_child_record": "NOT PRESENT",
+      "derivative_identity_rule": "CROP_RESIZE_RECOLOR_MASK_CONTOUR_SCREENSHOT_FRAME_EXTRACTION_AND_OTHER_PRESENTATION_DERIVATIVES_INHERIT_SEMANTIC_IMAGE_ID"
+    },
     "library_candidates": [
       {
         "title": "山体流体休憩装置.png",
         "readback": "PASS",
-        "observed_content": "single composite concept board: person seated on reflective rock-like rest object on mountain path, with form/structure, concept, detail/material and night-effect panels"
+        "observed_content": "single composite concept board: person seated on reflective rock-like rest object on mountain path, with form/structure, concept, detail/material and night-effect panels",
+        "role": "PARENT SOURCE / CONCEPT-FORM-DETAIL-MATERIAL"
       },
       {
         "title": "山体流体休憩装置2.png",
         "readback": "PASS",
-        "observed_content": "application/landing board: multiple metallic sculptural rest objects integrated into rocky hillside / viewing-platform scenes, with body-scale and material/process information"
+        "observed_content": "application/landing board: multiple metallic sculptural rest objects integrated into rocky hillside / viewing-platform scenes, with body-scale and material/process information",
+        "role": "PARENT SOURCE / APPLICATION-LANDING-BODY-SCALE-MATERIAL-PROCESS"
       }
     ],
-    "drive_locator": "No standalone file named fluid_rest_object was located and no Drive copy of the GitHub source register was located. Broader 山体流体休憩装置 search returned C04 project/governance documents confirming the design family, but no content-verified runtime source binary or child registry."
+    "historical_child_locator": {
+      "github_repo_search": "NO RESULT for ODB-03 / fluid_rest.png / fluid_v26_transverse / figure_bounds / child_hash / semantic_role",
+      "github_commit_search": "NO RESULT for fluid_v26",
+      "file_library_search": "NO standalone fluid_rest.png or fluid_v26_transverse child object located; exact parent boards remain readable",
+      "google_drive_search": "NO ODB-03 child/source-register materialization and NO fluid_v26_transverse result located",
+      "scope_boundary": "This is a connected-surface locator result, not proof that no historical child ever existed outside currently accessible surfaces."
+    }
   },
-  "identity_decision": "PARENT SOURCE IDENTITY IS CURRENT AND VERIFIED IN GITHUB MAIN AS ODB-03A/B; EXACT S05/S06 CHILD FIGURE IDENTITY FOR fluid_rest_object.png REMAINS UNREGISTERED",
+  "identity_decision": "PARENT SOURCE IDENTITY IS CURRENT AND VERIFIED IN GITHUB MAIN AS ODB-03A/B; NO AUTHORITATIVE EXISTING S05/S06 CHILD RECORD WAS LOCATED ACROSS CURRENT GITHUB / FILE LIBRARY / GOOGLE DRIVE CONNECTED SURFACES",
   "duplication_decision": "KEEP BOTH LIBRARY BOARDS. They are not duplicates: one is concept/form/detail presentation; the other is application/landing/body-scale presentation.",
+  "child_registration_state": {
+    "s05": "HOLD / NEW CURRENT SOURCE-SELECTION REQUIRED UNLESS AN AUTHORITATIVE EXISTING CHILD IS LATER RECOVERED",
+    "s06": "HOLD / NEW CURRENT SOURCE-SELECTION REQUIRED UNLESS AN AUTHORITATIVE EXISTING CHILD IS LATER RECOVERED",
+    "historical_recovery_claim": "NOT ALLOWED WITHOUT A CONTENT-READ AUTHORITATIVE CHILD RECORD"
+  },
   "runtime_materialization": "HOLD",
   "forbidden_recovery": [
     "do not merge the two boards by filename similarity",
-    "do not crop an arbitrary child figure and call it the historical runtime asset without a Current source-selection record",
+    "do not crop an arbitrary child figure and call it the historical runtime asset",
+    "do not create two semantic children by cropping the same parent board twice",
     "do not use AI/redraw/model substitute to close the missing runtime path",
     "do not promote either board to site/engineering evidence"
   ],
-  "next_allowed_action": "Use the verified Current parent-source register as provenance authority, then locate an authoritative existing S05/S06 child record; if none exists, make an explicit new Current project source-selection decision and register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state before deriving any runtime representation.",
-  "production_pr_integrity": "Same active Production PR #353; no review-only PR created.",
+  "next_allowed_action": "NEW CURRENT SOURCE-SELECTION + CHILD REGISTRATION. For S05 and S06, select distinct source evidence only after actual figure-level readback, then register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state in the Current image-consumption ledger before deriving any Web runtime representation. If an authoritative historical child is later recovered, compare it before superseding this decision.",
+  "production_pr_integrity": "Same active Production PR #353; no second Production PR and no review-only PR created.",
   "review_state": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT / NO INDEPENDENT KEEP",
   "type_gap_brief": "N/A / NON-TRIGGER; project runtime asset recovery and child registration, not a universal Design/Engineering Type gap"
 }
