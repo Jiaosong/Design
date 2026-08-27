@@ -1,12 +1,28 @@
 ---
 name: oleander-motion
 description: Design, prototype, implement, and review purposeful motion for OLEANDER across brand, interface, product, 3D, spatial, and data contexts. Use whenever a task involves animation, state transitions, motion language, micro-interactions, scroll/gesture motion, Blender animation, procedural motion, animated data, motion libraries, Lottie/Rive, motion accessibility, or motion QA.
-compatibility: Native-first. Prefer CSS/WAAPI/View Transitions/Scroll-driven Animations when sufficient; route React/UI to Motion, complex timelines/FLIP/scroll to GSAP, expressive SVG to Anime.js, interactive vector state machines to Rive, vector delivery to Lottie, web 3D to Three.js, and dense GPU 2D/shader work to PixiJS. Figma and Blender remain primary authoring/prototyping routes where applicable. Unavailable runtime steps stay PENDING.
+compatibility: Native-first and capability-first. Prefer CSS/WAAPI/View Transitions/Scroll-driven Animations when sufficient; route React/UI to Motion, complex timelines/FLIP/scroll to GSAP, expressive SVG to Anime.js, interactive vector state machines to Rive, vector delivery to Lottie, web 3D to Three.js, and dense GPU 2D/shader work to PixiJS. Blender ACTIVE shared runtime is the reusable 3D/motion authoring route when callable. Figma is explicit-only for required editable Figma delivery or continuation/repair of an authoritative Figma source. Validated Pro Design Toolchain FFmpeg remains Candidate-only until explicit promotion. Unavailable runtime steps stay PENDING/HOLD.
 ---
 
 # OLEANDER Motion
 
 Treat motion as a temporal relationship system, not decoration. The primary question is always: **what state, hierarchy, causality, spatial continuity, or information change becomes clearer because this motion exists?**
+
+## Environment inheritance
+
+Inherit the Current OLEANDER production environment, software-routing binding, source/master/derivative contract, and shared execution-surface registry. Resolve the current Skill/Owner and Required Native Output before choosing a motion tool.
+
+Execution preference:
+
+`ACTUALLY EXPOSED NATIVE/AGENT EXECUTION → ACTIVE SHARED RUNTIME WHEN FIT → VALIDATED CANDIDATE RUNTIME FOR VALIDATION/TRAINING/SUPPORT OR EXPLICITLY LABELED BOUNDED REAPPLICATION → VERIFIED SPECIALIST ENVIRONMENT WHEN ACTUALLY AVAILABLE → USER_WEB_MANUAL → CAPABILITY_HOLD`
+
+Relevant shared surfaces:
+- browser-native HTML/CSS/JS/SVG motion: ACTIVE when the real browser runtime is available and read back;
+- Blender shared runtime: ACTIVE, but still probe callability per run;
+- `90-shared/toolchains/pro-design/` FFmpeg path: runtime-smoke validated **Candidate**, not a default Production Owner;
+- Figma connector: explicit-only adapter after its activation gate; generic motion/UI tasks do not probe or create Figma merely because a prototype is needed.
+
+A rendered MP4/GIF/WebM, screen recording, Lottie export, GLB animation, or Figma preview is a derivative unless the Current authority explicitly defines that format as the required delivery master. Preserve the actual editable source/timeline/state machine/code and record cross-software handoff losses.
 
 ## Canonical method
 
@@ -32,7 +48,7 @@ If no role is identifiable, remove the animation.
 6. `MOT-06 Data / Information Motion` — sorting, filtering, time, update, transition, uncertainty.
 7. `MOT-07 Interactive Motion` — hover, press, drag, scroll, gesture, component feedback.
 8. `MOT-08 Motion Accessibility` — reduced motion, flashing/zoom/parallax risk, equivalent information.
-9. `MOT-09 Delivery` — Figma prototype, Rive/Lottie, CSS/WAAPI/JS, Three.js/GLB animation, video/sequence output.
+9. `MOT-09 Delivery` — Figma prototype only when the Figma activation gate is satisfied; otherwise Rive/Lottie, CSS/WAAPI/JS, Three.js/GLB animation, Blender source, video/sequence output as required.
 10. `MOT-10 Motion QA` — frame pacing, latency, looping, interruption, occlusion, cross-device consistency and reopen/reproduction.
 
 ## Tool routing
@@ -46,11 +62,12 @@ If no role is identifiable, remove the animation.
 - **Three.js:** web 3D animation, camera/material/morph motion and controlled post-processing.
 - **PixiJS:** dense GPU 2D scenes, filters, displacement/noise and shader-driven visual systems.
 - **Lenis / Barba:** selective infrastructure only. Lenis is scroll transport/synchronisation; Barba manages page-transition lifecycle and requires a separate animation mechanism. Check native scrolling/View Transitions first.
-- **Figma:** component states, prototype paths, Smart Animate and quick interaction validation.
-- **Blender:** product/spatial/brand 3D motion, camera, Graph Editor, Drivers, Geometry Nodes and simulation.
-- **After Effects / Framer / TouchDesigner and other specialist tools:** use only when the actual environment is available and the task benefits from that medium.
+- **Figma:** **explicit-only**. Use component states, prototype paths, Smart Animate and interaction validation only when the user/project explicitly requires editable Figma delivery or an existing authoritative Figma source must be continued/repaired, and after reuse/capacity/recoverability checks. Generic UI/motion work does not activate Figma.
+- **Blender:** ACTIVE shared runtime for product/spatial/brand 3D motion, camera, Graph Editor, Drivers, Geometry Nodes and simulation when callable and fit.
+- **FFmpeg:** deterministic transcode, filtergraph composition, mux, frame extraction and bounded motion/video post. The current `90-shared/toolchains/pro-design/` adapter is a validated **Candidate** for validation/training/support or explicitly labelled bounded reapplication until promotion; it does not equal specialist NLE/color finishing.
+- **After Effects / Framer / TouchDesigner / Resolve and other specialist tools:** use only when the actual environment is available and the task benefits from that native medium. They are not default dependencies and their existence/documentation is not execution evidence.
 
-Do not claim execution in unavailable software. A storyboard, timeline specification, effect reference, or code draft is `DESIGNED / NOT RUN` until executed in a real runtime.
+Do not claim execution in unavailable software. A storyboard, timeline specification, effect reference, or code draft is `DESIGNED / NOT RUN` until executed in a real runtime. `CANDIDATE RUNTIME PASS ≠ ACTIVE PRODUCTION ROUTE`.
 
 ## Library and effect selection gate
 
@@ -77,12 +94,15 @@ For a formal motion exercise, produce the same state change as:
 
 Record:
 - tool and version;
+- execution surface and lifecycle (`ACTIVE / CANDIDATE / MANUAL / HOLD`);
 - library/runtime and version when applicable;
 - device/canvas/browser and refresh conditions;
 - state diagram and trigger;
 - key durations/curves or physics parameters;
-- source and export files;
+- Current editable/native source and export/derivative files;
 - actual playback/runtime evidence;
+- cross-software exchange format plus known loss/bake when applicable;
+- reopen/reproduction result;
 - failure modes;
 - keep/reduce/remove decision.
 
@@ -105,6 +125,7 @@ Check separately:
 - dependency/bundle/GPU cost when a library or shader is introduced;
 - native scrolling, keyboard, focus and pointer behavior after motion infrastructure is added;
 - source ↔ export consistency;
+- native/editable master ↔ rendered derivative identity;
 - reopen and reproduction.
 
 Hard FAIL:
@@ -115,7 +136,9 @@ Hard FAIL:
 - a loop cannot be exited;
 - motion occludes required content;
 - a scroll or cursor layer breaks expected native control without a justified fallback;
-- export behavior materially differs from the reviewed source.
+- export behavior materially differs from the reviewed source;
+- only a flattened/video derivative survives when an editable motion source is required;
+- a Candidate or unavailable runtime is reported as Active/executed without per-run evidence.
 
 A screen recording, video render, vendor demo, component gallery, or automated PASS is not a substitute for target-runtime review.
 
