@@ -1,9 +1,9 @@
 {
   "schema": "oleander.shared-execution-surfaces.v0.1",
   "status": "ACTIVE_EXECUTION_SURFACE_REGISTRY",
-  "implementation_revision": "0.2",
+  "implementation_revision": "0.3",
   "parent": "OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0",
-  "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY",
+  "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY; FIGMA_REQUIRES_EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE_BEFORE_PROBE",
   "surfaces": {
     "github_connector": {
       "class": "AGENT_EXECUTABLE",
@@ -103,20 +103,27 @@
     },
     "figma_connector": {
       "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
-      "role": "OPTIONAL_TEMP_EDITABLE_UI_VECTOR_DESIGN_ADAPTER",
-      "lifecycle_state": "OPTIONAL_TEMP",
+      "role": "EXPLICIT_REQUEST_ONLY_EDITABLE_FIGMA_HANDOFF_ADAPTER",
+      "lifecycle_state": "EXPLICIT_ONLY",
       "default_production_eligible": false,
+      "generic_ui_probe_eligible": false,
       "explicit_project_eligible": true,
+      "activation_gate_any": [
+        "EXPLICIT_FIGMA_DELIVERY_REQUEST",
+        "EXISTING_AUTHORITATIVE_FIGMA_FILE_OR_PROJECT_MUST_BE_CONTINUED_OR_REPAIRED"
+      ],
       "conditions": [
-        "EXISTING_FIGMA_FILE_OR_EXPLICIT_FIGMA_DELIVERY_REQUIRED",
+        "ACTIVATION_GATE_PASS",
         "CURRENT_FILE_CAPACITY_CHECK_PASS",
         "CURRENT_SKILL_AND_REQUIRED_NATIVE_OUTPUT_ALLOW_FIGMA_ADAPTER",
         "REPO_OR_OPEN_NATIVE_SOURCE_REMAINS_RECOVERABLE"
       ],
+      "probe_policy": "DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_UX_INTERFACE_PROTOTYPE_COMPONENT_DESIGN_SYSTEM_TASKS",
       "reuse_policy": "REUSE_EXISTING_FILE_AND_PAGE_BEFORE_CREATING_NEW_FILE",
+      "new_file_condition": "EXPLICIT_FIGMA_DELIVERY_REQUEST_PLUS_REUSE_CHECK_PLUS_CAPACITY_CHECK",
       "global_current_store": false,
-      "reason": "LOW_SHARED_FILE_PAGE_LIMIT_AND_VENDOR_LOCK_IN_RISK",
-      "boundary": "connector availability does not equal unlimited capacity or Global Current authority"
+      "reason": "LOW_SHARED_FILE_PAGE_LIMIT_VENDOR_LOCK_IN_RISK_AND_GENERIC_UI_ROUTING_AMBIGUITY",
+      "boundary": "connector availability does not unlock the adapter; the activation gate must already be satisfied"
     },
     "penpot": {
       "class": "USER_WEB_MANUAL",

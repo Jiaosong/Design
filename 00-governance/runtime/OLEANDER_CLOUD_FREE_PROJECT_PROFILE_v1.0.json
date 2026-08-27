@@ -1,7 +1,7 @@
 {
   "schema": "oleander.cloud-free-project-profile.v1",
   "version": "1.0",
-  "implementation_revision": "1.3",
+  "implementation_revision": "1.4",
   "status": "ACTIVE_CURRENT_GLOBAL_DEFAULT",
   "date": "2026-08-27",
   "scope": "ALL_OLEANDER_CONVERSATIONS_AND_PROJECTS_UNLESS_EXPLICITLY_OVERRIDDEN",
@@ -88,6 +88,8 @@
     "rules": [
       "SOFTWARE_FAMILIARITY_DOES_NOT_OVERRIDE_CURRENT_SKILL_OR_REQUIRED_NATIVE_OUTPUT",
       "AGENT_EXECUTABLE_CONNECTOR_IS_PREFERRED_OVER_MANUAL_WEB_WHEN_BOTH_PRESERVE_THE_SAME_NATIVE_OUTPUT",
+      "ADAPTER_SPECIFIC_ACTIVATION_GATE_PRECEDES_CONNECTOR_AVAILABILITY",
+      "GENERIC_UI_TASK_DOES_NOT_ACTIVATE_FIGMA",
       "ACTIVE_SHARED_RUNTIME_IS_PREFERRED_OVER_MANUAL_WEB_WHEN_BOTH_PRESERVE_THE_SAME_NATIVE_OUTPUT",
       "CANDIDATE_SHARED_RUNTIME_IS_NOT_A_DEFAULT_PRODUCTION_SHORTCUT",
       "EXISTING_EDITABLE_PROJECT_FILE_IS_REUSED_BEFORE_CREATING_A_NEW_SAAS_FILE",
@@ -112,7 +114,8 @@
     "INTERNAL_CRIT_IS_NOT_INDEPENDENT_REVIEW",
     "ONE_PRODUCTION_PR_PER_LOGICAL_OBJECT_BY_DEFAULT",
     "BLENDER_ACTIVE_SHARED_RUNTIME_PRECEDES_SKETCHUP_WEB_MANUAL_FOR_SPATIAL_AUTHORING_WHEN_FIT",
-    "FIGMA_CONNECTOR_IS_OPTIONAL_TEMP_ADAPTER_NOT_GLOBAL_CURRENT",
+    "FIGMA_CONNECTOR_IS_EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_ONLY_NOT_GLOBAL_CURRENT",
+    "GENERIC_UI_UX_INTERFACE_PROTOTYPE_COMPONENT_OR_DESIGN_SYSTEM_TASK_MUST_NOT_PROBE_RECOMMEND_OR_CREATE_FIGMA",
     "PHOTOPEA_AND_PENPOT_MANUAL_WEB_ARE_FALLBACKS_NOT_DEFAULT_PRIMARY_EXECUTION",
     "REUSE_EXISTING_FIGMA_FILE_OR_PAGE_BEFORE_CREATING_NEW_FILE"
   ],
@@ -134,7 +137,8 @@
     "USE_AI_IMAGE_AS_FAKE_SOURCE",
     "DELETE_PROFESSIONAL_REQUIREMENT",
     "TREAT_PREVIEW_AS_NATIVE_AUTHORITY",
-    "CREATE_NEW_FIGMA_FILE_WITHOUT_CAPACITY_AND_EXISTING_FILE_REUSE_CHECK",
+    "ROUTE_GENERIC_UI_TO_FIGMA_WITHOUT_EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_AUTHORITATIVE_FIGMA_SOURCE",
+    "CREATE_NEW_FIGMA_FILE_WITHOUT_EXPLICIT_FIGMA_DELIVERY_GATE_EXISTING_FILE_REUSE_CHECK_AND_CAPACITY_CHECK",
     "ROUTE_TO_MANUAL_PENPOT_PHOTOPEA_OR_SKETCHUP_WHEN_AN_AGENT_EXECUTABLE_OR_ACTIVE_RUNTIME_CAN_PRESERVE_THE_REQUIRED_NATIVE_OUTPUT"
   ],
   "tooling": {
@@ -181,13 +185,16 @@
       "boundary": "manual derivative editing only; source authority unchanged; Candidate Image Lab is not default production owner"
     },
     "ui_design_prototyping": {
-      "primary": ["HTML/CSS/JS/SVG implementation when native web output is required", "Figma connector when an existing file or explicit Figma delivery is required and capacity check passes", "Penpot Cloud Professional free only as USER_WEB_MANUAL fallback"],
-      "execution_surface": "AGENT_EXECUTABLE_WHEN_FIGMA_CONNECTOR_EXPOSED_OR_USER_WEB_MANUAL",
+      "primary": ["HTML/CSS/JS/SVG repo-native production", "real browser runtime and responsive/state readback"],
+      "explicit_only_adapter": ["Figma connector only after explicit Figma-delivery request or when an existing authoritative Figma file/project must be continued or repaired, with capacity check"],
+      "manual_fallback": ["Penpot Cloud Professional free only as USER_WEB_MANUAL when a separate design workspace is genuinely required and repo-native output cannot satisfy the required native deliverable"],
+      "execution_surface": "BROWSER_NATIVE_DEFAULT; FIGMA_AGENT_EXECUTABLE_ONLY_AFTER_EXPLICIT_GATE; USER_WEB_MANUAL_ONLY_AS_BOUNDED_FALLBACK",
       "cost_policy": "NO_NEW_PAID_DEPENDENCY",
-      "boundary": "Figma remains optional TEMP adapter because low shared file/page limits and vendor lock-in disqualify it from Global Current; reuse an existing file/page before creating a new Figma file; Penpot is manual and not agent-executable"
+      "boundary": "Generic UI/UX/interface/prototype/component/design-system tasks do not trigger Figma probing; connector availability alone does not activate Figma"
     },
     "vector_technical": {
-      "primary": ["editable SVG", "HTML/CSS/SVG browser preview", "PDF derivative", "Figma connector only when explicit editable Figma handoff is required"],
+      "primary": ["editable SVG", "HTML/CSS/SVG browser preview", "PDF derivative"],
+      "explicit_only_adapter": ["Figma connector only when explicit editable Figma handoff is required"],
       "candidate_support": ["OLEANDER Technical SVG Lab — CANDIDATE / validation-support only"],
       "execution_surface": "AGENT_EXECUTABLE_OR_SHARED_REPO_RUNTIME_BY_LIFECYCLE",
       "cost_policy": "FREE",
@@ -220,7 +227,9 @@
   "type_routes": {
     "web_ui_interaction": {
       "agent_default": ["Notion Type Brief", "GitHub source", "HTML/CSS/JS/SVG", "real browser", "free/static deploy", "desktop/mobile/state readback"],
-      "optional_agent_adapter": ["Figma connector only for existing-file or explicit Figma-delivery tasks after capacity check"],
+      "figma_activation_gate": ["explicit Figma delivery request", "existing authoritative Figma file/project continuation or repair"],
+      "figma_probe_policy": "DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_TASKS",
+      "explicit_only_agent_adapter": ["Figma connector only after activation gate plus capacity check"],
       "optional_manual_design_workspace": ["Penpot"],
       "boundary": "Figma/Penpot do not replace implementation/browser evidence; Figma does not become Global Current"
     },
@@ -246,7 +255,7 @@
     ],
     "record_fields": ["NAME", "VERSION", "TYPE", "PURPOSE", "REQUIRED", "EXECUTION_SURFACE_CLASS", "FREE_LIMIT", "SOURCE", "OUTPUT_FORMAT", "FALLBACK", "LOCK_IN_RISK", "STATUS"],
     "connector_discovery_2026_08_27": {
-      "figma": "INSTALLED_AND_AGENT_EXECUTABLE_WHEN_EXPOSED; OPTIONAL_TEMP_ADAPTER_ONLY",
+      "figma": "INSTALLED_AND_AGENT_EXECUTABLE_WHEN_EXPOSED; EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_ONLY; DO_NOT_PROBE_FOR_GENERIC_UI",
       "penpot": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND",
       "photopea": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND",
       "sketchup": "NO_INSTALLABLE_CHATGPT_PLUGIN_FOUND"
@@ -295,7 +304,7 @@
     "THREE_JS_EQUALS_CAD_OR_BIM",
     "STATIC_DEPLOY_EQUALS_BROWSER_OR_DESIGN_PASS",
     "ENGINEERING_MANUFACTURING_OR_FIELD_APPROVAL_OCCURRED",
-    "FIGMA_CONNECTOR_AVAILABILITY_EQUALS_UNLIMITED_FIGMA_CAPACITY",
+    "FIGMA_CONNECTOR_AVAILABILITY_EQUALS_FIGMA_ACTIVATION_OR_UNLIMITED_CAPACITY",
     "MANUAL_WEB_TOOL_AVAILABILITY_EQUALS_AGENT_EXECUTION"
   ]
 }

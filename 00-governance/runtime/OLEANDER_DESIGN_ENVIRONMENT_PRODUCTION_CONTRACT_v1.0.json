@@ -13,6 +13,7 @@
   "purpose": "Bind software routing to an editable, source-authority-safe production chain so design work remains reconstructable, dimensionally truthful where applicable, and separable from derivatives, previews and AI-generated supplemental imagery.",
   "core_invariants": [
     "SKILL_OWNER_FIRST_SOFTWARE_SECOND",
+    "GENERIC_UI_UX_INTERFACE_PROTOTYPE_COMPONENT_OR_DESIGN_SYSTEM_TASK_DOES_NOT_ACTIVATE_FIGMA",
     "ONE_IDENTIFIED_EDITABLE_MASTER_PER_LOGICAL_DESIGN_OBJECT",
     "SOURCE_AUTHORITY_PRECEDES_DERIVED_PRESENTATION",
     "NATIVE_EDITABLE_SOURCE_PRECEDES_FLATTENED_PREVIEW",
@@ -74,13 +75,13 @@
   "software_responsibility_matrix": {
     "WEB_UI_INTERACTION": {
       "authoritative_production": ["HTML", "CSS", "JavaScript", "SVG", "repo-native tokens/data", "real browser runtime"],
-      "optional_adapters": ["Figma connector for existing-file or explicitly requested Figma handoff after capacity check", "Penpot USER_WEB_MANUAL fallback"],
+      "optional_adapters": ["Figma connector only after explicit Figma-delivery request or existing authoritative Figma source/project continuation or repair, plus capacity check", "Penpot USER_WEB_MANUAL fallback only when a separate design workspace is genuinely required"],
       "must_preserve": ["semantic structure", "responsive behavior", "component/state logic", "editable text", "tokens or explicit style variables", "keyboard/accessibility semantics when applicable"],
-      "boundary": "Design-canvas screenshots and prototypes do not replace implemented browser evidence when web runtime is the required native output."
+      "boundary": "Generic UI/UX/interface/prototype/component/design-system work does not activate Figma. Design-canvas screenshots and prototypes do not replace implemented browser evidence when web runtime is the required native output."
     },
     "GRAPHIC_BRAND_PACKAGING_POP": {
       "authoritative_production": ["editable SVG", "HTML/CSS/SVG when appropriate", "explicit native vector/layout source when project authority requires it"],
-      "optional_adapters": ["Figma connector for explicit editable handoff", "Illustrator/InDesign or equivalent specialist software only when already available or externally operated; not a default dependency"],
+      "optional_adapters": ["Figma connector for explicit editable Figma handoff only", "Illustrator/InDesign or equivalent specialist software only when already available or externally operated; not a default dependency"],
       "must_preserve": ["vector text unless outlined final production copy is explicitly required", "bleed/trim/safe-area data", "linked asset identity", "spot/process color intent when applicable", "dieline separation when applicable"],
       "boundary": "Flattened PNG/JPG is review or delivery derivative, not the design master. Supplier/prepress proof remains a separate external validation when required."
     },
@@ -121,14 +122,20 @@
     }
   },
   "figma_boundary": {
-    "role": "OPTIONAL_TEMP_AGENT_ADAPTER_NOT_GLOBAL_CURRENT",
+    "role": "EXPLICIT_REQUEST_OR_EXISTING_FIGMA_SOURCE_HANDOFF_ADAPTER_NOT_GLOBAL_CURRENT",
+    "activation_gate_any": [
+      "EXPLICIT_FIGMA_DELIVERY_REQUEST",
+      "EXISTING_AUTHORITATIVE_FIGMA_FILE_OR_PROJECT_MUST_BE_CONTINUED_OR_REPAIRED"
+    ],
+    "probe_policy": "DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_UX_INTERFACE_PROTOTYPE_COMPONENT_OR_DESIGN_SYSTEM_TASKS",
     "new_file_preconditions": [
-      "EXPLICIT_FIGMA_DELIVERY_OR_MATERIAL_PROJECT_BENEFIT",
+      "EXPLICIT_FIGMA_DELIVERY_REQUEST",
       "EXISTING_FILE_AND_PAGE_REUSE_CHECKED",
       "CURRENT_CAPACITY_CONFIRMED_WITHOUT_PAID_UPGRADE_OR_DELETION_PRESSURE",
       "RECOVERABLE_NON_FIGMA_SOURCE_OR_HANDOFF_STRATEGY_RECORDED"
     ],
     "rules": [
+      "CONNECTOR_AVAILABILITY_ALONE_DOES_NOT_ACTIVATE_FIGMA",
       "COMPONENTS_VARIABLES_AUTO_LAYOUT_AND_TEXT_REMAIN_NATIVE_WHEN_FIGMA_IS_THE_REQUIRED_EDITABLE_HANDOFF",
       "DO_NOT_FLATTEN_COMPONENT_SYSTEM_INTO_SCREENSHOT_OR_SINGLE_RASTER",
       "FIGMA_PREVIEW_OR_EXPORT_DOES_NOT_BECOME_SOURCE_AUTHORITY_BY_EXISTENCE"
