@@ -16,6 +16,17 @@ Turn claims, content, brand identity, imagery and project evidence into a distin
 - Upstream: `oleander-design-process`, `oleander-image-art-direction`, `oleander-data-viz`
 - Downstream: `oleander-story-and-board`, `oleander-web-ui`, `oleander-delivery-qc`
 
+## Specialist extension routing
+
+Read the minimum relevant Candidate extension when the task requires deeper system control:
+
+- `TYPOGRAPHY_SYSTEM_EXTENSION.md` — cross-media type roles, script/language coverage, relational scale, font delivery/fallback and longest-string stress;
+- `ICONOGRAPHY_SYSTEM_EXTENSION.md` — repeated icon/pictogram systems, semantic intent, incumbent family geometry, substitutions and source/render verification;
+- `BRAND_RULE_ENCODING_EXTENSION.md` — convert an existing authoritative brand identity into observable allowed/forbidden/context/specimen rules without inventing missing identity content;
+- `RENDERED_BRIEF_REVIEW_EXTENSION.md` — independent brief-to-render critique, severity/owner assignment and repair/recapture evidence.
+
+These extensions deepen the existing owner; they do not create additional Core Skills, house styles, default font/icon libraries or third-party brand identities. Use only the extensions materially required by the task.
+
 ## Required sequence
 
 `CURRENT AUTHORITY → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → REPAIR → RETEST`
@@ -87,6 +98,7 @@ Variation is allowed when it reflects narrative or evidence role. Do not force l
 9. Do not use automated measurements or layout statistics as automatic aesthetic approval. They may flag risk; Design Quality requires rendered visual judgment.
 10. In a multi-section/page system, reject unrelated visual languages that make each section look like a separate template unless the narrative explicitly requires rupture.
 11. When content is sparse, reduce module count instead of filling the system with unsupported or low-value content.
+12. For repeated typography, iconography or brand-rule systems, resolve the corresponding extension rather than relying on one-off styling choices.
 
 ## Required output
 
