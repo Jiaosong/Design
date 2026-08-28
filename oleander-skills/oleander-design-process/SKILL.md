@@ -18,7 +18,7 @@ Convert evidence and constraints into design decisions through visible, editable
 
 ## Core sequence
 
-`CURRENT PROJECT / SOURCE AUTHORITY → DESIGN QUESTION → EXISTING KNOWLEDGE + SKILL → EVIDENCE / INFERENCE / ASSUMPTION / DECISION → ANALYSIS → DESIGN CONSEQUENCE → OPTIONS → EDITABLE DESIGN ARTIFACT → ACTUAL READBACK → DESIGN CRIT → ROOT CAUSE → REPAIR → VALIDATION HANDOFF WHEN NEEDED`
+`CURRENT PROJECT / SOURCE AUTHORITY → DESIGN QUESTION → EXISTING KNOWLEDGE + SKILL → REQUIREMENT / EVIDENCE COVERAGE MAP WHEN MULTI-PART → EVIDENCE / INFERENCE / ASSUMPTION / DECISION → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → ANALYSIS → DESIGN CONSEQUENCE → OPTIONS → EDITABLE DESIGN ARTIFACT → ACTUAL READBACK → DESIGN CRIT → ROOT CAUSE → REPAIR → VALIDATION HANDOFF WHEN NEEDED`
 
 ## What this skill owns
 
@@ -32,6 +32,38 @@ Convert evidence and constraints into design decisions through visible, editable
 - design models used for reasoning, not merely rendering;
 - project-specific transfer rules and Candidate design-method records.
 
+## Requirement / evidence coverage map
+
+Use this when a task contains multiple requested outputs, source assets, interactions, states or review obligations. Before design options are treated as complete, map each material requirement to an accountable object:
+
+`REQUEST / SOURCE → DESIGN CONSEQUENCE → TARGET OBJECT / REGION → REQUIRED STATE OR PROOF → ACCEPTANCE EVIDENCE → STATUS`.
+
+This prevents attractive outputs from silently omitting one source, state or deliverable. Approved omissions must be explicit. The map is a working design-control artifact and should not leak into public-facing design copy.
+
+## Reference decomposition gate
+
+When a user/project supplies a concrete reference, adopted version or mature example, separate **relation** from **style** before generating options. Record the aspects that materially govern the design problem, such as:
+
+- hierarchy and dominant alignment;
+- density and whitespace rhythm;
+- object/media scale and crop behavior;
+- section/sequence order;
+- interaction/state relationship;
+- repeated visual/spatial grammar;
+- motion ownership where temporal behavior matters.
+
+Then translate those relationships into the project's own content, authority and constraints. Do not reproduce third-party identity, proprietary template expression or irrelevant surface decoration.
+
+Use:
+
+`REFERENCE → STRUCTURAL RELATIONS → PROJECT-SPECIFIC CONSEQUENCES → OPTIONS → RENDERED / ARTIFACT DELTA REVIEW`.
+
+## Evidence-density gate
+
+Do not equate more modules with more design depth. If truthful content/evidence is sparse, reduce the number of objects and strengthen the role, scale, sequence and whitespace around the best available proof. Do not invent metrics, testimonials, images, modules or decorative analysis to make the artifact look complete.
+
+`LOW EVIDENCE DENSITY → FEWER STRONGER OBJECTS`, not filler.
+
 ## Rules
 
 1. Start from a real project question or genuine capability gap; do not invent exercises merely to use software.
@@ -44,6 +76,8 @@ Convert evidence and constraints into design decisions through visible, editable
 8. Existing Mature Design First: do not regress a stronger current artifact merely because a new method is cleaner or more systematic.
 9. When exact dimensions or technical facts are unresolved, preserve the uncertainty and generate a Validation Handoff rather than inventing closure.
 10. A design artifact cannot certify browser behavior, CAD roundtrip, engineering approval, field truth or machine safety.
+11. Do not treat a visual reference as a template license. Extract only the relations relevant to the project problem and keep source/rights boundaries explicit.
+12. Do not fill missing evidence with decorative content. Missing proof remains missing proof even when a composition would benefit from more density.
 
 ## Semantic-dimension-to-form gate
 

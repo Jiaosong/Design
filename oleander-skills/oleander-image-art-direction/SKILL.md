@@ -18,7 +18,21 @@ Improve how real photographs, scans, maps, renders, diagrams and existing visual
 
 ## Required sequence
 
-`SOURCE AUTHORITY → REAL SOURCE ASSET → IMAGE ROLE / PRIMARY CLAIM → CROP / MASK / TONAL / COMPOSITION VARIANTS → A/B → FULL-FRAME + THUMBNAIL + NEAR-READ → REPAIR → MASTER / DERIVATIVE RECORD`
+`SOURCE AUTHORITY → REAL SOURCE ASSET INVENTORY → ROLE / AUTHORITY / USABILITY PASS → IMAGE ROLE / PRIMARY CLAIM → CROP / MASK / TONAL / COMPOSITION VARIANTS → A/B → FULL-FRAME + THUMBNAIL + NEAR-READ + SEQUENCE READBACK WHEN APPLICABLE → REPAIR → MASTER / DERIVATIVE RECORD`
+
+## Asset-role and usability pass
+
+Before a page/board/deck information architecture is locked around imagery, classify each material source asset:
+
+- source/master identity and authority;
+- intended role: hero / proof / process / detail / atmosphere / texture / logo / diagram / support;
+- native dimensions, aspect ratio and practical target scale;
+- crop tolerance and protected claim-bearing region;
+- whether the subject survives thumbnail and mobile/alternate crop;
+- whether color/light/material relationships are factual and must remain source-native;
+- whether the asset is strong enough for the intended role or should be demoted/omitted.
+
+Return this classification upstream when weak imagery would otherwise force a bad layout. Do not let a low-resolution or low-evidence source become a hero merely because a layout slot exists.
 
 ## Allowed operations
 
@@ -41,14 +55,18 @@ Improve how real photographs, scans, maps, renders, diagrams and existing visual
 4. Generative fill, AI extension or synthetic replacement is not the default repair path and never silently becomes source evidence.
 5. Preserve source identity and record derivatives. A flattened derivative does not replace the source/master.
 6. When high-end beauty retouch, complex hair masking, liquify, hand-painted repair or specialist color finishing is required and no real execution owner exists, mark PARTIAL/HOLD rather than lowering the standard.
+7. Presentation consistency must not erase source truth. Normalize only relationships that can safely be shared; do not force one white balance/LUT when native light, skin, sky, site or material color carries meaning.
+8. Image sequence unity is judged as a sequence, not by making every frame equally bright, equally large or identically graded. Assign full/mid/detail or hero/support roles before final scale and treatment.
 
 ## Review
 
 Judge primary focus, figure-ground, negative space, tonal hierarchy, crop tension, image sequence, image-text relation, material credibility, responsive crop consistency and whether the image still supports the same evidence claim after editing.
 
+For multi-image systems, also inspect contact-sheet/sequence rhythm, role hierarchy, tonal discontinuity, source-native color preservation and whether one frame incorrectly dominates or flattens the series.
+
 ## Required output
 
-Return source identity, operation log, A/B evidence, selected derivative, actual readback, intended claim, what changed, what was preserved, and what remains outside the current execution surface.
+Return source identity, asset-role/usability inventory, operation log, A/B evidence, selected derivative, actual readback, intended claim, what changed, what was preserved, and what remains outside the current execution surface.
 
 ## Candidate boundary
 

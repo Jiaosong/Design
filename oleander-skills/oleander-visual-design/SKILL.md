@@ -18,7 +18,7 @@ Turn claims, content, brand identity, imagery and project evidence into a distin
 
 ## Required sequence
 
-`CURRENT AUTHORITY → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → A/B OR BEFORE/AFTER → CRIT → REPAIR → RETEST`
+`CURRENT AUTHORITY → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → REPAIR → RETEST`
 
 ## Core checks
 
@@ -31,7 +31,48 @@ Turn claims, content, brand identity, imagery and project evidence into a distin
 - brand distinctiveness versus generic template language;
 - print/material/display feeling where relevant;
 - cross-scale and cross-media consistency;
-- professional finish at intended viewing distance.
+- professional finish at intended viewing distance;
+- continuity grammar across a multi-page or multi-section system;
+- reference fidelity as structural relation rather than color/style imitation;
+- whether sparse content is intentionally composed rather than padded with filler.
+
+## Reference-structure gate
+
+When the project supplies a concrete reference, adopted version or authoritative visual precedent, extract its **structural grammar** before styling:
+
+- dominant alignment/grid;
+- type roles and scale ratios;
+- density and whitespace rhythm;
+- image scale/crop/sequence;
+- section/page continuity;
+- recurring component/material language;
+- motion/interaction ownership when relevant.
+
+Translate those relations to the actual project content and authority. Do not copy third-party visual identity, source assets or proprietary template details. After readback, compare the result to the structural record and name intentional deltas.
+
+`PALETTE MATCH ≠ REFERENCE FIDELITY`.
+
+## Low-content composition gate
+
+When the available truthful content is sparse, do not manufacture visual density.
+
+Prefer:
+- one or a few strong real proof objects;
+- larger image/object scale when the source supports it;
+- editorial whitespace;
+- asymmetric but balanced composition;
+- explicit hierarchy and next action;
+- fewer modules with stronger role differentiation.
+
+Reject filler such as unsupported metrics, empty icon walls, repeated generic cards, fake testimonials, duplicated copy or decorative modules added only to occupy space.
+
+`LOW CONTENT ≠ EMPTY DESIGN` and `LOW CONTENT ≠ LICENSE TO INVENT CONTENT`.
+
+## Continuous visual grammar
+
+For sequences, boards, decks or long pages, build one recognizable visual grammar across the whole rather than designing each module independently. Continuity can be carried by spacing rhythm, repeated alignment anchors, typography roles, image sequence logic, material/background field, edge rules, crop behavior or recurring structural motifs.
+
+Variation is allowed when it reflects narrative or evidence role. Do not force literal sameness or equal visual mass across all modules.
 
 ## Rules
 
@@ -42,10 +83,16 @@ Turn claims, content, brand identity, imagery and project evidence into a distin
 5. Avoid anti-patterns: arbitrary cards, equal-weight modules, decorative numbering, generic rounded/shadowed UI language, gradient-as-design, weak hierarchy and style imitation without project logic.
 6. Packaging/POP presentation may include dieline/bleed/safe representation, but technical/prepress approval requires `oleander-technical-drawing` / VALIDATION or a specialist owner.
 7. Export success is not Design PASS. Evaluate actual pixels, near/far read and project-specific quality gates.
+8. A reference may guide structure and rhythm, but its brand identity, proprietary template language, assets and exact styling are not OLEANDER defaults.
+9. Do not use automated measurements or layout statistics as automatic aesthetic approval. They may flag risk; Design Quality requires rendered visual judgment.
+10. In a multi-section/page system, reject unrelated visual languages that make each section look like a separate template unless the narrative explicitly requires rupture.
+11. When content is sparse, reduce module count instead of filling the system with unsupported or low-value content.
 
 ## Required output
 
 Return the Current editable master, explicit design decisions, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
+
+When reference-led, also return the structural decomposition and rendered deltas. When sparse-content strategy is used, name what was intentionally omitted rather than silently padding the composition.
 
 ## Candidate boundary
 
