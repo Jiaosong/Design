@@ -49,7 +49,62 @@ It does not own specialist visual-composition semantics, interaction-state autho
 
 ## Required sequence
 
-`CURRENT AUTHORITY → STICKY CONSTRAINTS → EXISTING SPECIALIST OWNER RESOLUTION → MINIMUM SUFFICIENT OWNER SET → REQUIRED NATIVE OUTPUT → INFORMATION / STATE MODEL → EDITABLE HTML/CSS/JS/SVG INTEGRATION → REAL BROWSER → DESKTOP/MOBILE + HIGH-RISK STATE READBACK → VISUAL + INTERACTION CRIT → REPAIR → RETEST`
+`CURRENT AUTHORITY → STICKY CONSTRAINTS → EXISTING SPECIALIST OWNER RESOLUTION → MINIMUM SUFFICIENT OWNER SET → REQUIREMENT COVERAGE MAP → SOURCE-ASSET ROLE PASS → REFERENCE DECOMPOSITION WHEN APPLICABLE → REQUIRED NATIVE OUTPUT → INFORMATION / STATE MODEL → EDITABLE HTML/CSS/JS/SVG INTEGRATION → REAL BROWSER → DESKTOP/MOBILE + HIGH-RISK STATE READBACK → RENDERED DELTA REVIEW → VISUAL + INTERACTION CRIT → REPAIR → RETEST`
+
+## Requirement coverage map
+
+Before material implementation, convert the user/project request into a compact acceptance map. Each material requirement should resolve to:
+
+`REQUEST / SOURCE → TARGET REGION OR COMPONENT → REQUIRED STATE / BEHAVIOR → ACCEPTANCE EVIDENCE → STATUS`.
+
+Use stable object/section/component identities. Name approved omissions explicitly. A page that looks complete but silently drops a requested asset, state, behavior or proof object is `REVISE`, not complete.
+
+This map is a coordination artifact, not visible page copy.
+
+## Source-asset role pass before IA lock
+
+When real images, video, models, diagrams, maps or screenshots exist, classify them before final information architecture and layout density are frozen:
+
+- source/master identity and authority;
+- intended narrative role;
+- usable resolution / aspect / crop tolerance;
+- claim-bearing content that must survive crop or masking;
+- target reading distance and responsive behavior;
+- fallback or omission when the source is too weak.
+
+Use:
+
+`SOURCE ASSET INVENTORY → ROLE / AUTHORITY / USABILITY → NARRATIVE DUTY → IA / LAYOUT`.
+
+Do not finish a generic layout first and then force evidence assets into leftover slots.
+
+## Reference-led adaptation
+
+When a concrete reference, adopted version, screenshot, existing page or authoritative visual example is provided, do not reduce “reference-first” to palette or surface styling. Before implementation record the reference's structural grammar:
+
+- section rhythm and density;
+- dominant grid / alignment anchors;
+- typography roles and scale relationships;
+- media scale, crop and placement behavior;
+- component state model;
+- continuity devices between sections;
+- motion ownership and interaction rhythm.
+
+Then translate those relationships to the actual project authority and content. After implementation, compare the real rendered result and name visible deltas. `SIMILAR COLOR ≠ REFERENCE FIDELITY`.
+
+## Continuous page grammar
+
+For continuous responsive sites, make the page read as one authored system rather than unrelated screen blocks stacked vertically. Continuity may come from shared spacing/type grammar, repeated alignment anchors, one background/material field, sticky media, controlled overlap, crop rhythm or deliberate section bridges.
+
+Hard seams or abrupt background resets are acceptable only when they express a real narrative/state boundary. They must not appear merely because each section was designed independently.
+
+For intentionally sparse content, reduce section count and strengthen real proof objects instead of generating filler cards, fake metrics, icon walls or unsupported testimonials.
+
+## Stable semantic identity
+
+For dynamic rendering, editable HTML, filters, reordering or persisted local state, bind content/state to stable semantic IDs rather than DOM order. Reordering or deleting modules must not cause saved edits, interaction state or QA evidence to attach to a different object.
+
+Prefer identities derived from object/section role, e.g. `project-qingjiang-result` or `hero-positioning`, not `item-03` when the order can change.
 
 ## Rules
 
@@ -64,16 +119,24 @@ It does not own specialist visual-composition semantics, interaction-state autho
 9. Keep formal text editable. Do not bake UI text into raster imagery when it must remain live or localized.
 10. Record external assets, fonts, dependencies, runtime assumptions, selected specialist owners and known fallback behavior.
 11. Any backend, authentication, persistence, payment, security or service claim requires separate evidence; a front-end prototype does not prove production backend correctness.
+12. Do not use measurement, DOM geometry, computed-style checks or automated screenshot statistics as automatic aesthetic approval. They are execution evidence and risk signals; full rendered Design Review remains separate.
+13. When a reference is authoritative for direction, record structural deviations after render instead of silently replacing it with a generic house style.
+14. When content is genuinely sparse, prefer fewer stronger sections and real evidence over fabricated density.
 
 ## Visual / runtime readback
 
 At minimum inspect required target sizes and highest-risk states. For ordinary responsive work, include desktop and mobile. Check first-read, hierarchy, dominant mass, typography, spacing, image behavior, interactive affordance, state contrast, overflow, clipping, keyboard focus, Return/back behavior and whether specialist handoffs survived integration.
+
+When a reference/adopted version exists, add rendered delta review: compare section rhythm, dominant alignments, type hierarchy, media scale/crop, continuity and interaction/motion model. Record whether differences are required by project content, intentional improvements, or regressions.
 
 ## Handoff
 
 Return:
 - Current editable source path/identity;
 - selected specialist owner set and why each was needed;
+- requirement coverage map status;
+- source-asset role inventory for material assets;
+- reference decomposition and rendered deltas when applicable;
 - target viewports and states;
 - component/token dependencies;
 - actual browser evidence;
