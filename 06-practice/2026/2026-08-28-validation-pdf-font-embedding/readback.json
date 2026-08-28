@@ -1,0 +1,12 @@
+[
+  {
+    "file": "A_unembedded.pdf",
+    "fonts": [{"font":"Helvetica","embedded":"no","subset":"no","unicode":"yes"}],
+    "all_embedded": false
+  },
+  {
+    "file": "B_embedded.pdf",
+    "fonts": [{"font":"AAAAAA+Lato-Medium","embedded":"yes","subset":"yes","unicode":"yes"}],
+    "all_embedded": true
+  }
+]
