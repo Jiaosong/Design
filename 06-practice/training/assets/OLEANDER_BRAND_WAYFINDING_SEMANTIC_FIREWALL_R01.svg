@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="96" y="74" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="23" letter-spacing="3" fill="#59615F">OLEANDER TRAINING / BRAND ↔ WAYFINDING / SEMANTIC FIREWALL</text>
+<text x="96" y="130" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="48" font-weight="700" fill="#18211F">同一条路线可以成为品牌母形，但不能因此自动获得导航权威</text>
+<text x="96" y="172" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#69706D">C04 CH14 P06↔P07 inspired · one locked synthetic route geometry · NTS · NOT GPS · FIELD OPEN · training-only</text>
+
+<defs>
+  <path id="route" d="M0 110 C80 40 155 48 225 92 C295 136 360 128 430 88 C505 46 585 62 650 112 C708 156 770 142 842 96" fill="none"/>
+</defs>
+
+<rect x="96" y="226" width="535" height="690" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="130" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="19" font-weight="700" fill="#315D57">A / KEEP · BRAND TRACE</text>
+<text x="130" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#59615F">Route-derived identity carrier. Same geometry, lower information authority.</text>
+<rect x="130" y="352" width="467" height="314" rx="18" fill="#F7F3EA"/>
+<g transform="translate(166,456) scale(.51)" color="#527F79">
+  <use href="#route" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+  <use href="#route" stroke="#F7F3EA" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+</g>
+<circle cx="207" cy="512" r="12" fill="#8B5D46"/>
+<text x="130" y="700" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#4F5855">ALLOWED</text>
+<text x="130" y="728" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">crop / trace / visual rhythm / identity placement</text>
+<text x="130" y="756" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">no direction arrow · no “you are here” · no live state · no distance</text>
+<rect x="130" y="800" width="467" height="76" rx="12" fill="#F7F3EA"/>
+<text x="150" y="830" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">ROLE</text>
+<text x="150" y="854" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#59615F">identity / section divider / page relation / decorative crop</text>
+
+<rect x="692" y="226" width="535" height="690" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="726" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="19" font-weight="700" fill="#914F3D">B / REJECT · FALSE AFFORDANCE</text>
+<text x="726" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#59615F">Brand trace is styled like navigation without functional decoding.</text>
+<rect x="726" y="352" width="467" height="314" rx="18" fill="#F7F3EA"/>
+<g transform="translate(762,456) scale(.51)">
+  <use href="#route" stroke="#527F79" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="225" cy="92" r="17" fill="#F7F3EA" stroke="#527F79" stroke-width="4"/>
+  <circle cx="650" cy="112" r="17" fill="#F7F3EA" stroke="#527F79" stroke-width="4"/>
+  <path d="M503 47 h72" stroke="#914F3D" stroke-width="4"/>
+  <path d="M575 47 l-12 -8 v16 z" fill="#914F3D"/>
+</g>
+<rect x="774" y="566" width="118" height="34" rx="17" fill="#527F79"/>
+<text x="798" y="589" font-family="Arial,sans-serif" font-size="12" fill="#fff">START HERE</text>
+<rect x="930" y="500" width="178" height="42" rx="12" fill="#F7F3EA" stroke="#914F3D" stroke-width="2"/>
+<text x="952" y="527" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#914F3D">“向前走” · 无证据</text>
+<text x="726" y="700" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#914F3D">FAIL</text>
+<text x="726" y="728" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">same route ≠ sufficient wayfinding semantics</text>
+<text x="726" y="756" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">graphic line + nodes + arrow silently implies position and direction</text>
+<rect x="726" y="800" width="467" height="76" rx="12" fill="#F7F3EA"/>
+<text x="746" y="830" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#914F3D">BLOCKER</text>
+<text x="746" y="854" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#59615F">brand carrier is borrowing functional authority it does not own</text>
+
+<rect x="1288" y="226" width="536" height="690" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="1322" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="19" font-weight="700" fill="#315D57">C / KEEP · FUNCTIONAL WAYFINDING</text>
+<text x="1322" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#59615F">Same geometry, but functional semantics are explicit and bounded.</text>
+<rect x="1322" y="352" width="468" height="314" rx="18" fill="#F7F3EA"/>
+<g transform="translate(1358,456) scale(.51)">
+  <use href="#route" stroke="#7A817D" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="225" cy="92" r="17" fill="#F7F3EA" stroke="#315D57" stroke-width="4"/>
+  <circle cx="225" cy="92" r="5" fill="#315D57"/>
+  <circle cx="650" cy="112" r="15" fill="#F7F3EA" stroke="#7A5D4C" stroke-width="3"/>
+  <path d="M503 47 h72" stroke="#315D57" stroke-width="3"/>
+  <path d="M575 47 l-12 -8 v16 z" fill="#315D57"/>
+</g>
+<rect x="1384" y="522" width="160" height="48" rx="12" fill="#F7F3EA" stroke="#315D57" stroke-width="2"/>
+<text x="1402" y="543" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11" font-weight="700" fill="#27312E">CURRENT CONTEXT</text>
+<text x="1402" y="561" font-family="Arial,sans-serif" font-size="10.5" fill="#59615F">RELATIONAL / NTS</text>
+<rect x="1590" y="566" width="152" height="44" rx="12" fill="#26312E"/>
+<text x="1628" y="594" font-family="Arial,sans-serif" font-size="12" fill="#fff">RETURN</text>
+<text x="1322" y="700" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#315D57">REQUIRED</text>
+<text x="1322" y="728" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">node role · current context · Return · state/truth boundary · decision hierarchy</text>
+<text x="1322" y="756" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">functional contrast > brand decoration; route authority remains upstream</text>
+<rect x="1322" y="800" width="468" height="76" rx="12" fill="#F7F3EA"/>
+<text x="1342" y="830" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">ROLE</text>
+<text x="1342" y="854" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#59615F">orientation / movement decision / recovery / functional decoding</text>
+
+<line x1="96" y1="960" x2="1824" y2="960" stroke="#BDB6A8" stroke-width="2"/>
+<text x="96" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="21" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="300" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#59615F">Remove labels and arrows: if a brand-derived route trace still looks like an instruction to move, it is borrowing wayfinding authority and must be restated.</text>
+<text x="96" y="1045" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#747B78">Synthetic route geometry only. Does not define C04 official route, position, direction, GPS, distance, live status, signage approval or production brand system.</text>
+</svg>
