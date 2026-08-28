@@ -51,6 +51,12 @@ If no role is identifiable, remove the animation.
 9. `MOT-09 Delivery` — Figma prototype only when the Figma activation gate is satisfied; otherwise Rive/Lottie, CSS/WAAPI/JS, Three.js/GLB animation, Blender source, video/sequence output as required.
 10. `MOT-10 Motion QA` — frame pacing, latency, looping, interruption, occlusion, cross-device consistency and reopen/reproduction.
 
+## Extensions
+
+When a web/page experience needs one coherent temporal system across sections, read `PAGE_MOTION_ORCHESTRATION_EXTENSION.md`.
+
+When a project requires repeatable brand/project motion character or coordinated multi-element choreography, read `MOTION_ART_DIRECTION_CHOREOGRAPHY_EXTENSION.md`. Motion Role and no-motion baseline remain upstream authority; temporal character, easing and choreography may not invent a reason for motion that the state/information model does not contain.
+
 ## Tool routing
 
 - **Native Web:** CSS transitions/animations, Web Animations API, CSS Scroll-driven Animations and View Transitions are the first check for DOM/view motion.
@@ -106,7 +112,7 @@ Record:
 - failure modes;
 - keep/reduce/remove decision.
 
-Do not claim improved comprehension, efficiency, comfort, or accessibility without an appropriate real test.
+Do not claim improved comprehension, efficiency, comfort, emotion or accessibility without an appropriate real test.
 
 ## AR-S10 Motion review
 
@@ -116,6 +122,8 @@ Check separately:
 - Motion Role and no-motion baseline;
 - state before/after and causal legibility;
 - timing/easing versus distance, task frequency and information load;
+- temporal-character consistency when a project motion grammar exists;
+- choreography hierarchy and simultaneous high-salience motion when several elements react together;
 - attention cost and unnecessary waiting;
 - loop / interrupt / reverse / rapid repeat behavior;
 - occlusion, clearance, hierarchy and path conflicts;
@@ -152,4 +160,4 @@ Prefer real project questions over generic exercises, including:
 - spatial route/time transitions;
 - GIS and data time-series transitions.
 
-Preserve the OLEANDER evidence boundary: motion prototypes demonstrate a designed temporal behavior; they do not prove user response, implementation, engineering performance, cultural acceptance, or release approval.
+Preserve the OLEANDER evidence boundary: motion prototypes demonstrate a designed temporal behavior; they do not prove user response, implementation, engineering performance, cultural acceptance, emotional effect or release approval.

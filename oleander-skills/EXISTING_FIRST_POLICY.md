@@ -46,6 +46,22 @@ For every external Skill or knowledge source considered, record as applicable:
 
 External resources do **not** automatically become OLEANDER Authority. They are inputs to be mapped through Source Authority, Evidence State, Design Quality and Validation boundaries.
 
+## External-digestion extension routing
+
+When an external professional Skill has already been evaluated and independently reformulated into an Existing-first OLEANDER extension, resolve the current routing index before creating another method or Skill:
+
+`oleander-skills/EXTERNAL_EXTENSION_ROUTING_20260828.md`
+
+The index maps task triggers to existing owners and Candidate extension files. It is a discovery aid only; it does not replace the owner map, resolver, individual `SKILL.md`, project Current Authority or more specific Current methods.
+
+Rules:
+
+- use the existing owner first, then the minimum relevant extension;
+- read the associated training digestion record when license/transfer boundary matters;
+- do not import the external source's CLI syntax, templates, prompt recipes, fixed heuristics, visual presets or runtime assumptions unless separately authorized and validated;
+- documentation presence and CI success do not promote a Candidate extension to ACTIVE/installed authority;
+- if the extension does not materially cover the current task, return to the normal Existing-first search rather than forcing it.
+
 ## Governance gate
 
 A proposed new Skill, Method, Gate, Framework, Validator, runtime wrapper or Knowledge Object is `HOLD / REJECT` when any of the following is missing:
