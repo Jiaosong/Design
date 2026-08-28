@@ -19,14 +19,16 @@ A PDF can look physically sized correctly while lacking explicit `TrimBox` / `Bl
 1. Adobe Acrobat desktop, page-box documentation, updated December 2025: `TrimBox` is the final page size after trimming; `BleedBox` is the region outside the trim used for professional printing. Source: https://helpx.adobe.com/de/acrobat/desktop/edit-documents/organize-pages/crop-pages.html
 2. Ghostscript 10.08.0 Vector Devices documentation: PDF/X requires Trim/Art page-box entries; `BleedBox` identifies the area to which output may extend and contains the `TrimBox`. Source: https://ghostscript.readthedocs.io/en/latest/VectorDevices.html
 3. Poppler official release index confirms `25.06.0` release dated 2025-06-03. Source: https://poppler.freedesktop.org/releases.html
+4. MuPDF official releases page states the open-source MuPDF line is AGPL with commercial licensing available. Source: https://mupdf.com/releases
 
-External-source role: these sources define page-box semantics and current tool version context. They do **not** establish any supplier-specific bleed dimension or production approval.
+External-source role: these sources define page-box semantics, current tool/version context and license boundary. They do **not** establish any supplier-specific bleed dimension or production approval.
 
 ## Rights / license boundary
 
 - Adobe / Ghostscript documentation is cited as technical reference; no third-party code is copied.
-- Poppler `pdfinfo` is used as an installed inspection tool only; this Practice does not redistribute Poppler binaries or source.
-- PyMuPDF is used only to construct and reopen training fixtures; no project Source Authority is derived from it.
+- Poppler `pdfinfo` is used as an installed inspection tool only; this Practice does not redistribute Poppler binaries or source, and makes no new claim about Poppler redistribution rights.
+- PyMuPDF / MuPDF is used only on the current execution surface to construct and reopen training fixtures. MuPDF's official release page identifies the open-source line as AGPL; this Practice neither embeds nor redistributes MuPDF as a deliverable.
+- No external validator code is copied into OLEANDER; `validate_pdf_pageboxes.py` is a small OLEANDER wrapper around the installed inspection APIs/CLI.
 
 ## Required Native Output / Test Artifact
 
