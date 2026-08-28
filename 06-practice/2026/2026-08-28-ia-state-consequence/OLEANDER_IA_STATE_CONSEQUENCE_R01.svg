@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / IA + USER FLOW + STATE CONSEQUENCE</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="46" font-weight="700" fill="#18211F">异常状态不是“多一个错误页”；它必须改变信息架构与恢复路径</text>
+<text x="88" y="170" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="17" fill="#69706D">synthetic tool-library reservation · no real service / inventory / payment claim · training-only</text>
+
+<rect x="88" y="210" width="1744" height="112" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+  <text x="116" y="244" font-size="12" font-weight="700" fill="#8B5D46">EVIDENCE</text>
+  <text x="116" y="272" font-size="14" fill="#29332F">库存确认与用户选择不是同一时刻发生。</text>
+  <text x="480" y="244" font-size="12" font-weight="700" fill="#7D654B">INFERENCE</text>
+  <text x="480" y="272" font-size="14" fill="#29332F">“选中”只能代表 tentative intent，不能等同 reservation success。</text>
+  <text x="1010" y="244" font-size="12" font-weight="700" fill="#7D654B">ADVERSE CONDITION</text>
+  <text x="1010" y="272" font-size="14" fill="#29332F">确认时离线 / 库存过期 / 用户返回修改。</text>
+  <text x="1450" y="244" font-size="12" font-weight="700" fill="#315D57">DESIGN CONSEQUENCE</text>
+  <text x="1450" y="272" font-size="14" fill="#29332F">把 selection、verification、commit、recovery 分成不同状态。</text>
+</g>
+
+<rect x="88" y="350" width="550" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="394" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · HAPPY-PATH WIZARD</text>
+<text x="120" y="424" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">SELECT → CONFIRM → DONE；失败只在最后加 Error Modal。</text>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+  <rect x="126" y="486" width="130" height="86" rx="14" fill="#F7F3EA"/><text x="152" y="520" font-size="13" font-weight="700">选择工具</text><text x="145" y="546" font-size="11" fill="#59615F">Drill A</text>
+  <path d="M266 529 H328" stroke="#69716D" stroke-width="3"/><path d="M328 529 l-10 -7 v14 z" fill="#69716D"/>
+  <rect x="340" y="486" width="130" height="86" rx="14" fill="#F7F3EA"/><text x="366" y="520" font-size="13" font-weight="700">确认</text><text x="358" y="546" font-size="11" fill="#59615F">点击提交</text>
+  <path d="M480 529 H542" stroke="#69716D" stroke-width="3"/><path d="M542 529 l-10 -7 v14 z" fill="#69716D"/>
+  <rect x="552" y="486" width="58" height="86" rx="14" fill="#315D57"/><text x="563" y="534" font-family="Arial,sans-serif" font-size="11" fill="#fff">DONE</text>
+  <rect x="330" y="618" width="180" height="74" rx="14" fill="#F7F3EA" stroke="#914F3D" stroke-width="2"/>
+  <text x="354" y="648" font-size="12" font-weight="700" fill="#914F3D">ERROR</text>
+  <text x="354" y="672" font-size="11" fill="#59615F">“请重试”</text>
+  <path d="M420 618 V580" stroke="#914F3D" stroke-width="2" stroke-dasharray="6 5"/>
+</g>
+<text x="120" y="742" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">NETWORK-OFF：用户不知道选择是否被保存，也不知道返回会丢什么。</text>
+<text x="120" y="770" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">STALE-INVENTORY：Error 与“未提交”混在同一失败语义。</text>
+<rect x="120" y="806" width="486" height="56" rx="12" fill="#F7F3EA"/>
+<text x="140" y="839" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#7D4A3A">ROOT CAUSE · screen sequence was treated as state model.</text>
+
+<rect x="686" y="350" width="612" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="718" y="394" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP · STATEFUL COMMIT + RECOVERY</text>
+<text x="718" y="424" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">状态定义用户承诺程度；异常改变下一动作，而不是只换文案。</text>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+  <text x="720" y="468" font-size="11" font-weight="700" fill="#59615F">INTENT</text>
+  <rect x="720" y="486" width="126" height="72" rx="14" fill="#F7F3EA"/><text x="745" y="516" font-size="12" font-weight="700">BROWSE</text><text x="742" y="540" font-size="10.5" fill="#59615F">无承诺</text>
+  <path d="M856 522 H904" stroke="#69716D" stroke-width="3"/><path d="M904 522 l-10 -7 v14 z" fill="#69716D"/>
+  <rect x="916" y="486" width="126" height="72" rx="14" fill="#F7F3EA" stroke="#8B5D46" stroke-width="2"/><text x="939" y="516" font-size="12" font-weight="700">SELECTED</text><text x="934" y="540" font-size="10.5" fill="#59615F">tentative</text>
+  <text x="720" y="604" font-size="11" font-weight="700" fill="#59615F">VERIFY / COMMIT</text>
+  <rect x="720" y="622" width="126" height="72" rx="14" fill="#F7F3EA"/><text x="743" y="652" font-size="12" font-weight="700">CHECKING</text><text x="738" y="676" font-size="10.5" fill="#59615F">库存验证</text>
+  <path d="M856 658 H904" stroke="#69716D" stroke-width="3"/><path d="M904 658 l-10 -7 v14 z" fill="#69716D"/>
+  <rect x="916" y="622" width="126" height="72" rx="14" fill="#315D57"/><text x="934" y="652" font-size="12" font-weight="700" fill="#fff">COMMITTED</text><text x="940" y="676" font-size="10.5" fill="#fff">已确认</text>
+  <text x="1084" y="468" font-size="11" font-weight="700" fill="#59615F">RECOVERY</text>
+  <rect x="1084" y="486" width="168" height="72" rx="14" fill="#F7F3EA" stroke="#8A6941" stroke-width="2"/><text x="1104" y="516" font-size="12" font-weight="700">UNKNOWN / OFFLINE</text><text x="1104" y="540" font-size="10.5" fill="#59615F">保留 tentative choice</text>
+  <rect x="1084" y="622" width="168" height="72" rx="14" fill="#F7F3EA" stroke="#914F3D" stroke-width="2"/><text x="1104" y="652" font-size="12" font-weight="700">UNAVAILABLE</text><text x="1104" y="676" font-size="10.5" fill="#59615F">回到选择，不伪造成功</text>
+  <path d="M979 558 V584 H783 V622" fill="none" stroke="#69716D" stroke-width="2.5"/>
+  <path d="M846 658 H916" fill="none" stroke="#69716D" stroke-width="2.5"/>
+  <path d="M846 642 H878 V522 H1084" fill="none" stroke="#8A6941" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <path d="M846 674 H878 V708 H1168 V694" fill="none" stroke="#914F3D" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="882" y="514" font-family="Arial,sans-serif" font-size="9.5" fill="#8A6941">OFFLINE</text>
+  <text x="882" y="724" font-family="Arial,sans-serif" font-size="9.5" fill="#914F3D">STALE</text>
+</g>
+<rect x="718" y="742" width="548" height="118" rx="12" fill="#F7F3EA"/>
+<text x="738" y="772" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" font-weight="700" fill="#315D57">STATE INVARIANTS</text>
+<text x="738" y="798" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#59615F">SELECTED ≠ reserved · UNKNOWN preserves intent but blocks success claim.</text>
+<text x="738" y="824" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#59615F">UNAVAILABLE returns to selection; COMMITTED alone owns confirmation receipt.</text>
+
+<rect x="1348" y="350" width="484" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1380" y="394" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · STATE EXPLOSION</text>
+<text x="1380" y="424" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">每个异常都变成独立页面；真实业务语义被页面数量掩盖。</text>
+<g font-family="Arial,sans-serif" font-size="10.5">
+  <rect x="1390" y="486" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1414" y="518">SELECT</text>
+  <rect x="1542" y="486" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1565" y="518">CHECK</text>
+  <rect x="1694" y="486" width="106" height="52" rx="12" fill="#F7F3EA"/><text x="1714" y="518">CONFIRM</text>
+  <rect x="1390" y="580" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1407" y="612">OFFLINE-1</text>
+  <rect x="1542" y="580" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1559" y="612">OFFLINE-2</text>
+  <rect x="1694" y="580" width="106" height="52" rx="12" fill="#F7F3EA"/><text x="1711" y="612">TIMEOUT</text>
+  <rect x="1390" y="674" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1408" y="706">SOLD-OUT</text>
+  <rect x="1542" y="674" width="116" height="52" rx="12" fill="#F7F3EA"/><text x="1564" y="706">RETRY</text>
+  <rect x="1694" y="674" width="106" height="52" rx="12" fill="#F7F3EA"/><text x="1710" y="706">BACK</text>
+</g>
+<path d="M1506 512 H1542 M1658 512 H1694 M1448 538 V580 M1600 538 V580 M1747 538 V580 M1448 632 V674 M1600 632 V674 M1747 632 V674" stroke="#8A6941" stroke-width="2" fill="none"/>
+<text x="1380" y="774" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#8A6941">DELETE SCREEN TITLES → 很难知道哪些是业务状态、哪些只是展示步骤。</text>
+<rect x="1380" y="812" width="420" height="50" rx="12" fill="#F7F3EA"/>
+<text x="1400" y="842" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#59615F">REPAIR · 合并页面，保留“承诺程度 / 可恢复性 / truth state”。</text>
+
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="290" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">Remove screen names and error copy: can the model still show what the user has committed, what is unknown, and which recovery path preserves intent?</text>
+<text x="88" y="1034" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#747B78">BOUNDARY · no real inventory, persistence, concurrency, payment, backend reliability, accessibility or service policy is proven.</text>
+</svg>
