@@ -16,6 +16,15 @@ Convert evidence and constraints into design decisions through visible, editable
 - Upstream: `oleander-research`
 - Downstream: `oleander-data-viz`, `oleander-3d-pipeline`, `oleander-visual-design`, `oleander-web-ui`, `oleander-technical-drawing`
 
+## Specialist extension routing
+
+Use only the minimum relevant extension:
+
+- `PHYSICAL_PRODUCT_PHASE_GATES_EXTENSION.md` — physical products whose visual form depends on payload/cavity, human interface, mechanism, assembly or CMF sequencing;
+- `PRODUCT_FORM_AFFORDANCE_SERVICEABILITY_EXTENSION.md` — physical form whose operation cues, body/contact relation, construction truth, serviceability or repair path need explicit review.
+
+These are complementary. The phase-gate extension controls sequencing/fidelity; the affordance/serviceability extension attacks form/use honesty and lifecycle access. Neither is a manufacturing or ergonomic certification owner.
+
 ## Core sequence
 
 `CURRENT PROJECT / SOURCE AUTHORITY → DESIGN QUESTION → EXISTING KNOWLEDGE + SKILL → REQUIREMENT / EVIDENCE COVERAGE MAP WHEN MULTI-PART → EVIDENCE / INFERENCE / ASSUMPTION / DECISION → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → ANALYSIS → DESIGN CONSEQUENCE → OPTIONS → EDITABLE DESIGN ARTIFACT → ACTUAL READBACK → DESIGN CRIT → ROOT CAUSE → REPAIR → VALIDATION HANDOFF WHEN NEEDED`
@@ -78,6 +87,7 @@ Do not equate more modules with more design depth. If truthful content/evidence 
 10. A design artifact cannot certify browser behavior, CAD roundtrip, engineering approval, field truth or machine safety.
 11. Do not treat a visual reference as a template license. Extract only the relations relevant to the project problem and keep source/rights boundaries explicit.
 12. Do not fill missing evidence with decorative content. Missing proof remains missing proof even when a composition would benefit from more density.
+13. For physical-product form, do not let decorative/function-like cues silently imply ventilation, fastening, grip, motion, structure or service access that the object does not actually provide. Route material affordance/serviceability questions through the corresponding extension.
 
 ## Semantic-dimension-to-form gate
 
