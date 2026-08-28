@@ -2,6 +2,7 @@
 
 Status: CURRENT ACTIVE GOVERNANCE CONTRACT / MAIN-MERGED / CI + MAIN READBACK VERIFIED.
 Evidence: PR #400 → merge commit `1d374d6d8ac1ac468c64758c0cd3b79c01ae8c2c`; AI Governance Evals run #3162 / run ID `33093638477` = `SUCCESS`; main path reopened after merge.
+Revision note: 2026-08-28 adds Training Mode, outcome distillation, anti-repetition and track-specific training focus after review of real Practice evidence. The revision does not create a new Skill, Gate or project authority.
 Role: cross-project coordination contract; not a new Design Method, Skill, Gate, or project Source Authority.
 
 ## Purpose
@@ -75,11 +76,12 @@ The single machine-readable queue is:
 
 Rules:
 
-- Maximum `3` ACTIVE project/object slots across automated work.
+- Maximum `3` ACTIVE project/object slots across automated project production.
 - GOVERNANCE alone may add, reorder, pause, or remove queue entries after reading actual project Current State / Source Authority.
-- Other workstreams may continue only an existing queue object or explicit Handoff. They must not open a new project/object because it looks interesting.
-- If the queue is empty or stale, production workstreams do not guess. GOVERNANCE refreshes it first.
+- Other workstreams may continue only an existing queue object or explicit Handoff when operating in `PROJECT_MODE`. They must not open a new project/object because it looks interesting.
+- If the queue is empty or stale, project production workstreams do not guess. GOVERNANCE refreshes it first.
 - User explicit current instruction overrides queue order for that object; GOVERNANCE then updates the queue.
+- The Project Priority Queue does **not** disable bounded capability training. Training is governed separately by Section 14.
 
 ## 5. Project Control Card
 
@@ -227,3 +229,179 @@ Actions: KEEP / MERGE / COMPOSE / REDIRECT / DEPRECATE / SUPERSEDE / HOLD. Prese
 ## 13. Non-proof boundaries
 
 This coordination contract does not prove design quality, engineering approval, field truth, manufacturing safety, independent review, or Candidate promotion. It coordinates ownership and continuity only.
+
+## 14. Project Mode vs Training Mode
+
+The five recurring tasks have two operating modes. They must be distinguished before any material write.
+
+### 14.1 PROJECT_MODE
+
+Use when at least one is true:
+
+- a Work Object is present in `OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json` and owned by the task;
+- an explicit Handoff has been accepted;
+- the user's current instruction names or clearly identifies a project/object.
+
+PROJECT_MODE may modify the actual project frontier after reading Current State / Source Authority. It must use the stable `PROJECT_ID / OBJECT_ID`, Current native master and normal Handoff rules.
+
+### 14.2 TRAINING_MODE
+
+Use when no eligible project Work Object exists but the scheduled task still has a verified capability/quality gap worth practicing.
+
+TRAINING_MODE rules:
+
+- queue emptiness is **not** a reason to stop all training;
+- select a bounded Practice object from an existing Skill/Practice gap, recent failure, Candidate evidence gap or explicitly rotating professional domain;
+- use real professional references or verified standards first; synthetic/neutral exercise material is allowed only when clearly marked and when it does not pretend to be project truth;
+- training writes only to Practice / Candidate evidence / knowledge surfaces or a dedicated training frontier;
+- training must not silently mutate a project Current, Source Authority, production master or production PR;
+- project re-application is optional and only permitted when a real queued/explicit project object is available; otherwise record a transfer rule, not an invented project patch;
+- project-specific source bytes may be used for bounded Practice only when authority permits; the training derivative remains SUPPORT / PRACTICE unless explicitly handed back into project production;
+- all normal Evidence Gate / Design Quality Gate / Human Professional Voice / non-proof boundaries remain in force.
+
+If neither a project object nor a material training gap exists, return `::SKIP_COMPLETION::`.
+
+## 15. Training Outcome Ladder and evidence distillation
+
+Training progress is evaluated by evidence maturity, not number of runs or page length.
+
+`OBSERVATION → PRACTICE_EVIDENCE → CROSS_CONTEXT_EVIDENCE → PROJECT_USAGE_EVIDENCE → VALIDATED_CANDIDATE → ACTIVE`
+
+Definitions:
+
+- `OBSERVATION` — useful precedent or visible fact; no reusable claim yet.
+- `PRACTICE_EVIDENCE` — an actual editable/inspectable exercise with A/B or attack, readback and at least one explicit failure condition.
+- `CROSS_CONTEXT_EVIDENCE` — the same bounded rule survives a materially different medium, object, scale or project context; mere repetition does not count.
+- `PROJECT_USAGE_EVIDENCE` — the rule/Skill changes a real project object and records downstream consequence, failure/repair and residual HOLD.
+- `VALIDATED_CANDIDATE` — the claimed reusable capability has sufficient diverse usage/readback and the applicable existing review requirements are satisfied; this still does not automatically mean ACTIVE.
+- `ACTIVE` — only through the existing explicit promotion authority and independent review requirements.
+
+`M6 PRACTICED`, `E2`, CI success, producer pixel readback, one good A/B or one project application must never be translated automatically into ACTIVE.
+
+### 15.1 One training run = one compact evidence record
+
+A material training run should be reducible to:
+
+`GAP → EXISTING-FIRST SOURCE → ARTIFACT → A/B OR ATTACK → READBACK → FAILURE/ROOT CAUSE → REPAIR/RETEST → TRANSFER RULE → BOUNDARY → STATUS`
+
+Detailed commands, repeated process-integrity boilerplate, duplicated Current rules, repeated CI status and long narrative chronology belong in Evidence History / Validation Ledger / K06 when they are needed for audit. They do not belong in the Current reusable rule surface.
+
+### 15.2 Thin Current Practice rule
+
+A Current Practice page should make the reusable rule readable without mining old run logs. Its effective top layer should contain only:
+
+- Current rule / capability claim;
+- Trigger / when to use;
+- professional workflow or technique;
+- failure symptoms + at least one counterexample;
+- transfer boundary / non-proof;
+- 1–3 strongest evidence links;
+- current maturity/status;
+- next missing evidence required for promotion.
+
+Historical extensions remain preserved, but once their rule is absorbed into the Current top layer they should not remain the only place where the rule can be discovered. A page labelled `Thin L7 index` must not continue growing as an unlimited chronological superpage.
+
+### 15.3 Anti-repetition
+
+Before a new training exercise, read the last relevant 3 evidence entries or the Current Practice summary.
+
+Repeat a topic only when one of these is true:
+
+- previous run failed and a materially different repair/retest is needed;
+- a new context attacks the transfer boundary;
+- a new professional source changes the method;
+- a project application exposes a new failure;
+- an explicit review/promotion evidence gap remains.
+
+Changing only the reference case, color, project name or surface styling is not a new training delta.
+
+## 16. Track-specific training focus
+
+The five tasks do not train the same thing.
+
+### 16.1 PRESENTATION
+
+Primary question: `Does the final visible artifact reach professional publication quality?`
+
+Train and retain evidence around:
+
+- first-read / dominant field / hierarchy;
+- grid versus hierarchy: grid orders relations, visual mass argues priority;
+- typography, measure, spacing and read-distance behavior;
+- crop, figure-ground, localized image anchor, image-text relation and responsive art direction;
+- packaging face-specific reading: front `IDENTIFY + CHOOSE`, side `HANDLE + USE`, back `VERIFY + TRACE` when source/brief supports those roles;
+- controlled premiumity without decorative luxury or fake finish;
+- Web/UI visual hierarchy, responsive final pixels, state/feedback presentation;
+- motion hierarchy and settled-state visual continuity;
+- final multi-size / thumbnail / grayscale / far-near readback;
+- cross-media consistency and Project Voice Profile.
+
+Do not turn every successful visual observation into a new Skill. Prefer strengthening the existing Candidate/installed owner with evidence.
+
+### 16.2 DESIGN
+
+Primary question: `How does evidence become a design decision?`
+
+Train and retain evidence around:
+
+- Evidence → Finding → Design Consequence;
+- site / audience / behavior / route / service / system relationships;
+- causal sequence and relation diagrams that do not collapse into equal-card grammar;
+- spatial organization, massing, section, threshold, circulation and option comparison;
+- product requirement → function → part role → proportion → form → structure → material → interaction;
+- form proof before finish / atmosphere;
+- role-bound CMF reasoning before decorative finish choice;
+- IA / user flow / state model / storyboard as design structure, not final polish;
+- deletion tests, adverse-condition tests and rejected alternatives;
+- explicit Handoff generation when technical or presentation ownership begins.
+
+### 16.3 VALIDATION
+
+Primary question: `Does the same design object actually survive the real medium/toolchain/interface?`
+
+Train and retain evidence around:
+
+- exact source/native master/model identity;
+- units / scale / axis / dimensions / geometry authority;
+- reopen / roundtrip / format semantics;
+- native browser width, overflow, keyboard/focus and responsive behavior;
+- settled interaction states, not transition screenshots;
+- same-object view continuity;
+- fail-closed missing source, poster/fallback/load/error behavior;
+- exact view ↔ evidence binding, or explicit `UNBOUND` rather than fake completeness;
+- packaging/prepress/color/profile/print constraints when relevant;
+- Candidate runtime proof boundaries;
+- explicit `PROVEN / NOT PROVEN` for field, engineering, Class-A, machine safety, physical sample, proprietary native format and specialist finishing.
+
+### 16.4 KNOWLEDGE
+
+Primary question: `What professional knowledge should become reusable Current knowledge rather than another run log?`
+
+Train/maintain:
+
+- one-page-at-a-time Cleanup First;
+- source/version/scope/evidence classification;
+- external knowledge and Skill digestion rather than collection;
+- Type Brief completion only when a real Design/Presentation/Validation gap exposes missing type knowledge;
+- repeated Practice findings distilled into concise Current rules;
+- project experience prevented from silently becoming universal law;
+- thin indexes and explicit Evidence History separation;
+- honest cleanup denominator and phase transition.
+
+### 16.5 GOVERNANCE
+
+Primary question: `Is training producing stronger reusable capability without creating more system noise?`
+
+Monitor:
+
+- PROJECT_MODE versus TRAINING_MODE routing;
+- stalled training caused by an empty project queue;
+- Practice superpage growth and duplicate extensions;
+- Candidate evidence coverage across materially different contexts;
+- Usage Evidence completeness;
+- old evidence already absorbed into Current rules;
+- orphan handoffs and project write leakage from training;
+- no-churn, consolidation and one-owner integrity;
+- whether a new run actually advances the Training Outcome Ladder.
+
+A run that only increases page length, CI count, case count or terminology without advancing reusable evidence should be treated as `NO MATERIAL TRAINING DELTA`.
