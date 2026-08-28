@@ -9,14 +9,14 @@
       "priority": 1,
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "object_id": "PRJ-C04-DIGITAL-INTERACTION",
-      "current_owner": "PRESENTATION",
-      "state": "ACTIVE",
+      "current_owner": "GOVERNANCE",
+      "state": "HOLD",
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
       "current_pr_frontier": "GitHub PR #353 / agent/c04-web-v1-12-game-line-20260822",
-      "next_owner": "VALIDATION",
-      "next_action": "PRESENTATION closes exact runtime asset bindings on PR #353 without substitute assets; then hand off the same object to VALIDATION for real-browser reduced-motion/state-equivalence and finished-pixel readback.",
-      "updated_at": "2026-08-29T00:06:13+08:00",
-      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md; Notion C04 Current Project Materials v3.2; GitHub PR #353 current producer readback"
+      "next_owner": "GOVERNANCE",
+      "next_action": "Resolve the stable Work Object / Project Control Card for the verified Current priority: lock C04-WEB-P001..P052 as 52 independent PAGE identities, build the exact 52-row PAGE REGISTER, and map those pages to CH00-CH19 without compression. Do not continue automated PROJECT_MODE on the narrower PR #353 asset-binding frontier until the canonical queue object and owner are verified from Project Current; production workstreams may use controlled TRAINING_MODE only when they have a real training gap.",
+      "updated_at": "2026-08-29T07:03:09+08:00",
+      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md readback: Current execution priorities 1-5 begin with locking P001-P052 and building the exact 52-row PAGE REGISTER. No verified stable PAGE-REGISTER OBJECT_ID was located in this run, so GOVERNANCE holds the narrower PR #353 queue entry instead of guessing a replacement object."
     }
   ],
   "entry_schema": {
