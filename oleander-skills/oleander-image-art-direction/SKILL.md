@@ -16,6 +16,14 @@ Improve how real photographs, scans, maps, renders, diagrams and existing visual
 - Upstream: `oleander-research`, `oleander-design-process`
 - Downstream: `oleander-visual-design`, `oleander-story-and-board`, `oleander-motion`
 
+## Specialist extension routing
+
+When the task starts with several candidate images competing for the same slots/sequence and the material question is selection/cohesion rather than editing one already-selected source, read:
+
+`oleander-skills/oleander-image-art-direction/IMAGE_SET_CURATION_EXTENSION.md`
+
+Use it to judge candidates together, keep explicit KEEP/SUPPORT/CUT/HOLD reasons and preserve source-native truth while coordinating only safe cross-set relationships. It does not create a stock-photo search/license owner and does not authorize one-LUT/one-white-balance normalization.
+
 ## Required sequence
 
 `SOURCE AUTHORITY → REAL SOURCE ASSET INVENTORY → ROLE / AUTHORITY / USABILITY PASS → IMAGE ROLE / PRIMARY CLAIM → CROP / MASK / TONAL / COMPOSITION VARIANTS → A/B → FULL-FRAME + THUMBNAIL + NEAR-READ + SEQUENCE READBACK WHEN APPLICABLE → REPAIR → MASTER / DERIVATIVE RECORD`
@@ -64,9 +72,13 @@ Judge primary focus, figure-ground, negative space, tonal hierarchy, crop tensio
 
 For multi-image systems, also inspect contact-sheet/sequence rhythm, role hierarchy, tonal discontinuity, source-native color preservation and whether one frame incorrectly dominates or flattens the series.
 
+When multiple source candidates existed before selection, retain the candidate-set decision record and cut reasons when that materially affects future re-selection or audit.
+
 ## Required output
 
 Return source identity, asset-role/usability inventory, operation log, A/B evidence, selected derivative, actual readback, intended claim, what changed, what was preserved, and what remains outside the current execution surface.
+
+When set curation is active, also return candidate-set decisions, role/placement map and bounded cohesion treatment.
 
 ## Candidate boundary
 

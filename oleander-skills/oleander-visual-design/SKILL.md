@@ -23,9 +23,12 @@ Read the minimum relevant Candidate extension when the task requires deeper syst
 - `TYPOGRAPHY_SYSTEM_EXTENSION.md` — cross-media type roles, script/language coverage, relational scale, font delivery/fallback and longest-string stress;
 - `ICONOGRAPHY_SYSTEM_EXTENSION.md` — repeated icon/pictogram systems, semantic intent, incumbent family geometry, substitutions and source/render verification;
 - `BRAND_RULE_ENCODING_EXTENSION.md` — convert an existing authoritative brand identity into observable allowed/forbidden/context/specimen rules without inventing missing identity content;
+- `DESIGN_LANGUAGE_RECONSTRUCTION_EXTENSION.md` — reconstruct a persistent design-language record from a Current repository or rendered product while separating explicit authority, shared implementation evidence, observed recurrence, local patterns and legacy;
 - `RENDERED_BRIEF_REVIEW_EXTENSION.md` — independent brief-to-render critique, severity/owner assignment and repair/recapture evidence.
 
-These extensions deepen the existing owner; they do not create additional Core Skills, house styles, default font/icon libraries or third-party brand identities. Use only the extensions materially required by the task.
+These extensions deepen the existing owner; they do not create additional Core Skills, house styles, default font/icon libraries, token schemas or third-party brand identities. Use only the extensions materially required by the task.
+
+When design-language reconstruction identifies a material UI token/theme system, co-route to `oleander-web-ui/SEMANTIC_UI_TOKEN_THEME_EXTENSION.md` instead of inventing token semantics inside the reconstruction record.
 
 ## Required sequence
 
@@ -45,7 +48,8 @@ These extensions deepen the existing owner; they do not create additional Core S
 - professional finish at intended viewing distance;
 - continuity grammar across a multi-page or multi-section system;
 - reference fidelity as structural relation rather than color/style imitation;
-- whether sparse content is intentionally composed rather than padded with filler.
+- whether sparse content is intentionally composed rather than padded with filler;
+- whether reconstructed design-language rules come from explicit authority or are merely repeated implementation/observed patterns.
 
 ## Reference-structure gate
 
@@ -99,12 +103,14 @@ Variation is allowed when it reflects narrative or evidence role. Do not force l
 10. In a multi-section/page system, reject unrelated visual languages that make each section look like a separate template unless the narrative explicitly requires rupture.
 11. When content is sparse, reduce module count instead of filling the system with unsupported or low-value content.
 12. For repeated typography, iconography or brand-rule systems, resolve the corresponding extension rather than relying on one-off styling choices.
+13. Repetition in code or rendered pixels is not automatically design intent. When documenting an existing product's visual system, classify explicit Current rules separately from shared implementation evidence, reconstructed observations, local exceptions and legacy before persisting them as guidance.
+14. Do not infer hidden token names, component ownership or private rationale from screenshots alone.
 
 ## Required output
 
 Return the Current editable master, explicit design decisions, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
 
-When reference-led, also return the structural decomposition and rendered deltas. When sparse-content strategy is used, name what was intentionally omitted rather than silently padding the composition.
+When reference-led, also return the structural decomposition and rendered deltas. When sparse-content strategy is used, name what was intentionally omitted rather than silently padding the composition. When design-language reconstruction is used, return its observation/authority classifications and reapplication check separately from Current normative rules.
 
 ## Candidate boundary
 

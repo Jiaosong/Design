@@ -38,13 +38,16 @@ After resolving the minimum sufficient owner set, read the minimum relevant Cand
 
 - `INFORMATION_ARCHITECTURE_WAYFINDING_EXTENSION.md` — user-task entry points, canonical homes, placement/labels, deep-route orientation, Return/recovery and wayfinding semantics;
 - `RESPONSIVE_LAYOUT_COMPOSITION_EXTENSION.md` — hierarchy-to-space translation, content-driven breakpoints, reflow, state footprints and responsive media;
-- `ACCESSIBLE_INTERACTION_EXTENSION.md` — semantic primitives, keyboard/focus behavior, programmatic names/states, dynamic announcements and user-preference modes.
+- `ACCESSIBLE_INTERACTION_EXTENSION.md` — semantic primitives, keyboard/focus behavior, programmatic names/states, dynamic announcements and user-preference modes;
+- `SEMANTIC_UI_TOKEN_THEME_EXTENSION.md` — semantic token roles, theme mappings, raw-value bypass control and rendered state × theme verification.
 
-Typography/iconography may co-route to the relevant `oleander-visual-design` extensions when those are system-level concerns. These files deepen integration and review; they do not replace the existing route/interaction/visual specialist owners.
+Typography/iconography/brand-rule/design-language reconstruction may co-route to the relevant `oleander-visual-design` extensions when those are system-level concerns. These files deepen integration and review; they do not replace the existing route/interaction/visual specialist owners.
 
-Preferred order when all three apply:
+Preferred order when IA, layout and accessibility all apply:
 
 `TASK / IA → WAYFINDING SEMANTICS → WITHIN-PAGE LAYOUT → INTERACTION STATE → ACCESSIBILITY CROSS-CHECK → MOTION → REAL BROWSER RETEST`.
+
+Token/theme work sits under the Current design authority throughout this route. It may be resolved before or during implementation when shared semantic roles are material; it is not a final visual-polish substitute.
 
 Accessibility is not deferred to the end; the final cross-check repeats checks that should already have shaped primitive, DOM, focus and state choices during implementation.
 
@@ -152,6 +155,8 @@ Do not treat browser-local persistence alone as delivery. `LOCAL SAVE ≠ PORTAB
 16. When navigation/IA is non-trivial, resolve canonical homes, stable labels, orientation and Return/recovery before final within-page composition.
 17. Breakpoint names from a framework are test conveniences, not sufficient design reasons; content failure defines the real breakpoint.
 18. Automated accessibility scans do not replace keyboard/focus/semantic/user-preference interaction evidence.
+19. When a shared token/theme system exists, reusable components should consume semantic roles rather than scattered raw values; theme coverage must be verified in real material states instead of inferred from variable wiring.
+20. A theme remap, token lint or standards check cannot self-award visual quality. `TOKEN PASS ≠ ACCESSIBILITY PASS ≠ DESIGN PASS`.
 
 ## Visual / runtime readback
 
@@ -160,6 +165,8 @@ At minimum inspect required target sizes and highest-risk states. For ordinary r
 When a reference/adopted version exists, add rendered delta review: compare section rhythm, dominant alignments, type hierarchy, media scale/crop, continuity and interaction/motion model. Record whether differences are required by project content, intentional improvements, or regressions.
 
 For non-trivial IA, include at least one deep-entry orientation/recovery attack. For responsive work, inspect widths around the real content break rather than only canonical device snapshots. For accessible interaction, test keyboard/focus and material dynamic states in addition to source/automated checks.
+
+When semantic token/themes are material, include representative high-risk component/page states in each supported appearance and verify raw-value bypasses have not created theme drift.
 
 For live-editable decks, also test edit-mode entry/exit, save, navigation isolation, portable export, clean-context reopen, second edit and re-export. Recheck edited text for overflow and composition regression.
 
@@ -173,6 +180,7 @@ Return:
 - reference decomposition and rendered deltas when applicable;
 - target viewports and states;
 - component/token dependencies;
+- semantic token/theme authority and material state × theme readback when applicable;
 - IA/wayfinding canonical-home and recovery status when applicable;
 - content-driven breakpoint/reflow evidence when applicable;
 - keyboard/focus/semantic/preference evidence when applicable;

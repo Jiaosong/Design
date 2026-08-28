@@ -46,6 +46,16 @@ When the Required Native Output includes parametric product/mechanical CAD, STEP
 
 Use the project-fit professional CAD runtime only when actually available. Preserve the editable parametric/native source as authority, expose meaningful parameters/datums, validate specified dimensions and assembly relations deterministically, and use visual CAD snapshots only as diagnostic evidence. A viewer, mesh or manually dragged assembly pose does not certify geometry.
 
+## OpenSCAD / parametric fabrication route
+
+When the Required Native Output is an editable `.scad` source for a parameter-driven fabricated part, read:
+
+`oleander-skills/oleander-3d-pipeline/OPENSCAD_PARAMETRIC_FABRICATION_EXTENSION.md`
+
+Use this route for source-parameter discipline, stable reference-frame/anchor relations, boolean robustness, fabrication-orientation reasoning and mesh/3MF/STL derivative tracking. Keep printer/material/slicer settings as a separate versioned fabrication context. Do not import BOSL2, fixed print parameters or one printer profile as an OLEANDER default.
+
+For fit-critical interfaces, named purchased components or assembly relations, co-route from OpenSCAD to `PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION.md`; OpenSCAD source validity alone does not certify the fit.
+
 ## Exchange strategy
 
 - USD: complex scene interchange and variants when supported.
@@ -55,6 +65,7 @@ Use the project-fit professional CAD runtime only when actually available. Prese
 - Alembic: baked geometry animation/cache.
 - EXR: high-dynamic-range render passes.
 - STEP/STP: preferred inspectable exchange for parametric mechanical/product CAD when supported by the authoritative CAD route; preserve the native parametric source and do not confuse STEP validity with engineering approval.
+- 3MF/STL: mesh/fabrication derivatives when required by the actual fabrication toolchain; preserve the parametric/native source when continuation matters and verify units/metadata/tool reopen as applicable.
 
 Run a round-trip or reopen test before committing a full scene. Every material cross-software handoff records:
 
@@ -82,6 +93,8 @@ For spatial/product/CMF/technical work:
 - field, engineering and manufacturing claims remain OPEN unless separately validated.
 
 For parametric CAD, also keep `source intent → named parameters/datums → generated geometry → deterministic measurement/alignment/topology checks` traceable. Visual suspicion must be converted into a geometry check before becoming a validation conclusion.
+
+For OpenSCAD/fabrication, keep public parameters, derived dimensions, reference frames, process orientation and exported mesh derivatives traceable back to the `.scad` source. A boolean workaround/epsilon is a modeling-kernel device, not a manufacturing tolerance.
 
 ## AI-generated visual boundary
 
@@ -112,6 +125,7 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 - Units and bounding box are plausible and bound to the declared dimension authority.
 - Normals, transforms, pivots, instancing, and modifiers are resolved intentionally.
 - For fit/assembly CAD, local frames, functional datums, mating intent and relevant dimensions are explicit and checked.
+- For OpenSCAD/fabrication, public parameters, derived dimensions, stable reference relations and source→mesh/export lineage are explicit.
 - Named off-the-shelf components use a traceable real model when available, or a documented envelope/proxy with uncertainty.
 - No missing or absolute-path textures.
 - Material names are unique and meaningful.
@@ -126,3 +140,5 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 Return a model manifest, Current-master identity, dimension/geometry authority record, exchange report, typed cross-software handoff record when applicable, render settings, asset dependency list, known limitations, and review images alongside the requested model/render.
 
 For parametric CAD/assembly work, also return the named parameter/datum contract, deterministic geometry checks actually executed, purchased-component provenance or proxy boundary, diagnostic visual readback, source repair/retest record, and remaining manufacturing/engineering HOLD.
+
+For OpenSCAD/fabrication work, also return the `.scad` source identity, user-parameter contract, derived/reference-frame logic, process/orientation context, fabrication derivative identities, target-tool reopen when available, and physical fit/strength/finish HOLD.
