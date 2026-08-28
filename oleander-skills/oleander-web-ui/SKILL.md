@@ -32,6 +32,22 @@ This core route must **not** copy those specialist methods into itself, claim th
 
 `11-CORE IDENTITY ≠ INSTALLED EXECUTION OWNER`
 
+## Specialist extension routing
+
+After resolving the minimum sufficient owner set, read the minimum relevant Candidate extension when the task exposes one of these deeper integration problems:
+
+- `INFORMATION_ARCHITECTURE_WAYFINDING_EXTENSION.md` — user-task entry points, canonical homes, placement/labels, deep-route orientation, Return/recovery and wayfinding semantics;
+- `RESPONSIVE_LAYOUT_COMPOSITION_EXTENSION.md` — hierarchy-to-space translation, content-driven breakpoints, reflow, state footprints and responsive media;
+- `ACCESSIBLE_INTERACTION_EXTENSION.md` — semantic primitives, keyboard/focus behavior, programmatic names/states, dynamic announcements and user-preference modes.
+
+Typography/iconography may co-route to the relevant `oleander-visual-design` extensions when those are system-level concerns. These files deepen integration and review; they do not replace the existing route/interaction/visual specialist owners.
+
+Preferred order when all three apply:
+
+`TASK / IA → WAYFINDING SEMANTICS → WITHIN-PAGE LAYOUT → INTERACTION STATE → ACCESSIBILITY CROSS-CHECK → MOTION → REAL BROWSER RETEST`.
+
+Accessibility is not deferred to the end; the final cross-check repeats checks that should already have shaped primitive, DOM, focus and state choices during implementation.
+
 ## What this core route owns
 
 Only the integration layer:
@@ -133,12 +149,17 @@ Do not treat browser-local persistence alone as delivery. `LOCAL SAVE ≠ PORTAB
 13. When a reference is authoritative for direction, record structural deviations after render instead of silently replacing it with a generic house style.
 14. When content is genuinely sparse, prefer fewer stronger sections and real evidence over fabricated density.
 15. For live-editable HTML decks, persist edits by stable semantic IDs, not DOM order; suppress slide navigation shortcuts while editable text has focus; and verify export/reopen/re-edit/re-export before claiming the function is delivered.
+16. When navigation/IA is non-trivial, resolve canonical homes, stable labels, orientation and Return/recovery before final within-page composition.
+17. Breakpoint names from a framework are test conveniences, not sufficient design reasons; content failure defines the real breakpoint.
+18. Automated accessibility scans do not replace keyboard/focus/semantic/user-preference interaction evidence.
 
 ## Visual / runtime readback
 
 At minimum inspect required target sizes and highest-risk states. For ordinary responsive work, include desktop and mobile. Check first-read, hierarchy, dominant mass, typography, spacing, image behavior, interactive affordance, state contrast, overflow, clipping, keyboard focus, Return/back behavior and whether specialist handoffs survived integration.
 
 When a reference/adopted version exists, add rendered delta review: compare section rhythm, dominant alignments, type hierarchy, media scale/crop, continuity and interaction/motion model. Record whether differences are required by project content, intentional improvements, or regressions.
+
+For non-trivial IA, include at least one deep-entry orientation/recovery attack. For responsive work, inspect widths around the real content break rather than only canonical device snapshots. For accessible interaction, test keyboard/focus and material dynamic states in addition to source/automated checks.
 
 For live-editable decks, also test edit-mode entry/exit, save, navigation isolation, portable export, clean-context reopen, second edit and re-export. Recheck edited text for overflow and composition regression.
 
@@ -152,6 +173,9 @@ Return:
 - reference decomposition and rendered deltas when applicable;
 - target viewports and states;
 - component/token dependencies;
+- IA/wayfinding canonical-home and recovery status when applicable;
+- content-driven breakpoint/reflow evidence when applicable;
+- keyboard/focus/semantic/preference evidence when applicable;
 - actual browser evidence;
 - live-edit/export round-trip evidence when that route is active;
 - visual issues returned to the relevant visual owner;
