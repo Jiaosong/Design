@@ -4,7 +4,21 @@
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
   "stale_rule": "IF_QUEUE_IS_EMPTY_OR_STALE_PRODUCTION_WORKSTREAMS_DO_NOT_GUESS; GOVERNANCE_REFRESHES_FIRST",
-  "entries": [],
+  "entries": [
+    {
+      "priority": 1,
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+      "current_owner": "PRESENTATION",
+      "state": "ACTIVE",
+      "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
+      "current_pr_frontier": "GitHub PR #353 / agent/c04-web-v1-12-game-line-20260822",
+      "next_owner": "VALIDATION",
+      "next_action": "PRESENTATION closes exact runtime asset bindings on PR #353 without substitute assets; then hand off the same object to VALIDATION for real-browser reduced-motion/state-equivalence and finished-pixel readback.",
+      "updated_at": "2026-08-29T00:06:13+08:00",
+      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md; Notion C04 Current Project Materials v3.2; GitHub PR #353 current producer readback"
+    }
+  ],
   "entry_schema": {
     "priority": "1..3",
     "project_id": "stable project id",
