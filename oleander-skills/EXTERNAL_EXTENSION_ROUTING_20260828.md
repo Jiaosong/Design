@@ -11,30 +11,40 @@ This is an index, not a new authority layer. The Current Skill `SKILL.md`, resol
 | Trigger / Required Native Output | Existing owner | Candidate extension | External study provenance |
 |---|---|---|---|
 | Parametric product/mechanical CAD, STEP/STP, fit-critical assembly, named datums/mates, purchased component geometry | `oleander-3d-pipeline` + Technical Drawing/VALIDATION as needed | `oleander-3d-pipeline/PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION.md` | `earthtojake/text-to-cad` |
+| Editable `.scad` source for parameter-driven fabrication / 3D-print utility part, process-orientation and mesh derivative lineage | `oleander-3d-pipeline` + CAD/VALIDATION as needed | `oleander-3d-pipeline/OPENSCAD_PARAMETRIC_FABRICATION_EXTENSION.md` | `swh/openscad-skill` high-level bounded study |
 | Repeatable project/brand motion character, coordinated multi-element choreography, temporal hierarchy | `oleander-motion` | `oleander-motion/MOTION_ART_DIRECTION_CHOREOGRAPHY_EXTENSION.md` | `LottieFiles/motion-design-skill` |
 | Live presentation/pitch/review deck where audience decision, claim-proof sequence and evidence density matter | `oleander-story-and-board` | `oleander-story-and-board/PRESENTATION_ARGUMENT_EVIDENCE_EXTENSION.md` | `wbohanw/html-presentation` |
 | Independent visual critique against a brief/current design source using actual rendered states and repair/recapture evidence | `oleander-visual-design` + relevant runtime owner | `oleander-visual-design/RENDERED_BRIEF_REVIEW_EXTENSION.md` | `julianoczkowski/designer-skills/design-review` |
 | Commercial print, PDF/X, packaging/POP preflight, printer specification, proof planning | `oleander-visual-design` + `oleander-delivery-qc` | `oleander-delivery-qc/PRINT_PRODUCTION_PREFLIGHT_EXTENSION.md` | `SkillMedev/skills/print-layout` |
 | Physical product whose form depends on payload/cavity, ergonomics, mechanism, assembly or CMF sequencing | `oleander-design-process` | `oleander-design-process/PHYSICAL_PRODUCT_PHASE_GATES_EXTENSION.md` | `shawnlix/claude-product-designer-skill` |
+| Physical product form needs affordance, body/contact, construction-truth, maintenance/disassembly or repair-path review | `oleander-design-process` + 3D/Technical/VALIDATION as needed | `oleander-design-process/PRODUCT_FORM_AFFORDANCE_SERVICEABILITY_EXTENSION.md` | `getburo/buro-free` high-level bounded study only |
 | Cross-media typography system, type roles, font delivery/fallback, bilingual/CJK or long-string stress | `oleander-visual-design` + `oleander-web-ui` when browser delivery applies | `oleander-visual-design/TYPOGRAPHY_SYSTEM_EXTENSION.md` | `event4u-app/agent-config` + `TheGoat395/Codex-Skills` |
 | Repeated UI/brand icons, pictograms, glyph-family consistency, icon source/delivery verification | `oleander-visual-design` + relevant UI owner | `oleander-visual-design/ICONOGRAPHY_SYSTEM_EXTENSION.md` | `event4u-app/agent-config` |
+| Existing brand identity must become an operational multi-media rule system with allowed/forbidden/context/specimen logic | `oleander-visual-design` + relevant delivery owner | `oleander-visual-design/BRAND_RULE_ENCODING_EXTENSION.md` | official `resend/design-skills` as high-level bounded study only |
+| Existing repository/site/product must be reconstructed into persistent design-language guidance without promoting accidental implementation patterns | `oleander-visual-design` + `oleander-web-ui` for rendered/browser evidence | `oleander-visual-design/DESIGN_LANGUAGE_RECONSTRUCTION_EXTENSION.md` | `ibelick/ui-skills/create-design-md` |
+| Several real image candidates compete for the same hero/support/sequence roles and selection/cohesion must be traceable | `oleander-image-art-direction` | `oleander-image-art-direction/IMAGE_SET_CURATION_EXTENSION.md` | `SkillMedev/skills/visual-asset-curation` |
 | Navigation/page hierarchy, canonical content homes, labels, deep-route orientation, Return/recovery or spatial/digital wayfinding | `oleander-web-ui` + `oleander-route-wayfinding-ui` when specialist authority is required | `oleander-web-ui/INFORMATION_ARCHITECTURE_WAYFINDING_EXTENSION.md` | `jacob-balslev/skill-graph` + `Deibler/universal-design-principles` |
 | Responsive page/screen composition, content-driven breakpoints, reflow and state-footprint stability | `oleander-web-ui` + current visual/interaction specialists | `oleander-web-ui/RESPONSIVE_LAYOUT_COMPOSITION_EXTENSION.md` | `jacob-balslev/skill-graph` |
 | Semantic HTML, keyboard/focus contract, programmatic names/states, assistive-tech announcements and preference modes | `oleander-web-ui` + VALIDATION / interaction specialist as needed | `oleander-web-ui/ACCESSIBLE_INTERACTION_EXTENSION.md` | `jacob-balslev/skill-graph` |
-| Existing brand identity must become an operational multi-media rule system with allowed/forbidden/context/specimen logic | `oleander-visual-design` + relevant delivery owner | `oleander-visual-design/BRAND_RULE_ENCODING_EXTENSION.md` | official `resend/design-skills` as high-level bounded study only |
+| Reusable high-fidelity UI token system, semantic roles, multi-theme mapping and state × theme drift review | `oleander-web-ui` + `oleander-visual-design` | `oleander-web-ui/SEMANTIC_UI_TOKEN_THEME_EXTENSION.md` | `axross/skills/high-fidelity-ui-design` high-level bounded study |
 
 ## Co-routing rules
 
 - Physical product + fit-critical mechanism: `PHYSICAL_PRODUCT_PHASE_GATES_EXTENSION` → `PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION` → relevant Technical Drawing / Delivery QC validation.
+- Physical product affordance/serviceability is orthogonal to phase sequencing: use `PRODUCT_FORM_AFFORDANCE_SERVICEABILITY_EXTENSION` only when form/use interpretation, construction truth or lifecycle access is a material question. Do not turn subtraction/minimalism into a default aesthetic.
+- OpenSCAD fit-critical part: `.scad` source/process route → `OPENSCAD_PARAMETRIC_FABRICATION_EXTENSION`; named components, fit/mates or critical interfaces additionally co-route to `PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION`.
 - Product/brand presentation motion: Motion Role remains upstream; use `MOTION_ART_DIRECTION_CHOREOGRAPHY_EXTENSION` only after state/narrative semantics exist.
 - Browser-based live deck: use the existing `LIVE_EDITABLE_HTML_PRESENTATION_EXTENSION.md` for editing/export/runtime and `PRESENTATION_ARGUMENT_EVIDENCE_EXTENSION.md` for audience/claim-proof narrative; these are orthogonal.
 - Print-ready visual design: visual composition remains with `oleander-visual-design`; `PRINT_PRODUCTION_PREFLIGHT_EXTENSION` governs production specification and release proof classes.
 - Rendered review: the reviewer uses `RENDERED_BRIEF_REVIEW_EXTENSION`; defects are returned to the actual owner instead of being repaired inside a hidden review skill.
 - Typography: establish type roles/source/rights first; then use the actual medium owner for browser, print, packaging or presentation delivery. A token file or installed font package does not grant Design KEEP.
 - Iconography: inspect the incumbent brand/UI family before selecting or drawing a glyph. Accessibility role and target size are checked with the actual UI/runtime owner.
+- Design-language reconstruction: explicit Current design/brand authority outranks repeated implementation. Reconstructed rendered patterns remain `OBSERVED` until promoted by authority; when a real token/theme system is found, co-route to `SEMANTIC_UI_TOKEN_THEME_EXTENSION` instead of inventing token semantics in the reconstruction document.
+- Image set curation: preserve source/evidence truth and claim fit before cohesion. Do not use one LUT/white balance or a fixed aesthetic heuristic to make a heterogeneous evidence set look artificially uniform.
 - IA → layout: resolve user goals, canonical homes, placement and labels before `RESPONSIVE_LAYOUT_COMPOSITION_EXTENSION` decides within-page spatial structure. Do not use page layout to hide a broken information architecture.
 - Wayfinding → interaction/motion: current location, route decision, route monitoring, destination recognition and Return/recovery semantics exist before decorative transitions are added.
 - Accessible interaction is not a final checklist. It cross-checks primitive choice, state model, keyboard/focus order and dynamic announcements during implementation and again after responsive/motion integration.
+- Semantic token/theme work is wiring + appearance architecture, not a replacement for visual composition or accessibility. `TOKEN PASS ≠ ACCESSIBILITY PASS ≠ DESIGN KEEP`.
 - Brand-rule encoding is project-specific. Never import Resend or any other third-party brand's exact fonts, colors, assets, dimensions, lockups or layout signatures as OLEANDER identity.
 
 ## Rights / transfer boundary
@@ -47,6 +57,11 @@ Specific reviewed boundaries:
 - `jacob-balslev/skill-graph`: repository root `LICENSE` is Apache-2.0; this repository-level license is used as the transfer boundary even where exported Skill frontmatter says MIT.
 - `Deibler/universal-design-principles`: MIT with explicit attribution notes for the principle taxonomy/research lineage; OLEANDER retains independently reformulated relation models, not copied examples/prose.
 - official `resend/design-skills`: no root LICENSE exposed in reviewed state; only high-level operational brand-rule patterns retained, with all Resend-specific values/assets/templates excluded.
+- `SkillMedev/skills`: repository root MIT. Image-set curation mechanics are adapted, but fixed color-temperature/taste/candidate-count heuristics are explicitly not OLEANDER defaults.
+- `getburo/buro-free`: root license is `All Rights Reserved`; only independently synthesized general affordance/serviceability questions are retained. No source prose/templates/examples/output format are copied.
+- `axross/skills`: no repository-level license file found in the reviewed state; only high-level token/theme architecture is independently synthesized. Fixed dark-mode recipes, token names and values are excluded.
+- `swh/openscad-skill`: no repository-level license file found in the reviewed state; only high-level parametric fabrication mechanisms are independently synthesized. BOSL2 house style, code templates, helper tools, printer/material/slicer tables and numeric defaults are excluded.
+- `ibelick/ui-skills`: repository root MIT. OLEANDER adapts evidence/recurrence/intent-separation logic but does not adopt the external `DESIGN.md` schema, CLI, export targets or token naming constraints.
 
 ## Maturity boundary
 
