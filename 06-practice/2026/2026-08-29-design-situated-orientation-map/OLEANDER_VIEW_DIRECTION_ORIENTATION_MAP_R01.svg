@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC, sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / VIEW-DIRECTION → ORIENTATION MAP</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC, sans-serif" font-size="44" font-weight="700" fill="#18211F">现场导览图不是独立平面：人的朝向、可见地标和“你在这里”必须一致</text>
+<text x="88" y="168" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#69706D">synthetic low-profile wayside study · NTS · training-only · no accessibility / fabrication / site approval claim</text>
+<rect x="88" y="206" width="1744" height="118" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC, sans-serif">
+<text x="116" y="240" font-size="11.5" font-weight="700" fill="#8B5D46">EXTERNAL EVIDENCE</text>
+<text x="116" y="266" font-size="12.4" fill="#29332F">NPS: low-profile wayside maps should face the direction the visitor is looking;</text>
+<text x="116" y="289" font-size="12.4" fill="#29332F">site-specific waysides should retain clear views of referenced features.</text>
+<text x="654" y="240" font-size="11.5" font-weight="700" fill="#7D654B">INFERENCE</text>
+<text x="654" y="266" font-size="12.4" fill="#29332F">map orientation and placement are part of the route-reading system,</text>
+<text x="654" y="289" font-size="12.4" fill="#29332F">not decoration added after map drawing.</text>
+<text x="1148" y="240" font-size="11.5" font-weight="700" fill="#7D654B">ADVERSE</text>
+<text x="1148" y="266" font-size="12.4" fill="#29332F">visitor arrives while moving;</text>
+<text x="1148" y="289" font-size="12.4" fill="#29332F">one landmark is hidden by the panel.</text>
+<text x="1450" y="240" font-size="11.5" font-weight="700" fill="#315D57">CONSEQUENCE</text>
+<text x="1450" y="266" font-size="12.4" fill="#29332F">align map/view/body direction;</text>
+<text x="1450" y="289" font-size="12.4" fill="#29332F">move panel out of the landmark sightline.</text>
+</g>
+<rect x="88" y="350" width="548" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · NORTH-UP BY DEFAULT</text>
+<text x="120" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">viewer faces east, but map stays north-up; panel also blocks the landmark.</text>
+<rect x="132" y="468" width="464" height="246" rx="16" fill="#F7F3EA"/>
+<path d="M164 634 C238 594 304 584 382 602 C458 620 512 586 558 526" fill="none" stroke="#BDB7AC" stroke-width="36" stroke-linecap="round"/>
+<circle cx="192" cy="628" r="9" fill="#315D57"/><text x="154" y="662" font-family="Noto Sans CJK SC, sans-serif" font-size="10.5" fill="#315D57">VIEWER</text>
+<path d="M204 626 H300" stroke="#315D57" stroke-width="4"/><path d="M300 626 l-12 -8 v16 z" fill="#315D57"/>
+<circle cx="538" cy="538" r="19" fill="#8B5D46"/><text x="496" y="510" font-family="Noto Sans CJK SC, sans-serif" font-size="10.5" fill="#8B5D46">LANDMARK</text>
+<rect x="340" y="550" width="72" height="112" rx="8" fill="#858C88"/>
+<path d="M212 620 L538 538" stroke="#914F3D" stroke-width="2.5" stroke-dasharray="7 5"/>
+<rect x="448" y="586" width="116" height="96" rx="8" fill="#E8E4DC" stroke="#666E69"/>
+<path d="M460 662 C484 644 510 642 550 610" fill="none" stroke="#767E79" stroke-width="5"/>
+<path d="M548 600 V616 M540 608 H556" stroke="#8B5D46" stroke-width="2"/>
+<text x="455" y="601" font-family="Noto Sans CJK SC, sans-serif" font-size="9" fill="#29332F">N ↑</text>
+<text x="120" y="756" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#7D4A3A">ROTATION ATTACK → viewer must mentally rotate the route before acting.</text>
+<text x="120" y="784" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#7D4A3A">SIGHTLINE ATTACK → panel placement interrupts the feature it explains.</text>
+<rect x="120" y="830" width="484" height="46" rx="10" fill="#F7F3EA"/>
+<text x="140" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#7D4A3A">ROOT · map object was designed separately from situated reading.</text>
+<rect x="686" y="350" width="612" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="718" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP · BODY / MAP / VIEW CO-ORIENTED</text>
+<text x="718" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">panel shifts off-axis; map top matches forward view; YAH anchors route start.</text>
+<rect x="730" y="468" width="536" height="246" rx="16" fill="#F7F3EA"/>
+<path d="M762 634 C840 594 906 584 980 602 C1054 620 1120 584 1234 526" fill="none" stroke="#BDB7AC" stroke-width="36" stroke-linecap="round"/>
+<circle cx="790" cy="628" r="9" fill="#315D57"/><text x="754" y="662" font-family="Noto Sans CJK SC, sans-serif" font-size="10.5" fill="#315D57">VIEWER</text>
+<path d="M802 626 H900" stroke="#315D57" stroke-width="4"/><path d="M900 626 l-12 -8 v16 z" fill="#315D57"/>
+<circle cx="1210" cy="540" r="19" fill="#8B5D46"/><text x="1166" y="510" font-family="Noto Sans CJK SC, sans-serif" font-size="10.5" fill="#8B5D46">LANDMARK</text>
+<path d="M804 620 L1210 540" stroke="#315D57" stroke-width="2.5" stroke-dasharray="7 5"/>
+<rect x="878" y="650" width="98" height="40" rx="8" fill="#858C88"/>
+<rect x="1032" y="566" width="176" height="116" rx="8" fill="#E8E4DC" stroke="#666E69"/>
+<path d="M1052 648 C1090 632 1122 614 1188 582" fill="none" stroke="#767E79" stroke-width="6"/>
+<circle cx="1054" cy="648" r="7" fill="#315D57"/>
+<text x="1043" y="672" font-family="Noto Sans CJK SC, sans-serif" font-size="9" fill="#315D57">YOU ARE HERE</text>
+<path d="M1090 596 H1168" stroke="#315D57" stroke-width="3"/><path d="M1168 596 l-10 -7 v14 z" fill="#315D57"/>
+<text x="1084" y="586" font-family="Noto Sans CJK SC, sans-serif" font-size="9" fill="#29332F">FORWARD / VIEW</text>
+<text x="718" y="756" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#315D57">LABEL-OFF → viewer→path→landmark alignment still reads geometrically.</text>
+<text x="718" y="784" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#315D57">MOVE ATTACK → shift panel into sightline and the relation fails immediately.</text>
+<rect x="718" y="830" width="548" height="46" rx="10" fill="#F7F3EA"/>
+<text x="738" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#315D57">CONSEQUENCE · orientation media inherits the body's situated frame.</text>
+<rect x="1348" y="350" width="484" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1380" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · ROTATED MAP, WRONG ANCHOR</text>
+<text x="1380" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">map is rotated to view direction, but YAH is shifted to the next junction.</text>
+<rect x="1392" y="468" width="408" height="246" rx="16" fill="#F7F3EA"/>
+<path d="M1420 636 C1480 598 1542 590 1600 606 C1660 622 1710 588 1770 532" fill="none" stroke="#BDB7AC" stroke-width="36" stroke-linecap="round"/>
+<circle cx="1448" cy="630" r="9" fill="#315D57"/>
+<path d="M1460 628 H1548" stroke="#315D57" stroke-width="4"/><path d="M1548 628 l-12 -8 v16 z" fill="#315D57"/>
+<rect x="1570" y="548" width="176" height="116" rx="8" fill="#E8E4DC" stroke="#666E69"/>
+<path d="M1590 630 C1628 614 1662 594 1728 566" fill="none" stroke="#767E79" stroke-width="6"/>
+<circle cx="1664" cy="598" r="7" fill="#914F3D"/>
+<text x="1628" y="646" font-family="Noto Sans CJK SC, sans-serif" font-size="9" fill="#914F3D">YAH shifted forward</text>
+<text x="1380" y="756" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#8A6941">ANCHOR ATTACK → orientation is correct but self-location is false.</text>
+<text x="1380" y="784" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#8A6941">REPAIR → co-orientation and exact self-location must both survive.</text>
+<rect x="1380" y="830" width="420" height="46" rx="10" fill="#F7F3EA"/>
+<text x="1400" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#59615F">rotated map ≠ trustworthy orientation if anchor is wrong.</text>
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="988" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#18211F">BOUNDED TEST</text>
+<text x="88" y="1014" font-family="Noto Sans CJK SC, sans-serif" font-size="14.5" fill="#59615F">For site-specific low-profile orientation media: remove decorative styling and labels; body direction, route direction, self-location and referenced view should remain mutually consistent.</text>
+<text x="88" y="1044" font-family="Noto Sans CJK SC, sans-serif" font-size="13.5" fill="#747B78">Not a universal north-up prohibition. Large-area, repeated-location and kiosk maps may have different orientation requirements; NPS itself distinguishes those contexts.</text>
+</svg>
