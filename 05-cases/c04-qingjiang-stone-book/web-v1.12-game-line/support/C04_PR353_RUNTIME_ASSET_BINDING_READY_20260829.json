@@ -1,0 +1,75 @@
+{
+  "record_type": "PRESENTATION_RUNTIME_ASSET_BINDING_PACKAGE",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "producer_frontier": "PR #353 / agent/c04-web-v1-12-game-line-20260822",
+  "observed_at": "2026-08-29T00:47:00+08:00",
+  "knowledge_read_state": "CURRENT + DEFAULT; SUPPORT only for project source location; no K06/Legacy/Snapshot authority used",
+  "status": "PARTIAL_RUNTIME_ASSET_BINDING_READY / GITHUB_RUNTIME_TREE_STILL_BLOCKED",
+  "durable_asset_package": {
+    "drive_file_id": "1t5f_VQvZvc2o8AOQPBTe79BVUaWmw6Bq",
+    "file_name": "C04_PR353_RUNTIME_ASSET_BINDING_READY_20260829.zip",
+    "bytes": 1074833,
+    "sha256": "05dbf6ae8d7e323f48ecce44dac9bc792b8b4d2aa1e64bb155ca35123f13de11"
+  },
+  "ready_bindings": [
+    {
+      "runtime_path": "assets/hero_qingjiang.jpg",
+      "source": "Google Drive QJ-D v1.1 / 01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_file_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "runtime_bytes": 262725,
+      "runtime_sha256": "0a0b7d367aa1af2c45fb1bc9b87445312bd4cbfb4b02aef0e36b9cdc763afb94",
+      "transform": "1920x1080 PNG -> 1920x1080 JPEG quality 82 progressive/optimized; NO CROP / NO COMPOSITING / NO GENERATIVE FILL"
+    },
+    {
+      "runtime_path": "assets/r06_qingjiang.jpg",
+      "source": "Google Drive QJ-D v1.1 / 02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_file_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "runtime_bytes": 344188,
+      "runtime_sha256": "4019b174755e81c370dcf5bd8968ac995ed3a5d3c15edd0431fe50b1f963ba83",
+      "transform": "1920x1080 PNG -> 1920x1080 JPEG quality 82 progressive/optimized; NO CROP / NO COMPOSITING / NO GENERATIVE FILL",
+      "truth_boundary": "KEEP WITH HOLD / FIELD OPEN"
+    },
+    {
+      "runtime_path": "assets/r13_passage_sequence.png",
+      "source": "Google Drive QJ-D v1.1 / QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+      "source_file_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+      "source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "runtime_bytes": 478558,
+      "runtime_sha256": "45fb5824ad7d88dad34b363288608248885311eae987511bc3e46838c6934ef2",
+      "transform": "PNG optimize only; NO CROP / NO COMPOSITING / NO GENERATIVE FILL",
+      "truth_boundary": "REMOTE SPATIAL CONCEPT / NOT SITE PHOTO"
+    }
+  ],
+  "fresh_locator_checks": {
+    "app_mybook": {
+      "state": "HOLD",
+      "current_authority": "CH11 Current Material: MY BOOK = MY ROUTE / MY MOMENTS / MY OBSERVATIONS / MY READINGS / MY MEMORY; no completion rate",
+      "current_authorized_app_carrier": "GitHub main digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html exists",
+      "exact_standalone_original_search": "NOT LOCATED in fresh Drive search",
+      "next_allowed_action": "derive/register a deterministic MY BOOK child from the current authorized App carrier only after exact state/frame readback; do not use downsampled embed, redraw, or AI substitute"
+    },
+    "return_qingjiang": {
+      "state": "HOLD",
+      "current_authority": "CH09 Current Material: RETURN is landscape/signage/paper/human/digital redundancy and must remain a real-journey closure",
+      "fresh_drive_search": "NO exact authorized standalone return visual located",
+      "next_allowed_action": "locate and content-read exact Return visual source; do not reuse Hero, R13, generic Qingjiang, old Web screenshot, or AI image by semantic similarity"
+    }
+  },
+  "runtime_tree_readback": {
+    "branch_assets_directory": "only assets/route03_locked_current.svg currently present",
+    "validator": "verify_game_line.mjs collects every assets/* reference and requires missing_asset_count=0",
+    "browser_finished_pixel": "HOLD until runtime asset integrity closes",
+    "reduced_motion_state_equivalence": "VALIDATION PENDING"
+  },
+  "non_proof": [
+    "DRIVE PACKAGE READY != GITHUB RUNTIME ASSET BINDING CLOSED",
+    "SOURCE HASH != DERIVED RUNTIME HASH",
+    "BROWSER/CI PASS != DESIGN KEEP",
+    "R13 REMAINS NOT-SITE-PHOTO",
+    "FIELD / ENGINEERING / ACCESSIBILITY CONFORMANCE REMAIN OPEN"
+  ],
+  "handoff_state": "NOT READY FOR VALIDATION; PRESENTATION retains owner until exact runtime assets are present in PR #353 and static asset gate passes"
+}
