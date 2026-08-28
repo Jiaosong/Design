@@ -106,6 +106,16 @@ For dynamic rendering, editable HTML, filters, reordering or persisted local sta
 
 Prefer identities derived from object/section role, e.g. `project-qingjiang-result` or `hero-positioning`, not `item-03` when the order can change.
 
+## Live-editable HTML presentation route
+
+When the Required Native Output is a browser-based PPT/deck that must remain directly editable after delivery, use:
+
+`oleander-skills/oleander-story-and-board/LIVE_EDITABLE_HTML_PRESENTATION_EXTENSION.md`.
+
+This route keeps the slide text as live DOM text and requires stable semantic edit IDs, explicit edit mode, local persistence, navigation/editing shortcut isolation, portable HTML export, and real round-trip verification. The exported artifact must reopen in a clean browser context with the edited text embedded and must still support navigation, editing and re-export.
+
+Do not treat browser-local persistence alone as delivery. `LOCAL SAVE ≠ PORTABLE EXPORT`.
+
 ## Rules
 
 1. Generic UI does not probe, recommend, or create Figma by default.
@@ -122,12 +132,15 @@ Prefer identities derived from object/section role, e.g. `project-qingjiang-resu
 12. Do not use measurement, DOM geometry, computed-style checks or automated screenshot statistics as automatic aesthetic approval. They are execution evidence and risk signals; full rendered Design Review remains separate.
 13. When a reference is authoritative for direction, record structural deviations after render instead of silently replacing it with a generic house style.
 14. When content is genuinely sparse, prefer fewer stronger sections and real evidence over fabricated density.
+15. For live-editable HTML decks, persist edits by stable semantic IDs, not DOM order; suppress slide navigation shortcuts while editable text has focus; and verify export/reopen/re-edit/re-export before claiming the function is delivered.
 
 ## Visual / runtime readback
 
 At minimum inspect required target sizes and highest-risk states. For ordinary responsive work, include desktop and mobile. Check first-read, hierarchy, dominant mass, typography, spacing, image behavior, interactive affordance, state contrast, overflow, clipping, keyboard focus, Return/back behavior and whether specialist handoffs survived integration.
 
 When a reference/adopted version exists, add rendered delta review: compare section rhythm, dominant alignments, type hierarchy, media scale/crop, continuity and interaction/motion model. Record whether differences are required by project content, intentional improvements, or regressions.
+
+For live-editable decks, also test edit-mode entry/exit, save, navigation isolation, portable export, clean-context reopen, second edit and re-export. Recheck edited text for overflow and composition regression.
 
 ## Handoff
 
@@ -140,6 +153,7 @@ Return:
 - target viewports and states;
 - component/token dependencies;
 - actual browser evidence;
+- live-edit/export round-trip evidence when that route is active;
 - visual issues returned to the relevant visual owner;
 - interaction/state issues returned to the relevant specialist;
 - technical issues for `oleander-delivery-qc` or VALIDATION;
