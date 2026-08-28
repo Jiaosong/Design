@@ -38,6 +38,14 @@ Keep geometry, textures, references, caches, cameras, lighting, exports, renders
 
 There must be one Current master pointer per logical 3D object. A GLB, FBX, OBJ, screenshot or rendered image does not silently become that master.
 
+## Parametric CAD / assembly route
+
+When the Required Native Output includes parametric product/mechanical CAD, STEP/STP, fit-critical geometry, assemblies, mating interfaces, purchased components or technical-drawing geometry, read:
+
+`oleander-skills/oleander-3d-pipeline/PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION.md`
+
+Use the project-fit professional CAD runtime only when actually available. Preserve the editable parametric/native source as authority, expose meaningful parameters/datums, validate specified dimensions and assembly relations deterministically, and use visual CAD snapshots only as diagnostic evidence. A viewer, mesh or manually dragged assembly pose does not certify geometry.
+
 ## Exchange strategy
 
 - USD: complex scene interchange and variants when supported.
@@ -46,6 +54,7 @@ There must be one Current master pointer per logical 3D object. A GLB, FBX, OBJ,
 - OBJ: static geometry fallback.
 - Alembic: baked geometry animation/cache.
 - EXR: high-dynamic-range render passes.
+- STEP/STP: preferred inspectable exchange for parametric mechanical/product CAD when supported by the authoritative CAD route; preserve the native parametric source and do not confuse STEP validity with engineering approval.
 
 Run a round-trip or reopen test before committing a full scene. Every material cross-software handoff records:
 
@@ -71,6 +80,8 @@ For spatial/product/CMF/technical work:
 - a perspective render has no hidden geometry authority unless it is demonstrably bound to the verified model;
 - a browser 3D viewer proves viewing only and cannot replace required CAD/BIM/Class-A/manufacturing authoring;
 - field, engineering and manufacturing claims remain OPEN unless separately validated.
+
+For parametric CAD, also keep `source intent → named parameters/datums → generated geometry → deterministic measurement/alignment/topology checks` traceable. Visual suspicion must be converted into a geometry check before becoming a validation conclusion.
 
 ## AI-generated visual boundary
 
@@ -100,6 +111,8 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 - Current authoritative editable model is identifiable and reopenable.
 - Units and bounding box are plausible and bound to the declared dimension authority.
 - Normals, transforms, pivots, instancing, and modifiers are resolved intentionally.
+- For fit/assembly CAD, local frames, functional datums, mating intent and relevant dimensions are explicit and checked.
+- Named off-the-shelf components use a traceable real model when available, or a documented envelope/proxy with uncertainty.
 - No missing or absolute-path textures.
 - Material names are unique and meaningful.
 - Cameras, frame rate, frame range, and color management are documented.
@@ -111,3 +124,5 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 ## Required output
 
 Return a model manifest, Current-master identity, dimension/geometry authority record, exchange report, typed cross-software handoff record when applicable, render settings, asset dependency list, known limitations, and review images alongside the requested model/render.
+
+For parametric CAD/assembly work, also return the named parameter/datum contract, deterministic geometry checks actually executed, purchased-component provenance or proxy boundary, diagnostic visual readback, source repair/retest record, and remaining manufacturing/engineering HOLD.
