@@ -1,9 +1,9 @@
 {
   "schema": "oleander.default-skill-resolver.v1",
   "version": "1.2",
-  "implementation_revision": "1.2.2",
+  "implementation_revision": "1.2.3",
   "status": "ACTIVE_CURRENT",
-  "decision_date": "2026-08-19",
+  "decision_date": "2026-08-29",
   "scope": "OLEANDER_ALL_PROJECTS_CONVERSATIONS_AGENTS_MEDIA",
   "supersedes": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json",
   "authority": {
@@ -187,7 +187,8 @@
       "oleander-3d-pipeline",
       "oleander-story-and-board",
       "oleander-delivery-qc",
-      "oleander-motion"
+      "oleander-motion",
+      "oleander-design-process"
     ],
     "candidate_ui_specialists_on_main": [
       "oleander-game-ui",
