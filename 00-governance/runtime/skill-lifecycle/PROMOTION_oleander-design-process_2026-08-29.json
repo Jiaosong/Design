@@ -1,0 +1,27 @@
+{
+  "record_id": "OLEANDER-SKILL-PROMOTION-oleander-design-process-2026-08-29",
+  "status": "ACTIVE_TRANSITION",
+  "effective_date": "2026-08-29",
+  "skill_id": "oleander-design-process",
+  "from_state": "CANDIDATE",
+  "to_state": "INSTALLED",
+  "evidence_refs": [
+    "GitHub PR #449 merged main@9755e1e382a69ab933e2d5d7cb3a4af4701af91e",
+    "evals/golden/skills.jsonl SK-DES-001..SK-DES-012",
+    "cross-context Practice evidence PR #407/#409/#410/#415/#418/#419/#422/#425/#428/#430/#432/#435/#437/#440/#441/#443",
+    "AIG-01/AIG-02/AIG-03 success on PR #449",
+    "explicit user continuation to default activation on 2026-08-29"
+  ],
+  "reviewer_id": "USER_EXPLICIT_PROMOTION_AUTHORITY",
+  "decision_ref": "GitHub PR #453 / explicit user instruction: continue activation",
+  "effective_commit": "PR453_HEAD_1d58608d7bf897f27bd3e1c3ae667655cc9f792d",
+  "boundaries": [
+    "NO_ARTIFACT_SELF_KEEP",
+    "NO_SPECIALIST_TECHNICAL_VALIDATION_BY_DESIGN_PROCESS",
+    "NO_FINAL_PRESENTATION_KEEP",
+    "NO_FIELD_TRUTH",
+    "NO_ENGINEERING_OR_MANUFACTURING_APPROVAL",
+    "NO_HUMAN_TEST_PASS"
+  ],
+  "does_not_prove": ["artifact_design_keep", "field_truth", "engineering_validity", "manufacturing_readiness", "human_validation"]
+}
