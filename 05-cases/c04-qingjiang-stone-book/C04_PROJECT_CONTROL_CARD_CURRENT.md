@@ -1,6 +1,6 @@
 # C04｜Project Control Card｜CURRENT
 
-> Compact Current control surface for `PRJ-C04-QINGJIANG-SHISHU`. Full project truth remains in `C04_CURRENT.md`, `C04_ACTIVE_EXECUTION_CURRENT.md`, architecture v3.2, Current Project Materials, and lane-specific Source Authority.
+> Compact Current control surface for `PRJ-C04-QINGJIANG-SHISHU`. Full project truth remains in `C04_CURRENT.md`, `C04_ACTIVE_EXECUTION_CURRENT.md`, `C04_COUNT_CONTRACT_CURRENT.json`, architecture v3.2, Current Project Materials, and lane-specific Source Authority.
 
 - `PROJECT_ID`: PRJ-C04-QINGJIANG-SHISHU
 - `PROJECT_NAME`: C04 清江石书
@@ -8,29 +8,33 @@
 - `OBJECT_TYPE`: P3 WORKSTREAM / CURRENT PUBLIC WEB PRODUCTION
 - `CURRENT_OWNER`: PRESENTATION
 - `STATE`: ACTIVE
-- `SOURCE_AUTHORITY`: `C04_CURRENT.md` → `C04_ACTIVE_EXECUTION_CURRENT.md` → Current Project Materials v3.2 → object-specific source/asset authority
+- `SOURCE_AUTHORITY`: `C04_CURRENT.md` → `C04_ACTIVE_EXECUTION_CURRENT.md` → `C04_COUNT_CONTRACT_CURRENT.json` → Current Project Materials v3.2 → object-specific source/asset authority
 - `UPSTREAM_MASTER`: `05-cases/c04-qingjiang-stone-book/C04_CURRENT.md`
-- `CURRENT_NATIVE_MASTER`: `05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html`
-- `CURRENT_PR_FRONTIER`: GitHub PR #353 / `agent/c04-web-v1-12-game-line-20260822` / head `f0b241ba6ca38bd563cc50443445de7ea4ef6c30`
-- `CURRENT_MATERIAL_DELTA`: PR #353 now has a complete source-read inventory of all 16 unique literal `assets/*` runtime references from current `index.html + app.js`. Current branch state is `1 BOUND_IN_PR / 3 RUNTIME_DERIVATIVE_READY_NOT_BOUND / 2 SOURCE_BYTES_OR_IDENTITY_HOLD / 10 EXACT_SOURCE_LOCATOR_OR_CROP_AUTHORITY_OPEN`; therefore 15 runtime files remain absent and the static gate remains BLOCKED. `app_mybook.png` source identity has narrowed to canonical `05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png`, but exact source bytes are still unresolved; the checked v3 MY BOOK state is explicitly rejected as a substitute.
-- `NEXT_OWNER`: VALIDATION
-- `NEXT_ACTION`: PRESENTATION materializes the 3 authorized ready derivatives on the existing PR #353 frontier, then resolves the remaining source/identity/crop-authority holds one by one against the complete 16-reference manifest. No approximate, screenshot, generic, AI, provenance-only, or otherwise unauthorized substitute is allowed. Only after `missing_asset_count=0` and the current static asset gate passes may this same object be handed to VALIDATION for actual-browser reduced-motion preference emulation, state-equivalence, responsive/interaction readback, and finished-pixel QC.
-- `RESIDUAL_HOLD`: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`; PR #353 open/unmerged; complete runtime reference inventory is closed but GitHub runtime asset integrity remains BLOCKED with 15 files absent; `app_mybook` exact App v1.6 source bytes HOLD; Return exact authorized visual source HOLD; remaining exact source/crop-authority bindings OPEN; browser finished-pixel review BLOCKED; Independent Professional Design KEEP not established.
+- `CURRENT_NATIVE_MASTER_ON_MAIN`: `NONE / CURRENT PRODUCER SOURCE IS STILL UNMERGED`
+- `CURRENT_PRODUCER_NATIVE_MASTER`: GitHub PR #353 branch `agent/c04-web-v1-12-game-line-20260822` → `05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html`
+- `CURRENT_PUBLIC_STRUCTURE`: `18-section direct design-work reading + bottom-right supplement`
+- `INTERNAL_MIGRATION_REGISTER`: `05-cases/c04-qingjiang-stone-book/page-register-current/C04_WEB_PROTECTED_PAGE_REGISTER_P001_P052_CURRENT.csv`
+- `INTERNAL_MIGRATION_REGISTER_ROLE`: `C04-WEB-P001...P052 = protected internal migration identities; NOT public pagination authority; NOT final page count`
+- `CURRENT_PR_FRONTIER`: GitHub PR #353 / `agent/c04-web-v1-12-game-line-20260822` / source-read head `f0b241ba6ca38bd563cc50443445de7ea4ef6c30`
+- `CURRENT_MATERIAL_DELTA`: The protected 52-row internal migration register is now reconstructed from PR #323 provenance and currentized without turning 52 into a public-page target. Public Web remains the 18-section producer structure. On PR #353, source-read still shows 16 unique literal `assets/*` references: 1 is bound, 3 authorized runtime derivatives have exact bytes/hashes resolved and are ready to bind, while the remaining source/identity/crop-authority holds stay open. `app_mybook.png` exact approved App v1.6 source bytes remain unresolved; the checked v3 MY BOOK state remains rejected as a substitute.
+- `NEXT_OWNER`: PRESENTATION until runtime asset integrity closes; then VALIDATION
+- `NEXT_ACTION`: (1) bind the 3 exact authorized runtime derivatives to the existing PR #353 producer branch; (2) resolve the remaining asset source/identity/crop-authority holds one by one; (3) continue internal protected-ID source recovery without expanding the public 18-section architecture; (4) only after `missing_asset_count=0` and static asset gate PASS hand the same Web object to VALIDATION for actual-browser responsive/state/keyboard/reduced-motion/finished-pixel readback.
+- `RESIDUAL_HOLD`: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`; PR #353 open/unmerged; main contains no merged Web v1.12 native master; 27 protected legacy page labels still require source recovery; P006/P011/P022/P023/P033/P036/P045 retain explicit semantic/ownership holds; GitHub runtime asset integrity remains BLOCKED; MY BOOK and Return exact source identity/bytes remain HOLD; browser finished-pixel review BLOCKED; Independent Professional Design KEEP not established.
 - `VOICE_PROFILE_REF`: `00-governance/OLEANDER_HUMAN_PROFESSIONAL_VOICE_POLICY_v1.0.md` + C04 Current project-specific terminology
 - `COPY_CLASS`: MIXED_WITH_EXPLICIT_SEGMENTATION
-- `LAST_READBACK`: GitHub PR #353 head `f0b241ba6ca38bd563cc50443445de7ea4ef6c30` + `support/C04_PR353_COMPLETE_RUNTIME_ASSET_MANIFEST_20260829.json` blob `ac6130480f69f5e369e0a9efeaa7bd59c1e8f3d6` + `support/C04_PR353_MYBOOK_SOURCE_IDENTITY_REJECTION_20260829.json` blob `71ffc4310895e98b214dd1d43300372b7d80878a` + C04 Current/Active Execution + Notion Current Project Materials
-- `UPDATED_AT`: 2026-08-29T10:07:00+08:00
+- `LAST_READBACK`: `C04_CURRENT.md` + `C04_COUNT_CONTRACT_CURRENT.json` + closed legacy-remap PR #323 protected register + open producer PR #353 + `support/C04_PR353_COMPLETE_RUNTIME_ASSET_MANIFEST_20260829.json` + `support/C04_PR353_RUNTIME_ASSET_BINDING_READY_20260829.json` + Current Project Materials
+- `UPDATED_AT`: 2026-08-29
 
 ## Handoff
 
-- `FROM_OWNER`: PRESENTATION
-- `TO_OWNER`: VALIDATION
-- `WHAT_CHANGED`: PRESENTATION closed the runtime-reference inventory ambiguity by enumerating all 16 unique literal runtime assets on the Current PR frontier, while preserving per-asset authority state. It also narrowed MY BOOK to the exact approved App v1.6 canonical static-capture filename and rejected the available v3 state as an unauthorized substitute. GOVERNANCE refreshed this Control Card from the actual PR #353 head and exact support-file readback; GOVERNANCE did not alter project design/runtime assets.
-- `WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT`: Bind the 3 authorized ready derivatives; resolve each remaining source/identity/crop-authority hold against the complete 16-reference manifest; keep MY BOOK missing until exact v1.6 source bytes or an authority-backed deterministic carrier is found; reach `missing_asset_count=0` and static-gate PASS before VALIDATION accepts the handoff.
-- `REQUIRED_NATIVE_OUTPUT`: repo-native HTML/CSS/JS/SVG/image runtime under the existing PR #353 frontier plus actual browser readback evidence after handoff.
-- `DIMENSION_GEOMETRY_AUTHORITY`: Existing C04 Source Authority / locked route / source-grounded visual and technical records; FIELD/engineering dimensions remain open where explicitly marked.
-- `KNOWN_ASSUMPTIONS`: Public Web remains 18-section reading + supplement unless a material Current project decision changes it; historical 52/111/112 structures are provenance/recovery only; complete reference inventory does not equal asset-integrity PASS; Drive/package readiness does not equal GitHub runtime binding closure.
-- `HANDOFF_STATE`: NONE
+- `FROM_OWNER`: GOVERNANCE + PRESENTATION
+- `TO_OWNER`: PRESENTATION, then VALIDATION after runtime integrity closure
+- `WHAT_CHANGED`: GOVERNANCE repaired two authority drifts. First, the PR #353 producer file is no longer labelled as a native master already present on `main`; it is explicitly a producer-branch master until merged. Second, protected `C04-WEB-P001...P052` identities are restored to their correct role as Current internal migration/no-loss identities without regaining visitor-facing pagination authority. The public 18-section reading remains unchanged.
+- `WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT`: Bind the 3 exact ready runtime derivatives; resolve remaining runtime sources without substitutes; continue protected-ID source recovery and authoring/surface mapping; do not allocate N-series or claim final page count before identity and material-independence review; do not hand to VALIDATION until the static asset gate passes.
+- `REQUIRED_NATIVE_OUTPUT`: repo-native HTML/CSS/JS/SVG/image runtime on PR #353 plus current internal migration register on main; actual browser evidence only after runtime integrity closes.
+- `DIMENSION_GEOMETRY_AUTHORITY`: Existing C04 Source Authority / ROUTE-03 locked route / source-grounded visual and technical records; FIELD/engineering dimensions remain open where explicitly marked.
+- `KNOWN_ASSUMPTIONS`: Public Web remains 18-section reading + supplement unless a material newer Current decision changes it. `52 = protected internal migration identities`, `111 = authoring inventory`, `112 = stale historical Web snapshot`; none is final/public page count. Drive/package readiness does not equal GitHub runtime binding closure. A producer-branch path does not become a main Current native artifact until merged and read back.
+- `HANDOFF_STATE`: PRESENTATION ACTIVE / VALIDATION BLOCKED
 
 ## Project Voice Profile
 

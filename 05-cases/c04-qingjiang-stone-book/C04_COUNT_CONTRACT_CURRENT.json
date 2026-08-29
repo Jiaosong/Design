@@ -1,31 +1,43 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "authority_role": "CURRENT QUERY / COUNT SEMANTICS CONTRACT",
-  "effective_date": "2026-08-19",
+  "effective_date": "2026-08-29",
   "canonical_page_count": {
     "value": null,
     "status": "NOT_YET_LOCKED",
-    "answer_when_asked_how_many_pages": "当前最终 canonical PAGE count 尚未锁定。必须先完成 exact C04-WEB-P001...P052 PAGE REGISTER，再将 authored inventory 与当前各章节真实 production/presentation surfaces 逐项映射，仅给真正新增独立页面分配 N-series，之后才能得出 actual canonical page_count。"
+    "answer_when_asked_how_many_pages": "当前最终 canonical PAGE count 尚未锁定。C04-WEB-P001...P052 已作为 52 个 protected internal migration identities 在 Current register 中锁定，但它们不是 public pagination 或最终 page_count。仍需完成剩余 source recovery、111 authoring-unit/current Web surface one-to-one reconciliation 与 material-independence review，之后才能分配 genuine N-series 并推导 actual canonical page_count。"
   },
   "current_complete_integrated_web_surface_count": {
     "value": null,
     "status": "NOT_YET_REGISTERED",
-    "reason": "v1.11 的 112-surface carrier 已被后续章节 currentization / production 与 CH14 multi-surface expansion 超越；必须重建 by-chapter Web surface register 后才能报告当前完整 Web carrier 数量。"
+    "reason": "当前 public producer = 18-section direct design-work reading + bottom-right supplement；该 presentation architecture 与 protected PAGE identities 不是同一计数维度。v1.11 的 112-surface carrier 仍是 stale downstream snapshot。"
+  },
+  "protected_page_register_current": {
+    "status": "LOCKED_IDENTITIES / SOURCE_RECOVERY_OPEN",
+    "path": "page-register-current/C04_WEB_PROTECTED_PAGE_REGISTER_P001_P052_CURRENT.csv",
+    "identity_count": 52,
+    "recovered_legacy_label_count": 25,
+    "unrecovered_legacy_label_count": 27,
+    "public_pagination_authority": false,
+    "final_page_count_authority": false,
+    "source_lineage": "closed legacy-remap PR #323 + C04 Web v1.8 contact evidence, currentized against C04_CURRENT / active public 18-section producer boundary",
+    "open_identity_holds": ["P006 semantics", "P011/P022 App Intro role split", "P023 scene identity", "P033/P036 technical object identity", "P045 scene/technical ownership"]
   },
   "counts": {
     "chapter_count": {"value": 20, "meaning": "CH00-CH19 organisational chapter containers", "is_page_count": false, "forbidden_interpretation": "项目有20页"},
-    "protected_legacy_page_id_count": {"value": 52, "meaning": "C04-WEB-P001...P052 protected baseline PAGE identities used for migration/mapping", "is_final_page_count": false, "forbidden_interpretation": "项目最终有52页"},
+    "protected_legacy_page_id_count": {"value": 52, "meaning": "C04-WEB-P001...P052 protected internal migration PAGE identities; exact identity set is now currentized, while source recovery remains open", "is_final_page_count": false, "is_public_page_count": false, "forbidden_interpretation": "项目最终/公开有52页"},
     "base_authoring_unit_count": {"value": 111, "derivation": "70(v0.1) + 41(v0.2)", "meaning": "chapter-content authoring inventory baseline; later chapter currentization/production may expand presentation surfaces without changing this historical authored-inventory arithmetic", "is_page_count": false, "forbidden_interpretation": "项目有111页"},
     "cross_chapter_authoring_candidate_count": {"value": 11, "meaning": "unregistered authoring candidates requiring PAGE REGISTER mapping", "is_page_count": false},
     "prior_expansion_candidate_count": {"value": 28, "meaning": "previous expansion candidates requiring mapping/production before page identity", "is_page_count": false},
-    "historical_v1_11_web_snapshot_surface_count": {"value": 112, "carrier": "C04 Web v1.11", "status": "STALE DOWNSTREAM SNAPSHOT / PRE-LATEST CHAPTER EXPANSION", "meaning": "historical implemented presentation surfaces; not the current complete integrated Web count and not canonical page_count", "is_current_complete_web_count": false, "is_canonical_page_count": false, "forbidden_interpretation": "当前Web就是112页或112个完整surface"}
+    "historical_v1_11_web_snapshot_surface_count": {"value": 112, "carrier": "C04 Web v1.11", "status": "STALE DOWNSTREAM SNAPSHOT / PRE-LATEST CHAPTER EXPANSION", "meaning": "historical implemented presentation surfaces; not current public structure, not current complete integrated Web count and not canonical page_count", "is_current_complete_web_count": false, "is_canonical_page_count": false, "forbidden_interpretation": "当前Web就是112页或112个完整surface"},
+    "current_public_web_section_count": {"value": 18, "carrier": "PR #353 producer structure", "meaning": "visitor-facing reading sections in the current producer architecture; supplement does not mechanically increase this count", "is_canonical_page_count": false, "is_internal_migration_page_count": false, "forbidden_interpretation": "项目最终只有18个 canonical pages"}
   },
   "ch14_multi_surface_semantics": {
     "chapter": "CH14 品牌与视觉识别系统",
     "authored_base_units": {"count": 8, "units": ["P01","P02","P03","P04","P05","P06","P07","P08"], "source": "chapter-content-sync/v0.1/CH14_BRAND-VISUAL-IDENTITY.md", "is_web_surface_count": false},
     "main_source_lock_baseline": {"units": ["P01","P02","P03","P04","P05","P06","P07"], "rule": "P OWNER != ONE PAGE"},
-    "known_multi_surface_evidence": [{"owner": "P07", "surface_count": 12, "meaning": "12 long-form brand-manual spec surfaces + scoped Web fragment", "canonical_page_identity": "PAGE_REGISTER_PENDING"}],
+    "known_multi_surface_evidence": [{"owner": "P07", "surface_count": 12, "meaning": "12 long-form brand-manual spec surfaces + scoped Web fragment", "canonical_page_identity": "MATERIAL_INDEPENDENCE_REVIEW_PENDING"}],
     "p08_state": "AUTHORED BASE UNIT / DEDICATED SOURCE-MATERIALIZATION MAPPING OPEN",
     "stone_seal_v1_0": {"pr": 238, "known_preview_surface_count": 6, "state": "DRAFT PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION", "auto_count_as_current_page": false},
     "expansion_candidates": ["Brand Architecture","Naming System","Editorial System","Motion Identity","Photography Direction","Illustration / Diagram Direction","Material / Print"],
@@ -37,22 +49,27 @@
     "AUTHORING UNIT != WEB SURFACE",
     "P OWNER != ONE PAGE",
     "WEB SURFACE != CANONICAL PAGE",
+    "PUBLIC SECTION != PROTECTED MIGRATION PAGE IDENTITY",
     "PROTECTED BASELINE PAGE ID COUNT != FINAL PAGE COUNT",
+    "18 is the current producer reading-section count, not canonical page_count.",
+    "52 is the protected internal migration identity count, not public or final page_count.",
     "112 is a historical v1.11 snapshot, not the current complete Web carrier count.",
-    "Never answer 20, 52, 111 or 112 as the current final project page count.",
-    "When asked current Web page/surface count, answer current_complete_integrated_web_surface_count.status first; do not substitute the stale 112 snapshot.",
+    "Never answer 18, 20, 52, 111 or 112 as the current final project page count.",
+    "When asked current public Web structure, answer 18-section direct design-work reading + bottom-right supplement unless superseded by newer explicit Current authority.",
+    "When asked current Web page/surface count, answer current_complete_integrated_web_surface_count.status first; do not substitute 18 or the stale 112 snapshot.",
     "When asked project page count, answer canonical_page_count.status first, then explain other counts by semantic role.",
     "Newer file timestamp alone does not override this contract; only explicit newer Current Authority / PAGE REGISTER / Count Contract may supersede it."
   ],
   "required_resolution_sequence": [
-    "lock C04-WEB-P001...P052 identities",
-    "build exact 52-row PAGE REGISTER",
-    "rebuild by-chapter current Web surface register including current chapter production/currentization and CH14 multi-surface inventory",
-    "map v0.1 + v0.2 authoring inventory one-to-one",
-    "classify MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT",
+    "LOCKED: C04-WEB-P001...P052 identity set is currentized as internal migration register",
+    "OPEN: recover 27 missing legacy labels and resolve listed low-confidence/role/object holds",
+    "rebuild by-chapter current Web surface register against the current 18-section producer plus current chapter production/currentization and CH14 multi-surface inventory",
+    "reconcile v0.1 + v0.2 authoring inventory one-to-one with protected identities/current surfaces",
+    "classify MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT without default MERGE",
+    "run material-independence review for NEW candidates",
     "allocate C04-WEB-Nxxx only to materially new independent PAGE units",
-    "derive actual canonical page_count from registered PAGE identities",
-    "run finished-pixel readback and independent Design Crit separately"
+    "derive actual canonical page_count from registered canonical PAGE identities",
+    "run runtime/browser/finished-pixel readback and independent Design Crit separately"
   ],
   "does_not_prove": ["finished-pixel Design PASS", "browser/accessibility PASS", "FIELD validation", "engineering approval", "project Promotion"],
   "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
