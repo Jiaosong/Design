@@ -99,7 +99,7 @@ button{font:inherit}
 .system-caption{width:min(1350px,100%);margin:0 auto;padding:18px 0;border-top:1px solid var(--line-dark);font:500 12px/1.7 var(--sans);color:#a9bbb5}
 .digital-stage{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(300px,460px) 1fr;gap:72px;align-items:center}
 .phone{margin:0;padding:10px;background:#111a1c;border-radius:42px;box-shadow:0 35px 90px rgba(20,30,27,.24)}
-.phone img{display:block;width:100%;border-radius:34px;object-fit:contain;background:#111}
+.phone img{display:block;width:100%;border-radius:34px;object-fit:contain;background:#111}.phone .app-mybook-carrier{display:block;width:100%;height:min(760px,78vh);min-height:620px;border:0;border-radius:34px;background:#f2efe6}
 .digital-copy{display:grid;gap:32px}.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
 .feature-grid article{min-height:180px;padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .feature-grid span{font:800 9px var(--mono);color:var(--water)}.feature-grid b{display:block;margin:38px 0 7px;font:600 21px var(--serif)}.feature-grid p{margin:0;font:500 11px/1.65 var(--sans);color:var(--muted)}
