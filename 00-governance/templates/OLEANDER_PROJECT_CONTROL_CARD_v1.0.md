@@ -32,6 +32,46 @@
 - `KNOWN_ASSUMPTIONS`:
 - `HANDOFF_STATE`: NONE / READY / ACCEPTED / RETURNED_REVISE / RETURNED_HOLD / CLOSED
 
+## Existing-project repair execution integrity
+
+Use only when the same logical object is being continued/repaired under `oleander-design-process/EXISTING_PROJECT_REPAIR_EXTENSION.md`.
+
+- `EXECUTION_MODE`: STANDARD / EXISTING_PROJECT_REPAIR
+- `BEST_EXISTING_ARTIFACT_ID`:
+- `BEST_EXISTING_REF`:
+- `ROLLBACK_REF`:
+- `PRESERVE_DIMENSIONS`:
+- `RUN_ID`:
+- `PRODUCER_OWNER`:
+- `SKILL_REFS`:
+- `RUN_INPUTS`: artifact_id + digest + location
+- `RUN_OUTPUTS`: artifact_id + digest + location
+- `ARTIFACT_DELTA_STATE`: NONE / MATERIAL
+- `CHANGED_ARTIFACT_IDS`:
+- `AUTHORITY_BINDING_CHANGED`: true / false
+- `READBACK_STATE`: NOT_RUN / PASS / FAIL / HOLD
+- `READBACK_MEDIUM`:
+- `READBACK_ARTIFACT_IDS`:
+- `DEPENDENCY_EDGES`: input_artifact_id + current_input_digest + consumed_input_digest + output_artifact_id + output_status
+- `CHANGE_IMPACT`: artifact_id + DIRECT/INDIRECT + required action + OPEN/DONE/HOLD/N_A
+- `RECEIVER_MASTER_REF`:
+
+Fail-closed transition rule:
+
+`HANDOFF READY|ACCEPTED|CLOSED → MATERIAL DELTA + RUN OUTPUT + REAL READBACK PASS + VALID OWNER TRANSFER + NEXT CHECK`
+
+Stale rule:
+
+`CURRENT INPUT DIGEST ≠ CONSUMED INPUT DIGEST → OUTPUT ≠ CURRENT`
+
+Use `STALE / REGEN_REQUIRED / RETEST_REQUIRED / HOLD` until the dependency is regenerated/retested or explicitly held.
+
+Closure rule:
+
+`CLOSED` is forbidden while required change-impact items or dependency edges remain unresolved.
+
+This block records execution integrity only. It does not grant Design KEEP, technical PASS, browser PASS, Field PASS or release authority.
+
 ## Project Voice Profile
 
 - `SPEAKER`:

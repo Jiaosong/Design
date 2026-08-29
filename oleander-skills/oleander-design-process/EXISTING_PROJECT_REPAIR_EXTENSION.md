@@ -266,3 +266,90 @@ Blockers:
 Pass condition:
 
 The existing project becomes materially stronger while preserving authority, object identity, mature design value, independent knowledge progress and a verifiable owner-by-owner repair trail.
+
+## 14. Execution Integrity machine gate
+
+For a Current JSON Control Card that executes this extension, declare:
+
+`execution_mode = EXISTING_PROJECT_REPAIR`
+
+This declaration activates the existing Control Plane execution-integrity gate. It does not create a new project process, new registry or new Skill.
+
+The gate borrows mechanisms rather than external systems:
+
+- **fail-closed transition** — owner/state advancement requires the latest declared repair evidence to satisfy the gate;
+- **explicit run lineage** — record producer owner, Skill references, exact input artifacts and output artifacts for the repair run;
+- **dependency freshness** — record the digest consumed by a derivative and the Current digest of its input; a mismatch may not remain `CURRENT`;
+- **artifact provenance** — material outputs are tied to the run and to the exact inputs that produced them;
+- **baseline/change control** — identify `BEST EXISTING`, the rollback reference, protected dimensions, direct/indirect impacts and required regeneration/retest.
+
+Machine fields live inside the existing Control Card v0.3 optional `execution_integrity` object:
+
+`baseline → run_provenance → artifact_delta → readback → handoff → dependency_edges → change_impact`
+
+### 14.1 Baseline / rollback
+
+Before repair, record:
+
+- `best_existing_artifact_id`;
+- `best_existing_ref`;
+- `rollback_ref`;
+- `preserve_dimensions` — the project/design dimensions that must not regress merely because the new artifact is newer.
+
+The baseline artifact must also appear as an explicit input to the run provenance.
+
+### 14.2 Run / input / output provenance
+
+Record:
+
+`RUN_ID → PRODUCER_OWNER → SKILL_REFS → INPUT ARTIFACTS → OUTPUT ARTIFACTS`
+
+This is lineage, not proof of quality. A complete provenance record still requires real readback and downstream review.
+
+### 14.3 Material-delta transition gate
+
+`handoff READY / ACCEPTED / CLOSED` requires:
+
+1. `artifact_delta.state = MATERIAL`;
+2. a changed artifact or authority binding delta;
+3. changed artifact IDs represented in run outputs;
+4. `readback.state = PASS` in a real medium;
+5. valid `from_owner / to_owner`;
+6. an explicit next check;
+7. for accepted/closed handoff, a receiver master reference.
+
+`CI GREEN + NO MATERIAL ARTIFACT DELTA = NO HANDOFF`.
+
+### 14.4 Stale derivative propagation
+
+For any material dependency that can be hash-bound, record:
+
+`INPUT ARTIFACT → CURRENT INPUT DIGEST → CONSUMED INPUT DIGEST → OUTPUT ARTIFACT → OUTPUT STATUS`
+
+If:
+
+`CURRENT INPUT DIGEST ≠ CONSUMED INPUT DIGEST`
+
+then the output may not remain `CURRENT`; it must be explicitly classified as one of:
+
+`STALE / REGEN_REQUIRED / RETEST_REQUIRED / HOLD`.
+
+This is deliberately explicit rather than automatic guesswork: only the project knows which input/output relation is materially causal.
+
+### 14.5 Change-impact closure
+
+Each direct or indirect affected artifact records:
+
+`ARTIFACT → DIRECT|INDIRECT → NONE|REVIEW|REGENERATE|RETEST → OPEN|DONE|HOLD|N_A`
+
+A repair handoff cannot become `CLOSED` while required impact items remain `OPEN/HOLD`, or while dependency edges remain stale/retest-required.
+
+### 14.6 Boundary
+
+The machine gate proves execution-record consistency only.
+
+It does **not** prove:
+
+`DESIGN KEEP / PROFESSIONAL FINISH / BROWSER PASS / ENGINEERING PASS / FIELD PASS / RELEASE READY`.
+
+Those remain with the existing specialist owner, actual medium readback and OLEANDER Artifact Review.
