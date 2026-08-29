@@ -64,7 +64,15 @@ Rules:
 - do not reopen locked variables merely because a new form is attractive;
 - if the source cannot be located, route to asset/source recovery before reconstructing from memory.
 
-**Phase exit:** the object, authority, question and allowed design freedom are explicit.
+Use a **Variable Budget** for each substantial round:
+
+`PRIMARY VARIABLE FAMILY + NECESSARY DEPENDENT VARIABLES + LOCKED VARIABLES`
+
+Primary families may include `Parameter / Relation / Geometry / Topology / Material-CMF / Interaction-State / Information-Hierarchy / Narrative-Sequence`. Change one primary family by default. A secondary change is allowed only when it is a necessary consequence of the primary change and is recorded as such.
+
+If several unrelated families change at once, the comparison may still produce a design candidate, but it cannot honestly claim which change caused the improvement. Split the next test.
+
+**Phase exit:** the object, authority, question, allowed design freedom and current Variable Budget are explicit.
 
 ### 1 — Frame the design goal before form
 
@@ -158,7 +166,17 @@ Include:
 - one option that attacks the most literal interpretation;
 - at least one adverse-condition or deletion-test candidate where useful.
 
-**Phase exit:** the option set is broad enough to expose the real trade-off, not only stylistic preference.
+Run an **Option Space Coverage** check. For each candidate record:
+
+`CONCEPT FAMILY → MATERIAL STRUCTURAL DELTA → MAIN TRADE-OFF → WHAT WOULD FALSIFY IT`
+
+Use the **concept-family test**:
+
+`CAN OPTION A BECOME OPTION B THROUGH SMALL PARAMETER TUNING WITHOUT CHANGING FUNCTIONAL ALLOCATION / TOPOLOGY / INTERFACE PERMISSION / CAUSAL MECHANISM?`
+
+If yes, they are usually variants within one concept family. Do not count parameter spread as architectural diversity. Coverage is sufficient when the option set exposes the material trade-off axes relevant to the Decision Question; no fixed concept count is required.
+
+**Phase exit:** the option set is broad enough to expose the real trade-off, not only stylistic preference, and concept-family duplication is visible.
 
 ### 5 — Converge without score theatre
 
@@ -197,6 +215,23 @@ Representation may be:
 - section / massing / CAD/Blender model;
 - data/map/interactive artifact.
 
+Use the **Prototype Fidelity Matrix**:
+
+`UNKNOWN TYPE → MINIMUM VALID TEST MEDIUM → CLAIM LIMIT`
+
+Typical routing:
+- hierarchy / proportion / composition → editable SVG/layout at target reading size;
+- adjacency / path / threshold / section relation → plan + section and, when needed, simple 3D;
+- interaction / state / Return / interruption → executable interaction prototype or real browser/runtime;
+- motion timing → runtime motion, not keyframe screenshots alone;
+- material / texture / grip / tactile behavior → real sample or physical mockup;
+- assembly / disassembly / repair access → physical/CAD assembly with dependency sequence;
+- packaging opening / fold / lock → dieline + physical mockup where the behavior matters;
+- print color / small type / finishing → controlled proof at intended process/scale;
+- field / structural / engineering / safety truth → specialist evidence; a design prototype is insufficient.
+
+A representation is invalid for the current test when its medium cannot expose the claimed failure mode. Do not use high visual fidelity to compensate for the wrong test medium.
+
 Rules:
 - use Required Native Output First;
 - preserve editable master identity;
@@ -218,6 +253,16 @@ Attack at the correct layer:
 - alternate actor / maintenance / accessibility / service route;
 - cross-view consistency: plan↔section, state↔interface, model↔drawing;
 - reference fidelity when the task is explicitly reconstruction.
+
+Use two orthogonal readback sweeps when applicable:
+
+`WHOLE → REGION → OBJECT → DETAIL`
+
+and
+
+`FIRST READ → SECOND READ → NEAR READ → USE READ`
+
+A Whole-level PASS does not excuse a broken detail, and a polished detail does not repair a weak whole. Static first-read quality does not prove real use sequence.
 
 Separate:
 - Machine QA;
@@ -289,6 +334,12 @@ When a design candidate is ready for PRESENTATION, hand off:
 - target medium / reading distance / viewport / sequence;
 - what presentation must not imply.
 
+Also issue a compact **Design Continuity Contract** for the relations that must survive presentation:
+
+`PRIMARY RELATIONSHIP → DOMINANT HIERARCHY → KEY PROPORTION / GEOMETRY → SPATIAL OR INTERACTION SEQUENCE → EVIDENCE HIERARCHY → MATERIAL/CMF ROLE WHEN MATERIAL → ALLOWED PRESENTATION DELTA`
+
+PRESENTATION may improve crop, grid, pacing, typography, image treatment and media-specific expression inside the allowed delta. It must not silently re-author locked geometry, route topology, interaction priority, evidence order or product/spatial relation simply to fit a layout.
+
 Route to the minimum specialist owner set:
 `oleander-visual-design / oleander-image-art-direction / oleander-story-and-board / oleander-web-ui / oleander-motion / oleander-data-viz`.
 
@@ -300,7 +351,19 @@ Presentation may expose a design weakness. If so, return to the correct design l
 
 Release/QC remains downstream. Persist only when triggered by the Control Plane.
 
-Before a design decision becomes durable, record:
+Before a design decision becomes durable, preserve a compact **Design Decision Record**:
+
+`DECISION → WHY → SUPPORTING EVIDENCE → REJECTED ALTERNATIVES → LOCKED VARIABLES → REMAINING UNKNOWN → REOPEN TRIGGER → EDITABLE MASTER`
+
+This is not a second governance receipt. It prevents a later revision from unknowingly reopening or reversing a consequential design decision.
+
+For any material change, run **Change Propagation** before declaring the repair local:
+
+`CHANGE → AFFECTED OBJECTS / VIEWS / STATES → AUTHORITY IMPACT → REQUIRED RETEST → DERIVATIVES TO REGENERATE → STATUS`
+
+Check, as applicable, model/drawing, plan/section, UI states, route, board, web, video, package, evidence captions and validation receipts. A local edit is not closed if dependent artifacts still communicate the previous decision.
+
+Before a design decision becomes durable, also record:
 - chosen option and rejected alternatives;
 - Locked / Open variables;
 - rationale and supporting evidence;
@@ -340,6 +403,22 @@ At every substantial round:
 - do not change several unrelated variables if the result cannot be attributed.
 
 A/B/C comparison should keep fixed conditions explicit.
+
+## Process health detectors
+
+These are anomaly signals, not performance KPIs and not promotion scores. Use them to decide when the process itself needs repair:
+
+- repeated REVISE on the same Decision Question;
+- too many simultaneously Open unrelated variable families;
+- unverified assumptions that survive into high fidelity;
+- decisions repeatedly reopened without a new trigger/evidence;
+- artifact exists but Actual Readback is missing;
+- validation finding has no Design Disposition;
+- presentation changes a locked relation or geometry;
+- downstream derivative remains stale after an upstream design change;
+- option set contains several cosmetic variants but only one concept family.
+
+A detector firing does not automatically reject the design. It requires the correct owner to inspect the cause.
 
 ## Reference decomposition gate
 
@@ -388,7 +467,12 @@ Missing proof remains missing proof even when a composition would benefit from m
 17. Presentation polish cannot override a weak design relation; route back to DESIGN.
 18. Validation findings cannot silently overwrite the design master; use controlled return/disposition.
 19. Preserve rejected alternatives and reopen triggers for consequential decisions.
-20. `PROCESS PASS ≠ DESIGN PASS ≠ VALIDATION PASS ≠ PRESENTATION PASS ≠ FIELD PASS`.
+20. Use a Variable Budget so unrelated simultaneous changes do not masquerade as causal evidence.
+21. Treat options in the same concept family as variants, not independent concept-space coverage.
+22. Match prototype medium to the unknown being tested; wrong-medium fidelity is not proof.
+23. Preserve the Design Continuity Contract across presentation handoff.
+24. Propagate material changes through dependent objects and retest affected views/states before closure.
+25. `PROCESS PASS ≠ DESIGN PASS ≠ VALIDATION PASS ≠ PRESENTATION PASS ≠ FIELD PASS`.
 
 ## Semantic-dimension-to-form gate
 
