@@ -44,7 +44,8 @@ Use only the minimum relevant extension:
 - `PHYSICAL_PRODUCT_PHASE_GATES_EXTENSION.md` — physical products whose visual form depends on payload/cavity, human interface, mechanism, assembly or CMF sequencing;
 - `PRODUCT_FORM_AFFORDANCE_SERVICEABILITY_EXTENSION.md` — physical form whose operation cues, body/contact relation, construction truth, serviceability or repair path need explicit review;
 - `PACKAGING_STRUCTURE_DIELINE_EXTENSION.md` — packaging where panel logic, cut/crease/glue/lock, opening, assembly, face hierarchy or production geometry materially govern the design;
-- `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences.
+- `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences;
+- `EXISTING_PROJECT_REPAIR_EXTENSION.md` — already-active projects where a Current/mature artifact must be repaired without reopening unrelated design variables; preserves same-object identity, Best Existing First, minimum repair delta, Artifact Delta Gate, controlled owner handoff and independent KNOWLEDGE progress.
 
 Extensions refine the current object. They do not create a second project process and do not replace manufacturing, ergonomics, code, engineering or human-test authority.
 
