@@ -1,0 +1,13 @@
+{
+  "fixture": "A_INCOMPLETE_FAILURE_CLAIM",
+  "source": "HSE ED 2-2015",
+  "observed": [
+    "fracture/cracking image referenced",
+    "generic static stress pass claimed by exercise"
+  ],
+  "material_process_evidence": null,
+  "hardness_evidence": null,
+  "heat_treatment_evidence": null,
+  "claim": "ROOT_CAUSE_PROVEN",
+  "exercise_assumption": "generic static stress pass is an intentionally insufficient surrogate; not a factual incident datum"
+}
