@@ -1,0 +1,158 @@
+{
+  "record_type": "PRESENTATION_COMPLETE_RUNTIME_DEPENDENCY_MANIFEST",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "execution_mode": "EXISTING_PROJECT_REPAIR",
+  "producer_frontier": "PR #465 / agent/c04-web-v1-12-currentize-20260830",
+  "predecessor_frontier": "PR #353 / agent/c04-web-v1-12-game-line-20260822 / f0b241ba6ca38bd563cc50443445de7ea4ef6c30",
+  "baseline_state": "PR #353 preserved as best-existing / rollback provenance; no live mutation after Current cutover",
+  "observed_at": "2026-08-30",
+  "method": "read successor index.html + existing PR353 complete manifest + Current repository carriers; preserve exact authority boundaries; classify repo-native Current carrier separately from literal assets/* runtime files",
+  "material_delta": "Successor PR #465 currentizes the stale producer frontier onto latest main and replaces the obsolete unknown memory_journal_crop.png dependency with the existing Current editable M01_qingjiang_journal_v1_2.svg carrier in both consumer positions. No crop or substitute image was invented.",
+  "dependency_count": 16,
+  "dependencies": [
+    {
+      "consumer_ref": "assets/hero_qingjiang.jpg",
+      "role": "Hero / original Qingjiang landscape / supplement source",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_GITHUB_BINARY_UPLOAD_BLOCKED",
+      "source_authority": "QJ-D v1.1 / 01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_file_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "runtime_sha256": "0a0b7d367aa1af2c45fb1bc9b87445312bd4cbfb4b02aef0e36b9cdc763afb94",
+      "runtime_bytes": 262725,
+      "note": "Exact derivative bytes regenerated and hash-read back locally; current GitHub connector has no local-binary file upload parameter. Do not replace with external proxy or different compression."
+    },
+    {
+      "consumer_ref": "assets/route03_locked_current.svg",
+      "role": "Current route relation",
+      "binding_state": "BOUND_IN_PR",
+      "source_authority": "ROUTE-03 locked current package",
+      "git_blob_sha": "a69b5cf529fb605169847cfe926b5dc0a508800a"
+    },
+    {
+      "consumer_ref": "assets/r06_qingjiang.jpg",
+      "role": "R06 landscape-first scene / source constraint",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_GITHUB_BINARY_UPLOAD_BLOCKED",
+      "source_authority": "QJ-D v1.1 / 02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_file_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "runtime_sha256": "4019b174755e81c370dcf5bd8968ac995ed3a5d3c15edd0431fe50b1f963ba83",
+      "runtime_bytes": 344188,
+      "truth_boundary": "KEEP WITH HOLD / FIELD OPEN",
+      "note": "Exact derivative bytes regenerated and hash-read back locally; keep runtime HOLD until exact bytes are committed."
+    },
+    {
+      "consumer_ref": "assets/r13_passage_sequence.png",
+      "role": "R13 passage sequence",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_GITHUB_BINARY_UPLOAD_BLOCKED",
+      "source_authority": "QJ-D v1.1 / QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+      "source_file_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+      "source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "runtime_sha256": "45fb5824ad7d88dad34b363288608248885311eae987511bc3e46838c6934ef2",
+      "runtime_bytes": 478558,
+      "truth_boundary": "REMOTE SPATIAL CONCEPT / NOT SITE PHOTO",
+      "note": "Exact derivative bytes regenerated and hash-read back locally; keep runtime HOLD until exact bytes are committed."
+    },
+    {
+      "consumer_ref": "assets/app_mybook.png",
+      "role": "CH11 MY BOOK / digital memory hero",
+      "binding_state": "SOURCE_BYTES_HOLD",
+      "source_authority": "Current approved App v1.6 MY BOOK source pixels required",
+      "canonical_source_filename": "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png",
+      "forbidden_substitutes": ["v3 MY BOOK capture", "downsampled embed", "old Web capture", "redraw", "AI substitute"]
+    },
+    {
+      "consumer_ref": "../physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg",
+      "replaces_obsolete_ref": "assets/memory_journal_crop.png",
+      "consumer_positions": 2,
+      "role": "M01 清江旅记 / paper memory hero",
+      "binding_state": "BOUND_TO_REPO_CURRENT_CARRIER",
+      "source_authority": "C04 physical-memory-currentization-v1.2 / editable Current M01 paper-memory interface",
+      "git_blob_sha": "f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5",
+      "source_dimensions": "1600×1000 SVG viewBox",
+      "truth_boundary": "PROTOTYPE / EDITABLE VECTOR / NO COMPLETION SCORE",
+      "repair_reason": "The previous standalone crop identity was unresolved. The Current SVG is a stronger repo-native carrier and can be consumed uncropped, so no new crop child identity is needed."
+    },
+    {
+      "consumer_ref": "assets/fluid_rest_object.png",
+      "role": "Physical / Fluid Rest 3D object",
+      "binding_state": "CHILD_IDENTITY_HOLD",
+      "source_authority": "ODB-03B parent selected for public spatial/body view; actual child figure identity still open",
+      "forbidden_substitutes": ["whole board without child identity", "arbitrary crop", "AI/redraw/model substitute"],
+      "next_action": "figure-level extraction/readback + child hash + ledger registration before Web runtime binding"
+    },
+    {
+      "consumer_ref": "assets/fluid_v26_body_posture.png",
+      "role": "Physical body-posture support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "next_action": "locate exact v26 source bytes and preserve body/geometry truth boundary"
+    },
+    {
+      "consumer_ref": "assets/fluid_v26_transverse.svg",
+      "role": "Fluid Rest transverse section support",
+      "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
+      "next_action": "locate exact editable SVG/current technical carrier; technical dimensions remain VALIDATION-owned"
+    },
+    {
+      "consumer_ref": "assets/culture_journey.png",
+      "role": "Brand + journey visual support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "next_action": "locate exact Current visual carrier and verify it is not a legacy/superseded board capture"
+    },
+    {
+      "consumer_ref": "assets/technical_focus_v2.svg",
+      "role": "Technical relation overview / AI+3D readback support",
+      "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
+      "next_action": "resolve exact editable SVG/current technical source before binding"
+    },
+    {
+      "consumer_ref": "assets/technical_focus_crop.svg",
+      "role": "Cross-river technical relation crop",
+      "binding_state": "SOURCE_AND_CROP_AUTHORITY_OPEN",
+      "next_action": "resolve parent source plus explicit crop identity; no convenience crop"
+    },
+    {
+      "consumer_ref": "assets/r06_general_assembly_v11.svg",
+      "role": "R06 general assembly / drawing proof",
+      "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
+      "next_action": "locate exact v1.1 editable assembly source; no redraw from screenshots"
+    },
+    {
+      "consumer_ref": "assets/r06_detail_atlas_v11.svg",
+      "role": "R06 detail atlas / maintenance proof",
+      "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
+      "next_action": "locate exact v1.1 editable detail source; FIELD/engineering remain open"
+    },
+    {
+      "consumer_ref": "assets/r06_technical.png",
+      "role": "R06 spatial technical proof",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "next_action": "locate exact Current technical image identity; no model/AI/old screenshot substitute"
+    },
+    {
+      "consumer_ref": "assets/return_qingjiang.jpg",
+      "role": "Final Return landscape carrier",
+      "binding_state": "SOURCE_IDENTITY_AND_BYTES_HOLD",
+      "source_authority": "J05 Return_Retreat = KEEP / MAIN_CANDIDATE; CH09 Return = LANDSCAPE / SIGNAGE / PAPER / HUMAN / DIGITAL redundancy",
+      "forbidden_substitutes": ["Hero", "R13", "generic Qingjiang photo", "old Web screenshot", "AI image"]
+    }
+  ],
+  "closure_summary": {
+    "bound_repo_dependencies": 2,
+    "exact_runtime_derivative_ready_but_binary_upload_blocked": 3,
+    "source_bytes_or_identity_hold": 2,
+    "exact_source_child_or_crop_open": 9,
+    "unresolved_dependency_count": 14,
+    "static_gate": "BLOCKED"
+  },
+  "readback": "Successor index.html readback shows both former memory_journal_crop.png consumer positions now point to the repo Current M01 SVG. Public section count remains 18 and no new public page-count concept was introduced. The other unresolved dependencies remain explicitly unbound/HOLD.",
+  "boundary": [
+    "CURRENTIZED FRONTIER != ASSET INTEGRITY PASS",
+    "REPO CURRENT CARRIER BOUND != DESIGN KEEP",
+    "LOCAL EXACT DERIVATIVE BYTES != GITHUB RUNTIME BOUND",
+    "SOURCE IDENTITY OPEN != PERMISSION TO SUBSTITUTE",
+    "STATIC PASS REQUIRED BEFORE VALIDATION HANDOFF",
+    "FIELD / ENGINEERING / ACCESSIBILITY REMAIN OPEN"
+  ],
+  "handoff_state": "NOT READY FOR VALIDATION / PRESENTATION RETAINS OWNER"
+}
