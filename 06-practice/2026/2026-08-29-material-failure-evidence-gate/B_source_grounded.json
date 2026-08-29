@@ -1,0 +1,20 @@
+{
+  "fixture": "B_SOURCE_GROUNDED_INCIDENT_REPRODUCTION",
+  "source_uri": "https://www.hse.gov.uk/safetybulletins/catastrophic-failure-of-a-techlok-clamp.htm",
+  "bulletin": "ED 2-2015",
+  "issue_date": "2015-09-18",
+  "incident_scope": "specific small-diameter Techlok/Destec clamp incident family described by HSE",
+  "source_facts": {
+    "failure_mechanism": "hydrogen cracking",
+    "underlying_condition": "high hardness reported by HSE in excess of 48-50 HRC",
+    "manufacturing_factor": "poor heat treatment",
+    "quality_control_factor": "prior to 2010 not subject to 100% hardness testing",
+    "material": "AISI 4140 alloy steel",
+    "verification_methods": [
+      "supplier material-property certification",
+      "appropriate NDT inspection",
+      "hardness testing"
+    ]
+  },
+  "claim": "SOURCE_BOUNDED_ROOT_CAUSE_REPRODUCTION_ONLY"
+}
