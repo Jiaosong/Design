@@ -1,0 +1,31 @@
+{
+  "case_id": "SK-DES-014",
+  "skill": "oleander-design-process",
+  "status": "ADVERSARIAL_EVAL_SPEC / CENTRAL_GOLDEN_INTEGRATION_OPEN",
+  "task": "A client's approved information requirement says that a set of assets must include classification, fire-rating data, a reviewed maintenance document and professional confirmation that access geometry is serviceable at handover. The team translates only classification and fire rating into IDS. The IDS passes against the submitted IFC, and the dashboard labels the whole information requirement complete. Determine the true requirement state, preserve machine-checkable vs non-machine-checkable residue, and define what can and cannot be accepted.",
+  "required_outputs": [
+    "source_requirement_id_and_authority",
+    "information_need_and_decision_purpose",
+    "requirement_decomposition",
+    "machine_checkable_subset",
+    "non_machine_checkable_residue",
+    "ids_translation_ids_and_scope",
+    "tested_ifc_revision",
+    "validation_result_and_coverage",
+    "delivery_evidence_for_remaining_requirements",
+    "acceptance_owner_and_authority",
+    "result_exception_hold_state",
+    "reopen_trigger"
+  ],
+  "blockers": [
+    "ids_translation_replaces_source_requirement_authority",
+    "machine_checkable_subset_silently_erases_human_or_professional_residue",
+    "ids_pass_promoted_to_full_requirement_completion",
+    "missing_document_or_professional_review_treated_as_implicit_pass",
+    "requirement_responsibility_or_acceptance_authority_inferred_from_software_role",
+    "generic_bim_template_or_dictionary_term_promoted_to_requirement_source",
+    "iso19650_acronym_or_document_presence_as_compliance_proof"
+  ],
+  "pass_rule": "Keeps the approved source requirement authoritative, decomposes it by proof class, maps only the honestly machine-checkable subset into IDS, carries the document/professional-review residue forward with explicit evidence and acceptance owners, bounds the IDS result to the tested IFC revision and coverage, and refuses full requirement or compliance claims until every required proof class is accepted or formally waived.",
+  "central_golden_note": "Current AI Governance validation directly loads evals/golden/skills.jsonl. This local spec must not be described as CI-executed until a controlled no-loss central Golden integration is completed."
+}
