@@ -77,9 +77,9 @@
       "consumer_ref": "assets/fluid_rest_object.png",
       "role": "Physical / Fluid Rest 3D object",
       "binding_state": "CHILD_IDENTITY_HOLD",
-      "source_authority": "ODB-03B parent selected for public spatial/body view; actual child figure identity still open",
-      "forbidden_substitutes": ["whole board without child identity", "arbitrary crop", "AI/redraw/model substitute"],
-      "next_action": "figure-level extraction/readback + child hash + ledger registration before Web runtime binding"
+      "source_authority": "ODB-03A/B parent source family is Current and verified; S05/S06 parent/child selection remains HOLD pending actual figure-level readback",
+      "forbidden_substitutes": ["whole board without child identity", "arbitrary crop", "same-board double crop to manufacture uniqueness", "AI/redraw/model substitute"],
+      "next_action": "read actual candidate child figures first; then explicitly select/register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state before Web runtime binding"
     },
     {
       "consumer_ref": "assets/fluid_v26_body_posture.png",
