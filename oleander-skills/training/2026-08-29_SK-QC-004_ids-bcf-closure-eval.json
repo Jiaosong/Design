@@ -1,0 +1,34 @@
+{
+  "case_id": "SK-QC-004",
+  "skill": "oleander-delivery-qc",
+  "status": "ADVERSARIAL_EVAL_SPEC / CENTRAL_GOLDEN_INTEGRATION_OPEN",
+  "task": "An IDS validation fails for a required property on several IFC objects. A BCF issue is opened and the affected model is later re-exported. The coordinator changes the BCF topic to Closed after receiving the new file, but the IDS rule is never rerun, the BCF topic still points to the old model revision, and one validator report shows 0 applicable objects after an applicability change. Determine whether release/issue closure is valid and what evidence must be restored.",
+  "required_outputs": [
+    "source_requirement_and_ids_rule_identity",
+    "original_ifc_revision_and_validation_result",
+    "ids_applicability_and_coverage_evidence",
+    "bcf_issue_id_and_affected_component_context",
+    "issue_to_model_revision_link",
+    "implemented_change_evidence",
+    "updated_ifc_revision_identity",
+    "same_or_authorized_updated_rule_revalidation",
+    "zero_applicable_coverage_disposition",
+    "closure_authority_and_acceptance_evidence",
+    "unresolved_non_machine_checkable_requirements",
+    "final_release_claim_ceiling"
+  ],
+  "blockers": [
+    "bcf_closed_status_as_automatic_resolution_proof",
+    "file_resubmission_as_issue_resolution",
+    "old_model_revision_still_bound_to_issue",
+    "ids_failure_not_rerun_after_correction",
+    "zero_applicable_result_silently_treated_as_pass_when_coverage_was_expected",
+    "ids_result_without_runtime_or_tested_artifact_identity",
+    "source_requirement_lost_during_ids_to_bcf_handoff",
+    "viewpoint_or_snapshot_as_model_authority",
+    "automated_validation_as_full_release_or_iso_compliance",
+    "fixed_bcf_status_taxonomy_or_validator_output_as_universal_truth"
+  ],
+  "pass_rule": "Keeps requirement→IDS→BCF→model-revision lineage intact, treats zero-applicable coverage as a warning/HOLD until explained, binds the issue to the corrected IFC revision, reruns the same or formally authorized updated rule, verifies the original acceptance condition or authorized waiver, and refuses issue/release closure based only on BCF status or file resubmission.",
+  "central_golden_note": "Current AI Governance validation directly loads evals/golden/skills.jsonl. This local spec must not be described as CI-executed until a controlled no-loss central Golden integration is completed."
+}
