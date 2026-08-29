@@ -1,0 +1,37 @@
+{
+  "case_id": "SK-3D-006",
+  "skill": "oleander-3d-pipeline",
+  "status": "ADVERSARIAL_EVAL_SPEC / CENTRAL_GOLDEN_INTEGRATION_OPEN",
+  "task": "A field point cloud is denoised, cropped, smoothed and heavily decimated, then best-fit/ICP aligned to an existing CAD model because the original CRS/vertical reference and project transform are inconvenient. Filled mesh regions replace occlusions, fitted planes and cylinders are extracted as CAD geometry, and the imported model visually aligns in the target tool. Determine what source/derivative geometry authority survives and what must be reopened before the CAD can carry field dimensions.",
+  "required_outputs": [
+    "upstream_field_authority_and_claim_ceiling",
+    "raw_capture_and_reconstruction_ids",
+    "source_crs_datum_vertical_epoch_units",
+    "control_checkpoint_reference",
+    "registration_transform_lineage",
+    "source_object_and_derivative_chain",
+    "clean_filter_crop_decimate_repair_log",
+    "unknown_occluded_inferred_region_map",
+    "extracted_feature_authority_states",
+    "target_tool_units_axes_origin",
+    "exchange_reopen_test",
+    "source_derivative_deviation_check",
+    "known_losses",
+    "design_drawing_claim_ceiling",
+    "field_survey_professional_holds"
+  ],
+  "blockers": [
+    "point_cloud_or_mesh_as_automatic_dimension_authority",
+    "crs_or_vertical_reference_loss_hidden_by_manual_alignment",
+    "best_fit_icp_as_field_datum",
+    "cleanup_or_decimation_without_source_derivative_log",
+    "filled_occlusion_as_observed_geometry",
+    "fitted_primitive_as_direct_measurement_without_fit_evidence",
+    "target_import_visual_alignment_as_geometry_fidelity_pass",
+    "local_origin_rebase_breaks_reversible_field_transform",
+    "editable_cad_derivative_replaces_raw_capture_control_provenance",
+    "fixed_cleanup_icp_or_decimation_threshold_as_universal_truth"
+  ],
+  "pass_rule": "Keeps upstream field evidence class attached to every derivative, reconstructs the CRS/unit/origin/transform lineage, identifies evidence-changing cleanup and filled regions, classifies extracted CAD features by actual source/fit authority, performs target-tool scale/orientation/source checks and refuses dimensional or survey promotion beyond the upstream claim ceiling.",
+  "central_golden_note": "Current AI Governance validation directly loads evals/golden/skills.jsonl. This local spec must not be described as CI-executed until a controlled no-loss central Golden integration is completed."
+}
