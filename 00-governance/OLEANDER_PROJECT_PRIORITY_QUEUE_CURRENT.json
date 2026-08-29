@@ -12,11 +12,11 @@
       "current_owner": "PRESENTATION",
       "state": "ACTIVE",
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
-      "current_pr_frontier": "GitHub PR #353 / agent/c04-web-v1-12-game-line-20260822",
+      "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830",
       "next_owner": "VALIDATION",
-      "next_action": "PRESENTATION uses the PR #353 complete 16-asset runtime manifest to bind only exact-authority-ready derivatives and keeps unresolved source/crop/child items HOLD; after asset integrity closes, hand off the same OBJECT_ID to VALIDATION for real-browser reduced-motion/state-equivalence and finished-pixel readback.",
-      "updated_at": "2026-08-29T15:06:19+08:00",
-      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md; Notion C04 Current Project Materials v3.2; GitHub PR #353 head f0b241ba6ca38bd563cc50443445de7ea4ef6c30 + C04_PR353_COMPLETE_RUNTIME_ASSET_MANIFEST_20260829.json"
+      "next_action": "PRESENTATION repairs the same C04 Web object on successor PR #465, currentized from PR #353 onto latest main. Bind only exact-authority-ready/current-authority media, replace obsolete runtime-name dependencies only when stronger Current carrier identity is established, keep unresolved source/crop/child items HOLD, and hand to VALIDATION only after static asset integrity closes and real browser testing becomes meaningful.",
+      "updated_at": "2026-08-30T01:48:18+08:00",
+      "source_of_queue_decision": "User explicit C04 repair instruction; GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md + C04_PROJECT_CONTROL_CARD_CURRENT.md readback; PR #353 head f0b241ba6ca38bd563cc50443445de7ea4ef6c30 was 316 commits behind Current main; Governance successor PR #465 preserves the same OBJECT_ID and exact producer blobs on latest main."
     }
   ],
   "entry_schema": {
