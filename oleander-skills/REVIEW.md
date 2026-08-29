@@ -2,7 +2,7 @@
 
 ## Installed skills
 
-**Core framework v1.1 — 11 skills = 6 installed execution owners + 5 Candidate core skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating five duplicate task folders.
+**Core framework v1.1 — 11 skills = 7 installed execution owners + 4 Candidate core skills.** Capability skills remain organized by what they do; lifecycle ownership is provided by `SKILL_REGISTRY_v1.1.json` rather than by creating duplicate task folders.
 
 ### Existing installed skills
 
@@ -12,16 +12,18 @@
 - `oleander-story-and-board`: **PRESENTATION** primary — narrative, boards, reports, decks, VI manuals, brand stories and storyboards.
 - `oleander-delivery-qc`: **VALIDATION** primary — non-destructive release checks for packages, rights, PDFs, images, video, audio, 3D and interactive outputs.
 - `oleander-motion`: **PRESENTATION** primary — purposeful motion, state transitions, interactive/3D motion, Reduced Motion, delivery and Motion QA.
+- `oleander-design-process`: **DESIGN** primary — goal framing, evidence/unknown mapping, relation synthesis, real option-space, right-fidelity prototyping, design crit/repair, controlled Validation/PRESENTATION handoffs, decision memory, change propagation and Knowledge return.
 
-### New Candidate core skills — not installed execution owners yet
+### Candidate core skills — not installed execution owners yet
 
 - `oleander-web-ui` — **PRESENTATION** primary: repo-native HTML/CSS/JS/SVG, responsive UI, interaction/state and real-browser readback.
 - `oleander-visual-design` — **PRESENTATION** primary: graphic/brand/layout/typography/packaging-POP presentation and cross-media visual hierarchy.
 - `oleander-image-art-direction` — **PRESENTATION** primary: real-source image treatment, crop, masking, compositing, tonal hierarchy and image-text direction.
 - `oleander-technical-drawing` — **VALIDATION** primary: technical drawing hierarchy, dimension authority, DXF/SVG/PDF/CAD handoff and technical readback.
-- `oleander-design-process` — **DESIGN** primary: Research→Finding→Design Consequence, analysis diagrams, options, spatial/product/system reasoning and Validation Handoff.
 
-The five new skills enter as `CANDIDATE`; installation, Registry presence and Golden Case coverage do **not** self-promote them to installed execution owners, ACTIVE or Independent KEEP.
+`oleander-design-process` completed its promotion closure on 2026-08-29 after PR #449 merged to main (`9755e1e382a69ab933e2d5d7cb3a4af4701af91e`), existing project/cross-context Practice evidence, maintained Golden Case coverage, successful AIG-01/AIG-02/AIG-03 regression checks, and explicit user authorization to continue to default activation. Installation does **not** grant artifact KEEP, specialist authority, final presentation KEEP, field truth, manufacturing/engineering approval or human-test PASS.
+
+The remaining four core skills stay `CANDIDATE` / candidate-route states; Registry presence and Golden Case coverage do **not** self-promote them.
 
 ## Lifecycle / task relationship
 
@@ -41,15 +43,15 @@ KNOWLEDGE retains design + engineering + application knowledge development; the 
 
 ## Retrieval alias / authority routing
 
-Canonical installed-owner query: **What are the currently installed OLEANDER reusable execution skills in GitHub?** → use the six colon-formatted installed entries above and the current execution contracts.
+Canonical installed-owner query: **What are the currently installed OLEANDER reusable execution skills in GitHub?** → use the seven installed entries above and the current execution contracts.
 
-Canonical core-framework query: **What are the 11 current OLEANDER core reusable skills?** → use `SKILL_REGISTRY_v1.1.json` + this file and preserve `EXISTING_INSTALLED` versus `CANDIDATE` state.
+Canonical core-framework query: **What are the 11 current OLEANDER core reusable skills?** → use `SKILL_REGISTRY_v1.1.json` + this file and preserve each exact `installation_state`.
 
 Search aliases: `installed OLEANDER reusable skills`, `current OLEANDER skills`, `GitHub reusable skills`, `oleander skills review`, `11 core OLEANDER skills`, `OLEANDER skill registry`.
 
-`REVIEW.md` is the human-readable repository-state source. `SKILL_REGISTRY_v1.1.json` is the machine-readable routing source for the eleven-core framework, lifecycle owner, handoffs, runtime policy and capability boundaries. Individual `SKILL.md` files remain the execution contracts. Existing execution Owner Map / resolver remains authoritative for which skills are actually installed execution owners.
+`REVIEW.md` is the human-readable repository-state source. `SKILL_REGISTRY_v1.1.json` is the machine-readable routing source for the eleven-core framework, lifecycle owner, handoffs, runtime policy and capability boundaries. Individual `SKILL.md` files remain the execution contracts. Existing execution Owner Map / resolver remains authoritative for routing behavior.
 
-Installed/core-skill existence does **not** prove that a skill, prompt, model, runtime or candidate version has passed regression evaluation or promotion; promotion remains governed by AIG-01, `evals/`, actual project validation and independent review where required.
+Installed/core-skill existence does **not** prove that a skill, prompt, model, runtime or artifact has passed design-quality review. Promotion and artifact verdicts remain governed by AIG-01, `evals/`, project validation and independent review where required.
 
 ## Review prompts
 
@@ -63,7 +65,7 @@ Installed/core-skill existence does **not** prove that a skill, prompt, model, r
 8. Visual design: Turn a claim/content set into a distinctive editable visual system and prove a material A/B improvement at target reading distance.
 9. Image art direction: Reframe and treat a real source image to strengthen hierarchy while preserving the evidence claim and source/derivative identity.
 10. Technical drawing: Convert authoritative geometry/dimensions into an editable technical drawing and reopen/roundtrip the required format without promoting provisional data to field truth.
-11. Design process: Turn evidence and constraints into visible analysis, at least two options, an editable design artifact, critique/repair and a clear technical Validation Handoff when needed.
+11. Design process: Frame the goal and key unknown, translate evidence into relations, generate materially distinct option families, choose the minimum valid prototype medium, attack/readback/repair, preserve design continuity, and hand specialist proof downstream without self-certifying it.
 
 ## Acceptance checks
 
@@ -79,8 +81,9 @@ Installed/core-skill existence does **not** prove that a skill, prompt, model, r
 - Visual design preserves authoritative geometry/data/dimensions and formal editable text while applying an independent Design Quality Gate.
 - Image art direction uses real source first and cannot convert compositing, generative fill or tonal change into new factual evidence.
 - Technical drawing resolves Dimension/Geometry Authority before software convenience and preserves `NOT FOR CONSTRUCTION` / FIELD / engineering boundaries.
-- Design process creates actual editable design artifacts, compares options, performs readback/repair and hands technical proof to VALIDATION rather than self-certifying it.
-- New Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
+- Design process uses a Variable Budget, distinguishes concept families from parameter variants, matches prototype medium to the unknown, performs actual multi-scale readback/repair, preserves a Design Continuity Contract, records consequential decisions and propagates material changes through dependent artifacts.
+- Installed design-process ownership does not grant specialist technical proof, final presentation KEEP, field/manufacturing/engineering truth or human-test PASS.
+- Remaining Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
 
 ## Reference Reconstruction Fidelity Gate
 
@@ -173,4 +176,4 @@ Before using or promoting a changed skill:
 
 ### Minimum coverage
 
-Each of the eleven core skills must have at least two maintained Golden Cases. CI validates Registry structure, directory/SKILL.md presence, case structure and AIG-01 coverage. The six installed execution owners remain governed by the existing Owner Map/resolver; the five Candidate core skills require explicit project validation and promotion before they may join that installed-owner set.
+Each of the eleven core skills must have at least two maintained Golden Cases. CI validates Registry structure, directory/SKILL.md presence, case structure and AIG-01 coverage. The seven installed execution owners remain governed by the current Owner Map/resolver; the remaining four Candidate core skills require explicit project validation and promotion before they may join that installed-owner set.
