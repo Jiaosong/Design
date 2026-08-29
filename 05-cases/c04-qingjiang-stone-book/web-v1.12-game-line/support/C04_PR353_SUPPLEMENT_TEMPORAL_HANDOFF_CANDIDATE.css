@@ -1,0 +1,13 @@
+/* OLEANDER PRESENTATION TRAINING / C04 PR #353 bounded motion candidate.
+   VALIDATION / SUPPORT ONLY — not production authority.
+   Motion role: Hierarchy + Continuity. No content, route, state, asset, or evidence mutation. */
+.supplement-backdrop{transition:opacity .10s linear}
+.supplement-panel{transform:translateY(12px) scale(.993);transform-origin:100% 100%;transition:opacity .15s ease,transform .22s cubic-bezier(.2,.72,.2,1)}
+.supplement-head{opacity:0;transform:translateY(5px);transition:opacity .14s .035s ease,transform .17s .035s cubic-bezier(.2,.75,.2,1)}
+.supplement-tabs{opacity:0;transform:translateY(4px);transition:opacity .13s .07s ease,transform .16s .07s ease}
+.supplement-body{opacity:0;transform:translateY(6px);transition:opacity .15s .10s ease,transform .18s .10s ease}
+.supplement-trigger{transition:opacity .10s ease,transform .10s ease}
+.supplement-open .supplement-head,.supplement-open .supplement-tabs,.supplement-open .supplement-body{opacity:1;transform:none}
+.supplement-open .supplement-trigger{opacity:0;transform:translateY(5px);pointer-events:none}
+@media(max-width:760px){.supplement-panel{transform:translateY(12px);transform-origin:50% 100%}}
+@media(prefers-reduced-motion:reduce){.supplement-trigger,.supplement-backdrop,.supplement-panel,.supplement-head,.supplement-tabs,.supplement-body{transition:none!important;animation:none!important;transform:none!important}}
