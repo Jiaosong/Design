@@ -27,6 +27,10 @@ This is an index, not a new authority layer. The Current Skill `SKILL.md`, resol
 | Responsive page/screen composition, content-driven breakpoints, reflow and state-footprint stability | `oleander-web-ui` + current visual/interaction specialists | `oleander-web-ui/RESPONSIVE_LAYOUT_COMPOSITION_EXTENSION.md` | `jacob-balslev/skill-graph` |
 | Semantic HTML, keyboard/focus contract, programmatic names/states, assistive-tech announcements and preference modes | `oleander-web-ui` + VALIDATION / interaction specialist as needed | `oleander-web-ui/ACCESSIBLE_INTERACTION_EXTENSION.md` | `jacob-balslev/skill-graph` |
 | Reusable high-fidelity UI token system, semantic roles, multi-theme mapping and state × theme drift review | `oleander-web-ui` + `oleander-visual-design` | `oleander-web-ui/SEMANTIC_UI_TOKEN_THEME_EXTENSION.md` | `axross/skills/high-fidelity-ui-design` high-level bounded study |
+| Multi-factor experiment, nuisance variation, interaction, pseudoreplication, blocked/nested/repeated or DOE run-design question beyond a genuinely two-condition Current A/B test | `oleander-research` + VALIDATION/statistical owner as needed | `oleander-research/EXPERIMENTAL_DESIGN_DOE_EXTENSION.md` | `K-Dense-AI/scientific-agent-skills/experimental-design` |
+| Claim asks whether changing X causes Y and observational/experimental evidence needs confounder/collider/mediator classification, identification or sensitivity | `oleander-research` | `oleander-research/CAUSAL_IDENTIFICATION_EXTENSION.md` | `magnus919/agent-skills/data-scientist` causal-inference references |
+| Measured/computed quantity affects a design, field, prototype, production or performance decision and units/traceability/material uncertainty matter | `oleander-research` + actual technical/validation owner downstream | `oleander-research/MEASUREMENT_UNCERTAINTY_EXTENSION.md` | `K-Dense-AI/scientific-agent-skills/uncertainty-and-units` |
+| System behavior crosses component/subsystem/service interfaces and local object PASS cannot prove integrated behavior | `oleander-design-process` + 3D/Technical/VALIDATION as needed | `oleander-design-process/SYSTEM_INTERFACE_COUPLING_EXTENSION.md` | `K-Dense-AI/scientific-agents/systems-engineer` |
 
 ## Co-routing rules
 
@@ -46,10 +50,14 @@ This is an index, not a new authority layer. The Current Skill `SKILL.md`, resol
 - Accessible interaction is not a final checklist. It cross-checks primitive choice, state model, keyboard/focus order and dynamic announcements during implementation and again after responsive/motion integration.
 - Semantic token/theme work is wiring + appearance architecture, not a replacement for visual composition or accessibility. `TOKEN PASS ≠ ACCESSIBILITY PASS ≠ DESIGN KEEP`.
 - Brand-rule encoding is project-specific. Never import Resend or any other third-party brand's exact fonts, colors, assets, dimensions, lockups or layout signatures as OLEANDER identity.
+- Current A/B Controlled Experiment remains the owner for a genuine two-condition experiment. Route to `EXPERIMENTAL_DESIGN_DOE_EXTENSION` only when factor interaction, blocking, nesting, repeated measures, run-order or multi-factor design is material. `MORE EXPERIMENTS ≠ DOE`.
+- Causal identification is downstream of the causal question and evidence-generating process, not a replacement for Design Goal Contract or A/B. `ASSOCIATION / REGRESSION / FEATURE IMPORTANCE ≠ IDENTIFIED CAUSAL EFFECT`.
+- Measurement uncertainty is upstream evidence formation. Delivery QC can verify that units/metadata survive release, but it cannot retroactively create calibration, traceability or uncertainty authority that the measurement never had.
+- System-interface coupling complements current Trade Study and FMEA. Use it when failure emerges between otherwise valid objects; do not recreate FMEA or install a generic systems-engineering lifecycle.
 
 ## Rights / transfer boundary
 
-Each training record under `oleander-skills/training/2026-08-28_external-*-digestion.md` records the observed source/license and accepted/rejected transfer. External CLI/API syntax, templates, prompt recipes, fixed heuristics, visual presets and runtime assumptions are not automatically OLEANDER rules.
+Each training record under `oleander-skills/training/` records the observed source/license and accepted/rejected transfer. External CLI/API syntax, templates, prompt recipes, fixed heuristics, visual presets and runtime assumptions are not automatically OLEANDER rules.
 
 Specific reviewed boundaries:
 
@@ -62,7 +70,11 @@ Specific reviewed boundaries:
 - `axross/skills`: no repository-level license file found in the reviewed state; only high-level token/theme architecture is independently synthesized. Fixed dark-mode recipes, token names and values are excluded.
 - `swh/openscad-skill`: no repository-level license file found in the reviewed state; only high-level parametric fabrication mechanisms are independently synthesized. BOSL2 house style, code templates, helper tools, printer/material/slicer tables and numeric defaults are excluded.
 - `ibelick/ui-skills`: repository root MIT. OLEANDER adapts evidence/recurrence/intent-separation logic but does not adopt the external `DESIGN.md` schema, CLI, export targets or token naming constraints.
+- `K-Dense-AI/scientific-agent-skills`: repository MIT. Experimental-design and uncertainty mechanisms are independently reformulated; scientific examples, package/version recipes, fixed sample/factor heuristics, statistical defaults and lab-specific workflow are excluded.
+- `magnus919/agent-skills`: repository MIT. Causal-identification discipline is adapted; fixed diagnostic thresholds, estimator preferences and domain assumptions are excluded.
+- `K-Dense-AI/scientific-agents`: repository MIT. Systems-engineering interface/coupling/V&V concepts are adapted without adopting ISO 15288/V-model/review-phase/tool-stack house process.
+- `d-wwei/systems-thinking`: no repository license found in the reviewed tree; high-level comparison only. No source prose, extended worldview framework or packaged protocol is transferred.
 
 ## Maturity boundary
 
-Every entry above remains `CANDIDATE EXTENSION`. Documentation presence and CI success do not promote an extension, owner or external source to ACTIVE/installed authority. Real project use, actual artifact/runtime readback, regression evidence and independent review remain required for stronger maturity claims.
+Every entry above remains `CANDIDATE EXTENSION`. Documentation presence and CI success do not promote an extension, owner or external source to ACTIVE/installed authority. Real practice evidence, cross-context reapplication, project use where authorized, actual artifact/runtime/measurement readback and independent review remain required for stronger maturity claims.
