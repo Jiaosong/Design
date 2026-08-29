@@ -7,7 +7,8 @@ from pathlib import Path
 import fitz
 
 ROOT = Path(__file__).resolve().parent
-PDF_PATH = ROOT / "A_named_cut_layer_only.pdf"
+A_PATH = ROOT / "A_generic_ocg.pdf"
+B_PATH = ROOT / "B_processing_metadata.pdf"
 RESULT_PATH = ROOT / "readback.json"
 
 
@@ -19,82 +20,78 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def build_fixture() -> None:
+def build_fixture(path: Path, with_test_metadata: bool) -> None:
     doc = fitz.open()
     page = doc.new_page(width=300, height=200)
-    ocg_xref = doc.add_ocg("Cutting")
+    ocg_xref = doc.add_ocg("Test Processing Step")
     shape = page.new_shape()
     shape.draw_line((30, 100), (270, 100))
     shape.finish(color=(1, 0, 0), width=1, oc=ocg_xref)
     shape.commit()
-    page.insert_text(
-        (30, 40),
-        "EXERCISE ASSUMPTION / DESIGN TEST",
-        fontsize=9,
-    )
-    doc.save(PDF_PATH)
+    page.insert_text((30, 40), "EXERCISE ASSUMPTION / DESIGN TEST", fontsize=9)
+
+    if with_test_metadata:
+        # TEST FIXTURE ONLY. Field names are informed by a public third-party
+        # implementation example. This is not a normative ISO writer and does
+        # not establish ISO 19593 conformance.
+        doc.xref_set_key(
+            ocg_xref,
+            "GTS_Metadata",
+            "<</GTS_ProcStepsType/Cutting/GTS_ProcStepsGroup/Structural>>",
+        )
+
+    doc.save(path)
     doc.close()
 
 
-def inspect_fixture() -> dict:
-    doc = fitz.open(PDF_PATH)
+def inspect_fixture(path: Path) -> dict:
+    doc = fitz.open(path)
     ocgs = doc.get_ocgs()
-    raw_ocgs = []
+    rows = []
     for xref, info in ocgs.items():
-        raw_ocgs.append(
+        raw = doc.xref_object(xref, compressed=False)
+        rows.append(
             {
                 "xref": xref,
                 "info": info,
-                "raw_object": doc.xref_object(xref, compressed=False),
+                "raw_object": raw,
+                "has_GTS_Metadata": "/GTS_Metadata" in raw,
+                "has_type_cutting": "/GTS_ProcStepsType /Cutting" in raw,
+                "has_group_structural": "/GTS_ProcStepsGroup /Structural" in raw,
             }
         )
-
-    catalog_xref = doc.pdf_catalog()
-    catalog_raw = doc.xref_object(catalog_xref, compressed=False)
-    raw_pdf = PDF_PATH.read_bytes()
-    result = {
-        "runtime": {
-            "pymupdf": fitz.VersionBind,
-            "mupdf": fitz.VersionFitz,
-        },
-        "artifact": {
-            "path": PDF_PATH.name,
-            "sha256": sha256(PDF_PATH),
-        },
-        "reopen": {
-            "ocg_count": len(ocgs),
-            "ocgs": raw_ocgs,
-            "catalog_raw": catalog_raw,
-        },
-        "bounded_checks": {
-            "named_cutting_ocg_present": any(
-                info.get("name") == "Cutting" for info in ocgs.values()
-            ),
-            "generic_ocg_roundtrip_proven": len(ocgs) == 1,
-            "additional_processing_step_metadata_proven": False,
-            "iso_19593_conformance_proven": False,
-        },
-        "raw_term_counts": {
-            "ProcessingStep": raw_pdf.count(b"ProcessingStep"),
-            "Structural": raw_pdf.count(b"Structural"),
-            "Cutting": raw_pdf.count(b"Cutting"),
-            "DPart": raw_pdf.count(b"DPart"),
-            "GTS": raw_pdf.count(b"GTS"),
-        },
-        "verdict": "NOT_PROVEN_AS_ISO_19593_PROCESSING_STEPS",
-        "boundary": (
-            "A generic PDF OCG named 'Cutting' survives save/reopen. This does not "
-            "establish ISO 19593 Processing Steps conformance. A PASS-capable retest "
-            "requires an unmodified official compliant sample/test-suite or an ISO 19593 "
-            "writer independently validated against a current conformance suite."
-        ),
-    }
+    catalog_raw = doc.xref_object(doc.pdf_catalog(), compressed=False)
     doc.close()
-    return result
+    return {
+        "sha256": sha256(path),
+        "ocg_count": len(ocgs),
+        "ocgs": rows,
+        "catalog_has_OCProperties": "/OCProperties" in catalog_raw,
+    }
 
 
 if __name__ == "__main__":
-    build_fixture()
-    result = inspect_fixture()
+    build_fixture(A_PATH, False)
+    build_fixture(B_PATH, True)
+    result = {
+        "runtime": {"pymupdf": fitz.VersionBind, "mupdf": fitz.VersionFitz},
+        "fixture_note": (
+            "B metadata field names are a bounded TEST FIXTURE informed by a public "
+            "third-party implementation example; not normative ISO syntax proof."
+        ),
+        "A_generic_ocg": inspect_fixture(A_PATH),
+        "B_metadata_ocg": inspect_fixture(B_PATH),
+    }
+    result["assertions"] = {
+        "A_has_generic_ocg": result["A_generic_ocg"]["ocg_count"] == 1,
+        "A_has_no_gts_metadata": not result["A_generic_ocg"]["ocgs"][0]["has_GTS_Metadata"],
+        "B_gts_metadata_survives_reopen": result["B_metadata_ocg"]["ocgs"][0]["has_GTS_Metadata"],
+        "B_cutting_and_structural_terms_survive": (
+            result["B_metadata_ocg"]["ocgs"][0]["has_type_cutting"]
+            and result["B_metadata_ocg"]["ocgs"][0]["has_group_structural"]
+        ),
+        "iso_19593_conformance_proven": False,
+        "gwg_suite_pass_proven": False,
+    }
     RESULT_PATH.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2, ensure_ascii=False))
