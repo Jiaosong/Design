@@ -1,3 +1,4 @@
+// One-shot bounded patch helper for PR #465. Delete after verified application.
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
