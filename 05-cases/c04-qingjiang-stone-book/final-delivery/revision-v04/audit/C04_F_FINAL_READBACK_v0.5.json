@@ -1,0 +1,37 @@
+{
+  "schema": "c04-f-final-readback/0.5",
+  "state": "REMOTE_SHOWCASE_ASSEMBLED / READBACK_HOLDS / NO_PROMOTION",
+  "scope": {
+    "allowed": ["A1-03", "P02", "P10", "P14", "P15", "P17", "P18", "P20", "film 51-86s"],
+    "unchanged": "all other A1/pages and film 0-51s"
+  },
+  "freshness": {
+    "main": "0ae4fc68fdc982df208e101ed5319af73aab561e",
+    "B": "v1.6 exact bindings",
+    "P19_MAIN": "received; owner binding gap closed; REV04 P19 pixels unchanged",
+    "D_motion_reference": "QJD v1.2 QC KEEP for remote-research display; no binary substitution",
+    "E_browser": "PASS in Chromium 144.0.7559.96",
+    "web_source": "REV04 deterministic source restored from generator; 20 section references preserved"
+  },
+  "current": {
+    "A1": {"file": "C04_F_A1_BOARDS_REV04.pdf", "sha256": "8659dfd950274590451ae94c8e89019fb4f60efb6e42b970f3b8f02a6b85645d"},
+    "story20": {"file": "C04_F_Landscape_Atlas_20screen_REV04.pdf", "sha256": "c8c81c90f9a3ba7adfe359dcd00e684514fe8ffd0eff172a9728715b7cbb939f"},
+    "film86": {"file": "C04_F_FILM_86s_REV04.mp4", "sha256": "fd17b8e21a3b74e710315f74bcc670568d698df3b92c9ba27f60155636ebcb7f"},
+    "web_source": {"sha256": "e06fe29f628cbe7e56427795d82d405560b3ef326c934611724eb724b7434bc7", "git_blob_sha": "a089d8562c51e2e71f17c15e87f5471cac9bc6f1", "bytes": 3228}
+  },
+  "remote_showcase_holds": [
+    {
+      "id": "EXACT_CURRENT_WEB_BINARY_BUNDLE_AND_BROWSER_READBACK",
+      "reason": "REV04 deterministic Web source is now restored and persisted, but the exact 20 REV04 screen PNG binary bundle is not retrievable from current GitHub/Drive readback; current-source Chromium readback therefore remains open"
+    },
+    {
+      "id": "REV04_TARGETED_FINAL_DESIGN_READBACK",
+      "scope": ["A1-03", "P02", "P10", "P14", "P15", "P17", "P18", "P20", "film 51-86s"]
+    }
+  ],
+  "field_items": {
+    "blocks_remote_showcase": false,
+    "open": ["A_G1F", "R02_EXPERT_EVIDENCE", "R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY", "R07_FIELD_NAME_AUTHORITY", "R13_IMAGE_ASSET_AND_FIELD_SAFETY"]
+  },
+  "hard_state": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "oleander.c04.f-presentation-revision/0.4",
+  "status": "EXECUTED / REVISE",
+  "scope": "NARROW_FIX_ONLY",
+  "do_not_redo_KEEP": true,
+  "independent_review_input": {
+    "A1_01": "KEEP",
+    "A1_02": "KEEP",
+    "A1_03": "REVISE",
+    "screens_revise": [
+      "P02",
+      "P10",
+      "P14",
+      "P15",
+      "P17",
+      "P18",
+      "P20"
+    ],
+    "film_structure": "KEEP",
+    "film_revise": [
+      "51-61s R13",
+      "overlong Return UI",
+      "audit-card ending"
+    ]
+  },
+  "rev04_actions": {
+    "A1_03": "bind R13 v3 only; R06 stays D v1.1",
+    "screens": [
+      "P02 typography/boundary hierarchy",
+      "P10 remove repeated full-bleed Hero; SEC-A main",
+      "P14 denser optional-reading logic",
+      "P15 R13 v3 + stronger sequence labels",
+      "P17 larger offline interaction evidence",
+      "P18 denser appendix table",
+      "P20 no repeated Hero; Return composition"
+    ],
+    "film": "separate REV04 motion script"
+  },
+  "r13_v3": {
+    "source_file": "/mnt/data/C04_F_FINAL_20260815/inputs/image2_rev04/湿润峡谷中的远眺者.png",
+    "source_sha256": "f67bc1aa6c6d6f9453e601bd6467df5325aa8dd53317e6a25d4bc41f57c9cc60",
+    "review_decision": "KEEP by controller actual visual review",
+    "label": "AI-assisted conceptual visualization",
+    "does_not_prove": [
+      "actual landform",
+      "actual facility",
+      "path width",
+      "railing",
+      "safety condition"
+    ]
+  },
+  "r06": {
+    "source": "D v1.1 relation visual",
+    "ai_version": "NOT USED"
+  },
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "PROMOTION": "NO_PROMOTION",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "merge_gate": "WAIT_FOR_E_LIVE_BROWSER_READBACK",
+  "professional_completion_claim": "PROHIBITED",
+  "outputs": {
+    "A1": "boards/C04_F_A1_BOARDS_REV04.pdf",
+    "P20": "C04_F_Landscape_Atlas_20screen_REV04.pdf",
+    "web": "web/index.html"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "oleander.c04.f-presentation-override/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "authority": "USER_ACCEPTED_INDEPENDENT_REVIEW / PRESENTATION OVERRIDE ONLY",
+  "scope": "F presentation hierarchy and slot eligibility only; does not rewrite upstream A/C/D/E/model evidence or design authority.",
+  "model_bridge": {
+    "package": "C04_CONCEPT_MODEL_PACK_v1(1).zip",
+    "package_sha256": "29efa9d3896934006ad67b37bd4c1b682560aafe6929051eb5b0737bac4863c6",
+    "recovery_bridge_sha256": "eb16e348ef146d779e2e6ca96a2e5bc8502d3d1da3f396eb11211af9facb2d97",
+    "bridge_state": "BRIDGE SOURCE READY / BLENDER UNEXECUTED / CONCEPTUAL / NTS / FIELD=0 / G1F HOLD / NO_PROMOTION",
+    "source_validation": "PASS / GLB reopen PASS / 74 geometries / fixed CAM_HERO-CAM_R06-CAM_R13"
+  },
+  "figure_role_override": {
+    "FIG-C04-A00": {"presentation_role":"PRIMARY_MAIN","main_sequence":true},
+    "FIG-C04-A01": {"presentation_role":"PRIMARY_MAIN","main_sequence":true},
+    "FIG-C04-A03": {"presentation_role":"APPENDIX","main_sequence":false},
+    "C04-MDL-FIG-01": {"presentation_role":"PROCESS_SUPPORT","main_sequence":false,"hero_allowed":false},
+    "C04-MDL-FIG-02": {"presentation_role":"SUPPORT_ONLY","main_sequence":false,"r06_main_allowed":false},
+    "C04-MDL-FIG-03": {"presentation_role":"SUPPORT","main_sequence":false},
+    "C04-MDL-SEC-A": {"presentation_role":"PRIMARY_SECTION_ALLOWED","main_sequence":true},
+    "C04-MDL-SEC-C": {"presentation_role":"SUPPORT","main_sequence":false}
+  },
+  "replacement_rule": {
+    "trigger": "Only if current F main sequence contains C04-MDL-FIG-02 or promotes C04-MDL-FIG-01 as Hero.",
+    "replace_in_place_with": ["FIG-C04-A00","FIG-C04-A01","QJ-D v1.1 accepted visual","C04-MDL-SEC-A"],
+    "reflow_entire_set": false
+  },
+  "beat_hierarchy": {
+    "rule": "20 beats are not equal-authority or equal-emphasis pages.",
+    "tiers": {"PRIMARY":3,"SUPPORT":2,"APPENDIX":1},
+    "PRIMARY": ["PAGE-01","PAGE-03","PAGE-04","PAGE-08","PAGE-10","PAGE-11","PAGE-16","PAGE-20"],
+    "SUPPORT": ["PAGE-02","PAGE-05","PAGE-07","PAGE-09","PAGE-12","PAGE-13","PAGE-14","PAGE-15","PAGE-17"],
+    "APPENDIX": ["PAGE-06","PAGE-18","PAGE-19"]
+  },
+  "current_binary_slot_readback": {
+    "A1_3page": "PASS / no model FIG-01 as Hero / no model FIG-02 main slot",
+    "PDF_20screen": "PASS / PAGE-12 R06 is QJ-D v1.1, not model FIG-02",
+    "VIDEO_86s": "PASS / derives from QJ-D v1.1 motion master; no direct model FIG-01/FIG-02 asset reference",
+    "replacement_executed": false,
+    "reason": "No trigger violation found; preserve accepted layout and binary hashes."
+  },
+  "hard_state": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove": "Presentation hierarchy does not prove field geometry, safety, structural adequacy, exact site identity, implementation readiness, or P2 promotion."
+}

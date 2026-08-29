@@ -1,0 +1,41 @@
+{
+  "schema": "oleander.c04.web-qc-handoff/1.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "from": "F Final Integration",
+  "to": ["Web", "Governance QC", "Delivery QC", "Audit"],
+  "status": "AUDIT READY / TECHNICAL EXPORT QC PASS / PRESENTATION OVERRIDE APPLIED / FIELD OPEN / NO_PROMOTION",
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NO_PROMOTION": true,
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "environment_manifest": "final-delivery/environment/C04_F_ENVIRONMENT_TOOLCHAIN_MANIFEST_v1.0.json",
+  "reproducible_export": "final-delivery/work/export_reproducible.sh",
+  "qc_entry": "final-delivery/work/qc_delivery.sh",
+  "qc_result": "final-delivery/qc/C04_F_QC_RESULT.json",
+  "presentation_override": "final-delivery/manifest/C04_F_PRESENTATION_OVERRIDE_v1.0.json",
+  "results": {
+    "A1": "PASS - 3 pages, fresh open/render, Ghostscript 0-error",
+    "20screen": "PASS - 20 pages, fresh open/render, Ghostscript 0-error; 8 PRIMARY / 9 SUPPORT / 3 APPENDIX",
+    "video": "PASS - 86.000 s, 1920x1080, 24 fps, H.264 + AAC, full decode 0-error",
+    "slot_audit": "PASS - no model FIG-01 Hero and no model FIG-02 main R06 binding"
+  },
+  "current_hashes": {
+    "boards/C04_F_A1_BOARDS_v0.1.pdf": "a32f45040140eb32b61c5419036a71a73968f66937591e93b5ae1249c22c3fc5",
+    "C04_F_Landscape_Atlas_20screen_v0.1.pdf": "859012b416fdccad61885ceb5921ee3072ec654768c500728987bd0b1aff53d7",
+    "video/C04_F_FILM_86s_REPRO.mp4": "0e74bd7d69781495a6db6f3ddc3a26b03b692b6a6f1f00d399c61dc5aef5ae61"
+  },
+  "model_bridge_consumption": {
+    "package_sha256": "29efa9d3896934006ad67b37bd4c1b682560aafe6929051eb5b0737bac4863c6",
+    "status": "CONSUMED / BRIDGE SOURCE READY / BLENDER UNEXECUTED",
+    "presentation_roles": "FIG-01 process/support; FIG-02 excluded from main; FIG-03+SEC-C support; SEC-A main allowed; A00+A01 primary; A03 appendix",
+    "main_sequence_violation_found": false,
+    "binary_replacement_required": false
+  },
+  "remaining_f_delivery_blocker": "NONE",
+  "project_wide_holds_are_boundaries_not_export_blockers": ["R01 authentic cabin POV", "R06 field geometry", "R13 safety field", "botany/geology/field sign evidence"],
+  "does_not_prove": "Technical export/QC/presentation PASS does not equal Design/Field/Implementation/Promotion PASS."
+}

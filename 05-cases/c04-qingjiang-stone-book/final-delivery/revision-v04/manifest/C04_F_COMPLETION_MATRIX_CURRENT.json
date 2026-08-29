@@ -1,0 +1,10 @@
+{
+  "schema": "c04-f-completion-current/1.0",
+  "current": "C04_F_COMPLETION_MATRIX_v0.5.json",
+  "state": "REMOTE_SHOWCASE_ASSEMBLED / READBACK_HOLDS / NO_PROMOTION",
+  "supersedes_for_current_decision": ["C04_F_COMPLETION_MATRIX_v0.4.json"],
+  "scope_lock": ["A1-03", "P02", "P10", "P14", "P15", "P17", "P18", "P20", "film 51-86s"],
+  "remote_showcase_blockers": ["EXACT_CURRENT_WEB_BINARY_BUNDLE_AND_BROWSER_READBACK", "REV04_TARGETED_FINAL_DESIGN_READBACK"],
+  "field_open_nonblocking": true,
+  "hard_state": "FIELD0 / G1F HOLD / NO_PROMOTION"
+}

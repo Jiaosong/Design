@@ -1,0 +1,14 @@
+{
+  "schema": "oleander.c04.ai-concept-visual-receipt/1.0",
+  "figure_id": "R13-v3",
+  "name": "湿润峡谷中的远眺者",
+  "source_library_file_id": "file_0000000079e48206bd186c9563804844",
+  "local_file": "/mnt/data/C04_F_FINAL_20260815/revision_v04/source_inputs/R13_v3_湿润峡谷中的远眺者_AI-assisted.png",
+  "sha256": "f67bc1aa6c6d6f9453e601bd6467df5325aa8dd53317e6a25d4bc41f57c9cc60",
+  "dimensions_px": "1672x941",
+  "decision_input": "KEEP by controller actual visual review",
+  "use_label": "AI-assisted conceptual visualization",
+  "does_not_prove": ["actual landform", "actual facility", "path width", "railing", "safety condition"],
+  "bindings": ["A1-03 REV04", "P15 REV04", "FILM 51-61s REV04"],
+  "not_bound_due_keep_scope": ["P13 carried unchanged from REV03"]
+}

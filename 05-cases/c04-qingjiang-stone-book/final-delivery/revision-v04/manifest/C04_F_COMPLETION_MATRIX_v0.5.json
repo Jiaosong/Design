@@ -1,0 +1,125 @@
+{
+  "schema": "c04-f-completion-matrix/0.5",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "case_id": "C04",
+  "lane": "F",
+  "revision": "REV04",
+  "status": "REMOTE_SHOWCASE_ASSEMBLED / READBACK_HOLDS / NO_PROMOTION",
+  "authority_consumed": {
+    "latest_main_sha": "0ae4fc68fdc982df208e101ed5319af73aab561e",
+    "b_v1_6": {
+      "content_map_sha256": "c829e2dc3b179cd100f6c46287770a19491198ace0d9700068426e148951a0b9",
+      "final_cn_copy_sha256": "4fdd7b8dada7f798772821d436db411f881b7a1deef6f68e7354e030d354cc23",
+      "video_binding_sha256": "c71d7e6fee7e274ae24a19225215da2717b5c6dba02584550472a6e587c3bd72",
+      "web_f_binding_sha256": "ae2115c450f4661a1eb472579e49e70acc04d48569de7f13d2bd18491bc3b04a"
+    },
+    "a_p19": {
+      "figure_id": "P19_MAIN",
+      "png_sha256": "e62858ec5a42595203053db2983aeb9790135b024dbb1eb4e391d42383c59b7b",
+      "svg_sha256": "1aff786e83caaab6cd983be64b0d72e265740e6473bca7e7c0dfdbb7fa188822",
+      "decision": "MAIN ASSET RECEIVED; closes B v1.6 P19 missing-main gap at owner binding level; REV04 P19 pixels remain unchanged by scope lock"
+    },
+    "d_independent_motion": {
+      "asset": "QJD_V12_PUBLIC_MOTION_REVISED_SILENT_86s_1920x1080.mp4",
+      "sha256": "a4c3f3cb67d619df84eb1346b023f46e8dc6c24722fbfe44e286a108b16f07e5",
+      "bytes": 9975236,
+      "gate": "KEEP FOR REMOTE-RESEARCH DISPLAY",
+      "use": "INDEPENDENT MOTION REFERENCE ONLY; NOT BINARY SUBSTITUTION FOR REV04"
+    },
+    "e_browser_receipt": {
+      "browser": "Chromium 144.0.7559.96",
+      "verdict": "PASS after Web-only responsive patch",
+      "viewports": ["1920x1080", "1366x768", "390x844"],
+      "checks": ["keyboard Tab→Enter", "touch", "scroll", "map/state linkage", "UNKNOWN×OFFLINE fail-closed", "S0 Digital Silence", "browser print"]
+    }
+  },
+  "scope_lock": {
+    "design_edits_allowed": ["A1-03", "P02", "P10", "P14", "P15", "P17", "P18", "P20", "film 51-86s"],
+    "all_other_a1_pages_screens_film_0_51": "BYTE-IDENTICAL / DO NOT REDO",
+    "p19_rule": "consume owner P19 MAIN as authority/binding only; do not alter REV04 P19 pixels"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "A1-SET",
+      "role": "CURRENT 3×A1",
+      "artifact": "C04_F_A1_BOARDS_REV04.pdf",
+      "sha256": "8659dfd950274590451ae94c8e89019fb4f60efb6e42b970f3b8f02a6b85645d",
+      "machine_qc": "3 pages; render 3/3; Ghostscript stderr 0",
+      "design_gate": "A1-01 KEEP; A1-02 KEEP; exact REV04 A1-03 targeted independent readback still required",
+      "status": "EXECUTED / TARGETED_READBACK_HOLD"
+    },
+    {
+      "artifact_id": "STORY-20",
+      "role": "CURRENT 20-SCREEN",
+      "artifact": "C04_F_Landscape_Atlas_20screen_REV04.pdf",
+      "sha256": "c8c81c90f9a3ba7adfe359dcd00e684514fe8ffd0eff172a9728715b7cbb939f",
+      "machine_qc": "20 pages render 20/20; Ghostscript stderr 0; 13 pages byte-identical carry-forward",
+      "design_gate": "only P02/P10/P14/P15/P17/P18/P20 changed; exact seven-page independent readback still required",
+      "p19_binding": "P19_MAIN owner asset received; page pixels unchanged under scope lock",
+      "status": "EXECUTED / TARGETED_READBACK_HOLD"
+    },
+    {
+      "artifact_id": "FILM-86",
+      "role": "SOLE CURRENT PUBLIC FILM",
+      "artifact": "C04_F_FILM_86s_REV04.mp4",
+      "sha256": "fd17b8e21a3b74e710315f74bcc670568d698df3b92c9ba27f60155636ebcb7f",
+      "machine_qc": "86.000s; 1920x1080; 24fps; H.264+A​​C; full decode stderr 0",
+      "scope": "0-51s inherited; only 51-86s revised",
+      "design_gate": "D V12 independent QC KEEP supports the corrected motion grammar; exact REV04 51-86 byte-level independent readback remains required",
+      "status": "EXECUTED / TARGETED_READBACK_HOLD"
+    },
+    {
+      "artifact_id": "E-INTERACTION",
+      "role": "APPENDIX / SUPPORT",
+      "artifact": "E frozen portable + integration patch",
+      "browser_gate": "PASS",
+      "status": "KEEP_SUPPORT"
+    },
+    {
+      "artifact_id": "WEB-CURRENT",
+      "role": "SOLE CURRENT WEB RELEASE CANDIDATE",
+      "static_gate": "KEEP",
+      "branch_source_path": "05-cases/c04-qingjiang-stone-book/final-delivery/revision-v04/web/index.html",
+      "source_readback": "RESTORED_FROM_REV04_DETERMINISTIC_GENERATOR",
+      "source_git_blob_sha": "a089d8562c51e2e71f17c15e87f5471cac9bc6f1",
+      "source_sha256": "e06fe29f628cbe7e56427795d82d405560b3ef326c934611724eb724b7434bc7",
+      "source_bytes": 3228,
+      "source_contract": "20 sections; deterministic references to ../screens/PAGE-01_REV04.png through PAGE-20_REV04.png",
+      "binary_bundle_readback": "20 REV04 screen PNG binaries are referenced by producer receipt/SHA but are not materialized in this GitHub branch or current Drive search",
+      "portable_browser_evidence": "PASS WITH SPECIFIC REVISIONS but explicitly != exact successor",
+      "exact_current_browser_gate": "HOLD_PENDING_EXACT_20_SCREEN_BINARY_BUNDLE_BROWSER_READBACK",
+      "status": "SOURCE_RECOVERED / EXACT_BROWSER_HOLD"
+    }
+  ],
+  "remote_showcase_blockers": [
+    {
+      "id": "EXACT_CURRENT_WEB_BINARY_BUNDLE_AND_BROWSER_READBACK",
+      "status": "OPEN",
+      "reason": "REV04 deterministic HTML source is now persisted; exact 20-screen binary bundle is not retrievable from GitHub/Drive in this runtime, so current-source Chromium readback cannot yet be truthfully closed",
+      "blocks_remote_showcase": true
+    },
+    {
+      "id": "REV04_TARGETED_FINAL_DESIGN_READBACK",
+      "status": "OPEN",
+      "scope": ["A1-03", "P02", "P10", "P14", "P15", "P17", "P18", "P20", "film 51-86s"],
+      "blocks_remote_showcase": true
+    }
+  ],
+  "field_open_nonblocking": [
+    {"id": "A_G1F", "status": "OPEN", "blocks_remote_showcase": false},
+    {"id": "R02_EXPERT_EVIDENCE", "status": "OPEN", "blocks_remote_showcase": false},
+    {"id": "R06_EXACT_SCIENCE_HERO_AND_FIELD_GEOMETRY", "status": "OPEN", "blocks_remote_showcase": false},
+    {"id": "R07_FIELD_NAME_AUTHORITY", "status": "OPEN", "blocks_remote_showcase": false},
+    {"id": "R13_IMAGE_ASSET_AND_FIELD_SAFETY", "status": "OPEN", "blocks_remote_showcase": false}
+  ],
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "FIELD_PASS": "NONE",
+    "promotion": "NO_PROMOTION",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "release_rule": "Remote Showcase may close when remote_showcase_blockers are closed. FIELD/expert blockers remain open evidence and do not by themselves block Remote Showcase."
+}

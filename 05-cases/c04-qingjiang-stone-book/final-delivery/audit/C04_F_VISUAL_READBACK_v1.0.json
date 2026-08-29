@@ -1,0 +1,35 @@
+{
+  "schema": "oleander.c04.f-audit-readback/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "audit_scope": "Re-read current 3-page A1 / 20-page PDF / 86s film against independent-review presentation override and accepted model bridge.",
+  "model_package_sha256": "29efa9d3896934006ad67b37bd4c1b682560aafe6929051eb5b0737bac4863c6",
+  "presentation_override": "../manifest/C04_F_PRESENTATION_OVERRIDE_v1.0.json",
+  "binary_outputs_changed": false,
+  "technical_reopen": {
+    "A1": {"pages":3,"rendered_pages":3,"ghostscript_error_bytes":0,"status":"PASS"},
+    "P20": {"pages":20,"rendered_pages":20,"ghostscript_error_bytes":0,"status":"PASS"},
+    "VIDEO": {"duration_s":86.0,"resolution":"1920x1080","fps":"24/1","video_codec":"h264","audio_codec":"aac","decode_error_bytes":0,"status":"PASS"}
+  },
+  "direct_reference_scan": {
+    "generate_f_delivery.py": {"C04-MDL-FIG-01":0,"C04-MDL-FIG-02":0,"CAM_HERO_C04-MDL-FIG-01":0,"CAM_R06_C04-MDL-FIG-02":0},
+    "web/index.html": {"C04-MDL-FIG-01":0,"C04-MDL-FIG-02":0},
+    "video subtitle layer": {"C04-MDL-FIG-01":0,"C04-MDL-FIG-02":0},
+    "reproducible video entry": "QJ-D v1.1 86s motion master"
+  },
+  "visual_readback": [
+    {"artifact":"A1 page 1","decision":"KEEP","finding":"D v1.1/official landscape + C22 macro network dominate; no model FIG-01/FIG-02 slot."},
+    {"artifact":"A1 page 2","decision":"KEEP","finding":"C22 archetype plans + C22 SEC-A/SEC-B/SEC-C + C22 exploded hierarchy; bridge FIG-01/FIG-02 absent; SEC-C reads as support."},
+    {"artifact":"A1 page 3","decision":"KEEP","finding":"QJ-D v1.1 R06 + R13 + Return; R06 is D visual translation, not model FIG-02."},
+    {"artifact":"20-screen PDF","decision":"KEEP","finding":"No direct bridge FIG-01/FIG-02. PAGE-12 R06 is D v1.1. Hierarchy locked as 8 PRIMARY / 9 SUPPORT / 3 APPENDIX."},
+    {"artifact":"86s film","decision":"KEEP","finding":"D Hero -> C22 evidence/network -> official pixel/display enhancement -> D v1.1 R06 -> D v1.1 R13 -> Return -> hard-state close; no model FIG-01/FIG-02 frame."}
+  ],
+  "replacement_trigger": {"found":false,"executed":false,"reason":"No current main sequence contains model FIG-02 or promotes model FIG-01 as Hero; no-redesign rule keeps accepted binaries unchanged."},
+  "current_binary_sha256": {
+    "A1":"a32f45040140eb32b61c5419036a71a73968f66937591e93b5ae1249c22c3fc5",
+    "P20":"859012b416fdccad61885ceb5921ee3072ec654768c500728987bd0b1aff53d7",
+    "VIDEO":"0e74bd7d69781495a6db6f3ddc3a26b03b692b6a6f1f00d399c61dc5aef5ae61"
+  },
+  "remaining_delivery_blocker":"NONE",
+  "hard_state":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove":"Visual/readback/codec PASS does not prove field truth, geometry, safety, accessibility, structural adequacy, implementation, or promotion."
+}

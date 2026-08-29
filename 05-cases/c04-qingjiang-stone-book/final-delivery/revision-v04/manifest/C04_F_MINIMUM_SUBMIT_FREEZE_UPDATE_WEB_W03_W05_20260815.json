@@ -1,0 +1,52 @@
+{
+  "schema": "oleander.c04.f-minimum-submit-freeze/1.1",
+  "state": "EXECUTED / REVISE",
+  "scope": "receipt-only sync; no legacy REV04 rebuild; no merge; no promotion",
+  "web_successor_update": {
+    "W03": {
+      "previous": "KEEP_LAYOUT / REVISE_CONTENT",
+      "current": "KEEP_SUPPORT",
+      "constraint": "SEC-A may replace old section slot but remains support evidence only; not PRIMARY"
+    },
+    "W05": {
+      "current": "MODEL_MAIN_NONE",
+      "constraint": "No model AXON/HERO promoted to main display"
+    }
+  },
+  "minimum_submit_freeze": {
+    "primary": [
+      "A00",
+      "A02",
+      "qualified D visual assets"
+    ],
+    "support": [
+      "A01",
+      "SEC-A",
+      "W02 relation diagram",
+      "W07 ending support"
+    ],
+    "excluded_main": [
+      "MODEL_V3_AXON_HERO",
+      "W06 abstract color proxy",
+      "W05 model main image"
+    ]
+  },
+  "remaining_real_pixel_gaps": [
+    "W00 real asset binding absent",
+    "W06 real effect image pixel asset absent",
+    "MODEL_PRIMARY_HERO_AXON absent after V3 review rejection"
+  ],
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NO_PROMOTION": true,
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "does_not_prove": [
+    "Receipt update does not prove Professional PASS.",
+    "SEC-A support status does not prove primary design resolution.",
+    "Existing files/layouts do not substitute missing real visual assets."
+  ]
+}

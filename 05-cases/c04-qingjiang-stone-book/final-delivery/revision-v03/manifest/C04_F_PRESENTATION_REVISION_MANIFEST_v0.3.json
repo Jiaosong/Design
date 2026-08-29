@@ -1,0 +1,63 @@
+{
+  "schema": "oleander.c04.f-presentation-revision/0.3",
+  "status": "EXECUTED / REVISE",
+  "professional_gate": "REVISE / KEEP REVOKED BY USER REVIEW",
+  "completion_claim": "PROHIBITED_PENDING_INDEPENDENT_REVIEW",
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "PROMOTION": "NO_PROMOTION",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "revision_rules": {
+    "A1_01": "55-65% hero + macro network overlay",
+    "A1_02": "masterplan/plan/3 sections/axon drawing wall",
+    "A1_03": "Hero/R06/R13/Return grouped experience; Image2 slots remain replaceable",
+    "screens": "20 screens; >=5 layout families; reduced hero repetition; full-width key drawings; appendix dense",
+    "video": "motion rebuild handled by generate_f_motion_revision_v0.3.py",
+    "typography": "1920 body >=23 px except metadata; A1 principal body >=27 px except metadata/footer"
+  },
+  "presentation_override": {
+    "A00": "PRIMARY",
+    "A01": "PRIMARY",
+    "A03": "APPENDIX",
+    "MODEL_FIG_01": "PROCESS_SUPPORT_NOT_HERO",
+    "MODEL_FIG_02_R06": "SUPPORT_ONLY_NOT_MAIN",
+    "MODEL_FIG_03": "SUPPORT",
+    "SEC_C": "SUPPORT",
+    "SEC_A": "PRIMARY_SECTION_ALLOWED"
+  },
+  "image2_replace_slots": ["HERO", "R06", "R13"],
+  "outputs": {
+    "A1_pdf": "boards/C04_F_A1_BOARDS_REV03.pdf",
+    "screen_pdf": "C04_F_Landscape_Atlas_20screen_REV03.pdf",
+    "web": "web/index.html",
+    "page_register": "manifest/PAGE_LAYOUT_REGISTER_REV03.csv"
+  },
+  "page_tiers": {
+    "PAGE-01": "PRIMARY",
+    "PAGE-02": "PRIMARY",
+    "PAGE-03": "PRIMARY",
+    "PAGE-04": "PRIMARY",
+    "PAGE-05": "PRIMARY",
+    "PAGE-06": "PRIMARY",
+    "PAGE-07": "SUPPORT",
+    "PAGE-08": "PRIMARY",
+    "PAGE-09": "SUPPORT",
+    "PAGE-10": "PRIMARY",
+    "PAGE-11": "PRIMARY",
+    "PAGE-12": "SUPPORT",
+    "PAGE-13": "SUPPORT",
+    "PAGE-14": "SUPPORT",
+    "PAGE-15": "SUPPORT",
+    "PAGE-16": "SUPPORT",
+    "PAGE-17": "SUPPORT",
+    "PAGE-18": "APPENDIX",
+    "PAGE-19": "APPENDIX",
+    "PAGE-20": "PRIMARY"
+  },
+  "layout_families": ["DATA_DENSE", "DRAWING_WALL", "FULL_BLEED_HERO", "FULL_DRAWING", "MODEL_PROCESS", "SEQUENCE", "SPLIT_60_40", "SPLIT_DARK"],
+  "does_not_prove": ["field truth", "survey geometry", "safety/compliance", "implementation readiness", "professional design PASS"]
+}

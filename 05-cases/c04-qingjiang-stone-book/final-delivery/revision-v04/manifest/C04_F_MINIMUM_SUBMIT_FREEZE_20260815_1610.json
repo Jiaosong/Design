@@ -1,0 +1,121 @@
+{
+  "schema": "oleander.c04.f-minimum-submit-freeze/1.0",
+  "timestamp_local": "2026-08-15T16:10:00+08:00",
+  "status": "EXECUTED / REVISE",
+  "freeze_type": "MINIMUM_SUBMITTABLE_INTEGRATION",
+  "professional_pass_claim": false,
+  "promotion": "NO_PROMOTION",
+  "pr_policy": "DRAFT / UNMERGED / DO_NOT_MERGE",
+  "hard_state": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "NTS": true,
+    "NOT_FOR_CONSTRUCTION": true
+  },
+  "main_display_freeze": [
+    {
+      "asset_id": "A00",
+      "role": "PRIMARY MAIN",
+      "decision": "KEEP",
+      "note": "Current A R2 authority; old A generations remain prohibited from main display."
+    },
+    {
+      "asset_id": "A02",
+      "role": "PRIMARY MAIN",
+      "decision": "KEEP",
+      "note": "Current A R2 authority."
+    },
+    {
+      "asset_id": "D_QUALIFIED_VISUALS",
+      "role": "PRIMARY MAIN where already independently qualified",
+      "decision": "KEEP EXISTING QUALIFIED ONLY",
+      "note": "Do not invent replacement pixels and do not use abstract proxies as effect imagery."
+    }
+  ],
+  "support_only_freeze": [
+    {
+      "asset_id": "A01",
+      "role": "SUPPORT ONLY",
+      "decision": "KEEP SUPPORT",
+      "primary_allowed": false
+    },
+    {
+      "asset_id": "MODEL_V3_SEC_A",
+      "role": "SUPPORT ONLY",
+      "decision": "KEEP SUPPORT",
+      "primary_allowed": false,
+      "approved_bind_targets": ["W03", "P03"],
+      "bind_rule": "May replace old section or empty slot immediately; must not be promoted to PRIMARY."
+    },
+    {
+      "asset_id": "W02",
+      "role": "SUPPORT ONLY",
+      "decision": "KEEP SUPPORT",
+      "note": "Relation diagram only; does not replace the real-map main image."
+    },
+    {
+      "asset_id": "W07",
+      "role": "ENDING SUPPORT",
+      "decision": "KEEP ENDING SUPPORT"
+    }
+  ],
+  "rejected_or_provenance_only": [
+    {
+      "asset_id": "MODEL_V3_AXON",
+      "decision": "REJECT MAIN",
+      "role": "PROCESS PROVENANCE ONLY"
+    },
+    {
+      "asset_id": "MODEL_V3_HERO",
+      "decision": "REJECT MAIN",
+      "role": "PROCESS PROVENANCE ONLY"
+    },
+    {
+      "asset_id": "MODEL_V2_AXON_HERO",
+      "decision": "REJECT MAIN",
+      "role": "PROVENANCE ONLY / DO NOT INTEGRATE"
+    }
+  ],
+  "hold_items": [
+    {
+      "asset_id": "W00",
+      "decision": "KEEP_LAYOUT / REVISE_ASSET_BIND",
+      "submit_role": "HOLD",
+      "reason": "No actual qualified pixel asset is bound; proxy/placeholder is prohibited."
+    },
+    {
+      "asset_id": "W06",
+      "decision": "REJECT MAIN / REVISE_ASSET_BIND",
+      "submit_role": "HOLD",
+      "reason": "Abstract color block proxy is not an effect image; no proxy may be used."
+    },
+    {
+      "asset_id": "W03",
+      "decision": "KEEP_LAYOUT / REVISE_CONTENT",
+      "submit_role": "SUPPORT PATH ONLY",
+      "resolution": "Use MODEL_V3_SEC_A as support when bound; do not wait for or imply a model primary hero."
+    }
+  ],
+  "minimum_submit_sequence": [
+    "A00",
+    "A02",
+    "D_QUALIFIED_VISUALS",
+    "MODEL_V3_SEC_A_SUPPORT",
+    "W02_SUPPORT_IF_NEEDED",
+    "W07_ENDING_SUPPORT_IF_NEEDED"
+  ],
+  "remaining_gaps": [
+    "No accepted model AXON/HERO for PRIMARY display; model V3 AXON/HERO remain PROCESS PROVENANCE only.",
+    "W00 has no actual qualified pixel asset binding and therefore remains HOLD.",
+    "W06 has no actual qualified effect-image pixel asset and therefore remains HOLD; abstract proxy is prohibited.",
+    "W03/P03 may use SEC-A only as SUPPORT; this does not close any need for a future accepted model PRIMARY image if such a slot is later required.",
+    "A1-01 remains REVISE unless separately re-read and closed; do not infer closure from this minimum submit freeze.",
+    "Minimum submit freeze is not Professional PASS, Field PASS, implementation approval, merge approval, or Promotion."
+  ],
+  "suspended_work": [
+    "OLD_REV04_WEB_MATERIALIZATION_CHAIN"
+  ],
+  "suspended_work_rule": "Do not resume, repair, or use old REV04 materialization as current F body.",
+  "completion_statement": "A minimum submittable presentation set is frozen from already accepted A00 + A02 + qualified D visuals, with SEC-A support. This is a constrained submission freeze, not a completion or promotion claim."
+}
