@@ -115,6 +115,123 @@
     },
     "next_allowed_action": {"type": "string", "minLength": 1},
     "sync_persistence_trigger": {"enum": ["NONE", "RECEIPT", "PAP", "FULL_SYNC"]},
+    "execution_mode": {"enum": ["STANDARD", "EXISTING_PROJECT_REPAIR"]},
+    "execution_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseline", "run_provenance", "artifact_delta", "readback", "handoff", "dependency_edges", "change_impact"],
+      "properties": {
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["best_existing_artifact_id", "best_existing_ref", "rollback_ref", "preserve_dimensions"],
+          "properties": {
+            "best_existing_artifact_id": {"type": "string", "minLength": 1},
+            "best_existing_ref": {"type": "string", "minLength": 1},
+            "rollback_ref": {"type": "string", "minLength": 1},
+            "preserve_dimensions": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "run_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["run_id", "producer_owner", "skill_refs", "inputs", "outputs"],
+          "properties": {
+            "run_id": {"type": "string", "minLength": 1},
+            "producer_owner": {"enum": ["KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION", "GOVERNANCE"]},
+            "skill_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "inputs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["artifact_id", "digest", "location"],
+                "properties": {
+                  "artifact_id": {"type": "string", "minLength": 1},
+                  "digest": {"type": ["string", "null"], "pattern": "^(?:[A-Fa-f0-9]{64})?$"},
+                  "location": {"type": "string", "minLength": 1}
+                }
+              }
+            },
+            "outputs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["artifact_id", "digest", "location"],
+                "properties": {
+                  "artifact_id": {"type": "string", "minLength": 1},
+                  "digest": {"type": ["string", "null"], "pattern": "^(?:[A-Fa-f0-9]{64})?$"},
+                  "location": {"type": "string", "minLength": 1}
+                }
+              }
+            }
+          }
+        },
+        "artifact_delta": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "changed_artifact_ids", "authority_binding_changed", "description"],
+          "properties": {
+            "state": {"enum": ["NONE", "MATERIAL"]},
+            "changed_artifact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "authority_binding_changed": {"type": "boolean"},
+            "description": {"type": "string", "minLength": 1}
+          }
+        },
+        "readback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "medium", "artifact_ids"],
+          "properties": {
+            "state": {"enum": ["NOT_RUN", "PASS", "FAIL", "HOLD"]},
+            "medium": {"type": ["string", "null"]},
+            "artifact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "handoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "from_owner", "to_owner", "required_next_check", "receiver_master_ref"],
+          "properties": {
+            "state": {"enum": ["NONE", "READY", "ACCEPTED", "RETURNED_REVISE", "RETURNED_HOLD", "CLOSED"]},
+            "from_owner": {"type": ["string", "null"], "enum": ["KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION", "GOVERNANCE", null]},
+            "to_owner": {"type": ["string", "null"], "enum": ["KNOWLEDGE", "DESIGN", "PRESENTATION", "VALIDATION", "GOVERNANCE", null]},
+            "required_next_check": {"type": ["string", "null"]},
+            "receiver_master_ref": {"type": ["string", "null"]}
+          }
+        },
+        "dependency_edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["input_artifact_id", "current_input_digest", "consumed_input_digest", "output_artifact_id", "output_status"],
+            "properties": {
+              "input_artifact_id": {"type": "string", "minLength": 1},
+              "current_input_digest": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+              "consumed_input_digest": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+              "output_artifact_id": {"type": "string", "minLength": 1},
+              "output_status": {"enum": ["CURRENT", "STALE", "REGEN_REQUIRED", "RETEST_REQUIRED", "HOLD"]}
+            }
+          }
+        },
+        "change_impact": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["artifact_id", "impact", "required_action", "status"],
+            "properties": {
+              "artifact_id": {"type": "string", "minLength": 1},
+              "impact": {"enum": ["DIRECT", "INDIRECT"]},
+              "required_action": {"enum": ["NONE", "REVIEW", "REGENERATE", "RETEST"]},
+              "status": {"enum": ["OPEN", "DONE", "HOLD", "N_A"]}
+            }
+          }
+        }
+      }
+    },
     "review_history": {
       "type": "array",
       "items": {
