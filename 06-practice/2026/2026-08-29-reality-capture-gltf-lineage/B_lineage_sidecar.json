@@ -1,0 +1,41 @@
+{
+  "status": "EXERCISE_ASSUMPTION_DESIGN_TEST",
+  "source_object_id": "EX-RC-SRC-001",
+  "derived_object_id": "EX-RC-GLTF-001",
+  "source_crs": {
+    "authority": "EPSG",
+    "code": 32648,
+    "name": "WGS 84 / UTM zone 48N",
+    "axis_info": [
+      {
+        "name": "Easting",
+        "direction": "east",
+        "unit_name": "metre"
+      },
+      {
+        "name": "Northing",
+        "direction": "north",
+        "unit_name": "metre"
+      }
+    ]
+  },
+  "source_units": "metre",
+  "source_origin_E_N_H_m": [
+    500000.0,
+    1500000.0,
+    100.0
+  ],
+  "target_format": "glTF 2.0",
+  "target_units": "metre",
+  "axis_mapping": {
+    "gltf_X": "source_E - origin_E",
+    "gltf_Y": "source_H - origin_H",
+    "gltf_Z": "-(source_N - origin_N)"
+  },
+  "inverse_mapping": {
+    "source_E": "gltf_X + origin_E",
+    "source_N": "-gltf_Z + origin_N",
+    "source_H": "gltf_Y + origin_H"
+  },
+  "claim_ceiling": "METRIC_LOCAL_TEST_ONLY__NOT_FIELD_OR_SURVEY_AUTHORITY"
+}
