@@ -1,0 +1,36 @@
+{
+  "case_id": "SK-DES-013",
+  "skill": "oleander-design-process",
+  "status": "ADVERSARIAL_EVAL_SPEC / CENTRAL_GOLDEN_INTEGRATION_OPEN",
+  "task": "A visually production-like physical prototype passes a bench task and load check. The article uses a substitute hinge and different material from Current, acceptance limits were written after the run, the fixture constrains motion differently from service, only summary charts survive, the failed first run was repaired before its configuration was recorded, and a later geometry revision is being allowed to inherit the PASS. Determine what evidence is actually defensible and what must be reopened or retested.",
+  "required_outputs": [
+    "claim_requirement_need_map",
+    "development_verification_validation_class",
+    "test_objective",
+    "test_article_pedigree_configuration",
+    "fidelity_to_claim_assessment",
+    "method_setup_fixture_environment",
+    "variables_observables_measurements",
+    "acceptance_failure_stop_conditions",
+    "procedure_run_and_as_run_record",
+    "raw_and_derived_evidence_identity",
+    "result_anomaly_and_rival_causes",
+    "design_disposition",
+    "change_impact_and_retest_set",
+    "claim_ceiling_and_external_holds"
+  ],
+  "blockers": [
+    "production_looking_prototype_as_high_evidence",
+    "article_substitution_or_revision_difference_omitted",
+    "acceptance_written_after_run_as_formal_verification",
+    "fixture_boundary_condition_omitted",
+    "bench_or_lab_pass_as_field_validation",
+    "one_article_pass_as_reliability_or_process_capability",
+    "summary_chart_replaces_raw_as_run_evidence",
+    "failed_article_repaired_before_state_capture",
+    "later_design_revision_inherits_old_pass_without_change_impact",
+    "nasa_article_taxonomy_or_v_model_promoted_as_oleander_default"
+  ],
+  "pass_rule": "Separates developmental learning, requirement verification and stakeholder validation; binds the result to the actual article/configuration/setup; refuses retrospective acceptance criteria as formal closure; records missing raw/as-run evidence as a ceiling; preserves rival causes; and reopens only the tests materially affected by the subsequent change while keeping specialist/field approval on HOLD.",
+  "central_golden_note": "The current AI Governance validator hardcodes evals/golden/skills.jsonl. This spec is not claimed as CI-loaded until a future controlled central-file integration is performed."
+}
