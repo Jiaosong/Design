@@ -31,6 +31,7 @@ OWNER_MAP = RUNTIME / "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
 RECEIPT_DIR = RUNTIME / "receipts"
 LIFECYCLE_BASELINE = RUNTIME / "skill-lifecycle" / "BASELINE_ADOPTION_2026-08-18.json"
+LIFECYCLE_DIR = RUNTIME / "skill-lifecycle"
 REVIEW = ROOT / "oleander-skills" / "REVIEW.md"
 GOLDEN_SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
 UI_CANDIDATE_GOLDEN = ROOT / "evals" / "golden" / "ui_candidate_stack.jsonl"
@@ -167,8 +168,11 @@ def local_capability_path(owner: dict) -> Path | None:
 def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict) -> None:
     owners = capability.get("owners", [])
     required = set(capability.get("required_fields", []))
-    if len(owners) != 12:
-        fail(f"capability declaration count must be 12, got {len(owners)}")
+    installed_resolver_declared = set(resolver.get("capability_layers", {}).get("installed_reusable_execution_skills", []))
+    candidate_resolver_declared = set(resolver.get("capability_layers", {}).get("candidate_ui_specialists_on_main", []))
+    expected_owner_count = len(installed_resolver_declared) + len(candidate_resolver_declared) + 1
+    if len(owners) != expected_owner_count:
+        fail(f"capability declaration count must match installed + candidate owners + Technical Drawing body: expected {expected_owner_count}, got {len(owners)}")
     ids = [o.get("skill_id") for o in owners]
     if len(ids) != len(set(ids)):
         fail("duplicate skill_id in capability declarations")
@@ -207,17 +211,17 @@ def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict
             if not any("PR #172" in ref for ref in refs):
                 fail("Technical Drawing non-main implementation must reference Draft PR #172")
         else:
-            fail(f"{context} unsupported owner routing state in current 12-owner registry: {routing_state}")
+            fail(f"{context} unsupported owner routing state in current owner registry: {routing_state}")
 
     installed_review = installed_from_review()
     installed_cap = {o["skill_id"] for o in owners if o.get("lifecycle_state") == "INSTALLED" and o.get("routing_state") == "INSTALLED_OWNER"}
-    installed_resolver = set(resolver.get("capability_layers", {}).get("installed_reusable_execution_skills", []))
+    installed_resolver = installed_resolver_declared
     installed_map = {k for k, v in owner_map.get("owners", {}).items() if v.get("state") == "INSTALLED"}
     if not (installed_review == installed_cap == installed_resolver == installed_map):
         fail(f"installed owner drift REVIEW={sorted(installed_review)} capability={sorted(installed_cap)} resolver={sorted(installed_resolver)} map={sorted(installed_map)}")
 
     candidates_cap = {o["skill_id"] for o in owners if o.get("routing_state") == "CANDIDATE_OWNER"}
-    candidates_resolver = set(resolver.get("capability_layers", {}).get("candidate_ui_specialists_on_main", []))
+    candidates_resolver = candidate_resolver_declared
     candidates_map = {k for k, v in owner_map.get("owners", {}).items() if v.get("state") == "CANDIDATE"}
     if not (candidates_cap == candidates_resolver == candidates_map):
         fail(f"candidate owner drift capability={sorted(candidates_cap)} resolver={sorted(candidates_resolver)} map={sorted(candidates_map)}")
@@ -347,12 +351,41 @@ def validate_lifecycle_baseline(capability: dict) -> None:
     b = load_json(LIFECYCLE_BASELINE)
     installed = {r["skill_id"] for r in b.get("installed_pre_contract_baseline", [])}
     candidates = {r["skill_id"] for r in b.get("candidate_baseline", [])}
+    required_transition_fields = set(b.get("future_transition_required_fields", [])) | {"skill_id"}
+    valid_lifecycle_states = set(capability.get("lifecycle_states", []))
+
+    for path in sorted(LIFECYCLE_DIR.glob("PROMOTION_*.json")):
+        transition = load_json(path)
+        if transition.get("status") not in {"ACTIVE_TRANSITION", "APPLIED"}:
+            continue
+        require_fields(transition, required_transition_fields, f"lifecycle:{path.name}")
+        skill_id = transition["skill_id"]
+        from_state = transition["from_state"]
+        to_state = transition["to_state"]
+        if from_state not in valid_lifecycle_states or to_state not in valid_lifecycle_states:
+            fail(f"lifecycle:{path.name} uses unsupported lifecycle state {from_state}->{to_state}")
+
+        current_state = "INSTALLED" if skill_id in installed else "CANDIDATE" if skill_id in candidates else None
+        if current_state is not None and current_state != from_state:
+            fail(f"lifecycle:{path.name} from_state mismatch: expected {current_state}, got {from_state}")
+        if current_state is None and from_state != "CANDIDATE":
+            fail(f"lifecycle:{path.name} source skill is not baseline-tracked and must enter from CANDIDATE, got {from_state}")
+
+        installed.discard(skill_id)
+        candidates.discard(skill_id)
+        if to_state == "INSTALLED":
+            installed.add(skill_id)
+        elif to_state == "CANDIDATE":
+            candidates.add(skill_id)
+        else:
+            fail(f"lifecycle:{path.name} transition target {to_state} is not represented by the current capability aggregate")
+
     cap_installed = {o["skill_id"] for o in capability.get("owners", []) if o.get("lifecycle_state") == "INSTALLED"}
     cap_noninstalled = {o["skill_id"] for o in capability.get("owners", []) if o.get("lifecycle_state") == "CANDIDATE"}
     if installed != cap_installed:
-        fail("lifecycle baseline installed set does not match capability contract")
+        fail(f"lifecycle baseline + promotions installed set does not match capability contract: lifecycle={sorted(installed)} capability={sorted(cap_installed)}")
     if candidates != cap_noninstalled:
-        fail("lifecycle baseline candidate set does not match capability contract")
+        fail(f"lifecycle baseline + promotions candidate set does not match capability contract: lifecycle={sorted(candidates)} capability={sorted(cap_noninstalled)}")
 
 
 def validate_golden_coverage(installed_skills: set[str], candidate_skills: set[str]) -> None:
@@ -402,6 +435,7 @@ def main() -> None:
     print("execution-contract validation: PASS")
     print(f"installed owners consistent: {len(installed)}")
     print(f"candidate UI owners consistent: {len(candidates)}")
+    print(f"lifecycle promotion records applied: {len(list(LIFECYCLE_DIR.glob('PROMOTION_*.json')))}")
     print(f"real execution receipts: {len(list(RECEIPT_DIR.glob('*.json')))}")
     print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 

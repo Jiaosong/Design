@@ -1,7 +1,7 @@
 ---
 name: oleander-design-process
 description: Turn OLEANDER Current authority, evidence, constraints and design goals into materially different options, right-fidelity editable artifacts, critique/repair loops, controlled specialist handoffs and post-decision readback. Use for site/user/service analysis, design consequence mapping, spatial/product/system reasoning, option-space generation, form finding, concept-to-detail reasoning and project design-process artifacts.
-compatibility: Candidate reusable skill. Existing Skill First, Current Knowledge First when applicable, and Required Native Output First. This skill owns design reasoning and design-state progression; research authority, specialist technical validation, final presentation quality and release QC remain separate owners.
+compatibility: Installed reusable skill. Existing Skill First, Current Knowledge First when applicable, and Required Native Output First. This skill owns design reasoning and design-state progression; research authority, specialist technical validation, final presentation quality and release QC remain separate owners.
 ---
 
 # Oleander Design Process
@@ -12,7 +12,7 @@ Convert evidence and constraints into design decisions through visible, editable
 
 - Primary: `DESIGN`
 - Secondary: `KNOWLEDGE`, `VALIDATION`
-- Status: `CANDIDATE`
+- Status: `ACTIVE / INSTALLED`
 - Upstream: `oleander-research`
 - Downstream: `oleander-data-viz`, `oleander-3d-pipeline`, `oleander-visual-design`, `oleander-web-ui`, `oleander-technical-drawing`, `oleander-story-and-board`, `oleander-image-art-direction`, `oleander-motion`
 
@@ -489,15 +489,15 @@ Promotion test:
 
 `REMOVE LABELS + DECORATIVE COLOR → DOES THE FORM STILL PRESERVE THE RELATION TYPE?`
 
-## Candidate boundary
+## Execution boundary
 
-This skill remains Candidate. Improving the process body does not self-promote it to installed execution owner or ACTIVE.
+This skill is an installed OLEANDER execution owner for DESIGN reasoning and design-state progression. Installation does not grant artifact KEEP, specialist technical authority, field truth or release authority.
 
 It cannot:
 - self-KEEP;
 - replace specialist technical validation;
 - grant final presentation KEEP;
 - claim field/manufacturing/engineering/human-test truth;
-- convert training evidence into Current Rule without Knowledge lifecycle review.
+- convert project or training evidence into Current Knowledge without the Knowledge lifecycle.
 
-Promotion still requires project usage, maintained Golden Cases, AIG-01 regression review and independent approval where required.
+Activation closure: project-use and cross-context Practice evidence exist; maintained Golden Cases remain in `evals/golden/skills.jsonl`; AIG-01/AIG-02/AIG-03 regression checks passed on PR #449; the user explicitly authorized continuation to default activation on 2026-08-29. Independent artifact design verdicts remain governed separately by `OLEANDER_INDEPENDENT_DESIGN_VERDICT_POLICY_v1.0.md`.
