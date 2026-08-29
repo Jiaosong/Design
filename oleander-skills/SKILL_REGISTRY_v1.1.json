@@ -141,14 +141,15 @@
     },
     {
       "skill_id": "oleander-design-process",
-      "installation_state": "CANDIDATE",
+      "installation_state": "EXISTING_INSTALLED",
       "lifecycle_primary": "DESIGN",
       "lifecycle_secondary": ["KNOWLEDGE", "VALIDATION"],
-      "capability": ["design_reasoning", "analysis_diagram", "option_generation", "spatial_reasoning", "product_form_reasoning", "system_design"],
+      "capability": ["design_reasoning", "goal_framing", "analysis_diagram", "option_generation", "option_space", "prototype_fidelity", "spatial_reasoning", "product_form_reasoning", "system_design", "design_continuity", "change_propagation"],
       "handoff_in": ["oleander-research"],
-      "handoff_out": ["oleander-data-viz", "oleander-3d-pipeline", "oleander-visual-design", "oleander-web-ui", "oleander-technical-drawing"],
-      "runtime_policy": "REQUIRED_NATIVE_OUTPUT_FIRST_EXISTING_SKILL_REUSE",
-      "cannot_prove": ["TECHNICAL_VALIDATION_BY_DESIGN_LOGIC", "FINAL_PRESENTATION_KEEP", "FIELD_TRUTH", "ENGINEERING_APPROVAL"]
+      "handoff_out": ["oleander-data-viz", "oleander-3d-pipeline", "oleander-visual-design", "oleander-web-ui", "oleander-technical-drawing", "oleander-story-and-board", "oleander-image-art-direction", "oleander-motion"],
+      "runtime_policy": "CURRENT_AUTHORITY_AND_KNOWLEDGE_FIRST_THEN_SMALLEST_FALSIFIABLE_LOOP_AND_REQUIRED_NATIVE_OUTPUT",
+      "promotion_ref": "PR #449 / main@9755e1e382a69ab933e2d5d7cb3a4af4701af91e / user-authorized activation 2026-08-29",
+      "cannot_prove": ["TECHNICAL_VALIDATION_BY_DESIGN_LOGIC", "FINAL_PRESENTATION_KEEP", "FIELD_TRUTH", "ENGINEERING_APPROVAL", "MANUFACTURING_APPROVAL", "HUMAN_TEST_PASS"]
     }
   ]
 }
