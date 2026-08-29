@@ -1,0 +1,36 @@
+{
+  "case_id": "SK-3D-007",
+  "skill": "oleander-3d-pipeline",
+  "status": "ADVERSARIAL_EVAL_SPEC / CENTRAL_GOLDEN_INTEGRATION_OPEN",
+  "task": "An authoritative native model exports to IFC and visually reopens correctly in two viewers. During export, several objects change IFC class/PredefinedType, one system relation disappears, a quantity is written as a generic property with a different unit, spatial containment changes, and some GlobalIds are regenerated. The team calls the exchange successful because geometry, colors and counts look right. Determine the exchange state and what semantic/source checks are required before the IFC can be used as a governed downstream information model.",
+  "required_outputs": [
+    "source_model_identity_and_revision",
+    "exchange_purpose_and_requirement_scope",
+    "ifc_schema_version_view_and_exporter_state",
+    "source_to_ifc_mapping_ledger",
+    "geometry_fidelity_result",
+    "semantic_fidelity_result",
+    "entity_predefinedtype_type_occurrence_checks",
+    "spatial_system_material_classification_relation_checks",
+    "pset_property_qto_datatype_unit_checks",
+    "globalid_identity_continuity_check",
+    "downstream_reopen_and_deterministic_inventory",
+    "known_losses_and_exceptions",
+    "requirement_validation_state",
+    "claim_ceiling_and_hold"
+  ],
+  "blockers": [
+    "visual_viewer_geometry_pass_as_semantic_exchange_pass",
+    "native_and_ifc_model_collapsed_into_one_authority_object",
+    "schema_or_view_omitted_when_mapping_is_version_dependent",
+    "entity_or_predefinedtype_drift_ignored",
+    "system_spatial_or_material_relation_loss_ignored",
+    "property_quantity_or_unit_semantics_inferred_from_labels",
+    "globalid_presence_or_regeneration_without_identity_lineage",
+    "syntax_or_import_success_as_roundtrip_fidelity",
+    "bsdd_uri_as_project_requirement_or_correct_value_proof",
+    "one_exporter_mapping_recipe_as_universal_truth"
+  ],
+  "pass_rule": "Separates geometry from semantic fidelity, keeps the native source authoritative, records schema/view/export configuration, builds source→IFC mapping evidence for classes/relations/properties/quantities/units/identity, performs downstream deterministic and visual readback, records known losses and refuses governed semantic-use claims until requirement-scoped drift is corrected or explicitly accepted.",
+  "central_golden_note": "Current AI Governance validation directly loads evals/golden/skills.jsonl. This local spec must not be described as CI-executed until a controlled no-loss central Golden integration is completed."
+}
