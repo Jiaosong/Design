@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825aa76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -52,6 +52,9 @@ jobs:
       - name: Validate current Control Cards and no-loss architecture contract
         run: python 00-governance/control-plane/scan_control_cards.py | tee /tmp/control-card-scan.txt
 
+      - name: Validate existing-project execution integrity
+        run: python 00-governance/control-plane/validate_execution_integrity.py | tee /tmp/execution-integrity.txt
+
       - name: Enforce immutable workflow action refs
         run: python evals/scripts/validate_workflow_action_pins.py
 
@@ -76,7 +79,8 @@ jobs:
           echo '- Enforces one active production frontier per logical object, predecessor closure on successor adoption, location integrity, lifecycle exit, and source-byte dedup semantics.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces existing visual authority, one semantic content image per consumer unit, derivative identity inheritance, and project image-consumption ledgers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates Cloud-Free shared capability surfaces, zero external runtime dependency for Spatial Lab, preserved professional HOLD boundaries, and forbids fake browser PASS.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Discovers current Control Card v0.2 objects by content signature and applies existing Control Plane validation, including the global no-loss Architecture preservation contract.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Discovers current Control Card v0.3 objects by content signature and applies existing Control Plane validation, including the global no-loss Architecture preservation contract.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- For declared EXISTING_PROJECT_REPAIR cards, enforces material artifact delta before handoff, explicit run/input/output provenance, dependency-digest stale propagation, and baseline/change-impact/rollback closure.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Replay/example/test/receipt/archive/frozen-Legacy zones are not retroactively rewritten by the prospective Control Card scan.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
@@ -87,6 +91,13 @@ jobs:
             sed 's/^/- /' /tmp/control-card-scan.txt >> "$GITHUB_STEP_SUMMARY"
           else
             echo '- Control Card scan unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '### Existing-project execution integrity' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f /tmp/execution-integrity.txt ]; then
+            sed 's/^/- /' /tmp/execution-integrity.txt >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '- Execution-integrity output unavailable because an earlier validation step failed.' >> "$GITHUB_STEP_SUMMARY"
           fi
           echo '' >> "$GITHUB_STEP_SUMMARY"
           echo '### AIG-03 current evidence' >> "$GITHUB_STEP_SUMMARY"
