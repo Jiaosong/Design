@@ -14,6 +14,25 @@ This addendum supplements `EXTERNAL_EXTENSION_ROUTING_20260828.md` for the 2026-
 | Table is the primary analytical object and comparison, precision, units, ordering, grouping, totals, sorting or responsive/print transfer are the main design problem | `oleander-data-viz` + web/story/visual delivery owner as needed | `oleander-data-viz/DATA_TABLE_INFORMATION_DESIGN_EXTENSION.md` | `SkillMedev/skills/data-table-design`; USWDS table/accessibility cross-check |
 | Multi-page report/book/catalog/journal/manual requires flat plan, page/spread roles, masters, pacing, captions/folios and binding/trim continuity | `oleander-story-and-board` + typography/visual/print owners as needed | `oleander-story-and-board/EDITORIAL_PUBLICATION_SYSTEM_EXTENSION.md` | `prone-dc302/AlterLab-FC-Skills/alterlab-vcd-layout-designer` |
 
+## Cross-context evidence status — 2026-08-29
+
+All five entries now have a second professional source plus a materially different controlled practice. The canonical evidence index is:
+
+`oleander-skills/CROSS_CONTEXT_EVIDENCE_BATCH4_20260829.md`
+
+Machine-checkable regression rows are in:
+
+`evals/cross-context/batch4_20260829.jsonl`
+
+Practice evidence:
+- Microcopy → offline desktop sync conflict / destructive replacement; Microsoft Windows writing guidance.
+- Packaging → e-commerce transit shipper; ISTA + Fibre Box Association.
+- Physical signage → multimodal transit interchange; Transport for London Streetscape / Legible London.
+- Data table → laboratory comparison with method/uncertainty/non-detect states; W3C WAI.
+- Editorial publication → multi-document technical manual; Adobe InDesign Book documentation.
+
+Maturity for these five is now `CROSS_CONTEXT_EVIDENCE`, not `PROJECT_USAGE_EVIDENCE`, `VALIDATED_CANDIDATE`, `ACTIVE` or `INDEPENDENT KEEP`.
+
 ## Co-routing rules
 
 - Microcopy does not replace interaction truth. Resolve actual state/recovery behavior first; copy may clarify but cannot invent backend consequence, reversibility, availability or compliance.
@@ -29,7 +48,10 @@ This addendum supplements `EXTERNAL_EXTENSION_ROUTING_20260828.md` for the 2026-
 - `prone-dc302/AlterLab-FC-Skills`: MIT. Packaging, exhibition and layout mechanics are independently reformulated; all claimed experience metrics, fixed dimensions, ADA numbers, print recipes and house-style statements are excluded unless re-established by Current project/source authority.
 - `SkillMedev/skills`: MIT. Data-table comparison/precision/order semantics are retained; fixed row/column/time/decimal thresholds are not universal OLEANDER rules.
 - GOV.UK, FEFCO, NPS and USWDS are cross-check sources for bounded principles/standard-context awareness; they do not become universal jurisdictional authority for every OLEANDER project.
+- Microsoft, ISTA, Fibre Box Association, TfL, W3C and Adobe cross-context sources are used only for bounded professional comparison; proprietary examples, marks, manuals, paid procedures, visual identities, templates and fixed heuristics are not imported as OLEANDER defaults.
 
 ## Maturity boundary
 
-Every entry remains `CANDIDATE EXTENSION / SUPPORT / SCOPED`. Documentation, license cleanliness, external-source agreement and CI success do not grant `ACTIVE`, `CURRENT RULE`, `PROJECT_USAGE_EVIDENCE` or `INDEPENDENT KEEP`. Real reapplication, actual artifact readback and independent review remain required.
+Every entry remains under an existing owner and is still Candidate-level. `CROSS_CONTEXT_EVIDENCE` means the mechanism survived a materially different controlled practice; it does **not** mean the extension is installed as a new Core Skill, validated in a real project, physically/field proven, independently KEEP, or eligible to overwrite Current L5 authority.
+
+Next valid maturity target for these five is `PROJECT_USAGE_EVIDENCE`, not another generic external-search batch for the same capability.
