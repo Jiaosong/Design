@@ -1,0 +1,39 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "scope": "R05_R06_MAIN_BOUND_v1.1",
+  "architecture_policy": "NO_COMPRESSION_NO_LOSS_RESTRUCTURE_WITHOUT_INFORMATION_LOSS",
+  "total_architecture_changed": false,
+  "r05": {
+    "identity": "R05 红花石林",
+    "state": "INTERACTION_KEEP_MAIN_CANDIDATE_LANDSCAPE_PIXEL_HOLD",
+    "interaction": "SEE_OPTIONAL_DO_FEEDBACK_EXIT",
+    "digital_presence": "OFF_LIGHT_SHORT_OFF",
+    "pixel_boundary": "official_source_known_but_raw_pixel_not_materialized_runtime",
+    "forbidden_substitution": ["generic_qingjiang_pixel_as_r05", "ai_peak_forest_as_site_truth", "invented_exact_peak_geometry"]
+  },
+  "r06": {
+    "identity": "R06 多级阶地·不对称河谷",
+    "state": "KEEP_AFTER_REVISION_MAIN_BOUND",
+    "landscape_source": {
+      "drive_id": "1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn",
+      "file": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png"
+    },
+    "technical_source": {
+      "drive_id": "1iyvpCESZlFqVvwRZDxzuaiwjmSDL7224",
+      "file": "C04_QJ-C22_SPATIAL_DRAWING_PACKAGE_v3.0.pdf",
+      "bound_section": "C22-SEC-B"
+    },
+    "section_namespace": {
+      "C22-SEC-A": "cross-river cable / Transport + View",
+      "C22-SEC-B": "slope walk + viewing/recovery edge / R06 relevant",
+      "C22-SEC-C": "natural convergence/fissure / R13",
+      "MDL-SEC-B": "R06 conceptual model section",
+      "C23-R06-GA": "R06 technical support",
+      "C23-R06-DETAIL": "R06 technical detail",
+      "C23-SEC-A": "C23-specific namespace only"
+    },
+    "rejected_intermediate": "technical crop accidentally captured C22-SEC-A and was rejected before v1.1 delivery"
+  },
+  "truth_boundary": ["FIELD_OBSERVED_0", "FIELD_MEASURED_0", "G1F_HOLD", "NO_PROMOTION", "NTS", "NOT_FOR_CONSTRUCTION"],
+  "does_not_prove": ["Design_PASS", "MAIN_KEEP", "surveyed_geometry", "field_safety", "structural_adequacy", "implementation_approval"]
+}
