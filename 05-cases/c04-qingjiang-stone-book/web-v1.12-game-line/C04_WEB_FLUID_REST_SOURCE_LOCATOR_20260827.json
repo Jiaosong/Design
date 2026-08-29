@@ -1,6 +1,6 @@
 {
   "record_type": "EVIDENCE_RECORD_NOT_CLOSURE_RECEIPT",
-  "observed_at": "2026-08-27",
+  "observed_at": "2026-08-30",
   "logical_object": "C04 Current Web / Physical-Body-Sensory / Fluid Rest",
   "runtime_path": "assets/fluid_rest_object.png",
   "current_project_authority": {
@@ -29,42 +29,41 @@
     "current_production_map": {
       "path": "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_1.json",
       "blob_sha": "f736e0564bcc6cdbac37d780283e031a7be3e799",
-      "s05_contract": "ONE_UNIQUE_ODB03_CHILD / SELECT_AND_RESERVE_BEFORE_LAYOUT",
+      "s05_contract": "ONE_UNIQUE_ODB03_CHILD / SELECT_AND_RESERVE_BEFORE_LAYOUT; strongest ODB-03A/B spatial/body view may qualify only after figure-level readback",
       "s06_contract": "DIFFERENT_ODB03_TECHNICAL_CHILD_OR_NATIVE_VECTOR / SEPARATE_IDENTITY_AND_RESERVATION"
     },
     "library_parent_readback": {
-      "odb03a": "PASS / concept-form-detail-material board; contains the stronger detail/material/structure information suitable as the parent for later S06 technical child extraction",
-      "odb03b": "PASS / application-landing-body-scale-material-process board; contains the stronger spatial/body application information suitable as the parent for later S05 public design child extraction"
+      "odb03a": "PASS / concept-form-detail-material parent board",
+      "odb03b": "PASS / application-landing-body-scale-material-process parent board",
+      "selection_boundary": "Board-level semantic differences are useful evidence but do not authorize an S05/S06 parent or child binding before figure-level readback."
     },
     "google_drive_locator": "NO ODB-03 child/source-register materialization located in the current connected Drive surface"
   },
-  "identity_decision": "PARENT SOURCE IDENTITY CURRENT AND VERIFIED; AUTHORITATIVE EXISTING S05/S06 CHILD NOT LOCATED",
+  "identity_decision": "PARENT SOURCE FAMILY CURRENT AND VERIFIED; AUTHORITATIVE EXISTING S05/S06 CHILD NOT LOCATED",
   "duplication_decision": "KEEP BOTH LIBRARY BOARDS / NO MERGE / NO DEDUP",
   "current_source_selection": {
-    "decision_type": "NEW_CURRENT_PROJECT_SOURCE_SELECTION_NOT_HISTORICAL_RECOVERY",
-    "s05_parent_source": "ODB-03B / 山体流体休憩装置2.png / MOUNTAIN_FLUID_REST_APPLICATION",
-    "s05_reason": "S05 requires the strongest spatial/body design view; ODB-03B is the application/landing/body-scale board and is semantically better aligned than ODB-03A.",
-    "s06_parent_source": "ODB-03A / 山体流体休憩装置.png / MOUNTAIN_FLUID_REST",
-    "s06_reason": "S06 requires technical/section/exploded proof; ODB-03A contains the stronger form/structure/detail/material content and is the correct parent for a later technical child extraction or native-vector reconstruction.",
-    "distinct_parent_rule": "S05 and S06 use distinct parent sources; no same-board double crop is permitted to satisfy uniqueness.",
-    "does_not_create_child_identity": true
-  },
-  "child_registration_state": {
-    "s05": "PARENT SELECTED / FIGURE_BOUNDS + CHILD_HASH + SEMANTIC_ROLE REGISTRATION HOLD",
-    "s06": "PARENT SELECTED / FIGURE_BOUNDS + CHILD_HASH + SEMANTIC_ROLE REGISTRATION HOLD",
-    "image_consumption_ledger_mutation": "NOT YET PERMITTED UNTIL ACTUAL CHILD FIGURE BYTES/BOUNDS ARE READ BACK",
+    "decision_type": "HOLD_PENDING_FIGURE_LEVEL_READBACK",
+    "s05_parent_source": "HOLD / ODB-03A OR ODB-03B MAY QUALIFY ONLY AFTER ACTUAL FIGURE-LEVEL READBACK",
+    "s06_parent_source": "HOLD / DIFFERENT ODB-03 TECHNICAL CHILD OR NATIVE VECTOR REQUIRED AFTER ACTUAL FIGURE-LEVEL READBACK",
+    "correction": "The earlier board-level preallocation S05→ODB-03B and S06→ODB-03A was a candidate interpretation, not Current binding authority, and is superseded for live routing.",
     "historical_recovery_claim": "NOT ALLOWED"
   },
-  "runtime_materialization": "HOLD",
+  "child_registration_state": {
+    "s05": "HOLD / FIGURE_BOUNDS + CHILD_BYTES/HASH + SEMANTIC_ROLE + RESERVATION REQUIRED",
+    "s06": "HOLD / DISTINCT TECHNICAL CHILD OR NATIVE VECTOR + IDENTITY + RESERVATION REQUIRED",
+    "image_consumption_ledger_mutation": "NOT YET PERMITTED UNTIL ACTUAL CHILD FIGURE BYTES/BOUNDS ARE READ BACK"
+  },
+  "runtime_materialization": "HOLD / DO NOT MATERIALIZE assets/fluid_rest_object.png YET",
   "forbidden_recovery": [
-    "do not call this new Current selection a historical recovery",
+    "do not call a new Current selection a historical recovery",
     "do not bind either whole board as a child without child identity metadata",
     "do not crop arbitrary bounds",
+    "do not use the same board twice to manufacture uniqueness",
     "do not use AI/redraw/model substitute",
     "do not promote either board to site/engineering evidence"
   ],
-  "next_allowed_action": "Perform actual figure-level extraction/readback separately from ODB-03B for S05 and ODB-03A for S06; compute child hashes and register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state in C04_IMAGE_CONSUMPTION_LEDGER_v1_0.json before deriving Web runtime representations.",
-  "production_pr_integrity": "Same active Production PR #353; no second Production PR and no review-only PR created.",
+  "next_allowed_action": "Read actual candidate child regions/figures first; then make an explicit Current selection and register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state in C04_IMAGE_CONSUMPTION_LEDGER_v1_0.json before deriving Web runtime representations.",
+  "production_pr_integrity": "Current active Production frontier is successor PR #465 / agent/c04-web-v1-12-currentize-20260830; predecessor PR #353 is CLOSED + UNMERGED provenance/rollback only.",
   "review_state": "INTERNAL_ARTIFACT_FIRST_PROFESSIONAL_CRIT / NO INDEPENDENT KEEP",
   "type_gap_brief": "N/A / NON-TRIGGER; project figure registration, not a universal Design/Engineering Type gap"
 }
