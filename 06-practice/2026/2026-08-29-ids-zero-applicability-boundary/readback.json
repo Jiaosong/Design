@@ -1,0 +1,49 @@
+{
+  "runtime": {
+    "python": "stdlib",
+    "xml_parser": "xml.etree.ElementTree",
+    "ifc_inventory_method": "STEP entity-token inventory; NOT full IFC semantic validator"
+  },
+  "source_standard": {
+    "IDS": "buildingSMART IDS 1.0 official final standard (June 2024)",
+    "schema_validation": "NOT RUN: authoritative audit runtime unavailable in environment"
+  },
+  "ifc": {
+    "sha256": "3820aebef9e8c99802f4e6ac0754480bef05ea030cf665747e803d7b044d3139",
+    "schema_header": "IFC4",
+    "entity_counts": {
+      "IFCAPPLICATION": 1,
+      "IFCDOOR": 1,
+      "IFCORGANIZATION": 1,
+      "IFCPERSON": 1,
+      "IFCPERSONANDORGANIZATION": 1
+    }
+  },
+  "results": {
+    "A_zero_applicable.ids": {
+      "xml_reopen": "PASS",
+      "target_entity": "IFCWALL",
+      "applicable_count": 0,
+      "sha256": "22e21c6715710125fb7acd01021d82c8a7c997d415d8426fb2e6fea8bf8baca3"
+    },
+    "B_one_applicable.ids": {
+      "xml_reopen": "PASS",
+      "target_entity": "IFCDOOR",
+      "applicable_count": 1,
+      "sha256": "56bd2efbf5b9213ae090fb9d6e2b7f4b25533eaa7eb1c52416ef72bcd66a95f5"
+    }
+  },
+  "verdict": "PROVEN_BOUNDED_ZERO_APPLICABILITY_DETECTION__HOLD_IDS_VALIDATOR_CONFORMANCE",
+  "proven": [
+    "Both IDS-shaped XML artifacts survive disk reopen and expose explicit applicability entity targets.",
+    "The exact same IFC artifact contains IFCDOOR and no IFCWALL records.",
+    "Independent reopen inventory therefore yields A applicable_count=0 and B applicable_count=1."
+  ],
+  "not_proven": [
+    "IDS 1.0 XSD validity",
+    "IfcTester/buildingSMART IDS Audit result",
+    "full IFC semantic correctness",
+    "project requirement coverage",
+    "universal validator behavior"
+  ]
+}
