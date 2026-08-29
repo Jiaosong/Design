@@ -130,6 +130,24 @@
       "does_not_prove": ["professional_design_pass", "user_validation", "field_truth"]
     },
     {
+      "skill_id": "oleander-design-process",
+      "lifecycle_state": "INSTALLED",
+      "routing_state": "INSTALLED_OWNER",
+      "accepts": ["project_current_authority", "design_goal", "research_evidence", "constraints", "design_question", "existing_design_assets", "validation_findings"],
+      "produces": ["design_goal_contract_application", "analysis_diagram", "design_consequence_map", "option_space", "editable_design_artifact", "design_decision_record", "validation_handoff", "presentation_handoff", "change_propagation_record"],
+      "owns_authority": ["design_reasoning_execution", "design_state_progression", "option_space_generation", "prototype_fidelity_selection", "design_continuity_handoff"],
+      "does_not_own": ["upstream_source_truth", "specialist_technical_validation", "final_presentation_keep", "field_truth", "engineering_approval", "manufacturing_approval", "human_test_pass"],
+      "required_tools": ["current_authority_and_knowledge_resolution", "required_native_output_runtime"],
+      "optional_tools": ["oleander-research", "oleander-data-viz", "oleander-3d-pipeline", "oleander-visual-design", "oleander-web-ui", "oleander-technical-drawing", "oleander-story-and-board", "oleander-image-art-direction", "oleander-motion"],
+      "runtime": "required_native_output_and_project_context_dependent",
+      "fallback": "smallest_falsifiable_loop_with_editable_or_native_inspectable_artifact_and_explicit_validation_hold",
+      "gates": ["authority_preflight", "goal_and_unknown_frame", "variable_budget", "option_space_coverage", "prototype_fidelity", "actual_readback", "design_crit", "root_cause_repair", "validation_handoff_when_triggered", "design_continuity", "change_propagation"],
+      "handoff_schema": "OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1",
+      "implementation_paths": ["oleander-skills/oleander-design-process/SKILL.md"],
+      "last_verified": "2026-08-29",
+      "does_not_prove": ["upstream_source_truth", "specialist_technical_validation", "final_presentation_keep", "field_truth", "engineering_approval", "manufacturing_approval", "human_test_pass"]
+    },
+    {
       "skill_id": "oleander-ui-visual-composition",
       "lifecycle_state": "CANDIDATE",
       "routing_state": "CANDIDATE_OWNER",
