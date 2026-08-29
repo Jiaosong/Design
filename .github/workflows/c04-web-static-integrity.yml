@@ -1,0 +1,36 @@
+name: C04 Web Static Integrity
+
+on:
+  pull_request:
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/**'
+      - '05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/**'
+      - '.github/workflows/c04-web-static-integrity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  c04-web-static-integrity:
+    name: C04 Web v1.12 repo-local dependency integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Run C04 Web static verifier
+        run: node 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/verify_game_line.mjs
+
+      - name: Publish C04 static readback
+        if: always()
+        run: |
+          echo '## C04 Web v1.12 Static Integrity' >> "$GITHUB_STEP_SUMMARY"
+          READBACK='05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/C04_WEB_v1_12_R2_STATIC_READBACK.json'
+          if [ -f "$READBACK" ]; then
+            cat "$READBACK" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Static readback was not produced.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Boundary: static repository dependency integrity only; not browser PASS, Design KEEP, FIELD, engineering, accessibility, or release proof.' >> "$GITHUB_STEP_SUMMARY"
