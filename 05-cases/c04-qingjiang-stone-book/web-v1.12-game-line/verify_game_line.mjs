@@ -18,16 +18,51 @@ function collectAssetRefs(text){
   return refs;
 }
 
+function isRepoLocalRef(ref){
+  if(!ref || ref.startsWith("#")) return false;
+  return !/^(?:[a-z]+:)?\/\//i.test(ref)
+    && !/^(?:data|mailto|tel|javascript):/i.test(ref);
+}
+
+function collectRepoLocalRefs(text){
+  const refs=[];
+  for(const match of text.matchAll(/(?:src|href)=["']([^"']+)["']/g)){
+    if(isRepoLocalRef(match[1])) refs.push(match[1]);
+  }
+  for(const match of text.matchAll(/url\(\s*["']?([^)'"\s]+)["']?\s*\)/g)){
+    if(isRepoLocalRef(match[1])) refs.push(match[1]);
+  }
+  return refs;
+}
+
 const referencedAssets=[...new Set([
   ...collectAssetRefs(html),
   ...collectAssetRefs(css),
   ...collectAssetRefs(js)
 ])].sort();
-const missingAssets=referencedAssets.filter(ref=>!fs.existsSync(path.join(root,ref)));
-const emptyAssets=referencedAssets.filter(ref=>{
-  const file=path.join(root,ref);
-  return fs.existsSync(file)&&fs.statSync(file).isFile()&&fs.statSync(file).size===0;
-});
+const referencedRepoLocalFiles=[...new Set([
+  ...collectRepoLocalRefs(html),
+  ...collectRepoLocalRefs(css),
+  ...collectRepoLocalRefs(js)
+])].sort();
+
+function resolveLocalRef(ref){
+  return path.resolve(root,ref);
+}
+function missingRefs(refs){
+  return refs.filter(ref=>!fs.existsSync(resolveLocalRef(ref)));
+}
+function emptyRefs(refs){
+  return refs.filter(ref=>{
+    const file=resolveLocalRef(ref);
+    return fs.existsSync(file)&&fs.statSync(file).isFile()&&fs.statSync(file).size===0;
+  });
+}
+
+const missingAssets=missingRefs(referencedAssets);
+const emptyAssets=emptyRefs(referencedAssets);
+const missingRepoLocalFiles=missingRefs(referencedRepoLocalFiles);
+const emptyRepoLocalFiles=emptyRefs(referencedRepoLocalFiles);
 const forbiddenPublicPatterns=[/CH\d{2}-P\d+/i,/PR\s*#\d+/i,/blob\s+[0-9a-f]{7,}/i,/DESIGN REVIEW PENDING/i,/NO_PROMOTION/i,/FIELD OBSERVED/i];
 const requiredPhrases=["原资产","设计创意","TASK FLOW / WORKFLOW","TECHNOLOGY APPLICATION ROUTE","AI + 3D CREATION PROCESS","INNOVATION POINTS","TECHNICAL DIFFICULTIES","DESIGN EVOLUTION / PROFESSIONAL JUDGMENT"];
 const retiredFiles=[
@@ -46,9 +81,10 @@ const supplementAssets=[
   "assets/r06_general_assembly_v11.svg",
   "assets/r06_detail_atlas_v11.svg"
 ];
+const currentPaperMemoryCarrier="../physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg";
 
 const result={
-  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_16",
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_17",
   section_count:sections.length,
   unique_sections:new Set(sections).size,
   ordered_sections:JSON.stringify(sections)===JSON.stringify(expected),
@@ -60,6 +96,14 @@ const result={
   missing_assets:missingAssets,
   empty_asset_count:emptyAssets.length,
   empty_assets:emptyAssets,
+  repo_local_reference_count:referencedRepoLocalFiles.length,
+  repo_local_files_referenced:referencedRepoLocalFiles,
+  missing_repo_local_count:missingRepoLocalFiles.length,
+  missing_repo_local_files:missingRepoLocalFiles,
+  empty_repo_local_count:emptyRepoLocalFiles.length,
+  empty_repo_local_files:emptyRepoLocalFiles,
+  current_paper_memory_carrier_referenced:html.includes(currentPaperMemoryCarrier),
+  current_paper_memory_carrier_exists:fs.existsSync(resolveLocalRef(currentPaperMemoryCarrier)),
   data_uri_images:(html.match(/src="data:/g)||[]).length,
   internal_production_tokens_visible:forbiddenPublicPatterns.filter(pattern=>pattern.test(html)).map(pattern=>pattern.source),
   retired_report_structure_absent:retiredFiles.every(file=>!fs.existsSync(path.join(root,file))),
@@ -78,7 +122,7 @@ const result={
   public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
 
-result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.runtime_asset_reference_count>=10&&result.missing_asset_count===0&&result.empty_asset_count===0&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.supplement_tab_count===7&&result.supplement_panels_present&&result.supplement_original_assets_present&&result.supplement_ai3d_six_stage&&result.supplement_mobile_behavior&&result.supplement_escape_close;
+result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.runtime_asset_reference_count>=10&&result.missing_asset_count===0&&result.empty_asset_count===0&&result.missing_repo_local_count===0&&result.empty_repo_local_count===0&&result.current_paper_memory_carrier_referenced&&result.current_paper_memory_carrier_exists&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.supplement_tab_count===7&&result.supplement_panels_present&&result.supplement_original_assets_present&&result.supplement_ai3d_six_stage&&result.supplement_mobile_behavior&&result.supplement_escape_close;
 
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
