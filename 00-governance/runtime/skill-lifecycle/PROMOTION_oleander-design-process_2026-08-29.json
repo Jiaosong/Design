@@ -1,20 +1,21 @@
 {
   "record_id": "OLEANDER-SKILL-PROMOTION-oleander-design-process-2026-08-29",
-  "status": "ACTIVE_TRANSITION",
+  "status": "APPLIED",
   "effective_date": "2026-08-29",
   "skill_id": "oleander-design-process",
   "from_state": "CANDIDATE",
   "to_state": "INSTALLED",
   "evidence_refs": [
     "GitHub PR #449 merged main@9755e1e382a69ab933e2d5d7cb3a4af4701af91e",
+    "GitHub PR #453 merged main@636f15883b8683fcbd27e71bb1f86cd7dd91f77f",
     "evals/golden/skills.jsonl SK-DES-001..SK-DES-012",
     "cross-context Practice evidence PR #407/#409/#410/#415/#418/#419/#422/#425/#428/#430/#432/#435/#437/#440/#441/#443",
-    "AIG-01/AIG-02/AIG-03 success on PR #449",
+    "AIG-01/AIG-02/AIG-03 success on PR #449 and PR #453",
     "explicit user continuation to default activation on 2026-08-29"
   ],
   "reviewer_id": "USER_EXPLICIT_PROMOTION_AUTHORITY",
   "decision_ref": "GitHub PR #453 / explicit user instruction: continue activation",
-  "effective_commit": "PR453_HEAD_1d58608d7bf897f27bd3e1c3ae667655cc9f792d",
+  "effective_commit": "636f15883b8683fcbd27e71bb1f86cd7dd91f77f",
   "boundaries": [
     "NO_ARTIFACT_SELF_KEEP",
     "NO_SPECIALIST_TECHNICAL_VALIDATION_BY_DESIGN_PROCESS",
