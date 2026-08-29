@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "trimesh": "4.11.1",
+    "pyproj": "3.7.2"
+  },
+  "source_crs_exercise": {
+    "epsg": 32648,
+    "name": "WGS 84 / UTM zone 48N"
+  },
+  "a": {
+    "artifact": "A_geometry_only.gltf",
+    "reopen_vertex_count": 4,
+    "bounds_m": [[0.0,0.0,-5.0],[10.0,2.0,-0.0]],
+    "edge_01_m": 10.0,
+    "contains_crs_metadata": false,
+    "contains_source_origin": false,
+    "absolute_source_frame_recoverable_from_artifact_alone": false
+  },
+  "b": {
+    "artifact": "B_geometry_with_lineage.gltf",
+    "sidecar": "B_lineage_sidecar.json",
+    "reopen_vertex_count": 4,
+    "bounds_m": [[0.0,0.0,-5.0],[10.0,2.0,-0.0]],
+    "reconstructed_source_max_abs_error_m": 0.0,
+    "lineage_fields_present": true,
+    "absolute_source_frame_recoverable_with_sidecar": true
+  },
+  "verdict": "PROVEN_GEOMETRY_SURVIVES_GLTF_REOPEN__PROVEN_ABSOLUTE_FRAME_LOSS_WITHOUT_LINEAGE__HOLD_FIELD_SURVEY_AUTHORITY",
+  "sha256": {
+    "A_geometry_only.gltf": "9691e42ffb9421a92e97f44e9db819a55b7459d367e9644c3c71af0985dfe541",
+    "B_geometry_with_lineage.gltf": "9691e42ffb9421a92e97f44e9db819a55b7459d367e9644c3c71af0985dfe541",
+    "B_lineage_sidecar.json": "baab70df87bfe5bebca28b27bd3764d179e7d0f4010aed96985a218f08f5bfcc"
+  }
+}
