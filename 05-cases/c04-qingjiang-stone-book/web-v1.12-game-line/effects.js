@@ -67,42 +67,6 @@
   const digitalPhone=document.querySelector('#digital .phone');
   const digitalQuote=document.querySelector('#digital .large-quote');
   const sceneImages=[...document.querySelectorAll('#scenes .scene-pair img')];
-  const motionTargets=[...document.querySelectorAll([
-    '#idea .three-scales article',
-    '#workflow .workflow article',
-    '#technology .tech-route article',
-    '#ai3d .ai3d-process article',
-    '#innovation .innovation-grid article',
-    '#difficulties .difficulty-list article'
-  ].join(','))];
-  const drawablePaths=[...document.querySelectorAll('#idea .three-scales svg path,#ai3d .vector-canvas svg path')];
-
-  function prepareDrawPaths(){
-    drawablePaths.forEach(path=>{
-      if(typeof path.getTotalLength!=='function') return;
-      const length=Math.ceil(path.getTotalLength());
-      path.style.setProperty('--path-length',String(length));
-      path.classList.add('effect-draw-path');
-    });
-  }
-
-  const observer=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('effect-visible');
-      observer.unobserve(entry.target);
-    });
-  },{rootMargin:'0px 0px -10% 0px',threshold:.12}):null;
-
-  function prepareTargets(){
-    motionTargets.forEach((target,index)=>{
-      target.style.setProperty('--effect-delay',`${(index%4)*65}ms`);
-      if(observer) observer.observe(target); else target.classList.add('effect-visible');
-    });
-    document.querySelectorAll('#idea .three-scales,#ai3d .ai3d-process').forEach(group=>{
-      if(observer) observer.observe(group); else group.classList.add('effect-visible');
-    });
-  }
 
   function resetMotionState(){
     root.classList.remove('motion-ready');
@@ -190,8 +154,6 @@
     window.requestAnimationFrame(syncMotion);
   }
 
-  prepareDrawPaths();
-  prepareTargets();
   activateMotion();
   requestSync();
   window.addEventListener('scroll',requestSync,{passive:true});
