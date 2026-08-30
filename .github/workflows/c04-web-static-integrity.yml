@@ -8,7 +8,7 @@ on:
       - '.github/workflows/c04-web-static-integrity.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   c04-web-static-integrity:
@@ -20,107 +20,6 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Bind locked QJ-D v1.1 landscape runtime assets
-        if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'agent/c04-web-v1-12-currentize-20260830'
-        env:
-          WEB_ROOT: 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line
-        run: |
-          python -m pip install --disable-pip-version-check --quiet 'pillow==12.3.0' 'requests==2.32.5'
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib
-          import requests
-          from PIL import Image, Image as PILImage, features
-
-          root = Path('05-cases/c04-qingjiang-stone-book/web-v1.12-game-line')
-          assets = root / 'assets'
-          assets.mkdir(parents=True, exist_ok=True)
-          tmp = root / '.locked-source-tmp'
-          tmp.mkdir(exist_ok=True)
-
-          sources = {
-              'hero': {
-                  'id': '151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh',
-                  'source_sha256': '8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c',
-                  'target': assets / 'hero_qingjiang.jpg',
-                  'target_sha256': 'e08be99fe84e55c77c782601f9fb0ab59bab826fdf532218b290a3fb357c1bdf',
-              },
-              'r06': {
-                  'id': '1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ',
-                  'source_sha256': '013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0',
-                  'target': assets / 'r06_qingjiang.jpg',
-                  'target_sha256': '6de729bf90be671a05f054333e5cd6b56aed7f416eda44a9eea0d7c7c57422d3',
-              },
-              'r13': {
-                  'id': '18PST2KVoARuc9Kfr23MIjv7vDhC3v1Ka',
-                  'source_sha256': '583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666',
-                  'target': assets / 'r13_passage_sequence.png',
-                  'target_sha256': '583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666',
-              },
-          }
-
-          print('Pillow', PILImage.__version__, 'libjpeg', features.version('jpg'), 'libjpeg-turbo', features.version('libjpeg_turbo'), 'webp', features.version('webp'))
-
-          session = requests.Session()
-          session.headers['User-Agent'] = 'OLEANDER-C04-authority-bind/1.0'
-
-          def sha256(data: bytes) -> str:
-              return hashlib.sha256(data).hexdigest()
-
-          for key, spec in sources.items():
-              target = spec['target']
-              if target.exists() and sha256(target.read_bytes()) == spec['target_sha256']:
-                  print(f'{key}: target already exact; reuse {target}')
-                  continue
-
-              url = f"https://drive.usercontent.google.com/download?id={spec['id']}&export=download&confirm=t"
-              response = session.get(url, timeout=90, allow_redirects=True)
-              response.raise_for_status()
-              data = response.content
-              actual_source = sha256(data)
-              if actual_source != spec['source_sha256']:
-                  raise SystemExit(f"{key}: SOURCE HASH MISMATCH expected={spec['source_sha256']} actual={actual_source} bytes={len(data)} content_type={response.headers.get('content-type')}")
-              source_path = tmp / f'{key}.png'
-              source_path.write_bytes(data)
-
-              if key == 'r13':
-                  target.write_bytes(data)
-              elif key == 'hero':
-                  image = Image.open(source_path).convert('RGB')
-                  image.save(target, 'JPEG', quality=95, subsampling=0, optimize=False, progressive=False)
-              elif key == 'r06':
-                  image = Image.open(source_path).convert('RGBA')
-                  background = Image.new('RGBA', image.size, (255, 255, 255, 255))
-                  image = Image.alpha_composite(background, image).convert('RGB')
-                  image.save(target, 'JPEG', quality=95, subsampling=0, optimize=False, progressive=False)
-
-              target_data = target.read_bytes()
-              actual_target = sha256(target_data)
-              if actual_target != spec['target_sha256']:
-                  raise SystemExit(f"{key}: DERIVATIVE HASH MISMATCH expected={spec['target_sha256']} actual={actual_target} bytes={len(target_data)}")
-              print(f'{key}: source={actual_source} -> target={actual_target} bytes={len(target_data)}')
-
-          for p in tmp.glob('*'):
-              p.unlink()
-          tmp.rmdir()
-          PY
-
-      - name: Persist verified landscape assets to Current branch
-        if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'agent/c04-web-v1-12-currentize-20260830'
-        run: |
-          git add \
-            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/assets/hero_qingjiang.jpg \
-            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/assets/r06_qingjiang.jpg \
-            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/assets/r13_passage_sequence.png
-          if git diff --cached --quiet; then
-            echo 'Verified landscape assets already persisted.'
-          else
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'c04: bind verified QJ-D v1.1 landscape runtime assets'
-            git push origin "HEAD:${GITHUB_HEAD_REF}"
-          fi
 
       - name: Run C04 Web static verifier
         run: node 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/verify_game_line.mjs
@@ -136,4 +35,5 @@ jobs:
             echo 'Static readback was not produced.' >> "$GITHUB_STEP_SUMMARY"
           fi
           echo '' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Boundary: static repository dependency integrity only; not browser PASS, Design KEEP, FIELD, engineering, accessibility, or release proof.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Boundary: repo-local source/runtime dependency integrity only. Google Drive materialization is tracked separately and is never attempted anonymously inside this check.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Static integrity PASS is not browser PASS, Design KEEP, FIELD, engineering, accessibility, or release proof.' >> "$GITHUB_STEP_SUMMARY"
