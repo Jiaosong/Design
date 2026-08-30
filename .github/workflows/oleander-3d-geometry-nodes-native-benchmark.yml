@@ -20,6 +20,12 @@ jobs:
           set -euo pipefail
           python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py
 
+      - name: Install headless graphics runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+
       - name: Install Blender 5.2.0 LTS
         run: |
           set -euo pipefail
