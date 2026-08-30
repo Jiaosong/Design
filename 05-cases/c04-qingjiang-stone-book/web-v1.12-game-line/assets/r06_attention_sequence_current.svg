@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">R06 河谷观察注意力序列</title>
+  <desc id="desc">使用权威 R06 清江照片制作的当前可编辑展示衍生图，只表达完整景观、可选关系与退回景观的注意力顺序，不新增空间测量或工程事实。</desc>
+  <defs>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#071513" stop-opacity="0"/>
+      <stop offset="0.56" stop-color="#071513" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#071513" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="veil" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8eee8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#e8eee8" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+  <image href="r06_qingjiang.jpg" xlink:href="r06_qingjiang.jpg" x="0" y="0" width="1600" height="1000" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1600" height="1000" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1600" height="1000" fill="url(#veil)"/>
+
+  <g fill="none" stroke="#d8e8df" stroke-opacity="0.72">
+    <path d="M110 718 H1490"/>
+    <path d="M110 718 V746 M570 718 V746 M1030 718 V746 M1490 718 V746"/>
+  </g>
+
+  <g font-family="Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" fill="#f4f1e8">
+    <text x="110" y="116" font-size="24" letter-spacing="5" opacity="0.82">R06 / ATTENTION SEQUENCE</text>
+    <text x="110" y="170" font-size="46" font-weight="650">先让景观完整成立。</text>
+
+    <g transform="translate(110 790)">
+      <text x="0" y="0" font-size="18" letter-spacing="3" opacity="0.66">01 / LOOK</text>
+      <text x="0" y="48" font-size="31" font-weight="650">完整景观</text>
+      <text x="0" y="87" font-size="19" opacity="0.78">先看，不给结论。</text>
+    </g>
+    <g transform="translate(570 790)">
+      <text x="0" y="0" font-size="18" letter-spacing="3" opacity="0.66">02 / REVEAL</text>
+      <text x="0" y="48" font-size="31" font-weight="650">可选关系</text>
+      <text x="0" y="87" font-size="19" opacity="0.78">只在主动进入时出现。</text>
+    </g>
+    <g transform="translate(1030 790)">
+      <text x="0" y="0" font-size="18" letter-spacing="3" opacity="0.66">03 / RETURN</text>
+      <text x="0" y="48" font-size="31" font-weight="650">退回景观</text>
+      <text x="0" y="87" font-size="19" opacity="0.78">解释完成后再次让位。</text>
+    </g>
+  </g>
+
+  <g transform="translate(1380 98)" fill="none" stroke="#f4f1e8" stroke-opacity="0.78">
+    <circle cx="40" cy="40" r="38"/>
+    <path d="M20 40 H60 M40 20 V60"/>
+  </g>
+</svg>
