@@ -1,5 +1,6 @@
 /* C04 narrative effect layer.
-   Signal -> mapping -> DOM/SVG primitive only. No WebGL, no new media dependency. */
+   Signal -> mapping -> DOM/SVG primitive only. No WebGL, no new media dependency.
+   Motion is intentionally limited to journey/attention/return behavior; process and proof cards stay visually static. */
 .motion-ready #hero .hero-media img{
   transform:translate3d(0,var(--hero-media-y,0),0) scale(var(--hero-media-scale,1.045));
   transform-origin:center center;
@@ -18,36 +19,6 @@
 .motion-ready #final .final-copy{
   transform:translate3d(0,var(--return-copy-y,22px),0);
   will-change:transform;
-}
-
-.motion-ready #idea .three-scales article,
-.motion-ready #workflow .workflow article,
-.motion-ready #technology .tech-route article,
-.motion-ready #ai3d .ai3d-process article,
-.motion-ready #innovation .innovation-grid article,
-.motion-ready #difficulties .difficulty-list article{
-  opacity:.58;
-  transform:translate3d(0,22px,0);
-  transition:opacity .7s cubic-bezier(.2,.72,.2,1) var(--effect-delay,0ms),transform .8s cubic-bezier(.2,.72,.2,1) var(--effect-delay,0ms),border-color .35s ease,background .35s ease;
-}
-.motion-ready #idea .three-scales article.effect-visible,
-.motion-ready #workflow .workflow article.effect-visible,
-.motion-ready #technology .tech-route article.effect-visible,
-.motion-ready #ai3d .ai3d-process article.effect-visible,
-.motion-ready #innovation .innovation-grid article.effect-visible,
-.motion-ready #difficulties .difficulty-list article.effect-visible{
-  opacity:1;
-  transform:none;
-}
-
-.effect-draw-path{
-  stroke-dasharray:var(--path-length,1000);
-  stroke-dashoffset:var(--path-length,1000);
-}
-.motion-ready .three-scales.effect-visible .effect-draw-path,
-.motion-ready .ai3d-process.effect-visible .effect-draw-path{
-  stroke-dashoffset:0;
-  transition:stroke-dashoffset 1.35s cubic-bezier(.2,.72,.2,1) .12s;
 }
 
 .motion-ready #thinking .media-panel img{
@@ -115,32 +86,11 @@
 }
 @keyframes imprintTrace{from{stroke-dashoffset:220}to{stroke-dashoffset:0}}
 
-.motion-ready #technology .tech-route article.effect-visible::before,
-.motion-ready #workflow .workflow article.effect-visible::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--water),transparent 82%);
-  transform:scaleX(1);
-  transform-origin:left center;
-  opacity:.42;
-}
-
 .motion-ready #brandmemory .brand-grammar i{
   transition:transform .45s cubic-bezier(.2,.72,.2,1),border-color .3s ease,background .3s ease;
 }
 .motion-ready #brandmemory .brand-grammar span:hover i{transform:rotate(90deg) scale(1.08)}
 .motion-ready #brandmemory .brand-grammar span:nth-child(4):hover i{transform:scaleX(1.35)}
-
-.motion-ready #ai3d .check-canvas .reject{
-  stroke-dasharray:180;
-  stroke-dashoffset:180;
-  transition:stroke-dashoffset .85s cubic-bezier(.2,.72,.2,1) .55s;
-}
-.motion-ready #ai3d .ai3d-process.effect-visible .check-canvas .reject{stroke-dashoffset:0}
 
 @media(max-width:860px){
   .motion-ready #hero .hero-media img,
@@ -157,20 +107,13 @@
   .motion-ready #digital .phone,
   .motion-ready #digital .large-quote,
   .motion-ready #scenes .scene-pair img,
-  .motion-ready #thinking .step-list li,
-  .motion-ready #idea .three-scales article,
-  .motion-ready #workflow .workflow article,
-  .motion-ready #technology .tech-route article,
-  .motion-ready #ai3d .ai3d-process article,
-  .motion-ready #innovation .innovation-grid article,
-  .motion-ready #difficulties .difficulty-list article{
+  .motion-ready #thinking .step-list li{
     transform:none!important;
     opacity:1!important;
     transition:none!important;
     animation:none!important;
   }
-  .effect-draw-path,
-  .motion-ready #ai3d .check-canvas .reject{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important;animation:none!important}
+  .motion-ready #system .imprint.active svg path{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important;animation:none!important}
 }
 
 .asset-card .app-mybook-carrier{display:block;width:100%;height:100%;min-height:350px;border:0;background:#f2efe6}
