@@ -71,6 +71,7 @@
     digitalQuote?.style.removeProperty('--digital-quote-opacity');
     digitalQuote?.style.removeProperty('--digital-quote-x');
     thinkingSteps.forEach(step=>step.classList.remove('is-current'));
+    thinking?.classList.remove('effect-attention-active');
     sceneImages.forEach(image=>image.style.removeProperty('--scene-shift'));
   }
 
