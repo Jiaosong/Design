@@ -12,6 +12,36 @@
       "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
       "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个高光产品模型的车身/外壳在 Cycles 里出现连续波浪和局部折痕，但换 HDRI、提高采样和降低 roughness 后截图变得更漂亮。判断应该先改什么，并给出审查载体。",
+      "expected_output": "Route to geometry/evaluated-surface diagnostics before lighting/material fixes; separate source density from evaluated surface quality; require silhouette/section plus neutral diffuse and reflective-grazing carriers; prohibit HDRI, samples or roughness from concealing curvature/normal defects; apply CG-Q01/Q02/Q03 before hero rendering.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Blender 产品渲染看起来像廉价塑料。有人建议把 metallic 调到 0.35、roughness 降到 0.12 再加 bloom。请按 Oleander 3D 质量流程诊断。",
+      "expected_output": "Reject arbitrary premium presets; check real scale, edge/bevel geometry, dielectric-versus-metal material class, IOR/Fresnel/roughness semantics, texture frequency and reflection-card/light-source shape; use diagnostic lighting before bloom or grading; keep shader values as representation parameters unless backed by material evidence.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "室内 Cycles 渲染 64 samples + 强降噪后很干净，但细小磨砂纹理和窄边高光全部糊掉。怎么处理才算质量提升？",
+      "expected_output": "Diagnose high-variance light paths and signal sufficiency; use adaptive sampling/noise policy rather than a universal sample number; compare noisy and denoised outputs; use denoiser auxiliary albedo/normal features when supported; do not allow denoise to erase reviewed microdetail; record sampling and color pipeline.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "同一套 Blender 材质导出 GLB 后在网页实时查看器里颜色、粗糙度和法线感觉都变了。不要只说‘不同渲染器有差异’，给出可复现的排查顺序。",
+      "expected_output": "Check base-color versus numeric texture encoding, metallic-roughness channel semantics, tangent/normal basis, UVs, light/environment/exposure and view transform; lock a calibration scene/material set; read back in the target renderer; declare remaining semantic loss; do not treat export success as appearance equivalence.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "两版 CMF 渲染只改了材质，但 A 用 AgX、B 用 ACES 2.0，而且 exposure 不同。能不能比较哪版材质更高级？",
+      "expected_output": "Fail the comparison lock; require fixed working space, view transform, look/display intent and exposure unless color management itself is the test variable; material preference cannot be inferred from an uncontrolled color-pipeline change; route back to CG-Q04, CG-Q06 and CG-Q08 under a neutral controlled comparison rig.",
+      "files": []
     }
   ]
 }
