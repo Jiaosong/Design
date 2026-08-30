@@ -15,10 +15,12 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with: {fetch-depth: 1}
 
-      - name: Validate benchmark script
+      - name: Validate benchmark scripts
         run: |
           set -euo pipefail
-          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/run_freecad_parametric_benchmark.py
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/run_freecad_parametric_benchmark.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/execute_freecad_benchmark.py
 
       - name: Install FreeCAD 1.1.3 stable AppImage
         run: |
@@ -40,16 +42,22 @@ jobs:
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/FREECAD_PARAMETRIC"; mkdir -p "$OUT"
-          OLEANDER_MODE=build OLEANDER_OUT="$OUT" "$FREECADCMD" \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/run_freecad_parametric_benchmark.py
+          LAUNCHER="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/execute_freecad_benchmark.py"
+          MODDIR="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark"
+          OLEANDER_MODE=build OLEANDER_OUT="$OUT" "$FREECADCMD" -P "$MODDIR" "$LAUNCHER"
+          test -s "$OUT/BUILD_RECEIPT.json"
+          test -s "$OUT/FREECAD_PARAMETRIC_BENCH.FCStd"
+          test -s "$OUT/FREECAD_PARAMETRIC_BENCH.step"
           git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
 
       - name: Reopen FCStd and STEP roundtrip
         run: |
           set -euo pipefail
           OUT="$GITHUB_WORKSPACE/out/FREECAD_PARAMETRIC"
-          OLEANDER_MODE=reopen OLEANDER_OUT="$OUT" "$FREECADCMD" \
-            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/run_freecad_parametric_benchmark.py
+          LAUNCHER="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark/execute_freecad_benchmark.py"
+          MODDIR="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-freecad-parametric-native-benchmark"
+          OLEANDER_MODE=reopen OLEANDER_OUT="$OUT" "$FREECADCMD" -P "$MODDIR" "$LAUNCHER"
+          test -s "$OUT/REOPEN_RECEIPT.json"
 
       - name: Validate parametric and exchange receipts
         run: |
