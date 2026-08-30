@@ -1,4 +1,4 @@
-name: C04 Web One-shot Source Bindings
+name: C04 Web One-shot Effect Bindings
 
 on:
   push:
@@ -6,14 +6,12 @@ on:
       - agent/c04-web-v1-12-currentize-20260830
     paths:
       - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/apply_pr465_source_bindings.mjs'
-      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/C04_APP_V1_6_MY_BOOK_SOURCE_CARRIER.html'
-      - '.github/workflows/c04-web-one-shot-source-bindings.yml'
 
 permissions:
   contents: write
 
 jobs:
-  apply-source-bindings:
+  apply-effect-bindings:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -22,21 +20,22 @@ jobs:
         with:
           ref: agent/c04-web-v1-12-currentize-20260830
 
-      - name: Apply exact source bindings
+      - name: Apply bounded effect bindings
         run: node 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/apply_pr465_source_bindings.mjs
 
       - name: Verify bounded diff
         run: |
           git diff --check
-          git diff --name-only
-          test "$(git diff --name-only | sort | tr '\n' ' ')" = ".github/workflows/c04-web-one-shot-source-bindings.yml 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/styles.css " || \
-          test "$(git diff --name-only | sort | tr '\n' ' ')" = "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/styles.css "
+          test "$(git diff --name-only | sort | tr '\n' ' ')" = "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/app.js 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/effects.css 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html "
 
-      - name: Commit bounded binding delta
+      - name: Commit bounded effect delta
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/styles.css
-          git commit -m 'c04: bind Web MY BOOK to App v1.6 source carrier'
+          git add \
+            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html \
+            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/app.js \
+            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/effects.css
+          git commit -m 'c04: bind narrative effect layer to current Web'
           git push origin HEAD:agent/c04-web-v1-12-currentize-20260830
