@@ -84,6 +84,18 @@
       "prompt": "Houdini 里要做程序化湿痕材质。有人把 SOP 几何属性、Copernicus 纹理生成、Solaris 材质绑定和 Karma 渲染全部混成一个‘材质节点问题’。请拆开正确的生产路线。",
       "expected_output": "Separate contexts and ownership: SOP creates/transfers geometry attributes; Copernicus/Texture Material Library authors procedural image/texture data when appropriate; Material Library/MaterialX assembles shader/material networks; Solaris/LOP composes USD and binds materials; Karma renders. Record context crossings and attribute/path semantics instead of treating all nodes as one graph.",
       "files": []
+    },
+    {
+      "id": 15,
+      "prompt": "Fusion 里一个支架现在外形正确，但 30 个尺寸都是独立数字，Sketch 依赖多个后期倒角后的边。客户要求宽度、孔距和壁厚都能做系列变体。你会继续改 Timeline 里的数字，还是先重构？",
+      "expected_output": "Route through KN-THEORY-3D-MODELING-ESSENCE-001 and Fusion CAD evidence. Identify representation, design intent, primary user parameters and constraint graph before editing geometry. Replace fragile incidental face/edge references with stable origin/datum/construction references where practical, express symmetry/concentric/pitch/thickness relations instead of duplicated coordinates, then sweep key parameters and inspect recompute failures. Current appearance is not sufficient evidence of a robust parametric model.",
+      "files": []
+    },
+    {
+      "id": 16,
+      "prompt": "FreeCAD Part Design 的零件能正常显示，但上游长度一改，后面的 Pocket 和 Fillet 经常失效。有人建议把所有 feature 都删掉改成一个最终 STEP，再直接修形。按 Oleander 怎么判断？",
+      "expected_output": "Do not default to either preserving every fragile feature or collapsing immediately to a dumb final solid. Route to modeling essence and FreeCAD evidence; inspect Body feature order, sketch/datum attachment, incidental face/edge references, primary constraints and failure envelope. Rebuild unstable dependencies around stable datums/named intent when long-lived parametric editability is required; use direct/imported-solid repair only when history semantics are intentionally not required. Validate recompute, geometry and STEP/native reopen; a visible solid does not prove robust design intent or manufacturing approval.",
+      "files": []
     }
   ]
 }
