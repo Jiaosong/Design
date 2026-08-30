@@ -85,10 +85,13 @@ jobs:
           assert r['evidenceClass']=='TARGET_RUNTIME_BROWSER_READBACK'
           assert r['meshCount']>=1 and r['materialCount']>=1
           assert r['positionCount']>=1 and r['triangleCount']>=1
-          assert r['nativeBBoxMatch'] is True
+          assert r['axisContract']['extentMappingMatch'] is True
+          assert r['axisContract']['sourceCoordinateSystem']=='Blender Z-up'
+          assert r['axisContract']['targetCoordinateSystem']=='glTF/Three.js Y-up'
+          assert r['axisContract']['handednessSignProven'] is False
           assert r['gltfSceneCount']>=1
           assert r['sourceGlbBytes']>1024
-          print(json.dumps({'browser_target_runtime':'PASS','meshCount':r['meshCount'],'triangles':r['triangleCount'],'bbox':r['bboxSize'],'webgl':r['webgl']},indent=2))
+          print(json.dumps({'browser_target_runtime':'PASS','meshCount':r['meshCount'],'triangles':r['triangleCount'],'bbox':r['bboxSize'],'axisContract':r['axisContract'],'webgl':r['webgl']},indent=2))
           PY
 
       - name: Hash benchmark evidence
