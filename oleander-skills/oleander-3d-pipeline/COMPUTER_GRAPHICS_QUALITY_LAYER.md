@@ -4,7 +4,7 @@ Status: **CANDIDATE EXECUTION DELTA / NO SILENT PROMOTION**
 
 Purpose: extend the existing `oleander-3d-pipeline` with a computer-graphics quality layer for modeling, surfacing, materials, lighting, rendering, sampling, color management, and cross-renderer readback. This file does not create a second 3D Skill, a universal render look, or a physical-material authority.
 
-Canonical knowledge input: Notion `KN-CG-QUALITY-001｜Computer Graphics for Modeling & Rendering｜几何—光传输—材质—采样—色彩`.
+Canonical knowledge input: Notion `KN-THEORY-COMPUTER-GRAPHICS-001｜Computer Graphics for 3D Modeling & Rendering｜三维建模与渲染计算机图形学`.
 
 ## 1. Pixel-causality order
 
@@ -79,176 +79,132 @@ Do not use intermediate metalness or arbitrary coat layers as a generic "premium
 
 A render parameter remains a **representation parameter** unless bound to measured/sample/manufacturer evidence.
 
-## 4. Texture and encoding gate
+## 4. Texture encoding and frequency
 
-Separate color data from numeric data.
+- color textures participate in the color-management pipeline;
+- numeric maps such as normal, roughness, metallic, and displacement are treated as data/non-color unless the target specification explicitly defines otherwise;
+- map semantics and channel packing must be verified for the target renderer / exchange format;
+- microtexture frequency must survive the final camera distance and reconstruction filter instead of degenerating into noise or moiré;
+- keep macro, meso, and micro appearance frequencies intentionally separated.
 
-- base-color/color textures participate in the declared color-management path;
-- normal, roughness, metallic, displacement/height, masks, and other numeric maps use data/non-color semantics unless the target standard explicitly says otherwise;
-- verify channel packing and tangent-basis expectations on interchange;
-- choose texture frequency relative to the final camera distance and pixel density; do not add subpixel noise merely to make a material look "detailed".
+## 5. Lighting: diagnose before stylizing
 
-For glTF metallic-roughness delivery, validate the exact target semantics and target renderer instead of assuming a Blender viewport match proves interchange fidelity.
+Use a neutral diagnostic rig before hero lighting when form/surface/material quality is at issue.
 
-## 5. Lighting is first a measurement rig
+Recommended diagnostic carriers, adapted to the actual object:
 
-Before hero lighting, use diagnostic lighting that reveals form.
+- large soft card for broad reflection flow;
+- narrow/grazing strip for edge and curvature defects;
+- controlled black/white cards for reflection boundaries;
+- neutral environment for material-energy readback;
+- direct-light isolation where needed to separate lighting from transport noise.
 
-Recommended roles, not universal values:
+Hero lighting may follow only after the relevant diagnostic carrier is credible. Light count is not a quality metric; emitter size, angular extent, direction, contrast, environment ratio, and object scale are often more causally important.
 
-- large soft card/source for broad reflection-flow continuity;
-- narrow grazing strip for folds, edge transitions, waviness, and bevel quality;
-- neutral environment for material/energy comparison;
-- controlled black/white cards or equivalent reflection boundaries for product surfaces.
+## 6. Light transport and integrator reasoning
 
-If the surface fails under diagnostic lighting, do not move directly to atmosphere, depth of field, bloom, glare, cinematic grading, or generative background repair.
+Treat path tracing as a stochastic estimator of light transport, not a magic quality switch.
 
-Hero lighting starts only after geometry/surface/material diagnostics are credible. Hero light count is not a quality metric; source shape, angular size, placement, contrast structure, and environment relationship are more important than adding lights indiscriminately.
+When noise or instability appears, classify the difficult path first:
 
-## 6. Light transport and renderer route
+- direct;
+- indirect diffuse;
+- glossy/specular;
+- transmission/refraction;
+- volume;
+- caustic;
+- tiny/high-energy emitter;
+- difficult indirect interior path.
 
-The rendering equation couples emission, incoming radiance, visibility, and BSDF response. Treat reflections, transmission, indirect light, occlusion, and multiple bounces as connected transport, not as independent visual effects.
+Then choose the relevant response: sampling strategy, emitter design, path guiding when actually supported and appropriate, bounce/transport simplification, adaptive sampling, or controlled production compromise.
 
-### Cycles / path-traced route
+Do not globally increase samples before identifying the noise source when a cheaper causal fix is available.
 
-Use for offline path-traced reflection/transmission/volume behavior and high-quality lighting evidence when the claim requires it.
+## 7. Sampling, reconstruction, denoise and clamping
 
-- Monte Carlo noise is estimator variance under a finite sample budget;
-- diagnose which path family is difficult before increasing samples blindly;
-- use adaptive sampling / noise-threshold mechanisms when appropriate;
-- evaluate path guiding only when the actual runtime/device and scene type support it; it is not a universal caustics solution;
-- clamping can suppress pathological fireflies but too-low values remove legitimate highlight energy;
-- record device/backend, sample policy, denoise policy, and materially relevant light-path settings.
-
-### EEVEE / realtime route
-
-Use for realtime preview or when the actual delivery renderer is realtime.
-
-`EEVEE MATCH ≠ CYCLES EQUIVALENCE`.
-
-Validate the target feature set: ray tracing/screen-space behavior, probes, shadowing, transparency, transmission, normal/tangent handling, tone mapping, and other target-specific approximations.
-
-## 7. Sampling and denoise gate
-
-Do not treat sample count as a universal quality number.
-
-Noise diagnosis asks first: direct, indirect, glossy, transmission, volume, caustic, tiny bright emitter, or another difficult path?
-
-Denoise policy:
-
-- denoise only after enough underlying signal exists for the feature being reviewed;
-- compare noisy and denoised outputs when fine texture, edges, micro-highlights, or small features matter;
-- use albedo/normal auxiliary features when the chosen denoiser/runtime supports them and they improve detail preservation;
-- do not let strong low-sample denoise erase a defect that the review is supposed to see.
+- adaptive sampling/noise-threshold mechanisms are preferred over one universal sample number when the renderer supports them;
+- denoise is reconstruction after signal acquisition, not a substitute for signal;
+- check albedo/normal auxiliary features when supported and useful;
+- inspect fine edges, microtexture, glossy detail, thin geometry and temporal consistency after denoise;
+- clamping is a production/diagnostic control for extreme outliers, not a universal fix; over-clamping destroys valid highlight energy;
+- record the actual rendering/runtime conditions for retained comparisons.
 
 ## 8. Color-management gate
 
-Rendering/compositing calculations should remain in an intentional scene-linear working space, with display/view transforms treated as explicit parts of the result.
+Lock color management before visual comparison unless color management itself is the variable under test.
 
-For retained renders and especially A/B comparisons record:
+Record at minimum when material:
 
-- working color space;
-- display device / display intent;
+- scene-linear / working-space assumption;
+- input texture encoding;
 - view transform;
-- look if used;
-- exposure;
-- output encoding / file color space;
-- HDR/SDR intent where relevant;
-- external OCIO configuration identity if non-default.
+- look, exposure and white balance if used;
+- display/output encoding;
+- HDR/wide-gamut target where applicable.
 
-Route examples, not universal prescriptions:
+For CMF/material A/B comparisons, all variants must use the same color pipeline unless the explicit test is the color pipeline.
 
-- **Khronos PBR Neutral** when conservative PBR/product color presentation is the goal;
-- **AgX** for general photographic/high-dynamic-range hero rendering where its tone reproduction fits the design intent;
-- **ACES 2.x** when a real ACES cross-application / wide-gamut / HDR production pipeline requires it.
+Renderer/display options such as AgX, Khronos PBR Neutral, or ACES are task-specific transforms, not style presets or quality ranks.
 
-Changing the view transform invalidates a controlled material comparison unless color management itself is the tested variable.
+## 9. Cross-renderer material readback
 
-## 9. Cross-renderer calibration
+`EXPORT PASS ≠ APPEARANCE MATCH`.
 
-A successful export proves I/O, not visual equivalence.
+For glTF/GLB, USD, FBX or other material handoff, record the represented material model and known losses. Validate at least the relevant subset of:
 
-For material-critical handoff keep a small calibration set where practical:
+- base color / metallic / roughness semantics;
+- normal/tangent basis;
+- UVs and texture transforms;
+- channel packing;
+- scale;
+- environment / lighting;
+- exposure and color transform;
+- transparency/transmission/coat features when used.
 
-- neutral gray reference;
-- representative dielectric material;
-- representative metal/conductor material;
-- roughness range or project-relevant swatches;
-- normal-map/tangent test when normal maps are material;
-- known camera/light/environment/exposure.
+Use a compact calibration set when appearance fidelity matters: neutral gray, dielectric swatch, metal swatch, roughness ladder/spheres, normal-mapped reference, or equivalent project-fit carriers.
 
-Read back in the target renderer and record deltas in material response, normals/tangents, transparency/transmission, environment, exposure, and color transform.
+## 10. OLEANDER CG quality gates
 
-## 10. CG symptom → first-check routing
+These gates extend existing Artifact Review; they do not replace it.
 
-| Symptom | First checks | Do not start with |
+- **CG-Q01 Scale & Silhouette** — object scale, primary mass, proportion, and intended silhouette/section read credibly.
+- **CG-Q02 Surface Continuity** — reflective/grazing carriers show intentional curvature and edge flow without unexplained waviness, dents, pinching, or broken transitions.
+- **CG-Q03 Shading Frame** — normals/tangents/smoothing/custom-normal choices are intentional and do not conceal invalid geometry.
+- **CG-Q04 Material Energy Coherence** — material class, IOR/Fresnel, roughness, metalness, coat/transmission/subsurface/emission behavior are semantically coherent for the represented material.
+- **CG-Q05 Texture Encoding & Frequency** — color vs numeric encoding, channel semantics, macro/meso/micro frequency and final pixel bandwidth are credible.
+- **CG-Q06 Lighting Reveals Form** — at least one diagnostic carrier reveals rather than hides form/surface/material behavior before hero stylization is accepted.
+- **CG-Q07 Transport & Sampling** — noise/variance is diagnosed by path class; sampling/denoise/clamp choices preserve required detail and do not fabricate quality.
+- **CG-Q08 Color Pipeline** — retained comparisons state and lock the relevant view/display pipeline; no uncontrolled color transform drives material decisions.
+- **CG-Q09 Cross-renderer Readback** — exported appearance is checked in the target runtime with known losses/assumptions recorded.
+- **CG-Q10 Actual Preview Design Crit** — real intended-camera output is reviewed under OLEANDER Artifact Review; CG/render PASS cannot promote wrong geometry, engineering truth, physical CMF truth, or Design KEEP.
+
+## 11. Diagnostic routing matrix
+
+| Symptom | First inspect | Do not start with |
 | --- | --- | --- |
 | highlight waves / kinks | curvature, topology, normals, modifier order | HDRI swap, bloom |
-| toy-like plastic look | scale, bevel/edge geometry, material class, roughness structure, reflection-card shape | arbitrary metalness |
-| flat/no volume | section, light-source shape, reflection boundaries, grazing light | global contrast boost |
-| color too saturated / shifted | input encoding, working space, view transform, exposure | repainting base color |
-| microdetail becomes mush | texture frequency, tessellation, samples, denoise | sharpening only |
-| fireflies | tiny bright sources, glossy/transmission/caustic paths, importance/sampling | aggressive clamping first |
-| realtime/offline mismatch | target renderer feature subset, probes/rays, tangent basis, tone mapping | declaring engines equivalent |
+| toy/plastic look | real scale, bevel/edge radius, material class, roughness, environment ratio | arbitrary metallic |
+| render is noisy | difficult path/light source/sampling distribution | blind sample escalation |
+| denoised render is mushy | input signal, albedo/normal guides, fine-detail frequency | stronger denoise |
+| material differs after GLB export | semantics, tangent basis, maps/channels, environment/exposure/view transform | blaming exporter generically |
+| CMF A/B result changes unpredictably | color pipeline, exposure, texture encoding, lighting lock | changing material values first |
+| smooth shading seems to "fix" a bad surface | silhouette/section/reflection carrier | accepting shading as geometry proof |
+| displacement looks jagged | evaluated geometric bandwidth, displacement frequency and scale | more contrast in the height map |
 
-## 11. OLEANDER CG Quality Gates
+## 12. Required quality record for retained 3D/render claims
 
-### CG-Q01 — Scale & Silhouette
-Real-world scale, primary mass, silhouette, and key sections are plausible and bound to the declared authority.
+When a model/render is retained as design evidence or a main presentation candidate, capture the applicable subset of:
 
-### CG-Q02 — Surface Continuity
-Reflection/curvature flow has no unintended dents, waves, folds, pinching, or broken transitions at the intended viewing distance.
+- object scale / camera distance;
+- silhouette/section carrier;
+- surface diagnostic carrier;
+- normal/tangent/smoothing strategy;
+- material model and evidence boundary;
+- lighting diagnostic and hero rigs;
+- renderer/integrator and sampling/denoise/clamp settings;
+- color pipeline;
+- target-runtime appearance readback;
+- CG-Q01—CG-Q10 result;
+- remaining geometry / physical / field / engineering / manufacturing HOLD.
 
-### CG-Q03 — Shading Frame
-Normals, tangents, smoothing, and normal mapping agree with the intended geometry and target renderer.
-
-### CG-Q04 — Material Energy Coherence
-Dielectric/metal, IOR/Fresnel, roughness, coat, transmission, subsurface, emission, and anisotropy are semantically coherent for the represented material.
-
-### CG-Q05 — Texture Encoding & Frequency
-Color vs data encoding, channel semantics, tangent space, UVs, and spatial frequency are correct for the target pipeline.
-
-### CG-Q06 — Lighting Reveals Form
-Diagnostic lighting exposes surface quality before hero lighting is allowed to stylize it.
-
-### CG-Q07 — Transport & Sampling
-Noise is diagnosed by path/variance source; adaptive sampling, guiding, clamping, and denoise are used intentionally and do not hide review defects.
-
-### CG-Q08 — Color Pipeline
-Working space, view/display transform, exposure, and output encoding are explicit and locked in comparisons.
-
-### CG-Q09 — Cross-renderer Readback
-Where interchange matters, a representative calibration scene/material set is reopened in the target renderer and visual semantic losses are declared.
-
-### CG-Q10 — Actual Preview Design Crit
-The final render/model view is reviewed at the intended camera distance/output resolution under OLEANDER Artifact Review. `Render PASS ≠ Design PASS` remains binding.
-
-## 12. Default modeling → rendering quality loop
-
-1. lock reference, units, dimensions, and source authority;
-2. establish primary mass, silhouette, sections, and interfaces with minimum sufficient source controls;
-3. evaluate the final modifier/procedural carrier and inspect curvature/reflection flow;
-4. run neutral diffuse + reflective/grazing diagnostic views;
-5. calibrate material semantics under a neutral controlled rig;
-6. diagnose difficult light paths and set sampling/denoise policy;
-7. lock color pipeline and exposure;
-8. build hero lighting/composition only after diagnostic gates are credible;
-9. review at final viewing distance and output resolution;
-10. perform target-renderer/export readback when delivery crosses software/runtime boundaries.
-
-## 13. Source stack / verification date
-
-Verified 2026-08-30 against the current source stack used for this candidate:
-
-- PBRT v4 — Light Transport Equation, Monte Carlo Integration, Path Tracing: https://pbr-book.org/4ed/
-- OpenPBR Surface: https://academysoftwarefoundation.github.io/OpenPBR/
-- Blender 5.2 Manual — Principled BSDF, Cycles Sampling/Path Guiding, Denoise, Color Management, Subdivision Surface: https://docs.blender.org/manual/en/5.2/
-- libigl Tutorial — normals and differential-geometry concepts: https://libigl.github.io/tutorial/
-- Khronos glTF 2.0 specification: https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html
-- Google Filament PBR reference: https://google.github.io/filament/Filament.md.html
-
-Software/spec details are freshness-sensitive and require re-verification when runtimes or standards change.
-
-## Does not prove
-
-This layer does not prove physical material measurement, manufacturer CAD/Class-A, field truth, photometric certification, exact colorimetric sample match, structural/engineering/manufacturing approval, reference fidelity, `DESIGN KEEP`, or `MAIN KEEP`.
+This layer improves modeling/rendering diagnosis and image quality. It does **not** convert visual plausibility into physical or engineering truth.
