@@ -15,7 +15,7 @@
 - `CURRENT_PUBLIC_STRUCTURE`: `NOT FIXED / authority-preserving redesign on PR #465; inherited 18-section pixels and section count are baseline/provenance, not locked public architecture`
 - `INTERNAL_MIGRATION_REGISTER`: `05-cases/c04-qingjiang-stone-book/page-register-current/C04_WEB_PROTECTED_PAGE_REGISTER_P001_P052_CURRENT.csv`
 - `INTERNAL_MIGRATION_REGISTER_ROLE`: `C04-WEB-P001...P052 = protected internal migration identities; NOT public pagination authority; NOT final page count`
-- `CURRENT_PR_FRONTIER`: GitHub PR #465 / `agent/c04-web-v1-12-currentize-20260830` / head `941875103eb5a21257ba4a1ea7a1ed6251ab63bc`
+- `CURRENT_PR_FRONTIER`: GitHub PR #465 / `agent/c04-web-v1-12-currentize-20260830` / head `bcf1946ee9d19ac374871dcceeb3d0233c4fbee7`
 - `PREDECESSOR_FRONTIER`: GitHub PR #353 / `agent/c04-web-v1-12-game-line-20260822` / head `f0b241ba6ca38bd563cc50443445de7ea4ef6c30` / CLOSED + UNMERGED / superseded for live mutation after successor cutover; retain as provenance + rollback
 - `EXECUTION_MODE`: EXISTING_PROJECT_REPAIR
 - `BEST_EXISTING_BASELINE`: PR #353 head `f0b241ba6ca38bd563cc50443445de7ea4ef6c30` / 18-section public design-work reading + bottom-right supplement as inherited baseline only, not a locked final structure
