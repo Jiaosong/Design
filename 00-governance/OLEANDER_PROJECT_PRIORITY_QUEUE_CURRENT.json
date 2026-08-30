@@ -14,9 +14,9 @@
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830",
       "next_owner": "VALIDATION",
-      "next_action": "PRESENTATION repairs the same C04 Web object on successor PR #465, currentized from PR #353 onto latest main. Bind only exact-authority-ready/current-authority media, replace obsolete runtime-name dependencies only when stronger Current carrier identity is established, keep unresolved source/crop/child items HOLD, and hand to VALIDATION only after static asset integrity closes and real browser testing becomes meaningful.",
-      "updated_at": "2026-08-30T01:48:18+08:00",
-      "source_of_queue_decision": "User explicit C04 repair instruction; GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md + C04_PROJECT_CONTROL_CARD_CURRENT.md readback; PR #353 head f0b241ba6ca38bd563cc50443445de7ea4ef6c30 was 316 commits behind Current main; Governance successor PR #465 preserves the same OBJECT_ID and exact producer blobs on latest main."
+      "next_action": "PRESENTATION continues the same C04 Web object on PR #465 under the latest authority-preserving redesign boundary: preserve Current Source/Project/Evidence Authority and valid content/design objects, but do not treat the inherited 18-section pixels, section count, page length, crop/media choice, public copy, motion treatment or MAIN/SUPPORT placement as locked. Recompose only through NO COMPRESSION / NO LOSS, bind or rebuild assets only when Current authority permits, keep unresolved source/crop/child items HOLD, and hand the same OBJECT_ID to VALIDATION only after a real presentation artifact delta plus static asset-integrity closure makes browser validation meaningful.",
+      "updated_at": "2026-08-30T09:09:07+08:00",
+      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md + C04_PROJECT_CONTROL_CARD_CURRENT.md readback; PR #465 current task boundary updated 2026-08-30 to authority-preserving redesign and explicitly states inherited 18-section public structure/pixels are not locked; same PROJECT_ID / OBJECT_ID / PRESENTATION owner / successor frontier retained."
     }
   ],
   "entry_schema": {
