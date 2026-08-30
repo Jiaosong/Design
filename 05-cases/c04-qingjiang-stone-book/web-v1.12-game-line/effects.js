@@ -73,8 +73,37 @@
     });
   }
 
+  function injectTechnicalProof(){
+    if(document.querySelector('#technical')) return;
+    const memory=document.querySelector('#memory');
+    if(!memory) return;
+
+    const section=document.createElement('section');
+    section.id='technical';
+    section.className='section split dark';
+    section.dataset.section='11';
+    section.innerHTML='<div class="media-panel"><img class="contain" src="assets/technical_focus_v2.svg" alt="R06 技术证明关系：空间关系、人体尺度、构件顺序与维护接口" /></div><div class="copy-panel"><p class="kicker">TECHNICAL PROOF / R06</p><h2>技术层不是为了显得复杂，<br />而是回答它怎样成立。</h2><p>景观与体验先成立，技术证明随后检查空间关系、人体尺度、构件顺序与维护接口。当前公开层只呈现可以诚实说明的设计关系，不把尚未绑定的尺寸、锚固、基础或现场数据画成已确定事实。</p><ol class="step-list"><li><b>空间关系</b><span>路径、停留、视线与占用是否冲突。</span></li><li><b>人体尺度</b><span>倚靠、通过和短恢复是否自然。</span></li><li><b>构件顺序</b><span>结构、表面与连接是否能逐层核对。</span></li><li><b>维护接口</b><span>拆换、检查与后续进入是否被预留。</span></li></ol><p class="truth-note">研究级设计表达｜NTS｜现场尺寸、结构、安全与施工结论继续交后续专业验证</p></div>';
+    memory.before(section);
+
+    memory.dataset.section='12';
+    const final=document.querySelector('#final');
+    if(final) final.dataset.section='13';
+    const counter=document.querySelector('#sectionNow');
+    if(counter) counter.textContent='01 / 13';
+
+    const nav=document.querySelector('.mainnav');
+    if(nav&&!nav.querySelector('a[href="#technical"]')){
+      const anchor=document.createElement('a');
+      anchor.href='#technical';
+      anchor.textContent='技术';
+      const memoryLink=nav.querySelector('a[href="#memory"]');
+      memoryLink?nav.insertBefore(anchor,memoryLink):nav.append(anchor);
+    }
+  }
+
   applyPublicVoiceRepair();
   applyCurrentAssetBindings();
+  injectTechnicalProof();
 
   const root=document.documentElement;
   const hero=document.querySelector('#hero');
