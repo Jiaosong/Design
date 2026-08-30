@@ -126,19 +126,34 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 ## E06 — Triangulation changes tangent-space shading
 
 - Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/`.
-- State: **PENDING v3 FINAL READBACK**.
-- Retained v2 result already proves a strong bounded signal but exact carrier semantics are still being resolved.
-- Source per-vertex alternate-triangulation perturbed-normal differences: approximately `12.0845 / 10.8179 / 10.9527 / 9.1965 deg`.
-- Target readback: approximately `12.0842 / 10.8158 / 10.9503 / 9.1971 deg`.
-- Maximum source→target sensitivity drift: approximately `0.00243 deg`.
-- v2 failure cause:
-  - raw Blender UV versus target Three UV showed max delta `1`, consistent with an unresolved UV carrier convention rather than disappearance of the shading sensitivity;
-  - several exact T/N/B component comparisons missed the `5e-5` precision diagnostic by only a few `1e-6`, while final perturbed-normal and per-vertex aggregate direction Gates passed.
-- v3 policy:
-  - resolve source→target UV convention explicitly (`IDENTITY`, `V_FLIP`, or `UNRESOLVED`);
-  - keep exact T/N/B `5e-5` precision diagnostic unchanged and independent;
-  - gate the bounded triangulation-shading claim on matched triangles, resolved UV convention, handedness, per-corner perturbed-normal direction, per-vertex sensitivity and <= `0.01 deg` sensitivity drift.
-- No promotion until v3 workflow readback succeeds.
+- Workflow: `OLEANDER 3D glTF Triangulation TBN Witness`.
+- Confirmed run: `33318087835` — SUCCESS.
+- Evidence class: `TARGET_RUNTIME_TRIANGULATION_SENSITIVITY_WITH_RESOLVED_UV_CONVENTION`.
+- Retained provenance:
+  - v1 failed because six Blender face-corner samples were incorrectly averaged against four indexed target vertices;
+  - v2 exposed raw UV-coordinate convention mismatch and a separate exact-basis precision diagnostic;
+  - neither failure was deleted or converted to PASS by widening the original direction/component Gate.
+- Proven in this carrier:
+  - source→target UV convention resolves consistently as `V_FLIP`; all matched corners have mapped UV delta `0`;
+  - two alternate triangulations of the same four source positions and same source UV assignment produce large, repeatable tangent-space shading changes;
+  - source per-vertex alternate-triangulation perturbed-normal differences: approximately `12.084506 / 10.817926 / 10.952708 / 9.196483 deg`;
+  - target readback: approximately `12.084158 / 10.815838 / 10.950281 / 9.197082 deg`;
+  - maximum source→target sensitivity drift: approximately `0.002427 deg`;
+  - every matched corner passes handedness + final perturbed-normal direction semantics;
+  - every per-source-vertex aggregate perturbed normal passes the unchanged `0.005 deg + 5e-5 component` Gate.
+- Independent precision HOLD retained:
+  - `exactBasisCornerParity = false` because a few individual T/N/B components exceed the `5e-5` component diagnostic by only a few `1e-6` even though their angular errors remain below `0.005 deg` and the final perturbed-normal Gate passes.
+- Production consequence:
+  - `TRIANGULATION CHANGE ≠ SHADING-NEUTRAL CHANGE` for tangent-space baked assets;
+  - lock final triangulation before tangent-space bake/export, or recompute/rebake tangents and maps after topology/triangulation changes;
+  - compare source and target UVs under the actual carrier convention rather than assuming raw numeric UV identity.
+- HOLD:
+  - exact per-corner T/N/B component parity at `5e-5`;
+  - actual fragment-shader output parity;
+  - production retopo mesh;
+  - cross-DCC MikkTSpace parity;
+  - a downstream importer that recomputes tangents after post-bake triangulation mutation;
+  - Design KEEP.
 
 ## Routing rules promoted only within tested bounds
 
@@ -147,7 +162,8 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 3. For the tested negative-determinant carrier, tangent-frame reconstruction must include transform determinant sign: `effective_w = tangent.w * sign(det(M_world))`.
 4. `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT-SHADER OUTPUT PARITY`.
 5. Surface-detail carrier selection uses `frequency × view × required cue`.
-6. Triangulation must remain **pending** until E06 v3 closes; do not yet convert its candidate observation into a Current routing requirement.
+6. For tangent-space baked assets in the tested carrier, `TRIANGULATION CHANGE ≠ SHADING-NEUTRAL CHANGE`; lock triangulation before bake/export or recompute/rebake after topology changes.
+7. `RAW SOURCE UV VALUES ≠ TARGET UV VALUES` when the exchange carrier defines a convention transform; validate the resolved convention explicitly.
 
 ## Maturity boundary
 
