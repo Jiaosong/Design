@@ -101,15 +101,25 @@ const supplementSourceRefs=[
   "assets/r06_qingjiang.jpg",
   "assets/r13_passage_sequence.png",
   "support/C04_APP_V1_6_MY_BOOK_SOURCE_CARRIER.html",
+  "assets/physical_body_support_hold.svg",
   "assets/r06_general_assembly_v11.svg",
   "assets/r06_detail_atlas_v11.svg"
 ];
 const currentPaperMemoryCarrier="../physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg";
 const myBookFinalView="support/C04_APP_V1_6_MY_BOOK_FINAL_VIEW.html";
 const r06AttentionDerivative="assets/r06_attention_sequence_current.svg";
+const requiredHoldRefs=[
+  "assets/physical_body_support_hold.svg",
+  "assets/r06_spatial_proof_hold.svg",
+  "assets/fluid_v26_transverse.svg",
+  "assets/technical_focus_v2.svg",
+  "assets/technical_focus_crop.svg",
+  "assets/r06_general_assembly_v11.svg",
+  "assets/r06_detail_atlas_v11.svg"
+];
 
 const result={
-  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_18",
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_19",
   section_count:sections.length,
   unique_sections:new Set(sections).size,
   ordered_sections:JSON.stringify(sections)===JSON.stringify(expected),
@@ -142,17 +152,20 @@ const result={
   supplement_tab_count:supplementTabs.filter(tab=>js.includes(`data-supplement-tab="${tab}"`)).length,
   supplement_panels_present:supplementTabs.every(tab=>js.includes(`data-supplement-panel="${tab}"`)),
   supplement_original_assets_present:supplementSourceRefs.every(ref=>js.includes(ref)),
-  supplement_ai3d_six_stage:js.includes('01 / SOURCE')&&js.includes('02 / AI EXPLORE')&&js.includes('03 / READBACK')&&js.includes('04 / 3D')&&js.includes('05 / DRAWING')&&js.includes('06 / DETAIL'),
+  supplement_ai3d_six_stage:js.includes('01 / SOURCE')&&js.includes('02 / AI EXPLORE')&&js.includes('03 / READBACK')&&js.includes('04 / BODY CHECK')&&js.includes('05 / DRAWING')&&js.includes('06 / DETAIL'),
   supplement_mobile_behavior:js.includes('@media(max-width:760px)')&&js.includes('@media(max-width:480px)'),
   supplement_escape_close:js.includes("event.key==='Escape'"),
   mybook_source_carrier_preserved:html.includes("support/C04_APP_V1_6_MY_BOOK_SOURCE_CARRIER.html")&&js.includes("support/C04_APP_V1_6_MY_BOOK_SOURCE_CARRIER.html"),
-  mybook_final_view_bound:effectsJs.includes(myBookFinalView)&&fs.existsSync(resolveLocalRef(myBookFinalView)),
-  r06_attention_derivative_bound:effectsJs.includes(r06AttentionDerivative)&&fs.existsSync(resolveLocalRef(r06AttentionDerivative)),
+  mybook_final_view_direct_bound:html.includes(myBookFinalView)&&fs.existsSync(resolveLocalRef(myBookFinalView))&&!effectsJs.includes(myBookFinalView),
+  r06_attention_derivative_direct_bound:html.includes(r06AttentionDerivative)&&fs.existsSync(resolveLocalRef(r06AttentionDerivative))&&!effectsJs.includes(r06AttentionDerivative),
+  r13_remote_concept_truth_boundary:html.includes("REMOTE CONCEPT / NOT SITE PHOTO")&&html.includes("非现场照片")&&html.includes("不作为现场照片或测量证据"),
+  hold_assets_directly_consumed:requiredHoldRefs.every(ref=>(html.includes(ref)||js.includes(ref))&&fs.existsSync(resolveLocalRef(ref))),
+  stale_body_posture_ref_absent:!html.includes("fluid_v26_body_posture.png")&&!js.includes("fluid_v26_body_posture.png")&&!effectsJs.includes("fluid_v26_body_posture.png"),
   generic_cross_section_reveal_absent:!effectsJs.includes("motionTargets")&&!effectsJs.includes("drawablePaths")&&!effectsCss.includes("#workflow .workflow article.effect-visible")&&!effectsCss.includes("#ai3d .ai3d-process article.effect-visible"),
   public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
 
-result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.runtime_asset_reference_count>=10&&result.missing_asset_count===0&&result.empty_asset_count===0&&result.missing_repo_local_count===0&&result.empty_repo_local_count===0&&result.current_paper_memory_carrier_referenced&&result.current_paper_memory_carrier_exists&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.supplement_tab_count===7&&result.supplement_panels_present&&result.supplement_original_assets_present&&result.supplement_ai3d_six_stage&&result.supplement_mobile_behavior&&result.supplement_escape_close&&result.mybook_source_carrier_preserved&&result.mybook_final_view_bound&&result.r06_attention_derivative_bound&&result.generic_cross_section_reveal_absent;
+result.pass=result.section_count===18&&result.unique_sections===18&&result.ordered_sections&&result.anchors_present&&result.required_content_present&&result.runtime_asset_reference_count>=10&&result.missing_asset_count===0&&result.empty_asset_count===0&&result.missing_repo_local_count===0&&result.empty_repo_local_count===0&&result.current_paper_memory_carrier_referenced&&result.current_paper_memory_carrier_exists&&result.data_uri_images===0&&result.internal_production_tokens_visible.length===0&&result.retired_report_structure_absent&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.supplement_tab_count===7&&result.supplement_panels_present&&result.supplement_original_assets_present&&result.supplement_ai3d_six_stage&&result.supplement_mobile_behavior&&result.supplement_escape_close&&result.mybook_source_carrier_preserved&&result.mybook_final_view_direct_bound&&result.r06_attention_derivative_direct_bound&&result.r13_remote_concept_truth_boundary&&result.hold_assets_directly_consumed&&result.stale_body_posture_ref_absent&&result.generic_cross_section_reveal_absent;
 
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
