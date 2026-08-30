@@ -27,8 +27,11 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 - Production consequence:
   - `NORMAL MAP FILE EXISTS` is insufficient evidence; retained normal-map claims require texture-carrier readback when interchange is material.
   - tangent XYZ, normal XYZ, handedness and texture pixel should be treated as one dependent shading contract, not isolated export checkboxes.
+- Fragment-stage cross-reference:
+  - E07 closes a diagnostic WebGL fragment-framebuffer stage for the same standard/mirrored witness, but only for its tested ShaderMaterial/WebGL2 software carrier.
 - HOLD:
-  - actual GPU fragment-shader output parity;
+  - full production PBR/material-shader parity;
+  - hardware GPU/driver parity;
   - mip/filter/anisotropy behavior;
   - skinning/animation tangent frames;
   - other engines/importers;
@@ -56,7 +59,7 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - non-uniform negative scale;
   - nested negative transforms;
   - skinning/animation;
-  - fragment-shader output parity;
+  - negative-determinant fragment-shader parity;
   - other engines/importers;
   - Design KEEP.
 
@@ -149,10 +152,89 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - compare source and target UVs under the actual carrier convention rather than assuming raw numeric UV identity.
 - HOLD:
   - exact per-corner T/N/B component parity at `5e-5`;
-  - actual fragment-shader output parity;
+  - triangulation-specific fragment-shader output parity;
   - production retopo mesh;
   - cross-DCC MikkTSpace parity;
   - a downstream importer that recomputes tangents after post-bake triangulation mutation;
+  - Design KEEP.
+
+## E07 — Diagnostic WebGL fragment normal output reaches the framebuffer
+
+- Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-30-fragment-normal-output-witness/`.
+- Workflow: `OLEANDER 3D WebGL Fragment Normal Output`.
+- Confirmed run: `33319029908` — SUCCESS.
+- Evidence class: `TARGET_RUNTIME_WEBGL_FRAGMENT_TBN_NORMAL_OUTPUT`.
+- Retained failure provenance:
+  - first execution timed out before the viewer exposed a ready/error state;
+  - after runtime diagnostics were added, Three r179 exposed `outputColorSpaceConfig` failure caused by setting `WebGLRenderer.outputColorSpace = NoColorSpace`;
+  - the fix retained a valid renderer output configuration while keeping the offscreen diagnostic render target as the raw carrier; TBN math and framebuffer pixel Gates were not relaxed.
+- Proven in this carrier:
+  - source GLB SHA-256 = `a12bdf28512e672fce762c99aeb09c2405be3689fd4fbb5b75f55b7bc97a0020`;
+  - GLB embedded normal sample remains `[173,189,230,255]`;
+  - `TBN_STANDARD` expected framebuffer RGBA8 `[134,130,0,255]`, observed `[134,130,0,255]`, max channel delta `0`, decoded-direction error approximately `0.194495 deg`;
+  - `TBN_MIRRORED` expected framebuffer RGBA8 `[67,74,28,255]`, observed `[67,74,28,255]`, max channel delta `0`, decoded-direction error approximately `0.140551 deg`;
+  - expected standard-vs-mirrored separation approximately `41.677975 deg`;
+  - observed framebuffer separation approximately `42.006839 deg`;
+  - separation drift approximately `0.328865 deg`;
+  - browser output was read back from the actual WebGL render target/framebuffer path rather than reconstructed only in JavaScript numerics.
+- Production consequence:
+  - `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT OUTPUT VERIFIED`;
+  - when fragment output is material to an interchange claim, a numeric accessor/texture check can be supplemented by a deliberately bounded shader/framebuffer witness.
+- HOLD:
+  - hardware GPU and driver parity; current CI carrier is WebGL2 software/SwiftShader-class execution;
+  - full Three `MeshStandardMaterial` / production PBR formula parity;
+  - mip/filter/anisotropy behavior;
+  - negative-determinant-specific fragment parity;
+  - triangulation-specific fragment parity;
+  - other engines/importers;
+  - Design KEEP.
+
+## E08 — Material-node data semantics + diagnostic lighting are evidence-bearing state
+
+- Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-30-material-nodes-lighting-diagnostic/`.
+- Workflow: `OLEANDER 3D Material Nodes Lighting Diagnostic`.
+- Confirmed current-head run: `33320392696` — SUCCESS; execute, contract validation, hashing and artifact upload all passed.
+- Runtime: Blender `5.2.0 LTS / fbe6228777e7`, Cycles CPU, `256×256`, 16 samples, AgX, locked camera/geometry.
+- Current artifact: `9734724592`; ZIP digest `sha256:514e213dbf44225a46bea0bdc71e2cd6ac7294d647a7462e41578aa563d157c0`.
+- Native master: `MATERIAL_NODES_LIGHTING_DIAGNOSTIC.blend`, 102,924 bytes, SHA-256 `bf2e3ed1b070533bd44c8efad7dd78204211f0af64106e1f331826a204f907a1`.
+- Shared scalar roughness source: `ROUGHNESS_DATA_SOURCE.png`, 10,987 bytes, SHA-256 `1c57f40b3698f776c063f96b1d518fd8ecda0a8bfc30f582e9d97db9aa75a2b2`.
+- Controlled materials:
+  - `CONTROL_CONSTANT` — Principled roughness constant;
+  - `ROUGHNESS_NONCOLOR` — the shared PNG explicitly interpreted as `Non-Color` data;
+  - `ROUGHNESS_SRGB_WRONG` — the exact same PNG bytes intentionally interpreted as `sRGB`.
+- Controlled rigs:
+  - `BROAD` — large frontal area / whole-surface response;
+  - `STRIP` — narrow oblique strip / highlight-width and continuity pressure;
+  - `GRAZING` — low-angle strip / roughness and surface-response pressure.
+- Confirmed output facts:
+  - all nine Cycles RGBA PNG renders exist and each retains 23,756 visible object pixels under the locked frame;
+  - control-rig metric distances: Broad↔Strip `0.245901`, Broad↔Grazing `1.126830`, Strip↔Grazing `0.911735`; unchanged Gate required maximum `> 0.05`;
+  - same-PNG color-space interpretation distances: Broad `0.030657`, Strip `0.032803`, Grazing `0.030273`; unchanged Gate required maximum `> 0.03`;
+  - maximum final written-output near-saturation fraction (`>= 0.99`) = `0.0`, Gate `< 0.08`;
+  - actual nine-frame Artifact Review = **KEEP SUPPORT / DIAGNOSTIC EVIDENCE**: Broad/Strip/Grazing are visibly distinct, the Non-Color vs sRGB roughness change is subtle but visually/measurably present, framing/geometry are locked, and the set is not treated as hero rendering or physical CMF approval.
+- Measurement-carrier provenance:
+  - run `33319859082` failed before rendering because `read_factory_settings(use_empty=True)` left `scene.world = None`; explicit diagnostic World was created without altering material/rig Gates;
+  - run `33320024059` rendered a valid Broad PNG but in-memory `Render Result` alpha reported zero visible pixels while the written RGBA PNG was correct;
+  - run `33320229312` showed the same background-runtime boundary more strongly: written PNG was `256×256`, while in-memory `Render Result.size` was `(0,0)` after `write_still`;
+  - v2 therefore measures the actual written RGBA PNG; radiometric/HDR `>1` clipping is not silently reconstructed and remains HOLD rather than lowering an unrelated Gate.
+- Reproducibility readback across run 4 and run 5:
+  - experimental metrics repeat to a maximum observed metric drift of approximately `3.54e-8`;
+  - four decoded RGBA outputs are pixel-identical;
+  - the other five differ by only one channel value at one pixel, maximum `1 LSB`;
+  - PNG file SHA values differ, therefore this is **numeric/pixel stability within 1 LSB**, not byte-deterministic rendering.
+- Production consequence:
+  - `SAME TEXTURE BYTES ≠ SAME SHADER INPUT SEMANTICS`; scalar data maps require explicit data/color-space interpretation;
+  - `DIAGNOSTIC RIG NAME ≠ DIAGNOSTIC SEPARATION`; a Broad/Strip/Grazing matrix earns authority only when actual output demonstrates distinct diagnostic pressure;
+  - `WRITTEN ARTIFACT ≠ IN-MEMORY BUFFER`; if a runtime readback carrier is demonstrated unreliable, retain the failure provenance, measure the applicable delivered carrier, and leave unsupported claims HOLD instead of changing thresholds.
+- HOLD:
+  - radiometric/HDR clipping measurement for this CI route;
+  - XJ01 historical authority exact-byte identity;
+  - physical PP/roughness measurement;
+  - texture-source photography/scan truth;
+  - normal/displacement map semantics outside the separate E01/E05 witnesses;
+  - spectral/material metrology;
+  - hero-lighting quality;
+  - Physical CMF Approval;
   - Design KEEP.
 
 ## Routing rules promoted only within tested bounds
@@ -160,10 +242,14 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 1. `INSTANCE COMPONENT ≠ MESH COMPONENT ≠ STATIC EXPORT`.
 2. `1 DRAW CALL ≠ LOW MEMORY ≠ HIGH FPS`.
 3. For the tested negative-determinant carrier, tangent-frame reconstruction must include transform determinant sign: `effective_w = tangent.w * sign(det(M_world))`.
-4. `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT-SHADER OUTPUT PARITY`.
+4. `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT OUTPUT VERIFIED`; E07 closes the final stage only for its diagnostic WebGL carrier.
 5. Surface-detail carrier selection uses `frequency × view × required cue`.
 6. For tangent-space baked assets in the tested carrier, `TRIANGULATION CHANGE ≠ SHADING-NEUTRAL CHANGE`; lock triangulation before bake/export or recompute/rebake after topology changes.
 7. `RAW SOURCE UV VALUES ≠ TARGET UV VALUES` when the exchange carrier defines a convention transform; validate the resolved convention explicitly.
+8. `SAME TEXTURE BYTES ≠ SAME SHADER INPUT SEMANTICS`; scalar data maps such as roughness must preserve their intended data/color-space interpretation.
+9. `DIAGNOSTIC RIG NAME ≠ DIAGNOSTIC SEPARATION`; Broad/Strip/Grazing labels are not evidence unless the actual outputs demonstrate distinct diagnostic pressure.
+10. `WRITTEN ARTIFACT ≠ IN-MEMORY BUFFER`; when a runtime proves one carrier unreliable, retain the failure and move only the supported measurement to the applicable carrier instead of silently relaxing thresholds.
+11. `REPEATABLE METRICS ≠ BYTE-DETERMINISTIC RENDER`; report the observed reproducibility level explicitly.
 
 ## Maturity boundary
 
