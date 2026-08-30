@@ -1,0 +1,49 @@
+{
+  "schema": "oleander.validation.evidence.v1.0",
+  "date": "2026-08-28",
+  "mode": "TRAINING_MODE",
+  "gap": "RASTER_READ_WRITE_PROFILE_SAFE_SMOKE_PASS is required by the Candidate shared runtime promotion contract, but current verified evidence only proves deterministic PNG generation and dimension readback.",
+  "existing_runtime": "00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json",
+  "existing_wrapper": "90-shared/toolchains/pro-design/raster.sh",
+  "required_native_output": "ICC-bearing raster derivative whose embedded profile survives a deterministic resize roundtrip and can be extracted/read back with identical profile bytes.",
+  "capability_probe": {
+    "imagemagick": "/opt/imagemagick/bin/magick",
+    "version": "7.1.2-1 Q16-HDRI",
+    "delegates": "bzlib cairo fontconfig freetype jbig jng jpeg lzma pangocairo png rsvg tiff webp xml zlib zstd",
+    "lcms_delegate": false,
+    "icc_source_available": "/usr/share/color/icc/ghostscript/srgb.icc"
+  },
+  "actual_attack": {
+    "attempt": "Create 320x180 gradient, attach sRGB ICC profile, reopen/extract embedded profile, resize to 160x90, extract profile again, compare profile hashes.",
+    "observed_failure": "ImageMagick warned that LCMS delegate support is not built in; the output contained no extractable color profile.",
+    "result_before_repair": "NOT_PROVEN"
+  },
+  "root_cause": "The current materialized ImageMagick build lacks the LCMS delegate required for ICC profile application/conversion. File generation and pixel-dimension readback therefore cannot prove profile-safe raster handling.",
+  "repair": {
+    "type": "FAIL_CLOSED_VALIDATOR",
+    "artifact": "validate_raster_icc_profile.sh",
+    "behavior": "Before any ICC-dependent smoke, verify ImageMagick availability, ICC source availability, and LCMS delegate. If LCMS is absent, return HOLD with exit code 78 instead of silently treating raster generation as profile-safe PASS. If available, execute attach -> resize -> extract -> hash-compare -> dimension readback."
+  },
+  "retest": {
+    "local_validator_sha256": "964189b52f4c2df7f08b6cba8f57ba1a872c0ecee76908ee59dbb83093af1193",
+    "observed": "RESULT=HOLD REASON=LCMS_DELEGATE_NOT_AVAILABLE",
+    "exit_code": 78,
+    "verdict": "HOLD"
+  },
+  "proven": [
+    "The current execution surface exposes ImageMagick 7.1.2-1.",
+    "The current ImageMagick build lacks LCMS in its delegate list.",
+    "ICC-dependent profile safety is not proven by the existing raster smoke.",
+    "A fail-closed preflight can prevent false profile-safe PASS claims."
+  ],
+  "not_proven": [
+    "ICC profile preservation on a LCMS-capable shared runner",
+    "ICC conversion accuracy",
+    "soft-proof or device-profile color accuracy",
+    "print color approval",
+    "Photoshop-level subjective retouch/color finishing"
+  ],
+  "transfer_boundary": "Use this validator only when the requested raster workflow depends on embedded ICC/profile semantics. Ordinary geometry/dimension-only PNG generation may still use the raster wrapper, but must not be described as profile-safe. Production color work remains HOLD until a LCMS-capable runtime and applicable print/display validation are executed.",
+  "maturity_status": "PRACTICE_EVIDENCE",
+  "promotion_effect": "NONE; the Candidate shared runtime remains Candidate and RASTER_READ_WRITE_PROFILE_SAFE_SMOKE_PASS remains OPEN."
+}
