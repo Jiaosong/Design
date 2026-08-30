@@ -110,6 +110,29 @@ When allowed, AI imagery may be used only as a supplemental effect render, refer
 
 If generated pixels conflict with verified model geometry, dimensions or source facts, the verified source wins.
 
+## Computer graphics quality route
+
+For any task that makes a retained claim about 3D form, surface quality, material appearance, lighting, render quality, or cross-renderer visual fidelity, read:
+
+`oleander-skills/oleander-3d-pipeline/COMPUTER_GRAPHICS_QUALITY_LAYER.md`
+
+Apply its causality order and **CG-Q01—CG-Q10** before treating a render as quality evidence.
+
+Required behavior:
+
+- diagnose `geometry/silhouette/section → curvature/normals → BSDF/material → lighting/transport → sampling/denoise → color/display` in causal order;
+- keep source-control density, evaluated-surface density, surface fairness, and design quality separate;
+- use silhouette, neutral diffuse, and reflective/grazing diagnostic carriers when the form/surface claim requires them;
+- treat lighting as a surface-measurement rig before hero lighting becomes an aesthetic tool;
+- treat roughness, metalness, IOR, coat, transmission and other shader controls as representation parameters unless backed by physical/sample evidence;
+- separate color textures from non-color/data maps and verify target-renderer channel/tangent semantics;
+- do not use fixed universal sample counts or one "premium material" preset; diagnose the actual light paths and target viewing distance;
+- lock working/view/display/exposure in controlled A/B comparisons;
+- compare noisy vs denoised output when denoise could erase the feature under review;
+- perform representative cross-renderer calibration/readback when appearance must survive export.
+
+Hard boundary: `CG QUALITY PASS ≠ PHYSICAL MATERIAL TRUTH ≠ ENGINEERING / MANUFACTURING PASS ≠ DESIGN KEEP`.
+
 ## Axonometric and analysis output
 
 1. Lock camera type, orientation, scale, crop, and north reference.
@@ -124,6 +147,8 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 - Current authoritative editable model is identifiable and reopenable.
 - Units and bounding box are plausible and bound to the declared dimension authority.
 - Normals, transforms, pivots, instancing, and modifiers are resolved intentionally.
+- For form/surface claims, the applicable CG-Q01—CG-Q10 checks and diagnostic carriers have been executed rather than replaced by a hero render.
+- Material class/BSDF semantics, texture color-vs-data encoding, light rig, sample/denoise policy, and color pipeline are explicit when they materially affect appearance.
 - For fit/assembly CAD, local frames, functional datums, mating intent and relevant dimensions are explicit and checked.
 - For OpenSCAD/fabrication, public parameters, derived dimensions, stable reference relations and source→mesh/export lineage are explicit.
 - Named off-the-shelf components use a traceable real model when available, or a documented envelope/proxy with uncertainty.
@@ -138,6 +163,8 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 ## Required output
 
 Return a model manifest, Current-master identity, dimension/geometry authority record, exchange report, typed cross-software handoff record when applicable, render settings, asset dependency list, known limitations, and review images alongside the requested model/render.
+
+When the computer-graphics quality route is triggered, also return or retain the applicable CG-Q01—CG-Q10 status, diagnostic-carrier identities, material/texture semantic notes, sampling/denoise policy, color-pipeline lock, and target-renderer readback status.
 
 For parametric CAD/assembly work, also return the named parameter/datum contract, deterministic geometry checks actually executed, purchased-component provenance or proxy boundary, diagnostic visual readback, source repair/retest record, and remaining manufacturing/engineering HOLD.
 
