@@ -42,6 +42,48 @@
       "prompt": "两版 CMF 渲染只改了材质，但 A 用 AgX、B 用 ACES 2.0，而且 exposure 不同。能不能比较哪版材质更高级？",
       "expected_output": "Fail the comparison lock; require fixed working space, view transform, look/display intent and exposure unless color management itself is the test variable; material preference cannot be inferred from an uncontrolled color-pipeline change; route back to CG-Q04, CG-Q06 and CG-Q08 under a neutral controlled comparison rig.",
       "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Rhino 做一个高亮工业产品外壳，设计师已经切成很多小面并不断用 MatchSrf/BlendSrf 修接缝，但 Zebra 仍然有波浪。下一步应该继续加 patch 还是回到哪里？",
+      "expected_output": "Route to KN-METHOD-RHINO-SURFACE-MODELING-001 and EVD-CG-SURFACE-CONTINUITY-001; inspect generating curves, CV count/degree/spacing and mother-surface structure before adding patches; preserve untrimmed surfaces; use Match/Blend only after curve and primary-surface quality are credible; require Zebra/curvature/section readback rather than shaded beauty alone.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Geometry Nodes 里一个散布系统在 Realize Instances + Join Geometry 之后，原来控制材质和尺寸的属性开始错乱。不要直接给节点配方，先按 Oleander 判断。",
+      "expected_output": "Route to the Geometry Nodes knowledge object; identify geometry component, attribute domain, field evaluation context and propagation/capture point; inspect instance-versus-realized state and domain changes before editing the graph; require a minimal reproduction that records named attributes before and after Realize/Join and validates the exposed parameter contract.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "一个扫描高模在 3ds Max 用 ReForm 自动得到全四边面后就准备直接交动画；另一个人建议在 Maya Quad Draw 手工全部重拓扑。哪个方案才符合 Oleander？",
+      "expected_output": "Reject the false binary. Select retopology method from deformation, silhouette, shading, UV/bake and runtime needs; for Max require input preparation and post-retopo Edit Poly/normal checks; for Maya treat Make Live + Quad Draw as manual topology design constrained to a reference; in both cases require silhouette, edge flow, normals, UV/bake and deformation/runtime readback. Auto quads or manual quads alone are not completion evidence.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "SketchUp 建筑模型全部用裸线面直接复制，后期一改墙体就粘连、重复家具也要逐个修改。有人想装更多插件解决。先怎么修？",
+      "expected_output": "Route to SketchUp spatial modeling before plugins; isolate logical geometry into Groups and repeated elements into Components with controlled axes/definitions; use Tags/Outliner for visibility and hierarchy rather than tagging raw geometry as a substitute for grouping; only evaluate an extension after native organization and component workflow are correct.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "Substance Painter 里高低模烘焙后看着正常，但导出到目标引擎后法线接缝和局部阴影出现错误。美术想重新画贴图。按教程学习后的流程怎么查？",
+      "expected_output": "Inspect model preparation, low/high identity, UVs, cage/match, tangent basis and triangulation before repainting; compare Painter and target triangulation/tangent conventions; verify normal orientation and export preset/channel semantics; lock the target runtime preset and read back. Painting over a bake/tangent mismatch is not an acceptable root-cause fix.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "Arnold 产品棚拍有三种噪声：景深颗粒、软阴影颗粒、金属间接高光颗粒。团队准备统一把 Camera AA 拉到 8。应该怎么处理？",
+      "expected_output": "Classify noise before sampling: DOF/motion-blur pressure belongs to Camera AA; soft-shadow/direct-specular variance may require relevant light sampling; indirect specular requires specular-path sampling. Change one relevant family at a time, compare variance and render time, and avoid a universal high-AA preset that wastes rays.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "Houdini 里要做程序化湿痕材质。有人把 SOP 几何属性、Copernicus 纹理生成、Solaris 材质绑定和 Karma 渲染全部混成一个‘材质节点问题’。请拆开正确的生产路线。",
+      "expected_output": "Separate contexts and ownership: SOP creates/transfers geometry attributes; Copernicus/Texture Material Library authors procedural image/texture data when appropriate; Material Library/MaterialX assembles shader/material networks; Solaris/LOP composes USD and binds materials; Karma renders. Record context crossings and attribute/path semantics instead of treating all nodes as one graph.",
+      "files": []
     }
   ]
 }
