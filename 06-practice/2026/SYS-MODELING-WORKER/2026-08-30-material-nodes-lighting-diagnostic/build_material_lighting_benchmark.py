@@ -111,15 +111,28 @@ def material_contract(m):
 
 def render_metrics(scene, out_png):
     scene.render.filepath=str(out_png);bpy.ops.render.render(write_still=True)
+    # In Blender 5.2 background mode the in-memory Render Result alpha can be
+    # zero even when the written RGBA PNG has the correct object alpha. Use
+    # the delivered PNG alpha as the visibility carrier, but retain linear/HDR
+    # Render Result RGB for lighting/material metrics and >1 clipping checks.
+    written=bpy.data.images.load(str(out_png),check_existing=False)
+    ww,wh=written.size
+    wa=np.array(written.pixels[:],dtype=np.float32).reshape(wh,ww,4)
+    mask=wa[:,:,3]>.5
+    object_pixels=int(mask.sum())
+    bpy.data.images.remove(written)
+    if object_pixels<1000: raise RuntimeError(f'visible object pixels too low in written PNG: {object_pixels}')
     rr=bpy.data.images.get('Render Result');w,h=rr.size
-    a=np.array(rr.pixels[:],dtype=np.float32).reshape(h,w,4);rgb=a[:,:,:3];alpha=a[:,:,3];mask=alpha>.5
-    if int(mask.sum())<1000: raise RuntimeError(f'visible object pixels too low: {int(mask.sum())}')
+    if (w,h)!=(ww,wh): raise RuntimeError(f'render-result/write size mismatch: {(w,h)} vs {(ww,wh)}')
+    a=np.array(rr.pixels[:],dtype=np.float32).reshape(h,w,4);rgb=a[:,:,:3]
     lum=.2126*rgb[:,:,0]+.7152*rgb[:,:,1]+.0722*rgb[:,:,2];vals=lum[mask]
     pairx=mask[:,1:]&mask[:,:-1];pairy=mask[1:,:]&mask[:-1,:]
     gx=np.abs(lum[:,1:]-lum[:,:-1])[pairx];gy=np.abs(lum[1:,:]-lum[:-1,:])[pairy]
     grad=float(np.mean(np.concatenate((gx,gy)))) if gx.size+gy.size else 0.0
     return {
-        'object_pixels':int(mask.sum()),
+        'object_pixels':object_pixels,
+        'visibility_mask_source':'written PNG alpha',
+        'lighting_metric_source':'Render Result linear/HDR RGB',
         'mean_luma':float(vals.mean()),
         'std_luma':float(vals.std()),
         'p95_luma':float(np.quantile(vals,.95)),
@@ -166,6 +179,7 @@ def main():
         'engine':'CYCLES CPU',
         'render_settings':{'resolution':[256,256],'samples':16,'film_transparent':True,'exposure':float(scene.view_settings.exposure),'view_transform':scene.view_settings.view_transform,'look':scene.view_settings.look},
         'geometry':{'carrier':'procedural rounded coupon','object':obj.name,'uv_layer':obj.data.uv_layers.active.name if obj.data.uv_layers.active else None,'vertices':len(obj.data.vertices),'polygons':len(obj.data.polygons)},
+        'metric_carrier':{'visibility':'written PNG alpha','lighting_material':'Render Result linear/HDR RGB','reason':'Blender 5.2 background-mode Render Result alpha diverged from delivered PNG alpha in failed run 33320024059; no rig/material/Gate threshold changed'},
         'roughness_texture':{'file':png.name,'sha256':tex_sha,'bytes':png.stat().st_size,'shared_same_bytes':True,'intent':'scalar roughness DATA map; same PNG is interpreted once as Non-Color and once intentionally wrong as sRGB'},
         'materials':contracts,
         'rigs':{'BROAD':'large frontal area; whole-surface response','STRIP':'narrow oblique strip; highlight width/continuity','GRAZING':'low-angle strip; roughness/noise sensitivity'},
