@@ -68,7 +68,7 @@ jobs:
           mkdir -p "$BROWSER/assets"
           cp out/TBN_SOURCE/TBN_RECONSTRUCTION_WITNESS.glb "$BROWSER/assets/TBN_RECONSTRUCTION_WITNESS.glb"
 
-      - name: Execute numeric TBN readback in Chromium
+      - name: Execute numeric TBN plus embedded-pixel readback in Chromium
         working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-tbn-reconstruction-witness/browser
         run: |
           set -euo pipefail
@@ -82,22 +82,36 @@ jobs:
           test -s "$GITHUB_WORKSPACE/out/TBN_BROWSER/TARGET_RUNTIME_RECEIPT.json"
           test -s "$GITHUB_WORKSPACE/out/TBN_BROWSER/TBN_NUMERIC_BROWSER_720.png"
 
-      - name: Validate numeric TBN contract
+      - name: Validate numeric TBN plus embedded-normal-pixel contract
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
           r=json.loads(Path('out/TBN_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
-          assert r['evidenceClass']=='TARGET_RUNTIME_NUMERIC_TBN_RECONSTRUCTION'
+          assert r['schema']=='oleander.3d.gltf-tbn-reconstruction-target.v3'
+          assert r['evidenceClass']=='TARGET_RUNTIME_NUMERIC_TBN_PLUS_EMBEDDED_NORMAL_PIXEL'
           assert r['numericTangentVectorPreserved'] is True
           assert r['numericNormalVectorPreserved'] is True
           assert r['tangentHandednessPreserved'] is True
           assert r['numericPerturbedNormalReconstructionPreserved'] is True
+          assert r['embeddedNormalTexturePixelPreserved'] is True
+          assert r['sampledPixelDrivenPerturbedNormalReconstructionPreserved'] is True
           assert r['standardVsMirroredPerturbedNormalSeparationDeg']>5
-          for c in r['objectChecks'].values():
-              assert c['tangentMatch'] and c['normalMatch'] and c['signMatch'] and c['bitangentMatch'] and c['perturbedMatch'] and c['mappedConstructionMatch'] and c['normalMapped']
-          print(json.dumps({'numeric_tbn':'PASS','separation_deg':r['standardVsMirroredPerturbedNormalSeparationDeg'],'errors_deg':{k:v['perturbedAngleErrorDeg'] for k,v in r['objectChecks'].items()}},indent=2))
+          assert r['standardVsMirroredSampledPixelPerturbedNormalSeparationDeg']>5
+          for name,c in r['objectChecks'].items():
+              assert c['tangentMatch'] and c['normalMatch'] and c['signMatch'] and c['bitangentMatch']
+              assert c['perturbedMatch'] and c['mappedConstructionMatch'] and c['normalMapped']
+              assert c['embeddedPixelMatch'] and c['sampledPerturbedMatch']
+              assert c['embeddedNormalPixel']['maxChannelAbsDelta']<=1
+              assert c['embeddedNormalPixel']['directionError']['pass'] is True
+          print(json.dumps({
+              'numeric_tbn_embedded_pixel':'PASS',
+              'separation_deg':r['standardVsMirroredPerturbedNormalSeparationDeg'],
+              'sampled_separation_deg':r['standardVsMirroredSampledPixelPerturbedNormalSeparationDeg'],
+              'pixel_max_delta':{k:v['embeddedNormalPixel']['maxChannelAbsDelta'] for k,v in r['objectChecks'].items()},
+              'sampled_direction_error_deg':{k:v['embeddedNormalPixel']['directionError']['angularErrorDeg'] for k,v in r['objectChecks'].items()}
+          },indent=2))
           PY
 
       - name: Hash evidence
