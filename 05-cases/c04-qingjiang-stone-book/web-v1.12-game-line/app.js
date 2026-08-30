@@ -187,9 +187,9 @@ const supplementMarkup=`
           <article class="supplement-process-card"><img src="assets/hero_qingjiang.jpg" alt="真实清江来源"><div><small>01 / SOURCE</small><b>真实来源与约束</b><p>从景观、路线和已有对象出发，不从空白画面开始。</p></div></article>
           <article class="supplement-process-card"><img src="assets/r06_qingjiang.jpg" alt="体验方向探索基础"><div><small>02 / AI EXPLORE</small><b>体验方向探索</b><p>AI 只承担氛围、构图、镜头和体验方向的候选探索。</p></div></article>
           <article class="supplement-process-card"><img class="contain" src="assets/technical_focus_v2.svg" alt="空间关系回读"><div><small>03 / READBACK</small><b>几何冲突回读</b><p>检查新增地形、平台、栏杆、路径和尺度错位。</p></div></article>
-          <article class="supplement-process-card"><img class="contain" src="assets/fluid_v26_body_posture.png" alt="人体尺度校核"><div><small>04 / 3D</small><b>3D 与人体尺度</b><p>把空间关系、使用姿态和对象尺度重新落回几何。</p></div></article>
-          <article class="supplement-process-card"><img class="contain" src="assets/r06_general_assembly_v11.svg" alt="总体装配图"><div><small>05 / DRAWING</small><b>平剖与装配</b><p>用平面、剖面和装配图解释“怎样成立”。</p></div></article>
-          <article class="supplement-process-card"><img class="contain" src="assets/r06_detail_atlas_v11.svg" alt="技术节点详图"><div><small>06 / DETAIL</small><b>节点与维护</b><p>连接、材料、排水、防滑和替换继续深化。</p></div></article>
+          <article class="supplement-process-card"><img class="contain" src="assets/physical_body_support_hold.svg" alt="身体支持验证界面"><div><small>04 / BODY CHECK</small><b>身体支持验证</b><p>用可编辑验证界面检查停、倚、恢复与景观关系；当前不是最终 3D 或现场证明。</p></div></article>
+          <article class="supplement-process-card"><img class="contain" src="assets/r06_general_assembly_v11.svg" alt="总体装配验证界面"><div><small>05 / DRAWING</small><b>平剖与装配</b><p>用可编辑关系图继续核对对象、人体与构件接口，不把远程假设写成施工结论。</p></div></article>
+          <article class="supplement-process-card"><img class="contain" src="assets/r06_detail_atlas_v11.svg" alt="节点验证界面"><div><small>06 / DETAIL</small><b>节点与维护</b><p>连接、材料、排水、防滑和替换继续作为待验证接口深化。</p></div></article>
         </div>
         <p class="supplement-boundary">AI 图像不证明最终几何、现场事实、工程尺寸或结构安全。任何进入主展示的 AI / 3D 候选，都必须回到原资产和技术关系检查。</p>
       </section>
@@ -217,7 +217,6 @@ function selectSupplementTab(name){
   supplementTabs.forEach(button=>button.classList.toggle('is-active',button.dataset.supplementTab===name));
   supplementPanels.forEach(panel=>panel.classList.toggle('is-active',panel.dataset.supplementPanel===name));
 }
-
 supplementTrigger?.addEventListener('click',()=>document.body.classList.contains('supplement-open')?closeSupplement():openSupplement());
 supplementClosers.forEach(button=>button.addEventListener('click',closeSupplement));
 supplementTabs.forEach(button=>button.addEventListener('click',()=>selectSupplementTab(button.dataset.supplementTab)));
