@@ -4,7 +4,7 @@ const rt={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},webgl:{
 window.addEventListener('error',e=>{rt.diagnostics.push(`window-error: ${e.message}`);if(!rt.ready)rt.error=String(e.message||e.error||'window error');});
 window.addEventListener('unhandledrejection',e=>{rt.diagnostics.push(`unhandled-rejection: ${e.reason}`);if(!rt.ready)rt.error=String(e.reason?.message||e.reason||'unhandled rejection');});
 try{
-const renderer=new THREE.WebGLRenderer({antialias:false,preserveDrawingBuffer:true});renderer.debug.checkShaderErrors=true;renderer.setPixelRatio(1);renderer.setSize(128,64,false);renderer.outputColorSpace=THREE.NoColorSpace;renderer.toneMapping=THREE.NoToneMapping;renderer.autoClear=true;document.body.appendChild(renderer.domElement);
+const renderer=new THREE.WebGLRenderer({antialias:false,preserveDrawingBuffer:true});renderer.debug.checkShaderErrors=true;renderer.setPixelRatio(1);renderer.setSize(128,64,false);renderer.toneMapping=THREE.NoToneMapping;renderer.autoClear=true;document.body.appendChild(renderer.domElement);
 const target=new THREE.WebGLRenderTarget(64,64,{format:THREE.RGBAFormat,type:THREE.UnsignedByteType,depthBuffer:false,stencilBuffer:false});target.texture.colorSpace=THREE.NoColorSpace;target.texture.generateMipmaps=false;target.texture.minFilter=THREE.NearestFilter;target.texture.magFilter=THREE.NearestFilter;
 const camera=new THREE.Camera();
 const vs=`
