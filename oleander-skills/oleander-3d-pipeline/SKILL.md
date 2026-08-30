@@ -20,6 +20,19 @@ For spline/NURBS structure, half-edge/Euler topology, UV parameterization/distor
 
 `oleander-skills/oleander-3d-pipeline/MODELING_ESSENCE_DEEP_DIAGNOSTICS.md`
 
+For any retained production claim that depends on an executable Blender/export/browser/runtime witness, also read:
+
+`oleander-skills/oleander-3d-pipeline/3D_RUNTIME_EVIDENCE_MATRIX.md`
+
+Runtime-evidence consumption rules:
+
+- consume only a matrix row whose tested worker/version, representation, exchange carrier and target-runtime class materially match the current claim;
+- a successful workflow promotes only the explicitly bounded proposition in that row, never the whole DCC, renderer, interchange format or project;
+- keep every row's unresolved HOLDs excluded from the conclusion instead of inferring them away from adjacent passing rows;
+- distinguish source/native readback, exchange-file readback, target numeric readback, fragment/framebuffer output and actual Artifact Review as separate evidence stages;
+- when a runtime carrier is demonstrated unreliable, retain the failed run as provenance and move only the supported measurement to a valid carrier; do not lower an unrelated quality threshold to manufacture a PASS;
+- report observed reproducibility at its actual level (`byte deterministic`, `pixel exact`, `within N LSB`, `metric stable`, or weaker) rather than calling every repeated green run deterministic.
+
 Its Current Notion owner is:
 
 `FW-CG-3D-PRODUCTION-001｜3D Production Knowledge Stack｜建模—程序化—表面—材质—渲染—技术美术`.
@@ -181,6 +194,7 @@ Hard boundary: `CG QUALITY PASS ≠ PHYSICAL MATERIAL TRUTH ≠ ENGINEERING / MA
 - Normals, transforms, pivots, instancing, and modifiers are resolved intentionally.
 - For form/surface claims, the applicable CG-Q01—CG-Q10 checks and diagnostic carriers have been executed rather than replaced by a hero render.
 - Material class/BSDF semantics, texture color-vs-data encoding, light rig, sample/denoise policy, and color pipeline are explicit when they materially affect appearance.
+- If a runtime-evidence row is cited, its witness/run/carrier matches the current claim and all row-specific HOLDs remain explicit.
 - For fit/assembly CAD, local frames, functional datums, mating intent and relevant dimensions are explicit and checked.
 - For OpenSCAD/fabrication, public parameters, derived dimensions, stable reference relations and source→mesh/export lineage are explicit.
 - Named off-the-shelf components use a traceable real model when available, or a documented envelope/proxy with uncertainty.
@@ -197,6 +211,8 @@ Hard boundary: `CG QUALITY PASS ≠ PHYSICAL MATERIAL TRUTH ≠ ENGINEERING / MA
 Return a model manifest, Current-master identity, dimension/geometry authority record, exchange report, typed cross-software handoff record when applicable, render settings, asset dependency list, known limitations, and review images alongside the requested model/render.
 
 When the computer-graphics quality route is triggered, also return or retain the applicable CG-Q01—CG-Q10 status, diagnostic-carrier identities, material/texture semantic notes, sampling/denoise policy, color-pipeline lock, and target-renderer readback status.
+
+When an executable runtime witness is used as evidence, also retain the applicable `3D_RUNTIME_EVIDENCE_MATRIX.md` row, exact workflow/run or artifact identity, tested carrier, observed reproducibility level, actual visual/native readback when applicable, and unresolved HOLDs. Do not summarize a bounded witness as a universal DCC/renderer/engine rule.
 
 For parametric CAD/assembly work, also return the named parameter/datum contract, deterministic geometry checks actually executed, purchased-component provenance or proxy boundary, diagnostic visual readback, source repair/retest record, and remaining manufacturing/engineering HOLD.
 
