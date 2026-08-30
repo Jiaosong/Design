@@ -2,7 +2,6 @@
 import argparse
 import hashlib
 import json
-import math
 import sys
 from pathlib import Path
 
@@ -170,7 +169,6 @@ def build_node_group(realize: bool, material):
     link(ng, cube.outputs["Mesh"], inst.inputs["Instance"])
 
     instance_geometry = inst.outputs["Instances"]
-    realize_node = None
     if realize:
         realize_node = nodes.new("GeometryNodeRealizeInstances")
         realize_node.location = (670, -20)
@@ -209,12 +207,14 @@ def look_at(obj, target=(0, 0, 0)):
 
 def setup_scene(obj, out: Path):
     scene = bpy.context.scene
-    scene.render.engine = "BLENDER_EEVEE_NEXT"
+    scene.render.engine = "BLENDER_EEVEE"
     scene.render.resolution_x = 720
     scene.render.resolution_y = 720
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.render.film_transparent = False
+    if scene.world is None:
+        scene.world = bpy.data.worlds.new("OLEANDER_GN_WORLD")
     scene.world.color = (0.035, 0.035, 0.035)
 
     cam_data = bpy.data.cameras.new("GN_DIAGNOSTIC_CAMERA")
@@ -248,8 +248,8 @@ def evaluated_stats(obj):
     try:
         verts = [v.co.copy() for v in mesh.vertices]
         if verts:
-            mins = [min(v[i] for v in verts) for i in range(3)]
-            maxs = [max(v[i] for v in verts) for i in range(3)]
+            mins = [float(min(v[i] for v in verts)) for i in range(3)]
+            maxs = [float(max(v[i] for v in verts)) for i in range(3)]
         else:
             mins = maxs = [0.0, 0.0, 0.0]
         attr = mesh.attributes.get(ATTR_NAME)
@@ -308,8 +308,8 @@ def roundtrip_glb(path: Path):
         for v in o.data.vertices:
             world_pts.append(o.matrix_world @ v.co)
     if world_pts:
-        mins = [min(v[i] for v in world_pts) for i in range(3)]
-        maxs = [max(v[i] for v in world_pts) for i in range(3)]
+        mins = [float(min(v[i] for v in world_pts)) for i in range(3)]
+        maxs = [float(max(v[i] for v in world_pts)) for i in range(3)]
     else:
         mins = maxs = [0.0, 0.0, 0.0]
     return {
