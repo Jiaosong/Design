@@ -14,7 +14,7 @@
     ['设计创意','水上 · 空中 · 山中'],
     ['设计系统','十三印'],
     ['技术路线','如何成立'],
-    ['AI + 3D','模型与构造'],
+    ['AI + 3D','AI 探索'],
     ['创新与难点','关键取舍'],
     ['ORIGINAL MATERIAL / EXISTING ASSETS','QINGJIANG / ROUTE / EXISTING WORK'],
     ['DESIGN QUESTION','ROUTE / ATTENTION / RETURN'],
@@ -55,61 +55,7 @@
     }
   }
 
-  function bindDistinctDigitalView(){
-    const finalView=document.querySelector('#digital .app-mybook-carrier');
-    if(!finalView) return;
-    finalView.src='support/C04_APP_V1_6_MY_BOOK_FINAL_VIEW.html';
-    finalView.title='清江石书 我的石书最终展示界面';
-    finalView.dataset.presentationRole='final-view';
-  }
-
-  function applyAssetRoleRepair(){
-    const thinkingImage=document.querySelector('#thinking .media-panel img[src="assets/r06_qingjiang.jpg"]');
-    if(thinkingImage){
-      thinkingImage.src='assets/r06_attention_sequence_current.svg';
-      thinkingImage.alt='R06 河谷观察：完整景观、可选关系、退回景观的注意力序列';
-      thinkingImage.dataset.presentationRole='attention-derivative';
-    }
-
-    const ai3d=document.querySelector('#ai3d');
-    if(!ai3d) return;
-
-    const sourceImage=ai3d.querySelector('.ai3d-process article:first-child img');
-    if(sourceImage?.getAttribute('src')==='assets/r06_qingjiang.jpg'){
-      sourceImage.src='assets/route03_locked_current.svg';
-      sourceImage.alt='ROUTE-03 锁定路线与空间关系';
-      sourceImage.classList.add('contain');
-    }
-
-    const sourceCard=ai3d.querySelector('.ai3d-process article:first-child');
-    if(sourceCard){
-      const heading=sourceCard.querySelector('h3');
-      const copy=sourceCard.querySelector('p');
-      if(heading) heading.textContent='先锁定路线与空间关系';
-      if(copy) copy.textContent='先把分支、回环、跨江与回程锁定，再讨论 AI 能探索的画面与体验方向。';
-    }
-
-    ['assets/fluid_rest_object.png','assets/r06_general_assembly_v11.svg','assets/r06_detail_atlas_v11.svg'].forEach(src=>{
-      const image=ai3d.querySelector(`img[src="${src}"]`);
-      const card=image?.closest('article');
-      if(card){
-        card.hidden=true;
-        card.dataset.presentationRole='deduplicated-to-owner-section';
-      }
-    });
-
-    const head=ai3d.querySelector('.section-head');
-    const kicker=head?.querySelector('.kicker');
-    const heading=head?.querySelector('h2');
-    const summary=head?.querySelector(':scope > p');
-    if(kicker) kicker.textContent='AI EXPLORATION / SOURCE CHECK';
-    if(heading) heading.innerHTML='AI 只负责提出画面，<br />空间关系必须回到真实路线。';
-    if(summary) summary.textContent='这里保留“来源 → AI 探索 → 来源回读”三步。实体模型与装配、节点图不在此重复，它们回到身体设计与技术证明章节各自成立。';
-  }
-
   applyPublicVoiceRepair();
-  bindDistinctDigitalView();
-  applyAssetRoleRepair();
 
   const root=document.documentElement;
   const hero=document.querySelector('#hero');
