@@ -1,0 +1,75 @@
+name: OLEANDER 3D GN Instance vs Realize Sensitivity
+
+on:
+  pull_request:
+    paths:
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gn-instance-realize-performance/**'
+      - '.github/workflows/oleander-3d-gn-instance-realize-performance.yml'
+  workflow_dispatch:
+
+jobs:
+  gn-instance-realize-sensitivity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+
+      - name: Validate script
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gn-instance-realize-performance/run_gn_instance_realize_perf.py
+
+      - name: Install Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+
+      - name: Run sensitivity benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/GN_INSTANCE_REALIZE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gn-instance-realize-performance/run_gn_instance_realize_perf.py \
+            -- --out "$OUT"
+          test -s "$OUT/PERF_RECEIPT.json"
+
+      - name: Validate representation and sensitivity contract
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/GN_INSTANCE_REALIZE/PERF_RECEIPT.json').read_text())
+          assert r['evidence_class']=='NATIVE_GN_PERFORMANCE_SENSITIVITY'
+          rows=r['rows']
+          assert len(rows)==6
+          for res in (25,50,100):
+              inst=next(x for x in rows if x['resolution']==res and x['mode']=='INSTANCE')
+              real=next(x for x in rows if x['resolution']==res and x['mode']=='REALIZE')
+              assert inst['instance_count']==real['instance_count']==res*res
+              assert inst['eval']['median_seconds']>0 and real['eval']['median_seconds']>0
+              assert inst['static_glb']['bytes']>0 and real['static_glb']['bytes']>0
+              # Static export intentionally bakes evaluated geometry, so both routes should converge closely.
+              br=max(inst['static_glb']['bytes'],real['static_glb']['bytes'])/min(inst['static_glb']['bytes'],real['static_glb']['bytes'])
+              assert br < 1.05, (res, br)
+          print(json.dumps({'gn_instance_realize':'PASS','ratios':r['ratios']},indent=2))
+          PY
+
+      - name: Hash evidence
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > GN_INSTANCE_REALIZE_SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-gn-instance-realize-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            GN_INSTANCE_REALIZE_SHA256SUMS.txt
+            out/GN_INSTANCE_REALIZE/
+          if-no-files-found: error
+          retention-days: 14
