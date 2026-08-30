@@ -1,0 +1,117 @@
+name: OLEANDER 3D GLB Browser Target Runtime
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-gltf-browser-target-runtime.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-browser-target-runtime/**'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  glb-browser-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+
+      - name: Install Blender headless runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+
+      - name: Build Realize Instances GN source
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/GN_SOURCE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode build --realize 1 --out "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/bake_evaluated_geometry_to_glb.py \
+            -- --out "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode reopen --realize 1 --out "$OUT"
+          test -s "$OUT/GN_NATIVE_BENCH.glb"
+          test -s "$OUT/EXPORT_BAKE_RECEIPT.json"
+          test -s "$OUT/REOPEN_RECEIPT.json"
+
+      - name: Install pinned browser runtime dependencies
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-browser-target-runtime/browser
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json'); const t=require('./node_modules/three/package.json'); if(p.version!=='1.55.0'||t.version!=='0.179.1') process.exit(2); console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+
+      - name: Assemble local browser webroot
+        run: |
+          set -euo pipefail
+          BROWSER="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-browser-target-runtime/browser"
+          mkdir -p "$BROWSER/assets"
+          cp out/GN_SOURCE/GN_NATIVE_BENCH.glb "$BROWSER/assets/GN_NATIVE_BENCH.glb"
+          sha256sum "$BROWSER/assets/GN_NATIVE_BENCH.glb" > BROWSER_ASSET_SHA256.txt
+
+      - name: Execute Chromium WebGL target-runtime readback
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-browser-target-runtime/browser
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/BROWSER_TARGET_RUNTIME" \
+          OLEANDER_EXPECTED="$GITHUB_WORKSPACE/out/GN_SOURCE/EXPORT_BAKE_RECEIPT.json" \
+          OLEANDER_SOURCE_REOPEN="$GITHUB_WORKSPACE/out/GN_SOURCE/REOPEN_RECEIPT.json" \
+            node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/BROWSER_TARGET_RUNTIME/BROWSER_RUNTIME_RECEIPT.json"
+          test -s "$GITHUB_WORKSPACE/out/BROWSER_TARGET_RUNTIME/BROWSER_RUNTIME_720.png"
+
+      - name: Validate target-runtime contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/BROWSER_TARGET_RUNTIME/BROWSER_RUNTIME_RECEIPT.json').read_text())
+          assert r['evidenceClass']=='TARGET_RUNTIME_BROWSER_READBACK'
+          assert r['meshCount']>=1 and r['materialCount']>=1
+          assert r['positionCount']>=1 and r['triangleCount']>=1
+          assert r['nativeBBoxMatch'] is True
+          assert r['gltfSceneCount']>=1
+          assert r['sourceGlbBytes']>1024
+          print(json.dumps({'browser_target_runtime':'PASS','meshCount':r['meshCount'],'triangles':r['triangleCount'],'bbox':r['bboxSize'],'webgl':r['webgl']},indent=2))
+          PY
+
+      - name: Hash benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > BROWSER_RUNTIME_SHA256SUMS.txt || true
+
+      - name: Upload browser target-runtime evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-gltf-browser-runtime-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_ASSET_SHA256.txt
+            BROWSER_SERVER.log
+            BROWSER_RUNTIME_SHA256SUMS.txt
+            out/GN_SOURCE/BUILD_RECEIPT.json
+            out/GN_SOURCE/EXPORT_BAKE_RECEIPT.json
+            out/GN_SOURCE/REOPEN_RECEIPT.json
+            out/GN_SOURCE/GN_NATIVE_BENCH.glb
+            out/BROWSER_TARGET_RUNTIME/
+          if-no-files-found: error
+          retention-days: 14
