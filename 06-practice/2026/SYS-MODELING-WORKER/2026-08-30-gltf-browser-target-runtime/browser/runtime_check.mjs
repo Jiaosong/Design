@@ -27,15 +27,33 @@ if(runtime.materialCount < 1) throw new Error(`no browser material: ${JSON.strin
 
 const eps = 1e-5;
 function closeArray(a,b){return a.length===b.length && a.every((x,i)=>Math.abs(x-b[i])<=eps)}
-const expectedMin = expected.bbox_min ?? null;
-const expectedMax = expected.bbox_max ?? null;
-// EXPORT_BAKE receipt does not carry bbox in v1; workflow supplies source reopen receipt for strict bbox comparison.
+function sizeFromBounds(min,max){return max.map((x,i)=>x-min[i])}
 let sourceReopen=null;
+let axisContract=null;
 if(process.env.OLEANDER_SOURCE_REOPEN){
   sourceReopen=JSON.parse(fs.readFileSync(path.resolve(process.env.OLEANDER_SOURCE_REOPEN),'utf8'));
-  if(!closeArray(runtime.bboxMin,sourceReopen.native_reopen.bbox_min) || !closeArray(runtime.bboxMax,sourceReopen.native_reopen.bbox_max)){
-    throw new Error(`browser bbox mismatch: ${JSON.stringify({browser:[runtime.bboxMin,runtime.bboxMax],native:[sourceReopen.native_reopen.bbox_min,sourceReopen.native_reopen.bbox_max]})}`);
+  const nativeMin=sourceReopen.native_reopen.bbox_min;
+  const nativeMax=sourceReopen.native_reopen.bbox_max;
+  const nativeSize=sizeFromBounds(nativeMin,nativeMax);
+  // Blender source is Z-up. glTF/Three.js runtime is Y-up. For this symmetric benchmark,
+  // the observed and expected extent mapping is Blender XYZ -> browser XZY in magnitude.
+  // The asset is symmetric around origin, so sign/handedness cannot be proven by this carrier.
+  const expectedBrowserSize=[nativeSize[0],nativeSize[2],nativeSize[1]];
+  const extentMappingMatch=closeArray(runtime.bboxSize,expectedBrowserSize);
+  if(!extentMappingMatch){
+    throw new Error(`browser axis/extent mismatch: ${JSON.stringify({browserSize:runtime.bboxSize,nativeSize,expectedBrowserSize})}`);
   }
+  axisContract={
+    sourceCoordinateSystem:'Blender Z-up',
+    targetCoordinateSystem:'glTF/Three.js Y-up',
+    observedExtentMapping:'Blender XYZ extents -> browser XZY extents',
+    nativeSize,
+    expectedBrowserSize,
+    browserSize:runtime.bboxSize,
+    extentMappingMatch:true,
+    handednessSignProven:false,
+    handednessHoldReason:'benchmark geometry is symmetric around origin; axis sign cannot be discriminated from bbox extents alone'
+  };
 }
 
 await page.screenshot({path:path.join(out,'BROWSER_RUNTIME_720.png'),fullPage:true});
@@ -56,12 +74,12 @@ const receipt={
   materialTypes:[...new Set(runtime.materialTypes)],
   gltfSceneCount:runtime.gltfSceneCount,
   webgl:{version:runtime.webglVersion,vendor:runtime.webglVendor,renderer:runtime.webglRenderer},
-  nativeBBoxMatch:sourceReopen ? true : null,
+  axisContract,
   screenshot:'BROWSER_RUNTIME_720.png',
   console:consoleLines,
   evidenceClass:'TARGET_RUNTIME_BROWSER_READBACK',
-  finding:'The explicitly baked GLB loads as visible mesh geometry in a real Chromium/WebGL/Three.js runtime with native-export bbox preserved. This does not restore the Blender Geometry Nodes dependency graph.',
-  holds:['production browser/device matrix','performance budget','accessibility/interaction','Design KEEP']
+  finding:'The explicitly baked GLB loads as visible mesh geometry in a real Chromium/WebGL/Three.js runtime. Blender Z-up source extents are preserved under the expected glTF/Three.js Y-up axis mapping. The Blender Geometry Nodes dependency graph is not restored.',
+  holds:['axis-sign/handedness witness on an asymmetric carrier','production browser/device matrix','performance budget','accessibility/interaction','Design KEEP']
 };
 fs.writeFileSync(path.join(out,'BROWSER_RUNTIME_RECEIPT.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify(receipt,null,2));
