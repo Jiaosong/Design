@@ -137,7 +137,10 @@ def setup_scene(out):
     bpy.ops.wm.read_factory_settings(use_empty=True);scene=bpy.context.scene;scene.render.engine='CYCLES';scene.cycles.samples=16;scene.cycles.use_denoising=False
     scene.render.resolution_x=256;scene.render.resolution_y=256;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGBA';scene.render.image_settings.color_depth='8';scene.render.film_transparent=True
     scene.render.filepath=str(out/'_tmp.png');scene.render.use_file_extension=True
-    scene.world.color=(.02,.02,.02)
+    world=bpy.data.worlds.new('WORLD_DIAGNOSTIC');world.use_nodes=True;scene.world=world
+    bg=world.node_tree.nodes.get('Background')
+    if bg:
+        bg.inputs['Color'].default_value=(.02,.02,.02,1.0);bg.inputs['Strength'].default_value=.08
     scene.view_settings.exposure=0.0
     obj=make_coupon()
     bpy.ops.object.camera_add(location=(0,-5.2,2.75));cam=bpy.context.object;cam.name='CAM_DIAGNOSTIC';cam.data.lens=72;aim(cam,(0,0,.08));scene.camera=cam
