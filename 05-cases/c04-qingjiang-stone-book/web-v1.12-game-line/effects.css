@@ -172,3 +172,8 @@
   .effect-draw-path,
   .motion-ready #ai3d .check-canvas .reject{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important;animation:none!important}
 }
+
+.asset-card .app-mybook-carrier{display:block;width:100%;height:100%;min-height:350px;border:0;background:#f2efe6}
+.supplement-asset .supplement-app-carrier{display:block;width:100%;height:126px;border:0;background:#f2efe6}
+@media(max-width:860px){.supplement-asset .supplement-app-carrier{height:110px}}
+@media(max-width:480px){.supplement-asset .supplement-app-carrier{height:136px}}

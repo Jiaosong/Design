@@ -109,7 +109,7 @@ const supplementMarkup=`
           <figure class="supplement-asset"><img class="contain" src="assets/route03_locked_current.svg" alt="清江路线关系资产"><figcaption><b>路线关系</b><span>分支、回环、跨江与回程决定体验底板。</span></figcaption></figure>
           <figure class="supplement-asset"><img src="assets/r06_qingjiang.jpg" alt="河谷停留场景"><figcaption><b>停留场景</b><span>开阔河谷支持观察、比较与可选深读。</span></figcaption></figure>
           <figure class="supplement-asset"><img src="assets/r13_passage_sequence.png" alt="峡缝通过序列"><figcaption><b>通过场景</b><span>空间压缩时内容退场，身体与方向优先。</span></figcaption></figure>
-          <figure class="supplement-asset"><img class="contain" src="assets/app_mybook.png" alt="数字记忆界面"><figcaption><b>数字资产</b><span>记录选择过的内容，而不是制造完成率。</span></figcaption></figure>
+          <figure class="supplement-asset"><iframe class="supplement-app-carrier" src="support/C04_APP_V1_6_MY_BOOK_SOURCE_CARRIER.html" title="App v1.6 我的石书数字界面" loading="lazy"></iframe><figcaption><b>数字资产</b><span>记录选择过的内容，而不是制造完成率。</span></figcaption></figure>
           <figure class="supplement-asset"><img class="contain" src="assets/r06_general_assembly_v11.svg" alt="技术装配资产"><figcaption><b>技术资产</b><span>装配与节点负责解释设计怎样成立。</span></figcaption></figure>
         </div>
       </section>
