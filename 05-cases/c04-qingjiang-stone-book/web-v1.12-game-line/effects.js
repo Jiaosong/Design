@@ -55,7 +55,16 @@
     }
   }
 
+  function bindDistinctDigitalView(){
+    const finalView=document.querySelector('#digital .app-mybook-carrier');
+    if(!finalView) return;
+    finalView.src='support/C04_APP_V1_6_MY_BOOK_FINAL_VIEW.html';
+    finalView.title='清江石书 我的石书最终展示界面';
+    finalView.dataset.presentationRole='final-view';
+  }
+
   applyPublicVoiceRepair();
+  bindDistinctDigitalView();
 
   const root=document.documentElement;
   const hero=document.querySelector('#hero');
