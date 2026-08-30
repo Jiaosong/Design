@@ -1,1 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc"><title id="title">Physical Body Support — Source Hold</title><desc id="desc">The physical design logic remains visible while the current authoritative object/model source is not bound.</desc><rect width="1200" height="760" fill="#e9ece5"/><g font-family="Arial,Helvetica,sans-serif" fill="#173c37"><text x="80" y="90" font-size="20" letter-spacing="4">PHYSICAL / BODY SUPPORT</text><text x="80" y="160" font-size="54" font-weight="700">SOURCE HOLD</text><text x="80" y="205" font-size="19">CURRENT OBJECT / MODEL AUTHORITY NOT BOUND</text></g><g fill="none" stroke="#173c37" stroke-width="2"><path d="M100 520H1100"/><path d="M255 520C330 455 415 425 520 430S760 470 955 385" stroke-dasharray="9 11"/><circle cx="465" cy="430" r="32"/><path d="M465 462V545M465 492L420 525M465 495L515 530"/></g><g font-family="Arial,Helvetica,sans-serif" fill="#173c37"><text x="80" y="625" font-size="19">DESIGN LOGIC RETAINED: no intervention → minimum body support → light feedback → spatial intervention only when necessary</text><text x="80" y="675" font-size="16" opacity=".65">No substitute 3D geometry is presented. Rebind current native model/object before visual or technical promotion.</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">身体介入强度关系图</title>
+  <desc id="desc">不展示未绑定的具体实体或模型，只表达从既有景观到身体支持、轻反馈、空间介入的概念强度关系。</desc>
+  <rect width="1200" height="760" fill="#edf0e9"/>
+
+  <g font-family="Arial,'Noto Sans SC','Microsoft YaHei',sans-serif" fill="#173c37">
+    <text x="72" y="74" font-size="18" letter-spacing="3.5">PHYSICAL / BODY SUPPORT</text>
+    <text x="72" y="138" font-size="46" font-weight="700">身体介入强度</text>
+    <text x="72" y="177" font-size="18" opacity=".72">从不介入开始；只有身体需求增加时，设计才逐级出现。</text>
+  </g>
+
+  <g transform="translate(72 238)">
+    <line x1="0" y1="300" x2="1056" y2="300" stroke="#173c37" stroke-width="2"/>
+    <path d="M0 300 C155 300 220 292 312 286 C420 278 515 270 620 246 C770 212 900 168 1056 92" fill="none" stroke="#173c37" stroke-width="3"/>
+
+    <g fill="none" stroke="#173c37" stroke-width="2">
+      <path d="M92 300V257" opacity=".3"/>
+      <path d="M345 300V230" opacity=".38"/>
+      <path d="M618 300V184" opacity=".48"/>
+      <path d="M910 300V116" opacity=".58"/>
+    </g>
+
+    <g transform="translate(315 182)" fill="none" stroke="#173c37" stroke-width="3" stroke-linecap="round">
+      <circle cx="30" cy="20" r="15"/>
+      <path d="M30 36V101M30 57L2 78M30 58L58 78M30 100L11 139M30 100L50 139"/>
+      <path d="M-18 111H72" stroke-width="5" opacity=".62"/>
+    </g>
+
+    <g transform="translate(580 140)" fill="none" stroke="#173c37" stroke-width="2">
+      <path d="M0 128 Q58 72 116 128" opacity=".7"/>
+      <path d="M18 128 Q58 92 98 128" opacity=".4"/>
+      <path d="M34 128 Q58 108 82 128" opacity=".25"/>
+    </g>
+
+    <g transform="translate(845 58)" fill="none" stroke="#173c37" stroke-width="2">
+      <path d="M0 210 C45 165 72 132 102 92 C134 51 168 34 208 18"/>
+      <path d="M18 210 C66 170 94 141 122 108" opacity=".38"/>
+    </g>
+
+    <g font-family="Arial,'Noto Sans SC','Microsoft YaHei',sans-serif" fill="#173c37">
+      <g transform="translate(0 360)">
+        <text font-size="13" letter-spacing="2">LEVEL 0</text>
+        <text y="34" font-size="25" font-weight="700">不介入</text>
+        <text y="63" font-size="16" opacity=".7">既有景观与路径已足够</text>
+      </g>
+      <g transform="translate(260 360)">
+        <text font-size="13" letter-spacing="2">LEVEL 1</text>
+        <text y="34" font-size="25" font-weight="700">身体支持</text>
+        <text y="63" font-size="16" opacity=".7">短暂停靠 · 恢复后继续</text>
+      </g>
+      <g transform="translate(540 360)">
+        <text font-size="13" letter-spacing="2">LEVEL 2</text>
+        <text y="34" font-size="25" font-weight="700">轻反馈</text>
+        <text y="63" font-size="16" opacity=".7">经过时回应 · 随后退场</text>
+      </g>
+      <g transform="translate(820 360)">
+        <text font-size="13" letter-spacing="2">LEVEL 3</text>
+        <text y="34" font-size="25" font-weight="700">空间介入</text>
+        <text y="63" font-size="16" opacity=".7">仅在场地必要性成立时进入</text>
+      </g>
+    </g>
+  </g>
+
+  <g font-family="Arial,'Noto Sans SC','Microsoft YaHei',sans-serif" fill="#173c37">
+    <line x1="72" y1="688" x2="1128" y2="688" stroke="#173c37" stroke-width="1" opacity=".22"/>
+    <text x="72" y="724" font-size="15" opacity=".62">概念关系图｜不代表当前实体选型、尺寸、构造或现场测量。</text>
+  </g>
+</svg>
