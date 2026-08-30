@@ -18,7 +18,8 @@ Software is a Worker. Stable modeling/rendering knowledge remains cross-software
 
 For choosing between polygon, SubD, NURBS, CAD/B-Rep, sculpt/remesh, curve/spline, Boolean/kitbash or procedural modeling, resolve:
 
-- `KN-METHOD-3D-MODELING-PARADIGMS-001`.
+- `KN-THEORY-3D-MODELING-ESSENCE-001` first;
+- `KN-METHOD-3D-MODELING-PARADIGMS-001` for representation selection.
 
 For the default OLEANDER modeling sequence and evidence discipline, resolve:
 
@@ -26,7 +27,39 @@ For the default OLEANDER modeling sequence and evidence discipline, resolve:
 - existing `KN-METHOD-3D-REFERENCE-CALIBRATION-001` when reproducing a real object/reference;
 - existing Claim-bound Camera knowledge when camera/projection is part of the claim.
 
-Do not add secondary screws, trims, shader noise or microdetail before primary mass, negative space, interfaces, sections and representation choice are credible.
+Before opening a DCC/CAD worker, explicitly determine when material:
+
+- representation: mesh / SubD / NURBS / B-Rep / voxel / procedural field;
+- topology intent and boundary/adjacency requirements;
+- primary parameters and design variables;
+- constraint graph and relations that must remain true;
+- reference strategy: origin/datum/named reference versus incidental face/edge reference;
+- history semantics: parametric feature history, procedural dependency graph, or permitted direct edit;
+- required native output and what editability/semantic information must survive handoff;
+- failure envelope to test under parameter or upstream-reference changes.
+
+Do not add secondary screws, trims, shader noise or microdetail before primary mass, negative space, interfaces, sections and representation choice are credible. `LOOKS SAME ≠ REPRESENTATION SAME ≠ EDITABILITY SAME`.
+
+### 2.1 Parametric CAD / Fusion / FreeCAD route
+
+Trigger: Autodesk Fusion/Fusion 360, FreeCAD, sketch constraints, datum, feature history/timeline, B-Rep solid, Pad/Pocket, direct modeling, named parameters, assembly-oriented part geometry, STEP handoff.
+
+Resolve:
+
+- `KN-THEORY-3D-MODELING-ESSENCE-001`;
+- `KN-METHOD-PARAMETRIC-DESIGN-001` when intent/parameter-schema/dependency/QA design is material;
+- `PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION.md` for retained fit/dimension/assembly claims.
+
+Worker evidence:
+
+- Autodesk Fusion → `EVD-CAD-AUTODESK-FUSION-20260830-001`;
+- FreeCAD → `EVD-CAD-FREECAD-1_1-20260830-001`.
+
+For Fusion, distinguish Parametric Modeling from Direct Modeling instead of treating direct edits as broken history by default. For long-lived parametric work, prefer meaningful named parameters, construction/datum references and a dependency graph that can survive intended changes.
+
+For FreeCAD Part Design, treat Body → Sketch/Datum → cumulative Feature → recompute as a dependency model. Prefer stable datum/origin/reference relations over fragile incidental face/edge attachment when the design is expected to change.
+
+For both workers, review **change quality**, not only the current shape: sweep key parameters, replace an upstream reference where relevant, inspect recompute failures, and perform STEP/native reopen when the result is retained. A valid solid does not certify manufacturing, fit, tolerance or engineering approval.
 
 ## 3. Rhino / industrial freeform surface route
 
@@ -185,10 +218,13 @@ For a retained 3D result, capture the applicable subset:
 
 - source/master identity and software/version;
 - representation type and reason;
+- topology intent and reference strategy;
+- primary parameters / constraints / design variables when parametric;
 - scale/units/axis/origin;
 - primary-mass + interface + silhouette/section evidence;
 - topology/continuity/normal strategy;
 - modifier/history/node/HDA/GH dependency state;
+- failure-sweep or robustness test when a dependent model is retained;
 - surface-detail carrier and UV/bake state;
 - material/texture semantic record;
 - lighting/renderer/sampling/color state;
