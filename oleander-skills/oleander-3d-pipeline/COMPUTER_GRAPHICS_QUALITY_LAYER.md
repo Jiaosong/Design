@@ -6,6 +6,36 @@ Purpose: extend the existing `oleander-3d-pipeline` with a computer-graphics qua
 
 Canonical knowledge input: Notion `KN-THEORY-COMPUTER-GRAPHICS-001｜Computer Graphics for 3D Modeling & Rendering｜三维建模与渲染计算机图形学`.
 
+## Detailed Notion knowledge layer
+
+The L5 theory object is a router, not the only technical source. For a real modeling/rendering diagnosis, resolve the relevant Current/Support Notion object before acting:
+
+- `EVD-CG-SURFACE-CONTINUITY-001` — G0/G1/G2, G-vs-C continuity, principal/Gaussian/mean curvature, normal fields, subdivision limit surfaces, zebra/reflection/section diagnostics;
+- `EVD-CG-BSDF-MICROFACET-001` — BRDF/BTDF/BSDF, Fresnel/F0, microfacet D/F/G, dielectric vs conductor, roughness/metalness, layered-material semantics and frequency routing;
+- `EVD-CG-LIGHTING-RADIOMETRY-001` — flux/irradiance/intensity/radiance, inverse-square/cosine behavior, source angular size, reflection-card lighting and environment radiance;
+- `EVD-CG-LIGHT-TRANSPORT-SAMPLING-001` — rendering equation, Monte Carlo estimator, importance sampling, NEE/MIS, path-family variance, adaptive sampling, path guiding, Light Tree, denoise and clamping;
+- `EVD-CG-COLOR-PIPELINE-001` — scene-referred vs display-referred data, input encoding, scene-linear working space, exposure, View Transform vs Look, AgX/Khronos PBR Neutral/ACES 2.0 and output carriers;
+- `EVD-CG-INTERCHANGE-PBR-001` — glTF metallic-roughness semantics, sRGB vs linear data, channel packing, MikkTSpace/tangent/triangulation, feature-subset loss and target-runtime calibration/readback.
+
+Existing Current owners remain authoritative for camera/reference work and must be reused rather than duplicated:
+
+- `2026-08-18｜Photography / Image Direction / L5｜Claim-bound Camera：镜头必须证明主张`;
+- `KN-METHOD-3D-REFERENCE-CALIBRATION-001｜Calibration-before-Modeling｜真实对象复现先锁参考版本与多视图轮廓`.
+
+### Routing contract
+
+Do not answer a triggered technical question from this file's compact prose alone when the detailed Notion object is available. Route by claim:
+
+1. form / topology / curvature / normals / subdivision / highlight waviness → Surface Continuity;
+2. material / Fresnel / IOR / roughness / metal / glass / coat / SSS → BSDF & Microfacet;
+3. light power / size / shadow softness / reflection-card / HDRI structure → Lighting & Radiometry;
+4. noise / fireflies / Cycles samples / MIS / guiding / denoise / clamp → Light Transport & Sampling;
+5. color shift / exposure / AgX / ACES / PBR Neutral / EXR-display ambiguity → Color Pipeline;
+6. GLB/glTF/export/runtime appearance drift → Cross-renderer PBR Interchange;
+7. lens / crop / perspective / projection / reference matching → existing Camera + Reference Calibration owners.
+
+When multiple layers are implicated, inspect the earliest plausible broken causal layer first. A downstream correction must not be accepted as evidence that the upstream layer is valid.
+
 ## 1. Pixel-causality order
 
 Treat a final pixel as the result of a chain, not a single render setting:
