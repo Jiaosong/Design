@@ -1,0 +1,12 @@
+<!doctype html><meta charset='utf-8'><title>A ghost state</title>
+<style>
+body{font-family:sans-serif;margin:40px}.tabs{display:flex;gap:8px}.panel{margin-top:20px;padding:20px;border:1px solid #999}.panel.inactive{position:absolute;left:-10000px;opacity:0;pointer-events:none}.panel button{margin:8px}
+</style>
+<div class='tabs'><button id='tab-a'>AXON</button><button id='tab-b'>SECTION</button></div>
+<section id='panel-a' class='panel'><h2>AXON</h2><button id='a-hotspot'>AXON hotspot</button></section>
+<section id='panel-b' class='panel inactive' aria-hidden='true'><h2>SECTION</h2><button id='b-hotspot'>SECTION hotspot</button></section>
+<script>
+const a=document.querySelector('#panel-a'), b=document.querySelector('#panel-b');
+document.querySelector('#tab-a').onclick=()=>{a.classList.remove('inactive');a.removeAttribute('aria-hidden');b.classList.add('inactive');b.setAttribute('aria-hidden','true')}
+document.querySelector('#tab-b').onclick=()=>{b.classList.remove('inactive');b.removeAttribute('aria-hidden');a.classList.add('inactive');a.setAttribute('aria-hidden','true')}
+</script>
