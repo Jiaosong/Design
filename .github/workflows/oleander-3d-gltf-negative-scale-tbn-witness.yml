@@ -65,7 +65,7 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4177/viewer.html >/dev/null && break; sleep 1; done
           OLEANDER_OUT="$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER" OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/NEG_SCALE_SOURCE/SOURCE_RECEIPT.json" node runtime_check.mjs
           test -s "$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json"
-      - name: Validate negative-scale TBN contract
+      - name: Validate transform-aware negative-scale TBN contract
         working-directory: ${{ github.workspace }}
         run: |
           python3 - <<'PY'
@@ -73,13 +73,17 @@ jobs:
           from pathlib import Path
           r=json.loads(Path('out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
           assert r['overallPass'] is True, json.dumps(r['objectChecks'],indent=2)
-          assert r['evidenceClass']=='TARGET_RUNTIME_NEGATIVE_SCALE_TBN_RECONSTRUCTION'
-          assert r['negativeScaleSourceDeterminant']<0
-          print(json.dumps({'negative_scale_tbn':'PASS','source_det':r['negativeScaleSourceDeterminant'],'target_matrix_det':r['negativeScaleTargetMatrixDeterminant'],'target_w':r['negativeScaleExportedTangentW']},indent=2))
+          assert r['evidenceClass']=='TARGET_RUNTIME_TRANSFORM_AWARE_NEGATIVE_SCALE_TBN'
+          assert r['negativeScaleSourceDeterminant']<0 and r['negativeScaleTargetMatrixDeterminant']<0
+          assert r['negativeScaleRawReconstructionFailsAsExpected'] is True
+          assert r['negativeScaleTransformAwareReconstructionPasses'] is True
+          assert r['negativeScaleEffectiveTangentW']==-r['negativeScaleExportedTangentW']
+          print(json.dumps({'negative_scale_tbn':'PASS','raw_w':r['negativeScaleExportedTangentW'],'effective_w':r['negativeScaleEffectiveTangentW'],'contract':r['transformAwareContract']},indent=2))
           PY
       - name: Hash evidence
+        if: always()
         working-directory: ${{ github.workspace }}
-        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > NEGATIVE_SCALE_TBN_SHA256SUMS.txt
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > NEGATIVE_SCALE_TBN_SHA256SUMS.txt || true
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         if: always()
         with:
