@@ -16,6 +16,10 @@ For any modeling, surfacing, procedural, texturing, lighting, rendering, technic
 
 `oleander-skills/oleander-3d-pipeline/3D_PRODUCTION_KNOWLEDGE_ROUTING.md`
 
+For spline/NURBS structure, half-edge/Euler topology, UV parameterization/distortion, smoothing/fairing, robust Boolean/intersection, or Subdivision limit-surface diagnosis, also read:
+
+`oleander-skills/oleander-3d-pipeline/MODELING_ESSENCE_DEEP_DIAGNOSTICS.md`
+
 Its Current Notion owner is:
 
 `FW-CG-3D-PRODUCTION-001｜3D Production Knowledge Stack｜建模—程序化—表面—材质—渲染—技术美术`.
@@ -23,7 +27,10 @@ Its Current Notion owner is:
 Required routing behavior:
 
 - choose the representation/modeling paradigm before choosing a software worker;
+- resolve `KN-THEORY-3D-MODELING-ESSENCE-001` before treating a modeling command or software worker as the method;
 - use `KN-METHOD-OLEANDER-3D-MODELING-001` for the default evidence-first/coarse-to-fine modeling sequence;
+- route spline/NURBS basis, degree/CV/knot/multiplicity/weight issues through the deep modeling diagnostics rather than equating control density with accuracy;
+- route connectivity edits, UV parameterization, fairing/smoothing, Boolean robustness and SubD limit-surface issues through their deep modeling diagnostics before software-specific fixes;
 - route Rhino/NURBS/industrial surface work to the Rhino surface method + surface-continuity evidence;
 - route Blender native/GN, Maya, 3ds Max, SketchUp, Houdini and Grasshopper work to their corresponding Current method/evidence objects;
 - route sculpt/retopo/UV/bake/displacement/decal work to Surface Detail Production;
