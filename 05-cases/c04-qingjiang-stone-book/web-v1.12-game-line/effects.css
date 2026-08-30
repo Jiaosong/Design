@@ -78,7 +78,7 @@
   background:linear-gradient(90deg,rgba(126,207,205,.08),transparent 72%);
 }
 .motion-ready #thinking .step-list li.is-current::before{transform:scaleY(1)}
-.motion-ready #thinking:has(.step-list li.is-current) .media-panel img{transform:scale(1);filter:saturate(.95) contrast(1.02)}
+.motion-ready #thinking.effect-attention-active .media-panel img{transform:scale(1);filter:saturate(.95) contrast(1.02)}
 
 .motion-ready #digital .phone{
   transform:translate3d(0,var(--digital-y,24px),0) scale(var(--digital-scale,.975));
@@ -87,8 +87,8 @@
   will-change:transform,opacity;
 }
 .motion-ready #digital .large-quote{
-  opacity:calc(.32 + var(--digital-quote-alpha,0) * .68);
-  transform:translate3d(calc((1 - var(--digital-quote-alpha,0)) * 18px),0,0);
+  opacity:var(--digital-quote-opacity,.32);
+  transform:translate3d(var(--digital-quote-x,18px),0,0);
   transition:opacity .2s linear;
 }
 .motion-ready #digital .feature-grid article{

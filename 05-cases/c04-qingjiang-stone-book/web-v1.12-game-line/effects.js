@@ -68,7 +68,8 @@
     digitalPhone?.style.removeProperty('--digital-y');
     digitalPhone?.style.removeProperty('--digital-scale');
     digitalPhone?.style.removeProperty('--digital-alpha');
-    digitalQuote?.style.removeProperty('--digital-quote-alpha');
+    digitalQuote?.style.removeProperty('--digital-quote-opacity');
+    digitalQuote?.style.removeProperty('--digital-quote-x');
     thinkingSteps.forEach(step=>step.classList.remove('is-current'));
     sceneImages.forEach(image=>image.style.removeProperty('--scene-shift'));
   }
@@ -99,7 +100,9 @@
     if(thinkingSteps.length){
       const local=clamp((thinkingProgress-.12)/.72);
       const current=Math.min(thinkingSteps.length-1,Math.floor(local*thinkingSteps.length));
-      thinkingSteps.forEach((step,index)=>step.classList.toggle('is-current',index===current&&thinkingProgress>.08&&thinkingProgress<.93));
+      const attentionActive=thinkingProgress>.08&&thinkingProgress<.93;
+      thinkingSteps.forEach((step,index)=>step.classList.toggle('is-current',index===current&&attentionActive));
+      thinking?.classList.toggle('effect-attention-active',attentionActive);
     }
 
     const digitalProgress=sectionProgress(digital);
@@ -112,7 +115,8 @@
     }
     if(digitalQuote){
       const quoteAlpha=clamp((digitalProgress-.56)/.2);
-      digitalQuote.style.setProperty('--digital-quote-alpha',quoteAlpha.toFixed(3));
+      digitalQuote.style.setProperty('--digital-quote-opacity',(0.32+quoteAlpha*0.68).toFixed(3));
+      digitalQuote.style.setProperty('--digital-quote-x',`${((1-quoteAlpha)*18).toFixed(2)}px`);
     }
 
     const sceneProgress=sectionProgress(scenes);
