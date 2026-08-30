@@ -96,3 +96,25 @@ When one of these issues is material, prefer the smallest evidence set that can 
 ## 8. Maturity boundary
 
 These objects are tutorial/documentation-translated evidence. They may improve routing and causal diagnosis, but remain below `M6 PRACTICED` until a real native artifact demonstrates the claimed operation, failure case, correction and reopen/readback. A passing schema or governance workflow is not native modeling evidence.
+
+## 9. Bio–Math / streamlined form co-route
+
+Trigger: streamlined/aerodynamic/hydrodynamic form, biomorphic or bio-inspired geometry, biological branching/growth, mathematical topology/homology, graph/network form, scalar/vector/tensor fields, PDE/reaction–diffusion, topology optimization, minimal surfaces, Voronoi/Delaunay/skeleton, symmetry or allometric family generation.
+
+Before choosing Blender/Rhino/Houdini/GN/Grasshopper/CAD operations, co-route design reasoning to:
+
+`oleander-skills/oleander-design-process/BIO_MATH_STREAMLINED_FORM_EXTENSION.md`
+
+and Current Notion:
+
+`KN-THEORY-BIO-MATH-STREAMLINED-FORM-001`.
+
+3D owns the geometry/representation/runtime evidence only. Preserve these distinctions:
+
+- `MATHEMATICAL TOPOLOGY ≠ MESH TOPOLOGY ≠ CAD B-REP TOPOLOGY ≠ TOPOLOGY OPTIMIZATION`;
+- `BIOLOGICAL LOOK ≠ BIOMIMETIC FUNCTION`;
+- `SMOOTH / G2 SURFACE ≠ LOW-DRAG PROOF`;
+- `VORONOI / REACTION-DIFFUSION / FRACTAL-LIKE FORM ≠ BIOLOGICAL MECHANISM PROOF`;
+- `TOPOLOGY-OPT RESULT ≠ MANUFACTURABLE CAD MASTER`.
+
+When a physical or biological claim is retained, the 3D artifact must carry the design variables and the appropriate external validation handoff rather than using rendered form as proof.
