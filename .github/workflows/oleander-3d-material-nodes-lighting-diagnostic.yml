@@ -57,7 +57,7 @@ jobs:
           from pathlib import Path
           p=Path('out/MATERIAL_NODES_LIGHTING/RECEIPT.json')
           r=json.loads(p.read_text())
-          assert r['schema']=='oleander.3d.material-nodes-lighting-diagnostic.v1'
+          assert r['schema']=='oleander.3d.material-nodes-lighting-diagnostic.v2'
           assert r['blender_version'].startswith('5.2.0')
           assert r['engine']=='CYCLES CPU'
           assert r['overall_pass'] is True, json.dumps(r,indent=2)
@@ -68,16 +68,16 @@ jobs:
           assert c['all_nine_renders_present'] is True
           assert c['rigs_discriminative'] is True
           assert c['colorspace_interpretation_discriminative'] is True
-          assert c['clipping_bounded'] is True
+          assert c['written_output_saturation_bounded'] is True
           assert r['max_control_rig_distance']>.05
           assert r['max_colorspace_effect_distance']>.03
-          assert r['max_over_1_fraction']<.08
+          assert r['max_written_near_saturation_fraction_ge_0_99']<.08
           print(json.dumps({
             'material_nodes_lighting':'PASS',
             'roughness_texture_sha256':r['roughness_texture']['sha256'],
             'rig_signature_distance':r['control_rig_signature_distance'],
             'colorspace_effect_distance':r['roughness_colorspace_effect_distance'],
-            'max_over_1_fraction':r['max_over_1_fraction'],
+            'max_written_near_saturation_fraction_ge_0_99':r['max_written_near_saturation_fraction_ge_0_99'],
             'native_master_sha256':r['native_master_sha256']
           },indent=2))
           PY
