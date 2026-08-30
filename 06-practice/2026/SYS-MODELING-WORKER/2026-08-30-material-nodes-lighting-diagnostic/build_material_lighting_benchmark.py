@@ -111,36 +111,35 @@ def material_contract(m):
 
 def render_metrics(scene, out_png):
     scene.render.filepath=str(out_png);bpy.ops.render.render(write_still=True)
-    # In Blender 5.2 background mode the in-memory Render Result alpha can be
-    # zero even when the written RGBA PNG has the correct object alpha. Use
-    # the delivered PNG alpha as the visibility carrier, but retain linear/HDR
-    # Render Result RGB for lighting/material metrics and >1 clipping checks.
-    written=bpy.data.images.load(str(out_png),check_existing=False)
-    ww,wh=written.size
-    wa=np.array(written.pixels[:],dtype=np.float32).reshape(wh,ww,4)
-    mask=wa[:,:,3]>.5
+    # v2 contract: measure the actual written deliverable. In failed runs
+    # 33320024059 and 33320229312, Blender 5.2 background mode produced a
+    # valid RGBA PNG while the in-memory Render Result alpha/size was unusable.
+    img=bpy.data.images.load(str(out_png),check_existing=False)
+    w,h=img.size
+    a=np.array(img.pixels[:],dtype=np.float32).reshape(h,w,4)
+    rgb=a[:,:,:3];alpha=a[:,:,3];mask=alpha>.5
     object_pixels=int(mask.sum())
-    bpy.data.images.remove(written)
-    if object_pixels<1000: raise RuntimeError(f'visible object pixels too low in written PNG: {object_pixels}')
-    rr=bpy.data.images.get('Render Result');w,h=rr.size
-    if (w,h)!=(ww,wh): raise RuntimeError(f'render-result/write size mismatch: {(w,h)} vs {(ww,wh)}')
-    a=np.array(rr.pixels[:],dtype=np.float32).reshape(h,w,4);rgb=a[:,:,:3]
+    if object_pixels<1000:
+        bpy.data.images.remove(img)
+        raise RuntimeError(f'visible object pixels too low in written PNG: {object_pixels}')
     lum=.2126*rgb[:,:,0]+.7152*rgb[:,:,1]+.0722*rgb[:,:,2];vals=lum[mask]
     pairx=mask[:,1:]&mask[:,:-1];pairy=mask[1:,:]&mask[:-1,:]
     gx=np.abs(lum[:,1:]-lum[:,:-1])[pairx];gy=np.abs(lum[1:,:]-lum[:-1,:])[pairy]
     grad=float(np.mean(np.concatenate((gx,gy)))) if gx.size+gy.size else 0.0
-    return {
+    sat=float(np.mean(np.max(rgb,axis=2)[mask]>=.99))
+    result={
         'object_pixels':object_pixels,
-        'visibility_mask_source':'written PNG alpha',
-        'lighting_metric_source':'Render Result linear/HDR RGB',
+        'measurement_source':'written RGBA PNG loaded through Blender image pipeline',
         'mean_luma':float(vals.mean()),
         'std_luma':float(vals.std()),
         'p95_luma':float(np.quantile(vals,.95)),
         'p99_luma':float(np.quantile(vals,.99)),
         'highlight_fraction_gt_0_65':float(np.mean(vals>.65)),
-        'over_1_fraction':float(np.mean(np.max(rgb,axis=2)[mask]>1.0)),
+        'written_near_saturation_fraction_ge_0_99':sat,
         'mean_neighbor_gradient':grad,
     }
+    bpy.data.images.remove(img)
+    return result
 
 def metric_distance(a,b):
     keys=('mean_luma','std_luma','p95_luma','highlight_fraction_gt_0_65','mean_neighbor_gradient')
@@ -171,15 +170,15 @@ def main():
     controls={r:results[f'CONTROL_CONSTANT__{r}'] for r in RIGS}
     rig_dist={f'{a}__{b}':metric_distance(controls[a],controls[b]) for i,a in enumerate(RIGS) for b in RIGS[i+1:]}
     cs_effect={r:metric_distance(results[f'ROUGHNESS_NONCOLOR__{r}'],results[f'ROUGHNESS_SRGB_WRONG__{r}']) for r in RIGS}
-    max_clip=max(v['over_1_fraction'] for v in results.values())
+    max_sat=max(v['written_near_saturation_fraction_ge_0_99'] for v in results.values())
     contracts={k:material_contract(v) for k,v in materials.items()}
     evidence={
-        'schema':'oleander.3d.material-nodes-lighting-diagnostic.v1',
+        'schema':'oleander.3d.material-nodes-lighting-diagnostic.v2',
         'blender_version':bpy.app.version_string,
         'engine':'CYCLES CPU',
         'render_settings':{'resolution':[256,256],'samples':16,'film_transparent':True,'exposure':float(scene.view_settings.exposure),'view_transform':scene.view_settings.view_transform,'look':scene.view_settings.look},
         'geometry':{'carrier':'procedural rounded coupon','object':obj.name,'uv_layer':obj.data.uv_layers.active.name if obj.data.uv_layers.active else None,'vertices':len(obj.data.vertices),'polygons':len(obj.data.polygons)},
-        'metric_carrier':{'visibility':'written PNG alpha','lighting_material':'Render Result linear/HDR RGB','reason':'Blender 5.2 background-mode Render Result alpha diverged from delivered PNG alpha in failed run 33320024059; no rig/material/Gate threshold changed'},
+        'metric_carrier':{'source':'actual written RGBA PNG','reason':'Blender 5.2 background-mode in-memory Render Result proved non-reproducible after write_still in failed runs 33320024059 and 33320229312','provenance_rule':'carrier correction only; materials, rigs and discrimination thresholds unchanged'},
         'roughness_texture':{'file':png.name,'sha256':tex_sha,'bytes':png.stat().st_size,'shared_same_bytes':True,'intent':'scalar roughness DATA map; same PNG is interpreted once as Non-Color and once intentionally wrong as sRGB'},
         'materials':contracts,
         'rigs':{'BROAD':'large frontal area; whole-surface response','STRIP':'narrow oblique strip; highlight width/continuity','GRAZING':'low-angle strip; roughness/noise sensitivity'},
@@ -188,7 +187,7 @@ def main():
         'roughness_colorspace_effect_distance':cs_effect,
         'max_control_rig_distance':max(rig_dist.values()),
         'max_colorspace_effect_distance':max(cs_effect.values()),
-        'max_over_1_fraction':max_clip,
+        'max_written_near_saturation_fraction_ge_0_99':max_sat,
         'contract':{
             'same_texture_source_for_noncolor_and_srgb':contracts['ROUGHNESS_NONCOLOR']['image_filepath']==contracts['ROUGHNESS_SRGB_WRONG']['image_filepath']==png.name,
             'noncolor_label':contracts['ROUGHNESS_NONCOLOR']['image_colorspace'],
@@ -196,10 +195,10 @@ def main():
             'all_nine_renders_present':all((renders/f'{m}__{r}.png').stat().st_size>0 for m in MATERIALS for r in RIGS),
             'rigs_discriminative':max(rig_dist.values())>.05,
             'colorspace_interpretation_discriminative':max(cs_effect.values())>.03,
-            'clipping_bounded':max_clip<.08,
+            'written_output_saturation_bounded':max_sat<.08,
         },
         'promotion_scope':['same roughness texture bytes produce different shading when interpreted as scalar Non-Color data versus sRGB color data in this Blender/Cycles node carrier','Broad/Strip/Grazing rigs produce measurably distinct diagnostic signatures on one locked material/geometry carrier','material-node and image-color-space settings are evidence-bearing production state rather than UI decoration'],
-        'holds':['XJ01 historical authority byte identity','physical PP/roughness measurement','texture-source photography/scan truth','normal/displacement map semantics','spectral/material metrology','hero-lighting quality','Design KEEP']
+        'holds':['radiometric/HDR clipping because in-memory Render Result was rejected as CI measurement carrier','XJ01 historical authority byte identity','physical PP/roughness measurement','texture-source photography/scan truth','normal/displacement map semantics','spectral/material metrology','hero-lighting quality','Design KEEP']
     }
     evidence['overall_pass']=all(evidence['contract'].values())
     blend=out/'MATERIAL_NODES_LIGHTING_DIAGNOSTIC.blend';bpy.ops.wm.save_as_mainfile(filepath=str(blend));evidence['native_master']=blend.name;evidence['native_master_bytes']=blend.stat().st_size;evidence['native_master_sha256']=sha256(blend)
