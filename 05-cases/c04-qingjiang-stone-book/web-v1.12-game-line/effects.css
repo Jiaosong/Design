@@ -1,0 +1,174 @@
+/* C04 narrative effect layer.
+   Signal -> mapping -> DOM/SVG primitive only. No WebGL, no new media dependency. */
+.motion-ready #hero .hero-media img{
+  transform:translate3d(0,var(--hero-media-y,0),0) scale(var(--hero-media-scale,1.045));
+  transform-origin:center center;
+  will-change:transform;
+}
+.motion-ready #hero .hero-copy{
+  transform:translate3d(0,var(--hero-copy-y,0),0);
+  opacity:var(--hero-copy-alpha,1);
+  will-change:transform,opacity;
+}
+.motion-ready #final .hero-media img{
+  transform:translate3d(0,var(--return-media-y,-18px),0) scale(var(--return-media-scale,1.045));
+  transform-origin:center center;
+  will-change:transform;
+}
+.motion-ready #final .final-copy{
+  transform:translate3d(0,var(--return-copy-y,22px),0);
+  will-change:transform;
+}
+
+.motion-ready #idea .three-scales article,
+.motion-ready #workflow .workflow article,
+.motion-ready #technology .tech-route article,
+.motion-ready #ai3d .ai3d-process article,
+.motion-ready #innovation .innovation-grid article,
+.motion-ready #difficulties .difficulty-list article{
+  opacity:.58;
+  transform:translate3d(0,22px,0);
+  transition:opacity .7s cubic-bezier(.2,.72,.2,1) var(--effect-delay,0ms),transform .8s cubic-bezier(.2,.72,.2,1) var(--effect-delay,0ms),border-color .35s ease,background .35s ease;
+}
+.motion-ready #idea .three-scales article.effect-visible,
+.motion-ready #workflow .workflow article.effect-visible,
+.motion-ready #technology .tech-route article.effect-visible,
+.motion-ready #ai3d .ai3d-process article.effect-visible,
+.motion-ready #innovation .innovation-grid article.effect-visible,
+.motion-ready #difficulties .difficulty-list article.effect-visible{
+  opacity:1;
+  transform:none;
+}
+
+.effect-draw-path{
+  stroke-dasharray:var(--path-length,1000);
+  stroke-dashoffset:var(--path-length,1000);
+}
+.motion-ready .three-scales.effect-visible .effect-draw-path,
+.motion-ready .ai3d-process.effect-visible .effect-draw-path{
+  stroke-dashoffset:0;
+  transition:stroke-dashoffset 1.35s cubic-bezier(.2,.72,.2,1) .12s;
+}
+
+.motion-ready #thinking .media-panel img{
+  transform:scale(1.025);
+  transition:transform 1.2s cubic-bezier(.2,.72,.2,1),filter .7s ease;
+}
+.motion-ready #thinking .step-list li{
+  position:relative;
+  opacity:.48;
+  transform:translateX(0);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.2,.72,.2,1),background .3s ease;
+}
+.motion-ready #thinking .step-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  bottom:-1px;
+  width:2px;
+  background:#83d5d3;
+  transform:scaleY(0);
+  transform-origin:50% 50%;
+  transition:transform .35s cubic-bezier(.2,.72,.2,1);
+}
+.motion-ready #thinking .step-list li.is-current{
+  opacity:1;
+  transform:translateX(8px);
+  background:linear-gradient(90deg,rgba(126,207,205,.08),transparent 72%);
+}
+.motion-ready #thinking .step-list li.is-current::before{transform:scaleY(1)}
+.motion-ready #thinking:has(.step-list li.is-current) .media-panel img{transform:scale(1);filter:saturate(.95) contrast(1.02)}
+
+.motion-ready #digital .phone{
+  transform:translate3d(0,var(--digital-y,24px),0) scale(var(--digital-scale,.975));
+  opacity:var(--digital-alpha,.82);
+  transform-origin:50% 56%;
+  will-change:transform,opacity;
+}
+.motion-ready #digital .large-quote{
+  opacity:calc(.32 + var(--digital-quote-alpha,0) * .68);
+  transform:translate3d(calc((1 - var(--digital-quote-alpha,0)) * 18px),0,0);
+  transition:opacity .2s linear;
+}
+.motion-ready #digital .feature-grid article{
+  transition:background .3s ease,border-color .3s ease,transform .3s cubic-bezier(.2,.72,.2,1);
+}
+.motion-ready #digital .feature-grid article:hover{
+  transform:translateY(-3px);
+  background:rgba(46,127,134,.055);
+}
+
+.motion-ready #scenes .scene-pair figure{position:relative}
+.motion-ready #scenes .scene-pair img{
+  transform:translate3d(0,var(--scene-shift,0),0) scale(1.035);
+  will-change:transform;
+}
+.motion-ready #scenes .scene-pair article{
+  transition:border-color .35s ease,background .35s ease;
+}
+.motion-ready #scenes .scene-pair article:hover{border-color:rgba(120,201,198,.42);background:#0d252b}
+
+.motion-ready #system .imprint.active svg path{
+  stroke-dasharray:220;
+  animation:imprintTrace 1.1s cubic-bezier(.2,.72,.2,1) both;
+}
+@keyframes imprintTrace{from{stroke-dashoffset:220}to{stroke-dashoffset:0}}
+
+.motion-ready #technology .tech-route article.effect-visible::before,
+.motion-ready #workflow .workflow article.effect-visible::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--water),transparent 82%);
+  transform:scaleX(1);
+  transform-origin:left center;
+  opacity:.42;
+}
+
+.motion-ready #brandmemory .brand-grammar i{
+  transition:transform .45s cubic-bezier(.2,.72,.2,1),border-color .3s ease,background .3s ease;
+}
+.motion-ready #brandmemory .brand-grammar span:hover i{transform:rotate(90deg) scale(1.08)}
+.motion-ready #brandmemory .brand-grammar span:nth-child(4):hover i{transform:scaleX(1.35)}
+
+.motion-ready #ai3d .check-canvas .reject{
+  stroke-dasharray:180;
+  stroke-dashoffset:180;
+  transition:stroke-dashoffset .85s cubic-bezier(.2,.72,.2,1) .55s;
+}
+.motion-ready #ai3d .ai3d-process.effect-visible .check-canvas .reject{stroke-dashoffset:0}
+
+@media(max-width:860px){
+  .motion-ready #hero .hero-media img,
+  .motion-ready #final .hero-media img{will-change:auto}
+  .motion-ready #digital .feature-grid article:hover,
+  .motion-ready #scenes .scene-pair article:hover{transform:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .motion-ready #hero .hero-media img,
+  .motion-ready #hero .hero-copy,
+  .motion-ready #final .hero-media img,
+  .motion-ready #final .final-copy,
+  .motion-ready #digital .phone,
+  .motion-ready #digital .large-quote,
+  .motion-ready #scenes .scene-pair img,
+  .motion-ready #thinking .step-list li,
+  .motion-ready #idea .three-scales article,
+  .motion-ready #workflow .workflow article,
+  .motion-ready #technology .tech-route article,
+  .motion-ready #ai3d .ai3d-process article,
+  .motion-ready #innovation .innovation-grid article,
+  .motion-ready #difficulties .difficulty-list article{
+    transform:none!important;
+    opacity:1!important;
+    transition:none!important;
+    animation:none!important;
+  }
+  .effect-draw-path,
+  .motion-ready #ai3d .check-canvas .reject{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important;animation:none!important}
+}
