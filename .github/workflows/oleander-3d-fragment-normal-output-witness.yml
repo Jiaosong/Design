@@ -1,0 +1,113 @@
+name: OLEANDER 3D WebGL Fragment Normal Output
+
+on:
+  pull_request:
+    paths:
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-fragment-normal-output-witness/**'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-tbn-reconstruction-witness/build_tbn_witness.py'
+      - '.github/workflows/oleander-3d-fragment-normal-output-witness.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+
+jobs:
+  fragment-normal-output:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-fragment-normal-output-witness/browser
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+      - name: Validate scripts
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-tbn-reconstruction-witness/build_tbn_witness.py
+          node --check 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-fragment-normal-output-witness/browser/runtime_check.mjs
+      - name: Install Blender 5.2
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Build shared TBN source
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/TBN_SOURCE";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-tbn-reconstruction-witness/build_tbn_witness.py \
+            -- --out "$OUT"
+          test -s "$OUT/TBN_RECONSTRUCTION_WITNESS.glb"
+          test -s "$OUT/SOURCE_RECEIPT.json"
+      - name: Install pinned Chromium runtime
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json');const t=require('./node_modules/three/package.json');if(p.version!=='1.55.0'||t.version!=='0.179.1')process.exit(2);console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+      - name: Assemble target asset
+        run: |
+          mkdir -p assets
+          cp "$GITHUB_WORKSPACE/out/TBN_SOURCE/TBN_RECONSTRUCTION_WITNESS.glb" assets/TBN_RECONSTRUCTION_WITNESS.glb
+      - name: Execute fragment-shader framebuffer readback
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4180 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4180/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/FRAGMENT_NORMAL" \
+          OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/TBN_SOURCE/SOURCE_RECEIPT.json" \
+            node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/FRAGMENT_NORMAL/TARGET_RUNTIME_RECEIPT.json"
+          test -s "$GITHUB_WORKSPACE/out/FRAGMENT_NORMAL/FRAGMENT_NORMAL_OUTPUT_BROWSER.png"
+      - name: Validate fragment-output contract
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/FRAGMENT_NORMAL/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['schema']=='oleander.3d.webgl-fragment-normal-output.v1'
+          assert r['overallPass'] is True, json.dumps(r,indent=2)
+          assert r['evidenceClass']=='TARGET_RUNTIME_WEBGL_FRAGMENT_TBN_NORMAL_OUTPUT'
+          assert r['expectedStandardVsMirroredOutputSeparationDeg']>5
+          assert r['observedStandardVsMirroredOutputSeparationDeg']>5
+          assert r['separationDriftDeg']<=.5
+          for c in r['objectChecks'].values():
+              assert c['pass'] is True
+              assert c['maxChannelAbsDelta']<=1
+          print(json.dumps({
+              'fragment_normal_output':'PASS',
+              'expected_sep_deg':r['expectedStandardVsMirroredOutputSeparationDeg'],
+              'observed_sep_deg':r['observedStandardVsMirroredOutputSeparationDeg'],
+              'sep_drift_deg':r['separationDriftDeg'],
+              'rgba':{k:v['observedRGBA8'] for k,v in r['objectChecks'].items()}
+          },indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        working-directory: ${{ github.workspace }}
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > FRAGMENT_NORMAL_SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        if: always()
+        with:
+          name: oleander-fragment-normal-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_SERVER.log
+            FRAGMENT_NORMAL_SHA256SUMS.txt
+            out/TBN_SOURCE/
+            out/FRAGMENT_NORMAL/
+          if-no-files-found: warn
+          retention-days: 14
