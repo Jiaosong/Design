@@ -1,7 +1,7 @@
 ---
 name: oleander-3d-pipeline
-description: Plan, build, exchange, render, and audit Oleander 3D assets. Use whenever the user mentions Oleander 3D models, Blender, Maya, Houdini, Unreal, D5, KeyShot, VRED, geometry nodes, procedural studies, axonometric drawings, exploded views, material libraries, cameras, animation, FBX, glTF, USD, texture paths, or render handoff.
-compatibility: Capability-first and per-run probed. Blender ACTIVE shared runtime is preferred when callable and fit; other 3D/CAD/render tools such as Maya, Houdini, Cinema 4D, Unreal/Epic, D5, KeyShot, VRED, Adobe tools, FFmpeg, or specialist CAD/BIM tools may be used only when the actual execution environment is available and preserves the Required Native Output. No local installation or installed-software state is assumed globally.
+description: Plan, build, exchange, render, and audit Oleander 3D assets. Use whenever the user mentions Oleander 3D models, Blender, Rhino, Grasshopper, Maya, 3ds Max, SketchUp, Houdini, Unreal, D5, KeyShot, VRED, geometry nodes, procedural studies, polygon/SubD/NURBS modeling, retopology, UV/baking, material nodes, texture processing, technical art, plugins, axonometric drawings, exploded views, material libraries, cameras, animation, FBX, glTF, USD, texture paths, or render handoff.
+compatibility: Capability-first and per-run probed. Blender ACTIVE shared runtime is preferred when callable and fit; other 3D/CAD/render tools such as Rhino/Grasshopper, Maya, 3ds Max, SketchUp, Houdini, Cinema 4D, Unreal/Epic, D5, KeyShot, VRED, Adobe tools, FFmpeg, or specialist CAD/BIM tools may be used only when the actual execution environment is available and preserves the Required Native Output. No local installation or installed-software state is assumed globally.
 ---
 
 # Oleander 3D Pipeline
@@ -9,6 +9,31 @@ compatibility: Capability-first and per-run probed. Blender ACTIVE shared runtim
 Inherit `00-governance/runtime/OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v1.0.json` for master/derivative separation, software handoff, dimension authority, text editability and AI-generated-visual boundaries. This Skill does not create a second environment policy.
 
 Keep one authoritative editable model per asset and treat downstream scene files, exchange files, renders, screenshots and viewers as typed derivatives unless Project Authority explicitly promotes another source. Avoid silent scale, coordinate, material, texture, unit, axis or authority changes.
+
+## 3D production knowledge route
+
+For any modeling, surfacing, procedural, texturing, lighting, rendering, technical-art, runtime or plugin task, read:
+
+`oleander-skills/oleander-3d-pipeline/3D_PRODUCTION_KNOWLEDGE_ROUTING.md`
+
+Its Current Notion owner is:
+
+`FW-CG-3D-PRODUCTION-001｜3D Production Knowledge Stack｜建模—程序化—表面—材质—渲染—技术美术`.
+
+Required routing behavior:
+
+- choose the representation/modeling paradigm before choosing a software worker;
+- use `KN-METHOD-OLEANDER-3D-MODELING-001` for the default evidence-first/coarse-to-fine modeling sequence;
+- route Rhino/NURBS/industrial surface work to the Rhino surface method + surface-continuity evidence;
+- route Blender native/GN, Maya, 3ds Max, SketchUp, Houdini and Grasshopper work to their corresponding Current method/evidence objects;
+- route sculpt/retopo/UV/bake/displacement/decal work to Surface Detail Production;
+- route shader nodes/texture selection/processing/Substance work to Shading & Texturing plus the applicable CG BSDF/color evidence;
+- route lighting/rendering to Rendering & Lighting Production plus radiometry/transport/color evidence;
+- route LOD/instances/shader cost/runtime/export/profiling to 3D Technical Art;
+- route addon/plugin choices through Plugin & Toolchain Governance, and never infer that a REVIEW plugin candidate is installed or approved;
+- preserve software-specific version/runtime uncertainty; documentation synthesis alone is not M6 PRACTICED.
+
+Stable principle: **software is a Worker, not the design method or authority**.
 
 ## Before modeling
 
