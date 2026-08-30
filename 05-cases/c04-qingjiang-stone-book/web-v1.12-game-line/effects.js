@@ -68,14 +68,6 @@
         image.dataset.currentAssetBinding='true';
       });
     });
-
-    const physicalCaption=document.querySelector('#physical .physical-main')?.closest('.physical-stage')?.previousElementSibling;
-    void physicalCaption;
-
-    document.querySelectorAll('#brandmemory .copy-panel > p').forEach((paragraph,index)=>{
-      if(index!==0) return;
-      paragraph.textContent='品牌负责让路线、印、页与痕迹在不同媒介中保持同一语法；纸本记忆则保留游客自己的路线、空白与一句话。二者共享视觉语法，但不再把“品牌说明板”当成最终品牌资产。';
-    });
   }
 
   applyPublicVoiceRepair();
