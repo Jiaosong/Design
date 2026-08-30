@@ -9,6 +9,7 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x30343a,1.3)); const key=new THREE
 const rt={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},webgl:{}}; window.__OLEANDER_TBN_RUNTIME__=rt;
 function readVec3(attr,i){return [attr.getX(i),attr.getY(i),attr.getZ(i)]}
 function worldDir(attr,i,nm){const v=new THREE.Vector3(attr.getX(i),attr.getY(i),attr.getZ(i)); return v.applyMatrix3(nm).normalize().toArray().map(Number)}
+function sampleTexture(tex){const im=tex?.image;if(!im)return null;const w=im.width||im.videoWidth||0,h=im.height||im.videoHeight||0;if(!w||!h)return null;const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0,w,h);const x=Math.floor(w/2),y=Math.floor(h/2),d=Array.from(ctx.getImageData(x,y,1,1).data,Number);return {rgba8:d,width:w,height:h,x,y,colorSpace:tex.colorSpace||'',flipY:tex.flipY,type:im.constructor?.name||typeof im};}
 new GLTFLoader().load('./assets/TBN_RECONSTRUCTION_WITNESS.glb',gltf=>{
  scene.add(gltf.scene); gltf.scene.updateMatrixWorld(true);
  gltf.scene.traverse(o=>{
@@ -17,7 +18,7 @@ new GLTFLoader().load('./assets/TBN_RECONSTRUCTION_WITNESS.glb',gltf=>{
   const localNormals=[],localTangents=[],worldNormals=[],worldTangents=[],signs=[]; const nm=new THREE.Matrix3().getNormalMatrix(o.matrixWorld);
   if(n)for(let i=0;i<n.count;i++){localNormals.push(readVec3(n,i));worldNormals.push(worldDir(n,i,nm));}
   if(t)for(let i=0;i<t.count;i++){localTangents.push(readVec3(t,i));worldTangents.push(worldDir(t,i,nm));signs.push(t.getW(i));}
-  rt.objects[o.name]={normalPresent:!!n,tangentPresent:!!t,uvPresent:!!uv,vertexCount:o.geometry.attributes.position?.count||0,localNormals,localTangents,worldNormals,worldTangents,tangentW:signs,matrixWorld:o.matrixWorld.toArray().map(Number),material:{type:o.material?.type||null,normalMap:!!o.material?.normalMap,normalMapName:o.material?.normalMap?.name||null}};
+  const tex=o.material?.normalMap||null;rt.objects[o.name]={normalPresent:!!n,tangentPresent:!!t,uvPresent:!!uv,vertexCount:o.geometry.attributes.position?.count||0,localNormals,localTangents,worldNormals,worldTangents,tangentW:signs,matrixWorld:o.matrixWorld.toArray().map(Number),material:{type:o.material?.type||null,normalMap:!!tex,normalMapName:tex?.name||null,normalMapPixel:sampleTexture(tex)}};
  });
  const gl=renderer.getContext(); rt.webgl={version:gl.getParameter(gl.VERSION),vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER)}; renderer.render(scene,camera); rt.ready=true;
 },undefined,e=>rt.error=String(e?.message||e));
