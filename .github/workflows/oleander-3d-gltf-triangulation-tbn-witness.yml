@@ -56,7 +56,7 @@ jobs:
         run: |
           mkdir -p assets
           cp "$GITHUB_WORKSPACE/out/TRI_SOURCE/TRIANGULATION_TBN_WITNESS.glb" assets/TRIANGULATION_TBN_WITNESS.glb
-      - name: Execute topology-aligned target readback
+      - name: Execute UV-convention and triangulation-sensitivity readback
         run: |
           set -euo pipefail
           python3 -m http.server 4178 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
@@ -65,21 +65,35 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4178/viewer.html >/dev/null && break; sleep 1; done
           OLEANDER_OUT="$GITHUB_WORKSPACE/out/TRI_BROWSER" OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/TRI_SOURCE/SOURCE_RECEIPT.json" node runtime_check.mjs
           test -s "$GITHUB_WORKSPACE/out/TRI_BROWSER/TARGET_RUNTIME_RECEIPT.json"
-      - name: Validate triangle-corner parity and sensitivity
+      - name: Validate resolved UV convention and triangulation shading sensitivity
         working-directory: ${{ github.workspace }}
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
           r=json.loads(Path('out/TRI_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['schema']=='oleander.3d.gltf-triangulation-tbn-target.v3'
           assert r['overallPass'] is True, json.dumps(r,indent=2)
-          assert r['evidenceClass']=='TARGET_RUNTIME_TRIANGLE_CORNER_TBN_PARITY_AND_TRIANGULATION_SENSITIVITY'
-          assert r['cornerParity'] is True and r['sensitivityPreserved'] is True
-          assert r['sourceMaxSensitivityDeg']>.1 and r['targetMaxSensitivityDeg']>.1
+          assert r['evidenceClass']=='TARGET_RUNTIME_TRIANGULATION_SENSITIVITY_WITH_RESOLVED_UV_CONVENTION'
+          assert r['uvConventionResolved'] is True and r['uvConvention'] in ('IDENTITY','V_FLIP')
+          assert r['semanticCornerParity'] is True and r['sensitivityPreserved'] is True
+          assert r['sourceMaxSensitivityDeg']>1 and r['targetMaxSensitivityDeg']>1
+          assert r['maxSensitivityDeltaDriftDeg']<=.01
           for c in r['objectChecks'].values():
               assert c['matchedTriangles']==2 and c['cornerCount']==6
-              assert c['allCornersPass'] is True and c['allVertexAggregatesPass'] is True
-          print(json.dumps({'triangulation_tbn':'PASS','source_vertex_deltas_deg':r['sourceVertexPerturbedAngleDeltaDeg'],'target_vertex_deltas_deg':r['targetVertexPerturbedAngleDeltaDeg'],'max_delta_drift_deg':r['maxSensitivityDeltaDriftDeg']},indent=2))
+              assert c['allSemanticCornersPass'] is True and c['allVertexAggregatesPass'] is True
+              for corner in c['cornerChecks']:
+                  assert corner['uv']['pass'] is True
+                  assert corner['semanticPass'] is True
+                  assert corner['errors']['perturbed']['pass'] is True
+          print(json.dumps({
+              'triangulation_tbn':'PASS',
+              'uv_convention':r['uvConvention'],
+              'source_vertex_deltas_deg':r['sourceVertexPerturbedAngleDeltaDeg'],
+              'target_vertex_deltas_deg':r['targetVertexPerturbedAngleDeltaDeg'],
+              'max_delta_drift_deg':r['maxSensitivityDeltaDriftDeg'],
+              'exact_basis_corner_parity':r['exactBasisCornerParity']
+          },indent=2))
           PY
       - name: Hash evidence
         if: always()
