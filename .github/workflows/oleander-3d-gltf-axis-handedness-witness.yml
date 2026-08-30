@@ -1,0 +1,108 @@
+name: OLEANDER 3D glTF Axis Handedness Witness
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-gltf-axis-handedness-witness.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  axis-handedness-witness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+
+      - name: Validate witness scripts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/build_axis_witness.py
+          node --check 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/browser/runtime_check.mjs
+
+      - name: Install Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+
+      - name: Build asymmetric source GLB
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/AXIS_WITNESS_SOURCE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/build_axis_witness.py \
+            -- --out "$OUT"
+          test -s "$OUT/AXIS_HANDEDNESS_WITNESS.glb"
+          test -s "$OUT/SOURCE_RECEIPT.json"
+
+      - name: Install pinned Chromium runtime
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/browser
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json');const t=require('./node_modules/three/package.json');if(p.version!=='1.55.0'||t.version!=='0.179.1')process.exit(2);console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+
+      - name: Assemble browser asset
+        run: |
+          set -euo pipefail
+          BROWSER="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/browser"
+          mkdir -p "$BROWSER/assets"
+          cp out/AXIS_WITNESS_SOURCE/AXIS_HANDEDNESS_WITNESS.glb "$BROWSER/assets/AXIS_HANDEDNESS_WITNESS.glb"
+
+      - name: Execute signed transform readback in Chromium
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-axis-handedness-witness/browser
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4174 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4174/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/AXIS_WITNESS_BROWSER" \
+          OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/AXIS_WITNESS_SOURCE/SOURCE_RECEIPT.json" \
+            node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/AXIS_WITNESS_BROWSER/TARGET_RUNTIME_RECEIPT.json"
+          test -s "$GITHUB_WORKSPACE/out/AXIS_WITNESS_BROWSER/AXIS_HANDEDNESS_BROWSER_720.png"
+
+      - name: Validate signed axis contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/AXIS_WITNESS_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['evidenceClass']=='TARGET_RUNTIME_SIGNED_AXIS_HANDEDNESS_READBACK'
+          assert r['allSignedCentersMatch'] is True
+          assert r['allSizesMatch'] is True
+          assert r['handednessPreserved'] is True
+          assert r['transformDeterminant']==1
+          assert len(r['signedObjectChecks'])==4
+          print(json.dumps({'signed_axis':'PASS','transform':r['declaredTransform'],'objects':list(r['signedObjectChecks'])},indent=2))
+          PY
+
+      - name: Hash witness evidence
+        if: always()
+        run: |
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > AXIS_WITNESS_SHA256SUMS.txt || true
+
+      - name: Upload axis-handedness evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-gltf-axis-handedness-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_SERVER.log
+            AXIS_WITNESS_SHA256SUMS.txt
+            out/AXIS_WITNESS_SOURCE/
+            out/AXIS_WITNESS_BROWSER/
+          if-no-files-found: error
+          retention-days: 14
