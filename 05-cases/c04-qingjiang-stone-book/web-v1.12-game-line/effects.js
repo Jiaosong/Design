@@ -57,6 +57,9 @@
 
   function applyCurrentAssetBindings(){
     const bindings=[
+      ['img[src$="hero_qingjiang.jpg"]','https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg','跨清江索道与清江河谷官方摄影'],
+      ['img[src$="r06_qingjiang.jpg"]','https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg','云雾中的清江河谷与田地官方摄影'],
+      ['img[src$="r13_passage_sequence.png"]','assets/r13_passage_sequence_current.svg','R13 接近、收束、通过、回看注意力序列'],
       ['img[src$="brand_journey_current.svg"]','assets/brand_system_current.svg','清江路线、印、页与痕迹的品牌应用系统'],
       ['img[src*="M01_qingjiang_journal_v1_2.svg"]','assets/memory_journal_current.svg','清江旅记纸本记忆使用态'],
       ['img[src$="physical_body_support_hold.svg"]','assets/body_need_scenarios_current.svg','走、停、倚、恢复的身体需求场景']
