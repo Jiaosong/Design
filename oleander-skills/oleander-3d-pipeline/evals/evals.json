@@ -96,6 +96,30 @@
       "prompt": "FreeCAD Part Design 的零件能正常显示，但上游长度一改，后面的 Pocket 和 Fillet 经常失效。有人建议把所有 feature 都删掉改成一个最终 STEP，再直接修形。按 Oleander 怎么判断？",
       "expected_output": "Do not default to either preserving every fragile feature or collapsing immediately to a dumb final solid. Route to modeling essence and FreeCAD evidence; inspect Body feature order, sketch/datum attachment, incidental face/edge references, primary constraints and failure envelope. Rebuild unstable dependencies around stable datums/named intent when long-lived parametric editability is required; use direct/imported-solid repair only when history semantics are intentionally not required. Validate recompute, geometry and STEP/native reopen; a visible solid does not prove robust design intent or manufacturing approval.",
       "files": []
+    },
+    {
+      "id": 17,
+      "prompt": "Rhino Sweep1 做一根沿空间曲线变化的握把，截面和轨道都看起来很干净，但中段突然扭转。团队准备继续增加截面和 CV 压住扭转。先怎么判断？",
+      "expected_output": "Route to parameterization/moving-frame evidence before adding geometry. Inspect rail/profile directions, section structural correspondence, closed-section seams, moving-frame policy and tangent/up-vector degeneracy; reproduce the twist with a minimal sweep and compare frame choices. Adding profiles/CVs is not a root-cause fix until frame semantics are understood.",
+      "files": []
+    },
+    {
+      "id": 18,
+      "prompt": "一个 CAD 外壳做 Offset/Thickness 时小圆角附近失败。有人建议把几何容差直接放大十倍，或者先把失败处抹平再继续。按 Oleander 怎么查？",
+      "expected_output": "Route to geometric-operator, numerical-tolerance and topological-validity evidence. Inspect local curvature radius, feature size, offset distance, self-intersection, neighboring topology and kernel tolerance before changing tolerance. Distinguish a solver/kernel tolerance from manufacturing wall thickness or clearance; require validity/readback after any repair and record geometry that was intentionally simplified.",
+      "files": []
+    },
+    {
+      "id": 19,
+      "prompt": "Blender 用 Shrinkwrap 把一圈装饰线贴到复杂产品表面，Nearest 看着贴住了，但跨过凹槽时跳到错误面；改成 Project 又有部分点没有贴上。不要直接给一个‘最佳模式’。",
+      "expected_output": "Route to proximity/projection query semantics. Distinguish nearest-surface from directional projection; record source/local axis, target representation, max distance, front/back policy and no-hit/multi-surface behavior. If semantic attachment must stay on one intended surface region, add an explicit selection/mask/reference constraint rather than assuming geometric closeness equals correct attachment.",
+      "files": []
+    },
+    {
+      "id": 20,
+      "prompt": "一个扫描模型要用于三种用途：雕刻清理、游戏实时展示、角色关节变形。团队想统一跑一次 Quad Remesh 后三处共用。按 Oleander 怎么拆？",
+      "expected_output": "Reject one-topology-for-all by default. For sculpt cleanup choose remesh from representation/detail needs; for runtime choose shape-preserving reduction/LOD with protected silhouette/material/UV attributes; for deformation design retopology around joints and deformation flow. Record geometric deviation and attribute loss separately, and keep each derivative linked to the source rather than silently promoting one remesh as universal master.",
+      "files": []
     }
   ]
 }
