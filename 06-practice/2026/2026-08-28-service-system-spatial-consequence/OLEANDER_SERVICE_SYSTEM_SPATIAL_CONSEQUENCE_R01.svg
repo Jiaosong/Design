@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / SERVICE SYSTEM → SPATIAL CONSEQUENCE</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="46" font-weight="700" fill="#18211F">服务流程不是后台图；关键状态必须改变空间邻接、门槛与流线</text>
+<text x="88" y="170" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="17" fill="#69706D">synthetic equipment-library service · NTS · no real capacity / hygiene / staffing / accessibility claim</text>
+<rect x="88" y="208" width="1744" height="116" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+<text x="116" y="242" font-size="12" font-weight="700" fill="#8B5D46">EVIDENCE</text>
+<text x="116" y="270" font-size="14" fill="#29332F">归还物品必须先检查，才能重新进入可借库存。</text>
+<text x="116" y="296" font-size="12" fill="#59615F">synthetic process relation</text>
+<text x="530" y="242" font-size="12" font-weight="700" fill="#7D654B">INFERENCE</text>
+<text x="530" y="270" font-size="14" fill="#29332F">归还与借取共用同一服务点，会把“待检查”和“已确认”混在一起。</text>
+<text x="1040" y="242" font-size="12" font-weight="700" fill="#7D654B">ADVERSE CONDITION</text>
+<text x="1040" y="270" font-size="14" fill="#29332F">高峰同时归还 + 借取；发现损坏物品。</text>
+<text x="1460" y="242" font-size="12" font-weight="700" fill="#315D57">DESIGN CONSEQUENCE</text>
+<text x="1460" y="270" font-size="14" fill="#29332F">把 triage 前置；待检/异常与 clean stock 分区。</text>
+</g>
+<rect x="88" y="352" width="548" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="396" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · SINGLE SERVICE COUNTER</text>
+<text x="120" y="426" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">借取、归还、检查都压在同一柜台；流程存在，空间不承认状态差异。</text>
+<text x="120" y="462" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PLAN / LABEL-OFF TEST</text>
+<rect x="132" y="480" width="464" height="248" rx="12" fill="#F7F3EA"/>
+<rect x="298" y="558" width="132" height="54" rx="8" fill="#6F7773"/>
+<rect x="454" y="514" width="110" height="142" rx="8" fill="#D6D0C4" stroke="#8F877B"/>
+<text x="469" y="544" font-family="Arial,sans-serif" font-size="10.5" fill="#59615F">STOCK</text>
+<path d="M158 536 C220 536 250 572 298 578" fill="none" stroke="#315D57" stroke-width="5"/>
+<path d="M430 578 C474 576 510 558 550 548" fill="none" stroke="#315D57" stroke-width="5"/>
+<path d="M158 680 C226 672 260 628 310 600" fill="none" stroke="#8B5D46" stroke-width="5"/>
+<path d="M392 600 C438 628 478 646 548 642" fill="none" stroke="#8B5D46" stroke-width="5"/>
+<circle cx="364" cy="586" r="30" fill="none" stroke="#914F3D" stroke-width="3"/>
+<text x="326" y="706" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#914F3D">借取/归还/检查共用冲突点</text>
+<text x="120" y="768" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">PEAK ATTACK → 两股用户流与员工检查同时占用同一前台。</text>
+<text x="120" y="796" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">DAMAGED ITEM → 异常物品没有空间状态，只能靠口头/标签区分。</text>
+<rect x="120" y="830" width="484" height="46" rx="10" fill="#F7F3EA"/>
+<text x="140" y="858" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#7D4A3A">ROOT · service states exist in prose, not in adjacency.</text>
+<rect x="686" y="352" width="612" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="718" y="396" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP · TRIAGE → VERIFY → CLEAN STOCK</text>
+<text x="718" y="426" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">状态关系直接生成空间序列；借取绕过待检区，异常物品不穿越 clean stock。</text>
+<text x="718" y="462" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PLAN / STATE-OFF + PEAK ATTACK</text>
+<rect x="730" y="480" width="536" height="248" rx="12" fill="#F7F3EA"/>
+<rect x="750" y="606" width="112" height="88" rx="10" fill="#E1DDD3" stroke="#8B5D46" stroke-width="2"/>
+<rect x="888" y="562" width="116" height="132" rx="10" fill="#E1DDD3" stroke="#A88D64" stroke-width="2"/>
+<rect x="1034" y="514" width="204" height="180" rx="10" fill="#D5DDD8" stroke="#315D57" stroke-width="2"/>
+<rect x="1060" y="536" width="152" height="46" rx="8" fill="#F7F3EA"/>
+<text x="1080" y="565" font-family="Arial,sans-serif" font-size="10.5" fill="#315D57">VERIFIED CLEAN STOCK</text>
+<text x="774" y="638" font-family="Arial,sans-serif" font-size="10.5" fill="#8B5D46">RETURN</text>
+<text x="768" y="660" font-family="Arial,sans-serif" font-size="10.5" fill="#8B5D46">TRIAGE</text>
+<text x="908" y="602" font-family="Arial,sans-serif" font-size="10.5" fill="#7D654B">CHECK</text>
+<text x="906" y="624" font-family="Arial,sans-serif" font-size="10.5" fill="#7D654B">/ HOLD</text>
+<path d="M752 526 H1018 C1058 526 1084 514 1126 514" fill="none" stroke="#315D57" stroke-width="5"/>
+<path d="M1126 514 l-12 -8 v16 z" fill="#315D57"/>
+<path d="M746 674 H806 C860 674 868 630 888 622" fill="none" stroke="#8B5D46" stroke-width="5"/>
+<path d="M1004 622 C1028 620 1034 606 1034 590" fill="none" stroke="#8B5D46" stroke-width="5"/>
+<rect x="888" y="686" width="116" height="30" rx="7" fill="#F7F3EA" stroke="#914F3D" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="906" y="706" font-family="Arial,sans-serif" font-size="9.5" fill="#914F3D">QUARANTINE</text>
+<path d="M946 694 V686" fill="none" stroke="#914F3D" stroke-width="3" stroke-dasharray="7 5"/>
+<path d="M862 586 H888 M1004 586 H1034" fill="none" stroke="#69716D" stroke-width="2.5" stroke-dasharray="4 5"/>
+<text x="718" y="768" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">PEAK ATTACK → pickup 与 return 在入口后即分离，检查不占用借取路径。</text>
+<text x="718" y="796" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">TRIAGE DELETION → 删除前置 triage 后，异常品再次获得进入 clean stock 的路径。</text>
+<rect x="718" y="830" width="548" height="46" rx="10" fill="#F7F3EA"/>
+<text x="738" y="858" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#315D57">CONSEQUENCE · service truth changes adjacency, threshold and path ownership.</text>
+<rect x="1348" y="352" width="484" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1380" y="396" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · SIGNAGE-ONLY SPLIT</text>
+<text x="1380" y="426" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">增加“借取 / 归还”标识，但柜台、库存和检查邻接完全不变。</text>
+<rect x="1380" y="480" width="420" height="248" rx="12" fill="#F7F3EA"/>
+<rect x="1514" y="558" width="134" height="54" rx="8" fill="#6F7773"/>
+<rect x="1672" y="514" width="102" height="142" rx="8" fill="#D6D0C4" stroke="#8F877B"/>
+<rect x="1404" y="500" width="94" height="34" rx="8" fill="#315D57"/>
+<rect x="1404" y="660" width="94" height="34" rx="8" fill="#8B5D46"/>
+<text x="1429" y="522" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="10.5" fill="#fff">借取</text>
+<text x="1429" y="682" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="10.5" fill="#fff">归还</text>
+<path d="M1498 518 C1530 532 1544 558 1554 576" fill="none" stroke="#315D57" stroke-width="4"/>
+<path d="M1498 678 C1532 654 1548 624 1562 602" fill="none" stroke="#8B5D46" stroke-width="4"/>
+<path d="M1648 586 H1720" stroke="#69716D" stroke-width="3"/>
+<text x="1380" y="768" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#8A6941">SIGNAGE-OFF → 一切回到 A；服务逻辑没有进入空间。</text>
+<text x="1380" y="796" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#8A6941">STAFF-CROSSING → 检查动作仍在用户主路径上。</text>
+<rect x="1380" y="830" width="420" height="46" rx="10" fill="#F7F3EA"/>
+<text x="1400" y="858" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#59615F">REPAIR · move the state boundary, not only the sign.</text>
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="290" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">Remove labels and service prose: if “returned / unchecked / verified clean” states cannot still be inferred from adjacency and path ownership, the system has not become spatial design.</text>
+<text x="88" y="1034" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#747B78">BOUNDARY · no real hygiene protocol, staffing model, inventory rule, queue capacity, accessibility, safety or architecture is proven.</text>
+</svg>
