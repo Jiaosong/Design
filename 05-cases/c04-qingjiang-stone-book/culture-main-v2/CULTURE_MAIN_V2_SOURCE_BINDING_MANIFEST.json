@@ -1,0 +1,26 @@
+{
+  "schema": "c04.culture-main-v2.source-binding/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "case_id": "C04",
+  "set_id": "C04-CULTURE-MAIN-V2",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "source_bindings": {
+    "D-HERO-01": {"drive_id":"16xgXoszQX3-LH150FPH_q5YO2GSfzeAB","source":"QJD_V11_01_HERO_1920x1080.png","crop":[600,90,1920,850],"role":"Qingjiang/cable landscape first-read","does_not_prove":"survey geometry, bank direction, live operations"},
+    "V-R06": {"drive_id":"1AJx_ZioWfdq6EcVVIWpzK0kea6HUjkkn","source":"QJD_V11_03_R06_TWO_STAGE_1920x1080.png","crop":[240,255,930,670],"role":"R06 valley relation reference","does_not_prove":"exact terrace count/elevation/geometry/geology"},
+    "V-R13": {"drive_id":"1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf","source":"QJD_V11_04_R13_FOUR_FRAME_1920x1080.png","crop":[976,175,1426,812],"role":"R13 conceptual exit/reveal relation","does_not_prove":"site photo, safety, clear width, accessibility"},
+    "V-RETURN": {"drive_id":"19mkQdgTj0ASkGh0Ott6JIMNrPcaHd4Y7","source":"QJD_V11_05_RETURN_UNKNOWN_CLOSED_1920x1080.png","crop":[650,0,1920,560],"role":"Return-priority demo visual","does_not_prove":"live operating state"},
+    "D04-MAP": {"github_path":"05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1/assets/qingjiang-game-map-main.svg","blob_sha":"fcf298941655f533847e313b41c8f353e9c46732","role":"relational BOAT/CABLE/WALK + content map","does_not_prove":"GPS, survey, distance, slope, live open state"},
+    "M01-JOURNAL": {"github_path":"05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1/assets/M01_qingjiang_journal_spread.svg","blob_sha":"51910b0356433cf3cf4f6701494f5ba2c8f7681b","role":"physical memory hero","does_not_prove":"final paper/binding/manufacturing"}
+  },
+  "content_ids": ["CUL-004","CUL-006","CUL-008","CUL-010","CUL-015","CUL-019","CUL-031"],
+  "figures": [
+    {"id":"CUL2_01_CULTURE_JOURNEY_MAIN","role":"MAIN","svg_sha256":"23f1d7d953dbae09f1a2e1fdb29d5172569760868f1cbf1d890b97560f91dc4e","png_sha256":"615a6869cdef26d632a712a8de3d542ce3b5b3534e5ecd7fd32f159f00928bbc"},
+    {"id":"CUL2_02_PLACE_NAME_LOCAL_STORY","role":"MAIN_SUPPORT","svg_sha256":"7914b6bba08b79be70fbc5fbb95d3da2632e915562c0264c5314804b4601ff49","png_sha256":"6049062e64bfd76dfcadf1bac33b78f07ff5976f8039d9ad9de530d44e6ebbfa"},
+    {"id":"CUL2_03_R06_WISDOM","role":"MAIN","svg_sha256":"e594e355a0951ab226d0054386f2e85731fb0b4a24ea36175672fc4115adae55","png_sha256":"034fa979b3b692ab25ab7391a221e1790fea962838573d185de6d37168ae84be"},
+    {"id":"CUL2_04_R13_WITHDRAW_RETURN","role":"MAIN_SUPPORT","svg_sha256":"995069467b3f2b90f4deb4e22e833806446be19570001587b8d6327a5841a0f9","png_sha256":"9a495bfada595ab9a2c7c45d735a7ae5dd72f430ca2198ee29fc7968330a1422"},
+    {"id":"CUL2_05_MEMORY_JOURNAL","role":"MAIN","svg_sha256":"7fda6753d0390a01a92fa29018803201ba9dee105fedaaf9c6da1702333bcbb3","png_sha256":"487a787cee59caa0292f9667b8749c79ab04751158479f73f44040aa016f9b3b"}
+  ],
+  "production_package": {"drive_folder_id":"1vbzi2whByWyD94JoGrjMFCv1UAyB5X7T","drive_file_id":"1SBlBU1RlNQ6YEd-tSV3bZn64tfTxR4BL","filename":"C04_CULTURE_MAIN_V2_FULL_FRAMEWORK_PACKAGE.zip","bytes":5294148,"sha256":"ae2aa53ed8bf7229e435c29d8cbe341345967edcd223ef99ca4446edc1d6c1ae"},
+  "notion_receipt_id": "3beb86be-5c47-81f3-a882-f464b8c542c3",
+  "status": "POST-REVIEW PASS / PERSISTENCE PASS / NO_PROMOTION"
+}

@@ -1,0 +1,48 @@
+{
+  "receipt_id": "C04-CULTURE-MAIN-V2-PERSISTENCE-F-HANDOFF-20260816",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "case_id": "C04",
+  "branch": "c04/culture-main-v2-full-framework-20260816",
+  "production_id": "C04-CULTURE-MAIN-V2",
+  "artifact_review": {
+    "AR_G01_G10": "PASS",
+    "AR_S06": "PASS",
+    "AR_S08": "PASS",
+    "AR_S09": "PASS at this bounded package scope after PAP-G0—G6 and cross-system receipt consistency; does not imply project Promotion"
+  },
+  "pap": {
+    "PAP_G0": "PASS — production ZIP + checksums explicitly inventoried; native binary authoring scene N/A and canonical model N/A because this set creates editable SVG/PNG presentation assets only",
+    "PAP_G1": "PASS — local package bytes=5294148 sha256=ae2aa53ed8bf7229e435c29d8cbe341345967edcd223ef99ca4446edc1d6c1ae",
+    "PAP_G2": "PASS — Drive folder 1vbzi2whByWyD94JoGrjMFCv1UAyB5X7T / file 1SBlBU1RlNQ6YEd-tSV3bZn64tfTxR4BL",
+    "PAP_G3": "PASS — package independently fetched from Drive after upload",
+    "PAP_G4": "PASS — retrieved bytes=5294148, same SHA-256, ZIP open/test PASS, 17 entries",
+    "PAP_G5": "PASS — source binding, hashes, provider IDs and truth boundaries recorded in GitHub + package",
+    "PAP_G6": "PASS — Notion receipt 3beb86be-5c47-81f3-a882-f464b8c542c3 + this GitHub receipt point to the same Drive object/SHA/state"
+  },
+  "design_selection": {
+    "MAIN": ["CUL2_01_CULTURE_JOURNEY_MAIN","CUL2_03_R06_WISDOM","CUL2_05_MEMORY_JOURNAL"],
+    "MAIN_SUPPORT": ["CUL2_02_PLACE_NAME_LOCAL_STORY","CUL2_04_R13_WITHDRAW_RETURN"],
+    "SUPERSEDED_PROVENANCE": ["C04_CULTURE_MAIN_DESIGN_v1"]
+  },
+  "F_consumption_contract": {
+    "consume_as": "Culture v2 current candidate set for Web/D/F successor editing",
+    "do_not": [
+      "reintroduce v1 abstract culture engine diagrams",
+      "use culture taxonomy or blocker dashboard as public MAIN",
+      "treat R09/R12 story as historical-site proof",
+      "treat R07 spelling conflict as field-closed",
+      "treat R13 conceptual pixel as site/safety evidence",
+      "convert the 13 Imprints into mandatory route/completion logic"
+    ],
+    "protect": [
+      "real Qingjiang first-read",
+      "BOAT/CABLE/WALK and Return hierarchy",
+      "LOOK/COMPARE/LISTEN/WAIT/REMEMBER scene actions",
+      "R06 evidence-bounded WISDOM",
+      "Journal/My Book personal memory without completion score"
+    ]
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / FIELD PASS=NONE / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "package_release_status": "PACKAGE RELEASE PASS for this Culture v2 artifact package only",
+  "project_promotion": "NO"
+}

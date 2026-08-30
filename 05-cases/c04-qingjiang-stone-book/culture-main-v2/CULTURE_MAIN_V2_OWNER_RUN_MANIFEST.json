@@ -1,0 +1,44 @@
+{
+  "manifest_id": "C04-CULTURE-MAIN-V2-OWNER-RUN-20260816",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_question": "How can Qingjiang culture become scene-specific visitor actions and cross-media designed outcomes without reverting to taxonomy, dashboard, or generic illustration?",
+  "authority_chain": [
+    {"path":"05-cases/c04-qingjiang-stone-book/C04_CURRENT.md","sha":"5887c8a994b120af6c611b98825cbcdf63124881"},
+    {"path":"05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md","role":"NO_LOSS_ASSET_AUTHORITY"},
+    {"path":"05-cases/c04-qingjiang-stone-book/C04_NARRATIVE_REFRAME_3AXIS_v1.0.md","sha":"04fea9cd007ce2fe8cd2d67688f747e12f0d7ba6"},
+    {"path":"05-cases/c04-qingjiang-stone-book/C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md","role":"PUBLIC_CONTENT_AUTHORITY"},
+    {"path":"05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md","sha":"3e9145909dd3e13b80fbc2d38e135b2b04c2d0ab"}
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "superseded_local_set": {
+    "name":"C04_CULTURE_MAIN_DESIGN_v1",
+    "state":"REJECTED / PROVENANCE ONLY",
+    "reason":"concept logic retained, pixels rejected for abstract/generic diagram character and insufficient Qingjiang specificity"
+  },
+  "no_loss_rule": [
+    "CONCEPT KEEP != PIXEL KEEP",
+    "PIXEL FAIL != DESIGN DELETE",
+    "VALIDATION SUBSET != WHOLE PROJECT"
+  ],
+  "production_scope": {
+    "main_goal":"one integrated Culture Main successor bound to existing Qingjiang-specific journey, App/Game Map, selected R nodes, Physical/Sensory and Memory/IP assets",
+    "must_show":[
+      "real Qingjiang/journey first read",
+      "BOAT/CABLE/WALK as experience scales",
+      "R07/R09/R12 place-name/local-story scene logic",
+      "R02/R05/R06 observation logic with evidence boundaries",
+      "App READ/MY BOOK and game-map participation",
+      "Physical/Sensory and Memory outputs only where scene fit is real"
+    ],
+    "must_not_show":[
+      "culture taxonomy as main visual",
+      "governance dashboard or blocker matrix",
+      "generic mountain/river silhouettes presented as site truth",
+      "invented site geometry, platforms, railings, cable structures, species, geology or safety certainty",
+      "13/13 completion or mandatory cultural tasks"
+    ]
+  },
+  "quality_gate":["FIRST READ","COMPOSITION_SCALE","HIERARCHY_RHYTHM","C04_SPECIFICITY","EXPERIENCE_COMPLETENESS","AUDIENCE_VALUE","PHYSICAL_PRODUCT_CREDIBILITY","DIGITAL_RETREATABILITY","CROSS_MEDIA_CONSISTENCY","PROFESSIONAL_FINISH","TRUTH_BOUNDARY"],
+  "required_closure":["editable source","1920x1080 finished outputs","SHA256","actual visual readback","independent Design Crit","GitHub PR","CI/readback where available","F-consumable receipt"],
+  "state":"EXECUTION_STARTED / NO_PROMOTION"
+}
