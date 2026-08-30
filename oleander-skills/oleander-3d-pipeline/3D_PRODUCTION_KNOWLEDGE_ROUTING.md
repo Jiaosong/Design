@@ -61,6 +61,33 @@ For FreeCAD Part Design, treat Body → Sketch/Datum → cumulative Feature → 
 
 For both workers, review **change quality**, not only the current shape: sweep key parameters, replace an upstream reference where relevant, inspect recompute failures, and perform STEP/native reopen when the result is retained. A valid solid does not certify manufacturing, fit, tolerance or engineering approval.
 
+### 2.2 Geometric operators / computational geometry route
+
+Trigger: Extrude, Revolve, Sweep, Loft, Offset, Shell, Boolean, Fillet/Blend, Project, Pull, Closest Point, Shrinkwrap, raycast, Remesh, Decimate, Subdivision, Retopology, mesh cleanup, surface/mesh correspondence.
+
+Resolve from the modeling-essence layer before software-specific commands:
+
+- `EVD-MODELING-GEOMETRIC-OPERATORS-20260830-001` for operator input/output semantics, topology delta, offset/boolean/transition failure classes;
+- `EVD-MODELING-PARAMETERIZATION-MOVING-FRAMES-20260830-001` when Sweep/Loft/curve/surface direction, seam, u/v domain, moving frame or twist is material;
+- `EVD-MODELING-PROXIMITY-PROJECTION-INTERSECTION-20260830-001` for closest-point, projection, ray, surface attachment, intersection and query-policy issues;
+- `EVD-MODELING-MESH-PROCESSING-ALGORITHMS-20260830-001` for subdivision, remesh, decimation, retopology and sampling;
+- `EVD-MODELING-NUMERICAL-TOLERANCE-ROBUSTNESS-20260830-001` when near-coincident geometry, kernel tolerance or small-feature failure is implicated;
+- `EVD-MODELING-TOPOLOGICAL-VALIDITY-20260830-001` when shell/solid/manifold/orientation validity is implicated.
+
+Do not diagnose these issues from command names alone. Record the operator/query contract:
+
+`INPUT REPRESENTATION → PARAMETER DOMAIN / REFERENCE FRAME → OPERATOR OR QUERY → TOPOLOGY CHANGE → NUMERICAL CONDITION → REQUIRED INVARIANTS → FAILURE MODES → OUTPUT REPRESENTATION → READBACK`.
+
+Specific anti-shortcuts:
+
+- Sweep twist → inspect rail/profile direction, seam, structural correspondence and moving-frame policy before adding control points.
+- Offset/shell failure → inspect local curvature/feature size, self-intersection and tolerance before forcing a larger solver tolerance.
+- Shrinkwrap/Project drift → distinguish nearest-point from directional projection and record no-hit/multi-hit policy.
+- Remesh/Decimate/Retopo → choose from target purpose; uniform topology, shape-preserving reduction and deformation topology are not interchangeable.
+- Subdivision → distinguish added sampling from a smoothing subdivision rule/limit surface.
+
+`COMMAND EXECUTED ≠ OPERATOR SEMANTICS VALID ≠ TOPOLOGY VALID ≠ DOWNSTREAM SAFE`.
+
 ## 3. Rhino / industrial freeform surface route
 
 Trigger: NURBS, industrial/product surface, sweep/loft/network, MatchSrf, BlendSrf, G0/G1/G2, zebra, trimmed surface, Rhino SubD, STEP/IGES surface handoff.
@@ -69,7 +96,9 @@ Resolve together:
 
 - `KN-METHOD-RHINO-SURFACE-MODELING-001`;
 - `EVD-DCC-RHINO8-SURFACE-TOOLS-001`;
-- `EVD-CG-SURFACE-CONTINUITY-001`.
+- `EVD-CG-SURFACE-CONTINUITY-001`;
+- `EVD-MODELING-PARAMETERIZATION-MOVING-FRAMES-20260830-001` when sweep/loft direction, seam or twist is involved;
+- `EVD-MODELING-GEOMETRIC-OPERATORS-20260830-001` for offset/boolean/fillet/sweep operator failure.
 
 When the claim becomes fit-critical/manufacturing-parametric, co-route to `PARAMETRIC_CAD_GEOMETRY_VALIDATION_EXTENSION.md`. Rhino visual smoothness alone does not certify Class-A, tolerance or manufacturability.
 
@@ -80,7 +109,9 @@ Trigger: traditional polygon modeling, topology, hard surface, subdivision, beve
 Resolve:
 
 - `KN-METHOD-DCC-POLYGON-SUBD-001`;
-- `EVD-CG-SURFACE-CONTINUITY-001` for surface/normal/reflection claims.
+- `EVD-CG-SURFACE-CONTINUITY-001` for surface/normal/reflection claims;
+- `EVD-MODELING-MESH-PROCESSING-ALGORITHMS-20260830-001` for remesh/decimate/subdivision/retopology decisions;
+- `EVD-MODELING-PROXIMITY-PROJECTION-INTERSECTION-20260830-001` when shrinkwrap/projection/closest-surface transfer is part of the workflow.
 
 Worker-specific evidence:
 
@@ -123,7 +154,8 @@ Resolve:
 
 - `KN-METHOD-HOUDINI-PROCEDURAL-001`;
 - `EVD-DCC-HOUDINI21-PROCEDURAL-001`;
-- `KN-METHOD-TECHNICAL-ART-3D-001` when runtime/performance/asset-system claims are involved.
+- `KN-METHOD-TECHNICAL-ART-3D-001` when runtime/performance/asset-system claims are involved;
+- the operator/mesh-processing objects in §2.2 when SOP Boolean/Remesh/PolyReduce/Sweep/closest-surface operations are the root problem.
 
 Keep Point/Vertex/Primitive/Detail attribute ownership explicit. Separate SOP geometry processing from LOP/USD scene composition. Simulation caches are derivatives/evidence with seed, scale and solver context, not automatic physical truth.
 
@@ -146,7 +178,9 @@ Resolve:
 
 - `KN-METHOD-SURFACE-DETAIL-TEXTURE-001`;
 - `EVD-TEXTURE-SUBSTANCE-PIPELINE-001` when Painter/Designer or mesh-map-driven texturing is used;
-- `EVD-CG-SURFACE-CONTINUITY-001` when the detail changes actual form/surface claims.
+- `EVD-CG-SURFACE-CONTINUITY-001` when the detail changes actual form/surface claims;
+- `EVD-MODELING-PROXIMITY-PROJECTION-INTERSECTION-20260830-001` when projection/cage/closest-surface transfer is implicated;
+- `EVD-MODELING-MESH-PROCESSING-ALGORITHMS-20260830-001` when retopology/remesh changes identity before baking.
 
 Route detail frequency deliberately: macro → geometry; meso → geometry/displacement where justified; micro → normal/bump/roughness where silhouette authority is not required.
 
@@ -220,11 +254,14 @@ For a retained 3D result, capture the applicable subset:
 - representation type and reason;
 - topology intent and reference strategy;
 - primary parameters / constraints / design variables when parametric;
+- parameter direction/domain/seam and moving-frame policy when curve/surface generation depends on them;
+- geometric operator/query semantics when material: input representation, reference frame, tolerance, no-hit/multi-hit policy and invariants;
 - scale/units/axis/origin;
 - primary-mass + interface + silhouette/section evidence;
 - topology/continuity/normal strategy;
 - modifier/history/node/HDA/GH dependency state;
 - failure-sweep or robustness test when a dependent model is retained;
+- remesh/decimation/retopology target purpose and geometric/attribute loss when connectivity changes;
 - surface-detail carrier and UV/bake state;
 - material/texture semantic record;
 - lighting/renderer/sampling/color state;
