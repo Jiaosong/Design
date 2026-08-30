@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">清江旅记纸本记忆使用态</title>
+<desc id="desc">可编辑纸本记忆应用资产，展示封面、展开内页、折页与个人痕迹，不使用完成率或任务计分。</desc>
+<defs><style>
+.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#6C716D}.water{fill:#2E7F86}.seal{fill:#985448}
+</style><filter id="s" x="-20%" y="-20%" width="150%" height="160%"><feDropShadow dx="0" dy="22" stdDeviation="25" flood-color="#091512" flood-opacity=".11"/></filter></defs>
+<rect width="1600" height="1000" fill="#E7E2D7"/>
+<g class="sans"><text x="76" y="72" font-size="15" font-weight="700" letter-spacing="3.2" fill="#2E7F86">QINGJIANG / PAPER MEMORY</text><text x="76" y="126" class="serif ink" font-size="42" font-weight="700">纸页不是“完成证明”，而是旅行留下来的空白与痕迹。</text><text x="76" y="162" class="muted" font-size="16">无手机时仍然成立；可以写、折、夹、留白，也可以什么都不记录。</text></g>
+<line x1="76" y1="194" x2="1524" y2="194" stroke="#C9C2B5"/>
+<g transform="translate(98 250) rotate(-4 240 315)">
+ <rect width="480" height="630" rx="5" fill="#F6F2E9"/>
+ <rect x="28" y="28" width="424" height="574" fill="none" stroke="#CFC7B7"/>
+ <text x="58" y="96" class="sans muted" font-size="12" letter-spacing="2.8">QINGJIANG STONE BOOK</text>
+ <text x="58" y="176" class="serif ink" font-size="64" font-weight="700">清江旅记</text>
+ <path d="M58 360 C155 282 232 397 328 315 S402 290 425 317" fill="none" stroke="#2E7F86" stroke-width="3"/>
+ <circle cx="329" cy="315" r="15" fill="none" stroke="#985448" stroke-width="2.5"/>
+ <text x="58" y="540" class="serif muted" font-size="18">留给这一次清江。</text>
+</g>
+<g transform="translate(625 260)">
+ <path d="M0 40 Q228 0 445 30 L445 610 Q220 574 0 610 Z" fill="#FAF7EF"/>
+ <path d="M445 30 Q660 0 880 40 L880 610 Q658 574 445 610 Z" fill="#F7F3EA"/>
+ <path d="M445 34V606" stroke="#C8C0B2"/>
+ <g class="sans"><text x="40" y="92" fill="#2E7F86" font-size="12" font-weight="700" letter-spacing="2.4">ROUTE TRACE</text><text x="482" y="92" fill="#985448" font-size="12" font-weight="700" letter-spacing="2.4">ONE SENTENCE</text></g>
+ <path d="M48 188 C118 122 192 210 264 151 S358 141 400 178" fill="none" stroke="#A8CFCB" stroke-width="13" stroke-linecap="round" opacity=".4"/>
+ <path d="M48 188 C118 122 192 210 264 151 S358 141 400 178" fill="none" stroke="#2E7F86" stroke-width="2.5" stroke-linecap="round"/>
+ <circle cx="264" cy="151" r="8" fill="#F8F5EC" stroke="#985448" stroke-width="2"/>
+ <line x1="48" y1="260" x2="395" y2="260" stroke="#D7D0C3"/><line x1="48" y1="310" x2="395" y2="310" stroke="#D7D0C3"/><line x1="48" y1="360" x2="395" y2="360" stroke="#D7D0C3"/>
+ <text x="48" y="412" class="sans muted" font-size="13">可以只圈一个停留点，也可以整页留白。</text>
+ <g transform="translate(492 160)" fill="none" stroke="#CFC7B9"><line x1="0" y1="0" x2="330" y2="0"/><line x1="0" y1="64" x2="330" y2="64"/><line x1="0" y1="128" x2="330" y2="128"/></g>
+ <path d="M505 185 C552 149 594 208 643 177" fill="none" stroke="#985448" stroke-width="2.2" stroke-linecap="round"/>
+ <text x="492" y="392" class="serif ink" font-size="24">“今天最想记住的是 ________ ”</text>
+ <g transform="translate(492 450)"><rect width="250" height="92" rx="2" fill="none" stroke="#B9B1A4"/><text x="18" y="30" class="sans muted" font-size="11">夹入票据 / 一片纸 / 一张照片</text><path d="M18 58h155" stroke="#2E7F86" stroke-width="2"/><circle cx="188" cy="58" r="9" fill="none" stroke="#985448" stroke-width="2"/></g>
+</g>
+<g transform="translate(76 940)" class="sans"><text font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2.1">MEMORY RULE</text><text x="136" font-size="13" fill="#5F6662">路线可记录，但不转换成完成率；个人痕迹属于游客，不成为任务成绩。</text><text x="1448" font-size="11" text-anchor="end" fill="#858980">EDITABLE SVG / PRESENTATION DERIVATIVE</text></g>
+</svg>
