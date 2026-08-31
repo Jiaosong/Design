@@ -22,6 +22,7 @@ jobs:
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_freecad_operator_sweep.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/execute_freecad_operator.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_blender_operator_sweep.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/rerender_operator_diagnostics.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/compare_operator_semantics.py
           python3 -m json.tool 06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/operator_sweep.json >/dev/null
       - name: Install FreeCAD 1.1.3 and Blender 5.2
@@ -56,11 +57,15 @@ jobs:
           ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy"
           OUT="$GITHUB_WORKSPACE/out/OPERATOR_FAILURE"
           "$BLENDER" --background --python-exit-code 8 --python "$ROOT/run_blender_operator_sweep.py" -- --mode build --out "$OUT" --config "$ROOT/operator_sweep.json"
-          "$BLENDER" --background --python-exit-code 9 --python "$ROOT/run_blender_operator_sweep.py" -- --mode reopen --out "$OUT" --config "$ROOT/operator_sweep.json"
+          "$BLENDER" --background "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend" --python-exit-code 11 --python "$ROOT/rerender_operator_diagnostics.py" -- --out "$OUT"
+          "$BLENDER" --background "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend" --python-exit-code 9 --python "$ROOT/run_blender_operator_sweep.py" -- --mode reopen --out "$OUT" --config "$ROOT/operator_sweep.json"
           test -s "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend"
+          test -s "$OUT/BLENDER_OPERATOR_DIAGNOSTIC_READBACK.blend"
           test -s "$OUT/BLENDER_OPERATOR_RECEIPT.json"
           test -s "$OUT/BLENDER_REOPEN_RECEIPT.json"
           test -s "$OUT/BLENDER_OPERATOR_DIAGNOSTIC.png"
+          test -s "$OUT/BLENDER_BEVEL_DIAGNOSTIC.png"
+          test -s "$OUT/BLENDER_SOLIDIFY_DIAGNOSTIC.png"
       - name: Compare operator semantics
         run: |
           set -euo pipefail
