@@ -1,0 +1,20 @@
+{
+  "schema": "oleander.3d.same-source-control-rings.v1",
+  "units": "mm",
+  "axis": "X",
+  "role": "shared control architecture; these are control rings/poles, not interpolation constraints",
+  "design_intent": "asymmetric streamlined body with one dominant maximum section and tapered nose/tail",
+  "rings": [
+    {"x": -120.0, "radius": 0.0},
+    {"x": -105.0, "radius": 18.0},
+    {"x": -82.0, "radius": 37.0},
+    {"x": -50.0, "radius": 51.0},
+    {"x": -10.0, "radius": 56.0},
+    {"x": 32.0, "radius": 52.0},
+    {"x": 68.0, "radius": 40.0},
+    {"x": 98.0, "radius": 21.0},
+    {"x": 120.0, "radius": 0.0}
+  ],
+  "subd_radial_control_segments": 12,
+  "comparison_planes_x": [-105,-95,-85,-75,-65,-55,-45,-35,-25,-15,-5,5,15,25,35,45,55,65,75,85,95,105]
+}
