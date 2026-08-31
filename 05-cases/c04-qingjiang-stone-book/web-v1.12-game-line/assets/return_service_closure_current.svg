@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">清江回程冗余关系</title>
+  <desc id="desc">以景观、标识、纸本、人工服务与数字作为并行回程路径的概念关系图。只表达服务冗余与无手机仍可回程的设计原则，不声明现场位置、距离、容量或工程事实。</desc>
+  <defs>
+    <style>
+      .sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}
+      .serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}
+      .white{fill:#EEF3EF}.soft{fill:#9FB4AE}.water{fill:#83D5D3}.seal{fill:#C98A78}
+      .line{fill:none;stroke:#83D5D3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .ghost{fill:none;stroke:#A8BBB5;stroke-width:1.2;stroke-opacity:.28}
+    </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#061318"/><stop offset="1" stop-color="#0D252B"/></linearGradient>
+    <radialGradient id="glow" cx="72%" cy="48%" r="42%"><stop offset="0" stop-color="#2E7F86" stop-opacity=".22"/><stop offset="1" stop-color="#2E7F86" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <g class="sans">
+    <text x="86" y="88" font-size="15" font-weight="700" letter-spacing="3.5" class="water">RETURN / SERVICE REDUNDANCY</text>
+    <text x="86" y="153" font-size="17" class="soft">不把“回来”交给单一界面，也不把旅程变成完成任务。</text>
+  </g>
+
+  <g transform="translate(120 238)">
+    <path d="M54 342 C270 164 440 448 650 264 S1054 96 1332 270" class="ghost" stroke-width="36"/>
+    <path d="M54 342 C270 164 440 448 650 264 S1054 96 1332 270" class="line"/>
+    <path d="M1208 238 C1276 240 1316 251 1350 274" class="line" stroke-width="5"/>
+    <path d="M1335 254 L1355 276 L1326 281" class="line" stroke-width="5"/>
+
+    <g class="sans">
+      <g transform="translate(104 290)">
+        <circle r="15" fill="#061318" stroke="#83D5D3" stroke-width="3"/>
+        <text x="0" y="62" text-anchor="middle" font-size="13" font-weight="700" class="white">景观</text>
+        <text x="0" y="84" text-anchor="middle" font-size="10" class="soft">LANDSCAPE</text>
+      </g>
+      <g transform="translate(370 305)">
+        <circle r="15" fill="#061318" stroke="#83D5D3" stroke-width="3"/>
+        <text x="0" y="62" text-anchor="middle" font-size="13" font-weight="700" class="white">标识</text>
+        <text x="0" y="84" text-anchor="middle" font-size="10" class="soft">SIGNAGE</text>
+      </g>
+      <g transform="translate(650 264)">
+        <circle r="18" fill="#C98A78"/>
+        <text x="0" y="65" text-anchor="middle" font-size="13" font-weight="700" class="white">纸本</text>
+        <text x="0" y="87" text-anchor="middle" font-size="10" class="soft">PAPER</text>
+      </g>
+      <g transform="translate(940 174)">
+        <circle r="15" fill="#061318" stroke="#83D5D3" stroke-width="3"/>
+        <text x="0" y="62" text-anchor="middle" font-size="13" font-weight="700" class="white">人工服务</text>
+        <text x="0" y="84" text-anchor="middle" font-size="10" class="soft">HUMAN</text>
+      </g>
+      <g transform="translate(1210 238)">
+        <circle r="15" fill="#061318" stroke="#83D5D3" stroke-width="3"/>
+        <text x="0" y="62" text-anchor="middle" font-size="13" font-weight="700" class="white">数字</text>
+        <text x="0" y="84" text-anchor="middle" font-size="10" class="soft">DIGITAL</text>
+      </g>
+    </g>
+
+    <g transform="translate(718 350)" class="sans">
+      <rect x="0" y="0" width="390" height="116" rx="2" fill="#F1EEE5"/>
+      <text x="26" y="34" font-size="10" font-weight="800" letter-spacing="2.4" fill="#2E7F86">RETURN ALWAYS VISIBLE</text>
+      <text x="26" y="72" font-size="22" font-weight="700" fill="#17201E">手机关闭以后，回程仍然成立。</text>
+      <text x="26" y="96" font-size="11" fill="#68706C">任何一条数字路径失效，都不切断返回关系。</text>
+    </g>
+  </g>
+
+  <g class="serif">
+    <text x="86" y="742" font-size="78" font-weight="700" class="white">回来，不需要完成任何一印。</text>
+  </g>
+  <g class="sans">
+    <text x="88" y="792" font-size="15" class="soft">ROUTE / RETURN / REDUNDANCY · 概念服务关系，不提供现场定位或距离。</text>
+  </g>
+</svg>
