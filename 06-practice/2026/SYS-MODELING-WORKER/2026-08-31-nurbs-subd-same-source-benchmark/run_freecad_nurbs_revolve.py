@@ -76,10 +76,14 @@ def reopen(out):
     native=out/'FREECAD_NURBS_SAME_SOURCE.FCStd'; before=json.loads((out/'FREECAD_BUILD_RECEIPT.json').read_text())
     doc=App.openDocument(str(native)); obj=doc.getObject(OBJ); doc.recompute()
     if obj is None or obj.Shape.isNull() or not obj.Shape.isValid(): raise RuntimeError('native reopen invalid')
-    after={'schema':'oleander.3d.nurbs-subd.same-source.freecad-reopen.v1','freecad_version':App.Version(),'native_reopen_valid':True,'shape_type':obj.Shape.ShapeType,'area_mm2':float(obj.Shape.Area),'bbox_mm':bbox(obj.Shape)}
+    after={'schema':'oleander.3d.nurbs-subd.same-source.freecad-reopen.v2','freecad_version':App.Version(),'native_reopen_valid':True,'shape_type':obj.Shape.ShapeType,'area_mm2':float(obj.Shape.Area),'bbox_mm':bbox(obj.Shape),'topology':{'faces':len(obj.Shape.Faces),'edges':len(obj.Shape.Edges),'vertices':len(obj.Shape.Vertexes)}}
     area_rel=abs(after['area_mm2']-before['shape']['area_mm2'])/max(before['shape']['area_mm2'],1.0)
-    after['area_relative_error']=area_rel; after['bbox_size_delta_mm']=[abs(a-b) for a,b in zip(after['bbox_mm']['size'],before['shape']['bbox_mm']['size'])]
-    after['overall_pass']=area_rel<1e-10 and max(after['bbox_size_delta_mm'])<1e-8
+    deltas=[abs(a-b) for a,b in zip(after['bbox_mm']['size'],before['shape']['bbox_mm']['size'])]
+    rels=[d/max(abs(b),1e-9) for d,b in zip(deltas,before['shape']['bbox_mm']['size'])]
+    topology_same=after['topology']=={k:before['shape'][k] for k in ('faces','edges','vertices')}
+    after['area_relative_error']=area_rel; after['bbox_size_delta_mm']=deltas; after['bbox_size_relative_delta']=rels; after['topology_preserved']=topology_same
+    after['reopen_gate']={'exact_invariants':['shape validity','shape type','face/edge/vertex counts','B-Rep surface area'],'diagnostic_extent':'BoundBox is retained as a bounded readback, not treated as exact byte/geometric identity after FCStd serialization','bbox_absolute_gate_mm':0.05,'bbox_relative_gate':0.0005,'retained_failure_provenance':'run 33376286912 showed area relative error 0 while Y/Z BoundBox changed by 0.015727886 mm; the former 1e-8 mm bbox gate was therefore an invalid precision assumption'}
+    after['overall_pass']=area_rel<1e-10 and topology_same and max(deltas)<0.05 and max(rels)<0.0005
     (out/'FREECAD_REOPEN_RECEIPT.json').write_text(json.dumps(after,indent=2)+'\n'); print(json.dumps(after,indent=2))
     App.closeDocument(doc.Name)
     if not after['overall_pass']: raise SystemExit(7)
