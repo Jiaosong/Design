@@ -13,6 +13,7 @@
     <rect width="680" height="318" rx="3" class="paper"/>
     <text x="24" y="34" class="sans" font-size="12" font-weight="700" letter-spacing="2.2" fill="#2E7F86">01 / USE RELATION</text>
     <text x="24" y="72" class="serif ink" font-size="27" font-weight="700">短倚靠，不把路径变成停留场</text>
+    <text x="24" y="104" class="sans" font-size="11" font-weight="700" letter-spacing="1.1" fill="#985448">WALK → FATIGUE → STOP → LEAN → LOOK → CONTINUE / RETURN</text>
     <path d="M34 232 C158 205 270 242 382 212 S555 186 646 202" class="thin" opacity=".65"/>
     <path d="M42 258 H638" class="route"/>
     <path d="M420 209 H574" class="line" stroke-width="7"/>
