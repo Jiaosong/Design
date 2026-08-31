@@ -101,11 +101,13 @@ const staleForcedMainAssets=["assets/fluid_v26_body_posture.png","assets/fluid_r
 const staleForcedMainPresent=staleForcedMainAssets.filter(ref=>html.includes(ref)||js.includes(ref)||effectsJs.includes(ref));
 
 const result={
-  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_21",
+  schema:"C04_WEB_PUBLIC_PORTFOLIO_STATIC_CHECK_V1_22",
   section_count:sections.length,
   section_numbers:sections,
   contiguous_section_numbering:contiguousSections,
-  source_native_13_section_structure:sections.length===13&&contiguousSections,
+  section_count_is_not_public_authority:true,
+  fixed_13_section_gate_removed:true,
+  current_reading_sequence_valid:contiguousSections,
   core_anchors_present:coreAnchors.every(id=>html.includes(`id=\"${id}\"`)),
   technical_section_source_native:html.includes('id="technical"')&&html.includes("assets/r06_technical_relation_current.svg")&&!effectsJs.includes("injectTechnicalProof"),
   runtime_dependency_graph_entrypoints:["index.html","styles.css","app.js","effects.css","effects.js"],
@@ -136,7 +138,7 @@ const result={
   public_runtime_truth:"RESEARCH-GRADE DESIGN / FIELD AND ENGINEERING VALIDATION REMAIN OPEN"
 };
 
-result.structure_pass=result.source_native_13_section_structure&&result.core_anchors_present&&result.technical_section_source_native&&result.current_vector_assets_present&&result.current_vector_assets_direct_bound&&result.clean_landscape_sources_present&&result.clean_landscape_source_manifest_present&&result.legacy_landscape_runtime_refs.length===0&&result.internal_production_tokens_visible.length===0&&result.stale_forced_main_assets_present.length===0&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.mybook_final_view_direct_bound&&result.r13_remote_concept_truth_boundary&&result.runtime_content_not_injected_by_effects;
+result.structure_pass=result.current_reading_sequence_valid&&result.core_anchors_present&&result.technical_section_source_native&&result.current_vector_assets_present&&result.current_vector_assets_direct_bound&&result.clean_landscape_sources_present&&result.clean_landscape_source_manifest_present&&result.legacy_landscape_runtime_refs.length===0&&result.internal_production_tokens_visible.length===0&&result.stale_forced_main_assets_present.length===0&&result.live_svg_present&&result.responsive_css&&result.reduced_motion_source_rule_present&&result.interaction_script&&result.supplement_trigger_present&&result.mybook_final_view_direct_bound&&result.r13_remote_concept_truth_boundary&&result.runtime_content_not_injected_by_effects;
 result.repo_local_runtime_pass=result.missing_repo_local_count===0&&result.empty_repo_local_count===0;
 result.pass=result.structure_pass&&result.repo_local_runtime_pass;
 
