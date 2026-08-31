@@ -20,6 +20,7 @@ jobs:
           set -euo pipefail
           python3 -m py_compile \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_freecad_operator_sweep.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/execute_freecad_operator.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_blender_operator_sweep.py \
             06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/compare_operator_semantics.py
           python3 -m json.tool 06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/operator_sweep.json >/dev/null
@@ -46,7 +47,7 @@ jobs:
           set -euo pipefail
           ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy"
           OUT="$GITHUB_WORKSPACE/out/OPERATOR_FAILURE"; mkdir -p "$OUT"
-          OLEANDER_OUT="$OUT" OLEANDER_CONFIG="$ROOT/operator_sweep.json" "$FREECADCMD" "$ROOT/run_freecad_operator_sweep.py"
+          OLEANDER_OUT="$OUT" OLEANDER_CONFIG="$ROOT/operator_sweep.json" "$FREECADCMD" -P "$ROOT" "$ROOT/execute_freecad_operator.py"
           test -s "$OUT/FREECAD_OPERATOR_FAILURE_ANATOMY.FCStd"
           test -s "$OUT/FREECAD_OPERATOR_RECEIPT.json"
       - name: Execute Blender modifier operator sweep and reopen
