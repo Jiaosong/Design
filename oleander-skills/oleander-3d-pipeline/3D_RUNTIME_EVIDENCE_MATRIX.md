@@ -237,6 +237,52 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - Physical CMF Approval;
   - Design KEEP.
 
+## E09 — Same source controls do not collapse B-Spline/NURBS and Catmull-Clark into one surface
+
+- Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/`.
+- Workflow: `OLEANDER 3D NURBS vs SubD Same-Source Benchmark`.
+- Confirmed run: `33376553806` — SUCCESS; FreeCAD build/reopen, Blender build/reopen, evaluated comparison, bounded contract and artifact upload all passed.
+- Artifact: `9752141736`; ZIP digest `sha256:d233c9911715b452bd455edd9d087a69923053fab4c72f26d58ac1aa8a0a5733`.
+- Shared source: `source_controls.json`, SHA-256 `b4a64dd70d0e91b9f019ea01de56ead0c80bcd13f84b74a265624c8c1965ae09`.
+- Worker A:
+  - FreeCAD `1.1.3` / OpenCASCADE;
+  - degree-3 non-rational B-Spline profile from the nine shared poles, revolved 360 degrees into a valid B-Rep Face;
+  - native FCStd reopen valid; STEP derivative retained; evaluated mesh 2,510 vertices / 5,016 raw faces.
+- Worker B:
+  - Blender `5.2.0 LTS`;
+  - polygon radial cage from the same rings → unapplied Catmull-Clark Subdivision modifier;
+  - native `.blend` reopen valid;
+  - L2 evaluated 1,442 vertices / 1,440 polygons; L4 evaluated 23,042 vertices / 23,040 polygons.
+- Measured representation result:
+  - FreeCAD B-Spline/NURBS vs SubD L4 profile RMSE = `1.790459 mm`;
+  - SubD L2 vs L4 profile RMSE = `0.093447 mm`;
+  - FreeCAD vs SubD profile-curvature RMSE = `0.000688071 /mm`;
+  - FreeCAD evaluated profile vs source control-radius RMS delta = `1.868059 mm`;
+  - SubD L4 evaluated profile vs source control-radius RMS delta = `3.304436 mm`;
+  - FreeCAD bbox ≈ `240.000 × 109.016 × 109.016 mm`;
+  - SubD L4 bbox ≈ `229.843 × 104.158 × 104.158 mm`;
+  - length relative delta ≈ `4.232%`; diameter relative delta ≈ `4.456%`;
+  - max cross-section noncircularity ≈ `0.293%`.
+- Retained failure provenance:
+  - run `33376286912` built/saved/exported the B-Spline successfully but failed an invalid reopen assumption: FCStd build→reopen retained B-Rep area exactly while Y/Z BoundBox changed by `0.015727886 mm`;
+  - the former `1e-8 mm` bbox Gate was rejected as an over-precise proxy for geometry identity;
+  - v2 keeps validity/type/topology/area as exact invariants and bbox as a bounded diagnostic (`<0.05 mm`, relative `<0.0005`). Representation construction and cross-representation thresholds were not relaxed.
+- Artifact Review:
+  - same-camera renders visibly support the measured relation: FreeCAD B-Spline/NURBS is longer/more voluminous, while Catmull-Clark is globally contracted but preserves the same streamlined first-read;
+  - lighting is too dark for Zebra/highlight-flow/Class-A approval, so the images are **KEEP SUPPORT / REPRESENTATION EVIDENCE**, not professional surface-quality PASS.
+- Production consequence:
+  - `SAME CONTROL ARCHITECTURE ≠ SAME EVALUATED / LIMIT SURFACE`;
+  - `CONTROL POLE / RING ≠ REQUIRED SURFACE INTERPOLATION POINT` unless interpolation is explicitly part of the representation contract;
+  - `HIGHER SUBD EVALUATION LEVEL ≠ NURBS CONVERSION`: here L2→L4 sampling change (`0.093 mm` profile RMSE) is far smaller than the NURBS↔SubD representation delta (`1.790 mm`);
+  - compare cross-representation claims on evaluated sections/curvature/silhouette and native reopen, not on similar UI vocabulary such as control points or smooth surfaces.
+- HOLD:
+  - Rhino 8 native `.3dm` NURBS/SubD parity;
+  - Rhino Zebra/EMap/CurvatureGraph/MatchSrf and G2/G3 Class-A qualification;
+  - Houdini procedural parity;
+  - aerodynamic/CFD performance;
+  - manufacturing/engineering truth;
+  - Design KEEP.
+
 ## Routing rules promoted only within tested bounds
 
 1. `INSTANCE COMPONENT ≠ MESH COMPONENT ≠ STATIC EXPORT`.
@@ -250,6 +296,7 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 9. `DIAGNOSTIC RIG NAME ≠ DIAGNOSTIC SEPARATION`; Broad/Strip/Grazing labels are not evidence unless the actual outputs demonstrate distinct diagnostic pressure.
 10. `WRITTEN ARTIFACT ≠ IN-MEMORY BUFFER`; when a runtime proves one carrier unreliable, retain the failure and move only the supported measurement to the applicable carrier instead of silently relaxing thresholds.
 11. `REPEATABLE METRICS ≠ BYTE-DETERMINISTIC RENDER`; report the observed reproducibility level explicitly.
+12. `SAME CONTROL ARCHITECTURE ≠ SAME EVALUATED SURFACE`; when comparing NURBS/B-Spline, SubD or other representation families, separate source controls, evaluator, sampling density and evaluated geometry, and never treat subdivision level as representation conversion.
 
 ## Maturity boundary
 
