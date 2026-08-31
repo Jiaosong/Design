@@ -67,6 +67,8 @@ jobs:
           test -s "$OUT/BLENDER_SUBD_DIAGNOSTIC.png"
           test -s "$OUT/FREECAD_NURBS_DIAGNOSTIC.png"
       - name: Compare evaluated representations
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
           ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark"
@@ -79,7 +81,27 @@ jobs:
             --freecad-receipt "$OUT/FREECAD_BUILD_RECEIPT.json" \
             --blender-receipt "$OUT/BLENDER_BUILD_RECEIPT.json" \
             --out "$OUT"
-          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          git rev-parse HEAD > "$OUT/EXECUTED_CHECKOUT_SHA.txt"
+          if [ -n "${PR_HEAD_SHA:-}" ]; then
+            printf '%s\n' "$PR_HEAD_SHA" > "$OUT/PR_HEAD_SHA.txt"
+          else
+            git rev-parse HEAD > "$OUT/PR_HEAD_SHA.txt"
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/NURBS_SUBD')
+          executed=(out/'EXECUTED_CHECKOUT_SHA.txt').read_text().strip()
+          pr_head=(out/'PR_HEAD_SHA.txt').read_text().strip()
+          payload={
+              'schema':'oleander.execution-identity.v1',
+              'executed_checkout_sha':executed,
+              'pr_head_sha':pr_head,
+              'identity_note':'pull_request workflows may execute a synthetic merge ref; executed checkout identity and PR head identity are intentionally recorded separately'
+          }
+          (out/'EXECUTION_IDENTITY.json').write_text(json.dumps(payload,indent=2)+'\n')
+          print(json.dumps(payload,indent=2))
+          PY
       - name: Validate bounded representation contract
         run: |
           set -euo pipefail
@@ -90,13 +112,17 @@ jobs:
           f=json.loads((out/'FREECAD_REOPEN_RECEIPT.json').read_text())
           b=json.loads((out/'BLENDER_REOPEN_RECEIPT.json').read_text())
           c=json.loads((out/'COMPARISON_RECEIPT.json').read_text())
+          i=json.loads((out/'EXECUTION_IDENTITY.json').read_text())
           assert f['overall_pass'] is True
+          assert f['reopen_contract']['threshold_authority'].startswith('NONE')
+          assert f['reopen_contract']['acceptance_thresholds']=='NOT USED'
           assert b['native_reopen_valid'] is True
           assert c['overall_pass'] is True, json.dumps(c,indent=2)
           assert c['contract']['representations_are_not_numerically_identical'] is True
           assert c['contract']['subd_sampling_converges'] is True
           assert c['contract']['control_points_are_not_assumed_surface_points'] is True
-          print(json.dumps({'same_source_cross_representation':'PASS','metrics':c['metrics']},indent=2))
+          assert len(i['executed_checkout_sha'])==40 and len(i['pr_head_sha'])==40
+          print(json.dumps({'same_source_cross_representation':'PASS','execution_identity':i,'freecad_reopen_contract':f['reopen_contract'],'metrics':c['metrics']},indent=2))
           PY
       - name: Hash evidence
         if: always()
