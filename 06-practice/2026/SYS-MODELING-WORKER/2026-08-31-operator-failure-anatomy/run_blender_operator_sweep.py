@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import math
+import sys
 from pathlib import Path
 
 import bpy
@@ -71,11 +72,6 @@ def nearest_corner_clearance(obj, me, dims):
 
 
 def mesh_topology(me):
-    edge_face_count = [0] * len(me.edges)
-    for poly in me.polygons:
-        for ek in poly.edge_keys:
-            # Build key lookup lazily below; this branch replaced by direct dictionary.
-            pass
     edge_lookup = {tuple(sorted((e.vertices[0], e.vertices[1]))): i for i, e in enumerate(me.edges)}
     counts = [0] * len(me.edges)
     for poly in me.polygons:
@@ -204,7 +200,6 @@ def add_diag_solidify(name, loc, apply_scale, requested, scale):
 
 
 def render_diagnostic(out, cfg):
-    # Rebuild a compact four-object scene for actual-preview review.
     for obj in list(bpy.data.objects):
         bpy.data.objects.remove(obj, do_unlink=True)
     add_diag_box("BEVEL_SAFE", (-25, 12, 0), 3.0, True)
@@ -212,7 +207,6 @@ def render_diagnostic(out, cfg):
     sc = tuple(float(v) for v in cfg["solidify_unapplied_scale"])
     a = add_diag_solidify("SOLIDIFY_UNAPPLIED", (-20,-20,4), False, float(cfg["solidify_requested_thickness"]), sc)
     b = add_diag_solidify("SOLIDIFY_APPLIED", (20,-20,4), True, float(cfg["solidify_requested_thickness"]), sc)
-    # Tilt planes so their world thickness is visible.
     a.rotation_euler = (math.radians(58), 0, math.radians(-8))
     b.rotation_euler = (math.radians(58), 0, math.radians(8))
 
@@ -323,7 +317,8 @@ def main():
     parser.add_argument('--mode', choices=['build','reopen'], default='build')
     parser.add_argument('--out', required=True)
     parser.add_argument('--config')
-    args = parser.parse_args()
+    script_argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
+    args = parser.parse_args(script_argv)
     out = Path(args.out).resolve(); out.mkdir(parents=True, exist_ok=True)
     if args.mode == 'build':
         if not args.config:
