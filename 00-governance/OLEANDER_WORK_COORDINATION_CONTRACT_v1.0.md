@@ -2,7 +2,7 @@
 
 Status: CURRENT ACTIVE GOVERNANCE CONTRACT / MAIN-MERGED / CI + MAIN READBACK VERIFIED.
 Evidence: PR #400 → merge commit `1d374d6d8ac1ac468c64758c0cd3b79c01ae8c2c`; AI Governance Evals run #3162 / run ID `33093638477` = `SUCCESS`; main path reopened after merge.
-Revision note: 2026-08-28 adds Training Mode, outcome distillation, anti-repetition and track-specific training focus after review of real Practice evidence. The revision does not create a new Skill, Gate or project authority.
+Revision note: 2026-08-29 aligns KNOWLEDGE Cleanup exit criteria with `OLEANDER Knowledge Retrieval & Lifecycle｜知识库机制 v1.0`; this consumes the existing retrieval mechanism and does not create a second taxonomy, registry, Skill, Gate, or project authority. 2026-08-28 added Training Mode, outcome distillation, anti-repetition and track-specific training focus after review of real Practice evidence.
 Role: cross-project coordination contract; not a new Design Method, Skill, Gate, or project Source Authority.
 
 ## Purpose
@@ -95,26 +95,39 @@ The card is a compact control surface, not a replacement for full project state.
 
 `CLEANUP FIRST` is a phase, not the permanent mission of KNOWLEDGE.
 
+This section consumes `OLEANDER Knowledge Retrieval & Lifecycle｜知识库机制 v1.0`; that Notion mechanism remains the semantic authority for Retrieval Space, Search Eligibility, Trust, Freshness, Canonical Collision and knowledge-lifecycle behavior. This contract only defines when KNOWLEDGE may count an inventoried Current-scope page as cleanup-closed. It must not create a parallel retrieval rule set.
+
+`ACTIVE ≠ VERIFIED ≠ E4 ≠ CURRENT RETRIEVAL`. A page must not count as `CLEAN` merely because its content, Governance state or Evidence state looks correct while Retrieval / Trust / Freshness / migration relations remain unresolved.
+
 For a page to count as `CLEAN`, all applicable checks must be resolved:
 
 1. Content Identity known.
-2. Canonical parent/path known.
-3. Knowledge Role known.
-4. Authority State known.
+2. Canonical ID is unambiguous; Canonical parent/path known; Current hierarchy uses `Canonical Parent / Canonical Children`, not legacy parent/child fields.
+3. Knowledge Role and valid Domain / L0–L7 position known; Application Mapping and Knowledge Type do not substitute for taxonomy depth.
+4. Governance / Authority State known.
 5. Evidence State known.
-6. Current / Support / Practice / Provenance / Legacy / Superseded relationship known.
-7. Duplicate relationship resolved or explicitly HOLD.
-8. Prompt/chat/runtime/CI/AI-summary pollution removed or re-homed without information loss.
-9. Broken references and orphan relations resolved or explicitly OPEN.
-10. Human Professional Voice readback completed.
+6. `Retrieval Space` explicitly resolved as `CURRENT / SUPPORT / PROVENANCE / EXCLUDED` according to the Current retrieval mechanism.
+7. `Search Eligibility` explicitly resolved as `DEFAULT / SCOPED / HISTORY_ONLY / BLOCKED` and does not conflict with Retrieval Space.
+8. `Trust State` explicitly resolved as `VERIFIED / UNVERIFIED / UNKNOWN`; `ACTIVE` or high Evidence does not auto-grant VERIFIED.
+9. Freshness resolved: stable knowledge may be non-expiring; time-sensitive standards, software, prices, platform capability, regulation or supply claims have current verification/readback and an applicable revalidation boundary.
+10. Current / Support / Practice / Provenance / Legacy / Superseded and redirect/supersession relationships are known; Current and Provenance do not compete in the same default retrieval pool.
+11. Duplicate relationship and Canonical Collision resolved or explicitly HOLD; one Canonical ID must not have two `ACTIVE + CURRENT/DEFAULT` carriers.
+12. Migration Closure resolved: legacy hierarchy fields, old taxonomy residue, stale Current-like labels and deprecated locations do not drive Current retrieval or hierarchy; unresolved migration drift is explicitly OPEN/HOLD.
+13. Relation Closure resolved: Canonical Parent/Children, Domain, Source, Method, Project and supersession relations point to the correct semantic owners; generic `相关笔记` or Application Mapping does not replace hierarchy.
+14. Prompt/chat/runtime/CI/AI-summary pollution removed or re-homed without information loss.
+15. Broken references and orphan relations resolved or explicitly OPEN.
+16. Human Professional Voice readback completed where applicable.
+17. Actual page fetch/readback agrees with database properties and Current relation state; index/listing metadata alone is not sufficient closure evidence.
+
+A page with clean prose but unresolved migration or relation integrity is recorded as `CONTENT_CLEAN / MIGRATION_OPEN`, `CONTENT_CLEAN / RELATION_OPEN`, or the applicable HOLD state; it is not counted as fully `CLEAN`.
 
 Phase transition:
 
 - `<70%` of reviewed Current-scope pages clean → `CLEANUP_HEAVY`.
 - `70–90%` → `BALANCED`.
-- `>90%` with no unresolved Authority blocker in Current-scope pages → `KNOWLEDGE_HEAVY`.
+- `>90%` with no unresolved Authority, Canonical Collision, Retrieval, migration or relation blocker in the inventoried Current-scope denominator → `KNOWLEDGE_HEAVY`.
 
-Percentages apply only to pages actually inventoried into the Current cleanup scope; do not fabricate a denominator from the whole workspace.
+Percentages apply only to pages actually inventoried into the Current cleanup scope; do not fabricate a denominator from the whole workspace, and do not count unreviewed historical Notes as clean by inference.
 
 ## 7. External Skill / Knowledge digestion
 
