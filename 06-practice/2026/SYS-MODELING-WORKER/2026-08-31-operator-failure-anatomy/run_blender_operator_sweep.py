@@ -243,7 +243,7 @@ def render_diagnostic(out, cfg):
     bpy.context.scene.camera = cam
 
     scene = bpy.context.scene
-    scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    scene.render.engine = 'BLENDER_EEVEE'
     scene.render.resolution_x = 720
     scene.render.resolution_y = 520
     scene.render.resolution_percentage = 100
