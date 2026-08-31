@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
   <title id="title">R06 河谷观察注意力序列</title>
-  <desc id="desc">使用权威 R06 清江照片制作的当前可编辑展示衍生图。三个连续画面分别表达先看完整景观、主动进入可选关系、解释后退回景观；不新增空间测量、地形、设施或工程事实。</desc>
+  <desc id="desc">使用当前公开清江景观影像作为远程展示载体，三个连续画面分别表达先看完整景观、主动进入可选关系、解释后退回景观。该影像不作为 R06 现场照片、定位、测量、地形、设施或工程事实。</desc>
   <defs>
     <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#071513" stop-opacity="0.72"/>
@@ -16,25 +16,23 @@
   </defs>
 
   <rect width="1600" height="1000" fill="#071513"/>
-  <image href="r06_qingjiang.jpg" xlink:href="r06_qingjiang.jpg" x="0" y="0" width="1600" height="1000" preserveAspectRatio="xMidYMid slice" opacity="0.18"/>
+  <image href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" xlink:href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" x="0" y="0" width="1600" height="1000" preserveAspectRatio="xMidYMid slice" opacity="0.18"/>
   <rect width="1600" height="300" fill="url(#topFade)"/>
   <rect y="700" width="1600" height="300" fill="url(#bottomFade)"/>
 
   <g font-family="Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" fill="#f4f1e8">
     <text x="88" y="92" font-size="20" letter-spacing="5" opacity="0.68">R06 / ATTENTION SEQUENCE</text>
     <text x="88" y="160" font-size="48" font-weight="650">先让景观完整成立，再允许解释出现。</text>
-    <text x="88" y="204" font-size="20" opacity="0.70">同一真实场景，三种阅读状态；关系层只在中间状态出现。</text>
+    <text x="88" y="204" font-size="20" opacity="0.70">同一景观载体，三种阅读状态；关系层只在中间状态出现。</text>
   </g>
 
-  <!-- 01 LOOK: uninterrupted landscape -->
   <g clip-path="url(#p1)">
-    <image href="r06_qingjiang.jpg" xlink:href="r06_qingjiang.jpg" x="88" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
+    <image href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" xlink:href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" x="88" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
     <rect x="88" y="240" width="448" height="520" fill="url(#bottomFade)" opacity="0.44"/>
   </g>
 
-  <!-- 02 REVEAL: same landscape, optional relation layer only -->
   <g clip-path="url(#p2)">
-    <image href="r06_qingjiang.jpg" xlink:href="r06_qingjiang.jpg" x="576" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
+    <image href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" xlink:href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" x="576" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
     <rect x="576" y="240" width="448" height="520" fill="#071513" opacity="0.18"/>
     <g fill="none" stroke="#f4f1e8" stroke-width="2" stroke-opacity="0.84">
       <path d="M650 602 C728 555 791 548 854 560 C910 571 948 552 983 520"/>
@@ -48,9 +46,8 @@
     </g>
   </g>
 
-  <!-- 03 RETURN: relation layer removed again -->
   <g clip-path="url(#p3)">
-    <image href="r06_qingjiang.jpg" xlink:href="r06_qingjiang.jpg" x="1064" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
+    <image href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" xlink:href="https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg" x="1064" y="240" width="448" height="520" preserveAspectRatio="xMidYMid slice"/>
     <rect x="1064" y="240" width="448" height="520" fill="url(#bottomFade)" opacity="0.28"/>
   </g>
 
@@ -85,5 +82,5 @@
     <path d="M1044 492 L1054 500 L1044 508"/>
   </g>
 
-  <text x="1512" y="944" text-anchor="end" font-family="Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#f4f1e8" opacity="0.46">PRESENTATION DERIVATIVE / NO NEW SITE FACT</text>
+  <text x="1512" y="944" text-anchor="end" font-family="Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#f4f1e8" opacity="0.46">REMOTE PRESENTATION REFERENCE / NOT R06 SITE PHOTO / NO NEW SITE FACT</text>
 </svg>
