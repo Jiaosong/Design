@@ -1,15 +1,15 @@
 {
   "schema":"OLEANDER_BLENDER_RUNTIME_STAGE3_RELATION_APPLY_RECEIPT_v0.1",
   "runtime_id":"oleander-blender-runtime","runtime_version":"0.2.0","validation_state":"PASS","validation_scope":"STAGE3_RELATION_APPLY",
-  "source_fingerprint_sha256":"620f98c2938431e6797d8ea6c0acf34d7c27cd6ce3ee8c84b5427ecc4ac2a997",
-  "tested_branch_head":"b9d970273a3c4b2d1fe1bf111f821acbea6a6ee3","tested_pr_merge_commit":"fafe06e96726eb1de21ac802f470e5a0ab601482","repository":"Jiaosong/Design","pull_request":470,
-  "workflow":{"name":"OLEANDER Blender Runtime 5.1","run_id":33513935490,"job_id":99876090791,"conclusion":"success"},
+  "source_fingerprint_sha256":"b181cd16dfcf4411e5e1043d89069e70d135a4935c4f126819f5cd95a41ae353",
+  "tested_branch_head":"09b458b5e8749b50bf2bb5ab49350b6e619ba6af","tested_pr_merge_commit":"b26856c97d34dcfd58f1d22491054b83c2aadd50","repository":"Jiaosong/Design","pull_request":470,
+  "workflow":{"name":"OLEANDER Blender Runtime 5.1","run_id":33517896754,"job_id":99889465073,"conclusion":"success"},
   "host":{"os":"Ubuntu 24.04.4 LTS","runner_image":"ubuntu-24.04","blender_version":"5.1.2","blender_build_hash":"ec6e62d40fa9","blender_archive_sha256":"aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb","checksum_manifest_result":"PASS"},
-  "extension_package":{"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":48536,"sha256":"886d1767c4b8df82e641bffc0d45d38ae46d773e0311b9cae0e5f0f17060cb2f","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
+  "extension_package":{"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":53135,"sha256":"aa09385257cdbf936b7dc0382348a995684fb8514037736b61f909a02c078928","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
   "runtime_checks":["axis_offset_one_shot_apply","axis_offset_preserves_orthogonal_world_coordinates","axis_offset_restores_relation_pass","origin_coincident_one_shot_apply","origin_distance_pass_reference_capture","origin_distance_reference_direction_provenance","origin_distance_one_shot_restore","origin_distance_restores_captured_direction","relation_apply_solver_claim_false","relation_apply_revision","relation_apply_downstream_stale_propagation","relation_apply_event_log","uncaptured_distance_apply_expected_failure","uncaptured_distance_failure_no_geometry_mutation","ambiguous_distance_direction_expected_failure","axis_parallel_multisolution_expected_failure","axis_parallel_failure_no_rotation_mutation","external_transform_authority_expected_failure","external_authority_failure_no_transform_mutation","missing_relation_apply_expected_failure","relation_apply_reference_save_reopen_persistence","relation_apply_revision_save_reopen_persistence","relation_apply_event_save_reopen_persistence"],
   "expected_failure_cases":{"uncaptured_distance_direction":"PASS","ambiguous_distance_direction":"PASS","axis_parallel_multisolution":"PASS","external_transform_authority":"PASS","missing_relation_id":"PASS"},
   "stage2_regression_in_same_job":"PASS","stage3_direct_regression_in_same_job":"PASS","stage3_feature_stack_regression_in_same_job":"PASS","stage3_feature_editing_regression_in_same_job":"PASS","stage3_relation_regression_in_same_job":"PASS","runtime_result":"PASS",
   "non_claims":["constraint_solver","iterative_solver","multi_relation_solver","solver_backed_sketch_constraints","cad_brep","feature_solver","class_a_surface","field_truth","engineering_approval","manufacturing_release","constructability","design_quality"],
   "invalidation_rule":"Material changes to governed add-on source or validate_stage3_relation_apply.py require a new real-Blender Relation Apply receipt.",
-  "authority_note":"Deterministic one-shot translation correction only. This receipt does not prove iterative/multi-relation solving or CAD constraint authority."
+  "authority_note":"Deterministic one-shot translation restoration only. Multi-solution rotation and external transform authority remain explicit failure gates; no iterative solver authority is created."
 }
