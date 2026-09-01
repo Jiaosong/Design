@@ -7,6 +7,11 @@ def _mm_to_scene_units(context, value_mm):
     return (value_mm / 1000.0) / scale_length
 
 
+def _scene_units_to_mm(context, value_scene):
+    scale_length = context.scene.unit_settings.scale_length or 1.0
+    return value_scene * scale_length * 1000.0
+
+
 class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
     """Set active mesh dimensions from millimetres using the scene unit scale."""
 
@@ -21,6 +26,13 @@ class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         return context.active_object is not None and context.active_object.type == "MESH"
+
+    def invoke(self, context, event):
+        obj = context.active_object
+        self.x_mm = _scene_units_to_mm(context, obj.dimensions.x)
+        self.y_mm = _scene_units_to_mm(context, obj.dimensions.y)
+        self.z_mm = _scene_units_to_mm(context, obj.dimensions.z)
+        return context.window_manager.invoke_props_dialog(self)
 
     def execute(self, context):
         obj = context.active_object
@@ -51,6 +63,9 @@ class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         return context.active_object is not None
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self)
 
     def execute(self, context):
         source = context.active_object
