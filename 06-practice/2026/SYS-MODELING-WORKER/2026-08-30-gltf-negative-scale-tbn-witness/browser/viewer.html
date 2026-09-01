@@ -1,8 +1,190 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OLEANDER Negative Scale TBN Witness</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#202328}canvas{display:block}</style><script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script></head><body><script type="module">
-import * as THREE from 'three';import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x202328);const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.01,100);camera.position.set(0,-4.2,3.2);camera.lookAt(0,0,0);const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(1);renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;document.body.appendChild(renderer.domElement);scene.add(new THREE.HemisphereLight(0xffffff,0x30343a,1.3));const key=new THREE.DirectionalLight(0xffffff,2.4);key.position.set(4,-4,6);scene.add(key);
-const rt={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},webgl:{}};window.__OLEANDER_NEG_SCALE_RUNTIME__=rt;
-const vec3=(a,i)=>[a.getX(i),a.getY(i),a.getZ(i)];
-function dirWithMatrix(a,i,m){const v=new THREE.Vector3(a.getX(i),a.getY(i),a.getZ(i));return v.applyMatrix3(m).normalize().toArray().map(Number)}
-new GLTFLoader().load('./assets/NEGATIVE_SCALE_TBN_WITNESS.glb',g=>{scene.add(g.scene);g.scene.updateMatrixWorld(true);g.scene.traverse(o=>{if(!o.isMesh||!['TBN_POS_SCALE','TBN_NEG_SCALE'].includes(o.name))return;const n=o.geometry.attributes.normal,t=o.geometry.attributes.tangent,uv=o.geometry.attributes.uv;const normalM=new THREE.Matrix3().getNormalMatrix(o.matrixWorld);const linearM=new THREE.Matrix3().setFromMatrix4(o.matrixWorld);const worldNormals=[],worldTangents=[],signs=[];if(n)for(let i=0;i<n.count;i++)worldNormals.push(dirWithMatrix(n,i,normalM));if(t)for(let i=0;i<t.count;i++){worldTangents.push(dirWithMatrix(t,i,linearM));signs.push(t.getW(i));}rt.objects[o.name]={normalPresent:!!n,tangentPresent:!!t,uvPresent:!!uv,vertexCount:o.geometry.attributes.position?.count||0,worldNormals,worldTangents,tangentW:signs,matrixWorld:o.matrixWorld.toArray().map(Number),matrixWorldDeterminant:o.matrixWorld.determinant(),material:{type:o.material?.type||null,normalMap:!!o.material?.normalMap,normalMapName:o.material?.normalMap?.name||null}};});const gl=renderer.getContext();rt.webgl={version:gl.getParameter(gl.VERSION),vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER)};renderer.render(scene,camera);rt.ready=true;},undefined,e=>rt.error=String(e?.message||e));
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLEANDER Negative Scale TBN Witness</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#202328}
+canvas{display:block}
+#diag{position:fixed;left:12px;bottom:12px;width:256px;height:128px;border:1px solid rgba(255,255,255,.25);image-rendering:pixelated;background:#000}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="diag" width="128" height="64"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x202328);
+const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.01,100);
+camera.position.set(0,-4.2,3.2);
+camera.lookAt(0,0,0);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(1);
+renderer.setSize(innerWidth,innerHeight);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.NoToneMapping;
+document.body.insertBefore(renderer.domElement,document.getElementById('diag'));
+scene.add(new THREE.HemisphereLight(0xffffff,0x30343a,1.3));
+const key=new THREE.DirectionalLight(0xffffff,2.4);
+key.position.set(4,-4,6);
+scene.add(key);
+
+const rt={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},webgl:{},diagnostics:[]};
+window.__OLEANDER_NEG_SCALE_RUNTIME__=rt;
+window.addEventListener('error',e=>{rt.diagnostics.push(`window-error: ${e.message}`);if(!rt.ready)rt.error=String(e.message||e.error||'window error');});
+window.addEventListener('unhandledrejection',e=>{rt.diagnostics.push(`unhandled-rejection: ${e.reason}`);if(!rt.ready)rt.error=String(e.reason?.message||e.reason||'unhandled rejection');});
+
+function dirWithMatrix(a,i,m){
+  const v=new THREE.Vector3(a.getX(i),a.getY(i),a.getZ(i));
+  return v.applyMatrix3(m).normalize().toArray().map(Number);
+}
+
+const target=new THREE.WebGLRenderTarget(64,64,{format:THREE.RGBAFormat,type:THREE.UnsignedByteType,depthBuffer:false,stencilBuffer:false});
+target.texture.colorSpace=THREE.NoColorSpace;
+target.texture.generateMipmaps=false;
+target.texture.minFilter=THREE.NearestFilter;
+target.texture.magFilter=THREE.NearestFilter;
+const diagCamera=new THREE.Camera();
+const vs=`
+attribute vec4 tangent;
+uniform float uDetSign;
+varying vec2 vUv;
+varying vec3 vT;
+varying vec3 vN;
+varying float vEffectiveW;
+void main(){
+  vUv=uv;
+  vT=normalize(mat3(modelMatrix)*tangent.xyz);
+  vN=normalize(normalMatrix*normal);
+  vEffectiveW=tangent.w*uDetSign;
+  vec2 p=uv*2.0-1.0;
+  gl_Position=vec4(p,0.0,1.0);
+}`;
+const fs=`
+uniform sampler2D normalMap;
+varying vec2 vUv;
+varying vec3 vT;
+varying vec3 vN;
+varying float vEffectiveW;
+void main(){
+  vec3 T=normalize(vT);
+  vec3 N=normalize(vN);
+  vec3 B=normalize(cross(N,T))*sign(vEffectiveW);
+  vec3 q=normalize(texture2D(normalMap,vUv).xyz*2.0-1.0);
+  vec3 P=normalize(T*q.x+B*q.y+N*q.z);
+  gl_FragColor=vec4(P*0.5+0.5,1.0);
+}`;
+
+function renderFragmentDiagnostic(mesh){
+  const tex=mesh.material?.normalMap;
+  if(!tex)throw new Error(`normalMap missing ${mesh.name}`);
+  if(!mesh.geometry?.attributes?.tangent)throw new Error(`tangent attribute missing ${mesh.name}`);
+  if(!mesh.geometry?.attributes?.uv)throw new Error(`uv attribute missing ${mesh.name}`);
+  if(!mesh.geometry?.attributes?.normal)throw new Error(`normal attribute missing ${mesh.name}`);
+  tex.colorSpace=THREE.NoColorSpace;
+  tex.minFilter=THREE.NearestFilter;
+  tex.magFilter=THREE.NearestFilter;
+  tex.generateMipmaps=false;
+  tex.needsUpdate=true;
+  mesh.updateMatrixWorld(true);
+  const det=mesh.matrixWorld.determinant();
+  const detSign=det<0?-1:1;
+  const mat=new THREE.ShaderMaterial({
+    uniforms:{normalMap:{value:tex},uDetSign:{value:detSign}},
+    vertexShader:vs,
+    fragmentShader:fs,
+    toneMapped:false,
+    depthTest:false,
+    depthWrite:false,
+    side:THREE.DoubleSide
+  });
+  const clone=new THREE.Mesh(mesh.geometry,mat);
+  clone.matrixAutoUpdate=false;
+  clone.matrix.copy(mesh.matrixWorld);
+  clone.matrixWorld.copy(mesh.matrixWorld);
+  const diagScene=new THREE.Scene();
+  diagScene.add(clone);
+  renderer.setRenderTarget(target);
+  renderer.setClearColor(0x000000,1);
+  renderer.clear(true,true,true);
+  renderer.render(diagScene,diagCamera);
+  const center=new Uint8Array(4);
+  renderer.readRenderTargetPixels(target,32,32,1,1,center);
+  const frame=new Uint8Array(64*64*4);
+  renderer.readRenderTargetPixels(target,0,0,64,64,frame);
+  renderer.setRenderTarget(null);
+  mat.dispose();
+  return {
+    determinant:det,
+    determinantSign:detSign,
+    centerRGBA:Array.from(center,Number),
+    frameRGBA:Array.from(frame,Number),
+    normalMapName:tex.name||null,
+    normalMapColorSpace:tex.colorSpace||null
+  };
+}
+
+new GLTFLoader().load('./assets/NEGATIVE_SCALE_TBN_WITNESS.glb',g=>{
+  try{
+    scene.add(g.scene);
+    g.scene.updateMatrixWorld(true);
+    const found={};
+    g.scene.traverse(o=>{if(o.isMesh&&['TBN_POS_SCALE','TBN_NEG_SCALE'].includes(o.name))found[o.name]=o;});
+    for(const name of ['TBN_POS_SCALE','TBN_NEG_SCALE']){
+      const o=found[name];
+      if(!o)throw new Error(`mesh missing ${name}`);
+      const n=o.geometry.attributes.normal,t=o.geometry.attributes.tangent,uv=o.geometry.attributes.uv;
+      const normalM=new THREE.Matrix3().getNormalMatrix(o.matrixWorld);
+      const linearM=new THREE.Matrix3().setFromMatrix4(o.matrixWorld);
+      const worldNormals=[],worldTangents=[],signs=[];
+      if(n)for(let i=0;i<n.count;i++)worldNormals.push(dirWithMatrix(n,i,normalM));
+      if(t)for(let i=0;i<t.count;i++){
+        worldTangents.push(dirWithMatrix(t,i,linearM));
+        signs.push(t.getW(i));
+      }
+      rt.objects[name]={
+        normalPresent:!!n,
+        tangentPresent:!!t,
+        uvPresent:!!uv,
+        vertexCount:o.geometry.attributes.position?.count||0,
+        worldNormals,
+        worldTangents,
+        tangentW:signs,
+        matrixWorld:o.matrixWorld.toArray().map(Number),
+        matrixWorldDeterminant:o.matrixWorld.determinant(),
+        material:{type:o.material?.type||null,normalMap:!!o.material?.normalMap,normalMapName:o.material?.normalMap?.name||null},
+        fragment:renderFragmentDiagnostic(o)
+      };
+    }
+    const gl=renderer.getContext();
+    rt.webgl={version:gl.getParameter(gl.VERSION),vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER)};
+    renderer.setClearColor(0x202328,1);
+    renderer.render(scene,camera);
+
+    const preview=new Uint8ClampedArray(128*64*4);
+    const left=rt.objects.TBN_POS_SCALE.fragment.frameRGBA;
+    const right=rt.objects.TBN_NEG_SCALE.fragment.frameRGBA;
+    for(let y=0;y<64;y++)for(let x=0;x<64;x++)for(let c=0;c<4;c++){
+      preview[(y*128+x)*4+c]=left[(y*64+x)*4+c];
+      preview[(y*128+x+64)*4+c]=right[(y*64+x)*4+c];
+    }
+    const diag=document.getElementById('diag');
+    const ctx=diag.getContext('2d');
+    if(!ctx)throw new Error('diagnostic 2d context unavailable');
+    ctx.putImageData(new ImageData(preview,128,64),0,0);
+    rt.ready=true;
+  }catch(e){
+    rt.diagnostics.push(`load-callback-error: ${e?.stack||e}`);
+    rt.error=String(e?.message||e);
+  }
+},undefined,e=>{
+  rt.diagnostics.push(`gltf-load-error: ${e?.stack||e}`);
+  rt.error=String(e?.message||e);
+});
+</script>
+</body>
+</html>
