@@ -25,6 +25,8 @@ from .relation_kernel import OPERATOR_CLASSES as RELATION_OPERATOR_CLASSES
 from .relation_kernel import PANEL_CLASSES as RELATION_PANEL_CLASSES
 from .relation_apply import OPERATOR_CLASSES as RELATION_APPLY_OPERATOR_CLASSES
 from .relation_apply import PANEL_CLASSES as RELATION_APPLY_PANEL_CLASSES
+from . import measurement_system as _measurement_system
+from .measurement_atomic import install_atomic_quantize
 from .measurement_system import OPERATOR_CLASSES as MEASUREMENT_OPERATOR_CLASSES
 from .measurement_system import PANEL_CLASSES as MEASUREMENT_PANEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
@@ -32,6 +34,11 @@ from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
 from .bom import CLASSES as BOM_CLASSES
 from .panel import OLEANDER_PT_runtime_panel
 from .workbench_panel import CLASSES as WORKBENCH_PANEL_CLASSES
+
+# Install the batch-level preflight before operators are registered. The
+# measurement-system operators resolve this module global at execution time,
+# so direct API and UI routes share the same atomic transform-authority gate.
+install_atomic_quantize(_measurement_system)
 
 OPERATOR_CLASSES = (
     OLEANDER_OT_assign_identity,
