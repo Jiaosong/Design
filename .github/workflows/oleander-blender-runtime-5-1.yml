@@ -131,6 +131,22 @@ jobs:
           grep -F 'OLEANDER_STAGE3_PRECISION_INFERENCE_VALIDATION=' /tmp/oleander-blender-stage3-precision-inference.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-precision-inference.log
 
+      - name: Run OLEANDER Stage 3 Inference Engine v2 validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_inference_v2.py 2>&1 | tee /tmp/oleander-blender-stage3-inference-v2.log
+          grep -F 'OLEANDER_STAGE3_INFERENCE_V2_VALIDATION=' /tmp/oleander-blender-stage3-inference-v2.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-inference-v2.log
+
+      - name: Run OLEANDER Stage 3 Evaluated Mesh Clearance validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_mesh_clearance.py 2>&1 | tee /tmp/oleander-blender-stage3-mesh-clearance.log
+          grep -F 'OLEANDER_STAGE3_MESH_CLEARANCE_VALIDATION=' /tmp/oleander-blender-stage3-mesh-clearance.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-mesh-clearance.log
+
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
@@ -151,8 +167,10 @@ jobs:
             echo '- Stage 3 Direct / Feature Stack / Feature Editing.'
             echo '- Stage 3 Relation Kernel / Relation Apply.'
             echo '- Stage 3 Measurement / Angular-Datum / Precision-Inference.'
+            echo '- Stage 3 Inference v2: parallel/perpendicular/collinear/intersection checks, extension projection, axis lock projection and temporary tracking points.'
+            echo '- Stage 3 Mesh Clearance: modifier-aware evaluated triangulated mesh surface distance with witness points and pair budgets.'
             echo '- Stage 3 Procedural Foundation.'
-            echo '- Precision formatting is presentation-only; AABB clearance is approximation-only; inference candidates do not create a solver.'
+            echo '- Inference remains check/transient state; mesh clearance is polygonal evaluated geometry, not analytic CAD/B-Rep.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
             if [ -f /tmp/oleander-blender-archive.sha256 ]; then echo '### Blender archive SHA256'; cat /tmp/oleander-blender-archive.sha256; fi
@@ -167,6 +185,8 @@ jobs:
               'Stage 3 Measurement|/tmp/oleander-blender-stage3-measurement.log|OLEANDER_STAGE3_MEASUREMENT_VALIDATION=' \
               'Stage 3 Angular Datum|/tmp/oleander-blender-stage3-angular-datum.log|OLEANDER_STAGE3_ANGULAR_DATUM_VALIDATION=' \
               'Stage 3 Precision Inference|/tmp/oleander-blender-stage3-precision-inference.log|OLEANDER_STAGE3_PRECISION_INFERENCE_VALIDATION=' \
+              'Stage 3 Inference v2|/tmp/oleander-blender-stage3-inference-v2.log|OLEANDER_STAGE3_INFERENCE_V2_VALIDATION=' \
+              'Stage 3 Mesh Clearance|/tmp/oleander-blender-stage3-mesh-clearance.log|OLEANDER_STAGE3_MESH_CLEARANCE_VALIDATION=' \
               'Stage 3 Procedural Foundation|/tmp/oleander-blender-stage3-procedural.log|OLEANDER_STAGE3_PROCEDURAL_VALIDATION='
             do
               IFS='|' read -r title file marker <<< "$item"
