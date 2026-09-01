@@ -2,7 +2,14 @@
   "schema": "OLEANDER_BLENDER_RUNTIME_CAPABILITY_v0.2",
   "runtime_id": "oleander-blender-runtime",
   "runtime_version": "0.2.0",
-  "lifecycle_state": "PROPOSED_UNVERIFIED_RUNTIME",
+  "lifecycle_state": "VALIDATED_STAGE2_HEADLESS_CORE",
+  "validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE2_20260901.json",
+  "validated_environment": {
+    "blender_version": "5.1.2",
+    "tested_branch_head": "06c24ef754ba40d27ccd00cc098f0c499f7d623a",
+    "workflow_run_id": 33466570113,
+    "runtime_result": "PASS"
+  },
   "parent_skill": "oleander-3d-pipeline",
   "interactive_host": "Blender",
   "principle": "one_interaction_environment_not_one_geometry_kernel",
@@ -58,26 +65,40 @@
     ]
   },
   "implementation_status": {
-    "IMPLEMENTED_UNVERIFIED": [
-      "oleander_object_identity",
-      "metadata_schema",
-      "semantic_metadata",
-      "dependency_graph",
-      "missing_dependency_detection",
-      "dependency_cycle_detection",
+    "VALIDATED_STAGE2_HEADLESS": [
+      "extension_source_manifest_validation",
+      "extension_package_build",
+      "extension_package_validation",
+      "metadata_schema_registration",
+      "metadata_persistence_reopen",
+      "semantic_metadata_persistence",
+      "dependency_graph_resolution",
       "stale_dependency_propagation",
       "geometry_baseline_diff",
-      "parameter_constraint_metadata_contract",
-      "review_state_separation",
-      "direct_metric_dimensions",
-      "deterministic_linear_duplicate",
+      "rename_is_not_geometry_change",
+      "mesh_content_hash",
+      "modifier_parameter_diff",
       "configuration_capture_restore",
       "bom_quantity_grouping",
       "bom_metadata_conflict_detection",
-      "audit_panel_v0.2",
-      "semantic_snapshot",
-      "export_manifest_v0.2",
-      "headless_stage2_validation_script"
+      "review_state_separation",
+      "scene_unit_scale_conversion",
+      "scene_unit_scale_round_trip",
+      "audit_panel_v0.2_core",
+      "export_manifest_v0.2_core"
+    ],
+    "IMPLEMENTED_UNVERIFIED": [
+      "assign_identity_collision_repair_operator",
+      "missing_dependency_positive_failure_case",
+      "dependency_cycle_positive_failure_case",
+      "parameter_constraint_metadata_mutation_api",
+      "semantic_snapshot_operator",
+      "direct_metric_dimensions_operator",
+      "deterministic_linear_duplicate_operator",
+      "manual_stale_clear_operator",
+      "configuration_list_operator",
+      "full_interactive_sidebar_workflow",
+      "geometry_nodes_support_probe"
     ],
     "DECLARED_NOT_IMPLEMENTED": [
       "cad_brep_sidecar",
@@ -269,6 +290,7 @@
     "cae_adapter_available",
     "cam_adapter_available"
   ],
+  "validation_invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, geometry/authority semantics, validation logic, or supported Blender compatibility range requires a new runtime validation receipt before the changed capability is treated as validated.",
   "does_not_prove": [
     "field_truth",
     "engineering_approval",
