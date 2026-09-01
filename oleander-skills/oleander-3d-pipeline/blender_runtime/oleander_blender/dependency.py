@@ -3,7 +3,7 @@ from collections import defaultdict, deque
 
 
 def _meta(obj):
-    return getattr(obj, "oleander_meta", None)
+    return getattr(obj, "oleander", None)
 
 
 def object_id(obj):
@@ -60,7 +60,7 @@ def detect_cycles(graph):
             return
         visiting.add(node)
         path.append(node)
-        for dep in forward.get(node, ()):  # dep is upstream
+        for dep in forward.get(node, ()):
             walk(dep, path)
         path.pop()
         visiting.remove(node)
