@@ -2,8 +2,7 @@
 
 This intentionally does not import bpy. It verifies syntax, contract/version
 consistency, and validation-receipt integrity in ordinary CPython. Blender
-runtime behavior is covered separately by validate_stage2.py inside a real
-Blender process.
+runtime behavior is covered separately inside real Blender validation scripts.
 """
 
 from __future__ import annotations
@@ -18,11 +17,13 @@ SCRIPT = pathlib.Path(__file__).resolve()
 RUNTIME_ROOT = SCRIPT.parents[1]
 PIPELINE_ROOT = SCRIPT.parents[2]
 ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
-VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage2.py"
+STAGE2_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage2.py"
+STAGE3_DIRECT_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_direct.py"
 
 UNVERIFIED_STATE = "PROPOSED_UNVERIFIED_RUNTIME"
 VALIDATED_STATE = "VALIDATED_STAGE2_HEADLESS_CORE"
-VALIDATED_SCOPE = "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE"
+STAGE2_SCOPE = "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE"
+STAGE3_DIRECT_SCOPE = "STAGE3_DIRECT_MODELING"
 
 
 def fail(message: str) -> None:
@@ -45,14 +46,14 @@ def parse_bl_info_version(init_path: pathlib.Path) -> str:
     return ""
 
 
-def runtime_source_fingerprint() -> str:
-    """Fingerprint files whose material change invalidates runtime evidence."""
+def source_fingerprint(validation_script: pathlib.Path) -> str:
+    """Fingerprint governed add-on source plus one validation script."""
     paths = [
         path
         for path in ADDON_ROOT.rglob("*")
         if path.is_file() and path.suffix.lower() in {".py", ".json", ".toml"}
     ]
-    paths.append(VALIDATION_SCRIPT)
+    paths.append(validation_script)
     digest = hashlib.sha256()
     for path in sorted(set(paths), key=lambda item: item.as_posix()):
         rel = path.relative_to(PIPELINE_ROOT).as_posix().encode("utf-8")
@@ -63,7 +64,59 @@ def runtime_source_fingerprint() -> str:
     return digest.hexdigest()
 
 
-def load_validation_receipt(capability: dict) -> dict | None:
+def validate_common_receipt(receipt: dict, capability: dict, scope: str, expected_fingerprint: str, label: str) -> None:
+    if receipt.get("validation_state") != "PASS":
+        fail(f"{label} receipt requires validation_state PASS")
+    if receipt.get("validation_scope") != scope:
+        fail(f"unexpected {label} validation scope: {receipt.get('validation_scope')}")
+    if receipt.get("runtime_id") != capability.get("runtime_id"):
+        fail(f"{label} receipt runtime_id mismatch")
+    if receipt.get("runtime_version") != capability.get("runtime_version"):
+        fail(f"{label} receipt runtime_version mismatch")
+    if receipt.get("runtime_result") != "PASS":
+        fail(f"{label} receipt runtime_result must be PASS")
+    if receipt.get("source_fingerprint_sha256") != expected_fingerprint:
+        fail(
+            f"{label} validation receipt is stale for current source fingerprint "
+            f"receipt={receipt.get('source_fingerprint_sha256')!r} current={expected_fingerprint}"
+        )
+
+    workflow = receipt.get("workflow", {})
+    if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
+        fail(f"{label} receipt must identify a successful workflow run and job")
+
+    package = receipt.get("extension_package", {})
+    package_gates = ("source_manifest_validate", "build", "built_package_validate")
+    failed_package_gates = [gate for gate in package_gates if package.get(gate) != "PASS"]
+    if failed_package_gates:
+        fail(f"{label} extension-package validation gates not PASS: {failed_package_gates}")
+    if not package.get("sha256") or not package.get("size_bytes"):
+        fail(f"{label} validated extension package requires SHA256 and byte size")
+
+    host = receipt.get("host", {})
+    if host.get("checksum_manifest_result") != "PASS" or not host.get("blender_archive_sha256"):
+        fail(f"{label} validated Blender host requires official checksum PASS and archive SHA256")
+
+    tested_head = receipt.get("tested_branch_head")
+    if not isinstance(tested_head, str) or len(tested_head) != 40:
+        fail(f"{label} receipt tested_branch_head must be a full commit SHA")
+
+
+def load_receipt(receipt_ref: str, label: str) -> dict:
+    if not isinstance(receipt_ref, str) or not receipt_ref.strip():
+        fail(f"{label} validated capability requires receipt path")
+    repo_root = PIPELINE_ROOT.parents[1]
+    receipt_path = repo_root / receipt_ref
+    try:
+        receipt_path.relative_to(repo_root)
+    except ValueError:
+        fail(f"{label} validation receipt must resolve inside repository")
+    if not receipt_path.is_file():
+        fail(f"{label} validation receipt not found: {receipt_ref}")
+    return json.loads(receipt_path.read_text(encoding="utf-8"))
+
+
+def load_stage2_receipt(capability: dict) -> dict | None:
     lifecycle = capability.get("lifecycle_state")
     receipt_ref = capability.get("validation_receipt")
 
@@ -71,66 +124,63 @@ def load_validation_receipt(capability: dict) -> dict | None:
         if receipt_ref:
             fail("unverified lifecycle must not claim a validation receipt")
         return None
-
     if lifecycle != VALIDATED_STATE:
         fail(f"unsupported lifecycle_state: {lifecycle}")
 
-    if not isinstance(receipt_ref, str) or not receipt_ref.strip():
-        fail("validated lifecycle requires validation_receipt")
-
-    repo_root = PIPELINE_ROOT.parents[1]
-    receipt_path = repo_root / receipt_ref
-    try:
-        receipt_path.relative_to(repo_root)
-    except ValueError:
-        fail("validation receipt must resolve inside repository")
-    if not receipt_path.is_file():
-        fail(f"validation receipt not found: {receipt_ref}")
-
-    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-    if receipt.get("validation_state") != "PASS":
-        fail("validated lifecycle requires validation_state PASS")
-    if receipt.get("validation_scope") != VALIDATED_SCOPE:
-        fail(f"unexpected validation scope: {receipt.get('validation_scope')}")
-    if receipt.get("runtime_id") != capability.get("runtime_id"):
-        fail("validation receipt runtime_id mismatch")
-    if receipt.get("runtime_version") != capability.get("runtime_version"):
-        fail("validation receipt runtime_version mismatch")
-    if receipt.get("runtime_result") != "PASS":
-        fail("validation receipt runtime_result must be PASS")
-
-    expected_fingerprint = runtime_source_fingerprint()
-    receipt_fingerprint = receipt.get("source_fingerprint_sha256")
-    if receipt_fingerprint != expected_fingerprint:
-        fail(
-            "runtime validation receipt is stale for current source fingerprint "
-            f"receipt={receipt_fingerprint!r} current={expected_fingerprint}"
-        )
-
-    workflow = receipt.get("workflow", {})
-    if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
-        fail("validation receipt must identify a successful workflow run and job")
-
-    package = receipt.get("extension_package", {})
-    package_gates = (
-        "source_manifest_validate",
-        "build",
-        "built_package_validate",
+    receipt = load_receipt(receipt_ref, "Stage 2")
+    validate_common_receipt(
+        receipt,
+        capability,
+        STAGE2_SCOPE,
+        source_fingerprint(STAGE2_VALIDATION_SCRIPT),
+        "Stage 2",
     )
-    failed_package_gates = [gate for gate in package_gates if package.get(gate) != "PASS"]
-    if failed_package_gates:
-        fail(f"extension-package validation gates not PASS: {failed_package_gates}")
-    if not package.get("sha256") or not package.get("size_bytes"):
-        fail("validated extension package requires SHA256 and byte size")
+    return receipt
 
-    host = receipt.get("host", {})
-    if host.get("checksum_manifest_result") != "PASS" or not host.get("blender_archive_sha256"):
-        fail("validated Blender host requires official checksum PASS and archive SHA256")
 
-    tested_head = receipt.get("tested_branch_head")
-    if not isinstance(tested_head, str) or len(tested_head) != 40:
-        fail("validation receipt tested_branch_head must be a full commit SHA")
+def load_stage3_direct_receipt(capability: dict, status: dict) -> dict | None:
+    validated_stage3 = set(status.get("VALIDATED_STAGE3_DIRECT", []))
+    receipt_ref = capability.get("stage3_direct_validation_receipt")
+    if not validated_stage3:
+        if receipt_ref:
+            fail("Stage 3 Direct receipt exists but no VALIDATED_STAGE3_DIRECT capabilities are declared")
+        return None
 
+    receipt = load_receipt(receipt_ref, "Stage 3 Direct")
+    validate_common_receipt(
+        receipt,
+        capability,
+        STAGE3_DIRECT_SCOPE,
+        source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
+        "Stage 3 Direct",
+    )
+    if receipt.get("stage2_regression_in_same_job") != "PASS":
+        fail("Stage 3 Direct validation must include PASS Stage-2 regression in the same job")
+
+    required_checks = {
+        "direct_metric_dimensions_operator",
+        "direct_dimensions_applied_scale",
+        "direct_geometry_change_stale_propagation",
+        "direct_operation_metric_record",
+        "linear_duplicate_operator",
+        "linear_duplicate_unique_ole_ids",
+        "linear_duplicate_stable_source_provenance",
+        "linear_duplicate_linked_mesh",
+        "linear_duplicate_metric_spacing",
+        "post_direct_audit_no_duplicate_ids",
+    }
+    receipt_checks = set(receipt.get("runtime_checks", []))
+    missing_checks = sorted(required_checks - receipt_checks)
+    if missing_checks:
+        fail(f"Stage 3 Direct receipt missing runtime checks: {missing_checks}")
+
+    required_capabilities = {
+        "direct_metric_dimensions_operator",
+        "deterministic_linear_duplicate_operator",
+    }
+    missing_capabilities = sorted(required_capabilities - validated_stage3)
+    if missing_capabilities:
+        fail(f"Stage 3 Direct validated capability set missing: {missing_capabilities}")
     return receipt
 
 
@@ -138,7 +188,6 @@ def main() -> None:
     python_files = sorted(ADDON_ROOT.rglob("*.py")) + sorted((RUNTIME_ROOT / "tests").rglob("*.py"))
     if not python_files:
         fail("no Python files found")
-
     for path in python_files:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
 
@@ -152,12 +201,13 @@ def main() -> None:
     bl_info_version = parse_bl_info_version(ADDON_ROOT / "__init__.py")
     manifest_version = manifest.get("version")
     capability_version = capability.get("runtime_version")
-
     versions = {bl_info_version, manifest_version, capability_version}
     if len(versions) != 1:
         fail(f"version mismatch bl_info={bl_info_version} manifest={manifest_version} capability={capability_version}")
 
-    receipt = load_validation_receipt(capability)
+    status = capability.get("implementation_status", {})
+    stage2_receipt = load_stage2_receipt(capability)
+    stage3_receipt = load_stage3_direct_receipt(capability, status)
 
     if manifest.get("blender_version_min") != "5.1.0":
         fail("unexpected minimum Blender version")
@@ -169,15 +219,18 @@ def main() -> None:
         "review_state_separation",
         "export_manifest_v0.2_core",
     }
-    status = capability.get("implementation_status", {})
-    declared = set(status.get("VALIDATED_STAGE2_HEADLESS", [])) | set(status.get("IMPLEMENTED_UNVERIFIED", []))
+    declared = (
+        set(status.get("VALIDATED_STAGE2_HEADLESS", []))
+        | set(status.get("VALIDATED_STAGE3_DIRECT", []))
+        | set(status.get("IMPLEMENTED_UNVERIFIED", []))
+    )
     missing = sorted(required_impl - declared)
     if missing:
         fail(f"capability contract missing required implementation entries: {missing}")
 
-    validated = set(status.get("VALIDATED_STAGE2_HEADLESS", []))
+    validated_stage2 = set(status.get("VALIDATED_STAGE2_HEADLESS", []))
     if capability.get("lifecycle_state") == VALIDATED_STATE:
-        receipt_checks = set((receipt or {}).get("runtime_checks", []))
+        receipt_checks = set((stage2_receipt or {}).get("runtime_checks", []))
         required_receipt_checks = {
             "registration",
             "persistent_metadata",
@@ -195,7 +248,7 @@ def main() -> None:
         missing_checks = sorted(required_receipt_checks - receipt_checks)
         if missing_checks:
             fail(f"validated lifecycle receipt missing required runtime checks: {missing_checks}")
-        if not validated:
+        if not validated_stage2:
             fail("validated lifecycle requires non-empty VALIDATED_STAGE2_HEADLESS capability set")
 
     schema_const = schema.get("properties", {}).get("schema", {}).get("const")
@@ -209,8 +262,11 @@ def main() -> None:
                 "python_files_parsed": len(python_files),
                 "runtime_version": bl_info_version,
                 "lifecycle_state": capability["lifecycle_state"],
-                "source_fingerprint_sha256": runtime_source_fingerprint(),
+                "stage2_source_fingerprint_sha256": source_fingerprint(STAGE2_VALIDATION_SCRIPT),
+                "stage3_direct_source_fingerprint_sha256": source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
                 "validation_receipt": capability.get("validation_receipt", ""),
+                "stage3_direct_validation_receipt": capability.get("stage3_direct_validation_receipt", ""),
+                "stage3_direct_receipt_loaded": bool(stage3_receipt),
                 "note": "Static PASS validates receipt/contract integrity; it is not a substitute for Blender runtime execution.",
             },
             sort_keys=True,
