@@ -41,25 +41,41 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 
 - Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/`
 - Workflow: `OLEANDER 3D glTF Negative Scale TBN Witness`
-- Confirmed latest-head run: `33317869448` — SUCCESS.
+- Confirmed fragment-stage run: `33460924293` — SUCCESS.
+- Previous numeric-only run `33317869448` remains provenance.
+- Evidence class: `TARGET_RUNTIME_NEGATIVE_SCALE_TBN_PLUS_FRAGMENT_OUTPUT`.
 - Retained provenance: the first raw reconstruction run failed intentionally and showed the failure mechanism.
 - Observed raw failure:
   - source and target object transform determinant `-1`;
   - exported tangent `w = +1`;
   - tangent and normal directions remained correct;
-  - raw `B = w * cross(N,T)` produced an approximately `180 deg` bitangent reversal;
-  - perturbed-normal error was approximately `57.37 deg`.
+  - raw `B = w * cross(N,T)` produced an approximately `179.99958 deg` bitangent reversal;
+  - perturbed-normal error was approximately `57.37063 deg`.
 - Corrected tested contract:
   - `effective_w = tangent.w * sign(det(M_world))`;
   - reconstruct world bitangent from `effective_w * cross(N_world,T_world)`.
+- Actual fragment/framebuffer closure in the same carrier:
+  - source GLB SHA-256 = `666090d558f1dd2488d8b591708634bf9f670ff858a94b63b5ec90b9eefbf400`;
+  - imported normal texel = `[173,189,230,255]`;
+  - positive determinant expected/observed framebuffer RGBA8 = `[134,130,0,255]` / `[134,130,0,255]`, max channel delta `0`;
+  - negative determinant expected/observed framebuffer RGBA8 = `[121,130,0,255]` / `[121,130,0,255]`, max channel delta `0`;
+  - decoded-direction error is approximately `0.19450 deg` in both controlled cases;
+  - expected positive-vs-negative fragment separation ≈ `5.59804 deg`;
+  - observed separation ≈ `5.83575 deg`;
+  - separation drift ≈ `0.23771 deg`, within the unchanged `<=0.5 deg` discriminator Gate;
+  - output is read from the actual WebGL render target/framebuffer rather than reconstructed only in JavaScript numerics.
 - Production consequence:
   - a negative-scale mirror is not treated as an ordinary tangent-safe transform after tangent-space baking;
-  - determinant sign belongs in the target-runtime tangent-frame validation contract.
+  - determinant sign belongs in the target-runtime tangent-frame validation contract;
+  - stored mesh `TANGENT.w` alone is insufficient for an odd-reflection world transform when fragment output is material to the claim.
 - HOLD:
   - non-uniform negative scale;
   - nested negative transforms;
-  - skinning/animation;
-  - negative-determinant fragment-shader parity;
+  - applied/baked mirror vs object-space negative scale;
+  - skinning/animation/morph targets;
+  - topology/triangulation mutation;
+  - full Three `MeshStandardMaterial` / production PBR formula parity;
+  - hardware GPU/driver parity;
   - other engines/importers;
   - Design KEEP.
 
@@ -177,6 +193,8 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - observed framebuffer separation approximately `42.006839 deg`;
   - separation drift approximately `0.328865 deg`;
   - browser output was read back from the actual WebGL render target/framebuffer path rather than reconstructed only in JavaScript numerics.
+- Cross-reference:
+  - E02 now independently closes the previously open negative-determinant diagnostic fragment/framebuffer path for its exact tested carrier and keeps non-uniform/nested/applied-mirror/PBR/hardware cases HOLD.
 - Production consequence:
   - `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT OUTPUT VERIFIED`;
   - when fragment output is material to an interchange claim, a numeric accessor/texture check can be supplemented by a deliberately bounded shader/framebuffer witness.
@@ -184,7 +202,6 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - hardware GPU and driver parity; current CI carrier is WebGL2 software/SwiftShader-class execution;
   - full Three `MeshStandardMaterial` / production PBR formula parity;
   - mip/filter/anisotropy behavior;
-  - negative-determinant-specific fragment parity;
   - triangulation-specific fragment parity;
   - other engines/importers;
   - Design KEEP.
@@ -287,8 +304,8 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 
 1. `INSTANCE COMPONENT ≠ MESH COMPONENT ≠ STATIC EXPORT`.
 2. `1 DRAW CALL ≠ LOW MEMORY ≠ HIGH FPS`.
-3. For the tested negative-determinant carrier, tangent-frame reconstruction must include transform determinant sign: `effective_w = tangent.w * sign(det(M_world))`.
-4. `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT OUTPUT VERIFIED`; E07 closes the final stage only for its diagnostic WebGL carrier.
+3. For the tested negative-determinant carrier, tangent-frame reconstruction and its diagnostic fragment output must include transform determinant sign: `effective_w = tangent.w * sign(det(M_world))`; E02 closes this only for its exact tested software carrier.
+4. `NORMAL MAP FILE EXISTS ≠ TARGET TEXTURE PIXEL PRESERVED ≠ FRAGMENT OUTPUT VERIFIED`; E07 closes the standard/mirrored final stage and E02 closes the negative-determinant final stage only for their bounded diagnostic WebGL carriers.
 5. Surface-detail carrier selection uses `frequency × view × required cue`.
 6. For tangent-space baked assets in the tested carrier, `TRIANGULATION CHANGE ≠ SHADING-NEUTRAL CHANGE`; lock triangulation before bake/export or recompute/rebake after topology changes.
 7. `RAW SOURCE UV VALUES ≠ TARGET UV VALUES` when the exchange carrier defines a convention transform; validate the resolved convention explicitly.
@@ -300,4 +317,4 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 
 ## Maturity boundary
 
-These rows are executable L7 evidence on the candidate PR, but they do not silently promote the entire parent framework, Skill, or Notion objects to universal M6. Promotion requires the applicable project/worker scope to be declared, artifact readback retained, and unresolved HOLDs excluded from the claim.
+These rows are executable L7 evidence on the candidate PR, but they do not silently promote the entire parent framework or Skill to universal truth. Explicit parent maturity changes still require applicable scope to be declared, artifact readback retained, unresolved HOLDs excluded, and promotion boundaries preserved.
