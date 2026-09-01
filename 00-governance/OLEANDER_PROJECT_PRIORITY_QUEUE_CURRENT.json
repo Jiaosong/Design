@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -12,11 +12,14 @@
       "current_owner": "PRESENTATION",
       "state": "ACTIVE",
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
-      "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830",
+      "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head 39373f4c006a7bb59537f83ae92eb4000956a694",
       "next_owner": "VALIDATION",
-      "next_action": "PRESENTATION retains the same C04 Web object and PR #465. The latest repo-local Chromium readback now executes, but it FAILS because authority-bearing external Qingjiang image URLs do not load in desktop/mobile cases. Treat this as a current PRESENTATION asset-binding failure: resolve or localize only through exact authority-preserving source identity, then rerun finished-pixel/browser readback. Do not transfer ownership to VALIDATION until PRESENTATION closes this asset failure and records a formal SENT → ACCEPTED handoff; VALIDATION remains next owner, not current owner.",
-      "updated_at": "2026-09-01T10:10:02+08:00",
-      "source_of_queue_decision": "GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md + C04_PROJECT_CONTROL_CARD_CURRENT.md + latest PR #465 and exact branch/workflow readback. The prior queue/control-card checkpoint recorded PR #465 at head 323269746d7a1c958a70e849284d03170b935325. Live PR #465 remains OPEN / UNMERGED / mergeable=true on the same branch and advanced to head 2ae525661a6c7129f6a8382515dee5756a322599. Compare 323269...→2ae525... contains two browser/readback-infrastructure commits only (.github/workflows/c04-web-static-integrity.yml and verify_browser.mjs), so this does not by itself count as new PRESENTATION progress or justify owner transfer. Exact branch index.html readback remains the current producer artifact. Repo-local dependency integrity PASSes, while real Chromium presentation readback run 33461437299 FAILs on missing external eslygroup image URLs across 1920, 1366 and 390 cases; imprint interaction, supplemental open/close, My Book binding, reading-sequence movement and reduced-motion checks otherwise execute. PROJECT_ID / OBJECT_ID / CURRENT_OWNER / PR identity remain unchanged; no formal handoff to VALIDATION exists."
+      "validation_subtask_lease": "WEB_RUNTIME_DERIVATIVE",
+      "validation_subtask_lease_state": "ACTIVE",
+      "lease_contract": "00-governance/OLEANDER_C04_SUBTASK_LEASE_CONTRACT_CURRENT.md",
+      "next_action": "PRESENTATION retains the same C04 Web object and PR #465. VALIDATION may concurrently execute only the bounded WEB_RUNTIME_DERIVATIVE lease for the confirmed /恩施 MASTER described by C04_PRODUCT_INTERACTIVE_RUNTIME_HANDOFF_CURRENT.md: exact-source materialization, LOD/geometry simplification, texture derivative, browser-loadable GLB/glTF carrier, lazy-load/runtime mechanics and browser/runtime evidence. This scoped lease does not require formal SENT → ACCEPTED owner handoff and does not change CURRENT_OWNER or lifecycle NEXT_OWNER. All returned artifact paths, metrics and HOLDs must attach to the same OBJECT_ID and return to PRESENTATION; PRESENTATION must preferentially consume the returned derivative on its next execution. Formal handoff remains required only for actual lifecycle owner transfer. External Qingjiang landscape delivery failure remains a separate PRESENTATION HOLD and is not authorization for VALIDATION to substitute source imagery.",
+      "updated_at": "2026-09-02T01:05:09+08:00",
+      "source_of_queue_decision": "Current Root Authority + OLEANDER Knowledge Retrieval & Lifecycle + GitHub main Work Coordination Contract / Skill Registry / queue readback + user explicit C04 SUBTASK LEASE CONTRACT. PR #465 is OPEN / UNMERGED / mergeable=true and advanced from queue-recorded head 2ae525661a6c7129f6a8382515dee5756a322599 to 39373f4c006a7bb59537f83ae92eb4000956a694. Compare 2ae525...→39373f... adds C04_PRODUCT_INTERACTIVE_RUNTIME_HANDOFF_CURRENT.md and C04_BROWSER_READBACK_FAILURE_20260901.md. The former confirms a /恩施 MASTER Web derivative blocker and requests only technical runtime preparation plus evidence while reserving final camera/crop/hierarchy/motion/KEEP authority to PRESENTATION, so it fits the scoped lease. The latter retains the separate external landscape delivery failure as PRESENTATION HOLD. PROJECT_ID / OBJECT_ID / CURRENT_OWNER remain unchanged."
     }
   ],
   "entry_schema": {
@@ -28,6 +31,9 @@
     "current_native_master": "canonical master reference",
     "current_pr_frontier": "PR/branch/page frontier",
     "next_owner": "lifecycle owner",
+    "validation_subtask_lease": "optional bounded concurrent technical lease",
+    "validation_subtask_lease_state": "ACTIVE|RETURNED|HOLD",
+    "lease_contract": "governance contract reference when lease is present",
     "next_action": "one concrete next action",
     "updated_at": "ISO-8601",
     "source_of_queue_decision": "project Current State or explicit user instruction"
