@@ -23,6 +23,7 @@ jobs:
       BLENDER_VERSION: "5.1.2"
       BLENDER_SERIES: "5.1"
       BLENDER_ARCHIVE: "blender-5.1.2-linux-x64.tar.xz"
+      EXTENSION_PACKAGE: "/tmp/oleander_blender_runtime-0.2.0.zip"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
@@ -40,6 +41,7 @@ jobs:
           grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
           test -s blender-selected.sha256
           sha256sum --check blender-selected.sha256
+          sha256sum "${BLENDER_ARCHIVE}" | tee /tmp/oleander-blender-archive.sha256
 
       - name: Extract Blender
         shell: bash
@@ -48,6 +50,23 @@ jobs:
           tar -xf "${BLENDER_ARCHIVE}"
           test -x "blender-${BLENDER_VERSION}-linux-x64/blender"
           "blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Validate and build Blender extension package
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          source_dir="oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender"
+          "${blender_bin}" --command extension validate "${source_dir}" \
+            2>&1 | tee /tmp/oleander-extension-source-validate.log
+          "${blender_bin}" --command extension build \
+            --source-dir "${source_dir}" \
+            --output-filepath "${EXTENSION_PACKAGE}" \
+            2>&1 | tee /tmp/oleander-extension-build.log
+          test -s "${EXTENSION_PACKAGE}"
+          "${blender_bin}" --command extension validate "${EXTENSION_PACKAGE}" \
+            2>&1 | tee /tmp/oleander-extension-package-validate.log
+          sha256sum "${EXTENSION_PACKAGE}" | tee /tmp/oleander-extension-package.sha256
 
       - name: Run OLEANDER Stage 2 headless validation
         shell: bash
@@ -68,10 +87,20 @@ jobs:
           {
             echo '## OLEANDER Blender Runtime 5.1.2'
             echo '- Source: official download.blender.org release archive + official SHA256 manifest.'
-            echo '- Scope: addon registration and deterministic Stage-2 mechanics only.'
+            echo '- Extension: source validate + build + built-ZIP validate.'
+            echo '- Runtime: headless Stage-2 mechanics including .blend save/reopen persistence.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, Class-A certification or design PASS.'
             echo ''
+            if [ -f /tmp/oleander-blender-archive.sha256 ]; then
+              echo '### Blender archive SHA256'
+              cat /tmp/oleander-blender-archive.sha256
+            fi
+            if [ -f /tmp/oleander-extension-package.sha256 ]; then
+              echo '### Extension package SHA256'
+              cat /tmp/oleander-extension-package.sha256
+            fi
             if [ -f /tmp/oleander-blender-stage2.log ]; then
+              echo '### Runtime result'
               grep -F 'OLEANDER_STAGE2_VALIDATION=' /tmp/oleander-blender-stage2.log || true
             else
               echo '- Runtime validation log unavailable.'
