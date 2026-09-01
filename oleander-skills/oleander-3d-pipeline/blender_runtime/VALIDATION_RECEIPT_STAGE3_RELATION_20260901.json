@@ -1,0 +1,15 @@
+{
+  "schema":"OLEANDER_BLENDER_RUNTIME_STAGE3_RELATION_RECEIPT_v0.1",
+  "runtime_id":"oleander-blender-runtime","runtime_version":"0.2.0","validation_state":"PASS","validation_scope":"STAGE3_RELATION_KERNEL",
+  "source_fingerprint_sha256":"5609f60e4d2e35c281e2fab7fa5700c21c618008cc99999c7c77bb2241b9ce8f",
+  "tested_branch_head":"a0dc58a2abc30855fa5e9ba0fbd895c9fc5d42a8","tested_pr_merge_commit":"92b15ae7c62ff7cf790fb4c2993f4b2ae575900c","repository":"Jiaosong/Design","pull_request":470,
+  "workflow":{"name":"OLEANDER Blender Runtime 5.1","run_id":33510522222,"job_id":99864792429,"conclusion":"success"},
+  "host":{"os":"Ubuntu 24.04.4 LTS","runner_image":"ubuntu-24.04","blender_version":"5.1.2","blender_build_hash":"ec6e62d40fa9","blender_archive_sha256":"aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb","checksum_manifest_result":"PASS"},
+  "extension_package":{"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":38296,"sha256":"3bd8328cc07bac47c249003b4deb3343753bdbb726f3e5f09830ca966ba5b280","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
+  "runtime_checks":["stable_relation_id_registry","driver_driven_ole_provenance","scene_unit_metric_contract_independent_expectation","origin_distance_capture_current_metric","origin_distance_tolerance_evaluation","axis_offset_signed_metric_evaluation","axis_parallel_angular_evaluation","relation_solver_claim_false","relation_dependency_graph_binding","relation_failure_driven_stale","relation_failure_downstream_stale_propagation","relation_restore_pass","duplicate_relation_expected_failure","relation_dependency_cycle_expected_failure","relation_cycle_failure_no_registry_pollution","relation_cycle_failure_no_dependency_mutation","missing_relation_object_expected_failure","relation_dependency_added_by_relation_provenance","relation_owned_dependency_cleanup","relation_preexisting_dependency_preservation","relation_remove_tombstone","relation_event_log_monotonic","relation_registry_save_reopen_persistence","relation_tombstone_save_reopen_persistence","relation_event_log_save_reopen_persistence"],
+  "expected_failure_cases":{"duplicate_active_relation":"PASS","relation_dependency_cycle":"PASS","missing_relation_object":"PASS"},
+  "stage2_regression_in_same_job":"PASS","stage3_direct_regression_in_same_job":"PASS","stage3_feature_stack_regression_in_same_job":"PASS","stage3_feature_editing_regression_in_same_job":"PASS","runtime_result":"PASS",
+  "non_claims":["constraint_solver","solver_backed_sketch_constraints","cad_brep","feature_solver","class_a_surface","field_truth","engineering_approval","manufacturing_release","constructability","design_quality"],
+  "invalidation_rule":"Material changes to governed add-on source or validate_stage3_relations.py require a new real-Blender Relation Kernel receipt.",
+  "authority_note":"This receipt validates check-only geometric relations, tolerance audit and governance. It does not prove or imply an iterative constraint solver, CAD/B-Rep constraints or engineering/manufacturing authority."
+}
