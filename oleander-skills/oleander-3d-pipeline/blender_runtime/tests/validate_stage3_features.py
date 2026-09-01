@@ -164,8 +164,13 @@ def main():
 
     nonplanar = add_cube("OLE_STAGE3_FEATURE_NONPLANAR", "OLE_STAGE3_FEATURE_NONPLANAR", location=(6000.0, 0.0, 0.0), size=500.0)
     select_only(nonplanar)
-    invalid_extrude = bpy.ops.oleander.add_planar_extrude(depth_mm=20.0)
-    assert_true("CANCELLED" in invalid_extrude, "Planar Extrude must explicitly reject non-planar source meshes")
+    rejection_raised = False
+    try:
+        invalid_extrude = bpy.ops.oleander.add_planar_extrude(depth_mm=20.0)
+        rejection_raised = "CANCELLED" in invalid_extrude
+    except RuntimeError as exc:
+        rejection_raised = "Planar Extrude requires a planar mesh" in str(exc)
+    assert_true(rejection_raised, "Planar Extrude must explicitly reject non-planar source meshes")
     assert_true(not get_feature_history(nonplanar), "failed Planar Extrude must not pollute feature history")
 
     shell_obj = add_cube("OLE_STAGE3_FEATURE_SHELL", "OLE_STAGE3_FEATURE_SHELL", location=(9000.0, 0.0, 0.0), size=500.0)
