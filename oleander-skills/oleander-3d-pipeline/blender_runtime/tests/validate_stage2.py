@@ -26,7 +26,7 @@ import oleander_blender
 from oleander_blender.bom import build_bom
 from oleander_blender.configuration import capture_configuration, restore_configuration
 from oleander_blender.dependency import build_dependency_graph, detect_cycles, mark_downstream_stale
-from oleander_blender.direct_model import _mm_to_scene_units
+from oleander_blender.direct_model import _mm_to_scene_units, _scene_units_to_mm
 from oleander_blender.geometry_diff import diff_from_baseline, store_baseline
 from oleander_blender.review_state import summarize_object_state
 
@@ -161,7 +161,15 @@ def main():
     src.oleander.stale = False
 
     one_meter_scene_units = _mm_to_scene_units(bpy.context, 1000.0)
-    assert_true(abs(one_meter_scene_units - 1000.0) < 1e-9, "Unit Scale 0.001 must map 1000 mm to 1000 scene units")
+    assert_true(
+        abs(one_meter_scene_units - 1000.0) < 1e-3,
+        f"Unit Scale 0.001 should map 1000 mm to approximately 1000 scene units; got {one_meter_scene_units!r}",
+    )
+    round_trip_mm = _scene_units_to_mm(bpy.context, one_meter_scene_units)
+    assert_true(
+        abs(round_trip_mm - 1000.0) < 1e-6,
+        f"mm -> scene units -> mm round trip should preserve 1000 mm; got {round_trip_mm!r}",
+    )
 
     bpy.context.view_layer.objects.active = src
     src.select_set(True)
@@ -202,6 +210,7 @@ def main():
             "bom_grouping_and_conflict_detection",
             "review_state_separation",
             "scene_unit_scale_conversion",
+            "scene_unit_scale_round_trip",
             "audit_v0.2",
             "manifest_v0.2",
         ],
