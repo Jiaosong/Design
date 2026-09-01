@@ -1,20 +1,152 @@
-import fs from 'node:fs';import path from 'node:path';import {chromium} from 'playwright';
-const out=path.resolve(process.env.OLEANDER_OUT||'out/NEG_SCALE_BROWSER');const src=JSON.parse(fs.readFileSync(path.resolve(process.env.OLEANDER_SOURCE_RECEIPT||'out/NEG_SCALE_SOURCE/SOURCE_RECEIPT.json'),'utf8'));fs.mkdirSync(out,{recursive:true});
-const norm=v=>{const l=Math.hypot(...v);return v.map(x=>x/l)};const avg=vs=>norm(vs.reduce((a,v)=>a.map((x,i)=>x+v[i]),[0,0,0]).map(x=>x/vs.length));const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];const scale=(v,s)=>v.map(x=>x*s);const add3=(a,b,c)=>a.map((x,i)=>x+b[i]+c[i]);const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);const angleDeg=(a,b)=>Math.acos(Math.max(-1,Math.min(1,dot(norm(a),norm(b)))))*180/Math.PI;const maxDelta=(a,b)=>Math.max(...a.map((x,i)=>Math.abs(x-b[i])));const gate=(a,b)=>{const angularErrorDeg=angleDeg(a,b),componentMaxAbsDelta=maxDelta(a,b);return {angularErrorDeg,componentMaxAbsDelta,pass:angularErrorDeg<=.005&&componentMaxAbsDelta<=5e-5}};
-const browser=await chromium.launch({headless:true,args:['--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist','--disable-dev-shm-usage']});const page=await browser.newPage({viewport:{width:720,height:720},deviceScaleFactor:1});const logs=[];page.on('console',m=>logs.push(`${m.type()}: ${m.text()}`));page.on('pageerror',e=>logs.push(`pageerror: ${e.message}`));await page.goto('http://127.0.0.1:4177/viewer.html',{waitUntil:'networkidle'});await page.waitForFunction(()=>window.__OLEANDER_NEG_SCALE_RUNTIME__?.ready||window.__OLEANDER_NEG_SCALE_RUNTIME__?.error,{timeout:30000});const rt=await page.evaluate(()=>window.__OLEANDER_NEG_SCALE_RUNTIME__);if(rt.error)throw new Error(rt.error);
-const q=src.tangent_space_sample,checks={};let effectiveOverall=true;
+import fs from 'node:fs';
+import path from 'node:path';
+import {chromium} from 'playwright';
+
+const out=path.resolve(process.env.OLEANDER_OUT||'out/NEG_SCALE_BROWSER');
+const src=JSON.parse(fs.readFileSync(path.resolve(process.env.OLEANDER_SOURCE_RECEIPT||'out/NEG_SCALE_SOURCE/SOURCE_RECEIPT.json'),'utf8'));
+fs.mkdirSync(out,{recursive:true});
+
+const norm=v=>{const l=Math.hypot(...v);return v.map(x=>x/l)};
+const avg=vs=>norm(vs.reduce((a,v)=>a.map((x,i)=>x+v[i]),[0,0,0]).map(x=>x/vs.length));
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const scale=(v,s)=>v.map(x=>x*s);
+const add3=(a,b,c)=>a.map((x,i)=>x+b[i]+c[i]);
+const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+const angleDeg=(a,b)=>Math.acos(Math.max(-1,Math.min(1,dot(norm(a),norm(b)))))*180/Math.PI;
+const maxDelta=(a,b)=>Math.max(...a.map((x,i)=>Math.abs(x-b[i])));
+const gate=(a,b)=>{const angularErrorDeg=angleDeg(a,b),componentMaxAbsDelta=maxDelta(a,b);return {angularErrorDeg,componentMaxAbsDelta,pass:angularErrorDeg<=.005&&componentMaxAbsDelta<=5e-5}};
+const rgbaFromDir=v=>[...v.map(x=>Math.max(0,Math.min(255,Math.round((x*.5+.5)*255)))),255];
+const dirFromRgb=rgba=>norm(rgba.slice(0,3).map(x=>x/255*2-1));
+const maxChannelDelta=(a,b)=>Math.max(...a.map((x,i)=>Math.abs(x-b[i])));
+
+const encodedNormalRGBA8=[...src.encoded_normal_rgb.map(x=>Math.round(x*255)),255];
+const quantizedQ=dirFromRgb(encodedNormalRGBA8);
+
+const browser=await chromium.launch({headless:true,args:['--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist','--disable-dev-shm-usage']});
+const page=await browser.newPage({viewport:{width:720,height:720},deviceScaleFactor:1});
+const logs=[];
+page.on('console',m=>logs.push(`${m.type()}: ${m.text()}`));
+page.on('pageerror',e=>logs.push(`pageerror: ${e.message}`));
+await page.goto('http://127.0.0.1:4177/viewer.html',{waitUntil:'networkidle'});
+await page.waitForFunction(()=>window.__OLEANDER_NEG_SCALE_RUNTIME__?.ready||window.__OLEANDER_NEG_SCALE_RUNTIME__?.error,{timeout:30000});
+const rt=await page.evaluate(()=>window.__OLEANDER_NEG_SCALE_RUNTIME__);
+if(rt.error)throw new Error(rt.error);
+
+const q=src.tangent_space_sample;
+const checks={};
+let effectiveOverall=true;
+let fragmentOverall=true;
 for(const name of ['TBN_POS_SCALE','TBN_NEG_SCALE']){
-  const got=rt.objects[name],exp=src.objects[name].expected_target_world;if(!got||!got.normalPresent||!got.tangentPresent||!got.uvPresent)throw new Error(`missing TBN attributes ${name}`);
-  const T=avg(got.worldTangents),N=avg(got.worldNormals);const signs=[...new Set(got.tangentW.map(v=>v<0?-1:1))];if(signs.length!==1)throw new Error(`mixed tangent w ${name}`);
+  const got=rt.objects[name],exp=src.objects[name].expected_target_world;
+  if(!got||!got.normalPresent||!got.tangentPresent||!got.uvPresent)throw new Error(`missing TBN attributes ${name}`);
+  const T=avg(got.worldTangents),N=avg(got.worldNormals);
+  const signs=[...new Set(got.tangentW.map(v=>v<0?-1:1))];
+  if(signs.length!==1)throw new Error(`mixed tangent w ${name}`);
   const rawW=signs[0],detSign=got.matrixWorldDeterminant<0?-1:1,effectiveW=rawW*detSign;
   const rawB=norm(scale(cross(N,T),rawW)),rawP=norm(add3(scale(T,q[0]),scale(rawB,q[1]),scale(N,q[2])));
   const effectiveB=norm(scale(cross(N,T),effectiveW)),effectiveP=norm(add3(scale(T,q[0]),scale(effectiveB,q[1]),scale(N,q[2])));
   const sharedErrors={tangent:gate(T,exp.tangent),normal:gate(N,exp.normal)};
   const rawErrors={bitangent:gate(rawB,exp.bitangent),perturbed:gate(rawP,exp.perturbed)};
   const effectiveErrors={bitangent:gate(effectiveB,exp.bitangent),perturbed:gate(effectiveP,exp.perturbed)};
-  const effectivePass=Object.values(sharedErrors).every(x=>x.pass)&&Object.values(effectiveErrors).every(x=>x.pass)&&got.material?.normalMap===true;effectiveOverall&&=effectivePass;
-  checks[name]={expected:exp,observed:{T,N,rawB,rawP,effectiveB,effectiveP,rawW,detSign,effectiveW,matrixWorldDeterminant:got.matrixWorldDeterminant,matrixWorld:got.matrixWorld,material:got.material},sharedErrors,rawErrors,effectiveErrors,rawPass:Object.values(sharedErrors).every(x=>x.pass)&&Object.values(rawErrors).every(x=>x.pass),effectivePass};
+  const effectivePass=Object.values(sharedErrors).every(x=>x.pass)&&Object.values(effectiveErrors).every(x=>x.pass)&&got.material?.normalMap===true;
+  effectiveOverall&&=effectivePass;
+
+  const fragmentExpectedP=norm(add3(scale(exp.tangent,quantizedQ[0]),scale(exp.bitangent,quantizedQ[1]),scale(exp.normal,quantizedQ[2])));
+  const fragmentExpectedRGBA=rgbaFromDir(fragmentExpectedP);
+  const fragmentObservedRGBA=(got.fragment?.centerRGBA||[]).map(Number);
+  if(fragmentObservedRGBA.length!==4)throw new Error(`missing fragment framebuffer sample ${name}`);
+  const fragmentObservedP=dirFromRgb(fragmentObservedRGBA);
+  const fragmentMaxChannelAbsDelta=maxChannelDelta(fragmentObservedRGBA,fragmentExpectedRGBA);
+  const fragmentDirectionErrorDeg=angleDeg(fragmentObservedP,fragmentExpectedP);
+  const fragmentPass=fragmentMaxChannelAbsDelta<=1&&fragmentObservedRGBA[3]===255&&fragmentDirectionErrorDeg<=0.5&&got.fragment.determinantSign===detSign;
+  fragmentOverall&&=fragmentPass;
+
+  checks[name]={
+    expected:exp,
+    observed:{T,N,rawB,rawP,effectiveB,effectiveP,rawW,detSign,effectiveW,matrixWorldDeterminant:got.matrixWorldDeterminant,matrixWorld:got.matrixWorld,material:got.material},
+    sharedErrors,
+    rawErrors,
+    effectiveErrors,
+    rawPass:Object.values(sharedErrors).every(x=>x.pass)&&Object.values(rawErrors).every(x=>x.pass),
+    effectivePass,
+    fragment:{
+      expectedQuantizedNormalRGBA8:encodedNormalRGBA8,
+      decodedQuantizedNormal:quantizedQ,
+      expectedPerturbedDirection:fragmentExpectedP,
+      expectedRGBA8:fragmentExpectedRGBA,
+      observedRGBA8:fragmentObservedRGBA,
+      decodedObservedDirection:fragmentObservedP,
+      maxChannelAbsDelta:fragmentMaxChannelAbsDelta,
+      directionErrorDeg:fragmentDirectionErrorDeg,
+      determinant:got.fragment.determinant,
+      determinantSign:got.fragment.determinantSign,
+      normalMapName:got.fragment.normalMapName,
+      normalMapColorSpace:got.fragment.normalMapColorSpace,
+      pass:fragmentPass
+    }
+  };
 }
-const neg=checks.TBN_NEG_SCALE;const positive=checks.TBN_POS_SCALE;const discriminative=positive.rawPass===true&&neg.rawPass===false&&neg.effectivePass===true&&neg.observed.detSign===-1&&neg.observed.effectiveW===-neg.observed.rawW;
-const overall=effectiveOverall&&discriminative;
-await page.screenshot({path:path.join(out,'NEGATIVE_SCALE_TBN_BROWSER_720.png'),fullPage:true});const receipt={schema:'oleander.3d.gltf-negative-scale-tbn-target.v2',browser:'Chromium via Playwright 1.55.0',threeRevision:rt.threeRevision,sourceAsset:src.asset,sourceAssetSha256:src.asset_sha256,tangentSpaceSample:q,objectChecks:checks,overallPass:overall,negativeScaleRawReconstructionFailsAsExpected:neg.rawPass===false,negativeScaleTransformAwareReconstructionPasses:neg.effectivePass===true,negativeScaleSourceDeterminant:src.objects.TBN_NEG_SCALE.source_world.linear_determinant,negativeScaleTargetMatrixDeterminant:neg.observed.matrixWorldDeterminant,negativeScaleExportedTangentW:neg.observed.rawW,negativeScaleEffectiveTangentW:neg.observed.effectiveW,transformAwareContract:'effective_w = exported_TANGENT.w * sign(det(object.matrixWorld)); B_world = effective_w * normalize(cross(N_world,T_world))',webgl:rt.webgl,screenshot:'NEGATIVE_SCALE_TBN_BROWSER_720.png',console:logs,evidenceClass:overall?'TARGET_RUNTIME_TRANSFORM_AWARE_NEGATIVE_SCALE_TBN':'TARGET_RUNTIME_NEGATIVE_SCALE_TBN_UNRESOLVED',promotionScope:overall?['raw TANGENT.w alone is insufficient under an odd-reflection world transform','matrix determinant sign is required when reconstructing world-space bitangent from transformed T/N','transform-aware effective handedness restores the independently transformed source bitangent','non-trivial perturbed normal direction is restored under the controlled single-axis negative scale']:[],holds:['non-uniform negative scale','nested negative transforms','baked/applied mirror compared with object-space negative scale','skinning/animation','triangulation change','actual pixel shader implementation parity','Design KEEP']};fs.writeFileSync(path.join(out,'TARGET_RUNTIME_RECEIPT.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt,null,2));await browser.close();
+
+const neg=checks.TBN_NEG_SCALE;
+const positive=checks.TBN_POS_SCALE;
+const numericDiscriminative=positive.rawPass===true&&neg.rawPass===false&&neg.effectivePass===true&&neg.observed.detSign===-1&&neg.observed.effectiveW===-neg.observed.rawW;
+const expectedFragmentSeparationDeg=angleDeg(positive.fragment.expectedPerturbedDirection,neg.fragment.expectedPerturbedDirection);
+const observedFragmentSeparationDeg=angleDeg(positive.fragment.decodedObservedDirection,neg.fragment.decodedObservedDirection);
+const fragmentSeparationDriftDeg=Math.abs(observedFragmentSeparationDeg-expectedFragmentSeparationDeg);
+const fragmentDiscriminative=expectedFragmentSeparationDeg>5&&observedFragmentSeparationDeg>5&&fragmentSeparationDriftDeg<=0.5;
+const overall=effectiveOverall&&numericDiscriminative&&fragmentOverall&&fragmentDiscriminative;
+
+await page.screenshot({path:path.join(out,'NEGATIVE_SCALE_TBN_BROWSER_720.png'),fullPage:true});
+const receipt={
+  schema:'oleander.3d.gltf-negative-scale-tbn-target.v3',
+  browser:'Chromium via Playwright 1.55.0',
+  threeRevision:rt.threeRevision,
+  sourceAsset:src.asset,
+  sourceAssetSha256:src.asset_sha256,
+  tangentSpaceSample:q,
+  encodedNormalRGBA8,
+  decodedQuantizedNormal:quantizedQ,
+  objectChecks:checks,
+  overallPass:overall,
+  numericTransformAwarePass:effectiveOverall&&numericDiscriminative,
+  fragmentFramebufferPass:fragmentOverall&&fragmentDiscriminative,
+  negativeScaleRawReconstructionFailsAsExpected:neg.rawPass===false,
+  negativeScaleTransformAwareReconstructionPasses:neg.effectivePass===true,
+  negativeScaleFragmentOutputPasses:neg.fragment.pass===true,
+  negativeScaleSourceDeterminant:src.objects.TBN_NEG_SCALE.source_world.linear_determinant,
+  negativeScaleTargetMatrixDeterminant:neg.observed.matrixWorldDeterminant,
+  negativeScaleExportedTangentW:neg.observed.rawW,
+  negativeScaleEffectiveTangentW:neg.observed.effectiveW,
+  expectedPositiveVsNegativeFragmentSeparationDeg:expectedFragmentSeparationDeg,
+  observedPositiveVsNegativeFragmentSeparationDeg:observedFragmentSeparationDeg,
+  fragmentSeparationDriftDeg,
+  transformAwareContract:'effective_w = exported_TANGENT.w * sign(det(object.matrixWorld)); B_world = effective_w * normalize(cross(N_world,T_world))',
+  fragmentContract:'the imported GLB normal-map texel + transformed T/N + determinant-aware effective handedness must produce the independently expected RGBA8 diagnostic framebuffer direction',
+  webgl:rt.webgl,
+  screenshot:'NEGATIVE_SCALE_TBN_BROWSER_720.png',
+  console:logs,
+  diagnostics:rt.diagnostics||[],
+  evidenceClass:overall?'TARGET_RUNTIME_NEGATIVE_SCALE_TBN_PLUS_FRAGMENT_OUTPUT':'TARGET_RUNTIME_NEGATIVE_SCALE_TBN_FRAGMENT_UNRESOLVED',
+  promotionScope:overall?[
+    'raw TANGENT.w alone is insufficient under an odd-reflection world transform',
+    'matrix determinant sign is required when reconstructing world-space bitangent from transformed T/N',
+    'transform-aware effective handedness restores the independently transformed source bitangent',
+    'the imported normal-map texel is consumed by an actual WebGL diagnostic fragment shader',
+    'positive- vs negative-determinant perturbed-normal directions remain discriminative through render-target framebuffer readback'
+  ]:[],
+  holds:[
+    'non-uniform negative scale',
+    'nested negative transforms',
+    'baked/applied mirror compared with object-space negative scale',
+    'skinning/animation',
+    'triangulation change',
+    'Three MeshStandardMaterial full PBR implementation parity',
+    'hardware GPU / driver parity',
+    'other engines/importers',
+    'Design KEEP'
+  ]
+};
+fs.writeFileSync(path.join(out,'TARGET_RUNTIME_RECEIPT.json'),JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify(receipt,null,2));
+await browser.close();
+if(!overall)process.exitCode=2;
