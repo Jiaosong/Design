@@ -147,6 +147,14 @@ jobs:
           grep -F 'OLEANDER_STAGE3_MESH_CLEARANCE_VALIDATION=' /tmp/oleander-blender-stage3-mesh-clearance.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-mesh-clearance.log
 
+      - name: Run OLEANDER Stage 3 Surface Diagnostics validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_surface_diagnostics.py 2>&1 | tee /tmp/oleander-blender-stage3-surface-diagnostics.log
+          grep -F 'OLEANDER_STAGE3_SURFACE_DIAGNOSTICS_VALIDATION=' /tmp/oleander-blender-stage3-surface-diagnostics.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-surface-diagnostics.log
+
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
@@ -169,8 +177,9 @@ jobs:
             echo '- Stage 3 Measurement / Angular-Datum / Precision-Inference.'
             echo '- Stage 3 Inference v2: parallel/perpendicular/collinear/intersection checks, extension projection, axis lock projection and temporary tracking points.'
             echo '- Stage 3 Mesh Clearance: modifier-aware evaluated triangulated mesh surface distance with witness points and pair budgets.'
+            echo '- Stage 3 Surface Diagnostics: evaluated topology, dihedral normal variation, pull-axis orientation and normal-ray thickness diagnostics.'
             echo '- Stage 3 Procedural Foundation.'
-            echo '- Inference remains check/transient state; mesh clearance is polygonal evaluated geometry, not analytic CAD/B-Rep.'
+            echo '- Surface diagnostics remain polygonal diagnostics; they are not Class-A/NURBS curvature, moldability or engineering wall-thickness certification.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
             if [ -f /tmp/oleander-blender-archive.sha256 ]; then echo '### Blender archive SHA256'; cat /tmp/oleander-blender-archive.sha256; fi
@@ -187,6 +196,7 @@ jobs:
               'Stage 3 Precision Inference|/tmp/oleander-blender-stage3-precision-inference.log|OLEANDER_STAGE3_PRECISION_INFERENCE_VALIDATION=' \
               'Stage 3 Inference v2|/tmp/oleander-blender-stage3-inference-v2.log|OLEANDER_STAGE3_INFERENCE_V2_VALIDATION=' \
               'Stage 3 Mesh Clearance|/tmp/oleander-blender-stage3-mesh-clearance.log|OLEANDER_STAGE3_MESH_CLEARANCE_VALIDATION=' \
+              'Stage 3 Surface Diagnostics|/tmp/oleander-blender-stage3-surface-diagnostics.log|OLEANDER_STAGE3_SURFACE_DIAGNOSTICS_VALIDATION=' \
               'Stage 3 Procedural Foundation|/tmp/oleander-blender-stage3-procedural.log|OLEANDER_STAGE3_PROCEDURAL_VALIDATION='
             do
               IFS='|' read -r title file marker <<< "$item"
