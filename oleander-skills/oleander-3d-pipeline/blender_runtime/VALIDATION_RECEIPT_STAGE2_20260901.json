@@ -4,15 +4,15 @@
   "runtime_version": "0.2.0",
   "validation_state": "PASS",
   "validation_scope": "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE",
-  "source_fingerprint_sha256": "f0727b6bb86ae8800913e7eda2e7276645d289b3893d9a9149df9d8b0b7de026",
-  "tested_branch_head": "0b88d832ef91270decb24fb0d5becce0fd80b5fc",
-  "tested_pr_merge_commit": "1d40fb9dfb15a182da0cc99465c6e0e7e4deb5d3",
+  "source_fingerprint_sha256": "5493a883b77de53b93a241ae402d9d4f3ef847f89e5aa012237b8a1ae9c0991d",
+  "tested_branch_head": "a0dc58a2abc30855fa5e9ba0fbd895c9fc5d42a8",
+  "tested_pr_merge_commit": "92b15ae7c62ff7cf790fb4c2993f4b2ae575900c",
   "repository": "Jiaosong/Design",
   "pull_request": 470,
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.1",
-    "run_id": 33493912192,
-    "job_id": 99811555726,
+    "run_id": 33510522222,
+    "job_id": 99864792429,
     "conclusion": "success"
   },
   "host": {
@@ -20,17 +20,14 @@
     "runner_image": "ubuntu-24.04",
     "blender_version": "5.1.2",
     "blender_build_hash": "ec6e62d40fa9",
-    "blender_build_date": "2026-05-19",
     "blender_archive": "blender-5.1.2-linux-x64.tar.xz",
     "blender_archive_sha256": "aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb",
-    "blender_source": "https://download.blender.org/release/Blender5.1/blender-5.1.2-linux-x64.tar.xz",
-    "checksum_manifest": "https://download.blender.org/release/Blender5.1/blender-5.1.2.sha256",
     "checksum_manifest_result": "PASS"
   },
   "extension_package": {
     "filename": "oleander_blender_runtime-0.2.0.zip",
-    "size_bytes": 33285,
-    "sha256": "f3c58e104dc6b54971548f5a9308464a15296bb9fc7ea8fabe9d5cf743fcdcca",
+    "size_bytes": 38296,
+    "sha256": "3bd8328cc07bac47c249003b4deb3343753bdbb726f3e5f09830ca966ba5b280",
     "source_manifest_validate": "PASS",
     "build": "PASS",
     "built_package_validate": "PASS"
@@ -63,23 +60,7 @@
     "dependency_cycle_expected_failure": "PASS"
   },
   "runtime_result": "PASS",
-  "parallel_gates_at_tested_head": {
-    "OLEANDER Blender Runtime 5.1": "PASS",
-    "AI Governance Evals": "PASS",
-    "OLEANDER Blender Runtime Static": "EXPECTED_STALE_RECEIPT_FAILURE_BEFORE_RECEIPT_REFRESH"
-  },
-  "non_claims": [
-    "field_truth",
-    "engineering_approval",
-    "manufacturing_release",
-    "constructability",
-    "class_a_surface_certification",
-    "solver_backed_cad_constraints",
-    "ifc_round_trip_certification",
-    "cae_solver_correctness",
-    "cam_postprocessor_correctness",
-    "design_pass"
-  ],
-  "invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, governed runtime schemas, or validate_stage2.py changes the deterministic source_fingerprint_sha256 and invalidates this receipt until a new real-Blender validation run passes.",
-  "authority_note": "This receipt validates the declared Stage-2 Blender runtime mechanics and extension package at the tested source fingerprint only. It does not create field, engineering, manufacturing, constructability or design authority."
+  "non_claims": ["field_truth", "engineering_approval", "manufacturing_release", "constructability", "design_quality"],
+  "invalidation_rule": "Any material change to governed Blender add-on source or validate_stage2.py changes this fingerprint and invalidates the receipt until a new real-Blender run passes.",
+  "authority_note": "Stage-2 runtime mechanics only; no field, engineering, manufacturing, constructability or design authority is created."
 }
