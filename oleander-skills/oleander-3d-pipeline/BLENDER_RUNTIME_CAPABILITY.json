@@ -4,11 +4,19 @@
   "runtime_version": "0.2.0",
   "lifecycle_state": "VALIDATED_STAGE2_HEADLESS_CORE",
   "validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE2_20260901.json",
+  "stage3_direct_validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE3_DIRECT_20260901.json",
   "validated_environment": {
     "blender_version": "5.1.2",
-    "tested_branch_head": "48c6b603aa1bd119246dd74ea7f4973c3111252f",
-    "source_fingerprint_sha256": "b6f43b06191bd7d5e740e27e79aa9531cf1a11ee280439888459eb74d81c06b8",
-    "workflow_run_id": 33487545236,
+    "tested_branch_head": "2d1995745ce817f702d3113075a1d4d9fae8fcae",
+    "source_fingerprint_sha256": "65baf42e0a7a9c29cec505630d72c20c1aeee57b4e3b99811c6508a4d940f177",
+    "workflow_run_id": 33488083510,
+    "runtime_result": "PASS"
+  },
+  "stage3_direct_validated_environment": {
+    "blender_version": "5.1.2",
+    "tested_branch_head": "2d1995745ce817f702d3113075a1d4d9fae8fcae",
+    "source_fingerprint_sha256": "4e940e53e0242f994788a5b893d3431521d3f853a7575c6037d6b790cb7fa76b",
+    "workflow_run_id": 33488083510,
     "runtime_result": "PASS"
   },
   "parent_skill": "oleander-3d-pipeline",
@@ -91,11 +99,21 @@
       "audit_panel_v0.2_core",
       "export_manifest_v0.2_core"
     ],
+    "VALIDATED_STAGE3_DIRECT": [
+      "direct_metric_dimensions_operator",
+      "direct_dimensions_applied_scale",
+      "direct_geometry_change_stale_propagation",
+      "direct_operation_metric_record",
+      "deterministic_linear_duplicate_operator",
+      "linear_duplicate_unique_ole_ids",
+      "linear_duplicate_stable_source_provenance",
+      "linear_duplicate_linked_mesh",
+      "linear_duplicate_metric_spacing",
+      "post_direct_audit_no_duplicate_ids"
+    ],
     "IMPLEMENTED_UNVERIFIED": [
       "parameter_constraint_metadata_mutation_api",
       "semantic_snapshot_operator",
-      "direct_metric_dimensions_operator",
-      "deterministic_linear_duplicate_operator",
       "manual_stale_clear_operator",
       "configuration_list_operator",
       "full_interactive_sidebar_workflow",
@@ -287,6 +305,8 @@
     "review_state_separation_stage2",
     "scene_unit_scale_conversion_stage2",
     "audit_manifest_stage2",
+    "direct_metric_dimensions_stage3",
+    "direct_linear_duplicate_stage3",
     "geometry_nodes_support",
     "cad_sidecar_available",
     "ifc_sidecar_available",
@@ -294,7 +314,7 @@
     "cae_adapter_available",
     "cam_adapter_available"
   ],
-  "validation_invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, governed runtime schemas, or validate_stage2.py changes the deterministic source fingerprint and requires a new real-Blender validation receipt before the changed capability is treated as validated.",
+  "validation_invalidation_rule": "Stage-2 evidence is fingerprint-bound to governed add-on source plus validate_stage2.py. Stage-3 Direct evidence is independently fingerprint-bound to governed add-on source plus validate_stage3_direct.py. Material changes to either validated surface require the corresponding real-Blender receipt to be refreshed before the changed capability remains validated.",
   "does_not_prove": [
     "field_truth",
     "engineering_approval",
