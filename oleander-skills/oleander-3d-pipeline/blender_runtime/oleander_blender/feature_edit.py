@@ -57,6 +57,7 @@ def _default_feature_id(obj):
 def _sync_stack_indices(obj, history):
     for entry in history:
         entry["stack_index"] = obj.modifiers.find(entry.get("modifier_name", ""))
+    history.sort(key=lambda entry: entry.get("stack_index", 10**9))
     _set_feature_history(obj, history)
 
 
@@ -94,6 +95,9 @@ def _set_dependencies(obj, ids):
 
 
 def _cleanup_removed_feature_dependencies(obj, removed_entry, remaining_history):
+    params = removed_entry.get("parameters", {})
+    if not bool(params.get("dependency_added_by_feature", False)):
+        return []
     remaining_sources = {
         source_id
         for entry in remaining_history
