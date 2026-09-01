@@ -1,0 +1,60 @@
+{
+  "schema": "OLEANDER_BLENDER_RUNTIME_STAGE3_DIRECT_RECEIPT_v0.1",
+  "runtime_id": "oleander-blender-runtime",
+  "runtime_version": "0.2.0",
+  "validation_state": "PASS",
+  "validation_scope": "STAGE3_DIRECT_MODELING",
+  "source_fingerprint_sha256": "4e940e53e0242f994788a5b893d3431521d3f853a7575c6037d6b790cb7fa76b",
+  "tested_branch_head": "2d1995745ce817f702d3113075a1d4d9fae8fcae",
+  "tested_pr_merge_commit": "fa2a5d3d92324a4d04bd5846e9da067b92dadd37",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Runtime 5.1",
+    "run_id": 33488083510,
+    "job_id": 99792791102,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "runner_image": "ubuntu-24.04",
+    "blender_version": "5.1.2",
+    "blender_build_hash": "ec6e62d40fa9",
+    "blender_archive_sha256": "aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb",
+    "checksum_manifest_result": "PASS"
+  },
+  "extension_package": {
+    "filename": "oleander_blender_runtime-0.2.0.zip",
+    "size_bytes": 23487,
+    "sha256": "3a87a430a044e23eab3d521d43dc707efd862421077dd5a93d6a9f4447243a7b",
+    "source_manifest_validate": "PASS",
+    "build": "PASS",
+    "built_package_validate": "PASS"
+  },
+  "runtime_checks": [
+    "direct_metric_dimensions_operator",
+    "direct_dimensions_applied_scale",
+    "direct_geometry_change_stale_propagation",
+    "direct_operation_metric_record",
+    "linear_duplicate_operator",
+    "linear_duplicate_unique_ole_ids",
+    "linear_duplicate_stable_source_provenance",
+    "linear_duplicate_linked_mesh",
+    "linear_duplicate_metric_spacing",
+    "post_direct_audit_no_duplicate_ids"
+  ],
+  "stage2_regression_in_same_job": "PASS",
+  "runtime_result": "PASS",
+  "non_claims": [
+    "cad_brep",
+    "solver_backed_constraints",
+    "field_truth",
+    "engineering_approval",
+    "manufacturing_release",
+    "constructability",
+    "class_a_surface_certification",
+    "design_pass"
+  ],
+  "invalidation_rule": "Any material change to direct-modeling runtime code, the governed add-on source used by this test, or validate_stage3_direct.py requires a new Stage-3 Direct Modeling receipt before these capabilities remain validated.",
+  "authority_note": "This receipt proves deterministic Blender direct-modeling runtime behavior only. It does not convert Blender mesh operations into CAD/B-Rep, engineering, field, manufacturing, constructability or design authority."
+}
