@@ -9,6 +9,7 @@ Blender process.
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import pathlib
 import tomllib
@@ -17,6 +18,7 @@ SCRIPT = pathlib.Path(__file__).resolve()
 RUNTIME_ROOT = SCRIPT.parents[1]
 PIPELINE_ROOT = SCRIPT.parents[2]
 ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
+VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage2.py"
 
 UNVERIFIED_STATE = "PROPOSED_UNVERIFIED_RUNTIME"
 VALIDATED_STATE = "VALIDATED_STAGE2_HEADLESS_CORE"
@@ -41,6 +43,24 @@ def parse_bl_info_version(init_path: pathlib.Path) -> str:
         return ".".join(str(v) for v in version)
     fail("bl_info assignment not found")
     return ""
+
+
+def runtime_source_fingerprint() -> str:
+    """Fingerprint files whose material change invalidates runtime evidence."""
+    paths = [
+        path
+        for path in ADDON_ROOT.rglob("*")
+        if path.is_file() and path.suffix.lower() in {".py", ".json", ".toml"}
+    ]
+    paths.append(VALIDATION_SCRIPT)
+    digest = hashlib.sha256()
+    for path in sorted(set(paths), key=lambda item: item.as_posix()):
+        rel = path.relative_to(PIPELINE_ROOT).as_posix().encode("utf-8")
+        digest.update(rel)
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def load_validation_receipt(capability: dict) -> dict | None:
@@ -78,6 +98,14 @@ def load_validation_receipt(capability: dict) -> dict | None:
         fail("validation receipt runtime_version mismatch")
     if receipt.get("runtime_result") != "PASS":
         fail("validation receipt runtime_result must be PASS")
+
+    expected_fingerprint = runtime_source_fingerprint()
+    receipt_fingerprint = receipt.get("source_fingerprint_sha256")
+    if receipt_fingerprint != expected_fingerprint:
+        fail(
+            "runtime validation receipt is stale for current source fingerprint "
+            f"receipt={receipt_fingerprint!r} current={expected_fingerprint}"
+        )
 
     workflow = receipt.get("workflow", {})
     if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
@@ -181,6 +209,7 @@ def main() -> None:
                 "python_files_parsed": len(python_files),
                 "runtime_version": bl_info_version,
                 "lifecycle_state": capability["lifecycle_state"],
+                "source_fingerprint_sha256": runtime_source_fingerprint(),
                 "validation_receipt": capability.get("validation_receipt", ""),
                 "note": "Static PASS validates receipt/contract integrity; it is not a substitute for Blender runtime execution.",
             },
