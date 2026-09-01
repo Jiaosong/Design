@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import bpy
 
 from .audit import audit_scene
+from .configuration import configuration_names
 from .dependency import dependency_ids
 from .geometry_diff import diff_from_baseline
 from .parametric import get_constraints, get_parameters
@@ -108,6 +109,7 @@ class OLEANDER_OT_export_manifest(bpy.types.Operator):
                     "object_type": obj.type,
                     "object_class": meta.object_class,
                     "semantic_class": meta.semantic_class,
+                    "part_number": meta.part_number,
                     "master_type": meta.master_type,
                     "master_locator": meta.master_locator,
                     "geometry_authority": meta.geometry_authority,
@@ -147,6 +149,7 @@ class OLEANDER_OT_export_manifest(bpy.types.Operator):
                 "unit_system": context.scene.unit_settings.system,
                 "unit_scale": context.scene.unit_settings.scale_length,
                 "dependency_audit_state": context.scene.get("oleander_dependency_audit_state", "NOT_RUN"),
+                "configurations": configuration_names(context.scene),
             },
             "objects": objects,
             "authority_note": "Manifest records declared states and deterministic runtime observations; it does not create field, engineering, manufacturing, constructability or design approval.",
