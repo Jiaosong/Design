@@ -13,6 +13,7 @@ def semantic_payload(obj):
         "ole_id": getattr(meta, "ole_id", "") if meta else "",
         "object_class": getattr(meta, "object_class", "") if meta else "",
         "semantic_class": getattr(meta, "semantic_class", "UNCLASSIFIED") if meta else "UNCLASSIFIED",
+        "part_number": getattr(meta, "part_number", "") if meta else "",
         "assembly_id": getattr(meta, "assembly_id", "") if meta else "",
         "lod": getattr(meta, "lod", 0) if meta else 0,
         "master_type": getattr(meta, "master_type", "") if meta else "",
