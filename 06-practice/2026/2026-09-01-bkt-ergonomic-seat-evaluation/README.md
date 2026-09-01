@@ -5,6 +5,8 @@ Project Axis: P2 Project
 Parent Program: PG-30｜Cases & Practice  
 Governance: `00-governance/README.md` — Governance v1.1.1 ACTIVE  
 Practice Root: `06-practice/`  
+Notion P2 Registry: https://app.notion.com/p/3ceb86be5c478116a9d4d0c11db3df13?pvs=204  
+Runtime Tracker: https://github.com/Jiaosong/Design/issues/471  
 
 ## 1. Goal
 
