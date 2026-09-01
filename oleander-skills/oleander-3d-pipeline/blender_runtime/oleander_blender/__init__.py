@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 2, 0),
     "blender": (5, 1, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed identity, semantics, configurations, relation/dependency/diff, measurement, datum, BOM, audit and manifest workbench for OLEANDER 3D",
+    "description": "Governed identity, semantics, configurations, relation/dependency/diff, measurement, datum, precision inference, BOM, audit and manifest workbench for OLEANDER 3D",
     "category": "3D View",
 }
 
@@ -31,15 +31,14 @@ from .measurement_system import OPERATOR_CLASSES as MEASUREMENT_OPERATOR_CLASSES
 from .measurement_system import PANEL_CLASSES as MEASUREMENT_PANEL_CLASSES
 from .angular_datum import OPERATOR_CLASSES as ANGULAR_DATUM_OPERATOR_CLASSES
 from .angular_datum import PANEL_CLASSES as ANGULAR_DATUM_PANEL_CLASSES
+from .precision_inference import OPERATOR_CLASSES as PRECISION_INFERENCE_OPERATOR_CLASSES
+from .precision_inference import PANEL_CLASSES as PRECISION_INFERENCE_PANEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
 from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
 from .bom import CLASSES as BOM_CLASSES
 from .panel import OLEANDER_PT_runtime_panel
 from .workbench_panel import CLASSES as WORKBENCH_PANEL_CLASSES
 
-# Install the batch-level preflight before operators are registered. The
-# measurement-system operators resolve this module global at execution time,
-# so direct API and UI routes share the same atomic transform-authority gate.
 install_atomic_quantize(_measurement_system)
 
 OPERATOR_CLASSES = (
@@ -54,6 +53,7 @@ OPERATOR_CLASSES = (
     *RELATION_APPLY_OPERATOR_CLASSES,
     *MEASUREMENT_OPERATOR_CLASSES,
     *ANGULAR_DATUM_OPERATOR_CLASSES,
+    *PRECISION_INFERENCE_OPERATOR_CLASSES,
     *WORKBENCH_OPERATOR_CLASSES,
     *CONFIGURATION_CLASSES,
     *BOM_CLASSES,
@@ -67,6 +67,7 @@ PANEL_CLASSES = (
     *RELATION_APPLY_PANEL_CLASSES,
     *MEASUREMENT_PANEL_CLASSES,
     *ANGULAR_DATUM_PANEL_CLASSES,
+    *PRECISION_INFERENCE_PANEL_CLASSES,
 )
 
 
