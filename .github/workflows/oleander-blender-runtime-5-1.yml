@@ -104,6 +104,18 @@ jobs:
           grep -F 'OLEANDER_STAGE3_FEATURES_VALIDATION=' /tmp/oleander-blender-stage3-features.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-features.log
 
+      - name: Run OLEANDER Stage 3 Feature Editing validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" \
+            --background \
+            --factory-startup \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_feature_editing.py \
+            2>&1 | tee /tmp/oleander-blender-stage3-feature-editing.log
+          grep -F 'OLEANDER_STAGE3_FEATURE_EDITING_VALIDATION=' /tmp/oleander-blender-stage3-feature-editing.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-feature-editing.log
+
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
@@ -127,6 +139,7 @@ jobs:
             echo '- Stage 2: governed core regression including .blend save/reopen persistence.'
             echo '- Stage 3 Direct: metric dimensions + governed linear duplicate.'
             echo '- Stage 3 Direct Features: non-destructive extrude/shell/bevel/mirror/pattern/boolean + feature-history integrity.'
+            echo '- Stage 3 Feature Editing: stable-ID edit, suppress/restore, governed reorder, tombstone removal, event log and dependency provenance.'
             echo '- Stage 3 Procedural: parameter/constraint metadata + governed Geometry Nodes passthrough probe.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, solver/CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
@@ -149,6 +162,10 @@ jobs:
             if [ -f /tmp/oleander-blender-stage3-features.log ]; then
               echo '### Stage 3 Direct Feature Stack result'
               grep -F 'OLEANDER_STAGE3_FEATURES_VALIDATION=' /tmp/oleander-blender-stage3-features.log || true
+            fi
+            if [ -f /tmp/oleander-blender-stage3-feature-editing.log ]; then
+              echo '### Stage 3 Feature Editing result'
+              grep -F 'OLEANDER_STAGE3_FEATURE_EDITING_VALIDATION=' /tmp/oleander-blender-stage3-feature-editing.log || true
             fi
             if [ -f /tmp/oleander-blender-stage3-procedural.log ]; then
               echo '### Stage 3 Procedural Foundation result'
