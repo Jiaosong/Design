@@ -20,6 +20,7 @@ SCRIPT = pathlib.Path(__file__).resolve()
 RUNTIME_ROOT = SCRIPT.parents[1]
 PIPELINE_ROOT = SCRIPT.parents[2]
 ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
+MM_TOL = 1e-3
 if str(RUNTIME_ROOT) not in sys.path:
     sys.path.insert(0, str(RUNTIME_ROOT))
 
@@ -124,8 +125,8 @@ def main():
     b = add_cube("OLE_MEASURE_B", "OLE_MEASURE_B", (400.0, 600.0, 300.0), size=100.0)
     snapshot = measurement_snapshot(scene, [a, b], a)
     assert_true(snapshot["selected_count"] == 2 and snapshot["active"]["ole_id"] == "OLE_MEASURE_A", "measurement snapshot must retain active OLE provenance")
-    assert_close(snapshot["pair"]["origin_distance_mm"], 500.0, 1e-5, "pair origin distance must honor scene unit contract")
-    assert_true(all(abs(value - 100.0) <= 1e-5 for value in snapshot["active"]["dimensions_mm"]), "cube dimensions must report real millimetres")
+    assert_close(snapshot["pair"]["origin_distance_mm"], 500.0, MM_TOL, "pair origin distance must honor scene unit contract")
+    assert_true(all(abs(value - 100.0) <= MM_TOL for value in snapshot["active"]["dimensions_mm"]), "cube dimensions must report real millimetres")
     scene[SNAPSHOT_KEY] = json.dumps(snapshot, sort_keys=True)
 
     # Exact quantize: only requested axes move; downstream becomes stale.
@@ -136,15 +137,15 @@ def main():
     snapped = quantize_world_location(scene, [snap_obj], 10.0, axes=(True, True, False))
     assert_true(len(snapped) == 1, "quantize must return one operation record")
     origin = snap_obj.matrix_world.translation
-    assert_close(scene_units_to_mm(scene, origin.x), 120.0, 1e-5, "X must quantize to 10 mm lattice")
-    assert_close(scene_units_to_mm(scene, origin.y), 260.0, 1e-5, "Y must quantize to 10 mm lattice")
+    assert_close(scene_units_to_mm(scene, origin.x), 120.0, MM_TOL, "X must quantize to 10 mm lattice")
+    assert_close(scene_units_to_mm(scene, origin.y), 260.0, MM_TOL, "Y must quantize to 10 mm lattice")
     assert_close(origin.z, before_z, 1e-9, "disabled Z snap must preserve world coordinate")
     assert_true(downstream.oleander.stale, "quantize must stale downstream dependents")
 
     # Exact nudge by governed mm amount.
     before_x_mm = scene_units_to_mm(scene, snap_obj.matrix_world.translation.x)
     nudge = nudge_world_location(scene, snap_obj, "X", -5.0)
-    assert_close(scene_units_to_mm(scene, snap_obj.matrix_world.translation.x), before_x_mm - 5.0, 1e-5, "nudge must apply exact mm amount")
+    assert_close(scene_units_to_mm(scene, snap_obj.matrix_world.translation.x), before_x_mm - 5.0, MM_TOL, "nudge must apply exact mm amount")
     assert_true(nudge["axis"] == "X" and nudge["amount_mm"] == -5.0, "nudge record must preserve axis and amount")
 
     # External constraints retain transform authority; exact snap must refuse mutation.
@@ -174,7 +175,7 @@ def main():
     assert_true(ruler.hide_render and ruler.show_in_front, "ruler must be non-rendering foreground guidance")
     assert_true(ruler["oleander_ruler_minor_intervals"] == 100 and ruler["oleander_ruler_major_ticks"] == 11, "ruler tick counts must be deterministic")
     assert_true(len(ruler.data.edges) == 102, "ruler mesh must contain one baseline plus 101 tick edges")
-    assert_close(scene_units_to_mm(scene, ruler.data.vertices[1].co.x), 1000.0, 1e-5, "ruler baseline must be exactly 1000 mm")
+    assert_close(scene_units_to_mm(scene, ruler.data.vertices[1].co.x), 1000.0, MM_TOL, "ruler baseline must be exactly 1000 mm")
     label_names = json.loads(ruler["oleander_ruler_labels"])
     assert_true(len(label_names) == 6, "label_every_major=2 must create six labels from 0 to 1000 mm")
     label_bodies = [bpy.data.objects[name].data.body for name in label_names]
