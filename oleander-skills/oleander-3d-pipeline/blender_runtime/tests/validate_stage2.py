@@ -81,7 +81,13 @@ def main():
     assert_true(dst.oleander.stale, "downstream stale flag should persist on metadata")
 
     store_baseline(src)
-    src.dimensions.x *= 1.25
+    current_dimensions = src.dimensions.copy()
+    src.dimensions = (
+        current_dimensions.x * 1.25,
+        current_dimensions.y,
+        current_dimensions.z,
+    )
+    bpy.context.view_layer.update()
     geo_diff = diff_from_baseline(src)
     assert_true(geo_diff["status"] == "CHANGED", "geometry diff should detect changed dimensions")
     assert_true(any(item["field"] == "dimensions" for item in geo_diff["changed"]), "dimension change should be explicit")
@@ -100,6 +106,7 @@ def main():
     store_baseline(src)
     original_vertex = src.data.vertices[0].co.copy()
     src.data.vertices[0].co *= 0.9
+    src.data.update()
     content_diff = diff_from_baseline(src)
     assert_true(content_diff["status"] == "CHANGED", "internal mesh-content edit must be detected")
     assert_true(
@@ -107,13 +114,16 @@ def main():
         "mesh content hash should expose internal vertex edits",
     )
     src.data.vertices[0].co = original_vertex
+    src.data.update()
 
     # Modifier parameter edits are part of geometric intent and must invalidate
     # a stored baseline even when raw mesh topology is unchanged.
     bevel = src.modifiers.new(name="OLE_TEST_BEVEL", type="BEVEL")
     bevel.width = 0.01
+    bpy.context.view_layer.update()
     store_baseline(src)
     bevel.width = 0.02
+    bpy.context.view_layer.update()
     modifier_diff = diff_from_baseline(src)
     assert_true(modifier_diff["status"] == "CHANGED", "modifier parameter edit must be detected")
     assert_true(
@@ -121,6 +131,7 @@ def main():
         "modifier parameter edit should appear in modifier_stack diff",
     )
     src.modifiers.remove(bevel)
+    bpy.context.view_layer.update()
 
     original_location = tuple(src.location)
     capture_configuration(scene, "NORMAL")
