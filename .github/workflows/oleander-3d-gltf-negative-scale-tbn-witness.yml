@@ -65,7 +65,7 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4177/viewer.html >/dev/null && break; sleep 1; done
           OLEANDER_OUT="$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER" OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/NEG_SCALE_SOURCE/SOURCE_RECEIPT.json" node runtime_check.mjs
           test -s "$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json"
-      - name: Validate transform-aware negative-scale TBN contract
+      - name: Validate transform-aware negative-scale TBN plus fragment contract
         working-directory: ${{ github.workspace }}
         run: |
           python3 - <<'PY'
@@ -73,12 +73,30 @@ jobs:
           from pathlib import Path
           r=json.loads(Path('out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
           assert r['overallPass'] is True, json.dumps(r['objectChecks'],indent=2)
-          assert r['evidenceClass']=='TARGET_RUNTIME_TRANSFORM_AWARE_NEGATIVE_SCALE_TBN'
+          assert r['evidenceClass']=='TARGET_RUNTIME_NEGATIVE_SCALE_TBN_PLUS_FRAGMENT_OUTPUT'
+          assert r['numericTransformAwarePass'] is True
+          assert r['fragmentFramebufferPass'] is True
           assert r['negativeScaleSourceDeterminant']<0 and r['negativeScaleTargetMatrixDeterminant']<0
           assert r['negativeScaleRawReconstructionFailsAsExpected'] is True
           assert r['negativeScaleTransformAwareReconstructionPasses'] is True
+          assert r['negativeScaleFragmentOutputPasses'] is True
           assert r['negativeScaleEffectiveTangentW']==-r['negativeScaleExportedTangentW']
-          print(json.dumps({'negative_scale_tbn':'PASS','raw_w':r['negativeScaleExportedTangentW'],'effective_w':r['negativeScaleEffectiveTangentW'],'contract':r['transformAwareContract']},indent=2))
+          assert r['expectedPositiveVsNegativeFragmentSeparationDeg']>5
+          assert r['observedPositiveVsNegativeFragmentSeparationDeg']>5
+          assert r['fragmentSeparationDriftDeg']<=0.5
+          for name in ('TBN_POS_SCALE','TBN_NEG_SCALE'):
+              f=r['objectChecks'][name]['fragment']
+              assert f['pass'] is True
+              assert f['maxChannelAbsDelta']<=1
+              assert f['directionErrorDeg']<=0.5
+          print(json.dumps({
+              'negative_scale_tbn_fragment':'PASS',
+              'raw_w':r['negativeScaleExportedTangentW'],
+              'effective_w':r['negativeScaleEffectiveTangentW'],
+              'fragment_separation_deg':r['observedPositiveVsNegativeFragmentSeparationDeg'],
+              'fragment_separation_drift_deg':r['fragmentSeparationDriftDeg'],
+              'contract':r['fragmentContract']
+          },indent=2))
           PY
       - name: Hash evidence
         if: always()
