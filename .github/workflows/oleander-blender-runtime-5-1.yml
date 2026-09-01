@@ -32,12 +32,8 @@ jobs:
         run: |
           set -euo pipefail
           base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
-          curl --fail --location --retry 3 --retry-delay 2 \
-            --output "${BLENDER_ARCHIVE}" \
-            "${base}/${BLENDER_ARCHIVE}"
-          curl --fail --location --retry 3 --retry-delay 2 \
-            --output "blender-${BLENDER_VERSION}.sha256" \
-            "${base}/blender-${BLENDER_VERSION}.sha256"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
           grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
           test -s blender-selected.sha256
           sha256sum --check blender-selected.sha256
@@ -57,24 +53,17 @@ jobs:
           set -euo pipefail
           blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
           source_dir="oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender"
-          "${blender_bin}" --command extension validate "${source_dir}" \
-            2>&1 | tee /tmp/oleander-extension-source-validate.log
-          "${blender_bin}" --command extension build \
-            --source-dir "${source_dir}" \
-            --output-filepath "${EXTENSION_PACKAGE}" \
-            2>&1 | tee /tmp/oleander-extension-build.log
+          "${blender_bin}" --command extension validate "${source_dir}" 2>&1 | tee /tmp/oleander-extension-source-validate.log
+          "${blender_bin}" --command extension build --source-dir "${source_dir}" --output-filepath "${EXTENSION_PACKAGE}" 2>&1 | tee /tmp/oleander-extension-build.log
           test -s "${EXTENSION_PACKAGE}"
-          "${blender_bin}" --command extension validate "${EXTENSION_PACKAGE}" \
-            2>&1 | tee /tmp/oleander-extension-package-validate.log
+          "${blender_bin}" --command extension validate "${EXTENSION_PACKAGE}" 2>&1 | tee /tmp/oleander-extension-package-validate.log
           sha256sum "${EXTENSION_PACKAGE}" | tee /tmp/oleander-extension-package.sha256
 
       - name: Run OLEANDER Stage 2 headless validation
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage2.py \
-            2>&1 | tee /tmp/oleander-blender-stage2.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage2.py 2>&1 | tee /tmp/oleander-blender-stage2.log
           grep -F 'OLEANDER_STAGE2_VALIDATION=' /tmp/oleander-blender-stage2.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage2.log
 
@@ -82,9 +71,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_direct.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-direct.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_direct.py 2>&1 | tee /tmp/oleander-blender-stage3-direct.log
           grep -F 'OLEANDER_STAGE3_DIRECT_VALIDATION=' /tmp/oleander-blender-stage3-direct.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-direct.log
 
@@ -92,9 +79,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_features.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-features.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_features.py 2>&1 | tee /tmp/oleander-blender-stage3-features.log
           grep -F 'OLEANDER_STAGE3_FEATURES_VALIDATION=' /tmp/oleander-blender-stage3-features.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-features.log
 
@@ -102,9 +87,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_feature_editing.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-feature-editing.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_feature_editing.py 2>&1 | tee /tmp/oleander-blender-stage3-feature-editing.log
           grep -F 'OLEANDER_STAGE3_FEATURE_EDITING_VALIDATION=' /tmp/oleander-blender-stage3-feature-editing.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-feature-editing.log
 
@@ -112,9 +95,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_relations.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-relations.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_relations.py 2>&1 | tee /tmp/oleander-blender-stage3-relations.log
           grep -F 'OLEANDER_STAGE3_RELATION_VALIDATION=' /tmp/oleander-blender-stage3-relations.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-relations.log
 
@@ -122,9 +103,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_relation_apply.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-relation-apply.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_relation_apply.py 2>&1 | tee /tmp/oleander-blender-stage3-relation-apply.log
           grep -F 'OLEANDER_STAGE3_RELATION_APPLY_VALIDATION=' /tmp/oleander-blender-stage3-relation-apply.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-relation-apply.log
 
@@ -132,9 +111,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_measurement.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-measurement.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_measurement.py 2>&1 | tee /tmp/oleander-blender-stage3-measurement.log
           grep -F 'OLEANDER_STAGE3_MEASUREMENT_VALIDATION=' /tmp/oleander-blender-stage3-measurement.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-measurement.log
 
@@ -142,19 +119,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_angular_datum.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-angular-datum.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_angular_datum.py 2>&1 | tee /tmp/oleander-blender-stage3-angular-datum.log
           grep -F 'OLEANDER_STAGE3_ANGULAR_DATUM_VALIDATION=' /tmp/oleander-blender-stage3-angular-datum.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-angular-datum.log
+
+      - name: Run OLEANDER Stage 3 Precision / Inference validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_precision_inference.py 2>&1 | tee /tmp/oleander-blender-stage3-precision-inference.log
+          grep -F 'OLEANDER_STAGE3_PRECISION_INFERENCE_VALIDATION=' /tmp/oleander-blender-stage3-precision-inference.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-precision-inference.log
 
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
           set -euo pipefail
-          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
-            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_procedural.py \
-            2>&1 | tee /tmp/oleander-blender-stage3-procedural.log
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_procedural.py 2>&1 | tee /tmp/oleander-blender-stage3-procedural.log
           grep -F 'OLEANDER_STAGE3_PROCEDURAL_VALIDATION=' /tmp/oleander-blender-stage3-procedural.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-procedural.log
 
@@ -164,27 +145,18 @@ jobs:
         run: |
           {
             echo '## OLEANDER Blender Runtime 5.1.2'
-            echo '- Source: official download.blender.org release archive + official SHA256 manifest.'
+            echo '- Source: official Blender.org release archive + official SHA256 manifest.'
             echo '- Extension: source validate + build + built-ZIP validate.'
-            echo '- Stage 2: governed core regression including .blend save/reopen persistence.'
-            echo '- Stage 3 Direct: metric dimensions + governed linear duplicate.'
-            echo '- Stage 3 Direct Features: non-destructive extrude/shell/bevel/mirror/pattern/boolean + feature-history integrity.'
-            echo '- Stage 3 Feature Editing: stable-ID edit, suppress/restore, governed reorder, tombstone removal, event log and dependency provenance.'
-            echo '- Stage 3 Relation Kernel: check-only driver→driven relations, tolerances, cycle prevention, stale propagation, tombstones and dependency ownership.'
-            echo '- Stage 3 Relation Apply: deterministic one-shot translation restore with PASS-direction capture and explicit multi-solution/external-authority failure gates.'
-            echo '- Stage 3 Measurement: scene-unit-aware profiles, exact snap/nudge, selection measure snapshots, editable world rulers with major/minor ticks and reference-guide audit scoping.'
-            echo '- Stage 3 Angular/Datum: deterministic rotation snap/nudge plus reference-only angle, datum-axis, datum-plane and construction-line guides.'
-            echo '- Stage 3 Procedural: parameter/constraint metadata + governed Geometry Nodes passthrough probe.'
-            echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, iterative solver/CAD/Houdini/Class-A equivalence or design PASS.'
+            echo '- Stage 2: governed core.'
+            echo '- Stage 3 Direct / Feature Stack / Feature Editing.'
+            echo '- Stage 3 Relation Kernel / Relation Apply.'
+            echo '- Stage 3 Measurement / Angular-Datum / Precision-Inference.'
+            echo '- Stage 3 Procedural Foundation.'
+            echo '- Precision formatting is presentation-only; AABB clearance is approximation-only; inference candidates do not create a solver.'
+            echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
-            if [ -f /tmp/oleander-blender-archive.sha256 ]; then
-              echo '### Blender archive SHA256'
-              cat /tmp/oleander-blender-archive.sha256
-            fi
-            if [ -f /tmp/oleander-extension-package.sha256 ]; then
-              echo '### Extension package SHA256'
-              cat /tmp/oleander-extension-package.sha256
-            fi
+            if [ -f /tmp/oleander-blender-archive.sha256 ]; then echo '### Blender archive SHA256'; cat /tmp/oleander-blender-archive.sha256; fi
+            if [ -f /tmp/oleander-extension-package.sha256 ]; then echo '### Extension package SHA256'; cat /tmp/oleander-extension-package.sha256; fi
             for item in \
               'Stage 2|/tmp/oleander-blender-stage2.log|OLEANDER_STAGE2_VALIDATION=' \
               'Stage 3 Direct|/tmp/oleander-blender-stage3-direct.log|OLEANDER_STAGE3_DIRECT_VALIDATION=' \
@@ -194,12 +166,10 @@ jobs:
               'Stage 3 Relation Apply|/tmp/oleander-blender-stage3-relation-apply.log|OLEANDER_STAGE3_RELATION_APPLY_VALIDATION=' \
               'Stage 3 Measurement|/tmp/oleander-blender-stage3-measurement.log|OLEANDER_STAGE3_MEASUREMENT_VALIDATION=' \
               'Stage 3 Angular Datum|/tmp/oleander-blender-stage3-angular-datum.log|OLEANDER_STAGE3_ANGULAR_DATUM_VALIDATION=' \
+              'Stage 3 Precision Inference|/tmp/oleander-blender-stage3-precision-inference.log|OLEANDER_STAGE3_PRECISION_INFERENCE_VALIDATION=' \
               'Stage 3 Procedural Foundation|/tmp/oleander-blender-stage3-procedural.log|OLEANDER_STAGE3_PROCEDURAL_VALIDATION='
             do
               IFS='|' read -r title file marker <<< "$item"
-              if [ -f "$file" ]; then
-                echo "### $title result"
-                grep -F "$marker" "$file" || true
-              fi
+              if [ -f "$file" ]; then echo "### $title result"; grep -F "$marker" "$file" || true; fi
             done
           } >> "$GITHUB_STEP_SUMMARY"
