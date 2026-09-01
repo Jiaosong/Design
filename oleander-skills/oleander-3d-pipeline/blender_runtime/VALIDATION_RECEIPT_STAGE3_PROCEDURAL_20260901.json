@@ -1,14 +1,14 @@
 {
   "schema":"OLEANDER_BLENDER_RUNTIME_STAGE3_PROCEDURAL_RECEIPT_v0.1",
   "runtime_id":"oleander-blender-runtime","runtime_version":"0.2.0","validation_state":"PASS","validation_scope":"STAGE3_PROCEDURAL_FOUNDATION",
-  "source_fingerprint_sha256":"137f668225ed76656f79e99d7cb92a19420bdbe7ce27a1fc491ef7270c11b4ce",
-  "tested_branch_head":"a0dc58a2abc30855fa5e9ba0fbd895c9fc5d42a8","tested_pr_merge_commit":"92b15ae7c62ff7cf790fb4c2993f4b2ae575900c","repository":"Jiaosong/Design","pull_request":470,
-  "workflow":{"name":"OLEANDER Blender Runtime 5.1","run_id":33510522222,"job_id":99864792429,"conclusion":"success"},
+  "source_fingerprint_sha256":"043f201a09bd97741ded1e7a4eff46733863e0601829fdd86ab4f1e05f300dfc",
+  "tested_branch_head":"b9d970273a3c4b2d1fe1bf111f821acbea6a6ee3","tested_pr_merge_commit":"fafe06e96726eb1de21ac802f470e5a0ab601482","repository":"Jiaosong/Design","pull_request":470,
+  "workflow":{"name":"OLEANDER Blender Runtime 5.1","run_id":33513935490,"job_id":99876090791,"conclusion":"success"},
   "host":{"os":"Ubuntu 24.04.4 LTS","runner_image":"ubuntu-24.04","blender_version":"5.1.2","blender_build_hash":"ec6e62d40fa9","blender_archive_sha256":"aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb","checksum_manifest_result":"PASS"},
-  "extension_package":{"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":38296,"sha256":"3bd8328cc07bac47c249003b4deb3343753bdbb726f3e5f09830ca966ba5b280","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
+  "extension_package":{"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":48536,"sha256":"886d1767c4b8df82e641bffc0d45d38ae46d773e0311b9cae0e5f0f17060cb2f","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
   "runtime_checks":["parameter_metadata_mutation_api","parameter_metadata_sanitization","constraint_metadata_mutation_api","constraint_metadata_sanitization","metadata_mutation_does_not_claim_solver_geometry","geometry_nodes_tree_creation","geometry_nodes_modifier_binding","geometry_nodes_passthrough_evaluation","geometry_nodes_ole_provenance","geometry_nodes_explicit_no_solver_claim","geometry_nodes_save_reopen_persistence","parameter_constraint_save_reopen_persistence"],
-  "stage2_regression_in_same_job":"PASS","stage3_direct_regression_in_same_job":"PASS","stage3_feature_stack_regression_in_same_job":"PASS","stage3_feature_editing_regression_in_same_job":"PASS","stage3_relation_regression_in_same_job":"PASS","runtime_result":"PASS",
+  "stage2_regression_in_same_job":"PASS","stage3_direct_regression_in_same_job":"PASS","stage3_feature_stack_regression_in_same_job":"PASS","stage3_feature_editing_regression_in_same_job":"PASS","stage3_relation_regression_in_same_job":"PASS","stage3_relation_apply_regression_in_same_job":"PASS","stage3_measurement_regression_in_same_job":"PASS","runtime_result":"PASS",
   "non_claims":["solver_backed_constraints","houdini_equivalence","cad_brep","field_truth","engineering_approval","manufacturing_release","constructability","design_quality"],
   "invalidation_rule":"Material changes to governed add-on source or validate_stage3_procedural.py require a new real-Blender receipt.",
-  "authority_note":"Governed Geometry Nodes runtime foundation only; Relation Kernel regression is check-only and does not create solver authority."
+  "authority_note":"Governed Geometry Nodes runtime foundation only; Relation/Measurement regressions do not create solver, CAD or field authority."
 }
