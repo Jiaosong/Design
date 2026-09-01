@@ -6,8 +6,9 @@
   "validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE2_20260901.json",
   "validated_environment": {
     "blender_version": "5.1.2",
-    "tested_branch_head": "06c24ef754ba40d27ccd00cc098f0c499f7d623a",
-    "workflow_run_id": 33466570113,
+    "tested_branch_head": "48c6b603aa1bd119246dd74ea7f4973c3111252f",
+    "source_fingerprint_sha256": "b6f43b06191bd7d5e740e27e79aa9531cf1a11ee280439888459eb74d81c06b8",
+    "workflow_run_id": 33487545236,
     "runtime_result": "PASS"
   },
   "parent_skill": "oleander-3d-pipeline",
@@ -72,6 +73,9 @@
       "metadata_schema_registration",
       "metadata_persistence_reopen",
       "semantic_metadata_persistence",
+      "assign_identity_collision_repair_operator",
+      "missing_dependency_positive_failure_case",
+      "dependency_cycle_positive_failure_case",
       "dependency_graph_resolution",
       "stale_dependency_propagation",
       "geometry_baseline_diff",
@@ -88,9 +92,6 @@
       "export_manifest_v0.2_core"
     ],
     "IMPLEMENTED_UNVERIFIED": [
-      "assign_identity_collision_repair_operator",
-      "missing_dependency_positive_failure_case",
-      "dependency_cycle_positive_failure_case",
       "parameter_constraint_metadata_mutation_api",
       "semantic_snapshot_operator",
       "direct_metric_dimensions_operator",
@@ -276,6 +277,9 @@
     "python_api_access",
     "extension_registration",
     "property_persistence_reopen",
+    "identity_collision_repair_stage2",
+    "missing_dependency_failure_stage2",
+    "dependency_cycle_failure_stage2",
     "dependency_graph_stage2",
     "geometry_baseline_diff_stage2",
     "configuration_capture_restore_stage2",
@@ -290,7 +294,7 @@
     "cae_adapter_available",
     "cam_adapter_available"
   ],
-  "validation_invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, geometry/authority semantics, validation logic, or supported Blender compatibility range requires a new runtime validation receipt before the changed capability is treated as validated.",
+  "validation_invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, governed runtime schemas, or validate_stage2.py changes the deterministic source fingerprint and requires a new real-Blender validation receipt before the changed capability is treated as validated.",
   "does_not_prove": [
     "field_truth",
     "engineering_approval",
