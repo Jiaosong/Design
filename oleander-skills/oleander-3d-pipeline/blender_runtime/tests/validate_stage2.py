@@ -23,6 +23,8 @@ if str(RUNTIME_ROOT) not in sys.path:
     sys.path.insert(0, str(RUNTIME_ROOT))
 
 import oleander_blender
+from oleander_blender.bom import build_bom
+from oleander_blender.configuration import capture_configuration, restore_configuration
 from oleander_blender.dependency import build_dependency_graph, detect_cycles, mark_downstream_stale
 from oleander_blender.direct_model import _mm_to_scene_units
 from oleander_blender.geometry_diff import diff_from_baseline, store_baseline
@@ -64,6 +66,11 @@ def main():
     src.oleander.ole_id = "OLE_TEST_SOURCE"
     dst.oleander.ole_id = "OLE_TEST_DERIVATIVE"
     dst.oleander.dependencies = "OLE_TEST_SOURCE"
+    for obj in (src, dst):
+        obj.oleander.semantic_class = "test_part"
+        obj.oleander.part_number = "TEST-PART-001"
+        obj.oleander.material_spec = "TEST_MATERIAL"
+        obj.oleander.fabrication_process = "TEST_PROCESS"
 
     graph = build_dependency_graph(scene)
     assert_true(not graph["missing"], "declared source dependency should resolve")
@@ -78,6 +85,19 @@ def main():
     geo_diff = diff_from_baseline(src)
     assert_true(geo_diff["status"] == "CHANGED", "geometry diff should detect changed dimensions")
     assert_true(any(item["field"] == "dimensions" for item in geo_diff["changed"]), "dimension change should be explicit")
+
+    original_location = tuple(src.location)
+    capture_configuration(scene, "NORMAL")
+    src.location.x += 10.0
+    restore_result = restore_configuration(scene, "NORMAL")
+    assert_true("OLE_TEST_SOURCE" in restore_result["restored"], "configuration restore should resolve source by OLE ID")
+    assert_true(tuple(round(v, 6) for v in src.location) == tuple(round(v, 6) for v in original_location), "configuration restore should restore transforms")
+
+    bom = build_bom(scene)
+    assert_true(bom["schema"] == "OLEANDER_BOM_v0.2", "BOM schema version mismatch")
+    assert_true(len(bom["items"]) == 1, "same part number should group into one BOM item")
+    assert_true(bom["items"][0]["quantity"] == 2, "BOM quantity should count both governed objects")
+    assert_true(bom["items"][0]["metadata_conflict"], "same part number with different dimensions must be flagged")
 
     src["oleander_geometry_audit_state"] = "PASS"
     src.oleander.field_state = "VERIFIED"
@@ -105,12 +125,17 @@ def main():
     assert_true(audit["schema"] == "OLEANDER_BLENDER_AUDIT_v0.2", "audit schema version mismatch")
     assert_true(audit["summary"]["OBJECT_DEPENDENCIES"] == "PASS", "object dependency audit should pass")
 
+    bpy.ops.oleander.build_bom()
+    bom_text = bpy.data.texts.get("OLEANDER_BOM.json")
+    assert_true(bom_text is not None, "BOM operator should create OLEANDER_BOM.json")
+
     bpy.ops.oleander.export_manifest()
     manifest_text = bpy.data.texts.get("OLEANDER_MANIFEST.json")
     assert_true(manifest_text is not None, "manifest should create OLEANDER_MANIFEST.json")
     manifest = json.loads(manifest_text.as_string())
     assert_true(manifest["schema"] == "OLEANDER_BLENDER_WORKBENCH_MANIFEST_v0.2", "manifest schema version mismatch")
     assert_true(len(manifest["objects"]) == 2, "manifest should include both test objects")
+    assert_true("NORMAL" in manifest["scene"]["configurations"], "manifest should expose saved configuration names")
 
     result = {
         "runtime": "OLEANDER Blender Runtime",
@@ -123,6 +148,8 @@ def main():
             "dependency_graph",
             "stale_propagation",
             "geometry_baseline_diff",
+            "configuration_capture_restore",
+            "bom_grouping_and_conflict_detection",
             "review_state_separation",
             "scene_unit_scale_conversion",
             "audit_v0.2",
