@@ -1,0 +1,73 @@
+{
+  "schema": "OLEANDER_BLENDER_RUNTIME_STAGE3_FEATURE_EDITING_RECEIPT_v0.1",
+  "runtime_id": "oleander-blender-runtime",
+  "runtime_version": "0.2.0",
+  "validation_state": "PASS",
+  "validation_scope": "STAGE3_FEATURE_EDITING",
+  "source_fingerprint_sha256": "545e21a8198c15c2db62af8688cfa46b8a8983ffc04aa487273a1019807024c6",
+  "tested_branch_head": "0b88d832ef91270decb24fb0d5becce0fd80b5fc",
+  "tested_pr_merge_commit": "1d40fb9dfb15a182da0cc99465c6e0e7e4deb5d3",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Runtime 5.1",
+    "run_id": 33493912192,
+    "job_id": 99811555726,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "runner_image": "ubuntu-24.04",
+    "blender_version": "5.1.2",
+    "blender_build_hash": "ec6e62d40fa9",
+    "blender_archive_sha256": "aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb",
+    "checksum_manifest_result": "PASS"
+  },
+  "extension_package": {
+    "filename": "oleander_blender_runtime-0.2.0.zip",
+    "size_bytes": 33285,
+    "sha256": "f3c58e104dc6b54971548f5a9308464a15296bb9fc7ea8fabe9d5cf743fcdcca",
+    "source_manifest_validate": "PASS",
+    "build": "PASS",
+    "built_package_validate": "PASS"
+  },
+  "runtime_checks": [
+    "stable_feature_id_parameter_edit",
+    "feature_parameter_edit_hits_real_modifier",
+    "feature_edit_revision_increment",
+    "feature_edit_downstream_stale_propagation",
+    "feature_suppress_restore",
+    "feature_suppression_history_modifier_sync",
+    "governed_feature_reorder",
+    "governed_reorder_history_order_sync",
+    "feature_remove_tombstone",
+    "feature_event_log_monotonic",
+    "boolean_dependency_added_by_feature_provenance",
+    "boolean_feature_owned_dependency_cleanup",
+    "boolean_preexisting_dependency_preservation",
+    "unknown_feature_id_expected_failure",
+    "feature_edit_save_reopen_persistence",
+    "tombstone_save_reopen_persistence",
+    "event_log_save_reopen_persistence"
+  ],
+  "expected_failure_cases": {
+    "unknown_feature_id": "PASS"
+  },
+  "stage2_regression_in_same_job": "PASS",
+  "stage3_direct_regression_in_same_job": "PASS",
+  "stage3_feature_stack_regression_in_same_job": "PASS",
+  "runtime_result": "PASS",
+  "non_claims": [
+    "cad_brep",
+    "feature_solver",
+    "solver_backed_constraints",
+    "class_a_surface",
+    "field_truth",
+    "engineering_approval",
+    "manufacturing_release",
+    "constructability",
+    "design_quality"
+  ],
+  "invalidation_rule": "Any material change to governed add-on source or validate_stage3_feature_editing.py changes this source fingerprint and requires a new real-Blender Stage-3 Feature Editing receipt.",
+  "authority_note": "This receipt validates Blender-native governed feature mutation lifecycle only: stable-ID edits, suppression/restoration, reordering, tombstones, event logs and dependency provenance. It does not prove CAD/B-Rep feature history, feature solving, engineering, field, manufacturing, constructability or design authority."
+}
