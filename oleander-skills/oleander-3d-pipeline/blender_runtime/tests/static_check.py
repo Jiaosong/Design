@@ -20,6 +20,7 @@ ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
 STAGE2_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage2.py"
 STAGE3_DIRECT_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_direct.py"
 STAGE3_FEATURE_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_features.py"
+STAGE3_FEATURE_EDITING_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_feature_editing.py"
 STAGE3_PROCEDURAL_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_procedural.py"
 
 UNVERIFIED_STATE = "PROPOSED_UNVERIFIED_RUNTIME"
@@ -27,6 +28,7 @@ VALIDATED_STATE = "VALIDATED_STAGE2_HEADLESS_CORE"
 STAGE2_SCOPE = "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE"
 STAGE3_DIRECT_SCOPE = "STAGE3_DIRECT_MODELING"
 STAGE3_FEATURE_SCOPE = "STAGE3_DIRECT_FEATURE_STACK"
+STAGE3_FEATURE_EDITING_SCOPE = "STAGE3_FEATURE_EDITING"
 STAGE3_PROCEDURAL_SCOPE = "STAGE3_PROCEDURAL_FOUNDATION"
 
 
@@ -226,6 +228,65 @@ def load_stage3_feature_receipt(capability: dict, status: dict) -> dict | None:
     return receipt
 
 
+def load_stage3_feature_editing_receipt(capability: dict, status: dict) -> dict | None:
+    validated = set(status.get("VALIDATED_STAGE3_FEATURE_EDITING", []))
+    receipt_ref = capability.get("stage3_feature_editing_validation_receipt")
+    if not validated:
+        if receipt_ref:
+            fail("Stage 3 Feature Editing receipt exists but no VALIDATED_STAGE3_FEATURE_EDITING capabilities are declared")
+        return None
+    receipt = load_receipt(receipt_ref, "Stage 3 Feature Editing")
+    validate_common_receipt(
+        receipt,
+        capability,
+        STAGE3_FEATURE_EDITING_SCOPE,
+        source_fingerprint(STAGE3_FEATURE_EDITING_VALIDATION_SCRIPT),
+        "Stage 3 Feature Editing",
+    )
+    if receipt.get("stage2_regression_in_same_job") != "PASS":
+        fail("Stage 3 Feature Editing validation must include PASS Stage-2 regression in the same job")
+    if receipt.get("stage3_direct_regression_in_same_job") != "PASS":
+        fail("Stage 3 Feature Editing validation must include PASS Stage-3 Direct regression in the same job")
+    if receipt.get("stage3_feature_stack_regression_in_same_job") != "PASS":
+        fail("Stage 3 Feature Editing validation must include PASS Stage-3 Feature Stack regression in the same job")
+    required_checks = {
+        "stable_feature_id_parameter_edit",
+        "feature_parameter_edit_hits_real_modifier",
+        "feature_edit_revision_increment",
+        "feature_edit_downstream_stale_propagation",
+        "feature_suppress_restore",
+        "feature_suppression_history_modifier_sync",
+        "governed_feature_reorder",
+        "governed_reorder_history_order_sync",
+        "feature_remove_tombstone",
+        "feature_event_log_monotonic",
+        "boolean_dependency_added_by_feature_provenance",
+        "boolean_feature_owned_dependency_cleanup",
+        "boolean_preexisting_dependency_preservation",
+        "unknown_feature_id_expected_failure",
+        "feature_edit_save_reopen_persistence",
+        "tombstone_save_reopen_persistence",
+        "event_log_save_reopen_persistence",
+    }
+    missing_checks = sorted(required_checks - set(receipt.get("runtime_checks", [])))
+    if missing_checks:
+        fail(f"Stage 3 Feature Editing receipt missing runtime checks: {missing_checks}")
+    if receipt.get("expected_failure_cases", {}).get("unknown_feature_id") != "PASS":
+        fail("Stage 3 Feature Editing unknown-feature-id expected failure is not PASS")
+    required_capabilities = {
+        "stable_feature_id_parameter_edit",
+        "feature_suppress_restore",
+        "governed_feature_reorder",
+        "feature_remove_tombstone",
+        "feature_event_log_monotonic",
+        "boolean_preexisting_dependency_preservation",
+    }
+    missing_capabilities = sorted(required_capabilities - validated)
+    if missing_capabilities:
+        fail(f"Stage 3 Feature Editing validated capability set missing: {missing_capabilities}")
+    return receipt
+
+
 def load_stage3_procedural_receipt(capability: dict, status: dict) -> dict | None:
     validated = set(status.get("VALIDATED_STAGE3_PROCEDURAL", []))
     receipt_ref = capability.get("stage3_procedural_validation_receipt")
@@ -247,6 +308,8 @@ def load_stage3_procedural_receipt(capability: dict, status: dict) -> dict | Non
         fail("Stage 3 Procedural validation must include PASS Stage-3 Direct regression in the same job")
     if receipt.get("stage3_feature_stack_regression_in_same_job") != "PASS":
         fail("Stage 3 Procedural validation must include PASS Stage-3 Feature Stack regression in the same job")
+    if receipt.get("stage3_feature_editing_regression_in_same_job") != "PASS":
+        fail("Stage 3 Procedural validation must include PASS Stage-3 Feature Editing regression in the same job")
     required_checks = {
         "parameter_metadata_mutation_api",
         "parameter_metadata_sanitization",
@@ -293,6 +356,7 @@ def main() -> None:
     stage2_receipt = load_stage2_receipt(capability)
     stage3_direct_receipt = load_stage3_direct_receipt(capability, status)
     stage3_feature_receipt = load_stage3_feature_receipt(capability, status)
+    stage3_feature_editing_receipt = load_stage3_feature_editing_receipt(capability, status)
     stage3_procedural_receipt = load_stage3_procedural_receipt(capability, status)
 
     if manifest.get("blender_version_min") != "5.1.0":
@@ -303,6 +367,7 @@ def main() -> None:
         set(status.get("VALIDATED_STAGE2_HEADLESS", []))
         | set(status.get("VALIDATED_STAGE3_DIRECT", []))
         | set(status.get("VALIDATED_STAGE3_FEATURE_STACK", []))
+        | set(status.get("VALIDATED_STAGE3_FEATURE_EDITING", []))
         | set(status.get("VALIDATED_STAGE3_PROCEDURAL", []))
         | set(status.get("IMPLEMENTED_UNVERIFIED", []))
     )
@@ -336,13 +401,16 @@ def main() -> None:
         "stage2_source_fingerprint_sha256": source_fingerprint(STAGE2_VALIDATION_SCRIPT),
         "stage3_direct_source_fingerprint_sha256": source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
         "stage3_feature_source_fingerprint_sha256": source_fingerprint(STAGE3_FEATURE_VALIDATION_SCRIPT),
+        "stage3_feature_editing_source_fingerprint_sha256": source_fingerprint(STAGE3_FEATURE_EDITING_VALIDATION_SCRIPT),
         "stage3_procedural_source_fingerprint_sha256": source_fingerprint(STAGE3_PROCEDURAL_VALIDATION_SCRIPT),
         "validation_receipt": capability.get("validation_receipt", ""),
         "stage3_direct_validation_receipt": capability.get("stage3_direct_validation_receipt", ""),
         "stage3_feature_stack_validation_receipt": capability.get("stage3_feature_stack_validation_receipt", ""),
+        "stage3_feature_editing_validation_receipt": capability.get("stage3_feature_editing_validation_receipt", ""),
         "stage3_procedural_validation_receipt": capability.get("stage3_procedural_validation_receipt", ""),
         "stage3_direct_receipt_loaded": bool(stage3_direct_receipt),
         "stage3_feature_receipt_loaded": bool(stage3_feature_receipt),
+        "stage3_feature_editing_receipt_loaded": bool(stage3_feature_editing_receipt),
         "stage3_procedural_receipt_loaded": bool(stage3_procedural_receipt),
         "note": "Static PASS validates receipt/contract integrity; it is not a substitute for Blender runtime execution.",
     }, sort_keys=True))
