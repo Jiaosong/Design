@@ -12,7 +12,10 @@ def object_id(obj):
 
 
 def dependency_ids(obj):
-    raw = obj.get("oleander_dependencies", "")
+    meta = _meta(obj)
+    raw = getattr(meta, "dependencies", "") if meta else ""
+    if not raw:
+        raw = obj.get("oleander_dependencies", "")
     if isinstance(raw, str):
         return [item.strip() for item in raw.split(",") if item.strip()]
     return []
