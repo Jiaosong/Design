@@ -45,9 +45,21 @@ def _missing_image_paths():
     return missing
 
 
+def _is_reference_guide(obj):
+    """Reference-only rulers/guides are not governed model geometry.
+
+    They remain visible/auditable as support objects but are excluded from OLE ID,
+    manifold, field-authority and model-review gates. This prevents a measurement
+    ruler made of open edges from polluting the actual model audit.
+    """
+    return bool(obj.get("oleander_reference_guide", False))
+
+
 def audit_scene(scene):
     unit = scene.unit_settings
-    object_ids = [obj.oleander.ole_id for obj in scene.objects if obj.oleander.ole_id]
+    governed_objects = [obj for obj in scene.objects if not _is_reference_guide(obj)]
+    reference_guides = [obj for obj in scene.objects if _is_reference_guide(obj)]
+    object_ids = [obj.oleander.ole_id for obj in governed_objects if obj.oleander.ole_id]
     duplicates = sorted([ole_id for ole_id, n in Counter(object_ids).items() if n > 1])
 
     dependency_graph = build_dependency_graph(scene)
@@ -60,6 +72,22 @@ def audit_scene(scene):
     for obj in scene.objects:
         meta = obj.oleander
         issues = []
+
+        if _is_reference_guide(obj):
+            obj["oleander_geometry_audit_state"] = "REFERENCE_GUIDE"
+            object_results.append(
+                {
+                    "name": obj.name,
+                    "ole_id": meta.ole_id,
+                    "type": obj.type,
+                    "scope": "REFERENCE_GUIDE",
+                    "guide_id": obj.get("oleander_guide_id", obj.get("oleander_guide_parent_id", "")),
+                    "guide_kind": obj.get("oleander_guide_kind", "REFERENCE"),
+                    "geometry_state": "REFERENCE_GUIDE",
+                    "issues": [],
+                }
+            )
+            continue
 
         if not meta.ole_id:
             issues.append("MISSING_OLE_ID")
@@ -98,6 +126,7 @@ def audit_scene(scene):
                 "name": obj.name,
                 "ole_id": meta.ole_id,
                 "type": obj.type,
+                "scope": "GOVERNED_MODEL",
                 "master_type": meta.master_type,
                 "geometry_authority": meta.geometry_authority,
                 "field_state": meta.field_state,
@@ -123,6 +152,8 @@ def audit_scene(scene):
         "unit_system": unit.system,
         "unit_scale_length": unit.scale_length,
         "object_count": len(scene.objects),
+        "governed_object_count": len(governed_objects),
+        "reference_guide_count": len(reference_guides),
         "duplicate_ole_ids": duplicates,
         "missing_image_paths": missing_images,
         "missing_object_dependencies": missing_object_dependencies,
