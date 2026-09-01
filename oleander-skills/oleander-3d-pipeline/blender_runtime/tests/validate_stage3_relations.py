@@ -76,6 +76,27 @@ def select_pair(driver, driven):
     bpy.context.view_layer.objects.active = driven
 
 
+def scene_units_to_mm(scene, value):
+    return value * (scene.unit_settings.scale_length or 1.0) * 1000.0
+
+
+def mm_to_scene_units(scene, value_mm):
+    return (value_mm / 1000.0) / (scene.unit_settings.scale_length or 1.0)
+
+
+def world_origin_distance_mm(scene, a, b):
+    for view_layer in scene.view_layers:
+        view_layer.update()
+    return scene_units_to_mm(scene, (b.matrix_world.translation - a.matrix_world.translation).length)
+
+
+def world_axis_offset_mm(scene, a, b, axis_index):
+    for view_layer in scene.view_layers:
+        view_layer.update()
+    delta = b.matrix_world.translation - a.matrix_world.translation
+    return scene_units_to_mm(scene, delta[axis_index])
+
+
 def find_result(summary, relation_id):
     return next(result for result in summary["results"] if result.get("relation_id") == relation_id)
 
@@ -106,6 +127,10 @@ def main():
     driven = add_cube("OLE_REL_DRIVEN", "OLE_REL_DRIVEN", (1200.0, 0.0, 0.0))
     downstream = add_cube("OLE_REL_DOWNSTREAM", "OLE_REL_DOWNSTREAM", (2400.0, 0.0, 0.0))
     downstream.oleander.dependencies = "OLE_REL_DRIVEN"
+    initial_driven_location_x = driven.location.x
+    expected_distance_mm = world_origin_distance_mm(scene, driver, driven)
+    expected_axis_offset_mm = world_axis_offset_mm(scene, driver, driven, 0)
+    assert_true(expected_distance_mm > 0.0, "relation fixture must establish non-zero real metric separation")
 
     select_pair(driver, driven)
     created = bpy.ops.oleander.add_relation(
@@ -121,20 +146,25 @@ def main():
     assert_true(distance_relation["solver_claim"] is False, "relation kernel must explicitly deny solver claim")
     assert_true(distance_relation["dependency_added_by_relation"] is True, "new driver dependency must record relation ownership")
     assert_true("OLE_REL_DRIVER" in dependency_ids(driven), "driver must be promoted into driven dependency graph")
-    assert_true(abs(distance_relation["target_mm"] - 1200.0) <= 1e-6, "capture_current must store real metric origin distance")
-    assert_true(evaluate_relation(scene, distance_relation)["status"] == "PASS", "captured relation must initially pass")
+    assert_true(
+        abs(distance_relation["target_mm"] - expected_distance_mm) <= 1e-6,
+        f"capture_current must obey scene-unit metric contract; expected {expected_distance_mm}, got {distance_relation['target_mm']}",
+    )
+    initial_result = evaluate_relation(scene, distance_relation)
+    assert_true(initial_result["status"] == "PASS", "captured relation must initially pass")
+    assert_true(abs(initial_result["actual"] - expected_distance_mm) <= 1e-6, "relation evaluator must independently reproduce captured metric distance")
 
     clear_stale(driven)
     clear_stale(downstream)
-    driven.location.x = 1250.0
+    driven.location.x = initial_driven_location_x + mm_to_scene_units(scene, 50.0)
     bpy.context.view_layer.update()
     failed_summary = audit_relations(scene, propagate_stale=True)
     failed_distance = find_result(failed_summary, distance_id)
-    assert_true(failed_distance["status"] == "FAIL" and failed_distance["reason"] == "OUT_OF_TOLERANCE", "relation drift must fail tolerance audit")
+    assert_true(failed_distance["status"] == "FAIL" and failed_distance["reason"] == "OUT_OF_TOLERANCE", "50 mm relation drift must fail tolerance audit")
     assert_true(driven.oleander.stale, "failed relation must stale the driven object")
     assert_true(downstream.oleander.stale, "failed relation must propagate stale state downstream")
 
-    driven.location.x = 1200.0
+    driven.location.x = initial_driven_location_x
     bpy.context.view_layer.update()
     clear_stale(driven)
     clear_stale(downstream)
@@ -152,7 +182,10 @@ def main():
     assert_true("FINISHED" in axis_offset, "axis-offset relation must be created")
     axis_relation = get_relations(scene)[-1]
     axis_result = evaluate_relation(scene, axis_relation)
-    assert_true(axis_result["status"] == "PASS" and abs(axis_result["actual"] - 1200.0) <= 1e-6, "axis offset must use signed world-axis metric value")
+    assert_true(
+        axis_result["status"] == "PASS" and abs(axis_result["actual"] - expected_axis_offset_mm) <= 1e-6,
+        "axis offset must use signed world-axis value under the scene unit contract",
+    )
 
     select_pair(driver, driven)
     parallel = bpy.ops.oleander.add_relation(
@@ -257,6 +290,7 @@ def main():
         "checks": [
             "stable_relation_id_registry",
             "driver_driven_ole_provenance",
+            "scene_unit_metric_contract_independent_expectation",
             "origin_distance_capture_current_metric",
             "origin_distance_tolerance_evaluation",
             "axis_offset_signed_metric_evaluation",
