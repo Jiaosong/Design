@@ -34,14 +34,20 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
         box.label(text=f"Object: {obj.name}")
         box.prop(meta, "ole_id")
         box.prop(meta, "object_class")
+        box.prop(meta, "semantic_class")
         box.prop(meta, "master_type")
         if meta.master_type != "BLENDER_NATIVE":
             box.prop(meta, "master_locator")
         box.prop(meta, "geometry_authority")
         box.prop(meta, "material_authority")
+        box.prop(meta, "material_spec")
+        box.prop(meta, "fabrication_process")
+        box.prop(meta, "evidence_state")
         box.prop(meta, "field_state")
         box.prop(meta, "engineering_state")
         box.prop(meta, "manufacturing_state")
+        box.prop(meta, "design_review_state")
+        box.prop(meta, "dependencies")
         box.prop(meta, "lod")
         box.prop(meta, "assembly_id")
         box.prop(meta, "stale")
@@ -55,7 +61,8 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
                 for key in (
                     "GEOMETRY",
                     "UNITS_AXES",
-                    "DEPENDENCIES",
+                    "OBJECT_DEPENDENCIES",
+                    "RESOURCE_DEPENDENCIES",
                     "ROUND_TRIP",
                     "DIMENSION_AUTHORITY",
                     "FIELD_VERIFIED",
