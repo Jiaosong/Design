@@ -1,7 +1,8 @@
 {
-  "schema": "OLEANDER_BLENDER_RUNTIME_CAPABILITY_v0.1",
+  "schema": "OLEANDER_BLENDER_RUNTIME_CAPABILITY_v0.2",
   "runtime_id": "oleander-blender-runtime",
-  "lifecycle_state": "PROPOSED",
+  "runtime_version": "0.2.0",
+  "lifecycle_state": "PROPOSED_UNVERIFIED_RUNTIME",
   "parent_skill": "oleander-3d-pipeline",
   "interactive_host": "Blender",
   "principle": "one_interaction_environment_not_one_geometry_kernel",
@@ -19,12 +20,20 @@
     "L1": [
       "oleander_object_identity",
       "metadata_schema",
+      "semantic_metadata",
       "audit_panel",
       "dependency_manifest",
+      "dependency_graph",
+      "geometry_baseline_diff",
+      "parameter_constraint_metadata_contract",
+      "review_state_separation",
+      "direct_metric_dimensions",
+      "deterministic_linear_duplicate",
       "workspace_presets",
       "export_manifest",
       "configuration_state",
-      "stale_output_marking"
+      "stale_output_marking",
+      "stale_dependency_propagation"
     ],
     "L2": [
       "cad_brep_sidecar",
@@ -43,6 +52,39 @@
       "reopen_readback",
       "controlled_engineering_handoff",
       "controlled_manufacturing_handoff"
+    ]
+  },
+  "implementation_status": {
+    "IMPLEMENTED_UNVERIFIED": [
+      "oleander_object_identity",
+      "metadata_schema",
+      "semantic_metadata",
+      "dependency_graph",
+      "missing_dependency_detection",
+      "dependency_cycle_detection",
+      "stale_dependency_propagation",
+      "geometry_baseline_diff",
+      "parameter_constraint_metadata_contract",
+      "review_state_separation",
+      "direct_metric_dimensions",
+      "deterministic_linear_duplicate",
+      "audit_panel_v0.2",
+      "semantic_snapshot",
+      "export_manifest_v0.2",
+      "headless_stage2_validation_script"
+    ],
+    "DECLARED_NOT_IMPLEMENTED": [
+      "cad_brep_sidecar",
+      "solver_backed_sketch_constraints",
+      "class_a_surface_certification",
+      "ifc_round_trip_certification",
+      "technical_drawing_service",
+      "reality_capture_adapter",
+      "gis_adapter",
+      "cae_solver",
+      "cam_postprocessor",
+      "manufacturing_release",
+      "engineering_approval"
     ]
   },
   "geometry_kernels": {
@@ -89,16 +131,23 @@
   "persistent_identity_fields": [
     "ole_id",
     "object_class",
+    "semantic_class",
     "master_type",
     "master_locator",
     "unit_system",
     "geometry_authority",
     "material_authority",
+    "material_spec",
+    "fabrication_process",
+    "evidence_state",
     "field_state",
     "engineering_state",
     "manufacturing_state",
+    "design_review_state",
+    "dependencies",
     "lod",
     "assembly_id",
+    "stale",
     "derivative_ids"
   ],
   "audit_gates": [
@@ -113,6 +162,8 @@
     "texture_dependencies",
     "modifier_state",
     "identity_collision",
+    "object_dependency_missing",
+    "object_dependency_cycles",
     "lod_poly_density",
     "uv_when_required",
     "export_compatibility",
@@ -120,12 +171,15 @@
     "round_trip_deviation",
     "field_state",
     "engineering_state",
-    "manufacturing_state"
+    "manufacturing_state",
+    "design_review_state",
+    "stale_state"
   ],
   "audit_status_separation": [
     "GEOMETRY",
     "UNITS_AXES",
-    "DEPENDENCIES",
+    "OBJECT_DEPENDENCIES",
+    "RESOURCE_DEPENDENCIES",
     "ROUND_TRIP",
     "DIMENSION_AUTHORITY",
     "FIELD_VERIFIED",
@@ -191,6 +245,13 @@
   "required_runtime_probes": [
     "blender_version",
     "python_api_access",
+    "extension_registration",
+    "property_persistence_reopen",
+    "dependency_graph_stage2",
+    "geometry_baseline_diff_stage2",
+    "review_state_separation_stage2",
+    "scene_unit_scale_conversion_stage2",
+    "audit_manifest_stage2",
     "geometry_nodes_support",
     "cad_sidecar_available",
     "ifc_sidecar_available",
