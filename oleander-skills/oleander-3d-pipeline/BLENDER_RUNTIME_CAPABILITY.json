@@ -5,18 +5,26 @@
   "lifecycle_state": "VALIDATED_STAGE2_HEADLESS_CORE",
   "validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE2_20260901.json",
   "stage3_direct_validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE3_DIRECT_20260901.json",
+  "stage3_procedural_validation_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/VALIDATION_RECEIPT_STAGE3_PROCEDURAL_20260901.json",
   "validated_environment": {
     "blender_version": "5.1.2",
-    "tested_branch_head": "2d1995745ce817f702d3113075a1d4d9fae8fcae",
-    "source_fingerprint_sha256": "65baf42e0a7a9c29cec505630d72c20c1aeee57b4e3b99811c6508a4d940f177",
-    "workflow_run_id": 33488083510,
+    "tested_branch_head": "1befd7eecd54e98458cb22ae84b48b35c155fc00",
+    "source_fingerprint_sha256": "f566029f4b82c15ee70006b34d416f24b1b668bf13297dae016154fd931284dd",
+    "workflow_run_id": 33488788438,
     "runtime_result": "PASS"
   },
   "stage3_direct_validated_environment": {
     "blender_version": "5.1.2",
-    "tested_branch_head": "2d1995745ce817f702d3113075a1d4d9fae8fcae",
-    "source_fingerprint_sha256": "4e940e53e0242f994788a5b893d3431521d3f853a7575c6037d6b790cb7fa76b",
-    "workflow_run_id": 33488083510,
+    "tested_branch_head": "1befd7eecd54e98458cb22ae84b48b35c155fc00",
+    "source_fingerprint_sha256": "13438d2f87779b34ad50f9ec5450c86524eee009089b704ec857417c3525e859",
+    "workflow_run_id": 33488788438,
+    "runtime_result": "PASS"
+  },
+  "stage3_procedural_validated_environment": {
+    "blender_version": "5.1.2",
+    "tested_branch_head": "1befd7eecd54e98458cb22ae84b48b35c155fc00",
+    "source_fingerprint_sha256": "e0d8b95e6cb1fffe99a4263e6814927a06b4277028c2b1f83235bdb564df21ff",
+    "workflow_run_id": 33488788438,
     "runtime_result": "PASS"
   },
   "parent_skill": "oleander-3d-pipeline",
@@ -111,13 +119,24 @@
       "linear_duplicate_metric_spacing",
       "post_direct_audit_no_duplicate_ids"
     ],
-    "IMPLEMENTED_UNVERIFIED": [
+    "VALIDATED_STAGE3_PROCEDURAL": [
       "parameter_constraint_metadata_mutation_api",
+      "parameter_constraint_metadata_sanitization",
+      "parameter_constraint_save_reopen_persistence",
+      "metadata_mutation_no_solver_geometry_claim",
+      "geometry_nodes_support_probe",
+      "geometry_nodes_tree_creation",
+      "geometry_nodes_modifier_binding",
+      "geometry_nodes_passthrough_evaluation",
+      "geometry_nodes_ole_provenance",
+      "geometry_nodes_explicit_no_solver_claim",
+      "geometry_nodes_save_reopen_persistence"
+    ],
+    "IMPLEMENTED_UNVERIFIED": [
       "semantic_snapshot_operator",
       "manual_stale_clear_operator",
       "configuration_list_operator",
-      "full_interactive_sidebar_workflow",
-      "geometry_nodes_support_probe"
+      "full_interactive_sidebar_workflow"
     ],
     "DECLARED_NOT_IMPLEMENTED": [
       "cad_brep_sidecar",
@@ -307,19 +326,23 @@
     "audit_manifest_stage2",
     "direct_metric_dimensions_stage3",
     "direct_linear_duplicate_stage3",
-    "geometry_nodes_support",
+    "parameter_constraint_metadata_stage3",
+    "geometry_nodes_support_stage3",
+    "geometry_nodes_persistence_stage3",
     "cad_sidecar_available",
     "ifc_sidecar_available",
     "drawing_service_available",
     "cae_adapter_available",
     "cam_adapter_available"
   ],
-  "validation_invalidation_rule": "Stage-2 evidence is fingerprint-bound to governed add-on source plus validate_stage2.py. Stage-3 Direct evidence is independently fingerprint-bound to governed add-on source plus validate_stage3_direct.py. Material changes to either validated surface require the corresponding real-Blender receipt to be refreshed before the changed capability remains validated.",
+  "validation_invalidation_rule": "Stage-2, Stage-3 Direct, and Stage-3 Procedural evidence are independently fingerprint-bound to governed add-on source plus their respective real-Blender validation scripts. Material changes require every affected receipt to be refreshed before the changed capability remains validated.",
   "does_not_prove": [
     "field_truth",
     "engineering_approval",
     "manufacturing_release",
     "constructability",
+    "solver_backed_constraints",
+    "houdini_equivalence",
     "class_a_certification_without_capable_kernel",
     "bim_validity_from_tags_alone",
     "design_pass"
