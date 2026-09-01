@@ -86,6 +86,42 @@ def main():
     assert_true(geo_diff["status"] == "CHANGED", "geometry diff should detect changed dimensions")
     assert_true(any(item["field"] == "dimensions" for item in geo_diff["changed"]), "dimension change should be explicit")
 
+    # Stable identity means ordinary object renaming must not become geometry change.
+    store_baseline(src)
+    original_name = src.name
+    src.name = "OLE_TEST_SOURCE_RENAMED"
+    rename_diff = diff_from_baseline(src)
+    assert_true(rename_diff["status"] == "UNCHANGED", "object rename must not be reported as geometry change")
+    src.name = original_name
+
+    # Move one cube vertex inward. Other cube vertices preserve the same outer
+    # bounds, so this specifically proves content hashing catches a shape edit
+    # that count/bounds-only signatures would miss.
+    store_baseline(src)
+    original_vertex = src.data.vertices[0].co.copy()
+    src.data.vertices[0].co *= 0.9
+    content_diff = diff_from_baseline(src)
+    assert_true(content_diff["status"] == "CHANGED", "internal mesh-content edit must be detected")
+    assert_true(
+        any(item["field"] == "mesh_content_sha256" for item in content_diff["changed"]),
+        "mesh content hash should expose internal vertex edits",
+    )
+    src.data.vertices[0].co = original_vertex
+
+    # Modifier parameter edits are part of geometric intent and must invalidate
+    # a stored baseline even when raw mesh topology is unchanged.
+    bevel = src.modifiers.new(name="OLE_TEST_BEVEL", type="BEVEL")
+    bevel.width = 0.01
+    store_baseline(src)
+    bevel.width = 0.02
+    modifier_diff = diff_from_baseline(src)
+    assert_true(modifier_diff["status"] == "CHANGED", "modifier parameter edit must be detected")
+    assert_true(
+        any(item["field"] == "modifier_stack" for item in modifier_diff["changed"]),
+        "modifier parameter edit should appear in modifier_stack diff",
+    )
+    src.modifiers.remove(bevel)
+
     original_location = tuple(src.location)
     capture_configuration(scene, "NORMAL")
     src.location.x += 10.0
@@ -148,6 +184,9 @@ def main():
             "dependency_graph",
             "stale_propagation",
             "geometry_baseline_diff",
+            "rename_is_not_geometry_change",
+            "mesh_content_hash",
+            "modifier_parameter_diff",
             "configuration_capture_restore",
             "bom_grouping_and_conflict_detection",
             "review_state_separation",
