@@ -40,6 +40,23 @@ def _mesh_content_hash(data):
     return hasher.hexdigest()
 
 
+def _serialize_rna_value(value):
+    if value is None or isinstance(value, (bool, int, str)):
+        return value
+    if isinstance(value, float):
+        return _round(value)
+    if isinstance(value, (set, frozenset)):
+        return sorted(str(item) for item in value)
+    if hasattr(value, "__len__") and hasattr(value, "__iter__") and not isinstance(value, (str, bytes)):
+        try:
+            items = list(value)
+        except TypeError:
+            return None
+        if all(isinstance(item, (bool, int, float, str)) for item in items):
+            return [_serialize_rna_value(item) for item in items]
+    return None
+
+
 def _modifier_signature(obj):
     modifiers = []
     for modifier in obj.modifiers:
@@ -49,9 +66,23 @@ def _modifier_signature(obj):
             "show_viewport": bool(modifier.show_viewport),
             "show_render": bool(modifier.show_render),
         }
-        # Stable, broadly available RNA properties only. Specialist modifier
-        # parameters can be added later through a typed adapter rather than
-        # guessing arbitrary RNA values here.
+        properties = {}
+        for prop in modifier.bl_rna.properties:
+            identifier = prop.identifier
+            if identifier in {"rna_type", "name", "type", "show_viewport", "show_render"}:
+                continue
+            if getattr(prop, "is_readonly", False):
+                continue
+            if prop.type not in {"BOOLEAN", "INT", "FLOAT", "STRING", "ENUM"}:
+                continue
+            try:
+                value = getattr(modifier, identifier)
+            except (AttributeError, TypeError, RuntimeError):
+                continue
+            serialized = _serialize_rna_value(value)
+            if serialized is not None:
+                properties[identifier] = serialized
+        item["properties"] = properties
         modifiers.append(item)
     return modifiers
 
