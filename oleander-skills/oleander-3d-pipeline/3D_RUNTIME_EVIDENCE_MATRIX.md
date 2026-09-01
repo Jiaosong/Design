@@ -300,6 +300,44 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
   - manufacturing/engineering truth;
   - Design KEEP.
 
+## E10 — Operator success requires semantic postconditions, not only kernel/API validity
+
+- Witness: `06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/`.
+- Notion practice: `PRAC-20260831-3D-12｜Operator Failure Anatomy｜FreeCAD B-Rep × Blender Modifier Parameter Sweep`.
+- Workflow: `OLEANDER 3D Operator Failure Anatomy`.
+- Confirmed latest visual-fix run: `33389249392` — workflow SUCCESS.
+- Artifact: `9756862659`; ZIP digest `sha256:70687957293ce4765119058a8b2bf6f943b237f4076748a66e343a8c64b6c26c`.
+- Source commit: `cde1de96a0c5ac76071b7cd5f5006adc336cde68`.
+- Runtimes:
+  - FreeCAD `1.1.3` / OpenCASCADE B-Rep worker;
+  - Blender `5.2.0 LTS` modifier worker.
+- Proven in the tested FreeCAD carrier:
+  - Fillet `5.9 mm` is the last semantic success; `6.0 mm` raises a kernel exception; `6.1 mm` returns an invalid shape with geometry/bbox explosion;
+  - Thickness `11.9 mm` is the last semantic success; `12.0 mm` raises a kernel exception; `12.1 mm` and `14.0 mm` return `isValid=true` Solids that are the original `40×24×12 mm`, 6-face / 12-edge / 8-vertex / 11520 mm³ box — a `VALID_SEMANTIC_NOOP`;
+  - a 10 mm-radius sphere shell remains regular at inward offset `-9.9 mm` and hits the zero-radius failure boundary at `-10.0 mm`.
+- Proven in the tested Blender carrier:
+  - Bevel with Clamp ON realizes the same measured corner clearance `4.701062 mm` at requested widths `6.1 mm` and `8.0 mm`, while Clamp OFF at `8.0 mm` realizes `5.760580 mm`; policy can therefore saturate realized geometry;
+  - Solidify requested `2.0 mm` realizes `1.0 mm` world thickness under unapplied object scale `[2,1,0.5]`, and `2.0 mm` after the same scale is baked into geometry.
+- Refined semantic contract:
+  - `RESULT = OPERATOR(INPUT, PARAMETERS, REFERENCES, TOLERANCE, POLICY, TRANSFORM_STATE, CONTEXT)`;
+  - `SEMANTIC_SUCCESS = VALIDATE(RESULT, DECLARED_POSTCONDITIONS / INVARIANTS)`.
+- Production consequence:
+  - `KERNEL RETURN / NOT-NULL / IsValid ≠ OPERATOR SEMANTIC SUCCESS`;
+  - requested parameter value is not guaranteed realized geometry;
+  - kernel exception, invalid returned shape, valid semantic no-op, policy-clamped result and transform-dependent realized value are distinct failure/readback states;
+  - operator validation should use parameter/failure sweeps and postcondition readback, not one successful call.
+- Artifact Review boundary:
+  - native numeric/semantic receipts and reopen evidence PASS;
+  - latest Bevel/Solidify closeups remain too dark for reliable direct visual discrimination, especially the `1 mm` vs `2 mm` Solidify difference;
+  - therefore **ARTIFACT REVIEW = POST-REVIEW FAIL / TRAINING NOT CLOSED**. Workflow SUCCESS must not be described as a final visual-evidence PASS.
+- HOLD:
+  - repaired readable visual carrier with explicit section/thickness gauge;
+  - Rhino native OffsetSrf/FilletSrf/Shell parity;
+  - arbitrary topology and general self-intersection repair;
+  - manufacturing wall-thickness approval;
+  - all B-Rep kernels / modifier implementations;
+  - Design KEEP.
+
 ## Routing rules promoted only within tested bounds
 
 1. `INSTANCE COMPONENT ≠ MESH COMPONENT ≠ STATIC EXPORT`.
@@ -314,6 +352,7 @@ Unless a row says otherwise, current target-runtime witnesses use Blender 5.2.0 
 10. `WRITTEN ARTIFACT ≠ IN-MEMORY BUFFER`; when a runtime proves one carrier unreliable, retain the failure and move only the supported measurement to the applicable carrier instead of silently relaxing thresholds.
 11. `REPEATABLE METRICS ≠ BYTE-DETERMINISTIC RENDER`; report the observed reproducibility level explicitly.
 12. `SAME CONTROL ARCHITECTURE ≠ SAME EVALUATED SURFACE`; when comparing NURBS/B-Spline, SubD or other representation families, separate source controls, evaluator, sampling density and evaluated geometry, and never treat subdivision level as representation conversion.
+13. `KERNEL RETURN / NOT-NULL / IsValid ≠ OPERATOR SEMANTIC SUCCESS`; operator claims require declared postconditions/invariants, failure sweeps and realized-geometry readback. Policy and transform state are part of the tested operator contract when they alter the result.
 
 ## Maturity boundary
 
