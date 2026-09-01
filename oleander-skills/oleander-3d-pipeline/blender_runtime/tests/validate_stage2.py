@@ -24,7 +24,7 @@ if str(RUNTIME_ROOT) not in sys.path:
 
 import oleander_blender
 from oleander_blender.bom import build_bom
-from oleander_blender.configuration import capture_configuration, restore_configuration
+from oleander_blender.configuration import capture_configuration, configuration_names, restore_configuration
 from oleander_blender.dependency import build_dependency_graph, detect_cycles, mark_downstream_stale
 from oleander_blender.direct_model import _mm_to_scene_units, _scene_units_to_mm
 from oleander_blender.geometry_diff import diff_from_baseline, store_baseline
@@ -46,6 +46,13 @@ def add_cube(name, location=(0.0, 0.0, 0.0)):
     obj = bpy.context.active_object
     obj.name = name
     return obj
+
+
+def find_by_ole_id(scene, ole_id):
+    for obj in scene.objects:
+        if getattr(obj, "oleander", None) and obj.oleander.ole_id == ole_id:
+            return obj
+    return None
 
 
 def main():
@@ -171,6 +178,26 @@ def main():
         f"mm -> scene units -> mm round trip should preserve 1000 mm; got {round_trip_mm!r}",
     )
 
+    # Persist the governed state through a real .blend save/reopen boundary.
+    reopen_path = "/tmp/oleander-stage2-reopen.blend"
+    bpy.ops.wm.save_as_mainfile(filepath=reopen_path)
+    assert_true(pathlib.Path(reopen_path).is_file(), "runtime fixture .blend should be written")
+    bpy.ops.wm.open_mainfile(filepath=reopen_path)
+
+    scene = bpy.context.scene
+    src = find_by_ole_id(scene, "OLE_TEST_SOURCE")
+    dst = find_by_ole_id(scene, "OLE_TEST_DERIVATIVE")
+    assert_true(src is not None and dst is not None, "OLE IDs must survive save/reopen")
+    assert_true(src.oleander.semantic_class == "test_part", "semantic class must survive save/reopen")
+    assert_true(src.oleander.part_number == "TEST-PART-001", "part number must survive save/reopen")
+    assert_true(dst.oleander.dependencies == "OLE_TEST_SOURCE", "dependency metadata must survive save/reopen")
+    assert_true("oleander_geometry_baseline" in src, "geometry baseline must survive save/reopen")
+    assert_true("NORMAL" in configuration_names(scene), "configuration index must survive save/reopen")
+    assert_true(src.oleander.field_state == "VERIFIED", "field state must survive save/reopen")
+    assert_true(src.oleander.engineering_state == "APPROVED", "engineering state must survive save/reopen")
+    assert_true(src.oleander.manufacturing_state == "RELEASED", "manufacturing state must survive save/reopen")
+    assert_true(src.oleander.design_review_state == "PASS", "design review state must survive save/reopen")
+
     bpy.context.view_layer.objects.active = src
     src.select_set(True)
     bpy.ops.oleander.run_audit()
@@ -211,6 +238,7 @@ def main():
             "review_state_separation",
             "scene_unit_scale_conversion",
             "scene_unit_scale_round_trip",
+            "blend_save_reopen_persistence",
             "audit_v0.2",
             "manifest_v0.2",
         ],
