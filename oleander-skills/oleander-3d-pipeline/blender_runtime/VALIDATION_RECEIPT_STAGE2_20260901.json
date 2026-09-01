@@ -1,0 +1,74 @@
+{
+  "schema": "OLEANDER_BLENDER_RUNTIME_VALIDATION_RECEIPT_v0.1",
+  "runtime_id": "oleander-blender-runtime",
+  "runtime_version": "0.2.0",
+  "validation_state": "PASS",
+  "validation_scope": "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE",
+  "tested_branch_head": "06c24ef754ba40d27ccd00cc098f0c499f7d623a",
+  "tested_pr_merge_commit": "a8adc168ae881cd1059a78fe79e4615e59cb02da",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Runtime 5.1",
+    "run_id": 33466570113,
+    "job_id": 99727552420,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "runner_image": "ubuntu-24.04",
+    "blender_version": "5.1.2",
+    "blender_build_hash": "ec6e62d40fa9",
+    "blender_build_date": "2026-05-19",
+    "blender_archive": "blender-5.1.2-linux-x64.tar.xz",
+    "blender_archive_sha256": "aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb",
+    "blender_source": "https://download.blender.org/release/Blender5.1/blender-5.1.2-linux-x64.tar.xz",
+    "checksum_manifest": "https://download.blender.org/release/Blender5.1/blender-5.1.2.sha256",
+    "checksum_manifest_result": "PASS"
+  },
+  "extension_package": {
+    "filename": "oleander_blender_runtime-0.2.0.zip",
+    "size_bytes": 22455,
+    "sha256": "0f7b930af6ca976f954997552f466264db9b156bbe4d2502140e776ad70f0583",
+    "source_manifest_validate": "PASS",
+    "build": "PASS",
+    "built_package_validate": "PASS"
+  },
+  "runtime_checks": [
+    "registration",
+    "persistent_metadata",
+    "dependency_graph",
+    "stale_propagation",
+    "geometry_baseline_diff",
+    "rename_is_not_geometry_change",
+    "mesh_content_hash",
+    "modifier_parameter_diff",
+    "configuration_capture_restore",
+    "bom_grouping_and_conflict_detection",
+    "review_state_separation",
+    "scene_unit_scale_conversion",
+    "scene_unit_scale_round_trip",
+    "blend_save_reopen_persistence",
+    "audit_v0.2",
+    "manifest_v0.2"
+  ],
+  "runtime_result": "PASS",
+  "parallel_gates_at_tested_head": {
+    "OLEANDER Blender Runtime Static": "PASS",
+    "AI Governance Evals": "PASS"
+  },
+  "non_claims": [
+    "field_truth",
+    "engineering_approval",
+    "manufacturing_release",
+    "constructability",
+    "class_a_surface_certification",
+    "solver_backed_cad_constraints",
+    "ifc_round_trip_certification",
+    "cae_solver_correctness",
+    "cam_postprocessor_correctness",
+    "design_pass"
+  ],
+  "invalidation_rule": "Any material change to Blender runtime Python code, blender_manifest.toml, geometry/authority semantics, validation logic, or supported Blender compatibility range requires a new runtime validation receipt before the changed capability is treated as validated.",
+  "authority_note": "This receipt validates the declared Stage-2 Blender runtime mechanics and extension package at the tested source state only. It does not create field, engineering, manufacturing, constructability or design authority."
+}
