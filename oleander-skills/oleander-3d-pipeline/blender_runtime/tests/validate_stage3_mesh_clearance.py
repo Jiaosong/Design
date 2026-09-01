@@ -45,6 +45,15 @@ def expect_value_error(fn, text):
     raise AssertionError(f"expected ValueError containing {text!r}")
 
 
+def expect_runtime_error(fn, text):
+    try:
+        fn()
+    except RuntimeError as exc:
+        assert_true(text in str(exc), f"expected runtime error containing {text!r}; got {exc!r}")
+        return
+    raise AssertionError(f"expected RuntimeError containing {text!r}")
+
+
 def source_fingerprint():
     paths = [path for path in ADDON_ROOT.rglob("*") if path.is_file() and path.suffix.lower() in {".py", ".json", ".toml"}]
     paths.append(SCRIPT)
@@ -146,8 +155,7 @@ def main():
     bpy.ops.object.select_all(action="DESELECT")
     lower.select_set(True)
     bpy.context.view_layer.objects.active = lower
-    invalid_op = bpy.ops.oleander.true_mesh_clearance()
-    assert_true("CANCELLED" in invalid_op, "mesh clearance operator must fail unless exactly two meshes are selected")
+    expect_runtime_error(lambda: bpy.ops.oleander.true_mesh_clearance(), "select exactly two mesh objects")
 
     # Persistence through .blend reopen.
     bpy.ops.object.select_all(action="DESELECT")
