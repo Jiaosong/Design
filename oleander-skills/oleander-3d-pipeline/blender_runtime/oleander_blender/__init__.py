@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 2, 0),
     "blender": (5, 1, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed identity, semantics, configurations, dependency/diff, BOM, audit and manifest workbench for OLEANDER 3D",
+    "description": "Governed identity, semantics, configurations, relation/dependency/diff, BOM, audit and manifest workbench for OLEANDER 3D",
     "category": "3D View",
 }
 
@@ -21,6 +21,8 @@ from .direct_model import CLASSES as DIRECT_MODEL_CLASSES
 from .feature_stack import CLASSES as FEATURE_STACK_CLASSES
 from .feature_edit import OPERATOR_CLASSES as FEATURE_EDIT_OPERATOR_CLASSES
 from .feature_edit import PANEL_CLASSES as FEATURE_EDIT_PANEL_CLASSES
+from .relation_kernel import OPERATOR_CLASSES as RELATION_OPERATOR_CLASSES
+from .relation_kernel import PANEL_CLASSES as RELATION_PANEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
 from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
 from .bom import CLASSES as BOM_CLASSES
@@ -35,6 +37,7 @@ OPERATOR_CLASSES = (
     *DIRECT_MODEL_CLASSES,
     *FEATURE_STACK_CLASSES,
     *FEATURE_EDIT_OPERATOR_CLASSES,
+    *RELATION_OPERATOR_CLASSES,
     *WORKBENCH_OPERATOR_CLASSES,
     *CONFIGURATION_CLASSES,
     *BOM_CLASSES,
@@ -44,6 +47,7 @@ PANEL_CLASSES = (
     OLEANDER_PT_runtime_panel,
     *WORKBENCH_PANEL_CLASSES,
     *FEATURE_EDIT_PANEL_CLASSES,
+    *RELATION_PANEL_CLASSES,
 )
 
 
