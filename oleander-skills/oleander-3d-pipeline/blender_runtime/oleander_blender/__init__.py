@@ -1,10 +1,10 @@
 bl_info = {
     "name": "OLEANDER Blender Runtime",
     "author": "OLEANDER",
-    "version": (0, 1, 0),
+    "version": (0, 2, 0),
     "blender": (5, 1, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed object identity, authority metadata, audit and manifest tools for OLEANDER 3D",
+    "description": "Governed identity, semantic metadata, dependency/diff, audit and manifest workbench for OLEANDER 3D",
     "category": "3D View",
 }
 
@@ -17,29 +17,43 @@ from .operators import (
     OLEANDER_OT_mark_stale,
     OLEANDER_OT_export_manifest,
 )
+from .direct_model import CLASSES as DIRECT_MODEL_CLASSES
+from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
 from .panel import OLEANDER_PT_runtime_panel
+from .workbench_panel import CLASSES as WORKBENCH_PANEL_CLASSES
 
-CLASSES = (
-    OLEANDER_ObjectMetadata,
+OPERATOR_CLASSES = (
     OLEANDER_OT_assign_identity,
     OLEANDER_OT_run_audit,
     OLEANDER_OT_mark_stale,
     OLEANDER_OT_export_manifest,
+    *DIRECT_MODEL_CLASSES,
+    *WORKBENCH_OPERATOR_CLASSES,
+)
+
+PANEL_CLASSES = (
     OLEANDER_PT_runtime_panel,
+    *WORKBENCH_PANEL_CLASSES,
 )
 
 
 def register():
-    for cls in CLASSES:
-        bpy.utils.register_class(cls)
+    bpy.utils.register_class(OLEANDER_ObjectMetadata)
     bpy.types.Object.oleander = bpy.props.PointerProperty(type=OLEANDER_ObjectMetadata)
+    for cls in OPERATOR_CLASSES:
+        bpy.utils.register_class(cls)
+    for cls in PANEL_CLASSES:
+        bpy.utils.register_class(cls)
 
 
 def unregister():
+    for cls in reversed(PANEL_CLASSES):
+        bpy.utils.unregister_class(cls)
+    for cls in reversed(OPERATOR_CLASSES):
+        bpy.utils.unregister_class(cls)
     if hasattr(bpy.types.Object, "oleander"):
         del bpy.types.Object.oleander
-    for cls in reversed(CLASSES):
-        bpy.utils.unregister_class(cls)
+    bpy.utils.unregister_class(OLEANDER_ObjectMetadata)
 
 
 if __name__ == "__main__":
