@@ -6,6 +6,8 @@ from collections import Counter
 import bpy
 import bmesh
 
+from .dependency import build_dependency_graph, detect_cycles
+
 
 def _is_identity_scale(obj, eps=1e-6):
     return all(abs(v - 1.0) <= eps for v in obj.scale)
@@ -48,6 +50,12 @@ def audit_scene(scene):
     object_ids = [obj.oleander.ole_id for obj in scene.objects if obj.oleander.ole_id]
     duplicates = sorted([ole_id for ole_id, n in Counter(object_ids).items() if n > 1])
 
+    dependency_graph = build_dependency_graph(scene)
+    dependency_cycles = detect_cycles(dependency_graph)
+    missing_object_dependencies = {
+        key: value for key, value in dependency_graph["missing"].items() if value
+    }
+
     object_results = []
     for obj in scene.objects:
         meta = obj.oleander
@@ -78,6 +86,13 @@ def audit_scene(scene):
         if meta.geometry_authority in {"FIELD_OPEN", "VISUAL_ONLY"}:
             issues.append("GEOMETRY_AUTHORITY_OPEN")
 
+        oid = meta.ole_id or obj.name
+        if oid in missing_object_dependencies:
+            issues.append("MISSING_OBJECT_DEPENDENCY")
+
+        geometry_state = "FAIL" if non_manifold or non_finite else "PASS"
+        obj["oleander_geometry_audit_state"] = geometry_state
+
         object_results.append(
             {
                 "name": obj.name,
@@ -89,21 +104,20 @@ def audit_scene(scene):
                 "engineering_state": meta.engineering_state,
                 "manufacturing_state": meta.manufacturing_state,
                 "stale": meta.stale,
+                "geometry_state": geometry_state,
                 "non_manifold_edges": non_manifold,
                 "non_finite_vertices": non_finite,
+                "missing_object_dependencies": missing_object_dependencies.get(oid, []),
                 "issues": issues,
             }
         )
 
     missing_images = _missing_image_paths()
-    geometry_issues = sum(
-        1
-        for result in object_results
-        if any(i in result["issues"] for i in ("NON_MANIFOLD_GEOMETRY", "NON_FINITE_VERTEX"))
-    )
+    geometry_issues = sum(1 for result in object_results if result["geometry_state"] == "FAIL")
+    dependency_fail = bool(missing_object_dependencies or dependency_cycles)
 
     result = {
-        "schema": "OLEANDER_BLENDER_AUDIT_v0.1",
+        "schema": "OLEANDER_BLENDER_AUDIT_v0.2",
         "blender_version": bpy.app.version_string,
         "scene": scene.name,
         "unit_system": unit.system,
@@ -111,10 +125,13 @@ def audit_scene(scene):
         "object_count": len(scene.objects),
         "duplicate_ole_ids": duplicates,
         "missing_image_paths": missing_images,
+        "missing_object_dependencies": missing_object_dependencies,
+        "dependency_cycles": dependency_cycles,
         "summary": {
-            "GEOMETRY": "PASS" if geometry_issues == 0 else "REVIEW",
-            "UNITS_AXES": "PASS" if unit.system != "NONE" else "REVIEW",
-            "DEPENDENCIES": "PASS" if not missing_images else "REVIEW",
+            "GEOMETRY": "PASS" if geometry_issues == 0 else "FAIL",
+            "UNITS_AXES": "PASS" if unit.system != "NONE" and unit.scale_length > 0 else "REVIEW",
+            "OBJECT_DEPENDENCIES": "FAIL" if dependency_fail else "PASS",
+            "RESOURCE_DEPENDENCIES": "REVIEW" if missing_images else "PASS",
             "ROUND_TRIP": "NOT_RUN",
             "DIMENSION_AUTHORITY": "MIXED_REVIEW",
             "FIELD_VERIFIED": "MIXED_REVIEW",
