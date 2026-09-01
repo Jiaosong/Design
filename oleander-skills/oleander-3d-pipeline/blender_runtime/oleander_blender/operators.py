@@ -5,6 +5,11 @@ from datetime import datetime, timezone
 import bpy
 
 from .audit import audit_scene
+from .dependency import dependency_ids
+from .geometry_diff import diff_from_baseline
+from .parametric import get_constraints, get_parameters
+from .review_state import summarize_object_state
+from .semantic import semantic_payload
 
 
 def _new_ole_id(obj):
@@ -80,6 +85,8 @@ class OLEANDER_OT_mark_stale(bpy.types.Operator):
             return {"CANCELLED"}
         for obj in selected:
             obj.oleander.stale = self.stale
+            if not self.stale and "oleander_stale_reason" in obj:
+                del obj["oleander_stale_reason"]
         self.report({"INFO"}, f"Updated stale state on {len(selected)} object(s)")
         return {"FINISHED"}
 
@@ -93,39 +100,56 @@ class OLEANDER_OT_export_manifest(bpy.types.Operator):
         objects = []
         for obj in context.scene.objects:
             meta = obj.oleander
+            geometry_diff = diff_from_baseline(obj)
             objects.append(
                 {
                     "name": obj.name,
                     "ole_id": meta.ole_id,
+                    "object_type": obj.type,
                     "object_class": meta.object_class,
+                    "semantic_class": meta.semantic_class,
                     "master_type": meta.master_type,
                     "master_locator": meta.master_locator,
                     "geometry_authority": meta.geometry_authority,
                     "material_authority": meta.material_authority,
+                    "material_spec": meta.material_spec,
+                    "fabrication_process": meta.fabrication_process,
+                    "evidence_state": meta.evidence_state,
                     "field_state": meta.field_state,
                     "engineering_state": meta.engineering_state,
                     "manufacturing_state": meta.manufacturing_state,
+                    "design_review_state": meta.design_review_state,
+                    "dependencies": dependency_ids(obj),
                     "lod": meta.lod,
                     "assembly_id": meta.assembly_id,
                     "stale": meta.stale,
-                    "object_type": obj.type,
+                    "stale_reason": obj.get("oleander_stale_reason", ""),
                     "location": list(obj.location),
                     "rotation_euler": list(obj.rotation_euler),
                     "scale": list(obj.scale),
                     "dimensions": list(obj.dimensions),
+                    "geometry_diff_state": geometry_diff["status"],
+                    "geometry_diff": geometry_diff["changed"],
+                    "parameters": get_parameters(obj),
+                    "constraints": get_constraints(obj),
+                    "semantics": semantic_payload(obj),
+                    "review": summarize_object_state(obj),
                 }
             )
 
         manifest = {
-            "schema": "OLEANDER_BLENDER_SCENE_MANIFEST_v0.1",
+            "schema": "OLEANDER_BLENDER_WORKBENCH_MANIFEST_v0.2",
             "generated_utc": datetime.now(timezone.utc).isoformat(),
             "blender_version": bpy.app.version_string,
             "blend_file": bpy.data.filepath,
-            "scene": context.scene.name,
-            "unit_system": context.scene.unit_settings.system,
-            "unit_scale_length": context.scene.unit_settings.scale_length,
+            "scene": {
+                "name": context.scene.name,
+                "unit_system": context.scene.unit_settings.system,
+                "unit_scale": context.scene.unit_settings.scale_length,
+                "dependency_audit_state": context.scene.get("oleander_dependency_audit_state", "NOT_RUN"),
+            },
             "objects": objects,
-            "authority_note": "Manifest records declared states; it does not create field, engineering, manufacturing or design approval.",
+            "authority_note": "Manifest records declared states and deterministic runtime observations; it does not create field, engineering, manufacturing, constructability or design approval.",
         }
 
         payload = json.dumps(manifest, indent=2, ensure_ascii=False)
