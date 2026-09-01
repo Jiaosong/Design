@@ -1,0 +1,79 @@
+name: OLEANDER Blender Runtime 5.1
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/**"
+      - ".github/workflows/oleander-blender-runtime-5-1.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/**"
+      - ".github/workflows/oleander-blender-runtime-5-1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  blender-5-1-2-runtime:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: "blender-5.1.2-linux-x64.tar.xz"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download official Blender release and checksum manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "${BLENDER_ARCHIVE}" \
+            "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "blender-${BLENDER_VERSION}.sha256" \
+            "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          test -s blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+
+      - name: Extract Blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xf "${BLENDER_ARCHIVE}"
+          test -x "blender-${BLENDER_VERSION}-linux-x64/blender"
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Run OLEANDER Stage 2 headless validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" \
+            --background \
+            --factory-startup \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage2.py \
+            2>&1 | tee /tmp/oleander-blender-stage2.log
+          grep -F 'OLEANDER_STAGE2_VALIDATION=' /tmp/oleander-blender-stage2.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage2.log
+
+      - name: Record runtime evidence summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Blender Runtime 5.1.2'
+            echo '- Source: official download.blender.org release archive + official SHA256 manifest.'
+            echo '- Scope: addon registration and deterministic Stage-2 mechanics only.'
+            echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, Class-A certification or design PASS.'
+            echo ''
+            if [ -f /tmp/oleander-blender-stage2.log ]; then
+              grep -F 'OLEANDER_STAGE2_VALIDATION=' /tmp/oleander-blender-stage2.log || true
+            else
+              echo '- Runtime validation log unavailable.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
