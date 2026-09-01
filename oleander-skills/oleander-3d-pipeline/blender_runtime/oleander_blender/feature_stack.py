@@ -69,6 +69,7 @@ def _record_feature(context, obj, modifier, kind, parameters, source_ids=None):
         "source_ids": list(source_ids or []),
         "editable": True,
         "applied": False,
+        "suppressed": False,
         "geometry_authority": "BLENDER_MODIFIER_NON_BREP",
     }
     history.append(entry)
@@ -90,6 +91,7 @@ def validate_feature_history(obj):
     missing = []
     type_mismatch = []
     order_drift = []
+    suppression_drift = []
     duplicate_feature_ids = []
     seen_ids = set()
 
@@ -115,23 +117,38 @@ def validate_feature_history(obj):
                     "current": current_index,
                 }
             )
+        expected_suppressed = bool(entry.get("suppressed", False))
+        actual_suppressed = not bool(modifier.show_viewport) or not bool(modifier.show_render)
+        if expected_suppressed != actual_suppressed:
+            suppression_drift.append(
+                {
+                    "feature_id": feature_id,
+                    "expected_suppressed": expected_suppressed,
+                    "actual_suppressed": actual_suppressed,
+                }
+            )
 
-    failures = missing or type_mismatch or order_drift or duplicate_feature_ids
+    active_indices = [entry.get("stack_index") for entry in history if isinstance(entry.get("stack_index"), int)]
+    history_order_drift = active_indices != sorted(active_indices)
+    failures = missing or type_mismatch or order_drift or suppression_drift or duplicate_feature_ids or history_order_drift
     return {
         "status": "FAIL" if failures else "PASS",
         "feature_count": len(history),
         "missing_modifiers": missing,
         "type_mismatch": type_mismatch,
         "order_drift": order_drift,
+        "suppression_drift": suppression_drift,
+        "history_order_drift": history_order_drift,
         "duplicate_feature_ids": duplicate_feature_ids,
     }
 
 
 def _ensure_dependency(obj, upstream_id):
     if not upstream_id:
-        return
+        return False
     current = dependency_ids(obj)
-    if upstream_id not in current:
+    added = upstream_id not in current
+    if added:
         current.append(upstream_id)
     meta = getattr(obj, "oleander", None)
     value = ",".join(current)
@@ -139,6 +156,7 @@ def _ensure_dependency(obj, upstream_id):
         meta.dependencies = value
     else:
         obj["oleander_dependencies"] = value
+    return added
 
 
 def _is_planar_mesh(obj, tolerance):
@@ -382,13 +400,18 @@ class OLEANDER_OT_add_boolean(bpy.types.Operator):
         if hasattr(modifier, "solver"):
             modifier.solver = "EXACT"
 
-        _ensure_dependency(obj, cutter_id)
+        dependency_added = _ensure_dependency(obj, cutter_id)
         _record_feature(
             context,
             obj,
             modifier,
             f"BOOLEAN_{self.operation}",
-            {"operation": self.operation, "cutter_id": cutter_id, "solver": getattr(modifier, "solver", "")},
+            {
+                "operation": self.operation,
+                "cutter_id": cutter_id,
+                "solver": getattr(modifier, "solver", ""),
+                "dependency_added_by_feature": dependency_added,
+            },
             source_ids=[cutter_id],
         )
         self.report({"INFO"}, f"Added governed Boolean {self.operation} using {cutter_id}")
