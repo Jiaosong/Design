@@ -4,15 +4,15 @@
   "runtime_version": "0.2.0",
   "validation_state": "PASS",
   "validation_scope": "STAGE3_PROCEDURAL_FOUNDATION",
-  "source_fingerprint_sha256": "e0d8b95e6cb1fffe99a4263e6814927a06b4277028c2b1f83235bdb564df21ff",
-  "tested_branch_head": "1befd7eecd54e98458cb22ae84b48b35c155fc00",
-  "tested_pr_merge_commit": "5d7645af197bd83b66b1ce253dc5812cede46065",
+  "source_fingerprint_sha256": "62d6fcdcaaf6393aa4772ede20e35c55c8ddf2acada9a2e85d1ad549d25f3abc",
+  "tested_branch_head": "5fb5566dd8985dddac63d9abf2832b1aad036661",
+  "tested_pr_merge_commit": "0352593ffd1afabc42e68d783c03d7e0053b8869",
   "repository": "Jiaosong/Design",
   "pull_request": 470,
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.1",
-    "run_id": 33488788438,
-    "job_id": 99795059516,
+    "run_id": 33492711838,
+    "job_id": 99807705729,
     "conclusion": "success"
   },
   "host": {
@@ -25,8 +25,8 @@
   },
   "extension_package": {
     "filename": "oleander_blender_runtime-0.2.0.zip",
-    "size_bytes": 24741,
-    "sha256": "d42095e899f79e61e4c698c3c624f3c3e444b9ab29cd3362eb002e91e86eda3a",
+    "size_bytes": 28811,
+    "sha256": "a39a50c7918bc0c590c483a9d663791f079afc04ba73fa282393a35f4bdd71d8",
     "source_manifest_validate": "PASS",
     "build": "PASS",
     "built_package_validate": "PASS"
@@ -47,6 +47,7 @@
   ],
   "stage2_regression_in_same_job": "PASS",
   "stage3_direct_regression_in_same_job": "PASS",
+  "stage3_feature_stack_regression_in_same_job": "PASS",
   "runtime_result": "PASS",
   "non_claims": [
     "solver_backed_constraints",
