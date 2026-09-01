@@ -92,6 +92,18 @@ jobs:
           grep -F 'OLEANDER_STAGE3_DIRECT_VALIDATION=' /tmp/oleander-blender-stage3-direct.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-direct.log
 
+      - name: Run OLEANDER Stage 3 Procedural Foundation validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" \
+            --background \
+            --factory-startup \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_procedural.py \
+            2>&1 | tee /tmp/oleander-blender-stage3-procedural.log
+          grep -F 'OLEANDER_STAGE3_PROCEDURAL_VALIDATION=' /tmp/oleander-blender-stage3-procedural.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-procedural.log
+
       - name: Record runtime evidence summary
         if: always()
         shell: bash
@@ -101,8 +113,9 @@ jobs:
             echo '- Source: official download.blender.org release archive + official SHA256 manifest.'
             echo '- Extension: source validate + build + built-ZIP validate.'
             echo '- Stage 2: governed core regression including .blend save/reopen persistence.'
-            echo '- Stage 3: direct metric dimensions + governed linear duplicate runtime validation.'
-            echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, CAD/Class-A certification or design PASS.'
+            echo '- Stage 3 Direct: metric dimensions + governed linear duplicate.'
+            echo '- Stage 3 Procedural: parameter/constraint metadata + governed Geometry Nodes passthrough probe.'
+            echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, solver/CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
             if [ -f /tmp/oleander-blender-archive.sha256 ]; then
               echo '### Blender archive SHA256'
@@ -117,7 +130,11 @@ jobs:
               grep -F 'OLEANDER_STAGE2_VALIDATION=' /tmp/oleander-blender-stage2.log || true
             fi
             if [ -f /tmp/oleander-blender-stage3-direct.log ]; then
-              echo '### Stage 3 Direct Modeling result'
+              echo '### Stage 3 Direct result'
               grep -F 'OLEANDER_STAGE3_DIRECT_VALIDATION=' /tmp/oleander-blender-stage3-direct.log || true
+            fi
+            if [ -f /tmp/oleander-blender-stage3-procedural.log ]; then
+              echo '### Stage 3 Procedural Foundation result'
+              grep -F 'OLEANDER_STAGE3_PROCEDURAL_VALIDATION=' /tmp/oleander-blender-stage3-procedural.log || true
             fi
           } >> "$GITHUB_STEP_SUMMARY"
