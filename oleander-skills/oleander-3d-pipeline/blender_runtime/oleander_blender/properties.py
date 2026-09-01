@@ -66,6 +66,10 @@ class OLEANDER_ObjectMetadata(bpy.types.PropertyGroup):
         name="Semantic Class",
         description="Project/domain semantic class such as structural_beam, display_panel, landscape_path or product_shell",
     )
+    part_number: bpy.props.StringProperty(
+        name="Part Number",
+        description="Stable part/item code used for BOM grouping. It does not imply manufacturing release.",
+    )
     master_type: bpy.props.EnumProperty(name="Master Type", items=MASTER_TYPES, default="BLENDER_NATIVE")
     master_locator: bpy.props.StringProperty(name="Master Locator")
     geometry_authority: bpy.props.EnumProperty(
