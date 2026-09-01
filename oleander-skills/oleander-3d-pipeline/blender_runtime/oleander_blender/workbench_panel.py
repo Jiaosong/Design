@@ -1,6 +1,8 @@
 import json
 import bpy
 
+from .configuration import configuration_names
+
 
 class OLEANDER_PT_workbench(bpy.types.Panel):
     bl_label = "OLEANDER Workbench"
@@ -18,6 +20,20 @@ class OLEANDER_PT_workbench(bpy.types.Panel):
         direct.operator("oleander.apply_metric_dimensions", icon="DRIVER_DISTANCE")
         direct.operator("oleander.duplicate_linear", icon="DUPLICATE")
 
+        config = layout.box()
+        config.label(text="Configurations")
+        row = config.row(align=True)
+        row.operator("oleander.save_configuration", icon="ADD")
+        row.operator("oleander.restore_configuration", icon="RECOVER_LAST")
+        config.operator("oleander.list_configurations", icon="TEXT")
+        names = configuration_names(context.scene)
+        if names:
+            config.label(text="Saved: " + ", ".join(names[:4]))
+            if len(names) > 4:
+                config.label(text=f"+ {len(names) - 4} more")
+        else:
+            config.label(text="Saved: none")
+
         graph = layout.box()
         graph.label(text="Dependency Graph")
         graph.operator("oleander.mark_dependents_stale", icon="FILE_REFRESH")
@@ -32,8 +48,9 @@ class OLEANDER_PT_workbench(bpy.types.Panel):
         diff.operator("oleander.diff_geometry", icon="ARROW_LEFTRIGHT")
 
         semantic = layout.box()
-        semantic.label(text="Semantic Snapshot")
+        semantic.label(text="Semantic / Quantity")
         semantic.operator("oleander.snapshot_semantics", icon="PRESET")
+        semantic.operator("oleander.build_bom", icon="OUTLINER_COLLECTION")
 
         review = layout.box()
         review.label(text="Review State")
