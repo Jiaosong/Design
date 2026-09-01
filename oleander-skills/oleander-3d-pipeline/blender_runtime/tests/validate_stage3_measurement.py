@@ -159,6 +159,20 @@ def main():
     )
     assert_true((constrained.matrix_world.translation - before_constrained).length <= 1e-12, "blocked quantize must not mutate constrained object")
 
+    # Batch preflight must be atomic: a constrained later item cannot leave an earlier item snapped.
+    atomic_free = add_cube("OLE_SNAP_ATOMIC_FREE", "OLE_SNAP_ATOMIC_FREE", (117.0, 0.0, 0.0))
+    atomic_blocked = add_cube("OLE_SNAP_ATOMIC_BLOCKED", "OLE_SNAP_ATOMIC_BLOCKED", (237.0, 0.0, 0.0))
+    atomic_constraint = atomic_blocked.constraints.new(type="COPY_LOCATION")
+    atomic_constraint.name = "ATOMIC_BATCH_AUTHORITY"
+    atomic_free_before = atomic_free.matrix_world.translation.copy()
+    atomic_blocked_before = atomic_blocked.matrix_world.translation.copy()
+    expect_value_error(
+        lambda: quantize_world_location(scene, [atomic_free, atomic_blocked], 10.0),
+        "external transform authority",
+    )
+    assert_true((atomic_free.matrix_world.translation - atomic_free_before).length <= 1e-12, "failed batch preflight must not partially snap earlier objects")
+    assert_true((atomic_blocked.matrix_world.translation - atomic_blocked_before).length <= 1e-12, "failed batch preflight must not mutate constrained object")
+
     # Editable world ruler: 1000 mm, 10 mm minor ticks, 100 mm major ticks.
     ruler = create_ruler_guide(
         bpy.context,
@@ -170,6 +184,7 @@ def main():
         labels=True,
         label_every_major=2,
     )
+    ruler_name = ruler.name
     assert_true(ruler.get("oleander_reference_guide") is True, "ruler must be explicitly reference-only")
     assert_true(ruler.get("oleander_guide_authority") == "REFERENCE_ONLY_NOT_MODEL_GEOMETRY", "ruler authority must deny model-geometry status")
     assert_true(ruler.hide_render and ruler.show_in_front, "ruler must be non-rendering foreground guidance")
@@ -185,7 +200,7 @@ def main():
 
     # Rulers are support objects and must not pollute model audit with missing IDs/non-manifold edge failures.
     audited = audit_scene(scene)
-    ruler_result = next(item for item in audited["objects"] if item["name"] == ruler.name)
+    ruler_result = next(item for item in audited["objects"] if item["name"] == ruler_name)
     assert_true(ruler_result["scope"] == "REFERENCE_GUIDE" and ruler_result["issues"] == [], "ruler must audit as reference guide without model issues")
     assert_true(audited["reference_guide_count"] >= 7, "ruler and generated labels must be counted as reference guides")
 
@@ -221,7 +236,7 @@ def main():
     bpy.ops.wm.save_as_mainfile(filepath=reopen_path)
     bpy.ops.wm.open_mainfile(filepath=reopen_path)
     reopened_scene = bpy.context.scene
-    reopened_ruler = bpy.data.objects.get(ruler.name)
+    reopened_ruler = bpy.data.objects.get(ruler_name)
     assert_true(reopened_ruler is not None and reopened_ruler.get("oleander_guide_kind") == "WORLD_RULER", "ruler must survive .blend reopen")
     assert_true(profile_values(reopened_scene)["profile"] == "PRODUCT", "measurement profile must survive .blend reopen")
     assert_true(SNAPSHOT_KEY in reopened_scene, "measurement snapshot must survive .blend reopen")
@@ -245,6 +260,8 @@ def main():
             "exact_mm_nudge",
             "external_transform_authority_quantize_failure",
             "external_authority_failure_no_transform_mutation",
+            "atomic_multi_object_quantize_preflight",
+            "atomic_quantize_failure_no_partial_mutation",
             "world_ruler_editable_mesh",
             "world_ruler_minor_major_tick_counts",
             "world_ruler_metric_baseline",
@@ -262,6 +279,7 @@ def main():
         ],
         "expected_failure_cases": {
             "external_transform_authority": "PASS",
+            "atomic_batch_transform_authority": "PASS",
             "irregular_ruler_interval": "PASS",
             "excessive_ruler_intervals": "PASS",
             "excessive_ruler_labels": "PASS",
