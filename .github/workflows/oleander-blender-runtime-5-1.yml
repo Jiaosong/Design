@@ -138,6 +138,16 @@ jobs:
           grep -F 'OLEANDER_STAGE3_MEASUREMENT_VALIDATION=' /tmp/oleander-blender-stage3-measurement.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-measurement.log
 
+      - name: Run OLEANDER Stage 3 Angular / Datum / Construction validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_angular_datum.py \
+            2>&1 | tee /tmp/oleander-blender-stage3-angular-datum.log
+          grep -F 'OLEANDER_STAGE3_ANGULAR_DATUM_VALIDATION=' /tmp/oleander-blender-stage3-angular-datum.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-angular-datum.log
+
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
@@ -163,6 +173,7 @@ jobs:
             echo '- Stage 3 Relation Kernel: check-only driver→driven relations, tolerances, cycle prevention, stale propagation, tombstones and dependency ownership.'
             echo '- Stage 3 Relation Apply: deterministic one-shot translation restore with PASS-direction capture and explicit multi-solution/external-authority failure gates.'
             echo '- Stage 3 Measurement: scene-unit-aware profiles, exact snap/nudge, selection measure snapshots, editable world rulers with major/minor ticks and reference-guide audit scoping.'
+            echo '- Stage 3 Angular/Datum: deterministic rotation snap/nudge plus reference-only angle, datum-axis, datum-plane and construction-line guides.'
             echo '- Stage 3 Procedural: parameter/constraint metadata + governed Geometry Nodes passthrough probe.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, iterative solver/CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
@@ -182,6 +193,7 @@ jobs:
               'Stage 3 Relation Kernel|/tmp/oleander-blender-stage3-relations.log|OLEANDER_STAGE3_RELATION_VALIDATION=' \
               'Stage 3 Relation Apply|/tmp/oleander-blender-stage3-relation-apply.log|OLEANDER_STAGE3_RELATION_APPLY_VALIDATION=' \
               'Stage 3 Measurement|/tmp/oleander-blender-stage3-measurement.log|OLEANDER_STAGE3_MEASUREMENT_VALIDATION=' \
+              'Stage 3 Angular Datum|/tmp/oleander-blender-stage3-angular-datum.log|OLEANDER_STAGE3_ANGULAR_DATUM_VALIDATION=' \
               'Stage 3 Procedural Foundation|/tmp/oleander-blender-stage3-procedural.log|OLEANDER_STAGE3_PROCEDURAL_VALIDATION='
             do
               IFS='|' read -r title file marker <<< "$item"
