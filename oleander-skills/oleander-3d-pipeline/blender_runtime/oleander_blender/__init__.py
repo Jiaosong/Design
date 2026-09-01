@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 2, 0),
     "blender": (5, 1, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed identity, semantic metadata, dependency/diff, audit and manifest workbench for OLEANDER 3D",
+    "description": "Governed identity, semantics, configurations, dependency/diff, BOM, audit and manifest workbench for OLEANDER 3D",
     "category": "3D View",
 }
 
@@ -19,6 +19,8 @@ from .operators import (
 )
 from .direct_model import CLASSES as DIRECT_MODEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
+from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
+from .bom import CLASSES as BOM_CLASSES
 from .panel import OLEANDER_PT_runtime_panel
 from .workbench_panel import CLASSES as WORKBENCH_PANEL_CLASSES
 
@@ -29,6 +31,8 @@ OPERATOR_CLASSES = (
     OLEANDER_OT_export_manifest,
     *DIRECT_MODEL_CLASSES,
     *WORKBENCH_OPERATOR_CLASSES,
+    *CONFIGURATION_CLASSES,
+    *BOM_CLASSES,
 )
 
 PANEL_CLASSES = (
