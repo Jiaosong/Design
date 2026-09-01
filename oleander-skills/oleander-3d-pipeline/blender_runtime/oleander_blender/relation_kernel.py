@@ -5,7 +5,6 @@ import bpy
 from mathutils import Vector
 
 from .dependency import build_dependency_graph, dependency_ids, mark_downstream_stale, object_id
-from .direct_model import _scene_units_to_mm
 
 
 RELATIONS_KEY = "oleander_relations"
@@ -86,6 +85,22 @@ def _axis_index(axis):
     return {"X": 0, "Y": 1, "Z": 2}[axis]
 
 
+def _update_scene_transforms(scene):
+    """Flush transform evaluation before measuring world-space relations.
+
+    Headless Blender can retain a stale matrix_world immediately after scripted
+    object creation or transform mutation. Relation checks therefore force a
+    view-layer update instead of relying on UI redraw side effects.
+    """
+    for view_layer in scene.view_layers:
+        view_layer.update()
+
+
+def _scene_value_to_mm(scene, value_scene):
+    scale_length = scene.unit_settings.scale_length or 1.0
+    return value_scene * scale_length * 1000.0
+
+
 def _world_axis(obj, axis):
     unit = Vector((0.0, 0.0, 0.0))
     unit[_axis_index(axis)] = 1.0
@@ -96,14 +111,15 @@ def _world_axis(obj, axis):
 
 
 def _actual_metric(scene, driver, driven, kind, axis):
+    _update_scene_transforms(scene)
     driver_origin = driver.matrix_world.translation
     driven_origin = driven.matrix_world.translation
     delta = driven_origin - driver_origin
 
     if kind in {"ORIGIN_DISTANCE", "ORIGIN_COINCIDENT"}:
-        return "mm", _scene_units_to_mm(type("Context", (), {"scene": scene})(), delta.length)
+        return "mm", _scene_value_to_mm(scene, delta.length)
     if kind == "AXIS_OFFSET":
-        return "mm", _scene_units_to_mm(type("Context", (), {"scene": scene})(), delta[_axis_index(axis)])
+        return "mm", _scene_value_to_mm(scene, delta[_axis_index(axis)])
     if kind == "AXIS_PARALLEL":
         a = _world_axis(driver, axis)
         b = _world_axis(driven, axis)
@@ -113,9 +129,7 @@ def _actual_metric(scene, driver, driven, kind, axis):
 
 
 def _relation_target(kind, target_mm):
-    if kind == "ORIGIN_COINCIDENT":
-        return 0.0
-    if kind == "AXIS_PARALLEL":
+    if kind in {"ORIGIN_COINCIDENT", "AXIS_PARALLEL"}:
         return 0.0
     return float(target_mm)
 
@@ -449,7 +463,7 @@ class OLEANDER_OT_remove_relation(bpy.types.Operator):
 
     def execute(self, context):
         try:
-            tombstone = remove_relation(context.scene, self.relation_id)
+            remove_relation(context.scene, self.relation_id)
         except ValueError as exc:
             self.report({"ERROR"}, str(exc))
             return {"CANCELLED"}
