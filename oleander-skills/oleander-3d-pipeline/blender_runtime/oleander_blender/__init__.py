@@ -4,7 +4,7 @@ bl_info = {
     "version": (0, 2, 0),
     "blender": (5, 1, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed identity, semantics, configurations, relation/dependency/diff, measurement, datum, precision inference, BOM, audit and manifest workbench for OLEANDER 3D",
+    "description": "Governed identity, semantics, configurations, relation/dependency/diff, measurement, datum, precision inference, mesh clearance, BOM, audit and manifest workbench for OLEANDER 3D",
     "category": "3D View",
 }
 
@@ -33,6 +33,10 @@ from .angular_datum import OPERATOR_CLASSES as ANGULAR_DATUM_OPERATOR_CLASSES
 from .angular_datum import PANEL_CLASSES as ANGULAR_DATUM_PANEL_CLASSES
 from .precision_inference import OPERATOR_CLASSES as PRECISION_INFERENCE_OPERATOR_CLASSES
 from .precision_inference import PANEL_CLASSES as PRECISION_INFERENCE_PANEL_CLASSES
+from .inference_engine import OPERATOR_CLASSES as INFERENCE_V2_OPERATOR_CLASSES
+from .inference_engine import PANEL_CLASSES as INFERENCE_V2_PANEL_CLASSES
+from .mesh_clearance import OPERATOR_CLASSES as MESH_CLEARANCE_OPERATOR_CLASSES
+from .mesh_clearance import PANEL_CLASSES as MESH_CLEARANCE_PANEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
 from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
 from .bom import CLASSES as BOM_CLASSES
@@ -54,6 +58,8 @@ OPERATOR_CLASSES = (
     *MEASUREMENT_OPERATOR_CLASSES,
     *ANGULAR_DATUM_OPERATOR_CLASSES,
     *PRECISION_INFERENCE_OPERATOR_CLASSES,
+    *INFERENCE_V2_OPERATOR_CLASSES,
+    *MESH_CLEARANCE_OPERATOR_CLASSES,
     *WORKBENCH_OPERATOR_CLASSES,
     *CONFIGURATION_CLASSES,
     *BOM_CLASSES,
@@ -68,6 +74,8 @@ PANEL_CLASSES = (
     *MEASUREMENT_PANEL_CLASSES,
     *ANGULAR_DATUM_PANEL_CLASSES,
     *PRECISION_INFERENCE_PANEL_CLASSES,
+    *INFERENCE_V2_PANEL_CLASSES,
+    *MESH_CLEARANCE_PANEL_CLASSES,
 )
 
 
