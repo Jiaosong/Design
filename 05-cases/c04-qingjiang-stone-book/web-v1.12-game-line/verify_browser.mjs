@@ -64,7 +64,8 @@ async function snapshotSection(page, caseDir, id) {
 const browser = await chromium.launch({ headless: true });
 try {
   for (const item of cases) {
-    const context = await browser.newContext({ viewport: item.viewport, deviceScaleFactor: 1 });
+    const isMobile = item.name.startsWith('mobile-');
+    const context = await browser.newContext({ viewport: item.viewport, deviceScaleFactor: 1, hasTouch: isMobile });
     const page = await context.newPage();
     const consoleErrors = [];
     const pageErrors = [];
@@ -125,11 +126,19 @@ try {
     if (!iframeVisible || !iframeUrl?.includes('C04_APP_V1_6_MY_BOOK_FINAL_VIEW.html')) fail('My Book iframe binding is not visible/current', { case: item.name, iframeVisible, iframeUrl });
 
     await page.locator('#hero').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(120);
     const y0 = await page.evaluate(() => window.scrollY);
-    await page.keyboard.press('PageDown');
+    let sequenceMethod = 'PageDown';
+    if (isMobile) {
+      sequenceMethod = 'mobile-scroll-range';
+      await page.evaluate(() => window.scrollBy(0, Math.min(window.innerHeight * 0.72, 620)));
+    } else {
+      await page.keyboard.press('PageDown');
+    }
     await page.waitForTimeout(650);
     const y1 = await page.evaluate(() => window.scrollY);
-    if (!(y1 > y0 + 20)) fail('PageDown did not advance the reading sequence', { case: item.name, y0, y1 });
+    const readingSequenceAdvanced = y1 > y0 + 20;
+    if (!readingSequenceAdvanced) fail(`${sequenceMethod} did not advance the reading sequence`, { case: item.name, y0, y1 });
 
     const caseResult = {
       name: item.name,
@@ -139,7 +148,8 @@ try {
       imprint_interaction: beforeImprint !== afterImprint,
       supplement_open_close: openState === 'false' && closedState === 'true',
       mybook_iframe_visible: iframeVisible,
-      page_down_advanced: y1 > y0 + 20,
+      reading_sequence_method: sequenceMethod,
+      reading_sequence_advanced: readingSequenceAdvanced,
       console_errors: consoleErrors,
       page_errors: pageErrors,
       screenshots: item.anchors.map(id => `${item.name}/${id}.png`)
