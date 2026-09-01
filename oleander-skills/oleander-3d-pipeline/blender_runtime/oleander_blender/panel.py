@@ -35,6 +35,7 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
         box.prop(meta, "ole_id")
         box.prop(meta, "object_class")
         box.prop(meta, "semantic_class")
+        box.prop(meta, "part_number")
         box.prop(meta, "master_type")
         if meta.master_type != "BLENDER_NATIVE":
             box.prop(meta, "master_locator")
