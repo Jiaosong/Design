@@ -11,6 +11,7 @@ engineering approval, manufacturing release, constructability or design quality.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import pathlib
 import sys
@@ -19,10 +20,13 @@ import bpy
 
 SCRIPT = pathlib.Path(__file__).resolve()
 RUNTIME_ROOT = SCRIPT.parents[1]
+PIPELINE_ROOT = SCRIPT.parents[2]
+ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
 if str(RUNTIME_ROOT) not in sys.path:
     sys.path.insert(0, str(RUNTIME_ROOT))
 
 import oleander_blender
+from oleander_blender.audit import audit_scene
 from oleander_blender.bom import build_bom
 from oleander_blender.configuration import capture_configuration, configuration_names, restore_configuration
 from oleander_blender.dependency import build_dependency_graph, detect_cycles, mark_downstream_stale
@@ -34,6 +38,23 @@ from oleander_blender.review_state import summarize_object_state
 def assert_true(condition, message):
     if not condition:
         raise AssertionError(message)
+
+
+def runtime_source_fingerprint():
+    paths = [
+        path
+        for path in ADDON_ROOT.rglob("*")
+        if path.is_file() and path.suffix.lower() in {".py", ".json", ".toml"}
+    ]
+    paths.append(SCRIPT)
+    digest = hashlib.sha256()
+    for path in sorted(set(paths), key=lambda item: item.as_posix()):
+        rel = path.relative_to(PIPELINE_ROOT).as_posix().encode("utf-8")
+        digest.update(rel)
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def clear_scene():
@@ -53,6 +74,99 @@ def find_by_ole_id(scene, ole_id):
         if getattr(obj, "oleander", None) and obj.oleander.ole_id == ole_id:
             return obj
     return None
+
+
+def delete_objects(objects):
+    for obj in objects:
+        if obj and obj.name in bpy.data.objects:
+            bpy.data.objects.remove(obj, do_unlink=True)
+
+
+def run_expected_failure_cases(scene):
+    """Prove invalid governed states fail visibly in a real Blender process."""
+    results = {}
+
+    # 1) Duplicate OLE IDs must be detected, then the repair operator must make
+    # the selected pair unique without silently accepting the collision.
+    dup_a = add_cube("OLE_FAIL_DUP_A", location=(10.0, 0.0, 0.0))
+    dup_b = add_cube("OLE_FAIL_DUP_B", location=(12.0, 0.0, 0.0))
+    dup_a.oleander.ole_id = "OLE_DUPLICATE_EXPECTED_FAIL"
+    dup_b.oleander.ole_id = "OLE_DUPLICATE_EXPECTED_FAIL"
+    duplicate_audit = audit_scene(scene)
+    assert_true(
+        "OLE_DUPLICATE_EXPECTED_FAIL" in duplicate_audit["duplicate_ole_ids"],
+        "duplicate OLE ID fixture must be detected",
+    )
+    duplicate_issue_count = sum(
+        1 for item in duplicate_audit["objects"] if "DUPLICATE_OLE_ID" in item["issues"]
+    )
+    assert_true(duplicate_issue_count == 2, "both colliding objects must carry DUPLICATE_OLE_ID")
+
+    bpy.ops.object.select_all(action="DESELECT")
+    dup_a.select_set(True)
+    dup_b.select_set(True)
+    bpy.context.view_layer.objects.active = dup_a
+    repair_result = bpy.ops.oleander.assign_identity()
+    assert_true("FINISHED" in repair_result, "identity collision repair operator must finish")
+    assert_true(dup_a.oleander.ole_id != dup_b.oleander.ole_id, "repair must produce unique OLE IDs")
+    assert_true(dup_a.oleander.ole_id and dup_b.oleander.ole_id, "repair must leave both objects identified")
+    repaired_audit = audit_scene(scene)
+    assert_true(
+        "OLE_DUPLICATE_EXPECTED_FAIL" not in repaired_audit["duplicate_ole_ids"],
+        "repaired scene must no longer report the original duplicate ID",
+    )
+    results["duplicate_ole_id_detect_and_repair"] = "PASS"
+    delete_objects([dup_a, dup_b])
+
+    # 2) Missing dependency must force OBJECT_DEPENDENCIES=FAIL and be attached
+    # to the declaring object, rather than degrading to a warning/pass.
+    missing_obj = add_cube("OLE_FAIL_MISSING_DEP", location=(14.0, 0.0, 0.0))
+    missing_obj.oleander.ole_id = "OLE_FAIL_MISSING_DEP"
+    missing_obj.oleander.dependencies = "OLE_DOES_NOT_EXIST"
+    missing_graph = build_dependency_graph(scene)
+    assert_true(
+        missing_graph["missing"].get("OLE_FAIL_MISSING_DEP") == ["OLE_DOES_NOT_EXIST"],
+        "missing dependency graph entry must preserve the unresolved OLE ID",
+    )
+    missing_audit = audit_scene(scene)
+    assert_true(
+        missing_audit["summary"]["OBJECT_DEPENDENCIES"] == "FAIL",
+        "missing dependency must fail OBJECT_DEPENDENCIES",
+    )
+    missing_record = next(item for item in missing_audit["objects"] if item["ole_id"] == "OLE_FAIL_MISSING_DEP")
+    assert_true(
+        "MISSING_OBJECT_DEPENDENCY" in missing_record["issues"],
+        "declaring object must expose MISSING_OBJECT_DEPENDENCY",
+    )
+    results["missing_dependency_expected_failure"] = "PASS"
+    delete_objects([missing_obj])
+
+    # 3) Dependency cycles must be positively detected and fail the dependency
+    # gate. This prevents a cyclic graph from being treated as a valid build.
+    cycle_a = add_cube("OLE_FAIL_CYCLE_A", location=(16.0, 0.0, 0.0))
+    cycle_b = add_cube("OLE_FAIL_CYCLE_B", location=(18.0, 0.0, 0.0))
+    cycle_a.oleander.ole_id = "OLE_FAIL_CYCLE_A"
+    cycle_b.oleander.ole_id = "OLE_FAIL_CYCLE_B"
+    cycle_a.oleander.dependencies = "OLE_FAIL_CYCLE_B"
+    cycle_b.oleander.dependencies = "OLE_FAIL_CYCLE_A"
+    cycle_graph = build_dependency_graph(scene)
+    cycles = detect_cycles(cycle_graph)
+    assert_true(cycles, "dependency cycle fixture must produce at least one cycle")
+    flattened = {node for cycle in cycles for node in cycle}
+    assert_true(
+        {"OLE_FAIL_CYCLE_A", "OLE_FAIL_CYCLE_B"}.issubset(flattened),
+        "detected cycle must contain both cyclic OLE IDs",
+    )
+    cycle_audit = audit_scene(scene)
+    assert_true(
+        cycle_audit["summary"]["OBJECT_DEPENDENCIES"] == "FAIL",
+        "dependency cycle must fail OBJECT_DEPENDENCIES",
+    )
+    assert_true(cycle_audit["dependency_cycles"], "audit payload must expose dependency cycle evidence")
+    results["dependency_cycle_expected_failure"] = "PASS"
+    delete_objects([cycle_a, cycle_b])
+
+    return results
 
 
 def main():
@@ -83,6 +197,9 @@ def main():
     assert_true(not graph["missing"], "declared source dependency should resolve")
     assert_true(not detect_cycles(graph), "simple source->derivative graph should be acyclic")
 
+    expected_failures = run_expected_failure_cases(scene)
+    assert_true(len(scene.objects) == 2, "failure fixtures must cleanly remove temporary objects")
+
     changed = mark_downstream_stale(["OLE_TEST_SOURCE"], scene=scene)
     assert_true("OLE_TEST_DERIVATIVE" in changed, "downstream object should be marked stale")
     assert_true(dst.oleander.stale, "downstream stale flag should persist on metadata")
@@ -99,7 +216,6 @@ def main():
     assert_true(geo_diff["status"] == "CHANGED", "geometry diff should detect changed dimensions")
     assert_true(any(item["field"] == "dimensions" for item in geo_diff["changed"]), "dimension change should be explicit")
 
-    # Stable identity means ordinary object renaming must not become geometry change.
     store_baseline(src)
     original_name = src.name
     src.name = "OLE_TEST_SOURCE_RENAMED"
@@ -107,9 +223,6 @@ def main():
     assert_true(rename_diff["status"] == "UNCHANGED", "object rename must not be reported as geometry change")
     src.name = original_name
 
-    # Move one cube vertex inward. Other cube vertices preserve the same outer
-    # bounds, so this specifically proves content hashing catches a shape edit
-    # that count/bounds-only signatures would miss.
     store_baseline(src)
     original_vertex = src.data.vertices[0].co.copy()
     src.data.vertices[0].co *= 0.9
@@ -123,8 +236,6 @@ def main():
     src.data.vertices[0].co = original_vertex
     src.data.update()
 
-    # Modifier parameter edits are part of geometric intent and must invalidate
-    # a stored baseline even when raw mesh topology is unchanged.
     bevel = src.modifiers.new(name="OLE_TEST_BEVEL", type="BEVEL")
     bevel.width = 0.01
     bpy.context.view_layer.update()
@@ -178,7 +289,6 @@ def main():
         f"mm -> scene units -> mm round trip should preserve 1000 mm; got {round_trip_mm!r}",
     )
 
-    # Persist the governed state through a real .blend save/reopen boundary.
     reopen_path = "/tmp/oleander-stage2-reopen.blend"
     bpy.ops.wm.save_as_mainfile(filepath=reopen_path)
     assert_true(pathlib.Path(reopen_path).is_file(), "runtime fixture .blend should be written")
@@ -224,9 +334,14 @@ def main():
         "version": "0.2.0",
         "blender": bpy.app.version_string,
         "status": "PASS",
+        "source_fingerprint_sha256": runtime_source_fingerprint(),
         "checks": [
             "registration",
             "persistent_metadata",
+            "duplicate_ole_id_expected_failure",
+            "identity_collision_repair_operator",
+            "missing_dependency_expected_failure",
+            "dependency_cycle_expected_failure",
             "dependency_graph",
             "stale_propagation",
             "geometry_baseline_diff",
@@ -242,6 +357,7 @@ def main():
             "audit_v0.2",
             "manifest_v0.2",
         ],
+        "expected_failure_cases": expected_failures,
         "non_claims": [
             "field_truth",
             "engineering_approval",
