@@ -2,6 +2,7 @@ import json
 import bpy
 
 from .configuration import configuration_names
+from .feature_stack import get_feature_history
 
 
 class OLEANDER_PT_workbench(bpy.types.Panel):
@@ -19,6 +20,33 @@ class OLEANDER_PT_workbench(bpy.types.Panel):
         direct.label(text="Direct Modeling")
         direct.operator("oleander.apply_metric_dimensions", icon="DRIVER_DISTANCE")
         direct.operator("oleander.duplicate_linear", icon="DUPLICATE")
+
+        features = layout.box()
+        features.label(text="Direct Feature Stack")
+        row = features.row(align=True)
+        row.operator("oleander.add_planar_extrude", icon="MOD_SOLIDIFY")
+        row.operator("oleander.add_shell", icon="MOD_SOLIDIFY")
+        row = features.row(align=True)
+        row.operator("oleander.add_bevel_chamfer", icon="MOD_BEVEL")
+        row.operator("oleander.add_mirror", icon="MOD_MIRROR")
+        row = features.row(align=True)
+        row.operator("oleander.add_linear_pattern", icon="MOD_ARRAY")
+        row.operator("oleander.add_boolean", icon="MOD_BOOLEAN")
+        features.operator("oleander.validate_feature_stack", icon="CHECKMARK")
+        if obj:
+            history = get_feature_history(obj)
+            features.label(text=f"Governed features: {len(history)}")
+            if history:
+                last = history[-1]
+                features.label(text=f"Last: {last.get('kind', 'UNKNOWN')}")
+            raw_validation = obj.get("oleander_feature_stack_validation")
+            if raw_validation:
+                try:
+                    validation = json.loads(raw_validation)
+                except (TypeError, json.JSONDecodeError):
+                    validation = None
+                if validation:
+                    features.label(text=f"Stack: {validation.get('status', 'OPEN')}")
 
         config = layout.box()
         config.label(text="Configurations")
