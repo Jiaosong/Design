@@ -19,11 +19,13 @@ PIPELINE_ROOT = SCRIPT.parents[2]
 ADDON_ROOT = RUNTIME_ROOT / "oleander_blender"
 STAGE2_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage2.py"
 STAGE3_DIRECT_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_direct.py"
+STAGE3_PROCEDURAL_VALIDATION_SCRIPT = RUNTIME_ROOT / "tests" / "validate_stage3_procedural.py"
 
 UNVERIFIED_STATE = "PROPOSED_UNVERIFIED_RUNTIME"
 VALIDATED_STATE = "VALIDATED_STAGE2_HEADLESS_CORE"
 STAGE2_SCOPE = "STAGE2_HEADLESS_CORE_AND_EXTENSION_PACKAGE"
 STAGE3_DIRECT_SCOPE = "STAGE3_DIRECT_MODELING"
+STAGE3_PROCEDURAL_SCOPE = "STAGE3_PROCEDURAL_FOUNDATION"
 
 
 def fail(message: str) -> None:
@@ -47,7 +49,6 @@ def parse_bl_info_version(init_path: pathlib.Path) -> str:
 
 
 def source_fingerprint(validation_script: pathlib.Path) -> str:
-    """Fingerprint governed add-on source plus one validation script."""
     paths = [
         path
         for path in ADDON_ROOT.rglob("*")
@@ -119,44 +120,28 @@ def load_receipt(receipt_ref: str, label: str) -> dict:
 def load_stage2_receipt(capability: dict) -> dict | None:
     lifecycle = capability.get("lifecycle_state")
     receipt_ref = capability.get("validation_receipt")
-
     if lifecycle == UNVERIFIED_STATE:
         if receipt_ref:
             fail("unverified lifecycle must not claim a validation receipt")
         return None
     if lifecycle != VALIDATED_STATE:
         fail(f"unsupported lifecycle_state: {lifecycle}")
-
     receipt = load_receipt(receipt_ref, "Stage 2")
-    validate_common_receipt(
-        receipt,
-        capability,
-        STAGE2_SCOPE,
-        source_fingerprint(STAGE2_VALIDATION_SCRIPT),
-        "Stage 2",
-    )
+    validate_common_receipt(receipt, capability, STAGE2_SCOPE, source_fingerprint(STAGE2_VALIDATION_SCRIPT), "Stage 2")
     return receipt
 
 
 def load_stage3_direct_receipt(capability: dict, status: dict) -> dict | None:
-    validated_stage3 = set(status.get("VALIDATED_STAGE3_DIRECT", []))
+    validated = set(status.get("VALIDATED_STAGE3_DIRECT", []))
     receipt_ref = capability.get("stage3_direct_validation_receipt")
-    if not validated_stage3:
+    if not validated:
         if receipt_ref:
             fail("Stage 3 Direct receipt exists but no VALIDATED_STAGE3_DIRECT capabilities are declared")
         return None
-
     receipt = load_receipt(receipt_ref, "Stage 3 Direct")
-    validate_common_receipt(
-        receipt,
-        capability,
-        STAGE3_DIRECT_SCOPE,
-        source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
-        "Stage 3 Direct",
-    )
+    validate_common_receipt(receipt, capability, STAGE3_DIRECT_SCOPE, source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT), "Stage 3 Direct")
     if receipt.get("stage2_regression_in_same_job") != "PASS":
         fail("Stage 3 Direct validation must include PASS Stage-2 regression in the same job")
-
     required_checks = {
         "direct_metric_dimensions_operator",
         "direct_dimensions_applied_scale",
@@ -169,18 +154,56 @@ def load_stage3_direct_receipt(capability: dict, status: dict) -> dict | None:
         "linear_duplicate_metric_spacing",
         "post_direct_audit_no_duplicate_ids",
     }
-    receipt_checks = set(receipt.get("runtime_checks", []))
-    missing_checks = sorted(required_checks - receipt_checks)
+    missing_checks = sorted(required_checks - set(receipt.get("runtime_checks", [])))
     if missing_checks:
         fail(f"Stage 3 Direct receipt missing runtime checks: {missing_checks}")
-
-    required_capabilities = {
-        "direct_metric_dimensions_operator",
-        "deterministic_linear_duplicate_operator",
-    }
-    missing_capabilities = sorted(required_capabilities - validated_stage3)
+    required_capabilities = {"direct_metric_dimensions_operator", "deterministic_linear_duplicate_operator"}
+    missing_capabilities = sorted(required_capabilities - validated)
     if missing_capabilities:
         fail(f"Stage 3 Direct validated capability set missing: {missing_capabilities}")
+    return receipt
+
+
+def load_stage3_procedural_receipt(capability: dict, status: dict) -> dict | None:
+    validated = set(status.get("VALIDATED_STAGE3_PROCEDURAL", []))
+    receipt_ref = capability.get("stage3_procedural_validation_receipt")
+    if not validated:
+        if receipt_ref:
+            fail("Stage 3 Procedural receipt exists but no VALIDATED_STAGE3_PROCEDURAL capabilities are declared")
+        return None
+    receipt = load_receipt(receipt_ref, "Stage 3 Procedural")
+    validate_common_receipt(
+        receipt,
+        capability,
+        STAGE3_PROCEDURAL_SCOPE,
+        source_fingerprint(STAGE3_PROCEDURAL_VALIDATION_SCRIPT),
+        "Stage 3 Procedural",
+    )
+    if receipt.get("stage2_regression_in_same_job") != "PASS":
+        fail("Stage 3 Procedural validation must include PASS Stage-2 regression in the same job")
+    if receipt.get("stage3_direct_regression_in_same_job") != "PASS":
+        fail("Stage 3 Procedural validation must include PASS Stage-3 Direct regression in the same job")
+    required_checks = {
+        "parameter_metadata_mutation_api",
+        "parameter_metadata_sanitization",
+        "constraint_metadata_mutation_api",
+        "constraint_metadata_sanitization",
+        "metadata_mutation_does_not_claim_solver_geometry",
+        "geometry_nodes_tree_creation",
+        "geometry_nodes_modifier_binding",
+        "geometry_nodes_passthrough_evaluation",
+        "geometry_nodes_ole_provenance",
+        "geometry_nodes_explicit_no_solver_claim",
+        "geometry_nodes_save_reopen_persistence",
+        "parameter_constraint_save_reopen_persistence",
+    }
+    missing_checks = sorted(required_checks - set(receipt.get("runtime_checks", [])))
+    if missing_checks:
+        fail(f"Stage 3 Procedural receipt missing runtime checks: {missing_checks}")
+    required_capabilities = {"parameter_constraint_metadata_mutation_api", "geometry_nodes_support_probe"}
+    missing_capabilities = sorted(required_capabilities - validated)
+    if missing_capabilities:
+        fail(f"Stage 3 Procedural validated capability set missing: {missing_capabilities}")
     return receipt
 
 
@@ -197,31 +220,24 @@ def main() -> None:
 
     capability = json.loads((PIPELINE_ROOT / "BLENDER_RUNTIME_CAPABILITY.json").read_text(encoding="utf-8"))
     schema = json.loads((ADDON_ROOT / "workbench_manifest.schema.json").read_text(encoding="utf-8"))
-
     bl_info_version = parse_bl_info_version(ADDON_ROOT / "__init__.py")
-    manifest_version = manifest.get("version")
-    capability_version = capability.get("runtime_version")
-    versions = {bl_info_version, manifest_version, capability_version}
+    versions = {bl_info_version, manifest.get("version"), capability.get("runtime_version")}
     if len(versions) != 1:
-        fail(f"version mismatch bl_info={bl_info_version} manifest={manifest_version} capability={capability_version}")
+        fail(f"version mismatch bl_info={bl_info_version} manifest={manifest.get('version')} capability={capability.get('runtime_version')}")
 
     status = capability.get("implementation_status", {})
     stage2_receipt = load_stage2_receipt(capability)
-    stage3_receipt = load_stage3_direct_receipt(capability, status)
+    stage3_direct_receipt = load_stage3_direct_receipt(capability, status)
+    stage3_procedural_receipt = load_stage3_procedural_receipt(capability, status)
 
     if manifest.get("blender_version_min") != "5.1.0":
         fail("unexpected minimum Blender version")
 
-    required_impl = {
-        "dependency_graph_resolution",
-        "stale_dependency_propagation",
-        "geometry_baseline_diff",
-        "review_state_separation",
-        "export_manifest_v0.2_core",
-    }
+    required_impl = {"dependency_graph_resolution", "stale_dependency_propagation", "geometry_baseline_diff", "review_state_separation", "export_manifest_v0.2_core"}
     declared = (
         set(status.get("VALIDATED_STAGE2_HEADLESS", []))
         | set(status.get("VALIDATED_STAGE3_DIRECT", []))
+        | set(status.get("VALIDATED_STAGE3_PROCEDURAL", []))
         | set(status.get("IMPLEMENTED_UNVERIFIED", []))
     )
     missing = sorted(required_impl - declared)
@@ -230,22 +246,13 @@ def main() -> None:
 
     validated_stage2 = set(status.get("VALIDATED_STAGE2_HEADLESS", []))
     if capability.get("lifecycle_state") == VALIDATED_STATE:
-        receipt_checks = set((stage2_receipt or {}).get("runtime_checks", []))
         required_receipt_checks = {
-            "registration",
-            "persistent_metadata",
-            "dependency_graph",
-            "stale_propagation",
-            "geometry_baseline_diff",
-            "configuration_capture_restore",
-            "bom_grouping_and_conflict_detection",
-            "review_state_separation",
-            "scene_unit_scale_round_trip",
-            "blend_save_reopen_persistence",
-            "audit_v0.2",
-            "manifest_v0.2",
+            "registration", "persistent_metadata", "dependency_graph", "stale_propagation",
+            "geometry_baseline_diff", "configuration_capture_restore",
+            "bom_grouping_and_conflict_detection", "review_state_separation",
+            "scene_unit_scale_round_trip", "blend_save_reopen_persistence", "audit_v0.2", "manifest_v0.2",
         }
-        missing_checks = sorted(required_receipt_checks - receipt_checks)
+        missing_checks = sorted(required_receipt_checks - set((stage2_receipt or {}).get("runtime_checks", [])))
         if missing_checks:
             fail(f"validated lifecycle receipt missing required runtime checks: {missing_checks}")
         if not validated_stage2:
@@ -255,23 +262,21 @@ def main() -> None:
     if schema_const != "OLEANDER_BLENDER_WORKBENCH_MANIFEST_v0.2":
         fail(f"workbench manifest schema const mismatch: {schema_const}")
 
-    print(
-        json.dumps(
-            {
-                "status": "PASS",
-                "python_files_parsed": len(python_files),
-                "runtime_version": bl_info_version,
-                "lifecycle_state": capability["lifecycle_state"],
-                "stage2_source_fingerprint_sha256": source_fingerprint(STAGE2_VALIDATION_SCRIPT),
-                "stage3_direct_source_fingerprint_sha256": source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
-                "validation_receipt": capability.get("validation_receipt", ""),
-                "stage3_direct_validation_receipt": capability.get("stage3_direct_validation_receipt", ""),
-                "stage3_direct_receipt_loaded": bool(stage3_receipt),
-                "note": "Static PASS validates receipt/contract integrity; it is not a substitute for Blender runtime execution.",
-            },
-            sort_keys=True,
-        )
-    )
+    print(json.dumps({
+        "status": "PASS",
+        "python_files_parsed": len(python_files),
+        "runtime_version": bl_info_version,
+        "lifecycle_state": capability["lifecycle_state"],
+        "stage2_source_fingerprint_sha256": source_fingerprint(STAGE2_VALIDATION_SCRIPT),
+        "stage3_direct_source_fingerprint_sha256": source_fingerprint(STAGE3_DIRECT_VALIDATION_SCRIPT),
+        "stage3_procedural_source_fingerprint_sha256": source_fingerprint(STAGE3_PROCEDURAL_VALIDATION_SCRIPT),
+        "validation_receipt": capability.get("validation_receipt", ""),
+        "stage3_direct_validation_receipt": capability.get("stage3_direct_validation_receipt", ""),
+        "stage3_procedural_validation_receipt": capability.get("stage3_procedural_validation_receipt", ""),
+        "stage3_direct_receipt_loaded": bool(stage3_direct_receipt),
+        "stage3_procedural_receipt_loaded": bool(stage3_procedural_receipt),
+        "note": "Static PASS validates receipt/contract integrity; it is not a substitute for Blender runtime execution.",
+    }, sort_keys=True))
 
 
 if __name__ == "__main__":
