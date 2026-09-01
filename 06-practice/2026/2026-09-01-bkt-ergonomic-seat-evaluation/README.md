@@ -1,12 +1,15 @@
-# PRJ-BKT01-ERGO-EVAL｜BKT 人体工学护腰坐姿椅｜人机工程学尺寸评价
+# PRAC-BUSINESS-2026-WS-02｜BKT 人体工学护腰坐姿椅｜人机工程学尺寸评价
 
 Status: WIP / REVIEW PENDING  
-Project Axis: P2 Project  
-Parent Program: PG-30｜Cases & Practice  
+Project Axis: P3 Workstream  
+Parent P2: `PRAC-BUSINESS-2026｜Business Practice 2026`  
+Workstream Code: `BKT-ERGO-EVAL`  
 Governance: `00-governance/README.md` — Governance v1.1.1 ACTIVE  
 Practice Root: `06-practice/`  
-Notion P2 Registry: https://app.notion.com/p/3ceb86be5c478116a9d4d0c11db3df13?pvs=204  
+Notion P3 Registry: https://app.notion.com/p/3ceb86be5c478116a9d4d0c11db3df13?pvs=204  
 Runtime Tracker: https://github.com/Jiaosong/Design/issues/471  
+
+> Naming repair 2026-09-01: the first sync incorrectly created a standalone `PRJ-BKT01-ERGO-EVAL` P2 plus five P3 stubs. Current authority is corrected in place to `PG-30 → PRAC-BUSINESS-2026 → PRAC-BUSINESS-2026-WS-02`. The five mistaken registry stubs are ARCHIVED provenance only. This workstream is a course / practice evaluation and does **not** represent a BKT official project or commercial collaboration.
 
 ## 1. Goal
 
@@ -23,7 +26,7 @@ Runtime Tracker: https://github.com/Jiaosong/Design/issues/471
 
 ## 2. Scope
 
-本项目包含：
+本 Workstream 包含：
 
 1. 产品身份、型号、使用场景与官方信息整理；
 2. 产品关键尺寸：总宽 420 mm、总高 340 mm、总深 315 mm；
@@ -42,7 +45,8 @@ Runtime Tracker: https://github.com/Jiaosong/Design/issues/471
 - 不把官方 AGR、专利、材料宣传自动等同于本项目独立验证；
 - 不在缺少来源时冻结虚构的身高、体重或百分位覆盖范围；
 - 不把 AI 生成分析图视为真实测量或实验数据；
-- 不把“文件已生成”写成“人体工程学结论已验证”。
+- 不把“文件已生成”写成“人体工程学结论已验证”；
+- 不把本课程练习写成 BKT 官方项目、委托、合作或认证结论。
 
 ## 4. Evidence Baseline
 
@@ -82,20 +86,22 @@ Working sequence:
 
 `Read → Frame → Evidence Baseline → Define Measurement Objects → Compare → Reject unsupported claims → Candidate Evaluation → Report Integration → Post-Generation Review`
 
-## 7. Workstreams
+## 7. Internal Decision Objects
 
-- WS-01｜Product Facts & Source Boundary
-- WS-02｜Anthropometric Evidence Dataset
-- WS-03｜Dimension Fit Evaluation
-- WS-04｜Posture & Support Mechanics
-- WS-05｜Issues / Optimization / Final Report
+以下属于本 P3 内部工作分解，不再建立额外 P3 Registry 行：
+
+1. Product Facts & Source Boundary
+2. Anthropometric Evidence Dataset
+3. Dimension Fit Evaluation
+4. Posture & Support Mechanics
+5. Issues / Optimization / Final Report
 
 ## 8. Gate Plan
 
 - G0｜任务与评价对象：PASS
 - G1｜人体与产品证据：CURRENT
 - G2｜评价命题：PENDING
-- G3｜图文分析结构：PARTIAL /已有初稿
+- G3｜图文分析结构：PARTIAL / 已有初稿
 - G4｜交叉比较与一致性检查：PENDING
 - G6｜最终 Word 交付准备：PENDING
 - G8｜提交前验收：PENDING
@@ -106,8 +112,8 @@ Working sequence:
 
 `Generate → Automated/Logical QA → Open final artifact → Post-Generation Review → Fix → Re-review → Archive`
 
-当前项目整体状态：**REVIEW PENDING**。
+当前 Workstream 状态：**REVIEW PENDING**。
 
 ## 10. Immediate Next Step
 
-先冻结 WS-01：产品身份、尺寸定义、官方主张与“本项目可独立验证事实”的边界；随后进入 WS-02 人体尺寸数据库核验。
+先冻结 Product Facts & Source Boundary：产品身份、尺寸定义、官方主张与“本项目可独立验证事实”的边界；随后进入 Anthropometric Evidence Dataset 核验。
