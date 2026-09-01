@@ -93,6 +93,10 @@ def world_origin(obj):
     return obj.matrix_world.translation.copy()
 
 
+def euler_delta_length(a, b):
+    return Vector((a.x - b.x, a.y - b.y, a.z - b.z)).length
+
+
 def main():
     if hasattr(bpy.types.Object, "oleander"):
         try:
@@ -215,7 +219,7 @@ def main():
         lambda: bpy.ops.oleander.apply_relation_once(relation_id=parallel_id),
         "multi-solution and intentionally unsupported",
     )
-    assert_true((parallel_driven.rotation_euler - before_rotation).length <= 1e-12, "failed parallel apply must not choose an arbitrary rotation")
+    assert_true(euler_delta_length(parallel_driven.rotation_euler, before_rotation) <= 1e-12, "failed parallel apply must not choose an arbitrary rotation")
 
     # Positive failure: external Blender transform constraints retain authority.
     constrained_driver = add_cube("OLE_APPLY_CON_DRIVER", "OLE_APPLY_CON_DRIVER", (0.0, 18000.0, 0.0))
