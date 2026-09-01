@@ -4,57 +4,18 @@
   "runtime_version": "0.2.0",
   "validation_state": "PASS",
   "validation_scope": "STAGE3_DIRECT_MODELING",
-  "source_fingerprint_sha256": "6e438c1cf0dcba80839ae2aca7191718ad165fb41d8124b2f6795f3eeb5e4e3d",
-  "tested_branch_head": "0b88d832ef91270decb24fb0d5becce0fd80b5fc",
-  "tested_pr_merge_commit": "1d40fb9dfb15a182da0cc99465c6e0e7e4deb5d3",
+  "source_fingerprint_sha256": "318830259d7c96a733aaac96bb2e51ba6a840f6acf45ae4c2e19d144d7a0b8ae",
+  "tested_branch_head": "a0dc58a2abc30855fa5e9ba0fbd895c9fc5d42a8",
+  "tested_pr_merge_commit": "92b15ae7c62ff7cf790fb4c2993f4b2ae575900c",
   "repository": "Jiaosong/Design",
   "pull_request": 470,
-  "workflow": {
-    "name": "OLEANDER Blender Runtime 5.1",
-    "run_id": 33493912192,
-    "job_id": 99811555726,
-    "conclusion": "success"
-  },
-  "host": {
-    "os": "Ubuntu 24.04.4 LTS",
-    "runner_image": "ubuntu-24.04",
-    "blender_version": "5.1.2",
-    "blender_build_hash": "ec6e62d40fa9",
-    "blender_archive_sha256": "aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb",
-    "checksum_manifest_result": "PASS"
-  },
-  "extension_package": {
-    "filename": "oleander_blender_runtime-0.2.0.zip",
-    "size_bytes": 33285,
-    "sha256": "f3c58e104dc6b54971548f5a9308464a15296bb9fc7ea8fabe9d5cf743fcdcca",
-    "source_manifest_validate": "PASS",
-    "build": "PASS",
-    "built_package_validate": "PASS"
-  },
-  "runtime_checks": [
-    "direct_metric_dimensions_operator",
-    "direct_dimensions_applied_scale",
-    "direct_geometry_change_stale_propagation",
-    "direct_operation_metric_record",
-    "linear_duplicate_operator",
-    "linear_duplicate_unique_ole_ids",
-    "linear_duplicate_stable_source_provenance",
-    "linear_duplicate_linked_mesh",
-    "linear_duplicate_metric_spacing",
-    "post_direct_audit_no_duplicate_ids"
-  ],
+  "workflow": {"name":"OLEANDER Blender Runtime 5.1","run_id":33510522222,"job_id":99864792429,"conclusion":"success"},
+  "host": {"os":"Ubuntu 24.04.4 LTS","runner_image":"ubuntu-24.04","blender_version":"5.1.2","blender_build_hash":"ec6e62d40fa9","blender_archive_sha256":"aaccb355f50183979b698bcce7467103a76261b5fa59f4972295842662a285fb","checksum_manifest_result":"PASS"},
+  "extension_package": {"filename":"oleander_blender_runtime-0.2.0.zip","size_bytes":38296,"sha256":"3bd8328cc07bac47c249003b4deb3343753bdbb726f3e5f09830ca966ba5b280","source_manifest_validate":"PASS","build":"PASS","built_package_validate":"PASS"},
+  "runtime_checks": ["direct_metric_dimensions_operator","direct_dimensions_applied_scale","direct_geometry_change_stale_propagation","direct_operation_metric_record","linear_duplicate_operator","linear_duplicate_unique_ole_ids","linear_duplicate_stable_source_provenance","linear_duplicate_linked_mesh","linear_duplicate_metric_spacing","post_direct_audit_no_duplicate_ids"],
   "stage2_regression_in_same_job": "PASS",
   "runtime_result": "PASS",
-  "non_claims": [
-    "cad_brep",
-    "solver_backed_constraints",
-    "field_truth",
-    "engineering_approval",
-    "manufacturing_release",
-    "constructability",
-    "class_a_surface_certification",
-    "design_pass"
-  ],
-  "invalidation_rule": "Any material change to direct-modeling runtime code, the governed add-on source used by this test, or validate_stage3_direct.py requires a new Stage-3 Direct Modeling receipt before these capabilities remain validated.",
-  "authority_note": "This receipt proves deterministic Blender direct-modeling runtime behavior only. It does not convert Blender mesh operations into CAD/B-Rep, engineering, field, manufacturing, constructability or design authority."
+  "non_claims": ["cad_brep","solver_backed_constraints","field_truth","engineering_approval","manufacturing_release","constructability","design_quality"],
+  "invalidation_rule": "Any material change to governed Blender add-on source or validate_stage3_direct.py requires a new real-Blender receipt.",
+  "authority_note": "Deterministic Blender direct-modeling behavior only; not CAD/B-Rep or engineering/manufacturing authority."
 }
