@@ -19,6 +19,8 @@ from .operators import (
 )
 from .direct_model import CLASSES as DIRECT_MODEL_CLASSES
 from .feature_stack import CLASSES as FEATURE_STACK_CLASSES
+from .feature_edit import OPERATOR_CLASSES as FEATURE_EDIT_OPERATOR_CLASSES
+from .feature_edit import PANEL_CLASSES as FEATURE_EDIT_PANEL_CLASSES
 from .workbench_ops import CLASSES as WORKBENCH_OPERATOR_CLASSES
 from .configuration_ops import CLASSES as CONFIGURATION_CLASSES
 from .bom import CLASSES as BOM_CLASSES
@@ -32,6 +34,7 @@ OPERATOR_CLASSES = (
     OLEANDER_OT_export_manifest,
     *DIRECT_MODEL_CLASSES,
     *FEATURE_STACK_CLASSES,
+    *FEATURE_EDIT_OPERATOR_CLASSES,
     *WORKBENCH_OPERATOR_CLASSES,
     *CONFIGURATION_CLASSES,
     *BOM_CLASSES,
@@ -40,6 +43,7 @@ OPERATOR_CLASSES = (
 PANEL_CLASSES = (
     OLEANDER_PT_runtime_panel,
     *WORKBENCH_PANEL_CLASSES,
+    *FEATURE_EDIT_PANEL_CLASSES,
 )
 
 
