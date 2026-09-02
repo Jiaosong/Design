@@ -14,6 +14,7 @@ async function runCase(name,width,height,{reducedMotion='no-preference',forceErr
   page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text())});
   page.on('pageerror',e=>pageErrors.push(String(e)));
   await page.goto(base+(forceError?'?forceError=1':''),{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>window.__C04_METRICS!==undefined,{timeout:10000});
   const before=await page.evaluate(()=>window.__C04_METRICS);
   if(before.requestStarted) throw new Error(`${name}: model requested before user load action`);
   await page.click('#load');
