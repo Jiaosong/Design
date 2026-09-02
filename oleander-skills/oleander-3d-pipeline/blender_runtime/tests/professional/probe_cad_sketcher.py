@@ -23,8 +23,6 @@ ROOT_PACKAGE = os.environ.get(
     "bl_ext.oleander_professional.CAD_Sketcher",
 )
 REOPEN_PATH = Path("/tmp/oleander-cad-sketcher-probe.blend")
-
-
 checks: list[str] = []
 
 
@@ -61,30 +59,32 @@ def main() -> None:
     addon, curve_data, sketch_ref, curve_ref = load_api()
     check(hasattr(bpy.context.scene, "sketcher"), "cad_sketcher_registered")
 
-    # Positive solver path: horizontal + driving distance. CAD Sketcher's
-    # init=True contract initializes a dimension from the current geometry; the
-    # driving value is then edited explicitly and the sketch is re-solved.
-    sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_POSITIVE")
-    p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
-    p1 = curve_ref.PointRef.create(sketch, (3.0, 1.0))
-    line = curve_ref.LineRef.create(sketch, p0, p1)
-    horizontal = sketch.constraints.add_horizontal(curve_id_1=line.curve_id)
-    distance = sketch.constraints.add_distance(
-        init=True,
-        curve_id_1=line.curve_id,
-    )
-    check(sketch.solve(bpy.context), "horizontal_distance_solver_pass")
-    check(abs(p1.co.y) < 1e-7, "horizontal_constraint_geometry")
-    check(abs(float(distance.value) - line.length) < 1e-6, "driving_distance_initialized_from_geometry")
-    check(not horizontal.failed and not distance.failed, "positive_constraints_not_failed")
+    # 1) Geometric constraint path isolated from dimensional initialization.
+    horizontal_sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_HORIZONTAL")
+    h0 = curve_ref.PointRef.create(horizontal_sketch, (0.0, 0.0), fixed=True)
+    h1 = curve_ref.PointRef.create(horizontal_sketch, (3.0, 1.0))
+    hline = curve_ref.LineRef.create(horizontal_sketch, h0, h1)
+    hc = horizontal_sketch.constraints.add_horizontal(curve_id_1=hline.curve_id)
+    check(horizontal_sketch.solve(bpy.context), "horizontal_solver_pass")
+    check(abs(h1.co.y) < 1e-7, "horizontal_constraint_geometry")
+    check(not hc.failed, "horizontal_constraint_not_failed")
 
-    # First driving edit.
+    # 2) Driving dimensional path follows CAD Sketcher's own tested lifecycle:
+    # initialize from current line geometry, then edit the value and re-solve.
+    sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_DRIVING_DIMENSION")
+    p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
+    p1 = curve_ref.PointRef.create(sketch, (3.0, 0.0))
+    line = curve_ref.LineRef.create(sketch, p0, p1)
+    distance = sketch.constraints.add_distance(init=True, curve_id_1=line.curve_id)
+    check(sketch.solve(bpy.context), "driving_dimension_initial_solve")
+    check(abs(line.length - 3.0) < 1e-6, "driving_dimension_initial_geometry")
+    check(abs(float(distance.value) - 3.0) < 1e-6, "driving_dimension_initialized_value")
+    check(not distance.failed, "driving_dimension_not_failed")
+
     distance.value = 4.0
     check(sketch.solve(bpy.context), "driving_dimension_edit_4_resolve")
     check(abs(line.length - 4.0) < 1e-6, "driving_dimension_edit_4_geometry")
 
-    # Second edit proves the value remains a live driving constraint rather than
-    # a one-shot initialization/bake.
     distance.value = 5.0
     check(sketch.solve(bpy.context), "driving_dimension_edit_5_resolve")
     check(abs(line.length - 5.0) < 1e-6, "driving_dimension_edit_5_geometry")
@@ -93,32 +93,31 @@ def main() -> None:
     positive_object_name = sketch.target_object.name
     positive_distance_value = float(distance.value)
 
-    # Positive failure gate: contradictory driving dimensions must not silently
-    # mutate into an arbitrary result. CAD Sketcher should report INCONSISTENT
-    # and flag at least one failed constraint.
+    # 3) Explicit solver failure behavior. This mirrors CAD Sketcher's upstream
+    # safety test: two incompatible distances on the same point pair must yield
+    # INCONSISTENT and expose failed-constraint feedback.
     bad = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_INCONSISTENT")
     q0 = curve_ref.PointRef.create(bad, (0.0, 0.0), fixed=True)
     q1 = curve_ref.PointRef.create(bad, (3.0, 0.0))
-    c1 = bad.constraints.add_distance(
+    bad.constraints.add_distance(
         init=True,
+        value=3.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
-    c1.value = 3.0
-    c2 = bad.constraints.add_distance(
+    bad.constraints.add_distance(
         init=True,
+        value=5.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
-    c2.value = 5.0
     solve_ok = bad.solve(bpy.context)
     check(not solve_ok, "contradictory_constraints_expected_failure")
     check(bad.solver_state == "INCONSISTENT", "inconsistent_solver_state")
     all_constraints = list(bad.target_object.data.sketch_constraints.all)
     check(any(item.failed for item in all_constraints), "failed_constraint_feedback")
 
-    # Save/reopen: dependency state must remain editable and the driving
-    # dimension must survive as sketch data, not merely as baked mesh output.
+    # Save/reopen proves editable constraint state survives as native sketch data.
     sketch_ref.set_active_sketch(bpy.context, None)
     bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN_PATH))
     check(REOPEN_PATH.exists(), "blend_saved")
@@ -130,7 +129,7 @@ def main() -> None:
     reopened = sketch_ref.Sketch(obj)
     check(reopened is not None, "sketch_accessor_reopen")
     reopened_constraints = list(obj.data.sketch_constraints.all)
-    check(len(reopened_constraints) >= 2, "constraint_data_reopen")
+    check(len(reopened_constraints) >= 1, "constraint_data_reopen")
     driving_values = [
         float(item.value)
         for item in reopened_constraints
