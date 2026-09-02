@@ -9,7 +9,6 @@ through-hole for the FreeCAD failure-envelope test.
 
 from __future__ import annotations
 
-import copy
 import importlib
 import json
 import os
@@ -23,8 +22,7 @@ RUNTIME_ROOT = SCRIPT.parents[2]
 if str(RUNTIME_ROOT) not in sys.path:
     sys.path.insert(0, str(RUNTIME_ROOT))
 
-import oleander_blender
-from oleander_blender.cad_sidecar import build_request, payload_sha256, write_request
+from professional_adapter.cad_sidecar import build_request, payload_sha256, write_request
 
 CAD_PACKAGE = os.environ.get(
     "OLEANDER_CAD_SKETCHER_PACKAGE",
@@ -32,7 +30,6 @@ CAD_PACKAGE = os.environ.get(
 )
 OUT = pathlib.Path(os.environ.get("OLEANDER_CAD_INTEGRATION_DIR", "/tmp/oleander-cad-integration"))
 OUT.mkdir(parents=True, exist_ok=True)
-
 checks: list[str] = []
 
 
@@ -83,13 +80,10 @@ def coords(points):
 
 
 def main() -> None:
-    if not hasattr(bpy.types.Object, "oleander"):
-        oleander_blender.register()
     addon, curve_data, sketch_ref, curve_ref = load_cad_sketcher()
-
     scene = bpy.context.scene
     scene.unit_settings.system = "METRIC"
-    scene.unit_settings.scale_length = 0.001  # 1 Blender unit == 1 mm.
+    scene.unit_settings.scale_length = 0.001
 
     sketch = new_sketch(curve_data, sketch_ref)
     p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
@@ -107,12 +101,8 @@ def main() -> None:
     constraints.add_vertical(curve_id_1=l1.curve_id)
     constraints.add_horizontal(curve_id_1=l2.curve_id)
     constraints.add_vertical(curve_id_1=l3.curve_id)
-    width = constraints.add_distance(
-        init=True, curve_id_1=p0.curve_id, curve_id_2=p1.curve_id
-    )
-    depth = constraints.add_distance(
-        init=True, curve_id_1=p0.curve_id, curve_id_2=p3.curve_id
-    )
+    width = constraints.add_distance(init=True, curve_id_1=p0.curve_id, curve_id_2=p1.curve_id)
+    depth = constraints.add_distance(init=True, curve_id_1=p0.curve_id, curve_id_2=p3.curve_id)
     set_driving_value(width, 80.0)
     set_driving_value(depth, 50.0)
     solve_and_refresh(sketch, curve_data, "revision1_solver_pass")
@@ -123,14 +113,9 @@ def main() -> None:
     source_v1 = OUT / "cad_source_R001.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(source_v1))
     request1 = build_request(
-        request_id="OLE_CAD_REQ_BRACKET_001",
-        ole_id="OLE_PRO_CAD_BRACKET_001",
-        revision=1,
-        editable_source=str(source_v1),
-        solver="CAD Sketcher + SolveSpace",
-        solver_state="FULLY_CONSTRAINED",
-        profile_points_mm=coords(points),
-        extrusion_depth_mm=10.0,
+        request_id="OLE_CAD_REQ_BRACKET_001", ole_id="OLE_PRO_CAD_BRACKET_001", revision=1,
+        editable_source=str(source_v1), solver="CAD Sketcher + SolveSpace", solver_state="FULLY_CONSTRAINED",
+        profile_points_mm=coords(points), extrusion_depth_mm=10.0,
         holes=[{"center_mm": [40.0, 25.0], "radius_mm": 5.0}],
     )
     request1_path = OUT / "request_R001.json"
@@ -146,14 +131,9 @@ def main() -> None:
     source_v2 = OUT / "cad_source_R002.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(source_v2))
     request2 = build_request(
-        request_id="OLE_CAD_REQ_BRACKET_001",
-        ole_id="OLE_PRO_CAD_BRACKET_001",
-        revision=2,
-        editable_source=str(source_v2),
-        solver="CAD Sketcher + SolveSpace",
-        solver_state="FULLY_CONSTRAINED",
-        profile_points_mm=coords(points),
-        extrusion_depth_mm=10.0,
+        request_id="OLE_CAD_REQ_BRACKET_001", ole_id="OLE_PRO_CAD_BRACKET_001", revision=2,
+        editable_source=str(source_v2), solver="CAD Sketcher + SolveSpace", solver_state="FULLY_CONSTRAINED",
+        profile_points_mm=coords(points), extrusion_depth_mm=10.0,
         holes=[{"center_mm": [50.0, 25.0], "radius_mm": 5.0}],
     )
     request2_path = OUT / "request_R002.json"
@@ -162,14 +142,9 @@ def main() -> None:
     check(hash1 != hash2, "parameter_edit_changes_request_hash")
 
     bad_request = build_request(
-        request_id="OLE_CAD_REQ_BRACKET_001",
-        ole_id="OLE_PRO_CAD_BRACKET_001",
-        revision=3,
-        editable_source=str(source_v2),
-        solver="CAD Sketcher + SolveSpace",
-        solver_state="FULLY_CONSTRAINED",
-        profile_points_mm=coords(points),
-        extrusion_depth_mm=10.0,
+        request_id="OLE_CAD_REQ_BRACKET_001", ole_id="OLE_PRO_CAD_BRACKET_001", revision=3,
+        editable_source=str(source_v2), solver="CAD Sketcher + SolveSpace", solver_state="FULLY_CONSTRAINED",
+        profile_points_mm=coords(points), extrusion_depth_mm=10.0,
         holes=[{"center_mm": [50.0, 25.0], "radius_mm": 1000.0}],
     )
     bad_path = OUT / "request_R003_EXPECT_FAIL.json"
@@ -177,22 +152,14 @@ def main() -> None:
     check(hash3 == payload_sha256(bad_request), "failure_request_hash")
 
     result = {
-        "schema": "OLEANDER_CAD_SKETCH_TO_REQUEST_PROBE_v0.1",
-        "status": "PASS",
-        "blender": bpy.app.version_string,
-        "cad_sketcher_package": CAD_PACKAGE,
-        "checks": checks,
+        "schema": "OLEANDER_CAD_SKETCH_TO_REQUEST_PROBE_v0.1", "status": "PASS", "blender": bpy.app.version_string,
+        "cad_sketcher_package": CAD_PACKAGE, "checks": checks,
         "requests": {
             "revision1": {"path": str(request1_path), "sha256": hash1},
             "revision2": {"path": str(request2_path), "sha256": hash2},
-            "expected_fail_revision3": {"path": str(bad_path), "sha256": hash3},
+            "expected_fail_revision3": {"path": str(bad_path), "sha256": hash3}
         },
-        "non_claims": [
-            "P0_A_PARAMETRIC_CAD_PASS",
-            "general_sketch_export",
-            "general_feature_tree",
-            "assembly_mates",
-        ],
+        "non_claims": ["P0_A_PARAMETRIC_CAD_PASS", "general_sketch_export", "general_feature_tree", "assembly_mates"]
     }
     print("OLEANDER_CAD_SKETCH_TO_REQUEST=" + json.dumps(result, sort_keys=True))
 
