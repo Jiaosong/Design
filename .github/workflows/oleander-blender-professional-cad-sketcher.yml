@@ -1,0 +1,103 @@
+name: OLEANDER Blender Professional CAD Sketcher
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_*"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
+      - ".github/workflows/oleander-blender-professional-cad-sketcher.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_*"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
+      - ".github/workflows/oleander-blender-professional-cad-sketcher.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  cad-sketcher-solvespace-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      CAD_SKETCHER_COMMIT: "831ee71f451777d2d48632da62114cc5e9357d3d"
+      CAD_SKETCHER_PACKAGE: /tmp/cad-sketcher-0.3.0.zip
+      BLENDER_USER_CONFIG: /tmp/oleander-professional-blender-config
+      OLEANDER_CAD_SKETCHER_PACKAGE: bl_ext.oleander_professional.CAD_Sketcher
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Fetch pinned CAD Sketcher source
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://github.com/hlorus/CAD_Sketcher/archive/${CAD_SKETCHER_COMMIT}.tar.gz"
+          curl --fail --location --retry 3 --retry-delay 2 --output /tmp/cad-sketcher-source.tar.gz "${url}"
+          sha256sum /tmp/cad-sketcher-source.tar.gz | tee /tmp/cad-sketcher-source.sha256
+          mkdir -p /tmp/cad-sketcher-source
+          tar -xzf /tmp/cad-sketcher-source.tar.gz --strip-components=1 -C /tmp/cad-sketcher-source
+          grep -F 'id = "CAD_Sketcher"' /tmp/cad-sketcher-source/blender_manifest.toml
+          grep -F 'blender_version_min = "5.0.0"' /tmp/cad-sketcher-source/blender_manifest.toml
+          grep -F 'SPDX:GPL-3.0-or-later' /tmp/cad-sketcher-source/blender_manifest.toml
+
+      - name: Validate and build pinned CAD Sketcher extension
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          "${blender_bin}" --command extension validate /tmp/cad-sketcher-source 2>&1 | tee /tmp/cad-sketcher-validate.log
+          "${blender_bin}" --command extension build --source-dir /tmp/cad-sketcher-source --output-filepath "${CAD_SKETCHER_PACKAGE}" 2>&1 | tee /tmp/cad-sketcher-build.log
+          test -s "${CAD_SKETCHER_PACKAGE}"
+          "${blender_bin}" --command extension validate "${CAD_SKETCHER_PACKAGE}" 2>&1 | tee /tmp/cad-sketcher-package-validate.log
+          sha256sum "${CAD_SKETCHER_PACKAGE}" | tee /tmp/cad-sketcher-package.sha256
+
+      - name: Install CAD Sketcher into isolated Blender extension repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          mkdir -p "${BLENDER_USER_CONFIG}" /tmp/oleander-professional-extensions
+          "${blender_bin}" --command extension repo-add oleander_professional --name "OLEANDER Professional Probe" --directory /tmp/oleander-professional-extensions --clear-all
+          "${blender_bin}" --command extension install-file -r oleander_professional -e "${CAD_SKETCHER_PACKAGE}" 2>&1 | tee /tmp/cad-sketcher-install.log
+          "${blender_bin}" --command extension list 2>&1 | tee /tmp/cad-sketcher-list.log
+          grep -F 'CAD Sketcher' /tmp/cad-sketcher-list.log
+
+      - name: Run OLEANDER CAD Sketcher SolveSpace probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          "${blender_bin}" --background --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_sketcher.py 2>&1 | tee /tmp/oleander-cad-sketcher-probe.log
+          grep -F 'OLEANDER_CAD_SKETCHER_PROBE=' /tmp/oleander-cad-sketcher-probe.log
+          grep -F '"dependency_state": "RUNTIME_PROBED"' /tmp/oleander-cad-sketcher-probe.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-sketcher-probe.log
+
+      - name: Record bounded professional dependency evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Professional Dependency Probe — CAD Sketcher + SolveSpace'
+            echo "- CAD Sketcher commit: ${CAD_SKETCHER_COMMIT}"
+            echo "- Blender: ${BLENDER_VERSION}"
+            echo '- Scope: registration, horizontal constraint, driving distance, dimension edit/re-solve, inconsistent solver state, failed-constraint feedback, save/reopen.'
+            echo '- Result state on PASS: RUNTIME_PROBED only.'
+            echo '- Does NOT prove P0-A Parametric CAD, B-Rep, feature rebuild, assembly mates, STEP round-trip, engineering approval, or manufacturing release.'
+          } >> "$GITHUB_STEP_SUMMARY"
