@@ -60,8 +60,13 @@ jobs:
           assert data['figma']['role'] == 'EXPLICIT_REQUEST_ONLY_HANDOFF_ADAPTER'
           assert data['figma']['activation_gate'] == 'EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE'
           assert data['figma']['probe_policy'] == 'DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_VECTOR_PROTOTYPING_OR_DESIGN_SYSTEM_TASKS'
+          assert data['blender_shared_runtime']['status'] == 'ACTIVE_RUNTIME_INTERFACE'
           assert data['blender_shared_runtime']['scope'] == 'OLEANDER_ALL_PROJECTS'
-          assert data['blender_shared_runtime']['preferred_wrapper'] == 'tools/oleander-runtime/blender.sh'
+          assert data['blender_shared_runtime']['current_runtime_implementation_namespace'] == '90-shared/toolchains/blender-runtime/'
+          assert data['blender_shared_runtime']['preferred_rematerialization'] == '90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh'
+          assert data['blender_shared_runtime']['preferred_shared_runner'] == '.github/workflows/oleander-shared-blender-runner.yml'
+          assert data['blender_shared_runtime']['legacy_compatibility_wrappers'] == ['tools/oleander-runtime/activate-blender.sh', 'tools/oleander-runtime/blender.sh']
+          assert data['blender_shared_runtime']['unavailable_gate'] == 'ONLY_AFTER_CURRENT_RUNTIME_RESOLVER_REMATERIALIZATION_AND_ALLOWED_SHARED_RUNNER_HAVE_ACTUALLY_FAILED'
           assert 'PENDING_VERIFICATION' in data['capability_states']
 
           blender = json.loads(Path('00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json').read_text())
