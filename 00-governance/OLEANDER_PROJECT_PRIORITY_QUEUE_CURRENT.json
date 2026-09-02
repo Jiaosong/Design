@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -14,12 +14,17 @@
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7",
       "next_owner": "VALIDATION",
-      "validation_subtask_lease": "WEB_RUNTIME_DERIVATIVE",
+      "design_subtask_lease": "BLENDER_REBUILD_MASTER",
+      "design_subtask_lease_state": "ACTIVE",
+      "validation_subtask_lease": "REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
       "validation_subtask_lease_state": "ACTIVE",
-      "lease_contract": "00-governance/OLEANDER_C04_SUBTASK_LEASE_CONTRACT_CURRENT.md",
-      "next_action": "PRESENTATION retains this object. The bounded runtime-derivative lease is now being consumed: the latest PR head adds c04_blender_web_derivative.py, a source-read-only tool for LOD simplification, texture derivatives, GLB export and metrics. Lease remains ACTIVE because no derivative artifact plus runtime readback has yet returned. VALIDATION returns artifacts, metrics and HOLDs to this OBJECT_ID; PRESENTATION then consumes them in the existing interaction container.",
-      "updated_at": "2026-09-02T19:06:31+08:00",
-      "source_of_queue_decision": "PR #465 advanced from 73b24ba116900b3c458135878cac8148be51efcd to ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. Compare shows one added runtime-derivative script. Full-file readback confirms source-read-only processing, LOD and texture derivatives, GLB export, SHA256/bytes/mesh metrics, and explicit exclusion of design authority. LEASE_NOT_CONSUMED is therefore absent; no returned derivative/runtime evidence exists in this delta, so lease state stays ACTIVE. Owner and lifecycle next-owner remain unchanged."
+      "lease_contract": "00-governance/OLEANDER_C04_BLENDER_REBUILD_ROUTE_CURRENT.md",
+      "shared_blender_runtime": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md",
+      "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE",
+      "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
+      "next_action": "PRESENTATION retains this object. DESIGN must first return actual Blender-generated editable geometry and a Candidate .blend for the first rebuild object, using /恩施 assets only as SOURCE_REFERENCE. VALIDATION then reopens/fidelity-checks that Candidate and only after validation produces LOD/GLB/browser derivative evidence. PRESENTATION consumes the returned validated derivative. Prompt, receipt, authority, runtime-path or lease metadata alone do not count as model material progress.",
+      "updated_at": "2026-09-02T21:03:00+08:00",
+      "source_of_queue_decision": "User-explicit C04 route override plus Current OLEANDER_C04_BLENDER_REBUILD_ROUTE_CURRENT.md. The prior queue still described direct Meshy-derived runtime processing as the active route and omitted the DESIGN rebuild lease. PR #465 remains at ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. Current route is Blender editable rebuild master first; Meshy remains SOURCE_REFERENCE."
     }
   ],
   "entry_schema": {
@@ -31,9 +36,14 @@
     "current_native_master": "canonical master reference",
     "current_pr_frontier": "PR/branch/page frontier",
     "next_owner": "lifecycle owner",
-    "validation_subtask_lease": "optional bounded concurrent technical lease",
+    "design_subtask_lease": "optional bounded DESIGN production lease",
+    "design_subtask_lease_state": "ACTIVE|RETURNED|HOLD",
+    "validation_subtask_lease": "optional bounded VALIDATION technical lease",
     "validation_subtask_lease_state": "ACTIVE|RETURNED|HOLD",
     "lease_contract": "governance contract reference when lease is present",
+    "shared_blender_runtime": "repository-wide Blender runtime authority when applicable",
+    "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE|NEEDS_REMATERIALIZATION_OR_RUNNER",
+    "current_route": "current authority-preserving production route",
     "next_action": "one concrete next action",
     "updated_at": "ISO-8601",
     "source_of_queue_decision": "project Current State or explicit user instruction"
