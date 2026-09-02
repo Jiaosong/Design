@@ -3,8 +3,8 @@ import fs from 'node:fs';
 
 const base = process.argv[2] || 'http://127.0.0.1:8765/';
 const receiptPath = process.argv[3] || 'browser-runtime-receipt.json';
-const out = {schema:'C04_BROWSER_RUNTIME_VALIDATION_v1', base, cases:[], verdict:'PASS_BOUNDED', holds:['Browser runtime PASS is not Design KEEP.','FPS/ms/memory not asserted.','Visual fidelity to upstream source remains Presentation/Design review.']};
-const browser = await chromium.launch({headless:true});
+const out = {schema:'C04_BROWSER_RUNTIME_VALIDATION_v2', base, cases:[], verdict:'PASS_BOUNDED', browserCarrier:'Chromium headless + ANGLE/SwiftShader WebGL', holds:['Browser runtime PASS is not Design KEEP.','FPS/ms/memory not asserted.','Visual fidelity to upstream source remains Presentation/Design review.']};
+const browser = await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-webgl','--ignore-gpu-blocklist']});
 
 async function runCase(name,width,height,{reducedMotion='no-preference',forceError=false}={}) {
   const ctx=await browser.newContext({viewport:{width,height},reducedMotion});
@@ -14,12 +14,14 @@ async function runCase(name,width,height,{reducedMotion='no-preference',forceErr
   page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text())});
   page.on('pageerror',e=>pageErrors.push(String(e)));
   await page.goto(base+(forceError?'?forceError=1':''),{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>window.__C04_METRICS!==undefined,{timeout:10000});
+  try { await page.waitForFunction(()=>window.__C04_METRICS!==undefined,{timeout:10000}); }
+  catch(e){ throw new Error(`${name}: harness boot failed; pageErrors=${JSON.stringify(pageErrors)} consoleErrors=${JSON.stringify(consoleErrors)}`); }
   const before=await page.evaluate(()=>window.__C04_METRICS);
   if(before.requestStarted) throw new Error(`${name}: model requested before user load action`);
   await page.click('#load');
   if(forceError){await page.waitForFunction(()=>document.querySelector('#status').textContent==='error'); await page.click('#retry');}
-  await page.waitForFunction(()=>window.__C04_METRICS.modelLoaded===true,{timeout:30000});
+  try { await page.waitForFunction(()=>window.__C04_METRICS.modelLoaded===true,{timeout:30000}); }
+  catch(e){ const m=await page.evaluate(()=>window.__C04_METRICS); throw new Error(`${name}: model load failed; metrics=${JSON.stringify(m)} pageErrors=${JSON.stringify(pageErrors)} consoleErrors=${JSON.stringify(consoleErrors)} glb=${JSON.stringify(glb)}`); }
   const canvas=page.locator('canvas'); const box=await canvas.boundingBox();
   await page.mouse.move(box.x+box.width*.45,box.y+box.height*.5); await page.mouse.down(); await page.mouse.move(box.x+box.width*.62,box.y+box.height*.55,{steps:5}); await page.mouse.up();
   await page.click('#hotspot');
