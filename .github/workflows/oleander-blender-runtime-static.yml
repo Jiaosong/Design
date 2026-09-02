@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.12"
-      - name: Static syntax and fourteen-layer contract checks
+      - name: Static syntax and fifteen-layer contract checks
         run: >-
           python
-          oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_14.py
+          oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_15.py
