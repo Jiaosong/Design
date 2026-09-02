@@ -13,12 +13,38 @@ from pathlib import Path
 
 
 PIPELINE_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = PIPELINE_ROOT.parents[1]
 STATUS_PATH = PIPELINE_ROOT / "PROFESSIONAL_PARITY_STATUS.json"
 GATE_PATH = PIPELINE_ROOT / "PROFESSIONAL_PARITY_GATE.md"
 
 
 def fail(message: str) -> None:
     raise SystemExit(f"PROFESSIONAL_PARITY_STATIC_FAIL: {message}")
+
+
+def load_probe_receipt(candidate_name: str, candidate: dict) -> dict:
+    receipt_ref = candidate.get("probe_receipt")
+    if not receipt_ref:
+        fail(f"runtime-probed dependency candidate {candidate_name} lacks probe_receipt")
+    receipt_path = REPO_ROOT / receipt_ref
+    if not receipt_path.exists():
+        fail(f"runtime-probed dependency receipt does not exist for {candidate_name}: {receipt_ref}")
+    try:
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"invalid runtime-probed dependency receipt for {candidate_name}: {exc}")
+    if receipt.get("schema") != "OLEANDER_PROFESSIONAL_DEPENDENCY_RECEIPT_v0.1":
+        fail(f"unexpected dependency receipt schema for {candidate_name}")
+    if receipt.get("validation_state") != "PASS":
+        fail(f"dependency receipt is not PASS for {candidate_name}")
+    if receipt.get("dependency_state") != "RUNTIME_PROBED":
+        fail(f"dependency receipt state is not RUNTIME_PROBED for {candidate_name}")
+    if receipt.get("dependency_id") != candidate_name:
+        fail(f"dependency receipt id mismatch for {candidate_name}")
+    workflow = receipt.get("workflow") or {}
+    if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
+        fail(f"dependency receipt lacks successful workflow evidence for {candidate_name}")
+    return receipt
 
 
 def main() -> None:
@@ -93,12 +119,16 @@ def main() -> None:
     candidates = status.get("reuse_candidates") or {}
     if not candidates:
         fail("reuse-first candidate registry is empty")
+    runtime_probe_count = 0
     for name, candidate in candidates.items():
         state = candidate.get("state")
         if state not in dependency_states:
             fail(f"invalid dependency state for {name}: {state}")
         if not candidate.get("source"):
             fail(f"missing source provenance for dependency candidate {name}")
+        if state == "RUNTIME_PROBED":
+            load_probe_receipt(name, candidate)
+            runtime_probe_count += 1
         if state == "VALIDATED_FOR_BOUNDED_SCOPE" and not candidate.get("validation_receipt"):
             fail(f"validated dependency candidate {name} lacks validation_receipt")
 
@@ -108,6 +138,7 @@ def main() -> None:
         "default_promotion_state": promotion_state,
         "p0_pass_count": sum(1 for item in p0.values() if item.get("state") == "PASS"),
         "p0_total": len(p0),
+        "runtime_probed_dependencies": runtime_probe_count,
         "note": "Professional parity guard is independent of runtime layer count; incomplete P0 gates keep OLEANDER Blender CANDIDATE / NOT DEFAULT.",
     }, sort_keys=True))
 
