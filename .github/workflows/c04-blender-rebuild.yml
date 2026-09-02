@@ -15,6 +15,7 @@ on:
       - '.github/workflows/c04-blender-rebuild.yml'
       - 'tools/oleander-runtime/ensure-blender-5.2.sh'
       - '05-cases/c04-qingjiang-stone-book/blender-rebuild/**'
+      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/c04_blender_web_derivative.py'
 
 permissions:
   contents: read
@@ -69,18 +70,41 @@ jobs:
             --python-exit-code 3 \
             --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py
 
+      - name: Generate Web LOD/GLB derivatives from validated rebuild
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLEND="$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend"
+          WEB_OUT="$C04_REBUILD_OUT/web"
+          mkdir -p "$WEB_OUT"
+          "${{ steps.blender.outputs.bin }}" \
+            --background "$BLEND" \
+            --python-exit-code 4 \
+            --python 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/c04_blender_web_derivative.py -- \
+            --input "$BLEND" \
+            --output-dir "$WEB_OUT" \
+            --slug yunshuiyi \
+            --texture-max 2048 \
+            --lod0 160000 \
+            --lod1 70000 \
+            --lod2 24000
+          test -s "$WEB_OUT/C04_yunshuiyi_LOD0.glb"
+          test -s "$WEB_OUT/C04_yunshuiyi_LOD1.glb"
+          test -s "$WEB_OUT/C04_yunshuiyi_LOD2.glb"
+          test -s "$WEB_OUT/C04_yunshuiyi_WEB_DERIVATIVE_MANIFEST.json"
+
       - name: Artifact identity
         shell: bash
         run: |
           set -euo pipefail
           cd "$C04_REBUILD_OUT"
-          sha256sum * | tee SHA256SUMS.txt
+          find . -type f -print0 | sort -z | xargs -0 sha256sum | tee SHA256SUMS.txt
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003.blend
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json
 
-      - name: Upload rebuild evidence
+      - name: Upload rebuild and Web derivative evidence
         uses: actions/upload-artifact@v4
         with:
           name: C04_YUNSHUIYI_REBUILD_MASTER_v003
