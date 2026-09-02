@@ -1,7 +1,7 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
-  "implementation_revision": "1.0.4",
+  "implementation_revision": "1.0.5",
   "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
@@ -30,7 +30,10 @@
     "ARTIFACT_EXISTENCE_DOES_NOT_PROVE_DESIGN_QUALITY",
     "EVIDENCE_GATE_AND_DESIGN_QUALITY_GATE_ARE_INDEPENDENT",
     "INTERNAL_ARTIFACT_CRIT_DOES_NOT_EQUAL_INDEPENDENT_REVIEW",
-    "ONE_LOGICAL_OBJECT_ONE_PRODUCTION_PR_BY_DEFAULT"
+    "ONE_LOGICAL_OBJECT_ONE_PRODUCTION_PR_BY_DEFAULT",
+    "ACTIVE_SHARED_RUNTIME_INTERFACE_AND_JOB_LOCAL_MATERIALIZATION_ARE_SEPARATE_STATES",
+    "JOB_LOCAL_BINARY_ABSENCE_MUST_RESOLVE_CURRENT_RUNTIME_REMATERIALIZATION_OR_SHARED_RUNNER_BEFORE_UNAVAILABLE",
+    "NEW_SHARED_RUNTIME_IMPLEMENTATION_USES_90_SHARED_TOOLCHAINS_NOT_FROZEN_LEGACY_TOOLS_ROOT"
   ],
   "capability_states": [
     "NATIVE_AVAILABLE",
@@ -67,7 +70,7 @@
     "APPLY_CURRENT_DESIGN_PRODUCTION_CONTRACT_WHEN_MATERIAL_DESIGN_PRODUCTION_IS_IN_SCOPE",
     "IF_REFERENCE_RECONSTRUCTION_RESOLVE_REFERENCE_MATERIALIZATION_GATE",
     "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
-    "PROBE_ACTIVE_SHARED_OLEANDER_RUNTIME_OR_RUNNER",
+    "RESOLVE_ACTIVE_SHARED_OLEANDER_RUNTIME_INTERFACE_THEN_JOB_BINDING_REMATERIALIZATION_OR_SHARED_RUNNER",
     "SELECT_BEST_FIT_ADAPTER_WITHIN_ACTIVE_CONSTRAINTS",
     "USE_CANDIDATE_SHARED_RUNTIME_ONLY_FOR_VALIDATION_TRAINING_SUPPORT_OR_EXPLICITLY_LABELED_BOUNDED_PROJECT_REAPPLICATION",
     "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
@@ -121,7 +124,7 @@
       "preferred": ["Blender shared runtime", "Rhino/Grasshopper when verified", "CAD/BIM/FreeCAD when verified"],
       "status": "DETECT_PER_RUN",
       "blender_runtime_contract": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json",
-      "blender_invocation": "bash tools/oleander-runtime/blender.sh <blender args>",
+      "blender_invocation": "use OLEANDER_BLENDER_RUNTIME_v1.0 resolver; tools/oleander-runtime/blender.sh is Legacy compatibility adapter only",
       "authority_rule": "derived render or mesh does not silently replace authoritative geometry/source"
     },
     "materials_cmf_render": {
@@ -164,8 +167,15 @@
     "scope": "OLEANDER_ALL_PROJECTS",
     "source": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json",
     "project_specific_absolute_paths": "FORBIDDEN",
-    "preferred_wrapper": "tools/oleander-runtime/blender.sh",
-    "conversation_rule": "Every OLEANDER conversation may route Blender work through the shared runtime contract; the individual run must still verify that its execution surface can invoke the runtime before claiming EXECUTED."
+    "conversation_rule": "Every OLEANDER conversation may route Blender work through the shared runtime contract; the individual run must still verify that its execution surface can invoke the runtime before claiming EXECUTED.",
+    "interface_state_rule": "ACTIVE_RUNTIME_INTERFACE_IS_DISTINCT_FROM_JOB_LOCAL_MATERIALIZATION",
+    "job_binding_states": ["MATERIALIZED", "NEEDS_REMATERIALIZATION", "RUNNER_RESOLVED", "EXECUTION_FAILED"],
+    "current_runtime_implementation_namespace": "90-shared/toolchains/blender-runtime/",
+    "preferred_rematerialization": "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh",
+    "preferred_shared_runner": ".github/workflows/oleander-shared-blender-runner.yml",
+    "legacy_compatibility_wrappers": ["tools/oleander-runtime/activate-blender.sh", "tools/oleander-runtime/blender.sh"],
+    "legacy_namespace_rule": "FROZEN_TOOLS_ROOT_MAY_RETAIN_EXISTING_COMPATIBILITY_ADAPTERS_BUT_MUST_NOT_RECEIVE_NEW_RUNTIME_IMPLEMENTATION_OR_BOOTSTRAP_LOGIC",
+    "unavailable_gate": "ONLY_AFTER_CURRENT_RUNTIME_RESOLVER_REMATERIALIZATION_AND_ALLOWED_SHARED_RUNNER_HAVE_ACTUALLY_FAILED"
   },
   "figma": {
     "role": "EXPLICIT_REQUEST_ONLY_HANDOFF_ADAPTER",
@@ -192,35 +202,8 @@
     "instance_directory": "00-governance/runtime/receipts/",
     "current_rule": "Use the Current Execution Receipt contract as the single instance schema. New receipts must record sticky constraint_lock and flow_completion; only explicitly allowlisted pre-policy receipts may omit them.",
     "evidence_record_rule": "VALIDATION_RETEST_BROWSER_RESULT_AND_REVIEW_FILES_ARE_EVIDENCE_RECORDS_NOT_ALTERNATE_EXECUTION_RECEIPT_SCHEMAS",
-    "legacy_minimum_subset": [
-      "TASK",
-      "AUTHORITY",
-      "SKILL_RESOLVED",
-      "REQUIRED_OUTPUT",
-      "CAPABILITY_STATE",
-      "ADAPTER_SELECTED",
-      "VERSION_OR_PATH_IF_VERIFIED",
-      "EXECUTED_OR_PENDING",
-      "READBACK_STATE",
-      "EVIDENCE_GATE",
-      "DESIGN_QUALITY_GATE",
-      "DOES_NOT_PROVE"
-    ],
-    "reference_reconstruction_additional_fields": [
-      "SOURCE_LOCATOR",
-      "SOURCE_BYTES_STATE",
-      "SOURCE_SHA256",
-      "REFERENCE_FRAME_STATE",
-      "PAGE_OR_FRAME",
-      "SCALE_OR_DPI",
-      "RENDERER",
-      "REFERENCE_FRAME_SHA256",
-      "COMPARISON_RUNTIME",
-      "PIXEL_DIFF_STATE",
-      "PIXEL_DIFF_METRIC",
-      "MISMATCH_STATE",
-      "FIDELITY_GATE"
-    ],
+    "legacy_minimum_subset": ["TASK", "AUTHORITY", "SKILL_RESOLVED", "REQUIRED_OUTPUT", "CAPABILITY_STATE", "ADAPTER_SELECTED", "VERSION_OR_PATH_IF_VERIFIED", "EXECUTED_OR_PENDING", "READBACK_STATE", "EVIDENCE_GATE", "DESIGN_QUALITY_GATE", "DOES_NOT_PROVE"],
+    "reference_reconstruction_additional_fields": ["SOURCE_LOCATOR", "SOURCE_BYTES_STATE", "SOURCE_SHA256", "REFERENCE_FRAME_STATE", "PAGE_OR_FRAME", "SCALE_OR_DPI", "RENDERER", "REFERENCE_FRAME_SHA256", "COMPARISON_RUNTIME", "PIXEL_DIFF_STATE", "PIXEL_DIFF_METRIC", "MISMATCH_STATE", "FIDELITY_GATE"],
     "boundary": "Legacy minimum subset is compatibility provenance only and does not define a second receipt schema."
   }
 }
