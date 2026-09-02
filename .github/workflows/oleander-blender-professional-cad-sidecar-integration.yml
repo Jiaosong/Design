@@ -1,0 +1,165 @@
+name: OLEANDER Blender Professional CAD Sidecar Integration
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/contracts/**"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender/cad_sidecar.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
+      - ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/contracts/**"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender/cad_sidecar.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
+      - ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  cad-sketch-to-occt-rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      CAD_SKETCHER_COMMIT: "831ee71f451777d2d48632da62114cc5e9357d3d"
+      CAD_SKETCHER_PACKAGE: /tmp/cad-sketcher-0.3.0.zip
+      OLEANDER_CAD_SKETCHER_PACKAGE: bl_ext.oleander_professional.CAD_Sketcher
+      OLEANDER_CAD_INTEGRATION_DIR: /tmp/oleander-cad-integration
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Build and install pinned CAD Sketcher
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output /tmp/cad-sketcher-source.tar.gz \
+            "https://github.com/hlorus/CAD_Sketcher/archive/${CAD_SKETCHER_COMMIT}.tar.gz"
+          echo 'd7d70d01477e73a8cddb35881d63b813724829190c8f5a0390177c78819e4749  /tmp/cad-sketcher-source.tar.gz' | sha256sum --check
+          mkdir -p /tmp/cad-sketcher-source /tmp/oleander-professional-extensions
+          tar -xzf /tmp/cad-sketcher-source.tar.gz --strip-components=1 -C /tmp/cad-sketcher-source
+          "${blender_bin}" --command extension validate /tmp/cad-sketcher-source
+          "${blender_bin}" --command extension build --source-dir /tmp/cad-sketcher-source --output-filepath "${CAD_SKETCHER_PACKAGE}"
+          "${blender_bin}" --command extension validate "${CAD_SKETCHER_PACKAGE}"
+          "${blender_bin}" --command extension repo-add oleander_professional --name "OLEANDER Professional Integration" --directory /tmp/oleander-professional-extensions --clear-all
+          "${blender_bin}" --command extension install-file -r oleander_professional -e "${CAD_SKETCHER_PACKAGE}"
+          "${blender_bin}" --command extension list | grep -F 'CAD Sketcher'
+
+      - name: Solve CAD Sketcher profile and export revision requests
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          "${blender_bin}" --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_sketch_to_request.py \
+            2>&1 | tee /tmp/oleander-cad-sketch-to-request.log
+          grep -F 'OLEANDER_CAD_SKETCH_TO_REQUEST=' /tmp/oleander-cad-sketch-to-request.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-sketch-to-request.log
+          test -s "${OLEANDER_CAD_INTEGRATION_DIR}/request_R001.json"
+          test -s "${OLEANDER_CAD_INTEGRATION_DIR}/request_R002.json"
+          test -s "${OLEANDER_CAD_INTEGRATION_DIR}/request_R003_EXPECT_FAIL.json"
+
+      - name: Download and verify FreeCAD 1.1.3 process sidecar
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "/tmp/${FREECAD_APPIMAGE}" "${url}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-appimage-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Build authoritative CAD revisions R001 and R002
+        shell: bash
+        run: |
+          set -euo pipefail
+          service="${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_build_service.py"
+          for rev in R001 R002; do
+            mkdir -p "${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}"
+            OLEANDER_CAD_BUILD_REQUEST="${OLEANDER_CAD_INTEGRATION_DIR}/request_${rev}.json" \
+            OLEANDER_CAD_BUILD_DIR="${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}" \
+              /tmp/squashfs-root/usr/bin/freecadcmd "${service}" \
+              2>&1 | tee "/tmp/oleander-cad-build-${rev}.log"
+            grep -F 'OLEANDER_CAD_BUILD_RESPONSE=' "/tmp/oleander-cad-build-${rev}.log"
+            grep -F '"status": "PASS"' "/tmp/oleander-cad-build-${rev}.log"
+            test -s "${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}/cad_build_response.json"
+            test -s "${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}/cad_display_derivative.json"
+          done
+
+      - name: Verify controlled impossible-feature failure envelope
+        shell: bash
+        run: |
+          set -euo pipefail
+          service="${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_build_service.py"
+          fail_dir="${OLEANDER_CAD_INTEGRATION_DIR}/build_R003_EXPECT_FAIL"
+          mkdir -p "${fail_dir}"
+          set +e
+          OLEANDER_CAD_BUILD_REQUEST="${OLEANDER_CAD_INTEGRATION_DIR}/request_R003_EXPECT_FAIL.json" \
+          OLEANDER_CAD_BUILD_DIR="${fail_dir}" \
+            /tmp/squashfs-root/usr/bin/freecadcmd "${service}" \
+            > /tmp/oleander-cad-build-R003-fail.log 2>&1
+          code=$?
+          set -e
+          test "${code}" -ne 0
+          grep -F 'OLEANDER_CAD_BUILD_FAIL=' /tmp/oleander-cad-build-R003-fail.log
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path(os.environ['OLEANDER_CAD_INTEGRATION_DIR']) / 'build_R003_EXPECT_FAIL' / 'cad_build_response.json'
+          data = json.loads(path.read_text())
+          assert data['status'] == 'FAIL'
+          assert data['measurements']['solid_count'] == 0
+          assert data['error']
+          print('OLEANDER_CAD_EXPECTED_FAILURE=PASS')
+          PY
+
+      - name: Validate stale propagation, rebuild binding and Blender reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="blender-${BLENDER_VERSION}-linux-x64/blender"
+          "${blender_bin}" --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_sidecar_integration_readback.py \
+            2>&1 | tee /tmp/oleander-cad-sidecar-integration.log
+          grep -F 'OLEANDER_CAD_SIDECAR_INTEGRATION=' /tmp/oleander-cad-sidecar-integration.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-sidecar-integration.log
+          grep -F '"master": "FreeCAD/OCCT B-Rep"' /tmp/oleander-cad-sidecar-integration.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-cad-sidecar-integration.log
+
+      - name: Record professional integration evidence boundary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Professional CAD Sidecar Integration'
+            echo '- Source intent: real CAD Sketcher + SolveSpace constrained rectangle in Blender 5.1.2.'
+            echo '- Revision test: 80x50 -> 100x50 driving-width edit, solved before export.'
+            echo '- CAD master: FreeCAD 1.1.3 / OCCT process sidecar, FCStd + STEP + BREP.'
+            echo '- Blender result: typed DISPLAY_DERIVATIVE_ONLY with request/STEP hashes.'
+            echo '- Failure envelope: contract-valid revision with impossible oversized through-hole must fail explicitly with zero released solids.'
+            echo '- This is a bounded integrated feature-rebuild foundation; it does NOT make P0-A/P0-B PASS or prove general CAD feature-tree, direct B-Rep, assembly or engineering parity.'
+          } >> "$GITHUB_STEP_SUMMARY"
