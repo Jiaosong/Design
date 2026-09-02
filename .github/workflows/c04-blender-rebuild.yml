@@ -16,6 +16,8 @@ on:
       - 'tools/oleander-runtime/ensure-blender-5.2.sh'
       - '05-cases/c04-qingjiang-stone-book/blender-rebuild/**'
       - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/c04_blender_web_derivative.py'
+      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/c04_web_runtime_harness.html'
+      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support/c04_browser_runtime_test.mjs'
 
 permissions:
   contents: read
@@ -23,7 +25,7 @@ permissions:
 jobs:
   rebuild-yunshuiyi:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     env:
       C04_REBUILD_OUT: ${{ github.workspace }}/artifacts/c04-yunshuiyi
     steps:
@@ -92,6 +94,30 @@ jobs:
           test -s "$WEB_OUT/C04_yunshuiyi_LOD1.glb"
           test -s "$WEB_OUT/C04_yunshuiyi_LOD2.glb"
           test -s "$WEB_OUT/C04_yunshuiyi_WEB_DERIVATIVE_MANIFEST.json"
+
+      - name: Chromium runtime attack and readback
+        shell: bash
+        run: |
+          set -euo pipefail
+          WEB_OUT="$C04_REBUILD_OUT/web"
+          SUPPORT="05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support"
+          TESTROOT=/tmp/c04-browser-runtime
+          rm -rf "$TESTROOT"; mkdir -p "$TESTROOT" "$WEB_OUT/browser" "$WEB_OUT/addons/loaders"
+          cd "$TESTROOT"
+          npm init -y >/dev/null 2>&1
+          npm install --no-audit --no-fund three@0.179.1 playwright@1.55.0 >/dev/null
+          npx playwright install chromium >/dev/null
+          cp node_modules/three/build/three.module.js "$WEB_OUT/three.module.js"
+          cp node_modules/three/examples/jsm/loaders/GLTFLoader.js "$WEB_OUT/addons/loaders/GLTFLoader.js"
+          cp "$GITHUB_WORKSPACE/$SUPPORT/c04_web_runtime_harness.html" "$WEB_OUT/index.html"
+          cp "$GITHUB_WORKSPACE/$SUPPORT/c04_browser_runtime_test.mjs" "$TESTROOT/test.mjs"
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$WEB_OUT" >/tmp/c04-browser-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          node "$TESTROOT/test.mjs" http://127.0.0.1:8765/ "$WEB_OUT/browser/C04_YUNSHUIYI_BROWSER_RUNTIME_RECEIPT.json"
+          test -s "$WEB_OUT/browser/C04_YUNSHUIYI_BROWSER_RUNTIME_RECEIPT.json"
+          kill "$SERVER_PID" 2>/dev/null || true
+          trap - EXIT
 
       - name: Artifact identity
         shell: bash
