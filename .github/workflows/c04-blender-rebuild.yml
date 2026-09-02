@@ -37,6 +37,7 @@ jobs:
           echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
           "$BLENDER_BIN" --version | tee blender-version.txt
           grep -F "Blender 5.2.0" blender-version.txt
+          grep -F "build hash: fbe6228777e7" blender-version.txt
 
       - name: Build editable Yunshuiyi candidate
         shell: bash
@@ -46,6 +47,7 @@ jobs:
           "${{ steps.blender.outputs.bin }}" \
             --background \
             --factory-startup \
+            --python-exit-code 2 \
             --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v001.py
 
       - name: Native Blender reopen validation
@@ -56,6 +58,7 @@ jobs:
           test -s "$BLEND"
           "${{ steps.blender.outputs.bin }}" \
             --background "$BLEND" \
+            --python-exit-code 3 \
             --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild.py
 
       - name: Artifact identity
