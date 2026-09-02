@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-OUT = os.environ.get("C04_REBUILD_OUT", "/tmp/c04-yunshuiyi-rebuild")
+OUT = os.environ.get("OLEANDER_JOB_OUTPUT_DIR") or os.environ.get("C04_REBUILD_OUT", "/tmp/c04-yunshuiyi-rebuild")
 RECEIPT = os.path.join(OUT, "C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json")
 required = ["C04_YUNSHUIYI_PRIMARY_SHELL", "C04_YUNSHUIYI_CONTACT_ZONE", "DATUM_LONGITUDINAL_CENTER"]
 missing = [n for n in required if bpy.data.objects.get(n) is None]
