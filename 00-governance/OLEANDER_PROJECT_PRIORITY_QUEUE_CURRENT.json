@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -22,9 +22,11 @@
       "shared_blender_runtime": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md",
       "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE",
       "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
-      "next_action": "PRESENTATION retains this object. DESIGN must first return actual Blender-generated editable geometry and a Candidate .blend for the first rebuild object, using /恩施 assets only as SOURCE_REFERENCE. VALIDATION then reopens/fidelity-checks that Candidate and only after validation produces LOD/GLB/browser derivative evidence. PRESENTATION consumes the returned validated derivative. Prompt, receipt, authority, runtime-path or lease metadata alone do not count as model material progress.",
-      "updated_at": "2026-09-02T21:03:00+08:00",
-      "source_of_queue_decision": "User-explicit C04 route override plus Current OLEANDER_C04_BLENDER_REBUILD_ROUTE_CURRENT.md. The prior queue still described direct Meshy-derived runtime processing as the active route and omitted the DESIGN rebuild lease. PR #465 remains at ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. Current route is Blender editable rebuild master first; Meshy remains SOURCE_REFERENCE."
+      "production_stall": "PRODUCTION_STALL_DESPITE_ACTIVE_RUNTIME_INTERFACE",
+      "production_stall_basis": "Second consecutive governance readback after rebuild-first route activation shows no new PR frontier and no repository evidence of an executable rebuild checkpoint, Blender-generated editable geometry, Candidate .blend, preview/reopen evidence, GLB or browser runtime evidence. Authority, runtime and lease metadata are not material model progress.",
+      "next_action": "PRESENTATION retains this object. DESIGN must return the first actual executable Blender rebuild checkpoint with editable geometry and Candidate .blend using /恩施 assets only as SOURCE_REFERENCE. VALIDATION then reopens/fidelity-checks that Candidate and only after validation produces LOD/GLB/browser derivative evidence. Do not create a parallel Blender environment and do not count prompt, receipt, authority, runtime-path or lease metadata as production progress.",
+      "updated_at": "2026-09-02T22:07:17+08:00",
+      "source_of_queue_decision": "Governance production-progress gate after user-explicit Blender rebuild-first route override. PR #465 remains at ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7 across the second consecutive governance readback, while shared Blender runtime remains ACTIVE_RUNTIME_INTERFACE. No material rebuild artifact has been evidenced, so the route remains current and the production stall is recorded without transferring ownership or replacing DESIGN production work."
     }
   ],
   "entry_schema": {
@@ -44,6 +46,8 @@
     "shared_blender_runtime": "repository-wide Blender runtime authority when applicable",
     "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE|NEEDS_REMATERIALIZATION_OR_RUNNER",
     "current_route": "current authority-preserving production route",
+    "production_stall": "optional governance stall classification",
+    "production_stall_basis": "evidence basis for a production stall classification",
     "next_action": "one concrete next action",
     "updated_at": "ISO-8601",
     "source_of_queue_decision": "project Current State or explicit user instruction"
