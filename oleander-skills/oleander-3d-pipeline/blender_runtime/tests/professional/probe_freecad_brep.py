@@ -61,12 +61,13 @@ def build_authoritative_shape(width_mm: float = 80.0):
     check(base.isValid(), "brep_box_valid")
     check(base.ShapeType == "Solid", "brep_box_solid")
 
-    # Apply a small constant-radius fillet to one stable edge in this controlled
-    # fixture. This validates callable OCCT fillet behavior, not broad fillet
-    # robustness or topological naming stability.
+    # FreeCAD/OCCT may wrap a valid one-solid fillet result in a broader
+    # TopoShape container. The professional invariant is one valid solid body,
+    # not a particular Python wrapper ShapeType string at this intermediate step.
     filleted = base.makeFillet(2.0, [base.Edges[0]])
     check(filleted.isValid(), "brep_fillet_valid")
-    check(filleted.ShapeType == "Solid", "brep_fillet_solid")
+    check(len(filleted.Solids) == 1, "brep_fillet_single_solid")
+    check(filleted.Solids[0].Volume > 0.0, "brep_fillet_positive_volume")
 
     hole = Part.makeCylinder(5.0, 10.0, App.Vector(width_mm * 0.25, 25.0, 0.0))
     result = filleted.cut(hole).removeSplitter()
