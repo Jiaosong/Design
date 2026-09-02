@@ -1,0 +1,143 @@
+name: OLEANDER Shared Blender Runner
+
+on:
+  workflow_call:
+    inputs:
+      script_path:
+        description: Repository-relative Blender Python producer script
+        required: true
+        type: string
+      validation_script_path:
+        description: Optional repository-relative Blender Python validation script
+        required: false
+        default: ''
+        type: string
+      blend_file:
+        description: Optional repository-relative or generated workspace-relative .blend path to reopen
+        required: false
+        default: ''
+        type: string
+      output_dir:
+        description: Workspace-relative output directory
+        required: true
+        type: string
+      artifact_name:
+        description: Uploaded artifact name
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      script_path:
+        description: Repository-relative Blender Python producer script
+        required: true
+        type: string
+      validation_script_path:
+        description: Optional repository-relative Blender Python validation script
+        required: false
+        default: ''
+        type: string
+      blend_file:
+        description: Optional workspace-relative .blend path to reopen
+        required: false
+        default: ''
+        type: string
+      output_dir:
+        description: Workspace-relative output directory
+        required: true
+        type: string
+      artifact_name:
+        description: Uploaded artifact name
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  blender-job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OLEANDER_JOB_OUTPUT_DIR: ${{ github.workspace }}/${{ inputs.output_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Validate job inputs
+        shell: bash
+        env:
+          SCRIPT_PATH: ${{ inputs.script_path }}
+          VALIDATION_SCRIPT_PATH: ${{ inputs.validation_script_path }}
+          BLEND_FILE: ${{ inputs.blend_file }}
+          OUTPUT_DIR: ${{ inputs.output_dir }}
+        run: |
+          set -euo pipefail
+          for value in "$SCRIPT_PATH" "$VALIDATION_SCRIPT_PATH" "$BLEND_FILE" "$OUTPUT_DIR"; do
+            [[ "$value" != /* ]] || { echo "Absolute project/job path forbidden: $value" >&2; exit 64; }
+            [[ "$value" != *".."* ]] || { echo "Parent traversal forbidden: $value" >&2; exit 64; }
+          done
+          test -f "$SCRIPT_PATH"
+          if [[ -n "$VALIDATION_SCRIPT_PATH" ]]; then test -f "$VALIDATION_SCRIPT_PATH"; fi
+          mkdir -p "$OLEANDER_JOB_OUTPUT_DIR"
+
+      - name: Install shared Blender runtime libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+
+      - name: Resolve OLEANDER Blender shared runtime
+        id: blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="$(bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh)"
+          echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
+          "$BLENDER_BIN" --version | tee blender-version.txt
+          grep -F "Blender 5.2.0" blender-version.txt
+          grep -F "build hash: fbe6228777e7" blender-version.txt
+
+      - name: Execute Blender producer
+        shell: bash
+        env:
+          SCRIPT_PATH: ${{ inputs.script_path }}
+        run: |
+          set -euo pipefail
+          "${{ steps.blender.outputs.bin }}" \
+            --background \
+            --factory-startup \
+            --python-exit-code 2 \
+            --python "$SCRIPT_PATH"
+
+      - name: Native Blender reopen validation
+        if: ${{ inputs.blend_file != '' && inputs.validation_script_path != '' }}
+        shell: bash
+        env:
+          BLEND_FILE: ${{ inputs.blend_file }}
+          VALIDATION_SCRIPT_PATH: ${{ inputs.validation_script_path }}
+        run: |
+          set -euo pipefail
+          test -s "$BLEND_FILE"
+          "${{ steps.blender.outputs.bin }}" \
+            --background "$BLEND_FILE" \
+            --python-exit-code 3 \
+            --python "$VALIDATION_SCRIPT_PATH"
+
+      - name: Artifact identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d "$OLEANDER_JOB_OUTPUT_DIR"
+          find "$OLEANDER_JOB_OUTPUT_DIR" -type f -print0 | sort -z | xargs -0 sha256sum | tee "$OLEANDER_JOB_OUTPUT_DIR/SHA256SUMS.txt"
+          test -s "$OLEANDER_JOB_OUTPUT_DIR/SHA256SUMS.txt"
+
+      - name: Upload Blender job artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: |
+            ${{ inputs.output_dir }}/
+            blender-version.txt
+          if-no-files-found: error
+          retention-days: 30
