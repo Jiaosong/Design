@@ -22,8 +22,8 @@ from bpy.props import BoolProperty, StringProperty
 from .dependency import mark_downstream_stale, object_id
 from .design_intent import (
     _append_event,
-    _parameter_by_id,
     audit_design_intent_graph,
+    evaluate_failure_envelope,
     get_design_parameters,
 )
 from .design_intent_apply import (
@@ -117,10 +117,6 @@ def _target_signature(item):
 
 def _build_batch_execution_plan(scene, parameter_ids, include_dependencies=True):
     requested = _normalize_parameter_ids(parameter_ids)
-    graph_audit = audit_design_intent_graph(scene)
-    if graph_audit.get("status") != "PASS":
-        raise ValueError("design intent graph must audit PASS before batch apply")
-
     parameters = get_design_parameters(scene)
     parameter_by_id = _parameter_map(parameters)
     missing = [parameter_id for parameter_id in requested if parameter_id not in parameter_by_id]
@@ -129,6 +125,18 @@ def _build_batch_execution_plan(scene, parameter_ids, include_dependencies=True)
 
     selected = _expand_upstream_dependencies(parameter_by_id, requested) if include_dependencies else set(requested)
     order = _topological_order(parameter_by_id, selected, requested)
+
+    # Give the caller the most specific selected-parameter failure before the
+    # broader graph audit. This mirrors the single-parameter Apply contract and
+    # keeps batch rejection reasons actionable without weakening the global gate.
+    for parameter_id in order:
+        envelope = evaluate_failure_envelope(parameter_by_id[parameter_id])
+        if envelope.get("status") in {"FAIL", "INVALID"}:
+            raise ValueError(f"design parameter outside valid failure envelope: {parameter_id}")
+
+    graph_audit = audit_design_intent_graph(scene)
+    if graph_audit.get("status") != "PASS":
+        raise ValueError("design intent graph must audit PASS before batch apply")
 
     entries = []
     ownership = {}
