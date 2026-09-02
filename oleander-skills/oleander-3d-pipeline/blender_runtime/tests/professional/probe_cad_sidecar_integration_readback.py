@@ -16,7 +16,7 @@ if str(RUNTIME_ROOT) not in sys.path:
     sys.path.insert(0, str(RUNTIME_ROOT))
 
 import oleander_blender
-from oleander_blender.cad_sidecar import (
+from professional_adapter.cad_sidecar import (
     CADSidecarContractError,
     assert_response_matches_request,
     bind_display_derivative,
@@ -72,11 +72,7 @@ def main() -> None:
     check(bool(obj["cad_stale"]), "stale_flag_set")
     check(bool(obj.oleander.stale), "governed_stale_flag_set")
 
-    obj = bind_display_derivative(
-        response=response2,
-        display_payload=display2,
-        existing_object=obj,
-    )
+    obj = bind_display_derivative(response=response2, display_payload=display2, existing_object=obj)
     bpy.context.view_layer.update()
     check(not bool(obj["cad_stale"]), "revision2_rebind_clears_stale")
     check(not bool(obj.oleander.stale), "revision2_governed_stale_cleared")
@@ -116,17 +112,8 @@ def main() -> None:
         "status": "PASS",
         "blender": bpy.app.version_string,
         "checks": checks,
-        "authority": {
-            "source_intent": "CAD Sketcher + SolveSpace",
-            "master": "FreeCAD/OCCT B-Rep",
-            "blender": "DISPLAY_DERIVATIVE_ONLY",
-        },
-        "non_claims": [
-            "P0_A_PARAMETRIC_CAD_PASS",
-            "general_feature_tree",
-            "general_direct_brep",
-            "assembly_mates",
-        ],
+        "authority": {"source_intent": "CAD Sketcher + SolveSpace", "master": "FreeCAD/OCCT B-Rep", "blender": "DISPLAY_DERIVATIVE_ONLY"},
+        "non_claims": ["P0_A_PARAMETRIC_CAD_PASS", "general_feature_tree", "general_direct_brep", "assembly_mates"],
     }
     print("OLEANDER_CAD_SIDECAR_INTEGRATION=" + json.dumps(result, sort_keys=True))
 
