@@ -3,6 +3,10 @@
 Run with FreeCADCmd, not Blender Python. This validates a bounded authoritative
 B-Rep process route, STEP/BREP round-trip, deterministic measurement and a
 triangulated display derivative payload. PASS does not make P0-A or P0-B PASS.
+
+FreeCADCmd imports ordinary .py files as modules on this route, so this probe
+executes main() unconditionally at module load rather than relying on
+__name__ == "__main__".
 """
 
 from __future__ import annotations
@@ -182,5 +186,6 @@ def main() -> None:
     print("OLEANDER_FREECAD_BREP_PROBE=" + json.dumps(manifest, sort_keys=True))
 
 
-if __name__ == "__main__":
-    main()
+# FreeCADCmd imports .py scripts as modules on this execution route. This file is
+# an executable CI probe, not a reusable library, so execute on import.
+main()
