@@ -1,0 +1,91 @@
+name: C04 Blender Rebuild
+
+on:
+  workflow_dispatch:
+    inputs:
+      object:
+        description: Rebuild object slug
+        required: false
+        default: yunshuiyi
+  push:
+    branches:
+      - main
+      - fix/c04-blender-rebuild-runtime-clean-20260902
+    paths:
+      - '.github/workflows/c04-blender-rebuild.yml'
+      - 'tools/oleander-runtime/ensure-blender-5.2.sh'
+      - '05-cases/c04-qingjiang-stone-book/blender-rebuild/**'
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-yunshuiyi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      C04_REBUILD_OUT: ${{ github.workspace }}/artifacts/c04-yunshuiyi
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Blender runtime libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+
+      - name: Restore OLEANDER Blender 5.2 runtime
+        id: blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="$(bash tools/oleander-runtime/ensure-blender-5.2.sh)"
+          echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
+          "$BLENDER_BIN" --version | tee blender-version.txt
+          grep -F "Blender 5.2.0" blender-version.txt
+          grep -F "build hash: fbe6228777e7" blender-version.txt
+
+      - name: Build editable Yunshuiyi candidate v003
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$C04_REBUILD_OUT"
+          "${{ steps.blender.outputs.bin }}" \
+            --background \
+            --factory-startup \
+            --python-exit-code 2 \
+            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py
+
+      - name: Native Blender reopen validation v003
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLEND="$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend"
+          test -s "$BLEND"
+          "${{ steps.blender.outputs.bin }}" \
+            --background "$BLEND" \
+            --python-exit-code 3 \
+            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py
+
+      - name: Artifact identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$C04_REBUILD_OUT"
+          sha256sum * | tee SHA256SUMS.txt
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003.blend
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json
+
+      - name: Upload rebuild evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: C04_YUNSHUIYI_REBUILD_MASTER_v003
+          path: |
+            artifacts/c04-yunshuiyi/
+            blender-version.txt
+          if-no-files-found: error
+          retention-days: 30
