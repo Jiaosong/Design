@@ -4,7 +4,7 @@ import math
 import os
 from mathutils import Vector
 
-OUT = os.environ.get("C04_REBUILD_OUT", "/tmp/c04-yunshuiyi-rebuild")
+OUT = os.environ.get("OLEANDER_JOB_OUTPUT_DIR") or os.environ.get("C04_REBUILD_OUT", "/tmp/c04-yunshuiyi-rebuild")
 os.makedirs(OUT, exist_ok=True)
 BLEND = os.path.join(OUT, "C04_YUNSHUIYI_REBUILD_MASTER_v003.blend")
 PREVIEW = os.path.join(OUT, "C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png")
