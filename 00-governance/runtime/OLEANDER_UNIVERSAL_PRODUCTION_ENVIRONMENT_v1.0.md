@@ -179,11 +179,13 @@ The existing runtime remains authoritative:
 
 - `00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json`
 - `00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md`
-- `tools/oleander-runtime/activate-blender.sh`
-- `tools/oleander-runtime/blender.sh`
-- `tools/oleander-runtime/ensure-blender-5.2.sh`
+- `tools/oleander-runtime/activate-blender.sh` (Legacy compatibility adapter; not the Current runtime implementation namespace)
+- `tools/oleander-runtime/blender.sh` (Legacy compatibility adapter; not the Current runtime implementation namespace)
+- `90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh`
 - `.github/workflows/oleander-shared-blender-runner.yml`
 - `.github/workflows/oleander-blender-runtime-contract.yml`
+
+Current runtime implementation belongs to `90-shared/toolchains/` and the approved shared runner. The frozen Legacy `tools/` root may remain referenced only by existing compatibility adapters; it must not receive new runtime implementation or bootstrap logic.
 
 Do not fork a separate Blender installation path or Blender bootstrap workflow inside each project. A project workflow may call the shared runner with project-specific script/output parameters; the project does not own Blender installation or version recovery.
 
