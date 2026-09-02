@@ -68,6 +68,20 @@ jobs:
             --python-exit-code 3 \
             --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py
 
+      - name: Export Yunshuiyi Web derivative LODs
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLEND="$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend"
+          "${{ steps.blender.outputs.bin }}" \
+            --background "$BLEND" \
+            --python-exit-code 4 \
+            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_export_yunshuiyi_web_v003.py
+          test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_LOD0.glb"
+          test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_LOD1.glb"
+          test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_LOD2.glb"
+          test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_WEB_MANIFEST.json"
+
       - name: Artifact identity
         shell: bash
         run: |
@@ -78,11 +92,15 @@ jobs:
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json
+          test -s C04_YUNSHUIYI_REBUILD_v003_LOD0.glb
+          test -s C04_YUNSHUIYI_REBUILD_v003_LOD1.glb
+          test -s C04_YUNSHUIYI_REBUILD_v003_LOD2.glb
+          test -s C04_YUNSHUIYI_REBUILD_v003_WEB_MANIFEST.json
 
-      - name: Upload rebuild evidence
+      - name: Upload rebuild and Web derivative evidence
         uses: actions/upload-artifact@v4
         with:
-          name: C04_YUNSHUIYI_REBUILD_MASTER_v003
+          name: C04_YUNSHUIYI_REBUILD_MASTER_v003_WEB
           path: |
             artifacts/c04-yunshuiyi/
             blender-version.txt
