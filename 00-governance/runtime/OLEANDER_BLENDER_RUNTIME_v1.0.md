@@ -25,7 +25,7 @@ All OLEANDER tasks that need Blender resolve the same shared runtime in this ord
 1. `$OLEANDER_BLENDER_BIN` when explicitly supplied by the runtime;
 2. `blender` found on `PATH`;
 3. `/mnt/data/runtime/blender-5.2.0-lts/blender` as the managed ChatGPT-runtime fallback when materialized;
-4. `tools/oleander-runtime/ensure-blender-5.2.sh` to rematerialize the exact verified Blender 5.2 runtime;
+4. `90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh` to rematerialize the exact verified Blender 5.2 runtime;
 5. `.github/workflows/oleander-shared-blender-runner.yml` when a shared GitHub runner is the available execution carrier.
 
 Project files must not hard-code a project-specific Blender path, vendor a Blender binary, or duplicate Blender installation/download/bootstrap logic when the shared runtime can own the capability.
@@ -50,12 +50,12 @@ Use this distinction:
 The runtime-owned implementation is:
 
 ```bash
-bash tools/oleander-runtime/ensure-blender-5.2.sh
+bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh
 ```
 
 It uses the existing verified binary first, then approved cached archives, and downloads the official Blender 5.2 archive only when necessary. The archive must pass the canonical SHA-256 gate before activation.
 
-This is **OLEANDER runtime logic**, not project logic. Projects must not copy it into project folders or create parallel Blender environments.
+This is **OLEANDER runtime logic**, not project logic. Current implementation lives under the canonical `90-shared/toolchains/` area; the frozen Legacy `tools/` root is not extended by new runtime work.
 
 ## Shared runner
 
@@ -116,7 +116,7 @@ This shared runtime may be used by, among others:
 - Cycles path-traced verification;
 - image/AOV generation for OLEANDER project QA.
 
-It is not restricted to any project.
+It is not restricted to Timer Light Basin or any other individual project.
 
 ## Evidence boundary
 
