@@ -20,6 +20,8 @@ scene.render.resolution_y = 720
 scene.render.resolution_percentage = 100
 scene.render.filepath = PREVIEW_PATH
 scene.render.image_settings.file_format = 'PNG'
+if scene.world is None:
+    scene.world = bpy.data.worlds.new("C04_YUNSHUIYI_WORLD")
 scene.world.color = (0.035, 0.035, 0.035)
 
 master_col = bpy.data.collections.new("C04_YUNSHUIYI_REBUILD_v002")
