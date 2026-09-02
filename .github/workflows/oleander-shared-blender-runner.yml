@@ -92,7 +92,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BLENDER_BIN="$(bash tools/oleander-runtime/ensure-blender-5.2.sh)"
+          BLENDER_BIN="$(bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh)"
           echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
           "$BLENDER_BIN" --version | tee blender-version.txt
           grep -F "Blender 5.2.0" blender-version.txt
