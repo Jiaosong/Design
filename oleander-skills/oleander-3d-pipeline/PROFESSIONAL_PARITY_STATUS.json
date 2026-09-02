@@ -1,0 +1,36 @@
+{
+  "schema": "OLEANDER_BLENDER_PROFESSIONAL_PARITY_STATUS_v0.1",
+  "runtime_id": "oleander-blender-runtime",
+  "parity_gate": "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_GATE.md",
+  "default_environment_eligible": false,
+  "default_promotion_state": "BLOCKED_UNTIL_PROFESSIONAL_PARITY",
+  "promotion_rule": "ALL_P0_PASS_AND_REQUIRED_PROJECT_P1_PASS",
+  "p0": {
+    "P0_A_PARAMETRIC_CAD": {"state": "BLOCKED", "target_class": ["SolidWorks", "Fusion", "Inventor"], "primary_gap": "solver-backed sketch + authoritative B-Rep feature rebuild + assembly mates + STEP round-trip"},
+    "P0_B_DIRECT_BREP": {"state": "BLOCKED", "target_class": ["Plasticity"], "primary_gap": "authoritative B-Rep direct face operations + healing + fillet/shell robustness"},
+    "P0_C_NURBS_CLASS_A": {"state": "BLOCKED", "target_class": ["Rhino", "Alias"], "primary_gap": "authoritative NURBS editing + continuity G0/G1/G2/G3 + zebra/curvature/deviation diagnostics"},
+    "P0_D_PROCEDURAL": {"state": "PARTIAL", "target_class": ["Houdini"], "primary_gap": "attribute inspection + cache/bake + debug + profiler + procedural versioning"},
+    "P0_E_BIM_IFC": {"state": "BLOCKED", "target_class": ["Revit"], "primary_gap": "IFC-native author/edit/export/reopen + semantic/quantity round-trip"},
+    "P0_F_TECHNICAL_DRAWING": {"state": "BLOCKED", "target_class": ["SolidWorks Drawing", "Revit Drawing"], "primary_gap": "stable views + associative/regeneration-bound dimensions + vector sheets/details/revisions"},
+    "P0_G_MODELING_INTERACTION": {"state": "PARTIAL", "target_class": ["SketchUp", "Fusion", "Plasticity"], "primary_gap": "capable-solid push/pull + section workflow + context-sensitive direct interaction"},
+    "P0_H_ASSEMBLY_CONFIGURATION": {"state": "PARTIAL", "target_class": ["SolidWorks", "Inventor"], "primary_gap": "component occurrences + mate/joint solver + richer product data + assembly interference"},
+    "P0_I_PRODUCT_VISUALIZATION": {"state": "PARTIAL", "target_class": ["KeyShot", "VRED"], "primary_gap": "OLEANDER-validated physical camera/studio/material/color-management/render manifest workflow"}
+  },
+  "p1": {
+    "P1_A_CAM": {"state": "BLOCKED", "reuse_candidate": "Fabex"},
+    "P1_B_GIS_SURVEY": {"state": "BLOCKED", "reuse_candidate": "BlenderGIS"},
+    "P1_C_CAE": {"state": "BLOCKED", "reuse_candidate": "solver sidecar required"},
+    "P1_D_FABRICATION_ADDITIVE": {"state": "PARTIAL", "reuse_candidate": "OpenSCAD / 3MF-STL governed route"}
+  },
+  "reuse_candidates": {
+    "CAD_SKETCHER_SOLVESPACE": {"state": "DISCOVERED_NOT_PROBED", "role": "constraint sketch solver", "source": "https://github.com/hlorus/CAD_Sketcher"},
+    "SVERCHOK_FREECAD": {"state": "DISCOVERED_NOT_PROBED", "role": "procedural B-Rep/NURBS/Part.Shape bridge", "source": "https://github.com/nortikin/sverchok"},
+    "BONSAI_IFCOPENSHELL": {"state": "DISCOVERED_NOT_PROBED", "role": "IFC/BIM native authoring and round-trip", "source": "https://github.com/IfcOpenShell/IfcOpenShell"},
+    "FABEX": {"state": "DISCOVERED_NOT_PROBED", "role": "CAM/toolpath/postprocessor", "source": "https://github.com/dwrobel/blendercam-fabex"},
+    "BLENDERGIS": {"state": "DISCOVERED_NOT_PROBED", "role": "GIS/georeferenced bridge", "source": "https://github.com/domlysz/BlenderGIS"},
+    "MEASUREIT_ARCH": {"state": "DISCOVERED_NOT_PROBED", "role": "dimensions/annotations/linework candidate", "source": "https://github.com/kevancress/MeasureIt_ARCH"}
+  },
+  "allowed_states": ["BLOCKED", "PARTIAL", "PASS"],
+  "dependency_states": ["DISCOVERED_NOT_PROBED", "RUNTIME_PROBED", "ADAPTER_IMPLEMENTED_UNVERIFIED", "VALIDATED_FOR_BOUNDED_SCOPE", "REJECTED_WITH_REASON"],
+  "authority_note": "Runtime-layer validation does not make OLEANDER Blender the default environment. Professional parity promotion is separately gated."
+}
