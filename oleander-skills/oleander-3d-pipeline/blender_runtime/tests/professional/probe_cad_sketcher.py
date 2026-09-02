@@ -61,7 +61,9 @@ def main() -> None:
     addon, curve_data, sketch_ref, curve_ref = load_api()
     check(hasattr(bpy.context.scene, "sketcher"), "cad_sketcher_registered")
 
-    # Positive solver path: horizontal + driving distance.
+    # Positive solver path: horizontal + driving distance. CAD Sketcher's
+    # init=True contract initializes a dimension from the current geometry; the
+    # driving value is then edited explicitly and the sketch is re-solved.
     sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_POSITIVE")
     p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
     p1 = curve_ref.PointRef.create(sketch, (3.0, 1.0))
@@ -69,18 +71,23 @@ def main() -> None:
     horizontal = sketch.constraints.add_horizontal(curve_id_1=line.curve_id)
     distance = sketch.constraints.add_distance(
         init=True,
-        value=4.0,
         curve_id_1=line.curve_id,
     )
     check(sketch.solve(bpy.context), "horizontal_distance_solver_pass")
     check(abs(p1.co.y) < 1e-7, "horizontal_constraint_geometry")
-    check(abs(line.length - 4.0) < 1e-6, "driving_distance_geometry")
+    check(abs(float(distance.value) - line.length) < 1e-6, "driving_distance_initialized_from_geometry")
     check(not horizontal.failed and not distance.failed, "positive_constraints_not_failed")
 
-    # Parameter edit must cause a deterministic re-solve.
+    # First driving edit.
+    distance.value = 4.0
+    check(sketch.solve(bpy.context), "driving_dimension_edit_4_resolve")
+    check(abs(line.length - 4.0) < 1e-6, "driving_dimension_edit_4_geometry")
+
+    # Second edit proves the value remains a live driving constraint rather than
+    # a one-shot initialization/bake.
     distance.value = 5.0
-    check(sketch.solve(bpy.context), "driving_dimension_edit_resolve")
-    check(abs(line.length - 5.0) < 1e-6, "driving_dimension_edit_geometry")
+    check(sketch.solve(bpy.context), "driving_dimension_edit_5_resolve")
+    check(abs(line.length - 5.0) < 1e-6, "driving_dimension_edit_5_geometry")
     check(math.isfinite(line.length), "resolved_geometry_finite")
 
     positive_object_name = sketch.target_object.name
@@ -92,18 +99,18 @@ def main() -> None:
     bad = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_INCONSISTENT")
     q0 = curve_ref.PointRef.create(bad, (0.0, 0.0), fixed=True)
     q1 = curve_ref.PointRef.create(bad, (3.0, 0.0))
-    bad.constraints.add_distance(
+    c1 = bad.constraints.add_distance(
         init=True,
-        value=3.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
-    bad.constraints.add_distance(
+    c1.value = 3.0
+    c2 = bad.constraints.add_distance(
         init=True,
-        value=5.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
+    c2.value = 5.0
     solve_ok = bad.solve(bpy.context)
     check(not solve_ok, "contradictory_constraints_expected_failure")
     check(bad.solver_state == "INCONSISTENT", "inconsistent_solver_state")
