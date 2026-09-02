@@ -154,7 +154,7 @@ def write_fail_response(request: dict | None, error: Exception) -> None:
             "units": "mm",
             "bbox_mm": [0.0, 0.0, 0.0],
             "volume_mm3": 0.0,
-            "solid_count": 1,
+            "solid_count": 0,
         },
         "error": str(error),
     }
