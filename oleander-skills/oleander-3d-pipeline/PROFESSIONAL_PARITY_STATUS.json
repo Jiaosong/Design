@@ -6,7 +6,7 @@
   "default_promotion_state": "BLOCKED_UNTIL_PROFESSIONAL_PARITY",
   "promotion_rule": "ALL_P0_PASS_AND_REQUIRED_PROJECT_P1_PASS",
   "p0": {
-    "P0_A_PARAMETRIC_CAD": {"state": "BLOCKED", "target_class": ["SolidWorks", "Fusion", "Inventor"], "primary_gap": "solver-backed sketch + authoritative B-Rep feature rebuild + assembly mates + STEP round-trip"},
+    "P0_A_PARAMETRIC_CAD": {"state": "BLOCKED", "target_class": ["SolidWorks", "Fusion", "Inventor"], "primary_gap": "constraint-sketch solver dependency is runtime-probed; authoritative B-Rep feature rebuild + stable datums + assembly mates + STEP round-trip remain blocking"},
     "P0_B_DIRECT_BREP": {"state": "BLOCKED", "target_class": ["Plasticity"], "primary_gap": "authoritative B-Rep direct face operations + healing + fillet/shell robustness"},
     "P0_C_NURBS_CLASS_A": {"state": "BLOCKED", "target_class": ["Rhino", "Alias"], "primary_gap": "authoritative NURBS editing + continuity G0/G1/G2/G3 + zebra/curvature/deviation diagnostics"},
     "P0_D_PROCEDURAL": {"state": "PARTIAL", "target_class": ["Houdini"], "primary_gap": "attribute inspection + cache/bake + debug + profiler + procedural versioning"},
@@ -23,7 +23,7 @@
     "P1_D_FABRICATION_ADDITIVE": {"state": "PARTIAL", "reuse_candidate": "OpenSCAD / 3MF-STL governed route"}
   },
   "reuse_candidates": {
-    "CAD_SKETCHER_SOLVESPACE": {"state": "DISCOVERED_NOT_PROBED", "role": "constraint sketch solver", "source": "https://github.com/hlorus/CAD_Sketcher"},
+    "CAD_SKETCHER_SOLVESPACE": {"state": "RUNTIME_PROBED", "role": "constraint sketch solver", "source": "https://github.com/hlorus/CAD_Sketcher", "source_commit": "831ee71f451777d2d48632da62114cc5e9357d3d", "tested_blender": "5.1.2", "probe_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_DEPENDENCY_RECEIPT_CAD_SKETCHER_20260903.json", "bounded_scope": "horizontal geometric constraint; point-to-point driving dimension edits; inconsistent solver state; failed-constraint feedback; save/reopen"},
     "SVERCHOK_FREECAD": {"state": "DISCOVERED_NOT_PROBED", "role": "procedural B-Rep/NURBS/Part.Shape bridge", "source": "https://github.com/nortikin/sverchok"},
     "BONSAI_IFCOPENSHELL": {"state": "DISCOVERED_NOT_PROBED", "role": "IFC/BIM native authoring and round-trip", "source": "https://github.com/IfcOpenShell/IfcOpenShell"},
     "FABEX": {"state": "DISCOVERED_NOT_PROBED", "role": "CAM/toolpath/postprocessor", "source": "https://github.com/dwrobel/blendercam-fabex"},
@@ -32,5 +32,5 @@
   },
   "allowed_states": ["BLOCKED", "PARTIAL", "PASS"],
   "dependency_states": ["DISCOVERED_NOT_PROBED", "RUNTIME_PROBED", "ADAPTER_IMPLEMENTED_UNVERIFIED", "VALIDATED_FOR_BOUNDED_SCOPE", "REJECTED_WITH_REASON"],
-  "authority_note": "Runtime-layer validation does not make OLEANDER Blender the default environment. Professional parity promotion is separately gated."
+  "authority_note": "Runtime-layer validation or a bounded dependency probe does not make OLEANDER Blender the default environment. P0-A remains BLOCKED after the CAD Sketcher solver probe because professional CAD still requires authoritative solid feature rebuild, datums, assembly mates and STEP round-trip."
 }
