@@ -21,7 +21,7 @@ permissions:
 jobs:
   rebuild-yunshuiyi:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     env:
       C04_REBUILD_OUT: ${{ github.workspace }}/artifacts/c04-yunshuiyi
     steps:
@@ -82,12 +82,26 @@ jobs:
           test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_LOD2.glb"
           test -s "$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_v003_WEB_MANIFEST.json"
 
+      - name: Install Chromium browser carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save three@0.179.1 playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Chromium Yunshuiyi runtime readback
+        shell: bash
+        run: |
+          set -euo pipefail
+          node 05-cases/c04-qingjiang-stone-book/blender-rebuild/browser/c04_yunshuiyi_browser_readback.mjs
+          test -s "$C04_REBUILD_OUT/browser-readback/C04_YUNSHUIYI_BROWSER_READBACK.json"
+
       - name: Artifact identity
         shell: bash
         run: |
           set -euo pipefail
           cd "$C04_REBUILD_OUT"
-          sha256sum * | tee SHA256SUMS.txt
+          find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003.blend
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png
           test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json
@@ -96,11 +110,12 @@ jobs:
           test -s C04_YUNSHUIYI_REBUILD_v003_LOD1.glb
           test -s C04_YUNSHUIYI_REBUILD_v003_LOD2.glb
           test -s C04_YUNSHUIYI_REBUILD_v003_WEB_MANIFEST.json
+          test -s browser-readback/C04_YUNSHUIYI_BROWSER_READBACK.json
 
-      - name: Upload rebuild and Web derivative evidence
+      - name: Upload rebuild Web and browser evidence
         uses: actions/upload-artifact@v4
         with:
-          name: C04_YUNSHUIYI_REBUILD_MASTER_v003_WEB
+          name: C04_YUNSHUIYI_REBUILD_MASTER_v003_WEB_BROWSER
           path: |
             artifacts/c04-yunshuiyi/
             blender-version.txt
