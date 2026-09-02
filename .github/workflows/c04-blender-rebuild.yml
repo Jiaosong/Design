@@ -46,7 +46,7 @@ jobs:
           grep -F "Blender 5.2.0" blender-version.txt
           grep -F "build hash: fbe6228777e7" blender-version.txt
 
-      - name: Build editable Yunshuiyi candidate v002
+      - name: Build editable Yunshuiyi candidate v003
         shell: bash
         run: |
           set -euo pipefail
@@ -55,18 +55,18 @@ jobs:
             --background \
             --factory-startup \
             --python-exit-code 2 \
-            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v002.py
+            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py
 
-      - name: Native Blender reopen validation v002
+      - name: Native Blender reopen validation v003
         shell: bash
         run: |
           set -euo pipefail
-          BLEND="$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_MASTER_v002.blend"
+          BLEND="$C04_REBUILD_OUT/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend"
           test -s "$BLEND"
           "${{ steps.blender.outputs.bin }}" \
             --background "$BLEND" \
             --python-exit-code 3 \
-            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v002.py
+            --python 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py
 
       - name: Artifact identity
         shell: bash
@@ -74,15 +74,15 @@ jobs:
           set -euo pipefail
           cd "$C04_REBUILD_OUT"
           sha256sum * | tee SHA256SUMS.txt
-          test -s C04_YUNSHUIYI_REBUILD_MASTER_v002.blend
-          test -s C04_YUNSHUIYI_REBUILD_MASTER_v002_preview.png
-          test -s C04_YUNSHUIYI_REBUILD_MASTER_v002_manifest.json
-          test -s C04_YUNSHUIYI_REBUILD_MASTER_v002_reopen_receipt.json
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003.blend
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json
+          test -s C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json
 
       - name: Upload rebuild evidence
         uses: actions/upload-artifact@v4
         with:
-          name: C04_YUNSHUIYI_REBUILD_MASTER_v002
+          name: C04_YUNSHUIYI_REBUILD_MASTER_v003
           path: |
             artifacts/c04-yunshuiyi/
             blender-version.txt
