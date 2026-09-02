@@ -108,6 +108,7 @@ jobs:
           npm install --no-audit --no-fund three@0.179.1 playwright@1.55.0 >/dev/null
           npx playwright install chromium >/dev/null
           cp node_modules/three/build/three.module.js "$WEB_OUT/three.module.js"
+          cp node_modules/three/build/three.core.js "$WEB_OUT/three.core.js"
           cp -R node_modules/three/examples/jsm/* "$WEB_OUT/addons/"
           cp "$GITHUB_WORKSPACE/$SUPPORT/c04_web_runtime_harness.html" "$WEB_OUT/index.html"
           cp "$GITHUB_WORKSPACE/$SUPPORT/c04_browser_runtime_test.mjs" "$TESTROOT/test.mjs"
