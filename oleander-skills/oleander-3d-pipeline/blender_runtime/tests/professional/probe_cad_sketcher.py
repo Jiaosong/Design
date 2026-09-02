@@ -17,7 +17,6 @@ from pathlib import Path
 
 import bpy
 
-
 ROOT_PACKAGE = os.environ.get(
     "OLEANDER_CAD_SKETCHER_PACKAGE",
     "bl_ext.oleander_professional.CAD_Sketcher",
@@ -55,47 +54,54 @@ def new_sketch(curve_data, sketch_ref, name: str):
     return sketch
 
 
+def solve_and_refresh(sketch, curve_data, label: str) -> bool:
+    """Match CAD Sketcher's handler/operator lifecycle in headless mode."""
+    ok = sketch.solve(bpy.context)
+    if ok:
+        curve_data.refresh_curve_geometry(sketch)
+        bpy.context.view_layer.update()
+    check(ok, label)
+    return ok
+
+
 def main() -> None:
     addon, curve_data, sketch_ref, curve_ref = load_api()
     check(hasattr(bpy.context.scene, "sketcher"), "cad_sketcher_registered")
 
-    # 1) Geometric constraint path isolated from dimensional initialization.
+    # 1) Geometric constraint path.
     horizontal_sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_HORIZONTAL")
     h0 = curve_ref.PointRef.create(horizontal_sketch, (0.0, 0.0), fixed=True)
     h1 = curve_ref.PointRef.create(horizontal_sketch, (3.0, 1.0))
     hline = curve_ref.LineRef.create(horizontal_sketch, h0, h1)
     hc = horizontal_sketch.constraints.add_horizontal(curve_id_1=hline.curve_id)
-    check(horizontal_sketch.solve(bpy.context), "horizontal_solver_pass")
+    solve_and_refresh(horizontal_sketch, curve_data, "horizontal_solver_pass")
     check(abs(h1.co.y) < 1e-7, "horizontal_constraint_geometry")
     check(not hc.failed, "horizontal_constraint_not_failed")
 
-    # 2) Driving dimensional path follows CAD Sketcher's own tested lifecycle:
-    # initialize from current line geometry, then edit the value and re-solve.
+    # 2) Driving dimension lifecycle.
     sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_DRIVING_DIMENSION")
     p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
     p1 = curve_ref.PointRef.create(sketch, (3.0, 0.0))
     line = curve_ref.LineRef.create(sketch, p0, p1)
     distance = sketch.constraints.add_distance(init=True, curve_id_1=line.curve_id)
-    check(sketch.solve(bpy.context), "driving_dimension_initial_solve")
+    solve_and_refresh(sketch, curve_data, "driving_dimension_initial_solve")
     check(abs(line.length - 3.0) < 1e-6, "driving_dimension_initial_geometry")
     check(abs(float(distance.value) - 3.0) < 1e-6, "driving_dimension_initialized_value")
     check(not distance.failed, "driving_dimension_not_failed")
 
     distance.value = 4.0
-    check(sketch.solve(bpy.context), "driving_dimension_edit_4_resolve")
+    solve_and_refresh(sketch, curve_data, "driving_dimension_edit_4_resolve")
     check(abs(line.length - 4.0) < 1e-6, "driving_dimension_edit_4_geometry")
 
     distance.value = 5.0
-    check(sketch.solve(bpy.context), "driving_dimension_edit_5_resolve")
+    solve_and_refresh(sketch, curve_data, "driving_dimension_edit_5_resolve")
     check(abs(line.length - 5.0) < 1e-6, "driving_dimension_edit_5_geometry")
     check(math.isfinite(line.length), "resolved_geometry_finite")
 
     positive_object_name = sketch.target_object.name
     positive_distance_value = float(distance.value)
 
-    # 3) Explicit solver failure behavior. This mirrors CAD Sketcher's upstream
-    # safety test: two incompatible distances on the same point pair must yield
-    # INCONSISTENT and expose failed-constraint feedback.
+    # 3) Contradictory constraints must report a controlled inconsistent state.
     bad = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_INCONSISTENT")
     q0 = curve_ref.PointRef.create(bad, (0.0, 0.0), fixed=True)
     q1 = curve_ref.PointRef.create(bad, (3.0, 0.0))
@@ -117,7 +123,7 @@ def main() -> None:
     all_constraints = list(bad.target_object.data.sketch_constraints.all)
     check(any(item.failed for item in all_constraints), "failed_constraint_feedback")
 
-    # Save/reopen proves editable constraint state survives as native sketch data.
+    # Save/reopen proves editable native constraint state survives.
     sketch_ref.set_active_sketch(bpy.context, None)
     bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN_PATH))
     check(REOPEN_PATH.exists(), "blend_saved")
@@ -139,7 +145,7 @@ def main() -> None:
         any(abs(value - positive_distance_value) < 1e-6 for value in driving_values),
         "driving_dimension_value_reopen",
     )
-    check(reopened.solve(bpy.context), "reopened_sketch_resolve")
+    solve_and_refresh(reopened, curve_data, "reopened_sketch_resolve")
 
     result = {
         "schema": "OLEANDER_PROFESSIONAL_DEPENDENCY_PROBE_v0.1",
