@@ -67,13 +67,21 @@ def build_authoritative_shape(width_mm: float = 80.0):
     filleted = base.makeFillet(2.0, [base.Edges[0]])
     check(filleted.isValid(), "brep_fillet_valid")
     check(len(filleted.Solids) == 1, "brep_fillet_single_solid")
-    check(filleted.Solids[0].Volume > 0.0, "brep_fillet_positive_volume")
+    fillet_solid = filleted.Solids[0]
+    check(fillet_solid.isValid(), "brep_fillet_normalized_solid_valid")
+    check(fillet_solid.ShapeType == "Solid", "brep_fillet_normalized_solid")
+    check(fillet_solid.Volume > 0.0, "brep_fillet_positive_volume")
 
     hole = Part.makeCylinder(5.0, 10.0, App.Vector(width_mm * 0.25, 25.0, 0.0))
-    result = filleted.cut(hole).removeSplitter()
-    check(result.isValid(), "brep_boolean_cut_valid")
-    check(result.ShapeType == "Solid", "brep_boolean_cut_solid")
-    check(len(result.Solids) == 1, "brep_single_solid")
+    cut_result = fillet_solid.cut(hole).removeSplitter()
+    check(cut_result.isValid(), "brep_boolean_cut_valid")
+    check(len(cut_result.Solids) == 1, "brep_single_solid")
+
+    # Normalize the authoritative downstream master to an actual Solid even when
+    # OCCT returns a broader one-solid wrapper after boolean/refine operations.
+    result = cut_result.Solids[0]
+    check(result.isValid(), "brep_boolean_normalized_solid_valid")
+    check(result.ShapeType == "Solid", "brep_boolean_result_normalized_solid")
     check(result.Volume > 0.0, "brep_positive_volume")
     return result
 
@@ -125,24 +133,30 @@ def main() -> None:
     step_shape = Part.Shape()
     step_shape.read(str(STEP))
     check(step_shape.isValid(), "step_roundtrip_shape_valid")
-    check(step_shape.ShapeType == "Solid", "step_roundtrip_solid")
-    step_dims = bbox(step_shape)
+    check(len(step_shape.Solids) == 1, "step_roundtrip_single_solid")
+    step_solid = step_shape.Solids[0]
+    check(step_solid.isValid(), "step_roundtrip_normalized_solid_valid")
+    check(step_solid.ShapeType == "Solid", "step_roundtrip_solid")
+    step_dims = bbox(step_solid)
     for key in ("x_length_mm", "y_length_mm", "z_length_mm"):
         check(close(step_dims[key], dims[key], 1e-4), f"step_roundtrip_{key}")
     check(
-        math.isclose(step_shape.Volume, shape.Volume, rel_tol=1e-6, abs_tol=1e-4),
+        math.isclose(step_solid.Volume, shape.Volume, rel_tol=1e-6, abs_tol=1e-4),
         "step_roundtrip_volume",
     )
 
     brep_shape = Part.Shape()
     brep_shape.read(str(BREP))
     check(brep_shape.isValid(), "brep_roundtrip_shape_valid")
+    check(len(brep_shape.Solids) == 1, "brep_roundtrip_single_solid")
+    brep_solid = brep_shape.Solids[0]
+    check(brep_solid.isValid(), "brep_roundtrip_normalized_solid_valid")
     check(
-        math.isclose(brep_shape.Volume, shape.Volume, rel_tol=1e-9, abs_tol=1e-6),
+        math.isclose(brep_solid.Volume, shape.Volume, rel_tol=1e-9, abs_tol=1e-6),
         "brep_roundtrip_volume",
     )
 
-    vertices, facets = step_shape.tessellate(0.25)
+    vertices, facets = step_solid.tessellate(0.25)
     check(len(vertices) > 0 and len(facets) > 0, "display_tessellation_nonempty")
     mesh_payload = {
         "schema": "OLEANDER_CAD_DISPLAY_DERIVATIVE_v0.1",
