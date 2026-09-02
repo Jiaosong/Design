@@ -18,7 +18,7 @@
     "OLEANDER_BLENDER_BIN environment variable",
     "blender found on PATH",
     "/mnt/data/runtime/blender-5.2.0-lts/blender current ChatGPT-runtime fallback",
-    "tools/oleander-runtime/ensure-blender-5.2.sh rematerialization",
+    "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh rematerialization",
     ".github/workflows/oleander-shared-blender-runner.yml shared runner"
   ],
   "environment_contract": {
@@ -36,7 +36,7 @@
     "unavailable_gate": "UNAVAILABLE_MAY_BE_REPORTED_ONLY_AFTER_RESOLUTION_ORDER_AND_ALLOWED_SHARED_RUNNER_PATHS_HAVE_ACTUALLY_FAILED"
   },
   "rematerialization": {
-    "implementation": "tools/oleander-runtime/ensure-blender-5.2.sh",
+    "implementation": "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh",
     "version_gate": "Blender 5.2.0",
     "sha256_gate": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
     "source_policy": "existing binary first, cached archive second, official Blender archive only when needed",
@@ -57,7 +57,7 @@
     "project_specific_runner_bootstrap_duplication": "FORBIDDEN; PROJECT_WORKFLOW_CALLS_SHARED_RUNNER",
     "preferred_invocation": "bash tools/oleander-runtime/blender.sh <blender args>",
     "preferred_activation": "source tools/oleander-runtime/activate-blender.sh",
-    "preferred_rematerialization": "bash tools/oleander-runtime/ensure-blender-5.2.sh",
+    "preferred_rematerialization": "bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh",
     "preferred_shared_runner": ".github/workflows/oleander-shared-blender-runner.yml",
     "evidence_rule": "runtime availability does not upgrade design, engineering, optical, CMF, fabrication or user-validation evidence"
   },
