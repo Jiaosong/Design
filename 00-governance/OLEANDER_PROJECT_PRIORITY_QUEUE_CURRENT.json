@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -15,18 +15,18 @@
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7",
       "next_owner": "VALIDATION",
       "design_subtask_lease": "BLENDER_REBUILD_MASTER",
-      "design_subtask_lease_state": "ACTIVE",
+      "design_subtask_lease_state": "RETURNED",
       "validation_subtask_lease": "REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
       "validation_subtask_lease_state": "ACTIVE",
       "lease_contract": "00-governance/OLEANDER_C04_BLENDER_REBUILD_ROUTE_CURRENT.md",
       "shared_blender_runtime": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md",
       "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE",
       "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
-      "production_stall": "PRODUCTION_STALL_DESPITE_ACTIVE_RUNTIME_INTERFACE",
-      "production_stall_basis": "Second consecutive governance readback after rebuild-first route activation shows no new PR frontier and no repository evidence of an executable rebuild checkpoint, Blender-generated editable geometry, Candidate .blend, preview/reopen evidence, GLB or browser runtime evidence. Authority, runtime and lease metadata are not material model progress.",
-      "next_action": "PRESENTATION retains this object. DESIGN must return the first actual executable Blender rebuild checkpoint with editable geometry and Candidate .blend using /恩施 assets only as SOURCE_REFERENCE. VALIDATION then reopens/fidelity-checks that Candidate and only after validation produces LOD/GLB/browser derivative evidence. Do not create a parallel Blender environment and do not count prompt, receipt, authority, runtime-path or lease metadata as production progress.",
-      "updated_at": "2026-09-02T22:07:17+08:00",
-      "source_of_queue_decision": "Governance production-progress gate after user-explicit Blender rebuild-first route override. PR #465 remains at ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7 across the second consecutive governance readback, while shared Blender runtime remains ACTIVE_RUNTIME_INTERFACE. No material rebuild artifact has been evidenced, so the route remains current and the production stall is recorded without transferring ownership or replacing DESIGN production work."
+      "production_stall": null,
+      "production_stall_basis": "CLEARED: commit efa3ae45e43cd1bb9266eb8ab55466258dd749eb installed the executable Yunshuiyi v003 Blender rebuild/validator carrier and records a clean-branch Blender 5.2 build/reopen/artifact pass. GitHub Actions run 33636726833 subsequently completed successfully and emitted artifact C04_YUNSHUIYI_REBUILD_MASTER_v003 (artifact 9849139236, 8700684 bytes, sha256:38fd8e3ef12eaf7f738b24dcf3f42749bc52ff12df27117b53b9bd3fec54c478). This is material rebuild evidence under the NO FALSE PROGRESS gate, so the prior stall classification was a governance regression caused by incomplete artifact readback.",
+      "next_action": "PRESENTATION retains this object and must consume the returned Yunshuiyi rebuild Candidate as the next model input. VALIDATION remains bounded to native reopen/fidelity and derivative GLB/LOD/browser evidence; do not alter form, design relations, public narrative, MAIN/SUPPORT verdicts or final visual authority. Preserve original Meshy packages as SOURCE_REFERENCE and do not create a parallel Blender runtime.",
+      "updated_at": "2026-09-02T23:05:00+08:00",
+      "source_of_queue_decision": "Governance correction after remote readback of commit efa3ae45e43cd1bb9266eb8ab55466258dd749eb, successful C04 Blender Rebuild workflow run 33636726833, and artifact 9849139236. CURRENT_OWNER remains PRESENTATION; DESIGN rebuild lease is RETURNED; VALIDATION derivative lease remains ACTIVE pending complete derivative/browser return evidence."
     }
   ],
   "entry_schema": {
@@ -46,8 +46,8 @@
     "shared_blender_runtime": "repository-wide Blender runtime authority when applicable",
     "shared_blender_runtime_state": "ACTIVE_RUNTIME_INTERFACE|NEEDS_REMATERIALIZATION_OR_RUNNER",
     "current_route": "current authority-preserving production route",
-    "production_stall": "optional governance stall classification",
-    "production_stall_basis": "evidence basis for a production stall classification",
+    "production_stall": "optional governance stall classification or null",
+    "production_stall_basis": "evidence basis or explicit correction basis for a production stall classification",
     "next_action": "one concrete next action",
     "updated_at": "ISO-8601",
     "source_of_queue_decision": "project Current State or explicit user instruction"
