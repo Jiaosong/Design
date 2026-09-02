@@ -1,6 +1,7 @@
 {
   "schema": "oleander.runtime.blender.v1",
   "version": "1.0",
+  "implementation_revision": "1.0.1",
   "status": "ACTIVE_RUNTIME_INTERFACE",
   "scope": "OLEANDER_ALL_PROJECTS",
   "runtime": {
@@ -16,20 +17,48 @@
   "resolution_order": [
     "OLEANDER_BLENDER_BIN environment variable",
     "blender found on PATH",
-    "/mnt/data/runtime/blender-5.2.0-lts/blender current ChatGPT-runtime fallback"
+    "/mnt/data/runtime/blender-5.2.0-lts/blender current ChatGPT-runtime fallback",
+    "tools/oleander-runtime/ensure-blender-5.2.sh rematerialization",
+    ".github/workflows/oleander-shared-blender-runner.yml shared runner"
   ],
   "environment_contract": {
     "OLEANDER_BLENDER_VERSION": "5.2.0 LTS",
     "OLEANDER_BLENDER_BUILD": "fbe6228777e7",
     "OLEANDER_BLENDER_HOME": "runtime-specific; may be overridden",
     "OLEANDER_BLENDER_BIN": "runtime-specific; may be overridden",
-    "OLEANDER_RENDER_ENGINE": "CYCLES"
+    "OLEANDER_RENDER_ENGINE": "CYCLES",
+    "OLEANDER_JOB_OUTPUT_DIR": "shared runner job output directory; project scripts may consume but must not own runtime bootstrap"
+  },
+  "shared_runtime_state_model": {
+    "interface_state": "ACTIVE_RUNTIME_INTERFACE",
+    "job_binding_states": ["MATERIALIZED", "NEEDS_REMATERIALIZATION", "RUNNER_RESOLVED", "EXECUTION_FAILED"],
+    "hard_rule": "JOB_LOCAL_BINARY_ABSENCE_DOES_NOT_MEAN_SHARED_RUNTIME_UNAVAILABLE",
+    "unavailable_gate": "UNAVAILABLE_MAY_BE_REPORTED_ONLY_AFTER_RESOLUTION_ORDER_AND_ALLOWED_SHARED_RUNNER_PATHS_HAVE_ACTUALLY_FAILED"
+  },
+  "rematerialization": {
+    "implementation": "tools/oleander-runtime/ensure-blender-5.2.sh",
+    "version_gate": "Blender 5.2.0",
+    "sha256_gate": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "source_policy": "existing binary first, cached archive second, official Blender archive only when needed",
+    "project_ownership": "FORBIDDEN"
+  },
+  "shared_runner": {
+    "implementation": ".github/workflows/oleander-shared-blender-runner.yml",
+    "role": "UNIVERSAL_PRODUCTION_ENVIRONMENT_SUBORDINATE_RUNTIME_ADAPTER_NOT_PROJECT_FRAMEWORK",
+    "project_contract": "PROJECT_DECLARES_SCRIPT_OUTPUT_ARTIFACT_AND_OPTIONAL_VALIDATION_ONLY",
+    "runtime_bootstrap_owner": "OLEANDER_BLENDER_RUNTIME",
+    "required_error_behavior": "PYTHON_FAILURE_MUST_PROPAGATE_NONZERO_EXIT_CODE",
+    "artifact_rule": "PROJECT_ARTIFACT_IDENTITY_AND_READBACK_REMAIN_REQUIRED; RUNNER_SUCCESS_IS_NOT_DESIGN_PASS"
   },
   "project_policy": {
     "project_specific_absolute_blender_paths": "FORBIDDEN",
     "vendoring_blender_binary_in_repository": "FORBIDDEN",
+    "project_specific_blender_install_or_download_logic": "FORBIDDEN_WHEN_SHARED_RUNTIME_CAN_OWN_THE_CAPABILITY",
+    "project_specific_runner_bootstrap_duplication": "FORBIDDEN; PROJECT_WORKFLOW_CALLS_SHARED_RUNNER",
     "preferred_invocation": "bash tools/oleander-runtime/blender.sh <blender args>",
     "preferred_activation": "source tools/oleander-runtime/activate-blender.sh",
+    "preferred_rematerialization": "bash tools/oleander-runtime/ensure-blender-5.2.sh",
+    "preferred_shared_runner": ".github/workflows/oleander-shared-blender-runner.yml",
     "evidence_rule": "runtime availability does not upgrade design, engineering, optical, CMF, fabrication or user-validation evidence"
   },
   "verified_current_runtime": {
@@ -37,6 +66,7 @@
     "cycles_cpu_path_tracing": "PASS",
     "cycles_device": "CPU / AMD EPYC 9V74 80-Core Processor",
     "gpu_acceleration": "UNAVAILABLE_IN_CURRENT_CONTAINER",
-    "canonical_timer_smoke": "PASS / runtime compatibility only"
+    "canonical_timer_smoke": "PASS / runtime compatibility only",
+    "shared_runner_project_reapplication": "PASS / C04 Yunshuiyi rebuild and native reopen used as bounded runtime regression case; not project design approval"
   }
 }
