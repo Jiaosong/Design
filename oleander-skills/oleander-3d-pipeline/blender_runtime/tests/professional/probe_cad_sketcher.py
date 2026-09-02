@@ -64,6 +64,16 @@ def solve_and_refresh(sketch, curve_data, label: str) -> bool:
     return ok
 
 
+def set_driving_value(constraint, displayed_value: float) -> str:
+    """Use CAD Sketcher's Blender-5 scene endpoint, the same value source used by UI."""
+    scene = bpy.context.scene
+    endpoint = scene.sketcher.get_constraint_value_endpoint(constraint)
+    check(bool(endpoint), "constraint_value_endpoint_exists")
+    scene[endpoint] = float(constraint.from_displayed_value(displayed_value))
+    check(abs(float(constraint.value) - displayed_value) < 1e-9, "constraint_value_endpoint_readback")
+    return endpoint
+
+
 def main() -> None:
     addon, curve_data, sketch_ref, curve_ref = load_api()
     check(hasattr(bpy.context.scene, "sketcher"), "cad_sketcher_registered")
@@ -78,7 +88,9 @@ def main() -> None:
     check(abs(h1.co.y) < 1e-7, "horizontal_constraint_geometry")
     check(not hc.failed, "horizontal_constraint_not_failed")
 
-    # 2) Driving dimension lifecycle.
+    # 2) Driving dimension lifecycle. In Blender 5.x CAD Sketcher stores
+    # dimensional driver values in stable Scene custom-property endpoints keyed
+    # by the constraint UID; this is also the UI's editable value source.
     sketch = new_sketch(curve_data, sketch_ref, "OLEANDER_DRIVING_DIMENSION")
     p0 = curve_ref.PointRef.create(sketch, (0.0, 0.0), fixed=True)
     p1 = curve_ref.PointRef.create(sketch, (3.0, 0.0))
@@ -89,34 +101,38 @@ def main() -> None:
     check(abs(float(distance.value) - 3.0) < 1e-6, "driving_dimension_initialized_value")
     check(not distance.failed, "driving_dimension_not_failed")
 
-    distance.value = 4.0
+    endpoint = set_driving_value(distance, 4.0)
     solve_and_refresh(sketch, curve_data, "driving_dimension_edit_4_resolve")
     check(abs(line.length - 4.0) < 1e-6, "driving_dimension_edit_4_geometry")
 
-    distance.value = 5.0
+    set_driving_value(distance, 5.0)
     solve_and_refresh(sketch, curve_data, "driving_dimension_edit_5_resolve")
     check(abs(line.length - 5.0) < 1e-6, "driving_dimension_edit_5_geometry")
     check(math.isfinite(line.length), "resolved_geometry_finite")
+    check(endpoint == bpy.context.scene.sketcher.get_constraint_value_endpoint(distance), "stable_constraint_value_endpoint")
 
     positive_object_name = sketch.target_object.name
     positive_distance_value = float(distance.value)
+    positive_constraint_uid = distance.constraint_uid
 
     # 3) Contradictory constraints must report a controlled inconsistent state.
+    # Use explicit endpoint values so the fixture cannot be weakened by init
+    # semantics that intentionally derive dimensions from current geometry.
     bad = new_sketch(curve_data, sketch_ref, "OLEANDER_SOLVER_INCONSISTENT")
     q0 = curve_ref.PointRef.create(bad, (0.0, 0.0), fixed=True)
     q1 = curve_ref.PointRef.create(bad, (3.0, 0.0))
-    bad.constraints.add_distance(
+    c1 = bad.constraints.add_distance(
         init=True,
-        value=3.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
-    bad.constraints.add_distance(
+    c2 = bad.constraints.add_distance(
         init=True,
-        value=5.0,
         curve_id_1=q0.curve_id,
         curve_id_2=q1.curve_id,
     )
+    set_driving_value(c1, 3.0)
+    set_driving_value(c2, 5.0)
     solve_ok = bad.solve(bpy.context)
     check(not solve_ok, "contradictory_constraints_expected_failure")
     check(bad.solver_state == "INCONSISTENT", "inconsistent_solver_state")
@@ -136,16 +152,17 @@ def main() -> None:
     check(reopened is not None, "sketch_accessor_reopen")
     reopened_constraints = list(obj.data.sketch_constraints.all)
     check(len(reopened_constraints) >= 1, "constraint_data_reopen")
-    driving_values = [
-        float(item.value)
-        for item in reopened_constraints
-        if hasattr(item, "value") and not getattr(item, "is_reference", False)
-    ]
-    check(
-        any(abs(value - positive_distance_value) < 1e-6 for value in driving_values),
-        "driving_dimension_value_reopen",
+    reopened_distance = next(
+        (item for item in reopened_constraints if getattr(item, "constraint_uid", "") == positive_constraint_uid),
+        None,
     )
+    check(reopened_distance is not None, "constraint_uid_reopen")
+    reopened_endpoint = bpy.context.scene.sketcher.get_constraint_value_endpoint(reopened_distance)
+    check(bool(reopened_endpoint), "constraint_value_endpoint_reopen")
+    check(abs(float(reopened_distance.value) - positive_distance_value) < 1e-6, "driving_dimension_value_reopen")
     solve_and_refresh(reopened, curve_data, "reopened_sketch_resolve")
+    reopened_line = curve_ref.LineRef(reopened, line.curve_id)
+    check(abs(reopened_line.length - positive_distance_value) < 1e-6, "driving_geometry_reopen")
 
     result = {
         "schema": "OLEANDER_PROFESSIONAL_DEPENDENCY_PROBE_v0.1",
