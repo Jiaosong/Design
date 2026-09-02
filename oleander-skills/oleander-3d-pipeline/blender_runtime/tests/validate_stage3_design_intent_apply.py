@@ -161,7 +161,6 @@ def main():
     constrained.constraints.new(type="COPY_LOCATION")
     bind_design_parameter(scene, constrained_param["parameter_id"], "OBJECT", "OLE_APPLY_CONSTRAINED", "DIMENSION_X")
 
-    # Explicit apply is a separate action: updating intent alone still does not mutate geometry.
     before_x = _scene_units_to_mm(bpy.context, model.dimensions.x)
     update_design_parameter(scene, object_param["parameter_id"], 150.0)
     assert_true(abs(_scene_units_to_mm(bpy.context, model.dimensions.x) - before_x) < 1e-6, "intent update must not auto-apply object geometry")
@@ -197,23 +196,21 @@ def main():
     datum_vertices_before = [vertex.co.copy() for vertex in datum.data.vertices]
     datum_result = apply_design_parameter(scene, datum_param["parameter_id"])
     assert_true(abs(float(datum["oleander_datum_length_mm"]) - 800.0) < 1e-9, "datum length metadata must update")
-    assert_true(abs((datum.data.vertices[1].co - datum.data.vertices[0].co).length - 800.0) < 1e-6, "datum reference geometry must update to requested length")
+    datum_length_mm = _scene_units_to_mm(bpy.context, (datum.data.vertices[1].co - datum.data.vertices[0].co).length)
+    assert_true(abs(datum_length_mm - 800.0) < 1e-4, "datum reference geometry must update to requested metric length")
     assert_true(datum_vertices_before != [vertex.co.copy() for vertex in datum.data.vertices], "datum reference geometry must actually change")
     assert_true(datum_result["reference_geometry_mutated"] is True and datum_result["model_geometry_mutated"] is False, "datum mutation must remain reference-only")
 
-    # Unsupported target fields are rejected in whole-parameter preflight with zero mutation.
     unsupported_before = model.matrix_world.copy()
     unsupported_data_before = [vertex.co.copy() for vertex in model.data.vertices]
     expect_value_error(lambda: preflight_design_parameter_apply(scene, unsupported_param["parameter_id"]), "unsupported OBJECT apply field")
     assert_true(model.matrix_world == unsupported_before, "preflight failure must not mutate object transform")
     assert_true([vertex.co.copy() for vertex in model.data.vertices] == unsupported_data_before, "preflight failure must not mutate mesh")
 
-    # External transform authority blocks object dimensions before mutation.
     constrained_before = constrained.matrix_world.copy()
     expect_value_error(lambda: preflight_design_parameter_apply(scene, constrained_param["parameter_id"]), "external transform authority")
     assert_true(constrained.matrix_world == constrained_before, "authority preflight failure must not mutate constrained object")
 
-    # Forced postcheck failure proves reverse snapshot rollback after real mutations.
     rollback_y_before = _scene_units_to_mm(bpy.context, model.dimensions.y)
     rollback_feature_before = float(modifier.thickness)
     rollback_history_before = feature_obj.get(FEATURE_HISTORY_KEY, "")
@@ -229,7 +226,6 @@ def main():
     last_apply = json.loads(scene.get("oleander_design_intent_last_apply", "{}"))
     assert_true(last_apply.get("status") == "ROLLED_BACK" and last_apply.get("rollback_performed") is True, "rollback receipt must be stored")
 
-    # Failure envelope blocks apply before any target mutation.
     envelope_param = create_design_parameter(scene, "EnvelopeReject", "LENGTH_MM", 500.0, minimum=1.0, maximum=100.0)
     bind_design_parameter(scene, envelope_param["parameter_id"], "OBJECT", "OLE_APPLY_MODEL", "DIMENSION_Z")
     z_before = _scene_units_to_mm(bpy.context, model.dimensions.z)
