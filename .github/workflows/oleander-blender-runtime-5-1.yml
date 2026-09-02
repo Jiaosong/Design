@@ -179,6 +179,14 @@ jobs:
           grep -F 'OLEANDER_STAGE3_DESIGN_INTENT_BATCH_VALIDATION=' /tmp/oleander-blender-stage3-design-intent-batch.log
           grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-design-intent-batch.log
 
+      - name: Run OLEANDER Stage 3 Design Intent Rebuild Plan validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          "blender-${BLENDER_VERSION}-linux-x64/blender" --background --factory-startup --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_design_intent_rebuild.py 2>&1 | tee /tmp/oleander-blender-stage3-design-intent-rebuild.log
+          grep -F 'OLEANDER_STAGE3_DESIGN_INTENT_REBUILD_VALIDATION=' /tmp/oleander-blender-stage3-design-intent-rebuild.log
+          grep -F '"status": "PASS"' /tmp/oleander-blender-stage3-design-intent-rebuild.log
+
       - name: Run OLEANDER Stage 3 Procedural Foundation validation
         shell: bash
         run: |
@@ -205,9 +213,10 @@ jobs:
             echo '- Stage 3 Design Intent Graph: stable typed parameters, bindings, parameter dependencies, failure envelopes, diff and stale propagation; no solver or automatic geometry rebuild.'
             echo '- Stage 3 Design Intent Apply: explicit allow-listed target application with whole-parameter preflight, postcheck and transaction rollback; no solver or CAD parametric rebuild.'
             echo '- Stage 3 Design Intent Batch Apply: dependency expansion/order, full-batch dry-run, target collision gate, atomic multi-parameter apply and whole-batch rollback; stored values only, no solver or derived-value computation.'
+            echo '- Stage 3 Design Intent Rebuild Plan: dirty-event/direct-stale inference, minimal downstream parameter closure, event/revision/state-locked non-mutating plan and explicit Batch execution; no solver or derived-value computation.'
             echo '- Stage 3 Procedural Foundation.'
             echo '- Surface diagnostics remain polygonal diagnostics; they are not Class-A/NURBS curvature, moldability or engineering wall-thickness certification.'
-            echo '- Design Intent Graph / Apply / Batch remain governed intent state and explicit Blender-native application; they are not CAD parametric feature rebuilding or a constraint solver.'
+            echo '- Design Intent Graph / Apply / Batch / Rebuild Plan remain governed intent state and explicit Blender-native application; they are not CAD parametric feature rebuilding or a constraint solver.'
             echo '- Does not prove field truth, engineering approval, manufacturing release, constructability, CAD/Houdini/Class-A equivalence or design PASS.'
             echo ''
             if [ -f /tmp/oleander-blender-archive.sha256 ]; then echo '### Blender archive SHA256'; cat /tmp/oleander-blender-archive.sha256; fi
@@ -228,6 +237,7 @@ jobs:
               'Stage 3 Design Intent Graph|/tmp/oleander-blender-stage3-design-intent.log|OLEANDER_STAGE3_DESIGN_INTENT_VALIDATION=' \
               'Stage 3 Design Intent Apply|/tmp/oleander-blender-stage3-design-intent-apply.log|OLEANDER_STAGE3_DESIGN_INTENT_APPLY_VALIDATION=' \
               'Stage 3 Design Intent Batch Apply|/tmp/oleander-blender-stage3-design-intent-batch.log|OLEANDER_STAGE3_DESIGN_INTENT_BATCH_VALIDATION=' \
+              'Stage 3 Design Intent Rebuild Plan|/tmp/oleander-blender-stage3-design-intent-rebuild.log|OLEANDER_STAGE3_DESIGN_INTENT_REBUILD_VALIDATION=' \
               'Stage 3 Procedural Foundation|/tmp/oleander-blender-stage3-procedural.log|OLEANDER_STAGE3_PROCEDURAL_VALIDATION='
             do
               IFS='|' read -r title file marker <<< "$item"
