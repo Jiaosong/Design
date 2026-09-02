@@ -14,7 +14,7 @@ on:
     paths:
       - '.github/workflows/c04-blender-rebuild.yml'
       - '.github/workflows/oleander-shared-blender-runner.yml'
-      - 'tools/oleander-runtime/**'
+      - '90-shared/toolchains/blender-runtime/**'
       - '05-cases/c04-qingjiang-stone-book/blender-rebuild/**'
 
 permissions:
