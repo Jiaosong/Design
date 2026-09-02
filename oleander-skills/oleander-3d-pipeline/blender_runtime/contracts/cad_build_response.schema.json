@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OLEANDER_CAD_BUILD_RESPONSE_v0.1",
+  "title": "OLEANDER CAD Build Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "request_id", "ole_id", "revision", "status", "kernel", "request_sha256", "authoritative", "display_derivative", "measurements"],
+  "properties": {
+    "schema": {"const": "OLEANDER_CAD_BUILD_RESPONSE_v0.1"},
+    "request_id": {"type": "string", "minLength": 1},
+    "ole_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "kernel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "occ_version"],
+      "properties": {
+        "name": {"const": "FreeCAD"},
+        "version": {"type": "string"},
+        "occ_version": {"type": "string"}
+      }
+    },
+    "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authoritative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["master_type", "geometry_authority", "fcstd", "step", "brep"],
+      "properties": {
+        "master_type": {"const": "CAD_NATIVE"},
+        "geometry_authority": {"const": "FREECAD_OCCT_BREP"},
+        "fcstd": {"$ref": "#/$defs/artifact"},
+        "step": {"$ref": "#/$defs/artifact"},
+        "brep": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "display_derivative": {"$ref": "#/$defs/artifact"},
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["units", "bbox_mm", "volume_mm3", "solid_count"],
+      "properties": {
+        "units": {"const": "mm"},
+        "bbox_mm": {
+          "type": "array",
+          "prefixItems": [{"type": "number"}, {"type": "number"}, {"type": "number"}],
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "volume_mm3": {"type": "number", "exclusiveMinimum": 0},
+        "solid_count": {"const": 1}
+      }
+    },
+    "error": {"type": ["string", "null"]}
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
