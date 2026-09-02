@@ -102,13 +102,13 @@ jobs:
           WEB_OUT="$C04_REBUILD_OUT/web"
           SUPPORT="05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/support"
           TESTROOT=/tmp/c04-browser-runtime
-          rm -rf "$TESTROOT"; mkdir -p "$TESTROOT" "$WEB_OUT/browser" "$WEB_OUT/addons/loaders"
+          rm -rf "$TESTROOT"; mkdir -p "$TESTROOT" "$WEB_OUT/browser" "$WEB_OUT/addons"
           cd "$TESTROOT"
           npm init -y >/dev/null 2>&1
           npm install --no-audit --no-fund three@0.179.1 playwright@1.55.0 >/dev/null
           npx playwright install chromium >/dev/null
           cp node_modules/three/build/three.module.js "$WEB_OUT/three.module.js"
-          cp node_modules/three/examples/jsm/loaders/GLTFLoader.js "$WEB_OUT/addons/loaders/GLTFLoader.js"
+          cp -R node_modules/three/examples/jsm/* "$WEB_OUT/addons/"
           cp "$GITHUB_WORKSPACE/$SUPPORT/c04_web_runtime_harness.html" "$WEB_OUT/index.html"
           cp "$GITHUB_WORKSPACE/$SUPPORT/c04_browser_runtime_test.mjs" "$TESTROOT/test.mjs"
           python3 -m http.server 8765 --bind 127.0.0.1 --directory "$WEB_OUT" >/tmp/c04-browser-http.log 2>&1 &
