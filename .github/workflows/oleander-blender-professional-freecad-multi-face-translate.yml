@@ -1,0 +1,131 @@
+name: OLEANDER Blender Professional FreeCAD Multi Face Translate
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-multi-face-translate.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-multi-face-translate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  multi-orientation-planar-face-translate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_MULTI_FACE_TRANSLATE_DIR: /tmp/oleander-multi-face-translate
+      PROBE: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Compile multi-orientation probe source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile "${PROBE}"
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path("oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py")
+          ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          print("OLEANDER_MULTI_FACE_TRANSLATE_SOURCE=PASS")
+          PY
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-multi-face-translate-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Execute multi-orientation BRep ReShape probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}"
+          cat > /tmp/oleander_multi_face_translate_runner.py <<PY
+          import runpy
+          import traceback
+          print("OLEANDER_MULTI_FACE_TRANSLATE_WRAPPER=START", flush=True)
+          try:
+              runpy.run_path(r"${GITHUB_WORKSPACE}/${PROBE}", run_name="__main__")
+          except BaseException as exc:
+              print("OLEANDER_MULTI_FACE_TRANSLATE_WRAPPER_EXCEPTION=" + repr(exc), flush=True)
+              traceback.print_exc()
+              raise
+          print("OLEANDER_MULTI_FACE_TRANSLATE_WRAPPER=PASS", flush=True)
+          PY
+          python3 -m py_compile /tmp/oleander_multi_face_translate_runner.py
+          /tmp/squashfs-root/usr/bin/freecadcmd /tmp/oleander_multi_face_translate_runner.py \
+            2>&1 | tee /tmp/oleander-multi-face-translate.log
+          grep -F 'OLEANDER_MULTI_FACE_TRANSLATE_WRAPPER=PASS' /tmp/oleander-multi-face-translate.log
+          grep -F 'OLEANDER_FREECAD_MULTI_ORIENTATION_FACE_TRANSLATE=' /tmp/oleander-multi-face-translate.log
+          grep -F '"status": "PASS"' /tmp/oleander-multi-face-translate.log
+          grep -F '"normal_component": "PASS"' /tmp/oleander-multi-face-translate.log
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_orientation_face_translate.FCStd"
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_face_translate_top_z_R002.step"
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_face_translate_side_x_R002.step"
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_face_translate_side_y_R002.step"
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_orientation_face_translate_display.json"
+          test -s "${OLEANDER_MULTI_FACE_TRANSLATE_DIR}/oleander_multi_orientation_face_translate_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read multi-orientation derivatives in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate_blender_readback.py \
+            2>&1 | tee /tmp/oleander-multi-face-translate-blender.log
+          grep -F 'OLEANDER_MULTI_ORIENTATION_FACE_TRANSLATE_BLENDER_READBACK=' /tmp/oleander-multi-face-translate-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-multi-face-translate-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-multi-face-translate-blender.log
+
+      - name: Record bounded multi-orientation evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Multi-Orientation Planar Face Translate'
+            echo '- FreeCAD 1.1.3 / OCCT 7.8.1 remains authoritative; Blender is display-only.'
+            echo '- +Z, +X and +Y planar faces are selected semantically from face normals, not raw FaceN ids.'
+            echo '- Each case translates strictly inside its face tangent plane and rebuilds target + four adjacent faces through BRepTools_ReShape.'
+            echo '- R001 80x50x10 mm and R002 100x60x12 mm both re-resolve selectors and preserve a valid single solid and volume.'
+            echo '- Opposite face center/area is preserved; zero, normal-component and >20 mm requests fail before mutation.'
+            echo '- FCStd and per-orientation STEP persist; Blender reads all three as DISPLAY_DERIVATIVE_ONLY and reopens the .blend.'
+            echo '- Does NOT prove oblique planar selection, nonplanar face translation, arbitrary rotation, normal push/pull, persistent topological naming, or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"
