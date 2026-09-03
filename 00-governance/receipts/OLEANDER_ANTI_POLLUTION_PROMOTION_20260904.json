@@ -1,0 +1,35 @@
+{
+  "schema": "OLEANDER_ANTI_POLLUTION_PROMOTION_RECEIPT_v1.0",
+  "state": "PASS",
+  "promoted_authority": "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
+  "machine_contract": "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+  "source_pr": 477,
+  "source_head": "8da50055200f809ae42ddcdcc75493c05d79cc8c",
+  "merge_commit": "373f46ebbccf4566b853659330a292c482576a7f",
+  "validation": {
+    "anti_pollution_gate": {
+      "run_id": 33781083875,
+      "conclusion": "success"
+    },
+    "ai_governance_evals": {
+      "run_id": 33781083792,
+      "conclusion": "success"
+    }
+  },
+  "readback": {
+    "github_main_protocol": "PASS",
+    "github_main_contract": "PASS",
+    "notion_root_authority": "PASS",
+    "notion_project_control_plane": "PASS"
+  },
+  "scope": "PROJECT_WIDE",
+  "effective_date": "2026-09-04",
+  "non_claims": [
+    "does_not_reclassify_historical_debt_as_clean",
+    "does_not_delete_unique_evidence",
+    "does_not_replace_existing_knowledge_project_case_axes",
+    "does_not_make_candidate_work_current_without_explicit_promotion"
+  ],
+  "invalidation_rule": "If multiple Current authorities are permitted, Candidate-only evidence can update Current, no-loss repair is removed, or project-wide anti-pollution CI is bypassed, governance must return to HOLD.",
+  "authority_note": "This receipt records project-wide governance promotion only. It does not certify every historical OLEANDER object as pollution-free; historical debt remains subject to separate audit and no-loss repair."
+}
