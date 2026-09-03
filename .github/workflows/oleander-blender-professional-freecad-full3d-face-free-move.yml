@@ -1,0 +1,134 @@
+name: OLEANDER Blender Professional FreeCAD Full3D Face Free Move
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-full3d-face-free-move.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-full3d-face-free-move.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  full3d-planar-face-free-move:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_FULL3D_FACE_FREE_MOVE_DIR: /tmp/oleander-full3d-face-free-move
+      PROBE: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move.py
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Compile full-3D face free-move probe source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile "${PROBE}"
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path("oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move.py")
+          ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+          print("OLEANDER_FULL3D_FACE_FREE_MOVE_SOURCE=PASS")
+          PY
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-full3d-face-free-move-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Execute full-3D planar combined face-move probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}"
+          cat > /tmp/oleander_full3d_face_free_move_runner.py <<PY
+          import runpy
+          import traceback
+          print("OLEANDER_FULL3D_FACE_FREE_MOVE_WRAPPER=START", flush=True)
+          try:
+              runpy.run_path(r"${GITHUB_WORKSPACE}/${PROBE}", run_name="__main__")
+          except BaseException as exc:
+              print("OLEANDER_FULL3D_FACE_FREE_MOVE_WRAPPER_EXCEPTION=" + repr(exc), flush=True)
+              traceback.print_exc()
+              raise
+          print("OLEANDER_FULL3D_FACE_FREE_MOVE_WRAPPER=PASS", flush=True)
+          PY
+          python3 -m py_compile /tmp/oleander_full3d_face_free_move_runner.py
+          /tmp/squashfs-root/usr/bin/freecadcmd /tmp/oleander_full3d_face_free_move_runner.py \
+            2>&1 | tee /tmp/oleander-full3d-face-free-move.log
+          grep -F 'OLEANDER_FULL3D_FACE_FREE_MOVE_WRAPPER=PASS' /tmp/oleander-full3d-face-free-move.log
+          grep -F 'OLEANDER_FREECAD_FULL3D_FACE_FREE_MOVE=' /tmp/oleander-full3d-face-free-move.log
+          grep -F '"schema": "OLEANDER_FREECAD_FULL3D_FACE_FREE_MOVE_v0.1"' /tmp/oleander-full3d-face-free-move.log
+          grep -F '"status": "PASS"' /tmp/oleander-full3d-face-free-move.log
+          grep -F '"excessive_normal_component": "PASS"' /tmp/oleander-full3d-face-free-move.log
+          grep -F '"selector_miss": "PASS"' /tmp/oleander-full3d-face-free-move.log
+          test -s "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}/oleander_full3d_face_free_move.FCStd"
+          test -s "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}/oleander_full3d_face_free_move_R001.step"
+          test -s "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}/oleander_full3d_face_free_move_R002.step"
+          test -s "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}/oleander_full3d_face_free_move_display.json"
+          test -s "${OLEANDER_FULL3D_FACE_FREE_MOVE_DIR}/oleander_full3d_face_free_move_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read full-3D free-move derivatives in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_free_move_blender_readback.py \
+            2>&1 | tee /tmp/oleander-full3d-face-free-move-blender.log
+          grep -F 'OLEANDER_FULL3D_FACE_FREE_MOVE_BLENDER_READBACK=' /tmp/oleander-full3d-face-free-move-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-full3d-face-free-move-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-full3d-face-free-move-blender.log
+
+      - name: Record bounded full-3D face free-move evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded Full-3D-Oriented Planar Face Free Move'
+            echo '- FreeCAD 1.1.3 / OCCT 7.8.1 remains authoritative; Blender 5.1.2 is display-only.'
+            echo '- Source solid receives yaw then pitch, producing a semantic local +X face normal with non-zero X/Y/Z components.'
+            echo '- One face-drag vector combines signed normal displacement with a 3-4-5 tangent vector derived from transformed local +Y/+Z axes.'
+            echo '- R001 uses +2 mm outward normal; R002 uses -2 mm inward normal.'
+            echo '- Target + four adjacent faces are rebuilt through BRepTools_ReShape; opposite face center/area is preserved.'
+            echo '- Volume is checked as source + signed normal displacement x selected-face area.'
+            echo '- Zero, >20 mm total magnitude, >8 mm normal component and selector-miss cases fail before accepted mutation.'
+            echo '- FCStd + R001/R002 STEP persist; Blender reads two DISPLAY_DERIVATIVE_ONLY tessellations and reopens the .blend.'
+            echo '- Does NOT prove nonplanar/general face move, persistent topology naming, or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"
