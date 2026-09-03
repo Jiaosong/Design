@@ -1,0 +1,97 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_FULL3D_FACE_FREE_MOVE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "9eb8f7ca6e102db5bbb31815389f5e69535d4939",
+  "tested_pr_merge_commit": "89152c42f888cc32d448ac3adca07c03f73db2d5",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Full3D Face Free Move",
+    "run_id": 33760718333,
+    "job_id": 100666053091,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {"freecad": "1.1.3", "freecad_revision": "20260725", "occt": "7.8.1", "blender": "5.1.2"},
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "selector": "SELECTOR::LOCAL_POS_X_FACE after yaw+pitch transform",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape with sew/fix normalization and shell-to-solid rebuild when required",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "source solid receives yaw then pitch so semantic local +X selected-face normal has non-zero X/Y/Z components",
+    "single selected-face move vector combines signed normal displacement with transformed local-Y/local-Z tangent components",
+    "R001 80x50x10 mm yaw +30 degrees pitch +20 degrees uses +2 mm outward normal component plus governed 3-4-5 tangent component",
+    "R002 100x60x12 mm yaw -25 degrees pitch -15 degrees uses -2 mm inward normal component plus governed 3-4-5 tangent component",
+    "selected face and move vector each have non-zero X/Y/Z components",
+    "target plus four adjacent faces are rebuilt through BRepTools_ReShape while opposite face remains untouched",
+    "both revisions remain valid one-solid six-face B-Rep results",
+    "edited volume is validated as source volume plus signed normal displacement multiplied by selected-face area",
+    "opposite face center and area remain unchanged and moved target remains reselectable from the semantic normal",
+    "zero move, total magnitude over 20 mm, normal component over 8 mm and selector miss all fail before accepted mutation",
+    "FCStd plus R001/R002 STEP persist selector/yaw/pitch/move/normal-component/authority metadata",
+    "Blender creates two tessellated display-only derivatives and preserves source hash/full-3D normal/full-3D move/yaw/pitch/normal component/authority across .blend save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "source_dims_mm": [80.0, 50.0, 10.0],
+      "yaw_deg": 30.0,
+      "pitch_deg": 20.0,
+      "selector_world_normal": [0.8137976813493738, 0.49999999999999994, -0.29619813272602386],
+      "move_world_mm": [1.58613700482256, 3.598076211353316, 3.679404432680089],
+      "move_distance_mm": 5.385164807134504,
+      "normal_component_mm": 2.0,
+      "tangent_component_world_mm": [-0.04145835787618757, 2.598076211353316, 4.271800698132137],
+      "tangent_distance_mm": 5.0,
+      "source_face_area_mm2": 499.9999999999999,
+      "expected_volume_mm3": 41000.00000000001,
+      "edited_volume_mm3": 41000.00000000001,
+      "edited_bbox_mm": [93.60246846567686, 86.89934640057524, 37.96387597640262],
+      "solid_count": 1,
+      "face_count": 6
+    },
+    "R002": {
+      "source_dims_mm": [100.0, 60.0, 12.0],
+      "yaw_deg": -25.0,
+      "pitch_deg": -15.0,
+      "selector_world_normal": [0.875426098065593, -0.42261826174069944, 0.23456971600980447],
+      "move_world_mm": [-1.5614746955110645, 3.5641598845913487, 3.7227088379765094],
+      "move_distance_mm": 5.385164807134504,
+      "normal_component_mm": -1.9999999999999998,
+      "tangent_component_world_mm": [0.18937750062012126, 2.71892336110995, 4.191848269996118],
+      "tangent_distance_mm": 5.0,
+      "source_face_area_mm2": 720.0,
+      "expected_volume_mm3": 70560.0,
+      "edited_volume_mm3": 70560.00000000006,
+      "edited_bbox_mm": [113.58003727288258, 93.0761335116776, 45.333689651222684],
+      "solid_count": 1,
+      "face_count": 6
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_full3d_face_free_move.FCStd", "sha256": "77d3c91423427376fdba9c129698a6117b07bd018a8586d0b2c2e6eafd532ad2"},
+    "step_R001": {"path": "oleander_full3d_face_free_move_R001.step", "sha256": "906efcf0e0157a481143f8b10029387e8018edd0848053a3676d535f7d2fbe8f"},
+    "step_R002": {"path": "oleander_full3d_face_free_move_R002.step", "sha256": "122b169822c1febb407dd3be1d073406d6934952ca52e4e1aeaa5e1d583f9d39"},
+    "display": {"path": "oleander_full3d_face_free_move_display.json", "sha256": "ab68e150c794762e0ddab221c16c152785e8142f8dc5a3e4c226ae079da21818"}
+  },
+  "expected_failure_cases": {
+    "zero_move": "PASS",
+    "excessive_magnitude_over_20mm": "PASS",
+    "excessive_normal_component_over_8mm": "PASS",
+    "selector_miss": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_FULL3D_FACE_FREE_MOVE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS"
+  },
+  "non_claims": ["P0_B_DIRECT_BREP_PASS", "general_face_move", "nonplanar_face_move", "persistent_topological_naming", "production_direct_modeling_parity"],
+  "invalidation_rule": "Invalidate if full-3D selector/move derivation becomes fixed world-axis logic, semantic selector becomes raw topology index, normal/tangent/volume/opposite-face/failure gates are removed, geometry becomes mesh-authoritative, or authority does not survive Blender readback.",
+  "authority_note": "This receipt proves bounded full-3D-oriented combined normal+tangent translation of one planar face. It does not prove nonplanar/general face move, persistent topological naming or P0-B PASS."
+}
