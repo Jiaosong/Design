@@ -1,0 +1,147 @@
+name: OLEANDER Blender Professional Frontier
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/CANDIDATE_GOVERNANCE.json"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_candidate_governance.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py"
+      - ".github/workflows/oleander-blender-professional-frontier.yml"
+      - ".github/workflows/oleander-blender-professional-freecad-*.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/CANDIDATE_GOVERNANCE.json"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_candidate_governance.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py"
+      - ".github/workflows/oleander-blender-professional-frontier.yml"
+      - ".github/workflows/oleander-blender-professional-freecad-*.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    name: Candidate anti-pollution gate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Enforce candidate governance contract
+        run: python3 oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_candidate_governance.py
+
+  frontier:
+    name: Frontier / ${{ matrix.id }}
+    needs: governance
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: custom-tangent-axis-rotate
+            probe: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py
+            readback: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py
+            marker: OLEANDER_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE=
+            readback_marker: OLEANDER_CUSTOM_TANGENT_AXIS_FACE_ROTATE_BLENDER_READBACK=
+            needs_blender: true
+            outdir: /tmp/oleander-frontier-custom-axis
+          - id: reference-bound-operation
+            probe: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py
+            readback: ""
+            marker: OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION=
+            readback_marker: ""
+            needs_blender: false
+            outdir: /tmp/oleander-frontier-reference-operation
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_CUSTOM_AXIS_ROTATE_DIR: ${{ matrix.outdir }}
+      OLEANDER_REF_OPERATION_DIR: ${{ matrix.outdir }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Compile frontier probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile "${{ matrix.probe }}"
+          if [ -n "${{ matrix.readback }}" ]; then python3 -m py_compile "${{ matrix.readback }}"; fi
+
+      - name: Download and verify FreeCAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-frontier-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Execute authoritative FreeCAD frontier probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${{ matrix.outdir }}"
+          cat > /tmp/oleander_frontier_runner.py <<PY
+          import runpy, traceback
+          print("OLEANDER_FRONTIER_WRAPPER=START", flush=True)
+          try:
+              runpy.run_path(r"${GITHUB_WORKSPACE}/${{ matrix.probe }}", run_name="__main__")
+          except BaseException as exc:
+              print("OLEANDER_FRONTIER_WRAPPER_EXCEPTION=" + repr(exc), flush=True)
+              traceback.print_exc()
+              raise
+          print("OLEANDER_FRONTIER_WRAPPER=PASS", flush=True)
+          PY
+          /tmp/squashfs-root/usr/bin/freecadcmd /tmp/oleander_frontier_runner.py 2>&1 | tee /tmp/oleander-frontier.log
+          grep -F 'OLEANDER_FRONTIER_WRAPPER=PASS' /tmp/oleander-frontier.log
+          grep -F '${{ matrix.marker }}' /tmp/oleander-frontier.log
+          grep -F '"status": "PASS"' /tmp/oleander-frontier.log
+
+      - name: Download official Blender
+        if: matrix.needs_blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+
+      - name: Blender display-only readback
+        if: matrix.needs_blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background --python "${{ matrix.readback }}" 2>&1 | tee /tmp/oleander-frontier-blender.log
+          grep -F '${{ matrix.readback_marker }}' /tmp/oleander-frontier-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-frontier-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-frontier-blender.log
+
+      - name: Frontier scope note
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Professional Frontier'
+            echo '- New professional probes use this shared matrix entrypoint; no new per-probe FreeCAD workflow is permitted by governance.'
+            echo '- FreeCAD/OCCT remains authoritative for B-Rep geometry.'
+            echo '- Blender readback is required before a Blender-integrated capability can leave VALIDATION_PENDING.'
+            echo '- FreeCAD-only success for an EXPERIMENTAL_UNVERIFIED item does not promote PROFESSIONAL_PARITY_STATUS.'
+          } >> "$GITHUB_STEP_SUMMARY"
