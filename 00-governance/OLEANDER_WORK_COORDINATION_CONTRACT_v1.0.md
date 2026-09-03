@@ -2,30 +2,58 @@
 
 Status: CURRENT ACTIVE GOVERNANCE CONTRACT / MAIN-MERGED / CI + MAIN READBACK VERIFIED.
 Evidence: PR #400 → merge commit `1d374d6d8ac1ac468c64758c0cd3b79c01ae8c2c`; AI Governance Evals run #3162 / run ID `33093638477` = `SUCCESS`; main path reopened after merge.
-Revision note: 2026-08-28 adds Training Mode, outcome distillation, anti-repetition and track-specific training focus after review of real Practice evidence. The revision does not create a new Skill, Gate or project authority.
+Revision note: 2026-09-03 aligns the five Current hourly control-plane tasks with durable execution-plane runners, separates recurring-task enabled state from project lease state, and currentizes the staggered cadence. This is an implementation revision of the existing coordination contract; it does not create a new Skill, Gate, framework or project authority.
 Role: cross-project coordination contract; not a new Design Method, Skill, Gate, or project Source Authority.
 
 ## Purpose
 
 Coordinate the five Current OLEANDER workstreams so they operate as one design-office workflow rather than five independent agents.
 
-`GOVERNANCE → KNOWLEDGE → DESIGN → PRESENTATION → VALIDATION → feedback to DESIGN / project Current`
+`GOVERNANCE → KNOWLEDGE → DESIGN → VALIDATION → PRESENTATION → feedback to DESIGN / project Current`
 
 The order is logical ownership, not a requirement that every object visit every stage. Use the minimum sufficient owner set.
 
 ## 1. Current automation cadence and collision prevention
 
-The five Current tasks must remain enabled and deliberately staggered in Asia/Singapore / UTC+08:00:
+The five Current tasks remain enabled as recurring **GPT control-plane owners** and are deliberately staggered in UTC+08:00:
 
 - `GOVERNANCE` — hourly at `:05`.
-- `KNOWLEDGE` — every 2 hours at `:15`.
+- `KNOWLEDGE` — hourly at `:15`.
 - `DESIGN` — hourly at `:25`.
-- `PRESENTATION` — hourly at `:40`.
-- `VALIDATION` — every 2 hours at `:55`.
+- `VALIDATION` — hourly at `:36`.
+- `PRESENTATION` — hourly at `:55`.
 
 Old `SUPERSEDED` or disabled legacy tasks must remain disabled unless explicitly re-authorized.
 
-A task must not write to a logical object currently owned by another task unless it is accepting an explicit Handoff. If concurrent ownership is detected, the later task must HOLD the write and report the collision to GOVERNANCE.
+A Current task being `enabled` means the owner is available at its scheduled wake-up. **Enabled state is not a project lease.** If no eligible Work Object/lease exists, the task returns `::SKIP_COMPLETION::`; it does not disable itself. A Current recurring task may be disabled only by explicit user pause, supersession, or a governance-confirmed global destructive-write/migration freeze that cannot be isolated through leases.
+
+A task must not write to a logical object currently owned by another task unless it is accepting an explicit Handoff or a bounded concurrent subtask lease on a distinct child item. If concurrent ownership is detected on the same mutable artifact, the later task must HOLD the write and report the collision to GOVERNANCE.
+
+### 1A. Hourly GPT control plane and durable execution plane
+
+The hourly recurrence limit applies to GPT judgment turns, not to already-dispatched native computation.
+
+Control-plane responsibility:
+
+`READ CURRENT → RESOLVE OBJECT/LEASE → PROFESSIONAL JUDGMENT → DISPATCH OR CONSUME → UPDATE/RETURN STATE`
+
+Execution-plane responsibility:
+
+`RESOLVE RUNTIME → RUN NATIVE TOOL → SAVE NATIVE ARTIFACT → PREVIEW/RENDER → REOPEN/ROUNDTRIP → HASH/IDENTITY → PACKAGE/ARTIFACT`
+
+Rules:
+
+- use the Current Universal Production Environment and approved shared runner/runtime for deterministic execution;
+- once a durable runner is dispatched, let it finish the deterministic chain available in that job without waiting for another GPT wake-up;
+- do not split build/save/render/reopen/hash/package into separate hourly GPT turns merely because GPT recurrence is hourly;
+- a runner still in progress at the next owner's wake-up is `WAITING_FOR_EXECUTION_RESULT`, not failure; leave the typed lease intact and SKIP mutation;
+- new design/fidelity/Source Authority judgment remains an owner gate and must not be automated away by a runner;
+- project progress advances only on persisted artifact/readback state, not because a scheduled task ran;
+- GOVERNANCE advances or returns the queue cursor only after actual artifact/handoff readback.
+
+Canonical coordination pattern:
+
+`GPT OWNER → DURABLE RUNNER → PERSISTENT ARTIFACT/RECEIPT → NEXT GPT OWNER`
 
 ## 2. Work Object identity
 
@@ -82,6 +110,8 @@ Rules:
 - If the queue is empty or stale, project production workstreams do not guess. GOVERNANCE refreshes it first.
 - User explicit current instruction overrides queue order for that object; GOVERNANCE then updates the queue.
 - The Project Priority Queue does **not** disable bounded capability training. Training is governed separately by Section 14.
+- Queue/lease state and recurring automation enabled state are separate. A lease may be `RETURNED/HOLD` while the recurring owner remains enabled for another object or a later handoff.
+- Sequential child-item production must carry an explicit cursor/current-item identity when more than one child is queued, so one item's `RETURNED` state cannot silently block the next child.
 
 ## 5. Project Control Card
 
