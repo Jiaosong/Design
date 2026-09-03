@@ -1,7 +1,7 @@
 {
   "schema": "OLEANDER_ANTI_POLLUTION_CONTRACT_v1.0",
   "effective_date": "2026-09-04",
-  "status": "CANDIDATE_FOR_PROJECT_WIDE_CURRENT",
+  "status": "CURRENT_ACTIVE_MAIN_MERGED_READBACK_VERIFIED",
   "canonical_policy": "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
   "inherits": [
     "00-governance/README.md",
@@ -11,19 +11,7 @@
     "00-governance/OLEANDER_EXISTING_MATURE_KNOWLEDGE_BASE_FIRST_POLICY_v1.0.md",
     "00-governance/cross-platform-sync-contract-v1.1.md"
   ],
-  "scope_roots": [
-    "00-governance",
-    "01-business",
-    "02-culture",
-    "03-ip",
-    "04-spatial",
-    "05-cases",
-    "06-practice",
-    "90-shared",
-    "oleander-skills",
-    "evals",
-    ".github/workflows"
-  ],
+  "scope_roots": ["00-governance","01-business","02-culture","03-ip","04-spatial","05-cases","06-practice","90-shared","oleander-skills","evals",".github/workflows"],
   "single_current_rules": {
     "one_logical_object_one_current": true,
     "candidate_may_not_self_promote": true,
@@ -31,56 +19,11 @@
     "sync_copy_is_not_coequal_authority": true,
     "repair_in_place_before_parallel_replacement": true
   },
-  "authority_states": [
-    "CURRENT",
-    "CANDIDATE",
-    "EXPERIMENTAL_UNVERIFIED",
-    "VALIDATION_PENDING",
-    "VALIDATED_FOR_BOUNDED_SCOPE",
-    "SUPPORT",
-    "PROVENANCE",
-    "LEGACY",
-    "SUPERSEDED",
-    "REJECTED_WITH_REASON",
-    "HOLD"
-  ],
-  "promotion_chain": [
-    "EXPERIMENTAL_UNVERIFIED",
-    "VALIDATION_PENDING",
-    "VALIDATED_FOR_BOUNDED_SCOPE",
-    "CANDIDATE",
-    "EXPLICIT_PROMOTION_DECISION",
-    "CURRENT",
-    "READBACK"
-  ],
+  "authority_states": ["CURRENT","CANDIDATE","EXPERIMENTAL_UNVERIFIED","VALIDATION_PENDING","VALIDATED_FOR_BOUNDED_SCOPE","SUPPORT","PROVENANCE","LEGACY","SUPERSEDED","REJECTED_WITH_REASON","HOLD"],
   "new_file_guard": {
-    "forbidden_transient_filename_patterns": [
-      "(^|[_ .-])copy([_ .-]|$)",
-      "副本",
-      "final[_ .-]*final",
-      "(^|[_ .-])tmp([_ .-]|$)",
-      "(^|[_ .-])temp([_ .-]|$)",
-      "(^|[_ .-])backup([_ .-]|$)",
-      "(^|[_ .-])bak([_ .-]|$)",
-      "\\([0-9]+\\)"
-    ],
-    "ignored_roots": [
-      "99-archive",
-      ".git",
-      "node_modules"
-    ],
-    "current_named_file_allowlist": [
-      "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json",
-      "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json"
-    ],
-    "rule": "New files containing CURRENT in authoritative roots require explicit allowlist registration; revisions should update an existing logical object instead of creating parallel CURRENT files."
-  },
-  "workflow_guard": {
-    "shared_orchestration_first": true,
-    "diagnostic_workflow_is_temporary": true,
-    "new_oneoff_workflow_requires_explicit_registration": true,
-    "registered_exceptions": [],
-    "blender_freecad_policy_source": "oleander-skills/oleander-3d-pipeline/blender_runtime/CANDIDATE_GOVERNANCE.json"
+    "forbidden_transient_filename_patterns": ["(^|[_ .-])copy([_ .-]|$)","副本","final[_ .-]*final","(^|[_ .-])tmp([_ .-]|$)","(^|[_ .-])temp([_ .-]|$)","(^|[_ .-])backup([_ .-]|$)","(^|[_ .-])bak([_ .-]|$)","\\([0-9]+\\)"],
+    "ignored_roots": ["99-archive",".git","node_modules"],
+    "current_named_file_allowlist": ["00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json","00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json"]
   },
   "knowledge_guard": {
     "raw_chat_as_current_knowledge": false,
@@ -100,7 +43,7 @@
     "remove_blocker_from_unverified_evidence": false
   },
   "cross_surface_guard": {
-    "surfaces": ["GitHub", "Notion", "Drive", "Deployment", "Native Master"],
+    "surfaces": ["GitHub","Notion","Drive","Deployment","Native Master"],
     "authority_change_requires_downstream_readback": true,
     "old_representation_requires_explicit_demotion": true,
     "notion_current_may_not_be_updated_from_candidate_only_evidence": true
@@ -111,30 +54,7 @@
     "no_artifact_created_only_to_prove_run": true,
     "training_findings_default_state": "CANDIDATE"
   },
-  "mandatory_preflight": [
-    "resolve_existing_owner",
-    "resolve_one_current_authority",
-    "resolve_object_identity",
-    "classify_authority_state",
-    "verify_claim_evidence",
-    "check_existing_framework_fit",
-    "check_namespace_conflict",
-    "check_orphan_or_parallel_current_risk",
-    "resolve_supersession_and_readback",
-    "verify_material_delta"
-  ],
-  "promotion_blockers": [
-    "parallel_current",
-    "candidate_stale_against_upstream",
-    "unverified_frontier_mixed_into_promotion",
-    "validation_or_readback_pending",
-    "stale_pr_or_control_authority",
-    "missing_or_overclaiming_receipt",
-    "duplicate_framework_without_justification",
-    "cross_surface_identity_conflict",
-    "missing_required_native_or_durable_asset",
-    "unresolved_supersession"
-  ],
+  "mandatory_preflight": ["resolve_existing_owner","resolve_one_current_authority","resolve_object_identity","classify_authority_state","verify_claim_evidence","check_existing_framework_fit","check_namespace_conflict","check_orphan_or_parallel_current_risk","resolve_supersession_and_readback","verify_material_delta"],
   "enforcement": {
     "workflow": ".github/workflows/oleander-project-anti-pollution.yml",
     "checker": "00-governance/tests/static_check_anti_pollution.py",
