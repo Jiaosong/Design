@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/contracts/**"
-      - "oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender/cad_sidecar.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/professional_adapter/**"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
       - ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml"
   push:
@@ -12,7 +12,7 @@ on:
       - main
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/contracts/**"
-      - "oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender/cad_sidecar.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/professional_adapter/**"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/**"
       - ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml"
 
@@ -111,7 +111,7 @@ jobs:
             test -s "${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}/cad_display_derivative.json"
           done
 
-      - name: Verify controlled impossible-feature failure envelope
+      - name: Verify controlled zero-area profile failure envelope
         shell: bash
         run: |
           set -euo pipefail
@@ -160,6 +160,6 @@ jobs:
             echo '- Revision test: 80x50 -> 100x50 driving-width edit, solved before export.'
             echo '- CAD master: FreeCAD 1.1.3 / OCCT process sidecar, FCStd + STEP + BREP.'
             echo '- Blender result: typed DISPLAY_DERIVATIVE_ONLY with request/STEP hashes.'
-            echo '- Failure envelope: contract-valid revision with impossible oversized through-hole must fail explicitly with zero released solids.'
+            echo '- Failure envelope: contract-valid closed collinear profile must fail explicitly with zero released solids.'
             echo '- This is a bounded integrated feature-rebuild foundation; it does NOT make P0-A/P0-B PASS or prove general CAD feature-tree, direct B-Rep, assembly or engineering parity.'
           } >> "$GITHUB_STEP_SUMMARY"
