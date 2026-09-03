@@ -15,6 +15,7 @@ import hashlib
 import json
 import math
 import os
+import traceback
 from pathlib import Path
 
 import FreeCAD as App
@@ -36,6 +37,10 @@ def check(ok: bool, label: str) -> None:
     if not ok:
         raise AssertionError(label)
     checks.append(label)
+
+
+def stage(label: str) -> None:
+    print("OLEANDER_FACE_TRANSLATE_STAGE=" + label, flush=True)
 
 
 def sha256(path: Path) -> str:
@@ -228,17 +233,23 @@ def add_feature(doc, name, ole_id, shape, dx_mm, dy_mm):
 
 
 def main() -> None:
+    stage("R001_X")
     base_r1 = Part.makeBox(80.0, 50.0, 10.0)
     x_r1, x_meta_r1 = translate_top_face(base_r1, 5.0, 0.0)
+    stage("R001_Y")
     y_r1, y_meta_r1 = translate_top_face(base_r1, 0.0, -4.0)
+    stage("R001_DIAG")
     diag_r1, diag_meta_r1 = translate_top_face(base_r1, 3.0, 4.0)
     check(close(x_r1.Volume, base_r1.Volume, 1e-4), "r1_x_volume")
     check(close(y_r1.Volume, base_r1.Volume, 1e-4), "r1_y_volume")
     check(close(diag_r1.Volume, base_r1.Volume, 1e-4), "r1_diag_volume")
 
+    stage("R002_X")
     base_r2 = Part.makeBox(100.0, 50.0, 10.0)
     x_r2, x_meta_r2 = translate_top_face(base_r2, 5.0, 0.0)
+    stage("R002_Y")
     y_r2, y_meta_r2 = translate_top_face(base_r2, 0.0, -4.0)
+    stage("R002_DIAG")
     diag_r2, diag_meta_r2 = translate_top_face(base_r2, 3.0, 4.0)
     check(close(x_r2.Volume, base_r2.Volume, 1e-4), "r2_x_volume")
     check(close(y_r2.Volume, base_r2.Volume, 1e-4), "r2_y_volume")
@@ -249,6 +260,7 @@ def main() -> None:
     check(close(y_meta_r2["translation_distance_mm"], 4.0), "y_translation_distance")
     check(close(diag_meta_r2["translation_distance_mm"], 5.0), "diagonal_translation_distance")
 
+    stage("EXPECTED_FAILURES")
     zero_failure = "FAIL"
     try:
         translate_top_face(base_r2, 0.0, 0.0)
@@ -267,6 +279,7 @@ def main() -> None:
             checks.append("excessive_translation_expected_failure")
     check(excessive_failure == "PASS", "excessive_translation_failure_gate")
 
+    stage("FCSTD_WRITE")
     doc = App.newDocument("OLEANDER_PLANAR_FACE_TRANSLATE")
     x_obj = add_feature(doc, "OLE_X_R002", "OLE_DIRECT_FACE_TRANSLATE::X_R002", x_r2, 5.0, 0.0)
     y_obj = add_feature(doc, "OLE_Y_R002", "OLE_DIRECT_FACE_TRANSLATE::Y_R002", y_r2, 0.0, -4.0)
@@ -278,6 +291,7 @@ def main() -> None:
     diag_obj.Shape.exportStep(str(STEP_DIAG))
     check(FCSTD.exists() and STEP_X.exists() and STEP_Y.exists() and STEP_DIAG.exists(), "native_translate_artifacts_written")
 
+    stage("FCSTD_REOPEN")
     App.closeDocument(doc.Name)
     reopened = App.openDocument(str(FCSTD))
     expected = [
@@ -298,6 +312,7 @@ def main() -> None:
         check(obj.Shape.isValid() and len(obj.Shape.Solids) == 1, f"{name}_solid_reopen")
     App.closeDocument(reopened.Name)
 
+    stage("DISPLAY_TESSELLATION")
     verts, facets = diag_r2.tessellate(0.25)
     check(bool(verts) and bool(facets), "display_tessellation")
     display = {
@@ -372,8 +387,15 @@ def main() -> None:
         ],
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
-    print("OLEANDER_FREECAD_PLANAR_FACE_TRANSLATE=" + json.dumps(manifest, sort_keys=True))
+    stage("PASS")
+    print("OLEANDER_FREECAD_PLANAR_FACE_TRANSLATE=" + json.dumps(manifest, sort_keys=True), flush=True)
 
 
 if __name__ == "__main__":
-    main()
+    stage("START")
+    try:
+        main()
+    except BaseException as exc:
+        print("OLEANDER_FACE_TRANSLATE_EXCEPTION=" + repr(exc), flush=True)
+        traceback.print_exc()
+        raise
