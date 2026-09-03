@@ -13,7 +13,7 @@
       "current_owner": "PRESENTATION",
       "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_THE_TOP_LEVEL_WEB_OBJECT_NOT_SOLE_PROJECT_OWNER",
       "state": "ACTIVE",
-      "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
+      "current_native_master": "NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY",
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7",
       "next_owner": "VALIDATION",
       "whole_project_authority": [
@@ -26,11 +26,7 @@
           "workstream_id": "ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL",
           "project_role": "PROJECT_NARRATIVE_EDITORIAL",
           "state": "ACTIVE",
-          "automation_route": [
-            "GOVERNANCE",
-            "DESIGN",
-            "PRESENTATION"
-          ],
+          "automation_route": ["GOVERNANCE", "DESIGN", "PRESENTATION"],
           "current_evidence": "Protected P001-P052 PAGE register exists with 52 identities, 0 removed and 0 silently merged; 27 legacy labels remain SOURCE RECOVERY OPEN; N-series allocated=0.",
           "current_gap": "Complete one-to-one page/source recovery and v0.1+v0.2 authored-unit mapping before final page architecture/count claims.",
           "next_action": "Recover the remaining protected PAGE identities from stronger source evidence; classify authored units as MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT; add N-series only for materially independent content."
@@ -39,10 +35,7 @@
           "workstream_id": "ACTIVE-2-D-VISUAL-MOTION",
           "project_role": "WHOLE_PROJECT_VISUAL_MOTION_DIRECTION",
           "state": "ACTIVE",
-          "automation_route": [
-            "DESIGN",
-            "PRESENTATION"
-          ],
+          "automation_route": ["DESIGN", "PRESENTATION"],
           "current_evidence": "C04 Current and Active Execution retain D as an active whole-project visual/motion lane; strongest Qingjiang Hero/R06/R13 and current App/Physical/Brand/Memory assets remain source-governed inputs.",
           "current_gap": "No model-only or Web-only artifact may stand in for the whole-project visual/motion lane; finished-output visual readback remains required.",
           "next_action": "Raise C04-specific experience/professional visual modes across real Qingjiang, App/Game Map, selected Physical, Brand, Memory/IP, Return and analytical graphics; preserve Landscape First and actual object truth."
@@ -51,46 +44,23 @@
           "workstream_id": "ACTIVE-3-WEB",
           "project_role": "PUBLIC_WEB_PRODUCTION",
           "state": "ACTIVE_REPAIR",
-          "automation_route": [
-            "PRESENTATION",
-            "VALIDATION",
-            "GOVERNANCE"
-          ],
-          "current_evidence": "PR #465 is OPEN / UNMERGED / mergeable at head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. AI Governance PASSes. Repo-local static integrity job PASSes. Chromium presentation readback still FAILs because external Qingjiang image bindings fail in the 1920x1080 case; core interaction, no-horizontal-overflow, My Book visibility and reduced-motion checks execute.",
-          "current_gap": "External source-image binding and finished-pixel Design Quality remain unresolved; main still has no merged Web v1.12 native master.",
+          "automation_route": ["PRESENTATION", "VALIDATION", "GOVERNANCE"],
+          "current_evidence": "PR #465 is OPEN / UNMERGED / mergeable at head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. main exact path readback for web-v1.12-game-line/index.html returns 404, so no Web v1.12 native master exists on main. AI Governance PASSes. Repo-local static integrity job PASSes. Chromium presentation readback still FAILs because external Qingjiang image bindings fail in the 1920x1080 case; core interaction, no-horizontal-overflow, My Book visibility and reduced-motion checks execute.",
+          "current_gap": "External source-image binding and finished-pixel Design Quality remain unresolved; main has no merged Web v1.12 native master.",
           "next_action": "Repair exact Source-Authority Qingjiang image bindings without generic/AI substitution; rerun 1920/1366/390 Chromium readback and inspect finished pixels before formal PRESENTATION→VALIDATION handoff."
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
           "project_role": "PHYSICAL_PRODUCT_DETAIL",
           "state": "ACTIVE",
-          "automation_route": [
-            "DESIGN",
-            "VALIDATION",
-            "PRESENTATION",
-            "GOVERNANCE"
-          ],
+          "automation_route": ["DESIGN", "VALIDATION", "PRESENTATION", "GOVERNANCE"],
           "asset_universe_authority": "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md / Physical P01-P09 plus current C23/model descendants; R06 experience remains frozen/no-reopen.",
           "blender_subqueue_role": "SUBQUEUE_ONLY_NOT_WHOLE_PROJECT_QUEUE",
           "source_model_inventory": {
             "canonical_drive_folder_id": "1vEDq-6OxyR4jCEz768VPUHRLGs7PeBJG",
             "logical_source_archive_count_observed": 12,
-            "already_selected_rebuild_items": [
-              "云水倚",
-              "流体座椅人体工",
-              "江畔停泊折叠观"
-            ],
-            "remaining_source_identities_observed": [
-              "风之灵宠设定图",
-              "大清江光印船徽",
-              "千瀑悲蝶·盐神泪",
-              "十三印蝶灵",
-              "十三印星灵",
-              "Verdant Spirit Companion Design",
-              "Thirteen Seals Water Spirit Design",
-              "Thirteen Seals Mountain Spirit Design",
-              "Jade Mountain Scroll Companion Design"
-            ],
+            "already_selected_rebuild_items": ["云水倚", "流体座椅人体工", "江畔停泊折叠观"],
+            "remaining_source_identities_observed": ["风之灵宠设定图", "大清江光印船徽", "千瀑悲蝶·盐神泪", "十三印蝶灵", "十三印星灵", "Verdant Spirit Companion Design", "Thirteen Seals Water Spirit Design", "Thirteen Seals Mountain Spirit Design", "Jade Mountain Scroll Companion Design"],
             "post_third_selection_state": "AUDIT_REQUIRED_NO_AUTHORITY_YET_FOR_MODEL_4_OR_MODEL_5_ORDER",
             "selection_rule": "SOURCE_ARCHIVE_EXISTENCE_DOES_NOT_AUTHORIZE_REBUILD. GOVERNANCE/DESIGN MUST CLASSIFY EACH IDENTITY AGAINST CURRENT ASSET ATLAS, KEEP/HOLD/PROCESS STATUS, project value and required native output before adding it to a rebuild queue."
           },
@@ -101,27 +71,16 @@
           "workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION",
           "project_role": "FINAL_INTEGRATION",
           "state": "ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM",
-          "automation_route": [
-            "PRESENTATION",
-            "VALIDATION",
-            "GOVERNANCE"
-          ],
+          "automation_route": ["PRESENTATION", "VALIDATION", "GOVERNANCE"],
           "current_evidence": "C04 Active Execution requires one causal architecture across Web/PDF/boards/film while keeping medium-appropriate depth, concept-state/pixel-state separation and independent review before destructive merge/pruning.",
           "current_gap": "Final integration cannot close while B page recovery/mapping, D finished-output quality, Web browser/pixel repair and Active-4 selected-object validation remain open.",
           "next_action": "Continuously consume only real Current upstream artifacts into Web/PDF/boards/film; keep strong C04-specific outputs; do not compress by 20/52/111/112 counts; closure only after PAGE-ID readback, cross-media consistency and independent Crit."
         }
       ],
       "production_queue_role": "ACTIVE_4_BLENDER_REBUILD_SUBQUEUE_ONLY",
-      "production_queue": [
-        "云水倚",
-        "流体座椅人体工",
-        "江畔停泊折叠观"
-      ],
+      "production_queue": ["云水倚", "流体座椅人体工", "江畔停泊折叠观"],
       "production_cursor": {
-        "rebuild_returned": [
-          "云水倚",
-          "流体座椅人体工"
-        ],
+        "rebuild_returned": ["云水倚", "流体座椅人体工"],
         "design_current": "江畔停泊折叠观",
         "validation_current": "云水倚",
         "presentation_waiting": "云水倚",
@@ -158,7 +117,7 @@
     "current_owner": "KNOWLEDGE|DESIGN|PRESENTATION|VALIDATION|GOVERNANCE",
     "current_owner_scope": "scope note preventing one live-object owner from being misread as sole whole-project owner",
     "state": "ACTIVE|HANDOFF_READY|IN_REVIEW|REVISE|HOLD",
-    "current_native_master": "canonical master reference",
+    "current_native_master": "canonical master reference or explicit NONE_ON_MAIN boundary",
     "current_pr_frontier": "PR/branch/page frontier",
     "next_owner": "lifecycle owner",
     "whole_project_authority": "Current project authority carriers",
