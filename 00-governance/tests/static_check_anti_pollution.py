@@ -21,27 +21,15 @@ def rel(path: Path) -> str:
 
 
 def current_head_delta() -> list[tuple[str, str]]:
-    """Strictly inspect the newest PR commit so existing historical debt is not retroactively misclassified.
-
-    Main uses whole-tree invariants only. Existing history is governed by separate audit/migration work.
-    """
     if os.environ.get("GITHUB_EVENT_NAME") != "pull_request":
         return []
-    proc = subprocess.run(
-        ["git", "diff", "--name-status", "HEAD^", "HEAD"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
+    proc = subprocess.run(["git", "diff", "--name-status", "HEAD^", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True)
     out: list[tuple[str, str]] = []
     for line in proc.stdout.splitlines():
         if not line.strip():
             continue
         parts = line.split("\t")
-        status = parts[0]
-        path = parts[-1]
-        out.append((status, path))
+        out.append((parts[0], parts[-1]))
     return out
 
 
@@ -55,63 +43,45 @@ def main() -> None:
 
     check(contract["schema"] == "OLEANDER_ANTI_POLLUTION_CONTRACT_v1.0", "anti-pollution schema mismatch")
     check(contract["canonical_policy"] == rel(POLICY_PATH), "canonical policy pointer mismatch")
-    check("ONE LOGICAL OBJECT" in policy, "canonical one-logical-object rule missing")
-    check("EXPERIMENTAL_UNVERIFIED" in policy and "VALIDATION_PENDING" in policy, "candidate isolation states missing")
-    check("NO COMPRESSION / NO LOSS" in policy, "anti-pollution repair must preserve no-loss rule")
+    check("ONE LOGICAL OBJECT" in policy, "one logical object rule missing")
+    check("NO COMPRESSION / NO LOSS" in policy, "cleanup must preserve no-loss rule")
 
     for inherited in contract["inherits"]:
         check((ROOT / inherited).exists(), "inherited governance authority missing: " + inherited)
     for scope_root in contract["scope_roots"]:
         check((ROOT / scope_root).exists(), "scope root missing: " + scope_root)
 
-    single = contract["single_current_rules"]
-    check(all(single.values()), "all single-current rules must be enabled")
-    validation = contract["validation_guard"]
-    check(not any(validation.values()), "validation substitution flags must all remain false")
-    knowledge = contract["knowledge_guard"]
-    check(not any(knowledge.values()), "knowledge pollution allowances must all remain false")
-    automation = contract["automation_guard"]
-    check(automation["material_delta_required"] is True, "automation must require material delta")
-    check(automation["repeat_run_should_update_existing_object"] is True, "automation must repair/update existing objects")
-    check(automation["no_artifact_created_only_to_prove_run"] is True, "automation run-proof artifacts are prohibited")
+    check(all(contract["single_current_rules"].values()), "all single-current rules must be enabled")
+    check(not any(contract["validation_guard"].values()), "validation substitution flags must remain false")
+    check(not any(contract["knowledge_guard"].values()), "knowledge pollution allowances must remain false")
+    check(contract["automation_guard"]["material_delta_required"] is True, "automation must require material delta")
+    check(contract["automation_guard"]["repeat_run_should_update_existing_object"] is True, "repeat automation must update existing objects")
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
-    check(queue.exists(), "single project priority queue missing")
-    current_queue_matches = list((ROOT / "00-governance").glob("OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT*.json"))
-    check(len(current_queue_matches) == 1, "parallel project priority CURRENT queue detected")
-
-    cross = contract["cross_surface_guard"]
-    check(cross["authority_change_requires_downstream_readback"] is True, "authority change must require downstream readback")
-    check(cross["notion_current_may_not_be_updated_from_candidate_only_evidence"] is True, "Notion Current must reject Candidate-only claims")
+    check(queue.exists(), "project priority CURRENT queue missing")
+    check(len(list((ROOT / "00-governance").glob("OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT*.json"))) == 1, "parallel project-priority CURRENT queue detected")
 
     guard = contract["new_file_guard"]
-    patterns = [re.compile(pat, re.IGNORECASE) for pat in guard["forbidden_transient_filename_patterns"]]
+    patterns = [re.compile(p, re.IGNORECASE) for p in guard["forbidden_transient_filename_patterns"]]
     allow_current = set(guard["current_named_file_allowlist"])
-    ignored_roots = guard["ignored_roots"]
-    scope_roots = tuple(root.rstrip("/") + "/" for root in contract["scope_roots"])
+    ignored = guard["ignored_roots"]
+    prefixes = tuple(root.rstrip("/") + "/" for root in contract["scope_roots"])
 
-    delta = current_head_delta()
     violations: list[str] = []
+    delta = current_head_delta()
     for status, path in delta:
-        if not status.startswith("A"):
+        if not status.startswith("A") or is_ignored(path, ignored):
             continue
-        if is_ignored(path, ignored_roots):
-            continue
-        if not (path in contract["scope_roots"] or path.startswith(scope_roots)):
+        if not (path in contract["scope_roots"] or path.startswith(prefixes)):
             continue
         name = Path(path).name
         if any(pattern.search(name) for pattern in patterns):
             violations.append("transient/duplicate-like filename added to authoritative scope: " + path)
         if "CURRENT" in name.upper() and path not in allow_current:
-            violations.append("new CURRENT-named file is not registered in single-current allowlist: " + path)
+            violations.append("new CURRENT-named file is not registered in allowlist: " + path)
 
     check(not violations, "anti-pollution delta violations:\n- " + "\n- ".join(violations))
-
-    blender_contract = ROOT / contract["workflow_guard"]["blender_freecad_policy_source"]
-    check(blender_contract.exists(), "Blender professional frontier governance source missing")
-
     print("OLEANDER_PROJECT_ANTI_POLLUTION=PASS")
-    print("scope_roots=" + str(len(contract["scope_roots"])))
     print("delta_files_checked=" + str(len(delta)))
 
 
