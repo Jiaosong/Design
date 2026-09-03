@@ -1,6 +1,6 @@
 # OLEANDER Anti-Pollution Protocol v1.0
 
-Status: CANDIDATE GOVERNANCE / PROJECT-WIDE HARD CONSTRAINT
+Status: CURRENT ACTIVE / PROJECT-WIDE HARD CONSTRAINT / MAIN-MERGED / READBACK VERIFIED
 Effective: 2026-09-04
 Scope: Entire OLEANDER project, all Projects / Workstreams / Skills / Knowledge / GitHub / Notion / Drive / generated artifacts / validation systems.
 Role: Cross-project anti-pollution constraint. It does not replace the Knowledge Axis, Project Axis, Case Axis, Work Coordination Contract, Artifact Review System, or any project-specific Source Authority.
