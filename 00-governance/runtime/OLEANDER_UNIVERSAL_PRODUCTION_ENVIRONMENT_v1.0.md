@@ -1,7 +1,7 @@
 # OLEANDER Universal Production Environment v1.0
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.0.4**  
+Implementation revision: **1.0.5**  
 Scope: **ALL OLEANDER projects / all lanes / all conversations / all media**
 
 ## 0｜Core correction
@@ -86,6 +86,28 @@ not:
 
 `JOB_BINARY_NOT_MATERIALIZED → GLOBAL_ENVIRONMENT_MISSING → PROJECT_BUILDS_NEW_ENVIRONMENT`.
 
+### 3B｜Hourly GPT control plane ≠ machine execution plane
+
+Scheduled GPT work and durable execution are separate layers.
+
+- GPT recurring tasks are the **control plane**: read Current Authority, resolve the Work Object/lease, make design or review judgments, dispatch deterministic work, consume readback, and advance/return state.
+- Shared runners and native tool jobs are the **execution plane**: once dispatched, they should complete all deterministic steps available in that job without waiting for another GPT wake-up.
+- A one-hour minimum recurrence for one GPT task is therefore a **judgment cadence**, not a limit on Blender/browser/export/test computation already running in an approved durable runner.
+- Deterministic machine chains should run to their natural gate in one dispatch when safe, e.g. `resolve runtime → execute producer → save native artifact → render/preview → reopen/roundtrip → identity/hash → package/upload artifact`.
+- Steps requiring a new professional judgment, Source Authority interpretation, design verdict, fidelity verdict beyond deterministic checks, or owner transfer remain control-plane gates and wait for the appropriate scheduled owner.
+- A runner still executing at the next owner's wake-up is not a failure. The owner records/returns `WAITING_FOR_EXECUTION_RESULT` or `::SKIP_COMPLETION::` and leaves the typed lease intact.
+- Recurring task `enabled` state means that owner capability remains available on schedule. It is **not** the same as an ACTIVE project lease. Inactive lease/no eligible object means `SKIP`, not disable the recurring task.
+- GOVERNANCE must not disable a Current recurring owner merely because another owner temporarily holds the Work Object. Disable only for explicit user pause, supersession, destructive-write risk that cannot be isolated, or a deliberate global migration freeze.
+- Project/object advancement is driven by persisted artifact/readback state, not by the passage of an hour or by a task having run.
+
+Canonical pattern:
+
+`GPT CONTROL PLANE → DURABLE SHARED RUNNER → PERSISTENT ARTIFACT/RECEIPT → NEXT GPT OWNER READBACK`
+
+not:
+
+`GPT TURN → PARTIAL COMPUTE → WAIT ONE HOUR → RESUME THE SAME DETERMINISTIC COMPUTE`.
+
 ## 4｜Universal capability states
 
 Every production round resolves each needed capability to one of:
@@ -118,8 +140,9 @@ Before production, every OLEANDER conversation performs this resolver:
 10. Select the best-fit adapter **within the active constraint set**.
 11. Use an equivalent fallback when no information is lost.
 12. Mark only the genuinely unavailable/denied non-replaceable step pending or HOLD.
-13. Open/render/read back the resulting artifact.
-14. Verify the Flow Completion Gate before any complete/closed claim.
+13. Dispatch deterministic execution-plane steps to the approved durable runner when available; do not fragment machine work merely to mirror GPT recurrence.
+14. Open/render/read back the resulting artifact or durable execution result.
+15. Verify the Flow Completion Gate before any complete/closed claim.
 
 ## 6｜Reference materialization / 1:1 reconstruction
 
@@ -188,6 +211,8 @@ The existing runtime remains authoritative:
 Current runtime implementation belongs to `90-shared/toolchains/` and the approved shared runner. The frozen Legacy `tools/` root may remain referenced only by existing compatibility adapters; it must not receive new runtime implementation or bootstrap logic.
 
 Do not fork a separate Blender installation path or Blender bootstrap workflow inside each project. A project workflow may call the shared runner with project-specific script/output parameters; the project does not own Blender installation or version recovery.
+
+For Blender jobs, the shared runner should consume the full deterministic machine chain available from the supplied project script/validator in one dispatch. Do not split `build/save/preview/reopen/hash/artifact` across hourly GPT turns when the same runner can safely finish them.
 
 ## 10｜Execution Receipt
 
