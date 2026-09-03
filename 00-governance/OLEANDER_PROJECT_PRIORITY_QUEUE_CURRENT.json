@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -14,20 +14,38 @@
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7",
       "next_owner": "VALIDATION",
+      "production_queue": [
+        "云水倚",
+        "流体座椅人体工",
+        "江畔停泊折叠观"
+      ],
+      "production_cursor": {
+        "rebuild_returned": [
+          "云水倚"
+        ],
+        "design_current": "流体座椅人体工",
+        "validation_current": "云水倚",
+        "presentation_waiting": "云水倚",
+        "next_after_design": "江畔停泊折叠观"
+      },
       "design_subtask_lease": "BLENDER_REBUILD_MASTER",
-      "design_subtask_lease_state": "RETURNED",
+      "design_subtask_lease_state": "ACTIVE",
+      "design_subtask_current_item": "流体座椅人体工",
+      "design_subtask_last_returned_item": "云水倚",
       "validation_subtask_lease": "REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
       "validation_subtask_lease_state": "ACTIVE",
+      "validation_subtask_current_item": "云水倚",
+      "presentation_subtask_current_item": "云水倚",
       "lease_contract": "00-governance/OLEANDER_C04_BLENDER_REBUILD_ROUTE_CURRENT.md",
       "shared_blender_runtime": "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md",
       "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE",
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
       "production_stall": null,
-      "production_stall_basis": "CLEARED: commit efa3ae45e43cd1bb9266eb8ab55466258dd749eb installed the executable Yunshuiyi v003 Blender rebuild/validator carrier and records a clean-branch Blender 5.2 build/reopen/artifact pass. GitHub Actions run 33636726833 subsequently completed successfully and emitted artifact C04_YUNSHUIYI_REBUILD_MASTER_v003 (artifact 9849139236, 8700684 bytes, sha256:38fd8e3ef12eaf7f738b24dcf3f42749bc52ff12df27117b53b9bd3fec54c478). This is material rebuild evidence under the NO FALSE PROGRESS gate, so the prior stall classification was a governance regression caused by incomplete artifact readback.",
-      "next_action": "PRESENTATION retains this object and must consume the returned Yunshuiyi rebuild Candidate as the next model input. VALIDATION remains bounded to native reopen/fidelity and derivative GLB/LOD/browser evidence; do not alter form, design relations, public narrative, MAIN/SUPPORT verdicts or final visual authority. Preserve original Meshy packages as SOURCE_REFERENCE and do not create a parallel Blender runtime.",
-      "updated_at": "2026-09-03T05:06:00+08:00",
-      "source_of_queue_decision": "Governance normalization of shared-runtime state semantics after Current Universal Production Environment readback. CURRENT_OWNER remains PRESENTATION; DESIGN rebuild lease remains RETURNED; VALIDATION derivative lease remains ACTIVE. Shared runtime interface state is recorded independently from job-local Blender materialization, and no validation job is currently bound."
+      "production_stall_basis": "CLEARED: 云水倚 has returned real Blender rebuild evidence and canonical Drive persistence. Continuous production now advances by child-item cursor rather than treating the whole DESIGN lease as returned after the first child.",
+      "next_action": "Keep all five Current recurring control-plane tasks enabled. DESIGN continues 流体座椅人体工 under BLENDER_REBUILD_MASTER while VALIDATION/PRESENTATION consume 云水倚 on distinct child-item leases. Shared runners execute deterministic Blender/browser chains to their natural machine gate without waiting for the next GPT hour. GOVERNANCE advances the cursor to 江畔停泊折叠观 only after actual 流体座椅人体工 artifact/readback return; do not infer progress from schedule execution alone.",
+      "updated_at": "2026-09-03T08:00:00+08:00",
+      "source_of_queue_decision": "User-explicit request to adapt OLEANDER continuous production to the one-hour GPT scheduling limit, using hourly GPT control-plane decisions plus durable execution-plane runners. 云水倚 Drive persistence is read back; PR #465 remains the live presentation frontier; DESIGN is therefore re-leased to the second queued child while VALIDATION/PRESENTATION remain on the first child."
     }
   ],
   "entry_schema": {
@@ -39,10 +57,16 @@
     "current_native_master": "canonical master reference",
     "current_pr_frontier": "PR/branch/page frontier",
     "next_owner": "lifecycle owner",
+    "production_queue": "optional ordered child-item production queue",
+    "production_cursor": "optional child-item cursor; separates returned/current/waiting items across bounded owners",
     "design_subtask_lease": "optional bounded DESIGN production lease",
     "design_subtask_lease_state": "ACTIVE|RETURNED|HOLD",
+    "design_subtask_current_item": "current child item for DESIGN when a production cursor is used",
+    "design_subtask_last_returned_item": "most recent child item returned by DESIGN",
     "validation_subtask_lease": "optional bounded VALIDATION technical lease",
     "validation_subtask_lease_state": "ACTIVE|RETURNED|HOLD",
+    "validation_subtask_current_item": "current child item for VALIDATION when a production cursor is used",
+    "presentation_subtask_current_item": "current child item waiting for/under PRESENTATION consumption",
     "lease_contract": "governance contract reference when lease is present",
     "shared_blender_runtime": "repository-wide Blender runtime authority when applicable",
     "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE|UNAVAILABLE_AFTER_CURRENT_CARRIERS_FAILED",
