@@ -1,25 +1,26 @@
 {
   "schema_version": "1.0",
-  "status": "READY",
-  "job_id": "PRJ-C04-QINGJIANG-SHISHU/FLUID_SEAT/REBUILD_V001/R01",
-  "revision": 1,
+  "status": "WAITING_FOR_DESIGN_SCRIPT",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/JIANGPAN_FOLDING_OBSERVATION/REBUILD_V001",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
-  "child_item": "流体座椅人体工",
+  "child_item": "江畔停泊折叠观",
   "purpose": "CURRENT_DESIGN_MACHINE_JOB",
-  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_fluid_seat_v001.py",
-  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_fluid_seat_v001.py",
-  "blend_file": "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001.blend",
-  "output_dir": "artifacts/c04-fluid-seat",
-  "artifact_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001",
+  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_jiangpan_folding_observation_v001.py",
+  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_jiangpan_folding_observation_v001.py",
+  "blend_file": "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001.blend",
+  "output_dir": "artifacts/c04-jiangpan-folding-observation",
+  "artifact_name": "C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001",
   "design_authority": "DESIGN_ESTIMATE_FROM_CURRENT_SOURCE_REFERENCE",
-  "source_reference_state": "CURRENT_MACHINE_JOB_HAS_NO_VERIFIED_DIMENSIONS; SOURCE_REFERENCE_ONLY; DO_NOT_INFER_ENGINEERING_TRUTH",
+  "source_reference_state": "WAIT_FOR_DESIGN_SOURCE_AUDIT; SOURCE_REFERENCE_ONLY; NO_VERIFIED_DIMENSIONS; DO_NOT_INFER_ENGINEERING_TRUTH",
   "field_state": "FIELD_OPEN",
   "promotion": "NO_PROMOTION",
-  "ready_transition": "Producer and native reopen validator are committed and remotely read back; this READY descriptor commit is the durable Git-native execution trigger.",
-  "regression_evidence": {
-    "workflow_run_id": 33706294150,
-    "artifact_id": 9875331116,
-    "artifact_digest": "sha256:1144e4db25e339d16cd685afb6296c099933a54fde959135963b31eccc99df7e",
-    "result": "PASS"
+  "ready_transition": "DESIGN reads the current source authority, creates/updates the declared Blender-native producer and native reopen validator, remotely reads both files back, then changes this same Current descriptor to READY as the LAST Git write. That descriptor commit is the durable execution trigger.",
+  "previous_returned_child": {
+    "child_item": "流体座椅人体工",
+    "workflow_run_id": 33711398400,
+    "artifact_id": 9877039291,
+    "artifact_digest": "sha256:da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c",
+    "persistence_receipt": "05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_FLUID_SEAT_PERSISTENCE_RECEIPT_v001.json",
+    "persistence_result": "PASS"
   }
 }
