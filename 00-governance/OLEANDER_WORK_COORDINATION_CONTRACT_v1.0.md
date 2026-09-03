@@ -2,7 +2,7 @@
 
 Status: CURRENT ACTIVE GOVERNANCE CONTRACT / MAIN-MERGED / CI + MAIN READBACK VERIFIED.
 Evidence: PR #400 → merge commit `1d374d6d8ac1ac468c64758c0cd3b79c01ae8c2c`; AI Governance Evals run #3162 / run ID `33093638477` = `SUCCESS`; main path reopened after merge.
-Revision note: 2026-09-03 aligns the five Current hourly control-plane tasks with durable execution-plane runners, separates recurring-task enabled state from project lease state, and currentizes the staggered cadence. This is an implementation revision of the existing coordination contract; it does not create a new Skill, Gate, framework or project authority.
+Revision note: 2026-09-04 adds `REPAIR-FIRST / REGISTER-LAST` to PROJECT_MODE: an executable defect may not end as a status-only HOLD/OPEN when the Current owner has a legal repair path. The 2026-09-03 durable execution-plane, enabled-state/lease separation and staggered-cadence rules remain in force. This is an implementation revision of the existing coordination contract; it does not create a new Skill, Gate, framework or project authority.
 Role: cross-project coordination contract; not a new Design Method, Skill, Gate, or project Source Authority.
 
 ## Purpose
@@ -54,6 +54,29 @@ Rules:
 Canonical coordination pattern:
 
 `GPT OWNER → DURABLE RUNNER → PERSISTENT ARTIFACT/RECEIPT → NEXT GPT OWNER`
+
+### 1B. PROJECT_MODE repair-first / register-last
+
+In PROJECT_MODE, discovering a defect is not a completed project action when the Current owner has a legal, executable repair path.
+
+Canonical repair loop:
+
+`READ CURRENT → DIAGNOSE → RESOLVE LEGAL REPAIR PATH → EXECUTE REPAIR → RETEST / REOPEN / BROWSER READBACK → WRITE CURRENT STATE → HANDOFF / NEXT`
+
+Hard rules:
+
+- **REPAIR-FIRST / REGISTER-LAST**: if the defect can be repaired with the currently available connector, approved runtime/runner, repository write frontier, editable native master, or legal bounded handoff, the owner must perform at least one actual repair attempt in the same run before it may end on `HOLD`, `OPEN`, `BLOCKED`, `NEXT_ACTION`, or a status-only record;
+- merely writing a blocker, Queue note, Control Card note, receipt, comment, issue, or `NEXT` field is not material project completion when an executable repair is available;
+- after a repair attempt, the owner must perform the smallest relevant retest/readback. A write without readback is `REPAIR_UNCONFIRMED`, not completion;
+- if the first repair fails and the failure is diagnosable within the same legal owner/tool boundary, inspect the actual failure evidence and make the smallest justified repair/retest rather than converting immediately to a passive HOLD;
+- use `HOLD/OPEN/BLOCKED` as the terminal state only when the current run has reached a genuine boundary: missing Source Authority or required bytes, unavailable/failed Current capability after allowed carriers are exhausted, user-exclusive action/credential, external service condition, safety/rights/destructive-write boundary, unresolved same-artifact ownership collision, or a professional gate that requires evidence that does not yet exist;
+- when a genuine boundary exists, record **what was actually attempted**, **what failed or is unavailable**, **the exact boundary**, and **what evidence/action would release it**. Do not record a generic blocker where a concrete cause is known;
+- runtime/CI/persistence success does not excuse unresolved design, fidelity, browser-pixel, source-binding or project-state defects that remain legally repairable by their owner;
+- if a defect belongs to another owner, the current owner must create/return the explicit typed handoff with the failing artifact/evidence. It must not silently mark the object HOLD and leave the legal repair unowned;
+- GOVERNANCE must treat repeated `HOLD/OPEN/NEXT_ACTION` with no repair attempt despite an available legal path as `PASSIVE_REGISTRATION_DRIFT` and repair the routing/lease/state, not normalize the drift;
+- scheduled wake-up, diagnosis, registration and planning alone do not count as material delta.
+
+This rule does not require unsafe guessing, destructive edits without authority, invented source data, fake field evidence, or bypassing professional approval gates. It requires execution up to the first genuine boundary.
 
 ## 2. Work Object identity
 
