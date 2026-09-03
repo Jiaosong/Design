@@ -3,9 +3,9 @@
 The profile is fully constrained at bounded scope: four connected rectangle
 edges, horizontal/vertical relations, one fixed corner, and driving width/depth.
 Revision 2 edits the driving width and re-solves before request export.
-Revision 3 remains contract-valid but uses a closed collinear three-point
-profile that cannot produce a positive-area OCCT face, providing a deterministic
-FreeCAD failure-envelope fixture.
+Revision 3 remains schema-valid but contains one duplicated adjacent profile
+point. The bounded FreeCAD sidecar must reject the resulting zero-length edge
+before any authoritative solid is released.
 """
 
 from __future__ import annotations
@@ -142,20 +142,22 @@ def main() -> None:
     check(hash2 == payload_sha256(request2), "revision2_request_hash")
     check(hash1 != hash2, "parameter_edit_changes_request_hash")
 
-    # Contract-valid but geometrically invalid: three unique collinear points form
-    # a closed zero-area profile. The request serializer accepts it, while the
-    # authoritative FreeCAD/OCCT service must reject it before releasing a solid.
+    # JSON Schema permits repeated coordinate values. The bounded sidecar adds a
+    # stricter geometry invariant and must reject the duplicate adjacent point as
+    # a zero-length edge before creating any Face/Solid.
+    bad_points = [[0.0, 0.0], [50.0, 0.0], [50.0, 0.0], [100.0, 25.0]]
     bad_request = build_request(
         request_id="OLE_CAD_REQ_BRACKET_001", ole_id="OLE_PRO_CAD_BRACKET_001", revision=3,
         editable_source=str(source_v2), solver="CAD Sketcher + SolveSpace", solver_state="FULLY_CONSTRAINED",
-        profile_points_mm=[[0.0, 0.0], [50.0, 0.0], [100.0, 0.0]], extrusion_depth_mm=10.0,
+        profile_points_mm=bad_points, extrusion_depth_mm=10.0,
         holes=[],
     )
     bad_path = OUT / "request_R003_EXPECT_FAIL.json"
     hash3 = write_request(bad_path, bad_request)
     check(hash3 == payload_sha256(bad_request), "failure_request_hash")
     check(bad_request["profile"]["closed"] is True, "failure_fixture_contract_closed")
-    check(len(bad_request["profile"]["points_mm"]) == 3, "failure_fixture_contract_min_points")
+    check(len(bad_request["profile"]["points_mm"]) == 4, "failure_fixture_schema_min_points")
+    check(bad_request["profile"]["points_mm"][1] == bad_request["profile"]["points_mm"][2], "failure_fixture_duplicate_adjacent_point")
 
     result = {
         "schema": "OLEANDER_CAD_SKETCH_TO_REQUEST_PROBE_v0.1", "status": "PASS", "blender": bpy.app.version_string,
@@ -163,7 +165,7 @@ def main() -> None:
         "requests": {
             "revision1": {"path": str(request1_path), "sha256": hash1},
             "revision2": {"path": str(request2_path), "sha256": hash2},
-            "expected_fail_revision3": {"path": str(bad_path), "sha256": hash3, "fixture": "COLLINEAR_ZERO_AREA_PROFILE"}
+            "expected_fail_revision3": {"path": str(bad_path), "sha256": hash3, "fixture": "DUPLICATE_ADJACENT_POINT_ZERO_LENGTH_EDGE"}
         },
         "non_claims": ["P0_A_PARAMETRIC_CAD_PASS", "general_sketch_export", "general_feature_tree", "assembly_mates"]
     }
