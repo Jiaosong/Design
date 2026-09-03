@@ -1,0 +1,105 @@
+name: OLEANDER Blender Professional FreeCAD Direct BRep
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_features.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-direct-brep.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_features.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-direct-brep.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  stable-selector-brep-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_DIRECT_BREP_DIR: /tmp/oleander-direct-brep
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-direct-brep-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Run stable-selector authoritative BRep features
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_DIRECT_BREP_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_features.py" \
+            2>&1 | tee /tmp/oleander-direct-brep.log
+          grep -F 'OLEANDER_FREECAD_STABLE_SELECTOR_BREP=' /tmp/oleander-direct-brep.log
+          grep -F '"status": "PASS"' /tmp/oleander-direct-brep.log
+          grep -F '"oversized_fillet_preflight": "PASS"' /tmp/oleander-direct-brep.log
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_stable_selector_brep.FCStd"
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_fillet_R002.step"
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_chamfer_R002.step"
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_shell_R002.step"
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_stable_selector_brep.json"
+          test -s "${OLEANDER_DIRECT_BREP_DIR}/oleander_stable_selector_brep_display.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read stable-selector BRep derivative in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_blender_readback.py \
+            2>&1 | tee /tmp/oleander-direct-brep-blender.log
+          grep -F 'OLEANDER_STABLE_SELECTOR_BREP_BLENDER_READBACK=' /tmp/oleander-direct-brep-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-direct-brep-blender.log
+          grep -F '"master": "FreeCAD/OCCT B-Rep"' /tmp/oleander-direct-brep-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-direct-brep-blender.log
+
+      - name: Record bounded Direct BRep evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Stable-Selector Direct B-Rep Foundation'
+            echo '- Authoritative kernel: FreeCAD 1.1.3 / OCCT.'
+            echo '- No EdgeN/FaceN persistence: each revision resolves input geometry from selector rules.'
+            echo '- Bounded features: vertical-edge fillet, vertical-edge chamfer, top-face inward thickness/shell.'
+            echo '- Rebuild test: width 80 mm -> 100 mm, selectors are re-resolved and all three features rebuilt.'
+            echo '- Oversized fillet is rejected by deterministic preflight before kernel invocation.'
+            echo '- Blender receives FILLET R002 only as DISPLAY_DERIVATIVE_ONLY with FCStd/STEP/selector provenance.'
+            echo '- Does NOT prove persistent topological naming, direct face push/pull, split/trim, healing, general shell robustness or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"
