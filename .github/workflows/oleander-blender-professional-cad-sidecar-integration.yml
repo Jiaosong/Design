@@ -111,7 +111,7 @@ jobs:
             test -s "${OLEANDER_CAD_INTEGRATION_DIR}/build_${rev}/cad_display_derivative.json"
           done
 
-      - name: Verify controlled zero-area profile failure envelope
+      - name: Verify controlled zero-length-edge failure envelope
         shell: bash
         run: |
           set -euo pipefail
@@ -125,7 +125,8 @@ jobs:
             > /tmp/oleander-cad-build-R003-fail.log 2>&1
           code=$?
           set -e
-          test "${code}" -ne 0
+          echo "OLEANDER_FREECADCMD_FAILURE_PROCESS_EXIT=${code}"
+          test -s "${fail_dir}/cad_build_response.json"
           grep -F 'OLEANDER_CAD_BUILD_FAIL=' /tmp/oleander-cad-build-R003-fail.log
           python3 - <<'PY'
           import json, os, pathlib
@@ -134,6 +135,10 @@ jobs:
           assert data['status'] == 'FAIL'
           assert data['measurements']['solid_count'] == 0
           assert data['error']
+          assert 'zero-length edge' in data['error']
+          assert not data['authoritative']['fcstd']['path']
+          assert not data['authoritative']['step']['path']
+          assert not data['authoritative']['brep']['path']
           print('OLEANDER_CAD_EXPECTED_FAILURE=PASS')
           PY
 
@@ -160,6 +165,6 @@ jobs:
             echo '- Revision test: 80x50 -> 100x50 driving-width edit, solved before export.'
             echo '- CAD master: FreeCAD 1.1.3 / OCCT process sidecar, FCStd + STEP + BREP.'
             echo '- Blender result: typed DISPLAY_DERIVATIVE_ONLY with request/STEP hashes.'
-            echo '- Failure envelope: contract-valid closed collinear profile must fail explicitly with zero released solids.'
+            echo '- Failure envelope: schema-valid duplicate adjacent profile point must return structured FAIL with zero released solids and a zero-length-edge error; FreeCADCmd shell exit code is recorded but not treated as authoritative.'
             echo '- This is a bounded integrated feature-rebuild foundation; it does NOT make P0-A/P0-B PASS or prove general CAD feature-tree, direct B-Rep, assembly or engineering parity.'
           } >> "$GITHUB_STEP_SUMMARY"
