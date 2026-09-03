@@ -4,11 +4,13 @@ Validates actual FreeCAD objects and dependencies:
 PartDesign::Plane -> Sketcher::SketchObject -> PartDesign::Pad.
 The sketch is dimensionally constrained and the width driving datum is edited
 from 80 mm to 100 mm; the native Pad must recompute accordingly without manual
-mesh editing.
+mesh editing. R002 also emits a typed tessellated display derivative for Blender
+readback; the FCStd PartDesign tree remains authoritative.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -23,6 +25,7 @@ FCSTD_R1 = OUT / "oleander_feature_tree_R001.FCStd"
 FCSTD_R2 = OUT / "oleander_feature_tree_R002.FCStd"
 STEP_R1 = OUT / "oleander_feature_tree_R001.step"
 STEP_R2 = OUT / "oleander_feature_tree_R002.step"
+DISPLAY_R2 = OUT / "oleander_feature_tree_R002_display.json"
 MANIFEST = OUT / "oleander_feature_tree_manifest.json"
 checks: list[str] = []
 
@@ -31,6 +34,14 @@ def check(condition: bool, label: str) -> None:
     if not condition:
         raise AssertionError(label)
     checks.append(label)
+
+
+def file_sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 
 def add_ole(obj, ole_id: str, role: str) -> None:
@@ -51,9 +62,6 @@ def add_rectangle(sketch, width: float, depth: float):
     if isinstance(ids, int):
         ids = [ids]
     check(len(ids) == 4, "four_rectangle_edges")
-
-    # Explicit topology relationships rather than relying on coincident initial
-    # coordinates. Endpoint convention: 1=start, 2=end.
     sketch.addConstraint(Sketcher.Constraint("Coincident", 0, 2, 1, 1))
     sketch.addConstraint(Sketcher.Constraint("Coincident", 1, 2, 2, 1))
     sketch.addConstraint(Sketcher.Constraint("Coincident", 2, 2, 3, 1))
@@ -62,8 +70,6 @@ def add_rectangle(sketch, width: float, depth: float):
     sketch.addConstraint(Sketcher.Constraint("Vertical", 1))
     sketch.addConstraint(Sketcher.Constraint("Horizontal", 2))
     sketch.addConstraint(Sketcher.Constraint("Vertical", 3))
-
-    # Anchor the first corner at sketch origin, then drive size from line lengths.
     sketch.addConstraint(Sketcher.Constraint("Coincident", 0, 1, -1, 1))
     width_id = sketch.addConstraint(Sketcher.Constraint("Distance", 0, width))
     depth_id = sketch.addConstraint(Sketcher.Constraint("Distance", 1, depth))
@@ -118,8 +124,6 @@ def main() -> None:
     pad.Shape.exportStep(str(STEP_R1))
     check(FCSTD_R1.exists() and STEP_R1.exists(), "revision1_artifacts")
 
-    # Native parametric edit: change the sketch driving dimension and let the
-    # PartDesign dependency tree recompute the Pad.
     rc = sketch.setDatum(width_id, App.Units.Quantity("100 mm"))
     check(rc == 0, "revision2_set_width_datum")
     doc.recompute()
@@ -136,6 +140,27 @@ def main() -> None:
     doc.saveAs(str(FCSTD_R2))
     pad.Shape.exportStep(str(STEP_R2))
     check(FCSTD_R2.exists() and STEP_R2.exists(), "revision2_artifacts")
+
+    vertices, facets = pad.Shape.tessellate(0.25)
+    check(bool(vertices) and bool(facets), "revision2_display_tessellation")
+    display = {
+        "schema": "OLEANDER_CAD_FEATURE_TREE_DISPLAY_DERIVATIVE_v0.1",
+        "master_type": "CAD_NATIVE",
+        "geometry_authority": "FREECAD_PARTDESIGN_FEATURE_TREE",
+        "display_authority": "DISPLAY_DERIVATIVE_ONLY",
+        "units": "mm",
+        "source_fcstd": str(FCSTD_R2),
+        "source_fcstd_sha256": file_sha256(FCSTD_R2),
+        "source_step": str(STEP_R2),
+        "source_step_sha256": file_sha256(STEP_R2),
+        "ole_lineage": ["OLE_DATUM::BRACKET_SKETCH_PLANE", "OLE_SKETCH::BRACKET_PROFILE", "OLE_FEATURE::PAD_001"],
+        "vertices_mm": [[v.x, v.y, v.z] for v in vertices],
+        "triangles": [list(face) for face in facets],
+        "bbox_mm": m2["bbox_mm"],
+        "volume_mm3": m2["volume_mm3"],
+    }
+    DISPLAY_R2.write_text(json.dumps(display, sort_keys=True), encoding="utf-8")
+    check(DISPLAY_R2.exists() and DISPLAY_R2.stat().st_size > 0, "revision2_display_payload")
 
     App.closeDocument(doc.Name)
     reopened = App.openDocument(str(FCSTD_R2))
@@ -168,7 +193,8 @@ def main() -> None:
         "revision2": m2,
         "artifacts": {
             "fcstd_r1": str(FCSTD_R1), "step_r1": str(STEP_R1),
-            "fcstd_r2": str(FCSTD_R2), "step_r2": str(STEP_R2)
+            "fcstd_r2": str(FCSTD_R2), "step_r2": str(STEP_R2),
+            "display_r2": str(DISPLAY_R2)
         },
         "checks": checks,
         "non_claims": [
