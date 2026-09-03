@@ -1,7 +1,7 @@
 {
   "schema": "OLEANDER_ANTI_POLLUTION_CONTRACT_v1.0",
   "effective_date": "2026-09-04",
-  "status": "CANDIDATE_FOR_PROJECT_WIDE_CURRENT",
+  "status": "CURRENT_ACTIVE_MAIN_MERGED_READBACK_VERIFIED",
   "canonical_policy": "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
   "inherits": [
     "00-governance/README.md",
