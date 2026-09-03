@@ -1,16 +1,23 @@
 {
   "schema_version": "1.0",
-  "status": "READY",
-  "job_id": "PRJ-C04-QINGJIANG-SHISHU/YUNSHUIYI/GIT_TRIGGER_REGRESSION_001",
+  "status": "WAITING_FOR_DESIGN_SCRIPT",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/FLUID_SEAT/REBUILD_V001",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
-  "child_item": "云水倚",
-  "purpose": "GIT_TRIGGER_REGRESSION_ONLY",
-  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py",
-  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py",
-  "blend_file": "artifacts/c04-yunshuiyi/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
-  "output_dir": "artifacts/c04-yunshuiyi",
-  "artifact_name": "C04_YUNSHUIYI_GIT_TRIGGER_REGRESSION_001",
-  "design_authority": "EXISTING_RETURNED_REBUILD_REGRESSION_ONLY",
+  "child_item": "流体座椅人体工",
+  "purpose": "CURRENT_DESIGN_MACHINE_JOB",
+  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_fluid_seat_v001.py",
+  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_fluid_seat_v001.py",
+  "blend_file": "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001.blend",
+  "output_dir": "artifacts/c04-fluid-seat",
+  "artifact_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001",
+  "design_authority": "DESIGN_ESTIMATE_FROM_CURRENT_SOURCE_REFERENCE",
   "field_state": "FIELD_OPEN",
-  "promotion": "NO_PROMOTION"
+  "promotion": "NO_PROMOTION",
+  "ready_transition": "DESIGN creates/updates producer and validation scripts, then changes status to READY in the same Current descriptor; that Git push is the durable execution trigger.",
+  "regression_evidence": {
+    "workflow_run_id": 33706294150,
+    "artifact_id": 9875331116,
+    "artifact_digest": "sha256:1144e4db25e339d16cd685afb6296c099933a54fde959135963b31eccc99df7e",
+    "result": "PASS"
+  }
 }
