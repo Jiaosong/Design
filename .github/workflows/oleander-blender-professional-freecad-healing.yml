@@ -46,7 +46,7 @@ jobs:
           test -x /tmp/squashfs-root/usr/bin/freecadcmd
           /tmp/squashfs-root/usr/bin/freecadcmd --version
 
-      - name: Heal controlled open shell within declared tolerance
+      - name: Sew coincident faces and remove redundant splitter topology
         shell: bash
         run: |
           set -euo pipefail
@@ -55,12 +55,14 @@ jobs:
             "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing.py" \
             2>&1 | tee /tmp/oleander-bounded-healing.log
           grep -F 'OLEANDER_FREECAD_BOUNDED_HEALING=' /tmp/oleander-bounded-healing.log
+          grep -F '"schema": "OLEANDER_FREECAD_BOUNDED_HEALING_v0.2"' /tmp/oleander-bounded-healing.log
           grep -F '"status": "PASS"' /tmp/oleander-bounded-healing.log
-          grep -F '"gap_exceeds_governed_tolerance": "PASS"' /tmp/oleander-bounded-healing.log
-          grep -F '"source_gap_mm": 0.0005' /tmp/oleander-bounded-healing.log
-          grep -F '"sewing_tolerance_mm": 0.001' /tmp/oleander-bounded-healing.log
+          grep -F '"nonzero_geometric_gap_repair": "PASS"' /tmp/oleander-bounded-healing.log
+          grep -F '"sewing_tolerance_mm": 1e-06' /tmp/oleander-bounded-healing.log
+          grep -F '"nonzero_gap_repair": "NOT_VALIDATED_AND_REJECTED"' /tmp/oleander-bounded-healing.log
           test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing.FCStd"
-          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_R002.step"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_sewn_R002.step"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_refined_R002.step"
           test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_display.json"
           test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_manifest.json"
 
@@ -85,6 +87,7 @@ jobs:
             --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing_blender_readback.py \
             2>&1 | tee /tmp/oleander-bounded-healing-blender.log
           grep -F 'OLEANDER_BOUNDED_HEALING_BLENDER_READBACK=' /tmp/oleander-bounded-healing-blender.log
+          grep -F '"schema": "OLEANDER_BOUNDED_HEALING_BLENDER_READBACK_v0.2"' /tmp/oleander-bounded-healing-blender.log
           grep -F '"status": "PASS"' /tmp/oleander-bounded-healing-blender.log
           grep -F '"master": "FreeCAD/OCCT healed B-Rep"' /tmp/oleander-bounded-healing-blender.log
           grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-bounded-healing-blender.log
@@ -94,12 +97,11 @@ jobs:
         shell: bash
         run: |
           {
-            echo '## OLEANDER Bounded FreeCAD B-Rep Healing'
-            echo '- Controlled defect: top planar face translated by 0.0005 mm so the pre-heal six-face aggregate contains no solid.'
-            echo '- Governed healing tolerance: 0.001 mm.'
-            echo '- Pipeline: sewShape(tolerance) -> fix -> removeSplitter -> makeSolid when required.'
-            echo '- Healed R001/R002 must become valid single solids while remaining within the declared geometry budget.'
-            echo '- A 0.01 mm gap is outside the budget and is rejected before healing.'
-            echo '- FCStd/STEP persist the healed R002 authority; Blender remains DISPLAY_DERIVATIVE_ONLY.'
-            echo '- Does NOT prove general import repair, self-intersection/nonmanifold repair, large-gap healing, topological naming stability or P0-B PASS.'
+            echo '## OLEANDER Bounded FreeCAD B-Rep Healing Foundation'
+            echo '- Case A: six coincident but disconnected boundary faces begin with zero solids, then sewShape(1e-6 mm) + fix + removeSplitter + makeSolid must produce one valid solid.'
+            echo '- Case B: a valid fused solid with redundant splitter topology is refined with removeSplitter while preserving bbox and volume and reducing face/edge complexity.'
+            echo '- R001 width 80 mm and R002 width 100 mm are both validated.'
+            echo '- Nonzero geometric-gap repair is explicitly NOT VALIDATED and is rejected by the bounded contract.'
+            echo '- FCStd plus sewn/refined STEP artifacts persist; Blender reads only the sewn R002 display derivative and remains DISPLAY_DERIVATIVE_ONLY.'
+            echo '- Does NOT prove arbitrary import repair, nonzero-gap repair, self-intersection/nonmanifold repair, topological naming stability or P0-B PASS.'
           } >> "$GITHUB_STEP_SUMMARY"
