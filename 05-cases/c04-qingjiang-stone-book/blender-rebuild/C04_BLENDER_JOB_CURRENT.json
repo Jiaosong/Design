@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "status": "READY",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/YUNSHUIYI/GIT_TRIGGER_REGRESSION_001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "child_item": "云水倚",
+  "purpose": "GIT_TRIGGER_REGRESSION_ONLY",
+  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py",
+  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py",
+  "blend_file": "artifacts/c04-yunshuiyi/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+  "output_dir": "artifacts/c04-yunshuiyi",
+  "artifact_name": "C04_YUNSHUIYI_GIT_TRIGGER_REGRESSION_001",
+  "design_authority": "EXISTING_RETURNED_REBUILD_REGRESSION_ONLY",
+  "field_state": "FIELD_OPEN",
+  "promotion": "NO_PROMOTION"
+}
