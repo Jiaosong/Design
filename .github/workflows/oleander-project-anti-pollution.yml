@@ -1,0 +1,66 @@
+name: OLEANDER Project Anti-Pollution Gate
+
+on:
+  pull_request:
+    paths:
+      - "00-governance/**"
+      - "01-business/**"
+      - "02-culture/**"
+      - "03-ip/**"
+      - "04-spatial/**"
+      - "05-cases/**"
+      - "06-practice/**"
+      - "90-shared/**"
+      - "oleander-skills/**"
+      - "evals/**"
+      - ".github/workflows/**"
+      - "README.md"
+  push:
+    branches:
+      - main
+    paths:
+      - "00-governance/**"
+      - "01-business/**"
+      - "02-culture/**"
+      - "03-ip/**"
+      - "04-spatial/**"
+      - "05-cases/**"
+      - "06-practice/**"
+      - "90-shared/**"
+      - "oleander-skills/**"
+      - "evals/**"
+      - ".github/workflows/**"
+      - "README.md"
+
+permissions:
+  contents: read
+
+jobs:
+  anti-pollution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 2
+
+      - name: Validate project-wide anti-pollution contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 00-governance/tests/static_check_anti_pollution.py
+          python3 00-governance/tests/static_check_anti_pollution.py
+
+      - name: Record enforcement boundary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Project Anti-Pollution Gate'
+            echo '- Scope: governance, knowledge/application roots, cases, practice, shared assets, skills, evals and workflows.'
+            echo '- Existing historical debt is audited separately; new PR-head additions are strict from protocol activation.'
+            echo '- One logical object / one Current authority remains mandatory.'
+            echo '- Candidate or unverified evidence cannot self-promote into Current knowledge/capability status.'
+            echo '- New transient/duplicate-like filenames and unregistered CURRENT-named files in authoritative roots are rejected.'
+            echo '- No-loss repair is required; cleanup must not delete unique evidence.'
+          } >> "$GITHUB_STEP_SUMMARY"
