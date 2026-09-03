@@ -22,17 +22,21 @@ def fail(message: str) -> None:
     raise SystemExit(f"PROFESSIONAL_PARITY_STATIC_FAIL: {message}")
 
 
+def _load_receipt_file(candidate_name: str, receipt_ref: str, state_label: str) -> dict:
+    receipt_path = REPO_ROOT / receipt_ref
+    if not receipt_path.exists():
+        fail(f"{state_label} dependency receipt does not exist for {candidate_name}: {receipt_ref}")
+    try:
+        return json.loads(receipt_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"invalid {state_label} dependency receipt for {candidate_name}: {exc}")
+
+
 def load_probe_receipt(candidate_name: str, candidate: dict) -> dict:
     receipt_ref = candidate.get("probe_receipt")
     if not receipt_ref:
         fail(f"runtime-probed dependency candidate {candidate_name} lacks probe_receipt")
-    receipt_path = REPO_ROOT / receipt_ref
-    if not receipt_path.exists():
-        fail(f"runtime-probed dependency receipt does not exist for {candidate_name}: {receipt_ref}")
-    try:
-        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        fail(f"invalid runtime-probed dependency receipt for {candidate_name}: {exc}")
+    receipt = _load_receipt_file(candidate_name, receipt_ref, "runtime-probed")
     if receipt.get("schema") != "OLEANDER_PROFESSIONAL_DEPENDENCY_RECEIPT_v0.1":
         fail(f"unexpected dependency receipt schema for {candidate_name}")
     if receipt.get("validation_state") != "PASS":
@@ -44,6 +48,33 @@ def load_probe_receipt(candidate_name: str, candidate: dict) -> dict:
     workflow = receipt.get("workflow") or {}
     if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
         fail(f"dependency receipt lacks successful workflow evidence for {candidate_name}")
+    return receipt
+
+
+def load_bounded_validation_receipt(candidate_name: str, candidate: dict) -> dict:
+    receipt_ref = candidate.get("validation_receipt")
+    if not receipt_ref:
+        fail(f"validated dependency candidate {candidate_name} lacks validation_receipt")
+    receipt = _load_receipt_file(candidate_name, receipt_ref, "bounded-validated")
+    if receipt.get("schema") != "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1":
+        fail(f"unexpected bounded validation receipt schema for {candidate_name}")
+    if receipt.get("validation_state") != "PASS":
+        fail(f"bounded validation receipt is not PASS for {candidate_name}")
+    if receipt.get("dependency_state") != "VALIDATED_FOR_BOUNDED_SCOPE":
+        fail(f"bounded validation receipt state mismatch for {candidate_name}")
+    if receipt.get("integration_id") != candidate_name:
+        fail(f"bounded validation receipt id mismatch for {candidate_name}")
+    workflow = receipt.get("workflow") or {}
+    if workflow.get("conclusion") != "success" or not workflow.get("run_id") or not workflow.get("job_id"):
+        fail(f"bounded validation receipt lacks successful workflow evidence for {candidate_name}")
+    if not receipt.get("tested_branch_head"):
+        fail(f"bounded validation receipt lacks tested branch head for {candidate_name}")
+    bounded_scope = receipt.get("bounded_scope") or []
+    if not isinstance(bounded_scope, list) or not bounded_scope:
+        fail(f"bounded validation receipt lacks explicit bounded_scope for {candidate_name}")
+    non_claims = receipt.get("non_claims") or []
+    if not isinstance(non_claims, list) or not non_claims:
+        fail(f"bounded validation receipt lacks non_claims for {candidate_name}")
     return receipt
 
 
@@ -120,6 +151,7 @@ def main() -> None:
     if not candidates:
         fail("reuse-first candidate registry is empty")
     runtime_probe_count = 0
+    bounded_validated_count = 0
     for name, candidate in candidates.items():
         state = candidate.get("state")
         if state not in dependency_states:
@@ -129,8 +161,9 @@ def main() -> None:
         if state == "RUNTIME_PROBED":
             load_probe_receipt(name, candidate)
             runtime_probe_count += 1
-        if state == "VALIDATED_FOR_BOUNDED_SCOPE" and not candidate.get("validation_receipt"):
-            fail(f"validated dependency candidate {name} lacks validation_receipt")
+        if state == "VALIDATED_FOR_BOUNDED_SCOPE":
+            load_bounded_validation_receipt(name, candidate)
+            bounded_validated_count += 1
 
     print(json.dumps({
         "status": "PASS",
@@ -139,6 +172,7 @@ def main() -> None:
         "p0_pass_count": sum(1 for item in p0.values() if item.get("state") == "PASS"),
         "p0_total": len(p0),
         "runtime_probed_dependencies": runtime_probe_count,
+        "bounded_validated_dependencies": bounded_validated_count,
         "note": "Professional parity guard is independent of runtime layer count; incomplete P0 gates keep OLEANDER Blender CANDIDATE / NOT DEFAULT.",
     }, sort_keys=True))
 
