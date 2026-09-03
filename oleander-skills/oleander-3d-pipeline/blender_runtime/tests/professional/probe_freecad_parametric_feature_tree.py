@@ -45,7 +45,6 @@ def file_sha256(path: Path) -> str:
 
 
 def linked_object(value):
-    """Normalize FreeCAD link / link-sub Python wrappers to their object."""
     if isinstance(value, (tuple, list)) and value:
         return value[0]
     return value
@@ -112,6 +111,8 @@ def main() -> None:
     check(sketch.solve() == 0, "revision1_sketch_solve")
     doc.recompute()
     check(bool(sketch.FullyConstrained), "revision1_fully_constrained")
+    check(abs(sketch.getDatum(width_id).Value - 80.0) < 1e-9, "revision1_width_datum_readback")
+    check(abs(sketch.getDatum(depth_id).Value - 50.0) < 1e-9, "revision1_depth_datum_readback")
 
     pad = doc.addObject("PartDesign::Pad", "OLE_PAD")
     pad.Profile = sketch
@@ -131,12 +132,15 @@ def main() -> None:
     pad.Shape.exportStep(str(STEP_R1))
     check(FCSTD_R1.exists() and STEP_R1.exists(), "revision1_artifacts")
 
-    rc = sketch.setDatum(width_id, App.Units.Quantity("100 mm"))
-    check(rc == 0, "revision2_set_width_datum")
+    # Python API contract returns None; correctness is established by datum
+    # readback, solver state and downstream PartDesign recompute.
+    sketch.setDatum(width_id, App.Units.Quantity("100 mm"))
+    check(abs(sketch.getDatum(width_id).Value - 100.0) < 1e-9, "revision2_width_datum_readback")
     doc.recompute()
     check(sketch.solve() == 0, "revision2_sketch_solve")
     doc.recompute()
     check(bool(sketch.FullyConstrained), "revision2_fully_constrained")
+    check(abs(sketch.getDatum(depth_id).Value - 50.0) < 1e-9, "revision2_depth_datum_preserved")
     check(pad.Shape.isValid(), "revision2_pad_valid")
     check(len(pad.Shape.Solids) == 1, "revision2_single_solid")
     m2 = shape_metrics(pad.Shape)
@@ -183,6 +187,7 @@ def main() -> None:
     check(linked_object(r_pad.Profile) == r_sketch, "pad_profile_dependency_reopen")
     check(linked_object(r_sketch.AttachmentSupport[0]) == r_datum, "sketch_datum_dependency_reopen")
     check(bool(r_sketch.FullyConstrained), "fully_constrained_reopen")
+    check(abs(r_sketch.getDatum(width_id).Value - 100.0) < 1e-9, "width_datum_reopen")
     check(abs(r_pad.Shape.BoundBox.XLength - 100.0) < 1e-6, "rebuilt_width_reopen")
 
     result = {
