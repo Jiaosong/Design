@@ -21,39 +21,21 @@
       ],
       "production_cursor": {
         "rebuild_returned": [
-          "云水倚"
+          "云水倚",
+          "流体座椅人体工"
         ],
-        "design_current": "流体座椅人体工",
+        "design_current": "江畔停泊折叠观",
         "validation_current": "云水倚",
         "presentation_waiting": "云水倚",
-        "next_after_design": "江畔停泊折叠观"
+        "next_after_design": null
       },
       "design_subtask_lease": "BLENDER_REBUILD_MASTER",
       "design_subtask_lease_state": "ACTIVE",
-      "design_subtask_current_item": "流体座椅人体工",
-      "design_subtask_last_returned_item": "云水倚",
-      "design_current_execution_state": "MACHINE_PASS_AWAITING_PERSISTENCE_READBACK",
-      "design_current_execution_evidence": {
-        "workflow_name": "C04 Blender Rebuild",
-        "workflow_run_id": 33711398400,
-        "workflow_run_number": 40,
-        "head_branch": "main",
-        "head_sha": "198b9e90bccf400c8fc00fad874207210d8c7a38",
-        "conclusion": "success",
-        "artifact_id": 9877039291,
-        "artifact_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001",
-        "artifact_digest": "sha256:da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c",
-        "artifact_size_in_bytes": 639284,
-        "material_readback": [
-          "C04_FLUID_SEAT_REBUILD_MASTER_v001.blend",
-          "C04_FLUID_SEAT_REBUILD_MASTER_v001_preview.png",
-          "C04_FLUID_SEAT_REBUILD_MASTER_v001_manifest.json",
-          "C04_FLUID_SEAT_REBUILD_MASTER_v001_reopen_receipt.json",
-          "SHA256SUMS.txt"
-        ],
-        "native_reopen_verdict": "PASS_BOUNDED"
-      },
-      "design_current_return_gate": "DO_NOT_ADVANCE_CURSOR_UNTIL_APPROVED_PERSISTENCE_CARRIER_REMOTE_READBACK",
+      "design_subtask_current_item": "江畔停泊折叠观",
+      "design_subtask_last_returned_item": "流体座椅人体工",
+      "design_current_execution_state": "WAITING_FOR_DESIGN_SCRIPT",
+      "design_current_execution_evidence": null,
+      "design_current_return_gate": "WAIT_FOR_REAL_MACHINE_ARTIFACT_AND_APPROVED_PERSISTENCE_READBACK",
       "validation_subtask_lease": "REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
       "validation_subtask_lease_state": "ACTIVE",
       "validation_subtask_current_item": "云水倚",
@@ -64,10 +46,10 @@
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
       "production_stall": null,
-      "production_stall_basis": "CLEARED: real Blender material evidence exists for 云水倚 and now also machine-level evidence for 流体座椅人体工. The second child is not yet RETURNED because approved persistence carrier remote readback has not been found.",
-      "next_action": "Do not rewrite the READY 流体座椅人体工 descriptor and do not manufacture a duplicate run. Persist the already returned run-40 artifact set to the approved durable carrier and remote-read it back. Only then may GOVERNANCE append 流体座椅人体工 to rebuild_returned and move design_current to 江畔停泊折叠观. VALIDATION/PRESENTATION remain on their separately leased child until their own evidence gates close.",
-      "updated_at": "2026-09-03T12:06:49+08:00",
-      "source_of_queue_decision": "Governance readback found C04 Blender Rebuild run 33711398400 on main completed successfully for 流体座椅人体工 with artifact 9877039291. Artifact inspection confirmed editable .blend, preview, manifest, SHA256 and native reopen PASS_BOUNDED. Google Drive searches for C04_FLUID_SEAT_REBUILD_MASTER_v001 and 流体座椅人体工 returned no durable persistence carrier, so cursor advancement is correctly withheld."
+      "production_stall_basis": "CLEARED: 云水倚 and 流体座椅人体工 both have real Blender machine evidence; 流体座椅人体工 also has approved Google Drive durable-carrier remote readback with artifact digest identity. DESIGN is now legitimately waiting to create the third-child producer/validator.",
+      "next_action": "DESIGN reads Source Authority for 江畔停泊折叠观, creates/updates its Blender-native producer and reopen validator, remotely reads both back, then writes C04_BLENDER_JOB_CURRENT.json LAST as READY to Git-trigger the existing C04 consumer/shared runner. Do not reopen or duplicate the returned 流体座椅人体工 job.",
+      "updated_at": "2026-09-03T17:32:32+08:00",
+      "source_of_queue_decision": "Google Drive remote readback confirmed C04_FLUID_SEAT_REBUILD_MASTER_v001.zip under canonical 05_BLENDER_REBUILD_MASTERS/流体座椅人体工, size 639284 bytes, with SHA256 da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c exactly matching GitHub Actions artifact 9877039291. GitHub persistence receipt C04_FLUID_SEAT_PERSISTENCE_RECEIPT_v001.json records the archive members and bounded native-reopen evidence. The second-child persistence gate is therefore closed and DESIGN cursor advances to 江畔停泊折叠观."
     }
   ],
   "entry_schema": {
