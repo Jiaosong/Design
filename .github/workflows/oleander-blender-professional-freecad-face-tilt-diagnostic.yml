@@ -1,0 +1,37 @@
+name: OLEANDER Blender Professional FreeCAD Face Tilt Diagnostic
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/_diagnostic_face_tilt_kernel.py"
+      - ".github/workflows/oleander-blender-professional-freecad-face-tilt-diagnostic.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  face-tilt-kernel-diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 --output "/tmp/${FREECAD_APPIMAGE}" "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-face-tilt-diagnostic-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+      - name: Diagnose face tilt kernel stages
+        shell: bash
+        run: |
+          set -o pipefail
+          /tmp/squashfs-root/usr/bin/freecadcmd "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/_diagnostic_face_tilt_kernel.py" 2>&1 | tee /tmp/oleander-face-tilt-diagnostic.log
+          grep -F 'OLE_TILT_DIAG=' /tmp/oleander-face-tilt-diagnostic.log
