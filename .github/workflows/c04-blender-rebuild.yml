@@ -2,30 +2,21 @@ name: C04 Blender Rebuild
 
 on:
   workflow_dispatch:
-    inputs:
-      object:
-        description: Rebuild object slug
-        required: false
-        default: yunshuiyi
   push:
     branches:
       - main
-      - fix/oleander-universal-runtime-guard-20260902
+      - fix/c04-git-triggered-runner-20260903
     paths:
+      - '05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_BLENDER_JOB_CURRENT.json'
       - '.github/workflows/c04-blender-rebuild.yml'
       - '.github/workflows/oleander-shared-blender-runner.yml'
       - '90-shared/toolchains/blender-runtime/**'
-      - '05-cases/c04-qingjiang-stone-book/blender-rebuild/**'
 
 permissions:
   contents: read
 
 jobs:
-  rebuild-yunshuiyi:
+  rebuild-current-child:
     uses: ./.github/workflows/oleander-shared-blender-runner.yml
     with:
-      script_path: 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py
-      validation_script_path: 05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py
-      blend_file: artifacts/c04-yunshuiyi/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend
-      output_dir: artifacts/c04-yunshuiyi
-      artifact_name: C04_YUNSHUIYI_REBUILD_MASTER_v003
+      job_descriptor_path: 05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_BLENDER_JOB_CURRENT.json
