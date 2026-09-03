@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7",
+  "schema_version": "1.8",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -9,11 +9,109 @@
       "priority": 1,
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+      "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS",
       "current_owner": "PRESENTATION",
+      "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_THE_TOP_LEVEL_WEB_OBJECT_NOT_SOLE_PROJECT_OWNER",
       "state": "ACTIVE",
       "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
       "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830 / head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7",
       "next_owner": "VALIDATION",
+      "whole_project_authority": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md"
+      ],
+      "whole_project_workstreams": [
+        {
+          "workstream_id": "ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL",
+          "project_role": "PROJECT_NARRATIVE_EDITORIAL",
+          "state": "ACTIVE",
+          "automation_route": [
+            "GOVERNANCE",
+            "DESIGN",
+            "PRESENTATION"
+          ],
+          "current_evidence": "Protected P001-P052 PAGE register exists with 52 identities, 0 removed and 0 silently merged; 27 legacy labels remain SOURCE RECOVERY OPEN; N-series allocated=0.",
+          "current_gap": "Complete one-to-one page/source recovery and v0.1+v0.2 authored-unit mapping before final page architecture/count claims.",
+          "next_action": "Recover the remaining protected PAGE identities from stronger source evidence; classify authored units as MAP_TO_LEGACY / EXPAND_FROM_LEGACY / NEW / PROCESS-SUPPORT; add N-series only for materially independent content."
+        },
+        {
+          "workstream_id": "ACTIVE-2-D-VISUAL-MOTION",
+          "project_role": "WHOLE_PROJECT_VISUAL_MOTION_DIRECTION",
+          "state": "ACTIVE",
+          "automation_route": [
+            "DESIGN",
+            "PRESENTATION"
+          ],
+          "current_evidence": "C04 Current and Active Execution retain D as an active whole-project visual/motion lane; strongest Qingjiang Hero/R06/R13 and current App/Physical/Brand/Memory assets remain source-governed inputs.",
+          "current_gap": "No model-only or Web-only artifact may stand in for the whole-project visual/motion lane; finished-output visual readback remains required.",
+          "next_action": "Raise C04-specific experience/professional visual modes across real Qingjiang, App/Game Map, selected Physical, Brand, Memory/IP, Return and analytical graphics; preserve Landscape First and actual object truth."
+        },
+        {
+          "workstream_id": "ACTIVE-3-WEB",
+          "project_role": "PUBLIC_WEB_PRODUCTION",
+          "state": "ACTIVE_REPAIR",
+          "automation_route": [
+            "PRESENTATION",
+            "VALIDATION",
+            "GOVERNANCE"
+          ],
+          "current_evidence": "PR #465 is OPEN / UNMERGED / mergeable at head ae77a1a5c6f0ecfb268df56b1e37e28ed1342ce7. AI Governance PASSes. Repo-local static integrity job PASSes. Chromium presentation readback still FAILs because external Qingjiang image bindings fail in the 1920x1080 case; core interaction, no-horizontal-overflow, My Book visibility and reduced-motion checks execute.",
+          "current_gap": "External source-image binding and finished-pixel Design Quality remain unresolved; main still has no merged Web v1.12 native master.",
+          "next_action": "Repair exact Source-Authority Qingjiang image bindings without generic/AI substitution; rerun 1920/1366/390 Chromium readback and inspect finished pixels before formal PRESENTATION→VALIDATION handoff."
+        },
+        {
+          "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
+          "project_role": "PHYSICAL_PRODUCT_DETAIL",
+          "state": "ACTIVE",
+          "automation_route": [
+            "DESIGN",
+            "VALIDATION",
+            "PRESENTATION",
+            "GOVERNANCE"
+          ],
+          "asset_universe_authority": "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md / Physical P01-P09 plus current C23/model descendants; R06 experience remains frozen/no-reopen.",
+          "blender_subqueue_role": "SUBQUEUE_ONLY_NOT_WHOLE_PROJECT_QUEUE",
+          "source_model_inventory": {
+            "canonical_drive_folder_id": "1vEDq-6OxyR4jCEz768VPUHRLGs7PeBJG",
+            "logical_source_archive_count_observed": 12,
+            "already_selected_rebuild_items": [
+              "云水倚",
+              "流体座椅人体工",
+              "江畔停泊折叠观"
+            ],
+            "remaining_source_identities_observed": [
+              "风之灵宠设定图",
+              "大清江光印船徽",
+              "千瀑悲蝶·盐神泪",
+              "十三印蝶灵",
+              "十三印星灵",
+              "Verdant Spirit Companion Design",
+              "Thirteen Seals Water Spirit Design",
+              "Thirteen Seals Mountain Spirit Design",
+              "Jade Mountain Scroll Companion Design"
+            ],
+            "post_third_selection_state": "AUDIT_REQUIRED_NO_AUTHORITY_YET_FOR_MODEL_4_OR_MODEL_5_ORDER",
+            "selection_rule": "SOURCE_ARCHIVE_EXISTENCE_DOES_NOT_AUTHORIZE_REBUILD. GOVERNANCE/DESIGN MUST CLASSIFY EACH IDENTITY AGAINST CURRENT ASSET ATLAS, KEEP/HOLD/PROCESS STATUS, project value and required native output before adding it to a rebuild queue."
+          },
+          "current_gap": "The three-item Blender rebuild queue is only one Active-4 subqueue. P01-P09 Physical/Body/Sensory selection, detail proof, CMF/body/maintenance/open-field boundaries and the remaining source-model identities must not disappear from project control.",
+          "next_action": "Finish current third-child rebuild lineage, then perform source/role audit before selecting model 4/model 5; in parallel preserve the Current Physical selection discipline instead of auto-rebuilding every Meshy archive."
+        },
+        {
+          "workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION",
+          "project_role": "FINAL_INTEGRATION",
+          "state": "ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM",
+          "automation_route": [
+            "PRESENTATION",
+            "VALIDATION",
+            "GOVERNANCE"
+          ],
+          "current_evidence": "C04 Active Execution requires one causal architecture across Web/PDF/boards/film while keeping medium-appropriate depth, concept-state/pixel-state separation and independent review before destructive merge/pruning.",
+          "current_gap": "Final integration cannot close while B page recovery/mapping, D finished-output quality, Web browser/pixel repair and Active-4 selected-object validation remain open.",
+          "next_action": "Continuously consume only real Current upstream artifacts into Web/PDF/boards/film; keep strong C04-specific outputs; do not compress by 20/52/111/112 counts; closure only after PAGE-ID readback, cross-media consistency and independent Crit."
+        }
+      ],
+      "production_queue_role": "ACTIVE_4_BLENDER_REBUILD_SUBQUEUE_ONLY",
       "production_queue": [
         "云水倚",
         "流体座椅人体工",
@@ -46,21 +144,26 @@
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "current_route": "/恩施 SOURCE_REFERENCE → DESIGN Blender editable rebuild Candidate .blend → VALIDATION native Blender reopen/fidelity → validated rebuild Candidate → LOD/GLB/browser derivative → PRESENTATION consume",
       "production_stall": null,
-      "production_stall_basis": "CLEARED: 云水倚 and 流体座椅人体工 both have real Blender machine evidence; 流体座椅人体工 also has approved Google Drive durable-carrier remote readback with artifact digest identity. DESIGN is now legitimately waiting to create the third-child producer/validator.",
-      "next_action": "DESIGN reads Source Authority for 江畔停泊折叠观, creates/updates its Blender-native producer and reopen validator, remotely reads both back, then writes C04_BLENDER_JOB_CURRENT.json LAST as READY to Git-trigger the existing C04 consumer/shared runner. Do not reopen or duplicate the returned 流体座椅人体工 job.",
-      "updated_at": "2026-09-03T17:32:32+08:00",
-      "source_of_queue_decision": "Google Drive remote readback confirmed C04_FLUID_SEAT_REBUILD_MASTER_v001.zip under canonical 05_BLENDER_REBUILD_MASTERS/流体座椅人体工, size 639284 bytes, with SHA256 da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c exactly matching GitHub Actions artifact 9877039291. GitHub persistence receipt C04_FLUID_SEAT_PERSISTENCE_RECEIPT_v001.json records the archive members and bounded native-reopen evidence. The second-child persistence gate is therefore closed and DESIGN cursor advances to 江畔停泊折叠观."
+      "production_stall_basis": "WHOLE PROJECT ACTIVE. The Blender child pipeline is not stalled: 云水倚 and 流体座椅人体工 have real rebuild evidence, the second has canonical Drive persistence identity, and 江畔停泊折叠观 is legally waiting for its producer/validator. Separately, Web has a real image-binding/pixel blocker and the protected PAGE register still has 27 source-recovery items.",
+      "next_action": "Run C04 as the five Current project workstreams, not as a three-model project. DESIGN continues 江畔 only under the Active-4 Blender lease; PRESENTATION repairs PR #465 and advances D/F only from real artifacts; B page recovery/mapping remains active; GOVERNANCE must audit remaining source archives before authorizing model 4/model 5 and must never auto-rebuild all Meshy sources.",
+      "updated_at": "2026-09-03T18:30:40+08:00",
+      "source_of_queue_decision": "Whole-project readback of C04_CURRENT.md, C04_ACTIVE_EXECUTION_CURRENT.md, C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md, protected PAGE register, PR #465 current state/browser evidence, Current Blender queue and canonical Drive model inventory. This revision corrects the prior under-scoping where a three-child Active-4 Blender subqueue was being treated as the complete C04 project."
     }
   ],
   "entry_schema": {
     "priority": "1..3",
     "project_id": "stable project id",
     "object_id": "stable logical object id",
+    "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS when a project has concurrent Current lanes",
     "current_owner": "KNOWLEDGE|DESIGN|PRESENTATION|VALIDATION|GOVERNANCE",
+    "current_owner_scope": "scope note preventing one live-object owner from being misread as sole whole-project owner",
     "state": "ACTIVE|HANDOFF_READY|IN_REVIEW|REVISE|HOLD",
     "current_native_master": "canonical master reference",
     "current_pr_frontier": "PR/branch/page frontier",
     "next_owner": "lifecycle owner",
+    "whole_project_authority": "Current project authority carriers",
+    "whole_project_workstreams": "Current project workstreams with project role, state, automation route, evidence, gap and next action",
+    "production_queue_role": "optional declaration that a child production queue is subordinate rather than the whole project",
     "production_queue": "optional ordered child-item production queue",
     "production_cursor": "optional child-item cursor; separates returned/current/waiting items across bounded owners",
     "design_subtask_lease": "optional bounded DESIGN production lease",
