@@ -30,6 +30,12 @@ def main() -> None:
     check(status["default_environment_eligible"] is False, "default environment must remain ineligible during candidate governance hold")
     check(status["p0"]["P0_B_DIRECT_BREP"]["state"] != "PASS", "P0-B cannot PASS while recorded blockers remain")
 
+    project_wide = governance["project_wide_governance"]
+    check(project_wide["authority"] == "main/00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md", "Blender candidate must inherit canonical project-wide protocol from main")
+    check(project_wide["machine_contract"] == "main/00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json", "Blender candidate must inherit project-wide machine contract from main")
+    check(project_wide["inherit_without_fork"] is True, "Blender candidate may not fork project-wide anti-pollution governance")
+    check(project_wide["blender_candidate_rules_may_only_be_stricter"] is True, "Blender-specific rules may only tighten global governance")
+
     policy = governance["workflow_policy"]
     grandfathered = set(policy["grandfathered_freecad_workflows"])
     actual = {
@@ -66,10 +72,13 @@ def main() -> None:
 
     gate = governance["promotion_gate"]
     check(gate["require_main_sync_behind_count"] == 0, "promotion gate must require zero commits behind main")
+    check(gate["require_dynamic_main_compare_at_promotion"] is True, "promotion must use a fresh main comparison, not a stored behind count")
     check(gate["require_no_experimental_unverified_items"] is True, "promotion must block experimental items")
     check(gate["require_no_validation_pending_items"] is True, "promotion must block pending validation")
     check(gate["require_pr_authority_current"] is True, "promotion must require current PR authority")
-    check(governance["branch_hygiene"]["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION", "current branch must remain promotion-held until synchronized")
+    hygiene = governance["branch_hygiene"]
+    check(hygiene["observation_is_advisory"] is True, "stored branch-distance observation must never be promotion authority")
+    check(hygiene["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION", "current branch must remain promotion-held until synchronized")
 
     print("OLEANDER_CANDIDATE_GOVERNANCE=PASS")
     print("grandfathered_freecad_workflows=" + str(len(grandfathered)))
