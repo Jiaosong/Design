@@ -1,9 +1,12 @@
-"""OLEANDER bounded FreeCAD/OCCT B-Rep healing probe.
+"""OLEANDER bounded FreeCAD/OCCT B-Rep healing foundation.
 
-Creates a controlled open shell by lifting one planar face of a box by a small
-gap. The pre-heal shape must contain no solid. A declared sewing tolerance may
-repair only gaps within the governed healing budget; larger gaps are rejected
-before kernel healing. This is not a claim of general B-Rep healing parity.
+This probe validates two repair/cleanup classes that the kernel can actually
+support deterministically:
+1) coincident but disconnected boundary faces -> sew into one closed shell/solid;
+2) valid fused solid with redundant splitter topology -> removeSplitter while
+   preserving geometry and volume.
+
+Nonzero geometric-gap repair is explicitly rejected and remains unproven.
 """
 
 from __future__ import annotations
@@ -19,13 +22,13 @@ import Part
 OUT = Path(os.environ.get("OLEANDER_HEAL_DIR", "/tmp/oleander-bounded-healing"))
 OUT.mkdir(parents=True, exist_ok=True)
 FCSTD = OUT / "oleander_bounded_healing.FCStd"
-STEP = OUT / "oleander_bounded_healing_R002.step"
+STEP_SEWN = OUT / "oleander_bounded_healing_sewn_R002.step"
+STEP_REFINED = OUT / "oleander_bounded_healing_refined_R002.step"
 DISPLAY = OUT / "oleander_bounded_healing_display.json"
 MANIFEST = OUT / "oleander_bounded_healing_manifest.json"
-TOL = 1e-9
-HEAL_TOL_MM = 0.001
-SMALL_GAP_MM = 0.0005
-LARGE_GAP_MM = 0.01
+SEW_TOL_MM = 1.0e-6
+UNSUPPORTED_GAP_MM = 0.0005
+TOL = 1e-8
 checks: list[str] = []
 
 
@@ -47,79 +50,9 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def face_normal(face):
-    try:
-        u0, u1, v0, v1 = face.ParameterRange
-        return face.normalAt((u0 + u1) * 0.5, (v0 + v1) * 0.5).normalize()
-    except Exception:
-        return face.normalAt(0, 0).normalize()
-
-
-def select_top_face(shape):
-    zmax = shape.BoundBox.ZMax
-    found = []
-    for face in shape.Faces:
-        bb = face.BoundBox
-        if bb.ZLength <= 1e-7 and abs(bb.ZMax - zmax) <= 1e-7 and face_normal(face).z > 0.999999:
-            found.append(face)
-    check(len(found) == 1, "unique_top_face")
-    return found[0]
-
-
-def make_gapped_face_compound(width_mm: float, gap_mm: float):
-    base = Part.makeBox(width_mm, 50.0, 10.0)
-    check(base.isValid() and len(base.Solids) == 1, "source_valid_single_solid")
-    top = select_top_face(base)
-    faces = []
-    for face in base.Faces:
-        copied = face.copy()
-        if face.isSame(top):
-            copied.translate(App.Vector(0.0, 0.0, gap_mm))
-        faces.append(copied)
-    damaged = Part.makeCompound(faces)
-    check(len(damaged.Faces) == 6, "damaged_six_faces")
-    check(len(damaged.Solids) == 0, "damaged_has_no_solid")
-    check(damaged.BoundBox.ZLength > 10.0, "damaged_gap_visible_in_bbox")
-    return base, damaged
-
-
-def heal_preflight(gap_mm: float, tolerance_mm: float) -> None:
-    if gap_mm <= 0:
-        raise ValueError("healing gap must be positive")
-    if gap_mm > tolerance_mm:
-        raise ValueError("healing gap exceeds governed sewing tolerance")
-
-
-def heal_compound(damaged, gap_mm: float, tolerance_mm: float):
-    heal_preflight(gap_mm, tolerance_mm)
-    work = damaged.copy()
-    work.sewShape(tolerance_mm)
-    try:
-        work.fix(1e-7, 1e-7, 1e-7)
-    except TypeError:
-        work.fix()
-    work = work.removeSplitter()
-
-    if len(work.Solids) == 1 and work.isValid():
-        solid = work.Solids[0]
-    else:
-        shells = list(work.Shells)
-        check(len(shells) == 1, "healed_exactly_one_shell")
-        shell = shells[0]
-        try:
-            shell.fix(1e-7, 1e-7, 1e-7)
-        except TypeError:
-            shell.fix()
-        solid = Part.makeSolid(shell).removeSplitter()
-
-    check(solid.isValid(), "healed_solid_valid")
-    check(len(solid.Solids) == 1, "healed_single_solid")
-    check(len(solid.Faces) == 6, "healed_six_faces")
-    return solid
-
-
 def metrics(shape):
     return {
+        "shape_type": shape.ShapeType,
         "bbox_mm": [shape.BoundBox.XLength, shape.BoundBox.YLength, shape.BoundBox.ZLength],
         "volume_mm3": shape.Volume,
         "solid_count": len(shape.Solids),
@@ -130,35 +63,98 @@ def metrics(shape):
     }
 
 
+def make_disconnected_face_compound(width_mm: float):
+    source = Part.makeBox(width_mm, 50.0, 10.0)
+    check(source.isValid() and len(source.Solids) == 1, "source_valid_single_solid")
+    compound = Part.makeCompound([face.copy() for face in source.Faces])
+    check(len(compound.Faces) == 6, "disconnected_six_faces")
+    check(len(compound.Solids) == 0, "disconnected_has_no_solid")
+    check(close(compound.BoundBox.XLength, width_mm), "disconnected_width")
+    check(close(compound.BoundBox.YLength, 50.0), "disconnected_depth")
+    check(close(compound.BoundBox.ZLength, 10.0), "disconnected_height")
+    return source, compound
+
+
+def sew_coincident_faces(compound):
+    work = compound.copy()
+    work.sewShape(SEW_TOL_MM)
+    try:
+        work.fix(1e-7, 1e-7, 1e-7)
+    except TypeError:
+        work.fix()
+    work = work.removeSplitter()
+
+    if len(work.Solids) == 1 and work.isValid():
+        solid = work.Solids[0]
+    else:
+        shells = list(work.Shells)
+        check(len(shells) == 1, "sewn_exactly_one_shell")
+        shell = shells[0]
+        check(shell.isValid(), "sewn_shell_valid")
+        solid = Part.makeSolid(shell).removeSplitter()
+
+    check(solid.isValid(), "sewn_solid_valid")
+    check(len(solid.Solids) == 1, "sewn_single_solid")
+    check(len(solid.Faces) == 6, "sewn_six_faces")
+    return solid
+
+
+def make_redundant_splitter_solid(width_mm: float):
+    split_x = width_mm * 0.5
+    left = Part.makeBox(split_x, 50.0, 10.0)
+    right = Part.makeBox(width_mm - split_x, 50.0, 10.0, App.Vector(split_x, 0.0, 0.0))
+    fused = left.fuse(right)
+    check(fused.isValid() and len(fused.Solids) == 1, "raw_fuse_valid_single_solid")
+    return fused
+
+
+def refine_splitter_topology(raw, width_mm: float):
+    refined = raw.removeSplitter()
+    check(refined.isValid(), "refined_shape_valid")
+    check(len(refined.Solids) == 1, "refined_single_solid")
+    check(close(refined.BoundBox.XLength, width_mm), "refined_width_preserved")
+    check(close(refined.BoundBox.YLength, 50.0), "refined_depth_preserved")
+    check(close(refined.BoundBox.ZLength, 10.0), "refined_height_preserved")
+    check(close(refined.Volume, raw.Volume, 1e-5), "refined_volume_preserved")
+    check(len(refined.Faces) <= len(raw.Faces), "refined_face_count_not_increased")
+    check(len(refined.Edges) <= len(raw.Edges), "refined_edge_count_not_increased")
+    check(len(refined.Faces) < len(raw.Faces) or len(refined.Edges) < len(raw.Edges), "redundant_topology_actually_reduced")
+    return refined
+
+
+def reject_nonzero_gap_repair(gap_mm: float):
+    if gap_mm > 0:
+        raise ValueError("nonzero geometric-gap repair is outside the bounded healing contract")
+
+
 def run_revision(width_mm: float, revision: int):
-    base, damaged = make_gapped_face_compound(width_mm, SMALL_GAP_MM)
-    healed = heal_compound(damaged, SMALL_GAP_MM, HEAL_TOL_MM)
-    check(abs(healed.BoundBox.XLength - width_mm) <= 1e-6, f"r{revision}_width_preserved")
-    check(abs(healed.BoundBox.YLength - 50.0) <= 1e-6, f"r{revision}_depth_preserved")
-    # Sewing is allowed to resolve the tiny top-face gap to either adjacent edge
-    # tolerance or the translated face location. It must stay within the budget.
-    check(abs(healed.BoundBox.ZLength - 10.0) <= HEAL_TOL_MM + 1e-6, f"r{revision}_height_within_healing_budget")
-    expected_volume = width_mm * 50.0 * 10.0
-    max_volume_delta = width_mm * 50.0 * HEAL_TOL_MM + 1e-3
-    check(abs(healed.Volume - expected_volume) <= max_volume_delta, f"r{revision}_volume_within_healing_budget")
-    return base, damaged, healed
+    source, disconnected = make_disconnected_face_compound(width_mm)
+    sewn = sew_coincident_faces(disconnected)
+    check(close(sewn.BoundBox.XLength, width_mm), f"r{revision}_sewn_width")
+    check(close(sewn.BoundBox.YLength, 50.0), f"r{revision}_sewn_depth")
+    check(close(sewn.BoundBox.ZLength, 10.0), f"r{revision}_sewn_height")
+    check(close(sewn.Volume, source.Volume, 1e-5), f"r{revision}_sewn_volume")
+
+    raw = make_redundant_splitter_solid(width_mm)
+    refined = refine_splitter_topology(raw, width_mm)
+    check(close(refined.Volume, source.Volume, 1e-5), f"r{revision}_refined_matches_source_volume")
+    return source, disconnected, sewn, raw, refined
 
 
-def add_feature(doc, shape):
-    obj = doc.addObject("PartDesign::Feature", "OLE_HEALED_R002")
+def add_feature(doc, name, ole_id, shape, operation):
+    obj = doc.addObject("PartDesign::Feature", name)
     obj.Shape = shape
     for prop, value in [
-        ("OLE_ID", "OLE_BREP_HEAL::R002"),
-        ("OLE_Operation", "SEW_FIX_REMOVE_SPLITTER_MAKE_SOLID"),
+        ("OLE_ID", ole_id),
+        ("OLE_Operation", operation),
         ("OLE_GeometryAuthority", "FREECAD_OCCT_BREP"),
         ("OLE_HealingUnits", "mm"),
+        ("OLE_GapRepairState", "NOT_VALIDATED"),
     ]:
         obj.addProperty("App::PropertyString", prop, "OLEANDER")
         setattr(obj, prop, value)
-    obj.addProperty("App::PropertyFloat", "OLE_SourceGapMM", "OLEANDER")
-    obj.OLE_SourceGapMM = SMALL_GAP_MM
-    obj.addProperty("App::PropertyFloat", "OLE_HealingToleranceMM", "OLEANDER")
-    obj.OLE_HealingToleranceMM = HEAL_TOL_MM
+    obj.addProperty("App::PropertyFloat", "OLE_SewToleranceMM", "OLEANDER")
+    obj.OLE_SewToleranceMM = SEW_TOL_MM
     return obj
 
 
@@ -168,95 +164,107 @@ def tessellate(shape):
     return {
         "vertices_mm": [[v.x, v.y, v.z] for v in verts],
         "triangles": [list(t) for t in tris],
+        "bbox_mm": metrics(shape)["bbox_mm"],
+        "volume_mm3": shape.Volume,
     }
 
 
 def main() -> None:
-    b1, d1, h1 = run_revision(80.0, 1)
-    b2, d2, h2 = run_revision(100.0, 2)
-    check(len(d1.Solids) == 0 and len(d2.Solids) == 0, "both_damaged_revisions_have_no_solid")
-    check(h1.isValid() and h2.isValid(), "both_healed_revisions_valid")
+    s1, d1, sewn1, raw1, ref1 = run_revision(80.0, 1)
+    s2, d2, sewn2, raw2, ref2 = run_revision(100.0, 2)
+    check(len(d1.Solids) == 0 and len(d2.Solids) == 0, "both_disconnected_inputs_have_no_solid")
+    check(sewn1.isValid() and sewn2.isValid(), "both_sewn_revisions_valid")
+    check(ref1.isValid() and ref2.isValid(), "both_refined_revisions_valid")
 
-    failure = "FAIL"
+    unsupported = "FAIL"
     try:
-        heal_preflight(LARGE_GAP_MM, HEAL_TOL_MM)
+        reject_nonzero_gap_repair(UNSUPPORTED_GAP_MM)
     except ValueError as exc:
-        if "exceeds governed sewing tolerance" in str(exc):
-            failure = "PASS"
-            checks.append("over_tolerance_gap_expected_failure")
-    check(failure == "PASS", "over_tolerance_failure_gate")
+        if "outside the bounded healing contract" in str(exc):
+            unsupported = "PASS"
+            checks.append("nonzero_gap_repair_expected_failure")
+    check(unsupported == "PASS", "nonzero_gap_repair_failure_gate")
 
     doc = App.newDocument("OLEANDER_BOUNDED_HEALING")
-    obj = add_feature(doc, h2)
+    sewn_obj = add_feature(doc, "OLE_SEWN_R002", "OLE_BREP_HEAL::SEWN_R002", sewn2, "SEW_COINCIDENT_BOUNDARY_FACES")
+    refined_obj = add_feature(doc, "OLE_REFINED_R002", "OLE_BREP_HEAL::REFINED_R002", ref2, "REMOVE_REDUNDANT_SPLITTER_TOPOLOGY")
     doc.recompute()
     doc.saveAs(str(FCSTD))
-    obj.Shape.exportStep(str(STEP))
-    check(FCSTD.exists() and STEP.exists(), "native_healing_artifacts_written")
+    sewn_obj.Shape.exportStep(str(STEP_SEWN))
+    refined_obj.Shape.exportStep(str(STEP_REFINED))
+    check(FCSTD.exists() and STEP_SEWN.exists() and STEP_REFINED.exists(), "native_healing_artifacts_written")
 
     display = {
-        "schema": "OLEANDER_BOUNDED_HEALING_DISPLAY_v0.1",
+        "schema": "OLEANDER_BOUNDED_HEALING_DISPLAY_v0.2",
         "master_type": "CAD_NATIVE",
         "geometry_authority": "FREECAD_OCCT_BREP",
         "display_authority": "DISPLAY_DERIVATIVE_ONLY",
         "units": "mm",
-        "ole_id": "OLE_BREP_HEAL::R002",
-        "operation": "SEW_FIX_REMOVE_SPLITTER_MAKE_SOLID",
-        "source_gap_mm": SMALL_GAP_MM,
-        "healing_tolerance_mm": HEAL_TOL_MM,
+        "ole_id": "OLE_BREP_HEAL::SEWN_R002",
+        "operation": "SEW_COINCIDENT_BOUNDARY_FACES",
+        "sewing_tolerance_mm": SEW_TOL_MM,
+        "gap_repair_state": "NOT_VALIDATED",
         "source_fcstd": str(FCSTD),
         "source_fcstd_sha256": sha256(FCSTD),
-        "source_step": str(STEP),
-        "source_step_sha256": sha256(STEP),
-        "bbox_mm": metrics(h2)["bbox_mm"],
-        "volume_mm3": h2.Volume,
-        **tessellate(h2),
+        "source_step": str(STEP_SEWN),
+        "source_step_sha256": sha256(STEP_SEWN),
+        "refined_step": str(STEP_REFINED),
+        "refined_step_sha256": sha256(STEP_REFINED),
+        **tessellate(sewn2),
     }
     DISPLAY.write_text(json.dumps(display, sort_keys=True), encoding="utf-8")
     check(DISPLAY.exists() and DISPLAY.stat().st_size > 0, "healing_display_written")
 
     App.closeDocument(doc.Name)
     reopened = App.openDocument(str(FCSTD))
-    r = reopened.getObject("OLE_HEALED_R002")
-    check(r is not None, "healed_object_reopen")
-    check(r.OLE_ID == "OLE_BREP_HEAL::R002", "healed_ole_id_reopen")
-    check(r.OLE_Operation == "SEW_FIX_REMOVE_SPLITTER_MAKE_SOLID", "healing_operation_reopen")
-    check(r.OLE_GeometryAuthority == "FREECAD_OCCT_BREP", "healing_authority_reopen")
-    check(r.OLE_HealingUnits == "mm", "healing_units_reopen")
-    check(close(float(r.OLE_SourceGapMM), SMALL_GAP_MM, 1e-12), "source_gap_reopen")
-    check(close(float(r.OLE_HealingToleranceMM), HEAL_TOL_MM, 1e-12), "healing_tolerance_reopen")
-    check(r.Shape.isValid() and len(r.Shape.Solids) == 1, "healed_solid_reopen")
+    for name, ole_id, operation in [
+        ("OLE_SEWN_R002", "OLE_BREP_HEAL::SEWN_R002", "SEW_COINCIDENT_BOUNDARY_FACES"),
+        ("OLE_REFINED_R002", "OLE_BREP_HEAL::REFINED_R002", "REMOVE_REDUNDANT_SPLITTER_TOPOLOGY"),
+    ]:
+        obj = reopened.getObject(name)
+        check(obj is not None, f"{name}_reopen")
+        check(obj.OLE_ID == ole_id, f"{name}_ole_id_reopen")
+        check(obj.OLE_Operation == operation, f"{name}_operation_reopen")
+        check(obj.OLE_GeometryAuthority == "FREECAD_OCCT_BREP", f"{name}_authority_reopen")
+        check(obj.OLE_HealingUnits == "mm", f"{name}_units_reopen")
+        check(obj.OLE_GapRepairState == "NOT_VALIDATED", f"{name}_gap_state_reopen")
+        check(close(float(obj.OLE_SewToleranceMM), SEW_TOL_MM, 1e-12), f"{name}_tolerance_reopen")
+        check(obj.Shape.isValid() and len(obj.Shape.Solids) == 1, f"{name}_solid_reopen")
 
     result = {
-        "schema": "OLEANDER_FREECAD_BOUNDED_HEALING_v0.1",
+        "schema": "OLEANDER_FREECAD_BOUNDED_HEALING_v0.2",
         "status": "PASS",
         "dependency_state": "RUNTIME_PROBED",
         "freecad_version": ".".join(str(x) for x in App.Version()[:3]),
         "occ_version": getattr(Part, "OCC_VERSION", "unknown"),
         "healing_contract": {
-            "source_defect": "one translated top planar face creating an open shell",
-            "source_gap_mm": SMALL_GAP_MM,
-            "sewing_tolerance_mm": HEAL_TOL_MM,
-            "pipeline": ["sewShape(tolerance)", "fix", "removeSplitter", "makeSolid when required"],
-            "over_tolerance_policy": "reject before healing"
+            "sewing_case": "six coincident but disconnected boundary faces",
+            "sewing_tolerance_mm": SEW_TOL_MM,
+            "sewing_pipeline": ["sewShape(tolerance)", "fix", "removeSplitter", "makeSolid when required"],
+            "topology_cleanup_case": "valid fused solid with redundant splitter topology",
+            "topology_cleanup_pipeline": ["removeSplitter"],
+            "nonzero_gap_repair": "NOT_VALIDATED_AND_REJECTED"
         },
-        "revision1": {"base": metrics(b1), "damaged": metrics(d1), "healed": metrics(h1)},
-        "revision2": {"base": metrics(b2), "damaged": metrics(d2), "healed": metrics(h2)},
-        "expected_failure_cases": {"gap_exceeds_governed_tolerance": failure},
+        "revision1": {
+            "source": metrics(s1), "disconnected": metrics(d1), "sewn": metrics(sewn1),
+            "raw_fused": metrics(raw1), "refined": metrics(ref1)
+        },
+        "revision2": {
+            "source": metrics(s2), "disconnected": metrics(d2), "sewn": metrics(sewn2),
+            "raw_fused": metrics(raw2), "refined": metrics(ref2)
+        },
+        "expected_failure_cases": {"nonzero_geometric_gap_repair": unsupported},
         "artifacts": {
             "fcstd": {"path": str(FCSTD), "sha256": sha256(FCSTD)},
-            "step": {"path": str(STEP), "sha256": sha256(STEP)},
+            "sewn_step": {"path": str(STEP_SEWN), "sha256": sha256(STEP_SEWN)},
+            "refined_step": {"path": str(STEP_REFINED), "sha256": sha256(STEP_REFINED)},
             "display": {"path": str(DISPLAY), "sha256": sha256(DISPLAY)}
         },
         "checks": checks,
         "non_claims": [
-            "P0_B_DIRECT_BREP_PASS",
-            "general_brep_healing",
-            "arbitrary_import_repair",
-            "large_gap_repair",
-            "self_intersection_repair",
-            "nonmanifold_repair",
-            "topological_naming_stability",
-            "manufacturing_release"
+            "P0_B_DIRECT_BREP_PASS", "general_brep_healing", "nonzero_gap_repair",
+            "arbitrary_import_repair", "large_gap_repair", "self_intersection_repair",
+            "nonmanifold_repair", "topological_naming_stability", "manufacturing_release"
         ]
     }
     MANIFEST.write_text(json.dumps(result, sort_keys=True), encoding="utf-8")
