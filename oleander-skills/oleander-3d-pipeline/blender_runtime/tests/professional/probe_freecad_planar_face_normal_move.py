@@ -193,7 +193,7 @@ def metrics(shape):
     }
 
 
-def add_feature(doc, name, ole_id, shape, delta):
+def add_feature(doc, name, ole_id, shape, delta_mm):
     obj = doc.addObject("PartDesign::Feature", name)
     obj.Shape = shape
     for prop, value in [
@@ -201,11 +201,13 @@ def add_feature(doc, name, ole_id, shape, delta):
         ("OLE_Operation", "PLANAR_FACE_NORMAL_MOVE_RESHAPE"),
         ("OLE_Selector", "SELECTOR::TOP_PLANAR_FACE"),
         ("OLE_GeometryAuthority", "FREECAD_OCCT_BREP"),
+        ("OLE_DeltaUnits", "mm"),
     ]:
         obj.addProperty("App::PropertyString", prop, "OLEANDER")
         setattr(obj, prop, value)
-    obj.addProperty("App::PropertyLength", "OLE_Delta", "OLEANDER")
-    obj.OLE_Delta = delta
+    # Signed displacement must not use PropertyLength, which is non-negative.
+    obj.addProperty("App::PropertyFloat", "OLE_DeltaMM", "OLEANDER")
+    obj.OLE_DeltaMM = float(delta_mm)
     return obj
 
 
@@ -281,7 +283,8 @@ def main() -> None:
         check(obj.OLE_Operation == "PLANAR_FACE_NORMAL_MOVE_RESHAPE", f"{name}_operation_reopen")
         check(obj.OLE_Selector == "SELECTOR::TOP_PLANAR_FACE", f"{name}_selector_reopen")
         check(obj.OLE_GeometryAuthority == "FREECAD_OCCT_BREP", f"{name}_authority_reopen")
-        check(close(obj.OLE_Delta.Value, delta), f"{name}_delta_reopen")
+        check(obj.OLE_DeltaUnits == "mm", f"{name}_delta_units_reopen")
+        check(close(float(obj.OLE_DeltaMM), delta), f"{name}_signed_delta_reopen")
         check(obj.Shape.isValid() and len(obj.Shape.Solids) == 1, f"{name}_solid_reopen")
         check(close(obj.Shape.BoundBox.ZLength, height), f"{name}_height_reopen")
 
@@ -296,6 +299,7 @@ def main() -> None:
             "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape + bounded sew/fix normalization",
             "replaced_subshapes": "selected top planar face plus its four adjacent planar side faces",
             "opposite_face": "preserved",
+            "signed_displacement_storage": "OLE_DeltaMM App::PropertyFloat + OLE_DeltaUnits=mm",
         },
         "revision1": {"base": metrics(base1), "push": metrics(push1), "operation": m_push1},
         "revision2": {
