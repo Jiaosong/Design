@@ -47,11 +47,13 @@ def stage(label: str) -> None:
 
 
 def vec(values):
+    if hasattr(values, "x") and hasattr(values, "y") and hasattr(values, "z"):
+        return App.Vector(float(values.x), float(values.y), float(values.z))
     return App.Vector(float(values[0]), float(values[1]), float(values[2]))
 
 
 def unit(v):
-    r = App.Vector(v.x, v.y, v.z)
+    r = vec(v)
     if r.Length <= TOL:
         raise ValueError("normal must be non-zero")
     r.normalize()
