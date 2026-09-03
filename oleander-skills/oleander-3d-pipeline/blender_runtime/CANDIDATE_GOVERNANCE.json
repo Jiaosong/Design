@@ -19,6 +19,12 @@
     "no_bounded_probe_claim_as_general_parity": true,
     "no_knowledge_base_promotion_from_candidate_only_evidence": true
   },
+  "project_wide_governance": {
+    "authority": "main/00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
+    "machine_contract": "main/00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+    "inherit_without_fork": true,
+    "blender_candidate_rules_may_only_be_stricter": true
+  },
   "workflow_policy": {
     "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
     "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier.yml",
@@ -73,6 +79,7 @@
   ],
   "promotion_gate": {
     "require_main_sync_behind_count": 0,
+    "require_dynamic_main_compare_at_promotion": true,
     "require_no_experimental_unverified_items": true,
     "require_no_validation_pending_items": true,
     "require_all_validated_items_have_receipts": true,
@@ -81,9 +88,12 @@
     "require_default_environment_eligible_explicit_decision": true
   },
   "branch_hygiene": {
-    "current_observed_behind_main": 33,
+    "last_observed_behind_main": 37,
+    "last_observed_ahead_main": 469,
+    "observation_date": "2026-09-04",
+    "observation_is_advisory": true,
     "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
-    "rule": "Candidate development may continue in Draft, but promotion is prohibited until main is integrated and behind count is zero."
+    "rule": "Candidate development may continue in Draft, but promotion is prohibited until a fresh compare proves behind count is zero. Stored ahead/behind values are audit snapshots, never promotion authority."
   },
-  "governance_note": "Existing validated evidence is preserved. The guard freezes one-off workflow growth, distinguishes unverified frontier work from validated parity status, and keeps main as the only installed CURRENT until explicit promotion and readback."
+  "governance_note": "Existing validated evidence is preserved. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, distinguishes unverified frontier work from validated parity status, and keeps main as the only installed CURRENT until explicit promotion and readback."
 }
