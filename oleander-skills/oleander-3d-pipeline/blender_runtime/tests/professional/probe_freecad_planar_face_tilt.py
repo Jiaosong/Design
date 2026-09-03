@@ -378,5 +378,7 @@ def main() -> None:
     print("OLEANDER_FREECAD_PLANAR_FACE_TILT=" + json.dumps(result, sort_keys=True), flush=True)
 
 
-if __name__ == "__main__":
-    main()
+# FreeCADCmd executes a supplied Python file in its console namespace rather
+# than guaranteeing CPython's __main__ script guard semantics. Probe files are
+# executable test entrypoints, so invoke explicitly.
+main()
