@@ -1,0 +1,89 @@
+{
+  "schema": "OLEANDER_BLENDER_CANDIDATE_GOVERNANCE_v1.0",
+  "effective_date": "2026-09-04",
+  "authority": {
+    "installed_current_branch": "main",
+    "candidate_branch": "feat/oleander-blender-runtime-workbench",
+    "main_is_only_installed_current": true,
+    "candidate_may_not_self_promote": true,
+    "promotion_state": "HOLD_GOVERNANCE_CLEANUP"
+  },
+  "anti_pollution_rules": {
+    "no_new_parallel_current": true,
+    "no_new_framework_if_existing_contract_fits": true,
+    "no_unverified_capability_in_professional_parity_status": true,
+    "no_receipt_before_runtime_validation": true,
+    "no_new_oneoff_freecad_workflow": true,
+    "no_silent_ambiguous_reference_resolution": true,
+    "no_mesh_claim_as_brep_authority": true,
+    "no_bounded_probe_claim_as_general_parity": true,
+    "no_knowledge_base_promotion_from_candidate_only_evidence": true
+  },
+  "workflow_policy": {
+    "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
+    "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier.yml",
+    "new_oneoff_exception_requires": "USER_EXPLICIT_APPROVAL_PLUS_GOVERNANCE_RECEIPT",
+    "grandfathered_freecad_workflows": [
+      ".github/workflows/oleander-blender-professional-freecad-brep.yml",
+      ".github/workflows/oleander-blender-professional-freecad-direct-brep.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-tilt.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-feature-tree.yml",
+      ".github/workflows/oleander-blender-professional-freecad-full3d-face-free-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-full3d-face-rotate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-healing.yml",
+      ".github/workflows/oleander-blender-professional-freecad-multi-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-free-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-rotate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-reference-rebind.yml",
+      ".github/workflows/oleander-blender-professional-freecad-split.yml"
+    ],
+    "removed_as_redundant": [
+      ".github/workflows/oleander-blender-professional-freecad-face-tilt-diagnostic.yml",
+      ".github/workflows/oleander-blender-professional-freecad-custom-tangent-axis-face-rotate.yml"
+    ]
+  },
+  "frontier_items": [
+    {
+      "id": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py",
+      "state": "VALIDATION_PENDING",
+      "parity_key": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
+      "receipt": null,
+      "promotion_allowed": false
+    },
+    {
+      "id": "FREECAD_REFERENCE_BOUND_OPERATION",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py",
+      "readback": null,
+      "state": "EXPERIMENTAL_UNVERIFIED",
+      "parity_key": "FREECAD_REFERENCE_BOUND_OPERATION",
+      "receipt": null,
+      "promotion_allowed": false
+    }
+  ],
+  "allowed_frontier_states": [
+    "EXPERIMENTAL_UNVERIFIED",
+    "VALIDATION_PENDING",
+    "VALIDATED_FOR_BOUNDED_SCOPE",
+    "REJECTED_WITH_REASON"
+  ],
+  "promotion_gate": {
+    "require_main_sync_behind_count": 0,
+    "require_no_experimental_unverified_items": true,
+    "require_no_validation_pending_items": true,
+    "require_all_validated_items_have_receipts": true,
+    "require_pr_authority_current": true,
+    "require_static_runtime_readback_pass": true,
+    "require_default_environment_eligible_explicit_decision": true
+  },
+  "branch_hygiene": {
+    "current_observed_behind_main": 33,
+    "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
+    "rule": "Candidate development may continue in Draft, but promotion is prohibited until main is integrated and behind count is zero."
+  },
+  "governance_note": "Existing validated evidence is preserved. The guard freezes one-off workflow growth, distinguishes unverified frontier work from validated parity status, and keeps main as the only installed CURRENT until explicit promotion and readback."
+}
