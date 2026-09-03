@@ -1,7 +1,8 @@
 {
   "schema_version": "1.0",
-  "status": "WAITING_FOR_DESIGN_SCRIPT",
-  "job_id": "PRJ-C04-QINGJIANG-SHISHU/FLUID_SEAT/REBUILD_V001",
+  "status": "READY",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/FLUID_SEAT/REBUILD_V001/R01",
+  "revision": 1,
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "child_item": "流体座椅人体工",
   "purpose": "CURRENT_DESIGN_MACHINE_JOB",
@@ -11,9 +12,10 @@
   "output_dir": "artifacts/c04-fluid-seat",
   "artifact_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001",
   "design_authority": "DESIGN_ESTIMATE_FROM_CURRENT_SOURCE_REFERENCE",
+  "source_reference_state": "CURRENT_MACHINE_JOB_HAS_NO_VERIFIED_DIMENSIONS; SOURCE_REFERENCE_ONLY; DO_NOT_INFER_ENGINEERING_TRUTH",
   "field_state": "FIELD_OPEN",
   "promotion": "NO_PROMOTION",
-  "ready_transition": "DESIGN creates/updates producer and validation scripts, then changes status to READY in the same Current descriptor; that Git push is the durable execution trigger.",
+  "ready_transition": "Producer and native reopen validator are committed and remotely read back; this READY descriptor commit is the durable Git-native execution trigger.",
   "regression_evidence": {
     "workflow_run_id": 33706294150,
     "artifact_id": 9875331116,
