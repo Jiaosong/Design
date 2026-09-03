@@ -44,6 +44,13 @@ def file_sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def linked_object(value):
+    """Normalize FreeCAD link / link-sub Python wrappers to their object."""
+    if isinstance(value, (tuple, list)) and value:
+        return value[0]
+    return value
+
+
 def add_ole(obj, ole_id: str, role: str) -> None:
     obj.addProperty("App::PropertyString", "OLE_ID", "OLEANDER")
     obj.OLE_ID = ole_id
@@ -112,8 +119,8 @@ def main() -> None:
     body.addObject(pad)
     add_ole(pad, "OLE_FEATURE::PAD_001", "AUTHORITATIVE_SOLID_FEATURE")
     doc.recompute()
-    check(pad.Profile == sketch, "pad_profile_dependency")
-    check(sketch.AttachmentSupport[0][0] == datum, "sketch_datum_dependency")
+    check(linked_object(pad.Profile) == sketch, "pad_profile_dependency")
+    check(linked_object(sketch.AttachmentSupport[0]) == datum, "sketch_datum_dependency")
     check(pad.Shape.isValid(), "revision1_pad_valid")
     check(len(pad.Shape.Solids) == 1, "revision1_single_solid")
     m1 = shape_metrics(pad.Shape)
@@ -173,8 +180,8 @@ def main() -> None:
     check(r_datum.OLE_ID == "OLE_DATUM::BRACKET_SKETCH_PLANE", "datum_id_reopen")
     check(r_sketch.OLE_ID == "OLE_SKETCH::BRACKET_PROFILE", "sketch_id_reopen")
     check(r_pad.OLE_ID == "OLE_FEATURE::PAD_001", "pad_id_reopen")
-    check(r_pad.Profile == r_sketch, "pad_profile_dependency_reopen")
-    check(r_sketch.AttachmentSupport[0][0] == r_datum, "sketch_datum_dependency_reopen")
+    check(linked_object(r_pad.Profile) == r_sketch, "pad_profile_dependency_reopen")
+    check(linked_object(r_sketch.AttachmentSupport[0]) == r_datum, "sketch_datum_dependency_reopen")
     check(bool(r_sketch.FullyConstrained), "fully_constrained_reopen")
     check(abs(r_pad.Shape.BoundBox.XLength - 100.0) < 1e-6, "rebuilt_width_reopen")
 
