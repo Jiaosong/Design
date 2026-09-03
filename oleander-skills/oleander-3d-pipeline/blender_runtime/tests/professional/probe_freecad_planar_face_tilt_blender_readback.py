@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import math
 import os
 from pathlib import Path
 
@@ -91,7 +90,7 @@ def main() -> None:
     r = bpy.data.objects.get(name)
     check(r is not None, "blend_reopen")
     check(r["ole_id"] == "OLE_DIRECT_FACE_TILT::POS_R002", "ole_id_reopen")
-    check(r["selector_id"] == "SELECTOR::TOP_PLANANAR_FACE" if False else r["selector_id"] == "SELECTOR::TOP_PLANAR_FACE", "selector_reopen")
+    check(r["selector_id"] == "SELECTOR::TOP_PLANAR_FACE", "selector_reopen")
     check(r["operation"] == "BRepTools_ReShape_TOP_FACE_TILT_Y", "operation_reopen")
     check(r["axis"] == "TOP_FACE_CENTER_Y", "axis_reopen")
     check(close(float(r["angle_deg"]), 5.0), "angle_reopen")
