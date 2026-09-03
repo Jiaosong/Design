@@ -10,6 +10,11 @@ on:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py"
       - ".github/workflows/oleander-blender-professional-frontier.yml"
       - ".github/workflows/oleander-blender-professional-freecad-*.yml"
+      - "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md"
+      - "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json"
+      - "00-governance/tests/static_check_anti_pollution.py"
+      - ".github/workflows/oleander-project-anti-pollution.yml"
+      - "README.md"
   push:
     branches:
       - main
@@ -31,8 +36,32 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 2
+
       - name: Enforce candidate governance contract
         run: python3 oleander-skills/oleander-3d-pipeline/blender_runtime/tests/static_check_candidate_governance.py
+
+      - name: Verify project-wide governance is inherited byte-for-byte from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin main
+          paths=(
+            "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md"
+            "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json"
+            "00-governance/tests/static_check_anti_pollution.py"
+            ".github/workflows/oleander-project-anti-pollution.yml"
+            "README.md"
+          )
+          for path in "${paths[@]}"; do
+            git show "origin/main:${path}" > /tmp/oleander-main-authority
+            cmp --silent /tmp/oleander-main-authority "${path}" || {
+              echo "Blender Candidate attempted to fork project-wide authority: ${path}" >&2
+              exit 1
+            }
+          done
+          echo 'OLEANDER_PROJECT_WIDE_AUTHORITY_INHERITANCE=PASS'
 
   frontier:
     name: Frontier / ${{ matrix.id }}
@@ -140,6 +169,7 @@ jobs:
         run: |
           {
             echo '## OLEANDER Professional Frontier'
+            echo '- Project-wide anti-pollution authority must match main byte-for-byte; Blender Candidate may only add stricter local rules.'
             echo '- New professional probes use this shared matrix entrypoint; no new per-probe FreeCAD workflow is permitted by governance.'
             echo '- FreeCAD/OCCT remains authoritative for B-Rep geometry.'
             echo '- Blender readback is required before a Blender-integrated capability can leave VALIDATION_PENDING.'
