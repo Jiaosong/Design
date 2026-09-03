@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "status": "PERSISTENCE_PASS",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "child_item": "江畔停泊折叠观",
+  "artifact_name": "C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001",
+  "workflow_run_id": 33778596667,
+  "artifact_id": 9902635163,
+  "github_artifact_size_bytes": 624967,
+  "github_artifact_digest": "sha256:368c2ca776a6b16d7cd3a32d1fd766e60d8d9fc5b1a511f4cb069abf6eae7388",
+  "drive_canonical_parent_folder_id": "1iThpwaq01TWa3Jw2bJONTcDDXL4UuyP0",
+  "drive_child_folder_id": "1kqbe41gdxelVeZgNMVdioI_2aXn5kJWN",
+  "drive_file_id": "1kNvGjjfa4oYHdpvXWS3BPACOfaaSgEUE",
+  "drive_file_name": "C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001.zip",
+  "drive_readback_size_bytes": 624967,
+  "drive_readback_sha256": "368c2ca776a6b16d7cd3a32d1fd766e60d8d9fc5b1a511f4cb069abf6eae7388",
+  "digest_identity": "PASS",
+  "archive_members": [
+    "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001.blend",
+    "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001_manifest.json",
+    "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001_preview.png",
+    "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001_reopen_receipt.json",
+    "artifacts/c04-jiangpan-folding-observation/SHA256SUMS.txt",
+    "blender-version.txt"
+  ],
+  "return_gate": "PASS_FOR_DURABLE_PERSISTENCE_ONLY",
+  "truth_boundary": "PERSISTENCE_PASS does not grant source-fidelity PASS, Design KEEP, engineering approval, field approval or promotion. FIELD_OPEN / NO_PROMOTION remain.",
+  "recorded_at": "2026-09-04T00:45:00+08:00"
+}
