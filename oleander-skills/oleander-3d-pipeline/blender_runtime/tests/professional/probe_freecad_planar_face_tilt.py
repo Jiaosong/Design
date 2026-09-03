@@ -1,11 +1,12 @@
 """OLEANDER bounded planar top-face tilt through FreeCAD/OCCT BRep ReShape.
 
-This is a deliberately narrow direct-edit probe. It does not rotate a Blender
-mesh face and it does not rebuild the result from source box dimensions. The
-unique +Z top planar face is selected geometrically, rotated about its own
-center Y axis, and replaced together with its four adjacent planar side faces
-through TopoShape.replaceShape / BRepTools_ReShape. The opposite bottom face
-remains untouched.
+The unique +Z planar top face of a rectangular prismatic solid is selected by
+geometry, tilted about its own center Y axis, and replaced together with the
+four adjacent side faces using TopoShape.replaceShape / BRepTools_ReShape.
+The bottom face is not replaced. ReShape may emit an invalid intermediate
+solid for this edit; bounded sew/fix then produces a shell from the emitted
+faces and makeSolid closes that shell. No source box dimensions are used to
+rebuild the edited result.
 """
 
 from __future__ import annotations
@@ -30,8 +31,8 @@ TOL = 1e-6
 checks: list[str] = []
 
 
-def check(condition: bool, label: str) -> None:
-    if not condition:
+def check(ok: bool, label: str) -> None:
+    if not ok:
         raise AssertionError(label)
     checks.append(label)
 
@@ -53,100 +54,61 @@ def same_point(a, b, tol: float = TOL) -> bool:
 
 
 def face_normal(face):
-    try:
-        u0, u1, v0, v1 = face.ParameterRange
-        n = face.normalAt((u0 + u1) * 0.5, (v0 + v1) * 0.5)
-    except Exception:
-        n = face.normalAt(0, 0)
+    u0, u1, v0, v1 = face.ParameterRange
+    n = face.normalAt((u0 + u1) * 0.5, (v0 + v1) * 0.5)
     n.normalize()
     return n
 
 
-def select_top_face(shape):
+def select_top_bottom(shape):
     zmax = shape.BoundBox.ZMax
-    found = []
-    for face in shape.Faces:
-        bb = face.BoundBox
-        if bb.ZLength > TOL or not close(bb.ZMax, zmax):
-            continue
-        n = face_normal(face)
-        if n.z > 0.999999:
-            found.append(face)
-    check(len(found) == 1, "top_face_selector_unique")
-    return found[0]
-
-
-def select_bottom_face(shape):
     zmin = shape.BoundBox.ZMin
-    found = []
+    tops = []
+    bottoms = []
     for face in shape.Faces:
         bb = face.BoundBox
-        if bb.ZLength > TOL or not close(bb.ZMin, zmin):
+        if bb.ZLength > TOL:
             continue
         n = face_normal(face)
-        if n.z < -0.999999:
-            found.append(face)
-    check(len(found) == 1, "bottom_face_selector_unique")
-    return found[0]
+        if close(bb.ZMax, zmax) and n.z > 0.999999:
+            tops.append(face)
+        if close(bb.ZMin, zmin) and n.z < -0.999999:
+            bottoms.append(face)
+    check(len(tops) == 1, "top_face_selector_unique")
+    check(len(bottoms) == 1, "bottom_face_selector_unique")
+    return tops[0], bottoms[0]
 
 
 def oriented_top_points(face):
     pts = [v.Point for v in face.OuterWire.OrderedVertexes]
     check(len(pts) == 4, "top_face_four_vertices")
-    area2 = 0.0
-    for i, p in enumerate(pts):
-        q = pts[(i + 1) % len(pts)]
-        area2 += p.x * q.y - q.x * p.y
+    area2 = sum(
+        p.x * pts[(i + 1) % 4].y - pts[(i + 1) % 4].x * p.y
+        for i, p in enumerate(pts)
+    )
     if area2 < 0:
         pts.reverse()
     return pts
 
 
-def make_planar_face(points, expected_normal):
-    wire = Part.makePolygon(points + [points[0]])
-    face = Part.Face(wire)
-    n = face_normal(face)
-    if n.dot(expected_normal) < 0:
+def make_oriented_face(points, expected_normal):
+    face = Part.Face(Part.makePolygon(points + [points[0]]))
+    if face_normal(face).dot(expected_normal) < 0:
         face = face.reversed()
+    check(face.isValid(), "constructed_planar_face_valid")
     return face
 
 
-def side_face_for_top_edge(shape, p0, p1, top_face, bottom_face):
+def adjacent_side(shape, p0, p1, top, bottom):
     found = []
     for face in shape.Faces:
-        if face.isSame(top_face) or face.isSame(bottom_face):
+        if face.isSame(top) or face.isSame(bottom):
             continue
-        pts = [v.Point for v in face.Vertexes]
-        if any(same_point(v, p0) for v in pts) and any(same_point(v, p1) for v in pts):
+        vertices = [v.Point for v in face.Vertexes]
+        if any(same_point(v, p0) for v in vertices) and any(same_point(v, p1) for v in vertices):
             found.append(face)
     check(len(found) == 1, "adjacent_side_face_unique")
     return found[0]
-
-
-def normalize_replaced(shape):
-    candidate = shape.copy()
-    try:
-        candidate.sewShape(1e-7)
-    except TypeError:
-        candidate.sewShape()
-    try:
-        candidate.fix(1e-7, 1e-7, 1e-7)
-    except TypeError:
-        candidate.fix()
-    candidate = candidate.removeSplitter()
-    if candidate.isValid() and len(candidate.Solids) == 1:
-        return candidate.Solids[0]
-    shell = Part.makeShell(candidate.Faces)
-    try:
-        shell.sewShape(1e-7)
-    except TypeError:
-        shell.sewShape()
-    try:
-        shell.fix(1e-7, 1e-7, 1e-7)
-    except TypeError:
-        shell.fix()
-    solid = Part.makeSolid(shell)
-    return solid.removeSplitter()
 
 
 def rotate_about_y(point, center, angle_rad: float):
@@ -161,6 +123,27 @@ def rotate_about_y(point, center, angle_rad: float):
     )
 
 
+def normalize_reshape_output(reshaped):
+    candidate = reshaped.copy()
+    candidate.sewShape(1e-7)
+    candidate.fix(1e-7, 1e-7, 1e-7)
+    candidate = candidate.removeSplitter()
+    if candidate.isValid() and len(candidate.Solids) == 1:
+        checks.append("reshape_normalized_direct_single_solid")
+        return candidate.Solids[0]
+
+    check(candidate.isValid(), "reshape_emitted_valid_shell")
+    check(candidate.ShapeType == "Shell", "reshape_normalized_to_shell")
+    check(len(candidate.Solids) == 0, "reshape_shell_has_no_false_solid")
+    shell = Part.makeShell(candidate.Faces)
+    shell.sewShape(1e-7)
+    shell.fix(1e-7, 1e-7, 1e-7)
+    solid = Part.makeSolid(shell).removeSplitter()
+    check(solid.isValid(), "shell_rebuild_valid_solid")
+    check(len(solid.Solids) == 1, "shell_rebuild_single_solid")
+    return solid
+
+
 def tilt_top_face(shape, angle_deg: float):
     check(shape.isValid() and len(shape.Solids) == 1, "input_single_valid_solid")
     if not math.isfinite(angle_deg) or abs(angle_deg) < 1e-9:
@@ -168,37 +151,38 @@ def tilt_top_face(shape, angle_deg: float):
     if abs(angle_deg) > 20.0:
         raise ValueError("face tilt exceeds bounded angular contract")
 
-    top = select_top_face(shape)
-    bottom = select_bottom_face(shape)
+    top, bottom = select_top_bottom(shape)
     top_pts = oriented_top_points(top)
     center = top.CenterOfMass
     angle_rad = math.radians(angle_deg)
     new_top_pts = [rotate_about_y(p, center, angle_rad) for p in top_pts]
-    zmin = shape.BoundBox.ZMin
     min_top_z = min(p.z for p in new_top_pts)
+    zmin = shape.BoundBox.ZMin
     if min_top_z <= zmin + 0.25:
         raise ValueError("face tilt would cross or approach the opposite face")
 
     expected_normal = App.Vector(math.sin(angle_rad), 0.0, math.cos(angle_rad))
-    new_top = make_planar_face(new_top_pts, expected_normal)
+    new_top = make_oriented_face(new_top_pts, expected_normal)
     actual_normal = face_normal(new_top)
-    check(actual_normal.dot(expected_normal) > 0.999999, "tilted_top_normal_matches_angle")
     actual_angle_deg = math.degrees(math.atan2(actual_normal.x, actual_normal.z))
+    check(actual_normal.dot(expected_normal) > 0.999999, "tilted_top_normal_matches_angle")
     check(close(actual_angle_deg, angle_deg, 1e-6), "tilted_top_signed_angle")
 
     replacements = [(top, new_top)]
-    side_descriptors = []
     bottom_pts = [App.Vector(p.x, p.y, zmin) for p in top_pts]
+    side_meta = []
     for i, p0 in enumerate(top_pts):
-        p1 = top_pts[(i + 1) % len(top_pts)]
-        q0 = new_top_pts[i]
-        q1 = new_top_pts[(i + 1) % len(top_pts)]
-        b0 = bottom_pts[i]
-        b1 = bottom_pts[(i + 1) % len(top_pts)]
-        old_side = side_face_for_top_edge(shape, p0, p1, top, bottom)
-        new_side = make_planar_face([b0, b1, q1, q0], face_normal(old_side))
+        p1 = top_pts[(i + 1) % 4]
+        old_side = adjacent_side(shape, p0, p1, top, bottom)
+        poly = [
+            bottom_pts[i],
+            bottom_pts[(i + 1) % 4],
+            new_top_pts[(i + 1) % 4],
+            new_top_pts[i],
+        ]
+        new_side = make_oriented_face(poly, face_normal(old_side))
         replacements.append((old_side, new_side))
-        side_descriptors.append({
+        side_meta.append({
             "old_center_mm": [old_side.CenterOfMass.x, old_side.CenterOfMass.y, old_side.CenterOfMass.z],
             "new_center_mm": [new_side.CenterOfMass.x, new_side.CenterOfMass.y, new_side.CenterOfMass.z],
         })
@@ -206,9 +190,9 @@ def tilt_top_face(shape, angle_deg: float):
     check(len(replacements) == 5, "replace_top_plus_four_adjacent_faces")
     reshaped = shape.replaceShape(replacements)
     check(not reshaped.isNull(), "replace_shape_non_null")
-    edited = normalize_replaced(reshaped)
-    check(edited.isValid(), "tilted_shape_valid")
-    check(len(edited.Solids) == 1, "tilted_shape_single_solid")
+    check(len(reshaped.Faces) == 6, "reshape_face_cardinality")
+    edited = normalize_reshape_output(reshaped)
+    check(edited.isValid() and len(edited.Solids) == 1, "tilted_shape_valid_single_solid")
     check(close(edited.BoundBox.XMin, shape.BoundBox.XMin), "bottom_preserves_xmin_extent")
     check(close(edited.BoundBox.XMax, shape.BoundBox.XMax), "bottom_preserves_xmax_extent")
     check(close(edited.BoundBox.YLength, shape.BoundBox.YLength), "depth_preserved")
@@ -218,17 +202,17 @@ def tilt_top_face(shape, angle_deg: float):
         "selector_id": "SELECTOR::TOP_PLANAR_FACE",
         "operation": "BRepTools_ReShape_TOP_FACE_TILT_Y",
         "angle_deg": angle_deg,
-        "actual_top_normal": [actual_normal.x, actual_normal.y, actual_normal.z],
         "actual_angle_deg": actual_angle_deg,
+        "actual_top_normal": [actual_normal.x, actual_normal.y, actual_normal.z],
         "axis": "TOP_FACE_CENTER_Y",
         "axis_origin_mm": [center.x, center.y, center.z],
         "min_top_z_mm": min_top_z,
-        "replaced_face_count": len(replacements),
-        "side_faces": side_descriptors,
+        "replaced_face_count": 5,
+        "side_faces": side_meta,
     }
 
 
-def shape_metrics(shape):
+def metrics(shape):
     return {
         "bbox_mm": [shape.BoundBox.XLength, shape.BoundBox.YLength, shape.BoundBox.ZLength],
         "bbox_min_mm": [shape.BoundBox.XMin, shape.BoundBox.YMin, shape.BoundBox.ZMin],
@@ -240,7 +224,7 @@ def shape_metrics(shape):
     }
 
 
-def add_feature(doc, name, ole_id, shape, angle_deg, selector):
+def add_feature(doc, name, ole_id, shape, angle_deg):
     obj = doc.addObject("PartDesign::Feature", name)
     obj.Shape = shape
     obj.addProperty("App::PropertyString", "OLE_ID", "OLEANDER")
@@ -254,55 +238,28 @@ def add_feature(doc, name, ole_id, shape, angle_deg, selector):
     obj.addProperty("App::PropertyString", "OLE_Axis", "OLEANDER")
     obj.OLE_Axis = "TOP_FACE_CENTER_Y"
     obj.addProperty("App::PropertyString", "OLE_Selector", "OLEANDER")
-    obj.OLE_Selector = selector
+    obj.OLE_Selector = "SELECTOR::TOP_PLANAR_FACE"
     obj.addProperty("App::PropertyString", "OLE_GeometryAuthority", "OLEANDER")
     obj.OLE_GeometryAuthority = "FREECAD_OCCT_BREP"
     return obj
 
 
-def tessellated_payload(shape, operation_meta):
-    verts, facets = shape.tessellate(0.25)
-    check(bool(verts) and bool(facets), "display_tessellation")
-    return {
-        "schema": "OLEANDER_PLANAR_FACE_TILT_DISPLAY_v0.1",
-        "master_type": "CAD_NATIVE",
-        "geometry_authority": "FREECAD_OCCT_BREP",
-        "display_authority": "DISPLAY_DERIVATIVE_ONLY",
-        "units": "mm",
-        "angle_units": "deg",
-        "ole_id": "OLE_DIRECT_FACE_TILT::POS_R002",
-        "selector_id": operation_meta["selector_id"],
-        "operation": operation_meta["operation"],
-        "axis": operation_meta["axis"],
-        "angle_deg": operation_meta["angle_deg"],
-        "actual_angle_deg": operation_meta["actual_angle_deg"],
-        "source_fcstd": str(FCSTD),
-        "source_fcstd_sha256": sha256(FCSTD),
-        "source_step": str(STEP_POS),
-        "source_step_sha256": sha256(STEP_POS),
-        "bbox_mm": shape_metrics(shape)["bbox_mm"],
-        "volume_mm3": shape.Volume,
-        "vertices_mm": [[v.x, v.y, v.z] for v in verts],
-        "triangles": [list(t) for t in facets],
-    }
-
-
 def main() -> None:
     base_r1 = Part.makeBox(80.0, 50.0, 10.0)
-    pos_r1, meta_pos_r1 = tilt_top_face(base_r1, 5.0)
-    neg_r1, meta_neg_r1 = tilt_top_face(base_r1, -5.0)
-    check(close(meta_pos_r1["actual_angle_deg"], 5.0, 1e-6), "r1_positive_angle")
-    check(close(meta_neg_r1["actual_angle_deg"], -5.0, 1e-6), "r1_negative_angle")
+    pos_r1, pos_meta_r1 = tilt_top_face(base_r1, 5.0)
+    neg_r1, neg_meta_r1 = tilt_top_face(base_r1, -5.0)
+    check(close(pos_meta_r1["actual_angle_deg"], 5.0, 1e-6), "r1_positive_angle")
+    check(close(neg_meta_r1["actual_angle_deg"], -5.0, 1e-6), "r1_negative_angle")
     check(close(pos_r1.Volume, neg_r1.Volume, 1e-4), "r1_signed_tilt_volume_symmetry")
 
     base_r2 = Part.makeBox(100.0, 50.0, 10.0)
-    pos_r2, meta_pos_r2 = tilt_top_face(base_r2, 5.0)
-    neg_r2, meta_neg_r2 = tilt_top_face(base_r2, -5.0)
-    check(close(meta_pos_r2["actual_angle_deg"], 5.0, 1e-6), "r2_positive_angle")
-    check(close(meta_neg_r2["actual_angle_deg"], -5.0, 1e-6), "r2_negative_angle")
+    pos_r2, pos_meta_r2 = tilt_top_face(base_r2, 5.0)
+    neg_r2, neg_meta_r2 = tilt_top_face(base_r2, -5.0)
+    check(close(pos_meta_r2["actual_angle_deg"], 5.0, 1e-6), "r2_positive_angle")
+    check(close(neg_meta_r2["actual_angle_deg"], -5.0, 1e-6), "r2_negative_angle")
     check(close(pos_r2.Volume, neg_r2.Volume, 1e-4), "r2_signed_tilt_volume_symmetry")
-    check(meta_pos_r1["selector_id"] == meta_pos_r2["selector_id"], "selector_id_stable_across_rebuild")
-    check(meta_pos_r1["replaced_face_count"] == meta_pos_r2["replaced_face_count"] == 5, "replacement_cardinality_stable_across_rebuild")
+    check(pos_meta_r1["selector_id"] == pos_meta_r2["selector_id"], "selector_id_stable_across_rebuild")
+    check(pos_meta_r1["replaced_face_count"] == pos_meta_r2["replaced_face_count"] == 5, "replacement_cardinality_stable_across_rebuild")
 
     failure = "FAIL"
     try:
@@ -314,17 +271,13 @@ def main() -> None:
     check(failure == "PASS", "excessive_tilt_failure_gate")
 
     doc = App.newDocument("OLEANDER_PLANAR_FACE_TILT")
-    pos_obj = add_feature(doc, "OLE_POS_R002", "OLE_DIRECT_FACE_TILT::POS_R002", pos_r2, 5.0, meta_pos_r2["selector_id"])
-    neg_obj = add_feature(doc, "OLE_NEG_R002", "OLE_DIRECT_FACE_TILT::NEG_R002", neg_r2, -5.0, meta_neg_r2["selector_id"])
+    pos_obj = add_feature(doc, "OLE_POS_R002", "OLE_DIRECT_FACE_TILT::POS_R002", pos_r2, 5.0)
+    neg_obj = add_feature(doc, "OLE_NEG_R002", "OLE_DIRECT_FACE_TILT::NEG_R002", neg_r2, -5.0)
     doc.recompute()
     doc.saveAs(str(FCSTD))
     pos_obj.Shape.exportStep(str(STEP_POS))
     neg_obj.Shape.exportStep(str(STEP_NEG))
     check(FCSTD.exists() and STEP_POS.exists() and STEP_NEG.exists(), "native_tilt_artifacts_written")
-
-    display = tessellated_payload(pos_r2, meta_pos_r2)
-    DISPLAY.write_text(json.dumps(display, sort_keys=True), encoding="utf-8")
-    check(DISPLAY.exists() and DISPLAY.stat().st_size > 0, "display_payload_written")
 
     App.closeDocument(doc.Name)
     reopened = App.openDocument(str(FCSTD))
@@ -342,6 +295,34 @@ def main() -> None:
         check(close(float(obj.OLE_AngleDeg), angle, 1e-6), f"{name}_signed_angle_reopen")
         check(obj.OLE_GeometryAuthority == "FREECAD_OCCT_BREP", f"{name}_authority_reopen")
         check(obj.Shape.isValid() and len(obj.Shape.Solids) == 1, f"{name}_solid_reopen")
+    App.closeDocument(reopened.Name)
+
+    verts, facets = pos_r2.tessellate(0.25)
+    check(bool(verts) and bool(facets), "display_tessellation")
+    display = {
+        "schema": "OLEANDER_PLANAR_FACE_TILT_DISPLAY_v0.1",
+        "master_type": "CAD_NATIVE",
+        "geometry_authority": "FREECAD_OCCT_BREP",
+        "display_authority": "DISPLAY_DERIVATIVE_ONLY",
+        "units": "mm",
+        "angle_units": "deg",
+        "ole_id": "OLE_DIRECT_FACE_TILT::POS_R002",
+        "selector_id": "SELECTOR::TOP_PLANAR_FACE",
+        "operation": "BRepTools_ReShape_TOP_FACE_TILT_Y",
+        "axis": "TOP_FACE_CENTER_Y",
+        "angle_deg": 5.0,
+        "actual_angle_deg": pos_meta_r2["actual_angle_deg"],
+        "source_fcstd": str(FCSTD),
+        "source_fcstd_sha256": sha256(FCSTD),
+        "source_step": str(STEP_POS),
+        "source_step_sha256": sha256(STEP_POS),
+        "bbox_mm": metrics(pos_r2)["bbox_mm"],
+        "volume_mm3": pos_r2.Volume,
+        "vertices_mm": [[v.x, v.y, v.z] for v in verts],
+        "triangles": [list(t) for t in facets],
+    }
+    DISPLAY.write_text(json.dumps(display, sort_keys=True), encoding="utf-8")
+    check(DISPLAY.exists() and DISPLAY.stat().st_size > 0, "display_payload_written")
 
     result = {
         "schema": "OLEANDER_FREECAD_PLANAR_FACE_TILT_v0.1",
@@ -351,26 +332,27 @@ def main() -> None:
         "occ_version": getattr(Part, "OCC_VERSION", "unknown"),
         "operation_contract": {
             "selector": "SELECTOR::TOP_PLANAR_FACE",
-            "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape + bounded sew/fix normalization",
+            "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape -> sew/fix shell normalization -> makeSolid when required",
             "axis": "selected top-face center Y axis",
             "replaced_subshapes": "selected top planar face plus its four adjacent planar side faces",
             "opposite_face": "preserved",
             "angles_deg": [5.0, -5.0],
-            "angle_storage": "OLE_AngleDeg App::PropertyFloat + OLE_AngleUnits=deg"
+            "angle_storage": "OLE_AngleDeg App::PropertyFloat + OLE_AngleUnits=deg",
+            "source_dimension_rebuild_used_for_edited_result": false
         },
         "revision1": {
-            "base": shape_metrics(base_r1),
-            "positive": shape_metrics(pos_r1),
-            "negative": shape_metrics(neg_r1),
-            "positive_operation": meta_pos_r1,
-            "negative_operation": meta_neg_r1,
+            "base": metrics(base_r1),
+            "positive": metrics(pos_r1),
+            "negative": metrics(neg_r1),
+            "positive_operation": pos_meta_r1,
+            "negative_operation": neg_meta_r1,
         },
         "revision2": {
-            "base": shape_metrics(base_r2),
-            "positive": shape_metrics(pos_r2),
-            "negative": shape_metrics(neg_r2),
-            "positive_operation": meta_pos_r2,
-            "negative_operation": meta_neg_r2,
+            "base": metrics(base_r2),
+            "positive": metrics(pos_r2),
+            "negative": metrics(neg_r2),
+            "positive_operation": pos_meta_r2,
+            "negative_operation": neg_meta_r2,
         },
         "expected_failure_cases": {"excessive_or_inverting_face_tilt": failure},
         "artifacts": {
@@ -393,8 +375,7 @@ def main() -> None:
         ]
     }
     MANIFEST.write_text(json.dumps(result, indent=2, sort_keys=True), encoding="utf-8")
-    print("OLEANDER_FREECAD_PLANAR_FACE_TILT=" + json.dumps(result, sort_keys=True))
-    App.closeDocument(reopened.Name)
+    print("OLEANDER_FREECAD_PLANAR_FACE_TILT=" + json.dumps(result, sort_keys=True), flush=True)
 
 
 if __name__ == "__main__":
