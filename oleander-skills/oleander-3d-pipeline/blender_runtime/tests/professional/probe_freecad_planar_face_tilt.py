@@ -338,7 +338,7 @@ def main() -> None:
             "opposite_face": "preserved",
             "angles_deg": [5.0, -5.0],
             "angle_storage": "OLE_AngleDeg App::PropertyFloat + OLE_AngleUnits=deg",
-            "source_dimension_rebuild_used_for_edited_result": false
+            "source_dimension_rebuild_used_for_edited_result": False
         },
         "revision1": {
             "base": metrics(base_r1),
