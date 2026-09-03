@@ -3,9 +3,15 @@ name: OLEANDER Shared Blender Runner
 on:
   workflow_call:
     inputs:
+      job_descriptor_path:
+        description: Optional repository-relative JSON machine-job descriptor
+        required: false
+        default: ''
+        type: string
       script_path:
         description: Repository-relative Blender Python producer script
-        required: true
+        required: false
+        default: ''
         type: string
       validation_script_path:
         description: Optional repository-relative Blender Python validation script
@@ -19,17 +25,25 @@ on:
         type: string
       output_dir:
         description: Workspace-relative output directory
-        required: true
+        required: false
+        default: ''
         type: string
       artifact_name:
         description: Uploaded artifact name
-        required: true
+        required: false
+        default: ''
         type: string
   workflow_dispatch:
     inputs:
+      job_descriptor_path:
+        description: Optional repository-relative JSON machine-job descriptor
+        required: false
+        default: ''
+        type: string
       script_path:
         description: Repository-relative Blender Python producer script
-        required: true
+        required: false
+        default: ''
         type: string
       validation_script_path:
         description: Optional repository-relative Blender Python validation script
@@ -43,11 +57,13 @@ on:
         type: string
       output_dir:
         description: Workspace-relative output directory
-        required: true
+        required: false
+        default: ''
         type: string
       artifact_name:
         description: Uploaded artifact name
-        required: true
+        required: false
+        default: ''
         type: string
 
 permissions:
@@ -57,30 +73,110 @@ jobs:
   blender-job:
     runs-on: ubuntu-latest
     timeout-minutes: 35
-    env:
-      OLEANDER_JOB_OUTPUT_DIR: ${{ github.workspace }}/${{ inputs.output_dir }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
-      - name: Validate job inputs
+      - name: Resolve machine job
+        id: job
         shell: bash
         env:
-          SCRIPT_PATH: ${{ inputs.script_path }}
-          VALIDATION_SCRIPT_PATH: ${{ inputs.validation_script_path }}
-          BLEND_FILE: ${{ inputs.blend_file }}
-          OUTPUT_DIR: ${{ inputs.output_dir }}
+          JOB_DESCRIPTOR_PATH: ${{ inputs.job_descriptor_path }}
+          INPUT_SCRIPT_PATH: ${{ inputs.script_path }}
+          INPUT_VALIDATION_SCRIPT_PATH: ${{ inputs.validation_script_path }}
+          INPUT_BLEND_FILE: ${{ inputs.blend_file }}
+          INPUT_OUTPUT_DIR: ${{ inputs.output_dir }}
+          INPUT_ARTIFACT_NAME: ${{ inputs.artifact_name }}
         run: |
           set -euo pipefail
-          for value in "$SCRIPT_PATH" "$VALIDATION_SCRIPT_PATH" "$BLEND_FILE" "$OUTPUT_DIR"; do
-            [[ "$value" != /* ]] || { echo "Absolute project/job path forbidden: $value" >&2; exit 64; }
-            [[ "$value" != *".."* ]] || { echo "Parent traversal forbidden: $value" >&2; exit 64; }
-          done
-          test -f "$SCRIPT_PATH"
-          if [[ -n "$VALIDATION_SCRIPT_PATH" ]]; then test -f "$VALIDATION_SCRIPT_PATH"; fi
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import PurePosixPath
+
+          descriptor_path = os.environ.get("JOB_DESCRIPTOR_PATH", "").strip()
+
+          if descriptor_path:
+              data = json.load(open(descriptor_path, "r", encoding="utf-8"))
+              status = str(data.get("status", "")).strip()
+              if status not in {"READY", "WAITING_FOR_DESIGN_SCRIPT", "HOLD", "DISABLED"}:
+                  raise SystemExit(f"Unsupported machine-job status: {status!r}")
+              run_job = status == "READY"
+              script_path = str(data.get("script_path", "")).strip()
+              validation_script_path = str(data.get("validation_script_path", "")).strip()
+              blend_file = str(data.get("blend_file", "")).strip()
+              output_dir = str(data.get("output_dir", "")).strip()
+              artifact_name = str(data.get("artifact_name", "")).strip()
+              job_id = str(data.get("job_id", "")).strip()
+              child_item = str(data.get("child_item", "")).strip()
+          else:
+              status = "READY"
+              run_job = True
+              script_path = os.environ.get("INPUT_SCRIPT_PATH", "").strip()
+              validation_script_path = os.environ.get("INPUT_VALIDATION_SCRIPT_PATH", "").strip()
+              blend_file = os.environ.get("INPUT_BLEND_FILE", "").strip()
+              output_dir = os.environ.get("INPUT_OUTPUT_DIR", "").strip()
+              artifact_name = os.environ.get("INPUT_ARTIFACT_NAME", "").strip()
+              job_id = "DIRECT_INPUT"
+              child_item = ""
+
+          def safe_rel(label, value, required=False):
+              if required and not value:
+                  raise SystemExit(f"Missing required {label}")
+              if not value:
+                  return
+              p = PurePosixPath(value)
+              if p.is_absolute() or ".." in p.parts:
+                  raise SystemExit(f"Unsafe {label}: {value}")
+              if "\n" in value or "\r" in value:
+                  raise SystemExit(f"Newline forbidden in {label}")
+
+          if descriptor_path:
+              safe_rel("job_descriptor_path", descriptor_path, required=True)
+
+          if run_job:
+              safe_rel("script_path", script_path, required=True)
+              safe_rel("validation_script_path", validation_script_path)
+              safe_rel("blend_file", blend_file)
+              safe_rel("output_dir", output_dir, required=True)
+              if not artifact_name or "\n" in artifact_name or "\r" in artifact_name:
+                  raise SystemExit("Missing/unsafe artifact_name")
+              if not os.path.isfile(script_path):
+                  raise SystemExit(f"Producer script not found: {script_path}")
+              if validation_script_path and not os.path.isfile(validation_script_path):
+                  raise SystemExit(f"Validation script not found: {validation_script_path}")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              f.write(f"run_job={'true' if run_job else 'false'}\n")
+              f.write(f"status={status}\n")
+              f.write(f"job_id={job_id}\n")
+              f.write(f"child_item={child_item}\n")
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+              f.write(f"OLEANDER_SCRIPT_PATH={script_path}\n")
+              f.write(f"OLEANDER_VALIDATION_SCRIPT_PATH={validation_script_path}\n")
+              f.write(f"OLEANDER_BLEND_FILE={blend_file}\n")
+              f.write(f"OLEANDER_OUTPUT_DIR={output_dir}\n")
+              f.write(f"OLEANDER_ARTIFACT_NAME={artifact_name}\n")
+              if output_dir:
+                  f.write(f"OLEANDER_JOB_OUTPUT_DIR={os.path.join(os.environ['GITHUB_WORKSPACE'], output_dir)}\n")
+          PY
+
+      - name: Record non-ready machine job
+        if: ${{ steps.job.outputs.run_job != 'true' }}
+        shell: bash
+        run: |
+          echo "OLEANDER machine job skipped: status=${{ steps.job.outputs.status }} job=${{ steps.job.outputs.job_id }} child=${{ steps.job.outputs.child_item }}"
+
+      - name: Prepare job output
+        if: ${{ steps.job.outputs.run_job == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
           mkdir -p "$OLEANDER_JOB_OUTPUT_DIR"
 
       - name: Install shared Blender runtime libraries
+        if: ${{ steps.job.outputs.run_job == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -88,6 +184,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends libegl1 libgl1
 
       - name: Resolve OLEANDER Blender shared runtime
+        if: ${{ steps.job.outputs.run_job == 'true' }}
         id: blender
         shell: bash
         run: |
@@ -99,32 +196,29 @@ jobs:
           grep -F "build hash: fbe6228777e7" blender-version.txt
 
       - name: Execute Blender producer
+        if: ${{ steps.job.outputs.run_job == 'true' }}
         shell: bash
-        env:
-          SCRIPT_PATH: ${{ inputs.script_path }}
         run: |
           set -euo pipefail
           "${{ steps.blender.outputs.bin }}" \
             --background \
             --factory-startup \
             --python-exit-code 2 \
-            --python "$SCRIPT_PATH"
+            --python "$OLEANDER_SCRIPT_PATH"
 
       - name: Native Blender reopen validation
-        if: ${{ inputs.blend_file != '' && inputs.validation_script_path != '' }}
+        if: ${{ steps.job.outputs.run_job == 'true' && env.OLEANDER_BLEND_FILE != '' && env.OLEANDER_VALIDATION_SCRIPT_PATH != '' }}
         shell: bash
-        env:
-          BLEND_FILE: ${{ inputs.blend_file }}
-          VALIDATION_SCRIPT_PATH: ${{ inputs.validation_script_path }}
         run: |
           set -euo pipefail
-          test -s "$BLEND_FILE"
+          test -s "$OLEANDER_BLEND_FILE"
           "${{ steps.blender.outputs.bin }}" \
-            --background "$BLEND_FILE" \
+            --background "$OLEANDER_BLEND_FILE" \
             --python-exit-code 3 \
-            --python "$VALIDATION_SCRIPT_PATH"
+            --python "$OLEANDER_VALIDATION_SCRIPT_PATH"
 
       - name: Artifact identity
+        if: ${{ steps.job.outputs.run_job == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -133,11 +227,12 @@ jobs:
           test -s "$OLEANDER_JOB_OUTPUT_DIR/SHA256SUMS.txt"
 
       - name: Upload Blender job artifact
+        if: ${{ steps.job.outputs.run_job == 'true' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: ${{ inputs.artifact_name }}
+          name: ${{ env.OLEANDER_ARTIFACT_NAME }}
           path: |
-            ${{ inputs.output_dir }}/
+            ${{ env.OLEANDER_OUTPUT_DIR }}/
             blender-version.txt
           if-no-files-found: error
           retention-days: 30
