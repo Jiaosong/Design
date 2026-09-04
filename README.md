@@ -46,6 +46,20 @@ OLEANDER／织作的设计与技术输出执行统一成品审查门槛：生成
 
 Canonical rule: [`00-governance/post-generation-review-gate.md`](00-governance/post-generation-review-gate.md)
 
+## Project-wide Anti-Pollution Rule
+
+整个 OLEANDER 项目统一执行：**One Logical Object → One Current Authority → traceable Candidate / Evidence / Provenance children**。
+
+- 已有逻辑对象优先原位扩展／修复，不默认新建平行页面、数据库、Skill、workflow、框架或 Current。
+- `EXPERIMENTAL_UNVERIFIED / VALIDATION_PENDING` 不得进入 Current 能力或知识状态；CI、文件存在、AI summary、单次 bounded probe 均不能自行晋级。
+- Candidate 不得 self-promote；Authority 变化必须完成适用的 receipt、promotion decision 与 downstream readback。
+- 清理遵循 `NO COMPRESSION / NO LOSS`：去污染不等于删除独立有效信息，历史证据进入 Provenance / Legacy / Superseded / Archive。
+- GitHub、Notion、Drive、Deployment、Native Master 可以有不同表示，但同步副本不是共同 Source Authority。
+
+Canonical policy: [`00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md`](00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md)
+
+Machine contract: [`00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json`](00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json)
+
 ## Repository Map
 
 - [`01-business/`](01-business/) — 商业与项目语境

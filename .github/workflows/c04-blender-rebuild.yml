@@ -1,0 +1,22 @@
+name: C04 Blender Rebuild
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - fix/c04-git-triggered-runner-20260903
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_BLENDER_JOB_CURRENT.json'
+      - '.github/workflows/c04-blender-rebuild.yml'
+      - '.github/workflows/oleander-shared-blender-runner.yml'
+      - '90-shared/toolchains/blender-runtime/**'
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-current-child:
+    uses: ./.github/workflows/oleander-shared-blender-runner.yml
+    with:
+      job_descriptor_path: 05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_BLENDER_JOB_CURRENT.json

@@ -6,14 +6,16 @@ on:
     paths:
       - '00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.*'
       - '00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.*'
-      - 'tools/oleander-runtime/**'
+      - '90-shared/toolchains/blender-runtime/**'
+      - '.github/workflows/oleander-shared-blender-runner.yml'
       - '.github/workflows/oleander-universal-production-environment.yml'
   push:
     branches: [main]
     paths:
       - '00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.*'
       - '00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.*'
-      - 'tools/oleander-runtime/**'
+      - '90-shared/toolchains/blender-runtime/**'
+      - '.github/workflows/oleander-shared-blender-runner.yml'
       - '.github/workflows/oleander-universal-production-environment.yml'
   workflow_dispatch:
 
@@ -31,13 +33,20 @@ jobs:
           set -euo pipefail
           python3 -m json.tool 00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json >/dev/null
           python3 -m json.tool 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json >/dev/null
-      - name: Validate shared Blender adapter exists
+      - name: Validate shared Blender runtime implementation exists
         run: |
           set -euo pipefail
           test -f tools/oleander-runtime/activate-blender.sh
           test -f tools/oleander-runtime/blender.sh
+          test -f 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh
+          test -f .github/workflows/oleander-shared-blender-runner.yml
           bash -n tools/oleander-runtime/activate-blender.sh
           bash -n tools/oleander-runtime/blender.sh
+          bash -n 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh
+          grep -Fq 'workflow_call:' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq 'OLEANDER_JOB_OUTPUT_DIR' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq '90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq -- '--python-exit-code' .github/workflows/oleander-shared-blender-runner.yml
       - name: Validate environment invariants
         run: |
           python3 - <<'PY'
@@ -51,8 +60,22 @@ jobs:
           assert data['figma']['role'] == 'EXPLICIT_REQUEST_ONLY_HANDOFF_ADAPTER'
           assert data['figma']['activation_gate'] == 'EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE'
           assert data['figma']['probe_policy'] == 'DO_NOT_PROBE_RECOMMEND_OR_CREATE_FOR_GENERIC_UI_VECTOR_PROTOTYPING_OR_DESIGN_SYSTEM_TASKS'
+          assert data['blender_shared_runtime']['status'] == 'ACTIVE_RUNTIME_INTERFACE'
           assert data['blender_shared_runtime']['scope'] == 'OLEANDER_ALL_PROJECTS'
-          assert data['blender_shared_runtime']['preferred_wrapper'] == 'tools/oleander-runtime/blender.sh'
+          assert data['blender_shared_runtime']['current_runtime_implementation_namespace'] == '90-shared/toolchains/blender-runtime/'
+          assert data['blender_shared_runtime']['preferred_rematerialization'] == '90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh'
+          assert data['blender_shared_runtime']['preferred_shared_runner'] == '.github/workflows/oleander-shared-blender-runner.yml'
+          assert data['blender_shared_runtime']['legacy_compatibility_wrappers'] == ['tools/oleander-runtime/activate-blender.sh', 'tools/oleander-runtime/blender.sh']
+          assert data['blender_shared_runtime']['unavailable_gate'] == 'ONLY_AFTER_CURRENT_RUNTIME_RESOLVER_REMATERIALIZATION_AND_ALLOWED_SHARED_RUNNER_HAVE_ACTUALLY_FAILED'
           assert 'PENDING_VERIFICATION' in data['capability_states']
+
+          blender = json.loads(Path('00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json').read_text())
+          assert blender['status'] == 'ACTIVE_RUNTIME_INTERFACE'
+          assert blender['scope'] == 'OLEANDER_ALL_PROJECTS'
+          assert blender['shared_runtime_state_model']['hard_rule'] == 'JOB_LOCAL_BINARY_ABSENCE_DOES_NOT_MEAN_SHARED_RUNTIME_UNAVAILABLE'
+          assert blender['rematerialization']['implementation'] == '90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh'
+          assert blender['rematerialization']['project_ownership'] == 'FORBIDDEN'
+          assert blender['shared_runner']['role'] == 'UNIVERSAL_PRODUCTION_ENVIRONMENT_SUBORDINATE_RUNTIME_ADAPTER_NOT_PROJECT_FRAMEWORK'
+          assert blender['project_policy']['project_specific_blender_install_or_download_logic'].startswith('FORBIDDEN')
           print('OLEANDER universal production environment contract: PASS')
           PY

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "child_item": "流体座椅人体工",
+  "artifact_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001",
+  "source_workflow": {
+    "name": "C04 Blender Rebuild",
+    "run_id": 33711398400,
+    "run_number": 40,
+    "head_sha": "198b9e90bccf400c8fc00fad874207210d8c7a38",
+    "artifact_id": 9877039291,
+    "artifact_size_in_bytes": 639284,
+    "artifact_digest": "sha256:da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c"
+  },
+  "durable_carrier": {
+    "provider": "GOOGLE_DRIVE",
+    "canonical_parent": "05_BLENDER_REBUILD_MASTERS",
+    "canonical_parent_id": "1iThpwaq01TWa3Jw2bJONTcDDXL4UuyP0",
+    "child_folder": "流体座椅人体工",
+    "child_folder_id": "1qUXLYUNdmbcdA4-EmF6zWyLwQ_GrRZyn",
+    "file_name": "C04_FLUID_SEAT_REBUILD_MASTER_v001.zip",
+    "file_id": "1mZGQ_-iZmqM50PbjFqdfFIVMIjcIUkil",
+    "file_size_in_bytes": 639284
+  },
+  "remote_readback": {
+    "status": "PASS",
+    "sha256": "da074fb75b346c038f193c5464412b5b921c3ed7b371ad905fba6b9a764bc94c",
+    "matches_actions_artifact_digest": true,
+    "archive_members": [
+      "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001.blend",
+      "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001_manifest.json",
+      "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001_preview.png",
+      "artifacts/c04-fluid-seat/C04_FLUID_SEAT_REBUILD_MASTER_v001_reopen_receipt.json",
+      "artifacts/c04-fluid-seat/SHA256SUMS.txt",
+      "blender-version.txt"
+    ],
+    "readback_at": "2026-09-03T17:32:32+08:00"
+  },
+  "native_reopen_verdict": "PASS_BOUNDED",
+  "truth_boundary": [
+    "PERSISTENCE PASS != FIDELITY PASS",
+    "PERSISTENCE PASS != DESIGN KEEP",
+    "PERSISTENCE PASS != ENGINEERING OR FIELD APPROVAL",
+    "FIELD_STATE = FIELD_OPEN",
+    "NO_PROMOTION"
+  ],
+  "governance_consequence": "Persistence return gate is closed for 流体座椅人体工; GOVERNANCE may append it to rebuild_returned and advance DESIGN cursor to 江畔停泊折叠观 while VALIDATION/PRESENTATION retain their own independent child leases."
+}

@@ -1,35 +1,50 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
   "stale_rule": "IF_QUEUE_IS_EMPTY_OR_STALE_PRODUCTION_WORKSTREAMS_DO_NOT_GUESS; GOVERNANCE_REFRESHES_FIRST",
+  "project_mode_execution_rule": "REPAIR_FIRST_REGISTER_LAST: executable defects require actual repair + smallest relevant retest/readback before HOLD/OPEN/NEXT may terminate a run; status-only registration is not material completion when a legal repair path exists.",
   "entries": [
     {
       "priority": 1,
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+      "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS",
       "current_owner": "PRESENTATION",
+      "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_THE_TOP_LEVEL_WEB_OBJECT_NOT_SOLE_PROJECT_OWNER",
       "state": "ACTIVE",
-      "current_native_master": "05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/index.html",
-      "current_pr_frontier": "GitHub PR #465 / agent/c04-web-v1-12-currentize-20260830",
+      "current_native_master": "NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / current head must be reread each run",
       "next_owner": "VALIDATION",
-      "next_action": "PRESENTATION repairs the same C04 Web object on successor PR #465, currentized from PR #353 onto latest main. Bind only exact-authority-ready/current-authority media, replace obsolete runtime-name dependencies only when stronger Current carrier identity is established, keep unresolved source/crop/child items HOLD, and hand to VALIDATION only after static asset integrity closes and real browser testing becomes meaningful.",
-      "updated_at": "2026-08-30T01:48:18+08:00",
-      "source_of_queue_decision": "User explicit C04 repair instruction; GitHub main C04_CURRENT.md + C04_ACTIVE_EXECUTION_CURRENT.md + C04_PROJECT_CONTROL_CARD_CURRENT.md readback; PR #353 head f0b241ba6ca38bd563cc50443445de7ea4ef6c30 was 316 commits behind Current main; Governance successor PR #465 preserves the same OBJECT_ID and exact producer blobs on latest main."
+      "whole_project_authority": ["05-cases/c04-qingjiang-stone-book/C04_CURRENT.md","05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md","05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md"],
+      "whole_project_workstreams": [
+        {"workstream_id":"ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL","state":"ACTIVE_REPAIR","current_gap":"27 legacy identities SOURCE RECOVERY OPEN; N-series=0."},
+        {"workstream_id":"ACTIVE-2-D-VISUAL-MOTION","state":"ACTIVE_REPAIR","current_gap":"Finished-output whole-project visual readback remains open."},
+        {"workstream_id":"ACTIVE-3-WEB","state":"ACTIVE_REPAIR","current_gap":"PR #465 source-authority image binding, Chromium finished pixels and mergeability remain unresolved."},
+        {"workstream_id":"ACTIVE-4-PHYSICAL-PRODUCT-DETAIL","state":"ACTIVE","blender_subqueue_role":"SUBQUEUE_ONLY_NOT_WHOLE_PROJECT_QUEUE","current_gap":"Three rebuilds returned; independent fidelity/presentation consumption and broader P01-P09/detail proof remain open."},
+        {"workstream_id":"ACTIVE-5-F-FINAL-INTEGRATION","state":"ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM","current_gap":"Closure remains open while upstream B/D/Web/Active-4 gates remain open."}
+      ],
+      "production_queue_role":"ACTIVE_4_BLENDER_REBUILD_SUBQUEUE_ONLY",
+      "production_queue":["云水倚","流体座椅人体工","江畔停泊折叠观"],
+      "production_cursor":{"rebuild_returned":["云水倚","流体座椅人体工","江畔停泊折叠观"],"design_current":null,"validation_current":"云水倚","presentation_waiting":"云水倚","next_after_design":"MODEL_4_MODEL_5_CANDIDATE_AUDIT_RETURNED_NO_NEW_BLENDER_CHILD_AUTHORIZED"},
+      "design_subtask_lease":"ACTIVE_4_MODEL_CANDIDATE_AUDIT",
+      "design_subtask_lease_state":"RETURNED",
+      "design_subtask_current_item":null,
+      "design_subtask_last_returned_item":"MODEL_4_MODEL_5_CANDIDATE_AUDIT",
+      "design_current_execution_state":"RETURNED_COMPLETE_FOR_CURRENT_EVIDENCE",
+      "design_current_execution_evidence":"C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md classifies all nine remaining observed identities; NO MODEL 4 / NO MODEL 5 AUTHORIZATION. Non-3D-first identities route to Brand/Memory-IP/interaction/editorial carriers.",
+      "design_current_return_gate":"CLOSED_FOR_CURRENT_EVIDENCE; future Blender child requires exact identity + Current role binding + concrete KEEP/CURRENTIZE/COMPETE use + material native-3D need + insufficient 2D carrier + sufficient Source Authority.",
+      "validation_subtask_lease":"REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
+      "validation_subtask_lease_state":"ACTIVE",
+      "validation_subtask_current_item":"云水倚",
+      "presentation_subtask_current_item":"云水倚",
+      "shared_blender_runtime_interface_state":"ACTIVE_RUNTIME_INTERFACE",
+      "job_local_blender_materialization_state":"NO_ACTIVE_JOB_BINDING",
+      "production_stall":null,
+      "next_action":"Run C04 as five Current workstreams. Active-4 DESIGN candidate audit is returned; no model 4/5 is authorized. VALIDATION/PRESENTATION consume the three returned rebuilds while Brand/Memory-IP/interaction/editorial lanes consume the nine routed identities. Web/B/D/F remain independent active frontiers.",
+      "updated_at":"2026-09-04T06:07:36+08:00",
+      "source_of_queue_decision":"Remote readback of C04_PROJECT_CONTROL_CARD_CURRENT.md and returned C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md; governance sync only, no production delta."
     }
-  ],
-  "entry_schema": {
-    "priority": "1..3",
-    "project_id": "stable project id",
-    "object_id": "stable logical object id",
-    "current_owner": "KNOWLEDGE|DESIGN|PRESENTATION|VALIDATION|GOVERNANCE",
-    "state": "ACTIVE|HANDOFF_READY|IN_REVIEW|REVISE|HOLD",
-    "current_native_master": "canonical master reference",
-    "current_pr_frontier": "PR/branch/page frontier",
-    "next_owner": "lifecycle owner",
-    "next_action": "one concrete next action",
-    "updated_at": "ISO-8601",
-    "source_of_queue_decision": "project Current State or explicit user instruction"
-  }
+  ]
 }
