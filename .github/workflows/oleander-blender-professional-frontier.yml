@@ -8,6 +8,7 @@ on:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py"
       - ".github/workflows/oleander-blender-professional-frontier.yml"
       - ".github/workflows/oleander-blender-professional-freecad-*.yml"
       - "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md"
@@ -24,6 +25,7 @@ on:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py"
       - ".github/workflows/oleander-blender-professional-frontier.yml"
       - ".github/workflows/oleander-blender-professional-freecad-*.yml"
 
@@ -81,10 +83,10 @@ jobs:
             outdir: /tmp/oleander-frontier-custom-axis
           - id: reference-bound-operation
             probe: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py
-            readback: ""
+            readback: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py
             marker: OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION=
-            readback_marker: ""
-            needs_blender: false
+            readback_marker: OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK=
+            needs_blender: true
             outdir: /tmp/oleander-frontier-reference-operation
     env:
       FREECAD_VERSION: "1.1.3"
