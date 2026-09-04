@@ -69,6 +69,15 @@
       "parity_key": "FREECAD_REFERENCE_BOUND_OPERATION",
       "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_20260904.json",
       "promotion_allowed": true
+    },
+    {
+      "id": "FREECAD_BOUNDED_PATTERN_MIRROR",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_pattern_mirror.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_pattern_mirror_blender_readback.py",
+      "state": "VALIDATION_PENDING",
+      "parity_key": "FREECAD_BOUNDED_PATTERN_MIRROR",
+      "receipt": null,
+      "promotion_allowed": false
     }
   ],
   "allowed_frontier_states": [
@@ -88,12 +97,12 @@
     "require_default_environment_eligible_explicit_decision": true
   },
   "branch_hygiene": {
-    "last_observed_behind_main": 37,
-    "last_observed_ahead_main": 469,
+    "last_observed_behind_main": 41,
+    "last_observed_ahead_main": 479,
     "observation_date": "2026-09-04",
     "observation_is_advisory": true,
     "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
     "rule": "Candidate development may continue in Draft, but promotion is prohibited until a fresh compare proves behind count is zero. Stored ahead/behind values are audit snapshots, never promotion authority."
   },
-  "governance_note": "Existing validated evidence is preserved. Both current professional frontier items now have real FreeCAD/OCCT plus Blender save/reopen validation receipts and are registered only as bounded capabilities. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, and keeps main as the only installed CURRENT. PR/default-environment promotion remains HOLD until fresh main synchronization, contradiction scan, full regression and explicit promotion decision."
+  "governance_note": "Existing validated evidence is preserved. The custom tangent-axis rotate and semantic-reference-bound operation have real FreeCAD/OCCT plus Blender save/reopen receipts and are registered only as bounded capabilities. A new bounded BRep pattern/mirror frontier is VALIDATION_PENDING and is prohibited from parity registration or receipt creation until the shared Frontier completes real FreeCAD/OCCT plus Blender readback. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, and keeps main as the only installed CURRENT. PR/default-environment promotion remains HOLD until fresh main synchronization, contradiction scan, full regression and explicit promotion decision."
 }
