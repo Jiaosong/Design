@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -45,6 +45,24 @@
       "next_action":"Run C04 as five Current workstreams. Active-4 DESIGN candidate audit is returned; no model 4/5 is authorized. VALIDATION/PRESENTATION consume the three returned rebuilds while Brand/Memory-IP/interaction/editorial lanes consume the nine routed identities. Web/B/D/F remain independent active frontiers.",
       "updated_at":"2026-09-04T06:07:36+08:00",
       "source_of_queue_decision":"Remote readback of C04_PROJECT_CONTROL_CARD_CURRENT.md and returned C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md; governance sync only, no production delta."
+    },
+    {
+      "priority": 2,
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "object_id": "C01-RESEARCH-PROPOSAL-EVIDENCE-REVIEW",
+      "entry_scope": "WHOLE_PROJECT",
+      "current_owner": "VALIDATION",
+      "current_owner_scope": "EVIDENCE_REVIEW_AND_PILOT_READINESS; NOT A CLAIM THAT HUMAN/FIELD VALIDATION HAS RUN",
+      "state": "ACTIVE_REPAIR",
+      "whole_project_authority": ["05-cases/c01-yimai-guangdu/README.md"],
+      "current_evidence_level": "E2_DO_NOT_UPGRADE",
+      "current_machine_state": "R03_BROWSER_DRY_RUN_PASS",
+      "external_validation_state": "REALITY_GATE_2_NOT_RUN / HUMAN_TEST_NOT_RUN",
+      "ready_object": "SMALL_ADULT_PHOTO_PILOT_READY",
+      "blocked_objects": ["A0_EXISTING_GUIDANCE_BASELINE_PENDING_CAPTURE","REALITY_GATE_2_FIELD_EXECUTION","HUMAN_TEST"],
+      "next_action": "Consume repository-grounded evidence-review and pilot-readiness work that does not require unavailable field/human input; preserve P1/P2/P3 identity asymmetry and E2 boundary. Do not treat browser dry-run as human validation.",
+      "queue_entry_reason": "Global pool repair: C01 Current README explicitly remains RESEARCH + PROPOSAL / EVIDENCE REVIEW and records a SMALL ADULT PHOTO PILOT READY object while Queue had incorrectly narrowed to C04-only.",
+      "updated_at": "2026-09-04T18:03:27+08:00"
     }
   ]
 }
