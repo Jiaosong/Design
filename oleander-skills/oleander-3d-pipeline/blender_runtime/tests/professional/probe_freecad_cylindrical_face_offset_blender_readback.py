@@ -18,6 +18,7 @@ EXPECTED = {
     "R001": {"source_outer": 30.0, "inner": 15.0, "height": 20.0, "offset": 2.0, "result_outer": 32.0},
     "R002": {"source_outer": 40.0, "inner": 20.0, "height": 25.0, "offset": -3.0, "result_outer": 37.0},
 }
+TESSELLATION_BBOX_DEFICIT_MM = 0.5
 
 
 def check(ok: bool, label: str) -> None:
@@ -78,7 +79,12 @@ def main():
     bpy.context.view_layer.update()
     for name in EXPECTED:
         obj = bpy.data.objects["OLE_CYL_FACE_OFFSET_" + name]
-        check(all(close(a, b, 1e-3) for a, b in zip([obj.dimensions.x, obj.dimensions.y, obj.dimensions.z], revisions[name]["bbox_mm"])), "bbox_" + name)
+        mesh_dims = [obj.dimensions.x, obj.dimensions.y, obj.dimensions.z]
+        brep_bbox = revisions[name]["bbox_mm"]
+        for axis, mesh_dim, brep_dim in zip("XYZ", mesh_dims, brep_bbox):
+            check(mesh_dim <= brep_dim + 1e-3, "display_bbox_not_exceed_brep_" + axis + "_" + name)
+            check(brep_dim - mesh_dim <= TESSELLATION_BBOX_DEFICIT_MM, "display_bbox_deficit_bounded_" + axis + "_" + name)
+        check(close(mesh_dims[2], EXPECTED[name]["height"], 1e-3), "display_height_exact_" + name)
 
     bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN))
     check(REOPEN.exists(), "blend_saved")
@@ -99,6 +105,7 @@ def main():
         "status": "PASS",
         "blender": bpy.app.version_string,
         "revisions": sorted(EXPECTED),
+        "tessellation_bbox_deficit_limit_mm": TESSELLATION_BBOX_DEFICIT_MM,
         "checks": checks,
         "authority": {"master": "FreeCAD/OCCT nonplanar cylindrical face offset", "blender": "DISPLAY_DERIVATIVE_ONLY"},
         "non_claims": ["P0_B_DIRECT_BREP_PASS", "general_push_pull", "arbitrary_curved_face_offset", "freeform_nonplanar_face_edit", "persistent_topological_naming"],
