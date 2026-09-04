@@ -9,11 +9,32 @@
     return clamp((viewport-rect.top)/(viewport+rect.height));
   };
 
-  // Exact Qingjiang source images are official eslygroup.com assets. Chromium
-  // readback showed that their first external request can fail in the CI/browser
-  // carrier. Keep Source Authority unchanged, but retry the same asset with a
-  // no-referrer request instead of substituting a generic/AI image.
+  // Preserve the locked Qingjiang source identity while making the public page
+  // resilient to the official host failing inside the browser carrier. The
+  // repo-local data scripts contain derivatives of those exact authority images.
+  function loadAuthorityImageData(src,done){
+    const script=document.createElement('script');
+    script.src=src;
+    script.onload=done;
+    script.onerror=done;
+    document.head.appendChild(script);
+  }
+
   function bindQingjiangImageTransport(){
+    const heroSource='https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg';
+    const r06Source='https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg';
+    const applyLocalFallbacks=()=>{
+      document.querySelectorAll(`img[data-qj-source="${heroSource}"]`).forEach(image=>{
+        if(image.naturalWidth===0&&window.C04_QJD_HERO_DATA) image.src=window.C04_QJD_HERO_DATA;
+      });
+      document.querySelectorAll(`img[data-qj-source="${r06Source}"]`).forEach(image=>{
+        if(image.naturalWidth===0&&window.C04_QJD_R06_DATA) image.src=window.C04_QJD_R06_DATA;
+      });
+    };
+
+    loadAuthorityImageData('assets/qj_hero_keep_v11_data.js',applyLocalFallbacks);
+    loadAuthorityImageData('assets/qj_r06_landscape_keep_v11_data.js',applyLocalFallbacks);
+
     const images=[...document.querySelectorAll('img[src^="https://www.eslygroup.com/"]')];
     images.forEach(image=>{
       if(image.dataset.qjTransportBound==='true') return;
@@ -23,12 +44,15 @@
       if(!source) return;
       image.dataset.qjSource=source;
       const retry=()=>{
-        if(image.dataset.qjRetry==='true') return;
+        if(image.dataset.qjRetry==='true'){
+          applyLocalFallbacks();
+          return;
+        }
         image.dataset.qjRetry='true';
         const separator=source.includes('?')?'&':'?';
         image.src=`${source}${separator}oleander_retry=1`;
       };
-      image.addEventListener('error',retry,{once:true});
+      image.addEventListener('error',retry);
       if(image.complete&&image.naturalWidth===0) retry();
     });
   }
