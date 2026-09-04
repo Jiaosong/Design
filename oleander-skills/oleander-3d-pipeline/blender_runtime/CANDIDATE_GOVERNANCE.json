@@ -56,19 +56,19 @@
       "id": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
       "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py",
       "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py",
-      "state": "VALIDATION_PENDING",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
       "parity_key": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
-      "receipt": null,
-      "promotion_allowed": false
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE_20260904.json",
+      "promotion_allowed": true
     },
     {
       "id": "FREECAD_REFERENCE_BOUND_OPERATION",
       "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py",
-      "readback": null,
-      "state": "EXPERIMENTAL_UNVERIFIED",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
       "parity_key": "FREECAD_REFERENCE_BOUND_OPERATION",
-      "receipt": null,
-      "promotion_allowed": false
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_20260904.json",
+      "promotion_allowed": true
     }
   ],
   "allowed_frontier_states": [
@@ -95,5 +95,5 @@
     "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
     "rule": "Candidate development may continue in Draft, but promotion is prohibited until a fresh compare proves behind count is zero. Stored ahead/behind values are audit snapshots, never promotion authority."
   },
-  "governance_note": "Existing validated evidence is preserved. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, distinguishes unverified frontier work from validated parity status, and keeps main as the only installed CURRENT until explicit promotion and readback."
+  "governance_note": "Existing validated evidence is preserved. Both current professional frontier items now have real FreeCAD/OCCT plus Blender save/reopen validation receipts and are registered only as bounded capabilities. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, and keeps main as the only installed CURRENT. PR/default-environment promotion remains HOLD until fresh main synchronization, contradiction scan, full regression and explicit promotion decision."
 }
