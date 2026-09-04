@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional CAD Sidecar Integration
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/contracts/**"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/professional_adapter/**"

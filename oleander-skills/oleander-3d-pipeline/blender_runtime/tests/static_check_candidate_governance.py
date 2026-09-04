@@ -20,6 +20,18 @@ def check(condition: bool, message: str) -> None:
         fail(message)
 
 
+def assert_review_boundary_workflow(relative: str) -> None:
+    workflow_path = ROOT / relative
+    check(workflow_path.exists(), f"review-boundary workflow missing: {relative}")
+    text = workflow_path.read_text(encoding="utf-8")
+    check("  pull_request:\n" in text and "\n  push:\n" in text, f"review-boundary trigger blocks missing: {relative}")
+    pull_block = text.split("  pull_request:\n", 1)[1].split("\n  push:\n", 1)[0]
+    check("    types: [ready_for_review]\n" in pull_block, f"historical baseline must not run on Draft synchronize: {relative}")
+    check("synchronize" not in pull_block, f"historical baseline cannot re-enable Draft synchronize: {relative}")
+    push_block = text.split("\n  push:\n", 1)[1]
+    check("    branches:\n      - main\n" in push_block, f"historical baseline must preserve push-main regression: {relative}")
+
+
 def main() -> None:
     governance = json.loads(GOV.read_text(encoding="utf-8"))
     status = json.loads(STATUS.read_text(encoding="utf-8"))
@@ -38,6 +50,8 @@ def main() -> None:
 
     policy = governance["workflow_policy"]
     grandfathered = set(policy["grandfathered_freecad_workflows"])
+    cad_baselines = set(policy["grandfathered_cad_baseline_workflows"])
+    review_boundary = grandfathered | cad_baselines
     actual = {
         str(path.relative_to(ROOT)).replace("\\", "/")
         for path in WORKFLOWS.glob("oleander-blender-professional-freecad-*.yml")
@@ -46,20 +60,14 @@ def main() -> None:
     missing = sorted(grandfathered - actual)
     check(not unexpected, "new one-off FreeCAD workflow is prohibited; use shared frontier workflow: " + ", ".join(unexpected))
     check(not missing, "grandfathered workflow disappeared without governance migration: " + ", ".join(missing))
+    check(len(cad_baselines) == 3, "exactly three stable CAD baselines are review-boundary governed")
     check((ROOT / policy["shared_frontier_workflow"]).exists(), "shared frontier workflow must exist")
     check(policy["candidate_draft_frontier_owner"] == "SHARED_FRONTIER", "Draft Candidate professional development must use shared Frontier")
     check(policy["grandfathered_pr_trigger"] == "READY_FOR_REVIEW_ONLY", "grandfathered PR workflows must be review-boundary only")
     check(policy["grandfathered_push_main_regression_preserved"] is True, "grandfathered push-main regression must remain preserved")
 
-    for relative in sorted(grandfathered):
-        workflow_path = ROOT / relative
-        text = workflow_path.read_text(encoding="utf-8")
-        check("  pull_request:\n" in text and "\n  push:\n" in text, f"grandfathered workflow trigger blocks missing: {relative}")
-        pull_block = text.split("  pull_request:\n", 1)[1].split("\n  push:\n", 1)[0]
-        check("    types: [ready_for_review]\n" in pull_block, f"grandfathered workflow must not run on Draft synchronize: {relative}")
-        check("synchronize" not in pull_block, f"grandfathered workflow cannot re-enable Draft synchronize: {relative}")
-        push_block = text.split("\n  push:\n", 1)[1]
-        check("    branches:\n      - main\n" in push_block, f"grandfathered workflow must preserve push-main regression: {relative}")
+    for relative in sorted(review_boundary):
+        assert_review_boundary_workflow(relative)
 
     parity_candidates = status.get("reuse_candidates", {})
     allowed_states = set(governance["allowed_frontier_states"])
@@ -95,6 +103,8 @@ def main() -> None:
 
     print("OLEANDER_CANDIDATE_GOVERNANCE=PASS")
     print("grandfathered_freecad_workflows=" + str(len(grandfathered)))
+    print("grandfathered_cad_baselines=" + str(len(cad_baselines)))
+    print("review_boundary_workflows=" + str(len(review_boundary)))
     print("grandfathered_pr_trigger=" + policy["grandfathered_pr_trigger"])
     print("frontier_items=" + str(len(governance["frontier_items"])))
 
