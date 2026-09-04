@@ -28,6 +28,10 @@
   "workflow_policy": {
     "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
     "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier.yml",
+    "candidate_draft_frontier_owner": "SHARED_FRONTIER",
+    "grandfathered_pr_trigger": "READY_FOR_REVIEW_ONLY",
+    "grandfathered_push_main_regression_preserved": true,
+    "trigger_migration_commit": "69bf18ed02b02bbea8b135bd0e7e1290ba341abc",
     "new_oneoff_exception_requires": "USER_EXPLICIT_APPROVAL_PLUS_GOVERNANCE_RECEIPT",
     "grandfathered_freecad_workflows": [
       ".github/workflows/oleander-blender-professional-freecad-brep.yml",
@@ -116,11 +120,12 @@
   },
   "branch_hygiene": {
     "last_observed_behind_main": 43,
-    "last_observed_ahead_main": 501,
+    "last_observed_ahead_main": 503,
+    "observation_head": "69bf18ed02b02bbea8b135bd0e7e1290ba341abc",
     "observation_date": "2026-09-04",
     "observation_is_advisory": true,
     "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
     "rule": "Candidate development may continue in Draft, but promotion is prohibited until a fresh compare proves behind count is zero. Stored ahead/behind values are audit snapshots, never promotion authority."
   },
-  "governance_note": "Existing validated evidence is preserved. Custom tangent-axis rotate, semantic-reference-bound operation, bounded BRep through-hole linear pattern/mirror, bounded offset-pivot non-tangent arbitrary-axis face rotate, and one bounded outer-cylindrical nonplanar face radial-offset family all have real FreeCAD/OCCT plus Blender save/reopen receipts and are registered only as bounded capabilities. The cylindrical proof validates only the governed tube/outer-cylinder radial-offset family with inner cylindrical face preservation, adjacent annular-face replacement, bounded tessellation readback and fail-closed wall-collapse/selector/offset guards; it does not establish general curved/freeform face edit parity. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, and keeps main as the only installed CURRENT. PR/default-environment promotion remains HOLD until fresh main synchronization, contradiction scan, full regression and explicit promotion decision."
+  "governance_note": "Existing validated evidence is preserved. Custom tangent-axis rotate, semantic-reference-bound operation, bounded BRep through-hole linear pattern/mirror, bounded offset-pivot non-tangent arbitrary-axis face rotate, and one bounded outer-cylindrical nonplanar face radial-offset family all have real FreeCAD/OCCT plus Blender save/reopen receipts and are registered only as bounded capabilities. The cylindrical proof validates only the governed tube/outer-cylinder radial-offset family with inner cylindrical face preservation, adjacent annular-face replacement, bounded tessellation readback and fail-closed wall-collapse/selector/offset guards; it does not establish general curved/freeform face edit parity. Fifteen grandfathered FreeCAD workflows remain preserved as evidence but are PR-triggered only on ready_for_review; push-main regression remains enabled. Draft Candidate development is owned by the shared Frontier, preventing long-lived-PR path matching from re-running all grandfathered FreeCAD jobs on every synchronize. The guard inherits project-wide anti-pollution authority from main without forking it, freezes one-off workflow growth, and keeps main as the only installed CURRENT. PR/default-environment promotion remains HOLD until fresh main synchronization, contradiction scan, full regression and explicit promotion decision."
 }
