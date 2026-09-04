@@ -9,6 +9,31 @@
     return clamp((viewport-rect.top)/(viewport+rect.height));
   };
 
+  // Exact Qingjiang source images are official eslygroup.com assets. Chromium
+  // readback showed that their first external request can fail in the CI/browser
+  // carrier. Keep Source Authority unchanged, but retry the same asset with a
+  // no-referrer request instead of substituting a generic/AI image.
+  function bindQingjiangImageTransport(){
+    const images=[...document.querySelectorAll('img[src^="https://www.eslygroup.com/"]')];
+    images.forEach(image=>{
+      if(image.dataset.qjTransportBound==='true') return;
+      image.dataset.qjTransportBound='true';
+      image.referrerPolicy='no-referrer';
+      const source=image.getAttribute('src');
+      if(!source) return;
+      image.dataset.qjSource=source;
+      const retry=()=>{
+        if(image.dataset.qjRetry==='true') return;
+        image.dataset.qjRetry='true';
+        const separator=source.includes('?')?'&':'?';
+        image.src=`${source}${separator}oleander_retry=1`;
+      };
+      image.addEventListener('error',retry,{once:true});
+      if(image.complete&&image.naturalWidth===0) retry();
+    });
+  }
+  bindQingjiangImageTransport();
+
   const root=document.documentElement;
   const hero=document.querySelector('#hero');
   const finalSection=document.querySelector('#final');
