@@ -246,13 +246,28 @@ def main():
     for label, delta, needle in [
         ("zero_offset", 0.0, "non-zero"),
         ("excessive_offset", 6.0, "bounded radial contract"),
-        ("wall_collapse", -14.5, "bounded radial contract"),
     ]:
         state = "FAIL"
-        try: offset_outer_cylindrical_face(base, delta)
+        try:
+            offset_outer_cylindrical_face(base, delta)
         except ValueError as exc:
-            if needle in str(exc): state = "PASS"; checks.append("expected_failure_" + label)
-        check(state == "PASS", "failure_gate_" + label); failures[label] = state
+            if needle in str(exc):
+                state = "PASS"
+                checks.append("expected_failure_" + label)
+        check(state == "PASS", "failure_gate_" + label)
+        failures[label] = state
+
+    collapse_base = make_tube(18.0, 15.0, 20.0)
+    wall_collapse = "FAIL"
+    try:
+        offset_outer_cylindrical_face(collapse_base, -3.0)
+    except ValueError as exc:
+        if "offset collapses bounded wall thickness" in str(exc):
+            wall_collapse = "PASS"
+            checks.append("expected_failure_wall_collapse")
+    check(wall_collapse == "PASS", "failure_gate_wall_collapse")
+    failures["wall_collapse"] = wall_collapse
+
     invalid_tube = "FAIL"
     try: make_tube(15.0, 15.0, 20.0)
     except ValueError as exc:
