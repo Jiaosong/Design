@@ -11,7 +11,7 @@
 
   // Preserve the locked Qingjiang source identity while making the public page
   // resilient to the official host failing inside the browser carrier. The
-  // repo-local data scripts contain derivatives of those exact authority images.
+  // repo-local data scripts resolve the exact authority-image fallback carrier.
   function loadAuthorityImageData(src,done){
     const script=document.createElement('script');
     script.src=src;
@@ -23,12 +23,18 @@
   function bindQingjiangImageTransport(){
     const heroSource='https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg';
     const r06Source='https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg';
+    const useFallback=(image,fallback)=>{
+      if(!fallback||image.dataset.qjFallbackApplied==='true') return;
+      image.dataset.qjFallbackApplied='true';
+      image.dataset.qjRetry='true';
+      image.src=fallback;
+    };
     const applyLocalFallbacks=()=>{
       document.querySelectorAll(`img[data-qj-source="${heroSource}"]`).forEach(image=>{
-        if(image.naturalWidth===0&&window.C04_QJD_HERO_DATA) image.src=window.C04_QJD_HERO_DATA;
+        if(image.naturalWidth===0&&window.C04_QJD_HERO_DATA) useFallback(image,window.C04_QJD_HERO_DATA);
       });
       document.querySelectorAll(`img[data-qj-source="${r06Source}"]`).forEach(image=>{
-        if(image.naturalWidth===0&&window.C04_QJD_R06_DATA) image.src=window.C04_QJD_R06_DATA;
+        if(image.naturalWidth===0&&window.C04_QJD_R06_DATA) useFallback(image,window.C04_QJD_R06_DATA);
       });
     };
 
@@ -44,6 +50,7 @@
       if(!source) return;
       image.dataset.qjSource=source;
       const retry=()=>{
+        if(image.dataset.qjFallbackApplied==='true') return;
         if(image.dataset.qjRetry==='true'){
           applyLocalFallbacks();
           return;
