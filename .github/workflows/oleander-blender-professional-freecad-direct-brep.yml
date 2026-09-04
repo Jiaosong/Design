@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Direct BRep
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_features.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_stable_selector_brep_blender_readback.py"

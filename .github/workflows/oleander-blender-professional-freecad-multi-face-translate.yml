@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Multi Face Translate
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate_blender_readback.py"

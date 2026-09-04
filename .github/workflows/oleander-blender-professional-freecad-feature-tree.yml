@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Feature Tree
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_parametric_feature_tree.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_feature_tree_blender_readback.py"

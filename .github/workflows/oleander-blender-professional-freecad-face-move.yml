@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Face Move
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_normal_move.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_move_blender_readback.py"

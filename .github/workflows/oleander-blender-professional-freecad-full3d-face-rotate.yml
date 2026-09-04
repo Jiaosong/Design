@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Full3D Face Rotate
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_rotate.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_full3d_face_rotate_blender_readback.py"

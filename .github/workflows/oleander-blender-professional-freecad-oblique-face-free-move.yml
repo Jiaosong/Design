@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Oblique Face Free Move
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_oblique_face_free_move.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_oblique_face_free_move_blender_readback.py"

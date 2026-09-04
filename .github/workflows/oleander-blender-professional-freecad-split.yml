@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Split
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split_blender_readback.py"

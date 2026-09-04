@@ -2,6 +2,7 @@ name: OLEANDER Blender Professional FreeCAD Healing
 
 on:
   pull_request:
+    types: [ready_for_review]
     paths:
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing.py"
       - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing_blender_readback.py"
