@@ -3,11 +3,14 @@
 The semantic local +X face of a yaw+pitch transformed FreeCAD/OCCT box is
 selected by transformed normal. A user-defined tangent axis is constructed at
 the selected-face center from normalize(4*localY + 3*localZ), transformed with
-the same source orientation. The face and four adjacent faces are rebuilt via
-BRepTools_ReShape.
+the same source orientation. The rotated target remains planar; the four
+adjacent faces are rebuilt as OCCT ruled surfaces between the fixed opposite
+edge and the rotated target edge, then applied through BRepTools_ReShape.
 
 This proves one bounded custom tangent-axis family, not unrestricted arbitrary
-axis rotation, nonplanar editing, persistent topological naming, or P0-B parity.
+axis rotation, nonplanar face editing, persistent topological naming, or P0-B
+parity. Nonplanar ruled *side faces* are a consequence of the bounded planar
+face rotation and do not claim general nonplanar-face direct editing.
 """
 
 from __future__ import annotations
@@ -119,6 +122,47 @@ def make_face(points, expected_normal):
     return face
 
 
+def edge_connects(face, a, b):
+    for edge in face.Edges:
+        verts = edge.Vertexes
+        if len(verts) != 2:
+            continue
+        p0, p1 = verts[0].Point, verts[1].Point
+        if (same_point(p0, a) and same_point(p1, b)) or (same_point(p0, b) and same_point(p1, a)):
+            return True
+    return False
+
+
+def make_ruled_adjacent_face(face, old_target_points, new_target_points):
+    """Rebuild one side face without falsely assuming its four corners remain coplanar."""
+    pts = ordered_points(face)
+    shared = [p for p in pts if any(same_point(p, q) for q in old_target_points)]
+    fixed = [p for p in pts if not any(same_point(p, q) for q in old_target_points)]
+    check(len(shared) == 2 and len(fixed) == 2, "ruled_side_two_shared_two_fixed")
+    check(edge_connects(face, shared[0], shared[1]), "ruled_side_shared_edge_exists")
+    check(edge_connects(face, fixed[0], fixed[1]), "ruled_side_fixed_edge_exists")
+
+    fixed_for_shared = []
+    for sp in shared:
+        candidates = [fp for fp in fixed if edge_connects(face, sp, fp)]
+        check(len(candidates) == 1, "ruled_side_unique_correspondence")
+        fixed_for_shared.append(candidates[0])
+    check(not same_point(fixed_for_shared[0], fixed_for_shared[1]), "ruled_side_distinct_fixed_endpoints")
+
+    moved = [replace_point(sp, old_target_points, new_target_points) for sp in shared]
+    fixed_edge = Part.makeLine(fixed_for_shared[0], fixed_for_shared[1])
+    moved_edge = Part.makeLine(moved[0], moved[1])
+    ruled = Part.makeRuledSurface(fixed_edge, moved_edge)
+    check(not ruled.isNull() and ruled.isValid(), "ruled_side_shape_valid")
+    check(len(ruled.Faces) == 1, "ruled_side_single_face")
+    rebuilt = ruled.Faces[0]
+    if face_normal(rebuilt).dot(face_normal(face)) < 0:
+        rebuilt = rebuilt.reversed()
+    check(rebuilt.isValid(), "ruled_side_face_valid")
+    check(len(rebuilt.Vertexes) == 4, "ruled_side_four_boundary_vertices")
+    return rebuilt
+
+
 def normalize_reshape(shape):
     candidate = shape.copy()
     candidate.sewShape(1e-7)
@@ -216,7 +260,7 @@ def rotate_selected_face(shape, selector_normal, axis, angle_deg):
         if shared == 0:
             continue
         check(shared == 2, "adjacent_face_shares_target_edge")
-        rebuilt = make_face([replace_point(p, old_pts, new_pts) for p in pts], face_normal(face))
+        rebuilt = make_ruled_adjacent_face(face, old_pts, new_pts)
         replacements.append((face, rebuilt))
         adjacent += 1
     check(adjacent == 4 and len(replacements) == 5, "target_plus_four_adjacent_faces")
@@ -240,8 +284,9 @@ def rotate_selected_face(shape, selector_normal, axis, angle_deg):
         "angle_deg": angle_deg,
         "actual_angle_deg": actual_angle,
         "expected_rotated_normal": [expected_normal.x, expected_normal.y, expected_normal.z],
-        "operation": "BRepTools_ReShape_FULL3D_PLANAR_FACE_ROTATE_CUSTOM_TANGENT_AXIS",
+        "operation": "BRepTools_ReShape_FULL3D_PLANAR_FACE_ROTATE_CUSTOM_TANGENT_AXIS_RULED_SIDES",
         "replaced_face_count": 5,
+        "adjacent_surface_model": "OCCT_RULED_SURFACE_BETWEEN_FIXED_AND_ROTATED_EDGES",
         "opposite_face_untouched": True,
     }
 
@@ -305,6 +350,7 @@ def main():
         check(rev["metrics"]["solid_count"] == 1 and rev["metrics"]["face_count"] == 6, "topology_" + name)
         check(close(rev["operation"]["actual_angle_deg"], rev["angle_deg"], 1e-6), "signed_angle_" + name)
         check(is_full3d(vec(rev["operation"]["axis_world_direction"])), "full3d_custom_axis_" + name)
+        check(rev["operation"]["adjacent_surface_model"] == "OCCT_RULED_SURFACE_BETWEEN_FIXED_AND_ROTATED_EDGES", "ruled_side_model_" + name)
 
     stage("EXPECTED_FAILURES")
     base = revs["R002"]["source"]
@@ -351,7 +397,7 @@ def main():
     stage("DISPLAY")
     display = {"schema":"OLEANDER_CUSTOM_TANGENT_AXIS_FACE_ROTATE_DISPLAY_v0.1","master_type":"CAD_NATIVE","geometry_authority":"FREECAD_OCCT_BREP","display_authority":"DISPLAY_DERIVATIVE_ONLY","units":"mm","angle_units":"deg","source_fcstd":FCSTD.name,"source_fcstd_sha256":sha256(FCSTD),"revisions":[display_record("R001",revs["R001"],STEP_R001),display_record("R002",revs["R002"],STEP_R002)]}
     DISPLAY.write_text(json.dumps(display, indent=2, sort_keys=True), encoding="utf-8")
-    manifest = {"schema":"OLEANDER_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE_v0.1","status":"PASS","units":"mm","angle_units":"deg","authority":{"geometry_master":"FREECAD_OCCT_BREP","blender":"DISPLAY_DERIVATIVE_ONLY"},"selector":"semantic local +X planar face after yaw+pitch transform","axis":"selected-face-center user-defined normalize(4*localY+3*localZ) tangent axis","R001":serializable(revs["R001"]),"R002":serializable(revs["R002"]),"expected_failure_cases":failures,"artifacts":{"fcstd":{"path":FCSTD.name,"sha256":sha256(FCSTD)},"step_R001":{"path":STEP_R001.name,"sha256":sha256(STEP_R001)},"step_R002":{"path":STEP_R002.name,"sha256":sha256(STEP_R002)},"display":{"path":DISPLAY.name,"sha256":sha256(DISPLAY)}},"checks":checks,"non_claims":["P0_B_DIRECT_BREP_PASS","general_arbitrary_axis_face_rotate","axis_not_constrained_to_face_tangent_plane","nonplanar_face_rotate","persistent_topological_naming","production_direct_modeling_parity"]}
+    manifest = {"schema":"OLEANDER_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE_v0.1","status":"PASS","units":"mm","angle_units":"deg","authority":{"geometry_master":"FREECAD_OCCT_BREP","blender":"DISPLAY_DERIVATIVE_ONLY"},"selector":"semantic local +X planar face after yaw+pitch transform","axis":"selected-face-center user-defined normalize(4*localY+3*localZ) tangent axis","side_surface_model":"OCCT ruled surfaces between fixed opposite edges and rotated target edges","R001":serializable(revs["R001"]),"R002":serializable(revs["R002"]),"expected_failure_cases":failures,"artifacts":{"fcstd":{"path":FCSTD.name,"sha256":sha256(FCSTD)},"step_R001":{"path":STEP_R001.name,"sha256":sha256(STEP_R001)},"step_R002":{"path":STEP_R002.name,"sha256":sha256(STEP_R002)},"display":{"path":DISPLAY.name,"sha256":sha256(DISPLAY)}},"checks":checks,"non_claims":["P0_B_DIRECT_BREP_PASS","general_arbitrary_axis_face_rotate","axis_not_constrained_to_face_tangent_plane","general_nonplanar_face_direct_edit","persistent_topological_naming","production_direct_modeling_parity"]}
     MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
     stage("PASS"); print("OLEANDER_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE=" + json.dumps(manifest, sort_keys=True), flush=True)
 
