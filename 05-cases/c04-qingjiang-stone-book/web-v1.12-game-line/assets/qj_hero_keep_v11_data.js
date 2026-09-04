@@ -1,1 +1,1 @@
-window.C04_QJD_HERO_DATA='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcU...';
+window.C04_QJD_HERO_DATA='https://drive.google.com/uc?export=view&id=151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh';
