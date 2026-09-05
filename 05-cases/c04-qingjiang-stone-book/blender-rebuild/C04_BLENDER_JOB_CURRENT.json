@@ -1,27 +1,25 @@
 {
   "schema_version": "1.1",
-  "status": "RETURNED",
-  "job_id": "PRJ-C04-QINGJIANG-SHISHU/JIANGPAN_FOLDING_OBSERVATION/REBUILD_V001/R01",
-  "revision": 2,
+  "status": "READY",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/YUNSHUIYI/REBUILD_V003/FIDELITY_REPAIR_R02",
+  "revision": 3,
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
-  "child_item": "江畔停泊折叠观",
-  "purpose": "SUBORDINATE_MACHINE_JOB_RETURN_RECORD",
-  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_jiangpan_folding_observation_v001.py",
-  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_jiangpan_folding_observation_v001.py",
-  "blend_file": "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001.blend",
-  "output_dir": "artifacts/c04-jiangpan-folding-observation",
-  "artifact_name": "C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001",
-  "design_authority": "DESIGN_ESTIMATE_FROM_CURRENT_SOURCE_REFERENCE",
-  "source_reference_state": "SOURCE_AUDIT_BOUNDED: CURRENT QUEUE AUTHORIZED THIS LOGICAL CHILD; NO VERIFIED DIMENSIONS OR SOURCE GEOMETRY WERE EXPOSED TO PRODUCER; SOURCE_REFERENCE_ONLY; DO_NOT_INFER_ENGINEERING_TRUTH",
+  "child_item": "云水倚",
+  "purpose": "CURRENT_FIDELITY_REPAIR_MACHINE_JOB",
+  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py",
+  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py",
+  "blend_file": "artifacts/c04-yunshuiyi/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+  "output_dir": "artifacts/c04-yunshuiyi",
+  "artifact_name": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
+  "design_authority": "ODB-02_SOURCE_BOUND_VISUAL_AUTHORITY_WITH_DESIGN_ESTIMATE_GEOMETRY",
+  "source_reference_state": "ODB-02 source-bound imagery is visual authority. Preserve bilateral side rails, five timber back slats, fold-down padded seat, paired hinge/pivot hardware, diagonal support arms and railing mount/clamp relation. Metric values remain DESIGN_ESTIMATE; no engineering claim.",
   "field_state": "FIELD_OPEN",
   "promotion": "NO_PROMOTION",
-  "returned_transition": "Machine execution and canonical persistence for this child are complete. This descriptor is retired from READY so later unrelated Git writes cannot be misread as a fresh execution request. A future Blender child requires an explicitly authorized candidate audit result and a new/updated descriptor written READY only after its producer/validator remote readback.",
-  "machine_return": {
-    "workflow_run_id": 33778596667,
-    "artifact_id": 9902635163,
-    "artifact_digest": "sha256:368c2ca776a6b16d7cd3a32d1fd766e60d8d9fc5b1a511f4cb069abf6eae7388",
-    "persistence_receipt": "05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_JIANGPAN_FOLDING_OBSERVATION_PERSISTENCE_RECEIPT_v001.json",
-    "persistence_result": "PASS"
+  "ready_transition": "VALIDATION returned the same logical Yunshuiyi v003 object REVISE. DESIGN repaired its producer and validator on main; this READY transition rematerializes the existing object through the existing shared Blender runner for native reopen and preview readback. It is not Model 4/5 authorization and does not create a new logical design object.",
+  "upstream_repair_commits": {
+    "design_producer": "afdf571fbea2917d1baebaee9a084f947e24eee1",
+    "validation_reopen_rule": "8c262ffca69cccf6aa1df311f537aa7bd5f01134"
   },
-  "next_control_plane_state": "MODEL_4_MODEL_5_CANDIDATE_AUDIT_ACTIVE_NO_NEW_BLENDER_CHILD_AUTHORIZED"
+  "return_gate": "Runner must generate the editable .blend, preview, manifest and reopen receipt. Native reopen proves persistence/required editable parts only; actual source-fidelity visual readback remains an independent VALIDATION step before any cursor advance or Presentation handoff.",
+  "truth_boundary": "DESIGN_ESTIMATE / FIELD_OPEN / NO_PROMOTION / NOT_ENGINEERING_MASTER / NOT_DESIGN_KEEP / FIELD_PASS_NONE"
 }
