@@ -180,86 +180,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          import ast
-          import os
-          from pathlib import Path
-
-          producer = Path(os.environ["OLEANDER_SCRIPT_PATH"])
-          validator_raw = os.environ.get("OLEANDER_VALIDATION_SCRIPT_PATH", "").strip()
-          validator = Path(validator_raw) if validator_raw else None
-
-          def read_and_parse(path: Path) -> tuple[str, ast.AST]:
-              source = path.read_text(encoding="utf-8")
-              try:
-                  tree = ast.parse(source, filename=str(path))
-              except SyntaxError as exc:
-                  raise SystemExit(f"Blender producer preflight syntax failure in {path}: {exc}") from exc
-              return source, tree
-
-          def dotted_name(node: ast.AST) -> str:
-              if isinstance(node, ast.Name):
-                  return node.id
-              if isinstance(node, ast.Attribute):
-                  prefix = dotted_name(node.value)
-                  return f"{prefix}.{node.attr}" if prefix else node.attr
-              return ""
-
-          def assignment_targets(tree: ast.AST) -> list[tuple[str, ast.AST]]:
-              found: list[tuple[str, ast.AST]] = []
-              for node in ast.walk(tree):
-                  if isinstance(node, ast.Assign):
-                      for target in node.targets:
-                          found.append((dotted_name(target), node.value))
-                  elif isinstance(node, ast.AnnAssign):
-                      found.append((dotted_name(node.target), node.value))
-              return found
-
-          _, tree = read_and_parse(producer)
-          if validator is not None:
-              read_and_parse(validator)
-
-          targets = assignment_targets(tree)
-          render_engine_written = any(name.endswith(".render.engine") for name, _ in targets)
-          stale_eevee_constant = any(
-              isinstance(node, ast.Constant) and node.value == "BLENDER_EEVEE_NEXT"
-              for node in ast.walk(tree)
-          )
-
-          uses_empty_factory = False
-          creates_world = False
-          for node in ast.walk(tree):
-              if not isinstance(node, ast.Call):
-                  continue
-              call_name = dotted_name(node.func)
-              if call_name == "bpy.ops.wm.read_factory_settings":
-                  for keyword in node.keywords:
-                      if keyword.arg == "use_empty" and isinstance(keyword.value, ast.Constant) and keyword.value.value is True:
-                          uses_empty_factory = True
-              elif call_name == "bpy.data.worlds.new":
-                  creates_world = True
-
-          assigns_scene_world = any(name.endswith(".world") for name, _ in targets)
-          writes_world_color = any(name.endswith(".world.color") for name, _ in targets)
-
-          problems = []
-          if render_engine_written and stale_eevee_constant:
-              problems.append(
-                  "stale Blender 5.2 render-engine enum BLENDER_EEVEE_NEXT; use the validated 5.2 enum contract"
-              )
-          if uses_empty_factory and writes_world_color and not (creates_world or assigns_scene_world):
-              problems.append(
-                  "factory empty startup writes scene.world.color without explicitly creating/binding a World"
-              )
-
-          if problems:
-              details = "\n - ".join(problems)
-              raise SystemExit(f"OLEANDER Blender 5.2 producer preflight failed before runtime download:\n - {details}")
-
-          print(f"OLEANDER Blender 5.2 producer preflight: PASS ({producer})")
-          if validator is not None:
-              print(f"OLEANDER Blender validation syntax preflight: PASS ({validator})")
-          PY
+          args=("$OLEANDER_SCRIPT_PATH")
+          if [[ -n "$OLEANDER_VALIDATION_SCRIPT_PATH" ]]; then
+            args+=("$OLEANDER_VALIDATION_SCRIPT_PATH")
+          fi
+          python3 90-shared/toolchains/blender-runtime/preflight-blender-5.2-producer.py "${args[@]}"
 
       - name: Install shared Blender runtime libraries
         if: ${{ steps.job.outputs.run_job == 'true' }}
