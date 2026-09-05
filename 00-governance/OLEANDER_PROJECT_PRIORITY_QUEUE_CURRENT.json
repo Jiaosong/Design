@@ -19,7 +19,7 @@
       "current_owner_scope": "COMPATIBILITY/LIVE-FRONTIER FIELD FOR PRJ-C04-DIGITAL-INTERACTION WEB ONLY; NOT THE OWNER OF THE WHOLE PROJECT AGGREGATE",
       "state": "ACTIVE",
       "current_native_master": "WEB OBJECT ONLY: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; EVERY OTHER C04 WORK OBJECT MUST RESOLVE ITS OWN CURRENT_NATIVE_MASTER BEFORE MATERIAL ACTION",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=false / head 2cdca2274a6bd0b8fac93ed61255537d4028400b / 111 commits at 2026-09-05T16:19+08:00 fresh readback",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / mergeable_state=unstable / head 90aaba20d6354a646db1a74379052b379dacf6bc / 115 commits / updated_at 2026-09-05T15:58:37Z fresh readback",
       "next_owner": "VALIDATION",
       "next_owner_scope": "LIVE_WEB_OBJECT_ONLY; OTHER CHILD WORK OBJECTS RESOLVE THEIR OWN NEXT_OWNER",
       "whole_project_authority": [
@@ -41,7 +41,7 @@
         {
           "workstream_id": "ACTIVE-3-WEB",
           "state": "ACTIVE_REPAIR",
-          "current_gap": "PR #465 head 2cdca227... is OPEN/UNMERGED/mergeable=false with 111 commits. AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL because two current Google Drive thumbnail image carriers do not load at 1920x1080, 1366x768 and 390x844; Project Anti-Pollution Gate FAIL. Layout/interaction/reduced-motion checks otherwise execute, but no Design KEEP or formal handoff is justified."
+          "current_gap": "PR #465 head 90aaba20... is OPEN/UNMERGED/mergeable=true/mergeable_state=unstable with 115 commits. Exact-head AI Governance Evals run 33976409080 PASS; C04 Web Static Integrity run 33976409061 has repo-local dependency integrity PASS but Chromium presentation readback FAIL; Project Anti-Pollution Gate run 33976409082 FAIL. The exact current-head browser report root cause has not yet been independently read back here, so prior image-carrier diagnoses remain regression context only; no Design KEEP or formal handoff is justified."
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
@@ -198,7 +198,7 @@
       "production_stall": null,
       "next_action": "VALIDATION performs actual source-vs-new-preview fidelity readback for 云水倚; only a closing verdict advances this sequential model cursor. PRESENTATION continues the same PR #465 image-carrier/Anti-Pollution repair frontier and does not consume 云水倚 yet. DESIGN selects another non-colliding whole-project native asset. GOVERNANCE keeps Queue/Control Card/frontiers current.",
       "updated_at": "2026-09-05T16:19:00+08:00",
-      "source_of_queue_decision": "Fresh 2026-09-05 readback: PR #465 is OPEN/UNMERGED/mergeable=false at head 2cdca2274a6bd0b8fac93ed61255537d4028400b with 111 commits; D has a real return_service_closure_current.svg delta; Web AI Governance PASS while Chromium and Project Anti-Pollution remain FAIL. 云水倚 repair was dispatched through the existing shared Blender runner; after two producer-level repair-first fixes, run 33954476037 completed producer/native reopen/artifact identity/upload SUCCESS and returned artifact 9965907493. Machine return is not independent source-fidelity closure, so Presentation remains blocked and the model-validation cursor does not advance yet."
+      "source_of_queue_decision": "Fresh 2026-09-05 readback: PR #465 is OPEN/UNMERGED/mergeable=true/mergeable_state=unstable at head 90aaba20d6354a646db1a74379052b379dacf6bc with 115 commits; D has a real return_service_closure_current.svg delta; exact-head AI Governance run 33976409080 PASS while Chromium readback in run 33976409061 and Project Anti-Pollution run 33976409082 remain FAIL. 云水倚 repair was dispatched through the existing shared Blender runner; after two producer-level repair-first fixes, run 33954476037 completed producer/native reopen/artifact identity/upload SUCCESS and returned artifact 9965907493. Machine return is not independent source-fidelity closure, so Presentation remains blocked and the model-validation cursor does not advance yet."
     },
     {
       "priority": 2,
