@@ -1,50 +1,149 @@
 {
-  "schema_version": "2.1",
+  "schema_version": "2.2",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
   "stale_rule": "IF_QUEUE_IS_EMPTY_OR_STALE_PRODUCTION_WORKSTREAMS_DO_NOT_GUESS; GOVERNANCE_REFRESHES_FIRST",
   "project_mode_execution_rule": "REPAIR_FIRST_REGISTER_LAST: executable defects require actual repair + smallest relevant retest/readback before HOLD/OPEN/NEXT may terminate a run; status-only registration is not material completion when a legal repair path exists.",
+  "whole_project_asset_rule": "PROJECT PRODUCTION IS WHOLE-PROJECT ASSET COVERAGE, NOT WEB-ONLY, BLENDER-ONLY, PAGE-ONLY OR VALIDATION-SUBSET-ONLY. Missing required native assets continue through the existing OLEANDER Full Flow using the correct carrier.",
   "entries": [
     {
       "priority": 1,
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "object_id": "PRJ-C04-DIGITAL-INTERACTION",
-      "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS",
+      "object_id_semantics": "COMPATIBILITY FIELD FOR THE LIVE WEB OBJECT ONLY; MUST NOT BE INHERITED BY PHYSICAL/PRODUCT/MODEL/DIAGRAM/PAGE/MOTION CHILD LIFECYCLES",
+      "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS_AND_ASSET_COVERAGE",
       "current_owner": "PRESENTATION",
-      "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_THE_TOP_LEVEL_WEB_OBJECT_NOT_SOLE_PROJECT_OWNER",
+      "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_PRJ-C04-DIGITAL-INTERACTION_WEB_ONLY_NOT_SOLE_PROJECT_OWNER",
       "state": "ACTIVE",
-      "current_native_master": "NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / head 83f2127d846f27806a1b5243bffd36d18082c1b0 at 2026-09-05 readback",
+      "current_native_master": "WEB OBJECT: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; OTHER C04 WORK OBJECTS RESOLVE THEIR OWN NATIVE MASTERS",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=false / head 83f2127d846f27806a1b5243bffd36d18082c1b0 at 2026-09-05 readback",
       "next_owner": "VALIDATION",
-      "whole_project_authority": ["05-cases/c04-qingjiang-stone-book/C04_CURRENT.md", "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md", "05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md"],
-      "whole_project_workstreams": [
-        {"workstream_id": "ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL", "state": "ACTIVE_REPAIR", "current_gap": "27 legacy identities SOURCE RECOVERY OPEN; N-series=0."},
-        {"workstream_id": "ACTIVE-2-D-VISUAL-MOTION", "state": "ACTIVE_REPAIR", "current_gap": "Finished-output whole-project visual readback remains open."},
-        {"workstream_id": "ACTIVE-3-WEB", "state": "ACTIVE_REPAIR", "current_gap": "PR #465 head 83f2127d...: repo-local dependency integrity PASS; Chromium FAIL because Google Drive thumbnail image carriers fail at 1920x1080, 1366x768 and 390x844; PR Anti-Pollution check remains FAIL. The PR-head AI Governance failure caused by the newly restored C01 queue entry schema was repaired on main in commit 292049d39fd1acc68b166141a0ae857068068647 and main AI Governance/Anti-Pollution push checks passed; PR checks require a fresh merge-head rerun."},
-        {"workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL", "state": "ACTIVE", "blender_subqueue_role": "SUBQUEUE_ONLY_NOT_WHOLE_PROJECT_QUEUE", "current_gap": "Three rebuilds returned; independent fidelity/presentation consumption and broader P01-P09/detail proof remain open."},
-        {"workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION", "state": "ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM", "current_gap": "Closure remains open while upstream B/D/Web/Active-4 gates remain open."}
+      "whole_project_authority": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md"
       ],
-      "production_queue_role": "ACTIVE_4_BLENDER_REBUILD_SUBQUEUE_ONLY",
-      "production_queue": ["云水倚", "流体座椅人体工", "江畔停泊折叠观"],
-      "production_cursor": {"rebuild_returned": ["云水倚", "流体座椅人体工", "江畔停泊折叠观"], "design_current": null, "validation_current": "云水倚", "presentation_waiting": "云水倚", "next_after_design": "MODEL_4_MODEL_5_CANDIDATE_AUDIT_RETURNED_NO_NEW_BLENDER_CHILD_AUTHORIZED"},
-      "design_subtask_lease": "ACTIVE_4_MODEL_CANDIDATE_AUDIT",
-      "design_subtask_lease_state": "RETURNED",
-      "design_subtask_current_item": null,
+      "whole_project_workstreams": [
+        {
+          "workstream_id": "ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL",
+          "state": "ACTIVE_REPAIR",
+          "current_gap": "27 legacy identities SOURCE RECOVERY OPEN; N-series=0; missing editorial/analysis/page-support assets remain eligible production work."
+        },
+        {
+          "workstream_id": "ACTIVE-2-D-VISUAL-MOTION",
+          "state": "ACTIVE_REPAIR",
+          "current_gap": "Finished-output whole-project visual readback remains open; journey/system/analysis/diagram/motion asset coverage must continue where carriers are missing or weak."
+        },
+        {
+          "workstream_id": "ACTIVE-3-WEB",
+          "state": "ACTIVE_REPAIR",
+          "current_gap": "PR #465 head 83f2127d... remains OPEN/UNMERGED and current readback reports mergeable=false. Repo-local dependency integrity previously passed, while Chromium image transport and PR Anti-Pollution remain unresolved until fresh repair/retest."
+        },
+        {
+          "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
+          "state": "ACTIVE",
+          "blender_subqueue_role": "RETURNED_BATCH_ONLY_NOT_WHOLE_PROJECT_QUEUE",
+          "current_gap": "Three rebuild productions returned, but independent fidelity/presentation consumption and broader P01-P09 / technical / body / CMF / detail / diagram / model coverage remain open."
+        },
+        {
+          "workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION",
+          "state": "ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM",
+          "current_gap": "Closure remains open while B/D/Web/Active-4 and other whole-project asset gates remain open; F must continuously consume closed upstream assets rather than wait for total project completion."
+        }
+      ],
+      "whole_project_asset_coverage": {
+        "state": "ACTIVE_SCAN_AND_PRODUCE",
+        "rule": "For every Current gap, resolve required native output first; produce or repair the real editable/native asset, then read back and hand off through applicable OLEANDER phases.",
+        "asset_classes": [
+          "EDITORIAL_PAGE_AND_PAGE_SUPPORT",
+          "INTERACTION_USER_SERVICE_STATE_AND_JOURNEY_FLOW",
+          "SYSTEM_CAUSAL_AND_CONTENT_DIAGRAM",
+          "SITE_ROUTE_GIS_EVIDENCE_SPATIAL_ANALYSIS",
+          "INFORMATION_GRAPHICS_AND_COMPARISON",
+          "PLAN_SECTION_AXON_NODE_TECHNICAL_DRAWING",
+          "BODY_SCALE_USE_ZONE_CMF_MATERIAL_MAINTENANCE_DIAGRAM",
+          "SVG_VECTOR_BRAND_ICON_MAP_WAYFINDING",
+          "WEB_UI_HTML_CSS_JS_INTERACTION_PROTOTYPE",
+          "BOARD_PDF_PORTFOLIO_PAGE",
+          "MOTION_STORYBOARD_KEYFRAME_SEQUENCE",
+          "BLENDER_PRODUCT_SPATIAL_EDITABLE_3D",
+          "MEMORY_IP_CHARACTER_CULTURAL_PRODUCT_CARRIER"
+        ],
+        "no_false_closure": "RETURNED BLENDER BATCH OR MODEL4/5 ARCHIVE AUDIT DOES NOT CLOSE C04 ASSET PRODUCTION."
+      },
+      "design_asset_cursor": {
+        "state": "ACTIVE",
+        "current": "WHOLE_PROJECT_ASSET_COVERAGE_GAP_SCAN_AND_EXECUTE_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET",
+        "exclude_live_collision": "Do not mutate PRJ-C04-DIGITAL-INTERACTION while PRESENTATION owns that mutable Web frontier unless an explicit DESIGN handoff is accepted.",
+        "advance_rule": "After a real native artifact delta + readback/handoff, select the next highest-value eligible asset; queued/running/waiting freezes only that object."
+      },
+      "returned_blender_batch": [
+        "云水倚",
+        "流体座椅人体工",
+        "江畔停泊折叠观"
+      ],
+      "production_queue_role": "LEGACY_FIRST_BLENDER_BATCH_RETURNED; NOT THE CURRENT WHOLE-PROJECT PRODUCTION QUEUE",
+      "production_queue": [
+        "云水倚",
+        "流体座椅人体工",
+        "江畔停泊折叠观"
+      ],
+      "production_cursor": {
+        "rebuild_returned": [
+          "云水倚",
+          "流体座椅人体工",
+          "江畔停泊折叠观"
+        ],
+        "design_current": "WHOLE_PROJECT_ASSET_COVERAGE_GAP_SCAN",
+        "validation_current": "云水倚",
+        "presentation_current": null,
+        "presentation_ready": [],
+        "presentation_blocked_by_validation": [
+          "云水倚",
+          "流体座椅人体工",
+          "江畔停泊折叠观"
+        ],
+        "next_after_design": "NEXT_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET_NOT_ARCHIVE_ORDER"
+      },
+      "model_validation_flow": {
+        "ordered_objects": [
+          "云水倚",
+          "流体座椅人体工",
+          "江畔停泊折叠观"
+        ],
+        "current": "云水倚",
+        "production_native_reopen": "RETURNED_FOR_ALL_THREE",
+        "independent_fidelity": "PENDING_FROM_FIRST_OBJECT",
+        "independent_design_verdict": "PENDING_WHERE_APPLICABLE",
+        "presentation_handoff": "NOT_READY_UNTIL_VALIDATION_RETURN",
+        "cursor_advance_condition": "VALIDATION VERDICT + TYPED RETURN/HANDOFF READBACK FOR CURRENT OBJECT",
+        "note": "A production reopen validator is not the terminal VALIDATION gate."
+      },
+      "model_4_model_5_audit": {
+        "state": "RETURNED_COMPLETE_FOR_CURRENT_EVIDENCE",
+        "scope": "ONLY_THE_NINE_AUDITED_REMAINING_SOURCE_IDENTITIES",
+        "decision": "NO_AUTOMATIC_MODEL_4_OR_MODEL_5_FROM_ARCHIVE_ORDER",
+        "does_not_mean": "NO_FUTURE_C04_3D",
+        "future_3d_gate": "Exact Current role binding + concrete KEEP/CURRENTIZE/COMPETE use + material editable-3D need + insufficient 2D carrier + sufficient Source Authority."
+      },
+      "design_subtask_lease": "WHOLE_PROJECT_ASSET_COVERAGE_REPAIR",
+      "design_subtask_lease_state": "ACTIVE",
+      "design_subtask_current_item": "SELECT_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET",
       "design_subtask_last_returned_item": "MODEL_4_MODEL_5_CANDIDATE_AUDIT",
-      "design_current_execution_state": "RETURNED_COMPLETE_FOR_CURRENT_EVIDENCE",
-      "design_current_execution_evidence": "C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md classifies all nine remaining observed identities; NO MODEL 4 / NO MODEL 5 AUTHORIZATION. Non-3D-first identities route to Brand/Memory-IP/interaction/editorial carriers.",
-      "design_current_return_gate": "CLOSED_FOR_CURRENT_EVIDENCE; future Blender child requires exact identity + Current role binding + concrete KEEP/CURRENTIZE/COMPETE use + material native-3D need + insufficient 2D carrier + sufficient Source Authority.",
-      "validation_subtask_lease": "REBUILD_VALIDATION_AND_WEB_DERIVATIVE",
+      "design_current_execution_state": "ACTIVE_ASSET_COVERAGE_NOT_WAITING_ON_MODEL_BATCH",
+      "design_current_execution_evidence": "Existing Asset Atlas confirms C04 includes Journey, R01-R13, App/Game Map, Physical P01-P09, Brand, Memory/IP, Audience, Spatial/Technical and Visual/Motion assets; the three returned rebuilds cover only three production objects.",
+      "design_current_return_gate": "Each selected asset follows existing Full OLEANDER Flow to native artifact + readback + applicable validation/review/handoff; the project continues while eligible asset gaps remain.",
+      "validation_subtask_lease": "REBUILD_VALIDATION",
       "validation_subtask_lease_state": "ACTIVE",
       "validation_subtask_current_item": "云水倚",
-      "presentation_subtask_current_item": "云水倚",
+      "presentation_subtask_current_item": null,
       "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE",
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "production_stall": null,
-      "next_action": "PRESENTATION continues the Web repair by replacing failing external Google Drive thumbnail transport with a browser-stable authority-preserving carrier and reruns Chromium. GOVERNANCE separately resolves the PR Anti-Pollution failure without blanket-allowlisting derivative/current-named files. B/D/F and Active-4 validation/presentation remain independent eligible work; a Web wait must not freeze those owners.",
-      "updated_at": "2026-09-05T08:37:00+08:00",
-      "source_of_queue_decision": "Fresh remote readback of PR #465 head 83f2127d846f27806a1b5243bffd36d18082c1b0, C04 Web Static Integrity run 33927665471 and current whole-project authorities. Chromium currently fails only on Google Drive thumbnail image transport while interaction/layout/reduced-motion checks remain otherwise healthy; mergeability is true."
+      "next_action": "PRESENTATION repairs the live Web object without blocking other owners. DESIGN executes whole-project asset coverage and produces the highest-value eligible missing native asset across diagrams/flows/pages/technical/visual/motion/3D/etc. VALIDATION completes 云水倚 independent fidelity then advances the returned-model cursor. GOVERNANCE keeps Work Object identities, handoffs and Flow Completion states current and separately repairs PR #465 Anti-Pollution/merge divergence.",
+      "updated_at": "2026-09-05",
+      "source_of_queue_decision": "User-explicit realignment plus readback of C04 Asset Atlas, returned model audit, current Work Coordination contract, current Queue and PR #465. Whole-project asset coverage is the active production interpretation; Web and Blender are subsets."
     },
     {
       "priority": 2,
@@ -57,12 +156,18 @@
       "current_native_master": "05-cases/c01-yimai-guangdu/README.md + repository-grounded validation/prototype artifacts; no single production-native master asserted",
       "current_pr_frontier": "NONE_DECLARED_IN_CURRENT_AUTHORITY / MAIN_REPOSITORY_EVIDENCE_REVIEW",
       "next_owner": "GOVERNANCE",
-      "whole_project_authority": ["05-cases/c01-yimai-guangdu/README.md"],
+      "whole_project_authority": [
+        "05-cases/c01-yimai-guangdu/README.md"
+      ],
       "current_evidence_level": "E2_DO_NOT_UPGRADE",
       "current_machine_state": "R03_BROWSER_DRY_RUN_PASS",
       "external_validation_state": "REALITY_GATE_2_NOT_RUN / HUMAN_TEST_NOT_RUN",
       "ready_object": "SMALL_ADULT_PHOTO_PILOT_READY",
-      "blocked_objects": ["A0_EXISTING_GUIDANCE_BASELINE_PENDING_CAPTURE", "REALITY_GATE_2_FIELD_EXECUTION", "HUMAN_TEST"],
+      "blocked_objects": [
+        "A0_EXISTING_GUIDANCE_BASELINE_PENDING_CAPTURE",
+        "REALITY_GATE_2_FIELD_EXECUTION",
+        "HUMAN_TEST"
+      ],
       "next_action": "Consume repository-grounded evidence-review and pilot-readiness work that does not require unavailable field/human input; preserve P1/P2/P3 identity asymmetry and E2 boundary. Do not treat browser dry-run as human validation.",
       "queue_entry_reason": "Global pool repair: C01 Current README explicitly remains RESEARCH + PROPOSAL / EVIDENCE REVIEW and records a SMALL ADULT PHOTO PILOT READY object while Queue had incorrectly narrowed to C04-only.",
       "updated_at": "2026-09-05T08:34:00+08:00",

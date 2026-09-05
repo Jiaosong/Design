@@ -225,6 +225,29 @@ If there is no material delta, do not create a new artifact merely to prove the 
 
 Training findings remain Candidate until validated by project use/evidence; training must not silently rewrite Current professional claims.
 
+### 12A. Consolidation throttle
+
+When the machine-readable Current Anti-Pollution Contract reports that the global open non-project training/candidate backlog exceeds its configured soft limit, OLEANDER enters `CONSOLIDATION + PRODUCTION` priority mode.
+
+While that throttle is active:
+
+1. net-new non-project `TRAINING_MODE / PRACTICE_EVIDENCE / Candidate Skill / Candidate Practice / NOT INSTALLED CURRENT` debt is blocked by default;
+2. new non-project training/candidate work is allowed only when it materially advances an existing logical object through `ABSORB / MERGE / SUPERSEDE / CLOSE / PROJECT_USAGE_EVIDENCE / PROMOTION`;
+3. existing pre-throttle Candidate/Training PRs remain repairable, synchronizable, reviewable and closable; the throttle must not freeze historical debt in place;
+4. real `PROJECT_MODE` production is exempt from the training-debt throttle, but still follows all authority, evidence, design-quality and no-loss gates;
+5. knowledge intake follows the same rule: do not create a new L7 Practice, Knowledge Object, MOC, Framework or Candidate carrier merely because a recurring training run occurred while closure debt is excessive;
+6. CI count, receipt count, page count, evidence count and scheduled-run count are not closure.
+
+Default work order while the throttle is active:
+
+`PROJECT PRODUCTION → EXISTING CANDIDATE CLOSURE → KNOWLEDGE MIGRATION / CLEANUP → NEW TRAINING ONLY WHEN PERMITTED`.
+
+Hard throughput rule:
+
+> **Training throughput ≤ Closure throughput while the backlog exceeds the Current soft limit.**
+
+The machine-readable threshold and exact closure markers live only in `OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json`; this protocol does not create a second numeric authority.
+
 ## 13. Cross-surface synchronization
 
 GitHub, Notion, Drive, deployment surfaces, and local/native masters may hold different representations, but only one Source Authority governs each claim/object type.
@@ -254,6 +277,7 @@ Before every material write, ask:
 8. Will it leave an orphan, stale duplicate, empty placeholder, or parallel Current?
 9. If it changes authority, what must be superseded/read back?
 10. Is there a material delta worth persisting?
+11. Is the consolidation throttle active, and if so does this write reduce/absorb/promote existing debt rather than add net-new non-project training/candidate debt?
 
 Any unresolved answer that can affect authority or identity results in `HOLD` rather than a speculative write.
 
@@ -302,6 +326,7 @@ Project-specific rules may be stricter but may not weaken:
 - no duplicate framework by default;
 - bounded-claim discipline;
 - no-loss cleanup;
-- explicit promotion/readback.
+- explicit promotion/readback;
+- consolidation throttle while configured backlog debt is excessive.
 
 When project instructions conflict, the newest explicit Master Governance / user instruction wins, and the conflict must be recorded rather than silently creating a parallel rule set.
