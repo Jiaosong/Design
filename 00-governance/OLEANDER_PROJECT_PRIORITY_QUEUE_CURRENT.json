@@ -19,7 +19,7 @@
       "current_owner_scope": "COMPATIBILITY/LIVE-FRONTIER FIELD FOR PRJ-C04-DIGITAL-INTERACTION WEB ONLY; NOT THE OWNER OF THE WHOLE PROJECT AGGREGATE",
       "state": "ACTIVE",
       "current_native_master": "WEB OBJECT ONLY: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; EVERY OTHER C04 WORK OBJECT MUST RESOLVE ITS OWN CURRENT_NATIVE_MASTER BEFORE MATERIAL ACTION",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / head 61fc66656045381dce634166a8faccceb6b84ba0 / 108 commits at 2026-09-05T12:16+08:00 fresh readback",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=false / head 2cdca2274a6bd0b8fac93ed61255537d4028400b / 111 commits at 2026-09-05T16:19+08:00 fresh readback",
       "next_owner": "VALIDATION",
       "next_owner_scope": "LIVE_WEB_OBJECT_ONLY; OTHER CHILD WORK OBJECTS RESOLVE THEIR OWN NEXT_OWNER",
       "whole_project_authority": [
@@ -36,18 +36,18 @@
         {
           "workstream_id": "ACTIVE-2-D-VISUAL-MOTION",
           "state": "ACTIVE_REPAIR",
-          "current_gap": "Finished-output whole-project visual readback remains open; journey/system/analysis/diagram/motion asset coverage must continue where carriers are missing or weak."
+          "current_gap": "A real editable SVG delta landed on PR #465 head 2cdca227...: return_service_closure_current.svg was reframed around journey-first return redundancy. Whole-project finished-output readback and journey/system/analysis/diagram/motion coverage remain open."
         },
         {
           "workstream_id": "ACTIVE-3-WEB",
           "state": "ACTIVE_REPAIR",
-          "current_gap": "PR #465 head 61fc6665... is OPEN/UNMERGED/mergeable=true. PRESENTATION produced R06 authority carrier chunk 1/6 on this head. AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL. Continue the same producer repair frontier and retest; no Design KEEP or formal handoff yet."
+          "current_gap": "PR #465 head 2cdca227... is OPEN/UNMERGED/mergeable=false with 111 commits. AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL because two current Google Drive thumbnail image carriers do not load at 1920x1080, 1366x768 and 390x844; Project Anti-Pollution Gate FAIL. Layout/interaction/reduced-motion checks otherwise execute, but no Design KEEP or formal handoff is justified."
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
           "state": "ACTIVE_REPAIR",
           "blender_subqueue_role": "RETURNED_BATCH_ONLY_NOT_WHOLE_PROJECT_QUEUE",
-          "current_gap": "All three rebuild productions returned. 云水倚 independent source-vs-preview fidelity review is now REVISE and returned to DESIGN: first-read identity/five slats/fold-down seat/railing context are preserved, but the source-defining diagonal support arm plus hinge/pivot/mount-clamp relation are not sufficiently preserved/readable in the current rebuild preview. Presentation remains blocked for this object. Broader P01-P09 / technical / body / CMF / detail / diagram / model coverage remains open."
+          "current_gap": "All three original rebuild productions returned. 云水倚 source-fidelity REVISE was actually repaired in the producer/validator, then rematerialized through the existing shared Blender 5.2 runner. Run 33954476037 completed producer + native reopen + artifact identity + upload SUCCESS and returned artifact 9965907493 / sha256:46ad5e7c5620fd9f0257193aac5627872c0a00b4e9f7504226b50f571b938f4d. Independent source-vs-returned-preview fidelity readback is still required before cursor advance or Presentation. Broader P01-P09 / technical / body / CMF / detail / diagram / model coverage remains open."
         },
         {
           "workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION",
@@ -77,9 +77,9 @@
       },
       "design_asset_cursor": {
         "state": "ACTIVE",
-        "current": "YUNSHUIYI_FIDELITY_REPAIR_RETURNED_FROM_VALIDATION + WHOLE_PROJECT_ASSET_COVERAGE_NON_COLLIDING_OBJECTS",
+        "current": "WHOLE_PROJECT_ASSET_COVERAGE_NON_COLLIDING_OBJECTS; YUNSHUIYI_DESIGN_REPAIR_MACHINE_RETURNED_TO_VALIDATION",
         "exclude_live_collision": "Do not mutate PRJ-C04-DIGITAL-INTERACTION while PRESENTATION owns that mutable Web frontier unless an explicit DESIGN handoff is accepted.",
-        "advance_rule": "Repair the returned 云水倚 native master on the same logical object, then return it for native reopen + source-fidelity retest. While that mutable object is executing/waiting, DESIGN may select another non-colliding eligible whole-project asset."
+        "advance_rule": "云水倚 design repair is machine-returned and no longer a DESIGN mutation lease; VALIDATION must inspect the returned preview against ODB-02/Fidelity Brief. DESIGN selects another highest-value non-colliding whole-project asset while Validation consumes the return."
       },
       "returned_blender_batch": [
         "云水倚",
@@ -98,8 +98,8 @@
           "流体座椅人体工",
           "江畔停泊折叠观"
         ],
-        "design_current": "云水倚_REVISE_RETURNED_FROM_VALIDATION + WHOLE_PROJECT_ASSET_COVERAGE",
-        "validation_current": "云水倚 / RETURNED_REVISE_TO_DESIGN",
+        "design_current": "WHOLE_PROJECT_ASSET_COVERAGE_NON_COLLIDING_OBJECTS",
+        "validation_current": "云水倚 / RETURNED_MACHINE_AWAITING_SOURCE_FIDELITY_READBACK",
         "presentation_current": null,
         "presentation_ready": [],
         "presentation_blocked_by_validation": [
@@ -107,7 +107,7 @@
           "流体座椅人体工",
           "江畔停泊折叠观"
         ],
-        "next_after_design": "YUNSHUIYI_RETEST_THEN_ADVANCE_ONLY_IF_VALIDATION_CLOSES; OTHER_DESIGN_GAPS_CONTINUE_IN_PARALLEL_WHEN_NON_COLLIDING"
+        "next_after_design": "NEXT_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET; MODEL_VALIDATION_CURSOR_ADVANCES_ONLY_AFTER_YUNSHUIYI_INDEPENDENT_FIDELITY_CLOSES"
       },
       "model_validation_flow": {
         "ordered_objects": [
@@ -116,45 +116,64 @@
           "江畔停泊折叠观"
         ],
         "current": "云水倚",
-        "current_state": "REVISE_RETURNED_TO_DESIGN",
-        "production_native_reopen": "RETURNED_FOR_ALL_THREE",
-        "independent_fidelity": "YUNSHUIYI_REVISE_AFTER_ACTUAL_SOURCE_VS_REBUILD_PREVIEW_READBACK",
-        "independent_design_verdict": "REVISE_BOUNDED_FIDELITY_NOT_DESIGN_KEEP",
+        "current_state": "RETURNED_MACHINE_AWAITING_INDEPENDENT_FIDELITY_RETEST",
+        "production_native_reopen": "RETURNED_FOR_ORIGINAL_THREE; YUNSHUIYI_FIDELITY_REPAIR_R02_NATIVE_REOPEN_SUCCESS",
+        "independent_fidelity": "RETEST_PENDING_ON_NEW_RETURNED_PREVIEW",
+        "independent_design_verdict": "PRIOR_REVISE_REMAINS_UNTIL_ACTUAL_NEW_PREVIEW_READBACK",
         "validation_observed_pass": [
-          "FIRST_READ_IDENTITY_RECOGNIZABLE",
-          "FIVE_BACK_SLATS_PRESERVED",
-          "FOLD_DOWN_SEAT_PRESERVED",
-          "RAILING_CONTEXT_PRESERVED",
-          "HUMAN_CONTACT_PROXY_PRESENT"
+          "PRIOR_FIRST_READ_IDENTITY_RECOGNIZABLE",
+          "PRIOR_FIVE_BACK_SLATS_PRESERVED",
+          "PRIOR_FOLD_DOWN_SEAT_PRESERVED",
+          "PRIOR_RAILING_CONTEXT_PRESERVED",
+          "PRIOR_HUMAN_CONTACT_PROXY_PRESENT"
         ],
         "validation_observed_revise": [
-          "SOURCE_DEFINING_DIAGONAL_SUPPORT_ARM_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE_IN_CURRENT_PREVIEW",
-          "HINGE_PIVOT_AND_RAILING_MOUNT_CLAMP_ARCHITECTURE_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE",
-          "RELATION_REVEAL_COMPONENTS_DO_NOT_YET_READ_AS_THE_SOURCE_RELATION",
-          "MATERIAL_ZONE_SHIFT_REQUIRES_PERCEPTUAL_ROLE_RECHECK_AFTER_GEOMETRY_REPAIR"
+          "PRIOR_SOURCE_DEFINING_DIAGONAL_SUPPORT_ARM_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE",
+          "PRIOR_HINGE_PIVOT_AND_RAILING_MOUNT_CLAMP_ARCHITECTURE_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE",
+          "PRIOR_RELATION_REVEAL_COMPONENTS_DID_NOT_READ_AS_SOURCE_RELATION",
+          "MATERIAL_ZONE_RECHECK_REQUIRED_AFTER_GEOMETRY_REPAIR"
         ],
         "source_authority": "ODB-02 source-bound imagery + Notion C04｜云水倚｜Design Fidelity Brief R01｜FOR VALIDATION",
-        "current_native_master": "Google Drive / 云水倚 / C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+        "current_native_master": "Actions artifact 9965907493 contains rematerialized C04_YUNSHUIYI_REBUILD_MASTER_v003.blend + preview + manifest + reopen evidence; canonical persistence promotion remains separate",
         "manifest_object_id": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
+        "machine_return": {
+          "workflow_run_id": 33954476037,
+          "workflow_run_number": 46,
+          "artifact_id": 9965907493,
+          "artifact_digest": "sha256:46ad5e7c5620fd9f0257193aac5627872c0a00b4e9f7504226b50f571b938f4d",
+          "artifact_size_bytes": 434318,
+          "producer": "SUCCESS",
+          "native_reopen_validation": "SUCCESS",
+          "artifact_identity": "SUCCESS",
+          "artifact_upload": "SUCCESS"
+        },
+        "repair_execution": {
+          "design_producer_commit": "afdf571fbea2917d1baebaee9a084f947e24eee1",
+          "validation_reopen_rule_commit": "8c262ffca69cccf6aa1df311f537aa7bd5f01134",
+          "runtime_enum_fix_commit": "4531a437f7383e3892de8f115cfd624fb54c9a8c",
+          "world_initialization_fix_commit": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147",
+          "machine_dispatch_commit": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
+          "machine_retire_commit": "6924450101b551e36b8246ab38805d2de449b021"
+        },
         "truth_boundary": "DESIGN_ESTIMATE / FIELD_OPEN / REBUILD_CHECKPOINT_NOT_ENGINEERING_MASTER / NOT_DESIGN_KEEP / FIELD_PASS_NONE",
         "typed_return": {
           "PROJECT_ID": "PRJ-C04-QINGJIANG-SHISHU",
           "OBJECT_ID": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
-          "FROM_OWNER": "VALIDATION",
-          "TO_OWNER": "DESIGN",
+          "FROM_OWNER": "DESIGN / SHARED_MACHINE_EXECUTION",
+          "TO_OWNER": "VALIDATION",
           "UPSTREAM_MASTER": "ODB-02 source-bound imagery + Design Fidelity Brief R01",
-          "CURRENT_NATIVE_MASTER": "C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+          "CURRENT_NATIVE_MASTER": "Actions artifact 9965907493 / C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
           "REQUIRED_NATIVE_OUTPUT": "EDITABLE_BLENDER_MASTER + FIDELITY_PREVIEW",
           "SOURCE_DIMENSION_GEOMETRY_AUTHORITY": "ODB-02 is visual authority; metric values remain DESIGN_ESTIMATE; no engineering authority",
           "KNOWN_ASSUMPTIONS": "FIELD_OPEN; no engineering/manufacturing/site-fit claim",
-          "WHAT_CHANGED": "Independent visual source-vs-rebuild-preview readback executed; bounded verdict changed from PENDING to REVISE.",
-          "WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT": "Restore or make clearly readable the source-defining diagonal support arm; paired hinge/pivot hardware; railing mount/clamp relation; bilateral side-support architecture; keep relation-reveal parts separately addressable; then re-open native file and re-run source-fidelity visual readback. Recheck material zoning only after geometry relation is repaired.",
-          "CURRENT_PR_FRONTIER": "NONE_FOR_THIS_MODEL; canonical persistence is Drive/returned Blender artifact chain",
-          "RESIDUAL_HOLD": "ENGINEERING / FIELD / MANUFACTURING / SITE-FIT remain OPEN and cannot be promoted by this repair"
+          "WHAT_CHANGED": "DESIGN added separately addressable bilateral side architecture, diagonal support arms, paired hinge/pivot hardware and railing mount/clamp relation; shared Blender 5.2 runner rematerialized the same v003 logical object and native reopen passed after two repair-first producer compatibility fixes.",
+          "WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT": "Actually inspect the returned preview against ODB-02/Fidelity Brief. Verify that diagonal support arms, hinge/pivot hardware, railing mount/clamp relation and bilateral side-support relation are visually legible rather than merely present in the native object graph; recheck material zoning. Do not advance on native reopen alone.",
+          "CURRENT_PR_FRONTIER": "NONE_FOR_THIS_MODEL; machine return is Actions artifact 9965907493",
+          "RESIDUAL_HOLD": "INDEPENDENT_FIDELITY_RETEST OPEN; ENGINEERING / FIELD / MANUFACTURING / SITE-FIT remain OPEN"
         },
-        "presentation_handoff": "BLOCKED_UNTIL_REPAIRED_OBJECT_RETURNS_AND_VALIDATION_CLOSES",
-        "cursor_advance_condition": "YUNSHUIYI REPAIR + NATIVE REOPEN + SOURCE-FIDELITY RETEST + VALIDATION VERDICT/HANDOFF READBACK; only then may Validation advance to 流体座椅人体工",
-        "note": "A production reopen validator is not the terminal VALIDATION gate. This REVISE is based on actual source imagery and current rebuild preview; it does not claim engineering or field evaluation."
+        "presentation_handoff": "BLOCKED_UNTIL_ACTUAL_RETURNED_PREVIEW_FIDELITY_READBACK_CLOSES",
+        "cursor_advance_condition": "ACTUAL NEW PREVIEW SOURCE-FIDELITY RETEST + VALIDATION VERDICT/HANDOFF READBACK; only then may Validation advance to 流体座椅人体工",
+        "note": "Run 33954476037 proves the repaired native artifact was regenerated and reopened. It does not itself prove source fidelity or Design KEEP."
       },
       "model_4_model_5_audit": {
         "state": "RETURNED_COMPLETE_FOR_CURRENT_EVIDENCE",
@@ -163,23 +182,23 @@
         "does_not_mean": "NO_FUTURE_C04_3D",
         "future_3d_gate": "Exact Current role binding + concrete KEEP/CURRENTIZE/COMPETE use + material editable-3D need + insufficient 2D carrier + sufficient Source Authority."
       },
-      "design_subtask_lease": "WHOLE_PROJECT_ASSET_COVERAGE_REPAIR + YUNSHUIYI_TYPED_REVISE_RETURN",
+      "design_subtask_lease": "WHOLE_PROJECT_ASSET_COVERAGE_REPAIR",
       "design_subtask_lease_state": "ACTIVE",
-      "design_subtask_current_item": "云水倚_FIDELITY_REPAIR; OTHER_NON_COLLIDING_ASSET_GAPS_REMAIN_ELIGIBLE",
-      "design_subtask_last_returned_item": "云水倚_VALIDATION_REVISE",
-      "design_current_execution_state": "ACTIVE_REPAIR_NOT_WAITING_ON_MODEL_BATCH",
-      "design_current_execution_evidence": "Actual source-vs-preview review returned 云水倚 REVISE; Existing Asset Atlas still confirms C04 includes Journey, R01-R13, App/Game Map, Physical P01-P09, Brand, Memory/IP, Audience, Spatial/Technical and Visual/Motion assets, so unrelated eligible asset production continues.",
-      "design_current_return_gate": "云水倚: editable native repair + native reopen/readback + source-fidelity retest. Other selected assets: existing Full OLEANDER Flow to native artifact + readback + applicable validation/review/handoff.",
+      "design_subtask_current_item": "SELECT_NEXT_HIGHEST_VALUE_ELIGIBLE_NON_COLLIDING_NATIVE_ASSET",
+      "design_subtask_last_returned_item": "云水倚_FIDELITY_REPAIR_MACHINE_RETURN",
+      "design_current_execution_state": "ACTIVE_ASSET_COVERAGE_NOT_WAITING_ON_VALIDATION",
+      "design_current_execution_evidence": "云水倚 fidelity repair is materially executed and machine-returned; return_service_closure_current.svg also received a real editable D visual delta on PR #465. Existing Asset Atlas still confirms Journey, R01-R13, App/Game Map, Physical P01-P09, Brand, Memory/IP, Audience, Spatial/Technical and Visual/Motion gaps remain eligible.",
+      "design_current_return_gate": "Each selected asset follows existing Full OLEANDER Flow to native artifact + readback + applicable validation/review/handoff. 云水倚 now belongs to VALIDATION for independent fidelity retest, not continued DESIGN mutation unless it returns REVISE again.",
       "validation_subtask_lease": "REBUILD_VALIDATION",
-      "validation_subtask_lease_state": "RETURNED_REVISE_TO_DESIGN",
-      "validation_subtask_current_item": "云水倚 / WAITING_FOR_DESIGN_REPAIR_RETURN",
+      "validation_subtask_lease_state": "ACTIVE",
+      "validation_subtask_current_item": "云水倚 / RETURNED_MACHINE_AWAITING_SOURCE_FIDELITY_READBACK",
       "presentation_subtask_current_item": null,
-      "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE",
-      "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
+      "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE / BLENDER_5_2_0_LTS_EXECUTED",
+      "job_local_blender_materialization_state": "RETURNED_MACHINE / DESCRIPTOR_RETIRED_DISABLED",
       "production_stall": null,
-      "next_action": "DESIGN repairs 云水倚 on the same editable Blender object against ODB-02/Fidelity Brief and returns it for reopen+fidelity retest; DESIGN continues other non-colliding whole-project asset gaps while that object executes/waits. VALIDATION does not advance the model cursor until 云水倚 closes, but remains free to validate other legal ready assets/projects. PRESENTATION continues PR #465 and other ready carriers, but does not consume 云水倚 yet. GOVERNANCE keeps Queue/Control Card/handoffs current.",
-      "updated_at": "2026-09-05T12:16:00+08:00",
-      "source_of_queue_decision": "Fresh readback on 2026-09-05: PR #465 live head is 61fc66656045381dce634166a8faccceb6b84ba0. For 云水倚, source-bound imagery, Design Fidelity Brief, returned .blend, current preview, manifest and reopen evidence were available; actual source-vs-preview visual comparison supports a bounded REVISE rather than PENDING/PASS. The Queue now returns the same model object from VALIDATION to DESIGN without advancing Presentation or the sequential model-validation cursor."
+      "next_action": "VALIDATION performs actual source-vs-new-preview fidelity readback for 云水倚; only a closing verdict advances this sequential model cursor. PRESENTATION continues the same PR #465 image-carrier/Anti-Pollution repair frontier and does not consume 云水倚 yet. DESIGN selects another non-colliding whole-project native asset. GOVERNANCE keeps Queue/Control Card/frontiers current.",
+      "updated_at": "2026-09-05T16:19:00+08:00",
+      "source_of_queue_decision": "Fresh 2026-09-05 readback: PR #465 is OPEN/UNMERGED/mergeable=false at head 2cdca2274a6bd0b8fac93ed61255537d4028400b with 111 commits; D has a real return_service_closure_current.svg delta; Web AI Governance PASS while Chromium and Project Anti-Pollution remain FAIL. 云水倚 repair was dispatched through the existing shared Blender runner; after two producer-level repair-first fixes, run 33954476037 completed producer/native reopen/artifact identity/upload SUCCESS and returned artifact 9965907493. Machine return is not independent source-fidelity closure, so Presentation remains blocked and the model-validation cursor does not advance yet."
     },
     {
       "priority": 2,
