@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import static_check as base
 import static_check_17 as layer17
@@ -62,8 +61,7 @@ def load_consolidated() -> dict:
 CURRENT_RECEIPT = load_consolidated()
 
 
-def validate_stage_with_consolidated_receipt(capability: dict, status: dict, stage: dict) -> None:
-    # Preserve the original capability declaration gate.
+def validate_stage_with_consolidated_receipt(capability: dict, status: dict, stage: dict) -> dict:
     validated = set(status.get(stage["status_key"], []))
     if not validated:
         base.fail(f"{stage['label']} validated capability set is empty")
@@ -71,9 +69,8 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
     if missing_caps:
         base.fail(f"{stage['label']} validated capability set missing: {missing_caps}")
 
-    # Existing 5.1.2 per-stage receipts remain immutable provenance. They must
-    # still exist, be internally PASS, and match the stored historical
-    # validated_environment, but they are no longer current-source evidence.
+    # Existing 5.1.2 per-stage receipts are immutable provenance, not current
+    # source compatibility evidence after the 5.2 repair.
     legacy = base.load_receipt(capability.get(stage["receipt_key"]), stage["label"] + " legacy provenance")
     if legacy.get("validation_state") != "PASS" or legacy.get("runtime_result") != "PASS":
         base.fail(f"{stage['label']} legacy provenance receipt must remain PASS")
@@ -91,11 +88,9 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
     ):
         base.fail(f"{stage['label']} historical capability environment no longer matches preserved provenance")
 
-    # Current compatibility evidence is consolidated into one real Blender
-    # 5.2 LTS regression receipt. Bind every current script by exact source
-    # fingerprint so any later add-on or validation change invalidates only the
-    # consolidated regression evidence rather than rewriting seventeen history
-    # receipts.
+    # One consolidated 5.2 receipt binds all current validation scripts by
+    # exact source fingerprint. This preserves the 17 historical receipts and
+    # avoids manufacturing 17 replacement evidence objects.
     script = stage["script"]
     stage_evidence = CURRENT_RECEIPT["stages"].get(script)
     if not stage_evidence:
@@ -112,11 +107,12 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
     if script not in workflow_text:
         base.fail(f"{stage['label']} validation script is not bound into Blender 5.2 regression workflow")
 
+    # Preserve the mature base.validate_stage return contract: base.main uses
+    # Stage 2's returned extension_package as the canonical package identity.
+    return CURRENT_RECEIPT
+
 
 def main() -> None:
-    # Reuse the mature 17-layer checker and replace only its stale per-stage
-    # current-receipt assumption. All syntax, capability, non-proof and layer
-    # checks continue to run through static_check_17/base.main.
     base.validate_stage = validate_stage_with_consolidated_receipt
     layer17.main()
 
