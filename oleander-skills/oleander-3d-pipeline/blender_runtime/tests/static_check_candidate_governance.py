@@ -61,8 +61,12 @@ def main() -> None:
     check(not unexpected, "new one-off FreeCAD workflow is prohibited; use shared frontier workflow: " + ", ".join(unexpected))
     check(not missing, "grandfathered workflow disappeared without governance migration: " + ", ".join(missing))
     check(len(cad_baselines) == 3, "exactly three stable CAD baselines are review-boundary governed")
-    check((ROOT / policy["shared_frontier_workflow"]).exists(), "shared frontier workflow must exist")
-    check(policy["candidate_draft_frontier_owner"] == "SHARED_FRONTIER", "Draft Candidate professional development must use shared Frontier")
+    check((ROOT / policy["shared_frontier_workflow"]).exists(), "current shared frontier workflow must exist")
+    check((ROOT / policy["current_runtime_regression_workflow"]).exists(), "current Blender runtime regression workflow must exist")
+    check((ROOT / "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh").exists(), "canonical Blender 5.2 runtime resolver must exist")
+    for obsolete in policy["superseded_current_workflows"]:
+        check(not (ROOT / obsolete).exists(), f"superseded workflow must not remain in current tree: {obsolete}")
+    check(policy["candidate_draft_frontier_owner"] == "SHARED_FRONTIER_CURRENT_5_2", "Draft Candidate professional development must use current 5.2 shared Frontier")
     check(policy["grandfathered_pr_trigger"] == "READY_FOR_REVIEW_ONLY", "grandfathered PR workflows must be review-boundary only")
     check(policy["grandfathered_push_main_regression_preserved"] is True, "grandfathered push-main regression must remain preserved")
 
@@ -97,6 +101,7 @@ def main() -> None:
     check(gate["require_no_experimental_unverified_items"] is True, "promotion must block experimental items")
     check(gate["require_no_validation_pending_items"] is True, "promotion must block pending validation")
     check(gate["require_pr_authority_current"] is True, "promotion must require current PR authority")
+    check(gate["require_current_runtime_5_2_regression"] is True, "promotion must require current Blender 5.2 regression")
     hygiene = governance["branch_hygiene"]
     check(hygiene["observation_is_advisory"] is True, "stored branch-distance observation must never be promotion authority")
     observed_behind = int(hygiene["last_observed_behind_main"])
@@ -115,7 +120,8 @@ def main() -> None:
     print("grandfathered_freecad_workflows=" + str(len(grandfathered)))
     print("grandfathered_cad_baselines=" + str(len(cad_baselines)))
     print("review_boundary_workflows=" + str(len(review_boundary)))
-    print("grandfathered_pr_trigger=" + policy["grandfathered_pr_trigger"])
+    print("current_runtime_regression=" + policy["current_runtime_regression_workflow"])
+    print("current_frontier=" + policy["shared_frontier_workflow"])
     print("observed_behind_main=" + str(observed_behind))
     print("frontier_items=" + str(len(governance["frontier_items"])))
 
