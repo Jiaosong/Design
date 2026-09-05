@@ -27,7 +27,7 @@
 <path d="M255 526V635" class="leader"/>
 <g class="sans" transform="translate(150 674)">
  <text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">01 / WALK</text>
- <text y="42" class="serif ink" font-size="30" font-weight="700">继续走</text>
+ <text y="42" class="serif ink" font-size="38" font-weight="700">继续走</text>
  <text y="74" class="muted" font-size="14">身体压力不明显，不增加对象。</text>
 </g>
 <g transform="translate(595 360)" class="person">
@@ -38,7 +38,7 @@
 <path d="M595 511V635" class="leader"/>
 <g class="sans" transform="translate(492 674)">
  <text font-size="12" font-weight="700" letter-spacing="2" fill="#985448">02 / PAUSE</text>
- <text y="42" class="serif ink" font-size="30" font-weight="700">先停下来</text>
+ <text y="42" class="serif ink" font-size="38" font-weight="700">先停下来</text>
  <text y="74" class="muted" font-size="14">看清、辨向、缓一口气；先给停留条件。</text>
 </g>
 <path d="M900 506l48-82" class="support"/>
@@ -49,19 +49,19 @@
 <path d="M885 504V635" class="leader"/>
 <g class="sans" transform="translate(813 674)">
  <text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">03 / LEAN</text>
- <text y="42" class="serif ink" font-size="30" font-weight="700">短时借力</text>
+ <text y="42" class="serif ink" font-size="38" font-weight="700">短时借力</text>
  <text y="74" class="muted" font-size="14">支撑需求成立，才研究倚靠对象。</text>
 </g>
-<path d="M1195 490h116" class="support"/>
-<g transform="translate(1251 383)" class="person">
- <circle cx="0" cy="0" r="17"/><path d="M0 19v53m0 23h58m-58-23l23 23m35 0l38 49m-96-49l-30 61"/>
+<path d="M1195 490h44" class="support" opacity=".48"/>
+<g transform="translate(1272 375)" class="person">
+ <circle cx="0" cy="0" r="17"/><path d="M0 19l-8 77m-4-46l-40 28m44-22l46 25m-38 15l-36 52m36-52l48 44"/>
 </g>
 <circle cx="1251" cy="521" r="10" fill="#2E7F86"/>
 <path d="M1251 532V635" class="leader"/>
 <g class="sans" transform="translate(1160 674)">
  <text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">04 / RECOVER</text>
- <text y="42" class="serif ink" font-size="30" font-weight="700">恢复，再走</text>
- <text y="74" class="muted" font-size="14">更长停留必须同时证明位置、路径与维护条件。</text>
+ <text y="42" class="serif ink" font-size="38" font-weight="700">恢复，再走</text>
+ <text y="74" class="muted" font-size="14">恢复完成，支持退出，重新回到路径。</text>
 </g>
 <g class="sans">
  <text x="690" y="262" font-size="12" letter-spacing="2.4" font-weight="700" fill="#68706C">INTERVENTION THRESHOLD</text>
