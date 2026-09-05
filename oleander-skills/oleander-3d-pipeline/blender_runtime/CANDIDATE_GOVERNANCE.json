@@ -160,13 +160,14 @@
   },
   "branch_hygiene": {
     "last_observed_behind_main": 0,
-    "last_observed_ahead_main": 518,
-    "observation_head": "e6caf8fd7b0ff6794fa9a677a7a994f7301af36d",
-    "observation_main": "72575cf4dd45f24b7524ecacf44120b8069a33a4",
+    "last_observed_ahead_main": 521,
+    "observation_head": "917666caf935241cc7f0ef8a812f4b74e5fa2c87",
+    "observation_main": "3794d3eacf52392611bdb98a4df6f31aa189c8a0",
     "observation_date": "2026-09-05",
     "observation_is_advisory": true,
+    "observation_scope": "LAST_FULL_SKILL_RUNTIME_GOVERNANCE_ALIGNMENT_REGRESSION_HEAD",
     "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
-    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. Current technical/governance regression is green, but project usage or an explicit bounded absorption/promotion decision remains a real closure boundary."
+    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. Head 917666ca completed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and Professional Frontier 5.2 LTS successfully after Skill/Runtime/Governance/Notion alignment and the schema-2.3 whole-project aggregate validator repair. Project usage or an explicit bounded absorption/promotion decision remains the real closure boundary."
   },
-  "governance_note": "OLEANDER is in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed, while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is bound to the consolidated Blender 5.2.0 LTS regression receipt; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scope. Main remains the only installed CURRENT; P0-B remains BLOCKED. Fresh synchronized-head governance/runtime/frontier regression is green, and the remaining promotion boundary is real project usage or an explicit bounded absorption/promotion decision plus current authority readback."
+  "governance_note": "OLEANDER is in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed, while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is bound to the consolidated Blender 5.2.0 LTS regression receipt; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scope. The 2026-09-05 full alignment regression head 917666ca is green across the five core gates and was synchronized to main 3794d3ea at 521 ahead / 0 behind. Main remains the only installed CURRENT; P0-B remains BLOCKED. The remaining promotion boundary is real project usage or an explicit bounded absorption/promotion decision plus fresh current-authority readback."
 }
