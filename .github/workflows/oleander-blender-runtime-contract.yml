@@ -5,15 +5,17 @@ on:
     branches: [main]
     paths:
       - '00-governance/runtime/**'
-      - 'tools/oleander-runtime/**'
+      - '90-shared/toolchains/blender-runtime/**'
       - 'tests/oleander-blender-runtime-contract.py'
+      - '.github/workflows/oleander-shared-blender-runner.yml'
       - '.github/workflows/oleander-blender-runtime-contract.yml'
   push:
     branches: [main]
     paths:
       - '00-governance/runtime/**'
-      - 'tools/oleander-runtime/**'
+      - '90-shared/toolchains/blender-runtime/**'
       - 'tests/oleander-blender-runtime-contract.py'
+      - '.github/workflows/oleander-shared-blender-runner.yml'
       - '.github/workflows/oleander-blender-runtime-contract.yml'
   workflow_dispatch:
 
@@ -32,4 +34,26 @@ jobs:
           python3 -m json.tool 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json >/dev/null
           bash -n tools/oleander-runtime/activate-blender.sh
           bash -n tools/oleander-runtime/blender.sh
+          bash -n 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh
+          test -f .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq 'workflow_call:' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq 'OLEANDER_JOB_OUTPUT_DIR' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq '90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh' .github/workflows/oleander-shared-blender-runner.yml
+          grep -Fq -- '--python-exit-code' .github/workflows/oleander-shared-blender-runner.yml
           python3 tests/oleander-blender-runtime-contract.py
+      - name: Validate runtime architecture boundary
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json').read_text())
+          assert data['status']=='ACTIVE_RUNTIME_INTERFACE'
+          assert data['scope']=='OLEANDER_ALL_PROJECTS'
+          assert data['shared_runtime_state_model']['hard_rule']=='JOB_LOCAL_BINARY_ABSENCE_DOES_NOT_MEAN_SHARED_RUNTIME_UNAVAILABLE'
+          assert data['rematerialization']['implementation']=='90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh'
+          assert data['rematerialization']['project_ownership']=='FORBIDDEN'
+          assert data['shared_runner']['role']=='UNIVERSAL_PRODUCTION_ENVIRONMENT_SUBORDINATE_RUNTIME_ADAPTER_NOT_PROJECT_FRAMEWORK'
+          assert data['project_policy']['project_specific_runner_bootstrap_duplication'].startswith('FORBIDDEN')
+          print('OLEANDER Blender runtime architecture boundary: PASS')
+          PY

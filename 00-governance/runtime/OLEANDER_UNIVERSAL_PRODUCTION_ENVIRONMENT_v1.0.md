@@ -1,7 +1,7 @@
 # OLEANDER Universal Production Environment v1.0
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.0.1**  
+Implementation revision: **1.0.5**  
 Scope: **ALL OLEANDER projects / all lanes / all conversations / all media**
 
 ## 0｜Core correction
@@ -20,7 +20,7 @@ Tool choice follows the project and active user constraints. The project never f
 
 ## 1｜Sticky constraint preflight
 
-Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.1`.
+Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.2`.
 
 Hard rules:
 
@@ -59,9 +59,54 @@ Every OLEANDER conversation must know and prefer the same Blender resolution con
 1. use the runtime-provided `$OLEANDER_BLENDER_BIN` when present;
 2. otherwise use `blender` on `PATH`;
 3. otherwise use the managed ChatGPT fallback defined by `OLEANDER_BLENDER_RUNTIME_v1.0` when that execution surface exposes it;
-4. project code should invoke `bash tools/oleander-runtime/blender.sh ...` rather than hard-code a project-specific Blender path.
+4. if the shared interface is active but this job has no materialized binary, use the runtime-owned rematerialization route;
+5. if the current conversation surface cannot host the binary directly but an approved shared runner is available, route the job to the shared runner;
+6. project code should invoke the shared runtime/runner contract rather than hard-code or install a project-specific Blender environment.
 
 A conversation must still probe the current execution surface before writing `EXECUTED`. A repository contract proves that a route exists; it does not prove that the route executed in that turn.
+
+### 3A｜Shared runtime interface ≠ current-job materialization
+
+This distinction applies to **all shared OLEANDER runtimes and runners**, not only Blender.
+
+A repository-wide runtime may be `ACTIVE` while a newly created job/container does not yet contain the executable bytes. Therefore:
+
+- `SHARED_RUNTIME_AVAILABLE` describes the Current OLEANDER capability/interface;
+- a missing executable in one job describes only that job's binding/materialization state;
+- a job-local missing path must not be promoted into a global statement such as “OLEANDER has no stable environment”;
+- before declaring the capability `UNAVAILABLE`, the task must attempt the Current runtime resolver, runtime-owned rematerialization when defined, and an allowed shared runner when defined;
+- projects must not respond to job-local materialization failure by creating parallel installations, project-specific environment frameworks, duplicated download logic, or a new Skill/METHOD/Gate;
+- the project declares its required native output and bounded project script/input/output contract; shared runtime bootstrap remains owned by the existing OLEANDER runtime layer.
+
+Correct failure scope:
+
+`ACTIVE_SHARED_RUNTIME + JOB_BINARY_NOT_MATERIALIZED → REMATERIALIZE_OR_SHARED_RUNNER_RESOLUTION`
+
+not:
+
+`JOB_BINARY_NOT_MATERIALIZED → GLOBAL_ENVIRONMENT_MISSING → PROJECT_BUILDS_NEW_ENVIRONMENT`.
+
+### 3B｜Hourly GPT control plane ≠ machine execution plane
+
+Scheduled GPT work and durable execution are separate layers.
+
+- GPT recurring tasks are the **control plane**: read Current Authority, resolve the Work Object/lease, make design or review judgments, dispatch deterministic work, consume readback, and advance/return state.
+- Shared runners and native tool jobs are the **execution plane**: once dispatched, they should complete all deterministic steps available in that job without waiting for another GPT wake-up.
+- A one-hour minimum recurrence for one GPT task is therefore a **judgment cadence**, not a limit on Blender/browser/export/test computation already running in an approved durable runner.
+- Deterministic machine chains should run to their natural gate in one dispatch when safe, e.g. `resolve runtime → execute producer → save native artifact → render/preview → reopen/roundtrip → identity/hash → package/upload artifact`.
+- Steps requiring a new professional judgment, Source Authority interpretation, design verdict, fidelity verdict beyond deterministic checks, or owner transfer remain control-plane gates and wait for the appropriate scheduled owner.
+- A runner still executing at the next owner's wake-up is not a failure. The owner records/returns `WAITING_FOR_EXECUTION_RESULT` or `::SKIP_COMPLETION::` and leaves the typed lease intact.
+- Recurring task `enabled` state means that owner capability remains available on schedule. It is **not** the same as an ACTIVE project lease. Inactive lease/no eligible object means `SKIP`, not disable the recurring task.
+- GOVERNANCE must not disable a Current recurring owner merely because another owner temporarily holds the Work Object. Disable only for explicit user pause, supersession, destructive-write risk that cannot be isolated, or a deliberate global migration freeze.
+- Project/object advancement is driven by persisted artifact/readback state, not by the passage of an hour or by a task having run.
+
+Canonical pattern:
+
+`GPT CONTROL PLANE → DURABLE SHARED RUNNER → PERSISTENT ARTIFACT/RECEIPT → NEXT GPT OWNER READBACK`
+
+not:
+
+`GPT TURN → PARTIAL COMPUTE → WAIT ONE HOUR → RESUME THE SAME DETERMINISTIC COMPUTE`.
 
 ## 4｜Universal capability states
 
@@ -90,12 +135,14 @@ Before production, every OLEANDER conversation performs this resolver:
 5. Define the required native output and fidelity.
 6. If reference reconstruction applies, resolve `OLEANDER_REFERENCE_MATERIALIZATION_GATE_v1.0`.
 7. Probe only capabilities needed for the required output.
-8. Prefer existing shared OLEANDER runtime/runner over project-specific installation logic.
-9. Select the best-fit adapter **within the active constraint set**.
-10. Use an equivalent fallback when no information is lost.
-11. Mark only the genuinely unavailable/denied non-replaceable step pending or HOLD.
-12. Open/render/read back the resulting artifact.
-13. Verify the Flow Completion Gate before any complete/closed claim.
+8. Resolve the Current shared runtime/interface before interpreting a job-local binary/path result.
+9. Prefer existing shared OLEANDER runtime/runner and runtime-owned rematerialization over project-specific installation logic.
+10. Select the best-fit adapter **within the active constraint set**.
+11. Use an equivalent fallback when no information is lost.
+12. Mark only the genuinely unavailable/denied non-replaceable step pending or HOLD.
+13. Dispatch deterministic execution-plane steps to the approved durable runner when available; do not fragment machine work merely to mirror GPT recurrence.
+14. Open/render/read back the resulting artifact or durable execution result.
+15. Verify the Flow Completion Gate before any complete/closed claim.
 
 ## 6｜Reference materialization / 1:1 reconstruction
 
@@ -155,11 +202,17 @@ The existing runtime remains authoritative:
 
 - `00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json`
 - `00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md`
-- `tools/oleander-runtime/activate-blender.sh`
-- `tools/oleander-runtime/blender.sh`
+- `tools/oleander-runtime/activate-blender.sh` (Legacy compatibility adapter; not the Current runtime implementation namespace)
+- `tools/oleander-runtime/blender.sh` (Legacy compatibility adapter; not the Current runtime implementation namespace)
+- `90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh`
+- `.github/workflows/oleander-shared-blender-runner.yml`
 - `.github/workflows/oleander-blender-runtime-contract.yml`
 
-Do not fork a separate Blender installation path inside each project.
+Current runtime implementation belongs to `90-shared/toolchains/` and the approved shared runner. The frozen Legacy `tools/` root may remain referenced only by existing compatibility adapters; it must not receive new runtime implementation or bootstrap logic.
+
+Do not fork a separate Blender installation path or Blender bootstrap workflow inside each project. A project workflow may call the shared runner with project-specific script/output parameters; the project does not own Blender installation or version recovery.
+
+For Blender jobs, the shared runner should consume the full deterministic machine chain available from the supplied project script/validator in one dispatch. Do not split `build/save/preview/reopen/hash/artifact` across hourly GPT turns when the same runner can safely finish them.
 
 ## 10｜Execution Receipt
 

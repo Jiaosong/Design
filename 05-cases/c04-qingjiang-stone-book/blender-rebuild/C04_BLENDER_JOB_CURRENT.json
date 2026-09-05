@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.1",
+  "status": "RETURNED",
+  "job_id": "PRJ-C04-QINGJIANG-SHISHU/JIANGPAN_FOLDING_OBSERVATION/REBUILD_V001/R01",
+  "revision": 2,
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "child_item": "江畔停泊折叠观",
+  "purpose": "SUBORDINATE_MACHINE_JOB_RETURN_RECORD",
+  "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_jiangpan_folding_observation_v001.py",
+  "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_jiangpan_folding_observation_v001.py",
+  "blend_file": "artifacts/c04-jiangpan-folding-observation/C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001.blend",
+  "output_dir": "artifacts/c04-jiangpan-folding-observation",
+  "artifact_name": "C04_JIANGPAN_FOLDING_OBSERVATION_REBUILD_MASTER_v001",
+  "design_authority": "DESIGN_ESTIMATE_FROM_CURRENT_SOURCE_REFERENCE",
+  "source_reference_state": "SOURCE_AUDIT_BOUNDED: CURRENT QUEUE AUTHORIZED THIS LOGICAL CHILD; NO VERIFIED DIMENSIONS OR SOURCE GEOMETRY WERE EXPOSED TO PRODUCER; SOURCE_REFERENCE_ONLY; DO_NOT_INFER_ENGINEERING_TRUTH",
+  "field_state": "FIELD_OPEN",
+  "promotion": "NO_PROMOTION",
+  "returned_transition": "Machine execution and canonical persistence for this child are complete. This descriptor is retired from READY so later unrelated Git writes cannot be misread as a fresh execution request. A future Blender child requires an explicitly authorized candidate audit result and a new/updated descriptor written READY only after its producer/validator remote readback.",
+  "machine_return": {
+    "workflow_run_id": 33778596667,
+    "artifact_id": 9902635163,
+    "artifact_digest": "sha256:368c2ca776a6b16d7cd3a32d1fd766e60d8d9fc5b1a511f4cb069abf6eae7388",
+    "persistence_receipt": "05-cases/c04-qingjiang-stone-book/blender-rebuild/C04_JIANGPAN_FOLDING_OBSERVATION_PERSISTENCE_RECEIPT_v001.json",
+    "persistence_result": "PASS"
+  },
+  "next_control_plane_state": "MODEL_4_MODEL_5_CANDIDATE_AUDIT_ACTIVE_NO_NEW_BLENDER_CHILD_AUTHORIZED"
+}
