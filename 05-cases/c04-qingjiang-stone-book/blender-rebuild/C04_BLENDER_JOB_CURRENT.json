@@ -2,7 +2,7 @@
   "schema_version": "1.1",
   "status": "READY",
   "job_id": "PRJ-C04-QINGJIANG-SHISHU/YUNSHUIYI/REBUILD_V003/FIDELITY_REPAIR_R02",
-  "revision": 4,
+  "revision": 5,
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "child_item": "云水倚",
   "purpose": "CURRENT_FIDELITY_REPAIR_MACHINE_JOB",
@@ -15,17 +15,18 @@
   "source_reference_state": "ODB-02 source-bound imagery is visual authority. Preserve bilateral side rails, five timber back slats, fold-down padded seat, paired hinge/pivot hardware, diagonal support arms and railing mount/clamp relation. Metric values remain DESIGN_ESTIMATE; no engineering claim.",
   "field_state": "FIELD_OPEN",
   "promotion": "NO_PROMOTION",
-  "ready_transition": "Retry of the same Yunshuiyi v003 fidelity-repair object after the first durable run exposed a Blender 5.2 render-engine enum incompatibility. The producer was minimally repaired from BLENDER_EEVEE_NEXT to the runtime-supported BLENDER_EEVEE and is re-entered through the same shared runner.",
+  "ready_transition": "Second retry of the same Yunshuiyi v003 fidelity-repair object. The prior durable run proved Blender 5.2 runtime availability and exposed that empty factory startup leaves scene.world unset. DESIGN now creates an explicit World and re-enters through the same shared runner.",
   "upstream_repair_commits": {
     "design_producer": "afdf571fbea2917d1baebaee9a084f947e24eee1",
     "validation_reopen_rule": "8c262ffca69cccf6aa1df311f537aa7bd5f01134",
-    "runtime_compatibility_fix": "4531a437f7383e3892de8f115cfd624fb54c9a8c"
+    "runtime_compatibility_fix": "4531a437f7383e3892de8f115cfd624fb54c9a8c",
+    "world_initialization_fix": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147"
   },
   "previous_attempt": {
-    "workflow_run_id": 33954211110,
+    "workflow_run_id": 33954334471,
     "result": "FAIL_AT_PRODUCER",
-    "cause": "Blender 5.2.0 runtime rejected render engine enum BLENDER_EEVEE_NEXT; supported enum is BLENDER_EEVEE.",
-    "repair": "Use runtime-supported BLENDER_EEVEE enum; no environment replacement and no new workflow."
+    "cause": "After empty factory startup, scene.world was None and direct color assignment raised AttributeError.",
+    "repair": "Create C04_YUNSHUIYI_WORLD explicitly, assign it to scene.world, then set color; no environment replacement and no new workflow."
   },
   "return_gate": "Runner must generate the editable .blend, preview, manifest and reopen receipt. Native reopen proves persistence/required editable parts only; actual source-fidelity visual readback remains an independent VALIDATION step before any cursor advance or Presentation handoff.",
   "truth_boundary": "DESIGN_ESTIMATE / FIELD_OPEN / NO_PROMOTION / NOT_ENGINEERING_MASTER / NOT_DESIGN_KEEP / FIELD_PASS_NONE"
