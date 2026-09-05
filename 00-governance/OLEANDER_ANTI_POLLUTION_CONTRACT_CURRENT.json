@@ -59,7 +59,7 @@
     "effective_from": "2026-09-05T00:00:00Z",
     "global_open_training_candidate_soft_limit": 12,
     "training_markers": ["TRAINING_MODE","PRACTICE_EVIDENCE","NO_PROJECT_USAGE"],
-    "candidate_markers": ["CANDIDATE"],
+    "candidate_markers": ["DRAFT CANDIDATE","CANDIDATE SKILL","CANDIDATE PRACTICE","NOT INSTALLED CURRENT"],
     "project_exemption_markers": ["PROJECT_MODE","PROJECT_ID="],
     "required_closure_marker_when_over_limit": "CONSOLIDATION_DELTA",
     "allowed_closure_actions": ["ABSORB","MERGE","SUPERSEDE","CLOSE","PROJECT_USAGE_EVIDENCE","PROMOTION"],
