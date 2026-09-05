@@ -2,7 +2,7 @@ import bpy, json, os, math
 from mathutils import Vector
 OUT=os.environ.get('OLEANDER_JOB_OUTPUT_DIR') or '/tmp/c04-yunshuiyi-rebuild'; os.makedirs(OUT,exist_ok=True)
 BLEND=os.path.join(OUT,'C04_YUNSHUIYI_REBUILD_MASTER_v003.blend'); PREVIEW=os.path.join(OUT,'C04_YUNSHUIYI_REBUILD_MASTER_v003_preview.png'); MANIFEST=os.path.join(OUT,'C04_YUNSHUIYI_REBUILD_MASTER_v003_manifest.json')
-bpy.ops.wm.read_factory_settings(use_empty=True); s=bpy.context.scene; s.unit_settings.system='METRIC'; s.render.engine='BLENDER_EEVEE_NEXT'; s.render.resolution_x=960; s.render.resolution_y=540; s.render.resolution_percentage=100; s.render.filepath=PREVIEW; s.world.color=(.055,.06,.06)
+bpy.ops.wm.read_factory_settings(use_empty=True); s=bpy.context.scene; s.unit_settings.system='METRIC'; s.render.engine='BLENDER_EEVEE'; s.render.resolution_x=960; s.render.resolution_y=540; s.render.resolution_percentage=100; s.render.filepath=PREVIEW; s.world.color=(.055,.06,.06)
 root=bpy.data.collections.new('C04_YUNSHUIYI_REBUILD_v003'); geo=bpy.data.collections.new('GEO_EDITABLE'); contact=bpy.data.collections.new('BODY_CONTACT'); hardware=bpy.data.collections.new('HARDWARE'); ref=bpy.data.collections.new('REFERENCE'); s.collection.children.link(root)
 for c in (geo,contact,hardware,ref): root.children.link(c)
 def mat(n,c,metal=0,rough=.45):
