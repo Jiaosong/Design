@@ -45,9 +45,9 @@
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
-          "state": "ACTIVE",
+          "state": "ACTIVE_REPAIR",
           "blender_subqueue_role": "RETURNED_BATCH_ONLY_NOT_WHOLE_PROJECT_QUEUE",
-          "current_gap": "Three rebuild productions returned, but independent fidelity/presentation consumption and broader P01-P09 / technical / body / CMF / detail / diagram / model coverage remain open."
+          "current_gap": "All three rebuild productions returned. 云水倚 independent source-vs-preview fidelity review is now REVISE and returned to DESIGN: first-read identity/five slats/fold-down seat/railing context are preserved, but the source-defining diagonal support arm plus hinge/pivot/mount-clamp relation are not sufficiently preserved/readable in the current rebuild preview. Presentation remains blocked for this object. Broader P01-P09 / technical / body / CMF / detail / diagram / model coverage remains open."
         },
         {
           "workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION",
@@ -77,9 +77,9 @@
       },
       "design_asset_cursor": {
         "state": "ACTIVE",
-        "current": "WHOLE_PROJECT_ASSET_COVERAGE_GAP_SCAN_AND_EXECUTE_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET",
+        "current": "YUNSHUIYI_FIDELITY_REPAIR_RETURNED_FROM_VALIDATION + WHOLE_PROJECT_ASSET_COVERAGE_NON_COLLIDING_OBJECTS",
         "exclude_live_collision": "Do not mutate PRJ-C04-DIGITAL-INTERACTION while PRESENTATION owns that mutable Web frontier unless an explicit DESIGN handoff is accepted.",
-        "advance_rule": "After a real native artifact delta + readback/handoff, select the next highest-value eligible asset; queued/running/waiting freezes only that object."
+        "advance_rule": "Repair the returned 云水倚 native master on the same logical object, then return it for native reopen + source-fidelity retest. While that mutable object is executing/waiting, DESIGN may select another non-colliding eligible whole-project asset."
       },
       "returned_blender_batch": [
         "云水倚",
@@ -98,8 +98,8 @@
           "流体座椅人体工",
           "江畔停泊折叠观"
         ],
-        "design_current": "WHOLE_PROJECT_ASSET_COVERAGE_GAP_SCAN",
-        "validation_current": "云水倚",
+        "design_current": "云水倚_REVISE_RETURNED_FROM_VALIDATION + WHOLE_PROJECT_ASSET_COVERAGE",
+        "validation_current": "云水倚 / RETURNED_REVISE_TO_DESIGN",
         "presentation_current": null,
         "presentation_ready": [],
         "presentation_blocked_by_validation": [
@@ -107,7 +107,7 @@
           "流体座椅人体工",
           "江畔停泊折叠观"
         ],
-        "next_after_design": "NEXT_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET_NOT_ARCHIVE_ORDER"
+        "next_after_design": "YUNSHUIYI_RETEST_THEN_ADVANCE_ONLY_IF_VALIDATION_CLOSES; OTHER_DESIGN_GAPS_CONTINUE_IN_PARALLEL_WHEN_NON_COLLIDING"
       },
       "model_validation_flow": {
         "ordered_objects": [
@@ -116,12 +116,45 @@
           "江畔停泊折叠观"
         ],
         "current": "云水倚",
+        "current_state": "REVISE_RETURNED_TO_DESIGN",
         "production_native_reopen": "RETURNED_FOR_ALL_THREE",
-        "independent_fidelity": "PENDING_FROM_FIRST_OBJECT",
-        "independent_design_verdict": "PENDING_WHERE_APPLICABLE",
-        "presentation_handoff": "NOT_READY_UNTIL_VALIDATION_RETURN",
-        "cursor_advance_condition": "VALIDATION VERDICT + TYPED RETURN/HANDOFF READBACK FOR CURRENT OBJECT",
-        "note": "A production reopen validator is not the terminal VALIDATION gate."
+        "independent_fidelity": "YUNSHUIYI_REVISE_AFTER_ACTUAL_SOURCE_VS_REBUILD_PREVIEW_READBACK",
+        "independent_design_verdict": "REVISE_BOUNDED_FIDELITY_NOT_DESIGN_KEEP",
+        "validation_observed_pass": [
+          "FIRST_READ_IDENTITY_RECOGNIZABLE",
+          "FIVE_BACK_SLATS_PRESERVED",
+          "FOLD_DOWN_SEAT_PRESERVED",
+          "RAILING_CONTEXT_PRESERVED",
+          "HUMAN_CONTACT_PROXY_PRESENT"
+        ],
+        "validation_observed_revise": [
+          "SOURCE_DEFINING_DIAGONAL_SUPPORT_ARM_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE_IN_CURRENT_PREVIEW",
+          "HINGE_PIVOT_AND_RAILING_MOUNT_CLAMP_ARCHITECTURE_NOT_SUFFICIENTLY_PRESERVED_OR_READABLE",
+          "RELATION_REVEAL_COMPONENTS_DO_NOT_YET_READ_AS_THE_SOURCE_RELATION",
+          "MATERIAL_ZONE_SHIFT_REQUIRES_PERCEPTUAL_ROLE_RECHECK_AFTER_GEOMETRY_REPAIR"
+        ],
+        "source_authority": "ODB-02 source-bound imagery + Notion C04｜云水倚｜Design Fidelity Brief R01｜FOR VALIDATION",
+        "current_native_master": "Google Drive / 云水倚 / C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+        "manifest_object_id": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
+        "truth_boundary": "DESIGN_ESTIMATE / FIELD_OPEN / REBUILD_CHECKPOINT_NOT_ENGINEERING_MASTER / NOT_DESIGN_KEEP / FIELD_PASS_NONE",
+        "typed_return": {
+          "PROJECT_ID": "PRJ-C04-QINGJIANG-SHISHU",
+          "OBJECT_ID": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
+          "FROM_OWNER": "VALIDATION",
+          "TO_OWNER": "DESIGN",
+          "UPSTREAM_MASTER": "ODB-02 source-bound imagery + Design Fidelity Brief R01",
+          "CURRENT_NATIVE_MASTER": "C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
+          "REQUIRED_NATIVE_OUTPUT": "EDITABLE_BLENDER_MASTER + FIDELITY_PREVIEW",
+          "SOURCE_DIMENSION_GEOMETRY_AUTHORITY": "ODB-02 is visual authority; metric values remain DESIGN_ESTIMATE; no engineering authority",
+          "KNOWN_ASSUMPTIONS": "FIELD_OPEN; no engineering/manufacturing/site-fit claim",
+          "WHAT_CHANGED": "Independent visual source-vs-rebuild-preview readback executed; bounded verdict changed from PENDING to REVISE.",
+          "WHAT_MUST_BE_CHECKED_OR_CHANGED_NEXT": "Restore or make clearly readable the source-defining diagonal support arm; paired hinge/pivot hardware; railing mount/clamp relation; bilateral side-support architecture; keep relation-reveal parts separately addressable; then re-open native file and re-run source-fidelity visual readback. Recheck material zoning only after geometry relation is repaired.",
+          "CURRENT_PR_FRONTIER": "NONE_FOR_THIS_MODEL; canonical persistence is Drive/returned Blender artifact chain",
+          "RESIDUAL_HOLD": "ENGINEERING / FIELD / MANUFACTURING / SITE-FIT remain OPEN and cannot be promoted by this repair"
+        },
+        "presentation_handoff": "BLOCKED_UNTIL_REPAIRED_OBJECT_RETURNS_AND_VALIDATION_CLOSES",
+        "cursor_advance_condition": "YUNSHUIYI REPAIR + NATIVE REOPEN + SOURCE-FIDELITY RETEST + VALIDATION VERDICT/HANDOFF READBACK; only then may Validation advance to 流体座椅人体工",
+        "note": "A production reopen validator is not the terminal VALIDATION gate. This REVISE is based on actual source imagery and current rebuild preview; it does not claim engineering or field evaluation."
       },
       "model_4_model_5_audit": {
         "state": "RETURNED_COMPLETE_FOR_CURRENT_EVIDENCE",
@@ -130,23 +163,23 @@
         "does_not_mean": "NO_FUTURE_C04_3D",
         "future_3d_gate": "Exact Current role binding + concrete KEEP/CURRENTIZE/COMPETE use + material editable-3D need + insufficient 2D carrier + sufficient Source Authority."
       },
-      "design_subtask_lease": "WHOLE_PROJECT_ASSET_COVERAGE_REPAIR",
+      "design_subtask_lease": "WHOLE_PROJECT_ASSET_COVERAGE_REPAIR + YUNSHUIYI_TYPED_REVISE_RETURN",
       "design_subtask_lease_state": "ACTIVE",
-      "design_subtask_current_item": "SELECT_HIGHEST_VALUE_ELIGIBLE_MISSING_NATIVE_ASSET",
-      "design_subtask_last_returned_item": "MODEL_4_MODEL_5_CANDIDATE_AUDIT",
-      "design_current_execution_state": "ACTIVE_ASSET_COVERAGE_NOT_WAITING_ON_MODEL_BATCH",
-      "design_current_execution_evidence": "Existing Asset Atlas confirms C04 includes Journey, R01-R13, App/Game Map, Physical P01-P09, Brand, Memory/IP, Audience, Spatial/Technical and Visual/Motion assets; the three returned rebuilds cover only three production objects.",
-      "design_current_return_gate": "Each selected asset follows existing Full OLEANDER Flow to native artifact + readback + applicable validation/review/handoff; the project continues while eligible asset gaps remain.",
+      "design_subtask_current_item": "云水倚_FIDELITY_REPAIR; OTHER_NON_COLLIDING_ASSET_GAPS_REMAIN_ELIGIBLE",
+      "design_subtask_last_returned_item": "云水倚_VALIDATION_REVISE",
+      "design_current_execution_state": "ACTIVE_REPAIR_NOT_WAITING_ON_MODEL_BATCH",
+      "design_current_execution_evidence": "Actual source-vs-preview review returned 云水倚 REVISE; Existing Asset Atlas still confirms C04 includes Journey, R01-R13, App/Game Map, Physical P01-P09, Brand, Memory/IP, Audience, Spatial/Technical and Visual/Motion assets, so unrelated eligible asset production continues.",
+      "design_current_return_gate": "云水倚: editable native repair + native reopen/readback + source-fidelity retest. Other selected assets: existing Full OLEANDER Flow to native artifact + readback + applicable validation/review/handoff.",
       "validation_subtask_lease": "REBUILD_VALIDATION",
-      "validation_subtask_lease_state": "ACTIVE",
-      "validation_subtask_current_item": "云水倚",
+      "validation_subtask_lease_state": "RETURNED_REVISE_TO_DESIGN",
+      "validation_subtask_current_item": "云水倚 / WAITING_FOR_DESIGN_REPAIR_RETURN",
       "presentation_subtask_current_item": null,
       "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE",
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "production_stall": null,
-      "next_action": "PRESENTATION continues the same PR #465 source-carrier repair and reruns Chromium/Anti-Pollution after material completion, without blocking other owners. DESIGN executes whole-project asset coverage and produces the highest-value eligible missing native asset across diagrams/flows/pages/technical/visual/motion/3D/etc. VALIDATION completes 云水倚 independent fidelity then advances the returned-model cursor. GOVERNANCE keeps Work Object identities, handoffs, Queue frontier and Flow Completion states current.",
+      "next_action": "DESIGN repairs 云水倚 on the same editable Blender object against ODB-02/Fidelity Brief and returns it for reopen+fidelity retest; DESIGN continues other non-colliding whole-project asset gaps while that object executes/waits. VALIDATION does not advance the model cursor until 云水倚 closes, but remains free to validate other legal ready assets/projects. PRESENTATION continues PR #465 and other ready carriers, but does not consume 云水倚 yet. GOVERNANCE keeps Queue/Control Card/handoffs current.",
       "updated_at": "2026-09-05T12:16:00+08:00",
-      "source_of_queue_decision": "Fresh 2026-09-05T12:16+08:00 readback: PR #465 is OPEN/UNMERGED/mergeable=true at head 61fc66656045381dce634166a8faccceb6b84ba0 with 108 commits; latest Presentation delta adds R06 authority carrier chunk 1/6. AI Governance passes while Chromium presentation readback and Project Anti-Pollution still fail. Whole-project aggregate / typed-child semantics remain unchanged."
+      "source_of_queue_decision": "Fresh readback on 2026-09-05: PR #465 live head is 61fc66656045381dce634166a8faccceb6b84ba0. For 云水倚, source-bound imagery, Design Fidelity Brief, returned .blend, current preview, manifest and reopen evidence were available; actual source-vs-preview visual comparison supports a bounded REVISE rather than PENDING/PASS. The Queue now returns the same model object from VALIDATION to DESIGN without advancing Presentation or the sequential model-validation cursor."
     },
     {
       "priority": 2,
