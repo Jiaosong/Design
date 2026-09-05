@@ -1,31 +1,10 @@
-import bpy
-import json
-import os
-import sys
-
-OUT = os.environ.get("OLEANDER_JOB_OUTPUT_DIR") or os.environ.get("C04_REBUILD_OUT", "/tmp/c04-yunshuiyi-rebuild")
-RECEIPT = os.path.join(OUT, "C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json")
-required = ["C04_YUNSHUIYI_PRIMARY_SHELL", "C04_YUNSHUIYI_CONTACT_ZONE", "DATUM_LONGITUDINAL_CENTER"]
-missing = [n for n in required if bpy.data.objects.get(n) is None]
-primary = bpy.data.objects.get("C04_YUNSHUIYI_PRIMARY_SHELL")
-passed = bool(primary) and not missing and len(primary.data.vertices) > 0 and len(primary.data.polygons) > 0
-passed = passed and primary.get("OLE_ID") == "C04_YUNSHUIYI_REBUILD_MASTER_v003"
-passed = passed and primary.get("DIMENSION_AUTHORITY") == "DESIGN_ESTIMATE" and primary.get("FIELD_STATE") == "FIELD_OPEN"
-receipt = {
-  "schema_version":"1.0",
-  "blender_version":bpy.app.version_string,
-  "open_file":bpy.data.filepath,
-  "required_objects":required,
-  "missing_objects":missing,
-  "primary_vertices":0 if primary is None else len(primary.data.vertices),
-  "primary_polygons":0 if primary is None else len(primary.data.polygons),
-  "modifier_stack":[] if primary is None else [[m.name,m.type] for m in primary.modifiers],
-  "ole_id":None if primary is None else primary.get("OLE_ID"),
-  "dimension_authority":None if primary is None else primary.get("DIMENSION_AUTHORITY"),
-  "field_state":None if primary is None else primary.get("FIELD_STATE"),
-  "verdict":"PASS_BOUNDED" if passed else "FAIL",
-  "truth_boundary":"Native reopen proves Blender persistence only; not engineering, field or design approval."
-}
-with open(RECEIPT,"w",encoding="utf-8") as f: json.dump(receipt,f,ensure_ascii=False,indent=2)
-print("OLEANDER_C04_REOPEN_RECEIPT="+RECEIPT)
+import bpy,json,os,sys
+OUT=os.environ.get('OLEANDER_JOB_OUTPUT_DIR') or '/tmp/c04-yunshuiyi-rebuild'; RECEIPT=os.path.join(OUT,'C04_YUNSHUIYI_REBUILD_MASTER_v003_reopen_receipt.json')
+required=['FOLD_DOWN_SEAT','BODY_CONTACT_ZONE','BACK_SLAT_01','BACK_SLAT_02','BACK_SLAT_03','BACK_SLAT_04','BACK_SLAT_05','FRAME_L_REAR','FRAME_R_REAR','DIAGONAL_SUPPORT_ARM_L','DIAGONAL_SUPPORT_ARM_R','HINGE_PIVOT_L','HINGE_PIVOT_R','RAILING_MOUNT_CLAMP_L','RAILING_MOUNT_CLAMP_R']
+missing=[n for n in required if bpy.data.objects.get(n) is None]; primary=bpy.data.objects.get('FOLD_DOWN_SEAT')
+separate=all(bpy.data.objects.get(n) is not None for n in ['DIAGONAL_SUPPORT_ARM_L','DIAGONAL_SUPPORT_ARM_R','HINGE_PIVOT_L','HINGE_PIVOT_R','RAILING_MOUNT_CLAMP_L','RAILING_MOUNT_CLAMP_R'])
+passed=bool(primary) and not missing and separate and primary.get('OLE_ID')=='C04_YUNSHUIYI_REBUILD_MASTER_v003' and primary.get('DIMENSION_AUTHORITY')=='DESIGN_ESTIMATE' and primary.get('FIELD_STATE')=='FIELD_OPEN' and primary.get('DESIGN_KEEP_CLAIM') is False
+receipt={'schema_version':'1.1','blender_version':bpy.app.version_string,'open_file':bpy.data.filepath,'required_objects':required,'missing_objects':missing,'relation_reveal_parts_separate':separate,'ole_id':None if primary is None else primary.get('OLE_ID'),'dimension_authority':None if primary is None else primary.get('DIMENSION_AUTHORITY'),'field_state':None if primary is None else primary.get('FIELD_STATE'),'verdict':'PASS_BOUNDED' if passed else 'FAIL','repair_gate':'Native reopen requires bilateral diagonal supports + paired hinges + paired railing clamps + five slats + fold-down seat. Visual source-fidelity remains an independent VALIDATION gate.','truth_boundary':'Native reopen proves persistence/required editable parts only; not engineering, field, manufacturing, site-fit or Design KEEP.'}
+with open(RECEIPT,'w',encoding='utf-8') as f: json.dump(receipt,f,ensure_ascii=False,indent=2)
+print('OLEANDER_C04_REOPEN_RECEIPT='+RECEIPT)
 if not passed: sys.exit(3)
