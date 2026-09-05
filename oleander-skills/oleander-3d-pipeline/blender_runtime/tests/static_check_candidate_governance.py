@@ -8,6 +8,10 @@ PIPELINE = ROOT / "oleander-skills" / "oleander-3d-pipeline"
 RUNTIME = PIPELINE / "blender_runtime"
 GOV = RUNTIME / "CANDIDATE_GOVERNANCE.json"
 STATUS = PIPELINE / "PROFESSIONAL_PARITY_STATUS.json"
+SKILL = PIPELINE / "SKILL.md"
+SKILL_CAPABILITY = PIPELINE / "CAPABILITY.json"
+WORKBENCH_EXTENSION = PIPELINE / "BLENDER_RUNTIME_WORKBENCH_EXTENSION.md"
+RUNTIME_README = RUNTIME / "README.md"
 WORKFLOWS = ROOT / ".github" / "workflows"
 
 
@@ -35,6 +39,7 @@ def assert_review_boundary_workflow(relative: str) -> None:
 def main() -> None:
     governance = json.loads(GOV.read_text(encoding="utf-8"))
     status = json.loads(STATUS.read_text(encoding="utf-8"))
+    skill_capability = json.loads(SKILL_CAPABILITY.read_text(encoding="utf-8"))
 
     check(governance["authority"]["main_is_only_installed_current"] is True, "main must remain only installed CURRENT")
     check(governance["authority"]["candidate_may_not_self_promote"] is True, "candidate self-promotion must be disabled")
@@ -53,7 +58,42 @@ def main() -> None:
     check(consolidation["net_new_frontier_items_allowed"] is False, "consolidation throttle must block net-new frontier items")
     check(consolidation["ci_receipt_or_probe_count_is_not_closure"] is True, "CI/receipt/probe count cannot be treated as closure")
     allowed_closure = set(consolidation["allowed_actions"])
-    check({"ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"}.issubset(allowed_closure), "closure action set is incomplete")
+    check({"REPAIR", "SYNC", "ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"}.issubset(allowed_closure), "closure action set is incomplete")
+
+    alignment = governance["skill_runtime_alignment"]
+    check(alignment["parent_skill"] == "oleander-skills/oleander-3d-pipeline/SKILL.md", "Blender runtime must stay under the existing 3D Skill owner")
+    check(alignment["existing_module_first"] is True, "Blender runtime alignment must be existing-module-first")
+    check(alignment["no_new_skill_or_parallel_runtime_framework"] is True, "Blender candidate must prohibit parallel Skill/runtime frameworks")
+    check(alignment["material_runtime_change_requires_alignment_readback"] is True, "material runtime changes must require alignment readback")
+    check(alignment["production_runtime_authority"] == "Blender 5.2.0 LTS", "production Blender authority must be 5.2.0 LTS")
+    check(alignment["historical_per_stage_blender_5_1_receipts_role"] == "PROVENANCE", "Blender 5.1 stage receipts must be provenance only")
+
+    skill_text = SKILL.read_text(encoding="utf-8")
+    workbench_text = WORKBENCH_EXTENSION.read_text(encoding="utf-8")
+    runtime_readme = RUNTIME_README.read_text(encoding="utf-8")
+    check("## Blender Workbench existing-first route" in skill_text, "parent 3D Skill must expose Blender existing-first routing")
+    check("Do not create `oleander-blender-skill`" in skill_text, "parent 3D Skill must block parallel Blender Skill creation")
+    check("Status: CANDIDATE IMPLEMENTATION LAYER / NOT INSTALLED CURRENT" in workbench_text, "Workbench extension status must match actual Candidate authority")
+    check("Status: PROPOSED IMPLEMENTATION LAYER" not in workbench_text, "Workbench extension cannot remain falsely PROPOSED")
+    check("Blender `5.2.0 LTS`" in runtime_readme, "Runtime README must bind current compatibility to Blender 5.2 LTS")
+    check("seventeen bound validation stages" in runtime_readme, "Runtime README must reflect the seventeen-layer current regression")
+    check(skill_capability["last_verified"] == "2026-09-05", "3D Skill capability contract verification date must match alignment closure")
+    implementation_paths = set(skill_capability["implementation_paths"])
+    for required in {
+        "oleander-skills/oleander-3d-pipeline/SKILL.md",
+        "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_WORKBENCH_EXTENSION.md",
+        "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_CAPABILITY.json",
+        "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_STATUS.json",
+        "oleander-skills/oleander-3d-pipeline/blender_runtime/README.md",
+    }:
+        check(required in implementation_paths, f"3D Skill capability contract missing implementation surface: {required}")
+
+    current_receipt_path = ROOT / alignment["current_runtime_compatibility_receipt"]
+    check(current_receipt_path.exists(), "current Blender 5.2 consolidated regression receipt missing")
+    current_receipt = json.loads(current_receipt_path.read_text(encoding="utf-8"))
+    check(current_receipt["validation_state"] == "PASS", "current Blender runtime receipt must be PASS")
+    check(current_receipt["host"]["blender_version"] == "5.2.0 LTS", "current runtime receipt must bind Blender 5.2.0 LTS")
+    check(current_receipt["runtime_result"] == "PASS", "current Blender runtime regression result must be PASS")
 
     policy = governance["workflow_policy"]
     grandfathered = set(policy["grandfathered_freecad_workflows"])
@@ -133,6 +173,7 @@ def main() -> None:
 
     print("OLEANDER_CANDIDATE_GOVERNANCE=PASS")
     print("consolidation_mode=" + consolidation["mode"])
+    print("skill_runtime_alignment=PASS")
     print("net_new_frontier_items_allowed=" + str(consolidation["net_new_frontier_items_allowed"]))
     print("review_boundary_workflows=" + str(len(review_boundary)))
     print("runtime_5_2_regression=" + runtime_workflow)

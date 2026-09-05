@@ -1,7 +1,31 @@
 # OLEANDER Blender Runtime / Workbench Extension
 
-Status: PROPOSED IMPLEMENTATION LAYER
+Status: CANDIDATE IMPLEMENTATION LAYER / NOT INSTALLED CURRENT
 Parent authority: `oleander-skills/oleander-3d-pipeline/SKILL.md`
+
+## Current implementation alignment — 2026-09-05
+
+This file is an implementation layer under the existing `oleander-3d-pipeline` Skill. It is not a second Skill, second Runtime Current, or independent governance authority.
+
+Current Candidate facts:
+
+- installed Current remains the `main` branch copy of `oleander-skills/oleander-3d-pipeline/` until explicit merge/promotion + readback;
+- the Candidate runtime has a consolidated real-Blender regression on Blender `5.2.0 LTS` and seventeen bound validation stages; current-source compatibility authority is `blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`;
+- historical per-stage Blender 5.1.2 receipts remain immutable provenance and are not current-source compatibility authority;
+- professional CAD/B-Rep proofs remain bounded specialist-kernel evidence; Blender does not become B-Rep authority by consuming their display derivatives;
+- `PROFESSIONAL_PARITY_STATUS.json` remains the capability-claim boundary and P0 professional gaps remain explicit.
+
+Existing-first implementation map:
+
+- identity / audit / dependency / diff: `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
+- direct / feature editing: `direct_model.py`, `feature_stack.py`, `feature_edit.py`;
+- measurement / datum / precision inference: `measurement_system.py`, `measurement_atomic.py`, `angular_datum.py`, `precision_inference.py`, `inference_engine.py`;
+- relations / correction / configuration: `relation_kernel.py`, `relation_apply.py`, `configuration.py`, `configuration_ops.py`;
+- design intent / rebuild / procedural: `design_intent.py`, `design_intent_apply.py`, `design_intent_batch.py`, `design_intent_rebuild.py`, `procedural.py`;
+- mesh clearance / surface diagnostics: `mesh_clearance.py`, `surface_diagnostics.py`;
+- authoritative CAD handoff: `professional_adapter/cad_sidecar.py` plus the applicable specialist route and bounded runtime evidence.
+
+When an existing module can carry roughly 60% or more of a requirement, extend or compose it. Do not create a parallel Blender Skill, assembly Skill, CAD Skill, duplicate Workbench framework, second Current runtime, or one-off professional workflow to bypass an existing owner. Any material runtime change must close the loop by updating the parent Skill routing, capability/status records, this Workbench extension, Runtime README, Candidate governance and the matching Notion control surface, followed by the smallest applicable real-runtime regression/readback.
 
 ## Purpose
 
@@ -571,7 +595,7 @@ Do not claim L2/L3 capability without active runtime evidence.
 
 ## Required implementation evidence
 
-A future executable implementation must demonstrate at minimum:
+The implementation and any future promotion must demonstrate at minimum:
 
 1. a Blender-native object retaining stable `ole_id` through rename/duplicate/export;
 2. one governed parameter change producing a traceable geometry update;

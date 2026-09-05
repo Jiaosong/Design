@@ -1,66 +1,104 @@
-# OLEANDER Blender Runtime — v0.1 Scaffold
+# OLEANDER Blender Runtime — v0.2 Candidate
 
-This directory contains the first executable layer of the OLEANDER Blender Workbench.
+Status: `OPEN CANDIDATE / NOT INSTALLED CURRENT`
+Parent Skill: `oleander-skills/oleander-3d-pipeline/SKILL.md`
 
-## Current scope
+This directory is the executable Blender implementation layer of the single OLEANDER 3D Skill. It is not a second Skill or a second Current authority.
 
-Implemented without external sidecars:
+## Current runtime compatibility
 
-- persistent `OLE ID` stored on Blender objects;
-- governed metadata for object class, master type and master locator;
-- geometry/material authority state;
-- FIELD / ENGINEERING / MANUFACTURING state separation;
-- LOD and assembly identity;
-- stale-output marker;
-- baseline scene audit;
-- duplicate OLE ID detection;
-- missing texture-path detection;
-- non-manifold/non-finite mesh review checks;
-- scene manifest generation to an editable Blender Text datablock.
+Current-source compatibility evidence is the consolidated real-runtime receipt:
 
-Not implemented or claimed yet:
+`BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`
 
-- B-Rep CAD kernel;
-- NURBS/Class-A certification;
-- sketch constraint solver;
-- CAD assembly/mates;
-- IFC semantic round-trip;
-- vector technical drawing engine;
-- CAE solver integration;
-- CAM toolpath/postprocessor integration;
-- automatic geometry-deviation round trip;
-- full dependency graph/stale propagation;
-- natural-language deterministic operator router.
+Validated environment:
 
-These remain specialist sidecars or later workbench modules under `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`.
+- Blender `5.2.0 LTS`;
+- build `fbe6228777e7`;
+- canonical resolver `90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh`;
+- seventeen bound validation stages: Stage 2 core plus Direct, Feature Stack, Feature Editing, Relations, Relation Apply, Measurement, Angular/Datum, Precision/Inference, Inference v2, Mesh Clearance, Surface Diagnostics, Design Intent, Design Intent Apply, Design Intent Batch, Design Intent Rebuild and Procedural;
+- current-source runtime result: `PASS`.
 
-## Blender target
+Historical Blender 5.1.2 per-stage receipts remain immutable provenance. They are not current-source compatibility authority after the Blender 5.2 procedural compatibility repair.
 
-The add-on metadata currently targets Blender 5.1+ and uses standard `bpy.types.PropertyGroup`, `bpy.props`, Operators, Panels, Text datablocks and `bmesh`. Keep the implementation version-tolerant where practical and re-probe against the actual production Blender version before promotion.
+## Existing-first module map
 
-## Install for development
+Before adding implementation, extend or compose an existing owner when it can carry the requirement:
 
-Zip the `oleander_blender` package directory or place it in a Blender scripts/addons location, then enable **OLEANDER Blender Runtime** in Blender extensions/add-ons according to the active Blender installation policy.
+- identity / metadata / audit / dependency / diff: `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
+- direct modeling / editable feature stack: `direct_model.py`, `feature_stack.py`, `feature_edit.py`;
+- measurement / ruler / datum / inference: `measurement_system.py`, `measurement_atomic.py`, `angular_datum.py`, `precision_inference.py`, `inference_engine.py`;
+- relations / deterministic one-shot correction / configurations: `relation_kernel.py`, `relation_apply.py`, `configuration.py`, `configuration_ops.py`;
+- design-intent registry / explicit apply / batch / rebuild: `design_intent.py`, `design_intent_apply.py`, `design_intent_batch.py`, `design_intent_rebuild.py`;
+- Geometry Nodes governance: `procedural.py`;
+- evaluated mesh clearance / surface diagnostics: `mesh_clearance.py`, `surface_diagnostics.py`;
+- CAD-native authority handoff: `professional_adapter/cad_sidecar.py` plus the applicable specialist CAD route.
 
-After enabling, open:
+Do not create a parallel Blender Skill, assembly Skill, CAD Skill, second Workbench framework or one-off professional workflow when an existing owner can be extended. New implementation requires a material capability gap plus authority/anti-pollution preflight.
 
-`3D Viewport -> Sidebar -> OLEANDER`
+## Validated Blender-native scope
 
-## First validation sequence
+The Candidate includes validated bounded support for:
 
-1. Create three ordinary mesh objects.
-2. Select them and run `Assign / Repair ID`.
-3. Rename the Blender objects and verify `ole_id` remains unchanged.
-4. Duplicate one object and run Audit; the copied identity should be reported as a collision until repaired.
-5. Set one object to `CAD_NATIVE` without a master locator and confirm Audit flags the missing master locator.
-6. Set geometry authority to `FIELD_OPEN` and confirm this remains distinct from mesh geometry status.
-7. Create a deliberately open mesh and confirm the geometry review reports non-manifold edges.
-8. Break an external image path and confirm dependency review reports it.
-9. Build `OLEANDER_MANIFEST.json` in Blender's Text Editor and inspect object identity/authority/state.
-10. Confirm the audit summary never claims engineering, constructability or design approval.
+- persistent OLE IDs and governed metadata;
+- scene/object authority separation;
+- dependency graph, stale propagation and geometry/parameter diff;
+- direct metric object operations;
+- non-destructive Blender-native feature stack and feature editing lifecycle;
+- governed relation registry, tolerance audit and deterministic one-shot relation correction with `solver_claim = false`;
+- measurement profiles, rulers, angular guides, datum/reference geometry and precision inference;
+- evaluated mesh surface clearance and bounded polygon-mesh surface diagnostics;
+- design parameter registry, dependency graph, explicit apply, atomic batch apply, rebuild planning and rollback/provenance;
+- Geometry Nodes procedural foundation with governed provenance;
+- configuration/BOM support, audit and export manifest foundations.
+
+## Specialist-kernel boundary
+
+Blender remains the interactive host, not a universal geometry kernel.
+
+When authoritative B-Rep, parametric CAD, Class-A/NURBS, IFC/BIM, CAE, CAM or other specialist output is required, route through the parent Skill's specialist extension and only claim the bounded scope supported by actual runtime evidence.
+
+For CAD-native objects:
+
+- CAD native source remains geometry authority;
+- STEP/BREP/FCStd or other native/exchange artifacts remain traceable;
+- Blender receives a typed display/review derivative;
+- Blender mesh operations must not be described as equivalent to authoritative B-Rep operations;
+- bounded FreeCAD/OCCT probes do not establish general CAD parity.
+
+## Still not claimed
+
+The Candidate does not by itself establish:
+
+- general B-Rep/CAD parity;
+- general parametric sketch/feature/assembly solver parity;
+- unrestricted assembly mates/joints;
+- NURBS/Class-A continuity certification;
+- IFC-native author/edit/export/reopen parity;
+- associative professional technical-drawing parity;
+- engineering approval, manufacturing release, constructability or field truth;
+- Design PASS from Machine/CI PASS.
+
+See `PROFESSIONAL_PARITY_STATUS.json` for the current bounded professional capability boundary.
+
+## Development validation sequence
+
+For material runtime changes:
+
+1. resolve Current Project/Object authority and Required Native Output;
+2. reuse an existing module before creating implementation;
+3. run static contract checks and the smallest affected real-Blender validation;
+4. for candidate-wide compatibility, run the canonical Blender 5.2 LTS regression;
+5. reopen/read back persisted state where applicable;
+6. keep Machine/Compliance evidence separate from Professional Design verdict;
+7. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface when their facts materially changed.
+
+A material runtime change that is not reflected in its routing/status surfaces is an alignment failure even when its code tests pass.
+
+## Baseline checks retained from the original scaffold
+
+The original Stage-2 baseline remains part of the regression set: stable OLE ID through rename, duplicate-ID failure/repair, missing master/dependency detection, field/engineering/manufacturing state separation, non-manifold review, dependency-path checks, editable manifest output and audit wording that never claims engineering/constructability/design approval.
 
 ## Promotion gate
 
-Do not label this runtime `ACTIVE` until it has been opened in the target Blender build and the validation sequence above has readback evidence.
-
-Future specialist sidecars must also pass the parent 3D Skill's unit/axis, authority, reopen and round-trip requirements before their capabilities are advertised as active.
+Do not treat this Candidate as installed Current merely because real Blender regression passes. Promotion requires the current OLEANDER Candidate governance gate, fresh main synchronization, current PR authority, contradiction scan, required project-usage or explicit bounded absorption decision, and explicit promotion decision.

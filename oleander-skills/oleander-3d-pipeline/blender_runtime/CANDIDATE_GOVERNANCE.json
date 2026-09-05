@@ -1,12 +1,12 @@
 {
   "schema": "OLEANDER_BLENDER_CANDIDATE_GOVERNANCE_v1.0",
-  "effective_date": "2026-09-04",
+  "effective_date": "2026-09-05",
   "authority": {
     "installed_current_branch": "main",
     "candidate_branch": "feat/oleander-blender-runtime-workbench",
     "main_is_only_installed_current": true,
     "candidate_may_not_self_promote": true,
-    "promotion_state": "HOLD_GOVERNANCE_CLEANUP"
+    "promotion_state": "HOLD_PROJECT_USAGE_OR_EXPLICIT_BOUNDED_ABSORPTION_DECISION"
   },
   "anti_pollution_rules": {
     "no_new_parallel_current": true,
@@ -29,9 +29,25 @@
     "mode": "EXISTING_CANDIDATE_CLOSURE",
     "effective_policy_date": "2026-09-05",
     "net_new_frontier_items_allowed": false,
-    "allowed_actions": ["ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"],
-    "closure_priority": "SYNC_REPAIR_REGRESSION_CONTRADICTION_SCAN_PROJECT_USAGE_PROMOTION_DECISION",
+    "allowed_actions": ["REPAIR", "SYNC", "ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"],
+    "closure_priority": "ALIGN_SYNC_REPAIR_REGRESSION_CONTRADICTION_SCAN_PROJECT_USAGE_PROMOTION_DECISION",
     "ci_receipt_or_probe_count_is_not_closure": true
+  },
+  "skill_runtime_alignment": {
+    "parent_skill": "oleander-skills/oleander-3d-pipeline/SKILL.md",
+    "skill_capability_contract": "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
+    "runtime_capability_map": "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_CAPABILITY.json",
+    "runtime_capability_map_role": "CAPABILITY_AND_HISTORICAL_STAGE_PROVENANCE_MAP_NOT_CURRENT_RUNTIME_COMPATIBILITY_AUTHORITY",
+    "workbench_extension": "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_WORKBENCH_EXTENSION.md",
+    "runtime_readme": "oleander-skills/oleander-3d-pipeline/blender_runtime/README.md",
+    "professional_parity_status": "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_STATUS.json",
+    "current_runtime_compatibility_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json",
+    "production_runtime_authority": "Blender 5.2.0 LTS",
+    "historical_per_stage_blender_5_1_receipts_role": "PROVENANCE",
+    "existing_module_first": true,
+    "no_new_skill_or_parallel_runtime_framework": true,
+    "material_runtime_change_requires_alignment_readback": true,
+    "notion_control_surface": "SYS-BLENDER-SURFACE"
   },
   "workflow_policy": {
     "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
@@ -143,14 +159,14 @@
     "require_default_environment_eligible_explicit_decision": true
   },
   "branch_hygiene": {
-    "last_observed_behind_main": 5,
-    "last_observed_ahead_main": 514,
-    "observation_head": "650cf1a08df2689575781a271854dee914e236af",
+    "last_observed_behind_main": 0,
+    "last_observed_ahead_main": 518,
+    "observation_head": "e6caf8fd7b0ff6794fa9a677a7a994f7301af36d",
     "observation_main": "72575cf4dd45f24b7524ecacf44120b8069a33a4",
     "observation_date": "2026-09-05",
     "observation_is_advisory": true,
-    "state": "SYNC_REQUIRED_BEFORE_PROMOTION",
-    "rule": "Candidate repair may continue because this is pre-throttle existing debt, but promotion is prohibited until a fresh dynamic main comparison proves behind=0. Stored ahead/behind values are audit snapshots, never promotion authority."
+    "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
+    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. Current technical/governance regression is green, but project usage or an explicit bounded absorption/promotion decision remains a real closure boundary."
   },
-  "governance_note": "OLEANDER is in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/regression/absorb/close work remains allowed, but net-new frontier capability work is blocked. Five bounded professional frontier items retain their historical FreeCAD/OCCT plus Blender 5.1.2 receipts as provenance. Current promotion evidence must additionally pass canonical Blender 5.2.0 LTS regression and 5.2 display-only frontier readback. The 5.2 regression workflow names are version-bound rather than CURRENT-named so they do not create a second Current authority. Fifteen grandfathered FreeCAD workflows plus three stable CAD dependency/integration baselines remain review-boundary evidence. Main remains the only installed CURRENT; P0-B remains BLOCKED; Candidate promotion remains HOLD until fresh main sync, 5.2 regression, contradiction scan, project-usage or explicit bounded absorption decision, PR authority readback and explicit promotion decision."
+  "governance_note": "OLEANDER is in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed, while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is bound to the consolidated Blender 5.2.0 LTS regression receipt; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scope. Main remains the only installed CURRENT; P0-B remains BLOCKED. Fresh synchronized-head governance/runtime/frontier regression is green, and the remaining promotion boundary is real project usage or an explicit bounded absorption/promotion decision plus current authority readback."
 }
