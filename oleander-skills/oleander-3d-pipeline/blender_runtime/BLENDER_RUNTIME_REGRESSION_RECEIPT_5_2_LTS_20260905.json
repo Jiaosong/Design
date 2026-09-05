@@ -1,0 +1,73 @@
+{
+  "schema": "OLEANDER_BLENDER_RUNTIME_CONSOLIDATED_REGRESSION_RECEIPT_v1.0",
+  "runtime_id": "oleander-blender-runtime",
+  "runtime_version": "0.2.0",
+  "validation_state": "PASS",
+  "validation_scope": "BLENDER_5_2_LTS_SEVENTEEN_LAYER_RUNTIME_REGRESSION",
+  "validated_at_utc": "2026-09-05T01:05:26Z",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "candidate_head": "2c2a09bcc1d88808f94d0ea9952d667a7638fe75",
+  "tested_pr_merge_commit": "0118116262abcfa36305d9164ea9fde8c41b1ca3",
+  "tested_main_base": "72575cf4dd45f24b7524ecacf44120b8069a33a4",
+  "workflow": {
+    "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
+    "run_id": 33935040543,
+    "job_id": 101221190932,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "runner_image": "ubuntu-24.04",
+    "blender_version": "5.2.0 LTS",
+    "blender_build_hash": "fbe6228777e7",
+    "blender_archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "canonical_runtime_resolver": "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh",
+    "runtime_resolution_result": "PASS"
+  },
+  "extension_package": {
+    "filename": "oleander_blender_runtime-5.2-lts.zip",
+    "size_bytes": 89498,
+    "sha256": "b6789e1765071df5bbd077d7007eba7de093ce5e2f2f8bb819fb2ce04d157b6c",
+    "source_manifest_validate": "PASS",
+    "build": "PASS",
+    "built_package_validate": "PASS"
+  },
+  "stages": {
+    "validate_stage2.py": {"status": "PASS", "source_fingerprint_sha256": "4da2512bd475a662216896fd88b1d21d78fc9c6a548fdeb402bc684ee9433ab7"},
+    "validate_stage3_direct.py": {"status": "PASS", "source_fingerprint_sha256": "6dfd218130bec525c64e1555a8bce1ee12ce17d02b943c0c87874787096abeac"},
+    "validate_stage3_features.py": {"status": "PASS", "source_fingerprint_sha256": "d0423a9003c909793d5406e54c5d53fa177a857a396a486c416254d3bc78fc5d"},
+    "validate_stage3_feature_editing.py": {"status": "PASS", "source_fingerprint_sha256": "75d9d2d2111a6e8a45634eb03cc04d60817c3449180079fb6053a5baac98112d"},
+    "validate_stage3_relations.py": {"status": "PASS", "source_fingerprint_sha256": "361e1c02602d0548de75be21ee150eb58524e4831d166b2c276641e27a813803"},
+    "validate_stage3_relation_apply.py": {"status": "PASS", "source_fingerprint_sha256": "5b7d3e0e1bdd934d81321c574c469100d36f10a5ec2708b45be1461ce96fb7cb"},
+    "validate_stage3_measurement.py": {"status": "PASS", "source_fingerprint_sha256": "43c5dae6793c1bce70209ba4a7a0270b043296ba42f71e50b6cb1f2bb2e6faac"},
+    "validate_stage3_angular_datum.py": {"status": "PASS", "source_fingerprint_sha256": "e5b733c53c99a3c9f6c04591b5c6eed655d86313d221b1d552405e69a60f2ed4"},
+    "validate_stage3_precision_inference.py": {"status": "PASS", "source_fingerprint_sha256": "9cccde550ca746fb98cc46b53d4bf1735fb84597e7bc7bdcb46a9496fdf5962f"},
+    "validate_stage3_inference_v2.py": {"status": "PASS", "source_fingerprint_sha256": "aa84146f1a92c4afba372e88c2aee0d7ae23d49777c1884a1b29bafdf42c7988"},
+    "validate_stage3_mesh_clearance.py": {"status": "PASS", "source_fingerprint_sha256": "e5c3636c583ff6fddf9b257c2f248e3fb58f64369123630ab46cc6aced3f095a"},
+    "validate_stage3_surface_diagnostics.py": {"status": "PASS", "source_fingerprint_sha256": "f615fbf6fd643979c7185a20963e71c6455cc35eecccdc655983efe6e5466f26"},
+    "validate_stage3_design_intent.py": {"status": "PASS", "source_fingerprint_sha256": "3fb5a23e1afb5b167205f3b74aff6153c733cd36ff71710476fe84c3b04e2733"},
+    "validate_stage3_design_intent_apply.py": {"status": "PASS", "source_fingerprint_sha256": "5454513d21daa86806e6877e49695adb0fe4c155a9ba892ba2e932f9fb6ed882"},
+    "validate_stage3_design_intent_batch.py": {"status": "PASS", "source_fingerprint_sha256": "2b262723433b0a1dd52ba8585b474ea5d85aa48cd7f84f5c63adfeca262ff545"},
+    "validate_stage3_design_intent_rebuild.py": {"status": "PASS", "source_fingerprint_sha256": "685df045e56803c34025cd5cd748a8732bf7668b944a9d2f20630516d200bba9"},
+    "validate_stage3_procedural.py": {"status": "PASS", "source_fingerprint_sha256": "b23a7c39c50868b6b5a0de85767233577f2a942a6ccc3c2156fca9f7e91dfad6"}
+  },
+  "legacy_receipt_policy": {
+    "state": "PROVENANCE",
+    "meaning": "Existing per-stage Blender 5.1.2 receipts remain immutable historical validation evidence. Their old source fingerprints are intentionally not treated as current-source compatibility evidence after the Blender 5.2 procedural repair.",
+    "preserve_paths_from": "BLENDER_RUNTIME_CAPABILITY.json"
+  },
+  "runtime_result": "PASS",
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "default_environment_promotion",
+    "general_cad_parity",
+    "design_quality",
+    "engineering_approval",
+    "manufacturing_release",
+    "field_truth",
+    "constructability"
+  ],
+  "invalidation_rule": "Any material change to governed add-on source or any of the seventeen bound validation scripts invalidates the corresponding current fingerprint and requires a fresh canonical Blender 5.2 LTS regression before Candidate promotion evidence may be currentized.",
+  "authority_note": "Consolidated compatibility evidence for the existing Candidate only. It supersedes stale per-stage receipts only as current-source/runtime regression evidence; historical 5.1.2 receipts remain provenance and are not deleted or rewritten."
+}
