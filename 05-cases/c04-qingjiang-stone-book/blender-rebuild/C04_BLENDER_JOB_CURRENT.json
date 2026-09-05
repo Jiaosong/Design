@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1",
-  "status": "READY",
+  "status": "DISABLED",
   "job_id": "PRJ-C04-QINGJIANG-SHISHU/YUNSHUIYI/REBUILD_V003/FIDELITY_REPAIR_R02",
-  "revision": 5,
+  "revision": 6,
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "child_item": "云水倚",
-  "purpose": "CURRENT_FIDELITY_REPAIR_MACHINE_JOB",
+  "purpose": "SUBORDINATE_MACHINE_JOB_RETURN_RECORD",
   "script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_rebuild_yunshuiyi_v003.py",
   "validation_script_path": "05-cases/c04-qingjiang-stone-book/blender-rebuild/c04_validate_rebuild_v003.py",
   "blend_file": "artifacts/c04-yunshuiyi/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend",
@@ -15,19 +15,37 @@
   "source_reference_state": "ODB-02 source-bound imagery is visual authority. Preserve bilateral side rails, five timber back slats, fold-down padded seat, paired hinge/pivot hardware, diagonal support arms and railing mount/clamp relation. Metric values remain DESIGN_ESTIMATE; no engineering claim.",
   "field_state": "FIELD_OPEN",
   "promotion": "NO_PROMOTION",
-  "ready_transition": "Second retry of the same Yunshuiyi v003 fidelity-repair object. The prior durable run proved Blender 5.2 runtime availability and exposed that empty factory startup leaves scene.world unset. DESIGN now creates an explicit World and re-enters through the same shared runner.",
+  "machine_return": {
+    "state": "RETURNED_MACHINE",
+    "workflow_run_id": 33954476037,
+    "workflow_run_number": 46,
+    "artifact_id": 9965907493,
+    "artifact_digest": "sha256:46ad5e7c5620fd9f0257193aac5627872c0a00b4e9f7504226b50f571b938f4d",
+    "artifact_size_bytes": 434318,
+    "producer": "SUCCESS",
+    "native_reopen_validation": "SUCCESS",
+    "artifact_identity": "SUCCESS",
+    "artifact_upload": "SUCCESS"
+  },
+  "repair_history": [
+    {
+      "workflow_run_id": 33954211110,
+      "result": "FAIL_AT_PRODUCER",
+      "cause": "Blender 5.2.0 rejected BLENDER_EEVEE_NEXT; runtime-supported enum is BLENDER_EEVEE.",
+      "repair_commit": "4531a437f7383e3892de8f115cfd624fb54c9a8c"
+    },
+    {
+      "workflow_run_id": 33954334471,
+      "result": "FAIL_AT_PRODUCER",
+      "cause": "Empty factory startup left scene.world unset.",
+      "repair_commit": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147"
+    }
+  ],
   "upstream_repair_commits": {
     "design_producer": "afdf571fbea2917d1baebaee9a084f947e24eee1",
-    "validation_reopen_rule": "8c262ffca69cccf6aa1df311f537aa7bd5f01134",
-    "runtime_compatibility_fix": "4531a437f7383e3892de8f115cfd624fb54c9a8c",
-    "world_initialization_fix": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147"
+    "validation_reopen_rule": "8c262ffca69cccf6aa1df311f537aa7bd5f01134"
   },
-  "previous_attempt": {
-    "workflow_run_id": 33954334471,
-    "result": "FAIL_AT_PRODUCER",
-    "cause": "After empty factory startup, scene.world was None and direct color assignment raised AttributeError.",
-    "repair": "Create C04_YUNSHUIYI_WORLD explicitly, assign it to scene.world, then set color; no environment replacement and no new workflow."
-  },
-  "return_gate": "Runner must generate the editable .blend, preview, manifest and reopen receipt. Native reopen proves persistence/required editable parts only; actual source-fidelity visual readback remains an independent VALIDATION step before any cursor advance or Presentation handoff.",
+  "returned_transition": "The same Yunshuiyi v003 fidelity-repair machine object completed through the existing shared Blender runner and is retired from READY to prevent accidental rerun. Machine/native reopen return does not close independent source-fidelity Validation and does not make the object Presentation-ready.",
+  "next_control_plane_state": "VALIDATION_SOURCE_FIDELITY_READBACK_PENDING_ON_RETURNED_PREVIEW",
   "truth_boundary": "DESIGN_ESTIMATE / FIELD_OPEN / NO_PROMOTION / NOT_ENGINEERING_MASTER / NOT_DESIGN_KEEP / FIELD_PASS_NONE"
 }
