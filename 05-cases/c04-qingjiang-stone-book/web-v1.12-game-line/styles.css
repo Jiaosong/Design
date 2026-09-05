@@ -152,6 +152,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #e3bb78;outline-offset:4p
   .innovation-grid{grid-template-columns:1fr}.innovation-grid article{min-height:230px}.innovation-grid h3{margin-top:48px}
   .difficulty-list article{grid-template-columns:40px 1fr}.difficulty-list p{grid-column:2}.evolution-head,.evolution-table article{grid-template-columns:1fr;gap:8px}.evolution-head{display:none}
   .final-copy{left:20px;bottom:105px;width:calc(100% - 40px)}.final-copy h2{font-size:clamp(56px,17vw,88px)}
+  .hero{min-height:100svh}
 }
 @media(max-width:520px){
   .imprint-field{grid-template-columns:repeat(2,1fr)}.imprint{min-height:190px}.imprint svg{height:85px}
