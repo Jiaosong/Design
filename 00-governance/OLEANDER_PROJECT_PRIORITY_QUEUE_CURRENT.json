@@ -15,13 +15,13 @@
       "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_THE_TOP_LEVEL_WEB_OBJECT_NOT_SOLE_PROJECT_OWNER",
       "state": "ACTIVE",
       "current_native_master": "NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / current head must be reread each run",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / head 83f2127d846f27806a1b5243bffd36d18082c1b0 at 2026-09-05 readback",
       "next_owner": "VALIDATION",
       "whole_project_authority": ["05-cases/c04-qingjiang-stone-book/C04_CURRENT.md", "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md", "05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md"],
       "whole_project_workstreams": [
         {"workstream_id": "ACTIVE-1-B-PROJECT-NARRATIVE-EDITORIAL", "state": "ACTIVE_REPAIR", "current_gap": "27 legacy identities SOURCE RECOVERY OPEN; N-series=0."},
         {"workstream_id": "ACTIVE-2-D-VISUAL-MOTION", "state": "ACTIVE_REPAIR", "current_gap": "Finished-output whole-project visual readback remains open."},
-        {"workstream_id": "ACTIVE-3-WEB", "state": "ACTIVE_REPAIR", "current_gap": "PR #465 source-authority image binding, Chromium finished pixels and mergeability remain unresolved."},
+        {"workstream_id": "ACTIVE-3-WEB", "state": "ACTIVE_REPAIR", "current_gap": "PR #465 head 83f2127d...: repo-local dependency integrity PASS; Chromium FAIL because Google Drive thumbnail image carriers fail at 1920x1080, 1366x768 and 390x844; PR Anti-Pollution check remains FAIL. The PR-head AI Governance failure caused by the newly restored C01 queue entry schema was repaired on main in commit 292049d39fd1acc68b166141a0ae857068068647 and main AI Governance/Anti-Pollution push checks passed; PR checks require a fresh merge-head rerun."},
         {"workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL", "state": "ACTIVE", "blender_subqueue_role": "SUBQUEUE_ONLY_NOT_WHOLE_PROJECT_QUEUE", "current_gap": "Three rebuilds returned; independent fidelity/presentation consumption and broader P01-P09/detail proof remain open."},
         {"workstream_id": "ACTIVE-5-F-FINAL-INTEGRATION", "state": "ACTIVE_CONSUMER_CLOSURE_WAITING_UPSTREAM", "current_gap": "Closure remains open while upstream B/D/Web/Active-4 gates remain open."}
       ],
@@ -42,9 +42,9 @@
       "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE",
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "production_stall": null,
-      "next_action": "Run C04 as five Current workstreams. Active-4 DESIGN candidate audit is returned; no model 4/5 is authorized. VALIDATION/PRESENTATION consume the three returned rebuilds while Brand/Memory-IP/interaction/editorial lanes consume the nine routed identities. Web/B/D/F remain independent active frontiers.",
-      "updated_at": "2026-09-04T06:07:36+08:00",
-      "source_of_queue_decision": "Remote readback of C04_PROJECT_CONTROL_CARD_CURRENT.md and returned C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md; governance sync only, no production delta."
+      "next_action": "PRESENTATION continues the Web repair by replacing failing external Google Drive thumbnail transport with a browser-stable authority-preserving carrier and reruns Chromium. GOVERNANCE separately resolves the PR Anti-Pollution failure without blanket-allowlisting derivative/current-named files. B/D/F and Active-4 validation/presentation remain independent eligible work; a Web wait must not freeze those owners.",
+      "updated_at": "2026-09-05T08:37:00+08:00",
+      "source_of_queue_decision": "Fresh remote readback of PR #465 head 83f2127d846f27806a1b5243bffd36d18082c1b0, C04 Web Static Integrity run 33927665471 and current whole-project authorities. Chromium currently fails only on Google Drive thumbnail image transport while interaction/layout/reduced-motion checks remain otherwise healthy; mergeability is true."
     },
     {
       "priority": 2,
