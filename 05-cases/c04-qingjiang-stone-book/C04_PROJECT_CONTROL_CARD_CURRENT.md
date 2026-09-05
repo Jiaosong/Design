@@ -62,9 +62,9 @@ Current asset classes include:
 - `CURRENT_OWNER_FOR_THIS_OBJECT`: PRESENTATION
 - `NEXT_OWNER_FOR_THIS_OBJECT`: VALIDATION
 - `CURRENT_NATIVE_MASTER_ON_MAIN`: NONE for Web v1.12 exact path.
-- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `2cdca2274a6bd0b8fac93ed61255537d4028400b` / 111 commits / fresh readback `mergeable=false`.
+- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `ecc86f485563e8d447f85e060ed998085b459fb9` / 112 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
 - `CHECK_STATE`: AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL.
-- `CHROMIUM_FAILURE`: current Google Drive thumbnail carriers for two Qingjiang source images fail to load at 1920×1080, 1366×768 and 390×844. Horizontal-overflow, topbar/hero visibility, imprint interaction, supplement open/close, reading sequence and reduced-motion checks execute; these do not override missing source pixels.
+- `CHROMIUM_FAILURE`: exact-head run `33956831680` still fails Chromium presentation readback while repo-local dependency integrity passes. Fresh browser evidence artifact `9966638701` exists. Its report-level root cause was not independently read back in this governance pass, so the previous two-image-carrier diagnosis remains regression context only and is not asserted as the current-head cause.
 - `OPEN_GAP`: replace/fix the failing image carrier using the same Source Authority, close Anti-Pollution, rerun Chromium 1920/1366/390, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
 - `NEXT`: continue through the same PR #465 producer frontier. A Web runner WAIT must not block other C04 assets or other projects.
 
@@ -168,4 +168,4 @@ Required native output is decided **before** tool selection. A source archive do
 
 Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, fresh PR #465 readback, current Actions run states, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, ODB-02 source-bound imagery, the 云水倚 Fidelity Brief, prior v003 source-fidelity verdict, repaired producer/validator commits, successful shared-Blender machine return and remote Queue readback.
 
-`UPDATED_AT`: 2026-09-05T16:19+08:00
+`UPDATED_AT`: 2026-09-05T17:04+08:00
