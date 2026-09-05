@@ -61,12 +61,14 @@ Current asset classes include:
 - `CURRENT_OWNER_FOR_THIS_OBJECT`: PRESENTATION
 - `NEXT_OWNER_FOR_THIS_OBJECT`: VALIDATION
 - `CURRENT_NATIVE_MASTER_ON_MAIN`: NONE for Web v1.12 exact path.
-- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `83f2127d846f27806a1b5243bffd36d18082c1b0`; latest readback reports `mergeable=false` and must be re-read each repair run.
-- `OPEN_GAP`: browser-stable exact Source-Authority Qingjiang image binding, current branch/main divergence, PR Anti-Pollution closure, Chromium 1920/1366/390, finished-pixel quality and formal handoff.
-- `NEXT`: repair through the existing producer frontier, rerun Chromium 1920/1366/390, inspect finished pixels, then formal PRESENTATION→VALIDATION handoff. A Web runner WAIT must not block other C04 assets or other projects.
+- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `61fc66656045381dce634166a8faccceb6b84ba0` / 108 commits / fresh readback `mergeable=true`.
+- `LATEST_MATERIAL_DELTA`: PRESENTATION added R06 authority carrier chunk 1/6 on the live producer branch.
+- `CHECK_STATE`: AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL.
+- `OPEN_GAP`: complete browser-stable exact Source-Authority image binding, close Anti-Pollution, rerun Chromium 1920/1366/390, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
+- `NEXT`: continue through the same PR #465 producer frontier and repair the actual failing carrier/check state. A Web runner WAIT must not block other C04 assets or other projects.
 
 ### ACTIVE 4｜Physical / Product / Detail
-- `STATE`: ACTIVE
+- `STATE`: ACTIVE_REPAIR
 - `ASSET_AUTHORITY`: Asset Atlas Physical P01–P09 + current C23/model descendants + applicable Spatial/Technical/body/CMF/detail assets. R06 experience remains frozen/no-reopen.
 - `BLENDER_BATCH_ROLE`: the first rebuild batch is a returned production subset, not the Active-4 scope and not the whole-project production queue.
 - `RETURNED_REBUILD_BATCH`: `云水倚 → 流体座椅人体工 → 江畔停泊折叠观`.
@@ -75,13 +77,24 @@ Current asset classes include:
 
 #### Returned model lifecycle alignment
 - `PRODUCTION_REOPEN`: RETURNED for all three.
-- `VALIDATION_CURRENT`: 云水倚.
-- `INDEPENDENT_FIDELITY`: PENDING from 云水倚 onward.
-- `INDEPENDENT_DESIGN_VERDICT`: PENDING where applicable.
-- `PRESENTATION_CURRENT`: none until the current model returns from Validation.
+- `VALIDATION_CURRENT`: 云水倚 / `REVISE_RETURNED_TO_DESIGN`.
+- `INDEPENDENT_FIDELITY`: actual ODB-02 source imagery vs current v003 rebuild preview readback completed for 云水倚; verdict = REVISE.
+- `INDEPENDENT_DESIGN_VERDICT`: `REVISE_BOUNDED_FIDELITY_NOT_DESIGN_KEEP`.
+- `PRESENTATION_CURRENT`: none; 云水倚 is not ready for Presentation.
 - `PRESENTATION_READY`: none yet.
-- `CURSOR_ADVANCE`: current model must receive Validation verdict + typed return/handoff readback before the Validation cursor advances; Presentation accepts only a returned/ready object.
+- `CURSOR_ADVANCE`: 云水倚 must be repaired in the same logical editable model object, reopened, re-read against source, and receive a closing Validation verdict + typed handoff before Validation advances to 流体座椅人体工.
 - `RULE`: production reopen validator ≠ terminal Validation; `.blend` persistence ≠ Design KEEP.
+
+#### 云水倚｜Independent fidelity return
+- `MANIFEST_OBJECT_ID`: `C04_YUNSHUIYI_REBUILD_MASTER_v003`.
+- `SOURCE_AUTHORITY`: ODB-02 source-bound imagery + `C04｜云水倚｜Design Fidelity Brief R01｜FOR VALIDATION`.
+- `CURRENT_NATIVE_MASTER`: Google Drive `云水倚/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend`.
+- `PASS_OBSERVED`: first-read identity remains recognizable; five timber/back slat structure survives; fold-down seat survives; railing context survives; human contact proxy is present.
+- `REVISE_OBSERVED`: source-defining diagonal support arm is not sufficiently preserved/readable in the current preview; paired hinge/pivot hardware and railing mount/clamp architecture are not sufficiently preserved/readable; relation-reveal components do not yet read as the source relation; material-zone shift must be rechecked for perceptual-role drift after geometry repair.
+- `TYPED_RETURN`: `VALIDATION → DESIGN / REVISE` on the same logical object.
+- `DESIGN_REPAIR`: restore or make clearly readable the diagonal support arm, paired hinge/pivot hardware, railing mount/clamp relation and bilateral side-support architecture; keep relation-reveal components separately addressable; then native reopen + source-fidelity visual retest. Recheck material zoning after geometry relation repair.
+- `RESIDUAL_HOLD`: `DESIGN_ESTIMATE / FIELD_OPEN / ENGINEERING OPEN / MANUFACTURING OPEN / SITE-FIT OPEN / FIELD PASS=NONE`.
+- `NON_PROMOTION`: this review is visual/source fidelity only; it is not engineering, field, manufacturing or final Design KEEP approval.
 
 #### Model 4 / Model 5 audit scope
 - `AUDIT`: RETURNED / COMPLETE_FOR_CURRENT_EVIDENCE.
@@ -95,7 +108,7 @@ The nine audited source identities still route first to the medium their current
 #### Active-4 coverage still open
 Physical P01–P09 selection, required native 3D, interaction/behavior flow, body/use relation, plan/section/axon/node, detail/constructability proof, CMF/material, maintenance and open-field boundaries remain eligible Active-4 work. If a Current design object lacks a necessary editable 3D master, model it after the future-3D gate is satisfied. If the required truth is 2D/diagram/technical/vector, produce that carrier instead.
 
-- `NEXT`: VALIDATION closes 云水倚 fidelity and advances the returned-model cursor; DESIGN simultaneously executes the highest-value eligible missing Active-4 native asset that does not collide with another owner. Do not wait for the returned-model sequence before producing unrelated valid assets.
+- `NEXT`: DESIGN repairs 云水倚 on the same editable master and returns it to VALIDATION; while that object executes/waits, DESIGN simultaneously executes another highest-value eligible missing Active-4 or whole-project native asset that does not collide with another owner. VALIDATION may work other legal ready objects/projects but does not advance this sequential model cursor until 云水倚 closes.
 
 ### ACTIVE 5｜F — Final Integration
 - `STATE`: ACTIVE_CONSUMER / CLOSURE_WAITING_UPSTREAM
@@ -128,24 +141,25 @@ Required native output is decided **before** tool selection. A source archive do
 ## 4｜Whole-project immediate priorities
 
 1. **Asset coverage:** keep C04 in active production; select and execute missing/weak required native assets across all workstreams rather than waiting on one queue.
-2. **Web:** repair PR #465 browser-stable Source carrier + branch divergence + Anti-Pollution; rerun real Chromium and finished-pixel review.
-3. **B:** reduce the 27-page source-recovery backlog and attach/produce the required editorial/analysis assets for recovered pages.
-4. **Active 4:** complete 云水倚 independent fidelity, advance to 流体座椅人体工 then 江畔停泊折叠观; simultaneously continue non-colliding Physical/Technical/body/CMF/detail/model asset production.
+2. **Web:** continue PR #465 from head `61fc6665...`; finish exact Source carrier, repair Anti-Pollution and Chromium, then finished-pixel review/formal handoff.
+3. **Active 4 / 云水倚:** execute the returned fidelity REVISE on the same editable native master; reopen/retest before advancing the model-validation cursor.
+4. **B:** reduce the 27-page source-recovery backlog and attach/produce the required editorial/analysis assets for recovered pages.
 5. **D:** execute a highest-value finished-output / journey / system / analysis / motion asset and real readback.
 6. **F:** integrate each closed upstream asset continuously into Web/PDF/boards/film.
 
 ## 5｜Known boundaries / holds
 
 - `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
-- Web v1.12 is not merged to main.
+- Web v1.12 is not merged to main; current producer remains PR #465.
+- PR #465 current checks still include Chromium FAIL and Project Anti-Pollution FAIL; do not infer Design/browser PASS from the passing governance/dependency checks.
 - 27 protected PAGE identities remain source-recovery open.
+- 云水倚 is REVISE-returned to DESIGN, not Presentation-ready.
 - The nine audited archive candidates remain non-3D-first for current evidence; this does not block other future native-3D Work Objects.
-- Returned rebuilds still require independent validation/presentation consumption.
 - Missing Source Authority may HOLD a specific asset, but it must not stop unrelated eligible asset production.
 - Design KEEP / engineering approval / field approval remain separate from artifact existence, CI, persistence and runtime success.
 
 ## 6｜Readback provenance
 
-Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, and the realigned C04 Blender route. This update corrects the prior false implication that the returned first Blender batch or the archive-specific Model4/5 audit ended C04 asset production.
+Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, live PR #465 readback, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, ODB-02 source-bound imagery, the 云水倚 Fidelity Brief, returned v003 Blender manifest/preview/reopen evidence, and actual source-vs-preview visual readback.
 
-`UPDATED_AT`: 2026-09-05
+`UPDATED_AT`: 2026-09-05T12:16+08:00
