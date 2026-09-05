@@ -54,7 +54,21 @@
     "no_artifact_created_only_to_prove_run": true,
     "training_findings_default_state": "CANDIDATE"
   },
-  "mandatory_preflight": ["resolve_existing_owner","resolve_one_current_authority","resolve_object_identity","classify_authority_state","verify_claim_evidence","check_existing_framework_fit","check_namespace_conflict","check_orphan_or_parallel_current_risk","resolve_supersession_and_readback","verify_material_delta"],
+  "consolidation_guard": {
+    "enabled": true,
+    "effective_from": "2026-09-05T00:00:00Z",
+    "global_open_training_candidate_soft_limit": 12,
+    "training_markers": ["TRAINING_MODE","PRACTICE_EVIDENCE","NO_PROJECT_USAGE"],
+    "candidate_markers": ["CANDIDATE"],
+    "project_exemption_markers": ["PROJECT_MODE","PROJECT_ID="],
+    "required_closure_marker_when_over_limit": "CONSOLIDATION_DELTA",
+    "allowed_closure_actions": ["ABSORB","MERGE","SUPERSEDE","CLOSE","PROJECT_USAGE_EVIDENCE","PROMOTION"],
+    "new_training_or_candidate_pr_when_over_limit": "BLOCK_UNLESS_CLOSURE_ADVANCE",
+    "pre_effective_pr_updates": "ALLOW_REPAIR_SYNC_ABSORB_CLOSE",
+    "project_mode_exempt_from_training_throttle": true,
+    "no_net_new_training_evidence_when_over_limit": true
+  },
+  "mandatory_preflight": ["resolve_existing_owner","resolve_one_current_authority","resolve_object_identity","classify_authority_state","verify_claim_evidence","check_existing_framework_fit","check_namespace_conflict","check_orphan_or_parallel_current_risk","resolve_supersession_and_readback","verify_material_delta","check_consolidation_backlog_before_new_training_or_candidate"],
   "enforcement": {
     "workflow": ".github/workflows/oleander-project-anti-pollution.yml",
     "checker": "00-governance/tests/static_check_anti_pollution.py",
