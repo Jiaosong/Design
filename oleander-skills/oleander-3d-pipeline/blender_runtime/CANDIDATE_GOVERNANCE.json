@@ -6,7 +6,7 @@
     "candidate_branch": "feat/oleander-blender-runtime-workbench",
     "main_is_only_installed_current": true,
     "candidate_may_not_self_promote": true,
-    "promotion_state": "HOLD_PROJECT_USAGE_OR_EXPLICIT_BOUNDED_ABSORPTION_DECISION"
+    "promotion_state": "HOLD_EXPLICIT_BOUNDED_ABSORPTION_DECISION"
   },
   "anti_pollution_rules": {
     "no_new_parallel_current": true,
@@ -151,7 +151,7 @@
     "object_id": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
     "legitimate_design_reentry": true,
     "design_reentry_source": "VALIDATION_REVISE_RETURN",
-    "evidence_commits": [
+    "design_return_evidence_commits": [
       "8cb97cc5c71a8e82edd9d53e72a266582afbd67b",
       "afdf571fbea2917d1baebaee9a084f947e24eee1",
       "8c262ffca69cccf6aa1df311f537aa7bd5f01134"
@@ -164,10 +164,50 @@
       "SEPARATELY_ADDRESSABLE_RELATION_REVEAL_PARTS"
     ],
     "current_project_implementation": "BLENDER_NATIVE_EDITABLE_COMPONENT_GEOMETRY",
+    "shared_blender_runtime_project_usage": "ESTABLISHED",
+    "runtime_usage_credit_allowed": true,
+    "runtime_usage_evidence": {
+      "dispatch_commit": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
+      "consumer_workflow": ".github/workflows/c04-blender-rebuild.yml",
+      "shared_runner": ".github/workflows/oleander-shared-blender-runner.yml",
+      "run_id": 33954476037,
+      "job_id": 101275157015,
+      "runtime": "Blender 5.2.0 LTS",
+      "build_hash": "fbe6228777e7",
+      "execute_blender_producer": "SUCCESS",
+      "native_blender_reopen_validation": "SUCCESS",
+      "artifact_identity": "SUCCESS",
+      "artifact_upload": "SUCCESS",
+      "run_conclusion": "SUCCESS"
+    },
+    "compatibility_repair_lineage": [
+      {
+        "run_id": 33954211110,
+        "state": "FAIL_CLOSED",
+        "root_cause": "STALE_BLENDER_EEVEE_NEXT_ENUM",
+        "repair_commit": "4531a437f7383e3892de8f115cfd624fb54c9a8c"
+      },
+      {
+        "run_id": 33954334471,
+        "state": "FAIL_CLOSED",
+        "root_cause": "FACTORY_EMPTY_SCENE_WORLD_WAS_NONE",
+        "repair_commit": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147"
+      },
+      {
+        "run_id": 33954476037,
+        "state": "SUCCESS",
+        "root_cause": null,
+        "repair_commit": null
+      }
+    ],
     "candidate_direct_brep_usage": "NOT_ESTABLISHED",
-    "usage_credit_allowed": false,
-    "reason": "The Current Yunshuiyi repair is a real project DESIGN re-entry and real editable Blender geometry repair, but the returned support/hinge/clamp relation does not exactly instantiate any of the five validated Direct-BRep frontier-family contracts. Similar nouns, bilateral parts, pivots or cylindrical-looking hardware are insufficient evidence. Do not rewrite the project geometry merely to manufacture Candidate usage evidence.",
-    "truth_boundary": "REAL_PROJECT_REPAIR != DIRECT_BREP_PROJECT_USAGE"
+    "direct_brep_usage_credit_allowed": false,
+    "direct_brep_reason": "The Current Yunshuiyi repair is a real project DESIGN re-entry and now a real shared Blender Runtime consumer, but the returned support/hinge/clamp relation does not exactly instantiate any of the five validated Direct-BRep frontier-family contracts. Similar nouns, bilateral parts, pivots or cylindrical-looking hardware are insufficient evidence. Do not rewrite project geometry merely to manufacture Direct-BRep usage evidence.",
+    "truth_boundary": [
+      "REAL_PROJECT_RUNTIME_USAGE != DIRECT_BREP_PROJECT_USAGE",
+      "NATIVE_REOPEN_PASS != INDEPENDENT_DESIGN_KEEP",
+      "ARTIFACT_UPLOAD_PASS != FIELD_OR_ENGINEERING_PASS"
+    ]
   },
   "bounded_absorption_plan": {
     "state": "PREPARED_NOT_APPROVED",
@@ -184,7 +224,7 @@
     ],
     "must_remain_blocked_or_nonpromoted": [
       "P0_B_DIRECT_BREP_GENERAL_PARITY",
-      "DEFAULT_ENVIRONMENT_ELIGIBILITY",
+      "DEFAULT_ENVIRONMENT_ELIGIBILITY_UNLESS_EXPLICITLY_DECIDED",
       "UNRESTRICTED_ARBITRARY_AXIS_PIVOT_SEMANTICS",
       "GENERAL_FREEFORM_NONPLANAR_DIRECT_EDIT",
       "GENERAL_PUSH_PULL_TRIM_SURFACE_TRIMMING",
@@ -196,9 +236,10 @@
       "UNRESTRICTED_ASSEMBLY_MATE_SOLVING",
       "ENGINEERING_MANUFACTURING_FIELD_APPROVAL"
     ],
+    "runtime_project_usage_requirement_status": "SATISFIED_BY_C04_YUNSHUIYI_SHARED_RUNNER_SUCCESS",
+    "direct_brep_project_usage_requirement_status": "UNSATISFIED",
     "professional_evidence_role_after_absorption": "BOUNDED_REUSE_EVIDENCE_AND_REGRESSION_SUPPORT_NOT_GENERAL_PARITY",
-    "project_usage_requirement_status": "UNSATISFIED_FOR_DIRECT_BREP_FAMILIES",
-    "absorption_does_not_require_fake_project_usage": true,
+    "absorption_does_not_require_fake_direct_brep_project_usage": true,
     "preconditions_before_any_absorption_or_merge": [
       "FRESH_DYNAMIC_MAIN_COMPARE_BEHIND_ZERO",
       "CURRENT_HEAD_CORE_REGRESSION_GREEN",
@@ -224,14 +265,14 @@
   },
   "branch_hygiene": {
     "last_observed_behind_main": 0,
-    "last_observed_ahead_main": 523,
-    "observation_head": "4ee14f49af9c202b4bf9fb2b528d20516b2e50ed",
-    "observation_main": "8c262ffca69cccf6aa1df311f537aa7bd5f01134",
+    "last_observed_ahead_main": 526,
+    "observation_head": "fa7ee3d12a92a9ab5cf8e135e8d0f2488a4616bf",
+    "observation_main": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
     "observation_date": "2026-09-05",
     "observation_is_advisory": true,
-    "observation_scope": "LATEST_MAIN_SYNC_AND_CORE_REGRESSION_PRE_ABSORPTION_PLAN_HEAD",
+    "observation_scope": "POST_REAL_PROJECT_RUNTIME_USAGE_SYNC_PRE_GOVERNANCE_WRITEBACK",
     "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
-    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion or absorption requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. Head 4ee14f49 synchronized the latest C04 fidelity-return main state and passed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and Professional Frontier 5.2 LTS. Yunshuiyi now has a legitimate DESIGN re-entry but does not establish Direct-BRep project usage. The remaining closure boundary is an explicit bounded absorption decision or future exact-scope project usage, not additional frontier growth."
+    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion or absorption requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. The prior synchronized head cffb6faf passed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and Professional Frontier 5.2 LTS. Head fa7ee3d1 then no-loss synchronized the exact C04 Blender 5.2 compatibility fixes and successful retry dispatch from main. C04 Yunshuiyi now establishes real shared Blender Runtime project usage through producer + native reopen + artifact identity + upload, but still does not establish any of the five Direct-BRep family usages. The remaining Candidate closure boundary is an explicit bounded absorption decision plus fresh current-head regression/readback, not additional frontier growth."
   },
-  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is Blender 5.2.0 LTS; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scopes. The latest main C04 Yunshuiyi REVISE return has been no-loss synchronized and the synchronized head 4ee14f49 passed all five core gates. That real project repair is Blender-native and must not be relabeled as Direct-BRep usage. A bounded absorption plan is prepared but not approved: it may absorb mature runtime/workbench/contracts and bounded evidence into the existing Skill while P0-B, default-environment eligibility and all general CAD/Class-A/BIM/technical-drawing/engineering claims remain blocked. Main remains the only installed CURRENT until an explicit bounded absorption/merge decision and fresh readback."
+  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is Blender 5.2.0 LTS; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scopes. C04 Yunshuiyi is now a real project consumer of the shared Blender Runtime: after two fail-closed project-producer compatibility defects were repaired, run 33954476037 completed producer execution, native Blender reopen, artifact identity and artifact upload successfully on Blender 5.2.0 LTS build fbe6228777e7. This runtime usage must not be relabeled as Direct-BRep usage; none of the five bounded Direct-BRep families has exact-scope project consumption evidence. The bounded absorption plan remains PREPARED_NOT_APPROVED: it may absorb mature runtime/workbench/contracts and the bounded evidence set into the existing Skill while P0-B, default-environment eligibility and all general CAD/Class-A/BIM/technical-drawing/engineering claims remain blocked unless separately and explicitly decided. Main remains the only installed CURRENT until an explicit bounded absorption/merge decision and fresh readback."
 }
