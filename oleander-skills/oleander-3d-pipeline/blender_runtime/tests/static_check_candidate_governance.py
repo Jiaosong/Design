@@ -99,13 +99,24 @@ def main() -> None:
     check(gate["require_pr_authority_current"] is True, "promotion must require current PR authority")
     hygiene = governance["branch_hygiene"]
     check(hygiene["observation_is_advisory"] is True, "stored branch-distance observation must never be promotion authority")
-    check(hygiene["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION", "current branch must remain promotion-held until synchronized")
+    observed_behind = int(hygiene["last_observed_behind_main"])
+    if observed_behind == 0:
+        check(
+            hygiene["state"] == "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
+            "zero-behind snapshot must use synchronized Candidate state without implying promotion",
+        )
+    else:
+        check(
+            hygiene["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION",
+            "nonzero-behind snapshot must remain synchronization-held",
+        )
 
     print("OLEANDER_CANDIDATE_GOVERNANCE=PASS")
     print("grandfathered_freecad_workflows=" + str(len(grandfathered)))
     print("grandfathered_cad_baselines=" + str(len(cad_baselines)))
     print("review_boundary_workflows=" + str(len(review_boundary)))
     print("grandfathered_pr_trigger=" + policy["grandfathered_pr_trigger"])
+    print("observed_behind_main=" + str(observed_behind))
     print("frontier_items=" + str(len(governance["frontier_items"])))
 
 
