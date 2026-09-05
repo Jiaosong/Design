@@ -24,6 +24,11 @@ def create_passthrough_geometry_nodes(obj, group_name="OLEANDER_GN_PASSTHROUGH")
     This proves Blender Geometry Nodes runtime availability and establishes a
     traceable procedural binding. It does not claim Houdini-equivalent SOP
     capability, CAD authority, dimensional truth, or engineering correctness.
+
+    Blender 5.2 no longer accepts arbitrary ID properties on NodesModifier.
+    Governed provenance therefore lives on the GeometryNodeTree data-block,
+    which is an ID data-block and persists through save/reopen. The modifier
+    remains only the native binding between the object and that governed tree.
     """
     if obj is None:
         raise ValueError("object is required")
@@ -52,8 +57,6 @@ def create_passthrough_geometry_nodes(obj, group_name="OLEANDER_GN_PASSTHROUGH")
 
     modifier = obj.modifiers.new(name="OLEANDER Geometry Nodes", type="NODES")
     modifier.node_group = node_group
-    modifier["oleander_schema"] = PROCEDURAL_SCHEMA
-    modifier["oleander_source_ole_id"] = source_id
     return modifier, node_group
 
 

@@ -1,24 +1,24 @@
-name: OLEANDER Blender Runtime Current 5.2 LTS
+name: OLEANDER Blender Runtime 5.2 LTS Regression
 
 on:
   pull_request:
     paths:
       - "oleander-skills/oleander-3d-pipeline/**"
       - "90-shared/toolchains/blender-runtime/**"
-      - ".github/workflows/oleander-blender-runtime-current.yml"
+      - ".github/workflows/oleander-blender-runtime-5-2-lts.yml"
   push:
     branches:
       - main
     paths:
       - "oleander-skills/oleander-3d-pipeline/**"
       - "90-shared/toolchains/blender-runtime/**"
-      - ".github/workflows/oleander-blender-runtime-current.yml"
+      - ".github/workflows/oleander-blender-runtime-5-2-lts.yml"
 
 permissions:
   contents: read
 
 jobs:
-  blender-current-runtime:
+  blender-5-2-lts-runtime:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
@@ -38,17 +38,17 @@ jobs:
           set -euo pipefail
           BLENDER_BIN="$(bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh)"
           echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
-          "$BLENDER_BIN" --version | tee /tmp/oleander-blender-current-version.txt
-          grep -F "Blender 5.2.0" /tmp/oleander-blender-current-version.txt
-          grep -F "build hash: fbe6228777e7" /tmp/oleander-blender-current-version.txt
+          "$BLENDER_BIN" --version | tee /tmp/oleander-blender-5-2-version.txt
+          grep -F "Blender 5.2.0" /tmp/oleander-blender-5-2-version.txt
+          grep -F "build hash: fbe6228777e7" /tmp/oleander-blender-5-2-version.txt
 
-      - name: Validate and build OLEANDER extension on current runtime
+      - name: Validate and build OLEANDER extension on Blender 5.2 LTS
         shell: bash
         run: |
           set -euo pipefail
           BLENDER_BIN="${{ steps.blender.outputs.bin }}"
           SRC="oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender"
-          PKG="/tmp/oleander_blender_runtime-current.zip"
+          PKG="/tmp/oleander_blender_runtime-5.2-lts.zip"
           "$BLENDER_BIN" --command extension validate "$SRC"
           "$BLENDER_BIN" --command extension build --source-dir "$SRC" --output-filepath "$PKG"
           test -s "$PKG"
@@ -87,14 +87,14 @@ jobs:
             grep -F '"status": "PASS"' "$log"
           done
 
-      - name: Record current-runtime boundary
+      - name: Record 5.2 LTS compatibility boundary
         if: always()
         shell: bash
         run: |
           {
-            echo '## OLEANDER Blender Runtime — Current 5.2 LTS'
+            echo '## OLEANDER Blender Runtime — 5.2 LTS regression'
             echo '- Runtime authority source: 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json.'
             echo '- Runtime resolution: 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh.'
             echo '- Stage 2/3 regression is compatibility evidence only; it does not promote PR #470 or make P0-B PASS.'
-            echo '- Historical Blender 5.1.2 runs and receipts remain provenance, not current-runtime promotion evidence.'
+            echo '- Historical Blender 5.1.2 runs and receipts remain provenance, not 5.2 promotion evidence.'
           } >> "$GITHUB_STEP_SUMMARY"

@@ -48,6 +48,13 @@ def main() -> None:
     check(project_wide["inherit_without_fork"] is True, "Blender candidate may not fork project-wide anti-pollution governance")
     check(project_wide["blender_candidate_rules_may_only_be_stricter"] is True, "Blender-specific rules may only tighten global governance")
 
+    consolidation = governance["consolidation_guard"]
+    check(consolidation["mode"] == "EXISTING_CANDIDATE_CLOSURE", "PR #470 must operate as existing Candidate closure debt")
+    check(consolidation["net_new_frontier_items_allowed"] is False, "consolidation throttle must block net-new frontier items")
+    check(consolidation["ci_receipt_or_probe_count_is_not_closure"] is True, "CI/receipt/probe count cannot be treated as closure")
+    allowed_closure = set(consolidation["allowed_actions"])
+    check({"ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"}.issubset(allowed_closure), "closure action set is incomplete")
+
     policy = governance["workflow_policy"]
     grandfathered = set(policy["grandfathered_freecad_workflows"])
     cad_baselines = set(policy["grandfathered_cad_baseline_workflows"])
@@ -61,12 +68,18 @@ def main() -> None:
     check(not unexpected, "new one-off FreeCAD workflow is prohibited; use shared frontier workflow: " + ", ".join(unexpected))
     check(not missing, "grandfathered workflow disappeared without governance migration: " + ", ".join(missing))
     check(len(cad_baselines) == 3, "exactly three stable CAD baselines are review-boundary governed")
-    check((ROOT / policy["shared_frontier_workflow"]).exists(), "current shared frontier workflow must exist")
-    check((ROOT / policy["current_runtime_regression_workflow"]).exists(), "current Blender runtime regression workflow must exist")
+
+    frontier_workflow = policy["shared_frontier_workflow"]
+    runtime_workflow = policy["runtime_5_2_regression_workflow"]
+    check(frontier_workflow == ".github/workflows/oleander-blender-professional-frontier-5-2-lts.yml", "5.2 frontier workflow path must be version-bound, not CURRENT-named")
+    check(runtime_workflow == ".github/workflows/oleander-blender-runtime-5-2-lts.yml", "5.2 runtime workflow path must be version-bound, not CURRENT-named")
+    check((ROOT / frontier_workflow).exists(), "5.2 shared frontier workflow must exist")
+    check((ROOT / runtime_workflow).exists(), "Blender 5.2 runtime regression workflow must exist")
     check((ROOT / "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh").exists(), "canonical Blender 5.2 runtime resolver must exist")
-    for obsolete in policy["superseded_current_workflows"]:
+    for obsolete in policy["superseded_workflows"]:
         check(not (ROOT / obsolete).exists(), f"superseded workflow must not remain in current tree: {obsolete}")
-    check(policy["candidate_draft_frontier_owner"] == "SHARED_FRONTIER_CURRENT_5_2", "Draft Candidate professional development must use current 5.2 shared Frontier")
+    check(policy["candidate_regression_frontier_owner"] == "SHARED_FRONTIER_5_2_LTS", "Candidate regression owner must be shared 5.2 Frontier")
+    check(policy["net_new_frontier_development"] == "BLOCKED_BY_CONSOLIDATION_THROTTLE", "net-new frontier development must remain blocked during consolidation")
     check(policy["grandfathered_pr_trigger"] == "READY_FOR_REVIEW_ONLY", "grandfathered PR workflows must be review-boundary only")
     check(policy["grandfathered_push_main_regression_preserved"] is True, "grandfathered push-main regression must remain preserved")
 
@@ -95,13 +108,18 @@ def main() -> None:
             check(parity_key in parity_candidates, f"validated item missing from PROFESSIONAL_PARITY_STATUS: {parity_key}")
             check(parity_candidates[parity_key]["state"] == "VALIDATED_FOR_BOUNDED_SCOPE", f"parity state mismatch: {parity_key}")
 
+    check(len(governance["frontier_items"]) == 5, "consolidation mode must not add new frontier items")
+
     gate = governance["promotion_gate"]
     check(gate["require_main_sync_behind_count"] == 0, "promotion gate must require zero commits behind main")
     check(gate["require_dynamic_main_compare_at_promotion"] is True, "promotion must use a fresh main comparison, not a stored behind count")
     check(gate["require_no_experimental_unverified_items"] is True, "promotion must block experimental items")
     check(gate["require_no_validation_pending_items"] is True, "promotion must block pending validation")
     check(gate["require_pr_authority_current"] is True, "promotion must require current PR authority")
-    check(gate["require_current_runtime_5_2_regression"] is True, "promotion must require current Blender 5.2 regression")
+    check(gate["require_current_runtime_5_2_regression"] is True, "promotion must require Blender 5.2 regression")
+    check(gate["require_contradiction_scan"] is True, "promotion must require contradiction scan")
+    check(gate["require_project_usage_or_explicit_bounded_absorption_decision"] is True, "promotion must require project usage or explicit bounded absorption decision")
+
     hygiene = governance["branch_hygiene"]
     check(hygiene["observation_is_advisory"] is True, "stored branch-distance observation must never be promotion authority")
     observed_behind = int(hygiene["last_observed_behind_main"])
@@ -111,17 +129,14 @@ def main() -> None:
             "zero-behind snapshot must use synchronized Candidate state without implying promotion",
         )
     else:
-        check(
-            hygiene["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION",
-            "nonzero-behind snapshot must remain synchronization-held",
-        )
+        check(hygiene["state"] == "SYNC_REQUIRED_BEFORE_PROMOTION", "nonzero-behind snapshot must remain synchronization-held")
 
     print("OLEANDER_CANDIDATE_GOVERNANCE=PASS")
-    print("grandfathered_freecad_workflows=" + str(len(grandfathered)))
-    print("grandfathered_cad_baselines=" + str(len(cad_baselines)))
+    print("consolidation_mode=" + consolidation["mode"])
+    print("net_new_frontier_items_allowed=" + str(consolidation["net_new_frontier_items_allowed"]))
     print("review_boundary_workflows=" + str(len(review_boundary)))
-    print("current_runtime_regression=" + policy["current_runtime_regression_workflow"])
-    print("current_frontier=" + policy["shared_frontier_workflow"])
+    print("runtime_5_2_regression=" + runtime_workflow)
+    print("frontier_5_2_regression=" + frontier_workflow)
     print("observed_behind_main=" + str(observed_behind))
     print("frontier_items=" + str(len(governance["frontier_items"])))
 
