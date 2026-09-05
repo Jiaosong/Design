@@ -27,12 +27,17 @@
   },
   "workflow_policy": {
     "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
-    "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier.yml",
-    "candidate_draft_frontier_owner": "SHARED_FRONTIER",
+    "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier-current.yml",
+    "current_runtime_regression_workflow": ".github/workflows/oleander-blender-runtime-current.yml",
+    "candidate_draft_frontier_owner": "SHARED_FRONTIER_CURRENT_5_2",
     "grandfathered_pr_trigger": "READY_FOR_REVIEW_ONLY",
     "grandfathered_push_main_regression_preserved": true,
     "trigger_migration_commit": "69bf18ed02b02bbea8b135bd0e7e1290ba341abc",
     "new_oneoff_exception_requires": "USER_EXPLICIT_APPROVAL_PLUS_GOVERNANCE_RECEIPT",
+    "superseded_current_workflows": [
+      ".github/workflows/oleander-blender-runtime-5-1.yml",
+      ".github/workflows/oleander-blender-professional-frontier.yml"
+    ],
     "grandfathered_freecad_workflows": [
       ".github/workflows/oleander-blender-professional-freecad-brep.yml",
       ".github/workflows/oleander-blender-professional-freecad-direct-brep.yml",
@@ -121,6 +126,7 @@
     "require_all_validated_items_have_receipts": true,
     "require_pr_authority_current": true,
     "require_static_runtime_readback_pass": true,
+    "require_current_runtime_5_2_regression": true,
     "require_default_environment_eligible_explicit_decision": true
   },
   "branch_hygiene": {
@@ -131,7 +137,7 @@
     "observation_date": "2026-09-05",
     "observation_is_advisory": true,
     "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
-    "rule": "Candidate development may continue in Draft. A zero-behind snapshot records synchronization only; promotion still requires a fresh dynamic main comparison, final regression, contradiction scan, current PR authority readback and explicit promotion decision. Stored ahead/behind values are audit snapshots, never promotion authority."
+    "rule": "Candidate development may continue in Draft. A zero-behind snapshot records synchronization only; promotion still requires a fresh dynamic main comparison, current Blender 5.2 LTS regression, contradiction scan, current PR authority readback and explicit promotion decision. Stored ahead/behind values are audit snapshots, never promotion authority."
   },
-  "governance_note": "Existing validated evidence is preserved. Custom tangent-axis rotate, semantic-reference-bound operation, bounded BRep through-hole linear pattern/mirror, bounded offset-pivot non-tangent arbitrary-axis face rotate, and one bounded outer-cylindrical nonplanar face radial-offset family all have real FreeCAD/OCCT plus Blender save/reopen receipts and are registered only as bounded capabilities. The cylindrical proof validates only the governed tube/outer-cylinder radial-offset family with inner cylindrical face preservation, adjacent annular-face replacement, bounded tessellation readback and fail-closed wall-collapse/selector/offset guards; it does not establish general curved/freeform face edit parity. Fifteen grandfathered FreeCAD workflows plus three stable CAD dependency/integration baselines remain preserved as evidence but are PR-triggered only on ready_for_review; push-main regression remains enabled. Draft Candidate professional direct-BRep development is owned by the shared Frontier, preventing long-lived-PR path matching from re-running historical professional baselines on every synchronize. Main was merged into the Candidate without rebasing through sync merge 4f55f7bd2777ae6d3bac920d968f60d8089a7055, producing a zero-behind dynamic comparison against main abf805b99ec385ecfd705a466fec3423d7ecb157. This synchronization does not promote the Candidate, does not make P0-B PASS, and does not make the Candidate the global runtime authority. PR/default-environment promotion remains HOLD pending final regression, contradiction scan and explicit promotion decision."
+  "governance_note": "Existing validated evidence is preserved. Five bounded professional frontier items retain their historical FreeCAD/OCCT plus Blender 5.1.2 receipts as provenance. Current promotion evidence must additionally pass the canonical OLEANDER Blender 5.2.0 LTS runtime and current Frontier workflows; 5.1.2 evidence alone is no longer sufficient because main runtime authority is now 5.2.0 LTS. Fifteen grandfathered FreeCAD workflows plus three stable CAD dependency/integration baselines remain preserved as review-boundary evidence. Old Runtime 5.1 and old Frontier workflow definitions are superseded from the current tree after replacement by current 5.2 owners; Git history and receipts preserve their lineage. Main was merged into the Candidate without rebasing through sync merge 4f55f7bd2777ae6d3bac920d968f60d8089a7055, producing zero-behind against main abf805b99ec385ecfd705a466fec3423d7ecb157 at the recorded observation. Synchronization does not promote the Candidate, does not make P0-B PASS, and does not make the Candidate the global runtime authority. Promotion remains HOLD pending fresh dynamic compare, 5.2 regression, contradiction scan and explicit promotion decision."
 }
