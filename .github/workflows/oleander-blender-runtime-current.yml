@@ -1,0 +1,100 @@
+name: OLEANDER Blender Runtime Current 5.2 LTS
+
+on:
+  pull_request:
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/**"
+      - "90-shared/toolchains/blender-runtime/**"
+      - ".github/workflows/oleander-blender-runtime-current.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/**"
+      - "90-shared/toolchains/blender-runtime/**"
+      - ".github/workflows/oleander-blender-runtime-current.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  blender-current-runtime:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Install runtime libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+
+      - name: Resolve canonical Blender 5.2 LTS runtime
+        id: blender
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="$(bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh)"
+          echo "bin=$BLENDER_BIN" >> "$GITHUB_OUTPUT"
+          "$BLENDER_BIN" --version | tee /tmp/oleander-blender-current-version.txt
+          grep -F "Blender 5.2.0" /tmp/oleander-blender-current-version.txt
+          grep -F "build hash: fbe6228777e7" /tmp/oleander-blender-current-version.txt
+
+      - name: Validate and build OLEANDER extension on current runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="${{ steps.blender.outputs.bin }}"
+          SRC="oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender"
+          PKG="/tmp/oleander_blender_runtime-current.zip"
+          "$BLENDER_BIN" --command extension validate "$SRC"
+          "$BLENDER_BIN" --command extension build --source-dir "$SRC" --output-filepath "$PKG"
+          test -s "$PKG"
+          "$BLENDER_BIN" --command extension validate "$PKG"
+          sha256sum "$PKG"
+
+      - name: Run Stage 2/3 regression on Blender 5.2 LTS
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="${{ steps.blender.outputs.bin }}"
+          ROOT="oleander-skills/oleander-3d-pipeline/blender_runtime/tests"
+          scripts=(
+            validate_stage2.py
+            validate_stage3_direct.py
+            validate_stage3_features.py
+            validate_stage3_feature_editing.py
+            validate_stage3_relations.py
+            validate_stage3_relation_apply.py
+            validate_stage3_measurement.py
+            validate_stage3_angular_datum.py
+            validate_stage3_precision_inference.py
+            validate_stage3_inference_v2.py
+            validate_stage3_mesh_clearance.py
+            validate_stage3_surface_diagnostics.py
+            validate_stage3_design_intent.py
+            validate_stage3_design_intent_apply.py
+            validate_stage3_design_intent_batch.py
+            validate_stage3_design_intent_rebuild.py
+            validate_stage3_procedural.py
+          )
+          for script in "${scripts[@]}"; do
+            log="/tmp/${script%.py}.log"
+            echo "=== $script ==="
+            "$BLENDER_BIN" --background --factory-startup --python-exit-code 2 --python "$ROOT/$script" 2>&1 | tee "$log"
+            grep -F '"status": "PASS"' "$log"
+          done
+
+      - name: Record current-runtime boundary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Blender Runtime — Current 5.2 LTS'
+            echo '- Runtime authority source: 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json.'
+            echo '- Runtime resolution: 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh.'
+            echo '- Stage 2/3 regression is compatibility evidence only; it does not promote PR #470 or make P0-B PASS.'
+            echo '- Historical Blender 5.1.2 runs and receipts remain provenance, not current-runtime promotion evidence.'
+          } >> "$GITHUB_STEP_SUMMARY"
