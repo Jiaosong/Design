@@ -151,7 +151,13 @@ button:focus-visible,a:focus-visible{outline:2px solid #e3bb78;outline-offset:4p
   .ai3d-process{grid-template-columns:1fr}.ai3d-process article{min-height:0;grid-template-rows:auto 280px auto auto}.proof-grid{grid-template-columns:1fr}.proof-grid figure.proof-large{grid-row:auto;min-height:520px}.proof-grid figure{min-height:380px}
   .innovation-grid{grid-template-columns:1fr}.innovation-grid article{min-height:230px}.innovation-grid h3{margin-top:48px}
   .difficulty-list article{grid-template-columns:40px 1fr}.difficulty-list p{grid-column:2}.evolution-head,.evolution-table article{grid-template-columns:1fr;gap:8px}.evolution-head{display:none}
-  .final-copy{left:20px;bottom:105px;width:calc(100% - 40px)}.final-copy h2{font-size:clamp(56px,17vw,88px)}
+  .final{min-height:1020px}
+  .final .hero-media{inset:56px 0 auto;height:360px}
+  .final .hero-media img{object-position:center top}
+  .final-shade{background:linear-gradient(180deg,rgba(3,11,14,.04) 0,rgba(3,11,14,.16) 300px,rgba(3,11,14,.92) 470px,#071318 72%)}
+  .final-copy{left:20px;top:410px;bottom:auto;width:calc(100% - 40px)}
+  .final-copy h2{font-size:clamp(50px,15vw,76px);margin-bottom:22px}
+  .final-copy .lead{margin-top:22px}
   .hero{min-height:100svh}
 }
 @media(max-width:520px){
