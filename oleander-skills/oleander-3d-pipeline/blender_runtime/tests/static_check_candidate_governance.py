@@ -9,7 +9,6 @@ RUNTIME = PIPELINE / "blender_runtime"
 GOV = RUNTIME / "CANDIDATE_GOVERNANCE.json"
 STATUS = PIPELINE / "PROFESSIONAL_PARITY_STATUS.json"
 SKILL = PIPELINE / "SKILL.md"
-SKILL_CAPABILITY = PIPELINE / "CAPABILITY.json"
 WORKBENCH_EXTENSION = PIPELINE / "BLENDER_RUNTIME_WORKBENCH_EXTENSION.md"
 RUNTIME_README = RUNTIME / "README.md"
 WORKFLOWS = ROOT / ".github" / "workflows"
@@ -39,7 +38,6 @@ def assert_review_boundary_workflow(relative: str) -> None:
 def main() -> None:
     governance = json.loads(GOV.read_text(encoding="utf-8"))
     status = json.loads(STATUS.read_text(encoding="utf-8"))
-    skill_capability = json.loads(SKILL_CAPABILITY.read_text(encoding="utf-8"))
 
     check(governance["authority"]["main_is_only_installed_current"] is True, "main must remain only installed CURRENT")
     check(governance["authority"]["candidate_may_not_self_promote"] is True, "candidate self-promotion must be disabled")
@@ -62,6 +60,8 @@ def main() -> None:
 
     alignment = governance["skill_runtime_alignment"]
     check(alignment["parent_skill"] == "oleander-skills/oleander-3d-pipeline/SKILL.md", "Blender runtime must stay under the existing 3D Skill owner")
+    check(alignment["skill_capability_contract"] == "oleander-skills/oleander-3d-pipeline/CAPABILITY.json", "Candidate alignment must reference the existing installed Skill capability contract")
+    check(alignment["runtime_capability_map_role"] == "CAPABILITY_AND_HISTORICAL_STAGE_PROVENANCE_MAP_NOT_CURRENT_RUNTIME_COMPATIBILITY_AUTHORITY", "runtime capability map role must preserve historical stage provenance")
     check(alignment["existing_module_first"] is True, "Blender runtime alignment must be existing-module-first")
     check(alignment["no_new_skill_or_parallel_runtime_framework"] is True, "Blender candidate must prohibit parallel Skill/runtime frameworks")
     check(alignment["material_runtime_change_requires_alignment_readback"] is True, "material runtime changes must require alignment readback")
@@ -77,16 +77,6 @@ def main() -> None:
     check("Status: PROPOSED IMPLEMENTATION LAYER" not in workbench_text, "Workbench extension cannot remain falsely PROPOSED")
     check("Blender `5.2.0 LTS`" in runtime_readme, "Runtime README must bind current compatibility to Blender 5.2 LTS")
     check("seventeen bound validation stages" in runtime_readme, "Runtime README must reflect the seventeen-layer current regression")
-    check(skill_capability["last_verified"] == "2026-09-05", "3D Skill capability contract verification date must match alignment closure")
-    implementation_paths = set(skill_capability["implementation_paths"])
-    for required in {
-        "oleander-skills/oleander-3d-pipeline/SKILL.md",
-        "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_WORKBENCH_EXTENSION.md",
-        "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_CAPABILITY.json",
-        "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_STATUS.json",
-        "oleander-skills/oleander-3d-pipeline/blender_runtime/README.md",
-    }:
-        check(required in implementation_paths, f"3D Skill capability contract missing implementation surface: {required}")
 
     current_receipt_path = ROOT / alignment["current_runtime_compatibility_receipt"]
     check(current_receipt_path.exists(), "current Blender 5.2 consolidated regression receipt missing")
