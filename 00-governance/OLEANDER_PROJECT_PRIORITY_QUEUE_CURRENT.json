@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.2",
+  "schema_version": "2.3",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -10,15 +10,18 @@
     {
       "priority": 1,
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
-      "object_id": "PRJ-C04-DIGITAL-INTERACTION",
-      "object_id_semantics": "COMPATIBILITY FIELD FOR THE LIVE WEB OBJECT ONLY; MUST NOT BE INHERITED BY PHYSICAL/PRODUCT/MODEL/DIAGRAM/PAGE/MOTION CHILD LIFECYCLES",
+      "object_id": null,
+      "object_id_semantics": "NULL_BECAUSE_THIS_QUEUE_SLOT_IS_A_WHOLE_PROJECT_AGGREGATE. EVERY MATERIAL ACTION MUST RESOLVE A STABLE TYPED CHILD WORK OBJECT BEFORE EDITING.",
+      "live_web_object_id": "PRJ-C04-DIGITAL-INTERACTION",
+      "material_action_object_resolution_required": true,
       "entry_scope": "WHOLE_PROJECT_WITH_TYPED_SUBWORKSTREAMS_AND_ASSET_COVERAGE",
       "current_owner": "PRESENTATION",
-      "current_owner_scope": "CURRENT_LIVE_MUTATION_OWNER_FOR_PRJ-C04-DIGITAL-INTERACTION_WEB_ONLY_NOT_SOLE_PROJECT_OWNER",
+      "current_owner_scope": "COMPATIBILITY/LIVE-FRONTIER FIELD FOR PRJ-C04-DIGITAL-INTERACTION WEB ONLY; NOT THE OWNER OF THE WHOLE PROJECT AGGREGATE",
       "state": "ACTIVE",
-      "current_native_master": "WEB OBJECT: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; OTHER C04 WORK OBJECTS RESOLVE THEIR OWN NATIVE MASTERS",
+      "current_native_master": "WEB OBJECT ONLY: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; EVERY OTHER C04 WORK OBJECT MUST RESOLVE ITS OWN CURRENT_NATIVE_MASTER BEFORE MATERIAL ACTION",
       "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=false / head 83f2127d846f27806a1b5243bffd36d18082c1b0 at 2026-09-05 readback",
       "next_owner": "VALIDATION",
+      "next_owner_scope": "LIVE_WEB_OBJECT_ONLY; OTHER CHILD WORK OBJECTS RESOLVE THEIR OWN NEXT_OWNER",
       "whole_project_authority": [
         "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
         "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
@@ -142,8 +145,8 @@
       "job_local_blender_materialization_state": "NO_ACTIVE_JOB_BINDING",
       "production_stall": null,
       "next_action": "PRESENTATION repairs the live Web object without blocking other owners. DESIGN executes whole-project asset coverage and produces the highest-value eligible missing native asset across diagrams/flows/pages/technical/visual/motion/3D/etc. VALIDATION completes 云水倚 independent fidelity then advances the returned-model cursor. GOVERNANCE keeps Work Object identities, handoffs and Flow Completion states current and separately repairs PR #465 Anti-Pollution/merge divergence.",
-      "updated_at": "2026-09-05",
-      "source_of_queue_decision": "User-explicit realignment plus readback of C04 Asset Atlas, returned model audit, current Work Coordination contract, current Queue and PR #465. Whole-project asset coverage is the active production interpretation; Web and Blender are subsets."
+      "updated_at": "2026-09-05T09:34:00+08:00",
+      "source_of_queue_decision": "User-explicit repair after Work Coordination readback. C04 queue slot is a whole-project aggregate; PRJ-C04-DIGITAL-INTERACTION remains the live Web Work Object only. Material actions must resolve their own typed child Work Object identity before editing."
     },
     {
       "priority": 2,
