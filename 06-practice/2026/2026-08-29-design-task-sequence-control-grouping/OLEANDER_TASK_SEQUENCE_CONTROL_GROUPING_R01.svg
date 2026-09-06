@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / TASK SEQUENCE → CONTROL GROUPING</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="46" font-weight="700" fill="#18211F">控制布局不是做“对称面板”；任务顺序与关键动作必须进入位置关系</text>
+<text x="88" y="170" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="17" fill="#69706D">synthetic desktop document scanner · exercise assumptions only · no hardware / accessibility / safety validation</text>
+<rect x="88" y="208" width="1744" height="120" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+<text x="116" y="242" font-size="11.5" font-weight="700" fill="#8B5D46">EXTERNAL SOURCE</text>
+<text x="116" y="268" font-size="12.5" fill="#29332F">NASA-STD-3001 Vol.2 §10.4.1.1：controls/displays 按 purpose / function / sequence 形成明确关系。</text>
+<text x="116" y="292" font-size="11.5" fill="#59615F">Criticality / grouping should follow task analysis; source is aerospace-specific.</text>
+<text x="900" y="242" font-size="11.5" font-weight="700" fill="#7D654B">EXERCISE TASK</text>
+<text x="900" y="268" font-size="12.5" fill="#29332F">LOAD → PREVIEW → ADJUST → SCAN；STOP/EXIT 需随时可达。</text>
+<text x="900" y="292" font-size="11.5" fill="#59615F">Task sequence is synthetic, not a universal scanner standard.</text>
+<text x="1400" y="242" font-size="11.5" font-weight="700" fill="#315D57">DESIGN CONSEQUENCE</text>
+<text x="1400" y="268" font-size="12.5" fill="#29332F">主流程按顺序聚类；STOP 与流程分离并保持高可达性。</text>
+<text x="1400" y="292" font-size="11.5" fill="#59615F">No numeric spacing / reach threshold claimed.</text>
+</g>
+<rect x="88" y="356" width="548" height="536" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="400" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · AESTHETIC SYMMETRY</text>
+<text x="120" y="430" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">六个同权按钮围绕中心屏幕对称排布；面板整齐，但任务关系不可见。</text>
+<rect x="140" y="486" width="444" height="254" rx="24" fill="#E7E3DA" stroke="#69716D" stroke-width="3"/>
+<rect x="254" y="554" width="216" height="118" rx="16" fill="#2E3835"/>
+<text x="316" y="618" font-family="Arial,sans-serif" font-size="18" fill="#F7F3EA">PREVIEW</text>
+<g fill="#F7F3EA" stroke="#6B736F" stroke-width="3">
+<circle cx="202" cy="536" r="30"/><circle cx="522" cy="536" r="30"/>
+<circle cx="202" cy="682" r="30"/><circle cx="522" cy="682" r="30"/>
+<circle cx="202" cy="609" r="30"/><circle cx="522" cy="609" r="30"/>
+</g>
+<g font-family="Arial,sans-serif" font-size="10.5" fill="#59615F" text-anchor="middle">
+<text x="202" y="540">LOAD</text><text x="522" y="540">SCAN</text>
+<text x="202" y="686">ADJUST</text><text x="522" y="686">STOP</text>
+<text x="202" y="613">PREVIEW</text><text x="522" y="613">EXIT</text>
+</g>
+<text x="120" y="782" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">LABEL-OFF → 六个按钮完全同义；顺序只能靠记忆。</text>
+<text x="120" y="810" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">RUSH ATTACK → SCAN 与 STOP 只是视觉镜像，不体现不同角色。</text>
+<rect x="120" y="842" width="484" height="34" rx="9" fill="#F7F3EA"/>
+<text x="140" y="864" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#7D4A3A">ROOT · symmetry replaced task logic.</text>
+<rect x="686" y="356" width="612" height="536" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="718" y="400" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP · SEQUENCE GROUP + ESCAPE</text>
+<text x="718" y="430" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">主流程从左到右递进；STOP 与流程拉开层级；EXIT 保持次级、近旁可达。</text>
+<rect x="730" y="486" width="536" height="254" rx="24" fill="#E7E3DA" stroke="#69716D" stroke-width="3"/>
+<rect x="758" y="520" width="300" height="88" rx="14" fill="#2E3835"/>
+<text x="846" y="572" font-family="Arial,sans-serif" font-size="17" fill="#F7F3EA">LIVE PREVIEW</text>
+<g>
+<rect x="758" y="640" width="88" height="56" rx="14" fill="#F7F3EA" stroke="#6B736F" stroke-width="3"/>
+<rect x="864" y="640" width="88" height="56" rx="14" fill="#F7F3EA" stroke="#6B736F" stroke-width="3"/>
+<rect x="970" y="640" width="88" height="56" rx="14" fill="#F7F3EA" stroke="#6B736F" stroke-width="3"/>
+<rect x="1076" y="628" width="108" height="80" rx="16" fill="#315D57" stroke="#234641" stroke-width="3"/>
+</g>
+<g font-family="Arial,sans-serif" font-size="11" text-anchor="middle">
+<text x="802" y="674" fill="#59615F">LOAD</text><text x="908" y="674" fill="#59615F">PREVIEW</text><text x="1014" y="674" fill="#59615F">ADJUST</text><text x="1130" y="676" fill="#fff" font-size="13" font-weight="700">SCAN</text>
+</g>
+<path d="M846 668 H864 M952 668 H970 M1058 668 H1076" stroke="#69716D" stroke-width="2.5"/>
+<text x="1098" y="508" font-family="Arial,sans-serif" font-size="9.5" fill="#69716D">ESCAPE ZONE</text>
+<rect x="1096" y="520" width="136" height="58" rx="14" fill="#F7F3EA" stroke="#914F3D" stroke-width="3"/>
+<text x="1164" y="555" font-family="Arial,sans-serif" font-size="12.5" font-weight="700" fill="#914F3D" text-anchor="middle">STOP</text>
+<rect x="1130" y="590" width="102" height="38" rx="11" fill="#F7F3EA" stroke="#6B736F" stroke-width="2.5"/>
+<text x="1181" y="614" font-family="Arial,sans-serif" font-size="10.5" fill="#59615F" text-anchor="middle">EXIT</text>
+<text x="718" y="782" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">LABEL-OFF → group / direction / prominence 仍暴露 task structure；STOP/EXIT 不合并。</text>
+<text x="718" y="810" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#315D57">SEQUENCE REVERSAL → 若流程倒置，主组顺序必须同步改变。</text>
+<rect x="718" y="842" width="548" height="34" rx="9" fill="#F7F3EA"/>
+<text x="738" y="864" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#315D57">CONSEQUENCE · task analysis changes grouping, order and prominence.</text>
+<rect x="1348" y="356" width="484" height="536" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1380" y="400" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · FUNCTION GROUPS, WRONG SEQUENCE</text>
+<text x="1380" y="430" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">同类功能被分组，但 LOAD 与 PREVIEW/ADJUST/SCAN 的操作顺序被打断。</text>
+<rect x="1392" y="486" width="408" height="254" rx="24" fill="#E7E3DA" stroke="#69716D" stroke-width="3"/>
+<rect x="1420" y="518" width="154" height="68" rx="14" fill="#F7F3EA" stroke="#6B736F" stroke-width="3"/>
+<text x="1497" y="558" font-family="Arial,sans-serif" font-size="11" fill="#59615F" text-anchor="middle">LOAD / EXIT</text>
+<rect x="1598" y="518" width="174" height="68" rx="14" fill="#F7F3EA" stroke="#6B736F" stroke-width="3"/>
+<text x="1685" y="558" font-family="Arial,sans-serif" font-size="11" fill="#59615F" text-anchor="middle">PREVIEW / ADJUST</text>
+<rect x="1420" y="622" width="174" height="72" rx="14" fill="#315D57"/>
+<text x="1507" y="664" font-family="Arial,sans-serif" font-size="12" fill="#fff" text-anchor="middle">SCAN</text>
+<rect x="1618" y="622" width="154" height="72" rx="14" fill="#F7F3EA" stroke="#914F3D" stroke-width="3"/>
+<text x="1695" y="664" font-family="Arial,sans-serif" font-size="12" fill="#914F3D" text-anchor="middle">STOP</text>
+<text x="1380" y="782" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#8A6941">FUNCTION-ONLY → 相似功能成立，但任务 travel 在面板上来回跳。</text>
+<text x="1380" y="810" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#8A6941">REPAIR → sequence 与 function 同时决定 grouping，而非二选一。</text>
+<rect x="1380" y="842" width="420" height="34" rx="9" fill="#F7F3EA"/>
+<text x="1400" y="864" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#59615F">Grouping without task sequence can still create avoidable search.</text>
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="986" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#18211F">TRANSFER TEST</text>
+<text x="88" y="1013" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14.5" fill="#59615F">Remove labels and decorative color: task sequence, control grouping and escape/stop hierarchy should still be inferable from the physical layout.</text>
+<text x="88" y="1045" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#747B78">BOUNDARY · NASA source is human-spaceflight specific; no universal spacing, reach, control-size, safety or accessibility rule is transferred.</text>
+</svg>
