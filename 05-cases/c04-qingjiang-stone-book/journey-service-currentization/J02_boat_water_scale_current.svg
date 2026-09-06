@@ -30,12 +30,13 @@
   <text x="44" y="80" class="sm muted">远近、开合、高低、连续变化，本身就是内容。</text>
   <g transform="translate(36 306)">
     <text class="xs seal">LOOK</text><text y="30" class="t3 ink">看两岸怎样一起变化</text>
-    <text x="335" class="xs seal">COMPARE</text><text x="335" y="30" class="t3 ink">哪一侧更近 / 更开 / 更高</text>
-    <text x="715" class="xs seal">LISTEN</text><text x="715" y="30" class="t3 ink">先听水、风、船体，再决定要不要看屏幕</text>
-    <text x="1150" class="xs seal">REMEMBER</text><text x="1150" y="30" class="t3 ink">只留一个方向或画面</text>
+    <text x="270" class="xs seal">COMPARE</text><text x="270" y="30" class="t3 ink">哪一侧更近 / 更开 / 更高</text>
+    <text x="555" class="xs seal">LISTEN</text><text x="555" y="30" class="t3 ink">先听水、风、船体</text>
+    <text x="850" class="xs seal">FRAME</text><text x="850" y="30" class="t3 ink">选择一个值得留下的视角</text>
+    <text x="1175" class="xs seal">REMEMBER</text><text x="1175" y="30" class="t3 ink">只留一个方向或画面</text>
   </g>
   <line x1="36" y1="362" x2="1424" y2="362" class="thin"/>
-  <text x="36" y="390" class="sm muted">手机默认 LIGHT / OFF。没有扫码、连续弹卡、13 点进度或任务式导航。</text>
+  <text x="36" y="390" class="sm muted">手机默认 LIGHT / OFF；先听水、风、船体，再决定要不要看屏幕。没有扫码、连续弹卡、13 点进度或任务式导航。</text>
 </g>
 <text x="70" y="730" class="xs qing">02 / CURRENTIZATION — PRESERVE THE MATURE LOGIC, CHANGE THE CARRIER</text>
 <g transform="translate(70 754)">
