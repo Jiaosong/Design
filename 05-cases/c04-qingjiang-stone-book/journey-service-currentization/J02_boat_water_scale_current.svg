@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f2efe7}.paper{fill:#fbfaf5;stroke:#c9c8bf;stroke-width:1.2}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.soft{fill:#e6ebe7}
+.river{fill:#7aa69a}.mount{fill:#d9dfd8}.mount2{fill:#c7d2ca}
+.line{stroke:#17332c;stroke-width:2;fill:none;stroke-linecap:round}.thin{stroke:#87928d;stroke-width:1.1;fill:none}
+.gaze{stroke:#548b7e;stroke-width:2;fill:none;stroke-dasharray:7 7}.route{stroke:#315f55;stroke-width:3;fill:none;stroke-linecap:round}
+.t1{font:700 42px 'Noto Serif CJK SC','Songti SC',serif}.t2{font:700 22px 'Noto Serif CJK SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.txt{font:400 14px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="62" class="xs qing">J02 / BOAT · WATER-SCALE EXPERIENCE CARRIER V1.0</text>
+<text x="70" y="116" class="t1 ink">先从水面建立“清江有多大”，再决定以后要读什么</text>
+<text x="70" y="154" class="txt muted">游船段的设计任务不是塞入景点说明，而是连续建立两岸、峰林、河谷与移动方向的第一张空间记忆。</text>
+<text x="70" y="188" class="xs seal">DESIGN PROTOTYPE / NTS / NO LIVE SERVICE CLAIM / FIELD OPEN / PHONE-DOWN FIRST</text>
+<line x1="70" y1="215" x2="1530" y2="215" class="thin"/>
+<text x="70" y="255" class="xs qing">01 / FIRST READ — LANDSCAPE OWNS ATTENTION</text>
+<g transform="translate(70 280)">
+  <rect width="930" height="405" rx="18" class="paper"/>
+  <path d="M0 180C140 90 245 112 345 168C420 210 510 185 602 122C690 62 790 78 930 155V405H0Z" class="mount2"/>
+  <path d="M0 240C125 170 238 180 355 235C467 287 579 235 700 165C787 114 851 122 930 166V405H0Z" class="mount"/>
+  <path d="M0 292H930V405H0Z" class="river"/>
+  <path d="M382 323h164l-24 28H407z" fill="#f2efe7" stroke="#17332c" stroke-width="2"/>
+  <path d="M426 304h73l16 19h-105z" fill="#f2efe7" stroke="#17332c" stroke-width="2"/>
+  <circle cx="456" cy="294" r="11" class="line"/><path d="M456 305v24" class="line"/>
+  <path d="M455 291L250 152" class="gaze"/><path d="M470 292L695 122" class="gaze"/>
+  <text x="28" y="40" class="t3 ink">连续山水关系，不切成 A / B / C 景点任务</text>
+  <text x="28" y="70" class="sm muted">第一视觉权重：水面 / 两岸 / 峰林 / 河谷尺度；设计介入退到必要层。</text>
+  <text x="28" y="374" class="sm seal">LOOK FIRST · PHONE DOWN · NO COLLECT / NO CHECK-IN</text>
+</g>
+<text x="1040" y="255" class="xs qing">02 / ATTENTION STACK</text>
+<g transform="translate(1040 280)">
+  <rect width="490" height="405" rx="18" class="paper"/>
+  <text x="25" y="42" class="t2 ink">移动中，信息不断后退</text>
+  <text x="25" y="84" class="xs seal">01 / LANDSCAPE</text><text x="25" y="112" class="txt ink">始终存在，100%视觉底层</text>
+  <line x1="25" y1="137" x2="465" y2="137" class="thin"/>
+  <text x="25" y="170" class="xs qing">02 / DIRECTION</text><text x="25" y="198" class="txt ink">只在真正需要定向时出现</text>
+  <line x1="25" y1="223" x2="465" y2="223" class="thin"/>
+  <text x="25" y="256" class="xs qing">03 / LIGHT CONTENT</text><text x="25" y="284" class="txt ink">名称 / 形态线索 / 短听觉</text>
+  <line x1="25" y1="309" x2="465" y2="309" class="thin"/>
+  <text x="25" y="342" class="xs qing">04 / DEEP READ</text><text x="25" y="370" class="txt ink">留到步行、停留或旅后</text>
+</g>
+<text x="70" y="735" class="xs qing">03 / BEHAVIOR GRAMMAR — WHAT THE VISITOR ACTUALLY DOES</text>
+<g transform="translate(70 760)">
+  <rect width="1460" height="150" rx="18" class="paper"/>
+  <text x="28" y="38" class="xs seal">LOOK</text><text x="28" y="70" class="t3 ink">看两岸连续变化</text>
+  <text x="260" y="38" class="xs seal">COMPARE</text><text x="260" y="70" class="t3 ink">比较远近 / 开合 / 高低</text>
+  <text x="560" y="38" class="xs seal">LISTEN</text><text x="560" y="70" class="t3 ink">听水、风与移动环境</text>
+  <text x="850" y="38" class="xs seal">FRAME</text><text x="850" y="70" class="t3 ink">选择一个值得留下的视角</text>
+  <text x="1170" y="38" class="xs seal">REMEMBER</text><text x="1170" y="70" class="t3 ink">形成以后可调用的空间记忆</text>
+  <text x="28" y="118" class="sm muted">数字状态：LIGHT / OFF 优先。任何交互若需要持续低头、连续点击或完成任务才能成立，都应从游船段退出。</text>
+</g>
+<text x="70" y="956" class="sm muted">Attack test：若第一眼像“船上景点导览列表、扫码打卡、连续弹卡、13 点任务进度”或屏幕比景观更抢注意，则 FAIL。实际航线、班次、停靠、时长、开放状态仍由当前官方/现场信息决定。</text>
+</svg>
