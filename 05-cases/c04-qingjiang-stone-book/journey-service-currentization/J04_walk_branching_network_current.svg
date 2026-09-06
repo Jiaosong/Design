@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f2efe6}.paper{fill:#fbfaf5;stroke:#c9c8bf;stroke-width:1.1}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.soft{fill:#e6ebe7}.river{fill:#77a497}
+.main{stroke:#17332c;stroke-width:7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.branch{stroke:#548b7e;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.return{stroke:#a54539;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 7}
+.contour{stroke:#c2cbc4;stroke-width:1.2;fill:none}.thin{stroke:#89938d;stroke-width:1.05;fill:none}
+.t1{font:700 42px 'Noto Serif CJK SC','Songti SC',serif}.t2{font:700 22px 'Noto Serif CJK SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.txt{font:400 14px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif;letter-spacing:1.1px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="58" class="xs qing">J04 / WALK · SOUTH-BANK BRANCHING EXPLORATION / CURRENT NATIVE CARRIER</text>
+<text x="70" y="108" class="t1 ink">山中步行的自由，不是迷路；而是在知道怎么回来时仍愿意偏离主路</text>
+<text x="70" y="146" class="txt muted">把 ROUTE-03 的“MAIN / EXPLORE / RETURN”转成同一张可读网络：主路稳定、支路可选、回程始终并行；十三印只作为可遇见的内容，不取得路线主权。</text>
+<text x="70" y="178" class="xs seal">DIAGRAMMATIC / NOT SURVEY / NO DISTANCE-SLOPE-WIDTH CLAIM / FIELD OPEN / NO 13-STOP LINEAR ROUTE</text>
+<line x1="70" y1="205" x2="1530" y2="205" class="thin"/>
+<text x="70" y="244" class="xs qing">01 / FIRST READ — ONE NETWORK, THREE DIFFERENT RELATIONS</text>
+<g transform="translate(70 270)">
+  <rect width="980" height="470" rx="22" class="paper"/>
+  <path d="M50 370C105 300 170 305 225 245C285 179 342 193 402 136C460 82 524 90 580 147C630 198 687 199 744 156C808 108 874 119 929 180" class="contour"/>
+  <path d="M35 406C103 344 171 350 239 286C300 230 363 234 428 181C489 132 551 139 608 190C663 239 718 240 776 198C838 152 900 162 951 214" class="contour"/>
+  <path d="M25 438C111 390 183 398 255 338C323 281 390 286 456 232C520 180 585 187 641 236C698 285 760 290 818 248C872 209 923 213 966 249" class="contour"/>
+  <path d="M0 40C155 70 310 63 462 44C624 24 778 31 980 67V0H0Z" class="river"/>
+  <text x="38" y="33" class="xs" fill="#fbfaf5">清江 / NORTH RELATION</text>
+  <path d="M160 120C240 148 291 207 277 276C262 346 330 404 439 404C551 404 633 352 641 282C650 210 730 158 839 164" class="main"/>
+  <path d="M839 164C808 231 800 299 827 355C849 401 779 429 689 408" class="main"/>
+  <path d="M307 218C380 195 431 165 470 118" class="branch"/>
+  <path d="M439 404C456 340 506 296 572 267" class="branch"/>
+  <path d="M641 282C707 305 754 326 827 355" class="branch"/>
+  <path d="M689 408C666 365 649 330 641 282" class="branch"/>
+  <path d="M841 164C900 206 916 275 894 337C877 386 826 425 752 439C624 463 482 445 366 432C268 421 192 379 152 322C111 265 119 191 160 120" class="return"/>
+  <circle cx="160" cy="120" r="11" fill="#17332c"/>
+  <circle cx="307" cy="218" r="8" fill="#548b7e"/>
+  <circle cx="439" cy="404" r="8" fill="#548b7e"/>
+  <circle cx="641" cy="282" r="8" fill="#548b7e"/>
+  <circle cx="839" cy="164" r="11" fill="#a54539"/>
+  <text x="126" y="104" class="sm muted">ENTER / SOUTH STATION</text>
+  <text x="795" y="145" class="sm seal">RETURN DECISION</text>
+  <g fill="#fbfaf5" stroke="#315f55" stroke-width="1.7">
+    <circle cx="470" cy="118" r="14"/><circle cx="572" cy="267" r="14"/><circle cx="827" cy="355" r="14"/>
+  </g>
+  <text x="463" y="123" class="xs ink">R</text>
+  <text x="565" y="272" class="xs ink">R</text>
+  <text x="820" y="360" class="xs ink">R</text>
+  <text x="690" y="105" class="sm muted">R = optional content encountered near route</text>
+  <g transform="translate(36 420)">
+    <line x1="0" y1="0" x2="55" y2="0" class="main"/><text x="70" y="5" class="sm muted">MAIN｜稳定主网络</text>
+    <line x1="245" y1="0" x2="300" y2="0" class="branch"/><text x="315" y="5" class="sm muted">EXPLORE｜可选发现支路</text>
+    <line x1="550" y1="0" x2="605" y2="0" class="return"/><text x="620" y="5" class="sm muted">RETURN｜并行低负担回程关系</text>
+  </g>
+</g>
+<text x="1090" y="244" class="xs qing">02 / WALKING ATTENTION GRAMMAR</text>
+<g transform="translate(1090 270)">
+  <rect width="440" height="470" rx="22" class="paper"/>
+  <text x="24" y="42" class="t2 ink">走路时，内容必须退到身体后面</text>
+  <text x="24" y="88" class="xs seal">MAIN</text>
+  <text x="24" y="116" class="t3 ink">确定方向 / 保持节奏</text>
+  <text x="24" y="144" class="sm muted">第一次、时间有限或疲劳时仍能继续；Return 常驻。</text>
+  <line x1="24" y1="168" x2="416" y2="168" class="thin"/>
+  <text x="24" y="202" class="xs seal">EXPLORE</text>
+  <text x="24" y="230" class="t3 ink">看到线索 → 决定靠近 → 看完可返回</text>
+  <text x="24" y="258" class="sm muted">没有“完成 R05 才能去 R06”；没有还差几个印。</text>
+  <line x1="24" y1="282" x2="416" y2="282" class="thin"/>
+  <text x="24" y="316" class="xs seal">RECOVER / RETURN</text>
+  <text x="24" y="344" class="t3 ink">体力下降时，服务与回来方式提权</text>
+  <text x="24" y="372" class="sm muted">允许 Short Loop / Continue / Recover / Return；不惩罚提前结束。</text>
+  <rect x="24" y="403" width="392" height="43" rx="10" class="soft"/>
+  <text x="40" y="430" class="sm ink">PHONE: FULL 仅在停留主动进入；行走默认 LIGHT / OFF。</text>
+</g>
+<text x="70" y="790" class="xs qing">03 / SAME WALK, DIFFERENT BODY STATE</text>
+<g transform="translate(70 814)">
+  <rect width="455" height="116" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">FRESH / 有余力</text>
+  <text x="22" y="62" class="t3 ink">MAIN → EXPLORE → MAIN</text>
+  <text x="22" y="90" class="sm muted">支路增加发现，不改变回程底层。</text>
+</g>
+<g transform="translate(555 814)">
+  <rect width="455" height="116" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">TIRED / 疲劳上升</text>
+  <text x="22" y="62" class="t3 ink">MAIN → RECOVER → RETURN</text>
+  <text x="22" y="90" class="sm muted">内容自动降级；休息、方向与服务提权。</text>
+</g>
+<g transform="translate(1040 814)">
+  <rect width="490" height="116" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">UNKNOWN / CLOSED</text>
+  <text x="22" y="62" class="t3 ink">不继续猜支路</text>
+  <text x="22" y="90" class="sm muted">回已确认主关系 / 人工服务；探索标记不得继续吸引。</text>
+</g>
+<text x="70" y="968" class="sm muted">Source boundary：官方导览只支持南岸多分支/回环网络与宏观节点关系；本图不表达微观路线顺序、真实距离、坡度、净宽、安全、容量或无障碍合规。</text>
+<text x="70" y="990" class="sm seal">ATTACK TEST：若第一眼变成 13 点线性打卡、所有支路同时高亮、回程隐藏、UI 主导步行，或图形被误读为测绘路线，则 FAIL。</text>
+</svg>
