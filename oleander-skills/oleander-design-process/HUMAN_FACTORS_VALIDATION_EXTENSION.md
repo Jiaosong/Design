@@ -52,6 +52,32 @@ Reject or revise when:
 - training, warnings or more breaks are prescribed before an avoidable design/task cause is tested;
 - no revalidation occurs after a material task/geometry/load change.
 
+## Project usage evidence｜C04｜2026-09-07
+
+This extension now has bounded project use, but **no representative human task validation has been run**. The evidence below advances project-usage maturity only.
+
+### J02｜moving-context attention budget
+
+A real editable C04 journey carrier was materialized for a boat / water-scale experience. The design intentionally gives continuous landscape relation the first attention claim, keeps directional/light information secondary, and moves deep reading to a lower-attention/later state with `PHONE-DOWN FIRST` and LIGHT/OFF digital paths.
+
+Design-use finding:
+- moving context changes the available visual/cognitive attention budget;
+- information/interaction density should therefore be treated as a task/environment variable, not only as a presentation preference;
+- before adding an interaction, identify what must remain continuously perceptible without sustained device attention;
+- if a proposed interaction requires repeated tapping, sustained looking-down or task completion before the primary experience works, it should be attacked against the real movement/task context.
+
+Bounded extension consequence:
+
+For moving/low-attention contexts, add an `ATTENTION / COGNITIVE DEMAND BUDGET` to `physical_cognitive_demand_map` when information or interaction can compete with movement, environmental observation, route awareness or another primary task.
+
+This is a design hypothesis/application rule, not demonstrated human-performance evidence. No universal timing, glance duration, content count or interaction limit is established.
+
+### P02｜lean-rest posture identity
+
+The P02 project repair also supplies bounded predictive use evidence: the design explicitly distinguishes a lean/rest posture from generic sit/perch/support interpretations and keeps FIELD/engineering authority open. This confirms that posture identity can be a necessary input to the demand map before geometry/form validation.
+
+It does not prove comfort, force, fatigue, reach, accessibility or structural safety; those remain validation tasks requiring appropriate evidence.
+
 ## Transfer boundary
 
 External source study:
@@ -64,4 +90,4 @@ Rejected as universal OLEANDER truth: automatic percentile bands, fixed RULA/REB
 
 ## Maturity
 
-`DOCUMENTED CANDIDATE EXTENSION / EXTERNAL-SOURCE-DIGESTED / PRACTICE NOT YET RUN / NO PROJECT USAGE / NO PROMOTION`.
+`DOCUMENTED CANDIDATE EXTENSION / EXTERNAL-SOURCE-DIGESTED / PROJECT_USAGE_EVIDENCE = C04 BOUNDED / HUMAN TASK VALIDATION NOT RUN / CROSS-CONTEXT TEST NEEDED / NO PROMOTION`.
