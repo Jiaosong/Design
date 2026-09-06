@@ -1,0 +1,19 @@
+{
+  "runtime": "python stdlib json/hashlib",
+  "artifact_hashes": {
+    "A_incomplete.json": "2341a18ce4945ac05f6e59cf94141c2d5c97adcbee4a1a9af3f98f96877d34da",
+    "B_source_grounded.json": "d7507756c9cb7ee70a772824a1da6715ad4beb9301cbf2d53e72f242a2787ee9"
+  },
+  "reopen": {
+    "A_parsed": true,
+    "B_parsed": true
+  },
+  "assertions": {
+    "A_root_cause_claim_rejected": true,
+    "B_incident_specific_source_reproduction_allowed": true,
+    "B_universal_material_rule_proven": false,
+    "physical_retest_proven": false,
+    "project_fabrication_pass_proven": false
+  },
+  "verdict": "PROVEN_CANDIDATE_FAIL_CLOSED_ON_INCOMPLETE_EVIDENCE__HOLD_PHYSICAL_AND_PROJECT_PROOF"
+}
