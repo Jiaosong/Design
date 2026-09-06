@@ -5,7 +5,21 @@ from collections import Counter
 
 def read(path):
     with open(path, encoding="utf-8-sig", newline="") as f:
-        return {r["record_id"]: r for r in csv.DictReader(f)}
+        rows = list(csv.DictReader(f))
+    seen = set()
+    dup = []
+    out = {}
+    for r in rows:
+        rid = (r.get("record_id") or "").strip()
+        if not rid:
+            raise SystemExit(f"{path}: missing record_id.")
+        if rid in seen:
+            dup.append(rid)
+        seen.add(rid)
+        out[rid] = r
+    if dup:
+        raise SystemExit(f"{path}: duplicate record_id values: {', '.join(sorted(set(dup)))}")
+    return out
 
 def exact(a,b):
     return sum(x==y for x,y in zip(a,b))/len(a) if a else float("nan")
@@ -37,21 +51,29 @@ def weighted_kappa(a,b):
     den=sum(W[i][j]*E[i][j] for i in range(k) for j in range(k))
     return None if abs(den)<1e-12 else 1-num/den
 
-def report(name,a,b,ordinal=False):
+def report(name,a,b,total,ordinal=False):
     ex=exact(a,b)
     kap=weighted_kappa([int(x) for x in a],[int(y) for y in b]) if ordinal else cohen_kappa(a,b)
     ktxt="NON_ESTIMABLE" if kap is None else f"{kap:.3f}"
-    print(f"{name}: n={len(a)} exact={ex:.3f} kappa={ktxt}")
+    print(f"{name}: coverage={len(a)}/{total} exact={ex:.3f} kappa={ktxt}")
 
 if len(sys.argv)!=3:
     raise SystemExit("Usage: python R03-reliability-calculator.py coderA.csv coderB.csv")
-A,B=read(sys.argv[1]),read(sys.argv[2]); ids=sorted(set(A)&set(B))
-if not ids: raise SystemExit("No shared record_id values.")
+A,B=read(sys.argv[1]),read(sys.argv[2])
+idsA, idsB = set(A), set(B)
+if idsA != idsB:
+    onlyA = ", ".join(sorted(idsA - idsB)) or "-"
+    onlyB = ", ".join(sorted(idsB - idsA)) or "-"
+    raise SystemExit(f"Coder record_id sets differ. only-A: {onlyA}; only-B: {onlyB}")
+ids=sorted(idsA)
+if not ids:
+    raise SystemExit("No record_id values.")
+total=len(ids)
 for d in [f"SRE-D{i}" for i in range(1,9)]:
     pairs=[i for i in ids if A[i].get(d+"_status") and B[i].get(d+"_status")]
-    report(d+" status",[A[i][d+"_status"] for i in pairs],[B[i][d+"_status"] for i in pairs],False)
+    report(d+" status",[A[i][d+"_status"] for i in pairs],[B[i][d+"_status"] for i in pairs],total,False)
     pairs=[i for i in ids if A[i].get(d+"_depth","").isdigit() and B[i].get(d+"_depth","").isdigit()]
-    report(d+" depth",[A[i][d+"_depth"] for i in pairs],[B[i][d+"_depth"] for i in pairs],True)
+    report(d+" depth",[A[i][d+"_depth"] for i in pairs],[B[i][d+"_depth"] for i in pairs],total,True)
 for p in ["PLS-L","PLS-S","PLS-R","PLS-C"]:
     pairs=[i for i in ids if A[i].get(p,"").isdigit() and B[i].get(p,"").isdigit()]
-    report(p,[A[i][p] for i in pairs],[B[i][p] for i in pairs],True)
+    report(p,[A[i][p] for i in pairs],[B[i][p] for i in pairs],total,True)
