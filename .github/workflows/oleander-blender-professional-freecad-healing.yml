@@ -1,0 +1,108 @@
+name: OLEANDER Blender Professional FreeCAD Healing
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-healing.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-healing.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-brep-healing:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_HEAL_DIR: /tmp/oleander-bounded-healing
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-healing-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Sew coincident faces and remove redundant splitter topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_HEAL_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing.py" \
+            2>&1 | tee /tmp/oleander-bounded-healing.log
+          grep -F 'OLEANDER_FREECAD_BOUNDED_HEALING=' /tmp/oleander-bounded-healing.log
+          grep -F '"schema": "OLEANDER_FREECAD_BOUNDED_HEALING_v0.2"' /tmp/oleander-bounded-healing.log
+          grep -F '"status": "PASS"' /tmp/oleander-bounded-healing.log
+          grep -F '"nonzero_geometric_gap_repair": "PASS"' /tmp/oleander-bounded-healing.log
+          grep -F '"sewing_tolerance_mm": 1e-06' /tmp/oleander-bounded-healing.log
+          grep -F '"nonzero_gap_repair": "NOT_VALIDATED_AND_REJECTED"' /tmp/oleander-bounded-healing.log
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing.FCStd"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_sewn_R002.step"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_refined_R002.step"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_display.json"
+          test -s "${OLEANDER_HEAL_DIR}/oleander_bounded_healing_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read healed derivative in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_healing_blender_readback.py \
+            2>&1 | tee /tmp/oleander-bounded-healing-blender.log
+          grep -F 'OLEANDER_BOUNDED_HEALING_BLENDER_READBACK=' /tmp/oleander-bounded-healing-blender.log
+          grep -F '"schema": "OLEANDER_BOUNDED_HEALING_BLENDER_READBACK_v0.2"' /tmp/oleander-bounded-healing-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-bounded-healing-blender.log
+          grep -F '"master": "FreeCAD/OCCT healed B-Rep"' /tmp/oleander-bounded-healing-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-bounded-healing-blender.log
+
+      - name: Record bounded healing evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded FreeCAD B-Rep Healing Foundation'
+            echo '- Case A: six coincident but disconnected boundary faces begin with zero solids, then sewShape(1e-6 mm) + fix + removeSplitter + makeSolid must produce one valid solid.'
+            echo '- Case B: a valid fused solid with redundant splitter topology is refined with removeSplitter while preserving bbox and volume and reducing face/edge complexity.'
+            echo '- R001 width 80 mm and R002 width 100 mm are both validated.'
+            echo '- Nonzero geometric-gap repair is explicitly NOT VALIDATED and is rejected by the bounded contract.'
+            echo '- FCStd plus sewn/refined STEP artifacts persist; Blender reads only the sewn R002 display derivative and remains DISPLAY_DERIVATIVE_ONLY.'
+            echo '- Does NOT prove arbitrary import repair, nonzero-gap repair, self-intersection/nonmanifold repair, topological naming stability or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

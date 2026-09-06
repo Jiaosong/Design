@@ -1,0 +1,100 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "CAD_SKETCH_SOLVER_FREECAD_BREP",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "defe2b64294ef9debe4ecc0d68eee629be9b55c5",
+  "tested_pr_merge_commit": "3c2e7a5307d0a09a76504e29f344d25754bea604",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional CAD Sidecar Integration",
+    "run_id": 33699167779,
+    "job_id": 100474502325,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04 LTS",
+    "blender_version": "5.1.2",
+    "cad_sketcher_commit": "831ee71f451777d2d48632da62114cc5e9357d3d",
+    "freecad_version": "1.1.3",
+    "occ_version": "7.8.1",
+    "freecad_appimage_sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+  },
+  "authority_chain": {
+    "editable_intent": "CAD Sketcher + SolveSpace constrained sketch in Blender",
+    "authoritative_geometry": "FreeCAD/OCCT B-Rep",
+    "authoritative_master_type": "CAD_NATIVE",
+    "blender_geometry": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "real CAD Sketcher constrained rectangle",
+    "horizontal and vertical geometric relations",
+    "width and depth driving dimensions",
+    "parameter edit followed by solver re-solve",
+    "canonical CAD build request hashing",
+    "FreeCAD/OCCT authoritative polyline-profile extrusion",
+    "bounded through-hole feature",
+    "FCStd native master creation",
+    "STEP and BREP export",
+    "revision-aware authoritative geometry rebuild",
+    "metric B-Rep dimensional readback",
+    "typed tessellated Blender display derivative",
+    "request-id revision and SHA binding",
+    "upstream request change marks previous Blender derivative stale",
+    "validated derivative rebind clears stale",
+    "forged response request-SHA rejection",
+    "structured zero-length-edge build failure with zero released solids",
+    "Blender save and reopen preserves OLE identity revision request SHA STEP SHA and authority"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "request_sha256": "e33aceaac9148bb76b63de3f15e45ff55df55f922b3b68e0850cad7ac20b7dab",
+      "bbox_mm": [80.0, 50.0, 10.0],
+      "volume_mm3": 39214.601836602546,
+      "solid_count": 1,
+      "fcstd_sha256": "493ce8e8fcbdb7be3acbe9f2481173cb8bea382e7a8dae78a5da70a279861bcb",
+      "step_sha256": "2f53ec07012f5a2bf28b55f16b7c445e4cc96da37b506ab46b0a577c4caeeaa1",
+      "brep_sha256": "c627ed9a5c83589316303eabc476366b447cc671a46ce9be9a6f3cdf18f435ab",
+      "display_derivative_sha256": "646a3119325a09e43cfe7e7f8f5dd43f4564a011231173b4f9cd098e5ba8bd25"
+    },
+    "R002": {
+      "request_sha256": "2db1ab4a166c8ccac1fcdb80c6bab2caf614b2e9bd2eae6064931c9690ca99a6",
+      "bbox_mm": [100.0, 50.0, 10.0],
+      "volume_mm3": 49214.601836602546,
+      "solid_count": 1,
+      "fcstd_sha256": "97abeac0458213668ee8eddce61292473f147ed26c7d37b40a1c5ecae2a8f066",
+      "step_sha256": "cb145ad8eb7d3e0d31307af022cc98fa413bf74ac86ee57436ea1c1a482c7b6d",
+      "brep_sha256": "f75eccb65e9651e7fcda6af30b4c93cd4f0a8686fb41a036f37da85df88e0839",
+      "display_derivative_sha256": "fb5af1f5c8f9001082976f2708a487a343eca639312d22cfd6be4a8e41cb1c2a"
+    }
+  },
+  "expected_failure_cases": {
+    "duplicate_adjacent_point_zero_length_edge": "PASS",
+    "forged_response_request_sha": "PASS"
+  },
+  "runtime_observation": {
+    "freecadcmd_python_exception_process_exit": 0,
+    "authority_note": "FreeCADCmd shell exit code is not used as the build failure authority; the structured CAD build response is authoritative for bounded sidecar execution status."
+  },
+  "non_claims": [
+    "P0_A_PARAMETRIC_CAD_PASS",
+    "P0_B_DIRECT_BREP_PASS",
+    "general_feature_tree",
+    "revolve_sweep_loft",
+    "shell_draft_general_fillet_chamfer",
+    "pattern_mirror",
+    "stable_cad_datums",
+    "direct_face_push_pull",
+    "direct_face_translate_rotate",
+    "split_trim",
+    "brep_healing_parity",
+    "assembly_mates",
+    "engineering_approval",
+    "manufacturing_release",
+    "field_truth",
+    "design_quality"
+  ],
+  "invalidation_rule": "Material changes to the CAD build request/response contracts, professional CAD adapter, FreeCAD build service, CAD Sketcher exporter, integration readback test, pinned CAD Sketcher commit, FreeCAD version or supported Blender version require a new bounded integration receipt.",
+  "authority_note": "This receipt validates one bounded cross-kernel sketch-to-authoritative-solid rebuild workflow. It does not satisfy the complete Parametric CAD or Direct B-Rep professional parity gates."
+}

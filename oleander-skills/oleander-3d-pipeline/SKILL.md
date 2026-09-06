@@ -10,6 +10,32 @@ Inherit `00-governance/runtime/OLEANDER_DESIGN_ENVIRONMENT_PRODUCTION_CONTRACT_v
 
 Keep one authoritative editable model per asset and treat downstream scene files, exchange files, renders, screenshots and viewers as typed derivatives unless Project Authority explicitly promotes another source. Avoid silent scale, coordinate, material, texture, unit, axis or authority changes.
 
+## Blender Workbench existing-first route
+
+`oleander-3d-pipeline` is the single installed 3D owner. Blender Runtime modules, CAD sidecars, validation scripts and workbench UI are implementation layers under this Skill, not separate Skills or parallel Current authorities.
+
+Before extending or modifying Blender behavior:
+
+1. resolve the active Project/Object Current, Source Authority, Required Native Output and production Blender runtime;
+2. read `BLENDER_RUNTIME_CAPABILITY.json`, `PROFESSIONAL_PARITY_STATUS.json`, and, when working on an unmerged runtime branch, `blender_runtime/CANDIDATE_GOVERNANCE.json`;
+3. route to an existing implementation module before creating any new module, workflow or abstraction;
+4. use specialist CAD/BIM/Class-A/CAE/CAM kernels only when the Required Native Output needs them and runtime probing proves them callable;
+5. after any material runtime change, align Skill routing, capability/status records, Workbench extension, Runtime README, Candidate governance and the matching Notion Current control surface in the same closure cycle, then run the smallest applicable real-runtime regression and readback.
+
+Existing module families are reused as follows:
+
+- identity / audit / dependencies / diff -> `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
+- direct and non-destructive feature editing -> `direct_model.py`, `feature_stack.py`, `feature_edit.py`;
+- dimensions / guides / datum / inference -> `measurement_system.py`, `measurement_atomic.py`, `angular_datum.py`, `precision_inference.py`, `inference_engine.py`;
+- relations / one-shot correction / configurations -> `relation_kernel.py`, `relation_apply.py`, `configuration.py`, `configuration_ops.py`;
+- governed design-intent mutation / rebuild / procedural state -> `design_intent.py`, `design_intent_apply.py`, `design_intent_batch.py`, `design_intent_rebuild.py`, `procedural.py`;
+- mesh clearance / surface diagnostics -> `mesh_clearance.py`, `surface_diagnostics.py`;
+- authoritative B-Rep handoff -> `professional_adapter/cad_sidecar.py` plus the approved specialist CAD route. Blender remains a display/review derivative when CAD native geometry is authority.
+
+If an existing module can carry roughly 60% or more of the requirement, extend or compose it. Do not create `oleander-blender-skill`, assembly Skill, CAD Skill, second Runtime Current, parallel Workbench framework, or one-off professional workflow to bypass an existing owner. A new implementation object requires an actual material capability gap plus authority and anti-pollution preflight.
+
+Historical per-stage Blender receipts remain provenance. Current-source compatibility must be re-probed against the production runtime authority before promotion; a Candidate branch does not become installed Current merely because its tests pass.
+
 ## Before modeling
 
 Record:

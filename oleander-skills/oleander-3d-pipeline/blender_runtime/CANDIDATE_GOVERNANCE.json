@@ -1,0 +1,278 @@
+{
+  "schema": "OLEANDER_BLENDER_CANDIDATE_GOVERNANCE_v1.0",
+  "effective_date": "2026-09-05",
+  "authority": {
+    "installed_current_branch": "main",
+    "candidate_branch": "feat/oleander-blender-runtime-workbench",
+    "main_is_only_installed_current": true,
+    "candidate_may_not_self_promote": true,
+    "promotion_state": "HOLD_EXPLICIT_BOUNDED_ABSORPTION_DECISION"
+  },
+  "anti_pollution_rules": {
+    "no_new_parallel_current": true,
+    "no_new_framework_if_existing_contract_fits": true,
+    "no_unverified_capability_in_professional_parity_status": true,
+    "no_receipt_before_runtime_validation": true,
+    "no_new_oneoff_freecad_workflow": true,
+    "no_silent_ambiguous_reference_resolution": true,
+    "no_mesh_claim_as_brep_authority": true,
+    "no_bounded_probe_claim_as_general_parity": true,
+    "no_knowledge_base_promotion_from_candidate_only_evidence": true
+  },
+  "project_wide_governance": {
+    "authority": "main/00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
+    "machine_contract": "main/00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+    "inherit_without_fork": true,
+    "blender_candidate_rules_may_only_be_stricter": true
+  },
+  "consolidation_guard": {
+    "mode": "EXISTING_CANDIDATE_CLOSURE",
+    "effective_policy_date": "2026-09-05",
+    "net_new_frontier_items_allowed": false,
+    "allowed_actions": ["REPAIR", "SYNC", "ABSORB", "MERGE", "SUPERSEDE", "CLOSE", "PROJECT_USAGE_EVIDENCE", "PROMOTION"],
+    "closure_priority": "ALIGN_SYNC_REPAIR_REGRESSION_CONTRADICTION_SCAN_PROJECT_USAGE_PROMOTION_DECISION",
+    "ci_receipt_or_probe_count_is_not_closure": true
+  },
+  "skill_runtime_alignment": {
+    "parent_skill": "oleander-skills/oleander-3d-pipeline/SKILL.md",
+    "skill_capability_contract": "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
+    "runtime_capability_map": "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_CAPABILITY.json",
+    "runtime_capability_map_role": "CAPABILITY_AND_HISTORICAL_STAGE_PROVENANCE_MAP_NOT_CURRENT_RUNTIME_COMPATIBILITY_AUTHORITY",
+    "workbench_extension": "oleander-skills/oleander-3d-pipeline/BLENDER_RUNTIME_WORKBENCH_EXTENSION.md",
+    "runtime_readme": "oleander-skills/oleander-3d-pipeline/blender_runtime/README.md",
+    "professional_parity_status": "oleander-skills/oleander-3d-pipeline/PROFESSIONAL_PARITY_STATUS.json",
+    "current_runtime_compatibility_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json",
+    "production_runtime_authority": "Blender 5.2.0 LTS",
+    "historical_per_stage_blender_5_1_receipts_role": "PROVENANCE",
+    "existing_module_first": true,
+    "no_new_skill_or_parallel_runtime_framework": true,
+    "material_runtime_change_requires_alignment_readback": true,
+    "notion_control_surface": "SYS-BLENDER-SURFACE"
+  },
+  "workflow_policy": {
+    "mode": "FREEZE_GRANDFATHERED_AND_MIGRATE_TO_FRONTIER_MATRIX",
+    "shared_frontier_workflow": ".github/workflows/oleander-blender-professional-frontier-5-2-lts.yml",
+    "runtime_5_2_regression_workflow": ".github/workflows/oleander-blender-runtime-5-2-lts.yml",
+    "candidate_regression_frontier_owner": "SHARED_FRONTIER_5_2_LTS",
+    "net_new_frontier_development": "BLOCKED_BY_CONSOLIDATION_THROTTLE",
+    "grandfathered_pr_trigger": "READY_FOR_REVIEW_ONLY",
+    "grandfathered_push_main_regression_preserved": true,
+    "trigger_migration_commit": "69bf18ed02b02bbea8b135bd0e7e1290ba341abc",
+    "new_oneoff_exception_requires": "USER_EXPLICIT_APPROVAL_PLUS_GOVERNANCE_RECEIPT",
+    "superseded_workflows": [
+      ".github/workflows/oleander-blender-runtime-5-1.yml",
+      ".github/workflows/oleander-blender-professional-frontier.yml",
+      ".github/workflows/oleander-blender-runtime-current.yml",
+      ".github/workflows/oleander-blender-professional-frontier-current.yml"
+    ],
+    "grandfathered_freecad_workflows": [
+      ".github/workflows/oleander-blender-professional-freecad-brep.yml",
+      ".github/workflows/oleander-blender-professional-freecad-direct-brep.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-tilt.yml",
+      ".github/workflows/oleander-blender-professional-freecad-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-feature-tree.yml",
+      ".github/workflows/oleander-blender-professional-freecad-full3d-face-free-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-full3d-face-rotate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-healing.yml",
+      ".github/workflows/oleander-blender-professional-freecad-multi-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-free-move.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-rotate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-oblique-face-translate.yml",
+      ".github/workflows/oleander-blender-professional-freecad-reference-rebind.yml",
+      ".github/workflows/oleander-blender-professional-freecad-split.yml"
+    ],
+    "grandfathered_cad_baseline_workflows": [
+      ".github/workflows/oleander-blender-professional-cad-sketcher.yml",
+      ".github/workflows/oleander-blender-professional-cad-datums.yml",
+      ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml"
+    ],
+    "removed_as_redundant": [
+      ".github/workflows/oleander-blender-professional-freecad-face-tilt-diagnostic.yml",
+      ".github/workflows/oleander-blender-professional-freecad-custom-tangent-axis-face-rotate.yml"
+    ]
+  },
+  "frontier_items": [
+    {
+      "id": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_custom_tangent_axis_face_rotate_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
+      "parity_key": "FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_CUSTOM_TANGENT_AXIS_FACE_ROTATE_20260904.json",
+      "promotion_allowed": true
+    },
+    {
+      "id": "FREECAD_REFERENCE_BOUND_OPERATION",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
+      "parity_key": "FREECAD_REFERENCE_BOUND_OPERATION",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_20260904.json",
+      "promotion_allowed": true
+    },
+    {
+      "id": "FREECAD_BOUNDED_PATTERN_MIRROR",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_pattern_mirror.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_pattern_mirror_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
+      "parity_key": "FREECAD_BOUNDED_PATTERN_MIRROR",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_BOUNDED_PATTERN_MIRROR_20260904.json",
+      "promotion_allowed": true
+    },
+    {
+      "id": "FREECAD_ARBITRARY_AXIS_FACE_ROTATE",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_arbitrary_axis_face_rotate.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_arbitrary_axis_face_rotate_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
+      "parity_key": "FREECAD_ARBITRARY_AXIS_FACE_ROTATE",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_ARBITRARY_AXIS_FACE_ROTATE_20260904.json",
+      "promotion_allowed": true
+    },
+    {
+      "id": "FREECAD_CYLINDRICAL_FACE_OFFSET",
+      "probe": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_cylindrical_face_offset.py",
+      "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_cylindrical_face_offset_blender_readback.py",
+      "state": "VALIDATED_FOR_BOUNDED_SCOPE",
+      "parity_key": "FREECAD_CYLINDRICAL_FACE_OFFSET",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_CYLINDRICAL_FACE_OFFSET_20260904.json",
+      "promotion_allowed": true
+    }
+  ],
+  "allowed_frontier_states": [
+    "EXPERIMENTAL_UNVERIFIED",
+    "VALIDATION_PENDING",
+    "VALIDATED_FOR_BOUNDED_SCOPE",
+    "REJECTED_WITH_REASON"
+  ],
+  "project_usage_assessment": {
+    "assessment_date": "2026-09-05",
+    "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+    "object_id": "C04_YUNSHUIYI_REBUILD_MASTER_v003",
+    "legitimate_design_reentry": true,
+    "design_reentry_source": "VALIDATION_REVISE_RETURN",
+    "design_return_evidence_commits": [
+      "8cb97cc5c71a8e82edd9d53e72a266582afbd67b",
+      "afdf571fbea2917d1baebaee9a084f947e24eee1",
+      "8c262ffca69cccf6aa1df311f537aa7bd5f01134"
+    ],
+    "current_project_need": [
+      "SOURCE_DEFINING_DIAGONAL_SUPPORT_ARM",
+      "PAIRED_HINGE_PIVOT_HARDWARE",
+      "RAILING_MOUNT_CLAMP_RELATION",
+      "BILATERAL_SIDE_SUPPORT_ARCHITECTURE",
+      "SEPARATELY_ADDRESSABLE_RELATION_REVEAL_PARTS"
+    ],
+    "current_project_implementation": "BLENDER_NATIVE_EDITABLE_COMPONENT_GEOMETRY",
+    "shared_blender_runtime_project_usage": "ESTABLISHED",
+    "runtime_usage_credit_allowed": true,
+    "runtime_usage_evidence": {
+      "dispatch_commit": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
+      "consumer_workflow": ".github/workflows/c04-blender-rebuild.yml",
+      "shared_runner": ".github/workflows/oleander-shared-blender-runner.yml",
+      "run_id": 33954476037,
+      "job_id": 101275157015,
+      "runtime": "Blender 5.2.0 LTS",
+      "build_hash": "fbe6228777e7",
+      "execute_blender_producer": "SUCCESS",
+      "native_blender_reopen_validation": "SUCCESS",
+      "artifact_identity": "SUCCESS",
+      "artifact_upload": "SUCCESS",
+      "run_conclusion": "SUCCESS"
+    },
+    "compatibility_repair_lineage": [
+      {
+        "run_id": 33954211110,
+        "state": "FAIL_CLOSED",
+        "root_cause": "STALE_BLENDER_EEVEE_NEXT_ENUM",
+        "repair_commit": "4531a437f7383e3892de8f115cfd624fb54c9a8c"
+      },
+      {
+        "run_id": 33954334471,
+        "state": "FAIL_CLOSED",
+        "root_cause": "FACTORY_EMPTY_SCENE_WORLD_WAS_NONE",
+        "repair_commit": "cac85a19e76b8f41c2e0c5b3d94a7b2d226f7147"
+      },
+      {
+        "run_id": 33954476037,
+        "state": "SUCCESS",
+        "root_cause": null,
+        "repair_commit": null
+      }
+    ],
+    "candidate_direct_brep_usage": "NOT_ESTABLISHED",
+    "direct_brep_usage_credit_allowed": false,
+    "direct_brep_reason": "The Current Yunshuiyi repair is a real project DESIGN re-entry and now a real shared Blender Runtime consumer, but the returned support/hinge/clamp relation does not exactly instantiate any of the five validated Direct-BRep frontier-family contracts. Similar nouns, bilateral parts, pivots or cylindrical-looking hardware are insufficient evidence. Do not rewrite project geometry merely to manufacture Direct-BRep usage evidence.",
+    "truth_boundary": [
+      "REAL_PROJECT_RUNTIME_USAGE != DIRECT_BREP_PROJECT_USAGE",
+      "NATIVE_REOPEN_PASS != INDEPENDENT_DESIGN_KEEP",
+      "ARTIFACT_UPLOAD_PASS != FIELD_OR_ENGINEERING_PASS"
+    ]
+  },
+  "bounded_absorption_plan": {
+    "state": "PREPARED_NOT_APPROVED",
+    "decision_authority": "EXPLICIT_USER_OR_GOVERNANCE_ABSORPTION_DECISION_REQUIRED",
+    "purpose": "Allow the mature Candidate implementation to be absorbed under the existing oleander-3d-pipeline Skill without converting bounded professional evidence into general CAD parity.",
+    "absorb_into_existing_owner_only": "oleander-skills/oleander-3d-pipeline",
+    "eligible_for_bounded_absorption": [
+      "BLENDER_5_2_COMPATIBLE_RUNTIME_IMPLEMENTATION",
+      "EXISTING_WORKBENCH_UI_AND_RUNTIME_MODULES_UNDER_OLEANDER_3D_PIPELINE",
+      "RUNTIME_CONTRACTS_AND_TYPED_HANDOFFS",
+      "STATIC_AND_BLENDER_5_2_REGRESSION_PATH",
+      "SHARED_PROFESSIONAL_FRONTIER_5_2_VALIDATION_PATH",
+      "FIVE_ALREADY_VALIDATED_FRONTIER_FAMILIES_AS_BOUNDED_REUSE_EVIDENCE_ONLY"
+    ],
+    "must_remain_blocked_or_nonpromoted": [
+      "P0_B_DIRECT_BREP_GENERAL_PARITY",
+      "DEFAULT_ENVIRONMENT_ELIGIBILITY_UNLESS_EXPLICITLY_DECIDED",
+      "UNRESTRICTED_ARBITRARY_AXIS_PIVOT_SEMANTICS",
+      "GENERAL_FREEFORM_NONPLANAR_DIRECT_EDIT",
+      "GENERAL_PUSH_PULL_TRIM_SURFACE_TRIMMING",
+      "PERSISTENT_TOPOLOGICAL_NAMING_GENERALITY",
+      "GENERAL_HEALING_SHELL_FILLET_CHAMFER_ROBUSTNESS",
+      "NURBS_CLASS_A_PARITY",
+      "BIM_IFC_PARITY",
+      "ASSOCIATIVE_TECHNICAL_DRAWING_PARITY",
+      "UNRESTRICTED_ASSEMBLY_MATE_SOLVING",
+      "ENGINEERING_MANUFACTURING_FIELD_APPROVAL"
+    ],
+    "runtime_project_usage_requirement_status": "SATISFIED_BY_C04_YUNSHUIYI_SHARED_RUNNER_SUCCESS",
+    "direct_brep_project_usage_requirement_status": "UNSATISFIED",
+    "professional_evidence_role_after_absorption": "BOUNDED_REUSE_EVIDENCE_AND_REGRESSION_SUPPORT_NOT_GENERAL_PARITY",
+    "absorption_does_not_require_fake_direct_brep_project_usage": true,
+    "preconditions_before_any_absorption_or_merge": [
+      "FRESH_DYNAMIC_MAIN_COMPARE_BEHIND_ZERO",
+      "CURRENT_HEAD_CORE_REGRESSION_GREEN",
+      "CURRENT_PR_AUTHORITY_READBACK",
+      "P0_B_REMAINS_BLOCKED",
+      "DEFAULT_ENVIRONMENT_ELIGIBLE_REMAINS_FALSE_UNLESS_SEPARATELY_EXPLICITLY_DECIDED",
+      "EXPLICIT_BOUNDED_ABSORPTION_DECISION"
+    ],
+    "automatic_promotion": false
+  },
+  "promotion_gate": {
+    "require_main_sync_behind_count": 0,
+    "require_dynamic_main_compare_at_promotion": true,
+    "require_no_experimental_unverified_items": true,
+    "require_no_validation_pending_items": true,
+    "require_all_validated_items_have_receipts": true,
+    "require_pr_authority_current": true,
+    "require_static_runtime_readback_pass": true,
+    "require_current_runtime_5_2_regression": true,
+    "require_contradiction_scan": true,
+    "require_project_usage_or_explicit_bounded_absorption_decision": true,
+    "require_default_environment_eligible_explicit_decision": true
+  },
+  "branch_hygiene": {
+    "last_observed_behind_main": 0,
+    "last_observed_ahead_main": 526,
+    "observation_head": "fa7ee3d12a92a9ab5cf8e135e8d0f2488a4616bf",
+    "observation_main": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
+    "observation_date": "2026-09-05",
+    "observation_is_advisory": true,
+    "observation_scope": "POST_REAL_PROJECT_RUNTIME_USAGE_SYNC_PRE_GOVERNANCE_WRITEBACK",
+    "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
+    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion or absorption requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. The prior synchronized head cffb6faf passed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and Professional Frontier 5.2 LTS. Head fa7ee3d1 then no-loss synchronized the exact C04 Blender 5.2 compatibility fixes and successful retry dispatch from main. C04 Yunshuiyi now establishes real shared Blender Runtime project usage through producer + native reopen + artifact identity + upload, but still does not establish any of the five Direct-BRep family usages. The remaining Candidate closure boundary is an explicit bounded absorption decision plus fresh current-head regression/readback, not additional frontier growth."
+  },
+  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is Blender 5.2.0 LTS; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scopes. C04 Yunshuiyi is now a real project consumer of the shared Blender Runtime: after two fail-closed project-producer compatibility defects were repaired, run 33954476037 completed producer execution, native Blender reopen, artifact identity and artifact upload successfully on Blender 5.2.0 LTS build fbe6228777e7. This runtime usage must not be relabeled as Direct-BRep usage; none of the five bounded Direct-BRep families has exact-scope project consumption evidence. The bounded absorption plan remains PREPARED_NOT_APPROVED: it may absorb mature runtime/workbench/contracts and the bounded evidence set into the existing Skill while P0-B, default-environment eligibility and all general CAD/Class-A/BIM/technical-drawing/engineering claims remain blocked unless separately and explicitly decided. Main remains the only installed CURRENT until an explicit bounded absorption/merge decision and fresh readback."
+}

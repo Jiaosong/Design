@@ -1,0 +1,99 @@
+name: OLEANDER Blender Professional CAD Datums
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_datums.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_datum_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-cad-datums.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_datums.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_datum_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-cad-datums.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  native-cad-datum-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_CAD_DATUM_DIR: /tmp/oleander-cad-datums
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-datum-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Create native PartDesign datums and reopen FCStd
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_CAD_DATUM_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_datums.py" \
+            2>&1 | tee /tmp/oleander-freecad-datums.log
+          grep -F 'OLEANDER_FREECAD_NATIVE_DATUM_PROBE=' /tmp/oleander-freecad-datums.log
+          grep -F '"status": "PASS"' /tmp/oleander-freecad-datums.log
+          grep -F '"dependency_state": "RUNTIME_PROBED"' /tmp/oleander-freecad-datums.log
+          test -s "${OLEANDER_CAD_DATUM_DIR}/oleander_native_datums.FCStd"
+          test -s "${OLEANDER_CAD_DATUM_DIR}/oleander_native_datums.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read native datum provenance in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_datum_blender_readback.py \
+            2>&1 | tee /tmp/oleander-cad-datum-blender.log
+          grep -F 'OLEANDER_CAD_DATUM_BLENDER_READBACK=' /tmp/oleander-cad-datum-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-datum-blender.log
+          grep -F '"master": "FreeCAD PartDesign native datums"' /tmp/oleander-cad-datum-blender.log
+          grep -F '"blender": "REFERENCE_DERIVATIVE_ONLY"' /tmp/oleander-cad-datum-blender.log
+
+      - name: Record bounded datum evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Professional CAD Datum Foundation'
+            echo '- FreeCAD master objects: PartDesign::Plane, PartDesign::Line, PartDesign::Point.'
+            echo '- Stable OLE IDs and datum roles persist through FCStd save/reopen.'
+            echo '- Blender receives reference derivatives only; FreeCAD PartDesign remains datum authority.'
+            echo '- Does NOT yet prove feature-to-datum binding, assembly mates, topological naming stability or P0-A PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

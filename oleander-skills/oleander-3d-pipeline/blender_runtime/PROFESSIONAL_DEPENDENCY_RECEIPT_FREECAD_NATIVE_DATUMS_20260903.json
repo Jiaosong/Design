@@ -1,0 +1,46 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_DEPENDENCY_RECEIPT_v0.1",
+  "dependency_id": "FREECAD_NATIVE_DATUMS",
+  "dependency": "FreeCAD PartDesign native datums",
+  "validation_state": "PASS",
+  "dependency_state": "RUNTIME_PROBED",
+  "tested_branch_head": "4d8829104b099a165f7ae7105638054c8dcdb44c",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional CAD Datums",
+    "run_id": 33699822948,
+    "job_id": 100476492504,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04 LTS",
+    "freecad_version": "1.1.3",
+    "blender_version": "5.1.2",
+    "freecad_appimage_sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+  },
+  "runtime_checks": [
+    "PartDesign::Plane native datum creation",
+    "PartDesign::Line native datum creation",
+    "PartDesign::Point native datum creation",
+    "origin-reference attachment MapMode",
+    "stable OLE datum ID persistence",
+    "datum role and FREECAD_NATIVE_DATUM authority metadata persistence",
+    "FCStd save and reopen",
+    "datum type and MapMode readback after reopen",
+    "Blender reference derivative creation",
+    "Blender CAD_NATIVE master provenance",
+    "Blender REFERENCE_DERIVATIVE_ONLY authority boundary",
+    "Blender save and reopen authority persistence"
+  ],
+  "bounded_scope": "native PartDesign Plane/Line/Point datums attached to Body origin references; stable OLE IDs and roles; FCStd persistence; Blender reference-only provenance readback",
+  "non_claims": [
+    "P0_A_PARAMETRIC_CAD_PASS",
+    "feature_binding_to_datum",
+    "topological_naming_stability",
+    "assembly_reference_frame_solver",
+    "engineering_approval"
+  ],
+  "invalidation_rule": "Changes to the datum probe, Blender datum readback, FreeCAD version, Blender version or native datum object/attachment semantics require a new real-runtime receipt.",
+  "authority_note": "FreeCAD PartDesign datums are authoritative. Blender empties are reference derivatives only and do not become CAD datum authority."
+}

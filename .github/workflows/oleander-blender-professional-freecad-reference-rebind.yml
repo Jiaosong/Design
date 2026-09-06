@@ -1,0 +1,104 @@
+name: OLEANDER Blender Professional FreeCAD Reference Rebind
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-reference-rebind.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-reference-rebind.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-reference-rebind:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_REF_REBIND_DIR: /tmp/oleander-reference-rebind
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-reference-rebind-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Re-resolve semantic B-Rep reference and enforce HOLD failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_REF_REBIND_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind.py" \
+            2>&1 | tee /tmp/oleander-reference-rebind.log
+          grep -F 'OLEANDER_FREECAD_REFERENCE_REBIND=' /tmp/oleander-reference-rebind.log
+          grep -F '"status": "PASS"' /tmp/oleander-reference-rebind.log
+          grep -F '"ambiguous_reference": "PASS"' /tmp/oleander-reference-rebind.log
+          grep -F '"missing_reference": "PASS"' /tmp/oleander-reference-rebind.log
+          grep -F '"ordinal_persistence": "PROHIBITED"' /tmp/oleander-reference-rebind.log
+          test -s "${OLEANDER_REF_REBIND_DIR}/oleander_reference_rebind.FCStd"
+          test -s "${OLEANDER_REF_REBIND_DIR}/oleander_reference_registry.json"
+          test -s "${OLEANDER_REF_REBIND_DIR}/oleander_reference_rebind_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read semantic reference metadata in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_rebind_blender_readback.py \
+            2>&1 | tee /tmp/oleander-reference-rebind-blender.log
+          grep -F 'OLEANDER_REFERENCE_REBIND_BLENDER_READBACK=' /tmp/oleander-reference-rebind-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-reference-rebind-blender.log
+          grep -F '"blender": "REFERENCE_METADATA_ONLY"' /tmp/oleander-reference-rebind-blender.log
+
+      - name: Record bounded semantic-reference evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded Semantic B-Rep Reference Rebind'
+            echo '- Persistent reference is stable OLE ref ID + selector semantics + last-good geometry signature + resolution history.'
+            echo '- FaceN / EdgeN / VertexN / subshape ordinals are explicitly prohibited from persistent identity.'
+            echo '- R001 80 mm box resolves initial top face; R002 100 mm box re-resolves with changed signature; R003 vertical fillet re-resolves again after topology change.'
+            echo '- Two equal global-Zmax planar candidates produce AMBIGUOUS_HOLD; a sphere produces MISSING_HOLD.'
+            echo '- Failure states preserve the last-good signature and never silently choose the first candidate.'
+            echo '- FreeCAD persists reference metadata; Blender receives REFERENCE_METADATA_ONLY and NO_GEOMETRY_AUTHORITY.'
+            echo '- This does NOT prove persistent topological naming parity, arbitrary face/edge/vertex reference stability or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

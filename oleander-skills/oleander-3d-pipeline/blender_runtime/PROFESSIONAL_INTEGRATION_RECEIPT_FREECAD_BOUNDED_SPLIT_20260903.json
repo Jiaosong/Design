@@ -1,0 +1,94 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_BOUNDED_SPLIT",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "7069a05aa52335c028a3ab51170d12e6cff81f70",
+  "tested_pr_merge_commit": "c3f9eb838756b151cab7bd4cfb66209d8ec6a59e",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Split",
+    "run_id": 33705588286,
+    "job_id": 100493880191,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04 LTS",
+    "freecad_version": "1.1.3",
+    "occt_version": "7.8.1",
+    "blender_version": "5.1.2",
+    "freecad_appimage_sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+  },
+  "authority_chain": {
+    "master": "FreeCAD/OCCT B-Rep split pieces",
+    "kernel_operation": "BOPTools.SplitAPI.slice(mode=Split)",
+    "split_datum": "X=40 mm",
+    "blender_geometry": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "rectangular prismatic single-solid input",
+    "finite planar split tool face spanning beyond the base Y/Z bounds",
+    "governed world X datum at 40 mm",
+    "FreeCAD BOPTools.SplitAPI.slice with mode Split",
+    "both partition pieces retained as separate authoritative OCCT solids",
+    "R001 100 mm source width split into 40 mm and 60 mm solids",
+    "R002 120 mm source width split into 40 mm and 80 mm solids",
+    "split datum remains anchored while downstream piece rebuilds with source width",
+    "both pieces remain valid single solids with source depth and height preserved",
+    "piece volumes conserve authoritative source volume",
+    "non-intersecting split datum rejected deterministically before kernel invocation",
+    "FCStd persistence with piece-level OLE IDs split datum and CAD authority",
+    "separate STEP export for both R002 split pieces",
+    "typed two-piece Blender display derivative with FCStd/STEP provenance",
+    "Blender save/reopen preserves piece IDs split operation datum hashes and display-only authority"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "base_bbox_mm": [100.0, 50.0, 10.0],
+      "base_volume_mm3": 49999.999999999985,
+      "piece_a_bbox_mm": [40.0, 50.0, 10.0],
+      "piece_a_volume_mm3": 19999.999999999996,
+      "piece_b_bbox_mm": [60.0, 50.0, 10.0],
+      "piece_b_volume_mm3": 30000.0
+    },
+    "R002": {
+      "base_bbox_mm": [120.0, 50.0, 10.0],
+      "base_volume_mm3": 60000.0,
+      "piece_a_bbox_mm": [40.0, 50.0, 10.0],
+      "piece_a_origin_mm": [0.0, 0.0, 0.0],
+      "piece_a_volume_mm3": 19999.999999999996,
+      "piece_b_bbox_mm": [80.0, 50.0, 10.0],
+      "piece_b_origin_mm": [40.0, 0.0, 0.0],
+      "piece_b_volume_mm3": 39999.99999999999
+    }
+  },
+  "artifact_evidence": {
+    "fcstd_sha256": "5672c20705e0c5d34198be37580b3cbe6b9e871d489dd8d3da88f5fa9c85bf7a",
+    "piece_a_step_sha256": "d41eb3ab7d284797055bc80fccf1705fe7233776e0d7ef3288e466b97e86aa3e",
+    "piece_b_step_sha256": "ca87028d142b0b52cf3883e2e83026e4f3a074ed352abb505413f9c24f0b151d",
+    "display_sha256": "55ed3ba1e6bace117fea6477dccd9d7122d9f74a4d3d8759ddb90d6525be20a3"
+  },
+  "expected_failure_cases": {
+    "nonintersecting_split_datum": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_BOUNDED_SPLIT_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "master": "FreeCAD/OCCT B-Rep split pieces",
+    "blender_authority": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "general_split_trim",
+    "arbitrary_surface_split",
+    "trim_surface_editing",
+    "persistent_topological_naming",
+    "production_partition_robustness",
+    "brep_healing_parity",
+    "engineering_approval",
+    "manufacturing_release"
+  ],
+  "invalidation_rule": "Material changes to SplitAPI mode, split tool semantics, datum semantics, source revision dimensions, piece-preservation policy, FreeCAD/OCCT version, Blender version or readback authority require a new receipt.",
+  "authority_note": "This validates a real bounded B-Rep partition preserving both pieces. It does not establish general split/trim or surface trimming, and P0-B remains blocked."
+}

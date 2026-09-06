@@ -1,0 +1,80 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_NATIVE_FEATURE_TREE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "4167b76b5726d589121f28a1a0ffa001756968cf",
+  "tested_pr_merge_commit": "b33ed17c8e952498baa261fa80d6220acbab43de",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Feature Tree",
+    "run_id": 33700142444,
+    "job_id": 100477461585,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04 LTS",
+    "freecad_version": "1.1.3",
+    "blender_version": "5.1.2",
+    "freecad_appimage_sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+  },
+  "authority_chain": {
+    "datum": "FreeCAD PartDesign::Plane",
+    "sketch": "FreeCAD Sketcher::SketchObject",
+    "solid_feature": "FreeCAD PartDesign::Pad",
+    "master_type": "CAD_NATIVE",
+    "blender_geometry": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "native PartDesign datum plane",
+    "Sketcher sketch attached to native datum plane",
+    "explicit coincident horizontal vertical and origin constraints",
+    "width and depth driving dimensional constraints",
+    "fully constrained sketch state",
+    "native PartDesign Pad depending on the sketch",
+    "driving width edit from 80 mm to 100 mm",
+    "native dependency-tree recompute without manual mesh editing",
+    "authoritative single-solid validation before and after edit",
+    "FCStd R001 and R002 persistence",
+    "STEP R001 and R002 export",
+    "OLE datum sketch and feature IDs persist through FCStd reopen",
+    "datum-to-sketch and sketch-to-pad dependency links persist through reopen",
+    "typed R002 tessellated Blender display derivative",
+    "Blender 100x50x10 metric readback",
+    "Blender OLE lineage and FCStd/STEP provenance persistence through save/reopen"
+  ],
+  "feature_tree": [
+    {"ole_id": "OLE_DATUM::BRACKET_SKETCH_PLANE", "type": "PartDesign::Plane"},
+    {"ole_id": "OLE_SKETCH::BRACKET_PROFILE", "type": "Sketcher::SketchObject", "fully_constrained": true},
+    {"ole_id": "OLE_FEATURE::PAD_001", "type": "PartDesign::Pad", "profile_ole_id": "OLE_SKETCH::BRACKET_PROFILE"}
+  ],
+  "driving_constraints": {
+    "width_constraint_id": 9,
+    "depth_constraint_id": 10
+  },
+  "revision_evidence": {
+    "R001": {"bbox_mm": [80.0, 50.0, 10.0], "solid_count": 1, "volume_mm3": 39999.99999999999, "width_datum_mm": 80.0, "depth_datum_mm": 50.0},
+    "R002": {"bbox_mm": [100.0, 50.0, 10.0], "solid_count": 1, "volume_mm3": 49999.999999999985, "width_datum_mm": 100.0, "depth_datum_mm": 50.0}
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_FREECAD_FEATURE_TREE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "master": "FreeCAD PartDesign feature tree",
+    "blender_authority": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "non_claims": [
+    "P0_A_PARAMETRIC_CAD_PASS",
+    "general_feature_tree",
+    "revolve_sweep_loft",
+    "pocket_generalization",
+    "fillet_chamfer_shell_draft",
+    "pattern_mirror",
+    "topological_naming_stability",
+    "assembly_mates",
+    "engineering_approval",
+    "manufacturing_release"
+  ],
+  "invalidation_rule": "Material changes to the native feature-tree probe, datum/sketch/pad dependency semantics, driving-constraint behavior, Blender feature-tree readback, FreeCAD version or Blender version require a new bounded integration receipt.",
+  "authority_note": "This validates one native FreeCAD parametric feature-tree path and Blender readback. It does not establish general CAD feature-tree parity or P0-A PASS."
+}

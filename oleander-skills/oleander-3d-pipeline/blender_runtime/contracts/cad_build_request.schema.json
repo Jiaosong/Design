@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OLEANDER_CAD_BUILD_REQUEST_v0.1",
+  "title": "OLEANDER CAD Build Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "request_id", "ole_id", "revision", "units", "source", "profile", "features"],
+  "properties": {
+    "schema": {"const": "OLEANDER_CAD_BUILD_REQUEST_v0.1"},
+    "request_id": {"type": "string", "minLength": 1},
+    "ole_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "units": {"const": "mm"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solver", "solver_state", "editable_source", "authority"],
+      "properties": {
+        "solver": {"type": "string", "minLength": 1},
+        "solver_state": {"enum": ["OK", "FULLY_CONSTRAINED", "UNDER_CONSTRAINED"]},
+        "editable_source": {"type": "string", "minLength": 1},
+        "authority": {"const": "SOLVED_SKETCH_INTENT"}
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "closed", "points_mm"],
+      "properties": {
+        "kind": {"const": "POLYLINE"},
+        "closed": {"const": true},
+        "points_mm": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "prefixItems": [{"type": "number"}, {"type": "number"}],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["feature_id", "kind", "depth_mm"],
+            "properties": {
+              "feature_id": {"type": "string", "minLength": 1},
+              "kind": {"const": "EXTRUDE"},
+              "depth_mm": {"type": "number", "exclusiveMinimum": 0}
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["feature_id", "kind", "center_mm", "radius_mm", "through_all"],
+            "properties": {
+              "feature_id": {"type": "string", "minLength": 1},
+              "kind": {"const": "THROUGH_HOLE"},
+              "center_mm": {
+                "type": "array",
+                "prefixItems": [{"type": "number"}, {"type": "number"}],
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "radius_mm": {"type": "number", "exclusiveMinimum": 0},
+              "through_all": {"const": true}
+            }
+          }
+        ]
+      }
+    }
+  }
+}

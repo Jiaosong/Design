@@ -1,0 +1,108 @@
+name: OLEANDER Blender Professional FreeCAD Face Tilt
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-face-tilt.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-face-tilt.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-planar-face-tilt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_FACE_TILT_DIR: /tmp/oleander-face-tilt
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-face-tilt-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Tilt selected planar face through BRep ReShape
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_FACE_TILT_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt.py" \
+            2>&1 | tee /tmp/oleander-face-tilt.log
+          grep -F 'OLEANDER_FREECAD_PLANAR_FACE_TILT=' /tmp/oleander-face-tilt.log
+          grep -F '"schema": "OLEANDER_FREECAD_PLANAR_FACE_TILT_v0.1"' /tmp/oleander-face-tilt.log
+          grep -F '"status": "PASS"' /tmp/oleander-face-tilt.log
+          grep -F '"excessive_or_inverting_face_tilt": "PASS"' /tmp/oleander-face-tilt.log
+          grep -F '"axis": "selected top-face center Y axis"' /tmp/oleander-face-tilt.log
+          test -s "${OLEANDER_FACE_TILT_DIR}/oleander_planar_face_tilt.FCStd"
+          test -s "${OLEANDER_FACE_TILT_DIR}/oleander_planar_face_tilt_positive_R002.step"
+          test -s "${OLEANDER_FACE_TILT_DIR}/oleander_planar_face_tilt_negative_R002.step"
+          test -s "${OLEANDER_FACE_TILT_DIR}/oleander_planar_face_tilt_display.json"
+          test -s "${OLEANDER_FACE_TILT_DIR}/oleander_planar_face_tilt_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read tilted derivative in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_tilt_blender_readback.py \
+            2>&1 | tee /tmp/oleander-face-tilt-blender.log
+          grep -F 'OLEANDER_PLANAR_FACE_TILT_BLENDER_READBACK=' /tmp/oleander-face-tilt-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-face-tilt-blender.log
+          grep -F '"master": "FreeCAD/OCCT B-Rep face tilt"' /tmp/oleander-face-tilt-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-face-tilt-blender.log
+
+      - name: Record bounded planar face-tilt evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded FreeCAD Planar Face Tilt'
+            echo '- Authoritative kernel: FreeCAD 1.1.3 / OCCT 7.8.1.'
+            echo '- Selector: unique +Z top planar face; no FaceN persistence.'
+            echo '- Kernel route: TopoShape.replaceShape / BRepTools_ReShape replaces the selected top face and four adjacent side faces.'
+            echo '- Axis: selected top-face center Y axis; bounded signed angles +5 deg / -5 deg.'
+            echo '- Bottom face remains untouched; excessive/inverting tilt is rejected before mutation.'
+            echo '- R001 width 80 mm and R002 width 100 mm both re-resolve selectors and preserve valid single-solid B-Rep output.'
+            echo '- FCStd plus positive/negative STEP artifacts persist; Blender receives only the positive R002 DISPLAY_DERIVATIVE_ONLY result.'
+            echo '- Does NOT prove arbitrary face rotation, arbitrary axis editing, nonplanar face rotation, persistent topological naming or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

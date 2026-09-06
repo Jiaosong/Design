@@ -1,0 +1,119 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_REFERENCE_BOUND_OPERATION",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "4a293f0139d92f77a05172553e334bb88c6e852d",
+  "tested_pr_merge_commit": "02db139aef0da6aec2f829d40d08bfc68631766d",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional Frontier",
+    "run_id": 33823397891,
+    "job_id": 100870897518,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {
+    "freecad": "1.1.3",
+    "freecad_revision": "20260725",
+    "occt": "7.8.1",
+    "blender": "5.1.2"
+  },
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "stable_reference": "OLE_REF::PRIMARY_TOP_FACE",
+    "selector": "SELECTOR::UNIQUE_GLOBAL_ZMAX_PLANAR_POSITIVE_Z",
+    "operation": "OLE_OP::TOP_FACE_CENTER_THROUGH_HOLE",
+    "binding": "stable ref ID -> per-revision semantic re-resolution -> resolved signature -> actual FreeCAD/OCCT BRep cut",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "one stable semantic face reference drives an actual authoritative through-hole BRep operation rather than metadata-only rebinding",
+    "R001 80x50x10 mm resolves the top face at [40,25,10] and applies a 3 mm radius through-hole",
+    "R002 width change to 100 mm changes the resolved descriptor/signature and rebinds the same reference to [50,25,10]",
+    "R003 applies 2 mm fillets to all four vertical source edges, changes topology/signature again, then re-resolves the same reference at [50,25,10] and applies the same operation",
+    "each applied revision remains a valid single solid and removes pi*r^2*height volume within tolerance",
+    "R004 ambiguous top-face resolution returns AMBIGUOUS_HOLD with zero mutation",
+    "R005 missing compatible reference returns MISSING_HOLD with zero mutation",
+    "HOLD cases preserve the last known good semantic signature",
+    "FaceN, EdgeN, VertexN and concrete subshape ordinal persistence are prohibited",
+    "FCStd, R001/R002/R003 STEP and registry JSON persist reference, selector, resolved signature and operation lineage",
+    "Blender creates three display derivatives and preserves ref/selector/operation IDs, signatures, radius, source FCStd hash and DISPLAY_DERIVATIVE_ONLY authority across save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "revision_id": "R001_BASE_80",
+      "resolved_center_mm": [40.0, 25.0, 10.0],
+      "resolved_signature": "776c63aca023096c5aca6d2c5f7cf08e211cea051e23f20a696edeac9da205a1",
+      "source_volume_mm3": 39999.99999999999,
+      "result_volume_mm3": 39717.256661176914,
+      "removed_volume_mm3": 282.7433388230784,
+      "radius_mm": 3.0,
+      "state": "APPLIED"
+    },
+    "R002": {
+      "revision_id": "R002_WIDTH_100",
+      "resolved_center_mm": [50.0, 25.0, 10.0],
+      "resolved_signature": "8888bb3e17fc2bff01a2121fcaffd205847df8c15d99bde40058f22d19cfa65d",
+      "source_volume_mm3": 49999.999999999985,
+      "result_volume_mm3": 49717.256661176914,
+      "removed_volume_mm3": 282.7433388230711,
+      "radius_mm": 3.0,
+      "state": "APPLIED"
+    },
+    "R003": {
+      "revision_id": "R003_VERTICAL_FILLET",
+      "resolved_center_mm": [50.0, 25.0, 10.0],
+      "resolved_signature": "c4595714573fe015c4bc536dd046dcb0535d7b59a4fbb76de686f7ab71607c1f",
+      "source_volume_mm3": 49965.66370614359,
+      "result_volume_mm3": 49682.920367320505,
+      "removed_volume_mm3": 282.74333882308565,
+      "radius_mm": 3.0,
+      "state": "APPLIED"
+    },
+    "R004": {
+      "revision_id": "R004_AMBIGUOUS",
+      "state": "AMBIGUOUS_HOLD",
+      "mutation": "NONE"
+    },
+    "R005": {
+      "revision_id": "R005_MISSING",
+      "state": "MISSING_HOLD",
+      "mutation": "NONE"
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_reference_bound_operation.FCStd", "sha256": "0179a841b34b3d77578dfd6e9e6d3b6aa449a41f24ca59193008260f6afb444e"},
+    "registry": {"path": "oleander_reference_bound_operation_registry.json", "sha256": "2a618904921c5f92c5778dc8a5e67437d36a5d250c1149b0cd46802db25ff973"},
+    "display": {"path": "oleander_reference_bound_operation_display.json", "sha256": "1691b655e39c3631a37116324ccb41b522bde66976814bbefcc25a72c26c6095"},
+    "step_R001": {"path": "oleander_reference_bound_operation_R001.step", "sha256": "48358caa81dc5fe53506c24108eec2da38ac9d82dfcd006f67aaf5476d05d5dc"},
+    "step_R002": {"path": "oleander_reference_bound_operation_R002.step", "sha256": "e239d4901006b77ce605d6a63c1430d784498fbf8a8261f660eadefca4bb009c"},
+    "step_R003": {"path": "oleander_reference_bound_operation_R003.step", "sha256": "0621ed7cc6bca51714d465a86f71986ff531877c366ad4af589e462fd9a3f453"}
+  },
+  "expected_failure_cases": {
+    "ambiguous_reference_blocks_mutation": "PASS",
+    "missing_reference_blocks_mutation": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "blender": "5.1.2",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS",
+    "semantic_binding_reopen": "PASS"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "persistent_topological_naming_parity",
+    "general_face_reference_stability",
+    "edge_reference_stability",
+    "vertex_reference_stability",
+    "nonplanar_semantic_reference_rebind",
+    "automatic_ambiguous_reference_resolution"
+  ],
+  "invalidation_rule": "Invalidate if the stable semantic reference is replaced by concrete subshape ordinals, ambiguous/missing resolution mutates geometry, width/topology revisions stop re-resolving before the BRep operation, source/result volume gates are removed, FreeCAD/OCCT route changes without revalidation, or Blender save/reopen no longer preserves the semantic binding and display-only authority.",
+  "authority_note": "This receipt proves one bounded semantic-reference-bound BRep operation across a dimensional revision and one bounded topology-changing fillet revision, including fail-closed ambiguous/missing resolution. It does not establish persistent topological naming parity or general face/edge/vertex reference stability, and P0-B remains blocked."
+}
