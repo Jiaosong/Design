@@ -175,6 +175,17 @@ jobs:
           set -euo pipefail
           mkdir -p "$OLEANDER_JOB_OUTPUT_DIR"
 
+      - name: Preflight Blender 5.2 producer compatibility
+        if: ${{ steps.job.outputs.run_job == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=("$OLEANDER_SCRIPT_PATH")
+          if [[ -n "$OLEANDER_VALIDATION_SCRIPT_PATH" ]]; then
+            args+=("$OLEANDER_VALIDATION_SCRIPT_PATH")
+          fi
+          python3 90-shared/toolchains/blender-runtime/preflight-blender-5.2-producer.py "${args[@]}"
+
       - name: Install shared Blender runtime libraries
         if: ${{ steps.job.outputs.run_job == 'true' }}
         shell: bash
