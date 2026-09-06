@@ -121,6 +121,50 @@ Return:
 - geometry/form repairs triggered by the review;
 - technical/lifecycle claims still on HOLD.
 
+## Project usage evidence｜C04｜2026-09-07
+
+This Candidate extension now has bounded real-project use in the C04 physical line. The evidence advances project usage only; it does not establish cross-project maturity or final Design KEEP.
+
+### P01｜scene-fit + footfall relation
+
+A real editable project carrier was repaired because local object logic alone did not sufficiently preserve the relation between the intervention, body movement, circulation and scene role.
+
+Observed consequence:
+- `OBJECT / FEATURE` review was insufficient by itself;
+- body/contact and use interpretation must be checked together with the route/scene relation when placement changes how the object is encountered;
+- cosmetic/detail refinement should not precede a material scene/use repair when the latter changes whether the object belongs in the use path.
+
+Bounded extension consequence:
+
+When the physical object's affordance is materially dependent on where/how it is encountered, extend the body/contact check to:
+
+`OBJECT / FEATURE → BODY / CONTACT → PATH / APPROACH → EXISTING SCENE RELATION`.
+
+This does not mean every product needs a route analysis; trigger it only when scene/path materially changes use or interpretation.
+
+### P02｜lean-rest body relation
+
+A real editable railing intervention was repaired around a `LEAN / REST` use identity rather than a generic seat/decorative interpretation. The project carrier keeps body-contact surface, reversible clamp intent, isolation/buffer layer, drainage/cleaning path and independent replacement/service intent, while retaining `CONCEPT / NTS / FIELD OPEN / NOT FOR CONSTRUCTION` and no assumption that the existing railing is verified for added load.
+
+Observed consequence:
+- posture/use identity should be explicit before local form polish when body contact materially governs the object;
+- `LEAN / PERCH / SIT / SUPPORT` are not interchangeable affordance labels;
+- human figures should expose contact/use relation rather than operate as decorative scale figures;
+- an existing substrate/base can support a design relation without becoming verified load/field authority;
+- reversible/serviceable attachment intent remains separate from engineering approval.
+
+Bounded extension consequence:
+
+For body-contact interventions, add an explicit `USE-POSTURE IDENTITY` to the form-role ledger when posture changes contact, force direction, path obstruction or service relation.
+
+### Maturity consequence
+
+Current maturity for these additions:
+
+`PROJECT_USAGE_EVIDENCE / ONE PROJECT FAMILY / REAL EDITABLE REPAIR / CROSS-CONTEXT TEST NEEDED / NO PROMOTION`.
+
+Do not generalize C04 geometry, dimensions, clamp details or site conditions into this Skill. Future materially different product/spatial contexts must confirm or falsify the scene/path and use-posture additions before stronger promotion.
+
 ## Candidate boundary
 
 This extension strengthens form/use honesty and serviceability reasoning. It does not import a universal minimalist aesthetic, ergonomic numbers, Rams-derived style rules, manufacturing feasibility or lifespan claims.
