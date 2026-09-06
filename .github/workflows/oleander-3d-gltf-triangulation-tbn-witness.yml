@@ -1,0 +1,114 @@
+name: OLEANDER 3D glTF Triangulation TBN Witness
+
+on:
+  pull_request:
+    paths:
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/**'
+      - '.github/workflows/oleander-3d-gltf-triangulation-tbn-witness.yml'
+  workflow_dispatch:
+
+jobs:
+  triangulation-tbn:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/browser
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+      - name: Validate scripts
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/build_triangulation_witness.py
+          node --check 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/browser/runtime_check.mjs
+      - name: Install Blender 5.2
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Build triangle-corner source
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/TRI_SOURCE";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-triangulation-tbn-witness/build_triangulation_witness.py \
+            -- --out "$OUT"
+          test -s "$OUT/TRIANGULATION_TBN_WITNESS.blend"
+          test -s "$OUT/TRIANGULATION_TBN_WITNESS.glb"
+          test -s "$OUT/SOURCE_RECEIPT.json"
+      - name: Install pinned Chromium runtime
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json');const t=require('./node_modules/three/package.json');if(p.version!=='1.55.0'||t.version!=='0.179.1')process.exit(2);console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+      - name: Assemble target asset
+        run: |
+          mkdir -p assets
+          cp "$GITHUB_WORKSPACE/out/TRI_SOURCE/TRIANGULATION_TBN_WITNESS.glb" assets/TRIANGULATION_TBN_WITNESS.glb
+      - name: Execute UV-convention and triangulation-sensitivity readback
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4178 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4178/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/TRI_BROWSER" OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/TRI_SOURCE/SOURCE_RECEIPT.json" node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/TRI_BROWSER/TARGET_RUNTIME_RECEIPT.json"
+      - name: Validate resolved UV convention and triangulation shading sensitivity
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/TRI_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['schema']=='oleander.3d.gltf-triangulation-tbn-target.v3'
+          assert r['overallPass'] is True, json.dumps(r,indent=2)
+          assert r['evidenceClass']=='TARGET_RUNTIME_TRIANGULATION_SENSITIVITY_WITH_RESOLVED_UV_CONVENTION'
+          assert r['uvConventionResolved'] is True and r['uvConvention'] in ('IDENTITY','V_FLIP')
+          assert r['semanticCornerParity'] is True and r['sensitivityPreserved'] is True
+          assert r['sourceMaxSensitivityDeg']>1 and r['targetMaxSensitivityDeg']>1
+          assert r['maxSensitivityDeltaDriftDeg']<=.01
+          for c in r['objectChecks'].values():
+              assert c['matchedTriangles']==2 and c['cornerCount']==6
+              assert c['allSemanticCornersPass'] is True and c['allVertexAggregatesPass'] is True
+              for corner in c['cornerChecks']:
+                  assert corner['uv']['pass'] is True
+                  assert corner['semanticPass'] is True
+                  assert corner['errors']['perturbed']['pass'] is True
+          print(json.dumps({
+              'triangulation_tbn':'PASS',
+              'uv_convention':r['uvConvention'],
+              'source_vertex_deltas_deg':r['sourceVertexPerturbedAngleDeltaDeg'],
+              'target_vertex_deltas_deg':r['targetVertexPerturbedAngleDeltaDeg'],
+              'max_delta_drift_deg':r['maxSensitivityDeltaDriftDeg'],
+              'exact_basis_corner_parity':r['exactBasisCornerParity']
+          },indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        working-directory: ${{ github.workspace }}
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > TRIANGULATION_TBN_SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        if: always()
+        with:
+          name: oleander-triangulation-tbn-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_SERVER.log
+            TRIANGULATION_TBN_SHA256SUMS.txt
+            out/TRI_SOURCE/
+            out/TRI_BROWSER/
+          if-no-files-found: warn
+          retention-days: 14

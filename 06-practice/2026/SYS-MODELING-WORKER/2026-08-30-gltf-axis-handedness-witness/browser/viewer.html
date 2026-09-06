@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OLEANDER glTF Axis Witness</title>
+  <style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#202226}canvas{display:block}</style>
+  <script type="importmap">
+  {"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}
+  </script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x202226);
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,0.01,100);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(1); renderer.setSize(innerWidth,innerHeight); renderer.outputColorSpace=THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xffffff,0x30343a,2.1));
+const key=new THREE.DirectionalLight(0xffffff,2.2); key.position.set(4,6,7); scene.add(key);
+const runtime={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},meshCount:0,webgl:{}};
+window.__OLEANDER_AXIS_RUNTIME__=runtime;
+function arr(v){return v.toArray().map(Number)}
+new GLTFLoader().load('./assets/AXIS_HANDEDNESS_WITNESS.glb',gltf=>{
+  scene.add(gltf.scene);
+  gltf.scene.updateMatrixWorld(true);
+  gltf.scene.traverse(o=>{
+    if(!o.isMesh || !o.name.startsWith('WITNESS_')) return;
+    runtime.meshCount++;
+    const box=new THREE.Box3().setFromObject(o);
+    const center=box.getCenter(new THREE.Vector3());
+    const size=box.getSize(new THREE.Vector3());
+    const pos=o.getWorldPosition(new THREE.Vector3());
+    runtime.objects[o.name]={bboxCenter:arr(center),bboxSize:arr(size),worldPosition:arr(pos),material:o.material?.type||null};
+  });
+  const all=new THREE.Box3().setFromObject(gltf.scene); const s=all.getBoundingSphere(new THREE.Sphere());
+  camera.position.copy(s.center).add(new THREE.Vector3(s.radius*1.8,s.radius*1.5,s.radius*1.7)); camera.lookAt(s.center); camera.near=0.01; camera.far=100; camera.updateProjectionMatrix();
+  const gl=renderer.getContext(); runtime.webgl={version:gl.getParameter(gl.VERSION),vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER)};
+  renderer.render(scene,camera); runtime.ready=true;
+},undefined,e=>{runtime.error=String(e?.message||e)});
+</script>
+</body>
+</html>

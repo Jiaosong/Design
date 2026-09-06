@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLEANDER Tangent Basis Witness</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#22252a}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script></head><body>
+<script type="module">
+import * as THREE from 'three'; import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x22252a);
+const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,0.01,100); camera.position.set(0,-3.4,2.7); camera.lookAt(0,0,0);
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true}); renderer.setPixelRatio(1); renderer.setSize(innerWidth,innerHeight); renderer.outputColorSpace=THREE.SRGBColorSpace; document.body.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xffffff,0x30343a,1.4)); const key=new THREE.DirectionalLight(0xffffff,2.6); key.position.set(4,-3,5); scene.add(key);
+const rt={ready:false,error:null,threeRevision:THREE.REVISION,objects:{},meshCount:0,normalMappedMaterialCount:0,webgl:{}}; window.__OLEANDER_TANGENT_RUNTIME__=rt;
+new GLTFLoader().load('./assets/TANGENT_BASIS_WITNESS.glb',gltf=>{
+ scene.add(gltf.scene); gltf.scene.updateMatrixWorld(true);
+ gltf.scene.traverse(o=>{
+   if(!o.isMesh || !['UV_STANDARD','UV_MIRRORED'].includes(o.name)) return;
+   rt.meshCount++;
+   const ta=o.geometry?.attributes?.tangent; const signs={positive:0,negative:0,zero:0}; const values=[];
+   if(ta){ for(let i=0;i<ta.count;i++){const w=ta.getW(i); values.push(w); if(w>0.5)signs.positive++; else if(w<-0.5)signs.negative++; else signs.zero++;} }
+   const mats=Array.isArray(o.material)?o.material:[o.material];
+   const materialReadback=mats.filter(Boolean).map(m=>{
+     if(m.normalMap) rt.normalMappedMaterialCount++;
+     return {type:m.type,normalMap:!!m.normalMap,normalMapName:m.normalMap?.name||null,normalMapColorSpace:m.normalMap?.colorSpace??null,normalScale:m.normalScale?.toArray?.()||null};
+   });
+   rt.objects[o.name]={tangentPresent:!!ta,tangentCount:ta?.count||0,tangentSignCounts:signs,tangentW:values,materialReadback};
+ });
+ const gl=renderer.getContext(); rt.webgl={version:gl.getParameter(gl.VERSION),vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER)};
+ renderer.render(scene,camera); rt.ready=true;
+},undefined,e=>{rt.error=String(e?.message||e)});
+</script></body></html>

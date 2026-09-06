@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+import argparse,hashlib,json,sys
+from pathlib import Path
+import bpy
+from mathutils import Vector
+
+A='TRIANGULATION_A';B='TRIANGULATION_B';IMG='TRI_TBN_NORMAL';MAT='TRI_TBN_MAT'
+UV=[(0,0),(1,0),(1,1),(0,1)]
+VERTS=[(-.82,-.62,-.18),(.82,-.62,.12),(.82,.62,.48),(-.82,.62,-.28)]
+FACES_A=[(0,1,2),(0,2,3)];FACES_B=[(0,1,3),(1,2,3)]
+
+def cli():
+ a=sys.argv;a=a[a.index('--')+1:] if '--' in a else [];p=argparse.ArgumentParser();p.add_argument('--out',required=True);return p.parse_args(a)
+def sha(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for c in iter(lambda:f.read(1<<20),b''):h.update(c)
+ return h.hexdigest()
+def arr(v):return [float(x) for x in v]
+def norm(v):q=Vector(v);q.normalize();return q
+def mapv(v):return Vector((v.x,v.z,-v.y))
+def avg(vs):
+ q=Vector((0,0,0))
+ for v in vs:q+=Vector(v)
+ q/=len(vs);q.normalize();return q
+def angle(a,b):return float(norm(a).angle(norm(b))*180/3.141592653589793)
+def pos_key(v):return ','.join(f'{x:.6f}' for x in v)
+def tri_key(corners):return '|'.join(sorted(pos_key(c['position_target_world']) for c in corners))
+
+def make(name,faces,x):
+ me=bpy.data.meshes.new(name+'_MESH');me.from_pydata(VERTS,[],faces);me.update()
+ for p in me.polygons:p.use_smooth=True
+ uv=me.uv_layers.new(name='UVMap')
+ for poly in me.polygons:
+  for li in poly.loop_indices:uv.data[li].uv=UV[me.loops[li].vertex_index]
+ o=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(o);o.location=(x,0,0);return o
+
+def normal_image(out,q):
+ rgb=[.5*(q[i]+1) for i in range(3)];im=bpy.data.images.new('GEN',width=8,height=8,alpha=False,float_buffer=False);im.colorspace_settings.name='Non-Color';px=[]
+ for _ in range(64):px.extend((*rgb,1.0))
+ im.pixels=px;p=out/'TRI_TBN_NORMAL.png';im.filepath_raw=str(p);im.file_format='PNG';im.save();ext=bpy.data.images.load(str(p),check_existing=False);ext.name=IMG;ext.colorspace_settings.name='Non-Color';return ext,p,rgb
+
+def material(img):
+ m=bpy.data.materials.new(MAT);m.use_nodes=True;nt=m.node_tree;bs=nt.nodes.get('Principled BSDF');bs.inputs['Base Color'].default_value=(.48,.48,.48,1);bs.inputs['Roughness'].default_value=.4;tx=nt.nodes.new('ShaderNodeTexImage');tx.image=img;nm=nt.nodes.new('ShaderNodeNormalMap');nm.space='TANGENT';nt.links.new(tx.outputs['Color'],nm.inputs['Color']);nt.links.new(nm.outputs['Normal'],bs.inputs['Normal']);return m
+
+def contract(o,q):
+ me=o.data;me.calc_tangents(uvmap='UVMap');triangles=[];by_vertex={i:[] for i in range(len(VERTS))}
+ for poly in me.polygons:
+  if len(poly.loop_indices)!=3:raise RuntimeError('explicit triangle required')
+  corners=[]
+  for li in poly.loop_indices:
+   l=me.loops[li];vi=l.vertex_index;t=norm(l.tangent);n=norm(l.normal);w=-1 if l.bitangent_sign<0 else 1;b=norm(n.cross(t))*w;p=norm(t*q.x+b*q.y+n*q.z);world=o.matrix_world@me.vertices[vi].co
+   c={'loop_index':int(li),'vertex':int(vi),'position_target_world':arr(mapv(world)),'uv':arr(me.uv_layers['UVMap'].data[li].uv),'tangent_target_world':arr(norm(mapv(t))),'normal_target_world':arr(norm(mapv(n))),'w':w,'bitangent_target_world':arr(norm(mapv(b))),'perturbed_target_world':arr(norm(mapv(p)))}
+   corners.append(c);by_vertex[vi].append(p)
+  triangles.append({'polygon_index':int(poly.index),'vertex_indices':[int(me.loops[li].vertex_index) for li in poly.loop_indices],'corners':corners,'triangle_key':tri_key(corners)})
+ vertex_perturbed={str(i):arr(norm(mapv(avg(ps)))) for i,ps in by_vertex.items() if ps}
+ return {'loop_count':len(me.loops),'polygon_count':len(me.polygons),'triangles':triangles,'vertex_perturbed_target':vertex_perturbed}
+
+def main():
+ a=cli();out=Path(a.out).resolve();out.mkdir(parents=True,exist_ok=True);bpy.ops.wm.read_factory_settings(use_empty=True);q=norm((.36,.48,.80));img,png,rgb=normal_image(out,q);mat=material(img);oa=make(A,FACES_A,-1.25);ob=make(B,FACES_B,1.25);oa.data.materials.append(mat);ob.data.materials.append(mat);bpy.context.view_layer.update();ca=contract(oa,q);cb=contract(ob,q)
+ deltas={str(i):angle(ca['vertex_perturbed_target'][str(i)],cb['vertex_perturbed_target'][str(i)]) for i in range(4)};max_delta=max(deltas.values())
+ if max_delta<.1:raise RuntimeError(f'witness not discriminative: {deltas}')
+ blend=out/'TRIANGULATION_TBN_WITNESS.blend';bpy.ops.wm.save_as_mainfile(filepath=str(blend));bpy.ops.object.select_all(action='DESELECT');oa.select_set(True);ob.select_set(True);bpy.context.view_layer.objects.active=oa;glb=out/'TRIANGULATION_TBN_WITNESS.glb';bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',use_selection=True,export_yup=True,export_materials='EXPORT',export_tangents=True)
+ rec={'schema':'oleander.3d.gltf-triangulation-tbn-source.v2','blender_version':bpy.app.version_string,'same_vertex_positions':VERTS,'same_vertex_uv':UV,'faces':{A:FACES_A,B:FACES_B},'tangent_space_sample':arr(q),'encoded_normal_rgb':rgb,'normal_texture':png.name,'normal_texture_sha256':sha(png),'asset':glb.name,'asset_bytes':glb.stat().st_size,'asset_sha256':sha(glb),'native_master':blend.name,'objects':{A:ca,B:cb},'source_vertex_perturbed_angle_delta_deg':deltas,'source_max_vertex_perturbed_angle_delta_deg':max_delta,'claim':'triangulation is a shading/bake dependency when a surface is not perfectly planar or tangent frames depend on topology; cross-runtime parity must be tested on aligned triangle corners rather than averages over different sampling domains','evidence_class':'NATIVE_TRIANGLE_CORNER_TBN_SENSITIVITY_PENDING_TARGET_RUNTIME','provenance_note':'v1 compared an average of six Blender face-corner loops with four exported indexed vertices and produced a valid failure that exposed a sampling-domain mismatch; v2 preserves that failure and replaces the aggregate comparison with triangle/corner alignment by world position','holds':['Three triangle-corner target reconstruction','actual pixel shader output parity','production retopo mesh','cross-DCC MikkTSpace parity','Design KEEP']};(out/'SOURCE_RECEIPT.json').write_text(json.dumps(rec,indent=2)+'\n');print(json.dumps(rec,indent=2))
+if __name__=='__main__':main()

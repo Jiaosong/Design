@@ -1,0 +1,35 @@
+{
+  "schema": "oleander.3d.operator-failure-anatomy.v1",
+  "units": "mm",
+  "freecad": {
+    "box": {"length": 40.0, "width": 24.0, "height": 12.0},
+    "fillet_radii": [1.0, 3.0, 5.0, 5.5, 5.9, 6.0, 6.1, 7.5],
+    "thickness_values": [1.0, 4.0, 8.0, 10.0, 11.0, 11.9, 12.0, 12.1, 14.0],
+    "sphere_radius": 10.0,
+    "sphere_offsets": [-2.0, -5.0, -9.0, -9.5, -9.9, -10.0, -10.1, 2.0, 5.0],
+    "tolerance": 0.0001
+  },
+  "blender": {
+    "box": {"length": 40.0, "width": 24.0, "height": 12.0},
+    "bevel_widths": [1.0, 3.0, 5.0, 5.9, 6.1, 8.0],
+    "bevel_segments": 3,
+    "solidify_requested_thickness": 2.0,
+    "solidify_unapplied_scale": [2.0, 1.0, 0.5]
+  },
+  "claim_boundary": {
+    "tested": [
+      "operator parameter-domain sensitivity",
+      "native kernel/modifier execution",
+      "topology and geometry readback",
+      "requested parameter versus realized evaluated geometry",
+      "native save and reopen"
+    ],
+    "holds": [
+      "Rhino native OffsetSrf/FilletSrf/Class-A parity",
+      "manufacturing wall-thickness approval",
+      "arbitrary self-intersection repair",
+      "all B-Rep kernels",
+      "Design KEEP"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+name: OLEANDER 3D Operator Failure Anatomy
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-operator-failure-anatomy.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/**'
+      - 'oleander-skills/oleander-3d-pipeline/3D_RUNTIME_EVIDENCE_MATRIX.md'
+      - 'oleander-skills/oleander-3d-pipeline/PRACTICE_EVIDENCE_MATRIX_20260830.md'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  operator-failure-anatomy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Validate benchmark sources
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_freecad_operator_sweep.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/execute_freecad_operator.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/run_blender_operator_sweep.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/rerender_operator_diagnostics.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/compare_operator_semantics.py
+          python3 -m json.tool 06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy/operator_sweep.json >/dev/null
+      - name: Install FreeCAD 1.1.3 and Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          FC_URL='https://github.com/FreeCAD/FreeCAD/releases/download/1.1.3/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage'
+          FC_SHA='3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/FreeCAD.AppImage "$FC_URL"
+          test "$(sha256sum /tmp/FreeCAD.AppImage | awk '{print $1}')" = "$FC_SHA"
+          chmod +x /tmp/FreeCAD.AppImage; cd /tmp; ./FreeCAD.AppImage --appimage-extract >/dev/null
+          FREECADCMD="$(find /tmp/squashfs-root -type f \( -name 'FreeCADCmd' -o -name 'freecadcmd' \) | head -n 1)"; test -x "$FREECADCMD"; echo "FREECADCMD=$FREECADCMD" >> "$GITHUB_ENV"; "$FREECADCMD" --version | tee "$GITHUB_WORKSPACE/FREECAD_RUNTIME.txt"
+          BL_URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          BL_SHA='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$BL_URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$BL_SHA"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          echo "BLENDER=/tmp/blender-5.2.0-linux-x64/blender" >> "$GITHUB_ENV"
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee "$GITHUB_WORKSPACE/BLENDER_RUNTIME.txt"
+      - name: Execute FreeCAD B-Rep operator sweep and reopen
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy"
+          OUT="$GITHUB_WORKSPACE/out/OPERATOR_FAILURE"; mkdir -p "$OUT"
+          OLEANDER_OUT="$OUT" OLEANDER_CONFIG="$ROOT/operator_sweep.json" "$FREECADCMD" -P "$ROOT" "$ROOT/execute_freecad_operator.py"
+          test -s "$OUT/FREECAD_OPERATOR_FAILURE_ANATOMY.FCStd"
+          test -s "$OUT/FREECAD_OPERATOR_RECEIPT.json"
+      - name: Execute Blender modifier operator sweep and reopen
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy"
+          OUT="$GITHUB_WORKSPACE/out/OPERATOR_FAILURE"
+          "$BLENDER" --background --python-exit-code 8 --python "$ROOT/run_blender_operator_sweep.py" -- --mode build --out "$OUT" --config "$ROOT/operator_sweep.json"
+          "$BLENDER" --background "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend" --python-exit-code 11 --python "$ROOT/rerender_operator_diagnostics.py" -- --out "$OUT"
+          "$BLENDER" --background "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend" --python-exit-code 9 --python "$ROOT/run_blender_operator_sweep.py" -- --mode reopen --out "$OUT" --config "$ROOT/operator_sweep.json"
+          test -s "$OUT/BLENDER_OPERATOR_FAILURE_ANATOMY.blend"
+          test -s "$OUT/BLENDER_OPERATOR_DIAGNOSTIC_READBACK.blend"
+          test -s "$OUT/BLENDER_OPERATOR_RECEIPT.json"
+          test -s "$OUT/BLENDER_REOPEN_RECEIPT.json"
+          test -s "$OUT/BLENDER_OPERATOR_DIAGNOSTIC.png"
+          test -s "$OUT/BLENDER_BEVEL_DIAGNOSTIC.png"
+          test -s "$OUT/BLENDER_SOLIDIFY_DIAGNOSTIC.png"
+      - name: Compare operator semantics
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-operator-failure-anatomy"
+          OUT="$GITHUB_WORKSPACE/out/OPERATOR_FAILURE"
+          python3 "$ROOT/compare_operator_semantics.py" \
+            --freecad "$OUT/FREECAD_OPERATOR_RECEIPT.json" \
+            --blender "$OUT/BLENDER_OPERATOR_RECEIPT.json" \
+            --out "$OUT"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+      - name: Validate bounded operator contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OPERATOR_FAILURE')
+          f=json.loads((out/'FREECAD_OPERATOR_RECEIPT.json').read_text())
+          b=json.loads((out/'BLENDER_OPERATOR_RECEIPT.json').read_text())
+          r=json.loads((out/'BLENDER_REOPEN_RECEIPT.json').read_text())
+          c=json.loads((out/'OPERATOR_COMPARISON_RECEIPT.json').read_text())
+          assert f['overall_pass'] is True, json.dumps(f['contract'],indent=2)
+          assert b['overall_pass'] is True, json.dumps(b['contract'],indent=2)
+          assert r['native_reopen_valid'] is True
+          assert c['overall_pass'] is True, json.dumps(c,indent=2)
+          print(json.dumps({'operator_failure_anatomy':'PASS','observed_boundaries':c['observed_boundaries']},indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        run: |
+          find out/OPERATOR_FAILURE -type f -print0 2>/dev/null | sort -z | xargs -0 sha256sum > OPERATOR_FAILURE_SHA256SUMS.txt || true
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-operator-failure-anatomy-${{ github.run_id }}
+          path: |
+            FREECAD_RUNTIME.txt
+            BLENDER_RUNTIME.txt
+            OPERATOR_FAILURE_SHA256SUMS.txt
+            out/OPERATOR_FAILURE/
+          if-no-files-found: warn
+          retention-days: 14

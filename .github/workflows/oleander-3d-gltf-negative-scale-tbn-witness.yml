@@ -1,0 +1,117 @@
+name: OLEANDER 3D glTF Negative Scale TBN Witness
+
+on:
+  pull_request:
+    paths:
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/**'
+      - '.github/workflows/oleander-3d-gltf-negative-scale-tbn-witness.yml'
+  workflow_dispatch:
+
+jobs:
+  negative-scale-tbn:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/browser
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Validate scripts
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/build_negative_scale_witness.py
+          node --check 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/browser/runtime_check.mjs
+      - name: Install Blender 5.2
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Build negative-scale source
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/NEG_SCALE_SOURCE";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-gltf-negative-scale-tbn-witness/build_negative_scale_witness.py \
+            -- --out "$OUT"
+          test -s "$OUT/NEGATIVE_SCALE_TBN_WITNESS.blend"
+          test -s "$OUT/NEGATIVE_SCALE_TBN_WITNESS.glb"
+          test -s "$OUT/SOURCE_RECEIPT.json"
+      - name: Install pinned Chromium runtime
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json');const t=require('./node_modules/three/package.json');if(p.version!=='1.55.0'||t.version!=='0.179.1')process.exit(2);console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+      - name: Assemble target asset
+        run: |
+          mkdir -p assets
+          cp "$GITHUB_WORKSPACE/out/NEG_SCALE_SOURCE/NEGATIVE_SCALE_TBN_WITNESS.glb" assets/NEGATIVE_SCALE_TBN_WITNESS.glb
+      - name: Execute target-runtime negative-scale readback
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4177 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4177/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER" OLEANDER_SOURCE_RECEIPT="$GITHUB_WORKSPACE/out/NEG_SCALE_SOURCE/SOURCE_RECEIPT.json" node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json"
+      - name: Validate uniform and non-uniform negative-scale TBN plus fragment contract
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/NEG_SCALE_BROWSER/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['overallPass'] is True, json.dumps(r['objectChecks'],indent=2)
+          assert r['evidenceClass']=='TARGET_RUNTIME_NEGATIVE_NONUNIFORM_TBN_PLUS_FRAGMENT_OUTPUT'
+          assert r['numericTransformAwarePass'] is True
+          assert r['fragmentFramebufferPass'] is True
+          assert r['nonUniformNegativeScalePass'] is True
+          assert r['negativeScaleRawReconstructionFailsAsExpected'] is True
+          assert r['negativeScaleTransformAwareReconstructionPasses'] is True
+          assert r['nonUniformRawReconstructionFailsAsExpected'] is True
+          assert r['nonUniformTransformAwareReconstructionPasses'] is True
+          assert r['nonUniformFragmentOutputPasses'] is True
+          assert r['negativeScaleEffectiveTangentW']==-r['negativeScaleExportedTangentW']
+          assert r['nonUniformEffectiveTangentW']==-r['nonUniformExportedTangentW']
+          assert r['nonUniformDirectVsOrthonormalBitangentAngleDeg']>r['nonUniformFixtureDiscriminatorDeg']
+          assert r['comparisonToleranceAuthority'].startswith('TEST_LOCAL_NUMERICAL_FIXTURE_ONLY')
+          for name in ('TBN_POS_SCALE','TBN_NEG_SCALE','TBN_NEG_NONUNIFORM'):
+              f=r['objectChecks'][name]['fragment']
+              assert f['pass'] is True
+              assert f['maxChannelAbsDelta']<=1
+              assert f['directionErrorDeg']<=0.5
+          print(json.dumps({
+              'negative_nonuniform_tbn_fragment':'PASS',
+              'nonuniform_direct_vs_orthonormal_bitangent_angle_deg':r['nonUniformDirectVsOrthonormalBitangentAngleDeg'],
+              'nonuniform_fragment_separation_drift_deg':r['nonUniformFragmentSeparationDriftDeg'],
+              'contract':r['transformAwareContract'],
+              'tolerance_authority':r['comparisonToleranceAuthority']
+          },indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        working-directory: ${{ github.workspace }}
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > NEGATIVE_SCALE_TBN_SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        if: always()
+        with:
+          name: oleander-negative-scale-tbn-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_SERVER.log
+            NEGATIVE_SCALE_TBN_SHA256SUMS.txt
+            out/NEG_SCALE_SOURCE/
+            out/NEG_SCALE_BROWSER/
+          if-no-files-found: warn
+          retention-days: 14

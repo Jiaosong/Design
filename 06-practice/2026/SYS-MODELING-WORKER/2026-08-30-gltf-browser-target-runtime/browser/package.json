@@ -1,0 +1,9 @@
+{
+  "name": "oleander-gltf-browser-target-runtime",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "playwright": "1.55.0",
+    "three": "0.179.1"
+  }
+}

@@ -1,0 +1,142 @@
+name: OLEANDER 3D NURBS vs SubD Same-Source Benchmark
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-nurbs-subd-same-source.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/**'
+      - 'oleander-skills/oleander-3d-pipeline/3D_RUNTIME_EVIDENCE_MATRIX.md'
+      - 'oleander-skills/oleander-3d-pipeline/SKILL.md'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  nurbs-subd-same-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Validate benchmark scripts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/run_freecad_nurbs_revolve.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/execute_freecad_nurbs.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/run_blender_subd_same_source.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/compare_representations.py
+          python3 -m json.tool 06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark/source_controls.json >/dev/null
+      - name: Install FreeCAD 1.1.3 and Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          FC_URL='https://github.com/FreeCAD/FreeCAD/releases/download/1.1.3/FreeCAD_1.1.3-Linux-x86_64-py311.AppImage'
+          FC_SHA='3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/FreeCAD.AppImage "$FC_URL"
+          test "$(sha256sum /tmp/FreeCAD.AppImage | awk '{print $1}')" = "$FC_SHA"
+          chmod +x /tmp/FreeCAD.AppImage; cd /tmp; ./FreeCAD.AppImage --appimage-extract >/dev/null
+          FREECADCMD="$(find /tmp/squashfs-root -type f \( -name 'FreeCADCmd' -o -name 'freecadcmd' \) | head -n 1)"; test -x "$FREECADCMD"; echo "FREECADCMD=$FREECADCMD" >> "$GITHUB_ENV"; "$FREECADCMD" --version | tee "$GITHUB_WORKSPACE/FREECAD_RUNTIME.txt"
+          BL_URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          BL_SHA='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$BL_URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$BL_SHA"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          echo "BLENDER=/tmp/blender-5.2.0-linux-x64/blender" >> "$GITHUB_ENV"
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee "$GITHUB_WORKSPACE/BLENDER_RUNTIME.txt"
+      - name: Execute FreeCAD B-spline revolve and native reopen
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark"
+          OUT="$GITHUB_WORKSPACE/out/NURBS_SUBD"; mkdir -p "$OUT"
+          OLEANDER_MODE=build OLEANDER_OUT="$OUT" OLEANDER_SOURCE="$ROOT/source_controls.json" "$FREECADCMD" -P "$ROOT" "$ROOT/execute_freecad_nurbs.py"
+          OLEANDER_MODE=reopen OLEANDER_OUT="$OUT" OLEANDER_SOURCE="$ROOT/source_controls.json" "$FREECADCMD" -P "$ROOT" "$ROOT/execute_freecad_nurbs.py"
+          test -s "$OUT/FREECAD_NURBS_SAME_SOURCE.FCStd"
+          test -s "$OUT/FREECAD_NURBS_SAME_SOURCE.step"
+          test -s "$OUT/FREECAD_NURBS_EVALUATED.obj"
+          test -s "$OUT/FREECAD_REOPEN_RECEIPT.json"
+      - name: Execute Blender Catmull-Clark SubD and native reopen
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark"
+          OUT="$GITHUB_WORKSPACE/out/NURBS_SUBD"
+          "$BLENDER" --background --python-exit-code 5 --python "$ROOT/run_blender_subd_same_source.py" -- --mode build --out "$OUT" --source "$ROOT/source_controls.json" --freecad-obj "$OUT/FREECAD_NURBS_EVALUATED.obj"
+          "$BLENDER" --background "$OUT/BLENDER_SUBD_SAME_SOURCE.blend" --python-exit-code 5 --python "$ROOT/run_blender_subd_same_source.py" -- --mode reopen --out "$OUT"
+          test -s "$OUT/BLENDER_SUBD_SAME_SOURCE.blend"
+          test -s "$OUT/BLENDER_SUBD_L2.obj"
+          test -s "$OUT/BLENDER_SUBD_L4.obj"
+          test -s "$OUT/BLENDER_REOPEN_RECEIPT.json"
+          test -s "$OUT/BLENDER_SUBD_DIAGNOSTIC.png"
+          test -s "$OUT/FREECAD_NURBS_DIAGNOSTIC.png"
+      - name: Compare evaluated representations
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE/06-practice/2026/SYS-MODELING-WORKER/2026-08-31-nurbs-subd-same-source-benchmark"
+          OUT="$GITHUB_WORKSPACE/out/NURBS_SUBD"
+          python3 "$ROOT/compare_representations.py" \
+            --source "$ROOT/source_controls.json" \
+            --freecad "$OUT/FREECAD_NURBS_EVALUATED.obj" \
+            --subd-l2 "$OUT/BLENDER_SUBD_L2.obj" \
+            --subd-l4 "$OUT/BLENDER_SUBD_L4.obj" \
+            --freecad-receipt "$OUT/FREECAD_BUILD_RECEIPT.json" \
+            --blender-receipt "$OUT/BLENDER_BUILD_RECEIPT.json" \
+            --out "$OUT"
+          git rev-parse HEAD > "$OUT/EXECUTED_CHECKOUT_SHA.txt"
+          if [ -n "${PR_HEAD_SHA:-}" ]; then
+            printf '%s\n' "$PR_HEAD_SHA" > "$OUT/PR_HEAD_SHA.txt"
+          else
+            git rev-parse HEAD > "$OUT/PR_HEAD_SHA.txt"
+          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/NURBS_SUBD')
+          executed=(out/'EXECUTED_CHECKOUT_SHA.txt').read_text().strip()
+          pr_head=(out/'PR_HEAD_SHA.txt').read_text().strip()
+          payload={
+              'schema':'oleander.execution-identity.v1',
+              'executed_checkout_sha':executed,
+              'pr_head_sha':pr_head,
+              'identity_note':'pull_request workflows may execute a synthetic merge ref; executed checkout identity and PR head identity are intentionally recorded separately'
+          }
+          (out/'EXECUTION_IDENTITY.json').write_text(json.dumps(payload,indent=2)+'\n')
+          print(json.dumps(payload,indent=2))
+          PY
+      - name: Validate bounded representation contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/NURBS_SUBD')
+          f=json.loads((out/'FREECAD_REOPEN_RECEIPT.json').read_text())
+          b=json.loads((out/'BLENDER_REOPEN_RECEIPT.json').read_text())
+          c=json.loads((out/'COMPARISON_RECEIPT.json').read_text())
+          i=json.loads((out/'EXECUTION_IDENTITY.json').read_text())
+          assert f['overall_pass'] is True
+          assert f['reopen_contract']['threshold_authority'].startswith('NONE')
+          assert f['reopen_contract']['acceptance_thresholds']=='NOT USED'
+          assert b['native_reopen_valid'] is True
+          assert c['overall_pass'] is True, json.dumps(c,indent=2)
+          assert c['contract']['representations_are_not_numerically_identical'] is True
+          assert c['contract']['subd_sampling_converges'] is True
+          assert c['contract']['control_points_are_not_assumed_surface_points'] is True
+          assert len(i['executed_checkout_sha'])==40 and len(i['pr_head_sha'])==40
+          print(json.dumps({'same_source_cross_representation':'PASS','execution_identity':i,'freecad_reopen_contract':f['reopen_contract'],'metrics':c['metrics']},indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        run: |
+          find out/NURBS_SUBD -type f -print0 2>/dev/null | sort -z | xargs -0 sha256sum > NURBS_SUBD_SHA256SUMS.txt || true
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-nurbs-subd-same-source-${{ github.run_id }}
+          path: |
+            FREECAD_RUNTIME.txt
+            BLENDER_RUNTIME.txt
+            NURBS_SUBD_SHA256SUMS.txt
+            out/NURBS_SUBD/
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,102 @@
+name: OLEANDER 3D Surface Detail Frequency Band
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-surface-detail-frequency-band.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-frequency-band/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  surface-detail-frequency-band:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+
+      - name: Validate benchmark script
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-frequency-band/run_frequency_band_bake.py
+
+      - name: Install Blender 5.2 headless runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+
+      - name: Build macro-meso frequency-band bake
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/SURFACE_DETAIL_FREQUENCY_BAND"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-frequency-band/run_frequency_band_bake.py \
+            -- --mode build --out "$OUT"
+          test -s "$OUT/FREQUENCY_BAND_BAKE.blend"
+          test -s "$OUT/MESO_TANGENT_NORMAL.png"
+          test -s "$OUT/HIGH_MACRO_PLUS_MESO.png"
+          test -s "$OUT/LOW_MACRO_PLAIN.png"
+          test -s "$OUT/LOW_MACRO_PLUS_BAKED_MESO.png"
+          test -s "$OUT/BUILD_RECEIPT.json"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+
+      - name: Reopen native master and external normal
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/SURFACE_DETAIL_FREQUENCY_BAND"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/FREQUENCY_BAND_BAKE.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-frequency-band/run_frequency_band_bake.py \
+            -- --mode reopen --out "$OUT"
+          test -s "$OUT/REOPEN_RECEIPT.json"
+          test -s "$OUT/LOW_BAKED_REOPEN.png"
+
+      - name: Validate representation and visual-delta contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/SURFACE_DETAIL_FREQUENCY_BAND')
+          b=json.loads((out/'BUILD_RECEIPT.json').read_text())
+          r=json.loads((out/'REOPEN_RECEIPT.json').read_text())
+          assert b['representation_contract']['macro'].startswith('real geometry')
+          assert b['bake']['type']=='TANGENT_NORMAL'
+          assert b['bake']['colorspace']=='Non-Color'
+          assert b['low']['uv_layers']==['UVMap']
+          assert b['visual_delta']['baked_reduces_shading_error'] is True
+          assert b['visual_delta']['high_vs_low_baked']['silhouette_iou']>=0.985
+          assert r['native_reopen_match'] is True
+          assert r['material_contract']['image_source']=='FILE'
+          assert r['material_contract']['normal_space']=='TANGENT'
+          print(json.dumps({
+            'frequency_band_bake':'PASS',
+            'silhouette_iou':b['visual_delta']['high_vs_low_baked']['silhouette_iou'],
+            'plain_mae':b['visual_delta']['high_vs_low_plain']['intersection_rgb_mae'],
+            'baked_mae':b['visual_delta']['high_vs_low_baked']['intersection_rgb_mae'],
+            'mae_improvement':b['visual_delta']['mae_improvement']
+          },indent=2))
+          PY
+
+      - name: Hash benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > SURFACE_DETAIL_FREQUENCY_SHA256SUMS.txt || true
+
+      - name: Upload frequency-band evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-surface-detail-frequency-band-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            SURFACE_DETAIL_FREQUENCY_SHA256SUMS.txt
+            out/SURFACE_DETAIL_FREQUENCY_BAND/
+          if-no-files-found: error
+          retention-days: 14

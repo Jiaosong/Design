@@ -1,0 +1,98 @@
+name: OLEANDER 3D Material Nodes Lighting Diagnostic
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-material-nodes-lighting-diagnostic.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-material-nodes-lighting-diagnostic/**'
+      - 'oleander-skills/oleander-3d-pipeline/3D_RUNTIME_EVIDENCE_MATRIX.md'
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  material-nodes-lighting-diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+
+      - name: Validate benchmark script
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-material-nodes-lighting-diagnostic/build_material_lighting_benchmark.py
+
+      - name: Install Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+
+      - name: Execute native Cycles benchmark
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/MATERIAL_NODES_LIGHTING"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-material-nodes-lighting-diagnostic/build_material_lighting_benchmark.py \
+            -- --out "$OUT"
+          test -s "$OUT/RECEIPT.json"
+          test -s "$OUT/MATERIAL_NODES_LIGHTING_DIAGNOSTIC.blend"
+          test -s "$OUT/ROUGHNESS_DATA_SOURCE.png"
+          test "$(find "$OUT/renders" -maxdepth 1 -name '*.png' -type f | wc -l)" -eq 9
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+
+      - name: Validate material and lighting contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('out/MATERIAL_NODES_LIGHTING/RECEIPT.json')
+          r=json.loads(p.read_text())
+          assert r['schema']=='oleander.3d.material-nodes-lighting-diagnostic.v2'
+          assert r['blender_version'].startswith('5.2.0')
+          assert r['engine']=='CYCLES CPU'
+          assert r['overall_pass'] is True, json.dumps(r,indent=2)
+          c=r['contract']
+          assert c['same_texture_source_for_noncolor_and_srgb'] is True
+          assert c['noncolor_label']=='Non-Color'
+          assert c['srgb_label']=='sRGB'
+          assert c['all_nine_renders_present'] is True
+          assert c['rigs_discriminative'] is True
+          assert c['colorspace_interpretation_discriminative'] is True
+          assert c['written_output_saturation_bounded'] is True
+          assert r['max_control_rig_distance']>.05
+          assert r['max_colorspace_effect_distance']>.03
+          assert r['max_written_near_saturation_fraction_ge_0_99']<.08
+          print(json.dumps({
+            'material_nodes_lighting':'PASS',
+            'roughness_texture_sha256':r['roughness_texture']['sha256'],
+            'rig_signature_distance':r['control_rig_signature_distance'],
+            'colorspace_effect_distance':r['roughness_colorspace_effect_distance'],
+            'max_written_near_saturation_fraction_ge_0_99':r['max_written_near_saturation_fraction_ge_0_99'],
+            'native_master_sha256':r['native_master_sha256']
+          },indent=2))
+          PY
+
+      - name: Hash evidence
+        if: always()
+        run: find out/MATERIAL_NODES_LIGHTING -type f -print0 | sort -z | xargs -0 sha256sum > MATERIAL_NODES_LIGHTING_SHA256SUMS.txt || true
+
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        if: always()
+        with:
+          name: oleander-material-nodes-lighting-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            MATERIAL_NODES_LIGHTING_SHA256SUMS.txt
+            out/MATERIAL_NODES_LIGHTING/
+          if-no-files-found: warn
+          retention-days: 14

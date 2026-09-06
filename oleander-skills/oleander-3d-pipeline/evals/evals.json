@@ -12,6 +12,114 @@
       "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
       "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "一个高光产品模型的车身/外壳在 Cycles 里出现连续波浪和局部折痕，但换 HDRI、提高采样和降低 roughness 后截图变得更漂亮。判断应该先改什么，并给出审查载体。",
+      "expected_output": "Route to geometry/evaluated-surface diagnostics before lighting/material fixes; separate source density from evaluated surface quality; require silhouette/section plus neutral diffuse and reflective-grazing carriers; prohibit HDRI, samples or roughness from concealing curvature/normal defects; apply CG-Q01/Q02/Q03 before hero rendering.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Blender 产品渲染看起来像廉价塑料。有人建议把 metallic 调到 0.35、roughness 降到 0.12 再加 bloom。请按 Oleander 3D 质量流程诊断。",
+      "expected_output": "Reject arbitrary premium presets; check real scale, edge/bevel geometry, dielectric-versus-metal material class, IOR/Fresnel/roughness semantics, texture frequency and reflection-card/light-source shape; use diagnostic lighting before bloom or grading; keep shader values as representation parameters unless backed by material evidence.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "室内 Cycles 渲染 64 samples + 强降噪后很干净，但细小磨砂纹理和窄边高光全部糊掉。怎么处理才算质量提升？",
+      "expected_output": "Diagnose high-variance light paths and signal sufficiency; use adaptive sampling/noise policy rather than a universal sample number; compare noisy and denoised outputs; use denoiser auxiliary albedo/normal features when supported; do not allow denoise to erase reviewed microdetail; record sampling and color pipeline.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "同一套 Blender 材质导出 GLB 后在网页实时查看器里颜色、粗糙度和法线感觉都变了。不要只说‘不同渲染器有差异’，给出可复现的排查顺序。",
+      "expected_output": "Check base-color versus numeric texture encoding, metallic-roughness channel semantics, tangent/normal basis, UVs, light/environment/exposure and view transform; lock a calibration scene/material set; read back in the target renderer; declare remaining semantic loss; do not treat export success as appearance equivalence.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "两版 CMF 渲染只改了材质，但 A 用 AgX、B 用 ACES 2.0，而且 exposure 不同。能不能比较哪版材质更高级？",
+      "expected_output": "Fail the comparison lock; require fixed working space, view transform, look/display intent and exposure unless color management itself is the test variable; material preference cannot be inferred from an uncontrolled color-pipeline change; route back to CG-Q04, CG-Q06 and CG-Q08 under a neutral controlled comparison rig.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Rhino 做一个高亮工业产品外壳，设计师已经切成很多小面并不断用 MatchSrf/BlendSrf 修接缝，但 Zebra 仍然有波浪。下一步应该继续加 patch 还是回到哪里？",
+      "expected_output": "Route to KN-METHOD-RHINO-SURFACE-MODELING-001 and EVD-CG-SURFACE-CONTINUITY-001; inspect generating curves, CV count/degree/spacing and mother-surface structure before adding patches; preserve untrimmed surfaces; use Match/Blend only after curve and primary-surface quality are credible; require Zebra/curvature/section readback rather than shaded beauty alone.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Geometry Nodes 里一个散布系统在 Realize Instances + Join Geometry 之后，原来控制材质和尺寸的属性开始错乱。不要直接给节点配方，先按 Oleander 判断。",
+      "expected_output": "Route to the Geometry Nodes knowledge object; identify geometry component, attribute domain, field evaluation context and propagation/capture point; inspect instance-versus-realized state and domain changes before editing the graph; require a minimal reproduction that records named attributes before and after Realize/Join and validates the exposed parameter contract.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "一个扫描高模在 3ds Max 用 ReForm 自动得到全四边面后就准备直接交动画；另一个人建议在 Maya Quad Draw 手工全部重拓扑。哪个方案才符合 Oleander？",
+      "expected_output": "Reject the false binary. Select retopology method from deformation, silhouette, shading, UV/bake and runtime needs; for Max require input preparation and post-retopo Edit Poly/normal checks; for Maya treat Make Live + Quad Draw as manual topology design constrained to a reference; in both cases require silhouette, edge flow, normals, UV/bake and deformation/runtime readback. Auto quads or manual quads alone are not completion evidence.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "SketchUp 建筑模型全部用裸线面直接复制，后期一改墙体就粘连、重复家具也要逐个修改。有人想装更多插件解决。先怎么修？",
+      "expected_output": "Route to SketchUp spatial modeling before plugins; isolate logical geometry into Groups and repeated elements into Components with controlled axes/definitions; use Tags/Outliner for visibility and hierarchy rather than tagging raw geometry as a substitute for grouping; only evaluate an extension after native organization and component workflow are correct.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "Substance Painter 里高低模烘焙后看着正常，但导出到目标引擎后法线接缝和局部阴影出现错误。美术想重新画贴图。按教程学习后的流程怎么查？",
+      "expected_output": "Inspect model preparation, low/high identity, UVs, cage/match, tangent basis and triangulation before repainting; compare Painter and target triangulation/tangent conventions; verify normal orientation and export preset/channel semantics; lock the target runtime preset and read back. Painting over a bake/tangent mismatch is not an acceptable root-cause fix.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "Arnold 产品棚拍有三种噪声：景深颗粒、软阴影颗粒、金属间接高光颗粒。团队准备统一把 Camera AA 拉到 8。应该怎么处理？",
+      "expected_output": "Classify noise before sampling: DOF/motion-blur pressure belongs to Camera AA; soft-shadow/direct-specular variance may require relevant light sampling; indirect specular requires specular-path sampling. Change one relevant family at a time, compare variance and render time, and avoid a universal high-AA preset that wastes rays.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "Houdini 里要做程序化湿痕材质。有人把 SOP 几何属性、Copernicus 纹理生成、Solaris 材质绑定和 Karma 渲染全部混成一个‘材质节点问题’。请拆开正确的生产路线。",
+      "expected_output": "Separate contexts and ownership: SOP creates/transfers geometry attributes; Copernicus/Texture Material Library authors procedural image/texture data when appropriate; Material Library/MaterialX assembles shader/material networks; Solaris/LOP composes USD and binds materials; Karma renders. Record context crossings and attribute/path semantics instead of treating all nodes as one graph.",
+      "files": []
+    },
+    {
+      "id": 15,
+      "prompt": "Fusion 里一个支架现在外形正确，但 30 个尺寸都是独立数字，Sketch 依赖多个后期倒角后的边。客户要求宽度、孔距和壁厚都能做系列变体。你会继续改 Timeline 里的数字，还是先重构？",
+      "expected_output": "Route through KN-THEORY-3D-MODELING-ESSENCE-001 and Fusion CAD evidence. Identify representation, design intent, primary user parameters and constraint graph before editing geometry. Replace fragile incidental face/edge references with stable origin/datum/construction references where practical, express symmetry/concentric/pitch/thickness relations instead of duplicated coordinates, then sweep key parameters and inspect recompute failures. Current appearance is not sufficient evidence of a robust parametric model.",
+      "files": []
+    },
+    {
+      "id": 16,
+      "prompt": "FreeCAD Part Design 的零件能正常显示，但上游长度一改，后面的 Pocket 和 Fillet 经常失效。有人建议把所有 feature 都删掉改成一个最终 STEP，再直接修形。按 Oleander 怎么判断？",
+      "expected_output": "Do not default to either preserving every fragile feature or collapsing immediately to a dumb final solid. Route to modeling essence and FreeCAD evidence; inspect Body feature order, sketch/datum attachment, incidental face/edge references, primary constraints and failure envelope. Rebuild unstable dependencies around stable datums/named intent when long-lived parametric editability is required; use direct/imported-solid repair only when history semantics are intentionally not required. Validate recompute, geometry and STEP/native reopen; a visible solid does not prove robust design intent or manufacturing approval.",
+      "files": []
+    },
+    {
+      "id": 17,
+      "prompt": "Rhino Sweep1 做一根沿空间曲线变化的握把，截面和轨道都看起来很干净，但中段突然扭转。团队准备继续增加截面和 CV 压住扭转。先怎么判断？",
+      "expected_output": "Route to parameterization/moving-frame evidence before adding geometry. Inspect rail/profile directions, section structural correspondence, closed-section seams, moving-frame policy and tangent/up-vector degeneracy; reproduce the twist with a minimal sweep and compare frame choices. Adding profiles/CVs is not a root-cause fix until frame semantics are understood.",
+      "files": []
+    },
+    {
+      "id": 18,
+      "prompt": "一个 CAD 外壳做 Offset/Thickness 时小圆角附近失败。有人建议把几何容差直接放大十倍，或者先把失败处抹平再继续。按 Oleander 怎么查？",
+      "expected_output": "Route to geometric-operator, numerical-tolerance and topological-validity evidence. Inspect local curvature radius, feature size, offset distance, self-intersection, neighboring topology and kernel tolerance before changing tolerance. Distinguish a solver/kernel tolerance from manufacturing wall thickness or clearance; require validity/readback after any repair and record geometry that was intentionally simplified.",
+      "files": []
+    },
+    {
+      "id": 19,
+      "prompt": "Blender 用 Shrinkwrap 把一圈装饰线贴到复杂产品表面，Nearest 看着贴住了，但跨过凹槽时跳到错误面；改成 Project 又有部分点没有贴上。不要直接给一个‘最佳模式’。",
+      "expected_output": "Route to proximity/projection query semantics. Distinguish nearest-surface from directional projection; record source/local axis, target representation, max distance, front/back policy and no-hit/multi-surface behavior. If semantic attachment must stay on one intended surface region, add an explicit selection/mask/reference constraint rather than assuming geometric closeness equals correct attachment.",
+      "files": []
+    },
+    {
+      "id": 20,
+      "prompt": "一个扫描模型要用于三种用途：雕刻清理、游戏实时展示、角色关节变形。团队想统一跑一次 Quad Remesh 后三处共用。按 Oleander 怎么拆？",
+      "expected_output": "Reject one-topology-for-all by default. For sculpt cleanup choose remesh from representation/detail needs; for runtime choose shape-preserving reduction/LOD with protected silhouette/material/UV attributes; for deformation design retopology around joints and deformation flow. Record geometric deviation and attribute loss separately, and keep each derivative linked to the source rather than silently promoting one remesh as universal master.",
+      "files": []
     }
   ]
 }

@@ -1,0 +1,88 @@
+name: OLEANDER 3D Surface Detail Normal Bake
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-surface-detail-normal-bake.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-normal-bake/**'
+      - 'oleander-skills/oleander-3d-pipeline/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  surface-detail-normal-bake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Validate benchmark script
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-normal-bake/run_surface_detail_normal_bake.py
+      - name: Install Blender 5.2 headless runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Build high-low tangent normal bake
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/SURFACE_DETAIL_NORMAL_BAKE"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-normal-bake/run_surface_detail_normal_bake.py \
+            -- --mode build --out "$OUT"
+          test -s "$OUT/SURFACE_DETAIL_NORMAL_BAKE.blend"
+          test -s "$OUT/TANGENT_NORMAL.png"
+          test -s "$OUT/HIGH_REFERENCE.png"
+          test -s "$OUT/LOW_BAKED_NORMAL.png"
+          test -s "$OUT/BUILD_RECEIPT.json"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+      - name: Reopen native master and external normal map
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/SURFACE_DETAIL_NORMAL_BAKE"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/SURFACE_DETAIL_NORMAL_BAKE.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-surface-detail-normal-bake/run_surface_detail_normal_bake.py \
+            -- --mode reopen --out "$OUT"
+          test -s "$OUT/REOPEN_RECEIPT.json"
+          test -s "$OUT/LOW_BAKED_NORMAL_REOPEN.png"
+      - name: Validate bake contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/SURFACE_DETAIL_NORMAL_BAKE')
+          b=json.loads((out/'BUILD_RECEIPT.json').read_text()); r=json.loads((out/'REOPEN_RECEIPT.json').read_text())
+          assert b['bake']['type']=='TANGENT_NORMAL'
+          assert b['bake']['selected_to_active'] is True
+          assert b['bake']['colorspace']=='Non-Color'
+          assert b['low']['uv_layers']==['UVMap']
+          assert b['high_low_ratio']>10
+          assert b['image_stats']['varied_pixel_fraction']>0.05
+          assert b['material_contract']['normal_space']=='TANGENT'
+          assert r['native_reopen_match'] is True
+          assert r['material_contract']['image_colorspace']=='Non-Color'
+          print(json.dumps({'surface_detail_bake':'PASS','highLowRatio':b['high_low_ratio'],'normalVariation':b['image_stats']['varied_pixel_fraction']},indent=2))
+          PY
+      - name: Hash benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > SURFACE_DETAIL_BAKE_SHA256SUMS.txt || true
+      - name: Upload native bake evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-surface-detail-normal-bake-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            SURFACE_DETAIL_BAKE_SHA256SUMS.txt
+            out/SURFACE_DETAIL_NORMAL_BAKE/
+          if-no-files-found: error
+          retention-days: 14

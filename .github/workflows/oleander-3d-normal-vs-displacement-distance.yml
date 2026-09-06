@@ -1,0 +1,75 @@
+name: OLEANDER 3D Normal vs Displacement by View
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-normal-vs-displacement-distance.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-normal-vs-displacement-distance/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  normal-vs-displacement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Validate script
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-normal-vs-displacement-distance/run_normal_vs_displacement.py
+      - name: Install Blender 5.2
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Build and measure view-dependent carriers
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/NORMAL_VS_DISPLACEMENT";mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-normal-vs-displacement-distance/run_normal_vs_displacement.py \
+            -- --mode build --out "$OUT"
+          test -s "$OUT/NORMAL_VS_DISPLACEMENT.blend"
+          test -s "$OUT/VIEW_DISTANCE_TANGENT_NORMAL.png"
+          test -s "$OUT/BUILD_RECEIPT.json"
+          for f in TOP_FAR_VD_HIGH.png TOP_FAR_VD_LOW_NORMAL.png TOP_FAR_VD_DISPLACED.png GRAZE_CLOSE_VD_HIGH.png GRAZE_CLOSE_VD_LOW_NORMAL.png GRAZE_CLOSE_VD_DISPLACED.png; do test -s "$OUT/$f"; done
+      - name: Reopen native master and texture dependency
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/NORMAL_VS_DISPLACEMENT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/NORMAL_VS_DISPLACEMENT.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-normal-vs-displacement-distance/run_normal_vs_displacement.py \
+            -- --mode reopen --out "$OUT"
+          test -s "$OUT/REOPEN_RECEIPT.json"
+      - name: Validate representation discriminator
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          b=json.loads(Path('out/NORMAL_VS_DISPLACEMENT/BUILD_RECEIPT.json').read_text());r=json.loads(Path('out/NORMAL_VS_DISPLACEMENT/REOPEN_RECEIPT.json').read_text())
+          top=b['metrics']['TOP_FAR'];g=b['metrics']['GRAZE_CLOSE']
+          assert top['normal']['silhouette_iou']>=.985 and top['normal']['intersection_rgb_mae']<=.04
+          assert g['displacement']['silhouette_iou']>g['normal']['silhouette_iou']+.002
+          assert b['grazing_silhouette_advantage']>.002
+          assert r['native_reopen_match'] is True
+          print(json.dumps({'normal_vs_displacement':'PASS','top_far':top,'graze_close':g,'grazing_silhouette_advantage':b['grazing_silhouette_advantage'],'polygons':b['polygons']},indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > NORMAL_VS_DISPLACEMENT_SHA256SUMS.txt || true
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-normal-vs-displacement-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            NORMAL_VS_DISPLACEMENT_SHA256SUMS.txt
+            out/NORMAL_VS_DISPLACEMENT/
+          if-no-files-found: error
+          retention-days: 14

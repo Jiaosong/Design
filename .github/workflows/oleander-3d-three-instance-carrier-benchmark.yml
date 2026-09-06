@@ -1,0 +1,70 @@
+name: OLEANDER 3D Three Instance Carrier Benchmark
+
+on:
+  pull_request:
+    paths:
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-three-instance-carrier-benchmark/**'
+      - '.github/workflows/oleander-3d-three-instance-carrier-benchmark.yml'
+  workflow_dispatch:
+
+jobs:
+  three-instance-carriers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-three-instance-carrier-benchmark/browser
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 1
+      - name: Validate runtime script
+        run: node --check runtime_check.mjs
+      - name: Install pinned Chromium runtime
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('./node_modules/playwright/package.json');const t=require('./node_modules/three/package.json');if(p.version!=='1.55.0'||t.version!=='0.179.1')process.exit(2);console.log({playwright:p.version,three:t.version})" | tee "$GITHUB_WORKSPACE/BROWSER_DEPENDENCIES.txt"
+      - name: Execute carrier sensitivity benchmark
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4179 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4179/viewer.html >/dev/null && break; sleep 1; done
+          OLEANDER_OUT="$GITHUB_WORKSPACE/out/THREE_INSTANCE_CARRIER" node runtime_check.mjs
+          test -s "$GITHUB_WORKSPACE/out/THREE_INSTANCE_CARRIER/TARGET_RUNTIME_RECEIPT.json"
+      - name: Validate carrier contract
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('out/THREE_INSTANCE_CARRIER/TARGET_RUNTIME_RECEIPT.json').read_text())
+          assert r['contractPass'] is True, json.dumps(r['byCount'],indent=2)
+          assert r['evidenceClass']=='TARGET_RUNTIME_INSTANCE_CARRIER_SENSITIVITY'
+          for count in (225,900,3600):
+              c=r['byCount'][str(count)]
+              assert c['checks']['pass'] is True
+              assert c['naive']['rendererInfo']['calls']==count
+              assert c['instanced']['rendererInfo']['calls']==1
+              assert c['flattened']['rendererInfo']['calls']==1
+              assert c['explicitCarrierByteRatioFlattenedOverInstanced']>1
+          print(json.dumps({'three_instance_carrier':'PASS','byCount':{k:{'draw_calls':[v['naive']['rendererInfo']['calls'],v['instanced']['rendererInfo']['calls'],v['flattened']['rendererInfo']['calls']],'buffer_ratio_flat_over_inst':v['explicitCarrierByteRatioFlattenedOverInstanced'],'render_ratio_naive_over_inst':v['renderMedianRatios']['naive_over_instanced']} for k,v in r['byCount'].items()}},indent=2))
+          PY
+      - name: Hash evidence
+        if: always()
+        working-directory: ${{ github.workspace }}
+        run: find out -type f -print0 | sort -z | xargs -0 sha256sum > THREE_INSTANCE_CARRIER_SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        if: always()
+        with:
+          name: oleander-three-instance-carrier-${{ github.run_id }}
+          path: |
+            BROWSER_DEPENDENCIES.txt
+            BROWSER_SERVER.log
+            THREE_INSTANCE_CARRIER_SHA256SUMS.txt
+            out/THREE_INSTANCE_CARRIER/
+          if-no-files-found: warn
+          retention-days: 14

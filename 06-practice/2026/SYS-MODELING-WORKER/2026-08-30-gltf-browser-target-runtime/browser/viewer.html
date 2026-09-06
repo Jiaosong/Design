@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OLEANDER GLB Target Runtime</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#25272b}
+    canvas{display:block;width:100%;height:100%}
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./node_modules/three/build/three.module.js",
+      "three/addons/": "./node_modules/three/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x25272b);
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.01, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true});
+renderer.setPixelRatio(1);
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+document.body.appendChild(renderer.domElement);
+
+scene.add(new THREE.HemisphereLight(0xf5f7ff, 0x323944, 2.1));
+const key = new THREE.DirectionalLight(0xffffff, 2.4);
+key.position.set(4,-5,7);
+scene.add(key);
+
+const runtime = {
+  ready:false,
+  error:null,
+  asset:'GN_NATIVE_BENCH.glb',
+  threeRevision:THREE.REVISION,
+  meshCount:0,
+  materialCount:0,
+  positionCount:0,
+  triangleCount:0,
+  bboxMin:null,
+  bboxMax:null,
+  bboxSize:null,
+  nodeNames:[],
+  materialTypes:[],
+  gltfSceneCount:0,
+  webglVersion:null,
+  webglVendor:null,
+  webglRenderer:null
+};
+window.__OLEANDER_RUNTIME__ = runtime;
+
+function finiteArray(v){return v.toArray().map(Number)}
+function fitCamera(box){
+  const sphere = box.getBoundingSphere(new THREE.Sphere());
+  const r = Math.max(sphere.radius, 0.1);
+  camera.position.copy(sphere.center).add(new THREE.Vector3(r*1.5, -r*1.7, r*1.25));
+  camera.lookAt(sphere.center);
+  camera.near = Math.max(r/1000, 0.001);
+  camera.far = r*100;
+  camera.updateProjectionMatrix();
+}
+function collect(root){
+  const mats = new Set();
+  root.traverse(o=>{
+    runtime.nodeNames.push(o.name || o.type);
+    if(!o.isMesh) return;
+    runtime.meshCount += 1;
+    const pos = o.geometry?.attributes?.position;
+    if(pos) runtime.positionCount += pos.count;
+    const index = o.geometry?.index;
+    runtime.triangleCount += index ? index.count/3 : (pos ? pos.count/3 : 0);
+    const arr = Array.isArray(o.material) ? o.material : [o.material];
+    arr.filter(Boolean).forEach(m=>{mats.add(m); runtime.materialTypes.push(m.type)});
+  });
+  runtime.materialCount = mats.size;
+}
+
+new GLTFLoader().load('./assets/GN_NATIVE_BENCH.glb', gltf=>{
+  scene.add(gltf.scene);
+  runtime.gltfSceneCount = gltf.scenes.length;
+  collect(gltf.scene);
+  const box = new THREE.Box3().setFromObject(gltf.scene);
+  const size = box.getSize(new THREE.Vector3());
+  runtime.bboxMin = finiteArray(box.min);
+  runtime.bboxMax = finiteArray(box.max);
+  runtime.bboxSize = finiteArray(size);
+  fitCamera(box);
+  const gl = renderer.getContext();
+  runtime.webglVersion = gl.getParameter(gl.VERSION);
+  runtime.webglVendor = gl.getParameter(gl.VENDOR);
+  runtime.webglRenderer = gl.getParameter(gl.RENDERER);
+  renderer.render(scene,camera);
+  runtime.ready = true;
+}, undefined, err=>{
+  runtime.error = String(err?.message || err);
+});
+
+addEventListener('resize',()=>{
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);
+  if(runtime.ready) renderer.render(scene,camera);
+});
+</script>
+</body>
+</html>

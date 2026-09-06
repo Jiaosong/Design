@@ -1,0 +1,144 @@
+name: OLEANDER 3D Geometry Nodes Native Benchmark
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-geometry-nodes-native-benchmark.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/**'
+      - 'oleander-skills/oleander-3d-pipeline/**'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  geometry-nodes-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+
+      - name: Validate benchmark scripts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/bake_evaluated_geometry_to_glb.py
+
+      - name: Install headless graphics runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee "$GITHUB_WORKSPACE/BLENDER_RUNTIME.txt"
+          sha256sum /tmp/blender.tar.xz > "$GITHUB_WORKSPACE/BLENDER_DISTRIBUTION_SHA256.txt"
+
+      - name: Execute Preserve Instances native build
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/PRESERVE_INSTANCES"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode build --realize 0 --out "$OUT"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+
+      - name: Bake Preserve Instances evaluated geometry to GLB
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/PRESERVE_INSTANCES"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/bake_evaluated_geometry_to_glb.py \
+            -- --out "$OUT"
+
+      - name: Reopen Preserve Instances native master and GLB
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/PRESERVE_INSTANCES"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode reopen --realize 0 --out "$OUT"
+
+      - name: Execute Realize Instances native build
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/REALIZE_INSTANCES"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode build --realize 1 --out "$OUT"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+
+      - name: Bake Realize Instances evaluated geometry to GLB
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/REALIZE_INSTANCES"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/bake_evaluated_geometry_to_glb.py \
+            -- --out "$OUT"
+
+      - name: Reopen Realize Instances native master and GLB
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/REALIZE_INSTANCES"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$OUT/GN_NATIVE_BENCH.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-30-geometry-nodes-native-benchmark/run_geometry_nodes_native_benchmark.py \
+            -- --mode reopen --realize 1 --out "$OUT"
+
+      - name: Validate A/B receipts and semantic boundary
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out')
+          receipts={}
+          for state, realize in [('PRESERVE_INSTANCES',False),('REALIZE_INSTANCES',True)]:
+              b=json.loads((root/state/'BUILD_RECEIPT.json').read_text())
+              x=json.loads((root/state/'EXPORT_BAKE_RECEIPT.json').read_text())
+              r=json.loads((root/state/'REOPEN_RECEIPT.json').read_text())
+              assert b['realize_instances_policy'] is realize
+              assert r['realize_instances_policy'] is realize
+              assert r['native_reopen_match'] is True
+              assert b['node_contract']['instance_on_points_count']==1
+              assert b['node_contract']['store_named_attribute_count']==1
+              assert b['node_contract']['realize_instances_count']==(1 if realize else 0)
+              assert b['evaluated']['named_attribute']['present'] is True
+              assert x['baked_vertices']>0 and x['baked_polygons']>0 and x['glb_bytes']>1024
+              assert r['glb_roundtrip']['geometry_nodes_modifier_preserved'] is False
+              assert r['glb_roundtrip']['vertices']>0 and r['glb_roundtrip']['polygons']>0
+              receipts[state]={'build':b,'export_bake':x,'reopen':r}
+          summary={
+              'schema':'oleander.3d.geometry-nodes-ab-summary.v1',
+              'states':list(receipts),
+              'evidence':'NATIVE_BUILD_REOPEN_PLUS_EXPLICIT_EVALUATED_BAKE_PLUS_GLB_DCC_ROUNDTRIP',
+              'finding':'Instance policy is explicit in the native GN graph. The initial direct glTF export from an empty-source GN carrier produced no primitives; explicit evaluated-mesh bake is therefore part of the exchange contract. GLB preserves the baked result geometry but not the Geometry Nodes dependency graph.',
+              'promotion_scope':'bounded GN fields/attributes/instances/native-reopen/export-bake semantics only',
+              'holds':['browser/engine target runtime','performance profiling','Design KEEP']
+          }
+          (root/'GN_AB_SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Hash complete benchmark evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          find out -type f -print0 | sort -z | xargs -0 sha256sum > GN_BENCHMARK_SHA256SUMS.txt || true
+
+      - name: Upload Geometry Nodes native evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-geometry-nodes-native-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            BLENDER_DISTRIBUTION_SHA256.txt
+            GN_BENCHMARK_SHA256SUMS.txt
+            out/
+          if-no-files-found: error
+          retention-days: 14
