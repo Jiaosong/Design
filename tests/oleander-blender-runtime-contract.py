@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+import importlib.util
 import json
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,6 +10,7 @@ DOC = ROOT / "00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.md"
 ACTIVATE = ROOT / "tools/oleander-runtime/activate-blender.sh"
 WRAPPER = ROOT / "tools/oleander-runtime/blender.sh"
 ENSURE = ROOT / "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh"
+PREFLIGHT = ROOT / "90-shared/toolchains/blender-runtime/preflight-blender-5.2-producer.py"
 RUNNER = ROOT / ".github/workflows/oleander-shared-blender-runner.yml"
 
 m = json.loads(REGISTRY.read_text())
@@ -56,6 +59,8 @@ for token in [
     "workflow_call:",
     "OLEANDER_JOB_OUTPUT_DIR",
     "90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh",
+    "90-shared/toolchains/blender-runtime/preflight-blender-5.2-producer.py",
+    "Preflight Blender 5.2 producer compatibility",
     "--python-exit-code",
 ]:
     assert token in runner, f"shared runner missing {token}"
@@ -71,4 +76,61 @@ for token in [
 ]:
     assert token in doc, f"runtime documentation missing boundary: {token}"
 
+assert PREFLIGHT.is_file(), "missing Blender 5.2 producer preflight helper"
+spec = importlib.util.spec_from_file_location("oleander_blender_52_preflight", PREFLIGHT)
+assert spec is not None and spec.loader is not None
+preflight_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(preflight_module)
+
+
+def expect_rejected(path: Path, expected_fragment: str) -> None:
+    try:
+        preflight_module.preflight(path)
+    except preflight_module.PreflightError as exc:
+        assert expected_fragment in str(exc), str(exc)
+    else:
+        raise AssertionError(f"preflight should reject {path}")
+
+
+with tempfile.TemporaryDirectory(prefix="oleander-blender-preflight-") as tmp_raw:
+    tmp = Path(tmp_raw)
+
+    safe = tmp / "safe.py"
+    safe.write_text(
+        "import bpy\n"
+        "bpy.ops.wm.read_factory_settings(use_empty=True)\n"
+        "scene = bpy.context.scene\n"
+        "scene.render.engine = 'BLENDER_EEVEE'\n"
+        "scene.world = bpy.data.worlds.new('OLEANDER_PREVIEW_WORLD')\n"
+        "scene.world.color = (0.1, 0.1, 0.1)\n",
+        encoding="utf-8",
+    )
+    validator = tmp / "validator.py"
+    validator.write_text("value = 1\nassert value == 1\n", encoding="utf-8")
+    preflight_module.preflight(safe, validator)
+
+    stale_eevee = tmp / "stale_eevee.py"
+    stale_eevee.write_text(
+        "import bpy\n"
+        "scene = bpy.context.scene\n"
+        "scene.render.engine = 'BLENDER_EEVEE_NEXT'\n",
+        encoding="utf-8",
+    )
+    expect_rejected(stale_eevee, "BLENDER_EEVEE_NEXT")
+
+    empty_world = tmp / "empty_world.py"
+    empty_world.write_text(
+        "import bpy\n"
+        "bpy.ops.wm.read_factory_settings(use_empty=True)\n"
+        "scene = bpy.context.scene\n"
+        "scene.world.color = (0.1, 0.1, 0.1)\n",
+        encoding="utf-8",
+    )
+    expect_rejected(empty_world, "without explicitly creating/binding a World")
+
+    bad_syntax = tmp / "bad_syntax.py"
+    bad_syntax.write_text("def broken(:\n    pass\n", encoding="utf-8")
+    expect_rejected(bad_syntax, "syntax failure")
+
+print("OLEANDER Blender 5.2 producer preflight regression: PASS")
 print("OLEANDER Blender shared-runtime contract: PASS")
