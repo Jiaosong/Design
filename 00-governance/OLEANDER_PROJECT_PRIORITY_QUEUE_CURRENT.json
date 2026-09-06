@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.4",
+  "schema_version": "2.5",
   "status": "CURRENT_PRIORITY_QUEUE",
   "active_limit": 3,
   "authority": "GOVERNANCE_ONLY_MAY_REORDER_AFTER_PROJECT_CURRENT_READBACK_OR_USER_EXPLICIT_OVERRIDE",
@@ -19,7 +19,7 @@
       "current_owner_scope": "COMPATIBILITY/LIVE-FRONTIER FIELD FOR PRJ-C04-DIGITAL-INTERACTION WEB ONLY; NOT THE OWNER OF THE WHOLE PROJECT AGGREGATE",
       "state": "ACTIVE",
       "current_native_master": "WEB OBJECT ONLY: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; EVERY OTHER C04 WORK OBJECT MUST RESOLVE ITS OWN CURRENT_NATIVE_MASTER BEFORE MATERIAL ACTION",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / mergeable_state=unstable / head f408c2f3fd5b0700a90f9a91dc37996788fb8e73 / 117 commits / fresh 2026-09-06 readback",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / mergeable_state=unstable / head 61f014d6428d005274dfc836f8c2cce815a5801c / 118 commits / fresh 2026-09-06 readback",
       "next_owner": "VALIDATION",
       "next_owner_scope": "LIVE_WEB_OBJECT_ONLY; OTHER CHILD WORK OBJECTS RESOLVE THEIR OWN NEXT_OWNER",
       "whole_project_authority": [
@@ -41,7 +41,7 @@
         {
           "workstream_id": "ACTIVE-3-WEB",
           "state": "ACTIVE_REPAIR",
-          "current_gap": "PR #465 fresh head f408c2f3fd5b0700a90f9a91dc37996788fb8e73 is OPEN/UNMERGED/mergeable=true/unstable with 117 commits. AI Governance Evals run 33999864455 PASS; C04 Web Static Integrity run 33999864456 FAIL; Project Anti-Pollution Gate run 33999864463 FAIL. Fresh-head failure root cause is not reasserted from an older head without exact job/artifact readback. No Design KEEP or formal handoff is justified."
+          "current_gap": "PR #465 fresh head 61f014d6428d005274dfc836f8c2cce815a5801c is OPEN/UNMERGED/mergeable=true/unstable with 118 commits. AI Governance Evals run 34015212630 PASS; C04 Web Static Integrity run 34015212633 FAIL because Chromium presentation readback failed while repo-local dependency integrity passed; Project Anti-Pollution Gate run 34015212614 FAIL at Validate project-wide anti-pollution contract. Fresh-head report-level failure causes have not been independently read back, so older-head causes remain regression context only. No Design KEEP or formal handoff is justified."
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
@@ -197,8 +197,8 @@
       "job_local_blender_materialization_state": "RETURNED_MACHINE / DESCRIPTOR_RETIRED_DISABLED",
       "production_stall": null,
       "next_action": "VALIDATION performs actual source-vs-new-preview fidelity readback for 云水倚; only a closing verdict advances this sequential model cursor. PRESENTATION continues the same PR #465 image-carrier/Anti-Pollution repair frontier and does not consume 云水倚 yet. DESIGN selects another non-colliding whole-project native asset. GOVERNANCE keeps Queue/Control Card/frontiers current.",
-      "updated_at": "2026-09-06T13:02:00+08:00",
-      "source_of_queue_decision": "Fresh 2026-09-06 readback: PR #465 is OPEN/UNMERGED/mergeable=true/unstable at head f408c2f3fd5b0700a90f9a91dc37996788fb8e73 with 117 commits. Exact-head AI Governance Evals run 33999864455 PASS; C04 Web Static Integrity run 33999864456 FAIL; Project Anti-Pollution Gate run 33999864463 FAIL. Older-head browser root-cause details are retained only as regression context until fresh-head job/artifact readback confirms them. 云水倚 machine return remains not independent source-fidelity closure, so its Validation cursor still does not advance on machine evidence alone."
+      "updated_at": "2026-09-06T16:03:40+08:00",
+      "source_of_queue_decision": "Fresh 2026-09-06 exact-head readback: PR #465 is OPEN/UNMERGED/mergeable=true/unstable at head 61f014d6428d005274dfc836f8c2cce815a5801c with 118 commits. AI Governance Evals run 34015212630 PASS; C04 Web Static Integrity run 34015212633 FAIL with Chromium presentation readback FAIL and repo-local dependency integrity PASS; Project Anti-Pollution Gate run 34015212614 FAIL at Validate project-wide anti-pollution contract. Older-head root-cause details remain regression context until exact-head report/log readback confirms them. 云水倚 machine return remains not independent source-fidelity closure."
     },
     {
       "priority": 2,
