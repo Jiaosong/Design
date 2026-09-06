@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f2efe7}.paper{fill:#fbfaf5;stroke:#c9c8bf;stroke-width:1.2}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}
+.m1{fill:#d8ded8}.m2{fill:#c8d2cb}.river{fill:#79a498}.glass{fill:#edf1ed}
+.line{stroke:#17332c;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.thin{stroke:#87928d;stroke-width:1.1;fill:none}.dash{stroke:#548b7e;stroke-width:1.6;fill:none;stroke-dasharray:7 7}
+.t1{font:700 40px 'Noto Serif CJK SC','Songti SC',serif}.t2{font:700 22px 'Noto Serif CJK SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.txt{font:400 14px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="58" class="xs qing">J02 / BOAT · WATER-SCALE EXPERIENCE CARRIER / CURRENT REPAIR</text>
+<text x="70" y="108" class="t1 ink">水面段不“讲景点”，只帮人把两岸关系看清楚</text>
+<text x="70" y="146" class="txt muted">Visitor-facing low-attention carrier：连续看、比较、听、记住一个方向。深读退出游船段。</text>
+<text x="70" y="178" class="xs seal">DESIGN PROTOTYPE / NTS / NO LIVE SERVICE CLAIM / FIELD OPEN / PHONE-DOWN FIRST</text>
+<line x1="70" y1="205" x2="1530" y2="205" class="thin"/>
+<text x="70" y="244" class="xs qing">01 / VISITOR-FACING VIEW STRIP</text>
+<g transform="translate(70 268)">
+  <rect width="1460" height="410" rx="22" class="paper"/>
+  <rect x="24" y="24" width="1412" height="250" rx="16" class="glass"/>
+  <path d="M24 151C180 52 312 68 432 132C542 191 650 159 760 91C890 11 1030 49 1170 126C1268 179 1354 165 1436 116V274H24Z" class="m2"/>
+  <path d="M24 197C185 111 328 129 462 192C579 247 710 191 842 125C982 55 1108 86 1237 150C1310 186 1373 184 1436 161V274H24Z" class="m1"/>
+  <rect x="24" y="220" width="1412" height="54" class="river"/>
+  <path d="M709 236h110l-18 18h-75z" fill="#f2efe7" stroke="#17332c" stroke-width="1.7"/>
+  <path d="M743 220h45l12 16h-69z" fill="#f2efe7" stroke="#17332c" stroke-width="1.7"/>
+  <circle cx="763" cy="213" r="8" class="line"/><path d="M763 221v20" class="line"/>
+  <path d="M763 211L390 104" class="dash"/><path d="M773 212L1112 92" class="dash"/>
+  <text x="44" y="54" class="xs qing">LOOK ACROSS / 看两岸，不找“下一关”</text>
+  <text x="44" y="80" class="sm muted">远近、开合、高低、连续变化，本身就是内容。</text>
+  <g transform="translate(36 306)">
+    <text class="xs seal">LOOK</text><text y="30" class="t3 ink">看两岸怎样一起变化</text>
+    <text x="335" class="xs seal">COMPARE</text><text x="335" y="30" class="t3 ink">哪一侧更近 / 更开 / 更高</text>
+    <text x="715" class="xs seal">LISTEN</text><text x="715" y="30" class="t3 ink">先听水、风、船体，再决定要不要看屏幕</text>
+    <text x="1150" class="xs seal">REMEMBER</text><text x="1150" y="30" class="t3 ink">只留一个方向或画面</text>
+  </g>
+  <line x1="36" y1="362" x2="1424" y2="362" class="thin"/>
+  <text x="36" y="390" class="sm muted">手机默认 LIGHT / OFF。没有扫码、连续弹卡、13 点进度或任务式导航。</text>
+</g>
+<text x="70" y="730" class="xs qing">02 / CURRENTIZATION — PRESERVE THE MATURE LOGIC, CHANGE THE CARRIER</text>
+<g transform="translate(70 754)">
+  <rect width="700" height="146" rx="16" class="paper"/>
+  <text x="24" y="32" class="xs seal">PRESERVED</text>
+  <text x="24" y="62" class="t3 ink">Landscape → Direction → Light content → Deep read later</text>
+  <text x="24" y="94" class="sm muted">保留原 v1.0 的注意力顺序和 LOOK / COMPARE / LISTEN / FRAME / REMEMBER。</text>
+  <text x="24" y="121" class="sm muted">深读仍留给步行、停留或旅后；不恢复景点列表。</text>
+</g>
+<g transform="translate(800 754)">
+  <rect width="730" height="146" rx="16" class="paper"/>
+  <text x="24" y="32" class="xs seal">MATERIAL DELTA</text>
+  <text x="24" y="62" class="t3 ink">从“解释体验的板”转成“游客真正看得到的低注意力视野条”</text>
+  <text x="24" y="94" class="sm muted">信息附着在观看动作，而不是另起 dashboard；第一视觉仍由水面与两岸承担。</text>
+  <text x="24" y="121" class="sm seal">未增加任何航线、班次、停靠、时长或开放状态事实。</text>
+</g>
+<text x="70" y="948" class="sm muted">Attack test：若第一眼像船上景点列表、数字导览 dashboard、扫码打卡、连续卡片、13 点任务进度，或文字比山水更抢注意，则 FAIL。实际航线、班次、停靠、时长、开放状态由当前官方/现场信息决定。</text>
+</svg>

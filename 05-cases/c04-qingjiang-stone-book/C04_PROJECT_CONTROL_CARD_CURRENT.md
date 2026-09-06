@@ -52,8 +52,9 @@ Current asset classes include:
 - `STATE`: ACTIVE_REPAIR
 - `SCOPE`: real Qingjiang, journey, App/Game Map, selected Physical, Brand, Memory/IP, Return, analysis, methods, technical proof and cross-media motion.
 - `LOCK`: real Qingjiang landscape > grey model; R06 experience remains frozen/no-reopen.
+- `LATEST_MATERIAL_DELTA`: PR #465 head `2cdca227...` contains a real editable `return_service_closure_current.svg` redesign, reframing Return around journey-first redundancy rather than phone dependence.
 - `OPEN_GAP`: finished-output whole-project visual readback and cross-media quality remain open; journey/system/analysis/diagram/motion coverage is incomplete or uneven.
-- `NEXT`: execute the highest-value legal D asset delta—finished pixels, journey/system/analysis diagram, storyboard/keyframe or other required native visual—and perform finished-pixel/frame readback.
+- `NEXT`: continue the highest-value legal D asset delta—finished pixels, journey/system/analysis diagram, storyboard/keyframe or other required native visual—and perform finished-pixel/frame readback.
 
 ### ACTIVE 3｜Web
 - `STATE`: ACTIVE_REPAIR
@@ -61,11 +62,11 @@ Current asset classes include:
 - `CURRENT_OWNER_FOR_THIS_OBJECT`: PRESENTATION
 - `NEXT_OWNER_FOR_THIS_OBJECT`: VALIDATION
 - `CURRENT_NATIVE_MASTER_ON_MAIN`: NONE for Web v1.12 exact path.
-- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `61fc66656045381dce634166a8faccceb6b84ba0` / 108 commits / fresh readback `mergeable=true`.
-- `LATEST_MATERIAL_DELTA`: PRESENTATION added R06 authority carrier chunk 1/6 on the live producer branch.
+- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `ecc86f485563e8d447f85e060ed998085b459fb9` / 112 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
 - `CHECK_STATE`: AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL.
-- `OPEN_GAP`: complete browser-stable exact Source-Authority image binding, close Anti-Pollution, rerun Chromium 1920/1366/390, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
-- `NEXT`: continue through the same PR #465 producer frontier and repair the actual failing carrier/check state. A Web runner WAIT must not block other C04 assets or other projects.
+- `CHROMIUM_FAILURE`: exact-head run `33956831680` still fails Chromium presentation readback while repo-local dependency integrity passes. Fresh browser evidence artifact `9966638701` exists. Its report-level root cause was not independently read back in this governance pass, so the previous two-image-carrier diagnosis remains regression context only and is not asserted as the current-head cause.
+- `OPEN_GAP`: replace/fix the failing image carrier using the same Source Authority, close Anti-Pollution, rerun Chromium 1920/1366/390, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
+- `NEXT`: continue through the same PR #465 producer frontier. A Web runner WAIT must not block other C04 assets or other projects.
 
 ### ACTIVE 4｜Physical / Product / Detail
 - `STATE`: ACTIVE_REPAIR
@@ -76,25 +77,30 @@ Current asset classes include:
 - `THIRD_CHILD_PERSISTENCE`: canonical Drive persistence PASS with SHA256 `368c2ca776a6b16d7cd3a32d1fd766e60d8d9fc5b1a511f4cb069abf6eae7388`; persistence/identity PASS only, not fidelity/Design KEEP.
 
 #### Returned model lifecycle alignment
-- `PRODUCTION_REOPEN`: RETURNED for all three.
-- `VALIDATION_CURRENT`: 云水倚 / `REVISE_RETURNED_TO_DESIGN`.
-- `INDEPENDENT_FIDELITY`: actual ODB-02 source imagery vs current v003 rebuild preview readback completed for 云水倚; verdict = REVISE.
-- `INDEPENDENT_DESIGN_VERDICT`: `REVISE_BOUNDED_FIDELITY_NOT_DESIGN_KEEP`.
-- `PRESENTATION_CURRENT`: none; 云水倚 is not ready for Presentation.
+- `PRODUCTION_REOPEN`: RETURNED for all original three rebuilds.
+- `VALIDATION_CURRENT`: 云水倚 / `RETURNED_MACHINE_AWAITING_INDEPENDENT_FIDELITY_RETEST`.
+- `INDEPENDENT_FIDELITY`: prior source-vs-v003 preview verdict = REVISE. The repaired v003 machine return now exists, but its **new returned preview has not yet received the independent source-fidelity readback**.
+- `INDEPENDENT_DESIGN_VERDICT`: prior `REVISE_BOUNDED_FIDELITY_NOT_DESIGN_KEEP` remains in force until the new preview is actually inspected.
+- `PRESENTATION_CURRENT`: none; 云水倚 is still not Presentation-ready.
 - `PRESENTATION_READY`: none yet.
-- `CURSOR_ADVANCE`: 云水倚 must be repaired in the same logical editable model object, reopened, re-read against source, and receive a closing Validation verdict + typed handoff before Validation advances to 流体座椅人体工.
-- `RULE`: production reopen validator ≠ terminal Validation; `.blend` persistence ≠ Design KEEP.
+- `CURSOR_ADVANCE`: actual ODB-02/Fidelity-Brief readback of the new returned preview + closing Validation verdict + typed handoff is required before Validation advances to 流体座椅人体工.
+- `RULE`: production reopen validator ≠ terminal Validation; `.blend` persistence/machine return ≠ Design KEEP.
 
-#### 云水倚｜Independent fidelity return
+#### 云水倚｜Repair execution and machine return
 - `MANIFEST_OBJECT_ID`: `C04_YUNSHUIYI_REBUILD_MASTER_v003`.
 - `SOURCE_AUTHORITY`: ODB-02 source-bound imagery + `C04｜云水倚｜Design Fidelity Brief R01｜FOR VALIDATION`.
-- `CURRENT_NATIVE_MASTER`: Google Drive `云水倚/C04_YUNSHUIYI_REBUILD_MASTER_v003.blend`.
-- `PASS_OBSERVED`: first-read identity remains recognizable; five timber/back slat structure survives; fold-down seat survives; railing context survives; human contact proxy is present.
-- `REVISE_OBSERVED`: source-defining diagonal support arm is not sufficiently preserved/readable in the current preview; paired hinge/pivot hardware and railing mount/clamp architecture are not sufficiently preserved/readable; relation-reveal components do not yet read as the source relation; material-zone shift must be rechecked for perceptual-role drift after geometry repair.
-- `TYPED_RETURN`: `VALIDATION → DESIGN / REVISE` on the same logical object.
-- `DESIGN_REPAIR`: restore or make clearly readable the diagonal support arm, paired hinge/pivot hardware, railing mount/clamp relation and bilateral side-support architecture; keep relation-reveal components separately addressable; then native reopen + source-fidelity visual retest. Recheck material zoning after geometry relation repair.
-- `RESIDUAL_HOLD`: `DESIGN_ESTIMATE / FIELD_OPEN / ENGINEERING OPEN / MANUFACTURING OPEN / SITE-FIT OPEN / FIELD PASS=NONE`.
-- `NON_PROMOTION`: this review is visual/source fidelity only; it is not engineering, field, manufacturing or final Design KEEP approval.
+- `SOURCE_REQUIRED_RELATIONS`: bilateral side rails; five timber back slats; fold-down padded seat; paired hinge/pivot hardware; diagonal support arms; railing mount/clamp relation.
+- `PRIOR_REVISE`: previous preview did not make diagonal support, hinge/pivot and mount/clamp relations sufficiently readable; material zoning required recheck after geometry repair.
+- `DESIGN_REPAIR`: producer now creates separately addressable bilateral side architecture, `DIAGONAL_SUPPORT_ARM_L/R`, `HINGE_PIVOT_L/R`, `RAILING_MOUNT_CLAMP_L/R`, five independent back slats, fold-down seat and body-contact zone. Validator was strengthened to require these parts and preserve `DESIGN_KEEP_CLAIM=False`.
+- `MACHINE_REPAIR_1`: run `33954211110` exposed `BLENDER_EEVEE_NEXT` incompatibility in Blender 5.2; producer was minimally repaired to the runtime-supported `BLENDER_EEVEE`.
+- `MACHINE_REPAIR_2`: run `33954334471` exposed `scene.world=None` after empty factory startup; producer was minimally repaired to create/assign an explicit World.
+- `MACHINE_RETURN`: run `33954476037` / #46 = SUCCESS for producer + native reopen + artifact identity + upload.
+- `RETURNED_ARTIFACT`: `9965907493` / 434318 bytes / `sha256:46ad5e7c5620fd9f0257193aac5627872c0a00b4e9f7504226b50f571b938f4d`.
+- `MACHINE_DESCRIPTOR`: retired to supported non-running state `DISABLED` after the successful return; this prevents accidental repeated machine execution and does not mean the project/Validation owner is disabled.
+- `TYPED_RETURN`: `DESIGN / SHARED MACHINE EXECUTION → VALIDATION` on the same logical v003 object.
+- `VALIDATION_NEXT`: inspect the **new returned preview** against ODB-02/Fidelity Brief; verify that the source-defining diagonal supports, paired hinge/pivot hardware, railing mount/clamp and bilateral support relation are visually legible, not merely present in the object graph; then recheck material zoning.
+- `RESIDUAL_HOLD`: `INDEPENDENT FIDELITY RETEST OPEN / DESIGN_ESTIMATE / FIELD_OPEN / ENGINEERING OPEN / MANUFACTURING OPEN / SITE-FIT OPEN / FIELD PASS=NONE`.
+- `NON_PROMOTION`: native reopen/machine SUCCESS is not source-fidelity closure, engineering/field/manufacturing approval or final Design KEEP.
 
 #### Model 4 / Model 5 audit scope
 - `AUDIT`: RETURNED / COMPLETE_FOR_CURRENT_EVIDENCE.
@@ -108,7 +114,7 @@ The nine audited source identities still route first to the medium their current
 #### Active-4 coverage still open
 Physical P01–P09 selection, required native 3D, interaction/behavior flow, body/use relation, plan/section/axon/node, detail/constructability proof, CMF/material, maintenance and open-field boundaries remain eligible Active-4 work. If a Current design object lacks a necessary editable 3D master, model it after the future-3D gate is satisfied. If the required truth is 2D/diagram/technical/vector, produce that carrier instead.
 
-- `NEXT`: DESIGN repairs 云水倚 on the same editable master and returns it to VALIDATION; while that object executes/waits, DESIGN simultaneously executes another highest-value eligible missing Active-4 or whole-project native asset that does not collide with another owner. VALIDATION may work other legal ready objects/projects but does not advance this sequential model cursor until 云水倚 closes.
+- `NEXT`: VALIDATION consumes the new 云水倚 returned preview. DESIGN does not keep mutating that object unless Validation returns REVISE again; DESIGN selects another non-colliding whole-project native asset in parallel.
 
 ### ACTIVE 5｜F — Final Integration
 - `STATE`: ACTIVE_CONSUMER / CLOSURE_WAITING_UPSTREAM
@@ -141,25 +147,25 @@ Required native output is decided **before** tool selection. A source archive do
 ## 4｜Whole-project immediate priorities
 
 1. **Asset coverage:** keep C04 in active production; select and execute missing/weak required native assets across all workstreams rather than waiting on one queue.
-2. **Web:** continue PR #465 from head `61fc6665...`; finish exact Source carrier, repair Anti-Pollution and Chromium, then finished-pixel review/formal handoff.
-3. **Active 4 / 云水倚:** execute the returned fidelity REVISE on the same editable native master; reopen/retest before advancing the model-validation cursor.
+2. **Active 4 / 云水倚:** VALIDATION performs actual new-preview source-fidelity readback; only a closing verdict advances the model-validation cursor.
+3. **Web:** continue PR #465 from head `2cdca227...`; repair the two failing Source image carriers + Anti-Pollution, rerun Chromium, then finished-pixel review/formal handoff.
 4. **B:** reduce the 27-page source-recovery backlog and attach/produce the required editorial/analysis assets for recovered pages.
-5. **D:** execute a highest-value finished-output / journey / system / analysis / motion asset and real readback.
+5. **D:** continue real finished-output / journey / system / analysis / motion assets and readback; the Return SVG delta is real but not whole-D closure.
 6. **F:** integrate each closed upstream asset continuously into Web/PDF/boards/film.
 
 ## 5｜Known boundaries / holds
 
 - `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
-- Web v1.12 is not merged to main; current producer remains PR #465.
+- Web v1.12 is not merged to main; current producer remains PR #465 at `2cdca227...`, currently `mergeable=false`.
 - PR #465 current checks still include Chromium FAIL and Project Anti-Pollution FAIL; do not infer Design/browser PASS from the passing governance/dependency checks.
 - 27 protected PAGE identities remain source-recovery open.
-- 云水倚 is REVISE-returned to DESIGN, not Presentation-ready.
+- 云水倚 repaired native machine return exists, but the new returned preview remains **independent-fidelity OPEN** and is not Presentation-ready.
 - The nine audited archive candidates remain non-3D-first for current evidence; this does not block other future native-3D Work Objects.
 - Missing Source Authority may HOLD a specific asset, but it must not stop unrelated eligible asset production.
 - Design KEEP / engineering approval / field approval remain separate from artifact existence, CI, persistence and runtime success.
 
 ## 6｜Readback provenance
 
-Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, live PR #465 readback, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, ODB-02 source-bound imagery, the 云水倚 Fidelity Brief, returned v003 Blender manifest/preview/reopen evidence, and actual source-vs-preview visual readback.
+Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, fresh PR #465 readback, current Actions run states, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, ODB-02 source-bound imagery, the 云水倚 Fidelity Brief, prior v003 source-fidelity verdict, repaired producer/validator commits, successful shared-Blender machine return and remote Queue readback.
 
-`UPDATED_AT`: 2026-09-05T12:16+08:00
+`UPDATED_AT`: 2026-09-05T17:04+08:00
