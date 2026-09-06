@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">R06 身体支持技术关系</title>
+<desc id="desc">可编辑概念技术图，依次检查使用关系、排水与边缘、连接与维护；NTS，不声明现场尺寸、结构计算或施工结论。</desc>
+<defs><style>
+.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#68706C}.water{stroke:#2E7F86}.seal{fill:#985448}.line{fill:none;stroke:#17201E;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#71807B;stroke-width:1.3;stroke-linecap:round}.ghost{fill:none;stroke:#A5B0AA;stroke-width:1.2;stroke-dasharray:6 7}.route{fill:none;stroke:#2E7F86;stroke-width:4;stroke-linecap:round}.surface{fill:#DDE2DB}.surface2{fill:#C6D0C7}.paper{fill:#F7F5EE}.dark{fill:#0D2429}
+</style><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#2E7F86"/></marker></defs>
+<rect width="1600" height="1000" fill="#ECEDE7"/>
+<g class="sans"><text x="72" y="68" font-size="14" font-weight="700" letter-spacing="3" fill="#2E7F86">R06 / TECHNICAL RELATION</text><text x="72" y="122" class="serif ink" font-size="42" font-weight="700">技术层只回答：它怎样被使用、排水、连接和维护。</text><text x="72" y="158" class="muted" font-size="16">当前为概念深化图；几何关系可讨论，现场尺寸、结构计算、基础与施工做法仍需后续专业校核。</text></g>
+<line x1="72" y1="194" x2="1528" y2="194" stroke="#C9D0CA"/>
+
+<g transform="translate(72 238)">
+  <g>
+    <rect width="680" height="318" rx="3" class="paper"/>
+    <text x="24" y="34" class="sans" font-size="12" font-weight="700" letter-spacing="2.2" fill="#2E7F86">01 / USE RELATION</text>
+    <text x="24" y="72" class="serif ink" font-size="27" font-weight="700">短倚靠，不把路径变成停留场</text>
+    <text x="24" y="104" class="sans" font-size="11" font-weight="700" letter-spacing="1.1" fill="#985448">WALK → FATIGUE → STOP → LEAN → LOOK → CONTINUE / RETURN</text>
+    <path d="M34 232 C158 205 270 242 382 212 S555 186 646 202" class="thin" opacity=".65"/>
+    <path d="M42 258 H638" class="route"/>
+    <path d="M420 209 H574" class="line" stroke-width="7"/>
+    <path d="M442 211 l-24 47 M552 211 l24 47" class="line"/>
+    <g transform="translate(486 135)" class="line"><circle cx="0" cy="0" r="12"/><path d="M0 14l18 60m-8-37l42 9m-34 28l-13 50m13-50l39 35"/></g>
+    <path d="M582 143 C620 132 646 128 662 129" class="ghost"/>
+    <text x="608" y="120" class="sans muted" font-size="11">看向河谷</text>
+    <path d="M310 266H404" class="thin" marker-end="url(#arrow)"/><text x="300" y="289" class="sans muted" font-size="11">连续通过带保持完整</text>
+    <text x="24" y="292" class="sans muted" font-size="12">判断重点：人能靠一下，但对象不应把人群、视线或回程路径截断。</text>
+  </g>
+
+  <g transform="translate(704)">
+    <rect width="824" height="318" rx="3" class="paper"/>
+    <text x="24" y="34" class="sans" font-size="12" font-weight="700" letter-spacing="2.2" fill="#2E7F86">02 / EDGE + DRAINAGE</text>
+    <text x="24" y="72" class="serif ink" font-size="27" font-weight="700">雨水先离开接触面，再离开连接区</text>
+    <path d="M62 212 H742" class="line"/>
+    <path d="M104 186 H452 L470 198 H690" class="line" stroke-width="7"/>
+    <path d="M452 186 L452 236" class="thin"/><path d="M470 198 L470 236" class="thin"/>
+    <path d="M446 128 L458 174 M490 128 L476 186" class="water" fill="none" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M542 170 q38 18 76 0" class="water" fill="none" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="114" y="218" width="556" height="18" class="surface2"/>
+    <rect x="170" y="236" width="440" height="28" class="surface"/>
+    <circle cx="460" cy="227" r="7" fill="#985448"/>
+    <path d="M460 234v37" class="ghost"/><text x="478" y="260" class="sans muted" font-size="11">排水缝 / 边缘脱离区</text>
+    <text x="24" y="292" class="sans muted" font-size="12">判断重点：接触面不形成积水；边缘、缝隙与下部连接区必须能被检查和清理。</text>
+  </g>
+
+  <g transform="translate(0 350)">
+    <rect width="1456" height="306" rx="3" class="paper"/>
+    <text x="24" y="34" class="sans" font-size="12" font-weight="700" letter-spacing="2.2" fill="#985448">03 / CONNECTION + MAINTENANCE</text>
+    <text x="24" y="72" class="serif ink" font-size="27" font-weight="700">让可替换部分先被拆下，连接区始终可达</text>
+    <g transform="translate(76 118)">
+      <path d="M0 16H272" class="line" stroke-width="12"/>
+      <text x="0" y="58" class="sans muted" font-size="12">A · 可替换接触层</text>
+    </g>
+    <g transform="translate(390 132)">
+      <path d="M0 16H270" class="line" stroke-width="7"/>
+      <path d="M26 18l-22 58 M238 18l22 58" class="line"/>
+      <text x="0" y="92" class="sans muted" font-size="12">B · 主支撑体</text>
+    </g>
+    <g transform="translate(724 118)">
+      <rect x="18" y="8" width="270" height="34" fill="none" stroke="#17201E" stroke-width="2.4"/>
+      <circle cx="72" cy="25" r="7" fill="none" stroke="#985448" stroke-width="2"/><circle cx="236" cy="25" r="7" fill="none" stroke="#985448" stroke-width="2"/>
+      <text x="18" y="78" class="sans muted" font-size="12">C · 可达连接区</text>
+    </g>
+    <g transform="translate(1076 106)">
+      <path d="M0 124H256" class="line"/>
+      <path d="M52 124V44H206V124" class="line"/>
+      <path d="M82 72h94" class="thin" marker-end="url(#arrow)"/>
+      <circle cx="54" cy="44" r="9" fill="none" stroke="#985448" stroke-width="2"/>
+      <text x="0" y="166" class="sans muted" font-size="12">D · 检查 / 拆换动作</text>
+    </g>
+    <path d="M338 160h32 M678 160h28 M1032 160h28" class="thin" marker-end="url(#arrow)"/>
+    <text x="24" y="270" class="sans muted" font-size="12">判断重点：触面、支撑体、连接区和检查动作分层表达；正式规格、紧固方式与基础必须在专业校核后确定。</text>
+  </g>
+</g>
+
+<g transform="translate(72 922)" class="sans"><line x1="0" y1="0" x2="1456" y2="0" stroke="#C9D0CA"/><text y="34" font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2.1">BOUNDARY</text><text x="104" y="34" font-size="13" fill="#5F6662">CONCEPT DETAIL · NTS · 现场尺寸 / 结构 / 基础 / 安全与施工做法待专业验证</text><text x="1456" y="34" text-anchor="end" font-size="11" fill="#7E8782">USE · DRAIN · CONNECT · MAINTAIN</text></g>
+</svg>

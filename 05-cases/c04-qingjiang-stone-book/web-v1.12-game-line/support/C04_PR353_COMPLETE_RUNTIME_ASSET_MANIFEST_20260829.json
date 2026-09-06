@@ -1,0 +1,161 @@
+{
+  "record_type": "PRESENTATION_COMPLETE_RUNTIME_ASSET_MANIFEST",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "producer_frontier": "PR #353 / agent/c04-web-v1-12-game-line-20260822",
+  "observed_at": "2026-08-29T07:39:53+08:00",
+  "knowledge_read_state": "CURRENT + DEFAULT; SUPPORT only where Current source location is insufficient; no Legacy/K06/Snapshot authority",
+  "method": "source-read index.html + app.js on the current PR frontier; deduplicate every literal assets/* runtime reference; compare against current branch asset tree and existing source-resolution receipts",
+  "material_delta": "Previous C04_WEB_v1_12_R2_STATIC_READBACK explicitly marked its verified_missing_runtime_samples as non-complete. This record closes that inventory ambiguity for the current index.html + app.js source by enumerating all 16 unique literal runtime asset references.",
+  "unique_runtime_asset_count": 16,
+  "runtime_assets": [
+    {
+      "runtime_path": "assets/hero_qingjiang.jpg",
+      "role": "Hero / original Qingjiang landscape / supplement source",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_NOT_BOUND",
+      "source_authority": "QJ-D v1.1 / 01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_file_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "runtime_sha256": "0a0b7d367aa1af2c45fb1bc9b87445312bd4cbfb4b02aef0e36b9cdc763afb94"
+    },
+    {
+      "runtime_path": "assets/route03_locked_current.svg",
+      "role": "Current route relation",
+      "binding_state": "BOUND_IN_PR",
+      "source_authority": "ROUTE-03 locked current package"
+    },
+    {
+      "runtime_path": "assets/r06_qingjiang.jpg",
+      "role": "R06 landscape-first scene / source constraint",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_NOT_BOUND",
+      "source_authority": "QJ-D v1.1 / 02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_file_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "runtime_sha256": "4019b174755e81c370dcf5bd8968ac995ed3a5d3c15edd0431fe50b1f963ba83",
+      "truth_boundary": "KEEP WITH HOLD / FIELD OPEN"
+    },
+    {
+      "runtime_path": "assets/r13_passage_sequence.png",
+      "role": "R13 passage sequence",
+      "binding_state": "RUNTIME_DERIVATIVE_READY_NOT_BOUND",
+      "source_authority": "QJ-D v1.1 / QJD_V11_04_R13_FOUR_FRAME_1920x1080.png",
+      "source_file_id": "1EHXruXgv1EIU4HGpLsRqU7ciGWLG2NEf",
+      "source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "runtime_sha256": "45fb5824ad7d88dad34b363288608248885311eae987511bc3e46838c6934ef2",
+      "truth_boundary": "REMOTE SPATIAL CONCEPT / NOT SITE PHOTO"
+    },
+    {
+      "runtime_path": "assets/app_mybook.png",
+      "role": "CH11 MY BOOK / digital memory hero",
+      "binding_state": "SOURCE_BYTES_HOLD",
+      "source_authority": "Current approved App v1.6 MY BOOK source pixels required",
+      "canonical_source_filename": "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png",
+      "locator_readback": "Exact filename and APP_V1_6_MY_BOOK Drive searches returned no source bytes in this run",
+      "forbidden_substitutes": ["v3 MY BOOK capture", "downsampled embed", "old Web capture", "redraw", "AI substitute"]
+    },
+    {
+      "runtime_path": "assets/memory_journal_crop.png",
+      "role": "M01 清江旅记 / paper memory hero",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Asset Atlas M01 = KEEP_MEMORY_HERO / MAIN_REQUIRED",
+      "locator_readback": "Exact runtime filename Drive search returned no standalone file; broader 清江旅记 search returned Current/support documents but no content-verified standalone image bytes",
+      "next_action": "locate exact authorized image or Current carrier child; no crop/reconstruction until source bytes and crop authority are explicit"
+    },
+    {
+      "runtime_path": "assets/fluid_rest_object.png",
+      "role": "Physical / Fluid Rest 3D object",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Asset Atlas P03/P04 = COMPETE_CONDITIONAL / PROCESS_SUPPORT, not automatic MAIN selection",
+      "next_action": "resolve exact object/version identity before binding; do not promote a HOLD/competing physical candidate by presentation convenience"
+    },
+    {
+      "runtime_path": "assets/fluid_v26_body_posture.png",
+      "role": "Physical body-posture support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Physical/body evidence support only until exact asset/version readback",
+      "next_action": "locate exact v26 source bytes and preserve body/geometry truth boundary"
+    },
+    {
+      "runtime_path": "assets/fluid_v26_transverse.svg",
+      "role": "Fluid Rest transverse section support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Physical/body technical support only",
+      "locator_readback": "Exact filename Drive search returned no result in this run",
+      "next_action": "locate exact editable SVG/current technical carrier; technical dimensions remain VALIDATION-owned"
+    },
+    {
+      "runtime_path": "assets/culture_journey.png",
+      "role": "Brand + journey visual support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Brand remains landscape-subordinate and cannot gain route/site authority",
+      "next_action": "locate exact Current visual carrier and verify it is not a legacy/superseded board capture"
+    },
+    {
+      "runtime_path": "assets/technical_focus_v2.svg",
+      "role": "Technical relation overview / AI+3D readback support",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "Technical Focus v2 support proof; technical proof does not replace design identity",
+      "locator_readback": "Exact filename Drive search returned no result in this run",
+      "next_action": "resolve exact editable SVG/current technical source before binding"
+    },
+    {
+      "runtime_path": "assets/technical_focus_crop.svg",
+      "role": "Cross-river technical relation crop",
+      "binding_state": "SOURCE_AND_CROP_AUTHORITY_OPEN",
+      "current_concept_authority": "Technical support proof",
+      "next_action": "resolve parent source plus explicit crop identity; do not create a new crop from visual convenience"
+    },
+    {
+      "runtime_path": "assets/r06_general_assembly_v11.svg",
+      "role": "R06 general assembly / drawing proof",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "R06 experience FINISHED/FROZEN; technical proof may clarify without reopening experience design",
+      "locator_readback": "Exact filename and broad R06 GENERAL ASSEMBLY Drive search did not locate a content-verified standalone SVG in this run",
+      "next_action": "locate exact v1.1 editable assembly source; no redraw from screenshots"
+    },
+    {
+      "runtime_path": "assets/r06_detail_atlas_v11.svg",
+      "role": "R06 detail atlas / maintenance proof",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "R06 technical support; FIELD/engineering open",
+      "next_action": "locate exact v1.1 editable detail source; dimensions/engineering remain VALIDATION boundary"
+    },
+    {
+      "runtime_path": "assets/r06_technical.png",
+      "role": "R06 spatial technical proof",
+      "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
+      "current_concept_authority": "R06 technical/model support only",
+      "next_action": "locate exact Current technical image identity; do not substitute model/AI/old screenshot"
+    },
+    {
+      "runtime_path": "assets/return_qingjiang.jpg",
+      "role": "Final Return landscape carrier",
+      "binding_state": "SOURCE_IDENTITY_AND_BYTES_HOLD",
+      "current_concept_authority": "J05 Return_Retreat = KEEP / MAIN_CANDIDATE; CH09 Return = LANDSCAPE / SIGNAGE / PAPER / HUMAN / DIGITAL redundancy",
+      "next_action": "locate and content-read exact authorized Return visual source",
+      "forbidden_substitutes": ["Hero", "R13", "generic Qingjiang photo", "old Web screenshot", "AI image"]
+    }
+  ],
+  "closure_summary": {
+    "bound_in_pr": 1,
+    "runtime_derivative_ready_not_bound": 3,
+    "source_bytes_or_identity_hold": 2,
+    "exact_source_locator_or_crop_authority_open": 10,
+    "missing_asset_count_expected_before_binding": 15,
+    "static_gate": "BLOCKED"
+  },
+  "a_b": {
+    "A_reject": "continue using the prior 5-file verified_missing_runtime_samples as though it were the complete runtime set",
+    "B_keep": "lock the complete 16-reference current-source manifest, preserve per-asset authority state, and close bindings one by one without substitute assets"
+  },
+  "readback": "index.html and app.js current PR source both read; supplement introduces no additional unique runtime asset beyond the 16-item set. No browser/finished-pixel PASS claimed because 15 runtime files remain absent from the PR tree.",
+  "boundary": [
+    "COMPLETE REFERENCE INVENTORY != ASSET INTEGRITY PASS",
+    "ROLE RESOLVED != SOURCE BYTES RESOLVED",
+    "SOURCE BYTES RESOLVED != RUNTIME BOUND",
+    "RUNTIME BOUND != DESIGN KEEP",
+    "FIELD / ENGINEERING / ACCESSIBILITY REMAIN OPEN"
+  ],
+  "knowledge_write": "PROJECT SUPPORT EVIDENCE ONLY; no Notion Current Rule migration or relation closure",
+  "handoff_state": "NOT READY FOR VALIDATION; PRESENTATION RETAINS OWNER UNTIL missing_asset_count=0 and current static asset gate passes"
+}
