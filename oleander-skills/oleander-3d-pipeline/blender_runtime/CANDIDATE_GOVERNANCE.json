@@ -6,7 +6,7 @@
     "candidate_branch": "feat/oleander-blender-runtime-workbench",
     "main_is_only_installed_current": true,
     "candidate_may_not_self_promote": true,
-    "promotion_state": "BOUNDED_ABSORPTION_APPROVED_PENDING_MERGE"
+    "promotion_state": "BOUNDED_ABSORPTION_COMPLETED_CURRENT_WITH_BLOCKED_PARITY_GATES"
   },
   "anti_pollution_rules": {
     "no_new_parallel_current": true,
@@ -212,11 +212,14 @@
     ]
   },
   "bounded_absorption_plan": {
-    "state": "APPROVED_PENDING_MERGE",
+    "state": "ABSORBED_INTO_MAIN",
     "decision_authority": "USER_EXPLICIT_MERGE_AUTHORIZATION_2026-09-07",
     "decision_scope": "BOUNDED_ABSORPTION_INTO_EXISTING_OLEANDER_3D_PIPELINE_CURRENT",
     "decision_does_not_enable_default_environment": true,
     "decision_does_not_promote_p0_b": true,
+    "merge_commit": "38ebb651cf2ceda01d94c34cc6ec13be039886e1",
+    "post_merge_push_workflows_total": 23,
+    "post_merge_push_workflows_success": 23,
     "purpose": "Allow the mature Candidate implementation to be absorbed under the existing oleander-3d-pipeline Skill without converting bounded professional evidence into general CAD parity.",
     "absorb_into_existing_owner_only": "oleander-skills/oleander-3d-pipeline",
     "eligible_for_bounded_absorption": [
@@ -277,7 +280,7 @@
     "observation_is_advisory": true,
     "observation_scope": "POST_AUTHORIZATION_CURRENT_HEAD_REGRESSION_GREEN",
     "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
-    "rule": "User-authorized bounded absorption head df674fa8 is synchronized to main 85176cfd at 539 ahead / 0 behind and passed all five current-head regressions: Anti-Pollution 34139960526, AI Governance 34139960656, Runtime Static 34139960561, Blender Runtime 5.2 LTS 34139960609, Professional Frontier 5.2 LTS 34139960628. Authorization permits merge into the existing oleander-3d-pipeline Current only; default-environment eligibility remains false and P0-B/general parity remain blocked. Ready-for-review boundary regressions are the final pre-merge machine gate."
+    "rule": "Historical pre-merge audit snapshot: user-authorized bounded absorption head df674fa8 was synchronized to main 85176cfd and passed all five current-head regressions before the final Ready-for-review boundary. The bounded absorption was subsequently merged as 38ebb651cf2ceda01d94c34cc6ec13be039886e1 and all 23 merge-triggered push-main workflows completed SUCCESS. The remaining explicit promotion decision referenced by this state concerns default-environment/general professional parity only, not the already-completed bounded absorption."
   },
-  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. The user explicitly authorized bounded merge on 2026-09-07. The approved scope is absorption of the mature Blender 5.2 Runtime/Workbench/contracts and the five already-validated Frontier families as bounded reuse/regression evidence under the single existing oleander-3d-pipeline Skill owner. This is not a general CAD promotion. default_environment_eligible remains false unless separately explicitly decided; P0_B_DIRECT_BREP remains BLOCKED; Class-A/NURBS, BIM/IFC, associative technical drawing, unrestricted assembly mate solving, persistent topological naming generality, general push-pull/trim and engineering/manufacturing/field approval remain non-promoted. FREECAD_REFERENCE_BOUND_OPERATION binds its latest validated receipt PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_PRIMARY_FACE_SELECTOR_EXTENSION_20260907.json, extending earlier provenance. Main remains the only installed CURRENT until the approved Candidate is actually merged and post-merge readback succeeds."
+  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. User-authorized bounded absorption completed into main at merge commit 38ebb651cf2ceda01d94c34cc6ec13be039886e1 after 18/18 Ready-for-review professional baselines passed; all 23 merge-triggered push-main workflows then completed SUCCESS. The absorbed scope is the Blender 5.2 Runtime/Workbench/contracts and the five validated Frontier families as bounded reuse/regression evidence under the single existing oleander-3d-pipeline Skill owner. This is not general CAD promotion. default_environment_eligible remains false; P0_B_DIRECT_BREP remains BLOCKED; Direct-BRep project usage remains NOT_ESTABLISHED; Class-A/NURBS, BIM/IFC, associative technical drawing, unrestricted assembly mate solving, persistent topological naming generality, general push-pull/trim and engineering/manufacturing/field approval remain non-promoted. FREECAD_REFERENCE_BOUND_OPERATION remains bound to PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_PRIMARY_FACE_SELECTOR_EXTENSION_20260907.json with earlier receipts preserved as provenance. main is now the installed Current for the absorbed bounded runtime/workbench scope."
 }
