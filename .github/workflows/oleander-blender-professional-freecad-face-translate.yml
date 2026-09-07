@@ -1,0 +1,142 @@
+name: OLEANDER Blender Professional FreeCAD Face Translate
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-face-translate.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-face-translate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-planar-face-translate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_FACE_TRANSLATE_DIR: /tmp/oleander-face-translate
+      FACE_TRANSLATE_PROBE: oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate.py
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Compile face translate probe source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile "${FACE_TRANSLATE_PROBE}"
+          python3 - <<'PY'
+          import ast
+          import hashlib
+          from pathlib import Path
+          path = Path("oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate.py")
+          source = path.read_text(encoding="utf-8")
+          ast.parse(source, filename=str(path))
+          print("OLEANDER_FACE_TRANSLATE_SOURCE_SHA256=" + hashlib.sha256(source.encode("utf-8")).hexdigest())
+          print("OLEANDER_FACE_TRANSLATE_SOURCE_LINES=" + str(len(source.splitlines())))
+          PY
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-face-translate-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Execute probe through explicit FreeCAD Python wrapper
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_FACE_TRANSLATE_DIR}"
+          cat > /tmp/oleander_face_translate_runner.py <<PY
+          import runpy
+          import traceback
+          print("OLEANDER_FACE_TRANSLATE_WRAPPER=START", flush=True)
+          try:
+              runpy.run_path(r"${GITHUB_WORKSPACE}/${FACE_TRANSLATE_PROBE}", run_name="__main__")
+          except BaseException as exc:
+              print("OLEANDER_FACE_TRANSLATE_WRAPPER_EXCEPTION=" + repr(exc), flush=True)
+              traceback.print_exc()
+              raise
+          print("OLEANDER_FACE_TRANSLATE_WRAPPER=PASS", flush=True)
+          PY
+          python3 -m py_compile /tmp/oleander_face_translate_runner.py
+          /tmp/squashfs-root/usr/bin/freecadcmd /tmp/oleander_face_translate_runner.py \
+            2>&1 | tee /tmp/oleander-face-translate.log
+          grep -F 'OLEANDER_FACE_TRANSLATE_WRAPPER=START' /tmp/oleander-face-translate.log
+          grep -F 'OLEANDER_FACE_TRANSLATE_WRAPPER=PASS' /tmp/oleander-face-translate.log
+          grep -F 'OLEANDER_FREECAD_PLANAR_FACE_TRANSLATE=' /tmp/oleander-face-translate.log
+          grep -F '"schema": "OLEANDER_FREECAD_PLANAR_FACE_TRANSLATE_v0.1"' /tmp/oleander-face-translate.log
+          grep -F '"status": "PASS"' /tmp/oleander-face-translate.log
+          grep -F '"zero_translation": "PASS"' /tmp/oleander-face-translate.log
+          grep -F '"excessive_translation": "PASS"' /tmp/oleander-face-translate.log
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate.FCStd"
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate_x_R002.step"
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate_y_R002.step"
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate_diag_R002.step"
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate_display.json"
+          test -s "${OLEANDER_FACE_TRANSLATE_DIR}/oleander_planar_face_translate_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read translated derivative in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_planar_face_translate_blender_readback.py \
+            2>&1 | tee /tmp/oleander-face-translate-blender.log
+          grep -F 'OLEANDER_PLANAR_FACE_TRANSLATE_BLENDER_READBACK=' /tmp/oleander-face-translate-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-face-translate-blender.log
+          grep -F '"master": "FreeCAD/OCCT B-Rep face translate"' /tmp/oleander-face-translate-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-face-translate-blender.log
+
+      - name: Record bounded planar face-translation evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded FreeCAD Planar Face Translate'
+            echo '- Source is syntax/AST-gated before FreeCAD execution.'
+            echo '- Authoritative kernel: FreeCAD 1.1.3 / OCCT 7.8.1.'
+            echo '- Selector: unique +Z top planar face by geometry; no FaceN persistence.'
+            echo '- Kernel route: TopoShape.replaceShape / BRepTools_ReShape replaces selected top face and four adjacent side faces.'
+            echo '- Operation: rigid in-plane translation with X +5 mm, Y -4 mm, and diagonal +3/+4 mm bounded probes.'
+            echo '- Bottom face remains untouched; height and volume are preserved by the bounded shear translation.'
+            echo '- R001 width 80 mm and R002 width 100 mm both re-resolve selectors and preserve valid single-solid B-Rep output.'
+            echo '- Zero and >20 mm translations are rejected before mutation.'
+            echo '- FCStd plus STEP artifacts persist; Blender receives only the diagonal R002 DISPLAY_DERIVATIVE_ONLY result.'
+            echo '- Does NOT prove general face translate, normal-direction push/pull, arbitrary face rotation, nonplanar editing, persistent topological naming or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

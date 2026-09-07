@@ -1,0 +1,92 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_FULL3D_FACE_ROTATE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "a2669cf0c4cb3b5f9f3b67b00c9f07d97d7140ad",
+  "tested_pr_merge_commit": "48c196503f47c49a119e66f93aa993ab89ef6922",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Full3D Face Rotate",
+    "run_id": 33759910740,
+    "job_id": 100663370505,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {"freecad": "1.1.3", "freecad_revision": "20260725", "occt": "7.8.1", "blender": "5.1.2"},
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "selector": "SELECTOR::LOCAL_POS_X_FACE after yaw+pitch transform",
+    "axis": "AXIS::SELECTED_FACE_CENTER::LOCAL_POS_Y transformed with yaw+pitch so direction has XYZ components",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape with sew/fix normalization and shell-to-solid rebuild when required",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "source solid receives yaw then pitch, producing selected-face normal with non-zero X/Y/Z components",
+    "selected-face local +Y tangent rotation axis also has non-zero X/Y/Z components",
+    "R001 80x50x10 mm yaw +30 degrees, pitch +20 degrees, selected local +X face rotate +4 degrees",
+    "R002 100x60x12 mm yaw -25 degrees, pitch -15 degrees, selected local +X face rotate -4 degrees",
+    "semantic selector and semantic local-axis IDs persist while their world-space directions change across revisions",
+    "actual selected-face normal validates signed +4/-4 degree local-axis rotation within numerical tolerance",
+    "target plus four adjacent faces are rebuilt through BRepTools_ReShape while opposite face is not replaced",
+    "both revisions remain valid one-solid six-face B-Rep results",
+    "opposite face center and area remain unchanged and rotated target remains reselectable from expected normal",
+    "zero angle, angle greater than 12 degrees, axis with selected-face normal component, and selector miss all fail before accepted mutation",
+    "FCStd plus R001/R002 STEP artifacts persist yaw/pitch/angle/axis/selector authority metadata",
+    "Blender creates two tessellated display-only derivatives and preserves source hash/full-3D normal/full-3D axis/yaw/pitch/angle/authority across .blend save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "source_dims_mm": [80.0, 50.0, 10.0],
+      "yaw_deg": 30.0,
+      "pitch_deg": 20.0,
+      "angle_deg": 4.0,
+      "actual_angle_deg": 4.0000000000000435,
+      "selector_world_normal": [0.8137976813493738, 0.49999999999999994, -0.29619813272602386],
+      "axis_world_direction": [-0.46984631039295416, 0.8660254037844387, 0.17101007166283433],
+      "actual_rotated_normal": [0.7879571919510758, 0.49878202512991215, -0.36102625259097054],
+      "edited_bbox_mm": [92.29600402441835, 83.47566137358224, 41.52852650276266],
+      "edited_volume_mm3": 39951.28100519651,
+      "solid_count": 1,
+      "face_count": 6
+    },
+    "R002": {
+      "source_dims_mm": [100.0, 60.0, 12.0],
+      "yaw_deg": -25.0,
+      "pitch_deg": -15.0,
+      "angle_deg": -4.0,
+      "actual_angle_deg": -4.000000000000025,
+      "selector_world_normal": [0.875426098065593, -0.42261826174069944, 0.23456971600980447],
+      "axis_world_direction": [0.40821789367673483, 0.9063077870366499, 0.109381654946615],
+      "actual_rotated_normal": [0.8552393001652934, -0.4215887848958186, 0.30137789551134364],
+      "edited_bbox_mm": [115.50412897302743, 96.81717555434236, 41.49868659523668],
+      "edited_volume_mm3": 71912.30580935371,
+      "solid_count": 1,
+      "face_count": 6
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_full3d_face_rotate.FCStd", "sha256": "eead04195ed870ad694be46e1509dcd64ef70809bec4718d8c0742a0713554df"},
+    "step_R001": {"path": "oleander_full3d_face_rotate_R001.step", "sha256": "0e3239e3d68995dee99258c32e8a1359ad8243b3fb63c47ab59e7f2e99d1b2ca"},
+    "step_R002": {"path": "oleander_full3d_face_rotate_R002.step", "sha256": "3e268429c2c3ce00649944e61d8df4eba9bd6f3af42c62f13003bb02ff602c01"},
+    "display": {"path": "oleander_full3d_face_rotate_display.json", "sha256": "e0ce2f22768a70e7b9977fc118ffd006a3461223f7f06c1675f77296cc6b3076"}
+  },
+  "expected_failure_cases": {
+    "zero_angle": "PASS",
+    "excessive_angle_over_12deg": "PASS",
+    "axis_has_normal_component": "PASS",
+    "selector_miss": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_FULL3D_FACE_ROTATE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS"
+  },
+  "non_claims": ["P0_B_DIRECT_BREP_PASS", "general_face_rotate", "arbitrary_user_defined_rotation_axis", "nonplanar_face_rotate", "persistent_topological_naming", "production_direct_modeling_parity"],
+  "invalidation_rule": "Invalidate if yaw+pitch full-3D selector/axis derivation is replaced by fixed world-axis logic, semantic IDs become raw topology indices, signed-angle/failure gates are removed, geometry becomes mesh-authoritative, or authority does not survive Blender readback.",
+  "authority_note": "This receipt proves bounded full-3D-oriented planar face rotation about one transformed semantic local tangent axis. It does not prove arbitrary user-defined axis, nonplanar rotation, persistent topological naming or P0-B PASS."
+}

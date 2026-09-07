@@ -1,0 +1,94 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_PLANAR_FACE_TILT",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "73ac672a158cbf12090c1f8160fdd837cb2c748b",
+  "tested_pr_merge_commit": "3aa87798bd1512fd91e03ed71da4f92333e00af9",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Face Tilt",
+    "run_id": 33740647406,
+    "job_id": 100601487212,
+    "conclusion": "success"
+  },
+  "host": {
+    "os": "Ubuntu 24.04 LTS",
+    "freecad_version": "1.1.3",
+    "occt_version": "7.8.1",
+    "blender_version": "5.1.2",
+    "freecad_appimage_sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+  },
+  "authority_chain": {
+    "master": "FreeCAD/OCCT B-Rep",
+    "selector": "SELECTOR::TOP_PLANAR_FACE",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape -> sew/fix shell normalization -> makeSolid when required",
+    "blender_geometry": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "unique +Z top planar face is re-resolved geometrically on every authoritative revision without persistent FaceN storage",
+    "selected top face is tilted about its own center Y axis by bounded signed angles +5 deg and -5 deg",
+    "selected top face plus four adjacent planar side faces are replaced through TopoShape.replaceShape / BRepTools_ReShape",
+    "opposite bottom face is not replaced",
+    "ReShape intermediate is normalized only from ReShape-emitted faces using sew/fix shell normalization and makeSolid when required",
+    "edited result is not rebuilt from source box dimensions",
+    "R001 80x50x10 mm and R002 100x50x10 mm both produce valid single-solid B-Rep results",
+    "R001 positive and negative results are symmetric at bbox height 13.486229709906326 mm and volume 39923.89396183491 mm3",
+    "R002 positive and negative results are symmetric at bbox height 14.357787137382909 mm and volume 49904.86745229365 mm3",
+    "actual top-face normals resolve to signed +5/-5 degrees within numerical tolerance",
+    "30 degree excessive tilt is rejected before geometry mutation by the bounded angular failure gate",
+    "FCStd plus positive and negative STEP artifacts persist valid authority and signed angle metadata",
+    "Blender receives only the positive R002 tessellated derivative and remains display-only after save/reopen"
+  ],
+  "artifact_evidence": {
+    "fcstd_sha256": "93957735ee78de47d6835343811eb8101bbefc8f0e6fbb4939c14286ba4e8dfd",
+    "positive_step_sha256": "691febb51a01705860c768d54b3a971cb55a76109323829ac9907acfa4accbb1",
+    "negative_step_sha256": "8d338ff90758c22cafb27ac60d2cd9ea3abd005bcda9dd11bc0a63c8ae89a8ca",
+    "display_sha256": "e380a0fb1e3c2b30cf120e998c0fad36197e53115a01da17613d8939f473b0af"
+  },
+  "revision_evidence": {
+    "R001": {
+      "source_bbox_mm": [80.0, 50.0, 10.0],
+      "positive_bbox_mm": [80.0, 50.0, 13.486229709906326],
+      "negative_bbox_mm": [80.0, 50.0, 13.486229709906326],
+      "positive_volume_mm3": 39923.89396183491,
+      "negative_volume_mm3": 39923.89396183491,
+      "actual_positive_angle_deg": 4.999999999999999,
+      "actual_negative_angle_deg": -5.000000000000001
+    },
+    "R002": {
+      "source_bbox_mm": [100.0, 50.0, 10.0],
+      "positive_bbox_mm": [100.0, 50.0, 14.357787137382909],
+      "negative_bbox_mm": [100.0, 50.0, 14.357787137382909],
+      "positive_volume_mm3": 49904.86745229365,
+      "negative_volume_mm3": 49904.86745229365,
+      "actual_positive_angle_deg": 5.000000000000001,
+      "actual_negative_angle_deg": -5.000000000000001
+    }
+  },
+  "expected_failure_cases": {
+    "excessive_or_inverting_face_tilt": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_PLANAR_FACE_TILT_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "master": "FreeCAD/OCCT B-Rep face tilt",
+    "blender_authority": "DISPLAY_DERIVATIVE_ONLY"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "general_face_rotate",
+    "arbitrary_rotation_axis",
+    "nonplanar_face_rotate",
+    "multi_loop_face_rotate",
+    "persistent_topological_naming",
+    "general_push_pull",
+    "general_split_trim",
+    "production_direct_modeling_parity",
+    "manufacturing_release",
+    "engineering_approval"
+  ],
+  "invalidation_rule": "Material changes to selector semantics, face replacement cardinality, tilt axis, allowed angular envelope, ReShape normalization path, FreeCAD/OCCT version, Blender version or display-authority readback require a new receipt.",
+  "authority_note": "This receipt proves one bounded planar top-face center-Y tilt route only. It does not establish arbitrary face rotation, persistent topological naming or P0-B PASS."
+}

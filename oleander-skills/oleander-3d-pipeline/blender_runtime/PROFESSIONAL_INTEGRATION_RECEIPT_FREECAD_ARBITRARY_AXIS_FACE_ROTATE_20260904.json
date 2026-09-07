@@ -1,0 +1,118 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_ARBITRARY_AXIS_FACE_ROTATE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "e047e5cc5000ec854e257cef14e31c02679df089",
+  "tested_pr_merge_commit": "8622afaeacfb76736d6a3d207281cb88b27d2992",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional Frontier",
+    "run_id": 33825616542,
+    "job_id": 100877771397,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {
+    "freecad": "1.1.3",
+    "freecad_revision": "20260725",
+    "occt": "7.8.1",
+    "blender": "5.1.2",
+    "blender_build_hash": "ec6e62d40fa9"
+  },
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "selector": "semantic local +X planar face after yaw+pitch transform",
+    "axis": "normalize(2*localX + 4*localY + 3*localZ), containing both face-normal and tangent components",
+    "pivot": "selected-face center +2*localX +7*localY -4*localZ mm",
+    "topology_rebuild": "target planar face + four OCCT ruled adjacent surfaces through BRepTools_ReShape",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "R001 starts from an 80x50x10 mm box, yaw +30 deg, pitch +20 deg, and rotates the semantic local +X face +2 deg about an offset arbitrary 3D axis",
+    "R002 starts from a 100x60x12 mm box, yaw -25 deg, pitch -15 deg, and rotates the semantic local +X face -2.5 deg about the same semantic axis/pivot family",
+    "the governed axis has absolute selected-face-normal component 0.3713906763541037 in both revisions and therefore is neither tangent to nor near-normal to the selected face",
+    "the pivot offset length is 8.30662386291807 mm in R001 and 8.306623862918075 mm in R002 and is not the selected-face center",
+    "the target face center moves 0.25934744933732146 mm in R001 and 0.3241750535452786 mm in R002 as a consequence of offset-pivot rotation",
+    "the target face plus four adjacent faces are rebuilt while the opposite face center/area remain unchanged; both results remain valid one-solid six-face B-Reps",
+    "zero angle, angle above the bounded contract, tangent-axis, near-normal-axis, center-pivot, over-distance pivot and zero axis coefficients all fail closed",
+    "FCStd plus separate R001/R002 STEP masters persist axis direction, axis origin, coefficients, pivot offsets and FreeCAD/OCCT geometry authority",
+    "Blender creates two tessellated display derivatives and preserves axis/pivot metadata, FCStd hash and DISPLAY_DERIVATIVE_ONLY authority across save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "source_dims_mm": [80.0, 50.0, 10.0],
+      "yaw_deg": 30.0,
+      "pitch_deg": 20.0,
+      "angle_deg": 2.0,
+      "actual_angle_deg": 2.0000000000000013,
+      "axis_world_direction": [0.14377843182777794, 0.8289628590797288, 0.5405074845064652],
+      "axis_origin_mm": [52.03834808139979, 68.71281292110203, -17.87623196953735],
+      "axis_normal_component_abs": 0.3713906763541037,
+      "pivot_offset_length_mm": 8.30662386291807,
+      "target_center_before_mm": [55.06775746475439, 61.65063509461096, -14.722135722581509],
+      "target_center_after_mm": [55.29005292996441, 61.694380198844165, -14.848358507689683],
+      "target_center_shift_mm": 0.25934744933732146,
+      "bbox_mm": [92.64969637651205, 83.10826736664936, 42.170053495910864],
+      "volume_mm3": 40108.26916552884,
+      "solid_count": 1,
+      "face_count": 6,
+      "edge_count": 12
+    },
+    "R002": {
+      "source_dims_mm": [100.0, 60.0, 12.0],
+      "yaw_deg": -25.0,
+      "pitch_deg": -15.0,
+      "angle_deg": -2.5,
+      "actual_angle_deg": -2.5,
+      "axis_world_direction": [0.4841572596025922, 0.5162320419575909, 0.7064674280038709],
+      "axis_origin_mm": [103.87988597852464, -9.573674577195298, 29.905083918602955],
+      "axis_normal_component_abs": 0.3713906763541037,
+      "pivot_offset_length_mm": 8.306623862918075,
+      "target_center_before_mm": [98.23623234624623, -15.07259256297045, 32.53397620711331],
+      "target_center_after_mm": [98.01124289509958, -14.83975195501974, 32.51802429490947],
+      "target_center_shift_mm": 0.3241750535452786,
+      "bbox_mm": [115.80658323071104, 96.2563284905909, 41.2702168452521],
+      "volume_mm3": 71751.52954843547,
+      "solid_count": 1,
+      "face_count": 6,
+      "edge_count": 12
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_arbitrary_axis_face_rotate.FCStd", "sha256": "76aa9a3fb53a06948ace596cfaa5324befc616031f747322832f44524117eedb"},
+    "step_R001": {"path": "oleander_arbitrary_axis_face_rotate_R001.step", "sha256": "bb9e81d713655d0b78f1727c779b3488f740e8bf09ac6843632ddd419732a72b"},
+    "step_R002": {"path": "oleander_arbitrary_axis_face_rotate_R002.step", "sha256": "c659f00d75aa75cb6939c7bb4aae9bdd4affce72baadc80eb444242ac012db02"},
+    "display": {"path": "oleander_arbitrary_axis_face_rotate_display.json", "sha256": "3d53242b1b2bc622ddaca579429c6b780e486f55f98b13e73fbb10f72aa53949"}
+  },
+  "expected_failure_cases": {
+    "zero_angle": "PASS",
+    "excessive_angle": "PASS",
+    "tangent_axis": "PASS",
+    "near_normal_axis": "PASS",
+    "center_pivot": "PASS",
+    "far_pivot": "PASS",
+    "zero_axis_coefficients": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_ARBITRARY_AXIS_FACE_ROTATE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "blender": "5.1.2",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS",
+    "axis_pivot_metadata_reopen": "PASS"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "unrestricted_arbitrary_axis_face_rotate",
+    "arbitrary_pivot_placement",
+    "general_nonplanar_face_direct_edit",
+    "persistent_topological_naming",
+    "production_direct_modeling_parity"
+  ],
+  "invalidation_rule": "Invalidate if the operation no longer uses an authoritative FreeCAD/OCCT B-Rep master, the governed axis loses either normal or tangent component, the pivot is no longer offset, opposite-face preservation or one-solid/six-face checks are removed, failure cases stop failing closed, axis/pivot metadata cease to persist in FCStd lineage, or Blender save/reopen stops preserving source hash and display-only authority.",
+  "authority_note": "This receipt proves one bounded offset-pivot non-tangent arbitrary-axis planar-face rotation family. It narrows the prior tangent-axis blocker but does not prove unrestricted arbitrary-axis editing, arbitrary pivot placement, nonplanar-face direct editing, persistent topology naming, or P0-B professional parity."
+}

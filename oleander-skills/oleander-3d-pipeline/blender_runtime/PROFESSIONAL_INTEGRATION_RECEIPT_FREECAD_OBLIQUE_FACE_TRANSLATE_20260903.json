@@ -1,0 +1,97 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_OBLIQUE_FACE_TRANSLATE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "7d2d074c8572d0de13a3cc8d80b3abf2b176de1d",
+  "tested_pr_merge_commit": "7163722e2381663fba87f3561124f7e604176b77",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Oblique Face Translate",
+    "run_id": 33749869572,
+    "job_id": 100630709063,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {
+    "freecad": "1.1.3",
+    "freecad_revision": "20260725",
+    "occt": "7.8.1",
+    "blender": "5.1.2"
+  },
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "selector": "SELECTOR::LOCAL_POS_X_FACE resolved from yaw-transformed world normal",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape with sew/fix normalization and shell-to-solid rebuild when required",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "R001 rectangular prism 80x50x10 mm yawed +30 degrees about world Z",
+    "R002 rectangular prism 100x60x12 mm yawed -25 degrees about world Z",
+    "semantic local +X planar face re-resolved from its transformed world normal after both dimension and yaw changes",
+    "selected face world normal is explicitly not aligned to world X/Y/Z",
+    "selected face translates 5 mm strictly within its own tangent plane",
+    "target plus four adjacent faces are replaced through BRepTools_ReShape while opposite face is not replaced",
+    "R001 and R002 preserve valid one-solid six-face B-Rep topology and source volume",
+    "opposite face center and area remain unchanged",
+    "zero translation, translation with selected-face normal component, >20 mm translation and selector miss all fail before accepted mutation",
+    "FCStd plus R001/R002 STEP artifacts persist with selector/yaw/translation authority metadata",
+    "Blender creates two tessellated display-only derivatives and preserves source hash/selector/yaw/translation/authority across .blend save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "source_dims_mm": [80.0, 50.0, 10.0],
+      "yaw_deg": 30.0,
+      "selector_world_normal": [0.8660254037844387, 0.49999999999999994, 0.0],
+      "translation_world_mm": [-1.9999999999999998, 3.464101615137755, 3.0],
+      "translation_distance_mm": 5.0,
+      "edited_bbox_mm": [92.2820323027551, 86.76537180435967, 13.0],
+      "edited_volume_mm3": 39999.999999999985,
+      "solid_count": 1,
+      "face_count": 6
+    },
+    "R002": {
+      "source_dims_mm": [100.0, 60.0, 12.0],
+      "yaw_deg": -25.0,
+      "selector_world_normal": [0.9063077870366499, -0.42261826174069944, 0.0],
+      "translation_world_mm": [1.6904730469627978, 3.6252311481465997, 3.0],
+      "translation_distance_mm": 5.0,
+      "edited_bbox_mm": [117.67834745506977, 93.01506224812235, 15.0],
+      "edited_volume_mm3": 72000.00000000003,
+      "solid_count": 1,
+      "face_count": 6
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_oblique_face_translate.FCStd", "sha256": "5e9e0048abf050ad8259895e0b466e4237c3a3bbcb6eae8228b8c9dd4f754707"},
+    "step_R001": {"path": "oleander_oblique_face_translate_R001.step", "sha256": "5063c73272b43ee27ae0e402ddce5c487c3b444c0a7bd0a1f791c742bf29aec0"},
+    "step_R002": {"path": "oleander_oblique_face_translate_R002.step", "sha256": "3058460f1f217bc4c2cd420971fa6895545242d9f1f1e5ecd50a6fb25ef80a04"},
+    "display": {"path": "oleander_oblique_face_translate_display.json", "sha256": "5be027fed1ad701c671bf49060355f7dc046cda27bc8f098f51e3cfc2f5b3d77"}
+  },
+  "expected_failure_cases": {
+    "zero_translation": "PASS",
+    "normal_component": "PASS",
+    "excessive_translation_over_20mm": "PASS",
+    "selector_miss": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_OBLIQUE_FACE_TRANSLATE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "arbitrary_3d_oriented_planar_face_translate",
+    "nonplanar_face_translate",
+    "normal_direction_push_pull",
+    "arbitrary_face_rotate",
+    "persistent_topological_naming",
+    "production_direct_modeling_parity"
+  ],
+  "invalidation_rule": "Invalidate this bounded validation if the semantic local-face selector is replaced by raw FaceN persistence, the selected face becomes world-axis-only, the tangent-plane/failure gates are removed, source geometry authority moves to mesh-only mutation, or source authority no longer survives Blender readback.",
+  "authority_note": "This receipt proves a bounded yaw-oblique planar tangential face translation workflow. It does not prove arbitrary 3D orientation, nonplanar editing or P0-B PASS."
+}

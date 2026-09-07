@@ -1,0 +1,106 @@
+name: OLEANDER Blender Professional FreeCAD Split
+
+on:
+  pull_request:
+    types: [ready_for_review]
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-split.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split.py"
+      - "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split_blender_readback.py"
+      - ".github/workflows/oleander-blender-professional-freecad-split.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-brep-split:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+      BLENDER_VERSION: "5.1.2"
+      BLENDER_SERIES: "5.1"
+      BLENDER_ARCHIVE: blender-5.1.2-linux-x64.tar.xz
+      OLEANDER_SPLIT_DIR: /tmp/oleander-bounded-split
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Download and verify FreeCAD 1.1.3
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "/tmp/${FREECAD_APPIMAGE}" \
+            "https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-split-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Run authoritative BOPTools split and preserve both solids
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_SPLIT_DIR}"
+          /tmp/squashfs-root/usr/bin/freecadcmd \
+            "${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split.py" \
+            2>&1 | tee /tmp/oleander-bounded-split.log
+          grep -F 'OLEANDER_FREECAD_BOUNDED_SPLIT=' /tmp/oleander-bounded-split.log
+          grep -F '"status": "PASS"' /tmp/oleander-bounded-split.log
+          grep -F '"nonintersecting_split_datum": "PASS"' /tmp/oleander-bounded-split.log
+          grep -F '"api": "BOPTools.SplitAPI.slice"' /tmp/oleander-bounded-split.log
+          test -s "${OLEANDER_SPLIT_DIR}/oleander_bounded_split.FCStd"
+          test -s "${OLEANDER_SPLIT_DIR}/oleander_split_piece_A_R002.step"
+          test -s "${OLEANDER_SPLIT_DIR}/oleander_split_piece_B_R002.step"
+          test -s "${OLEANDER_SPLIT_DIR}/oleander_bounded_split_display.json"
+          test -s "${OLEANDER_SPLIT_DIR}/oleander_bounded_split_manifest.json"
+
+      - name: Download official Blender 5.1.2 and verify checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          base="https://download.blender.org/release/Blender${BLENDER_SERIES}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "${BLENDER_ARCHIVE}" "${base}/${BLENDER_ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "blender-${BLENDER_VERSION}.sha256" "${base}/blender-${BLENDER_VERSION}.sha256"
+          grep "${BLENDER_ARCHIVE}" "blender-${BLENDER_VERSION}.sha256" > blender-selected.sha256
+          sha256sum --check blender-selected.sha256
+          tar -xf "${BLENDER_ARCHIVE}"
+          "/tmp/blender-${BLENDER_VERSION}-linux-x64/blender" --version | head -5
+
+      - name: Read split pieces in Blender and reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/blender-${BLENDER_VERSION}-linux-x64/blender --background \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_bounded_split_blender_readback.py \
+            2>&1 | tee /tmp/oleander-bounded-split-blender.log
+          grep -F 'OLEANDER_BOUNDED_SPLIT_BLENDER_READBACK=' /tmp/oleander-bounded-split-blender.log
+          grep -F '"status": "PASS"' /tmp/oleander-bounded-split-blender.log
+          grep -F '"master": "FreeCAD/OCCT B-Rep split pieces"' /tmp/oleander-bounded-split-blender.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-bounded-split-blender.log
+
+      - name: Record bounded split evidence
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER Bounded FreeCAD B-Rep Split'
+            echo '- Uses FreeCAD BOPTools.SplitAPI.slice(mode=Split), not boolean cut masquerading as split.'
+            echo '- Governed split datum: X = 40 mm with a finite planar tool spanning beyond the base Y/Z bounds.'
+            echo '- R001 base width 100 mm -> 40 mm + 60 mm solids; R002 width 120 mm -> 40 mm + 80 mm solids.'
+            echo '- Both authoritative pieces remain valid single solids and conserve source volume.'
+            echo '- Non-intersecting split datum is rejected by deterministic preflight.'
+            echo '- FCStd and separate STEP pieces persist; Blender receives two DISPLAY_DERIVATIVE_ONLY meshes with piece-level provenance.'
+            echo '- Does NOT prove general split/trim, surface trimming, persistent topological naming, production partition robustness or P0-B PASS.'
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.local/schemas/blender-workbench-manifest-v0.2.json",
+  "title": "OLEANDER Blender Workbench Manifest v0.2",
+  "type": "object",
+  "required": ["schema", "scene", "objects"],
+  "properties": {
+    "schema": {"const": "OLEANDER_BLENDER_WORKBENCH_MANIFEST_v0.2"},
+    "scene": {
+      "type": "object",
+      "required": ["name", "unit_scale"],
+      "properties": {
+        "name": {"type": "string"},
+        "unit_scale": {"type": "number", "exclusiveMinimum": 0},
+        "dependency_audit_state": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "ole_id", "object_type"],
+        "properties": {
+          "name": {"type": "string"},
+          "ole_id": {"type": "string"},
+          "object_type": {"type": "string"},
+          "dependencies": {"type": "array", "items": {"type": "string"}},
+          "stale": {"type": "boolean"},
+          "geometry_diff_state": {"type": "string"},
+          "review": {"type": "object"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

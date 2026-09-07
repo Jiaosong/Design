@@ -1,0 +1,127 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_MULTI_ORIENTATION_FACE_TRANSLATE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "a936a893239f81783038614587127ccc1d75391f",
+  "tested_pr_merge_commit": "f69235cebf755f7cd7bd594498d43e833f78c6b7",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Multi Face Translate",
+    "run_id": 33749320784,
+    "job_id": 100628991291,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {
+    "freecad": "1.1.3",
+    "freecad_revision": "20260725",
+    "occt": "7.8.1",
+    "blender": "5.1.2"
+  },
+  "verified_archives": {
+    "freecad_appimage": {
+      "name": "FreeCAD_1.1.3-Linux-x86_64-py311.AppImage",
+      "sha256": "3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef"
+    },
+    "blender_archive": {
+      "name": "blender-5.1.2-linux-x64.tar.xz",
+      "verification": "official blender-5.1.2.sha256 manifest; sha256sum --check PASS"
+    }
+  },
+  "source_probe": {
+    "path": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_multi_orientation_face_translate.py",
+    "syntax_gate": "python3 -m py_compile + ast.parse PASS",
+    "freecad_entry": "explicit runpy wrapper through freecadcmd"
+  },
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape with sewShape/fix/removeSplitter normalization and shell-to-solid rebuild when required",
+    "selector": "semantic face-normal selector for +Z, +X and +Y axis-aligned planar faces; no raw FaceN persistence",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "rectangular prismatic single-solid FreeCAD/OCCT B-Rep fixtures",
+    "semantic +Z, +X and +Y planar faces selected from face normals and re-resolved after dimensional rebuild",
+    "+Z face translated tangentially by +3 mm X and +4 mm Y",
+    "+X face translated tangentially by +4 mm Y and +3 mm Z",
+    "+Y face translated tangentially by +4 mm X and +3 mm Z",
+    "each edit replaces target face plus four adjacent faces through BRepTools_ReShape while the opposite face is not replaced",
+    "R001 80x50x10 mm and R002 100x60x12 mm both produce valid one-solid six-face B-Rep results",
+    "volume is preserved and the opposite face center/area is preserved for all three orientations",
+    "R002 envelopes validate as TOP_Z 103x64x12 mm, SIDE_X 100x64x15 mm and SIDE_Y 104x60x15 mm",
+    "FCStd plus one STEP artifact per orientation persist and reopen with OLE selector/translation/authority metadata",
+    "zero-length translation is rejected before mutation",
+    "translation containing a selected-face normal component is rejected before mutation",
+    "translation magnitude greater than 20 mm is rejected before mutation",
+    "Blender creates three tessellated display-only derivatives and preserves selector vectors, translation vectors, source FCStd hash and authority across .blend save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "base_mm": [80.0, 50.0, 10.0],
+      "TOP_Z_bbox_mm": [83.0, 54.0, 10.0],
+      "SIDE_X_bbox_mm": [80.0, 54.0, 13.0],
+      "SIDE_Y_bbox_mm": [84.0, 50.0, 13.0],
+      "nominal_volume_mm3": 40000.0,
+      "solid_count_per_case": 1,
+      "face_count_per_case": 6
+    },
+    "R002": {
+      "base_mm": [100.0, 60.0, 12.0],
+      "TOP_Z_bbox_mm": [103.0, 64.0, 12.0],
+      "SIDE_X_bbox_mm": [100.0, 64.0, 15.0],
+      "SIDE_Y_bbox_mm": [104.0, 60.0, 15.0],
+      "nominal_volume_mm3": 72000.0,
+      "solid_count_per_case": 1,
+      "face_count_per_case": 6
+    }
+  },
+  "artifacts": {
+    "fcstd": {
+      "path": "oleander_multi_orientation_face_translate.FCStd",
+      "sha256": "01cf113a6e7afada29957dcd11c2e013c65531100158ed0f5697f4196816e3e7"
+    },
+    "step_TOP_Z_R002": {
+      "path": "oleander_multi_face_translate_top_z_R002.step",
+      "sha256": "63a551db27e1b983e1902a6c622b88b598ea402c338027dc64ec0b93deacefbb"
+    },
+    "step_SIDE_X_R002": {
+      "path": "oleander_multi_face_translate_side_x_R002.step",
+      "sha256": "691018c7dff2b889b63f7187b0bfdaf47f5d628f9e523ef468f3fe37979d9933"
+    },
+    "step_SIDE_Y_R002": {
+      "path": "oleander_multi_face_translate_side_y_R002.step",
+      "sha256": "29c41b42e681b0246d38b14c259cb27e9a6cbd210f7b404b89ef3b29b0173ed5"
+    },
+    "display_json": {
+      "path": "oleander_multi_orientation_face_translate_display.json",
+      "sha256": "77d4110719f1d15faf33772fdbeebe5aaa2f69da9143cc90cc2022c9c8d9310d"
+    }
+  },
+  "expected_failure_cases": {
+    "zero_translation": "PASS",
+    "normal_component": "PASS",
+    "excessive_translation_over_20mm": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_MULTI_ORIENTATION_FACE_TRANSLATE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "cases": ["SIDE_X", "SIDE_Y", "TOP_Z"],
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "arbitrary_oblique_planar_face_translate",
+    "nonplanar_face_translate",
+    "normal_direction_push_pull",
+    "arbitrary_face_rotate",
+    "persistent_topological_naming",
+    "production_direct_modeling_parity"
+  ],
+  "invalidation_rule": "Invalidate this bounded validation if FreeCAD/OCCT authoritative edits are replaced by mesh-only mutation, semantic normal selectors are replaced by raw FaceN persistence, tangent-plane/failure gates are removed, opposite-face invariants no longer hold, or source authority no longer survives Blender readback.",
+  "authority_note": "This receipt extends bounded face translation from a +Z-only special case to three axis-aligned planar face orientations. It does not prove arbitrary oblique planar or nonplanar direct editing and does not promote P0-B or OLEANDER Blender to default professional parity."
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_INTEGRATION_RECEIPT_v0.1",
+  "integration_id": "FREECAD_OBLIQUE_FACE_ROTATE",
+  "validation_state": "PASS",
+  "dependency_state": "VALIDATED_FOR_BOUNDED_SCOPE",
+  "tested_branch_head": "785cbd95c4d53d4cf3639b8466619e0ee5f383a1",
+  "tested_pr_merge_commit": "38f949b9a8b91919671853f3616ad8dc804a017a",
+  "repository": "Jiaosong/Design",
+  "pull_request": 470,
+  "workflow": {
+    "name": "OLEANDER Blender Professional FreeCAD Oblique Face Rotate",
+    "run_id": 33759379541,
+    "job_id": 100661595216,
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "runner_os": "Ubuntu 24.04.4 LTS"
+  },
+  "versions": {
+    "freecad": "1.1.3",
+    "freecad_revision": "20260725",
+    "occt": "7.8.1",
+    "blender": "5.1.2"
+  },
+  "authority_chain": {
+    "geometry_master": "FREECAD_OCCT_BREP",
+    "selector": "SELECTOR::LOCAL_POS_X_FACE resolved from yaw-transformed world normal",
+    "axis": "AXIS::SELECTED_FACE_CENTER::LOCAL_POS_Y resolved as transformed local tangent axis",
+    "kernel_route": "TopoShape.replaceShape / BRepTools_ReShape with sew/fix normalization and shell-to-solid rebuild when required",
+    "display_derivative": "Blender 5.1.2 DISPLAY_DERIVATIVE_ONLY"
+  },
+  "bounded_scope": [
+    "R001 rectangular prism 80x50x10 mm yawed +30 degrees and selected local +X face rotated +5 degrees",
+    "R002 rectangular prism 100x60x12 mm yawed -25 degrees and selected local +X face rotated -5 degrees",
+    "semantic local +X planar face is re-resolved from transformed world normal after dimension and yaw changes",
+    "semantic rotation axis is selected-face center transformed local +Y tangent axis, not fixed world X/Y/Z",
+    "world rotation-axis direction changes across R001/R002 while stable semantic axis ID is preserved",
+    "actual selected-face normal validates signed +5/-5 degree rotation within numerical tolerance",
+    "target face plus four adjacent faces are replaced through BRepTools_ReShape while opposite face is not replaced",
+    "both revisions remain valid one-solid six-face B-Rep results",
+    "opposite face center and area remain unchanged",
+    "zero angle, angle greater than 15 degrees, axis containing selected-face normal component, and selector miss all fail before accepted mutation",
+    "FCStd plus R001/R002 STEP artifacts persist selector/axis/yaw/angle/authority metadata",
+    "Blender creates two tessellated display-only derivatives and preserves source hash/selector/axis/yaw/angle/authority across .blend save/reopen"
+  ],
+  "revision_evidence": {
+    "R001": {
+      "source_dims_mm": [80.0, 50.0, 10.0],
+      "yaw_deg": 30.0,
+      "angle_deg": 5.0,
+      "actual_angle_deg": 5.000000000000041,
+      "selector_world_normal": [0.8660254037844387, 0.49999999999999994, 0.0],
+      "axis_world_direction": [-0.49999999999999994, 0.8660254037844387, 0.0],
+      "actual_rotated_normal": [0.8627299156628209, 0.49809734904587283, -0.08715574274765889],
+      "edited_bbox_mm": [94.65942773928097, 83.51915954609107, 10.0],
+      "edited_volume_mm3": 39923.89396183492,
+      "solid_count": 1,
+      "face_count": 6
+    },
+    "R002": {
+      "source_dims_mm": [100.0, 60.0, 12.0],
+      "yaw_deg": -25.0,
+      "angle_deg": -5.0,
+      "actual_angle_deg": -4.999999999999981,
+      "selector_world_normal": [0.9063077870366499, -0.42261826174069944, 0.0],
+      "axis_world_direction": [0.42261826174069944, 0.9063077870366499, 0.0],
+      "actual_rotated_normal": [0.9028590122851735, -0.42101007166283466, 0.08715574274765786],
+      "edited_bbox_mm": [116.46181397812995, 96.86129504727336, 12.0],
+      "edited_volume_mm3": 71863.00913130285,
+      "solid_count": 1,
+      "face_count": 6
+    }
+  },
+  "artifacts": {
+    "fcstd": {"path": "oleander_oblique_face_rotate.FCStd", "sha256": "1cf87ddfcf1c251adc343cc23c4daa1b5c632981ad508cc0ffc0b16fdf7a9b05"},
+    "step_R001": {"path": "oleander_oblique_face_rotate_R001.step", "sha256": "1a6aac5d36db830eab96c7fe9fd0b368e52128a77f9e77c6d719f95e7d3ca2f8"},
+    "step_R002": {"path": "oleander_oblique_face_rotate_R002.step", "sha256": "6f13061aa77bb0a53e7248031d6ff55faacb999d71d818c27beabc09e70886d6"},
+    "display": {"path": "oleander_oblique_face_rotate_display.json", "sha256": "89f6ae31282bdc9f7abe980d648627b1ebe5df2f8ceebd0e4fcb80c373d061c5"}
+  },
+  "expected_failure_cases": {
+    "zero_angle": "PASS",
+    "excessive_angle_over_15deg": "PASS",
+    "axis_has_normal_component": "PASS",
+    "selector_miss": "PASS"
+  },
+  "blender_readback": {
+    "schema": "OLEANDER_OBLIQUE_FACE_ROTATE_BLENDER_READBACK_v0.1",
+    "status": "PASS",
+    "authority": "DISPLAY_DERIVATIVE_ONLY",
+    "save_reopen": "PASS",
+    "source_hash_reopen": "PASS"
+  },
+  "non_claims": [
+    "P0_B_DIRECT_BREP_PASS",
+    "general_face_rotate",
+    "arbitrary_rotation_axis",
+    "arbitrary_full_3d_face_orientation",
+    "nonplanar_face_rotate",
+    "persistent_topological_naming",
+    "production_direct_modeling_parity"
+  ],
+  "invalidation_rule": "Invalidate this bounded validation if semantic selector/axis IDs are replaced by raw topology indices, the axis becomes fixed world-axis logic, signed angle/failure gates are removed, source geometry authority moves to mesh-only mutation, or source authority no longer survives Blender readback.",
+  "authority_note": "This receipt proves a bounded yaw-oblique planar face rotation about a semantic local tangent axis. It does not prove arbitrary user-defined axis, full-3D face orientation, nonplanar rotation or P0-B PASS."
+}
