@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f3f0e7}.paper{fill:#fbfaf5;stroke:#c8c8bf;stroke-width:1.1}.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.soft{fill:#e6ebe7}.land{fill:#d7ded8}.river{fill:#78a399}
+.line{stroke:#17332c;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#88938d;stroke-width:1.1;fill:none}.cue{stroke:#548b7e;stroke-width:2;fill:none;stroke-dasharray:7 6}
+.t1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC',serif}.t2{font:700 22px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.t3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.txt{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC',sans-serif;letter-spacing:1.2px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="60" class="xs qing">A02 / FAMILY SHARED OBSERVATION VERBS · CURRENT NATIVE CARRIER</text>
+<text x="70" y="112" class="t1 ink">亲子层不是“儿童任务”，而是让两个人一起看见、比较、指出、记住</text>
+<text x="70" y="150" class="txt muted">同一场景里，儿童获得一个可完成的观察动作；成人仍可进入更深解释。动作先于知识，真实景观先于屏幕。</text>
+<text x="70" y="184" class="xs seal">DESIGN PROTOTYPE / NO CHILD MISSION CHAIN / R06 FROZEN / R13 GAME OFF / FIELD OPEN</text>
+<line x1="70" y1="210" x2="1530" y2="210" class="thin"/>
+<text x="70" y="248" class="xs qing">01 / ONE SHARED OBSERVATION JOURNEY — VERBS CHANGE WITH SCENE PRESSURE</text>
+<g transform="translate(70 272)">
+  <rect width="1460" height="420" rx="20" class="paper"/>
+  <text x="24" y="36" class="xs seal">FAMILY SHARED ACTION SPINE</text>
+  <path d="M70 328H1390" stroke="#d7d6cc" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="250" cy="328" r="9" fill="#17332c"/><circle cx="730" cy="328" r="9" fill="#17332c"/><circle cx="1210" cy="328" r="9" fill="#a54539"/>
+  <g transform="translate(35 68)">
+    <text class="xs seal">R05 / 红花石林</text>
+    <text y="31" class="t2 ink">LOOK → COMPARE → POINT</text>
+    <path d="M0 176C55 110 96 129 137 86C174 47 214 72 247 121C284 176 326 151 382 83C401 60 414 70 423 87V207H0Z" class="land"/>
+    <path d="M28 172l45-51 37 34 44-64 43 54 49-36 51 57" class="line"/>
+    <circle cx="103" cy="228" r="14" class="line"/><path d="M103 242v42m0-23l-22 18m22-18l23 17" class="line"/>
+    <circle cx="158" cy="217" r="17" class="line"/><path d="M158 234v49m0-27l-25 20m25-20l27 19" class="line"/>
+    <path d="M126 242L231 132" class="cue"/>
+    <text x="0" y="307" class="t3 ink">找两个不同峰形，指出差别</text>
+    <text x="0" y="335" class="sm muted">儿童做形状比较；成人可继续进入峰林/地貌解释。</text>
+  </g>
+  <path d="M468 206H530" class="cue"/><text x="474" y="190" class="xs qing">attention stays shared</text>
+  <g transform="translate(520 68)">
+    <text class="xs seal">R06 / 河谷观察 · FROZEN</text>
+    <text y="31" class="t2 ink">LOOK → COMPARE → TRACE</text>
+    <path d="M0 142C83 66 145 99 207 147C270 196 320 125 418 64V207H0Z" class="land"/>
+    <path d="M-5 186C93 155 182 163 265 186C325 203 374 200 426 181V228H-5Z" class="river"/>
+    <circle cx="102" cy="241" r="14" class="line"/><path d="M102 255v38m0-22l-21 17m21-17l22 17" class="line"/>
+    <circle cx="158" cy="230" r="17" class="line"/><path d="M158 247v46m0-26l-25 20m25-20l27 18" class="line"/>
+    <path d="M126 256L218 153M164 244L321 121" class="cue"/>
+    <text x="0" y="307" class="t3 ink">哪边更近？哪边更高？江从哪里穿过？</text>
+    <text x="0" y="335" class="sm muted">儿童只需指认关系；成人可主动进入 Relation / Explanation。</text>
+  </g>
+  <path d="M950 206H1015" class="cue"/><text x="960" y="190" class="xs qing">body pressure rises</text>
+  <g transform="translate(1015 68)">
+    <text class="xs seal">R13 / 一线天</text>
+    <text y="31" class="t2 ink">PASS → LOOK → LOOK BACK</text>
+    <rect x="12" y="76" width="90" height="150" class="land"/>
+    <rect x="285" y="76" width="90" height="150" class="land"/>
+    <rect x="102" y="98" width="183" height="108" fill="#8fb5aa"/>
+    <circle cx="188" cy="193" r="14" class="line"/><path d="M188 207v42m0-23l-22 18m22-18l22 17" class="line"/>
+    <circle cx="232" cy="184" r="17" class="line"/><path d="M232 201v48m0-27l-24 20m24-20l25 18" class="line"/>
+    <path d="M210 214L140 126" class="cue"/>
+    <text x="0" y="307" class="t3 ink">先通过；只看光线与缝隙，出去后再回望</text>
+    <text x="0" y="335" class="sm muted">BODY / ROUTE 提权；儿童层也不增加搜寻、答题或触发。</text>
+  </g>
+  <text x="24" y="392" class="sm seal">连续规则：场景压力越高，动作越少、越身体化；深读是可进入的第二层，不是完成儿童任务后的奖励。R13 GAME OFF。</text>
+</g>
+<text x="70" y="744" class="xs qing">02 / ACTION OWNERSHIP — WHAT THE VERBS ACTUALLY CHANGE</text>
+<g transform="translate(70 768)">
+<rect width="1460" height="145" rx="16" class="paper"/>
+<text x="24" y="34" class="xs seal">LOOK</text><text x="115" y="34" class="sm ink">由真实景观承担第一读，不需要屏幕。</text>
+<text x="390" y="34" class="xs seal">COMPARE</text><text x="505" y="34" class="sm ink">用“近/远、高/低、形状/方向”形成共同语言。</text>
+<text x="870" y="34" class="xs seal">TRACE</text><text x="960" y="34" class="sm ink">只追踪真实可见关系；不制造任务路线。</text>
+<text x="24" y="78" class="xs seal">FRAME</text><text x="115" y="78" class="sm ink">可摄影，但不以巨大打卡物替代景观。</text>
+<text x="390" y="78" class="xs seal">STEP / PASS</text><text x="505" y="78" class="sm ink">身体压力升高时，内容主动后退或 OFF。</text>
+<text x="870" y="78" class="xs seal">REMEMBER</text><text x="980" y="78" class="sm ink">离开后写/画/留一句，不转成知识答题。</text>
+<text x="24" y="121" class="sm seal">成人深读是“可进入的第二层”，不是儿童完成任务后的奖励；没有 13/13、积分、收集条或必须扫码。</text>
+</g>
+<text x="70" y="960" class="sm muted">ATTACK TEST：若去掉标题后仍像三张“儿童活动卡”、需要成人替儿童完成屏幕操作、出现集章/积分/找全/解锁，或 R13 仍保留高注意力游戏，则 FAIL。A02 只定义共同观察机制，不替代真实无障碍、现场安全与儿童行为测试。</text>
+</svg>
