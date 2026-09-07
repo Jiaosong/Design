@@ -1,0 +1,1 @@
+This product-work branch is intentionally separate from the current /qingjiang/ public carrier and from C04 Web PR #465. Public presentation language remains design-facing; internal source/readback boundaries stay in README.md.
