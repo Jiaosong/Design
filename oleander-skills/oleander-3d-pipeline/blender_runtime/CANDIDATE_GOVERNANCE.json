@@ -1,6 +1,6 @@
 {
   "schema": "OLEANDER_BLENDER_CANDIDATE_GOVERNANCE_v1.0",
-  "effective_date": "2026-09-05",
+  "effective_date": "2026-09-07",
   "authority": {
     "installed_current_branch": "main",
     "candidate_branch": "feat/oleander-blender-runtime-workbench",
@@ -108,7 +108,8 @@
       "readback": "oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_freecad_reference_bound_operation_blender_readback.py",
       "state": "VALIDATED_FOR_BOUNDED_SCOPE",
       "parity_key": "FREECAD_REFERENCE_BOUND_OPERATION",
-      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_20260904.json",
+      "receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_TOPOLOGY_EXTENSION_20260907.json",
+      "baseline_receipt": "oleander-skills/oleander-3d-pipeline/blender_runtime/PROFESSIONAL_INTEGRATION_RECEIPT_FREECAD_REFERENCE_BOUND_OPERATION_20260904.json",
       "promotion_allowed": true
     },
     {
@@ -265,14 +266,14 @@
   },
   "branch_hygiene": {
     "last_observed_behind_main": 0,
-    "last_observed_ahead_main": 526,
-    "observation_head": "fa7ee3d12a92a9ab5cf8e135e8d0f2488a4616bf",
-    "observation_main": "524b90b59b7e1a8e6fa67c2e4812250bce8a127b",
-    "observation_date": "2026-09-05",
+    "last_observed_ahead_main": 531,
+    "observation_head": "375366acaa10924134ce3b73c9972c1e71e085ac",
+    "observation_main": "ceb30a0adc0dd1f027d8c830c8128845285184be",
+    "observation_date": "2026-09-07",
     "observation_is_advisory": true,
-    "observation_scope": "POST_REAL_PROJECT_RUNTIME_USAGE_SYNC_PRE_GOVERNANCE_WRITEBACK",
+    "observation_scope": "POST_REFERENCE_BOUND_TOPOLOGY_EXTENSION_VALIDATION_PRE_EVIDENCE_WRITEBACK",
     "state": "SYNCHRONIZED_AWAITING_FINAL_REGRESSION_AND_EXPLICIT_PROMOTION_DECISION",
-    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion or absorption requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. The prior synchronized head cffb6faf passed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and Professional Frontier 5.2 LTS. Head fa7ee3d1 then no-loss synchronized the exact C04 Blender 5.2 compatibility fixes and successful retry dispatch from main. C04 Yunshuiyi now establishes real shared Blender Runtime project usage through producer + native reopen + artifact identity + upload, but still does not establish any of the five Direct-BRep family usages. The remaining Candidate closure boundary is an explicit bounded absorption decision plus fresh current-head regression/readback, not additional frontier growth."
+    "rule": "Candidate repair/alignment may continue because this is pre-throttle existing debt. Promotion or absorption requires a fresh dynamic main comparison proving behind=0 at decision time; stored ahead/behind values are audit snapshots only. Head 375366ac is synchronized to main ceb30a0 and passed Project Anti-Pollution, AI Governance, Runtime Static, Blender 5.2 LTS Regression and the five-item Professional Frontier 5.2 LTS. The existing FREECAD_REFERENCE_BOUND_OPERATION family now additionally validates one pre-existing circular inner-wire top-face semantic rebind plus a single-solid split-top ambiguity HOLD; this is a bounded extension of the same capability and not a sixth Frontier. C04 Yunshuiyi remains real shared Blender Runtime project usage but still does not establish any Direct-BRep family project usage. The remaining Candidate closure boundary is an explicit bounded absorption decision plus fresh current-head regression/readback, not additional frontier growth."
   },
-  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is Blender 5.2.0 LTS; historical 5.1.2 per-stage receipts remain provenance. Five bounded professional frontier items remain validated only for their recorded scopes. C04 Yunshuiyi is now a real project consumer of the shared Blender Runtime: after two fail-closed project-producer compatibility defects were repaired, run 33954476037 completed producer execution, native Blender reopen, artifact identity and artifact upload successfully on Blender 5.2.0 LTS build fbe6228777e7. This runtime usage must not be relabeled as Direct-BRep usage; none of the five bounded Direct-BRep families has exact-scope project consumption evidence. The bounded absorption plan remains PREPARED_NOT_APPROVED: it may absorb mature runtime/workbench/contracts and the bounded evidence set into the existing Skill while P0-B, default-environment eligibility and all general CAD/Class-A/BIM/technical-drawing/engineering claims remain blocked unless separately and explicitly decided. Main remains the only installed CURRENT until an explicit bounded absorption/merge decision and fresh readback."
+  "governance_note": "OLEANDER remains in CONSOLIDATION + PRODUCTION priority mode. PR #470 is existing pre-throttle Candidate debt, so repair/sync/alignment/regression/absorb/close work remains allowed while net-new frontier growth is blocked. The parent installed owner is the single oleander-3d-pipeline Skill; Blender Runtime modules and specialist adapters are implementation layers under that owner, not new Skills. Current-source compatibility is Blender 5.2.0 LTS; historical 5.1.2 per-stage receipts remain provenance. The five-item shared Professional Frontier count remains unchanged. FREECAD_REFERENCE_BOUND_OPERATION now has a validated topology-extension receipt from run 34094661286 / job 101655480443 proving one circular inner-wire planar top-face re-resolution and one single-solid split-top ambiguity fail-closed case; the 2026-09-04 receipt remains baseline provenance through the extension receipt chain. This does not establish persistent topological naming parity, arbitrary multi-wire/split/edge/vertex/nonplanar reference stability, P0-B PASS or general CAD parity. C04 Yunshuiyi remains a real project consumer of the shared Blender Runtime but not of any exact Direct-BRep frontier family. The bounded absorption plan remains PREPARED_NOT_APPROVED, and main remains the only installed CURRENT until an explicit bounded absorption/merge decision and fresh readback."
 }
