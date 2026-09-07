@@ -33,7 +33,7 @@
     "binding": "stable ref ID -> per-revision semantic re-resolution -> resolved signature -> actual FreeCAD/OCCT BRep cut",
     "display_derivative": "Blender 5.2.0 LTS DISPLAY_DERIVATIVE_ONLY"
   },
-  "bounded_scope_extension": [
+  "bounded_scope": [
     "preserves the original R001 80x50x10, R002 100x50x10 and R003 vertical-edge-fillet semantic re-resolution evidence",
     "R004 starts from one valid 100x50x10 single solid whose unique +Z planar top face already contains one off-center circular inner wire from a 4 mm radius through-hole centered at [20,15] mm",
     "R004 re-resolves the same OLE_REF::PRIMARY_TOP_FACE after the inner-wire topology change; the descriptor changes to five edges and area 4949.734517543 mm2, the signature changes to b3178f581a1c5c119752c8e355d77b9a06f4b8baeef81e08bb73f05aabc89f64, and the resolved centroid moves to [50.30465562716115,25.101551875720382,10] mm",
