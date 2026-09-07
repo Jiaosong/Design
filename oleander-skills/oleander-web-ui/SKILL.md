@@ -97,6 +97,35 @@ Use:
 
 Do not finish a generic layout first and then force evidence assets into leftover slots.
 
+## Browser-stable source delivery｜project-feedback addition 2026-09-07
+
+Real C04 browser use exposed a failure mode where layout, interaction and responsive structure executed correctly while required claim-bearing image carriers still failed because the browser depended on unstable remote thumbnail delivery. Treat this as project usage evidence for the Candidate route, not as promotion evidence.
+
+`SOURCE AUTHORITY ≠ DELIVERY CARRIER`.
+
+When a semantic/source asset is required for the page to make its claim:
+
+1. preserve the source/master authority and provenance;
+2. when authority permits, resolve exact bytes or a traceable derivative identity and hash before relying on browser delivery;
+3. use a browser-stable, repo/deployment-controlled carrier when the external carrier is not reliably reproducible;
+4. preserve crop/role/claim-bearing content through the derivative;
+5. test the actual target viewport/state in the real browser;
+6. classify failure locally as `ASSET DELIVERY FAIL` when layout/state behavior is otherwise intact.
+
+Preferred sequence:
+
+`SOURCE AUTHORITY → EXACT BYTES / DERIVATIVE IDENTITY → CONTROLLED DELIVERY CARRIER → HTML/CSS/JS BINDING → REAL BROWSER → VIEWPORT / STATE READBACK`.
+
+Do not treat repeated opaque URL swapping as a repair strategy:
+
+`REMOTE THUMBNAIL FAIL → ANOTHER REMOTE THUMBNAIL → ASSUME FIXED` = `REVISE`.
+
+Current-role hygiene is part of integration integrity. Decide whether a generated file is `Native Master / Current Derivative / Support / Evidence / Provenance / Temporary` before using `CURRENT/current` naming. A convenient repo file does not become a second Current Authority merely because the browser consumes it.
+
+This project feedback proves the failure mode and repair direction only. Final C04 browser closure is still separate; `CONTROLLED CARRIER EXISTS ≠ BROWSER PASS ≠ DESIGN KEEP`.
+
+See `PROJECT_USAGE_FEEDBACK_CURRENT.md` for the bounded evidence record.
+
 ## Reference-led adaptation
 
 When a concrete reference, adopted version, screenshot, existing page or authoritative visual example is provided, do not reduce “reference-first” to palette or surface styling. Before implementation record the reference's structural grammar:
@@ -157,6 +186,9 @@ Do not treat browser-local persistence alone as delivery. `LOCAL SAVE ≠ PORTAB
 18. Automated accessibility scans do not replace keyboard/focus/semantic/user-preference interaction evidence.
 19. When a shared token/theme system exists, reusable components should consume semantic roles rather than scattered raw values; theme coverage must be verified in real material states instead of inferred from variable wiring.
 20. A theme remap, token lint or standards check cannot self-award visual quality. `TOKEN PASS ≠ ACCESSIBILITY PASS ≠ DESIGN PASS`.
+21. A Source Authority that is valid in Drive or another archive is not automatically a stable browser delivery carrier; test the actual delivery path.
+22. A source-carrier failure must not be inflated into a whole-Web design failure when the evidence isolates the defect to asset delivery.
+23. Do not create unregistered `CURRENT/current` file identities merely to make integration convenient; Current role must be legitimate before the name is used.
 
 ## Visual / runtime readback
 
@@ -177,6 +209,7 @@ Return:
 - selected specialist owner set and why each was needed;
 - requirement coverage map status;
 - source-asset role inventory for material assets;
+- source-delivery carrier identity/hash and browser stability state when claim-bearing external assets are material;
 - reference decomposition and rendered deltas when applicable;
 - target viewports and states;
 - component/token dependencies;
@@ -190,6 +223,7 @@ Return:
 - interaction/state issues returned to the relevant specialist;
 - technical issues for `oleander-delivery-qc` or VALIDATION;
 - motion states for `oleander-motion` when needed;
+- project-usage feedback action when a material reusable rule was confirmed/falsified/repaired;
 - what remains HOLD.
 
 ## Candidate boundary

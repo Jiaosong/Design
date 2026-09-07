@@ -62,10 +62,10 @@ Current asset classes include:
 - `CURRENT_OWNER_FOR_THIS_OBJECT`: PRESENTATION
 - `NEXT_OWNER_FOR_THIS_OBJECT`: VALIDATION
 - `CURRENT_NATIVE_MASTER_ON_MAIN`: NONE for Web v1.12 exact path.
-- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `ecc86f485563e8d447f85e060ed998085b459fb9` / 112 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
+- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `61f014d6428d005274dfc836f8c2cce815a5801c` / 118 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
 - `CHECK_STATE`: AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL.
-- `CHROMIUM_FAILURE`: exact-head run `33956831680` still fails Chromium presentation readback while repo-local dependency integrity passes. Fresh browser evidence artifact `9966638701` exists. Its report-level root cause was not independently read back in this governance pass, so the previous two-image-carrier diagnosis remains regression context only and is not asserted as the current-head cause.
-- `OPEN_GAP`: replace/fix the failing image carrier using the same Source Authority, close Anti-Pollution, rerun Chromium 1920/1366/390, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
+- `CHROMIUM_FAILURE`: exact-head run `34015212633` fails Chromium presentation readback while repo-local dependency integrity passes; fresh browser evidence artifact `9983685001` exists. Its exact report/root cause has not yet been consumed, so prior image-carrier diagnoses remain regression context only and are not asserted as the current-head cause.
+- `OPEN_GAP`: consume the exact fresh-head Chromium report/artifact first; within the same PR frontier repair the smallest actual current browser/pixel defect under the same Source Authority, close Anti-Pollution as applicable, rerun affected 1920/1366/390 readback, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
 - `NEXT`: continue through the same PR #465 producer frontier. A Web runner WAIT must not block other C04 assets or other projects.
 
 ### ACTIVE 4｜Physical / Product / Detail
@@ -148,7 +148,7 @@ Required native output is decided **before** tool selection. A source archive do
 
 1. **Asset coverage:** keep C04 in active production; select and execute missing/weak required native assets across all workstreams rather than waiting on one queue.
 2. **Active 4 / 云水倚:** VALIDATION performs actual new-preview source-fidelity readback; only a closing verdict advances the model-validation cursor.
-3. **Web:** continue PR #465 from head `2cdca227...`; repair the two failing Source image carriers + Anti-Pollution, rerun Chromium, then finished-pixel review/formal handoff.
+3. **Web:** continue PR #465 from exact head `61f014d...`; consume fresh Chromium evidence first, repair only the smallest confirmed current defect + applicable Anti-Pollution failure, rerun affected Chromium sizes, then finished-pixel review/formal handoff.
 4. **B:** reduce the 27-page source-recovery backlog and attach/produce the required editorial/analysis assets for recovered pages.
 5. **D:** continue real finished-output / journey / system / analysis / motion assets and readback; the Return SVG delta is real but not whole-D closure.
 6. **F:** integrate each closed upstream asset continuously into Web/PDF/boards/film.
@@ -156,7 +156,7 @@ Required native output is decided **before** tool selection. A source archive do
 ## 5｜Known boundaries / holds
 
 - `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
-- Web v1.12 is not merged to main; current producer remains PR #465 at `2cdca227...`, currently `mergeable=false`.
+- Web v1.12 is not merged to main; current producer remains PR #465 at exact head `61f014d6428d005274dfc836f8c2cce815a5801c`, currently `mergeable=true / mergeable_state=unstable`.
 - PR #465 current checks still include Chromium FAIL and Project Anti-Pollution FAIL; do not infer Design/browser PASS from the passing governance/dependency checks.
 - 27 protected PAGE identities remain source-recovery open.
 - 云水倚 repaired native machine return exists, but the new returned preview remains **independent-fidelity OPEN** and is not Presentation-ready.
@@ -168,4 +168,4 @@ Required native output is decided **before** tool selection. A source archive do
 
 Currentized from current whole-project authority, Asset Atlas, Work Coordination / Resolver rules, current Queue, fresh PR #465 readback, current Actions run states, `C04_MODEL_4_MODEL_5_CANDIDATE_AUDIT_v001.md`, ODB-02 source-bound imagery, the 云水倚 Fidelity Brief, prior v003 source-fidelity verdict, repaired producer/validator commits, successful shared-Blender machine return and remote Queue readback.
 
-`UPDATED_AT`: 2026-09-05T17:04+08:00
+`UPDATED_AT`: 2026-09-07T14:07:32+08:00
