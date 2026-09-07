@@ -19,10 +19,19 @@ checks: list[str] = []
 REF_ID = "OLE_REF::PRIMARY_TOP_FACE"
 SELECTOR_ID = "SELECTOR::UNIQUE_GLOBAL_ZMAX_PLANAR_POSITIVE_Z"
 OP_ID = "OLE_OP::TOP_FACE_CENTER_THROUGH_HOLE"
+INNER_WIRE_RADIUS_MM = 4.0
+INNER_WIRE_CENTER_MM = (20.0, 15.0)
+RECT_AREA = 100.0 * 50.0
+INNER_WIRE_AREA = math.pi * INNER_WIRE_RADIUS_MM * INNER_WIRE_RADIUS_MM
 EXPECTED_CENTERS = {
     "R001": [40.0, 25.0, 10.0],
     "R002": [50.0, 25.0, 10.0],
     "R003": [50.0, 25.0, 10.0],
+    "R004": [
+        (RECT_AREA * 50.0 - INNER_WIRE_AREA * INNER_WIRE_CENTER_MM[0]) / (RECT_AREA - INNER_WIRE_AREA),
+        (RECT_AREA * 25.0 - INNER_WIRE_AREA * INNER_WIRE_CENTER_MM[1]) / (RECT_AREA - INNER_WIRE_AREA),
+        10.0,
+    ],
 }
 
 
@@ -45,10 +54,10 @@ def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
 
-    check(manifest.get("schema") == "OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION_v0.1", "manifest_schema")
+    check(manifest.get("schema") == "OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION_v0.2", "manifest_schema")
     check(manifest.get("status") == "PASS", "manifest_pass")
     check(manifest.get("dependency_state") == "VALIDATED_FOR_BOUNDED_SCOPE", "bounded_dependency_state")
-    check(display.get("schema") == "OLEANDER_REFERENCE_BOUND_OPERATION_DISPLAY_v0.1", "display_schema")
+    check(display.get("schema") == "OLEANDER_REFERENCE_BOUND_OPERATION_DISPLAY_v0.2", "display_schema")
     check(display.get("geometry_authority") == "FREECAD_OCCT_BREP", "occt_authority")
     check(display.get("display_authority") == "DISPLAY_DERIVATIVE_ONLY", "display_only")
     check(display.get("ref_id") == REF_ID, "display_ref_id")
@@ -60,28 +69,54 @@ def main():
     check(contract["selector_id"] == SELECTOR_ID, "contract_selector_id")
     check(contract["operation_id"] == OP_ID, "contract_operation_id")
     check(contract["ordinal_persistence"] == "PROHIBITED", "ordinal_persistence_prohibited")
-    check(manifest["expected_failure_cases"] == {
-        "ambiguous_reference_blocks_mutation": "PASS",
-        "missing_reference_blocks_mutation": "PASS",
-    }, "failure_gates")
+    check(
+        contract["bounded_topology_extension"] == "one planar top face with one pre-existing circular inner wire",
+        "bounded_topology_extension",
+    )
+    check(
+        manifest["positive_extension_cases"] == {
+            "inner_wire_top_face_rebind_and_operation": "PASS",
+        },
+        "positive_extension_gate",
+    )
+    check(
+        manifest["expected_failure_cases"]
+        == {
+            "single_solid_split_top_ambiguity_blocks_mutation": "PASS",
+            "compound_ambiguous_reference_blocks_mutation": "PASS",
+            "missing_reference_blocks_mutation": "PASS",
+        },
+        "failure_gates",
+    )
 
     history = registry["history"]
     op_history = registry["operation_history"]
-    check([item["state"] for item in history[-2:]] == ["AMBIGUOUS_HOLD", "MISSING_HOLD"], "registry_hold_tail")
-    check([item["state"] for item in op_history[-2:]] == ["AMBIGUOUS_HOLD", "MISSING_HOLD"], "operation_hold_tail")
-    check(all(item.get("mutation") == "NONE" for item in op_history[-2:]), "holds_zero_mutation")
+    check(
+        [item["state"] for item in history[-3:]]
+        == ["AMBIGUOUS_HOLD", "AMBIGUOUS_HOLD", "MISSING_HOLD"],
+        "registry_hold_tail",
+    )
+    check(
+        [item["state"] for item in op_history[-3:]]
+        == ["AMBIGUOUS_HOLD", "AMBIGUOUS_HOLD", "MISSING_HOLD"],
+        "operation_hold_tail",
+    )
+    check(all(item.get("mutation") == "NONE" for item in op_history[-3:]), "holds_zero_mutation")
+    check(op_history[-3]["candidate_count"] == 2, "split_top_exact_two_candidates_readback")
 
     revisions = {item["revision"]: item for item in display["revisions"]}
     check(set(revisions) == set(EXPECTED_CENTERS), "revision_set")
-    signatures = [revisions[name]["resolved_signature"] for name in ("R001", "R002", "R003")]
-    check(len(set(signatures)) == 3, "signature_changes_across_geometry_revisions")
-    check(registry["last_good_signature"] == revisions["R003"]["resolved_signature"], "last_good_matches_r3")
+    signatures = [revisions[name]["resolved_signature"] for name in ("R001", "R002", "R003", "R004")]
+    check(len(set(signatures)) == 4, "signature_changes_across_geometry_revisions")
+    check(registry["last_good_signature"] == revisions["R004"]["resolved_signature"], "last_good_matches_r4")
+    check(revisions["R004"]["resolved_descriptor"]["edge_count"] >= 5, "r4_inner_wire_edge_count_readback")
+    check(revisions["R004"]["resolved_descriptor"]["area_mm2"] < RECT_AREA, "r4_inner_wire_area_readback")
 
     scene = bpy.context.scene
     scene.unit_settings.system = "METRIC"
     scene.unit_settings.scale_length = 0.001
 
-    for name in ("R001", "R002", "R003"):
+    for name in ("R001", "R002", "R003", "R004"):
         item = revisions[name]
         check(item["ole_id"] == "OLE_REFERENCE_BOUND_OPERATION::" + name, "ole_id_" + name)
         check(item["operation_id"] == OP_ID, "operation_id_" + name)
@@ -111,15 +146,18 @@ def main():
         obj["geometry_authority"] = "DISPLAY_DERIVATIVE_ONLY"
 
     bpy.context.view_layer.update()
-    for name in ("R001", "R002", "R003"):
+    for name in ("R001", "R002", "R003", "R004"):
         obj = bpy.data.objects["OLE_REFERENCE_BOUND_OPERATION_" + name]
-        check(close_vec([obj.dimensions.x, obj.dimensions.y, obj.dimensions.z], revisions[name]["bbox_mm"], 1e-3), "bbox_" + name)
+        check(
+            close_vec([obj.dimensions.x, obj.dimensions.y, obj.dimensions.z], revisions[name]["bbox_mm"], 1e-3),
+            "bbox_" + name,
+        )
 
     bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN))
     check(REOPEN.exists(), "blend_saved")
     source_sha = display["source_fcstd_sha256"]
     bpy.ops.wm.open_mainfile(filepath=str(REOPEN))
-    for name in ("R001", "R002", "R003"):
+    for name in ("R001", "R002", "R003", "R004"):
         obj = bpy.data.objects.get("OLE_REFERENCE_BOUND_OPERATION_" + name)
         check(obj is not None, "reopen_object_" + name)
         check(obj["ref_id"] == REF_ID, "reopen_ref_id_" + name)
@@ -130,28 +168,35 @@ def main():
         check(obj["source_fcstd_sha256"] == source_sha, "reopen_fcstd_sha_" + name)
         check(obj["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "reopen_authority_" + name)
 
-    print("OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK=" + json.dumps({
-        "schema": "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK_v0.1",
-        "status": "PASS",
-        "blender_version": bpy.app.version_string,
-        "revisions": ["R001", "R002", "R003"],
-        "ref_id": REF_ID,
-        "operation_id": OP_ID,
-        "checks": checks,
-        "authority": {
-            "master": "FreeCAD/OCCT semantic-reference-bound BRep cut",
-            "blender": "DISPLAY_DERIVATIVE_ONLY",
-        },
-        "non_claims": [
-            "P0_B_DIRECT_BREP_PASS",
-            "persistent_topological_naming_parity",
-            "general_face_reference_stability",
-            "edge_reference_stability",
-            "vertex_reference_stability",
-            "nonplanar_semantic_reference_rebind",
-            "automatic_ambiguous_reference_resolution",
-        ],
-    }, sort_keys=True))
+    print(
+        "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK="
+        + json.dumps(
+            {
+                "schema": "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK_v0.2",
+                "status": "PASS",
+                "blender_version": bpy.app.version_string,
+                "revisions": ["R001", "R002", "R003", "R004"],
+                "ref_id": REF_ID,
+                "operation_id": OP_ID,
+                "checks": checks,
+                "authority": {
+                    "master": "FreeCAD/OCCT semantic-reference-bound BRep cut",
+                    "blender": "DISPLAY_DERIVATIVE_ONLY",
+                },
+                "non_claims": [
+                    "P0_B_DIRECT_BREP_PASS",
+                    "persistent_topological_naming_parity",
+                    "general_face_reference_stability",
+                    "general_multi_wire_reference_stability",
+                    "edge_reference_stability",
+                    "vertex_reference_stability",
+                    "nonplanar_semantic_reference_rebind",
+                    "automatic_ambiguous_reference_resolution",
+                ],
+            },
+            sort_keys=True,
+        )
+    )
 
 
 if __name__ == "__main__":
