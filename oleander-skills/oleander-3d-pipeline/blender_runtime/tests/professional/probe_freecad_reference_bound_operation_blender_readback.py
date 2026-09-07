@@ -17,12 +17,15 @@ REOPEN = ROOT / "oleander_reference_bound_operation_readback.blend"
 checks: list[str] = []
 
 REF_ID = "OLE_REF::PRIMARY_TOP_FACE"
-SELECTOR_ID = "SELECTOR::UNIQUE_GLOBAL_ZMAX_PLANAR_POSITIVE_Z"
+SELECTOR_ID = "SELECTOR::UNIQUE_LARGEST_AREA_PLANAR_POSITIVE_Z"
 OP_ID = "OLE_OP::TOP_FACE_CENTER_THROUGH_HOLE"
 INNER_WIRE_RADIUS_MM = 4.0
 INNER_WIRE_CENTER_MM = (20.0, 15.0)
 RECT_AREA = 100.0 * 50.0
 INNER_WIRE_AREA = math.pi * INNER_WIRE_RADIUS_MM * INNER_WIRE_RADIUS_MM
+BOSS_AREA = 20.0 * 12.0
+BOSS_CENTER = (80.0, 36.0)
+PRIMARY_AFTER_BOSS_AREA = RECT_AREA - BOSS_AREA
 EXPECTED_CENTERS = {
     "R001": [40.0, 25.0, 10.0],
     "R002": [50.0, 25.0, 10.0],
@@ -30,6 +33,11 @@ EXPECTED_CENTERS = {
     "R004": [
         (RECT_AREA * 50.0 - INNER_WIRE_AREA * INNER_WIRE_CENTER_MM[0]) / (RECT_AREA - INNER_WIRE_AREA),
         (RECT_AREA * 25.0 - INNER_WIRE_AREA * INNER_WIRE_CENTER_MM[1]) / (RECT_AREA - INNER_WIRE_AREA),
+        10.0,
+    ],
+    "R005": [
+        (RECT_AREA * 50.0 - BOSS_AREA * BOSS_CENTER[0]) / PRIMARY_AFTER_BOSS_AREA,
+        (RECT_AREA * 25.0 - BOSS_AREA * BOSS_CENTER[1]) / PRIMARY_AFTER_BOSS_AREA,
         10.0,
     ],
 }
@@ -54,10 +62,10 @@ def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
 
-    check(manifest.get("schema") == "OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION_v0.2", "manifest_schema")
+    check(manifest.get("schema") == "OLEANDER_FREECAD_REFERENCE_BOUND_OPERATION_v0.3", "manifest_schema")
     check(manifest.get("status") == "PASS", "manifest_pass")
     check(manifest.get("dependency_state") == "VALIDATED_FOR_BOUNDED_SCOPE", "bounded_dependency_state")
-    check(display.get("schema") == "OLEANDER_REFERENCE_BOUND_OPERATION_DISPLAY_v0.2", "display_schema")
+    check(display.get("schema") == "OLEANDER_REFERENCE_BOUND_OPERATION_DISPLAY_v0.3", "display_schema")
     check(display.get("geometry_authority") == "FREECAD_OCCT_BREP", "occt_authority")
     check(display.get("display_authority") == "DISPLAY_DERIVATIVE_ONLY", "display_only")
     check(display.get("ref_id") == REF_ID, "display_ref_id")
@@ -70,20 +78,24 @@ def main():
     check(contract["operation_id"] == OP_ID, "contract_operation_id")
     check(contract["ordinal_persistence"] == "PROHIBITED", "ordinal_persistence_prohibited")
     check(
-        contract["bounded_topology_extension"] == "one planar top face with one pre-existing circular inner wire",
+        contract["bounded_topology_extension"]
+        == "primary +Z planar face may carry one bounded inner wire or sit below one smaller raised +Z boss face; unique largest area required",
         "bounded_topology_extension",
     )
     check(
-        manifest["positive_extension_cases"] == {
+        manifest["positive_extension_cases"]
+        == {
             "inner_wire_top_face_rebind_and_operation": "PASS",
+            "raised_boss_above_primary_face_does_not_steal_reference": "PASS",
+            "selected_face_material_depth_not_global_bbox_height": "PASS",
         },
         "positive_extension_gate",
     )
     check(
         manifest["expected_failure_cases"]
         == {
-            "single_solid_split_top_ambiguity_blocks_mutation": "PASS",
-            "compound_ambiguous_reference_blocks_mutation": "PASS",
+            "single_solid_equal_area_split_top_ambiguity_blocks_mutation": "PASS",
+            "compound_equal_area_ambiguity_blocks_mutation": "PASS",
             "missing_reference_blocks_mutation": "PASS",
         },
         "failure_gates",
@@ -106,17 +118,28 @@ def main():
 
     revisions = {item["revision"]: item for item in display["revisions"]}
     check(set(revisions) == set(EXPECTED_CENTERS), "revision_set")
-    signatures = [revisions[name]["resolved_signature"] for name in ("R001", "R002", "R003", "R004")]
-    check(len(set(signatures)) == 4, "signature_changes_across_geometry_revisions")
-    check(registry["last_good_signature"] == revisions["R004"]["resolved_signature"], "last_good_matches_r4")
+    ordered = ("R001", "R002", "R003", "R004", "R005")
+    signatures = [revisions[name]["resolved_signature"] for name in ordered]
+    check(len(set(signatures)) == len(ordered), "signature_changes_across_geometry_revisions")
+    check(registry["last_good_signature"] == revisions["R005"]["resolved_signature"], "last_good_matches_r5")
     check(revisions["R004"]["resolved_descriptor"]["edge_count"] >= 5, "r4_inner_wire_edge_count_readback")
     check(revisions["R004"]["resolved_descriptor"]["area_mm2"] < RECT_AREA, "r4_inner_wire_area_readback")
+    check(close(revisions["R005"]["source_zmax_mm"], 14.0), "r5_source_global_zmax_readback")
+    check(close(revisions["R005"]["material_depth_mm"], 10.0), "r5_material_depth_readback")
+    check(
+        revisions["R005"]["resolved_center_mm"][2] < revisions["R005"]["source_zmax_mm"],
+        "r5_primary_face_below_global_zmax_readback",
+    )
+    check(
+        revisions["R005"]["resolved_descriptor"]["area_mm2"] > BOSS_AREA,
+        "r5_largest_area_primary_readback",
+    )
 
     scene = bpy.context.scene
     scene.unit_settings.system = "METRIC"
     scene.unit_settings.scale_length = 0.001
 
-    for name in ("R001", "R002", "R003", "R004"):
+    for name in ordered:
         item = revisions[name]
         check(item["ole_id"] == "OLE_REFERENCE_BOUND_OPERATION::" + name, "ole_id_" + name)
         check(item["operation_id"] == OP_ID, "operation_id_" + name)
@@ -139,6 +162,8 @@ def main():
         obj["resolved_signature"] = item["resolved_signature"]
         obj["resolved_center_mm"] = item["resolved_center_mm"]
         obj["radius_mm"] = float(item["radius_mm"])
+        obj["material_depth_mm"] = float(item["material_depth_mm"])
+        obj["source_zmax_mm"] = float(item["source_zmax_mm"])
         obj["master_locator"] = display["source_fcstd"]
         obj["source_fcstd_sha256"] = display["source_fcstd_sha256"]
         obj["source_step"] = item["source_step"]
@@ -146,7 +171,7 @@ def main():
         obj["geometry_authority"] = "DISPLAY_DERIVATIVE_ONLY"
 
     bpy.context.view_layer.update()
-    for name in ("R001", "R002", "R003", "R004"):
+    for name in ordered:
         obj = bpy.data.objects["OLE_REFERENCE_BOUND_OPERATION_" + name]
         check(
             close_vec([obj.dimensions.x, obj.dimensions.y, obj.dimensions.z], revisions[name]["bbox_mm"], 1e-3),
@@ -157,7 +182,7 @@ def main():
     check(REOPEN.exists(), "blend_saved")
     source_sha = display["source_fcstd_sha256"]
     bpy.ops.wm.open_mainfile(filepath=str(REOPEN))
-    for name in ("R001", "R002", "R003", "R004"):
+    for name in ordered:
         obj = bpy.data.objects.get("OLE_REFERENCE_BOUND_OPERATION_" + name)
         check(obj is not None, "reopen_object_" + name)
         check(obj["ref_id"] == REF_ID, "reopen_ref_id_" + name)
@@ -165,6 +190,7 @@ def main():
         check(obj["operation_id"] == OP_ID, "reopen_operation_id_" + name)
         check(obj["resolved_signature"] == revisions[name]["resolved_signature"], "reopen_signature_" + name)
         check(close(obj["radius_mm"], 3.0), "reopen_radius_" + name)
+        check(close(obj["material_depth_mm"], revisions[name]["material_depth_mm"]), "reopen_material_depth_" + name)
         check(obj["source_fcstd_sha256"] == source_sha, "reopen_fcstd_sha_" + name)
         check(obj["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "reopen_authority_" + name)
 
@@ -172,11 +198,12 @@ def main():
         "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK="
         + json.dumps(
             {
-                "schema": "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK_v0.2",
+                "schema": "OLEANDER_REFERENCE_BOUND_OPERATION_BLENDER_READBACK_v0.3",
                 "status": "PASS",
                 "blender_version": bpy.app.version_string,
-                "revisions": ["R001", "R002", "R003", "R004"],
+                "revisions": list(ordered),
                 "ref_id": REF_ID,
+                "selector_id": SELECTOR_ID,
                 "operation_id": OP_ID,
                 "checks": checks,
                 "authority": {
@@ -188,10 +215,12 @@ def main():
                     "persistent_topological_naming_parity",
                     "general_face_reference_stability",
                     "general_multi_wire_reference_stability",
+                    "general_split_face_reference_stability",
                     "edge_reference_stability",
                     "vertex_reference_stability",
                     "nonplanar_semantic_reference_rebind",
                     "automatic_ambiguous_reference_resolution",
+                    "general_largest_area_selector_correctness",
                 ],
             },
             sort_keys=True,
