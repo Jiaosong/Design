@@ -59,12 +59,20 @@
 </g>
 <g transform="translate(84 430)" class="sans">
   <line x1="0" y1="0" x2="1432" y2="0" class="hair"/>
-  <text x="0" y="42" font-size="12" font-weight="700" letter-spacing="2" class="water">ROUTE + PAPER + SIGNAGE + HUMAN SERVICE</text>
-  <text x="0" y="74" font-size="13" class="soft">概念服务关系：强调无手机仍可返回；不提供现场定位、距离、容量或运营既成事实。</text>
-  <g transform="translate(1156 18)">
-    <rect width="276" height="68" rx="2" fill="#F1EEE5"/>
-    <text x="20" y="28" font-size="10" font-weight="800" letter-spacing="1.8" fill="#2E747B">RETURN REMAINS AVAILABLE</text>
-    <text x="20" y="50" font-size="12" fill="#17201E">数字关闭后，关系仍不断。</text>
+  <text x="0" y="46" font-size="12" font-weight="700" letter-spacing="2" class="water">ROUTE + PAPER + SIGNAGE + HUMAN SERVICE</text>
+  <text x="0" y="82" font-size="13" class="soft">概念服务关系：强调无手机仍可返回；不提供现场定位、距离、容量或运营既成事实。</text>
+
+  <g transform="translate(0 148)">
+    <text x="0" y="94" font-size="92" font-weight="700" letter-spacing="5" fill="#EEF3EF" opacity=".10">RETURN</text>
+    <text x="4" y="134" font-size="18" font-weight="700" fill="#EEF3EF">回程仍可用</text>
+    <text x="4" y="162" font-size="12" class="soft">数字关闭后，路线、纸本、标识与人工服务仍承担返回关系。</text>
+  </g>
+
+  <g transform="translate(1122 146)">
+    <line x1="0" y1="0" x2="310" y2="0" class="hair"/>
+    <text x="0" y="34" font-size="10" font-weight="800" letter-spacing="1.8" class="water">RETURN REMAINS AVAILABLE</text>
+    <text x="0" y="61" font-size="12" fill="#EEF3EF">数字辅助退出，不切断回程。</text>
+    <text x="0" y="89" font-size="10" class="soft">PHONE OFF ≠ ROUTE OFF</text>
   </g>
 </g>
 </svg>
