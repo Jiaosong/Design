@@ -1,4 +1,5 @@
 import json
+import math
 
 import bpy
 from mathutils import Vector
@@ -17,6 +18,7 @@ from .relation_kernel import (
 REFERENCE_KEY = "apply_reference_direction_world"
 REFERENCE_STATE_KEY = "apply_reference_state"
 APPLY_MODE = "DETERMINISTIC_ONE_SHOT"
+AXIS_PARALLEL_APPLY_POLICY = "NEAREST_POLARITY_SHORTEST_ROTATION"
 
 
 def _write_json_list(owner, key, value):
@@ -85,6 +87,16 @@ def _require_relation_objects(scene, relation):
     return driver, driven
 
 
+def _world_axis(obj, axis):
+    index = {"X": 0, "Y": 1, "Z": 2}[axis]
+    unit = Vector((0.0, 0.0, 0.0))
+    unit[index] = 1.0
+    vector = obj.matrix_world.to_3x3() @ unit
+    if vector.length <= 1e-12:
+        raise ValueError("AXIS_PARALLEL apply requires a non-degenerate world axis")
+    return vector.normalized()
+
+
 def capture_apply_reference(scene, relation_id):
     relations, index, relation = _find_relation(scene, relation_id)
     if relation is None:
@@ -149,10 +161,34 @@ def _desired_world_origin(scene, relation, driver, driven):
         direction.normalize()
         return driver_origin + direction * _mm_to_scene_value(scene, relation.get("target_mm", 0.0))
 
-    if kind == "AXIS_PARALLEL":
-        raise ValueError("AXIS_PARALLEL apply is multi-solution and intentionally unsupported")
+    raise ValueError(f"relation kind is not supported for deterministic one-shot translation apply: {kind}")
 
-    raise ValueError(f"relation kind is not supported for deterministic one-shot apply: {kind}")
+
+def _axis_parallel_world_matrix(relation, driver, driven, before_matrix):
+    axis = relation.get("axis", "X")
+    driver_axis = _world_axis(driver, axis)
+    driven_axis = _world_axis(driven, axis)
+
+    # AXIS_PARALLEL is polarity-insensitive in the relation kernel. Preserve
+    # that contract by selecting whichever driver polarity is already nearest
+    # to the driven axis, then apply only the shortest rotation needed to
+    # remove angular deviation. No extra twist about the target axis is chosen.
+    dot = max(-1.0, min(1.0, driven_axis.dot(driver_axis)))
+    target_axis = driver_axis if dot >= 0.0 else -driver_axis
+    delta_rotation = driven_axis.rotation_difference(target_axis)
+
+    next_matrix = delta_rotation.to_matrix().to_4x4() @ before_matrix
+    next_matrix.translation = before_matrix.translation.copy()
+    payload = {
+        "axis": axis,
+        "policy": AXIS_PARALLEL_APPLY_POLICY,
+        "before_world_axis": _vector_payload(driven_axis),
+        "target_world_axis": _vector_payload(target_axis),
+        "rotation_delta_deg": float(math.degrees(delta_rotation.angle)),
+        "position_preserved": True,
+        "twist_solver_claim": False,
+    }
+    return next_matrix, payload
 
 
 def apply_relation_once(scene, relation_id):
@@ -169,10 +205,17 @@ def apply_relation_once(scene, relation_id):
     _update_scene_transforms(scene)
     before_matrix = driven.matrix_world.copy()
     before_origin = before_matrix.translation.copy()
-    desired_origin = _desired_world_origin(scene, relation, driver, driven)
+    kind = relation.get("kind", "")
+    rotation_payload = None
 
-    next_matrix = before_matrix.copy()
-    next_matrix.translation = desired_origin
+    if kind == "AXIS_PARALLEL":
+        next_matrix, rotation_payload = _axis_parallel_world_matrix(relation, driver, driven, before_matrix)
+        desired_origin = before_origin.copy()
+    else:
+        desired_origin = _desired_world_origin(scene, relation, driver, driven)
+        next_matrix = before_matrix.copy()
+        next_matrix.translation = desired_origin
+
     driven.matrix_world = next_matrix
     _update_scene_transforms(scene)
 
@@ -193,21 +236,27 @@ def apply_relation_once(scene, relation_id):
     relation["apply_mode"] = APPLY_MODE
     relation["apply_solver_claim"] = False
     relation["apply_revision"] = int(relation.get("apply_revision", 0)) + 1
+    if rotation_payload is not None:
+        relation["axis_parallel_apply_policy"] = AXIS_PARALLEL_APPLY_POLICY
+        relation["axis_parallel_twist_solver_claim"] = False
     relations[index] = relation
     _set_relations(scene, relations)
 
+    event_payload = {
+        "before_world_origin": _vector_payload(before_origin),
+        "after_world_origin": _vector_payload(desired_origin),
+        "result_status": result.get("status"),
+        "apply_mode": APPLY_MODE,
+        "solver_claim": False,
+        "downstream_stale": downstream,
+    }
+    if rotation_payload is not None:
+        event_payload["axis_parallel"] = rotation_payload
     event = _append_event(
         scene,
         "APPLY_ONE_SHOT",
         relation_id,
-        {
-            "before_world_origin": _vector_payload(before_origin),
-            "after_world_origin": _vector_payload(desired_origin),
-            "result_status": result.get("status"),
-            "apply_mode": APPLY_MODE,
-            "solver_claim": False,
-            "downstream_stale": downstream,
-        },
+        event_payload,
     )
     driven["oleander_last_relation_apply"] = relation_id
     driven["oleander_last_relation_apply_event"] = event["event_id"]
