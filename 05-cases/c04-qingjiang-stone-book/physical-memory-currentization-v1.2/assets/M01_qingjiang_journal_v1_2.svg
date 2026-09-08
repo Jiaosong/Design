@@ -1,16 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-<style>.bg{fill:#f4f0e5}.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.paper{fill:#fbf9f3;stroke:#c8c7bd;stroke-width:1.2}.rule{stroke:#9da9a3;stroke-width:1}.river{fill:none;stroke:#6f9d91;stroke-width:3}.t1{font:700 44px 'Noto Serif SC','Songti SC',serif}.t2{font:700 24px 'Noto Serif SC','Songti SC',serif}.t3{font:700 16px 'Noto Sans SC','Microsoft YaHei',sans-serif}.txt{font:400 15px 'Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 11px 'Noto Sans SC',sans-serif;letter-spacing:1.3px}</style>
-<rect class="bg" width="1600" height="1000"/><text x="70" y="76" class="xs qing">M01 / QINGJIANG JOURNAL · PAPER MEMORY INTERFACE V1.2</text><text x="70" y="135" class="t1 ink">《清江旅记》｜让纸本保存身体留下的痕迹</text><text x="70" y="177" class="txt muted">A5 原型；不做“十三枚章集齐册”。纸本负责手写、画、折痕和路线痕迹；数字“我的石书”负责整理、回看和以后再读。</text><text x="70" y="208" class="xs seal">PROTOTYPE FORMAT / EDITABLE VECTOR / NO COMPLETION SCORE</text><line x1="70" y1="235" x2="1530" y2="235" class="rule"/>
-<text x="70" y="280" class="xs qing">01 / PHYSICAL PROTOTYPE</text><g transform="translate(70 310)"><rect width="310" height="440" rx="4" class="paper"/><text x="30" y="48" class="xs qing">QINGJIANG JOURNAL</text><text x="30" y="105" class="t2 ink">清江旅记</text><path d="M30 282c75-49 119 22 178-18 49-33 73-20 101-42" class="river"/><path d="M30 306c74-43 119 26 181-14 48-31 74-18 102-39" class="river" opacity=".55"/><rect x="30" y="375" width="28" height="28" fill="none" stroke="#a54539"/><text x="38" y="396" class="t3 seal">清</text><text x="30" y="423" class="sm muted">A5 / 148 × 210 mm prototype</text></g>
-<g transform="translate(420 310)"><rect width="1110" height="440" rx="18" class="paper"/><text x="34" y="42" class="xs seal">PROTOTYPE BUILD</text><text x="34" y="78" class="t3 ink">建议样件：A5 / 骑马订 / 32 pp（设计测试值）</text><text x="34" y="105" class="sm muted">内页：无涂层书写纸候选；封面：较厚无涂层纸 + 耐污保护测试。页数、克重、装订与耐湿仍需样件验证。</text>
-<line x1="34" y1="132" x2="1070" y2="132" class="rule"/>
-<g transform="translate(34 160)"><text class="xs qing">OPEN / 出发</text><text y="34" class="t3 ink">今天怎么游？</text><text y="63" class="sm muted">BOAT / CABLE / WALK</text><text y="94" class="sm ink">□ 看景　□ 亲子　□ 深读　□ 少走一点</text></g>
-<g transform="translate(300 160)"><text class="xs qing">ROUTE / 路上</text><text y="34" class="t3 ink">我从哪里走到哪里？</text><text y="63" class="sm muted">场景 / 动作 / 一句话</text><line y1="91" x2="220" y2="91" class="rule"/></g>
-<g transform="translate(566 160)"><text class="xs qing">LOOK / 停下</text><text y="34" class="t3 ink">我想记住哪个瞬间？</text><text y="63" class="sm muted">画 / 贴照片 / 写一句</text><rect y="88" width="220" height="108" fill="#e8eee9"/></g>
-<g transform="translate(832 160)"><text class="xs qing">RETURN / 回程</text><text y="34" class="t3 ink">这一趟留下什么？</text><text y="63" class="sm muted">一个声音 / 一阵风 / 一个问题</text><text y="99" class="sm seal">不显示 13/13 / 积分 / 完成率</text></g>
+<style>
+.bg{fill:#f4f0e5}.paper{fill:#fbf9f3;stroke:#c8c7bd;stroke-width:1.2}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}
+.soft{fill:#e8eee9}.rule{stroke:#9da9a3;stroke-width:1}.river{fill:none;stroke:#6f9d91;stroke-width:3}
+.t1{font:700 44px 'Noto Serif SC','Songti SC',serif}
+.t2{font:700 24px 'Noto Serif SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans SC','Microsoft YaHei',sans-serif}
+.txt{font:400 15px 'Noto Sans SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans SC','Microsoft YaHei',sans-serif}
+.xs{font:700 11px 'Noto Sans SC',sans-serif;letter-spacing:1.3px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="66" class="xs qing">M01 / QINGJIANG JOURNAL · PAPER MEMORY INTERFACE V1.3 REPAIR</text>
+<text x="70" y="124" class="t1 ink">《清江旅记》不是“项目说明册”，而是一张可以被身体留下痕迹的纸</text>
+<text x="70" y="166" class="txt muted">保留 A5 / OPEN / ROUTE / LOOK / RETURN 四类页面，但把主画面从“说明四种页面”改成真正可写、可画、可折、可回看的纸本跨页。</text>
+<text x="70" y="198" class="xs seal">MAIN CANDIDATE / EDITABLE VECTOR / NO 13/13 / NO SCORE / FIELD OPEN</text>
+<line x1="70" y1="224" x2="1530" y2="224" class="rule"/>
+<text x="70" y="262" class="xs qing">01 / REAL PAPER USE — ROUTE + LOOK SPREAD</text>
+<g transform="translate(90 292)">
+  <rect x="0" y="0" width="610" height="430" rx="8" class="paper"/>
+  <rect x="610" y="0" width="610" height="430" rx="8" class="paper"/>
+  <line x1="610" y1="10" x2="610" y2="420" class="rule"/>
+  <text x="32" y="42" class="xs qing">ROUTE / 路上</text>
+  <text x="32" y="82" class="t2 ink">今天我从哪里走到哪里？</text>
+  <text x="32" y="112" class="sm muted">不记录“完成多少”，只留下自己真正走过的关系。</text>
+  <path d="M42 208C125 161 189 179 258 219C329 260 392 245 458 202C503 173 547 169 579 182" class="river"/>
+  <path d="M128 187C146 156 171 142 198 136" class="river" opacity=".55"/>
+  <path d="M324 239C346 212 371 199 402 193" class="river" opacity=".55"/>
+  <circle cx="42" cy="208" r="6" fill="#17332c"/>
+  <circle cx="579" cy="182" r="6" fill="#a54539"/>
+  <text x="32" y="292" class="xs seal">今天身体记得：</text>
+  <line x1="32" y1="316" x2="565" y2="316" class="rule"/>
+  <line x1="32" y1="344" x2="565" y2="344" class="rule"/>
+  <line x1="32" y1="372" x2="565" y2="372" class="rule"/>
+  <text x="32" y="408" class="sm muted">□ 想再走一次　□ 这里需要慢一点　□ 今天到这里就够了</text>
+  <text x="642" y="42" class="xs qing">LOOK / 停下</text>
+  <text x="642" y="82" class="t2 ink">我想记住哪个瞬间？</text>
+  <text x="642" y="112" class="sm muted">画、写、贴一张照片；不用解释完整，只保留一个真正想带走的东西。</text>
+  <rect x="642" y="144" width="320" height="210" class="soft"/>
+  <text x="778" y="248" class="sm muted">画 / 贴照片</text>
+  <line x1="990" y1="172" x2="1182" y2="172" class="rule"/>
+  <line x1="990" y1="204" x2="1182" y2="204" class="rule"/>
+  <line x1="990" y1="236" x2="1182" y2="236" class="rule"/>
+  <line x1="990" y1="268" x2="1182" y2="268" class="rule"/>
+  <line x1="990" y1="300" x2="1182" y2="300" class="rule"/>
+  <text x="990" y="334" class="sm muted">写一句</text>
+  <path d="M1146 360l36 36" stroke="#a54539" stroke-width="2" opacity=".75"/>
+  <path d="M1182 360l-36 36" stroke="#a54539" stroke-width="2" opacity=".75"/>
+  <text x="642" y="402" class="sm seal">纸张允许留下折痕、涂改、污渍与停顿；这些不是“错误数据”。</text>
 </g>
-<text x="70" y="820" class="xs qing">02 / PAPER ↔ DIGITAL FIELD MATCH</text>
-<g transform="translate(70 845)"><rect width="450" height="105" rx="14" class="paper"/><text x="20" y="29" class="xs seal">PAPER SAVES</text><text x="20" y="57" class="t3 ink">手写 / 画 / 折痕 / 贴附 / 路线痕迹</text><text x="20" y="82" class="sm muted">这些“材料证据”不需要 App 才存在。</text></g>
-<g transform="translate(555 845)"><rect width="450" height="105" rx="14" class="paper"/><text x="20" y="29" class="xs seal">DIGITAL SAVES</text><text x="20" y="57" class="t3 ink">scene / action / note / photo optional / revisit</text><text x="20" y="82" class="sm muted">不要求 GPS 精确轨迹；v1.2 原型仅本机保存文字。</text></g>
-<g transform="translate(1040 845)"><rect width="490" height="105" rx="14" class="paper"/><text x="20" y="29" class="xs seal">COMMON LANGUAGE</text><text x="20" y="57" class="t3 ink">场景 + 动作 + 一句话 + “以后再看”</text><text x="20" y="82" class="sm muted">纸本和数字共享字段，但不要求实时同步。</text></g>
+<g transform="translate(1340 292)">
+  <rect width="190" height="270" rx="4" class="paper"/>
+  <text x="20" y="36" class="xs qing">QINGJIANG JOURNAL</text>
+  <text x="20" y="88" class="t2 ink">清江旅记</text>
+  <path d="M20 170c44-29 72 14 112-10 31-19 42-11 58-25" class="river"/>
+  <rect x="20" y="214" width="26" height="26" fill="none" stroke="#a54539"/>
+  <text x="27" y="233" class="t3 seal">清</text>
+  <text x="20" y="256" class="sm muted">A5 prototype</text>
+</g>
+<text x="70" y="774" class="xs qing">02 / PAGE-TYPE RELATION — FOUR ROLES, NOT FOUR FEATURE CARDS</text>
+<g transform="translate(70 800)">
+  <rect width="1460" height="120" rx="16" class="paper"/>
+  <text x="24" y="33" class="xs seal">OPEN</text><text x="24" y="64" class="t3 ink">今天想怎么游？</text><text x="24" y="91" class="sm muted">出发前只选节奏，不选任务。</text>
+  <text x="375" y="33" class="xs seal">ROUTE</text><text x="375" y="64" class="t3 ink">我实际走过什么关系？</text><text x="375" y="91" class="sm muted">保留路线痕迹，不做完成度。</text>
+  <text x="730" y="33" class="xs seal">LOOK</text><text x="730" y="64" class="t3 ink">哪一个瞬间值得留下？</text><text x="730" y="91" class="sm muted">允许画、写、贴、空白。</text>
+  <text x="1085" y="33" class="xs seal">RETURN</text><text x="1085" y="64" class="t3 ink">这一趟最后带走什么？</text><text x="1085" y="91" class="sm muted">一阵风 / 一个声音 / 一个问题。</text>
+</g>
+<text x="70" y="958" class="sm muted">现实边界：32 pp、纸张克重、装订、耐湿、书写手感与生产工艺仍需真实样件验证；本轮只修“纸本是否像真实可使用记忆载体”的设计关系。</text>
+<text x="70" y="984" class="sm seal">FAIL：去掉标题后仍像项目说明板、四个功能卡、13枚章集齐册，或页面没有真正可以写/画/留下痕迹的区域。</text>
 </svg>
