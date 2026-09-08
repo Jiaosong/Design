@@ -2,7 +2,23 @@
   "project":"PRJ-C04-QINGJIANG-SHISHU",
   "artifact":"PHYSICAL_MEMORY_DETAIL_v1.2",
   "state":"SINGLE_OBJECT_DETAIL_DEEPENING / FIELD_OPEN / NO_PROMOTION",
-  "objects":{"P02":{"concept":"KEEP","presentation":"KEEP_AFTER_REVISION","delta":"reversible clamp + drain/clean + accessible-flow + maintenance logic"},"P01":{"concept":"KEEP/HOLD","presentation":"PROTOTYPE_MAIN_CANDIDATE","delta":"local short feedback + default OFF failure strategy"},"M01":{"concept":"KEEP","presentation":"MAIN_CANDIDATE","delta":"A5 physical prototype + 4 page types + paper-digital field match"}},
+  "objects":{
+    "P02":{"concept":"KEEP","presentation":"KEEP_AFTER_REVISION","delta":"reversible clamp + drain/clean + accessible-flow + maintenance logic"},
+    "P01":{"concept":"KEEP/HOLD","presentation":"PROTOTYPE_MAIN_CANDIDATE","delta":"local short feedback + default OFF failure strategy"},
+    "M01":{
+      "concept":"KEEP",
+      "presentation":"REVISE_RETURNED",
+      "reviewed_revision":"e5a6df19becf7aa5bf65c7bc74c977eab85e7dce",
+      "reviewed_blob":"b19d62051de4d8755eb516dc3fcdc86f7b56fa60",
+      "review_evidence_level":"INDEPENDENT_PROFESSIONAL_REVIEW / VISUAL_ROI + SEMANTIC",
+      "independence":"VALIDATION_DID_NOT_PARTICIPATE_IN_THIS_REVISION_PRODUCTION",
+      "actual_readback":"1600x1000 exact SVG raster readback + A/B against parent a2490daa version",
+      "verdict":"REVISE_RETURNED",
+      "failure":"The central ROUTE+LOOK spread now reads as usable paper, but the whole artifact still reads first as a presentation/explanation board rather than the actual journal; the lower PAGE-TYPE RELATION remains four equal explanatory columns, reproducing the feature-card logic the revision explicitly says it must avoid. As M01 is a MAIN REQUIRED memory hero, an explanatory board cannot substitute for the required native/editable journal surfaces.",
+      "release_condition":"Return the actual editable A5 journal carrier as real cover + representative OPEN/ROUTE/LOOK/RETURN page/spread artboards (or equivalent native multipage surfaces). Preserve writable/drawable/attachable space and no-score semantics. Reduce or separate meta explanation from the product surfaces. Recheck at page/spread scale and thumbnail; do not promote from SVG parse/render alone.",
+      "residual_hold":"FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD / paper stock, binding, moisture, writing feel and production process remain prototype/field validation open"
+    }
+  },
   "checks":{"all_svg_parse":"PASS","viewbox":"PASS","vector_text":"PASS","no_ai_image":"PASS"},
   "truth_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","construction":"NOT_FOR_CONSTRUCTION","P02_structure":"UNVERIFIED","P01_site_need":"UNVERIFIED"}
 }
