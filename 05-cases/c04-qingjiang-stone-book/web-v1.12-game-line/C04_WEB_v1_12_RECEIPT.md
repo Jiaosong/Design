@@ -1,5 +1,25 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
+## VALIDATION RETURN｜2026-09-09｜b61ffbf
+
+- `PROJECT_ID`: `PRJ-C04-QINGJIANG-SHISHU`
+- `OBJECT_ID`: `PRJ-C04-DIGITAL-INTERACTION`
+- `EXACT_REVISION`: `b61ffbfec6469643eb57624fcf2cd6f777f54af9`
+- `NATIVE_TARGET`: `assets/return_service_closure_current.svg`
+- `NATIVE_BLOB`: `e73f285bf46b562b548288a0921f05e557b94edf`
+- `FROM_OWNER`: `VALIDATION`
+- `TO_OWNER`: `PRESENTATION`
+- `VERDICT`: `REVISE_RETURNED`
+- `REVIEW_EVIDENCE`: exact editable SVG reopen + 1600×900 raster readback + 400×225 thumbnail readback + exact Web embedding/source readback + exact Vercel deployment carrier check.
+- `EDITABILITY`: PASS for this asset. Core route path, labels, state markers and evidence-boundary copy remain live SVG vectors/text; no AI/raster carrier is used for the Return claim.
+- `CLAIM_REPRESENTATION_FAILURE`: the public claim is redundant Return support across route + paper + signage + human service, with digital optional. The current figure visually encodes one continuous route with four sequential nodes, while paper/signage/human redundancy is mostly textual. First-read can therefore become a prescribed four-step sequence rather than parallel/fallback support.
+- `STATE_READBACK`: the uncertain state is not color-only because it is explicitly labelled `状态不确定 / 问人工服务`; digital support is separately labelled optional. No motion is required by this static concept carrier.
+- `CARRIER_FAILURE`: Vercel deployment `dpl_C6HkeQPCu2rKpVPPNzdYmXNQ2QZn` is READY and bound to the exact revision, but independent fetch of its root returned HTTP 404 / NOT_FOUND. Therefore finished Web pixels/navigation cannot be independently closed on this revision.
+- `RELEASE_CONDITION`: (1) redraw the Return relation so route remains the primary continuous carrier while paper/signage/human are visibly parallel/fallback confirmation channels rather than apparent sequential stops; preserve optional digital role and field/non-operation boundary; (2) return an independently reachable exact-revision Web carrier or exact finished screenshots/readback target so the Final section can be blind-reopened in context; (3) rerun only Return visual ROI + final-section carrier regression.
+- `RESIDUAL_HOLD`: `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`; no field, operational, accessibility, safety, capacity or engineering approval is established.
+- `SKILL_ACTIVATION`: no exact producer Skill/version claim was found for this material revision; no Skill usage is inferred from the artifact.
+
+
 > **CURRENT CORRECTION｜2026-08-27**  
 > Public structure remains the 18-section design-work reading + bottom-right supplement. The current runtime is still **ASSET BINDING BLOCKED / DO NOT DEPLOY**. `assets/route03_locked_current.svg` is materialized from its durable Drive source. Hero, R06 Landscape First and R13 Four-Frame source identities are resolved from existing QJ-D v1.1 assets, but their required GitHub runtime representations are still missing. `assets/app_mybook.png` has only a partially resolved research-prototype lineage, and `assets/return_qingjiang.jpg` now has a verified Current RETURN / SERVICE role but no content-verified exact visual source bytes; both remain recovery HOLD. No redraw, AI replacement, screenshot reconstruction, generic Qingjiang-photo substitution, or approximate substitute is authorized as historical recovery. R13 must retain `REMOTE SPATIAL CONCEPT / NOT SITE PHOTO`. Reduced-motion remains proven only at source-rule presence level; browser/system preference emulation and state-equivalence readback are NOT RUN.
 
