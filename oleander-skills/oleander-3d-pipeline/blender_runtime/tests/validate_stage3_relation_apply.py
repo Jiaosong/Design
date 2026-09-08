@@ -1,9 +1,10 @@
 """Real-Blender validation for deterministic OLEANDER Relation Apply.
 
 This stage validates explicit one-shot transform correction for uniquely
-resolvable translation relations. It intentionally rejects multi-solution
-rotation, uncaptured distance direction, and externally constrained transforms.
-It is not an iterative constraint solver or CAD/B-Rep regeneration system.
+resolvable translation relations and a bounded AXIS_PARALLEL correction using
+nearest-polarity shortest rotation. It rejects uncaptured distance direction
+and externally constrained transforms. It is not an iterative constraint,
+assembly mate, twist, or CAD/B-Rep solver.
 """
 
 from __future__ import annotations
@@ -25,7 +26,11 @@ if str(RUNTIME_ROOT) not in sys.path:
 
 import oleander_blender
 from oleander_blender.dependency import clear_stale
-from oleander_blender.relation_apply import REFERENCE_KEY, get_relation_events
+from oleander_blender.relation_apply import (
+    AXIS_PARALLEL_APPLY_POLICY,
+    REFERENCE_KEY,
+    get_relation_events,
+)
 from oleander_blender.relation_kernel import evaluate_relation, get_relations
 
 
@@ -93,8 +98,14 @@ def world_origin(obj):
     return obj.matrix_world.translation.copy()
 
 
-def euler_delta_length(a, b):
-    return Vector((a.x - b.x, a.y - b.y, a.z - b.z)).length
+def world_axis(obj, axis):
+    bpy.context.view_layer.update()
+    index = {"X": 0, "Y": 1, "Z": 2}[axis]
+    unit = Vector((0.0, 0.0, 0.0))
+    unit[index] = 1.0
+    vector = obj.matrix_world.to_3x3() @ unit
+    assert_true(vector.length > 1e-12, "test fixture axis must be non-degenerate")
+    return vector.normalized()
 
 
 def main():
@@ -205,21 +216,34 @@ def main():
         "ambiguous ORIGIN_DISTANCE direction",
     )
 
-    # Positive failure: AXIS_PARALLEL has twist ambiguity; no rotation is silently chosen.
+    # AXIS_PARALLEL: bounded nearest-polarity shortest rotation; no twist solver.
     parallel_driver = add_cube("OLE_APPLY_PAR_DRIVER", "OLE_APPLY_PAR_DRIVER", (0.0, 15000.0, 0.0))
     parallel_driven = add_cube("OLE_APPLY_PAR_DRIVEN", "OLE_APPLY_PAR_DRIVEN", (500.0, 15000.0, 0.0))
+    parallel_driven.rotation_euler.z = 3.0
+    bpy.context.view_layer.update()
     select_pair(parallel_driver, parallel_driven)
     parallel_create = bpy.ops.oleander.add_relation(kind="AXIS_PARALLEL", axis="X", tolerance_deg=0.1, capture_current=False)
     assert_true("FINISHED" in parallel_create, "parallel relation fixture must be created")
     parallel_id = get_relations(scene)[-1]["relation_id"]
-    parallel_driven.rotation_euler.z = 0.2
-    bpy.context.view_layer.update()
-    before_rotation = parallel_driven.rotation_euler.copy()
-    expect_runtime_failure(
-        lambda: bpy.ops.oleander.apply_relation_once(relation_id=parallel_id),
-        "multi-solution and intentionally unsupported",
-    )
-    assert_true(euler_delta_length(parallel_driven.rotation_euler, before_rotation) <= 1e-12, "failed parallel apply must not choose an arbitrary rotation")
+    before_parallel_origin = world_origin(parallel_driven)
+    before_parallel_axis = world_axis(parallel_driven, "X")
+    driver_parallel_axis = world_axis(parallel_driver, "X")
+    assert_true(before_parallel_axis.dot(driver_parallel_axis) < 0.0, "fixture must begin nearer anti-parallel polarity")
+    assert_true(evaluate_relation(scene, relation_by_id(scene, parallel_id))["status"] == "FAIL", "parallel fixture must fail before bounded apply")
+
+    parallel_apply = bpy.ops.oleander.apply_relation_once(relation_id=parallel_id)
+    assert_true("FINISHED" in parallel_apply, "bounded axis-parallel one-shot apply must finish")
+    parallel_after = relation_by_id(scene, parallel_id)
+    after_parallel_axis = world_axis(parallel_driven, "X")
+    assert_true(evaluate_relation(scene, parallel_after)["status"] == "PASS", "axis-parallel apply must restore relation PASS")
+    assert_true((world_origin(parallel_driven) - before_parallel_origin).length <= 1e-9, "axis-parallel apply must preserve world position")
+    assert_true(after_parallel_axis.dot(driver_parallel_axis) <= -0.999999, "nearest-polarity apply must preserve anti-parallel polarity instead of flipping 180 degrees")
+    assert_true(parallel_after.get("axis_parallel_apply_policy") == AXIS_PARALLEL_APPLY_POLICY, "axis-parallel apply policy must persist")
+    assert_true(parallel_after.get("axis_parallel_twist_solver_claim") is False, "axis-parallel apply must explicitly deny twist solver claim")
+    parallel_event = get_relation_events(scene)[-1]
+    parallel_payload = parallel_event.get("payload", {}).get("axis_parallel", {})
+    assert_true(parallel_payload.get("policy") == AXIS_PARALLEL_APPLY_POLICY, "axis-parallel event must record bounded correction policy")
+    assert_true(0.0 < float(parallel_payload.get("rotation_delta_deg", 999.0)) < 15.0, "axis-parallel apply must choose the short anti-parallel correction, not a long polarity flip")
 
     # Positive failure: external Blender transform constraints retain authority.
     constrained_driver = add_cube("OLE_APPLY_CON_DRIVER", "OLE_APPLY_CON_DRIVER", (0.0, 18000.0, 0.0))
@@ -254,15 +278,18 @@ def main():
     bpy.ops.wm.open_mainfile(filepath=reopen_path)
     reopened_scene = bpy.context.scene
     reopened_distance = relation_by_id(reopened_scene, distance_id)
+    reopened_parallel = relation_by_id(reopened_scene, parallel_id)
     assert_true(isinstance(reopened_distance.get(REFERENCE_KEY), list) and len(reopened_distance[REFERENCE_KEY]) == 3, "captured distance direction must survive .blend reopen")
     assert_true(reopened_distance.get("apply_revision") == 1, "apply revision must survive .blend reopen")
+    assert_true(reopened_parallel.get("axis_parallel_apply_policy") == AXIS_PARALLEL_APPLY_POLICY, "axis-parallel bounded policy must survive .blend reopen")
+    assert_true(reopened_parallel.get("axis_parallel_twist_solver_claim") is False, "axis-parallel non-solver boundary must survive .blend reopen")
     reopened_actions = [event.get("action") for event in get_relation_events(reopened_scene)]
     assert_true("APPLY_REFERENCE_CAPTURE" in reopened_actions and "APPLY_ONE_SHOT" in reopened_actions, "apply events must survive .blend reopen")
 
     result = {
         "runtime": "OLEANDER Blender Runtime",
         "stage": "STAGE3_RELATION_APPLY",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "blender": bpy.app.version_string,
         "status": "PASS",
         "source_fingerprint_sha256": source_fingerprint(),
@@ -275,6 +302,10 @@ def main():
             "origin_distance_reference_direction_provenance",
             "origin_distance_one_shot_restore",
             "origin_distance_restores_captured_direction",
+            "axis_parallel_nearest_polarity_one_shot_apply",
+            "axis_parallel_position_preserved",
+            "axis_parallel_shortest_rotation_policy",
+            "axis_parallel_twist_solver_claim_false",
             "relation_apply_solver_claim_false",
             "relation_apply_revision",
             "relation_apply_downstream_stale_propagation",
@@ -282,19 +313,17 @@ def main():
             "uncaptured_distance_apply_expected_failure",
             "uncaptured_distance_failure_no_geometry_mutation",
             "ambiguous_distance_direction_expected_failure",
-            "axis_parallel_multisolution_expected_failure",
-            "axis_parallel_failure_no_rotation_mutation",
             "external_transform_authority_expected_failure",
             "external_authority_failure_no_transform_mutation",
             "missing_relation_apply_expected_failure",
             "relation_apply_reference_save_reopen_persistence",
             "relation_apply_revision_save_reopen_persistence",
+            "axis_parallel_apply_save_reopen_persistence",
             "relation_apply_event_save_reopen_persistence",
         ],
         "expected_failure_cases": {
             "uncaptured_distance_direction": "PASS",
             "ambiguous_distance_direction": "PASS",
-            "axis_parallel_multisolution": "PASS",
             "external_transform_authority": "PASS",
             "missing_relation_id": "PASS",
         },
@@ -302,6 +331,8 @@ def main():
             "constraint_solver",
             "iterative_solver",
             "multi_relation_solver",
+            "assembly_mate_solver",
+            "twist_constraint_solver",
             "solver_backed_sketch_constraints",
             "cad_brep",
             "feature_solver",
