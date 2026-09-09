@@ -63,6 +63,26 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
         box.prop(meta, "assembly_id")
         box.prop(meta, "stale")
 
+        if obj.type == "MESH":
+            direct_box = layout.box()
+            direct_box.label(text="Direct Face · bounded v0.1")
+            direct_box.label(text=f"Authority route: {meta.master_type}")
+            if context.mode == "EDIT_MESH":
+                direct_box.operator(
+                    "oleander.direct_face_normal_move",
+                    text="Face Normal Move ±mm",
+                    icon="ORIENTATION_NORMAL",
+                )
+                if meta.master_type == "CAD_NATIVE":
+                    direct_box.label(text="CAD route prepares intent only", icon="INFO")
+                    direct_box.label(text="Display mesh is not CAD authority")
+                elif meta.master_type == "BLENDER_NATIVE":
+                    direct_box.label(text="One selected face · local normal · mm")
+                else:
+                    direct_box.label(text="No bounded direct-face route for this master", icon="ERROR")
+            else:
+                direct_box.label(text="Enter Mesh Edit Mode and select one face")
+
         audit_box = layout.box()
         audit_box.label(text="Last Audit")
         raw_summary = context.scene.get("oleander_last_audit_summary")
