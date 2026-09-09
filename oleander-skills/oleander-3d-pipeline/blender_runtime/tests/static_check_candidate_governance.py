@@ -1,3 +1,11 @@
+"""Blender Runtime governance readback for the installed bounded Current.
+
+The historical filename is preserved for workflow/path stability after PR #470
+absorption. Its assertions now validate main as the only installed Current while
+retaining Candidate lineage only as provenance and keeping blocked parity gates
+fail-closed.
+"""
+
 from __future__ import annotations
 
 import json
