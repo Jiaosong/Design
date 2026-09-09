@@ -2,15 +2,15 @@ bl_info = {
     "name": "OLEANDER Blender Runtime",
     "author": "OLEANDER",
     "version": (0, 2, 0),
-    "blender": (5, 1, 0),
+    "blender": (5, 2, 0),
     "location": "View3D > Sidebar > OLEANDER",
-    "description": "Governed Blender workbench for OLEANDER 3D",
+    "description": "Shared governed OLEANDER 3D environment software hosted in Blender",
     "category": "3D View",
 }
 
 import bpy
 
-from .properties import OLEANDER_ObjectMetadata
+from .properties import OLEANDER_EnvironmentState, OLEANDER_ObjectMetadata
 from .operators import (
     OLEANDER_OT_assign_identity,
     OLEANDER_OT_run_audit,
@@ -100,7 +100,9 @@ PANEL_CLASSES = (
 
 
 def register():
+    bpy.utils.register_class(OLEANDER_EnvironmentState)
     bpy.utils.register_class(OLEANDER_ObjectMetadata)
+    bpy.types.Scene.oleander_environment = bpy.props.PointerProperty(type=OLEANDER_EnvironmentState)
     bpy.types.Object.oleander = bpy.props.PointerProperty(type=OLEANDER_ObjectMetadata)
     for cls in OPERATOR_CLASSES:
         bpy.utils.register_class(cls)
@@ -115,7 +117,10 @@ def unregister():
         bpy.utils.unregister_class(cls)
     if hasattr(bpy.types.Object, "oleander"):
         del bpy.types.Object.oleander
+    if hasattr(bpy.types.Scene, "oleander_environment"):
+        del bpy.types.Scene.oleander_environment
     bpy.utils.unregister_class(OLEANDER_ObjectMetadata)
+    bpy.utils.unregister_class(OLEANDER_EnvironmentState)
 
 
 if __name__ == "__main__":

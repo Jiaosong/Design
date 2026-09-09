@@ -1,11 +1,14 @@
 """Governed Blender-side adapter for authoritative CAD process sidecars.
 
-This candidate module remains outside the installed OLEANDER Blender Runtime core
-until its dedicated professional integration workflow is validated. It does not
-implement a B-Rep kernel. It serializes solved sketch intent into a deterministic
-CAD build request, fingerprints that request, binds an external sidecar response
-to a Blender display derivative, and marks the display stale when upstream CAD
-intent changes.
+This module is a shared, project-neutral professional backend adapter under the
+installed OLEANDER Blender Runtime Current. It does not implement a B-Rep kernel
+and does not make Blender mesh geometry authoritative CAD geometry. It serializes
+solved sketch intent into a deterministic CAD build request, fingerprints that
+request, binds an external sidecar response to a Blender display derivative, and
+marks the display stale when upstream CAD intent changes.
+
+Project profiles may configure routing inputs, but they must not replace this
+adapter's authority contract or bypass response/readback validation.
 
 Authority boundary:
 - request source: SOLVED_SKETCH_INTENT

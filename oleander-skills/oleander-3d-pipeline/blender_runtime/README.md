@@ -5,6 +5,33 @@ Parent Skill: `oleander-skills/oleander-3d-pipeline/SKILL.md`
 
 This directory is the executable Blender implementation layer of the single OLEANDER 3D Skill. It is not a second Skill or a second Current authority.
 
+## Shared environment software boundary
+
+OLEANDER Blender is a **shared 3D environment software layer**, not a project-specific Blender plug-in and not a runtime owned by any individual design project.
+
+The stable product boundary is:
+
+```text
+Shared OLEANDER Blender Environment
+├─ Runtime Core: identity / dependency / authority / audit / diff / stale state
+├─ Modeling Environment: direct / parametric / surface / procedural / sculpt / assembly
+├─ Domain Workspaces: general / product / spatial / architecture / exhibition / furniture / landscape
+├─ Professional Backends: CAD/B-Rep / NURBS / BIM/IFC / GIS / CAE / CAM / drawing
+└─ Project Profiles: optional configuration consumers of the shared environment
+```
+
+Rules:
+
+- Runtime/Core implementation must remain project-neutral and must not import project IDs, project geometry code, project assets or project-specific authority semantics;
+- a project is a **consumer** of the shared environment through an optional Project Profile, never the owner of the Runtime core;
+- Domain Workspace is a reusable software mode; it is not a Project Profile;
+- Project Profiles may configure units, naming, metadata defaults, review rules, export templates and workspace defaults;
+- Project Profiles must not replace geometry/master authority, bypass audit or validation, silently change specialist-kernel routing, or convert project evidence into a global capability claim;
+- specialist sidecars are shared capability backends and preserve their own authority contracts across projects;
+- project usage evidence may validate that the shared Runtime is consumed in real work, but it does not make project-specific behavior part of the common software.
+
+The Blender scene exposes this boundary through `Scene.oleander_environment`: `domain_workspace`, optional `project_profile_id`, `project_profile_locator`, and `project_profile_state`. An unbound scene remains a valid shared OLEANDER environment with project-neutral defaults.
+
 ## Current runtime compatibility
 
 Current-source compatibility evidence is the consolidated real-runtime receipt:
@@ -31,7 +58,9 @@ Current governance authority remains `blender_runtime/CANDIDATE_GOVERNANCE.json`
 
 Before adding implementation, extend or compose an existing owner when it can carry the requirement:
 
-- identity / metadata / audit / dependency / diff: `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
+- shared environment/profile state + object identity / metadata: `properties.py`;
+- shared environment UI + audit surface: `panel.py`;
+- identity / audit / dependency / diff: `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
 - direct modeling / editable feature stack: `direct_model.py`, `feature_stack.py`, `feature_edit.py`;
 - measurement / ruler / datum / inference: `measurement_system.py`, `measurement_atomic.py`, `angular_datum.py`, `precision_inference.py`, `inference_engine.py`;
 - relations / deterministic one-shot correction / configurations: `relation_kernel.py`, `relation_apply.py`, `configuration.py`, `configuration_ops.py`;
@@ -57,6 +86,8 @@ The Current absorbed scope includes validated bounded support for:
 - design parameter registry, dependency graph, explicit apply, atomic batch apply, rebuild planning and rollback/provenance;
 - Geometry Nodes procedural foundation with governed provenance;
 - configuration/BOM support, audit and export manifest foundations.
+
+The shared-environment Project Profile surface added on 2026-09-09 is a configuration boundary, not a new professional parity claim.
 
 ## Specialist-kernel boundary
 
@@ -91,13 +122,14 @@ See `PROFESSIONAL_PARITY_STATUS.json` for the current bounded professional capab
 
 For material runtime changes:
 
-1. resolve Current Project/Object authority and Required Native Output;
-2. reuse an existing module before creating implementation;
-3. run static contract checks and the smallest affected real-Blender validation;
-4. for current-wide compatibility, run the canonical Blender 5.2 LTS regression;
-5. reopen/read back persisted state where applicable;
-6. keep Machine/Compliance evidence separate from Professional Design verdict;
-7. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface when their facts materially changed.
+1. resolve shared Runtime authority and, when present, the active Project Profile without allowing the profile to replace Runtime authority;
+2. resolve Current Project/Object authority and Required Native Output for project work;
+3. reuse an existing module before creating implementation;
+4. run static contract checks and the smallest affected real-Blender validation;
+5. for current-wide compatibility, run the canonical Blender 5.2 LTS regression;
+6. reopen/read back persisted state where applicable;
+7. keep Machine/Compliance evidence separate from Professional Design verdict;
+8. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface when their facts materially changed.
 
 A material runtime change that is not reflected in its routing/status surfaces is an alignment failure even when its code tests pass.
 

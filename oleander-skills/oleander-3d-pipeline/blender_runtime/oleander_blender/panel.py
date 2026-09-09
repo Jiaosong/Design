@@ -14,6 +14,16 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
         layout = self.layout
         obj = context.active_object
 
+        environment = context.scene.oleander_environment
+        environment_box = layout.box()
+        environment_box.label(text="Shared 3D Environment")
+        environment_box.label(text="Role: project-neutral OLEANDER software", icon="WORLD")
+        environment_box.prop(environment, "domain_workspace")
+        environment_box.prop(environment, "project_profile_id")
+        environment_box.prop(environment, "project_profile_locator")
+        environment_box.prop(environment, "project_profile_state")
+        environment_box.label(text="Project profiles configure; Runtime authority stays shared", icon="INFO")
+
         actions = layout.row(align=True)
         actions.operator("oleander.assign_identity", text="Assign / Repair ID")
         actions.operator("oleander.run_audit", text="Audit")
