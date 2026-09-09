@@ -43,6 +43,9 @@ jobs:
       - name: Validate runtime snapshot, selective readback and escalation decisions
         run: python 00-governance/runtime/validate_runtime_decisions.py
 
+      - name: Validate continuation execution cycle
+        run: python 00-governance/runtime/validate_continuation_cycle.py
+
       - name: Validate governance consolidation contracts
         run: python 00-governance/runtime/validate_governance_consolidation.py
 
