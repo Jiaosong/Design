@@ -14,6 +14,24 @@ EXPECTED_JOB_ID = 102311768341
 EXPECTED_STAGE_COUNT = 17
 FINGERPRINT_MISMATCHES: list[tuple[str, str, str]] = []
 
+REQUIRED_BOUNDED_DIRECT_DELTA = {
+    "BLENDER_NATIVE_SINGLE_FACE_NORMAL_MOVE_MM",
+    "DIRECT_FACE_DOWNSTREAM_STALE_PROPAGATION",
+    "CAD_NATIVE_DIRECT_EDIT_INTENT_ROUTING",
+    "CAD_DISPLAY_GEOMETRY_NO_MUTATION",
+    "SEMANTIC_SELECTOR_WITHOUT_PERSISTENT_TOPOLOGY_ORDINAL",
+    "AMBIGUOUS_OR_MISSING_CAD_SELECTOR_FAIL_CLOSED_HOLD",
+}
+
+REQUIRED_DIRECT_NON_CLAIMS = {
+    "CAD_DIRECT_EDIT_EXECUTION",
+    "GENERAL_BREP_PUSH_PULL",
+    "PERSISTENT_TOPOLOGICAL_NAMING_GENERALITY",
+    "P0_B_DIRECT_BREP_PASS",
+    "default_environment_promotion",
+    "general_cad_parity",
+}
+
 
 def load_consolidated() -> dict:
     if not CONSOLIDATED_RECEIPT.is_file():
@@ -49,6 +67,16 @@ def load_consolidated() -> dict:
     stages = receipt.get("stages", {})
     if len(stages) != EXPECTED_STAGE_COUNT:
         base.fail(f"consolidated Blender 5.2 receipt must bind exactly {EXPECTED_STAGE_COUNT} stages")
+
+    bounded_delta = set(receipt.get("validated_bounded_delta", []))
+    missing_delta = sorted(REQUIRED_BOUNDED_DIRECT_DELTA - bounded_delta)
+    if missing_delta:
+        base.fail(f"bounded Direct Face evidence missing from consolidated receipt: {missing_delta}")
+
+    non_claims = set(receipt.get("non_claims", []))
+    missing_non_claims = sorted(REQUIRED_DIRECT_NON_CLAIMS - non_claims)
+    if missing_non_claims:
+        base.fail(f"Direct Face non-claim boundaries missing from consolidated receipt: {missing_non_claims}")
 
     if not RUNTIME_WORKFLOW.is_file():
         base.fail("Blender 5.2 regression workflow missing")
