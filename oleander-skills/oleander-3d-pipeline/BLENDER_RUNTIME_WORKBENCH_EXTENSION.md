@@ -1,18 +1,19 @@
 # OLEANDER Blender Runtime / Workbench Extension
 
-Status: CANDIDATE IMPLEMENTATION LAYER / NOT INSTALLED CURRENT
+Status: CURRENT IMPLEMENTATION LAYER / BOUNDED ABSORPTION IN MAIN
 Parent authority: `oleander-skills/oleander-3d-pipeline/SKILL.md`
 
-## Current implementation alignment — 2026-09-05
+## Current implementation alignment — 2026-09-09
 
 This file is an implementation layer under the existing `oleander-3d-pipeline` Skill. It is not a second Skill, second Runtime Current, or independent governance authority.
 
-Current Candidate facts:
+Current facts:
 
-- installed Current remains the `main` branch copy of `oleander-skills/oleander-3d-pipeline/` until explicit merge/promotion + readback;
-- the Candidate runtime has a consolidated real-Blender regression on Blender `5.2.0 LTS` and seventeen bound validation stages; current-source compatibility authority is `blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`;
-- historical per-stage Blender 5.1.2 receipts remain immutable provenance and are not current-source compatibility authority;
+- `main` is the only installed Current for the bounded Runtime/Workbench scope absorbed through PR #470 on 2026-09-07;
+- the absorbed runtime has a consolidated real-Blender regression on Blender `5.2.0 LTS` and seventeen bound validation stages; current-source compatibility authority is `blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`;
+- historical per-stage Blender 5.1.2 receipts and the former `feat/oleander-blender-runtime-workbench` branch remain immutable provenance, not a second Current;
 - professional CAD/B-Rep proofs remain bounded specialist-kernel evidence; Blender does not become B-Rep authority by consuming their display derivatives;
+- `default_environment_eligible` remains false and `P0_B_DIRECT_BREP` remains BLOCKED;
 - `PROFESSIONAL_PARITY_STATUS.json` remains the capability-claim boundary and P0 professional gaps remain explicit.
 
 Existing-first implementation map:
@@ -25,7 +26,7 @@ Existing-first implementation map:
 - mesh clearance / surface diagnostics: `mesh_clearance.py`, `surface_diagnostics.py`;
 - authoritative CAD handoff: `professional_adapter/cad_sidecar.py` plus the applicable specialist route and bounded runtime evidence.
 
-When an existing module can carry roughly 60% or more of a requirement, extend or compose it. Do not create a parallel Blender Skill, assembly Skill, CAD Skill, duplicate Workbench framework, second Current runtime, or one-off professional workflow to bypass an existing owner. Any material runtime change must close the loop by updating the parent Skill routing, capability/status records, this Workbench extension, Runtime README, Candidate governance and the matching Notion control surface, followed by the smallest applicable real-runtime regression/readback.
+When an existing module can carry roughly 60% or more of a requirement, extend or compose it. Do not create a parallel Blender Skill, assembly Skill, CAD Skill, duplicate Workbench framework, second Current runtime, or one-off professional workflow to bypass an existing owner. Any material runtime change must close the loop by updating the parent Skill routing, capability/status records, this Workbench extension, Runtime README, governance state and the matching Notion control surface, followed by the smallest applicable real-runtime regression/readback.
 
 ## Purpose
 
