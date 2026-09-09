@@ -33,8 +33,32 @@
     "browser_observation_is_readback_evidence_until_promoted_by_existing_authority_gate": true,
     "automation_wakeup_is_not_material_delta": true,
     "heavy_executor_is_not_completion_gate_or_independent_reviewer": true,
-    "prefer_role_capability_routing_over_vendor_specific_ontology": true
+    "prefer_role_capability_routing_over_vendor_specific_ontology": true,
+    "currently_exposed_unregistered_connector_may_be_used_ephemerally_when_role_authority_and_output_contract_match": true,
+    "ephemeral_connector_use_does_not_auto_register_new_surface": true
   },
+  "capability_route_roles": [
+    "AUTHORITY_READ_WRITE",
+    "REPO_SOURCE_MUTATION",
+    "ASSET_ARCHIVE_DELIVERY",
+    "NATIVE_PRODUCTION",
+    "RUNTIME_READBACK",
+    "DEPLOYMENT",
+    "HUMAN_COORDINATION",
+    "SCHEDULED_WAKEUP",
+    "HEAVY_EXECUTION"
+  ],
+  "route_decision_fields": [
+    "required_capability_roles",
+    "candidate_surfaces",
+    "selected_surface",
+    "selection_reasons",
+    "availability_state",
+    "authority_ceiling",
+    "side_effect_class",
+    "readback_surface",
+    "fallback_surface"
+  ],
   "side_effect_classes": ["READ_ONLY", "LOCAL_MUTATION", "REMOTE_MUTATION", "AUTHORITY_MUTATION", "RELEASE_MUTATION"],
   "side_effect_policy": {
     "selection_rule": "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
@@ -51,6 +75,41 @@
     "fallback_policy": "PRESERVE_NATIVE_OUTPUT_TRUTH_BOUNDARY_AND_DECLARE_CAPABILITY_LOSS",
     "adapter_failure_does_not_authorize_new_skill_method_framework": true
   },
+  "unified_adapter_routing_policy": {
+    "purpose": "ONE_CAPABILITY_ROLE_ROUTER_OVER_CURRENTLY_AVAILABLE_SURFACES_WITHOUT_VENDOR_ONTOLOGY",
+    "selection_precedence": [
+      "CURRENT_AUTHORITY_AND_OWNER_BOUNDARY",
+      "REQUIRED_NATIVE_OUTPUT_AND_MUTATION_CAPABILITY",
+      "ACTIVE_CONSTRAINTS_AND_PERMISSION",
+      "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
+      "ACTUAL_READBACK_COVERAGE",
+      "CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY",
+      "LOWER_EXECUTION_OVERHEAD",
+      "DECLARED_FALLBACK"
+    ],
+    "vendor_name_must_not_determine_route": true,
+    "route_by_capability_role": true,
+    "do_not_probe_every_connected_surface": true,
+    "probe_selected_or_needed_fallback_only": true,
+    "candidate_surface_not_default_production_eligible_unless_existing_registry_allows": true,
+    "availability_is_runtime_fact_not_authority": true,
+    "selected_surface_must_support_required_native_output_or_truthful_bounded_fallback": true,
+    "mutation_surface_must_not_exceed_authority_ceiling": true,
+    "prefer_distinct_readback_surface_when_practical": true,
+    "same_surface_readback_if_no_alternative_must_declare_not_independent": true,
+    "connector_failure_fallback_must_preserve_truth_boundary": true,
+    "ephemeral_route_decision_by_default": true,
+    "persist_route_decision_only_when_material_execution_uses_it_and_existing_receipt_trigger_applies": true,
+    "no_parallel_plugin_state_store": true,
+    "no_new_surface_registry_entry_for_one_off_connector_use": true
+  },
+  "surface_liveness_policy": {
+    "states": ["AVAILABLE", "UNAVAILABLE", "DEGRADED", "UNKNOWN"],
+    "probe_when": ["SELECTED_SURFACE_REQUIRES_RUNTIME_CONFIRMATION", "PREVIOUS_SELECTED_SURFACE_FAILED", "FALLBACK_SELECTION_REQUIRES_CONFIRMATION"],
+    "do_not_probe_for_inventory_curiosity": true,
+    "unknown_surface_does_not_block_when_another_verified_sufficient_surface_is_available": true,
+    "availability_change_does_not_change_project_authority": true
+  },
   "selective_readback_policy": {
     "rule": "READBACK_SCOPE_FOLLOWS_MUTATION_BLAST_RADIUS",
     "sequence": ["MUTATION_SCOPE", "AFFECTED_DEPENDENCIES_OR_SURFACES", "SMALLEST_SUFFICIENT_ACTUAL_READBACK", "VERDICT"],
@@ -60,7 +119,7 @@
     "distinct_evidence_channel_does_not_create_new_reviewer_role": true
   },
   "ephemeral_persistence_policy": {
-    "ephemeral_by_default": ["SEARCH_RESULTS", "TOOL_LOGS", "FAILED_ATTEMPTS", "CONSOLE_OUTPUT", "TEMP_SCREENSHOTS", "INTERMEDIATE_DEPLOYMENT_URLS", "TRANSIENT_ADAPTER_STATE"],
+    "ephemeral_by_default": ["SEARCH_RESULTS", "TOOL_LOGS", "FAILED_ATTEMPTS", "CONSOLE_OUTPUT", "TEMP_SCREENSHOTS", "INTERMEDIATE_DEPLOYMENT_URLS", "TRANSIENT_ADAPTER_STATE", "UNUSED_ROUTE_CANDIDATES", "SURFACE_LIVENESS_PROBES"],
     "promotion_sequence": ["ACTUAL_READBACK", "REVIEW_OR_VALIDATION_AS_APPLICABLE", "MATERIAL_DELTA", "EXISTING_PERSISTENCE_TRIGGER"],
     "plugin_output_not_knowledge": true,
     "runtime_trace_not_project_state": true,

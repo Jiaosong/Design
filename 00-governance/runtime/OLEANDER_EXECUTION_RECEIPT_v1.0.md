@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint**  
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance**  
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -17,7 +17,14 @@ Policy revision 1.1 requires two mandatory runtime sections for all new receipts
 
 Current visual extension additionally requires **Image Consumption** whenever the execution binds semantic content imagery.
 
-The 2026-09-09 runtime extension additionally uses **Continuation Resume Checkpoint** when the same material task is expected to continue across chat turns, context compression, handoffs or other execution interruptions. This is conditional runtime state inside the existing Receipt; it does not create a new Project State, METHOD, Skill, framework, Agent taxonomy or database.
+The 2026-09-09 runtime extensions additionally support:
+
+- **Continuation Resume Checkpoint** when the same material task continues across chat turns, context compression, handoffs or other execution interruptions;
+- **Cross-Context Frontier Discovery** when a continuation must recover the active frontier from existing state because the current Chat does not carry a reliable local task pointer;
+- **Adapter Route Decision** when a material execution evaluates multiple surfaces or uses a currently exposed ephemeral connector;
+- **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion.
+
+These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database or state database.
 
 The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the applicable sections.
 
@@ -72,6 +79,8 @@ Record:
 - `next_allowed_action`
 - `authority_fingerprint`
 - `stale_reasons`
+- `checkpoint_sequence`
+- `checkpoint_updated_at`
 
 `last_verified_artifact` records at minimum:
 
@@ -80,6 +89,29 @@ Record:
 The `authority_fingerprint` is a deterministic digest or stable composite over the applicable Current state:
 
 `CURRENT_ROOT_VERSION / PROJECT_OR_SCOPE_AUTHORITY / SOURCE_AUTHORITY / DESIGN_AUTHORITY / CURRENT_TASK_ID / CURRENT_NATIVE_MASTER_OR_REF / ACTIVE_CONSTRAINT_LOCK`.
+
+### Cross-context frontier discovery
+
+When a new Chat or compressed context does not carry a reliable local task pointer, recover the existing frontier from:
+
+1. project/task/object keys explicitly present in the current request;
+2. Current Project State or Current Task pointer;
+3. Current Project Control Card;
+4. active `WORKING / HOLD` Execution Receipts.
+
+Match on stable keys when available:
+
+`PROJECT_ID_OR_SCOPE_ID / TASK_ID / LOGICAL_OBJECT_OR_CANONICAL_IDS / CURRENT_NATIVE_MASTER_OR_REF / AUTHORITY_FINGERPRINT`.
+
+Do not use title similarity, chat history or a summary as checkpoint authority.
+
+When frontier discovery is materially used, record:
+
+`discovery_trigger / project_or_scope_key / task_key / object_or_canonical_ids / candidate_frontiers / selected_frontier / selection_basis / ambiguity_state`.
+
+If several checkpoints represent the same task/object under matching Current Authority, select the highest `checkpoint_sequence`, then the latest `checkpoint_updated_at`. Older checkpoints remain provenance.
+
+If multiple **distinct** active frontiers remain and Current Authority cannot identify one active task, use `HOLD_AMBIGUOUS_FRONTIER` instead of guessing or merging states.
 
 ### Direct resume
 
@@ -125,6 +157,31 @@ Write/update a continuation checkpoint only through an existing persistence trig
 - a typed handoff becoming ready/accepted.
 
 `NO MATERIAL DELTA = NO NEW RECEIPT JUST FOR CHECKPOINTING`.
+
+## 3B｜Continuous Execution｜when applicable
+
+Use this section when more than one ready node is executed in one material run, or when auto-advance stops before Flow Completion.
+
+Record:
+
+- `auto_advance_enabled`
+- `nodes_executed_in_order`
+- `node_readback_verdicts`
+- `stop_reason`
+- `final_current_node`
+- `next_allowed_action`
+
+Dependent mutations require Actual Readback between nodes. A successful tool call alone is not enough to advance a dependent write frontier.
+
+Do not stop after one node solely because a tool call returned. Continue while the next node is ready, Authority/constraints remain valid, the side-effect class stays within the existing authorized ceiling and no real stop condition is active.
+
+Allowed stop reasons include:
+
+`FLOW_COMPLETION_GATE_PASS / GENUINE_BLOCKER / AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER / USER_DESIGN_OR_SCOPE_DECISION_REQUIRED / SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED / MISSING_UNRECOVERABLE_SOURCE / FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED / REQUIRED_INDEPENDENT_REVIEW_UNAVAILABLE / TOOL_OR_RUNTIME_HARD_LIMIT`.
+
+Continuous execution is current-turn orchestration. It is not background execution and does not justify promising future work after the turn ends.
+
+`NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD AUTO-ADVANCE`.
 
 ## 4｜Required native output
 
@@ -224,6 +281,20 @@ Only when a TOOL is actually used, record:
 
 An active Tool Deny is checked before adapter selection.
 
+## 8A｜Adapter Route Decision｜when applicable
+
+Use this section only when a **material execution** evaluates multiple candidate surfaces or uses a currently exposed ephemeral connected surface.
+
+Record:
+
+`required_capability_roles / candidate_surfaces / selected_surface / selection_reasons / availability_state / authority_ceiling / side_effect_class / readback_surface / fallback_surface`.
+
+The selection reason must be capability/authority/readback based, not “because vendor X is available.”
+
+Unused candidates and liveness probes remain ephemeral. The selected surface does not gain Project/Source/Design Authority. If the same surface must mutate and read back because no alternative exists, declare the readback `NOT_INDEPENDENT`.
+
+`NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD ROUTING`.
+
 ## 9｜Real execution
 
 Record actual runtime/tool action, result, failures, repairs and re-execution state.
@@ -237,6 +308,8 @@ Record actual target/runtime, observed result, blockers, warnings and verdict.
 `Artifact existence ≠ actual readback`.
 
 For a continuing task, a successful readback is the preferred checkpoint boundary. Record the verified artifact identity before advancing `next_allowed_action`.
+
+For continuous execution, readback is also the dependency boundary between successive material mutations.
 
 ## 11｜Four-layer regression
 
@@ -259,6 +332,8 @@ Record:
 
 Producer self-check is not an independent verdict.
 
+A route to a different technical surface is not automatically an independent design review. Independence remains governed by the existing reviewer identity contract.
+
 ## 13｜Notion ↔ GitHub drift
 
 Required when a Current cross-platform pointer or implementation changes.
@@ -266,6 +341,8 @@ Required when a Current cross-platform pointer or implementation changes.
 Use `GITHUB_STATIC_CHECK` or `LIVE_CROSS_PLATFORM_CHECK`.
 
 A repository-only check cannot report live Notion `CURRENT`.
+
+A chat/session boundary, frontier discovery, liveness probe or no-delta route decision does not by itself create a Current pointer mutation.
 
 ## 14｜Closure
 
@@ -279,4 +356,4 @@ A `CLOSED` checkpoint is a runtime consequence of valid closure; it does not its
 
 ## 15｜Does not prove
 
-A complete receipt or a valid continuation checkpoint does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.
+A complete receipt, valid continuation checkpoint, discovered frontier, adapter route decision or continuous-execution record does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.

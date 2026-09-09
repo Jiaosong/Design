@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "00-governance" / "runtime"
 RESOLVER = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+TOOL_CONTRACT = RUNTIME / "OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json"
 RECEIPT_DIR = RUNTIME / "receipts"
 CASES = ROOT / "evals" / "runtime" / "sticky_constraints_and_flow.jsonl"
 
@@ -39,7 +40,7 @@ def load_jsonl(path: Path) -> list[dict]:
     return rows
 
 
-def require_present(obj: dict, fields: list[str], context: str) -> None:
+def require_present(obj: dict, fields: list[str] | set[str], context: str) -> None:
     missing = [f for f in fields if f not in obj or obj[f] in (None, "")]
     if missing:
         fail(f"{context} missing fields {missing}")
@@ -47,8 +48,8 @@ def require_present(obj: dict, fields: list[str], context: str) -> None:
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.3":
-        fail("Current resolver must be v1.2 implementation revision 1.2.3")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.4":
+        fail("Current resolver must be v1.2 implementation revision 1.2.4")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -87,6 +88,8 @@ def validate_resolver() -> dict:
         "next_allowed_action",
         "authority_fingerprint",
         "stale_reasons",
+        "checkpoint_sequence",
+        "checkpoint_updated_at",
     }
     if not checkpoint_fields.issubset(set(continuation.get("required_checkpoint_fields", []))):
         fail("continuation checkpoint fields incomplete")
@@ -102,6 +105,55 @@ def validate_resolver() -> dict:
         fail("blind replay of completed mutation must be forbidden")
     if "SKIP_ALREADY_VERIFIED_COMPLETED_NODES" not in continuation.get("resume_behavior", ""):
         fail("resume behavior must skip already verified completed nodes")
+    if continuation.get("cross_context_discovery_required_when") != "FOLLOWUP_OR_CONTINUATION_INTENT_WITHOUT_RELIABLE_LOCAL_TASK_POINTER":
+        fail("cross-context frontier discovery trigger missing")
+    discovery_sources = continuation.get("frontier_discovery_sources_in_order", [])
+    expected_discovery_sources = [
+        "EXPLICIT_CURRENT_REQUEST_PROJECT_TASK_OBJECT_KEYS",
+        "CURRENT_PROJECT_STATE_OR_CURRENT_TASK_POINTER",
+        "CURRENT_PROJECT_CONTROL_CARD",
+        "ACTIVE_WORKING_OR_HOLD_EXECUTION_RECEIPTS",
+    ]
+    if discovery_sources != expected_discovery_sources:
+        fail("frontier discovery source precedence drifted")
+    match_keys = set(continuation.get("frontier_match_keys", []))
+    if not {"PROJECT_ID_OR_SCOPE_ID", "LOGICAL_OBJECT_OR_CANONICAL_IDS", "AUTHORITY_FINGERPRINT"}.issubset(match_keys):
+        fail("frontier discovery stable match keys incomplete")
+    if continuation.get("chat_history_or_summary_is_not_checkpoint_authority") is not True:
+        fail("chat history/summary must not become checkpoint authority")
+    if "HOLD_AMBIGUOUS_FRONTIER" not in continuation.get("distinct_task_ambiguity_rule", ""):
+        fail("multiple distinct frontiers must HOLD when Current cannot disambiguate")
+
+    continuous = data.get("continuous_execution_policy", {})
+    if continuous.get("purpose") != "AUTO_ADVANCE_READY_NODES_WITHIN_CURRENT_EXECUTION_TURN":
+        fail("continuous execution policy missing")
+    if continuous.get("no_artificial_one_node_stop") is not True:
+        fail("continuous execution must forbid artificial one-node stop")
+    if continuous.get("background_execution_forbidden") is not True:
+        fail("continuous execution must not imply background work")
+    advance_requires = set(continuous.get("advance_requires", []))
+    required_advance = {
+        "APPLICABLE_ACTUAL_READBACK_PASS_OR_TYPED_HANDOFF_ACCEPTED",
+        "NEXT_NODE_READY",
+        "AUTHORITY_FINGERPRINT_STILL_VALID",
+        "SIDE_EFFECT_WITHIN_ALREADY_AUTHORIZED_CEILING",
+        "NO_STOP_CONDITION",
+    }
+    if not required_advance.issubset(advance_requires):
+        fail("continuous execution advance gates incomplete")
+    stop_conditions = set(continuous.get("stop_conditions", []))
+    required_stops = {
+        "GENUINE_BLOCKER",
+        "AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER",
+        "USER_DESIGN_OR_SCOPE_DECISION_REQUIRED",
+        "IRREVERSIBLE_OR_HIGHER_SIDE_EFFECT_ACTION_NOT_ALREADY_AUTHORIZED",
+        "FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED",
+        "TOOL_OR_RUNTIME_HARD_LIMIT",
+    }
+    if not required_stops.issubset(stop_conditions):
+        fail("continuous execution stop conditions incomplete")
+    if "NO_BLIND_RETRY_LOOP" not in continuous.get("failure_rule", ""):
+        fail("continuous execution failure rule must forbid blind retry")
 
     flow = data.get("flow_completion_gate", {})
     if flow.get("does_not_mean_all_skills") is not True or flow.get("minimum_owner_set_still_applies") is not True:
@@ -131,6 +183,7 @@ def validate_resolver() -> dict:
     order = data.get("default_resolution_order", [])
     required_order = [
         "READ_APPLICABLE_PROJECT_STATE_SOURCE_AUTHORITY_CURRENT_TASK",
+        "DISCOVER_ACTIVE_EXECUTION_FRONTIER_IF_CONTEXT_POINTER_MISSING",
         "RESOLVE_CONTINUATION_CHECKPOINT_IF_FOLLOWUP_INTENT",
         "REVALIDATE_AUTHORITY_IF_CHECKPOINT_REQUIRES",
         "RESOLVE_STICKY_EXECUTION_CONSTRAINTS",
@@ -145,6 +198,7 @@ def validate_resolver() -> dict:
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "ACTUAL_READBACK",
         "UPDATE_EXISTING_CONTINUATION_CHECKPOINT_AS_APPLICABLE",
+        "AUTO_ADVANCE_READY_NODES_UNTIL_STOP_CONDITION",
         "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE_OR_COMPLETE_CLAIM",
         "EMIT_EXECUTION_RECEIPT",
     ]
@@ -154,7 +208,82 @@ def validate_resolver() -> dict:
             fail(f"resolver order missing {token}")
         positions.append(order.index(token))
     if positions != sorted(positions):
-        fail("constraint / continuation / image-consumption / full-flow resolver order is invalid")
+        fail("constraint / frontier / continuation / auto-advance / image-consumption / full-flow resolver order is invalid")
+    return data
+
+
+def validate_tool_adapter_routing() -> dict:
+    data = load_json(TOOL_CONTRACT)
+    if data.get("contract_id") != "OLEANDER_TOOL_ADAPTER_CONTRACT" or data.get("version") != "0.1":
+        fail("Tool Adapter Contract identity/version drift")
+    if data.get("status") != "ACTIVE_CURRENT":
+        fail("Tool Adapter Contract must remain ACTIVE_CURRENT")
+    roles = set(data.get("capability_route_roles", []))
+    required_roles = {
+        "AUTHORITY_READ_WRITE",
+        "REPO_SOURCE_MUTATION",
+        "ASSET_ARCHIVE_DELIVERY",
+        "NATIVE_PRODUCTION",
+        "RUNTIME_READBACK",
+        "DEPLOYMENT",
+        "HUMAN_COORDINATION",
+        "SCHEDULED_WAKEUP",
+        "HEAVY_EXECUTION",
+    }
+    if not required_roles.issubset(roles):
+        fail("Tool Adapter capability route roles incomplete")
+    route_fields = {
+        "required_capability_roles",
+        "candidate_surfaces",
+        "selected_surface",
+        "selection_reasons",
+        "availability_state",
+        "authority_ceiling",
+        "side_effect_class",
+        "readback_surface",
+        "fallback_surface",
+    }
+    if not route_fields.issubset(set(data.get("route_decision_fields", []))):
+        fail("Tool Adapter route decision fields incomplete")
+    routing = data.get("unified_adapter_routing_policy", {})
+    expected_precedence = [
+        "CURRENT_AUTHORITY_AND_OWNER_BOUNDARY",
+        "REQUIRED_NATIVE_OUTPUT_AND_MUTATION_CAPABILITY",
+        "ACTIVE_CONSTRAINTS_AND_PERMISSION",
+        "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
+        "ACTUAL_READBACK_COVERAGE",
+        "CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY",
+        "LOWER_EXECUTION_OVERHEAD",
+        "DECLARED_FALLBACK",
+    ]
+    if routing.get("selection_precedence") != expected_precedence:
+        fail("unified adapter routing precedence drifted")
+    required_true = [
+        "vendor_name_must_not_determine_route",
+        "route_by_capability_role",
+        "do_not_probe_every_connected_surface",
+        "probe_selected_or_needed_fallback_only",
+        "availability_is_runtime_fact_not_authority",
+        "mutation_surface_must_not_exceed_authority_ceiling",
+        "no_parallel_plugin_state_store",
+        "no_new_surface_registry_entry_for_one_off_connector_use",
+    ]
+    for key in required_true:
+        if routing.get(key) is not True:
+            fail(f"unified adapter routing policy requires {key}=true")
+    connected = data.get("connected_execution_surface_policy", {})
+    if connected.get("surface_is_capability_adapter_not_ontology") is not True:
+        fail("connected surface must remain capability adapter, not ontology")
+    if connected.get("ephemeral_connector_use_does_not_auto_register_new_surface") is not True:
+        fail("one-off connected surface use must not auto-register a new surface")
+    liveness = data.get("surface_liveness_policy", {})
+    if liveness.get("do_not_probe_for_inventory_curiosity") is not True:
+        fail("surface liveness probes must be need-driven")
+    heavy = data.get("heavy_executor_policy", {})
+    if heavy.get("default") != "ESCALATION_ONLY" or heavy.get("control_plane_role") is not False:
+        fail("heavy executor must remain escalation-only and not control plane")
+    if "VERIFIED" not in set(heavy.get("self_promotion_forbidden_to", [])):
+        fail("heavy executor must not self-promote output to VERIFIED")
     return data
 
 
@@ -202,24 +331,75 @@ def validate_receipt_contract() -> dict:
         "next_allowed_action",
         "authority_fingerprint",
         "stale_reasons",
+        "checkpoint_sequence",
+        "checkpoint_updated_at",
     }
     if not required_checkpoint_fields.issubset(set(checkpoint_ext.get("fields", []))):
         fail("Receipt continuation checkpoint fields incomplete")
+    discovery_record_fields = {
+        "discovery_trigger",
+        "project_or_scope_key",
+        "task_key",
+        "object_or_canonical_ids",
+        "candidate_frontiers",
+        "selected_frontier",
+        "selection_basis",
+        "ambiguity_state",
+    }
+    if not discovery_record_fields.issubset(set(checkpoint_ext.get("frontier_discovery_record_fields", []))):
+        fail("Receipt cross-context frontier discovery record fields incomplete")
     if checkpoint_ext.get("generic_continue_action") != "RESUME_NEXT_ALLOWED_ACTION_NOT_REPLAN_FROM_ZERO":
         fail("Receipt continuation rule must resume the next allowed action")
     if checkpoint_ext.get("context_switch_or_compression_is_not_authority_change") is not True:
         fail("Receipt checkpoint must survive context switch/compression when authority is unchanged")
+    if checkpoint_ext.get("chat_history_or_summary_is_not_checkpoint_authority") is not True:
+        fail("Receipt must not treat chat history/summary as checkpoint authority")
     if checkpoint_ext.get("checkpoint_is_runtime_state_not_project_state") is not True:
         fail("Receipt checkpoint must not become a second Project State")
     if checkpoint_ext.get("no_material_delta_no_new_receipt") is not True:
         fail("no-delta chat turn must not create a new receipt only for checkpointing")
+
+    continuous_ext = data.get("continuous_execution_extension", {})
+    required_continuous_fields = {
+        "auto_advance_enabled",
+        "nodes_executed_in_order",
+        "node_readback_verdicts",
+        "stop_reason",
+        "final_current_node",
+        "next_allowed_action",
+    }
+    if not required_continuous_fields.issubset(set(continuous_ext.get("fields", []))):
+        fail("Receipt continuous-execution fields incomplete")
+    if continuous_ext.get("auto_advance_requires_readback_between_dependent_mutations") is not True:
+        fail("Receipt auto-advance must require readback between dependent mutations")
+    if continuous_ext.get("background_execution_forbidden") is not True:
+        fail("Receipt auto-advance must not imply background execution")
+
+    route_ext = data.get("adapter_route_decision_extension", {})
+    required_route_fields = {
+        "required_capability_roles",
+        "candidate_surfaces",
+        "selected_surface",
+        "selection_reasons",
+        "availability_state",
+        "authority_ceiling",
+        "side_effect_class",
+        "readback_surface",
+        "fallback_surface",
+    }
+    if not required_route_fields.issubset(set(route_ext.get("fields", []))):
+        fail("Receipt adapter route decision fields incomplete")
+    if route_ext.get("vendor_name_is_not_selection_reason") is not True:
+        fail("Receipt route decision must not select by vendor name")
+    if route_ext.get("selected_surface_does_not_gain_authority") is not True:
+        fail("selected adapter surface must not gain authority")
     return data
 
 
 def validate_cases() -> None:
     rows = load_jsonl(CASES)
-    if len(rows) < 10:
-        fail("sticky/full-flow/continuation regression corpus must have at least ten cases")
+    if len(rows) < 16:
+        fail("sticky/full-flow/continuation/auto-advance/routing regression corpus must have at least sixteen cases")
     ids = {r.get("case_id") for r in rows}
     required = {
         "LOCK-001-NO-IMAGE-STICKY",
@@ -232,6 +412,12 @@ def validate_cases() -> None:
         "RESUME-002-AUTHORITY-STALE-REVALIDATE",
         "RESUME-003-BLOCKED-NO-BLIND-RETRY",
         "RESUME-004-CONTEXT-SWITCH-NOT-AUTHORITY-RESET",
+        "RESUME-005-CROSS-CHAT-FRONTIER-DISCOVERY",
+        "RESUME-006-MULTIPLE-DISTINCT-FRONTIERS-HOLD",
+        "LOOP-001-AUTO-ADVANCE-READY-NODES",
+        "LOOP-002-STOP-ON-SIDE-EFFECT-ESCALATION",
+        "ROUTE-001-CAPABILITY-ROLE-NOT-VENDOR",
+        "ROUTE-002-HEAVY-EXECUTOR-ESCALATION-ONLY",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
@@ -252,6 +438,23 @@ def validate_cases() -> None:
         fail("blocked checkpoint case must forbid blind retry")
     if by_id["RESUME-004-CONTEXT-SWITCH-NOT-AUTHORITY-RESET"].get("expected_checkpoint_state") != "RESUMABLE":
         fail("context-switch case must preserve resumable checkpoint when authority is unchanged")
+    if by_id["RESUME-005-CROSS-CHAT-FRONTIER-DISCOVERY"].get("expected_selected_frontier") != "TASK-W03-CURRENT":
+        fail("cross-chat discovery case must select the latest authority-matching frontier")
+    if by_id["RESUME-006-MULTIPLE-DISTINCT-FRONTIERS-HOLD"].get("expected_action") != "HOLD_AMBIGUOUS_FRONTIER":
+        fail("multiple distinct frontiers must hold rather than guess")
+    loop1 = by_id["LOOP-001-AUTO-ADVANCE-READY-NODES"]
+    if len(loop1.get("expected_nodes_executed_in_order", [])) < 4:
+        fail("auto-advance case must prove more than one ready node continues")
+    if "STOP_AFTER_FIRST_NODE_WITHOUT_REASON" not in loop1.get("forbidden_actions", []):
+        fail("auto-advance case must forbid artificial one-node stop")
+    if by_id["LOOP-002-STOP-ON-SIDE-EFFECT-ESCALATION"].get("expected_stop_reason") != "SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED":
+        fail("auto-advance must stop on unauthorized side-effect escalation")
+    route1 = by_id["ROUTE-001-CAPABILITY-ROLE-NOT-VENDOR"]
+    if "SELECT_BY_VENDOR_BRAND" not in route1.get("forbidden_actions", []):
+        fail("routing case must forbid vendor-brand selection")
+    route2 = by_id["ROUTE-002-HEAVY-EXECUTOR-ESCALATION-ONLY"]
+    if route2.get("expected_selected_surface") != "github_connector":
+        fail("heavy executor case must prefer sufficient lighter connector")
 
 
 def validate_new_receipts(contract: dict) -> int:
@@ -261,6 +464,9 @@ def validate_new_receipts(contract: dict) -> int:
     flow_fields = contract.get("flow_completion_required_fields", [])
     constraint_record_fields = contract.get("constraint_record_required_fields", [])
     phase_values = set(contract.get("phase_result_values", []))
+    checkpoint_fields = contract.get("continuation_checkpoint_extension", {}).get("fields", [])
+    continuous_fields = contract.get("continuous_execution_extension", {}).get("fields", [])
+    route_fields = contract.get("adapter_route_decision_extension", {}).get("fields", [])
     current_policy_count = 0
 
     for path in sorted(RECEIPT_DIR.glob("*.json")):
@@ -279,6 +485,15 @@ def validate_new_receipts(contract: dict) -> int:
         for phase, result in flow.get("phase_results", {}).items():
             if result not in phase_values:
                 fail(f"receipt:{rid} invalid phase result {phase}={result}")
+        if "continuation_checkpoint" in r:
+            cp = r["continuation_checkpoint"]
+            require_present(cp, checkpoint_fields, f"receipt:{rid}:continuation_checkpoint")
+            if not isinstance(cp.get("checkpoint_sequence"), int) or cp["checkpoint_sequence"] < 0:
+                fail(f"receipt:{rid} checkpoint_sequence must be non-negative integer")
+        if "continuous_execution" in r:
+            require_present(r["continuous_execution"], continuous_fields, f"receipt:{rid}:continuous_execution")
+        if "adapter_route_decision" in r:
+            require_present(r["adapter_route_decision"], route_fields, f"receipt:{rid}:adapter_route_decision")
         if r.get("status") == "CLOSED":
             if flow.get("completion_gate") != "PASS":
                 fail(f"receipt:{rid} CLOSED requires completion_gate PASS")
@@ -293,12 +508,15 @@ def validate_new_receipts(contract: dict) -> int:
 
 def main() -> None:
     validate_resolver()
+    validate_tool_adapter_routing()
     contract = validate_receipt_contract()
     validate_cases()
     count = validate_new_receipts(contract)
     print("execution-lock validation: PASS")
     print("sticky negative constraints: ENFORCED")
-    print("continuation checkpoint / authority revalidation: ENFORCED")
+    print("cross-context frontier discovery / continuation checkpoint: ENFORCED")
+    print("continuous ready-node auto-advance with bounded stop conditions: ENFORCED")
+    print("unified capability-role adapter routing: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
     print(f"policy-1.1 receipts: {count}")
