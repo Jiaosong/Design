@@ -1,9 +1,10 @@
-"""Blender 5.2 contract validation for the bounded CAD Direct Face intent bridge.
+"""Blender 5.2 contract validation for the bounded CAD Direct Face bridge.
 
 This validates deterministic conversion from the Runtime's CAD direct-edit intent
-into a specialist-sidecar request. It deliberately does not resolve a FreeCAD
-face or execute any B-Rep mutation; semantic rebind and authoritative mutation
-remain specialist execution responsibilities and must fail closed on ambiguity.
+into a specialist-sidecar request and strict request revalidation before write.
+It deliberately does not resolve a FreeCAD face or execute any B-Rep mutation;
+semantic rebind and authoritative mutation remain specialist execution
+responsibilities and must fail closed on ambiguity.
 """
 
 from __future__ import annotations
@@ -31,6 +32,7 @@ from professional_adapter.cad_sidecar import (
     file_sha256,
     payload_sha256,
     validate_direct_edit_intent,
+    validate_direct_edit_request,
     write_direct_edit_request,
 )
 
@@ -39,21 +41,6 @@ def check(condition: bool, label: str, checks: list[str]) -> None:
     if not condition:
         raise AssertionError(label)
     checks.append(label)
-
-
-def expect_failure(mutator, label: str, checks: list[str]) -> None:
-    candidate = copy.deepcopy(valid_intent())
-    mutator(candidate)
-    try:
-        build_direct_edit_request_from_intent(
-            request_id="OLE_CAD_DIRECT_REQ_FAIL",
-            revision=1,
-            intent=candidate,
-        )
-    except CADSidecarContractError:
-        checks.append(label)
-    else:
-        raise AssertionError(label)
 
 
 def valid_intent() -> dict:
@@ -97,6 +84,51 @@ def valid_intent() -> dict:
     }
 
 
+def valid_request() -> dict:
+    return build_direct_edit_request_from_intent(
+        request_id="OLE_CAD_DIRECT_REQ_001",
+        revision=1,
+        intent=valid_intent(),
+    )
+
+
+def expect_intent_failure(mutator, label: str, checks: list[str]) -> None:
+    candidate = copy.deepcopy(valid_intent())
+    mutator(candidate)
+    try:
+        build_direct_edit_request_from_intent(
+            request_id="OLE_CAD_DIRECT_REQ_FAIL",
+            revision=1,
+            intent=candidate,
+        )
+    except CADSidecarContractError:
+        checks.append(label)
+    else:
+        raise AssertionError(label)
+
+
+def expect_request_failure(mutator, label: str, checks: list[str]) -> None:
+    candidate = copy.deepcopy(valid_request())
+    mutator(candidate)
+
+    try:
+        validate_direct_edit_request(candidate)
+    except CADSidecarContractError:
+        pass
+    else:
+        raise AssertionError(label + "_validator")
+
+    with tempfile.TemporaryDirectory(prefix="oleander-cad-direct-forged-") as temp_dir:
+        path = pathlib.Path(temp_dir) / "forged_request.json"
+        try:
+            write_direct_edit_request(path, candidate)
+        except CADSidecarContractError:
+            check(not path.exists(), label + "_writer_no_file", checks)
+        else:
+            raise AssertionError(label + "_writer")
+    checks.append(label)
+
+
 def main() -> None:
     checks: list[str] = []
     check(
@@ -111,16 +143,8 @@ def main() -> None:
     check(abs(validated["distance_mm"] - 12.5) <= 1e-9, "intent_metric_distance_preserved", checks)
     check(validated["intent_sha256"] == payload_sha256(intent), "intent_sha256_deterministic", checks)
 
-    request1 = build_direct_edit_request_from_intent(
-        request_id="OLE_CAD_DIRECT_REQ_001",
-        revision=1,
-        intent=intent,
-    )
-    request2 = build_direct_edit_request_from_intent(
-        request_id="OLE_CAD_DIRECT_REQ_001",
-        revision=1,
-        intent=copy.deepcopy(intent),
-    )
+    request1 = valid_request()
+    request2 = valid_request()
     check(request1 == request2, "direct_request_deterministic", checks)
     check(request1["schema"] == DIRECT_EDIT_REQUEST_SCHEMA, "direct_request_schema", checks)
     check(request1["source"]["intent_sha256"] == payload_sha256(intent), "direct_request_binds_intent_sha", checks)
@@ -133,6 +157,11 @@ def main() -> None:
     check(request1["authority"]["blender_role"] == "DISPLAY_DERIVATIVE_ONLY", "direct_request_blender_display_only", checks)
     check(request1["authority"]["display_mutation"] == "NONE", "direct_request_no_display_mutation", checks)
     check(request1["authority"]["execution_state"] == "NOT_EXECUTED", "direct_request_no_execution_claim", checks)
+
+    request_validation = validate_direct_edit_request(request1)
+    check(request_validation["request_id"] == "OLE_CAD_DIRECT_REQ_001", "direct_request_strict_validation", checks)
+    check(request_validation["request_sha256"] == payload_sha256(request1), "direct_request_validation_sha", checks)
+    check(request_validation["execution_state"] == "NOT_EXECUTED", "direct_request_validation_no_execution_claim", checks)
 
     serialized = json.dumps(request1, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
     check("Face17" not in serialized and "polygon_index\":" not in serialized, "direct_request_no_persistent_topology_ordinal", checks)
@@ -147,17 +176,46 @@ def main() -> None:
             "direct_request_file_sha_independent_readback",
             checks,
         )
-        check(json.loads(request_path.read_text(encoding="utf-8")) == request1, "direct_request_json_readback", checks)
+        persisted = json.loads(request_path.read_text(encoding="utf-8"))
+        check(persisted == request1, "direct_request_json_readback", checks)
+        persisted_validation = validate_direct_edit_request(persisted)
+        check(
+            persisted_validation["request_sha256"] == payload_sha256(request1),
+            "direct_request_persisted_revalidation",
+            checks,
+        )
 
-    expect_failure(lambda payload: payload["target"].__setitem__("polygon_index", 5), "polygon_index_expected_failure", checks)
-    expect_failure(lambda payload: payload["target"].__setitem__("legacy_reference", "Face17"), "face_ordinal_string_expected_failure", checks)
-    expect_failure(lambda payload: payload["resolution"].__setitem__("ambiguous_result", "SELECT_FIRST"), "ambiguous_resolution_expected_failure", checks)
-    expect_failure(lambda payload: payload["authority"].__setitem__("required_kernel", "BLENDER_MESH"), "wrong_kernel_expected_failure", checks)
-    expect_failure(lambda payload: payload["parameters"].__setitem__("distance_mm", 0.0), "zero_distance_expected_failure", checks)
-    expect_failure(lambda payload: payload["authority"].__setitem__("display_mutation", "ALLOWED"), "display_mutation_expected_failure", checks)
+    # Intent-level positive failures remain the first boundary.
+    expect_intent_failure(lambda payload: payload["target"].__setitem__("polygon_index", 5), "polygon_index_expected_failure", checks)
+    expect_intent_failure(lambda payload: payload["target"].__setitem__("legacy_reference", "Face17"), "face_ordinal_string_expected_failure", checks)
+    expect_intent_failure(lambda payload: payload["resolution"].__setitem__("ambiguous_result", "SELECT_FIRST"), "ambiguous_resolution_expected_failure", checks)
+    expect_intent_failure(lambda payload: payload["authority"].__setitem__("required_kernel", "BLENDER_MESH"), "wrong_kernel_expected_failure", checks)
+    expect_intent_failure(lambda payload: payload["parameters"].__setitem__("distance_mm", 0.0), "zero_distance_expected_failure", checks)
+    expect_intent_failure(lambda payload: payload["authority"].__setitem__("display_mutation", "ALLOWED"), "display_mutation_expected_failure", checks)
+
+    # Request-level positive failures prove builder bypass cannot weaken authority.
+    expect_request_failure(lambda payload: payload.__setitem__("unexpected_field", True), "request_unknown_top_level_expected_failure", checks)
+    expect_request_failure(lambda payload: payload.__setitem__("request_id", ""), "request_empty_identity_expected_failure", checks)
+    expect_request_failure(lambda payload: payload.__setitem__("revision", 0), "request_revision_expected_failure", checks)
+    expect_request_failure(lambda payload: payload.__setitem__("units", "m"), "request_units_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["source"].__setitem__("authority", "UNTRUSTED"), "request_source_authority_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["source"].__setitem__("intent_sha256", "bad"), "request_intent_sha_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["source"].__setitem__("master_locator", ""), "request_master_locator_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["source"].__setitem__("required_kernel", "BLENDER_MESH"), "request_kernel_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["operation"].__setitem__("kind", "BOOLEAN"), "request_operation_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["operation"].__setitem__("distance_mm", 0.0), "request_distance_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["target_selector"]["descriptor"].__setitem__("polygon_index", 5), "request_polygon_index_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["target_selector"].__setitem__("resolution_policy", "SELECT_FIRST"), "request_resolution_policy_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["target_selector"].__setitem__("ambiguous_result", "SELECT_FIRST"), "request_ambiguous_result_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["target_selector"].__setitem__("prohibited_persistence", ["FaceN"]), "request_prohibited_set_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["authority"].__setitem__("master_type", "BLENDER_NATIVE"), "request_master_type_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["authority"].__setitem__("geometry_authority", "BLENDER_MESH"), "request_geometry_authority_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["authority"].__setitem__("blender_role", "AUTHORITATIVE"), "request_blender_role_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["authority"].__setitem__("display_mutation", "ALLOWED"), "request_display_mutation_expected_failure", checks)
+    expect_request_failure(lambda payload: payload["authority"].__setitem__("execution_state", "EXECUTED"), "request_execution_claim_expected_failure", checks)
 
     result = {
-        "schema": "OLEANDER_CAD_DIRECT_INTENT_BRIDGE_VALIDATION_v0.1",
+        "schema": "OLEANDER_CAD_DIRECT_INTENT_BRIDGE_VALIDATION_v0.2",
         "status": "PASS",
         "blender": bpy.app.version_string,
         "checks": checks,
@@ -168,6 +226,7 @@ def main() -> None:
             "required_kernel": "FREECAD_OCCT_BREP",
             "blender": "DISPLAY_DERIVATIVE_ONLY",
             "execution": "NOT_EXECUTED",
+            "writer": "STRICT_REVALIDATION",
         },
         "non_claims": [
             "cad_face_resolution",

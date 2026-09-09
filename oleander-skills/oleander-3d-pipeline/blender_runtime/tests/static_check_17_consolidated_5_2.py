@@ -17,8 +17,8 @@ EXPECTED_BUILD = "fbe6228777e7"
 EXPECTED_RUN_ID = 34302353461
 EXPECTED_JOB_ID = 102311768341
 EXPECTED_STAGE_COUNT = 17
-EXPECTED_BRIDGE_RUN_ID = 34304967227
-EXPECTED_BRIDGE_JOB_ID = 102319642880
+EXPECTED_BRIDGE_RUN_ID = 34305925694
+EXPECTED_BRIDGE_JOB_ID = 102322478236
 EXPECTED_BRIDGE_REQUEST_SHA256 = "8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318"
 FINGERPRINT_MISMATCHES: list[tuple[str, str, str]] = []
 
@@ -54,6 +54,8 @@ BRIDGE_REQUIRED_SOURCE_TOKENS = {
     "FREECAD_OCCT_BREP",
     "DISPLAY_DERIVATIVE_ONLY",
     "NOT_EXECUTED",
+    "STRICT_REVALIDATION",
+    "validate_direct_edit_request",
     "FaceN",
     "polygon_index",
 }
@@ -71,15 +73,85 @@ BRIDGE_REQUIRED_CHECKS = {
     "direct_request_blender_display_only",
     "direct_request_no_display_mutation",
     "direct_request_no_execution_claim",
+    "direct_request_strict_validation",
+    "direct_request_validation_sha",
+    "direct_request_validation_no_execution_claim",
     "direct_request_no_persistent_topology_ordinal",
     "direct_request_file_sha_independent_readback",
     "direct_request_json_readback",
+    "direct_request_persisted_revalidation",
     "polygon_index_expected_failure",
     "face_ordinal_string_expected_failure",
     "ambiguous_resolution_expected_failure",
     "wrong_kernel_expected_failure",
     "zero_distance_expected_failure",
     "display_mutation_expected_failure",
+    "request_unknown_top_level_expected_failure_writer_no_file",
+    "request_unknown_top_level_expected_failure",
+    "request_empty_identity_expected_failure_writer_no_file",
+    "request_empty_identity_expected_failure",
+    "request_revision_expected_failure_writer_no_file",
+    "request_revision_expected_failure",
+    "request_units_expected_failure_writer_no_file",
+    "request_units_expected_failure",
+    "request_source_authority_expected_failure_writer_no_file",
+    "request_source_authority_expected_failure",
+    "request_intent_sha_expected_failure_writer_no_file",
+    "request_intent_sha_expected_failure",
+    "request_master_locator_expected_failure_writer_no_file",
+    "request_master_locator_expected_failure",
+    "request_kernel_expected_failure_writer_no_file",
+    "request_kernel_expected_failure",
+    "request_operation_expected_failure_writer_no_file",
+    "request_operation_expected_failure",
+    "request_distance_expected_failure_writer_no_file",
+    "request_distance_expected_failure",
+    "request_polygon_index_expected_failure_writer_no_file",
+    "request_polygon_index_expected_failure",
+    "request_resolution_policy_expected_failure_writer_no_file",
+    "request_resolution_policy_expected_failure",
+    "request_ambiguous_result_expected_failure_writer_no_file",
+    "request_ambiguous_result_expected_failure",
+    "request_prohibited_set_expected_failure_writer_no_file",
+    "request_prohibited_set_expected_failure",
+    "request_master_type_expected_failure_writer_no_file",
+    "request_master_type_expected_failure",
+    "request_geometry_authority_expected_failure_writer_no_file",
+    "request_geometry_authority_expected_failure",
+    "request_blender_role_expected_failure_writer_no_file",
+    "request_blender_role_expected_failure",
+    "request_display_mutation_expected_failure_writer_no_file",
+    "request_display_mutation_expected_failure",
+    "request_execution_claim_expected_failure_writer_no_file",
+    "request_execution_claim_expected_failure",
+}
+
+BRIDGE_REQUIRED_FAILURES = {
+    "polygon_index",
+    "face_ordinal_string",
+    "ambiguous_resolution_select_first",
+    "wrong_kernel",
+    "zero_distance",
+    "display_mutation_allowed",
+    "request_unknown_top_level",
+    "request_empty_identity",
+    "request_revision",
+    "request_units",
+    "request_source_authority",
+    "request_intent_sha",
+    "request_master_locator",
+    "request_kernel",
+    "request_operation",
+    "request_distance",
+    "request_polygon_index",
+    "request_resolution_policy",
+    "request_ambiguous_result",
+    "request_prohibited_set",
+    "request_master_type",
+    "request_geometry_authority",
+    "request_blender_role",
+    "request_display_mutation",
+    "request_execution_claim",
 }
 
 BRIDGE_REQUIRED_NON_CLAIMS = {
@@ -126,6 +198,8 @@ def validate_cad_direct_bridge_receipt() -> dict:
     receipt = json.loads(CAD_DIRECT_BRIDGE_RECEIPT.read_text(encoding="utf-8"))
     if receipt.get("schema") != "OLEANDER_CAD_DIRECT_INTENT_BRIDGE_RECEIPT_v0.1":
         base.fail("unexpected CAD Direct Intent Bridge receipt schema")
+    if receipt.get("hardening_revision") != "v0.2_STRICT_REQUEST_REVALIDATION":
+        base.fail("CAD Direct Intent Bridge hardening revision is not Current")
     if receipt.get("validation_state") != "PASS" or receipt.get("runtime_result") != "PASS":
         base.fail("CAD Direct Intent Bridge receipt must be PASS")
     if receipt.get("validation_scope") != "CAD_DIRECT_INTENT_TO_REQUEST_CONTRACT":
@@ -160,6 +234,7 @@ def validate_cad_direct_bridge_receipt() -> dict:
         "ambiguous_result": "HOLD",
         "missing_result": "HOLD",
         "display_mutation": "NONE",
+        "writer_validation": "STRICT_REVALIDATION",
     }
     for key, expected in required_authority.items():
         if authority.get(key) != expected:
@@ -181,16 +256,18 @@ def validate_cad_direct_bridge_receipt() -> dict:
         base.fail(f"CAD Direct Intent Bridge receipt missing runtime checks: {missing_checks}")
 
     failures = receipt.get("expected_failure_cases", {})
-    for key in (
-        "polygon_index",
-        "face_ordinal_string",
-        "ambiguous_resolution_select_first",
-        "wrong_kernel",
-        "zero_distance",
-        "display_mutation_allowed",
-    ):
+    for key in sorted(BRIDGE_REQUIRED_FAILURES):
         if failures.get(key) != "PASS":
             base.fail(f"CAD Direct Intent Bridge expected failure not PASS: {key}")
+
+    writer_boundary = receipt.get("writer_failure_boundary", {})
+    if (
+        writer_boundary.get("forged_request_categories") != 19
+        or writer_boundary.get("validator_rejects_each") is not True
+        or writer_boundary.get("writer_rejects_each") is not True
+        or writer_boundary.get("writer_creates_file_on_rejection") is not False
+    ):
+        base.fail("CAD Direct Intent Bridge writer failure boundary mismatch")
 
     stage_relation = receipt.get("stage_relation", {})
     if (

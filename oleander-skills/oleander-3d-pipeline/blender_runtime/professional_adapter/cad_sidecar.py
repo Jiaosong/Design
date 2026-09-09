@@ -49,6 +49,51 @@ DIRECT_EDIT_PROHIBITED_PERSISTENCE = {
     "polygon_index",
 }
 
+_DIRECT_REQUEST_TOP_LEVEL_KEYS = {
+    "schema",
+    "request_id",
+    "ole_id",
+    "revision",
+    "units",
+    "source",
+    "operation",
+    "target_selector",
+    "authority",
+}
+_DIRECT_REQUEST_SOURCE_KEYS = {
+    "authority",
+    "intent_schema",
+    "intent_sha256",
+    "master_locator",
+    "required_kernel",
+}
+_DIRECT_REQUEST_OPERATION_KEYS = {"kind", "distance_mm"}
+_DIRECT_REQUEST_SELECTOR_KEYS = {
+    "kind",
+    "descriptor",
+    "resolution_policy",
+    "ambiguous_result",
+    "missing_result",
+    "prohibited_persistence",
+}
+_DIRECT_REQUEST_AUTHORITY_KEYS = {
+    "master_type",
+    "geometry_authority",
+    "blender_role",
+    "display_mutation",
+    "execution_state",
+}
+_DIRECT_FACE_DESCRIPTOR_KEYS = {
+    "selector_semantics",
+    "normal_local",
+    "center_local_mm",
+    "area_mm2",
+    "edge_count",
+    "edge_lengths_mm",
+    "bbox_local_mm",
+}
+_DIRECT_FACE_BBOX_KEYS = {"min", "max"}
+
 
 class CADSidecarContractError(ValueError):
     pass
@@ -92,8 +137,26 @@ def _vector(value, size: int, label: str) -> list[float]:
     return [_finite_float(component, f"{label}[{index}]") for index, component in enumerate(value)]
 
 
+def _require_exact_keys(value, expected: set[str], label: str) -> dict:
+    if not isinstance(value, dict):
+        raise CADSidecarContractError(f"{label} must be an object")
+    actual = set(value)
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
+    if missing or extra:
+        raise CADSidecarContractError(f"{label} keys mismatch; missing={missing}, extra={extra}")
+    return value
+
+
+def _require_sha256_hex(value, label: str) -> str:
+    text = str(value or "").strip().lower()
+    if not re.fullmatch(r"[0-9a-f]{64}", text):
+        raise CADSidecarContractError(f"{label} must be a 64-character SHA256 hex digest")
+    return text
+
+
 def _contains_forbidden_topology_reference(value) -> bool:
-    """Reject persisted topology ordinals anywhere in a direct-edit intent."""
+    """Reject persisted topology ordinals anywhere in bounded direct-edit payloads."""
     if isinstance(value, dict):
         for key, child in value.items():
             if str(key) in DIRECT_EDIT_PROHIBITED_PERSISTENCE:
@@ -108,9 +171,11 @@ def _contains_forbidden_topology_reference(value) -> bool:
     return False
 
 
-def _validate_direct_face_descriptor(target: dict) -> dict:
+def _validate_direct_face_descriptor(target: dict, *, strict_keys: bool = False) -> dict:
     if not isinstance(target, dict):
         raise CADSidecarContractError("direct-edit target must be an object")
+    if strict_keys:
+        _require_exact_keys(target, _DIRECT_FACE_DESCRIPTOR_KEYS, "direct-edit face descriptor")
     if _contains_forbidden_topology_reference(target):
         raise CADSidecarContractError("direct-edit target persists a prohibited topology ordinal")
     if target.get("selector_semantics") != "BLENDER_SELECTED_DISPLAY_FACE_INTENT":
@@ -141,6 +206,8 @@ def _validate_direct_face_descriptor(target: dict) -> dict:
     bbox = target.get("bbox_local_mm")
     if not isinstance(bbox, dict):
         raise CADSidecarContractError("target.bbox_local_mm must be an object")
+    if strict_keys:
+        _require_exact_keys(bbox, _DIRECT_FACE_BBOX_KEYS, "target.bbox_local_mm")
     bbox_min = _vector(bbox.get("min"), 3, "target.bbox_local_mm.min")
     bbox_max = _vector(bbox.get("max"), 3, "target.bbox_local_mm.max")
     if any(low > high for low, high in zip(bbox_min, bbox_max)):
@@ -222,7 +289,7 @@ def build_direct_edit_request_from_intent(*, request_id: str, revision: int, int
     if int(revision) < 1:
         raise CADSidecarContractError("direct-edit revision must be >= 1")
     validated = validate_direct_edit_intent(intent)
-    return {
+    request = {
         "schema": DIRECT_EDIT_REQUEST_SCHEMA,
         "request_id": request_id,
         "ole_id": validated["ole_id"],
@@ -254,6 +321,98 @@ def build_direct_edit_request_from_intent(*, request_id: str, revision: int, int
             "display_mutation": "NONE",
             "execution_state": "NOT_EXECUTED",
         },
+    }
+    validate_direct_edit_request(request)
+    return request
+
+
+def validate_direct_edit_request(request: dict) -> dict:
+    """Strictly validate a serialized direct-edit request before persistence/execution.
+
+    The builder is not the only trust boundary. A request can arrive from disk,
+    IPC, a queue, or another process, so every nested contract is revalidated and
+    unknown keys fail closed. This function still does not resolve a CAD face or
+    execute B-Rep mutation.
+    """
+    request = _require_exact_keys(request, _DIRECT_REQUEST_TOP_LEVEL_KEYS, "CAD direct-edit request")
+    if request.get("schema") != DIRECT_EDIT_REQUEST_SCHEMA:
+        raise CADSidecarContractError("unexpected CAD direct-edit request schema")
+
+    request_id = str(request.get("request_id") or "").strip()
+    ole_id = str(request.get("ole_id") or "").strip()
+    if not request_id or not ole_id:
+        raise CADSidecarContractError("CAD direct-edit request identity fields must be non-empty")
+    try:
+        revision = int(request.get("revision"))
+    except (TypeError, ValueError) as exc:
+        raise CADSidecarContractError("CAD direct-edit revision must be an integer") from exc
+    if revision < 1:
+        raise CADSidecarContractError("CAD direct-edit revision must be >= 1")
+    if request.get("units") != "mm":
+        raise CADSidecarContractError("CAD direct-edit request currently supports mm only")
+    if _contains_forbidden_topology_reference(request):
+        raise CADSidecarContractError("CAD direct-edit request contains a prohibited persistent topology reference")
+
+    source = _require_exact_keys(request.get("source"), _DIRECT_REQUEST_SOURCE_KEYS, "CAD direct-edit request source")
+    if source.get("authority") != "CAD_DIRECT_EDIT_INTENT":
+        raise CADSidecarContractError("CAD direct-edit request source authority mismatch")
+    if source.get("intent_schema") != DIRECT_EDIT_INTENT_SCHEMA:
+        raise CADSidecarContractError("CAD direct-edit request lost intent schema provenance")
+    intent_sha256 = _require_sha256_hex(source.get("intent_sha256"), "source.intent_sha256")
+    master_locator = str(source.get("master_locator") or "").strip()
+    if not master_locator:
+        raise CADSidecarContractError("CAD direct-edit request requires a governed master locator")
+    if source.get("required_kernel") != DIRECT_EDIT_REQUIRED_KERNEL:
+        raise CADSidecarContractError("CAD direct-edit request must require FreeCAD/OCCT B-Rep authority")
+
+    operation = _require_exact_keys(request.get("operation"), _DIRECT_REQUEST_OPERATION_KEYS, "CAD direct-edit operation")
+    if operation.get("kind") != DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        raise CADSidecarContractError(f"unsupported CAD direct-edit request operation: {operation.get('kind')}")
+    distance_mm = _finite_float(operation.get("distance_mm"), "operation.distance_mm")
+    if abs(distance_mm) <= 1e-9:
+        raise CADSidecarContractError("FACE_NORMAL_MOVE request distance must be non-zero")
+
+    selector = _require_exact_keys(request.get("target_selector"), _DIRECT_REQUEST_SELECTOR_KEYS, "CAD direct-edit target selector")
+    if selector.get("kind") != "SEMANTIC_FACE_DESCRIPTOR":
+        raise CADSidecarContractError("CAD direct-edit request requires a semantic face descriptor")
+    descriptor = _validate_direct_face_descriptor(selector.get("descriptor"), strict_keys=True)
+    if selector.get("resolution_policy") != DIRECT_EDIT_REBIND_POLICY:
+        raise CADSidecarContractError("CAD direct-edit request must use fail-closed semantic rebind")
+    if selector.get("ambiguous_result") != DIRECT_EDIT_HOLD or selector.get("missing_result") != DIRECT_EDIT_HOLD:
+        raise CADSidecarContractError("ambiguous or missing CAD request selector resolution must HOLD")
+    prohibited = selector.get("prohibited_persistence")
+    if not isinstance(prohibited, list) or set(prohibited) != DIRECT_EDIT_PROHIBITED_PERSISTENCE:
+        raise CADSidecarContractError("CAD direct-edit request topology-persistence prohibition set mismatch")
+
+    authority = _require_exact_keys(request.get("authority"), _DIRECT_REQUEST_AUTHORITY_KEYS, "CAD direct-edit request authority")
+    if authority.get("master_type") != "CAD_NATIVE":
+        raise CADSidecarContractError("CAD direct-edit request lost CAD_NATIVE master type")
+    if authority.get("geometry_authority") != DIRECT_EDIT_REQUIRED_KERNEL:
+        raise CADSidecarContractError("CAD direct-edit request lost FreeCAD/OCCT geometry authority")
+    if authority.get("blender_role") != DIRECT_EDIT_BLENDER_ROLE:
+        raise CADSidecarContractError("CAD direct-edit request must keep Blender display-only")
+    if authority.get("display_mutation") != "NONE":
+        raise CADSidecarContractError("CAD direct-edit request may not authorize display mutation")
+    if authority.get("execution_state") != "NOT_EXECUTED":
+        raise CADSidecarContractError("CAD direct-edit request cannot arrive with an executed-state claim")
+
+    return {
+        "request_id": request_id,
+        "ole_id": ole_id,
+        "revision": revision,
+        "units": "mm",
+        "source": {
+            "intent_sha256": intent_sha256,
+            "master_locator": master_locator,
+            "required_kernel": DIRECT_EDIT_REQUIRED_KERNEL,
+        },
+        "operation": {
+            "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
+            "distance_mm": distance_mm,
+        },
+        "target": descriptor,
+        "execution_state": "NOT_EXECUTED",
+        "request_sha256": payload_sha256(request),
     }
 
 
@@ -298,10 +457,7 @@ def write_request(path: str | Path, request: dict) -> str:
 
 
 def write_direct_edit_request(path: str | Path, request: dict) -> str:
-    if request.get("schema") != DIRECT_EDIT_REQUEST_SCHEMA:
-        raise CADSidecarContractError("unexpected CAD direct-edit request schema")
-    if request.get("authority", {}).get("execution_state") != "NOT_EXECUTED":
-        raise CADSidecarContractError("direct-edit request writer cannot accept an executed-state claim")
+    validate_direct_edit_request(request)
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(_canonical_bytes(request))
