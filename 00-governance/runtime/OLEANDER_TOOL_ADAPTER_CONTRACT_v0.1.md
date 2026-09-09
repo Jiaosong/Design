@@ -145,7 +145,7 @@ Selection precedence is fixed:
 
 `CURRENT AUTHORITY + OWNER BOUNDARY → REQUIRED NATIVE OUTPUT + MUTATION CAPABILITY → ACTIVE CONSTRAINTS + PERMISSION → LOWEST SUFFICIENT SIDE EFFECT → ACTUAL READBACK COVERAGE → CURRENT VERIFIED AVAILABILITY / RELIABILITY → LOWER EXECUTION OVERHEAD → DECLARED FALLBACK`.
 
-Do not choose by vendor/brand name. Surface identity is resolved only after capability role and authority are known.
+Do not choose by vendor/brand name. “GitHub / Notion / Browser / Vercel / Slack / Work / another connector” is only a surface identity after the capability role has been resolved.
 
 For a material routed execution, the route decision may record:
 
@@ -159,11 +159,21 @@ Surface liveness states are:
 
 `AVAILABLE / UNAVAILABLE / DEGRADED / UNKNOWN`.
 
-Probe only when the selected surface requires runtime confirmation, a previous selected surface failed, or a fallback must be evaluated. Do not inventory-probe every connected surface. Availability is a runtime fact, not Authority.
+Probe only when:
+
+- the selected surface requires runtime confirmation;
+- the previously selected surface failed;
+- a fallback must be evaluated.
+
+Do not probe every connected surface for inventory curiosity. If one verified sufficient surface is already available, an unrelated `UNKNOWN` surface does not block execution.
+
+Availability is a runtime fact, not Authority. A connector becoming available or unavailable does not rewrite Project State, Source Authority or Design Authority.
 
 ### 10C｜Producer / readback separation
 
-Prefer a distinct readback surface when practical. If the same surface must both mutate and read back because no alternative exists, record the readback as `NOT_INDEPENDENT`. This does not create a new reviewer role.
+Prefer a distinct readback surface when practical, e.g. repository mutation → browser/runtime readback, deployment → browser readback, Notion mutation → re-fetch/drift check.
+
+If the same surface must both mutate and read back because no alternative exists, record the readback as `NOT_INDEPENDENT`. The absence of another surface does not justify silently claiming independent review. This does not create a new reviewer role.
 
 ### 10D｜Remote mutation idempotency / verify-before-retry
 
@@ -189,24 +199,51 @@ Readback scope follows the **mutation blast radius**:
 
 `MUTATION SCOPE → AFFECTED DEPENDENCIES / SURFACES → SMALLEST SUFFICIENT ACTUAL READBACK → VERDICT`.
 
-If the blast radius cannot be bounded reliably, widen the readback instead of assuming locality. Where practical, use a different evidence channel for validation than for production.
+Examples:
+
+- presentation/CSS mutation → affected page/component plus relevant responsive/runtime state;
+- code/runtime mutation → affected execution path plus applicable tests/runtime readback;
+- Blender/object mutation → affected object/dependencies plus actual geometry/viewport/render readback as applicable;
+- Current Authority or cross-platform pointer mutation → authority/drift readback, not a narrow artifact-only check.
+
+If the blast radius cannot be bounded reliably, widen the readback instead of assuming locality.
+
+Where practical, use a different evidence channel for validation than for production, e.g. repository mutation → runtime/browser readback, deployment → browser readback, Notion mutation → re-fetch/drift check. This is evidence-channel separation; it does not create another reviewer role beyond the existing DAG contract.
 
 ## 12｜Ephemeral outputs and persistence throttle
 
 Search results, tool logs, failed attempts, console output, temporary screenshots, intermediate deployment URLs, transient adapter state, unused route candidates, surface-liveness probes and idempotency verification readback are **EPHEMERAL by default**.
 
-They may be promoted only after:
+They may be promoted to an existing persistent surface only after the applicable sequence:
 
 `ACTUAL READBACK → REVIEW / VALIDATION AS APPLICABLE → MATERIAL DELTA → EXISTING PERSISTENCE TRIGGER`.
 
-Therefore plugin output ≠ Knowledge; runtime trace ≠ Project State; scheduler run ≠ material delta; no material delta = no new page/Candidate/receipt/commit solely to record adapter activity.
+Therefore:
+
+- plugin output ≠ Knowledge;
+- runtime trace ≠ Project State;
+- temporary screenshot ≠ Design Authority;
+- scheduler run ≠ material delta;
+- route candidates ≠ plugin inventory authority;
+- idempotency verification readback ≠ a new operation ledger;
+- no material delta = no new page, Candidate, receipt instance or commit solely to record that the adapter ran.
 
 ## 13｜Heavy executor escalation boundary
 
 A Work-like or other resource-heavy multi-step executor is **escalation-only**, not the default OLEANDER control plane.
 
-Escalate only when a lighter Current adapter is insufficient and the task materially benefits from long low-judgment repetition, substantial cross-application navigation, GUI-bound operations unavailable to exposed connectors, or a large bounded batch.
+Escalation is justified only when a lighter Current adapter is insufficient and the task materially benefits from one or more of:
 
-Do not default-escalate when an existing connector/API/runtime can mutate directly, frequent visual/design judgment is required, the work is a small-step continuation of one Current object, or validation/readback quality dominates execution volume.
+- long low-judgment repetitive execution;
+- substantial cross-application navigation;
+- GUI-bound operations that exposed connectors/runtimes cannot legally perform;
+- large bounded batches whose execution overhead is lower in the heavy executor than in repeated control-plane turns.
 
-Heavy-executor output is at most `EXECUTED` until ordinary OLEANDER readback, regression/review as applicable and the Flow Completion Gate are satisfied. It must not self-promote to `VERIFIED`, `DESIGN KEEP`, `CURRENT` or `CLOSED`.
+Do not default-escalate when:
+
+- an existing connector/API/runtime can perform the mutation directly;
+- the task requires frequent visual/design judgment between steps;
+- the work is a small-step continuation of one Current project object;
+- validation/readback quality is more important than execution volume.
+
+Heavy-executor output is at most `EXECUTED` until the ordinary OLEANDER readback, regression/review as applicable and Flow Completion Gate are satisfied. It must not self-promote to `VERIFIED`, `DESIGN KEEP`, `CURRENT` or `CLOSED`.
