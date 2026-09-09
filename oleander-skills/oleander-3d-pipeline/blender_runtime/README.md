@@ -79,6 +79,9 @@ The Current absorbed scope includes validated bounded support for:
 - scene/object authority separation;
 - dependency graph, stale propagation and geometry/parameter diff;
 - direct metric object operations;
+- bounded single-face normal movement for `BLENDER_NATIVE` mesh masters using mm input, applied-scale/single-user/shape-key fail-closed gates and downstream stale propagation;
+- the same Direct Face interaction entrypoint routing `CAD_NATIVE` objects to a deterministic `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` without mutating the Blender display derivative;
+- CAD Direct Face intent targets described semantically by normal/center/area/edge-length/bounds data rather than persistent `FaceN`, polygon index or subshape ordinal; ambiguous or missing specialist re-resolution remains `HOLD`;
 - non-destructive Blender-native feature stack and feature editing lifecycle;
 - governed relation registry, tolerance audit and deterministic one-shot relation correction with `solver_claim = false`;
 - measurement profiles, rulers, angular guides, datum/reference geometry and precision inference;
@@ -86,6 +89,8 @@ The Current absorbed scope includes validated bounded support for:
 - design parameter registry, dependency graph, explicit apply, atomic batch apply, rebuild planning and rollback/provenance;
 - Geometry Nodes procedural foundation with governed provenance;
 - configuration/BOM support, audit and export manifest foundations.
+
+The bounded Direct Face route above was validated in the canonical Blender `5.2.0 LTS` regression through PR #495: Blender-native `+25 mm` face movement passed with stale propagation, while the CAD-native route produced a governed intent and preserved identical Blender display vertex geometry. This validates the interaction/authority boundary only; it is not CAD direct-edit execution or general B-Rep push/pull.
 
 The shared-environment Project Profile surface added on 2026-09-09 is a configuration boundary, not a new professional parity claim.
 
@@ -100,6 +105,8 @@ For CAD-native objects:
 - CAD native source remains geometry authority;
 - STEP/BREP/FCStd or other native/exchange artifacts remain traceable;
 - Blender receives a typed display/review derivative;
+- Direct Face interaction may prepare a deterministic CAD direct-edit intent, but the display mesh must not be mutated as an authoritative CAD result;
+- semantic face rebind must fail closed on ambiguity or missing targets and must not persist unstable topology ordinals as authority;
 - Blender mesh operations must not be described as equivalent to authoritative B-Rep operations;
 - bounded FreeCAD/OCCT probes do not establish general CAD parity.
 
@@ -107,6 +114,9 @@ For CAD-native objects:
 
 The absorbed Current scope does not by itself establish:
 
+- CAD direct-edit execution from the new Direct Face intent;
+- general B-Rep push/pull, trim or unrestricted direct-edit parity;
+- persistent topological naming generality;
 - general B-Rep/CAD parity;
 - general parametric sketch/feature/assembly solver parity;
 - unrestricted assembly mates/joints;

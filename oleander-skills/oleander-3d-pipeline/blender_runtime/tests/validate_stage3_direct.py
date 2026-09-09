@@ -1,12 +1,17 @@
 """Headless validation for OLEANDER Blender Runtime Stage 3 Direct Modeling.
 
-This validates deterministic direct-dimension and linear-array operators in a
-real Blender 5.1+ process. It does not create CAD/B-Rep, engineering, field,
-manufacturing, constructability, or design authority.
+This validates deterministic direct dimensions, linear duplication and the
+bounded authority-routed face-normal move entrypoint in a real Blender process.
+BLENDER_NATIVE may mutate one selected source-mesh face; CAD_NATIVE may only
+prepare a fail-closed direct-edit intent and must leave its display derivative
+geometry unchanged. This does not establish general CAD/B-Rep push-pull,
+persistent topological naming, engineering, field, manufacturing,
+constructability, or design authority.
 """
 
 from __future__ import annotations
 
+import bmesh
 import hashlib
 import json
 import pathlib
@@ -24,7 +29,10 @@ if str(RUNTIME_ROOT) not in sys.path:
 import oleander_blender
 from oleander_blender.audit import audit_scene
 from oleander_blender.dependency import clear_stale
-from oleander_blender.direct_model import _scene_units_to_mm
+from oleander_blender.direct_model import (
+    CAD_DIRECT_EDIT_INTENT_SCHEMA,
+    _scene_units_to_mm,
+)
 
 
 def assert_true(condition, message):
@@ -50,6 +58,8 @@ def source_fingerprint():
 
 
 def clear_scene():
+    if bpy.context.mode != "OBJECT":
+        bpy.ops.object.mode_set(mode="OBJECT")
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
 
@@ -62,9 +72,26 @@ def add_cube(name, location=(0.0, 0.0, 0.0)):
 
 
 def select_only(obj):
+    if bpy.context.mode != "OBJECT":
+        bpy.ops.object.mode_set(mode="OBJECT")
     bpy.ops.object.select_all(action="DESELECT")
     obj.select_set(True)
     bpy.context.view_layer.objects.active = obj
+
+
+def select_top_face_for_intent(obj):
+    select_only(obj)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bm = bmesh.from_edit_mesh(obj.data)
+    bm.normal_update()
+    for face in bm.faces:
+        face.select = False
+    candidates = [face for face in bm.faces if face.normal.z > 0.9]
+    assert_true(candidates, "fixture must expose a positive-Z face")
+    target = max(candidates, key=lambda face: face.calc_center_median().z)
+    target.select = True
+    bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+    return target
 
 
 def mm_dimensions(context, obj):
@@ -73,6 +100,10 @@ def mm_dimensions(context, obj):
 
 def close_tuple(actual, expected, tolerance=1e-3):
     return all(abs(a - e) <= tolerance for a, e in zip(actual, expected))
+
+
+def mesh_vertex_snapshot(obj):
+    return tuple(tuple(round(float(value), 9) for value in vertex.co) for vertex in obj.data.vertices)
 
 
 def main():
@@ -174,8 +205,101 @@ def main():
             "linked array provenance role must be explicit",
         )
 
+    # BLENDER_NATIVE bounded face-normal move: one selected planar face, applied
+    # object scale, no shared mesh datablock, exact metric displacement.
+    native_face = add_cube("OLE_STAGE3_DIRECT_FACE_NATIVE", location=(0.0, 2000.0, 0.0))
+    native_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_NATIVE"
+    select_only(native_face)
+    native_dims = bpy.ops.oleander.apply_metric_dimensions(x_mm=100.0, y_mm=100.0, z_mm=100.0)
+    assert_true("FINISHED" in native_dims, "native face fixture dimensions must apply")
+
+    native_face_dependent = add_cube("OLE_STAGE3_DIRECT_FACE_DEPENDENT", location=(500.0, 2000.0, 0.0))
+    native_face_dependent.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_DEPENDENT"
+    native_face_dependent.oleander.dependencies = "OLE_STAGE3_DIRECT_FACE_NATIVE"
+    native_face_dependent.oleander.stale = False
+
+    select_top_face_for_intent(native_face)
+    native_move = bpy.ops.oleander.direct_face_normal_move(distance_mm=25.0)
+    assert_true("FINISHED" in native_move, "BLENDER_NATIVE Face Normal Move must finish")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    assert_true(
+        close_tuple(mm_dimensions(bpy.context, native_face), (100.0, 100.0, 125.0)),
+        f"native face normal move must produce 125 mm Z extent; got {mm_dimensions(bpy.context, native_face)!r}",
+    )
+    assert_true(
+        native_face_dependent.oleander.stale
+        and native_face_dependent.get("oleander_stale_reason") == "DIRECT_FACE_NORMAL_MOVE",
+        "native face move must propagate a specific stale reason",
+    )
+    assert_true(
+        native_face.get("oleander_last_direct_operation") == "FACE_NORMAL_MOVE"
+        and native_face.get("oleander_direct_authority_route") == "BLENDER_NATIVE",
+        "native face move must record explicit Blender authority routing",
+    )
+    native_descriptor = json.loads(native_face["oleander_direct_face_target_descriptor"])
+    assert_true("polygon_index" not in native_descriptor, "native semantic descriptor must not persist a polygon index")
+
+    # CAD_NATIVE uses the same interaction entrypoint, but the Blender display
+    # derivative is immutable as CAD authority. Only a deterministic intent is
+    # prepared for later semantic rebind in the specialist sidecar.
+    cad_face = add_cube("OLE_STAGE3_DIRECT_FACE_CAD", location=(0.0, 4000.0, 0.0))
+    cad_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_CAD"
+    select_only(cad_face)
+    cad_dims = bpy.ops.oleander.apply_metric_dimensions(x_mm=100.0, y_mm=100.0, z_mm=100.0)
+    assert_true("FINISHED" in cad_dims, "CAD display fixture dimensions must apply before authority handoff")
+    cad_face.oleander.master_type = "CAD_NATIVE"
+    cad_face.oleander.master_locator = "governed://cad/OLE_STAGE3_DIRECT_FACE_CAD/master.FCStd"
+    cad_face.oleander.geometry_authority = "VISUAL_ONLY"
+    cad_before = mesh_vertex_snapshot(cad_face)
+
+    select_top_face_for_intent(cad_face)
+    cad_move = bpy.ops.oleander.direct_face_normal_move(distance_mm=15.0)
+    assert_true("FINISHED" in cad_move, "CAD_NATIVE Face Normal Move entrypoint must prepare an intent")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    cad_after = mesh_vertex_snapshot(cad_face)
+    assert_true(cad_after == cad_before, "CAD_NATIVE direct-edit intent must not mutate Blender display geometry")
+    assert_true(
+        cad_face.get("oleander_cad_direct_edit_state") == "PENDING_SIDECAR"
+        and cad_face.get("oleander_direct_authority_route") == "CAD_NATIVE",
+        "CAD direct edit must remain pending specialist-sidecar execution",
+    )
+
+    raw_intent = cad_face["oleander_cad_direct_edit_intent"]
+    intent = json.loads(raw_intent)
+    assert_true(intent["schema"] == CAD_DIRECT_EDIT_INTENT_SCHEMA, "CAD intent schema must be explicit")
+    assert_true(intent["operation"] == "FACE_NORMAL_MOVE", "CAD intent operation must remain bounded to face normal move")
+    assert_true(
+        intent["authority"]["required_kernel"] == "FREECAD_OCCT_BREP"
+        and intent["authority"]["blender_role"] == "DISPLAY_DERIVATIVE_ONLY"
+        and intent["authority"]["display_mutation"] == "NONE",
+        "CAD intent must preserve FreeCAD/OCCT authority and no-display-mutation boundary",
+    )
+    assert_true(
+        intent["resolution"]["policy"] == "SEMANTIC_REBIND_FAIL_CLOSED"
+        and intent["resolution"]["ambiguous_result"] == "HOLD"
+        and intent["resolution"]["missing_result"] == "HOLD",
+        "CAD direct edit must require fail-closed semantic rebind",
+    )
+    target_keys = set(intent["target"].keys())
+    assert_true(
+        "polygon_index" not in target_keys and "subshape_ordinal" not in target_keys,
+        "CAD target descriptor must not persist Blender or CAD topology ordinals",
+    )
+    assert_true(
+        set(intent["resolution"]["prohibited_persistence"])
+        >= {"FaceN", "EdgeN", "VertexN", "subshape_ordinal", "polygon_index"},
+        "CAD intent must explicitly prohibit unstable topology persistence",
+    )
+    assert_true(
+        cad_face["oleander_cad_direct_edit_intent_sha256"]
+        == hashlib.sha256(raw_intent.encode("utf-8")).hexdigest(),
+        "CAD direct-edit intent must carry deterministic SHA identity",
+    )
+
     audit = audit_scene(scene)
-    assert_true(not audit["duplicate_ole_ids"], f"governed linear duplicate must not create duplicate OLE IDs: {audit['duplicate_ole_ids']}")
+    assert_true(not audit["duplicate_ole_ids"], f"governed direct modeling must not create duplicate OLE IDs: {audit['duplicate_ole_ids']}")
     assert_true(
         audit["summary"]["OBJECT_DEPENDENCIES"] == "PASS",
         "direct-modeling fixture must preserve a valid dependency graph",
@@ -198,9 +322,19 @@ def main():
             "linear_duplicate_stable_source_provenance",
             "linear_duplicate_linked_mesh",
             "linear_duplicate_metric_spacing",
+            "face_normal_move_operator",
+            "blender_native_face_normal_move_metric",
+            "face_normal_move_downstream_stale_propagation",
+            "cad_native_direct_edit_intent_routing",
+            "cad_native_display_geometry_unchanged",
+            "cad_intent_semantic_selector_no_persistent_face_index",
+            "cad_intent_fail_closed_resolution_policy",
             "post_direct_audit_no_duplicate_ids",
         ],
         "non_claims": [
+            "cad_direct_edit_execution",
+            "general_brep_push_pull",
+            "persistent_topological_naming",
             "cad_brep",
             "solver_backed_constraints",
             "field_truth",
