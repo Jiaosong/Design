@@ -3,8 +3,8 @@
 PREPARE drives the real OLEANDER CAD_NATIVE Face Normal Move operator, confirms
 that Blender display geometry is not mutated, then writes a base CAD build
 request plus strict direct-edit requests. READBACK validates FreeCAD/OCCT PASS
-and HOLD responses, binds only the PASS display derivative into Blender, and
-save/reopens the governed display state.
+and HOLD responses through the production sidecar owner, binds only the PASS
+display derivative into Blender, and save/reopens the governed display state.
 """
 
 from __future__ import annotations
@@ -25,15 +25,17 @@ if str(RUNTIME_ROOT) not in sys.path:
 
 import oleander_blender
 from professional_adapter.cad_sidecar import (
-    CADSidecarContractError,
-    DISPLAY_SCHEMA,
-    RESPONSE_SCHEMA,
-    bind_display_derivative,
+    DIRECT_EDIT_DISPLAY_SCHEMA,
+    DIRECT_EDIT_RESPONSE_SCHEMA,
+    assert_direct_edit_response_matches_request,
+    bind_direct_edit_display_derivative,
     build_direct_edit_request_from_intent,
     build_request,
     file_sha256,
+    load_direct_edit_response,
     payload_sha256,
     validate_direct_edit_request,
+    validate_direct_edit_response,
     write_direct_edit_request,
     write_request,
 )
@@ -41,8 +43,6 @@ from professional_adapter.cad_sidecar import (
 ROOT = pathlib.Path(os.environ.get("OLEANDER_CAD_DIRECT_INTEGRATION_DIR", "/tmp/oleander-cad-direct-integration"))
 ROOT.mkdir(parents=True, exist_ok=True)
 PHASE = os.environ.get("OLEANDER_CAD_DIRECT_PHASE", "PREPARE").strip().upper()
-DIRECT_RESPONSE_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_RESPONSE_v0.1"
-DIRECT_DISPLAY_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_DISPLAY_DERIVATIVE_v0.1"
 OLE_ID = "OLE_CAD_DIRECT_EXECUTION_001"
 BASE_REQUEST = ROOT / "base_build_request.json"
 SUCCESS_REQUEST = ROOT / "direct_request_success.json"
@@ -219,19 +219,17 @@ def prepare() -> None:
     print("OLEANDER_CAD_DIRECT_EDIT_PREPARE=" + json.dumps(result_payload, sort_keys=True))
 
 
-def validate_response(response: dict, request: dict, expected_status: str, expected_resolution: str) -> None:
-    check(response.get("schema") == DIRECT_RESPONSE_SCHEMA, f"{expected_status}_response_schema")
-    check(response.get("status") == expected_status, f"{expected_status}_response_status")
-    check(response.get("request_id") == request["request_id"], f"{expected_status}_request_id_match")
-    check(response.get("ole_id") == request["ole_id"], f"{expected_status}_ole_id_match")
-    check(int(response.get("revision", -1)) == int(request["revision"]), f"{expected_status}_revision_match")
-    check(response.get("request_sha256") == payload_sha256(request), f"{expected_status}_request_sha_match")
-    check(response.get("resolution", {}).get("state") == expected_resolution, f"{expected_status}_resolution_state")
+def validate_response_files(response: dict, request: dict, expected_status: str, expected_resolution: str) -> None:
+    validated = validate_direct_edit_response(response, allow_hold=True)
+    assert_direct_edit_response_matches_request(response, request)
+    check(response.get("schema") == DIRECT_EDIT_RESPONSE_SCHEMA, f"{expected_status}_response_schema")
+    check(validated["status"] == expected_status, f"{expected_status}_response_status")
+    check(validated["resolution_state"] == expected_resolution, f"{expected_status}_resolution_state")
     check(response.get("authoritative", {}).get("master_type") == "CAD_NATIVE", f"{expected_status}_cad_native_authority")
     check(response.get("authoritative", {}).get("geometry_authority") == "FREECAD_OCCT_BREP", f"{expected_status}_freecad_occt_authority")
     if expected_status == "PASS":
-        check(response.get("operation", {}).get("execution_state") == "EXECUTED", "pass_operation_executed")
-        check(response.get("resolution", {}).get("candidate_count") == 1, "pass_unique_candidate")
+        check(validated["execution_state"] == "EXECUTED", "pass_operation_executed")
+        check(validated["candidate_count"] == 1, "pass_unique_candidate")
         for artifact in ("fcstd", "step", "brep"):
             record = response["authoritative"][artifact]
             path = pathlib.Path(record["path"])
@@ -242,8 +240,8 @@ def validate_response(response: dict, request: dict, expected_status: str, expec
         check(display_path.is_file(), "pass_display_derivative_exists")
         check(file_sha256(display_path) == display_record["sha256"], "pass_display_derivative_sha")
     else:
-        check(response.get("operation", {}).get("execution_state") == "NOT_EXECUTED", f"{expected_status}_operation_not_executed")
-        check(response.get("measurements", {}).get("result_solid_count") == 0, f"{expected_status}_zero_released_solids")
+        check(validated["execution_state"] == "NOT_EXECUTED", f"{expected_status}_operation_not_executed")
+        check(validated["result_solid_count"] == 0, f"{expected_status}_zero_released_solids")
         for artifact in ("fcstd", "step", "brep"):
             check(not response["authoritative"][artifact]["path"], f"{expected_status}_{artifact}_not_released")
         check(not response["display_derivative"]["path"], f"{expected_status}_display_not_released")
@@ -268,12 +266,12 @@ def readback() -> None:
         validate_direct_edit_request(request)
     checks.append("readback_all_requests_strictly_revalidated")
 
-    success_response = read_json(ROOT / "direct_success" / "cad_direct_edit_response.json")
-    missing_response = read_json(ROOT / "direct_missing" / "cad_direct_edit_response.json")
-    ambiguous_response = read_json(ROOT / "direct_ambiguous" / "cad_direct_edit_response.json")
-    validate_response(success_response, success_request, "PASS", "RESOLVED_UNIQUE")
-    validate_response(missing_response, missing_request, "HOLD", "MISSING_HOLD")
-    validate_response(ambiguous_response, ambiguous_request, "HOLD", "AMBIGUOUS_HOLD")
+    success_response = load_direct_edit_response(ROOT / "direct_success" / "cad_direct_edit_response.json")
+    missing_response = load_direct_edit_response(ROOT / "direct_missing" / "cad_direct_edit_response.json", allow_hold=True)
+    ambiguous_response = load_direct_edit_response(ROOT / "direct_ambiguous" / "cad_direct_edit_response.json", allow_hold=True)
+    validate_response_files(success_response, success_request, "PASS", "RESOLVED_UNIQUE")
+    validate_response_files(missing_response, missing_request, "HOLD", "MISSING_HOLD")
+    validate_response_files(ambiguous_response, ambiguous_request, "HOLD", "AMBIGUOUS_HOLD")
     check(ambiguous_response["resolution"]["candidate_count"] == 2, "ambiguous_exactly_two_candidates")
 
     measurements = success_response["measurements"]
@@ -284,28 +282,15 @@ def readback() -> None:
     check(success_response["source_master"]["brep"]["sha256"] != success_response["authoritative"]["brep"]["sha256"], "pass_authoritative_brep_changed")
 
     display = read_json(ROOT / "direct_success" / "cad_direct_edit_display_derivative.json")
-    check(display.get("schema") == DIRECT_DISPLAY_SCHEMA, "readback_direct_display_schema")
+    check(display.get("schema") == DIRECT_EDIT_DISPLAY_SCHEMA, "readback_direct_display_schema")
     check(display.get("request_sha256") == payload_sha256(success_request), "readback_display_request_sha")
     check(display.get("display_authority") == "DISPLAY_DERIVATIVE_ONLY", "readback_display_non_authoritative")
 
-    # Reuse the existing CAD sidecar Blender binder. Only schema adaptation is
-    # performed here; the direct-edit response remains separately typed on disk.
-    adapted_response = {
-        "schema": RESPONSE_SCHEMA,
-        "request_id": success_response["request_id"],
-        "ole_id": success_response["ole_id"],
-        "revision": success_response["revision"],
-        "status": "PASS",
-        "request_sha256": success_response["request_sha256"],
-        "authoritative": success_response["authoritative"],
-    }
-    adapted_display = dict(display)
-    adapted_display["schema"] = DISPLAY_SCHEMA
-    obj = bind_display_derivative(response=adapted_response, display_payload=adapted_display)
-    obj["cad_direct_edit_response_schema"] = DIRECT_RESPONSE_SCHEMA
-    obj["cad_direct_edit_display_schema"] = DIRECT_DISPLAY_SCHEMA
-    obj["cad_direct_edit_execution_state"] = "EXECUTED"
-    obj["cad_direct_edit_resolution_state"] = success_response["resolution"]["state"]
+    obj = bind_direct_edit_display_derivative(
+        response=success_response,
+        display_payload=display,
+        request=success_request,
+    )
     bpy.context.view_layer.update()
     check(abs(obj.dimensions.x - 80.0) <= 1e-3, "readback_blender_width")
     check(abs(obj.dimensions.y - 50.0) <= 1e-3, "readback_blender_depth")
@@ -313,15 +298,30 @@ def readback() -> None:
     check(obj["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "readback_blender_display_only")
     check(obj["authoritative_geometry_kernel"] == "FREECAD_OCCT_BREP", "readback_kernel_authority")
     check(obj["cad_request_sha256"] == payload_sha256(success_request), "readback_bound_request_sha")
+    check(obj["cad_direct_edit_response_schema"] == DIRECT_EDIT_RESPONSE_SCHEMA, "readback_typed_response_schema_bound")
+    check(obj["cad_direct_edit_display_schema"] == DIRECT_EDIT_DISPLAY_SCHEMA, "readback_typed_display_schema_bound")
+    check(obj["cad_direct_edit_execution_state"] == "EXECUTED", "readback_typed_execution_state_bound")
+    check(obj["cad_direct_edit_resolution_state"] == "RESOLVED_UNIQUE", "readback_typed_resolution_state_bound")
 
     forged = copy.deepcopy(success_response)
     forged["request_sha256"] = "f" * 64
     try:
-        validate_response(forged, success_request, "PASS", "RESOLVED_UNIQUE")
-    except AssertionError:
+        assert_direct_edit_response_matches_request(forged, success_request)
+    except Exception:
         checks.append("forged_direct_response_sha_expected_failure")
     else:
         raise AssertionError("forged_direct_response_sha_expected_failure")
+
+    try:
+        bind_direct_edit_display_derivative(
+            response=missing_response,
+            display_payload=display,
+            request=missing_request,
+        )
+    except Exception:
+        checks.append("hold_response_bind_expected_failure")
+    else:
+        raise AssertionError("hold_response_bind_expected_failure")
 
     bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN))
     check(REOPEN.is_file(), "readback_blend_saved")
@@ -338,13 +338,13 @@ def readback() -> None:
     check(reopened["cad_direct_edit_execution_state"] == "EXECUTED", "readback_execution_state_reopen")
 
     result_payload = {
-        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.1",
+        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.2",
         "status": "PASS",
         "blender": bpy.app.version_string,
         "checks": checks,
         "request_sha256": payload_sha256(success_request),
-        "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "EXECUTED", "resolution": "RESOLVED_UNIQUE"},
-        "failure_envelope": {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE"},
+        "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "EXECUTED", "resolution": "RESOLVED_UNIQUE", "binder": "PRODUCTION_TYPED_DIRECT_RESPONSE"},
+        "failure_envelope": {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE", "hold_bind": "FAIL_CLOSED"},
         "non_claims": ["general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "default_environment_promotion", "engineering_approval", "manufacturing_release", "field_truth"],
     }
     print("OLEANDER_CAD_DIRECT_EDIT_READBACK=" + json.dumps(result_payload, sort_keys=True))
