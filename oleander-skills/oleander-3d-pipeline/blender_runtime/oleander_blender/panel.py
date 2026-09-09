@@ -65,7 +65,7 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
 
         if obj.type == "MESH":
             direct_box = layout.box()
-            direct_box.label(text="Direct Face · bounded v0.1")
+            direct_box.label(text="Direct Face · bounded v0.2")
             direct_box.label(text=f"Authority route: {meta.master_type}")
             if context.mode == "EDIT_MESH":
                 direct_box.operator(
@@ -73,11 +73,18 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
                     text="Face Normal Move ±mm",
                     icon="ORIENTATION_NORMAL",
                 )
-                if meta.master_type == "CAD_NATIVE":
-                    direct_box.label(text="CAD route prepares intent only", icon="INFO")
+                if meta.master_type == "BLENDER_NATIVE":
+                    direct_box.operator(
+                        "oleander.direct_face_tangent_move",
+                        text="Face Tangent Move U/V mm",
+                        icon="ORIENTATION_LOCAL",
+                    )
+                    direct_box.label(text="One selected face · geometry U/V tangent basis")
+                    direct_box.label(text="Normal and tangent edits propagate stale state")
+                elif meta.master_type == "CAD_NATIVE":
+                    direct_box.label(text="Normal Move routes through governed CAD sidecar", icon="INFO")
+                    direct_box.label(text="Tangent Move remains HOLD until shared sidecar absorption")
                     direct_box.label(text="Display mesh is not CAD authority")
-                elif meta.master_type == "BLENDER_NATIVE":
-                    direct_box.label(text="One selected face · local normal · mm")
                 else:
                     direct_box.label(text="No bounded direct-face route for this master", icon="ERROR")
             else:
