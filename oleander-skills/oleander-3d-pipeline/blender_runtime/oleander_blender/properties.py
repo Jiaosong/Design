@@ -1,6 +1,23 @@
 import bpy
 
 
+DOMAIN_WORKSPACES = [
+    ("GENERAL", "General", "Shared project-neutral OLEANDER 3D environment"),
+    ("PRODUCT", "Product", "Product and component design workspace"),
+    ("SPATIAL", "Spatial", "Spatial and interior design workspace"),
+    ("ARCHITECTURE", "Architecture", "Architecture workspace"),
+    ("EXHIBITION", "Exhibition", "Exhibition and display workspace"),
+    ("FURNITURE", "Furniture", "Furniture design workspace"),
+    ("LANDSCAPE", "Landscape", "Landscape and territory workspace"),
+]
+
+PROJECT_PROFILE_STATES = [
+    ("UNBOUND", "Unbound", "No project profile is bound; shared Runtime defaults remain active"),
+    ("BOUND", "Bound", "A project configuration profile is bound to this scene"),
+    ("STALE", "Stale", "The bound project profile requires readback or refresh"),
+    ("ERROR", "Error", "The project profile could not be resolved or validated"),
+]
+
 MASTER_TYPES = [
     ("BLENDER_NATIVE", "Blender Native", "Blender object/data is the editable master"),
     ("CAD_NATIVE", "CAD Native", "Specialist CAD source is authoritative; Blender is a derivative/review representation"),
@@ -54,6 +71,28 @@ REVIEW_STATE = [
     ("FAIL", "Fail", "Review failed for its declared scope"),
     ("NA", "N/A", "Review is not applicable"),
 ]
+
+
+class OLEANDER_EnvironmentState(bpy.types.PropertyGroup):
+    domain_workspace: bpy.props.EnumProperty(
+        name="Domain Workspace",
+        items=DOMAIN_WORKSPACES,
+        default="GENERAL",
+        description="Shared software workspace mode; this is not a project-specific Runtime fork",
+    )
+    project_profile_id: bpy.props.StringProperty(
+        name="Project Profile",
+        description="Optional project configuration/profile identity. Projects consume the shared Runtime through profiles rather than modifying the Runtime core.",
+    )
+    project_profile_locator: bpy.props.StringProperty(
+        name="Profile Locator",
+        description="Governed locator for the external project profile/configuration; never a substitute for geometry or master authority",
+    )
+    project_profile_state: bpy.props.EnumProperty(
+        name="Profile State",
+        items=PROJECT_PROFILE_STATES,
+        default="UNBOUND",
+    )
 
 
 class OLEANDER_ObjectMetadata(bpy.types.PropertyGroup):

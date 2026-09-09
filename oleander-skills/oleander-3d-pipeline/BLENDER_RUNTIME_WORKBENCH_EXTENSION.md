@@ -1,22 +1,25 @@
 # OLEANDER Blender Runtime / Workbench Extension
 
-Status: CANDIDATE IMPLEMENTATION LAYER / NOT INSTALLED CURRENT
+Status: CURRENT IMPLEMENTATION LAYER / BOUNDED ABSORPTION IN MAIN
 Parent authority: `oleander-skills/oleander-3d-pipeline/SKILL.md`
 
-## Current implementation alignment — 2026-09-05
+## Current implementation alignment — 2026-09-09
 
 This file is an implementation layer under the existing `oleander-3d-pipeline` Skill. It is not a second Skill, second Runtime Current, or independent governance authority.
 
-Current Candidate facts:
+Current facts:
 
-- installed Current remains the `main` branch copy of `oleander-skills/oleander-3d-pipeline/` until explicit merge/promotion + readback;
-- the Candidate runtime has a consolidated real-Blender regression on Blender `5.2.0 LTS` and seventeen bound validation stages; current-source compatibility authority is `blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`;
-- historical per-stage Blender 5.1.2 receipts remain immutable provenance and are not current-source compatibility authority;
+- `main` is the only installed Current for the bounded Runtime/Workbench scope absorbed through PR #470 on 2026-09-07;
+- the absorbed runtime has a consolidated real-Blender regression on Blender `5.2.0 LTS` and seventeen bound validation stages; current-source compatibility authority is `blender_runtime/BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json`;
+- historical per-stage Blender 5.1.2 receipts and the former `feat/oleander-blender-runtime-workbench` branch remain immutable provenance, not a second Current;
+- OLEANDER Blender is shared, project-neutral environment software; individual projects consume it through optional Project Profiles rather than owning or forking Runtime core behavior;
 - professional CAD/B-Rep proofs remain bounded specialist-kernel evidence; Blender does not become B-Rep authority by consuming their display derivatives;
+- `default_environment_eligible` remains false and `P0_B_DIRECT_BREP` remains BLOCKED;
 - `PROFESSIONAL_PARITY_STATUS.json` remains the capability-claim boundary and P0 professional gaps remain explicit.
 
 Existing-first implementation map:
 
+- shared environment / Project Profile state: `properties.py`, `panel.py`;
 - identity / audit / dependency / diff: `properties.py`, `audit.py`, `dependency.py`, `geometry_diff.py`, `review_state.py`;
 - direct / feature editing: `direct_model.py`, `feature_stack.py`, `feature_edit.py`;
 - measurement / datum / precision inference: `measurement_system.py`, `measurement_atomic.py`, `angular_datum.py`, `precision_inference.py`, `inference_engine.py`;
@@ -25,15 +28,54 @@ Existing-first implementation map:
 - mesh clearance / surface diagnostics: `mesh_clearance.py`, `surface_diagnostics.py`;
 - authoritative CAD handoff: `professional_adapter/cad_sidecar.py` plus the applicable specialist route and bounded runtime evidence.
 
-When an existing module can carry roughly 60% or more of a requirement, extend or compose it. Do not create a parallel Blender Skill, assembly Skill, CAD Skill, duplicate Workbench framework, second Current runtime, or one-off professional workflow to bypass an existing owner. Any material runtime change must close the loop by updating the parent Skill routing, capability/status records, this Workbench extension, Runtime README, Candidate governance and the matching Notion control surface, followed by the smallest applicable real-runtime regression/readback.
+When an existing module can carry roughly 60% or more of a requirement, extend or compose it. Do not create a parallel Blender Skill, assembly Skill, CAD Skill, duplicate Workbench framework, second Current runtime, or one-off professional workflow to bypass an existing owner. Any material runtime change must close the loop by updating the parent Skill routing, capability/status records, this Workbench extension, Runtime README, governance state and the matching Notion control surface, followed by the smallest applicable real-runtime regression/readback.
 
 ## Purpose
 
-Turn Blender into the primary interactive OLEANDER 3D workbench without pretending that Blender's mesh kernel is equivalent to specialist CAD, BIM, CAE, CAM or Class-A systems.
+Turn Blender into the primary interactive **shared OLEANDER 3D environment software**, without pretending that Blender's mesh kernel is equivalent to specialist CAD, BIM, CAE, CAM or Class-A systems.
 
-The user should be able to remain in one interactive environment while OLEANDER routes each task to the appropriate deterministic geometry or analysis backend, then returns governed results to a shared object-identity layer.
+The user should be able to remain in one interactive environment while OLEANDER routes each task to the appropriate deterministic geometry or analysis backend, then returns governed results to a shared object-identity layer. Product, spatial, architecture, exhibition, furniture, landscape and other projects are consumers of this same environment rather than separate Runtime implementations.
 
 This extension does not replace the parent 3D Skill. It implements a Blender-first runtime shell under the existing rules for Current master, dimension authority, exchange, field/manufacturing HOLD, AI visual boundaries and round-trip validation.
+
+## Shared environment / Project Profile boundary
+
+The common software and project configuration layers are intentionally separated:
+
+```text
+Shared OLEANDER Blender Environment
+├─ Runtime Core
+│  ├─ identity / dependency / authority
+│  ├─ parameter / relation / stale state
+│  ├─ validation / audit / diff
+│  └─ representation / export governance
+├─ Modeling Environment
+│  ├─ Direct / Parametric / Surface
+│  ├─ Procedural / Sculpt
+│  └─ Assembly / Configuration
+├─ Domain Workspaces
+│  ├─ General / Product / Spatial
+│  ├─ Architecture / Exhibition / Furniture
+│  └─ Landscape
+├─ Professional Backends
+│  ├─ CAD/B-Rep / NURBS
+│  ├─ BIM/IFC / GIS
+│  └─ CAE / CAM / Drawing
+└─ Project Profiles
+   └─ optional configuration consumers of the shared environment
+```
+
+Runtime rules:
+
+- Runtime/Core code must remain project-neutral: no project IDs, project geometry algorithms, project assets or project-specific authority semantics may be hard-coded into common Runtime behavior;
+- Domain Workspace is reusable software behavior and must not be confused with a Project Profile;
+- an unbound scene remains a valid shared OLEANDER environment using project-neutral defaults;
+- a Project Profile may configure units, naming conventions, metadata defaults, review rules, export templates and default workspace selection;
+- a Project Profile may not replace master or geometry authority, bypass audit or validation, silently change specialist-kernel authority routing, or turn one project's usage evidence into a global capability claim;
+- specialist sidecars are common software backends. Their authority contracts remain stable regardless of the active project;
+- project-specific code that cannot be expressed as configuration remains outside Runtime Core and must not be promoted into common software merely because one project needs it.
+
+The scene-level contract is `Scene.oleander_environment`, currently exposing `domain_workspace`, optional `project_profile_id`, `project_profile_locator` and `project_profile_state` through the existing `properties.py` / `panel.py` owners. This configuration surface is not a new professional parity claim.
 
 ## Core principle
 
@@ -62,7 +104,7 @@ Every logical design object must have a persistent OLEANDER identity independent
 Minimum object metadata:
 
 ```yaml
-ole_id: OLE_QJ_R06_PLATFORM_BEAM_001
+ole_id: OLE_COMPONENT_PRIMARY_001
 object_class: structural_member
 master_type: CAD_NATIVE | BLENDER_NATIVE | BIM_NATIVE | EXTERNAL_NATIVE
 master_locator: governed locator
@@ -73,7 +115,7 @@ field_state: VERIFIED | OPEN
 engineering_state: APPROVED | OPEN | NOT_APPLICABLE
 manufacturing_state: RELEASED | OPEN | NOT_APPLICABLE
 lod: 300
-assembly_id: OLE_QJ_R06_PLATFORM_ASSY_001
+assembly_id: OLE_ASSEMBLY_MAIN_001
 derivative_ids: []
 ```
 
@@ -503,10 +545,10 @@ Changing an authoritative upstream parameter should mark affected downstream rep
 Example dependency propagation:
 
 ```text
-platform_width 2400 -> 3000
-→ structure geometry stale
-→ cladding quantity stale
-→ lighting distribution stale
+component_width 2400 -> 3000
+→ dependent geometry stale
+→ material quantity stale
+→ assembly interfaces stale
 → BOM stale
 → drawing dimensions stale
 → exploded view stale
@@ -554,7 +596,7 @@ Mesh, curves, Geometry Nodes, sculpt, materials, animation, render, scene organi
 
 ### L1 — Governed Blender Workbench
 
-OLEANDER object identity, metadata, audit, presets, dependency graph, export manifests and technical representation helpers.
+OLEANDER object identity, shared environment/Profile state, metadata, audit, presets, dependency graph, export manifests and technical representation helpers.
 
 ### L2 — Specialist Sidecars
 
@@ -568,7 +610,7 @@ Do not claim L2/L3 capability without active runtime evidence.
 
 ## Minimum implementation sequence
 
-1. Object identity + metadata schema.
+1. Shared environment state + Project Profile boundary + object identity + metadata schema.
 2. OLEANDER Audit panel.
 3. unit/axis/dependency/export manifest checks.
 4. workspace presets and command palette.
@@ -586,6 +628,8 @@ Do not claim L2/L3 capability without active runtime evidence.
 ## Non-goals
 
 - Reimplement every specialist solver inside Blender.
+- Create project-specific Runtime forks inside the shared environment.
+- Allow Project Profiles to override geometry/master authority or validation boundaries.
 - Claim Blender mesh operations are equivalent to parametric CAD.
 - Claim visual smoothness is Class-A verification.
 - Claim IFC tags alone are BIM validation.
