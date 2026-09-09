@@ -94,7 +94,9 @@ Hard boundaries:
 - a heavy executor is a producer/runtime surface, not the Completion Gate or independent reviewer;
 - existing authority contracts may assign a surface a specific role, but this adapter contract does not expand that role.
 
-Use `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1` for the Current surface registry. Prefer role/capability routing over adding vendor-specific ontology.
+Use `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1` for the Current persistent surface registry. Prefer role/capability routing over adding vendor-specific ontology.
+
+A connector that is currently exposed to Chat but is not yet represented as a persistent shared surface may still be used **ephemerally** when its capability role, authority ceiling, native-output boundary and readback contract fit the task. One-off use does not auto-create a registry entry, TOOL, Skill, Method, Framework or Project State.
 
 ## 9｜Side-effect classification
 
@@ -123,6 +125,56 @@ Rules:
 - fallback must preserve the required native-output truth boundary and declare any capability loss;
 - adapter failure does not authorize a new Skill/METHOD/Framework. Exhaust Current legal adapters first, then record the exact capability boundary or HOLD.
 
+### 10A｜Unified capability-role router
+
+The router is an execution rule inside this existing contract, not a new Plugin Framework.
+
+Capability roles are:
+
+- `AUTHORITY_READ_WRITE`
+- `REPO_SOURCE_MUTATION`
+- `ASSET_ARCHIVE_DELIVERY`
+- `NATIVE_PRODUCTION`
+- `RUNTIME_READBACK`
+- `DEPLOYMENT`
+- `HUMAN_COORDINATION`
+- `SCHEDULED_WAKEUP`
+- `HEAVY_EXECUTION`
+
+Selection precedence is fixed:
+
+`CURRENT AUTHORITY + OWNER BOUNDARY → REQUIRED NATIVE OUTPUT + MUTATION CAPABILITY → ACTIVE CONSTRAINTS + PERMISSION → LOWEST SUFFICIENT SIDE EFFECT → ACTUAL READBACK COVERAGE → CURRENT VERIFIED AVAILABILITY / RELIABILITY → LOWER EXECUTION OVERHEAD → DECLARED FALLBACK`.
+
+Do not choose by vendor/brand name. “GitHub / Notion / Browser / Vercel / Slack / Work / another connector” is only a surface identity after the capability role has been resolved.
+
+For a material routed execution, the route decision may record:
+
+`required_capability_roles / candidate_surfaces / selected_surface / selection_reasons / availability_state / authority_ceiling / side_effect_class / readback_surface / fallback_surface`.
+
+Unused route candidates are not persistent project state.
+
+### 10B｜Probe discipline and liveness
+
+Surface liveness states are:
+
+`AVAILABLE / UNAVAILABLE / DEGRADED / UNKNOWN`.
+
+Probe only when:
+
+- the selected surface requires runtime confirmation;
+- the previously selected surface failed;
+- a fallback must be evaluated.
+
+Do not probe every connected surface for inventory curiosity. If one verified sufficient surface is already available, an unrelated `UNKNOWN` surface does not block execution.
+
+Availability is a runtime fact, not Authority. A connector becoming available or unavailable does not rewrite Project State, Source Authority or Design Authority.
+
+### 10C｜Producer / readback separation
+
+Prefer a distinct readback surface when practical, e.g. repository mutation → browser/runtime readback, deployment → browser readback, Notion mutation → re-fetch/drift check.
+
+If the same surface must both mutate and read back because no alternative exists, record the readback as `NOT_INDEPENDENT`. The absence of another surface does not justify silently claiming independent review.
+
 ## 11｜Selective readback and validator separation
 
 Readback scope follows the **mutation blast radius**:
@@ -142,7 +194,7 @@ Where practical, use a different evidence channel for validation than for produc
 
 ## 12｜Ephemeral outputs and persistence throttle
 
-Search results, tool logs, failed attempts, console output, temporary screenshots, intermediate deployment URLs and transient adapter state are **EPHEMERAL by default**.
+Search results, tool logs, failed attempts, console output, temporary screenshots, intermediate deployment URLs, transient adapter state, unused route candidates and surface-liveness probes are **EPHEMERAL by default**.
 
 They may be promoted to an existing persistent surface only after the applicable sequence:
 
@@ -154,6 +206,7 @@ Therefore:
 - runtime trace ≠ Project State;
 - temporary screenshot ≠ Design Authority;
 - scheduler run ≠ material delta;
+- route candidates ≠ plugin inventory authority;
 - no material delta = no new page, Candidate, receipt instance or commit solely to record that the adapter ran.
 
 ## 13｜Heavy executor escalation boundary
