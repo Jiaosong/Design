@@ -1,9 +1,14 @@
+import hashlib
 import json
 
+import bmesh
 import bpy
 from mathutils import Vector
 
 from .dependency import mark_downstream_stale, object_id
+
+
+CAD_DIRECT_EDIT_INTENT_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1"
 
 
 def _mm_to_scene_units(context, value_mm):
@@ -48,6 +53,87 @@ def _apply_object_scale(context, obj):
                 selected.select_set(True)
         if previous_active and previous_active.name in bpy.data.objects:
             context.view_layer.objects.active = previous_active
+
+
+def _unit_scale_applied(obj, tolerance=1e-6):
+    return all(abs(float(value) - 1.0) <= tolerance for value in obj.scale)
+
+
+def _rounded_vector(values, digits=6):
+    return [round(float(value), digits) for value in values]
+
+
+def _face_semantic_descriptor(context, face):
+    """Describe a selected display face without persisting a topology ordinal."""
+    mm_per_scene_unit = _scene_units_to_mm(context, 1.0)
+    center = face.calc_center_median()
+    normal = face.normal.normalized()
+    coordinates = [vert.co for vert in face.verts]
+    minimum = [min(point[axis] for point in coordinates) for axis in range(3)]
+    maximum = [max(point[axis] for point in coordinates) for axis in range(3)]
+    return {
+        "selector_semantics": "BLENDER_SELECTED_DISPLAY_FACE_INTENT",
+        "normal_local": _rounded_vector(normal, 9),
+        "center_local_mm": _rounded_vector((value * mm_per_scene_unit for value in center), 6),
+        "area_mm2": round(float(face.calc_area()) * mm_per_scene_unit * mm_per_scene_unit, 6),
+        "edge_count": len(face.edges),
+        "edge_lengths_mm": sorted(
+            round(float(edge.calc_length()) * mm_per_scene_unit, 6)
+            for edge in face.edges
+        ),
+        "bbox_local_mm": {
+            "min": _rounded_vector((value * mm_per_scene_unit for value in minimum), 6),
+            "max": _rounded_vector((value * mm_per_scene_unit for value in maximum), 6),
+        },
+    }
+
+
+def _canonical_json(payload):
+    return json.dumps(
+        payload,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    )
+
+
+def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
+    if not hasattr(obj, "oleander"):
+        raise ValueError("CAD direct edit requires OLEANDER metadata")
+    ole_id = obj.oleander.ole_id.strip()
+    master_locator = obj.oleander.master_locator.strip()
+    if not ole_id:
+        raise ValueError("CAD direct edit requires a stable OLE ID")
+    if not master_locator:
+        raise ValueError("CAD direct edit requires a governed CAD master locator")
+    return {
+        "schema": CAD_DIRECT_EDIT_INTENT_SCHEMA,
+        "ole_id": ole_id,
+        "units": "mm",
+        "operation": "FACE_NORMAL_MOVE",
+        "parameters": {"distance_mm": float(distance_mm)},
+        "target": descriptor,
+        "authority": {
+            "master_type": "CAD_NATIVE",
+            "master_locator": master_locator,
+            "required_kernel": "FREECAD_OCCT_BREP",
+            "blender_role": "DISPLAY_DERIVATIVE_ONLY",
+            "display_mutation": "NONE",
+        },
+        "resolution": {
+            "policy": "SEMANTIC_REBIND_FAIL_CLOSED",
+            "ambiguous_result": "HOLD",
+            "missing_result": "HOLD",
+            "prohibited_persistence": [
+                "FaceN",
+                "EdgeN",
+                "VertexN",
+                "subshape_ordinal",
+                "polygon_index",
+            ],
+        },
+    }
 
 
 class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
@@ -113,6 +199,111 @@ class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
             f"Dimensions set to {self.x_mm:.1f} × {self.y_mm:.1f} × {self.z_mm:.1f} mm; downstream stale: {len(downstream)}",
         )
         return {"FINISHED"}
+
+
+class OLEANDER_OT_direct_face_normal_move(bpy.types.Operator):
+    """Bounded face-normal direct edit with explicit authority routing."""
+
+    bl_idname = "oleander.direct_face_normal_move"
+    bl_label = "Face Normal Move"
+    bl_description = (
+        "Move one Blender-native mesh face along its local normal, or prepare a "
+        "fail-closed CAD direct-edit intent without mutating a CAD display mesh"
+    )
+    bl_options = {"REGISTER", "UNDO"}
+
+    distance_mm: bpy.props.FloatProperty(name="Distance mm", default=10.0)
+
+    @classmethod
+    def poll(cls, context):
+        return (
+            context.active_object is not None
+            and context.active_object.type == "MESH"
+            and context.mode == "EDIT_MESH"
+        )
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self)
+
+    def execute(self, context):
+        obj = context.active_object
+        if abs(float(self.distance_mm)) <= 1e-9:
+            self.report({"ERROR"}, "Face Normal Move requires a non-zero distance")
+            return {"CANCELLED"}
+        if not _unit_scale_applied(obj):
+            self.report({"ERROR"}, "Apply object scale before governed mm face editing")
+            return {"CANCELLED"}
+        if getattr(obj, "data", None) is None:
+            self.report({"ERROR"}, "Face Normal Move requires editable mesh data")
+            return {"CANCELLED"}
+        if obj.data.users > 1:
+            self.report({"ERROR"}, "Shared mesh data is HOLD; make the mesh single-user before face editing")
+            return {"CANCELLED"}
+        if obj.data.shape_keys is not None:
+            self.report({"ERROR"}, "Shape-key controlled mesh is outside bounded Face Normal Move scope")
+            return {"CANCELLED"}
+
+        bm = bmesh.from_edit_mesh(obj.data)
+        bm.normal_update()
+        selected_faces = [face for face in bm.faces if face.select]
+        if len(selected_faces) != 1:
+            self.report({"ERROR"}, "Select exactly one mesh face")
+            return {"CANCELLED"}
+        face = selected_faces[0]
+        if face.normal.length <= 1e-12:
+            self.report({"ERROR"}, "Selected face has no stable normal")
+            return {"CANCELLED"}
+
+        descriptor = _face_semantic_descriptor(context, face)
+        master_type = obj.oleander.master_type if hasattr(obj, "oleander") else "BLENDER_NATIVE"
+
+        if master_type == "BLENDER_NATIVE":
+            delta = face.normal.normalized() * _mm_to_scene_units(context, self.distance_mm)
+            for vert in face.verts:
+                vert.co += delta
+            bm.normal_update()
+            bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+            context.view_layer.update()
+
+            downstream = mark_downstream_stale(
+                [object_id(obj)],
+                reason="DIRECT_FACE_NORMAL_MOVE",
+                scene=context.scene,
+            )
+            obj["oleander_last_direct_operation"] = "FACE_NORMAL_MOVE"
+            obj["oleander_direct_authority_route"] = "BLENDER_NATIVE"
+            obj["oleander_direct_face_distance_mm"] = float(self.distance_mm)
+            obj["oleander_direct_face_target_descriptor"] = _canonical_json(descriptor)
+            obj["oleander_direct_downstream_stale"] = json.dumps(downstream, sort_keys=True)
+            self.report(
+                {"INFO"},
+                f"Face moved {self.distance_mm:+.3f} mm in Blender-native authority; downstream stale: {len(downstream)}",
+            )
+            return {"FINISHED"}
+
+        if master_type == "CAD_NATIVE":
+            try:
+                intent = _build_cad_direct_edit_intent(obj, self.distance_mm, descriptor)
+            except ValueError as exc:
+                self.report({"ERROR"}, str(exc))
+                return {"CANCELLED"}
+            encoded = _canonical_json(intent)
+            obj["oleander_last_direct_operation"] = "CAD_DIRECT_EDIT_INTENT"
+            obj["oleander_direct_authority_route"] = "CAD_NATIVE"
+            obj["oleander_cad_direct_edit_intent"] = encoded
+            obj["oleander_cad_direct_edit_intent_sha256"] = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+            obj["oleander_cad_direct_edit_state"] = "PENDING_SIDECAR"
+            self.report(
+                {"INFO"},
+                "CAD direct-edit intent prepared; authoritative CAD and Blender display geometry remain unchanged",
+            )
+            return {"FINISHED"}
+
+        self.report(
+            {"ERROR"},
+            f"Face Normal Move has no bounded authority route for {master_type}",
+        )
+        return {"CANCELLED"}
 
 
 class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
@@ -186,5 +377,6 @@ class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
 
 CLASSES = (
     OLEANDER_OT_apply_metric_dimensions,
+    OLEANDER_OT_direct_face_normal_move,
     OLEANDER_OT_duplicate_linear,
 )
