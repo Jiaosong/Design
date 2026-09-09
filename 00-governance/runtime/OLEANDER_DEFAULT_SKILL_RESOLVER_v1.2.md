@@ -1,25 +1,27 @@
 # OLEANDER Default Skill Resolver v1.2
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.2.2**  
+Implementation revision: **1.2.3**  
 Decision date: **2026-08-19**  
+Runtime extension: **2026-09-09 — Verified Continuation / Resume Checkpoint**  
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
 Execution implementation: **GitHub `Jiaosong/Design`**
 
 ## 0｜Purpose
 
-v1.2.2 keeps the existing knowledge-first execution architecture and adds a third runtime hard gate to the v1.2.1 constraint/completion baseline:
+v1.2.3 keeps the existing knowledge-first execution architecture and hardens the v1.2.2 constraint/completion/visual baseline with one runtime continuity rule:
 
 1. **Sticky Execution Constraint Lock** — explicit negative user constraints are resolved before owner/tool selection and remain active until explicitly revoked.
 2. **Flow Completion Gate** — a task that requires the full OLEANDER flow cannot be called complete until every applicable phase is actually closed.
 3. **Existing Visual Authority + Image Consumption Gate** — visual work must first preserve mature/current design artifacts and must check whether a semantic content image has already been reserved or consumed before binding it to another surface.
+4. **Verified Continuation / Resume Checkpoint** — a same-task follow-up such as “继续 / 推进 / 优化 / 修一下” resumes from the last verified checkpoint instead of re-planning from zero, but only while Current Authority and the execution frontier remain valid.
 
-This is not a new Skill, METHOD, taxonomy or parallel process framework. It hardens the existing Resolver / Image Processing TOOL / Receipt / CI chain.
+This is not a new Skill, METHOD, taxonomy, Agent framework, state database or parallel process. It hardens the existing Resolver / Project Control Card / Receipt / DAG / CI chain.
 
 Current invariant:
 
-> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
+> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → CONTINUATION CHECKPOINT / AUTHORITY REVALIDATION WHEN APPLICABLE → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → CHECKPOINT UPDATE WHEN APPLICABLE → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
 
 ## 1｜Notion current architecture remains upstream
 
@@ -86,6 +88,101 @@ A constraint can be released only by a later explicit instruction that directly 
 
 `USE_EXISTING_OLEANDER_METHODS_AND_SKILLS` means the relevant Current METHOD / Skill / `CAPABILITY.json` / runtime material must actually be read. Saying “我会用 OLEANDER” is not execution evidence.
 
+## 2A｜Verified Continuation / Resume Checkpoint
+
+A generic follow-up that does not materially redefine the task, object, constraints or requested output is interpreted as **same-task continuation**, not a request to restart planning.
+
+Continuation intents include:
+
+- “继续”
+- “推进”
+- “优化”
+- “再修” / “修一下”
+- equivalent same-object follow-ups that preserve task identity.
+
+Resolve an existing continuation state in this order:
+
+1. active Execution Receipt for the same task;
+2. Current Project Control Card;
+3. Current Task / Project State only when no stronger runtime checkpoint exists.
+
+The checkpoint records only runtime continuity:
+
+`checkpoint_state / current_node / last_verified_artifact / resume_from / next_allowed_action / authority_fingerprint / stale_reasons`.
+
+It does **not** create another Project State or another owner taxonomy.
+
+### Authority fingerprint
+
+Direct resume requires a stable fingerprint of the applicable Current execution frontier. Inputs are:
+
+`CURRENT_ROOT_VERSION / PROJECT_OR_SCOPE_AUTHORITY / SOURCE_AUTHORITY / DESIGN_AUTHORITY / CURRENT_TASK_ID / CURRENT_NATIVE_MASTER_OR_REF / ACTIVE_CONSTRAINT_LOCK`.
+
+A matching fingerprint means only that the recorded execution frontier is still eligible for resume. It does not prove the artifact is correct or complete.
+
+### Direct resume rule
+
+Resume from `next_allowed_action` without replaying already verified completed nodes only when all are true:
+
+- same `task_id` and same logical object;
+- authority fingerprint matches Current;
+- `last_verified_artifact` has real Actual Readback evidence;
+- no dependency/handoff is stale or marked `RETEST_REQUIRED / REGEN_REQUIRED / HOLD`;
+- `checkpoint_state=RESUMABLE`.
+
+Canonical behavior:
+
+`RESTORE VERIFIED CHECKPOINT → CONFIRM CURRENT AUTHORITY FINGERPRINT → RESTORE ACTIVE CONSTRAINTS → SKIP VERIFIED COMPLETED NODES → EXECUTE NEXT ALLOWED ACTION → READBACK → UPDATE EXISTING CHECKPOINT`.
+
+Do not regenerate a plan merely because the conversation changed, context was compressed, or a new Chat surface is being used.
+
+### Mandatory revalidation
+
+Do **not** direct-resume from the checkpoint when any of the following is true:
+
+- project or task changed;
+- authority fingerprint no longer matches;
+- Source Authority or Design Authority changed;
+- Current native master / canonical write frontier moved externally;
+- a consumed dependency became stale or requires regeneration/re-test;
+- the checkpoint is missing/corrupt;
+- the last artifact was never actually opened/rendered/run and read back.
+
+In those cases set runtime state to `REVALIDATE`, refresh the applicable Current Authority, then either repair the checkpoint or re-route from the first invalid node. Do not throw away valid upstream work.
+
+### BLOCKED behavior
+
+If the checkpoint is `BLOCKED`, generic continuation does not mean blindly repeat the failed mutation. Re-check only the declared release condition if it is currently observable or actionable.
+
+No new evidence / no released capability / no changed authority → keep the same bounded blocker. Do not create another side page, retry loop, new Skill, new framework or duplicate Receipt merely to restate the blocker.
+
+### CLOSED behavior
+
+A generic “继续” does not reopen a `CLOSED` task. Reopen only through an explicit scope change, explicit reopen decision or a new material task that reuses the existing project/object identity.
+
+### Context switch is not authority change
+
+A different conversation, context compression or ordinary summarization is not by itself grounds to invalidate a checkpoint. The checkpoint is invalidated by **execution/authority drift**, not by conversation packaging.
+
+### Persistence throttle
+
+Reuse existing Control Card fields already present where applicable:
+
+- `run_id`
+- `execution_integrity.readback`
+- `execution_integrity.baseline.rollback_ref`
+- `next_allowed_action`
+
+Do not duplicate them into a second state object.
+
+Write/update a continuation checkpoint only after:
+
+- actual readback of a material execution result;
+- a genuine HOLD after a legal repair attempt reaches its real boundary;
+- a typed handoff becomes ready/accepted.
+
+**NO MATERIAL DELTA = NO NEW RECEIPT / PROJECT STATE JUST FOR ANOTHER CHAT TURN.**
+
 ## 3｜Execution contract layer
 
 The Current execution contract layer remains:
@@ -99,7 +196,7 @@ The Current execution contract layer remains:
 - `OLEANDER_EXECUTION_RECEIPT_v1.0`
 - `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0` — allocation/register extension for semantic content images.
 
-The constraint lock precedes these contracts; it can restrict which owners/tools are eligible, but it cannot rewrite Notion identity or invent a new owner.
+The constraint lock precedes tool/owner mutation. Continuation checkpoint resolution may restore the same task state before that lock is re-resolved, but it cannot override a newer explicit user constraint or newer Current Authority.
 
 ## 4｜Minimum sufficient owner set
 
@@ -160,30 +257,34 @@ If any required applicable phase is missing, `FAIL` or `HOLD`, the task state is
 ## 6｜Default GPT / Agent behavior
 
 1. Read Current Root Authority + applicable Project State / Source Authority / Current Task.
-2. Resolve sticky execution constraints before any owner/tool selection.
-3. Enforce tool/output/creation/process locks.
-4. Resolve live Registry identity and Current knowledge context.
-5. Retrieve relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
-6. Reuse mature design/current assets and actually read required existing Skill/capability material.
-7. For visual work, identify the strongest current board / design object / native figure before designing the presentation carrier.
-8. Before binding any semantic content image, query the project Image Consumption Ledger/Register by source hash / parent source / child figure / semantic identity.
-9. If that `semantic_image_id` is already `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` for another consumer, stop and select another image; crop/recolor/mask/contour/screenshot derivatives do not reset identity.
-10. Reserve an available image to the current consumer unit before layout production.
-11. Define the required native output.
-12. Build the applicable Flow Completion checklist.
-13. Resolve Execution Owner Map and Skill Capability Contract.
-14. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
-15. Resolve only allowed TOOL adapters and runtime capabilities.
-16. Execute the real native/editable artifact.
-17. Emit Native Artifact records / typed handoffs as applicable.
-18. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
-19. Open/render/run the actual result and perform readback.
-20. Run Evidence Gate and independent Professional Design Gate separately where applicable.
-21. Verify the Flow Completion Gate.
-22. Emit an Execution Receipt containing the active constraint lock, flow-completion state and image-consumption section when applicable.
-23. Run Notion↔GitHub drift check where cross-platform pointers changed.
-24. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
-25. Sync material delta and preserve provenance.
+2. If the user intent is a same-task follow-up, resolve the latest valid continuation checkpoint.
+3. If the checkpoint requires revalidation, refresh Current Authority before mutation; if it is valid, retain the verified completed-node frontier.
+4. Resolve sticky execution constraints before any owner/tool selection; a checkpoint never overrides a newer explicit constraint.
+5. Enforce tool/output/creation/process locks.
+6. Resolve live Registry identity and Current knowledge context.
+7. Retrieve relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
+8. Reuse mature design/current assets and actually read required existing Skill/capability material.
+9. For visual work, identify the strongest current board / design object / native figure before designing the presentation carrier.
+10. Before binding any semantic content image, query the project Image Consumption Ledger/Register by source hash / parent source / child figure / semantic identity.
+11. If that `semantic_image_id` is already `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` for another consumer, stop and select another image; crop/recolor/mask/contour/screenshot derivatives do not reset identity.
+12. Reserve an available image to the current consumer unit before layout production.
+13. Define the required native output.
+14. Build the applicable Flow Completion checklist.
+15. Resolve Execution Owner Map and Skill Capability Contract.
+16. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
+17. Resolve only allowed TOOL adapters and runtime capabilities.
+18. If resuming, skip already verified completed nodes and start from the first `next_allowed_action`; otherwise execute the normal first ready node.
+19. Execute the real native/editable artifact.
+20. Emit Native Artifact records / typed handoffs as applicable.
+21. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
+22. Open/render/run the actual result and perform readback.
+23. Update the existing continuation checkpoint when the conditional trigger is met; do not create a no-delta receipt solely for chat continuity.
+24. Run Evidence Gate and independent Professional Design Gate separately where applicable.
+25. Verify the Flow Completion Gate.
+26. Emit/update an Execution Receipt containing the active constraint lock, flow-completion state, continuation checkpoint when applicable and image-consumption section when applicable.
+27. Run Notion↔GitHub drift check where cross-platform pointers changed.
+28. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
+29. Sync material delta and preserve provenance.
 
 ## 7｜Existing-first / Source Gravity / Visual Authority
 
@@ -266,6 +367,8 @@ Producer self-check may accompany an artifact but cannot become independent Desi
 
 For visual artifacts, duplicate-image conflict, derivative identity laundering, image binding without ledger lookup, weaker re-authoring of a mature current artifact, or layout crop that breaks object integrity are direct `REVISE / BLOCK` triggers.
 
+A continuation checkpoint may only advance from actual readback, a genuine repair-boundary HOLD, or typed handoff state. It may not use a plan, chat summary or producer assertion as the last verified artifact.
+
 ## 11｜Execution Receipt
 
 The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrier. Its current policy requires all new execution receipts to record:
@@ -277,9 +380,10 @@ The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrie
 - phase results;
 - incomplete required phases;
 - final completion-gate verdict;
+- continuation checkpoint when the same material task must continue across turns/handoffs while `WORKING/HOLD`;
 - `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict.
 
-Older receipts that predate the relevant policy sections remain immutable provenance and are explicitly allowlisted by the Receipt contract/validator; new receipts cannot omit applicable sections.
+Older receipts remain immutable provenance. The continuation extension is prospective and conditional; it does not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
 
 ## 12｜Synchronization
 
@@ -289,6 +393,8 @@ A material runtime change still follows:
 
 A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
 
+A chat/session boundary alone is not a cross-platform Current change and therefore does not trigger Notion writeback or drift mutation.
+
 ## 13｜Does not prove
 
-Resolver v1.2.2 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. It makes user constraints, existing visual authority, semantic-image allocation and flow completeness first-class execution requirements instead of verbal promises.
+Resolver v1.2.3 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. A valid continuation checkpoint proves only that an already read-back execution frontier can be resumed under unchanged authority; it does not prove the next action will pass.
