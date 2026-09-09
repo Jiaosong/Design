@@ -92,6 +92,8 @@ The Current absorbed scope includes validated bounded support for:
 
 The bounded Direct Face route above was validated in the canonical Blender `5.2.0 LTS` regression through PR #495: Blender-native `+25 mm` face movement passed with stale propagation, while the CAD-native route produced a governed intent and preserved identical Blender display vertex geometry. This validates the interaction/authority boundary only; it is not CAD direct-edit execution or general B-Rep push/pull.
 
+The next bounded bridge was validated through PR #497 in the same canonical Blender `5.2.0 LTS` workflow: `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` is now deterministically validated and serialized by the existing `professional_adapter/cad_sidecar.py` owner into `OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1`. The machine evidence is `CAD_DIRECT_INTENT_BRIDGE_RECEIPT_5_2_20260909.json`; the validated request SHA256 is `8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318`. This is an additional bounded specialist contract gate, not an eighteenth Runtime stage or a sixth Frontier. Its execution state remains `NOT_EXECUTED`: CAD-face semantic re-resolution and authoritative FreeCAD/OCCT B-Rep mutation are the next separate gate.
+
 The shared-environment Project Profile surface added on 2026-09-09 is a configuration boundary, not a new professional parity claim.
 
 ## Specialist-kernel boundary
@@ -105,7 +107,9 @@ For CAD-native objects:
 - CAD native source remains geometry authority;
 - STEP/BREP/FCStd or other native/exchange artifacts remain traceable;
 - Blender receives a typed display/review derivative;
-- Direct Face interaction may prepare a deterministic CAD direct-edit intent, but the display mesh must not be mutated as an authoritative CAD result;
+- Direct Face interaction may prepare a deterministic CAD direct-edit intent, and the existing CAD sidecar may validate/serialize that intent into a deterministic direct-edit request;
+- request serialization is not CAD execution: current direct-edit requests remain `NOT_EXECUTED` until a specialist executor uniquely re-resolves the target against the authoritative CAD master and completes controlled B-Rep mutation/readback;
+- the display mesh must not be mutated as an authoritative CAD result;
 - semantic face rebind must fail closed on ambiguity or missing targets and must not persist unstable topology ordinals as authority;
 - Blender mesh operations must not be described as equivalent to authoritative B-Rep operations;
 - bounded FreeCAD/OCCT probes do not establish general CAD parity.
@@ -114,7 +118,8 @@ For CAD-native objects:
 
 The absorbed Current scope does not by itself establish:
 
-- CAD direct-edit execution from the new Direct Face intent;
+- CAD face semantic re-resolution from the new Direct Face request;
+- CAD direct-edit execution or authoritative B-Rep mutation from the new Direct Face request;
 - general B-Rep push/pull, trim or unrestricted direct-edit parity;
 - persistent topological naming generality;
 - general B-Rep/CAD parity;
