@@ -3,24 +3,7 @@
   "version": "0.1",
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
-  "required_fields": [
-    "adapter_id",
-    "canonical_tool_id",
-    "notion_object_id",
-    "implemented_revision",
-    "implementation_commit",
-    "adapter_owner",
-    "supported_operator_classes",
-    "parameter_schema",
-    "runtime",
-    "renderer",
-    "fallback",
-    "unsupported_operations",
-    "output_permissions",
-    "regression_baseline",
-    "last_verified",
-    "does_not_prove"
-  ],
+  "required_fields": ["adapter_id", "canonical_tool_id", "notion_object_id", "implemented_revision", "implementation_commit", "adapter_owner", "supported_operator_classes", "parameter_schema", "runtime", "renderer", "fallback", "unsupported_operations", "output_permissions", "regression_baseline", "last_verified", "does_not_prove"],
   "shared_tool_may_own": ["operator_vocabulary", "parameter_contracts", "adapter_runtime_selection", "deterministic_fixtures", "compatibility_fallback_rules"],
   "shared_tool_must_not_own": ["final_project_artifact", "independent_design_methodology", "project_design_authority", "evidence_promotion", "final_design_review_verdict", "new_notion_domain"],
   "selection_order": ["DESIGN_INTENT", "EFFECT_OR_OPERATOR_ROLE", "MINIMUM_SUFFICIENT_OPERATOR_SET", "PARAMETER_BOUNDS", "EFFECT_BUDGET", "EFFECT_OFF_BASELINE", "ACTUAL_READBACK"],
@@ -37,28 +20,8 @@
     "currently_exposed_unregistered_connector_may_be_used_ephemerally_when_role_authority_and_output_contract_match": true,
     "ephemeral_connector_use_does_not_auto_register_new_surface": true
   },
-  "capability_route_roles": [
-    "AUTHORITY_READ_WRITE",
-    "REPO_SOURCE_MUTATION",
-    "ASSET_ARCHIVE_DELIVERY",
-    "NATIVE_PRODUCTION",
-    "RUNTIME_READBACK",
-    "DEPLOYMENT",
-    "HUMAN_COORDINATION",
-    "SCHEDULED_WAKEUP",
-    "HEAVY_EXECUTION"
-  ],
-  "route_decision_fields": [
-    "required_capability_roles",
-    "candidate_surfaces",
-    "selected_surface",
-    "selection_reasons",
-    "availability_state",
-    "authority_ceiling",
-    "side_effect_class",
-    "readback_surface",
-    "fallback_surface"
-  ],
+  "capability_route_roles": ["AUTHORITY_READ_WRITE", "REPO_SOURCE_MUTATION", "ASSET_ARCHIVE_DELIVERY", "NATIVE_PRODUCTION", "RUNTIME_READBACK", "DEPLOYMENT", "HUMAN_COORDINATION", "SCHEDULED_WAKEUP", "HEAVY_EXECUTION"],
+  "route_decision_fields": ["required_capability_roles", "candidate_surfaces", "selected_surface", "selection_reasons", "availability_state", "authority_ceiling", "side_effect_class", "readback_surface", "fallback_surface"],
   "side_effect_classes": ["READ_ONLY", "LOCAL_MUTATION", "REMOTE_MUTATION", "AUTHORITY_MUTATION", "RELEASE_MUTATION"],
   "side_effect_policy": {
     "selection_rule": "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
@@ -77,16 +40,7 @@
   },
   "unified_adapter_routing_policy": {
     "purpose": "ONE_CAPABILITY_ROLE_ROUTER_OVER_CURRENTLY_AVAILABLE_SURFACES_WITHOUT_VENDOR_ONTOLOGY",
-    "selection_precedence": [
-      "CURRENT_AUTHORITY_AND_OWNER_BOUNDARY",
-      "REQUIRED_NATIVE_OUTPUT_AND_MUTATION_CAPABILITY",
-      "ACTIVE_CONSTRAINTS_AND_PERMISSION",
-      "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
-      "ACTUAL_READBACK_COVERAGE",
-      "CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY",
-      "LOWER_EXECUTION_OVERHEAD",
-      "DECLARED_FALLBACK"
-    ],
+    "selection_precedence": ["CURRENT_AUTHORITY_AND_OWNER_BOUNDARY", "REQUIRED_NATIVE_OUTPUT_AND_MUTATION_CAPABILITY", "ACTIVE_CONSTRAINTS_AND_PERMISSION", "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS", "ACTUAL_READBACK_COVERAGE", "CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY", "LOWER_EXECUTION_OVERHEAD", "DECLARED_FALLBACK"],
     "vendor_name_must_not_determine_route": true,
     "route_by_capability_role": true,
     "do_not_probe_every_connected_surface": true,
@@ -110,6 +64,23 @@
     "unknown_surface_does_not_block_when_another_verified_sufficient_surface_is_available": true,
     "availability_change_does_not_change_project_authority": true
   },
+  "remote_mutation_idempotency_policy": {
+    "purpose": "PREVENT_DUPLICATE_REMOTE_SIDE_EFFECTS_WHEN_CONNECTOR_OUTCOME_IS_UNCERTAIN",
+    "applies_to": ["REMOTE_MUTATION", "AUTHORITY_MUTATION", "RELEASE_MUTATION"],
+    "record_fields": ["operation_fingerprint", "expected_postcondition", "outcome_state", "verification_surface", "retry_decision"],
+    "outcome_states": ["CONFIRMED_SUCCESS", "CONFIRMED_FAILURE", "UNCERTAIN"],
+    "operation_fingerprint_rule": "DERIVE_STABLE_FINGERPRINT_FROM_TASK_OBJECT_MUTATION_INTENT_TARGET_AND_PROVIDER_IDEMPOTENCY_KEY_WHEN_AVAILABLE",
+    "expected_postcondition_rule": "DEFINE_A_READABLE_POSTCONDITION_BEFORE_CREATE_OR_NONTRIVIAL_REMOTE_MUTATION_WHEN_PRACTICAL",
+    "uncertain_outcome_action": "VERIFY_POSTCONDITION_BEFORE_RETRY",
+    "postcondition_found_action": "NORMALIZE_TO_CONFIRMED_SUCCESS_NO_RETRY",
+    "postcondition_absent_action": "RETRY_ONLY_IF_OPERATION_IS_IDEMPOTENT_OR_PROVIDER_KEYED_AND_RETRY_BUDGET_REMAINS",
+    "bounded_retry_only_when_safe_or_provider_keyed": true,
+    "create_like_operation_without_safe_idempotency_and_unproven_absence": "HOLD_RETRY_UNSAFE_OR_EXHAUSTED",
+    "duplicate_side_effects_forbidden": true,
+    "blind_retry_after_timeout_forbidden": true,
+    "uncertain_outcome_does_not_authorize_new_state_store": true,
+    "verification_readback_remains_ephemeral_unless_existing_persistence_trigger_applies": true
+  },
   "selective_readback_policy": {
     "rule": "READBACK_SCOPE_FOLLOWS_MUTATION_BLAST_RADIUS",
     "sequence": ["MUTATION_SCOPE", "AFFECTED_DEPENDENCIES_OR_SURFACES", "SMALLEST_SUFFICIENT_ACTUAL_READBACK", "VERDICT"],
@@ -119,7 +90,7 @@
     "distinct_evidence_channel_does_not_create_new_reviewer_role": true
   },
   "ephemeral_persistence_policy": {
-    "ephemeral_by_default": ["SEARCH_RESULTS", "TOOL_LOGS", "FAILED_ATTEMPTS", "CONSOLE_OUTPUT", "TEMP_SCREENSHOTS", "INTERMEDIATE_DEPLOYMENT_URLS", "TRANSIENT_ADAPTER_STATE", "UNUSED_ROUTE_CANDIDATES", "SURFACE_LIVENESS_PROBES"],
+    "ephemeral_by_default": ["SEARCH_RESULTS", "TOOL_LOGS", "FAILED_ATTEMPTS", "CONSOLE_OUTPUT", "TEMP_SCREENSHOTS", "INTERMEDIATE_DEPLOYMENT_URLS", "TRANSIENT_ADAPTER_STATE", "UNUSED_ROUTE_CANDIDATES", "SURFACE_LIVENESS_PROBES", "IDEMPOTENCY_VERIFICATION_READBACK"],
     "promotion_sequence": ["ACTUAL_READBACK", "REVIEW_OR_VALIDATION_AS_APPLICABLE", "MATERIAL_DELTA", "EXISTING_PERSISTENCE_TRIGGER"],
     "plugin_output_not_knowledge": true,
     "runtime_trace_not_project_state": true,
@@ -149,19 +120,7 @@
       "implemented_revision": "verified-2026-08-18",
       "implementation_commit": "767402f55a2bad308b111eee85f30e93d9f2c86f",
       "adapter_owner": "shared_tool_adapter",
-      "consumers": [
-        "oleander-research",
-        "oleander-data-viz",
-        "oleander-3d-pipeline",
-        "oleander-story-and-board",
-        "oleander-motion",
-        "oleander-delivery-qc",
-        "oleander-ui-visual-composition",
-        "oleander-ui-interaction",
-        "oleander-route-wayfinding-ui",
-        "oleander-game-ui",
-        "oleander-mobile-game-ui"
-      ],
+      "consumers": ["oleander-research", "oleander-data-viz", "oleander-3d-pipeline", "oleander-story-and-board", "oleander-motion", "oleander-delivery-qc", "oleander-ui-visual-composition", "oleander-ui-interaction", "oleander-route-wayfinding-ui", "oleander-game-ui", "oleander-mobile-game-ui"],
       "supported_operator_classes": ["Layer_Composite", "Mask_Selection_Channel", "Adjustment", "Vector_safe_Effect", "Raster_preview_Effect", "2D_Faux_3D", "Static_Effect_State"],
       "parameter_schema": {
         "source": "T-VISUAL-IMAGE-OPS-001 Current TOOL",
