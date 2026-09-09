@@ -147,20 +147,19 @@
       "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
       "REAL_EXECUTION": "PASS",
       "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
-      "ACTUAL_READBACK": "HOLD",
+      "ACTUAL_READBACK": "PASS",
       "REGRESSION_AS_APPLICABLE": "HOLD",
       "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
       "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
     },
     "phase_reasons": {
       "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "No semantic content image is bound by the P4 checkpoint replay.",
-      "ACTUAL_READBACK": "The baseline exact head is read back, but the new durable checkpoint commit and its exact-head CI/readback are still pending.",
-      "REGRESSION_AS_APPLICABLE": "The baseline CAD execution regression passed; the checkpoint-bearing exact head must still run its own CI.",
+      "ACTUAL_READBACK": "The durable sequence-1 receipt was re-read from the repository, the project source snapshot remained ae1c87b, no CAD source replay occurred, and Static #514 passed after the real provenance repair cycle.",
+      "REGRESSION_AS_APPLICABLE": "Static regression repaired to PASS and governance/runtime-contract checks pass; the sequence-2 metadata head still requires its complete exact-head workflow matrix.",
       "INDEPENDENT_REVIEW_AS_APPLICABLE": "P4 validates runtime continuation behavior only and does not issue Design KEEP or promotion.",
-      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "Durable receipt restore and post-checkpoint readback are pending."
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "Durable restore is verified; sequence-2 receipt persistence and exact-head CI/readback remain pending."
     },
     "incomplete_required_phases": [
-      "ACTUAL_READBACK",
       "REGRESSION_AS_APPLICABLE",
       "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
     ],
@@ -230,61 +229,98 @@
     "fallback_surface": "NONE_REQUIRED"
   },
   "frontier_discovery": {
-    "discovery_trigger": "P4_REAL_PROJECT_REPLAY",
+    "discovery_trigger": "P4_REAL_PROJECT_REPLAY_DURABLE_RESTORE",
     "project_or_scope_key": "PR-499",
     "task_key": "P4-REAL-PROJECT-REPLAY-PR499",
     "object_or_canonical_ids": [
       "OLE_CAD_DIRECT_EXECUTION_001"
     ],
     "candidate_frontiers": [
-      "PR499@ae1c87b149039c244cbb7e0b7cb9330927ee8636"
+      "PR499@ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+      "P4_RECEIPT_SEQUENCE_1"
     ],
-    "selected_frontier": "PR499@ae1c87b149039c244cbb7e0b7cb9330927ee8636",
-    "selection_basis": "Open real project PR, exact-head CAD execution checks green, project boundary remains bounded and non-promoted",
+    "selected_frontier": "P4_RECEIPT_SEQUENCE_1",
+    "selection_basis": "Repository re-read of the existing WORKING receipt recovered checkpoint_sequence=1 with matching authority fingerprint and verified project source; completed CAD execution remained skipped.",
     "ambiguity_state": "NONE"
+  },
+  "concurrency_guard": {
+    "expected_checkpoint_sequence": 1,
+    "observed_checkpoint_sequence": 1,
+    "executor_id": "CHAT-FIRST-P4-PR499",
+    "execution_lease_state": "ACTIVE",
+    "lease_acquired_at": "2026-09-09T16:02:00+08:00",
+    "guard_verdict": "PASS_SEQUENCE_MATCH"
   },
   "continuation_checkpoint": {
     "checkpoint_state": "RESUMABLE",
-    "current_node": "P4_CHECKPOINT_PERSISTENCE",
+    "current_node": "P4_DURABLE_RESTORE_VERIFIED",
     "last_verified_artifact": {
       "artifact_id": "ART-PR499-CAD-DIRECT-EXACT-HEAD",
       "hash_or_commit": "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
       "readback_verdict": "PASS"
     },
-    "resume_from": "BASELINE_CAD_DIRECT_EXECUTION_VERIFIED",
-    "next_allowed_action": "VERIFY_CHECKPOINT_COMMIT_EXACT_HEAD_CI_THEN_RESTORE_FROM_THIS_RECEIPT_WITHOUT_REPLAYING_CAD_EXECUTION",
+    "resume_from": "P4_CHECKPOINT_PERSISTENCE",
+    "next_allowed_action": "VERIFY_REPAIR_HEAD_FULL_CI_AND_CLOSE_P4_WITHOUT_REPLAYING_CAD_EXECUTION",
     "authority_fingerprint": "e68b8e1d63cc18600b17a02188879a9a291c4abe1f8dc1b330ee91ce2149ede5",
     "stale_reasons": [],
-    "checkpoint_sequence": 1,
-    "checkpoint_updated_at": "2026-09-09T16:02:00+08:00",
-    "expected_checkpoint_sequence": 1,
+    "checkpoint_sequence": 2,
+    "checkpoint_updated_at": "2026-09-09T16:40:00+08:00",
+    "expected_checkpoint_sequence": 2,
     "executor_id": "CHAT-FIRST-P4-PR499",
     "execution_lease_state": "ACTIVE",
     "lease_acquired_at": "2026-09-09T16:02:00+08:00"
   },
+  "continuous_execution": {
+    "auto_advance_enabled": true,
+    "nodes_executed_in_order": [
+      "BASELINE_EXACT_HEAD_READBACK",
+      "PERSIST_CHECKPOINT",
+      "POSTCHECKPOINT_CI_DETECTED_STALE_BRIDGE_RECEIPT",
+      "FRESH_5_2_BRIDGE_GATE_PASS",
+      "REBIND_EXISTING_BRIDGE_RECEIPT",
+      "STATIC_REGRESSION_RETEST",
+      "DURABLE_RECEIPT_RESTORE"
+    ],
+    "node_readback_verdicts": {
+      "BASELINE_EXACT_HEAD_READBACK": "PASS",
+      "PERSIST_CHECKPOINT": "PASS",
+      "POSTCHECKPOINT_CI_DETECTED_STALE_BRIDGE_RECEIPT": "FAIL_CAUGHT_PRE_PROMOTION",
+      "FRESH_5_2_BRIDGE_GATE_PASS": "PASS",
+      "REBIND_EXISTING_BRIDGE_RECEIPT": "PASS_READBACK",
+      "STATIC_REGRESSION_RETEST": "PASS_STATIC_514_AFTER_BINDING_REPAIR",
+      "DURABLE_RECEIPT_RESTORE": "PASS_SEQUENCE_1_RESTORED_NO_CAD_REPLAY"
+    },
+    "stop_reason": "FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED",
+    "final_current_node": "P4_DURABLE_RESTORE_VERIFIED",
+    "next_allowed_action": "VERIFY_REPAIR_HEAD_FULL_CI_AND_CLOSE_P4_WITHOUT_REPLAYING_CAD_EXECUTION"
+  },
   "execution": {
     "runtime": "PR #499 exact head + GitHub Actions + existing Blender/FreeCAD CAD sidecar runtime",
-    "entrypoint_or_action": "Consume the already verified PR499 CAD direct-edit execution snapshot, persist a durable P4 continuation checkpoint, then restore from that receipt after exact-head CI without replaying the completed CAD mutation.",
-    "result": "BASELINE_EXACT_HEAD_VERIFIED_CHECKPOINT_PERSISTENCE_IN_PROGRESS",
+    "entrypoint_or_action": "Restore the existing P4 continuation receipt from the repository, apply evidence-driven repair to the naturally occurring Static failure, return to the original replay frontier, and continue without replaying the completed CAD mutation.",
+    "result": "P4_DURABLE_RESTORE_VERIFIED_REPAIR_HEAD_FULL_CI_PENDING",
     "failures": [
       "Existing real fail-closed envelope: missing semantic face returns MISSING_HOLD with zero released result artifacts.",
-      "Existing real fail-closed envelope: duplicate semantic face match returns AMBIGUOUS_HOLD with zero released result artifacts."
+      "Existing real fail-closed envelope: duplicate semantic face match returns AMBIGUOUS_HOLD with zero released result artifacts.",
+      "Checkpoint-bearing head 9538ded6 triggered OLEANDER Blender Runtime Static #512 failure: CAD Direct Intent Bridge receipt source blob stale for professional_adapter/cad_sidecar.py.",
+      "First evidence rebind head cc2fdc33 triggered Static #513 failure: CAD Direct Intent Bridge workflow evidence mismatch because the static checker still bound the prior specialist run/job identity."
     ],
     "repairs": [
-      "No new repair was required for the baseline exact head; all observed project checks were successful."
+      "Used the fresh successful canonical Blender 5.2 specialist gate run 34329724293 job 102395217382 to rebind the existing CAD Direct Intent Bridge receipt to the current cad_sidecar.py source blob and observed package identity.",
+      "Updated only the existing Static bridge evidence constants to the same fresh run/job identity; no fail-closed condition or CAD behavior was relaxed.",
+      "Static #514 passed on head 7cae15f32db2763441156e18119214a1e42838a2."
     ]
   },
   "readback": {
-    "target": "PR #499 exact project execution head ae1c87b149039c244cbb7e0b7cb9330927ee8636",
-    "runtime": "GitHub exact-head check-runs + PR diff/readback",
-    "observed_result": "cad-direct-edit-5-2 SUCCESS; bounded PASS path executes 80x50x10 to 80x50x15 in FreeCAD/OCCT; MISSING_HOLD and AMBIGUOUS_HOLD release zero authoritative result artifacts; Blender remains DISPLAY_DERIVATIVE_ONLY with save/reopen readback.",
+    "target": "PR #499 logical CAD source snapshot ae1c87b149039c244cbb7e0b7cb9330927ee8636 plus repair head 7cae15f32db2763441156e18119214a1e42838a2 and repository-restored P4 receipt sequence 1",
+    "runtime": "GitHub branch/receipt readback + GitHub Actions exact-head checks",
+    "observed_result": "The repository-restored checkpoint still resolved the verified CAD project source ae1c87b without replay. The natural Static #512 stale-source failure and #513 workflow-evidence mismatch were repaired using fresh Blender 5.2 evidence; Static #514 is SUCCESS. AI Governance #4298, Anti-Pollution #258 and Blender Runtime Contract #361 are also SUCCESS on the repair head; remaining long-running 5.2/professional checks are still being resolved before P4 closure.",
     "blocking_defects": [
-      "P4_CHECKPOINT_POSTCOMMIT_CI_AND_DURABLE_RESTORE_PENDING"
+      "P4_SEQUENCE_2_HEAD_FULL_CI_PENDING"
     ],
     "nonblocking_defects": [
-      "NONE_IDENTIFIED_IN_BASELINE"
+      "PR499 project promotion/merge remains a separate decision and is not part of P4 runtime replay."
     ],
-    "verdict": "PASS_BASELINE_EXACT_HEAD"
+    "verdict": "PASS_DURABLE_RESTORE_AND_STATIC_REPAIR_FULL_CI_PENDING"
   },
   "regression": {
     "STRUCTURAL": {
@@ -292,7 +328,8 @@
       "assertions": [
         "PR499 reuses the existing CAD sidecar workflow and owner",
         "No new runtime framework/frontier is introduced",
-        "Blender remains display-only before/after authoritative specialist mutation"
+        "Blender remains display-only before/after authoritative specialist mutation",
+        "P4 uses the existing execution receipt carrier and does not create a checkpoint database"
       ]
     },
     "SEMANTIC": {
@@ -300,7 +337,8 @@
       "assertions": [
         "Unique semantic +Z four-edge face resolves to one candidate",
         "Missing and ambiguous semantic rebinds fail closed",
-        "No FaceN/EdgeN/polygon-index persistence"
+        "No FaceN/EdgeN/polygon-index persistence",
+        "Durable restore does not replay the already verified CAD mutation"
       ]
     },
     "VISUAL_ROI": {
@@ -310,15 +348,17 @@
       ]
     },
     "RUNTIME": {
-      "result": "PASS",
+      "result": "HOLD",
       "assertions": [
-        "cad-direct-edit-5-2 exact-head check SUCCESS",
-        "Blender 5.2.0 LTS readback PASS",
-        "FreeCAD 1.1.3/OCCT authoritative edit PASS",
-        "HOLD envelopes release zero result artifacts"
+        "Baseline cad-direct-edit-5-2 exact-head check SUCCESS",
+        "Blender 5.2.0 LTS and FreeCAD 1.1.3/OCCT bounded execution previously PASS",
+        "Static #512 caught stale provenance before promotion",
+        "Fresh specialist gate run 34329724293 job 102395217382 PASS",
+        "Static #514 PASS after evidence binding repair",
+        "Sequence-2 exact-head full workflow matrix still pending"
       ]
     },
-    "overall": "PASS"
+    "overall": "HOLD"
   },
   "review": {
     "producer_id": "oleander-3d-pipeline PR#499",
@@ -326,7 +366,7 @@
     "review_input_artifact_id": "ART-PR499-CAD-DIRECT-EXACT-HEAD",
     "review_input_hash_or_commit": "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
     "reviewer_independence_state": "NOT_REQUIRED",
-    "evidence_gate": "PASS_BASELINE_EXACT_HEAD",
+    "evidence_gate": "PASS_DURABLE_RESTORE_STATIC_REPAIR_FULL_CI_PENDING",
     "design_quality_gate": "NOT_APPLICABLE",
     "promotion_authority": "P4 runtime replay does not merge/promote PR #499 or upgrade CAD/engineering/manufacturing claims."
   },
@@ -335,17 +375,19 @@
     "branch": "feat/oleander-blender-cad-direct-execution-v01-20260909",
     "commits": [
       "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
-      "P4_CHECKPOINT_COMMIT_PENDING"
+      "9538ded6c1d22d82bfa609ec9329f20df6a09d9e",
+      "cc2fdc331e844ab3898b2930ca3977119346f685",
+      "7cae15f32db2763441156e18119214a1e42838a2"
     ],
     "pull_request": 499,
-    "ci_state": "BASELINE_EXACT_HEAD_SUCCESS_P4_CHECKPOINT_CI_PENDING",
+    "ci_state": "STATIC_514_PASS_SEQUENCE_2_HEAD_FULL_CI_PENDING",
     "merge_commit": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
     "main_readback": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
     "notion_writeback": "NOT_REQUIRED_UNTIL_P4_REAL_PROJECT_REPLAY_CLOSES",
     "remaining_blockers": [
-      "P4_CHECKPOINT_POSTCOMMIT_CI_AND_RESTORE_READBACK_PENDING"
+      "P4_SEQUENCE_2_HEAD_FULL_CI_AND_FINAL_RECEIPT_CLOSE_PENDING"
     ],
-    "final_state": "WORKING_P4_REAL_PROJECT_REPLAY"
+    "final_state": "WORKING_P4_DURABLE_RESTORE_VERIFIED"
   },
   "does_not_prove": [
     "design_keep",
