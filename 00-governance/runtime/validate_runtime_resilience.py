@@ -49,12 +49,20 @@ def load_jsonl(path: Path) -> list[dict]:
 def reconcile_partial_commit(legs: list[dict]) -> dict:
     """Reconcile multi-surface mutation legs without pretending to own a distributed transaction manager."""
     if not legs:
-        return {"state": "HOLD", "action": "HOLD_EMPTY_RECONCILIATION_SET", "advance_allowed": False}
+        return {
+            "state": "HOLD",
+            "action": "HOLD_EMPTY_RECONCILIATION_SET",
+            "advance_allowed": False,
+        }
 
     allowed_states = {"CONFIRMED", "ABSENT", "UNCERTAIN"}
     invalid = [leg for leg in legs if leg.get("state") not in allowed_states]
     if invalid:
-        return {"state": "HOLD", "action": "HOLD_INVALID_PARTIAL_COMMIT_STATE", "advance_allowed": False}
+        return {
+            "state": "HOLD",
+            "action": "HOLD_INVALID_PARTIAL_COMMIT_STATE",
+            "advance_allowed": False,
+        }
 
     uncertain = [leg for leg in legs if leg.get("state") == "UNCERTAIN"]
     if uncertain:
@@ -187,9 +195,13 @@ def validate_existing_contract_derivation() -> None:
     flow = set(receipt.get("canonical_flow_phases", []))
     if "ACTUAL_READBACK" not in flow or "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE" not in flow:
         fail("P6/P7 require existing readback + sync/drift flow phases")
+    if receipt.get("early_completion_forbidden_on") is None:
+        fail("P6 must not replace the existing completion gate")
 
 
-def validate_p6_cases(by_id: dict[str, dict]) -> None:
+def validate_p6_cases() -> None:
+    rows = load_jsonl(CASES)
+    by_id = {row.get("case_id"): row for row in rows}
     required = {
         "P6-001-ALL-LEGS-CONFIRMED-ADVANCE",
         "P6-002-UNCERTAIN-LEG-VERIFY-FIRST",
@@ -200,6 +212,7 @@ def validate_p6_cases(by_id: dict[str, dict]) -> None:
     missing = required - set(by_id)
     if missing:
         fail(f"missing P6 cases {sorted(missing)}")
+
     for case_id in sorted(required):
         case = by_id[case_id]
         result = reconcile_partial_commit(case["legs"])
@@ -211,7 +224,9 @@ def validate_p6_cases(by_id: dict[str, dict]) -> None:
             fail(f"{case_id} advance gate mismatch: {result}")
 
 
-def validate_p7_cases(by_id: dict[str, dict]) -> None:
+def validate_p7_cases() -> None:
+    rows = load_jsonl(CASES)
+    by_id = {row.get("case_id"): row for row in rows}
     budget_cases = {
         "P7-001-BUDGET-WITHIN-LIMIT-CONTINUE",
         "P7-002-NODE-ADVANCE-BUDGET-STOPS",
@@ -246,12 +261,13 @@ def validate_p7_cases(by_id: dict[str, dict]) -> None:
 
 def main() -> None:
     validate_existing_contract_derivation()
-    rows = load_jsonl(CASES)
-    by_id = {row.get("case_id"): row for row in rows}
-    validate_p6_cases(by_id)
-    validate_p7_cases(by_id)
+    validate_p6_cases()
+    validate_p7_cases()
     print("runtime-resilience validation: PASS")
     print("P6 partial-commit reconciliation before DAG advance: ENFORCED")
+    print("P6 uncertain legs verify before retry: ENFORCED")
+    print("P6 unsafe unreconciled partial commit holds instead of guessing: ENFORCED")
+    print("P6 does not create a distributed transaction database or new authority: PRESERVED")
     print("P7 bounded execution budget without one-node stop: ENFORCED")
     print("P7 ephemeral surface probe cooldown and probe budget: ENFORCED")
     print("P7 surface health remains runtime fact, not authority or persistent score: PRESERVED")
