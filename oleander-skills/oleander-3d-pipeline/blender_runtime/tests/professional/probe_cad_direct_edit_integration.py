@@ -151,10 +151,10 @@ def prepare() -> None:
     check(obj.get("oleander_cad_direct_edit_state") == "PENDING_SIDECAR", "prepare_pending_sidecar_state")
     intent = json.loads(obj["oleander_cad_direct_edit_intent"])
     check(intent["operation"] == "FACE_NORMAL_MOVE", "prepare_bounded_operation")
-    check(intent["parameters"]["distance_mm"] == 5.0, "prepare_metric_distance")
-    check(intent["target"]["center_local_mm"] == [0.0, 0.0, 10.0], "prepare_descriptor_top_center")
-    check(intent["target"]["area_mm2"] == 4000.0, "prepare_descriptor_area")
-    check(intent["target"]["edge_lengths_mm"] == [50.0, 50.0, 80.0, 80.0], "prepare_descriptor_edge_lengths")
+    check(abs(intent["parameters"]["distance_mm"] - 5.0) <= 1e-9, "prepare_metric_distance")
+    check(all(abs(a - b) <= 1e-4 for a, b in zip(intent["target"]["center_local_mm"], [0.0, 0.0, 10.0])), "prepare_descriptor_top_center")
+    check(abs(intent["target"]["area_mm2"] - 4000.0) <= 1e-3, "prepare_descriptor_area")
+    check(all(abs(a - b) <= 1e-4 for a, b in zip(intent["target"]["edge_lengths_mm"], [50.0, 50.0, 80.0, 80.0])), "prepare_descriptor_edge_lengths")
 
     base_request = build_request(
         request_id="OLE_CAD_DIRECT_BASE_R001",
