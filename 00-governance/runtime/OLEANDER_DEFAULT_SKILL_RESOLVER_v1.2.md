@@ -1,27 +1,30 @@
 # OLEANDER Default Skill Resolver v1.2
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.2.3**  
+Implementation revision: **1.2.4**  
 Decision date: **2026-08-19**  
-Runtime extension: **2026-09-09 — Verified Continuation / Resume Checkpoint**  
+Runtime extension: **2026-09-09 — Cross-Context Frontier Recovery / Capability-Role Routing / Continuous Auto-Advance**  
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
 Execution implementation: **GitHub `Jiaosong/Design`**
 
 ## 0｜Purpose
 
-v1.2.3 keeps the existing knowledge-first execution architecture and hardens the v1.2.2 constraint/completion/visual baseline with one runtime continuity rule:
+v1.2.4 keeps the existing knowledge-first execution architecture and extends the v1.2.3 verified-continuation baseline without adding a new state system or Agent framework:
 
 1. **Sticky Execution Constraint Lock** — explicit negative user constraints are resolved before owner/tool selection and remain active until explicitly revoked.
 2. **Flow Completion Gate** — a task that requires the full OLEANDER flow cannot be called complete until every applicable phase is actually closed.
 3. **Existing Visual Authority + Image Consumption Gate** — visual work must first preserve mature/current design artifacts and must check whether a semantic content image has already been reserved or consumed before binding it to another surface.
 4. **Verified Continuation / Resume Checkpoint** — a same-task follow-up such as “继续 / 推进 / 优化 / 修一下” resumes from the last verified checkpoint instead of re-planning from zero, but only while Current Authority and the execution frontier remain valid.
+5. **Cross-Context Frontier Discovery** — when a new Chat or compressed context does not carry a reliable local task pointer, recover the active execution frontier from existing Project State / Control Card / active Receipt using stable project/object/authority keys rather than chat memory.
+6. **Continuous Ready-Node Auto-Advance** — after a node is actually executed and read back, continue through further ready nodes in the current execution turn while authority, constraints, side-effect ceiling and stop conditions remain valid; do not stop after one node without a real reason.
+7. **Capability-Role Adapter Routing** — TOOL/plugin/connector selection follows the existing Tool Adapter Contract by capability role, required native output, authority, side-effect class, readback coverage and current verified availability, not by vendor name.
 
-This is not a new Skill, METHOD, taxonomy, Agent framework, state database or parallel process. It hardens the existing Resolver / Project Control Card / Receipt / DAG / CI chain.
+This is not a new Skill, METHOD, taxonomy, Agent framework, state database or parallel process. It hardens the existing Resolver / Project Control Card / Receipt / DAG / Tool Adapter / CI chain.
 
 Current invariant:
 
-> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → CONTINUATION CHECKPOINT / AUTHORITY REVALIDATION WHEN APPLICABLE → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → CHECKPOINT UPDATE WHEN APPLICABLE → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
+> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → FRONTIER DISCOVERY WHEN LOCAL POINTER IS MISSING → CONTINUATION CHECKPOINT / AUTHORITY REVALIDATION WHEN APPLICABLE → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → CAPABILITY-ROLE TOOL ADAPTER ROUTING → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → CHECKPOINT UPDATE WHEN APPLICABLE → AUTO-ADVANCE NEXT READY NODE WHILE ALLOWED → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
 
 ## 1｜Notion current architecture remains upstream
 
@@ -108,9 +111,28 @@ Resolve an existing continuation state in this order:
 
 The checkpoint records only runtime continuity:
 
-`checkpoint_state / current_node / last_verified_artifact / resume_from / next_allowed_action / authority_fingerprint / stale_reasons`.
+`checkpoint_state / current_node / last_verified_artifact / resume_from / next_allowed_action / authority_fingerprint / stale_reasons / checkpoint_sequence / checkpoint_updated_at`.
 
 It does **not** create another Project State or another owner taxonomy.
+
+### Cross-context frontier discovery
+
+When a new Chat, context compression or other conversation boundary does not carry a reliable local `task_id`, do not use chat history or a summary as execution authority. Discover the existing frontier in this order:
+
+1. stable project / task / object keys explicitly present in the current request;
+2. Current Project State or Current Task pointer;
+3. Current Project Control Card;
+4. active `WORKING / HOLD` Execution Receipts.
+
+Match with stable keys when available:
+
+`PROJECT_ID_OR_SCOPE_ID / TASK_ID / LOGICAL_OBJECT_OR_CANONICAL_IDS / CURRENT_NATIVE_MASTER_OR_REF / AUTHORITY_FINGERPRINT`.
+
+Title similarity or a chat summary alone is insufficient.
+
+If multiple checkpoints belong to the same task/object and match Current Authority, use the highest `checkpoint_sequence`, then the latest `checkpoint_updated_at`; older checkpoints remain provenance.
+
+If multiple **distinct** active frontiers remain and Current Authority does not identify one active task, return `HOLD_AMBIGUOUS_FRONTIER` instead of guessing, merging projects, or creating another Current.
 
 ### Authority fingerprint
 
@@ -132,7 +154,7 @@ Resume from `next_allowed_action` without replaying already verified completed n
 
 Canonical behavior:
 
-`RESTORE VERIFIED CHECKPOINT → CONFIRM CURRENT AUTHORITY FINGERPRINT → RESTORE ACTIVE CONSTRAINTS → SKIP VERIFIED COMPLETED NODES → EXECUTE NEXT ALLOWED ACTION → READBACK → UPDATE EXISTING CHECKPOINT`.
+`DISCOVER / RESTORE VERIFIED CHECKPOINT → CONFIRM CURRENT AUTHORITY FINGERPRINT → RESTORE ACTIVE CONSTRAINTS → SKIP VERIFIED COMPLETED NODES → EXECUTE NEXT ALLOWED ACTION → READBACK → UPDATE EXISTING CHECKPOINT`.
 
 Do not regenerate a plan merely because the conversation changed, context was compressed, or a new Chat surface is being used.
 
@@ -183,6 +205,40 @@ Write/update a continuation checkpoint only after:
 
 **NO MATERIAL DELTA = NO NEW RECEIPT / PROJECT STATE JUST FOR ANOTHER CHAT TURN.**
 
+## 2B｜Continuous ready-node auto-advance
+
+For `继续 / 推进 / 执行 / 修复 / 优化` and equivalent execution intents, do not stop after one successful node merely because one tool call or one sub-step completed.
+
+After each material node:
+
+`EXECUTE READY NODE → SELECTIVE READBACK → REPAIR + RETEST WHEN LEGAL AND NEEDED → UPDATE EXISTING CHECKPOINT WHEN TRIGGERED → RESOLVE NEXT READY NODE → CONTINUE WHILE ALLOWED`.
+
+Advance to the next node only when:
+
+- the previous node was actually executed;
+- applicable Actual Readback passed or a typed handoff was accepted;
+- the next node is ready under the existing DAG;
+- the Authority fingerprint still matches;
+- active constraints are unchanged or explicitly re-resolved;
+- the next action stays within the already authorized side-effect ceiling;
+- no stop condition is active.
+
+Stop only on a real boundary:
+
+- Flow Completion Gate passed;
+- genuine blocker;
+- Authority conflict or ambiguous active frontier;
+- user design/scope decision is genuinely required;
+- irreversible or higher-side-effect action is not already authorized;
+- unrecoverable source is missing;
+- a future condition/external wait is required;
+- required independent review is unavailable;
+- actual tool/runtime hard limit.
+
+A forced stop must report the exact `current_node`, `next_allowed_action` or blocker. It must not promise background work.
+
+Continuous execution is **current-turn orchestration**, not background execution. It does not assume a generic child-agent spawn capability. Independent DAG nodes may be parallelized only when the execution surface safely supports it; otherwise serialize them.
+
 ## 3｜Execution contract layer
 
 The Current execution contract layer remains:
@@ -197,6 +253,20 @@ The Current execution contract layer remains:
 - `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0` — allocation/register extension for semantic content images.
 
 The constraint lock precedes tool/owner mutation. Continuation checkpoint resolution may restore the same task state before that lock is re-resolved, but it cannot override a newer explicit user constraint or newer Current Authority.
+
+### Capability-role TOOL/plugin routing
+
+When more than one connector/runtime/plugin can perform a task, route through the existing `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1` instead of building vendor-specific project logic.
+
+Selection precedence is:
+
+`CURRENT AUTHORITY + OWNER BOUNDARY → REQUIRED NATIVE OUTPUT + MUTATION CAPABILITY → ACTIVE CONSTRAINTS + PERMISSION → LOWEST SUFFICIENT SIDE EFFECT → ACTUAL READBACK COVERAGE → CURRENT VERIFIED AVAILABILITY / RELIABILITY → LOWER EXECUTION OVERHEAD → DECLARED FALLBACK`.
+
+Only probe the selected surface or a needed fallback. Do not inventory-probe every connected plugin. A currently exposed connector may be used ephemerally when its capability role and authority boundary fit the task, but one-off use does not create a new registry entry, TOOL, Skill, Method or Project State.
+
+Prefer a distinct readback surface when practical. If the same surface must both mutate and read back because no alternative exists, declare the evidence `NOT_INDEPENDENT`; do not silently upgrade it to independent review.
+
+Heavy executors remain `ESCALATION_ONLY`. If a lighter current connector can perform the required mutation with adequate readback, do not escalate merely because a heavier executor is available.
 
 ## 4｜Minimum sufficient owner set
 
@@ -257,34 +327,37 @@ If any required applicable phase is missing, `FAIL` or `HOLD`, the task state is
 ## 6｜Default GPT / Agent behavior
 
 1. Read Current Root Authority + applicable Project State / Source Authority / Current Task.
-2. If the user intent is a same-task follow-up, resolve the latest valid continuation checkpoint.
-3. If the checkpoint requires revalidation, refresh Current Authority before mutation; if it is valid, retain the verified completed-node frontier.
-4. Resolve sticky execution constraints before any owner/tool selection; a checkpoint never overrides a newer explicit constraint.
-5. Enforce tool/output/creation/process locks.
-6. Resolve live Registry identity and Current knowledge context.
-7. Retrieve relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
-8. Reuse mature design/current assets and actually read required existing Skill/capability material.
-9. For visual work, identify the strongest current board / design object / native figure before designing the presentation carrier.
-10. Before binding any semantic content image, query the project Image Consumption Ledger/Register by source hash / parent source / child figure / semantic identity.
-11. If that `semantic_image_id` is already `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` for another consumer, stop and select another image; crop/recolor/mask/contour/screenshot derivatives do not reset identity.
-12. Reserve an available image to the current consumer unit before layout production.
-13. Define the required native output.
-14. Build the applicable Flow Completion checklist.
-15. Resolve Execution Owner Map and Skill Capability Contract.
-16. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
-17. Resolve only allowed TOOL adapters and runtime capabilities.
-18. If resuming, skip already verified completed nodes and start from the first `next_allowed_action`; otherwise execute the normal first ready node.
-19. Execute the real native/editable artifact.
-20. Emit Native Artifact records / typed handoffs as applicable.
-21. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
-22. Open/render/run the actual result and perform readback.
-23. Update the existing continuation checkpoint when the conditional trigger is met; do not create a no-delta receipt solely for chat continuity.
-24. Run Evidence Gate and independent Professional Design Gate separately where applicable.
-25. Verify the Flow Completion Gate.
-26. Emit/update an Execution Receipt containing the active constraint lock, flow-completion state, continuation checkpoint when applicable and image-consumption section when applicable.
-27. Run Notion↔GitHub drift check where cross-platform pointers changed.
-28. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
-29. Sync material delta and preserve provenance.
+2. If the current context does not carry a reliable task pointer for a continuation intent, discover the active frontier from the existing Current Project/Task → Control Card → active Receipt chain using stable project/object/authority keys.
+3. If multiple distinct active frontiers remain and Current Authority cannot identify one, return `HOLD_AMBIGUOUS_FRONTIER`; do not guess.
+4. If the user intent is a same-task follow-up, resolve the latest valid continuation checkpoint.
+5. If the checkpoint requires revalidation, refresh Current Authority before mutation; if it is valid, retain the verified completed-node frontier.
+6. Resolve sticky execution constraints before any owner/tool selection; a checkpoint never overrides a newer explicit constraint.
+7. Enforce tool/output/creation/process locks.
+8. Resolve live Registry identity and Current knowledge context.
+9. Retrieve relevant Current METHOD / THEORY / SOURCE / CASE / EVIDENCE / TOOL / PRACTICE.
+10. Reuse mature design/current assets and actually read required existing Skill/capability material.
+11. For visual work, identify the strongest current board / design object / native figure before designing the presentation carrier.
+12. Before binding any semantic content image, query the project Image Consumption Ledger/Register by source hash / parent source / child figure / semantic identity.
+13. If that `semantic_image_id` is already `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` for another consumer, stop and select another image; crop/recolor/mask/contour/screenshot derivatives do not reset identity.
+14. Reserve an available image to the current consumer unit before layout production.
+15. Define the required native output.
+16. Build the applicable Flow Completion checklist.
+17. Resolve Execution Owner Map and Skill Capability Contract.
+18. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
+19. Resolve TOOL/plugin/runtime adapters through capability-role routing; probe only the selected/needed surfaces.
+20. If resuming, skip already verified completed nodes and start from the first `next_allowed_action`; otherwise execute the normal first ready node.
+21. Execute the real native/editable artifact.
+22. Emit Native Artifact records / typed handoffs as applicable.
+23. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
+24. Open/render/run the actual result and perform readback.
+25. Update the existing continuation checkpoint when the conditional trigger is met; do not create a no-delta receipt solely for chat continuity.
+26. If another node is ready and no stop condition is active, continue execution in the same turn; do not stop merely because one node passed.
+27. Run Evidence Gate and independent Professional Design Gate separately where applicable.
+28. Verify the Flow Completion Gate.
+29. Emit/update an Execution Receipt containing the active constraint lock, flow-completion state, continuation/frontier evidence when applicable, material adapter route decision when applicable, continuous-execution evidence when applicable and image-consumption section when applicable.
+30. Run Notion↔GitHub drift check where cross-platform pointers changed.
+31. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
+32. Sync material delta and preserve provenance.
 
 ## 7｜Existing-first / Source Gravity / Visual Authority
 
@@ -369,6 +442,8 @@ For visual artifacts, duplicate-image conflict, derivative identity laundering, 
 
 A continuation checkpoint may only advance from actual readback, a genuine repair-boundary HOLD, or typed handoff state. It may not use a plan, chat summary or producer assertion as the last verified artifact.
 
+Dependent mutations in continuous execution require readback between nodes. Auto-advance is not evidence promotion and does not let a producer skip an independent review gate.
+
 ## 11｜Execution Receipt
 
 The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrier. Its current policy requires all new execution receipts to record:
@@ -381,9 +456,12 @@ The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrie
 - incomplete required phases;
 - final completion-gate verdict;
 - continuation checkpoint when the same material task must continue across turns/handoffs while `WORKING/HOLD`;
+- cross-context frontier discovery evidence only when such discovery was materially used;
+- adapter route decision only when a material execution evaluated multiple surfaces or used an ephemeral connected surface;
+- continuous execution evidence when multiple ready nodes were executed in one material run or auto-advance stopped before completion;
 - `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict.
 
-Older receipts remain immutable provenance. The continuation extension is prospective and conditional; it does not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
+Older receipts remain immutable provenance. These runtime extensions are prospective and conditional; they do not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
 
 ## 12｜Synchronization
 
@@ -397,4 +475,4 @@ A chat/session boundary alone is not a cross-platform Current change and therefo
 
 ## 13｜Does not prove
 
-Resolver v1.2.3 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. A valid continuation checkpoint proves only that an already read-back execution frontier can be resumed under unchanged authority; it does not prove the next action will pass.
+Resolver v1.2.4 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. A discovered or valid continuation checkpoint proves only that an existing execution frontier can be resumed under unchanged authority. Capability-role routing proves only that a bounded execution surface was selected under the declared constraints. Continuous auto-advance proves only that successive nodes were eligible to execute in the current turn; none of these mechanisms independently prove Design PASS, Current, promotion or closure.
