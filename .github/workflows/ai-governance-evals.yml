@@ -49,6 +49,9 @@ jobs:
       - name: Validate runtime resilience
         run: python 00-governance/runtime/validate_runtime_resilience.py
 
+      - name: Validate bounded runtime soak
+        run: python 00-governance/runtime/validate_runtime_soak.py
+
       - name: Validate governance consolidation contracts
         run: python 00-governance/runtime/validate_governance_consolidation.py
 
@@ -87,6 +90,7 @@ jobs:
           echo '- Enforces sticky negative user constraints before tool/creation routing and blocks full-flow closure while required phases remain incomplete.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces verified authority snapshot reuse/refresh, selective readback by mutation blast radius, and heavy-executor escalation-only decisions without a new state carrier.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces cross-surface partial-commit reconciliation so uncertain or missing mutation legs cannot advance the DAG until verified, safely retried, compensated, or held.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Runs one deterministic bounded interleaving soak over real P4/P5 closed provenance and the existing concurrency, continuation, reconciliation, cooldown, known-failure, budget, and review gates without claiming background workers or arbitrary child-agent concurrency.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces one active production frontier per logical object, predecessor closure on successor adoption, location integrity, lifecycle exit, and source-byte dedup semantics.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces existing visual authority, one semantic content image per consumer unit, derivative identity inheritance, and project image-consumption ledgers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates Cloud-Free shared capability surfaces, zero external runtime dependency for Spatial Lab, preserved professional HOLD boundaries, and forbids fake browser PASS.' >> "$GITHUB_STEP_SUMMARY"
