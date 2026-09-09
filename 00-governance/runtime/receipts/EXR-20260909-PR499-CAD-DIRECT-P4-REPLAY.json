@@ -1,0 +1,361 @@
+{
+  "receipt_id": "EXR-20260909-PR499-CAD-DIRECT-P4-REPLAY",
+  "status": "WORKING",
+  "execution_type": "PROJECT",
+  "task_id": "P4-REAL-PROJECT-REPLAY-PR499",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "Jiaosong/Design PR #499 bounded OLEANDER CAD Direct Edit specialist execution",
+    "source_authority": "feat/oleander-blender-cad-direct-execution-v01-20260909 project execution snapshot ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+    "design_authority": "NOT_APPLICABLE",
+    "canonical_ids": [
+      "PR-499",
+      "OLE_CAD_DIRECT_EXECUTION_001"
+    ],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.5",
+    "github_commit_or_ref": "feat/oleander-blender-cad-direct-execution-v01-20260909@ae1c87b149039c244cbb7e0b7cb9330927ee8636"
+  },
+  "constraint_lock": {
+    "resolved_from": [
+      "LATEST_EXPLICIT_USER_INSTRUCTION",
+      "CURRENT_OLEANDER_RESOLVER",
+      "CURRENT_EXECUTION_RECEIPT_POLICY",
+      "PR499_CURRENT_BOUNDARY"
+    ],
+    "inheritance_state": "ENFORCED_THROUGH_P4_REPLAY_COMPLETION",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-P4-PR499-001",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_SKILL",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_SKILL"
+      },
+      {
+        "constraint_id": "CSTR-P4-PR499-002",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_METHOD",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_METHOD"
+      },
+      {
+        "constraint_id": "CSTR-P4-PR499-003",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_FRAMEWORK",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_FRAMEWORK"
+      },
+      {
+        "constraint_id": "CSTR-P4-PR499-004",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-P4-PR499-005",
+        "constraint_type": "PROCESS_REQUIRE",
+        "normalized_rule": "FULL_OLEANDER_FLOW_REQUIRED",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-P4-PR499-006",
+        "constraint_type": "REVIEW_REQUIRE",
+        "normalized_rule": "NO_PRODUCER_SELF_PROMOTION",
+        "source": "Current OLEANDER sticky execution constraint",
+        "scope": "P4-REAL-PROJECT-REPLAY-PR499",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_PROMOTION_BOUNDARY"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": [],
+    "output_deny": [],
+    "creation_deny": [
+      "CREATE_NEW_SKILL",
+      "CREATE_NEW_METHOD",
+      "CREATE_NEW_FRAMEWORK",
+      "CREATE_PARALLEL_PROJECT_STATE_OR_CHECKPOINT_DATABASE"
+    ],
+    "required_behaviors": [
+      "REUSE_EXISTING_PR499_FRONTIER",
+      "REUSE_EXISTING_RUNTIME_RECEIPT_CARRIER",
+      "EXACT_HEAD_READBACK",
+      "NO_PROJECT_PROMOTION_FROM_P4"
+    ]
+  },
+  "required_native_output": {
+    "artifact_class": "real_project_continuation_replay_checkpoint",
+    "native_format": "JSON + existing PR499 Python/YAML project source",
+    "editable_required": true,
+    "target_runtime": "GitHub PR #499 + GitHub Actions + Blender 5.2.0 LTS + FreeCAD 1.1.3/OCCT",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "oleander-3d-pipeline",
+    "nodes": [
+      {
+        "owner_id": "oleander-3d-pipeline",
+        "role": "PRIMARY_OWNER"
+      },
+      {
+        "owner_id": "OLEANDER Blender Professional CAD Sidecar Integration",
+        "role": "VALIDATOR"
+      },
+      {
+        "owner_id": "runtime-governance",
+        "role": "SUPPORTING_OWNER"
+      }
+    ],
+    "omitted_owner_reasoning": "P4 replays one existing bounded CAD direct-edit project frontier. No other Skill, design owner, heavy executor, or parallel state owner is required."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "NOT_APPLICABLE",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "HOLD",
+      "REGRESSION_AS_APPLICABLE": "HOLD",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+    },
+    "phase_reasons": {
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "No semantic content image is bound by the P4 checkpoint replay.",
+      "ACTUAL_READBACK": "The baseline exact head is read back, but the new durable checkpoint commit and its exact-head CI/readback are still pending.",
+      "REGRESSION_AS_APPLICABLE": "The baseline CAD execution regression passed; the checkpoint-bearing exact head must still run its own CI.",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "P4 validates runtime continuation behavior only and does not issue Design KEEP or promotion.",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "Durable receipt restore and post-checkpoint readback are pending."
+    },
+    "incomplete_required_phases": [
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "completion_gate": "HOLD",
+    "completion_claim_allowed": false
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-PR499-CAD-DIRECT-EXACT-HEAD",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "oleander-3d-pipeline",
+      "authority_source": "PR #499 exact project execution snapshot",
+      "authority_state": "CURRENT",
+      "native_format": "Python+YAML",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": [
+        "cad_direct_intent",
+        "semantic_face_rebind",
+        "freecad_occt_authoritative_mutation",
+        "typed_display_derivative",
+        "blender_display_only_readback",
+        "fail_closed_resolution"
+      ],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": [
+        "Blender 5.2.0 LTS",
+        "FreeCAD 1.1.3 / OCCT",
+        "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1",
+        "existing cad_sidecar.py"
+      ],
+      "hashes_or_commit": "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+      "runtime": "GitHub Actions exact-head execution using Blender 5.2.0 LTS + FreeCAD 1.1.3/OCCT",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "READ_ONLY",
+      "current_state": "CURRENT",
+      "does_not_prove": [
+        "general_brep_push_pull",
+        "persistent_topological_naming",
+        "P0_B_DIRECT_BREP_PASS",
+        "engineering_approval",
+        "manufacturing_release",
+        "field_truth",
+        "design_keep"
+      ]
+    }
+  ],
+  "tool_adapters": [],
+  "adapter_route_decision": {
+    "required_capability_roles": [
+      "REPO_SOURCE_MUTATION",
+      "RUNTIME_READBACK"
+    ],
+    "candidate_surfaces": [
+      "github_connector",
+      "github_actions"
+    ],
+    "selected_surface": "github_connector",
+    "selection_reasons": [
+      "existing PR499 branch supports direct bounded mutation",
+      "GitHub readback resolves exact branch head and receipt bytes",
+      "GitHub Actions provides the project runtime regression surface"
+    ],
+    "availability_state": "AVAILABLE",
+    "authority_ceiling": "REMOTE_MUTATION_WITHIN_EXISTING_PR499_BRANCH",
+    "side_effect_class": "REMOTE_MUTATION",
+    "readback_surface": "github_connector+github_actions",
+    "fallback_surface": "NONE_REQUIRED"
+  },
+  "frontier_discovery": {
+    "discovery_trigger": "P4_REAL_PROJECT_REPLAY",
+    "project_or_scope_key": "PR-499",
+    "task_key": "P4-REAL-PROJECT-REPLAY-PR499",
+    "object_or_canonical_ids": [
+      "OLE_CAD_DIRECT_EXECUTION_001"
+    ],
+    "candidate_frontiers": [
+      "PR499@ae1c87b149039c244cbb7e0b7cb9330927ee8636"
+    ],
+    "selected_frontier": "PR499@ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+    "selection_basis": "Open real project PR, exact-head CAD execution checks green, project boundary remains bounded and non-promoted",
+    "ambiguity_state": "NONE"
+  },
+  "continuation_checkpoint": {
+    "checkpoint_state": "RESUMABLE",
+    "current_node": "P4_CHECKPOINT_PERSISTENCE",
+    "last_verified_artifact": {
+      "artifact_id": "ART-PR499-CAD-DIRECT-EXACT-HEAD",
+      "hash_or_commit": "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+      "readback_verdict": "PASS"
+    },
+    "resume_from": "BASELINE_CAD_DIRECT_EXECUTION_VERIFIED",
+    "next_allowed_action": "VERIFY_CHECKPOINT_COMMIT_EXACT_HEAD_CI_THEN_RESTORE_FROM_THIS_RECEIPT_WITHOUT_REPLAYING_CAD_EXECUTION",
+    "authority_fingerprint": "e68b8e1d63cc18600b17a02188879a9a291c4abe1f8dc1b330ee91ce2149ede5",
+    "stale_reasons": [],
+    "checkpoint_sequence": 1,
+    "checkpoint_updated_at": "2026-09-09T16:02:00+08:00",
+    "expected_checkpoint_sequence": 1,
+    "executor_id": "CHAT-FIRST-P4-PR499",
+    "execution_lease_state": "ACTIVE",
+    "lease_acquired_at": "2026-09-09T16:02:00+08:00"
+  },
+  "execution": {
+    "runtime": "PR #499 exact head + GitHub Actions + existing Blender/FreeCAD CAD sidecar runtime",
+    "entrypoint_or_action": "Consume the already verified PR499 CAD direct-edit execution snapshot, persist a durable P4 continuation checkpoint, then restore from that receipt after exact-head CI without replaying the completed CAD mutation.",
+    "result": "BASELINE_EXACT_HEAD_VERIFIED_CHECKPOINT_PERSISTENCE_IN_PROGRESS",
+    "failures": [
+      "Existing real fail-closed envelope: missing semantic face returns MISSING_HOLD with zero released result artifacts.",
+      "Existing real fail-closed envelope: duplicate semantic face match returns AMBIGUOUS_HOLD with zero released result artifacts."
+    ],
+    "repairs": [
+      "No new repair was required for the baseline exact head; all observed project checks were successful."
+    ]
+  },
+  "readback": {
+    "target": "PR #499 exact project execution head ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+    "runtime": "GitHub exact-head check-runs + PR diff/readback",
+    "observed_result": "cad-direct-edit-5-2 SUCCESS; bounded PASS path executes 80x50x10 to 80x50x15 in FreeCAD/OCCT; MISSING_HOLD and AMBIGUOUS_HOLD release zero authoritative result artifacts; Blender remains DISPLAY_DERIVATIVE_ONLY with save/reopen readback.",
+    "blocking_defects": [
+      "P4_CHECKPOINT_POSTCOMMIT_CI_AND_DURABLE_RESTORE_PENDING"
+    ],
+    "nonblocking_defects": [
+      "NONE_IDENTIFIED_IN_BASELINE"
+    ],
+    "verdict": "PASS_BASELINE_EXACT_HEAD"
+  },
+  "regression": {
+    "STRUCTURAL": {
+      "result": "PASS",
+      "assertions": [
+        "PR499 reuses the existing CAD sidecar workflow and owner",
+        "No new runtime framework/frontier is introduced",
+        "Blender remains display-only before/after authoritative specialist mutation"
+      ]
+    },
+    "SEMANTIC": {
+      "result": "PASS",
+      "assertions": [
+        "Unique semantic +Z four-edge face resolves to one candidate",
+        "Missing and ambiguous semantic rebinds fail closed",
+        "No FaceN/EdgeN/polygon-index persistence"
+      ]
+    },
+    "VISUAL_ROI": {
+      "result": "NOT_APPLICABLE",
+      "assertions": [
+        "P4 does not claim visual design review or Design KEEP"
+      ]
+    },
+    "RUNTIME": {
+      "result": "PASS",
+      "assertions": [
+        "cad-direct-edit-5-2 exact-head check SUCCESS",
+        "Blender 5.2.0 LTS readback PASS",
+        "FreeCAD 1.1.3/OCCT authoritative edit PASS",
+        "HOLD envelopes release zero result artifacts"
+      ]
+    },
+    "overall": "PASS"
+  },
+  "review": {
+    "producer_id": "oleander-3d-pipeline PR#499",
+    "reviewer_id": "P4_RUNTIME_REPLAY_NO_DESIGN_REVIEW",
+    "review_input_artifact_id": "ART-PR499-CAD-DIRECT-EXACT-HEAD",
+    "review_input_hash_or_commit": "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS_BASELINE_EXACT_HEAD",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "P4 runtime replay does not merge/promote PR #499 or upgrade CAD/engineering/manufacturing claims."
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "feat/oleander-blender-cad-direct-execution-v01-20260909",
+    "commits": [
+      "ae1c87b149039c244cbb7e0b7cb9330927ee8636",
+      "P4_CHECKPOINT_COMMIT_PENDING"
+    ],
+    "pull_request": 499,
+    "ci_state": "BASELINE_EXACT_HEAD_SUCCESS_P4_CHECKPOINT_CI_PENDING",
+    "merge_commit": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
+    "main_readback": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
+    "notion_writeback": "NOT_REQUIRED_UNTIL_P4_REAL_PROJECT_REPLAY_CLOSES",
+    "remaining_blockers": [
+      "P4_CHECKPOINT_POSTCOMMIT_CI_AND_RESTORE_READBACK_PENDING"
+    ],
+    "final_state": "WORKING_P4_REAL_PROJECT_REPLAY"
+  },
+  "does_not_prove": [
+    "design_keep",
+    "general_brep_push_pull",
+    "persistent_topological_naming",
+    "P0_B_DIRECT_BREP_PASS",
+    "default_environment_eligibility",
+    "engineering_approval",
+    "manufacturing_release",
+    "field_truth",
+    "PR499_promotion_or_merge"
+  ]
+}
