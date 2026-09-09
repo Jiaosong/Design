@@ -87,6 +87,19 @@ jobs:
             grep -F '"status": "PASS"' "$log"
           done
 
+      - name: Validate bounded CAD direct intent bridge on Blender 5.2 LTS
+        shell: bash
+        run: |
+          set -euo pipefail
+          BLENDER_BIN="${{ steps.blender.outputs.bin }}"
+          SCRIPT="oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_cad_direct_intent_bridge.py"
+          LOG="/tmp/validate_cad_direct_intent_bridge.log"
+          "$BLENDER_BIN" --background --factory-startup --python-exit-code 2 --python "$SCRIPT" 2>&1 | tee "$LOG"
+          grep -F 'OLEANDER_CAD_DIRECT_INTENT_BRIDGE=' "$LOG"
+          grep -F '"status": "PASS"' "$LOG"
+          grep -F '"execution": "NOT_EXECUTED"' "$LOG"
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' "$LOG"
+
       - name: Record 5.2 LTS compatibility boundary
         if: always()
         shell: bash
@@ -95,6 +108,8 @@ jobs:
             echo '## OLEANDER Blender Runtime — 5.2 LTS regression'
             echo '- Runtime authority source: 00-governance/runtime/OLEANDER_BLENDER_RUNTIME_v1.0.json.'
             echo '- Runtime resolution: 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh.'
-            echo '- Stage 2/3 regression is compatibility evidence only; it does not promote PR #470 or make P0-B PASS.'
+            echo '- Stage 2/3 regression remains the seventeen-layer Runtime compatibility set.'
+            echo '- CAD Direct Intent Bridge is an additional bounded specialist contract gate in the same workflow; it is not an eighteenth Runtime stage or a sixth Frontier.'
+            echo '- The bridge validates intent/request authority and fail-closed semantics only; CAD face resolution and B-Rep mutation remain NOT_EXECUTED.'
             echo '- Historical Blender 5.1.2 runs and receipts remain provenance, not 5.2 promotion evidence.'
           } >> "$GITHUB_STEP_SUMMARY"

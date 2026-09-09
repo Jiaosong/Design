@@ -1,0 +1,106 @@
+{
+  "schema": "OLEANDER_CAD_DIRECT_INTENT_BRIDGE_RECEIPT_v0.1",
+  "validation_state": "PASS",
+  "validation_scope": "CAD_DIRECT_INTENT_TO_REQUEST_CONTRACT",
+  "validated_at_utc": "2026-09-09T02:53:59Z",
+  "repository": "Jiaosong/Design",
+  "pull_request": 497,
+  "candidate_head": "c296fbc9bcdf17cf18ed5679bac8be546592607e",
+  "tested_pr_merge_commit": "a1df3e3c8eb798041679317eb9a5380fec17fb36",
+  "tested_main_base": "f5c3caa80552baed465f6472fc0f3280cd9a2585",
+  "validated_source_blobs": {
+    "professional_adapter/cad_sidecar.py": "f912dec23fdbb7c1048555b28dde51600151827d",
+    "tests/validate_cad_direct_intent_bridge.py": "cfb8a4c1796732db3506846edc105a85c93e6365",
+    ".github/workflows/oleander-blender-runtime-5-2-lts.yml": "343cbc301015e4f70cbb49f1829cb37b5dc222ce"
+  },
+  "workflow": {
+    "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
+    "run_id": 34304967227,
+    "job_id": 102319642880,
+    "conclusion": "success",
+    "specialist_gate": "Validate bounded CAD direct intent bridge on Blender 5.2 LTS"
+  },
+  "host": {
+    "os": "Ubuntu 24.04.5 LTS",
+    "runner_image": "ubuntu-24.04",
+    "blender_version": "5.2.0 LTS",
+    "blender_build_hash": "fbe6228777e7"
+  },
+  "extension_package_observation": {
+    "filename": "oleander_blender_runtime-5.2-lts.zip",
+    "size_bytes": 92458,
+    "sha256": "ac41fb4e9f79c4d9c457bf0287234712a324ebf16c99302f66ce186d3ef2bdbe",
+    "role": "same-job runtime package observation; not a CAD authority artifact"
+  },
+  "intent_schema": "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1",
+  "request_schema": "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1",
+  "request_sha256": "8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318",
+  "authority": {
+    "required_kernel": "FREECAD_OCCT_BREP",
+    "blender_role": "DISPLAY_DERIVATIVE_ONLY",
+    "execution_state": "NOT_EXECUTED",
+    "resolution_policy": "SEMANTIC_REBIND_FAIL_CLOSED",
+    "ambiguous_result": "HOLD",
+    "missing_result": "HOLD",
+    "display_mutation": "NONE"
+  },
+  "runtime_checks": [
+    "runtime_and_sidecar_intent_schema_match",
+    "intent_ole_id_preserved",
+    "intent_metric_distance_preserved",
+    "intent_sha256_deterministic",
+    "direct_request_deterministic",
+    "direct_request_schema",
+    "direct_request_binds_intent_sha",
+    "direct_request_freecad_occt_authority",
+    "direct_request_bounded_operation",
+    "direct_request_semantic_selector",
+    "direct_request_fail_closed_rebind",
+    "direct_request_ambiguous_hold",
+    "direct_request_missing_hold",
+    "direct_request_blender_display_only",
+    "direct_request_no_display_mutation",
+    "direct_request_no_execution_claim",
+    "direct_request_no_persistent_topology_ordinal",
+    "direct_request_written",
+    "direct_request_file_sha",
+    "direct_request_file_sha_independent_readback",
+    "direct_request_json_readback",
+    "polygon_index_expected_failure",
+    "face_ordinal_string_expected_failure",
+    "ambiguous_resolution_expected_failure",
+    "wrong_kernel_expected_failure",
+    "zero_distance_expected_failure",
+    "display_mutation_expected_failure"
+  ],
+  "expected_failure_cases": {
+    "polygon_index": "PASS",
+    "face_ordinal_string": "PASS",
+    "ambiguous_resolution_select_first": "PASS",
+    "wrong_kernel": "PASS",
+    "zero_distance": "PASS",
+    "display_mutation_allowed": "PASS"
+  },
+  "runtime_result": "PASS",
+  "stage_relation": {
+    "runtime_stage_count": 17,
+    "role": "ADDITIONAL_BOUNDED_SPECIALIST_CONTRACT_GATE",
+    "is_eighteenth_runtime_stage": false,
+    "is_frontier_family": false,
+    "creates_sixth_frontier": false
+  },
+  "non_claims": [
+    "cad_face_resolution",
+    "cad_direct_edit_execution",
+    "general_brep_push_pull",
+    "persistent_topological_naming",
+    "P0_B_DIRECT_BREP_PASS",
+    "default_environment_promotion",
+    "general_cad_parity",
+    "engineering_approval",
+    "manufacturing_release",
+    "field_truth"
+  ],
+  "invalidation_rule": "Any material change to professional_adapter/cad_sidecar.py, tests/validate_cad_direct_intent_bridge.py, or the bridge binding in oleander-blender-runtime-5-2-lts.yml invalidates this receipt and requires a fresh canonical Blender 5.2 LTS specialist-gate run before rebinding.",
+  "authority_note": "This receipt proves deterministic, fail-closed translation from the existing Blender CAD direct-edit interaction intent into a governed specialist-sidecar request. It does not prove semantic CAD face resolution or any FreeCAD/OCCT B-Rep mutation."
+}

@@ -1,17 +1,25 @@
 from __future__ import annotations
 
+import ast
+import hashlib
 import json
 
 import static_check as base
 import static_check_17 as layer17
 
 CONSOLIDATED_RECEIPT = base.RUNTIME_ROOT / "BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json"
+CAD_DIRECT_BRIDGE_RECEIPT = base.RUNTIME_ROOT / "CAD_DIRECT_INTENT_BRIDGE_RECEIPT_5_2_20260909.json"
 RUNTIME_WORKFLOW = base.REPO_ROOT / ".github" / "workflows" / "oleander-blender-runtime-5-2-lts.yml"
+CAD_DIRECT_BRIDGE_SCRIPT = base.RUNTIME_ROOT / "tests" / "validate_cad_direct_intent_bridge.py"
+CAD_SIDECAR = base.RUNTIME_ROOT / "professional_adapter" / "cad_sidecar.py"
 EXPECTED_RUNTIME = "5.2.0 LTS"
 EXPECTED_BUILD = "fbe6228777e7"
 EXPECTED_RUN_ID = 34302353461
 EXPECTED_JOB_ID = 102311768341
 EXPECTED_STAGE_COUNT = 17
+EXPECTED_BRIDGE_RUN_ID = 34304967227
+EXPECTED_BRIDGE_JOB_ID = 102319642880
+EXPECTED_BRIDGE_REQUEST_SHA256 = "8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318"
 FINGERPRINT_MISMATCHES: list[tuple[str, str, str]] = []
 
 REQUIRED_BOUNDED_DIRECT_DELTA = {
@@ -31,6 +39,174 @@ REQUIRED_DIRECT_NON_CLAIMS = {
     "default_environment_promotion",
     "general_cad_parity",
 }
+
+BRIDGE_REQUIRED_WORKFLOW_TOKENS = {
+    "validate_cad_direct_intent_bridge.py",
+    "OLEANDER_CAD_DIRECT_INTENT_BRIDGE=",
+    '"execution": "NOT_EXECUTED"',
+    '"blender": "DISPLAY_DERIVATIVE_ONLY"',
+}
+
+BRIDGE_REQUIRED_SOURCE_TOKENS = {
+    "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1",
+    "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1",
+    "SEMANTIC_REBIND_FAIL_CLOSED",
+    "FREECAD_OCCT_BREP",
+    "DISPLAY_DERIVATIVE_ONLY",
+    "NOT_EXECUTED",
+    "FaceN",
+    "polygon_index",
+}
+
+BRIDGE_REQUIRED_CHECKS = {
+    "runtime_and_sidecar_intent_schema_match",
+    "intent_sha256_deterministic",
+    "direct_request_deterministic",
+    "direct_request_binds_intent_sha",
+    "direct_request_freecad_occt_authority",
+    "direct_request_semantic_selector",
+    "direct_request_fail_closed_rebind",
+    "direct_request_ambiguous_hold",
+    "direct_request_missing_hold",
+    "direct_request_blender_display_only",
+    "direct_request_no_display_mutation",
+    "direct_request_no_execution_claim",
+    "direct_request_no_persistent_topology_ordinal",
+    "direct_request_file_sha_independent_readback",
+    "direct_request_json_readback",
+    "polygon_index_expected_failure",
+    "face_ordinal_string_expected_failure",
+    "ambiguous_resolution_expected_failure",
+    "wrong_kernel_expected_failure",
+    "zero_distance_expected_failure",
+    "display_mutation_expected_failure",
+}
+
+BRIDGE_REQUIRED_NON_CLAIMS = {
+    "cad_face_resolution",
+    "cad_direct_edit_execution",
+    "general_brep_push_pull",
+    "persistent_topological_naming",
+    "P0_B_DIRECT_BREP_PASS",
+    "default_environment_promotion",
+    "general_cad_parity",
+}
+
+
+def git_blob_sha(path) -> str:
+    data = path.read_bytes()
+    header = b"blob " + str(len(data)).encode("ascii") + b"\0"
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def validate_cad_direct_bridge_binding() -> None:
+    """Static binding guard only; real PASS still comes from Blender 5.2 execution."""
+    if not CAD_DIRECT_BRIDGE_SCRIPT.is_file():
+        base.fail("CAD Direct Intent Bridge validation script missing")
+    if not CAD_SIDECAR.is_file():
+        base.fail("CAD sidecar source missing")
+
+    for path in (CAD_DIRECT_BRIDGE_SCRIPT, CAD_SIDECAR):
+        ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+
+    workflow_text = RUNTIME_WORKFLOW.read_text(encoding="utf-8")
+    missing_workflow = sorted(token for token in BRIDGE_REQUIRED_WORKFLOW_TOKENS if token not in workflow_text)
+    if missing_workflow:
+        base.fail(f"CAD Direct Intent Bridge lost Blender 5.2 workflow binding: {missing_workflow}")
+
+    combined_source = CAD_DIRECT_BRIDGE_SCRIPT.read_text(encoding="utf-8") + "\n" + CAD_SIDECAR.read_text(encoding="utf-8")
+    missing_source = sorted(token for token in BRIDGE_REQUIRED_SOURCE_TOKENS if token not in combined_source)
+    if missing_source:
+        base.fail(f"CAD Direct Intent Bridge lost authority/fail-closed source boundary: {missing_source}")
+
+
+def validate_cad_direct_bridge_receipt() -> dict:
+    if not CAD_DIRECT_BRIDGE_RECEIPT.is_file():
+        base.fail("CAD Direct Intent Bridge Blender 5.2 receipt missing")
+    receipt = json.loads(CAD_DIRECT_BRIDGE_RECEIPT.read_text(encoding="utf-8"))
+    if receipt.get("schema") != "OLEANDER_CAD_DIRECT_INTENT_BRIDGE_RECEIPT_v0.1":
+        base.fail("unexpected CAD Direct Intent Bridge receipt schema")
+    if receipt.get("validation_state") != "PASS" or receipt.get("runtime_result") != "PASS":
+        base.fail("CAD Direct Intent Bridge receipt must be PASS")
+    if receipt.get("validation_scope") != "CAD_DIRECT_INTENT_TO_REQUEST_CONTRACT":
+        base.fail("CAD Direct Intent Bridge receipt scope mismatch")
+
+    workflow = receipt.get("workflow", {})
+    if (
+        workflow.get("name") != "OLEANDER Blender Runtime 5.2 LTS Regression"
+        or workflow.get("run_id") != EXPECTED_BRIDGE_RUN_ID
+        or workflow.get("job_id") != EXPECTED_BRIDGE_JOB_ID
+        or workflow.get("conclusion") != "success"
+        or workflow.get("specialist_gate") != "Validate bounded CAD direct intent bridge on Blender 5.2 LTS"
+    ):
+        base.fail("CAD Direct Intent Bridge workflow evidence mismatch")
+
+    host = receipt.get("host", {})
+    if host.get("blender_version") != EXPECTED_RUNTIME or host.get("blender_build_hash") != EXPECTED_BUILD:
+        base.fail("CAD Direct Intent Bridge Blender 5.2 host identity mismatch")
+    if receipt.get("intent_schema") != "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1":
+        base.fail("CAD Direct Intent Bridge intent schema mismatch")
+    if receipt.get("request_schema") != "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1":
+        base.fail("CAD Direct Intent Bridge request schema mismatch")
+    if receipt.get("request_sha256") != EXPECTED_BRIDGE_REQUEST_SHA256:
+        base.fail("CAD Direct Intent Bridge deterministic request SHA mismatch")
+
+    authority = receipt.get("authority", {})
+    required_authority = {
+        "required_kernel": "FREECAD_OCCT_BREP",
+        "blender_role": "DISPLAY_DERIVATIVE_ONLY",
+        "execution_state": "NOT_EXECUTED",
+        "resolution_policy": "SEMANTIC_REBIND_FAIL_CLOSED",
+        "ambiguous_result": "HOLD",
+        "missing_result": "HOLD",
+        "display_mutation": "NONE",
+    }
+    for key, expected in required_authority.items():
+        if authority.get(key) != expected:
+            base.fail(f"CAD Direct Intent Bridge authority mismatch: {key}")
+
+    source_blobs = receipt.get("validated_source_blobs", {})
+    current_blobs = {
+        "professional_adapter/cad_sidecar.py": git_blob_sha(CAD_SIDECAR),
+        "tests/validate_cad_direct_intent_bridge.py": git_blob_sha(CAD_DIRECT_BRIDGE_SCRIPT),
+        ".github/workflows/oleander-blender-runtime-5-2-lts.yml": git_blob_sha(RUNTIME_WORKFLOW),
+    }
+    for key, current_sha in current_blobs.items():
+        if source_blobs.get(key) != current_sha:
+            base.fail(f"CAD Direct Intent Bridge receipt source blob is stale: {key}")
+
+    checks = set(receipt.get("runtime_checks", []))
+    missing_checks = sorted(BRIDGE_REQUIRED_CHECKS - checks)
+    if missing_checks:
+        base.fail(f"CAD Direct Intent Bridge receipt missing runtime checks: {missing_checks}")
+
+    failures = receipt.get("expected_failure_cases", {})
+    for key in (
+        "polygon_index",
+        "face_ordinal_string",
+        "ambiguous_resolution_select_first",
+        "wrong_kernel",
+        "zero_distance",
+        "display_mutation_allowed",
+    ):
+        if failures.get(key) != "PASS":
+            base.fail(f"CAD Direct Intent Bridge expected failure not PASS: {key}")
+
+    stage_relation = receipt.get("stage_relation", {})
+    if (
+        stage_relation.get("runtime_stage_count") != EXPECTED_STAGE_COUNT
+        or stage_relation.get("role") != "ADDITIONAL_BOUNDED_SPECIALIST_CONTRACT_GATE"
+        or stage_relation.get("is_eighteenth_runtime_stage") is not False
+        or stage_relation.get("is_frontier_family") is not False
+        or stage_relation.get("creates_sixth_frontier") is not False
+    ):
+        base.fail("CAD Direct Intent Bridge receipt improperly changes Runtime/Frontier topology")
+
+    non_claims = set(receipt.get("non_claims", []))
+    missing_non_claims = sorted(BRIDGE_REQUIRED_NON_CLAIMS - non_claims)
+    if missing_non_claims:
+        base.fail(f"CAD Direct Intent Bridge non-claim boundary missing: {missing_non_claims}")
+    return receipt
 
 
 def load_consolidated() -> dict:
@@ -143,6 +319,8 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
 
 def main() -> None:
     FINGERPRINT_MISMATCHES.clear()
+    validate_cad_direct_bridge_binding()
+    validate_cad_direct_bridge_receipt()
     base.validate_stage = validate_stage_with_consolidated_receipt
     layer17.main()
     if FINGERPRINT_MISMATCHES:
