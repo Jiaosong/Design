@@ -12,6 +12,7 @@ EXPECTED_BUILD = "fbe6228777e7"
 EXPECTED_RUN_ID = 33935040543
 EXPECTED_JOB_ID = 101221190932
 EXPECTED_STAGE_COUNT = 17
+FINGERPRINT_MISMATCHES: list[tuple[str, str, str]] = []
 
 
 def load_consolidated() -> dict:
@@ -101,7 +102,7 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
     expected = base.source_fingerprint(base.RUNTIME_ROOT / "tests" / script)
     actual = stage_evidence.get("source_fingerprint_sha256")
     if actual != expected:
-        base.fail(f"{stage['label']} consolidated 5.2 receipt stale: {actual} != {expected}")
+        FINGERPRINT_MISMATCHES.append((script, str(actual), expected))
 
     workflow_text = RUNTIME_WORKFLOW.read_text(encoding="utf-8")
     if script not in workflow_text:
@@ -113,8 +114,19 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
 
 
 def main() -> None:
+    FINGERPRINT_MISMATCHES.clear()
     base.validate_stage = validate_stage_with_consolidated_receipt
     layer17.main()
+    if FINGERPRINT_MISMATCHES:
+        for script, actual, expected in FINGERPRINT_MISMATCHES:
+            print(
+                "CURRENT_SOURCE_FINGERPRINT "
+                f"script={script} actual={actual} expected={expected}"
+            )
+        base.fail(
+            "consolidated Blender 5.2 receipt source fingerprints are stale for "
+            f"{len(FINGERPRINT_MISMATCHES)} stage(s); refresh only from a successful real Blender 5.2 regression"
+        )
 
 
 if __name__ == "__main__":
