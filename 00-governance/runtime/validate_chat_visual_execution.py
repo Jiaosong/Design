@@ -128,7 +128,7 @@ def validate_story_skill() -> None:
         if phrase not in text:
             fail(f"story-and-board missing Chat-first execution phrase: {phrase}")
 
-    if "do not stop and wait for a generic `继续`" not in text:
+    if "do not stop and wait for a generic `继续`" not in text.lower():
         fail("story-and-board must explicitly forbid waiting for generic continue after REVISE")
     if "complex hair masking" not in text:
         fail("story-and-board must preserve specialist extraction/retouch boundary")
