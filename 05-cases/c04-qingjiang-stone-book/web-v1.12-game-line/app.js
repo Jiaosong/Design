@@ -9,14 +9,22 @@
     cable:{k:"CABLE / RELATION",t:"从空中建立山、水、路的关系。",b:"索道改变观看高度与速度，使两岸、峰谷与路线联系变得可读。解释只揭示关系，不把视线从清江夺走。"},
     walk:{k:"WALK / DETAIL",t:"进入山中，才允许细读。",b:"步行把观察缩小到植物、岩壁、声音、身体与停留。十三印在这里按需出现，并始终允许跳过。"}
   };
-  $$(".mode-card").forEach(btn=>btn.addEventListener("click",()=>{
-    $$(".mode-card").forEach(x=>x.classList.toggle("active",x===btn));
+  const modeCards=$(".mode-card");
+  const setMode=(btn)=>{
+    modeCards.forEach(x=>{
+      const active=x===btn;
+      x.classList.toggle("active",active);
+      x.setAttribute("aria-pressed",String(active));
+    });
     const d=modeData[btn.dataset.mode];
     if(!d)return;
     $("#modeKicker").textContent=d.k;
     $("#modeTitle").textContent=d.t;
     $("#modeBody").textContent=d.b;
-  }));
+  };
+  modeCards.forEach(btn=>btn.addEventListener("click",()=>setMode(btn)));
+  const initialMode=modeCards.find(x=>x.classList.contains("active"))||modeCards[0];
+  if(initialMode)setMode(initialMode);
 
   const audienceData=[
     {k:"FAMILY / EASY EXIT",t:"少读一点，也能完整经过。",b:"亲子场景优先短动作、低文字与清楚退出；不把深读变成同行压力。"},
