@@ -1,0 +1,13 @@
+{
+  "name": "c04-qingjiang-stone-book-web",
+  "private": true,
+  "scripts": {
+    "cf:whoami": "wrangler whoami --json",
+    "dev": "wrangler dev",
+    "deploy:dry": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.125.0"
+  }
+}
