@@ -18,9 +18,36 @@
     $("#modeBody").textContent=d.b;
   }));
 
-  $$(".audience-tab").forEach(btn=>btn.addEventListener("click",()=>{
-    $$(".audience-tab").forEach(x=>x.classList.toggle("active",x===btn));
-  }));
+  const audienceData=[
+    {k:"FAMILY / EASY EXIT",t:"少读一点，也能完整经过。",b:"亲子场景优先短动作、低文字与清楚退出；不把深读变成同行压力。"},
+    {k:"EXPLORER / CHOOSE",t:"把选择留给正在探索的人。",b:"青年与自主探索者可以比较路线、寻找关系并按兴趣进入更深内容。"},
+    {k:"READER / DEEPEN",t:"需要证据时，再向下读。",b:"深读者可以进入证据、内容与对照层，但这些信息不占据所有人的第一视线。"},
+    {k:"RECOVERY / RETURN",t:"体力下降时，服务先于内容。",b:"低体力与恢复状态优先休息、方向确认和回程；数字与阅读都可以暂时退场。"}
+  ];
+  const audienceTabs=$$(".audience-tab");
+  const audienceList=$(".audience-list");
+  let audienceReadout=null;
+  if(audienceList&&audienceTabs.length){
+    audienceReadout=document.createElement("div");
+    audienceReadout.className="audience-readout";
+    audienceReadout.setAttribute("aria-live","polite");
+    audienceReadout.innerHTML='<p class="audience-kicker"></p><b class="audience-title"></b><span class="audience-body"></span>';
+    audienceList.after(audienceReadout);
+    const setAudience=(btn,index)=>{
+      audienceTabs.forEach(x=>{
+        const active=x===btn;
+        x.classList.toggle("active",active);
+        x.setAttribute("aria-pressed",String(active));
+      });
+      const d=audienceData[index];
+      if(!d)return;
+      $(".audience-kicker",audienceReadout).textContent=d.k;
+      $(".audience-title",audienceReadout).textContent=d.t;
+      $(".audience-body",audienceReadout).textContent=d.b;
+    };
+    audienceTabs.forEach((btn,index)=>btn.addEventListener("click",()=>setAudience(btn,index)));
+    setAudience(audienceTabs.find(x=>x.classList.contains("active"))||audienceTabs[0],Math.max(0,audienceTabs.findIndex(x=>x.classList.contains("active"))));
+  }
 
   function syncPage(){
     const sections=$$(".section[id]");
