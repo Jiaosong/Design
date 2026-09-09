@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 
 import static_check as base
@@ -7,6 +8,8 @@ import static_check_17 as layer17
 
 CONSOLIDATED_RECEIPT = base.RUNTIME_ROOT / "BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json"
 RUNTIME_WORKFLOW = base.REPO_ROOT / ".github" / "workflows" / "oleander-blender-runtime-5-2-lts.yml"
+CAD_DIRECT_BRIDGE_SCRIPT = base.RUNTIME_ROOT / "tests" / "validate_cad_direct_intent_bridge.py"
+CAD_SIDECAR = base.RUNTIME_ROOT / "professional_adapter" / "cad_sidecar.py"
 EXPECTED_RUNTIME = "5.2.0 LTS"
 EXPECTED_BUILD = "fbe6228777e7"
 EXPECTED_RUN_ID = 34302353461
@@ -31,6 +34,45 @@ REQUIRED_DIRECT_NON_CLAIMS = {
     "default_environment_promotion",
     "general_cad_parity",
 }
+
+BRIDGE_REQUIRED_WORKFLOW_TOKENS = {
+    "validate_cad_direct_intent_bridge.py",
+    "OLEANDER_CAD_DIRECT_INTENT_BRIDGE=",
+    '"execution": "NOT_EXECUTED"',
+    '"blender": "DISPLAY_DERIVATIVE_ONLY"',
+}
+
+BRIDGE_REQUIRED_SOURCE_TOKENS = {
+    "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1",
+    "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1",
+    "SEMANTIC_REBIND_FAIL_CLOSED",
+    "FREECAD_OCCT_BREP",
+    "DISPLAY_DERIVATIVE_ONLY",
+    "NOT_EXECUTED",
+    "FaceN",
+    "polygon_index",
+}
+
+
+def validate_cad_direct_bridge_binding() -> None:
+    """Static binding guard only; real PASS still comes from Blender 5.2 execution."""
+    if not CAD_DIRECT_BRIDGE_SCRIPT.is_file():
+        base.fail("CAD Direct Intent Bridge validation script missing")
+    if not CAD_SIDECAR.is_file():
+        base.fail("CAD sidecar source missing")
+
+    for path in (CAD_DIRECT_BRIDGE_SCRIPT, CAD_SIDECAR):
+        ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+
+    workflow_text = RUNTIME_WORKFLOW.read_text(encoding="utf-8")
+    missing_workflow = sorted(token for token in BRIDGE_REQUIRED_WORKFLOW_TOKENS if token not in workflow_text)
+    if missing_workflow:
+        base.fail(f"CAD Direct Intent Bridge lost Blender 5.2 workflow binding: {missing_workflow}")
+
+    combined_source = CAD_DIRECT_BRIDGE_SCRIPT.read_text(encoding="utf-8") + "\n" + CAD_SIDECAR.read_text(encoding="utf-8")
+    missing_source = sorted(token for token in BRIDGE_REQUIRED_SOURCE_TOKENS if token not in combined_source)
+    if missing_source:
+        base.fail(f"CAD Direct Intent Bridge lost authority/fail-closed source boundary: {missing_source}")
 
 
 def load_consolidated() -> dict:
@@ -143,6 +185,7 @@ def validate_stage_with_consolidated_receipt(capability: dict, status: dict, sta
 
 def main() -> None:
     FINGERPRINT_MISMATCHES.clear()
+    validate_cad_direct_bridge_binding()
     base.validate_stage = validate_stage_with_consolidated_receipt
     layer17.main()
     if FINGERPRINT_MISMATCHES:
