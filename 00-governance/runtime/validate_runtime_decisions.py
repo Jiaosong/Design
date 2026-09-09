@@ -8,7 +8,9 @@ ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "00-governance" / "runtime"
 RESOLVER = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 TOOL_CONTRACT = RUNTIME / "OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json"
+REGRESSION_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1.json"
 CASES = ROOT / "evals" / "runtime" / "sticky_constraints_and_flow.jsonl"
+P2_CASES = ROOT / "evals" / "runtime" / "known_failure_and_reliability.jsonl"
 
 
 def fail(msg: str) -> None:
@@ -109,6 +111,136 @@ def decide_heavy_executor(
     return {"action": "USE_LIGHTER_ADAPTER_OR_HOLD", "output_ceiling": "NORMAL_OLEANDER_FLOW"}
 
 
+def decide_known_failure(
+    *,
+    current_failure_signature: str,
+    current_applicability: str,
+    materially_new_context: bool,
+    prior_repair_applied: bool,
+    known_failure_records: list[dict],
+) -> dict:
+    """Reuse a bounded transferable repair path; do not turn every recurrence into new research."""
+    required = {
+        "failure_signature",
+        "root_cause_class",
+        "affected_layer",
+        "repair_rule",
+        "regression_test",
+        "applicability",
+    }
+    matches: list[dict] = []
+    for record in known_failure_records:
+        if not required.issubset(record):
+            continue
+        applicability = record.get("applicability") or []
+        if isinstance(applicability, str):
+            applicability = [applicability]
+        if record.get("failure_signature") != current_failure_signature:
+            continue
+        if current_applicability not in applicability and "*" not in applicability:
+            continue
+        matches.append(record)
+
+    if not matches:
+        return {"state": "NO_KNOWN_FAILURE_MATCH", "action": "USE_NORMAL_ROOT_CAUSE_ANALYSIS"}
+
+    distinct_paths = {
+        (m["root_cause_class"], m["repair_rule"], m["regression_test"])
+        for m in matches
+    }
+    if len(distinct_paths) > 1:
+        return {"state": "HOLD", "action": "HOLD_AMBIGUOUS_KNOWN_FAILURE"}
+
+    record = matches[0]
+    if materially_new_context:
+        return {
+            "state": "MATERIALLY_NEW_CONTEXT",
+            "action": "RECLASSIFY_ROOT_CAUSE_OR_RESEARCH_AS_NEEDED",
+            "repair_rule": record["repair_rule"],
+            "regression_test": record["regression_test"],
+        }
+    if prior_repair_applied:
+        return {
+            "state": "EXECUTION_DRIFT",
+            "code": "KNOWN_FAILURE_RECURRED",
+            "action": "BLOCK_KNOWN_INVALID_PATH_REAPPLY_REPAIR_RULE_AND_RUN_REGRESSION",
+            "repair_rule": record["repair_rule"],
+            "regression_test": record["regression_test"],
+        }
+    return {
+        "state": "KNOWN_FAILURE_MATCH",
+        "action": "APPLY_EXISTING_REPAIR_RULE_AND_REQUIRED_REGRESSION_TEST",
+        "repair_rule": record["repair_rule"],
+        "regression_test": record["regression_test"],
+    }
+
+
+def classify_surface_reliability(candidate: dict) -> str:
+    """Classify only after authority/capability/side-effect routing has produced candidates."""
+    if candidate.get("supports_required_operation") is not True:
+        return "BLOCKED_UNSUPPORTED"
+    availability = candidate.get("availability_state", "UNKNOWN")
+    if availability == "UNAVAILABLE":
+        return "BLOCKED_UNAVAILABLE"
+    if availability not in {"AVAILABLE", "DEGRADED", "UNKNOWN"}:
+        return "BLOCKED_INVALID_LIVENESS"
+    unresolved_known_failure = (
+        candidate.get("known_failure_applies") is True
+        and candidate.get("known_failure_unresolved") is True
+        and candidate.get("revalidation_passed") is not True
+    )
+    current_verified_failure = (
+        candidate.get("latest_verified_outcome") == "FAILURE"
+        and candidate.get("revalidation_passed") is not True
+    )
+    if unresolved_known_failure:
+        return "BLOCKED_KNOWN_FAILURE"
+    if current_verified_failure:
+        return "BLOCKED_CURRENT_FAILURE"
+    if availability == "AVAILABLE":
+        return "PRIMARY_ELIGIBLE"
+    if availability == "DEGRADED":
+        return "FALLBACK_ELIGIBLE"
+    return "PROBE_REQUIRED"
+
+
+def select_reliable_surface(candidates: list[dict]) -> dict:
+    """Prefer verified liveness/reliability before lower execution overhead; never compute a global vendor score."""
+    classified = [
+        {**candidate, "reliability_class": classify_surface_reliability(candidate)}
+        for candidate in candidates
+    ]
+
+    def choose(items: list[dict]) -> dict:
+        return min(items, key=lambda c: (int(c.get("execution_overhead_rank", 9999)), str(c.get("surface_id", ""))))
+
+    primary = [c for c in classified if c["reliability_class"] == "PRIMARY_ELIGIBLE"]
+    if primary:
+        selected = choose(primary)
+        return {
+            "action": "SELECT_RELIABLE_SURFACE",
+            "selected_surface": selected.get("surface_id"),
+            "classifications": classified,
+        }
+    fallback = [c for c in classified if c["reliability_class"] == "FALLBACK_ELIGIBLE"]
+    if fallback:
+        selected = choose(fallback)
+        return {
+            "action": "SELECT_FALLBACK_SURFACE",
+            "selected_surface": selected.get("surface_id"),
+            "classifications": classified,
+        }
+    probe = [c for c in classified if c["reliability_class"] == "PROBE_REQUIRED"]
+    if probe:
+        selected = choose(probe)
+        return {
+            "action": "PROBE_SELECTED_CANDIDATE",
+            "selected_surface": selected.get("surface_id"),
+            "classifications": classified,
+        }
+    return {"action": "HOLD_NO_RELIABLE_SURFACE", "selected_surface": None, "classifications": classified}
+
+
 def validate_contract_bindings() -> None:
     resolver = load_json(RESOLVER)
     if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.5":
@@ -134,8 +266,50 @@ def validate_contract_bindings() -> None:
     if heavy.get("output_ceiling_before_standard_readback_review_completion_gate") != "EXECUTED":
         fail("heavy executor pre-review output ceiling must remain EXECUTED")
 
+    liveness = tool.get("surface_liveness_policy", {})
+    if set(liveness.get("states", [])) != {"AVAILABLE", "UNAVAILABLE", "DEGRADED", "UNKNOWN"}:
+        fail("surface liveness states drifted")
+    if "PREVIOUS_SELECTED_SURFACE_FAILED" not in set(liveness.get("probe_when", [])):
+        fail("failed selected surface must trigger bounded liveness probe when it is reconsidered")
+    if liveness.get("unknown_surface_does_not_block_when_another_verified_sufficient_surface_is_available") is not True:
+        fail("unknown surface must not displace an already verified sufficient surface")
+    routing = tool.get("unified_adapter_routing_policy", {})
+    precedence = routing.get("selection_precedence", [])
+    try:
+        reliability_pos = precedence.index("CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY")
+        overhead_pos = precedence.index("LOWER_EXECUTION_OVERHEAD")
+    except ValueError:
+        fail("adapter selection must include verified reliability and execution overhead precedence")
+    if reliability_pos >= overhead_pos:
+        fail("verified liveness/reliability must outrank lower execution overhead")
+    if routing.get("availability_is_runtime_fact_not_authority") is not True:
+        fail("surface availability/reliability must remain runtime fact, not authority")
 
-def validate_cases() -> None:
+    regression = load_json(REGRESSION_CONTRACT)
+    failure_policy = regression.get("transferable_failure_recurrence_policy", {})
+    required_failure_fields = {
+        "failure_signature",
+        "root_cause_class",
+        "affected_layer",
+        "repair_rule",
+        "regression_test",
+        "applicability",
+    }
+    if not required_failure_fields.issubset(set(failure_policy.get("record_fields", []))):
+        fail("transferable failure record fields incomplete")
+    if failure_policy.get("trivial_or_one_off_execution_mistake_not_persisted") is not True:
+        fail("trivial one-off failures must not pollute transferable failure memory")
+    if failure_policy.get("recurrence_after_prior_repair_state") != "EXECUTION_DRIFT":
+        fail("known failure recurrence must classify as execution drift")
+    if failure_policy.get("recurrence_after_prior_repair_code") != "KNOWN_FAILURE_RECURRED":
+        fail("known failure recurrence code missing")
+    if failure_policy.get("no_global_failure_database") is not True:
+        fail("P2 must not create a global failure database")
+    if failure_policy.get("reuse_existing_practice_skill_validator_or_regression_carrier") is not True:
+        fail("transferable failures must reuse existing OLEANDER carriers")
+
+
+def validate_p1_cases() -> None:
     rows = load_jsonl(CASES)
     by_id = {row.get("case_id"): row for row in rows}
     required = {
@@ -182,14 +356,78 @@ def validate_cases() -> None:
             fail(f"{case_id} heavy-executor decision mismatch")
 
 
+def validate_p2_cases() -> None:
+    rows = load_jsonl(P2_CASES)
+    by_id = {row.get("case_id"): row for row in rows}
+    required = {
+        "FAILURE-001-KNOWN-MATCH-REUSE-REPAIR",
+        "FAILURE-002-RECURRENCE-EXECUTION-DRIFT",
+        "FAILURE-003-MATERIAL-NEW-CONTEXT-RECLASSIFY",
+        "FAILURE-004-NO-MATCH-NORMAL-ANALYSIS",
+        "RELIABILITY-001-AVAILABLE-VERIFIED-PREFERRED",
+        "RELIABILITY-002-UNRESOLVED-KNOWN-FAILURE-BLOCKS-PRIMARY",
+        "RELIABILITY-003-UNKNOWN-ONLY-PROBE",
+        "RELIABILITY-004-UNKNOWN-NOT-PROBED-WITH-VERIFIED-ALTERNATIVE",
+        "RELIABILITY-005-ALL-BLOCKED-HOLD",
+    }
+    missing = required - set(by_id)
+    if missing:
+        fail(f"missing P2 runtime cases {sorted(missing)}")
+
+    for case_id in [
+        "FAILURE-001-KNOWN-MATCH-REUSE-REPAIR",
+        "FAILURE-002-RECURRENCE-EXECUTION-DRIFT",
+        "FAILURE-003-MATERIAL-NEW-CONTEXT-RECLASSIFY",
+        "FAILURE-004-NO-MATCH-NORMAL-ANALYSIS",
+    ]:
+        c = by_id[case_id]
+        result = decide_known_failure(
+            current_failure_signature=c["current_failure_signature"],
+            current_applicability=c["current_applicability"],
+            materially_new_context=c["materially_new_context"],
+            prior_repair_applied=c["prior_repair_applied"],
+            known_failure_records=c["known_failure_records"],
+        )
+        if result["state"] != c["expected_state"] or result["action"] != c["expected_action"]:
+            fail(f"{case_id} known-failure decision mismatch")
+        if "expected_code" in c and result.get("code") != c["expected_code"]:
+            fail(f"{case_id} recurrence code mismatch")
+        if "expected_repair_rule" in c and result.get("repair_rule") != c["expected_repair_rule"]:
+            fail(f"{case_id} repair-rule mismatch")
+        if "expected_regression_test" in c and result.get("regression_test") != c["expected_regression_test"]:
+            fail(f"{case_id} regression-test mismatch")
+
+    for case_id in [
+        "RELIABILITY-001-AVAILABLE-VERIFIED-PREFERRED",
+        "RELIABILITY-002-UNRESOLVED-KNOWN-FAILURE-BLOCKS-PRIMARY",
+        "RELIABILITY-003-UNKNOWN-ONLY-PROBE",
+        "RELIABILITY-004-UNKNOWN-NOT-PROBED-WITH-VERIFIED-ALTERNATIVE",
+        "RELIABILITY-005-ALL-BLOCKED-HOLD",
+    ]:
+        c = by_id[case_id]
+        result = select_reliable_surface(c["candidates"])
+        if result["action"] != c["expected_action"] or result.get("selected_surface") != c.get("expected_selected_surface"):
+            fail(f"{case_id} reliability selection mismatch")
+        classes = {x.get("surface_id"): x.get("reliability_class") for x in result["classifications"]}
+        if "expected_blocked_surface" in c and not classes.get(c["expected_blocked_surface"], "").startswith("BLOCKED_"):
+            fail(f"{case_id} expected failed surface was not blocked")
+        if "expected_not_probed_surface" in c:
+            sid = c["expected_not_probed_surface"]
+            if result.get("selected_surface") == sid:
+                fail(f"{case_id} unknown surface was selected for probe despite verified alternative")
+
+
 def main() -> None:
     validate_contract_bindings()
-    validate_cases()
+    validate_p1_cases()
+    validate_p2_cases()
     print("runtime-decision validation: PASS")
     print("verified authority snapshot reuse/refresh: ENFORCED")
     print("selective readback planning by mutation blast radius: ENFORCED")
     print("heavy executor escalation-only decision: ENFORCED")
-    print("no new authority/state/ontology carrier: PRESERVED")
+    print("transferable known-failure reuse and recurrence drift classification: ENFORCED")
+    print("surface liveness/reliability selection with bounded probing: ENFORCED")
+    print("no new authority/state/failure-db/reliability-db/ontology carrier: PRESERVED")
 
 
 if __name__ == "__main__":
