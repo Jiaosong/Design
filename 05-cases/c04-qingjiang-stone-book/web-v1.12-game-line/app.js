@@ -15,6 +15,11 @@
       const active=x===btn;
       x.classList.toggle("active",active);
       x.setAttribute("aria-pressed",String(active));
+      const label=$("small",x);
+      if(label){
+        if(!label.dataset.baseLabel)label.dataset.baseLabel=label.textContent.trim();
+        label.textContent=active?`${label.dataset.baseLabel} · 当前`:label.dataset.baseLabel;
+      }
     });
     const d=modeData[btn.dataset.mode];
     if(!d)return;
