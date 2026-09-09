@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "00-governance" / "runtime"
 RESOLVER = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 CASES = ROOT / "evals" / "runtime" / "continuation_execution_cycle.jsonl"
+P5_RECEIPT = RUNTIME / "receipts" / "EXR-20260909-P5-CROSS-PROJECT-SURFACE-ADOPTION.json"
 
 
 def fail(msg: str) -> None:
@@ -85,7 +86,7 @@ def decide_repair_return(
 def validate_contract_bindings() -> None:
     resolver = load_json(RESOLVER)
     if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.5":
-        fail("P3 must bind current Resolver v1.2 implementation revision 1.2.5")
+        fail("P3/P5 must bind current Resolver v1.2 implementation revision 1.2.5")
 
     continuation = resolver.get("continuation_checkpoint_policy", {})
     if continuation.get("cross_chat_restore_behavior") != "DISCOVER_EXISTING_FRONTIER_THEN_APPLY_DIRECT_RESUME_OR_REVALIDATE_RULES":
@@ -117,14 +118,20 @@ def validate_cases() -> None:
         "CYCLE-004-FAILED-REGRESSION-STAYS-BLOCKED",
         "CYCLE-005-RETESTED-FRONTIER-ADVANCES-NEXT-READY",
         "CYCLE-006-FALLBACK-RECOVERS-TO-PRIMARY-AFTER-REVALIDATION",
+        "CYCLE-007-CLOSED-PREDECESSOR-STAYS-CLOSED-ON-PROJECT-SWITCH",
+        "CYCLE-008-TARGET-HEAD-DRIFT-REVALIDATES",
+        "CYCLE-009-REVALIDATED-TARGET-RESUMES-WITHOUT-PREDECESSOR-LEAKAGE",
     }
     missing = required - set(by_id)
     if missing:
-        fail(f"missing P3 continuation cases {sorted(missing)}")
+        fail(f"missing continuation cases {sorted(missing)}")
 
     for case_id in [
         "CYCLE-001-CROSS-CHAT-RESUME-SKIPS-VERIFIED",
         "CYCLE-002-CROSS-CHAT-AUTHORITY-DRIFT-REVALIDATES",
+        "CYCLE-007-CLOSED-PREDECESSOR-STAYS-CLOSED-ON-PROJECT-SWITCH",
+        "CYCLE-008-TARGET-HEAD-DRIFT-REVALIDATES",
+        "CYCLE-009-REVALIDATED-TARGET-RESUMES-WITHOUT-PREDECESSOR-LEAKAGE",
     ]:
         c = by_id[case_id]
         result = decide_checkpoint_resume(c["checkpoint"], c["current_authority_fingerprint"])
@@ -188,9 +195,68 @@ def validate_cases() -> None:
         fail("CYCLE-006 fallback became sticky after primary recovery")
 
 
+def validate_p5_adoption_receipt() -> None:
+    r = load_json(P5_RECEIPT)
+    if r.get("task_id") != "P5-CROSS-PROJECT-SURFACE-ADOPTION-20260909":
+        fail("P5 receipt task id drifted")
+    if r.get("execution_type") != "GOVERNANCE_RUNTIME":
+        fail("P5 receipt must remain governance-runtime adoption evidence")
+
+    evidence = r.get("cross_project_adoption_evidence", {})
+    predecessor = evidence.get("predecessor", {})
+    target = evidence.get("target", {})
+    if predecessor.get("task_id") != "P4-REAL-PROJECT-REPLAY-PR499":
+        fail("P5 predecessor must be the closed P4 replay")
+    if predecessor.get("checkpoint_state") != "CLOSED":
+        fail("P5 may not reopen a non-closed or ambiguous predecessor")
+    if predecessor.get("replay_performed") is not False:
+        fail("P5 must not replay P4 project mutation")
+    if predecessor.get("closure_receipt_head") != "4d90289326278dac956a3ac6999e479689725c30":
+        fail("P5 predecessor closure evidence head drifted")
+
+    if target.get("project_id") != "PRJ-C04-QINGJIANG-SHISHU" or target.get("pull_request") != 465:
+        fail("P5 target project/frontier drifted")
+    if target.get("previously_verified_head") != "9952724fd3aefdc57809e560d12928f3c9a90294":
+        fail("P5 target previous verification head drifted")
+    if target.get("current_head") != "cd025199ee5acf2e74170fa442fa823a584fe37a":
+        fail("P5 target current head drifted")
+    if target.get("head_drift_detected") is not True or target.get("fresh_exact_head_revalidation") is not True:
+        fail("P5 must prove head drift detection plus fresh exact-head revalidation")
+    if target.get("production_promoted") is not False:
+        fail("P5 must not promote C04 production")
+    if target.get("protected_preview_content_readback") != "HOLD_AUTHENTICATION_SURFACE":
+        fail("P5 must preserve the protected-preview readback boundary")
+
+    adapter = r.get("adapter_route_decision", {})
+    candidates = set(adapter.get("candidate_surfaces") or [])
+    required_surfaces = {"github_connector", "notion_connector", "github_actions_chromium", "vercel_connector"}
+    if not required_surfaces.issubset(candidates):
+        fail("P5 did not preserve the cross-surface adoption evidence set")
+    if adapter.get("selected_surface") != "github_connector":
+        fail("P5 source mutation must remain on the bounded GitHub branch")
+    if adapter.get("authority_ceiling") != "RUNTIME_GOVERNANCE_EVIDENCE_ONLY":
+        fail("P5 adapter surface must not gain project authority")
+
+    flow = r.get("flow_completion", {})
+    checkpoint = r.get("continuation_checkpoint", {})
+    if r.get("status") == "WORKING":
+        if flow.get("completion_gate") != "HOLD" or flow.get("completion_claim_allowed") is not False:
+            fail("working P5 receipt must remain completion HOLD")
+        if checkpoint.get("checkpoint_state") != "RESUMABLE":
+            fail("working P5 receipt must remain resumable")
+    elif r.get("status") == "CLOSED":
+        if flow.get("completion_gate") != "PASS" or flow.get("incomplete_required_phases") != []:
+            fail("closed P5 receipt must pass the full completion gate")
+        if checkpoint.get("checkpoint_state") != "CLOSED":
+            fail("closed P5 receipt must close its checkpoint")
+    else:
+        fail("P5 receipt status must be WORKING or CLOSED")
+
+
 def main() -> None:
     validate_contract_bindings()
     validate_cases()
+    validate_p5_adoption_receipt()
     print("continuation-cycle validation: PASS")
     print("cross-chat restore skips verified completed nodes: ENFORCED")
     print("authority drift revalidates before execution: ENFORCED")
@@ -198,6 +264,9 @@ def main() -> None:
     print("failed regression blocks resume/advance: ENFORCED")
     print("readback-verified repaired frontier advances next ready node: ENFORCED")
     print("fallback is non-sticky and primary is restored after revalidation: ENFORCED")
+    print("P5 closed predecessor remains closed across project switch: ENFORCED")
+    print("P5 target head drift requires fresh exact-head revalidation: ENFORCED")
+    print("P5 cross-project execution surfaces remain adapters, not authority: ENFORCED")
     print("no new authority/project-state/checkpoint-db/plugin-state ontology: PRESERVED")
 
 
