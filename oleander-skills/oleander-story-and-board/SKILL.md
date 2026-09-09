@@ -54,6 +54,28 @@ For maps, routes, plans, sections, model views, product geometry, technical node
 
 A visually stronger board that weakens spatial truth is a regression and must be REVISE/REJECT rather than promoted.
 
+## Chat-first visual production execution
+
+When the user asks in ordinary Chat for a board, portfolio page, exhibition surface, deck page or key visual and the final result is expected to remain editable, this skill must **execute the existing OLEANDER production/review loop**, not merely propose a layout and not stop after the first render/export.
+
+Use this sequence when applicable:
+
+`CURRENT AUTHORITY / CURRENT ASSETS → REAL SOURCE ASSET INVENTORY → RUN ASSET ROLE / USABILITY PASS BEFORE LAYOUT LOCK → EDITABLE REPRESENTATIVE SURFACE → OPTIONAL NON-FACTUAL GENERATIVE EXPLORATION → SOURCE / DERIVATIVE BINDING → TARGET-SCALE ACTUAL READBACK → Visual QA → Project QA → REVISE → REPAIR → REOPEN → RETEST → PROPAGATE → FINAL EDITABLE MASTER`
+
+Hard execution rules:
+
+- **FIRST VISUAL DRAFT ≠ COMPLETION.** A first board, screenshot, render, export, local preview, generated composition or “looks acceptable” state is only an execution checkpoint until target-scale readback and the applicable OLEANDER review gates pass.
+- If `Visual QA = REVISE` or `Project QA = REVISE` and no genuine stop condition exists, use `REVISE → REPAIR → REOPEN → RETEST` in the same active conversation turn. Do not stop and wait for a generic `继续` merely because one version has been produced.
+- **RUN ASSET ROLE / USABILITY PASS BEFORE LAYOUT LOCK** whenever material images affect the composition. For each source/master, resolve role, authority, target scale, crop tolerance, protected claim-bearing region, extraction/masking/background-separation need, native resolution/aspect ratio, and whether the subject survives intended reading size. Weak source imagery must be demoted, replaced by a stronger current asset, or held rather than forcing the layout around it.
+- Perform crop, masking, foreground/background separation, background removal, reframing and deterministic compositing on an actually available execution surface when they are needed to make the real asset usable. Judge extraction at target scale for silhouette integrity, internal holes, transparency, edge contamination, figure-ground, contact/grounding and whether the source claim remains intact. A technically isolated subject with visibly poor edges is still `REVISE`.
+- When the current Chat exposes image-editing or image-generation capability, the user permits generation, and no active `NO_IMAGE_GENERATION` constraint exists, multiple iterations are allowed for **non-factual** atmosphere, effect, visual-direction, scene or key-visual exploration. Mark them `EXPLORE / SYNTHETIC / DOES_NOT_PROVE`; they may inform or supply a bounded derivative, but they do not replace source evidence or become Design/Source Authority.
+- **GENERATED FULL-BOARD IMAGE ≠ EDITABLE MASTER.** A full-board raster generated for visual exploration remains a derivative/candidate. If the requested final is editable, formal text, layout, vectors, diagrams and source-bound assets must return to an editable native master. If no available surface can preserve the required editability, return `HOLD` rather than calling the flattened board final.
+- Generative exploration may be repeated as needed within the current execution budget. Do not force the first synthetic image into the final composition simply because it exists. Select, reject, re-generate or demote by the same first-read, target-scale and Project QA criteria used for other visual assets.
+- Source-truth images and non-factual synthetic exploration must remain distinguishable in the asset inventory and derivative record. Synthetic content cannot silently become field/site/product evidence.
+- The existing specialist boundary remains: high-end beauty retouch, complex hair masking, liquify, hand-painted repair, specialist color finishing or other Photoshop-class subjective work remains `PARTIAL/HOLD` when no real specialist execution surface can achieve the required standard. Do not lower the visual bar and call an obviously weak extraction “finished”.
+
+This section does not create a new design method, new Skill or new review system. It compiles the existing editable-first, actual-readback, `oleander-design-process` crit/repair loop, Image Art Direction truth boundary and OLEANDER Visual/Project QA into the ordinary-Chat execution path.
+
 ## First-visual diagnostic-to-repair loop
 
 Do not stop at `looks weak`, `too flat`, `too much text`, `generic`, or another vague visual critique. Convert the first-read failure into one inspectable repair before adding more content.
@@ -142,16 +164,18 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 2. Pull validated charts from `oleander-data-viz`.
 3. Pull model manifests and approved renders from `oleander-3d-pipeline`.
 4. Create a content inventory before layout.
-5. Resolve the strongest current design/evidence source for every primary visual; record which objects are locked and may not be re-authored by layout.
-6. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
-7. Produce a low-fidelity sequence before polishing.
-8. Bring one representative page/board/surface to professional-review level; run the first-visual diagnostic and target-scale readback before propagating the system.
-9. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
-10. Run content, visual, and production reviews separately.
-11. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
-12. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
-13. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
-14. For material cross-software assembly, record the upstream Current master, downstream tool/runtime, exchange format, editability retained, known loss/bake, and actual reopen/readback before final delivery.
+5. When material imagery affects the page, complete the source asset-role/usability pass and required crop/mask/extraction preparation before locking the layout around those images.
+6. Resolve the strongest current design/evidence source for every primary visual; record which objects are locked and may not be re-authored by layout.
+7. Establish grid, hierarchy, type system, palette, caption style, image treatment, and page/board numbering around those authority objects.
+8. Produce a low-fidelity sequence before polishing.
+9. Bring one representative page/board/surface to professional-review level; run the first-visual diagnostic and target-scale readback before propagating the system.
+10. If the representative surface receives `REVISE`, repair/reopen/retest in the active execution turn while no genuine stop condition exists; do not propagate or declare completion from the first draft.
+11. Reuse the same narrative IDs across report sections, boards, deck slides, and film scenes.
+12. Run content, visual, and production reviews separately.
+13. For spatial primary visuals, perform an authority-preservation comparison against the strongest existing artifact before promotion.
+14. For paired/reveal visuals, compare both frames side by side and confirm that the base geometry is identical except for declared presentation-only changes.
+15. For VI/manual work, compare prose against the actual figure and reject any operational rule that exists only in explanatory text.
+16. For material cross-software assembly, record the upstream Current master, downstream tool/runtime, exchange format, editability retained, known loss/bake, and actual reopen/readback before final delivery.
 
 ## Deliverable variants
 
@@ -165,6 +189,8 @@ Use Technical Drawing logic for construction, dimensions, safe areas, influence 
 ## Required output
 
 Return the narrative outline, content inventory, page/board/scene map, missing-assets list, production specification, and final editable/source deliverable.
+
+For Chat-first visual production with material imagery, also return the asset-role/usability inventory, selected source/derivative identities, material extraction/masking operations actually performed, non-factual generative candidates that materially informed the result, and the target-scale Visual QA / Project QA readback that justified the final state.
 
 For any layout containing source-bound spatial evidence, include a short authority-preservation note naming the source object and confirming what was kept unchanged versus presentation-only edits.
 
@@ -187,6 +213,9 @@ For material cross-software output, include the Current editable master identity
 - Paired/reveal views preserve the same base geometry; only declared presentation layers may change.
 - A base frame that is unreadable without explanatory labels is not promotable as a primary visual.
 - A new page/board system is not propagated broadly before one representative surface survives target-scale first-read review.
+- A first Chat-produced visual draft or generated full-board image is not a completion signal; Visual QA / Project QA `REVISE` must return to repair/reopen/retest while execution can legally continue.
+- Image-dependent layouts do not lock around unclassified or visibly weak assets; source usability, crop/mask/extraction quality and target-scale role are checked before final composition.
+- Non-factual generated exploration remains labeled as synthetic/derivative and does not silently become project evidence or editable-master authority.
 - For VI work, every operational rule that is stated in prose is visibly represented on the page or explicitly routed to another current page/source.
 - For VI construction pages, dimension/value/unit/safe-zone/minimum-size claims are visible in the drawing itself, not only in surrounding text.
 - Material/raster display effects never become logo/vector/text geometry authority.
