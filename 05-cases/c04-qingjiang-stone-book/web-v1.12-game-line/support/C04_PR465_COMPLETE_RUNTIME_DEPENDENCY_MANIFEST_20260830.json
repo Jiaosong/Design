@@ -1,15 +1,92 @@
 {
   "record_type": "PRESENTATION_COMPLETE_RUNTIME_DEPENDENCY_MANIFEST",
+  "manifest_state": "CURRENTIZED_WITH_PRESERVED_2026_08_30_INVENTORY",
+  "historical_filename_date": "2026-08-30",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "object_id": "PRJ-C04-DIGITAL-INTERACTION",
   "execution_mode": "EXISTING_PROJECT_REPAIR",
   "producer_frontier": "PR #465 / agent/c04-web-v1-12-currentize-20260830",
+  "producer_frontier_verified_commit": "9952724fd3aefdc57809e560d12928f3c9a90294",
   "predecessor_frontier": "PR #353 / agent/c04-web-v1-12-game-line-20260822 / f0b241ba6ca38bd563cc50443445de7ea4ef6c30",
-  "baseline_state": "PR #353 preserved as best-existing / rollback provenance; no live mutation after Current cutover",
-  "observed_at": "2026-08-30",
-  "method": "read successor index.html + existing PR353 complete manifest + Current repository carriers; preserve exact authority boundaries; classify repo-native Current carrier separately from literal assets/* runtime files",
-  "material_delta": "Successor PR #465 currentizes the stale producer frontier onto latest main and replaces the obsolete unknown memory_journal_crop.png dependency with the existing Current editable M01_qingjiang_journal_v1_2.svg carrier in both consumer positions. No crop or substitute image was invented.",
+  "baseline_state": "PR #353 is closed/unmerged rollback/provenance only; PR #465 is the writable Current Web producer frontier.",
+  "observed_at": "2026-09-09",
+  "previous_observation": "2026-08-30",
+  "method": "Read the exact PR #465 currentized index/app/verifiers, classify only files actually consumed by the 11-section runtime as CURRENT_RUNTIME_CONSUMED, and preserve the complete 2026-08-30 dependency inventory without converting unconsumed design/source HOLDs into runtime blockers.",
+  "material_delta": "PR #465 currentization deliberately rebuilt the public surface from the predecessor 18-section runtime into an 11-section journey-to-system reading. The old dependency inventory remains preserved for no-loss design/source recovery, while current runtime integrity is now evaluated only against the carriers actually consumed by index.html/app.js. No legacy asset was deleted, substituted, or silently promoted.",
+  "current_runtime": {
+    "surface_state": "11_SECTION_CURRENT_IMPLEMENTATION_NOT_PAGE_COUNT_AUTHORITY",
+    "section_ids": ["hero", "assets", "journey", "brief", "context", "audience", "idea", "thinking", "systems", "development", "final"],
+    "dependency_count": 5,
+    "dependencies": [
+      {
+        "consumer_ref": "assets/qj_hero_keep_v11_b64_01.txt",
+        "role": "Hero local source-derived chunk 1/2",
+        "semantic_asset_identity": "QJ-D v1.1 / 01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+        "derivative_identity_inherited": true,
+        "binding_state": "BOUND_IN_CURRENT_APP_JS",
+        "git_blob_sha": "3d7a5bab876202919284d894fdd1c3e35f9c6f91",
+        "bytes": 700000
+      },
+      {
+        "consumer_ref": "assets/qj_hero_keep_v11_b64_02a.txt",
+        "role": "Hero local source-derived chunk 2/2",
+        "semantic_asset_identity": "QJ-D v1.1 / 01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+        "derivative_identity_inherited": true,
+        "binding_state": "BOUND_IN_CURRENT_APP_JS",
+        "git_blob_sha": "84583fd780990b009bf530a9f2f21fbd66a3e501",
+        "bytes": 100000
+      },
+      {
+        "consumer_ref": "assets/body_need_scenarios_current.svg",
+        "role": "Audience / body-need scenarios",
+        "binding_state": "BOUND_IN_CURRENT_INDEX",
+        "git_blob_sha": "030f028f4222045e84843bd20cd261932ad7a78c",
+        "bytes": 5185,
+        "truth_boundary": "SUPPORT CARRIER / NOT FIELD OR ENGINEERING PROOF"
+      },
+      {
+        "consumer_ref": "assets/route03_locked_current.svg",
+        "role": "Current route relation",
+        "binding_state": "BOUND_IN_CURRENT_INDEX",
+        "source_authority": "ROUTE-03 locked current package",
+        "git_blob_sha": "a69b5cf529fb605169847cfe926b5dc0a508800a",
+        "truth_boundary": "RELATION / TOPOLOGY; NOT GPS OR SURVEY OVERLAY"
+      },
+      {
+        "consumer_ref": "assets/return_service_closure_current.svg",
+        "role": "Service / Return redundancy closure",
+        "binding_state": "BOUND_IN_CURRENT_INDEX",
+        "git_blob_sha": "e73f285bf46b562b548288a0921f05e557b94edf",
+        "truth_boundary": "ROUTE / PAPER / SIGNAGE / HUMAN / DIGITAL REDUNDANCY; NOT FIELD VALIDATION"
+      }
+    ],
+    "static_readback": {
+      "workflow": "C04 Web Static Integrity #132",
+      "repo_local_dependency_integrity": "PASS",
+      "chromium_presentation_readback": "PASS",
+      "viewports": ["1920x1080", "1366x768", "390x844"],
+      "horizontal_overflow": "0px all cases",
+      "page_errors": "0 all cases",
+      "browser_evidence_artifact_id": 10097563188,
+      "browser_evidence_artifact_sha256": "c3f323d75aa3cafd564eaaaf2fa07f10d5f4b41eb9e2d5bf47e8e2c5158dd4fb"
+    },
+    "vercel_preview": {
+      "project": "c04-qingjiang-shishu",
+      "deployment_id": "dpl_D7W3MarStfrX9cAhcr9J8ATbvBq3",
+      "deployment_state": "READY",
+      "git_ref": "agent/c04-web-v1-12-currentize-20260830",
+      "git_sha": "9952724fd3aefdc57809e560d12928f3c9a90294",
+      "git_pr": 465,
+      "target": "PREVIEW_NOT_PRODUCTION",
+      "content_readback_state": "HOLD_PROTECTED_AUTHENTICATION_SURFACE",
+      "content_readback_reason": "Vercel metadata/build binding is exact, but protected preview content requires an authenticated cookie-capable browser surface. Vercel fetch returned SSO redirect and Opera Browser Connector was not connected. This HOLD does not convert deployment READY into browser PASS."
+    },
+    "runtime_unresolved_dependency_count": 0,
+    "runtime_integrity_gate": "PASS_REPO_LOCAL_AND_CHROMIUM",
+    "public_protected_preview_content_gate": "HOLD"
+  },
   "dependency_count": 16,
+  "dependency_inventory_role": "PRESERVED_2026_08_30_DESIGN_SOURCE_AND_REINTRODUCTION_INVENTORY_NOT_CURRENT_RUNTIME_BLOCKER_BY_DEFAULT",
   "dependencies": [
     {
       "consumer_ref": "assets/hero_qingjiang.jpg",
@@ -20,14 +97,16 @@
       "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
       "runtime_sha256": "0a0b7d367aa1af2c45fb1bc9b87445312bd4cbfb4b02aef0e36b9cdc763afb94",
       "runtime_bytes": 262725,
-      "note": "Exact derivative bytes regenerated and hash-read back locally; current GitHub connector has no local-binary file upload parameter. Do not replace with external proxy or different compression."
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED; CURRENT HERO USES SOURCE-DERIVED LOCAL CHUNKS",
+      "note": "Exact derivative bytes regenerated and hash-read back locally; preserve for provenance/reintroduction. Do not replace with external proxy or different compression."
     },
     {
       "consumer_ref": "assets/route03_locked_current.svg",
       "role": "Current route relation",
       "binding_state": "BOUND_IN_PR",
       "source_authority": "ROUTE-03 locked current package",
-      "git_blob_sha": "a69b5cf529fb605169847cfe926b5dc0a508800a"
+      "git_blob_sha": "a69b5cf529fb605169847cfe926b5dc0a508800a",
+      "current_consumption_state": "CURRENT_RUNTIME_CONSUMED"
     },
     {
       "consumer_ref": "assets/r06_qingjiang.jpg",
@@ -39,7 +118,8 @@
       "runtime_sha256": "4019b174755e81c370dcf5bd8968ac995ed3a5d3c15edd0431fe50b1f963ba83",
       "runtime_bytes": 344188,
       "truth_boundary": "KEEP WITH HOLD / FIELD OPEN",
-      "note": "Exact derivative bytes regenerated and hash-read back locally; keep runtime HOLD until exact bytes are committed."
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / DESIGN_REINTRODUCTION_OPEN",
+      "note": "Preserve exact derivative identity. Current public spine references R06 semantically but does not consume this image."
     },
     {
       "consumer_ref": "assets/r13_passage_sequence.png",
@@ -51,7 +131,8 @@
       "runtime_sha256": "45fb5824ad7d88dad34b363288608248885311eae987511bc3e46838c6934ef2",
       "runtime_bytes": 478558,
       "truth_boundary": "REMOTE SPATIAL CONCEPT / NOT SITE PHOTO",
-      "note": "Exact derivative bytes regenerated and hash-read back locally; keep runtime HOLD until exact bytes are committed."
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / DESIGN_REINTRODUCTION_OPEN",
+      "note": "R13 scene specificity is a current Design Crit open item; preserve this exact source-derived identity for a future authorized presentation reintroduction."
     },
     {
       "consumer_ref": "assets/app_mybook.png",
@@ -59,6 +140,7 @@
       "binding_state": "SOURCE_BYTES_HOLD",
       "source_authority": "Current approved App v1.6 MY BOOK source pixels required",
       "canonical_source_filename": "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png",
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / DIGITAL_MAIN_DEPTH_REVIEW_OPEN",
       "forbidden_substitutes": ["v3 MY BOOK capture", "downsampled embed", "old Web capture", "redraw", "AI substitute"]
     },
     {
@@ -71,88 +153,110 @@
       "git_blob_sha": "f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5",
       "source_dimensions": "1600×1000 SVG viewBox",
       "truth_boundary": "PROTOTYPE / EDITABLE VECTOR / NO COMPLETION SCORE",
-      "repair_reason": "The previous standalone crop identity was unresolved. The Current SVG is a stronger repo-native carrier and can be consumed uncropped, so no new crop child identity is needed."
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / MEMORY_MAIN_DEPTH_REVIEW_OPEN",
+      "repair_reason": "The previous standalone crop identity was unresolved. The Current SVG remains a stronger repo-native carrier and can be consumed uncropped if design review reintroduces it."
     },
     {
       "consumer_ref": "assets/fluid_rest_object.png",
       "role": "Physical / Fluid Rest 3D object",
       "binding_state": "CHILD_IDENTITY_HOLD",
       "source_authority": "ODB-03A/B parent source family is Current and verified; S05/S06 parent/child selection remains HOLD pending actual figure-level readback",
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / PHYSICAL_MAIN_DEPTH_REVIEW_OPEN",
       "forbidden_substitutes": ["whole board without child identity", "arbitrary crop", "same-board double crop to manufacture uniqueness", "AI/redraw/model substitute"],
-      "next_action": "read actual candidate child figures first; then explicitly select/register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state before Web runtime binding"
+      "next_action": "If presentation reintroduces this object, read actual candidate child figures first; then explicitly select/register parent_source + figure_bounds + child_hash + semantic_role + consumer_surface + state."
     },
     {
       "consumer_ref": "assets/fluid_v26_body_posture.png",
       "role": "Physical body-posture support",
       "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
-      "next_action": "locate exact v26 source bytes and preserve body/geometry truth boundary"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED",
+      "next_action": "Locate exact v26 source bytes only if the presentation requires this support; preserve body/geometry truth boundary."
     },
     {
       "consumer_ref": "assets/fluid_v26_transverse.svg",
       "role": "Fluid Rest transverse section support",
       "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
-      "next_action": "locate exact editable SVG/current technical carrier; technical dimensions remain VALIDATION-owned"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED",
+      "next_action": "Locate exact editable SVG/current technical carrier only when reintroduced; technical dimensions remain VALIDATION-owned."
     },
     {
       "consumer_ref": "assets/culture_journey.png",
       "role": "Brand + journey visual support",
       "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
-      "next_action": "locate exact Current visual carrier and verify it is not a legacy/superseded board capture"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / BRAND_MAIN_DEPTH_REVIEW_OPEN",
+      "next_action": "Locate exact Current visual carrier if Brand returns to a stronger independent public layer; verify it is not a legacy/superseded board capture."
     },
     {
       "consumer_ref": "assets/technical_focus_v2.svg",
       "role": "Technical relation overview / AI+3D readback support",
       "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
-      "next_action": "resolve exact editable SVG/current technical source before binding"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / TECHNICAL_PROOF_REINTRODUCTION_OPEN",
+      "next_action": "Resolve exact editable SVG/current technical source before any future binding."
     },
     {
       "consumer_ref": "assets/technical_focus_crop.svg",
       "role": "Cross-river technical relation crop",
       "binding_state": "SOURCE_AND_CROP_AUTHORITY_OPEN",
-      "next_action": "resolve parent source plus explicit crop identity; no convenience crop"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED",
+      "next_action": "Resolve parent source plus explicit crop identity before any future binding; no convenience crop."
     },
     {
       "consumer_ref": "assets/r06_general_assembly_v11.svg",
       "role": "R06 general assembly / drawing proof",
       "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
-      "next_action": "locate exact v1.1 editable assembly source; no redraw from screenshots"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / TECHNICAL_PROOF_REINTRODUCTION_OPEN",
+      "next_action": "Locate exact v1.1 editable assembly source before any future binding; no redraw from screenshots."
     },
     {
       "consumer_ref": "assets/r06_detail_atlas_v11.svg",
       "role": "R06 detail atlas / maintenance proof",
       "binding_state": "EXACT_EDITABLE_SOURCE_OPEN",
-      "next_action": "locate exact v1.1 editable detail source; FIELD/engineering remain open"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / TECHNICAL_PROOF_REINTRODUCTION_OPEN",
+      "next_action": "Locate exact v1.1 editable detail source before any future binding; FIELD/engineering remain open."
     },
     {
       "consumer_ref": "assets/r06_technical.png",
       "role": "R06 spatial technical proof",
       "binding_state": "EXACT_RUNTIME_SOURCE_LOCATOR_OPEN",
-      "next_action": "locate exact Current technical image identity; no model/AI/old screenshot substitute"
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED / TECHNICAL_PROOF_REINTRODUCTION_OPEN",
+      "next_action": "Locate exact Current technical image identity before any future binding; no model/AI/old screenshot substitute."
     },
     {
       "consumer_ref": "assets/return_qingjiang.jpg",
       "role": "Final Return landscape carrier",
       "binding_state": "SOURCE_IDENTITY_AND_BYTES_HOLD",
       "source_authority": "J05 Return_Retreat = KEEP / MAIN_CANDIDATE; CH09 Return = LANDSCAPE / SIGNAGE / PAPER / HUMAN / DIGITAL redundancy",
+      "current_consumption_state": "PRESERVED_NOT_CURRENTLY_CONSUMED; CURRENT RUNTIME USES RETURN SERVICE CLOSURE SVG",
       "forbidden_substitutes": ["Hero", "R13", "generic Qingjiang photo", "old Web screenshot", "AI image"]
     }
   ],
   "closure_summary": {
-    "bound_repo_dependencies": 2,
-    "exact_runtime_derivative_ready_but_binary_upload_blocked": 3,
-    "source_bytes_or_identity_hold": 2,
-    "exact_source_child_or_crop_open": 9,
-    "unresolved_dependency_count": 14,
-    "static_gate": "BLOCKED"
+    "current_runtime_bound_file_carriers": 5,
+    "current_runtime_unresolved_dependency_count": 0,
+    "current_runtime_static_gate": "PASS",
+    "current_runtime_chromium_gate": "PASS",
+    "exact_head_vercel_preview_binding": "READY",
+    "protected_preview_content_readback": "HOLD_AUTHENTICATION_SURFACE",
+    "preserved_2026_08_30_dependency_records": 16,
+    "preserved_open_or_hold_records": 14,
+    "preserved_open_or_hold_records_are_current_runtime_blockers": false,
+    "design_reintroduction_or_depth_review_remains_open": true
   },
-  "readback": "Successor index.html readback shows both former memory_journal_crop.png consumer positions now point to the repo Current M01 SVG. Public section count remains 18 and no new public page-count concept was introduced. The other unresolved dependencies remain explicitly unbound/HOLD.",
-  "boundary": [
-    "CURRENTIZED FRONTIER != ASSET INTEGRITY PASS",
-    "REPO CURRENT CARRIER BOUND != DESIGN KEEP",
-    "LOCAL EXACT DERIVATIVE BYTES != GITHUB RUNTIME BOUND",
-    "SOURCE IDENTITY OPEN != PERMISSION TO SUBSTITUTE",
-    "STATIC PASS REQUIRED BEFORE VALIDATION HANDOFF",
-    "FIELD / ENGINEERING / ACCESSIBILITY REMAIN OPEN"
+  "readback": "Exact PR #465 commit 9952724f presents 11 current sections. index.html/app.js consume five repo-native file carriers: two source-derived hero chunks plus body_need_scenarios_current.svg, route03_locked_current.svg, and return_service_closure_current.svg. C04 Web Static Integrity #132 passes repo-local dependency integrity and Chromium readback at 1920x1080, 1366x768, and 390x844 with zero horizontal overflow and zero page errors. The preserved 2026-08-30 dependency inventory is retained for no-loss source/design reintroduction and no longer falsely blocks the current runtime solely because the old 18-section surface consumed more assets.",
+  "design_review_open_items": [
+    "R13 scene specificity is not explicit enough in the current public spine.",
+    "Brand and Memory remain semantically retrievable but their independent MAIN-surface depth requires Professional Design Crit.",
+    "Digital and Physical systems remain represented at system level; stronger product/asset presentation remains a design-depth question, not a current runtime-integrity failure."
   ],
-  "handoff_state": "NOT READY FOR VALIDATION / PRESENTATION RETAINS OWNER"
+  "boundary": [
+    "CURRENTIZED FRONTIER != DESIGN KEEP",
+    "CURRENT RUNTIME PASS != PRESERVED DESIGN LAYERS RESOLVED",
+    "PRESERVED_NOT_CURRENTLY_CONSUMED != DELETE_OR_SUPERSEDE_SOURCE",
+    "REPO CURRENT CARRIER BOUND != FIELD_OR_ENGINEERING_PROOF",
+    "VERCEL DEPLOYMENT READY != PROTECTED PREVIEW CONTENT READBACK",
+    "LOCALHOST CHROMIUM PASS != PUBLIC/PROTECTED DEPLOYMENT BROWSER PASS",
+    "SOURCE IDENTITY OPEN != PERMISSION TO SUBSTITUTE",
+    "FIELD / ENGINEERING / ACCESSIBILITY / RELEASE REMAIN OPEN"
+  ],
+  "handoff_state": "RUNTIME_VALIDATION_PASS / PROFESSIONAL_DESIGN_REVIEW_OPEN / PROTECTED_PREVIEW_CONTENT_READBACK_HOLD"
 }
