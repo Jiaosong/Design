@@ -1,12 +1,11 @@
 """Headless validation for OLEANDER Blender Runtime Stage 3 Direct Modeling.
 
-This validates deterministic direct dimensions, linear duplication and the
-bounded authority-routed face-normal move entrypoint in a real Blender process.
-BLENDER_NATIVE may mutate one selected source-mesh face; CAD_NATIVE may only
-prepare a fail-closed direct-edit intent and must leave its display derivative
-geometry unchanged. This does not establish general CAD/B-Rep push-pull,
-persistent topological naming, engineering, field, manufacturing,
-constructability, or design authority.
+This validates deterministic direct dimensions, linear duplication, bounded
+face-normal move, and bounded Blender-native face-tangent move in a real Blender
+process. CAD_NATIVE normal move may prepare its governed sidecar intent; CAD_NATIVE
+tangent move must fail closed until the shared sidecar absorbs that operation.
+This does not establish general CAD/B-Rep push-pull, persistent topological naming,
+engineering, field, manufacturing, constructability, or design authority.
 """
 
 from __future__ import annotations
@@ -205,8 +204,6 @@ def main():
             "linked array provenance role must be explicit",
         )
 
-    # BLENDER_NATIVE bounded face-normal move: one selected planar face, applied
-    # object scale, no shared mesh datablock, exact metric displacement.
     native_face = add_cube("OLE_STAGE3_DIRECT_FACE_NATIVE", location=(0.0, 2000.0, 0.0))
     native_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_NATIVE"
     select_only(native_face)
@@ -240,9 +237,51 @@ def main():
     native_descriptor = json.loads(native_face["oleander_direct_face_target_descriptor"])
     assert_true("polygon_index" not in native_descriptor, "native semantic descriptor must not persist a polygon index")
 
-    # CAD_NATIVE uses the same interaction entrypoint, but the Blender display
-    # derivative is immutable as CAD authority. Only a deterministic intent is
-    # prepared for later semantic rebind in the specialist sidecar.
+    # BLENDER_NATIVE bounded tangent move. The selected top face is translated
+    # in a geometry-derived U/V basis while keeping the move exactly tangent.
+    tangent_face = add_cube("OLE_STAGE3_DIRECT_FACE_TANGENT", location=(0.0, 3000.0, 0.0))
+    tangent_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_TANGENT"
+    select_only(tangent_face)
+    tangent_dims = bpy.ops.oleander.apply_metric_dimensions(x_mm=100.0, y_mm=100.0, z_mm=100.0)
+    assert_true("FINISHED" in tangent_dims, "tangent face fixture dimensions must apply")
+
+    tangent_dependent = add_cube("OLE_STAGE3_DIRECT_TANGENT_DEPENDENT", location=(500.0, 3000.0, 0.0))
+    tangent_dependent.oleander.ole_id = "OLE_STAGE3_DIRECT_TANGENT_DEPENDENT"
+    tangent_dependent.oleander.dependencies = "OLE_STAGE3_DIRECT_FACE_TANGENT"
+    tangent_dependent.oleander.stale = False
+
+    select_top_face_for_intent(tangent_face)
+    tangent_move = bpy.ops.oleander.direct_face_tangent_move(u_mm=20.0, v_mm=10.0)
+    assert_true("FINISHED" in tangent_move, "BLENDER_NATIVE Face Tangent Move must finish")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    tangent_actual = mm_dimensions(bpy.context, tangent_face)
+    assert_true(
+        close_tuple(tangent_actual, (120.0, 110.0, 100.0)),
+        f"tangent move must shear the top face to a 120x110x100 mm bbox; got {tangent_actual!r}",
+    )
+    assert_true(
+        tangent_dependent.oleander.stale
+        and tangent_dependent.get("oleander_stale_reason") == "DIRECT_FACE_TANGENT_MOVE",
+        "tangent face move must propagate a specific stale reason",
+    )
+    assert_true(
+        tangent_face.get("oleander_last_direct_operation") == "FACE_TANGENT_MOVE"
+        and tangent_face.get("oleander_direct_authority_route") == "BLENDER_NATIVE",
+        "tangent face move must record explicit Blender authority routing",
+    )
+    assert_true(
+        list(tangent_face["oleander_direct_face_tangent_uv_mm"]) == [20.0, 10.0],
+        "tangent move must preserve requested U/V metric values",
+    )
+    tangent_u = tangent_face["oleander_direct_face_tangent_u_local"]
+    tangent_v = tangent_face["oleander_direct_face_tangent_v_local"]
+    assert_true(len(tangent_u) == 3 and len(tangent_v) == 3, "tangent basis must be persisted as two local vectors")
+    assert_true(
+        abs(sum(float(a) * float(b) for a, b in zip(tangent_u, tangent_v))) <= 1e-6,
+        "tangent U/V basis must remain orthogonal",
+    )
+
     cad_face = add_cube("OLE_STAGE3_DIRECT_FACE_CAD", location=(0.0, 4000.0, 0.0))
     cad_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_CAD"
     select_only(cad_face)
@@ -298,6 +337,21 @@ def main():
         "CAD direct-edit intent must carry deterministic SHA identity",
     )
 
+    # CAD tangent move is intentionally not silently routed through the normal-move
+    # sidecar contract. Until the shared contract is expanded, it must fail closed
+    # and leave the display derivative unchanged.
+    cad_tangent_before = mesh_vertex_snapshot(cad_face)
+    select_top_face_for_intent(cad_face)
+    cad_tangent = bpy.ops.oleander.direct_face_tangent_move(u_mm=5.0, v_mm=0.0)
+    assert_true("CANCELLED" in cad_tangent, "CAD_NATIVE tangent move must fail closed until shared sidecar absorption")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    assert_true(mesh_vertex_snapshot(cad_face) == cad_tangent_before, "failed CAD tangent route must not mutate display geometry")
+    assert_true(
+        cad_face.get("oleander_last_direct_operation") == "CAD_DIRECT_EDIT_INTENT",
+        "failed CAD tangent route must not overwrite the previous validated normal-move intent state",
+    )
+
     audit = audit_scene(scene)
     assert_true(not audit["duplicate_ole_ids"], f"governed direct modeling must not create duplicate OLE IDs: {audit['duplicate_ole_ids']}")
     assert_true(
@@ -308,7 +362,7 @@ def main():
     result = {
         "runtime": "OLEANDER Blender Runtime",
         "stage": "STAGE3_DIRECT_MODELING",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "blender": bpy.app.version_string,
         "status": "PASS",
         "source_fingerprint_sha256": source_fingerprint(),
@@ -325,17 +379,22 @@ def main():
             "face_normal_move_operator",
             "blender_native_face_normal_move_metric",
             "face_normal_move_downstream_stale_propagation",
+            "face_tangent_move_operator",
+            "blender_native_face_tangent_move_metric",
+            "face_tangent_move_geometry_based_uv_basis",
+            "face_tangent_move_downstream_stale_propagation",
             "cad_native_direct_edit_intent_routing",
             "cad_native_display_geometry_unchanged",
+            "cad_native_tangent_move_fail_closed",
             "cad_intent_semantic_selector_no_persistent_face_index",
             "cad_intent_fail_closed_resolution_policy",
             "post_direct_audit_no_duplicate_ids",
         ],
         "non_claims": [
-            "cad_direct_edit_execution",
+            "cad_tangent_direct_edit_execution",
             "general_brep_push_pull",
             "persistent_topological_naming",
-            "cad_brep",
+            "cad_brep_generality",
             "solver_backed_constraints",
             "field_truth",
             "engineering_approval",
