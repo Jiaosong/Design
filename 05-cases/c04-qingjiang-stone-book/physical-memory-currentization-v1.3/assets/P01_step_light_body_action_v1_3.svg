@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f4f0e5}.paper{fill:#fbf9f3;stroke:#c8c7bd;stroke-width:1.1}.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.stone{fill:#d7d6cc}.edge{fill:#769b90}.glow{fill:#9cc8bc;opacity:.28}.off{fill:#9cc8bc;opacity:.08}
+.line{stroke:#17332c;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#7d8b84;stroke-width:1.1;fill:none}.move{stroke:#a54539;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-dasharray:9 7}
+.t1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.t2{font:700 22px 'Noto Serif CJK SC','Noto Serif SC',serif}.t3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}
+.txt{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC',sans-serif;letter-spacing:1.15px}
+</style>
+<defs>
+  <g id="walkway">
+    <path d="M40 255L185 70H455L550 255Z" class="stone"/>
+    <path d="M40 255L185 70M550 255L455 70" class="line"/>
+    <path d="M54 245L192 80" stroke="#769b90" stroke-width="9" fill="none" opacity=".55"/>
+    <path d="M536 245L450 80" stroke="#769b90" stroke-width="9" fill="none" opacity=".55"/>
+  </g>
+  <g id="person">
+    <circle cx="0" cy="-58" r="13" class="line"/>
+    <path d="M0 -44l-7 48m7-28l-24 24m24-22l23 22M-7 4l-15 42M-7 4l22 40" class="line"/>
+  </g>
+</defs>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="60" class="xs qing">P01 / 步步生光 · BODY-ACTION CURRENTIZATION v1.3</text>
+<text x="70" y="112" class="t1 ink">不是“人经过就亮”，而是正常步行始终成立，光只短暂确认身体已经经过</text>
+<text x="70" y="150" class="txt muted">继承 v1.2：主踏面连续、边缘低强度响应、白天/OFF 也成立、不承担路径照明。此次只强化 BODY SCALE → ACTION → SPATIAL INTERFACE → FLOW。</text>
+<text x="70" y="184" class="xs seal">CONCEPT / NTS / FIELD OPEN / NO ROUTE GUIDANCE CLAIM / NOT FOR CONSTRUCTION</text>
+<line x1="70" y1="210" x2="1530" y2="210" class="thin"/>
+<text x="70" y="250" class="xs qing">01 / BODY SEQUENCE — SAME WALKWAY, NO TARGET-SEEKING</text>
+<g transform="translate(70 278)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="18" y="32" class="xs seal">A / APPROACH</text>
+  <text x="18" y="62" class="t3 ink">照常走，不寻找灯点</text>
+  <g transform="translate(18 74) scale(.55)"><use href="#walkway"/></g>
+  <g transform="translate(172 204) scale(.64)"><use href="#person"/></g>
+  <path d="M118 225h92" class="move"/>
+  <text x="18" y="302" class="sm muted">路先成立；光还没发生也不影响理解。</text>
+</g>
+<g transform="translate(440 278)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="18" y="32" class="xs seal">B / PASS</text>
+  <text x="18" y="62" class="t3 ink">身体经过边缘感应区</text>
+  <g transform="translate(18 74) scale(.55)"><use href="#walkway"/></g>
+  <ellipse cx="88" cy="202" rx="42" ry="18" class="glow"/>
+  <g transform="translate(182 204) scale(.64)"><use href="#person"/></g>
+  <path d="M126 225h102" class="move"/>
+  <text x="18" y="302" class="sm muted">身体不踩中任何装置；响应在边缘发生。</text>
+</g>
+<g transform="translate(810 278)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="18" y="32" class="xs seal">C / CONFIRM</text>
+  <text x="18" y="62" class="t3 ink">刚经过的短段被确认</text>
+  <g transform="translate(18 74) scale(.55)"><use href="#walkway"/></g>
+  <ellipse cx="90" cy="202" rx="40" ry="17" class="glow"/>
+  <ellipse cx="136" cy="202" rx="34" ry="14" class="off"/>
+  <g transform="translate(218 204) scale(.64)"><use href="#person"/></g>
+  <path d="M154 225h94" class="move"/>
+  <text x="18" y="302" class="sm muted">反馈跟在动作后面，不诱导追逐下一段。</text>
+</g>
+<g transform="translate(1180 278)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="18" y="32" class="xs seal">D / RELEASE</text>
+  <text x="18" y="62" class="t3 ink">响应消退，继续走</text>
+  <g transform="translate(18 74) scale(.55)"><use href="#walkway"/></g>
+  <ellipse cx="90" cy="202" rx="38" ry="15" class="off"/>
+  <g transform="translate(248 204) scale(.64)"><use href="#person"/></g>
+  <path d="M180 225h110" class="move"/>
+  <text x="18" y="302" class="sm muted">没有计数、没有“下一盏”、没有完成反馈。</text>
+</g>
+<text x="70" y="654" class="xs qing">02 / WHAT THE BODY PROVES — NOT WHAT THE LIGHT CLAIMS</text>
+<g transform="translate(70 682)">
+  <rect width="940" height="215" rx="18" class="paper"/>
+  <text x="24" y="40" class="t2 ink">身体证据</text>
+  <text x="24" y="78" class="txt ink">WALK → PASS → CONFIRM → RELEASE</text>
+  <text x="24" y="112" class="sm muted">人始终沿连续踏面正常行走；反馈不要求跨步、驻足、追逐、绕行或寻找目标。</text>
+  <line x1="24" y1="140" x2="910" y2="140" class="thin"/>
+  <text x="24" y="170" class="xs seal">FAIL IF</text>
+  <text x="100" y="170" class="sm ink">第一眼像踩灯游戏 / 路径导向灯 / 发光踏步，或人物行为为了配合灯效而改变。</text>
+  <text x="24" y="198" class="sm muted">隐藏人物后：只能看到光效关系；隐藏光效后：完整通行逻辑仍必须成立。</text>
+</g>
+<g transform="translate(1040 682)">
+  <rect width="490" height="215" rx="18" class="paper"/>
+  <text x="24" y="40" class="t2 ink">现场与工程仍未证明</text>
+  <text x="24" y="78" class="sm muted">铺装齐平 / 防滑 / 排水 / 防水 / 检修 / 电气</text>
+  <text x="24" y="106" class="sm muted">夜间运营 / 生态影响 / 眩光 / 无障碍连续性</text>
+  <text x="24" y="134" class="sm muted">实际触发距离 / 响应时长 / 亮度 / 颜色 / 位置</text>
+  <line x1="24" y1="158" x2="466" y2="158" class="thin"/>
+  <text x="24" y="188" class="xs seal">NO LIGHTING / SAFETY / ENGINEERING AUTHORITY</text>
+</g>
+<text x="70" y="952" class="sm muted">Practice transfer: Human Scale Activity → P01 current native. Human figures now prove use and flow, not just nominal scale. Exact timing/geometry remains prototype-open.</text>
+</svg>
