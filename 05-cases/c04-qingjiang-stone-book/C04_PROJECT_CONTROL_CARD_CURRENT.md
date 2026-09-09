@@ -62,9 +62,9 @@ Current asset classes include:
 - `CURRENT_OWNER_FOR_THIS_OBJECT`: PRESENTATION
 - `NEXT_OWNER_FOR_THIS_OBJECT`: VALIDATION
 - `CURRENT_NATIVE_MASTER_ON_MAIN`: NONE for Web v1.12 exact path.
-- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `61f014d6428d005274dfc836f8c2cce815a5801c` / 118 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
+- `CURRENT_PRODUCER`: PR #465 / OPEN / UNMERGED / head `92bf698543e36d44b18d331883a17f612e3896ea` / 138 commits / fresh readback `mergeable=true / mergeable_state=unstable`.
 - `CHECK_STATE`: AI Governance Evals PASS; repo-local dependency integrity PASS; Chromium presentation readback FAIL; Project Anti-Pollution Gate FAIL.
-- `CHROMIUM_FAILURE`: exact-head run `34015212633` fails Chromium presentation readback while repo-local dependency integrity passes; fresh browser evidence artifact `9983685001` exists. Its exact report/root cause has not yet been consumed, so prior image-carrier diagnoses remain regression context only and are not asserted as the current-head cause.
+- `CURRENT_MACHINE_READBACK`: exact-head run `34292846183` fails both repo-local static verification and Chromium presentation readback. AI Governance Evals run `34292846177` PASS and Project Anti-Pollution Gate run `34292846180` PASS. The current static/browser report root cause still requires exact artifact/log consumption; older-head diagnoses remain regression context only.
 - `OPEN_GAP`: consume the exact fresh-head Chromium report/artifact first; within the same PR frontier repair the smallest actual current browser/pixel defect under the same Source Authority, close Anti-Pollution as applicable, rerun affected 1920/1366/390 readback, inspect finished pixels, then formal handoff. Machine/deployment success is not Design/browser PASS.
 - `NEXT`: continue through the same PR #465 producer frontier. A Web runner WAIT must not block other C04 assets or other projects.
 
@@ -156,8 +156,8 @@ Required native output is decided **before** tool selection. A source archive do
 ## 5｜Known boundaries / holds
 
 - `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`.
-- Web v1.12 is not merged to main; current producer remains PR #465 at exact head `61f014d6428d005274dfc836f8c2cce815a5801c`, currently `mergeable=true / mergeable_state=unstable`.
-- PR #465 current checks still include Chromium FAIL and Project Anti-Pollution FAIL; do not infer Design/browser PASS from the passing governance/dependency checks.
+- Web v1.12 is not merged to main; current producer remains PR #465 at exact head `92bf698543e36d44b18d331883a17f612e3896ea`, currently `mergeable=true / mergeable_state=unstable`.
+- PR #465 current checks include Static Integrity FAIL and Chromium FAIL; Project Anti-Pollution is PASS on the exact head; do not infer Design/browser PASS from the passing governance/dependency checks.
 - 27 protected PAGE identities remain source-recovery open.
 - 云水倚 repaired native machine return exists, but the new returned preview remains **independent-fidelity OPEN** and is not Presentation-ready.
 - The nine audited archive candidates remain non-3D-first for current evidence; this does not block other future native-3D Work Objects.
