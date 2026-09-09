@@ -9,7 +9,7 @@
     cable:{k:"CABLE / RELATION",t:"从空中建立山、水、路的关系。",b:"索道改变观看高度与速度，使两岸、峰谷与路线联系变得可读。解释只揭示关系，不把视线从清江夺走。"},
     walk:{k:"WALK / DETAIL",t:"进入山中，才允许细读。",b:"步行把观察缩小到植物、岩壁、声音、身体与停留。十三印在这里按需出现，并始终允许跳过。"}
   };
-  const modeCards=$(".mode-card");
+  const modeCards=$$(".mode-card");
   const setMode=(btn)=>{
     modeCards.forEach(x=>{
       const active=x===btn;
