@@ -1,6 +1,6 @@
-# OLEANDER Blender Runtime — v0.2 Candidate
+# OLEANDER Blender Runtime — v0.2 Current
 
-Status: `OPEN CANDIDATE / NOT INSTALLED CURRENT`
+Status: `ABSORBED INTO MAIN / BOUNDED CURRENT`
 Parent Skill: `oleander-skills/oleander-3d-pipeline/SKILL.md`
 
 This directory is the executable Blender implementation layer of the single OLEANDER 3D Skill. It is not a second Skill or a second Current authority.
@@ -21,6 +21,12 @@ Validated environment:
 
 Historical Blender 5.1.2 per-stage receipts remain immutable provenance. They are not current-source compatibility authority after the Blender 5.2 procedural compatibility repair.
 
+## Current absorption state
+
+The previously separate Runtime/Workbench candidate was absorbed into `main` on 2026-09-07 through PR #470 as a bounded extension of the existing `oleander-3d-pipeline` Current. The absorption does not enable the default environment and does not promote general professional CAD parity or `P0_B_DIRECT_BREP`.
+
+Current governance authority remains `blender_runtime/CANDIDATE_GOVERNANCE.json`, whose historical candidate lineage is retained as provenance while `main` is the only installed Current for the absorbed scope.
+
 ## Existing-first module map
 
 Before adding implementation, extend or compose an existing owner when it can carry the requirement:
@@ -38,7 +44,7 @@ Do not create a parallel Blender Skill, assembly Skill, CAD Skill, second Workbe
 
 ## Validated Blender-native scope
 
-The Candidate includes validated bounded support for:
+The Current absorbed scope includes validated bounded support for:
 
 - persistent OLE IDs and governed metadata;
 - scene/object authority separation;
@@ -68,7 +74,7 @@ For CAD-native objects:
 
 ## Still not claimed
 
-The Candidate does not by itself establish:
+The absorbed Current scope does not by itself establish:
 
 - general B-Rep/CAD parity;
 - general parametric sketch/feature/assembly solver parity;
@@ -88,7 +94,7 @@ For material runtime changes:
 1. resolve Current Project/Object authority and Required Native Output;
 2. reuse an existing module before creating implementation;
 3. run static contract checks and the smallest affected real-Blender validation;
-4. for candidate-wide compatibility, run the canonical Blender 5.2 LTS regression;
+4. for current-wide compatibility, run the canonical Blender 5.2 LTS regression;
 5. reopen/read back persisted state where applicable;
 6. keep Machine/Compliance evidence separate from Professional Design verdict;
 7. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface when their facts materially changed.
@@ -99,6 +105,6 @@ A material runtime change that is not reflected in its routing/status surfaces i
 
 The original Stage-2 baseline remains part of the regression set: stable OLE ID through rename, duplicate-ID failure/repair, missing master/dependency detection, field/engineering/manufacturing state separation, non-manifold review, dependency-path checks, editable manifest output and audit wording that never claims engineering/constructability/design approval.
 
-## Promotion gate
+## Promotion boundary
 
-Do not treat this Candidate as installed Current merely because real Blender regression passes. Promotion requires the current OLEANDER Candidate governance gate, fresh main synchronization, current PR authority, contradiction scan, required project-usage or explicit bounded absorption decision, and explicit promotion decision.
+`main` is the installed Current for the bounded absorbed Runtime/Workbench scope. Any promotion beyond that scope still requires the current OLEANDER governance gate, fresh main synchronization, contradiction scan, real project-use evidence when applicable, runtime readback, and an explicit promotion decision. Passing real Blender regression alone does not promote blocked parity gates or enable the default environment.
