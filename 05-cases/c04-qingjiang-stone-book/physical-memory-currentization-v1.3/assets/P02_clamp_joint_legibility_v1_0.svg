@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f3f0e7}.paper{fill:#fbfaf5;stroke:#c8c7bd;stroke-width:1.1}.ink{fill:#17332c}.muted{fill:#68766f}.jade{fill:#548b7e}.rust{fill:#a54539}
+.rail{fill:#515b56}.panel{fill:#8fa7a0}.buffer{fill:#67766f}.clamp{fill:none;stroke:#17332c;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.edge{fill:none;stroke:#7d8983;stroke-width:1.3}.joint{fill:none;stroke:#a54539;stroke-width:3.1;stroke-linecap:round}.cut{fill:none;stroke:#17332c;stroke-width:5.2}.note{fill:none;stroke:#7d8983;stroke-width:1.1;stroke-dasharray:6 5}
+.h1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.h2{font:700 23px 'Noto Serif CJK SC','Noto Serif SC',serif}.h3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}
+.body{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC',sans-serif;letter-spacing:1.15px}
+</style>
+<rect width="1600" height="1000" class="bg"/>
+<text x="70" y="60" class="xs jade">P02 / REVERSIBLE LEAN-REST · JOINT LEGIBILITY v1.0</text>
+<text x="70" y="112" class="h1 ink">先让“谁是谁、怎么相遇、哪里可拆”看得懂，再谈更密的节点说明</text>
+<text x="70" y="150" class="body muted">继承 P02 v1.2 的既有栏杆 + 身体接触板 + 缓冲层 + 可逆夹持关系。此次只重构连接可读性，不增加尺寸、材料层级、荷载或施工事实。</text>
+<text x="70" y="184" class="xs rust">RELATIONAL DETAIL / NTS / NO NEW FASTENER CLAIM / FIELD OPEN / NOT FOR CONSTRUCTION</text>
+<line x1="70" y1="210" x2="1530" y2="210" class="edge"/>
+<text x="70" y="250" class="xs jade">01 / SAME COMPONENTS · TWO READINGS</text>
+<g transform="translate(70 280)">
+  <rect width="700" height="410" rx="18" class="paper"/>
+  <text x="24" y="38" class="xs rust">A / OUTLINE-HEAVY</text>
+  <text x="24" y="72" class="h2 ink">每条边都一样“重要”</text>
+  <text x="24" y="100" class="sm muted">结果：板、缓冲、夹持和栏杆互相粘成一个技术轮廓。</text>
+  <g transform="translate(112 132)">
+    <rect x="310" y="0" width="34" height="210" class="rail"/><rect x="310" y="18" width="170" height="28" class="rail"/><rect x="310" y="138" width="170" height="24" class="rail"/>
+    <rect x="112" y="82" width="228" height="58" rx="10" fill="#8fa7a0" stroke="#17332c" stroke-width="4"/><rect x="124" y="140" width="204" height="12" rx="5" fill="#67766f" stroke="#17332c" stroke-width="4"/>
+    <path d="M140 152v48h42v-30h88v30h42v-48" fill="none" stroke="#17332c" stroke-width="4"/><circle cx="161" cy="187" r="10" fill="none" stroke="#17332c" stroke-width="4"/><circle cx="291" cy="187" r="10" fill="none" stroke="#17332c" stroke-width="4"/>
+  </g>
+  <text x="24" y="366" class="sm rust">FAIL：无法一眼回答“主基体是谁 / 接触面在哪里 / 可拆关系在哪里”。</text>
+</g>
+<g transform="translate(830 280)">
+  <rect width="700" height="410" rx="18" class="paper"/>
+  <text x="24" y="38" class="xs jade">B / COMPONENT → JOINT → NOTE</text>
+  <text x="24" y="72" class="h2 ink">先分组件，再标关键相遇关系</text>
+  <text x="24" y="100" class="sm muted">栏杆是既有基体；接触板独立；缓冲退后；夹持被读成可逆连接。</text>
+  <g transform="translate(92 128)">
+    <rect x="330" y="0" width="34" height="214" class="rail"/><rect x="330" y="18" width="174" height="28" class="rail"/><rect x="330" y="140" width="174" height="24" class="rail"/>
+    <rect x="110" y="82" width="244" height="58" rx="10" class="panel"/><path d="M110 82h244M110 140h244" class="edge"/>
+    <rect x="124" y="140" width="216" height="12" rx="5" class="buffer"/>
+    <path d="M140 152v48h42v-30h102v30h42v-48" class="clamp"/>
+    <circle cx="161" cy="187" r="9" fill="none" stroke="#7d8983" stroke-width="1.4"/><circle cx="305" cy="187" r="9" fill="none" stroke="#7d8983" stroke-width="1.4"/>
+    <path d="M338 140h18" class="joint"/><path d="M326 152h28" class="joint"/><path d="M354 82v58" class="cut"/>
+    <path d="M210 60L165 20" class="note"/><text x="22" y="18" class="sm ink">BODY-CONTACT PANEL</text>
+    <path d="M252 148L250 232" class="note"/><text x="178" y="252" class="sm ink">BUFFER / ISOLATION</text>
+    <path d="M322 184L410 232" class="note"/><text x="418" y="236" class="sm ink">REVERSIBLE CLAMP RELATION</text>
+    <path d="M360 94L458 70" class="note"/><text x="464" y="74" class="sm ink">EXISTING RAIL = BASE</text>
+  </g>
+  <text x="24" y="366" class="sm ink">PASS：即使不读长注释，也能先分清 base / panel / buffer / clamp。</text>
+</g>
+<text x="70" y="742" class="xs jade">02 / JOINT ROLE CONTRACT</text>
+<g transform="translate(70 770)">
+  <rect width="1460" height="150" rx="18" class="paper"/>
+  <text x="24" y="34" class="xs rust">PRIMARY</text><text x="104" y="34" class="sm ink">existing rail + body-contact panel identity</text>
+  <text x="430" y="34" class="xs rust">CRITICAL JOINT</text><text x="545" y="34" class="sm ink">panel/buffer/clamp meeting at rail interface</text>
+  <text x="920" y="34" class="xs rust">SECONDARY</text><text x="1014" y="34" class="sm ink">generic edge / hardware proxy / annotation</text>
+  <line x1="24" y1="58" x2="1436" y2="58" class="edge"/>
+  <text x="24" y="88" class="xs jade">DOES NOT PROVE</text><text x="148" y="88" class="sm ink">fastener type · clamp thickness · rail section · structural capacity · corrosion isolation · drainage · fabrication tolerance</text>
+  <text x="24" y="118" class="xs jade">NEXT REAL PROOF</text><text x="148" y="118" class="sm ink">source-grounded rail section + reversible attachment geometry + maintenance access → then CAD/technical drawing validation.</text>
+</g>
+<text x="70" y="968" class="sm muted">Practice transfer: COMPONENT IDENTITY → JOINT / REVEAL / TERMINATION → LINE HIERARCHY → NOTE. Same P02 relation, no invented construction detail.</text>
+</svg>
