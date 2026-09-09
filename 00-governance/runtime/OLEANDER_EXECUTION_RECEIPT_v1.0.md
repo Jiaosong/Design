@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
-Current extension: **2026-08-19 — Existing Visual Authority + Image Consumption**  
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint**  
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -15,7 +15,9 @@ Policy revision 1.1 requires two mandatory runtime sections for all new receipts
 1. **Constraint Lock**
 2. **Flow Completion**
 
-Current visual extension additionally requires **Image Consumption** whenever the execution binds semantic content imagery. This extension does not create a new METHOD/Skill/framework.
+Current visual extension additionally requires **Image Consumption** whenever the execution binds semantic content imagery.
+
+The 2026-09-09 runtime extension additionally uses **Continuation Resume Checkpoint** when the same material task is expected to continue across chat turns, context compression, handoffs or other execution interruptions. This is conditional runtime state inside the existing Receipt; it does not create a new Project State, METHOD, Skill, framework, Agent taxonomy or database.
 
 The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the applicable sections.
 
@@ -56,6 +58,73 @@ Supported normalized rules include:
 A generic “继续 / 优化 / 再做” does not revoke anything. Only a later explicit user instruction that directly changes the named constraint can release it.
 
 If `NO_IMAGE_GENERATION` is active, image-generation tools and generative-image adapters are forbidden. If `NO_NEW_SKILL / METHOD / FRAMEWORK` is active, gap diagnosis cannot silently authorize creation.
+
+## 3A｜Continuation Resume Checkpoint｜when applicable
+
+Use this section when the same `task_id` / logical object is still active and execution is expected to continue across turns, handoffs or interruption while Receipt status remains `WORKING` or `HOLD`.
+
+Record:
+
+- `checkpoint_state = RESUMABLE / REVALIDATE / BLOCKED / CLOSED`
+- `current_node`
+- `last_verified_artifact`
+- `resume_from`
+- `next_allowed_action`
+- `authority_fingerprint`
+- `stale_reasons`
+
+`last_verified_artifact` records at minimum:
+
+`artifact_id / hash_or_commit / readback_verdict`.
+
+The `authority_fingerprint` is a deterministic digest or stable composite over the applicable Current state:
+
+`CURRENT_ROOT_VERSION / PROJECT_OR_SCOPE_AUTHORITY / SOURCE_AUTHORITY / DESIGN_AUTHORITY / CURRENT_TASK_ID / CURRENT_NATIVE_MASTER_OR_REF / ACTIVE_CONSTRAINT_LOCK`.
+
+### Direct resume
+
+A generic same-task follow-up such as “继续 / 推进 / 优化 / 修一下” resumes `next_allowed_action` instead of re-planning from zero only when all are true:
+
+- same task and same logical object;
+- authority fingerprint still matches Current;
+- the recorded last artifact has actual readback evidence;
+- no dependency/handoff is stale or marked for re-test;
+- checkpoint state is `RESUMABLE`.
+
+Already verified completed nodes are not replayed merely because the conversation changed or context was compressed.
+
+### Revalidation
+
+Set `checkpoint_state=REVALIDATE` and re-read Current Authority before mutation when any of the following is true:
+
+- project or task switched;
+- authority fingerprint changed;
+- Source Authority or Design Authority changed;
+- Current native master / canonical write frontier changed externally;
+- a consumed dependency became stale or requires re-test;
+- the checkpoint is missing, corrupt, or its last artifact was never actually read back.
+
+A chat switch, model context compression or reopening the same conversation is **not by itself** an authority change.
+
+### BLOCKED behavior
+
+A `BLOCKED` checkpoint does not authorize blind retry. Re-check only the declared release condition when it is actually checkable. Without new evidence or released capability, do not repeat the same failed mutation, spin another retry loop, or create a side page merely to re-register the same blocker.
+
+### CLOSED behavior
+
+A generic “继续” does not silently reopen a `CLOSED` execution unit. Reopening requires a new explicit scope, an explicit reopen decision, or a new material task bound to the existing project/object identity.
+
+### Persistence boundary
+
+Checkpointing reuses the existing Receipt / Control Card state. It must not create a new Receipt or Project State solely because another chat turn occurred.
+
+Write/update a continuation checkpoint only through an existing persistence trigger after one of:
+
+- actual readback following material execution;
+- a genuine HOLD reached after the legal repair path was attempted;
+- a typed handoff becoming ready/accepted.
+
+`NO MATERIAL DELTA = NO NEW RECEIPT JUST FOR CHECKPOINTING`.
 
 ## 4｜Required native output
 
@@ -167,6 +236,8 @@ Record actual target/runtime, observed result, blockers, warnings and verdict.
 
 `Artifact existence ≠ actual readback`.
 
+For a continuing task, a successful readback is the preferred checkpoint boundary. Record the verified artifact identity before advancing `next_allowed_action`.
+
 ## 11｜Four-layer regression
 
 Record each applicable layer independently:
@@ -204,6 +275,8 @@ Record:
 
 Closure is allowed only after the Flow Completion Gate passes.
 
+A `CLOSED` checkpoint is a runtime consequence of valid closure; it does not itself prove closure.
+
 ## 15｜Does not prove
 
-A complete receipt does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.
+A complete receipt or a valid continuation checkpoint does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.

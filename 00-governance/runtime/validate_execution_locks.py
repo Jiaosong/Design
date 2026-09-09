@@ -47,8 +47,8 @@ def require_present(obj: dict, fields: list[str], context: str) -> None:
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.2":
-        fail("Current resolver must be v1.2 implementation revision 1.2.2")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.3":
+        fail("Current resolver must be v1.2 implementation revision 1.2.3")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -75,6 +75,33 @@ def validate_resolver() -> dict:
         fail("NO_IMAGE_GENERATION must hard-block image generation tools")
     if "BLOCK_NEW_SKILL_CREATION" not in hard_effects.get("NO_NEW_SKILL", ""):
         fail("NO_NEW_SKILL must hard-block new Skill creation")
+
+    continuation = data.get("continuation_checkpoint_policy", {})
+    if continuation.get("generic_followup_same_task_default") != "RESUME_FROM_LAST_VERIFIED_CHECKPOINT":
+        fail("same-task generic follow-up must resume from the last verified checkpoint")
+    checkpoint_fields = {
+        "checkpoint_state",
+        "current_node",
+        "last_verified_artifact",
+        "resume_from",
+        "next_allowed_action",
+        "authority_fingerprint",
+        "stale_reasons",
+    }
+    if not checkpoint_fields.issubset(set(continuation.get("required_checkpoint_fields", []))):
+        fail("continuation checkpoint fields incomplete")
+    expected_states = {"RESUMABLE", "REVALIDATE", "BLOCKED", "CLOSED"}
+    if not expected_states.issubset(set(continuation.get("checkpoint_states", []))):
+        fail("continuation checkpoint states incomplete")
+    revalidate_when = set(continuation.get("revalidate_when", []))
+    if "AUTHORITY_FINGERPRINT_MISMATCH" not in revalidate_when or "PROJECT_OR_TASK_SWITCH" not in revalidate_when:
+        fail("continuation checkpoint must revalidate on authority mismatch or task switch")
+    if continuation.get("context_switch_or_compression_is_not_authority_change") is not True:
+        fail("chat/context switch alone must not invalidate a verified checkpoint")
+    if continuation.get("blind_repeat_completed_mutation_forbidden") is not True:
+        fail("blind replay of completed mutation must be forbidden")
+    if "SKIP_ALREADY_VERIFIED_COMPLETED_NODES" not in continuation.get("resume_behavior", ""):
+        fail("resume behavior must skip already verified completed nodes")
 
     flow = data.get("flow_completion_gate", {})
     if flow.get("does_not_mean_all_skills") is not True or flow.get("minimum_owner_set_still_applies") is not True:
@@ -104,6 +131,8 @@ def validate_resolver() -> dict:
     order = data.get("default_resolution_order", [])
     required_order = [
         "READ_APPLICABLE_PROJECT_STATE_SOURCE_AUTHORITY_CURRENT_TASK",
+        "RESOLVE_CONTINUATION_CHECKPOINT_IF_FOLLOWUP_INTENT",
+        "REVALIDATE_AUTHORITY_IF_CHECKPOINT_REQUIRES",
         "RESOLVE_STICKY_EXECUTION_CONSTRAINTS",
         "ENFORCE_TOOL_OUTPUT_CREATION_AND_PROCESS_LOCKS",
         "VERIFY_REQUIRED_EXISTING_METHOD_AND_SKILL_FILES_WERE_ACTUALLY_READ",
@@ -115,6 +144,7 @@ def validate_resolver() -> dict:
         "RESOLVE_EXECUTION_OWNER_MAP",
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "ACTUAL_READBACK",
+        "UPDATE_EXISTING_CONTINUATION_CHECKPOINT_AS_APPLICABLE",
         "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE_OR_COMPLETE_CLAIM",
         "EMIT_EXECUTION_RECEIPT",
     ]
@@ -124,14 +154,14 @@ def validate_resolver() -> dict:
             fail(f"resolver order missing {token}")
         positions.append(order.index(token))
     if positions != sorted(positions):
-        fail("constraint / image-consumption / full-flow resolver order is invalid")
+        fail("constraint / continuation / image-consumption / full-flow resolver order is invalid")
     return data
 
 
 def validate_receipt_contract() -> dict:
     data = load_json(RECEIPT_CONTRACT)
     if data.get("version") != "1.0" or data.get("policy_revision") != "1.1":
-        fail("Execution Receipt must be v1.0 policy revision 1.1")
+        fail("Execution Receipt must remain v1.0 policy revision 1.1")
     additional = set(data.get("policy_1_1_additional_required_core_fields", []))
     if additional != {"constraint_lock", "flow_completion"}:
         fail("policy 1.1 must add exactly constraint_lock and flow_completion")
@@ -145,6 +175,7 @@ def validate_receipt_contract() -> dict:
         fail("legacy Receipt allowlist must be explicit and exact")
     if data.get("closed_state_rule") != "IF_STATUS_IS_CLOSED_COMPLETION_GATE_MUST_BE_PASS_AND_INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY":
         fail("Receipt CLOSED state rule missing")
+
     image_ext = data.get("image_consumption_extension", {})
     if image_ext.get("required_when") != "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE":
         fail("Receipt image-consumption extension missing or invalid")
@@ -159,13 +190,36 @@ def validate_receipt_contract() -> dict:
     }
     if not required_image_fields.issubset(set(image_ext.get("fields", []))):
         fail("Receipt image-consumption fields incomplete")
+
+    checkpoint_ext = data.get("continuation_checkpoint_extension", {})
+    if checkpoint_ext.get("required_when") != "SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS_AND_STATUS_IS_WORKING_OR_HOLD":
+        fail("Receipt continuation checkpoint extension missing or invalid")
+    required_checkpoint_fields = {
+        "checkpoint_state",
+        "current_node",
+        "last_verified_artifact",
+        "resume_from",
+        "next_allowed_action",
+        "authority_fingerprint",
+        "stale_reasons",
+    }
+    if not required_checkpoint_fields.issubset(set(checkpoint_ext.get("fields", []))):
+        fail("Receipt continuation checkpoint fields incomplete")
+    if checkpoint_ext.get("generic_continue_action") != "RESUME_NEXT_ALLOWED_ACTION_NOT_REPLAN_FROM_ZERO":
+        fail("Receipt continuation rule must resume the next allowed action")
+    if checkpoint_ext.get("context_switch_or_compression_is_not_authority_change") is not True:
+        fail("Receipt checkpoint must survive context switch/compression when authority is unchanged")
+    if checkpoint_ext.get("checkpoint_is_runtime_state_not_project_state") is not True:
+        fail("Receipt checkpoint must not become a second Project State")
+    if checkpoint_ext.get("no_material_delta_no_new_receipt") is not True:
+        fail("no-delta chat turn must not create a new receipt only for checkpointing")
     return data
 
 
 def validate_cases() -> None:
     rows = load_jsonl(CASES)
-    if len(rows) < 6:
-        fail("sticky/full-flow regression corpus must have at least six cases")
+    if len(rows) < 10:
+        fail("sticky/full-flow/continuation regression corpus must have at least ten cases")
     ids = {r.get("case_id") for r in rows}
     required = {
         "LOCK-001-NO-IMAGE-STICKY",
@@ -174,6 +228,10 @@ def validate_cases() -> None:
         "FLOW-001-FULL-FLOW-NO-EARLY-CLOSE",
         "FLOW-002-FULL-FLOW-MINIMUM-OWNERS",
         "FLOW-003-EXISTING-SKILL-READBACK",
+        "RESUME-001-CONTINUE-LAST-VERIFIED-CHECKPOINT",
+        "RESUME-002-AUTHORITY-STALE-REVALIDATE",
+        "RESUME-003-BLOCKED-NO-BLIND-RETRY",
+        "RESUME-004-CONTEXT-SWITCH-NOT-AUTHORITY-RESET",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
@@ -186,6 +244,14 @@ def validate_cases() -> None:
         fail("PR/CI early close case must HOLD")
     if "AUTOMATICALLY_RUN_MOTION" not in by_id["FLOW-002-FULL-FLOW-MINIMUM-OWNERS"].get("forbidden_actions", []):
         fail("full-flow minimum-owner case must forbid unnecessary Motion")
+    if by_id["RESUME-001-CONTINUE-LAST-VERIFIED-CHECKPOINT"].get("expected_action") != "EXECUTE_NEXT_ALLOWED_ACTION":
+        fail("same-task continue case must execute the next allowed action")
+    if "EXECUTE_FROM_STALE_CHECKPOINT" not in by_id["RESUME-002-AUTHORITY-STALE-REVALIDATE"].get("forbidden_actions", []):
+        fail("stale-authority case must block execution from stale checkpoint")
+    if "REPEAT_FAILED_MUTATION_WITHOUT_NEW_EVIDENCE" not in by_id["RESUME-003-BLOCKED-NO-BLIND-RETRY"].get("forbidden_actions", []):
+        fail("blocked checkpoint case must forbid blind retry")
+    if by_id["RESUME-004-CONTEXT-SWITCH-NOT-AUTHORITY-RESET"].get("expected_checkpoint_state") != "RESUMABLE":
+        fail("context-switch case must preserve resumable checkpoint when authority is unchanged")
 
 
 def validate_new_receipts(contract: dict) -> int:
@@ -232,6 +298,7 @@ def main() -> None:
     count = validate_new_receipts(contract)
     print("execution-lock validation: PASS")
     print("sticky negative constraints: ENFORCED")
+    print("continuation checkpoint / authority revalidation: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
     print(f"policy-1.1 receipts: {count}")

@@ -4,8 +4,12 @@
   "policy_revision": "1.1",
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
-  "current_extension_date": "2026-08-19",
-  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, existing visual authority/image consumption when applicable, owner selection, DAG, artifacts, adapters, execution, regression, readback, review, flow completion and drift.",
+  "current_extension_date": "2026-09-09",
+  "current_extensions": [
+    {"date": "2026-08-19", "name": "Existing Visual Authority + Image Consumption"},
+    {"date": "2026-09-09", "name": "Continuation Resume Checkpoint"}
+  ],
+  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, continuation checkpoint state when applicable, existing visual authority/image consumption when applicable, owner selection, DAG, artifacts, adapters, execution, regression, readback, review, flow completion and drift.",
   "required_core_fields": [
     "receipt_id",
     "status",
@@ -28,7 +32,7 @@
     "EXR-20260818-PR248-CONTRACT-LAYER",
     "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"
   ],
-  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES_MUST_ADDITIONALLY_INCLUDE_IMAGE_CONSUMPTION",
+  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES_MUST ADDITIONALLY INCLUDE IMAGE_CONSUMPTION; SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS MUST ADD CONTINUATION_CHECKPOINT WHEN APPLICABLE",
   "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
   "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
   "authority_required_fields": [
@@ -77,6 +81,53 @@
     "tool_deny_is_checked_before_tool_selection",
     "creation_deny_is_checked_before_gap_driven_creation"
   ],
+  "continuation_checkpoint_extension": {
+    "required_when": "SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS_AND_STATUS_IS_WORKING_OR_HOLD",
+    "prospective_only": true,
+    "historical_receipts_immutable": true,
+    "fields": [
+      "checkpoint_state",
+      "current_node",
+      "last_verified_artifact",
+      "resume_from",
+      "next_allowed_action",
+      "authority_fingerprint",
+      "stale_reasons"
+    ],
+    "checkpoint_states": ["RESUMABLE", "REVALIDATE", "BLOCKED", "CLOSED"],
+    "last_verified_artifact_fields": ["artifact_id", "hash_or_commit", "readback_verdict"],
+    "authority_fingerprint_inputs": [
+      "CURRENT_ROOT_VERSION",
+      "PROJECT_OR_SCOPE_AUTHORITY",
+      "SOURCE_AUTHORITY",
+      "DESIGN_AUTHORITY",
+      "CURRENT_TASK_ID",
+      "CURRENT_NATIVE_MASTER_OR_REF",
+      "ACTIVE_CONSTRAINT_LOCK"
+    ],
+    "direct_resume_requires": [
+      "SAME_TASK_AND_OBJECT",
+      "AUTHORITY_FINGERPRINT_MATCH",
+      "LAST_VERIFIED_ARTIFACT_HAS_ACTUAL_READBACK",
+      "NO_STALE_DEPENDENCY_OR_HANDOFF",
+      "CHECKPOINT_STATE_RESUMABLE"
+    ],
+    "revalidate_on": [
+      "PROJECT_OR_TASK_SWITCH",
+      "AUTHORITY_FINGERPRINT_MISMATCH",
+      "SOURCE_OR_DESIGN_AUTHORITY_CHANGED",
+      "CURRENT_NATIVE_MASTER_OR_WRITE_FRONTIER_CHANGED_EXTERNALLY",
+      "DEPENDENCY_STALE_OR_RETEST_REQUIRED",
+      "CHECKPOINT_MISSING_OR_LAST_ARTIFACT_NOT_READBACK_VERIFIED"
+    ],
+    "generic_continue_action": "RESUME_NEXT_ALLOWED_ACTION_NOT_REPLAN_FROM_ZERO",
+    "blocked_action": "RECHECK_RELEASE_CONDITION_NO_BLIND_RETRY",
+    "closed_action": "DO_NOT_REOPEN_WITH_GENERIC_CONTINUE",
+    "context_switch_or_compression_is_not_authority_change": true,
+    "checkpoint_is_runtime_state_not_project_state": true,
+    "checkpoint_write_requires_existing_persistence_trigger": true,
+    "no_material_delta_no_new_receipt": true
+  },
   "required_native_output_fields": [
     "artifact_class",
     "native_format",
@@ -223,6 +274,11 @@
     "not_applicable_requires_reason_for_full_flow_optional_phases",
     "sticky_user_constraints_precede_tool_and_creation_routing",
     "generic_continue_does_not_revoke_constraint_lock",
+    "same_task_generic_continue_resumes_from_last_verified_checkpoint",
+    "authority_fingerprint_mismatch_forces_revalidation_before_mutation",
+    "context_switch_or_compression_alone_does_not_reset_verified_checkpoint",
+    "blind_repeat_of_completed_or_blocked_mutation_is_forbidden",
+    "checkpoint_is_runtime_state_not_project_state",
     "full_flow_means_all_applicable_phases_not_all_skills",
     "visual_content_image_binding_requires_image_consumption_lookup_and_record",
     "duplicate_semantic_content_image_across_independent_consumers_is_blocked",
