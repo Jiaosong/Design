@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "00-governance" / "runtime"
 RESOLVER = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+TOOL_CONTRACT = RUNTIME / "OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json"
 RECEIPT_DIR = RUNTIME / "receipts"
 CASES = ROOT / "evals" / "runtime" / "sticky_constraints_and_flow.jsonl"
 
@@ -211,6 +212,81 @@ def validate_resolver() -> dict:
     return data
 
 
+def validate_tool_adapter_routing() -> dict:
+    data = load_json(TOOL_CONTRACT)
+    if data.get("contract_id") != "OLEANDER_TOOL_ADAPTER_CONTRACT" or data.get("version") != "0.1":
+        fail("Tool Adapter Contract identity/version drift")
+    if data.get("status") != "ACTIVE_CURRENT":
+        fail("Tool Adapter Contract must remain ACTIVE_CURRENT")
+    roles = set(data.get("capability_route_roles", []))
+    required_roles = {
+        "AUTHORITY_READ_WRITE",
+        "REPO_SOURCE_MUTATION",
+        "ASSET_ARCHIVE_DELIVERY",
+        "NATIVE_PRODUCTION",
+        "RUNTIME_READBACK",
+        "DEPLOYMENT",
+        "HUMAN_COORDINATION",
+        "SCHEDULED_WAKEUP",
+        "HEAVY_EXECUTION",
+    }
+    if not required_roles.issubset(roles):
+        fail("Tool Adapter capability route roles incomplete")
+    route_fields = {
+        "required_capability_roles",
+        "candidate_surfaces",
+        "selected_surface",
+        "selection_reasons",
+        "availability_state",
+        "authority_ceiling",
+        "side_effect_class",
+        "readback_surface",
+        "fallback_surface",
+    }
+    if not route_fields.issubset(set(data.get("route_decision_fields", []))):
+        fail("Tool Adapter route decision fields incomplete")
+    routing = data.get("unified_adapter_routing_policy", {})
+    expected_precedence = [
+        "CURRENT_AUTHORITY_AND_OWNER_BOUNDARY",
+        "REQUIRED_NATIVE_OUTPUT_AND_MUTATION_CAPABILITY",
+        "ACTIVE_CONSTRAINTS_AND_PERMISSION",
+        "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
+        "ACTUAL_READBACK_COVERAGE",
+        "CURRENT_VERIFIED_AVAILABILITY_AND_RELIABILITY",
+        "LOWER_EXECUTION_OVERHEAD",
+        "DECLARED_FALLBACK",
+    ]
+    if routing.get("selection_precedence") != expected_precedence:
+        fail("unified adapter routing precedence drifted")
+    required_true = [
+        "vendor_name_must_not_determine_route",
+        "route_by_capability_role",
+        "do_not_probe_every_connected_surface",
+        "probe_selected_or_needed_fallback_only",
+        "availability_is_runtime_fact_not_authority",
+        "mutation_surface_must_not_exceed_authority_ceiling",
+        "no_parallel_plugin_state_store",
+        "no_new_surface_registry_entry_for_one_off_connector_use",
+    ]
+    for key in required_true:
+        if routing.get(key) is not True:
+            fail(f"unified adapter routing policy requires {key}=true")
+    connected = data.get("connected_execution_surface_policy", {})
+    if connected.get("surface_is_capability_adapter_not_ontology") is not True:
+        fail("connected surface must remain capability adapter, not ontology")
+    if connected.get("ephemeral_connector_use_does_not_auto_register_new_surface") is not True:
+        fail("one-off connected surface use must not auto-register a new surface")
+    liveness = data.get("surface_liveness_policy", {})
+    if liveness.get("do_not_probe_for_inventory_curiosity") is not True:
+        fail("surface liveness probes must be need-driven")
+    heavy = data.get("heavy_executor_policy", {})
+    if heavy.get("default") != "ESCALATION_ONLY" or heavy.get("control_plane_role") is not False:
+        fail("heavy executor must remain escalation-only and not control plane")
+    if "VERIFIED" not in set(heavy.get("self_promotion_forbidden_to", [])):
+        fail("heavy executor must not self-promote output to VERIFIED")
+    return data
+
+
 def validate_receipt_contract() -> dict:
     data = load_json(RECEIPT_CONTRACT)
     if data.get("version") != "1.0" or data.get("policy_revision") != "1.1":
@@ -322,8 +398,8 @@ def validate_receipt_contract() -> dict:
 
 def validate_cases() -> None:
     rows = load_jsonl(CASES)
-    if len(rows) < 14:
-        fail("sticky/full-flow/continuation/auto-advance regression corpus must have at least fourteen cases")
+    if len(rows) < 16:
+        fail("sticky/full-flow/continuation/auto-advance/routing regression corpus must have at least sixteen cases")
     ids = {r.get("case_id") for r in rows}
     required = {
         "LOCK-001-NO-IMAGE-STICKY",
@@ -340,6 +416,8 @@ def validate_cases() -> None:
         "RESUME-006-MULTIPLE-DISTINCT-FRONTIERS-HOLD",
         "LOOP-001-AUTO-ADVANCE-READY-NODES",
         "LOOP-002-STOP-ON-SIDE-EFFECT-ESCALATION",
+        "ROUTE-001-CAPABILITY-ROLE-NOT-VENDOR",
+        "ROUTE-002-HEAVY-EXECUTOR-ESCALATION-ONLY",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
@@ -371,6 +449,12 @@ def validate_cases() -> None:
         fail("auto-advance case must forbid artificial one-node stop")
     if by_id["LOOP-002-STOP-ON-SIDE-EFFECT-ESCALATION"].get("expected_stop_reason") != "SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED":
         fail("auto-advance must stop on unauthorized side-effect escalation")
+    route1 = by_id["ROUTE-001-CAPABILITY-ROLE-NOT-VENDOR"]
+    if "SELECT_BY_VENDOR_BRAND" not in route1.get("forbidden_actions", []):
+        fail("routing case must forbid vendor-brand selection")
+    route2 = by_id["ROUTE-002-HEAVY-EXECUTOR-ESCALATION-ONLY"]
+    if route2.get("expected_selected_surface") != "github_connector":
+        fail("heavy executor case must prefer sufficient lighter connector")
 
 
 def validate_new_receipts(contract: dict) -> int:
@@ -424,6 +508,7 @@ def validate_new_receipts(contract: dict) -> int:
 
 def main() -> None:
     validate_resolver()
+    validate_tool_adapter_routing()
     contract = validate_receipt_contract()
     validate_cases()
     count = validate_new_receipts(contract)
@@ -431,6 +516,7 @@ def main() -> None:
     print("sticky negative constraints: ENFORCED")
     print("cross-context frontier discovery / continuation checkpoint: ENFORCED")
     print("continuous ready-node auto-advance with bounded stop conditions: ENFORCED")
+    print("unified capability-role adapter routing: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
     print(f"policy-1.1 receipts: {count}")
