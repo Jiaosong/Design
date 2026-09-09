@@ -12,6 +12,12 @@
       "prompt": "为 Oleander 写一个 90 秒品牌宣传片的故事结构和分镜，并指出每个镜头需要哪些现有素材。",
       "expected_output": "An evidence-aligned 90-second scene map with narration, motion, sound, duration, and asset dependencies.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "在普通 Chat 对话模式里，用现有项目素材做两张最终可编辑展板；中间非事实落地的主视觉、效果图和场景图允许多次生图探索。先处理抠图、背景分离、裁切和素材提取，不要把弱素材直接塞进版式；第一版如果工程味重、审美或层级不过 OLEANDER Visual/Project QA，要自己继续修，不要停下来等我说继续，也不要用一张整板 AI 位图冒充最终可编辑文件。",
+      "expected_output": "A Chat-first execution result that performs an asset-role/usability pass before layout lock, preserves a real editable master, may iterate non-factual generative visual candidates with explicit synthetic/does-not-prove status, runs target-scale Visual QA + Project QA, and turns any REVISE verdict into repair/reopen/retest in the same active turn until the existing Flow Completion Gate is eligible or a real HOLD/blocker is reached.",
+      "files": []
     }
   ]
 }
