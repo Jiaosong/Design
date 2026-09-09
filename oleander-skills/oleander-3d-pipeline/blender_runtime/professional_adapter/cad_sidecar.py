@@ -4,9 +4,10 @@ This module is a shared, project-neutral professional backend adapter under the
 installed OLEANDER Blender Runtime Current. It does not implement a B-Rep kernel
 and does not make Blender mesh geometry authoritative CAD geometry. It serializes
 solved sketch intent into deterministic CAD build requests, validates bounded
-Direct Face interaction intents into deterministic direct-edit requests, binds
-external sidecar responses to Blender display derivatives, and marks display
-representations stale when upstream CAD intent changes.
+Direct Face interaction intents into deterministic direct-edit requests, validates
+typed specialist responses, binds external sidecar responses to Blender display
+derivatives, and marks display representations stale when upstream CAD intent
+changes.
 
 Project profiles may configure routing inputs, but they must not replace this
 adapter's authority contract or bypass response/readback validation.
@@ -16,7 +17,7 @@ Authority boundary:
 - direct-edit request source: OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1
 - CAD master: external FREECAD_OCCT_BREP
 - Blender object: DISPLAY_DERIVATIVE_ONLY
-- this adapter validates/serializes requests; it does not itself execute B-Rep mutation
+- this adapter validates/serializes requests and validates/binds responses; it does not itself execute B-Rep mutation
 """
 
 from __future__ import annotations
@@ -35,6 +36,8 @@ RESPONSE_SCHEMA = "OLEANDER_CAD_BUILD_RESPONSE_v0.1"
 DISPLAY_SCHEMA = "OLEANDER_CAD_DISPLAY_DERIVATIVE_v0.1"
 DIRECT_EDIT_INTENT_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1"
 DIRECT_EDIT_REQUEST_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1"
+DIRECT_EDIT_RESPONSE_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_RESPONSE_v0.1"
+DIRECT_EDIT_DISPLAY_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_DISPLAY_DERIVATIVE_v0.1"
 
 DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE = "FACE_NORMAL_MOVE"
 DIRECT_EDIT_REQUIRED_KERNEL = "FREECAD_OCCT_BREP"
@@ -93,6 +96,7 @@ _DIRECT_FACE_DESCRIPTOR_KEYS = {
     "bbox_local_mm",
 }
 _DIRECT_FACE_BBOX_KEYS = {"min", "max"}
+_DIRECT_RESPONSE_ARTIFACT_KEYS = {"path", "sha256"}
 
 
 class CADSidecarContractError(ValueError):
@@ -462,6 +466,227 @@ def write_direct_edit_request(path: str | Path, request: dict) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(_canonical_bytes(request))
     return file_sha256(path)
+
+
+def _validate_direct_artifact(record, label: str, *, released: bool) -> dict:
+    record = _require_exact_keys(record, _DIRECT_RESPONSE_ARTIFACT_KEYS, label)
+    path = str(record.get("path") or "")
+    sha256 = _require_sha256_hex(record.get("sha256"), f"{label}.sha256")
+    if released:
+        if not path:
+            raise CADSidecarContractError(f"{label} must expose a released artifact path")
+        if sha256 == "0" * 64:
+            raise CADSidecarContractError(f"{label} released artifact SHA cannot be zero")
+    else:
+        if path or sha256 != "0" * 64:
+            raise CADSidecarContractError(f"{label} must remain unreleased on HOLD")
+    return {"path": path, "sha256": sha256}
+
+
+def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -> dict:
+    """Validate a typed specialist direct-edit response before Blender readback.
+
+    The v0.1 response is intentionally bounded to the first integrated execution
+    slice. PASS means one uniquely resolved FACE_NORMAL_MOVE was actually executed
+    by the authoritative FreeCAD/OCCT sidecar. HOLD means no result master or
+    display derivative was released. HOLD is rejected unless ``allow_hold`` is
+    explicitly requested by a caller that is inspecting the failure envelope.
+    """
+    if not isinstance(response, dict) or response.get("schema") != DIRECT_EDIT_RESPONSE_SCHEMA:
+        raise CADSidecarContractError("unexpected CAD direct-edit response schema")
+
+    request_id = str(response.get("request_id") or "").strip()
+    ole_id = str(response.get("ole_id") or "").strip()
+    if not request_id or not ole_id:
+        raise CADSidecarContractError("CAD direct-edit response identity fields must be non-empty")
+    try:
+        revision = int(response.get("revision"))
+    except (TypeError, ValueError) as exc:
+        raise CADSidecarContractError("CAD direct-edit response revision must be an integer") from exc
+    if revision < 1:
+        raise CADSidecarContractError("CAD direct-edit response revision must be >= 1")
+    request_sha256 = _require_sha256_hex(response.get("request_sha256"), "direct response request_sha256")
+
+    kernel = response.get("kernel") or {}
+    if kernel.get("name") != "FreeCAD" or not str(kernel.get("version") or "").strip():
+        raise CADSidecarContractError("CAD direct-edit response lost FreeCAD runtime identity")
+    if not str(kernel.get("occ_version") or "").strip():
+        raise CADSidecarContractError("CAD direct-edit response lost OCCT runtime identity")
+
+    operation = response.get("operation") or {}
+    if operation.get("kind") != DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        raise CADSidecarContractError("CAD direct-edit response operation mismatch")
+    distance_mm = _finite_float(operation.get("distance_mm"), "direct response operation.distance_mm")
+    if abs(distance_mm) <= 1e-9:
+        raise CADSidecarContractError("CAD direct-edit response distance must be non-zero")
+
+    authority = response.get("authoritative") or {}
+    if authority.get("master_type") != "CAD_NATIVE":
+        raise CADSidecarContractError("CAD direct-edit response lost CAD_NATIVE master type")
+    if authority.get("geometry_authority") != DIRECT_EDIT_REQUIRED_KERNEL:
+        raise CADSidecarContractError("CAD direct-edit response lost FreeCAD/OCCT geometry authority")
+
+    resolution = response.get("resolution") or {}
+    try:
+        candidate_count = int(resolution.get("candidate_count"))
+    except (TypeError, ValueError) as exc:
+        raise CADSidecarContractError("CAD direct-edit response candidate_count must be an integer") from exc
+    if candidate_count < 0:
+        raise CADSidecarContractError("CAD direct-edit response candidate_count cannot be negative")
+
+    measurements = response.get("measurements") or {}
+    if measurements.get("units") != "mm":
+        raise CADSidecarContractError("CAD direct-edit response measurements must use mm")
+    source_bbox = _vector(measurements.get("source_bbox_mm"), 3, "direct response source_bbox_mm")
+    result_bbox = _vector(measurements.get("result_bbox_mm"), 3, "direct response result_bbox_mm")
+    source_volume = _finite_float(measurements.get("source_volume_mm3"), "direct response source_volume_mm3")
+    result_volume = _finite_float(measurements.get("result_volume_mm3"), "direct response result_volume_mm3")
+    try:
+        result_solid_count = int(measurements.get("result_solid_count"))
+    except (TypeError, ValueError) as exc:
+        raise CADSidecarContractError("CAD direct-edit response result_solid_count must be an integer") from exc
+    if source_volume <= 0.0:
+        raise CADSidecarContractError("CAD direct-edit response source volume must be positive")
+
+    status = response.get("status")
+    if status == "PASS":
+        if operation.get("execution_state") != "EXECUTED":
+            raise CADSidecarContractError("PASS CAD direct-edit response must be EXECUTED")
+        if resolution.get("state") != "RESOLVED_UNIQUE" or candidate_count != 1:
+            raise CADSidecarContractError("PASS CAD direct-edit response requires one unique semantic face")
+        _require_sha256_hex(resolution.get("resolved_signature"), "direct response resolved_signature")
+        if result_solid_count != 1 or result_volume <= 0.0 or any(value <= 0.0 for value in result_bbox):
+            raise CADSidecarContractError("PASS CAD direct-edit response must release one positive-volume result solid")
+        for key in ("fcstd", "step", "brep"):
+            _validate_direct_artifact(authority.get(key), f"authoritative.{key}", released=True)
+        _validate_direct_artifact(response.get("display_derivative"), "display_derivative", released=True)
+        if response.get("error") not in (None, ""):
+            raise CADSidecarContractError("PASS CAD direct-edit response cannot carry an error")
+    elif status == "HOLD":
+        if not allow_hold:
+            raise CADSidecarContractError("CAD direct-edit HOLD response is not bindable")
+        if operation.get("execution_state") != "NOT_EXECUTED":
+            raise CADSidecarContractError("HOLD CAD direct-edit response must remain NOT_EXECUTED")
+        state = resolution.get("state")
+        if state not in {"MISSING_HOLD", "AMBIGUOUS_HOLD"}:
+            raise CADSidecarContractError("CAD direct-edit HOLD response has an invalid resolution state")
+        if state == "MISSING_HOLD" and candidate_count != 0:
+            raise CADSidecarContractError("MISSING_HOLD must have zero candidates")
+        if state == "AMBIGUOUS_HOLD" and candidate_count <= 1:
+            raise CADSidecarContractError("AMBIGUOUS_HOLD must have multiple candidates")
+        for key in ("fcstd", "step", "brep"):
+            _validate_direct_artifact(authority.get(key), f"authoritative.{key}", released=False)
+        _validate_direct_artifact(response.get("display_derivative"), "display_derivative", released=False)
+        if result_solid_count != 0 or abs(result_volume) > 1e-12 or any(abs(value) > 1e-12 for value in result_bbox):
+            raise CADSidecarContractError("HOLD CAD direct-edit response may not release result geometry")
+    else:
+        raise CADSidecarContractError(f"unsupported CAD direct-edit response status: {status}")
+
+    return {
+        "request_id": request_id,
+        "ole_id": ole_id,
+        "revision": revision,
+        "request_sha256": request_sha256,
+        "status": status,
+        "resolution_state": resolution.get("state"),
+        "candidate_count": candidate_count,
+        "execution_state": operation.get("execution_state"),
+        "distance_mm": distance_mm,
+        "source_bbox_mm": source_bbox,
+        "result_bbox_mm": result_bbox,
+        "source_volume_mm3": source_volume,
+        "result_volume_mm3": result_volume,
+        "result_solid_count": result_solid_count,
+    }
+
+
+def load_direct_edit_response(path: str | Path, *, allow_hold: bool = False) -> dict:
+    response = json.loads(Path(path).read_text(encoding="utf-8"))
+    validate_direct_edit_response(response, allow_hold=allow_hold)
+    return response
+
+
+def assert_direct_edit_response_matches_request(response: dict, request: dict) -> None:
+    validated_request = validate_direct_edit_request(request)
+    validated_response = validate_direct_edit_response(response, allow_hold=True)
+    if validated_response["request_id"] != validated_request["request_id"]:
+        raise CADSidecarContractError("CAD direct-edit response request_id mismatch")
+    if validated_response["ole_id"] != validated_request["ole_id"]:
+        raise CADSidecarContractError("CAD direct-edit response OLE ID mismatch")
+    if validated_response["revision"] != validated_request["revision"]:
+        raise CADSidecarContractError("CAD direct-edit response revision mismatch")
+    if validated_response["request_sha256"] != validated_request["request_sha256"]:
+        raise CADSidecarContractError("CAD direct-edit response request SHA mismatch")
+    if abs(validated_response["distance_mm"] - validated_request["operation"]["distance_mm"]) > 1e-9:
+        raise CADSidecarContractError("CAD direct-edit response distance mismatch")
+
+
+def _validate_direct_edit_display_payload(display_payload: dict, response: dict) -> None:
+    if not isinstance(display_payload, dict) or display_payload.get("schema") != DIRECT_EDIT_DISPLAY_SCHEMA:
+        raise CADSidecarContractError("unexpected CAD direct-edit display derivative schema")
+    if display_payload.get("master_type") != "CAD_NATIVE":
+        raise CADSidecarContractError("CAD direct-edit display lost CAD_NATIVE master type")
+    if display_payload.get("geometry_authority") != DIRECT_EDIT_REQUIRED_KERNEL:
+        raise CADSidecarContractError("CAD direct-edit display lost FreeCAD/OCCT authority")
+    if display_payload.get("display_authority") != DIRECT_EDIT_BLENDER_ROLE:
+        raise CADSidecarContractError("CAD direct-edit display must remain DISPLAY_DERIVATIVE_ONLY")
+    if display_payload.get("units") != "mm":
+        raise CADSidecarContractError("CAD direct-edit display currently supports mm only")
+    if display_payload.get("request_id") != response.get("request_id"):
+        raise CADSidecarContractError("CAD direct-edit display request_id mismatch")
+    if int(display_payload.get("request_revision", -1)) != int(response.get("revision", -2)):
+        raise CADSidecarContractError("CAD direct-edit display request revision mismatch")
+    if display_payload.get("request_sha256") != response.get("request_sha256"):
+        raise CADSidecarContractError("CAD direct-edit display request SHA mismatch")
+    authoritative = response.get("authoritative") or {}
+    if str(display_payload.get("source_master") or "") != str((authoritative.get("fcstd") or {}).get("path") or ""):
+        raise CADSidecarContractError("CAD direct-edit display master locator mismatch")
+    if str(display_payload.get("source_step") or "") != str((authoritative.get("step") or {}).get("path") or ""):
+        raise CADSidecarContractError("CAD direct-edit display STEP locator mismatch")
+    if display_payload.get("source_step_sha256") != (authoritative.get("step") or {}).get("sha256"):
+        raise CADSidecarContractError("CAD direct-edit display STEP SHA mismatch")
+    vertices = display_payload.get("vertices_mm") or []
+    triangles = display_payload.get("triangles") or []
+    if not vertices or not triangles:
+        raise CADSidecarContractError("CAD direct-edit display derivative is empty")
+
+
+def bind_direct_edit_display_derivative(*, response: dict, display_payload: dict, request: dict | None = None, collection=None, existing_object=None):
+    """Bind a validated direct-edit PASS response through the existing display binder.
+
+    No direct-edit response or display schema is rewritten outside this owner.
+    The internal adaptation only reuses the mature generic display-mesh binder;
+    CAD authority remains the specialist FCStd/STEP/BREP result.
+    """
+    validated = validate_direct_edit_response(response, allow_hold=False)
+    if request is not None:
+        assert_direct_edit_response_matches_request(response, request)
+    _validate_direct_edit_display_payload(display_payload, response)
+
+    generic_response = {
+        "schema": RESPONSE_SCHEMA,
+        "request_id": response["request_id"],
+        "ole_id": response["ole_id"],
+        "revision": response["revision"],
+        "status": "PASS",
+        "request_sha256": response["request_sha256"],
+        "authoritative": response["authoritative"],
+    }
+    generic_display = dict(display_payload)
+    generic_display["schema"] = DISPLAY_SCHEMA
+    obj = bind_display_derivative(
+        response=generic_response,
+        display_payload=generic_display,
+        collection=collection,
+        existing_object=existing_object,
+    )
+    obj["cad_direct_edit_response_schema"] = DIRECT_EDIT_RESPONSE_SCHEMA
+    obj["cad_direct_edit_display_schema"] = DIRECT_EDIT_DISPLAY_SCHEMA
+    obj["cad_direct_edit_execution_state"] = validated["execution_state"]
+    obj["cad_direct_edit_resolution_state"] = validated["resolution_state"]
+    obj["cad_direct_edit_candidate_count"] = validated["candidate_count"]
+    obj["cad_direct_edit_distance_mm"] = validated["distance_mm"]
+    return obj
 
 
 def load_response(path: str | Path) -> dict:

@@ -3,21 +3,21 @@
   "hardening_revision": "v0.2_STRICT_REQUEST_REVALIDATION",
   "validation_state": "PASS",
   "validation_scope": "CAD_DIRECT_INTENT_TO_REQUEST_CONTRACT",
-  "validated_at_utc": "2026-09-09T03:08:47Z",
+  "validated_at_utc": "2026-09-09T08:33:51Z",
   "repository": "Jiaosong/Design",
-  "pull_request": 498,
-  "candidate_head": "d33ecc3bacfb1971f2818d04ef18f733c1cd9be6",
-  "tested_pr_merge_commit": "444c279fe228b1d67856a243b6805202b0e5a636",
-  "tested_main_base": "aa311040c1825e61ee95479a57f7daa5f36bcfc8",
+  "pull_request": 499,
+  "candidate_head": "9538ded6c1d22d82bfa609ec9329f20df6a09d9e",
+  "tested_pr_merge_commit": "78c6e5b412f5d76ef336417d306f9d752bd41167",
+  "tested_main_base": "fbbe074bce7a3c73b2505e8541aa74b7b25d7748",
   "validated_source_blobs": {
-    "professional_adapter/cad_sidecar.py": "ec5a328bad8dfb02914268306cb7d2ccfa63696e",
+    "professional_adapter/cad_sidecar.py": "369100d85832617403b979fef9c955940ebd9e33",
     "tests/validate_cad_direct_intent_bridge.py": "f56b85fc03cb56849a80ad965c5ac7caa5b679ec",
     ".github/workflows/oleander-blender-runtime-5-2-lts.yml": "343cbc301015e4f70cbb49f1829cb37b5dc222ce"
   },
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
-    "run_id": 34305925694,
-    "job_id": 102322478236,
+    "run_id": 34329724293,
+    "job_id": 102395217382,
     "conclusion": "success",
     "specialist_gate": "Validate bounded CAD direct intent bridge on Blender 5.2 LTS"
   },
@@ -30,7 +30,7 @@
   "extension_package_observation": {
     "filename": "oleander_blender_runtime-5.2-lts.zip",
     "size_bytes": 92458,
-    "sha256": "0b2c80f3cf154e67f4ed6069e6a4325fe1b55657119c965fa9653cf4ad2d147f",
+    "sha256": "8046000e15b563f46dbd7b8421164e440661f55fe60a02332869fd66b0d24182",
     "role": "same-job runtime package observation; not a CAD authority artifact"
   },
   "intent_schema": "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1",

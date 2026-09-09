@@ -169,3 +169,188 @@ jobs:
             echo '- Failure envelope: schema-valid duplicate adjacent profile point must return structured FAIL with zero released solids and a zero-length-edge error; FreeCADCmd shell exit code is recorded but not treated as authoritative.'
             echo '- This is a bounded integrated feature-rebuild foundation; it does NOT make P0-A/P0-B PASS or prove general CAD feature-tree, direct B-Rep, assembly or engineering parity.'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  cad-direct-edit-5-2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      OLEANDER_CAD_DIRECT_INTEGRATION_DIR: /tmp/oleander-cad-direct-integration
+      FREECAD_VERSION: "1.1.3"
+      FREECAD_APPIMAGE: FreeCAD_1.1.3-Linux-x86_64-py311.AppImage
+      FREECAD_SHA256: 3a853eb69ee595f779f2255dbf80a765926981d8ff68903cefee4dfb03a8f5ef
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Resolve canonical Blender 5.2 LTS runtime
+        id: blender52
+        shell: bash
+        run: |
+          set -euo pipefail
+          blender_bin="$(bash 90-shared/toolchains/blender-runtime/ensure-blender-5.2.sh)"
+          echo "bin=${blender_bin}" >> "$GITHUB_OUTPUT"
+          "${blender_bin}" --version | tee /tmp/oleander-cad-direct-blender-version.txt
+          grep -F 'Blender 5.2.0 LTS' /tmp/oleander-cad-direct-blender-version.txt
+          grep -F 'build hash: fbe6228777e7' /tmp/oleander-cad-direct-blender-version.txt
+
+      - name: Prepare bounded CAD direct-edit requests from real Blender interaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}"
+          OLEANDER_CAD_DIRECT_PHASE=PREPARE \
+          "${{ steps.blender52.outputs.bin }}" --background --factory-startup --python-exit-code 2 \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_edit_integration.py \
+            2>&1 | tee /tmp/oleander-cad-direct-prepare.log
+          grep -F 'OLEANDER_CAD_DIRECT_EDIT_PREPARE=' /tmp/oleander-cad-direct-prepare.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-direct-prepare.log
+          grep -F '"execution": "NOT_EXECUTED"' /tmp/oleander-cad-direct-prepare.log
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/base_build_request.json"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_success.json"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_missing.json"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_ambiguous.json"
+
+      - name: Download and verify FreeCAD 1.1.3 direct-edit sidecar
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://github.com/FreeCAD/FreeCAD/releases/download/${FREECAD_VERSION}/${FREECAD_APPIMAGE}"
+          curl --fail --location --retry 3 --retry-delay 2 --output "/tmp/${FREECAD_APPIMAGE}" "${url}"
+          echo "${FREECAD_SHA256}  /tmp/${FREECAD_APPIMAGE}" | sha256sum --check
+          chmod +x "/tmp/${FREECAD_APPIMAGE}"
+          cd /tmp
+          "./${FREECAD_APPIMAGE}" --appimage-extract >/tmp/freecad-direct-appimage-extract.log 2>&1
+          test -x /tmp/squashfs-root/usr/bin/freecadcmd
+          /tmp/squashfs-root/usr/bin/freecadcmd --version
+
+      - name: Build authoritative 80x50x10 CAD master
+        shell: bash
+        run: |
+          set -euo pipefail
+          build_service="${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_build_service.py"
+          base_dir="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/base"
+          mkdir -p "${base_dir}"
+          OLEANDER_CAD_BUILD_REQUEST="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/base_build_request.json" \
+          OLEANDER_CAD_BUILD_DIR="${base_dir}" \
+            /tmp/squashfs-root/usr/bin/freecadcmd "${build_service}" \
+            2>&1 | tee /tmp/oleander-cad-direct-base-build.log
+          grep -F 'OLEANDER_CAD_BUILD_RESPONSE=' /tmp/oleander-cad-direct-base-build.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-direct-base-build.log
+          test -s "${base_dir}/OLE_CAD_DIRECT_EXECUTION_001_R001.FCStd"
+          test -s "${base_dir}/OLE_CAD_DIRECT_EXECUTION_001_R001.step"
+          test -s "${base_dir}/OLE_CAD_DIRECT_EXECUTION_001_R001.brep"
+
+      - name: Create controlled semantic-resolution HOLD masters
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/hold_missing" "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/hold_ambiguous"
+          cat > /tmp/oleander-cad-direct-hold-fixtures.py <<'PY'
+          import os
+          from pathlib import Path
+          import FreeCAD as App
+          import Part
+
+          root = Path(os.environ['OLEANDER_CAD_DIRECT_INTEGRATION_DIR'])
+
+          def persist(name, shape, out_dir):
+              doc = App.newDocument('OLEANDER_' + name.upper())
+              obj = doc.addObject('Part::Feature', 'MASTER')
+              obj.Shape = shape
+              doc.recompute()
+              fcstd = out_dir / f'{name}.FCStd'
+              brep = out_dir / f'{name}.brep'
+              doc.saveAs(str(fcstd))
+              shape.exportBrep(str(brep))
+              App.closeDocument(doc.Name)
+              assert fcstd.is_file() and brep.is_file()
+
+          persist('missing', Part.makeSphere(10.0), root / 'hold_missing')
+          base = Part.makeBox(80.0, 50.0, 10.0, App.Vector(-40.0, -25.0, 0.0))
+          ambiguous = Part.makeCompound([base, base.copy()])
+          persist('ambiguous', ambiguous, root / 'hold_ambiguous')
+          print('OLEANDER_CAD_DIRECT_HOLD_FIXTURES=PASS')
+          PY
+          /tmp/squashfs-root/usr/bin/freecadcmd /tmp/oleander-cad-direct-hold-fixtures.py \
+            2>&1 | tee /tmp/oleander-cad-direct-hold-fixtures.log
+          grep -F 'OLEANDER_CAD_DIRECT_HOLD_FIXTURES=PASS' /tmp/oleander-cad-direct-hold-fixtures.log
+
+      - name: Execute bounded FreeCAD OCCT face-normal move and HOLD envelopes
+        shell: bash
+        run: |
+          set -euo pipefail
+          service="${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_direct_edit_service.py"
+          for case in success missing ambiguous; do
+            out="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_${case}"
+            request="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_${case}.json"
+            mkdir -p "${out}"
+            OLEANDER_CAD_DIRECT_REQUEST="${request}" \
+            OLEANDER_CAD_DIRECT_DIR="${out}" \
+              /tmp/squashfs-root/usr/bin/freecadcmd "${service}" \
+              2>&1 | tee "/tmp/oleander-cad-direct-${case}.log"
+            test -s "${out}/cad_direct_edit_response.json"
+          done
+          grep -F 'OLEANDER_CAD_DIRECT_EDIT_RESPONSE=' /tmp/oleander-cad-direct-success.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-direct-success.log
+          grep -F '"execution_state": "EXECUTED"' /tmp/oleander-cad-direct-success.log
+          grep -F 'OLEANDER_CAD_DIRECT_EDIT_HOLD=' /tmp/oleander-cad-direct-missing.log
+          grep -F '"state": "MISSING_HOLD"' /tmp/oleander-cad-direct-missing.log
+          grep -F 'OLEANDER_CAD_DIRECT_EDIT_HOLD=' /tmp/oleander-cad-direct-ambiguous.log
+          grep -F '"state": "AMBIGUOUS_HOLD"' /tmp/oleander-cad-direct-ambiguous.log
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_success/OLE_CAD_DIRECT_EXECUTION_001_R002.FCStd"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_success/OLE_CAD_DIRECT_EXECUTION_001_R002.step"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_success/OLE_CAD_DIRECT_EXECUTION_001_R002.brep"
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_success/cad_direct_edit_display_derivative.json"
+          ! find "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_missing" -maxdepth 1 \( -name '*.FCStd' -o -name '*.step' -o -name '*.brep' -o -name '*display_derivative.json' \) -print -quit | grep -q .
+          ! find "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_ambiguous" -maxdepth 1 \( -name '*.FCStd' -o -name '*.step' -o -name '*.brep' -o -name '*display_derivative.json' \) -print -quit | grep -q .
+          python3 - <<'PY'
+          import json, os, pathlib
+          root = pathlib.Path(os.environ['OLEANDER_CAD_DIRECT_INTEGRATION_DIR'])
+          success = json.loads((root / 'direct_success/cad_direct_edit_response.json').read_text())
+          missing = json.loads((root / 'direct_missing/cad_direct_edit_response.json').read_text())
+          ambiguous = json.loads((root / 'direct_ambiguous/cad_direct_edit_response.json').read_text())
+          assert success['status'] == 'PASS'
+          assert success['resolution']['state'] == 'RESOLVED_UNIQUE'
+          assert success['resolution']['candidate_count'] == 1
+          assert success['operation']['execution_state'] == 'EXECUTED'
+          assert all(abs(a-b) <= 1e-4 for a,b in zip(success['measurements']['source_bbox_mm'], [80.0,50.0,10.0]))
+          assert all(abs(a-b) <= 1e-4 for a,b in zip(success['measurements']['result_bbox_mm'], [80.0,50.0,15.0]))
+          assert abs(success['measurements']['source_volume_mm3'] - 40000.0) <= 1e-3
+          assert abs(success['measurements']['result_volume_mm3'] - 60000.0) <= 1e-3
+          assert missing['status'] == 'HOLD' and missing['resolution']['state'] == 'MISSING_HOLD'
+          assert missing['operation']['execution_state'] == 'NOT_EXECUTED'
+          assert ambiguous['status'] == 'HOLD' and ambiguous['resolution']['state'] == 'AMBIGUOUS_HOLD'
+          assert ambiguous['resolution']['candidate_count'] == 2
+          assert ambiguous['operation']['execution_state'] == 'NOT_EXECUTED'
+          print('OLEANDER_CAD_DIRECT_EXECUTION_ENVELOPE=PASS')
+          PY
+
+      - name: Validate Blender 5.2 display-only readback and save-reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLEANDER_CAD_DIRECT_PHASE=READBACK \
+          "${{ steps.blender52.outputs.bin }}" --background --factory-startup --python-exit-code 2 \
+            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_edit_integration.py \
+            2>&1 | tee /tmp/oleander-cad-direct-readback.log
+          grep -F 'OLEANDER_CAD_DIRECT_EDIT_READBACK=' /tmp/oleander-cad-direct-readback.log
+          grep -F '"status": "PASS"' /tmp/oleander-cad-direct-readback.log
+          grep -F '"execution": "EXECUTED"' /tmp/oleander-cad-direct-readback.log
+          grep -F '"blender": "DISPLAY_DERIVATIVE_ONLY"' /tmp/oleander-cad-direct-readback.log
+          grep -F '"missing": "HOLD_NO_RELEASE"' /tmp/oleander-cad-direct-readback.log
+          grep -F '"ambiguous": "HOLD_NO_RELEASE"' /tmp/oleander-cad-direct-readback.log
+          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/cad_direct_edit_execution.blend"
+
+      - name: Record bounded CAD direct-edit execution boundary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## OLEANDER CAD Direct Edit — bounded authoritative execution'
+            echo '- Blender authority: canonical Blender 5.2.0 LTS, build fbe6228777e7.'
+            echo '- Interaction source: existing OLEANDER CAD_NATIVE Face Normal Move operator; Blender display geometry remains unchanged before specialist execution.'
+            echo '- Specialist authority: FreeCAD 1.1.3 / OCCT, semantic face rebind, then bounded TopoShape.replaceShape face-normal move.'
+            echo '- PASS scope: one rectangular prismatic solid, unique +Z four-edge top face, +5 mm move, 80x50x10 -> 80x50x15, FCStd + STEP + BREP + typed display derivative.'
+            echo '- Failure envelope: missing semantic face -> MISSING_HOLD; duplicate matching faces -> AMBIGUOUS_HOLD; both release zero authoritative result artifacts.'
+            echo '- Blender readback remains DISPLAY_DERIVATIVE_ONLY and is save/reopen validated.'
+            echo '- This is not a sixth Frontier, not general push/pull, not persistent topological naming, and does not make P0_B_DIRECT_BREP PASS or enable the default environment.'
+          } >> "$GITHUB_STEP_SUMMARY"
