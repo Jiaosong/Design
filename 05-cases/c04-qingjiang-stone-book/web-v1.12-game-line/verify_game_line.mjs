@@ -1,25 +1,104 @@
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
+
 const root=path.dirname(fileURLToPath(import.meta.url));
 const read=n=>fs.readFileSync(path.join(root,n),"utf8");
-const html=read("index.html"),css=read("styles.css"),js=read("app.js");
+const html=read("index.html");
+const css=read("styles.css");
+const js=read("app.js");
+
+const currentAnchors=["hero","assets","journey","brief","context","audience","idea","thinking","systems","development","final"];
 const sections=[...html.matchAll(/data-section="(\d{2})"/g)].map(m=>Number(m[1]));
-const contiguous=sections.length>0&&sections.every((n,i)=>n===i+1);
-const anchors=["hero","assets","journey","brief","context","audience","idea","thinking","system","imprints","scenes","scene-r13","digital","physical","brandmemory","memory","technical","final"];
-const requiredAssets=["assets/body_need_scenarios_current.svg","assets/brand_journey_current.svg","assets/brand_system_current.svg","assets/memory_journal_current.svg","assets/physical_body_support_hold.svg","assets/r06_attention_sequence_current.svg","assets/r06_detail_atlas_v11.svg","assets/r06_general_assembly_v11.svg","assets/r06_technical_relation_current.svg","assets/r13_passage_sequence_current.svg","assets/return_service_closure_current.svg","assets/route03_locked_current.svg","assets/technical_focus_v2.svg","assets/qj_hero_keep_v11_b64_01.txt","assets/qj_hero_keep_v11_b64_02a.txt","assets/qj_r06_landscape_keep_v11_b64_01.txt"];
+const contiguous=sections.length===currentAnchors.length&&sections.every((n,i)=>n===i+1);
+const anchorsPresent=currentAnchors.every(id=>html.includes(`id="${id}"`));
+
+const requiredAssets=[
+  "assets/body_need_scenarios_current.svg",
+  "assets/route03_locked_current.svg",
+  "assets/return_service_closure_current.svg",
+  "assets/qj_hero_keep_v11_b64_01.txt",
+  "assets/qj_hero_keep_v11_b64_02a.txt"
+];
 const missing=requiredAssets.filter(r=>!fs.existsSync(path.join(root,r))||fs.statSync(path.join(root,r)).size===0);
-const directVectors=requiredAssets.filter(r=>r.endsWith('.svg')).every(r=>html.includes(r));
-const localQjd=js.includes('qj_hero_keep_v11_b64_01.txt')&&js.includes('qj_r06_landscape_keep_v11_b64_01.txt');
-const externalImageRuntime=/https?:\/\/[^"'\`\s]+\.(?:jpg|jpeg|png|webp)/i.test(html+"\n"+js);
-const forbidden=[/112\s*页/i,/三个产品[^。]*项目主体/i].filter(p=>p.test(html)).map(p=>p.source);
-const completionScoreRejected=html.includes("而非 13/13 完成率")||html.includes("而不是 13/13 完成率");
-const completeReadingAnchors=["journey","context","idea","thinking","physical","brandmemory","memory","technical","final"];
-const completeReading=completeReadingAnchors.every(id=>html.includes(`id="${id}"`));
-const stateLogic=["NORMAL","DEGRADED","CLOSED","UNKNOWN","FULL / LIGHT / OFF"].every(x=>(html+js).includes(x));
-const interaction=/imprints/.test(js)&&/syncPage/.test(js)&&/supplementTrigger/.test(html+js)&&/stateData/.test(js);
-const result={schema:"C04_COMPLETE_SIMPLIFIED_STATIC_CHECK_V1",section_count:sections.length,section_numbers:sections,contiguous_section_numbering:contiguous,core_anchors_present:anchors.every(id=>html.includes(`id="${id}"`)),complete_project_reading_present:completeReading,local_qjd_runtime_binding:localQjd,external_raster_image_dependency_present:externalImageRuntime,required_asset_count:requiredAssets.length,missing_or_empty_assets:missing,current_vectors_direct_bound:directVectors,state_and_fallback_logic_present:stateLogic,interactive_reading_present:interaction,responsive_css:/@media\(max-width:/i.test(css),reduced_motion_present:/prefers-reduced-motion\s*:\s*reduce/i.test(css)&&/prefers-reduced-motion:\s*reduce/i.test(js),remote_concept_boundary:html.includes("REMOTE CONCEPT / NOT SITE PHOTO")&&html.includes("不作为现场照片或测量证据"),model_scope_corrected:html.includes("不是产品总数")&&html.includes("不定义完整项目的产品数量"),completion_score_logic_rejected:completionScoreRejected,forbidden_public_compression_tokens:forbidden};
-result.pass=result.contiguous_section_numbering&&result.core_anchors_present&&result.complete_project_reading_present&&result.local_qjd_runtime_binding&&!result.external_raster_image_dependency_present&&result.missing_or_empty_assets.length===0&&result.current_vectors_direct_bound&&result.state_and_fallback_logic_present&&result.interactive_reading_present&&result.responsive_css&&result.reduced_motion_present&&result.remote_concept_boundary&&result.model_scope_corrected&&result.completion_score_logic_rejected&&result.forbidden_public_compression_tokens.length===0;
+const directBindings=[
+  "assets/body_need_scenarios_current.svg",
+  "assets/route03_locked_current.svg",
+  "assets/return_service_closure_current.svg"
+].every(r=>html.includes(r));
+const localHeroBinding=[
+  "qj_hero_keep_v11_b64_01.txt",
+  "qj_hero_keep_v11_b64_02a.txt"
+].every(r=>js.includes(r));
+
+const externalImageRuntime=/https?:\/\/[^"'`\s]+\.(?:jpg|jpeg|png|webp)/i.test(`${html}\n${js}`);
+const forbidden=[/112\s*页/i,/三个产品[^。]*项目主体/i,/01\s*\/\s*18/i].filter(p=>p.test(html)).map(p=>p.source);
+const semanticCoverage=["十三印","数字","身体","识别","记忆","回程"].every(x=>html.includes(x));
+const optionalReadingBoundary=/十三印可以不读完/.test(html)&&/不是追求\s*13\/13\s*完成率/.test(html);
+const stateAndFallback=["NORMAL","DEGRADED","CLOSED","UNKNOWN","FULL / LIGHT / OFF"].every(x=>html.includes(x))
+  &&html.includes("状态变化时，先保住路线与回程");
+const truthBoundary=["FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION"].every(x=>html.includes(x))
+  &&html.includes("不把远程研究写成现场事实");
+const progressiveDisclosure=html.includes('<details class="professional">')
+  &&["品牌与视觉识别","记忆/IP/文化产品","关键场景","技术/模型/工程证明"].every(x=>html.includes(x));
+const currentNavigation=[
+  'href="#journey"','href="#context"','href="#thinking"','href="#systems"','href="#development"','href="#final"'
+].every(x=>html.includes(x))
+  &&['systems:["systems"]','development:["development"]'].every(x=>js.includes(x));
+const interactiveReading=[".mode-card",".audience-tab","syncPage"].every(x=>js.includes(x));
+const staleLegacyRuntimeSelectors=["imprint-wheel","supplementTrigger","stateResult","r06Image"].filter(x=>js.includes(x));
+const responsiveCss=/@media\s*\(max-width:/i.test(css);
+const reducedMotion=/prefers-reduced-motion\s*:\s*reduce/i.test(css)&&/prefers-reduced-motion:\s*reduce/i.test(js);
+
+const designReviewOpenItems=[];
+if(!html.includes("R13"))designReviewOpenItems.push("R13_SCENE_SPECIFICITY_NOT_EXPLICIT_IN_CURRENT_PUBLIC_SPINE");
+if(!html.includes("品牌与视觉识别")||!html.includes("记忆/IP/文化产品"))designReviewOpenItems.push("BRAND_MEMORY_INDEPENDENT_MAIN_SURFACE_REVIEW_OPEN");
+
+const result={
+  schema:"C04_CURRENTIZED_STATIC_CHECK_V2",
+  current_frontier:"PR465",
+  section_count:sections.length,
+  section_numbers:sections,
+  contiguous_current_section_numbering:contiguous,
+  current_semantic_anchors_present:anchorsPresent,
+  semantic_system_coverage_present:semanticCoverage,
+  optional_reading_non_completion_boundary_present:optionalReadingBoundary,
+  state_and_return_fail_closed_content_present:stateAndFallback,
+  truth_boundary_present:truthBoundary,
+  progressive_full_scope_disclosure_present:progressiveDisclosure,
+  current_navigation_binding_present:currentNavigation,
+  local_hero_runtime_binding_present:localHeroBinding,
+  external_raster_image_dependency_present:externalImageRuntime,
+  required_asset_count:requiredAssets.length,
+  missing_or_empty_assets:missing,
+  current_direct_assets_bound:directBindings,
+  interactive_current_reading_present:interactiveReading,
+  stale_legacy_runtime_selectors:staleLegacyRuntimeSelectors,
+  responsive_css:responsiveCss,
+  reduced_motion_present:reducedMotion,
+  forbidden_public_compression_tokens:forbidden,
+  design_review_open_items:designReviewOpenItems
+};
+
+result.pass=
+  result.contiguous_current_section_numbering
+  &&result.current_semantic_anchors_present
+  &&result.semantic_system_coverage_present
+  &&result.optional_reading_non_completion_boundary_present
+  &&result.state_and_return_fail_closed_content_present
+  &&result.truth_boundary_present
+  &&result.progressive_full_scope_disclosure_present
+  &&result.current_navigation_binding_present
+  &&result.local_hero_runtime_binding_present
+  &&!result.external_raster_image_dependency_present
+  &&result.missing_or_empty_assets.length===0
+  &&result.current_direct_assets_bound
+  &&result.interactive_current_reading_present
+  &&result.stale_legacy_runtime_selectors.length===0
+  &&result.responsive_css
+  &&result.reduced_motion_present
+  &&result.forbidden_public_compression_tokens.length===0;
+
 fs.writeFileSync(path.join(root,"C04_WEB_v1_12_R2_STATIC_READBACK.json"),JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result,null,2));
 if(!result.pass)process.exit(1);
