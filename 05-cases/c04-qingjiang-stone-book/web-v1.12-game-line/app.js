@@ -28,6 +28,9 @@
   const audienceList=$(".audience-list");
   let audienceReadout=null;
   if(audienceList&&audienceTabs.length){
+    const style=document.createElement("style");
+    style.textContent='.audience-readout{margin-top:24px;padding:20px 0 0 18px;border-top:1px solid rgba(255,255,255,.15);border-left:2px solid rgba(120,197,196,.55)}.audience-readout .audience-kicker{margin:0;font:9px/1 var(--mono);letter-spacing:.12em;color:var(--water-light)}.audience-readout .audience-title{display:block;margin-top:13px;font:500 24px/1.25 var(--serif);color:var(--white)}.audience-readout .audience-body{display:block;max-width:520px;margin-top:10px;font-size:12px;line-height:1.7;color:rgba(255,255,255,.64)}.audience-tab[aria-pressed="true"] b:after{content:"  · 当前";font:9px/1 var(--mono);letter-spacing:.08em;color:var(--water-light)}';
+    document.head.append(style);
     audienceReadout=document.createElement("div");
     audienceReadout.className="audience-readout";
     audienceReadout.setAttribute("aria-live","polite");
@@ -46,7 +49,8 @@
       $(".audience-body",audienceReadout).textContent=d.b;
     };
     audienceTabs.forEach((btn,index)=>btn.addEventListener("click",()=>setAudience(btn,index)));
-    setAudience(audienceTabs.find(x=>x.classList.contains("active"))||audienceTabs[0],Math.max(0,audienceTabs.findIndex(x=>x.classList.contains("active"))));
+    const initial=Math.max(0,audienceTabs.findIndex(x=>x.classList.contains("active")));
+    setAudience(audienceTabs[initial],initial);
   }
 
   function syncPage(){
@@ -54,14 +58,7 @@
     let active=sections[0]?.id||"hero";
     const y=window.scrollY+innerHeight*.32;
     for(const s of sections){if(s.offsetTop<=y)active=s.id;}
-    const groups={
-      journey:["journey"],
-      context:["brief","context","audience"],
-      thinking:["idea","thinking"],
-      systems:["systems"],
-      development:["development"],
-      final:["final"]
-    };
+    const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems"],development:["development"],final:["final"]};
     $$(".layer-nav a").forEach(a=>{
       const target=a.getAttribute("href").slice(1);
       a.classList.toggle("active",(groups[target]||[]).includes(active));
@@ -84,25 +81,15 @@
   async function bindLocalChunkImage(el,parts,mime="image/png"){
     if(!el)return;
     try{
-      const text=(await Promise.all(parts.map(p=>fetch(p).then(r=>{
-        if(!r.ok)throw new Error(p);
-        return r.text();
-      })))).join("").replace(/\s+/g,"");
+      const text=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.text();})))).join("").replace(/\s+/g,"");
       el.style.backgroundImage=`url("data:${mime};base64,${text}")`;
       el.classList.add("loaded");
-    }catch(err){
-      console.warn("C04 local image binding fallback:",err);
-    }
+    }catch(err){console.warn("C04 local image binding fallback:",err);}
   }
-  bindLocalChunkImage($("#heroImage"),[
-    "assets/qj_hero_keep_v11_b64_01.txt",
-    "assets/qj_hero_keep_v11_b64_02a.txt"
-  ]);
+  bindLocalChunkImage($("#heroImage"),["assets/qj_hero_keep_v11_b64_01.txt","assets/qj_hero_keep_v11_b64_02a.txt"]);
 
   if(!reduced.matches&&"IntersectionObserver" in window){
-    const io=new IntersectionObserver(entries=>entries.forEach(e=>{
-      if(e.isIntersecting)e.target.classList.add("in-view");
-    }),{threshold:.08});
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in-view");}),{threshold:.08});
     $$(".section-head,.scope-grid,.analysis-grid,.asset-split").forEach(x=>io.observe(x));
   }
 })();
