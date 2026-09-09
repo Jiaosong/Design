@@ -25,17 +25,8 @@
     {k:"RECOVERY / RETURN",t:"体力下降时，服务先于内容。",b:"低体力与恢复状态优先休息、方向确认和回程；数字与阅读都可以暂时退场。"}
   ];
   const audienceTabs=$$(".audience-tab");
-  const audienceList=$(".audience-list");
-  let audienceReadout=null;
-  if(audienceList&&audienceTabs.length){
-    const style=document.createElement("style");
-    style.textContent='.audience-readout{margin-top:24px;padding:20px 0 0 18px;border-top:1px solid rgba(255,255,255,.15);border-left:2px solid rgba(120,197,196,.55)}.audience-readout .audience-kicker{margin:0;font:9px/1 var(--mono);letter-spacing:.12em;color:var(--water-light)}.audience-readout .audience-title{display:block;margin-top:13px;font:500 24px/1.25 var(--serif);color:var(--white)}.audience-readout .audience-body{display:block;max-width:520px;margin-top:10px;font-size:12px;line-height:1.7;color:rgba(255,255,255,.64)}.audience-tab[aria-pressed="true"] b:after{content:"  · 当前";font:9px/1 var(--mono);letter-spacing:.08em;color:var(--water-light)}';
-    document.head.append(style);
-    audienceReadout=document.createElement("div");
-    audienceReadout.className="audience-readout";
-    audienceReadout.setAttribute("aria-live","polite");
-    audienceReadout.innerHTML='<p class="audience-kicker"></p><b class="audience-title"></b><span class="audience-body"></span>';
-    audienceList.after(audienceReadout);
+  const audienceReadout=$(".audience-readout");
+  if(audienceReadout&&audienceTabs.length){
     const setAudience=(btn,index)=>{
       audienceTabs.forEach(x=>{
         const active=x===btn;
