@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#dedbd2}.page{fill:#fbf9f3;stroke:#c8c7bd;stroke-width:1.2}.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.rule{stroke:#aeb6b0;stroke-width:1}.river{fill:none;stroke:#6f9d91;stroke-width:3}.dash{fill:none;stroke:#b7beb8;stroke-width:1.2;stroke-dasharray:6 7}.h1{font:700 43px "Noto Serif CJK SC","Noto Serif SC","Songti SC",serif}.h2{font:700 24px "Noto Serif CJK SC","Noto Serif SC","Songti SC",serif}.body{font:400 14px "Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei",sans-serif}.sm{font:400 12px "Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei",sans-serif}.xs{font:700 10px "Noto Sans CJK SC","Noto Sans SC",sans-serif;letter-spacing:1.15px}
+</style>
+<rect width="1600" height="1000" class="bg"/>
+<text x="80" y="62" class="xs qing">M01 / LOOK SPREAD v1.3 · EDITABLE VECTOR PROTOTYPE</text>
+<text x="80" y="112" class="h1 ink">一个场景，一次动作，一句话；其余空间留给真正发生的痕迹</text>
+<text x="80" y="148" class="body muted">Representative A5 spread only. Binding / gutter / paper / print values remain prototype-open.</text>
+<text x="80" y="180" class="xs seal">NO AI IMAGE / NO 13/13 / NO SCORE / NO REQUIRED APP SYNC</text>
+<g transform="translate(145 230)">
+<rect width="620" height="700" rx="5" class="page"/>
+<text x="42" y="48" class="xs qing">LOOK / 06 · 河谷观察</text>
+<text x="42" y="100" class="h2 ink">今天我停下来的地方</text>
+<path d="M42 154c92-56 152 24 235-25 70-42 118-8 177-57" class="river"/>
+<circle cx="42" cy="154" r="5" class="qing"/><circle cx="277" cy="129" r="7" class="seal"/><circle cx="454" cy="72" r="5" class="qing"/>
+<text x="42" y="205" class="xs muted">SCENE</text><text x="124" y="205" class="body ink">R06 / 河谷观察</text>
+<text x="42" y="241" class="xs muted">ACTION</text><text x="124" y="241" class="body ink">LOOK · COMPARE · REST</text>
+<line x1="42" y1="276" x2="578" y2="276" class="rule"/>
+<text x="42" y="318" class="sm muted">可以画下两岸关系，也可以什么都不画。</text>
+<rect x="42" y="350" width="536" height="275" rx="12" class="dash"/>
+<text x="62" y="382" class="sm muted">DRAW / TRACE / PHOTO / RUBBING SPACE</text>
+<text x="42" y="666" class="xs seal">LEFT PAGE MUST STAND ALONE</text>
+<g transform="translate(650 0)">
+<rect width="620" height="700" rx="5" class="page"/>
+<text x="42" y="48" class="xs qing">ONE SENTENCE / 一句话</text>
+<text x="42" y="110" class="h2 ink">我真正想带走的，不一定是答案。</text>
+<line x1="42" y1="178" x2="560" y2="178" class="rule"/><line x1="42" y1="232" x2="530" y2="232" class="rule"/><line x1="42" y1="286" x2="470" y2="286" class="rule"/>
+<text x="42" y="356" class="xs muted">OPTIONAL SOURCE / 可选来源</text>
+<text x="42" y="390" class="body ink">□ 我只是看到　□ 我后来读到解释　□ 留到以后再看</text>
+<rect x="42" y="442" width="536" height="120" rx="12" fill="#edf0ea"/>
+<text x="62" y="476" class="xs seal">PARTIAL IS COMPLETE</text>
+<text x="62" y="512" class="body ink">今天只留下这一页，也已经是一部完整的个人石书。</text>
+<text x="42" y="610" class="xs muted">REVISIT</text>
+<text x="42" y="645" class="body ink">以后再看：__________________________________</text>
+<text x="42" y="680" class="xs seal">NO COMPLETION COUNT</text>
+</g>
+<line x1="635" y1="22" x2="635" y2="678" stroke="#b7b3a8" stroke-width="1"/>
+</g>
+<text x="80" y="972" class="sm muted">Design test: dominant writable field, subordinate metadata. Final print sample must verify gutter loss, writing feel, wet handling, page count and binding.</text>
+</svg>
