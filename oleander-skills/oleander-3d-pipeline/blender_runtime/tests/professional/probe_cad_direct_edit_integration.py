@@ -198,7 +198,13 @@ def prepare() -> None:
     check(payload_sha256(success_request) == payload_sha256(read_json(SUCCESS_REQUEST)), "prepare_success_request_readback_sha")
     check(success_request["authority"]["execution_state"] == "NOT_EXECUTED", "prepare_request_not_executed")
     check(success_request["target_selector"]["resolution_policy"] == "SEMANTIC_REBIND_FAIL_CLOSED", "prepare_fail_closed_selector")
-    check("polygon_index" not in canonical_text(success_request), "prepare_no_polygon_index_persistence")
+    check("polygon_index" not in success_request["target_selector"]["descriptor"], "prepare_no_polygon_index_descriptor_key")
+    check(
+        set(success_request["target_selector"]["prohibited_persistence"])
+        == {"FaceN", "EdgeN", "VertexN", "subshape_ordinal", "polygon_index"},
+        "prepare_topology_persistence_prohibition_declared",
+    )
+    check("Face17" not in canonical_text(success_request), "prepare_no_concrete_face_ordinal")
 
     result_payload = {
         "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_PREPARE_v0.1",
