@@ -79,9 +79,11 @@ The Current absorbed scope includes validated bounded support for:
 - scene/object authority separation;
 - dependency graph, stale propagation and geometry/parameter diff;
 - direct metric object operations;
-- bounded single-face normal movement for `BLENDER_NATIVE` mesh masters using mm input, applied-scale/single-user/shape-key fail-closed gates and downstream stale propagation;
-- the same Direct Face interaction entrypoint routing `CAD_NATIVE` objects to a deterministic `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` without mutating the Blender display derivative;
+- Direct Face bounded v0.2 for `BLENDER_NATIVE` mesh masters: one selected face may move along its local normal in mm or within a deterministic geometry-derived U/V tangent basis in mm, with applied-scale/single-user/shape-key fail-closed gates and downstream stale propagation;
+- Direct Face provenance records requested metric movement, resolved semantic face descriptor and, for tangent movement, the resolved U/V basis without persisting BMesh edge indices as authority;
+- the Direct Face Normal Move entrypoint routes `CAD_NATIVE` objects to a deterministic `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` without mutating the Blender display derivative;
 - CAD Direct Face intent targets described semantically by normal/center/area/edge-length/bounds data rather than persistent `FaceN`, polygon index or subshape ordinal; ambiguous or missing specialist re-resolution remains `HOLD`;
+- `CAD_NATIVE` Tangent Move is explicitly fail-closed in Direct Face v0.2 until the existing shared CAD sidecar absorbs a typed tangent operation; invoking it must not mutate the Blender display derivative or overwrite a previously valid CAD Normal Move intent;
 - non-destructive Blender-native feature stack and feature editing lifecycle;
 - governed relation registry, tolerance audit and deterministic one-shot relation correction with `solver_claim = false`;
 - measurement profiles, rulers, angular guides, datum/reference geometry and precision inference;
@@ -90,9 +92,13 @@ The Current absorbed scope includes validated bounded support for:
 - Geometry Nodes procedural foundation with governed provenance;
 - configuration/BOM support, audit and export manifest foundations.
 
-The bounded Direct Face route above was validated in the canonical Blender `5.2.0 LTS` regression through PR #495: Blender-native `+25 mm` face movement passed with stale propagation, while the CAD-native route produced a governed intent and preserved identical Blender display vertex geometry. This validates the interaction/authority boundary only; it is not CAD direct-edit execution or general B-Rep push/pull.
+The initial bounded Direct Face Normal Move route was validated in canonical Blender `5.2.0 LTS` through PR #495: Blender-native `+25 mm` face movement passed with stale propagation, while the CAD-native route produced a governed intent and preserved identical Blender display vertex geometry.
 
-The next bounded bridge was validated through PR #497 in the same canonical Blender `5.2.0 LTS` workflow: `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` is now deterministically validated and serialized by the existing `professional_adapter/cad_sidecar.py` owner into `OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1`. The machine evidence is `CAD_DIRECT_INTENT_BRIDGE_RECEIPT_5_2_20260909.json`; the validated request SHA256 is `8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318`. This is an additional bounded specialist contract gate, not an eighteenth Runtime stage or a sixth Frontier. Its execution state remains `NOT_EXECUTED`: CAD-face semantic re-resolution and authoritative FreeCAD/OCCT B-Rep mutation are the next separate gate.
+PR #497 then validated deterministic `OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1` → `OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1` translation and strict request persistence boundaries in the existing `professional_adapter/cad_sidecar.py` owner. `CAD_DIRECT_INTENT_BRIDGE_RECEIPT_5_2_20260909.json` remains the machine evidence for that request contract.
+
+PR #499 subsequently established a separate bounded authoritative CAD Normal Move execution path: Blender 5.2 interaction/request preparation → FreeCAD 1.1.3 / OCCT semantic face re-resolution → bounded `FACE_NORMAL_MOVE` B-Rep mutation → FCStd/STEP/BREP + typed display derivative → Blender display-only save/reopen readback. `MISSING_HOLD` and `AMBIGUOUS_HOLD` release no authoritative result artifacts. This remains bounded execution evidence, not general B-Rep push/pull or persistent topological naming generality.
+
+Direct Face bounded v0.2 adds the Blender-native Tangent Move interaction on top of that Current architecture. Canonical Blender 5.2 regression validates U/V metric movement, geometry-derived tangent basis, stale propagation and a fail-closed CAD tangent route with zero display mutation. CAD tangent specialist execution is intentionally a later absorption into the existing sidecar; `P0_G_MODELING_INTERACTION` remains PARTIAL and `P0_B_DIRECT_BREP` remains BLOCKED.
 
 The shared-environment Project Profile surface added on 2026-09-09 is a configuration boundary, not a new professional parity claim.
 
@@ -107,22 +113,22 @@ For CAD-native objects:
 - CAD native source remains geometry authority;
 - STEP/BREP/FCStd or other native/exchange artifacts remain traceable;
 - Blender receives a typed display/review derivative;
-- Direct Face interaction may prepare a deterministic CAD direct-edit intent, and the existing CAD sidecar may validate/serialize that intent into a deterministic direct-edit request;
-- request serialization is not CAD execution: current direct-edit requests remain `NOT_EXECUTED` until a specialist executor uniquely re-resolves the target against the authoritative CAD master and completes controlled B-Rep mutation/readback;
-- the display mesh must not be mutated as an authoritative CAD result;
+- Direct Face Normal Move may prepare a deterministic CAD direct-edit intent; the existing CAD sidecar validates/serializes the request and, for the bounded #499 scope, a specialist FreeCAD/OCCT executor may uniquely re-resolve and mutate the authoritative B-Rep before Blender receives a display derivative;
+- Direct Face Tangent Move currently has no absorbed CAD specialist route and therefore fails closed without mutating Blender display geometry;
+- the display mesh must never be mutated as an authoritative CAD result;
 - semantic face rebind must fail closed on ambiguity or missing targets and must not persist unstable topology ordinals as authority;
 - Blender mesh operations must not be described as equivalent to authoritative B-Rep operations;
-- bounded FreeCAD/OCCT probes do not establish general CAD parity.
+- bounded FreeCAD/OCCT proofs do not establish general CAD parity.
 
 ## Still not claimed
 
 The absorbed Current scope does not by itself establish:
 
-- CAD face semantic re-resolution from the new Direct Face request;
-- CAD direct-edit execution or authoritative B-Rep mutation from the new Direct Face request;
+- CAD tangent direct-edit execution from Direct Face v0.2;
 - general B-Rep push/pull, trim or unrestricted direct-edit parity;
 - persistent topological naming generality;
 - general B-Rep/CAD parity;
+- `P0_B_DIRECT_BREP` PASS or `P0_G_MODELING_INTERACTION` PASS;
 - general parametric sketch/feature/assembly solver parity;
 - unrestricted assembly mates/joints;
 - NURBS/Class-A continuity certification;
@@ -144,7 +150,7 @@ For material runtime changes:
 5. for current-wide compatibility, run the canonical Blender 5.2 LTS regression;
 6. reopen/read back persisted state where applicable;
 7. keep Machine/Compliance evidence separate from Professional Design verdict;
-8. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface when their facts materially changed.
+8. update `SKILL.md`, `CAPABILITY.json`, `BLENDER_RUNTIME_WORKBENCH_EXTENSION.md`, `CANDIDATE_GOVERNANCE.json`, parity/capability status and the matching Notion control surface only when their material facts change; do not create a promotion delta where the capability class remains unchanged.
 
 A material runtime change that is not reflected in its routing/status surfaces is an alignment failure even when its code tests pass.
 

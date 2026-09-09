@@ -88,6 +88,51 @@ def _face_semantic_descriptor(context, face):
     }
 
 
+def _canonical_direction(vector):
+    """Return a deterministic sign for one geometric direction."""
+    result = vector.normalized()
+    for component in result:
+        if abs(float(component)) <= 1e-9:
+            continue
+        if component < 0.0:
+            result.negate()
+        break
+    return result
+
+
+def _face_tangent_basis(face):
+    """Derive a deterministic geometry-based U/V tangent basis without edge ordinals."""
+    normal = face.normal.normalized()
+    candidates = []
+    for edge in face.edges:
+        direction = edge.verts[1].co - edge.verts[0].co
+        length = float(direction.length)
+        if length <= 1e-12:
+            continue
+        direction = _canonical_direction(direction)
+        # Longest geometric edge wins. Equal-length ties are broken by the
+        # direction components, never by BMesh edge index/order.
+        key = (
+            -round(length, 12),
+            -round(abs(float(direction.x)), 12),
+            -round(abs(float(direction.y)), 12),
+            -round(abs(float(direction.z)), 12),
+            -round(float(direction.x), 12),
+            -round(float(direction.y), 12),
+            -round(float(direction.z), 12),
+        )
+        candidates.append((key, direction))
+    if not candidates:
+        raise ValueError("Selected face has no stable tangent direction")
+    candidates.sort(key=lambda item: item[0])
+    tangent_u = candidates[0][1]
+    tangent_v = normal.cross(tangent_u)
+    if tangent_v.length <= 1e-12:
+        raise ValueError("Selected face tangent basis is degenerate")
+    tangent_v.normalize()
+    return tangent_u, tangent_v
+
+
 def _canonical_json(payload):
     return json.dumps(
         payload,
@@ -136,6 +181,28 @@ def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
     }
 
 
+def _selected_governed_edit_face(context):
+    obj = context.active_object
+    if not _unit_scale_applied(obj):
+        raise ValueError("Apply object scale before governed mm face editing")
+    if getattr(obj, "data", None) is None:
+        raise ValueError("Direct Face requires editable mesh data")
+    if obj.data.users > 1:
+        raise ValueError("Shared mesh data is HOLD; make the mesh single-user before face editing")
+    if obj.data.shape_keys is not None:
+        raise ValueError("Shape-key controlled mesh is outside bounded Direct Face scope")
+
+    bm = bmesh.from_edit_mesh(obj.data)
+    bm.normal_update()
+    selected_faces = [face for face in bm.faces if face.select]
+    if len(selected_faces) != 1:
+        raise ValueError("Select exactly one mesh face")
+    face = selected_faces[0]
+    if face.normal.length <= 1e-12:
+        raise ValueError("Selected face has no stable normal")
+    return obj, bm, face
+
+
 class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
     """Set active mesh dimensions from millimetres using the scene unit scale."""
 
@@ -172,8 +239,6 @@ class OLEANDER_OT_apply_metric_dimensions(bpy.types.Operator):
         target_mm = [self.x_mm, self.y_mm, self.z_mm]
         target = Vector(tuple(_mm_to_scene_units(context, value) for value in target_mm))
 
-        # A direct edit of one linked mesh instance must not silently rescale the
-        # shared datablock for every other instance. Break data sharing first.
         broke_shared_data = bool(getattr(obj, "data", None) and obj.data.users > 1)
         if broke_shared_data:
             obj.data = obj.data.copy()
@@ -226,32 +291,13 @@ class OLEANDER_OT_direct_face_normal_move(bpy.types.Operator):
         return context.window_manager.invoke_props_dialog(self)
 
     def execute(self, context):
-        obj = context.active_object
         if abs(float(self.distance_mm)) <= 1e-9:
             self.report({"ERROR"}, "Face Normal Move requires a non-zero distance")
             return {"CANCELLED"}
-        if not _unit_scale_applied(obj):
-            self.report({"ERROR"}, "Apply object scale before governed mm face editing")
-            return {"CANCELLED"}
-        if getattr(obj, "data", None) is None:
-            self.report({"ERROR"}, "Face Normal Move requires editable mesh data")
-            return {"CANCELLED"}
-        if obj.data.users > 1:
-            self.report({"ERROR"}, "Shared mesh data is HOLD; make the mesh single-user before face editing")
-            return {"CANCELLED"}
-        if obj.data.shape_keys is not None:
-            self.report({"ERROR"}, "Shape-key controlled mesh is outside bounded Face Normal Move scope")
-            return {"CANCELLED"}
-
-        bm = bmesh.from_edit_mesh(obj.data)
-        bm.normal_update()
-        selected_faces = [face for face in bm.faces if face.select]
-        if len(selected_faces) != 1:
-            self.report({"ERROR"}, "Select exactly one mesh face")
-            return {"CANCELLED"}
-        face = selected_faces[0]
-        if face.normal.length <= 1e-12:
-            self.report({"ERROR"}, "Selected face has no stable normal")
+        try:
+            obj, bm, face = _selected_governed_edit_face(context)
+        except ValueError as exc:
+            self.report({"ERROR"}, str(exc))
             return {"CANCELLED"}
 
         descriptor = _face_semantic_descriptor(context, face)
@@ -306,6 +352,85 @@ class OLEANDER_OT_direct_face_normal_move(bpy.types.Operator):
         return {"CANCELLED"}
 
 
+class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
+    """Move one Blender-native face within its own tangent plane in millimetres."""
+
+    bl_idname = "oleander.direct_face_tangent_move"
+    bl_label = "Face Tangent Move"
+    bl_description = (
+        "Move one selected Blender-native face in a deterministic geometry-based U/V tangent basis; "
+        "CAD-native tangent execution remains fail-closed until absorbed into the shared sidecar"
+    )
+    bl_options = {"REGISTER", "UNDO"}
+
+    u_mm: bpy.props.FloatProperty(name="U mm", default=10.0)
+    v_mm: bpy.props.FloatProperty(name="V mm", default=0.0)
+
+    @classmethod
+    def poll(cls, context):
+        return (
+            context.active_object is not None
+            and context.active_object.type == "MESH"
+            and context.mode == "EDIT_MESH"
+        )
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self)
+
+    def execute(self, context):
+        if abs(float(self.u_mm)) <= 1e-9 and abs(float(self.v_mm)) <= 1e-9:
+            self.report({"ERROR"}, "Face Tangent Move requires a non-zero U/V displacement")
+            return {"CANCELLED"}
+        try:
+            obj, bm, face = _selected_governed_edit_face(context)
+            tangent_u, tangent_v = _face_tangent_basis(face)
+        except ValueError as exc:
+            self.report({"ERROR"}, str(exc))
+            return {"CANCELLED"}
+
+        master_type = obj.oleander.master_type if hasattr(obj, "oleander") else "BLENDER_NATIVE"
+        if master_type != "BLENDER_NATIVE":
+            self.report(
+                {"ERROR"},
+                f"Face Tangent Move has no absorbed shared-runtime route for {master_type}; fail-closed",
+            )
+            return {"CANCELLED"}
+
+        descriptor = _face_semantic_descriptor(context, face)
+        delta = (
+            tangent_u * _mm_to_scene_units(context, self.u_mm)
+            + tangent_v * _mm_to_scene_units(context, self.v_mm)
+        )
+        normal_component = abs(float(face.normal.normalized().dot(delta)))
+        if _scene_units_to_mm(context, normal_component) > 1e-6:
+            self.report({"ERROR"}, "Computed tangent move contains a normal component")
+            return {"CANCELLED"}
+
+        for vert in face.verts:
+            vert.co += delta
+        bm.normal_update()
+        bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+        context.view_layer.update()
+
+        downstream = mark_downstream_stale(
+            [object_id(obj)],
+            reason="DIRECT_FACE_TANGENT_MOVE",
+            scene=context.scene,
+        )
+        obj["oleander_last_direct_operation"] = "FACE_TANGENT_MOVE"
+        obj["oleander_direct_authority_route"] = "BLENDER_NATIVE"
+        obj["oleander_direct_face_tangent_uv_mm"] = [float(self.u_mm), float(self.v_mm)]
+        obj["oleander_direct_face_tangent_u_local"] = _rounded_vector(tangent_u, 9)
+        obj["oleander_direct_face_tangent_v_local"] = _rounded_vector(tangent_v, 9)
+        obj["oleander_direct_face_target_descriptor"] = _canonical_json(descriptor)
+        obj["oleander_direct_downstream_stale"] = json.dumps(downstream, sort_keys=True)
+        self.report(
+            {"INFO"},
+            f"Face tangent move U={self.u_mm:+.3f} mm V={self.v_mm:+.3f} mm; downstream stale: {len(downstream)}",
+        )
+        return {"FINISHED"}
+
+
 class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
     """Create a governed linked or unlinked linear duplicate set."""
 
@@ -353,8 +478,6 @@ class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
             dup.name = f"{source.name}_A{idx:03d}"
             collection.objects.link(dup)
 
-            # Object identity is instance identity. Never inherit the source OLE
-            # ID into a duplicate, even when the mesh datablock is intentionally linked.
             if hasattr(dup, "oleander"):
                 dup.oleander.ole_id = _unique_array_ole_id(source_id, idx, occupied)
 
@@ -378,5 +501,6 @@ class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
 CLASSES = (
     OLEANDER_OT_apply_metric_dimensions,
     OLEANDER_OT_direct_face_normal_move,
+    OLEANDER_OT_direct_face_tangent_move,
     OLEANDER_OT_duplicate_linear,
 )

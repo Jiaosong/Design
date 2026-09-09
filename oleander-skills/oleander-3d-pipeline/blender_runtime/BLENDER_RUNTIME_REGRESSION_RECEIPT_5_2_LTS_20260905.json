@@ -4,16 +4,16 @@
   "runtime_version": "0.2.0",
   "validation_state": "PASS",
   "validation_scope": "BLENDER_5_2_LTS_SEVENTEEN_LAYER_RUNTIME_REGRESSION",
-  "validated_at_utc": "2026-09-09T02:14:29Z",
+  "validated_at_utc": "2026-09-09T16:10:06Z",
   "repository": "Jiaosong/Design",
-  "pull_request": 495,
-  "candidate_head": "5c0ba99479e0b6ec56cccaa3edeeebb92a462fec",
-  "tested_pr_merge_commit": "66efcdae522ff0844b1cb5be0e8b95de61859ca1",
-  "tested_main_base": "89237fe47258bd96faba80ae6ea36293c7978a3d",
+  "pull_request": 512,
+  "candidate_head": "3fefa4604f806ef6147c3832f21a322395ebeb46",
+  "tested_pr_merge_commit": "b3fe180a7914df7f6348c8a5f59668b76f566635",
+  "tested_main_base": "1299ef06aa72bd9aa0b80e15a1c02be908998ad4",
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
-    "run_id": 34302353461,
-    "job_id": 102311768341,
+    "run_id": 34374918403,
+    "job_id": 102545168770,
     "conclusion": "success"
   },
   "host": {
@@ -27,30 +27,30 @@
   },
   "extension_package": {
     "filename": "oleander_blender_runtime-5.2-lts.zip",
-    "size_bytes": 92458,
-    "sha256": "adfb08ef12476c8481552d4eee20e167199dcc53b835f1c4bf158c8623179d8a",
+    "size_bytes": 93295,
+    "sha256": "0f4b5411a2d8b643bfe8cc68c32ae05ff28dc87b578e7a7ae6d68b29ab8d6098",
     "source_manifest_validate": "PASS",
     "build": "PASS",
     "built_package_validate": "PASS"
   },
   "stages": {
-    "validate_stage2.py": {"status": "PASS", "source_fingerprint_sha256": "ff2450c7ba3f43264a573f4e72121ad5620cfac7fac8052951fb1dead0de72a2"},
-    "validate_stage3_direct.py": {"status": "PASS", "source_fingerprint_sha256": "9d84b680f199d6ac2e777526c5765a8203488d48140ee95da015532c2b85f6a3"},
-    "validate_stage3_features.py": {"status": "PASS", "source_fingerprint_sha256": "2a92ec95a9ab59ef1e29dcee304db5499db24c9c04757ec89d3d4e02067f318c"},
-    "validate_stage3_feature_editing.py": {"status": "PASS", "source_fingerprint_sha256": "a3a5654e658942e449f2948e4eb320305135bf515ecafdeeafa9946e1b72afc1"},
-    "validate_stage3_relations.py": {"status": "PASS", "source_fingerprint_sha256": "a9d31c22585b8c9a6a0dbb486619635df14caca867679725b1fd90a3711215b9"},
-    "validate_stage3_relation_apply.py": {"status": "PASS", "source_fingerprint_sha256": "1d5e265f4e92c46366e4a20c55a5167d1003cea6df9754cd2f79683ab4a5cb79"},
-    "validate_stage3_measurement.py": {"status": "PASS", "source_fingerprint_sha256": "25ba91fde66d05a178002b10b677e6c010ceeb571d224081cd84ddea751f95cb"},
-    "validate_stage3_angular_datum.py": {"status": "PASS", "source_fingerprint_sha256": "9c65aee3c3fed2782b0a4ca15e8bb30cdc047a5db16cb1d31a032f6edc061d72"},
-    "validate_stage3_precision_inference.py": {"status": "PASS", "source_fingerprint_sha256": "7fdba2f35f07e7ef2a64d4d690b0e2e592c1f5ac61bbf7d163afa00b4291984b"},
-    "validate_stage3_inference_v2.py": {"status": "PASS", "source_fingerprint_sha256": "01c7f49f164148d1a6ead71aa8e7897afc1e95bf4551d22458302712f0550594"},
-    "validate_stage3_mesh_clearance.py": {"status": "PASS", "source_fingerprint_sha256": "e924ddf6966b5723e0524de673c70b58433b7715e8fe02c2fca9c35bb12cb616"},
-    "validate_stage3_surface_diagnostics.py": {"status": "PASS", "source_fingerprint_sha256": "7b569512d96586a5ebe91cd5a64468491c43a7bf414fa732f4882dda1866cc42"},
-    "validate_stage3_design_intent.py": {"status": "PASS", "source_fingerprint_sha256": "030176a2f5ac78049d929227b59d1d10c990d4ab35a50c8a98835e8253fa84f4"},
-    "validate_stage3_design_intent_apply.py": {"status": "PASS", "source_fingerprint_sha256": "3e237db610aafb63db84cd2fb7e9177b3b7df0c695df75d5098c93d785a87352"},
-    "validate_stage3_design_intent_batch.py": {"status": "PASS", "source_fingerprint_sha256": "edca88e9e982a6be77593a333db142f9cd556b209b52c1382bbb86ccd53e52c4"},
-    "validate_stage3_design_intent_rebuild.py": {"status": "PASS", "source_fingerprint_sha256": "7df88dc8f78c8c29ea678a6e2ac5af47518464979d0ed0b1118a1c85de4ce92e"},
-    "validate_stage3_procedural.py": {"status": "PASS", "source_fingerprint_sha256": "39cd7fb22fd8bc985a4e609a499ae13995ff4b9bf92eae67f33a86723e38d6cf"}
+    "validate_stage2.py": {"status": "PASS", "source_fingerprint_sha256": "58676be1d6c202d117923b8bd4428004cafadffda60bae1c50ba721e3896f7f6"},
+    "validate_stage3_direct.py": {"status": "PASS", "source_fingerprint_sha256": "ceac7beeb1d048960beac0225c96de4d5cf6f9a08389332754ced5106e3730a9"},
+    "validate_stage3_features.py": {"status": "PASS", "source_fingerprint_sha256": "00b1c5f7064ec52429cd4a7df1e6cf1357db004b03ed8155ae1f19e473c6a2bd"},
+    "validate_stage3_feature_editing.py": {"status": "PASS", "source_fingerprint_sha256": "d62c6999610aa26752eb0844c88ec9b2f63a30b6627a57e805f931f276249840"},
+    "validate_stage3_relations.py": {"status": "PASS", "source_fingerprint_sha256": "c1e30ebb193098ce88860e26c815fa65842ead5a21303b73d4a40550a128fd96"},
+    "validate_stage3_relation_apply.py": {"status": "PASS", "source_fingerprint_sha256": "0ba66e174954afedb34f08bf2c80bab97aa4f5ee0f5dc9c5747045441ddb18e5"},
+    "validate_stage3_measurement.py": {"status": "PASS", "source_fingerprint_sha256": "4300b2817c0dd46b02a8f5bf379a482dd4301cd853b14ae28c79de329732e2e3"},
+    "validate_stage3_angular_datum.py": {"status": "PASS", "source_fingerprint_sha256": "6e081123fa2f3c9c06e0889bce033395a41630fab1c0af8b0931467f85d75ed5"},
+    "validate_stage3_precision_inference.py": {"status": "PASS", "source_fingerprint_sha256": "636c388ef9512110f92ee206114ec630e5b2f5c3e02e7e3818ccac8d68242c7b"},
+    "validate_stage3_inference_v2.py": {"status": "PASS", "source_fingerprint_sha256": "55b2a9dc18357f0f883eea44d28c1ef2711eeda5659cabcf07d5c85c0b290bb1"},
+    "validate_stage3_mesh_clearance.py": {"status": "PASS", "source_fingerprint_sha256": "cd9828b0e357887c82ed597fc8a263b4c424fbc6f875f726ffdb8f9527c74e95"},
+    "validate_stage3_surface_diagnostics.py": {"status": "PASS", "source_fingerprint_sha256": "bef620b44f89dc60f3004fa762038f2f49cd8caec712e04cfc2baf8de0821144"},
+    "validate_stage3_design_intent.py": {"status": "PASS", "source_fingerprint_sha256": "d5df7bdd651e6f8674ca24d6caacef18dfae1d67fbc04dd2e3b9f26a8883d374"},
+    "validate_stage3_design_intent_apply.py": {"status": "PASS", "source_fingerprint_sha256": "69b6b5c8749439fcfb92be054963a88ac46ed5786ac0f4da5805cec408954b12"},
+    "validate_stage3_design_intent_batch.py": {"status": "PASS", "source_fingerprint_sha256": "97d3a1cf5e8018c68ac455a13d9381fb110314a5ffd35e24df882ca5bb6e7631"},
+    "validate_stage3_design_intent_rebuild.py": {"status": "PASS", "source_fingerprint_sha256": "ce881fbe63797ad2b7e96c68f6c63a8978d413a74ba281258166136147da43a6"},
+    "validate_stage3_procedural.py": {"status": "PASS", "source_fingerprint_sha256": "cf7ae9a14a71528ff58d096accb1c6ed38c4deda4ab77747229deb49ebd5aad6"}
   },
   "legacy_receipt_policy": {
     "state": "PROVENANCE",
@@ -64,13 +64,19 @@
     "CAD_NATIVE_DIRECT_EDIT_INTENT_ROUTING",
     "CAD_DISPLAY_GEOMETRY_NO_MUTATION",
     "SEMANTIC_SELECTOR_WITHOUT_PERSISTENT_TOPOLOGY_ORDINAL",
-    "AMBIGUOUS_OR_MISSING_CAD_SELECTOR_FAIL_CLOSED_HOLD"
+    "AMBIGUOUS_OR_MISSING_CAD_SELECTOR_FAIL_CLOSED_HOLD",
+    "BLENDER_NATIVE_SINGLE_FACE_TANGENT_MOVE_UV_MM",
+    "DIRECT_FACE_TANGENT_GEOMETRY_DERIVED_UV_BASIS",
+    "DIRECT_FACE_TANGENT_DOWNSTREAM_STALE_PROPAGATION",
+    "CAD_NATIVE_TANGENT_MOVE_FAIL_CLOSED_NO_DISPLAY_MUTATION"
   ],
   "non_claims": [
     "CAD_DIRECT_EDIT_EXECUTION",
+    "CAD_TANGENT_DIRECT_EDIT_EXECUTION",
     "GENERAL_BREP_PUSH_PULL",
     "PERSISTENT_TOPOLOGICAL_NAMING_GENERALITY",
     "P0_B_DIRECT_BREP_PASS",
+    "P0_G_MODELING_INTERACTION_PASS",
     "default_environment_promotion",
     "general_cad_parity",
     "design_quality",
@@ -80,5 +86,5 @@
     "constructability"
   ],
   "invalidation_rule": "Any material change to governed add-on source or any of the seventeen bound validation scripts invalidates the corresponding current fingerprint and requires a fresh canonical Blender 5.2 LTS regression before current-source compatibility evidence may be rebound.",
-  "authority_note": "Consolidated current-source compatibility evidence for the shared OLEANDER Blender Runtime validated through PR #495. It binds the bounded authority-routed Face Normal Move interaction to a successful canonical Blender 5.2 LTS regression. BLENDER_NATIVE metric face mutation and CAD_NATIVE no-display-mutation intent routing are validated only for the declared scope; CAD direct-edit execution, general B-Rep push/pull, persistent topological naming generality, blocked professional parity gates and default-environment eligibility remain unpromoted. Historical 5.1.2 receipts remain provenance and are not deleted or rewritten."
+  "authority_note": "Consolidated current-source compatibility evidence for the shared OLEANDER Blender Runtime validated through PR #512. It binds Direct Face bounded v0.2 to a successful canonical Blender 5.2 LTS regression: BLENDER_NATIVE metric Face Normal Move remains valid; BLENDER_NATIVE one-face Tangent Move U/V is now validated with a deterministic geometry-derived tangent basis and downstream stale propagation; CAD_NATIVE Tangent Move is explicitly fail-closed with no display mutation until the existing shared sidecar contract absorbs tangent execution. Existing CAD normal-move execution from PR #499 remains separately established. General B-Rep push/pull, CAD tangent execution, persistent topological naming generality, P0_B/P0_G promotion and default-environment eligibility remain unpromoted. Historical 5.1.2 receipts remain provenance and are not deleted or rewritten."
 }
