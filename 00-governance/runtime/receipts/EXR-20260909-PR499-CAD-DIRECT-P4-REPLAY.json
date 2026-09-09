@@ -389,8 +389,10 @@
     "ci_state": "SEQUENCE_2_EXACT_HEAD_ALL_SIX_WORKFLOWS_SUCCESS; FINAL_CLOSED_RECEIPT_HEAD_VALIDATION_PENDING",
     "merge_commit": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
     "main_readback": "NOT_APPLICABLE_PR499_REMAINS_OPEN",
-    "notion_writeback": "PENDING_FINAL_CLOSED_RECEIPT_HEAD_VALIDATION",
-    "remaining_blockers": [],
+    "notion_writeback": "NOT_REQUIRED_NO_PROJECT_AUTHORITY_DELTA",
+    "remaining_blockers": [
+      "NONE"
+    ],
     "final_state": "P4_REAL_PROJECT_REPLAY_PASS",
     "separate_non_p4_decisions": [
       "PR499_PROMOTION_OR_MERGE_REMAINS_SEPARATE_AND_IS_NOT_A_P4_BLOCKER"
