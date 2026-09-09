@@ -95,11 +95,25 @@
 
   async function bindLocalChunkImage(el,parts,mime="image/png"){
     if(!el)return;
+    el.dataset.state="loading";
+    el.setAttribute("aria-busy","true");
+    el.setAttribute("role","img");
+    el.setAttribute("aria-label","清江峡谷主视觉正在载入");
     try{
       const text=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.text();})))).join("").replace(/\s+/g,"");
       el.style.backgroundImage=`url("data:${mime};base64,${text}")`;
       el.classList.add("loaded");
-    }catch(err){console.warn("C04 local image binding fallback:",err);}
+      el.dataset.state="active";
+      el.setAttribute("aria-busy","false");
+      el.setAttribute("aria-label","清江峡谷主视觉");
+    }catch(err){
+      el.dataset.state="error";
+      el.setAttribute("aria-busy","false");
+      el.setAttribute("aria-label","清江主视觉暂未载入；可继续阅读游程与设计内容");
+      el.style.backgroundImage="linear-gradient(135deg,#071318 0%,#123139 55%,#2e7f86 100%)";
+      el.classList.add("loaded");
+      console.warn("C04 local image binding fallback:",err);
+    }
   }
   bindLocalChunkImage($("#heroImage"),["assets/qj_hero_keep_v11_b64_01.txt","assets/qj_hero_keep_v11_b64_02a.txt"]);
 
