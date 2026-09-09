@@ -60,7 +60,23 @@
     const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems"],development:["development"],final:["final"]};
     $$(".layer-nav a").forEach(a=>{
       const target=a.getAttribute("href").slice(1);
-      a.classList.toggle("active",(groups[target]||[]).includes(active));
+      const current=(groups[target]||[]).includes(active);
+      a.classList.toggle("active",current);
+      if(current)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current");
+    });
+    $$("#mobileNav a").forEach(a=>{
+      const target=a.getAttribute("href").slice(1);
+      const current=(groups[target]||[]).includes(active);
+      a.classList.toggle("active",current);
+      if(current){
+        a.setAttribute("aria-current","location");
+        a.style.background="rgba(120,197,196,.10)";
+        a.style.color="#fff";
+      }else{
+        a.removeAttribute("aria-current");
+        a.style.background="";
+        a.style.color="";
+      }
     });
   }
   addEventListener("scroll",syncPage,{passive:true});
