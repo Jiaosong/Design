@@ -159,6 +159,48 @@ def decide_surface_probe(health: dict, now_epoch: int) -> dict:
     return {"action": "ALLOW_SINGLE_REVALIDATION_PROBE", "probe_allowed": True}
 
 
+def classify_review_independence(review: dict) -> str:
+    """Refine the existing receipt enum without introducing a parallel review taxonomy."""
+    if review.get("review_required") is not True:
+        return "NOT_REQUIRED"
+
+    producer_id = review.get("producer_id")
+    reviewer_id = review.get("reviewer_id")
+    if not producer_id or not reviewer_id or producer_id == reviewer_id:
+        return "NOT_INDEPENDENT"
+
+    distinct_channel = review.get("distinct_evidence_channel") is True
+    separate_path = review.get("separate_reasoning_or_technical_path") is True
+    separate_promotion = review.get("separate_promotion_authority") is True
+
+    if (distinct_channel or separate_path) and separate_promotion:
+        return "INDEPENDENT"
+    if distinct_channel or separate_path or separate_promotion:
+        return "PARTIALLY_INDEPENDENT"
+    return "NOT_INDEPENDENT"
+
+
+def review_requirement_satisfied(task_class: str, independence_state: str) -> bool:
+    """Apply minimum independence by task class; never let CI or a heavy executor self-promote design authority."""
+    true_independence_required = {
+        "DESIGN_KEEP",
+        "AUTHORITY_PROMOTION",
+        "PROFESSIONAL_PROJECT_REVIEW",
+    }
+    partial_allowed = {
+        "RUNTIME_TECHNICAL_VALIDATION",
+        "MACHINE_QA",
+        "REGRESSION_VALIDATION",
+    }
+    if task_class in true_independence_required:
+        return independence_state == "INDEPENDENT"
+    if task_class in partial_allowed:
+        return independence_state in {"PARTIALLY_INDEPENDENT", "INDEPENDENT"}
+    if task_class == "REVIEW_NOT_APPLICABLE":
+        return independence_state == "NOT_REQUIRED"
+    return False
+
+
 def validate_existing_contract_derivation() -> None:
     tool = load_json(TOOL_CONTRACT)
     remote = tool.get("remote_mutation_idempotency_policy", {})
@@ -183,6 +225,9 @@ def validate_existing_contract_derivation() -> None:
     ephemeral = set(tool.get("ephemeral_persistence_policy", {}).get("ephemeral_by_default", []))
     if not {"TRANSIENT_ADAPTER_STATE", "SURFACE_LIVENESS_PROBES"}.issubset(ephemeral):
         fail("P7 surface health/cooldown must remain ephemeral runtime state")
+    connected = tool.get("connected_execution_surface_policy", {})
+    if connected.get("heavy_executor_is_not_completion_gate_or_independent_reviewer") is not True:
+        fail("P8 must preserve the heavy-executor-not-independent-reviewer boundary")
 
     resolver = load_json(RESOLVER)
     continuous = resolver.get("continuous_execution_policy", {})
@@ -197,6 +242,9 @@ def validate_existing_contract_derivation() -> None:
         fail("P6/P7 require existing readback + sync/drift flow phases")
     if receipt.get("early_completion_forbidden_on") is None:
         fail("P6 must not replace the existing completion gate")
+    expected_review_states = {"INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED"}
+    if set(receipt.get("reviewer_independence_states", [])) != expected_review_states:
+        fail("P8 must refine the existing reviewer independence enum, not create or drop states")
 
 
 def validate_p6_cases() -> None:
@@ -259,10 +307,37 @@ def validate_p7_cases() -> None:
             fail(f"{case_id} probe gate mismatch: {result}")
 
 
+def validate_p8_cases() -> None:
+    rows = load_jsonl(CASES)
+    by_id = {row.get("case_id"): row for row in rows}
+    required = {
+        "P8-001-PRODUCER-SELF-REVIEW-NOT-INDEPENDENT",
+        "P8-002-DISTINCT-CI-CHANNEL-PARTIAL",
+        "P8-003-TRUE-INDEPENDENT-DESIGN-KEEP-PASS",
+        "P8-004-PARTIAL-DESIGN-KEEP-HOLD",
+        "P8-005-NOT-REQUIRED-ONLY-WHEN-NOT-APPLICABLE",
+        "P8-006-DISTINCT-REVIEWER-WITHOUT-INDEPENDENT-EVIDENCE-NOT-INDEPENDENT",
+        "P8-007-PARTIAL-AUTHORITY-PROMOTION-HOLD",
+    }
+    missing = required - set(by_id)
+    if missing:
+        fail(f"missing P8 cases {sorted(missing)}")
+
+    for case_id in sorted(required):
+        case = by_id[case_id]
+        state = classify_review_independence(case["review"])
+        if state != case["expected_independence_state"]:
+            fail(f"{case_id} independence mismatch: {state}")
+        satisfied = review_requirement_satisfied(case["task_class"], state)
+        if satisfied is not case["expected_requirement_satisfied"]:
+            fail(f"{case_id} requirement gate mismatch: {state}")
+
+
 def main() -> None:
     validate_existing_contract_derivation()
     validate_p6_cases()
     validate_p7_cases()
+    validate_p8_cases()
     print("runtime-resilience validation: PASS")
     print("P6 partial-commit reconciliation before DAG advance: ENFORCED")
     print("P6 uncertain legs verify before retry: ENFORCED")
@@ -271,6 +346,9 @@ def main() -> None:
     print("P7 bounded execution budget without one-node stop: ENFORCED")
     print("P7 ephemeral surface probe cooldown and probe budget: ENFORCED")
     print("P7 surface health remains runtime fact, not authority or persistent score: PRESERVED")
+    print("P8 existing review-independence states are machine classified: ENFORCED")
+    print("P8 Design KEEP / Authority Promotion require true independence: ENFORCED")
+    print("P8 runtime technical validation may use partial independence without self-promotion: ENFORCED")
 
 
 if __name__ == "__main__":
