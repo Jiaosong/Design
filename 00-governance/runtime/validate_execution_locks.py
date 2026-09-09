@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -46,10 +47,129 @@ def require_present(obj: dict, fields: list[str] | set[str], context: str) -> No
         fail(f"{context} missing fields {missing}")
 
 
+def _ids(value) -> set[str]:
+    if value is None:
+        return set()
+    if isinstance(value, str):
+        return {value}
+    return {str(x) for x in value}
+
+
+def _parse_ts(value: str | None) -> datetime:
+    if not value:
+        return datetime.min
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).replace(tzinfo=None)
+    except ValueError:
+        return datetime.min
+
+
+def resolve_continuation_frontier(
+    candidates: list[dict],
+    request_keys: dict,
+    current_authority_fingerprint: str | None,
+    current_authority_identifies_one_active_task: bool = True,
+) -> dict:
+    """Pure deterministic resolver over existing frontier records."""
+    active = [c for c in candidates if c.get("status", "WORKING") in {"WORKING", "HOLD"}]
+    if not active:
+        return {"state": "HOLD", "action": "HOLD_NO_ACTIVE_FRONTIER", "selected_frontier": None}
+
+    project_key = request_keys.get("project_id") or request_keys.get("scope_id")
+    task_key = request_keys.get("task_id")
+    object_keys = _ids(request_keys.get("object_or_canonical_ids"))
+    native_ref = request_keys.get("current_native_master_or_ref")
+
+    def matches(c: dict) -> bool:
+        if project_key and (c.get("project_id") or c.get("scope_id")) != project_key:
+            return False
+        if task_key and c.get("task_id") != task_key:
+            return False
+        if object_keys and not object_keys.intersection(_ids(c.get("object_or_canonical_ids"))):
+            return False
+        if native_ref and c.get("current_native_master_or_ref") != native_ref:
+            return False
+        return True
+
+    scoped = [c for c in active if matches(c)]
+    if not scoped:
+        return {"state": "HOLD", "action": "HOLD_NO_MATCHING_FRONTIER", "selected_frontier": None}
+
+    distinct_tasks = {(c.get("project_id") or c.get("scope_id"), c.get("task_id")) for c in scoped}
+    if len(distinct_tasks) > 1 and not task_key and not current_authority_identifies_one_active_task:
+        return {
+            "state": "HOLD",
+            "action": "HOLD_AMBIGUOUS_FRONTIER",
+            "selected_frontier": None,
+            "candidate_count": len(scoped),
+        }
+
+    if current_authority_fingerprint:
+        matching = [c for c in scoped if c.get("authority_fingerprint") == current_authority_fingerprint]
+        if matching:
+            scoped = matching
+        else:
+            best = max(
+                scoped,
+                key=lambda c: (int(c.get("checkpoint_sequence", -1)), _parse_ts(c.get("checkpoint_updated_at"))),
+            )
+            return {
+                "state": "REVALIDATE",
+                "action": "REVALIDATE_AUTHORITY_BEFORE_MUTATION",
+                "selected_frontier": best.get("task_id"),
+                "frontier": best,
+            }
+
+    best = max(
+        scoped,
+        key=lambda c: (int(c.get("checkpoint_sequence", -1)), _parse_ts(c.get("checkpoint_updated_at"))),
+    )
+    return {
+        "state": best.get("checkpoint_state", "RESUMABLE"),
+        "action": "RESUME_FROM_DISCOVERED_FRONTIER",
+        "selected_frontier": best.get("task_id"),
+        "frontier": best,
+    }
+
+
+def guard_checkpoint_mutation(current_sequence: int, expected_sequence: int) -> dict:
+    """Optimistic concurrency. Sequence is truth; lease is advisory metadata only."""
+    if current_sequence != expected_sequence:
+        return {
+            "allowed": False,
+            "state": "REVALIDATE_CONCURRENT_ADVANCE",
+            "action": "REFRESH_FRONTIER_BEFORE_MUTATION",
+        }
+    return {"allowed": True, "state": "SEQUENCE_MATCH", "action": "PROCEED_WITH_AUTHORIZED_MUTATION"}
+
+
+def resolve_uncertain_mutation(
+    outcome_state: str,
+    expected_postcondition_observed: bool,
+    operation_is_idempotent_or_keyed: bool,
+    retry_count: int,
+    retry_limit: int,
+) -> dict:
+    """Verify-before-retry decision for remote side effects with uncertain outcomes."""
+    if outcome_state == "CONFIRMED_SUCCESS":
+        return {"action": "NO_RETRY", "normalized_outcome": "CONFIRMED_SUCCESS"}
+    if outcome_state == "CONFIRMED_FAILURE":
+        if operation_is_idempotent_or_keyed and retry_count < retry_limit:
+            return {"action": "BOUNDED_SAFE_RETRY", "normalized_outcome": "CONFIRMED_FAILURE"}
+        return {"action": "HOLD_RETRY_UNSAFE_OR_EXHAUSTED", "normalized_outcome": "CONFIRMED_FAILURE"}
+    if outcome_state != "UNCERTAIN":
+        return {"action": "HOLD_INVALID_OUTCOME_STATE", "normalized_outcome": "UNKNOWN"}
+    if expected_postcondition_observed:
+        return {"action": "NO_RETRY", "normalized_outcome": "CONFIRMED_SUCCESS"}
+    if operation_is_idempotent_or_keyed and retry_count < retry_limit:
+        return {"action": "BOUNDED_SAFE_RETRY", "normalized_outcome": "CONFIRMED_ABSENT_AFTER_READBACK"}
+    return {"action": "HOLD_RETRY_UNSAFE_OR_EXHAUSTED", "normalized_outcome": "UNCERTAIN"}
+
+
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.4":
-        fail("Current resolver must be v1.2 implementation revision 1.2.4")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.5":
+        fail("Current resolver must be v1.2 implementation revision 1.2.5")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -90,6 +210,10 @@ def validate_resolver() -> dict:
         "stale_reasons",
         "checkpoint_sequence",
         "checkpoint_updated_at",
+        "expected_checkpoint_sequence",
+        "executor_id",
+        "execution_lease_state",
+        "lease_acquired_at",
     }
     if not checkpoint_fields.issubset(set(continuation.get("required_checkpoint_fields", []))):
         fail("continuation checkpoint fields incomplete")
@@ -99,6 +223,8 @@ def validate_resolver() -> dict:
     revalidate_when = set(continuation.get("revalidate_when", []))
     if "AUTHORITY_FINGERPRINT_MISMATCH" not in revalidate_when or "PROJECT_OR_TASK_SWITCH" not in revalidate_when:
         fail("continuation checkpoint must revalidate on authority mismatch or task switch")
+    if "CHECKPOINT_SEQUENCE_ADVANCED_BY_ANOTHER_EXECUTOR" not in revalidate_when:
+        fail("continuation checkpoint must revalidate after concurrent sequence advance")
     if continuation.get("context_switch_or_compression_is_not_authority_change") is not True:
         fail("chat/context switch alone must not invalidate a verified checkpoint")
     if continuation.get("blind_repeat_completed_mutation_forbidden") is not True:
@@ -124,6 +250,22 @@ def validate_resolver() -> dict:
     if "HOLD_AMBIGUOUS_FRONTIER" not in continuation.get("distinct_task_ambiguity_rule", ""):
         fail("multiple distinct frontiers must HOLD when Current cannot disambiguate")
 
+    concurrency = data.get("execution_concurrency_policy", {})
+    if concurrency.get("mode") != "OPTIMISTIC_CHECKPOINT_SEQUENCE":
+        fail("execution concurrency must use optimistic checkpoint sequence")
+    if concurrency.get("sequence_is_authoritative") is not True:
+        fail("checkpoint sequence must be authoritative over lease hints")
+    if concurrency.get("lease_metadata_is_advisory_only") is not True:
+        fail("lease metadata must remain advisory")
+    if concurrency.get("sequence_mismatch_state") != "REVALIDATE_CONCURRENT_ADVANCE":
+        fail("sequence mismatch must force concurrent revalidation")
+    if concurrency.get("global_lock_service_forbidden") is not True:
+        fail("runtime must not create a global lock service")
+    if concurrency.get("lease_does_not_grant_authority") is not True:
+        fail("lease metadata must not grant authority")
+    if concurrency.get("blind_last_writer_wins_forbidden") is not True:
+        fail("blind last-writer-wins must be forbidden")
+
     continuous = data.get("continuous_execution_policy", {})
     if continuous.get("purpose") != "AUTO_ADVANCE_READY_NODES_WITHIN_CURRENT_EXECUTION_TURN":
         fail("continuous execution policy missing")
@@ -137,6 +279,7 @@ def validate_resolver() -> dict:
         "NEXT_NODE_READY",
         "AUTHORITY_FINGERPRINT_STILL_VALID",
         "SIDE_EFFECT_WITHIN_ALREADY_AUTHORIZED_CEILING",
+        "EXPECTED_CHECKPOINT_SEQUENCE_STILL_CURRENT_FOR_MUTATION",
         "NO_STOP_CONDITION",
     }
     if not required_advance.issubset(advance_requires):
@@ -145,6 +288,7 @@ def validate_resolver() -> dict:
     required_stops = {
         "GENUINE_BLOCKER",
         "AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER",
+        "CONCURRENT_CHECKPOINT_ADVANCE",
         "USER_DESIGN_OR_SCOPE_DECISION_REQUIRED",
         "IRREVERSIBLE_OR_HIGHER_SIDE_EFFECT_ACTION_NOT_ALREADY_AUTHORIZED",
         "FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED",
@@ -195,6 +339,8 @@ def validate_resolver() -> dict:
         "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "BUILD_APPLICABLE_FLOW_COMPLETION_CHECKLIST",
         "RESOLVE_EXECUTION_OWNER_MAP",
+        "GUARD_EXPECTED_CHECKPOINT_SEQUENCE_BEFORE_MUTATION",
+        "VERIFY_UNCERTAIN_REMOTE_MUTATION_POSTCONDITION_BEFORE_RETRY",
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "ACTUAL_READBACK",
         "UPDATE_EXISTING_CONTINUATION_CHECKPOINT_AS_APPLICABLE",
@@ -208,7 +354,7 @@ def validate_resolver() -> dict:
             fail(f"resolver order missing {token}")
         positions.append(order.index(token))
     if positions != sorted(positions):
-        fail("constraint / frontier / continuation / auto-advance / image-consumption / full-flow resolver order is invalid")
+        fail("constraint / frontier / continuation / concurrency / idempotency / auto-advance / image-consumption / full-flow resolver order is invalid")
     return data
 
 
@@ -218,6 +364,7 @@ def validate_tool_adapter_routing() -> dict:
         fail("Tool Adapter Contract identity/version drift")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Tool Adapter Contract must remain ACTIVE_CURRENT")
+
     roles = set(data.get("capability_route_roles", []))
     required_roles = {
         "AUTHORITY_READ_WRITE",
@@ -245,6 +392,7 @@ def validate_tool_adapter_routing() -> dict:
     }
     if not route_fields.issubset(set(data.get("route_decision_fields", []))):
         fail("Tool Adapter route decision fields incomplete")
+
     routing = data.get("unified_adapter_routing_policy", {})
     expected_precedence = [
         "CURRENT_AUTHORITY_AND_OWNER_BOUNDARY",
@@ -279,6 +427,26 @@ def validate_tool_adapter_routing() -> dict:
     liveness = data.get("surface_liveness_policy", {})
     if liveness.get("do_not_probe_for_inventory_curiosity") is not True:
         fail("surface liveness probes must be need-driven")
+
+    idempotency = data.get("remote_mutation_idempotency_policy", {})
+    required_idempotency_fields = {
+        "operation_fingerprint",
+        "expected_postcondition",
+        "outcome_state",
+        "verification_surface",
+        "retry_decision",
+    }
+    if not required_idempotency_fields.issubset(set(idempotency.get("record_fields", []))):
+        fail("remote mutation idempotency fields incomplete")
+    if idempotency.get("uncertain_outcome_action") != "VERIFY_POSTCONDITION_BEFORE_RETRY":
+        fail("uncertain remote mutation must verify postcondition before retry")
+    if idempotency.get("duplicate_side_effects_forbidden") is not True:
+        fail("duplicate remote side effects must be forbidden")
+    if idempotency.get("blind_retry_after_timeout_forbidden") is not True:
+        fail("timeout must not authorize blind retry")
+    if idempotency.get("bounded_retry_only_when_safe_or_provider_keyed") is not True:
+        fail("retry must be bounded and safe/idempotency-keyed")
+
     heavy = data.get("heavy_executor_policy", {})
     if heavy.get("default") != "ESCALATION_ONLY" or heavy.get("control_plane_role") is not False:
         fail("heavy executor must remain escalation-only and not control plane")
@@ -333,6 +501,10 @@ def validate_receipt_contract() -> dict:
         "stale_reasons",
         "checkpoint_sequence",
         "checkpoint_updated_at",
+        "expected_checkpoint_sequence",
+        "executor_id",
+        "execution_lease_state",
+        "lease_acquired_at",
     }
     if not required_checkpoint_fields.issubset(set(checkpoint_ext.get("fields", []))):
         fail("Receipt continuation checkpoint fields incomplete")
@@ -359,6 +531,28 @@ def validate_receipt_contract() -> dict:
     if checkpoint_ext.get("no_material_delta_no_new_receipt") is not True:
         fail("no-delta chat turn must not create a new receipt only for checkpointing")
 
+    concurrency = data.get("concurrency_guard_extension", {})
+    if concurrency.get("required_when") != "REMOTE_OR_AUTHORITY_MUTATION_USES_A_RESUMABLE_CHECKPOINT":
+        fail("Receipt concurrency guard extension missing")
+    required_concurrency_fields = {
+        "expected_checkpoint_sequence",
+        "observed_checkpoint_sequence",
+        "executor_id",
+        "execution_lease_state",
+        "lease_acquired_at",
+        "guard_verdict",
+    }
+    if not required_concurrency_fields.issubset(set(concurrency.get("fields", []))):
+        fail("Receipt concurrency guard fields incomplete")
+    if concurrency.get("sequence_mismatch_verdict") != "REVALIDATE_CONCURRENT_ADVANCE":
+        fail("Receipt concurrency mismatch verdict invalid")
+    if concurrency.get("lease_metadata_is_advisory_only") is not True:
+        fail("Receipt lease metadata must remain advisory")
+    if concurrency.get("lease_does_not_grant_authority") is not True:
+        fail("Receipt lease must not grant authority")
+    if concurrency.get("no_global_lock_service") is not True:
+        fail("Receipt concurrency must not create a global lock service")
+
     continuous_ext = data.get("continuous_execution_extension", {})
     required_continuous_fields = {
         "auto_advance_enabled",
@@ -374,6 +568,8 @@ def validate_receipt_contract() -> dict:
         fail("Receipt auto-advance must require readback between dependent mutations")
     if continuous_ext.get("background_execution_forbidden") is not True:
         fail("Receipt auto-advance must not imply background execution")
+    if "CONCURRENT_CHECKPOINT_ADVANCE" not in set(continuous_ext.get("stop_reason_values", [])):
+        fail("Receipt auto-advance must stop on concurrent checkpoint advance")
 
     route_ext = data.get("adapter_route_decision_extension", {})
     required_route_fields = {
@@ -393,13 +589,30 @@ def validate_receipt_contract() -> dict:
         fail("Receipt route decision must not select by vendor name")
     if route_ext.get("selected_surface_does_not_gain_authority") is not True:
         fail("selected adapter surface must not gain authority")
+
+    idem = data.get("remote_mutation_idempotency_extension", {})
+    required_idempotency_fields = {
+        "operation_fingerprint",
+        "expected_postcondition",
+        "outcome_state",
+        "verification_surface",
+        "retry_decision",
+    }
+    if not required_idempotency_fields.issubset(set(idem.get("fields", []))):
+        fail("Receipt idempotency fields incomplete")
+    if idem.get("uncertain_outcome_action") != "VERIFY_POSTCONDITION_BEFORE_RETRY":
+        fail("Receipt uncertain mutation action invalid")
+    if idem.get("duplicate_side_effects_forbidden") is not True:
+        fail("Receipt must forbid duplicate side effects")
+    if idem.get("blind_retry_after_timeout_forbidden") is not True:
+        fail("Receipt must forbid blind retry after timeout")
     return data
 
 
 def validate_cases() -> None:
     rows = load_jsonl(CASES)
-    if len(rows) < 16:
-        fail("sticky/full-flow/continuation/auto-advance/routing regression corpus must have at least sixteen cases")
+    if len(rows) < 24:
+        fail("sticky/full-flow/continuation/auto-advance/routing/concurrency/idempotency regression corpus must have at least twenty-four cases")
     ids = {r.get("case_id") for r in rows}
     required = {
         "LOCK-001-NO-IMAGE-STICKY",
@@ -418,10 +631,20 @@ def validate_cases() -> None:
         "LOOP-002-STOP-ON-SIDE-EFFECT-ESCALATION",
         "ROUTE-001-CAPABILITY-ROLE-NOT-VENDOR",
         "ROUTE-002-HEAVY-EXECUTOR-ESCALATION-ONLY",
+        "FRONTIER-001-EXECUTABLE-LATEST-SEQUENCE",
+        "FRONTIER-002-EXECUTABLE-AUTHORITY-MISMATCH",
+        "CONCURRENCY-001-SEQUENCE-MATCH-PROCEED",
+        "CONCURRENCY-002-SEQUENCE-MISMATCH-REVALIDATE",
+        "CONCURRENCY-003-STALE-LEASE-NEWER-SEQUENCE-WINS",
+        "IDEMPOTENCY-001-UNCERTAIN-POSTCONDITION-FOUND",
+        "IDEMPOTENCY-002-UNCERTAIN-ABSENT-SAFE-RETRY",
+        "IDEMPOTENCY-003-UNCERTAIN-ABSENT-UNSAFE-HOLD",
+        "IDEMPOTENCY-004-CONFIRMED-SUCCESS-NO-RETRY",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
     by_id = {r["case_id"]: r for r in rows}
+
     if "NO_IMAGE_GENERATION" not in by_id["LOCK-001-NO-IMAGE-STICKY"].get("expected_active_constraints", []):
         fail("no-image sticky case does not preserve lock")
     if "CREATE_NEW_SKILL" not in by_id["LOCK-002-NO-NEW-SKILL-STICKY"].get("forbidden_actions", []):
@@ -456,6 +679,57 @@ def validate_cases() -> None:
     if route2.get("expected_selected_surface") != "github_connector":
         fail("heavy executor case must prefer sufficient lighter connector")
 
+    c = by_id["FRONTIER-001-EXECUTABLE-LATEST-SEQUENCE"]
+    result = resolve_continuation_frontier(
+        c["candidate_frontiers"], c["request_keys"], c["current_authority_fingerprint"], True
+    )
+    if result["selected_frontier"] != c["expected_selected_frontier"]:
+        fail("executable frontier resolver did not choose highest valid checkpoint sequence")
+
+    c = by_id["FRONTIER-002-EXECUTABLE-AUTHORITY-MISMATCH"]
+    result = resolve_continuation_frontier(
+        c["candidate_frontiers"], c["request_keys"], c["current_authority_fingerprint"], True
+    )
+    if result["state"] != c["expected_state"] or result["action"] != c["expected_action"]:
+        fail("executable frontier resolver must revalidate authority mismatch")
+
+    c = by_id["RESUME-006-MULTIPLE-DISTINCT-FRONTIERS-HOLD"]
+    result = resolve_continuation_frontier(
+        c["candidate_frontiers"], {}, None, c["current_authority_identifies_one_active_task"]
+    )
+    if result["action"] != "HOLD_AMBIGUOUS_FRONTIER":
+        fail("executable resolver must hold multiple distinct frontiers rather than guess")
+
+    c = by_id["CONCURRENCY-001-SEQUENCE-MATCH-PROCEED"]
+    if guard_checkpoint_mutation(c["current_sequence"], c["expected_sequence"])["allowed"] is not True:
+        fail("matching checkpoint sequence must proceed")
+
+    c = by_id["CONCURRENCY-002-SEQUENCE-MISMATCH-REVALIDATE"]
+    result = guard_checkpoint_mutation(c["current_sequence"], c["expected_sequence"])
+    if result["state"] != "REVALIDATE_CONCURRENT_ADVANCE" or result["allowed"] is not False:
+        fail("checkpoint sequence mismatch must block mutation and revalidate")
+
+    c = by_id["CONCURRENCY-003-STALE-LEASE-NEWER-SEQUENCE-WINS"]
+    if guard_checkpoint_mutation(c["current_sequence"], c["expected_sequence"])["allowed"] is not False:
+        fail("newer checkpoint sequence must beat stale lease metadata")
+
+    for case_id in [
+        "IDEMPOTENCY-001-UNCERTAIN-POSTCONDITION-FOUND",
+        "IDEMPOTENCY-002-UNCERTAIN-ABSENT-SAFE-RETRY",
+        "IDEMPOTENCY-003-UNCERTAIN-ABSENT-UNSAFE-HOLD",
+        "IDEMPOTENCY-004-CONFIRMED-SUCCESS-NO-RETRY",
+    ]:
+        c = by_id[case_id]
+        result = resolve_uncertain_mutation(
+            c["outcome_state"],
+            c["expected_postcondition_observed"],
+            c["operation_is_idempotent_or_keyed"],
+            c["retry_count"],
+            c["retry_limit"],
+        )
+        if result["action"] != c["expected_action"]:
+            fail(f"{case_id} idempotency decision mismatch")
+
 
 def validate_new_receipts(contract: dict) -> int:
     legacy = set(contract.get("legacy_receipts_without_policy_1_1_fields", []))
@@ -467,6 +741,8 @@ def validate_new_receipts(contract: dict) -> int:
     checkpoint_fields = contract.get("continuation_checkpoint_extension", {}).get("fields", [])
     continuous_fields = contract.get("continuous_execution_extension", {}).get("fields", [])
     route_fields = contract.get("adapter_route_decision_extension", {}).get("fields", [])
+    concurrency_fields = contract.get("concurrency_guard_extension", {}).get("fields", [])
+    idempotency_fields = contract.get("remote_mutation_idempotency_extension", {}).get("fields", [])
     current_policy_count = 0
 
     for path in sorted(RECEIPT_DIR.glob("*.json")):
@@ -487,13 +763,21 @@ def validate_new_receipts(contract: dict) -> int:
                 fail(f"receipt:{rid} invalid phase result {phase}={result}")
         if "continuation_checkpoint" in r:
             cp = r["continuation_checkpoint"]
-            require_present(cp, checkpoint_fields, f"receipt:{rid}:continuation_checkpoint")
+            legacy_cp_fields = [
+                f for f in checkpoint_fields
+                if f not in {"expected_checkpoint_sequence", "executor_id", "execution_lease_state", "lease_acquired_at"}
+            ]
+            require_present(cp, legacy_cp_fields, f"receipt:{rid}:continuation_checkpoint")
             if not isinstance(cp.get("checkpoint_sequence"), int) or cp["checkpoint_sequence"] < 0:
                 fail(f"receipt:{rid} checkpoint_sequence must be non-negative integer")
         if "continuous_execution" in r:
             require_present(r["continuous_execution"], continuous_fields, f"receipt:{rid}:continuous_execution")
         if "adapter_route_decision" in r:
             require_present(r["adapter_route_decision"], route_fields, f"receipt:{rid}:adapter_route_decision")
+        if "concurrency_guard" in r:
+            require_present(r["concurrency_guard"], concurrency_fields, f"receipt:{rid}:concurrency_guard")
+        if "remote_mutation_idempotency" in r:
+            require_present(r["remote_mutation_idempotency"], idempotency_fields, f"receipt:{rid}:remote_mutation_idempotency")
         if r.get("status") == "CLOSED":
             if flow.get("completion_gate") != "PASS":
                 fail(f"receipt:{rid} CLOSED requires completion_gate PASS")
@@ -515,6 +799,9 @@ def main() -> None:
     print("execution-lock validation: PASS")
     print("sticky negative constraints: ENFORCED")
     print("cross-context frontier discovery / continuation checkpoint: ENFORCED")
+    print("executable frontier resolution: ENFORCED")
+    print("optimistic checkpoint concurrency: ENFORCED")
+    print("verify-before-retry idempotency: ENFORCED")
     print("continuous ready-node auto-advance with bounded stop conditions: ENFORCED")
     print("unified capability-role adapter routing: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")

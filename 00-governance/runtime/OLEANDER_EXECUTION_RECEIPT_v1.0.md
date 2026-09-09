@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance**  
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry**  
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -21,12 +21,14 @@ The 2026-09-09 runtime extensions additionally support:
 
 - **Continuation Resume Checkpoint** when the same material task continues across chat turns, context compression, handoffs or other execution interruptions;
 - **Cross-Context Frontier Discovery** when a continuation must recover the active frontier from existing state because the current Chat does not carry a reliable local task pointer;
+- **Concurrency Guard** when a resumable checkpoint is about to drive Remote/Authority/Release mutation;
 - **Adapter Route Decision** when a material execution evaluates multiple surfaces or uses a currently exposed ephemeral connector;
+- **Remote Mutation Idempotency** when a remote write outcome is uncertain or retry is considered;
 - **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion.
 
-These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database or state database.
+These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database, state database, checkpoint database or lock service.
 
-The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts must use the applicable sections.
+The three pre-policy receipts explicitly allowlisted in the machine contract remain immutable provenance; all future receipts use only the sections applicable to the material execution. New fields are prospective and conditional.
 
 ## 1｜Identity
 
@@ -81,6 +83,10 @@ Record:
 - `stale_reasons`
 - `checkpoint_sequence`
 - `checkpoint_updated_at`
+- `expected_checkpoint_sequence`
+- `executor_id`
+- `execution_lease_state = NONE / ACTIVE / STALE / CONFLICTED`
+- `lease_acquired_at`
 
 `last_verified_artifact` records at minimum:
 
@@ -134,7 +140,8 @@ Set `checkpoint_state=REVALIDATE` and re-read Current Authority before mutation 
 - Source Authority or Design Authority changed;
 - Current native master / canonical write frontier changed externally;
 - a consumed dependency became stale or requires re-test;
-- the checkpoint is missing, corrupt, or its last artifact was never actually read back.
+- the checkpoint is missing, corrupt, or its last artifact was never actually read back;
+- another executor advanced the checkpoint sequence.
 
 A chat switch, model context compression or reopening the same conversation is **not by itself** an authority change.
 
@@ -158,7 +165,23 @@ Write/update a continuation checkpoint only through an existing persistence trig
 
 `NO MATERIAL DELTA = NO NEW RECEIPT JUST FOR CHECKPOINTING`.
 
-## 3B｜Continuous Execution｜when applicable
+## 3B｜Concurrency Guard｜when applicable
+
+Use before `REMOTE_MUTATION / AUTHORITY_MUTATION / RELEASE_MUTATION` when execution is driven by a resumable checkpoint.
+
+Record:
+
+`expected_checkpoint_sequence / observed_checkpoint_sequence / executor_id / execution_lease_state / lease_acquired_at / guard_verdict`.
+
+The concurrency truth is the checkpoint sequence, not the lease metadata.
+
+Canonical guard:
+
+`READ EXPECTED SEQUENCE → RE-READ CURRENT CARRIER BEFORE MUTATION → OBSERVED == EXPECTED = PASS_SEQUENCE_MATCH → OBSERVED != EXPECTED = REVALIDATE_CONCURRENT_ADVANCE / BLOCK MUTATION`.
+
+A stale `ACTIVE` lease cannot override a newer sequence. `executor_id` and lease fields are runtime diagnostics only and grant no mutation authority. No global lock service or lock database is introduced.
+
+## 3C｜Continuous Execution｜when applicable
 
 Use this section when more than one ready node is executed in one material run, or when auto-advance stops before Flow Completion.
 
@@ -173,11 +196,11 @@ Record:
 
 Dependent mutations require Actual Readback between nodes. A successful tool call alone is not enough to advance a dependent write frontier.
 
-Do not stop after one node solely because a tool call returned. Continue while the next node is ready, Authority/constraints remain valid, the side-effect class stays within the existing authorized ceiling and no real stop condition is active.
+Do not stop after one node solely because a tool call returned. Continue while the next node is ready, Authority/constraints remain valid, the expected checkpoint sequence is still current, the side-effect class stays within the existing authorized ceiling and no real stop condition is active.
 
 Allowed stop reasons include:
 
-`FLOW_COMPLETION_GATE_PASS / GENUINE_BLOCKER / AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER / USER_DESIGN_OR_SCOPE_DECISION_REQUIRED / SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED / MISSING_UNRECOVERABLE_SOURCE / FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED / REQUIRED_INDEPENDENT_REVIEW_UNAVAILABLE / TOOL_OR_RUNTIME_HARD_LIMIT`.
+`FLOW_COMPLETION_GATE_PASS / GENUINE_BLOCKER / AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER / CONCURRENT_CHECKPOINT_ADVANCE / USER_DESIGN_OR_SCOPE_DECISION_REQUIRED / SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED / MISSING_UNRECOVERABLE_SOURCE / FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED / REQUIRED_INDEPENDENT_REVIEW_UNAVAILABLE / TOOL_OR_RUNTIME_HARD_LIMIT`.
 
 Continuous execution is current-turn orchestration. It is not background execution and does not justify promising future work after the turn ends.
 
@@ -295,6 +318,26 @@ Unused candidates and liveness probes remain ephemeral. The selected surface doe
 
 `NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD ROUTING`.
 
+## 8B｜Remote Mutation Idempotency｜when applicable
+
+Use when a Remote/Authority/Release mutation returns `UNCERTAIN`, or a retry is being considered.
+
+Record:
+
+`operation_fingerprint / expected_postcondition / outcome_state / verification_surface / retry_decision`.
+
+`outcome_state = CONFIRMED_SUCCESS / CONFIRMED_FAILURE / UNCERTAIN`.
+
+Canonical rule:
+
+`UNCERTAIN → VERIFY POSTCONDITION BEFORE RETRY`.
+
+If the expected postcondition is found, normalize to `CONFIRMED_SUCCESS` and do not retry. If absence is proven, retry only when the operation is idempotent or provider-keyed and the bounded retry budget remains. Otherwise HOLD rather than risk a duplicate side effect.
+
+Timeout or connector ambiguity is never sufficient evidence to replay a create-like mutation.
+
+`NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD IDEMPOTENCY PROBES`.
+
 ## 9｜Real execution
 
 Record actual runtime/tool action, result, failures, repairs and re-execution state.
@@ -310,6 +353,8 @@ Record actual target/runtime, observed result, blockers, warnings and verdict.
 For a continuing task, a successful readback is the preferred checkpoint boundary. Record the verified artifact identity before advancing `next_allowed_action`.
 
 For continuous execution, readback is also the dependency boundary between successive material mutations.
+
+For uncertain remote outcomes, readback is additionally the verification boundary that decides whether a retry is legal. For cross-system state changes, it is part of reconciliation evidence.
 
 ## 11｜Four-layer regression
 
@@ -342,7 +387,7 @@ Use `GITHUB_STATIC_CHECK` or `LIVE_CROSS_PLATFORM_CHECK`.
 
 A repository-only check cannot report live Notion `CURRENT`.
 
-A chat/session boundary, frontier discovery, liveness probe or no-delta route decision does not by itself create a Current pointer mutation.
+A chat/session boundary, frontier discovery, liveness probe, idempotency verification or no-delta route decision does not by itself create a Current pointer mutation.
 
 ## 14｜Closure
 
@@ -356,4 +401,4 @@ A `CLOSED` checkpoint is a runtime consequence of valid closure; it does not its
 
 ## 15｜Does not prove
 
-A complete receipt, valid continuation checkpoint, discovered frontier, adapter route decision or continuous-execution record does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.
+A complete receipt, valid continuation checkpoint, concurrency guard, idempotency decision, discovered frontier, adapter route decision or continuous-execution record does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.

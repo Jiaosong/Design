@@ -173,7 +173,25 @@ Availability is a runtime fact, not Authority. A connector becoming available or
 
 Prefer a distinct readback surface when practical, e.g. repository mutation → browser/runtime readback, deployment → browser readback, Notion mutation → re-fetch/drift check.
 
-If the same surface must both mutate and read back because no alternative exists, record the readback as `NOT_INDEPENDENT`. The absence of another surface does not justify silently claiming independent review.
+If the same surface must both mutate and read back because no alternative exists, record the readback as `NOT_INDEPENDENT`. The absence of another surface does not justify silently claiming independent review. This does not create a new reviewer role.
+
+### 10D｜Remote mutation idempotency / verify-before-retry
+
+For `REMOTE_MUTATION / AUTHORITY_MUTATION / RELEASE_MUTATION`, define a stable operation fingerprint and a readable expected postcondition before create-like or otherwise nontrivial writes whenever practical.
+
+Material evidence fields are:
+
+`operation_fingerprint / expected_postcondition / outcome_state / verification_surface / retry_decision`.
+
+`outcome_state = CONFIRMED_SUCCESS / CONFIRMED_FAILURE / UNCERTAIN`.
+
+If a connector times out or otherwise returns an uncertain outcome, do **not** retry the write first. Use:
+
+`UNCERTAIN → READBACK EXPECTED POSTCONDITION → FOUND = NORMALIZE CONFIRMED_SUCCESS / NO RETRY → ABSENT = RETRY ONLY WHEN OPERATION IS IDEMPOTENT OR PROVIDER-KEYED AND RETRY BUDGET REMAINS`.
+
+A create-like operation whose absence cannot be established and which has no safe idempotency mechanism must `HOLD_RETRY_UNSAFE_OR_EXHAUSTED`; it must not create a duplicate PR, page, deployment, upload, message or other remote side effect.
+
+The operation fingerprint is runtime evidence, not another state database. Verification readback remains ephemeral unless an existing persistence trigger applies.
 
 ## 11｜Selective readback and validator separation
 
@@ -194,7 +212,7 @@ Where practical, use a different evidence channel for validation than for produc
 
 ## 12｜Ephemeral outputs and persistence throttle
 
-Search results, tool logs, failed attempts, console output, temporary screenshots, intermediate deployment URLs, transient adapter state, unused route candidates and surface-liveness probes are **EPHEMERAL by default**.
+Search results, tool logs, failed attempts, console output, temporary screenshots, intermediate deployment URLs, transient adapter state, unused route candidates, surface-liveness probes and idempotency verification readback are **EPHEMERAL by default**.
 
 They may be promoted to an existing persistent surface only after the applicable sequence:
 
@@ -207,6 +225,7 @@ Therefore:
 - temporary screenshot ≠ Design Authority;
 - scheduler run ≠ material delta;
 - route candidates ≠ plugin inventory authority;
+- idempotency verification readback ≠ a new operation ledger;
 - no material delta = no new page, Candidate, receipt instance or commit solely to record that the adapter ran.
 
 ## 13｜Heavy executor escalation boundary
