@@ -339,11 +339,21 @@ def main():
 
     # CAD tangent move is intentionally not silently routed through the normal-move
     # sidecar contract. Until the shared contract is expanded, it must fail closed
-    # and leave the display derivative unchanged.
+    # and leave the display derivative unchanged. Blender's Python operator API
+    # raises RuntimeError when an operator reports ERROR before CANCELLED, so that
+    # exception is the expected failure surface and is asserted explicitly.
     cad_tangent_before = mesh_vertex_snapshot(cad_face)
     select_top_face_for_intent(cad_face)
-    cad_tangent = bpy.ops.oleander.direct_face_tangent_move(u_mm=5.0, v_mm=0.0)
-    assert_true("CANCELLED" in cad_tangent, "CAD_NATIVE tangent move must fail closed until shared sidecar absorption")
+    cad_tangent_error = None
+    try:
+        bpy.ops.oleander.direct_face_tangent_move(u_mm=5.0, v_mm=0.0)
+    except RuntimeError as exc:
+        cad_tangent_error = str(exc)
+    assert_true(
+        cad_tangent_error is not None
+        and "no absorbed shared-runtime route for CAD_NATIVE" in cad_tangent_error,
+        "CAD_NATIVE tangent move must expose the bounded fail-closed operator error",
+    )
     bpy.ops.object.mode_set(mode="OBJECT")
     bpy.context.view_layer.update()
     assert_true(mesh_vertex_snapshot(cad_face) == cad_tangent_before, "failed CAD tangent route must not mutate display geometry")
@@ -385,11 +395,15 @@ def main():
             "face_tangent_move_downstream_stale_propagation",
             "cad_native_direct_edit_intent_routing",
             "cad_native_display_geometry_unchanged",
-            "cad_native_tangent_move_fail_closed",
+            "cad_native_tangent_move_fail_closed_expected_operator_error",
+            "cad_native_tangent_move_no_display_mutation",
             "cad_intent_semantic_selector_no_persistent_face_index",
             "cad_intent_fail_closed_resolution_policy",
             "post_direct_audit_no_duplicate_ids",
         ],
+        "expected_failure_cases": {
+            "cad_native_tangent_move_without_absorbed_sidecar_route": "PASS",
+        },
         "non_claims": [
             "cad_tangent_direct_edit_execution",
             "general_brep_push_pull",
