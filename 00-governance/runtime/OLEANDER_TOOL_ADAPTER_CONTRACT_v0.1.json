@@ -24,6 +24,57 @@
   "shared_tool_may_own": ["operator_vocabulary", "parameter_contracts", "adapter_runtime_selection", "deterministic_fixtures", "compatibility_fallback_rules"],
   "shared_tool_must_not_own": ["final_project_artifact", "independent_design_methodology", "project_design_authority", "evidence_promotion", "final_design_review_verdict", "new_notion_domain"],
   "selection_order": ["DESIGN_INTENT", "EFFECT_OR_OPERATOR_ROLE", "MINIMUM_SUFFICIENT_OPERATOR_SET", "PARAMETER_BOUNDS", "EFFECT_BUDGET", "EFFECT_OFF_BASELINE", "ACTUAL_READBACK"],
+  "connected_execution_surface_policy": {
+    "registry": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+    "surface_is_capability_adapter_not_ontology": true,
+    "connector_availability_does_not_grant_mutation_authority": true,
+    "tool_output_is_not_knowledge_or_project_state_by_default": true,
+    "deployment_is_not_design_authority": true,
+    "browser_observation_is_readback_evidence_until_promoted_by_existing_authority_gate": true,
+    "automation_wakeup_is_not_material_delta": true,
+    "heavy_executor_is_not_completion_gate_or_independent_reviewer": true,
+    "prefer_role_capability_routing_over_vendor_specific_ontology": true
+  },
+  "side_effect_classes": ["READ_ONLY", "LOCAL_MUTATION", "REMOTE_MUTATION", "AUTHORITY_MUTATION", "RELEASE_MUTATION"],
+  "side_effect_policy": {
+    "selection_rule": "LOWEST_SUFFICIENT_SIDE_EFFECT_CLASS",
+    "authority_mutation_requires_existing_authority_and_persistence_gates": true,
+    "release_mutation_requires_existing_release_authority": true,
+    "higher_capability_surface_is_not_preferred_merely_because_available": true
+  },
+  "runtime_routing_policy": {
+    "order": ["CURRENT_OWNER", "REQUIRED_NATIVE_OUTPUT", "ACTIVE_CONSTRAINTS", "CURRENT_EXECUTION_SURFACES", "MINIMUM_RELIABLE_ADAPTER", "SIDE_EFFECT_CLASS", "REAL_EXECUTION"],
+    "probe_only_relevant_capabilities": true,
+    "prefer_connected_or_approved_agent_executable_surface": true,
+    "parallel_task_manager_or_state_store_forbidden_when_existing_oleander_owner_exists": true,
+    "retry_policy": "BOUNDED_EVIDENCE_DRIVEN_NO_BLIND_RETRY_LOOP",
+    "fallback_policy": "PRESERVE_NATIVE_OUTPUT_TRUTH_BOUNDARY_AND_DECLARE_CAPABILITY_LOSS",
+    "adapter_failure_does_not_authorize_new_skill_method_framework": true
+  },
+  "selective_readback_policy": {
+    "rule": "READBACK_SCOPE_FOLLOWS_MUTATION_BLAST_RADIUS",
+    "sequence": ["MUTATION_SCOPE", "AFFECTED_DEPENDENCIES_OR_SURFACES", "SMALLEST_SUFFICIENT_ACTUAL_READBACK", "VERDICT"],
+    "unknown_blast_radius": "WIDEN_READBACK",
+    "authority_or_cross_platform_pointer_mutation": "AUTHORITY_AND_DRIFT_READBACK_REQUIRED",
+    "prefer_distinct_evidence_channel_when_practical": true,
+    "distinct_evidence_channel_does_not_create_new_reviewer_role": true
+  },
+  "ephemeral_persistence_policy": {
+    "ephemeral_by_default": ["SEARCH_RESULTS", "TOOL_LOGS", "FAILED_ATTEMPTS", "CONSOLE_OUTPUT", "TEMP_SCREENSHOTS", "INTERMEDIATE_DEPLOYMENT_URLS", "TRANSIENT_ADAPTER_STATE"],
+    "promotion_sequence": ["ACTUAL_READBACK", "REVIEW_OR_VALIDATION_AS_APPLICABLE", "MATERIAL_DELTA", "EXISTING_PERSISTENCE_TRIGGER"],
+    "plugin_output_not_knowledge": true,
+    "runtime_trace_not_project_state": true,
+    "scheduler_run_not_material_delta": true,
+    "no_material_delta_no_persistence_only_to_record_adapter_run": true
+  },
+  "heavy_executor_policy": {
+    "default": "ESCALATION_ONLY",
+    "control_plane_role": false,
+    "escalate_when_lighter_current_adapter_insufficient_and": ["LONG_LOW_JUDGMENT_REPETITIVE_EXECUTION", "SUBSTANTIAL_CROSS_APPLICATION_NAVIGATION", "GUI_BOUND_OPERATION_UNAVAILABLE_TO_EXPOSED_CONNECTORS", "LARGE_BOUNDED_BATCH_WITH_LOWER_EXECUTION_OVERHEAD"],
+    "do_not_default_escalate_when": ["EXISTING_CONNECTOR_API_RUNTIME_CAN_MUTATE_DIRECTLY", "FREQUENT_VISUAL_OR_DESIGN_JUDGMENT_REQUIRED", "SMALL_STEP_CONTINUATION_OF_ONE_CURRENT_OBJECT", "VALIDATION_OR_READBACK_QUALITY_DOMINATES_EXECUTION_VOLUME"],
+    "output_ceiling_before_standard_readback_review_completion_gate": "EXECUTED",
+    "self_promotion_forbidden_to": ["VERIFIED", "DESIGN_KEEP", "CURRENT", "CLOSED"]
+  },
   "static_temporal_boundary": {
     "static_effect_state_spec": "T-VISUAL-IMAGE-OPS-001",
     "state_transition_temporal_behaviour": "oleander-motion",
