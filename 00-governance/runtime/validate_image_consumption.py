@@ -41,8 +41,8 @@ def load_jsonl(path: Path) -> list[dict]:
 
 def validate_resolver() -> dict:
     r = load_json(RESOLVER)
-    if r.get("version") != "1.2" or r.get("implementation_revision") != "1.2.3":
-        fail("Current resolver must be v1.2 implementation revision 1.2.3")
+    if r.get("version") != "1.2" or r.get("implementation_revision") != "1.2.4":
+        fail("Current resolver must be v1.2 implementation revision 1.2.4")
     if r.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
     pointer = r.get("execution_contract_layer", {}).get("image_consumption_register")
