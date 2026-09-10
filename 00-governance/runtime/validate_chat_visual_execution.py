@@ -41,10 +41,43 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def decide_chat_visual_execution(case: dict) -> dict:
-    """Compile the existing knowledge-first/editable-first/readback/review loop for ordinary Chat visual production."""
+    """Compile the existing OLEANDER full-flow ordering for ordinary Chat visual production."""
     if case.get("current_design_knowledge_required") and not case.get("current_design_knowledge_resolved"):
         return {
             "action": "RESOLVE_CURRENT_DESIGN_KNOWLEDGE_BEFORE_COMPOSITION",
+            "completion_eligible": False,
+        }
+
+    benchmark_required = bool(case.get("benchmark_required"))
+    repeated_failure_reopens_benchmark = (
+        case.get("quality_convergence_required")
+        and case.get("same_root_cause_revise_count", 0) >= 2
+        and case.get("root_cause_reclassified")
+        and case.get("current_benchmark_insufficient")
+    )
+    benchmark_required = benchmark_required or repeated_failure_reopens_benchmark
+
+    if benchmark_required and not case.get("benchmark_completed"):
+        return {
+            "action": "RUN_HIGHEST_STANDARD_BENCHMARK_BEFORE_NEXT_MAKE",
+            "completion_eligible": False,
+        }
+
+    if benchmark_required and case.get("benchmark_completed") and not case.get("benchmark_transfer_rules_extracted"):
+        return {
+            "action": "EXTRACT_BENCHMARK_TRANSFER_RULES_BEFORE_DIVERGE",
+            "completion_eligible": False,
+        }
+
+    if (
+        benchmark_required
+        and case.get("benchmark_completed")
+        and case.get("benchmark_transfer_rules_extracted")
+        and case.get("learn_when_needed_required")
+        and not case.get("learning_completed")
+    ):
+        return {
+            "action": "LEARN_WHEN_NEEDED_BEFORE_DIVERGE",
             "completion_eligible": False,
         }
 
@@ -55,6 +88,19 @@ def decide_chat_visual_execution(case: dict) -> dict:
     ):
         return {
             "action": "TRANSLATE_METHODS_TO_VISIBLE_COMPOSITION_OPERATIONS",
+            "completion_eligible": False,
+        }
+
+    if (
+        benchmark_required
+        and case.get("benchmark_completed")
+        and case.get("benchmark_transfer_rules_extracted")
+        and (not case.get("learn_when_needed_required") or case.get("learning_completed"))
+        and case.get("benchmark_guided_divergence_required")
+        and not case.get("materially_distinct_candidates_present")
+    ):
+        return {
+            "action": "DIVERGE_FROM_BENCHMARK_BEFORE_NEXT_MAKE",
             "completion_eligible": False,
         }
 
@@ -121,6 +167,12 @@ def decide_chat_visual_execution(case: dict) -> dict:
                 "action": "REOPEN_TECHNIQUE_HYPOTHESIS_AFTER_NO_QUALITY_GAIN",
                 "completion_eligible": False,
             }
+
+    if case.get("premature_distill_or_update_attempted") and not case.get("artifact_quality_validated"):
+        return {
+            "action": "RETURN_TO_PROJECT_REPAIR_BEFORE_DISTILL_UPDATE",
+            "completion_eligible": False,
+        }
 
     if case.get("visual_qa") == "REVISE" or case.get("project_qa") == "REVISE":
         return {
@@ -192,6 +244,7 @@ def validate_visual_skill() -> None:
         "COMPONENT CONSISTENCY ≠ VISUAL AUTHORSHIP",
         "## Quality convergence after actual visual failure",
         "existing Control Plane `CB-01` behavior",
+        "highest-standard benchmark step",
         "METHOD APPLICATION ≠ QUALITY IMPROVEMENT",
         "ITERATION COUNT ≠ CONVERGENCE",
         "MICRO-VARIATION ≠ ALTERNATIVE COMPOSITION",
@@ -264,6 +317,11 @@ def validate_cases() -> None:
         "CHAT-VIS-012-MICRO-VARIANTS-ARE-NOT-CANDIDATE-SET",
         "CHAT-VIS-013-MATCHED-CANDIDATE-COMPARISON-REQUIRED",
         "CHAT-VIS-014-METHOD-APPLIED-NO-GAIN-REOPEN",
+        "CHAT-VIS-015-RECLASSIFIED-FAILURE-REENTERS-BENCHMARK",
+        "CHAT-VIS-016-BENCHMARK-MUST-BECOME-TRANSFER-RULES",
+        "CHAT-VIS-017-LEARN-WHEN-NEEDED-BEFORE-DIVERGE",
+        "CHAT-VIS-018-BENCHMARK-FEEDS-DIVERGENCE",
+        "CHAT-VIS-019-NO-PREMATURE-DISTILL-UPDATE",
     }
     missing = required - set(by_id)
     if missing:
@@ -285,6 +343,16 @@ def validate_cases() -> None:
     if exploration.get("final_editable_master_still_required") is not True:
         fail("generative exploration must not replace final editable master")
 
+    for case_id in [
+        "CHAT-VIS-015-RECLASSIFIED-FAILURE-REENTERS-BENCHMARK",
+        "CHAT-VIS-016-BENCHMARK-MUST-BECOME-TRANSFER-RULES",
+        "CHAT-VIS-017-LEARN-WHEN-NEEDED-BEFORE-DIVERGE",
+        "CHAT-VIS-018-BENCHMARK-FEEDS-DIVERGENCE",
+    ]:
+        case = by_id[case_id]
+        if case.get("benchmark_authority_state") != "BENCHMARK_CANDIDATE_NOT_PROJECT_AUTHORITY":
+            fail(f"{case_id} must keep external/reference benchmark below Project/Source Authority")
+
 
 def main() -> None:
     validate_existing_runtime_binding()
@@ -295,6 +363,12 @@ def main() -> None:
     print("chat-visual execution validation: PASS")
     print("ordinary Chat visual production reuses existing OLEANDER owners: ENFORCED")
     print("Current Notion design knowledge resolves before composition lock: ENFORCED")
+    print("reclassified repeated visual failure re-enters BENCHMARK before another MAKE when benchmark is insufficient: ENFORCED")
+    print("benchmark evidence must become visible transfer rules before DIVERGE: ENFORCED")
+    print("LEARN WHEN NEEDED occurs only after benchmark exposes a real capability gap and before DIVERGE: ENFORCED")
+    print("benchmark-guided repair must DIVERGE into materially different candidates before next MAKE: ENFORCED")
+    print("failed/unvalidated artifact cannot trigger premature DISTILL / UPDATE: ENFORCED")
+    print("external/reference benchmark remains candidate evidence, not Project/Source Authority: ENFORCED")
     print("retrieved methods must become visible composition operations: ENFORCED")
     print("component-first Web fallback reopens visual ownership: ENFORCED")
     print("asset role/usability pass before image-dependent layout lock: ENFORCED")
