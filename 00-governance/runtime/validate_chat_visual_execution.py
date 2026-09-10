@@ -9,6 +9,7 @@ RUNTIME = ROOT / "00-governance" / "runtime"
 RESOLVER = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 STORY_SKILL = ROOT / "oleander-skills" / "oleander-story-and-board" / "SKILL.md"
 STORY_EVALS = ROOT / "oleander-skills" / "oleander-story-and-board" / "evals" / "evals.json"
+VISUAL_SKILL = ROOT / "oleander-skills" / "oleander-visual-design" / "SKILL.md"
 CASES = ROOT / "evals" / "runtime" / "chat_visual_execution.jsonl"
 
 
@@ -40,7 +41,29 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def decide_chat_visual_execution(case: dict) -> dict:
-    """Compile the existing editable-first/readback/review loop for ordinary Chat visual production."""
+    """Compile the existing knowledge-first/editable-first/readback/review loop for ordinary Chat visual production."""
+    if case.get("current_design_knowledge_required") and not case.get("current_design_knowledge_resolved"):
+        return {
+            "action": "RESOLVE_CURRENT_DESIGN_KNOWLEDGE_BEFORE_COMPOSITION",
+            "completion_eligible": False,
+        }
+
+    if (
+        case.get("current_design_knowledge_required")
+        and case.get("current_design_knowledge_resolved")
+        and not case.get("visible_method_application_planned")
+    ):
+        return {
+            "action": "TRANSLATE_METHODS_TO_VISIBLE_COMPOSITION_OPERATIONS",
+            "completion_eligible": False,
+        }
+
+    if case.get("medium") == "WEB" and case.get("component_layout_locked_before_visual_ownership"):
+        return {
+            "action": "REOPEN_VISUAL_OWNERSHIP_BEFORE_COMPONENT_LOCK",
+            "completion_eligible": False,
+        }
+
     if case.get("material_images_present") and not case.get("asset_role_usability_passed"):
         return {
             "action": "RUN_ASSET_ROLE_USABILITY_PASS_BEFORE_LAYOUT_LOCK",
@@ -112,6 +135,31 @@ def validate_existing_runtime_binding() -> None:
             fail(f"existing review separation missing {token}")
 
 
+def validate_visual_skill() -> None:
+    text = VISUAL_SKILL.read_text(encoding="utf-8")
+    required_phrases = [
+        "## Current design-knowledge resolution before composition",
+        "CURRENT NOTION FRAMEWORK / METHOD / PRACTICE RETRIEVAL",
+        "FW-DESIGN-VISUAL-COMM-001",
+        "Dominant Field & First-read",
+        "Page-role Visual Rhythm",
+        "Attention-State Composition",
+        "Claim-bound Camera",
+        "Decompose & Recombine",
+        "T-VISUAL-IMAGE-OPS-001",
+        "Breakpoint Role Redistribution",
+        "KNOWLEDGE RETRIEVED ≠ TECHNIQUE APPLIED",
+        "COMPONENT CONSISTENCY ≠ VISUAL AUTHORSHIP",
+    ]
+    for phrase in required_phrases:
+        if phrase not in text:
+            fail(f"visual-design missing existing-knowledge production phrase: {phrase}")
+    if "Merely naming a method in a receipt does not count as use." not in text:
+        fail("visual-design must require visible application rather than method-name receipt compliance")
+    if "generic `hero + equal cards + timeline`" not in text:
+        fail("visual-design must detect generic component-first fallback as unresolved composition")
+
+
 def validate_story_skill() -> None:
     text = STORY_SKILL.read_text(encoding="utf-8")
     required_phrases = [
@@ -159,6 +207,9 @@ def validate_cases() -> None:
         "CHAT-VIS-004-GENERATED-BOARD-NOT-EDITABLE-MASTER",
         "CHAT-VIS-005-PASS-ELIGIBLE-FOR-EXISTING-FLOW-GATE",
         "CHAT-VIS-006-NONFACTUAL-GENERATIVE-EXPLORATION-ALLOWED",
+        "CHAT-VIS-007-CURRENT-DESIGN-KNOWLEDGE-FIRST",
+        "CHAT-VIS-008-METHOD-NAME-IS-NOT-APPLICATION",
+        "CHAT-VIS-009-WEB-COMPONENT-FIRST-REOPEN",
     }
     missing = required - set(by_id)
     if missing:
@@ -183,11 +234,15 @@ def validate_cases() -> None:
 
 def main() -> None:
     validate_existing_runtime_binding()
+    validate_visual_skill()
     validate_story_skill()
     validate_story_eval()
     validate_cases()
     print("chat-visual execution validation: PASS")
     print("ordinary Chat visual production reuses existing OLEANDER owners: ENFORCED")
+    print("Current Notion design knowledge resolves before composition lock: ENFORCED")
+    print("retrieved methods must become visible composition operations: ENFORCED")
+    print("component-first Web fallback reopens visual ownership: ENFORCED")
     print("asset role/usability pass before image-dependent layout lock: ENFORCED")
     print("first visual draft/export/generated board is not completion: ENFORCED")
     print("Visual/Project REVISE continues repair/reopen/retest in the active turn: ENFORCED")
