@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<style>
+.bg{fill:#f3efe5}.p{fill:#fbfaf5;stroke:#c7cbc7}.ink{fill:#17332c}.muted{fill:#687870}.q{fill:#548b7e}.s{fill:#a54539}.soft{fill:#e7ece8}
+.h1{font:700 38px "Noto Serif CJK SC",serif}.h2{font:700 21px "Noto Serif CJK SC",serif}.b{font:400 13px "Noto Sans CJK SC",sans-serif}.x{font:700 10px "Noto Sans CJK SC",sans-serif;letter-spacing:1px}
+</style>
+<rect width="1600" height="1050" class="bg"/>
+<text x="58" y="58" class="x q">M02 / OPTIONAL INVITATION TIMING v1.3</text>
+<text x="58" y="108" class="h1 ink">同一个 OPTIONAL 记忆事件，只改变“什么时候问”</text>
+<text x="58" y="146" class="b muted">READ / STOP only. NEVER events remain silent; AUTO remains explicit-creation only.</text>
+
+<g transform="translate(58 218)">
+<rect width="456" height="620" rx="22" class="p"/>
+<text x="24" y="38" class="x s">A / IMMEDIATE MODAL</text><text x="24" y="80" class="h2 ink">体验刚结束，立刻问</text>
+<rect x="24" y="120" width="408" height="210" rx="18" class="soft"/>
+<rect x="72" y="168" width="312" height="118" rx="15" fill="#fbfaf5" stroke="#a8b0aa"/>
+<text x="94" y="204" class="x q">SAVE?</text><text x="94" y="240" class="b ink">把这一刻留进我的石书？</text>
+<text x="24" y="386" class="x s">INTERRUPTION = HIGH</text>
+<text x="24" y="424" class="b muted">数字层覆盖刚刚发生的观察；体验退到背景。</text>
+<text x="24" y="500" class="x s">VERDICT</text><text x="102" y="500" class="b ink">REJECT</text>
+</g>
+
+<g transform="translate(572 218)">
+<rect width="456" height="620" rx="22" class="p"/>
+<text x="24" y="38" class="x q">B / EXIT WHISPER</text><text x="24" y="80" class="h2 ink">离开之后，只轻问一次</text>
+<rect x="24" y="120" width="408" height="210" rx="18" class="soft"/>
+<rect x="124" y="270" width="208" height="38" rx="19" fill="#fbfaf5" stroke="#a8b0aa"/>
+<text x="162" y="294" class="x q">留下一页　×</text>
+<text x="24" y="386" class="x q">INTERRUPTION = LOW</text>
+<text x="24" y="424" class="b muted">不挡住场景；无操作即消失，不转成待办。</text>
+<text x="24" y="500" class="x q">VERDICT</text><text x="102" y="500" class="b ink">KEEP CANDIDATE</text>
+</g>
+
+<g transform="translate(1086 218)">
+<rect width="456" height="620" rx="22" class="p"/>
+<text x="24" y="38" class="x s">C / RETURN BATCH</text><text x="24" y="80" class="h2 ink">回程再统一回顾</text>
+<rect x="24" y="120" width="408" height="210" rx="18" class="soft"/>
+<rect x="50" y="194" width="356" height="102" rx="15" fill="#17332c"/>
+<text x="72" y="226" class="x q">2 CANDIDATES</text><text x="72" y="260" class="b" fill="#fbfaf5">今天有两个可能值得留下的瞬间</text>
+<text x="24" y="386" class="x s">INTERRUPTION = LOW</text>
+<text x="24" y="424" class="b muted">但系统必须先暗中积累候选事件，逼近行为日志。</text>
+<text x="24" y="500" class="x s">VERDICT</text><text x="102" y="500" class="b ink">REVISE</text>
+</g>
+
+<text x="58" y="900" class="x q">CONVERGENCE</text>
+<text x="172" y="900" class="b ink">OPTIONAL event → scene ends → non-blocking one-shot invitation → untouched = disappear / no queue / no reminder.</text>
+<text x="58" y="948" class="x s">REJECT IF</text>
+<text x="146" y="948" class="b ink">modal blocks landscape/body; unanswered invitation becomes badge/red dot/inbox; Return requires hidden event logging.</text>
+<text x="58" y="996" class="x q">BOUNDARY</text>
+<text x="138" y="996" class="b muted">interaction timing prototype only · no live sensing / field attention study / privacy implementation claim.</text>
+</svg>
