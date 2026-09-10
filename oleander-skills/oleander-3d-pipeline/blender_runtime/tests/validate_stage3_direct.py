@@ -1,11 +1,13 @@
 """Headless validation for OLEANDER Blender Runtime Stage 3 Direct Modeling.
 
 This validates deterministic direct dimensions, linear duplication, bounded
-face-normal move, and bounded Blender-native face-tangent move in a real Blender
-process. CAD_NATIVE normal move may prepare its governed sidecar intent; CAD_NATIVE
-tangent move must fail closed until the shared sidecar absorbs that operation.
-This does not establish general CAD/B-Rep push-pull, persistent topological naming,
-engineering, field, manufacturing, constructability, or design authority.
+face-normal move, and bounded face-tangent move in a real Blender process. Both
+CAD_NATIVE normal and tangent entrypoints may prepare governed sidecar intents while
+leaving Blender display geometry unchanged; authoritative B-Rep execution is proved
+separately by the professional CAD-sidecar integration surface. This does not
+establish general CAD/B-Rep push-pull, general planar translation, persistent
+topological naming, engineering, field, manufacturing, constructability, or design
+authority.
 """
 
 from __future__ import annotations
@@ -337,29 +339,36 @@ def main():
         "CAD direct-edit intent must carry deterministic SHA identity",
     )
 
-    # CAD tangent move is intentionally not silently routed through the normal-move
-    # sidecar contract. Until the shared contract is expanded, it must fail closed
-    # and leave the display derivative unchanged. Blender's Python operator API
-    # raises RuntimeError when an operator reports ERROR before CANCELLED, so that
-    # exception is the expected failure surface and is asserted explicitly.
+    # CAD tangent entrypoint now prepares a governed FACE_TANGENT_MOVE sidecar
+    # intent. The Stage 3 runtime still does not execute B-Rep mutation itself.
     cad_tangent_before = mesh_vertex_snapshot(cad_face)
     select_top_face_for_intent(cad_face)
-    cad_tangent_error = None
-    try:
-        bpy.ops.oleander.direct_face_tangent_move(u_mm=5.0, v_mm=0.0)
-    except RuntimeError as exc:
-        cad_tangent_error = str(exc)
-    assert_true(
-        cad_tangent_error is not None
-        and "no absorbed shared-runtime route for CAD_NATIVE" in cad_tangent_error,
-        "CAD_NATIVE tangent move must expose the bounded fail-closed operator error",
-    )
+    cad_tangent_move = bpy.ops.oleander.direct_face_tangent_move(u_mm=5.0, v_mm=0.0)
+    assert_true("FINISHED" in cad_tangent_move, "CAD_NATIVE Face Tangent Move must prepare an intent")
     bpy.ops.object.mode_set(mode="OBJECT")
     bpy.context.view_layer.update()
-    assert_true(mesh_vertex_snapshot(cad_face) == cad_tangent_before, "failed CAD tangent route must not mutate display geometry")
+    assert_true(mesh_vertex_snapshot(cad_face) == cad_tangent_before, "CAD tangent intent must not mutate display geometry")
     assert_true(
-        cad_face.get("oleander_last_direct_operation") == "CAD_DIRECT_EDIT_INTENT",
-        "failed CAD tangent route must not overwrite the previous validated normal-move intent state",
+        cad_face.get("oleander_cad_direct_edit_state") == "PENDING_SIDECAR"
+        and cad_face.get("oleander_direct_authority_route") == "CAD_NATIVE",
+        "CAD tangent edit must remain pending specialist-sidecar execution",
+    )
+    raw_tangent_intent = cad_face["oleander_cad_direct_edit_intent"]
+    tangent_intent = json.loads(raw_tangent_intent)
+    assert_true(tangent_intent["operation"] == "FACE_TANGENT_MOVE", "CAD tangent intent operation must be explicit")
+    assert_true(
+        tangent_intent["parameters"]["translation_local_mm"] == [5.0, 0.0, 0.0],
+        "CAD tangent intent must normalize U/V provenance into local-mm translation",
+    )
+    assert_true(
+        tangent_intent["parameters"]["u_mm"] == 5.0
+        and tangent_intent["parameters"]["v_mm"] == 0.0,
+        "CAD tangent intent must retain interaction U/V provenance",
+    )
+    assert_true(
+        cad_face["oleander_cad_direct_edit_intent_sha256"]
+        == hashlib.sha256(raw_tangent_intent.encode("utf-8")).hexdigest(),
+        "CAD tangent intent must carry deterministic SHA identity",
     )
 
     audit = audit_scene(scene)
@@ -395,15 +404,14 @@ def main():
             "face_tangent_move_downstream_stale_propagation",
             "cad_native_direct_edit_intent_routing",
             "cad_native_display_geometry_unchanged",
-            "cad_native_tangent_move_fail_closed_expected_operator_error",
+            "cad_native_tangent_intent_routing",
             "cad_native_tangent_move_no_display_mutation",
+            "cad_native_tangent_uv_translation_normalization",
             "cad_intent_semantic_selector_no_persistent_face_index",
             "cad_intent_fail_closed_resolution_policy",
             "post_direct_audit_no_duplicate_ids",
         ],
-        "expected_failure_cases": {
-            "cad_native_tangent_move_without_absorbed_sidecar_route": "PASS",
-        },
+        "expected_failure_cases": {},
         "non_claims": [
             "cad_tangent_direct_edit_execution",
             "general_brep_push_pull",

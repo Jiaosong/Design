@@ -11,9 +11,11 @@ from __future__ import annotations
 
 import bmesh
 import copy
+import importlib.util
 import json
 import os
 import pathlib
+import subprocess
 import sys
 
 import bpy
@@ -247,6 +249,49 @@ def validate_response_files(response: dict, request: dict, expected_status: str,
         check(not response["display_derivative"]["path"], f"{expected_status}_display_not_released")
 
 
+def run_tangent_authoritative_integration() -> None:
+    """Reuse the existing CAD-sidecar runner state for bounded Tangent execution."""
+    probe_path = SCRIPT.with_name("probe_cad_direct_tangent_integration.py")
+    spec = importlib.util.spec_from_file_location("oleander_cad_direct_tangent_probe", probe_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load CAD tangent integration probe")
+    tangent_probe = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tangent_probe)
+
+    tangent_probe.prepare()
+    freecadcmd = pathlib.Path("/tmp/squashfs-root/usr/bin/freecadcmd")
+    service = SCRIPT.with_name("freecad_cad_direct_edit_service.py")
+    check(freecadcmd.is_file(), "tangent_freecadcmd_available")
+    check(service.is_file(), "tangent_sidecar_service_available")
+
+    requests = {
+        "success": tangent_probe.SUCCESS_REQUEST,
+        "missing": tangent_probe.MISSING_REQUEST,
+        "ambiguous": tangent_probe.AMBIGUOUS_REQUEST,
+    }
+    for name, request_path in requests.items():
+        out_dir = ROOT / f"tangent_direct_{name}"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        env = os.environ.copy()
+        env["OLEANDER_CAD_DIRECT_REQUEST"] = str(request_path)
+        env["OLEANDER_CAD_DIRECT_DIR"] = str(out_dir)
+        completed = subprocess.run(
+            [str(freecadcmd), str(service)],
+            env=env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
+        print(completed.stdout, end="")
+        check(completed.returncode == 0, f"tangent_{name}_freecad_process")
+        check((out_dir / "cad_direct_edit_response.json").is_file(), f"tangent_{name}_response_exists")
+
+    tangent_probe.readback()
+    check(tangent_probe.REOPEN.is_file(), "tangent_blender_save_reopen_artifact")
+    checks.append("cad_native_tangent_authoritative_integration")
+
+
 def readback() -> None:
     if hasattr(bpy.types.Object, "oleander"):
         try:
@@ -337,15 +382,17 @@ def readback() -> None:
     check(reopened["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "readback_authority_reopen")
     check(reopened["cad_direct_edit_execution_state"] == "EXECUTED", "readback_execution_state_reopen")
 
+    run_tangent_authoritative_integration()
+
     result_payload = {
-        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.2",
+        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.3",
         "status": "PASS",
         "blender": bpy.app.version_string,
         "checks": checks,
         "request_sha256": payload_sha256(success_request),
         "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "EXECUTED", "resolution": "RESOLVED_UNIQUE", "binder": "PRODUCTION_TYPED_DIRECT_RESPONSE"},
         "failure_envelope": {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE", "hold_bind": "FAIL_CLOSED"},
-        "non_claims": ["general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "default_environment_promotion", "engineering_approval", "manufacturing_release", "field_truth"],
+        "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "oblique_face_execution", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "P0_G_MODELING_INTERACTION_PASS", "default_environment_promotion", "engineering_approval", "manufacturing_release", "field_truth"],
     }
     print("OLEANDER_CAD_DIRECT_EDIT_READBACK=" + json.dumps(result_payload, sort_keys=True))
 

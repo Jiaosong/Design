@@ -1,12 +1,15 @@
 """Bounded FreeCAD/OCCT executor for OLEANDER CAD direct-edit requests.
 
-This is a process-sidecar service under the existing CAD Sidecar Integration
-surface. It executes exactly one bounded operation: FACE_NORMAL_MOVE on the
-uniquely re-resolved +Z planar top face of a rectangular prismatic single solid.
-It never persists FaceN/EdgeN ordinals and returns HOLD, with no released output
-artifacts, when semantic face resolution is missing or ambiguous.
+This process-sidecar service remains under the existing CAD Sidecar Integration
+surface. It executes two bounded operations on an unmodified rectangular-prism
+single solid: FACE_NORMAL_MOVE on the uniquely re-resolved +Z four-edge top face,
+and FACE_TANGENT_MOVE on a uniquely re-resolved +X/+Y/+Z axis-aligned four-edge
+face with a non-zero in-plane translation no longer than 20 mm. It never persists
+FaceN/EdgeN ordinals and returns HOLD, with no released output artifacts, when
+semantic face resolution is missing or ambiguous.
 
-This is not general push/pull, persistent topological naming, or P0-B parity.
+This is not general push/pull, general or oblique planar-face translation,
+persistent topological naming, or P0-B parity.
 """
 
 from __future__ import annotations
@@ -25,7 +28,9 @@ REQUEST_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_REQUEST_v0.1"
 RESPONSE_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_RESPONSE_v0.1"
 DISPLAY_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_DISPLAY_DERIVATIVE_v0.1"
 REQUIRED_KERNEL = "FREECAD_OCCT_BREP"
-OPERATION = "FACE_NORMAL_MOVE"
+OPERATION_NORMAL = "FACE_NORMAL_MOVE"
+OPERATION_TANGENT = "FACE_TANGENT_MOVE"
+TANGENT_MAX_DISTANCE_MM = 20.0
 TOL = 1e-6
 MATCH_TOL_MM = 1e-4
 MATCH_REL = 1e-6
@@ -115,9 +120,19 @@ def validate_request(request: dict) -> dict:
     master_brep = master_fcstd.with_suffix(".brep")
 
     operation = request.get("operation") or {}
-    require(operation.get("kind") == OPERATION, "only FACE_NORMAL_MOVE is supported")
-    distance_mm = finite(operation.get("distance_mm"), "operation.distance_mm")
-    require(abs(distance_mm) > 1e-9, "FACE_NORMAL_MOVE distance must be non-zero")
+    operation_kind = operation.get("kind")
+    if operation_kind == OPERATION_NORMAL:
+        distance_mm = finite(operation.get("distance_mm"), "operation.distance_mm")
+        require(abs(distance_mm) > 1e-9, "FACE_NORMAL_MOVE distance must be non-zero")
+        normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+    elif operation_kind == OPERATION_TANGENT:
+        translation = vector3(operation.get("translation_local_mm"), "operation.translation_local_mm")
+        translation_length = math.sqrt(sum(v * v for v in translation))
+        require(translation_length > 1e-9, "FACE_TANGENT_MOVE translation must be non-zero")
+        require(translation_length <= TANGENT_MAX_DISTANCE_MM + 1e-9, "FACE_TANGENT_MOVE exceeds bounded 20 mm contract")
+        normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+    else:
+        raise ValueError(f"unsupported direct-edit operation: {operation_kind}")
 
     selector = request.get("target_selector") or {}
     require(selector.get("kind") == "SEMANTIC_FACE_DESCRIPTOR", "semantic face descriptor required")
@@ -131,12 +146,18 @@ def validate_request(request: dict) -> dict:
     length = math.sqrt(sum(v * v for v in normal))
     require(length > 1e-9, "descriptor normal must be non-zero")
     normal = [v / length for v in normal]
-    require(abs(normal[0]) <= 1e-6 and abs(normal[1]) <= 1e-6 and normal[2] > 0.999999, "first execution slice requires +Z planar face")
+    positive_axes = sum(1 for value in normal if value > 0.999999)
+    near_zero_axes = sum(1 for value in normal if abs(value) <= 1e-6)
+    require(positive_axes == 1 and near_zero_axes == 2, "bounded execution requires +X/+Y/+Z axis-aligned planar face")
+    if operation_kind == OPERATION_NORMAL:
+        require(normal[2] > 0.999999, "FACE_NORMAL_MOVE first execution slice requires +Z planar face")
+    else:
+        require(abs(sum(a * b for a, b in zip(normal, normalized_operation["translation_local_mm"]))) <= 1e-6, "FACE_TANGENT_MOVE translation must remain in resolved face tangent plane")
     center = vector3(descriptor.get("center_local_mm"), "descriptor.center_local_mm")
     area = finite(descriptor.get("area_mm2"), "descriptor.area_mm2")
     require(area > 0.0, "descriptor area must be positive")
     edge_count = int(descriptor.get("edge_count", 0))
-    require(edge_count == 4, "first execution slice requires a four-edge planar face")
+    require(edge_count == 4, "bounded execution requires a four-edge planar face")
     edge_lengths = descriptor.get("edge_lengths_mm") or []
     require(len(edge_lengths) == edge_count, "descriptor edge lengths mismatch")
     edge_lengths = sorted(finite(v, "descriptor.edge_lengths_mm") for v in edge_lengths)
@@ -157,7 +178,7 @@ def validate_request(request: dict) -> dict:
         "request_id": request_id,
         "ole_id": ole_id,
         "revision": revision,
-        "distance_mm": distance_mm,
+        "operation": normalized_operation,
         "master_fcstd": master_fcstd,
         "master_brep": master_brep,
         "descriptor": {
@@ -171,7 +192,6 @@ def validate_request(request: dict) -> dict:
         },
         "request_sha256": payload_sha256(request),
     }
-
 
 def face_normal(face):
     u0, u1, v0, v1 = face.ParameterRange
@@ -356,6 +376,69 @@ def move_resolved_top_face(shape, top, delta_mm: float):
     return edited
 
 
+
+
+def select_opposite_face(shape, normal):
+    found = []
+    for face in shape.Faces:
+        candidate = face_normal(face)
+        if candidate.dot(-normal) > 0.999999:
+            found.append(face)
+    require(len(found) == 1, "bounded prism requires one opposite face")
+    return found[0]
+
+
+def translate_resolved_axis_face(shape, target, translation_mm):
+    require(shape.isValid() and len(shape.Solids) == 1, "bounded tangent edit requires one valid source solid")
+    require(len(shape.Faces) == 6, "bounded tangent edit requires an unmodified six-face rectangular prism")
+    bbox = shape.BoundBox
+    expected_volume = bbox.XLength * bbox.YLength * bbox.ZLength
+    require(abs(shape.Volume - expected_volume) <= max(1e-4, shape.Volume * 1e-6), "source is outside rectangular-prism volume envelope")
+    normal = face_normal(target)
+    positive_axes = sum(1 for value in (normal.x, normal.y, normal.z) if value > 0.999999)
+    near_zero_axes = sum(1 for value in (normal.x, normal.y, normal.z) if abs(value) <= 1e-6)
+    require(positive_axes == 1 and near_zero_axes == 2, "resolved tangent face must be +X/+Y/+Z axis-aligned")
+    delta = App.Vector(*translation_mm)
+    require(delta.Length > 1e-9 and delta.Length <= TANGENT_MAX_DISTANCE_MM + 1e-9, "tangent translation outside bounded contract")
+    require(abs(delta.dot(normal)) <= 1e-6, "tangent translation contains a normal component")
+
+    opposite = select_opposite_face(shape, normal)
+    target_points = [vertex.Point for vertex in target.OuterWire.OrderedVertexes]
+    require(len(target_points) == 4, "bounded tangent face must have four vertices")
+    target_center_before = target.CenterOfMass
+    opposite_center_before = opposite.CenterOfMass
+    opposite_area_before = opposite.Area
+    moved_target_points = [point + delta for point in target_points]
+    moved_target = make_face(moved_target_points, normal)
+    require((moved_target.CenterOfMass - (target_center_before + delta)).Length <= 1e-5, "tangent target center did not translate exactly")
+    require(abs(moved_target.Area - target.Area) <= 1e-5, "tangent target area changed")
+
+    replacements = [(target, moved_target)]
+    adjacent_count = 0
+    for face in shape.Faces:
+        if face.isSame(target) or face.isSame(opposite):
+            continue
+        points = [vertex.Point for vertex in face.OuterWire.OrderedVertexes]
+        require(len(points) == 4, "bounded tangent adjacent face must have four vertices")
+        on_target = [any(same_point(point, target_point) for target_point in target_points) for point in points]
+        shared = sum(1 for flag in on_target if flag)
+        if shared == 0:
+            continue
+        require(shared == 2, "adjacent tangent face must share exactly one target edge")
+        rebuilt_points = [point + delta if flag else point for point, flag in zip(points, on_target)]
+        rebuilt = make_face(rebuilt_points, face_normal(face))
+        replacements.append((face, rebuilt))
+        adjacent_count += 1
+
+    require(adjacent_count == 4 and len(replacements) == 5, "tangent edit must replace target plus four adjacent faces")
+    edited = normalize_replaced(shape.replaceShape(replacements))
+    require(edited.isValid() and len(edited.Solids) == 1, "tangent edit did not produce one valid solid")
+    require(abs(edited.Volume - shape.Volume) <= max(1e-4, shape.Volume * 1e-6), "tangent edit must preserve prism volume")
+    opposite_after = select_opposite_face(edited, normal)
+    require((opposite_after.CenterOfMass - opposite_center_before).Length <= 1e-5, "opposite face center changed")
+    require(abs(opposite_after.Area - opposite_area_before) <= 1e-5, "opposite face area changed")
+    return edited
+
 def metrics(shape) -> dict:
     return {
         "bbox_mm": [shape.BoundBox.XLength, shape.BoundBox.YLength, shape.BoundBox.ZLength],
@@ -366,6 +449,12 @@ def metrics(shape) -> dict:
 
 def empty_artifact() -> dict:
     return {"path": "", "sha256": "0" * 64}
+
+
+def operation_response(validated: dict, execution_state: str) -> dict:
+    operation = dict(validated["operation"])
+    operation["execution_state"] = execution_state
+    return operation
 
 
 def write_hold(request: dict, validated: dict, shape, resolution: dict) -> None:
@@ -383,12 +472,12 @@ def write_hold(request: dict, validated: dict, shape, resolution: dict) -> None:
             "brep": {"path": str(validated["master_brep"]), "sha256": file_sha256(validated["master_brep"])},
         },
         "resolution": resolution,
-        "operation": {"kind": OPERATION, "distance_mm": validated["distance_mm"], "execution_state": "NOT_EXECUTED"},
+        "operation": operation_response(validated, "NOT_EXECUTED"),
         "authoritative": {"master_type": "CAD_NATIVE", "geometry_authority": REQUIRED_KERNEL, "fcstd": empty_artifact(), "step": empty_artifact(), "brep": empty_artifact()},
         "display_derivative": empty_artifact(),
         "measurements": {"units": "mm", "source_bbox_mm": source_metrics["bbox_mm"], "source_volume_mm3": source_metrics["volume_mm3"], "result_bbox_mm": [0.0, 0.0, 0.0], "result_volume_mm3": 0.0, "result_solid_count": 0},
         "error": None,
-        "non_claims": ["general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
+        "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
     }
     RESPONSE_PATH.write_bytes(canonical_bytes(response))
     print("OLEANDER_CAD_DIRECT_EDIT_HOLD=" + json.dumps(response, sort_keys=True))
@@ -396,6 +485,14 @@ def write_hold(request: dict, validated: dict, shape, resolution: dict) -> None:
 
 def write_fail(request: dict | None, error: Exception) -> None:
     request = request or {}
+    raw_operation = request.get("operation") or {}
+    kind = str(raw_operation.get("kind") or OPERATION_NORMAL)
+    operation = {"kind": kind, "execution_state": "NOT_EXECUTED"}
+    if kind == OPERATION_TANGENT:
+        value = raw_operation.get("translation_local_mm")
+        operation["translation_local_mm"] = value if isinstance(value, list) and len(value) == 3 else [0.0, 0.0, 0.0]
+    else:
+        operation["distance_mm"] = float(raw_operation.get("distance_mm") or 0.0)
     response = {
         "schema": RESPONSE_SCHEMA,
         "request_id": str(request.get("request_id") or "UNKNOWN"),
@@ -406,16 +503,15 @@ def write_fail(request: dict | None, error: Exception) -> None:
         "request_sha256": payload_sha256(request) if request else "0" * 64,
         "source_master": {"fcstd": empty_artifact(), "brep": empty_artifact()},
         "resolution": {"state": "ERROR", "candidate_count": 0, "candidate_signatures": []},
-        "operation": {"kind": str((request.get("operation") or {}).get("kind") or OPERATION), "distance_mm": float((request.get("operation") or {}).get("distance_mm") or 0.0), "execution_state": "NOT_EXECUTED"},
+        "operation": operation,
         "authoritative": {"master_type": "CAD_NATIVE", "geometry_authority": REQUIRED_KERNEL, "fcstd": empty_artifact(), "step": empty_artifact(), "brep": empty_artifact()},
         "display_derivative": empty_artifact(),
         "measurements": {"units": "mm", "source_bbox_mm": [0.0, 0.0, 0.0], "source_volume_mm3": 0.0, "result_bbox_mm": [0.0, 0.0, 0.0], "result_volume_mm3": 0.0, "result_solid_count": 0},
         "error": str(error),
-        "non_claims": ["general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS"],
+        "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS"],
     }
     RESPONSE_PATH.write_bytes(canonical_bytes(response))
     print("OLEANDER_CAD_DIRECT_EDIT_FAIL=" + json.dumps(response, sort_keys=True))
-
 
 def main() -> None:
     request = None
@@ -434,7 +530,10 @@ def main() -> None:
             return
 
         source_metrics = metrics(shape)
-        edited = move_resolved_top_face(shape, face, validated["distance_mm"])
+        if validated["operation"]["kind"] == OPERATION_NORMAL:
+            edited = move_resolved_top_face(shape, face, validated["operation"]["distance_mm"])
+        else:
+            edited = translate_resolved_axis_face(shape, face, validated["operation"]["translation_local_mm"])
         result_metrics = metrics(edited)
         stem = f"{validated['ole_id']}_R{validated['revision']:03d}"
         fcstd = OUT / f"{stem}.FCStd"
@@ -451,9 +550,13 @@ def main() -> None:
         obj.addProperty("App::PropertyString", "OLE_RequestSHA256", "OLEANDER")
         obj.OLE_RequestSHA256 = validated["request_sha256"]
         obj.addProperty("App::PropertyString", "OLE_Operation", "OLEANDER")
-        obj.OLE_Operation = OPERATION
-        obj.addProperty("App::PropertyFloat", "OLE_DistanceMM", "OLEANDER")
-        obj.OLE_DistanceMM = validated["distance_mm"]
+        obj.OLE_Operation = validated["operation"]["kind"]
+        if validated["operation"]["kind"] == OPERATION_NORMAL:
+            obj.addProperty("App::PropertyFloat", "OLE_DistanceMM", "OLEANDER")
+            obj.OLE_DistanceMM = validated["operation"]["distance_mm"]
+        else:
+            obj.addProperty("App::PropertyVector", "OLE_TranslationMM", "OLEANDER")
+            obj.OLE_TranslationMM = App.Vector(*validated["operation"]["translation_local_mm"])
         obj.addProperty("App::PropertyString", "OLE_ResolutionSignature", "OLEANDER")
         obj.OLE_ResolutionSignature = resolution["resolved_signature"]
         obj.Shape = edited
@@ -503,7 +606,7 @@ def main() -> None:
                 "brep": {"path": str(validated["master_brep"]), "sha256": file_sha256(validated["master_brep"])},
             },
             "resolution": resolution,
-            "operation": {"kind": OPERATION, "distance_mm": validated["distance_mm"], "execution_state": "EXECUTED"},
+            "operation": operation_response(validated, "EXECUTED"),
             "authoritative": {
                 "master_type": "CAD_NATIVE",
                 "geometry_authority": REQUIRED_KERNEL,
@@ -521,13 +624,12 @@ def main() -> None:
                 "result_solid_count": result_metrics["solid_count"],
             },
             "error": None,
-            "non_claims": ["general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
+            "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
         }
         RESPONSE_PATH.write_bytes(canonical_bytes(response))
         print("OLEANDER_CAD_DIRECT_EDIT_RESPONSE=" + json.dumps(response, sort_keys=True))
     except Exception as exc:
         write_fail(request, exc)
         raise
-
 
 main()

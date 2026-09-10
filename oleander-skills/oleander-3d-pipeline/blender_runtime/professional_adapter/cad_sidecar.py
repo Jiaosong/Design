@@ -40,6 +40,8 @@ DIRECT_EDIT_RESPONSE_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_RESPONSE_v0.1"
 DIRECT_EDIT_DISPLAY_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_DISPLAY_DERIVATIVE_v0.1"
 
 DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE = "FACE_NORMAL_MOVE"
+DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE = "FACE_TANGENT_MOVE"
+DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM = 20.0
 DIRECT_EDIT_REQUIRED_KERNEL = "FREECAD_OCCT_BREP"
 DIRECT_EDIT_BLENDER_ROLE = "DISPLAY_DERIVATIVE_ONLY"
 DIRECT_EDIT_REBIND_POLICY = "SEMANTIC_REBIND_FAIL_CLOSED"
@@ -70,7 +72,9 @@ _DIRECT_REQUEST_SOURCE_KEYS = {
     "master_locator",
     "required_kernel",
 }
-_DIRECT_REQUEST_OPERATION_KEYS = {"kind", "distance_mm"}
+_DIRECT_REQUEST_NORMAL_OPERATION_KEYS = {"kind", "distance_mm"}
+_DIRECT_REQUEST_TANGENT_OPERATION_KEYS = {"kind", "translation_local_mm"}
+_DIRECT_TANGENT_INTENT_PARAMETER_KEYS = {"u_mm", "v_mm", "tangent_u_local", "tangent_v_local", "translation_local_mm"}
 _DIRECT_REQUEST_SELECTOR_KEYS = {
     "kind",
     "descriptor",
@@ -228,6 +232,56 @@ def _validate_direct_face_descriptor(target: dict, *, strict_keys: bool = False)
     }
 
 
+def _dot3(a, b) -> float:
+    return sum(float(x) * float(y) for x, y in zip(a, b))
+
+
+def _length3(value) -> float:
+    return math.sqrt(_dot3(value, value))
+
+
+def _unit3(value, label: str) -> list[float]:
+    vector = _vector(value, 3, label)
+    length = _length3(vector)
+    if length <= 1e-9:
+        raise CADSidecarContractError(f"{label} must be non-zero")
+    return [component / length for component in vector]
+
+
+def _validate_tangent_intent_parameters(parameters: dict, target: dict) -> dict:
+    parameters = _require_exact_keys(parameters, _DIRECT_TANGENT_INTENT_PARAMETER_KEYS, "FACE_TANGENT_MOVE parameters")
+    u_mm = _finite_float(parameters.get("u_mm"), "parameters.u_mm")
+    v_mm = _finite_float(parameters.get("v_mm"), "parameters.v_mm")
+    tangent_u = _unit3(parameters.get("tangent_u_local"), "parameters.tangent_u_local")
+    tangent_v = _unit3(parameters.get("tangent_v_local"), "parameters.tangent_v_local")
+    translation = _vector(parameters.get("translation_local_mm"), 3, "parameters.translation_local_mm")
+    normal = _unit3(target.get("normal_local"), "target.normal_local")
+    if abs(_dot3(tangent_u, tangent_v)) > 1e-6:
+        raise CADSidecarContractError("FACE_TANGENT_MOVE U/V basis must be orthogonal")
+    if abs(_dot3(tangent_u, normal)) > 1e-6 or abs(_dot3(tangent_v, normal)) > 1e-6:
+        raise CADSidecarContractError("FACE_TANGENT_MOVE basis must lie in target tangent plane")
+    expected = [tangent_u[i] * u_mm + tangent_v[i] * v_mm for i in range(3)]
+    if any(abs(a - b) > 1e-6 for a, b in zip(expected, translation)):
+        raise CADSidecarContractError("FACE_TANGENT_MOVE translation does not match U/V interaction provenance")
+    distance = _length3(translation)
+    if distance <= 1e-9:
+        raise CADSidecarContractError("FACE_TANGENT_MOVE translation must be non-zero")
+    if distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+        raise CADSidecarContractError("FACE_TANGENT_MOVE exceeds bounded 20 mm specialist contract")
+    if abs(_dot3(normal, translation)) > 1e-6:
+        raise CADSidecarContractError("FACE_TANGENT_MOVE translation must remain in the target tangent plane")
+    return {
+        "kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
+        "translation_local_mm": translation,
+        "interaction": {
+            "u_mm": u_mm,
+            "v_mm": v_mm,
+            "tangent_u_local": tangent_u,
+            "tangent_v_local": tangent_v,
+        },
+    }
+
+
 def validate_direct_edit_intent(intent: dict) -> dict:
     """Validate a bounded Blender Direct Face intent without resolving a CAD face."""
     if not isinstance(intent, dict) or intent.get("schema") != DIRECT_EDIT_INTENT_SCHEMA:
@@ -240,13 +294,18 @@ def validate_direct_edit_intent(intent: dict) -> dict:
         raise CADSidecarContractError("CAD direct-edit intent requires a stable OLE ID")
     if intent.get("units") != "mm":
         raise CADSidecarContractError("CAD direct-edit intent currently supports mm only")
-    if intent.get("operation") != DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
-        raise CADSidecarContractError(f"unsupported CAD direct-edit operation: {intent.get('operation')}")
 
+    operation_kind = intent.get("operation")
     parameters = intent.get("parameters") or {}
-    distance_mm = _finite_float(parameters.get("distance_mm"), "parameters.distance_mm")
-    if abs(distance_mm) <= 1e-9:
-        raise CADSidecarContractError("FACE_NORMAL_MOVE distance must be non-zero")
+    if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        distance_mm = _finite_float(parameters.get("distance_mm"), "parameters.distance_mm")
+        if abs(distance_mm) <= 1e-9:
+            raise CADSidecarContractError("FACE_NORMAL_MOVE distance must be non-zero")
+        normalized_operation = {"kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE, "distance_mm": distance_mm}
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        normalized_operation = None
+    else:
+        raise CADSidecarContractError(f"unsupported CAD direct-edit operation: {operation_kind}")
 
     authority = intent.get("authority") or {}
     if authority.get("master_type") != "CAD_NATIVE":
@@ -271,28 +330,35 @@ def validate_direct_edit_intent(intent: dict) -> dict:
         raise CADSidecarContractError("CAD direct-edit intent lost topology-persistence prohibitions")
 
     target = _validate_direct_face_descriptor(intent.get("target"))
+    if operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        normalized_operation = _validate_tangent_intent_parameters(parameters, target)
     return {
         "ole_id": ole_id,
-        "distance_mm": distance_mm,
+        "operation": normalized_operation,
         "master_locator": master_locator,
         "target": target,
         "intent_sha256": payload_sha256(intent),
     }
 
-
 def build_direct_edit_request_from_intent(*, request_id: str, revision: int, intent: dict) -> dict:
-    """Convert a validated Blender interaction intent into a deterministic CAD request.
-
-    This function deliberately stops before CAD-face resolution or B-Rep mutation.
-    A specialist executor must re-resolve the semantic descriptor against the
-    authoritative CAD master and fail closed on ambiguity/missing targets.
-    """
+    """Convert a validated Blender interaction intent into a deterministic CAD request."""
     request_id = str(request_id or "").strip()
     if not request_id:
         raise CADSidecarContractError("direct-edit request_id must be non-empty")
     if int(revision) < 1:
         raise CADSidecarContractError("direct-edit revision must be >= 1")
     validated = validate_direct_edit_intent(intent)
+    normalized_operation = validated["operation"]
+    if normalized_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        request_operation = {
+            "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
+            "distance_mm": normalized_operation["distance_mm"],
+        }
+    else:
+        request_operation = {
+            "kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
+            "translation_local_mm": normalized_operation["translation_local_mm"],
+        }
     request = {
         "schema": DIRECT_EDIT_REQUEST_SCHEMA,
         "request_id": request_id,
@@ -306,10 +372,7 @@ def build_direct_edit_request_from_intent(*, request_id: str, revision: int, int
             "master_locator": validated["master_locator"],
             "required_kernel": DIRECT_EDIT_REQUIRED_KERNEL,
         },
-        "operation": {
-            "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
-            "distance_mm": validated["distance_mm"],
-        },
+        "operation": request_operation,
         "target_selector": {
             "kind": "SEMANTIC_FACE_DESCRIPTOR",
             "descriptor": validated["target"],
@@ -329,15 +392,8 @@ def build_direct_edit_request_from_intent(*, request_id: str, revision: int, int
     validate_direct_edit_request(request)
     return request
 
-
 def validate_direct_edit_request(request: dict) -> dict:
-    """Strictly validate a serialized direct-edit request before persistence/execution.
-
-    The builder is not the only trust boundary. A request can arrive from disk,
-    IPC, a queue, or another process, so every nested contract is revalidated and
-    unknown keys fail closed. This function still does not resolve a CAD face or
-    execute B-Rep mutation.
-    """
+    """Strictly validate a serialized direct-edit request before persistence/execution."""
     request = _require_exact_keys(request, _DIRECT_REQUEST_TOP_LEVEL_KEYS, "CAD direct-edit request")
     if request.get("schema") != DIRECT_EDIT_REQUEST_SCHEMA:
         raise CADSidecarContractError("unexpected CAD direct-edit request schema")
@@ -369,12 +425,27 @@ def validate_direct_edit_request(request: dict) -> dict:
     if source.get("required_kernel") != DIRECT_EDIT_REQUIRED_KERNEL:
         raise CADSidecarContractError("CAD direct-edit request must require FreeCAD/OCCT B-Rep authority")
 
-    operation = _require_exact_keys(request.get("operation"), _DIRECT_REQUEST_OPERATION_KEYS, "CAD direct-edit operation")
-    if operation.get("kind") != DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
-        raise CADSidecarContractError(f"unsupported CAD direct-edit request operation: {operation.get('kind')}")
-    distance_mm = _finite_float(operation.get("distance_mm"), "operation.distance_mm")
-    if abs(distance_mm) <= 1e-9:
-        raise CADSidecarContractError("FACE_NORMAL_MOVE request distance must be non-zero")
+    raw_operation = request.get("operation")
+    if not isinstance(raw_operation, dict):
+        raise CADSidecarContractError("CAD direct-edit operation must be an object")
+    operation_kind = raw_operation.get("kind")
+    if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        operation = _require_exact_keys(raw_operation, _DIRECT_REQUEST_NORMAL_OPERATION_KEYS, "CAD direct-edit normal operation")
+        distance_mm = _finite_float(operation.get("distance_mm"), "operation.distance_mm")
+        if abs(distance_mm) <= 1e-9:
+            raise CADSidecarContractError("FACE_NORMAL_MOVE request distance must be non-zero")
+        normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        operation = _require_exact_keys(raw_operation, _DIRECT_REQUEST_TANGENT_OPERATION_KEYS, "CAD direct-edit tangent operation")
+        translation = _vector(operation.get("translation_local_mm"), 3, "operation.translation_local_mm")
+        distance = _length3(translation)
+        if distance <= 1e-9:
+            raise CADSidecarContractError("FACE_TANGENT_MOVE request translation must be non-zero")
+        if distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+            raise CADSidecarContractError("FACE_TANGENT_MOVE request exceeds bounded 20 mm specialist contract")
+        normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+    else:
+        raise CADSidecarContractError(f"unsupported CAD direct-edit request operation: {operation_kind}")
 
     selector = _require_exact_keys(request.get("target_selector"), _DIRECT_REQUEST_SELECTOR_KEYS, "CAD direct-edit target selector")
     if selector.get("kind") != "SEMANTIC_FACE_DESCRIPTOR":
@@ -387,6 +458,10 @@ def validate_direct_edit_request(request: dict) -> dict:
     prohibited = selector.get("prohibited_persistence")
     if not isinstance(prohibited, list) or set(prohibited) != DIRECT_EDIT_PROHIBITED_PERSISTENCE:
         raise CADSidecarContractError("CAD direct-edit request topology-persistence prohibition set mismatch")
+    if operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        normal = _unit3(descriptor["normal_local"], "target.normal_local")
+        if abs(_dot3(normal, normalized_operation["translation_local_mm"])) > 1e-6:
+            raise CADSidecarContractError("FACE_TANGENT_MOVE request translation must remain in target tangent plane")
 
     authority = _require_exact_keys(request.get("authority"), _DIRECT_REQUEST_AUTHORITY_KEYS, "CAD direct-edit request authority")
     if authority.get("master_type") != "CAD_NATIVE":
@@ -410,15 +485,11 @@ def validate_direct_edit_request(request: dict) -> dict:
             "master_locator": master_locator,
             "required_kernel": DIRECT_EDIT_REQUIRED_KERNEL,
         },
-        "operation": {
-            "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
-            "distance_mm": distance_mm,
-        },
+        "operation": normalized_operation,
         "target": descriptor,
         "execution_state": "NOT_EXECUTED",
         "request_sha256": payload_sha256(request),
     }
-
 
 def build_request(*, request_id: str, ole_id: str, revision: int, editable_source: str, solver: str, solver_state: str, profile_points_mm: Iterable[Sequence[float]], extrusion_depth_mm: float, holes: Iterable[dict] = ()) -> dict:
     if not request_id or not ole_id or not editable_source or not solver:
@@ -484,14 +555,7 @@ def _validate_direct_artifact(record, label: str, *, released: bool) -> dict:
 
 
 def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -> dict:
-    """Validate a typed specialist direct-edit response before Blender readback.
-
-    The v0.1 response is intentionally bounded to the first integrated execution
-    slice. PASS means one uniquely resolved FACE_NORMAL_MOVE was actually executed
-    by the authoritative FreeCAD/OCCT sidecar. HOLD means no result master or
-    display derivative was released. HOLD is rejected unless ``allow_hold`` is
-    explicitly requested by a caller that is inspecting the failure envelope.
-    """
+    """Validate a typed specialist response for the bounded Direct Face operation union."""
     if not isinstance(response, dict) or response.get("schema") != DIRECT_EDIT_RESPONSE_SCHEMA:
         raise CADSidecarContractError("unexpected CAD direct-edit response schema")
 
@@ -514,11 +578,20 @@ def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -
         raise CADSidecarContractError("CAD direct-edit response lost OCCT runtime identity")
 
     operation = response.get("operation") or {}
-    if operation.get("kind") != DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+    operation_kind = operation.get("kind")
+    if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        distance_mm = _finite_float(operation.get("distance_mm"), "direct response operation.distance_mm")
+        if abs(distance_mm) <= 1e-9:
+            raise CADSidecarContractError("CAD direct-edit response distance must be non-zero")
+        normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        translation = _vector(operation.get("translation_local_mm"), 3, "direct response operation.translation_local_mm")
+        distance = _length3(translation)
+        if distance <= 1e-9 or distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+            raise CADSidecarContractError("CAD tangent response translation is outside bounded contract")
+        normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+    else:
         raise CADSidecarContractError("CAD direct-edit response operation mismatch")
-    distance_mm = _finite_float(operation.get("distance_mm"), "direct response operation.distance_mm")
-    if abs(distance_mm) <= 1e-9:
-        raise CADSidecarContractError("CAD direct-edit response distance must be non-zero")
 
     authority = response.get("authoritative") or {}
     if authority.get("master_type") != "CAD_NATIVE":
@@ -591,14 +664,15 @@ def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -
         "resolution_state": resolution.get("state"),
         "candidate_count": candidate_count,
         "execution_state": operation.get("execution_state"),
-        "distance_mm": distance_mm,
+        "operation": normalized_operation,
+        "distance_mm": normalized_operation.get("distance_mm"),
+        "translation_local_mm": normalized_operation.get("translation_local_mm"),
         "source_bbox_mm": source_bbox,
         "result_bbox_mm": result_bbox,
         "source_volume_mm3": source_volume,
         "result_volume_mm3": result_volume,
         "result_solid_count": result_solid_count,
     }
-
 
 def load_direct_edit_response(path: str | Path, *, allow_hold: bool = False) -> dict:
     response = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -617,9 +691,16 @@ def assert_direct_edit_response_matches_request(response: dict, request: dict) -
         raise CADSidecarContractError("CAD direct-edit response revision mismatch")
     if validated_response["request_sha256"] != validated_request["request_sha256"]:
         raise CADSidecarContractError("CAD direct-edit response request SHA mismatch")
-    if abs(validated_response["distance_mm"] - validated_request["operation"]["distance_mm"]) > 1e-9:
-        raise CADSidecarContractError("CAD direct-edit response distance mismatch")
-
+    request_operation = validated_request["operation"]
+    response_operation = validated_response["operation"]
+    if response_operation["kind"] != request_operation["kind"]:
+        raise CADSidecarContractError("CAD direct-edit response operation kind mismatch")
+    if request_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        if abs(response_operation["distance_mm"] - request_operation["distance_mm"]) > 1e-9:
+            raise CADSidecarContractError("CAD direct-edit response distance mismatch")
+    else:
+        if any(abs(a - b) > 1e-9 for a, b in zip(response_operation["translation_local_mm"], request_operation["translation_local_mm"])):
+            raise CADSidecarContractError("CAD direct-edit response tangent translation mismatch")
 
 def _validate_direct_edit_display_payload(display_payload: dict, response: dict) -> None:
     if not isinstance(display_payload, dict) or display_payload.get("schema") != DIRECT_EDIT_DISPLAY_SCHEMA:
@@ -652,12 +733,7 @@ def _validate_direct_edit_display_payload(display_payload: dict, response: dict)
 
 
 def bind_direct_edit_display_derivative(*, response: dict, display_payload: dict, request: dict | None = None, collection=None, existing_object=None):
-    """Bind a validated direct-edit PASS response through the existing display binder.
-
-    No direct-edit response or display schema is rewritten outside this owner.
-    The internal adaptation only reuses the mature generic display-mesh binder;
-    CAD authority remains the specialist FCStd/STEP/BREP result.
-    """
+    """Bind a validated Direct Face PASS response as a display-only Blender derivative."""
     validated = validate_direct_edit_response(response, allow_hold=False)
     if request is not None:
         assert_direct_edit_response_matches_request(response, request)
@@ -685,9 +761,12 @@ def bind_direct_edit_display_derivative(*, response: dict, display_payload: dict
     obj["cad_direct_edit_execution_state"] = validated["execution_state"]
     obj["cad_direct_edit_resolution_state"] = validated["resolution_state"]
     obj["cad_direct_edit_candidate_count"] = validated["candidate_count"]
-    obj["cad_direct_edit_distance_mm"] = validated["distance_mm"]
+    obj["cad_direct_edit_operation_kind"] = validated["operation"]["kind"]
+    if validated["operation"]["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+        obj["cad_direct_edit_distance_mm"] = validated["distance_mm"]
+    else:
+        obj["cad_direct_edit_translation_local_mm"] = validated["translation_local_mm"]
     return obj
-
 
 def load_response(path: str | Path) -> dict:
     response = json.loads(Path(path).read_text(encoding="utf-8"))
