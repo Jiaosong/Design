@@ -31,6 +31,7 @@ jobs:
           end = src.rindex(end_marker)
           lines = src[start:end].splitlines()
           payload = '\n'.join(line[10:] if line.startswith('          ') else line for line in lines) + '\n'
+          payload = payload.replace("idx = service_text.index(anchor)", "idx = service_text.index('def metrics(shape)')")
           Path('/tmp/oleander-cad-tangent-patch.py').write_text(payload, encoding='utf-8')
           EXTRACT
           python3 -m py_compile /tmp/oleander-cad-tangent-patch.py
