@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">清江回程关系</title>
-<desc id="desc">以路线连续性、纸本、标识、人工服务和数字辅助表达无手机仍可回程的概念关系。仅表达设计原则，不声明现场位置、距离、容量或工程事实。</desc>
+<desc id="desc">以路线连续性为主层，纸本、标识与人工服务为确认和回退层，数字为可退场辅助层，表达无手机仍可回程的概念关系。仅表达设计原则，不声明现场位置、距离、容量或工程事实。</desc>
 <defs>
   <style>
     .sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}
@@ -8,6 +8,7 @@
     .route{fill:none;stroke:#8FD5D1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
     .route-soft{fill:none;stroke:#8FD5D1;stroke-width:22;stroke-opacity:.10;stroke-linecap:round;stroke-linejoin:round}
     .hair{fill:none;stroke:#91AAA4;stroke-width:1.2;stroke-opacity:.32}
+    .tier{fill:#0C2025;stroke:#90A6A1;stroke-width:1;stroke-opacity:.36}
   </style>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0" stop-color="#07151A"/><stop offset="1" stop-color="#10282D"/>
@@ -18,11 +19,30 @@
 </defs>
 <rect width="1600" height="900" fill="url(#bg)"/>
 <rect width="1600" height="900" fill="url(#mist)"/>
+
 <g class="sans">
-  <text x="84" y="78" font-size="13" font-weight="700" letter-spacing="3.2" class="water">RETURN / CONTINUE</text>
-  <text x="84" y="111" font-size="14" class="soft">先认路线；需要确认时，再看纸本、标识或询问人工服务。</text>
+  <text x="84" y="72" font-size="13" font-weight="700" letter-spacing="3.2" class="water">RETURN / CONTINUE</text>
+  <text x="84" y="108" font-size="14" class="soft">回程关系从路线开始；只有需要确认时，纸本、标识与人工服务才逐级接住它。</text>
+
+  <g transform="translate(84 134)">
+    <rect class="tier" x="0" y="0" width="360" height="52" rx="2"/>
+    <text x="18" y="21" font-size="9.5" font-weight="800" letter-spacing="1.6" class="water">01 PRIMARY</text>
+    <text x="18" y="40" font-size="12.5" fill="#EEF3EF">路线连续性 · 先认路，再继续返回</text>
+
+    <rect class="tier" x="374" y="0" width="470" height="52" rx="2"/>
+    <text x="392" y="21" font-size="9.5" font-weight="800" letter-spacing="1.6" class="water">02 FALLBACK</text>
+    <text x="392" y="40" font-size="12.5" fill="#EEF3EF">纸本 / 标识 / 人工服务 · 不确定时确认</text>
+
+    <rect class="tier" x="858" y="0" width="310" height="52" rx="2"/>
+    <text x="876" y="21" font-size="9.5" font-weight="800" letter-spacing="1.6" class="water">03 AUXILIARY</text>
+    <text x="876" y="40" font-size="12.5" fill="#EEF3EF">数字辅助 · 可退场</text>
+
+    <text x="1204" y="22" font-size="9.5" font-weight="800" letter-spacing="1.4" class="seal">PHONE OFF ≠ ROUTE OFF</text>
+    <text x="1204" y="42" font-size="11" class="soft">主次不靠颜色区分</text>
+  </g>
 </g>
-<g transform="translate(84 188)">
+
+<g transform="translate(84 238)">
   <path d="M0 122 C165 34 304 198 462 119 S744 12 900 104 S1190 189 1410 92" class="route-soft"/>
   <path d="M0 122 C165 34 304 198 462 119 S744 12 900 104 S1190 189 1410 92" class="route"/>
   <path d="M1320 126 C1360 114 1394 101 1418 88" class="route"/>
@@ -35,11 +55,12 @@
   </g>
   <g transform="translate(1216 -30)" class="sans"><rect width="194" height="74" rx="37" fill="none" stroke="#90A6A1" stroke-width="1.2" stroke-opacity=".45"/><circle cx="34" cy="37" r="12" fill="none" stroke="#90A6A1" stroke-width="1.2"/><path d="M30 37h8M34 33v8" stroke="#90A6A1" stroke-width="1.2" stroke-linecap="round"/><text x="58" y="32" font-size="11" fill="#EEF3EF">数字辅助</text><text x="58" y="51" font-size="9.5" class="soft">可退场，不是唯一入口</text></g>
 </g>
-<g transform="translate(84 430)" class="sans">
+
+<g transform="translate(84 492)" class="sans">
   <line x1="0" y1="0" x2="1432" y2="0" class="hair"/>
   <text x="0" y="46" font-size="12" font-weight="700" letter-spacing="2" class="water">ROUTE + PAPER + SIGNAGE + HUMAN SERVICE</text>
   <text x="0" y="82" font-size="13" class="soft">概念服务关系：无手机时仍保留返回路径；不声明现场定位、距离、容量或运营既成事实。</text>
-  <g transform="translate(0 148)"><text x="0" y="94" font-size="92" font-weight="700" letter-spacing="5" fill="#EEF3EF" opacity=".10">RETURN</text><text x="4" y="134" font-size="18" font-weight="700" fill="#EEF3EF">没有手机，也能继续返回</text><text x="4" y="162" font-size="12" class="soft">路线、纸本、标识与人工服务共同承担回程；数字只做辅助。</text></g>
+  <g transform="translate(0 148)"><text x="0" y="94" font-size="92" font-weight="700" letter-spacing="5" fill="#EEF3EF" opacity=".10">RETURN</text><text x="4" y="134" font-size="18" font-weight="700" fill="#EEF3EF">没有手机，也能继续返回</text><text x="4" y="162" font-size="12" class="soft">路线是主层；纸本、标识与人工服务承担确认和回退；数字只做辅助。</text></g>
   <g transform="translate(1122 146)"><line x1="0" y1="0" x2="310" y2="0" class="hair"/><text x="0" y="34" font-size="10" font-weight="800" letter-spacing="1.8" class="water">RETURN REMAINS AVAILABLE</text><text x="0" y="61" font-size="12" fill="#EEF3EF">数字退出，回程关系仍保留。</text><text x="0" y="89" font-size="10" class="soft">PHONE OFF ≠ ROUTE OFF</text></g>
 </g>
 </svg>
