@@ -82,6 +82,46 @@ def decide_chat_visual_execution(case: dict) -> dict:
             "completion_eligible": False,
         }
 
+    if case.get("quality_convergence_required"):
+        revise_now = case.get("visual_qa") == "REVISE" or case.get("project_qa") == "REVISE"
+        if revise_now and not case.get("dominant_root_cause_named"):
+            return {
+                "action": "DIAGNOSE_DOMINANT_VISUAL_ROOT_CAUSE_BEFORE_REPAIR",
+                "completion_eligible": False,
+            }
+
+        if case.get("same_root_cause_revise_count", 0) >= 2 and not case.get("root_cause_reclassified"):
+            return {
+                "action": "RECLASSIFY_ROOT_CAUSE_AND_REOPEN_DESIGN_HYPOTHESIS",
+                "completion_eligible": False,
+            }
+
+        if case.get("candidate_comparison_required") and not case.get("materially_distinct_candidates_present"):
+            return {
+                "action": "BUILD_MATERIALLY_DISTINCT_CANDIDATE_SET",
+                "completion_eligible": False,
+            }
+
+        if (
+            case.get("candidate_comparison_required")
+            and case.get("materially_distinct_candidates_present")
+            and not case.get("matched_candidate_comparison_passed")
+        ):
+            return {
+                "action": "RUN_MATCHED_CONTENT_CANDIDATE_COMPARISON",
+                "completion_eligible": False,
+            }
+
+        if (
+            case.get("matched_candidate_comparison_passed")
+            and case.get("retrieved_methods_applied")
+            and not case.get("quality_gain_observed")
+        ):
+            return {
+                "action": "REOPEN_TECHNIQUE_HYPOTHESIS_AFTER_NO_QUALITY_GAIN",
+                "completion_eligible": False,
+            }
+
     if case.get("visual_qa") == "REVISE" or case.get("project_qa") == "REVISE":
         return {
             "action": "REPAIR_REOPEN_RETEST_IN_SAME_ACTIVE_TURN",
@@ -150,14 +190,23 @@ def validate_visual_skill() -> None:
         "Breakpoint Role Redistribution",
         "KNOWLEDGE RETRIEVED ≠ TECHNIQUE APPLIED",
         "COMPONENT CONSISTENCY ≠ VISUAL AUTHORSHIP",
+        "## Quality convergence after actual visual failure",
+        "existing Control Plane `CB-01` behavior",
+        "METHOD APPLICATION ≠ QUALITY IMPROVEMENT",
+        "ITERATION COUNT ≠ CONVERGENCE",
+        "MICRO-VARIATION ≠ ALTERNATIVE COMPOSITION",
     ]
     for phrase in required_phrases:
         if phrase not in text:
-            fail(f"visual-design missing existing-knowledge production phrase: {phrase}")
+            fail(f"visual-design missing existing-knowledge/convergence phrase: {phrase}")
     if "Merely naming a method in a receipt does not count as use." not in text:
         fail("visual-design must require visible application rather than method-name receipt compliance")
     if "generic `hero + equal cards + timeline`" not in text:
         fail("visual-design must detect generic component-first fallback as unresolved composition")
+    if "Two consecutive `REVISE` outcomes with the same dominant Root Cause" not in text:
+        fail("visual-design must invoke existing CB-01 after repeated same-root-cause REVISE")
+    if "changing only font size, spacing, color, corner radius, shadow" not in text:
+        fail("visual-design must distinguish structural candidates from micro-parameter variants")
 
 
 def validate_story_skill() -> None:
@@ -210,6 +259,11 @@ def validate_cases() -> None:
         "CHAT-VIS-007-CURRENT-DESIGN-KNOWLEDGE-FIRST",
         "CHAT-VIS-008-METHOD-NAME-IS-NOT-APPLICATION",
         "CHAT-VIS-009-WEB-COMPONENT-FIRST-REOPEN",
+        "CHAT-VIS-010-REVISE-REQUIRES-ROOT-CAUSE",
+        "CHAT-VIS-011-SAME-ROOT-CAUSE-TWICE-RECLASSIFY",
+        "CHAT-VIS-012-MICRO-VARIANTS-ARE-NOT-CANDIDATE-SET",
+        "CHAT-VIS-013-MATCHED-CANDIDATE-COMPARISON-REQUIRED",
+        "CHAT-VIS-014-METHOD-APPLIED-NO-GAIN-REOPEN",
     }
     missing = required - set(by_id)
     if missing:
@@ -245,6 +299,11 @@ def main() -> None:
     print("component-first Web fallback reopens visual ownership: ENFORCED")
     print("asset role/usability pass before image-dependent layout lock: ENFORCED")
     print("first visual draft/export/generated board is not completion: ENFORCED")
+    print("REVISE requires a dominant visual Root Cause before repair: ENFORCED")
+    print("same-root-cause repeated REVISE invokes existing CB-01 reclassification: ENFORCED")
+    print("micro-parameter variants do not satisfy structural candidate comparison: ENFORCED")
+    print("matched-content candidate comparison precedes quality-selection claims: ENFORCED")
+    print("method application without visible quality gain reopens technique hypothesis: ENFORCED")
     print("Visual/Project REVISE continues repair/reopen/retest in the active turn: ENFORCED")
     print("non-factual generative exploration may iterate when allowed: ENFORCED")
     print("generated full-board image cannot replace final editable master: ENFORCED")

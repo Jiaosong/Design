@@ -57,9 +57,31 @@ If the first viable design is still a generic `hero + equal cards + timeline`, a
 
 `COMPONENT CONSISTENCY ≠ VISUAL AUTHORSHIP`.
 
+## Quality convergence after actual visual failure
+
+Use the existing OLEANDER Artifact Review / Control Plane repair logic rather than treating iteration count as progress. Once an actual rendered/exported artifact receives `REVISE`, the next move is not generic polish. Name one dominant visual Root Cause at the current Decision Question and make the repair materially address that cause.
+
+When the same dominant Root Cause survives two consecutive Visual / Project `REVISE` outcomes, invoke the existing Control Plane `CB-01` behavior: stop parameter tuning and **reclassify the Root Cause / problem layer before making another version**. Reclassification may move the problem from parameter-level choices to relation, composition architecture, asset quality, narrative role, visual ownership, or another already-supported layer. Do not keep applying the same technique set merely because it was correctly retrieved.
+
+After a failed candidate, use the existing A/B / before-after and representative-scale practices as a **selection mechanism**, not documentation after the fact:
+
+- when constraints permit, construct at least two materially different structural candidates from the same authoritative content / source assets;
+- changing only font size, spacing, color, corner radius, shadow, decorative line or another micro-parameter on the same composition does **not** count as a materially different candidate;
+- compare matched candidates at whole-frame / intended scale and thumbnail / near-read as applicable; add sequence, grayscale, mobile/responsive or deletion tests only when they answer the current Decision Question;
+- choose the candidate that visibly improves the named Root Cause without introducing a more serious regression; do not choose by method count, rubric count, novelty or implementation convenience;
+- if no candidate materially improves the baseline, keep the artifact `REVISE`, reopen the design-technique hypothesis, and use the existing highest-standard benchmark step only when current capability / benchmark is demonstrably insufficient.
+
+A retrieved method survives only when its visible application improves the actual artifact at the relevant viewing condition. If it produces no quality gain, demote or replace that technique hypothesis rather than defending it with process evidence.
+
+`METHOD APPLICATION ≠ QUALITY IMPROVEMENT`.
+
+`ITERATION COUNT ≠ CONVERGENCE`.
+
+`MICRO-VARIATION ≠ ALTERNATIVE COMPOSITION`.
+
 ## Required sequence
 
-`CURRENT AUTHORITY → CURRENT DESIGN KNOWLEDGE / METHOD RESOLUTION → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → DESIGN-TECHNIQUE HYPOTHESIS → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → REPAIR → RETEST`
+`CURRENT AUTHORITY → CURRENT DESIGN KNOWLEDGE / METHOD RESOLUTION → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → DESIGN-TECHNIQUE HYPOTHESIS → MATERIALLY DISTINCT CANDIDATES WHEN REPAIR REQUIRES COMPARISON → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → ROOT CAUSE → REPAIR / RECLASSIFY WHEN REPEATED → RETEST`
 
 ## Core checks
 
@@ -135,10 +157,14 @@ Variation is allowed when it reflects narrative or evidence role. Do not force l
 15. Before inventing visual techniques, retrieve applicable Current Notion design knowledge and reuse the minimum sufficient existing method / Practice set.
 16. A named/retrieved method is not execution evidence; show the visible composition operation and its A/B, before/after or actual-pixel consequence.
 17. Do not let grids, components, cards or IA become the visual concept by default. They may organize content only after visual ownership and technique intent are resolved.
+18. After an actual `REVISE`, name the dominant Root Cause before repairing; do not treat generic polish as a repair plan.
+19. Two consecutive `REVISE` outcomes with the same dominant Root Cause must trigger existing `CB-01` Root Cause reclassification before another candidate is produced.
+20. When comparison is needed, micro-parameter changes on one composition do not satisfy the candidate requirement; compare materially different structural candidates with matched authoritative content.
+21. A correctly applied method that produces no visible quality gain must be reopened, demoted or replaced; method compliance cannot justify keeping a weak result.
 
 ## Required output
 
-Return the Current editable master, explicit design decisions, selected Current design-knowledge methods/Practices and their visible application, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
+Return the Current editable master, explicit design decisions, selected Current design-knowledge methods/Practices and their visible application, dominant Root Cause for any `REVISE`, materially distinct candidate comparison when used, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
 
 When reference-led, also return the structural decomposition and rendered deltas. When sparse-content strategy is used, name what was intentionally omitted rather than silently padding the composition. When design-language reconstruction is used, return its observation/authority classifications and reapplication check separately from Current normative rules.
 
