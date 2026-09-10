@@ -49,7 +49,6 @@ jobs:
               data = path.read_bytes()
               return hashlib.sha1(b'blob ' + str(len(data)).encode('ascii') + b'\0' + data).hexdigest()
 
-          # Bridge receipt: same Normal request determinism, newly rebound source blobs/run.
           bridge_path = runtime / 'CAD_DIRECT_INTENT_BRIDGE_RECEIPT_5_2_20260909.json'
           bridge = json.loads(bridge_path.read_text(encoding='utf-8'))
           bridge['validated_at_utc'] = validated_at
@@ -77,7 +76,6 @@ jobs:
           )
           bridge_path.write_text(json.dumps(bridge, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
 
-          # Consolidated 17-stage Runtime receipt: bind exact current-source fingerprints to the successful real run.
           cons_path = runtime / 'BLENDER_RUNTIME_REGRESSION_RECEIPT_5_2_LTS_20260905.json'
           cons = json.loads(cons_path.read_text(encoding='utf-8'))
           cons['validated_at_utc'] = validated_at
@@ -92,7 +90,7 @@ jobs:
           cons['extension_package']['sha256'] = package_sha
           for script, stage in cons['stages'].items():
               stage['status'] = 'PASS'
-              stage['source_fingerprint_sha256'] = base.source_fingerprint(tests / script)
+              stage['source_fingerprint_sha256'] = base.source_fingerprint((tests / script).resolve())
 
           old_delta = 'CAD_NATIVE_TANGENT_MOVE_FAIL_CLOSED_NO_DISPLAY_MUTATION'
           if old_delta not in cons['validated_bounded_delta']:
@@ -126,7 +124,6 @@ jobs:
           )
           cons_path.write_text(json.dumps(cons, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
 
-          # Static guard must expect the newly evidenced run and current bounded/non-claim vocabulary.
           checker_path = tests / 'static_check_17_consolidated_5_2.py'
           checker = checker_path.read_text(encoding='utf-8')
           replacements = {
@@ -149,7 +146,6 @@ jobs:
           checker = checker.replace(anchor, '    "GENERAL_PLANAR_FACE_TRANSLATION",\n    "OBLIQUE_FACE_EXECUTION",\n' + anchor, 1)
           checker_path.write_text(checker, encoding='utf-8')
 
-          # Fail closed before commit: current static guard must accept the rebound evidence.
           print('CURRENT_STAGE_FINGERPRINTS=' + json.dumps({k:v['source_fingerprint_sha256'] for k,v in cons['stages'].items()}, sort_keys=True))
           print('BRIDGE_SOURCE_BLOBS=' + json.dumps(bridge['validated_source_blobs'], sort_keys=True))
           PY
