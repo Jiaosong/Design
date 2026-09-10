@@ -64,6 +64,12 @@
     unknown:{k:"UNKNOWN / FAIL-CLOSED",t:"不确定时，不猜可用。",b:"不把未知状态显示成正常；先提示确认并保留最小回程路径，再决定是否继续。"}
   };
   const systems=$("#systems");
+  if(systems){
+    // SYSTEMS is a direct navigation destination and a browser-readback carrier.
+    // Its claim and primary route visual must be readable immediately, even before
+    // IntersectionObserver has a chance to resolve the decorative reveal transition.
+    [$(".section-head",systems),$(".asset-split",systems)].filter(Boolean).forEach(x=>x.classList.add("in-view"));
+  }
   if(systems&&!$(".state-sim",systems)){
     const host=document.createElement("div");
     host.className="state-sim";
