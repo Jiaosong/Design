@@ -1,0 +1,10 @@
+﻿{
+  "schema": "oleander.evidence.v1",
+  "required": ["id","source","result","timestamp"],
+  "properties": {
+    "id":{"type":"string"},
+    "source":{"type":"string"},
+    "result":{"type":"string"},
+    "timestamp":{"type":"string"}
+  }
+}

@@ -1,0 +1,12 @@
+﻿{
+  "schema": "oleander.relation.v1",
+  "description": "Design intent relation graph edge",
+  "required": ["from","to","relation","reason"],
+  "properties": {
+    "from":{"type":"string"},
+    "to":{"type":"string"},
+    "relation":{"type":"string"},
+    "reason":{"type":"string"},
+    "evidence":{"type":"array"}
+  }
+}

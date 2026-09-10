@@ -1,0 +1,10 @@
+﻿{
+  "schema": "oleander.validation.v1",
+  "checks": [
+    "geometry",
+    "semantic",
+    "manufacturing",
+    "evidence",
+    "release"
+  ]
+}
