@@ -1,12 +1,15 @@
 """Bounded FreeCAD/OCCT executor for OLEANDER CAD direct-edit requests.
 
-This is a process-sidecar service under the existing CAD Sidecar Integration
-surface. It executes exactly one bounded operation: FACE_NORMAL_MOVE on the
-uniquely re-resolved +Z planar top face of a rectangular prismatic single solid.
-It never persists FaceN/EdgeN ordinals and returns HOLD, with no released output
-artifacts, when semantic face resolution is missing or ambiguous.
+This process-sidecar service remains under the existing CAD Sidecar Integration
+surface. It executes two bounded operations on an unmodified rectangular-prism
+single solid: FACE_NORMAL_MOVE on the uniquely re-resolved +Z four-edge top face,
+and FACE_TANGENT_MOVE on a uniquely re-resolved +X/+Y/+Z axis-aligned four-edge
+face with a non-zero in-plane translation no longer than 20 mm. It never persists
+FaceN/EdgeN ordinals and returns HOLD, with no released output artifacts, when
+semantic face resolution is missing or ambiguous.
 
-This is not general push/pull, persistent topological naming, or P0-B parity.
+This is not general push/pull, general or oblique planar-face translation,
+persistent topological naming, or P0-B parity.
 """
 
 from __future__ import annotations
