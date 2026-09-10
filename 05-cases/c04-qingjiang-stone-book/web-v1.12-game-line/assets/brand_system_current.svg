@@ -1,67 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="900" viewBox="0 0 1000 900" role="img" aria-labelledby="title desc">
 <title id="title">清江石书品牌系统应用</title>
-<desc id="desc">以清江路线、印、页与个人痕迹构成的可编辑品牌应用资产，展示地图条带、纸本封面、印记与数字页签，不把品牌置于景观之前。</desc>
-<defs>
-  <style>
-    .sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}
-    .serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}
-    .hair{fill:none;stroke:#B7B3A8;stroke-width:1}
-    .ink{fill:#17201E}.muted{fill:#6C716D}.water{fill:#2E7F86}.seal{fill:#985448}.paper{fill:#F3F0E7}
-  </style>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#071318" flood-opacity=".10"/></filter>
-</defs>
-<rect width="1600" height="1000" fill="#E9E5DB"/>
-<g class="sans">
-  <text x="76" y="72" font-size="15" font-weight="700" letter-spacing="3.2" fill="#2E7F86">QINGJIANG STONE BOOK / BRAND APPLICATION</text>
-  <text x="76" y="126" class="serif ink" font-size="42" font-weight="700">让识别跟着路线出现，不盖过山水。</text>
-  <text x="76" y="160" class="muted" font-size="16">LINE · SEAL · PAGE · TRACE 被落实到真实媒介角色，而不是做成一张符号说明板。</text>
-</g>
-<line x1="76" y1="194" x2="1524" y2="194" stroke="#CBC6BA"/>
-<g transform="translate(76 240)">
-  <text class="sans muted" font-size="13" font-weight="700" letter-spacing="2.4">01 / ROUTE STRIP</text>
-  <rect x="0" y="32" width="1448" height="164" rx="2" fill="#F5F2E9" stroke="#D7D1C4"/>
-  <path d="M48 118 C190 54 318 164 462 94 S716 75 855 124 S1108 72 1398 108" fill="none" stroke="#B8D6D3" stroke-width="16" stroke-linecap="round" opacity=".55"/>
-  <path d="M48 118 C190 54 318 164 462 94 S716 75 855 124 S1108 72 1398 108" fill="none" stroke="#2E7F86" stroke-width="3.5" stroke-linecap="round"/>
-  <g class="sans" font-size="12" fill="#17201E">
-    <circle cx="112" cy="92" r="7" fill="#F5F2E9" stroke="#2E7F86" stroke-width="2"/><text x="112" y="151" text-anchor="middle">出发</text>
-    <circle cx="536" cy="77" r="7" fill="#F5F2E9" stroke="#985448" stroke-width="2.5"/><text x="536" y="151" text-anchor="middle">可选阅读</text>
-    <circle cx="960" cy="118" r="7" fill="#F5F2E9" stroke="#2E7F86" stroke-width="2"/><text x="960" y="151" text-anchor="middle">停留</text>
-    <path d="M1280 88h88" stroke="#985448" stroke-width="2"/><path d="M1356 78l14 10-14 10" fill="none" stroke="#985448" stroke-width="2"/><text x="1324" y="151" text-anchor="middle">回程优先</text>
-  </g>
-</g>
-<g transform="translate(76 496)">
-  <text class="sans muted" font-size="13" font-weight="700" letter-spacing="2.4">02 / PAPER MEMORY</text>
-  <g transform="translate(0 34)">
-    <rect width="650" height="350" rx="4" fill="#F8F5ED"/>
-    <rect x="28" y="28" width="594" height="294" fill="none" stroke="#CFC9BC"/>
-    <path d="M76 225 C182 164 282 259 389 190 S535 179 580 204" fill="none" stroke="#2E7F86" stroke-width="2.5"/>
-    <circle cx="390" cy="190" r="13" fill="none" stroke="#985448" stroke-width="2"/>
-    <text x="76" y="94" class="serif ink" font-size="54" font-weight="700">清江石书</text>
-    <text x="78" y="127" class="sans muted" font-size="13" letter-spacing="2">MY QINGJIANG NOTES</text>
-    <text x="78" y="286" class="sans muted" font-size="13">路线留下痕迹，纸页保留自己的句子。</text>
-  </g>
-  <g transform="translate(720 34)">
-    <rect width="728" height="350" rx="4" fill="#0B2026"/>
-    <text x="42" y="54" class="sans" fill="#82CECA" font-size="12" font-weight="700" letter-spacing="2.4">03 / SEAL + PAGE TAB</text>
-    <g transform="translate(52 92)">
-      <rect width="196" height="196" rx="2" fill="none" stroke="#8E4F45" stroke-width="3"/>
-      <path d="M43 142 C84 88 114 88 153 48 M50 52 C84 87 111 112 149 145" fill="none" stroke="#D5B3A9" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="101" cy="101" r="14" fill="#8E4F45"/>
-      <text x="98" y="234" class="sans" fill="#E9F0EC" font-size="13" text-anchor="middle">发现不是打卡，是留下一个记号</text>
-    </g>
-    <g transform="translate(322 92)" class="sans">
-      <rect x="0" y="0" width="342" height="52" rx="26" fill="#F0EEE6"/>
-      <circle cx="28" cy="26" r="7" fill="#985448"/><text x="48" y="32" font-size="14" fill="#17201E">河谷 · 只在需要时打开</text>
-      <rect x="0" y="74" width="268" height="52" rx="26" fill="none" stroke="#5F7773"/>
-      <path d="M22 100h38" stroke="#82CECA" stroke-width="2"/><text x="75" y="106" font-size="14" fill="#C1CECA">返回真实景观</text>
-      <path d="M0 170H310" stroke="#46605B"/>
-      <text x="0" y="204" font-size="12" fill="#83938E">品牌强度随场景降低；高景观注意力时可接近 OFF。</text>
-    </g>
-  </g>
-</g>
-<g transform="translate(76 930)" class="sans">
-  <text font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2.2">SYSTEM RULE</text>
-  <text x="132" font-size="13" fill="#5F6662">路线提供连续性 · 印记提供记忆锚点 · 页提供可选层 · 痕迹来自真实行走与记录</text>
-  <text x="1448" font-size="11" text-anchor="end" fill="#858980">QINGJIANG STONE BOOK</text>
-</g>
+<desc id="desc">以路线、印、页与个人痕迹构成的可编辑品牌应用资产。路线提供连续性，纸页承接记忆，印记形成记忆锚点，数字页签只在需要时出现；品牌不置于景观之前。</desc>
+<defs><style>.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#626A66}.water{fill:#2E7F86}.seal{fill:#985448}.paper{fill:#F3F0E7}.hair{fill:none;stroke:#CBC6BA;stroke-width:1}</style></defs>
+<rect width="1000" height="900" fill="#E9E5DB"/>
+<g class="sans"><text x="54" y="52" font-size="13" font-weight="700" letter-spacing="2.5" class="water">QINGJIANG STONE BOOK / BRAND IN JOURNEY</text><text x="54" y="98" class="serif ink" font-size="34" font-weight="700">识别跟着路线出现，不盖过山水。</text><text x="54" y="130" class="muted" font-size="16">LINE · PAGE · SEAL · TRACE 进入真实媒介角色；景观强时，品牌主动退后。</text></g>
+<line x1="54" y1="158" x2="946" y2="158" class="hair"/>
+<g transform="translate(54 196)" class="sans"><text font-size="12" font-weight="700" letter-spacing="2" class="water">01 / ROUTE STRIP · 连续性</text><rect y="28" width="892" height="150" rx="3" fill="#F6F3EA" stroke="#D7D1C4"/><path d="M38 100 C150 46 238 138 350 83 S555 65 650 108 S790 76 850 91" fill="none" stroke="#B8D6D3" stroke-width="15" stroke-linecap="round" opacity=".55"/><path d="M38 100 C150 46 238 138 350 83 S555 65 650 108 S790 76 850 91" fill="none" stroke="#2E7F86" stroke-width="3" stroke-linecap="round"/><g font-size="13" class="ink"><circle cx="92" cy="78" r="7" fill="#F6F3EA" stroke="#2E7F86" stroke-width="2"/><text x="92" y="142" text-anchor="middle">出发</text><circle cx="350" cy="83" r="8" fill="#F6F3EA" stroke="#985448" stroke-width="2"/><text x="350" y="142" text-anchor="middle">可选阅读</text><circle cx="650" cy="108" r="7" fill="#F6F3EA" stroke="#2E7F86" stroke-width="2"/><text x="650" y="142" text-anchor="middle">停留</text><text x="820" y="142" text-anchor="middle" class="seal">回程优先 →</text></g></g>
+<g transform="translate(54 420)" class="sans"><text font-size="12" font-weight="700" letter-spacing="2" class="water">02 / PAPER MEMORY · 带走自己的句子</text><rect y="28" width="430" height="320" rx="4" fill="#F8F5ED"/><rect x="22" y="50" width="386" height="276" fill="none" stroke="#CFC9BC"/><text x="48" y="112" class="serif ink" font-size="42" font-weight="700">清江石书</text><text x="50" y="142" class="muted" font-size="12" letter-spacing="1.8">MY QINGJIANG NOTES</text><path d="M48 246 C120 202 195 270 270 222 S352 220 382 232" fill="none" stroke="#2E7F86" stroke-width="2.5"/><circle cx="270" cy="222" r="12" fill="none" stroke="#985448" stroke-width="2"/><text x="48" y="298" font-size="14" class="muted">路线留下痕迹，纸页保留自己的句子。</text></g>
+<g transform="translate(516 420)" class="sans"><text font-size="12" font-weight="700" letter-spacing="2" class="water">03 / SEAL + PAGE · 需要时才打开</text><rect y="28" width="430" height="320" rx="4" fill="#0B2026"/><g transform="translate(28 60)"><rect width="126" height="126" rx="2" fill="none" stroke="#985448" stroke-width="3"/><path d="M30 92 C56 55 78 58 100 34 M34 38 C58 61 78 80 101 98" fill="none" stroke="#D5B3A9" stroke-width="3"/><circle cx="65" cy="65" r="10" fill="#985448"/><text x="0" y="160" font-size="13" fill="#E9F0EC">发现处留下记忆锚点</text></g><g transform="translate(190 64)"><rect width="210" height="46" rx="23" fill="#F0EEE6"/><circle cx="25" cy="23" r="6" fill="#985448"/><text x="42" y="29" font-size="13" class="ink">河谷 · 按需打开</text><rect y="66" width="184" height="46" rx="23" fill="none" stroke="#5F7773"/><text x="24" y="95" font-size="13" fill="#C1CECA">← 返回真实景观</text><text y="160" font-size="12" fill="#83938E">高景观注意力时，</text><text y="180" font-size="12" fill="#83938E">品牌强度可接近 OFF。</text></g></g>
+<g transform="translate(54 814)" class="sans"><line x1="0" y1="-20" x2="892" y2="-20" class="hair"/><text font-size="11" font-weight="700" letter-spacing="1.8" class="water">SYSTEM RULE</text><text x="116" font-size="13" class="muted">路线连续 · 印记锚定 · 页按需打开 · 痕迹来自真实行走与记录</text><text x="892" y="32" text-anchor="end" font-size="12" class="seal">LANDSCAPE FIRST · BRAND STEPS BACK</text></g>
 </svg>
