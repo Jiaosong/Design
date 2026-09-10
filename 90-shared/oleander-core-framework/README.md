@@ -38,3 +38,16 @@ Verification:
 Flow:
 
 Intent -> Relation -> Object -> Geometry -> Validation -> Evidence
+
+## v0.3 Runtime Expansion
+
+Implemented:
+
+- Blender Inspector data layer
+- Source / Derived authority separation
+- Runtime relation graph operations
+- Runtime state tracking
+
+New flow:
+
+Intent -> Relation -> Object -> Geometry -> Inspector -> Validation -> Evidence

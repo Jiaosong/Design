@@ -10,7 +10,8 @@
       "from": "OLE-GEO-0001",
       "to": "Validation",
       "relation": "validated_by",
-      "reason": "Surface quality validation integration"
+      "reason": "Surface quality validation integration",
+      "authority": "DERIVED"
     }
   ]
 }

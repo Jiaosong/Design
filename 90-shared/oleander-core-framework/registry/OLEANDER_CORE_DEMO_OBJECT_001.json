@@ -6,8 +6,10 @@
   },
   "source": {
     "system": "Blender Surface System v1.21",
-    "authority": "WORKING_SOURCE"
+    "authority": "SOURCE"
   },
+  "authority": "SOURCE",
+  "dependencies": ["SurfaceSystem.v1.21"],
   "validation": {
     "state": "PENDING",
     "checks": []

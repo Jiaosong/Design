@@ -1,4 +1,4 @@
-﻿{
+{
   "schema": "oleander.object.v1",
   "description": "Semantic design object contract",
   "required": ["id","type","intent","source","validation"],
@@ -12,6 +12,8 @@
     "material": {"type":"object"},
     "manufacturing": {"type":"object"},
     "validation": {"type":"object"},
-    "evidence": {"type":"array"}
+    "evidence": {"type":"array"},
+    "authority": {"type":"string"},
+    "dependencies": {"type":"array"}
   }
 }
