@@ -1,35 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
 <title id="title">清江连续步行中的身体支持关系</title>
-<desc id="desc">以连续路径中的走、停、倚、恢复四种身体状态说明：身体压力出现后才引入支持，恢复后重新回到路径。窄屏下改为纵向四阶段阅读，不改变状态关系。具体实体选型、尺寸与连接仍保持开放。</desc>
+<desc id="desc">以走、停、倚、恢复四种身体状态说明：连续步行是主线；身体压力出现后才引入支持，恢复后重新回到路径。具体实体选型、尺寸与连接保持开放。</desc>
 <defs><style>
-.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#68706C}.water{fill:#2E7F86}.seal{fill:#985448}.person{fill:none;stroke:#17201E;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}.terrain{fill:none;stroke:#A7B2AE;stroke-width:2.2}.route{fill:none;stroke:#2E7F86;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.support{fill:none;stroke:#6D817C;stroke-width:8;stroke-linecap:round}.leader{fill:none;stroke:#9CA8A4;stroke-width:1.4}.mobile-only{display:none}
-@media(max-width:640px){.mobile-only{display:block}}
-</style></defs>
-<rect width="1600" height="900" fill="#EDF0E9"/>
-<g class="sans"><text x="72" y="66" font-size="13" font-weight="700" letter-spacing="3.2" fill="#2E7F86">BODY / WALK → PAUSE → LEAN → RECOVER</text><text x="72" y="122" class="serif ink" font-size="46" font-weight="700">走累的时候，支持才出现。</text><text x="72" y="159" class="muted" font-size="16">连续步行是主线；停留与倚靠只在身体需要出现时介入，恢复后重新回到路径。</text></g>
-<line x1="72" y1="194" x2="1528" y2="194" stroke="#CAD1CB"/>
-<path d="M72 505 C240 438 346 508 488 470 S744 410 890 456 S1142 548 1302 476 S1448 424 1528 446" class="terrain"/><path d="M72 548 C244 500 356 570 508 526 S742 462 906 510 S1136 606 1300 528 S1452 470 1528 492" class="route"/>
-<g transform="translate(255 385)" class="person"><circle cx="0" cy="0" r="17"/><path d="M0 19l-7 77m-2-46l-42 34m44-28l40 30m-40 68l-36 54m36-54l46 46"/></g><circle cx="255" cy="515" r="10" fill="#2E7F86"/><path d="M255 526V635" class="leader"/><g class="sans" transform="translate(150 674)"><text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">01 / WALK</text><text y="42" class="serif ink" font-size="38" font-weight="700">继续走</text><text y="74" class="muted" font-size="14">身体压力不明显，不增加对象。</text></g>
-<g transform="translate(595 360)" class="person"><circle cx="0" cy="0" r="17"/><path d="M0 19v80m0-51l-34 44m34-44l33 44m-33 7l-22 66m22-66l23 66"/></g><path d="M555 329q40-34 80 0" fill="none" stroke="#985448" stroke-width="2.2" stroke-dasharray="4 7"/><circle cx="595" cy="500" r="10" fill="#985448"/><path d="M595 511V635" class="leader"/><g class="sans" transform="translate(492 674)"><text font-size="12" font-weight="700" letter-spacing="2" fill="#985448">02 / PAUSE</text><text y="42" class="serif ink" font-size="38" font-weight="700">先停下来</text><text y="74" class="muted" font-size="14">看清、辨向、缓一口气；先给停留条件。</text></g>
-<path d="M900 506l48-82" class="support"/><g transform="translate(858 363) rotate(8)" class="person"><circle cx="0" cy="0" r="17"/><path d="M0 19l21 76m-8-50l38 20m-31 31l-19 65m19-65l44 52"/></g><circle cx="885" cy="493" r="10" fill="#2E7F86"/><path d="M885 504V635" class="leader"/><g class="sans" transform="translate(813 674)"><text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">03 / LEAN</text><text y="42" class="serif ink" font-size="38" font-weight="700">短时借力</text><text y="74" class="muted" font-size="14">支撑需求成立，才研究倚靠对象。</text></g>
-<path d="M1195 490h44" class="support" opacity=".48"/><g transform="translate(1272 375)" class="person"><circle cx="0" cy="0" r="17"/><path d="M0 19l-8 77m-4-46l-40 28m44-22l46 25m-38 15l-36 52m36-52l48 44"/></g><circle cx="1251" cy="521" r="10" fill="#2E7F86"/><path d="M1251 532V635" class="leader"/><g class="sans" transform="translate(1160 674)"><text font-size="12" font-weight="700" letter-spacing="2" fill="#2E7F86">04 / RECOVER</text><text y="42" class="serif ink" font-size="38" font-weight="700">恢复，再走</text><text y="74" class="muted" font-size="14">恢复完成，支持退出，重新回到路径。</text></g>
-<g class="sans"><text x="690" y="262" font-size="12" letter-spacing="2.4" font-weight="700" fill="#68706C">INTERVENTION THRESHOLD</text><path d="M716 282H1044" stroke="#985448" stroke-width="2"/><circle cx="716" cy="282" r="4" fill="#985448"/><circle cx="1044" cy="282" r="4" fill="#985448"/><text x="880" y="310" text-anchor="middle" font-size="14" fill="#985448">身体需要成立后，设计才进入。</text></g>
-<g transform="translate(72 844)" class="sans"><rect width="1456" height="1" fill="#CAD1CB"/><text y="34" font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2">BOUNDARY</text><text x="104" y="34" font-size="13" fill="#5F6662">CONCEPT BODY-USE SCENARIO · NTS · FIELD OPEN · NOT FOR CONSTRUCTION</text><text x="1456" y="34" font-size="11" text-anchor="end" fill="#858980">BODY-USE SCENARIO</text></g>
-
-<g class="mobile-only">
-<rect width="1600" height="900" fill="#EDF0E9"/>
-<g class="sans"><text x="80" y="72" font-size="26" font-weight="700" letter-spacing="4" class="water">BODY / CONTINUOUS WALK</text><text x="80" y="148" class="serif ink" font-size="66" font-weight="700">走累的时候，支持才出现。</text><text x="80" y="199" class="muted" font-size="28">身体需要成立后，设计才介入；恢复后重新回到路径。</text></g>
-<line x1="80" y1="238" x2="1520" y2="238" stroke="#CAD1CB" stroke-width="2"/>
-<path d="M130 700 C360 652 520 722 735 677 S1110 620 1470 676" class="route" stroke-width="9"/>
+.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#68706C}.water{fill:#2E7F86}.seal{fill:#985448}.rule{stroke:#C6CECA;stroke-width:1.2}.route{fill:none;stroke:#2E7F86;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.route-soft{fill:none;stroke:#2E7F86;stroke-width:14;stroke-opacity:.08;stroke-linecap:round}.support{fill:none;stroke:#6D817C;stroke-width:7;stroke-linecap:round}.person{fill:none;stroke:#17201E;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.card{fill:#F4F3EC;stroke:#C6CECA;stroke-width:1.2}.card-pause{fill:#F4F3EC;stroke:#985448;stroke-width:1.8}</style></defs>
+<rect width="1000" height="680" fill="#EDF0E9"/>
 <g class="sans">
-<g transform="translate(90 322)"><text font-size="22" font-weight="700" letter-spacing="3" class="water">01 / WALK</text><text y="65" class="serif ink" font-size="58" font-weight="700">继续走</text><text y="111" class="muted" font-size="27">压力不明显，不增加对象。</text></g>
-<path d="M385 300V610" stroke="#C5CECA" stroke-width="2"/>
-<g transform="translate(440 322)"><text font-size="22" font-weight="700" letter-spacing="3" class="seal">02 / PAUSE</text><text y="65" class="serif ink" font-size="58" font-weight="700">先停下来</text><text y="111" class="muted" font-size="27">先给停留与辨向条件。</text><text y="161" font-size="22" class="seal">INTERVENTION STARTS HERE</text></g>
-<path d="M785 300V610" stroke="#C5CECA" stroke-width="2"/>
-<g transform="translate(840 322)"><text font-size="22" font-weight="700" letter-spacing="3" class="water">03 / LEAN</text><text y="65" class="serif ink" font-size="58" font-weight="700">短时借力</text><text y="111" class="muted" font-size="27">需要支撑，才研究倚靠。</text></g>
-<path d="M1165 300V610" stroke="#C5CECA" stroke-width="2"/>
-<g transform="translate(1220 322)"><text font-size="22" font-weight="700" letter-spacing="3" class="water">04 / RECOVER</text><text y="65" class="serif ink" font-size="58" font-weight="700">恢复，再走</text><text y="111" class="muted" font-size="27">支持退出，重新回到路径。</text></g>
+<text x="48" y="44" font-size="12" font-weight="700" letter-spacing="2.4" class="water">BODY / WALK → PAUSE → LEAN → RECOVER</text>
+<text x="48" y="96" class="serif ink" font-size="42" font-weight="700">走累的时候，支持才出现。</text>
+<text x="48" y="128" class="muted" font-size="16">连续步行是主线；身体需要成立后才介入，恢复后重新回到路径。</text>
 </g>
-<g class="sans"><text x="80" y="814" font-size="22" font-weight="700" letter-spacing="3" class="water">BOUNDARY</text><text x="80" y="856" font-size="24" class="muted">CONCEPT BODY-USE SCENARIO · NTS · FIELD OPEN · NOT FOR CONSTRUCTION</text></g>
+<line x1="48" y1="154" x2="952" y2="154" class="rule"/>
+
+<g transform="translate(48 188)">
+<rect width="430" height="178" rx="2" class="card"/>
+<text x="24" y="32" class="sans water" font-size="15" font-weight="700" letter-spacing="2">01 / WALK</text>
+<text x="24" y="83" class="serif ink" font-size="42" font-weight="700">继续走</text>
+<text x="24" y="119" class="sans muted" font-size="19">压力不明显，不增加对象。</text>
+<path d="M286 120 C318 95 346 132 378 106" class="route-soft"/><path d="M286 120 C318 95 346 132 378 106" class="route"/>
+<g transform="translate(334 53)" class="person"><circle r="11"/><path d="M0 12l-4 44m-1-26l-24 19m25-16l24 18m-24 24l-20 31m20-31l27 27"/></g>
+</g>
+
+<g transform="translate(522 188)">
+<rect width="430" height="178" rx="2" class="card-pause"/>
+<text x="24" y="32" class="sans seal" font-size="15" font-weight="700" letter-spacing="2">02 / PAUSE · INTERVENTION STARTS</text>
+<text x="24" y="83" class="serif ink" font-size="42" font-weight="700">先停下来</text>
+<text x="24" y="119" class="sans muted" font-size="19">先给停留、辨向与恢复条件。</text>
+<path d="M286 120 C318 95 346 132 378 106" class="route-soft"/><path d="M286 120 C318 95 346 132 378 106" class="route"/>
+<g transform="translate(334 53)" class="person"><circle r="11"/><path d="M0 12v44m0-28l-19 25m19-25l19 25m-19 3l-13 38m13-38l13 38"/></g>
+</g>
+
+<g transform="translate(48 394)">
+<rect width="430" height="178" rx="2" class="card"/>
+<text x="24" y="32" class="sans water" font-size="15" font-weight="700" letter-spacing="2">03 / LEAN</text>
+<text x="24" y="83" class="serif ink" font-size="42" font-weight="700">短时借力</text>
+<text x="24" y="119" class="sans muted" font-size="19">需要支撑，才研究倚靠对象。</text>
+<path d="M286 120 C318 95 346 132 378 106" class="route-soft"/><path d="M286 120 C318 95 346 132 378 106" class="route"/>
+<path d="M367 109l24-42" class="support"/>
+<g transform="translate(338 51) rotate(8)" class="person"><circle r="11"/><path d="M0 12l12 44m-4-27l22 12m-18 15l-11 38m11-38l25 30"/></g>
+</g>
+
+<g transform="translate(522 394)">
+<rect width="430" height="178" rx="2" class="card"/>
+<text x="24" y="32" class="sans water" font-size="15" font-weight="700" letter-spacing="2">04 / RECOVER</text>
+<text x="24" y="83" class="serif ink" font-size="42" font-weight="700">恢复，再走</text>
+<text x="24" y="119" class="sans muted" font-size="19">支持退出，重新回到路径。</text>
+<path d="M286 120 C318 95 346 132 378 106" class="route-soft"/><path d="M286 120 C318 95 346 132 378 106" class="route"/>
+<g transform="translate(334 53)" class="person"><circle r="11"/><path d="M0 12l-4 44m-1-26l-24 19m25-16l24 18m-24 24l-20 31m20-31l27 27"/></g>
+</g>
+
+<g class="sans">
+<path d="M48 601H952" class="rule"/>
+<text x="48" y="631" font-size="12" font-weight="700" letter-spacing="2" class="water">BOUNDARY</text>
+<text x="148" y="631" font-size="13" class="muted">CONCEPT BODY-USE SCENARIO · NTS · FIELD OPEN · NOT FOR CONSTRUCTION</text>
+<text x="952" y="631" text-anchor="end" font-size="11" class="muted">BODY-USE SCENARIO</text>
+<text x="48" y="658" font-size="13" class="seal">THRESHOLD · 身体需要成立后，设计才进入。</text>
 </g>
 </svg>
