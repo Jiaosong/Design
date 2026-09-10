@@ -1,0 +1,8 @@
+{
+  "target": "OLE-GEO-0001",
+  "check": "R4.5.1B_CAP_CURVATURE",
+  "machine": "PASS",
+  "visual": "FAIL",
+  "decision": "REVISE",
+  "authority": "DERIVED"
+}

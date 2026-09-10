@@ -1,0 +1,13 @@
+{
+  "version": "0.5.0",
+  "state": "VALIDATION_INTEGRATION",
+  "current_object": "OLE-GEO-0001",
+  "layers": {
+    "geometry_kernel": "BOUND",
+    "surface_system": "BOUND",
+    "validation": "R4_READY",
+    "decision_layer": "INITIALIZED",
+    "evidence": "BOUND"
+  },
+  "next_phase": "Blender runtime test"
+}
