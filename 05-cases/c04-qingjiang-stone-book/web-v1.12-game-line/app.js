@@ -65,9 +65,6 @@
   };
   const systems=$("#systems");
   if(systems){
-    // SYSTEMS is a direct navigation destination and a browser-readback carrier.
-    // Its claim and primary route visual must be readable immediately, even before
-    // IntersectionObserver has a chance to resolve the decorative reveal transition.
     [$(".section-head",systems),$(".asset-split",systems)].filter(Boolean).forEach(x=>x.classList.add("in-view"));
   }
   if(systems&&!$(".state-sim",systems)){
@@ -90,6 +87,18 @@
     setState(buttons[0]);
   }
 
+  // Transfer the mature physical/body-support relation into the real public development carrier.
+  // The editable SVG remains the native master; the Web layer only supplies reading intent and evidence boundary.
+  const development=$("#development");
+  if(development&&!$(".physical-transfer",development)){
+    const host=document.createElement("div");
+    host.className="asset-split physical-transfer in-view";
+    host.setAttribute("aria-label","身体介入强度：从不介入到必要时空间介入");
+    host.innerHTML=`<div class="asset-frame pale"><img src="assets/physical_body_support_hold.svg" alt="身体介入强度关系图：从不介入、身体支持、轻反馈到必要时空间介入"></div><div><p class="micro">PHYSICAL / MINIMUM SUFFICIENT INTERVENTION</p><h3>先不介入。<br>身体需要增加时，设计才逐级出现。</h3><p>既有景观与路径足够时保持为空；需要恢复时先提供身体支持；经过性反馈随后退场；只有场地必要性成立，才进入空间介入。</p><p class="micro">CONCEPT RELATION · NTS · FIELD OPEN · NOT FOR CONSTRUCTION</p></div>`;
+    const anchor=$(".section-head",development);
+    if(anchor)anchor.insertAdjacentElement("afterend",host);else development.appendChild(host);
+  }
+
   function syncPage(){
     const sections=$$(".section[id]");
     let active=sections[0]?.id||"hero";
@@ -106,15 +115,8 @@
       const target=a.getAttribute("href").slice(1);
       const current=(groups[target]||[]).includes(active);
       a.classList.toggle("active",current);
-      if(current){
-        a.setAttribute("aria-current","location");
-        a.style.background="rgba(120,197,196,.10)";
-        a.style.color="#fff";
-      }else{
-        a.removeAttribute("aria-current");
-        a.style.background="";
-        a.style.color="";
-      }
+      if(current){a.setAttribute("aria-current","location");a.style.background="rgba(120,197,196,.10)";a.style.color="#fff";}
+      else{a.removeAttribute("aria-current");a.style.background="";a.style.color="";}
     });
   }
   addEventListener("scroll",syncPage,{passive:true});
@@ -126,31 +128,16 @@
     toggle.setAttribute("aria-expanded",String(!open));
     if(mobile)mobile.hidden=open;
   });
-  $$("#mobileNav a").forEach(a=>a.addEventListener("click",()=>{
-    if(mobile)mobile.hidden=true;
-    toggle?.setAttribute("aria-expanded","false");
-  }));
+  $$("#mobileNav a").forEach(a=>a.addEventListener("click",()=>{if(mobile)mobile.hidden=true;toggle?.setAttribute("aria-expanded","false");}));
 
   async function bindLocalChunkImage(el,parts,mime="image/png"){
     if(!el)return;
-    el.dataset.state="loading";
-    el.setAttribute("aria-busy","true");
-    el.setAttribute("role","img");
-    el.setAttribute("aria-label","清江峡谷主视觉正在载入");
+    el.dataset.state="loading";el.setAttribute("aria-busy","true");el.setAttribute("role","img");el.setAttribute("aria-label","清江峡谷主视觉正在载入");
     try{
       const text=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(p);return r.text();})))).join("").replace(/\s+/g,"");
-      el.style.backgroundImage=`url("data:${mime};base64,${text}")`;
-      el.classList.add("loaded");
-      el.dataset.state="active";
-      el.setAttribute("aria-busy","false");
-      el.setAttribute("aria-label","清江峡谷主视觉");
+      el.style.backgroundImage=`url("data:${mime};base64,${text}")`;el.classList.add("loaded");el.dataset.state="active";el.setAttribute("aria-busy","false");el.setAttribute("aria-label","清江峡谷主视觉");
     }catch(err){
-      el.dataset.state="error";
-      el.setAttribute("aria-busy","false");
-      el.setAttribute("aria-label","清江主视觉暂未载入；可继续阅读游程与设计内容");
-      el.style.backgroundImage="linear-gradient(135deg,#071318 0%,#123139 55%,#2e7f86 100%)";
-      el.classList.add("loaded");
-      console.warn("C04 local image binding fallback:",err);
+      el.dataset.state="error";el.setAttribute("aria-busy","false");el.setAttribute("aria-label","清江主视觉暂未载入；可继续阅读游程与设计内容");el.style.backgroundImage="linear-gradient(135deg,#071318 0%,#123139 55%,#2e7f86 100%)";el.classList.add("loaded");console.warn("C04 local image binding fallback:",err);
     }
   }
   bindLocalChunkImage($("#heroImage"),["assets/qj_hero_keep_v11_b64_01.txt","assets/qj_hero_keep_v11_b64_02a.txt"]);
