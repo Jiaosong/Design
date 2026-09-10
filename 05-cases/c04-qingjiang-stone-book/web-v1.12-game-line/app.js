@@ -57,6 +57,33 @@
     setAudience(audienceTabs[initial],initial);
   }
 
+  const stateData={
+    normal:{k:"NORMAL / FULL",t:"路线、状态与可选深读都可用。",b:"路线保持第一层；十三印与数字内容按兴趣打开，不改变回程权威。"},
+    degraded:{k:"DEGRADED / LIGHT",t:"减少内容，先保住方向与回程。",b:"降低阅读与互动密度；纸本、标识与人工确认继续承担方向和回退。"},
+    closed:{k:"CLOSED / OFF",t:"停止继续进入，明确转向回程。",b:"关闭可选深读与前进承诺，只保留关闭信息、人工确认和返回路径。"},
+    unknown:{k:"UNKNOWN / FAIL-CLOSED",t:"不确定时，不猜可用。",b:"不把未知状态显示成正常；先提示确认并保留最小回程路径，再决定是否继续。"}
+  };
+  const systems=$("#systems");
+  if(systems&&!$(".state-sim",systems)){
+    const host=document.createElement("div");
+    host.className="state-sim";
+    host.setAttribute("aria-label","路线状态与回程反馈");
+    host.innerHTML=`<p class="micro">STATE FEEDBACK / ROUTE FIRST</p><div class="state-buttons" role="group" aria-label="路线状态"><button type="button" class="active" data-state="normal">NORMAL</button><button type="button" data-state="degraded">DEGRADED</button><button type="button" data-state="closed">CLOSED</button><button type="button" data-state="unknown">UNKNOWN</button></div><div class="state-result" aria-live="polite"><b>路线、状态与可选深读都可用。</b><span>路线保持第一层；十三印与数字内容按兴趣打开，不改变回程权威。</span></div>`;
+    $(".asset-split",systems)?.insertAdjacentElement("afterend",host);
+    const buttons=$$(".state-buttons button",host);
+    const result=$(".state-result",host);
+    const setState=(btn)=>{
+      buttons.forEach(x=>{const active=x===btn;x.classList.toggle("active",active);x.setAttribute("aria-pressed",String(active));});
+      const d=stateData[btn.dataset.state];
+      if(!d||!result)return;
+      $(".micro",host).textContent=`STATE FEEDBACK / ${d.k}`;
+      $("b",result).textContent=d.t;
+      $("span",result).textContent=d.b;
+    };
+    buttons.forEach(btn=>btn.addEventListener("click",()=>setState(btn)));
+    setState(buttons[0]);
+  }
+
   function syncPage(){
     const sections=$$(".section[id]");
     let active=sections[0]?.id||"hero";
