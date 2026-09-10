@@ -1,0 +1,22 @@
+name: OLEANDER Face Rotate Receipt Rebind
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/oleander-blender-face-rotate-v01-20260910
+    paths:
+      - ".github/workflows/zz-oleander-face-rotate-receipt-rebind.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  hold-for-runtime-evidence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Receipt rebind is gated by fresh formal Runtime 5.2 evidence
+        run: |
+          echo 'OLEANDER_FACE_ROTATE_RECEIPT_REBIND_STAGE=WAIT_FOR_FRESH_RUNTIME_5_2'
+          echo 'This temporary workflow does not fabricate or rewrite evidence on its own.'
