@@ -292,6 +292,49 @@ def run_tangent_authoritative_integration() -> None:
     checks.append("cad_native_tangent_authoritative_integration")
 
 
+
+def run_rotate_authoritative_integration() -> None:
+    """Reuse the existing CAD-sidecar runner state for bounded Face Rotate execution."""
+    probe_path = SCRIPT.with_name("probe_cad_direct_rotate_integration.py")
+    spec = importlib.util.spec_from_file_location("oleander_cad_direct_rotate_probe", probe_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("unable to load CAD rotate integration probe")
+    rotate_probe = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(rotate_probe)
+
+    rotate_probe.prepare()
+    freecadcmd = pathlib.Path("/tmp/squashfs-root/usr/bin/freecadcmd")
+    service = SCRIPT.with_name("freecad_cad_direct_edit_service.py")
+    check(freecadcmd.is_file(), "rotate_freecadcmd_available")
+    check(service.is_file(), "rotate_sidecar_service_available")
+
+    requests = {
+        "success": rotate_probe.SUCCESS_REQUEST,
+        "missing": rotate_probe.MISSING_REQUEST,
+        "ambiguous": rotate_probe.AMBIGUOUS_REQUEST,
+    }
+    for name, request_path in requests.items():
+        out_dir = ROOT / f"rotate_direct_{name}"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        env = os.environ.copy()
+        env["OLEANDER_CAD_DIRECT_REQUEST"] = str(request_path)
+        env["OLEANDER_CAD_DIRECT_DIR"] = str(out_dir)
+        completed = subprocess.run(
+            [str(freecadcmd), str(service)],
+            env=env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
+        print(completed.stdout, end="")
+        check(completed.returncode == 0, f"rotate_{name}_freecad_process")
+        check((out_dir / "cad_direct_edit_response.json").is_file(), f"rotate_{name}_response_exists")
+
+    rotate_probe.readback()
+    check(rotate_probe.REOPEN.is_file(), "rotate_blender_save_reopen_artifact")
+    checks.append("cad_native_face_rotate_authoritative_integration")
+
 def readback() -> None:
     if hasattr(bpy.types.Object, "oleander"):
         try:
@@ -383,16 +426,17 @@ def readback() -> None:
     check(reopened["cad_direct_edit_execution_state"] == "EXECUTED", "readback_execution_state_reopen")
 
     run_tangent_authoritative_integration()
+    run_rotate_authoritative_integration()
 
     result_payload = {
-        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.3",
+        "schema": "OLEANDER_CAD_DIRECT_EDIT_INTEGRATION_READBACK_v0.4",
         "status": "PASS",
         "blender": bpy.app.version_string,
         "checks": checks,
         "request_sha256": payload_sha256(success_request),
         "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "EXECUTED", "resolution": "RESOLVED_UNIQUE", "binder": "PRODUCTION_TYPED_DIRECT_RESPONSE"},
         "failure_envelope": {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE", "hold_bind": "FAIL_CLOSED"},
-        "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "oblique_face_execution", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "P0_G_MODELING_INTERACTION_PASS", "default_environment_promotion", "engineering_approval", "manufacturing_release", "field_truth"],
+        "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "oblique_face_execution", "unrestricted_arbitrary_axis_rotation", "arbitrary_pivot_rotation", "nonplanar_face_rotation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "P0_G_MODELING_INTERACTION_PASS", "default_environment_promotion", "engineering_approval", "manufacturing_release", "field_truth"],
     }
     print("OLEANDER_CAD_DIRECT_EDIT_READBACK=" + json.dumps(result_payload, sort_keys=True))
 

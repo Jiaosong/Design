@@ -652,6 +652,22 @@ def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -
         if distance <= 1e-9 or distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
             raise CADSidecarContractError("CAD tangent response translation is outside bounded contract")
         normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_ROTATE:
+        angle_deg = _finite_float(operation.get("angle_deg"), "direct response operation.angle_deg")
+        if abs(angle_deg) <= 1e-9 or abs(angle_deg) > DIRECT_EDIT_ROTATE_MAX_ANGLE_DEG + 1e-9:
+            raise CADSidecarContractError("CAD rotate response angle is outside bounded contract")
+        axis_mode = str(operation.get("axis_mode") or "")
+        if axis_mode not in {"U", "V"}:
+            raise CADSidecarContractError("CAD rotate response axis_mode must be U or V")
+        axis_origin = _vector(operation.get("axis_origin_local_mm"), 3, "direct response operation.axis_origin_local_mm")
+        axis_direction = _unit3(operation.get("axis_direction_local"), "direct response operation.axis_direction_local")
+        normalized_operation = {
+            "kind": operation_kind,
+            "angle_deg": angle_deg,
+            "axis_mode": axis_mode,
+            "axis_origin_local_mm": axis_origin,
+            "axis_direction_local": axis_direction,
+        }
     else:
         raise CADSidecarContractError("CAD direct-edit response operation mismatch")
 
@@ -729,6 +745,10 @@ def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -
         "operation": normalized_operation,
         "distance_mm": normalized_operation.get("distance_mm"),
         "translation_local_mm": normalized_operation.get("translation_local_mm"),
+        "angle_deg": normalized_operation.get("angle_deg"),
+        "axis_mode": normalized_operation.get("axis_mode"),
+        "axis_origin_local_mm": normalized_operation.get("axis_origin_local_mm"),
+        "axis_direction_local": normalized_operation.get("axis_direction_local"),
         "source_bbox_mm": source_bbox,
         "result_bbox_mm": result_bbox,
         "source_volume_mm3": source_volume,
@@ -760,9 +780,18 @@ def assert_direct_edit_response_matches_request(response: dict, request: dict) -
     if request_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
         if abs(response_operation["distance_mm"] - request_operation["distance_mm"]) > 1e-9:
             raise CADSidecarContractError("CAD direct-edit response distance mismatch")
-    else:
+    elif request_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
         if any(abs(a - b) > 1e-9 for a, b in zip(response_operation["translation_local_mm"], request_operation["translation_local_mm"])):
             raise CADSidecarContractError("CAD direct-edit response tangent translation mismatch")
+    else:
+        if abs(response_operation["angle_deg"] - request_operation["angle_deg"]) > 1e-9:
+            raise CADSidecarContractError("CAD direct-edit response rotate angle mismatch")
+        if response_operation["axis_mode"] != request_operation["axis_mode"]:
+            raise CADSidecarContractError("CAD direct-edit response rotate axis mode mismatch")
+        if any(abs(a - b) > 1e-9 for a, b in zip(response_operation["axis_origin_local_mm"], request_operation["axis_origin_local_mm"])):
+            raise CADSidecarContractError("CAD direct-edit response rotate axis origin mismatch")
+        if any(abs(a - b) > 1e-9 for a, b in zip(response_operation["axis_direction_local"], request_operation["axis_direction_local"])):
+            raise CADSidecarContractError("CAD direct-edit response rotate axis direction mismatch")
 
 def _validate_direct_edit_display_payload(display_payload: dict, response: dict) -> None:
     if not isinstance(display_payload, dict) or display_payload.get("schema") != DIRECT_EDIT_DISPLAY_SCHEMA:
@@ -826,8 +855,13 @@ def bind_direct_edit_display_derivative(*, response: dict, display_payload: dict
     obj["cad_direct_edit_operation_kind"] = validated["operation"]["kind"]
     if validated["operation"]["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
         obj["cad_direct_edit_distance_mm"] = validated["distance_mm"]
-    else:
+    elif validated["operation"]["kind"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
         obj["cad_direct_edit_translation_local_mm"] = validated["translation_local_mm"]
+    else:
+        obj["cad_direct_edit_angle_deg"] = validated["angle_deg"]
+        obj["cad_direct_edit_axis_mode"] = validated["axis_mode"]
+        obj["cad_direct_edit_axis_origin_local_mm"] = validated["axis_origin_local_mm"]
+        obj["cad_direct_edit_axis_direction_local"] = validated["axis_direction_local"]
     return obj
 
 def load_response(path: str | Path) -> dict:
