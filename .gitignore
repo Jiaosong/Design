@@ -5,3 +5,8 @@ test-results/
 __pycache__/
 *.pyc
 
+
+# Local OLEANDER runtime outputs
+.ci-artifacts/
+# Separate C04 presentation worktree
+.oleander-presentation-c04/
