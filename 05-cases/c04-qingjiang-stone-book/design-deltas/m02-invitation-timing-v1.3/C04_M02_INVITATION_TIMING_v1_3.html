@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M02 Invitation Timing v1.3</title>
+<style>
+:root{--bg:#f3efe5;--paper:#fbfaf5;--ink:#17332c;--muted:#697870;--qing:#548b7e;--seal:#a54539;--soft:#e7ece8;--line:#c7cdc8}
+*{box-sizing:border-box}body{margin:0;background:#dfe4df;color:var(--ink);font-family:system-ui,"Noto Sans SC",sans-serif}
+main{width:min(100%,430px);margin:auto;min-height:100vh;background:var(--bg);padding:18px 16px 72px}
+.ey{font-size:10px;letter-spacing:.13em;color:var(--qing);font-weight:800}
+h1{font:700 31px/1.08 "Noto Serif SC",serif;margin:10px 0}.sub{font-size:12px;line-height:1.6;color:var(--muted)}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}
+button{border:1px solid rgba(23,51,44,.16);background:#fff;color:var(--ink);border-radius:999px;padding:8px 11px;font-weight:700;font-size:11px}
+button[aria-pressed=true]{background:var(--ink);color:#fff}
+.scene{height:330px;position:relative;overflow:hidden;border-radius:22px;background:#dce5df;border:1px solid rgba(23,51,44,.12)}
+.land{position:absolute;inset:0;background:
+ linear-gradient(180deg,rgba(255,255,255,.5),transparent 40%),
+ linear-gradient(145deg,#b7c9c0 0 31%,#e5e0d5 31% 51%,#769b90 51% 56%,#d7d3c8 56% 100%)}
+.person{position:absolute;left:46%;bottom:48px;width:32px;height:82px}.person:before{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--ink);border-radius:50%;left:7px}.person:after{content:"";position:absolute;width:3px;height:50px;background:var(--ink);left:15px;top:22px}
+.modal,.chip,.returnSheet{display:none;position:absolute;z-index:3}
+.modal{left:7%;right:7%;top:24%;padding:16px;border-radius:18px;background:rgba(251,250,245,.97);box-shadow:0 18px 50px rgba(23,51,44,.18)}
+.chip{left:50%;bottom:18px;transform:translateX(-50%);padding:10px 14px;border-radius:999px;background:rgba(251,250,245,.96);border:1px solid rgba(23,51,44,.15);white-space:nowrap}
+.returnSheet{left:7%;right:7%;bottom:18px;padding:15px;border-radius:18px;background:var(--ink);color:white}
+.scene[data-mode="immediate"][data-state="invite"] .modal{display:block}
+.scene[data-mode="exit"][data-state="invite"] .chip{display:block}
+.scene[data-mode="return"][data-state="return"] .returnSheet{display:block}
+.result{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.result>div{padding:10px;border-radius:14px;background:var(--paper);border:1px solid rgba(23,51,44,.1)}
+.result small{font-size:9px;color:var(--qing);font-weight:800;letter-spacing:.06em}.result b{display:block;margin-top:4px;font-size:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.primary{background:var(--ink);color:white}
+.note{font-size:10px;line-height:1.55;color:var(--muted)}
+</style>
+</head>
+<body><main>
+<div class="ey">M02 / OPTIONAL INVITATION TIMING v1.3</div>
+<h1>记忆邀请不能<br>抢在体验前面。</h1>
+<p class="sub">只比较 READ / STOP 这类 OPTIONAL 事件的邀请时机。P01、ROUTE、SERVICE、RETURN trigger 继续保持 NEVER。</p>
+
+<div class="tabs">
+<button data-mode="immediate">A 即时弹出</button>
+<button data-mode="exit" aria-pressed="true">B 退出时轻提示</button>
+<button data-mode="return">C 回程统一回顾</button>
+</div>
+
+<section class="scene" id="scene" data-mode="exit" data-state="look">
+<div class="land"></div><div class="person"></div>
+<div class="modal"><div class="ey">SAVE MEMORY?</div><h3>把这一刻留进“我的石书”？</h3><div class="actions"><button class="primary">留下</button><button>不记录</button></div></div>
+<div class="chip">留下一页　×</div>
+<div class="returnSheet"><div class="ey">RETURN REVIEW</div><h3>今天有 2 个“可能值得留下”的瞬间</h3><p style="font-size:11px;color:#ccd6d1">需要系统先持续保留候选事件，才可能在回程统一回顾。</p></div>
+</section>
+
+<div class="actions">
+<button id="look" class="primary">进入观察</button>
+<button id="leave">离开场景</button>
+<button id="goReturn">进入回程</button>
+</div>
+
+<div class="result">
+<div><small>INTERRUPTION</small><b id="interrupt">低</b></div>
+<div><small>MEMORY SPECIFICITY</small><b id="specificity">高</b></div>
+<div><small>VERDICT</small><b id="verdict">KEEP CANDIDATE</b></div>
+</div>
+<p class="note" id="reason">退出场景后才出现非阻塞提示；若不操作，不再追问，也不积累成待办。</p>
+</main>
+<script>
+const scene=document.getElementById("scene");
+const data={
+ immediate:["高","高","REJECT","READ/STOP 一结束就覆盖体验，数字层取得错误的第一读。"],
+ exit:["低","高","KEEP CANDIDATE","退出场景后才出现非阻塞提示；若不操作，不再追问，也不积累成待办。"],
+ return:["低","中","REVISE","表面上不打扰，但必须暗中保存候选事件直到回程，容易退化成行为日志。"]
+};
+function setMode(m){
+ scene.dataset.mode=m; scene.dataset.state="look";
+ document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===m)));
+ interrupt.textContent=data[m][0];specificity.textContent=data[m][1];verdict.textContent=data[m][2];reason.textContent=data[m][3];
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+look.onclick=()=>scene.dataset.state="look";
+leave.onclick=()=>{
+ const m=scene.dataset.mode;
+ scene.dataset.state=(m==="immediate"||m==="exit")?"invite":"look";
+ if(m==="exit")setTimeout(()=>{if(scene.dataset.mode==="exit"&&scene.dataset.state==="invite")scene.dataset.state="look"},3200);
+};
+goReturn.onclick=()=>scene.dataset.state=scene.dataset.mode==="return"?"return":"look";
+setMode("exit");
+</script>
+</body></html>
