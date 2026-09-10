@@ -1,0 +1,16 @@
+{
+  "id": "OLE-GEO-0001",
+  "type": "surface_component",
+  "intent": {
+    "purpose": "Class-A surface system validation object"
+  },
+  "source": {
+    "system": "Blender Surface System v1.21",
+    "authority": "WORKING_SOURCE"
+  },
+  "validation": {
+    "state": "PENDING",
+    "checks": []
+  },
+  "evidence": []
+}

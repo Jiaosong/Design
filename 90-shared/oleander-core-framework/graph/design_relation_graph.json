@@ -1,5 +1,12 @@
-﻿{
+{
   "nodes": [],
   "edges": [],
-  "version": "0.1.0"
+  "version": "0.2.0",
+  "edge_types": [
+    "affects",
+    "derived_from",
+    "validated_by",
+    "requires",
+    "contradicts"
+  ]
 }

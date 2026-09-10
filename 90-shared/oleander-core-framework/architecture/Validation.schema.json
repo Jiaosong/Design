@@ -1,5 +1,5 @@
-﻿{
-  "schema": "oleander.validation.v1",
+{
+  "schema": "oleander.validation.v0.2",
   "checks": [
     "geometry",
     "semantic",

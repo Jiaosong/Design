@@ -1,5 +1,8 @@
-﻿{
-  "objects": [],
-  "version": "0.1.0",
-  "authority": "WORKING_SOURCE"
+{
+  "objects": [
+    "OLE-GEO-0001"
+  ],
+  "version": "0.2.0",
+  "authority": "WORKING_SOURCE",
+  "registry_contract": "oleander.object.registry.v0.2"
 }
