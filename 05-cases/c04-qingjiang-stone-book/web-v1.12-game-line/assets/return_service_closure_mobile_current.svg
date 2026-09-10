@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1120" viewBox="0 0 640 1120" role="img" aria-labelledby="title desc">
+<title id="title">清江回程关系·移动端</title>
+<desc id="desc">移动端竖向表达：路线连续性为主层，纸本、标识与人工服务为确认和回退层，数字为可退场辅助层。仅表达设计原则，不声明现场位置、距离、容量或工程事实。</desc>
+<defs><style>
+.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.soft{fill:#91AAA4}.water{fill:#8FD5D1}.seal{fill:#C88C79}.white{fill:#EEF3EF}.hair{stroke:#91AAA4;stroke-width:1;stroke-opacity:.32}.route{fill:none;stroke:#8FD5D1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.routeSoft{fill:none;stroke:#8FD5D1;stroke-width:20;stroke-opacity:.1;stroke-linecap:round;stroke-linejoin:round}.tier{fill:#0C2025;stroke:#90A6A1;stroke-width:1;stroke-opacity:.42}
+</style><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07151A"/><stop offset="1" stop-color="#10282D"/></linearGradient></defs>
+<rect width="640" height="1120" fill="url(#bg)"/>
+<g class="sans">
+<text x="40" y="58" font-size="13" font-weight="700" letter-spacing="2.4" class="water">RETURN / CONTINUE</text>
+<text x="40" y="98" font-size="24" font-weight="700" class="white">没有手机，也能继续返回。</text>
+<text x="40" y="130" font-size="13" class="soft">先认路线；不确定时，再逐级获得确认。</text>
+
+<g transform="translate(40 174)">
+<rect class="tier" width="560" height="106" rx="4"/><text x="20" y="28" font-size="11" font-weight="800" letter-spacing="1.7" class="water">01 PRIMARY</text><text x="20" y="60" font-size="20" font-weight="700" class="white">路线连续性</text><text x="20" y="86" font-size="13" class="soft">先认路，再继续返回</text>
+<path d="M280 106v28" class="hair"/>
+<rect class="tier" y="134" width="560" height="106" rx="4"/><text x="20" y="162" font-size="11" font-weight="800" letter-spacing="1.7" class="water">02 FALLBACK</text><text x="20" y="194" font-size="20" font-weight="700" class="white">纸本 / 标识 / 人工服务</text><text x="20" y="220" font-size="13" class="soft">只有不确定时才介入确认</text>
+<path d="M280 240v28" class="hair"/>
+<rect class="tier" y="268" width="560" height="106" rx="4"/><text x="20" y="296" font-size="11" font-weight="800" letter-spacing="1.7" class="water">03 AUXILIARY</text><text x="20" y="328" font-size="20" font-weight="700" class="white">数字辅助</text><text x="20" y="354" font-size="13" class="soft">可退场，不是唯一入口</text>
+</g>
+
+<g transform="translate(40 602)">
+<text x="0" y="0" font-size="10" font-weight="800" letter-spacing="1.6" class="seal">PHONE OFF ≠ ROUTE OFF</text>
+<path d="M14 72 C112 18 176 126 272 68 S428 24 544 72" class="routeSoft"/><path d="M14 72 C112 18 176 126 272 68 S428 24 544 72" class="route"/><path d="M514 86 L548 70 L526 50" class="route"/>
+<g transform="translate(38 54)"><circle r="8" fill="#8FD5D1"/><text x="0" y="36" font-size="13" font-weight="700" class="white">继续走</text></g>
+<g transform="translate(222 78)"><circle r="8" fill="#8FD5D1"/><text x="-8" y="38" font-size="13" font-weight="700" class="white">需要确认</text><text x="-8" y="58" font-size="11" class="soft">纸本 / 标识</text></g>
+<g transform="translate(394 50)"><circle r="8" fill="#C88C79"/><text x="-8" y="38" font-size="13" font-weight="700" class="white">仍不确定</text><text x="-8" y="58" font-size="11" class="soft">人工服务</text></g>
+</g>
+
+<g transform="translate(40 812)"><line x1="0" y1="0" x2="560" y2="0" class="hair"/><text x="0" y="38" font-size="11" font-weight="800" letter-spacing="1.6" class="water">RETURN REMAINS AVAILABLE</text><text x="0" y="76" font-size="18" font-weight="700" class="white">数字退出，回程关系仍保留。</text><text x="0" y="108" font-size="13" class="soft">路线是主层；纸本、标识与人工服务承担确认和回退。</text></g>
+
+<g transform="translate(40 994)"><line x1="0" y1="0" x2="560" y2="0" class="hair"/><text x="0" y="34" font-size="11" font-weight="700" class="water">CONCEPT SERVICE RELATION</text><text x="0" y="60" font-size="11" class="soft">不声明现场定位、距离、容量或运营既成事实。</text></g>
+</g></svg>
