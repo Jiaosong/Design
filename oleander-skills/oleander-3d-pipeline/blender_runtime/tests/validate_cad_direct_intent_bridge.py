@@ -140,7 +140,7 @@ def main() -> None:
     intent = valid_intent()
     validated = validate_direct_edit_intent(intent)
     check(validated["ole_id"] == intent["ole_id"], "intent_ole_id_preserved", checks)
-    check(abs(validated["distance_mm"] - 12.5) <= 1e-9, "intent_metric_distance_preserved", checks)
+    check(abs(validated["operation"]["distance_mm"] - 12.5) <= 1e-9, "intent_metric_distance_preserved", checks)
     check(validated["intent_sha256"] == payload_sha256(intent), "intent_sha256_deterministic", checks)
 
     request1 = valid_request()
