@@ -106,11 +106,28 @@ class ModelingWorkerV013BlenderBridge(unittest.TestCase):
             "g1_r2_blender_roundtrip.py",
             "g1_r2_blender_rebuild.py",
             "g1_r2_blender_reopen_verify.py",
+            "g1_r4_5_1b_scale_086_confirmation.py",
+            "g1_r4_5_1b_scale_086_reopen_verify.py",
             "g1_r2_blender_entry.py",
             "g1_r2_topology_isolation.py",
         ):
             py_compile.compile(str(V013 / filename), doraise=True)
         py_compile.compile(str(SURFACE_RUNTIME), doraise=True)
+
+    def test_r451b_exact_confirmation_requires_real_saved_blend_reopen(self):
+        confirmation = json.loads((V013 / "G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json").read_text(encoding="utf-8"))
+        rebuild = (V013 / "g1_r2_blender_rebuild.py").read_text(encoding="utf-8")
+        reopen = (V013 / "g1_r4_5_1b_scale_086_reopen_verify.py").read_text(encoding="utf-8")
+
+        self.assertTrue(confirmation["policy"]["saved_blend_reopen_required"])
+        self.assertTrue(confirmation["policy"]["self_contained_cap_aware_rebuild_required"])
+        self.assertEqual(confirmation["outputs"]["reopen_report"], "G1_R4_5_1B_SCALE_086_REOPEN_PERSISTENCE_REPORT.json")
+        self.assertIn("termination_cap_pole_curvature_scale", rebuild)
+        self.assertIn("def cap_radial(", rebuild)
+        self.assertIn("R4_5_1B_EXACT_SCALE_086_CONFIRMATION", rebuild)
+        self.assertIn("OLEANDER_LAST_NATIVE_REBUILD_CAP_AWARE", rebuild)
+        self.assertIn("run_embedded_rebuild()", reopen)
+        self.assertIn("reopen_rebuild_geometry_matches_saved_candidate", reopen)
 
     def test_surface_system_runtime_is_not_duplicated_inside_modeling_worker(self):
         entry = (V013 / "g1_r2_blender_entry.py").read_text(encoding="utf-8")
