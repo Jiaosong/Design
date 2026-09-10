@@ -1,0 +1,33 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "P01_STEP_LIGHT_EDGE_INTERFACE_v1.3",
+  "mode": "PROJECT_MODE",
+  "authority": {
+    "current": "C04_CURRENT.md",
+    "atlas": "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md",
+    "exact_native_master": "physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg@1e46c839040a2db1dbe18c22da9b85de4b2805ba"
+  },
+  "current_gap": "P01 is MAIN REQUIRED after visual refresh; scene fit/day-night were repaired, but the physical edge feedback still lacked a structural interface competition showing how it meets the walking surface and where service access belongs.",
+  "reframe": "the object is not a luminous fixture; it is a controlled interface between uninterrupted walking field, low-intensity edge response, and service access.",
+  "selected_lenses": ["Human/Situation","System/Relation","Form/Semantics","Craft/Medium"],
+  "practice_transfer": {
+    "source": "06-practice/2026/2026-08-15-product-model-interface-gap/README.md@73a76f4eae162f6625ccc4de8c17ac1621db8065",
+    "bounded_rule": "interface visibility must be explicit enough to read and service without becoming the first-reading object",
+    "non_transfer": "0.2 / 0.6 / 1.2 mm exercise seam values are NOT transferred as project dimensions",
+    "project_rewrite": "walking field → edge cassette → service side; compare structural positions rather than cosmetic seam widths"
+  },
+  "alternatives": {
+    "A_inset_slot": {"verdict":"REJECT","reason":"interface enters primary stepping field and can read as a target"},
+    "B_flush_lateral_cassette": {"verdict":"KEEP_CANDIDATE","reason":"walk surface remains visually/physically primary; response and service retreat to edge"},
+    "C_raised_edge_channel": {"verdict":"REJECT","reason":"edge becomes a dominant route-guidance/obstacle object"}
+  },
+  "actual_project_readback": {
+    "whole": "A/B/C read as materially different structural positions, not micro seam variants. B remains visually subordinate to the walking field.",
+    "first_read": "A reads as a target slot; B as a continuous walking surface with a secondary edge; C as a raised fixture/guide object.",
+    "use": "B is the only candidate that preserves ordinary walking without asking the body to seek, step on, or avoid a luminous target.",
+    "detail": "fixing, sealing, drainage, dimensions, tolerances, electrical, slip, glare, ecology and accessibility remain OPEN.",
+    "pixel_review": "1800×1160 competition PNG and 1400×820 converged detail PNG reopened after generation"
+  },
+  "truth_boundary": "CONCEPT / NTS / FIELD OPEN / NOT FOR CONSTRUCTION / NO FINAL DIMENSIONS, MATERIAL, TOLERANCE, DRAINAGE, ELECTRICAL, SLIP, GLARE, ECOLOGY OR ACCESSIBILITY CLAIM",
+  "status": "PROJECT TRANSFER EXECUTED / P01 B EDGE-CASSETTE KEEP CANDIDATE / ACTUAL PIXEL READBACK COMPLETE / NOT FINAL_KEEP"
+}
