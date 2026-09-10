@@ -1,0 +1,1375 @@
+name: OLEANDER CAD Tangent Branch Patch
+
+on:
+  push:
+    branches:
+      - feat/oleander-blender-cad-tangent-move-v01-20260910
+    paths:
+      - ".github/workflows/zz-oleander-cad-tangent-branch-patch.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: feat/oleander-blender-cad-tangent-move-v01-20260910
+          fetch-depth: 0
+      - name: Apply exact existing-owner CAD tangent absorption
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          ROOT = Path('.')
+          runtime = ROOT / 'oleander-skills/oleander-3d-pipeline/blender_runtime'
+
+          def replace_between(path, start, end, replacement):
+              text = path.read_text(encoding='utf-8')
+              a = text.index(start)
+              b = text.index(end, a)
+              text = text[:a] + replacement.rstrip() + '\n\n' + text[b:]
+              path.write_text(text, encoding='utf-8')
+
+          def replace_once(path, old, new):
+              text = path.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count != 1:
+                  raise RuntimeError(f'{path}: expected one match, got {count}: {old[:80]!r}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          # ------------------------------------------------------------------
+          # direct_model.py — keep one interaction owner; add CAD tangent intent.
+          # ------------------------------------------------------------------
+          direct = runtime / 'oleander_blender/direct_model.py'
+          replace_between(
+              direct,
+              'def _build_cad_direct_edit_intent',
+              'def _selected_governed_edit_face',
+              r'''def _cad_direct_authority_payload(obj):
+              if not hasattr(obj, "oleander"):
+                  raise ValueError("CAD direct edit requires OLEANDER metadata")
+              ole_id = obj.oleander.ole_id.strip()
+              master_locator = obj.oleander.master_locator.strip()
+              if not ole_id:
+                  raise ValueError("CAD direct edit requires a stable OLE ID")
+              if not master_locator:
+                  raise ValueError("CAD direct edit requires a governed CAD master locator")
+              return ole_id, master_locator
+
+
+          def _cad_direct_intent_envelope(obj, operation, parameters, descriptor):
+              ole_id, master_locator = _cad_direct_authority_payload(obj)
+              return {
+                  "schema": CAD_DIRECT_EDIT_INTENT_SCHEMA,
+                  "ole_id": ole_id,
+                  "units": "mm",
+                  "operation": operation,
+                  "parameters": parameters,
+                  "target": descriptor,
+                  "authority": {
+                      "master_type": "CAD_NATIVE",
+                      "master_locator": master_locator,
+                      "required_kernel": "FREECAD_OCCT_BREP",
+                      "blender_role": "DISPLAY_DERIVATIVE_ONLY",
+                      "display_mutation": "NONE",
+                  },
+                  "resolution": {
+                      "policy": "SEMANTIC_REBIND_FAIL_CLOSED",
+                      "ambiguous_result": "HOLD",
+                      "missing_result": "HOLD",
+                      "prohibited_persistence": [
+                          "FaceN",
+                          "EdgeN",
+                          "VertexN",
+                          "subshape_ordinal",
+                          "polygon_index",
+                      ],
+                  },
+              }
+
+
+          def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
+              return _cad_direct_intent_envelope(
+                  obj,
+                  "FACE_NORMAL_MOVE",
+                  {"distance_mm": float(distance_mm)},
+                  descriptor,
+              )
+
+
+          def _build_cad_direct_tangent_intent(obj, u_mm, v_mm, descriptor, tangent_u, tangent_v):
+              translation = tangent_u * float(u_mm) + tangent_v * float(v_mm)
+              if translation.length <= 1e-9:
+                  raise ValueError("CAD tangent move requires a non-zero translation")
+              normal = Vector(tuple(float(v) for v in descriptor["normal_local"])).normalized()
+              if abs(float(normal.dot(translation))) > 1e-7:
+                  raise ValueError("CAD tangent translation contains a normal component")
+              return _cad_direct_intent_envelope(
+                  obj,
+                  "FACE_TANGENT_MOVE",
+                  {
+                      "u_mm": float(u_mm),
+                      "v_mm": float(v_mm),
+                      "tangent_u_local": _rounded_vector(tangent_u, 9),
+                      "tangent_v_local": _rounded_vector(tangent_v, 9),
+                      "translation_local_mm": _rounded_vector(translation, 6),
+                  },
+                  descriptor,
+              )'''
+          )
+
+          replace_between(
+              direct,
+              'class OLEANDER_OT_direct_face_tangent_move',
+              'class OLEANDER_OT_duplicate_linear',
+              r'''class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
+              """Move one governed face in its deterministic local tangent basis."""
+
+              bl_idname = "oleander.direct_face_tangent_move"
+              bl_label = "Face Tangent Move"
+              bl_description = (
+                  "Move one selected face in a deterministic geometry-based U/V tangent basis; "
+                  "CAD-native masters prepare a fail-closed sidecar intent without mutating the Blender display"
+              )
+              bl_options = {"REGISTER", "UNDO"}
+
+              u_mm: bpy.props.FloatProperty(name="U mm", default=10.0)
+              v_mm: bpy.props.FloatProperty(name="V mm", default=0.0)
+
+              @classmethod
+              def poll(cls, context):
+                  return (
+                      context.active_object is not None
+                      and context.active_object.type == "MESH"
+                      and context.mode == "EDIT_MESH"
+                  )
+
+              def invoke(self, context, event):
+                  return context.window_manager.invoke_props_dialog(self)
+
+              def execute(self, context):
+                  if abs(float(self.u_mm)) <= 1e-9 and abs(float(self.v_mm)) <= 1e-9:
+                      self.report({"ERROR"}, "Face Tangent Move requires a non-zero U/V displacement")
+                      return {"CANCELLED"}
+                  try:
+                      obj, bm, face = _selected_governed_edit_face(context)
+                      tangent_u, tangent_v = _face_tangent_basis(face)
+                  except ValueError as exc:
+                      self.report({"ERROR"}, str(exc))
+                      return {"CANCELLED"}
+
+                  descriptor = _face_semantic_descriptor(context, face)
+                  master_type = obj.oleander.master_type if hasattr(obj, "oleander") else "BLENDER_NATIVE"
+
+                  if master_type == "CAD_NATIVE":
+                      try:
+                          intent = _build_cad_direct_tangent_intent(
+                              obj,
+                              self.u_mm,
+                              self.v_mm,
+                              descriptor,
+                              tangent_u,
+                              tangent_v,
+                          )
+                      except ValueError as exc:
+                          self.report({"ERROR"}, str(exc))
+                          return {"CANCELLED"}
+                      encoded = _canonical_json(intent)
+                      obj["oleander_last_direct_operation"] = "CAD_DIRECT_EDIT_INTENT"
+                      obj["oleander_direct_authority_route"] = "CAD_NATIVE"
+                      obj["oleander_cad_direct_edit_intent"] = encoded
+                      obj["oleander_cad_direct_edit_intent_sha256"] = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+                      obj["oleander_cad_direct_edit_state"] = "PENDING_SIDECAR"
+                      obj["oleander_direct_face_tangent_uv_mm"] = [float(self.u_mm), float(self.v_mm)]
+                      obj["oleander_direct_face_tangent_u_local"] = _rounded_vector(tangent_u, 9)
+                      obj["oleander_direct_face_tangent_v_local"] = _rounded_vector(tangent_v, 9)
+                      self.report(
+                          {"INFO"},
+                          "CAD tangent intent prepared; authoritative CAD and Blender display geometry remain unchanged",
+                      )
+                      return {"FINISHED"}
+
+                  if master_type != "BLENDER_NATIVE":
+                      self.report(
+                          {"ERROR"},
+                          f"Face Tangent Move has no bounded authority route for {master_type}",
+                      )
+                      return {"CANCELLED"}
+
+                  delta = (
+                      tangent_u * _mm_to_scene_units(context, self.u_mm)
+                      + tangent_v * _mm_to_scene_units(context, self.v_mm)
+                  )
+                  normal_component = abs(float(face.normal.normalized().dot(delta)))
+                  if _scene_units_to_mm(context, normal_component) > 1e-6:
+                      self.report({"ERROR"}, "Computed tangent move contains a normal component")
+                      return {"CANCELLED"}
+
+                  for vert in face.verts:
+                      vert.co += delta
+                  bm.normal_update()
+                  bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+                  context.view_layer.update()
+
+                  downstream = mark_downstream_stale(
+                      [object_id(obj)],
+                      reason="DIRECT_FACE_TANGENT_MOVE",
+                      scene=context.scene,
+                  )
+                  obj["oleander_last_direct_operation"] = "FACE_TANGENT_MOVE"
+                  obj["oleander_direct_authority_route"] = "BLENDER_NATIVE"
+                  obj["oleander_direct_face_tangent_uv_mm"] = [float(self.u_mm), float(self.v_mm)]
+                  obj["oleander_direct_face_tangent_u_local"] = _rounded_vector(tangent_u, 9)
+                  obj["oleander_direct_face_tangent_v_local"] = _rounded_vector(tangent_v, 9)
+                  obj["oleander_direct_face_target_descriptor"] = _canonical_json(descriptor)
+                  obj["oleander_direct_downstream_stale"] = json.dumps(downstream, sort_keys=True)
+                  self.report(
+                      {"INFO"},
+                      f"Face tangent move U={self.u_mm:+.3f} mm V={self.v_mm:+.3f} mm; downstream stale: {len(downstream)}",
+                  )
+                  return {"FINISHED"}'''
+          )
+
+          # ------------------------------------------------------------------
+          # cad_sidecar.py — operation union remains in the existing owner.
+          # ------------------------------------------------------------------
+          sidecar = runtime / 'professional_adapter/cad_sidecar.py'
+          replace_once(
+              sidecar,
+              'DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE = "FACE_NORMAL_MOVE"\nDIRECT_EDIT_REQUIRED_KERNEL = "FREECAD_OCCT_BREP"',
+              'DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE = "FACE_NORMAL_MOVE"\nDIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE = "FACE_TANGENT_MOVE"\nDIRECT_EDIT_TANGENT_MAX_DISTANCE_MM = 20.0\nDIRECT_EDIT_REQUIRED_KERNEL = "FREECAD_OCCT_BREP"',
+          )
+          replace_once(
+              sidecar,
+              '_DIRECT_REQUEST_OPERATION_KEYS = {"kind", "distance_mm"}',
+              '_DIRECT_REQUEST_NORMAL_OPERATION_KEYS = {"kind", "distance_mm"}\n_DIRECT_REQUEST_TANGENT_OPERATION_KEYS = {"kind", "translation_local_mm"}\n_DIRECT_TANGENT_INTENT_PARAMETER_KEYS = {"u_mm", "v_mm", "tangent_u_local", "tangent_v_local", "translation_local_mm"}',
+          )
+          replace_between(
+              sidecar,
+              'def validate_direct_edit_intent',
+              'def build_direct_edit_request_from_intent',
+              r'''def _dot3(a, b) -> float:
+              return sum(float(x) * float(y) for x, y in zip(a, b))
+
+
+          def _length3(value) -> float:
+              return math.sqrt(_dot3(value, value))
+
+
+          def _unit3(value, label: str) -> list[float]:
+              vector = _vector(value, 3, label)
+              length = _length3(vector)
+              if length <= 1e-9:
+                  raise CADSidecarContractError(f"{label} must be non-zero")
+              return [component / length for component in vector]
+
+
+          def _validate_tangent_intent_parameters(parameters: dict, target: dict) -> dict:
+              parameters = _require_exact_keys(parameters, _DIRECT_TANGENT_INTENT_PARAMETER_KEYS, "FACE_TANGENT_MOVE parameters")
+              u_mm = _finite_float(parameters.get("u_mm"), "parameters.u_mm")
+              v_mm = _finite_float(parameters.get("v_mm"), "parameters.v_mm")
+              tangent_u = _unit3(parameters.get("tangent_u_local"), "parameters.tangent_u_local")
+              tangent_v = _unit3(parameters.get("tangent_v_local"), "parameters.tangent_v_local")
+              translation = _vector(parameters.get("translation_local_mm"), 3, "parameters.translation_local_mm")
+              normal = _unit3(target.get("normal_local"), "target.normal_local")
+              if abs(_dot3(tangent_u, tangent_v)) > 1e-6:
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE U/V basis must be orthogonal")
+              if abs(_dot3(tangent_u, normal)) > 1e-6 or abs(_dot3(tangent_v, normal)) > 1e-6:
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE basis must lie in target tangent plane")
+              expected = [tangent_u[i] * u_mm + tangent_v[i] * v_mm for i in range(3)]
+              if any(abs(a - b) > 1e-6 for a, b in zip(expected, translation)):
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE translation does not match U/V interaction provenance")
+              distance = _length3(translation)
+              if distance <= 1e-9:
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE translation must be non-zero")
+              if distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE exceeds bounded 20 mm specialist contract")
+              if abs(_dot3(normal, translation)) > 1e-6:
+                  raise CADSidecarContractError("FACE_TANGENT_MOVE translation must remain in the target tangent plane")
+              return {
+                  "kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
+                  "translation_local_mm": translation,
+                  "interaction": {
+                      "u_mm": u_mm,
+                      "v_mm": v_mm,
+                      "tangent_u_local": tangent_u,
+                      "tangent_v_local": tangent_v,
+                  },
+              }
+
+
+          def validate_direct_edit_intent(intent: dict) -> dict:
+              """Validate a bounded Blender Direct Face intent without resolving a CAD face."""
+              if not isinstance(intent, dict) or intent.get("schema") != DIRECT_EDIT_INTENT_SCHEMA:
+                  raise CADSidecarContractError("unexpected CAD direct-edit intent schema")
+              if _contains_forbidden_topology_reference(intent.get("target")):
+                  raise CADSidecarContractError("CAD direct-edit intent contains a prohibited persistent topology reference")
+
+              ole_id = str(intent.get("ole_id") or "").strip()
+              if not ole_id:
+                  raise CADSidecarContractError("CAD direct-edit intent requires a stable OLE ID")
+              if intent.get("units") != "mm":
+                  raise CADSidecarContractError("CAD direct-edit intent currently supports mm only")
+
+              operation_kind = intent.get("operation")
+              parameters = intent.get("parameters") or {}
+              if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  distance_mm = _finite_float(parameters.get("distance_mm"), "parameters.distance_mm")
+                  if abs(distance_mm) <= 1e-9:
+                      raise CADSidecarContractError("FACE_NORMAL_MOVE distance must be non-zero")
+                  normalized_operation = {"kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE, "distance_mm": distance_mm}
+              elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+                  normalized_operation = None
+              else:
+                  raise CADSidecarContractError(f"unsupported CAD direct-edit operation: {operation_kind}")
+
+              authority = intent.get("authority") or {}
+              if authority.get("master_type") != "CAD_NATIVE":
+                  raise CADSidecarContractError("CAD direct-edit intent lost CAD_NATIVE master type")
+              master_locator = str(authority.get("master_locator") or "").strip()
+              if not master_locator:
+                  raise CADSidecarContractError("CAD direct-edit intent requires a governed master locator")
+              if authority.get("required_kernel") != DIRECT_EDIT_REQUIRED_KERNEL:
+                  raise CADSidecarContractError("CAD direct-edit intent must require FreeCAD/OCCT B-Rep authority")
+              if authority.get("blender_role") != DIRECT_EDIT_BLENDER_ROLE:
+                  raise CADSidecarContractError("CAD direct-edit intent must keep Blender as display derivative only")
+              if authority.get("display_mutation") != "NONE":
+                  raise CADSidecarContractError("CAD direct-edit intent may not authorize display-mesh mutation")
+
+              resolution = intent.get("resolution") or {}
+              if resolution.get("policy") != DIRECT_EDIT_REBIND_POLICY:
+                  raise CADSidecarContractError("CAD direct-edit intent must use fail-closed semantic rebind")
+              if resolution.get("ambiguous_result") != DIRECT_EDIT_HOLD or resolution.get("missing_result") != DIRECT_EDIT_HOLD:
+                  raise CADSidecarContractError("ambiguous or missing CAD face resolution must HOLD")
+              prohibited = set(resolution.get("prohibited_persistence") or [])
+              if not DIRECT_EDIT_PROHIBITED_PERSISTENCE.issubset(prohibited):
+                  raise CADSidecarContractError("CAD direct-edit intent lost topology-persistence prohibitions")
+
+              target = _validate_direct_face_descriptor(intent.get("target"))
+              if operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+                  normalized_operation = _validate_tangent_intent_parameters(parameters, target)
+              return {
+                  "ole_id": ole_id,
+                  "operation": normalized_operation,
+                  "master_locator": master_locator,
+                  "target": target,
+                  "intent_sha256": payload_sha256(intent),
+              }'''
+          )
+
+          replace_between(
+              sidecar,
+              'def build_direct_edit_request_from_intent',
+              'def validate_direct_edit_request',
+              r'''def build_direct_edit_request_from_intent(*, request_id: str, revision: int, intent: dict) -> dict:
+              """Convert a validated Blender interaction intent into a deterministic CAD request."""
+              request_id = str(request_id or "").strip()
+              if not request_id:
+                  raise CADSidecarContractError("direct-edit request_id must be non-empty")
+              if int(revision) < 1:
+                  raise CADSidecarContractError("direct-edit revision must be >= 1")
+              validated = validate_direct_edit_intent(intent)
+              normalized_operation = validated["operation"]
+              if normalized_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  request_operation = {
+                      "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
+                      "distance_mm": normalized_operation["distance_mm"],
+                  }
+              else:
+                  request_operation = {
+                      "kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
+                      "translation_local_mm": normalized_operation["translation_local_mm"],
+                  }
+              request = {
+                  "schema": DIRECT_EDIT_REQUEST_SCHEMA,
+                  "request_id": request_id,
+                  "ole_id": validated["ole_id"],
+                  "revision": int(revision),
+                  "units": "mm",
+                  "source": {
+                      "authority": "CAD_DIRECT_EDIT_INTENT",
+                      "intent_schema": DIRECT_EDIT_INTENT_SCHEMA,
+                      "intent_sha256": validated["intent_sha256"],
+                      "master_locator": validated["master_locator"],
+                      "required_kernel": DIRECT_EDIT_REQUIRED_KERNEL,
+                  },
+                  "operation": request_operation,
+                  "target_selector": {
+                      "kind": "SEMANTIC_FACE_DESCRIPTOR",
+                      "descriptor": validated["target"],
+                      "resolution_policy": DIRECT_EDIT_REBIND_POLICY,
+                      "ambiguous_result": DIRECT_EDIT_HOLD,
+                      "missing_result": DIRECT_EDIT_HOLD,
+                      "prohibited_persistence": sorted(DIRECT_EDIT_PROHIBITED_PERSISTENCE),
+                  },
+                  "authority": {
+                      "master_type": "CAD_NATIVE",
+                      "geometry_authority": DIRECT_EDIT_REQUIRED_KERNEL,
+                      "blender_role": DIRECT_EDIT_BLENDER_ROLE,
+                      "display_mutation": "NONE",
+                      "execution_state": "NOT_EXECUTED",
+                  },
+              }
+              validate_direct_edit_request(request)
+              return request'''
+          )
+
+          replace_between(
+              sidecar,
+              'def validate_direct_edit_request',
+              'def build_request',
+              r'''def validate_direct_edit_request(request: dict) -> dict:
+              """Strictly validate a serialized direct-edit request before persistence/execution."""
+              request = _require_exact_keys(request, _DIRECT_REQUEST_TOP_LEVEL_KEYS, "CAD direct-edit request")
+              if request.get("schema") != DIRECT_EDIT_REQUEST_SCHEMA:
+                  raise CADSidecarContractError("unexpected CAD direct-edit request schema")
+
+              request_id = str(request.get("request_id") or "").strip()
+              ole_id = str(request.get("ole_id") or "").strip()
+              if not request_id or not ole_id:
+                  raise CADSidecarContractError("CAD direct-edit request identity fields must be non-empty")
+              try:
+                  revision = int(request.get("revision"))
+              except (TypeError, ValueError) as exc:
+                  raise CADSidecarContractError("CAD direct-edit revision must be an integer") from exc
+              if revision < 1:
+                  raise CADSidecarContractError("CAD direct-edit revision must be >= 1")
+              if request.get("units") != "mm":
+                  raise CADSidecarContractError("CAD direct-edit request currently supports mm only")
+              if _contains_forbidden_topology_reference(request):
+                  raise CADSidecarContractError("CAD direct-edit request contains a prohibited persistent topology reference")
+
+              source = _require_exact_keys(request.get("source"), _DIRECT_REQUEST_SOURCE_KEYS, "CAD direct-edit request source")
+              if source.get("authority") != "CAD_DIRECT_EDIT_INTENT":
+                  raise CADSidecarContractError("CAD direct-edit request source authority mismatch")
+              if source.get("intent_schema") != DIRECT_EDIT_INTENT_SCHEMA:
+                  raise CADSidecarContractError("CAD direct-edit request lost intent schema provenance")
+              intent_sha256 = _require_sha256_hex(source.get("intent_sha256"), "source.intent_sha256")
+              master_locator = str(source.get("master_locator") or "").strip()
+              if not master_locator:
+                  raise CADSidecarContractError("CAD direct-edit request requires a governed master locator")
+              if source.get("required_kernel") != DIRECT_EDIT_REQUIRED_KERNEL:
+                  raise CADSidecarContractError("CAD direct-edit request must require FreeCAD/OCCT B-Rep authority")
+
+              raw_operation = request.get("operation")
+              if not isinstance(raw_operation, dict):
+                  raise CADSidecarContractError("CAD direct-edit operation must be an object")
+              operation_kind = raw_operation.get("kind")
+              if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  operation = _require_exact_keys(raw_operation, _DIRECT_REQUEST_NORMAL_OPERATION_KEYS, "CAD direct-edit normal operation")
+                  distance_mm = _finite_float(operation.get("distance_mm"), "operation.distance_mm")
+                  if abs(distance_mm) <= 1e-9:
+                      raise CADSidecarContractError("FACE_NORMAL_MOVE request distance must be non-zero")
+                  normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+              elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+                  operation = _require_exact_keys(raw_operation, _DIRECT_REQUEST_TANGENT_OPERATION_KEYS, "CAD direct-edit tangent operation")
+                  translation = _vector(operation.get("translation_local_mm"), 3, "operation.translation_local_mm")
+                  distance = _length3(translation)
+                  if distance <= 1e-9:
+                      raise CADSidecarContractError("FACE_TANGENT_MOVE request translation must be non-zero")
+                  if distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+                      raise CADSidecarContractError("FACE_TANGENT_MOVE request exceeds bounded 20 mm specialist contract")
+                  normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+              else:
+                  raise CADSidecarContractError(f"unsupported CAD direct-edit request operation: {operation_kind}")
+
+              selector = _require_exact_keys(request.get("target_selector"), _DIRECT_REQUEST_SELECTOR_KEYS, "CAD direct-edit target selector")
+              if selector.get("kind") != "SEMANTIC_FACE_DESCRIPTOR":
+                  raise CADSidecarContractError("CAD direct-edit request requires a semantic face descriptor")
+              descriptor = _validate_direct_face_descriptor(selector.get("descriptor"), strict_keys=True)
+              if selector.get("resolution_policy") != DIRECT_EDIT_REBIND_POLICY:
+                  raise CADSidecarContractError("CAD direct-edit request must use fail-closed semantic rebind")
+              if selector.get("ambiguous_result") != DIRECT_EDIT_HOLD or selector.get("missing_result") != DIRECT_EDIT_HOLD:
+                  raise CADSidecarContractError("ambiguous or missing CAD request selector resolution must HOLD")
+              prohibited = selector.get("prohibited_persistence")
+              if not isinstance(prohibited, list) or set(prohibited) != DIRECT_EDIT_PROHIBITED_PERSISTENCE:
+                  raise CADSidecarContractError("CAD direct-edit request topology-persistence prohibition set mismatch")
+              if operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+                  normal = _unit3(descriptor["normal_local"], "target.normal_local")
+                  if abs(_dot3(normal, normalized_operation["translation_local_mm"])) > 1e-6:
+                      raise CADSidecarContractError("FACE_TANGENT_MOVE request translation must remain in target tangent plane")
+
+              authority = _require_exact_keys(request.get("authority"), _DIRECT_REQUEST_AUTHORITY_KEYS, "CAD direct-edit request authority")
+              if authority.get("master_type") != "CAD_NATIVE":
+                  raise CADSidecarContractError("CAD direct-edit request lost CAD_NATIVE master type")
+              if authority.get("geometry_authority") != DIRECT_EDIT_REQUIRED_KERNEL:
+                  raise CADSidecarContractError("CAD direct-edit request lost FreeCAD/OCCT geometry authority")
+              if authority.get("blender_role") != DIRECT_EDIT_BLENDER_ROLE:
+                  raise CADSidecarContractError("CAD direct-edit request must keep Blender display-only")
+              if authority.get("display_mutation") != "NONE":
+                  raise CADSidecarContractError("CAD direct-edit request may not authorize display mutation")
+              if authority.get("execution_state") != "NOT_EXECUTED":
+                  raise CADSidecarContractError("CAD direct-edit request cannot arrive with an executed-state claim")
+
+              return {
+                  "request_id": request_id,
+                  "ole_id": ole_id,
+                  "revision": revision,
+                  "units": "mm",
+                  "source": {
+                      "intent_sha256": intent_sha256,
+                      "master_locator": master_locator,
+                      "required_kernel": DIRECT_EDIT_REQUIRED_KERNEL,
+                  },
+                  "operation": normalized_operation,
+                  "target": descriptor,
+                  "execution_state": "NOT_EXECUTED",
+                  "request_sha256": payload_sha256(request),
+              }'''
+          )
+
+          replace_between(
+              sidecar,
+              'def validate_direct_edit_response',
+              'def load_direct_edit_response',
+              r'''def validate_direct_edit_response(response: dict, *, allow_hold: bool = False) -> dict:
+              """Validate a typed specialist response for the bounded Direct Face operation union."""
+              if not isinstance(response, dict) or response.get("schema") != DIRECT_EDIT_RESPONSE_SCHEMA:
+                  raise CADSidecarContractError("unexpected CAD direct-edit response schema")
+
+              request_id = str(response.get("request_id") or "").strip()
+              ole_id = str(response.get("ole_id") or "").strip()
+              if not request_id or not ole_id:
+                  raise CADSidecarContractError("CAD direct-edit response identity fields must be non-empty")
+              try:
+                  revision = int(response.get("revision"))
+              except (TypeError, ValueError) as exc:
+                  raise CADSidecarContractError("CAD direct-edit response revision must be an integer") from exc
+              if revision < 1:
+                  raise CADSidecarContractError("CAD direct-edit response revision must be >= 1")
+              request_sha256 = _require_sha256_hex(response.get("request_sha256"), "direct response request_sha256")
+
+              kernel = response.get("kernel") or {}
+              if kernel.get("name") != "FreeCAD" or not str(kernel.get("version") or "").strip():
+                  raise CADSidecarContractError("CAD direct-edit response lost FreeCAD runtime identity")
+              if not str(kernel.get("occ_version") or "").strip():
+                  raise CADSidecarContractError("CAD direct-edit response lost OCCT runtime identity")
+
+              operation = response.get("operation") or {}
+              operation_kind = operation.get("kind")
+              if operation_kind == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  distance_mm = _finite_float(operation.get("distance_mm"), "direct response operation.distance_mm")
+                  if abs(distance_mm) <= 1e-9:
+                      raise CADSidecarContractError("CAD direct-edit response distance must be non-zero")
+                  normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+              elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+                  translation = _vector(operation.get("translation_local_mm"), 3, "direct response operation.translation_local_mm")
+                  distance = _length3(translation)
+                  if distance <= 1e-9 or distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
+                      raise CADSidecarContractError("CAD tangent response translation is outside bounded contract")
+                  normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+              else:
+                  raise CADSidecarContractError("CAD direct-edit response operation mismatch")
+
+              authority = response.get("authoritative") or {}
+              if authority.get("master_type") != "CAD_NATIVE":
+                  raise CADSidecarContractError("CAD direct-edit response lost CAD_NATIVE master type")
+              if authority.get("geometry_authority") != DIRECT_EDIT_REQUIRED_KERNEL:
+                  raise CADSidecarContractError("CAD direct-edit response lost FreeCAD/OCCT geometry authority")
+
+              resolution = response.get("resolution") or {}
+              try:
+                  candidate_count = int(resolution.get("candidate_count"))
+              except (TypeError, ValueError) as exc:
+                  raise CADSidecarContractError("CAD direct-edit response candidate_count must be an integer") from exc
+              if candidate_count < 0:
+                  raise CADSidecarContractError("CAD direct-edit response candidate_count cannot be negative")
+
+              measurements = response.get("measurements") or {}
+              if measurements.get("units") != "mm":
+                  raise CADSidecarContractError("CAD direct-edit response measurements must use mm")
+              source_bbox = _vector(measurements.get("source_bbox_mm"), 3, "direct response source_bbox_mm")
+              result_bbox = _vector(measurements.get("result_bbox_mm"), 3, "direct response result_bbox_mm")
+              source_volume = _finite_float(measurements.get("source_volume_mm3"), "direct response source_volume_mm3")
+              result_volume = _finite_float(measurements.get("result_volume_mm3"), "direct response result_volume_mm3")
+              try:
+                  result_solid_count = int(measurements.get("result_solid_count"))
+              except (TypeError, ValueError) as exc:
+                  raise CADSidecarContractError("CAD direct-edit response result_solid_count must be an integer") from exc
+              if source_volume <= 0.0:
+                  raise CADSidecarContractError("CAD direct-edit response source volume must be positive")
+
+              status = response.get("status")
+              if status == "PASS":
+                  if operation.get("execution_state") != "EXECUTED":
+                      raise CADSidecarContractError("PASS CAD direct-edit response must be EXECUTED")
+                  if resolution.get("state") != "RESOLVED_UNIQUE" or candidate_count != 1:
+                      raise CADSidecarContractError("PASS CAD direct-edit response requires one unique semantic face")
+                  _require_sha256_hex(resolution.get("resolved_signature"), "direct response resolved_signature")
+                  if result_solid_count != 1 or result_volume <= 0.0 or any(value <= 0.0 for value in result_bbox):
+                      raise CADSidecarContractError("PASS CAD direct-edit response must release one positive-volume result solid")
+                  for key in ("fcstd", "step", "brep"):
+                      _validate_direct_artifact(authority.get(key), f"authoritative.{key}", released=True)
+                  _validate_direct_artifact(response.get("display_derivative"), "display_derivative", released=True)
+                  if response.get("error") not in (None, ""):
+                      raise CADSidecarContractError("PASS CAD direct-edit response cannot carry an error")
+              elif status == "HOLD":
+                  if not allow_hold:
+                      raise CADSidecarContractError("CAD direct-edit HOLD response is not bindable")
+                  if operation.get("execution_state") != "NOT_EXECUTED":
+                      raise CADSidecarContractError("HOLD CAD direct-edit response must remain NOT_EXECUTED")
+                  state = resolution.get("state")
+                  if state not in {"MISSING_HOLD", "AMBIGUOUS_HOLD"}:
+                      raise CADSidecarContractError("CAD direct-edit HOLD response has an invalid resolution state")
+                  if state == "MISSING_HOLD" and candidate_count != 0:
+                      raise CADSidecarContractError("MISSING_HOLD must have zero candidates")
+                  if state == "AMBIGUOUS_HOLD" and candidate_count <= 1:
+                      raise CADSidecarContractError("AMBIGUOUS_HOLD must have multiple candidates")
+                  for key in ("fcstd", "step", "brep"):
+                      _validate_direct_artifact(authority.get(key), f"authoritative.{key}", released=False)
+                  _validate_direct_artifact(response.get("display_derivative"), "display_derivative", released=False)
+                  if result_solid_count != 0 or abs(result_volume) > 1e-12 or any(abs(value) > 1e-12 for value in result_bbox):
+                      raise CADSidecarContractError("HOLD CAD direct-edit response may not release result geometry")
+              else:
+                  raise CADSidecarContractError(f"unsupported CAD direct-edit response status: {status}")
+
+              return {
+                  "request_id": request_id,
+                  "ole_id": ole_id,
+                  "revision": revision,
+                  "request_sha256": request_sha256,
+                  "status": status,
+                  "resolution_state": resolution.get("state"),
+                  "candidate_count": candidate_count,
+                  "execution_state": operation.get("execution_state"),
+                  "operation": normalized_operation,
+                  "distance_mm": normalized_operation.get("distance_mm"),
+                  "translation_local_mm": normalized_operation.get("translation_local_mm"),
+                  "source_bbox_mm": source_bbox,
+                  "result_bbox_mm": result_bbox,
+                  "source_volume_mm3": source_volume,
+                  "result_volume_mm3": result_volume,
+                  "result_solid_count": result_solid_count,
+              }'''
+          )
+
+          replace_between(
+              sidecar,
+              'def assert_direct_edit_response_matches_request',
+              'def _validate_direct_edit_display_payload',
+              r'''def assert_direct_edit_response_matches_request(response: dict, request: dict) -> None:
+              validated_request = validate_direct_edit_request(request)
+              validated_response = validate_direct_edit_response(response, allow_hold=True)
+              if validated_response["request_id"] != validated_request["request_id"]:
+                  raise CADSidecarContractError("CAD direct-edit response request_id mismatch")
+              if validated_response["ole_id"] != validated_request["ole_id"]:
+                  raise CADSidecarContractError("CAD direct-edit response OLE ID mismatch")
+              if validated_response["revision"] != validated_request["revision"]:
+                  raise CADSidecarContractError("CAD direct-edit response revision mismatch")
+              if validated_response["request_sha256"] != validated_request["request_sha256"]:
+                  raise CADSidecarContractError("CAD direct-edit response request SHA mismatch")
+              request_operation = validated_request["operation"]
+              response_operation = validated_response["operation"]
+              if response_operation["kind"] != request_operation["kind"]:
+                  raise CADSidecarContractError("CAD direct-edit response operation kind mismatch")
+              if request_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  if abs(response_operation["distance_mm"] - request_operation["distance_mm"]) > 1e-9:
+                      raise CADSidecarContractError("CAD direct-edit response distance mismatch")
+              else:
+                  if any(abs(a - b) > 1e-9 for a, b in zip(response_operation["translation_local_mm"], request_operation["translation_local_mm"])):
+                      raise CADSidecarContractError("CAD direct-edit response tangent translation mismatch")'''
+          )
+
+          replace_between(
+              sidecar,
+              'def bind_direct_edit_display_derivative',
+              'def load_response',
+              r'''def bind_direct_edit_display_derivative(*, response: dict, display_payload: dict, request: dict | None = None, collection=None, existing_object=None):
+              """Bind a validated Direct Face PASS response as a display-only Blender derivative."""
+              validated = validate_direct_edit_response(response, allow_hold=False)
+              if request is not None:
+                  assert_direct_edit_response_matches_request(response, request)
+              _validate_direct_edit_display_payload(display_payload, response)
+
+              generic_response = {
+                  "schema": RESPONSE_SCHEMA,
+                  "request_id": response["request_id"],
+                  "ole_id": response["ole_id"],
+                  "revision": response["revision"],
+                  "status": "PASS",
+                  "request_sha256": response["request_sha256"],
+                  "authoritative": response["authoritative"],
+              }
+              generic_display = dict(display_payload)
+              generic_display["schema"] = DISPLAY_SCHEMA
+              obj = bind_display_derivative(
+                  response=generic_response,
+                  display_payload=generic_display,
+                  collection=collection,
+                  existing_object=existing_object,
+              )
+              obj["cad_direct_edit_response_schema"] = DIRECT_EDIT_RESPONSE_SCHEMA
+              obj["cad_direct_edit_display_schema"] = DIRECT_EDIT_DISPLAY_SCHEMA
+              obj["cad_direct_edit_execution_state"] = validated["execution_state"]
+              obj["cad_direct_edit_resolution_state"] = validated["resolution_state"]
+              obj["cad_direct_edit_candidate_count"] = validated["candidate_count"]
+              obj["cad_direct_edit_operation_kind"] = validated["operation"]["kind"]
+              if validated["operation"]["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
+                  obj["cad_direct_edit_distance_mm"] = validated["distance_mm"]
+              else:
+                  obj["cad_direct_edit_translation_local_mm"] = validated["translation_local_mm"]
+              return obj'''
+          )
+
+          # ------------------------------------------------------------------
+          # FreeCAD service — absorb axis-aligned tangential B-Rep translation.
+          # ------------------------------------------------------------------
+          service = runtime / 'tests/professional/freecad_cad_direct_edit_service.py'
+          replace_once(
+              service,
+              'OPERATION = "FACE_NORMAL_MOVE"\nTOL = 1e-6',
+              'OPERATION_NORMAL = "FACE_NORMAL_MOVE"\nOPERATION_TANGENT = "FACE_TANGENT_MOVE"\nTANGENT_MAX_DISTANCE_MM = 20.0\nTOL = 1e-6',
+          )
+          replace_between(
+              service,
+              'def validate_request',
+              'def face_normal',
+              r'''def validate_request(request: dict) -> dict:
+              require(isinstance(request, dict), "request must be an object")
+              require(request.get("schema") == REQUEST_SCHEMA, "unexpected direct-edit request schema")
+              require(request.get("units") == "mm", "only mm direct-edit requests are supported")
+              request_id = str(request.get("request_id") or "").strip()
+              ole_id = str(request.get("ole_id") or "").strip()
+              require(bool(request_id) and bool(ole_id), "request identity fields must be non-empty")
+              revision = int(request.get("revision", 0))
+              require(revision >= 1, "revision must be >= 1")
+              require(not contains_ordinal(request), "persistent topology ordinal is prohibited")
+
+              source = request.get("source") or {}
+              require(source.get("authority") == "CAD_DIRECT_EDIT_INTENT", "invalid source authority")
+              require(source.get("intent_schema") == "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1", "invalid intent schema")
+              require(re.fullmatch(r"[0-9a-fA-F]{64}", str(source.get("intent_sha256") or "")) is not None, "invalid intent SHA256")
+              require(source.get("required_kernel") == REQUIRED_KERNEL, "direct edit requires FreeCAD/OCCT authority")
+              master_fcstd = Path(str(source.get("master_locator") or ""))
+              require(str(master_fcstd), "missing master locator")
+              require(master_fcstd.suffix.lower() == ".fcstd", "bounded master locator must resolve to FCStd")
+              master_brep = master_fcstd.with_suffix(".brep")
+
+              operation = request.get("operation") or {}
+              operation_kind = operation.get("kind")
+              if operation_kind == OPERATION_NORMAL:
+                  distance_mm = finite(operation.get("distance_mm"), "operation.distance_mm")
+                  require(abs(distance_mm) > 1e-9, "FACE_NORMAL_MOVE distance must be non-zero")
+                  normalized_operation = {"kind": operation_kind, "distance_mm": distance_mm}
+              elif operation_kind == OPERATION_TANGENT:
+                  translation = vector3(operation.get("translation_local_mm"), "operation.translation_local_mm")
+                  translation_length = math.sqrt(sum(v * v for v in translation))
+                  require(translation_length > 1e-9, "FACE_TANGENT_MOVE translation must be non-zero")
+                  require(translation_length <= TANGENT_MAX_DISTANCE_MM + 1e-9, "FACE_TANGENT_MOVE exceeds bounded 20 mm contract")
+                  normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+              else:
+                  raise ValueError(f"unsupported direct-edit operation: {operation_kind}")
+
+              selector = request.get("target_selector") or {}
+              require(selector.get("kind") == "SEMANTIC_FACE_DESCRIPTOR", "semantic face descriptor required")
+              require(selector.get("resolution_policy") == "SEMANTIC_REBIND_FAIL_CLOSED", "fail-closed rebind required")
+              require(selector.get("ambiguous_result") == "HOLD", "ambiguous resolution must HOLD")
+              require(selector.get("missing_result") == "HOLD", "missing resolution must HOLD")
+              require(set(selector.get("prohibited_persistence") or []) == PROHIBITED, "topology persistence boundary mismatch")
+              descriptor = selector.get("descriptor") or {}
+              require(descriptor.get("selector_semantics") == "BLENDER_SELECTED_DISPLAY_FACE_INTENT", "unsupported selector semantics")
+              normal = vector3(descriptor.get("normal_local"), "descriptor.normal_local")
+              length = math.sqrt(sum(v * v for v in normal))
+              require(length > 1e-9, "descriptor normal must be non-zero")
+              normal = [v / length for v in normal]
+              positive_axes = sum(1 for value in normal if value > 0.999999)
+              near_zero_axes = sum(1 for value in normal if abs(value) <= 1e-6)
+              require(positive_axes == 1 and near_zero_axes == 2, "bounded execution requires +X/+Y/+Z axis-aligned planar face")
+              if operation_kind == OPERATION_NORMAL:
+                  require(normal[2] > 0.999999, "FACE_NORMAL_MOVE first execution slice requires +Z planar face")
+              else:
+                  require(abs(sum(a * b for a, b in zip(normal, normalized_operation["translation_local_mm"]))) <= 1e-6, "FACE_TANGENT_MOVE translation must remain in resolved face tangent plane")
+              center = vector3(descriptor.get("center_local_mm"), "descriptor.center_local_mm")
+              area = finite(descriptor.get("area_mm2"), "descriptor.area_mm2")
+              require(area > 0.0, "descriptor area must be positive")
+              edge_count = int(descriptor.get("edge_count", 0))
+              require(edge_count == 4, "bounded execution requires a four-edge planar face")
+              edge_lengths = descriptor.get("edge_lengths_mm") or []
+              require(len(edge_lengths) == edge_count, "descriptor edge lengths mismatch")
+              edge_lengths = sorted(finite(v, "descriptor.edge_lengths_mm") for v in edge_lengths)
+              require(all(v > 0.0 for v in edge_lengths), "descriptor edge lengths must be positive")
+              bbox = descriptor.get("bbox_local_mm") or {}
+              bbox_min = vector3(bbox.get("min"), "descriptor.bbox.min")
+              bbox_max = vector3(bbox.get("max"), "descriptor.bbox.max")
+              require(all(lo <= hi for lo, hi in zip(bbox_min, bbox_max)), "descriptor bbox is inverted")
+
+              authority = request.get("authority") or {}
+              require(authority.get("master_type") == "CAD_NATIVE", "master type must remain CAD_NATIVE")
+              require(authority.get("geometry_authority") == REQUIRED_KERNEL, "geometry authority mismatch")
+              require(authority.get("blender_role") == "DISPLAY_DERIVATIVE_ONLY", "Blender must remain display-only")
+              require(authority.get("display_mutation") == "NONE", "request may not authorize display mutation")
+              require(authority.get("execution_state") == "NOT_EXECUTED", "incoming request must be NOT_EXECUTED")
+
+              return {
+                  "request_id": request_id,
+                  "ole_id": ole_id,
+                  "revision": revision,
+                  "operation": normalized_operation,
+                  "master_fcstd": master_fcstd,
+                  "master_brep": master_brep,
+                  "descriptor": {
+                      "normal": normal,
+                      "center_mm": center,
+                      "area_mm2": area,
+                      "edge_count": edge_count,
+                      "edge_lengths_mm": edge_lengths,
+                      "bbox_min_mm": bbox_min,
+                      "bbox_max_mm": bbox_max,
+                  },
+                  "request_sha256": payload_sha256(request),
+              }'''
+          )
+
+          # Insert the generic axis-aligned tangential translate beside the existing normal move.
+          service_text = service.read_text(encoding='utf-8')
+          anchor = '\n\ndef metrics(shape):'
+          idx = service_text.index(anchor)
+          tangent_helpers = r'''
+
+          def select_opposite_face(shape, normal):
+              found = []
+              for face in shape.Faces:
+                  candidate = face_normal(face)
+                  if candidate.dot(-normal) > 0.999999:
+                      found.append(face)
+              require(len(found) == 1, "bounded prism requires one opposite face")
+              return found[0]
+
+
+          def translate_resolved_axis_face(shape, target, translation_mm):
+              require(shape.isValid() and len(shape.Solids) == 1, "bounded tangent edit requires one valid source solid")
+              require(len(shape.Faces) == 6, "bounded tangent edit requires an unmodified six-face rectangular prism")
+              bbox = shape.BoundBox
+              expected_volume = bbox.XLength * bbox.YLength * bbox.ZLength
+              require(abs(shape.Volume - expected_volume) <= max(1e-4, shape.Volume * 1e-6), "source is outside rectangular-prism volume envelope")
+              normal = face_normal(target)
+              positive_axes = sum(1 for value in (normal.x, normal.y, normal.z) if value > 0.999999)
+              near_zero_axes = sum(1 for value in (normal.x, normal.y, normal.z) if abs(value) <= 1e-6)
+              require(positive_axes == 1 and near_zero_axes == 2, "resolved tangent face must be +X/+Y/+Z axis-aligned")
+              delta = App.Vector(*translation_mm)
+              require(delta.Length > 1e-9 and delta.Length <= TANGENT_MAX_DISTANCE_MM + 1e-9, "tangent translation outside bounded contract")
+              require(abs(delta.dot(normal)) <= 1e-6, "tangent translation contains a normal component")
+
+              opposite = select_opposite_face(shape, normal)
+              target_points = [vertex.Point for vertex in target.OuterWire.OrderedVertexes]
+              require(len(target_points) == 4, "bounded tangent face must have four vertices")
+              target_center_before = target.CenterOfMass
+              opposite_center_before = opposite.CenterOfMass
+              opposite_area_before = opposite.Area
+              moved_target_points = [point + delta for point in target_points]
+              moved_target = make_face(moved_target_points, normal)
+              require((moved_target.CenterOfMass - (target_center_before + delta)).Length <= 1e-5, "tangent target center did not translate exactly")
+              require(abs(moved_target.Area - target.Area) <= 1e-5, "tangent target area changed")
+
+              replacements = [(target, moved_target)]
+              adjacent_count = 0
+              for face in shape.Faces:
+                  if face.isSame(target) or face.isSame(opposite):
+                      continue
+                  points = [vertex.Point for vertex in face.OuterWire.OrderedVertexes]
+                  require(len(points) == 4, "bounded tangent adjacent face must have four vertices")
+                  on_target = [any(same_point(point, target_point) for target_point in target_points) for point in points]
+                  shared = sum(1 for flag in on_target if flag)
+                  if shared == 0:
+                      continue
+                  require(shared == 2, "adjacent tangent face must share exactly one target edge")
+                  rebuilt_points = [point + delta if flag else point for point, flag in zip(points, on_target)]
+                  rebuilt = make_face(rebuilt_points, face_normal(face))
+                  replacements.append((face, rebuilt))
+                  adjacent_count += 1
+
+              require(adjacent_count == 4 and len(replacements) == 5, "tangent edit must replace target plus four adjacent faces")
+              edited = normalize_replaced(shape.replaceShape(replacements))
+              require(edited.isValid() and len(edited.Solids) == 1, "tangent edit did not produce one valid solid")
+              require(abs(edited.Volume - shape.Volume) <= max(1e-4, shape.Volume * 1e-6), "tangent edit must preserve prism volume")
+              opposite_after = select_opposite_face(edited, normal)
+              require((opposite_after.CenterOfMass - opposite_center_before).Length <= 1e-5, "opposite face center changed")
+              require(abs(opposite_after.Area - opposite_area_before) <= 1e-5, "opposite face area changed")
+              return edited
+          '''
+          service.write_text(service_text[:idx] + tangent_helpers.rstrip() + service_text[idx:], encoding='utf-8')
+
+          replace_between(
+              service,
+              'def write_hold',
+              'def main',
+              r'''def operation_response(validated: dict, execution_state: str) -> dict:
+              operation = dict(validated["operation"])
+              operation["execution_state"] = execution_state
+              return operation
+
+
+          def write_hold(request: dict, validated: dict, shape, resolution: dict) -> None:
+              source_metrics = metrics(shape)
+              response = {
+                  "schema": RESPONSE_SCHEMA,
+                  "request_id": validated["request_id"],
+                  "ole_id": validated["ole_id"],
+                  "revision": validated["revision"],
+                  "status": "HOLD",
+                  "kernel": {"name": "FreeCAD", "version": ".".join(str(x) for x in App.Version()[:3]), "occ_version": getattr(Part, "OCC_VERSION", "UNKNOWN")},
+                  "request_sha256": validated["request_sha256"],
+                  "source_master": {
+                      "fcstd": {"path": str(validated["master_fcstd"]), "sha256": file_sha256(validated["master_fcstd"])},
+                      "brep": {"path": str(validated["master_brep"]), "sha256": file_sha256(validated["master_brep"])},
+                  },
+                  "resolution": resolution,
+                  "operation": operation_response(validated, "NOT_EXECUTED"),
+                  "authoritative": {"master_type": "CAD_NATIVE", "geometry_authority": REQUIRED_KERNEL, "fcstd": empty_artifact(), "step": empty_artifact(), "brep": empty_artifact()},
+                  "display_derivative": empty_artifact(),
+                  "measurements": {"units": "mm", "source_bbox_mm": source_metrics["bbox_mm"], "source_volume_mm3": source_metrics["volume_mm3"], "result_bbox_mm": [0.0, 0.0, 0.0], "result_volume_mm3": 0.0, "result_solid_count": 0},
+                  "error": None,
+                  "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
+              }
+              RESPONSE_PATH.write_bytes(canonical_bytes(response))
+              print("OLEANDER_CAD_DIRECT_EDIT_HOLD=" + json.dumps(response, sort_keys=True))
+
+
+          def write_fail(request: dict | None, error: Exception) -> None:
+              request = request or {}
+              raw_operation = request.get("operation") or {}
+              kind = str(raw_operation.get("kind") or OPERATION_NORMAL)
+              operation = {"kind": kind, "execution_state": "NOT_EXECUTED"}
+              if kind == OPERATION_TANGENT:
+                  value = raw_operation.get("translation_local_mm")
+                  operation["translation_local_mm"] = value if isinstance(value, list) and len(value) == 3 else [0.0, 0.0, 0.0]
+              else:
+                  operation["distance_mm"] = float(raw_operation.get("distance_mm") or 0.0)
+              response = {
+                  "schema": RESPONSE_SCHEMA,
+                  "request_id": str(request.get("request_id") or "UNKNOWN"),
+                  "ole_id": str(request.get("ole_id") or "UNKNOWN"),
+                  "revision": int(request.get("revision", 1) or 1),
+                  "status": "FAIL",
+                  "kernel": {"name": "FreeCAD", "version": ".".join(str(x) for x in App.Version()[:3]), "occ_version": getattr(Part, "OCC_VERSION", "UNKNOWN")},
+                  "request_sha256": payload_sha256(request) if request else "0" * 64,
+                  "source_master": {"fcstd": empty_artifact(), "brep": empty_artifact()},
+                  "resolution": {"state": "ERROR", "candidate_count": 0, "candidate_signatures": []},
+                  "operation": operation,
+                  "authoritative": {"master_type": "CAD_NATIVE", "geometry_authority": REQUIRED_KERNEL, "fcstd": empty_artifact(), "step": empty_artifact(), "brep": empty_artifact()},
+                  "display_derivative": empty_artifact(),
+                  "measurements": {"units": "mm", "source_bbox_mm": [0.0, 0.0, 0.0], "source_volume_mm3": 0.0, "result_bbox_mm": [0.0, 0.0, 0.0], "result_volume_mm3": 0.0, "result_solid_count": 0},
+                  "error": str(error),
+                  "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS"],
+              }
+              RESPONSE_PATH.write_bytes(canonical_bytes(response))
+              print("OLEANDER_CAD_DIRECT_EDIT_FAIL=" + json.dumps(response, sort_keys=True))'''
+          )
+
+          replace_between(
+              service,
+              'def main',
+              'main()',
+              r'''def main() -> None:
+              request = None
+              try:
+                  request = json.loads(REQUEST_PATH.read_text(encoding="utf-8"))
+                  validated = validate_request(request)
+                  require(validated["master_fcstd"].is_file(), "authoritative FCStd master is missing")
+                  require(validated["master_brep"].is_file(), "authoritative BREP master is missing")
+                  shape = Part.Shape()
+                  shape.read(str(validated["master_brep"]))
+                  require(not shape.isNull(), "authoritative BREP could not be read")
+
+                  face, resolution = resolve_face(shape, validated["descriptor"])
+                  if face is None:
+                      write_hold(request, validated, shape, resolution)
+                      return
+
+                  source_metrics = metrics(shape)
+                  if validated["operation"]["kind"] == OPERATION_NORMAL:
+                      edited = move_resolved_top_face(shape, face, validated["operation"]["distance_mm"])
+                  else:
+                      edited = translate_resolved_axis_face(shape, face, validated["operation"]["translation_local_mm"])
+                  result_metrics = metrics(edited)
+                  stem = f"{validated['ole_id']}_R{validated['revision']:03d}"
+                  fcstd = OUT / f"{stem}.FCStd"
+                  step = OUT / f"{stem}.step"
+                  brep = OUT / f"{stem}.brep"
+
+                  doc = App.newDocument(f"OLEANDER_DIRECT_{validated['revision']:03d}")
+                  obj = doc.addObject("Part::Feature", "OLE_CAD_DIRECT_MASTER")
+                  obj.Label = stem
+                  obj.addProperty("App::PropertyString", "OLE_ID", "OLEANDER")
+                  obj.OLE_ID = validated["ole_id"]
+                  obj.addProperty("App::PropertyInteger", "OLE_Revision", "OLEANDER")
+                  obj.OLE_Revision = validated["revision"]
+                  obj.addProperty("App::PropertyString", "OLE_RequestSHA256", "OLEANDER")
+                  obj.OLE_RequestSHA256 = validated["request_sha256"]
+                  obj.addProperty("App::PropertyString", "OLE_Operation", "OLEANDER")
+                  obj.OLE_Operation = validated["operation"]["kind"]
+                  if validated["operation"]["kind"] == OPERATION_NORMAL:
+                      obj.addProperty("App::PropertyFloat", "OLE_DistanceMM", "OLEANDER")
+                      obj.OLE_DistanceMM = validated["operation"]["distance_mm"]
+                  else:
+                      obj.addProperty("App::PropertyVector", "OLE_TranslationMM", "OLEANDER")
+                      obj.OLE_TranslationMM = App.Vector(*validated["operation"]["translation_local_mm"])
+                  obj.addProperty("App::PropertyString", "OLE_ResolutionSignature", "OLEANDER")
+                  obj.OLE_ResolutionSignature = resolution["resolved_signature"]
+                  obj.Shape = edited
+                  doc.recompute()
+                  doc.saveAs(str(fcstd))
+                  edited.exportStep(str(step))
+                  edited.exportBrep(str(brep))
+                  require(fcstd.is_file() and fcstd.stat().st_size > 0, "direct-edit FCStd not saved")
+                  require(step.is_file() and step.stat().st_size > 0, "direct-edit STEP not exported")
+                  require(brep.is_file() and brep.stat().st_size > 0, "direct-edit BREP not exported")
+
+                  step_shape = Part.Shape()
+                  step_shape.read(str(step))
+                  require(step_shape.isValid() and len(step_shape.Solids) == 1, "STEP round-trip is not one valid solid")
+                  require(abs(step_shape.Volume - edited.Volume) <= max(1e-4, edited.Volume * 1e-6), "STEP round-trip volume drift")
+                  vertices, facets = step_shape.tessellate(0.25)
+                  require(bool(vertices) and bool(facets), "direct-edit display tessellation is empty")
+                  display = {
+                      "schema": DISPLAY_SCHEMA,
+                      "master_type": "CAD_NATIVE",
+                      "geometry_authority": REQUIRED_KERNEL,
+                      "display_authority": "DISPLAY_DERIVATIVE_ONLY",
+                      "units": "mm",
+                      "request_id": validated["request_id"],
+                      "request_revision": validated["revision"],
+                      "request_sha256": validated["request_sha256"],
+                      "source_master": str(fcstd),
+                      "source_step": str(step),
+                      "source_step_sha256": file_sha256(step),
+                      "vertices_mm": [[v.x, v.y, v.z] for v in vertices],
+                      "triangles": [list(facet) for facet in facets],
+                      "source_bbox": {"x_length_mm": edited.BoundBox.XLength, "y_length_mm": edited.BoundBox.YLength, "z_length_mm": edited.BoundBox.ZLength},
+                      "source_volume_mm3": edited.Volume,
+                  }
+                  DISPLAY_PATH.write_bytes(canonical_bytes(display))
+
+                  response = {
+                      "schema": RESPONSE_SCHEMA,
+                      "request_id": validated["request_id"],
+                      "ole_id": validated["ole_id"],
+                      "revision": validated["revision"],
+                      "status": "PASS",
+                      "kernel": {"name": "FreeCAD", "version": ".".join(str(x) for x in App.Version()[:3]), "occ_version": getattr(Part, "OCC_VERSION", "UNKNOWN")},
+                      "request_sha256": validated["request_sha256"],
+                      "source_master": {
+                          "fcstd": {"path": str(validated["master_fcstd"]), "sha256": file_sha256(validated["master_fcstd"])},
+                          "brep": {"path": str(validated["master_brep"]), "sha256": file_sha256(validated["master_brep"])},
+                      },
+                      "resolution": resolution,
+                      "operation": operation_response(validated, "EXECUTED"),
+                      "authoritative": {
+                          "master_type": "CAD_NATIVE",
+                          "geometry_authority": REQUIRED_KERNEL,
+                          "fcstd": {"path": str(fcstd), "sha256": file_sha256(fcstd)},
+                          "step": {"path": str(step), "sha256": file_sha256(step)},
+                          "brep": {"path": str(brep), "sha256": file_sha256(brep)},
+                      },
+                      "display_derivative": {"path": str(DISPLAY_PATH), "sha256": file_sha256(DISPLAY_PATH)},
+                      "measurements": {
+                          "units": "mm",
+                          "source_bbox_mm": source_metrics["bbox_mm"],
+                          "source_volume_mm3": source_metrics["volume_mm3"],
+                          "result_bbox_mm": result_metrics["bbox_mm"],
+                          "result_volume_mm3": result_metrics["volume_mm3"],
+                          "result_solid_count": result_metrics["solid_count"],
+                      },
+                      "error": None,
+                      "non_claims": ["general_brep_push_pull", "general_planar_face_translation", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "engineering_approval", "manufacturing_release", "field_truth"],
+                  }
+                  RESPONSE_PATH.write_bytes(canonical_bytes(response))
+                  print("OLEANDER_CAD_DIRECT_EDIT_RESPONSE=" + json.dumps(response, sort_keys=True))
+              except Exception as exc:
+                  write_fail(request, exc)
+                  raise'''
+          )
+
+          # ------------------------------------------------------------------
+          # New probe is only an integration test under the existing CAD job.
+          # ------------------------------------------------------------------
+          tangent_probe = runtime / 'tests/professional/probe_cad_direct_tangent_integration.py'
+          tangent_probe.write_text(r'''"""Real Blender 5.2 -> CAD sidecar -> FreeCAD -> Blender readback for bounded FACE_TANGENT_MOVE.
+
+          This is an additional operation case inside the existing CAD Sidecar Integration job,
+          not a Runtime stage, Frontier family, or general planar direct-modeling claim.
+          """
+          from __future__ import annotations
+
+          import bmesh
+          import copy
+          import json
+          import os
+          import pathlib
+          import sys
+
+          import bpy
+
+          SCRIPT = pathlib.Path(__file__).resolve()
+          RUNTIME_ROOT = SCRIPT.parents[2]
+          if str(RUNTIME_ROOT) not in sys.path:
+              sys.path.insert(0, str(RUNTIME_ROOT))
+
+          import oleander_blender
+          from professional_adapter.cad_sidecar import (
+              DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
+              assert_direct_edit_response_matches_request,
+              bind_direct_edit_display_derivative,
+              build_direct_edit_request_from_intent,
+              file_sha256,
+              load_direct_edit_response,
+              payload_sha256,
+              validate_direct_edit_request,
+              write_direct_edit_request,
+          )
+
+          ROOT = pathlib.Path(os.environ.get("OLEANDER_CAD_DIRECT_INTEGRATION_DIR", "/tmp/oleander-cad-direct-integration"))
+          PHASE = os.environ.get("OLEANDER_CAD_TANGENT_PHASE", "PREPARE").strip().upper()
+          OLE_ID = "OLE_CAD_DIRECT_EXECUTION_001"
+          SUCCESS_REQUEST = ROOT / "tangent_request_success.json"
+          MISSING_REQUEST = ROOT / "tangent_request_missing.json"
+          AMBIGUOUS_REQUEST = ROOT / "tangent_request_ambiguous.json"
+          REOPEN = ROOT / "cad_direct_tangent_execution.blend"
+          checks: list[str] = []
+
+          def check(condition: bool, label: str) -> None:
+              if not condition:
+                  raise AssertionError(label)
+              checks.append(label)
+
+          def read_json(path: pathlib.Path) -> dict:
+              return json.loads(path.read_text(encoding="utf-8"))
+
+          def clear_scene() -> None:
+              if bpy.context.mode != "OBJECT":
+                  bpy.ops.object.mode_set(mode="OBJECT")
+              bpy.ops.object.select_all(action="SELECT")
+              bpy.ops.object.delete(use_global=False)
+
+          def select_only(obj) -> None:
+              if bpy.context.mode != "OBJECT":
+                  bpy.ops.object.mode_set(mode="OBJECT")
+              bpy.ops.object.select_all(action="DESELECT")
+              obj.select_set(True)
+              bpy.context.view_layer.objects.active = obj
+
+          def select_top_face(obj) -> None:
+              select_only(obj)
+              bpy.ops.object.mode_set(mode="EDIT")
+              bm = bmesh.from_edit_mesh(obj.data)
+              bm.normal_update()
+              for face in bm.faces:
+                  face.select = False
+              candidates = [face for face in bm.faces if face.normal.z > 0.999999]
+              check(len(candidates) == 1, "prepare_tangent_unique_positive_z_face")
+              candidates[0].select = True
+              bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+
+          def vertex_snapshot(obj):
+              return tuple(tuple(round(float(v), 9) for v in vertex.co) for vertex in obj.data.vertices)
+
+          def prepare_box_display(master_locator: str):
+              bpy.ops.mesh.primitive_cube_add(size=1.0)
+              obj = bpy.context.active_object
+              obj.name = "OLE_CAD_TANGENT_DISPLAY"
+              obj.oleander.ole_id = OLE_ID
+              result = bpy.ops.oleander.apply_metric_dimensions(x_mm=80.0, y_mm=50.0, z_mm=10.0)
+              check("FINISHED" in result, "prepare_tangent_display_dimensions")
+              for vertex in obj.data.vertices:
+                  vertex.co.z += 5.0
+              obj.data.update()
+              bpy.context.view_layer.update()
+              obj.oleander.master_type = "CAD_NATIVE"
+              obj.oleander.master_locator = master_locator
+              obj.oleander.geometry_authority = "VISUAL_ONLY"
+              return obj
+
+          def prepare() -> None:
+              if hasattr(bpy.types.Object, "oleander"):
+                  try:
+                      oleander_blender.unregister()
+                  except Exception:
+                      pass
+              oleander_blender.register()
+              clear_scene()
+              bpy.context.scene.unit_settings.system = "METRIC"
+              bpy.context.scene.unit_settings.scale_length = 0.001
+              master_fcstd = ROOT / "base" / f"{OLE_ID}_R001.FCStd"
+              obj = prepare_box_display(str(master_fcstd))
+              before = vertex_snapshot(obj)
+              select_top_face(obj)
+              result = bpy.ops.oleander.direct_face_tangent_move(u_mm=3.0, v_mm=4.0)
+              check("FINISHED" in result, "prepare_real_cad_native_tangent_operator")
+              bpy.ops.object.mode_set(mode="OBJECT")
+              bpy.context.view_layer.update()
+              check(vertex_snapshot(obj) == before, "prepare_tangent_display_geometry_unchanged")
+              check(obj.get("oleander_cad_direct_edit_state") == "PENDING_SIDECAR", "prepare_tangent_pending_sidecar")
+              intent = json.loads(obj["oleander_cad_direct_edit_intent"])
+              check(intent["operation"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE, "prepare_tangent_operation")
+              check(intent["parameters"]["translation_local_mm"] == [3.0, 4.0, 0.0], "prepare_tangent_normalized_translation")
+              check(intent["parameters"]["u_mm"] == 3.0 and intent["parameters"]["v_mm"] == 4.0, "prepare_tangent_uv_provenance")
+
+              cases = {
+                  "success": str(master_fcstd),
+                  "missing": str(ROOT / "hold_missing" / "missing.FCStd"),
+                  "ambiguous": str(ROOT / "hold_ambiguous" / "ambiguous.FCStd"),
+              }
+              for name, locator in cases.items():
+                  candidate = copy.deepcopy(intent)
+                  candidate["authority"]["master_locator"] = locator
+                  request = build_direct_edit_request_from_intent(
+                      request_id=f"OLE_CAD_TANGENT_{name.upper()}_R003",
+                      revision=3,
+                      intent=candidate,
+                  )
+                  validate_direct_edit_request(request)
+                  check(request["operation"] == {"kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE, "translation_local_mm": [3.0, 4.0, 0.0]}, f"prepare_{name}_normalized_request")
+                  check(request["authority"]["execution_state"] == "NOT_EXECUTED", f"prepare_{name}_not_executed")
+                  target = {"success": SUCCESS_REQUEST, "missing": MISSING_REQUEST, "ambiguous": AMBIGUOUS_REQUEST}[name]
+                  write_direct_edit_request(target, request)
+                  check(payload_sha256(request) == payload_sha256(read_json(target)), f"prepare_{name}_request_sha_readback")
+
+              payload = {
+                  "schema": "OLEANDER_CAD_DIRECT_TANGENT_PREPARE_v0.1",
+                  "status": "PASS",
+                  "blender": bpy.app.version_string,
+                  "checks": checks,
+                  "translation_local_mm": [3.0, 4.0, 0.0],
+                  "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "NOT_EXECUTED"},
+                  "non_claims": ["general_planar_face_translation", "oblique_face_execution", "general_brep_push_pull", "P0_B_DIRECT_BREP_PASS", "P0_G_MODELING_INTERACTION_PASS"],
+              }
+              print("OLEANDER_CAD_DIRECT_TANGENT_PREPARE=" + json.dumps(payload, sort_keys=True))
+
+          def validate_response(response: dict, request: dict, status: str, resolution_state: str) -> None:
+              assert_direct_edit_response_matches_request(response, request)
+              check(response["status"] == status, f"{status}_status")
+              check(response["resolution"]["state"] == resolution_state, f"{status}_resolution")
+              check(response["operation"]["kind"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE, f"{status}_tangent_kind")
+              check(response["operation"]["translation_local_mm"] == [3.0, 4.0, 0.0], f"{status}_translation")
+              if status == "PASS":
+                  check(response["operation"]["execution_state"] == "EXECUTED", "pass_tangent_executed")
+                  for artifact in ("fcstd", "step", "brep"):
+                      record = response["authoritative"][artifact]
+                      path = pathlib.Path(record["path"])
+                      check(path.is_file() and file_sha256(path) == record["sha256"], f"pass_tangent_{artifact}_sha")
+              else:
+                  check(response["operation"]["execution_state"] == "NOT_EXECUTED", f"{status}_tangent_not_executed")
+
+          def readback() -> None:
+              if hasattr(bpy.types.Object, "oleander"):
+                  try:
+                      oleander_blender.unregister()
+                  except Exception:
+                      pass
+              oleander_blender.register()
+              clear_scene()
+              bpy.context.scene.unit_settings.system = "METRIC"
+              bpy.context.scene.unit_settings.scale_length = 0.001
+              requests = {name: read_json(path) for name, path in {"success": SUCCESS_REQUEST, "missing": MISSING_REQUEST, "ambiguous": AMBIGUOUS_REQUEST}.items()}
+              for name, request in requests.items():
+                  validate_direct_edit_request(request)
+                  checks.append(f"readback_{name}_request_revalidated")
+              responses = {
+                  "success": load_direct_edit_response(ROOT / "tangent_direct_success" / "cad_direct_edit_response.json"),
+                  "missing": load_direct_edit_response(ROOT / "tangent_direct_missing" / "cad_direct_edit_response.json", allow_hold=True),
+                  "ambiguous": load_direct_edit_response(ROOT / "tangent_direct_ambiguous" / "cad_direct_edit_response.json", allow_hold=True),
+              }
+              validate_response(responses["success"], requests["success"], "PASS", "RESOLVED_UNIQUE")
+              validate_response(responses["missing"], requests["missing"], "HOLD", "MISSING_HOLD")
+              validate_response(responses["ambiguous"], requests["ambiguous"], "HOLD", "AMBIGUOUS_HOLD")
+              check(responses["ambiguous"]["resolution"]["candidate_count"] == 2, "tangent_ambiguous_two_candidates")
+
+              measurements = responses["success"]["measurements"]
+              check(all(abs(a-b) <= 1e-4 for a,b in zip(measurements["source_bbox_mm"], [80.0, 50.0, 10.0])), "tangent_source_bbox")
+              check(all(abs(a-b) <= 1e-4 for a,b in zip(measurements["result_bbox_mm"], [83.0, 54.0, 10.0])), "tangent_result_bbox")
+              check(abs(measurements["source_volume_mm3"] - 40000.0) <= 1e-3, "tangent_source_volume")
+              check(abs(measurements["result_volume_mm3"] - 40000.0) <= 1e-3, "tangent_volume_preserved")
+
+              display = read_json(ROOT / "tangent_direct_success" / "cad_direct_edit_display_derivative.json")
+              obj = bind_direct_edit_display_derivative(response=responses["success"], display_payload=display, request=requests["success"])
+              bpy.context.view_layer.update()
+              check(abs(obj.dimensions.x - 83.0) <= 1e-3, "tangent_blender_width")
+              check(abs(obj.dimensions.y - 54.0) <= 1e-3, "tangent_blender_depth")
+              check(abs(obj.dimensions.z - 10.0) <= 1e-3, "tangent_blender_height")
+              check(obj["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "tangent_blender_display_only")
+              check(obj["cad_direct_edit_operation_kind"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE, "tangent_operation_bound")
+              check(list(obj["cad_direct_edit_translation_local_mm"]) == [3.0, 4.0, 0.0], "tangent_translation_bound")
+
+              bpy.ops.wm.save_as_mainfile(filepath=str(REOPEN))
+              name = obj.name
+              request_sha = obj["cad_request_sha256"]
+              bpy.ops.wm.open_mainfile(filepath=str(REOPEN))
+              reopened = bpy.data.objects.get(name)
+              check(reopened is not None, "tangent_reopen_object")
+              check(reopened["cad_request_sha256"] == request_sha, "tangent_reopen_request_sha")
+              check(reopened["cad_direct_edit_execution_state"] == "EXECUTED", "tangent_reopen_execution")
+              check(reopened["geometry_authority"] == "DISPLAY_DERIVATIVE_ONLY", "tangent_reopen_display_only")
+
+              payload = {
+                  "schema": "OLEANDER_CAD_DIRECT_TANGENT_READBACK_v0.1",
+                  "status": "PASS",
+                  "blender": bpy.app.version_string,
+                  "checks": checks,
+                  "translation_local_mm": [3.0, 4.0, 0.0],
+                  "result_bbox_mm": [83.0, 54.0, 10.0],
+                  "result_volume_mm3": 40000.0,
+                  "authority": {"master": "FREECAD_OCCT_BREP", "blender": "DISPLAY_DERIVATIVE_ONLY", "execution": "EXECUTED", "resolution": "RESOLVED_UNIQUE"},
+                  "failure_envelope": {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE"},
+                  "non_claims": ["general_planar_face_translation", "oblique_face_execution", "general_brep_push_pull", "persistent_topological_naming", "P0_B_DIRECT_BREP_PASS", "P0_G_MODELING_INTERACTION_PASS", "default_environment_promotion"],
+              }
+              print("OLEANDER_CAD_DIRECT_TANGENT_READBACK=" + json.dumps(payload, sort_keys=True))
+
+          if __name__ == "__main__":
+              if PHASE == "PREPARE":
+                  prepare()
+              elif PHASE == "READBACK":
+                  readback()
+              else:
+                  raise SystemExit(f"unsupported OLEANDER_CAD_TANGENT_PHASE: {PHASE}")
+          ''', encoding='utf-8')
+
+          # ------------------------------------------------------------------
+          # Existing workflow/job — add tangent case; no new workflow/stage/frontier.
+          # ------------------------------------------------------------------
+          workflow = ROOT / '.github/workflows/oleander-blender-professional-cad-sidecar-integration.yml'
+          replace_once(
+              workflow,
+              '''          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_ambiguous.json"\n\n      - name: Download and verify FreeCAD 1.1.3 direct-edit sidecar''',
+              '''          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/direct_request_ambiguous.json"\n\n      - name: Prepare bounded CAD tangent requests from the same real Blender interaction surface\n        shell: bash\n        run: |\n          set -euo pipefail\n          OLEANDER_CAD_TANGENT_PHASE=PREPARE \\\n          "${{ steps.blender52.outputs.bin }}" --background --factory-startup --python-exit-code 2 \\\n            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_tangent_integration.py \\\n            2>&1 | tee /tmp/oleander-cad-tangent-prepare.log\n          grep -F 'OLEANDER_CAD_DIRECT_TANGENT_PREPARE=' /tmp/oleander-cad-tangent-prepare.log\n          grep -F '\"status\": \"PASS\"' /tmp/oleander-cad-tangent-prepare.log\n          grep -F '\"execution\": \"NOT_EXECUTED\"' /tmp/oleander-cad-tangent-prepare.log\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_request_success.json"\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_request_missing.json"\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_request_ambiguous.json"\n\n      - name: Download and verify FreeCAD 1.1.3 direct-edit sidecar''',
+          )
+          replace_once(
+              workflow,
+              '''          print('OLEANDER_CAD_DIRECT_EXECUTION_ENVELOPE=PASS')\n          PY\n\n      - name: Validate Blender 5.2 display-only readback and save-reopen''',
+              '''          print('OLEANDER_CAD_DIRECT_EXECUTION_ENVELOPE=PASS')\n          PY\n\n      - name: Execute bounded FreeCAD OCCT face-tangent move and HOLD envelopes\n        shell: bash\n        run: |\n          set -euo pipefail\n          service="${GITHUB_WORKSPACE}/oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_direct_edit_service.py"\n          for case in success missing ambiguous; do\n            out="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_${case}"\n            request="${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_request_${case}.json"\n            mkdir -p "${out}"\n            OLEANDER_CAD_DIRECT_REQUEST="${request}" \\\n            OLEANDER_CAD_DIRECT_DIR="${out}" \\\n              /tmp/squashfs-root/usr/bin/freecadcmd "${service}" \\\n              2>&1 | tee "/tmp/oleander-cad-tangent-${case}.log"\n            test -s "${out}/cad_direct_edit_response.json"\n          done\n          grep -F 'OLEANDER_CAD_DIRECT_EDIT_RESPONSE=' /tmp/oleander-cad-tangent-success.log\n          grep -F '\"status\": \"PASS\"' /tmp/oleander-cad-tangent-success.log\n          grep -F '\"kind\": \"FACE_TANGENT_MOVE\"' /tmp/oleander-cad-tangent-success.log\n          grep -F '\"execution_state\": \"EXECUTED\"' /tmp/oleander-cad-tangent-success.log\n          grep -F '\"state\": \"MISSING_HOLD\"' /tmp/oleander-cad-tangent-missing.log\n          grep -F '\"state\": \"AMBIGUOUS_HOLD\"' /tmp/oleander-cad-tangent-ambiguous.log\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_success/OLE_CAD_DIRECT_EXECUTION_001_R003.FCStd"\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_success/OLE_CAD_DIRECT_EXECUTION_001_R003.step"\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_success/OLE_CAD_DIRECT_EXECUTION_001_R003.brep"\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_success/cad_direct_edit_display_derivative.json"\n          ! find "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_missing" -maxdepth 1 \\( -name '*.FCStd' -o -name '*.step' -o -name '*.brep' -o -name '*display_derivative.json' \\) -print -quit | grep -q .\n          ! find "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/tangent_direct_ambiguous" -maxdepth 1 \\( -name '*.FCStd' -o -name '*.step' -o -name '*.brep' -o -name '*display_derivative.json' \\) -print -quit | grep -q .\n\n      - name: Validate Blender 5.2 display-only readback and save-reopen''',
+          )
+          replace_once(
+              workflow,
+              '''          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/cad_direct_edit_execution.blend"\n\n      - name: Record bounded CAD direct-edit execution boundary''',
+              '''          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/cad_direct_edit_execution.blend"\n\n      - name: Validate Blender 5.2 tangent display readback and save-reopen\n        shell: bash\n        run: |\n          set -euo pipefail\n          OLEANDER_CAD_TANGENT_PHASE=READBACK \\\n          "${{ steps.blender52.outputs.bin }}" --background --factory-startup --python-exit-code 2 \\\n            --python oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_tangent_integration.py \\\n            2>&1 | tee /tmp/oleander-cad-tangent-readback.log\n          grep -F 'OLEANDER_CAD_DIRECT_TANGENT_READBACK=' /tmp/oleander-cad-tangent-readback.log\n          grep -F '\"status\": \"PASS\"' /tmp/oleander-cad-tangent-readback.log\n          grep -F '\"execution\": \"EXECUTED\"' /tmp/oleander-cad-tangent-readback.log\n          grep -F '\"blender\": \"DISPLAY_DERIVATIVE_ONLY\"' /tmp/oleander-cad-tangent-readback.log\n          test -s "${OLEANDER_CAD_DIRECT_INTEGRATION_DIR}/cad_direct_tangent_execution.blend"\n\n      - name: Record bounded CAD direct-edit execution boundary''',
+          )
+          replace_once(
+              workflow,
+              "            echo '- PASS scope: one rectangular prismatic solid, unique +Z four-edge top face, +5 mm move, 80x50x10 -> 80x50x15, FCStd + STEP + BREP + typed display derivative.'",
+              "            echo '- PASS scope: existing FACE_NORMAL_MOVE remains 80x50x10 -> 80x50x15; FACE_TANGENT_MOVE adds bounded +Z-face [3,4,0] mm translation -> 83x54x10 with volume preserved. Existing FreeCAD evidence additionally covers +X/+Y axis-aligned tangent planes; oblique/general planar parity remains unclaimed.'",
+          )
+
+          # Static syntax before committing; imports are not executed by py_compile.
+          python_files = [
+              direct,
+              sidecar,
+              service,
+              tangent_probe,
+          ]
+          import py_compile
+          for path in python_files:
+              py_compile.compile(str(path), doraise=True)
+          print('OLEANDER_CAD_TANGENT_PATCH=PASS')
+          PY
+
+          rm .github/workflows/zz-oleander-cad-tangent-branch-patch.yml
+          git config user.name "OLEANDER Runtime"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "feat(blender): absorb bounded CAD tangent face move"
+          git push origin HEAD:feat/oleander-blender-cad-tangent-move-v01-20260910
