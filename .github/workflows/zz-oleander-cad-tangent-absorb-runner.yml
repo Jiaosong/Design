@@ -1,0 +1,62 @@
+name: OLEANDER CAD Tangent Absorb Runner
+
+on:
+  push:
+    branches:
+      - feat/oleander-blender-cad-tangent-move-v01-20260910
+    paths:
+      - ".github/workflows/zz-oleander-cad-tangent-absorb-runner.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: feat/oleander-blender-cad-tangent-move-v01-20260910
+          fetch-depth: 0
+      - name: Execute corrected absorption patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'EXTRACT'
+          from pathlib import Path
+          src = Path('.github/workflows/zz-oleander-cad-tangent-absorb-nonworkflow.yml').read_text(encoding='utf-8')
+          start_marker = "          python3 - <<'PY'\n"
+          end_marker = "\n          PY\n\n          python3 -m py_compile"
+          start = src.index(start_marker) + len(start_marker)
+          end = src.index(end_marker, start)
+          lines = src[start:end].splitlines()
+          payload = '\n'.join(line[10:] if line.startswith('          ') else line for line in lines) + '\n'
+          Path('/tmp/oleander-cad-tangent-absorb.py').write_text(payload, encoding='utf-8')
+          EXTRACT
+          python3 /tmp/oleander-cad-tangent-absorb.py
+          python3 - <<'REPAIR'
+          from pathlib import Path
+          path = Path('oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_edit_integration.py')
+          text = path.read_text(encoding='utf-8')
+          start = text.index('def run_tangent_authoritative_integration()')
+          end = text.index('\ndef readback() -> None:', start)
+          block = text[start:end].replace('\\"', '"')
+          text = text[:start] + block + text[end:]
+          path.write_text(text, encoding='utf-8')
+          REPAIR
+          python3 -m py_compile \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_direct_edit_service.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_direct.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_edit_integration.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_tangent_integration.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/professional_adapter/cad_sidecar.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/oleander_blender/direct_model.py
+          git config user.name "OLEANDER Runtime"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/freecad_cad_direct_edit_service.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/validate_stage3_direct.py \
+            oleander-skills/oleander-3d-pipeline/blender_runtime/tests/professional/probe_cad_direct_edit_integration.py
+          git diff --cached --check
+          git commit -m "test(blender): absorb CAD tangent execution into existing owners"
+          git push origin HEAD:feat/oleander-blender-cad-tangent-move-v01-20260910
