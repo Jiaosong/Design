@@ -30,12 +30,11 @@ jobs:
           marker = '        run: |\n'
           if source.count(marker) != 1:
               raise SystemExit('Stage B workflow run block is not unique')
-          shell = source.split(marker, 1)[1]
-          shell = textwrap.dedent(shell)
-          old = '''          def replace_once(path, old, new):\n              text = path.read_text(encoding='utf-8')\n              count = text.count(old)\n              if count != 1:\n                  raise SystemExit(f'{path}: expected one anchor, got {count}: {old[:120]!r}')\n              path.write_text(text.replace(old, new, 1), encoding='utf-8')\n'''
-          new = '''          def replace_once(path, old, new):\n              text = path.read_text(encoding='utf-8')\n              count = text.count(old)\n              known_duplicate = (\n                  count == 2\n                  and old.startswith('\\"non_claims\\": [\\"general_brep_push_pull\\", \\"general_planar_face_translation\\", \\"persistent_topological_naming\\"')\n              )\n              if count != 1 and not known_duplicate:\n                  raise SystemExit(f'{path}: expected one anchor, got {count}: {old[:120]!r}')\n              path.write_text(text.replace(old, new, 1), encoding='utf-8')\n'''
+          shell = textwrap.dedent(source.split(marker, 1)[1])
+          old = '              if count != 1:\n'
+          new = '''              known_duplicate = (count == 2 and '"non_claims": ["general_brep_push_pull"' in old)\n              if count != 1 and not known_duplicate:\n'''
           if shell.count(old) != 1:
-              raise SystemExit('Stage B replace_once helper anchor drifted')
+              raise SystemExit(f'Stage B replace_once condition drifted: {shell.count(old)}')
           shell = shell.replace(old, new, 1)
           Path('/tmp/oleander-face-rotate-stage-b.sh').write_text(shell, encoding='utf-8')
           PY
