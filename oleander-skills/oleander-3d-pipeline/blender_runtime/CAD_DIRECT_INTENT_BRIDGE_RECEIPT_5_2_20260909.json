@@ -3,21 +3,21 @@
   "hardening_revision": "v0.2_STRICT_REQUEST_REVALIDATION",
   "validation_state": "PASS",
   "validation_scope": "CAD_DIRECT_INTENT_TO_REQUEST_CONTRACT",
-  "validated_at_utc": "2026-09-10T08:26:35Z",
+  "validated_at_utc": "2026-09-10T09:44:25Z",
   "repository": "Jiaosong/Design",
-  "pull_request": 516,
-  "candidate_head": "6ec5c3401fd8b3f79a4dd3eae39a1e74c511ad00",
-  "tested_pr_merge_commit": "b2113dafefae6572c284fc203e0e72fff816afc5",
-  "tested_main_base": "c1016879f5e043d01ab99655f89b9f652f001966",
+  "pull_request": 518,
+  "candidate_head": "069d0291e8ce4a4e4d56df6069c2dd3db942ec09",
+  "tested_pr_merge_commit": "fbdac0bdb4bb960c2bd38e986cc2fe57212e1747",
+  "tested_main_base": "120349ab7b21d22d6d69ed3f442dd8c29f6f8aa9",
   "validated_source_blobs": {
-    "professional_adapter/cad_sidecar.py": "881732d93ebd083c971ea5c2937b664bef541324",
+    "professional_adapter/cad_sidecar.py": "a5a99e535b30329e03916476a848a5074ea0f2de",
     "tests/validate_cad_direct_intent_bridge.py": "3cc5b3fb7f4a64afa1f1876077130e5d597c2986",
     ".github/workflows/oleander-blender-runtime-5-2-lts.yml": "343cbc301015e4f70cbb49f1829cb37b5dc222ce"
   },
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
-    "run_id": 34455090728,
-    "job_id": 102799500469,
+    "run_id": 34462229511,
+    "job_id": 102822483718,
     "conclusion": "success",
     "specialist_gate": "Validate bounded CAD direct intent bridge on Blender 5.2 LTS"
   },
@@ -29,8 +29,8 @@
   },
   "extension_package_observation": {
     "filename": "oleander_blender_runtime-5.2-lts.zip",
-    "size_bytes": 93553,
-    "sha256": "60d7086f9b459a810866acb20e1c1b4b1c1c23973eb8a54827470ca0cdfbf663",
+    "size_bytes": 94296,
+    "sha256": "8ae2846ed1c34952dcf45f8aff2adab97f67b787335ecf3e7d6c42f49abda17d",
     "role": "same-job runtime package observation; not a CAD authority artifact"
   },
   "intent_schema": "OLEANDER_CAD_DIRECT_EDIT_INTENT_v0.1",
@@ -171,5 +171,5 @@
     "field_truth"
   ],
   "invalidation_rule": "Any material change to professional_adapter/cad_sidecar.py, tests/validate_cad_direct_intent_bridge.py, or the bridge binding in oleander-blender-runtime-5-2-lts.yml invalidates this receipt and requires a fresh canonical Blender 5.2 LTS specialist-gate run before rebinding.",
-  "authority_note": "This receipt proves deterministic, fail-closed translation from the existing Blender CAD direct-edit interaction intent into a governed specialist-sidecar request plus strict request revalidation before persistence on canonical Blender 5.2 LTS. It proves that forged request variants are rejected by both validator and writer without creating a request file. This bridge receipt itself does not execute semantic CAD face resolution or FreeCAD/OCCT B-Rep mutation; bounded Normal and Tangent authoritative execution are established separately by the professional CAD-sidecar integration surface."
+  "authority_note": "Fresh canonical Blender 5.2 LTS run 34462229511 / job 102822483718 revalidates the strict intent-to-request bridge against the PR #518 cad_sidecar source after FACE_ROTATE response/bind absorption. The bridge itself remains NOT_EXECUTED; authoritative FACE_ROTATE execution is separate Professional CAD Sidecar evidence 34461827861 / 102821200739."
 }
