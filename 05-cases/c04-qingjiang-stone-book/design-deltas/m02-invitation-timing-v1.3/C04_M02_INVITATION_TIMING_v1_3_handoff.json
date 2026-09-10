@@ -1,0 +1,32 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "M02_OPTIONAL_INVITATION_TIMING_v1.3",
+  "mode": "PROJECT_MODE",
+  "current_gap": "M02 capture authority is defined, but OPTIONAL READ/STOP invitations still lack a timing rule that protects landscape/body attention.",
+  "reframe": "the design problem is attention authority, not notification styling: when may digital memory ask without overtaking the experience?",
+  "lenses": ["Human/Situation", "Scenario/Journey/Service", "Perception/Information", "Subtractive/Craft"],
+  "options": {
+    "A_IMMEDIATE_MODAL": {"verdict": "REJECT", "reason": "digital prompt takes first-read immediately after the scene"},
+    "B_EXIT_WHISPER": {"verdict": "KEEP CANDIDATE", "reason": "one-shot non-blocking invitation after scene exit; untouched means disappear"},
+    "C_RETURN_BATCH": {"verdict": "REVISE", "reason": "low interruption but requires latent candidate-event accumulation, tending toward behavior logging"}
+  },
+  "convergence_rule": "OPTIONAL event → scene ends → non-blocking one-shot invitation → untouched = disappear / no queue / no reminder",
+  "practice_skill_transfer": {
+    "practice": "NO NEW SYNTHETIC PRACTICE; consumes prior no-score/fail-soft/attention hierarchy learning",
+    "skill_operations": ["attention authority comparison", "interruption-state prototype", "subtractive removal of badge/queue/reminder", "runtime expiration test"]
+  },
+  "runtime_readback": {
+    "checks": {
+      "boots_without_errors": true,
+      "exit_whisper_not_visible_before_leave": true,
+      "exit_whisper_visible_after_leave": true,
+      "exit_whisper_expires_without_queue": true,
+      "immediate_modal_blocks_on_leave": true,
+      "return_batch_silent_on_scene_leave": true,
+      "return_batch_only_visible_at_return": true
+    },
+    "errors": []
+  },
+  "truth_boundary": "INTERACTION TIMING PROTOTYPE ONLY / NO LIVE SENSING / FIELD ATTENTION STUDY / PRIVACY OR CONSENT IMPLEMENTATION CLAIM",
+  "status": "PROJECT TRANSFER EXECUTED / B EXIT-WHISPER KEEP CANDIDATE / CHROMIUM RUNTIME PASS / NOT FINAL_KEEP"
+}
