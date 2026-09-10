@@ -31,8 +31,8 @@ jobs:
           if source.count(marker) != 1:
               raise SystemExit('Stage B workflow run block is not unique')
           shell = textwrap.dedent(source.split(marker, 1)[1])
-          old = '              if count != 1:\n'
-          new = '''              known_duplicate = (count == 2 and '"non_claims": ["general_brep_push_pull"' in old)\n              if count != 1 and not known_duplicate:\n'''
+          old = '    if count != 1:\n'
+          new = '''    known_duplicate = (count == 2 and '"non_claims": ["general_brep_push_pull"' in old)\n    if count != 1 and not known_duplicate:\n'''
           if shell.count(old) != 1:
               raise SystemExit(f'Stage B replace_once condition drifted: {shell.count(old)}')
           shell = shell.replace(old, new, 1)
