@@ -25,6 +25,19 @@ Current demo object:
 - Blender Surface System v1.21 binding target
 - Surface validation integration target
 
+## v0.4 Surface System Integration
+
+Implemented:
+
+- Blender Surface System v1.21 adapter layer
+- Geometry Kernel binding target OLE-GEO-0001
+- Surface validation mapping
+- Surface integration evidence receipt
+
+Current flow:
+
+Intent -> OLE Object -> Surface Source -> Geometry -> Validation -> Evidence
+
 ## Current Implementation State
 
 v0.2 establishes the first executable chain:
