@@ -65,25 +65,18 @@ class OLEANDER_PT_runtime_panel(bpy.types.Panel):
 
         if obj.type == "MESH":
             direct_box = layout.box()
-            direct_box.label(text="Direct Face · bounded v0.2")
+            direct_box.label(text="Direct Face · bounded v0.3")
             direct_box.label(text=f"Authority route: {meta.master_type}")
             if context.mode == "EDIT_MESH":
-                direct_box.operator(
-                    "oleander.direct_face_normal_move",
-                    text="Face Normal Move ±mm",
-                    icon="ORIENTATION_NORMAL",
-                )
+                direct_box.operator("oleander.direct_face_normal_move", text="Face Normal Move ±mm", icon="ORIENTATION_NORMAL")
+                direct_box.operator("oleander.direct_face_tangent_move", text="Face Tangent Move U/V mm", icon="ORIENTATION_LOCAL")
+                direct_box.operator("oleander.direct_face_rotate", text="Face Rotate U/V ±deg", icon="DRIVER_ROTATIONAL_DIFFERENCE")
                 if meta.master_type == "BLENDER_NATIVE":
-                    direct_box.operator(
-                        "oleander.direct_face_tangent_move",
-                        text="Face Tangent Move U/V mm",
-                        icon="ORIENTATION_LOCAL",
-                    )
                     direct_box.label(text="One selected face · geometry U/V tangent basis")
-                    direct_box.label(text="Normal and tangent edits propagate stale state")
+                    direct_box.label(text="Normal / tangent / rotate edits propagate stale state")
                 elif meta.master_type == "CAD_NATIVE":
-                    direct_box.label(text="Normal Move routes through governed CAD sidecar", icon="INFO")
-                    direct_box.label(text="Tangent Move remains HOLD until shared sidecar absorption")
+                    direct_box.label(text="Normal + Tangent route through governed CAD sidecar", icon="INFO")
+                    direct_box.label(text="Rotate prepares governed intent; execution gate remains separate")
                     direct_box.label(text="Display mesh is not CAD authority")
                 else:
                     direct_box.label(text="No bounded direct-face route for this master", icon="ERROR")

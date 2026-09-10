@@ -41,7 +41,9 @@ DIRECT_EDIT_DISPLAY_SCHEMA = "OLEANDER_CAD_DIRECT_EDIT_DISPLAY_DERIVATIVE_v0.1"
 
 DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE = "FACE_NORMAL_MOVE"
 DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE = "FACE_TANGENT_MOVE"
+DIRECT_EDIT_OPERATION_FACE_ROTATE = "FACE_ROTATE"
 DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM = 20.0
+DIRECT_EDIT_ROTATE_MAX_ANGLE_DEG = 10.0
 DIRECT_EDIT_REQUIRED_KERNEL = "FREECAD_OCCT_BREP"
 DIRECT_EDIT_BLENDER_ROLE = "DISPLAY_DERIVATIVE_ONLY"
 DIRECT_EDIT_REBIND_POLICY = "SEMANTIC_REBIND_FAIL_CLOSED"
@@ -74,7 +76,9 @@ _DIRECT_REQUEST_SOURCE_KEYS = {
 }
 _DIRECT_REQUEST_NORMAL_OPERATION_KEYS = {"kind", "distance_mm"}
 _DIRECT_REQUEST_TANGENT_OPERATION_KEYS = {"kind", "translation_local_mm"}
+_DIRECT_REQUEST_ROTATE_OPERATION_KEYS = {"kind", "angle_deg", "axis_mode", "axis_origin_local_mm", "axis_direction_local"}
 _DIRECT_TANGENT_INTENT_PARAMETER_KEYS = {"u_mm", "v_mm", "tangent_u_local", "tangent_v_local", "translation_local_mm"}
+_DIRECT_ROTATE_INTENT_PARAMETER_KEYS = {"angle_deg", "axis_mode", "axis_origin_local_mm", "axis_direction_local"}
 _DIRECT_REQUEST_SELECTOR_KEYS = {
     "kind",
     "descriptor",
@@ -282,6 +286,33 @@ def _validate_tangent_intent_parameters(parameters: dict, target: dict) -> dict:
     }
 
 
+
+def _validate_rotate_intent_parameters(parameters: dict, target: dict) -> dict:
+    parameters = _require_exact_keys(parameters, _DIRECT_ROTATE_INTENT_PARAMETER_KEYS, "FACE_ROTATE parameters")
+    angle_deg = _finite_float(parameters.get("angle_deg"), "parameters.angle_deg")
+    if abs(angle_deg) <= 1e-9:
+        raise CADSidecarContractError("FACE_ROTATE angle must be non-zero")
+    if abs(angle_deg) > DIRECT_EDIT_ROTATE_MAX_ANGLE_DEG + 1e-9:
+        raise CADSidecarContractError("FACE_ROTATE exceeds bounded 10 degree specialist contract")
+    axis_mode = str(parameters.get("axis_mode") or "")
+    if axis_mode not in {"U", "V"}:
+        raise CADSidecarContractError("FACE_ROTATE axis_mode must be U or V")
+    axis_origin = _vector(parameters.get("axis_origin_local_mm"), 3, "parameters.axis_origin_local_mm")
+    axis_direction = _unit3(parameters.get("axis_direction_local"), "parameters.axis_direction_local")
+    normal = _unit3(target.get("normal_local"), "target.normal_local")
+    if abs(_dot3(axis_direction, normal)) > 1e-6:
+        raise CADSidecarContractError("FACE_ROTATE axis must lie in the target tangent plane")
+    center = _vector(target.get("center_local_mm"), 3, "target.center_local_mm")
+    if any(abs(a - b) > 1e-6 for a, b in zip(axis_origin, center)):
+        raise CADSidecarContractError("FACE_ROTATE first shared contract requires the axis through target face center")
+    return {
+        "kind": DIRECT_EDIT_OPERATION_FACE_ROTATE,
+        "angle_deg": angle_deg,
+        "axis_mode": axis_mode,
+        "axis_origin_local_mm": axis_origin,
+        "axis_direction_local": axis_direction,
+    }
+
 def validate_direct_edit_intent(intent: dict) -> dict:
     """Validate a bounded Blender Direct Face intent without resolving a CAD face."""
     if not isinstance(intent, dict) or intent.get("schema") != DIRECT_EDIT_INTENT_SCHEMA:
@@ -303,6 +334,8 @@ def validate_direct_edit_intent(intent: dict) -> dict:
             raise CADSidecarContractError("FACE_NORMAL_MOVE distance must be non-zero")
         normalized_operation = {"kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE, "distance_mm": distance_mm}
     elif operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        normalized_operation = None
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_ROTATE:
         normalized_operation = None
     else:
         raise CADSidecarContractError(f"unsupported CAD direct-edit operation: {operation_kind}")
@@ -332,6 +365,8 @@ def validate_direct_edit_intent(intent: dict) -> dict:
     target = _validate_direct_face_descriptor(intent.get("target"))
     if operation_kind == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
         normalized_operation = _validate_tangent_intent_parameters(parameters, target)
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_ROTATE:
+        normalized_operation = _validate_rotate_intent_parameters(parameters, target)
     return {
         "ole_id": ole_id,
         "operation": normalized_operation,
@@ -350,14 +385,16 @@ def build_direct_edit_request_from_intent(*, request_id: str, revision: int, int
     validated = validate_direct_edit_intent(intent)
     normalized_operation = validated["operation"]
     if normalized_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE:
-        request_operation = {
-            "kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE,
-            "distance_mm": normalized_operation["distance_mm"],
-        }
+        request_operation = {"kind": DIRECT_EDIT_OPERATION_FACE_NORMAL_MOVE, "distance_mm": normalized_operation["distance_mm"]}
+    elif normalized_operation["kind"] == DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE:
+        request_operation = {"kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE, "translation_local_mm": normalized_operation["translation_local_mm"]}
     else:
         request_operation = {
-            "kind": DIRECT_EDIT_OPERATION_FACE_TANGENT_MOVE,
-            "translation_local_mm": normalized_operation["translation_local_mm"],
+            "kind": DIRECT_EDIT_OPERATION_FACE_ROTATE,
+            "angle_deg": normalized_operation["angle_deg"],
+            "axis_mode": normalized_operation["axis_mode"],
+            "axis_origin_local_mm": normalized_operation["axis_origin_local_mm"],
+            "axis_direction_local": normalized_operation["axis_direction_local"],
         }
     request = {
         "schema": DIRECT_EDIT_REQUEST_SCHEMA,
@@ -444,6 +481,25 @@ def validate_direct_edit_request(request: dict) -> dict:
         if distance > DIRECT_EDIT_TANGENT_MAX_DISTANCE_MM + 1e-9:
             raise CADSidecarContractError("FACE_TANGENT_MOVE request exceeds bounded 20 mm specialist contract")
         normalized_operation = {"kind": operation_kind, "translation_local_mm": translation}
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_ROTATE:
+        operation = _require_exact_keys(raw_operation, _DIRECT_REQUEST_ROTATE_OPERATION_KEYS, "CAD direct-edit rotate operation")
+        angle_deg = _finite_float(operation.get("angle_deg"), "operation.angle_deg")
+        if abs(angle_deg) <= 1e-9:
+            raise CADSidecarContractError("FACE_ROTATE request angle must be non-zero")
+        if abs(angle_deg) > DIRECT_EDIT_ROTATE_MAX_ANGLE_DEG + 1e-9:
+            raise CADSidecarContractError("FACE_ROTATE request exceeds bounded 10 degree specialist contract")
+        axis_mode = str(operation.get("axis_mode") or "")
+        if axis_mode not in {"U", "V"}:
+            raise CADSidecarContractError("FACE_ROTATE request axis_mode must be U or V")
+        axis_origin = _vector(operation.get("axis_origin_local_mm"), 3, "operation.axis_origin_local_mm")
+        axis_direction = _unit3(operation.get("axis_direction_local"), "operation.axis_direction_local")
+        normalized_operation = {
+            "kind": operation_kind,
+            "angle_deg": angle_deg,
+            "axis_mode": axis_mode,
+            "axis_origin_local_mm": axis_origin,
+            "axis_direction_local": axis_direction,
+        }
     else:
         raise CADSidecarContractError(f"unsupported CAD direct-edit request operation: {operation_kind}")
 
@@ -462,6 +518,12 @@ def validate_direct_edit_request(request: dict) -> dict:
         normal = _unit3(descriptor["normal_local"], "target.normal_local")
         if abs(_dot3(normal, normalized_operation["translation_local_mm"])) > 1e-6:
             raise CADSidecarContractError("FACE_TANGENT_MOVE request translation must remain in target tangent plane")
+    elif operation_kind == DIRECT_EDIT_OPERATION_FACE_ROTATE:
+        normal = _unit3(descriptor["normal_local"], "target.normal_local")
+        if abs(_dot3(normal, normalized_operation["axis_direction_local"])) > 1e-6:
+            raise CADSidecarContractError("FACE_ROTATE request axis must remain in target tangent plane")
+        if any(abs(a - b) > 1e-6 for a, b in zip(normalized_operation["axis_origin_local_mm"], descriptor["center_local_mm"])):
+            raise CADSidecarContractError("FACE_ROTATE request axis must pass through target face center")
 
     authority = _require_exact_keys(request.get("authority"), _DIRECT_REQUEST_AUTHORITY_KEYS, "CAD direct-edit request authority")
     if authority.get("master_type") != "CAD_NATIVE":
