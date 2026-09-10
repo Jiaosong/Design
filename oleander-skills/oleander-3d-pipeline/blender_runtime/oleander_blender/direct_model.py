@@ -143,7 +143,7 @@ def _canonical_json(payload):
     )
 
 
-def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
+def _cad_direct_authority_payload(obj):
     if not hasattr(obj, "oleander"):
         raise ValueError("CAD direct edit requires OLEANDER metadata")
     ole_id = obj.oleander.ole_id.strip()
@@ -152,12 +152,17 @@ def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
         raise ValueError("CAD direct edit requires a stable OLE ID")
     if not master_locator:
         raise ValueError("CAD direct edit requires a governed CAD master locator")
+    return ole_id, master_locator
+
+
+def _cad_direct_intent_envelope(obj, operation, parameters, descriptor):
+    ole_id, master_locator = _cad_direct_authority_payload(obj)
     return {
         "schema": CAD_DIRECT_EDIT_INTENT_SCHEMA,
         "ole_id": ole_id,
         "units": "mm",
-        "operation": "FACE_NORMAL_MOVE",
-        "parameters": {"distance_mm": float(distance_mm)},
+        "operation": operation,
+        "parameters": parameters,
         "target": descriptor,
         "authority": {
             "master_type": "CAD_NATIVE",
@@ -180,6 +185,35 @@ def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
         },
     }
 
+
+def _build_cad_direct_edit_intent(obj, distance_mm, descriptor):
+    return _cad_direct_intent_envelope(
+        obj,
+        "FACE_NORMAL_MOVE",
+        {"distance_mm": float(distance_mm)},
+        descriptor,
+    )
+
+
+def _build_cad_direct_tangent_intent(obj, u_mm, v_mm, descriptor, tangent_u, tangent_v):
+    translation = tangent_u * float(u_mm) + tangent_v * float(v_mm)
+    if translation.length <= 1e-9:
+        raise ValueError("CAD tangent move requires a non-zero translation")
+    normal = Vector(tuple(float(v) for v in descriptor["normal_local"])).normalized()
+    if abs(float(normal.dot(translation))) > 1e-7:
+        raise ValueError("CAD tangent translation contains a normal component")
+    return _cad_direct_intent_envelope(
+        obj,
+        "FACE_TANGENT_MOVE",
+        {
+            "u_mm": float(u_mm),
+            "v_mm": float(v_mm),
+            "tangent_u_local": _rounded_vector(tangent_u, 9),
+            "tangent_v_local": _rounded_vector(tangent_v, 9),
+            "translation_local_mm": _rounded_vector(translation, 6),
+        },
+        descriptor,
+    )
 
 def _selected_governed_edit_face(context):
     obj = context.active_object
@@ -353,13 +387,13 @@ class OLEANDER_OT_direct_face_normal_move(bpy.types.Operator):
 
 
 class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
-    """Move one Blender-native face within its own tangent plane in millimetres."""
+    """Move one governed face in its deterministic local tangent basis."""
 
     bl_idname = "oleander.direct_face_tangent_move"
     bl_label = "Face Tangent Move"
     bl_description = (
-        "Move one selected Blender-native face in a deterministic geometry-based U/V tangent basis; "
-        "CAD-native tangent execution remains fail-closed until absorbed into the shared sidecar"
+        "Move one selected face in a deterministic geometry-based U/V tangent basis; "
+        "CAD-native masters prepare a fail-closed sidecar intent without mutating the Blender display"
     )
     bl_options = {"REGISTER", "UNDO"}
 
@@ -388,15 +422,44 @@ class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
             self.report({"ERROR"}, str(exc))
             return {"CANCELLED"}
 
+        descriptor = _face_semantic_descriptor(context, face)
         master_type = obj.oleander.master_type if hasattr(obj, "oleander") else "BLENDER_NATIVE"
+
+        if master_type == "CAD_NATIVE":
+            try:
+                intent = _build_cad_direct_tangent_intent(
+                    obj,
+                    self.u_mm,
+                    self.v_mm,
+                    descriptor,
+                    tangent_u,
+                    tangent_v,
+                )
+            except ValueError as exc:
+                self.report({"ERROR"}, str(exc))
+                return {"CANCELLED"}
+            encoded = _canonical_json(intent)
+            obj["oleander_last_direct_operation"] = "CAD_DIRECT_EDIT_INTENT"
+            obj["oleander_direct_authority_route"] = "CAD_NATIVE"
+            obj["oleander_cad_direct_edit_intent"] = encoded
+            obj["oleander_cad_direct_edit_intent_sha256"] = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+            obj["oleander_cad_direct_edit_state"] = "PENDING_SIDECAR"
+            obj["oleander_direct_face_tangent_uv_mm"] = [float(self.u_mm), float(self.v_mm)]
+            obj["oleander_direct_face_tangent_u_local"] = _rounded_vector(tangent_u, 9)
+            obj["oleander_direct_face_tangent_v_local"] = _rounded_vector(tangent_v, 9)
+            self.report(
+                {"INFO"},
+                "CAD tangent intent prepared; authoritative CAD and Blender display geometry remain unchanged",
+            )
+            return {"FINISHED"}
+
         if master_type != "BLENDER_NATIVE":
             self.report(
                 {"ERROR"},
-                f"Face Tangent Move has no absorbed shared-runtime route for {master_type}; fail-closed",
+                f"Face Tangent Move has no bounded authority route for {master_type}",
             )
             return {"CANCELLED"}
 
-        descriptor = _face_semantic_descriptor(context, face)
         delta = (
             tangent_u * _mm_to_scene_units(context, self.u_mm)
             + tangent_v * _mm_to_scene_units(context, self.v_mm)
@@ -429,7 +492,6 @@ class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
             f"Face tangent move U={self.u_mm:+.3f} mm V={self.v_mm:+.3f} mm; downstream stale: {len(downstream)}",
         )
         return {"FINISHED"}
-
 
 class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
     """Create a governed linked or unlinked linear duplicate set."""
