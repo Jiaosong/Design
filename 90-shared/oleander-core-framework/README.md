@@ -31,6 +31,10 @@ v0.2 establishes the first executable chain:
 
 OLE Object -> Blender Binding -> Registry -> Validation -> Evidence
 
+Verification:
+
+- `tests/test_core_runtime.py` validates the first runtime chain.
+
 Flow:
 
 Intent -> Relation -> Object -> Geometry -> Validation -> Evidence

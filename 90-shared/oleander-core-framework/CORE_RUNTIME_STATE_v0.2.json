@@ -9,5 +9,5 @@
     "validation": "INITIALIZED",
     "evidence": "INITIALIZED"
   },
-  "next_phase": "v0.3 Blender Inspector + Relation Visualization"
+  "next_phase": "v0.3 Blender Inspector + Relation Visualization + Source Permission Layer"
 }
