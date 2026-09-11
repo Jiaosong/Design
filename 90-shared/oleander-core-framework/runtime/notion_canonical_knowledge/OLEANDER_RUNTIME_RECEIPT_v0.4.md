@@ -2,7 +2,7 @@
 
 Date: 2026-09-12
 
-Status: **RUNTIME HARDENING DEPLOYED / WEBHOOK FALLBACK READBACK PASS / FULL RECONCILE CRON READBACK PENDING / CORPUS NOT SYNCED**
+Status: **RUNTIME CONSUMPTION READBACK PASS / FULL RECONCILE DRAINING / AUTOMATIC CRON READBACK PENDING / CORPUS NOT SYNCED**
 
 ## 1. Authority Boundary
 
@@ -20,13 +20,14 @@ Status: **RUNTIME HARDENING DEPLOYED / WEBHOOK FALLBACK READBACK PASS / FULL REC
   - `b213bd73` — queue/rate-limit/readback hardening and fail-closed DLQ containment
   - `dd42eee0` — bulk reconcile moved to D1 durable scheduler + Cron
   - `ff643ed0` — Free-plan CPU boundary: one page per Cron invocation; reconcile seeding isolated from page processing
-- Latest PR checks at `ff643ed0`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
-- PR remains draft until scheduled production readback proves Cron consumption. Do not force-merge only because CI is green.
+  - `9d7dafe1` — bearer-protected `drain-once` operator trigger for the same durable state machine
+- Latest PR checks at `9d7dafe1`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
+- PR remains draft until automatic Cron continuation is read back. Do not force-merge only because CI and manual operator drain are green.
 
 ## 3. Production Deployment Receipt
 
 - D1 migration `0004_durable_sync_scheduler.sql`: APPLIED.
-- Worker version: `7543082e-77c8-445f-b3ba-ac0f2fbeba96`.
+- Worker version: `64ebe2ee-7dd8-417b-9197-04c687b2051e`.
 - Trigger: `* * * * *` deployed.
 - Production secret names read back present without exposing values:
   - `NOTION_TOKEN`
@@ -76,22 +77,28 @@ After deploying the D1 fallback, new real Notion edits were received while Queue
 - `b6a3644c-93ba-41d8-9908-b401841c81f8` — `page.content_updated`
 - `908830d1-da32-48bb-a9a3-e7600267d604` — `page.properties_updated`
 
-Two earlier `QUEUE_ERROR` events that had already been manually persisted as D1 fallback tasks were normalized to the same fallback state. This proves the **incremental failover write path** in production.
+Two earlier `QUEUE_ERROR` events that had already been manually persisted as D1 fallback tasks were normalized to the same fallback state.
+
+Production `drain-once` readback then processed all seven persisted fallback events through the same D1 scheduler. Their durable task state is now `PROCESSED`, and the corresponding webhook lifecycle closes to `PROCESSED`. This proves both the **incremental failover write path** and the **durable recovery consumption path** in production.
 
 ## 7. Scheduled Reconcile State
 
-- One-time operator request is persisted as `scheduled_reconcile_request=REQUESTED`.
-- The request intentionally contains no secret.
-- Cloudflare documents that new/changed Cron Triggers can take several minutes, up to 15 minutes, to propagate globally.
-- Until production Cron claims the request and creates a durable full-run task set, status remains **CRON READBACK PENDING**.
+- The full reconcile was started through the production bearer-protected `/v1/reconcile` path rather than waiting for Cron propagation to seed the worklist.
+- Run id: `9b40de03-96d5-40b1-be84-0f137e7d248e`.
+- Pages scheduled durably in D1: `1,184`.
+- The obsolete one-time `scheduled_reconcile_request` was deleted after the direct production seed to prevent a duplicate 1,184-page run when Cron propagation completes.
+- The protected `/v1/drain-once` operator trigger executes exactly the same one-page D1 drain function as `scheduled()`. Production readback has processed one full-reconcile task to `PROCESSED`; the run therefore moved from `SCHEDULED` to `DRAINING`.
 - A remote preview `scheduled()` smoke test reached the scheduler code path but lacked the production Notion secret in the preview environment. That run was relabeled `REMOTE_PREVIEW_SCHEDULER_TEST` and must not be interpreted as a production credential failure.
+- Automatic Cron continuation remains a separate readback gate: after propagation it must consume at least one additional task without an operator trigger.
 
 ## 8. Corpus Boundary
 
-Last verified corpus snapshot before the durable scheduler starts draining:
+Current verified corpus snapshot after production durable draining began:
 
-- Notes enumerated by prior full reconcile: `1,184`
-- D1 indexed documents: `194`
+- Notes scheduled by current full reconcile: `1,184`
+- Durable task state: `8 PROCESSED / 1,183 PENDING` across webhook fallback + full reconcile tasks.
+- Current full reconcile task proof: first run-owned page is `PROCESSED` with `attempts=1` and no error.
+- D1 indexed documents: `197` (up from the pre-hardening snapshot of `194`).
 - Corpus status: **PARTIAL**
 
 Do not report `NOTION SYNCED`, `1184/1184`, or equivalent until the new full run reaches a closed task readback with no unresolved `PENDING / PROCESSING / RETRY / BLOCKED` items.
@@ -100,10 +107,11 @@ Do not report `NOTION SYNCED`, `1184/1184`, or equivalent until the new full run
 
 Runtime implementation may be promoted only after:
 
-1. production Cron claims `scheduled_reconcile_request`;
-2. `scheduled_reconcile_last_run` is written;
-3. at least one production scheduled task transitions to `PROCESSED`;
-4. PR #521 remains CI-green after the latest commit;
-5. Notion lifecycle page and GitHub runtime receipt agree on the same state.
+1. production durable worklist is created without Queue dependency — **PASS**;
+2. real webhook fallback tasks transition to `PROCESSED` — **PASS**;
+3. at least one current full-reconcile task transitions to `PROCESSED` — **PASS**;
+4. automatic Cron consumes at least one additional due task without operator trigger — **PENDING**;
+5. PR #521 remains CI-green after the latest receipt update — **PENDING RECHECK**;
+6. Notion lifecycle page and GitHub runtime receipt agree on the same state — **Notion page was updated through the deployed scheduler milestone; final automatic-Cron state must still be reflected after gate 4**.
 
 Corpus promotion is a separate later gate and requires full reconcile closure.
