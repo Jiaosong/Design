@@ -9,6 +9,7 @@ import {
   markWebhookQueued,
   markWebhookQueueError,
   putRuntimeState,
+  recordSyncMessageReceipt,
   recordWebhookReceived,
 } from "./manifest";
 import { listNotesPages } from "./notion";
@@ -137,6 +138,26 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
 
+  if (request.method === "GET" && url.pathname === "/v1/queue-metrics") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const [ingest, dlq] = await Promise.all([env.INGEST_QUEUE.metrics(), env.INGEST_DLQ.metrics()]);
+    return json({
+      ok: true,
+      ingest: {
+        queue: "oleander-notion-ingest",
+        backlog_count: ingest.backlogCount,
+        backlog_bytes: ingest.backlogBytes,
+        oldest_message_timestamp: ingest.oldestMessageTimestamp?.toISOString() ?? null,
+      },
+      dlq: {
+        queue: "oleander-notion-ingest-dlq",
+        backlog_count: dlq.backlogCount,
+        backlog_bytes: dlq.backlogBytes,
+        oldest_message_timestamp: dlq.oldestMessageTimestamp?.toISOString() ?? null,
+      },
+    });
+  }
+
   if (url.pathname === "/v1/webhook-setup-token") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     if (request.method === "GET") {
@@ -192,9 +213,26 @@ export default {
           continue;
         }
         await syncPage(env, message.body);
+        if (message.body.cause_id.startsWith("reconcile:")) {
+          await recordSyncMessageReceipt(env.MANIFEST, {
+            causeId: message.body.cause_id,
+            pageId: message.body.page_id,
+            status: "PROCESSED",
+            attempts: message.attempts,
+          });
+        }
         if (message.body.cause_type === "webhook") await markWebhookProcessed(env.MANIFEST, message.body.cause_id);
         message.ack();
       } catch (error) {
+        if (message.body.cause_id.startsWith("reconcile:")) {
+          await recordSyncMessageReceipt(env.MANIFEST, {
+            causeId: message.body.cause_id,
+            pageId: message.body.page_id,
+            status: "RETRY",
+            attempts: message.attempts,
+            error: error instanceof Error ? error.message : String(error),
+          });
+        }
         console.error("knowledge_ingest_failed", {
           queue_message_id: message.id,
           cause_id: message.body.cause_id,

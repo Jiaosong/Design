@@ -26,3 +26,9 @@ export const VECTOR_NAMESPACES = ["CURRENT", "SUPPORT", "PROVENANCE"] as const;
 export const CHUNK_MAX_ESTIMATED_TOKENS = 320;
 export const CHUNK_OVERLAP_ESTIMATED_TOKENS = 40;
 export const MAX_UNKNOWN_BLOCK_FETCHES = 100;
+
+// Notion documents an average limit of ~3 requests/second per connection.
+// With Queue max_concurrency=1, 400ms between outbound Notion requests keeps
+// the canonical ingest path below that average while still allowing progress.
+export const NOTION_MIN_REQUEST_INTERVAL_MS = 400;
+export const NOTION_MAX_FETCH_ATTEMPTS = 5;

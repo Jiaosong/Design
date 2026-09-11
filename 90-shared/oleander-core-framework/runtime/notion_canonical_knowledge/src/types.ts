@@ -7,6 +7,7 @@ export interface Env {
   AI: Ai;
   KNOWLEDGE_INDEX: VectorizeIndex;
   INGEST_QUEUE: Queue<IngestMessage>;
+  INGEST_DLQ: Queue<IngestMessage>;
   NOTION_TOKEN: string;
   NOTION_WEBHOOK_VERIFICATION_TOKEN: string;
   OLEANDER_API_TOKEN: string;

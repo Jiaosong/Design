@@ -1,6 +1,6 @@
 # OLEANDER Notion Canonical Knowledge Runtime v0.1
 
-Status: **REMOTE INFRASTRUCTURE PROVISIONED / NOTION INGESTION HOLD / NOT PROMOTED**
+Status: **REMOTE INFRASTRUCTURE PROVISIONED / NOTION BOUND / FULL RECONCILE READBACK PENDING / NOT PROMOTED**
 
 Upstream authority: **Notion Current Root Authority + live registries**
 
@@ -110,6 +110,7 @@ Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new
 - deleted/trash: deactivate prior vectors.
 - queue failure: webhook event remains `QUEUE_ERROR`; Notion retry can re-enqueue it.
 - embedding or Notion transient failure: individual queue message retries with bounded exponential delay; Cloudflare consumer DLQ is configured after max retries.
+- DLQ containment is fail-closed: dead-lettered messages are not automatically replayed into the ingest queue, preventing an unbounded poison-message loop. Re-drive requires an explicit bounded repair action and a new readback receipt.
 - stale Vectorize result: rejected when D1 does not confirm the vector and document as active and in the same authority namespace.
 
 ## Does not prove

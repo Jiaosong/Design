@@ -28,7 +28,7 @@ The provisioning script is **dry-run by default**. It only creates Cloudflare re
 
 ## Cloudflare provisioning
 
-Current remote state (2026-09-11): Cloudflare D1, Queue + DLQ, Vectorize and Worker are provisioned and deployed. The runtime remains **NOTION INGESTION HOLD** until a Notion API token and verified connection webhook subscription are bound. See `OLEANDER_RUNTIME_RECEIPT_v0.2.md` and `CLOUDFLARE_REMOTE_BINDING_v0.1.json`.
+Current remote state (2026-09-12): Cloudflare D1, Queue + DLQ, Vectorize and Worker are provisioned. The Notion internal connection and webhook verification are bound, and the runtime is in **FULL RECONCILE / READBACK PENDING** rather than ingestion hold. A partial full-run snapshot reached 194 indexed documents out of 1,184 enumerated Notes objects; this is not a full-sync claim. See `OLEANDER_RUNTIME_RECEIPT_v0.3.md` plus the subsequent queue/readback receipt before promotion.
 
 Current Worker URL:
 
@@ -104,5 +104,7 @@ node scripts/run-reconcile.mjs full
 ```
 
 `limit` is clamped to `1..1000`. Omitting both `page_id` and `limit` preserves the full Notes reconcile behavior.
+
+Queue safety defaults are deliberately conservative: one-message consumer batches, concurrency `1`, bounded retries, and a dead-letter queue. The DLQ is **containment**, not an automatic replay loop; failed messages must remain inspectable until a bounded repair/re-drive action is explicitly authorized.
 
 See `ARCHITECTURE.md` for authority and failure semantics.

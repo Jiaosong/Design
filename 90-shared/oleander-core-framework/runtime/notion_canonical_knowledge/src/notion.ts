@@ -1,4 +1,4 @@
-import { MAX_UNKNOWN_BLOCK_FETCHES } from "./config";
+import { MAX_UNKNOWN_BLOCK_FETCHES, NOTION_MAX_FETCH_ATTEMPTS, NOTION_MIN_REQUEST_INTERVAL_MS } from "./config";
 import type { Env, NotionPage, PageMarkdown } from "./types";
 
 export class NotionHttpError extends Error {
@@ -19,12 +19,28 @@ function headers(env: Env): HeadersInit {
 }
 
 async function notionFetch<T>(env: Env, path: string, init: RequestInit = {}): Promise<T> {
-  const response = await fetch(`https://api.notion.com${path}`, {
-    ...init,
-    headers: { ...headers(env), ...(init.headers ?? {}) },
-  });
-  if (!response.ok) throw new NotionHttpError(response.status, await response.text());
-  return (await response.json()) as T;
+  for (let attempt = 0; attempt < NOTION_MAX_FETCH_ATTEMPTS; attempt += 1) {
+    await new Promise((resolve) => setTimeout(resolve, NOTION_MIN_REQUEST_INTERVAL_MS));
+    const response = await fetch(`https://api.notion.com${path}`, {
+      ...init,
+      headers: { ...headers(env), ...(init.headers ?? {}) },
+    });
+    if (response.ok) return (await response.json()) as T;
+
+    const body = await response.text();
+    const retryable = response.status === 429 || [500, 502, 503, 504].includes(response.status);
+    if (!retryable || attempt === NOTION_MAX_FETCH_ATTEMPTS - 1) {
+      throw new NotionHttpError(response.status, body);
+    }
+
+    const retryAfter = Number.parseInt(response.headers.get("Retry-After") ?? "", 10);
+    const delayMs = response.status === 429 && Number.isFinite(retryAfter) && retryAfter > 0
+      ? retryAfter * 1000
+      : Math.min(8_000, 500 * 2 ** attempt);
+    await new Promise((resolve) => setTimeout(resolve, delayMs));
+  }
+
+  throw new Error("Notion fetch retry loop exhausted unexpectedly");
 }
 
 export async function fetchPage(env: Env, pageId: string): Promise<NotionPage> {

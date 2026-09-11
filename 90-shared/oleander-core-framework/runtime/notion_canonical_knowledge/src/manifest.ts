@@ -243,6 +243,43 @@ export async function failSyncRun(db: D1Database, runId: string, count: number, 
     .run();
 }
 
+export async function recordSyncMessageReceipt(
+  db: D1Database,
+  input: {
+    causeId: string;
+    pageId: string;
+    status: "PROCESSED" | "RETRY";
+    attempts: number;
+    error?: string | null;
+  },
+): Promise<void> {
+  const match = /^reconcile:([^:]+):/.exec(input.causeId);
+  const runId = match?.[1] ?? null;
+  await db
+    .prepare(
+      `INSERT INTO sync_message_receipts
+       (cause_id, run_id, page_id, status, attempts, error, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(cause_id) DO UPDATE SET
+         run_id=excluded.run_id,
+         page_id=excluded.page_id,
+         status=excluded.status,
+         attempts=excluded.attempts,
+         error=excluded.error,
+         updated_at=excluded.updated_at`,
+    )
+    .bind(
+      input.causeId,
+      runId,
+      input.pageId,
+      input.status,
+      input.attempts,
+      input.error ? input.error.slice(0, 2000) : null,
+      now(),
+    )
+    .run();
+}
+
 export async function putRuntimeState(db: D1Database, key: string, value: string): Promise<void> {
   await db
     .prepare(
