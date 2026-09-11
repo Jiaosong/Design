@@ -2,7 +2,7 @@
 
 Date: 2026-09-12
 
-Status: **RUNTIME PROMOTION READY / FULL RECONCILE DRAINING / AUTOMATIC CRON OBSERVATION PENDING / CORPUS NOT SYNCED**
+Status: **RUNTIME MERGED TO MAIN / FULL RECONCILE DRAINING / AUTOMATIC CRON OBSERVATION PENDING / CORPUS NOT SYNCED**
 
 ## 1. Authority Boundary
 
@@ -16,12 +16,15 @@ Status: **RUNTIME PROMOTION READY / FULL RECONCILE DRAINING / AUTOMATIC CRON OBS
 
 - Branch: `agent/oleander-notion-canonical-knowledge-v01-20260911`
 - PR: `#521` (`feat(knowledge): Notion canonical retrieval runtime v0.1`)
+- Final PR head: `3406d3e76b4f435a495e9dc34f4979b8625554f3`.
+- PR #521 merged to `main` at `2026-09-11T19:06:22Z`.
+- Merge commit: `ec6bd93aceacb1303aa2729f22c9fe964463f702`.
 - Hardening commits:
   - `b213bd73` — queue/rate-limit/readback hardening and fail-closed DLQ containment
   - `dd42eee0` — bulk reconcile moved to D1 durable scheduler + Cron
   - `ff643ed0` — Free-plan CPU boundary: one page per Cron invocation; reconcile seeding isolated from page processing
   - `9d7dafe1` — bearer-protected `drain-once` operator trigger for the same durable state machine
-- Latest PR checks at `9d7dafe1`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
+- Final PR checks at `3406d3e7`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
 - The production scheduler implementation is promotion-ready: the Worker exposes `scheduled`, the `* * * * *` trigger is deployed, and the exact shared `drainScheduledSync()` path has passed production consumption readback through the protected operator trigger. Automatic Cron occurrence remains a post-deploy observation because Cloudflare documents a propagation window for trigger changes; it is not treated as evidence of code failure during that window.
 
 ## 3. Production Deployment Receipt
@@ -111,7 +114,7 @@ Runtime implementation may be promoted only after:
 2. real webhook fallback tasks transition to `PROCESSED` — **PASS**;
 3. at least one current full-reconcile task transitions to `PROCESSED` — **PASS**;
 4. Worker deployment exposes `scheduled` and the `* * * * *` trigger is deployed — **PASS**;
-5. PR #521 remains CI-green after the latest receipt update — **PENDING RECHECK**;
+5. PR #521 remains CI-green through final head `3406d3e7` and is merged to `main` as `ec6bd93a` — **PASS**;
 6. automatic Cron occurrence — **POST-DEPLOY OBSERVATION, NOT RUNTIME PROMOTION BLOCKER DURING THE DOCUMENTED PROPAGATION WINDOW**.
 
 The Notion lifecycle page was updated through the durable-scheduler deployment milestone. GitHub receipt v0.4 is the current runtime/deployment readback authority for the subsequent operator-drain proof and merge decision; this does not change Notion's role as canonical knowledge-content authority.
