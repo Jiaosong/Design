@@ -9,11 +9,11 @@ fs.rmSync(outDir,{recursive:true,force:true});
 fs.mkdirSync(outDir,{recursive:true});
 
 const baseUrl=process.env.C04_BROWSER_URL||'http://127.0.0.1:4173/index.html';
-const expectedSections=['hero','assets','journey','brief','context','audience','idea','thinking','systems','development','final'];
+const expectedSections=['hero','assets','journey','brief','context','audience','idea','thinking','systems','development','r13','final'];
 const cases=[
   {name:'desktop-1920x1080',viewport:{width:1920,height:1080},anchors:expectedSections},
-  {name:'desktop-1366x768',viewport:{width:1366,height:768},anchors:['hero','journey','context','thinking','systems','development','final']},
-  {name:'mobile-390x844',viewport:{width:390,height:844},anchors:['hero','assets','journey','audience','systems','final']}
+  {name:'desktop-1366x768',viewport:{width:1366,height:768},anchors:['hero','journey','context','thinking','systems','development','r13','final']},
+  {name:'mobile-390x844',viewport:{width:390,height:844},anchors:['hero','assets','journey','audience','systems','development','r13','final']}
 ];
 
 const report={
@@ -70,7 +70,12 @@ try{
         heroLocalBound:document.querySelector('#heroImage')?.classList.contains('loaded')||false,
         stateText:document.querySelector('#context')?.textContent||'',
         optionalReadingText:document.querySelector('#idea')?.textContent||'',
-        fullScopeDetails:!!document.querySelector('details.professional')
+        fullScopeDetails:!!document.querySelector('details.professional'),
+        r13Present:!!document.querySelector('#r13 .r13-figure img'),
+        r13LocationText:document.querySelector('#r13 .r13-location')?.textContent||'',
+        physicalCarrier:document.querySelector('.physical-transfer img')?.getAttribute('src')||'',
+        stateScope:document.querySelector('.state-sim')?.dataset.scope||'',
+        stateBoundary:document.querySelector('.state-boundary')?.textContent||''
       }));
       const overflow=Math.max(metrics.documentWidth,metrics.bodyWidth)-metrics.viewportWidth;
       if(overflow>2)fail('Horizontal overflow exceeds 2px',{case:item.name,overflow});
@@ -80,6 +85,9 @@ try{
       if(!metrics.heroLocalBound)fail('Local Qingjiang hero binding did not complete',{case:item.name});
       if(!['UNKNOWN','FULL / LIGHT / OFF'].every(x=>metrics.stateText.includes(x)))fail('State/fallback truth content missing',{case:item.name});
       if(!metrics.optionalReadingText.includes('十三印可以不读完'))fail('Optional-reading boundary missing',{case:item.name});
+      if(!metrics.r13Present||!['当前位置','R13','收束通过'].every(x=>metrics.r13LocationText.includes(x)))fail('R13 current-location relation missing',{case:item.name,r13LocationText:metrics.r13LocationText});
+      if(metrics.physicalCarrier!=='assets/physical_body_support_hold.svg')fail('P01-B finished carrier is not bound in Development',{case:item.name,physicalCarrier:metrics.physicalCarrier});
+      if(metrics.stateScope!=='explanatory-simulation'||!metrics.stateBoundary.includes('不表示实时运营状态'))fail('Operational state boundary is not explicitly explanatory',{case:item.name,stateScope:metrics.stateScope,stateBoundary:metrics.stateBoundary});
 
       const dir=path.join(outDir,item.name);
       fs.mkdirSync(dir,{recursive:true});
@@ -126,6 +134,15 @@ try{
         if(activeHref!=='#systems')fail('Current navigation state did not follow systems section',{case:item.name,activeHref});
       }
 
+      await page.locator('#r13').scrollIntoViewIfNeeded();
+      await page.waitForTimeout(180);
+      const r13Nav=mobile
+        ? await page.locator('#mobileNav a[href="#development"]').evaluate(el=>({active:el.classList.contains('active'),current:el.getAttribute('aria-current')}))
+        : await page.locator('.layer-nav a[href="#development"]').evaluate(el=>({active:el.classList.contains('active'),current:el.getAttribute('aria-current'),cue:getComputedStyle(el,'::after').content}));
+      if(!r13Nav.active||r13Nav.current!=='location')fail('R13 is not connected to current navigation location',{case:item.name,r13Nav});
+      if(!mobile&&!String(r13Nav.cue).includes('当前'))fail('R13 navigation lacks a non-color current-location cue',{case:item.name,r13Nav});
+      caseResult.r13_navigation=r13Nav;
+
       await page.locator('#hero').scrollIntoViewIfNeeded();
       const y0=await page.evaluate(()=>scrollY);
       if(mobile)await page.evaluate(()=>scrollBy(0,Math.min(innerHeight*.72,620)));
@@ -170,7 +187,8 @@ try{
 }
 
 report.design_review_open_items=[
-  'R13 scene specificity and Brand/Memory independent MAIN-surface depth remain Design Crit questions; browser PASS does not resolve them.'
+  'Brand/Memory independent MAIN-surface depth remains a Design Crit question; browser PASS does not resolve it.',
+  'P01-B remains a candidate/development carrier; browser coverage does not grant engineering or project FINAL_KEEP.'
 ];
 report.status=report.failures.length?'FAIL':'PASS';
 fs.writeFileSync(path.join(outDir,'report.json'),JSON.stringify(report,null,2)+'\n');

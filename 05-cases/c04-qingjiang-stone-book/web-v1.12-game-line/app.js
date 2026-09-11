@@ -70,8 +70,9 @@
   if(systems&&!$(".state-sim",systems)){
     const host=document.createElement("div");
     host.className="state-sim";
-    host.setAttribute("aria-label","路线状态与回程反馈");
-    host.innerHTML=`<p class="micro">STATE FEEDBACK / ROUTE FIRST</p><div class="state-buttons" role="group" aria-label="路线状态"><button type="button" class="active" data-state="normal">NORMAL</button><button type="button" data-state="degraded">DEGRADED</button><button type="button" data-state="closed">CLOSED</button><button type="button" data-state="unknown">UNKNOWN</button></div><div class="state-result" aria-live="polite"><b>路线、状态与可选深读都可用。</b><span>路线保持第一层；十三印与数字内容按兴趣打开，不改变回程权威。</span></div>`;
+    host.dataset.scope="explanatory-simulation";
+    host.setAttribute("aria-label","路线状态与回程反馈的解释性模拟");
+    host.innerHTML=`<p class="micro">STATE FEEDBACK / ROUTE FIRST</p><div class="state-buttons" role="group" aria-label="路线状态解释性模拟"><button type="button" class="active" data-state="normal">NORMAL</button><button type="button" data-state="degraded">DEGRADED</button><button type="button" data-state="closed">CLOSED</button><button type="button" data-state="unknown">UNKNOWN</button></div><div class="state-result" aria-live="polite"><b>路线、状态与可选深读都可用。</b><span>路线保持第一层；十三印与数字内容按兴趣打开，不改变回程权威。</span></div><p class="state-boundary"><b>EXPLANATORY SIMULATION</b><span>用于比较设计后果，不表示实时运营状态；真实开放、关闭与 UNKNOWN 必须由现场运营/人工确认。</span></p>`;
     $(".asset-split",systems)?.insertAdjacentElement("afterend",host);
     const buttons=$$(".state-buttons button",host);
     const result=$(".state-result",host);
@@ -104,7 +105,7 @@
     let active=sections[0]?.id||"hero";
     const y=window.scrollY+innerHeight*.32;
     for(const s of sections){if(s.offsetTop<=y)active=s.id;}
-    const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems"],development:["development"],final:["final"]};
+    const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems"],development:["development","r13"],final:["final"]};
     $$(".layer-nav a").forEach(a=>{
       const target=a.getAttribute("href").slice(1);
       const current=(groups[target]||[]).includes(active);

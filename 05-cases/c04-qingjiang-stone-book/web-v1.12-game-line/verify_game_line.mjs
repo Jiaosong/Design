@@ -8,14 +8,17 @@ const html=read("index.html");
 const css=read("styles.css");
 const js=read("app.js");
 
-const currentAnchors=["hero","assets","journey","brief","context","audience","idea","thinking","systems","development","final"];
-const sections=[...html.matchAll(/data-section="(\d{2})"/g)].map(m=>Number(m[1]));
-const contiguous=sections.length===currentAnchors.length&&sections.every((n,i)=>n===i+1);
+const currentAnchors=["hero","assets","journey","brief","context","audience","idea","thinking","systems","development","r13","final"];
+const expectedSectionLabels=["01","02","03","04","05","06","07","08","09","10","10B","11"];
+const sections=[...html.matchAll(/data-section="([^"]+)"/g)].map(m=>m[1]);
+const contiguous=JSON.stringify(sections)===JSON.stringify(expectedSectionLabels);
 const anchorsPresent=currentAnchors.every(id=>html.includes(`id="${id}"`));
 
 const requiredAssets=[
   "assets/body_need_scenarios_current.svg",
   "assets/route03_locked_current.svg",
+  "assets/physical_body_support_hold.svg",
+  "assets/r13_passage_sequence_current.svg",
   "assets/return_service_closure_current.svg",
   "assets/qj_hero_keep_v11_b64_01.txt",
   "assets/qj_hero_keep_v11_b64_02a.txt"
@@ -24,8 +27,11 @@ const missing=requiredAssets.filter(r=>!fs.existsSync(path.join(root,r))||fs.sta
 const directBindings=[
   "assets/body_need_scenarios_current.svg",
   "assets/route03_locked_current.svg",
+  "assets/r13_passage_sequence_current.svg",
   "assets/return_service_closure_current.svg"
 ].every(r=>html.includes(r));
+const physicalCarrierBound=js.includes('assets/physical_body_support_hold.svg')
+  &&fs.existsSync(path.join(root,"assets/physical_body_support_hold.svg"));
 const localHeroBinding=[
   "qj_hero_keep_v11_b64_01.txt",
   "qj_hero_keep_v11_b64_02a.txt"
@@ -44,7 +50,11 @@ const progressiveDisclosure=html.includes('<details class="professional">')
 const currentNavigation=[
   'href="#journey"','href="#context"','href="#thinking"','href="#systems"','href="#development"','href="#final"'
 ].every(x=>html.includes(x))
-  &&['systems:["systems"]','development:["development"]'].every(x=>js.includes(x));
+  &&['systems:["systems"]','development:["development","r13"]'].every(x=>js.includes(x))
+  &&html.includes('id="r13" data-section="10B" data-nav-parent="development"')
+  &&css.includes('content:" · 当前"');
+const stateSimulationBound=js.includes('host.dataset.scope="explanatory-simulation"')
+  &&js.includes('不表示实时运营状态');
 const interactiveReading=[".mode-card",".audience-tab","syncPage"].every(x=>js.includes(x));
 const staleLegacyRuntimeSelectors=["imprint-wheel","supplementTrigger","stateResult","r06Image"].filter(x=>js.includes(x));
 const responsiveCss=/@media\s*\(max-width:/i.test(css);
@@ -72,6 +82,8 @@ const result={
   required_asset_count:requiredAssets.length,
   missing_or_empty_assets:missing,
   current_direct_assets_bound:directBindings,
+  p01_b_physical_carrier_bound:physicalCarrierBound,
+  operational_state_scope_explicitly_explanatory:stateSimulationBound,
   interactive_current_reading_present:interactiveReading,
   stale_legacy_runtime_selectors:staleLegacyRuntimeSelectors,
   responsive_css:responsiveCss,
@@ -93,6 +105,8 @@ result.pass=
   &&!result.external_raster_image_dependency_present
   &&result.missing_or_empty_assets.length===0
   &&result.current_direct_assets_bound
+  &&result.p01_b_physical_carrier_bound
+  &&result.operational_state_scope_explicitly_explanatory
   &&result.interactive_current_reading_present
   &&result.stale_legacy_runtime_selectors.length===0
   &&result.responsive_css
