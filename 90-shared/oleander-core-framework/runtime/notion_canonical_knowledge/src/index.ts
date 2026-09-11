@@ -400,7 +400,32 @@ export default {
     }
   },
 
-  async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(drainScheduledSync(env));
+  async scheduled(controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
+    const startedAt = new Date().toISOString();
+    await putRuntimeState(
+      env.MANIFEST,
+      "scheduled_cron_last_seen",
+      JSON.stringify({
+        started_at: startedAt,
+        scheduled_time: new Date(controller.scheduledTime).toISOString(),
+        cron: controller.cron,
+      }),
+    );
+    try {
+      await drainScheduledSync(env);
+      await putRuntimeState(
+        env.MANIFEST,
+        "scheduled_cron_last_result",
+        JSON.stringify({ ok: true, started_at: startedAt, completed_at: new Date().toISOString() }),
+      );
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      await putRuntimeState(
+        env.MANIFEST,
+        "scheduled_cron_last_result",
+        JSON.stringify({ ok: false, started_at: startedAt, failed_at: new Date().toISOString(), error: message.slice(0, 1000) }),
+      );
+      throw error;
+    }
   },
 } satisfies ExportedHandler<Env, IngestMessage>;
