@@ -389,6 +389,13 @@ export async function syncRunReadback(db: D1Database, runId: string): Promise<Re
   };
 }
 
+export async function schedulerTaskCounts(db: D1Database): Promise<Record<string, number>> {
+  const counts = await db
+    .prepare("SELECT status, COUNT(*) AS count FROM sync_message_receipts GROUP BY status")
+    .all<{ status: string; count: number }>();
+  return Object.fromEntries(counts.results.map((row) => [row.status, row.count]));
+}
+
 export async function refreshSyncRunStatus(db: D1Database, runId: string): Promise<void> {
   const counts = await db
     .prepare("SELECT status, COUNT(*) AS count FROM sync_message_receipts WHERE run_id=? GROUP BY status")

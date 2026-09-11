@@ -111,6 +111,10 @@ Bulk reconcile no longer spends Queue operations. `POST /v1/reconcile` persists 
 
 For explicit operator verification/recovery, `POST /v1/drain-once` is bearer-protected and executes exactly the same bounded D1 drain path as the Cron handler. The repository helper `node scripts/run-drain-once.mjs` reads the token only from gitignored `.dev.vars` and does not print it. This endpoint is not a parallel scheduler; it is a manual trigger for the same durable task state machine.
 
+`GET /v1/scheduler-status` is bearer-protected and reports the Cron heartbeat, last scheduled result, durable task counts, and whether a secondary scheduler should activate. A missing or older-than-three-minutes Cron heartbeat is considered stale only while open durable tasks still exist.
+
+`.github/workflows/oleander-notion-scheduler-fallback.yml` is the cross-provider fallback scheduler. It is gated by the repository variable `OLEANDER_NOTION_FALLBACK_ENABLED=true` and requires the `OLEANDER_API_TOKEN` repository secret before activation; with the gate absent or false, scheduled runs do not start a runner. Once activated, it checks scheduler health every five minutes and remains idle while Cloudflare Cron is healthy. When the primary heartbeat is stale, it performs five serialized one-page drains with spacing so recovery stays close to the intended one-page-per-minute cadence. D1 task claiming remains the single concurrency authority.
+
 For operator recovery when the bearer token must not be read into a shell, a single D1 runtime-state request may be set to `scheduled_reconcile_request=REQUESTED` (full) or `REQUESTED:<1..1000>` (bounded). The Cron handler claims it once, creates a normal `sync_runs` record, persists the tasks, writes `scheduled_reconcile_last_run`, and deletes the request. This is an emergency control-plane trigger only; it does not create a second knowledge authority.
 
 See `ARCHITECTURE.md` for authority and failure semantics.

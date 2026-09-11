@@ -1,0 +1,56 @@
+name: OLEANDER Notion Scheduler Fallback
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oleander-notion-scheduler-fallback
+  cancel-in-progress: false
+
+jobs:
+  drain-if-cron-stale:
+    if: ${{ vars.OLEANDER_NOTION_FALLBACK_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check scheduler health and drain only when required
+        shell: bash
+        env:
+          OLEANDER_API_TOKEN: ${{ secrets.OLEANDER_API_TOKEN }}
+          WORKER_BASE_URL: https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev
+        run: |
+          set -euo pipefail
+          if [[ -z "${OLEANDER_API_TOKEN:-}" ]]; then
+            echo "OLEANDER_API_TOKEN repository secret is missing; fallback remains in standby."
+            exit 0
+          fi
+
+          status_json="$(curl --silent --show-error --fail \
+            -H "Authorization: Bearer ${OLEANDER_API_TOKEN}" \
+            "${WORKER_BASE_URL}/v1/scheduler-status")"
+
+          fallback_required="$(python3 -c 'import json,sys; print(str(bool(json.load(sys.stdin).get("fallback_required"))).lower())' <<<"${status_json}")"
+          open_tasks="$(python3 -c 'import json,sys; print(int(json.load(sys.stdin).get("open_tasks", 0)))' <<<"${status_json}")"
+          echo "fallback_required=${fallback_required}; open_tasks=${open_tasks}"
+
+          if [[ "${fallback_required}" != "true" ]]; then
+            echo "Primary Cloudflare Cron is healthy or there is no durable work to drain."
+            exit 0
+          fi
+
+          for i in 1 2 3 4 5; do
+            echo "Fallback drain ${i}/5"
+            curl --silent --show-error --fail \
+              -X POST \
+              -H "Authorization: Bearer ${OLEANDER_API_TOKEN}" \
+              "${WORKER_BASE_URL}/v1/drain-once"
+            echo
+            if [[ "${i}" -lt 5 ]]; then
+              sleep 55
+            fi
+          done
