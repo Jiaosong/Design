@@ -1,16 +1,28 @@
+import {
+  SCHEDULED_SYNC_BATCH_SIZE,
+  SCHEDULED_SYNC_MAX_ATTEMPTS,
+  SCHEDULED_SYNC_STALE_PROCESSING_MS,
+} from "./config";
 import { sha256Hex } from "./hash";
 import {
   beginSyncRun,
+  claimDueSyncTasks,
   completeSyncRun,
   deleteRuntimeState,
   failSyncRun,
   getRuntimeState,
+  markWebhookFallbackFailure,
+  markWebhookFallbackScheduled,
   markWebhookProcessed,
   markWebhookQueued,
   markWebhookQueueError,
   putRuntimeState,
   recordSyncMessageReceipt,
   recordWebhookReceived,
+  refreshSyncRunStatus,
+  requeueStaleSyncTasks,
+  stageSyncMessages,
+  syncRunReadback,
 } from "./manifest";
 import { listNotesPages } from "./notion";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
@@ -87,8 +99,19 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
     await markWebhookQueued(env.MANIFEST, eventId);
     return json({ ok: true, queued: true, event_id: eventId }, 202);
   } catch (error) {
-    await markWebhookQueueError(env.MANIFEST, eventId, error instanceof Error ? error.message : String(error));
-    return errorJson(error, 503);
+    const queueError = error instanceof Error ? error.message : String(error);
+    try {
+      await stageSyncMessages(env.MANIFEST, [message]);
+      await markWebhookFallbackScheduled(env.MANIFEST, eventId, queueError);
+      return json({ ok: true, queued: false, fallback_scheduled: true, event_id: eventId }, 202);
+    } catch (fallbackError) {
+      await markWebhookQueueError(
+        env.MANIFEST,
+        eventId,
+        `queue=${queueError}; fallback=${fallbackError instanceof Error ? fallbackError.message : String(fallbackError)}`,
+      );
+      return errorJson(fallbackError, 503);
+    }
   }
 }
 
@@ -103,7 +126,9 @@ async function handleReconcile(request: Request, env: Env): Promise<Response> {
   try {
     if (body.page_id) {
       const cause = `reconcile:${runId}:${body.page_id}`;
-      await env.INGEST_QUEUE.send({ kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "manual" });
+      await stageSyncMessages(env.MANIFEST, [
+        { kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "manual" },
+      ]);
       count = 1;
     } else {
       const messages: IngestMessage[] = [];
@@ -111,18 +136,18 @@ async function handleReconcile(request: Request, env: Env): Promise<Response> {
         messages.push({ kind: "notion-page-sync", page_id: pageId, cause_id: `reconcile:${runId}:${pageId}`, cause_type: "reconcile" });
         if (limit && count + messages.length >= limit) break;
         if (messages.length >= 100) {
-          await env.INGEST_QUEUE.sendBatch(messages.map((body) => ({ body, contentType: "json" as const })));
+          await stageSyncMessages(env.MANIFEST, messages);
           count += messages.length;
           messages.length = 0;
         }
       }
       if (messages.length) {
-        await env.INGEST_QUEUE.sendBatch(messages.map((body) => ({ body, contentType: "json" as const })));
+        await stageSyncMessages(env.MANIFEST, messages);
         count += messages.length;
       }
     }
     await completeSyncRun(env.MANIFEST, runId, count);
-    return json({ ok: true, run_id: runId, mode, limit: limit ?? null, pages_enqueued: count }, 202);
+    return json({ ok: true, run_id: runId, mode, limit: limit ?? null, pages_scheduled: count, scheduler: "D1_CRON" }, 202);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     await failSyncRun(env.MANIFEST, runId, count, message);
@@ -137,6 +162,14 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
+
+  if (request.method === "GET" && url.pathname === "/v1/reconcile-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const runId = url.searchParams.get("run_id");
+    if (!runId) return json({ ok: false, error: "run_id_required" }, 400);
+    const readback = await syncRunReadback(env.MANIFEST, runId);
+    return readback ? json({ ok: true, run: readback }) : json({ ok: false, error: "not_found" }, 404);
+  }
 
   if (request.method === "GET" && url.pathname === "/v1/queue-metrics") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
@@ -196,6 +229,114 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   return json({ ok: false, error: "not_found" }, 404);
 }
 
+function retryDelaySeconds(attempts: number): number {
+  return Math.min(3600, 60 * 2 ** Math.max(0, attempts - 1));
+}
+
+async function seedOperatorRequestedReconcile(env: Env): Promise<void> {
+  const request = await getRuntimeState(env.MANIFEST, "scheduled_reconcile_request");
+  if (!request || !request.value.startsWith("REQUESTED")) return;
+
+  const [, requestedLimit] = request.value.split(":", 2);
+  const parsedLimit = requestedLimit ? Number.parseInt(requestedLimit, 10) : Number.NaN;
+  const limit = Number.isFinite(parsedLimit) ? Math.max(1, Math.min(1000, parsedLimit)) : undefined;
+  const runId = crypto.randomUUID();
+  const mode = limit ? "OPERATOR_BOUNDED_RECONCILE" : "OPERATOR_FULL_RECONCILE";
+  await putRuntimeState(env.MANIFEST, "scheduled_reconcile_request", `CLAIMED:${runId}`);
+  await beginSyncRun(env.MANIFEST, runId, mode);
+
+  let count = 0;
+  try {
+    const messages: IngestMessage[] = [];
+    for await (const pageId of listNotesPages(env)) {
+      messages.push({ kind: "notion-page-sync", page_id: pageId, cause_id: `reconcile:${runId}:${pageId}`, cause_type: "reconcile" });
+      if (limit && count + messages.length >= limit) break;
+      if (messages.length >= 100) {
+        await stageSyncMessages(env.MANIFEST, messages);
+        count += messages.length;
+        messages.length = 0;
+      }
+    }
+    if (messages.length) {
+      await stageSyncMessages(env.MANIFEST, messages);
+      count += messages.length;
+    }
+    await completeSyncRun(env.MANIFEST, runId, count);
+    await putRuntimeState(
+      env.MANIFEST,
+      "scheduled_reconcile_last_run",
+      JSON.stringify({ run_id: runId, mode, pages_scheduled: count, scheduled_at: new Date().toISOString() }),
+    );
+    await deleteRuntimeState(env.MANIFEST, "scheduled_reconcile_request");
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    await failSyncRun(env.MANIFEST, runId, count, message);
+    await putRuntimeState(env.MANIFEST, "scheduled_reconcile_request", `ERROR:${runId}:${message.slice(0, 1000)}`);
+    throw error;
+  }
+}
+
+async function drainScheduledSync(env: Env): Promise<void> {
+  await seedOperatorRequestedReconcile(env);
+  const staleBefore = new Date(Date.now() - SCHEDULED_SYNC_STALE_PROCESSING_MS).toISOString();
+  await requeueStaleSyncTasks(env.MANIFEST, staleBefore);
+  const tasks = await claimDueSyncTasks(env.MANIFEST, SCHEDULED_SYNC_BATCH_SIZE);
+  const touchedRuns = new Set<string>();
+
+  for (const task of tasks) {
+    const message: IngestMessage = {
+      kind: "notion-page-sync",
+      page_id: task.page_id,
+      cause_id: task.cause_id,
+      cause_type: task.cause_type,
+      ...(task.event_type ? { event_type: task.event_type } : {}),
+    };
+    if (task.run_id) touchedRuns.add(task.run_id);
+    try {
+      await syncPage(env, message);
+      await recordSyncMessageReceipt(env.MANIFEST, {
+        causeId: task.cause_id,
+        pageId: task.page_id,
+        causeType: task.cause_type,
+        eventType: task.event_type,
+        status: "PROCESSED",
+        attempts: task.attempts,
+      });
+      if (task.cause_type === "webhook") await markWebhookProcessed(env.MANIFEST, task.cause_id);
+    } catch (error) {
+      const messageText = error instanceof Error ? error.message : String(error);
+      const blocked = task.attempts >= SCHEDULED_SYNC_MAX_ATTEMPTS;
+      const nextAttemptAt = blocked
+        ? null
+        : new Date(Date.now() + retryDelaySeconds(task.attempts) * 1000).toISOString();
+      await recordSyncMessageReceipt(env.MANIFEST, {
+        causeId: task.cause_id,
+        pageId: task.page_id,
+        causeType: task.cause_type,
+        eventType: task.event_type,
+        status: blocked ? "BLOCKED" : "RETRY",
+        attempts: task.attempts,
+        error: messageText,
+        nextAttemptAt,
+      });
+      if (task.cause_type === "webhook") {
+        await markWebhookFallbackFailure(env.MANIFEST, task.cause_id, messageText, blocked);
+      }
+      console.error("scheduled_knowledge_ingest_failed", {
+        cause_id: task.cause_id,
+        page_id: task.page_id,
+        attempts: task.attempts,
+        blocked,
+        next_attempt_at: nextAttemptAt,
+        error: messageText,
+        fingerprint: await sha256Hex(`${task.page_id}:${task.cause_id}`),
+      });
+    }
+  }
+
+  for (const runId of touchedRuns) await refreshSyncRunStatus(env.MANIFEST, runId);
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     try {
@@ -217,6 +358,8 @@ export default {
           await recordSyncMessageReceipt(env.MANIFEST, {
             causeId: message.body.cause_id,
             pageId: message.body.page_id,
+            causeType: message.body.cause_type,
+            eventType: message.body.event_type ?? null,
             status: "PROCESSED",
             attempts: message.attempts,
           });
@@ -228,6 +371,8 @@ export default {
           await recordSyncMessageReceipt(env.MANIFEST, {
             causeId: message.body.cause_id,
             pageId: message.body.page_id,
+            causeType: message.body.cause_type,
+            eventType: message.body.event_type ?? null,
             status: "RETRY",
             attempts: message.attempts,
             error: error instanceof Error ? error.message : String(error),
@@ -244,5 +389,9 @@ export default {
         message.retry({ delaySeconds: Math.min(900, 2 ** Math.min(message.attempts, 9)) });
       }
     }
+  },
+
+  async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(drainScheduledSync(env));
   },
 } satisfies ExportedHandler<Env, IngestMessage>;

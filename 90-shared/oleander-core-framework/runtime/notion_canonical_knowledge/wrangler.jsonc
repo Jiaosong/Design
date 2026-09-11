@@ -29,6 +29,9 @@
       "index_name": "oleander-knowledge-v1"
     }
   ],
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
   "queues": {
     "producers": [
       {

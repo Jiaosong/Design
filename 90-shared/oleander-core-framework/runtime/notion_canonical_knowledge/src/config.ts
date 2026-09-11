@@ -32,3 +32,10 @@ export const MAX_UNKNOWN_BLOCK_FETCHES = 100;
 // the canonical ingest path below that average while still allowing progress.
 export const NOTION_MIN_REQUEST_INTERVAL_MS = 400;
 export const NOTION_MAX_FETCH_ATTEMPTS = 5;
+
+// Full reconciles use D1 as a durable scheduler rather than Cloudflare Queues.
+// This keeps bulk maintenance independent from the Queues Free-plan operation
+// budget while leaving Queue available as the low-latency webhook fast path.
+export const SCHEDULED_SYNC_BATCH_SIZE = 4;
+export const SCHEDULED_SYNC_MAX_ATTEMPTS = 8;
+export const SCHEDULED_SYNC_STALE_PROCESSING_MS = 15 * 60 * 1000;

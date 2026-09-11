@@ -1,8 +1,11 @@
 import type {
   AuthorityDecision,
+  IngestMessage,
   ManifestChunkRow,
   NormalizedPage,
   RetrievalSpace,
+  SyncTaskRow,
+  SyncTaskStatus,
 } from "./types";
 
 const now = () => new Date().toISOString();
@@ -30,6 +33,25 @@ export async function markWebhookQueued(db: D1Database, eventId: string): Promis
 
 export async function markWebhookQueueError(db: D1Database, eventId: string, error: string): Promise<void> {
   await db.prepare("UPDATE webhook_events SET status='QUEUE_ERROR', error=? WHERE event_id=?").bind(error.slice(0, 2000), eventId).run();
+}
+
+export async function markWebhookFallbackScheduled(db: D1Database, eventId: string, error: string): Promise<void> {
+  await db
+    .prepare("UPDATE webhook_events SET status='FALLBACK_SCHEDULED', error=? WHERE event_id=?")
+    .bind(error.slice(0, 2000), eventId)
+    .run();
+}
+
+export async function markWebhookFallbackFailure(
+  db: D1Database,
+  eventId: string,
+  error: string,
+  blocked: boolean,
+): Promise<void> {
+  await db
+    .prepare("UPDATE webhook_events SET status=?, error=? WHERE event_id=?")
+    .bind(blocked ? "FALLBACK_BLOCKED" : "FALLBACK_RETRY", error.slice(0, 2000), eventId)
+    .run();
 }
 
 export async function markWebhookProcessed(db: D1Database, eventId: string): Promise<void> {
@@ -231,7 +253,7 @@ export async function beginSyncRun(db: D1Database, runId: string, runType: strin
 
 export async function completeSyncRun(db: D1Database, runId: string, count: number): Promise<void> {
   await db
-    .prepare("UPDATE sync_runs SET completed_at=?, pages_enqueued=?, status='QUEUED' WHERE run_id=?")
+    .prepare("UPDATE sync_runs SET completed_at=?, pages_enqueued=?, status='SCHEDULED', error=NULL WHERE run_id=?")
     .bind(now(), count, runId)
     .run();
 }
@@ -243,41 +265,154 @@ export async function failSyncRun(db: D1Database, runId: string, count: number, 
     .run();
 }
 
+function runIdFromCause(causeId: string): string | null {
+  const match = /^reconcile:([^:]+):/.exec(causeId);
+  return match?.[1] ?? null;
+}
+
+export async function stageSyncMessages(db: D1Database, messages: IngestMessage[]): Promise<void> {
+  for (let i = 0; i < messages.length; i += 100) {
+    const stagedAt = now();
+    const statements = messages.slice(i, i + 100).map((message) =>
+      db
+        .prepare(
+          `INSERT OR IGNORE INTO sync_message_receipts
+           (cause_id, run_id, page_id, cause_type, event_type, status, attempts, error,
+            next_attempt_at, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, 'PENDING', 0, NULL, NULL, ?, ?)`,
+        )
+        .bind(
+          message.cause_id,
+          runIdFromCause(message.cause_id),
+          message.page_id,
+          message.cause_type,
+          message.event_type ?? null,
+          stagedAt,
+          stagedAt,
+        ),
+    );
+    if (statements.length) await db.batch(statements);
+  }
+}
+
+export async function requeueStaleSyncTasks(db: D1Database, staleBefore: string): Promise<number> {
+  const result = await db
+    .prepare(
+      `UPDATE sync_message_receipts
+       SET status='RETRY', error=COALESCE(error, 'STALE_PROCESSING_RECOVERED'), next_attempt_at=NULL, updated_at=?
+       WHERE status='PROCESSING' AND updated_at < ?`,
+    )
+    .bind(now(), staleBefore)
+    .run();
+  return result.meta.changes ?? 0;
+}
+
+export async function claimDueSyncTasks(db: D1Database, limit: number): Promise<SyncTaskRow[]> {
+  const claimedAt = now();
+  const result = await db
+    .prepare(
+      `UPDATE sync_message_receipts
+       SET status='PROCESSING', attempts=attempts+1, updated_at=?
+       WHERE cause_id IN (
+         SELECT cause_id FROM sync_message_receipts
+         WHERE status IN ('PENDING', 'RETRY')
+           AND (next_attempt_at IS NULL OR next_attempt_at <= ?)
+         ORDER BY COALESCE(next_attempt_at, created_at, updated_at), updated_at, cause_id
+         LIMIT ?
+       )
+       RETURNING cause_id, run_id, page_id, cause_type, event_type, status, attempts,
+                 error, next_attempt_at, created_at, updated_at`,
+    )
+    .bind(claimedAt, claimedAt, Math.max(1, Math.min(100, Math.floor(limit))))
+    .all<SyncTaskRow>();
+  return result.results;
+}
+
 export async function recordSyncMessageReceipt(
   db: D1Database,
   input: {
     causeId: string;
     pageId: string;
-    status: "PROCESSED" | "RETRY";
+    status: SyncTaskStatus;
     attempts: number;
+    causeType?: IngestMessage["cause_type"];
+    eventType?: string | null;
     error?: string | null;
+    nextAttemptAt?: string | null;
   },
 ): Promise<void> {
-  const match = /^reconcile:([^:]+):/.exec(input.causeId);
-  const runId = match?.[1] ?? null;
+  const runId = runIdFromCause(input.causeId);
+  const updatedAt = now();
   await db
     .prepare(
       `INSERT INTO sync_message_receipts
-       (cause_id, run_id, page_id, status, attempts, error, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?)
+       (cause_id, run_id, page_id, cause_type, event_type, status, attempts, error,
+        next_attempt_at, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON CONFLICT(cause_id) DO UPDATE SET
          run_id=excluded.run_id,
          page_id=excluded.page_id,
+         cause_type=COALESCE(excluded.cause_type, sync_message_receipts.cause_type),
+         event_type=COALESCE(excluded.event_type, sync_message_receipts.event_type),
          status=excluded.status,
          attempts=excluded.attempts,
          error=excluded.error,
+         next_attempt_at=excluded.next_attempt_at,
          updated_at=excluded.updated_at`,
     )
     .bind(
       input.causeId,
       runId,
       input.pageId,
+      input.causeType ?? "reconcile",
+      input.eventType ?? null,
       input.status,
       input.attempts,
       input.error ? input.error.slice(0, 2000) : null,
-      now(),
+      input.nextAttemptAt ?? null,
+      updatedAt,
+      updatedAt,
     )
     .run();
+}
+
+export async function syncRunReadback(db: D1Database, runId: string): Promise<Record<string, unknown> | null> {
+  const run = await db.prepare("SELECT * FROM sync_runs WHERE run_id=?").bind(runId).first<Record<string, unknown>>();
+  if (!run) return null;
+  const counts = await db
+    .prepare("SELECT status, COUNT(*) AS count FROM sync_message_receipts WHERE run_id=? GROUP BY status")
+    .bind(runId)
+    .all<{ status: string; count: number }>();
+  return {
+    ...run,
+    task_counts: Object.fromEntries(counts.results.map((row) => [row.status, row.count])),
+  };
+}
+
+export async function refreshSyncRunStatus(db: D1Database, runId: string): Promise<void> {
+  const counts = await db
+    .prepare("SELECT status, COUNT(*) AS count FROM sync_message_receipts WHERE run_id=? GROUP BY status")
+    .bind(runId)
+    .all<{ status: string; count: number }>();
+  const byStatus = new Map(counts.results.map((row) => [row.status, row.count]));
+  const processed = byStatus.get("PROCESSED") ?? 0;
+  const blocked = byStatus.get("BLOCKED") ?? 0;
+  const open = (byStatus.get("PENDING") ?? 0) + (byStatus.get("RETRY") ?? 0) + (byStatus.get("PROCESSING") ?? 0);
+  const total = counts.results.reduce((sum, row) => sum + row.count, 0);
+  if (total === 0 || open > 0) {
+    await db.prepare("UPDATE sync_runs SET status='DRAINING' WHERE run_id=? AND status!='FAILED'").bind(runId).run();
+    return;
+  }
+  if (processed === total) {
+    await db.prepare("UPDATE sync_runs SET status='COMPLETE', completed_at=?, error=NULL WHERE run_id=?").bind(now(), runId).run();
+    return;
+  }
+  if (blocked > 0) {
+    await db
+      .prepare("UPDATE sync_runs SET status='PARTIAL_BLOCKED', completed_at=?, error=? WHERE run_id=?")
+      .bind(now(), `${blocked} scheduled sync task(s) blocked after bounded retries`, runId)
+      .run();
+  }
 }
 
 export async function putRuntimeState(db: D1Database, key: string, value: string): Promise<void> {

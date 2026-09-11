@@ -28,6 +28,22 @@ export interface IngestMessage {
   event_timestamp?: string;
 }
 
+export type SyncTaskStatus = "PENDING" | "PROCESSING" | "RETRY" | "PROCESSED" | "BLOCKED";
+
+export interface SyncTaskRow {
+  cause_id: string;
+  run_id: string | null;
+  page_id: string;
+  cause_type: IngestMessage["cause_type"];
+  event_type: string | null;
+  status: SyncTaskStatus;
+  attempts: number;
+  error: string | null;
+  next_attempt_at: string | null;
+  created_at: string | null;
+  updated_at: string;
+}
+
 export interface NotionWebhookEvent {
   id?: string;
   type?: string;

@@ -107,4 +107,8 @@ node scripts/run-reconcile.mjs full
 
 Queue safety defaults are deliberately conservative: one-message consumer batches, concurrency `1`, bounded retries, and a dead-letter queue. The DLQ is **containment**, not an automatic replay loop; failed messages must remain inspectable until a bounded repair/re-drive action is explicitly authorized.
 
+Bulk reconcile no longer spends Queue operations. `POST /v1/reconcile` persists page-sync tasks in D1, and the `* * * * *` Cron Trigger drains a small bounded batch directly through `syncPage`. Queue remains the low-latency webhook fast path; if Queue write fails, the webhook is persisted into the same D1 scheduler instead of being dropped. `GET /v1/reconcile-status?run_id=<id>` is the readback gate for a reconcile run.
+
+For operator recovery when the bearer token must not be read into a shell, a single D1 runtime-state request may be set to `scheduled_reconcile_request=REQUESTED` (full) or `REQUESTED:<1..1000>` (bounded). The Cron handler claims it once, creates a normal `sync_runs` record, persists the tasks, writes `scheduled_reconcile_last_run`, and deletes the request. This is an emergency control-plane trigger only; it does not create a second knowledge authority.
+
 See `ARCHITECTURE.md` for authority and failure semantics.

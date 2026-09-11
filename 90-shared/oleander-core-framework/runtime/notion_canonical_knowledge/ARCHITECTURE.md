@@ -14,7 +14,16 @@ Notion Canonical Knowledge
 Cloudflare Worker /webhooks/notion
         ↓ D1 event-id dedupe
 Cloudflare Queue
-        ↓ consumer always fetches latest
+        ↓ webhook fast path / consumer always fetches latest
+        ├──────── queue-write failure ────────┐
+        │                                     ↓
+        │                               D1 durable scheduler
+        │                                     ↑
+        │                         full / bounded reconcile
+        │                                     ↓
+        │                              Cron scheduled drain
+        └─────────────────────────────────────┘
+                                              ↓
 Notion API 2026-03-11
   GET /v1/pages/:id
   GET /v1/pages/:id/markdown
@@ -59,6 +68,7 @@ Authority gate + structure-aware chunk
 - lineage edges for Source / Method / replacement relations;
 - active/inactive/tombstone state;
 - reconcile run receipts.
+- durable bulk/fallback sync task state (`PENDING / PROCESSING / RETRY / PROCESSED / BLOCKED`).
 
 D1 does **not** decide Canonical ID, L0–L7 identity, hierarchy, role, domain or promotion.
 
@@ -111,6 +121,8 @@ Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new
 - queue failure: webhook event remains `QUEUE_ERROR`; Notion retry can re-enqueue it.
 - embedding or Notion transient failure: individual queue message retries with bounded exponential delay; Cloudflare consumer DLQ is configured after max retries.
 - DLQ containment is fail-closed: dead-lettered messages are not automatically replayed into the ingest queue, preventing an unbounded poison-message loop. Re-drive requires an explicit bounded repair action and a new readback receipt.
+- bulk reconcile never depends on Queue capacity. D1 persists the worklist and Cron drains a bounded sequential batch; stale `PROCESSING` claims are recovered to `RETRY` and bounded failures end in `BLOCKED`.
+- webhook Queue-write failure falls back to the same durable D1 scheduler and remains visible in `webhook_events`; it is not silently treated as a successful Queue delivery.
 - stale Vectorize result: rejected when D1 does not confirm the vector and document as active and in the same authority namespace.
 
 ## Does not prove
