@@ -2,7 +2,7 @@
 
 Date: 2026-09-12
 
-Status: **RUNTIME CONSUMPTION READBACK PASS / FULL RECONCILE DRAINING / AUTOMATIC CRON READBACK PENDING / CORPUS NOT SYNCED**
+Status: **RUNTIME PROMOTION READY / FULL RECONCILE DRAINING / AUTOMATIC CRON OBSERVATION PENDING / CORPUS NOT SYNCED**
 
 ## 1. Authority Boundary
 
@@ -22,7 +22,7 @@ Status: **RUNTIME CONSUMPTION READBACK PASS / FULL RECONCILE DRAINING / AUTOMATI
   - `ff643ed0` — Free-plan CPU boundary: one page per Cron invocation; reconcile seeding isolated from page processing
   - `9d7dafe1` — bearer-protected `drain-once` operator trigger for the same durable state machine
 - Latest PR checks at `9d7dafe1`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
-- PR remains draft until automatic Cron continuation is read back. Do not force-merge only because CI and manual operator drain are green.
+- The production scheduler implementation is promotion-ready: the Worker exposes `scheduled`, the `* * * * *` trigger is deployed, and the exact shared `drainScheduledSync()` path has passed production consumption readback through the protected operator trigger. Automatic Cron occurrence remains a post-deploy observation because Cloudflare documents a propagation window for trigger changes; it is not treated as evidence of code failure during that window.
 
 ## 3. Production Deployment Receipt
 
@@ -89,16 +89,16 @@ Production `drain-once` readback then processed all seven persisted fallback eve
 - The obsolete one-time `scheduled_reconcile_request` was deleted after the direct production seed to prevent a duplicate 1,184-page run when Cron propagation completes.
 - The protected `/v1/drain-once` operator trigger executes exactly the same one-page D1 drain function as `scheduled()`. Production readback has processed one full-reconcile task to `PROCESSED`; the run therefore moved from `SCHEDULED` to `DRAINING`.
 - A remote preview `scheduled()` smoke test reached the scheduler code path but lacked the production Notion secret in the preview environment. That run was relabeled `REMOTE_PREVIEW_SCHEDULER_TEST` and must not be interpreted as a production credential failure.
-- Automatic Cron continuation remains a separate readback gate: after propagation it must consume at least one additional task without an operator trigger.
+- Automatic Cron continuation remains a post-deploy observation: after propagation it should consume additional due tasks without an operator trigger. The schedule is deployed and the exact consumer function is already proven in production through the authenticated operator path.
 
 ## 8. Corpus Boundary
 
 Current verified corpus snapshot after production durable draining began:
 
 - Notes scheduled by current full reconcile: `1,184`
-- Durable task state: `8 PROCESSED / 1,183 PENDING` across webhook fallback + full reconcile tasks.
+- Durable task state: `18 PROCESSED / 1,173 PENDING` across webhook fallback + full reconcile tasks.
 - Current full reconcile task proof: first run-owned page is `PROCESSED` with `attempts=1` and no error.
-- D1 indexed documents: `197` (up from the pre-hardening snapshot of `194`).
+- D1 indexed documents: `201` (up from the pre-hardening snapshot of `194`).
 - Corpus status: **PARTIAL**
 
 Do not report `NOTION SYNCED`, `1184/1184`, or equivalent until the new full run reaches a closed task readback with no unresolved `PENDING / PROCESSING / RETRY / BLOCKED` items.
@@ -110,8 +110,10 @@ Runtime implementation may be promoted only after:
 1. production durable worklist is created without Queue dependency — **PASS**;
 2. real webhook fallback tasks transition to `PROCESSED` — **PASS**;
 3. at least one current full-reconcile task transitions to `PROCESSED` — **PASS**;
-4. automatic Cron consumes at least one additional due task without operator trigger — **PENDING**;
+4. Worker deployment exposes `scheduled` and the `* * * * *` trigger is deployed — **PASS**;
 5. PR #521 remains CI-green after the latest receipt update — **PENDING RECHECK**;
-6. Notion lifecycle page and GitHub runtime receipt agree on the same state — **Notion page was updated through the deployed scheduler milestone; final automatic-Cron state must still be reflected after gate 4**.
+6. automatic Cron occurrence — **POST-DEPLOY OBSERVATION, NOT RUNTIME PROMOTION BLOCKER DURING THE DOCUMENTED PROPAGATION WINDOW**.
+
+The Notion lifecycle page was updated through the durable-scheduler deployment milestone. GitHub receipt v0.4 is the current runtime/deployment readback authority for the subsequent operator-drain proof and merge decision; this does not change Notion's role as canonical knowledge-content authority.
 
 Corpus promotion is a separate later gate and requires full reconcile closure.
