@@ -21,6 +21,7 @@ import {
   recordWebhookReceived,
   refreshSyncRunStatus,
   requeueStaleSyncTasks,
+  schedulerTaskCounts,
   stageSyncMessages,
   syncRunReadback,
 } from "./manifest";
@@ -175,6 +176,39 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (!runId) return json({ ok: false, error: "run_id_required" }, 400);
     const readback = await syncRunReadback(env.MANIFEST, runId);
     return readback ? json({ ok: true, run: readback }) : json({ ok: false, error: "not_found" }, 404);
+  }
+
+  if (request.method === "GET" && url.pathname === "/v1/scheduler-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const [lastSeen, lastResult, taskCounts] = await Promise.all([
+      getRuntimeState(env.MANIFEST, "scheduled_cron_last_seen"),
+      getRuntimeState(env.MANIFEST, "scheduled_cron_last_result"),
+      schedulerTaskCounts(env.MANIFEST),
+    ]);
+    let lastSeenAt: string | null = null;
+    if (lastSeen?.value) {
+      try {
+        const parsed = JSON.parse(lastSeen.value) as { started_at?: string };
+        lastSeenAt = parsed.started_at ?? lastSeen.updated_at;
+      } catch {
+        lastSeenAt = lastSeen.updated_at;
+      }
+    }
+    const lastSeenMs = lastSeenAt ? Date.parse(lastSeenAt) : Number.NaN;
+    const cronStale = !Number.isFinite(lastSeenMs) || Date.now() - lastSeenMs > 3 * 60 * 1000;
+    const openTasks =
+      (taskCounts.PENDING ?? 0) +
+      (taskCounts.RETRY ?? 0) +
+      (taskCounts.PROCESSING ?? 0);
+    return json({
+      ok: true,
+      cron_stale: cronStale,
+      fallback_required: cronStale && openTasks > 0,
+      open_tasks: openTasks,
+      task_counts: taskCounts,
+      scheduled_cron_last_seen: lastSeen,
+      scheduled_cron_last_result: lastResult,
+    });
   }
 
   if (request.method === "GET" && url.pathname === "/v1/queue-metrics") {
