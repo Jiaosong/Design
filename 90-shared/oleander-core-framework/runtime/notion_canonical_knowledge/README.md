@@ -28,6 +28,22 @@ The provisioning script is **dry-run by default**. It only creates Cloudflare re
 
 ## Cloudflare provisioning
 
+Current remote state (2026-09-11): Cloudflare D1, Queue + DLQ, Vectorize and Worker are provisioned and deployed. The runtime remains **NOTION INGESTION HOLD** until a Notion API token and verified connection webhook subscription are bound. See `OLEANDER_RUNTIME_RECEIPT_v0.2.md` and `CLOUDFLARE_REMOTE_BINDING_v0.1.json`.
+
+Current Worker URL:
+
+```text
+https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev
+```
+
+To bind the remaining Notion API secret without writing it to Git:
+
+```powershell
+./scripts/bind-notion-secrets.ps1 -Deploy
+```
+
+The commands below remain the reproducible from-zero provisioning path.
+
 After reviewing account/cost implications:
 
 ```powershell

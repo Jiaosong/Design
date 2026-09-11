@@ -19,7 +19,7 @@
     {
       "binding": "MANIFEST",
       "database_name": "oleander-knowledge-manifest",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "287de73b-8145-4299-a3f3-729b8c312b70",
       "migrations_dir": "migrations"
     }
   ],

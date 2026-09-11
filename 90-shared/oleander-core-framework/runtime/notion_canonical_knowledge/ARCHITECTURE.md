@@ -1,6 +1,6 @@
 # OLEANDER Notion Canonical Knowledge Runtime v0.1
 
-Status: **CANDIDATE RUNTIME / NOT PROMOTED**
+Status: **REMOTE INFRASTRUCTURE PROVISIONED / NOTION INGESTION HOLD / NOT PROMOTED**
 
 Upstream authority: **Notion Current Root Authority + live registries**
 
