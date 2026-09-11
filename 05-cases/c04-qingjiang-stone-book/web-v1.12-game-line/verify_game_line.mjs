@@ -8,8 +8,8 @@ const html=read("index.html");
 const css=read("styles.css");
 const js=read("app.js");
 
-const currentAnchors=["hero","assets","journey","brief","context","audience","idea","thinking","systems","development","r13","final"];
-const expectedSectionLabels=["01","02","03","04","05","06","07","08","09","10","10B","11"];
+const currentAnchors=["hero","assets","journey","brief","context","audience","idea","thinking","systems","brand-system","memory-system","development","r13","final"];
+const expectedSectionLabels=["01","02","03","04","05","06","07","08","09","09B","09C","10","10B","11"];
 const sections=[...html.matchAll(/data-section="([^"]+)"/g)].map(m=>m[1]);
 const contiguous=JSON.stringify(sections)===JSON.stringify(expectedSectionLabels);
 const anchorsPresent=currentAnchors.every(id=>html.includes(`id="${id}"`));
@@ -17,6 +17,9 @@ const anchorsPresent=currentAnchors.every(id=>html.includes(`id="${id}"`));
 const requiredAssets=[
   "assets/body_need_scenarios_current.svg",
   "assets/route03_locked_current.svg",
+  "assets/brand_system_current.svg",
+  "assets/brand_journey_current.svg",
+  "assets/memory_journal_current.svg",
   "assets/physical_body_support_hold.svg",
   "assets/r13_passage_sequence_current.svg",
   "assets/return_service_closure_current.svg",
@@ -27,6 +30,9 @@ const missing=requiredAssets.filter(r=>!fs.existsSync(path.join(root,r))||fs.sta
 const directBindings=[
   "assets/body_need_scenarios_current.svg",
   "assets/route03_locked_current.svg",
+  "assets/brand_system_current.svg",
+  "assets/brand_journey_current.svg",
+  "assets/memory_journal_current.svg",
   "assets/r13_passage_sequence_current.svg",
   "assets/return_service_closure_current.svg"
 ].every(r=>html.includes(r));
@@ -50,7 +56,7 @@ const progressiveDisclosure=html.includes('<details class="professional">')
 const currentNavigation=[
   'href="#journey"','href="#context"','href="#thinking"','href="#systems"','href="#development"','href="#final"'
 ].every(x=>html.includes(x))
-  &&['systems:["systems"]','development:["development","r13"]'].every(x=>js.includes(x))
+  &&['systems:["systems","brand-system","memory-system"]','development:["development","r13"]'].every(x=>js.includes(x))
   &&html.includes('id="r13" data-section="10B" data-nav-parent="development"')
   &&css.includes('content:" · 当前"');
 const stateSimulationBound=js.includes('host.dataset.scope="explanatory-simulation"')

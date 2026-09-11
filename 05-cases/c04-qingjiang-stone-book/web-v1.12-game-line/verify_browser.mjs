@@ -9,11 +9,11 @@ fs.rmSync(outDir,{recursive:true,force:true});
 fs.mkdirSync(outDir,{recursive:true});
 
 const baseUrl=process.env.C04_BROWSER_URL||'http://127.0.0.1:4173/index.html';
-const expectedSections=['hero','assets','journey','brief','context','audience','idea','thinking','systems','development','r13','final'];
+const expectedSections=['hero','assets','journey','brief','context','audience','idea','thinking','systems','brand-system','memory-system','development','r13','final'];
 const cases=[
   {name:'desktop-1920x1080',viewport:{width:1920,height:1080},anchors:expectedSections},
-  {name:'desktop-1366x768',viewport:{width:1366,height:768},anchors:['hero','journey','context','thinking','systems','development','r13','final']},
-  {name:'mobile-390x844',viewport:{width:390,height:844},anchors:['hero','assets','journey','audience','systems','development','r13','final']}
+  {name:'desktop-1366x768',viewport:{width:1366,height:768},anchors:['hero','journey','context','thinking','systems','brand-system','memory-system','development','r13','final']},
+  {name:'mobile-390x844',viewport:{width:390,height:844},anchors:['hero','assets','journey','audience','systems','brand-system','memory-system','development','r13','final']}
 ];
 
 const report={
@@ -39,8 +39,8 @@ async function settle(page){
 async function shot(page,dir,id){
   const el=page.locator(`#${id}`);
   if(await el.count()===0){fail(`Missing section #${id}`);return false;}
-  await el.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(120);
+  await page.evaluate(sectionId=>document.getElementById(sectionId)?.scrollIntoView({block:'start',behavior:'instant'}),id);
+  await page.waitForTimeout(800);
   await page.screenshot({path:path.join(dir,`${id}.png`),fullPage:false});
   return true;
 }
@@ -76,6 +76,10 @@ try{
         physicalCarrier:document.querySelector('.physical-transfer img')?.getAttribute('src')||'',
         stateScope:document.querySelector('.state-sim')?.dataset.scope||'',
         stateBoundary:document.querySelector('.state-boundary')?.textContent||''
+        ,brandMainAsset:document.querySelector('#brand-system img')?.getAttribute('src')||''
+        ,memoryMainAsset:document.querySelector('#memory-system img')?.getAttribute('src')||''
+        ,brandText:document.querySelector('#brand-system')?.textContent||''
+        ,memoryText:document.querySelector('#memory-system')?.textContent||''
       }));
       const overflow=Math.max(metrics.documentWidth,metrics.bodyWidth)-metrics.viewportWidth;
       if(overflow>2)fail('Horizontal overflow exceeds 2px',{case:item.name,overflow});
@@ -87,6 +91,8 @@ try{
       if(!metrics.optionalReadingText.includes('十三印可以不读完'))fail('Optional-reading boundary missing',{case:item.name});
       if(!metrics.r13Present||!['当前位置','R13','收束通过'].every(x=>metrics.r13LocationText.includes(x)))fail('R13 current-location relation missing',{case:item.name,r13LocationText:metrics.r13LocationText});
       if(metrics.physicalCarrier!=='assets/physical_body_support_hold.svg')fail('P01-B finished carrier is not bound in Development',{case:item.name,physicalCarrier:metrics.physicalCarrier});
+      if(metrics.brandMainAsset!=='assets/brand_system_current.svg'||!metrics.brandText.includes('LINE / PAGE / SEAL / TRACE'))fail('Independent Brand MAIN surface is not bound to current editable carrier',{case:item.name,brandMainAsset:metrics.brandMainAsset});
+      if(metrics.memoryMainAsset!=='assets/memory_journal_current.svg'||!metrics.memoryText.includes('MEMORY / IP / AFTER LEAVING'))fail('Independent Memory MAIN surface is not bound to current editable carrier',{case:item.name,memoryMainAsset:metrics.memoryMainAsset});
       if(metrics.stateScope!=='explanatory-simulation'||!metrics.stateBoundary.includes('不表示实时运营状态'))fail('Operational state boundary is not explicitly explanatory',{case:item.name,stateScope:metrics.stateScope,stateBoundary:metrics.stateBoundary});
 
       const dir=path.join(outDir,item.name);
@@ -187,7 +193,7 @@ try{
 }
 
 report.design_review_open_items=[
-  'Brand/Memory independent MAIN-surface depth remains a Design Crit question; browser PASS does not resolve it.',
+  'Brand/Memory independent MAIN surfaces now exist and are browser-covered; independent Design Crit still decides presentation KEEP/REVISE.',
   'P01-B remains a candidate/development carrier; browser coverage does not grant engineering or project FINAL_KEEP.'
 ];
 report.status=report.failures.length?'FAIL':'PASS';

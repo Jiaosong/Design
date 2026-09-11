@@ -1,7 +1,7 @@
 {
   "schema": "C04_CURRENTIZED_STATIC_CHECK_V2",
   "current_frontier": "PR465",
-  "section_count": 12,
+  "section_count": 14,
   "section_numbers": [
     "01",
     "02",
@@ -12,6 +12,8 @@
     "07",
     "08",
     "09",
+    "09B",
+    "09C",
     "10",
     "10B",
     "11"
@@ -26,7 +28,7 @@
   "current_navigation_binding_present": true,
   "local_hero_runtime_binding_present": true,
   "external_raster_image_dependency_present": false,
-  "required_asset_count": 7,
+  "required_asset_count": 10,
   "missing_or_empty_assets": [],
   "current_direct_assets_bound": true,
   "p01_b_physical_carrier_bound": true,

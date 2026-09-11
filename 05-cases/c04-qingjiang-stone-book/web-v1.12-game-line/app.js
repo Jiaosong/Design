@@ -105,7 +105,7 @@
     let active=sections[0]?.id||"hero";
     const y=window.scrollY+innerHeight*.32;
     for(const s of sections){if(s.offsetTop<=y)active=s.id;}
-    const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems"],development:["development","r13"],final:["final"]};
+    const groups={journey:["journey"],context:["brief","context","audience"],thinking:["idea","thinking"],systems:["systems","brand-system","memory-system"],development:["development","r13"],final:["final"]};
     $$(".layer-nav a").forEach(a=>{
       const target=a.getAttribute("href").slice(1);
       const current=(groups[target]||[]).includes(active);
