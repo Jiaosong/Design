@@ -1,0 +1,4 @@
+# Never commit real secrets. Copy to .dev.vars for local development.
+NOTION_TOKEN=secret_replace_me
+NOTION_WEBHOOK_VERIFICATION_TOKEN=secret_replace_me
+OLEANDER_API_TOKEN=replace_with_random_bearer_token
