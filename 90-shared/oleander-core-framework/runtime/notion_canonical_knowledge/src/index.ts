@@ -233,9 +233,9 @@ function retryDelaySeconds(attempts: number): number {
   return Math.min(3600, 60 * 2 ** Math.max(0, attempts - 1));
 }
 
-async function seedOperatorRequestedReconcile(env: Env): Promise<void> {
+async function seedOperatorRequestedReconcile(env: Env): Promise<boolean> {
   const request = await getRuntimeState(env.MANIFEST, "scheduled_reconcile_request");
-  if (!request || !request.value.startsWith("REQUESTED")) return;
+  if (!request || !request.value.startsWith("REQUESTED")) return false;
 
   const [, requestedLimit] = request.value.split(":", 2);
   const parsedLimit = requestedLimit ? Number.parseInt(requestedLimit, 10) : Number.NaN;
@@ -268,6 +268,7 @@ async function seedOperatorRequestedReconcile(env: Env): Promise<void> {
       JSON.stringify({ run_id: runId, mode, pages_scheduled: count, scheduled_at: new Date().toISOString() }),
     );
     await deleteRuntimeState(env.MANIFEST, "scheduled_reconcile_request");
+    return true;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     await failSyncRun(env.MANIFEST, runId, count, message);
@@ -277,7 +278,9 @@ async function seedOperatorRequestedReconcile(env: Env): Promise<void> {
 }
 
 async function drainScheduledSync(env: Env): Promise<void> {
-  await seedOperatorRequestedReconcile(env);
+  // Seeding a full reconcile can enumerate >1k Notion rows and persist >1k D1
+  // tasks. Do not also process a page in that same Free-plan Cron invocation.
+  if (await seedOperatorRequestedReconcile(env)) return;
   const staleBefore = new Date(Date.now() - SCHEDULED_SYNC_STALE_PROCESSING_MS).toISOString();
   await requeueStaleSyncTasks(env.MANIFEST, staleBefore);
   const tasks = await claimDueSyncTasks(env.MANIFEST, SCHEDULED_SYNC_BATCH_SIZE);

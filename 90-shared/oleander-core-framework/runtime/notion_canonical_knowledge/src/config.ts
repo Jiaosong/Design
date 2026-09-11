@@ -36,6 +36,9 @@ export const NOTION_MAX_FETCH_ATTEMPTS = 5;
 // Full reconciles use D1 as a durable scheduler rather than Cloudflare Queues.
 // This keeps bulk maintenance independent from the Queues Free-plan operation
 // budget while leaving Queue available as the low-latency webhook fast path.
-export const SCHEDULED_SYNC_BATCH_SIZE = 4;
+// Workers Free Cron invocations have a 10 ms CPU budget. Keep each scheduled
+// drain to one page so the CPU profile matches the already-proven one-page
+// Queue consumer path; network/storage wait time does not count as CPU time.
+export const SCHEDULED_SYNC_BATCH_SIZE = 1;
 export const SCHEDULED_SYNC_MAX_ATTEMPTS = 8;
 export const SCHEDULED_SYNC_STALE_PROCESSING_MS = 15 * 60 * 1000;

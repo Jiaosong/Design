@@ -121,7 +121,7 @@ Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new
 - queue failure: webhook event remains `QUEUE_ERROR`; Notion retry can re-enqueue it.
 - embedding or Notion transient failure: individual queue message retries with bounded exponential delay; Cloudflare consumer DLQ is configured after max retries.
 - DLQ containment is fail-closed: dead-lettered messages are not automatically replayed into the ingest queue, preventing an unbounded poison-message loop. Re-drive requires an explicit bounded repair action and a new readback receipt.
-- bulk reconcile never depends on Queue capacity. D1 persists the worklist and Cron drains a bounded sequential batch; stale `PROCESSING` claims are recovered to `RETRY` and bounded failures end in `BLOCKED`.
+- bulk reconcile never depends on Queue capacity. D1 persists the worklist and Cron drains one page per Free-plan invocation; a full-reconcile seeding invocation does not also process a page. Stale `PROCESSING` claims are recovered to `RETRY` and bounded failures end in `BLOCKED`.
 - webhook Queue-write failure falls back to the same durable D1 scheduler and remains visible in `webhook_events`; it is not silently treated as a successful Queue delivery.
 - stale Vectorize result: rejected when D1 does not confirm the vector and document as active and in the same authority namespace.
 
