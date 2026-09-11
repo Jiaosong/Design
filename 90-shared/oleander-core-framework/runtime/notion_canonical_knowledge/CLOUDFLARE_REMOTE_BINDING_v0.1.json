@@ -1,0 +1,72 @@
+{
+  "schema": "oleander-cloudflare-knowledge-runtime-binding/v1",
+  "date": "2026-09-11",
+  "status": "REMOTE_INFRASTRUCTURE_PROVISIONED_NOTION_INGESTION_HOLD",
+  "promotion": "NOT_REQUESTED",
+  "worker": {
+    "name": "oleander-notion-canonical-knowledge",
+    "workers_dev_url": "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev",
+    "code_deployment_version_id": "1727f64b-46f1-42e4-a0cc-0773b5e895a9",
+    "active_deployment_version_id": "5fdb62c9-89b7-4659-9769-12ad0e433b6e"
+  },
+  "d1": {
+    "binding": "MANIFEST",
+    "name": "oleander-knowledge-manifest",
+    "database_id": "287de73b-8145-4299-a3f3-729b8c312b70",
+    "location": "APAC",
+    "migrations": [
+      "0001_manifest.sql",
+      "0002_history_and_setup_state.sql"
+    ],
+    "remote_migration_status": "PASS"
+  },
+  "queues": {
+    "ingest": {
+      "name": "oleander-notion-ingest",
+      "id": "7a18a91652fc4370a9f270fbb4c0d2c4",
+      "producer_count": 1,
+      "consumer_count": 1
+    },
+    "dead_letter": {
+      "name": "oleander-notion-ingest-dlq",
+      "id": "9be180e52c144b4a9426a22ec3b17e17"
+    }
+  },
+  "vectorize": {
+    "binding": "KNOWLEDGE_INDEX",
+    "index_name": "oleander-knowledge-v1",
+    "dimensions": 1024,
+    "metric": "cosine"
+  },
+  "workers_ai": {
+    "binding": "AI",
+    "model": "@cf/baai/bge-m3",
+    "model_catalog_readback": "PASS"
+  },
+  "notion": {
+    "root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notes_data_source_id": "4668fc63-45a6-496e-a2cc-f9542928b9e8",
+    "api_version": "2026-03-11",
+    "notion_token_secret": "MISSING",
+    "webhook_verification_secret": "PENDING_SUBSCRIPTION"
+  },
+  "validation": {
+    "typescript_and_tests": "PASS_11_OF_11",
+    "wrangler_dry_run": "PASS",
+    "remote_health_without_queue_preview_binding": 200,
+    "remote_authority_search_without_queue_preview_binding": 200,
+    "ai_vectorize_d1_query_path": "PASS_EMPTY_PREINGEST",
+    "pre_ingest_counts": {
+      "documents": 0,
+      "active_chunks": 0,
+      "webhook_events": 0
+    },
+    "direct_workers_dev_probe": "LOCAL_NETWORK_FAKE_IP_TLS_BLOCKED"
+  },
+  "authority_guards": {
+    "current_explicit_only": true,
+    "vector_hits_require_d1_readback": true,
+    "notion_remains_upstream_authority": true,
+    "cloudflare_runtime_does_not_promote_knowledge": true
+  }
+}

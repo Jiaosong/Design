@@ -1,0 +1,58 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "oleander-notion-canonical-knowledge",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-11",
+  "workers_dev": true,
+  "vars": {
+    "NOTION_VERSION": "2026-03-11",
+    "NOTION_ROOT_PAGE_ID": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "NOTION_NOTES_DATA_SOURCE_ID": "4668fc63-45a6-496e-a2cc-f9542928b9e8",
+    "EMBEDDING_MODEL": "@cf/baai/bge-m3",
+    "EMBEDDING_DIMENSIONS": "1024",
+    "API_DEFAULT_TOP_K": "8"
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "d1_databases": [
+    {
+      "binding": "MANIFEST",
+      "database_name": "oleander-knowledge-manifest",
+      "database_id": "287de73b-8145-4299-a3f3-729b8c312b70",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vectorize": [
+    {
+      "binding": "KNOWLEDGE_INDEX",
+      "index_name": "oleander-knowledge-v1"
+    }
+  ],
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+  "queues": {
+    "producers": [
+      {
+        "binding": "INGEST_QUEUE",
+        "queue": "oleander-notion-ingest"
+      },
+      {
+        "binding": "INGEST_DLQ",
+        "queue": "oleander-notion-ingest-dlq"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "oleander-notion-ingest",
+        "max_batch_size": 1,
+        "max_batch_timeout": 5,
+        "max_retries": 8,
+        "dead_letter_queue": "oleander-notion-ingest-dlq",
+        "max_concurrency": 1,
+        "retry_delay": 60
+      }
+    ]
+  }
+}

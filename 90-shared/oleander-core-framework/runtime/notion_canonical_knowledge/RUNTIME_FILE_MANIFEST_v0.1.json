@@ -1,0 +1,147 @@
+﻿{
+    "schema":  "oleander-runtime-file-manifest/v1",
+    "generated_at":  "2026-09-11T14:54:31.5040048Z",
+    "file_count":  28,
+    "files":  [
+                  {
+                      "path":  ".dev.vars.example",
+                      "bytes":  209,
+                      "sha256":  "74d147d24c3df365b64c54c1c6f6fc04f34035cb9fa3fd1a0548c615b812602d"
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "bytes":  76,
+                      "sha256":  "5fc3339aa5a991707cf5f0a14c9798bcc3e8615fa98cc880297608c97c287295"
+                  },
+                  {
+                      "path":  "ARCHITECTURE.md",
+                      "bytes":  5869,
+                      "sha256":  "c6b5253359c19fa5beb1e7e0a3ce6cf575901d68ae70e7c90aa8b5988009f946"
+                  },
+                  {
+                      "path":  "migrations\\0001_manifest.sql",
+                      "bytes":  3003,
+                      "sha256":  "a96865c477f5af5c7ff075b499646f684b61c260e39b93c7f269af85055c7552"
+                  },
+                  {
+                      "path":  "migrations\\0002_history_and_setup_state.sql",
+                      "bytes":  294,
+                      "sha256":  "272f2d91158a67844009e0368f7918d7823e9d15a3b130a716e46ff19cf7cb44"
+                  },
+                  {
+                      "path":  "OLEANDER_RUNTIME_RECEIPT_v0.1.md",
+                      "bytes":  2375,
+                      "sha256":  "3f9e1836f83d4b330184b86fed224fc03fff441fac77c4f2d332de5c76241bf0"
+                  },
+                  {
+                      "path":  "package.json",
+                      "bytes":  771,
+                      "sha256":  "2bcd677c4a1912c8422fd0a9155e5fa1585b7e92b6a4b40424e2bd230b5e0b70"
+                  },
+                  {
+                      "path":  "package-lock.json",
+                      "bytes":  100802,
+                      "sha256":  "159b352b228c064f9b4d1cdfaab3039bc47a41655edc63442cedcf82757aa649"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  2406,
+                      "sha256":  "b7d4655c2932026d4e60c035ac7a2895431c2ac89747cd9f58162bddb5dcd422"
+                  },
+                  {
+                      "path":  "scripts\\provision-cloudflare.ps1",
+                      "bytes":  1254,
+                      "sha256":  "2935cc76a315931bbc3218d53a557d7c6607397ed2904c750b51a7710e1b5b0d"
+                  },
+                  {
+                      "path":  "src\\authority.ts",
+                      "bytes":  2693,
+                      "sha256":  "fc098c6a08433e183822d0fdb8536cedcc14517d93db848f65ff2278fa7a649b"
+                  },
+                  {
+                      "path":  "src\\chunker.ts",
+                      "bytes":  4344,
+                      "sha256":  "5b15715ea63c906459c94bf1d1c01c78fca9c8cf088d67a76fd8e4d5af8d62b5"
+                  },
+                  {
+                      "path":  "src\\config.ts",
+                      "bytes":  1184,
+                      "sha256":  "b55a60668083434474c5531f0a8c6d2f1ce223d51474601e2028aa04873f02fd"
+                  },
+                  {
+                      "path":  "src\\embedding.ts",
+                      "bytes":  916,
+                      "sha256":  "b8223080bba4f193039f6c8f252bf5bacc71842ace66aa501944636b3bd8701c"
+                  },
+                  {
+                      "path":  "src\\hash.ts",
+                      "bytes":  715,
+                      "sha256":  "8b62233fec35be9bd5ce98c4bb6c63f0f2eb4bc97e33d142468a131e2a111b6f"
+                  },
+                  {
+                      "path":  "src\\index.ts",
+                      "bytes":  8482,
+                      "sha256":  "b6ec711abda0ec688aada622e237d4932141dac4250af446a82b009cfb34f684"
+                  },
+                  {
+                      "path":  "src\\manifest.ts",
+                      "bytes":  11627,
+                      "sha256":  "562d73dde6de597e01762576c688673b8534ffc03b57487d7ec3763c70dcce47"
+                  },
+                  {
+                      "path":  "src\\normalize.ts",
+                      "bytes":  4454,
+                      "sha256":  "89aedd80dd1a7d13366ca9316375db481305563471b33322ee5ce366f5e19445"
+                  },
+                  {
+                      "path":  "src\\notion.ts",
+                      "bytes":  3306,
+                      "sha256":  "ef6d9a78614dcb0fa0889a83ff2a7fa3b08e92ddcc5323687808aa65e40a1f45"
+                  },
+                  {
+                      "path":  "src\\search.ts",
+                      "bytes":  3818,
+                      "sha256":  "311a008c87b78e636866b6455ee0da102bf1dd27a4611a42d85c77a55c73fe88"
+                  },
+                  {
+                      "path":  "src\\security.ts",
+                      "bytes":  2841,
+                      "sha256":  "4fae34393559fbda77c91159b6e7ed40abca9ffff32b04e268473b6fc6c37033"
+                  },
+                  {
+                      "path":  "src\\sync.ts",
+                      "bytes":  6436,
+                      "sha256":  "d2c1ee085a2fca3654635444bdfac4c5bacc3fdc33ee8f6b2f5dd5048ac9e58c"
+                  },
+                  {
+                      "path":  "src\\types.ts",
+                      "bytes":  3365,
+                      "sha256":  "7b048ce5f7dad1e160bdf0bb19cc563c59664d1febaeba8c46666d4808b956f9"
+                  },
+                  {
+                      "path":  "tests\\authority.test.ts",
+                      "bytes":  1953,
+                      "sha256":  "d4cbe25bcec315bb95cb493586600ada443d04dc92655b8d7b0b9d4b2bd219fe"
+                  },
+                  {
+                      "path":  "tests\\chunker.test.ts",
+                      "bytes":  1230,
+                      "sha256":  "e344e434d98fb81afb5fcf5078db0a3fb87a186386cc20d18a7497c260a9dc06"
+                  },
+                  {
+                      "path":  "tests\\security.test.ts",
+                      "bytes":  1349,
+                      "sha256":  "e2745a614e600fa71760f6e5383b25e4724e9550c9b0c46d8efd3a1535ec4a88"
+                  },
+                  {
+                      "path":  "tsconfig.json",
+                      "bytes":  399,
+                      "sha256":  "c35371328b00669d3a538dd18275f7c514fda82b5efaa30b4b86b437e6524289"
+                  },
+                  {
+                      "path":  "wrangler.jsonc",
+                      "bytes":  1273,
+                      "sha256":  "d7efd52faf844cdeebf1d9a6eccf8ee644325990ad6b7476500ef2b7e0ca7ab2"
+                  }
+              ]
+}
