@@ -109,6 +109,8 @@ Queue safety defaults are deliberately conservative: one-message consumer batche
 
 Bulk reconcile no longer spends Queue operations. `POST /v1/reconcile` persists page-sync tasks in D1, and the `* * * * *` Cron Trigger drains **one page per invocation** directly through `syncPage`. This deliberately matches the proven one-page Queue consumer CPU profile because Workers Free Cron invocations have a very small CPU budget. A Cron invocation that seeds a full reconcile does not also drain a page. Queue remains the low-latency webhook fast path; if Queue write fails, the webhook is persisted into the same D1 scheduler instead of being dropped. `GET /v1/reconcile-status?run_id=<id>` is the readback gate for a reconcile run.
 
+For explicit operator verification/recovery, `POST /v1/drain-once` is bearer-protected and executes exactly the same bounded D1 drain path as the Cron handler. The repository helper `node scripts/run-drain-once.mjs` reads the token only from gitignored `.dev.vars` and does not print it. This endpoint is not a parallel scheduler; it is a manual trigger for the same durable task state machine.
+
 For operator recovery when the bearer token must not be read into a shell, a single D1 runtime-state request may be set to `scheduled_reconcile_request=REQUESTED` (full) or `REQUESTED:<1..1000>` (bounded). The Cron handler claims it once, creates a normal `sync_runs` record, persists the tasks, writes `scheduled_reconcile_last_run`, and deletes the request. This is an emergency control-plane trigger only; it does not create a second knowledge authority.
 
 See `ARCHITECTURE.md` for authority and failure semantics.

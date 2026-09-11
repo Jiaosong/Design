@@ -163,6 +163,12 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
 
+  if (request.method === "POST" && url.pathname === "/v1/drain-once") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    await drainScheduledSync(env);
+    return json({ ok: true, drained: true, batch_size: SCHEDULED_SYNC_BATCH_SIZE });
+  }
+
   if (request.method === "GET" && url.pathname === "/v1/reconcile-status") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const runId = url.searchParams.get("run_id");
