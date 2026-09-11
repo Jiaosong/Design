@@ -79,7 +79,7 @@ interface QueryDataSourceResponse {
 export async function* listNotesPages(env: Env): AsyncGenerator<string> {
   let cursor: string | undefined;
   do {
-    const payload: Record<string, unknown> = { page_size: 100, result_type: "page", in_trash: false };
+    const payload: Record<string, unknown> = { page_size: 100, result_type: "page" };
     if (cursor) payload.start_cursor = cursor;
     const result = await notionFetch<QueryDataSourceResponse>(
       env,

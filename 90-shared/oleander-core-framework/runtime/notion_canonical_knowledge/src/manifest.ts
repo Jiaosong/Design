@@ -236,6 +236,13 @@ export async function completeSyncRun(db: D1Database, runId: string, count: numb
     .run();
 }
 
+export async function failSyncRun(db: D1Database, runId: string, count: number, error: string): Promise<void> {
+  await db
+    .prepare("UPDATE sync_runs SET completed_at=?, pages_enqueued=?, status='FAILED', error=? WHERE run_id=?")
+    .bind(now(), count, error.slice(0, 2000), runId)
+    .run();
+}
+
 export async function putRuntimeState(db: D1Database, key: string, value: string): Promise<void> {
   await db
     .prepare(

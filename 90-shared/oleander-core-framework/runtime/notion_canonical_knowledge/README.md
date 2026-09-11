@@ -89,4 +89,20 @@ Authorization: Bearer <OLEANDER_API_TOKEN>
 {}
 ```
 
+For first-bind validation, use a bounded reconcile before the full run:
+
+```json
+{ "limit": 1 }
+```
+
+The repository helper keeps the bearer token in gitignored `.dev.vars` and never prints it:
+
+```powershell
+node scripts/run-reconcile.mjs bounded 1
+node scripts/run-search.mjs --scoped "your validation query"
+node scripts/run-reconcile.mjs full
+```
+
+`limit` is clamped to `1..1000`. Omitting both `page_id` and `limit` preserves the full Notes reconcile behavior.
+
 See `ARCHITECTURE.md` for authority and failure semantics.

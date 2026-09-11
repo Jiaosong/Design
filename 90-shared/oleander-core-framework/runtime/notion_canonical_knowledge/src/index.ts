@@ -3,6 +3,7 @@ import {
   beginSyncRun,
   completeSyncRun,
   deleteRuntimeState,
+  failSyncRun,
   getRuntimeState,
   markWebhookProcessed,
   markWebhookQueued,
@@ -92,32 +93,40 @@ async function handleWebhook(request: Request, env: Env): Promise<Response> {
 
 async function handleReconcile(request: Request, env: Env): Promise<Response> {
   if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
-  const body = (await request.json().catch(() => ({}))) as { page_id?: string };
+  const body = (await request.json().catch(() => ({}))) as { page_id?: string; limit?: number };
+  const limit = Number.isFinite(body.limit) ? Math.max(1, Math.min(1000, Math.floor(body.limit as number))) : undefined;
   const runId = crypto.randomUUID();
-  await beginSyncRun(env.MANIFEST, runId, body.page_id ? "MANUAL_PAGE" : "FULL_NOTES_RECONCILE");
+  const mode = body.page_id ? "MANUAL_PAGE" : limit ? "BOUNDED_NOTES_RECONCILE" : "FULL_NOTES_RECONCILE";
+  await beginSyncRun(env.MANIFEST, runId, mode);
   let count = 0;
-
-  if (body.page_id) {
-    const cause = `reconcile:${runId}:${body.page_id}`;
-    await env.INGEST_QUEUE.send({ kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "manual" });
-    count = 1;
-  } else {
-    const messages: IngestMessage[] = [];
-    for await (const pageId of listNotesPages(env)) {
-      messages.push({ kind: "notion-page-sync", page_id: pageId, cause_id: `reconcile:${runId}:${pageId}`, cause_type: "reconcile" });
-      if (messages.length >= 100) {
+  try {
+    if (body.page_id) {
+      const cause = `reconcile:${runId}:${body.page_id}`;
+      await env.INGEST_QUEUE.send({ kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "manual" });
+      count = 1;
+    } else {
+      const messages: IngestMessage[] = [];
+      for await (const pageId of listNotesPages(env)) {
+        messages.push({ kind: "notion-page-sync", page_id: pageId, cause_id: `reconcile:${runId}:${pageId}`, cause_type: "reconcile" });
+        if (limit && count + messages.length >= limit) break;
+        if (messages.length >= 100) {
+          await env.INGEST_QUEUE.sendBatch(messages.map((body) => ({ body, contentType: "json" as const })));
+          count += messages.length;
+          messages.length = 0;
+        }
+      }
+      if (messages.length) {
         await env.INGEST_QUEUE.sendBatch(messages.map((body) => ({ body, contentType: "json" as const })));
         count += messages.length;
-        messages.length = 0;
       }
     }
-    if (messages.length) {
-      await env.INGEST_QUEUE.sendBatch(messages.map((body) => ({ body, contentType: "json" as const })));
-      count += messages.length;
-    }
+    await completeSyncRun(env.MANIFEST, runId, count);
+    return json({ ok: true, run_id: runId, mode, limit: limit ?? null, pages_enqueued: count }, 202);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    await failSyncRun(env.MANIFEST, runId, count, message);
+    throw error;
   }
-  await completeSyncRun(env.MANIFEST, runId, count);
-  return json({ ok: true, run_id: runId, pages_enqueued: count }, 202);
 }
 
 async function handleRequest(request: Request, env: Env): Promise<Response> {
