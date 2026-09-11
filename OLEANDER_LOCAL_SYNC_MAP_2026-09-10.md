@@ -22,24 +22,27 @@
 - Branch: agent/c04-web-v1-12-currentize-20260830
 - HEAD: 35648ae297ead58fbd4ca43c7b5e1c710663abec
 - Remote: origin/agent/c04-web-v1-12-currentize-20260830
-- Upstream delta: 0 ahead / 0 behind
-- Status: ISOLATED WORKTREE / REMOTE SYNCED / local browser-readback remains untracked
+- Upstream remote HEAD: c9cf475c
+- Upstream delta: 0 ahead / 1 behind
+- Status: ISOLATED WORKTREE / REMOTE ADVANCED BY 1 / local browser-readback remains untracked; do not fast-forward until the untracked browser evidence is reviewed
 
 ### Notion Canonical Knowledge Runtime
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
 - Branch: agent/oleander-notion-canonical-knowledge-v01-20260911
-- HEAD: ff643ed02d849b924fa2b0af3f58d91f6adcf6f5
+- HEAD: 29b06f89099767f9ada486bad08016e87e2fbe44
 - Remote: origin/agent/oleander-notion-canonical-knowledge-v01-20260911
 - PR: #521
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
-- Cloudflare Worker: 7543082e-77c8-445f-b3ba-ac0f2fbeba96
-- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler + one-page-per-Cron drain; full reconcile seeding and page processing are split across invocations; DLQ = containment only, no auto replay
-- Knowledge corpus state: PARTIAL / READBACK PENDING; prior snapshot 194 indexed documents vs 1,184 enumerated Notes objects. Do not label NOTION SYNCED until reconcile task readback closes.
+- Cloudflare Worker: 64ebe2ee-7dd8-417b-9197-04c687b2051e
+- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler + one-page-per-Cron drain; protected `drain-once` calls the same durable consumer for explicit operator verification/recovery; DLQ = containment only, no auto replay
+- Current full reconcile: `9b40de03-96d5-40b1-be84-0f137e7d248e` / `DRAINING` / 1,184 durable tasks
+- Production readback: all 7 historical fallback webhooks processed; first run-owned full-reconcile task processed; total durable receipts `8 PROCESSED / 1,183 PENDING`; indexed documents `197` (pre-hardening snapshot `194`)
+- Knowledge corpus state: PARTIAL / DRAINING. Automatic Cron continuation is still awaiting independent readback; do not label NOTION SYNCED until all current-run tasks close.
 
 ## Baseline
 - origin/main: c40381da06933fbfe9c77e7a75f248b52c63d6c2
-- Blender execution branch vs origin/main: 163 commits unique locally / 1533 commits on origin/main
+- Blender execution branch vs origin/main: 166 commits unique locally / 1533 commits on origin/main
 - Policy: origin/main is not automatically merged into active execution branches; reconcile through Source Authority / project state first.
 - Policy: do not merge into active branches without authority review
 
