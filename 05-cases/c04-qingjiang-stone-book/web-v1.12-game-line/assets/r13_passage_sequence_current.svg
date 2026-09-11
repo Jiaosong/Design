@@ -1,19 +1,96 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">R13 空间收束通过序列</title>
-<desc id="desc">远程概念四状态：接近、收束、通过、回看。只表达注意力与内容退场逻辑，不代表现场照片、测量或施工事实。</desc>
+<title id="title">R13 收束通过与注意力退场关系</title>
+<desc id="desc">远程概念关系图。以一条连续通过路径表达接近、空间收束、身体优先通过、走出后回看的连续关系；同步标注 ROUTE 保留、READ/DIGITAL/BRAND 退场与离开收束后可恢复。只表达项目内的空间与注意力关系，不代表现场照片、测量、净宽、坡度、安全或施工事实。</desc>
 <defs>
 <style>
-.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#66706B}.water{stroke:#2E7F86}.seal{fill:#985448}.terrain{fill:#D9DED6}.terrain2{fill:#C7D0C8}.path{fill:none;stroke:#F5F2E8;stroke-width:22;stroke-linecap:round}.guide{fill:none;stroke:#2E7F86;stroke-width:3;stroke-linecap:round}.thin{fill:none;stroke:#6C7B76;stroke-width:1.5}.person{fill:none;stroke:#17201E;stroke-width:2.6;stroke-linecap:round}.off{fill:#5F6965}.light{fill:#2E7F86}
+.sans{font-family:"Noto Sans CJK SC","Microsoft YaHei",Arial,sans-serif}.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif}.ink{fill:#17201E}.muted{fill:#66706B}.water{stroke:#2E7F86}.seal{fill:#985448}.terrain{fill:#D9DED6}.terrain2{fill:#C7D0C8}.path{fill:none;stroke:#F5F2E8;stroke-width:28;stroke-linecap:round;stroke-linejoin:round}.guide{fill:none;stroke:#2E7F86;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#6C7B76;stroke-width:1.5}.person{fill:none;stroke:#17201E;stroke-width:2.6;stroke-linecap:round}.personLight{fill:none;stroke:#F0F1EB;stroke-width:2.6;stroke-linecap:round}.off{fill:#7B8580}.trace{fill:#2E7F86}.owner{fill:#985448}.card{fill:#F7F5EE}.dark{fill:#0D2429}.label{font-size:11px;font-weight:700;letter-spacing:1.5px}.state{font-size:10.5px;font-weight:700}.note{font-size:11px}.dash{stroke-dasharray:5 7}
 </style>
 </defs>
 <rect width="1600" height="900" fill="#ECEDE7"/>
-<g class="sans"><text x="72" y="68" font-size="14" font-weight="700" letter-spacing="3" fill="#2E7F86">R13 / PASSAGE ATTENTION SEQUENCE</text><text x="72" y="122" class="serif ink" font-size="42" font-weight="700">走进狭窄处时，先看路，不急着读。</text><text x="72" y="158" class="muted" font-size="16">接近时保留轻提示；越接近收束处，内容越少；真正通过时，只留下方向与身体判断。</text></g>
-<line x1="72" y1="194" x2="1528" y2="194" stroke="#C9D0CA"/>
-<g transform="translate(72 246)">
-  <g><rect width="346" height="450" rx="4" fill="#F7F5EE"/><text x="24" y="34" class="sans" font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2">01 / APPROACH</text><text x="24" y="76" class="serif ink" font-size="28" font-weight="700">接近</text><path d="M0 166 C70 118 130 128 174 164 C230 208 280 168 346 124 V360 H0Z" class="terrain"/><path d="M0 232 C72 186 122 206 172 244 C218 280 270 246 346 200 V450 H0Z" class="terrain2"/><path d="M44 400 C91 346 130 320 171 296 C218 269 254 230 300 186" class="path"/><path d="M44 400 C91 346 130 320 171 296 C218 269 254 230 300 186" class="guide"/><circle cx="112" cy="340" r="7" class="seal"/><g transform="translate(112 310)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g><rect x="22" y="390" width="106" height="34" rx="17" fill="#EFF3EE" stroke="#8CA7A1"/><text x="75" y="412" class="sans" font-size="11" text-anchor="middle" fill="#355B57">还能看见轻提示</text></g>
-  <g transform="translate(370)"><rect width="346" height="450" rx="4" fill="#F7F5EE"/><text x="24" y="34" class="sans" font-size="12" font-weight="700" fill="#2E7F86" letter-spacing="2">02 / NARROW</text><text x="24" y="76" class="serif ink" font-size="28" font-weight="700">收束</text><path d="M0 130 C76 102 128 124 161 180 L120 450 H0Z" class="terrain"/><path d="M346 120 C278 112 230 138 196 194 L232 450 H346Z" class="terrain2"/><path d="M172 432 C170 346 174 270 176 190" class="path"/><path d="M172 432 C170 346 174 270 176 190" class="guide"/><g transform="translate(172 314)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g><path d="M68 250h58M220 250h58" class="thin" stroke-dasharray="5 6"/><text x="173" y="259" class="sans muted" font-size="11" text-anchor="middle">说明开始退场</text><rect x="115" y="390" width="116" height="34" rx="17" fill="none" stroke="#89958F"/><text x="173" y="412" class="sans" font-size="11" text-anchor="middle" fill="#5F6965">只留下方向</text></g>
-  <g transform="translate(740)"><rect width="346" height="450" rx="4" fill="#0D2429"/><text x="24" y="34" class="sans" font-size="12" font-weight="700" fill="#82C9C5" letter-spacing="2">03 / PASS</text><text x="24" y="76" class="serif" fill="#F0F1EB" font-size="28" font-weight="700">通过</text><path d="M0 118 C74 102 130 138 153 198 L130 450 H0Z" fill="#263B3C"/><path d="M346 112 C276 104 220 140 192 200 L218 450 H346Z" fill="#1E3335"/><path d="M173 436 C172 338 174 265 174 192" fill="none" stroke="#DDE5E0" stroke-width="18" stroke-linecap="round"/><path d="M173 436 C172 338 174 265 174 192" fill="none" stroke="#82C9C5" stroke-width="2.5" stroke-linecap="round"/><g transform="translate(173 310)" fill="none" stroke="#F0F1EB" stroke-width="2.6" stroke-linecap="round"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g><text x="173" y="390" class="sans" font-size="13" font-weight="700" text-anchor="middle" fill="#82C9C5">先通过</text><text x="173" y="414" class="sans" font-size="11" text-anchor="middle" fill="#9EAFAB">先顾脚下与身体</text></g>
-  <g transform="translate(1110)"><rect width="346" height="450" rx="4" fill="#F7F5EE"/><text x="24" y="34" class="sans" font-size="12" font-weight="700" fill="#985448" letter-spacing="2">04 / LOOK BACK</text><text x="24" y="76" class="serif ink" font-size="28" font-weight="700">回看</text><path d="M0 190 C72 150 124 160 168 198 C220 244 274 204 346 160 V450 H0Z" class="terrain"/><path d="M0 270 C72 226 128 250 176 282 C220 312 278 286 346 236 V450 H0Z" class="terrain2"/><path d="M46 412 C102 368 128 330 168 300 C214 266 256 230 302 198" class="path"/><path d="M46 412 C102 368 128 330 168 300 C214 266 256 230 302 198" class="guide"/><g transform="translate(246 242) rotate(180)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g><circle cx="244" cy="282" r="7" class="seal"/><text x="24" y="404" class="sans muted" font-size="11">走出收束后，想回看时再打开内容。</text></g>
+<g class="sans">
+  <text x="72" y="66" font-size="14" font-weight="700" letter-spacing="3" fill="#2E7F86">R13 / PASSAGE RELATION · ATTENTION WITHDRAWAL</text>
+  <text x="72" y="120" class="serif ink" font-size="42" font-weight="700">收束不是再加内容，而是让身体和路径接管。</text>
+  <text x="72" y="157" class="muted" font-size="16">同一条通过路径连续变窄再放开：接近时还能看见轻提示；进入收束后只保留方向；通过时先顾脚下与身体；离开收束后才允许内容回来。</text>
 </g>
-<g transform="translate(72 748)" class="sans"><rect width="1456" height="72" rx="2" fill="#E3E6E0"/><text x="24" y="28" font-size="11" font-weight="700" fill="#985448" letter-spacing="2">BOUNDARY</text><text x="24" y="52" font-size="13" fill="#4F5B56">REMOTE CONCEPT · NOT SITE PHOTO · NTS · FIELD OPEN · 不提供现场尺寸、净宽、坡度或安全结论</text><text x="1430" y="52" text-anchor="end" font-size="11" fill="#7C8580">远程概念 / 注意力序列</text></g>
+<line x1="72" y1="194" x2="1528" y2="194" stroke="#C9D0CA"/>
+
+<!-- Continuous scene relation: one route, changing enclosure -->
+<g transform="translate(72 232)">
+  <rect width="1456" height="390" rx="6" fill="#F7F5EE"/>
+  <text x="24" y="34" class="sans label" fill="#2E7F86">SCENE RELATION / ONE CONTINUOUS PASSAGE</text>
+  <text x="1432" y="34" class="sans label" fill="#7C8580" text-anchor="end">REMOTE CONCEPT · NO FIELD DIMENSIONS</text>
+
+  <!-- terrain/enclosure: open → narrow → open -->
+  <path d="M0 110 C170 80 300 102 430 148 C515 179 575 198 650 208 C710 216 760 218 806 214 C875 207 930 181 1000 151 C1130 96 1290 76 1456 102 V0 H0Z" fill="#D9DED6"/>
+  <path d="M0 390 V328 C160 344 300 325 430 276 C520 242 584 225 654 218 C716 212 765 211 812 217 C881 226 938 246 1004 275 C1143 337 1301 351 1456 326 V390Z" fill="#C7D0C8"/>
+
+  <!-- route stays continuous; content does not -->
+  <path d="M54 300 C240 292 350 268 472 235 C586 204 662 188 728 188 C805 188 886 206 980 238 C1110 282 1248 301 1402 292" class="path"/>
+  <path d="M54 300 C240 292 350 268 472 235 C586 204 662 188 728 188 C805 188 886 206 980 238 C1110 282 1248 301 1402 292" class="guide"/>
+
+  <!-- state stations -->
+  <g transform="translate(180 270)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g>
+  <g transform="translate(535 207)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g>
+  <g transform="translate(760 158)" class="personLight"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g>
+  <g transform="translate(1198 266) rotate(180)" class="person"><circle cx="0" cy="0" r="8"/><path d="M0 9v24m0-13l-12 12m12-12l12 11m-12 2l-10 18m10-18l11 17"/></g>
+
+  <!-- compression markers, relational only -->
+  <path d="M438 156 L438 278 M1016 150 L1016 280" class="thin dash"/>
+  <path d="M642 198 L642 222 M874 194 L874 226" class="thin dash"/>
+  <text x="758" y="94" class="sans note muted" text-anchor="middle">空间收束段 · 只表达关系，不声明净宽/坡度/安全结论</text>
+
+  <!-- one small prompt only before compression -->
+  <g transform="translate(238 216)"><circle r="7" class="seal"/><text x="16" y="4" class="sans note" fill="#7F4A40">轻提示仍可见</text></g>
+  <!-- no content symbol through narrow segment -->
+  <g transform="translate(760 250)"><rect x="-76" y="-18" width="152" height="36" rx="18" fill="#0D2429"/><text x="0" y="5" class="sans state" fill="#82C9C5" text-anchor="middle">ROUTE ONLY · PASS</text></g>
+  <!-- content can return only after exit -->
+  <g transform="translate(1260 214)"><circle r="7" class="seal"/><text x="16" y="4" class="sans note" fill="#7F4A40">走出后再决定是否回看</text></g>
+
+  <!-- zone captions -->
+  <text x="180" y="356" class="sans label" fill="#2E7F86" text-anchor="middle">01 / APPROACH</text>
+  <text x="510" y="356" class="sans label" fill="#2E7F86" text-anchor="middle">02 / NARROW</text>
+  <text x="760" y="356" class="sans label" fill="#985448" text-anchor="middle">03 / PASS</text>
+  <text x="1230" y="356" class="sans label" fill="#2E7F86" text-anchor="middle">04 / LOOK BACK</text>
+</g>
+
+<!-- Attention authority: editable, explicit, bounded -->
+<g transform="translate(72 654)" class="sans">
+  <text x="0" y="0" class="label" fill="#2E7F86">ATTENTION AUTHORITY / WHAT STAYS · WHAT WITHDRAWS</text>
+  <line x1="0" y1="24" x2="1456" y2="24" stroke="#C4CBC5"/>
+
+  <g transform="translate(0 48)">
+    <rect width="334" height="110" rx="4" class="card"/>
+    <text x="18" y="28" class="label trace">APPROACH</text>
+    <text x="18" y="55" class="state ink">ROUTE = OWNER</text>
+    <text x="18" y="79" class="note muted">READ / BRAND = TRACE</text>
+    <text x="18" y="99" class="note muted">轻提示可见，但不制造停留义务</text>
+  </g>
+  <g transform="translate(374 48)">
+    <rect width="334" height="110" rx="4" class="card"/>
+    <text x="18" y="28" class="label trace">NARROW</text>
+    <text x="18" y="55" class="state ink">BODY + ROUTE = OWNER</text>
+    <text x="18" y="79" class="note muted">READ / DIGITAL / BRAND = OFF</text>
+    <text x="18" y="99" class="note muted">说明退场，只保留方向</text>
+  </g>
+  <g transform="translate(748 48)">
+    <rect width="334" height="110" rx="4" fill="#0D2429"/>
+    <text x="18" y="28" class="label" fill="#82C9C5">PASS</text>
+    <text x="18" y="55" class="state" fill="#F0F1EB">BODY + ROUTE = OWNER</text>
+    <text x="18" y="79" class="note" fill="#9EAFAB">READ / DIGITAL / BRAND = OFF</text>
+    <text x="18" y="99" class="note" fill="#9EAFAB">先通过，不要求阅读或互动</text>
+  </g>
+  <g transform="translate(1122 48)">
+    <rect width="334" height="110" rx="4" class="card"/>
+    <text x="18" y="28" class="label owner">LOOK BACK</text>
+    <text x="18" y="55" class="state ink">ROUTE = OWNER</text>
+    <text x="18" y="79" class="note muted">READ = OPTIONAL RETURN</text>
+    <text x="18" y="99" class="note muted">走出收束后，内容才允许回来</text>
+  </g>
+</g>
+
+<g transform="translate(72 835)" class="sans">
+  <text x="0" y="0" font-size="11" font-weight="700" fill="#985448" letter-spacing="2">BOUNDARY</text>
+  <text x="110" y="0" font-size="12.5" fill="#4F5B56">REMOTE CONCEPT · NOT SITE PHOTO · NTS · FIELD OPEN · 不提供现场尺寸、净宽、坡度、安全或施工结论</text>
+  <text x="1456" y="0" text-anchor="end" font-size="11" fill="#7C8580">R13 = 收束 / 通过 / 再打开内容</text>
+</g>
 </svg>
