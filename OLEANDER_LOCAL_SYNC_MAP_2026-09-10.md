@@ -12,7 +12,7 @@
 ### Blender Runtime
 - Path: D:\\Desgin
 - Branch: agent/blender-surface-system-v1-21-source-context
-- HEAD: bf324158502c9b8896aa9a1a8914c0f276497b00
+- Runtime code baseline before this checkpoint-only map update: bf324158502c9b8896aa9a1a8914c0f276497b00
 - Remote: origin/agent/blender-surface-system-v1-21-source-context
 - Upstream delta: 0 ahead / 0 behind
 - Status: SYNCED TO OWN REMOTE
