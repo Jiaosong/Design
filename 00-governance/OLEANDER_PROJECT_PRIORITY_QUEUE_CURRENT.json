@@ -19,7 +19,7 @@
       "current_owner_scope": "COMPATIBILITY/LIVE-FRONTIER FIELD FOR PRJ-C04-DIGITAL-INTERACTION WEB ONLY; NOT THE OWNER OF THE WHOLE PROJECT AGGREGATE",
       "state": "ACTIVE",
       "current_native_master": "WEB OBJECT ONLY: NONE_ON_MAIN / WEB_V1.12_PRODUCER_IS_PR_465_ONLY; EVERY OTHER C04 WORK OBJECT MUST RESOLVE ITS OWN CURRENT_NATIVE_MASTER BEFORE MATERIAL ACTION",
-      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / head 217da35dda9f553f2d2e1b3e23f1e828e68b2d1e / 170 commits / fresh 2026-09-11 governance readback / exact-head VALIDATION=REVISE_RETURNED",
+      "current_pr_frontier": "GitHub PR #465 / OPEN / UNMERGED / mergeable=true / head d107f5de2529677bcd600e4cea0b3012144d19c6 / 171 commits / fresh 2026-09-11 governance readback / exact-head PRESENTATION_READY+VALIDATION_FINAL_KEEP=NOT_ESTABLISHED",
       "next_owner": "VALIDATION",
       "next_owner_scope": "LIVE_WEB_OBJECT_ONLY; OTHER CHILD WORK OBJECTS RESOLVE THEIR OWN NEXT_OWNER",
       "whole_project_authority": [
@@ -41,7 +41,7 @@
         {
           "workstream_id": "ACTIVE-3-WEB",
           "state": "ACTIVE_REPAIR",
-          "current_gap": "PR #465 exact head 217da35dda9f553f2d2e1b3e23f1e828e68b2d1e is OPEN/UNMERGED/mergeable=true with 170 commits. Exact-head C04 Web Static Integrity run 34529036195, AI Governance Evals run 34529036187, and Project Anti-Pollution Gate run 34529036178 are SUCCESS. Independent exact-head VALIDATION exists and returned REVISE_RETURNED: the Level 0→3 physical hierarchy is bounded SUPPORT only and does not close transfer into an actual Current C04 Physical object; project-specific native geometry/body/path relation and independent finished-output/public-route FINAL_KEEP remain open."
+          "current_gap": "PR #465 exact head d107f5de2529677bcd600e4cea0b3012144d19c6 is OPEN/UNMERGED/mergeable=true with 171 commits. Exact-head C04 Web Static Integrity run 34599014713, AI Governance Evals run 34599014669, and Project Anti-Pollution Gate run 34599014745 are SUCCESS. The fresh project-native delta binds selected P01-B physical relation into an editable Development carrier with plan/body/path, section/service-side and failure-safe relations, materially addressing the predecessor generic-hierarchy defect. Exact-head PRESENTATION_READY and VALIDATION FINAL_KEEP are not yet established; P01-B remains candidate/development level and all engineering/FIELD authority remains open."
         },
         {
           "workstream_id": "ACTIVE-4-PHYSICAL-PRODUCT-DETAIL",
@@ -196,9 +196,9 @@
       "shared_blender_runtime_interface_state": "ACTIVE_RUNTIME_INTERFACE / BLENDER_5_2_0_LTS_EXECUTED",
       "job_local_blender_materialization_state": "RETURNED_MACHINE / DESCRIPTOR_RETIRED_DISABLED",
       "production_stall": null,
-      "next_action": "GOVERNANCE keeps PR #465 as the live Web frontier but does not merge while exact-head VALIDATION is REVISE_RETURNED. PRESENTATION/VALIDATION must close the project-specific Physical-object transfer and exact finished-output/public-route release on an unchanged future head. DESIGN continues the highest-value non-colliding whole-project native asset instead of returning to synthetic Training; VALIDATION separately consumes the returned 云水倚 preview.",
-      "updated_at": "2026-09-11T17:06:57+08:00",
-      "source_of_queue_decision": "Fresh 2026-09-11 governance readback: C04 Current Materials routes public Web to PR #465. Live PR #465 is OPEN/UNMERGED/mergeable=true at exact head 217da35dda9f553f2d2e1b3e23f1e828e68b2d1e with 170 commits. Exact-head C04 Web Static Integrity run 34529036195, AI Governance Evals run 34529036187, and Project Anti-Pollution Gate run 34529036178 are SUCCESS. Independent exact-head VALIDATION is REVISE_RETURNED, so CI does not release merge; the actual C04 Physical-object transfer and independent finished-output/public-route FINAL_KEEP remain open."
+      "next_action": "GOVERNANCE keeps PR #465 as the live Web frontier at exact head d107f5de2529677bcd600e4cea0b3012144d19c6 and does not merge without exact-head PRESENTATION_READY + VALIDATION FINAL_KEEP. PRESENTATION/VALIDATION must independently read the new project-specific P01-B body/path Development carrier and verify its lawful candidate boundary plus actual 1920/1366/390/public-route output. DESIGN continues the highest-value non-colliding whole-project native asset instead of returning to synthetic Training; VALIDATION separately consumes the returned 云水倚 preview.",
+      "updated_at": "2026-09-11T21:12:00+08:00",
+      "source_of_queue_decision": "Fresh 2026-09-11 governance readback: C04 Current Materials routes public Web to PR #465. Live PR #465 is OPEN/UNMERGED/mergeable=true at exact head d107f5de2529677bcd600e4cea0b3012144d19c6 with 171 commits. Exact-head C04 Web Static Integrity run 34599014713, AI Governance Evals run 34599014669, and Project Anti-Pollution Gate run 34599014745 are SUCCESS. The new P01-B Development binding materially advances the prior generic Physical-transfer defect, but no exact-head PRESENTATION_READY or VALIDATION FINAL_KEEP yet exists and P01-B remains candidate/development-level with FIELD/engineering authority open."
     },
     {
       "priority": 2,
