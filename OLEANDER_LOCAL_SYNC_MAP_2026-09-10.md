@@ -28,13 +28,13 @@
 ### Notion Canonical Knowledge Runtime
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
 - Branch: agent/oleander-notion-canonical-knowledge-v01-20260911
-- HEAD: dd42eee0a61b8c233861b55f7bea84515084083c
+- HEAD: ff643ed02d849b924fa2b0af3f58d91f6adcf6f5
 - Remote: origin/agent/oleander-notion-canonical-knowledge-v01-20260911
 - PR: #521
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
-- Cloudflare Worker: b5f7ad57-36db-4c02-94f6-2c0cb24d7591
-- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler + Cron drain; DLQ = containment only, no auto replay
+- Cloudflare Worker: 7543082e-77c8-445f-b3ba-ac0f2fbeba96
+- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler + one-page-per-Cron drain; full reconcile seeding and page processing are split across invocations; DLQ = containment only, no auto replay
 - Knowledge corpus state: PARTIAL / READBACK PENDING; prior snapshot 194 indexed documents vs 1,184 enumerated Notes objects. Do not label NOTION SYNCED until reconcile task readback closes.
 
 ## Baseline
