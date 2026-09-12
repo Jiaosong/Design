@@ -1,0 +1,12 @@
+<!doctype html><meta charset='utf-8'><title>B bounded state</title>
+<style>
+body{font-family:sans-serif;margin:40px}.tabs{display:flex;gap:8px}.panel{margin-top:20px;padding:20px;border:1px solid #999}.panel[hidden]{display:none}.panel button{margin:8px}
+</style>
+<div class='tabs'><button id='tab-a' aria-controls='panel-a' aria-selected='true'>AXON</button><button id='tab-b' aria-controls='panel-b' aria-selected='false'>SECTION</button></div>
+<section id='panel-a' class='panel'><h2>AXON</h2><button id='a-hotspot'>AXON hotspot</button></section>
+<section id='panel-b' class='panel' hidden inert><h2>SECTION</h2><button id='b-hotspot'>SECTION hotspot</button></section>
+<script>
+const a=document.querySelector('#panel-a'), b=document.querySelector('#panel-b'),ta=document.querySelector('#tab-a'),tb=document.querySelector('#tab-b');
+function show(panel,hide,activeTab,inactiveTab){hide.hidden=true;hide.inert=true;panel.hidden=false;panel.inert=false;activeTab.setAttribute('aria-selected','true');inactiveTab.setAttribute('aria-selected','false')}
+ta.onclick=()=>show(a,b,ta,tb); tb.onclick=()=>show(b,a,tb,ta)
+</script>
