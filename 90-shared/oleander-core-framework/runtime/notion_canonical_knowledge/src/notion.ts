@@ -77,17 +77,31 @@ export interface AcademicPageInput {
   replaced_page_ids?: string[];
 }
 
-interface NotionDataSource {
+export interface NotionDataSource {
   object: "data_source";
   id: string;
   properties?: Record<string, Record<string, unknown>>;
 }
 
-interface NotionView {
+export interface NotionView {
   object: "view";
   id: string;
   name?: string;
   type?: string;
+  url?: string;
+  data_source_id?: string | null;
+  parent?: { type?: string; database_id?: string };
+  filter?: Record<string, unknown> | null;
+  sorts?: Array<Record<string, unknown>> | null;
+  configuration?: Record<string, unknown> | null;
+  dashboard_view_id?: string | null;
+}
+
+interface NotionViewListResponse {
+  object: "list";
+  results: Array<NotionView | { object?: string; id?: string; view?: NotionView }>;
+  has_more?: boolean;
+  next_cursor?: string | null;
 }
 
 const GOVERNANCE_FIELDS = {
@@ -246,6 +260,116 @@ export async function createLinkedNotesView(
       type: input.type,
       filter: input.filter,
       ...(input.sorts?.length ? { sorts: input.sorts } : {}),
+    }),
+  });
+}
+
+export async function retrieveView(env: Env, viewId: string): Promise<NotionView> {
+  return notionFetch<NotionView>(env, `/v1/views/${encodeURIComponent(viewId)}`);
+}
+
+export async function listDatabaseViews(env: Env, databaseId: string): Promise<NotionView[]> {
+  const response = await notionFetch<NotionViewListResponse>(
+    env,
+    `/v1/views?database_id=${encodeURIComponent(databaseId)}`,
+  );
+  const views = response.results
+    .map((entry) => ("view" in entry && entry.view ? entry.view : entry as NotionView))
+    .filter((entry) => Boolean(entry?.id));
+  const hydrated: NotionView[] = [];
+  for (const view of views) {
+    hydrated.push(view.name && view.type ? view : await retrieveView(env, view.id));
+  }
+  return hydrated;
+}
+
+export async function updateView(
+  env: Env,
+  viewId: string,
+  updates: {
+    name?: string;
+    filter?: Record<string, unknown> | null;
+    sorts?: Array<Record<string, unknown>> | null;
+    quick_filters?: Record<string, unknown> | null;
+    configuration?: Record<string, unknown> | null;
+  },
+): Promise<NotionView> {
+  return notionFetch<NotionView>(env, `/v1/views/${encodeURIComponent(viewId)}`, {
+    method: "PATCH",
+    body: JSON.stringify(updates),
+  });
+}
+
+export async function createViewOnDatabase(
+  env: Env,
+  input: {
+    database_id: string;
+    data_source_id: string;
+    name: string;
+    type: "list" | "table" | "gallery" | "chart" | "board" | "dashboard";
+    filter?: Record<string, unknown> | null;
+    sorts?: Array<Record<string, unknown>> | null;
+    configuration?: Record<string, unknown> | null;
+    position?: Record<string, unknown>;
+  },
+): Promise<NotionView> {
+  return notionFetch<NotionView>(env, "/v1/views", {
+    method: "POST",
+    body: JSON.stringify({
+      database_id: input.database_id,
+      data_source_id: input.data_source_id,
+      name: input.name,
+      type: input.type,
+      ...(input.filter ? { filter: input.filter } : {}),
+      ...(input.sorts?.length ? { sorts: input.sorts } : {}),
+      ...(input.configuration ? { configuration: input.configuration } : {}),
+      ...(input.position ? { position: input.position } : {}),
+    }),
+  });
+}
+
+export async function createDashboardWidgetView(
+  env: Env,
+  input: {
+    dashboard_view_id: string;
+    data_source_id: string;
+    name: string;
+    type: "list" | "table" | "gallery" | "chart" | "board";
+    filter?: Record<string, unknown> | null;
+    sorts?: Array<Record<string, unknown>> | null;
+    configuration?: Record<string, unknown> | null;
+    placement?: { type: "new_row"; row_index?: number } | { type: "existing_row"; row_index: number };
+  },
+): Promise<NotionView> {
+  return notionFetch<NotionView>(env, "/v1/views", {
+    method: "POST",
+    body: JSON.stringify({
+      view_id: input.dashboard_view_id,
+      data_source_id: input.data_source_id,
+      name: input.name,
+      type: input.type,
+      ...(input.filter ? { filter: input.filter } : {}),
+      ...(input.sorts?.length ? { sorts: input.sorts } : {}),
+      ...(input.configuration ? { configuration: input.configuration } : {}),
+      ...(input.placement ? { placement: input.placement } : {}),
+    }),
+  });
+}
+
+export async function replaceReaderIntroMarkdown(env: Env, pageId: string, newIntro: string): Promise<void> {
+  const current = await fetchCompleteMarkdown(env, pageId);
+  const firstDatabase = current.markdown.indexOf("<database ");
+  if (firstDatabase < 0) throw new Error("Reader page does not contain linked database blocks");
+  const oldIntro = current.markdown.slice(0, firstDatabase).trim();
+  if (!oldIntro) throw new Error("Reader page intro is empty");
+
+  await notionFetch<unknown>(env, `/v1/pages/${encodeURIComponent(pageId)}/markdown`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      type: "update_content",
+      update_content: {
+        content_updates: [{ old_str: oldIntro, new_str: newIntro.trim() }],
+      },
     }),
   });
 }
