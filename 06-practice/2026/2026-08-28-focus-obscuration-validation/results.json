@@ -1,0 +1,34 @@
+[
+  {
+    "fixture": "a_obscured.html",
+    "viewport": "desktop",
+    "active": "target",
+    "fully_hidden_by_sticky_header": true,
+    "geometry": {"target": {"x": 24, "y": 20, "w": 121.1875, "h": 44, "bottom": 64}, "header": {"bottom": 96}, "outline": "solid", "outlineWidth": "4px"},
+    "screenshot_sha256": "ba18ca63a4c03509a6d341769abbc6dd48c85a5b7820d8106b3054d9926fe6c9"
+  },
+  {
+    "fixture": "a_obscured.html",
+    "viewport": "mobile",
+    "active": "target",
+    "fully_hidden_by_sticky_header": true,
+    "geometry": {"target": {"x": 24, "y": 20, "w": 121.1875, "h": 44, "bottom": 64}, "header": {"bottom": 96}, "outline": "solid", "outlineWidth": "4px"},
+    "screenshot_sha256": "f89bfdd23ba2ad166ca539aa069937b423bbad8d31f10fc92429f27b20b25b8f"
+  },
+  {
+    "fixture": "b_repaired.html",
+    "viewport": "desktop",
+    "active": "target",
+    "fully_hidden_by_sticky_header": false,
+    "geometry": {"target": {"x": 24, "y": 112, "w": 121.1875, "h": 44, "bottom": 156}, "header": {"bottom": 96}, "outline": "solid", "outlineWidth": "4px"},
+    "screenshot_sha256": "7ed35545068259c6658f112b5f5314c938ffb9bce7a2b4ebf75d1a904b4b0de2"
+  },
+  {
+    "fixture": "b_repaired.html",
+    "viewport": "mobile",
+    "active": "target",
+    "fully_hidden_by_sticky_header": false,
+    "geometry": {"target": {"x": 24, "y": 112, "w": 121.1875, "h": 44, "bottom": 156}, "header": {"bottom": 96}, "outline": "solid", "outlineWidth": "4px"},
+    "screenshot_sha256": "736cca79bf6f004d970deaa1e0bdeb3ff8f2b08d2b6a5a414e6cc026daabe801"
+  }
+]

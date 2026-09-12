@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>A focus obscured</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font:16px/1.4 system-ui,sans-serif;background:#fafafa;color:#111}
+header{position:fixed;z-index:10;top:0;left:0;right:0;height:96px;background:#111;color:#fff;padding:20px 24px}
+main{padding:20px 24px 1200px}
+button{min-height:44px;padding:10px 16px} button:focus-visible{outline:4px solid #0a66ff;outline-offset:3px}
+.spacer{height:800px}
+</style>
+<header id="sticky">Sticky navigation<br><small>96px author-created overlay</small></header>
+<main><button id="target">Primary action</button><div class="spacer"></div><button>Later action</button></main>
