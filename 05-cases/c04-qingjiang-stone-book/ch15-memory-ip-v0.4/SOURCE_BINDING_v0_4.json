@@ -1,0 +1,8 @@
+{
+  "P01": {"primary":"P01_journey_landscape.jpg","source":"01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","operation":"source-bound crop + memory page overlay","does_not_prove":"13 checkpoints or field-observed route"},
+  "P02": {"primary":"P02_fold_object.jpg","source":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png","operation":"object-level crop; OPEN/DURING/BECOME A BOOK presentation states","model":"NOT ADMITTED"},
+  "P03": {"primary":"P03_book.jpg","source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","operation":"one screen at a time from mature source","open":"App v1.29 exact runtime source"},
+  "P04": {"primary":"P04_r13_exit.jpg","source":"11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png","operation":"same R13 EXIT event remains central; paper/digital consequences overlaid","does_not_prove":"field width/viewpoint/safety"},
+  "P05": {"primary":["P05_journal_cover.jpg","P03_book.jpg","P05_line.jpg","P05_mist_family.jpg"],"source":["15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png"],"operation":"object-level family composition","open":["清风吟 original pixels runtime materialization","清江一线/清江雾气 independent original pixels"],"model":"DO NOT MODEL YET"},
+  "P06": {"primary":"native closure composition","operation":"reuses chapter grammar only; purchase toggles optional branch","commercial_fields":"OPEN"}
+}

@@ -1,0 +1,8 @@
+{
+  "review_id": "C04-CH15-IDR-v0.1",
+  "artifact": "C04_CH15_MEMORY_IP_v0_1",
+  "request_state": "PENDING_INDEPENDENT_REVIEW",
+  "review_scope": ["first visual threshold", "chapter rhythm", "hierarchy", "typography", "asset fidelity to user original designs", "CH14→CH15 continuity", "mobile readability", "professional finish"],
+  "reviewer_instruction": "Do not inherit producer KEEP. Independently render/open artifact and return KEEP/REVISE/REJECT/HOLD with blocking defects.",
+  "producer_does_not_claim": ["Design PASS", "MAIN KEEP", "Browser PASS", "Field PASS", "Promotion"]
+}

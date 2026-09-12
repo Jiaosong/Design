@@ -1,0 +1,18 @@
+{
+  "project": "OLEANDER C04 清江石书",
+  "chapter": "CH15",
+  "version": "0.1",
+  "state": "PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "authority": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.2/CH15_MEMORY-IP-CULTURAL-PRODUCT.md",
+  "page_units": ["CH15-P01", "CH15-P02", "CH15-P03", "CH15-P04", "CH15-P05", "CH15-P06"],
+  "existing_assets_consumed": [
+    {"object": "ODI-02 清江旅记", "source": "physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg", "role": "MAIN / physical memory"},
+    {"object": "ODI-03 我的石书", "source": "digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html", "role": "MAIN / digital memory; CH11 owns UI implementation"},
+    {"object": "ODB-04A/B/C 清风吟", "source": "user original boards 清风吟1.png / 清风吟2.png / 清风吟3.png", "role": "SOURCE / selective memory family; presentation carrier only"},
+    {"object": "ODI-04 清江一线", "source": "user original design source register", "role": "SELECTIVE EXTENSION"},
+    {"object": "ODI-05 清江雾气", "source": "user original design source register", "role": "SELECTIVE EXTENSION"},
+    {"object": "ODI-06 红花峰崽", "source": "user original design source register", "role": "OPTIONAL FAMILY / CHILD"}
+  ],
+  "locked_invariants": ["Landscape first", "Service/Return before optional interpretation", "No 13/13 completion mechanic", "Partial is complete", "No-phone complete", "FIELD OBSERVED=0", "FIELD MEASURED=0", "G1F HOLD", "NO_PROMOTION"],
+  "does_not_prove": ["field validation", "manufacturing readiness", "pricing", "operator approval", "commercial rights clearance", "current CH11 pixel parity", "independent design approval"]
+}

@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png": {"drive_id":"18k-R_KQAJWmhJ0w6Zm4_546Y01OaW63l","size":[2560,1440]},
+    "07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png": {"drive_id":"1sFIVEBylCKrirRcTYjdC2NuoOOiWyIDQ","size":[2560,1440]},
+    "04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png": {"drive_id":"1DBY61KOcLS-TA4pQPBXksB7-l73oaVI1","size":[2560,1440]},
+    "11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png": {"drive_id":"1_l_ivu6nLNuNbVRdhYx1uSjlgzmPA-LL","size":[2560,1440]},
+    "15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png": {"drive_id":"1b0zC65tzKAfU3Gq3WfN7ND5B-xRG1Sli","size":[2560,1440]}
+  },
+  "crops": {
+    "S15A_journey.jpg":{"source":"01_C04_MASTER_JOURNEY_CURRENTIZED_v3.png","box":[430,0,1760,990],"resize":[1920,1080],"operation":"source crop + bounded tonal reduction"},
+    "S15B_paper.jpg":{"source":"07_C04_MEMORY_PAPER_PRODUCT_CURRENTIZED_v4.png","box":[95,205,1695,1245],"resize":[1600,1040]},
+    "S15B_mybook.jpg":{"source":"04_C04_DIGITAL_MEMORY_CURRENTIZED_v3.png","box":[1645,280,2138,1340],"resize":[740,1590]},
+    "S15B_r13_event.jpg":{"source":"11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png","box":[910,345,1322,1048],"resize":[900,1536],"classification":"REMOTE CURRENTIZED DESIGN / EVENT IDENTITY / NOT SITE PHOTO"},
+    "S15C_journal.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[85,430,530,1070],"resize":[760,1094]},
+    "S15C_line.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[1605,420,2108,1005],"resize":[780,908]},
+    "S15C_mist.jpg":{"source":"15_C04_MEMORY_IP_RECOVERY_CURRENTIZED_v4.png","box":[2030,420,2488,1005],"resize":[710,908]}
+  }
+}

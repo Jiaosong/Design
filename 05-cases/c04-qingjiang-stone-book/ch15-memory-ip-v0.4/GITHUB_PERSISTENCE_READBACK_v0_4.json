@@ -1,0 +1,18 @@
+{
+  "artifact":"C04 CH15 v0.4 visual-led reconstruct",
+  "state":"EXACT LEAN SOURCE RECOVERY PASS / DURABLE REVIEW BINARY PASS / PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "lean_runtime":{"bytes":30315,"sha256":"58bab14eb0b58d6f8859141ee3cd2649dfd3d2ad48ff13bd58a7abf1d5c7c4eb","rebuild_script":"REBUILD_SOURCE.py"},
+  "source_parts":[
+    {"file":"source-part01.txt","bytes":5002,"git_blob_sha":"523a0eeb22ac00c5695a09ee5de94b9208298224"},
+    {"file":"source-part02.txt","bytes":5000,"git_blob_sha":"d943f4c9c7b94571fc90aef6581136d8f0079f94"},
+    {"file":"source-part03.txt","bytes":5000,"git_blob_sha":"1ad8212257ad314dfa6d801e2b104137d68736af"},
+    {"file":"source-part04.txt","bytes":5487,"git_blob_sha":"f75a26328833d9962de00aaa5423511cf34053dc"},
+    {"file":"source-part05.txt","bytes":5833,"git_blob_sha":"16dea4fa5f0c04b913bbd21034f845ccacf68e1d"},
+    {"file":"source-part06.txt","bytes":3993,"git_blob_sha":"e4fc9992e96313f538a2e5dc045c608ac740ad4f"}
+  ],
+  "transfer_repair":{"observed":"manual connector persistence initially duplicated one boundary character at source-part05/source-part06","repair":"source-part05 boundary corrected and Git blob SHA now equals local expected hash","verification":"all six persisted part sizes and Git blob SHAs match local exact source chunks"},
+  "portable_review_html":{"bytes":2619997,"sha256":"2c8aa459eb059d5740062450e293860b4f8548252d3627b8469cc24e92bf60b9"},
+  "review_package":{"file":"C04_CH15_MEMORY_IP_v0_4.zip","bytes":8925861,"sha256":"b41bc88e881fa12dbc834ce8949a65a8d90122d6d4f25a51c745d2605525a15a","drive_folder_id":"1qhlhTFmBohMFIDJHCo59ft5MyWqLIHdo","drive_file_id":"1LKbFHE4l-f1JuBBHT9sS9BaSxHhYasAt","durable_binary_drive_persistence":"PASS","drive_retrieval_readback":{"bytes":8925861,"sha256":"b41bc88e881fa12dbc834ce8949a65a8d90122d6d4f25a51c745d2605525a15a","result":"EXACT MATCH"}},
+  "review_pixels":{"desktop_drive_id":"1Zq1qh-XbwQ5xSreeGrZAf11LVS5Jkkr6","mobile_drive_id":"1jOElZyMYfRf0vZ6odWA-KXAAUhWlrTvz"},
+  "does_not_prove":["independent professional design approval","field validation","manufacturing readiness","commercial readiness","promotion"]
+}

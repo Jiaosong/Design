@@ -1,0 +1,37 @@
+{
+  "artifact": "C04 CH15 Memory/IP/Cultural Product v0.1",
+  "status": "PRODUCER CANDIDATE / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "delivery_qc": {
+    "package_integrity": "PASS",
+    "utf8_html_css": "PASS",
+    "page_unit_count": {"expected": 6, "actual": 6, "ids": ["ch15-p01", "ch15-p02", "ch15-p03", "ch15-p04", "ch15-p05", "ch15-p06"], "status": "PASS"},
+    "fragment_asset_refs": {"count": 6, "missing": [], "status": "PASS"},
+    "editable_svg_parse": {
+      "CH15_P01_MEMORY_FLOW_v0_1.svg": "PASS",
+      "CH15_P03_MY_STONE_BOOK_MEMORY_VIEW_v0_1.svg": "PASS",
+      "CH15_P04_COMPLEMENT_SYSTEM_v0_1.svg": "PASS",
+      "CH15_P05_MEMORY_FAMILY_v0_1.svg": "PASS",
+      "CH15_P06_MEMORY_COMMERCIAL_BOUNDARY_v0_1.svg": "PASS",
+      "M01_qingjiang_journal_v1_2.svg": "PASS"
+    },
+    "desktop_fallback_render": {"engine": "WeasyPrint 68.0 + CairoSVG 2.8.2", "pages": 6, "target": "1920x1080 CSS px / 6 pages", "status": "PASS_FALLBACK", "evidence": "local delivery package previews/CH15_QC_DESKTOP_1920x1080.pdf + desktop_montage.png"},
+    "mobile_fallback_render": {"engine": "WeasyPrint 68.0 + CairoSVG 2.8.2", "pages": 6, "target": "390x844 CSS px / 6 pages", "status": "PASS_FALLBACK", "evidence": "local delivery package previews/CH15_QC_MOBILE_390x844.pdf + mobile_montage.png"},
+    "exact_browser_readback": {"engine": "Chromium / Playwright", "status": "BLOCKED_BY_ENVIRONMENT", "evidence": "Chromium local/localhost navigation was blocked; Playwright returned net::ERR_BLOCKED_BY_ADMINISTRATOR", "does_not_prove": "No Browser PASS is claimed."}
+  },
+  "visual_readback": {
+    "result": "KEEP AS PRODUCER CANDIDATE / SEND TO INDEPENDENT DESIGN REVIEW",
+    "observed": [
+      "P01 and P06 form a dark post-Return opening/closure; chapter reads as afterimage rather than catalogue.",
+      "P02 physical journal and P03 digital memory receive equal MAIN weight without duplicating CH11 UI authority.",
+      "P04 establishes physical/digital complement before P05 introduces cultural-product family.",
+      "P05 retains Qingfengyin as source-bound selective family and avoids turning ten sensory parts into tasks.",
+      "Fallback 390x844 raster readback shows all six units without obvious page-level clipping; small provenance text is intentionally secondary."
+    ],
+    "warnings": [
+      "Original Qingfengyin boards remain upstream user-original source objects and are not raster-copied into this package; CH15 uses a vector presentation carrier.",
+      "Exact Chromium browser matrix is still required before Browser PASS.",
+      "Independent design review has not occurred; no Design PASS / MAIN KEEP is claimed."
+    ]
+  },
+  "governance": {"FIELD_OBSERVED": 0, "FIELD_MEASURED": 0, "G1F": "HOLD", "promotion": "NO_PROMOTION"}
+}

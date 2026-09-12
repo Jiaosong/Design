@@ -1,0 +1,12 @@
+{
+  "release_candidate":"C04 CH15 v0.4 visual-led reconstruct",
+  "package_integrity":"PASS for local package",
+  "desktop_1920x1080":{"P01":{"overflow_x":0},"P02":{"overflow_x":0},"P03":{"overflow_x":0},"P04":{"overflow_x":0},"P05":{"overflow_x":0},"P06":{"overflow_x":0}},
+  "mobile_390x844":{"P01":{"overflow_x":0},"P02":{"overflow_x":0},"P03":{"overflow_x":0},"P04":{"overflow_x":0},"P05":{"overflow_x":0},"P06":{"overflow_x":0}},
+  "recorded_errors":[],
+  "interaction_states":{"P01":"memory-scene keep11","P02":"during","P03":"read","P04":"digital","P05":"qingfengyin","P06":"optional active"},
+  "reduced_motion":{"running_animations":0},
+  "blocking_defects":[],
+  "warnings":["live file:// or localhost navigation not used for readback; exact authored DOM loaded with page.set_content","App v1.29 exact runtime source remains OPEN","Qingfengyin original raw pixels remain source-locked but not materialized in runtime"],
+  "design_gate":"INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO SELF-KEEP"
+}
