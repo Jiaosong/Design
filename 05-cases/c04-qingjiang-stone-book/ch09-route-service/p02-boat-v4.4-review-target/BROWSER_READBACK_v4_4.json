@@ -1,0 +1,22 @@
+{
+  "desktop": {
+    "vw": 1920,
+    "vh": 1080,
+    "sw": 1920,
+    "sh": 1080,
+    "heroH": 858,
+    "console_errors": [],
+    "page_errors": [],
+    "screenshot": "CH09_P02_BROWSER_v4_4_1920x1080.png"
+  },
+  "mobile": {
+    "vw": 390,
+    "vh": 844,
+    "sw": 390,
+    "sh": 1710,
+    "heroH": 540,
+    "console_errors": [],
+    "page_errors": [],
+    "screenshot": "CH09_P02_BROWSER_v4_4_390x844.png"
+  }
+}

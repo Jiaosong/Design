@@ -1,0 +1,17 @@
+{
+  "release_candidate": "CH09-P02 v3.1",
+  "dimensions": {"png":[1920,1080],"far_read":[480,270],"mobile":[390,844]},
+  "source_baseline_preserved": true,
+  "editable_svg": true,
+  "html": true,
+  "image_generation_used": false,
+  "browser": {"desktop_horizontal_overflow":false,"mobile_horizontal_overflow":false,"console_errors":[],"page_errors":[]},
+  "review_derivatives": ["far-read","grayscale","label-off deletion test"],
+  "blocking_package_defects": [],
+  "warnings": [
+    "Primary official water-view source is a low-resolution crop; do not claim detail beyond source resolution.",
+    "2026 C-line schedule is time-sensitive and must not be promoted to a permanent design rule.",
+    "Independent professional reviewer provenance is unresolved."
+  ],
+  "signoff": "TECHNICAL QC PASS / EVIDENCE GATE PASS_WITH_FIELD_HOLD / INDEPENDENT DESIGN GATE HOLD"
+}

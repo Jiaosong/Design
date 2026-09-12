@@ -1,0 +1,18 @@
+{
+  "review_id": "C04-CH09-P02-INDEPENDENT-DESIGN-REVIEW-v4.1",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH09-P02",
+  "revision": "v4.1",
+  "producer_id": "GPT-5.6-Sol/C04-CH09-P02-producer",
+  "reviewer_id": null,
+  "reviewer_independence_state": "UNRESOLVED",
+  "review_input_artifact": "CH09_P02_BOAT_OLEANDER_v4_1_1920x1080.png",
+  "review_input_sha256": "fcb4da6ed8471063a8f6a12603aa2074ff2f0a8641e69cc73a4a70063a3a149a",
+  "review_input_drive_id": "1oKkDemAfTZo0rNRynRhXX6qe_bP5g6yC",
+  "package_drive_id": "173pKKI32otCsN21S77bWRLvKmOfbTMdR",
+  "required_attacks": ["1920 finished pixel", "390 browser readback", "far-read", "grayscale", "label-off semantic binding"],
+  "required_criteria": ["FIRST_READ", "COMPOSITION_SCALE", "HIERARCHY_RHYTHM", "C04_SPECIFICITY", "EXPERIENCE_COMPLETENESS", "DIGITAL_RETREATABILITY", "EVIDENCE_TO_DESIGN_IMPACT", "CROSS_MEDIA", "PROFESSIONAL_FINISH", "TRUTH_BOUNDARY", "DELETION_TEST"],
+  "required_verdict": ["KEEP", "KEEP_AFTER_REVISION", "REVISE", "REJECT", "HOLD"],
+  "current_verdict": "PENDING",
+  "promotion": "NO"
+}

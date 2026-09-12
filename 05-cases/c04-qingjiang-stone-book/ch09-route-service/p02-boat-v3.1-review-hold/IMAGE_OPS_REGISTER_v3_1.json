@@ -1,0 +1,14 @@
+{
+  "tool": "T-VISUAL-IMAGE-OPS-001",
+  "source": "JOURNEY_04_OFFICIAL_LOCAL_v7_1920x1080.png",
+  "operation_intent": "isolate the direct BOAT/water-view evidence and remove inherited board typography without inventing new pixels",
+  "operators": [
+    {"class":"Mask/Crop","parameters":{"crop_box":[65,700,365,865]},"non_destructive":true,"off_state":"full source board"},
+    {"class":"Resize","parameters":{"method":"Lanczos","size":[1050,578]},"non_destructive":true,"off_state":"baseline crop"},
+    {"class":"Adjustment","parameters":{"contrast":1.025,"sharpness":1.12},"non_destructive":true,"off_state":"baseline crop"}
+  ],
+  "effect_off_baseline": "SOURCE_OFFICIAL_WATER_VIEW_CROP_BASELINE.png",
+  "attacks": ["effect-off baseline","grayscale","far-read 480x270","label-off semantic binding","desktop 1920x1080","mobile 390x844"],
+  "does_not_prove": "pixel detail beyond source resolution; exact boat position/course; live operation",
+  "image_generation_used": false
+}
