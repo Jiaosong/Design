@@ -2,7 +2,7 @@
 
 Date: 2026-09-12
 
-Status: **RUNTIME MERGED TO MAIN / CLOUDFLARE CRON INCIDENT IDENTIFIED / FULL RECONCILE DRAINING / CORPUS NOT SYNCED**
+Status: **RUNTIME MERGED TO MAIN / CRON RECOVERED / FULL RECONCILE COMPLETE / CORPUS SYNCED**
 
 ## 1. Authority Boundary
 
@@ -29,13 +29,19 @@ Status: **RUNTIME MERGED TO MAIN / CLOUDFLARE CRON INCIDENT IDENTIFIED / FULL RE
   - `548d6015` — authenticated `scheduler-status` + cross-provider GitHub scheduler fallback
   - `d730f677` — fallback activation gate; no runner starts unless explicitly enabled
 - PR #523 checks at `d730f677`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
+- Large-page embedding hardening is tracked in PR `#524`:
+  - `0fa4b8b0` — request-level embedding batching for large Notion pages
+  - `4a7c48f7` — conservative 32k estimated-token batch budget
+  - `6683d663` — adaptive recursive split on provider context-overflow errors
+- PR #524 checks at `6683d663`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
+- PR #524 merged to `main` at `2026-09-12T02:44:03Z`; merge commit `abd4bee0428b5dcc904aa464f89134496ff12211`.
 - Final PR checks at `3406d3e7`: AI Governance PASS / Anti-Pollution PASS / Vercel PASS.
 - The production scheduler implementation is promotion-ready: the Worker exposes `scheduled`, the `* * * * *` trigger is deployed, and the exact shared `drainScheduledSync()` path has passed production consumption readback through the protected operator trigger. Automatic Cron occurrence remains a post-deploy observation because Cloudflare documents a propagation window for trigger changes; it is not treated as evidence of code failure during that window.
 
 ## 3. Production Deployment Receipt
 
 - D1 migration `0004_durable_sync_scheduler.sql`: APPLIED.
-- Worker version: `8b018b77-24bf-4164-9857-c2f840b706aa`.
+- Worker version: `a893e972-5ae5-425c-9298-2315dc05f417`.
 - Trigger: `* * * * *` deployed.
 - Production secret names read back present without exposing values:
   - `NOTION_TOKEN`
@@ -107,22 +113,21 @@ Production `drain-once` readback then processed all seven persisted fallback eve
 - The obsolete one-time `scheduled_reconcile_request` was deleted after the direct production seed to prevent a duplicate 1,184-page run when Cron propagation completes.
 - The protected `/v1/drain-once` operator trigger executes exactly the same one-page D1 drain function as `scheduled()`. Production readback has processed one full-reconcile task to `PROCESSED`; the run therefore moved from `SCHEDULED` to `DRAINING`.
 - A remote preview `scheduled()` smoke test reached the scheduler code path but lacked the production Notion secret in the preview environment. That run was relabeled `REMOTE_PREVIEW_SCHEDULER_TEST` and must not be interpreted as a production credential failure.
-- The production Worker now writes `scheduled_cron_last_seen` before scheduled draining and `scheduled_cron_last_result` after it. After the documented propagation window, both keys remained absent while the Cloudflare API independently confirmed that the `* * * * *` schedule resource exists on this exact Worker.
-- Cloudflare's public status page currently reports **Workers Cron Triggers degraded — Identified**. This external incident matches the missing heartbeat evidence and explains why the schedule resource can exist while no `scheduled()` invocation reaches the Worker.
-- `GET /v1/scheduler-status` production readback returns `cron_stale=true` and `fallback_required=true` while the incident is active and open tasks remain.
-- During the incident, the authenticated operator path continues to drain the exact same durable state machine. Ten additional current-run tasks were processed successfully in the latest bounded recovery batch.
+- The production Worker writes `scheduled_cron_last_seen` before scheduled draining and `scheduled_cron_last_result` after it. Those heartbeats resumed after the external Cloudflare Cron incident cleared; the latest readback at `2026-09-12T02:44:07.777Z` reports `ok=true` for the `* * * * *` scheduled invocation.
+- During the incident, the authenticated operator path drained the exact same durable state machine through D1 atomic claims; once Cron recovered, both paths continued without duplicate task ownership.
+- Two large pages exposed provider context-overflow errors (`66,975` and `83,804` provider-counted tokens). Static batching alone was insufficient, so embedding now recursively splits any provider-rejected batch and preserves vector order. Both pages subsequently closed as `PROCESSED` with `error=NULL` on attempt `3`.
 
 ## 8. Corpus Boundary
 
-Current verified corpus snapshot after production durable draining began:
+Final verified corpus snapshot after production durable draining completed:
 
 - Notes scheduled by current full reconcile: `1,184`
-- Durable task state: `28 PROCESSED / 1,163 PENDING` across webhook fallback + full reconcile tasks.
-- Current full reconcile task proof: first run-owned page is `PROCESSED` with `attempts=1` and no error.
-- D1 indexed documents: `204` (up from the pre-hardening snapshot of `194`).
-- Corpus status: **PARTIAL**
+- Durable task state for current full reconcile: `1,184 PROCESSED / 0 PENDING / 0 PROCESSING / 0 RETRY / 0 BLOCKED`.
+- Full reconcile run `9b40de03-96d5-40b1-be84-0f137e7d248e`: `COMPLETE`, `pages_enqueued=1184`, `error=NULL`.
+- D1 documents: `1,184 total / 1,184 active`; latest index readback `2026-09-12T02:43:06.107Z`.
+- Corpus status: **SYNCED**
 
-Do not report `NOTION SYNCED`, `1184/1184`, or equivalent until the new full run reaches a closed task readback with no unresolved `PENDING / PROCESSING / RETRY / BLOCKED` items.
+The full-run promotion gate is closed. `NOTION SYNCED / 1184/1184` is now supported by D1 task readback and active-document readback.
 
 ## 9. Promotion Gate
 
@@ -133,8 +138,9 @@ Runtime implementation may be promoted only after:
 3. at least one current full-reconcile task transitions to `PROCESSED` — **PASS**;
 4. Worker deployment exposes `scheduled` and the `* * * * *` trigger is deployed — **PASS**;
 5. PR #521 remains CI-green through final head `3406d3e7` and is merged to `main` as `ec6bd93a` — **PASS**;
-6. automatic Cron occurrence — **EXTERNALLY BLOCKED BY ACTIVE CLOUDFLARE CRON INCIDENT; schedule resource + handler deployment + heartbeat absence are independently read back**.
+6. automatic Cron occurrence — **PASS; heartbeat resumed and latest scheduled result is `ok=true`**.
+7. full corpus closure with no unresolved `PENDING / PROCESSING / RETRY / BLOCKED` — **PASS; 1184/1184 PROCESSED**.
 
 The Notion lifecycle page was updated through the durable-scheduler deployment milestone. GitHub receipt v0.4 is the current runtime/deployment readback authority for the subsequent operator-drain proof and merge decision; this does not change Notion's role as canonical knowledge-content authority.
 
-Corpus promotion is a separate later gate and requires full reconcile closure.
+Corpus promotion gate is closed: **SYNCED**.
