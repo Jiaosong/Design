@@ -504,3 +504,108 @@ The separate OLEANDER Visual Knowledge Reader MCP also picked up the D07 cutover
 - canonical authority reported by the Reader snapshot: `Notion`
 
 The MCP metrics follow the Reader snapshot classifier and therefore intentionally differ from the native Notion Dashboard's visualization slices. This readback proves the presentation layer is consuming the existing canonical derivative rather than maintaining a second knowledge corpus.
+
+## Phase 7 — D03 Climate / Carbon / Resilience Academic Migration
+
+`D03｜气候低碳与韧性设计` has completed the additive academic migration. The new Current no longer presents climate design as a green-technology encyclopedia or a collection of certification, software, policy and case-study facts. Its first reading layer instead tests one coupled problem: how a building can reduce whole-life carbon under a consistent service boundary while remaining usable under future climate exposure, infrastructure degradation and operational uncertainty.
+
+New Current knowledge object:
+
+- Page ID: `3d9b86be-5c47-8128-b1e3-c4302bc5b646`
+- Canonical ID: `KN-ARCH-CLIMATE-RESILIENCE-001`
+- Human title: `气候低碳与韧性设计：全生命周期碳、热风险与功能连续性`
+- `CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / L5 / THEORY`
+- Normal `syncPage` result after promotion: `INDEXED`, `34` active chunks.
+- Final live Notion markdown readback: `14,078` characters, `markdown_truncated=false`, `unknown_block_ids=[]`.
+
+### D03 Academic Quality Gate
+
+The page was created in `REVIEW` and promoted to `VALID` only after complete live-Notion markdown readback and a second content-quality review. The reviewed sequence is:
+
+`Research Question / Thesis → Claim–Evidence Map → Rival / Counterevidence → Method / Evidence Boundary → Arguments → Applicability / Project Translation → Limitations → Conclusion → References`
+
+Quality controls confirmed in the live page:
+
+- one explicit research question and five conditional theses;
+- a Claim–Evidence Map with current sector / assessment / professional / regulatory / health / empirical boundaries rather than one undifferentiated bibliography;
+- authoritative/current carriers `S1–S6`: UNEP / GlobalABC 2025–2026, IPCC AR6 WGIII Buildings, IPCC AR6 WGII Cities / Infrastructure, RICS WLCA 2nd edition, EU EPBD life-cycle-GWP framework including the 2026 Annex III update, and current WHO heat-health guidance;
+- peer-reviewed performance-gap evidence `A1–A2` from de Wilde and Menezes et al.;
+- six explicit Rival / Counterevidence sections testing operational-energy reduction as a proxy for whole-life carbon, single-number LCA rankings, simulation-as-proof, cooling-capacity-as-resilience, redundancy-as-resilience and historical-weather-only adaptation;
+- no universal project `kgCO₂e/m²` threshold, no universal indoor heat threshold and no unsupported outage duration are promoted into Current;
+- project rules and unsourced project-risk statements are explicitly bounded as `Normative rule`, `Heuristic` or `Hypothesis` rather than attributed to IPCC / WHO / RICS / EU sources;
+- the four-state `NORMAL / DEGRADED / OUTAGE / RECOVERY` model is explicitly identified as an OLEANDER heuristic, not as a WHO/IPCC building classification; the same paragraph states that project thresholds, durations and population conditions remain with the applicable health / building / labour / medical / project owner;
+- research / POE / causal evaluation defers to `MTH-ARCH-RESEARCH-001`;
+- standards, regulatory applicability, carbon factors, EPDs, weather datasets and version conflicts defer to `MTH-ARCH-EVIDENCE-GOV-001`;
+- generic G0–G9 is not duplicated in the Current. The topic adds only its climate-specific decision delta.
+
+The old page's Avoid–Reduce–Substitute–Optimize–Monitor practice frame, detailed carbon categories, thermal-comfort material, flood / blue-green material, resilience indicators, G0–G9, theory lineage, policy history, China cases, international comparison, software toolbox, glossary and historical references remain available in History / Provenance.
+
+### Review-Only Academic Content Patch Guard
+
+During the D03 review, the Worker gained a narrowly scoped content-correction capability for future pre-VALID review corrections:
+
+- route: `POST /v1/academic-page/content`
+- source commit: `5addbfe1 feat(knowledge): gate academic review content patches`
+- GitHub PR: `#540`, merged into `main` as `67a1954afea14afea78f74dc4067a83183e83931`
+- deployed Worker version: `fe1552b9-f763-4a17-b6c6-495dccdb1a81`
+- unauthenticated request readback: `HTTP 401 / unauthorized`
+- mutation ceiling: Notes data source only + non-empty Canonical ID + `CURRENT / ACTIVE / REVIEW` only;
+- exact replacement only: `old_str` must occur exactly once;
+- complete pre-readback and post-readback are mandatory; unresolved/truncated markdown fails closed;
+- successful correction immediately runs normal `syncPage`.
+
+This route was **not required to alter the final D03 live body**. A proposed wording-only correction was deliberately not forced after the live-content review confirmed that the relevant threshold statement already sits inside an explicit `Heuristic｜OLEANDER` paragraph and explicitly denies WHO/IPCC ownership. D03 was therefore promoted from the actual live content rather than from an un-applied local idealization.
+
+### D03 NO LOSS / Replacement Readback
+
+Old D03 remains fully present in Notion. Its final live readback after the authority cutover is still `19,415` markdown characters, `markdown_truncated=false`, `unknown_block_ids=[]`. It is now:
+
+- Page ID: `3adb86be-5c47-81eb-acdb-fa74fd980f62`
+- Canonical ID: `LEGACY-KN-ARCH-CLIMATE-RESILIENCE-D03-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `KN-ARCH-CLIMATE-RESILIENCE-001`
+- `55` active chunks after normal re-indexing.
+
+The old body was not overwritten, compressed or deleted. The governance cutover changed identity / retrieval properties only.
+
+### Phase 7 D1 Readback
+
+After the D03 authority cutover:
+
+- Notes/D1 document rows: `1,194`
+- Active documents: `1,192`
+- Excluded documents: `2` (unchanged preserved orphan empty pages)
+- Explicit `CURRENT`: `50`
+- `SUPPORT`: `930`
+- `PROVENANCE`: `212`
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current row: `KN-ARCH-CLIMATE-RESILIENCE-001 / CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / 34 active chunks`
+- Old row: `LEGACY-KN-ARCH-CLIMATE-RESILIENCE-D03-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / 55 active chunks`
+
+The +1 document / +1 active-document delta is the intended additive Current carrier. The pre-existing old D03 already resolved to the provenance plane, so the corpus-wide provenance count remains stable after explicitization.
+
+### Reader Readback After D03
+
+The existing Notion Reader / Dashboard was refreshed in place with no new database or duplicate Reader:
+
+- Core Knowledge: `275`
+- Methods: `73`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `215`
+- Academic migration: `5 / 7`
+- Next: `D05｜建筑经济、开发策划与全生命周期价值`
+- Reader markdown readback: `4,035` characters, `markdown_truncated=false`, `unknown_block_ids=[]`
+
+The separate OLEANDER Visual Knowledge Reader MCP picked up the same authority cutover dynamically through the existing live snapshot path, without a Reader redeploy or CoS reload:
+
+- live item count: `1,192`
+- Core Knowledge: `275`
+- Methods: `92`
+- Evidence: `574`
+- Practice: `78`
+- History: `212`
+- tool/resource inventory remains `9 tools / 7 resources`
+- canonical authority reported by the snapshot remains `Notion`.
+
+The next academic migration is now `D05`. D01, D04, D06, D07 and D03 are closed Current migrations and must not be reopened as unfinished work. `K05` remains a later Reader / IA cleanup, not an essay rewrite target.
