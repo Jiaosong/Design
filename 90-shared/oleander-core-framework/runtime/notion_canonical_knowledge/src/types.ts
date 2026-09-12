@@ -189,3 +189,53 @@ export interface KnowledgeReaderSnapshot {
     provenance: number;
   };
 }
+
+export interface KnowledgeReaderDetailSection {
+  key: string;
+  headingPath: string[];
+  text: string;
+  chunkOrdinals: number[];
+  tokenEstimate: number;
+}
+
+export interface KnowledgeReaderDetailRelation {
+  direction: "outgoing" | "incoming";
+  relationType: string;
+  pageId: string;
+  canonicalId?: string;
+  title?: string;
+  role?: string;
+  level?: string;
+  retrievalSpace?: string;
+  governanceState?: string;
+  relationState?: string;
+}
+
+export interface KnowledgeReaderDetail {
+  version: "oleander-knowledge-reader-detail/v1";
+  generatedAt: string;
+  id: string;
+  title: string;
+  canonicalId?: string;
+  url?: string;
+  role?: string;
+  level?: string;
+  retrievalSpace?: string;
+  searchEligibility?: string;
+  trustState?: string;
+  governanceState?: string;
+  relationState?: string;
+  indexState?: string;
+  authorityReason?: string;
+  notionLastEditedTime?: string;
+  indexedAt?: string;
+  review: {
+    contentComplete: boolean;
+    markdownTruncated: boolean;
+    chunkCount: number;
+    tokenEstimate: number;
+    unknownBlockIds: string[];
+  };
+  sections: KnowledgeReaderDetailSection[];
+  relations: KnowledgeReaderDetailRelation[];
+}

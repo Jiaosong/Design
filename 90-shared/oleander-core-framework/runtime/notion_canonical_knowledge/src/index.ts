@@ -57,7 +57,7 @@ import {
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
-import { buildKnowledgeReaderSnapshot } from "./reader";
+import { buildKnowledgeReaderDetail, buildKnowledgeReaderSnapshot } from "./reader";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -1045,6 +1045,15 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "GET" && url.pathname === "/v1/reader-snapshot") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     return json(await buildKnowledgeReaderSnapshot(env.MANIFEST));
+  }
+
+  const readerPageMatch = /^\/v1\/reader-page\/([^/]+)$/.exec(url.pathname);
+  if (request.method === "GET" && readerPageMatch) {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const pageId = decodeURIComponent(readerPageMatch[1] ?? "").trim();
+    if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
+    const detail = await buildKnowledgeReaderDetail(env.MANIFEST, pageId);
+    return detail ? json(detail) : json({ ok: false, error: "not_found" }, 404);
   }
 
   if (request.method === "POST" && url.pathname === "/v1/search") {
