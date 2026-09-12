@@ -221,9 +221,30 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       markdown?: string;
       source_page_ids?: string[];
       replaced_page_ids?: string[];
+      retrieval_space?: string;
+      search_eligibility?: string;
+      trust_state?: string;
+      governance_state?: string;
+      relation_state?: string;
+      content_level?: string;
+      knowledge_role?: string;
     };
     if (!body.title || !body.canonical_id || !body.markdown) return json({ ok: false, error: "title_canonical_id_markdown_required" }, 400);
     if (!/^[A-Z0-9][A-Z0-9-]{4,}$/.test(body.canonical_id)) return json({ ok: false, error: "invalid_canonical_id" }, 400);
+    const allowedRetrieval = new Set(["CURRENT", "SUPPORT", "PROVENANCE"]);
+    const allowedEligibility = new Set(["DEFAULT", "SCOPED", "HISTORY_ONLY", "BLOCKED"]);
+    const allowedTrust = new Set(["UNKNOWN", "UNVERIFIED", "VERIFIED"]);
+    const allowedGovernance = new Set(["ACTIVE", "ARCHIVED", "HOLD", "LEGACY", "REVIEW"]);
+    const allowedRelation = new Set(["REVIEW", "VALID"]);
+    const allowedLevels = new Set(["L4｜Framework", "L5｜Knowledge Object", "L6｜Evidence / Case", "L7｜Practice / Output"]);
+    const allowedRoles = new Set(["INDEX", "THEORY", "METHOD", "EVIDENCE", "SOURCE", "CASE", "PRACTICE", "TOOL"]);
+    if (body.retrieval_space && !allowedRetrieval.has(body.retrieval_space)) return json({ ok: false, error: "invalid_retrieval_space" }, 400);
+    if (body.search_eligibility && !allowedEligibility.has(body.search_eligibility)) return json({ ok: false, error: "invalid_search_eligibility" }, 400);
+    if (body.trust_state && !allowedTrust.has(body.trust_state)) return json({ ok: false, error: "invalid_trust_state" }, 400);
+    if (body.governance_state && !allowedGovernance.has(body.governance_state)) return json({ ok: false, error: "invalid_governance_state" }, 400);
+    if (body.relation_state && !allowedRelation.has(body.relation_state)) return json({ ok: false, error: "invalid_relation_state" }, 400);
+    if (body.content_level && !allowedLevels.has(body.content_level)) return json({ ok: false, error: "invalid_content_level" }, 400);
+    if (body.knowledge_role && !allowedRoles.has(body.knowledge_role)) return json({ ok: false, error: "invalid_knowledge_role" }, 400);
     const duplicate = await env.MANIFEST.prepare(
       "SELECT page_id, title FROM documents WHERE active=1 AND canonical_id=? LIMIT 1",
     ).bind(body.canonical_id).first<{ page_id: string; title: string }>();
@@ -235,6 +256,13 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       markdown: body.markdown,
       source_page_ids: body.source_page_ids ?? [],
       replaced_page_ids: body.replaced_page_ids ?? [],
+      retrieval_space: body.retrieval_space,
+      search_eligibility: body.search_eligibility,
+      trust_state: body.trust_state,
+      governance_state: body.governance_state,
+      relation_state: body.relation_state,
+      content_level: body.content_level,
+      knowledge_role: body.knowledge_role,
     });
     const sync = await syncPage(env, {
       kind: "notion-page-sync",
