@@ -185,6 +185,25 @@ export async function updatePageGovernanceFields(
   });
 }
 
+export async function updatePageMarkdownContent(
+  env: Env,
+  pageId: string,
+  oldStr: string,
+  newStr: string,
+): Promise<void> {
+  if (!oldStr.trim() || !newStr.trim()) throw new Error("old_str and new_str must be non-empty");
+  if (oldStr === newStr) throw new Error("old_str and new_str must differ");
+  await notionFetch<unknown>(env, `/v1/pages/${encodeURIComponent(pageId)}/markdown`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      type: "update_content",
+      update_content: {
+        content_updates: [{ old_str: oldStr, new_str: newStr }],
+      },
+    }),
+  });
+}
+
 export async function retrieveNotesDataSource(env: Env): Promise<NotionDataSource> {
   return notionFetch<NotionDataSource>(env, `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}`);
 }

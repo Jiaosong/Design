@@ -40,6 +40,7 @@ import {
   retrieveNotesDataSource,
   retrieveView,
   updatePageGovernanceFields,
+  updatePageMarkdownContent,
   updateView,
 } from "./notion";
 import { normalizePage } from "./normalize";
@@ -756,6 +757,72 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       cause_type: "manual",
     });
     return json({ ok: true, page: normalizePage(await fetchPage(env, page.id)), sync });
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/academic-page/content") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      page_id?: string;
+      old_str?: string;
+      new_str?: string;
+    };
+    if (!body.page_id || !body.old_str || !body.new_str) {
+      return json({ ok: false, error: "page_id_old_str_new_str_required" }, 400);
+    }
+    if (body.old_str === body.new_str) return json({ ok: false, error: "content_patch_noop" }, 400);
+    if (body.old_str.length > 20_000 || body.new_str.length > 20_000) {
+      return json({ ok: false, error: "content_patch_too_large" }, 413);
+    }
+
+    const beforePage = normalizePage(await fetchPage(env, body.page_id));
+    if (beforePage.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+      return json({ ok: false, error: "academic_page_not_in_notes_data_source" }, 409);
+    }
+    if (!beforePage.canonicalId || beforePage.retrievalSpace !== "CURRENT" || beforePage.governanceState !== "ACTIVE") {
+      return json({
+        ok: false,
+        error: "academic_content_patch_requires_active_current_canonical_page",
+        canonical_id: beforePage.canonicalId,
+        retrieval_space: beforePage.retrievalSpace,
+        governance_state: beforePage.governanceState,
+      }, 409);
+    }
+    if (beforePage.relationState !== "REVIEW") {
+      return json({ ok: false, error: "academic_content_patch_requires_review_state", relation_state: beforePage.relationState }, 409);
+    }
+
+    const beforeMarkdown = await fetchCompleteMarkdown(env, body.page_id);
+    if (beforeMarkdown.truncated || beforeMarkdown.unknown_block_ids.length > 0) {
+      return json({ ok: false, error: "academic_content_patch_requires_complete_readback" }, 409);
+    }
+    const occurrences = beforeMarkdown.markdown.split(body.old_str).length - 1;
+    if (occurrences !== 1) {
+      return json({ ok: false, error: "content_patch_old_str_must_match_once", occurrences }, 409);
+    }
+
+    await updatePageMarkdownContent(env, body.page_id, body.old_str, body.new_str);
+    const afterMarkdown = await fetchCompleteMarkdown(env, body.page_id);
+    if (afterMarkdown.truncated || afterMarkdown.unknown_block_ids.length > 0) {
+      return json({ ok: false, error: "content_patch_post_readback_incomplete" }, 502);
+    }
+    if (!afterMarkdown.markdown.includes(body.new_str) || afterMarkdown.markdown.includes(body.old_str)) {
+      return json({ ok: false, error: "content_patch_readback_failed" }, 502);
+    }
+    const sync = await syncPage(env, {
+      kind: "notion-page-sync",
+      page_id: body.page_id,
+      cause_id: `academic-content:${crypto.randomUUID()}`,
+      cause_type: "manual",
+    });
+    return json({
+      ok: true,
+      page: normalizePage(await fetchPage(env, body.page_id)),
+      before_markdown_length: beforeMarkdown.markdown.length,
+      after_markdown_length: afterMarkdown.markdown.length,
+      markdown_truncated: afterMarkdown.truncated,
+      unknown_block_ids: afterMarkdown.unknown_block_ids,
+      sync,
+    });
   }
 
   if (request.method === "POST" && url.pathname === "/v1/reader-layer") {
