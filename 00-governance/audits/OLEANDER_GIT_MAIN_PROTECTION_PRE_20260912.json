@@ -1,0 +1,59 @@
+﻿{
+    "schema":  "OLEANDER_GIT_MAIN_PROTECTION_AUDIT_v1",
+    "phase":  "PRE_PROTECTION",
+    "as_of":  "2026-09-12T07:28:32.2115647Z",
+    "repository":  "Jiaosong/Design",
+    "origin_main_sha":  "f9014bb9c28e39349fbea04ce51d2819168d56a6",
+    "branch_protected":  false,
+    "ruleset_count":  0,
+    "delete_branch_on_merge":  false,
+    "workflow_direct_main_write_match_count":  0,
+    "workflow_direct_main_write_matches":  [
+
+                                           ],
+    "recent_direct_no_pr_commits":  [
+                                        {
+                                            "sha":  "c40381da06933fbfe9c77e7a75f248b52c63d6c2",
+                                            "committed_at":  "2026-09-12 02:04:12 +0800",
+                                            "subject":  "governance: refresh C04 queue to current web head"
+                                        },
+                                        {
+                                            "sha":  "4aeadacce96205cdb528a18bec0f23691ad02c8a",
+                                            "committed_at":  "2026-09-11 23:12:22 +0800",
+                                            "subject":  "governance: currentize C04 web frontier to 4abd4202"
+                                        },
+                                        {
+                                            "sha":  "85acf687d7e047ffbbbde9d8e551a92e68c4abd5",
+                                            "committed_at":  "2026-09-11 21:12:12 +0800",
+                                            "subject":  "governance: currentize C04 web frontier to d107f5de"
+                                        },
+                                        {
+                                            "sha":  "c78af7b992982f21a36fa8bd296637af0179eabd",
+                                            "committed_at":  "2026-09-11 17:11:13 +0800",
+                                            "subject":  "governance: refresh C04 priority queue frontier"
+                                        },
+                                        {
+                                            "sha":  "27afeb12995cdc1fccf5ef4773119f0e5cfaf761",
+                                            "committed_at":  "2026-09-09 09:04:52 +0800",
+                                            "subject":  "governance: align C04 control card to exact web head"
+                                        },
+                                        {
+                                            "sha":  "a2490daae27cb294657d55d0d4a89ed7867876c5",
+                                            "committed_at":  "2026-09-08 04:12:24 +0800",
+                                            "subject":  "governance: register exact Current carriers in anti-pollution guard"
+                                        },
+                                        {
+                                            "sha":  "2c7efe853fbbc8ec99b5074be9ca26f2b101a5d4",
+                                            "committed_at":  "2026-09-08 00:03:36 +0800",
+                                            "subject":  "governance: currentize Blender bounded absorption"
+                                        }
+                                    ],
+    "decision":  "PR_ONLY_MAIN_REQUIRED; NO_GLOBAL_REQUIRED_STATUS_CHECKS_WHILE_CURRENT_CHECKS_ARE_PATH_SCOPED",
+    "target":  {
+                   "require_pull_request":  true,
+                   "required_approving_review_count":  0,
+                   "enforce_admins":  true,
+                   "allow_force_pushes":  false,
+                   "allow_deletions":  false
+               }
+}

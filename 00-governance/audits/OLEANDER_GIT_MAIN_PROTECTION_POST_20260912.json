@@ -1,0 +1,20 @@
+{
+    "schema":  "OLEANDER_GIT_MAIN_PROTECTION_AUDIT_v1",
+    "phase":  "POST_PROTECTION",
+    "as_of":  "2026-09-12T07:29:50.7132737Z",
+    "repository":  "Jiaosong/Design",
+    "origin_main_sha":  "f9014bb9c28e39349fbea04ce51d2819168d56a6",
+    "branch_protected":  true,
+    "ruleset_count":  0,
+    "readback":  {
+                     "require_pull_request":  true,
+                     "required_approving_review_count":  0,
+                     "enforce_admins":  true,
+                     "allow_force_pushes":  false,
+                     "allow_deletions":  false,
+                     "required_status_checks_present":  false,
+                     "required_linear_history":  false,
+                     "required_conversation_resolution":  false
+                 },
+    "verdict":  "PASS_PR_ONLY_MAIN_PROTECTION_ACTIVE"
+}

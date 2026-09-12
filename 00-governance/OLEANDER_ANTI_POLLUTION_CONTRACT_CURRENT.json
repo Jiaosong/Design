@@ -170,6 +170,16 @@
       "HYPOTHETICAL_MERGE_CLEAN",
       "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"
     ],
+    "main_branch_protection": {
+      "direct_push_allowed": false,
+      "require_pull_request": true,
+      "required_approving_review_count": 0,
+      "enforce_admins": true,
+      "allow_force_pushes": false,
+      "allow_deletions": false,
+      "required_status_checks_mode": "APPLICABLE_PATH_SCOPED_WORKFLOWS_NOT_GLOBAL_BRANCH_REQUIREMENT",
+      "emergency_override": "EXPLICIT_BOUNDED_AUDIT_AND_RESTORE_REQUIRED"
+    },
     "global_delete_branch_on_merge_while_stacked_pr_bases_exist": false
   },
   "mandatory_preflight": [
