@@ -49,9 +49,16 @@ def decide_checkpoint_resume(checkpoint: dict, current_authority_fingerprint: st
         return {"action": "REVALIDATE_FRONTIER", "reason": "CHECKPOINT_NOT_RESUMABLE", "target": None, "skipped_nodes": []}
     if checkpoint.get("authority_fingerprint") != current_authority_fingerprint:
         return {"action": "REVALIDATE_FRONTIER", "reason": "AUTHORITY_FINGERPRINT_MISMATCH", "target": None, "skipped_nodes": []}
-    if checkpoint.get("last_verified_artifact_readback") is not True:
+    readback_verified = checkpoint.get("last_verified_artifact_readback")
+    if readback_verified is None:
+        artifact = checkpoint.get("last_verified_artifact")
+        readback_verified = isinstance(artifact, dict) and artifact.get("readback_verdict") == "PASS"
+    if readback_verified is not True:
         return {"action": "REVALIDATE_FRONTIER", "reason": "LAST_ARTIFACT_NOT_READBACK_VERIFIED", "target": None, "skipped_nodes": []}
-    if checkpoint.get("stale_dependency") is True:
+    stale_dependency = checkpoint.get("stale_dependency")
+    if stale_dependency is None:
+        stale_dependency = bool(checkpoint.get("stale_reasons"))
+    if stale_dependency is True:
         return {"action": "REVALIDATE_FRONTIER", "reason": "STALE_DEPENDENCY_OR_HANDOFF", "target": None, "skipped_nodes": []}
 
     completed = list(checkpoint.get("completed_nodes") or [])
@@ -121,6 +128,9 @@ def validate_cases() -> None:
         "CYCLE-007-CLOSED-PREDECESSOR-STAYS-CLOSED-ON-PROJECT-SWITCH",
         "CYCLE-008-TARGET-HEAD-DRIFT-REVALIDATES",
         "CYCLE-009-REVALIDATED-TARGET-RESUMES-WITHOUT-PREDECESSOR-LEAKAGE",
+        "CYCLE-010-RAW-RECEIPT-CHECKPOINT-RESUMES",
+        "CYCLE-011-RAW-RECEIPT-READBACK-HOLD-REVALIDATES",
+        "CYCLE-012-RAW-RECEIPT-CLOSED-NEVER-REOPENS",
     }
     missing = required - set(by_id)
     if missing:
@@ -132,6 +142,9 @@ def validate_cases() -> None:
         "CYCLE-007-CLOSED-PREDECESSOR-STAYS-CLOSED-ON-PROJECT-SWITCH",
         "CYCLE-008-TARGET-HEAD-DRIFT-REVALIDATES",
         "CYCLE-009-REVALIDATED-TARGET-RESUMES-WITHOUT-PREDECESSOR-LEAKAGE",
+        "CYCLE-010-RAW-RECEIPT-CHECKPOINT-RESUMES",
+        "CYCLE-011-RAW-RECEIPT-READBACK-HOLD-REVALIDATES",
+        "CYCLE-012-RAW-RECEIPT-CLOSED-NEVER-REOPENS",
     ]:
         c = by_id[case_id]
         result = decide_checkpoint_resume(c["checkpoint"], c["current_authority_fingerprint"])
