@@ -1,0 +1,25 @@
+{
+  "viewport": {"width": 390, "height": 520},
+  "source": {"width": 1600, "height": 900},
+  "focal_source_px": {"x": 1190, "y": 410},
+  "center_crop": {
+    "scale": 0.5777777777777777,
+    "rendered_width": 924.4444444444443,
+    "rendered_height": 520.0,
+    "offset_x": -267.2222222222222,
+    "focal_x": 420.33333333333337,
+    "focal_y": 236.88888888888886,
+    "visible": false
+  },
+  "focal_74_crop": {
+    "scale": 0.5777777777777777,
+    "rendered_width": 924.4444444444443,
+    "rendered_height": 520.0,
+    "offset_x": -395.4888888888888,
+    "focal_x": 292.0666666666667,
+    "focal_y": 236.88888888888886,
+    "visible": true
+  },
+  "browser_runtime": "HOLD: Chromium GPU process unusable in current runtime",
+  "design_geometry_verdict": "PASS"
+}
