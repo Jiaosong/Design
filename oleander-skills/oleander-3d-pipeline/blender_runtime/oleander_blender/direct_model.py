@@ -1,5 +1,6 @@
 import hashlib
 import json
+import math
 
 import bmesh
 import bpy
@@ -211,6 +212,31 @@ def _build_cad_direct_tangent_intent(obj, u_mm, v_mm, descriptor, tangent_u, tan
             "tangent_u_local": _rounded_vector(tangent_u, 9),
             "tangent_v_local": _rounded_vector(tangent_v, 9),
             "translation_local_mm": _rounded_vector(translation, 6),
+        },
+        descriptor,
+    )
+
+
+def _build_cad_direct_rotate_intent(obj, angle_deg, axis_mode, descriptor, tangent_u, tangent_v):
+    angle = float(angle_deg)
+    if not math.isfinite(angle) or abs(angle) <= 1e-9:
+        raise ValueError("CAD face rotate requires a finite non-zero angle")
+    if abs(angle) > 10.0:
+        raise ValueError("CAD face rotate exceeds bounded 10 degree contract")
+    if axis_mode not in {"U", "V"}:
+        raise ValueError("CAD face rotate axis mode must be U or V")
+    axis = tangent_u if axis_mode == "U" else tangent_v
+    normal = Vector(tuple(float(v) for v in descriptor["normal_local"])).normalized()
+    if axis.length <= 1e-9 or abs(float(normal.dot(axis.normalized()))) > 1e-7:
+        raise ValueError("CAD face rotate axis must lie in the selected face tangent plane")
+    return _cad_direct_intent_envelope(
+        obj,
+        "FACE_ROTATE",
+        {
+            "angle_deg": angle,
+            "axis_mode": axis_mode,
+            "axis_origin_local_mm": list(descriptor["center_local_mm"]),
+            "axis_direction_local": _rounded_vector(axis.normalized(), 9),
         },
         descriptor,
     )
@@ -493,6 +519,111 @@ class OLEANDER_OT_direct_face_tangent_move(bpy.types.Operator):
         )
         return {"FINISHED"}
 
+
+class OLEANDER_OT_direct_face_rotate(bpy.types.Operator):
+    """Rotate one governed planar face about a deterministic in-face U/V axis."""
+
+    bl_idname = "oleander.direct_face_rotate"
+    bl_label = "Face Rotate"
+    bl_description = (
+        "Rotate one selected face about its geometry-derived U or V tangent axis through the face center; "
+        "CAD-native masters prepare a governed sidecar intent without mutating the Blender display"
+    )
+    bl_options = {"REGISTER", "UNDO"}
+
+    axis_mode: bpy.props.EnumProperty(
+        name="Axis",
+        items=[("U", "U tangent", "Rotate about the deterministic face U tangent"), ("V", "V tangent", "Rotate about the deterministic face V tangent")],
+        default="U",
+    )
+    angle_deg: bpy.props.FloatProperty(name="Angle deg", default=3.0, min=-10.0, max=10.0)
+
+    @classmethod
+    def poll(cls, context):
+        return (
+            context.active_object is not None
+            and context.active_object.type == "MESH"
+            and context.mode == "EDIT_MESH"
+        )
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self)
+
+    def execute(self, context):
+        angle = float(self.angle_deg)
+        if not math.isfinite(angle) or abs(angle) <= 1e-9:
+            self.report({"ERROR"}, "Face Rotate requires a finite non-zero angle")
+            return {"CANCELLED"}
+        if abs(angle) > 10.0:
+            self.report({"ERROR"}, "Face Rotate exceeds bounded 10 degree contract")
+            return {"CANCELLED"}
+        try:
+            obj, bm, face = _selected_governed_edit_face(context)
+            tangent_u, tangent_v = _face_tangent_basis(face)
+        except ValueError as exc:
+            self.report({"ERROR"}, str(exc))
+            return {"CANCELLED"}
+
+        descriptor = _face_semantic_descriptor(context, face)
+        axis = tangent_u if self.axis_mode == "U" else tangent_v
+        center = face.calc_center_median().copy()
+        master_type = obj.oleander.master_type if hasattr(obj, "oleander") else "BLENDER_NATIVE"
+
+        if master_type == "CAD_NATIVE":
+            try:
+                intent = _build_cad_direct_rotate_intent(
+                    obj, angle, self.axis_mode, descriptor, tangent_u, tangent_v
+                )
+            except ValueError as exc:
+                self.report({"ERROR"}, str(exc))
+                return {"CANCELLED"}
+            encoded = _canonical_json(intent)
+            obj["oleander_last_direct_operation"] = "CAD_DIRECT_EDIT_INTENT"
+            obj["oleander_direct_authority_route"] = "CAD_NATIVE"
+            obj["oleander_cad_direct_edit_intent"] = encoded
+            obj["oleander_cad_direct_edit_intent_sha256"] = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+            obj["oleander_cad_direct_edit_state"] = "PENDING_SIDECAR"
+            obj["oleander_direct_face_rotate_axis_mode"] = self.axis_mode
+            obj["oleander_direct_face_rotate_angle_deg"] = angle
+            self.report({"INFO"}, "CAD face-rotate intent prepared; authoritative CAD and Blender display geometry remain unchanged")
+            return {"FINISHED"}
+
+        if master_type != "BLENDER_NATIVE":
+            self.report({"ERROR"}, f"Face Rotate has no bounded authority route for {master_type}")
+            return {"CANCELLED"}
+
+        radians = math.radians(angle)
+        cosine = math.cos(radians)
+        sine = math.sin(radians)
+        unit_axis = axis.normalized()
+        for vert in face.verts:
+            relative = vert.co - center
+            rotated = (
+                relative * cosine
+                + unit_axis.cross(relative) * sine
+                + unit_axis * unit_axis.dot(relative) * (1.0 - cosine)
+            )
+            vert.co = center + rotated
+        bm.normal_update()
+        bmesh.update_edit_mesh(obj.data, loop_triangles=False, destructive=False)
+        context.view_layer.update()
+
+        downstream = mark_downstream_stale(
+            [object_id(obj)],
+            reason="DIRECT_FACE_ROTATE",
+            scene=context.scene,
+        )
+        obj["oleander_last_direct_operation"] = "FACE_ROTATE"
+        obj["oleander_direct_authority_route"] = "BLENDER_NATIVE"
+        obj["oleander_direct_face_rotate_axis_mode"] = self.axis_mode
+        obj["oleander_direct_face_rotate_angle_deg"] = angle
+        obj["oleander_direct_face_rotate_axis_local"] = _rounded_vector(unit_axis, 9)
+        obj["oleander_direct_face_rotate_origin_local_mm"] = list(descriptor["center_local_mm"])
+        obj["oleander_direct_face_target_descriptor"] = _canonical_json(descriptor)
+        obj["oleander_direct_downstream_stale"] = json.dumps(downstream, sort_keys=True)
+        self.report({"INFO"}, f"Face rotated {angle:+.3f} deg about {self.axis_mode}; downstream stale: {len(downstream)}")
+        return {"FINISHED"}
+
 class OLEANDER_OT_duplicate_linear(bpy.types.Operator):
     """Create a governed linked or unlinked linear duplicate set."""
 
@@ -564,5 +695,6 @@ CLASSES = (
     OLEANDER_OT_apply_metric_dimensions,
     OLEANDER_OT_direct_face_normal_move,
     OLEANDER_OT_direct_face_tangent_move,
+    OLEANDER_OT_direct_face_rotate,
     OLEANDER_OT_duplicate_linear,
 )

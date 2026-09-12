@@ -14,11 +14,11 @@ CAD_DIRECT_BRIDGE_SCRIPT = base.RUNTIME_ROOT / "tests" / "validate_cad_direct_in
 CAD_SIDECAR = base.RUNTIME_ROOT / "professional_adapter" / "cad_sidecar.py"
 EXPECTED_RUNTIME = "5.2.0 LTS"
 EXPECTED_BUILD = "fbe6228777e7"
-EXPECTED_RUN_ID = 34455090728
-EXPECTED_JOB_ID = 102799500469
+EXPECTED_RUN_ID = 34462229511
+EXPECTED_JOB_ID = 102822483718
 EXPECTED_STAGE_COUNT = 17
-EXPECTED_BRIDGE_RUN_ID = 34455090728
-EXPECTED_BRIDGE_JOB_ID = 102799500469
+EXPECTED_BRIDGE_RUN_ID = 34462229511
+EXPECTED_BRIDGE_JOB_ID = 102822483718
 EXPECTED_BRIDGE_REQUEST_SHA256 = "8ad5231851ff31cafac32a59e3a601201b0381c711c502cbf80c6ca3d21ba318"
 FINGERPRINT_MISMATCHES: list[tuple[str, str, str]] = []
 
@@ -33,11 +33,18 @@ REQUIRED_BOUNDED_DIRECT_DELTA = {
     "DIRECT_FACE_TANGENT_GEOMETRY_DERIVED_UV_BASIS",
     "DIRECT_FACE_TANGENT_DOWNSTREAM_STALE_PROPAGATION",
     "CAD_NATIVE_TANGENT_INTENT_ROUTING_NO_DISPLAY_MUTATION",
+    "BLENDER_NATIVE_SINGLE_FACE_ROTATE_UV_TANGENT_AXIS_DEG",
+    "DIRECT_FACE_ROTATE_DOWNSTREAM_STALE_PROPAGATION",
+    "CAD_NATIVE_FACE_ROTATE_INTENT_ROUTING_NO_DISPLAY_MUTATION",
 }
 
 REQUIRED_DIRECT_NON_CLAIMS = {
     "CAD_DIRECT_EDIT_EXECUTION_WITHIN_RUNTIME_REGRESSION",
     "CAD_TANGENT_DIRECT_EDIT_EXECUTION_WITHIN_RUNTIME_REGRESSION",
+    "CAD_FACE_ROTATE_DIRECT_EDIT_EXECUTION_WITHIN_RUNTIME_REGRESSION",
+    "GENERAL_ARBITRARY_AXIS_FACE_ROTATE",
+    "ARBITRARY_PIVOT_FACE_ROTATE",
+    "NONPLANAR_FACE_ROTATE_PARITY",
     "GENERAL_PLANAR_FACE_TRANSLATION",
     "OBLIQUE_FACE_EXECUTION",
     "GENERAL_BREP_PUSH_PULL",
@@ -338,6 +345,34 @@ def load_consolidated() -> dict:
     missing_non_claims = sorted(REQUIRED_DIRECT_NON_CLAIMS - non_claims)
     if missing_non_claims:
         base.fail(f"Direct Face non-claim boundaries missing from consolidated receipt: {missing_non_claims}")
+
+    face_rotate = (receipt.get("professional_sidecar_evidence") or {}).get("face_rotate") or {}
+    if face_rotate.get("status") != "PASS" or face_rotate.get("scope") != "BOUNDED_CAD_NATIVE_FACE_ROTATE_CENTER_TANGENT_AXIS":
+        base.fail("bounded CAD Face Rotate professional sidecar receipt is not PASS/current")
+    sw = face_rotate.get("workflow") or {}
+    if sw.get("run_id") != 34461827861 or sw.get("job_id") != 102821200739 or sw.get("conclusion") != "success" or sw.get("head_sha") != "1a809cad881cdc1348d10b58a7157bbd4a4f52c5":
+        base.fail("bounded CAD Face Rotate professional workflow evidence mismatch")
+    sh = face_rotate.get("host") or {}
+    if sh.get("blender_version") != "5.2.0 LTS" or sh.get("freecad_version") != "1.1.3" or sh.get("occt_version") != "7.8.1":
+        base.fail("bounded CAD Face Rotate specialist runtime identity mismatch")
+    op = face_rotate.get("operation") or {}
+    if op.get("kind") != "FACE_ROTATE" or op.get("axis_mode") != "U" or abs(float(op.get("angle_deg", 0.0)) - 5.0) > 1e-9:
+        base.fail("bounded CAD Face Rotate operation evidence mismatch")
+    if face_rotate.get("resolution") != "RESOLVED_UNIQUE" or face_rotate.get("execution_state") != "EXECUTED":
+        base.fail("bounded CAD Face Rotate execution/resolution evidence mismatch")
+    if face_rotate.get("failure_envelope") != {"missing": "HOLD_NO_RELEASE", "ambiguous": "HOLD_NO_RELEASE"}:
+        base.fail("bounded CAD Face Rotate HOLD envelope mismatch")
+    ps = face_rotate.get("validated_source_blobs") or {}
+    professional_paths = {
+        "professional_adapter/cad_sidecar.py": base.RUNTIME_ROOT / "professional_adapter" / "cad_sidecar.py",
+        "tests/professional/freecad_cad_direct_edit_service.py": base.RUNTIME_ROOT / "tests" / "professional" / "freecad_cad_direct_edit_service.py",
+        "tests/professional/probe_cad_direct_edit_integration.py": base.RUNTIME_ROOT / "tests" / "professional" / "probe_cad_direct_edit_integration.py",
+        "tests/professional/probe_cad_direct_rotate_integration.py": base.RUNTIME_ROOT / "tests" / "professional" / "probe_cad_direct_rotate_integration.py",
+        ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml": base.REPO_ROOT / ".github" / "workflows" / "oleander-blender-professional-cad-sidecar-integration.yml",
+    }
+    for key, path in professional_paths.items():
+        if ps.get(key) != git_blob_sha(path):
+            base.fail(f"bounded CAD Face Rotate professional source blob is stale: {key}")
 
     if not RUNTIME_WORKFLOW.is_file():
         base.fail("Blender 5.2 regression workflow missing")

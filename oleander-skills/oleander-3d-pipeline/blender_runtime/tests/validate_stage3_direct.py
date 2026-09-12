@@ -1,8 +1,8 @@
 """Headless validation for OLEANDER Blender Runtime Stage 3 Direct Modeling.
 
 This validates deterministic direct dimensions, linear duplication, bounded
-face-normal move, and bounded face-tangent move in a real Blender process. Both
-CAD_NATIVE normal and tangent entrypoints may prepare governed sidecar intents while
+face-normal move, bounded face-tangent move, and bounded U/V-axis face rotation in a real Blender process.
+CAD_NATIVE normal, tangent, and rotate entrypoints may prepare governed sidecar intents while
 leaving Blender display geometry unchanged; authoritative B-Rep execution is proved
 separately by the professional CAD-sidecar integration surface. This does not
 establish general CAD/B-Rep push-pull, general planar translation, persistent
@@ -284,6 +284,32 @@ def main():
         "tangent U/V basis must remain orthogonal",
     )
 
+
+    # BLENDER_NATIVE bounded face rotation around the deterministic U tangent through face center.
+    rotate_face = add_cube("OLE_STAGE3_DIRECT_FACE_ROTATE", location=(0.0, 3500.0, 0.0))
+    rotate_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_ROTATE"
+    select_only(rotate_face)
+    rotate_dims = bpy.ops.oleander.apply_metric_dimensions(x_mm=100.0, y_mm=100.0, z_mm=100.0)
+    assert_true("FINISHED" in rotate_dims, "rotate face fixture dimensions must apply")
+    rotate_dependent = add_cube("OLE_STAGE3_DIRECT_ROTATE_DEPENDENT", location=(500.0, 3500.0, 0.0))
+    rotate_dependent.oleander.ole_id = "OLE_STAGE3_DIRECT_ROTATE_DEPENDENT"
+    rotate_dependent.oleander.dependencies = "OLE_STAGE3_DIRECT_FACE_ROTATE"
+    rotate_dependent.oleander.stale = False
+    select_top_face_for_intent(rotate_face)
+    rotate_result = bpy.ops.oleander.direct_face_rotate(axis_mode="U", angle_deg=5.0)
+    assert_true("FINISHED" in rotate_result, "BLENDER_NATIVE Face Rotate must finish")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    rotate_actual = mm_dimensions(bpy.context, rotate_face)
+    assert_true(abs(rotate_actual[0] - 100.0) <= 1e-3, f"U-axis rotate must preserve X extent; got {rotate_actual!r}")
+    assert_true(100.0 < rotate_actual[2] < 105.0, f"5 degree top-face rotate must increase Z bbox within bounded fixture; got {rotate_actual!r}")
+    assert_true(rotate_dependent.oleander.stale and rotate_dependent.get("oleander_stale_reason") == "DIRECT_FACE_ROTATE", "face rotate must propagate specific stale reason")
+    assert_true(rotate_face.get("oleander_last_direct_operation") == "FACE_ROTATE", "face rotate provenance must record operation")
+    assert_true(rotate_face.get("oleander_direct_face_rotate_axis_mode") == "U", "face rotate must retain U axis mode")
+    assert_true(abs(float(rotate_face.get("oleander_direct_face_rotate_angle_deg")) - 5.0) <= 1e-9, "face rotate must retain requested angle")
+    rotate_axis = list(rotate_face["oleander_direct_face_rotate_axis_local"])
+    assert_true(len(rotate_axis) == 3 and abs(sum(v * v for v in rotate_axis) - 1.0) <= 1e-6, "face rotate axis must be unit length")
+
     cad_face = add_cube("OLE_STAGE3_DIRECT_FACE_CAD", location=(0.0, 4000.0, 0.0))
     cad_face.oleander.ole_id = "OLE_STAGE3_DIRECT_FACE_CAD"
     select_only(cad_face)
@@ -371,6 +397,25 @@ def main():
         "CAD tangent intent must carry deterministic SHA identity",
     )
 
+    # CAD face rotate prepares the same governed intent envelope without mutating display geometry.
+    cad_rotate_before = mesh_vertex_snapshot(cad_face)
+    select_top_face_for_intent(cad_face)
+    cad_rotate = bpy.ops.oleander.direct_face_rotate(axis_mode="U", angle_deg=5.0)
+    assert_true("FINISHED" in cad_rotate, "CAD_NATIVE Face Rotate must prepare an intent")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.context.view_layer.update()
+    assert_true(mesh_vertex_snapshot(cad_face) == cad_rotate_before, "CAD face-rotate intent must not mutate display geometry")
+    raw_rotate_intent = cad_face["oleander_cad_direct_edit_intent"]
+    rotate_intent = json.loads(raw_rotate_intent)
+    assert_true(rotate_intent["operation"] == "FACE_ROTATE", "CAD face-rotate intent operation must be explicit")
+    assert_true(rotate_intent["parameters"]["axis_mode"] == "U", "CAD face-rotate intent must retain axis mode")
+    assert_true(abs(rotate_intent["parameters"]["angle_deg"] - 5.0) <= 1e-9, "CAD face-rotate intent must retain angle")
+    assert_true(rotate_intent["parameters"]["axis_origin_local_mm"] == rotate_intent["target"]["center_local_mm"], "CAD face-rotate first contract axis must pass through semantic face center")
+    rotate_normal = rotate_intent["target"]["normal_local"]
+    rotate_axis = rotate_intent["parameters"]["axis_direction_local"]
+    assert_true(abs(sum(float(a) * float(b) for a, b in zip(rotate_normal, rotate_axis))) <= 1e-6, "CAD face-rotate axis must be tangent to semantic face")
+    assert_true(cad_face["oleander_cad_direct_edit_intent_sha256"] == hashlib.sha256(raw_rotate_intent.encode("utf-8")).hexdigest(), "CAD face-rotate intent must carry deterministic SHA identity")
+
     audit = audit_scene(scene)
     assert_true(not audit["duplicate_ole_ids"], f"governed direct modeling must not create duplicate OLE IDs: {audit['duplicate_ole_ids']}")
     assert_true(
@@ -381,7 +426,7 @@ def main():
     result = {
         "runtime": "OLEANDER Blender Runtime",
         "stage": "STAGE3_DIRECT_MODELING",
-        "version": "0.2.1",
+        "version": "0.3.0",
         "blender": bpy.app.version_string,
         "status": "PASS",
         "source_fingerprint_sha256": source_fingerprint(),
@@ -402,18 +447,26 @@ def main():
             "blender_native_face_tangent_move_metric",
             "face_tangent_move_geometry_based_uv_basis",
             "face_tangent_move_downstream_stale_propagation",
+            "face_rotate_operator",
+            "blender_native_face_rotate_bounded_angle",
+            "face_rotate_geometry_based_axis",
+            "face_rotate_downstream_stale_propagation",
             "cad_native_direct_edit_intent_routing",
             "cad_native_display_geometry_unchanged",
             "cad_native_tangent_intent_routing",
             "cad_native_tangent_move_no_display_mutation",
             "cad_native_tangent_uv_translation_normalization",
+            "cad_native_face_rotate_intent_routing",
+            "cad_native_face_rotate_no_display_mutation",
+            "cad_native_face_rotate_center_tangent_axis",
             "cad_intent_semantic_selector_no_persistent_face_index",
             "cad_intent_fail_closed_resolution_policy",
             "post_direct_audit_no_duplicate_ids",
         ],
         "expected_failure_cases": {},
         "non_claims": [
-            "cad_tangent_direct_edit_execution",
+            "cad_face_rotate_direct_edit_execution",
+            "general_arbitrary_axis_face_rotate",
             "general_brep_push_pull",
             "persistent_topological_naming",
             "cad_brep_generality",

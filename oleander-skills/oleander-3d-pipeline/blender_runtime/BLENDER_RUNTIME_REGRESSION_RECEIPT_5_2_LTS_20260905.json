@@ -4,16 +4,16 @@
   "runtime_version": "0.2.0",
   "validation_state": "PASS",
   "validation_scope": "BLENDER_5_2_LTS_SEVENTEEN_LAYER_RUNTIME_REGRESSION",
-  "validated_at_utc": "2026-09-10T08:26:35Z",
+  "validated_at_utc": "2026-09-10T09:44:25Z",
   "repository": "Jiaosong/Design",
-  "pull_request": 516,
-  "candidate_head": "6ec5c3401fd8b3f79a4dd3eae39a1e74c511ad00",
-  "tested_pr_merge_commit": "b2113dafefae6572c284fc203e0e72fff816afc5",
-  "tested_main_base": "c1016879f5e043d01ab99655f89b9f652f001966",
+  "pull_request": 518,
+  "candidate_head": "069d0291e8ce4a4e4d56df6069c2dd3db942ec09",
+  "tested_pr_merge_commit": "fbdac0bdb4bb960c2bd38e986cc2fe57212e1747",
+  "tested_main_base": "120349ab7b21d22d6d69ed3f442dd8c29f6f8aa9",
   "workflow": {
     "name": "OLEANDER Blender Runtime 5.2 LTS Regression",
-    "run_id": 34455090728,
-    "job_id": 102799500469,
+    "run_id": 34462229511,
+    "job_id": 102822483718,
     "conclusion": "success"
   },
   "host": {
@@ -27,8 +27,8 @@
   },
   "extension_package": {
     "filename": "oleander_blender_runtime-5.2-lts.zip",
-    "size_bytes": 93553,
-    "sha256": "60d7086f9b459a810866acb20e1c1b4b1c1c23973eb8a54827470ca0cdfbf663",
+    "size_bytes": 94296,
+    "sha256": "8ae2846ed1c34952dcf45f8aff2adab97f67b787335ecf3e7d6c42f49abda17d",
     "source_manifest_validate": "PASS",
     "build": "PASS",
     "built_package_validate": "PASS"
@@ -36,71 +36,71 @@
   "stages": {
     "validate_stage2.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "db58661b724f9952684643fb66b8773c6433edc1a2dc6e66e25e452b994f2633"
+      "source_fingerprint_sha256": "ef6a49d2f091b78bdb0aea14d159f1cbdf642d8ac7bdaff6b769a922c7919263"
     },
     "validate_stage3_direct.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "b047c6ba88ceec065ded190ab15d4810d06b029d34ed157b34740757c327e168"
+      "source_fingerprint_sha256": "4a3f936a98d30a6e9af3de3319e84a3e7af7c35a03572410f57670d65d8280cc"
     },
     "validate_stage3_features.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "cf47a887f9969390c4fd395ead5fb97b4dbc2b5113c30c6894ee867bf921e2b6"
+      "source_fingerprint_sha256": "199ea5bf4d9161fd5ee720a2578776d5b550ecd270804a913b5fadd84400e249"
     },
     "validate_stage3_feature_editing.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "ebe389afd6f7305a1e6617a7254c51c6b15e5eecf31e924bc9c4e39a24927e68"
+      "source_fingerprint_sha256": "b869ee4f51db9945e11fc4c85b986abf010c3f3ee31b421ac7d49796cc58ac68"
     },
     "validate_stage3_relations.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "88c69568a9209d0f9d0a1cf4417c84ac5945b352012b363d6359cefdf7d27fb4"
+      "source_fingerprint_sha256": "4399f38ff14949c5fe8449ef3ebc435105311533173c485cc864f611b0ba0302"
     },
     "validate_stage3_relation_apply.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "f54f1aa096e0e0c3b02ee2098e049f13b68238db795de20c8e9966cd7bea22fe"
+      "source_fingerprint_sha256": "5c7d13619ca5ff70b82dbcff80d67f66f22d2c0f4c21abe9008727ae7d0965a2"
     },
     "validate_stage3_measurement.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "509955e269866deb30251b765913dd076449218d83ed7a75ad5f9193f731fd60"
+      "source_fingerprint_sha256": "aaee6f55e76bfb83b6e6461e7892d6aabe50ef7561135751084969de73cceae6"
     },
     "validate_stage3_angular_datum.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "a6b6f2b9386bc5ac7e423f696eb80e09262a0ea7c1f13080bdf0c342b0d173a9"
+      "source_fingerprint_sha256": "90d9df7ed3c54d2077dea436c9eb1b2f1edfefc29bd053cfe98524a1b336c51d"
     },
     "validate_stage3_precision_inference.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "3f5b76e53c031d9787250d7e874fb7e718c0b9da6b6da0a19cdee3449837e9f2"
+      "source_fingerprint_sha256": "42c12f1086abab4fbb39bfb6d6d7baab912ecff4d473f91f3ffa48f38851e3e0"
     },
     "validate_stage3_inference_v2.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "6e7333b4d72b821f52201ec4842062595bf41b6bf41505f449f7edd437d95990"
+      "source_fingerprint_sha256": "ef1a832987d1c3c60784d15b19ef0468b19d9204d394b142e78800b58c976154"
     },
     "validate_stage3_mesh_clearance.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "ac21b1ce6e2dabad7ff689ceb371982aaa0b9768066193b4be1289f786a57037"
+      "source_fingerprint_sha256": "b412fb20eae5df83c822ed2d3f54759666f1ae4129784ce611d5e54e3bc8bc14"
     },
     "validate_stage3_surface_diagnostics.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "851777f22cebde6d4a2de2a3b06de25165fcfa8805446a8de2cf0f88fb517730"
+      "source_fingerprint_sha256": "853d7bb6f1bcbd23c6b3514cb23b7fe26612995f462b5a939049f9b4dde51cca"
     },
     "validate_stage3_design_intent.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "c0efcabbaea0ca652ec04035bf757b6cb3570e09084b40be0604e9a38c44db74"
+      "source_fingerprint_sha256": "c1f648ef4ff5d255b3b4456ca4711f3a628b76a31d91de4a22203452f0cbe2c5"
     },
     "validate_stage3_design_intent_apply.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "9f002ea94be7f65a371a249c62de0061a7a6d3262ac60ee79ac3718b650ac17b"
+      "source_fingerprint_sha256": "1727243515f1141e7155ee74c66eae9ce8b1356f25702ab0e6d2385ec1acfc32"
     },
     "validate_stage3_design_intent_batch.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "ef592c52950cf7cfcd73301d2734bc12068a51808412ef6799ca439c4fa0b5f8"
+      "source_fingerprint_sha256": "d6840a1ae9eccec9ed653ada26cdd0193b8f6d18457bc4697b55c9791418fa5c"
     },
     "validate_stage3_design_intent_rebuild.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "6b300285d07a3be220e13567f223e89c7d8ac7bc726ec5eb6f14369d355a3ec6"
+      "source_fingerprint_sha256": "32ce771ffcc2a4fc470343731341d3bd2e1e8c050093f96cd4bd3a02cf6cedb7"
     },
     "validate_stage3_procedural.py": {
       "status": "PASS",
-      "source_fingerprint_sha256": "cc3de0c607193aa5223ebc107d4977c2ab21dfda2373d21291ff4b1b5d3c76b0"
+      "source_fingerprint_sha256": "b6967feeb0422b0a5a3fec3ddac0ad384813813c9ac88d495da72405249eb39d"
     }
   },
   "legacy_receipt_policy": {
@@ -119,7 +119,10 @@
     "BLENDER_NATIVE_SINGLE_FACE_TANGENT_MOVE_UV_MM",
     "DIRECT_FACE_TANGENT_GEOMETRY_DERIVED_UV_BASIS",
     "DIRECT_FACE_TANGENT_DOWNSTREAM_STALE_PROPAGATION",
-    "CAD_NATIVE_TANGENT_INTENT_ROUTING_NO_DISPLAY_MUTATION"
+    "CAD_NATIVE_TANGENT_INTENT_ROUTING_NO_DISPLAY_MUTATION",
+    "BLENDER_NATIVE_SINGLE_FACE_ROTATE_UV_TANGENT_AXIS_DEG",
+    "DIRECT_FACE_ROTATE_DOWNSTREAM_STALE_PROPAGATION",
+    "CAD_NATIVE_FACE_ROTATE_INTENT_ROUTING_NO_DISPLAY_MUTATION"
   ],
   "non_claims": [
     "CAD_DIRECT_EDIT_EXECUTION_WITHIN_RUNTIME_REGRESSION",
@@ -136,8 +139,82 @@
     "field_truth",
     "constructability",
     "GENERAL_PLANAR_FACE_TRANSLATION",
-    "OBLIQUE_FACE_EXECUTION"
+    "OBLIQUE_FACE_EXECUTION",
+    "CAD_FACE_ROTATE_DIRECT_EDIT_EXECUTION_WITHIN_RUNTIME_REGRESSION",
+    "GENERAL_ARBITRARY_AXIS_FACE_ROTATE",
+    "ARBITRARY_PIVOT_FACE_ROTATE",
+    "NONPLANAR_FACE_ROTATE_PARITY"
   ],
   "invalidation_rule": "Any material change to governed add-on source or any of the seventeen bound validation scripts invalidates the corresponding current fingerprint and requires a fresh canonical Blender 5.2 LTS regression before current-source compatibility evidence may be rebound.",
-  "authority_note": "Consolidated current-source compatibility evidence for the shared OLEANDER Blender Runtime validated through PR #516 on canonical Blender 5.2 LTS. The seventeen-layer Runtime regression proves BLENDER_NATIVE Normal/Tangent behavior and CAD_NATIVE Normal/Tangent intent routing with no Blender display mutation. The Runtime regression intentionally does not execute specialist B-Rep mutation. Bounded CAD_NATIVE Normal execution remains established by the professional sidecar lineage from PR #499, and bounded axis-aligned CAD_NATIVE FACE_TANGENT_MOVE execution is separately established by professional CAD-sidecar run 34454827338 / job 102798674698 using FreeCAD 1.1.3 / OCCT with PASS plus missing/ambiguous HOLD_NO_RELEASE and Blender save/reopen. General or oblique planar-face translation, general B-Rep push/pull, persistent topological naming generality, P0_B/P0_G promotion and default-environment eligibility remain unpromoted."
+  "authority_note": "Consolidated current-source compatibility evidence for the shared OLEANDER Blender Runtime through PR #518 on canonical Blender 5.2 LTS. The seventeen-layer Runtime run 34462229511 / job 102822483718 proves BLENDER_NATIVE bounded Face Normal/Tangent/Rotate behavior and CAD_NATIVE intent routing without premature Blender display mutation. Bounded CAD_NATIVE FACE_ROTATE authoritative execution is separately established by Professional CAD Sidecar run 34461827861 / job 102821200739 using FreeCAD 1.1.3 / OCCT 7.8.1, with RESOLVED_UNIQUE EXECUTED output plus missing/ambiguous HOLD_NO_RELEASE and Blender display-only save/reopen. This does not promote unrestricted arbitrary-axis rotation, arbitrary pivot placement, nonplanar face rotation, persistent topological naming, P0_B/P0_G, or default-environment eligibility.",
+  "professional_sidecar_evidence": {
+    "face_rotate": {
+      "status": "PASS",
+      "scope": "BOUNDED_CAD_NATIVE_FACE_ROTATE_CENTER_TANGENT_AXIS",
+      "workflow": {
+        "name": "OLEANDER Blender Professional CAD Sidecar Integration",
+        "run_id": 34461827861,
+        "job_id": 102821200739,
+        "conclusion": "success",
+        "head_sha": "1a809cad881cdc1348d10b58a7157bbd4a4f52c5"
+      },
+      "host": {
+        "blender_version": "5.2.0 LTS",
+        "freecad_version": "1.1.3",
+        "occt_version": "7.8.1"
+      },
+      "operation": {
+        "kind": "FACE_ROTATE",
+        "angle_deg": 5.0,
+        "axis_mode": "U",
+        "axis_origin_local_mm": [
+          0.0,
+          0.0,
+          10.0
+        ],
+        "axis_direction_local": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "resolution": "RESOLVED_UNIQUE",
+      "execution_state": "EXECUTED",
+      "result": {
+        "solid_count": 1,
+        "bbox_mm": [
+          80.0,
+          50.0,
+          12.178893568691453
+        ],
+        "volume_mm3": 39923.89396183491
+      },
+      "artifacts": {
+        "fcstd_sha256": "f8ece48ce2d649791eb2332bd120de84f003e3470b3d52810d12cb2e19b9b1ac",
+        "step_sha256": "411236de5f17bff7bfeb6c4d70f79e0e4c6848dd876cc9ed5b0ba594cb047daa",
+        "brep_sha256": "520d7f4aa4b7302ecd1469f41eddc783db3a99c219d482590d67535f0f2abb64",
+        "display_derivative_sha256": "7c2df75fc1b673c05c43de4c09aa86b6f227a83cf65b146894e6ab9f7444671f"
+      },
+      "failure_envelope": {
+        "missing": "HOLD_NO_RELEASE",
+        "ambiguous": "HOLD_NO_RELEASE"
+      },
+      "validated_source_blobs": {
+        "professional_adapter/cad_sidecar.py": "a5a99e535b30329e03916476a848a5074ea0f2de",
+        "tests/professional/freecad_cad_direct_edit_service.py": "a51ffdd9866130dec3fcbc0c3555104701707b09",
+        "tests/professional/probe_cad_direct_edit_integration.py": "91a49c493fae281987de34544c4332a94b9d07a9",
+        "tests/professional/probe_cad_direct_rotate_integration.py": "b0a1ff00340b87a67059d0b37523e80fe47186ab",
+        ".github/workflows/oleander-blender-professional-cad-sidecar-integration.yml": "d03096ee78ac37d2ba4e1b9a67a2b80de7a4ed27"
+      },
+      "non_claims": [
+        "unrestricted_arbitrary_axis_face_rotate",
+        "arbitrary_pivot_placement",
+        "nonplanar_face_rotate",
+        "persistent_topological_naming",
+        "P0_B_DIRECT_BREP_PASS",
+        "P0_G_MODELING_INTERACTION_PASS",
+        "default_environment_promotion"
+      ]
+    }
+  }
 }
