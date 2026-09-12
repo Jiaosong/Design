@@ -28,9 +28,9 @@
 
 ### Notion Canonical Knowledge Runtime + Post-Sync Governance
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
-- Branch: agent/oleander-notion-d04-academic-20260912
-- HEAD: 808c46af75528f10a424295593cfd2edb9f28eaf
-- Remote: origin/agent/oleander-notion-d04-academic-20260912
+- Branch: agent/oleander-notion-d06-academic-20260912
+- HEAD: 760e681ecb174f19360fa4b6f6eeff5aadcd1b14
+- Remote: origin/agent/oleander-notion-d06-academic-20260912
 - Runtime PR: #521 MERGED -> `ec6bd93aceacb1303aa2729f22c9fe964463f702`
 - Receipt closure PR: #522 MERGED -> `45cadb2fdbf2e9c70152ed363b0d03b2d462840e`
 - Scheduler resilience PR: #523 MERGED -> `1156086864df4bd5b34898a341f892f6c1484099`
@@ -39,6 +39,7 @@
 - Post-sync governance PR: #526 MERGED -> `0a58055f9539ea05387f80ad6cd4742cee94595e`
 - Reader + Academic migration PR: #527 MERGED -> `1f699762978515a89d6dafd8e75de9e042126f11`
 - D04 academic migration PR: #528 MERGED -> `5dfb458ae70d45d015ab34ee0ef519cb5c4715eb`
+- D06 academic migration PR: #529 MERGED -> `21a915e788ac61ab559564c3a374d247382109d8`
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
 - Cloudflare Worker: `5fe7321c-5503-45ca-9dd2-7779f8f4e7b2`
@@ -56,11 +57,12 @@
 - Research METHOD owner: `MTH-ARCH-RESEARCH-001｜建筑研究方法：问题、证据、有效性与伦理` is `CURRENT / DEFAULT / ACTIVE / VALID`; old D08 preserved as `LEGACY-MTH-ARCH-RESEARCH-D08-20260730 / PROVENANCE / HISTORY_ONLY`.
 - Evidence-governance METHOD owner: `MTH-ARCH-EVIDENCE-GOV-001｜建筑证据治理协议：权威、适用性、版本与冲突` is `CURRENT / DEFAULT / ACTIVE / VALID`; old K03 preserved as `LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824 / PROVENANCE / HISTORY_ONLY`. Stable protocol is now separated from dated standards/product/supplier/price update logs.
 - D04 academic THEORY migration: `KN-ARCH-DIGITAL-INFO-001｜BIM 与数字建造：信息需求、开放交换与可验证工作流` is `CURRENT / DEFAULT / ACTIVE / VALID`, with live-Notion review of testable thesis, claim-level sources, rival/counterevidence, method boundary and independent Limitations before promotion. Old `D04｜数字设计、BIM与智能建造` is fully retained as `LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID`, linked reciprocally to the Current replacement.
-- Current D1 readback after additive D04 migration: `1,189 document rows / 1,187 active / 2 excluded`; duplicate non-empty Canonical ID groups remain `0`. New D04 Current is `INDEXED / 38 chunks / not truncated`; old D04 remains `INDEXED / 57 chunks / not truncated`. The two excluded rows are the previously contained orphan empty pages and remain in Notion.
-- Remaining rewrite queue: `D06 -> D07 -> D03 -> D05 -> D02`; `K05` is navigation/IA cleanup only, not a paper. Each migration remains additive and readback-gated.
+- D06 academic THEORY migration: `KN-ARCH-PUBLIC-SOCIAL-INFRA-001｜公共建筑与社会基础设施：可达性、服务分配与公共性` is `CURRENT / DEFAULT / ACTIVE / VALID`; live review confirms five conditional theses, claim-level rights/academic evidence, rival/counterevidence, method boundary, Claim–Evidence Map and independent Limitations. Old `D06｜公共建筑、社会基础设施与公共性` is fully retained as `LEGACY-KN-ARCH-PUBLIC-SOCIAL-INFRA-D06-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID` with reciprocal replacement relation; its old eight-dimension framework remains History rather than a universal Current taxonomy.
+- Current D1 readback after additive D06 migration: `1,190 document rows / 1,188 active / 2 excluded`; duplicate non-empty Canonical ID groups remain `0`. New D06 Current is `INDEXED / 43 chunks / not truncated`; old D06 remains `INDEXED / 60 chunks / not truncated`. The two excluded rows are the previously contained orphan empty pages and remain in Notion.
+- Remaining rewrite queue: `D07 -> D03 -> D05 -> D02`; `K05` is navigation/IA cleanup only, not a paper. Each migration remains additive and readback-gated.
 
 ## Baseline
-- origin/main: 5dfb458ae70d45d015ab34ee0ef519cb5c4715eb
+- origin/main: 21a915e788ac61ab559564c3a374d247382109d8
 - Blender execution branch vs origin/main: 173 commits unique locally / 1569 commits on origin/main
 - Policy: origin/main is not automatically merged into active execution branches; reconcile through Source Authority / project state first.
 - Policy: do not merge into active branches without authority review
