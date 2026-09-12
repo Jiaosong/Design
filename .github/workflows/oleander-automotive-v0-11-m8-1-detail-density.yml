@@ -1,0 +1,108 @@
+name: OLEANDER Automotive v0.11 R29A M8.1 Detail Density
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-automotive-v0-11-m8-1-detail-density.yml'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/revise_v011_r29a_m8_1_detaildensity.py'
+      - '90-shared/toolchains/modeling-worker/automotive/v0.11/**'
+      - 'oleander-skills/oleander-3d-pipeline/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m8-1-detail-density:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 1
+
+      - name: Stage R29A M8.1 dependencies
+        run: |
+          set -euo pipefail
+          ROOT='90-shared/toolchains/modeling-worker/automotive/v0.11'
+          shopt -s nullglob
+          for src in "$ROOT"/*.py; do cp "$src" "/tmp/$(basename "$src")"; done
+          for src in "$ROOT"/*.py.gz.b64; do
+            dst="/tmp/$(basename "$src" .gz.b64)"
+            if [ ! -f "$dst" ]; then base64 -d "$src" | gzip -d > "$dst"; fi
+          done
+          test -f /tmp/revise_v011_r29a.py
+          test -f /tmp/revise_v011_r29a_m6.py
+          test -f /tmp/revise_v011_r29a_m7.py
+          test -f /tmp/revise_v011_r29a_m8.py
+          test -f /tmp/revise_v011_r29a_m8_1_detaildensity.py
+          test -f /tmp/wheel_hp_contract.py
+          python3 -m py_compile /tmp/build_automotive_v011*.py /tmp/revise_v011*.py /tmp/wheel_hp_contract.py
+
+      - name: Validate refined 3D Skill before model execution
+        run: |
+          set -euo pipefail
+          python3 -m unittest \
+            00-governance/control-plane/tests/test_oleander_3d_pipeline_skill_contract.py \
+            00-governance/control-plane/tests/test_oleander_3d_pipeline_receipt_validator.py
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | head -n 2
+
+      - name: Build R29A M8.1 detail-density model
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/OLEANDER_Automotive_v0.11_R29A_M8_1"
+          mkdir -p "$OUT"
+          START=$(date +%s)
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 --python /tmp/revise_v011_r29a_m8_1_detaildensity.py -- --out "$OUT" --samples 12 --resolution 960
+          END=$(date +%s)
+          echo $((END-START)) > "$OUT/EXECUTION_SECONDS.txt"
+          git rev-parse HEAD > "$OUT/M8_1_SOURCE_COMMIT.txt"
+          sha256sum "$OUT"/renders/*.png > "$OUT/M8_1_RENDER_SHA256SUMS.txt"
+          sha256sum "$OUT"/*.blend "$OUT"/*.json > "$OUT/M8_1_PRIMARY_SHA256SUMS.txt"
+
+      - name: M8.1 detail-density machine gate
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('out/OLEANDER_Automotive_v0.11_R29A_M8_1')
+          q=json.loads((out/'M8_1_DETAIL_DENSITY_QA.json').read_text())
+          r=json.loads((out/'M8_1_DETAIL_DENSITY_RECEIPT.json').read_text())
+          canonical='d19224d2e33485ed5f6e333c5996133a07fd686cd4333caf28c37a83b7e552fb'
+          assert q['status']=='MACHINE_PASS_HUMAN_DETAIL_REVIEW_REQUIRED', q
+          assert r['status']=='EXECUTED_MACHINE_PASS_HUMAN_DETAIL_REVIEW_REQUIRED', r
+          assert q['source_hash_before']==q['source_hash_after_details']==q['source_hash_after_render']==canonical
+          assert q['source_topology']['ngon']==0
+          assert q['checks']['m7_secondary_signatures_stable'] is True
+          assert q['checks']['wheel_hp_package_exact'] is True
+          assert q['checks']['detail_prototype_count_six'] is True
+          assert q['checks']['semantic_seams_derived_not_empty'] is True
+          assert q['checks']['linked_detail_families'] is True
+          assert q['detail_instance_count']==76
+          assert len(q['renders'])==6
+          assert q['render_samples']==12
+          assert q['render_resolution']==[960,960]
+          assert len(list((out/'renders').glob('*.png')))==6
+          blends=list(out.glob('*.blend'))
+          assert len(blends)==1 and blends[0].stat().st_size>0
+          print('R29A M8.1 DETAIL DENSITY MACHINE PASS')
+          PY
+
+      - name: Upload R29A M8.1 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-automotive-r29a-m8-1-detail-${{ github.run_id }}
+          path: out/OLEANDER_Automotive_v0.11_R29A_M8_1/
+          if-no-files-found: error
+          retention-days: 14
