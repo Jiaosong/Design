@@ -25,6 +25,12 @@ export const VECTOR_NAMESPACES = ["CURRENT", "SUPPORT", "PROVENANCE"] as const;
 // so OLEANDER metadata (title/id/role/path) still fits around the chunk body.
 export const CHUNK_MAX_ESTIMATED_TOKENS = 320;
 export const CHUNK_OVERLAP_ESTIMATED_TOKENS = 40;
+// Workers AI embedding models enforce a request-level context ceiling across
+// the entire text array. The local CJK-aware estimate is deliberately cheap
+// and can under-count the provider tokenizer by roughly 1.5x on mixed pages.
+// Keep the request budget at 32k estimated tokens so even that observed ratio
+// remains comfortably below bge-m3's 60k-token ceiling without dropping chunks.
+export const EMBEDDING_BATCH_MAX_ESTIMATED_TOKENS = 32_000;
 export const MAX_UNKNOWN_BLOCK_FETCHES = 100;
 
 // Notion documents an average limit of ~3 requests/second per connection.
