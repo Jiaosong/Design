@@ -10,10 +10,23 @@ export const FIELDS = {
   knowledgeRole: "知识角色",
   primaryDomain: "主领域",
   relatedDomains: "关联领域",
+  canonicalParent: "Canonical Parent｜层级上位",
+  canonicalChildren: "Canonical Children｜层级子级",
+  methodFamily: "方法家族",
   sourceRelations: "来源文档",
   methodRelations: "引用方法",
   replacements: "替代文档",
   replacedDocuments: "被替代文档",
+} as const;
+
+// These are existing Current Domain registry fields. The Reader consumes their
+// live values as identity/readback facts; it does not maintain a UUID→semantic
+// name map or create a second domain taxonomy.
+export const DOMAIN_FIELDS = {
+  title: "Name",
+  level: "层级深度",
+  frameworkPath: "框架路径",
+  governanceState: "治理状态",
 } as const;
 
 export const VALID_EXPLICIT_SPACES = new Set(["CURRENT", "SUPPORT", "PROVENANCE", "EXCLUDED"]);

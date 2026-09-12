@@ -47,6 +47,13 @@ export function propertyRelationIds(property: NotionProperty | undefined): strin
     .filter((id): id is string => typeof id === "string");
 }
 
+export function propertyMultiSelectNames(property: NotionProperty | undefined): string[] {
+  if (!property || property.type !== "multi_select" || !Array.isArray(property.multi_select)) return [];
+  return property.multi_select
+    .map((item) => (item && typeof item === "object" ? (item as Record<string, unknown>).name : null))
+    .filter((name): name is string => typeof name === "string" && name.length > 0);
+}
+
 function normalizedUuid(value: string | null | undefined): string | null {
   return value ? value.replaceAll("-", "").toLowerCase() : null;
 }
@@ -89,6 +96,9 @@ export function normalizePage(page: NotionPage): NormalizedPage {
     relationState: propertyText(properties[FIELDS.relationState]),
     contentLevel: propertyText(properties[FIELDS.contentLevel]),
     knowledgeRole: propertyText(properties[FIELDS.knowledgeRole]),
+    canonicalParentIds: propertyRelationIds(properties[FIELDS.canonicalParent]),
+    canonicalChildrenIds: propertyRelationIds(properties[FIELDS.canonicalChildren]),
+    methodFamilies: propertyMultiSelectNames(properties[FIELDS.methodFamily]),
     primaryDomainIds: propertyRelationIds(properties[FIELDS.primaryDomain]),
     relatedDomainIds: propertyRelationIds(properties[FIELDS.relatedDomains]),
     sourceRelationIds: propertyRelationIds(properties[FIELDS.sourceRelations]),

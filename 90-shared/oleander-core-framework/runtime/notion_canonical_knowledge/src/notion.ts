@@ -54,6 +54,68 @@ export async function fetchPage(env: Env, pageId: string): Promise<NotionPage> {
   return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`);
 }
 
+interface NotionPropertyItemListResponse {
+  object: "list";
+  results: Array<Record<string, unknown>>;
+  has_more?: boolean;
+  next_cursor?: string | null;
+}
+
+export interface NotionRelationReadback {
+  ids: string[];
+  complete: boolean;
+}
+
+function relationIdsFromPageProperty(property: Record<string, unknown> | undefined): string[] {
+  if (!property || property.type !== "relation" || !Array.isArray(property.relation)) return [];
+  return property.relation
+    .map((item) => (item && typeof item === "object" ? (item as Record<string, unknown>).id : null))
+    .filter((id): id is string => typeof id === "string");
+}
+
+/**
+ * Read a relation exactly as declared on the live Notion page. Notion can
+ * truncate relation values embedded in a page response and mark `has_more`;
+ * when that happens, walk the page-property endpoint rather than silently
+ * treating the partial array as complete.
+ */
+export async function fetchRelationReadback(
+  env: Env,
+  page: NotionPage,
+  fieldName: string,
+): Promise<NotionRelationReadback> {
+  const property = page.properties?.[fieldName];
+  // Missing/retagged fields are schema drift, not an authoritative empty
+  // relation. Fail closed so the Reader can distinguish "empty" from
+  // "not successfully read as the expected relation property".
+  if (!property || property.type !== "relation") return { ids: [], complete: false };
+  const initialIds = relationIdsFromPageProperty(property);
+  if (property.has_more !== true) return { ids: [...new Set(initialIds)], complete: true };
+
+  const propertyId = typeof property.id === "string" ? property.id : null;
+  if (!propertyId) return { ids: [...new Set(initialIds)], complete: false };
+
+  const ids: string[] = [];
+  let cursor: string | null = null;
+  for (;;) {
+    const params = new URLSearchParams({ page_size: "100" });
+    if (cursor) params.set("start_cursor", cursor);
+    const response = await notionFetch<NotionPropertyItemListResponse>(
+      env,
+      `/v1/pages/${encodeURIComponent(page.id)}/properties/${encodeURIComponent(propertyId)}?${params.toString()}`,
+    );
+    for (const result of response.results) {
+      const relation = result.relation;
+      if (!relation || typeof relation !== "object") continue;
+      const id = (relation as Record<string, unknown>).id;
+      if (typeof id === "string") ids.push(id);
+    }
+    if (!response.has_more) return { ids: [...new Set(ids)], complete: true };
+    if (!response.next_cursor) return { ids: [...new Set(ids.length ? ids : initialIds)], complete: false };
+    cursor = response.next_cursor;
+  }
+}
+
 export interface GovernanceScalarUpdates {
   canonical_id?: string | null;
   retrieval_space?: string | null;

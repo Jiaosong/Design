@@ -57,7 +57,7 @@ import {
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
-import { buildKnowledgeReaderDetail, buildKnowledgeReaderSnapshot } from "./reader";
+import { buildKnowledgeReaderDetail, buildKnowledgeReaderSnapshot, hydrateKnowledgeReaderFramework } from "./reader";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -1199,7 +1199,9 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     const pageId = decodeURIComponent(readerPageMatch[1] ?? "").trim();
     if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
     const detail = await buildKnowledgeReaderDetail(env.MANIFEST, pageId);
-    return detail ? json(detail) : json({ ok: false, error: "not_found" }, 404);
+    if (!detail) return json({ ok: false, error: "not_found" }, 404);
+    detail.frameworkReadback = await hydrateKnowledgeReaderFramework(env, detail);
+    return json(detail);
   }
 
   if (request.method === "POST" && url.pathname === "/v1/search") {
