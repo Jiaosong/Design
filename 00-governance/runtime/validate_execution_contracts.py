@@ -408,6 +408,11 @@ def validate_receipts() -> None:
     artifact_fields = set(schema.get("artifact_required_fields", []))
     review_fields = set(schema.get("review_required_fields", []))
     closure_fields = set(schema.get("closure_required_fields", []))
+    feedback_ext = schema.get("skill_feedback_extension", {})
+    feedback_fields = set(feedback_ext.get("fields", []))
+    feedback_provenance = set(feedback_ext.get("usage_provenance_states", []))
+    feedback_gap_routes = set(feedback_ext.get("gap_routes", []))
+    feedback_actions = set(feedback_ext.get("feedback_actions", []))
     for path in receipts:
         r = load_json(path)
         require_fields(r, core, f"receipt:{path.name}")
@@ -424,6 +429,21 @@ def validate_receipts() -> None:
         require_fields(review, review_fields, f"receipt:{path.name}:review")
         if review.get("reviewer_independence_state") == "INDEPENDENT" and review.get("producer_id") == review.get("reviewer_id"):
             fail(f"receipt:{path.name} independent reviewer cannot equal producer")
+        if "skill_feedback" in r:
+            feedback = r["skill_feedback"]
+            require_fields(feedback, feedback_fields, f"receipt:{path.name}:skill_feedback")
+            if feedback.get("usage_provenance_state") not in feedback_provenance:
+                fail(f"receipt:{path.name} invalid skill_feedback usage_provenance_state")
+            if feedback.get("gap_route") not in feedback_gap_routes:
+                fail(f"receipt:{path.name} invalid skill_feedback gap_route")
+            actions = feedback.get("feedback_action")
+            action_set = set(actions) if isinstance(actions, list) else {actions}
+            if not action_set or None in action_set or not action_set.issubset(feedback_actions):
+                fail(f"receipt:{path.name} invalid skill_feedback feedback_action")
+            if feedback.get("usage_provenance_state") == "PROJECT_USAGE_EVIDENCE" and not feedback.get("skill_version_or_commit"):
+                fail(f"receipt:{path.name} PROJECT_USAGE_EVIDENCE requires exact skill version/commit")
+            if feedback.get("regression_case_required") is True and not feedback.get("skill_change_ref"):
+                fail(f"receipt:{path.name} regression-required Skill feedback needs skill_change_ref")
         require_fields(r.get("closure", {}), closure_fields, f"receipt:{path.name}:closure")
 
 
