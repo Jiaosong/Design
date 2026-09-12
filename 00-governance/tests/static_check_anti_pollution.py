@@ -188,9 +188,18 @@ def main() -> None:
         {"NOT_OPEN_PR_HEAD", "NOT_OPEN_PR_BASE", "NOT_ACTIVE_WORKTREE", "NO_EXPLICIT_KEEP", "HYPOTHETICAL_MERGE_CLEAN", "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"}.issubset(noop_conditions),
         "unmerged no-op cleanup conditions incomplete",
     )
+    main_protection = branch_guard["main_branch_protection"]
+    check(main_protection["direct_push_allowed"] is False, "main direct push must remain disabled")
+    check(main_protection["require_pull_request"] is True, "main must require pull requests")
+    check(main_protection["required_approving_review_count"] == 0, "main PR boundary must not require unavailable self-approval")
+    check(main_protection["enforce_admins"] is True, "main protection must include administrators")
+    check(main_protection["allow_force_pushes"] is False, "main force pushes must remain disabled")
+    check(main_protection["allow_deletions"] is False, "main deletion must remain disabled")
+    check(main_protection["required_status_checks_mode"] == "APPLICABLE_PATH_SCOPED_WORKFLOWS_NOT_GLOBAL_BRANCH_REQUIREMENT", "main status-check mode drifted")
     check("A branch ref is not a Current authority" in policy, "branch authority boundary missing from policy")
     check("OPEN PR BASE" in policy and "ACTIVE WORKTREE" in policy, "branch cleanup dependency protections missing from policy")
     check("SAFE_DELETE_NOOP_UNMERGED_ORPHAN" in policy, "content-equivalent unmerged cleanup rule missing from policy")
+    check("`main` is a PR-only integration surface" in policy, "main PR-only integration boundary missing from policy")
     enforce_consolidation_guard(contract)
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"

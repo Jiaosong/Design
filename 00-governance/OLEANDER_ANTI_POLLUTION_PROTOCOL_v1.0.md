@@ -267,8 +267,11 @@ Rules:
 7. a local worktree may be removed only after uncommitted state is resolved and its branch no longer owns an active execution frontier;
 8. cleanup deletes redundant refs, not unique evidence. If a ref contains commits not reachable from the retained authority/history path, deletion is blocked until provenance is preserved.
 9. an unmerged orphan ref may be classified `SAFE_DELETE_NOOP_UNMERGED_ORPHAN` only when it is not an open PR head/base, not an active worktree, has no explicit keep reason, and a clean hypothetical merge into the current `origin/main` produces **exactly the existing main tree**. This is content-equivalence cleanup, not age-based deletion; merge conflicts or any resulting tree delta remain protected for manual disposition.
+10. `main` is a PR-only integration surface. Human, agent and admin-authored Current mutations must use `work branch → commit → PR → applicable CI → merge → main readback`; direct pushes, force pushes and branch deletion are forbidden by default. A temporary emergency bypass is permitted only as an explicit bounded governance incident with pre-state capture, reason, affected SHA/range, postcondition readback and immediate protection restoration.
 
 Repository-level `delete_branch_on_merge` may remain disabled while stacked PRs still depend on merged branches as live bases. In that state, closure/cleanup must use a dependency-aware audit rather than blind global deletion.
+
+`main` protection does not globally require every path-scoped status check. Several Current workflows intentionally trigger only for affected paths; making those checks universal would leave unrelated PRs permanently pending. Required checks remain the applicable workflow/CI gates selected by the repository event and OLEANDER execution contract, while GitHub branch protection enforces the non-bypassable PR boundary, admin enforcement, no force-push and no deletion.
 
 ## 13. Cross-surface synchronization
 
