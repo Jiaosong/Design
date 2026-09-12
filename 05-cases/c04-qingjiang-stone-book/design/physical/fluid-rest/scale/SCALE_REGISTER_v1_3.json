@@ -1,0 +1,52 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "C04_MODEL_FLUID_REST_v1_3_SCALE_DEEPENING",
+  "current_delta": "Mountain Fluid Rest dimensions only",
+  "status": "DESIGN-TEST SCALE DEEPENING / FIELD OPEN / NOT FOR CONSTRUCTION",
+  "standards_basis": [
+    {
+      "id": "GB/T 10000-2023",
+      "title": "中国成年人人体尺寸",
+      "use": "human-dimension authority to be used in later percentile validation",
+      "claim": "standard is current; this package does NOT claim its exact percentile values were extracted"
+    },
+    {
+      "id": "GB/T 3326-2016",
+      "title": "家具 桌、椅、凳类主要尺寸",
+      "use": "furniture-dimension reference family",
+      "claim": "standard is current and was reviewed in 2024 as continue-valid; exact clauses are NOT copied into this package"
+    },
+    {
+      "id": "GB 55019-2021",
+      "title": "建筑与市政工程无障碍通用规范",
+      "use": "accessibility/safety boundary",
+      "claim": "mandatory current code; route obstruction, hazardous terrain protection and ground performance remain site-level checks"
+    }
+  ],
+  "test_body_proxies": {
+    "stature_mm": [1550, 1700, 1850],
+    "semantics": "SCENARIO BODIES ONLY / NOT GB/T 10000 PERCENTILE LABELS"
+  },
+  "rows": [
+    {"id":"SC-00","layer":"PRIMARY_ENVELOPE","parameter":"overall_length","recommended_mm":5400,"range_mm":"5000–6000","basis":"DECISION — long-stay continuous object; preserves multiple body states without becoming landscape hero","sensitivity":"terrain fit / crowding / maintenance handling","field_check":"selected site clear length; circulation conflict; rescue/maintenance access"},
+    {"id":"SC-01","layer":"BODY_USE","parameter":"lean_contact_height","recommended_mm":740,"range_mm":"700–780","basis":"INFERENCE — lower-back/hip leaning support; tested against 1550/1700/1850 mm scenario bodies; not percentile claim","sensitivity":"stature / footwear / terrain crossfall","field_check":"1:1 mock-up with small/medium/tall adult users; pressure/contact comfort"},
+    {"id":"SC-02","layer":"BODY_USE","parameter":"perch_contact_height","recommended_mm":560,"range_mm":"530–580","basis":"INFERENCE — half-standing perch transition between lean and sit","sensitivity":"leg length / fatigue / footwear","field_check":"sit-to-stand trial; knee/hip angle; edge pressure"},
+    {"id":"SC-03","layer":"BODY_USE","parameter":"sit_contact_height","recommended_mm":445,"range_mm":"430–460","basis":"INFERENCE — conventional seated hip support zone; exact compliance not claimed","sensitivity":"popliteal height / slope / clothing","field_check":"1:1 seated mock-up; feet contact; thigh pressure; rise effort"},
+    {"id":"SC-04","layer":"BODY_USE","parameter":"half_recline_hip_height","recommended_mm":455,"range_mm":"440–470","basis":"INFERENCE — seated base retained while back support increases","sensitivity":"body length / recline angle / view duration","field_check":"1:1 recline test; lumbar/scapula contact; independent exit"},
+    {"id":"SC-05","layer":"BODY_USE","parameter":"half_recline_back_rise","recommended_mm":740,"range_mm":"680–760","basis":"INFERENCE — mountain-side rise supports torso without becoming a full chair back","sensitivity":"torso length / clothing / body rotation","field_check":"back-contact map; shoulder clearance; no head-rest implication"},
+    {"id":"SC-06","layer":"BODY_USE","parameter":"rise_lean_support_height","recommended_mm":700,"range_mm":"680–730","basis":"INFERENCE — hand/hip support for exit transition","sensitivity":"arm reach / fatigue / wet conditions","field_check":"rise-assist trial; grasp/contact stability"},
+    {"id":"SC-07","layer":"SECTION","parameter":"lean_transverse_depth","recommended_mm":560,"range_mm":"520–600","basis":"DECISION — shallow depth keeps lean zone visually light","sensitivity":"terrain attachment / body rotation","field_check":"toe/heel placement; circulation encroachment"},
+    {"id":"SC-08","layer":"SECTION","parameter":"perch_transverse_depth","recommended_mm":680,"range_mm":"620–700","basis":"DECISION — permits perch + partial sit without lounge bulk","sensitivity":"body size / winter clothing","field_check":"edge comfort; knee clearance"},
+    {"id":"SC-09","layer":"SECTION","parameter":"sit_transverse_depth","recommended_mm":720,"range_mm":"680–760","basis":"DECISION — full seat zone with view-side edge kept low","sensitivity":"seat posture / local terrain","field_check":"feet reach; view-side edge pressure; drainage"},
+    {"id":"SC-10","layer":"SECTION","parameter":"half_recline_transverse_depth","recommended_mm":820,"range_mm":"780–860","basis":"DECISION — extra depth only at long-stay recline zone","sensitivity":"body height / recline duration / cleaning","field_check":"body containment without trapping; shoulder/knee clearance"},
+    {"id":"SC-11","layer":"SECTION","parameter":"rise_transverse_depth","recommended_mm":600,"range_mm":"560–640","basis":"DECISION — narrows again before exit","sensitivity":"hand contact / approach direction","field_check":"exit path and turning conflict"},
+    {"id":"SC-12","layer":"OCCUPANCY","parameter":"longitudinal_body_bay","recommended_mm":650,"range_mm":"600–750","basis":"INFERENCE — single adult occupancy pitch for ordinary sit/lean zones; not rated capacity","sensitivity":"shoulder breadth / bags / family use","field_check":"1:1 multi-user mock-up; personal-space behavior"},
+    {"id":"SC-13","layer":"OCCUPANCY","parameter":"recline_body_bay","recommended_mm":850,"range_mm":"750–950","basis":"INFERENCE — larger longitudinal bay where torso rotates/reclines","sensitivity":"stature / belongings / adjacent user conflict","field_check":"simultaneous-use mock-up"},
+    {"id":"SC-14","layer":"FABRICATION","parameter":"cassette_module_length","recommended_mm":900,"range_mm":"700–1200","basis":"DECISION — six modules across 5.4 m; balances replaceability and seam count","sensitivity":"handling mass / panel stiffness / transport","field_check":"supplier sheet size; lifting method; replacement route"},
+    {"id":"SC-15","layer":"FABRICATION","parameter":"cassette_visual_depth","recommended_mm":80,"range_mm":"70–85","basis":"DECISION — current shell envelope; not structural thickness","sensitivity":"edge stiffness / drain route / frame concealment","field_check":"engineering section; water path; fabrication tolerance"},
+    {"id":"SC-16","layer":"FABRICATION","parameter":"warm_touch_layer","recommended_mm":30,"range_mm":"25–35","basis":"DECISION — replaceable contact layer; material not final","sensitivity":"thermal behavior / fastening / edge radius","field_check":"material prototype; wet-slip; UV/weathering; replaceability"},
+    {"id":"SC-17","layer":"FABRICATION","parameter":"cassette_seam","recommended_mm":12,"range_mm":"10–15","basis":"DECISION — visible/recoverable separation line","sensitivity":"thermal movement / debris / tolerance","field_check":"prototype joint; cleaning; drainage"},
+    {"id":"SC-18","layer":"SITE_INTERFACE","parameter":"approach_clear_zone","recommended_mm":1500,"range_mm":"1200–1800","basis":"ASSUMPTION — design reservation only; not an accessibility compliance claim","sensitivity":"route class / wheelchair turning / companions / terrain","field_check":"verify against actual route geometry and applicable accessibility requirements"}
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
