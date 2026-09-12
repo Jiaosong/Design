@@ -1,0 +1,36 @@
+{
+  "schema": "c04.integrated-scene-visual-qc/2.0",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "review": {
+    "R06": {
+      "result": "KEEP",
+      "FIRST_READ": "KEEP — real Qingjiang landscape dominates",
+      "MULTIDISCIPLINARY_INTEGRATION": "KEEP — landscape / body / digital / proof read as one scene",
+      "DIGITAL_RETREAT": "KEEP — optional short reveal",
+      "PRODUCT_RELATION": "KEEP_AFTER_FIELD — P02 is support/recovery, not attraction",
+      "PROFESSIONAL_FINISH": "KEEP",
+      "TRUTH_BOUNDARY": "PASS"
+    },
+    "R13": {
+      "result": "KEEP",
+      "FIRST_READ": "KEEP — spatial compression / passage before explanation",
+      "MULTIDISCIPLINARY_INTEGRATION": "KEEP — scene / digital withdrawal / body / Return read together",
+      "PLAY_OFF": "PASS",
+      "RETURN_PRIORITY": "PASS",
+      "PROFESSIONAL_FINISH": "KEEP",
+      "TRUTH_BOUNDARY": "PASS — conceptual relation pixel explicitly not site/safety proof"
+    },
+    "PAIR": {
+      "result": "KEEP",
+      "reason": "R06 OPEN/RECOVER/COMPARE and R13 COMPRESS/BODY-FIRST/RETURN create a deliberate spatial-experience contrast without forcing one generic interaction template."
+    }
+  },
+  "not_promoted": [
+    "precise site geometry",
+    "R13 access/safety proof",
+    "R06 geology/engineering closure",
+    "whole-project Design PASS",
+    "field implementation"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
