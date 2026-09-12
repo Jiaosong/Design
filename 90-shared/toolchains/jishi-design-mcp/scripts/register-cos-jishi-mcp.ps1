@@ -33,6 +33,13 @@ function Backup-File([string]$Path) {
     return $backup
 }
 
+function Get-PropValue($Object, [string]$Name) {
+    if ($null -eq $Object) { return $null }
+    $p = $Object.PSObject.Properties[$Name]
+    if ($null -eq $p) { return $null }
+    return $p.Value
+}
+
 function Merge-Object($Existing, $Desired) {
     if ($null -eq $Existing) { return $Desired }
     foreach ($p in $Desired.PSObject.Properties) {
@@ -63,7 +70,10 @@ function Upsert-ArrayEntry([object[]]$Items, [scriptblock]$Match, $Desired) {
 }
 
 function Update-CoSPlugins($Root, $Desired) {
-    $match = { param($x) (($x.name -eq $PluginName) -or ($x.package -eq $Package)) }
+    $match = {
+        param($x)
+        ((Get-PropValue $x 'name') -eq $PluginName) -or ((Get-PropValue $x 'package') -eq $Package)
+    }
 
     if ($Root -is [System.Array]) {
         return (Upsert-ArrayEntry @($Root) $match $Desired)
@@ -78,18 +88,24 @@ function Update-CoSPlugins($Root, $Desired) {
 }
 
 function Update-RuntimeRegistry($Root, $Desired) {
-    $candidateNames = @('integrations', 'entries', 'runtimes', 'deployments', 'registry')
+    $candidateNames = @(
+        'integrations', 'entries', 'runtimes', 'deployments', 'registry',
+        'servers', 'mcp_servers', 'mcpServers', 'tools'
+    )
+    $match = {
+        param($x)
+        ((Get-PropValue $x 'id') -eq $RegistryId) -or ((Get-PropValue $x 'name') -eq $PluginName)
+    }
+
     foreach ($name in $candidateNames) {
         $prop = $Root.PSObject.Properties[$name]
         if (($null -ne $prop) -and (($prop.Value -is [System.Array]) -or ($null -eq $prop.Value))) {
-            $match = { param($x) (($x.id -eq $RegistryId) -or ($x.name -eq $PluginName)) }
             $prop.Value = Upsert-ArrayEntry @($prop.Value) $match $Desired
             return $Root
         }
     }
 
     if ($Root -is [System.Array]) {
-        $match = { param($x) (($x.id -eq $RegistryId) -or ($x.name -eq $PluginName)) }
         return (Upsert-ArrayEntry @($Root) $match $Desired)
     }
 
