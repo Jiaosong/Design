@@ -103,6 +103,36 @@ Canonical chain:
 
 `HUMAN_FACTORS_VALIDATION_EXTENSION.md` was then rewritten as a **Knowledge consumer**. It now names the canonical owner, inherits its live runtime state, and cannot own anthropometric/ergonomic/safety truth or self-promote Knowledge/Trust/Maturity.
 
+### E｜P1 maturity semantics repaired without synthetic promotion
+
+`FW-DESIGN-VISUAL-COMM-001` was re-read against existing L7 Practices. The old `Practice｜PENDING` label was stale: Dominant Field & First-read, Page-role Visual Rhythm and Breakpoint Role Redistribution already contain bounded editable/browser/repository evidence. The Framework now records **EXISTING EVIDENCE / FRAMEWORK VALIDATION OPEN** rather than pretending no Practice exists. Individual L7 evidence does not upgrade the L4 Framework.
+
+The same Framework contained an unsupported universal media hierarchy, `大图 > 小图 > 图表 > 表格 > 文字`. This was replaced by an **Evidence-native Visual Priority**: first-read belongs to the carrier that most directly supports the current `claim × task × medium × evidence`. Real images/models may lead when they directly prove the claim; diagrams, tables or text may legitimately lead when they carry the evidence better. Missing image/data evidence may not be filled with decorative or fabricated visuals.
+
+`KN-THEORY-IA-001` received explicit Competing Explanations, Failure→Decision Consequence, Transfer Boundary and Real Practice/Maturity semantics. Its old `M6｜PRACTICED` field is now bounded as structured/simulated Practice, not real-user cross-context validation. `FOUND TARGET ≠ IA CAUSAL PASS`.
+
+`KN-THEORY-INTERACTION-ACTION-PSYCHOLOGY-001` received competing explanations, transfer boundaries and a digital + physical/spatial cross-context Practice gate. Physical reach/grip/force/posture failures route to the Human Factors owner instead of expanding Interaction Psychology authority.
+
+`KN-THEORY-PRODUCT-SEMANTICS-001` received competing explanations and a real cross-context Practice/Maturity gate. Existing `Ambiguous Control` remains analytical/simulated evidence; old `M6｜PRACTICED` does not mean real user semantic validation. Physical human-fit failures route to Human Factors.
+
+`MTH-DESIGN-SERVICE-BLUEPRINT-001` received competing explanations and a real operations Maturity Gate. Workshop consensus, simulated blueprints and producer walkthroughs do not close user/staff/system/capacity/operations evidence; it remains `SUPPORT / SCOPED / UNVERIFIED / E1 / VALIDATION OPEN / NOT TESTED`.
+
+`KN-METHOD-OLEANDER-3D-MODELING-001` received competing explanations, a representation/tool Transfer Boundary and a cross-context Maturity Gate. It remains `CURRENT / SCOPED / ACTIVE / VALID / UNVERIFIED / E3 / M5`; render/export/reopen/CI/file existence do not equal cross-object or cross-pipeline maturity.
+
+### F｜Reviewed and intentionally not rewritten
+
+Governance does not require mutation when the current owner already has the needed depth.
+
+- `KN-THEORY-VISUAL-PERCEPTUAL-ORG-001` already has cue competition, grouping/figure-ground/attention separation, perturbation tests, semantic override, task evidence, transfer boundary and a three-carrier Practice gate. Status stays `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E2 / M3`.
+- `KN-METHOD-DESIGN-GOAL-CONTRACT-001` already has causal depth, goal hierarchy, conflict graph, discriminating tests, evidence ladder, failure modes and an explicit two-context maturity requirement. Status stays `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E1 / M2`.
+- `KN-METHOD-DESIGN-TRADE-STUDY-001` already has hard gates, criteria provenance, uncertainty taxonomy, Pareto/corridor, sensitivity/robustness, value-of-information, post-decision validation and a real-decision maturity gate. Status stays `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E2 / M3`.
+
+### G｜CI contract repaired to match authority semantics
+
+After routing wording was corrected, the Chat visual execution validator failed because it still hard-coded the superseded `Current framework` wording. The validator was repaired to require live canonical state resolution and explicit `Retrieval Space=CURRENT` before Current consumption. Latest verified head `2dbb8401879e777d83a190d107abc8091767198b` passed AIG-01/AIG-02/AIG-03, anti-pollution, runtime-contract, environment-contract and Vercel Preview Comments.
+
+PR #532 scope/title was also updated to reflect the actual combined governance scope instead of presenting the branch as only prebuild/Skill-feedback work.
+
 ## P0 / P1 / P2 after repairs
 
 ### P0 — Closed in this batch
@@ -115,13 +145,21 @@ Canonical chain:
 - Service Blueprint missing Retrieval Space resolved to explicit SUPPORT/SCOPED/UNVERIFIED.
 - Human Factors L5 ownership gap resolved with one bounded Current/Scoped/Unverified Method owner.
 
-### P1 — Still open
+### P1 — Knowledge contracts substantially closed; real-world evidence remains open
 
-Priority real Practice closure remains:
+The reviewed owners now expose explicit Practice/maturity boundaries instead of treating page richness or simulation as maturity. The remaining debt is **real evidence**, not more theory text:
 
-`Visual Communication → Human Factors → IA → Visual Perceptual Organization → Interaction Psychology → Trade Study → Goal Contract → Product Semantics → Service Blueprint → 3D Modeling`
-
-Design System now has a defined real cross-context Practice gate but does not yet have that production evidence.
+- Visual Communication: multi-medium target-scale/audience or independent professional validation.
+- Human Factors: representative human task validation in materially different contexts.
+- IA: real-user find/compare/trace/recover evidence in a context materially different from OLEANDER's own knowledge system.
+- Visual Perceptual Organization: materially different graphic/UI/physical carriers with perturbation + task readback.
+- Interaction Psychology: digital + physical/spatial observed action-cycle failures and repair/retest.
+- Trade Study: one real decision with implementation readback and failed assumption.
+- Goal Contract: two materially different project contexts with formal readback.
+- Product Semantics: real user semantic/action evidence across materially different contexts.
+- Service Blueprint: real operations/user/staff/system/capacity readback.
+- 3D Modeling: cross-representation/cross-downstream real failure + round-trip evidence.
+- Design System: real production cross-context adoption/migration/override/accessibility evidence.
 
 ### P2 — Specialist evidence remains open
 
@@ -134,9 +172,12 @@ Trust `UNVERIFIED` and specialist/field/manufacturing/human-test boundaries rema
 - No maturity level was upgraded merely from page depth or metadata repair.
 - No new core Skill, parallel Framework, parallel Domain tree, or parallel Knowledge Base was created.
 - The only new knowledge object is the missing Human Factors L5 METHOD after an exhaustive Existing-first owner check proved the gap.
+- No filler Human Factors L4 Framework was created merely to make hierarchy look complete.
+- No synthetic Practice was created to manufacture maturity evidence.
 - No Blender V15/V16 design work was reopened.
 - `KN-METHOD-OLEANDER-3D-MODELING-001` semantic-search 0-hit without scoped opt-in remains classified as expected policy behavior, not an indexing bug.
+- The newly created Human Factors Notion carrier has exact-ID Notion readback, but authenticated canonical runtime D1/index readback remains `SYNC OPEN` because the runtime `/v1/search` endpoint requires the local bearer token unavailable on this tool surface.
 
 ## Next governed action
 
-Move to real Practice/readback closure without backsliding into synthetic maturity. The first target is Visual Communication, followed by Human Factors. Each Practice must produce a real inspectable artifact/runtime, actual readback, observed failure or discriminating test, repair/retest or explicit HOLD, transfer boundary and maturity consequence. Only material cross-context evidence may change maturity.
+Do **not** deepen these pages again unless new evidence exposes a specific semantic defect. The next maturity movement must come from real project/runtime/human/operations artifacts and readback, then return through the existing Knowledge lifecycle. A remaining execution-discoverability follow-up is to expose `HUMAN_FACTORS_VALIDATION_EXTENSION.md` from the Design Process specialist-extension routing without weakening the one-way `Knowledge owner → execution extension` authority direction.
