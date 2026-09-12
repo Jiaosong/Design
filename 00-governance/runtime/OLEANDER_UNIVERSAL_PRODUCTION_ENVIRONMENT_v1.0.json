@@ -48,7 +48,7 @@
   ],
   "constraint_preflight": {
     "resolver": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
-    "resolver_implementation_revision": "1.2.5",
+    "resolver_implementation_revision": "1.2.6",
     "required_before_tool_probe": true,
     "inherit_active_constraints_across_generic_followups": true,
     "explicit_revocation_only": true,
@@ -226,9 +226,9 @@
   "execution_receipt": {
     "current_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
     "human_contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.md",
-    "policy_revision": "1.1",
+    "policy_revision": "1.2",
     "instance_directory": "00-governance/runtime/receipts/",
-    "current_rule": "Use the Current Execution Receipt contract as the single instance schema. New receipts must record sticky constraint_lock and flow_completion; only explicitly allowlisted pre-policy receipts may omit them.",
+    "current_rule": "Use the Current Execution Receipt contract as the single instance schema. New receipts must record sticky constraint_lock and flow_completion; material reusable Skill learning adds conditional skill_feedback after real execution/readback; no material Skill delta omits it; only explicitly allowlisted pre-policy receipts may omit policy-1.1 core fields.",
     "evidence_record_rule": "VALIDATION_RETEST_BROWSER_RESULT_AND_REVIEW_FILES_ARE_EVIDENCE_RECORDS_NOT_ALTERNATE_EXECUTION_RECEIPT_SCHEMAS",
     "legacy_minimum_subset": ["TASK", "AUTHORITY", "SKILL_RESOLVED", "REQUIRED_OUTPUT", "CAPABILITY_STATE", "ADAPTER_SELECTED", "VERSION_OR_PATH_IF_VERIFIED", "EXECUTED_OR_PENDING", "READBACK_STATE", "EVIDENCE_GATE", "DESIGN_QUALITY_GATE", "DOES_NOT_PROVE"],
     "reference_reconstruction_additional_fields": ["SOURCE_LOCATOR", "SOURCE_BYTES_STATE", "SOURCE_SHA256", "REFERENCE_FRAME_STATE", "PAGE_OR_FRAME", "SCALE_OR_DPI", "RENDERER", "REFERENCE_FRAME_SHA256", "COMPARISON_RUNTIME", "PIXEL_DIFF_STATE", "PIXEL_DIFF_METRIC", "MISMATCH_STATE", "FIDELITY_GATE"],

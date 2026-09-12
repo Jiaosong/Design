@@ -29,10 +29,13 @@ RESOLVER_CURRENT = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 RESOLVER_PREVIOUS = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json"
 OWNER_MAP = RUNTIME / "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+SKILL_FEEDBACK_CONTRACT = RUNTIME / "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.json"
+SKILL_FEEDBACK_MD = RUNTIME / "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md"
 RECEIPT_DIR = RUNTIME / "receipts"
 LIFECYCLE_BASELINE = RUNTIME / "skill-lifecycle" / "BASELINE_ADOPTION_2026-08-18.json"
 LIFECYCLE_DIR = RUNTIME / "skill-lifecycle"
 REVIEW = ROOT / "oleander-skills" / "REVIEW.md"
+SKILL_REGISTRY = ROOT / "oleander-skills" / "SKILL_REGISTRY_v1.1.json"
 GOLDEN_SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
 UI_CANDIDATE_GOLDEN = ROOT / "evals" / "golden" / "ui_candidate_stack.jsonl"
 GAME_STACK = ROOT / "skills" / "oleander-game-ui-stack" / "README.md"
@@ -149,6 +152,7 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
         "EMIT_NATIVE_ARTIFACT_RECORDS_AND_TYPED_HANDOFFS",
         "RUN_STRUCTURAL_SEMANTIC_VISUAL_ROI_RUNTIME_REGRESSION_AS_APPLICABLE",
         "ACTUAL_READBACK",
+        "CLASSIFY_MATERIAL_SKILL_FEEDBACK_AS_APPLICABLE",
         "EVIDENCE_GATE",
         "INDEPENDENT_DESIGN_QUALITY_GATE",
         "EMIT_EXECUTION_RECEIPT",
@@ -160,7 +164,81 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
         positions.append(order.index(token))
     if positions != sorted(positions):
         fail("resolver v1.2 execution-contract order is inconsistent")
+
+    expected_feedback = str(SKILL_FEEDBACK_CONTRACT.relative_to(ROOT)).replace("\\", "/")
+    if current.get("execution_contract_layer", {}).get("skill_execution_feedback_supplement") != expected_feedback:
+        fail("resolver execution contract layer does not point to shared Skill feedback supplement")
+    feedback_policy = current.get("skill_execution_feedback_policy", {})
+    if feedback_policy.get("contract") != expected_feedback:
+        fail("resolver Skill feedback policy pointer mismatch")
+    if feedback_policy.get("no_material_delta_action") != "NO_SKILL_MUTATION":
+        fail("resolver Skill feedback policy must preserve no-material-delta/no-mutation rule")
     return current, owner_map
+
+
+def validate_skill_feedback_contract(resolver: dict) -> None:
+    feedback = load_json(SKILL_FEEDBACK_CONTRACT)
+    registry = load_json(SKILL_REGISTRY)
+    receipt = load_json(RECEIPT_CONTRACT)
+
+    if not SKILL_FEEDBACK_MD.is_file():
+        fail("missing shared Skill execution feedback prose contract")
+    if feedback.get("contract_id") != "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT":
+        fail("shared Skill feedback contract_id mismatch")
+    if feedback.get("version") != "0.1" or feedback.get("status") != "ACTIVE_SHARED_SUPPLEMENT":
+        fail("shared Skill feedback supplement must be ACTIVE_SHARED_SUPPLEMENT v0.1")
+    if feedback.get("scope") != "ALL_ELEVEN_CORE_SKILL_IDENTITIES":
+        fail("shared Skill feedback scope must cover all eleven core Skill identities")
+
+    expected_feedback = str(SKILL_FEEDBACK_CONTRACT.relative_to(ROOT)).replace("\\", "/")
+    expected_feedback_md = str(SKILL_FEEDBACK_MD.relative_to(ROOT)).replace("\\", "/")
+    reg_pointer = registry.get("shared_execution_feedback_contract", {})
+    if reg_pointer.get("json") != expected_feedback or reg_pointer.get("md") != expected_feedback_md:
+        fail("Skill Registry shared feedback pointer mismatch")
+    if len(registry.get("skills", [])) != 11 or reg_pointer.get("applies_to_core_skill_count") != 11:
+        fail("shared Skill feedback must inherit across exactly eleven core identities without adding a Skill")
+
+    policy = resolver.get("skill_execution_feedback_policy", {})
+    if policy.get("contract") != expected_feedback:
+        fail("resolver shared Skill feedback pointer mismatch")
+    if policy.get("usage_provenance_required") is not True:
+        fail("resolver shared Skill feedback must require usage provenance")
+    if policy.get("promotion_rule") != "NO_SELF_PROMOTION_USE_EXISTING_AIG01_LIFECYCLE_AND_HUMAN_GATE":
+        fail("resolver shared Skill feedback must preserve external promotion authority")
+
+    receipt_extension = receipt.get("skill_feedback_extension", {})
+    if receipt_extension.get("contract") != expected_feedback:
+        fail("Execution Receipt skill_feedback pointer mismatch")
+    if receipt_extension.get("optional_when_no_material_delta") is not True:
+        fail("Execution Receipt must omit Skill feedback when no material delta exists")
+    if receipt_extension.get("no_auto_promotion") is not True:
+        fail("Execution Receipt Skill feedback must forbid auto-promotion")
+
+    shared_actions = set(feedback.get("feedback_actions", []))
+    if set(policy.get("feedback_actions", [])) != shared_actions:
+        fail("resolver/shared Skill feedback action vocabulary drift")
+    if set(receipt_extension.get("feedback_actions", [])) != shared_actions:
+        fail("receipt/shared Skill feedback action vocabulary drift")
+    shared_provenance = set(feedback.get("usage_provenance_states", []))
+    if set(receipt_extension.get("usage_provenance_states", [])) != shared_provenance:
+        fail("receipt/shared Skill feedback provenance vocabulary drift")
+
+    required_separations = {
+        "EXECUTION_SUCCESS_NE_SKILL_IMPROVEMENT",
+        "ONE_PROJECT_FAILURE_NE_UNIVERSAL_RULE",
+        "PROJECT_LEARNING_NE_CROSS_CONTEXT_MATURITY",
+        "CI_PASS_NE_SKILL_PROMOTION",
+        "SKILL_SELF_UPDATE_NE_HUMAN_PROMOTION",
+    }
+    if not required_separations.issubset(set(feedback.get("hard_separations", []))):
+        fail("shared Skill feedback promotion boundaries incomplete")
+    if "NEW_SKILL" not in feedback.get("does_not_create", []):
+        fail("shared Skill feedback must not create a twelfth Skill")
+
+    prose = SKILL_FEEDBACK_MD.read_text(encoding="utf-8")
+    for term in ["PROJECT_USAGE_EVIDENCE", "SKILL_FEEDBACK_ORPHAN", "NO MATERIAL SKILL DELTA = NO SKILL MUTATION", "SKILL SELF-UPDATE ≠ HUMAN PROMOTION"]:
+        if term not in prose:
+            fail(f"shared Skill feedback prose missing required boundary: {term}")
 
 
 def validate_contract_headers() -> dict[str, dict]:
@@ -343,6 +421,8 @@ def validate_receipts() -> None:
     schema = load_json(RECEIPT_CONTRACT)
     if schema.get("status") != "ACTIVE_CURRENT" or schema.get("version") != "1.0":
         fail("Execution Receipt v1.0 must be ACTIVE_CURRENT")
+    if schema.get("policy_revision") != "1.2":
+        fail("Execution Receipt v1.0 policy_revision must be 1.2")
     receipts = sorted(RECEIPT_DIR.glob("*.json"))
     if len(receipts) < 2:
         fail("at least two real execution receipts are required")
@@ -350,6 +430,11 @@ def validate_receipts() -> None:
     artifact_fields = set(schema.get("artifact_required_fields", []))
     review_fields = set(schema.get("review_required_fields", []))
     closure_fields = set(schema.get("closure_required_fields", []))
+    feedback_ext = schema.get("skill_feedback_extension", {})
+    feedback_fields = set(feedback_ext.get("fields", []))
+    feedback_provenance = set(feedback_ext.get("usage_provenance_states", []))
+    feedback_gap_routes = set(feedback_ext.get("gap_routes", []))
+    feedback_actions = set(feedback_ext.get("feedback_actions", []))
     branch_ref = schema.get("branch_ref_disposition_extension", {})
     require_fields(
         branch_ref,
@@ -394,6 +479,21 @@ def validate_receipts() -> None:
         require_fields(review, review_fields, f"receipt:{path.name}:review")
         if review.get("reviewer_independence_state") == "INDEPENDENT" and review.get("producer_id") == review.get("reviewer_id"):
             fail(f"receipt:{path.name} independent reviewer cannot equal producer")
+        if "skill_feedback" in r:
+            feedback = r["skill_feedback"]
+            require_fields(feedback, feedback_fields, f"receipt:{path.name}:skill_feedback")
+            if feedback.get("usage_provenance_state") not in feedback_provenance:
+                fail(f"receipt:{path.name} invalid skill_feedback usage_provenance_state")
+            if feedback.get("gap_route") not in feedback_gap_routes:
+                fail(f"receipt:{path.name} invalid skill_feedback gap_route")
+            actions = feedback.get("feedback_action")
+            action_set = set(actions) if isinstance(actions, list) else {actions}
+            if not action_set or None in action_set or not action_set.issubset(feedback_actions):
+                fail(f"receipt:{path.name} invalid skill_feedback feedback_action")
+            if feedback.get("usage_provenance_state") == "PROJECT_USAGE_EVIDENCE" and not feedback.get("skill_version_or_commit"):
+                fail(f"receipt:{path.name} PROJECT_USAGE_EVIDENCE requires exact skill version/commit")
+            if feedback.get("regression_case_required") is True and not feedback.get("skill_change_ref"):
+                fail(f"receipt:{path.name} regression-required Skill feedback needs skill_change_ref")
         require_fields(r.get("closure", {}), closure_fields, f"receipt:{path.name}:closure")
 
 
@@ -468,6 +568,7 @@ def validate_game_router() -> None:
 def main() -> None:
     resolver, owner_map = validate_current_resolver_and_pointers()
     contracts = validate_contract_headers()
+    validate_skill_feedback_contract(resolver)
     validate_owner_consistency(contracts["capability"], resolver, owner_map)
     validate_dag(contracts["dag"])
     validate_tool(contracts["tool"])
@@ -487,7 +588,7 @@ def main() -> None:
     print(f"candidate UI owners consistent: {len(candidates)}")
     print(f"lifecycle promotion records applied: {len(list(LIFECYCLE_DIR.glob('PROMOTION_*.json')))}")
     print(f"real execution receipts: {len(list(RECEIPT_DIR.glob('*.json')))}")
-    print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
+    print("resolver v1.2 / owner map / local+aggregate capability / shared Skill feedback / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,334 @@
+{
+  "receipt_id": "EXR-20260912-DESIGN-PREBUILD-SKILL-FEEDBACK-GATES",
+  "status": "REVIEW_PENDING",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "DESIGN-PREBUILD-SKILL-FEEDBACK-GATES-20260912",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "User request: improve design layer and Skill layer using Existing Knowledge/Skill First; add execution feedback for all Skills without a twelfth Skill",
+    "source_authority": "origin/main@a063b04e + existing oleander-design-process + existing PROJECT_USAGE_FEEDBACK_CURRENT + AIG-01 + real Blender project learning supplied in continuation handoff",
+    "design_authority": "oleander-skills/oleander-design-process/SKILL.md with owner-local extensions; specialist technical values remain Current Knowledge/specialist authority",
+    "canonical_ids": [
+      "oleander-design-process",
+      "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1",
+      "SK-DES-013"
+    ],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.6",
+    "github_commit_or_ref": "29931f8c62c857051ed1e8846c031cdf76d22316"
+  },
+  "constraint_lock": {
+    "resolved_from": [
+      "LATEST_EXPLICIT_USER_INSTRUCTION",
+      "CURRENT_TASK_HANDOFF",
+      "CURRENT_OLEANDER_RESOLVER",
+      "CURRENT_SKILL_REGISTRY"
+    ],
+    "inheritance_state": "ENFORCED_FOR_THIS_GOVERNANCE_DELTA",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-SKFB-001",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_SKILL",
+        "source": "Explicit user requirement: shared supplement, not a twelfth core Skill",
+        "scope": "DESIGN-PREBUILD-SKILL-FEEDBACK-GATES-20260912",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_SKILL"
+      },
+      {
+        "constraint_id": "CSTR-SKFB-002",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "Explicit user requirement: Existing Knowledge First / Existing Skill First",
+        "scope": "DESIGN-PREBUILD-SKILL-FEEDBACK-GATES-20260912",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-SKFB-003",
+        "constraint_type": "REVIEW_REQUIRE",
+        "normalized_rule": "NO_PRODUCER_SELF_PROMOTION",
+        "source": "Existing AIG-01 + explicit user requirement against automatic Skill promotion",
+        "scope": "DESIGN-PREBUILD-SKILL-FEEDBACK-GATES-20260912",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_AUTHORITY_CHANGE"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": [],
+    "output_deny": [
+      "NO_AI_IMAGE_AS_FORMAL_DESIGN_ASSET"
+    ],
+    "creation_deny": [
+      "CREATE_TWELFTH_CORE_SKILL",
+      "CREATE_PARALLEL_KNOWLEDGE_BASE",
+      "CREATE_PARALLEL_SKILL_FEEDBACK_DATABASE"
+    ],
+    "required_behaviors": [
+      "EXISTING_KNOWLEDGE_FIRST",
+      "EXISTING_SKILL_FIRST",
+      "ACTUAL_READBACK_BEFORE_FEEDBACK",
+      "NO_FALSE_HISTORICAL_SKILL_USAGE",
+      "NO_AUTO_PROMOTION"
+    ]
+  },
+  "required_native_output": {
+    "artifact_class": "design_process_gate_plus_shared_skill_execution_feedback_contract",
+    "native_format": "Markdown + JSON + Python validators + JSONL regression",
+    "editable_required": true,
+    "target_runtime": "GitHub Jiaosong/Design governance runtime + existing OLEANDER Skill Registry/Resolver/Receipt",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "oleander-design-process + runtime-governance",
+    "nodes": [
+      {
+        "owner_id": "oleander-design-process",
+        "role": "PRIMARY_OWNER"
+      },
+      {
+        "owner_id": "runtime-governance",
+        "role": "SUPPORTING_OWNER"
+      },
+      {
+        "owner_id": "AIG-01",
+        "role": "VALIDATOR"
+      }
+    ],
+    "omitted_owner_reasoning": "No new Skill, knowledge owner, Blender mutation owner or presentation owner is required for this governance delta."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "NOT_APPLICABLE",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "PASS",
+      "REGRESSION_AS_APPLICABLE": "PASS",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+    },
+    "incomplete_required_phases": [
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "completion_gate": "HOLD",
+    "completion_claim_allowed": false
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-DESIGN-PREBUILD-GATE",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "oleander-design-process",
+      "authority_source": "Existing design-process Skill + user-authorized design-layer repair",
+      "authority_state": "PR_REVIEW_PENDING",
+      "native_format": "Markdown + CAPABILITY JSON + Golden JSONL",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": [
+        "system_topology",
+        "clearance_envelope",
+        "interface_graph",
+        "detail_eligibility",
+        "constructive_role",
+        "dependency_invalidation"
+      ],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": [
+        "oleander-design-process/SKILL.md",
+        "Current Knowledge routing",
+        "specialist validation boundaries"
+      ],
+      "hashes_or_commit": "29931f8c62c857051ed1e8846c031cdf76d22316",
+      "runtime": "Git worktree + Python/Node governance validators",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "PR532_OPEN",
+      "does_not_prove": [
+        "design_keep",
+        "engineering_approval",
+        "field_truth",
+        "cross_context_maturity"
+      ]
+    },
+    {
+      "artifact_id": "ART-SHARED-SKILL-FEEDBACK-SUPPLEMENT",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "runtime-governance",
+      "authority_source": "Existing Registry/Resolver/Receipt + design-process PROJECT_USAGE_FEEDBACK_CURRENT + AIG-01",
+      "authority_state": "PR_REVIEW_PENDING",
+      "native_format": "Markdown + JSON + Python validators",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": [
+        "usage_provenance",
+        "material_delta",
+        "gap_route",
+        "feedback_action",
+        "regression",
+        "cross_context_boundary",
+        "promotion_boundary"
+      ],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": [
+        "SKILL_REGISTRY_v1.1",
+        "DEFAULT_SKILL_RESOLVER_v1.2",
+        "EXECUTION_RECEIPT_v1.0",
+        "AIG-01"
+      ],
+      "hashes_or_commit": "29931f8c62c857051ed1e8846c031cdf76d22316",
+      "runtime": "Git worktree + Python/Node governance validators",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "PR532_OPEN",
+      "does_not_prove": [
+        "historical_skill_usage_without_execution_time_provenance",
+        "universal_skill_rule",
+        "skill_promotion"
+      ]
+    }
+  ],
+  "execution": {
+    "runtime": "Chat On Steroids Core + Git + Python/Node + GitHub CLI",
+    "entrypoint_or_action": "Read Current design-process/Registry/Resolver/Receipt authority, add prebuild relation gate and shared all-Skill execution-feedback supplement, wire machine validators, rebase to latest main, run governance regressions, commit and open PR #532.",
+    "result": "PR532_OPEN_WITH_LOCAL_GOVERNANCE_REGRESSION_PASS",
+    "failures": [
+      "Initial generic JSON dump produced formatting-only diff noise.",
+      "One transient local bridge patch call failed before writing.",
+      "origin/main advanced by two commits during execution."
+    ],
+    "repairs": [
+      "Reverted formatting-noise JSON changes and reapplied targeted patches only.",
+      "Verified clean state after bridge failure before retry.",
+      "Stashed, fast-forwarded to origin/main@a063b04e, restored changes and reran validation."
+    ]
+  },
+  "readback": {
+    "target": "branch agent/skill-feedback-design-gates-20260912 @ 29931f8c62c857051ed1e8846c031cdf76d22316 / PR #532",
+    "runtime": "local validators + Git readback + GitHub PR metadata",
+    "observed_result": "Core Skill Registry remains exactly 11; design-process has 13 Golden cases including SK-DES-013; capability local/aggregate exact-sync passes; Resolver/Registry/Receipt share the same feedback pointer; control-plane unittest 57/57 passes; workflow-equivalent governance validators pass on latest main base.",
+    "blocking_defects": [],
+    "nonblocking_defects": [
+      "PR #532 CI/merge/main readback not yet complete at receipt creation.",
+      "Control-card scan reports three unrelated pre-existing BOM JSON parse warnings while its own verdict remains PASS."
+    ],
+    "verdict": "PASS_LOCAL_AND_PR_OPEN_REVIEW_PENDING"
+  },
+  "regression": {
+    "STRUCTURAL": {
+      "result": "PASS",
+      "assertions": [
+        "exactly 11 core Skill identities",
+        "shared feedback contract exists once",
+        "local/aggregate design capability exact-sync"
+      ]
+    },
+    "SEMANTIC": {
+      "result": "PASS",
+      "assertions": [
+        "post-hoc evidence cannot become PROJECT_USAGE_EVIDENCE",
+        "no material delta means no Skill mutation",
+        "one project failure cannot self-promote to universal maturity"
+      ]
+    },
+    "VISUAL_ROI": {
+      "result": "NOT_APPLICABLE",
+      "assertions": [
+        "governance/design-process contracts do not claim visual Design KEEP"
+      ]
+    },
+    "RUNTIME": {
+      "result": "PASS",
+      "assertions": [
+        "validate_evals PASS",
+        "validate_execution_contracts PASS",
+        "validate_execution_locks PASS",
+        "affected runtime validators PASS",
+        "control-plane unittest 57/57 PASS"
+      ]
+    },
+    "overall": "PASS"
+  },
+  "review": {
+    "producer_id": "agent/skill-feedback-design-gates-20260912",
+    "reviewer_id": "MACHINE_GOVERNANCE_VALIDATORS_NO_PROMOTION_REVIEW",
+    "review_input_artifact_id": "ART-SHARED-SKILL-FEEDBACK-SUPPLEMENT",
+    "review_input_hash_or_commit": "29931f8c62c857051ed1e8846c031cdf76d22316",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "PASS_LOCAL_MACHINE_CONTRACTS",
+    "design_quality_gate": "NOT_APPLICABLE_TO_PROMOTION; DESIGN_PREBUILD_RULE_REMAINS_BOUNDED",
+    "promotion_authority": "Existing AIG-01/lifecycle/human gates only; this receipt cannot promote a Skill."
+  },
+  "skill_feedback": {
+    "skill_id": "oleander-design-process",
+    "skill_version_or_commit": "base origin/main@a063b04e; proposed delta 29931f8c62c857051ed1e8846c031cdf76d22316",
+    "usage_provenance_state": "PROJECT_LEARNING_EVIDENCE_SKILL_FEEDBACK_ORPHAN",
+    "rule_or_capability_used": "Existing design-process readback/root-cause/change-propagation rules plus owner-local PROJECT_USAGE_FEEDBACK_CURRENT provenance discipline",
+    "artifact_refs": [
+      "ART-DESIGN-PREBUILD-GATE",
+      "SK-DES-013",
+      "29931f8c62c857051ed1e8846c031cdf76d22316"
+    ],
+    "actual_readback": "The motivating Blender pavilion failure was supplied as prior real project readback: detailed stair/platform/roof geometry existed before system clearance/topology was found invalid. Historical oleander-design-process invocation for that failure is not established. Current governance readback confirms the bounded prebuild rule and regression are encoded and machine-valid.",
+    "outcome": "MATERIAL_REUSABLE_DESIGN_LAYER_GAP_ENCODED_AS_OWNER_LOCAL_PREBUILD_GATE",
+    "gap_route": "DESIGN_LAYER_GAP",
+    "failure_class": "CLEARANCE / TOPOLOGY / INTERFACE / DEPENDENCY",
+    "root_cause": "The existing design loop permitted detail-bearing geometry before an explicit hard gate proved the upstream system relation; later readback could therefore discover a system-invalid but visually detailed object.",
+    "repair_retest_or_hold": "Added SYSTEM_RELATION_PREBUILD_GATES_EXTENSION, wired capability gates and SK-DES-013; latest-main local governance validators and 57/57 control-plane tests pass. Cross-context maturity remains open.",
+    "transfer_rule_candidate": "SYSTEM_RELATION_PASS_BEFORE_DEPENDENT_DETAIL_ELIGIBILITY",
+    "transfer_boundary": "Applies only to coupled physical/spatial/system work where topology/clearance/interface/source dependency can invalidate downstream detail; it does not invent specialist numeric requirements or replace engineering/field authority.",
+    "feedback_action": [
+      "UPDATE_EXISTING_SKILL",
+      "ADD_REGRESSION_RULE",
+      "CROSS_CONTEXT_TEST_NEEDED"
+    ],
+    "cross_context_status": "CANDIDATE_TRANSFER_RULE_REQUIRES_MATERIALLY_DIFFERENT_CONTEXT_EVIDENCE_FOR_MATURITY",
+    "regression_case_required": true,
+    "skill_change_ref": "29931f8c62c857051ed1e8846c031cdf76d22316",
+    "promotion_boundary": "NO_LIFECYCLE_PROMOTION; EXISTING_AIG01_AND_HUMAN_PROMOTION_GATES_RETAIN_AUTHORITY"
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/skill-feedback-design-gates-20260912",
+    "commits": [
+      "29931f8c62c857051ed1e8846c031cdf76d22316",
+      "RECEIPT_COMMIT_SELF_PENDING"
+    ],
+    "pull_request": 532,
+    "ci_state": "PENDING_PR532_HEAD_WITH_RECEIPT",
+    "merge_commit": "PENDING_PR532_REVIEW_AND_MERGE",
+    "main_readback": "PENDING_PR532_MERGE",
+    "notion_writeback": "PENDING_POST_MERGE_DRIFT_READBACK_IF_CURRENT_POINTER_REQUIRES_UPDATE",
+    "remaining_blockers": [
+      "PR532_CI_REVIEW_MERGE_AND_MAIN_READBACK_PENDING"
+    ],
+    "final_state": "REVIEW_PENDING"
+  },
+  "does_not_prove": [
+    "design_keep",
+    "engineering_validity",
+    "field_truth",
+    "historical_skill_usage_for_the_motivating_blender_failure",
+    "universal_skill_rule",
+    "cross_context_maturity",
+    "skill_promotion",
+    "pr_merge"
+  ]
+}

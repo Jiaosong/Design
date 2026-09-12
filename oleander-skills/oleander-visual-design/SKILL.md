@@ -30,15 +30,15 @@ These extensions deepen the existing owner; they do not create additional Core S
 
 When design-language reconstruction identifies a material UI token/theme system, co-route to `oleander-web-ui/SEMANTIC_UI_TOKEN_THEME_EXTENSION.md` instead of inventing token semantics inside the reconstruction record.
 
-## Current design-knowledge resolution before composition
+## Canonical design-knowledge resolution before composition
 
-Do not substitute a small generic checklist for OLEANDER's existing design knowledge. Before a board, portfolio page, website, campaign page or other visual composition is materially locked, resolve the Current Notion design knowledge that already covers the problem and select the minimum sufficient existing method / Practice set.
+Do not substitute a small generic checklist for OLEANDER's existing design knowledge. Before a board, portfolio page, website, campaign page or other visual composition is materially locked, resolve the live canonical Notion owner and its current runtime state, then select the minimum sufficient eligible method / Practice set.
 
 Preferred runtime relation:
 
-`TASK / MEDIUM / CLAIM / SOURCE ASSETS → CURRENT NOTION FRAMEWORK / METHOD / PRACTICE RETRIEVAL → MINIMUM SUFFICIENT DESIGN-TECHNIQUE SET → VISIBLE COMPOSITION OPERATIONS → EDITABLE CANDIDATE → ACTUAL READBACK`.
+`TASK / MEDIUM / CLAIM / SOURCE ASSETS → CANONICAL ID / LIVE RETRIEVAL STATE READBACK → CURRENT OWNER WHEN EXPLICITLY CURRENT / SCOPED SUPPORT WHEN ELIGIBLE → MINIMUM SUFFICIENT DESIGN-TECHNIQUE SET → VISIBLE COMPOSITION OPERATIONS → EDITABLE CANDIDATE → ACTUAL READBACK`.
 
-Start broad with the Current visual-communication framework when applicable (`FW-DESIGN-VISUAL-COMM-001`) and then retrieve the relevant Current method / Practice rather than inventing a new visual recipe. Existing examples include, but are not limited to:
+Use `FW-DESIGN-VISUAL-COMM-001` as a broad visual-communication routing anchor when applicable, but consume it as Current authority only when the canonical runtime explicitly resolves it to `Retrieval Space=CURRENT`. If it resolves to `SUPPORT / REVIEW / SCOPED`, or fail-closes because retrieval metadata is missing, use it only within that bounded support role and record the routing gap; do not promote it from Skill wording. Then retrieve the relevant runtime-eligible method / Practice rather than inventing a new visual recipe. Existing examples include, but are not limited to:
 
 - `PRAC-20260816-05｜Dominant Field & First-read` for visual ownership and first-read mass;
 - `PRAC-20260817-12｜Page-role Visual Rhythm` for editorial/page/section rhythm and changing visual speed;
@@ -47,11 +47,11 @@ Start broad with the Current visual-communication framework when applicable (`FW
 - `T-CREATIVE-DECOMPOSE-RECOMBINE-001｜Decompose & Recombine` for relation-preserving decomposition, displacement, overlap, recombination and candidate reconstruction;
 - `T-VISUAL-IMAGE-OPS-001` for layer/mask/transparency/blend/filter and non-destructive image operations;
 - `PRAC-20260818-01｜Breakpoint Role Redistribution` for responsive recomposition rather than scaled desktop stacking;
-- Current typography, visual-perception, design-language and editorial/publication knowledge when those are the actual bottlenecks.
+- runtime-eligible typography, visual-perception, design-language and editorial/publication knowledge when those are the actual bottlenecks.
 
 These are retrieval anchors, not a closed house style or mandatory full stack. Legacy objects are discovery/provenance only when a migrated Current object exists. A retrieved method must be translated into visible operations on the actual project assets: scale, crop, field, figure/ground, overlap, edge, sequence, density, negative space, typographic mass, image/type relation, motion or responsive role as appropriate. Merely naming a method in a receipt does not count as use.
 
-If the first viable design is still a generic `hero + equal cards + timeline`, a safe centered image, repeated containers, or uniformly weighted sections without a project-specific reason, treat that as an unresolved composition hypothesis rather than a neutral default. Re-open the Current knowledge/method set and construct a materially different candidate before claiming visual maturity.
+If the first viable design is still a generic `hero + equal cards + timeline`, a safe centered image, repeated containers, or uniformly weighted sections without a project-specific reason, treat that as an unresolved composition hypothesis rather than a neutral default. Re-open the canonical knowledge/method set and construct a materially different candidate before claiming visual maturity.
 
 `KNOWLEDGE RETRIEVED ≠ TECHNIQUE APPLIED`.
 
@@ -81,7 +81,7 @@ A retrieved method survives only when its visible application improves the actua
 
 ## Required sequence
 
-`CURRENT AUTHORITY → CURRENT DESIGN KNOWLEDGE / METHOD RESOLUTION → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → DESIGN-TECHNIQUE HYPOTHESIS → MATERIALLY DISTINCT CANDIDATES WHEN REPAIR REQUIRES COMPARISON → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → ROOT CAUSE → REPAIR / RECLASSIFY WHEN REPEATED → RETEST`
+`CURRENT AUTHORITY → LIVE CANONICAL DESIGN-KNOWLEDGE STATE RESOLUTION → MATURE DESIGN / BRAND SOURCE → CLAIM HIERARCHY → REFERENCE STRUCTURE DECOMPOSITION WHEN APPLICABLE → CONTENT / ASSET DENSITY DECISION → DESIGN-TECHNIQUE HYPOTHESIS → MATERIALLY DISTINCT CANDIDATES WHEN REPAIR REQUIRES COMPARISON → VISUAL SYSTEM → EDITABLE ARTIFACT → ACTUAL PIXEL READBACK → WHOLE / NEAR / THUMBNAIL + A/B OR BEFORE/AFTER → CRIT → ROOT CAUSE → REPAIR / RECLASSIFY WHEN REPEATED → RETEST`
 
 ## Core checks
 
@@ -154,7 +154,7 @@ Variation is allowed when it reflects narrative or evidence role. Do not force l
 12. For repeated typography, iconography or brand-rule systems, resolve the corresponding extension rather than relying on one-off styling choices.
 13. Repetition in code or rendered pixels is not automatically design intent. When documenting an existing product's visual system, classify explicit Current rules separately from shared implementation evidence, reconstructed observations, local exceptions and legacy before persisting them as guidance.
 14. Do not infer hidden token names, component ownership or private rationale from screenshots alone.
-15. Before inventing visual techniques, retrieve applicable Current Notion design knowledge and reuse the minimum sufficient existing method / Practice set.
+15. Before inventing visual techniques, resolve applicable canonical Notion design knowledge and consume only its live runtime-eligible authority state; do not infer Current from Skill wording.
 16. A named/retrieved method is not execution evidence; show the visible composition operation and its A/B, before/after or actual-pixel consequence.
 17. Do not let grids, components, cards or IA become the visual concept by default. They may organize content only after visual ownership and technique intent are resolved.
 18. After an actual `REVISE`, name the dominant Root Cause before repairing; do not treat generic polish as a repair plan.
@@ -164,7 +164,7 @@ Variation is allowed when it reflects narrative or evidence role. Do not force l
 
 ## Required output
 
-Return the Current editable master, explicit design decisions, selected Current design-knowledge methods/Practices and their visible application, dominant Root Cause for any `REVISE`, materially distinct candidate comparison when used, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
+Return the Current editable master, explicit design decisions, selected runtime-eligible design-knowledge methods/Practices and their visible application, dominant Root Cause for any `REVISE`, materially distinct candidate comparison when used, before/after or A/B evidence, actual readback, preserved authority objects, derivative outputs, downstream handoff and unresolved validation boundaries.
 
 When reference-led, also return the structural decomposition and rendered deltas. When sparse-content strategy is used, name what was intentionally omitted rather than silently padding the composition. When design-language reconstruction is used, return its observation/authority classifications and reapplication check separately from Current normative rules.
 

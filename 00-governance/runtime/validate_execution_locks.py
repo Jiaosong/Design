@@ -168,8 +168,8 @@ def resolve_uncertain_mutation(
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.5":
-        fail("Current resolver must be v1.2 implementation revision 1.2.5")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.6":
+        fail("Current resolver must be v1.2 implementation revision 1.2.6")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -457,8 +457,8 @@ def validate_tool_adapter_routing() -> dict:
 
 def validate_receipt_contract() -> dict:
     data = load_json(RECEIPT_CONTRACT)
-    if data.get("version") != "1.0" or data.get("policy_revision") != "1.1":
-        fail("Execution Receipt must remain v1.0 policy revision 1.1")
+    if data.get("version") != "1.0" or data.get("policy_revision") != "1.2":
+        fail("Execution Receipt must remain v1.0 policy revision 1.2")
     additional = set(data.get("policy_1_1_additional_required_core_fields", []))
     if additional != {"constraint_lock", "flow_completion"}:
         fail("policy 1.1 must add exactly constraint_lock and flow_completion")
@@ -743,6 +743,11 @@ def validate_new_receipts(contract: dict) -> int:
     route_fields = contract.get("adapter_route_decision_extension", {}).get("fields", [])
     concurrency_fields = contract.get("concurrency_guard_extension", {}).get("fields", [])
     idempotency_fields = contract.get("remote_mutation_idempotency_extension", {}).get("fields", [])
+    feedback_ext = contract.get("skill_feedback_extension", {})
+    feedback_fields = feedback_ext.get("fields", [])
+    feedback_provenance = set(feedback_ext.get("usage_provenance_states", []))
+    feedback_gap_routes = set(feedback_ext.get("gap_routes", []))
+    feedback_actions = set(feedback_ext.get("feedback_actions", []))
     current_policy_count = 0
 
     for path in sorted(RECEIPT_DIR.glob("*.json")):
@@ -778,6 +783,17 @@ def validate_new_receipts(contract: dict) -> int:
             require_present(r["concurrency_guard"], concurrency_fields, f"receipt:{rid}:concurrency_guard")
         if "remote_mutation_idempotency" in r:
             require_present(r["remote_mutation_idempotency"], idempotency_fields, f"receipt:{rid}:remote_mutation_idempotency")
+        if "skill_feedback" in r:
+            feedback = r["skill_feedback"]
+            require_present(feedback, feedback_fields, f"receipt:{rid}:skill_feedback")
+            if feedback.get("usage_provenance_state") not in feedback_provenance:
+                fail(f"receipt:{rid} invalid Skill feedback provenance state")
+            if feedback.get("gap_route") not in feedback_gap_routes:
+                fail(f"receipt:{rid} invalid Skill feedback gap route")
+            actions = feedback.get("feedback_action")
+            action_set = set(actions) if isinstance(actions, list) else {actions}
+            if not action_set or None in action_set or not action_set.issubset(feedback_actions):
+                fail(f"receipt:{rid} invalid Skill feedback action")
         if r.get("status") == "CLOSED":
             if flow.get("completion_gate") != "PASS":
                 fail(f"receipt:{rid} CLOSED requires completion_gate PASS")
@@ -806,7 +822,7 @@ def main() -> None:
     print("unified capability-role adapter routing: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
-    print(f"policy-1.1 receipts: {count}")
+    print(f"policy-1.1+ compatible receipts: {count}")
 
 
 if __name__ == "__main__":

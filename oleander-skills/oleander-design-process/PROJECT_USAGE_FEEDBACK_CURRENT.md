@@ -4,6 +4,8 @@ Status: `OWNER-LOCAL PROJECT LEARNING / SKILL USAGE PROVENANCE PARTIAL / INSTALL
 
 Purpose: keep recent real-project findings attached to the existing installed `oleander-design-process` without converting project-specific facts, post-hoc inference, or unverified history into false Skill usage evidence.
 
+Shared policy boundary: cross-Skill execution feedback is now governed by `00-governance/runtime/OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md/.json`. This file remains the owner-local `oleander-design-process` learning ledger/example surface; it does not create a second feedback contract or override the shared provenance/promotion rules.
+
 ## Provenance rule｜2026-09-07
 
 `PROJECT_USAGE_EVIDENCE` is used only when direct evidence shows that an exact Skill/version or owner-local extension was actually read/selected before or during the material project action and materially influenced it.

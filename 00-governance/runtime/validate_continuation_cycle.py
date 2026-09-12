@@ -85,8 +85,8 @@ def decide_repair_return(
 
 def validate_contract_bindings() -> None:
     resolver = load_json(RESOLVER)
-    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.5":
-        fail("P3/P5 must bind current Resolver v1.2 implementation revision 1.2.5")
+    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.6":
+        fail("P3/P5 must bind current Resolver v1.2 implementation revision 1.2.6")
 
     continuation = resolver.get("continuation_checkpoint_policy", {})
     if continuation.get("cross_chat_restore_behavior") != "DISCOVER_EXISTING_FRONTIER_THEN_APPLY_DIRECT_RESUME_OR_REVALIDATE_RULES":

@@ -37,6 +37,8 @@ The former broad skill-training loop must remain intact across DESIGN + VALIDATI
 
 `Capability/Skill Gap → Existing Skill First → Required Native Output → Real Execution → Actual Artifact → Readback → Crit → Root Cause → Repair → Retest → Project Re-application → Skill Record`
 
+All eleven core Skill identities additionally inherit `00-governance/runtime/OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md/.json`. It is a shared supplemental contract, **not a twelfth Skill**. It requires execution-time usage provenance, Actual Readback, causal gap routing and bounded transfer evidence before an existing Practice/Skill/regression may be changed. `NO MATERIAL SKILL DELTA = NO SKILL MUTATION`; project learning cannot self-promote.
+
 PRESENTATION retains the former aesthetic-training loop: mature-work study → Visible Fact → Design Inference → Transfer Rule → real A/B → final readback → project reverse review → repair/retest.
 
 KNOWLEDGE retains design + engineering + application knowledge development; the current `CLEANUP FIRST` Notion phase is temporary prioritization, not a replacement mission.
@@ -82,6 +84,8 @@ Installed/core-skill existence does **not** prove that a skill, prompt, model, r
 - Image art direction uses real source first and cannot convert compositing, generative fill or tonal change into new factual evidence.
 - Technical drawing resolves Dimension/Geometry Authority before software convenience and preserves `NOT FOR CONSTRUCTION` / FIELD / engineering boundaries.
 - Design process uses a Variable Budget, distinguishes concept families from parameter variants, matches prototype medium to the unknown, performs actual multi-scale readback/repair, preserves a Design Continuity Contract, records consequential decisions and propagates material changes through dependent artifacts.
+- Triggered physical/spatial/system design uses the System Relation Prebuild Gate: topology, clearance/envelope, interface graph and dependency state must make dependent detail eligible before repetitive/high-fidelity detail is unlocked.
+- Every core Skill execution uses the shared feedback supplement when material reusable learning exists; post-hoc artifacts cannot manufacture historical Skill usage, and one project failure/CI pass cannot auto-promote a reusable rule or Skill.
 - Installed design-process ownership does not grant specialist technical proof, final presentation KEEP, field/manufacturing/engineering truth or human-test PASS.
 - Remaining Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
 
