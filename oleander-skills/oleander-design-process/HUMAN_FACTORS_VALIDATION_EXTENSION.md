@@ -1,12 +1,22 @@
 # Human Factors Validation Extension
 
-Status: `CANDIDATE EXTENSION / SUPPORT ONLY / NO CURRENT L5 PROMOTION`
+Status: `CANDIDATE EXECUTION EXTENSION / KNOWLEDGE CONSUMER / NO SPECIALIST AUTHORITY`
 
 Owner: `oleander-design-process`
 
+Current Knowledge owner: `KN-METHOD-HUMAN-FACTORS-VALIDATION-001`
+
 Use when a design decision depends on fit between human capability and a physical/digital task: reach, clearance, grip, force, posture, repetition, task sequence, cognitive demand, error, timing or accessibility in use.
 
-OLEANDER already contains Human Factors knowledge, interaction theory and ergonomics practices. This extension does **not** create a new Human Factors knowledge domain. It closes the execution gap from `population/task evidence → design dimension/behavior → prototype/task validation`.
+## Knowledge authority boundary
+
+This extension consumes the live canonical Human Factors owner; it does **not** own anthropometric, ergonomic, usability, medical, occupational-health or safety truth.
+
+Before execution, resolve `KN-METHOD-HUMAN-FACTORS-VALIDATION-001` and read back its live `Retrieval Space / Search Eligibility / Governance State / Relation State / Trust-Freshness`. The extension may execute the Current method only while that owner remains eligible under the Knowledge Lifecycle. If the canonical owner is `REVIEW / SUPPORT / BLOCKED / STALE`, this extension inherits that boundary and may not keep acting as if Current authority were unchanged.
+
+OLEANDER already contains the Human Factors domain, adjacent interaction/usability theory and ergonomics Practices. This extension does **not** create another Human Factors knowledge domain, Framework or Method. It translates the Current knowledge owner into an execution protocol from `population/task evidence → design dimension/behavior → prototype/task validation`.
+
+`KNOWLEDGE OWNER → EXECUTION EXTENSION` is one-way authority. Project-use evidence from this extension may return to Knowledge as Practice/evidence, but cannot self-promote the Method, Trust or maturity state.
 
 ## Core contract
 
@@ -26,6 +36,7 @@ OLEANDER already contains Human Factors knowledge, interaction theory and ergono
 
 ## Required output
 
+- `canonical_human_factors_owner_readback`;
 - `target_population_and_exclusions`;
 - `task_environment_condition`;
 - `physical_cognitive_demand_map`;
@@ -42,6 +53,7 @@ OLEANDER already contains Human Factors knowledge, interaction theory and ergono
 
 Reject or revise when:
 
+- the canonical Human Factors owner was not read back and the extension is treated as independent authority;
 - one 50th-percentile body is used as universal design authority;
 - “5th–95th” is copied as a global rule without variable/population/failure-direction reasoning;
 - a render pose or digital mannequin is treated as ergonomic proof;
@@ -54,7 +66,7 @@ Reject or revise when:
 
 ## Project usage evidence｜C04｜2026-09-07
 
-This extension now has bounded project use, but **no representative human task validation has been run**. The evidence below advances project-usage maturity only.
+This extension has bounded project use, but **no representative human task validation has been run**. The evidence below advances project-usage evidence only; it does not raise the Current Knowledge owner's Trust or cross-context maturity.
 
 ### J02｜moving-context attention budget
 
@@ -80,14 +92,20 @@ It does not prove comfort, force, fatigue, reach, accessibility or structural sa
 
 ## Transfer boundary
 
-External source study:
-- `wonsukchoi/domain-experts/roles/human-factors-engineer/SKILL.md` — MIT repository.
-- OLEANDER Current Human Factors knowledge and existing NASA HIDH-derived Practice remain higher internal context for project routing.
+Canonical Knowledge owner:
+- `KN-METHOD-HUMAN-FACTORS-VALIDATION-001` — Current/Scoped method authority for population–task–fit–load–representative-task reasoning.
 
-Accepted: population variability; task-envelope first; physical/cognitive demand decomposition; method-to-demand matching; representative-user/task validation; error-as-system evidence; revalidation after change.
+External source study:
+- `wonsukchoi/domain-experts/roles/human-factors-engineer/SKILL.md` — MIT repository; source input only, not OLEANDER Current authority.
+
+Existing OLEANDER Practice/source evidence remains bounded input to the Current owner rather than independent rule authority.
+
+Accepted for execution because the Current owner now encodes them: population variability; task-envelope first; physical/cognitive demand decomposition; method-to-demand matching; representative-user/task validation; error-as-system evidence; revalidation after change.
 
 Rejected as universal OLEANDER truth: automatic percentile bands, fixed RULA/REBA/NIOSH/SUS action thresholds, universal vigilance timing, one Fitts target-size rule, ANSI/HFES values detached from population/context, or named software/digital-human tooling as proof.
 
 ## Maturity
 
-`DOCUMENTED CANDIDATE EXTENSION / EXTERNAL-SOURCE-DIGESTED / PROJECT_USAGE_EVIDENCE = C04 BOUNDED / HUMAN TASK VALIDATION NOT RUN / CROSS-CONTEXT TEST NEEDED / NO PROMOTION`.
+Extension state: `DOCUMENTED CANDIDATE EXECUTION EXTENSION / PROJECT_USAGE_EVIDENCE = C04 BOUNDED / HUMAN TASK VALIDATION NOT RUN / CROSS-CONTEXT TEST NEEDED / NO SELF-PROMOTION`.
+
+Knowledge state is owned separately by `KN-METHOD-HUMAN-FACTORS-VALIDATION-001`; this extension cannot change its `CURRENT / SCOPED / UNVERIFIED / E2 / M3` state without the Knowledge lifecycle and new evidence.
