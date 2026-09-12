@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "pymupdf": "1.26.7",
+    "mupdf": "1.26.12"
+  },
+  "fixture_note": "B metadata field names are a bounded TEST FIXTURE informed by a public third-party implementation example; not normative ISO syntax proof.",
+  "A_generic_ocg": {
+    "artifact": "A_generic_ocg.pdf",
+    "sha256": "9153870038caa8b7b8042b9d162e9bfe2f654bb56c63a656f6db21dd6f6289ff",
+    "ocg_count": 1,
+    "catalog_has_OCProperties": true,
+    "has_GTS_Metadata": false,
+    "has_type_cutting": false,
+    "has_group_structural": false
+  },
+  "B_metadata_ocg": {
+    "artifact": "B_processing_metadata.pdf",
+    "sha256": "a0728d1eae606e2f92b6f5592b058e9e712ec2b069b2fc0f96aeb5a5ac9068db",
+    "ocg_count": 1,
+    "catalog_has_OCProperties": true,
+    "has_GTS_Metadata": true,
+    "has_type_cutting": true,
+    "has_group_structural": true
+  },
+  "assertions": {
+    "A_has_generic_ocg": true,
+    "A_has_no_gts_metadata": true,
+    "B_gts_metadata_survives_reopen": true,
+    "B_cutting_and_structural_terms_survive": true,
+    "iso_19593_conformance_proven": false,
+    "gwg_suite_pass_proven": false
+  },
+  "verdict": "PROVEN_BOUNDED_METADATA_DISTINCTION__HOLD_NORMATIVE_CONFORMANCE"
+}
