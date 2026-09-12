@@ -253,40 +253,79 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 
     const page = await createReaderPage(env);
     const current = await createLinkedNotesView(env, page.id, {
-      name: "01｜Current｜核心知识",
+      name: "01｜Core Knowledge｜核心知识",
       type: "list",
       filter: {
         and: [
-          { property: "Retrieval Space｜检索空间", select: { equals: "CURRENT" } },
+          {
+            or: [
+              { property: "内容层级", select: { equals: "L4｜Framework" } },
+              { property: "内容层级", select: { equals: "L5｜Knowledge Object" } },
+            ],
+          },
           { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
         ],
       },
       sorts: [{ property: "知识角色", direction: "ascending" }, { property: "Name", direction: "ascending" }],
     });
     const support = await createLinkedNotesView(env, page.id, {
-      name: "02｜Support｜精选支撑",
+      name: "02｜Methods｜方法",
       type: "list",
       filter: {
         and: [
-          { property: "Retrieval Space｜检索空间", select: { equals: "SUPPORT" } },
-          { property: "Search Eligibility｜检索资格", select: { equals: "SCOPED" } },
+          { property: "知识角色", select: { equals: "METHOD" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const evidence = await createLinkedNotesView(env, page.id, {
+      name: "03｜Evidence｜证据",
+      type: "list",
+      filter: {
+        and: [
+          { property: "内容层级", select: { equals: "L6｜Evidence / Case" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const practice = await createLinkedNotesView(env, page.id, {
+      name: "04｜Practice｜实践",
+      type: "list",
+      filter: {
+        and: [
+          { property: "内容层级", select: { equals: "L7｜Practice / Output" } },
           { property: "治理状态", select: { equals: "ACTIVE" } },
         ],
       },
-      sorts: [{ property: "知识角色", direction: "ascending" }, { property: "Name", direction: "ascending" }],
+      sorts: [{ property: "Name", direction: "ascending" }],
     });
-    const review = await createLinkedNotesView(env, page.id, {
-      name: "90｜Review｜待治理",
-      type: "table",
+    const history = await createLinkedNotesView(env, page.id, {
+      name: "99｜History｜历史与治理",
+      type: "list",
       filter: {
         or: [
-          { property: "治理状态", select: { equals: "REVIEW" } },
+          { property: "Retrieval Space｜检索空间", select: { equals: "PROVENANCE" } },
+          { property: "治理状态", select: { equals: "LEGACY" } },
+          { property: "治理状态", select: { equals: "ARCHIVED" } },
           { property: "治理状态", select: { equals: "HOLD" } },
         ],
       },
       sorts: [{ property: "Name", direction: "ascending" }],
     });
-    const reader = { page_id: page.id, url: page.url ?? null, current_view_id: current.id, support_view_id: support.id, review_view_id: review.id };
+    const reader = {
+      page_id: page.id,
+      url: page.url ?? null,
+      core_view_id: current.id,
+      methods_view_id: support.id,
+      evidence_view_id: evidence.id,
+      practice_view_id: practice.id,
+      history_view_id: history.id,
+    };
     await env.MANIFEST.prepare(
       "INSERT INTO runtime_state(state_key,state_value,updated_at) VALUES('reader_layer_v1',?,?) ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value,updated_at=excluded.updated_at",
     ).bind(JSON.stringify(reader), new Date().toISOString()).run();
