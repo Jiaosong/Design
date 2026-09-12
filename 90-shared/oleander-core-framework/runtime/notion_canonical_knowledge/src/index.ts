@@ -25,7 +25,15 @@ import {
   stageSyncMessages,
   syncRunReadback,
 } from "./manifest";
-import { fetchCompleteMarkdown, fetchPage, listNotesPages, updatePageGovernanceFields } from "./notion";
+import {
+  createAcademicPage,
+  createLinkedNotesView,
+  createReaderPage,
+  fetchCompleteMarkdown,
+  fetchPage,
+  listNotesPages,
+  updatePageGovernanceFields,
+} from "./notion";
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
@@ -203,6 +211,153 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       const after = normalizePage(await fetchPage(env, body.page_id));
       return json({ ok: true, before, after, sync: syncResult });
     }
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/academic-page") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      title?: string;
+      canonical_id?: string;
+      markdown?: string;
+      source_page_ids?: string[];
+      replaced_page_ids?: string[];
+      retrieval_space?: string;
+      search_eligibility?: string;
+      trust_state?: string;
+      governance_state?: string;
+      relation_state?: string;
+      content_level?: string;
+      knowledge_role?: string;
+    };
+    if (!body.title || !body.canonical_id || !body.markdown) return json({ ok: false, error: "title_canonical_id_markdown_required" }, 400);
+    if (!/^[A-Z0-9][A-Z0-9-]{4,}$/.test(body.canonical_id)) return json({ ok: false, error: "invalid_canonical_id" }, 400);
+    const allowedRetrieval = new Set(["CURRENT", "SUPPORT", "PROVENANCE"]);
+    const allowedEligibility = new Set(["DEFAULT", "SCOPED", "HISTORY_ONLY", "BLOCKED"]);
+    const allowedTrust = new Set(["UNKNOWN", "UNVERIFIED", "VERIFIED"]);
+    const allowedGovernance = new Set(["ACTIVE", "ARCHIVED", "HOLD", "LEGACY", "REVIEW"]);
+    const allowedRelation = new Set(["REVIEW", "VALID"]);
+    const allowedLevels = new Set(["L4｜Framework", "L5｜Knowledge Object", "L6｜Evidence / Case", "L7｜Practice / Output"]);
+    const allowedRoles = new Set(["INDEX", "THEORY", "METHOD", "EVIDENCE", "SOURCE", "CASE", "PRACTICE", "TOOL"]);
+    if (body.retrieval_space && !allowedRetrieval.has(body.retrieval_space)) return json({ ok: false, error: "invalid_retrieval_space" }, 400);
+    if (body.search_eligibility && !allowedEligibility.has(body.search_eligibility)) return json({ ok: false, error: "invalid_search_eligibility" }, 400);
+    if (body.trust_state && !allowedTrust.has(body.trust_state)) return json({ ok: false, error: "invalid_trust_state" }, 400);
+    if (body.governance_state && !allowedGovernance.has(body.governance_state)) return json({ ok: false, error: "invalid_governance_state" }, 400);
+    if (body.relation_state && !allowedRelation.has(body.relation_state)) return json({ ok: false, error: "invalid_relation_state" }, 400);
+    if (body.content_level && !allowedLevels.has(body.content_level)) return json({ ok: false, error: "invalid_content_level" }, 400);
+    if (body.knowledge_role && !allowedRoles.has(body.knowledge_role)) return json({ ok: false, error: "invalid_knowledge_role" }, 400);
+    const duplicate = await env.MANIFEST.prepare(
+      "SELECT page_id, title FROM documents WHERE active=1 AND canonical_id=? LIMIT 1",
+    ).bind(body.canonical_id).first<{ page_id: string; title: string }>();
+    if (duplicate) return json({ ok: false, error: "canonical_id_exists", duplicate }, 409);
+
+    const page = await createAcademicPage(env, {
+      title: body.title,
+      canonical_id: body.canonical_id,
+      markdown: body.markdown,
+      source_page_ids: body.source_page_ids ?? [],
+      replaced_page_ids: body.replaced_page_ids ?? [],
+      ...(body.retrieval_space ? { retrieval_space: body.retrieval_space } : {}),
+      ...(body.search_eligibility ? { search_eligibility: body.search_eligibility } : {}),
+      ...(body.trust_state ? { trust_state: body.trust_state } : {}),
+      ...(body.governance_state ? { governance_state: body.governance_state } : {}),
+      ...(body.relation_state ? { relation_state: body.relation_state } : {}),
+      ...(body.content_level ? { content_level: body.content_level } : {}),
+      ...(body.knowledge_role ? { knowledge_role: body.knowledge_role } : {}),
+    });
+    const sync = await syncPage(env, {
+      kind: "notion-page-sync",
+      page_id: page.id,
+      cause_id: `academic:${crypto.randomUUID()}`,
+      cause_type: "manual",
+    });
+    return json({ ok: true, page: normalizePage(await fetchPage(env, page.id)), sync });
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/reader-layer") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const existing = await env.MANIFEST.prepare("SELECT state_value FROM runtime_state WHERE state_key='reader_layer_v1' LIMIT 1")
+      .first<{ state_value: string }>();
+    if (existing?.state_value) return json({ ok: true, existing: true, reader: JSON.parse(existing.state_value) });
+
+    const page = await createReaderPage(env);
+    const current = await createLinkedNotesView(env, page.id, {
+      name: "01｜Core Knowledge｜核心知识",
+      type: "list",
+      filter: {
+        and: [
+          {
+            or: [
+              { property: "内容层级", select: { equals: "L4｜Framework" } },
+              { property: "内容层级", select: { equals: "L5｜Knowledge Object" } },
+            ],
+          },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
+        ],
+      },
+      sorts: [{ property: "知识角色", direction: "ascending" }, { property: "Name", direction: "ascending" }],
+    });
+    const support = await createLinkedNotesView(env, page.id, {
+      name: "02｜Methods｜方法",
+      type: "list",
+      filter: {
+        and: [
+          { property: "知识角色", select: { equals: "METHOD" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const evidence = await createLinkedNotesView(env, page.id, {
+      name: "03｜Evidence｜证据",
+      type: "list",
+      filter: {
+        and: [
+          { property: "内容层级", select: { equals: "L6｜Evidence / Case" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+          { property: "关系状态", select: { equals: "VALID" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const practice = await createLinkedNotesView(env, page.id, {
+      name: "04｜Practice｜实践",
+      type: "list",
+      filter: {
+        and: [
+          { property: "内容层级", select: { equals: "L7｜Practice / Output" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const history = await createLinkedNotesView(env, page.id, {
+      name: "99｜History｜历史与治理",
+      type: "list",
+      filter: {
+        or: [
+          { property: "Retrieval Space｜检索空间", select: { equals: "PROVENANCE" } },
+          { property: "治理状态", select: { equals: "LEGACY" } },
+          { property: "治理状态", select: { equals: "ARCHIVED" } },
+          { property: "治理状态", select: { equals: "HOLD" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const reader = {
+      page_id: page.id,
+      url: page.url ?? null,
+      core_view_id: current.id,
+      methods_view_id: support.id,
+      evidence_view_id: evidence.id,
+      practice_view_id: practice.id,
+      history_view_id: history.id,
+    };
+    await env.MANIFEST.prepare(
+      "INSERT INTO runtime_state(state_key,state_value,updated_at) VALUES('reader_layer_v1',?,?) ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value,updated_at=excluded.updated_at",
+    ).bind(JSON.stringify(reader), new Date().toISOString()).run();
+    return json({ ok: true, existing: false, reader });
   }
 
   if (request.method === "POST" && url.pathname === "/v1/drain-once") {

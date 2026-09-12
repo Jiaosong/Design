@@ -1,6 +1,6 @@
 # OLEANDER Notion Post-Sync Governance Audit — 2026-09-12
 
-Status: **PHASE 1 ACTIVE / BATCH 01–02 APPLIED + READ BACK / NO PERMANENT DELETE**
+Status: **PHASE 2 ACTIVE / READER LAYER LIVE / ACADEMIC MIGRATION STARTED / NO PERMANENT DELETE**
 
 This audit starts after the `1,184 / 1,184` corpus reconcile closed. It does not create a new knowledge authority. Notion remains canonical; D1/Vectorize are derivative readback surfaces.
 
@@ -154,3 +154,108 @@ Their immediate sync result is `EXCLUDED`; the pages remain in Notion and were *
 2. Prioritize large legacy architecture/domain pages (`D01–D08`, `K03`, `K05`, source Axx pages) by content/authority rather than by title alone.
 3. Perform a separate Naming/Path pass after identity decisions; do not combine title cleanup with authority changes.
 4. Continue missing governance/relation candidates in small content-read batches, with mutation -> live readback -> D1 readback receipts.
+
+## Phase 2 — Human Reader Layer
+
+The user-facing problem was not only metadata correctness. The live Notion workspace exposed governance, provenance, evidence, practice, Current knowledge, migration logs and machine IDs on the same visual plane. A read-only audit found that the existing database views were predominantly audit/governance views rather than a human-first library; L6 Evidence objects also numerically dominate the corpus, so a flat table naturally feels like a warehouse rather than a knowledge system.
+
+One navigation-only root child was therefore created without duplicating the Notes database:
+
+- Page: `知识阅读台｜Knowledge Reader`
+- Page ID: `3d9b86be-5c47-81e7-9acd-d05c6d25ad7b`
+- Core Knowledge view: `L4/L5 + ACTIVE + VALID`
+- Methods view: `METHOD + ACTIVE + VALID`
+- Evidence view: `L6 + ACTIVE + VALID`
+- Practice view: `L7 + ACTIVE`
+- History view: `PROVENANCE` or `LEGACY / ARCHIVED / HOLD`
+
+The initial Core view intentionally does not require explicit `Retrieval Space=CURRENT`. Most migrated knowledge objects still rely on inferred authority and have null explicit Retrieval Space; a strict CURRENT-only view would falsely make the library appear nearly empty. As migration progresses, a strict Current tab can be promoted later.
+
+## Phase 2 — Academic Quality Gate
+
+The D01–D08 / K03 / K05 audit confirmed that high word count was being mistaken for research quality. Common defects included strong `必须 / 应 / 不能` statements without claim-level citations, literature lists disconnected from argument, repeated G0–G9/POE material across pages, coarse A/B/C evidence grades, and missing independent `Limitations / Applicability` sections.
+
+New Current METHOD owner:
+
+- `MTH-KNOWLEDGE-ACADEMIC-NOTE-001｜论文级知识页：论点、证据、反例与适用边界`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / METHOD`
+- Requires testable/conditional thesis, claim-level evidence, rival/counterevidence, reproducible method where relevant, explicit limitations, and reader-first placement of system/provenance notes.
+- Separates `FACT / INTERPRETATION / NORMATIVE RULE / HEURISTIC / HYPOTHESIS / DECISION` so normative rules are not laundered into facts.
+- Evidence quality is treated as multi-axis (`Authority / Type / Quality / Applicability / Confidence`) rather than one scalar letter grade.
+
+L6 Source/Evidence and L7 Practice are exempt from essay-style inflation. Their quality comes from identity, boundary, source precision and execution readback, not academic prose length.
+
+## Phase 2 — First Academic Migration
+
+### D01 urban regeneration
+
+New Current carrier:
+
+- Page ID: `3d9b86be-5c47-81b9-afdd-ea21838fdc16`
+- Canonical ID: `KN-ARCH-URBAN-REGEN-001`
+- Human title: `城市更新：空间改善、产权治理与反置换机制`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / THEORY`
+- Live markdown readback: `6,440` characters, `18` indexed chunks, not truncated.
+- Structure: abstract -> research question/boundary -> property/value/power -> displacement/gentrification -> participation -> public/green-space distribution -> six-dimension evaluation -> research-to-design evidence chain -> limitations/applicability -> conclusion/references.
+
+Old `D01｜城市更新与社区营造` remains intact (`18,701` live markdown characters) and is now:
+
+- `LEGACY-KN-ARCH-URBAN-REGEN-D01-20260807`
+- `LEGACY / PROVENANCE / HISTORY_ONLY / VALID`
+- Reciprocal replacement relation points to the new Current page.
+
+No old text was deleted.
+
+## Phase 2 — Research Method Owner
+
+New Current METHOD:
+
+- Page ID: `3d9b86be-5c47-8158-bf00-c8aa879f7394`
+- Canonical ID: `MTH-ARCH-RESEARCH-001`
+- Human title: `建筑研究方法：问题、证据、有效性与伦理`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / METHOD`
+- Live markdown readback: `5,133` characters, `16` indexed chunks, not truncated.
+
+It now owns research questions, concept operationalization, case/sample selection, fieldwork, research ethics, measurement/simulation boundaries, POE, triangulation, negative cases/rival explanations, validity/auditability/reflexivity and limitations. Topic pages should link this owner instead of copying their own generic POE/sampling/triangulation rules.
+
+Old `D08｜建筑研究方法与批评` remains intact and is now `LEGACY-MTH-ARCH-RESEARCH-D08-20260730 / LEGACY / PROVENANCE / HISTORY_ONLY / VALID`, with a reciprocal replacement relation to the Current method.
+
+## Phase 2 — Evidence Governance Owner
+
+New Current METHOD:
+
+- Page ID: `3d9b86be-5c47-81c6-ac53-fd563117d66c`
+- Canonical ID: `MTH-ARCH-EVIDENCE-GOV-001`
+- Human title: `建筑证据治理协议：权威、适用性、版本与冲突`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / METHOD`
+- Live markdown readback: `4,744` characters, `16` indexed chunks, not truncated.
+
+The protocol separates `Authority / Evidence Type / Quality / Applicability / Temporal Validity / Project Closure`, removes the old assumption that one A/B/C/D rank can represent all evidence quality, and treats fixed review periods such as “30-day price review” as project heuristics rather than universal facts. Concrete standard/product/price/version updates no longer belong in the stable protocol body.
+
+Old K03 remains fully preserved as `LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824 / LEGACY / PROVENANCE / HISTORY_ONLY / VALID`. Its historical standard transitions, product evidence, supplier notes and dated update log remain available in History rather than competing with the Current protocol.
+
+## Phase 2 Readback
+
+After the additive migration above:
+
+- Notes/D1 document rows: `1,188`
+- Active retrieval documents: `1,186`
+- Excluded retrieval documents: `2` (the previously contained orphan empty pages; still retained canonically in Notion)
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current/VALID objects confirmed in D1: `KN-ARCH-URBAN-REGEN-001`, `MTH-KNOWLEDGE-ACADEMIC-NOTE-001`, `MTH-ARCH-RESEARCH-001`, `MTH-ARCH-EVIDENCE-GOV-001`.
+
+The historical 1,184-page full reconcile remains a completed historical run. The current canonical Notes corpus is larger because Phase 2 deliberately adds clean Current carriers while preserving the superseded pages NO LOSS.
+
+## Revised Rewrite Queue
+
+The next academic migrations should use the new two owners rather than independently inventing structure:
+
+1. `D04｜数字设计、BIM与智能建造`
+2. `D06｜公共建筑、社会基础设施与公共性`
+3. `D07｜居住研究、住房与日常生活`
+4. `D03｜气候低碳与韧性设计`
+5. `D05｜建筑经济、开发策划与全生命周期价值`
+6. `D02｜乡村建筑与地方营造`
+7. `K05｜建筑研究与实践方向地图` — navigation/IA cleanup only; do not inflate into a paper.
+
+Each migration remains additive: clean Current page -> live readback -> relation VALID -> old carrier to Legacy/History -> D1 readback. Naming cleanup is a separate pass and must not be conflated with authority migration.
