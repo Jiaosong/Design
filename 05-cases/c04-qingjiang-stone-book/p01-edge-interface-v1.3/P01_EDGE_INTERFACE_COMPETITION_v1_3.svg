@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1160" viewBox="0 0 1800 1160">
+<style>
+.bg{fill:#f3efe5}.paper{fill:#fbfaf5;stroke:#c5cbc6;stroke-width:1}.ink{fill:#17332c}
+.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.stone{fill:#d8d7ce}.edge{fill:#789d92}
+.dark{fill:#243b35}.glow{fill:#9cc8bc}.line{stroke:#17332c;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.thin{stroke:#7c8983;stroke-width:1.15;fill:none}.dash{stroke:#9ba49f;stroke-width:1;fill:none;stroke-dasharray:5 5}
+.h1{font:700 39px 'Noto Serif CJK SC',serif}.h2{font:700 22px 'Noto Serif CJK SC',serif}
+.h3{font:700 15px 'Noto Sans CJK SC',sans-serif}.b{font:400 13px 'Noto Sans CJK SC',sans-serif}
+.sm{font:400 11px 'Noto Sans CJK SC',sans-serif}.xs{font:700 9.5px 'Noto Sans CJK SC',sans-serif;letter-spacing:1px}
+</style>
+<rect width="1800" height="1160" class="bg"/>
+<text x="58" y="58" class="xs qing">P01 / 步步生光 · EDGE-INTERFACE STRUCTURAL COMPETITION v1.3</text>
+<text x="58" y="110" class="h1 ink">发光不是一个“灯件”，而是路面与边缘之间的接口关系</text>
+<text x="58" y="150" class="b muted">继承 P01 v1.2：主踏面连续、无踩灯目标、白天不发光也成立、夜间仅局部回应；本轮只竞争构件如何嵌入路缘。</text>
+<text x="58" y="184" class="xs seal">CONCEPT / NTS / FIELD OPEN / NOT FOR CONSTRUCTION / NO ROUTE-GUIDANCE CLAIM</text>
+<g transform="translate(58 230)">
+<rect width="522" height="430" rx="20" class="paper"/><text x="24" y="38" class="xs seal">A / INSET SLOT IN WALKING SURFACE</text><text x="24" y="76" class="h2 ink">踏面内开缝</text><rect x="44" y="128" width="404" height="92" class="stone"/><rect x="280" y="128" width="26" height="92" class="dark"/><rect x="285" y="136" width="16" height="76" class="glow" opacity=".65"/><path d="M44 220h404" class="line"/><text x="44" y="260" class="xs qing">BODY READ</text><text x="44" y="290" class="b ink">脚下出现明确“目标线”；接口进入主要落脚区。</text><text x="44" y="330" class="xs seal">VERDICT / REJECT</text><text x="44" y="360" class="sm muted">即使齐平，第一读仍容易变成“踩这里”；积水、缝隙、清扫和检修都与主踏面直接耦合。</text></g>
+<g transform="translate(639 230)">
+<rect width="522" height="430" rx="20" class="paper"/><text x="24" y="38" class="xs qing">B / FLUSH LATERAL EDGE CASSETTE</text><text x="24" y="76" class="h2 ink">侧缘齐平嵌入</text><rect x="44" y="128" width="350" height="92" class="stone"/><rect x="394" y="128" width="38" height="92" class="edge"/><rect x="432" y="128" width="16" height="92" class="dark"/><path d="M44 220h404" class="line"/><path d="M398 170h30" stroke="#9cc8bc" stroke-width="8" opacity=".72"/><text x="44" y="260" class="xs qing">BODY READ</text><text x="44" y="290" class="b ink">主踏面仍读成一整块；反馈只发生在侧缘接口。</text><text x="44" y="330" class="xs qing">VERDICT / KEEP CANDIDATE</text><text x="44" y="360" class="sm muted">构件边界可见但不抢主视觉；检修可被组织在侧缘，而不是从行走面开盖。</text></g>
+<g transform="translate(1220 230)">
+<rect width="522" height="430" rx="20" class="paper"/><text x="24" y="38" class="xs seal">C / RAISED EDGE CHANNEL</text><text x="24" y="76" class="h2 ink">抬高路缘灯槽</text><rect x="44" y="152" width="350" height="68" class="stone"/><rect x="394" y="112" width="54" height="108" class="dark"/><rect x="401" y="120" width="40" height="11" class="glow"/><path d="M44 220h404" class="line"/><text x="44" y="260" class="xs qing">BODY READ</text><text x="44" y="290" class="b ink">边缘体量被抬高，开始读成护栏/导向灯构件。</text><text x="44" y="330" class="xs seal">VERDICT / REJECT</text><text x="44" y="360" class="sm muted">构件过度实体化，容易形成路径导向与碰撞边界；与“低强度回应而非设施主角”冲突。</text></g>
+<text x="58" y="720" class="xs qing">CONVERGED DETAIL / B · RELATION-FIRST SECTION</text>
+<g transform="translate(58 746)"><rect width="1684" height="326" rx="20" class="paper"/>
+<text x="28" y="36" class="h3 ink">01 / SECTION — 行走层不被打开</text><rect x="28" y="92" width="610" height="46" class="stone"/><rect x="638" y="92" width="54" height="46" class="edge"/><rect x="692" y="92" width="20" height="46" class="dark"/><line x1="28" y1="138" x2="760" y2="138" class="line"/><path d="M638 72v84M692 72v84" class="dash"/><text x="28" y="180" class="xs qing">PRIMARY WALKING SURFACE</text><text x="28" y="210" class="sm muted">连续、无凸起目标；本轮不指定最终铺装厚度或防滑等级。</text><text x="510" y="180" class="xs qing">EDGE CASSETTE</text><text x="510" y="210" class="sm muted">齐平关系候选；接口宽度/固定方式/材料公差待样件和工程校核。</text><text x="28" y="258" class="xs seal">FIELD GATES</text><text x="122" y="258" class="sm muted">防滑 · 排水 · 防水 · 电气 · 眩光 · 生态 · 检修 · 无障碍连续性</text>
+<text x="820" y="36" class="h3 ink">02 / SERVICE — 检修从侧缘发生，不从踏面发生</text><path d="M820 108h240" class="line"/><rect x="1060" y="84" width="76" height="48" class="edge"/><rect x="1136" y="84" width="28" height="48" class="dark"/><path d="M1176 108h110" class="thin"/><path d="M1268 94l18 14-18 14" class="line"/><text x="820" y="166" class="xs qing">WALK</text><text x="1060" y="166" class="xs qing">EDGE</text><text x="1194" y="166" class="xs seal">SERVICE SIDE</text><text x="820" y="205" class="sm muted">概念目标：维护行为不占用主要行走面。真实拆装方向、紧固、密封、线缆与检修空间仍 OPEN。</text>
+<text x="820" y="258" class="h3 ink">03 / DAY ↔ NIGHT</text><rect x="1010" y="238" width="230" height="44" rx="8" fill="#e8e7df"/><path d="M1028 260h190" stroke="#789d92" stroke-width="7" opacity=".45"/><text x="1010" y="308" class="xs qing">DAY / MATERIAL EDGE ONLY</text><rect x="1320" y="238" width="300" height="44" rx="8" class="dark"/><path d="M1340 260h76" stroke="#9cc8bc" stroke-width="7"/><path d="M1416 260h182" stroke="#9cc8bc" stroke-width="7" opacity=".12"/><text x="1320" y="308" class="xs qing">NIGHT / LOCAL RESPONSE → FADE</text></g>
+<text x="58" y="1122" class="sm muted">Transfer rule: interface visibility must be explicit enough to read and service, but never become the first-reading object. No numeric seam/gap from the generic Practice is transferred as a project dimension.</text>
+</svg>
