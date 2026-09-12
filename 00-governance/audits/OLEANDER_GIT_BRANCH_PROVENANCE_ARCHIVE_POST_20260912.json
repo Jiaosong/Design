@@ -1,0 +1,36 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_PROVENANCE_ARCHIVE_POST_v1",
+  "as_of": "2026-09-12T10:27:50.592040Z",
+  "repository": "Jiaosong/Design",
+  "main_sha_at_post_readback": "0ade00baa8544f967a65036d3b2e6ce869da0cdd",
+  "archive": {
+    "ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+    "remote_annotated_tag_object": "25e4ebda7acc18e2d6e7dbe56f25ab637ad8e266",
+    "peeled_archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+    "archive_tree": "4b825dc642cb6eb9a060e54bf8d69288fbee4904",
+    "authority": "PROVENANCE_ONLY_NOT_CURRENT_NO_PROMOTION",
+    "remote_readback": true,
+    "source_tip_ancestry_failures": [],
+    "parents_exact_unique_tip_set": true,
+    "parent_count": 33,
+    "unique_tip_count": 33,
+    "archive_commit_is_ancestor_of_main": false
+  },
+  "cleanup": {
+    "requested_ref_deletions": 39,
+    "archive_backed_ref_deletions": 35,
+    "retained_ancestry_ref_deletions": 4,
+    "remaining_source_refs": [],
+    "deletion_readback_pass": true
+  },
+  "residual_initial_218_audit_intersection": {
+    "count": 31,
+    "counts_by_state": {
+      "REVIEW": 9,
+      "ABSORB": 18,
+      "ACTIVE": 4
+    },
+    "superceded_or_reject_remaining": []
+  },
+  "verdict": "PASS"
+}
