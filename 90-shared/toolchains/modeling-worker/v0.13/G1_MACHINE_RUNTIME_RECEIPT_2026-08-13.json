@@ -1,0 +1,42 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.runtime-machine-receipt",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "job_state": "EXECUTED",
+  "design_state": "EXPLORE",
+  "authority_state": "WORKING_SOURCE",
+  "execution_class": "ALGORITHM_EQUIVALENT_RUNTIME_REPLAY_NOT_GITHUB_CI",
+  "source_binding": {
+    "primary_curve_source_git_blob": "dcccf6e86477726b6ef2617a5ff43817ae7dc42d",
+    "geometry_core_git_blob": "ec58445df01c6f2586c157ea59820071a625df20",
+    "machine_entry_git_blob": "841705b33bdc97e09cab3be1146bfbfcc528c191"
+  },
+  "baseline": {
+    "dimensions_m": [0.19, 0.0849014, 0.1058147],
+    "sparse_authority_scalar_count": 47,
+    "thumb_radius_probe_m": 0.04717527818213868,
+    "opposite_radius_probe_m": 0.035960732669746004,
+    "thumb_minus_opposite_probe_m": 0.011214545512392676,
+    "interface_inset_depth_m": 0.008999999999999994,
+    "max_longitudinal_normal_delta_deg_per_0_01u": 2.715375755881746,
+    "max_circumferential_normal_delta_deg_per_0_05rad": 6.184677764313553,
+    "wrap_probe_front_m": [0.0015293311011452572,0.0044726114325644405,0.010746365746990975],
+    "wrap_probe_back_m": [0.0014414409373741223,0.004138147926886615,0.009910233548273677],
+    "machine_checks": "PASS"
+  },
+  "revision": {
+    "revision_id": "G1-R1-THUMB-SIDE-RELATION",
+    "changed_authority_family": "THUMB_SIDE_PLAN",
+    "mesh_local_patch_used": false,
+    "dimensions_m": [0.19, 0.09068806, 0.1058147],
+    "max_surface_displacement_m": 0.005786652681767701,
+    "thumb_extreme_gain_m": 0.005522498034317896,
+    "opposite_extreme_change_m": 0.0,
+    "max_longitudinal_normal_delta_deg_per_0_01u": 2.7161781663289943,
+    "max_circumferential_normal_delta_deg_per_0_05rad": 6.305581156165561,
+    "machine_checks": "PASS",
+    "relation_revision_checks": "PASS"
+  },
+  "result": "MACHINE_PASS / RELATION_REVISION_PASS / VISUAL_PROJECT_REVIEW_REQUIRED",
+  "github_ci_state": "NOT_EXECUTED_FOR_G1_BECAUSE_V013_WORKFLOW_WRITE_WAS_BLOCKED_BY_CONNECTOR_SAFETY_LAYER",
+  "boundary": "This receipt does not establish Human Visual PASS, Human Project PASS, Candidate Authority, Canonical Authority, Release, engineering CAD, manufacturing feasibility or final product styling."
+}

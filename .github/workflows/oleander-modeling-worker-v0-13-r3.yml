@@ -1,0 +1,174 @@
+name: OLEANDER Modeling Worker v0.13 R3 Interface Fairness
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '00-governance/control-plane/tests/test_modeling_worker_v013_r3_interface.py'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r3-interface-fairness:
+    name: G1 R3 Interior Fairness → Fixed-Rig Visual Diagnostics
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile R3 and validate contracts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r3_interface_fairness.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r3_blender_visual.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_FAIRNESS_CONTRACT.json >/dev/null
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_RELATION_VARIANTS.json >/dev/null
+          python3 00-governance/control-plane/tests/test_modeling_worker_v013_r3_interface.py
+
+      - name: Execute R3 interior-transition fairness gate
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R3"; mkdir -p "$OUT"
+          python3 90-shared/toolchains/modeling-worker/v0.13/g1_r3_interface_fairness.py \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_FAIRNESS_CONTRACT.json \
+            --variants 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_RELATION_VARIANTS.json \
+            --out "$OUT"
+
+      - name: Verify R3 Machine Gate routing
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path('out/G1_R3/G1_R3_INTERFACE_FAIRNESS_REPORT.json').read_text())
+          assert report['status']=='R3_INTERFACE_FAIRNESS_VARIANT_READY_FOR_VISUAL_QA', report['status']
+          assert all(report['checks'].values()), report['checks']
+          assert report['design_state']=='REVISE'
+          assert report['authority_state']=='WORKING_SOURCE'
+          assert report['candidate_review']=='REOPENED'
+          assert report['candidate_promotion']=='NOT_RUN'
+          assert report['baseline']['machine']['pass'] is True
+          assert report['baseline']['interior_fairness']['pass'] is False
+          base=report['baseline']['interior_fairness']['metrics']
+          assert base['max_circumferential_deg_per_0_05rad'] > 40.0, base
+          rows={row['variant_id']:row for row in report['variants']}
+          assert set(rows)=={'R3-V1-ANGULAR-SOFTEN','R3-V2-TRANSITION-FIELD','R3-V3-BALANCED-SPAN'}
+          assert rows['R3-V1-ANGULAR-SOFTEN']['machine']['pass'] is True
+          assert rows['R3-V2-TRANSITION-FIELD']['machine']['pass'] is True
+          assert rows['R3-V3-BALANCED-SPAN']['machine']['pass'] is True
+          assert rows['R3-V1-ANGULAR-SOFTEN']['interior_fairness']['pass'] is False
+          assert rows['R3-V2-TRANSITION-FIELD']['interior_fairness']['pass'] is False
+          assert rows['R3-V3-BALANCED-SPAN']['interior_fairness']['pass'] is True
+          assert report['visual_candidates']==['R3-V3-BALANCED-SPAN']
+          assert report['selected_for_fixed_rig_visual_diagnostics']=='R3-V3-BALANCED-SPAN'
+          selected=rows['R3-V3-BALANCED-SPAN']['interior_fairness']['metrics']
+          assert selected['max_longitudinal_deg_per_0_01u'] <= 8.0, selected
+          assert selected['p95_longitudinal_deg_per_0_01u'] <= 6.0, selected
+          assert selected['max_circumferential_deg_per_0_05rad'] <= 12.0, selected
+          assert selected['p95_circumferential_deg_per_0_05rad'] <= 10.0, selected
+          assert rows['R3-V3-BALANCED-SPAN']['machine']['interface_depth_m'] >= 0.011999
+          assert report['termination_state']=='OPEN_UNCHANGED_NOT_SOLVED_BY_THIS_GATE'
+          print('R3_MACHINE_FAIRNESS_GATE_PASS', report['selected_for_fixed_rig_visual_diagnostics'])
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build canonical R2 Blender-native Working Source baseline
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 512
+
+      - name: Apply selected R3 relation through Blender-native Source and render fixed diagnostics
+        run: |
+          set -euo pipefail
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r3_blender_visual.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --variants 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_RELATION_VARIANTS.json \
+            --machine-report "$GITHUB_WORKSPACE/out/G1_R3/G1_R3_INTERFACE_FAIRNESS_REPORT.json" \
+            --out "$GITHUB_WORKSPACE/out/G1_R3/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 512
+
+      - name: Verify R3 visual authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R3/60_OUTPUTS/DIAGNOSTIC')
+          report=json.loads((root/'G1_R3_VISUAL_DIAGNOSTIC_REPORT.json').read_text())
+          assert report['status']=='R3_FIXED_RIG_VISUAL_DIAGNOSTICS_RENDERED_REVIEW_REQUIRED', report['status']
+          assert all(report['checks'].values()), report['checks']
+          assert report['selected_variant']=='R3-V3-BALANCED-SPAN'
+          assert report['design_state']=='REVISE'
+          assert report['authority_state']=='WORKING_SOURCE'
+          assert report['candidate_review']=='REOPENED'
+          assert report['candidate_promotion']=='NOT_RUN'
+          assert report['visual_decision']=='NOT_RUN_REQUIRES_REFLECTION_REVIEW'
+          assert report['termination_state']=='OPEN_UNCHANGED_NOT_SOLVED_BY_R3_INTERFACE_BATCH'
+          assert set(report['image_difference_metrics'])=={'STRIP','GRAZING','ZEBRA'}
+          assert report['source_family_differences_from_r2']['INTERFACE_DECK_BOUNDARY'] > 0.0
+          for family,value in report['source_family_differences_from_r2'].items():
+              if family!='INTERFACE_DECK_BOUNDARY':
+                  assert value <= 1e-8, (family,value)
+          for stem in (
+              'R3_R2_BASELINE_STRIP_PERSPECTIVE','R3_R2_BASELINE_GRAZING_PERSPECTIVE','R3_R2_BASELINE_ZEBRA_PERSPECTIVE',
+              'R3-V3-BALANCED-SPAN_STRIP_PERSPECTIVE','R3-V3-BALANCED-SPAN_GRAZING_PERSPECTIVE','R3-V3-BALANCED-SPAN_ZEBRA_PERSPECTIVE'):
+              assert (root/f'{stem}.png').exists(), stem
+          print('R3_FIXED_RIG_VISUAL_DIAGNOSTICS_PASS_REVIEW_REQUIRED')
+          PY
+
+      - name: Upload R3 diagnostic artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r3-interface-${{ github.run_id }}
+          path: |
+            out/G1_R3/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R3 adds an interior interface-transition fairness gate derived from the existing broad-surface normal-turn thresholds.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only INTERFACE_DECK_BOUNDARY Source relations are varied; R2 interface depth stays 12 mm, TOP_MERIDIAN stays locked, and mesh-local correction remains forbidden.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only Machine+Fairness PASS variants are rendered through the shared Blender Surface System v1.20.0 under the fixed HERO camera and Strip/Grazing/Zebra diagnostics.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Visual review remains NOT_RUN and the right/front termination defect remains open. Candidate Promotion and Canonical Promotion remain blocked.' >> "$GITHUB_STEP_SUMMARY"

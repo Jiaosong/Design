@@ -1,0 +1,73 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r2.topology-source-isolation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "decision_question": "Do the two retained reflection defects materially change when only derived execution tessellation is densified while the sparse Blender-native Working Source and relation semantics remain unchanged?",
+  "authority_state": "WORKING_SOURCE",
+  "design_state": "REVISE",
+  "candidate_promotion": "NOT_RUN",
+  "source_policy": {
+    "same_blender_native_working_source_required": true,
+    "source_edit_forbidden_during_isolation": true,
+    "mesh_local_patch_forbidden": true,
+    "derived_topology_is_authority": false
+  },
+  "topologies": {
+    "baseline": {
+      "u_rings": 56,
+      "circumferential_samples": 72
+    },
+    "dense": {
+      "u_rings": 112,
+      "circumferential_samples": 144
+    }
+  },
+  "visual_ab": {
+    "camera": "HERO_CAM",
+    "rigs": ["STRIP", "GRAZING", "ZEBRA"],
+    "same_camera_material_rig_required": true,
+    "metrics": ["mean_abs_rgb", "p95_abs_rgb", "p99_abs_rgb", "max_abs_rgb"],
+    "heuristic_bands": {
+      "topology_invariant": {
+        "mean_abs_rgb_max": 0.012,
+        "p99_abs_rgb_max": 0.12,
+        "all_rigs_required": true
+      },
+      "topology_sensitive": {
+        "mean_abs_rgb_min": 0.03,
+        "p99_abs_rgb_min": 0.25,
+        "minimum_rigs": 2
+      }
+    },
+    "threshold_role": "DIAGNOSTIC_HEURISTIC_ONLY_NOT_PROMOTION_EVIDENCE"
+  },
+  "analytic_source_probe": {
+    "u_samples": 97,
+    "theta_samples": 144,
+    "du": 0.005,
+    "dtheta_rad": 0.025,
+    "interface_rho_band": [0.45, 1.15],
+    "termination_u_band": 0.15,
+    "top_hotspots_per_zone": 8,
+    "purpose": "Directly sample the analytic source normal field independent of mesh tessellation; hotspot evidence supports routing but does not by itself prove a visual defect."
+  },
+  "classification": {
+    "allowed": [
+      "TOPOLOGY_SENSITIVE_EXECUTION_GEOMETRY_SUSPECTED",
+      "TOPOLOGY_INVARIANT_SOURCE_RELATION_SUSPECTED",
+      "INCONCLUSIVE_VISUAL_REVIEW_REQUIRED"
+    ],
+    "promotion_forbidden": true
+  },
+  "outputs": {
+    "report": "G1_R2_TOPOLOGY_SOURCE_ISOLATION.json",
+    "renders": [
+      "ISO_BASE_STRIP_PERSPECTIVE.png",
+      "ISO_DENSE_STRIP_PERSPECTIVE.png",
+      "ISO_BASE_GRAZING_PERSPECTIVE.png",
+      "ISO_DENSE_GRAZING_PERSPECTIVE.png",
+      "ISO_BASE_ZEBRA_PERSPECTIVE.png",
+      "ISO_DENSE_ZEBRA_PERSPECTIVE.png"
+    ]
+  },
+  "boundary": "This diagnostic isolates sparse Source/Relation from derived tessellation. It is not a mesh-local repair, Candidate Promotion, Canonical Promotion, ergonomic validation, Class-A surfacing, engineering CAD, manufacturing/tooling validation or Release."
+}

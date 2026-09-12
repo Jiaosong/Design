@@ -1,0 +1,52 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.2.termination-profile-convergence.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4.2_TERMINATION_PROFILE_CONVERGENCE_OWNERSHIP_PROBE",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION + termination_envelope_exponent=0.34",
+  "policy": {
+    "source_edit_forbidden": true,
+    "termination_exponent_variant_forbidden": true,
+    "mesh_generation_not_required": true,
+    "confirmed_interface_relation_locked": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "sample_u": [0.90, 0.94, 0.96, 0.97, 0.98, 0.985, 0.99, 0.995, 0.998, 0.999],
+  "normal_turn_span_u": 0.002,
+  "theta_samples": 144,
+  "profile_families": [
+    "PALM_PROFILE",
+    "THUMB_SIDE_PLAN",
+    "OPPOSITE_SIDE_PLAN",
+    "LOWER_RETURN_PROFILE"
+  ],
+  "sectors": {
+    "TOP": 0.0,
+    "THUMB": 1.5707963267948966,
+    "LOWER": 3.141592653589793,
+    "OPPOSITE": 4.71238898038469
+  },
+  "measurements": [
+    "raw_profile_amplitude",
+    "post_envelope_amplitude",
+    "post_envelope_longitudinal_derivative",
+    "relative_amplitude_to_palm",
+    "relative_ratio_longitudinal_derivative",
+    "sector_normal_turn",
+    "full_angular_hotspot_theta",
+    "grip_axis_tangent_turn"
+  ],
+  "routing_heuristics": {
+    "near_pole_u_min": 0.995,
+    "opposite_lower_quadrant_theta_min": 3.141592653589793,
+    "opposite_lower_quadrant_theta_max": 4.71238898038469,
+    "axis_primary_only_if_tangent_turn_matches_surface_hotspot": false,
+    "profile_relation_suspected_if_relative_convergence_accelerates_and_hotspot_sector_matches": true
+  },
+  "classification_options": [
+    "OPPOSITE_LOWER_PROFILE_CONVERGENCE_RELATION_SUSPECTED",
+    "GLOBAL_PROFILE_CONVERGENCE_RELATION_SUSPECTED",
+    "GRIP_AXIS_TERMINATION_TANGENT_SUSPECTED",
+    "INCONCLUSIVE_REVISE"
+  ],
+  "boundary": "R4.2 is topology-independent diagnostic ownership evidence only. It may identify the Source family/relationship to re-enter, but it does not authorize a control-point edit, mesh-local repair, Candidate Promotion or Canonical Promotion."
+}

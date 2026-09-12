@@ -1,0 +1,56 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.interface-relation-variants.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_relation": "G1_R2_RELATION_CORRECTION.json",
+  "experiment_role": "BOUNDED_SOURCE_RELATION_EXPERIMENT_NOT_AUTHORITY_PROMOTION",
+  "allowed_source_family": "INTERFACE_DECK_BOUNDARY",
+  "mesh_local_patch_allowed": false,
+  "locked_values": {
+    "u_center": 0.62,
+    "theta_center": "TOP_MERIDIAN",
+    "depth_m": 0.012,
+    "blend": "QUINTIC_SMOOTHERSTEP"
+  },
+  "baseline": {
+    "variant_id": "R3-V0-R2-BASELINE",
+    "u_halfspan": 0.18,
+    "theta_halfspan_rad": 0.76,
+    "core_fraction": 0.50,
+    "depth_m": 0.012
+  },
+  "variants": [
+    {
+      "variant_id": "R3-V1-ANGULAR-SOFTEN",
+      "design_question": "Does a moderate angular widening plus a smaller core reduce the right-transition compression while preserving the 12 mm basin depth?",
+      "source_overrides": {
+        "u_halfspan": 0.24,
+        "theta_halfspan_rad": 1.08,
+        "core_fraction": 0.30,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3-V2-TRANSITION-FIELD",
+      "design_question": "Does a wider angular field and smaller core remove the remaining interior spike without changing basin depth?",
+      "source_overrides": {
+        "u_halfspan": 0.22,
+        "theta_halfspan_rad": 1.16,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3-V3-BALANCED-SPAN",
+      "design_question": "Does combining the wider angular field with a longer longitudinal transition clear the fairness gate while retaining basin hierarchy and depth?",
+      "source_overrides": {
+        "u_halfspan": 0.24,
+        "theta_halfspan_rad": 1.16,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    }
+  ],
+  "batch_logic": "Each direction is an independent professional Source-relation variant. The sequence is intentionally bounded and monotonic; it is not a thumbnail sketch sheet and does not add new source families or hidden degrees of freedom.",
+  "termination_policy": "RIGHT_FRONT_TERMINATION remains open and unchanged. No termination-source edit is authorized by this batch.",
+  "boundary": "Variants are reversible R3 Working Source experiments only. Machine or visual success does not promote Candidate or Canonical authority."
+}

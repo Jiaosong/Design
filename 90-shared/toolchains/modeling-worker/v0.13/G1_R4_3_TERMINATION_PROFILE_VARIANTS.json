@@ -1,0 +1,49 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.3.termination-profile-variants.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION + termination_envelope_exponent=0.34",
+  "predecessor_decision": "G1_R4_2_TERMINATION_PROFILE_OWNERSHIP_DECISION_2026-08-14.md",
+  "experiment_role": "BOUNDED_NATIVE_OPPOSITE_LOWER_TERMINAL_PROFILE_RELATION_BATCH_NOT_PROMOTION",
+  "active_control_index": 4,
+  "baseline": {
+    "OPPOSITE_SIDE_PLAN": 0.034,
+    "LOWER_RETURN_PROFILE": 0.050
+  },
+  "variants": [
+    {
+      "variant_id": "R4.3-A-OPPOSITE-PRIMARY",
+      "design_question": "Does a minimal correction to the primary ownership family reduce opposite-side catch-up without changing the lower-return relation?",
+      "controls": {
+        "OPPOSITE_SIDE_PLAN": 0.038,
+        "LOWER_RETURN_PROFILE": 0.050
+      }
+    },
+    {
+      "variant_id": "R4.3-B-BALANCED-QUADRANT",
+      "design_question": "Does a moderate OPPOSITE correction plus a small LOWER coordination clean the opposite-lower convergence while preserving handheld-wrap hierarchy?",
+      "controls": {
+        "OPPOSITE_SIDE_PLAN": 0.042,
+        "LOWER_RETURN_PROFILE": 0.052
+      }
+    },
+    {
+      "variant_id": "R4.3-C-DEFINED-QUADRANT",
+      "design_question": "Does a stronger coordinated correction further clean the termination, or does it begin to overfill / reverse the side hierarchy?",
+      "controls": {
+        "OPPOSITE_SIDE_PLAN": 0.046,
+        "LOWER_RETURN_PROFILE": 0.054
+      }
+    }
+  ],
+  "locked_relations": {
+    "GRIP_AXIS": "UNCHANGED",
+    "PALM_PROFILE": "UNCHANGED",
+    "THUMB_SIDE_PLAN": "UNCHANGED",
+    "profile_endpoint_control_index_5": 0.003,
+    "termination_envelope_exponent": 0.34,
+    "interface_relation": "G1_R3_CONFIRMED_INTERFACE_RELATION.json",
+    "mesh_local_edit": "FORBIDDEN"
+  },
+  "selection_policy": "Existing Machine QA + exact native Source readback/restore + R4.2 sector ownership probe → render every passing professional variant under fixed local Strip/Grazing/Zebra → visual decision. No lowest-turn automatic winner.",
+  "boundary": "R4.3 modifies only existing Blender-native profile control points identified by R4.2. All meshes remain derived; Candidate/Canonical Promotion remains blocked."
+}

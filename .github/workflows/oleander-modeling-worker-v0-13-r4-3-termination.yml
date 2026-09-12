@@ -1,0 +1,140 @@
+name: OLEANDER Modeling Worker v0.13 R4.3 Termination Profile Batch
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r4-3-termination.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r4-3-terminal-profile:
+    name: G1 R4.3 Opposite/Lower Terminal Profile → Professional Batch
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R4.3 contracts
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_2_profile_convergence_probe.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_3_profile_variants.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_3_TERMINATION_PROFILE_VARIANTS.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          v=json.loads(Path('90-shared/toolchains/modeling-worker/v0.13/G1_R4_3_TERMINATION_PROFILE_VARIANTS.json').read_text())
+          assert v['active_control_index']==4
+          assert v['baseline']=={'OPPOSITE_SIDE_PLAN':0.034,'LOWER_RETURN_PROFILE':0.050}
+          assert [row['controls'] for row in v['variants']]==[
+            {'OPPOSITE_SIDE_PLAN':0.038,'LOWER_RETURN_PROFILE':0.050},
+            {'OPPOSITE_SIDE_PLAN':0.042,'LOWER_RETURN_PROFILE':0.052},
+            {'OPPOSITE_SIDE_PLAN':0.046,'LOWER_RETURN_PROFILE':0.054}]
+          assert v['locked_relations']['termination_envelope_exponent']==0.34
+          assert v['locked_relations']['profile_endpoint_control_index_5']==0.003
+          assert v['locked_relations']['mesh_local_edit']=='FORBIDDEN'
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build Blender-native R2 source
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 512
+
+      - name: Execute native R4.3 profile relation batch
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_3"; mkdir -p "$OUT/60_OUTPUTS/DIAGNOSTIC"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_3_profile_variants.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmed-interface 90-shared/toolchains/modeling-worker/v0.13/G1_R3_CONFIRMED_INTERFACE_RELATION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --r4-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_TERMINATION_ISOLATION_CONTRACT.json \
+            --r4-2-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R4_2_TERMINATION_PROFILE_CONVERGENCE_CONTRACT.json \
+            --variants 90-shared/toolchains/modeling-worker/v0.13/G1_R4_3_TERMINATION_PROFILE_VARIANTS.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 640
+
+      - name: Verify native profile ownership and visual routing
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R4_3/60_OUTPUTS/DIAGNOSTIC')
+          r=json.loads((root/'G1_R4_3_TERMINATION_PROFILE_REPORT.json').read_text())
+          assert r['status']=='R4_3_TERMINAL_PROFILE_VARIANTS_RENDERED_VISUAL_DECISION_REQUIRED', r['status']
+          assert all(r['checks'].values()), r['checks']
+          assert r['interface_relation_state']=='CONFIRMED_LOCKED'
+          assert r['termination_exponent_state']=='0.34_NATIVE_LOCKED'
+          assert r['candidate_promotion']=='NOT_RUN'
+          assert len(r['variants'])==3
+          assert r['visual_candidates']==[row['variant_id'] for row in r['variants']]
+          expected_changes=[['OPPOSITE_SIDE_PLAN'],['OPPOSITE_SIDE_PLAN','LOWER_RETURN_PROFILE'],['OPPOSITE_SIDE_PLAN','LOWER_RETURN_PROFILE']]
+          for row, expected in zip(r['variants'], expected_changes):
+              assert row['machine']['pass'] is True, row
+              assert all(row['checks'].values()), row['checks']
+              changed=[k for k,v in row['source_family_differences_from_baseline'].items() if v>1e-8]
+              assert changed==expected, (row['variant_id'],changed)
+              assert set(row['renders'])=={'STRIP','GRAZING','ZEBRA'}
+              for name in row['renders'].values():
+                  assert (root/name).exists(), name
+          assert r['visual_decision']=='NOT_RUN_REQUIRES_TERMINATION_STRIP_GRAZING_ZEBRA_REVIEW'
+          print('R4_3_NATIVE_PROFILE_BATCH_PASS_VISUAL_DECISION_REQUIRED')
+          PY
+
+      - name: Upload R4.3 termination profile artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r4-3-${{ github.run_id }}
+          path: |
+            out/G1_R4_3/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R4.3 edits only the existing native OPPOSITE_SIDE_PLAN / LOWER_RETURN_PROFILE penultimate control relationship identified by R4.2.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'GRIP_AXIS, PALM, THUMB, raw endpoint controls, exponent 0.34 and the confirmed interface relation remain locked.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Every passing professional direction is rendered independently under fixed termination Strip/Grazing/Zebra.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Visual judgment is required; no metric or CI pass authorizes Promotion.' >> "$GITHUB_STEP_SUMMARY"

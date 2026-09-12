@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "authority": "WORKING_SURFACE_SOURCE",
+  "source_strategy": "SPARSE_DEGREE5_BEZIER_PRIMARY_CURVES_PLUS_DERIVED_EXECUTION_MESH",
+  "units": "m",
+  "ownership": {
+    "GRIP_AXIS": {
+      "role": "3D longitudinal centerline authority",
+      "editable": true,
+      "control_points": [[0.0,0.0,0.050],[0.038,-0.002,0.053],[0.076,-0.004,0.057],[0.114,-0.002,0.058],[0.152,0.001,0.055],[0.190,0.0,0.050]]
+    },
+    "PALM_PROFILE": {
+      "role": "upper palm height authority",
+      "editable": true,
+      "control_values": [0.00232,0.04640,0.06960,0.06960,0.04640,0.00232]
+    },
+    "THUMB_SIDE_PLAN": {
+      "role": "positive-side palm breadth / ergonomic bias authority",
+      "editable": true,
+      "control_values": [0.00318,0.04240,0.05830,0.05512,0.03816,0.00318]
+    },
+    "OPPOSITE_SIDE_PLAN": {
+      "role": "negative-side counter-breadth authority",
+      "editable": true,
+      "control_values": [0.00318,0.03392,0.04240,0.04134,0.03180,0.00318]
+    },
+    "INTERFACE_DECK_BOUNDARY": {
+      "role": "top interface inset / hard-to-soft transition authority",
+      "editable": true,
+      "u_center": 0.58,
+      "u_halfspan": 0.34,
+      "angular_threshold_cos": 0.30,
+      "depth_m": 0.009,
+      "thumb_bias": 0.18,
+      "blend": "QUINTIC_SMOOTHERSTEP"
+    },
+    "LOWER_RETURN_PROFILE": {
+      "role": "lower return and non-automotive wrap termination authority",
+      "editable": true,
+      "control_values": [0.00232,0.04176,0.06496,0.06728,0.04640,0.00232],
+      "termination_envelope": "sin(pi*u)^0.55"
+    }
+  },
+  "relationship_priorities": [
+    {"rank":1,"relation":"ERGONOMIC_PALM_VOLUME > INTERFACE_DECK > SECONDARY_LOWER_RETURN","class":"HARD"},
+    {"rank":2,"relation":"THUMB_SIDE_BIAS > OPPOSITE_SIDE_BIAS while global volume stays coherent","class":"HARD"},
+    {"rank":3,"relation":"INTERFACE_DECK remains inset and continuously blended into the palm volume","class":"HARD"},
+    {"rank":4,"relation":"CONTROL_EDGE decays through a quintic hard-to-soft transition without a spike","class":"HARD"},
+    {"rank":5,"relation":"LOWER_RETURN closes through a symmetric-in-u wrap envelope rather than an automotive front/rear closure grammar","class":"HARD"},
+    {"rank":6,"relation":"GRIP_AXIS may carry low-frequency lateral/vertical bias without overriding palm hierarchy","class":"SOFT"}
+  ],
+  "derived_execution": {
+    "editable_authority": false,
+    "u_rings": 56,
+    "circumferential_samples": 72,
+    "topology": "two poles + circumferential rings; triangles only at wrap poles; quads elsewhere"
+  },
+  "machine_thresholds": {
+    "overall_length_target_m": 0.190,
+    "overall_length_tolerance_m": 0.001,
+    "overall_width_target_m": 0.085,
+    "overall_width_tolerance_m": 0.006,
+    "overall_height_target_m": 0.105,
+    "overall_height_tolerance_m": 0.006,
+    "min_thumb_opposite_asymmetry_m": 0.004,
+    "min_interface_inset_depth_m": 0.006,
+    "max_interface_inset_depth_m": 0.012,
+    "max_longitudinal_normal_delta_deg_per_0_01u": 4.0,
+    "max_circumferential_normal_delta_deg_per_0_05rad": 8.0,
+    "max_sparse_authority_scalar_count": 48,
+    "min_revision_surface_displacement_m": 0.002,
+    "max_revision_surface_displacement_m": 0.010
+  },
+  "revision_test": {
+    "revision_id": "G1-R1-THUMB-SIDE-RELATION",
+    "allowed_source_family": "THUMB_SIDE_PLAN",
+    "operation": "multiply interior THUMB_SIDE_PLAN influence by 1 + 0.12*sin(pi*u)^2",
+    "mesh_local_patch_allowed": false,
+    "expected_relation": "thumb-side ergonomic bias becomes more legible while opposite-side, deck ownership and lower-return authority remain unchanged"
+  },
+  "boundary": "Benchmark-only working source. Not engineering CAD, manufacturing geometry, Class-A, final product styling, Release, or Canonical Authority."
+}

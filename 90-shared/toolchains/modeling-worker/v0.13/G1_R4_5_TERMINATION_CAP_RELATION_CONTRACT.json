@@ -1,0 +1,77 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.5.termination-cap-relation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_5_EXPLICIT_SPARSE_TERMINATION_CAP_RELATION",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION",
+  "source_owner_family": "LOWER_RETURN_PROFILE",
+  "relation_id": "TERMINATION_CAP_RELATION",
+  "relation_vocabulary": {
+    "numeric_dof_count": 1,
+    "numeric_property": "termination_cap_onset_u",
+    "law": "C2_MATCHED_ELLIPTIC_PARABOLOID_POLE",
+    "semantics": "EXPLICIT_SPARSE_TERMINATION_CAP_RELATION",
+    "endpoint_section": "SYMMETRIC_ELLIPSE_DERIVED_FROM_ONSET_MEANS",
+    "body_side": "Preserve the confirmed body/tail evaluator exactly for u <= termination_cap_onset_u.",
+    "cap_side": "At onset, inherit radial position, first derivative and second derivative from the existing body-tail relation. Convert the asymmetric onset section into a symmetric ellipse derived from onset pair means while radial magnitude closes with sqrt(1-tau), yielding a regular elliptic-paraboloid pole rather than distributed arbitrary-section collapse.",
+    "endpoint": "u=1 remains the existing GRIP_AXIS endpoint; no new endpoint point authority is introduced."
+  },
+  "variants": {
+    "CAP_A_0_88": {"termination_cap_onset_u": 0.88},
+    "CAP_B_0_89": {"termination_cap_onset_u": 0.89},
+    "CAP_C_0_90": {"termination_cap_onset_u": 0.90},
+    "CAP_D_0_92": {"termination_cap_onset_u": 0.92}
+  },
+  "policy": {
+    "confirmed_interface_relation_locked": true,
+    "confirmed_interface_outer_u_max": 0.88,
+    "termination_envelope_exponent_locked": 0.34,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "seventh_source_family_forbidden": true,
+    "mesh_local_cosmetic_patch_forbidden": true,
+    "dense_control_field_forbidden": true,
+    "max_sparse_authority_scalar_count_with_cap_relation": 49,
+    "blender_native_source_binding_required": true,
+    "roundtrip_required": true,
+    "shared_surface_system_runtime_required": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "machine_gate": {
+    "theta_samples": 72,
+    "onset_probe_epsilon_u": 0.0001,
+    "onset_position_continuity_max_m": 0.00001,
+    "onset_normal_continuity_max_deg": 0.5,
+    "interface_regression_u_samples": [0.38,0.50,0.62,0.74,0.86,0.879],
+    "interface_regression_theta_samples": 36,
+    "interface_regression_max_displacement_m": 1e-9,
+    "cap_turn_span_u": 0.002,
+    "cap_tau_samples": [0.08,0.16,0.24,0.32,0.40,0.48,0.56,0.64,0.72,0.80,0.88,0.94,0.975,0.99],
+    "cap_region_max_normal_turn_deg": 4.0,
+    "near_pole_u_min": 0.995,
+    "near_pole_samples": [0.995,0.996,0.997,0.998,0.999],
+    "near_pole_max_normal_turn_deg": 2.0,
+    "radial_monotonic_samples": 64,
+    "radial_monotonic_tolerance_m": 1e-7,
+    "closure_position_tolerance_m": 1e-10,
+    "minimum_cap_aware_extra_u_rings": 9
+  },
+  "derived_execution_sampling": {
+    "rule": "Existing base u-rings plus nine deterministic cap-local rings at tau=[0.25,0.50,0.70,0.82,0.90,0.95,0.975,0.99,0.995].",
+    "authority": "DERIVED_EXECUTION_NOT_AUTHORITY"
+  },
+  "local_view": {
+    "name": "R4_5_TERMINATION_CAP_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "target": "GRIP_AXIS_CENTER_AT_TARGET_U",
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "fixed_rigs": ["STRIP","GRAZING","ZEBRA"],
+  "decision_options": [
+    "CAP_RELATION_MACHINE_AND_VISUAL_PASS_READY_FOR_CONFIRMATION",
+    "CAP_RELATION_MACHINE_PASS_VISUAL_REVISE",
+    "CAP_RELATION_MACHINE_FAIL_REVISE",
+    "CAP_RELATION_INSUFFICIENT_REENTER_CONSTRUCTION"
+  ],
+  "boundary": "R4.5 is Working Source exploration only. A Machine/Visual PASS may justify a later explicit confirmation receipt, but does not itself execute Candidate Promotion, establish Candidate/Canonical Authority, prove Class-A, engineering CAD, manufacturing/tooling, ergonomic comfort, final CMF or Release."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.termination-isolation.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_RIGHT_FRONT_TERMINATION_ISOLATION",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION",
+  "target_defect": "RIGHT / FRONT TERMINATION — persistent pinch / crease-like convergence and Zebra compression",
+  "policy": {
+    "source_edit_during_isolation_forbidden": true,
+    "interface_relation_locked_to_confirmed_r3": true,
+    "mesh_local_cosmetic_patch_forbidden": true,
+    "derived_topology_variants_are_diagnostic_only": true,
+    "shared_surface_system_runtime_required": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "topology_variants": {
+    "baseline": {
+      "u_rings": 56,
+      "circumferential_samples": 72,
+      "closure": "LAST_UNIFORM_RING_TO_SINGLE_POLE_FAN"
+    },
+    "dense": {
+      "u_rings": 112,
+      "circumferential_samples": 144,
+      "closure": "LAST_UNIFORM_RING_TO_SINGLE_POLE_FAN"
+    },
+    "pole_refined": {
+      "base_u_rings": 56,
+      "circumferential_samples": 72,
+      "extra_u_rings": [0.99, 0.995, 0.998, 0.9995],
+      "closure": "ANALYTIC_EXTRA_RINGS_THEN_SINGLE_POLE_FAN"
+    }
+  },
+  "source_space_probe": {
+    "theta_samples": 144,
+    "normal_turn_span_u": 0.002,
+    "sample_u": [0.90, 0.94, 0.96, 0.97, 0.98, 0.985, 0.99, 0.995, 0.998, 0.999],
+    "report_cross_section_radius": true,
+    "report_envelope_value": true,
+    "report_max_normal_turn": true
+  },
+  "local_view": {
+    "name": "R4_TERMINATION_CLOSE_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "target": "GRIP_AXIS_CENTER_AT_TARGET_U",
+    "offset_from_target_m": [0.16, -0.20, 0.12]
+  },
+  "fixed_rigs": ["STRIP", "GRAZING", "ZEBRA"],
+  "decision_question": "Does the right/front termination diagnostic materially reorganize when only endpoint execution sampling changes while the exact same confirmed Working Source is retained?",
+  "classification_options": [
+    "TERMINATION_TOPOLOGY_SENSITIVE_EXECUTION_GEOMETRY_SUSPECTED",
+    "TERMINATION_SOURCE_ENVELOPE_RELATION_SUSPECTED",
+    "TERMINATION_MIXED_SOURCE_AND_POLE_EXECUTION_SUSPECTED",
+    "INCONCLUSIVE_REVISE"
+  ],
+  "boundary": "R4 isolation may route the defect to Source relation, pole execution, or a mixed cause. It does not authorize a mesh-local repair, Candidate Promotion, Canonical Promotion, Class-A, engineering CAD, manufacturing or Release."
+}

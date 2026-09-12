@@ -1,0 +1,132 @@
+name: OLEANDER Modeling Worker v0.13 R3.3 Interface Confirmation
+
+on:
+  pull_request:
+    paths:
+      - '90-shared/toolchains/modeling-worker/v0.13/**'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/f1_design_validation_runtime.py'
+      - '90-shared/toolchains/blender-surface-system/v1.20.0/CMF_PRESET_CONTRACT_v1.20.0.json'
+      - '.github/workflows/oleander-modeling-worker-v0-13-r3-3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g1-r3-3-interface-confirmation:
+    name: G1 R3.3 Exact B → Global + Local Interface Confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compile and validate R3.3 confirmation contract
+        run: |
+          set -euo pipefail
+          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r3_3_confirmation.py
+          python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R3_3_INTERFACE_CONFIRMATION_CONTRACT.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path('90-shared/toolchains/modeling-worker/v0.13/G1_R3_3_INTERFACE_CONFIRMATION_CONTRACT.json').read_text())
+          assert c['selected_direction']=='R3.2-B-CORE-RECOVERY'
+          assert c['source_relation']=={
+              'u_center':0.62,'u_halfspan':0.26,'theta_center':'TOP_MERIDIAN',
+              'theta_halfspan_rad':1.06,'core_fraction':0.29,'depth_m':0.012,
+              'blend':'QUINTIC_SMOOTHERSTEP'}
+          assert c['policy']['parameter_tuning_in_confirmation_forbidden'] is True
+          assert c['policy']['mesh_local_patch_forbidden'] is True
+          assert c['policy']['candidate_promotion']=='NOT_RUN'
+          PY
+
+      - name: Install Blender runtime dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1
+
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+
+      - name: Build R2 Blender-native Working Source reference
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R2"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            --background \
+            --python-exit-code 5 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_entry.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --out "$OUT" \
+            --resolution 512
+
+      - name: Execute exact B global and local confirmation
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R3_3"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$GITHUB_WORKSPACE/out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend" \
+            --background \
+            --python-exit-code 7 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r3_3_confirmation.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --execution-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_EXECUTION_CONTRACT.json \
+            --binding 90-shared/toolchains/modeling-worker/v0.13/G1_R2_BLENDER_SURFACE_BINDING.json \
+            --fairness-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R3_INTERFACE_FAIRNESS_CONTRACT.json \
+            --confirmation-contract 90-shared/toolchains/modeling-worker/v0.13/G1_R3_3_INTERFACE_CONFIRMATION_CONTRACT.json \
+            --out "$OUT/60_OUTPUTS/DIAGNOSTIC" \
+            --resolution 768
+
+      - name: Verify R3.3 confirmation authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('out/G1_R3_3/60_OUTPUTS/DIAGNOSTIC')
+          report=json.loads((root/'G1_R3_3_INTERFACE_CONFIRMATION_REPORT.json').read_text())
+          assert report['status']=='R3_3_EXACT_B_CONFIRMATION_RENDERED_VISUAL_DECISION_REQUIRED', report['status']
+          assert all(report['checks'].values()), report['checks']
+          assert report['selected_direction']=='R3.2-B-CORE-RECOVERY'
+          assert report['machine']['pass'] is True
+          assert report['interior_fairness']['pass'] is True
+          assert report['candidate_promotion']=='NOT_RUN'
+          assert report['visual_decision']=='NOT_RUN_REQUIRES_GLOBAL_AND_LOCAL_REVIEW'
+          assert report['termination_state']=='OPEN_SEPARATE_NOT_PART_OF_INTERFACE_CONFIRMATION'
+          assert report['local_camera']['name']=='R3_3_INTERFACE_CLOSE_CAM'
+          assert set(report['image_difference_metrics'])=={'hero','interface_close'}
+          for group in report['renders'].values():
+              assert set(group)=={'STRIP','GRAZING','ZEBRA'}
+              for name in group.values():
+                  assert (root/name).exists(), name
+          print('R3_3_EXACT_B_CONFIRMATION_EXECUTION_PASS_VISUAL_DECISION_REQUIRED')
+          PY
+
+      - name: Upload R3.3 confirmation artifact
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: oleander-modeling-worker-v0-13-g1-r3-3-${{ github.run_id }}
+          path: |
+            out/G1_R3_3/
+            out/G1_R2/OLEANDER_G1_R2_HandheldShell__BLENDER_EXECUTION__v0_13.blend
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Boundary
+        run: |
+          echo 'R3.3 confirms the exact R3.2-B relation without tuning.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Global HERO and local interface views use shared Surface System camera/render APIs under fixed Strip/Grazing/Zebra diagnostics.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The termination defect is explicitly excluded from this interface confirmation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Execution success does not authorize Candidate or Canonical Promotion.' >> "$GITHUB_STEP_SUMMARY"

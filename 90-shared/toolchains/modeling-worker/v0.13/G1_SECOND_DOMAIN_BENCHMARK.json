@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "benchmark_class": "NON_AUTOMOTIVE_FREEFORM_PRODUCT_SHELL",
+  "name": "Ergonomic Handheld Freeform Shell",
+  "purpose": "Test transfer of the v0.12 relationship-driven freeform method outside automotive form grammar.",
+  "claims": {"benchmark_only": true, "engineering": false, "production": false},
+  "method_invariants": [
+    "Relationship Graph first-class",
+    "Primary Curves before execution mesh",
+    "Sparse editable Surface Source",
+    "Surface Source distinct from execution mesh",
+    "Position PASS != fairness PASS",
+    "Upstream relation revision before local mesh patch",
+    "Machine / Visual / Project QA separate"
+  ],
+  "design_intent": "Compact handheld object with a dominant ergonomic palm volume leaning toward the grip axis and a quieter controlled interface-deck inset.",
+  "avoid": [
+    "automotive shoulder/cabin grammar",
+    "front/rear vehicle closure analogues",
+    "dense local sculpting as design authority"
+  ],
+  "relationships": [
+    "ERGONOMIC_PALM_VOLUME > INTERFACE_DECK > SECONDARY_LOWER_RETURN",
+    "PALM_VOLUME diagonally biases toward GRIP_AXIS",
+    "INTERFACE_DECK stays inset without becoming a disconnected patch",
+    "CONTROL_EDGE decays into low-frequency body curvature without a spike",
+    "THUMB_SIDE_BIAS > OPPOSITE_SIDE_BIAS while global volume stays coherent",
+    "LOWER_RETURN closes through a non-automotive wrap termination"
+  ],
+  "hard_constraints": {
+    "overall_length_m": 0.19,
+    "overall_width_m": 0.085,
+    "overall_height_m": 0.105,
+    "support_plane_z_m": 0.0,
+    "interface_opening_required": true,
+    "asymmetry_required": true,
+    "hard_to_soft_transition_required": true,
+    "non_automotive_termination_required": true
+  },
+  "required_source_families": [
+    "GRIP_AXIS",
+    "PALM_PROFILE",
+    "THUMB_SIDE_PLAN",
+    "OPPOSITE_SIDE_PLAN",
+    "INTERFACE_DECK_BOUNDARY",
+    "LOWER_RETURN_PROFILE"
+  ],
+  "candidate_requirements": {
+    "machine_qa": "PASS",
+    "human_visual_qa": "PASS",
+    "human_project_qa": "PASS",
+    "upstream_relation_revision_demo": "PASS",
+    "editable_surface_source": true,
+    "mesh_local_patch_as_primary_fix": false
+  }
+}

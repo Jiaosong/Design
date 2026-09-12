@@ -1,0 +1,82 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.4.termination-construction-sufficiency.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "stage": "R4_4_TERMINATION_CONSTRUCTION_SUFFICIENCY_ISOLATION",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION",
+  "target_defect": "RIGHT / FRONT TERMINATION — persistent pinch / crease-like convergence and Zebra compression",
+  "prior_exclusions": {
+    "derived_topology_density": "REJECTED_BY_R4",
+    "pole_refined_sampling": "REJECTED_BY_R4",
+    "shared_envelope_exponent_micro_tuning": "REJECTED_BY_R4_1",
+    "bounded_opposite_lower_penultimate_profile_relation": "REJECTED_BY_R4_3"
+  },
+  "policy": {
+    "authoritative_source_edit_forbidden": true,
+    "confirmed_interface_relation_locked": true,
+    "termination_envelope_exponent_locked": 0.34,
+    "profile_control_edit_forbidden": true,
+    "grip_axis_control_edit_forbidden": true,
+    "counterfactual_geometry_is_derived_diagnostic_only": true,
+    "mesh_local_cosmetic_patch_forbidden": true,
+    "shared_surface_system_runtime_required": true,
+    "candidate_promotion": "NOT_RUN"
+  },
+  "analytic_probe": {
+    "theta_samples": 144,
+    "normal_turn_span_u": 0.002,
+    "sample_u": [0.96,0.97,0.98,0.99,0.995,0.998,0.999],
+    "near_pole_u_min": 0.995,
+    "pre_cap_u_max": 0.98,
+    "diagnostic_intervention_start_u": 0.94,
+    "direct_vs_differential_control_max_error_deg": 0.5
+  },
+  "counterfactuals": {
+    "BASELINE": {
+      "description": "Current confirmed Working Source construction."
+    },
+    "AXIS_TANGENT_NEUTRAL": {
+      "description": "Freeze local GRIP_AXIS tangent across each analytic turn span; visual geometry uses a C1 straight continuation after u=0.94. No Source control point is edited."
+    },
+    "CROSS_SECTION_SYMMETRY_NEUTRAL": {
+      "description": "Remove late thumb/opposite and top/lower asymmetry by pairwise mean blending after u=0.94 while retaining the shared single-pole collapse."
+    },
+    "SINGLE_POLE_COLLAPSE_NEUTRAL": {
+      "description": "Freeze the shared termination-envelope amplitude at its u=0.94 value through the diagnostic tail, then collapse only in the final non-authoritative fan from u=0.9995 to the pole."
+    },
+    "COMBINED_NEUTRAL": {
+      "description": "Apply axis-tangent neutralization, cross-section symmetry neutralization and late single-pole collapse neutralization together."
+    }
+  },
+  "visual_geometry": {
+    "base_u_rings": 112,
+    "circumferential_samples": 144,
+    "extra_u_rings": [0.94,0.96,0.97,0.98,0.99,0.995,0.998,0.999,0.9995],
+    "blend_start_u": 0.94,
+    "blend_full_u": 0.97,
+    "late_collapse_last_ring_u": 0.9995,
+    "all_variants_same_sampling_required": true
+  },
+  "routing_heuristics": {
+    "single_pole_dominant_min_reduction_fraction": 0.65,
+    "axis_or_symmetry_max_reduction_for_single_pole_dominant": 0.25,
+    "combined_min_reduction_fraction": 0.8,
+    "dominant_margin_fraction": 0.15
+  },
+  "local_view": {
+    "name": "R4_4_TERMINATION_CONSTRUCTION_CAM",
+    "lens_mm": 100.0,
+    "target_u": 0.965,
+    "target": "GRIP_AXIS_CENTER_AT_TARGET_U",
+    "offset_from_target_m": [0.16,-0.2,0.12]
+  },
+  "fixed_rigs": ["STRIP","GRAZING","ZEBRA"],
+  "classification_options": [
+    "SINGLE_POLE_COLLAPSE_CONSTRUCTION_DOMINANT_EXISTING_RELATION_SET_INSUFFICIENT",
+    "GRIP_AXIS_ENDPOINT_TANGENT_DOMINANT",
+    "CROSS_SECTION_ASYMMETRY_DOMINANT",
+    "MIXED_TERMINATION_CONSTRUCTION_INTERACTION",
+    "INCONCLUSIVE_REVISE"
+  ],
+  "decision_question": "After R4/R4.1/R4.3 excluded topology density, envelope-exponent tuning and bounded terminal-profile tuning, does the remaining right/front pinch primarily arise from GRIP_AXIS endpoint tangent, asymmetric cross-section evolution, the forced shared single-pole collapse, or their interaction?",
+  "boundary": "R4.4 uses analytic and rendered counterfactuals only. It changes no authoritative Blender-native Source relation. A structural-insufficiency classification may justify proposing an explicit sparse Source-level termination-cap relation in a later stage, but R4.4 itself cannot create/promote that relation or authorize Candidate/Canonical/Class-A/engineering/manufacturing/ergonomic/Release status."
+}

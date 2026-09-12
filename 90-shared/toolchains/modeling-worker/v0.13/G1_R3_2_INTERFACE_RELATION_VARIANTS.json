@@ -1,0 +1,58 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r3.2.interface-relation-variants.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_relation": "G1_R2_RELATION_CORRECTION.json",
+  "predecessor_visual_decision": "G1_R3_1_VISUAL_DECISION_2026-08-14.md",
+  "experiment_role": "ANGULAR_FIELD_CORE_FRACTION_RELATION_SEARCH_NOT_AUTHORITY_PROMOTION",
+  "allowed_source_family": "INTERFACE_DECK_BOUNDARY",
+  "mesh_local_patch_allowed": false,
+  "locked_values": {
+    "u_center": 0.62,
+    "theta_center": "TOP_MERIDIAN",
+    "depth_m": 0.012,
+    "blend": "QUINTIC_SMOOTHERSTEP"
+  },
+  "baseline": {
+    "variant_id": "R3.2-R2-BASELINE",
+    "u_halfspan": 0.18,
+    "theta_halfspan_rad": 0.76,
+    "core_fraction": 0.50,
+    "depth_m": 0.012
+  },
+  "variants": [
+    {
+      "variant_id": "R3.2-A-COMPACT-ANGULAR",
+      "design_question": "Can a more compact angular field restore local basin definition while the longer transition annulus still clears the fairness gate?",
+      "source_overrides": {
+        "u_halfspan": 0.25,
+        "theta_halfspan_rad": 1.04,
+        "core_fraction": 0.25,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3.2-B-CORE-RECOVERY",
+      "design_question": "Can recovering core extent improve the interface-basin reading without recreating the R2 reflection compression?",
+      "source_overrides": {
+        "u_halfspan": 0.26,
+        "theta_halfspan_rad": 1.06,
+        "core_fraction": 0.29,
+        "depth_m": 0.012
+      }
+    },
+    {
+      "variant_id": "R3.2-C-DEFINED-CORE",
+      "design_question": "Can a larger core recover stronger basin definition while staying inside the existing Machine height gate and the working fairness gate?",
+      "source_overrides": {
+        "u_halfspan": 0.26,
+        "theta_halfspan_rad": 1.09,
+        "core_fraction": 0.30,
+        "depth_m": 0.012
+      }
+    }
+  ],
+  "selection_policy": "FAIRNESS_GATE_FIRST; render all passing professional relation directions; visual hierarchy decides among passing variants",
+  "batch_logic": "Three independent source-relation directions. A tests compact angular footprint, B recovers core definition, C pushes core recovery further without crossing the existing height gate. This is not a thumbnail or one-dimensional micro-tuning batch.",
+  "termination_policy": "RIGHT_FRONT_TERMINATION remains open and unchanged.",
+  "boundary": "R3.2 variants are reversible Working Source experiments only. No Machine, fairness or visual result directly promotes Candidate or Canonical authority."
+}

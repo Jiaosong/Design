@@ -1,0 +1,40 @@
+{
+  "schema": "oleander.modeling-worker.v0.13.g1.r4.1.termination-envelope-variants.v1",
+  "benchmark_id": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+  "base_working_source": "G1_R2_RELATION_CORRECTION + G1_R3_CONFIRMED_INTERFACE_RELATION",
+  "predecessor_decision": "G1_R4_TERMINATION_ISOLATION_DECISION_2026-08-14.md",
+  "experiment_role": "NATIVE_SOURCE_TERMINATION_ENVELOPE_RELATION_BATCH_NOT_AUTHORITY_PROMOTION",
+  "source_object": "OL_SRC_LOWER_RETURN_PROFILE",
+  "source_property": "termination_envelope_exponent",
+  "source_semantics": "SHARED_CROSS_SECTION_TERMINATION_ENVELOPE",
+  "baseline": {
+    "variant_id": "R4.1-V0-BASELINE-E034",
+    "termination_envelope_exponent": 0.34
+  },
+  "variants": [
+    {
+      "variant_id": "R4.1-A-E030-MINOR-SOFTEN",
+      "design_question": "Does the smallest bounded reduction from the current exponent reduce the right/front convergence while preserving the established wrap silhouette?",
+      "termination_envelope_exponent": 0.30
+    },
+    {
+      "variant_id": "R4.1-B-E026-BALANCED-SOFTEN",
+      "design_question": "Does a moderate reduction create a cleaner termination reflection field without over-inflating the cap or disturbing the confirmed interface hierarchy?",
+      "termination_envelope_exponent": 0.26
+    },
+    {
+      "variant_id": "R4.1-C-E022-STRONG-SOFTEN",
+      "design_question": "Does a stronger reduction materially improve the termination pinch, and if so does the resulting fuller wrap remain visually controlled?",
+      "termination_envelope_exponent": 0.22
+    }
+  ],
+  "locked_relations": {
+    "interface_relation": "G1_R3_CONFIRMED_INTERFACE_RELATION.json",
+    "theta_center": "TOP_MERIDIAN",
+    "interface_depth_m": 0.012,
+    "all_curve_control_points": "UNCHANGED",
+    "mesh_local_edit": "FORBIDDEN"
+  },
+  "selection_policy": "EXISTING_MACHINE_QA_PASS + native relation ownership/readback/restore PASS → render every passing variant under fixed termination Strip/Grazing/Zebra → visual decision; no lowest-metric automatic winner",
+  "boundary": "R4.1 varies one existing native Source relation only. The exponent remains Working Source, all meshes remain derived, and no Candidate/Canonical Promotion is authorized."
+}
