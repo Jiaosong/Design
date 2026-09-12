@@ -250,12 +250,64 @@ The historical 1,184-page full reconcile remains a completed historical run. The
 
 The next academic migrations should use the new two owners rather than independently inventing structure:
 
-1. `D04｜数字设计、BIM与智能建造`
-2. `D06｜公共建筑、社会基础设施与公共性`
-3. `D07｜居住研究、住房与日常生活`
-4. `D03｜气候低碳与韧性设计`
-5. `D05｜建筑经济、开发策划与全生命周期价值`
-6. `D02｜乡村建筑与地方营造`
-7. `K05｜建筑研究与实践方向地图` — navigation/IA cleanup only; do not inflate into a paper.
+1. `D06｜公共建筑、社会基础设施与公共性`
+2. `D07｜居住研究、住房与日常生活`
+3. `D03｜气候低碳与韧性设计`
+4. `D05｜建筑经济、开发策划与全生命周期价值`
+5. `D02｜乡村建筑与地方营造`
+6. `K05｜建筑研究与实践方向地图` — navigation/IA cleanup only; do not inflate into a paper.
 
 Each migration remains additive: clean Current page -> live readback -> relation VALID -> old carrier to Legacy/History -> D1 readback. Naming cleanup is a separate pass and must not be conflated with authority migration.
+
+## Phase 3 — D04 Digital Information / BIM Academic Migration
+
+`D04｜数字设计、BIM与智能建造` has completed the additive academic migration. The replacement is intentionally narrower than the old digital-architecture encyclopedia: it treats BIM/digital construction as a traceable information-management and exchange problem rather than a software catalogue.
+
+New Current knowledge object:
+
+- Page ID: `3d9b86be-5c47-81de-a512-d8bfcfbe8d13`
+- Canonical ID: `KN-ARCH-DIGITAL-INFO-001`
+- Human title: `BIM 与数字建造：信息需求、开放交换与可验证工作流`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / THEORY`
+- Trust remains `UNVERIFIED`, matching the existing Current academic carriers; `VALID` here is the reviewed relation/governance gate, not a claim that every external source is permanently verified.
+- Normal `syncPage` result: `INDEXED`, `38` chunks, `markdown_truncated=0`.
+
+### D04 Academic Quality Gate
+
+The new Current was promoted from `REVIEW` only after a real live-Notion content readback, not from local Markdown existence or HTTP success alone. The live page was checked for the required research structure and contains:
+
+- explicit Research Question and four conditional/testable theses;
+- a Method / Evidence Boundary separating current normative sources, peer-reviewed counterevidence, and OLEANDER project rules;
+- claim-level source anchors for ISO/buildingSMART version and capability statements;
+- empirical counterevidence for IFC interoperability rather than treating formal standardization as proof of implementation success;
+- explicit IDS geometry limitation, so `IDS PASS` is not laundered into whole-model/design compliance;
+- four Rival / Counterevidence sections, including native-platform, discovery-first modelling, machine-checking, and Digital-Twin alternatives;
+- a Claim–Evidence Map plus independent Applicability / Limitations;
+- strong project rules identified as `Normative rule｜OLEANDER` rather than presented as ISO facts;
+- generic G0–G9 and POE material removed from the topic-level argument and delegated to the established method owners.
+
+The Current version boundary was rechecked on 2026-09-12. The page records ISO 19650-1:2018, -2:2018 and -3:2020 as current published editions with revisions in progress; ISO 19650-5:2020 as current; ISO 7817-1:2024 for Level of Information Need; ISO 16739-1:2024 / IFC 4.3 ADD2 as the relevant current IFC boundary; IDS 1.0 and BCF 3.0 as final; and bSDD as a service rather than a standard. Time-sensitive claims are kept inside the page's explicit version boundary rather than promoted into timeless governance rules.
+
+### D04 NO LOSS / Replacement Readback
+
+Old D04 remains fully present in Notion and indexed as `57` chunks. It is now:
+
+- Canonical ID: `LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal `替代文档` relation -> `KN-ARCH-DIGITAL-INFO-001`
+- original body retained; no permanent deletion, compression, or overwrite was performed.
+
+The old page therefore remains available for policy history, prior terminology, software/case/tool material and provenance without competing with the Current reader-facing knowledge object.
+
+### Phase 3 D1 Readback
+
+After the D04 authority cutover:
+
+- Notes/D1 document rows: `1,189`
+- Active documents: `1,187`
+- Excluded documents: `2` (the same two preserved orphan empty pages)
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current row: `KN-ARCH-DIGITAL-INFO-001 / CURRENT / ACTIVE / VALID / INDEXED / 38 chunks / not truncated`
+- Old row: `LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 57 chunks / not truncated`
+
+The +1 corpus delta from the preceding `1,188 / 1,186 / 2` readback is the intended additive Current carrier, not duplicate pollution. The next academic migration is now D06.
