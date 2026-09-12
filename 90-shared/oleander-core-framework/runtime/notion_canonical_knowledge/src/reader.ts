@@ -1,4 +1,9 @@
-﻿import type { KnowledgeReaderSnapshot } from "./types";
+import type {
+  KnowledgeReaderDetail,
+  KnowledgeReaderDetailRelation,
+  KnowledgeReaderDetailSection,
+  KnowledgeReaderSnapshot,
+} from "./types";
 
 const CORE_LEVELS = new Set(["L4｜Framework", "L5｜Knowledge Object"]);
 const EVIDENCE_ROLES = new Set(["SOURCE", "EVIDENCE", "CASE"]);
@@ -22,6 +27,153 @@ function cleanedSummary(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   const compact = value.replace(/\s+/g, " ").trim();
   return compact ? compact.slice(0, 520) : undefined;
+}
+
+function optionalString(value: unknown): string | undefined {
+  return typeof value === "string" && value.length > 0 ? value : undefined;
+}
+
+function stringArray(value: unknown): string[] {
+  if (typeof value !== "string" || !value.trim()) return [];
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed.filter((entry): entry is string => typeof entry === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function removeChunkOverlap(previous: string, next: string): string {
+  const max = Math.min(previous.length, next.length, 8000);
+  for (let length = max; length >= 32; length -= 1) {
+    if (previous.slice(-length) === next.slice(0, length)) {
+      return next.slice(length).replace(/^\s+/, "");
+    }
+  }
+  return next;
+}
+
+export function mergeReaderChunks(
+  rows: Array<{ ordinal: number; heading_path: string; chunk_text: string; token_estimate: number }>,
+): KnowledgeReaderDetailSection[] {
+  const sections: KnowledgeReaderDetailSection[] = [];
+  for (const row of rows) {
+    const headingPath = row.heading_path.split(" > ").map((part) => part.trim()).filter(Boolean);
+    const headingKey = headingPath.join(" > ");
+    const previous = sections.at(-1);
+    if (previous && previous.headingPath.join(" > ") === headingKey) {
+      const delta = removeChunkOverlap(previous.text, row.chunk_text);
+      if (delta) previous.text = `${previous.text}\n\n${delta}`.trim();
+      previous.chunkOrdinals.push(row.ordinal);
+      previous.tokenEstimate += Number(row.token_estimate || 0);
+      continue;
+    }
+    sections.push({
+      key: `${row.ordinal}:${headingKey || "root"}`,
+      headingPath,
+      text: row.chunk_text.trim(),
+      chunkOrdinals: [row.ordinal],
+      tokenEstimate: Number(row.token_estimate || 0),
+    });
+  }
+  return sections;
+}
+
+function relationFromRow(
+  row: Record<string, unknown>,
+  direction: "outgoing" | "incoming",
+): KnowledgeReaderDetailRelation {
+  return {
+    direction,
+    relationType: String(row.relation_type ?? "RELATED"),
+    pageId: String(row.page_id ?? ""),
+    ...(optionalString(row.canonical_id) ? { canonicalId: String(row.canonical_id) } : {}),
+    ...(optionalString(row.title) ? { title: String(row.title) } : {}),
+    ...(optionalString(row.knowledge_role) ? { role: String(row.knowledge_role) } : {}),
+    ...(optionalString(row.content_level) ? { level: String(row.content_level) } : {}),
+    ...(optionalString(row.effective_space) ? { retrievalSpace: String(row.effective_space) } : {}),
+    ...(optionalString(row.governance_state) ? { governanceState: String(row.governance_state) } : {}),
+    ...(optionalString(row.relation_state) ? { relationState: String(row.relation_state) } : {}),
+  };
+}
+
+export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string): Promise<KnowledgeReaderDetail | null> {
+  const document = await db.prepare(`
+    SELECT page_id, canonical_id, title, notion_url, notion_last_edited_time,
+           effective_space, search_eligibility, trust_state, governance_state,
+           relation_state, content_level, knowledge_role, index_state,
+           authority_reason, markdown_truncated, unknown_block_ids_json, indexed_at
+      FROM documents
+     WHERE page_id=? AND active=1
+     LIMIT 1
+  `).bind(pageId).first<Record<string, unknown>>();
+  if (!document) return null;
+
+  const [chunksResult, outgoingResult, incomingResult] = await Promise.all([
+    db.prepare(`
+      SELECT ordinal, heading_path, chunk_text, token_estimate
+        FROM chunks
+       WHERE page_id=? AND active=1
+       ORDER BY ordinal ASC
+    `).bind(pageId).all<{ ordinal: number; heading_path: string; chunk_text: string; token_estimate: number }>(),
+    db.prepare(`
+      SELECT e.relation_type, e.target_page_id AS page_id,
+             d.canonical_id, d.title, d.knowledge_role, d.content_level,
+             d.effective_space, d.governance_state, d.relation_state
+        FROM lineage_edges e
+        LEFT JOIN documents d ON d.page_id=e.target_page_id
+       WHERE e.source_page_id=?
+       ORDER BY e.relation_type, d.title, e.target_page_id
+    `).bind(pageId).all<Record<string, unknown>>(),
+    db.prepare(`
+      SELECT e.relation_type, e.source_page_id AS page_id,
+             d.canonical_id, d.title, d.knowledge_role, d.content_level,
+             d.effective_space, d.governance_state, d.relation_state
+        FROM lineage_edges e
+        LEFT JOIN documents d ON d.page_id=e.source_page_id
+       WHERE e.target_page_id=?
+       ORDER BY e.relation_type, d.title, e.source_page_id
+    `).bind(pageId).all<Record<string, unknown>>(),
+  ]);
+
+  const chunkRows = chunksResult.results ?? [];
+  const sections = mergeReaderChunks(chunkRows);
+  const unknownBlockIds = stringArray(document.unknown_block_ids_json);
+  const markdownTruncated = Number(document.markdown_truncated ?? 0) !== 0;
+  const tokenEstimate = chunkRows.reduce((sum, row) => sum + Number(row.token_estimate || 0), 0);
+  const relations = [
+    ...(outgoingResult.results ?? []).map((row) => relationFromRow(row, "outgoing")),
+    ...(incomingResult.results ?? []).map((row) => relationFromRow(row, "incoming")),
+  ];
+
+  return {
+    version: "oleander-knowledge-reader-detail/v1",
+    generatedAt: new Date().toISOString(),
+    id: String(document.page_id),
+    title: String(document.title ?? "Untitled"),
+    ...(optionalString(document.canonical_id) ? { canonicalId: String(document.canonical_id) } : {}),
+    ...(optionalString(document.notion_url) ? { url: String(document.notion_url) } : {}),
+    ...(optionalString(document.knowledge_role) ? { role: String(document.knowledge_role) } : {}),
+    ...(optionalString(document.content_level) ? { level: String(document.content_level) } : {}),
+    ...(optionalString(document.effective_space) ? { retrievalSpace: String(document.effective_space) } : {}),
+    ...(optionalString(document.search_eligibility) ? { searchEligibility: String(document.search_eligibility) } : {}),
+    ...(optionalString(document.trust_state) ? { trustState: String(document.trust_state) } : {}),
+    ...(optionalString(document.governance_state) ? { governanceState: String(document.governance_state) } : {}),
+    ...(optionalString(document.relation_state) ? { relationState: String(document.relation_state) } : {}),
+    ...(optionalString(document.index_state) ? { indexState: String(document.index_state) } : {}),
+    ...(optionalString(document.authority_reason) ? { authorityReason: String(document.authority_reason) } : {}),
+    ...(optionalString(document.notion_last_edited_time) ? { notionLastEditedTime: String(document.notion_last_edited_time) } : {}),
+    ...(optionalString(document.indexed_at) ? { indexedAt: String(document.indexed_at) } : {}),
+    review: {
+      contentComplete: !markdownTruncated && unknownBlockIds.length === 0 && sections.length > 0,
+      markdownTruncated,
+      chunkCount: chunkRows.length,
+      tokenEstimate,
+      unknownBlockIds,
+    },
+    sections,
+    relations,
+  };
 }
 
 export async function buildKnowledgeReaderSnapshot(db: D1Database): Promise<KnowledgeReaderSnapshot> {
