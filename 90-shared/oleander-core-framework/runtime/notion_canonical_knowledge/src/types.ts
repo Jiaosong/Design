@@ -23,9 +23,12 @@ export interface IngestMessage {
   kind: "notion-page-sync";
   page_id: string;
   cause_id: string;
-  cause_type: "webhook" | "reconcile" | "manual";
+  cause_type: "webhook" | "reconcile" | "manual" | "incremental";
   event_type?: string;
   event_timestamp?: string;
+  // Ephemeral execution hint. Durable scheduler rows intentionally do not
+  // persist it; the D1 drain derives force=true only for explicit reconciles.
+  force?: boolean;
 }
 
 export type SyncTaskStatus = "PENDING" | "PROCESSING" | "RETRY" | "PROCESSED" | "BLOCKED";

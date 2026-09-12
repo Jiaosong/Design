@@ -433,24 +433,109 @@ export async function fetchCompleteMarkdown(env: Env, pageId: string): Promise<P
 }
 
 interface QueryDataSourceResponse {
-  results: Array<{ object?: string; id?: string }>;
+  results: Array<{ object?: string; id?: string; last_edited_time?: string; in_trash?: boolean }>;
   has_more: boolean;
   next_cursor: string | null;
+}
+
+export interface NotesPageRef {
+  id: string;
+  lastEditedTime: string | null;
+  inTrash: boolean;
+}
+
+export interface NotesDeltaPage {
+  pages: NotesPageRef[];
+  hasMore: boolean;
+  nextCursor: string | null;
+}
+
+export function buildNotesDeltaQueryPayload(
+  fromInclusive: string,
+  throughInclusive: string,
+  startCursor?: string | null,
+): Record<string, unknown> {
+  const payload: Record<string, unknown> = {
+    page_size: 100,
+    result_type: "page",
+    filter: {
+      and: [
+        {
+          timestamp: "last_edited_time",
+          last_edited_time: { on_or_after: fromInclusive },
+        },
+        {
+          timestamp: "last_edited_time",
+          last_edited_time: { on_or_before: throughInclusive },
+        },
+      ],
+    },
+    sorts: [{ timestamp: "last_edited_time", direction: "ascending" }],
+  };
+  if (startCursor) payload.start_cursor = startCursor;
+  return payload;
+}
+
+export async function queryNotesPagesEditedBetween(
+  env: Env,
+  fromInclusive: string,
+  throughInclusive: string,
+  startCursor?: string | null,
+): Promise<NotesDeltaPage> {
+  const result = await notionFetch<QueryDataSourceResponse>(
+    env,
+    `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}/query`,
+    {
+      method: "POST",
+      body: JSON.stringify(buildNotesDeltaQueryPayload(fromInclusive, throughInclusive, startCursor)),
+    },
+  );
+  return {
+    pages: result.results
+      .filter((item) => item.object === "page" && typeof item.id === "string")
+      .map((item) => ({
+        id: item.id as string,
+        lastEditedTime: typeof item.last_edited_time === "string" ? item.last_edited_time : null,
+        inTrash: item.in_trash === true,
+      })),
+    hasMore: result.has_more,
+    nextCursor: result.has_more ? result.next_cursor : null,
+  };
+}
+
+export async function queryNotesInventoryPage(
+  env: Env,
+  startCursor?: string | null,
+): Promise<NotesDeltaPage> {
+  const payload: Record<string, unknown> = {
+    page_size: 100,
+    result_type: "page",
+    sorts: [{ timestamp: "last_edited_time", direction: "ascending" }],
+  };
+  if (startCursor) payload.start_cursor = startCursor;
+  const result = await notionFetch<QueryDataSourceResponse>(
+    env,
+    `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}/query`,
+    { method: "POST", body: JSON.stringify(payload) },
+  );
+  return {
+    pages: result.results
+      .filter((item) => item.object === "page" && typeof item.id === "string")
+      .map((item) => ({
+        id: item.id as string,
+        lastEditedTime: typeof item.last_edited_time === "string" ? item.last_edited_time : null,
+        inTrash: item.in_trash === true,
+      })),
+    hasMore: result.has_more,
+    nextCursor: result.has_more ? result.next_cursor : null,
+  };
 }
 
 export async function* listNotesPages(env: Env): AsyncGenerator<string> {
   let cursor: string | undefined;
   do {
-    const payload: Record<string, unknown> = { page_size: 100, result_type: "page" };
-    if (cursor) payload.start_cursor = cursor;
-    const result = await notionFetch<QueryDataSourceResponse>(
-      env,
-      `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}/query`,
-      { method: "POST", body: JSON.stringify(payload) },
-    );
-    for (const item of result.results) {
-      if (item.object === "page" && item.id) yield item.id;
-    }
-    cursor = result.has_more && result.next_cursor ? result.next_cursor : undefined;
+    const result = await queryNotesInventoryPage(env, cursor);
+    for (const item of result.pages) yield item.id;
+    cursor = result.hasMore && result.nextCursor ? result.nextCursor : undefined;
   } while (cursor);
 }

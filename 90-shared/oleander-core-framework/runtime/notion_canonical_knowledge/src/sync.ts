@@ -1,8 +1,9 @@
 import { resolveAuthority } from "./authority";
 import { chunkMarkdown, normalizeMarkdownForHash } from "./chunker";
+import { INDEX_PIPELINE_REVISION } from "./config";
 import { embedTexts } from "./embedding";
 import { sha256Hex, stableStringify } from "./hash";
-import { deactivatePage, getActiveVectorIds, saveDocumentAndChunks } from "./manifest";
+import { deactivatePage, getActiveVectorIds, getDocumentSyncStates, saveDocumentAndChunks } from "./manifest";
 import { fetchCompleteMarkdown, fetchPage, NotionHttpError } from "./notion";
 import { belongsToDataSource, normalizePage } from "./normalize";
 import type { Env, IngestMessage, ManifestChunkRow, RetrievalSpace } from "./types";
@@ -27,7 +28,7 @@ function embeddingText(input: {
     .join("\n");
 }
 
-async function deleteVectors(env: Env, ids: string[]): Promise<void> {
+export async function deleteVectors(env: Env, ids: string[]): Promise<void> {
   for (let i = 0; i < ids.length; i += 1000) {
     const batch = ids.slice(i, i + 1000);
     if (batch.length) await env.KNOWLEDGE_INDEX.deleteByIds(batch);
@@ -53,15 +54,36 @@ export async function syncPage(env: Env, message: IngestMessage): Promise<{ stat
   }
 
   if (!belongsToDataSource(rawPage, env.NOTION_NOTES_DATA_SOURCE_ID)) {
-    const ids = await deactivatePage(env.MANIFEST, message.page_id, "OUTSIDE_NOTES_DATA_SOURCE");
+    const page = normalizePage(rawPage);
+    const ids = await deactivatePage(env.MANIFEST, message.page_id, "OUTSIDE_NOTES_DATA_SOURCE", {
+      lastEditedTime: page.lastEditedTime,
+      inTrash: page.inTrash,
+    });
     await deleteVectors(env, ids);
     return { status: "DEACTIVATED_OUTSIDE_NOTES", page_id: message.page_id };
   }
 
   const page = normalizePage(rawPage);
+  if (!message.force) {
+    const previous = (await getDocumentSyncStates(env.MANIFEST, [page.pageId])).get(page.pageId);
+    const previousTerminal = previous?.index_state === "INDEXED" || previous?.index_state === "INACTIVE";
+    if (
+      previous &&
+      previousTerminal &&
+      previous.markdown_truncated === 0 &&
+      previous.notion_last_edited_time === page.lastEditedTime &&
+      previous.index_revision === INDEX_PIPELINE_REVISION
+    ) {
+      return { status: "UNCHANGED", page_id: page.pageId };
+    }
+  }
   const authority = resolveAuthority(page);
   if (!authority.index || !authority.effectiveSpace) {
-    const ids = await deactivatePage(env.MANIFEST, page.pageId, authority.reason);
+    const ids = await deactivatePage(env.MANIFEST, page.pageId, authority.reason, {
+      lastEditedTime: page.lastEditedTime,
+      inTrash: page.inTrash,
+      seenAt: new Date().toISOString(),
+    });
     await deleteVectors(env, ids);
     return { status: "EXCLUDED", page_id: page.pageId };
   }
@@ -154,6 +176,7 @@ export async function syncPage(env: Env, message: IngestMessage): Promise<{ stat
     authority,
     contentHash,
     structureHash,
+    indexRevision: INDEX_PIPELINE_REVISION,
     truncated: markdownResult.truncated,
     unknownBlockIds: markdownResult.unknown_block_ids,
     chunks: manifestRows,
