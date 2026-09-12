@@ -230,8 +230,9 @@ def validate_existing_runtime_binding() -> None:
 def validate_visual_skill() -> None:
     text = VISUAL_SKILL.read_text(encoding="utf-8")
     required_phrases = [
-        "## Current design-knowledge resolution before composition",
-        "CURRENT NOTION FRAMEWORK / METHOD / PRACTICE RETRIEVAL",
+        "## Canonical design-knowledge resolution before composition",
+        "CANONICAL ID / LIVE RETRIEVAL STATE READBACK",
+        "consume it as Current authority only when the canonical runtime explicitly resolves it to `Retrieval Space=CURRENT`",
         "FW-DESIGN-VISUAL-COMM-001",
         "Dominant Field & First-read",
         "Page-role Visual Rhythm",
@@ -251,7 +252,7 @@ def validate_visual_skill() -> None:
     ]
     for phrase in required_phrases:
         if phrase not in text:
-            fail(f"visual-design missing existing-knowledge/convergence phrase: {phrase}")
+            fail(f"visual-design missing runtime-aware knowledge/convergence phrase: {phrase}")
     if "Merely naming a method in a receipt does not count as use." not in text:
         fail("visual-design must require visible application rather than method-name receipt compliance")
     if "generic `hero + equal cards + timeline`" not in text:
@@ -260,6 +261,8 @@ def validate_visual_skill() -> None:
         fail("visual-design must invoke existing CB-01 after repeated same-root-cause REVISE")
     if "changing only font size, spacing, color, corner radius, shadow" not in text:
         fail("visual-design must distinguish structural candidates from micro-parameter variants")
+    if "do not promote it from Skill wording" not in text:
+        fail("visual-design must not let Skill wording promote a fail-closed or support knowledge anchor")
 
 
 def validate_story_skill() -> None:
@@ -362,7 +365,7 @@ def main() -> None:
     validate_cases()
     print("chat-visual execution validation: PASS")
     print("ordinary Chat visual production reuses existing OLEANDER owners: ENFORCED")
-    print("Current Notion design knowledge resolves before composition lock: ENFORCED")
+    print("canonical design knowledge live state resolves before composition lock; only explicit CURRENT is Current authority: ENFORCED")
     print("reclassified repeated visual failure re-enters BENCHMARK before another MAKE when benchmark is insufficient: ENFORCED")
     print("benchmark evidence must become visible transfer rules before DIVERGE: ENFORCED")
     print("LEARN WHEN NEEDED occurs only after benchmark exposes a real capability gap and before DIVERGE: ENFORCED")
