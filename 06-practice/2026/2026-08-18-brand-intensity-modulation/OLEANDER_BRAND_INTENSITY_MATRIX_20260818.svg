@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#EFede7"/>
+<rect x="40" y="36" width="1520" height="928" rx="18" fill="#fff" stroke="#d3d0c8"/>
+<style>text{font-family:Arial,sans-serif;fill:#18201d}.h{font-size:28px;font-weight:700}.m{font-size:13px;fill:#68706c}.k{font-size:12px;font-weight:700;letter-spacing:1px;fill:#53635f}.c{font-family:'Noto Serif CJK SC',serif;font-size:30px;font-weight:700}.s{font-size:11px;fill:#5f6864}</style>
+<text x="80" y="92" class="h">OLEANDER / BRAND INTENSITY MODULATION</text>
+<text x="80" y="126" class="m">FULL · LIGHT · TRACE · OFF / one identity grammar, four attention regimes</text>
+<text x="80" y="180" class="k">C04 TRANSFER / MEDIUM STRENGTH FOLLOWS ATTENTION TASK</text>
+
+<!-- FULL -->
+<g transform="translate(80 220)">
+<rect width="340" height="300" rx="14" fill="#385653"/>
+<path d="M0 236 C66 195 130 245 198 204 S285 208 340 170" fill="none" stroke="#83b7b4" stroke-width="46"/>
+<path d="M28 56 C70 30 104 51 143 35 S203 42 228 28" fill="none" stroke="#f1f3ef" stroke-width="7"/>
+<path d="M58 76 L88 52 L118 76 L148 52 L178 76" fill="none" stroke="#ded8ce" stroke-width="3"/>
+<text x="28" y="132" class="c" fill="#fff">清江石书</text>
+<text x="28" y="158" class="s" fill="#eef2ef">QINGJIANG STONE BOOK</text>
+<text x="24" y="278" class="s" fill="#fff">FULL / COVER · OPENING · COMMUNICATION</text>
+</g>
+
+<!-- LIGHT -->
+<g transform="translate(455 220)">
+<rect width="340" height="300" rx="14" fill="#dfe7e3"/>
+<path d="M0 236 C66 195 130 245 198 204 S285 208 340 170" fill="none" stroke="#83b7b4" stroke-width="46"/>
+<text x="24" y="42" font-family="Noto Serif CJK SC,serif" font-size="19" font-weight="700">清江石书</text>
+<path d="M24 56 C54 42 78 52 106 45 S150 48 176 40" fill="none" stroke="#4f7d78" stroke-width="4"/>
+<rect x="24" y="84" width="292" height="62" rx="8" fill="#fff" fill-opacity=".9"/>
+<text x="40" y="110" font-size="11" font-weight="700">ROUTE / RETURN FIRST</text>
+<text x="40" y="132" font-size="10" fill="#68706c">Identity confirms context; task owns first-read.</text>
+<text x="24" y="278" class="s">LIGHT / APP · MAP · CONTENT</text>
+</g>
+
+<!-- TRACE -->
+<g transform="translate(830 220)">
+<rect width="340" height="300" rx="14" fill="#748c84"/>
+<path d="M0 236 C66 195 130 245 198 204 S285 208 340 170" fill="none" stroke="#83b7b4" stroke-width="46"/>
+<path d="M0 220 L70 158 L130 214 L205 142 L270 212 L340 160 V300 H0Z" fill="#506d66"/>
+<g transform="translate(258 40) scale(.72)" opacity=".46"><path d="M0 16 C24 2 46 14 66 4 S100 8 116 0" fill="none" stroke="#fff" stroke-width="3"/><path d="M18 29 L34 17 L50 29 L66 17 L82 29" fill="none" stroke="#e8e1d5" stroke-width="1.5"/></g>
+<circle cx="110" cy="196" r="11" fill="#f7f5ef" stroke="#374945" stroke-width="3"/>
+<text x="130" y="201" font-size="11" font-weight="700" fill="#fff">RETURN →</text>
+<text x="24" y="278" class="s" fill="#fff">TRACE / FIELD · SERVICE · REASSURANCE</text>
+</g>
+
+<!-- OFF -->
+<g transform="translate(1205 220)">
+<rect width="315" height="300" rx="14" fill="#6b8780"/>
+<path d="M0 220 L66 158 L122 214 L192 142 L252 212 L315 160 V300 H0Z" fill="#4b6963"/>
+<path d="M0 236 C60 202 120 245 182 210 S260 212 315 178" fill="none" stroke="#83b7b4" stroke-width="43"/>
+<circle cx="220" cy="154" r="11" fill="#f2efe5"/>
+<path d="M148 216 C176 194 198 174 220 154" fill="none" stroke="#f2efe5" stroke-width="3" stroke-dasharray="8 7"/>
+<text x="24" y="278" class="s" fill="#fff">OFF / LANDSCAPE · BODY ATTENTION</text>
+</g>
+
+<rect x="80" y="565" width="1440" height="168" rx="12" fill="#f7f6f2" stroke="#d2cfc7"/>
+<text x="104" y="600" class="k">ROLE CONTRACT</text>
+<text x="104" y="635" font-size="13" font-weight="700">FULL</text><text x="170" y="635" class="m">identity-led / communication is the task</text>
+<text x="104" y="666" font-size="13" font-weight="700">LIGHT</text><text x="170" y="666" class="m">task-led / identity remains visible but subordinate</text>
+<text x="790" y="635" font-size="13" font-weight="700">TRACE</text><text x="862" y="635" class="m">reassurance/service-led / minimal recognisable token</text>
+<text x="790" y="666" font-size="13" font-weight="700">OFF</text><text x="862" y="666" class="m">landscape/body/safety/technical attention dominates</text>
+<text x="104" y="707" class="s">Consistency comes from stable type, proportion, token geometry, rhythm, material logic and tone — not constant logo loudness.</text>
+
+<line x1="80" y1="800" x2="1520" y2="800" stroke="#d2cfc7"/>
+<text x="80" y="842" class="k">DESIGN CRIT</text>
+<text x="80" y="876" class="m">REJECT: same lockup / scale / contrast / frequency everywhere. KEEP: medium hierarchy changes while identity grammar remains coherent.</text>
+<text x="80" y="910" class="s">TRAINING ONLY / NOT OFFICIAL QINGJIANG LOGO ARTWORK / NO TRADEMARK OR PROJECT BRAND DESIGN PROMOTION.</text>
+</svg>
