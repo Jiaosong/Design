@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "status": "REVISE",
+  "object_id": "BJ-POP-CARD-CLAIMFORM-R01",
+  "validation_owner": "oleander-delivery-qc",
+  "supporting_candidate": "oleander-technical-drawing PR #172 (CANDIDATE_DRAFT; not promoted)",
+  "source_handoff": {
+    "commit": "2169226feccdba3d4920e52067d0d8e181d3ed61",
+    "path": "06-practice/2026/2026-08-27-baojiajie-claim-to-form/BJ_POP_CLAIMFORM_R01_VALIDATION_HANDOFF.json"
+  },
+  "upstream_design_master": {
+    "name": "OLEANDER_BJ_CLAIM_TO_FORM_R01.svg",
+    "source_commit": "397c2cf9a04912d2d05d0b29bc89ddeec5a7cde5",
+    "blob_sha": "0a1057124bdf8966c4580abfe682d8f735d803fb",
+    "authority_state": "DESIGN-PROCESS MASTER / NTS / NOT PRODUCTION DIELINE"
+  },
+  "required_native_output": "supplier-confirmed die-cut dieline + print proof + physical jump-card sample",
+  "capability_probe": {
+    "source_svg_readback": "EXECUTED",
+    "vector_outline_structure_check": "EXECUTED",
+    "normalized_geometry_measurement": "EXECUTED",
+    "supplier_dieline_validation": "HOLD_NO_SUPPLIER_TEMPLATE_OR_SPEC",
+    "physical_material_spring_adhesive_validation": "HOLD_NO_PHYSICAL_SAMPLE_OR_VENDOR_SPEC"
+  },
+  "actual_readback": {
+    "selected_outline_path_closed": true,
+    "selected_outline_self_intersection": false,
+    "selected_outline_bbox_source_units": [0.0, 12.0, 298.0, 382.0],
+    "selected_outline_width_source_units": 298.0,
+    "selected_outline_height_source_units": 370.0,
+    "selected_outline_aspect_ratio_width_over_height": 0.8054054054,
+    "logo_slot_min_distance_to_outline_source_units": 21.1827,
+    "portrait_slot_min_distance_to_outline_source_units": 39.9692,
+    "bottom_product_text_baseline_distance_to_outline_source_units": 33.0,
+    "dimension_note": "Source units are SVG design units only. No conversion to mm is authorized because the upstream master is NTS."
+  },
+  "blocking_defect": {
+    "id": "BJ-CF-V01",
+    "result": "REVISE",
+    "observed": "The handoff describes a stepped-left-edge / two-state cut relation, but the selected SVG outer contour carries one right-side projection at y=88–137 (to x=298) and one left-side projection at y=145–194 (to x=0). The two discrete silhouette events are bilateral, not two stages on the left edge.",
+    "root_cause": "Semantic carrier described by the handoff does not match the actual authoritative selected vector path.",
+    "required_design_change": "DESIGN must choose one meaning and make handoff + vector master agree: either revise the selected contour to a true same-side two-state cut/step relation, or explicitly redefine the semantic carrier as bilateral two-state silhouette cues. Do not change production dimensions in VALIDATION before dimension authority exists.",
+    "retest_required": [
+      "reopen revised authoritative SVG",
+      "compare actual contour events with handoff wording",
+      "confirm the selected carrier remains legible after labels 1档/2档 are removed",
+      "then continue supplier-specific radius/safe-zone/material validation"
+    ]
+  },
+  "vendor_calibration_only_not_authority": [
+    {
+      "source": "StickerApp custom cutline guidance",
+      "url": "https://stickerapp.com/support/artwork-design/templates-guidelines/how-to-make-your-own-cutlines",
+      "observed_guidance": "closed vector cutline; 1 pt spot-color cutline; 2 mm bleed; important graphics at least 2 mm inside cutline",
+      "use": "calibration only; not applied as Baojiajie supplier specification"
+    },
+    {
+      "source": "Sticker Mule sticker/label artwork requirements",
+      "url": "https://www.stickermule.com/support/faq/artwork/what-are-your-artwork-requirements-for-stickers-and-labels",
+      "observed_guidance": "1/16 in (1.58 mm) minimum border/bleed; suggested cutline stroke; minimum line/font guidance",
+      "use": "calibration only; demonstrates vendor variation"
+    }
+  ],
+  "proof_boundaries": {
+    "validated": [
+      "immutable source SVG identity",
+      "selected contour is closed and non-self-intersecting under geometric readback",
+      "normalized contour and slot clearances in source SVG units",
+      "handoff-to-vector semantic mismatch"
+    ],
+    "not_proven": [
+      "finished dimensions in mm",
+      "minimum die-cut neck/concave radius",
+      "printer/converter bleed and safe zone",
+      "substrate thickness/stiffness",
+      "spring/adhesive/mounting construction",
+      "physical viewing distance",
+      "claim substantiation",
+      "production approval"
+    ]
+  },
+  "return_handoff": {
+    "to": "DESIGN",
+    "result": "REVISE",
+    "required_change": "Resolve BJ-CF-V01 semantic-carrier mismatch before supplier-specific technical validation.",
+    "residual_hold": "PRODUCTION_DIELINE / MATERIAL / MOUNTING / CLAIM remain HOLD until supplier template/specification and physical proof exist."
+  },
+  "skill_validation_delta": "NONE. Existing delivery-QC + PR #172 candidate logic is sufficient; no new validator or Skill is justified."
+}
