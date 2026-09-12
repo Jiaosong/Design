@@ -63,15 +63,107 @@ export async function getActiveVectorIds(db: D1Database, pageId: string): Promis
   return rows.results.map((row) => row.vector_id);
 }
 
-export async function deactivatePage(db: D1Database, pageId: string, reason: string): Promise<string[]> {
+export interface DocumentSyncState {
+  page_id: string;
+  notion_last_edited_time: string | null;
+  index_state: string;
+  active: number;
+  markdown_truncated: number;
+  notion_seen_at: string | null;
+  index_revision: string | null;
+}
+
+export async function getDocumentSyncStates(db: D1Database, pageIds: string[]): Promise<Map<string, DocumentSyncState>> {
+  if (pageIds.length === 0) return new Map();
+  const unique = [...new Set(pageIds)];
+  const rows: DocumentSyncState[] = [];
+  for (let i = 0; i < unique.length; i += 100) {
+    const batch = unique.slice(i, i + 100);
+    const placeholders = batch.map(() => "?").join(",");
+    const result = await db
+      .prepare(
+        `SELECT page_id, notion_last_edited_time, index_state, active, markdown_truncated,
+                notion_seen_at, index_revision
+         FROM documents WHERE page_id IN (${placeholders})`,
+      )
+      .bind(...batch)
+      .all<DocumentSyncState>();
+    rows.push(...result.results);
+  }
+  return new Map(rows.map((row) => [row.page_id, row]));
+}
+
+export async function latestCompleteFullReconcile(
+  db: D1Database,
+): Promise<{ run_id: string; started_at: string; completed_at: string | null } | null> {
+  return db
+    .prepare(
+      `SELECT run_id, started_at, completed_at
+       FROM sync_runs
+       WHERE run_type IN ('FULL_NOTES_RECONCILE','OPERATOR_FULL_RECONCILE') AND status='COMPLETE'
+       ORDER BY started_at DESC LIMIT 1`,
+    )
+    .first<{ run_id: string; started_at: string; completed_at: string | null }>();
+}
+
+export async function deactivatePage(
+  db: D1Database,
+  pageId: string,
+  reason: string,
+  evidence?: { lastEditedTime?: string | null; inTrash?: boolean | null; seenAt?: string | null },
+): Promise<string[]> {
   const ids = await getActiveVectorIds(db, pageId);
+  const observedAt = now();
+  const inTrash = evidence?.inTrash === undefined || evidence.inTrash === null ? null : evidence.inTrash ? 1 : 0;
   await db.batch([
-    db.prepare("UPDATE chunks SET active=0, updated_at=? WHERE page_id=? AND active=1").bind(now(), pageId),
+    db.prepare("UPDATE chunks SET active=0, updated_at=? WHERE page_id=? AND active=1").bind(observedAt, pageId),
     db
-      .prepare("UPDATE documents SET active=0, index_state='INACTIVE', authority_reason=?, observed_at=? WHERE page_id=?")
-      .bind(reason, now(), pageId),
+      .prepare(
+        `UPDATE documents
+         SET active=0, index_state='INACTIVE', authority_reason=?, observed_at=?,
+             notion_last_edited_time=COALESCE(?, notion_last_edited_time),
+             in_trash=COALESCE(?, in_trash),
+             notion_seen_at=COALESCE(?, notion_seen_at)
+         WHERE page_id=?`,
+      )
+      .bind(
+        reason,
+        observedAt,
+        evidence?.lastEditedTime ?? null,
+        inTrash,
+        evidence?.seenAt ?? null,
+        pageId,
+      ),
   ]);
   return ids;
+}
+
+export async function markNotionSeen(db: D1Database, pageIds: string[], seenAt: string): Promise<void> {
+  const unique = [...new Set(pageIds)];
+  for (let i = 0; i < unique.length; i += 100) {
+    const batch = unique.slice(i, i + 100);
+    const placeholders = batch.map(() => "?").join(",");
+    await db
+      .prepare(`UPDATE documents SET notion_seen_at=? WHERE page_id IN (${placeholders})`)
+      .bind(seenAt, ...batch)
+      .run();
+  }
+}
+
+export async function inventoryMissingPageIds(db: D1Database, scanStartedAt: string): Promise<string[]> {
+  const rows = await db
+    .prepare(
+      `SELECT page_id
+       FROM documents
+       WHERE active=1
+         AND COALESCE(notion_seen_at, '') < ?
+         AND observed_at < ?
+         AND (notion_last_edited_time IS NULL OR notion_last_edited_time <= ?)
+       ORDER BY page_id`,
+    )
+    .bind(scanStartedAt, scanStartedAt, scanStartedAt)
+    .all<{ page_id: string }>();
+  return rows.results.map((row) => row.page_id);
 }
 
 function relations(page: NormalizedPage): Array<{ type: string; target: string }> {
@@ -90,6 +182,7 @@ export async function saveDocumentAndChunks(
     authority: AuthorityDecision;
     contentHash: string;
     structureHash: string;
+    indexRevision: string;
     truncated: boolean;
     unknownBlockIds: string[];
     chunks: ManifestChunkRow[];
@@ -108,8 +201,9 @@ export async function saveDocumentAndChunks(
           primary_domain_ids_json, related_domain_ids_json, source_relation_ids_json,
           method_relation_ids_json, replacement_ids_json, replaced_document_ids_json,
           content_hash, structure_hash, markdown_truncated, unknown_block_ids_json,
-          index_state, authority_reason, in_trash, active, observed_at, indexed_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'INDEXED', ?, ?, 1, ?, ?)
+          index_state, authority_reason, in_trash, active, observed_at, indexed_at,
+          notion_seen_at, index_revision
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'INDEXED', ?, ?, 1, ?, ?, ?, ?)
         ON CONFLICT(page_id) DO UPDATE SET
           canonical_id=excluded.canonical_id, title=excluded.title, notion_url=excluded.notion_url,
           notion_last_edited_time=excluded.notion_last_edited_time, retrieval_space=excluded.retrieval_space,
@@ -123,7 +217,8 @@ export async function saveDocumentAndChunks(
           structure_hash=excluded.structure_hash, markdown_truncated=excluded.markdown_truncated,
           unknown_block_ids_json=excluded.unknown_block_ids_json, index_state='INDEXED',
           authority_reason=excluded.authority_reason, in_trash=excluded.in_trash, active=1,
-          observed_at=excluded.observed_at, indexed_at=excluded.indexed_at`,
+          observed_at=excluded.observed_at, indexed_at=excluded.indexed_at,
+          notion_seen_at=excluded.notion_seen_at, index_revision=excluded.index_revision`,
       )
       .bind(
         p.pageId,
@@ -153,6 +248,8 @@ export async function saveDocumentAndChunks(
         p.inTrash ? 1 : 0,
         observedAt,
         indexedAt,
+        observedAt,
+        input.indexRevision,
       ),
     db.prepare("UPDATE chunks SET active=0, updated_at=? WHERE page_id=?").bind(observedAt, p.pageId),
     db.prepare("DELETE FROM lineage_edges WHERE source_page_id=?").bind(p.pageId),

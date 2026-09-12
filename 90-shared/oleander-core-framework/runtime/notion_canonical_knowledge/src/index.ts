@@ -1,5 +1,9 @@
 import {
   FIELDS,
+  INDEX_PIPELINE_REVISION,
+  INCREMENTAL_SYNC_INTERVAL_MS,
+  INCREMENTAL_SYNC_OVERLAP_MS,
+  INVENTORY_SYNC_INTERVAL_MS,
   SCHEDULED_SYNC_BATCH_SIZE,
   SCHEDULED_SYNC_MAX_ATTEMPTS,
   SCHEDULED_SYNC_STALE_PROCESSING_MS,
@@ -11,7 +15,11 @@ import {
   completeSyncRun,
   deleteRuntimeState,
   failSyncRun,
+  getDocumentSyncStates,
   getRuntimeState,
+  inventoryMissingPageIds,
+  latestCompleteFullReconcile,
+  markNotionSeen,
   markWebhookFallbackFailure,
   markWebhookFallbackScheduled,
   markWebhookProcessed,
@@ -25,6 +33,7 @@ import {
   schedulerTaskCounts,
   stageSyncMessages,
   syncRunReadback,
+  type DocumentSyncState,
 } from "./manifest";
 import {
   createAcademicPage,
@@ -36,6 +45,8 @@ import {
   fetchPage,
   listNotesPages,
   listDatabaseViews,
+  queryNotesPagesEditedBetween,
+  queryNotesInventoryPage,
   replaceReaderIntroMarkdown,
   retrieveNotesDataSource,
   retrieveView,
@@ -928,6 +939,26 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return json({ ok: true, drained: true, batch_size: SCHEDULED_SYNC_BATCH_SIZE });
   }
 
+  if (request.method === "POST" && url.pathname === "/v1/incremental-sync") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    return json({ ok: true, incremental: await advanceIncrementalSync(env, true) }, 202);
+  }
+
+  if (request.method === "GET" && url.pathname === "/v1/incremental-sync-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    return json({ ok: true, incremental: await incrementalSyncStatus(env) });
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/inventory-sync") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    return json({ ok: true, inventory: await advanceInventorySync(env, true) }, 202);
+  }
+
+  if (request.method === "GET" && url.pathname === "/v1/inventory-sync-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    return json({ ok: true, inventory: await inventorySyncStatus(env) });
+  }
+
   if (request.method === "GET" && url.pathname === "/v1/reconcile-status") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const runId = url.searchParams.get("run_id");
@@ -938,10 +969,12 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 
   if (request.method === "GET" && url.pathname === "/v1/scheduler-status") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
-    const [lastSeen, lastResult, taskCounts] = await Promise.all([
+    const [lastSeen, lastResult, taskCounts, incremental, inventory] = await Promise.all([
       getRuntimeState(env.MANIFEST, "scheduled_cron_last_seen"),
       getRuntimeState(env.MANIFEST, "scheduled_cron_last_result"),
       schedulerTaskCounts(env.MANIFEST),
+      incrementalSyncStatus(env),
+      inventorySyncStatus(env),
     ]);
     let lastSeenAt: string | null = null;
     if (lastSeen?.value) {
@@ -964,6 +997,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       fallback_required: cronStale && openTasks > 0,
       open_tasks: openTasks,
       task_counts: taskCounts,
+      incremental,
+      inventory,
       scheduled_cron_last_seen: lastSeen,
       scheduled_cron_last_result: lastResult,
     });
@@ -1036,6 +1071,340 @@ function retryDelaySeconds(attempts: number): number {
   return Math.min(3600, 60 * 2 ** Math.max(0, attempts - 1));
 }
 
+const INCREMENTAL_SYNC_STATE_KEY = "incremental_sync_v1";
+
+interface IncrementalScanState {
+  scan_id: string;
+  from_inclusive: string;
+  through_inclusive: string;
+  cursor: string | null;
+  pages_seen: number;
+  pages_scheduled: number;
+  started_at: string;
+}
+
+interface IncrementalSyncState {
+  version: 1;
+  watermark: string | null;
+  next_due_at: string | null;
+  active_scan: IncrementalScanState | null;
+  last_completed: {
+    scan_id: string;
+    from_inclusive: string;
+    through_inclusive: string;
+    pages_seen: number;
+    pages_scheduled: number;
+    started_at: string;
+    completed_at: string;
+  } | null;
+  blocked_reason?: string | null;
+}
+
+function parseIncrementalState(value: string | null | undefined): IncrementalSyncState | null {
+  if (!value) return null;
+  try {
+    const parsed = JSON.parse(value) as Partial<IncrementalSyncState>;
+    if (parsed.version !== 1) return null;
+    return {
+      version: 1,
+      watermark: typeof parsed.watermark === "string" ? parsed.watermark : null,
+      next_due_at: typeof parsed.next_due_at === "string" ? parsed.next_due_at : null,
+      active_scan: parsed.active_scan ?? null,
+      last_completed: parsed.last_completed ?? null,
+      blocked_reason: parsed.blocked_reason ?? null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function shiftedIso(iso: string, deltaMs: number): string {
+  const parsed = Date.parse(iso);
+  if (!Number.isFinite(parsed)) throw new Error(`Invalid incremental sync timestamp: ${iso}`);
+  return new Date(parsed + deltaMs).toISOString();
+}
+
+function isSyncedAtLastEdit(
+  state: DocumentSyncState | undefined,
+  lastEditedTime: string | null,
+): boolean {
+  if (!state || !lastEditedTime) return false;
+  const terminal = state.index_state === "INDEXED" || state.index_state === "INACTIVE";
+  return terminal &&
+    state.markdown_truncated === 0 &&
+    state.notion_last_edited_time === lastEditedTime &&
+    state.index_revision === INDEX_PIPELINE_REVISION;
+}
+
+async function incrementalSyncStatus(env: Env): Promise<IncrementalSyncState> {
+  const stored = await getRuntimeState(env.MANIFEST, INCREMENTAL_SYNC_STATE_KEY);
+  return parseIncrementalState(stored?.value) ?? {
+    version: 1,
+    watermark: null,
+    next_due_at: null,
+    active_scan: null,
+    last_completed: null,
+    blocked_reason: null,
+  };
+}
+
+async function advanceIncrementalSync(env: Env, force = false): Promise<Record<string, unknown>> {
+  const nowIso = new Date().toISOString();
+  let state = await incrementalSyncStatus(env);
+
+  if (!state.active_scan) {
+    const nextDueMs = state.next_due_at ? Date.parse(state.next_due_at) : Number.NaN;
+    if (!force && Number.isFinite(nextDueMs) && Date.now() < nextDueMs) {
+      return { action: "NOT_DUE", next_due_at: state.next_due_at, watermark: state.watermark };
+    }
+
+    let baseline = state.watermark;
+    if (!baseline) {
+      const full = await latestCompleteFullReconcile(env.MANIFEST);
+      if (!full) {
+        state = {
+          ...state,
+          blocked_reason: "FULL_RECONCILE_REQUIRED_BEFORE_INCREMENTAL_BASELINE",
+          next_due_at: shiftedIso(nowIso, INCREMENTAL_SYNC_INTERVAL_MS),
+        };
+        await putRuntimeState(env.MANIFEST, INCREMENTAL_SYNC_STATE_KEY, JSON.stringify(state));
+        return { action: "BLOCKED_BOOTSTRAP", reason: state.blocked_reason };
+      }
+      // Start from the beginning of the last known-complete full reconcile so
+      // edits that occurred while that long run was draining are not missed.
+      baseline = full.started_at;
+    }
+
+    state = {
+      ...state,
+      blocked_reason: null,
+      active_scan: {
+        scan_id: crypto.randomUUID(),
+        from_inclusive: shiftedIso(baseline, -INCREMENTAL_SYNC_OVERLAP_MS),
+        through_inclusive: nowIso,
+        cursor: null,
+        pages_seen: 0,
+        pages_scheduled: 0,
+        started_at: nowIso,
+      },
+    };
+  }
+
+  const scan = state.active_scan;
+  if (!scan) throw new Error("Incremental sync state lost active scan");
+  const page = await queryNotesPagesEditedBetween(
+    env,
+    scan.from_inclusive,
+    scan.through_inclusive,
+    scan.cursor,
+  );
+  const manifestStates = await getDocumentSyncStates(env.MANIFEST, page.pages.map((item) => item.id));
+  const changed = page.pages.filter(
+    (item) => item.inTrash || !isSyncedAtLastEdit(manifestStates.get(item.id), item.lastEditedTime),
+  );
+  const messages: IngestMessage[] = changed.map((item) => ({
+    kind: "notion-page-sync",
+    page_id: item.id,
+    cause_id: `incremental:${item.id}:${item.lastEditedTime ?? "unknown"}`,
+    cause_type: "incremental",
+    ...(item.lastEditedTime ? { event_timestamp: item.lastEditedTime } : {}),
+  }));
+  if (messages.length) await stageSyncMessages(env.MANIFEST, messages);
+
+  const nextScan: IncrementalScanState = {
+    ...scan,
+    cursor: page.nextCursor,
+    pages_seen: scan.pages_seen + page.pages.length,
+    pages_scheduled: scan.pages_scheduled + messages.length,
+  };
+
+  if (page.hasMore && !page.nextCursor) throw new Error("Notion delta query reported has_more without next_cursor");
+  if (page.hasMore && page.nextCursor) {
+    state = { ...state, active_scan: nextScan };
+    await putRuntimeState(env.MANIFEST, INCREMENTAL_SYNC_STATE_KEY, JSON.stringify(state));
+    return {
+      action: "SCANNING",
+      scan_id: scan.scan_id,
+      pages_seen: nextScan.pages_seen,
+      pages_scheduled: nextScan.pages_scheduled,
+      next_cursor: true,
+    };
+  }
+
+  const completedAt = new Date().toISOString();
+  state = {
+    version: 1,
+    watermark: scan.through_inclusive,
+    next_due_at: shiftedIso(scan.through_inclusive, INCREMENTAL_SYNC_INTERVAL_MS),
+    active_scan: null,
+    last_completed: {
+      scan_id: scan.scan_id,
+      from_inclusive: scan.from_inclusive,
+      through_inclusive: scan.through_inclusive,
+      pages_seen: nextScan.pages_seen,
+      pages_scheduled: nextScan.pages_scheduled,
+      started_at: scan.started_at,
+      completed_at: completedAt,
+    },
+    blocked_reason: null,
+  };
+  await putRuntimeState(env.MANIFEST, INCREMENTAL_SYNC_STATE_KEY, JSON.stringify(state));
+  return {
+    action: "COMPLETE",
+    scan_id: scan.scan_id,
+    watermark: state.watermark,
+    next_due_at: state.next_due_at,
+    pages_seen: nextScan.pages_seen,
+    pages_scheduled: nextScan.pages_scheduled,
+  };
+}
+
+const INVENTORY_SYNC_STATE_KEY = "inventory_sync_v1";
+
+interface InventoryScanState {
+  scan_id: string;
+  cursor: string | null;
+  pages_seen: number;
+  pages_scheduled: number;
+  started_at: string;
+}
+
+interface InventorySyncState {
+  version: 1;
+  next_due_at: string | null;
+  active_scan: InventoryScanState | null;
+  last_completed: {
+    scan_id: string;
+    pages_seen: number;
+    pages_scheduled: number;
+    missing_pages_scheduled: number;
+    started_at: string;
+    completed_at: string;
+  } | null;
+}
+
+function parseInventoryState(value: string | null | undefined): InventorySyncState | null {
+  if (!value) return null;
+  try {
+    const parsed = JSON.parse(value) as Partial<InventorySyncState>;
+    if (parsed.version !== 1) return null;
+    return {
+      version: 1,
+      next_due_at: typeof parsed.next_due_at === "string" ? parsed.next_due_at : null,
+      active_scan: parsed.active_scan ?? null,
+      last_completed: parsed.last_completed ?? null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function inventorySyncStatus(env: Env): Promise<InventorySyncState> {
+  const stored = await getRuntimeState(env.MANIFEST, INVENTORY_SYNC_STATE_KEY);
+  return parseInventoryState(stored?.value) ?? {
+    version: 1,
+    next_due_at: null,
+    active_scan: null,
+    last_completed: null,
+  };
+}
+
+async function advanceInventorySync(env: Env, force = false): Promise<Record<string, unknown>> {
+  const nowIso = new Date().toISOString();
+  let state = await inventorySyncStatus(env);
+
+  if (!state.active_scan) {
+    const nextDueMs = state.next_due_at ? Date.parse(state.next_due_at) : Number.NaN;
+    if (!force && Number.isFinite(nextDueMs) && Date.now() < nextDueMs) {
+      return { action: "NOT_DUE", next_due_at: state.next_due_at };
+    }
+    state = {
+      ...state,
+      active_scan: {
+        scan_id: crypto.randomUUID(),
+        cursor: null,
+        pages_seen: 0,
+        pages_scheduled: 0,
+        started_at: nowIso,
+      },
+    };
+  }
+
+  const scan = state.active_scan;
+  if (!scan) throw new Error("Inventory sync state lost active scan");
+  const page = await queryNotesInventoryPage(env, scan.cursor);
+  await markNotionSeen(env.MANIFEST, page.pages.map((item) => item.id), new Date().toISOString());
+  const manifestStates = await getDocumentSyncStates(env.MANIFEST, page.pages.map((item) => item.id));
+  const changed = page.pages.filter(
+    (item) => item.inTrash || !isSyncedAtLastEdit(manifestStates.get(item.id), item.lastEditedTime),
+  );
+  const messages: IngestMessage[] = changed.map((item) => ({
+    kind: "notion-page-sync",
+    page_id: item.id,
+    cause_id: `incremental:${item.id}:${item.lastEditedTime ?? "unknown"}`,
+    cause_type: "incremental",
+    ...(item.lastEditedTime ? { event_timestamp: item.lastEditedTime } : {}),
+  }));
+  if (messages.length) await stageSyncMessages(env.MANIFEST, messages);
+
+  const nextScan: InventoryScanState = {
+    ...scan,
+    cursor: page.nextCursor,
+    pages_seen: scan.pages_seen + page.pages.length,
+    pages_scheduled: scan.pages_scheduled + messages.length,
+  };
+
+  if (page.hasMore && !page.nextCursor) throw new Error("Notion inventory query reported has_more without next_cursor");
+  if (page.hasMore && page.nextCursor) {
+    state = { ...state, active_scan: nextScan };
+    await putRuntimeState(env.MANIFEST, INVENTORY_SYNC_STATE_KEY, JSON.stringify(state));
+    return {
+      action: "SCANNING",
+      scan_id: scan.scan_id,
+      pages_seen: nextScan.pages_seen,
+      pages_scheduled: nextScan.pages_scheduled,
+      next_cursor: true,
+    };
+  }
+
+  // Only a fully completed inventory is allowed to schedule missing-page
+  // verification.
+  // Rows observed or synced after scan start are protected from the sweep race.
+  // Missing candidates are not deactivated here: they are staged back through
+  // syncPage so Notion 404/outside-data-source is re-verified one page at a time.
+  const missing = await inventoryMissingPageIds(env.MANIFEST, scan.started_at);
+  const missingMessages: IngestMessage[] = missing.map((pageId) => ({
+    kind: "notion-page-sync",
+    page_id: pageId,
+    cause_id: `inventory-missing:${scan.scan_id}:${pageId}`,
+    cause_type: "incremental",
+  }));
+  if (missingMessages.length) await stageSyncMessages(env.MANIFEST, missingMessages);
+  const completedAt = new Date().toISOString();
+  state = {
+    version: 1,
+    next_due_at: shiftedIso(completedAt, INVENTORY_SYNC_INTERVAL_MS),
+    active_scan: null,
+    last_completed: {
+      scan_id: scan.scan_id,
+      pages_seen: nextScan.pages_seen,
+      pages_scheduled: nextScan.pages_scheduled + missingMessages.length,
+      missing_pages_scheduled: missingMessages.length,
+      started_at: scan.started_at,
+      completed_at: completedAt,
+    },
+  };
+  await putRuntimeState(env.MANIFEST, INVENTORY_SYNC_STATE_KEY, JSON.stringify(state));
+  return {
+    action: "COMPLETE",
+    scan_id: scan.scan_id,
+    next_due_at: state.next_due_at,
+    pages_seen: nextScan.pages_seen,
+    pages_scheduled: nextScan.pages_scheduled + missingMessages.length,
+    missing_pages_scheduled: missingMessages.length,
+  };
+}
+
 async function seedOperatorRequestedReconcile(env: Env): Promise<boolean> {
   const request = await getRuntimeState(env.MANIFEST, "scheduled_reconcile_request");
   if (!request || !request.value.startsWith("REQUESTED")) return false;
@@ -1096,6 +1465,7 @@ async function drainScheduledSync(env: Env): Promise<void> {
       cause_id: task.cause_id,
       cause_type: task.cause_type,
       ...(task.event_type ? { event_type: task.event_type } : {}),
+      ...(task.cause_type === "reconcile" ? { force: true } : {}),
     };
     if (task.run_id) touchedRuns.add(task.run_id);
     try {
@@ -1141,6 +1511,13 @@ async function drainScheduledSync(env: Env): Promise<void> {
   }
 
   for (const runId of touchedRuns) await refreshSyncRunStatus(env.MANIFEST, runId);
+  // Durable page work has priority. Only use an otherwise-idle Cron invocation
+  // to advance one page of the cloud incremental sweep; any changed pages it
+  // discovers are staged into the same D1 scheduler and drain on later ticks.
+  if (tasks.length === 0) {
+    const incremental = await advanceIncrementalSync(env, false);
+    if (incremental.action === "NOT_DUE") await advanceInventorySync(env, false);
+  }
 }
 
 export default {

@@ -48,3 +48,17 @@ export const NOTION_MAX_FETCH_ATTEMPTS = 5;
 export const SCHEDULED_SYNC_BATCH_SIZE = 1;
 export const SCHEDULED_SYNC_MAX_ATTEMPTS = 8;
 export const SCHEDULED_SYNC_STALE_PROCESSING_MS = 15 * 60 * 1000;
+
+// Webhooks remain the primary near-real-time path. The incremental sweep is a
+// cloud-side safety net for missed/delayed webhook delivery and therefore runs
+// much less often than the one-minute durable-task drain. Each sweep page is
+// bounded to one Notion data-source query (100 rows) per invocation.
+export const INCREMENTAL_SYNC_INTERVAL_MS = 10 * 60 * 1000;
+export const INCREMENTAL_SYNC_OVERLAP_MS = 2 * 60 * 1000;
+export const INVENTORY_SYNC_INTERVAL_MS = 24 * 60 * 60 * 1000;
+
+// This revision describes the indexing semantics, not the orchestration code.
+// Bump it only when authority/chunk/embedding semantics change and a rebuild is
+// actually required. Migration 0005 backfills the existing production corpus
+// to this same revision because this change only alters sync orchestration.
+export const INDEX_PIPELINE_REVISION = "knowledge-index-v1";

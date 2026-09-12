@@ -1,6 +1,6 @@
 # OLEANDER Notion Canonical Knowledge Runtime v0.1
 
-Status: **REMOTE INFRASTRUCTURE PROVISIONED / NOTION BOUND / FULL RECONCILE READBACK PENDING / NOT PROMOTED**
+Status: **NOTION BOUND / FULL BASELINE COMPLETE / CLOUD INCREMENTAL SYNC + ANTI-ENTROPY INVENTORY**
 
 Upstream authority: **Notion Current Root Authority + live registries**
 
@@ -19,12 +19,15 @@ Cloudflare Queue
         │                                     ↓
         │                               D1 durable scheduler
         │                                     ↑
-        │                         full / bounded reconcile
+        │                         delta / inventory / repair
         │                                     ↓
         │                              Cron scheduled drain
         └─────────────────────────────────────┘
                                               ↓
 Notion API 2026-03-11
+  POST /v1/data_sources/:id/query
+      ↳ last_edited_time delta watermark
+      ↳ daily ID/edit-time inventory
   GET /v1/pages/:id
   GET /v1/pages/:id/markdown
         ↓
@@ -69,6 +72,8 @@ Authority gate + structure-aware chunk
 - active/inactive/tombstone state;
 - reconcile run receipts.
 - durable bulk/fallback sync task state (`PENDING / PROCESSING / RETRY / PROCESSED / BLOCKED`).
+- delta watermark / cursor state and daily inventory receipts in `runtime_state`.
+- last Notion inventory observation (`notion_seen_at`) and index-pipeline revision per document.
 
 D1 does **not** decide Canonical ID, L0–L7 identity, hierarchy, role, domain or promotion.
 
@@ -90,7 +95,13 @@ Public endpoint. Validates `X-Notion-Signature` after the one-time subscription 
 The one-time `verification_token` is not echoed or logged. During setup it is AES-GCM encrypted with a key derived from the already-configured `OLEANDER_API_TOKEN`, stored temporarily in D1, and exposed only through bearer-protected `GET /v1/webhook-setup-token`. Delete that temporary state after storing the value as the Worker secret `NOTION_WEBHOOK_VERIFICATION_TOKEN`.
 
 ### `POST /v1/reconcile`
-Bearer-protected. Empty body enumerates the current Notes data source and enqueues every page. `{ "page_id": "..." }` enqueues one page.
+Bearer-protected repair path. Empty body enumerates the current Notes data source and enqueues every page. `{ "page_id": "..." }` enqueues one page. Routine operation must prefer webhook + delta + inventory and should not repeatedly run full reconcile.
+
+### `POST /v1/incremental-sync`
+Bearer-protected operator trigger for one page of the timestamp-watermarked delta scan. The automatic path runs from the existing Cron only while durable page work is idle. The scan uses a bounded `[watermark-overlap, scan-start]` window and advances the watermark only after pagination completes.
+
+### `POST /v1/inventory-sync`
+Bearer-protected operator trigger for one page of the daily anti-entropy inventory. The inventory reads IDs / edit timestamps, stamps `notion_seen_at`, and schedules only stale or missing candidates. Missing candidates are verified through `syncPage`; no inventory pass directly hard-deletes canonical or derivative records.
 
 ### `POST /v1/search`
 Bearer-protected.
@@ -122,6 +133,9 @@ Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new
 - embedding or Notion transient failure: individual queue message retries with bounded exponential delay; Cloudflare consumer DLQ is configured after max retries.
 - DLQ containment is fail-closed: dead-lettered messages are not automatically replayed into the ingest queue, preventing an unbounded poison-message loop. Re-drive requires an explicit bounded repair action and a new readback receipt.
 - bulk reconcile never depends on Queue capacity. D1 persists the worklist and Cron drains one page per Free-plan invocation; a full-reconcile seeding invocation does not also process a page. Stale `PROCESSING` claims are recovered to `RETRY` and bounded failures end in `BLOCKED`.
+- normal anti-drift does not enumerate and re-embed the corpus: a ten-minute `last_edited_time` delta sweep stages only stale rows; a daily inventory compares IDs/edit timestamps without fetching Markdown for unchanged pages.
+- delta watermarks advance only after complete pagination; a failed/partial inventory cannot deactivate unseen pages.
+- unchanged live pages short-circuit before Markdown fetch / Workers AI embedding when Notion edit time and index revision match D1. Explicit repair reconcile is the only routine path that forces a rebuild of unchanged pages.
 - webhook Queue-write failure falls back to the same durable D1 scheduler and remains visible in `webhook_events`; it is not silently treated as a successful Queue delivery.
 - stale Vectorize result: rejected when D1 does not confirm the vector and document as active and in the same authority namespace.
 

@@ -103,11 +103,21 @@ node scripts/run-search.mjs --scoped "your validation query"
 node scripts/run-reconcile.mjs full
 ```
 
-`limit` is clamped to `1..1000`. Omitting both `page_id` and `limit` preserves the full Notes reconcile behavior.
+`limit` is clamped to `1..1000`. Omitting both `page_id` and `limit` preserves the full Notes reconcile behavior, but **full reconcile is now a repair / disaster-recovery path, not the normal synchronization loop**.
 
 Queue safety defaults are deliberately conservative: one-message consumer batches, concurrency `1`, bounded retries, and a dead-letter queue. The DLQ is **containment**, not an automatic replay loop; failed messages must remain inspectable until a bounded repair/re-drive action is explicitly authorized.
 
 Bulk reconcile no longer spends Queue operations. `POST /v1/reconcile` persists page-sync tasks in D1, and the `* * * * *` Cron Trigger drains **one page per invocation** directly through `syncPage`. This deliberately matches the proven one-page Queue consumer CPU profile because Workers Free Cron invocations have a very small CPU budget. A Cron invocation that seeds a full reconcile does not also drain a page. Queue remains the low-latency webhook fast path; if Queue write fails, the webhook is persisted into the same D1 scheduler instead of being dropped. `GET /v1/reconcile-status?run_id=<id>` is the readback gate for a reconcile run.
+
+Normal cloud synchronization is now incremental and authority-preserving:
+
+- Notion webhook events remain the primary near-real-time signal.
+- When the durable scheduler is idle, the same one-minute Cron advances a timestamp-watermarked Notion data-source scan at most once per ten minutes. It queries only rows whose `last_edited_time` falls inside the bounded delta window and stages only rows whose D1 edit timestamp / index revision is stale.
+- The watermark advances only after the complete paginated delta scan closes. A two-minute overlap plus edit-timestamp-derived task IDs makes overlap safe and idempotent.
+- Once per day, an idle Cron performs a lightweight inventory scan over Notes IDs / edit timestamps only. Unchanged pages are not re-read, re-chunked, or re-embedded. Missing-page candidates are staged back through the same `syncPage` path so deletion / moved-outside-Notes is verified against live Notion before vectors are deactivated.
+- `syncPage` returns `UNCHANGED` before Markdown fetch / embedding when the live Notion `last_edited_time` and index-pipeline revision already match D1. Explicit D1 full-reconcile tasks set `force=true`; old Queue backlog does not, so stale bulk messages cannot silently trigger another corpus-wide embedding pass.
+
+Protected operator/readback endpoints are `POST /v1/incremental-sync`, `GET /v1/incremental-sync-status`, `POST /v1/inventory-sync`, and `GET /v1/inventory-sync-status`. They operate on the same D1 `runtime_state` / durable task plane and do not create a second knowledge store.
 
 For explicit operator verification/recovery, `POST /v1/drain-once` is bearer-protected and executes exactly the same bounded D1 drain path as the Cron handler. The repository helper `node scripts/run-drain-once.mjs` reads the token only from gitignored `.dev.vars` and does not print it. This endpoint is not a parallel scheduler; it is a manual trigger for the same durable task state machine.
 
@@ -119,7 +129,7 @@ Human reading is separated from governance storage. `POST /v1/reader-layer` crea
 
 Paper-grade L4/L5 migrations use `POST /v1/academic-page`. New pages receive a clean reader-facing title while Canonical ID remains a property, can link to source/replaced pages, and are immediately indexed/read back. This path is deliberately additive: legacy source text is preserved and explicitly superseded rather than overwritten. L6 Source/Evidence and L7 Practice retain role-specific concise formats; they are not forced into essay prose.
 
-`GET /v1/scheduler-status` is bearer-protected and reports the Cron heartbeat, last scheduled result, durable task counts, and whether a secondary scheduler should activate. A missing or older-than-three-minutes Cron heartbeat is considered stale only while open durable tasks still exist.
+`GET /v1/scheduler-status` is bearer-protected and reports the Cron heartbeat, last scheduled result, durable task counts, delta watermark state, daily inventory state, and whether a secondary scheduler should activate. A missing or older-than-three-minutes Cron heartbeat is considered stale only while open durable tasks still exist.
 
 `.github/workflows/oleander-notion-scheduler-fallback.yml` is the cross-provider fallback scheduler. It is gated by the repository variable `OLEANDER_NOTION_FALLBACK_ENABLED=true` and requires the `OLEANDER_API_TOKEN` repository secret before activation; with the gate absent or false, scheduled runs do not start a runner. Once activated, it checks scheduler health every five minutes and remains idle while Cloudflare Cron is healthy. When the primary heartbeat is stale, it performs five serialized one-page drains with spacing so recovery stays close to the intended one-page-per-minute cadence. D1 task claiming remains the single concurrency authority.
 
