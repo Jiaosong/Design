@@ -4,12 +4,13 @@
   "policy_revision": "1.1",
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
-  "current_extension_date": "2026-09-09",
+  "current_extension_date": "2026-09-12",
   "current_extensions": [
     {"date": "2026-08-19", "name": "Existing Visual Authority + Image Consumption"},
     {"date": "2026-09-09", "name": "Continuation Resume Checkpoint"},
     {"date": "2026-09-09", "name": "Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance"},
-    {"date": "2026-09-09", "name": "Optimistic Concurrency + Verify-Before-Retry"}
+    {"date": "2026-09-09", "name": "Optimistic Concurrency + Verify-Before-Retry"},
+    {"date": "2026-09-12", "name": "Git Branch Ref Disposition at Closure"}
   ],
   "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, continuation/frontier state when applicable, concurrency/idempotency evidence when material, adapter route evidence when material, existing visual authority/image consumption when applicable, owner selection, DAG, artifacts, execution, regression, readback, review, flow completion and drift.",
   "required_core_fields": ["receipt_id", "status", "execution_type", "task_id", "authority", "required_native_output", "owner_set", "artifacts", "execution", "readback", "regression", "review", "closure", "does_not_prove"],
@@ -115,6 +116,18 @@
     "duplicate_side_effects_forbidden": true,
     "blind_retry_after_timeout_forbidden": true,
     "no_material_delta_no_new_receipt": true
+  },
+  "branch_ref_disposition_extension": {
+    "required_when": "MATERIAL_EXECUTION_USES_A_GIT_WORK_BRANCH_OR_PULL_REQUEST_AND_REACHES_CLOSURE",
+    "prospective_only": true,
+    "historical_receipts_immutable": true,
+    "fields": ["branch", "disposition", "reason", "dependency_checks", "audit_receipt", "readback"],
+    "disposition_values": ["DELETE_AFTER_MERGE", "DELETED", "KEEP_OPEN_PR_HEAD", "KEEP_OPEN_PR_BASE", "KEEP_ACTIVE_WORKTREE", "KEEP_EXPLICIT_PROVENANCE", "NOT_APPLICABLE"],
+    "dependency_checks": ["OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"],
+    "merged_default": "DELETE_AFTER_PROVENANCE_CAPTURE_WHEN_NO_DEPENDENCY_CHECK_BLOCKS",
+    "unmerged_age_only_delete_forbidden": true,
+    "bulk_cleanup_requires_ref_sha_audit": true,
+    "branch_ref_is_not_current_authority": true
   },
   "execution_required_fields": ["runtime", "entrypoint_or_action", "result", "failures", "repairs"],
   "readback_required_fields": ["target", "runtime", "observed_result", "blocking_defects", "nonblocking_defects", "verdict"],

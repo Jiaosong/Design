@@ -523,7 +523,8 @@ The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrie
 - adapter route decision only when a material execution evaluated multiple surfaces or used an ephemeral connected surface;
 - remote-mutation idempotency evidence only when a remote outcome is uncertain or retry is considered;
 - continuous execution evidence when multiple ready nodes were executed in one material run or auto-advance stopped before completion;
-- `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict.
+- `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict;
+- `branch_ref_disposition` when a material execution used a Git work branch / PR and reaches closure: delete the merged ref after ref→SHA provenance capture unless an open PR head/base, active worktree, or explicit keep reason blocks deletion. Unmerged refs are never deleted by age alone.
 
 Older receipts remain immutable provenance. These runtime extensions are prospective and conditional; they do not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
 
@@ -531,7 +532,9 @@ Older receipts remain immutable provenance. These runtime extensions are prospec
 
 A material runtime change still follows:
 
-`Current Authority readback → GitHub branch → commit → PR → CI → main readback → minimal Notion Current pointer/fact update when required → live drift check`.
+`Current Authority readback → GitHub branch → commit → PR → CI → main readback → dependency-aware branch-ref disposition/readback → minimal Notion Current pointer/fact update when required → live drift check`.
+
+This branch-ref step belongs to the existing Resolver closure/cleanup responsibility. It reuses `tools/github_branch_governance.py` and the Execution Receipt extension; it does not create a new Router, cleanup framework, or parallel branch authority.
 
 A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
 

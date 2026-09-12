@@ -100,6 +100,30 @@ def remote_merged_records() -> list[RefRecord]:
     return records
 
 
+def remote_unmerged_records() -> list[RefRecord]:
+    fmt = "%(refname:short)|%(objectname)|%(committerdate:iso8601)|%(subject)"
+    out = run(
+        "git",
+        "for-each-ref",
+        "--no-merged=refs/remotes/origin/main",
+        f"--format={fmt}",
+        "refs/remotes/origin",
+    )
+    records: list[RefRecord] = []
+    for line in out.splitlines():
+        parts = line.split("|", 3)
+        if len(parts) != 4:
+            continue
+        ref, sha, committed_at, subject = parts
+        if not ref.startswith("origin/"):
+            continue
+        branch = ref.removeprefix("origin/")
+        if branch in {"HEAD", "main"}:
+            continue
+        records.append(RefRecord(branch, sha, committed_at, subject, "UNMERGED_REMOTE"))
+    return records
+
+
 def local_merged_records() -> list[RefRecord]:
     fmt = "%(refname:short)|%(objectname)|%(committerdate:iso8601)|%(subject)"
     out = run(
@@ -184,6 +208,62 @@ def write_csv(path: Path, records: list[RefRecord]) -> None:
             writer.writerow(asdict(item))
 
 
+def build_unmerged_triage(
+    records: list[RefRecord], prs: list[dict], worktrees: set[str]
+) -> dict:
+    head_prs: dict[str, list[int]] = {}
+    base_prs: dict[str, list[int]] = {}
+    for item in prs:
+        number = int(item["number"])
+        head = item.get("headRefName")
+        base = item.get("baseRefName")
+        if head:
+            head_prs.setdefault(head, []).append(number)
+        if base:
+            base_prs.setdefault(base, []).append(number)
+
+    rows: list[dict] = []
+    role_counts = {"OPEN_PR_HEAD": 0, "OPEN_PR_BASE": 0, "ACTIVE_WORKTREE": 0, "ORPHAN_UNMERGED": 0}
+    for item in records:
+        roles: list[str] = []
+        if item.branch in head_prs:
+            roles.append("OPEN_PR_HEAD")
+            role_counts["OPEN_PR_HEAD"] += 1
+        if item.branch in base_prs:
+            roles.append("OPEN_PR_BASE")
+            role_counts["OPEN_PR_BASE"] += 1
+        if item.branch in worktrees:
+            roles.append("ACTIVE_WORKTREE")
+            role_counts["ACTIVE_WORKTREE"] += 1
+        if not roles:
+            roles.append("ORPHAN_UNMERGED")
+            role_counts["ORPHAN_UNMERGED"] += 1
+        rows.append(
+            {
+                **asdict(item),
+                "roles": roles,
+                "open_pr_head_numbers": head_prs.get(item.branch, []),
+                "open_pr_base_numbers": base_prs.get(item.branch, []),
+                "automatic_delete_allowed": False,
+            }
+        )
+
+    return {
+        "schema": "OLEANDER_GIT_BRANCH_UNMERGED_TRIAGE_v1",
+        "as_of": datetime.now(timezone.utc).isoformat(),
+        "repository": github_repo(),
+        "origin_main_sha": run("git", "rev-parse", "refs/remotes/origin/main"),
+        "open_pr_count": len(prs),
+        "counts": {"remote_unmerged": len(records), **role_counts},
+        "policy": {
+            "age_only_delete_forbidden": True,
+            "content_or_frontier_disposition_required": True,
+            "branch_ref_is_not_current_authority": True,
+        },
+        "branches": rows,
+    }
+
+
 def delete_remote(branches: list[str]) -> None:
     for start in range(0, len(branches), 25):
         batch = branches[start : start + 25]
@@ -201,6 +281,7 @@ def main() -> int:
     parser.add_argument("--receipt", type=Path, help="Write JSON audit receipt before any mutation.")
     parser.add_argument("--csv", type=Path, help="Write CSV ref→SHA audit table before any mutation.")
     parser.add_argument("--post-receipt", type=Path, help="Write JSON post-cleanup readback receipt.")
+    parser.add_argument("--triage-receipt", type=Path, help="Write JSON inventory of all unmerged remote refs; never deletes them.")
     parser.add_argument("--apply-remote", action="store_true", help="Delete safe merged remote refs.")
     parser.add_argument("--apply-local", action="store_true", help="Delete safe merged local refs.")
     parser.add_argument("--keep", action="append", default=[], help="Explicit branch ref to retain; repeatable.")
@@ -217,6 +298,7 @@ def main() -> int:
     explicit_keep = set(args.keep)
 
     remote_records = remote_merged_records()
+    unmerged_records = remote_unmerged_records()
     local_records = local_merged_records()
     remote_delete, remote_protected = classify(
         remote_records,
@@ -268,6 +350,8 @@ def main() -> int:
         write_receipt(root / args.receipt, payload)
     if args.csv:
         write_csv(root / args.csv, remote_delete + remote_protected)
+    if args.triage_receipt:
+        write_receipt(root / args.triage_receipt, build_unmerged_triage(unmerged_records, prs, worktrees))
 
     print(json.dumps(payload["counts"], ensure_ascii=False, indent=2))
     for item in remote_protected:

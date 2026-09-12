@@ -1,6 +1,6 @@
 {
   "schema": "OLEANDER_GIT_BRANCH_CLEANUP_AUDIT_v1",
-  "as_of": "2026-09-12T06:58:57.929165+00:00",
+  "as_of": "2026-09-12T07:00:02.429805+00:00",
   "repository": "Jiaosong/Design",
   "origin_main_sha": "a063b04e3e1efbc0b1fe3d40be93a3f606cfaaff",
   "delete_branch_on_merge": false,
@@ -9,9 +9,9 @@
     "merged_remote": 219,
     "safe_remote_delete": 217,
     "protected_merged_remote": 2,
-    "merged_local": 5,
+    "merged_local": 4,
     "safe_local_delete": 3,
-    "protected_merged_local": 2
+    "protected_merged_local": 1
   },
   "safe_remote_delete": [
     {
@@ -1801,14 +1801,6 @@
       "sha": "153b73936533587e6a5df50ed512899180896020",
       "committed_at": "2026-09-12 14:28:26 +0800",
       "subject": "governance(runtime): bind local MCP readback to shared execution surfaces",
-      "classification": "PROTECTED_MERGED_REF",
-      "protected_reason": "ACTIVE_WORKTREE"
-    },
-    {
-      "branch": "governance/github-branch-lifecycle-20260912",
-      "sha": "a063b04e3e1efbc0b1fe3d40be93a3f606cfaaff",
-      "committed_at": "2026-09-12 14:51:27 +0800",
-      "subject": "Merge pull request #531 from Jiaosong/agent/oleander-reader-visual-v1-20260912",
       "classification": "PROTECTED_MERGED_REF",
       "protected_reason": "ACTIVE_WORKTREE"
     }
