@@ -31,6 +31,7 @@ This is not a fixed waterfall. Any material failure may reopen the correct earli
 When applicable, resolve the Current canonical Notion owner before inventing local rules:
 
 - `KN-METHOD-DESIGN-GOAL-CONTRACT-001` — actor/context/outcome/guardrail, Need vs Goal vs Objective vs Requirement vs Criterion;
+- `KN-THEORY-DESIGN-RELATION-INTEGRITY-001` — OLEANDER-native relation judgement between Finding and Design Consequence: relation class, competing failure explanation, evidence claim ceiling, causal layer, bounded detail eligibility and reopen/dependency boundary;
 - `KN-METHOD-DESIGN-TRADE-STUDY-001` — alternatives, hard gates, uncertainty, sensitivity, decision corridor and post-decision validation;
 - `KN-METHOD-PRODUCT-PRINCIPLES-001` — repeated conflict, scope, falsifiability, exceptions, precedence and retirement;
 - `KN-THEORY-VISUAL-PERCEPTUAL-ORG-001` — perceptual grouping, figure-ground, cue competition and perturbation tests.

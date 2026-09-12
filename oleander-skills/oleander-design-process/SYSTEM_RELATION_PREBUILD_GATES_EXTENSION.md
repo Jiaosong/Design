@@ -4,6 +4,8 @@ Status: `OWNER-LOCAL EXTENSION / ACTIVE WITH oleander-design-process / CURRENT K
 
 Purpose: prevent high-fidelity geometry, constructive detail, CMF or presentation polish from advancing before the system relations that make the design usable and coherent have been made explicit and tested. This extension governs **design relation eligibility**; it does not replace engineering, code, ergonomics, manufacturing or field authority.
 
+Current Knowledge owner: `KN-THEORY-DESIGN-RELATION-INTEGRITY-001`. That L5 THEORY object owns the reusable relation judgement (`Definition → Mechanism → Causal Relation → Conditions → Competing Explanation → Evidence → Failure / Counterexample → Decision Consequence → Transfer Boundary → Cross-context Practice → Maturity`). This extension is only its execution gate inside `oleander-design-process`; do not duplicate or fork that knowledge here.
+
 ## 0｜Trigger
 
 Use this extension when a design contains one or more materially coupled physical or system relations, including circulation/entry/exit, stairs/platforms/headroom, body/path/object relation, host/attached-part relation, support/fastening/sealing/drainage/service relation, moving envelopes, host-driven procedural geometry, or multiple subsystems whose local geometry can look plausible while the combined relation can still fail.
