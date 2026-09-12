@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F1EEE6"/>
+<text x="96" y="74" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="23" letter-spacing="3" fill="#59615F">OLEANDER TRAINING / MOBILE GAME UI / SCENE-ANCHORED DEPTH GRAMMAR</text>
+<text x="96" y="130" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="48" font-weight="700" fill="#18211F">世界信息必须属于世界；只有安全与系统控制可以属于屏幕</text>
+<text x="96" y="172" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#69706D">C04 ROUTE overlay failure inspired · synthetic terrain · NTS · NOT GPS · FIELD OPEN · training-only</text>
+<rect x="96" y="226" width="800" height="692" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="132" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#914F3D">REJECT / SCREEN-FIXED OVERLAY</text>
+<text x="132" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">路线、节点、解释、Return 全部贴在同一 UI 平面；景观只是背景图。</text>
+<rect x="270" y="344" width="450" height="524" rx="38" fill="#101917"/>
+<defs><clipPath id="rclip"><rect x="286" y="360" width="418" height="492" rx="24"/></clipPath><clipPath id="kclip"><rect x="1182" y="360" width="418" height="492" rx="24"/></clipPath></defs>
+<g clip-path="url(#rclip)">
+<rect x="286" y="360" width="418" height="492" fill="#D8D2C5"/>
+<path d="M286 600 C350 500 408 480 462 520 C520 562 555 460 620 438 C655 425 680 440 704 420 L704 852 L286 852 Z" fill="#B5B1A5"/>
+<path d="M286 650 C370 612 440 615 510 646 C570 674 630 666 704 630 L704 852 L286 852 Z" fill="#8F9E96"/>
+<path d="M286 724 C378 690 455 697 536 724 C602 746 655 739 704 710" fill="none" stroke="#5C9498" stroke-width="32" stroke-linecap="round"/>
+<rect x="308" y="386" width="166" height="36" rx="18" fill="#F7F3EA" opacity=".96"/><text x="330" y="410" font-family="Arial,sans-serif" font-size="12" fill="#3D4844">ROUTE · R06</text>
+<path d="M332 690 C390 632 456 630 520 653 C580 675 626 672 666 646" fill="none" stroke="#F5F0E5" stroke-width="8" stroke-linecap="round"/>
+<circle cx="448" cy="640" r="15" fill="#4C8583" stroke="#F7F3EA" stroke-width="3"/><circle cx="604" cy="671" r="15" fill="#4C8583" stroke="#F7F3EA" stroke-width="3"/>
+<rect x="318" y="462" width="184" height="66" rx="16" fill="#F7F3EA" opacity=".96"/><text x="338" y="490" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" font-weight="700" fill="#26302D">观察点 R06</text><text x="338" y="513" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11" fill="#5E6662">河谷关系 / 可选解释</text>
+<rect x="488" y="566" width="178" height="64" rx="16" fill="#F7F3EA" opacity=".96"/><text x="507" y="594" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" font-weight="700" fill="#26302D">节点 R13</text><text x="507" y="617" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11" fill="#5E6662">裂隙 / Return 前置</text>
+<rect x="308" y="782" width="174" height="44" rx="12" fill="#4C8583"/><text x="350" y="809" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#fff">RETURN</text><rect x="496" y="782" width="174" height="44" rx="12" fill="#F7F3EA"/><text x="537" y="809" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#34413D">展开解释</text>
+</g>
+<text x="132" y="886" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#7D4A3A">FAIL：移动车景、路线与节点不会产生相对深度关系；所有元素像 HUD 贴纸。</text>
+<rect x="928" y="226" width="896" height="692" rx="24" fill="#DDD8CC" stroke="#BDB6A8" stroke-width="2"/>
+<text x="964" y="274" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#315D57">KEEP CANDIDATE / SPLIT DEPTH OWNERSHIP</text>
+<text x="964" y="309" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">World-bound cues follow scene geometry; screen controls remain fixed.</text>
+<rect x="1166" y="344" width="450" height="524" rx="38" fill="#101917"/>
+<g clip-path="url(#kclip)">
+<rect x="1182" y="360" width="418" height="492" fill="#D8D2C5"/>
+<path d="M1182 600 C1246 500 1304 480 1358 520 C1416 562 1451 460 1516 438 C1551 425 1576 440 1600 420 L1600 852 L1182 852 Z" fill="#B5B1A5"/>
+<path d="M1218 690 C1270 650 1328 642 1380 658 C1438 675 1490 668 1548 632" fill="none" stroke="#EDE7DA" stroke-width="10" stroke-linecap="round"/><path d="M1218 690 C1270 650 1328 642 1380 658 C1438 675 1490 668 1548 632" fill="none" stroke="#56615D" stroke-width="2.5" stroke-dasharray="5 8"/>
+<path d="M1182 650 C1266 612 1336 615 1406 646 C1466 674 1526 666 1600 630 L1600 852 L1182 852 Z" fill="#8F9E96"/>
+<path d="M1230 704 C1284 681 1336 679 1382 692" fill="none" stroke="#EDE7DA" stroke-width="10" stroke-linecap="round"/><path d="M1486 676 C1523 668 1558 655 1588 638" fill="none" stroke="#EDE7DA" stroke-width="10" stroke-linecap="round"/>
+<path d="M1182 724 C1274 690 1351 697 1432 724 C1498 746 1551 739 1600 710" fill="none" stroke="#5C9498" stroke-width="32" stroke-linecap="round"/>
+<circle cx="1326" cy="682" r="13" fill="#F7F3EA" stroke="#315D57" stroke-width="3"/><circle cx="1326" cy="682" r="4" fill="#315D57"/><line x1="1326" y1="668" x2="1326" y2="625" stroke="#315D57" stroke-width="2"/><rect x="1250" y="582" width="152" height="42" rx="12" fill="#F7F3EA" opacity=".92"/><text x="1270" y="609" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#26302D">R06 · 可选观察</text>
+<g opacity=".88"><circle cx="1518" cy="657" r="10" fill="#F7F3EA" stroke="#7A5D4C" stroke-width="2.5"/><line x1="1518" y1="647" x2="1518" y2="615" stroke="#7A5D4C" stroke-width="1.8"/><text x="1468" y="605" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11" fill="#4D5753">R13 · 远处</text></g>
+<rect x="1204" y="386" width="140" height="34" rx="17" fill="#F7F3EA" opacity=".95"/><text x="1224" y="409" font-family="Arial,sans-serif" font-size="12" fill="#3D4844">ROUTE · CONTEXT</text>
+<rect x="1204" y="786" width="148" height="42" rx="12" fill="#26312E"/><path d="M1226 807 h18 M1226 807 l7 -7 M1226 807 l7 7" fill="none" stroke="#fff" stroke-width="2"/><text x="1254" y="812" font-family="Arial,sans-serif" font-size="12" fill="#fff">RETURN</text>
+<text x="1428" y="812" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#34413D">可选解释</text><line x1="1428" y1="820" x2="1484" y2="820" stroke="#34413D" stroke-width="1.2"/>
+</g>
+<rect x="964" y="858" width="824" height="42" rx="10" fill="#F7F3EA"/><text x="984" y="884" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#4F5855">WORLD-BOUND: route / node / distance relation / local label   ·   SCREEN-BOUND: Return / safety / system status / global mode</text>
+<line x1="96" y1="960" x2="1824" y2="960" stroke="#BDB6A8" stroke-width="2"/>
+<text x="96" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="21" font-weight="700" fill="#18211F">PROMOTION TEST</text><text x="300" y="1004" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" fill="#59615F">Move the scene mentally: world-bound cues must keep believable depth/occlusion relations, while Return/safety controls remain readable without pretending to be in the landscape.</text>
+<text x="96" y="1045" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="15" fill="#747B78">Synthetic scene study only. Does not prove C04 GPS, route geometry, visibility, field distance, AR registration, device tracking, accessibility or operational state.</text>
+</svg>
