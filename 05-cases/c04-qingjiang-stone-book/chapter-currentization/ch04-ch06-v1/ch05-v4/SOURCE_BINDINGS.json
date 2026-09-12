@@ -1,0 +1,47 @@
+{
+  "version": "v4 REBUILD",
+  "status": "REJECT_SUPERSEDED_INVALID_IMAGE_BINDING_PROVENANCE_ONLY",
+  "current_visual_target": false,
+  "image_generation": "NOT_USED",
+  "project_image_ledger_prebind_check": "FAILED_NOT_RUN_BEFORE_BINDING",
+  "root_cause": "chapter-local duplicate check was incorrectly treated as sufficient; project-wide semantic image eligibility/reservation was not checked",
+  "current_reset": "PRE_PIXEL_SOURCE_BINDING_REQUIRED",
+  "pages": {
+    "CH05-P01": {
+      "source": "ROUTE-03 locked geometry carrier",
+      "eligibility": "READ_ONLY_ROUTE_AUTHORITY_BOUNDARY_ONLY",
+      "note": "not a content-image uniqueness loophole; does not validate v4"
+    },
+    "CH05-P02": {
+      "source": "F01 scenic carrier",
+      "semantic_image_id": "IMG-C04-F01-SCENIC-01",
+      "eligibility": "REJECTED_NOT_ELIGIBLE_DO_NOT_REUSE",
+      "binding_valid": false
+    },
+    "CH05-P03": {
+      "source": "R06 landscape carrier",
+      "eligibility": "PROJECT_WIDE_CONSUMPTION_OWNERSHIP_CONFLICT_HOLD",
+      "binding_valid": false,
+      "note": "no independent CH05 image slot authorized; R06 remains FINISHED_FROZEN_NO_REOPEN"
+    },
+    "CH05-P04": {
+      "source": "cable landscape carrier",
+      "eligibility": "NOT_LEDGER_VERIFIED_NOT_RESERVED_TO_CH05",
+      "binding_valid": false,
+      "note": "SOURCE_FOUND != IMAGE_SLOT_AVAILABLE"
+    }
+  },
+  "future_binding_contract": [
+    "QUERY_CURRENT_PROJECT_IMAGE_LEDGER_FIRST",
+    "VERIFY_SEMANTIC_SOURCE_IDENTITY_AND_EXACT_BYTES_HASH_WHEN_APPLICABLE",
+    "REQUIRE_AVAILABLE_TO_RESERVED_FOR_EXACT_CH05_CONSUMER",
+    "IF_NOT_AVAILABLE_USE_INDEPENDENT_NATIVE_VECTOR_ANALYTICAL_EVIDENCE_MEDIUM",
+    "NO_AI_GENERATED_SUBSTITUTE"
+  ],
+  "does_not_prove": [
+    "current image eligibility",
+    "design pass",
+    "web allocation",
+    "field validation"
+  ]
+}

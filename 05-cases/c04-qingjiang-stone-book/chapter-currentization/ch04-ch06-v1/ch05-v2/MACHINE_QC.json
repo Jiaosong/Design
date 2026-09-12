@@ -1,0 +1,30 @@
+{
+  "CH05-P01.svg": {
+    "bytes": 98770,
+    "has_1920x1080": true,
+    "editable_text_count": 22,
+    "embedded_image_count": 1,
+    "field_claim_guard": true
+  },
+  "CH05-P02.svg": {
+    "bytes": 436867,
+    "has_1920x1080": true,
+    "editable_text_count": 33,
+    "embedded_image_count": 1,
+    "field_claim_guard": true
+  },
+  "CH05-P03.svg": {
+    "bytes": 892641,
+    "has_1920x1080": true,
+    "editable_text_count": 41,
+    "embedded_image_count": 3,
+    "field_claim_guard": true
+  },
+  "CH05-P04.svg": {
+    "bytes": 1219835,
+    "has_1920x1080": true,
+    "editable_text_count": 28,
+    "embedded_image_count": 3,
+    "field_claim_guard": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "CH04": [
+    ["CH04-P01", "状态变量 / 同一游客变化"],
+    ["CH04-P02", "儿童/亲子 / 共同发现"],
+    ["CH04-P03", "青年探索 / Agency"],
+    ["CH04-P04", "成年深读 / L0–L4"],
+    ["CH04-P05", "低体力 / 低数字熟悉度 / No-phone"],
+    ["CH04-P06", "同一R06四种深度 / Existing Mature Design First"]
+  ],
+  "CH05": [
+    ["CH05-P01", "游程阶段与优先级变化"],
+    ["CH05-P02", "身体状态 → 设计"],
+    ["CH05-P03", "Attention Budget → FULL/LIGHT/OFF"],
+    ["CH05-P04", "行为动作语言"]
+  ],
+  "CH06": [
+    ["CH06-P01", "真实清江优先"],
+    ["CH06-P02", "确定性先于丰富性"],
+    ["CH06-P03", "三种观看尺度"],
+    ["CH06-P04", "场景决定信息密度"],
+    ["CH06-P05", "系统退场 / 经历留下"]
+  ],
+  "final_web_pid_allocation": "NOT_PERFORMED__EXACT_PROTECTED_PAGE_REGISTER_NOT_YET_LOCKED"
+}

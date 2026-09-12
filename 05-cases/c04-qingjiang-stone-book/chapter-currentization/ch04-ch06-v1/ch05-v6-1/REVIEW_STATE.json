@@ -1,0 +1,27 @@
+{
+  "version": "v6.1",
+  "state": "PRODUCER CANDIDATE / ACTUAL TARGET-SIZE READBACK COMPLETE / DRIVE PERSISTED + RAW REFETCH VERIFIED / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "oleander_dag": [
+    "oleander-story-and-board",
+    "oleander-data-viz",
+    "Technical Drawing candidate body rules for P02 only"
+  ],
+  "supersession": {
+    "v5": "SUPERSEDED / PROVENANCE ONLY",
+    "v4": "REJECT / INVALID IMAGE BINDING / PROVENANCE ONLY",
+    "v3": "SUPERSEDED / PROVENANCE ONLY"
+  },
+  "producer_readback_repairs": [
+    "P01 route inset added named Qingjiang anchors without stage registration.",
+    "P02 six-card wall removed; replaced by one continuous Qingjiang body section.",
+    "P03 six-card wall removed; now exact same P02 base condition spine + attention reveal.",
+    "P04 table removed; replaced by three-domain condition→behavior→response grammar.",
+    "Desktop P01 now shows RETURN explicitly in the experience stage rail.",
+    "Mobile P02 preserves explicit Qingjiang condition names.",
+    "Mobile P03 preserves all seven condition column identities.",
+    "Mobile P04 restores the Valid Design Response layer; no-loss semantic recomposition."
+  ],
+  "actual_preview_after_repairs": "COMPLETE / PRODUCER READBACK ONLY",
+  "independent_professional_design_review": "PENDING",
+  "no_self_keep": true
+}

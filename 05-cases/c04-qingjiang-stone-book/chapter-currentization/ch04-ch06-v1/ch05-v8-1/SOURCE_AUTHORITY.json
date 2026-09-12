@@ -1,0 +1,25 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH05",
+  "route_authority": {
+    "id": "ROUTE-03",
+    "state": "USER LOCKED CURRENT",
+    "operation": "read-only exact topology / presentation transform only",
+    "node_count": 17,
+    "does_not_prove": ["GPS", "stage-to-location registration"]
+  },
+  "terrain_authority": {
+    "upstream": "CH02 Current GLO-30 v1.1",
+    "dataset": "Copernicus GLO-30 DSM",
+    "shape": [94, 193],
+    "approx_cell_m": 30,
+    "crs": "EPSG:32649",
+    "usage": "source-derived hillshade / contour / representative section excerpts",
+    "does_not_prove": ["bare-earth DTM", "surveyed body location", "field-measured passage geometry"]
+  },
+  "current_object_bindings": ["R01", "ROUTE-03", "R06", "R13", "RETURN"],
+  "ch05_conditions": ["MOVE", "LOOK", "OBSERVE", "RECOVER", "CHOOSE", "PASS"],
+  "raster_scenic_content_images": 0,
+  "ai_image_generation": false,
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

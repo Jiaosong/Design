@@ -1,0 +1,30 @@
+{
+  "version": "CH05 v6.1 QINGJIANG-SPECIFIC / SAME-SOURCE REVEAL",
+  "content_authority": "CH05 Current Material + v0.3",
+  "brand_presentation_grammar": "CH14 Current / CONTEMPORARY EDITORIAL + LANDSCAPE SPACE / LINE-PAGE-TRACE",
+  "image_consumption": {
+    "raster_content_images": 0,
+    "ai_generation": false,
+    "ledger_conflict": false
+  },
+  "spatial_authority": {
+    "ROUTE-03": "USER LOCKED CURRENT v3.4",
+    "operation": "read-only exact path-data subset in P01 authority inset",
+    "not_used_as": "stage-to-location registration"
+  },
+  "new_native_vectors": {
+    "P01": "Qingjiang experience transect, relational/NTS/not site section",
+    "P02": "Qingjiang continuous body-spatial condition section, relational/not measured",
+    "P03": "same Qingjiang condition spine + attention ordinal reveal",
+    "P04": "Current condition → behavior → valid response grammar"
+  },
+  "same_source_pair": {
+    "P02_base_object": "QINGJIANG_CONDITION_SPINE_v6_1",
+    "P03_base_object": "QINGJIANG_CONDITION_SPINE_v6_1",
+    "base_geometry": "identical shared condition spine",
+    "P03_overlay": "attention ownership tracks + content FULL/LIGHT/OFF only",
+    "does_not_prove": "measured section, exact site sequence, cognitive measurement"
+  },
+  "P01_named_route_anchors": "水布垭大坝 / 蝴蝶崖 / 游船码头 / 游客中心-RETURN; source anchors only, not journey-stage registration",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "CH05 v8.2.1 REFINED",
+  "content_authority": "CH05 Current Material / v0.3",
+  "route_authority": {
+    "id": "ROUTE-03",
+    "state": "USER LOCKED CURRENT",
+    "operation": "read-only exact topology",
+    "route_node_count": 17,
+    "forbidden": ["redraw", "topology mutation", "stage-to-location registration"]
+  },
+  "terrain_authority": {
+    "source": "CH02 Current GLO-30 v1.1",
+    "shape": [94, 193],
+    "resolution_m_approx": 30,
+    "crs": "EPSG:32649",
+    "surface": "DSM / not bare-earth DTM",
+    "use_in_CH05": "source-grounded terrain carrier + six representative sample transects A-F"
+  },
+  "current_objects": ["R01", "ROUTE-03", "R06", "R13", "RETURN"],
+  "current_conditions": ["MOVE", "LOOK", "OBSERVE", "RECOVER", "CHOOSE", "PASS"],
+  "raster_scenic_photo_content_images": 0,
+  "ai_image_generation": false,
+  "invented_qingjiang_landform_proxy": 0,
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
