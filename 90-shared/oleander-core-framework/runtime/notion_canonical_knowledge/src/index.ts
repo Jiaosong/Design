@@ -687,6 +687,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (request.method === "POST") {
       const body = (await request.json().catch(() => ({}))) as {
         page_id?: string;
+        intent?: "REVIEW" | "HOLD" | "ARCHIVE" | "BLOCK_SEARCH";
+        reason?: string;
         updates?: {
           canonical_id?: string | null;
           retrieval_space?: string | null;
@@ -700,10 +702,22 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
         };
       };
       if (!body.page_id) return json({ ok: false, error: "page_id_required" }, 400);
-      if (!body.updates || typeof body.updates !== "object") return json({ ok: false, error: "updates_required" }, 400);
+      const allowedIntents = new Set(["REVIEW", "HOLD", "ARCHIVE", "BLOCK_SEARCH"]);
+      if (body.intent && !allowedIntents.has(body.intent)) return json({ ok: false, error: "invalid_governance_intent" }, 400);
+      if (body.intent && body.updates) return json({ ok: false, error: "intent_and_updates_are_mutually_exclusive" }, 400);
+      if (!body.intent && (!body.updates || typeof body.updates !== "object")) return json({ ok: false, error: "intent_or_updates_required" }, 400);
       const before = normalizePage(await fetchPage(env, body.page_id));
       if (before.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
         return json({ ok: false, error: "governance_page_not_in_notes_data_source" }, 409);
+      }
+      if (body.intent) {
+        const reason = body.reason?.trim() ?? "";
+        if (reason.length < 12 || reason.length > 2000) {
+          return json({ ok: false, error: "governance_intent_reason_required" }, 400);
+        }
+        if (!body.expected?.canonical_id || !body.expected?.notion_last_edited_time) {
+          return json({ ok: false, error: "governance_intent_requires_expected_identity_and_revision" }, 400);
+        }
       }
       if (body.expected?.canonical_id && before.canonicalId !== body.expected.canonical_id) {
         return json({
@@ -721,15 +735,124 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
           actual: before.lastEditedTime,
         }, 409);
       }
-      await updatePageGovernanceFields(env, body.page_id, body.updates);
-      const syncResult = await syncPage(env, {
-        kind: "notion-page-sync",
-        page_id: body.page_id,
-        cause_id: `governance:${crypto.randomUUID()}`,
-        cause_type: "manual",
+
+      let resolvedUpdates = body.updates ?? {};
+      let replacementReadback: Array<{
+        page_id: string;
+        canonical_id: string | null;
+        retrieval_space: string | null;
+        governance_state: string | null;
+        relation_state: string | null;
+      }> = [];
+      if (body.intent === "REVIEW") {
+        resolvedUpdates = { governance_state: "REVIEW", relation_state: "REVIEW" };
+      } else if (body.intent === "HOLD") {
+        resolvedUpdates = { governance_state: "HOLD", relation_state: "REVIEW" };
+      } else if (body.intent === "BLOCK_SEARCH") {
+        resolvedUpdates = { search_eligibility: "BLOCKED" };
+      } else if (body.intent === "ARCHIVE") {
+        if (before.retrievalSpace === "CURRENT") {
+          const replacementPages = await Promise.all(before.replacementIds.map(async (replacementId) => {
+            const replacement = normalizePage(await fetchPage(env, replacementId));
+            return replacement;
+          }));
+          replacementReadback = replacementPages.map((replacement) => ({
+            page_id: replacement.pageId,
+            canonical_id: replacement.canonicalId,
+            retrieval_space: replacement.retrievalSpace,
+            governance_state: replacement.governanceState,
+            relation_state: replacement.relationState,
+          }));
+          const validReplacements = replacementPages.filter((replacement) =>
+            replacement.pageId !== before.pageId &&
+            replacement.parentDataSourceId === env.NOTION_NOTES_DATA_SOURCE_ID &&
+            !replacement.inTrash &&
+            replacement.retrievalSpace === "CURRENT" &&
+            replacement.governanceState === "ACTIVE" &&
+            replacement.relationState === "VALID"
+          );
+          if (validReplacements.length === 0) {
+            return json({ ok: false, error: "current_archive_requires_current_active_valid_replacement", before, replacement_readback: replacementReadback }, 409);
+          }
+          if (validReplacements.length > 1) {
+            return json({ ok: false, error: "current_archive_replacement_ambiguous", before, replacement_readback: replacementReadback }, 409);
+          }
+        }
+        resolvedUpdates = {
+          retrieval_space: "PROVENANCE",
+          search_eligibility: "HISTORY_ONLY",
+          governance_state: "ARCHIVED",
+        };
+      }
+
+      const materialDelta = Object.entries(resolvedUpdates).some(([key, value]) => {
+        if (key === "canonical_id") return before.canonicalId !== value;
+        if (key === "retrieval_space") return before.retrievalSpace !== value;
+        if (key === "search_eligibility") return before.searchEligibility !== value;
+        if (key === "governance_state") return before.governanceState !== value;
+        if (key === "relation_state") return before.relationState !== value;
+        return true;
       });
-      const after = normalizePage(await fetchPage(env, body.page_id));
-      return json({ ok: true, before, after, sync: syncResult });
+      if (!materialDelta) {
+        return json({ ok: false, error: "no_material_governance_delta", before, intent: body.intent ?? null, resolved_updates: resolvedUpdates }, 409);
+      }
+
+      const patched = normalizePage(await updatePageGovernanceFields(env, body.page_id, resolvedUpdates));
+      try {
+        const syncResult = await syncPage(env, {
+          kind: "notion-page-sync",
+          page_id: body.page_id,
+          cause_id: `governance:${crypto.randomUUID()}`,
+          cause_type: "manual",
+        });
+        const after = normalizePage(await fetchPage(env, body.page_id));
+        const readbackMatches = Object.entries(resolvedUpdates).every(([key, value]) => {
+          if (key === "canonical_id") return after.canonicalId === value;
+          if (key === "retrieval_space") return after.retrievalSpace === value;
+          if (key === "search_eligibility") return after.searchEligibility === value;
+          if (key === "governance_state") return after.governanceState === value;
+          if (key === "relation_state") return after.relationState === value;
+          return false;
+        });
+        if (!readbackMatches) {
+          return json({
+            ok: false,
+            error: "governance_post_write_readback_mismatch",
+            notion_write_applied: true,
+            before,
+            after,
+            sync: syncResult,
+            intent: body.intent ?? null,
+            reason: body.intent ? body.reason?.trim() : null,
+            resolved_updates: resolvedUpdates,
+            replacement_readback: replacementReadback,
+          }, 502);
+        }
+        return json({
+          ok: true,
+          before,
+          after,
+          sync: syncResult,
+          intent: body.intent ?? null,
+          reason: body.intent ? body.reason?.trim() : null,
+          resolved_updates: resolvedUpdates,
+          replacement_readback: replacementReadback,
+        });
+      } catch (error) {
+        return json({
+          ok: false,
+          error: "governance_sync_failed_after_notion_write",
+          notion_write_applied: true,
+          before,
+          after: patched,
+          sync: null,
+          sync_error: error instanceof Error ? error.message : String(error),
+          intent: body.intent ?? null,
+          reason: body.intent ? body.reason?.trim() : null,
+          resolved_updates: resolvedUpdates,
+          replacement_readback: replacementReadback,
+        }, 502);
+      }
     }
   }
 
