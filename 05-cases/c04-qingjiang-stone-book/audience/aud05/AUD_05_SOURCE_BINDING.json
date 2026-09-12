@@ -1,0 +1,16 @@
+{
+  "source_file": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+  "source_drive_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+  "source_bytes": 3313809,
+  "source_role": "mature R06 landscape source / preserved first-read",
+  "audience_source": "C04-B_SCENE-AUDIENCE-MATRIX_v0.1.csv / R06 rows / canonical A01-A04",
+  "benchmark_file": "09_C04_R06_AUDIENCE_DEPTH_CURRENTIZED_v4.png",
+  "benchmark_drive_id": "16WA2GIiNFrRsT9r-k1nPxw2PfPlyEpNt",
+  "does_not_prove": [
+    "field-tested usability",
+    "demographic prevalence",
+    "accessibility certification",
+    "exact R06 geometry",
+    "operational certainty"
+  ]
+}
