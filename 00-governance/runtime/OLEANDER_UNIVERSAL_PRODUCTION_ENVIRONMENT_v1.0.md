@@ -1,7 +1,7 @@
 # OLEANDER Universal Production Environment v1.0
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.0.5**  
+Implementation revision: **1.0.6**
 Scope: **ALL OLEANDER projects / all lanes / all conversations / all media**
 
 ## 0｜Core correction
@@ -20,7 +20,7 @@ Tool choice follows the project and active user constraints. The project never f
 
 ## 1｜Sticky constraint preflight
 
-Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.2`.
+Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.5`.
 
 Hard rules:
 
@@ -107,6 +107,24 @@ Canonical pattern:
 not:
 
 `GPT TURN → PARTIAL COMPUTE → WAIT ONE HOUR → RESUME THE SAME DETERMINISTIC COMPUTE`.
+
+### 3C｜Local execution bridge ≠ OLEANDER Control Plane
+
+Chat On Steroids, MCP registrations, local tool runtimes and host applications belong to the **execution plane**. Their machine-local Current readback is an input to capability resolution, not a replacement for the existing OLEANDER Project Control Plane, Project State, Source Authority or Design Authority.
+
+Current binding:
+
+`Project Control Plane / Current Authority → Default Skill Resolver → Universal Production Environment → Shared Execution Surfaces → selected connector/runtime/MCP → local runtime readback → actual capability result`.
+
+For the Chat On Steroids bridge, machine-local state may be read from `.mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json` or the equivalent workspace-local path. That file may record account-connector visibility, MCP registration/transport, local source/deployment/host, endpoint ownership, health and migration/rollback metadata.
+
+Hard boundaries:
+
+- the persistent execution-surface role/eligibility registry remains `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1`;
+- local runtime readback is dynamic evidence and has authority ceiling `EXECUTION_CAPABILITY_ONLY`;
+- an inventory entry does not become a canonical shared execution surface merely because it is installed or visible;
+- runtime/deployment states must remain separate from Job State, Design State, Skill lifecycle, Project State, Evidence state and Authority state;
+- `MCP READY`, `HOST RUNNING`, `FUNCTIONAL`, `VALIDATED` or `LIVE_CURRENT` prove only the bounded runtime/deployment fact they name.
 
 ## 4｜Universal capability states
 

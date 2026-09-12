@@ -1,7 +1,7 @@
 {
   "schema": "oleander.shared-execution-surfaces.v0.1",
   "status": "ACTIVE_EXECUTION_SURFACE_REGISTRY",
-  "implementation_revision": "0.4",
+  "implementation_revision": "0.5",
   "parent": "OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0",
   "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY; FIGMA_REQUIRES_EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE_BEFORE_PROBE",
   "surfaces": {
@@ -23,6 +23,26 @@
       "cross_conversation": true,
       "default_production_eligible": true,
       "boundary": "Canonical Path and remote readback required"
+    },
+    "chat_on_steroids_local_execution_bridge": {
+      "class": "LOCAL_EXECUTION_BRIDGE",
+      "lifecycle_state": "ACTIVE",
+      "default_production_eligible": false,
+      "role": "MCP_TRANSPORT_LOCAL_HOST_EXECUTION_AND_RUNTIME_READBACK",
+      "cross_conversation": true,
+      "machine_local": true,
+      "global_current_store": false,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "local_runtime_relative_path": ".mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json",
+      "runtime_readback": "OLEANDER_LOCAL_EXECUTION_SURFACE_RUNTIME_READBACK_SCHEMA_1_4",
+      "inventory_scope": [
+        "SELECTED_ACCOUNT_CONNECTOR_VISIBILITY",
+        "COS_MCP_REGISTRATION_AND_TRANSPORT",
+        "LOCAL_SOURCE_DEPLOYMENT_HOST_ENDPOINT_HEALTH",
+        "RUNTIME_MIGRATION_AND_ROLLBACK_METADATA"
+      ],
+      "selection_rule": "SELECT_BY_EXISTING_OWNER_REQUIRED_NATIVE_OUTPUT_AUTHORITY_CEILING_AND_VERIFIED_RUNTIME_STATE; DO_NOT_ROUTE_BY_PLUGIN_OR_VENDOR_NAME",
+      "boundary": "The local readback registry is dynamic runtime evidence only. It does not create Project State, Source Authority, Design Authority, Skill routing ontology, Promotion state, or a second Control Plane. Inventory visibility does not by itself register or activate a canonical shared surface."
     },
     "blender_shared_runtime": {
       "class": "SHARED_REPO_RUNTIME",
