@@ -1,6 +1,6 @@
 # OLEANDER Notion Post-Sync Governance Audit — 2026-09-12
 
-Status: **PHASE 2 ACTIVE / READER LAYER LIVE / ACADEMIC MIGRATION STARTED / NO PERMANENT DELETE**
+Status: **POST-SYNC GOVERNANCE ACTIVE / READER LAYER LIVE / ACADEMIC MIGRATION 4/7 / NO PERMANENT DELETE**
 
 This audit starts after the `1,184 / 1,184` corpus reconcile closed. It does not create a new knowledge authority. Notion remains canonical; D1/Vectorize are derivative readback surfaces.
 
@@ -409,3 +409,98 @@ After that correction:
 - A second live execution returned the exact same Dashboard and five widget IDs, proving the upgrade path is idempotent rather than additive pollution.
 - D1 runtime state `reader_visual_v1` stores the same IDs, counts, academic progress, and non-truncated live readback.
 - No Note page, history carrier, relation, Canonical ID, retrieval authority or academic content was deleted or demoted by this visualization pass.
+
+## Phase 6 — D07 Housing / Daily Life Academic Migration
+
+`D07｜居住研究、住房与日常生活` has completed the additive academic migration. The new Current keeps the old page's practical housing material available as provenance, while moving the first reading layer from a broad checklist/encyclopedia pattern to a narrower argument about adequate housing, affordability, residential stability, healthy-housing exposure and spatial adaptation over time.
+
+New Current knowledge object:
+
+- Page ID: `3d9b86be-5c47-814c-8ec5-cafebf91551a`
+- Canonical ID: `KN-ARCH-HOUSING-DAILY-LIFE-001`
+- Human title: `住房与日常生活：适足性、居住稳定与空间适配`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / THEORY`
+- Trust remains `UNVERIFIED`; no false `VERIFIED` promotion was introduced.
+- Normal `syncPage` result after validity promotion: `INDEXED`, `45` active chunks.
+
+### D07 Academic Quality Gate
+
+The new page was created as `REVIEW` first. It was promoted to `VALID` only after both the bearer-protected Worker readback and an independent connected Notion readback confirmed the actual live page body.
+
+The reviewed page uses the required academic sequence:
+
+`Research Question / Thesis → Claim–Evidence Map → Rival / Counterevidence → Method / Evidence Boundary → Arguments → Evaluation / Project Translation → Applicability / Limitations → Conclusion → References`
+
+Quality controls confirmed in the live page:
+
+- one explicit research question and five conditional theses;
+- a Claim–Evidence Map separating authoritative rights/health guidance from academic/review evidence and project-level rules;
+- authoritative boundary sources from OHCHR / CESCR and WHO (`S1–S4`);
+- peer-reviewed / institutional evidence `A1–A9` covering residual-income affordability, renter housing insecurity and mental health, eviction, energy poverty, housing + transport affordability, flexibility and home modification / ageing in place;
+- the 2026 renter systematic review is kept at its actual evidence strength: `22` studies, `14` longitudinal; `6/9` affordability and `12/14` instability studies reported significant adverse mental-health associations, while the review's overall GRADE remained `low–very low`;
+- six explicit Rival / Counterevidence sections test area-as-quality, fixed affordability ratios, technical-performance determinism, flexibility determinism, universal ageing-in-place preference and architectural overreach into tenure / housing-system causality;
+- claims without direct external support are explicitly identified as `Normative rule`, `Heuristic` or `Hypothesis` instead of being presented as sourced facts;
+- project research / POE and causal design defer to `MTH-ARCH-RESEARCH-001`;
+- policy, standard, version and evidence-authority conflicts defer to `MTH-ARCH-EVIDENCE-GOV-001`;
+- the old D07's family types, activity logs, space hierarchy, kitchen/sanitation/storage, health-housing material, adaptation hierarchy, POE timing, theory/history, policy/cases, international comparison, methods, glossary and references remain available in History / Provenance rather than being compressed into the Current.
+
+Final live Notion readback after promotion:
+
+- New Current markdown length: `17,577` characters
+- New Current: `markdown_truncated=false`, `unknown_block_ids=[]`
+- Old D07 markdown length: `19,559` characters
+- Old D07: `markdown_truncated=false`, `unknown_block_ids=[]`
+
+### D07 NO LOSS / Replacement Readback
+
+Old D07 remains fully present in Notion and indexed as `67` active chunks. It is now:
+
+- Canonical ID: `LEGACY-KN-ARCH-HOUSING-DAILY-LIFE-D07-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `KN-ARCH-HOUSING-DAILY-LIFE-001`
+- original body retained; the governance cutover changed identity/retrieval properties only.
+
+No old body content was compressed, overwritten or permanently deleted. The temporary local academic draft files remain outside Git governance and were not added to this migration commit.
+
+### Phase 6 D1 Readback
+
+After the D07 authority cutover:
+
+- Notes/D1 document rows: `1,193`
+- Active documents: `1,191`
+- Excluded documents: `2` (the same preserved orphan empty pages)
+- Explicit `CURRENT`: `49`
+- `SUPPORT`: `930`
+- `PROVENANCE`: `212`
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current row: `KN-ARCH-HOUSING-DAILY-LIFE-001 / CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / 45 active chunks`
+- Old row: `LEGACY-KN-ARCH-HOUSING-DAILY-LIFE-D07-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / 67 active chunks`
+
+The +1 document / +1 active-document delta from the preceding academic state is the intended additive Current carrier, not duplicate pollution.
+
+### Reader Readback After D07
+
+The existing Notion Reader / Dashboard was refreshed in place; no second reader or knowledge database was created.
+
+- Core Knowledge: `274`
+- Methods: `73`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `215`
+- Academic migration: `4 / 7`
+- Next: `D03｜气候低碳与韧性设计`
+- Reader markdown readback: `3,953` characters, `markdown_truncated=false`, `unknown_block_ids=[]`
+
+These Reader counts retain the existing Notion visualization semantics and should not be conflated with the separate live MCP Reader snapshot metrics. The next academic migration is now D03; D04, D06 and D07 must not be reopened as unfinished work.
+
+The separate OLEANDER Visual Knowledge Reader MCP also picked up the D07 cutover dynamically through `/v1/reader-snapshot`, without a Reader redeploy or CoS reload:
+
+- live item count: `1,191`
+- Core Knowledge: `274`
+- Methods: `92`
+- Evidence: `574`
+- Practice: `78`
+- History: `212`
+- canonical authority reported by the Reader snapshot: `Notion`
+
+The MCP metrics follow the Reader snapshot classifier and therefore intentionally differ from the native Notion Dashboard's visualization slices. This readback proves the presentation layer is consuming the existing canonical derivative rather than maintaining a second knowledge corpus.
