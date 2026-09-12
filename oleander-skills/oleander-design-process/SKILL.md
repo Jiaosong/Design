@@ -26,9 +26,9 @@ The design-specific cognitive loop is:
 
 This is not a fixed waterfall. Any material failure may reopen the correct earlier layer.
 
-## Current knowledge routing anchors
+## Canonical knowledge routing anchors
 
-When applicable, resolve the Current canonical Notion owner before inventing local rules:
+When applicable, resolve the live canonical Notion owner and runtime state before inventing local rules or describing an anchor as Current:
 
 - `KN-METHOD-DESIGN-GOAL-CONTRACT-001` — actor/context/outcome/guardrail, Need vs Goal vs Objective vs Requirement vs Criterion;
 - `KN-THEORY-DESIGN-RELATION-INTEGRITY-001` — OLEANDER-native relation judgement between Finding and Design Consequence: relation class, competing failure explanation, evidence claim ceiling, causal layer, bounded detail eligibility and reopen/dependency boundary;
@@ -36,7 +36,7 @@ When applicable, resolve the Current canonical Notion owner before inventing loc
 - `KN-METHOD-PRODUCT-PRINCIPLES-001` — repeated conflict, scope, falsifiability, exceptions, precedence and retirement;
 - `KN-THEORY-VISUAL-PERCEPTUAL-ORG-001` — perceptual grouping, figure-ground, cue competition and perturbation tests.
 
-These anchors are routing references, not copied authority. Project Current and specialist Source Authority still override generic knowledge where required.
+These IDs are routing references, not guaranteed Current authority. At execution time read back `Retrieval Space / Search Eligibility / Governance State / Relation State / Trust-Freshness`. Consume an owner as Current only when the canonical runtime explicitly resolves it to `CURRENT`. `SUPPORT / REVIEW / SCOPED` remains supporting context only; missing retrieval metadata must fail closed under the Knowledge Lifecycle policy. Skill wording never promotes knowledge. Project Current and specialist Source Authority still override generic knowledge where required.
 
 ## Specialist extension routing
 
@@ -190,7 +190,7 @@ Before selection, separate:
 4. stakeholder/value conflict;
 5. specialist judgments that DESIGN cannot own.
 
-Use the Current Trade Study owner where comparison is non-trivial.
+Resolve `KN-METHOD-DESIGN-TRADE-STUDY-001` when comparison is non-trivial. Consume it as Current only if live canonical readback says `CURRENT`; if it remains `SUPPORT / REVIEW / SCOPED`, use it only as bounded supporting method context and preserve that authority boundary.
 
 Prefer:
 `DOMINANCE CHECK → PARETO / DECISION CORRIDOR → SENSITIVITY / ROBUSTNESS → DISCRIMINATING TEST → DECISION`
@@ -473,7 +473,7 @@ Missing proof remains missing proof even when a composition would benefit from m
 ## Rules
 
 1. Start from a real project Decision Question or genuine capability gap.
-2. Existing Skill First and Current Knowledge First where applicable.
+2. Existing Skill First; resolve canonical knowledge first and consume it as Current only when live runtime says `CURRENT`.
 3. Keep evidence, inference, assumption and decision separate.
 4. Frame actor/context/outcome/guardrail before committing to form.
 5. Expose the key unknown that can still change the decision.
