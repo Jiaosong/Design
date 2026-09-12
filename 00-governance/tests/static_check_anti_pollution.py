@@ -193,6 +193,13 @@ def main() -> None:
         {"NOT_OPEN_PR_HEAD", "NOT_OPEN_PR_BASE", "NOT_ACTIVE_WORKTREE", "NO_EXPLICIT_KEEP", "NO_UNIQUE_MERGE_COMMITS", "GIT_CHERRY_HAS_AT_LEAST_ONE_UNIQUE_COMMIT", "ALL_GIT_CHERRY_RESULTS_ARE_ABSORBED_MINUS", "GIT_CHERRY_RESULT_COUNT_EQUALS_UNIQUE_COMMIT_COUNT"}.issubset(patch_conditions),
         "unmerged patch-equivalent cleanup conditions incomplete",
     )
+    merged_base = branch_guard["merged_open_pr_base_resolution"]
+    check(
+        {"BASE_ALREADY_MERGED_INTO_MAIN", "HEAD_STILL_HAS_UNABSORBED_COMMITS", "MAIN_PLUS_HEAD_MERGE_TREE_CLEAN", "HEAD_REF_UNCHANGED"}.issubset(set(merged_base["retarget_to_main_when"])),
+        "merged open-PR base retarget conditions incomplete",
+    )
+    check(merged_base["after_retarget"] == "DELETE_MERGED_BASE_REF_WHEN_NO_OTHER_DEPENDENCY_REMAINS", "merged base cleanup action drifted")
+    check(merged_base["unsafe_or_ambiguous_retarget"] == "HOLD_AND_RETAIN_BASE", "unsafe merged-base retarget must HOLD")
     main_protection = branch_guard["main_branch_protection"]
     check(main_protection["direct_push_allowed"] is False, "main direct push must remain disabled")
     check(main_protection["require_pull_request"] is True, "main must require pull requests")
@@ -205,6 +212,7 @@ def main() -> None:
     check("OPEN PR BASE" in policy and "ACTIVE WORKTREE" in policy, "branch cleanup dependency protections missing from policy")
     check("SAFE_DELETE_NOOP_UNMERGED_ORPHAN" in policy, "content-equivalent unmerged cleanup rule missing from policy")
     check("SAFE_DELETE_PATCH_EQUIVALENT_UNMERGED_ORPHAN" in policy, "patch-equivalent unmerged cleanup rule missing from policy")
+    check("open PR must not permanently retain an already-merged historical base" in policy, "merged PR-base retarget rule missing from policy")
     check("`main` is a PR-only integration surface" in policy, "main PR-only integration boundary missing from policy")
     enforce_consolidation_guard(contract)
 

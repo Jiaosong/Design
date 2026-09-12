@@ -180,6 +180,16 @@
       "ALL_GIT_CHERRY_RESULTS_ARE_ABSORBED_MINUS",
       "GIT_CHERRY_RESULT_COUNT_EQUALS_UNIQUE_COMMIT_COUNT"
     ],
+    "merged_open_pr_base_resolution": {
+      "retarget_to_main_when": [
+        "BASE_ALREADY_MERGED_INTO_MAIN",
+        "HEAD_STILL_HAS_UNABSORBED_COMMITS",
+        "MAIN_PLUS_HEAD_MERGE_TREE_CLEAN",
+        "HEAD_REF_UNCHANGED"
+      ],
+      "after_retarget": "DELETE_MERGED_BASE_REF_WHEN_NO_OTHER_DEPENDENCY_REMAINS",
+      "unsafe_or_ambiguous_retarget": "HOLD_AND_RETAIN_BASE"
+    },
     "main_branch_protection": {
       "direct_push_allowed": false,
       "require_pull_request": true,
