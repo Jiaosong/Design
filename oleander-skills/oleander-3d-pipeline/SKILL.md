@@ -326,6 +326,8 @@ Source representation, Derived Execution representation and target use/export.
 - UV/material IDs survive required export;
 - plausible bounding box/units;
 - no evaluated-mesh artifact is mistaken for Source.
+- surface-following secondary details such as seams, battens, purlins, trims, gaskets, rails or panelization are bound to the evaluated authoritative host surface/edge or an explicitly governed offset when geometric coincidence matters;
+- repeated/derived details terminate at real host boundaries/openings and do not float, penetrate, overrun or bridge openings unless explicitly designed to do so.
 
 ### ALLOWED
 - repair derived topology when failure occurs only downstream;
@@ -338,12 +340,13 @@ Source representation, Derived Execution representation and target use/export.
 - destructive cleanup that erases the only editable Source.
 
 ### EVIDENCE
-`GEOMETRY_QC_RECEIPT` with source-level and derived-level results separately.
+`GEOMETRY_QC_RECEIPT` with source-level and derived-level results separately, including `surface_binding_and_termination_check` when host-following derived details are in scope.
 
 ### FAIL
 - `FAIL_SOURCE_STRUCTURE`
 - `FAIL_DERIVED_TOPOLOGY`
 - `FAIL_UNIT_OR_BOUNDS`
+- `FAIL_DERIVED_DETAIL_HOST_BINDING`
 - `REVISE_FORM_DESPITE_CLEAN_TOPOLOGY`
 
 ---
@@ -376,6 +379,19 @@ MAIN candidate spatial models must demonstrate at least one property better than
 - human scale;
 - construction relation;
 - material/volume behavior.
+
+When `construction relation` is part of the requested proof or the final camera exposes the assembly closely, inspect the relevant layers rather than stopping at shell + sticks:
+- primary member/body/shell;
+- secondary support/subframe;
+- interface plate/cleat/bracket/saddle/flange/insert;
+- fastener/weld/bond/clip/pin/anchor representation where it materially explains the joint;
+- bearing/washer/nut/gasket/spacer/isolator/bushing where relevant;
+- edge closure/flashing/trim/seal/reveal/seam/joint gap when exposed;
+- drainage/water-shedding route for exterior or wet assemblies when relevant;
+- access/removal/tool-clearance/maintenance route when serviceability matters;
+- foundation/base/interface relation where loads or assembly transfer to another system.
+
+The required depth follows the decision and camera distance. Expected but unresolved layers must remain explicit OPEN items rather than silently disappearing.
 
 ### ALLOWED
 - sourced range modeling;
@@ -415,6 +431,22 @@ Separate:
 4. measured physical material/finish;
 5. production CMF decision.
 
+When close-camera material credibility or constructive detail is in scope, also record:
+1. **visual material model** — shader graph, roughness/metallic/transmission, bump/normal/displacement and mapping state;
+2. **material identity** — generic class or traceable named material/product when authority exists;
+3. **surface/process state** — coating, galvanizing, anodizing, brushing, polishing, blasting, timber finish, concrete finish or equivalent visible process when relevant;
+4. **section/thickness state** — modeled, source-governed estimate, proxy or OPEN;
+5. **environment/service assumptions** — wet/dry, exterior/interior, UV, corrosion, wear, touch, cleaning, temperature or other materially relevant exposure;
+6. **authority ceiling** — visual reference only, design estimate, sourced specification, engineering/manufacturing authority or OPEN.
+
+For assemblies at close review distance, declare a descriptive detail state:
+- `MASSING` — envelope/spatial relation only;
+- `ASSEMBLY` — major parts and interfaces explicit;
+- `CONSTRUCTIVE` — visible support/connection/edge/service logic sufficiently represented for design review;
+- `FABRICATION_CANDIDATE` — source geometry, datums, interfaces and process assumptions explicit enough to route into CAD/drawing/manufacturing validation.
+
+These are OLEANDER review descriptors, not external BIM LOD definitions and not engineering approval.
+
 For controlled CMF comparisons keep geometry, camera and lighting constant. Record perceptual approximations separately from physical data.
 
 ### ALLOWED
@@ -422,20 +454,35 @@ For controlled CMF comparisons keep geometry, camera and lighting constant. Reco
 - controlled roughness/IOR/micro-normal comparisons;
 - manufacturer-data-backed parameterization;
 - provisional visual hypotheses.
+- instanced/governed repeated fasteners, seams and connection parts when repetition is real;
+- representative joint modeling sufficient to explain assembly intent while keeping physical sizing/approval OPEN when not sourced.
 
 ### FORBIDDEN
 - noise/detail used to conceal poor macro geometry;
 - Principled BSDF values presented as measured CMF truth;
 - changed geometry/lighting during a material-only comparison;
 - production readiness claimed from appearance alone.
+- object/modifier count presented as constructive depth;
+- a plausible PBR node graph presented as a physical material specification;
+- a visible bolt/bracket/anchor presented as proof of structural capacity or manufacturability;
+- materially distinct classes silently sharing one generic shader when the requested review depends on those distinctions;
+- surface-following seams/purlins/trims generated from an unbound approximate duplicate surface when they must coincide with the authoritative host;
+- hero lighting/crop used to hide unresolved joints later described as professional construction detail.
 
 ### EVIDENCE
 `CMF_COMPARISON_MATRIX` with geometry digest, rig id, material id, shader parameters, evidence source/status and does-not-prove.
+
+When constructive/material depth is in scope also emit `MATERIAL_CONSTRUCTIVE_DETAIL_MANIFEST` containing material visual-model/authority state, assembly detail state, critical interface/connection list, representative-joint readback, `surface_binding_and_termination_check`, omitted expected layers, and engineering/manufacturing/field OPEN items.
+
+Readback is a repair loop: if overall or close review exposes floating, clipping, impossible termination, wrong mapping scale or missing interface logic, repair the causal source/procedural relation and repeat the readback before reporting the detail state.
 
 ### FAIL
 - `INSUFFICIENT_PHYSICAL_CMF_EVIDENCE`
 - `REVISE_MICRODETAIL_MASKS_FORM`
 - `FAIL_COMPARISON_NOT_CONTROLLED`
+- `FAIL_CONSTRUCTIVE_DETAIL_INCOMPLETE`
+- `FAIL_DETAIL_HOST_BINDING`
+- `HOLD_PHYSICAL_MATERIAL_AUTHORITY_OPEN`
 
 ---
 
@@ -487,11 +534,12 @@ Current geometry, assembly hierarchy, drawing purpose, target scale/page/crop an
 2. preserve real component scale except explicitly diagrammatic separation;
 3. group geometry by technical meaning;
 4. show connection and assembly direction legibly;
-5. export vector linework where feasible;
-6. use raster passes only as support for material/shadow/depth/AO;
-7. keep labels/dimensions as vector 2D unless truly spatial;
-8. include human/maintenance/installation scale where it clarifies use;
-9. distinguish verified dimensions, recommended ranges and FIELD-open values.
+5. when the output claims construction/assembly depth, expose the critical support/interface/fastener/edge/drainage/service logic required to understand how the parts meet;
+6. export vector linework where feasible;
+7. use raster passes only as support for material/shadow/depth/AO;
+8. keep labels/dimensions as vector 2D unless truly spatial;
+9. include human/maintenance/installation scale where it clarifies use;
+10. distinguish verified dimensions, recommended ranges and FIELD-open values.
 
 ### ALLOWED
 - exploded offsets that preserve component proportions;
@@ -503,6 +551,7 @@ Current geometry, assembly hierarchy, drawing purpose, target scale/page/crop an
 - decorative floating parts without assembly logic;
 - rasterized labels when editable vector text is required;
 - invented fastener/member/foundation precision;
+- decorative or visually plausible connection geometry described as engineering/manufacturing proof;
 - AI image replacing editable technical geometry/annotation.
 
 ### EVIDENCE
@@ -672,6 +721,10 @@ Route to the lowest layer that actually owns the cause:
 - failure only after tessellation/export → derived topology/export settings;
 - good geometry, unreadable render → rig/camera/material;
 - material hides dents → geometry diagnostic, disable masking detail;
+- complex model still reads as shell + sticks → material/constructive-detail depth review, not more arbitrary object count;
+- surface-following seam/purlin/trim floats, penetrates or overruns host → bind generation to evaluated authoritative host geometry and retest termination;
+- cable/rod visibly terminates in air → connection/interface layer, not lighting/post;
+- generic shader collapses materially distinct parts at the required camera distance → CMF/material-role separation before beauty rendering;
 - spatially plausible but unsupported scale → evidence/assumption correction;
 - clean execution but weak design → independent Design Crit `REVISE/REJECT`;
 - Source changed during diagnostic-only run → restore Source, invalidate affected evidence, rerun;
@@ -743,4 +796,7 @@ Examples:
 - Zebra lines improved → supports a reflection-flow observation, **not** Class-A certification.
 - GLB round-trip succeeds → proves that exchange test, **not** Source validity.
 - Render is attractive → proves presentation quality only if separately reviewed, **not** geometry correctness.
+- High object/modifier count → proves scene complexity only, **not** constructive depth.
+- Plausible PBR shader → supports visual material reading only, **not** physical material truth.
+- Visible washer/nut/bracket/anchor → supports assembly legibility only, **not** engineering capacity or manufacturing approval.
 - FIELD=0 → does not stop design development, but field-dependent claims remain open.

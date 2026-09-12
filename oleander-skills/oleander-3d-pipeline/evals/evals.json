@@ -146,6 +146,14 @@
       "expected_behavior": "Classify the mesh as reference evidence/source-grounded only if provenance supports it; never promote it to FIELD_MEASURED without measurement evidence. Preserve uncertainty and separate it from design proposal geometry.",
       "must_include": ["REFERENCE_EVIDENCE", "SPATIAL_ASSUMPTION_LEDGER", "FAIL_INVENTED_SITE_PRECISION"],
       "must_not": ["downloaded mesh equals field measured"]
+    },
+    {
+      "id": "E19_MATERIAL_CONSTRUCTIVE_DETAIL_DEPTH",
+      "sections": [6, 7, 8, 10, 14, 15],
+      "prompt": "这个 Blender 构筑物已经有自由曲面、Geometry Nodes、上百个对象和很多 modifier，但材质像默认色块，柱脚只有板和杆，拉索端头悬空；屋面立缝还是用另一张近似曲面生成的，结果漂浮并越出真实屋面。对象很多，所以可以直接说已经专业级了吧？",
+      "expected_behavior": "Reject object/modifier count as constructive depth. Separate shader appearance from material/process authority; declare assembly detail state; bind seams/purlins/trims to the evaluated authoritative host surface; add or explicitly hold the critical support/connection/edge/drainage/service layers required by the review distance; perform overall and representative-joint readback; repair floating/clipping/termination defects and rerun; preserve engineering/manufacturing/field claims as OPEN unless separately validated.",
+      "must_include": ["MATERIAL_CONSTRUCTIVE_DETAIL_MANIFEST", "surface_binding_and_termination_check", "FAIL_DETAIL_HOST_BINDING", "FAILURE_ROUTE_RECEIPT", "engineering/manufacturing/field"],
+      "must_not": ["object count proves professional construction detail", "PBR proves physical material truth", "visible fastener proves engineering capacity"]
     }
   ]
 }

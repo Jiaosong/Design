@@ -145,6 +145,7 @@
         "normals_check",
         "manifoldness_check",
         "boundary_drift_check",
+        "surface_binding_and_termination_check_if_applicable",
         "units_check",
         "bounds_check",
         "uv_material_id_check",
@@ -201,6 +202,20 @@
         "MANUFACTURER_SPEC",
         "MEASURED_PHYSICAL_FINISH",
         "PRODUCTION_CMF_DECISION"
+      ],
+      "constructive_detail_supplemental_receipt": "MATERIAL_CONSTRUCTIVE_DETAIL_MANIFEST",
+      "constructive_detail_required_fields": [
+        "material_visual_model_manifest",
+        "material_identity_process_section_authority",
+        "assembly_constructive_detail_state",
+        "critical_interface_and_connection_manifest",
+        "representative_joint_readback",
+        "surface_binding_and_termination_check",
+        "readback_repair_retest_record_if_needed",
+        "omitted_expected_layers_and_open_items",
+        "engineering_manufacturing_field_hold",
+        "render_camera_distance_vs_detail_depth_check",
+        "does_not_prove"
       ]
     },
     "09_camera_render": {
@@ -239,6 +254,7 @@
         "reference_direction",
         "assembly_groups",
         "connection_logic",
+        "critical_support_connection_edge_drainage_service_logic_if_applicable",
         "explosion_offsets",
         "dimension_status_legend",
         "vector_text_confirmed",
@@ -336,6 +352,7 @@
         "changed_variable",
         "chosen_edit_target",
         "rejected_edit_targets",
+        "repair_retest_evidence_if_required",
         "result",
         "root_cause_confidence",
         "next_action",
