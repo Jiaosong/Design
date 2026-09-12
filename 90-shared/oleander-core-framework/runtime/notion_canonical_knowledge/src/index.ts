@@ -694,10 +694,33 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
           governance_state?: string | null;
           relation_state?: string | null;
         };
+        expected?: {
+          canonical_id?: string | null;
+          notion_last_edited_time?: string | null;
+        };
       };
       if (!body.page_id) return json({ ok: false, error: "page_id_required" }, 400);
       if (!body.updates || typeof body.updates !== "object") return json({ ok: false, error: "updates_required" }, 400);
       const before = normalizePage(await fetchPage(env, body.page_id));
+      if (before.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+        return json({ ok: false, error: "governance_page_not_in_notes_data_source" }, 409);
+      }
+      if (body.expected?.canonical_id && before.canonicalId !== body.expected.canonical_id) {
+        return json({
+          ok: false,
+          error: "canonical_identity_drift",
+          expected: body.expected.canonical_id,
+          actual: before.canonicalId,
+        }, 409);
+      }
+      if (body.expected?.notion_last_edited_time && before.lastEditedTime !== body.expected.notion_last_edited_time) {
+        return json({
+          ok: false,
+          error: "notion_revision_drift",
+          expected: body.expected.notion_last_edited_time,
+          actual: before.lastEditedTime,
+        }, 409);
+      }
       await updatePageGovernanceFields(env, body.page_id, body.updates);
       const syncResult = await syncPage(env, {
         kind: "notion-page-sync",

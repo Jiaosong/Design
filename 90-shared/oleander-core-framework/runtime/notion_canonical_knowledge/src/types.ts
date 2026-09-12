@@ -170,8 +170,14 @@ export interface KnowledgeReaderSnapshot {
     role?: string;
     level?: string;
     retrievalSpace?: string;
+    searchEligibility?: string;
+    trustState?: string;
     governanceState?: string;
     relationState?: string;
+    indexState?: string;
+    authorityReason?: string;
+    notionLastEditedTime?: string;
+    indexedAt?: string;
     group: "current" | "methods" | "evidence" | "practice" | "history";
     url?: string;
     tags?: string[];
