@@ -18,7 +18,13 @@
     "heavy_executor_is_not_completion_gate_or_independent_reviewer": true,
     "prefer_role_capability_routing_over_vendor_specific_ontology": true,
     "currently_exposed_unregistered_connector_may_be_used_ephemerally_when_role_authority_and_output_contract_match": true,
-    "ephemeral_connector_use_does_not_auto_register_new_surface": true
+    "ephemeral_connector_use_does_not_auto_register_new_surface": true,
+    "machine_local_runtime_readback_is_not_a_second_control_plane_or_project_state": true,
+    "persistent_surface_role_and_eligibility_owner": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+    "chat_on_steroids_local_readback_path": ".mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json",
+    "local_readback_authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+    "runtime_deployment_state_must_not_overwrite_project_design_skill_evidence_or_authority_state": true,
+    "inventory_visibility_does_not_auto_activate_or_register_a_canonical_shared_surface": true
   },
   "capability_route_roles": ["AUTHORITY_READ_WRITE", "REPO_SOURCE_MUTATION", "ASSET_ARCHIVE_DELIVERY", "NATIVE_PRODUCTION", "RUNTIME_READBACK", "DEPLOYMENT", "HUMAN_COORDINATION", "SCHEDULED_WAKEUP", "HEAVY_EXECUTION"],
   "route_decision_fields": ["required_capability_roles", "candidate_surfaces", "selected_surface", "selection_reasons", "availability_state", "authority_ceiling", "side_effect_class", "readback_surface", "fallback_surface"],

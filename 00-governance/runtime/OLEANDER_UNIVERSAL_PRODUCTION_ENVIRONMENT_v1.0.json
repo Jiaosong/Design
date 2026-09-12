@@ -1,7 +1,7 @@
 {
   "schema": "oleander.production-environment.v1",
   "version": "1.0",
-  "implementation_revision": "1.0.5",
+  "implementation_revision": "1.0.6",
   "status": "ACTIVE_CURRENT",
   "scope": "OLEANDER_ALL_PROJECTS_ALL_CONVERSATIONS",
   "principle": "TOOL_AGNOSTIC_CAPABILITY_ROUTING",
@@ -33,7 +33,9 @@
     "ONE_LOGICAL_OBJECT_ONE_PRODUCTION_PR_BY_DEFAULT",
     "ACTIVE_SHARED_RUNTIME_INTERFACE_AND_JOB_LOCAL_MATERIALIZATION_ARE_SEPARATE_STATES",
     "JOB_LOCAL_BINARY_ABSENCE_MUST_RESOLVE_CURRENT_RUNTIME_REMATERIALIZATION_OR_SHARED_RUNNER_BEFORE_UNAVAILABLE",
-    "NEW_SHARED_RUNTIME_IMPLEMENTATION_USES_90_SHARED_TOOLCHAINS_NOT_FROZEN_LEGACY_TOOLS_ROOT"
+    "NEW_SHARED_RUNTIME_IMPLEMENTATION_USES_90_SHARED_TOOLCHAINS_NOT_FROZEN_LEGACY_TOOLS_ROOT",
+    "LOCAL_EXECUTION_SURFACE_READBACK_IS_EXECUTION_EVIDENCE_NOT_PROJECT_CONTROL_PLANE_OR_AUTHORITY",
+    "RUNTIME_DEPLOYMENT_STATE_MUST_NOT_OVERWRITE_JOB_DESIGN_SKILL_PROJECT_EVIDENCE_OR_AUTHORITY_STATE"
   ],
   "capability_states": [
     "NATIVE_AVAILABLE",
@@ -46,7 +48,7 @@
   ],
   "constraint_preflight": {
     "resolver": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
-    "resolver_implementation_revision": "1.2.2",
+    "resolver_implementation_revision": "1.2.5",
     "required_before_tool_probe": true,
     "inherit_active_constraints_across_generic_followups": true,
     "explicit_revocation_only": true,
@@ -71,6 +73,7 @@
     "IF_REFERENCE_RECONSTRUCTION_RESOLVE_REFERENCE_MATERIALIZATION_GATE",
     "PROBE_CURRENT_CONVERSATION_CAPABILITIES",
     "RESOLVE_ACTIVE_SHARED_OLEANDER_RUNTIME_INTERFACE_THEN_JOB_BINDING_REMATERIALIZATION_OR_SHARED_RUNNER",
+    "WHEN_A_LOCAL_CONNECTED_SURFACE_IS_SELECTED_CONSUME_MACHINE_LOCAL_RUNTIME_READBACK_WITH_EXECUTION_CAPABILITY_ONLY_AUTHORITY_CEILING",
     "SELECT_BEST_FIT_ADAPTER_WITHIN_ACTIVE_CONSTRAINTS",
     "USE_CANDIDATE_SHARED_RUNTIME_ONLY_FOR_VALIDATION_TRAINING_SUPPORT_OR_EXPLICITLY_LABELED_BOUNDED_PROJECT_REAPPLICATION",
     "USE_EQUIVALENT_FALLBACK_WHEN_IT_PRESERVES_REQUIRED_INFORMATION",
@@ -150,6 +153,31 @@
     "candidate_allowed_contexts": ["VALIDATION", "TRAINING", "SUPPORT", "BOUNDED_PROJECT_REAPPLICATION_WITH_EXPLICIT_CANDIDATE_LABEL"],
     "candidate_default_production_eligible": false,
     "candidate_must_not_be_sole_final_native_output_authority": true
+  },
+  "local_execution_surface_readback": {
+    "persistent_surface_registry": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+    "surface_id": "chat_on_steroids_local_execution_bridge",
+    "local_runtime_relative_path": ".mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json",
+    "role": "DYNAMIC_MACHINE_LOCAL_EXECUTION_SURFACE_EVIDENCE",
+    "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+    "allowed_facts": [
+      "SELECTED_ACCOUNT_CONNECTOR_VISIBILITY",
+      "COS_MCP_REGISTRATION_AND_TRANSPORT",
+      "LOCAL_SOURCE_DEPLOYMENT_HOST_ENDPOINT_HEALTH",
+      "RUNTIME_MIGRATION_AND_ROLLBACK_METADATA"
+    ],
+    "forbidden_promotions": [
+      "PROJECT_STATE",
+      "SOURCE_AUTHORITY",
+      "DESIGN_AUTHORITY",
+      "KNOWLEDGE_AUTHORITY",
+      "SKILL_ROUTING_ONTOLOGY",
+      "PROJECT_OR_DESIGN_LIFECYCLE",
+      "PROMOTION_OR_RELEASE",
+      "FINAL_REVIEW_OR_FLOW_COMPLETION"
+    ],
+    "runtime_state_scope": "EXECUTION_SURFACE_OR_DEPLOYMENT_OBJECT_ONLY",
+    "inventory_visibility_does_not_register_canonical_surface": true
   },
   "review_and_transaction_policy": {
     "internal_artifact_first_crit": "PRODUCER_CONTEXT_ALLOWED_REVISE_HOLD_ONLY_NO_INDEPENDENT_KEEP",

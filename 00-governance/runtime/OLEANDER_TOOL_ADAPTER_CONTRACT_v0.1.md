@@ -98,6 +98,20 @@ Use `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1` for the Current persistent surface
 
 A connector that is currently exposed to Chat but is not yet represented as a persistent shared surface may still be used **ephemerally** when its capability role, authority ceiling, native-output boundary and readback contract fit the task. One-off use does not auto-create a registry entry, TOOL, Skill, Method, Framework or Project State.
 
+### 8A｜Machine-local execution-surface readback
+
+`Chat On Steroids` MCP registration, local source/deployment paths, host-process state, endpoint ownership and runtime health are **dynamic execution evidence**, not another Control Plane or Current registry.
+
+The persistent role/eligibility owner remains `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1`. When the `chat_on_steroids_local_execution_bridge` surface is selected, the machine-local readback may be consumed from the Current runtime registry at `.mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json` (or the equivalent workspace-local path).
+
+Hard separation:
+
+- persistent Shared Execution Surface registration/role/eligibility → GitHub Current contract;
+- machine-local registration/transport/host/endpoint/health → local runtime readback;
+- Project / Source / Design / Knowledge Authority → existing upstream OLEANDER authority contracts;
+- runtime deployment states such as `STAGED / VALIDATED / LIVE_CURRENT / DEGRADED / SUPERSEDED / RETIRED / STALE / QUARANTINED` apply only to the execution surface or deployment object and must not overwrite Job, Design, Skill, Project, Evidence or Authority state machines;
+- an account connector or MCP appearing in inventory does not make it a canonical shared execution surface or authorize mutation.
+
 ## 9｜Side-effect classification
 
 Before execution, classify the minimum sufficient side effect:
