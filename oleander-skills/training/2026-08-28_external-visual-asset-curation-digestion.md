@@ -1,13 +1,17 @@
 # 2026-08-28｜External Skill Digestion｜Visual Asset Curation
 
-Status: `DIGESTED / MATERIAL DELTA NARROW / EXISTING OWNER EXTENDED / NO NEW SKILL`
+Status: `DIGESTED / MATERIAL DELTA NARROW / EXISTING OWNER EXTENDED / NO NEW SKILL / SOURCE-DEPTH AUDITED`
 
 ## Source
 
-- Repository: `SkillMedev/skills`
-- Skill: `skills/visual-asset-curation/SKILL.md`
-- Reviewed license: repository root `LICENSE` = MIT, copyright 2026 Alexander Ouellet.
-- Files actually read: root `LICENSE`; `skills/visual-asset-curation/SKILL.md`.
+- Repository / source URL: `https://github.com/SkillMedev/skills`
+- Skill URL: `https://github.com/SkillMedev/skills/blob/main/skills/visual-asset-curation/SKILL.md`
+- Author / institution: Skill Me catalog; repository license copyright 2026 Alexander Ouellet.
+- Access / governance audit date: `2026-08-28`.
+- Reviewed license: repository root `LICENSE` = MIT.
+- Files actually read for the original digestion: root `LICENSE`; `skills/visual-asset-curation/SKILL.md`.
+- Source-depth readback: the upstream `skills/visual-asset-curation/` directory currently contains only `SKILL.md`; there are no skill-local `references/`, `evals/`, README, scripts, or separate license files to inspect. Repository-level license therefore remains the applicable rights evidence for this bounded text digestion.
+- Evidence boundary: upstream absence of local evals/references means this source can support bounded method comparison, but cannot by itself prove OLEANDER project performance, visual quality, transferability, or Candidate promotion.
 
 ## Current comparison
 
@@ -56,4 +60,4 @@ A mixed evidence set must be allowed to remain tonally heterogeneous when the na
 
 ## Maturity boundary
 
-`CANDIDATE EXTENSION / NOT ACTIVE`. Source license permits reuse, but the extension still needs real project reapplication and readback before stronger maturity. `CURATION COMPLETE ≠ RIGHTS COMPLETE ≠ DESIGN KEEP`.
+`CANDIDATE EXTENSION / NOT ACTIVE`. This record is source digestion, not `PRACTICE_EVIDENCE`: no real OLEANDER A/B artifact/readback is contained here. Source license permits reuse of the text under MIT, but the extension still needs bounded real-artifact testing, repair/retest, and materially different project/context evidence before stronger maturity. `CURATION COMPLETE ≠ RIGHTS COMPLETE ≠ DESIGN KEEP`.
