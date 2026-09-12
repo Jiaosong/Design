@@ -25,7 +25,15 @@ import {
   stageSyncMessages,
   syncRunReadback,
 } from "./manifest";
-import { fetchCompleteMarkdown, fetchPage, listNotesPages, updatePageGovernanceFields } from "./notion";
+import {
+  createAcademicPage,
+  createLinkedNotesView,
+  createReaderPage,
+  fetchCompleteMarkdown,
+  fetchPage,
+  listNotesPages,
+  updatePageGovernanceFields,
+} from "./notion";
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
@@ -203,6 +211,86 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       const after = normalizePage(await fetchPage(env, body.page_id));
       return json({ ok: true, before, after, sync: syncResult });
     }
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/academic-page") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      title?: string;
+      canonical_id?: string;
+      markdown?: string;
+      source_page_ids?: string[];
+      replaced_page_ids?: string[];
+    };
+    if (!body.title || !body.canonical_id || !body.markdown) return json({ ok: false, error: "title_canonical_id_markdown_required" }, 400);
+    if (!/^[A-Z0-9][A-Z0-9-]{4,}$/.test(body.canonical_id)) return json({ ok: false, error: "invalid_canonical_id" }, 400);
+    const duplicate = await env.MANIFEST.prepare(
+      "SELECT page_id, title FROM documents WHERE active=1 AND canonical_id=? LIMIT 1",
+    ).bind(body.canonical_id).first<{ page_id: string; title: string }>();
+    if (duplicate) return json({ ok: false, error: "canonical_id_exists", duplicate }, 409);
+
+    const page = await createAcademicPage(env, {
+      title: body.title,
+      canonical_id: body.canonical_id,
+      markdown: body.markdown,
+      source_page_ids: body.source_page_ids ?? [],
+      replaced_page_ids: body.replaced_page_ids ?? [],
+    });
+    const sync = await syncPage(env, {
+      kind: "notion-page-sync",
+      page_id: page.id,
+      cause_id: `academic:${crypto.randomUUID()}`,
+      cause_type: "manual",
+    });
+    return json({ ok: true, page: normalizePage(await fetchPage(env, page.id)), sync });
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/reader-layer") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const existing = await env.MANIFEST.prepare("SELECT state_value FROM runtime_state WHERE state_key='reader_layer_v1' LIMIT 1")
+      .first<{ state_value: string }>();
+    if (existing?.state_value) return json({ ok: true, existing: true, reader: JSON.parse(existing.state_value) });
+
+    const page = await createReaderPage(env);
+    const current = await createLinkedNotesView(env, page.id, {
+      name: "01｜Current｜核心知识",
+      type: "list",
+      filter: {
+        and: [
+          { property: "Retrieval Space｜检索空间", select: { equals: "CURRENT" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+        ],
+      },
+      sorts: [{ property: "知识角色", direction: "ascending" }, { property: "Name", direction: "ascending" }],
+    });
+    const support = await createLinkedNotesView(env, page.id, {
+      name: "02｜Support｜精选支撑",
+      type: "list",
+      filter: {
+        and: [
+          { property: "Retrieval Space｜检索空间", select: { equals: "SUPPORT" } },
+          { property: "Search Eligibility｜检索资格", select: { equals: "SCOPED" } },
+          { property: "治理状态", select: { equals: "ACTIVE" } },
+        ],
+      },
+      sorts: [{ property: "知识角色", direction: "ascending" }, { property: "Name", direction: "ascending" }],
+    });
+    const review = await createLinkedNotesView(env, page.id, {
+      name: "90｜Review｜待治理",
+      type: "table",
+      filter: {
+        or: [
+          { property: "治理状态", select: { equals: "REVIEW" } },
+          { property: "治理状态", select: { equals: "HOLD" } },
+        ],
+      },
+      sorts: [{ property: "Name", direction: "ascending" }],
+    });
+    const reader = { page_id: page.id, url: page.url ?? null, current_view_id: current.id, support_view_id: support.id, review_view_id: review.id };
+    await env.MANIFEST.prepare(
+      "INSERT INTO runtime_state(state_key,state_value,updated_at) VALUES('reader_layer_v1',?,?) ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value,updated_at=excluded.updated_at",
+    ).bind(JSON.stringify(reader), new Date().toISOString()).run();
+    return json({ ok: true, existing: false, reader });
   }
 
   if (request.method === "POST" && url.pathname === "/v1/drain-once") {
