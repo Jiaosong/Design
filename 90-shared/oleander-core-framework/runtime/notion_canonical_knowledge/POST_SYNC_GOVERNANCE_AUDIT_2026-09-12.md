@@ -609,3 +609,96 @@ The separate OLEANDER Visual Knowledge Reader MCP picked up the same authority c
 - canonical authority reported by the snapshot remains `Notion`.
 
 The next academic migration is now `D05`. D01, D04, D06, D07 and D03 are closed Current migrations and must not be reopened as unfinished work. `K05` remains a later Reader / IA cleanup, not an essay rewrite target.
+
+## Phase 8 — D05 Building Economics / Development Planning / Whole-Life Value Academic Migration
+
+`D05｜建筑经济、开发策划与全生命周期价值` has completed the additive academic migration. The new Current is not a cost-planning encyclopedia and does not treat minimum capital cost, unit cost, NPV / IRR / BCR, a fixed discount rate, a green premium or a universal payback period as self-sufficient value conclusions. Its first reading layer instead tests how function, comparable-option boundaries, whole-life cash-flow scope, payer / beneficiary distribution, uncertainty, strategic flexibility and outturn learning should be combined in an auditable decision chain.
+
+New Current knowledge object:
+
+- Page ID: `3d9b86be-5c47-8127-9574-f1106e228ccd`
+- Canonical ID: `KN-ARCH-LIFECYCLE-VALUE-001`
+- Human title: `建筑经济与开发策划：全生命周期成本、价值分配与不确定性`
+- `CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / L5 / THEORY`
+- Normal `syncPage` result after promotion: `INDEXED`, `36` active chunks.
+- Final live Notion markdown readback: `16,974` characters, `markdown_truncated=false`, `unknown_block_ids=[]`.
+
+### D05 Academic Quality Gate
+
+The page was created in `REVIEW` and promoted to `VALID` only after a complete live-Notion markdown readback and content review. The reviewed sequence is:
+
+`Research Question / Thesis → Claim–Evidence Map → Rival / Counterevidence → Method / Evidence Boundary → Arguments → Applicability / Project Translation → Limitations → Conclusion → References`
+
+The actual live page was machine-checked after readback and contains:
+
+- six conditional theses;
+- nine claim/evidence carriers, with current professional or authoritative sources `S1–S4` and academic / empirical sources `A1–A5` all present and referenced;
+- six explicit Rival / Counterevidence sections covering initial-cost minimisation, single-metric value claims, forecast-detail bias, split incentives, universal green-premium claims and unconditional flexibility value;
+- `12` explicit `Normative rule` labels, `6` `Heuristic` labels and `1` project-market `Hypothesis` label;
+- research / causal / POE ownership explicitly deferred to `MTH-ARCH-RESEARCH-001`;
+- standards, cost indices, discounting, market data, regulatory applicability and evidence-version conflict ownership explicitly deferred to `MTH-ARCH-EVIDENCE-GOV-001`;
+- no universal discount rate, analysis period, green premium, transport-infrastructure uplift or building payback value promoted into Current;
+- HM Treasury Green Book 2026 explicitly bounded as a UK central-government appraisal example rather than a universal private-development rule;
+- Flyvbjerg et al. explicitly bounded to transport-infrastructure evidence rather than copied into ordinary-building uplift rates;
+- split-incentive claims include both US evidence of underinvestment and German counterevidence showing smaller average tenure differences;
+- flexibility / real-option claims require a real trigger, preservation cost, exercise cost and executable conversion path rather than treating “flexible” as an intrinsic premium;
+- generic G0–G9 material is not duplicated into the first reading layer.
+
+The old D05 body remains the History / Provenance carrier for its demand/capacity frame, area model, LCC formula, cost-planning material, older sensitivity lists, affordability material, project matrix, G0–G9, theory lineage, historical timeline, issue matrix, methodology toolbox, China policies/cases, international comparison, glossary and historical references.
+
+### D05 NO LOSS / Replacement Readback
+
+Old D05 remains fully present in Notion. Its final live readback after the authority cutover is still `19,676` markdown characters, `markdown_truncated=false`, `unknown_block_ids=[]`. It is now:
+
+- Page ID: `3adb86be-5c47-813f-b1bb-e16e9e5d1cab`
+- Canonical ID: `LEGACY-KN-ARCH-LIFECYCLE-VALUE-D05-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `KN-ARCH-LIFECYCLE-VALUE-001`
+- `53` active chunks after normal re-indexing.
+
+The old body was not overwritten, compressed or deleted. The governance cutover changed identity / retrieval properties only.
+
+### Phase 8 D1 Readback
+
+After the D05 authority cutover:
+
+- Notes/D1 document rows: `1,195`
+- Active documents: `1,193`
+- Excluded documents: `2` (unchanged preserved orphan empty pages)
+- Explicit `CURRENT`: `51`
+- `SUPPORT`: `930`
+- `PROVENANCE`: `212`
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current row: `KN-ARCH-LIFECYCLE-VALUE-001 / CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / 36 active chunks`
+- Old row: `LEGACY-KN-ARCH-LIFECYCLE-VALUE-D05-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / 53 active chunks`
+
+The +1 document / +1 active-document delta is the intended additive Current carrier. The old D05 already belonged on the provenance plane, so the corpus-wide provenance count remains stable after explicitization.
+
+### Reader Readback After D05
+
+The existing Notion Reader / Dashboard was refreshed in place with no second reader or knowledge database:
+
+- Core Knowledge: `276`
+- Methods: `73`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `215`
+- Academic migration: `6 / 7`
+- Next: `D02｜乡村建筑与地方营造`
+- Reader markdown readback: `4,094` characters, `markdown_truncated=false`, `unknown_block_ids=[]`
+
+The separate OLEANDER Visual Knowledge Reader MCP also read the D05 cutover dynamically through the existing snapshot path:
+
+- live item count: `1,193`
+- Core Knowledge: `276`
+- Methods: `92`
+- Evidence: `574`
+- Practice: `78`
+- History: `212`
+- tool/resource inventory: `9 tools / 7 resources`
+- canonical authority reported by the snapshot: `Notion`
+- MCP App resource readback after the reader-shell redesign: `668,710` HTML characters.
+
+The presentation layer was also revised, independently of knowledge authority, to a Notion-3.4-inspired workspace shell with persistent left navigation, Dashboard, page tabs, Library/reading split view, `Overview / Evidence / Limitations / Trace` tabs and an in-app Present focus mode. The local Reader source commit is `41f8534 feat(reader): adopt workspace dashboard reading shell`. Edge QA passed at desktop width and at `390px` mobile with no horizontal overflow. The runtime HTML was updated without restarting Chat On Steroids; the Reader therefore remains `REGISTERED + VALIDATED + PENDING SAFE RELOAD / NOT LIVE-LOADED` in the current CoS process until a future safe reload and CoS-side enumeration readback.
+
+The final remaining D-series academic migration is now `D02`. D01, D03, D04, D05, D06 and D07 are closed Current migrations and must not be reopened as unfinished work. `K05` remains a later navigation / information-architecture cleanup after D02.
