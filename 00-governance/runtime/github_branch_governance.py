@@ -264,6 +264,98 @@ def build_unmerged_triage(
     }
 
 
+def hypothetical_merge_tree(base_ref: str, head_ref: str) -> tuple[str | None, str]:
+    proc = subprocess.run(
+        ["git", "merge-tree", "--write-tree", base_ref, head_ref],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    if proc.returncode != 0:
+        return None, "CONFLICT"
+    lines = [line.strip() for line in proc.stdout.splitlines() if line.strip()]
+    if not lines:
+        return None, "ERROR_NO_TREE"
+    return lines[0], "CLEAN"
+
+
+def build_noop_orphan_audit(
+    records: list[RefRecord],
+    *,
+    open_heads: set[str],
+    open_bases: set[str],
+    worktrees: set[str],
+    explicit_keep: set[str],
+) -> dict:
+    main_sha = run("git", "rev-parse", "refs/remotes/origin/main")
+    main_tree = run("git", "rev-parse", "refs/remotes/origin/main^{tree}")
+    safe: list[dict] = []
+    counts = {
+        "remote_unmerged": len(records),
+        "dependency_protected": 0,
+        "merge_conflict_or_error": 0,
+        "merge_changes_main": 0,
+        "safe_noop_orphan": 0,
+    }
+
+    for item in records:
+        dependencies: list[str] = []
+        if item.branch in open_heads:
+            dependencies.append("OPEN_PR_HEAD")
+        if item.branch in open_bases:
+            dependencies.append("OPEN_PR_BASE")
+        if item.branch in worktrees:
+            dependencies.append("ACTIVE_WORKTREE")
+        if item.branch in explicit_keep:
+            dependencies.append("EXPLICIT_KEEP")
+        if item.branch == "gh-pages" or item.branch.startswith(("release/", "archive/")):
+            dependencies.append("DURABLE_BRANCH_CLASS")
+        if dependencies:
+            counts["dependency_protected"] += 1
+            continue
+
+        merged_tree, merge_state = hypothetical_merge_tree(
+            "refs/remotes/origin/main", f"refs/remotes/origin/{item.branch}"
+        )
+        if merge_state != "CLEAN":
+            counts["merge_conflict_or_error"] += 1
+            continue
+        if merged_tree != main_tree:
+            counts["merge_changes_main"] += 1
+            continue
+
+        counts["safe_noop_orphan"] += 1
+        safe.append(
+            {
+                **asdict(item),
+                "classification": "SAFE_DELETE_NOOP_UNMERGED_ORPHAN",
+                "hypothetical_merge_base": main_sha,
+                "hypothetical_merge_result_tree": merged_tree,
+                "current_main_tree": main_tree,
+                "content_equivalence": "EXACT_TREE_NOOP",
+            }
+        )
+
+    return {
+        "schema": "OLEANDER_GIT_BRANCH_NOOP_ORPHAN_CLEANUP_AUDIT_v1",
+        "as_of": datetime.now(timezone.utc).isoformat(),
+        "repository": github_repo(),
+        "origin_main_sha": main_sha,
+        "origin_main_tree": main_tree,
+        "counts": counts,
+        "policy": {
+            "age_only_delete_forbidden": True,
+            "open_pr_heads_protected": True,
+            "open_pr_bases_protected": True,
+            "active_worktrees_protected": True,
+            "exact_hypothetical_merge_tree_noop_required": True,
+            "audit_before_delete": True,
+        },
+        "safe_noop_orphans": safe,
+    }
+
+
 def delete_remote(branches: list[str]) -> None:
     for start in range(0, len(branches), 25):
         batch = branches[start : start + 25]
@@ -282,8 +374,11 @@ def main() -> int:
     parser.add_argument("--csv", type=Path, help="Write CSV ref→SHA audit table before any mutation.")
     parser.add_argument("--post-receipt", type=Path, help="Write JSON post-cleanup readback receipt.")
     parser.add_argument("--triage-receipt", type=Path, help="Write JSON inventory of all unmerged remote refs; never deletes them.")
+    parser.add_argument("--noop-orphan-receipt", type=Path, help="Write pre-delete audit for unmerged orphan refs whose hypothetical merge is an exact main-tree no-op.")
+    parser.add_argument("--noop-orphan-post-receipt", type=Path, help="Write post-delete readback for no-op orphan cleanup.")
     parser.add_argument("--apply-remote", action="store_true", help="Delete safe merged remote refs.")
     parser.add_argument("--apply-local", action="store_true", help="Delete safe merged local refs.")
+    parser.add_argument("--apply-noop-orphans", action="store_true", help="Delete only audited unmerged orphan refs whose clean hypothetical merge leaves main tree unchanged.")
     parser.add_argument("--keep", action="append", default=[], help="Explicit branch ref to retain; repeatable.")
     args = parser.parse_args()
 
@@ -353,6 +448,26 @@ def main() -> int:
     if args.triage_receipt:
         write_receipt(root / args.triage_receipt, build_unmerged_triage(unmerged_records, prs, worktrees))
 
+    noop_audit = None
+    if args.noop_orphan_receipt or args.apply_noop_orphans:
+        noop_audit = build_noop_orphan_audit(
+            unmerged_records,
+            open_heads=open_heads,
+            open_bases=open_bases,
+            worktrees=worktrees,
+            explicit_keep=explicit_keep,
+        )
+    if args.noop_orphan_receipt and noop_audit is not None:
+        noop_path = root / args.noop_orphan_receipt
+        if args.apply_noop_orphans and noop_path.exists():
+            existing = json.loads(noop_path.read_text(encoding="utf-8"))
+            existing_pairs = {(item["branch"], item["sha"]) for item in existing.get("safe_noop_orphans", [])}
+            current_pairs = {(item["branch"], item["sha"]) for item in noop_audit.get("safe_noop_orphans", [])}
+            if existing.get("origin_main_sha") != noop_audit.get("origin_main_sha") or existing_pairs != current_pairs:
+                raise RuntimeError("no-op orphan audit is stale against current main/candidate set; regenerate and persist audit before mutation")
+        else:
+            write_receipt(noop_path, noop_audit)
+
     print(json.dumps(payload["counts"], ensure_ascii=False, indent=2))
     for item in remote_protected:
         print(f"KEEP remote {item.branch}: {item.protected_reason}")
@@ -361,13 +476,19 @@ def main() -> int:
 
     if (args.apply_remote or args.apply_local) and not args.receipt:
         raise RuntimeError("mutation requires --receipt so pre-delete ref→SHA evidence is persisted first")
+    if args.apply_noop_orphans and not args.noop_orphan_receipt:
+        raise RuntimeError("no-op orphan mutation requires --noop-orphan-receipt so exact-tree equivalence evidence is persisted first")
 
     if args.apply_remote:
         delete_remote([item.branch for item in remote_delete])
     if args.apply_local:
         delete_local([item.branch for item in local_delete])
+    noop_delete_branches: list[str] = []
+    if args.apply_noop_orphans and noop_audit is not None:
+        noop_delete_branches = [item["branch"] for item in noop_audit["safe_noop_orphans"]]
+        delete_remote(noop_delete_branches)
 
-    if args.apply_remote or args.apply_local:
+    if args.apply_remote or args.apply_local or args.apply_noop_orphans:
         subprocess.run(["git", "fetch", "--prune", "origin"], cwd=root, check=True)
         remaining_remote = {item.branch for item in remote_merged_records()}
         remaining_local = {item.branch for item in local_merged_records()}
@@ -387,6 +508,27 @@ def main() -> int:
         print(json.dumps(post, ensure_ascii=False, indent=2))
         if post["verdict"] != "PASS":
             return 2
+
+    if args.apply_noop_orphans:
+        existing_remote = {
+            ref.removeprefix("origin/")
+            for ref in run("git", "for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines()
+            if ref.startswith("origin/")
+        }
+        noop_post = {
+            "schema": "OLEANDER_GIT_BRANCH_NOOP_ORPHAN_CLEANUP_READBACK_v1",
+            "as_of": datetime.now(timezone.utc).isoformat(),
+            "repository": repo,
+            "origin_main_sha": run("git", "rev-parse", "refs/remotes/origin/main"),
+            "requested_delete": len(noop_delete_branches),
+            "delete_remaining": sorted(branch for branch in noop_delete_branches if branch in existing_remote),
+            "verdict": "PASS" if not any(branch in existing_remote for branch in noop_delete_branches) else "FAIL",
+        }
+        if args.noop_orphan_post_receipt:
+            write_receipt(root / args.noop_orphan_post_receipt, noop_post)
+        print(json.dumps(noop_post, ensure_ascii=False, indent=2))
+        if noop_post["verdict"] != "PASS":
+            return 3
 
     return 0
 
