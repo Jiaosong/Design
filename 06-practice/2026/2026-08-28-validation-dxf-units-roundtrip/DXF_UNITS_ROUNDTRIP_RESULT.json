@@ -1,0 +1,33 @@
+{
+  "before": {
+    "file": "DXF_UNITS_BAD_UNDEFINED.dxf",
+    "insunits": 0,
+    "unit_name": "Unitless",
+    "bbox_numeric": [120.0, 60.0],
+    "closed": true,
+    "geometry_ok": true,
+    "units_explicit_mm": false
+  },
+  "after": {
+    "file": "DXF_UNITS_REPAIRED_MM.dxf",
+    "insunits": 4,
+    "unit_name": "Millimeters",
+    "bbox_numeric": [120.0, 60.0],
+    "closed": true,
+    "geometry_ok": true,
+    "units_explicit_mm": true
+  },
+  "before_verdict": "HOLD",
+  "after_verdict": "PASS",
+  "proven": [
+    "DXF numeric geometry can roundtrip while units remain explicitly unitless",
+    "Setting document units to millimeters persists as $INSUNITS=4 after save/reopen",
+    "Geometry bbox remains 120 x 60 and polyline remains closed after repair"
+  ],
+  "not_proven": [
+    "supplier/CAD application import scaling behavior",
+    "paper/model-space plotting scale",
+    "tolerance/GD&T correctness",
+    "manufacturing or engineering approval"
+  ]
+}
