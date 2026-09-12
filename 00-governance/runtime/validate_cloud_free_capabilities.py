@@ -291,6 +291,26 @@ def main() -> None:
     if wb_reg.get("role") != "REAL_RESPONSIVE_IFRAME_READBACK_SHELL" or wb_reg.get("project_source_mutation") is not False:
         fail("design workbench registry role/source-mutation boundary invalid")
 
+    drawio_reg = registry_surfaces.get("drawio_native_diagram_execution", {})
+    if drawio_reg.get("lifecycle_state") != "ACTIVE" or drawio_reg.get("authority_ceiling") != "EXECUTION_CAPABILITY_ONLY":
+        fail("Draw.io execution surface missing active execution-only boundary")
+    if ".drawio" not in drawio_reg.get("native_outputs", []) or drawio_reg.get("global_current_store") is not False:
+        fail("Draw.io native-output or global-current boundary invalid")
+    drawio_conditions = set(drawio_reg.get("conditions", []))
+    if not {"COS_LIVE_CONNECTION_PASS", "COS_SCHEMA_BUDGET_ROUTED_EXEC_PASS", "PER_RUN_RUNTIME_PROBE_PASS"}.issubset(drawio_conditions):
+        fail("Draw.io live/routed-exposure/runtime-probe conditions missing")
+
+    xmind_reg = registry_surfaces.get("xmind_native_mindmap_execution", {})
+    if xmind_reg.get("lifecycle_state") != "ACTIVE_WITH_AUTH_GATE" or xmind_reg.get("authority_ceiling") != "EXECUTION_CAPABILITY_ONLY":
+        fail("XMind execution surface missing authenticated execution-only boundary")
+    if ".xmind" not in xmind_reg.get("native_outputs", []) or not xmind_reg.get("activation_gate_any"):
+        fail("XMind native-output or authentication gate invalid")
+    xmind_conditions = set(xmind_reg.get("conditions", []))
+    if not {"AUTH_GATE_PASS", "COS_LIVE_CONNECTION_PASS", "COS_SCHEMA_BUDGET_ROUTED_EXEC_PASS", "PER_RUN_RUNTIME_PROBE_PASS"}.issubset(xmind_conditions):
+        fail("XMind auth/live/routed-exposure/runtime-probe conditions missing")
+    if xmind_reg.get("default_production_eligible") is not False:
+        fail("XMind auth-gated surface must not be default-production eligible")
+
     print("CLOUD_FREE_CAPABILITY_VALIDATION_PASS")
     print("surfaces=4")
     print("design_workbench_functional_browser_readback=PASS")
@@ -310,6 +330,8 @@ def main() -> None:
     print("spatial_lab_professional_retest_01=PASS_S01_S05")
     print("spatial_lab_independent_review=OPEN")
     print("spatial_external_dependencies=0")
+    print("drawio_native_diagram_execution=ACTIVE_EXECUTION_ONLY_ROUTED_OVERFLOW_PASS")
+    print("xmind_native_mindmap_execution=ACTIVE_WITH_AUTH_GATE_ROUTED_OVERFLOW_PASS")
     print("browser_pass=OPEN_NOT_CLAIMED")
 
 

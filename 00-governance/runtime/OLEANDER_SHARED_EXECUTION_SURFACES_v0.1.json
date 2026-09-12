@@ -1,7 +1,7 @@
 {
   "schema": "oleander.shared-execution-surfaces.v0.1",
   "status": "ACTIVE_EXECUTION_SURFACE_REGISTRY",
-  "implementation_revision": "0.5",
+  "implementation_revision": "0.6",
   "parent": "OLEANDER_CLOUD_FREE_PROJECT_PROFILE_v1.0",
   "selection_rule": "CURRENT_SKILL_OWNER_FIRST; REQUIRED_NATIVE_OUTPUT_SECOND; AGENT_EXECUTABLE_OR_ACTIVE_SHARED_RUNTIME_BEFORE_MANUAL_WEB; ONLY_ACTIVE_SHARED_RUNTIME_MAY_ENTER_DEFAULT_PRODUCTION; CANDIDATE_SHARED_RUNTIME_IS_VALIDATION_TRAINING_SUPPORT_ONLY; FIGMA_REQUIRES_EXPLICIT_FIGMA_DELIVERY_OR_EXISTING_FIGMA_SOURCE_BEFORE_PROBE",
   "surfaces": {
@@ -62,6 +62,39 @@
       "role": "NATIVE_BROWSER_UI_VECTOR_INTERACTION_PRODUCTION",
       "cross_conversation": true,
       "runtime_readback": "REAL_BROWSER_REQUIRED"
+    },
+    "drawio_native_diagram_execution": {
+      "class": "LOCAL_EXECUTION_BRIDGE",
+      "lifecycle_state": "ACTIVE",
+      "default_production_eligible": true,
+      "role": "EDITABLE_STRUCTURED_DIAGRAM_NATIVE_DRAWIO_EXECUTION",
+      "cross_conversation": true,
+      "machine_local": true,
+      "native_outputs": [".drawio", "draw.io XML"],
+      "derived_outputs": ["SVG", "PDF", "PNG", "Mermaid-derived draw.io"],
+      "runtime": "@drawio/mcp@1.5.0 via Chat On Steroids Plugins bounded direct schema plus exec-routed schema-budget overflow",
+      "upstream_skill_guidance": "jgraph/drawio-mcp drawio skill; execution guidance only, not an OLEANDER Skill lifecycle object",
+      "conditions": ["COS_LIVE_CONNECTION_PASS", "COS_SCHEMA_BUDGET_ROUTED_EXEC_PASS", "PER_RUN_RUNTIME_PROBE_PASS"],
+      "runtime_probe_required_per_run": true,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false,
+      "boundary": "Use when the resolved owner/task requires structured diagram production. The CoS direct Plugins schema remains bounded; tools omitted by that budget are executable only through the verified CoS exec-routed overflow path, which does not change authority. Native .drawio remains the editable master when selected; exports are derivatives. MCP/Skill availability does not grant project, design, knowledge, or Skill authority."
+    },
+    "xmind_native_mindmap_execution": {
+      "class": "LOCAL_PLUS_REMOTE_EXECUTION_ADAPTER",
+      "lifecycle_state": "ACTIVE_WITH_AUTH_GATE",
+      "default_production_eligible": false,
+      "role": "EDITABLE_XMIND_MINDMAP_NATIVE_EXECUTION",
+      "cross_conversation": true,
+      "native_outputs": [".xmind"],
+      "runtime": ["@xmindltd/xmind-cli@0.2.3 local runtime", "https://app.xmind.com/api/mcp official remote MCP via Chat On Steroids Plugins exec-routed schema-budget overflow"],
+      "upstream_skill_guidance": "@xmindltd/xmind-cli@0.2.3 skills/xmind-file/SKILL.md and bundled visual/recipe guidance; execution guidance only, not an OLEANDER Skill lifecycle object",
+      "activation_gate_any": ["LOCAL_XMIND_AUTH_STATUS_PASS", "REMOTE_XMIND_OAUTH_CONNECTED"],
+      "conditions": ["AUTH_GATE_PASS", "COS_LIVE_CONNECTION_PASS", "COS_SCHEMA_BUDGET_ROUTED_EXEC_PASS", "PER_RUN_RUNTIME_PROBE_PASS"],
+      "runtime_probe_required_per_run": true,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false,
+      "boundary": "Do not claim .xmind execution while authentication is absent. The CoS direct Plugins schema remains bounded; authenticated tools omitted by that budget are executable only through the verified CoS exec-routed overflow path. Registration, package installation, or discovery alone is not functional readiness. XMind files remain task artifacts, not Project State or design authority."
     },
     "oleander_browser_design_workbench": {
       "class": "SHARED_REPO_RUNTIME",
