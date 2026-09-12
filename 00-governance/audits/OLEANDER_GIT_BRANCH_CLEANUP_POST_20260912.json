@@ -1,0 +1,14 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CLEANUP_READBACK_v1",
+  "as_of": "2026-09-12T07:00:42.351621+00:00",
+  "repository": "Jiaosong/Design",
+  "requested_remote_delete": 217,
+  "requested_local_delete": 3,
+  "remote_delete_remaining": [],
+  "local_delete_remaining": [],
+  "protected_remote_still_present": [
+    "agent/oleander-execution-surface-readback-20260912",
+    "skills/game-ui-stack-v0-1-clean"
+  ],
+  "verdict": "PASS"
+}

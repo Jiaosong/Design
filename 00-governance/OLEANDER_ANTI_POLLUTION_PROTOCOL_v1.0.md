@@ -248,6 +248,27 @@ Hard throughput rule:
 
 The machine-readable threshold and exact closure markers live only in `OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json`; this protocol does not create a second numeric authority.
 
+### 12B. Git branch / ref hygiene
+
+Git branches are execution and review carriers. **A branch ref is not a Current authority.** Current authority must continue to resolve through the applicable repository governance, registry, receipt, artifact identity and `main` readback.
+
+Default branch lifecycle:
+
+`one logical object → one active work branch / PR frontier → disposition → merge or close → provenance capture → ref cleanup`.
+
+Rules:
+
+1. a recurring automation must not create a fresh branch merely to prove another run occurred; when the same logical object still has an active branch/PR, update that frontier only when there is a material delta;
+2. after a PR is merged into `main`, its remote head ref is a cleanup candidate by default because commit/PR history already preserves the merged evidence;
+3. before bulk deletion, persist an audit manifest containing at least `branch / tip SHA / commit time / subject / cleanup classification`;
+4. a merged remote ref must be retained while it is an **OPEN PR HEAD**, an **OPEN PR BASE**, an **ACTIVE WORKTREE**, or has an explicit bounded `KEEP` reason;
+5. an unmerged branch must never be deleted by age alone; resolve its PR/frontier state first as `ACTIVE / REVIEW / STACK-BASE / PROVENANCE / SUPERSEDED / REJECTED / DELETE_CANDIDATE`;
+6. branch prefixes such as `agent/`, `feat/`, `fix/`, `training/`, `validation/`, `practice/`, `sync/` or `tmp/` do not grant authority or permanent retention;
+7. a local worktree may be removed only after uncommitted state is resolved and its branch no longer owns an active execution frontier;
+8. cleanup deletes redundant refs, not unique evidence. If a ref contains commits not reachable from the retained authority/history path, deletion is blocked until provenance is preserved.
+
+Repository-level `delete_branch_on_merge` may remain disabled while stacked PRs still depend on merged branches as live bases. In that state, closure/cleanup must use a dependency-aware audit rather than blind global deletion.
+
 ## 13. Cross-surface synchronization
 
 GitHub, Notion, Drive, deployment surfaces, and local/native masters may hold different representations, but only one Source Authority governs each claim/object type.

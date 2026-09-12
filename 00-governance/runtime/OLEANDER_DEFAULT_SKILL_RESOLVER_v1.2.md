@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Implementation revision: **1.2.6**
 Decision date: **2026-08-19**  
-Runtime extension: **2026-09-12 — Shared Skill Execution Feedback after real execution/readback; retains 2026-09-09 Cross-Context Frontier Recovery / Executable Frontier Resolution / Capability-Role Routing / Optimistic Checkpoint Concurrency / Verify-Before-Retry / Continuous Auto-Advance**
+Runtime extension: **2026-09-12 — Shared Skill Execution Feedback after real execution/readback + dependency-aware Git Branch Ref Disposition at closure; retains 2026-09-09 Cross-Context Frontier Recovery / Executable Frontier Resolution / Capability-Role Routing / Optimistic Checkpoint Concurrency / Verify-Before-Retry / Continuous Auto-Advance**
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
 Execution implementation: **GitHub `Jiaosong/Design`**
@@ -23,6 +23,7 @@ v1.2.6 keeps the existing knowledge-first execution architecture and extends the
 9. **Continuous Ready-Node Auto-Advance** — after a node is actually executed and read back, continue through further ready nodes in the current execution turn while authority, constraints, checkpoint sequence, side-effect ceiling and stop conditions remain valid; do not stop after one node without a real reason.
 10. **Capability-Role Adapter Routing** — TOOL/plugin/connector selection follows the existing Tool Adapter Contract by capability role, required native output, authority, side-effect class, readback coverage and current verified availability, not by vendor name.
 11. **Shared Skill Execution Feedback** — after real execution and Actual Readback, classify material reusable learning against the existing Skill/Practice/regression owners with execution-time usage provenance; no material Skill delta means no Skill mutation, and project learning cannot self-promote.
+12. **Git Branch Ref Disposition at Closure** — when a material execution used a Git work branch/PR and actually reaches closure, preserve ref→SHA provenance and delete merged refs only when open-PR, active-worktree and explicit-keep dependency checks do not block it; unmerged refs are never deleted by age alone.
 
 This is not a new Skill, METHOD, taxonomy, Agent framework, state database, checkpoint database, lock database or parallel process. It hardens the existing Resolver / Project Control Card / Receipt / DAG / Tool Adapter / CI chain.
 
@@ -530,8 +531,9 @@ The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrie
 - adapter route decision only when a material execution evaluated multiple surfaces or used an ephemeral connected surface;
 - remote-mutation idempotency evidence only when a remote outcome is uncertain or retry is considered;
 - continuous execution evidence when multiple ready nodes were executed in one material run or auto-advance stopped before completion;
-- `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict.
-- conditional `skill_feedback` only when real execution/readback establishes a material reusable Skill delta; omit it when no material delta exists.
+- `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict;
+- conditional `skill_feedback` only when real execution/readback establishes a material reusable Skill delta; omit it when no material delta exists;
+- `branch_ref_disposition` when a material execution used a Git work branch / PR and reaches closure: delete the merged ref after ref→SHA provenance capture unless an open PR head/base, active worktree, or explicit keep reason blocks deletion. Unmerged refs are never deleted by age alone.
 
 Older receipts remain immutable provenance. These runtime extensions are prospective and conditional; they do not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
 
@@ -539,7 +541,9 @@ Older receipts remain immutable provenance. These runtime extensions are prospec
 
 A material runtime change still follows:
 
-`Current Authority readback → GitHub branch → commit → PR → CI → main readback → minimal Notion Current pointer/fact update when required → live drift check`.
+`Current Authority readback → GitHub branch → commit → PR → CI → main readback → dependency-aware branch-ref disposition/readback → minimal Notion Current pointer/fact update when required → live drift check`.
+
+This branch-ref step belongs to the existing Resolver closure/cleanup responsibility. It reuses `00-governance/runtime/github_branch_governance.py` and the Execution Receipt extension; it does not create a new Router, cleanup framework, or parallel branch authority.
 
 A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
 

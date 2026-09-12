@@ -149,6 +149,21 @@
     "project_mode_exempt_from_training_throttle": true,
     "no_net_new_training_evidence_when_over_limit": true
   },
+  "git_branch_hygiene": {
+    "branch_ref_is_current_authority": false,
+    "one_logical_object_one_active_work_branch_pr_frontier": true,
+    "recurring_run_may_create_branch_without_material_delta": false,
+    "merged_remote_ref_default": "DELETE_AFTER_PROVENANCE_CAPTURE",
+    "bulk_delete_requires_audit_manifest": true,
+    "protect_merged_ref_when": [
+      "OPEN_PR_HEAD",
+      "OPEN_PR_BASE",
+      "ACTIVE_WORKTREE",
+      "EXPLICIT_KEEP"
+    ],
+    "unmerged_branch_delete_by_age_only": false,
+    "global_delete_branch_on_merge_while_stacked_pr_bases_exist": false
+  },
   "mandatory_preflight": [
     "resolve_existing_owner",
     "resolve_one_current_authority",
@@ -160,7 +175,8 @@
     "check_orphan_or_parallel_current_risk",
     "resolve_supersession_and_readback",
     "verify_material_delta",
-    "check_consolidation_backlog_before_new_training_or_candidate"
+    "check_consolidation_backlog_before_new_training_or_candidate",
+    "check_git_branch_ref_lifecycle"
   ],
   "enforcement": {
     "workflow": ".github/workflows/oleander-project-anti-pollution.yml",

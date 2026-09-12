@@ -120,6 +120,28 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
         fail("runtime README must explicitly mark resolver v1.1 superseded")
 
     order = current.get("default_resolution_order", [])
+    closure_cleanup = current.get("closure_cleanup", {})
+    require_fields(
+        closure_cleanup,
+        [
+            "git_branch_ref_disposition",
+            "contract",
+            "local_tool",
+            "run_after_main_readback_when_merge_occurred",
+            "protect",
+            "bulk_delete_requires_ref_sha_audit",
+            "unmerged_age_only_delete_forbidden",
+            "delete_branch_on_merge_global_switch_not_required",
+            "does_not_create",
+        ],
+        "resolver-v1.2:closure-cleanup",
+    )
+    if closure_cleanup.get("local_tool") != "00-governance/runtime/github_branch_governance.py":
+        fail("resolver closure cleanup must use the canonical Git branch governance tool")
+    if not {"OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"}.issubset(set(closure_cleanup.get("protect", []))):
+        fail("resolver closure cleanup branch dependency protections incomplete")
+    if closure_cleanup.get("bulk_delete_requires_ref_sha_audit") is not True or closure_cleanup.get("unmerged_age_only_delete_forbidden") is not True:
+        fail("resolver closure cleanup must preserve ref audit and forbid age-only unmerged deletion")
     required_order = [
         "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "RESOLVE_EXECUTION_OWNER_MAP",
@@ -413,6 +435,34 @@ def validate_receipts() -> None:
     feedback_provenance = set(feedback_ext.get("usage_provenance_states", []))
     feedback_gap_routes = set(feedback_ext.get("gap_routes", []))
     feedback_actions = set(feedback_ext.get("feedback_actions", []))
+    branch_ref = schema.get("branch_ref_disposition_extension", {})
+    require_fields(
+        branch_ref,
+        [
+            "required_when",
+            "prospective_only",
+            "historical_receipts_immutable",
+            "fields",
+            "disposition_values",
+            "dependency_checks",
+            "merged_default",
+            "unmerged_age_only_delete_forbidden",
+            "bulk_cleanup_requires_ref_sha_audit",
+            "branch_ref_is_not_current_authority",
+        ],
+        "execution-receipt:branch-ref-disposition-extension",
+    )
+    if branch_ref.get("prospective_only") is not True or branch_ref.get("historical_receipts_immutable") is not True:
+        fail("branch-ref disposition extension must remain prospective and preserve historical receipts")
+    if branch_ref.get("unmerged_age_only_delete_forbidden") is not True:
+        fail("branch-ref disposition must forbid age-only deletion of unmerged refs")
+    if branch_ref.get("bulk_cleanup_requires_ref_sha_audit") is not True:
+        fail("branch-ref bulk cleanup must preserve ref->SHA audit evidence")
+    if branch_ref.get("branch_ref_is_not_current_authority") is not True:
+        fail("branch refs must not become Current authority")
+    required_branch_dependencies = {"OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"}
+    if not required_branch_dependencies.issubset(set(branch_ref.get("dependency_checks", []))):
+        fail("branch-ref disposition dependency checks are incomplete")
     for path in receipts:
         r = load_json(path)
         require_fields(r, core, f"receipt:{path.name}")

@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.2**
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint / Frontier / Concurrency / Adapter Route / Auto-Advance; 2026-09-12 — Shared Skill Execution Feedback**
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint / Frontier / Concurrency / Adapter Route / Auto-Advance; 2026-09-12 — Shared Skill Execution Feedback + Git Branch Ref Disposition at Closure**
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -27,6 +27,8 @@ The 2026-09-09 runtime extensions additionally support:
 - **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion.
 
 The 2026-09-12 extension additionally supports **Skill Feedback** only when real execution plus Actual Readback produces material reusable learning. No material Skill delta means the section is omitted and no Skill mutation is created.
+
+The same 2026-09-12 runtime also supports **Branch Ref Disposition** at actual closure when a material execution used a Git work branch/PR: merged refs are deleted only after ref→SHA provenance capture and dependency checks; open PR heads/bases, active worktrees and explicit keep refs remain protected, and unmerged refs are never deleted by age alone.
 
 These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database, state database, checkpoint database or lock service.
 
@@ -419,6 +421,12 @@ A chat/session boundary, frontier discovery, liveness probe, idempotency verific
 Record:
 
 `material_delta / branch / commits / pull_request / ci_state / merge_commit / main_readback / notion_writeback / remaining_blockers / final_state`.
+
+For material executions that use a Git work branch or pull request and reach closure, new receipts also record `branch_ref_disposition` prospectively:
+
+`branch / disposition / reason / dependency_checks / audit_receipt / readback`.
+
+After merge, the default is `DELETE_AFTER_MERGE` once ref→SHA provenance has been captured and the branch is not an open PR head, open PR base, active worktree, or explicit retained provenance/stack ref. An unmerged branch may not be deleted by age alone. Historical receipts are immutable and are not backfilled merely to satisfy this extension.
 
 Closure is allowed only after the Flow Completion Gate passes.
 
