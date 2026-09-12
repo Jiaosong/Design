@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SKILLS = ROOT / "evals" / "golden" / "skills.jsonl"
 SKILL_REGISTRY = ROOT / "oleander-skills" / "SKILL_REGISTRY_v1.1.json"
+SKILL_FEEDBACK_MD = ROOT / "00-governance" / "runtime" / "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md"
+SKILL_FEEDBACK_JSON = ROOT / "00-governance" / "runtime" / "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.json"
 RETRIEVAL = ROOT / "evals" / "retrieval" / "golden_queries.jsonl"
 FAILURES = ROOT / "evals" / "failure" / "failure_cases.jsonl"
 AIG01 = ROOT / "90-shared" / "OLEANDER_AIG-01_Evaluation_Regression_v0.1.md"
@@ -91,6 +93,17 @@ def validate_skill_registry():
         raise AssertionError(f"skill registry lifecycle_roles mismatch: {sorted(roles)}")
     if registry.get("core_identity_rule") != "ELEVEN_CORE_IDENTITIES_DO_NOT_OVERRIDE_MINIMUM_SUFFICIENT_OWNER_SET_OR_EXISTING_SPECIALIST_OWNERSHIP":
         raise AssertionError("skill registry must preserve minimum-sufficient-owner and existing-specialist authority")
+    feedback = registry.get("shared_execution_feedback_contract")
+    if not isinstance(feedback, dict):
+        raise AssertionError("skill registry must declare shared_execution_feedback_contract")
+    expected_feedback_md = "00-governance/runtime/OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md"
+    expected_feedback_json = "00-governance/runtime/OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.json"
+    if feedback.get("md") != expected_feedback_md or feedback.get("json") != expected_feedback_json:
+        raise AssertionError("skill registry shared execution feedback pointers mismatch")
+    if feedback.get("applies_to_core_skill_count") != 11:
+        raise AssertionError("shared execution feedback contract must apply to exactly 11 core Skill identities")
+    if not SKILL_FEEDBACK_MD.is_file() or not SKILL_FEEDBACK_JSON.is_file():
+        raise AssertionError("shared execution feedback contract files are missing")
 
     rows = registry.get("skills")
     if not isinstance(rows, list):
@@ -157,6 +170,74 @@ def validate_skill_registry():
         raise AssertionError(f"skill registry must contain exactly 11 core skills, found {len(rows)}")
 
     return registry
+
+
+def validate_skill_feedback_contract(skill_rows, registry):
+    try:
+        contract = json.loads(SKILL_FEEDBACK_JSON.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise AssertionError(f"invalid Skill execution feedback JSON: {exc}") from exc
+
+    if contract.get("contract_id") != "OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT":
+        raise AssertionError("Skill execution feedback contract_id mismatch")
+    if contract.get("version") != "0.1" or contract.get("status") != "ACTIVE_SHARED_SUPPLEMENT":
+        raise AssertionError("Skill execution feedback supplement must remain ACTIVE_SHARED_SUPPLEMENT v0.1")
+    if contract.get("scope") != "ALL_ELEVEN_CORE_SKILL_IDENTITIES":
+        raise AssertionError("Skill execution feedback scope must cover all eleven core Skill identities")
+
+    expected_actions = {
+        "NONE_PROJECT_SPECIFIC",
+        "UPDATE_EXISTING_PRACTICE",
+        "UPDATE_EXISTING_SKILL",
+        "ADD_REGRESSION_RULE",
+        "CROSS_CONTEXT_TEST_NEEDED",
+    }
+    if set(contract.get("feedback_actions", [])) != expected_actions:
+        raise AssertionError("Skill execution feedback action vocabulary drift")
+
+    required_provenance = {
+        "PROJECT_USAGE_EVIDENCE",
+        "PROJECT_LEARNING_EVIDENCE_SKILL_FEEDBACK_ORPHAN",
+    }
+    if not required_provenance.issubset(set(contract.get("usage_provenance_states", []))):
+        raise AssertionError("Skill execution feedback provenance states incomplete")
+
+    required_separations = {
+        "EXECUTION_SUCCESS_NE_SKILL_IMPROVEMENT",
+        "ONE_PROJECT_FAILURE_NE_UNIVERSAL_RULE",
+        "PROJECT_LEARNING_NE_CROSS_CONTEXT_MATURITY",
+        "CI_PASS_NE_SKILL_PROMOTION",
+        "SKILL_SELF_UPDATE_NE_HUMAN_PROMOTION",
+    }
+    if not required_separations.issubset(set(contract.get("hard_separations", []))):
+        raise AssertionError("Skill execution feedback promotion boundaries incomplete")
+    if "NO_MATERIAL_SKILL_DELTA_NO_SKILL_MUTATION" not in contract.get("anti_noise_rules", []):
+        raise AssertionError("Skill execution feedback must block no-delta Skill mutation")
+    if "NEW_SKILL" not in contract.get("does_not_create", []):
+        raise AssertionError("shared feedback supplement must explicitly forbid creating a new Skill")
+
+    text = SKILL_FEEDBACK_MD.read_text(encoding="utf-8")
+    for term in [
+        "PROJECT_USAGE_EVIDENCE",
+        "PROJECT_LEARNING_EVIDENCE / SKILL_FEEDBACK_ORPHAN",
+        "NO MATERIAL SKILL DELTA = NO SKILL MUTATION",
+        "EXECUTION SUCCESS ≠ SKILL IMPROVEMENT",
+        "ONE PROJECT FAILURE ≠ UNIVERSAL RULE",
+        "CI PASS ≠ SKILL PROMOTION",
+    ]:
+        if term not in text:
+            raise AssertionError(f"Skill execution feedback prose missing boundary term: {term}")
+
+    if len(registry.get("skills", [])) != 11:
+        raise AssertionError("shared feedback supplement must not change the eleven-core registry size")
+
+    feedback_cases = [
+        row for row in skill_rows
+        if "one_project_failure_auto_promoted_to_universal_skill_rule" in row.get("blockers", [])
+        and "post_hoc_artifact_relabelled_as_project_usage_evidence" in row.get("blockers", [])
+    ]
+    if not feedback_cases:
+        raise AssertionError("Golden set missing false-promotion + false-usage-provenance Skill feedback regression")
 
 
 def validate_skill_cases(rows):
@@ -287,6 +368,7 @@ def main():
         retrieval_rows = load_jsonl(RETRIEVAL)
         failure_rows = load_jsonl(FAILURES)
         counts = validate_skill_cases(skill_rows)
+        validate_skill_feedback_contract(skill_rows, registry)
         validate_retrieval_cases(retrieval_rows)
         validate_failure_cases(failure_rows)
         validate_protocol(AIG01, [
@@ -317,6 +399,7 @@ def main():
     print("- AIG-02 trust card: present")
     print("- AIG-02 provenance manifest: valid JSON / no false C2PA claim")
     print("- AIG-03 runtime evidence protocol + event corpus: present")
+    print("- shared Skill execution feedback contract: present / 11-core / no self-promotion")
     return 0
 
 

@@ -1,9 +1,9 @@
 # OLEANDER Execution Receipt v1.0
 
 Status: **ACTIVE CURRENT**  
-Policy revision: **1.1**  
+Policy revision: **1.2**
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry**  
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint / Frontier / Concurrency / Adapter Route / Auto-Advance; 2026-09-12 — Shared Skill Execution Feedback**
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -25,6 +25,8 @@ The 2026-09-09 runtime extensions additionally support:
 - **Adapter Route Decision** when a material execution evaluates multiple surfaces or uses a currently exposed ephemeral connector;
 - **Remote Mutation Idempotency** when a remote write outcome is uncertain or retry is considered;
 - **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion.
+
+The 2026-09-12 extension additionally supports **Skill Feedback** only when real execution plus Actual Readback produces material reusable learning. No material Skill delta means the section is omitted and no Skill mutation is created.
 
 These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database, state database, checkpoint database or lock service.
 
@@ -356,6 +358,29 @@ For continuous execution, readback is also the dependency boundary between succe
 
 For uncertain remote outcomes, readback is additionally the verification boundary that decides whether a retry is legal. For cross-system state changes, it is part of reconciliation evidence.
 
+## 10A｜Skill Feedback｜when applicable
+
+Use only when real execution plus Actual Readback establishes a material reusable Skill/Practice/regression delta. The authoritative shared policy is `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md/.json`.
+
+Record:
+
+`skill_id / skill_version_or_commit / usage_provenance_state / rule_or_capability_used / artifact_refs / actual_readback / outcome / gap_route / failure_class / root_cause / repair_retest_or_hold / transfer_rule_candidate / transfer_boundary / feedback_action / cross_context_status / regression_case_required / skill_change_ref / promotion_boundary`.
+
+Usage provenance states:
+
+- `PROJECT_USAGE_EVIDENCE` — only with direct pre-execution/in-action exact Skill/version/extension evidence that materially influenced the action;
+- `PROJECT_LEARNING_EVIDENCE_SKILL_FEEDBACK_ORPHAN` — project learning is real but historical Skill-use provenance is not established.
+
+Allowed feedback actions remain:
+
+`NONE_PROJECT_SPECIFIC / UPDATE_EXISTING_PRACTICE / UPDATE_EXISTING_SKILL / ADD_REGRESSION_RULE / CROSS_CONTEXT_TEST_NEEDED`.
+
+Failure-derived Skill changes require root cause and repair/retest, or a legitimate bounded HOLD. Post-hoc artifact/diff/commit/readback cannot be used to manufacture historical Skill usage.
+
+`NO MATERIAL SKILL DELTA = OMIT skill_feedback + NO SKILL MUTATION`.
+
+The section never changes installation/lifecycle state and never self-promotes a Skill.
+
 ## 11｜Four-layer regression
 
 Record each applicable layer independently:
@@ -401,4 +426,4 @@ A `CLOSED` checkpoint is a runtime consequence of valid closure; it does not its
 
 ## 15｜Does not prove
 
-A complete receipt, valid continuation checkpoint, concurrency guard, idempotency decision, discovered frontier, adapter route decision or continuous-execution record does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance or promotion unless the appropriate independent authority separately establishes it.
+A complete receipt, valid continuation checkpoint, concurrency guard, idempotency decision, discovered frontier, adapter route decision, continuous-execution record or Skill-feedback section does not prove Project State, Design PASS, field/engineering truth, user validation, rights clearance, historical Skill usage without execution-time provenance, universal transfer or promotion unless the appropriate independent authority separately establishes it.

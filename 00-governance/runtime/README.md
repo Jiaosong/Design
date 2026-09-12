@@ -7,11 +7,12 @@ This directory contains cross-project runtime and capability-routing contracts. 
 Use:
 
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md`
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.2`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.6`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`
 - `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md/.json`
 - `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
-- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — Current policy revision `1.1` + image-consumption extension when applicable
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — Current policy revision `1.2` + conditional image-consumption / Skill-feedback extensions when applicable
+- `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md/.json` — shared post-execution feedback contract for all eleven core Skill identities; not a new Skill.
 - `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.md/.json`
 
 Canonical default:
@@ -125,7 +126,7 @@ For execution owners that produce or materially judge visual output, check local
 
 Current Notion structural routing uses the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy hierarchy fields are not Current routing authority.
 
-`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.2 plus this 2026-08-21 runtime hardening; the hardening compiles existing Resolver/Practice/Naming/Persistence rules and does not create a parallel METHOD or Skill.
+`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.6. The current resolver retains the existing runtime hardening and adds conditional shared Skill execution feedback after real execution/readback; it does not create a parallel METHOD, Skill or knowledge base.
 
 ## Current executable contract layer v0.1
 
@@ -136,11 +137,12 @@ Current Notion structural routing uses the live Registry and `Canonical Parent�
 - `OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1.md/.json`
 - `OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md/.json`
 - `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.md/.json` — semantic content-image allocation extension; not a new Skill/METHOD/framework.
+- `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1.md/.json` — all-eleven-core execution-learning supplement with usage provenance, material-delta and no-self-promotion boundaries.
 
 Instance carrier:
 
 - `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
-- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — policy revision 1.1; all new receipts record `constraint_lock` + `flow_completion`; visual content-image runs additionally record `image_consumption`.
+- `OLEANDER_EXECUTION_RECEIPT_v1.0.json` — policy revision 1.2; all new receipts record `constraint_lock` + `flow_completion`; visual content-image runs additionally record `image_consumption`; material reusable Skill learning adds conditional `skill_feedback`.
 - `receipts/` — execution receipts. Only the explicitly allowlisted pre-policy receipts may omit policy-1.1 fields.
 - `regression-baselines/` — typed four-layer regression baselines.
 

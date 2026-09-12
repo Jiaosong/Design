@@ -243,8 +243,8 @@ def select_reliable_surface(candidates: list[dict]) -> dict:
 
 def validate_contract_bindings() -> None:
     resolver = load_json(RESOLVER)
-    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.5":
-        fail("runtime decisions must bind current Resolver v1.2 implementation revision 1.2.5")
+    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.6":
+        fail("runtime decisions must bind current Resolver v1.2 implementation revision 1.2.6")
     continuation = resolver.get("continuation_checkpoint_policy", {})
     if "authority_fingerprint" not in set(continuation.get("required_checkpoint_fields", [])):
         fail("authority snapshot reuse must bind the existing authority_fingerprint carrier")

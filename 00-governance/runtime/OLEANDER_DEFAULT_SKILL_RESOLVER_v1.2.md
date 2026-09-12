@@ -1,16 +1,16 @@
 # OLEANDER Default Skill Resolver v1.2
 
 Status: **ACTIVE CURRENT**  
-Implementation revision: **1.2.5**  
+Implementation revision: **1.2.6**
 Decision date: **2026-08-19**  
-Runtime extension: **2026-09-09 — Cross-Context Frontier Recovery / Executable Frontier Resolution / Capability-Role Routing / Optimistic Checkpoint Concurrency / Verify-Before-Retry / Continuous Auto-Advance**  
+Runtime extension: **2026-09-12 — Shared Skill Execution Feedback after real execution/readback; retains 2026-09-09 Cross-Context Frontier Recovery / Executable Frontier Resolution / Capability-Role Routing / Optimistic Checkpoint Concurrency / Verify-Before-Retry / Continuous Auto-Advance**
 Scope: **ALL OLEANDER projects / conversations / agents / media**  
 Notion Current Authority: **OLEANDER｜设计知识库（Design） v1.1.1**  
 Execution implementation: **GitHub `Jiaosong/Design`**
 
 ## 0｜Purpose
 
-v1.2.5 keeps the existing knowledge-first execution architecture and extends the v1.2.4 Chat-first continuation baseline without adding a new state system, lock service or Agent framework:
+v1.2.6 keeps the existing knowledge-first execution architecture and extends the v1.2.5 continuation/runtime baseline without adding a new Skill, knowledge system, state system, lock service or Agent framework:
 
 1. **Sticky Execution Constraint Lock** — explicit negative user constraints are resolved before owner/tool selection and remain active until explicitly revoked.
 2. **Flow Completion Gate** — a task that requires the full OLEANDER flow cannot be called complete until every applicable phase is actually closed.
@@ -22,12 +22,13 @@ v1.2.5 keeps the existing knowledge-first execution architecture and extends the
 8. **Verify-Before-Retry** — uncertain remote mutation outcomes are read back against an expected postcondition before retry. Duplicate create-like side effects are forbidden.
 9. **Continuous Ready-Node Auto-Advance** — after a node is actually executed and read back, continue through further ready nodes in the current execution turn while authority, constraints, checkpoint sequence, side-effect ceiling and stop conditions remain valid; do not stop after one node without a real reason.
 10. **Capability-Role Adapter Routing** — TOOL/plugin/connector selection follows the existing Tool Adapter Contract by capability role, required native output, authority, side-effect class, readback coverage and current verified availability, not by vendor name.
+11. **Shared Skill Execution Feedback** — after real execution and Actual Readback, classify material reusable learning against the existing Skill/Practice/regression owners with execution-time usage provenance; no material Skill delta means no Skill mutation, and project learning cannot self-promote.
 
 This is not a new Skill, METHOD, taxonomy, Agent framework, state database, checkpoint database, lock database or parallel process. It hardens the existing Resolver / Project Control Card / Receipt / DAG / Tool Adapter / CI chain.
 
 Current invariant:
 
-> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → FRONTIER DISCOVERY WHEN LOCAL POINTER IS MISSING → CONTINUATION CHECKPOINT / AUTHORITY REVALIDATION WHEN APPLICABLE → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → CAPABILITY-ROLE TOOL ADAPTER ROUTING → CHECKPOINT-SEQUENCE GUARD BEFORE MUTATION → VERIFY UNCERTAIN REMOTE POSTCONDITION BEFORE RETRY → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → CHECKPOINT UPDATE WHEN APPLICABLE → AUTO-ADVANCE NEXT READY NODE WHILE ALLOWED → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
+> **CURRENT ROOT → CURRENT TASK / SOURCE AUTHORITY → FRONTIER DISCOVERY WHEN LOCAL POINTER IS MISSING → CONTINUATION CHECKPOINT / AUTHORITY REVALIDATION WHEN APPLICABLE → STICKY CONSTRAINT LOCK → LIVE REGISTRY / CURRENT KNOWLEDGE → EXISTING METHOD + SKILL READBACK → EXISTING MATURE DESIGN / CURRENT VISUAL AUTHORITY → IMAGE CONSUMPTION LOOKUP → REQUIRED NATIVE OUTPUT → MINIMUM SUFFICIENT OWNER SET / DAG → CAPABILITY-ROLE TOOL ADAPTER ROUTING → CHECKPOINT-SEQUENCE GUARD BEFORE MUTATION → VERIFY UNCERTAIN REMOTE POSTCONDITION BEFORE RETRY → REAL EXECUTION → NATIVE ARTIFACT / HANDOFF → REGRESSION → ACTUAL READBACK → MATERIAL SKILL FEEDBACK CLASSIFICATION WHEN TRIGGERED → CHECKPOINT UPDATE WHEN APPLICABLE → AUTO-ADVANCE NEXT READY NODE WHILE ALLOWED → EVIDENCE + INDEPENDENT DESIGN REVIEW → FLOW COMPLETION GATE → EXECUTION RECEIPT → DRIFT / SYNC AS APPLICABLE**
 
 ## 1｜Notion current architecture remains upstream
 
@@ -298,6 +299,7 @@ The Current execution contract layer remains:
 - `OLEANDER_EXECUTION_REGRESSION_CONTRACT_v0.1`
 - `OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1`
 - `OLEANDER_EXECUTION_RECEIPT_v1.0`
+- `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1` — shared conditional feedback policy for all eleven core Skill identities; does not create a twelfth Skill or parallel knowledge base.
 - `OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0` — allocation/register extension for semantic content images.
 
 The constraint lock precedes tool/owner mutation. Continuation checkpoint resolution may restore the same task state before that lock is re-resolved, but it cannot override a newer explicit user constraint or newer Current Authority.
@@ -410,13 +412,14 @@ If any required applicable phase is missing, `FAIL` or `HOLD`, the task state is
 24. Emit Native Artifact records / typed handoffs as applicable.
 25. Run `STRUCTURAL / SEMANTIC / VISUAL_ROI / RUNTIME` regression as applicable.
 26. Open/render/run the actual result and perform readback.
+26A. If and only if the execution/readback exposes material reusable Skill learning, classify it through `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1`: preserve usage provenance, route the causal gap, choose the existing feedback action, and add/update regression when justified. Post-hoc artifacts cannot be relabeled as historical Skill usage; no material Skill delta means no Skill mutation.
 27. Update the existing continuation checkpoint when the conditional trigger is met; advance checkpoint sequence monotonically; do not create a no-delta receipt solely for chat continuity.
 28. If another node is ready and no stop condition is active, continue execution in the same turn; do not stop merely because one node passed.
 29. Run Evidence Gate and independent Professional Design Gate separately where applicable.
 30. Verify the Flow Completion Gate.
 31. Emit/update an Execution Receipt containing the active constraint lock, flow-completion state, continuation/frontier evidence when applicable, concurrency guard when applicable, material adapter route decision when applicable, remote-mutation idempotency evidence when applicable, continuous-execution evidence when applicable and image-consumption section when applicable.
 32. Run Notion↔GitHub drift check where cross-platform pointers changed.
-33. Only after failed execution/readback may reusable Skill gaps be diagnosed; active creation denies still take precedence.
+33. Only after real execution/readback may reusable Skill learning be diagnosed; failure-derived changes require root cause plus repair/retest or a legitimate HOLD, success-derived transfer rules remain bounded, and active creation denies still take precedence.
 34. Sync material delta and preserve provenance.
 
 ## 7｜Existing-first / Source Gravity / Visual Authority
@@ -504,6 +507,10 @@ A continuation checkpoint may only advance from actual readback, a genuine repai
 
 Dependent mutations in continuous execution require readback between nodes. Auto-advance is not evidence promotion and does not let a producer skip an independent review gate.
 
+Actual Readback is also the boundary for shared Skill feedback. Use `PROJECT_USAGE_EVIDENCE` only when the exact Skill/version/extension was selected before or during the material action and materially influenced it. Otherwise preserve real project learning as `PROJECT_LEARNING_EVIDENCE / SKILL_FEEDBACK_ORPHAN`. A successful artifact, commit or screenshot is not retroactive Skill-usage proof.
+
+`EXECUTION SUCCESS ≠ SKILL IMPROVEMENT`; `ONE PROJECT FAILURE ≠ UNIVERSAL RULE`; `PROJECT LEARNING ≠ CROSS-CONTEXT MATURITY`; `CI PASS ≠ SKILL PROMOTION`.
+
 Before Remote/Authority/Release mutation, the current checkpoint sequence must be re-read. An uncertain remote side effect must be verified against its expected postcondition before retry.
 
 ## 11｜Execution Receipt
@@ -524,6 +531,7 @@ The Current `OLEANDER_EXECUTION_RECEIPT_v1.0` remains the single instance carrie
 - remote-mutation idempotency evidence only when a remote outcome is uncertain or retry is considered;
 - continuous execution evidence when multiple ready nodes were executed in one material run or auto-advance stopped before completion;
 - `image_consumption` when semantic content imagery is involved, including lookup, reservation/consumption, conflicts, blocked assets, releases and verdict.
+- conditional `skill_feedback` only when real execution/readback establishes a material reusable Skill delta; omit it when no material delta exists.
 
 Older receipts remain immutable provenance. These runtime extensions are prospective and conditional; they do not retroactively rewrite historical receipts or make every chat turn a new material execution unit.
 
@@ -535,8 +543,8 @@ A material runtime change still follows:
 
 A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
 
-A chat/session boundary alone is not a cross-platform Current change and therefore does not trigger Notion writeback or drift mutation. Frontier discovery, liveness probes, idempotency verification and no-delta route decisions likewise remain ephemeral unless an existing persistence trigger applies.
+A chat/session boundary alone is not a cross-platform Current change and therefore does not trigger Notion writeback or drift mutation. Frontier discovery, liveness probes, idempotency verification, no-delta route decisions and no-delta Skill-feedback classification likewise remain ephemeral unless an existing persistence trigger applies.
 
 ## 13｜Does not prove
 
-Resolver v1.2.5 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. A discovered or valid continuation checkpoint proves only that an existing execution frontier can be resumed under unchanged authority. A concurrency guard proves only that the observed sequence still matches the executor's expected frontier at the guarded mutation boundary. Capability-role routing proves only that a bounded execution surface was selected under the declared constraints. An idempotency decision proves only the bounded retry/no-retry condition for that remote mutation. Continuous auto-advance proves only that successive nodes were eligible to execute in the current turn; none of these mechanisms independently prove Design PASS, Current, promotion or closure.
+Resolver v1.2.6 being Current does not prove project design quality, field truth, engineering validity, user validation, rights clearance or candidate promotion. A discovered or valid continuation checkpoint proves only that an existing execution frontier can be resumed under unchanged authority. A concurrency guard proves only that the observed sequence still matches the executor's expected frontier at the guarded mutation boundary. Capability-role routing proves only that a bounded execution surface was selected under the declared constraints. An idempotency decision proves only the bounded retry/no-retry condition for that remote mutation. Continuous auto-advance proves only that successive nodes were eligible to execute in the current turn. Skill feedback proves only the bounded learning/evidence state recorded under its provenance; it cannot retroactively prove Skill usage or self-promote a Skill. None of these mechanisms independently prove Design PASS, Current, promotion or closure.

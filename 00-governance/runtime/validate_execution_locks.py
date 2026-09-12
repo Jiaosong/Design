@@ -168,8 +168,8 @@ def resolve_uncertain_mutation(
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.5":
-        fail("Current resolver must be v1.2 implementation revision 1.2.5")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.6":
+        fail("Current resolver must be v1.2 implementation revision 1.2.6")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
@@ -457,8 +457,8 @@ def validate_tool_adapter_routing() -> dict:
 
 def validate_receipt_contract() -> dict:
     data = load_json(RECEIPT_CONTRACT)
-    if data.get("version") != "1.0" or data.get("policy_revision") != "1.1":
-        fail("Execution Receipt must remain v1.0 policy revision 1.1")
+    if data.get("version") != "1.0" or data.get("policy_revision") != "1.2":
+        fail("Execution Receipt must remain v1.0 policy revision 1.2")
     additional = set(data.get("policy_1_1_additional_required_core_fields", []))
     if additional != {"constraint_lock", "flow_completion"}:
         fail("policy 1.1 must add exactly constraint_lock and flow_completion")
@@ -806,7 +806,7 @@ def main() -> None:
     print("unified capability-role adapter routing: ENFORCED")
     print("existing visual authority + image-consumption phase: ENFORCED")
     print("full-flow completion gate: ENFORCED")
-    print(f"policy-1.1 receipts: {count}")
+    print(f"policy-1.1+ compatible receipts: {count}")
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ Tool choice follows the project and active user constraints. The project never f
 
 ## 1｜Sticky constraint preflight
 
-Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.5`.
+Before probing or selecting any tool, adapter or execution environment, resolve active constraints through `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision `1.2.6`.
 
 Hard rules:
 
@@ -237,12 +237,14 @@ For Blender jobs, the shared runner should consume the full deterministic machin
 Current contract:
 
 - `00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json`
-- policy revision `1.1`
+- policy revision `1.2`
 
 Every new material execution receipt records the normal authority/output/owner/artifact/execution/readback/regression/review/closure fields **plus**:
 
 - `constraint_lock`
 - `flow_completion`
+
+When, and only when, real execution plus Actual Readback establishes material reusable Skill learning, use the Current Receipt contract's conditional `skill_feedback` section and the shared `OLEANDER_SKILL_EXECUTION_FEEDBACK_SUPPLEMENT_v0.1`. No material Skill delta creates no Skill mutation.
 
 Only the explicitly allowlisted pre-policy receipts may omit those sections.
 

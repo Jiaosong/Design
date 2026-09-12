@@ -45,6 +45,7 @@ Use only the minimum relevant extension:
 - `PRODUCT_FORM_AFFORDANCE_SERVICEABILITY_EXTENSION.md` — physical form whose operation cues, body/contact relation, construction truth, serviceability or repair path need explicit review;
 - `PACKAGING_STRUCTURE_DIELINE_EXTENSION.md` — packaging where panel logic, cut/crease/glue/lock, opening, assembly, face hierarchy or production geometry materially govern the design;
 - `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences;
+- `SYSTEM_RELATION_PREBUILD_GATES_EXTENSION.md` — physical/spatial/system work where topology, clearance/envelope, host/interface relation, constructive role and dependent-detail invalidation must pass before high-fidelity or repetitive detail is eligible;
 - `EXISTING_PROJECT_REPAIR_EXTENSION.md` — already-active projects where a Current/mature artifact must be repaired without reopening unrelated design variables; preserves same-object identity, Best Existing First, minimum repair delta, Artifact Delta Gate, controlled owner handoff and independent KNOWLEDGE progress.
 
 Extensions refine the current object. They do not create a second project process and do not replace manufacturing, ergonomics, code, engineering or human-test authority.
@@ -204,6 +205,18 @@ Selection outputs:
 
 **Phase exit:** the chosen direction and unresolved trade-offs are explicit, and the selection rule was not changed after seeing the result.
 
+### 5A — Prebuild system-relation gate when triggered
+
+Before detail-bearing geometry for coupled physical/spatial/system work, route through `SYSTEM_RELATION_PREBUILD_GATES_EXTENSION.md`.
+
+The minimum prebuild sequence is:
+
+`HARD CONSTRAINTS → SYSTEM TOPOLOGY → CLEARANCE / ENVELOPE → INTERFACE GRAPH → SOURCE/DEPENDENCY STATE → DETAIL ELIGIBILITY`.
+
+Do not unlock repetitive or high-fidelity detail while an upstream relation it depends on is `REVISE / HOLD / STALE / UNKNOWN`. The gate establishes design eligibility only; specialist dimensions, capacity, code, manufacturing and field truth remain with their Current authorities.
+
+**Phase exit:** the selected direction is `PASS` and eligible for the necessary downstream detail, `PARTIAL` only in explicitly isolated passed zones, or routed back to the earliest failed relation.
+
 ### 6 — Construct the minimum faithful prototype
 
 Choose the **minimum fidelity that can test the current uncertainty**. Do not increase fidelity as a substitute for resolving a relationship.
@@ -237,6 +250,7 @@ Rules:
 - use Required Native Output First;
 - preserve editable master identity;
 - representative fidelity must match the claim being tested;
+- when the System Relation Prebuild Gate is triggered, do not generate downstream detail before its topology/clearance/interface/source dependencies are eligible;
 - if the question is relation/topology, do not hide it under presentation polish;
 - if the question is material/ergonomic/engineering/field reality, emit specialist validation rather than simulating certainty.
 
@@ -252,6 +266,10 @@ Attack at the correct layer:
 - adverse load / simultaneous use / error / interruption;
 - sequence reversal / missing state / edge case;
 - alternate actor / maintenance / accessibility / service route;
+- system topology and required connection continuity;
+- spatial clearance / swept envelope at locations that can invalidate use or service;
+- interface graph against the actual host/dependent objects;
+- detail eligibility and stale/dependent-detail state after upstream change;
 - cross-view consistency: plan↔section, state↔interface, model↔drawing;
 - reference fidelity when the task is explicitly reconstruction.
 
@@ -285,9 +303,9 @@ Design Crit asks:
 
 Classify the failure:
 
-`Parameter / Relation / Geometry / Topology / Architecture / Evidence`
+`Parameter / Constraint / Relation / Clearance / Interface / Dependency / Geometry / Topology / Architecture / Evidence`
 
-Do not respond to a Relation/Topology failure with more resolution, nicer materials or typography.
+Do not respond to a Constraint/Relation/Clearance/Interface/Dependency/Topology failure with more resolution, nicer materials, more objects or typography.
 
 Preserve a compact repair record:
 
@@ -364,6 +382,8 @@ For any material change, run **Change Propagation** before declaring the repair 
 
 Check, as applicable, model/drawing, plan/section, UI states, route, board, web, video, package, evidence captions and validation receipts. A local edit is not closed if dependent artifacts still communicate the previous decision.
 
+For source/host/topology/interface changes, dependent geometry/detail must additionally be classified `CURRENT / STALE / REGEN_REQUIRED / RETEST_REQUIRED / SUPERSEDED` before closure. A downstream object that still renders is not evidence that its dependency remains valid.
+
 Before a design decision becomes durable, also record:
 - chosen option and rejected alternatives;
 - Locked / Open variables;
@@ -417,6 +437,8 @@ These are anomaly signals, not performance KPIs and not promotion scores. Use th
 - validation finding has no Design Disposition;
 - presentation changes a locked relation or geometry;
 - downstream derivative remains stale after an upstream design change;
+- high-fidelity/repetitive detail is advancing while topology, clearance, interface or source dependency remains unresolved;
+- a constructive role is represented by a generic primitive that creates a false physical cue;
 - option set contains several cosmetic variants but only one concept family.
 
 A detector firing does not automatically reject the design. It requires the correct owner to inspect the cause.
@@ -474,6 +496,8 @@ Missing proof remains missing proof even when a composition would benefit from m
 23. Preserve the Design Continuity Contract across presentation handoff.
 24. Propagate material changes through dependent objects and retest affected views/states before closure.
 25. `PROCESS PASS ≠ DESIGN PASS ≠ VALIDATION PASS ≠ PRESENTATION PASS ≠ FIELD PASS`.
+26. When triggered, `SYSTEM RELATION PASS → DETAIL ELIGIBLE`; topology, clearance, interface or stale-source failure locks dependent detail.
+27. Constructive representation must follow the object's physical role strongly enough to avoid false support/connection/sealing/drainage cues; specialist sizing remains outside DESIGN authority.
 
 ## Semantic-dimension-to-form gate
 
