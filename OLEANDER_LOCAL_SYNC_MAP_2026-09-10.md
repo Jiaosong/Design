@@ -26,29 +26,34 @@
 - Upstream delta: 0 ahead / 1 behind
 - Status: ISOLATED WORKTREE / REMOTE ADVANCED BY 1 / local browser-readback remains untracked; do not fast-forward until the untracked browser evidence is reviewed
 
-### Notion Canonical Knowledge Runtime
+### Notion Canonical Knowledge Runtime + Post-Sync Governance
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
 - Branch: agent/oleander-notion-canonical-knowledge-v01-20260911
-- HEAD: 3fce0601aa7bb0be291a85c374270a8d8cc68449
+- HEAD: c89d56d253a66b152de2af42072ffa6c0c2e4690
 - Remote: origin/agent/oleander-notion-canonical-knowledge-v01-20260911
 - Runtime PR: #521 MERGED -> `ec6bd93aceacb1303aa2729f22c9fe964463f702`
 - Receipt closure PR: #522 MERGED -> `45cadb2fdbf2e9c70152ed363b0d03b2d462840e`
 - Scheduler resilience PR: #523 MERGED -> `1156086864df4bd5b34898a341f892f6c1484099`
 - Large-page embedding hardening PR: #524 MERGED -> `abd4bee0428b5dcc904aa464f89134496ff12211`
 - Final corpus closure PR: #525 MERGED -> `f5f35b9929beb1d9c4b1297050a06586423527b9`
+- Post-sync governance PR: #526 MERGED -> `0a58055f9539ea05387f80ad6cd4742cee94595e`
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
-- Cloudflare Worker: `a893e972-5ae5-425c-9298-2315dc05f417`
-- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler; primary scheduler = one-page-per-minute Cloudflare Cron; `scheduled_cron_last_seen` / `scheduled_cron_last_result` provide durable heartbeat readback; `scheduler-status` exposes staleness + open task counts; protected `drain-once` uses the same atomic D1 claim; embedding requests use conservative batching plus adaptive recursive split on provider context overflow; DLQ = containment only, no auto replay
+- Cloudflare Worker: `236ae058-da64-4bae-9b9f-a795c6e6a133`
+- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler; primary scheduler = one-page-per-minute Cloudflare Cron; `scheduled_cron_last_seen` / `scheduled_cron_last_result` provide durable heartbeat readback; `scheduler-status` exposes staleness + open task counts; protected `drain-once` uses the same atomic D1 claim; embedding requests use conservative batching plus adaptive recursive split on provider context overflow; post-sync governance uses a bearer-protected, field-allowlisted live Notion read/write path with immediate `syncPage` readback; DLQ = containment only, no auto replay
 - Scheduler state: Cloudflare Cron recovered; latest durable heartbeat reports `ok=true` for `* * * * *`.
 - Cross-provider fallback: GitHub Actions fallback remains gated STANDBY and is not a second authority or second task store.
 - Current full reconcile: `9b40de03-96d5-40b1-be84-0f137e7d248e` / `COMPLETE` / 1,184 durable tasks
-- Production readback: `1,184 PROCESSED / 0 PENDING / 0 PROCESSING / 0 RETRY / 0 BLOCKED`; D1 documents `1,184 total / 1,184 active`; both formerly oversized RETRY pages closed as `PROCESSED` on attempt `3` with `error=NULL`.
-- Knowledge corpus state: **SYNCED / 1184 OF 1184**.
+- Full-sync readback remains closed: `1,184 PROCESSED / 0 PENDING / 0 PROCESSING / 0 RETRY / 0 BLOCKED`; both formerly oversized RETRY pages closed as `PROCESSED` on attempt `3` with `error=NULL`.
+- Canonical Notion corpus state: **SYNCED / 1184 OF 1184**. Post-sync governance does not delete canonical pages.
+- Governance Phase 1: **ACTIVE / Batch 01–02 APPLIED + READ BACK / NO PERMANENT DELETE**. Canonical collision groups reduced `3 -> 0`; two historical duplicate carriers were re-identified as Legacy, and the distinct External Skill Round 2 evidence received its own Canonical ID.
+- Empty-body containment: ten relation-bearing evidence shells are now `HOLD / PROVENANCE / HISTORY_ONLY`; two fully orphan body-empty pages are retained in Notion as `HOLD / PROVENANCE / BLOCKED` and excluded only from the derivative retrieval plane. `PRAC-BJ-XJ01-20260812-01` remains unchanged pending index-owner/relation review.
+- Current derivative retrieval readback after containment: `1,182 active documents`. This does **not** mean two Notion pages were deleted; canonical Notion corpus remains `1,184`.
+- Remaining active missing-Canonical candidates: `38`, all currently `effective_space=PROVENANCE`; there is no missing-Canonical `CURRENT` page. Next governance queue is content-read Batch 03, prioritizing D01–D08 / K03 / K05 / Axx legacy evidence before any identity or naming mutation.
 
 ## Baseline
-- origin/main: f5f35b9929beb1d9c4b1297050a06586423527b9
-- Blender execution branch vs origin/main: 169 commits unique locally / 1559 commits on origin/main
+- origin/main: 0a58055f9539ea05387f80ad6cd4742cee94595e
+- Blender execution branch vs origin/main: 170 commits unique locally / 1563 commits on origin/main
 - Policy: origin/main is not automatically merged into active execution branches; reconcile through Source Authority / project state first.
 - Policy: do not merge into active branches without authority review
 
