@@ -182,7 +182,13 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (request.method === "POST") {
       const body = (await request.json().catch(() => ({}))) as {
         page_id?: string;
-        updates?: { canonical_id?: string | null; retrieval_space?: string | null; search_eligibility?: string | null };
+        updates?: {
+          canonical_id?: string | null;
+          retrieval_space?: string | null;
+          search_eligibility?: string | null;
+          governance_state?: string | null;
+          relation_state?: string | null;
+        };
       };
       if (!body.page_id) return json({ ok: false, error: "page_id_required" }, 400);
       if (!body.updates || typeof body.updates !== "object") return json({ ok: false, error: "updates_required" }, 400);

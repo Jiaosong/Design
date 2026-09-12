@@ -58,13 +58,20 @@ export interface GovernanceScalarUpdates {
   canonical_id?: string | null;
   retrieval_space?: string | null;
   search_eligibility?: string | null;
+  governance_state?: string | null;
+  relation_state?: string | null;
 }
 
 const GOVERNANCE_FIELDS = {
   canonical_id: FIELDS.canonicalId,
   retrieval_space: FIELDS.retrievalSpace,
   search_eligibility: FIELDS.searchEligibility,
+  governance_state: FIELDS.governanceState,
+  relation_state: FIELDS.relationState,
 } as const;
+
+const VALID_GOVERNANCE_STATES = new Set(["ACTIVE", "ARCHIVED", "HOLD", "LEGACY", "REVIEW"]);
+const VALID_RELATION_STATES = new Set(["REVIEW", "VALID"]);
 
 function propertyMutation(property: Record<string, unknown> | undefined, value: string | null): Record<string, unknown> {
   if (!property || typeof property.type !== "string") throw new Error("Target Notion property is missing or has no type");
@@ -89,6 +96,20 @@ export function buildGovernancePropertyPatch(
     !VALID_ELIGIBILITY.has(updates.search_eligibility)
   ) {
     throw new Error(`Invalid search_eligibility: ${updates.search_eligibility}`);
+  }
+  if (
+    updates.governance_state !== undefined &&
+    updates.governance_state !== null &&
+    !VALID_GOVERNANCE_STATES.has(updates.governance_state)
+  ) {
+    throw new Error(`Invalid governance_state: ${updates.governance_state}`);
+  }
+  if (
+    updates.relation_state !== undefined &&
+    updates.relation_state !== null &&
+    !VALID_RELATION_STATES.has(updates.relation_state)
+  ) {
+    throw new Error(`Invalid relation_state: ${updates.relation_state}`);
   }
   const properties = page.properties ?? {};
   const patch: Record<string, Record<string, unknown>> = {};
