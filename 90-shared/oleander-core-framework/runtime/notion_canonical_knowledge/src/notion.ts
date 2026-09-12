@@ -1,4 +1,11 @@
-import { MAX_UNKNOWN_BLOCK_FETCHES, NOTION_MAX_FETCH_ATTEMPTS, NOTION_MIN_REQUEST_INTERVAL_MS } from "./config";
+import {
+  FIELDS,
+  MAX_UNKNOWN_BLOCK_FETCHES,
+  NOTION_MAX_FETCH_ATTEMPTS,
+  NOTION_MIN_REQUEST_INTERVAL_MS,
+  VALID_ELIGIBILITY,
+  VALID_EXPLICIT_SPACES,
+} from "./config";
 import type { Env, NotionPage, PageMarkdown } from "./types";
 
 export class NotionHttpError extends Error {
@@ -45,6 +52,66 @@ async function notionFetch<T>(env: Env, path: string, init: RequestInit = {}): P
 
 export async function fetchPage(env: Env, pageId: string): Promise<NotionPage> {
   return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`);
+}
+
+export interface GovernanceScalarUpdates {
+  canonical_id?: string | null;
+  retrieval_space?: string | null;
+  search_eligibility?: string | null;
+}
+
+const GOVERNANCE_FIELDS = {
+  canonical_id: FIELDS.canonicalId,
+  retrieval_space: FIELDS.retrievalSpace,
+  search_eligibility: FIELDS.searchEligibility,
+} as const;
+
+function propertyMutation(property: Record<string, unknown> | undefined, value: string | null): Record<string, unknown> {
+  if (!property || typeof property.type !== "string") throw new Error("Target Notion property is missing or has no type");
+  if (property.type === "rich_text") {
+    return { rich_text: value === null ? [] : [{ type: "text", text: { content: value } }] };
+  }
+  if (property.type === "select") return { select: value === null ? null : { name: value } };
+  if (property.type === "status") return { status: value === null ? null : { name: value } };
+  throw new Error(`Unsupported governance property type: ${property.type}`);
+}
+
+export function buildGovernancePropertyPatch(
+  page: NotionPage,
+  updates: GovernanceScalarUpdates,
+): Record<string, Record<string, unknown>> {
+  if (updates.retrieval_space !== undefined && updates.retrieval_space !== null && !VALID_EXPLICIT_SPACES.has(updates.retrieval_space)) {
+    throw new Error(`Invalid retrieval_space: ${updates.retrieval_space}`);
+  }
+  if (
+    updates.search_eligibility !== undefined &&
+    updates.search_eligibility !== null &&
+    !VALID_ELIGIBILITY.has(updates.search_eligibility)
+  ) {
+    throw new Error(`Invalid search_eligibility: ${updates.search_eligibility}`);
+  }
+  const properties = page.properties ?? {};
+  const patch: Record<string, Record<string, unknown>> = {};
+  for (const [key, value] of Object.entries(updates) as Array<[keyof GovernanceScalarUpdates, string | null | undefined]>) {
+    if (value === undefined) continue;
+    const notionField = GOVERNANCE_FIELDS[key];
+    patch[notionField] = propertyMutation(properties[notionField], value);
+  }
+  if (Object.keys(patch).length === 0) throw new Error("No governance updates supplied");
+  return patch;
+}
+
+export async function updatePageGovernanceFields(
+  env: Env,
+  pageId: string,
+  updates: GovernanceScalarUpdates,
+): Promise<NotionPage> {
+  const before = await fetchPage(env, pageId);
+  const properties = buildGovernancePropertyPatch(before, updates);
+  return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`, {
+    method: "PATCH",
+    body: JSON.stringify({ properties }),
+  });
 }
 
 async function fetchMarkdownNode(env: Env, id: string): Promise<PageMarkdown> {
