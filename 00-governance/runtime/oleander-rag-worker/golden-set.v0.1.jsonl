@@ -1,0 +1,10 @@
+{"id":"G001","query":"OLEANDER 默认建模方式是什么","expected_canonical_ids":["KN-METHOD-OLEANDER-3D-MODELING-001"],"project_id":"GLOBAL","history_intent":false}
+{"id":"G002","query":"默认能力路由应该先找哪个 OLEANDER Skill Resolver","expected_canonical_ids":["KN-METHOD-OLEANDER-SKILL-RESOLVER-001"],"project_id":"GLOBAL","history_intent":false}
+{"id":"G003","query":"设计合规通过是不是就等于专业设计 KEEP","expected_titles":["OLEANDER Artifact Review System v1.1｜合规门 × 专业设计门"],"project_id":"GLOBAL","history_intent":false}
+{"id":"G004","query":"Blender direct modeling 当前共享系统是什么","expected_titles":["SYS-BLENDER-SURFACE｜OLEANDER Blender Surface System"],"project_id":"SYS-BLENDER-SURFACE","history_intent":false}
+{"id":"G005","query":"知识库 lifecycle 和 retrieval space 如何决定 Current 与 Support","expected_titles":["OLEANDER Knowledge Retrieval & Lifecycle｜知识库机制 v1.1"],"project_id":"GLOBAL","history_intent":false}
+{"id":"G006","query":"C04 清江网页当前应该读取哪个项目 Current，而不是旧 checkpoint","expected_project_id":"PRJ-C04-QINGJIANG-SHISHU","project_id":"PRJ-C04-QINGJIANG-SHISHU","history_intent":false}
+{"id":"G007","query":"查历史 provenance 为什么不能和 Current 一起排名","expected_policy":"PROVENANCE_REQUIRES_HISTORY_INTENT","project_id":"GLOBAL","history_intent":true}
+{"id":"G008","query":"一个 Canonical ID 如果出现两个 Current owner 怎么办","expected_policy":"HOLD_CANONICAL_COLLISION","project_id":"GLOBAL","history_intent":false}
+{"id":"G009","query":"Trust State UNKNOWN 的知识是否允许默认进入 Current RAG","expected_policy":"FAIL_CLOSED_UNKNOWN_TRUST","project_id":"GLOBAL","history_intent":false}
+{"id":"G010","query":"RAG 是否可以替代 Notion 作为 OLEANDER 的知识真相源","expected_policy":"DERIVED_RETRIEVAL_ONLY","project_id":"GLOBAL","history_intent":false}

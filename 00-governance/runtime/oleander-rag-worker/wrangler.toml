@@ -1,0 +1,31 @@
+name = "oleander-authority-aware-rag"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[ai]
+binding = "AI"
+
+[[vectorize]]
+binding = "OLEANDER_KNOWLEDGE"
+index_name = "oleander-bgem3-v1"
+
+[[d1_databases]]
+binding = "RAG_DB"
+database_name = "oleander-rag-manifest"
+database_id = "REPLACE_WITH_CLOUDFLARE_D1_DATABASE_ID"
+
+[[queues.producers]]
+binding = "SYNC_QUEUE"
+queue = "oleander-rag-sync"
+
+[[queues.consumers]]
+queue = "oleander-rag-sync"
+max_batch_size = 10
+max_batch_timeout = 5
+max_retries = 5
+
+[vars]
+NOTION_API_VERSION = "2026-06-01"
+EMBEDDING_MODEL = "@cf/baai/bge-m3"
+RAG_SCHEMA_VERSION = "rag-v0.1"
+DEFAULT_TOP_K = "20"

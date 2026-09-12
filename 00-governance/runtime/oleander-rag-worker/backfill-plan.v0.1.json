@@ -1,0 +1,54 @@
+{
+  "schema_version": "rag-v0.1",
+  "mode": "SHADOW_CURRENT_FIRST",
+  "default_routing_change_allowed": false,
+  "phases": [
+    {
+      "id": "P0_SCHEMA",
+      "include": [],
+      "gate": "CREATE_D1_SCHEMA_AND_VECTORIZE_METADATA_INDEXES_BEFORE_ANY_BACKFILL"
+    },
+    {
+      "id": "P1_CURRENT_DEFAULT",
+      "include": [
+        {"retrieval_space": "CURRENT", "search_eligibility": "DEFAULT"}
+      ],
+      "gate": "GOLDEN_SET_AUTHORITY_VIOLATIONS_EQ_0_AND_RECALL_AT_10_GTE_0_90_TARGET"
+    },
+    {
+      "id": "P2_CURRENT_SCOPED",
+      "include": [
+        {"retrieval_space": "CURRENT", "search_eligibility": "SCOPED"}
+      ],
+      "gate": "NO_UNKNOWN_AUTHORITY_AUTO_PROMOTION"
+    },
+    {
+      "id": "P3_SUPPORT",
+      "namespace": "prod-support",
+      "include": [
+        {"retrieval_space": "SUPPORT", "search_eligibility": "DEFAULT"},
+        {"retrieval_space": "SUPPORT", "search_eligibility": "SCOPED"}
+      ],
+      "gate": "SUPPORT_ONLY_ON_EXPLICIT_FALLBACK"
+    },
+    {
+      "id": "P4_PROVENANCE",
+      "namespace": "prod-provenance",
+      "include": [
+        {"retrieval_space": "PROVENANCE"}
+      ],
+      "gate": "REQUIRES_EXPLICIT_HISTORY_INTENT"
+    },
+    {
+      "id": "P5_DUAL_READ",
+      "gate": "COMPARE_RAG_WITH_DIRECT_NOTION_RETRIEVAL_BEFORE_DEFAULT_ROUTING"
+    }
+  ],
+  "hard_holds": [
+    "CANONICAL_COLLISION",
+    "MISSING_SOURCE_LOCATOR",
+    "UNKNOWN_TRUST_IN_DEFAULT_CURRENT",
+    "CURRENT_PROVENANCE_MIXED_POOL",
+    "STALE_DERIVED_HASH_PRESENTED_AS_FRESH"
+  ]
+}
