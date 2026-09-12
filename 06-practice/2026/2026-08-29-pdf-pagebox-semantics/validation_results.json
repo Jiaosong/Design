@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "mode": "TRAINING_MODE",
+  "gap": "PDF page-box semantics: explicit TrimBox/BleedBox vs MediaBox-only fallback",
+  "date": "2026-08-29",
+  "tools": {
+    "pdfinfo": "25.06.0",
+    "pymupdf": "1.26.7",
+    "mupdf": "1.26.12"
+  },
+  "exercise_assumptions": {
+    "trim_size_mm": [100, 150],
+    "bleed_offset_mm": 3,
+    "note": "EXERCISE ASSUMPTION / DESIGN TEST only; not a supplier or industry standard."
+  },
+  "A": {
+    "artifact": "A_media_only.pdf",
+    "sha256": "8be1ac8f9d6431fd239e4e59234ec13c55287fcff5b06f982ed8c7d9d82c0614",
+    "raw_has_TrimBox": false,
+    "raw_has_BleedBox": false,
+    "effective_MediaBox_mm": [0, 0, 106, 156],
+    "effective_TrimBox_mm": [0, 0, 106, 156],
+    "effective_BleedBox_mm": [0, 0, 106, 156]
+  },
+  "B": {
+    "artifact": "B_explicit_boxes.pdf",
+    "sha256": "573b2344d5e3adc402268e938dc87c0d0d185e39c8a572fb159ebfd5c4b7f7c1",
+    "raw_has_TrimBox": true,
+    "raw_has_BleedBox": true,
+    "raw_TrimBox": [8.503937, 8.503937, 291.9685, 433.70079],
+    "raw_BleedBox": [0, 0, 300.47245, 442.2047],
+    "effective_MediaBox_mm": [0, 0, 106, 156],
+    "effective_TrimBox_mm": [3, 3, 103, 153],
+    "effective_BleedBox_mm": [0, 0, 106, 156]
+  },
+  "verdict": {
+    "A": "HOLD_FOR_PREPRESS_PAGE_BOX_AUTHORITY",
+    "B": "PASS_FOR_BOUNDED_PAGE_BOX_SEMANTICS",
+    "proven": [
+      "A PDF may have a correct-looking MediaBox while explicit TrimBox/BleedBox entries are absent.",
+      "Poppler pdfinfo reports effective fallback boxes for A, so effective display values alone do not prove explicit page-box metadata exists.",
+      "B preserves explicit TrimBox/BleedBox entries and reopens with the intended bounded relationships."
+    ],
+    "not_proven": [
+      "PDF/X conformance",
+      "supplier-specific bleed requirement",
+      "printer/RIP behavior",
+      "crop marks",
+      "spot colors/overprint/trapping",
+      "press approval"
+    ]
+  }
+}
