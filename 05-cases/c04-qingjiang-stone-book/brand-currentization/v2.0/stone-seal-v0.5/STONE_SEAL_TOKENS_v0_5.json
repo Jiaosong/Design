@@ -1,0 +1,32 @@
+{
+  "id": "C04-QINGJIANG-STONE-SEAL-v0.5",
+  "status": "PRODUCER CANDIDATE / PIXEL-READBACK CORRECTED / INDEPENDENT DESIGN REVIEW PENDING / NO_PROMOTION",
+  "selected_route": "B / STONE SEAL",
+  "geometry_authority": "02_symbol/QJ_STONE_SEAL_FLAT_MASTER_v0_5.svg",
+  "texture_derivative": "02_symbol/QJ_STONE_SEAL_TEXTURED_DISPLAY_v0_5.svg",
+  "small_optical": "02_symbol/QJ_STONE_SEAL_OPTICAL_SMALL_v0_5.svg",
+  "colors": {
+    "stone_ink": "#25322F",
+    "river_teal": "#58776F",
+    "paper": "#F2EFE7",
+    "signal": "#8B2E24",
+    "stone_grey": "#9BA2A0"
+  },
+  "texture_contract": {
+    "display": "96px+ / 20mm+",
+    "standard": "48–95px flat preferred",
+    "small": "<=32px optical flat only"
+  },
+  "presence": [
+    "FULL",
+    "LIGHT",
+    "TRACE",
+    "OFF"
+  ],
+  "truth": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  }
+}

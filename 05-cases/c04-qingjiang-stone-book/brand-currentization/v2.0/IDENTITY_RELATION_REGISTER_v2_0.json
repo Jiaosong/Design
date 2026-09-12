@@ -1,0 +1,57 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "authority": "C04-B_PROJECT-ARCHITECTURE_v3.2 / CH14",
+  "status": "PRODUCER CANDIDATE / INDEPENDENT REVIEW PENDING / NO_PROMOTION",
+  "identity_source": {
+    "current_recovered_source": "QJ-D v1.1 Hero pixels",
+    "visual_identity": "清江石书 / QINGJIANG STONE BOOK typographic lockup + thin horizontal rule",
+    "native_master_recovered": false,
+    "derived_trace": "QJ_LOGO_SOURCE_DERIVED_TRACE_WHITE_v2_0.svg",
+    "replacement_rule": "replace trace immediately when authenticated native master is recovered"
+  },
+  "invariants": [
+    "Real Qingjiang owns first visual",
+    "Existing typographic identity is not redrawn",
+    "Typography carries hierarchy: display / functional / meta-evidence",
+    "Line/page/reveal/trace are relational behaviors, not wallpaper",
+    "Return/safety/state may override brand",
+    "Optional reading never becomes completion score"
+  ],
+  "variables": [
+    "image crop",
+    "grid",
+    "density",
+    "brand presence strength",
+    "color amount",
+    "motion amount",
+    "medium-specific layout"
+  ],
+  "presence_scale": {
+    "FULL": "communication / cover",
+    "LIGHT": "App / map / content / editorial proof",
+    "TRACE": "field / service / reassurance",
+    "OFF": "landscape / body / safety / technical attention"
+  },
+  "operational_state_separate": [
+    "NORMAL",
+    "DEGRADED",
+    "CLOSED",
+    "UNKNOWN"
+  ],
+  "font_roles": {
+    "display": "CJK serif candidate; role locked, production font master open",
+    "functional": "CJK sans candidate; role locked, production font master open",
+    "meta_evidence": "mono/sans candidate; role locked, production font master open"
+  },
+  "brand_architecture": {
+    "experience_identity": "清江石书",
+    "operator_context": "恩施大清江",
+    "co_brand_lockup": "HOLD_FOR_GOVERNANCE"
+  },
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION"
+  }
+}
