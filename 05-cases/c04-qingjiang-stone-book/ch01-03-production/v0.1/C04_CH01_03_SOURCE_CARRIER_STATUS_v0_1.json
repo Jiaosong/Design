@@ -1,0 +1,11 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "production":"C04_CH01_03_PRODUCTION_v0.1",
+  "branch":"agent/c04-ch01-03-production-20260819",
+  "full_bounded_bundle":{"filename":"C04_CH01_03_PRODUCTION_v0.1.zip","bytes":11862945,"sha256":"cb34de0f7c6fadf55511e714227bdd64e173d826adcb7018478bf8e8ca1e0ae4","contents":"editable HTML/CSS + bound SVG/media source copies + 20 desktop + 20 mobile readbacks + manifests/receipts/checksums","remote_project_persistence":"HOLD in this run; current Drive connector upload requires connector file_uri and cannot accept the generated local bundle path"},
+  "new_layout_source":{"index_html_sha256":"df325a0fb5b2d086a927b3da71e3acc6ae203e6512dac5b7ebd0d69c70febf55","style_css_sha256":"a598197028ac9b8d950e2ec5e51be677345eca33a76b09c6bd49e1c6f385682b"},
+  "durable_upstream_dependencies":[{"name":"Culture Main v2","drive_id":"1SBlBU1RlNQ6YEd-tSV3bZn64tfTxR4BL","sha256":"ae2aa53ed8bf7229e435c29d8cbe341345967edcd223ef99ca4446edc1d6c1ae"},{"name":"GIS REDO SPLIT v0.2.1","drive_id":"1n_Qyz_BN4VFP45nUHKrmRW4FrhF60s9_","sha256":"1c01ab71486183348e96fc27f738e200592e6a88f3a46fc8b77cc86913c3d075"}],
+  "github_role":"text authority / binding / execution receipt; not a false substitute for the mixed binary/source bundle",
+  "state":"PARTIAL PERSISTENCE / TRACEABLE / USER-DOWNLOADABLE BUNDLE EXISTS / DRIVE BUNDLE HOLD / INDEPENDENT DESIGN CRIT PENDING",
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
