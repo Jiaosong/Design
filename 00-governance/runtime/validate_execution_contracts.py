@@ -133,7 +133,7 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
         ],
         "resolver-v1.2:closure-cleanup",
     )
-    if closure_cleanup.get("local_tool") != "tools/github_branch_governance.py":
+    if closure_cleanup.get("local_tool") != "00-governance/runtime/github_branch_governance.py":
         fail("resolver closure cleanup must use the canonical Git branch governance tool")
     if not {"OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"}.issubset(set(closure_cleanup.get("protect", []))):
         fail("resolver closure cleanup branch dependency protections incomplete")

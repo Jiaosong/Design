@@ -534,7 +534,7 @@ A material runtime change still follows:
 
 `Current Authority readback → GitHub branch → commit → PR → CI → main readback → dependency-aware branch-ref disposition/readback → minimal Notion Current pointer/fact update when required → live drift check`.
 
-This branch-ref step belongs to the existing Resolver closure/cleanup responsibility. It reuses `tools/github_branch_governance.py` and the Execution Receipt extension; it does not create a new Router, cleanup framework, or parallel branch authority.
+This branch-ref step belongs to the existing Resolver closure/cleanup responsibility. It reuses `00-governance/runtime/github_branch_governance.py` and the Execution Receipt extension; it does not create a new Router, cleanup framework, or parallel branch authority.
 
 A green CI run proves the declared machine checks passed; it does not by itself close a design or project task.
 

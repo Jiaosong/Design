@@ -130,7 +130,7 @@
   "closure_cleanup": {
     "git_branch_ref_disposition": "REQUIRED_WHEN_MATERIAL_EXECUTION_USES_A_GIT_WORK_BRANCH_OR_PULL_REQUEST_AND_REACHES_CLOSURE",
     "contract": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json#branch_ref_disposition_extension",
-    "local_tool": "tools/github_branch_governance.py",
+    "local_tool": "00-governance/runtime/github_branch_governance.py",
     "run_after_main_readback_when_merge_occurred": true,
     "protect": ["OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"],
     "bulk_delete_requires_ref_sha_audit": true,
