@@ -9,6 +9,7 @@ import type {
 } from "./types";
 
 const now = () => new Date().toISOString();
+const D1_SAFE_BIND_BATCH = 90;
 
 export async function recordWebhookReceived(
   db: D1Database,
@@ -77,8 +78,8 @@ export async function getDocumentSyncStates(db: D1Database, pageIds: string[]): 
   if (pageIds.length === 0) return new Map();
   const unique = [...new Set(pageIds)];
   const rows: DocumentSyncState[] = [];
-  for (let i = 0; i < unique.length; i += 100) {
-    const batch = unique.slice(i, i + 100);
+  for (let i = 0; i < unique.length; i += D1_SAFE_BIND_BATCH) {
+    const batch = unique.slice(i, i + D1_SAFE_BIND_BATCH);
     const placeholders = batch.map(() => "?").join(",");
     const result = await db
       .prepare(
@@ -140,8 +141,8 @@ export async function deactivatePage(
 
 export async function markNotionSeen(db: D1Database, pageIds: string[], seenAt: string): Promise<void> {
   const unique = [...new Set(pageIds)];
-  for (let i = 0; i < unique.length; i += 100) {
-    const batch = unique.slice(i, i + 100);
+  for (let i = 0; i < unique.length; i += D1_SAFE_BIND_BATCH) {
+    const batch = unique.slice(i, i + D1_SAFE_BIND_BATCH);
     const placeholders = batch.map(() => "?").join(",");
     await db
       .prepare(`UPDATE documents SET notion_seen_at=? WHERE page_id IN (${placeholders})`)
