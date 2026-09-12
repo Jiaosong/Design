@@ -162,6 +162,14 @@
       "EXPLICIT_KEEP"
     ],
     "unmerged_branch_delete_by_age_only": false,
+    "unmerged_noop_delete_allowed_when": [
+      "NOT_OPEN_PR_HEAD",
+      "NOT_OPEN_PR_BASE",
+      "NOT_ACTIVE_WORKTREE",
+      "NO_EXPLICIT_KEEP",
+      "HYPOTHETICAL_MERGE_CLEAN",
+      "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"
+    ],
     "global_delete_branch_on_merge_while_stacked_pr_bases_exist": false
   },
   "mandatory_preflight": [

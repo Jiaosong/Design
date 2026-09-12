@@ -266,6 +266,7 @@ Rules:
 6. branch prefixes such as `agent/`, `feat/`, `fix/`, `training/`, `validation/`, `practice/`, `sync/` or `tmp/` do not grant authority or permanent retention;
 7. a local worktree may be removed only after uncommitted state is resolved and its branch no longer owns an active execution frontier;
 8. cleanup deletes redundant refs, not unique evidence. If a ref contains commits not reachable from the retained authority/history path, deletion is blocked until provenance is preserved.
+9. an unmerged orphan ref may be classified `SAFE_DELETE_NOOP_UNMERGED_ORPHAN` only when it is not an open PR head/base, not an active worktree, has no explicit keep reason, and a clean hypothetical merge into the current `origin/main` produces **exactly the existing main tree**. This is content-equivalence cleanup, not age-based deletion; merge conflicts or any resulting tree delta remain protected for manual disposition.
 
 Repository-level `delete_branch_on_merge` may remain disabled while stacked PRs still depend on merged branches as live bases. In that state, closure/cleanup must use a dependency-aware audit rather than blind global deletion.
 

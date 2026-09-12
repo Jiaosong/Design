@@ -183,8 +183,14 @@ def main() -> None:
     check(branch_guard["bulk_delete_requires_audit_manifest"] is True, "bulk branch cleanup must preserve an audit manifest")
     check(branch_guard["unmerged_branch_delete_by_age_only"] is False, "unmerged branches may not be deleted by age alone")
     check(set(branch_guard["protect_merged_ref_when"]) >= {"OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"}, "merged-ref protection set incomplete")
+    noop_conditions = set(branch_guard["unmerged_noop_delete_allowed_when"])
+    check(
+        {"NOT_OPEN_PR_HEAD", "NOT_OPEN_PR_BASE", "NOT_ACTIVE_WORKTREE", "NO_EXPLICIT_KEEP", "HYPOTHETICAL_MERGE_CLEAN", "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"}.issubset(noop_conditions),
+        "unmerged no-op cleanup conditions incomplete",
+    )
     check("A branch ref is not a Current authority" in policy, "branch authority boundary missing from policy")
     check("OPEN PR BASE" in policy and "ACTIVE WORKTREE" in policy, "branch cleanup dependency protections missing from policy")
+    check("SAFE_DELETE_NOOP_UNMERGED_ORPHAN" in policy, "content-equivalent unmerged cleanup rule missing from policy")
     enforce_consolidation_guard(contract)
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
