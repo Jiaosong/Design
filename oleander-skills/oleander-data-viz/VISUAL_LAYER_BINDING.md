@@ -42,10 +42,34 @@ Hard failures:
 
 Promotion test: **If the comparison only becomes truthful after reading the numbers, the small-multiple visual encoding has failed.**
 
+## Evidence-state surface grammar gate
+
+Apply whenever one analytical set mixes different epistemic / evidence states such as `SOURCE-BOUND`, `VERIFIED INPUT`, `DERIVED`, `REPORTED`, `INFERRED`, `HOLD`, `PENDING`, or `UNKNOWN`.
+
+1. **Magnitude / topology and evidence maturity are separate semantic variables. Encode them through separate visual channels.** A value, route, area, direction or proportion must not change merely because its source is weaker or stronger.
+2. Do not encode evidence maturity by shrinking bars, shortening lines, changing map geometry, lowering numeric values, or otherwise mutating the analytical mark. Uncertainty styling may surround or annotate a mark; it may not rewrite the mark's quantitative or spatial meaning.
+3. Bind evidence state to an orthogonal carrier such as a provenance rail, panel boundary, slot treatment, endpoint glyph, stroke pattern, header token, or explicit status field. Critical states must survive grayscale / low-color review.
+4. `HOLD / PENDING / UNKNOWN` may not receive a fabricated analytical mark merely to make a board look complete. Preserve the slot and show an explicit unavailable / unmaterialized state when omission would imply completeness.
+5. Visual polish must not equalize maturity. A source-bound figure, a reported overlay and a HOLD slot may share family typography and layout, but they must not share a surface treatment that makes them first-read equivalents.
+6. Conversely, evidence-state styling must not overpower the analytical claim. If the primary question is magnitude, route, shape or relationship, that analytical object remains the first-read carrier; provenance is a secondary but unmistakable layer.
+7. `REPORTED / INFERRED` must remain distinguishable from `OBSERVED / VERIFIED`. A polished line or map overlay does not upgrade provenance.
+8. Before promotion, run a **label-off evidence readback**: temporarily hide evidence-state words and confirm maturity remains distinguishable from non-text cues. Then run a **state-off analytical readback**: temporarily remove provenance styling and confirm the underlying magnitude/topology remains unchanged.
+9. Record the state source and version where relevant. At minimum capture `FIGURE_ID / ANALYTICAL_OBJECT / EVIDENCE_STATE / STATE_SOURCE / STATE_VERSION_OR_DATE / VISUAL_CARRIER / DOES_NOT_PROVE`.
+
+Hard failures:
+- lower-confidence data is visually shortened, dimmed or geometrically altered in a way that can be read as a lower value;
+- HOLD/UNKNOWN receives proxy values or an invented map/chart mark for visual completeness;
+- evidence state exists only in paragraph text or a remote legend and disappears at first read;
+- source-bound, derived, reported and HOLD states are visually identical after labels are removed;
+- evidence-state styling changes locked route topology, axis values, data ranking or spatial authority;
+- styling is so dominant that the viewer reads provenance before the actual analytical relationship when provenance is not the primary question.
+
+Promotion test: **Hide the labels: evidence maturity must remain distinguishable, while numerical magnitude / topology must remain unchanged by the evidence-state styling.**
+
 ## Image-processing operator routing
 
 Use `T-VISUAL-IMAGE-OPS-001` for layer isolation, clipping/masking, opacity, raster underlays, tonal normalization, texture/noise control and export adapters around a chart/map. Preserve authoritative values, topology and vector masters. Blur, glow, texture, pixelation, blend modes or masks may clarify hierarchy but may not change a value, conceal uncertainty, normalize `UNKNOWN`, or replace a source-grounded geometry relationship.
 
 ## Review inheritance
 
-Open the actual SVG/PNG/PDF/interactive output. Run compact-size, grayscale/non-color, label-collision and source-value checks. For small multiples, additionally run the locked-domain comparability readback above. Renderer/library capability does not substitute for Professional Design Gate.
+Open the actual SVG/PNG/PDF/interactive output. Run compact-size, grayscale/non-color, label-collision and source-value checks. For small multiples, additionally run the locked-domain comparability readback above. For mixed evidence-state sets, additionally run label-off evidence-state readback and state-off analytical readback. Renderer/library capability does not substitute for Professional Design Gate.
