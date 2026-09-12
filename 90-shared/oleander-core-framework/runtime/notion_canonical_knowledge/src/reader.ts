@@ -102,7 +102,10 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
     SELECT page_id, canonical_id, title, notion_url, notion_last_edited_time,
            effective_space, search_eligibility, trust_state, governance_state,
            relation_state, content_level, knowledge_role, index_state,
-           authority_reason, markdown_truncated, unknown_block_ids_json, indexed_at
+           authority_reason, markdown_truncated, unknown_block_ids_json, indexed_at,
+           primary_domain_ids_json, related_domain_ids_json,
+           source_relation_ids_json, method_relation_ids_json,
+           replacement_ids_json, replaced_document_ids_json
       FROM documents
      WHERE page_id=? AND active=1
      LIMIT 1
@@ -121,7 +124,7 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
              d.canonical_id, d.title, d.knowledge_role, d.content_level,
              d.effective_space, d.governance_state, d.relation_state
         FROM lineage_edges e
-        LEFT JOIN documents d ON d.page_id=e.target_page_id
+        LEFT JOIN documents d ON d.page_id=e.target_page_id AND d.active=1
        WHERE e.source_page_id=?
        ORDER BY e.relation_type, d.title, e.target_page_id
     `).bind(pageId).all<Record<string, unknown>>(),
@@ -130,7 +133,7 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
              d.canonical_id, d.title, d.knowledge_role, d.content_level,
              d.effective_space, d.governance_state, d.relation_state
         FROM lineage_edges e
-        LEFT JOIN documents d ON d.page_id=e.source_page_id
+        LEFT JOIN documents d ON d.page_id=e.source_page_id AND d.active=1
        WHERE e.target_page_id=?
        ORDER BY e.relation_type, d.title, e.source_page_id
     `).bind(pageId).all<Record<string, unknown>>(),
@@ -145,6 +148,30 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
     ...(outgoingResult.results ?? []).map((row) => relationFromRow(row, "outgoing")),
     ...(incomingResult.results ?? []).map((row) => relationFromRow(row, "incoming")),
   ];
+  const primaryDomainIds = stringArray(document.primary_domain_ids_json);
+  const relatedDomainIds = stringArray(document.related_domain_ids_json);
+  const declaredRelationIds = {
+    SOURCE: stringArray(document.source_relation_ids_json),
+    METHOD: stringArray(document.method_relation_ids_json),
+    REPLACEMENT: stringArray(document.replacement_ids_json),
+    REPLACED_DOCUMENT: stringArray(document.replaced_document_ids_json),
+  } as const;
+  const outgoing = relations.filter((relation) => relation.direction === "outgoing");
+  const outgoingKeys = new Set(outgoing.map((relation) => `${relation.relationType}:${relation.pageId}`));
+  const missingManifestEdges = Object.entries(declaredRelationIds).flatMap(([relationType, ids]) =>
+    ids
+      .filter((id) => !outgoingKeys.has(`${relationType}:${id}`))
+      .map((id) => ({ relationType, pageId: id })),
+  );
+  const unresolvedTargets = outgoing
+    .filter((relation) => !relation.title && !relation.canonicalId)
+    .map((relation) => ({ relationType: relation.relationType, pageId: relation.pageId }));
+  const indexedOutgoing = {
+    source: outgoing.filter((relation) => relation.relationType === "SOURCE").length,
+    method: outgoing.filter((relation) => relation.relationType === "METHOD").length,
+    replacement: outgoing.filter((relation) => relation.relationType === "REPLACEMENT").length,
+    replacedDocument: outgoing.filter((relation) => relation.relationType === "REPLACED_DOCUMENT").length,
+  };
 
   return {
     version: "oleander-knowledge-reader-detail/v1",
@@ -164,12 +191,27 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
     ...(optionalString(document.authority_reason) ? { authorityReason: String(document.authority_reason) } : {}),
     ...(optionalString(document.notion_last_edited_time) ? { notionLastEditedTime: String(document.notion_last_edited_time) } : {}),
     ...(optionalString(document.indexed_at) ? { indexedAt: String(document.indexed_at) } : {}),
+    primaryDomainIds,
+    relatedDomainIds,
     review: {
       contentComplete: !markdownTruncated && unknownBlockIds.length === 0 && sections.length > 0,
       markdownTruncated,
       chunkCount: chunkRows.length,
       tokenEstimate,
       unknownBlockIds,
+      relationReadback: {
+        declared: {
+          primaryDomain: primaryDomainIds.length,
+          relatedDomain: relatedDomainIds.length,
+          source: declaredRelationIds.SOURCE.length,
+          method: declaredRelationIds.METHOD.length,
+          replacement: declaredRelationIds.REPLACEMENT.length,
+          replacedDocument: declaredRelationIds.REPLACED_DOCUMENT.length,
+        },
+        indexedOutgoing,
+        unresolvedTargets,
+        missingManifestEdges,
+      },
     },
     sections,
     relations,
