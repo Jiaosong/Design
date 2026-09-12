@@ -1,0 +1,16 @@
+{
+  "object_id": "CH09-P01",
+  "current_revision": "v3.4",
+  "selection_state": "USER_LOCKED_CURRENT",
+  "route_authority": "ROUTE-03 LOCKED CURRENT",
+  "journey04": "PROVENANCE / NON-CURRENT",
+  "independent_design_review": "PENDING",
+  "producer_keep": false,
+  "image_generation_used": false,
+  "package": {
+    "name": "C04_CH09_P01_ROUTE03_CH04_BIND_v3_4_FINAL_DENSE_PACKAGE.zip",
+    "bytes": 1213398,
+    "sha256": "04065e8565f2700e0b37db4ae02f9b7c096d9eed3b72ba340409ce799150ae25"
+  },
+  "locked_at": "2026-08-19T12:31+08:00"
+}

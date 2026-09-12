@@ -1,0 +1,31 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH09-P01",
+  "route_authority": {
+    "object": "ROUTE-03",
+    "state": "LOCKED CURRENT",
+    "artifact": "ROUTE_03_QINGJIANG_ROUTE_CURRENTIZED",
+    "upstream_pr": 192,
+    "upstream_commit": "128b9069c686b9a8ab65d6425fa928890f0604dc",
+    "locked_svg_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+    "locked_package_sha256": "977307610d1908c3951535b57222355c39fe262f0f2e3da68d803055a882aabb",
+    "geometry_policy": "NO MUTATION / EXCERPT + CROP + STYLING ONLY"
+  },
+  "runtime_source_carrier": {
+    "file": "恩施大清江景区游览路线图_转译版(1).svg",
+    "sha256": "1acfb9d708a96d9ac59900610fe724413b4b9cea4bddf1b6d0fcc27f8034c5b9",
+    "role": "source-carrier geometry lineage; not replacement byte authority"
+  },
+  "preservation": {
+    "main_path_d_unchanged": true,
+    "branch_path_d_unchanged": true,
+    "loop_path_d_unchanged": true,
+    "node_coordinates_unchanged": true,
+    "node_count": 17,
+    "display_transform": {"type": "uniform scale + translation", "scale": 0.78, "tx": 674.76, "ty": 136.38},
+    "non_uniform_scale_added": false,
+    "route_redraw": false,
+    "node_relocation": false
+  },
+  "truth": "RELATIONAL / NTS / NOT GPS / OPERATIONAL STATE NOT BOUND / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

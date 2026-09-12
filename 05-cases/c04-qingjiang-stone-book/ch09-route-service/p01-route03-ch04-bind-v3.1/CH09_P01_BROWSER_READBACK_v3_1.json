@@ -1,0 +1,16 @@
+{
+  "adapter": "DOM_INJECTION / identical CSS + embedded v3.1 map SVG",
+  "desktop": {
+    "innerWidth": 1920,
+    "scrollWidth": 1920,
+    "innerHeight": 1080,
+    "scrollHeight": 1184,
+    "images": [
+      {"complete": true, "naturalWidth": 1140}
+    ]
+  },
+  "mobile_start": {"client": 388, "world": 940, "left": 0, "scrollY": 1162},
+  "mobile_return": {"client": 388, "world": 940, "left": 552},
+  "console_errors": [],
+  "page_errors": []
+}

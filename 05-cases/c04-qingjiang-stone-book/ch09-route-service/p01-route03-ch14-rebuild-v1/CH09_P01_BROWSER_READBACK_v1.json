@@ -1,0 +1,8 @@
+{
+  "adapter": "DOM_INJECTION / same HTML+CSS+embedded map SVG",
+  "desktop": {"innerWidth":1920,"scrollWidth":1920,"innerHeight":1080,"scrollHeight":1080,"images":[{"complete":true,"naturalWidth":1160}]},
+  "mobile_start": {"innerWidth":390,"scrollWidth":390,"routeClientWidth":390,"routeScrollWidth":940,"routeScrollLeft":0,"pageScrollY":879},
+  "mobile_return": {"routeClientWidth":390,"routeScrollWidth":940,"routeScrollLeft":550},
+  "console_errors": [],
+  "page_errors": []
+}

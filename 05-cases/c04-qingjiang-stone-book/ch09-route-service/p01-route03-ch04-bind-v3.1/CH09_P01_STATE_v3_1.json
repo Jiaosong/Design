@@ -1,0 +1,34 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH09-P01",
+  "revision": "v3.1",
+  "route_authority": "ROUTE-03 LOCKED CURRENT",
+  "ch04_binding": "CH04 Current Material / 7 dynamic use-state variables",
+  "skills": [
+    "oleander-route-wayfinding-ui@02f07dbeb3f728b9dcde1c55a2aabebe2740d587",
+    "oleander-data-viz@2d2cc08dc6984232f5e2a88118a77c5a55dda2a6",
+    "oleander-story-and-board@b65f86d0b02b6b604ca33f9a7fc5a68e39bc69fb",
+    "oleander-delivery-qc@3900541f19b568a3f513f0513277e9766fdbba4e"
+  ],
+  "content_rule": "SAME ROUTE / VARIABLE DEPTH / VARIABLE SUPPORT / SAME RETURN",
+  "ch04_variables": ["Mobility","Stamina","Attention","Reading Depth","Digital Comfort","Companion Condition","Return Urgency"],
+  "geometry": {
+    "main_path_unchanged": true,
+    "branch_path_unchanged": true,
+    "loops_unchanged": true,
+    "nodes_unchanged": 17,
+    "transform": "uniform scale + translation only",
+    "uniform_scale": 0.75,
+    "redraw": false,
+    "non_uniform_scale": false
+  },
+  "image_generation_used": false,
+  "browser_readback": {
+    "desktop_no_horizontal_overflow": true,
+    "embedded_map_load": true,
+    "mobile_one_world_pan": true,
+    "console_errors": 0,
+    "page_errors": 0
+  },
+  "gate": "EXECUTED / SOURCE-BOUND / ACTUAL READBACK COMPLETE / SELF-QC COMPLETE / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION"
+}
