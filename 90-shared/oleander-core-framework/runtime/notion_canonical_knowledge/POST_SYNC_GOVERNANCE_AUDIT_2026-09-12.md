@@ -250,12 +250,11 @@ The historical 1,184-page full reconcile remains a completed historical run. The
 
 The next academic migrations should use the new two owners rather than independently inventing structure:
 
-1. `D06｜公共建筑、社会基础设施与公共性`
-2. `D07｜居住研究、住房与日常生活`
-3. `D03｜气候低碳与韧性设计`
-4. `D05｜建筑经济、开发策划与全生命周期价值`
-5. `D02｜乡村建筑与地方营造`
-6. `K05｜建筑研究与实践方向地图` — navigation/IA cleanup only; do not inflate into a paper.
+1. `D07｜居住研究、住房与日常生活`
+2. `D03｜气候低碳与韧性设计`
+3. `D05｜建筑经济、开发策划与全生命周期价值`
+4. `D02｜乡村建筑与地方营造`
+5. `K05｜建筑研究与实践方向地图` — navigation/IA cleanup only; do not inflate into a paper.
 
 Each migration remains additive: clean Current page -> live readback -> relation VALID -> old carrier to Legacy/History -> D1 readback. Naming cleanup is a separate pass and must not be conflated with authority migration.
 
@@ -310,4 +309,58 @@ After the D04 authority cutover:
 - New Current row: `KN-ARCH-DIGITAL-INFO-001 / CURRENT / ACTIVE / VALID / INDEXED / 38 chunks / not truncated`
 - Old row: `LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 57 chunks / not truncated`
 
-The +1 corpus delta from the preceding `1,188 / 1,186 / 2` readback is the intended additive Current carrier, not duplicate pollution. The next academic migration is now D06.
+The +1 corpus delta from the preceding `1,188 / 1,186 / 2` readback is the intended additive Current carrier, not duplicate pollution.
+
+## Phase 4 — D06 Public Building / Social Infrastructure Academic Migration
+
+`D06｜公共建筑、社会基础设施与公共性` has completed the additive academic migration. The new Current removes the old page's encyclopedia pattern (eight-dimension checklist + theory/history + policy/cases + methods + glossary) from the first reading layer and instead tests how built form, service organization and governance jointly distribute access and public value.
+
+New Current knowledge object:
+
+- Page ID: `3d9b86be-5c47-81e9-a88f-ff76e9dcd57a`
+- Canonical ID: `KN-ARCH-PUBLIC-SOCIAL-INFRA-001`
+- Human title: `公共建筑与社会基础设施：可达性、服务分配与公共性`
+- `CURRENT / DEFAULT / ACTIVE / VALID / L5 / THEORY`
+- Trust remains `UNVERIFIED`; relation/governance validity was promoted only after live content review.
+- Normal `syncPage` result: `INDEXED`, `43` chunks, `markdown_truncated=0`.
+
+### D06 Academic Quality Gate
+
+The new Current was written as `REVIEW` first and promoted only after live Notion readback confirmed the actual page body. The reviewed structure includes:
+
+- one explicit research question and five conditional theses;
+- a Method / Evidence Boundary separating rights/authoritative sources, conceptual models, empirical/review evidence and OLEANDER rules;
+- publicness treated as multidimensional rather than equated with public ownership;
+- social infrastructure treated as a socio-spatial system whose functions depend on organizational, social and physical conditions rather than architectural form alone;
+- claim-level evidence from CRPD / WHO plus peer-reviewed publicness, social-infrastructure, building-accessibility, facility-equity, library/social-capital and security research;
+- an explicit distinction between compliance evidence, usability evidence and participation evidence;
+- five Rival / Counterevidence sections covering ownership, shared-space/social-capital claims, universal-design overreach, security/control and satisfaction/user-selection bias;
+- a Claim–Evidence Map and independent Applicability / Limitations;
+- non-user / failed-journey evidence treated as potential counterevidence rather than ignored by default;
+- the old fixed `八维公共性` retained only as historical provenance, while new diagnostic chains are explicitly marked `Heuristic` rather than universal taxonomy.
+
+The page also removes D06-owned POE duplication: research design and causal claims defer to `MTH-ARCH-RESEARCH-001`; policy/standard/current-source authority defers to `MTH-ARCH-EVIDENCE-GOV-001`.
+
+### D06 NO LOSS / Replacement Readback
+
+Old D06 remains fully present in Notion and indexed as `60` chunks. It is now:
+
+- Canonical ID: `LEGACY-KN-ARCH-PUBLIC-SOCIAL-INFRA-D06-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `KN-ARCH-PUBLIC-SOCIAL-INFRA-001`
+- original body retained, including the old eight-dimension frame, service-journey material, theory/history, China policy/cases, international comparison, methods, glossary and references.
+
+No old body content was compressed, overwritten or permanently deleted.
+
+### Phase 4 D1 Readback
+
+After the D06 authority cutover:
+
+- Notes/D1 document rows: `1,190`
+- Active documents: `1,188`
+- Excluded documents: `2` (unchanged preserved orphan empty pages)
+- Duplicate non-empty Canonical IDs: `0 groups`
+- New Current row: `KN-ARCH-PUBLIC-SOCIAL-INFRA-001 / CURRENT / ACTIVE / VALID / INDEXED / 43 chunks / not truncated`
+- Old row: `LEGACY-KN-ARCH-PUBLIC-SOCIAL-INFRA-D06-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 60 chunks / not truncated`
+
+The +1 corpus delta from the preceding D04 readback is the intended additive Current carrier. The next academic migration is now D07.
