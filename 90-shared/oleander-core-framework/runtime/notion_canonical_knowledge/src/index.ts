@@ -45,6 +45,7 @@ import {
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
+import { buildKnowledgeReaderSnapshot } from "./reader";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -937,6 +938,11 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       await deleteRuntimeState(env.MANIFEST, "pending_notion_webhook_verification_token");
       return json({ ok: true, cleared: true });
     }
+  }
+
+  if (request.method === "GET" && url.pathname === "/v1/reader-snapshot") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    return json(await buildKnowledgeReaderSnapshot(env.MANIFEST));
   }
 
   if (request.method === "POST" && url.pathname === "/v1/search") {

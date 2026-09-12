@@ -149,3 +149,40 @@ export interface KnowledgeHit {
   content_level: string | null;
   trust_state: string | null;
 }
+
+export interface KnowledgeReaderSnapshot {
+  title: string;
+  subtitle?: string;
+  generatedAt: string;
+  metrics: Array<{ key: string; label: string; value: string | number; note?: string }>;
+  migration: { done: number; total: number; next?: string };
+  roleDistribution: Array<{ name: string; value: number }>;
+  evidenceDistribution: Array<{ name: string; value: number }>;
+  levelDistribution: Array<{ name: string; value: number }>;
+  items: Array<{
+    id: string;
+    title: string;
+    summary?: string;
+    canonicalId?: string;
+    role?: string;
+    level?: string;
+    retrievalSpace?: string;
+    governanceState?: string;
+    relationState?: string;
+    group: "current" | "methods" | "evidence" | "practice" | "history";
+    url?: string;
+    tags?: string[];
+    evidence?: string[];
+    limitations?: string[];
+  }>;
+  defaultSelectedId?: string;
+  source: {
+    authority: string;
+    derivative: string;
+    activeDocuments: number;
+    indexedDocuments: number;
+    explicitCurrent: number;
+    support: number;
+    provenance: number;
+  };
+}
