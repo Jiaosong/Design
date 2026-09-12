@@ -170,6 +170,16 @@
       "HYPOTHETICAL_MERGE_CLEAN",
       "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"
     ],
+    "unmerged_patch_equivalent_delete_allowed_when": [
+      "NOT_OPEN_PR_HEAD",
+      "NOT_OPEN_PR_BASE",
+      "NOT_ACTIVE_WORKTREE",
+      "NO_EXPLICIT_KEEP",
+      "NO_UNIQUE_MERGE_COMMITS",
+      "GIT_CHERRY_HAS_AT_LEAST_ONE_UNIQUE_COMMIT",
+      "ALL_GIT_CHERRY_RESULTS_ARE_ABSORBED_MINUS",
+      "GIT_CHERRY_RESULT_COUNT_EQUALS_UNIQUE_COMMIT_COUNT"
+    ],
     "main_branch_protection": {
       "direct_push_allowed": false,
       "require_pull_request": true,

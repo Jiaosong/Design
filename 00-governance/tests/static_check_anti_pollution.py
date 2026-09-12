@@ -188,6 +188,11 @@ def main() -> None:
         {"NOT_OPEN_PR_HEAD", "NOT_OPEN_PR_BASE", "NOT_ACTIVE_WORKTREE", "NO_EXPLICIT_KEEP", "HYPOTHETICAL_MERGE_CLEAN", "HYPOTHETICAL_MERGE_TREE_EQUALS_CURRENT_MAIN_TREE"}.issubset(noop_conditions),
         "unmerged no-op cleanup conditions incomplete",
     )
+    patch_conditions = set(branch_guard["unmerged_patch_equivalent_delete_allowed_when"])
+    check(
+        {"NOT_OPEN_PR_HEAD", "NOT_OPEN_PR_BASE", "NOT_ACTIVE_WORKTREE", "NO_EXPLICIT_KEEP", "NO_UNIQUE_MERGE_COMMITS", "GIT_CHERRY_HAS_AT_LEAST_ONE_UNIQUE_COMMIT", "ALL_GIT_CHERRY_RESULTS_ARE_ABSORBED_MINUS", "GIT_CHERRY_RESULT_COUNT_EQUALS_UNIQUE_COMMIT_COUNT"}.issubset(patch_conditions),
+        "unmerged patch-equivalent cleanup conditions incomplete",
+    )
     main_protection = branch_guard["main_branch_protection"]
     check(main_protection["direct_push_allowed"] is False, "main direct push must remain disabled")
     check(main_protection["require_pull_request"] is True, "main must require pull requests")
@@ -199,6 +204,7 @@ def main() -> None:
     check("A branch ref is not a Current authority" in policy, "branch authority boundary missing from policy")
     check("OPEN PR BASE" in policy and "ACTIVE WORKTREE" in policy, "branch cleanup dependency protections missing from policy")
     check("SAFE_DELETE_NOOP_UNMERGED_ORPHAN" in policy, "content-equivalent unmerged cleanup rule missing from policy")
+    check("SAFE_DELETE_PATCH_EQUIVALENT_UNMERGED_ORPHAN" in policy, "patch-equivalent unmerged cleanup rule missing from policy")
     check("`main` is a PR-only integration surface" in policy, "main PR-only integration boundary missing from policy")
     enforce_consolidation_guard(contract)
 

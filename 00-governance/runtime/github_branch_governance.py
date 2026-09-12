@@ -356,6 +356,100 @@ def build_noop_orphan_audit(
     }
 
 
+def build_patch_equivalent_orphan_audit(
+    records: list[RefRecord],
+    *,
+    open_heads: set[str],
+    open_bases: set[str],
+    worktrees: set[str],
+    explicit_keep: set[str],
+) -> dict:
+    main_ref = "refs/remotes/origin/main"
+    main_sha = run("git", "rev-parse", main_ref)
+    safe: list[dict] = []
+    counts = {
+        "remote_unmerged": len(records),
+        "dependency_protected": 0,
+        "has_unique_merge_commits": 0,
+        "empty_or_ambiguous_cherry": 0,
+        "has_unabsorbed_plus": 0,
+        "count_mismatch": 0,
+        "safe_patch_equivalent_orphan": 0,
+    }
+
+    for item in records:
+        dependencies: list[str] = []
+        if item.branch in open_heads:
+            dependencies.append("OPEN_PR_HEAD")
+        if item.branch in open_bases:
+            dependencies.append("OPEN_PR_BASE")
+        if item.branch in worktrees:
+            dependencies.append("ACTIVE_WORKTREE")
+        if item.branch in explicit_keep:
+            dependencies.append("EXPLICIT_KEEP")
+        if item.branch == "gh-pages" or item.branch.startswith(("release/", "archive/")):
+            dependencies.append("DURABLE_BRANCH_CLASS")
+        if dependencies:
+            counts["dependency_protected"] += 1
+            continue
+
+        head_ref = f"refs/remotes/origin/{item.branch}"
+        range_spec = f"{main_ref}..{head_ref}"
+        unique_count = int(run("git", "rev-list", "--count", range_spec))
+        unique_merge_count = int(run("git", "rev-list", "--count", "--merges", range_spec))
+        if unique_merge_count != 0:
+            counts["has_unique_merge_commits"] += 1
+            continue
+
+        cherry_lines = [
+            line.strip()
+            for line in run("git", "cherry", main_ref, head_ref).splitlines()
+            if line.strip()
+        ]
+        if not cherry_lines:
+            counts["empty_or_ambiguous_cherry"] += 1
+            continue
+        plus = [line for line in cherry_lines if line.startswith("+")]
+        minus = [line for line in cherry_lines if line.startswith("-")]
+        if plus:
+            counts["has_unabsorbed_plus"] += 1
+            continue
+        if len(cherry_lines) != unique_count or len(minus) != unique_count:
+            counts["count_mismatch"] += 1
+            continue
+
+        counts["safe_patch_equivalent_orphan"] += 1
+        safe.append(
+            {
+                **asdict(item),
+                "classification": "SAFE_DELETE_PATCH_EQUIVALENT_UNMERGED_ORPHAN",
+                "comparison_main_sha": main_sha,
+                "unique_commit_count": unique_count,
+                "unique_merge_commit_count": unique_merge_count,
+                "git_cherry_minus_count": len(minus),
+                "git_cherry_plus_count": len(plus),
+                "patch_equivalence": "ALL_UNIQUE_NON_MERGE_COMMITS_ALREADY_ABSORBED",
+            }
+        )
+
+    return {
+        "schema": "OLEANDER_GIT_BRANCH_PATCH_EQUIVALENT_ORPHAN_CLEANUP_AUDIT_v1",
+        "as_of": datetime.now(timezone.utc).isoformat(),
+        "repository": github_repo(),
+        "origin_main_sha": main_sha,
+        "counts": counts,
+        "policy": {
+            "age_only_delete_forbidden": True,
+            "dependency_refs_protected": True,
+            "unique_merge_commits_forbidden": True,
+            "all_git_cherry_results_must_be_absorbed_minus": True,
+            "cherry_count_must_equal_unique_commit_count": True,
+            "audit_before_delete": True,
+        },
+        "safe_patch_equivalent_orphans": safe,
+    }
+
+
 def delete_remote(branches: list[str]) -> None:
     for start in range(0, len(branches), 25):
         batch = branches[start : start + 25]
@@ -376,9 +470,12 @@ def main() -> int:
     parser.add_argument("--triage-receipt", type=Path, help="Write JSON inventory of all unmerged remote refs; never deletes them.")
     parser.add_argument("--noop-orphan-receipt", type=Path, help="Write pre-delete audit for unmerged orphan refs whose hypothetical merge is an exact main-tree no-op.")
     parser.add_argument("--noop-orphan-post-receipt", type=Path, help="Write post-delete readback for no-op orphan cleanup.")
+    parser.add_argument("--patch-equivalent-orphan-receipt", type=Path, help="Write pre-delete audit for dependency-free unmerged orphan refs whose complete unique non-merge range is patch-equivalent to main.")
+    parser.add_argument("--patch-equivalent-orphan-post-receipt", type=Path, help="Write post-delete readback for patch-equivalent orphan cleanup.")
     parser.add_argument("--apply-remote", action="store_true", help="Delete safe merged remote refs.")
     parser.add_argument("--apply-local", action="store_true", help="Delete safe merged local refs.")
     parser.add_argument("--apply-noop-orphans", action="store_true", help="Delete only audited unmerged orphan refs whose clean hypothetical merge leaves main tree unchanged.")
+    parser.add_argument("--apply-patch-equivalent-orphans", action="store_true", help="Delete only audited dependency-free unmerged orphan refs whose full unique non-merge commit range is already patch-equivalent in main.")
     parser.add_argument("--keep", action="append", default=[], help="Explicit branch ref to retain; repeatable.")
     args = parser.parse_args()
 
@@ -468,6 +565,32 @@ def main() -> int:
         else:
             write_receipt(noop_path, noop_audit)
 
+    patch_audit = None
+    if args.patch_equivalent_orphan_receipt or args.apply_patch_equivalent_orphans:
+        patch_audit = build_patch_equivalent_orphan_audit(
+            unmerged_records,
+            open_heads=open_heads,
+            open_bases=open_bases,
+            worktrees=worktrees,
+            explicit_keep=explicit_keep,
+        )
+    if args.patch_equivalent_orphan_receipt and patch_audit is not None:
+        patch_path = root / args.patch_equivalent_orphan_receipt
+        if args.apply_patch_equivalent_orphans and patch_path.exists():
+            existing = json.loads(patch_path.read_text(encoding="utf-8"))
+            existing_pairs = {
+                (item["branch"], item["sha"])
+                for item in existing.get("safe_patch_equivalent_orphans", [])
+            }
+            current_pairs = {
+                (item["branch"], item["sha"])
+                for item in patch_audit.get("safe_patch_equivalent_orphans", [])
+            }
+            if existing.get("origin_main_sha") != patch_audit.get("origin_main_sha") or existing_pairs != current_pairs:
+                raise RuntimeError("patch-equivalent orphan audit is stale against current main/candidate set; regenerate and persist audit before mutation")
+        else:
+            write_receipt(patch_path, patch_audit)
+
     print(json.dumps(payload["counts"], ensure_ascii=False, indent=2))
     for item in remote_protected:
         print(f"KEEP remote {item.branch}: {item.protected_reason}")
@@ -478,6 +601,8 @@ def main() -> int:
         raise RuntimeError("mutation requires --receipt so pre-delete ref→SHA evidence is persisted first")
     if args.apply_noop_orphans and not args.noop_orphan_receipt:
         raise RuntimeError("no-op orphan mutation requires --noop-orphan-receipt so exact-tree equivalence evidence is persisted first")
+    if args.apply_patch_equivalent_orphans and not args.patch_equivalent_orphan_receipt:
+        raise RuntimeError("patch-equivalent orphan mutation requires --patch-equivalent-orphan-receipt so patch-equivalence evidence is persisted first")
 
     if args.apply_remote:
         delete_remote([item.branch for item in remote_delete])
@@ -487,8 +612,12 @@ def main() -> int:
     if args.apply_noop_orphans and noop_audit is not None:
         noop_delete_branches = [item["branch"] for item in noop_audit["safe_noop_orphans"]]
         delete_remote(noop_delete_branches)
+    patch_delete_branches: list[str] = []
+    if args.apply_patch_equivalent_orphans and patch_audit is not None:
+        patch_delete_branches = [item["branch"] for item in patch_audit["safe_patch_equivalent_orphans"]]
+        delete_remote(patch_delete_branches)
 
-    if args.apply_remote or args.apply_local or args.apply_noop_orphans:
+    if args.apply_remote or args.apply_local or args.apply_noop_orphans or args.apply_patch_equivalent_orphans:
         subprocess.run(["git", "fetch", "--prune", "origin"], cwd=root, check=True)
         remaining_remote = {item.branch for item in remote_merged_records()}
         remaining_local = {item.branch for item in local_merged_records()}
@@ -529,6 +658,27 @@ def main() -> int:
         print(json.dumps(noop_post, ensure_ascii=False, indent=2))
         if noop_post["verdict"] != "PASS":
             return 3
+
+    if args.apply_patch_equivalent_orphans:
+        existing_remote = {
+            ref.removeprefix("origin/")
+            for ref in run("git", "for-each-ref", "--format=%(refname:short)", "refs/remotes/origin").splitlines()
+            if ref.startswith("origin/")
+        }
+        patch_post = {
+            "schema": "OLEANDER_GIT_BRANCH_PATCH_EQUIVALENT_ORPHAN_CLEANUP_READBACK_v1",
+            "as_of": datetime.now(timezone.utc).isoformat(),
+            "repository": repo,
+            "origin_main_sha": run("git", "rev-parse", "refs/remotes/origin/main"),
+            "requested_delete": len(patch_delete_branches),
+            "delete_remaining": sorted(branch for branch in patch_delete_branches if branch in existing_remote),
+            "verdict": "PASS" if not any(branch in existing_remote for branch in patch_delete_branches) else "FAIL",
+        }
+        if args.patch_equivalent_orphan_post_receipt:
+            write_receipt(root / args.patch_equivalent_orphan_post_receipt, patch_post)
+        print(json.dumps(patch_post, ensure_ascii=False, indent=2))
+        if patch_post["verdict"] != "PASS":
+            return 4
 
     return 0
 
