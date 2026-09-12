@@ -29,7 +29,7 @@
 ### Notion Canonical Knowledge Runtime + Post-Sync Governance
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
 - Branch: agent/oleander-notion-canonical-knowledge-v01-20260911
-- HEAD: c89d56d253a66b152de2af42072ffa6c0c2e4690
+- HEAD: ea1bbb1d3a34ac9e505f1bc80d0f24f3e089aacc
 - Remote: origin/agent/oleander-notion-canonical-knowledge-v01-20260911
 - Runtime PR: #521 MERGED -> `ec6bd93aceacb1303aa2729f22c9fe964463f702`
 - Receipt closure PR: #522 MERGED -> `45cadb2fdbf2e9c70152ed363b0d03b2d462840e`
@@ -37,23 +37,29 @@
 - Large-page embedding hardening PR: #524 MERGED -> `abd4bee0428b5dcc904aa464f89134496ff12211`
 - Final corpus closure PR: #525 MERGED -> `f5f35b9929beb1d9c4b1297050a06586423527b9`
 - Post-sync governance PR: #526 MERGED -> `0a58055f9539ea05387f80ad6cd4742cee94595e`
+- Reader + Academic migration PR: #527 MERGED -> `1f699762978515a89d6dafd8e75de9e042126f11`
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
-- Cloudflare Worker: `236ae058-da64-4bae-9b9f-a795c6e6a133`
-- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler; primary scheduler = one-page-per-minute Cloudflare Cron; `scheduled_cron_last_seen` / `scheduled_cron_last_result` provide durable heartbeat readback; `scheduler-status` exposes staleness + open task counts; protected `drain-once` uses the same atomic D1 claim; embedding requests use conservative batching plus adaptive recursive split on provider context overflow; post-sync governance uses a bearer-protected, field-allowlisted live Notion read/write path with immediate `syncPage` readback; DLQ = containment only, no auto replay
+- Cloudflare Worker: `5fe7321c-5503-45ca-9dd2-7779f8f4e7b2`
+- Runtime policy: webhook = Queue fast path with D1 fallback; bulk reconcile = D1 durable scheduler; primary scheduler = one-page-per-minute Cloudflare Cron; `scheduled_cron_last_seen` / `scheduled_cron_last_result` provide durable heartbeat readback; `scheduler-status` exposes staleness + open task counts; protected `drain-once` uses the same atomic D1 claim; embedding requests use conservative batching plus adaptive recursive split on provider context overflow; post-sync governance uses a bearer-protected, field-allowlisted live Notion read/write path with immediate `syncPage` readback; Reader Layer uses linked views over the same Notes data source; Academic migration creates additive Current carriers and preserves superseded pages NO LOSS; DLQ = containment only, no auto replay
 - Scheduler state: Cloudflare Cron recovered; latest durable heartbeat reports `ok=true` for `* * * * *`.
 - Cross-provider fallback: GitHub Actions fallback remains gated STANDBY and is not a second authority or second task store.
 - Current full reconcile: `9b40de03-96d5-40b1-be84-0f137e7d248e` / `COMPLETE` / 1,184 durable tasks
 - Full-sync readback remains closed: `1,184 PROCESSED / 0 PENDING / 0 PROCESSING / 0 RETRY / 0 BLOCKED`; both formerly oversized RETRY pages closed as `PROCESSED` on attempt `3` with `error=NULL`.
-- Canonical Notion corpus state: **SYNCED / 1184 OF 1184**. Post-sync governance does not delete canonical pages.
+- Historical full-reconcile closure remains **SYNCED / 1184 OF 1184** for run `9b40de03-96d5-40b1-be84-0f137e7d248e`. Phase 2 intentionally adds new Current carriers without deleting the superseded pages, so current Notes/D1 row count is now larger than the historical run size.
 - Governance Phase 1: **ACTIVE / Batch 01–02 APPLIED + READ BACK / NO PERMANENT DELETE**. Canonical collision groups reduced `3 -> 0`; two historical duplicate carriers were re-identified as Legacy, and the distinct External Skill Round 2 evidence received its own Canonical ID.
 - Empty-body containment: ten relation-bearing evidence shells are now `HOLD / PROVENANCE / HISTORY_ONLY`; two fully orphan body-empty pages are retained in Notion as `HOLD / PROVENANCE / BLOCKED` and excluded only from the derivative retrieval plane. `PRAC-BJ-XJ01-20260812-01` remains unchanged pending index-owner/relation review.
-- Current derivative retrieval readback after containment: `1,182 active documents`. This does **not** mean two Notion pages were deleted; canonical Notion corpus remains `1,184`.
-- Remaining active missing-Canonical candidates: `38`, all currently `effective_space=PROVENANCE`; there is no missing-Canonical `CURRENT` page. Next governance queue is content-read Batch 03, prioritizing D01–D08 / K03 / K05 / Axx legacy evidence before any identity or naming mutation.
+- Reader Layer: `知识阅读台｜Knowledge Reader` is live under the root, backed by the existing Notes data source rather than a duplicate DB. Views: `Core Knowledge = L4/L5 + ACTIVE + VALID`; `Methods = METHOD + ACTIVE + VALID`; `Evidence = L6 + ACTIVE + VALID`; `Practice = L7 + ACTIVE`; `History = PROVENANCE or LEGACY/ARCHIVED/HOLD`.
+- Academic quality owner: `MTH-KNOWLEDGE-ACADEMIC-NOTE-001｜论文级知识页：论点、证据、反例与适用边界` is `CURRENT / DEFAULT / ACTIVE / VALID`. L4/L5 must use thesis + claim-level evidence + rival/counterevidence + method where relevant + independent Limitations; L6/L7 retain role-specific concise formats.
+- First academic THEORY migration: `KN-ARCH-URBAN-REGEN-001｜城市更新：空间改善、产权治理与反置换机制` is `CURRENT / DEFAULT / ACTIVE / VALID`; old `D01｜城市更新与社区营造` is preserved as `LEGACY-KN-ARCH-URBAN-REGEN-D01-20260807 / PROVENANCE / HISTORY_ONLY` with reciprocal replacement relation.
+- Research METHOD owner: `MTH-ARCH-RESEARCH-001｜建筑研究方法：问题、证据、有效性与伦理` is `CURRENT / DEFAULT / ACTIVE / VALID`; old D08 preserved as `LEGACY-MTH-ARCH-RESEARCH-D08-20260730 / PROVENANCE / HISTORY_ONLY`.
+- Evidence-governance METHOD owner: `MTH-ARCH-EVIDENCE-GOV-001｜建筑证据治理协议：权威、适用性、版本与冲突` is `CURRENT / DEFAULT / ACTIVE / VALID`; old K03 preserved as `LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824 / PROVENANCE / HISTORY_ONLY`. Stable protocol is now separated from dated standards/product/supplier/price update logs.
+- Current D1 readback after additive Phase 2 migration: `1,188 document rows / 1,186 active / 2 excluded`; duplicate non-empty Canonical ID groups remain `0`. The two excluded rows are the previously contained orphan empty pages and remain in Notion.
+- Remaining rewrite queue: `D04 -> D06 -> D07 -> D03 -> D05 -> D02`; `K05` is navigation/IA cleanup only, not a paper. Each migration remains additive and readback-gated.
 
 ## Baseline
-- origin/main: 0a58055f9539ea05387f80ad6cd4742cee94595e
-- Blender execution branch vs origin/main: 170 commits unique locally / 1563 commits on origin/main
+- origin/main: 1f699762978515a89d6dafd8e75de9e042126f11
+- Blender execution branch vs origin/main: 173 commits unique locally / 1569 commits on origin/main
 - Policy: origin/main is not automatically merged into active execution branches; reconcile through Source Authority / project state first.
 - Policy: do not merge into active branches without authority review
 
