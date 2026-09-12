@@ -1,0 +1,407 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_PROVENANCE_ARCHIVE_PRE_v1",
+  "as_of": "2026-09-12T10:21:27.000034Z",
+  "repository": "Jiaosong/Design",
+  "classification_main_sha": "3b1773bf62e6e4fcce793dbbd3bd72f84d109528",
+  "archive": {
+    "ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+    "tag_name": "oleander-provenance/branch-content-20260912-v1",
+    "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+    "archive_tree": "4b825dc642cb6eb9a060e54bf8d69288fbee4904",
+    "archive_tree_semantics": "EMPTY_TREE_NO_SOURCE_CONTENT_MATERIALIZED",
+    "authority": "PROVENANCE_ONLY_NOT_CURRENT_NO_PROMOTION",
+    "branch_count": 35,
+    "unique_tip_parent_count": 33,
+    "remote_state": "PLANNED_NOT_PUSHED_UNTIL_GOVERNANCE_PR_MERGED"
+  },
+  "gates": {
+    "tip_drift_count": 0,
+    "open_pr_head_or_base_intersection": [],
+    "active_worktree_intersection": [],
+    "durable_reachability_recheck_for_archive_candidates": "0_OF_35",
+    "delete_before_remote_archive_readback": false,
+    "archive_commit_may_enter_main_ancestry": false
+  },
+  "archive_candidates": [
+    {
+      "branch": "agent/architecture-realignment-20260811",
+      "state": "SUPERSEDED",
+      "tip_sha": "0fa8dfe9f8225403c4c85f4d7c6f4902e45bc6a4",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-1",
+      "state": "SUPERSEDED",
+      "tip_sha": "87d860b2c61c6e98fa4b5fbe3d3d3c030d60eb1b",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-2",
+      "state": "SUPERSEDED",
+      "tip_sha": "c1b5b593024c96901f54f9bfd2235a3d37cf7883",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-3",
+      "state": "SUPERSEDED",
+      "tip_sha": "6635db1617a486109b44af935e1844dcde52e0fd",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-4",
+      "state": "SUPERSEDED",
+      "tip_sha": "dbcace4001d6598dbfd52aa04f04237a0d377a15",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-5",
+      "state": "SUPERSEDED",
+      "tip_sha": "dd0a1dd65f0868dbb5c5f36bc47d7a8d7f3c2a0d",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-6",
+      "state": "SUPERSEDED",
+      "tip_sha": "e1312de928288a0da2b9c7dc65c44aaa34965cda",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/blender-runtime-bootstrap",
+      "state": "SUPERSEDED",
+      "tip_sha": "7d2b7996388f65fa8e62fc37aa1eb391ae0c1d08",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-ch08-p01-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "tip_sha": "1c49164f3c087f36f8946efedb97ddfd0f00989f",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-f-integration-loop",
+      "state": "SUPERSEDED",
+      "tip_sha": "af62de2c762f3bd1d2d0df4855737c67595b7050",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-gis-redo-v0-2-20260818",
+      "state": "SUPERSEDED",
+      "tip_sha": "156b67e77280b7ef0c8a475f49372b074a1199d0",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-j02-presentation-frame-close-20260907",
+      "state": "REJECT",
+      "tip_sha": "5a60d71a1d2c6f033293ee63dd2d7d4cfbd1b72a",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-m01-presentation-page-specimen-r02-20260907",
+      "state": "SUPERSEDED",
+      "tip_sha": "8bd180d256689fc79cd2642d730c5b58e4864dc9",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-m01-presentation-repair-20260906",
+      "state": "SUPERSEDED",
+      "tip_sha": "fd84aeb440a65c32bcc99cb1955bb9aec13252cb",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/c04-p01-presentation-repair-20260906",
+      "state": "SUPERSEDED",
+      "tip_sha": "033e9e393d831437ded39ce94b23262dc2707b7a",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "agent/runtime-blender-5.2-lts-fetch",
+      "state": "SUPERSEDED",
+      "tip_sha": "23ce4d9dca3154a83e38da69e1ec4932fe2894b2",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "c04/app-game-map-v1-3-deepening",
+      "state": "SUPERSEDED",
+      "tip_sha": "9ff24cdd3094080cc3125347b20352e9f71f68ae",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "c04/r05-r06-source-binding-v1-1",
+      "state": "SUPERSEDED",
+      "tip_sha": "e17cf5a9ccf6219e969cb35bf03554d404ad5a52",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "governance/c04-frontier-sync-20260906",
+      "state": "SUPERSEDED",
+      "tip_sha": "53d20ddb9210a6927c0a75a8bd5919be83fc6dbc",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "governance/pr465-current-refresh-20260906",
+      "state": "SUPERSEDED",
+      "tip_sha": "f9ab07578b789701f50f46c1016526cf8b321315",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "modeling-worker-v0-12-canonical-promotion",
+      "state": "SUPERSEDED",
+      "tip_sha": "ffabca373c4a5cabbcabbe1c05a5adb005f807c4",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "oleander-design-d04-route-map-20260908-r11",
+      "state": "REJECT",
+      "tip_sha": "b831e738b078abdbb92456722e1742d82fb6aaee",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "oleander-design-m01-journal-use-repair-20260908-r11",
+      "state": "REJECT",
+      "tip_sha": "c14f92e00aa1031564fb8c34d5aa33b798bc5a0a",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "oleander-design-p02-body-contact-20260908-0525",
+      "state": "REJECT",
+      "tip_sha": "36d3fe0d356f16d86a712400f919d6db0ec7df48",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "oleander/nodegroups-realworkflows-20260811",
+      "state": "SUPERSEDED",
+      "tip_sha": "742951be98c1673cc5d424378d08569d2321dfbd",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-08-sp01-gis-density",
+      "state": "SUPERSEDED",
+      "tip_sha": "6284a66124dfbd8fe7e87bf323dea50a46dde3ea",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-09-sp02-grasshopper-data-tree",
+      "state": "SUPERSEDED",
+      "tip_sha": "8dcfffeff8649a100870aa1152943bb795f66cda",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun01",
+      "state": "SUPERSEDED",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02",
+      "state": "SUPERSEDED",
+      "tip_sha": "868cb64e8309c031c2edf8dec57edf8bafaf7439",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-check",
+      "state": "SUPERSEDED",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-tmp",
+      "state": "SUPERSEDED",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-revit-wall-opening",
+      "state": "SUPERSEDED",
+      "tip_sha": "45bd2f8610f94d403c14e677f3234979bdc8fd3d",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-software-neutral-opening-qa",
+      "state": "SUPERSEDED",
+      "tip_sha": "6f0539a5ad34fc6627272f1e9c87262549ca287f",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08h2-orthogonal-review",
+      "state": "SUPERSEDED",
+      "tip_sha": "b321d7706e22560f4e0a59e6b61fdf1f865bdc07",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08j1-p0-evidence-closure",
+      "state": "SUPERSEDED",
+      "tip_sha": "99bb6cc08097fd9eab80eb5eb8bd834b2fe496b3",
+      "archive_ref": "refs/tags/oleander-provenance/branch-content-20260912-v1",
+      "archive_commit": "a944fb9497a8b7463dc4f1239bd7846cf3348a31",
+      "no_promotion": true,
+      "evidence": "No durable reachability from current main, retained successor refs, or 538 fetched historical PR heads; preserve exact tip through provenance-only archive before ref cleanup."
+    }
+  ],
+  "retained_ancestry_safe_delete_candidates": [
+    {
+      "branch": "agent/c04-visual-media-acquisition-copy",
+      "state": "SUPERSEDED",
+      "tip_sha": "39fbe54583624422cbf5703c9a1efd020a1820ba",
+      "provenance_pr_refs": [
+        "oleander-audit/pr/72",
+        "oleander-audit/pr/77",
+        "oleander-audit/pr/81"
+      ],
+      "provenance_retained_remote_refs": [
+        "agent/c04-official-media-tech-audit",
+        "agent/c04-visual-media-acquisition"
+      ],
+      "delete_state": "SAFE_DELETE_AFTER_FINAL_REVALIDATION"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-generalization-reentry-r3tmp",
+      "state": "SUPERSEDED",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "provenance_pr_refs": [
+        "oleander-audit/pr/173",
+        "oleander-audit/pr/198",
+        "oleander-audit/pr/208",
+        "oleander-audit/pr/95"
+      ],
+      "provenance_retained_remote_refs": [
+        "agent/3d-skill-automotive-r29a-replay",
+        "agent/3d-skill-porsche-911-992-reference-repro",
+        "agent/blender-surface-system-v1-21-source-context",
+        "agent/modeling-worker-v0-13-generalization-reentry"
+      ],
+      "delete_state": "SAFE_DELETE_AFTER_FINAL_REVALIDATION"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-r3-interface-fairness",
+      "state": "SUPERSEDED",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "provenance_pr_refs": [
+        "oleander-audit/pr/173",
+        "oleander-audit/pr/198",
+        "oleander-audit/pr/208",
+        "oleander-audit/pr/95"
+      ],
+      "provenance_retained_remote_refs": [
+        "agent/3d-skill-automotive-r29a-replay",
+        "agent/3d-skill-porsche-911-992-reference-repro",
+        "agent/blender-surface-system-v1-21-source-context",
+        "agent/modeling-worker-v0-13-generalization-reentry"
+      ],
+      "delete_state": "SAFE_DELETE_AFTER_FINAL_REVALIDATION"
+    },
+    {
+      "branch": "oleander/frontend-expression-v1",
+      "state": "SUPERSEDED",
+      "tip_sha": "4dc97589cdd58f14bf09f54a8d3184163be9ede8",
+      "provenance_pr_refs": [
+        "oleander-audit/pr/94"
+      ],
+      "provenance_retained_remote_refs": [
+        "oleander/frontend-expression-visual-v1"
+      ],
+      "delete_state": "SAFE_DELETE_AFTER_FINAL_REVALIDATION"
+    }
+  ]
+}

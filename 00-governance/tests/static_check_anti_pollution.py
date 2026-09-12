@@ -218,6 +218,24 @@ def main() -> None:
     check(disposition["actions"]["ACTIVE"].startswith("RETAIN"), "ACTIVE branch disposition must retain")
     check(disposition["actions"]["REVIEW"].startswith("RETAIN"), "REVIEW branch disposition must retain")
     check("RECLASSIFY_SUPERSEDED" in disposition["actions"]["ABSORB"], "ABSORB must read back then reclassify SUPERSEDED")
+    archive = branch_guard["provenance_archive"]
+    check(set(archive["allowed_states"]) == {"SUPERSEDED", "REJECT"}, "provenance archive may only preserve SUPERSEDED/REJECT tips")
+    check(archive["use_only_when_tip_not_reachable_from_main_pr_or_retained_successor"] is True, "provenance archive must be a fallback for otherwise unreachable tips")
+    check(archive["ref_namespace"] == "refs/tags/oleander-provenance/", "provenance archive namespace drifted")
+    check(archive["archive_object"] == "SYNTHETIC_COMMIT", "provenance archive object must remain a synthetic commit")
+    check(archive["source_content_in_archive_tree_allowed"] is False, "provenance archive tree must not materialize source content")
+    check(archive["parents_must_exactly_equal_unique_source_tip_set"] is True, "provenance archive parents must equal the unique archived tip SHA set")
+    check(archive["archive_may_enter_main_ancestry"] is False, "provenance archive must remain outside main ancestry")
+    check(archive["authority"] == "PROVENANCE_ONLY_NOT_CURRENT_NO_PROMOTION", "provenance archive authority boundary drifted")
+    check(
+        {"BRANCH", "TIP_SHA", "STATE", "ARCHIVE_REF", "ARCHIVE_COMMIT", "NO_PROMOTION"}.issubset(set(archive["manifest_requires"])),
+        "provenance archive manifest requirements incomplete",
+    )
+    check(
+        {"REMOTE_ARCHIVE_REF_READBACK", "EVERY_EXACT_TIP_IS_ANCESTOR_OF_ARCHIVE_COMMIT", "ARCHIVE_COMMIT_IS_NOT_ANCESTOR_OF_MAIN", "OPEN_PR_AND_WORKTREE_DEPENDENCIES_CLEAR"}.issubset(set(archive["delete_after"])),
+        "provenance archive deletion gates incomplete",
+    )
+    check(archive["tag_mutation"] == "IMMUTABLE_UNLESS_REPLACEMENT_PROVENANCE_VERIFIED", "provenance archive tag immutability rule drifted")
     main_protection = branch_guard["main_branch_protection"]
     check(main_protection["direct_push_allowed"] is False, "main direct push must remain disabled")
     check(main_protection["require_pull_request"] is True, "main must require pull requests")
@@ -234,6 +252,9 @@ def main() -> None:
     check("`main` is a PR-only integration surface" in policy, "main PR-only integration boundary missing from policy")
     check("Content-level disposition for an unmerged orphan branch uses exactly five states" in policy, "five-state branch content disposition rule missing")
     check("`ABSORB` is retain-until-readback" in policy, "ABSORB closure/readback rule missing")
+    check("refs/tags/oleander-provenance/" in policy, "provenance-only archive namespace rule missing")
+    check("synthetic provenance commit" in policy, "provenance-only archive object rule missing")
+    check("PROVENANCE ONLY / NOT CURRENT / NO_PROMOTION" in policy, "provenance-only archive authority boundary missing")
     enforce_consolidation_guard(contract)
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
