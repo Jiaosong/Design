@@ -337,7 +337,9 @@
     "merge_commit": "fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb",
     "main_readback": "PASS",
     "notion_writeback": "NOT_REQUIRED_NO_CURRENT_NOTION_POINTER_OR_AUTHORITY_CHANGE",
-    "remaining_blockers": [],
+    "remaining_blockers": [
+      "NONE_REMAINING"
+    ],
     "final_state": "CLOSED_FLOW_COMPLETION_PASS"
   },
   "does_not_prove": [
