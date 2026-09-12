@@ -330,6 +330,7 @@ def _validate_section_specific(
                 "normals_check",
                 "manifoldness_check",
                 "boundary_drift_check",
+                "surface_binding_and_termination_check_if_applicable",
                 "units_check",
                 "bounds_check",
                 "uv_material_id_check",
@@ -457,6 +458,10 @@ def _validate_section_specific(
             _require_nonempty(payload.get("preview_asset"), "10_technical_outputs.preview_asset")
             _require_nonempty(payload.get("assembly_groups"), "10_technical_outputs.assembly_groups")
             _require_nonempty(payload.get("connection_logic"), "10_technical_outputs.connection_logic")
+            _require_nonempty(
+                payload.get("critical_support_connection_edge_drainage_service_logic_if_applicable"),
+                "10_technical_outputs.critical_support_connection_edge_drainage_service_logic_if_applicable",
+            )
             _require_nonempty(payload.get("dimension_status_legend"), "10_technical_outputs.dimension_status_legend")
             if not isinstance(payload.get("explosion_offsets"), dict):
                 raise ReceiptValidationError(
@@ -584,6 +589,10 @@ def _validate_section_specific(
             raise ReceiptValidationError(
                 "14_failure_routing: chosen edit target may not also be rejected"
             )
+        _require_nonempty(
+            payload.get("repair_retest_evidence_if_required"),
+            "14_failure_routing.repair_retest_evidence_if_required",
+        )
         _require_nonempty(payload.get("root_cause_confidence"), "14_failure_routing.root_cause_confidence")
         _require_nonempty(payload.get("next_action"), "14_failure_routing.next_action")
 

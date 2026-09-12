@@ -150,6 +150,31 @@ class Oleander3DPipelineReceiptValidator(unittest.TestCase):
             "material_slots_preserved=true",
         )
 
+    def test_constructive_detail_contract_fields_fail_closed(self):
+        payload = copy.deepcopy(self.templates["06_geometry_topology"])
+        payload["surface_binding_and_termination_check_if_applicable"] = "FAIL"
+        self.assert_invalid(
+            "06_geometry_topology",
+            payload,
+            "surface_binding_and_termination_check_if_applicable=PASS/N/A",
+        )
+
+        payload = copy.deepcopy(self.templates["10_technical_outputs"])
+        payload["critical_support_connection_edge_drainage_service_logic_if_applicable"] = ""
+        self.assert_invalid(
+            "10_technical_outputs",
+            payload,
+            "critical_support_connection_edge_drainage_service_logic_if_applicable",
+        )
+
+        payload = copy.deepcopy(self.templates["14_failure_routing"])
+        payload["repair_retest_evidence_if_required"] = ""
+        self.assert_invalid(
+            "14_failure_routing",
+            payload,
+            "repair_retest_evidence_if_required",
+        )
+
     def test_sparse_edit_requires_bounded_causal_delta_and_rollback(self):
         payload = copy.deepcopy(self.templates["04_sparse_edit"])
         payload["rollback_value"] = payload["previous_value"] + 0.01

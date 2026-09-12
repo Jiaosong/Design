@@ -193,6 +193,7 @@
       "normals_check": "PASS",
       "manifoldness_check": "PASS",
       "boundary_drift_check": "PASS",
+      "surface_binding_and_termination_check_if_applicable": "N/A",
       "units_check": "PASS",
       "bounds_check": "PASS",
       "uv_material_id_check": "PASS",
@@ -302,6 +303,7 @@
       "reference_direction": "NORTH_OR_OBJECT_REFERENCE",
       "assembly_groups": ["GROUP_PLACEHOLDER"],
       "connection_logic": "DEFINED",
+      "critical_support_connection_edge_drainage_service_logic_if_applicable": "N/A",
       "explosion_offsets": {"diagrammatic": true},
       "dimension_status_legend": ["VERIFIED", "RECOMMENDED_RANGE", "FIELD_OPEN"],
       "vector_text_confirmed": true,
@@ -408,6 +410,7 @@
       "changed_variable": "SOURCE_CONTROL_PLACEHOLDER",
       "chosen_edit_target": "SOURCE_CONTROL_PLACEHOLDER",
       "rejected_edit_targets": ["DENSE_MESH_PATCH"],
+      "repair_retest_evidence_if_required": "NOT_REQUIRED",
       "result": "CAUSALITY_SUPPORTED",
       "root_cause_confidence": "MEDIUM",
       "next_action": "RERUN_DIAGNOSTICS"
