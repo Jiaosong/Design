@@ -1,6 +1,6 @@
 {
   "receipt_id": "EXR-20260912-OLEANDER-CHAT-RESOLVER-ENTRY-ENFORCEMENT",
-  "status": "WORKING",
+  "status": "CLOSED",
   "execution_type": "GOVERNANCE_RUNTIME",
   "task_id": "oleander-chat-resolver-entry-enforcement",
   "authority": {
@@ -13,7 +13,7 @@
       "KN-METHOD-OLEANDER-SKILL-RESOLVER-001"
     ],
     "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.5",
-    "github_commit_or_ref": "agent/oleander-chat-resolver-enforcement-20260912@c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e"
+    "github_commit_or_ref": "main@fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb"
   },
   "constraint_lock": {
     "resolved_from": [
@@ -69,7 +69,14 @@
         "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
       }
     ],
-    "revocations": [],
+    "revocations": [
+      {
+        "normalized_rule": "NO_FORCED_COS_RESTART",
+        "source": "User explicitly instructed a CoS restart after live reload became the only remaining blocker.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "EXPLICITLY_REVOKED_FOR_THIS_RESTART_ACTION"
+      }
+    ],
     "tool_deny": [],
     "output_deny": [],
     "creation_deny": [
@@ -84,7 +91,7 @@
       "MACHINE_PREFLIGHT_BEFORE_CONTINUATION_OR_COMPLETION",
       "PRESERVE_STICKY_CONSTRAINTS",
       "NO_FALSE_COMPLETION",
-      "NO_FORCED_COS_RESTART"
+      "RESTART_ONLY_BY_EXPLICIT_USER_AUTHORIZATION"
     ]
   },
   "required_native_output": {
@@ -140,41 +147,35 @@
       "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
       "REAL_EXECUTION": "PASS",
       "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
-      "ACTUAL_READBACK": "HOLD",
+      "ACTUAL_READBACK": "PASS",
       "REGRESSION_AS_APPLICABLE": "PASS",
       "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
-      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PASS"
     },
     "phase_reasons": {
-      "ACTUAL_READBACK": "Persisted CoS config readback is PASS, but the already-running CoS v2.0.9 process has no config file watcher or external prompt hot-reload hook. User constraint forbids forcing a CoS restart, so in-memory binding readback remains HOLD until the next natural reload.",
+      "ACTUAL_READBACK": "User explicitly authorized a CoS restart. The new CoS main process PID 47720 started at 2026-09-12 17:27:35.470, after the bound config write at 2026-09-12 16:43:29. The config SHA256 remains 707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe with the OLEANDER binding and goal.includeToolCalls=true, so the startup-loaded in-memory configuration is no longer stale.",
       "INDEPENDENT_REVIEW_AS_APPLICABLE": "Non-design runtime governance change; no Design KEEP or Skill promotion is requested.",
-      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PR #542 is open; merge and main readback are not yet complete. No Notion Current pointer change is required."
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PR #542 is merged at fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb. Main adapter self-test and runtime validators read back PASS. No Notion Current pointer change is required."
     },
-    "incomplete_required_phases": [
-      "ACTUAL_READBACK",
-      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
-    ],
-    "completion_gate": "HOLD",
-    "completion_claim_allowed": false
+    "incomplete_required_phases": [],
+    "completion_gate": "PASS",
+    "completion_claim_allowed": true
   },
   "continuation_checkpoint": {
-    "checkpoint_state": "REVALIDATE",
-    "current_node": "ACTUAL_READBACK",
+    "checkpoint_state": "CLOSED",
+    "current_node": "FLOW_COMPLETION_GATE",
     "last_verified_artifact": {
-      "artifact_id": "ART-COS-PERSISTED-CONFIG-BINDING",
+      "artifact_id": "ART-COS-LIVE-POST-RESTART-BINDING-READBACK",
       "hash_or_commit": "707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe",
       "readback_verdict": "PASS"
     },
-    "resume_from": "LIVE_COS_IN_MEMORY_BINDING_READBACK",
-    "next_allowed_action": "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD_THEN_REEVALUATE_FLOW_COMPLETION",
+    "resume_from": "TASK_CLOSED",
+    "next_allowed_action": "NONE_FLOW_COMPLETION_GATE_PASS",
     "authority_fingerprint": "3d80167e018fb755c1178ec20671d010b2665f5a086f55a18769a59d90ab2b0c",
-    "stale_reasons": [
-      "RUNNING_COS_PROCESS_HAS_NOT_RELOADED_PERSISTED_BINDING",
-      "PR_542_NOT_YET_MERGED_TO_MAIN"
-    ],
-    "checkpoint_sequence": 1,
-    "checkpoint_updated_at": "2026-09-12T16:47:00+08:00",
-    "expected_checkpoint_sequence": 1,
+    "stale_reasons": [],
+    "checkpoint_sequence": 2,
+    "checkpoint_updated_at": "2026-09-12T17:28:46+08:00",
+    "expected_checkpoint_sequence": 2,
     "executor_id": "CHAT-PRIME-20260912",
     "execution_lease_state": "NONE",
     "lease_acquired_at": "NOT_APPLICABLE"
@@ -188,7 +189,10 @@
       "ADD_EXISTING_EVAL_REGRESSION_CASES",
       "PERSIST_COS_BINDING_WITH_BACKUP",
       "RUN_FULL_LOCAL_GOVERNANCE_REGRESSION",
-      "OPEN_PR_542"
+      "OPEN_PR_542",
+      "MERGE_PR_542_AND_READ_BACK_MAIN",
+      "RESTART_COS_BY_EXPLICIT_USER_AUTHORIZATION",
+      "VERIFY_LIVE_COS_BINDING_AND_FLOW_COMPLETION"
     ],
     "node_readback_verdicts": {
       "READ_CURRENT_RESOLVER_AND_COS_RUNTIME": "PASS",
@@ -197,11 +201,14 @@
       "ADD_EXISTING_EVAL_REGRESSION_CASES": "PASS",
       "PERSIST_COS_BINDING_WITH_BACKUP": "PASS",
       "RUN_FULL_LOCAL_GOVERNANCE_REGRESSION": "PASS",
-      "OPEN_PR_542": "PASS"
+      "OPEN_PR_542": "PASS",
+      "MERGE_PR_542_AND_READ_BACK_MAIN": "PASS",
+      "RESTART_COS_BY_EXPLICIT_USER_AUTHORIZATION": "PASS",
+      "VERIFY_LIVE_COS_BINDING_AND_FLOW_COMPLETION": "PASS"
     },
-    "stop_reason": "TOOL_OR_RUNTIME_HARD_LIMIT",
-    "final_current_node": "ACTUAL_READBACK",
-    "next_allowed_action": "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD_THEN_REEVALUATE_FLOW_COMPLETION"
+    "stop_reason": "FLOW_COMPLETION_GATE_PASS",
+    "final_current_node": "FLOW_COMPLETION_GATE",
+    "next_allowed_action": "NONE_FLOW_COMPLETION_GATE_PASS"
   },
   "artifacts": [
     {
@@ -228,22 +235,21 @@
         "OLEANDER_EXECUTION_RECEIPT_v1.0 policy revision 1.1",
         "Chat On Steroids v2.0.9 existing mcp.instructions / Goal prompt / includeToolCalls surfaces"
       ],
-      "hashes_or_commit": "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e",
-      "runtime": "GitHub PR #542 + local CoS persisted config",
+      "hashes_or_commit": "fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb",
+      "runtime": "GitHub main merge fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb + restarted local CoS process",
       "renderer": "NOT_APPLICABLE",
       "permission": "MUTATE_AUTHORIZED_SOURCE",
-      "current_state": "WORKING",
+      "current_state": "CLOSED",
       "does_not_prove": [
-        "live_CoS_in_memory_reload",
         "project_state",
         "design_quality"
       ]
     }
   ],
   "execution": {
-    "runtime": "Independent Git worktree + local Chat On Steroids v2.0.9 config persistence + GitHub PR #542",
+    "runtime": "Independent Git worktree + local Chat On Steroids v2.0.9 config persistence/restart readback + GitHub main",
     "entrypoint_or_action": "Bind Chat/CoS continuation decisions to existing Resolver v1.2.5 through a stateless machine preflight adapter and existing CoS prompt/tool-readback surfaces; no second executor or state owner.",
-    "result": "IMPLEMENTED_LOCAL_VALIDATED_PR_OPEN_PERSISTED_COS_BINDING_LIVE_RELOAD_HOLD",
+    "result": "IMPLEMENTED_MERGED_MAIN_READBACK_PASS_LIVE_COS_RELOAD_PASS_FLOW_COMPLETION_PASS",
     "failures": [
       "Initial handoff assumption that current CoS exposes goal.instructions was false; current v2.0.9 exposes goal.prompt/objectivePrompt/loopPrompt and separate mcp.instructions.",
       "Current CoS has no declarative external preflight hook and no config.json file watcher; direct persisted config mutation cannot update the already-running process memory.",
@@ -256,21 +262,19 @@
       "Added stateless oleander_chat_resolver_adapter.py and CI self-test over existing eval corpora.",
       "Persisted an idempotent CoS binding into mcp.instructions and all three Goal prompt surfaces while preserving original prompt text and Goal enabled=false / mode=goal.",
       "Enabled the existing goal.includeToolCalls option so Goal can consume the actual resolver CLI tool readback instead of an assistant paraphrase.",
-      "For OLEANDER Loop completion, binding overrides generic keep-going semantics and instructs fail-closed stop rather than manufacturing optional work."
+      "For OLEANDER Loop completion, binding overrides generic keep-going semantics and instructs fail-closed stop rather than manufacturing optional work.",
+      "After the user explicitly authorized restart, restarted CoS and verified the new main process started after the bound config write with the same persisted config SHA256."
     ]
   },
   "readback": {
-    "target": "Resolver adapter + existing runtime validators + CoS persisted config + PR #542 checks + running CoS in-memory binding",
+    "target": "Resolver adapter + existing runtime validators + CoS persisted config + merged main + restarted CoS startup-loaded binding",
     "runtime": "Local Python validators, CoS config UTF-8 readback, installed app.asar read-only inspection, GitHub Actions",
-    "observed_result": "All local governance validators and adapter self-test PASS. CoS persisted config SHA256 707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe contains the binding on mcp, Goal, Objective and Loop surfaces with goal.includeToolCalls=true and preserves enabled=false/mode=goal/original prompts. PR #542 first check set is green. Running CoS process remains on its pre-binding in-memory config because restart/reload was intentionally not forced.",
-    "blocking_defects": [
-      "LIVE_COS_IN_MEMORY_BINDING_NOT_RELOADED_UNDER_NO_FORCED_RESTART_CONSTRAINT",
-      "PR_542_MERGE_AND_MAIN_READBACK_PENDING"
-    ],
+    "observed_result": "All local governance validators and adapter self-test PASS. PR #542 merged to main at fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb and main readback PASS. CoS persisted config SHA256 707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe contains the binding on mcp, Goal, Objective and Loop surfaces with goal.includeToolCalls=true and preserves enabled=false/mode=goal/original prompts. After explicit user authorization, the old CoS PID 1388 was replaced by a new process family whose main PID 47720 started at 17:27:35.470, after the 16:43:29 config write, eliminating the stale in-memory-config blocker. Blender PID 8660 remained running and untouched.",
+    "blocking_defects": [],
     "nonblocking_defects": [
       "CoS v2.0.9 has no supported external machine-preflight hook before Goal decision; the existing prompt + includeToolCalls bridge is therefore the supported no-restart-compatible binding path for the next load."
     ],
-    "verdict": "HOLD"
+    "verdict": "PASS"
   },
   "regression": {
     "STRUCTURAL": {
@@ -301,15 +305,15 @@
       ]
     },
     "RUNTIME": {
-      "result": "HOLD",
+      "result": "PASS",
       "assertions": [
         "All commands mirrored from AI Governance Evals pass locally",
-        "PR #542 first CI check set is SUCCESS",
+        "PR #542 merged to main at fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb and main readback PASS",
         "CoS config persistence and preservation readback PASS",
-        "Current CoS in-memory config reload intentionally not performed"
+        "Restarted CoS main process started after the bound config write and loaded the current persisted configuration"
       ]
     },
-    "overall": "HOLD"
+    "overall": "PASS"
   },
   "review": {
     "producer_id": "runtime-governance execution",
@@ -317,26 +321,24 @@
     "review_input_artifact_id": "ART-OLEANDER-CHAT-RESOLVER-ENTRY-BINDING",
     "review_input_hash_or_commit": "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e",
     "reviewer_independence_state": "NOT_REQUIRED",
-    "evidence_gate": "HOLD_LIVE_RUNTIME_RELOAD",
+    "evidence_gate": "PASS",
     "design_quality_gate": "NOT_APPLICABLE",
     "promotion_authority": "No design artifact, Method or Skill is promoted by this runtime enforcement change."
   },
   "closure": {
     "material_delta": true,
-    "branch": "agent/oleander-chat-resolver-enforcement-20260912",
+    "branch": "agent/oleander-chat-resolver-checkpoint-20260912",
     "commits": [
-      "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e"
+      "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e",
+      "4435643b12599836518c2570a669245e4619af66"
     ],
     "pull_request": 542,
-    "ci_state": "FIRST_CHECK_SET_SUCCESS_RECEIPT_UPDATE_PENDING_RECHECK",
-    "merge_commit": "PENDING",
-    "main_readback": "PENDING",
+    "ci_state": "SUCCESS",
+    "merge_commit": "fc4d9eb9d3bd2ddcda115040b751c6c3905b81fb",
+    "main_readback": "PASS",
     "notion_writeback": "NOT_REQUIRED_NO_CURRENT_NOTION_POINTER_OR_AUTHORITY_CHANGE",
-    "remaining_blockers": [
-      "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD",
-      "MERGE_PR_542_AND_READ_BACK_MAIN"
-    ],
-    "final_state": "WORKING_REVALIDATE_LIVE_COS_BINDING"
+    "remaining_blockers": [],
+    "final_state": "CLOSED_FLOW_COMPLETION_PASS"
   },
   "does_not_prove": [
     "project_state",
@@ -345,7 +347,6 @@
     "engineering_validity",
     "user_validation",
     "rights_clearance",
-    "candidate_skill_promotion",
-    "running_CoS_process_has_loaded_persisted_binding"
+    "candidate_skill_promotion"
   ]
 }
