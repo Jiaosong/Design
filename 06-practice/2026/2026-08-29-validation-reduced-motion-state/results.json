@@ -1,0 +1,19 @@
+{
+  "tool": {
+    "playwright_python": "1.57.0",
+    "chromium": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)"
+  },
+  "cases": [
+    {"fixture":"A_animationend_dependency.html","preference":"no-preference","media_matches":false,"status_after_450ms":"ready","transform":"matrix(1, 0, 0, 1, 0, 0)"},
+    {"fixture":"A_animationend_dependency.html","preference":"reduce","media_matches":true,"status_after_450ms":"loading","transform":"none"},
+    {"fixture":"B_reduced_motion_state_equivalent.html","preference":"no-preference","media_matches":false,"status_after_450ms":"ready","transform":"matrix(1, 0, 0, 1, 0, 0)"},
+    {"fixture":"B_reduced_motion_state_equivalent.html","preference":"reduce","media_matches":true,"status_after_450ms":"ready","transform":"none"}
+  ],
+  "assertions": {
+    "A_no_preference_ready": true,
+    "A_reduce_fails_state_equivalence": true,
+    "B_no_preference_ready": true,
+    "B_reduce_ready": true
+  },
+  "verdict": "PASS_FOR_BOUNDED_REDUCED_MOTION_STATE_EQUIVALENCE"
+}
