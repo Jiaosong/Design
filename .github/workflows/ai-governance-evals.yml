@@ -49,6 +49,9 @@ jobs:
       - name: Validate continuation execution cycle
         run: python 00-governance/runtime/validate_continuation_cycle.py
 
+      - name: Validate Chat and CoS Resolver entry adapter
+        run: python 00-governance/runtime/oleander_chat_resolver_adapter.py --self-test
+
       - name: Validate runtime resilience
         run: python 00-governance/runtime/validate_runtime_resilience.py
 

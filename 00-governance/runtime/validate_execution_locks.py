@@ -166,6 +166,144 @@ def resolve_uncertain_mutation(
     return {"action": "HOLD_RETRY_UNSAFE_OR_EXHAUSTED", "normalized_outcome": "UNCERTAIN"}
 
 
+def _constraint_name(item) -> str:
+    if isinstance(item, str):
+        return item
+    if isinstance(item, dict):
+        return str(item.get("normalized_rule") or item.get("constraint_id") or "")
+    return ""
+
+
+def resolve_sticky_constraints(sources_in_precedence_order: list[dict]) -> dict:
+    """Resolve already-normalized constraint evidence without creating another state owner.
+
+    The caller supplies transient evidence in the Resolver's existing precedence order. A
+    higher-precedence explicit revocation suppresses the same named constraint from lower
+    sources; a lower-precedence source cannot revoke a constraint already resolved above it.
+    """
+    active: dict[str, object] = {}
+    suppressed: set[str] = set()
+    revoked: list[str] = []
+
+    for source in sources_in_precedence_order:
+        source_revocations = {
+            name
+            for name in (_constraint_name(item) for item in source.get("revocations", []))
+            if name
+        }
+        for item in source.get("active_constraints", []):
+            if isinstance(item, dict) and item.get("status") == "REVOKED":
+                name = _constraint_name(item)
+                if name:
+                    source_revocations.add(name)
+
+        for name in sorted(source_revocations):
+            if name not in active:
+                suppressed.add(name)
+                if name not in revoked:
+                    revoked.append(name)
+
+        for item in source.get("active_constraints", []):
+            if isinstance(item, dict) and item.get("status") == "REVOKED":
+                continue
+            name = _constraint_name(item)
+            if not name or name in suppressed or name in active:
+                continue
+            active[name] = item
+
+    return {
+        "action": "USE_RESOLVED_STICKY_CONSTRAINTS",
+        "active_constraints": list(active),
+        "revoked_constraints": revoked,
+        "records": list(active.values()),
+    }
+
+
+def evaluate_flow_completion(flow: dict) -> dict:
+    """Evaluate the existing Flow Completion Gate from phase evidence, not chat claims."""
+    required = list(flow.get("required_phases") or [])
+    phase_results = dict(flow.get("phase_results") or {})
+    explicit_incomplete = list(flow.get("incomplete_required_phases") or [])
+    if not required:
+        return {
+            "completion_gate": "HOLD",
+            "completion_claim_allowed": False,
+            "incomplete_required_phases": explicit_incomplete,
+            "action": "DO_NOT_CLAIM_COMPLETE",
+            "reason": "REQUIRED_PHASES_MISSING",
+        }
+    incomplete: list[str] = []
+    has_fail = False
+
+    for phase in required:
+        result = phase_results.get(phase)
+        if result == "FAIL":
+            has_fail = True
+        if result not in {"PASS", "NOT_APPLICABLE"} and phase not in incomplete:
+            incomplete.append(phase)
+    for phase in explicit_incomplete:
+        if phase not in incomplete:
+            incomplete.append(phase)
+
+    gate = "FAIL" if has_fail else "HOLD" if incomplete else "PASS"
+    return {
+        "completion_gate": gate,
+        "completion_claim_allowed": gate == "PASS",
+        "incomplete_required_phases": incomplete,
+        "action": "ALLOW_COMPLETE_CLAIM" if gate == "PASS" else "DO_NOT_CLAIM_COMPLETE",
+    }
+
+
+def decide_continuous_execution(
+    *,
+    next_ready_node: str | None,
+    previous_readback_passed: bool,
+    authority_valid: bool,
+    constraints_valid: bool,
+    side_effect_authorized: bool,
+    checkpoint_sequence_current: bool,
+    flow_completion_gate: str,
+    stop_condition: str | None = None,
+) -> dict:
+    """Apply the existing ready-node auto-advance gates to one transient decision."""
+    if flow_completion_gate == "PASS":
+        return {
+            "continue_allowed": False,
+            "action": "STOP_FLOW_COMPLETION_GATE_PASS",
+            "stop_reason": "FLOW_COMPLETION_GATE_PASS",
+            "target": None,
+        }
+    if stop_condition:
+        return {
+            "continue_allowed": False,
+            "action": "STOP_ON_EXISTING_STOP_CONDITION",
+            "stop_reason": stop_condition,
+            "target": None,
+        }
+    if not previous_readback_passed:
+        return {"continue_allowed": False, "action": "HOLD_ACTUAL_READBACK_REQUIRED", "target": None}
+    if not authority_valid:
+        return {"continue_allowed": False, "action": "REVALIDATE_AUTHORITY_BEFORE_ADVANCE", "target": None}
+    if not constraints_valid:
+        return {"continue_allowed": False, "action": "RE_RESOLVE_ACTIVE_CONSTRAINTS", "target": None}
+    if not side_effect_authorized:
+        return {
+            "continue_allowed": False,
+            "action": "STOP_SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED",
+            "stop_reason": "IRREVERSIBLE_OR_HIGHER_SIDE_EFFECT_ACTION_NOT_ALREADY_AUTHORIZED",
+            "target": None,
+        }
+    if not checkpoint_sequence_current:
+        return {"continue_allowed": False, "action": "REVALIDATE_CONCURRENT_ADVANCE", "target": None}
+    if not next_ready_node:
+        return {"continue_allowed": False, "action": "HOLD_NO_READY_NODE_BEFORE_FLOW_COMPLETION", "target": None}
+    return {
+        "continue_allowed": True,
+        "action": "AUTO_ADVANCE_NEXT_READY_NODE",
+        "target": next_ready_node,
+    }
+
+
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
     if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.5":
@@ -640,6 +778,14 @@ def validate_cases() -> None:
         "IDEMPOTENCY-002-UNCERTAIN-ABSENT-SAFE-RETRY",
         "IDEMPOTENCY-003-UNCERTAIN-ABSENT-UNSAFE-HOLD",
         "IDEMPOTENCY-004-CONFIRMED-SUCCESS-NO-RETRY",
+        "CHAT-PREFLIGHT-001-GENERIC-CONTINUE-PRESERVES-STICKY",
+        "CHAT-PREFLIGHT-002-EXPLICIT-REVOCATION-PRECEDENCE",
+        "CHAT-PREFLIGHT-003-INCOMPLETE-FLOW-BLOCKS-COMPLETE",
+        "CHAT-PREFLIGHT-004-PASSED-FLOW-ALLOWS-COMPLETE",
+        "CHAT-PREFLIGHT-005-READY-NODE-AUTO-ADVANCES",
+        "CHAT-PREFLIGHT-006-FLOW-PASS-STOPS-AUTO-ADVANCE",
+        "CHAT-PREFLIGHT-007-SIDE-EFFECT-ESCALATION-STOPS",
+        "CHAT-PREFLIGHT-008-MISSING-FLOW-PHASES-FAIL-CLOSED",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
@@ -729,6 +875,45 @@ def validate_cases() -> None:
         )
         if result["action"] != c["expected_action"]:
             fail(f"{case_id} idempotency decision mismatch")
+
+    for case_id in [
+        "CHAT-PREFLIGHT-001-GENERIC-CONTINUE-PRESERVES-STICKY",
+        "CHAT-PREFLIGHT-002-EXPLICIT-REVOCATION-PRECEDENCE",
+    ]:
+        c = by_id[case_id]
+        result = resolve_sticky_constraints(c["constraint_sources"])
+        if set(result["active_constraints"]) != set(c["expected_active_constraints"]):
+            fail(f"{case_id} sticky constraint resolution mismatch")
+        if set(result["revoked_constraints"]) != set(c.get("expected_revoked_constraints", [])):
+            fail(f"{case_id} sticky constraint revocation mismatch")
+
+    for case_id in [
+        "CHAT-PREFLIGHT-003-INCOMPLETE-FLOW-BLOCKS-COMPLETE",
+        "CHAT-PREFLIGHT-004-PASSED-FLOW-ALLOWS-COMPLETE",
+        "CHAT-PREFLIGHT-008-MISSING-FLOW-PHASES-FAIL-CLOSED",
+    ]:
+        c = by_id[case_id]
+        result = evaluate_flow_completion(c["flow_completion"])
+        if result["completion_gate"] != c["expected_completion_gate"]:
+            fail(f"{case_id} flow completion gate mismatch")
+        if result["completion_claim_allowed"] is not c["expected_completion_claim_allowed"]:
+            fail(f"{case_id} completion-claim eligibility mismatch")
+        if "expected_reason" in c and result.get("reason") != c["expected_reason"]:
+            fail(f"{case_id} flow completion reason mismatch")
+
+    for case_id in [
+        "CHAT-PREFLIGHT-005-READY-NODE-AUTO-ADVANCES",
+        "CHAT-PREFLIGHT-006-FLOW-PASS-STOPS-AUTO-ADVANCE",
+        "CHAT-PREFLIGHT-007-SIDE-EFFECT-ESCALATION-STOPS",
+    ]:
+        c = by_id[case_id]
+        result = decide_continuous_execution(**c["auto_advance"])
+        if result["action"] != c["expected_action"]:
+            fail(f"{case_id} continuous execution decision mismatch")
+        if "expected_target" in c and result.get("target") != c["expected_target"]:
+            fail(f"{case_id} continuous execution target mismatch")
+        if "expected_stop_reason" in c and result.get("stop_reason") != c["expected_stop_reason"]:
+            fail(f"{case_id} continuous execution stop reason mismatch")
 
 
 def validate_new_receipts(contract: dict) -> int:

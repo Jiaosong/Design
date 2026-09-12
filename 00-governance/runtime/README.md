@@ -7,7 +7,7 @@ This directory contains cross-project runtime and capability-routing contracts. 
 Use:
 
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md`
-- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.2`
+- `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.5`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`
 - `OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md/.json`
 - `OLEANDER_EXECUTION_RECEIPT_v1.0.md`
@@ -125,7 +125,9 @@ For execution owners that produce or materially judge visual output, check local
 
 Current Notion structural routing uses the live Registry and `Canonical Parent｜层级上位 / Canonical Children｜层级子级`; historical navigation ancestry and legacy hierarchy fields are not Current routing authority.
 
-`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.2 plus this 2026-08-21 runtime hardening; the hardening compiles existing Resolver/Practice/Naming/Persistence rules and does not create a parallel METHOD or Skill.
+`OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.5; the runtime hardening compiles existing Resolver/Practice/Naming/Persistence rules and does not create a parallel METHOD or Skill.
+
+Chat / Chat On Steroids entry enforcement reuses that Current Resolver through `oleander_chat_resolver_adapter.py`. The adapter is stateless execution glue only: it owns no Project State, checkpoint database, Method, Skill or Control Plane. `bind_chat_on_steroids_oleander.py` can persist the corresponding CoS prompt/connector binding without replacing the user's existing prompts or changing the Goal enabled/mode setting.
 
 ## Current executable contract layer v0.1
 

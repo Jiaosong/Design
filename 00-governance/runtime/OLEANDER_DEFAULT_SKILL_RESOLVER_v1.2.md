@@ -150,6 +150,26 @@ The Current runtime validator contains `resolve_continuation_frontier(...)` as a
 
 Regression must invoke this function against machine cases. Presence of policy strings alone is not sufficient proof.
 
+### Chat / Chat On Steroids entry enforcement
+
+Conversation surfaces do not receive a second executor or a second state owner. The stateless adapter
+`00-governance/runtime/oleander_chat_resolver_adapter.py` composes the existing executable Resolver functions over caller-supplied Current evidence and returns a transient `conversation_directive`.
+
+For OLEANDER-scoped continuation, mutation, auto-advance or completion decisions, Chat/CoS must consume that machine result before relying on transcript inference. The adapter has `EXECUTION_ADAPTER_ONLY` authority ceiling, persists no state, and cannot replace Project State, the Project Control Plane, Execution Receipts or the Flow Completion Gate.
+
+The machine binding must preserve these boundaries:
+
+- `summary / handoff / assistant claim != checkpoint authority`;
+- generic continue resumes the verified `next_allowed_action` rather than replanning;
+- raw Execution Receipt checkpoint fields are consumed directly, without an adapter-side shadow checkpoint schema;
+- `CLOSED` never reopens from generic continuation;
+- sticky constraints resolve before tool or creation routing;
+- checkpoint sequence mismatch blocks mutation;
+- legal ready nodes auto-advance until an existing stop condition;
+- only Flow Completion Gate `PASS` permits a complete/stop claim.
+
+`00-governance/runtime/bind_chat_on_steroids_oleander.py` is an idempotent machine-local settings binder for the existing CoS `mcp.instructions` and Goal/Objective/Loop prompt extension surfaces. It appends a marked binding block, preserves the user's existing prompt text, Goal enabled state and Goal mode, and enables the existing `goal.includeToolCalls` option so Goal/Loop can consume the resolver CLI's recorded tool readback instead of relying on an assistant paraphrase. It is not a runtime authority carrier. Direct config persistence does not claim hot reload of an already-running CoS process.
+
 ### Authority fingerprint
 
 Direct resume requires a stable fingerprint of the applicable Current execution frontier. Inputs are:
