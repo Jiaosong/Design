@@ -1,0 +1,15 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-17-ENDORSEMENT-HIERARCHY",
+  "topic": "Operator endorsement vs experience identity",
+  "project_trigger": "C04 Qingjiang Stone Book brand v1.0 / PR #213",
+  "truth_boundary": "Calibration only; no legacy logo trace; no trademark/legal approval; no project Brand Design PASS.",
+  "design_crit": {
+    "v1": "REVISE — endorsement and experience identity compete for first-read",
+    "v2": "REVISE — hierarchy works, but CJK glyph fallback creates missing boxes in the application strip",
+    "v3": "KEEP FOR TRAINING — experience identity owns first-read, endorsement remains legible, CJK rendering is repaired, and distance-read hierarchy survives"
+  },
+  "v3_svg_sha256": "5bec036338389d701bd11b633f65b3f5107f38c9ab79fb358857b0165752dad2",
+  "v3_png_sha256": "ecd487cfed723b49b5683909a97417ea0e5dc34356f0e2ea2934827482ba262f",
+  "distance_480_sha256": "24ed8fa7873e7ded4398d508361408fdea382243247f155735417ea87ed923ca",
+  "note": "PNG hashes refer to local rendered training evidence; only editable SVG and text records are committed in this branch."
+}
