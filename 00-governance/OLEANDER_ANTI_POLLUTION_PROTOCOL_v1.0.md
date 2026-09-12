@@ -281,6 +281,18 @@ Content-level disposition for an unmerged orphan branch uses exactly five states
 
 Every content-disposition audit must preserve at least `branch / tip SHA / classification base SHA / state / one-line evidence`. A mutable `origin/main` must be pinned for the classification pass; if `main` advances before mutation, stale-sensitive actions must be revalidated against the new head. `ACTIVE` and `REVIEW` are always retain states. `ABSORB` is retain-until-readback. `REJECT` and `SUPERSEDED` become delete candidates only after provenance is durable through retained main history, PR history, an explicit archive/receipt, or another bounded retrievable evidence path.
 
+When a `SUPERSEDED` or `REJECT` tip has no durable reachability through `main`, retained PR history, or a retained successor ref, a provenance-only archive may be used instead of keeping the working branch forever. This is a ref-lifecycle mechanism only; it does not absorb, merge, validate, or promote the archived content.
+
+Provenance-only archive rules:
+
+1. use the archive path only after the exact source tip set is revalidated against the current pinned `origin/main`, open PR heads/bases, active worktrees, retained successor refs, and available durable PR-head history;
+2. the archive ref must live under `refs/tags/oleander-provenance/` and point to a synthetic provenance commit whose parent set is exactly the **unique** archived source tip SHA set; multiple branch names may map to the same tip and remain separately recorded in the manifest;
+3. the synthetic archive commit tree must not materialize source-branch content. The archive object and tag must be marked `PROVENANCE ONLY / NOT CURRENT / NO_PROMOTION`;
+4. a main-tracked manifest must map every archived branch name to its exact tip SHA, archive ref, archive commit, classification, and no-promotion status;
+5. before deleting any source branch, read back the remote archive ref and prove every exact source tip is an ancestor of the archive commit; also prove the archive commit is not an ancestor of `main`;
+6. the archive tag is immutable provenance. It may be moved or deleted only after an equal-or-stronger replacement provenance path is created, read back, and recorded;
+7. archive reachability satisfies the provenance gate only. It never changes `REJECT`, `SUPERSEDED`, `FIELD OPEN`, `HOLD`, `PROCESS`, `NTS`, `NOT FOR CONSTRUCTION`, or `NO_PROMOTION` semantics.
+
 Repository-level `delete_branch_on_merge` may remain disabled while stacked PRs still depend on merged branches as live bases. In that state, closure/cleanup must use a dependency-aware audit rather than blind global deletion.
 
 `main` protection does not globally require every path-scoped status check. Several Current workflows intentionally trigger only for affected paths; making those checks universal would leave unrelated PRs permanently pending. Required checks remain the applicable workflow/CI gates selected by the repository event and OLEANDER execution contract, while GitHub branch protection enforces the non-bypassable PR boundary, admin enforcement, no force-push and no deletion.

@@ -222,6 +222,34 @@
         "REJECT"
       ]
     },
+    "provenance_archive": {
+      "allowed_states": [
+        "SUPERSEDED",
+        "REJECT"
+      ],
+      "use_only_when_tip_not_reachable_from_main_pr_or_retained_successor": true,
+      "ref_namespace": "refs/tags/oleander-provenance/",
+      "archive_object": "SYNTHETIC_COMMIT",
+      "source_content_in_archive_tree_allowed": false,
+      "parents_must_exactly_equal_unique_source_tip_set": true,
+      "archive_may_enter_main_ancestry": false,
+      "authority": "PROVENANCE_ONLY_NOT_CURRENT_NO_PROMOTION",
+      "manifest_requires": [
+        "BRANCH",
+        "TIP_SHA",
+        "STATE",
+        "ARCHIVE_REF",
+        "ARCHIVE_COMMIT",
+        "NO_PROMOTION"
+      ],
+      "delete_after": [
+        "REMOTE_ARCHIVE_REF_READBACK",
+        "EVERY_EXACT_TIP_IS_ANCESTOR_OF_ARCHIVE_COMMIT",
+        "ARCHIVE_COMMIT_IS_NOT_ANCESTOR_OF_MAIN",
+        "OPEN_PR_AND_WORKTREE_DEPENDENCIES_CLEAR"
+      ],
+      "tag_mutation": "IMMUTABLE_UNLESS_REPLACEMENT_PROVENANCE_VERIFIED"
+    },
     "main_branch_protection": {
       "direct_push_allowed": false,
       "require_pull_request": true,
