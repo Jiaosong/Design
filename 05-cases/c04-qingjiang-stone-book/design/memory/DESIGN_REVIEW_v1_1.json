@@ -1,0 +1,22 @@
+{
+  "project_identity": "PRJ-C04-QINGJIANG-SHISHU",
+  "current_delta": "Memory/IP — Qingjiang Journal × My Book currentization only",
+  "motherboard": {
+    "physical": "Qingjiang Journal = WRITE / route / drawing / selected memory / blank space",
+    "digital": "My Book = route trace / recognition / selected record / revisit",
+    "rule": "partial is complete; no 13/13"
+  },
+  "design_decision": {
+    "physical": "independently complete without phone",
+    "digital": "not an achievement/completion page",
+    "pair": "complementary; neither backup nor replacement",
+    "closure": "RETURN → RECOGNITION → RECORD → TAKE AWAY",
+    "return_independence": "Return remains an independent C04 system"
+  },
+  "visual_gate": {
+    "sheet01": "KEEP / MEMORY MAIN — physical journal and digital My Book read as a designed pair",
+    "sheet02": "KEEP / SUPPORT — closure page is clear but does not replace the Memory Hero"
+  },
+  "package_sha256": "0d492d439bffba68c9ddd58145a7470d0067556716fc426f7a5358fd29318a26",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}
