@@ -25,7 +25,8 @@ import {
   stageSyncMessages,
   syncRunReadback,
 } from "./manifest";
-import { listNotesPages } from "./notion";
+import { fetchCompleteMarkdown, fetchPage, listNotesPages, updatePageGovernanceFields } from "./notion";
+import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
 import { syncPage } from "./sync";
@@ -163,6 +164,46 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
+
+  if (url.pathname === "/v1/governance-page") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    if (request.method === "GET") {
+      const pageId = url.searchParams.get("page_id");
+      if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
+      const [page, markdown] = await Promise.all([fetchPage(env, pageId), fetchCompleteMarkdown(env, pageId)]);
+      return json({
+        ok: true,
+        page: normalizePage(page),
+        markdown: markdown.markdown,
+        markdown_truncated: markdown.truncated,
+        unknown_block_ids: markdown.unknown_block_ids,
+      });
+    }
+    if (request.method === "POST") {
+      const body = (await request.json().catch(() => ({}))) as {
+        page_id?: string;
+        updates?: {
+          canonical_id?: string | null;
+          retrieval_space?: string | null;
+          search_eligibility?: string | null;
+          governance_state?: string | null;
+          relation_state?: string | null;
+        };
+      };
+      if (!body.page_id) return json({ ok: false, error: "page_id_required" }, 400);
+      if (!body.updates || typeof body.updates !== "object") return json({ ok: false, error: "updates_required" }, 400);
+      const before = normalizePage(await fetchPage(env, body.page_id));
+      await updatePageGovernanceFields(env, body.page_id, body.updates);
+      const syncResult = await syncPage(env, {
+        kind: "notion-page-sync",
+        page_id: body.page_id,
+        cause_id: `governance:${crypto.randomUUID()}`,
+        cause_type: "manual",
+      });
+      const after = normalizePage(await fetchPage(env, body.page_id));
+      return json({ ok: true, before, after, sync: syncResult });
+    }
+  }
 
   if (request.method === "POST" && url.pathname === "/v1/drain-once") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
