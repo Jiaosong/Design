@@ -1,0 +1,13 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CLEANUP_READBACK_v1",
+  "as_of": "2026-09-12T07:42:04.930025+00:00",
+  "repository": "Jiaosong/Design",
+  "requested_remote_delete": 1,
+  "requested_local_delete": 0,
+  "remote_delete_remaining": [],
+  "local_delete_remaining": [],
+  "protected_remote_still_present": [
+    "agent/oleander-execution-surface-readback-20260912"
+  ],
+  "verdict": "PASS"
+}

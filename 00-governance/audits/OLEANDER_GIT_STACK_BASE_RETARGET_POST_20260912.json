@@ -1,0 +1,20 @@
+{
+    "schema":  "OLEANDER_GIT_STACK_BASE_RETARGET_AUDIT_v1",
+    "phase":  "POST_RETARGET",
+    "as_of":  "2026-09-12T07:41:55.4321051Z",
+    "repository":  "Jiaosong/Design",
+    "pull_request":  196,
+    "pr_url":  "https://github.com/Jiaosong/Design/pull/196",
+    "base_ref":  "main",
+    "head_ref":  "training/2026-08-17-world-anchored-depth",
+    "base_sha":  "5755a67d34919b02a929601e2deb7a2e807d522e",
+    "head_sha":  "1226fa3f1d3e225fd39821b4774ec8591a24c986",
+    "origin_main_sha":  "5755a67d34919b02a929601e2deb7a2e807d522e",
+    "changed_files_after":  4,
+    "additions_after":  134,
+    "deletions_after":  2,
+    "mergeable_after":  "MERGEABLE",
+    "head_sha_unchanged":  true,
+    "main_head_merge_tree_clean":  true,
+    "verdict":  "PASS_RETARGET_TO_MAIN_PRESERVED_HEAD_DELTA"
+}
