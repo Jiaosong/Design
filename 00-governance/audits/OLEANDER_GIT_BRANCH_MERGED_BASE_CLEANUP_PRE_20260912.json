@@ -1,0 +1,73 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CLEANUP_AUDIT_v1",
+  "as_of": "2026-09-12T07:41:59.339081+00:00",
+  "repository": "Jiaosong/Design",
+  "origin_main_sha": "5755a67d34919b02a929601e2deb7a2e807d522e",
+  "delete_branch_on_merge": false,
+  "open_pr_count": 133,
+  "counts": {
+    "merged_remote": 2,
+    "safe_remote_delete": 1,
+    "protected_merged_remote": 1,
+    "merged_local": 1,
+    "safe_local_delete": 0,
+    "protected_merged_local": 1
+  },
+  "safe_remote_delete": [
+    {
+      "branch": "skills/game-ui-stack-v0-1-clean",
+      "sha": "ca147a95d27eb99db9e76bb81e516bb3cba9253c",
+      "committed_at": "2026-08-17 15:09:40 +0800",
+      "subject": "OLEANDER: add game UI specialist skill stack v0.1",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    }
+  ],
+  "protected_merged_remote": [
+    {
+      "branch": "agent/oleander-execution-surface-readback-20260912",
+      "sha": "153b73936533587e6a5df50ed512899180896020",
+      "committed_at": "2026-09-12 14:28:26 +0800",
+      "subject": "governance(runtime): bind local MCP readback to shared execution surfaces",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "ACTIVE_WORKTREE"
+    }
+  ],
+  "safe_local_delete": [],
+  "protected_merged_local": [
+    {
+      "branch": "agent/oleander-execution-surface-readback-20260912",
+      "sha": "153b73936533587e6a5df50ed512899180896020",
+      "committed_at": "2026-09-12 14:28:26 +0800",
+      "subject": "governance(runtime): bind local MCP readback to shared execution surfaces",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "ACTIVE_WORKTREE"
+    }
+  ],
+  "open_pr_base_refs": [
+    "agent/automotive-reference-vehicle-v0-7",
+    "agent/blender-surface-system-v1-21-source-context",
+    "agent/c04-c22-drawing-currentization-v3-1",
+    "agent/c04-ch00-ch19-deepening-v03-20260819",
+    "agent/c04-web-v1-12-game-line-20260822",
+    "agent/modeling-worker-v0-13-generalization-reentry",
+    "main",
+    "repair/practice-business-ip-project-axis-20260812"
+  ],
+  "worktree_branches": [
+    "agent/blender-surface-system-v1-21-source-context",
+    "agent/c04-web-v1-12-currentize-20260830",
+    "agent/oleander-execution-surface-readback-20260912",
+    "agent/skill-feedback-design-gates-20260912",
+    "governance/github-stack-base-retarget-20260912",
+    "main",
+    "tmp/presentation-r13-20260910"
+  ],
+  "policy": {
+    "unmerged_deleted_by_age": false,
+    "open_pr_heads_protected": true,
+    "open_pr_bases_protected": true,
+    "active_worktrees_protected": true,
+    "audit_before_delete": true
+  }
+}
