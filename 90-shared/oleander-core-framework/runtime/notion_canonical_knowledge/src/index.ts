@@ -1,4 +1,5 @@
 import {
+  FIELDS,
   SCHEDULED_SYNC_BATCH_SIZE,
   SCHEDULED_SYNC_MAX_ATTEMPTS,
   SCHEDULED_SYNC_STALE_PROCESSING_MS,
@@ -27,12 +28,19 @@ import {
 } from "./manifest";
 import {
   createAcademicPage,
+  createDashboardWidgetView,
   createLinkedNotesView,
   createReaderPage,
+  createViewOnDatabase,
   fetchCompleteMarkdown,
   fetchPage,
   listNotesPages,
+  listDatabaseViews,
+  replaceReaderIntroMarkdown,
+  retrieveNotesDataSource,
+  retrieveView,
   updatePageGovernanceFields,
+  updateView,
 } from "./notion";
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
@@ -163,6 +171,482 @@ async function handleReconcile(request: Request, env: Env): Promise<Response> {
     await failSyncRun(env.MANIFEST, runId, count, message);
     throw error;
   }
+}
+
+interface ReaderLayerState {
+  page_id: string;
+  url: string | null;
+  core_view_id: string;
+  methods_view_id: string;
+  evidence_view_id: string;
+  practice_view_id: string;
+  history_view_id: string;
+}
+
+interface ReaderCounts {
+  core: number;
+  methods: number;
+  evidence: number;
+  practice: number;
+  history: number;
+}
+
+interface AcademicSourceRow {
+  page_id: string;
+  title: string;
+  governance_state: string | null;
+  replacement_ids_json: string;
+}
+
+interface ReaderLink {
+  title: string;
+  url: string;
+}
+
+function safeJsonIds(raw: string | null | undefined): string[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+async function ensureReaderView(
+  env: Env,
+  baseViewId: string,
+  input: {
+    name: string;
+    type: "gallery" | "chart";
+    configuration: Record<string, unknown>;
+    position?: Record<string, unknown>;
+  },
+) {
+  const base = await retrieveView(env, baseViewId);
+  const databaseId = base.parent?.database_id;
+  const dataSourceId = base.data_source_id;
+  if (!databaseId || !dataSourceId) throw new Error(`Reader base view ${baseViewId} is missing database/data-source identity`);
+  const views = await listDatabaseViews(env, databaseId);
+  const existing = views.find((view) => view.name === input.name && view.type === input.type);
+  const visual = existing ?? await createViewOnDatabase(env, {
+    database_id: databaseId,
+    data_source_id: dataSourceId,
+    name: input.name,
+    type: input.type,
+    ...(base.filter ? { filter: base.filter } : {}),
+    ...(base.sorts?.length ? { sorts: base.sorts } : {}),
+    configuration: input.configuration,
+    position: input.position ?? { type: "start" },
+  });
+  return { base, visual };
+}
+
+async function ensureReaderDashboard(
+  env: Env,
+  baseViewId: string,
+  input: {
+    rolePropertyId: string;
+    galleryProperties: Array<Record<string, unknown>>;
+  },
+) {
+  const base = await retrieveView(env, baseViewId);
+  const databaseId = base.parent?.database_id;
+  const dataSourceId = base.data_source_id;
+  if (!databaseId || !dataSourceId) throw new Error(`Reader base view ${baseViewId} is missing database/data-source identity`);
+
+  const topViews = await listDatabaseViews(env, databaseId);
+  let dashboard = topViews.find((view) => view.name === "00｜Dashboard｜知识总览" && view.type === "dashboard")
+    ?? await createViewOnDatabase(env, {
+      database_id: databaseId,
+      data_source_id: dataSourceId,
+      name: "00｜Dashboard｜知识总览",
+      type: "dashboard",
+      position: { type: "start" },
+    });
+  dashboard = await retrieveView(env, dashboard.id);
+  const rows = Array.isArray(dashboard.configuration?.rows)
+    ? dashboard.configuration.rows as Array<{ widgets?: Array<{ view_id?: string }> }>
+    : [];
+  const widgetIds = rows.flatMap((row) => row.widgets ?? []).map((widget) => widget.view_id).filter((id): id is string => typeof id === "string");
+  const existingWidgets = [] as Awaited<ReturnType<typeof retrieveView>>[];
+  for (const widgetId of widgetIds) existingWidgets.push(await retrieveView(env, widgetId));
+  const ensureWidget = async (widget: {
+    name: string;
+    type: "list" | "gallery" | "chart";
+    filter?: Record<string, unknown>;
+    sorts?: Array<Record<string, unknown>>;
+    configuration?: Record<string, unknown>;
+    placement: { type: "new_row"; row_index?: number } | { type: "existing_row"; row_index: number };
+  }) => {
+    const existing = existingWidgets.find((view) => view.name === widget.name && view.type === widget.type);
+    if (existing) return existing;
+    const created = await createDashboardWidgetView(env, {
+      dashboard_view_id: dashboard.id,
+      data_source_id: dataSourceId,
+      name: widget.name,
+      type: widget.type,
+      ...(widget.filter ? { filter: widget.filter } : {}),
+      ...(widget.sorts?.length ? { sorts: widget.sorts } : {}),
+      ...(widget.configuration ? { configuration: widget.configuration } : {}),
+      placement: widget.placement,
+    });
+    existingWidgets.push(created);
+    return created;
+  };
+
+  const coreFilter = {
+    and: [
+      {
+        or: [
+          { property: FIELDS.contentLevel, select: { equals: "L4｜Framework" } },
+          { property: FIELDS.contentLevel, select: { equals: "L5｜Knowledge Object" } },
+        ],
+      },
+      { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
+      { property: FIELDS.relationState, select: { equals: "VALID" } },
+    ],
+  };
+  const evidenceFilter = {
+    and: [
+      { property: FIELDS.contentLevel, select: { equals: "L6｜Evidence / Case" } },
+      { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
+      { property: FIELDS.relationState, select: { equals: "VALID" } },
+    ],
+  };
+  const methodFilter = {
+    and: [
+      { property: FIELDS.knowledgeRole, select: { equals: "METHOD" } },
+      { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
+      { property: FIELDS.relationState, select: { equals: "VALID" } },
+    ],
+  };
+  const practiceFilter = {
+    and: [
+      { property: FIELDS.contentLevel, select: { equals: "L7｜Practice / Output" } },
+      { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
+    ],
+  };
+  const currentFilter = {
+    and: [
+      { property: FIELDS.retrievalSpace, select: { equals: "CURRENT" } },
+      { property: FIELDS.searchEligibility, select: { equals: "DEFAULT" } },
+      { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
+      { property: FIELDS.relationState, select: { equals: "VALID" } },
+    ],
+  };
+  const chartConfiguration = (caption: string) => ({
+    type: "chart",
+    chart_type: "donut",
+    x_axis: { type: "select", property_id: input.rolePropertyId, sort: { type: "manual" }, hide_empty_groups: true },
+    y_axis: { aggregator: "count" },
+    color_theme: "auto",
+    height: "small",
+    legend_position: "side",
+    show_data_labels: true,
+    donut_labels: "name_and_value",
+    caption,
+  });
+  const galleryConfiguration = {
+    type: "gallery",
+    properties: input.galleryProperties,
+    cover: null,
+    card_layout: "compact",
+  };
+
+  const coreChart = await ensureWidget({
+    name: "Core｜知识角色",
+    type: "chart",
+    filter: coreFilter,
+    configuration: chartConfiguration("Core Knowledge by role"),
+    placement: { type: "new_row", row_index: 0 },
+  });
+  const evidenceChart = await ensureWidget({
+    name: "Evidence｜证据结构",
+    type: "chart",
+    filter: evidenceFilter,
+    configuration: chartConfiguration("Evidence / Case by role"),
+    placement: { type: "existing_row", row_index: 0 },
+  });
+  const currentGallery = await ensureWidget({
+    name: "Current｜当前知识",
+    type: "gallery",
+    filter: currentFilter,
+    sorts: [{ property: FIELDS.knowledgeRole, direction: "ascending" }, { property: FIELDS.title, direction: "ascending" }],
+    configuration: galleryConfiguration,
+    placement: { type: "new_row", row_index: 1 },
+  });
+  const methodsGallery = await ensureWidget({
+    name: "Methods｜方法",
+    type: "gallery",
+    filter: methodFilter,
+    sorts: [{ property: FIELDS.title, direction: "ascending" }],
+    configuration: galleryConfiguration,
+    placement: { type: "new_row", row_index: 2 },
+  });
+  const practiceGallery = await ensureWidget({
+    name: "Practice｜实践",
+    type: "gallery",
+    filter: practiceFilter,
+    sorts: [{ property: FIELDS.title, direction: "ascending" }],
+    configuration: galleryConfiguration,
+    placement: { type: "existing_row", row_index: 2 },
+  });
+
+  return { dashboard, coreChart, evidenceChart, currentGallery, methodsGallery, practiceGallery };
+}
+
+function readerCard(icon: string, color: string, title: string, count: number, detail: string, url: string): string {
+  return [
+    `\t<column>`,
+    `\t\t<callout icon="${icon}" color="${color}">`,
+    `\t\t\t**${title}** · **${count}**<br>${detail}<br>[进入视图 →](${url})`,
+    `\t\t</callout>`,
+    `\t</column>`,
+  ].join("\n");
+}
+
+async function buildReaderVisualization(
+  env: Env,
+  reader: ReaderLayerState,
+  views: {
+    dashboard: ReaderLink;
+    core: ReaderLink;
+    methods: ReaderLink;
+    evidence: ReaderLink;
+    practice: ReaderLink;
+    history: ReaderLink;
+  },
+): Promise<{ markdown: string; counts: ReaderCounts; academic_done: number; academic_total: number; academic_next: string | null }> {
+  const counts = await env.MANIFEST.prepare(
+    `SELECT
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level IN ('L4｜Framework','L5｜Knowledge Object') THEN 1 ELSE 0 END) AS core,
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND knowledge_role='METHOD' THEN 1 ELSE 0 END) AS methods,
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level='L6｜Evidence / Case' THEN 1 ELSE 0 END) AS evidence,
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND content_level='L7｜Practice / Output' THEN 1 ELSE 0 END) AS practice,
+      SUM(CASE WHEN active=1 AND (effective_space='PROVENANCE' OR governance_state IN ('LEGACY','ARCHIVED','HOLD')) THEN 1 ELSE 0 END) AS history
+     FROM documents`,
+  ).first<ReaderCounts>() ?? { core: 0, methods: 0, evidence: 0, practice: 0, history: 0 };
+
+  const academicOrder = [
+    "D01｜城市更新与社区营造",
+    "D04｜数字设计、BIM与智能建造",
+    "D06｜公共建筑、社会基础设施与公共性",
+    "D07｜居住研究、住房与日常生活",
+    "D03｜气候低碳与韧性设计",
+    "D05｜建筑经济、开发策划与全生命周期价值",
+    "D02｜乡村建筑与地方营造",
+  ];
+  const sourceRows = await env.MANIFEST.prepare(
+    `SELECT page_id,title,governance_state,replacement_ids_json
+     FROM documents
+     WHERE active=1 AND title IN (${academicOrder.map(() => "?").join(",")})`,
+  ).bind(...academicOrder).all<AcademicSourceRow>();
+  const sourceByTitle = new Map(sourceRows.results.map((row) => [row.title, row]));
+  const academicLines: string[] = [];
+  let academicDone = 0;
+  let academicNext: string | null = null;
+
+  for (const title of academicOrder) {
+    const row = sourceByTitle.get(title);
+    const replacements = safeJsonIds(row?.replacement_ids_json);
+    const done = row?.governance_state === "LEGACY" && replacements.length > 0;
+    if (done) {
+      academicDone += 1;
+      const target = await env.MANIFEST.prepare(
+        "SELECT title,notion_url FROM documents WHERE page_id=? AND active=1 LIMIT 1",
+      ).bind(replacements[0]).first<{ title: string; notion_url: string | null }>();
+      academicLines.push(target?.notion_url
+        ? `✅ [${target.title}](${target.notion_url})`
+        : `✅ ${title}`);
+    } else {
+      if (!academicNext) academicNext = title;
+      academicLines.push(`${academicNext === title ? "◐" : "○"} ${title}`);
+    }
+  }
+
+  const methodIds = ["MTH-KNOWLEDGE-ACADEMIC-NOTE-001", "MTH-ARCH-RESEARCH-001", "MTH-ARCH-EVIDENCE-GOV-001"];
+  const methodRows = await env.MANIFEST.prepare(
+    `SELECT canonical_id,title,notion_url FROM documents
+     WHERE active=1 AND canonical_id IN (?,?,?) ORDER BY title`,
+  ).bind(...methodIds).all<{ canonical_id: string; title: string; notion_url: string | null }>();
+  const methodLines = methodRows.results.map((row) => row.notion_url ? `- [${row.title}](${row.notion_url})` : `- ${row.title}`);
+
+  const filled = "●".repeat(academicDone);
+  const open = "○".repeat(Math.max(0, academicOrder.length - academicDone));
+  const today = new Date().toISOString().slice(0, 10);
+  const intro = [
+    `<callout icon="🧭" color="blue_bg">`,
+    `\t**READ CURRENT FIRST｜先读当前知识，再追溯证据。**<br>这里是人的阅读首页，不是治理后台。默认先打开 **Dashboard** 看全局，再按 **Core → Methods → Evidence → Practice** 深入；History 只在需要追溯来源、旧版本或迁移关系时打开。<br>[打开知识仪表盘 →](${views.dashboard.url})`,
+    `</callout>`,
+    ``,
+    `## 阅读地图`,
+    ``,
+    `<columns>`,
+    readerCard("📘", "blue_bg", "Core Knowledge｜核心知识", Number(counts.core ?? 0), "L4/L5 · ACTIVE · VALID；先读论点与框架", views.core.url),
+    readerCard("🧪", "purple_bg", "Methods｜方法", Number(counts.methods ?? 0), "研究、证据治理与专业方法；回答“怎么做”", views.methods.url),
+    readerCard("🔎", "yellow_bg", "Evidence｜证据", Number(counts.evidence ?? 0), "L6 Source / Evidence / Case；需要核验时进入", views.evidence.url),
+    `</columns>`,
+    ``,
+    `<columns>`,
+    readerCard("🛠️", "green_bg", "Practice｜实践", Number(counts.practice ?? 0), "L7 Practice / Output；看真实执行与 readback", views.practice.url),
+    readerCard("🗂️", "gray_bg", "History｜历史与治理", Number(counts.history ?? 0), "Legacy / Provenance / Hold；默认不占第一阅读层", views.history.url),
+    [
+      `\t<column>`,
+      `\t\t<callout icon="◒" color="orange_bg">`,
+      `\t\t\t**Academic Migration｜专题论文级迁移** · **${academicDone}/${academicOrder.length}**<br><span color="green">${filled}</span><span color="gray">${open}</span><br>${academicNext ? `下一项：**${academicNext}**` : "专题队列已完成"}`,
+      `\t\t</callout>`,
+      `\t</column>`,
+    ].join("\n"),
+    `</columns>`,
+    ``,
+    `## 当前知识主线`,
+    ``,
+    `<columns>`,
+    `\t<column>`,
+    `\t\t<callout icon="📚" color="blue_bg">`,
+    `\t\t\t**专题 Current**<br>${academicLines.join("<br>")}`,
+    `\t\t</callout>`,
+    `\t</column>`,
+    `\t<column>`,
+    `\t\t<callout icon="⚙️" color="purple_bg">`,
+    `\t\t\t**方法 Owner**<br>${methodLines.join("<br>") || "方法 owner 尚未索引"}`,
+    `\t\t</callout>`,
+    `\t</column>`,
+    `</columns>`,
+    ``,
+    `## 阅读方式`,
+    ``,
+    `<callout icon="→" color="gray_bg">`,
+    `\t**Core** 形成理解 → **Methods** 决定怎么研究/执行 → **Evidence** 负责核验 → **Practice** 看真实结果。<br>遇到版本冲突、旧口径或替代关系时再进入 **History**。机器 ID、PR、receipt、migration log 不承担第一层阅读任务。`,
+    `</callout>`,
+    ``,
+    `> Reader snapshot refreshed **${today}**. Core 数量包含其中的 Method 对象，五个数字不是互斥分区，也不应相加为 corpus 总量。`,
+    ``,
+    `---`,
+    ``,
+    `## Live Views｜实时知识视图`,
+    ``,
+    `下方仍连接同一 Notes 数据源：**Dashboard** 是第一入口，**Cards / Map** 用于浏览，**List** 用于完整检索；没有复制第二套知识库。`,
+    ``,
+  ].join("\n");
+
+  return { markdown: intro, counts, academic_done: academicDone, academic_total: academicOrder.length, academic_next: academicNext };
+}
+
+async function visualizeReaderLayer(env: Env): Promise<Record<string, unknown>> {
+  const stored = await env.MANIFEST.prepare("SELECT state_value FROM runtime_state WHERE state_key='reader_layer_v1' LIMIT 1")
+    .first<{ state_value: string }>();
+  if (!stored?.state_value) throw new Error("reader_layer_v1 is not initialized");
+  const reader = JSON.parse(stored.state_value) as ReaderLayerState;
+  const notes = await retrieveNotesDataSource(env);
+  const roleProperty = notes.properties?.[FIELDS.knowledgeRole];
+  const rolePropertyId = typeof roleProperty?.id === "string" ? roleProperty.id : FIELDS.knowledgeRole;
+  const galleryProperties = [
+    { property_id: FIELDS.knowledgeRole, visible: true, card_property_width_mode: "inline" },
+    { property_id: FIELDS.contentLevel, visible: true, card_property_width_mode: "inline" },
+  ];
+
+  const dashboard = await ensureReaderDashboard(env, reader.core_view_id, {
+    rolePropertyId,
+    galleryProperties,
+  });
+
+  const coreGallery = await ensureReaderView(env, reader.core_view_id, {
+    name: "01｜Cards｜核心知识",
+    type: "gallery",
+    configuration: { type: "gallery", properties: galleryProperties, cover: null, card_layout: "compact" },
+    position: { type: "start" },
+  });
+  const coreMap = await ensureReaderView(env, reader.core_view_id, {
+    name: "Map｜知识角色分布",
+    type: "chart",
+    configuration: {
+      type: "chart",
+      chart_type: "donut",
+      x_axis: { type: "select", property_id: rolePropertyId, sort: { type: "manual" }, hide_empty_groups: true },
+      y_axis: { aggregator: "count" },
+      color_theme: "auto",
+      height: "small",
+      legend_position: "side",
+      show_data_labels: true,
+      donut_labels: "name_and_value",
+      caption: "Core Knowledge by knowledge role",
+    },
+    position: { type: "after_view", view_id: coreGallery.visual.id },
+  });
+  const methodsGallery = await ensureReaderView(env, reader.methods_view_id, {
+    name: "02｜Cards｜方法",
+    type: "gallery",
+    configuration: { type: "gallery", properties: galleryProperties, cover: null, card_layout: "compact" },
+    position: { type: "start" },
+  });
+  const evidenceMap = await ensureReaderView(env, reader.evidence_view_id, {
+    name: "03｜Map｜证据分布",
+    type: "chart",
+    configuration: {
+      type: "chart",
+      chart_type: "donut",
+      x_axis: { type: "select", property_id: rolePropertyId, sort: { type: "manual" }, hide_empty_groups: true },
+      y_axis: { aggregator: "count" },
+      color_theme: "auto",
+      height: "small",
+      legend_position: "side",
+      show_data_labels: true,
+      donut_labels: "name_and_value",
+      caption: "L6 evidence objects by knowledge role",
+    },
+    position: { type: "start" },
+  });
+  const practiceGallery = await ensureReaderView(env, reader.practice_view_id, {
+    name: "04｜Cards｜实践",
+    type: "gallery",
+    configuration: { type: "gallery", properties: galleryProperties, cover: null, card_layout: "compact" },
+    position: { type: "start" },
+  });
+
+  await updateView(env, reader.core_view_id, { name: "List｜核心完整目录" });
+  await updateView(env, reader.methods_view_id, { name: "List｜方法完整目录" });
+  await updateView(env, reader.evidence_view_id, { name: "List｜证据完整索引" });
+  await updateView(env, reader.practice_view_id, { name: "List｜实践完整目录" });
+  const historyView = await updateView(env, reader.history_view_id, { name: "99｜Trace｜历史与治理" });
+
+  const visual = await buildReaderVisualization(env, reader, {
+    dashboard: { title: dashboard.dashboard.name ?? "Dashboard", url: dashboard.dashboard.url ?? reader.url ?? "" },
+    core: { title: coreGallery.visual.name ?? "Core Knowledge", url: coreGallery.visual.url ?? reader.url ?? "" },
+    methods: { title: methodsGallery.visual.name ?? "Methods", url: methodsGallery.visual.url ?? reader.url ?? "" },
+    evidence: { title: evidenceMap.visual.name ?? "Evidence", url: evidenceMap.visual.url ?? reader.url ?? "" },
+    practice: { title: practiceGallery.visual.name ?? "Practice", url: practiceGallery.visual.url ?? reader.url ?? "" },
+    history: { title: historyView.name ?? "History", url: historyView.url ?? reader.url ?? "" },
+  });
+  await replaceReaderIntroMarkdown(env, reader.page_id, visual.markdown);
+  const readback = await fetchCompleteMarkdown(env, reader.page_id);
+  const state = {
+    reader_page_id: reader.page_id,
+    reader_url: reader.url,
+    dashboard_view_id: dashboard.dashboard.id,
+    dashboard_core_chart_view_id: dashboard.coreChart.id,
+    dashboard_evidence_chart_view_id: dashboard.evidenceChart.id,
+    dashboard_current_gallery_view_id: dashboard.currentGallery.id,
+    dashboard_methods_gallery_view_id: dashboard.methodsGallery.id,
+    dashboard_practice_gallery_view_id: dashboard.practiceGallery.id,
+    core_gallery_view_id: coreGallery.visual.id,
+    core_map_view_id: coreMap.visual.id,
+    methods_gallery_view_id: methodsGallery.visual.id,
+    evidence_map_view_id: evidenceMap.visual.id,
+    practice_gallery_view_id: practiceGallery.visual.id,
+    counts: visual.counts,
+    academic_done: visual.academic_done,
+    academic_total: visual.academic_total,
+    academic_next: visual.academic_next,
+    markdown_length: readback.markdown.length,
+    markdown_truncated: readback.truncated,
+    unknown_block_ids: readback.unknown_block_ids,
+  };
+  await env.MANIFEST.prepare(
+    "INSERT INTO runtime_state(state_key,state_value,updated_at) VALUES('reader_visual_v1',?,?) ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value,updated_at=excluded.updated_at",
+  ).bind(JSON.stringify(state), new Date().toISOString()).run();
+  return state;
 }
 
 async function handleRequest(request: Request, env: Env): Promise<Response> {
@@ -358,6 +842,16 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       "INSERT INTO runtime_state(state_key,state_value,updated_at) VALUES('reader_layer_v1',?,?) ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value,updated_at=excluded.updated_at",
     ).bind(JSON.stringify(reader), new Date().toISOString()).run();
     return json({ ok: true, existing: false, reader });
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/reader-layer/visualize") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    try {
+      const state = await visualizeReaderLayer(env);
+      return json({ ok: true, visualized: true, state });
+    } catch (error) {
+      return errorJson(error);
+    }
   }
 
   if (request.method === "POST" && url.pathname === "/v1/drain-once") {

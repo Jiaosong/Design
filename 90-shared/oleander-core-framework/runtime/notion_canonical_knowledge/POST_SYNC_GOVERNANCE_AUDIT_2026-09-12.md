@@ -364,3 +364,48 @@ After the D06 authority cutover:
 - Old row: `LEGACY-KN-ARCH-PUBLIC-SOCIAL-INFRA-D06-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 60 chunks / not truncated`
 
 The +1 corpus delta from the preceding D04 readback is the intended additive Current carrier. The next academic migration is now D07.
+
+## Phase 5 — Knowledge Reader Visual Dashboard
+
+The user-facing Reader was upgraded from a mostly textual landing page plus five list views into a real, editable Notion visualization surface. This is a presentation-layer change only: the Notes data source remains canonical, and no second knowledge database or dashboard-owned authority was introduced.
+
+Live Reader:
+
+- Page: `知识阅读台｜Knowledge Reader`
+- Page ID: `3d9b86be-5c47-81e7-9acd-d05c6d25ad7b`
+- Reader intro now opens with a visual reading map and a direct Dashboard entry rather than governance prose.
+- Live markdown readback after the upgrade: `3,890` characters, `markdown_truncated=false`, `unknown_block_ids=[]`.
+
+Native Notion Dashboard:
+
+- Dashboard view ID: `3d9b86be-5c47-8118-8885-000c3bf5e9eb`
+- Core role chart: `3d9b86be-5c47-81a8-b0b5-000ce54c3fdb`
+- Evidence structure chart: `3d9b86be-5c47-81e1-893e-000c9b87e4a1`
+- Current knowledge gallery: `3d9b86be-5c47-811e-a1f9-000c177a8df7`
+- Methods gallery: `3d9b86be-5c47-810e-8e29-000c586b956a`
+- Practice gallery: `3d9b86be-5c47-814a-b27a-000c0f9e28f5`
+
+The dashboard uses Notion's first-class `dashboard` view and widget views over the same Notes data source. The dashboard is positioned as the first view; its widget grid gives one-screen orientation, while the existing `Cards / Map / List` views remain available for deeper browsing and exhaustive lookup. History stays visually subordinate rather than competing with Current knowledge on the first screen.
+
+Reader snapshot at this upgrade:
+
+- Core Knowledge: `272`
+- Methods: `73`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `214`
+- Academic migration: `3 / 7`; next = `D07｜居住研究、住房与日常生活`
+
+These five counts are intentionally overlapping analytical slices, not a partition of corpus total. In particular, Methods are included within the L4/L5 Core population where their level/state matches.
+
+### Visual Dashboard Readback / Idempotency
+
+The first dashboard attempt exposed a runtime implementation issue rather than a Notion design failure: hydrating every view that referenced the Notes data source exceeded the Cloudflare Worker per-invocation subrequest ceiling. The implementation was corrected to read existing widget IDs directly from the dashboard's own `configuration.rows[].widgets[].view_id` and retrieve only those few views.
+
+After that correction:
+
+- Worker deployment: `77039331-b8f2-4ce3-bedc-975e135bc462`
+- `POST /v1/reader-layer/visualize` returned `HTTP 200`.
+- A second live execution returned the exact same Dashboard and five widget IDs, proving the upgrade path is idempotent rather than additive pollution.
+- D1 runtime state `reader_visual_v1` stores the same IDs, counts, academic progress, and non-truncated live readback.
+- No Note page, history carrier, relation, Canonical ID, retrieval authority or academic content was deleted or demoted by this visualization pass.
