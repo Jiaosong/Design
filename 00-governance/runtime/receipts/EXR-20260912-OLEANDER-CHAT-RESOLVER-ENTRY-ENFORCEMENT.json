@@ -1,0 +1,351 @@
+{
+  "receipt_id": "EXR-20260912-OLEANDER-CHAT-RESOLVER-ENTRY-ENFORCEMENT",
+  "status": "WORKING",
+  "execution_type": "GOVERNANCE_RUNTIME",
+  "task_id": "oleander-chat-resolver-entry-enforcement",
+  "authority": {
+    "notion_root_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "notion_root_version": "v1.1.1",
+    "project_or_scope_authority": "OLEANDER cross-project conversation execution governance",
+    "source_authority": "Current OLEANDER Project Control Plane + OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.5 + current user instruction",
+    "design_authority": "NOT_APPLICABLE",
+    "canonical_ids": [
+      "KN-METHOD-OLEANDER-SKILL-RESOLVER-001"
+    ],
+    "github_resolver": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.5",
+    "github_commit_or_ref": "agent/oleander-chat-resolver-enforcement-20260912@c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e"
+  },
+  "constraint_lock": {
+    "resolved_from": [
+      "LATEST_EXPLICIT_USER_INSTRUCTION",
+      "CURRENT_OLEANDER_RESOLVER",
+      "CURRENT_EXECUTION_RECEIPT_POLICY"
+    ],
+    "inheritance_state": "ENFORCED_UNTIL_EXPLICIT_REVOCATION_OR_TASK_CLOSURE",
+    "active_constraints": [
+      {
+        "constraint_id": "CSTR-20260912-CHAT-001",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_SKILL",
+        "source": "User requires reuse of the existing OLEANDER conversation execution layer rather than a new Skill.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_SKILL"
+      },
+      {
+        "constraint_id": "CSTR-20260912-CHAT-002",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_METHOD",
+        "source": "User forbids a parallel Method for conversation execution.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_METHOD"
+      },
+      {
+        "constraint_id": "CSTR-20260912-CHAT-003",
+        "constraint_type": "CREATION_DENY",
+        "normalized_rule": "NO_NEW_FRAMEWORK",
+        "source": "User forbids a second Conversation Executor, Control Plane, Project State or checkpoint database.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_NO_NEW_FRAMEWORK"
+      },
+      {
+        "constraint_id": "CSTR-20260912-CHAT-004",
+        "constraint_type": "OWNER_REQUIRE",
+        "normalized_rule": "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
+        "source": "The requested repair is implementation enforcement of the existing Resolver v1.2.5.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_EXISTING_FIRST_REQUIREMENT"
+      },
+      {
+        "constraint_id": "CSTR-20260912-CHAT-005",
+        "constraint_type": "PROCESS_REQUIRE",
+        "normalized_rule": "FULL_OLEANDER_FLOW_REQUIRED",
+        "source": "User requires actual binding, end-to-end regression and readback rather than documentation-only completion.",
+        "scope": "CURRENT_GOVERNANCE_REPAIR",
+        "status": "ACTIVE",
+        "revocation_rule": "ONLY_LATER_EXPLICIT_USER_INSTRUCTION_CHANGING_FULL_FLOW_REQUIREMENT"
+      }
+    ],
+    "revocations": [],
+    "tool_deny": [],
+    "output_deny": [],
+    "creation_deny": [
+      "CREATE_NEW_SKILL",
+      "CREATE_NEW_METHOD",
+      "CREATE_PARALLEL_CONVERSATION_FRAMEWORK",
+      "CREATE_SECOND_CONTROL_PLANE",
+      "CREATE_SECOND_PROJECT_STATE_OR_CHECKPOINT_DATABASE"
+    ],
+    "required_behaviors": [
+      "REUSE_CURRENT_RESOLVER_1_2_5",
+      "MACHINE_PREFLIGHT_BEFORE_CONTINUATION_OR_COMPLETION",
+      "PRESERVE_STICKY_CONSTRAINTS",
+      "NO_FALSE_COMPLETION",
+      "NO_FORCED_COS_RESTART"
+    ]
+  },
+  "required_native_output": {
+    "artifact_class": "oleander_chat_resolver_entry_binding",
+    "native_format": "Python+JSONL+YAML+Markdown+CoS JSON config binding",
+    "editable_required": true,
+    "target_runtime": "Jiaosong/Design runtime governance + Chat On Steroids v2.0.9 execution surface",
+    "derived_formats": []
+  },
+  "owner_set": {
+    "minimum_sufficient_owner_set": true,
+    "primary_owner": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.5",
+    "nodes": [
+      {
+        "owner_id": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.5",
+        "role": "PRIMARY_OWNER"
+      },
+      {
+        "owner_id": "validate_execution_locks.py",
+        "role": "VALIDATOR"
+      },
+      {
+        "owner_id": "validate_continuation_cycle.py",
+        "role": "VALIDATOR"
+      },
+      {
+        "owner_id": "oleander_chat_resolver_adapter.py",
+        "role": "SUPPORTING_OWNER"
+      }
+    ],
+    "omitted_owner_reasoning": "No new conversation framework, Skill, Method or state owner is required; Chat On Steroids remains an execution adapter."
+  },
+  "flow_completion": {
+    "mode": "FULL_OLEANDER_FLOW",
+    "required_phases": [
+      "AUTHORITY_PREFLIGHT",
+      "STICKY_CONSTRAINT_RESOLUTION",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET",
+      "REAL_EXECUTION",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
+      "ACTUAL_READBACK",
+      "REGRESSION_AS_APPLICABLE",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "phase_results": {
+      "AUTHORITY_PREFLIGHT": "PASS",
+      "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+      "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+      "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+      "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+      "REAL_EXECUTION": "PASS",
+      "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD": "PASS",
+      "ACTUAL_READBACK": "HOLD",
+      "REGRESSION_AS_APPLICABLE": "PASS",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "NOT_APPLICABLE",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "HOLD"
+    },
+    "phase_reasons": {
+      "ACTUAL_READBACK": "Persisted CoS config readback is PASS, but the already-running CoS v2.0.9 process has no config file watcher or external prompt hot-reload hook. User constraint forbids forcing a CoS restart, so in-memory binding readback remains HOLD until the next natural reload.",
+      "INDEPENDENT_REVIEW_AS_APPLICABLE": "Non-design runtime governance change; no Design KEEP or Skill promotion is requested.",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE": "PR #542 is open; merge and main readback are not yet complete. No Notion Current pointer change is required."
+    },
+    "incomplete_required_phases": [
+      "ACTUAL_READBACK",
+      "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
+    ],
+    "completion_gate": "HOLD",
+    "completion_claim_allowed": false
+  },
+  "continuation_checkpoint": {
+    "checkpoint_state": "REVALIDATE",
+    "current_node": "ACTUAL_READBACK",
+    "last_verified_artifact": {
+      "artifact_id": "ART-COS-PERSISTED-CONFIG-BINDING",
+      "hash_or_commit": "707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe",
+      "readback_verdict": "PASS"
+    },
+    "resume_from": "LIVE_COS_IN_MEMORY_BINDING_READBACK",
+    "next_allowed_action": "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD_THEN_REEVALUATE_FLOW_COMPLETION",
+    "authority_fingerprint": "3d80167e018fb755c1178ec20671d010b2665f5a086f55a18769a59d90ab2b0c",
+    "stale_reasons": [
+      "RUNNING_COS_PROCESS_HAS_NOT_RELOADED_PERSISTED_BINDING",
+      "PR_542_NOT_YET_MERGED_TO_MAIN"
+    ],
+    "checkpoint_sequence": 1,
+    "checkpoint_updated_at": "2026-09-12T16:47:00+08:00",
+    "expected_checkpoint_sequence": 1,
+    "executor_id": "CHAT-PRIME-20260912",
+    "execution_lease_state": "NONE",
+    "lease_acquired_at": "NOT_APPLICABLE"
+  },
+  "continuous_execution": {
+    "auto_advance_enabled": true,
+    "nodes_executed_in_order": [
+      "READ_CURRENT_RESOLVER_AND_COS_RUNTIME",
+      "IMPLEMENT_STATELESS_RESOLVER_ADAPTER",
+      "ADD_RAW_RECEIPT_AND_FLOW_DECISION_EXECUTION",
+      "ADD_EXISTING_EVAL_REGRESSION_CASES",
+      "PERSIST_COS_BINDING_WITH_BACKUP",
+      "RUN_FULL_LOCAL_GOVERNANCE_REGRESSION",
+      "OPEN_PR_542"
+    ],
+    "node_readback_verdicts": {
+      "READ_CURRENT_RESOLVER_AND_COS_RUNTIME": "PASS",
+      "IMPLEMENT_STATELESS_RESOLVER_ADAPTER": "PASS",
+      "ADD_RAW_RECEIPT_AND_FLOW_DECISION_EXECUTION": "PASS",
+      "ADD_EXISTING_EVAL_REGRESSION_CASES": "PASS",
+      "PERSIST_COS_BINDING_WITH_BACKUP": "PASS",
+      "RUN_FULL_LOCAL_GOVERNANCE_REGRESSION": "PASS",
+      "OPEN_PR_542": "PASS"
+    },
+    "stop_reason": "TOOL_OR_RUNTIME_HARD_LIMIT",
+    "final_current_node": "ACTUAL_READBACK",
+    "next_allowed_action": "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD_THEN_REEVALUATE_FLOW_COMPLETION"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "ART-OLEANDER-CHAT-RESOLVER-ENTRY-BINDING",
+      "artifact_role": "NATIVE_SOURCE",
+      "producer_owner": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.5",
+      "authority_source": "Current Resolver v1.2.5 + current Execution Receipt contract + current user constraints",
+      "authority_state": "CURRENT",
+      "native_format": "Python+JSONL+YAML+Markdown",
+      "editable_state": "FULLY_EDITABLE",
+      "semantic_layers": [
+        "frontier_resolution",
+        "raw_receipt_checkpoint_resume",
+        "sticky_constraint_resolution",
+        "checkpoint_concurrency_guard",
+        "continuous_auto_advance",
+        "flow_completion_gate",
+        "cos_prompt_binding",
+        "goal_tool_readback_visibility"
+      ],
+      "provenance_state": "SOURCE_EXPLICIT",
+      "dependencies": [
+        "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2 implementation revision 1.2.5",
+        "OLEANDER_EXECUTION_RECEIPT_v1.0 policy revision 1.1",
+        "Chat On Steroids v2.0.9 existing mcp.instructions / Goal prompt / includeToolCalls surfaces"
+      ],
+      "hashes_or_commit": "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e",
+      "runtime": "GitHub PR #542 + local CoS persisted config",
+      "renderer": "NOT_APPLICABLE",
+      "permission": "MUTATE_AUTHORIZED_SOURCE",
+      "current_state": "WORKING",
+      "does_not_prove": [
+        "live_CoS_in_memory_reload",
+        "project_state",
+        "design_quality"
+      ]
+    }
+  ],
+  "execution": {
+    "runtime": "Independent Git worktree + local Chat On Steroids v2.0.9 config persistence + GitHub PR #542",
+    "entrypoint_or_action": "Bind Chat/CoS continuation decisions to existing Resolver v1.2.5 through a stateless machine preflight adapter and existing CoS prompt/tool-readback surfaces; no second executor or state owner.",
+    "result": "IMPLEMENTED_LOCAL_VALIDATED_PR_OPEN_PERSISTED_COS_BINDING_LIVE_RELOAD_HOLD",
+    "failures": [
+      "Initial handoff assumption that current CoS exposes goal.instructions was false; current v2.0.9 exposes goal.prompt/objectivePrompt/loopPrompt and separate mcp.instructions.",
+      "Current CoS has no declarative external preflight hook and no config.json file watcher; direct persisted config mutation cannot update the already-running process memory.",
+      "Generic Loop prompt semantics conflict with OLEANDER completion because the host refuses a model stop action in Loop mode."
+    ],
+    "repairs": [
+      "Reused existing Resolver functions instead of creating another conversation executor or checkpoint state.",
+      "Added raw Execution Receipt compatibility so checkpoint readback is consumed without an adapter-side shadow schema.",
+      "Added executable sticky constraint, Flow Completion and continuous execution decisions to the existing runtime validator.",
+      "Added stateless oleander_chat_resolver_adapter.py and CI self-test over existing eval corpora.",
+      "Persisted an idempotent CoS binding into mcp.instructions and all three Goal prompt surfaces while preserving original prompt text and Goal enabled=false / mode=goal.",
+      "Enabled the existing goal.includeToolCalls option so Goal can consume the actual resolver CLI tool readback instead of an assistant paraphrase.",
+      "For OLEANDER Loop completion, binding overrides generic keep-going semantics and instructs fail-closed stop rather than manufacturing optional work."
+    ]
+  },
+  "readback": {
+    "target": "Resolver adapter + existing runtime validators + CoS persisted config + PR #542 checks + running CoS in-memory binding",
+    "runtime": "Local Python validators, CoS config UTF-8 readback, installed app.asar read-only inspection, GitHub Actions",
+    "observed_result": "All local governance validators and adapter self-test PASS. CoS persisted config SHA256 707cbc5c69c049f7086b08a0e0b225d351a143a917020ebf69282c6db3426ebe contains the binding on mcp, Goal, Objective and Loop surfaces with goal.includeToolCalls=true and preserves enabled=false/mode=goal/original prompts. PR #542 first check set is green. Running CoS process remains on its pre-binding in-memory config because restart/reload was intentionally not forced.",
+    "blocking_defects": [
+      "LIVE_COS_IN_MEMORY_BINDING_NOT_RELOADED_UNDER_NO_FORCED_RESTART_CONSTRAINT",
+      "PR_542_MERGE_AND_MAIN_READBACK_PENDING"
+    ],
+    "nonblocking_defects": [
+      "CoS v2.0.9 has no supported external machine-preflight hook before Goal decision; the existing prompt + includeToolCalls bridge is therefore the supported no-restart-compatible binding path for the next load."
+    ],
+    "verdict": "HOLD"
+  },
+  "regression": {
+    "STRUCTURAL": {
+      "result": "PASS",
+      "assertions": [
+        "No new Control Plane, Project State, checkpoint database, Method, Skill or Conversation Executor created",
+        "Adapter declares EXECUTION_ADAPTER_ONLY and state_owner=false",
+        "Existing Resolver remains v1.2 implementation revision 1.2.5"
+      ]
+    },
+    "SEMANTIC": {
+      "result": "PASS",
+      "assertions": [
+        "same-task continue resumes next_allowed_action",
+        "raw CLOSED receipt does not reopen",
+        "authority ambiguity HOLDs",
+        "checkpoint sequence mismatch blocks mutation",
+        "sticky constraints persist and explicit revocation has precedence",
+        "missing or incomplete Flow Completion evidence fails closed",
+        "ready nodes auto-advance while legal",
+        "Flow Completion PASS stops further work"
+      ]
+    },
+    "VISUAL_ROI": {
+      "result": "NOT_APPLICABLE",
+      "assertions": [
+        "No visual design artifact is changed."
+      ]
+    },
+    "RUNTIME": {
+      "result": "HOLD",
+      "assertions": [
+        "All commands mirrored from AI Governance Evals pass locally",
+        "PR #542 first CI check set is SUCCESS",
+        "CoS config persistence and preservation readback PASS",
+        "Current CoS in-memory config reload intentionally not performed"
+      ]
+    },
+    "overall": "HOLD"
+  },
+  "review": {
+    "producer_id": "runtime-governance execution",
+    "reviewer_id": "NOT_REQUIRED_FOR_NON_DESIGN_GOVERNANCE_CHANGE",
+    "review_input_artifact_id": "ART-OLEANDER-CHAT-RESOLVER-ENTRY-BINDING",
+    "review_input_hash_or_commit": "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e",
+    "reviewer_independence_state": "NOT_REQUIRED",
+    "evidence_gate": "HOLD_LIVE_RUNTIME_RELOAD",
+    "design_quality_gate": "NOT_APPLICABLE",
+    "promotion_authority": "No design artifact, Method or Skill is promoted by this runtime enforcement change."
+  },
+  "closure": {
+    "material_delta": true,
+    "branch": "agent/oleander-chat-resolver-enforcement-20260912",
+    "commits": [
+      "c34875e6a6b11c7cd63f94cd866f75b9cf97ca1e"
+    ],
+    "pull_request": 542,
+    "ci_state": "FIRST_CHECK_SET_SUCCESS_RECEIPT_UPDATE_PENDING_RECHECK",
+    "merge_commit": "PENDING",
+    "main_readback": "PENDING",
+    "notion_writeback": "NOT_REQUIRED_NO_CURRENT_NOTION_POINTER_OR_AUTHORITY_CHANGE",
+    "remaining_blockers": [
+      "VERIFY_COS_BINDING_AFTER_NATURAL_RELOAD",
+      "MERGE_PR_542_AND_READ_BACK_MAIN"
+    ],
+    "final_state": "WORKING_REVALIDATE_LIVE_COS_BINDING"
+  },
+  "does_not_prove": [
+    "project_state",
+    "design_quality",
+    "field_truth",
+    "engineering_validity",
+    "user_validation",
+    "rights_clearance",
+    "candidate_skill_promotion",
+    "running_CoS_process_has_loaded_persisted_binding"
+  ]
+}
