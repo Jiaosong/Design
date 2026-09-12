@@ -1,0 +1,24 @@
+{
+  "training_id": "OLEANDER-TRN-2026-08-17-WORLD-DEPTH",
+  "topic": "World-anchored relative depth cues for route / exploration UI",
+  "truth_boundary": "relative depth only; no absolute distance, slope, GPS, or field geometry",
+  "cue_stack": [
+    "occlusion",
+    "relative scale",
+    "atmospheric contrast",
+    "texture gradient",
+    "convergence"
+  ],
+  "v1_issue": "critical mid-depth junction is too close to the occluding ridge and leader, weakening decision readability",
+  "v2_repairs": [
+    "move junction into a clear mid-depth aperture",
+    "reconnect route immediately after occlusion",
+    "shorten and separate the junction leader from the ridge silhouette"
+  ],
+  "local_artifact_sha256": {
+    "world_anchored_depth_v1.svg": "aa89ab13200e56a55079d2257c60a83abb80dd51bcb6a879b34da63493787279",
+    "world_anchored_depth_v1.png": "3e9f48e9a506b04969ea0af4c62f6ed73fb2174198f531dca2cdbf816ba8c0b8",
+    "world_anchored_depth_v2.svg": "d9a9305aeac0b32691ac1cafd9794998ccfd6dcf34d45c529e59b0e792a7f2cf",
+    "world_anchored_depth_v2.png": "0366b62b8410df7d439e54d1fe53a5ade7c08f71199470bfbce305beea5ef781"
+  }
+}

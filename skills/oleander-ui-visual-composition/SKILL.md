@@ -74,6 +74,22 @@ Use overlap, scale, focus, shadow, blur, edge contrast, and parallax only when t
 
 Do not use glass, glow, shadow, blur, or border as generic “premium” decoration.
 
+### 7.1 World-anchored depth cue gate
+Use this gate when a route, exploration layer, object marker, scene relation, or HUD claims to sit **in or across the world** rather than on a deliberately flat map/schematic.
+
+1. **Declare the spatial mode before styling.** Classify the composition as `SCREEN-SPACE`, `WORLD-ANCHORED`, `WORLD-SPACE`, or deliberately `FLAT / CARTOGRAPHIC`. Do not imply world anchoring when the design is only a flat overlay.
+2. **Use more than one truthful cue.** A world-anchored composition should normally combine at least two appropriate relative-depth cues such as occlusion, relative scale, perspective/convergence, texture gradient, atmospheric/edge contrast, or focus hierarchy. Shadow/glow alone do not establish spatial depth.
+3. **Depth cue ≠ distance proof.** Relative-depth cues may communicate near/mid/far order but may not be translated into metres, slope, GPS precision, verified geometry, or site truth without independent evidence.
+4. **Labels resolve to anchors.** Screen-space labels are allowed, but each claim-bearing label must resolve clearly to a world/object/route anchor through adjacency, leader, attachment, tracking, or another unambiguous relation. Repeated floating cards with no anchor default to `REVISE` when world cohesion is the intent.
+5. **Route continuity survives occlusion.** Occlusion may create depth, but it must not permanently hide a critical decision node, Return cue, safety state, or required route transition. Reappearance must be visually recoverable.
+6. **Scale and contrast follow depth role.** Near/mid/far markers should not all use identical size, line weight, edge contrast, and label treatment unless equal perceptual weight is intentional and justified.
+7. **World first, ornament second.** The first read should be world/route/object relationship. Decorative HUD glass, glow, scanlines, vignette, blur, or border cannot substitute for spatial construction.
+8. **Test at target views.** Reopen the actual rendered composition at intended viewport(s) and check near/mid/far separation, anchor readability, route continuity, and label collision. Small-screen recomposition may require different anchor placement while preserving the same route truth.
+9. **Static proof has limits.** A still frame can verify overlap, scale, texture, atmospheric contrast, and perspective cues. It cannot prove parallax, tracked anchoring, camera behavior, or runtime world-space attachment; those require runtime evidence.
+10. **Flat modes are exempt.** Do not force pseudo-3D depth into a plan, schematic, technical map, or intentionally flat cartographic view when flatness is semantically correct. The gate applies to claimed spatial embedding, not to all maps.
+
+Failure pattern: uniform line width + uniform marker scale + uniform contrast + repeated floating cards across supposed depth layers is a `VISUAL-WORLD-COHESION` defect, even if route data and UI code are correct.
+
 ### 8. Cards are not the default
 Use cards only when the content is genuinely a self-contained object. Do not solve weak composition by boxing every section.
 
@@ -109,7 +125,7 @@ Inspect:
 6. Review composition and crop.
 7. Review typography and density.
 8. Review color roles and contrast.
-9. Review layer/depth logic.
+9. Review layer/depth logic; invoke the world-anchored depth cue gate when spatial embedding is claimed.
 10. Review project specificity.
 11. Review responsive/edge states.
 12. Produce findings by severity; do not average away a weak first visual.
@@ -125,6 +141,8 @@ Inspect:
 - visual effect masks a usability or truth-boundary problem;
 - decorative UI reduces world/product readability;
 - responsive version is a scaled-down desktop composition;
+- world-anchored intent collapses into a flat overlay with no readable spatial relation;
+- occlusion used for depth hides a critical route decision, Return, or safety cue;
 - new version is visually weaker than a mature existing source without a justified tradeoff.
 
 ## Review format
@@ -138,6 +156,9 @@ COMPOSITION:
 TYPOGRAPHY:
 IMAGERY / CROP:
 COLOR / CONTRAST:
+SPATIAL MODE: SCREEN-SPACE / WORLD-ANCHORED / WORLD-SPACE / FLAT-CARTOGRAPHIC
+DEPTH CUES USED:
+ANCHOR / OCCLUSION / ROUTE CONTINUITY:
 DEPTH / LAYER LOGIC:
 PROJECT SPECIFICITY:
 RESPONSIVE / EDGE STATES:
@@ -147,4 +168,4 @@ INDEPENDENT VERDICT REQUIRED: YES
 ```
 
 ## Source lineage
-Distilled for OLEANDER from external visual-composition/front-end craft skills such as `ui-visual-composition` and `impeccable`, combined with OLEANDER's existing First Visual Gate, Existing Mature Design First, no-loss, and independent-review rules.
+Distilled for OLEANDER from external visual-composition/front-end craft skills such as `ui-visual-composition` and `impeccable`, combined with OLEANDER's existing First Visual Gate, Existing Mature Design First, no-loss, and independent-review rules. The world-anchored depth cue gate additionally uses established visual-perception depth cues only as relative perceptual guidance; it does not turn those cues into project geometry or field evidence.
