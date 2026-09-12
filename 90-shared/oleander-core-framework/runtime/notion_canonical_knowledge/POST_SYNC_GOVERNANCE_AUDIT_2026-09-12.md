@@ -1,6 +1,6 @@
 # OLEANDER Notion Post-Sync Governance Audit — 2026-09-12
 
-Status: **PHASE 1 ACTIVE / SHADOW PLAN / NO PERMANENT DELETE**
+Status: **PHASE 1 ACTIVE / BATCH 01–02 APPLIED + READ BACK / NO PERMANENT DELETE**
 
 This audit starts after the `1,184 / 1,184` corpus reconcile closed. It does not create a new knowledge authority. Notion remains canonical; D1/Vectorize are derivative readback surfaces.
 
@@ -88,6 +88,18 @@ Carrier 2:
 
 All three groups are already fail-closed outside accidental Current retrieval, so identity correction can be performed without deleting or merging content.
 
+### Batch 01 Applied Readback
+
+Applied through the bearer-protected governance route; each mutation returned `HTTP 200` and immediately ran normal `syncPage` readback.
+
+- Double Diamond historical carrier -> `LEGACY-MTH-DESIGN-DOUBLE-DIAMOND-001-DUP-20260824`; content preserved; `PROVENANCE / HISTORY_ONLY` unchanged.
+- Kano historical A06 carrier -> `LEGACY-SRC-KANO-1984-001-A06`; content preserved; `PROVENANCE / HISTORY_ONLY` unchanged.
+- External Skill Batch 2 typography/IA evidence -> explicit `PROVENANCE / HISTORY_ONLY`; Canonical ID retained.
+- External Skill Round 2 curation/product/OpenSCAD evidence -> `EVD-SKILL-EXTERNAL-ROUND2-DIGEST-20260828` + explicit `PROVENANCE / HISTORY_ONLY`.
+- D1 canonical-collision re-query after writeback: **0 duplicate non-empty Canonical ID groups**.
+
+The Round 2 page title still contains the former Batch2 ID prefix. That title mismatch is queued for the later Naming/Path pass; it is not silently rewritten during identity-only Batch 01.
+
 ## Batch 02 Queue — Zero-Body Candidates
 
 D1 readback found `13` active pages with zero indexed body chunks. `unknown_block_ids=[]` and `markdown_truncated=0`, but zero body is not automatically “delete/blank”: index carriers and relation-only records can be legitimate.
@@ -98,11 +110,47 @@ Priority review classes:
 - Ten evidence/case carriers across `EVD-HERITAGE-*` and `EVD-STATEEXHIBITION-*` -> **HOLD for source/content completeness review; no false-completion promotion**.
 - `PRAC-BJ-XJ01-20260812-01｜XJ01 CMF Foundation｜Business Practice` -> role is `INDEX`; **HOLD judgment until relation graph is read**.
 
-No Batch 02 mutation is authorized by this audit yet.
+### Batch 02 Live Readback
+
+All 13 candidates were re-read from live Notion through `/v1/governance-page`:
+
+- `markdown_length=0`
+- `markdown_truncated=false`
+- `unknown_block_ids=[]`
+
+Therefore they are genuinely body-empty pages, not a markdown recovery failure.
+
+The ten `EVD-HERITAGE-*` / `EVD-STATEEXHIBITION-*` pages retain real Source + Primary Domain relations, so they are evidence shells rather than disposable blanks. They were changed reversibly to:
+
+- `governance_state=HOLD`
+- `retrieval_space=PROVENANCE`
+- `search_eligibility=HISTORY_ONLY`
+- existing `relation_state=REVIEW` retained
+- body and relations preserved
+
+The two orphan design-history pages (`北欧设计：有机现代主义与人文温度`, `意大利设计：从理性主义到孟菲斯的造型革命`) have no body, Canonical ID, domain/source/replacement relations, role, or content level. They were contained as:
+
+- `governance_state=HOLD`
+- `relation_state=REVIEW`
+- `retrieval_space=PROVENANCE`
+- `search_eligibility=BLOCKED`
+
+Their immediate sync result is `EXCLUDED`; the pages remain in Notion and were **not deleted**.
+
+`PRAC-BJ-XJ01-20260812-01｜XJ01 CMF Foundation｜Business Practice` remains unchanged because `knowledge_role=INDEX`, `SUPPORT / SCOPED`, and an empty body can be legitimate for an index carrier. It requires relation/owner review before any mutation.
+
+## Post-Batch Readback
+
+- Duplicate non-empty Canonical IDs: `0 groups`.
+- Missing Canonical ID among active retrieval documents: `38`, all `effective_space=PROVENANCE`; there is no missing-ID `CURRENT` page.
+- Missing governance state: `69`.
+- Missing relation state: `61`.
+- Two fully orphan body-empty pages are now excluded from the derivative retrieval plane while retained canonically in Notion.
+- Large counts of null explicit Retrieval Space / Search Eligibility are **not** treated as bulk defects; many pages intentionally rely on authority fail-closed behavior and require content review before explicitization.
 
 ## Next Queue
 
-1. Apply and read back the three Batch 01 identity corrections.
-2. Re-query canonical collisions; expected count after Batch 01: `0` for these reviewed groups.
-3. Read Batch 02 relation/parent context before any lifecycle change.
-4. Then process missing Canonical ID / governance / relation candidates in small content-read batches, not bulk mutation.
+1. Batch 03: inspect the `38` remaining missing-Canonical pages in content-sized batches; all are currently PROVENANCE, so no emergency bulk mutation is required.
+2. Prioritize large legacy architecture/domain pages (`D01–D08`, `K03`, `K05`, source Axx pages) by content/authority rather than by title alone.
+3. Perform a separate Naming/Path pass after identity decisions; do not combine title cleanup with authority changes.
+4. Continue missing governance/relation candidates in small content-read batches, with mutation -> live readback -> D1 readback receipts.
