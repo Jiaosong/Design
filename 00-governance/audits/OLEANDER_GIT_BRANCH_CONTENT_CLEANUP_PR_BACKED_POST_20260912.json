@@ -1,0 +1,13 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CONTENT_PR_BACKED_CLEANUP_READBACK_v1",
+  "phase": "POST_DELETE",
+  "as_of": "2026-09-12T09:45:25.640386+00:00",
+  "repository": "Jiaosong/Design",
+  "origin_main_sha": "12a58ebdd55752acdc1876bc3344bb5035b3afba",
+  "pre_audit": "00-governance/audits/OLEANDER_GIT_BRANCH_CONTENT_CLEANUP_PR_BACKED_PRE_20260912.json",
+  "requested_delete": 144,
+  "delete_remaining": [],
+  "held_no_pr_provenance_expected": 39,
+  "held_no_pr_provenance_missing_unexpectedly": [],
+  "verdict": "PASS"
+}

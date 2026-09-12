@@ -1,0 +1,25 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_ABSORB_READBACK_v1",
+  "object": "C01_R03_DUAL_CODER_RELIABILITY_INPUT_INTEGRITY",
+  "as_of": "2026-09-12T09:42:00Z",
+  "repository": "Jiaosong/Design",
+  "pull_request": 545,
+  "merge_commit": "12a58ebdd55752acdc1876bc3344bb5035b3afba",
+  "destination": "05-cases/c01-yimai-guangdu/PRAC-C01-TRANS-ABC-001_R03-reliability-calculator.py",
+  "destination_blob_sha": "2d3dc6272d64735f1b475e043a2c08bab0635e8e",
+  "selected_source_blob_sha": "2d3dc6272d64735f1b475e043a2c08bab0635e8e",
+  "exact_blob_readback": true,
+  "main_push_ci": {
+    "anti_pollution": "SUCCESS",
+    "ai_governance_evals": "SUCCESS"
+  },
+  "deleted_source_and_competing_refs": [
+    "validation/c01-reliability-input-integrity-r01",
+    "c01-validation-reliability-fix",
+    "validation/c01-r03-input-integrity-r01",
+    "validation/c01-r03-reliability-integrity"
+  ],
+  "delete_remaining": [],
+  "final_disposition": "SUPERSEDED_REFS_CLOSED_AFTER_ABSORB_READBACK",
+  "verdict": "PASS"
+}
