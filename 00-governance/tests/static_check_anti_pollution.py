@@ -176,6 +176,15 @@ def main() -> None:
     check(not any(contract["knowledge_guard"].values()), "knowledge pollution allowances must remain false")
     check(contract["automation_guard"]["material_delta_required"] is True, "automation must require material delta")
     check(contract["automation_guard"]["repeat_run_should_update_existing_object"] is True, "repeat automation must update existing objects")
+    branch_guard = contract["git_branch_hygiene"]
+    check(branch_guard["branch_ref_is_current_authority"] is False, "branch refs must not become Current authority")
+    check(branch_guard["one_logical_object_one_active_work_branch_pr_frontier"] is True, "branch WIP frontier rule must remain enabled")
+    check(branch_guard["recurring_run_may_create_branch_without_material_delta"] is False, "recurring runs may not create no-delta branches")
+    check(branch_guard["bulk_delete_requires_audit_manifest"] is True, "bulk branch cleanup must preserve an audit manifest")
+    check(branch_guard["unmerged_branch_delete_by_age_only"] is False, "unmerged branches may not be deleted by age alone")
+    check(set(branch_guard["protect_merged_ref_when"]) >= {"OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"}, "merged-ref protection set incomplete")
+    check("A branch ref is not a Current authority" in policy, "branch authority boundary missing from policy")
+    check("OPEN PR BASE" in policy and "ACTIVE WORKTREE" in policy, "branch cleanup dependency protections missing from policy")
     enforce_consolidation_guard(contract)
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"

@@ -395,6 +395,12 @@ Record:
 
 `material_delta / branch / commits / pull_request / ci_state / merge_commit / main_readback / notion_writeback / remaining_blockers / final_state`.
 
+For material executions that use a Git work branch or pull request and reach closure, new receipts also record `branch_ref_disposition` prospectively:
+
+`branch / disposition / reason / dependency_checks / audit_receipt / readback`.
+
+After merge, the default is `DELETE_AFTER_MERGE` once ref→SHA provenance has been captured and the branch is not an open PR head, open PR base, active worktree, or explicit retained provenance/stack ref. An unmerged branch may not be deleted by age alone. Historical receipts are immutable and are not backfilled merely to satisfy this extension.
+
 Closure is allowed only after the Flow Completion Gate passes.
 
 A `CLOSED` checkpoint is a runtime consequence of valid closure; it does not itself prove closure.
