@@ -1,0 +1,41 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "drawing": "DRW-C04-C22-01",
+  "version": "v3.7",
+  "audit_type": "SOURCE_TOPOLOGY_AUDIT",
+  "primary_source": {
+    "id": "SRC-A01",
+    "title": "红花峰林景区手绘导览",
+    "publisher": "恩施大清江风景区官网",
+    "date": "2025-08-05",
+    "url": "https://www.esdqj.cn/upload/20250805/f8d50b8f0d5027.jpg",
+    "pixels": [1400, 912],
+    "sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c",
+    "role": "DIRECT SOURCE VISUAL / GEOMETRY CARRIER",
+    "supports": ["Qingjiang as a broad water-body separation between north and south bank", "north-bank service/arrival cluster", "cross-river cable relation", "south-bank terrain-following branching / loop walking network", "multiple named landscape / facility points attached to that network"],
+    "does_not_prove": ["survey coordinates", "georeferenced alignment", "metric path width", "distance", "slope", "steps", "accessibility", "safety", "capacity", "live operating state"]
+  },
+  "secondary_source": {
+    "id": "SRC-A02",
+    "title": "红花峰林景区全景导览",
+    "publisher": "恩施大清江风景区官网",
+    "date": "2025-08-05",
+    "url": "https://www.esdqj.cn/upload/20250805/d435f1a0b8bd13.jpg",
+    "pixels": [1216, 646],
+    "sha256": "8d237321e197656f0a9e8e0ea8d042a1492691153f6325baf547d037572e9c4",
+    "role": "CROSS-CHECK / RELATION LEVEL",
+    "supports": ["multi-branch / loop network", "macro landscape/facility relation"],
+    "does_not_prove": ["survey geometry", "field safety"]
+  },
+  "translation_decisions": [
+    {"id":"SA-01","phenomenon":"water body / two-bank relation","decision":"DO NOT REDRAW","carrier":"DIRECT SOURCE IMAGE","reason":"source already contains the correct relational surface; a new blue polygon would only introduce geometry drift"},
+    {"id":"SA-02","phenomenon":"cross-river cable","decision":"DO NOT REDRAW AS NEW ALIGNMENT","carrier":"DIRECT SOURCE IMAGE + EDITORIAL CALLOUT ONLY","reason":"source cable is visually explicit; leader may identify it but cannot replace/alter its alignment"},
+    {"id":"SA-03","phenomenon":"south-bank walking network","decision":"DO NOT TRACE NEW CENTERLINE IN v3.7","carrier":"DIRECT SOURCE IMAGE","reason":"hand-drawn paths already express the branching/loop topology; exact centerline extraction would falsely imply higher positional authority"},
+    {"id":"SA-04","phenomenon":"R2 visitor order","decision":"DRAW SEPARATELY","carrier":"SEQUENCE_BOUND DIAGRAM","reason":"route order is a research candidate, not a map-bound field direction"},
+    {"id":"SA-05","phenomenon":"R06 observation field","decision":"NO PLAN GEOMETRY","carrier":"SECTION / EXPERIENCE RELATION ONLY","reason":"source establishes observation context but not a measurable view cone or viewer footprint"},
+    {"id":"SA-06","phenomenon":"R13 compression / threshold","decision":"NO PLAN FOOTPRINT","carrier":"SECTION / SEQUENCE ONLY","reason":"compression-release is experiential/spatial-section logic; plan extent is not source-closed"},
+    {"id":"SA-07","phenomenon":"Return","decision":"NO NEW RETURN LINE","carrier":"SERVICE / SEQUENCE CLOSURE","reason":"return principle is operational/sequence logic; exact alignment/live state remains open"}
+  ],
+  "producer_state": "EXECUTED / DIRECT-SOURCE-BOUND / SELF-CHECKED / INDEPENDENT REVIEW PENDING",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

@@ -1,0 +1,34 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "DRW-C04-C22-01-LANDSCAPE-ATLAS",
+  "revision": "v3.4",
+  "state": "EXECUTED / SOURCE-BOUND / SELF-CHECKED / INDEPENDENT DESIGN REVIEW PENDING",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "material_delta": [
+    "landscape-specific line ontology",
+    "node semantics differentiated",
+    "four-layer landscape atlas",
+    "no unsupported terrain/hydrology/vegetation inference"
+  ],
+  "source_svg": {
+    "name": "C04_C22_01_LANDSCAPE_ANALYSIS_ATLAS_v3_4.svg",
+    "bytes": 13179,
+    "sha256": "1a2e725015b8eaacb1bbf4ddb1decad5cb16b9c481e43f2514b3e786c4455f70"
+  },
+  "local_render": {
+    "name": "C04_C22_01_LANDSCAPE_ANALYSIS_ATLAS_v3_4.png",
+    "bytes": 433350,
+    "sha256": "99ebba6bf686f22030612b1b8ba4526a262850e8e4bd4fceb9d4274ee5c5fdd5"
+  },
+  "does_not_prove": [
+    "survey geometry",
+    "hydraulic model",
+    "exact slopes",
+    "vegetation communities",
+    "exact return path",
+    "live operating state",
+    "Design KEEP",
+    "Field PASS",
+    "Promotion"
+  ]
+}

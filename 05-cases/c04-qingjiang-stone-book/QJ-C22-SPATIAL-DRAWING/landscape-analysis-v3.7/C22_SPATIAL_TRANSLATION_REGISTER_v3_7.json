@@ -1,0 +1,14 @@
+{
+  "version": "v3.7",
+  "protocol": "SPATIAL_TRANSLATION_PROTOCOL",
+  "rule": "When the first-party guide already carries the relation, direct source visual outranks a freshly invented schematic carrier.",
+  "entries": [
+    {"id":"TR7-01","system":"WATER","source":"SRC-A01","spatial_model":"SURFACE","translation_mode":"TRACE","registration_class":"BASE_RELATION_BOUND","graphic_carrier":"DIRECT_SOURCE_IMAGE","visual_encoding":"NONE / SOURCE ITSELF","status":"VALID"},
+    {"id":"TR7-02","system":"CABLE","source":"SRC-A01","spatial_model":"TRANSPORT CONNECTION","translation_mode":"TRACE","registration_class":"BASE_RELATION_BOUND","graphic_carrier":"DIRECT_SOURCE_IMAGE + EDITORIAL LEADER","visual_encoding":"CALLOUT ONLY","status":"VALID"},
+    {"id":"TR7-03","system":"WALKING NETWORK","source":"SRC-A01 + SRC-A02","spatial_model":"TERRAIN-FOLLOWING NETWORK","translation_mode":"TRACE","registration_class":"TOPOLOGY_BOUND","graphic_carrier":"DIRECT_SOURCE_IMAGE","visual_encoding":"NO REDRAW","status":"VALID"},
+    {"id":"TR7-04","system":"VISITOR SEQUENCE","source":"C04-REMOTE-SITE-RECON-v0.3","spatial_model":"ORDERED SEQUENCE","translation_mode":"SCHEMATIZE","registration_class":"SEQUENCE_BOUND","graphic_carrier":"VERTICAL SEQUENCE","visual_encoding":"SEPARATE FROM SOURCE IMAGE","status":"VALID"},
+    {"id":"TR7-05","system":"R06 VIEW","source":"SRC-A01 + C22 sections","spatial_model":"VIEWER / TARGET RELATION","translation_mode":"INFER","registration_class":"DIAGRAM_ONLY","graphic_carrier":"NONE ON PLAN","visual_encoding":"SECTION ONLY","status":"HOLD"},
+    {"id":"TR7-06","system":"R13 THRESHOLD","source":"C22 section/archetype","spatial_model":"TRANSITION SEQUENCE","translation_mode":"SCHEMATIZE","registration_class":"SEQUENCE_BOUND","graphic_carrier":"NONE ON PLAN","visual_encoding":"SECTION / SEQUENCE","status":"HOLD"},
+    {"id":"TR7-07","system":"RETURN","source":"project experience contract","spatial_model":"OPERATIONAL / SEQUENCE CLOSURE","translation_mode":"SCHEMATIZE","registration_class":"SEQUENCE_BOUND","graphic_carrier":"NO MAP LINE","visual_encoding":"RETURN LABEL + SEQUENCE CLOSURE","status":"VALID"}
+  ]
+}

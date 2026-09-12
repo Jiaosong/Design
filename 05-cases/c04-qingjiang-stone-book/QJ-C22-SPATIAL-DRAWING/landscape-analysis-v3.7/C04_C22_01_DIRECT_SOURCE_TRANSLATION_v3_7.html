@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C22 v3.7 Direct Source Translation</title>
+<style>
+:root{--paper:#f2efe6;--ink:#17231f;--muted:#6d746e;--line:#c9c5b9;--teal:#2f7f84;--rust:#984b3f;--ochre:#9b7a47}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+main{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:44px;padding:38px 44px 48px;max-width:1800px;margin:auto}
+header{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:30px}
+.k{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--muted)} h1{font-family:"Noto Serif CJK SC","Songti SC",serif;font-size:38px;line-height:1.2;margin:18px 0 0}
+.status{font-size:10px;color:var(--muted);text-align:right;line-height:1.7}
+figure{margin:0;position:relative;align-self:start} .map{background:#faf8f2;border:1px solid var(--line);overflow:hidden}
+.map img{display:block;width:100%;height:auto}
+.map .overlay{position:absolute;inset:0;pointer-events:none}
+.call{position:absolute;font-size:10px;font-weight:800;letter-spacing:.08em;background:rgba(244,241,232,.93);padding:7px 9px;border-left:2px solid var(--ink);box-shadow:0 0 0 1px rgba(23,35,31,.08)}
+.call b{display:block;font-size:13px;letter-spacing:0;margin-bottom:3px}
+.c1{left:5%;top:7%} .c2{left:22%;top:28%;border-color:var(--teal)} .c3{left:52%;top:62%;border-color:var(--ochre)} .c4{right:3%;bottom:8%;border-color:var(--rust)}
+figcaption{font-size:10px;color:var(--muted);padding-top:10px;line-height:1.6}
+.rail{padding-top:2px} .block{border-top:1px solid var(--line);padding:25px 0} .block:first-of-type{margin-top:18px}
+.tag{font-size:10px;letter-spacing:.15em;font-weight:800;color:var(--teal)} .warn .tag{color:var(--rust)}
+h2{font-family:"Noto Serif CJK SC","Songti SC",serif;font-size:21px;line-height:1.4;margin:12px 0 10px}
+p,li{font-size:12px;line-height:1.75;color:var(--muted)} ul{margin:10px 0 0;padding-left:18px}
+.seq{margin-top:12px;padding-left:17px;border-left:1px solid var(--ink)} .seq div{position:relative;padding:0 0 17px 13px;font-size:11px;line-height:1.45}
+.seq div:before{content:"";position:absolute;left:-21px;top:4px;width:7px;height:7px;border:1px solid var(--ink);border-radius:50%;background:var(--paper)}
+.seq .return:before{background:var(--teal);border-color:var(--teal)}
+.boundary{font-size:10.5px;line-height:1.7;color:var(--muted)}
+@media(max-width:980px){main{grid-template-columns:1fr;padding:20px} header{display:block} .status{text-align:left;margin-top:12px}}
+</style>
+</head>
+<body><main>
+<header>
+<div><div class="k">OLEANDER / C04 / C22 · DIRECT-SOURCE TRANSLATION · v3.7</div>
+<h1>不是“重新画一张导览图”，<br>而是让第一方图承担空间事实。</h1></div>
+<div class="status">SOURCE-GROUNDED RELATION / NTS<br>FIELD OBSERVED=0 · FIELD MEASURED=0<br>G1F HOLD · NO_PROMOTION</div>
+</header>
+<figure>
+<div class="map">
+<img src="https://www.esdqj.cn/upload/20250805/f8d50b8f0d5027.jpg" alt="恩施大清江官网 2025-08-05 红花峰林景区手绘导览">
+<div class="overlay">
+<div class="call c1"><b>01 北岸服务 / 到达</b>只识别源图已有的服务聚落关系</div>
+<div class="call c2"><b>02 跨江索道</b>源图本身定义 alignment；不重画新索道线</div>
+<div class="call c3"><b>03 南岸游步网络</b>读分支 / 回环；不抽成一条“主路线”</div>
+<div class="call c4"><b>04 内容与设施</b>节点挂接于真实网络；不等于 route junction</div>
+</div>
+</div>
+<figcaption>PRIMARY SOURCE / 红花峰林景区手绘导览 / 恩施大清江风景区官网 / 2025-08-05 / 1400×912 / SHA256 5aed…483c<br>Editorial callouts identify source-visible zones only; they do not replace the underlying route, cable, river or node geometry.</figcaption>
+</figure>
+<aside class="rail">
+<section class="block"><div class="tag">TRANSLATION RULE</div><h2>能直接使用源图，就不要再发明一个“更像分析图”的几何。</h2><p>水体、索道、南岸分支/回环路径已经由第一方导览承担关系表达。v3.7 的新矢量只负责指出“读什么”，不重新定义“它在哪里”。</p></section>
+<section class="block"><div class="tag">VALID ABSTRACTION</div><h2>R2 只能是 Sequence，不能叠成伪地图。</h2><div class="seq"><div>索道上站 / START</div><div>上部进入与脊线阅读</div><div>休息 / 分支 / 红花石林可选阅读</div><div>河谷与文化—地貌连续阅读</div><div>下部步行</div><div>一线天 / NATURAL CLOSURE</div><div class="return">RETURN / 回索道</div></div></section>
+<section class="block warn"><div class="tag">DO NOT DRAW</div><h2>这五种东西在当前证据下没有资格变成地图几何。</h2><ul><li>重新手画的“主路线中心线”</li><li>R06 精确视锥 / 视域面</li><li>R13 压缩阈值 footprint</li><li>地图上的独立 Return 曲线</li><li>把 R2 顺序箭头叠到源图路径上</li></ul></section>
+<section class="block"><div class="tag">TRUTH BOUNDARY</div><div class="boundary">DIRECT SOURCE ≠ SURVEY<br>导览可以支持两岸、索道、分支/回环网络和设施关系；不能支持坐标、距离、坡度、路宽、安全、容量或当日开放。</div></section>
+</aside>
+</main></body></html>

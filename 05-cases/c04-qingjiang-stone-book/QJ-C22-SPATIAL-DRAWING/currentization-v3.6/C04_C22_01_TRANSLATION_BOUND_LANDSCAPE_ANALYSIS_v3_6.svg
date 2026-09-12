@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="841mm" height="594mm" viewBox="0 0 2384 1684">
+<defs>
+<style>
+.paper{fill:#F4F1E8} .ink{fill:#17231F} .muted{fill:#68716C}
+.rule{stroke:#C9C5B8;stroke-width:1.3}
+.river{fill:#AFCBC7;stroke:#5A9292;stroke-width:2.5}
+.net{fill:none;stroke:#17231F;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.net2{fill:none;stroke:#69716C;stroke-width:2.8;stroke-dasharray:10 9;stroke-linecap:round}
+.road{fill:none;stroke:#17231F;stroke-width:6.5;stroke-linecap:round}
+.boat{fill:none;stroke:#4D8D92;stroke-width:4;stroke-dasharray:13 10;stroke-linecap:round}
+.cable{fill:none;stroke:#17231F;stroke-width:3.8}
+.node{fill:#F4F1E8;stroke:#17231F;stroke-width:2} .content{fill:#F4F1E8;stroke:#17231F;stroke-width:1.8}
+.seq{stroke:#17231F;stroke-width:2.3;fill:none} .seqOpt{stroke:#A98C58;stroke-width:2;fill:none;stroke-dasharray:7 6}
+.h1{font-family:'Noto Serif CJK SC';font-size:46px;font-weight:700;fill:#17231F}
+.h2{font-family:'Noto Sans CJK SC';font-size:21px;font-weight:700;fill:#17231F}
+.cap{font-family:'Noto Sans CJK SC';font-size:13px;font-weight:700;letter-spacing:1.6px;fill:#68716C}
+.body{font-family:'Noto Sans CJK SC';font-size:13px;font-weight:500;fill:#5D6762}
+.small{font-family:'Noto Sans CJK SC';font-size:11px;font-weight:500;fill:#737A75}
+.nodeText{font-family:'Noto Sans CJK SC';font-size:11px;font-weight:700;fill:#17231F}
+</style>
+</defs>
+<rect class="paper" width="2384" height="1684"/>
+<line x1="72" y1="62" x2="2312" y2="62" class="rule"/>
+<text x="72" y="108" class="cap">OLEANDER / C04 / C22 · SPATIAL TRANSLATION GATE · v3.6</text>
+<text x="72" y="174" class="h1">清江游程与景观关系｜只画有依据的空间 carrier</text>
+<text x="72" y="214" class="body">SOURCE / PHENOMENON → SPATIAL MODEL → GEOMETRIC ABSTRACTION → GRAPHIC CARRIER</text>
+<text x="2312" y="106" text-anchor="end" class="small">FIELD OBSERVED=0 · FIELD MEASURED=0 · G1F HOLD · NTS</text>
+
+<text x="80" y="292" class="cap">01 / SOURCE-BOUND RELATIONAL BASE</text>
+<text x="80" y="332" class="h2">关系底图：直接复用 C22 v3.0 矢量 carrier，不再重新“画一条像路线的线”</text>
+<text x="80" y="360" class="small">TRACE / BASE_RELATION_BOUND + TOPOLOGY_BOUND · NOT SURVEY / NOT GEOGRAPHIC POSITION</text>
+<rect x="78" y="392" width="1455" height="885" rx="18" fill="#F8F6EF" stroke="#D6D1C4" stroke-width="1.2"/>
+<g transform="translate(16 267) scale(.66)">
+  <path d="M 961.02 245.91 C 1013.17 447.05 938.68 670.54 1005.72 871.69 C 1065.32 1050.48 990.82 1273.98 1072.77 1534.72 L 1288.82 1534.72 C 1229.22 1288.88 1318.61 1057.93 1259.02 856.79 C 1199.42 640.75 1303.71 439.6 1244.12 245.91 L 961.02 245.91" class="river"/>
+  <path d="M 141.55 625.84 C 268.19 610.95 342.69 581.15 476.79 603.5 C 610.88 625.84 677.93 640.75 752.43 588.6" class="road"/>
+  <path d="M 149 1043.04 C 365.04 1028.14 536.39 983.44 767.33 931.29" class="boat"/>
+  <path d="M 777.76 536.45 L 1501.88 372.55" class="cable"/>
+  <path d="M 777.76 554.33 L 1501.88 390.43" class="cable"/>
+  <path d="M 1512.31 447.05 C 1579.36 529 1601.71 633.3 1653.85 715.24 C 1728.35 834.44 1877.35 774.84 1966.75 856.79 C 2071.05 953.64 2138.09 1072.83 2100.84 1221.83" class="net"/><path d="M 1653.85 715.24 C 1787.95 625.84 1922.05 521.55 2100.84 566.25" class="net"/><path d="M 1758.15 774.84 C 1691.1 908.94 1676.21 1028.14 1773.06 1132.43 C 1862.45 1229.28 2011.44 1259.08 2100.84 1221.83" class="net"/><path d="M 1810.3 663.09 C 1922.05 737.59 2041.25 774.84 2160.44 745.04" class="net"/><path d="M 1773.06 1132.43 C 1638.96 1199.48 1549.56 1162.23 1512.31 1057.93 C 1482.51 968.53 1534.66 879.14 1653.85 819.54" class="net"/><path d="M 1653.85 715.24 C 1624.06 640.75 1594.26 581.15 1564.46 521.55" class="net2"/><path d="M 1966.75 856.79 C 2033.8 826.99 2093.4 819.54 2160.44 834.44" class="net2"/><path d="M 2100.84 1221.83 C 2011.44 1311.23 1862.45 1341.03 1758.15 1273.98" class="net2"/>
+  <rect x="506.6" y="745.0" width="223.5" height="149" rx="20" fill="#F4F1E8" stroke="#17231F" stroke-width="2.4"/>
+  <rect x="640.7" y="491.8" width="141.5" height="122.1" rx="18" fill="#F4F1E8" stroke="#17231F" stroke-width="2.4"/>
+  <rect x="1430.4" y="335.3" width="163.9" height="111.8" rx="18" fill="#F4F1E8" stroke="#17231F" stroke-width="2.4"/>
+  <text x="618" y="810" text-anchor="middle" class="nodeText" font-size="16">A1 / 服务</text>
+  <text x="711" y="555" text-anchor="middle" class="nodeText" font-size="16">A2 / 索道北站</text>
+  <text x="1512" y="395" text-anchor="middle" class="nodeText" font-size="16">A3 / 索道南站</text>
+  <circle cx="1609.15" cy="603.5" r="19" class="content"/><text x="1609.15" y="607.5" text-anchor="middle" class="nodeText" font-size="13">R02</text><circle cx="2063.6" cy="573.7" r="19" class="content"/><text x="2063.6" y="577.7" text-anchor="middle" class="nodeText" font-size="13">R05</text><circle cx="1855.0" cy="767.4" r="19" class="content"/><text x="1855.0" y="771.4" text-anchor="middle" class="nodeText" font-size="13">R06</text><circle cx="2130.65" cy="827.0" r="19" class="content"/><text x="2130.65" y="831.0" text-anchor="middle" class="nodeText" font-size="13">R07</text><circle cx="2011.45" cy="1028.15" r="19" class="content"/><text x="2011.45" y="1032.15" text-anchor="middle" class="nodeText" font-size="13">R09</text><circle cx="1765.6" cy="1132.4" r="19" class="content"/><text x="1765.6" y="1136.4" text-anchor="middle" class="nodeText" font-size="13">R12</text><circle cx="2093.4" cy="1221.8" r="19" class="content"/><text x="2093.4" y="1225.8" text-anchor="middle" class="nodeText" font-size="13">R13</text>
+</g>
+<g transform="translate(105 1206)">
+  <line x1="0" y1="0" x2="58" y2="0" class="net"/><text x="74" y="5" class="small">步行网络 / topology-bound</text>
+  <line x1="306" y1="0" x2="364" y2="0" class="cable"/><text x="380" y="5" class="small">索道 / bank-to-bank relation</text>
+  <line x1="650" y1="0" x2="708" y2="0" class="boat"/><text x="724" y="5" class="small">水上到达 / conditional relation</text>
+</g>
+<text x="98" y="1318" class="cap">PRESERVED</text>
+<text x="98" y="1348" class="body">两岸关系 · 索道跨江 · 南岸多分支/回环 topology · Rxx 与网络的关系性挂接</text>
+<text x="98" y="1395" class="cap">RELAXED / NOT CLAIMED</text>
+<text x="98" y="1425" class="body">真实坐标 · 曲线形状 · 距离 · 坡度 · 路宽 · 安全 · GPS · 实时开放状态</text>
+
+<line x1="1586" y1="274" x2="1586" y2="1510" class="rule"/>
+<text x="1640" y="292" class="cap">02 / JOURNEY SEQUENCE · NOT A MAP</text>
+<text x="1640" y="332" class="h2">R2 候选只保留“顺序”，不再伪装成地理路线</text>
+<text x="1640" y="360" class="small">SCHEMATIZE / SEQUENCE_BOUND · grouped for reading · direction/version conflict remains</text>
+
+<g>
+  <line x1="1684" y1="430" x2="1684" y2="1196" class="seq"/>
+  <circle cx="1684" cy="440" r="9" class="node"/><text x="1712" y="445" class="nodeText">S0 索道上站 / START + RETURN</text>
+  <circle cx="1684" cy="548" r="9" class="node"/><text x="1712" y="553" class="nodeText">S1 上部进入 / 华中第一藤 / 脊线阅读</text>
+  <circle cx="1684" cy="656" r="9" class="node"/><text x="1712" y="661" class="nodeText">S2 休息与分支 / 游客休息区 / 母子峰</text>
+  <circle cx="1684" cy="764" r="9" class="node"/><text x="1712" y="769" class="nodeText">S3 河谷地貌阅读 / R06 附着，不画视锥</text>
+  <circle cx="1684" cy="872" r="9" class="node"/><text x="1712" y="877" class="nodeText">S4 文化—地貌连续阅读 / 仓禀峰—文山天书</text>
+  <circle cx="1684" cy="980" r="9" class="node"/><text x="1712" y="985" class="nodeText">S5 下部连续步行 / 女神峰—绝壁天书—仙灵洞</text>
+  <circle cx="1684" cy="1088" r="9" class="node"/><text x="1712" y="1093" class="nodeText">S6 廪君峰 → 一线天 / NATURAL CLOSURE</text>
+  <circle cx="1684" cy="1196" r="9" fill="#4D8D92"/><text x="1712" y="1201" class="nodeText">RETURN / 同一游程闭合，非新增物理路径</text>
+  <path d="M1684 656 H1618 V600" class="seqOpt"/>
+  <circle cx="1618" cy="590" r="7" fill="#F4F1E8" stroke="#A98C58" stroke-width="2"/>
+  <text x="1605" y="566" text-anchor="end" class="small" fill="#8E7344">红花石林 / optional reading spur</text>
+</g>
+
+<text x="1640" y="1288" class="cap">03 / REMOVED BY TRANSLATION GATE</text>
+<text x="1640" y="1326" class="body">× v3.5 路线宽色带包络</text>
+<text x="1640" y="1358" class="body">× 地图上的独立 RETURN 虚线</text>
+<text x="1640" y="1390" class="body">× R06 计划视锥 / viewer field</text>
+<text x="1640" y="1422" class="body">× R13 计划阈值面 / compression footprint</text>
+<text x="1640" y="1454" class="body">× R2 方向箭头叠在关系底图上</text>
+
+<line x1="72" y1="1540" x2="2312" y2="1540" class="rule"/>
+<text x="72" y="1580" class="small">SOURCE: C04_QJ-C22_SPATIAL_DRAWING_PACKAGE_v3.0 p.2 vector carriers + current source-binding register</text>
+<text x="72" y="1610" class="small">Translation register: C22_SPATIAL_TRANSLATION_REGISTER_v3_6.json · no carrier may upgrade its registration class by styling.</text>
+<text x="2312" y="1580" text-anchor="end" class="small">EXECUTED / TRANSLATION-BOUND / SELF-CHECKED</text>
+<text x="2312" y="1610" text-anchor="end" class="small">INDEPENDENT DESIGN REVIEW PENDING / NO KEEP</text>
+</svg>
