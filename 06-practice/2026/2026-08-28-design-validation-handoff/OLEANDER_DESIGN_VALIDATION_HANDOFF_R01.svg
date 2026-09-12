@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / DESIGN → VALIDATION HANDOFF</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="46" font-weight="700" fill="#18211F">清晰 handoff 不是“请帮我验证”；而是把设计意图、未知项与返回路径对齐</text>
+<text x="88" y="170" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="17" fill="#69706D">synthetic threshold interface · NTS · no engineering / code / field claim · training-only</text>
+
+<!-- E/I/A/D -->
+<rect x="88" y="210" width="1744" height="108" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC,Arial,sans-serif">
+<text x="118" y="244" font-size="12" font-weight="700" fill="#8B5D46">EVIDENCE</text>
+<text x="118" y="272" font-size="14" fill="#29332F">设计需要“进入前完成方向判断”的空间关系。</text>
+<text x="540" y="244" font-size="12" font-weight="700" fill="#7D654B">INFERENCE</text>
+<text x="540" y="272" font-size="14" fill="#29332F">门槛宽度、净空与构造可能影响该关系能否成立。</text>
+<text x="1110" y="244" font-size="12" font-weight="700" fill="#7D654B">ASSUMPTION</text>
+<text x="1110" y="272" font-size="14" fill="#29332F">当前几何为设计级 NTS，不拥有工程尺寸权威。</text>
+<text x="1510" y="244" font-size="12" font-weight="700" fill="#315D57">DECISION</text>
+<text x="1510" y="272" font-size="14" fill="#29332F">发出 bounded Validation Handoff。</text>
+</g>
+
+<!-- A -->
+<rect x="88" y="346" width="532" height="550" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="390" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · GENERIC CHECKLIST HANDOFF</text>
+<text x="120" y="420" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">“请验证宽度 / 安全 / 结构 / 可施工性。”</text>
+<rect x="122" y="468" width="466" height="218" rx="14" fill="#F7F3EA"/>
+<path d="M150 610 H280 C340 610 380 550 520 526" fill="none" stroke="#D5CFC3" stroke-width="40" stroke-linecap="round"/>
+<path d="M150 610 H280 C340 610 380 670 520 700" fill="none" stroke="#D5CFC3" stroke-width="40" stroke-linecap="round"/>
+<path d="M292 506 L350 538 M292 714 L350 682" stroke="#727A76" stroke-width="18" stroke-linecap="round"/>
+<text x="138" y="500" font-family="Arial,sans-serif" font-size="11" fill="#59615F">“CURRENT DESIGN”</text>
+<text x="120" y="728" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">□ 宽度是否合理？</text>
+<text x="120" y="754" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">□ 是否安全？</text>
+<text x="120" y="780" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="13" fill="#7D4A3A">□ 是否可施工？</text>
+<text x="120" y="818" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#7D4A3A">DELETE TITLES → validator 不知道必须保住哪条空间关系。</text>
+<text x="120" y="846" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#7D4A3A">FAIL RETURN → “不通过”无法定位回哪一项设计修复。</text>
+
+<!-- B -->
+<rect x="650" y="346" width="680" height="550" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="682" y="390" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP CANDIDATE · TRACEABLE HANDOFF</text>
+<text x="682" y="420" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">设计定义“必须保留什么”；验证方定义“如何证明”。</text>
+<rect x="682" y="458" width="290" height="258" rx="14" fill="#F7F3EA"/>
+<text x="702" y="488" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#315D57">OBJECT · TRN-HO-01 / DESIGN MASTER D01</text>
+<path d="M710 620 H790 C830 612 866 576 932 550" fill="none" stroke="#D5CFC3" stroke-width="36" stroke-linecap="round"/>
+<path d="M710 620 H790 C830 628 866 664 932 690" fill="none" stroke="#D5CFC3" stroke-width="36" stroke-linecap="round"/>
+<path d="M800 550 L842 572 M800 690 L842 668" stroke="#727A76" stroke-width="16" stroke-linecap="round"/>
+<line x1="786" y1="584" x2="786" y2="656" stroke="#315D57" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="786" cy="620" r="7" fill="#315D57"/>
+<rect x="700" y="662" width="254" height="46" rx="8" fill="#EEF1EA" stroke="#BFC7C1" stroke-width="1"/>
+<text x="712" y="681" font-family="Arial,sans-serif" font-size="11.5" font-weight="700" fill="#315D57">I1 · CHOICE BEFORE THRESHOLD</text>
+<text x="712" y="699" font-family="Arial,sans-serif" font-size="11.5" font-weight="700" fill="#315D57">I2 · BRANCHES REMAIN LEGIBLE</text>
+<rect x="992" y="458" width="306" height="258" rx="14" fill="#F7F3EA"/>
+<text x="1012" y="488" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#315D57">VALIDATION QUESTIONS</text>
+<text x="1012" y="520" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12.5">V1 · 当前净空/宽度是否使 I1 失效？</text>
+<text x="1012" y="548" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12.5">V2 · 构造介入是否遮挡 I2？</text>
+<text x="1012" y="590" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#8A6941">VALIDATOR OWNS</text>
+<text x="1012" y="616" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#59615F">method / code / calculation / measurement</text>
+<text x="1012" y="650" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#315D57">RETURN PAYLOAD</text>
+<text x="1012" y="676" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PASS / REVISE / HOLD + evidence ref + affected invariant</text>
+<path d="M1145 716 V748 H846 V716" fill="none" stroke="#315D57" stroke-width="2.5"/>
+<text x="864" y="770" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#315D57">REVISE → 只重开受影响 relation；HOLD → 不伪造 closure。</text>
+<rect x="682" y="802" width="616" height="56" rx="12" fill="#F7F3EA"/>
+<text x="702" y="835" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#59615F">PARTIAL-RESULT ATTACK · V1=PASS, V2=HOLD → Object 保持 HOLD；Design 不自行补写构造结论。</text>
+
+<!-- C -->
+<rect x="1360" y="346" width="472" height="550" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1392" y="390" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · AUTHORITY OVERREACH</text>
+<text x="1392" y="420" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#59615F">handoff 把设计假设写成工程指令。</text>
+<rect x="1392" y="466" width="408" height="252" rx="14" fill="#F7F3EA"/>
+<text x="1414" y="500" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" font-weight="700" fill="#8A6941">“请按以下方法验证”</text>
+<text x="1414" y="534" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12">• 固定某材料 / 某连接件</text>
+<text x="1414" y="562" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12">• 使用指定计算方法</text>
+<text x="1414" y="590" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12">• 必须得到 PASS</text>
+<text x="1414" y="632" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#7D4A3A">OWNER ATTACK → 删除这些工程指令后，</text>
+<text x="1414" y="654" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#7D4A3A">handoff 几乎没有剩下设计 invariant。</text>
+<text x="1392" y="770" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#8A6941">ROOT CAUSE · validation method 被设计方预设，</text>
+<text x="1392" y="794" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="12" fill="#8A6941">同时 design intent 又没有被结构化传递。</text>
+<rect x="1392" y="822" width="408" height="40" rx="10" fill="#F7F3EA"/>
+<text x="1412" y="847" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="11.5" fill="#59615F">REPAIR · handoff 交 relation / unknown / return contract。</text>
+
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="20" font-weight="700" fill="#18211F">PROMOTION TEST</text>
+<text x="290" y="992" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="16" fill="#59615F">A validator must know exactly what relation is at risk, while retaining authority over the validation method; a failed result must point back to a bounded design repair.</text>
+<text x="88" y="1034" font-family="Noto Sans CJK SC,Arial,sans-serif" font-size="14" fill="#747B78">BOUNDARY · synthetic design handoff only; no engineering method, code compliance, dimension, structure, accessibility or field truth is proven.</text>
+</svg>
