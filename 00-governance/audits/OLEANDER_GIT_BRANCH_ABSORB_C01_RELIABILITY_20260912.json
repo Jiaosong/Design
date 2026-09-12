@@ -1,0 +1,64 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_ABSORB_RECEIPT_v1",
+  "object": "C01_R03_DUAL_CODER_RELIABILITY_INPUT_INTEGRITY",
+  "as_of": "2026-09-12T09:39:00Z",
+  "repository": "Jiaosong/Design",
+  "base_main_sha": "586cc8b9207a409a894af4943cc93ac7181b5dfb",
+  "source": {
+    "branch": "validation/c01-reliability-input-integrity-r01",
+    "tip_sha": "2690a89474f096b6dff61ec5b0114d5c01bdf88f",
+    "pre_disposition": "ABSORB",
+    "selection_reason": "Strongest bounded implementation among four one-file C01 reliability hardening variants: validates the required record_id header, blank IDs, duplicate IDs, exact coder ID-set equality, and reports per-metric coverage without changing the reliability formulas."
+  },
+  "destination": {
+    "path": "05-cases/c01-yimai-guangdu/PRAC-C01-TRANS-ABC-001_R03-reliability-calculator.py",
+    "carrier": "existing Current C01 R03 reliability calculator",
+    "whole_branch_merge": false,
+    "truth_or_promotion_upgrade": false
+  },
+  "absorbed_semantics": [
+    "required_record_id_column_fail_closed",
+    "blank_record_id_fail_closed",
+    "duplicate_record_id_fail_closed",
+    "coder_record_id_set_equality_fail_closed",
+    "coverage_n_over_total_reporting"
+  ],
+  "validation": {
+    "valid_matching_id_set": "PASS_EXIT_0",
+    "duplicate_record_id": "EXPECTED_FAIL_EXIT_1",
+    "coder_id_set_mismatch": "EXPECTED_FAIL_EXIT_1",
+    "missing_record_id_column": "EXPECTED_FAIL_EXIT_1",
+    "formula_scope_changed": false
+  },
+  "competing_variants_after_destination_merge": [
+    {
+      "branch": "validation/c01-reliability-input-integrity-r01",
+      "tip_sha": "2690a89474f096b6dff61ec5b0114d5c01bdf88f",
+      "from": "ABSORB",
+      "to": "SUPERSEDED",
+      "reason": "Selected implementation is absorbed into the existing Current calculator."
+    },
+    {
+      "branch": "c01-validation-reliability-fix",
+      "tip_sha": "e6058c2248010f70a4a8812a2fc8f193979d18b8",
+      "from": "REVIEW",
+      "to": "SUPERSEDED",
+      "reason": "Competing implementation provides the same core fail-closed ID-set and coverage semantics but lacks the selected branch's explicit required-header validation."
+    },
+    {
+      "branch": "validation/c01-r03-input-integrity-r01",
+      "tip_sha": "814b2ea57e8af5a7cf494253106a7aeadd1b8c87",
+      "from": "REVIEW",
+      "to": "SUPERSEDED",
+      "reason": "Competing one-file input-integrity implementation is replaced by the selected stricter bounded variant."
+    },
+    {
+      "branch": "validation/c01-r03-reliability-integrity",
+      "tip_sha": "28765d9501cabd8424b30bba2dcb580c00da8be0",
+      "from": "REVIEW",
+      "to": "SUPERSEDED",
+      "reason": "Competing one-file reliability-integrity implementation is replaced by the selected stricter bounded variant."
+    }
+  ],
+  "closure_gate": "Destination must merge through PR, applicable CI must pass, main must be read back, then the four source/variant refs may be cleaned if no new dependency appears."
+}
