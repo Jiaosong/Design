@@ -28,9 +28,9 @@
 
 ### Notion Canonical Knowledge Runtime + Post-Sync Governance
 - Path: D:\\Desgin\\.worktrees\\notion-canonical-knowledge-v01
-- Branch: agent/oleander-notion-canonical-knowledge-v01-20260911
-- HEAD: ea1bbb1d3a34ac9e505f1bc80d0f24f3e089aacc
-- Remote: origin/agent/oleander-notion-canonical-knowledge-v01-20260911
+- Branch: agent/oleander-notion-d04-academic-20260912
+- HEAD: 808c46af75528f10a424295593cfd2edb9f28eaf
+- Remote: origin/agent/oleander-notion-d04-academic-20260912
 - Runtime PR: #521 MERGED -> `ec6bd93aceacb1303aa2729f22c9fe964463f702`
 - Receipt closure PR: #522 MERGED -> `45cadb2fdbf2e9c70152ed363b0d03b2d462840e`
 - Scheduler resilience PR: #523 MERGED -> `1156086864df4bd5b34898a341f892f6c1484099`
@@ -38,6 +38,7 @@
 - Final corpus closure PR: #525 MERGED -> `f5f35b9929beb1d9c4b1297050a06586423527b9`
 - Post-sync governance PR: #526 MERGED -> `0a58055f9539ea05387f80ad6cd4742cee94595e`
 - Reader + Academic migration PR: #527 MERGED -> `1f699762978515a89d6dafd8e75de9e042126f11`
+- D04 academic migration PR: #528 MERGED -> `5dfb458ae70d45d015ab34ee0ef519cb5c4715eb`
 - Upstream delta: 0 ahead / 0 behind
 - CI: AI Governance PASS / Anti-Pollution PASS / Vercel PASS
 - Cloudflare Worker: `5fe7321c-5503-45ca-9dd2-7779f8f4e7b2`
@@ -54,11 +55,12 @@
 - First academic THEORY migration: `KN-ARCH-URBAN-REGEN-001｜城市更新：空间改善、产权治理与反置换机制` is `CURRENT / DEFAULT / ACTIVE / VALID`; old `D01｜城市更新与社区营造` is preserved as `LEGACY-KN-ARCH-URBAN-REGEN-D01-20260807 / PROVENANCE / HISTORY_ONLY` with reciprocal replacement relation.
 - Research METHOD owner: `MTH-ARCH-RESEARCH-001｜建筑研究方法：问题、证据、有效性与伦理` is `CURRENT / DEFAULT / ACTIVE / VALID`; old D08 preserved as `LEGACY-MTH-ARCH-RESEARCH-D08-20260730 / PROVENANCE / HISTORY_ONLY`.
 - Evidence-governance METHOD owner: `MTH-ARCH-EVIDENCE-GOV-001｜建筑证据治理协议：权威、适用性、版本与冲突` is `CURRENT / DEFAULT / ACTIVE / VALID`; old K03 preserved as `LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824 / PROVENANCE / HISTORY_ONLY`. Stable protocol is now separated from dated standards/product/supplier/price update logs.
-- Current D1 readback after additive Phase 2 migration: `1,188 document rows / 1,186 active / 2 excluded`; duplicate non-empty Canonical ID groups remain `0`. The two excluded rows are the previously contained orphan empty pages and remain in Notion.
-- Remaining rewrite queue: `D04 -> D06 -> D07 -> D03 -> D05 -> D02`; `K05` is navigation/IA cleanup only, not a paper. Each migration remains additive and readback-gated.
+- D04 academic THEORY migration: `KN-ARCH-DIGITAL-INFO-001｜BIM 与数字建造：信息需求、开放交换与可验证工作流` is `CURRENT / DEFAULT / ACTIVE / VALID`, with live-Notion review of testable thesis, claim-level sources, rival/counterevidence, method boundary and independent Limitations before promotion. Old `D04｜数字设计、BIM与智能建造` is fully retained as `LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID`, linked reciprocally to the Current replacement.
+- Current D1 readback after additive D04 migration: `1,189 document rows / 1,187 active / 2 excluded`; duplicate non-empty Canonical ID groups remain `0`. New D04 Current is `INDEXED / 38 chunks / not truncated`; old D04 remains `INDEXED / 57 chunks / not truncated`. The two excluded rows are the previously contained orphan empty pages and remain in Notion.
+- Remaining rewrite queue: `D06 -> D07 -> D03 -> D05 -> D02`; `K05` is navigation/IA cleanup only, not a paper. Each migration remains additive and readback-gated.
 
 ## Baseline
-- origin/main: 1f699762978515a89d6dafd8e75de9e042126f11
+- origin/main: 5dfb458ae70d45d015ab34ee0ef519cb5c4715eb
 - Blender execution branch vs origin/main: 173 commits unique locally / 1569 commits on origin/main
 - Policy: origin/main is not automatically merged into active execution branches; reconcile through Source Authority / project state first.
 - Policy: do not merge into active branches without authority review
