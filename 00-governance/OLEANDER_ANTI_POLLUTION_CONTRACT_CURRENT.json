@@ -190,6 +190,38 @@
       "after_retarget": "DELETE_MERGED_BASE_REF_WHEN_NO_OTHER_DEPENDENCY_REMAINS",
       "unsafe_or_ambiguous_retarget": "HOLD_AND_RETAIN_BASE"
     },
+    "content_disposition": {
+      "states": [
+        "SUPERSEDED",
+        "ACTIVE",
+        "REVIEW",
+        "REJECT",
+        "ABSORB"
+      ],
+      "state_is_delete_authority": false,
+      "audit_requires": [
+        "BRANCH",
+        "TIP_SHA",
+        "CLASSIFICATION_BASE_SHA",
+        "STATE",
+        "ONE_LINE_EVIDENCE"
+      ],
+      "main_must_be_pinned_during_classification": true,
+      "revalidate_if_main_advances_before_mutation": true,
+      "actions": {
+        "ACTIVE": "RETAIN_UNTIL_LIVE_DEPENDENCY_OR_FRONTIER_CLOSES",
+        "REVIEW": "RETAIN_PENDING_CONTENT_DECISION",
+        "REJECT": "NO_PROMOTION_DELETE_ONLY_AFTER_DURABLE_PROVENANCE_AND_DEPENDENCY_CLEARANCE",
+        "ABSORB": "SELECTIVE_ABSORB_INTO_EXISTING_CARRIER_VALIDATE_READBACK_THEN_RECLASSIFY_SUPERSEDED",
+        "SUPERSEDED": "DELETE_CANDIDATE_ONLY_AFTER_DURABLE_PROVENANCE_AND_DEPENDENCY_CLEARANCE"
+      },
+      "absorb_whole_branch_merge_default": false,
+      "absorb_may_upgrade_truth_or_promotion_state": false,
+      "delete_allowed_states_after_gates": [
+        "SUPERSEDED",
+        "REJECT"
+      ]
+    },
     "main_branch_protection": {
       "direct_push_allowed": false,
       "require_pull_request": true,

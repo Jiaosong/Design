@@ -200,6 +200,24 @@ def main() -> None:
     )
     check(merged_base["after_retarget"] == "DELETE_MERGED_BASE_REF_WHEN_NO_OTHER_DEPENDENCY_REMAINS", "merged base cleanup action drifted")
     check(merged_base["unsafe_or_ambiguous_retarget"] == "HOLD_AND_RETAIN_BASE", "unsafe merged-base retarget must HOLD")
+    disposition = branch_guard["content_disposition"]
+    check(
+        set(disposition["states"]) == {"SUPERSEDED", "ACTIVE", "REVIEW", "REJECT", "ABSORB"},
+        "branch content-disposition state set drifted",
+    )
+    check(disposition["state_is_delete_authority"] is False, "content disposition alone must not authorize branch deletion")
+    check(
+        {"BRANCH", "TIP_SHA", "CLASSIFICATION_BASE_SHA", "STATE", "ONE_LINE_EVIDENCE"}.issubset(set(disposition["audit_requires"])),
+        "content-disposition audit evidence is incomplete",
+    )
+    check(disposition["main_must_be_pinned_during_classification"] is True, "content classification must pin main")
+    check(disposition["revalidate_if_main_advances_before_mutation"] is True, "content mutation must revalidate after main drift")
+    check(disposition["absorb_whole_branch_merge_default"] is False, "ABSORB must not default to whole-branch merge")
+    check(disposition["absorb_may_upgrade_truth_or_promotion_state"] is False, "ABSORB must preserve truth/promotion boundaries")
+    check(set(disposition["delete_allowed_states_after_gates"]) == {"SUPERSEDED", "REJECT"}, "only SUPERSEDED/REJECT may become delete candidates after gates")
+    check(disposition["actions"]["ACTIVE"].startswith("RETAIN"), "ACTIVE branch disposition must retain")
+    check(disposition["actions"]["REVIEW"].startswith("RETAIN"), "REVIEW branch disposition must retain")
+    check("RECLASSIFY_SUPERSEDED" in disposition["actions"]["ABSORB"], "ABSORB must read back then reclassify SUPERSEDED")
     main_protection = branch_guard["main_branch_protection"]
     check(main_protection["direct_push_allowed"] is False, "main direct push must remain disabled")
     check(main_protection["require_pull_request"] is True, "main must require pull requests")
@@ -214,6 +232,8 @@ def main() -> None:
     check("SAFE_DELETE_PATCH_EQUIVALENT_UNMERGED_ORPHAN" in policy, "patch-equivalent unmerged cleanup rule missing from policy")
     check("open PR must not permanently retain an already-merged historical base" in policy, "merged PR-base retarget rule missing from policy")
     check("`main` is a PR-only integration surface" in policy, "main PR-only integration boundary missing from policy")
+    check("Content-level disposition for an unmerged orphan branch uses exactly five states" in policy, "five-state branch content disposition rule missing")
+    check("`ABSORB` is retain-until-readback" in policy, "ABSORB closure/readback rule missing")
     enforce_consolidation_guard(contract)
 
     queue = ROOT / "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"

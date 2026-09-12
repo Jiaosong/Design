@@ -1,0 +1,1988 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CONTENT_DISPOSITION_AUDIT_v1",
+  "as_of": "2026-09-12T09:35:35.180476+00:00",
+  "repository": "Jiaosong/Design",
+  "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7",
+  "revalidated_against_main_sha": "82125e7bad26af2d224d9b4d18431eac789ae2e8",
+  "current_orphan_set_exact_match": true,
+  "record_count": 218,
+  "counts": {
+    "SUPERSEDED": 173,
+    "ACTIVE": 4,
+    "REVIEW": 12,
+    "REJECT": 10,
+    "ABSORB": 19
+  },
+  "policy": {
+    "age_only_delete_forbidden": true,
+    "state_is_delete_authority": false,
+    "active_and_review_retain": true,
+    "absorb_retain_until_destination_validation_readback": true,
+    "reject_and_superseded_delete_only_after_durable_provenance_and_dependency_clearance": true,
+    "absorb_does_not_upgrade_truth_or_promotion_state": true
+  },
+  "records": [
+    {
+      "branch": "agent/2026-08-17-bilingual-typography",
+      "state": "SUPERSEDED",
+      "evidence": "PR #191 closed as routed to main typography plus #278 residual; retained only as training provenance.",
+      "tip_sha": "e8cc13ef83de45a3041e7fbd671b1afb7d01a1ce",
+      "committed_at": "2026-08-17T15:57:28+08:00",
+      "subject": "Add editable bilingual typography calibration SVG",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/2026-08-18-camera-claim-gate",
+      "state": "SUPERSEDED",
+      "evidence": "PR #227 closed as ABSORBED INTO #293 / TRAINING PROVENANCE; no longer a live frontier.",
+      "tip_sha": "d49b035bc55a634d95f78e7c58a78797b5ac6546",
+      "committed_at": "2026-08-18T07:58:39+08:00",
+      "subject": "add camera claim manifest",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/2026-08-29-governance-c04-queue-priority-hold",
+      "state": "SUPERSEDED",
+      "evidence": "PR #442 closed; the Current C04 priority queue has since been refreshed repeatedly to later verified web/frontier identities.",
+      "tip_sha": "be7af372b4fc90de943016b4c6e51cfc6b5e91c5",
+      "committed_at": "2026-08-29T07:05:16+08:00",
+      "subject": "governance: hold stale C04 priority queue object pending current page-register identity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/architecture-realignment-20260811",
+      "state": "SUPERSEDED",
+      "evidence": "Older parallel architecture realignment; merged PR #66 and current ACTIVE v1.1.0 E2 authority now define AIG-01/02/03.",
+      "tip_sha": "0fa8dfe9f8225403c4c85f4d7c6f4902e45bc6a4",
+      "committed_at": "2026-08-12T00:22:54+08:00",
+      "subject": "Align governance README to current architecture namespaces",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/architecture-realignment-v1.1.0-current",
+      "state": "SUPERSEDED",
+      "evidence": "PR #66 merged; its architecture namespace changes are already embodied by current main authority.",
+      "tip_sha": "3ffbc3561bbce1597fd017c1fc2674440c34df2b",
+      "committed_at": "2026-08-12T00:46:34+08:00",
+      "subject": "Complete architecture realignment execution record",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-detail-v0-10",
+      "state": "REJECT",
+      "evidence": "Closed PR #84 explicitly says SUPERSEDED | Modeling Quality Rejected, so its unique content should not enter current authority.",
+      "tip_sha": "f73aca7619d5657491f2b442dd284aebe9931875",
+      "committed_at": "2026-08-12T11:52:40+08:00",
+      "subject": "modeling worker: add automotive v0.10 M8 promotion register",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "87d860b2c61c6e98fa4b5fbe3d3d3c030d60eb1b",
+      "committed_at": "2026-08-12T08:37:33+08:00",
+      "subject": "ci: add automotive reference vehicle Blender F1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-2",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "c1b5b593024c96901f54f9bfd2235a3d37cf7883",
+      "committed_at": "2026-08-12T08:43:25+08:00",
+      "subject": "ci: add automotive reference vehicle v0.2 F1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-3",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "6635db1617a486109b44af935e1844dcde52e0fd",
+      "committed_at": "2026-08-12T08:54:02+08:00",
+      "subject": "ci: build v0.3 as selective revision of verified v0.2 source",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-4",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "dbcace4001d6598dbfd52aa04f04237a0d377a15",
+      "committed_at": "2026-08-12T09:00:26+08:00",
+      "subject": "ci: add automotive reference vehicle v0.4 F1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-5",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "dd0a1dd65f0868dbb5c5f36bc47d7a8d7f3c2a0d",
+      "committed_at": "2026-08-12T09:05:43+08:00",
+      "subject": "ci: add automotive reference vehicle v0.5 F1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-6",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "tip_sha": "e1312de928288a0da2b9c7dc65c44aaa34965cda",
+      "committed_at": "2026-08-12T09:10:43+08:00",
+      "subject": "ci: add automotive reference vehicle v0.6 F1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/automotive-secondary-v0-9",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #83 is explicitly marked SUPERSEDED because upstream primary authority was reopened.",
+      "tip_sha": "89de6e6481730ce724113c3b980139858b8aff62",
+      "committed_at": "2026-08-12T11:37:31+08:00",
+      "subject": "modeling worker: add automotive v0.9 M7 promotion register",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/blender-runtime-bootstrap",
+      "state": "SUPERSEDED",
+      "evidence": "Repository now has canonical Blender 5.2 LTS runtime contract/workflows on main, replacing bootstrap-era runtime setup.",
+      "tip_sha": "7d2b7996388f65fa8e62fc37aa1eb391ae0c1d08",
+      "committed_at": "2026-08-11T12:26:06+08:00",
+      "subject": "Reduce Blender runtime artifact to verified release archive",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-20-0",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #64; newer surface-system line and active v1.21 source-context authority supersede this revision.",
+      "tip_sha": "2819c1c9757971916346400810875366bf8aeef0",
+      "committed_at": "2026-08-12T00:18:28+08:00",
+      "subject": "blender surface v1.20: add CMF preset promotion register",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-20-0-clean",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #65 cleanup variant; newer surface-system line and active v1.21 source-context authority supersede it.",
+      "tip_sha": "0840ee775c573ad8e66cc493fa8f88672fff18e5",
+      "committed_at": "2026-08-12T00:22:59+08:00",
+      "subject": "blender surface v1.20: add clean executable F1 workflow",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-6-xj01",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #43 explicitly says SUPERSEDED and decisions were migrated to PR #57.",
+      "tip_sha": "749fdaa3afec02b1b4a757d2d4458c2fcc00de4d",
+      "committed_at": "2026-08-11T22:48:32+08:00",
+      "subject": "record XJ01 CMF direction set v0.2",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-app-map-presentation-reframe-20260906",
+      "state": "REVIEW",
+      "evidence": "Unique Sep 6 portable/map delta has no final disposition; current App remains active but later map validation exists, so evidence is insufficient for safe closure.",
+      "tip_sha": "017a18b7cd0cf1e8efa1fe93850b1e1bbd5938f0",
+      "committed_at": "2026-09-06T12:55:29+08:00",
+      "subject": "C04 App Map: sync portable relation viewport",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-app-route03-currentization-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "df4f14d65299971f6a7147ccf4e0514e2ddec6c3",
+      "committed_at": "2026-08-19T14:06:30+08:00",
+      "subject": "C04 App: point current production focus to CH10",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-c22-image-reservation-v4-7-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "d2b447c0cabae6ff564f532faea852ae605d7bfb",
+      "committed_at": "2026-08-19T23:26:54+08:00",
+      "subject": "C04 C22: document image reservation for v4.7",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-c22-official-source-final-v2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "47b07b111845908aa7667a50fb2c1788363ceff0",
+      "committed_at": "2026-08-17T13:57:49+08:00",
+      "subject": "C04 C22: request independent v3 design review",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch01-redesign-v02-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "1e5249fb38ca4c1185a36d29cc14ae17b8ccfe8d",
+      "committed_at": "2026-08-19T10:24:28+08:00",
+      "subject": "c04 ch01 redesign receipt v0.2",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch04-currentized-v2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "3d0513f1f097da254e92feb6326a83de926d363d",
+      "committed_at": "2026-08-20T00:02:05+08:00",
+      "subject": "C04 CH04: add independent design review request",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch04-pixel-web-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "978e758b74b78d5245551c64c625d80cca6e8bf3",
+      "committed_at": "2026-08-20T12:54:17+08:00",
+      "subject": "C04 CH04: add local source pointer v0.1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch04-visual-blueprint-v0-2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "56bebee135409fc8e913c425a16b7230bdcbcfda",
+      "committed_at": "2026-08-20T09:05:19+08:00",
+      "subject": "C04 CH04: add blueprint technical QC readback",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-knowledge-rebaseline-v0-3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "e7a173d8fc2230b6be0f79f69e086899a557c1c8",
+      "committed_at": "2026-08-19T10:05:01+08:00",
+      "subject": "C04 CH08 v0.3: add remote and Notion readback",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-master-system-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "b165d603dc1827a291d72588d063c515b2a47df5",
+      "committed_at": "2026-08-19T09:33:05+08:00",
+      "subject": "C04 CH08: add v0.1 manifest",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p01-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "1c49164f3c087f36f8946efedb97ddfd0f00989f",
+      "committed_at": "2026-08-19T16:03:02+08:00",
+      "subject": "C04 CH08-P01 v1.0: align fragment PAGE vs module semantics",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p01-interface-v2-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "24cd97938456f69650ee1cc7fa0dd32d5fe00494",
+      "committed_at": "2026-08-19T16:14:53+08:00",
+      "subject": "C04 CH08-P01 v1.1: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p02-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "851d380ce23f4f98899436dd6c6ee6cc3ebd1287",
+      "committed_at": "2026-08-19T16:28:11+08:00",
+      "subject": "C04 CH08-P02 v1.0: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p03-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "cec2525e3c73b9d8a565bbeb05fd279d7dbcbfcc",
+      "committed_at": "2026-08-19T16:34:54+08:00",
+      "subject": "C04 CH08-P03 v1.0: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p04-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "7864b8cce2d623f6fb76b42adeb6320b963f92c8",
+      "committed_at": "2026-08-19T16:39:08+08:00",
+      "subject": "C04 CH08-P04 v1.0: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p05-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "8f4eabfdab455ca073b4dcc38410ba824203663e",
+      "committed_at": "2026-08-19T16:44:54+08:00",
+      "subject": "C04 CH08-P05 v1.0: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-p06-interface-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "a0f0466bfe4e19e076e8dfe0cf7bdc17ac5accfe",
+      "committed_at": "2026-08-19T16:50:57+08:00",
+      "subject": "C04 CH08-P06 v1.0: record Artifact Review gate separation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch08-visual-story-reframe-v0-5-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "2aeafce1434d7edb4890c15c854d956ebc48307c",
+      "committed_at": "2026-08-19T18:05:52+08:00",
+      "subject": "c04 ch08: sync QC with p03 cable hold",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch10-checkpoint-p01-p05-20260820",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "552102f46cb00ae8fcbb5a6e06c167f312b7e54d",
+      "committed_at": "2026-08-20T10:42:06+08:00",
+      "subject": "C04 CH10 checkpoint v0.2: source-safety currentization",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch13-web-v1-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "bd90321ba54830719c4452f903f28922a9a93a2e",
+      "committed_at": "2026-08-20T10:38:50+08:00",
+      "subject": "C04 CH13: persist v3 recomposition receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch16-p01-odb02-direct-v3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "29437517a435176f312f6f2bc708e860c249658b",
+      "committed_at": "2026-08-19T13:44:58+08:00",
+      "subject": "C04 CH16 P01: record remote source-currentization readback",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch16-p01-v2-0",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "d0cbc94ca312de37edd657b0c03b66cf4d806ec2",
+      "committed_at": "2026-08-19T13:01:52+08:00",
+      "subject": "C04 CH16-P01: add source and receipt checksums",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch16-v1-2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "735b4c864dbb1321cf66721aa19c2a379da90d26",
+      "committed_at": "2026-08-19T12:09:16+08:00",
+      "subject": "c04 ch16: add registered parent section vector",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-ch16-visual-production-map-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "303390cb803a5a8b00ce68293be19d828640e331",
+      "committed_at": "2026-08-19T23:44:23+08:00",
+      "subject": "C04 CH16: add machine resource register",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-complete-simplified-rebuild-20260908",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "44b63bf30aee697004b9f414cae64aff2f6b1ab4",
+      "committed_at": "2026-09-08T00:32:23+08:00",
+      "subject": "C04 verify: preserve browser readback boundary field compatibility",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-count-contract-ch14-multisurface-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "48a35b3dfbeb3d604e20e452cab415d2bd2975e2",
+      "committed_at": "2026-08-19T10:44:05+08:00",
+      "subject": "C04 query guard: stop reporting stale 112 Web snapshot",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-evidence-atlas-style-v0-3-20260818",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "5b196777988edfc98ead4749d761eeffcaf98c92",
+      "committed_at": "2026-08-18T14:12:36+08:00",
+      "subject": "C04 GIS: add Evidence Atlas style tokens v0.3",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-f-integration-loop",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "af62de2c762f3bd1d2d0df4855737c67595b7050",
+      "committed_at": "2026-08-14T22:14:27+08:00",
+      "subject": "run C04 F integration loop in CI",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-gis-current-reexecution-v0-7-3-20260818",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "edb655435eb2dc97167a6326447288b57766b826",
+      "committed_at": "2026-08-18T17:26:50+08:00",
+      "subject": "C04 GIS v0.7.3: bind independent review request",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-gis-redo-v0-2-20260818",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "156b67e77280b7ef0c8a475f49372b074a1199d0",
+      "committed_at": "2026-08-18T13:21:40+08:00",
+      "subject": "C04 GIS v0.2: add independent review request",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-j02-presentation-frame-close-20260907",
+      "state": "REJECT",
+      "evidence": "J02 validation returns VERDICT: REVISE_RETURNED; the representative surface still reads as an explanatory infographic and its release condition is unmet.",
+      "tip_sha": "5a60d71a1d2c6f033293ee63dd2d7d4cfbd1b72a",
+      "committed_at": "2026-09-08T23:42:57+08:00",
+      "subject": "validation(c04): return J02 representative surface",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-m01-presentation-page-specimen-r02-20260907",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "8bd180d256689fc79cd2642d730c5b58e4864dc9",
+      "committed_at": "2026-09-07T21:59:31+08:00",
+      "subject": "presentation(c04): stabilize M01 CJK font delivery",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-m01-presentation-repair-20260906",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "fd84aeb440a65c32bcc99cb1955bb9aec13252cb",
+      "committed_at": "2026-09-06T19:59:21+08:00",
+      "subject": "C04 M01: turn journal fields into legible paper interfaces",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-morphing-voyage-web-v0-3-20260822",
+      "state": "REJECT",
+      "evidence": "PR #352 was closed as incorrect scope with no merge or promotion; the branch is provenance only.",
+      "tip_sha": "9f27726a69e8ceec0bcc9399d67240aebdab7b41",
+      "committed_at": "2026-08-22T12:23:26+08:00",
+      "subject": "feat(c04): add morphing voyage v0.3 assets/P02_railing_lean_rest_v1_2.svg",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-narrative-v1-9-journey-led",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "af0f286bbe34fb2969c2b901aa4c6180cbdb6c4d",
+      "committed_at": "2026-08-17T18:54:02+08:00",
+      "subject": "c04 active execution bind journey-led narrative",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-narrative-v2-complete-professional-depth",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "3f7402d8c4aba3c2859a91cc4fa299361d973a1e",
+      "committed_at": "2026-08-17T19:09:02+08:00",
+      "subject": "C04 active execution: restore analysis methods and details",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-official-media-tech-audit",
+      "state": "ABSORB",
+      "evidence": "PR #81 makes the project-axis stack non-current but explicitly preserves the media/tooling work as valid evidence; selectively migrate still-needed audit/media evidence into current authority.",
+      "tip_sha": "052b1e26688001a4aa6a1c157ef76c3b55931693",
+      "committed_at": "2026-08-12T23:52:28+08:00",
+      "subject": "fix(c04): scope official media discovery to article body",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-p01-presentation-repair-20260906",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "033e9e393d831437ded39ce94b23262dc2707b7a",
+      "committed_at": "2026-09-06T17:57:06+08:00",
+      "subject": "C04 Presentation: repair P01 section hierarchy collision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-portfolio-atlas-v0-1",
+      "state": "REVIEW",
+      "evidence": "PR #108 closed as a draft, but its body records presentation PASS-WITH-OPEN-EVIDENCE and unique atlas assets remain absent from the current C04 carrier; no rejection proves safe discard.",
+      "tip_sha": "f8991425eafa09e111fb56a92832fb9c0a4c8dd0",
+      "committed_at": "2026-08-15T12:54:45+08:00",
+      "subject": "C04: add final rolling integration asset/source map",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-project-architecture-v3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "a38f2352a77c187d55e6930c2a6bb75da50301ec",
+      "committed_at": "2026-08-17T19:29:38+08:00",
+      "subject": "C04: remove redundant Chinese ready marker",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-project-axis-rebaseline",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "39fbe54583624422cbf5703c9a1efd020a1820ba",
+      "committed_at": "2026-08-12T08:49:44+08:00",
+      "subject": "align C04 README to current architecture",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-promote-v3-2-current-20260817",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "f8ed4ca02ad127132e59915b1ebabc9185dbd48c",
+      "committed_at": "2026-08-17T23:50:49+08:00",
+      "subject": "C04 promote v3.2 to active execution current",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-r06-drawing-professionalize-v1-4",
+      "state": "REJECT",
+      "evidence": "PR #190 was closed per user direction because R06 is finished; the branch is provenance only and must not remain CURRENT/MAIN or an active drawing lane.",
+      "tip_sha": "d97de01d785fbe9b69f50733b36437bbbd7a9f99",
+      "committed_at": "2026-08-17T15:53:12+08:00",
+      "subject": "C04 R06 drawing v1.4: record remote readback status",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-visual-media-acquisition",
+      "state": "ABSORB",
+      "evidence": "PR #77 says the stack is superseded/no wholesale merge while the media work itself remains valid evidence; selectively rebuild the still-needed media governance content in the current carrier.",
+      "tip_sha": "99c5fd78a0213f51a3ccb504d3197179d3349c75",
+      "committed_at": "2026-08-12T11:13:20+08:00",
+      "subject": "docs(c04): update media gate after image-level official review",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-visual-media-acquisition-copy",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "39fbe54583624422cbf5703c9a1efd020a1820ba",
+      "committed_at": "2026-08-12T08:49:44+08:00",
+      "subject": "align C04 README to current architecture",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-web-front16-currentization-v02-20260823",
+      "state": "REJECT",
+      "evidence": "PR #354 was WITHDRAWN and explicitly superseded after design rejection.",
+      "tip_sha": "edeb8966752b7616ff965f55503d1f70101f9d7f",
+      "committed_at": "2026-08-23T10:34:42+08:00",
+      "subject": "C04 Web: register Front31 v0.4 journey and principles delta",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/c04-yunshuiyi-work-simple-20260907",
+      "state": "REJECT",
+      "evidence": "PR #490 was closed/not merged/provenance-only; presentation is blocked by the upstream source-fidelity gate and must not reopen as a parallel master.",
+      "tip_sha": "b5780f5c57e5d235011682c33b84d2966125c791",
+      "committed_at": "2026-09-08T00:02:00+08:00",
+      "subject": "chore(c04): keep product work diff to actual artifact and readback",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/e2-web-audit",
+      "state": "SUPERSEDED",
+      "evidence": "PR #5 explicitly states it is superseded by PR #7 and its accessibility/Playwright work was carried forward into the governance-synchronized website branch.",
+      "tip_sha": "598603ff289a6f8ff7f6097bbcb02a25c6d3eb79",
+      "committed_at": "2026-08-01T20:11:53+08:00",
+      "subject": "Add img2threejs to Oleander toolchain",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/github-audit-immutable-actions-20260811",
+      "state": "SUPERSEDED",
+      "evidence": "PR #39 merged; audit changes are already in main and no longer form a live frontier.",
+      "tip_sha": "c33ad24811575cc87954f1557096c628bb36a1e0",
+      "committed_at": "2026-08-11T11:27:33+08:00",
+      "subject": "Pin staged Pages action dependencies",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/github-audit-repo-hardening-20260811",
+      "state": "SUPERSEDED",
+      "evidence": "PR #40 merged; hardening changes are already in main and no longer form a live frontier.",
+      "tip_sha": "2e2533d5d1a639af14e7f4a8fb567c9674831330",
+      "committed_at": "2026-08-11T11:35:35+08:00",
+      "subject": "Align staged Pages default asset with authority manifest",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/governance-migration-v1.0.1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #8 merged; current architecture/governance authority is newer v1.1.0 E2.",
+      "tip_sha": "2c200e6522b70cf99e37f70ec7b5d941824aadd2",
+      "committed_at": "2026-08-07T15:01:38+08:00",
+      "subject": "governance: add STATUS.md",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/governance-priority-queue-c04-web-20260828",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #402; current priority queue schema 2.4 and newer C04 control state supersede this queue snapshot.",
+      "tip_sha": "8e0f5593416a3dfe07cdaff507ec592894b451ab",
+      "committed_at": "2026-08-28T02:03:15+08:00",
+      "subject": "governance: restore verified C04 Web priority queue object",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-generalization-reentry-r3tmp",
+      "state": "SUPERSEDED",
+      "evidence": "This branch is an ancestor of active/open agent/modeling-worker-v0-13-generalization-reentry (PR #95).",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "committed_at": "2026-08-14T13:38:07+08:00",
+      "subject": "docs(v0.13): record topology-vs-source isolation decision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-r3-interface-fairness",
+      "state": "SUPERSEDED",
+      "evidence": "This branch is an ancestor of active/open agent/modeling-worker-v0-13-generalization-reentry (PR #95).",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "committed_at": "2026-08-14T13:38:07+08:00",
+      "subject": "docs(v0.13): record topology-vs-source isolation decision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-default-skill-resolver",
+      "state": "SUPERSEDED",
+      "evidence": "PR #232 merged; resolver content is already integrated and later current resolver authority has advanced beyond it.",
+      "tip_sha": "406c5f3f6b6b2de335d69dcf390d9bc7ec8e6f31",
+      "committed_at": "2026-08-18T09:28:39+08:00",
+      "subject": "index current runtime resolver",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-design-process-promote-v0.2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #453 merged; promoted design-process v0.2 is already in main/current authority.",
+      "tip_sha": "0e9a9e84e6d5e528ba752dc5456888774ab13551",
+      "committed_at": "2026-08-29T18:07:49+08:00",
+      "subject": "Merge latest main into design-process promotion without overwriting concurrent V&V work",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-design-process-v0.2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #449 merged and subsequent promotion PR #453 made this source branch historical.",
+      "tip_sha": "d66a14e1c8458aaea009d62676a7144c99631e04",
+      "committed_at": "2026-08-29T17:41:36+08:00",
+      "subject": "merge latest main into design-process v0.2 without dropping concurrent changes",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-governance-consolidation-20260825",
+      "state": "SUPERSEDED",
+      "evidence": "PR #357 merged; consolidation work is already in main and later governance currentization supersedes its branch ref.",
+      "tip_sha": "06ef7212ef03c728917bad913373ecec3add58c9",
+      "committed_at": "2026-08-25T11:35:04+08:00",
+      "subject": "ci: enforce governance consolidation validator",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-motion-skill-v0.2",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #54 explicitly says SUPERSEDED and rebuilt as PR #60.",
+      "tip_sha": "8ac72fd63d839d859385e94ffd3785e6e3acf487",
+      "committed_at": "2026-08-11T23:27:00+08:00",
+      "subject": "Add motion library routing eval cases",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/oleander-runtime-assimilation-20260821",
+      "state": "SUPERSEDED",
+      "evidence": "PR #351 merged; runtime assimilation is already integrated and later runtime authority supersedes the branch.",
+      "tip_sha": "cdfaed54fd8a20abb5ed07460af0e1f8db04aea2",
+      "committed_at": "2026-08-21T14:04:00+08:00",
+      "subject": "OLEANDER files: add mode-sensitive naming and representation identity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/practice-sync-2026-08-07",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "23af50d804eda677dcc7f62dc73c4efda718c33a",
+      "committed_at": "2026-08-07T16:44:28+08:00",
+      "subject": "Update practice authority after governance v1.0.1 merge",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/project-control-plane-v0-2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #88 merged Control Plane v0.2; current Control Card/Control Plane authority is v0.3 hardened orchestration.",
+      "tip_sha": "10444b2a2e5dc4d561f590b5d40ea9d6dbb5e957",
+      "committed_at": "2026-08-13T09:04:37+08:00",
+      "subject": "Pin Control Plane workflow actions to immutable SHAs",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-live-final",
+      "state": "SUPERSEDED",
+      "evidence": "PR #90 merged; its hardened orchestration is already in main/current control-plane authority.",
+      "tip_sha": "4e1fde5c37cd6692cb588f60e9967ff42b44c6e1",
+      "committed_at": "2026-08-13T10:25:53+08:00",
+      "subject": "Control Plane v0.3: record 27-test hardened validation boundary",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-orchestration",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #89 explicitly says SUPERSEDED / AUDIT ONLY; PR #90 became live final.",
+      "tip_sha": "eab461e034569c364bab03360982fefedb8329d5",
+      "committed_at": "2026-08-13T09:37:06+08:00",
+      "subject": "record v0.3 real cross-system orchestration validation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/root-namespace-pollution-guard",
+      "state": "SUPERSEDED",
+      "evidence": "PR #69 merged; the canonical root-freeze/namespace guard is already represented in main governance.",
+      "tip_sha": "ded79d51d65a33ca5d00e4fa23989e88bb89472a",
+      "committed_at": "2026-08-12T01:10:41+08:00",
+      "subject": "Freeze existing legacy roots instead of deleting historical content",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/runtime-blender-5.2-lts-fetch",
+      "state": "SUPERSEDED",
+      "evidence": "Current main already has the canonical Blender 5.2 LTS runtime contract and workflows, superseding this fetch bootstrap branch.",
+      "tip_sha": "23ce4d9dca3154a83e38da69e1ec4932fe2894b2",
+      "committed_at": "2026-08-11T09:02:24+08:00",
+      "subject": "chore: stage Blender 5.2 LTS runtime artifact",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/story-board-first-visual-repair",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "94a9f0273abfe981687bdacfaf9c473b83d1e00f",
+      "committed_at": "2026-08-25T16:58:17+08:00",
+      "subject": "Training: mark first-visual record evidence-incomplete",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/timer-light-basin-v3.3-calibration-lock",
+      "state": "SUPERSEDED",
+      "evidence": "Closed calibration branch is historical; current main contains later Timer poster-lock/staging authority and rebased release-gate lineage.",
+      "tip_sha": "4132be99d4888a49dbb399031976496d8b14ed33",
+      "committed_at": "2026-08-07T17:50:27+08:00",
+      "subject": "Update v3.3 QA to executable WebGL four-gate pass",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/timer-light-basin-v3.3-photography",
+      "state": "SUPERSEDED",
+      "evidence": "PR #12 merged and current main carries later rebased Timer staging/poster-lock authority; the branch is historical photography/staging provenance rather than Current authority.",
+      "tip_sha": "aff91c5a3cd74ad04a264a038b560902d1d839c2",
+      "committed_at": "2026-08-10T11:57:25+08:00",
+      "subject": "fix: avoid Actions interpolation in staging contract",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "agent/timer-r54-product-rendering-rebuild",
+      "state": "SUPERSEDED",
+      "evidence": "PR #31 closed; later Timer R54 G3.2 evidence/persistence governance is the retained authority while this earlier R54 implementation remains historical G0-G5 provenance.",
+      "tip_sha": "cd828ae5143cb940d193d096bc202c9b31a92f5c",
+      "committed_at": "2026-08-11T09:14:04+08:00",
+      "subject": "ci: validate Blender 5.2 R54 adapter",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "ai-governance-p0-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #20 merged; the old AI P0 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "tip_sha": "0373f8ae7d17b613018c08d01e1b804d860549bd",
+      "committed_at": "2026-08-10T16:55:10+08:00",
+      "subject": "Align P0 implementation status and repository contract",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "ai-governance-p1-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #21 merged; the old AI P1 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "tip_sha": "da48f9c7eecbc4e04e42774b3d11755a692f6f7b",
+      "committed_at": "2026-08-10T17:13:15+08:00",
+      "subject": "Pin governance actions to immutable verified SHAs",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "ai-governance-p2-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #22 merged; the old AI P2 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "tip_sha": "f3897eb87baaab88495f4f47ac0240dcbd28ab1a",
+      "committed_at": "2026-08-10T17:38:24+08:00",
+      "subject": "align P2 protocol activation status with main",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c01-validation-reliability-fix",
+      "state": "REVIEW",
+      "evidence": "Useful fail-closed coder-ID/coverage hardening competes with three other one-file C01 reliability fixes; current authority has not selected this implementation.",
+      "tip_sha": "e6058c2248010f70a4a8812a2fc8f193979d18b8",
+      "committed_at": "2026-09-06T00:40:14+08:00",
+      "subject": "fix(c01): fail closed on coder identity and report coverage",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-ch14-p08-presence-v11",
+      "state": "ABSORB",
+      "evidence": "Unique Brand Presence Scale SVG is absent from current; C04 current authority explicitly requires preserving/deepening the cross-media Brand Presence Scale.",
+      "tip_sha": "268e5faeb511757649c1dd1f026b0602cb15635e",
+      "committed_at": "2026-09-09T23:33:16+08:00",
+      "subject": "CH14 P08: add cross-media brand presence scale v1.1",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-ch16-v1-0-detail-development",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "2461def69ac08aa2647ddddd9a7a64b15e4ce2d0",
+      "committed_at": "2026-08-19T11:48:37+08:00",
+      "subject": "C04 CH16: record v3.3 partial sync and persistence boundary",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-m01-journal-editorial-v13",
+      "state": "ABSORB",
+      "evidence": "Unique M01 LOOK spread supports the current Qingjiang Journal physical Memory MAIN candidate and the active editorial/memory line.",
+      "tip_sha": "6ff981ca6e3bd79a8ba705f9438a8d7ee8779dd9",
+      "committed_at": "2026-09-09T16:31:23+08:00",
+      "subject": "design(c04): transfer editorial publication system into M01 LOOK spread",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-m02-invitation-timing-v13",
+      "state": "REVIEW",
+      "evidence": "Handoff records option B as KEEP CANDIDATE with Chromium runtime PASS and NOT FINAL_KEEP; the three-file interaction delta remains unique.",
+      "tip_sha": "84fa52451b00f67906395d64d09f225860ead6c8",
+      "committed_at": "2026-09-10T19:31:14+08:00",
+      "subject": "design(c04): add M02 timing handoff",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-m03-soft-hold-native-v13",
+      "state": "ABSORB",
+      "evidence": "Unique native SCAD for Qingjiang Yixian is explicitly a labeled relational mockup; current authority keeps Qingjiang Yixian as support/optional, so absorb as PROCESS/source only.",
+      "tip_sha": "bbc6c58abb3a4b22daffddeff14f51a59e1e4742",
+      "committed_at": "2026-09-10T06:25:01+08:00",
+      "subject": "Add M03 soft-hold neutral parametric prototype",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-p01-v13",
+      "state": "ABSORB",
+      "evidence": "Unique step-light body-action proof fits current PHY-01 KEEP CONCEPT / HOLD SELECTION / PROCESS-SUPPORT status; absorb at PROCESS level only.",
+      "tip_sha": "d628e5431ca9ea3c9a18f31b4e1e614548a6519f",
+      "committed_at": "2026-09-09T19:27:34+08:00",
+      "subject": "C04 P01: bind body-action proof to step-light v1.3",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-p02-cmf-v13",
+      "state": "ABSORB",
+      "evidence": "Unique role-bound P02 CMF SVG is explicitly FIELD OPEN/NTS/not-for-construction and supports the current high-priority P02 detail track.",
+      "tip_sha": "78c06721e90dc8f6e67fbf4f8877825e26eb54ec",
+      "committed_at": "2026-09-09T14:34:26+08:00",
+      "subject": "design(c04): add P02 role-bound CMF candidate",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-p02-joint-legibility-v10",
+      "state": "ABSORB",
+      "evidence": "Unique P02 clamp/joint legibility SVG complements the active P02 detail and connection work.",
+      "tip_sha": "4e96d2461ae7596f2baec0be0abde90e7a5316e4",
+      "committed_at": "2026-09-09T21:26:12+08:00",
+      "subject": "C04 P02: transfer joint-legibility hierarchy",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-qingjiang-brand-rebuild-v1-0",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "c1457bbc39ce10130b6b1c2e931e773ca1c7c424",
+      "committed_at": "2026-08-17T23:38:24+08:00",
+      "subject": "C04 brand: add small-size and monochrome attack test",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04-qingjiang-brand-v1-2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "94dbe34af3bf2e525de79382d20b7711b25dce5a",
+      "committed_at": "2026-08-18T09:20:48+08:00",
+      "subject": "C04 brand v1.2: add source snapshot restore receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/app-game-map-v1-3-deepening",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "9ff24cdd3094080cc3125347b20352e9f71f68ae",
+      "committed_at": "2026-08-16T17:02:33+08:00",
+      "subject": "C04 App: record method-grounded architecture QC",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/current-integration-v1-0-20260817",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "8fc1ea46bd82c6cd710a140038a970eade6c3476",
+      "committed_at": "2026-08-19T10:57:05+08:00",
+      "subject": "C04 Web v1.14: add CH07-CH09 current pointer",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/full-asset-atlas-reframe",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "578ecf5d2d5edabd9a54075fce899157b40817cb",
+      "committed_at": "2026-08-16T13:01:51+08:00",
+      "subject": "C04: bind no-loss asset atlas into active execution",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/page-register-remap-v01-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "557474667a993630261c94e5549eedd32f9e775b",
+      "committed_at": "2026-08-19T17:49:30+08:00",
+      "subject": "C04: add page-register remap owner receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/public-narrative-v1-8",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "7750ffaa1f26acb6b90e41e4db200dc6b897ba77",
+      "committed_at": "2026-08-16T00:13:10+08:00",
+      "subject": "C04 B: add scene by audience experience matrix",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/r05-r06-source-binding-v1-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "e17cf5a9ccf6219e969cb35bf03554d404ad5a52",
+      "committed_at": "2026-08-16T15:12:16+08:00",
+      "subject": "C04 R05 v1.1: bind source limits and forbid false peak anchoring",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/single-project-deepening-v1-2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "e2eef702d32b4e2542a61e2f89528302bd171846",
+      "committed_at": "2026-08-16T14:43:19+08:00",
+      "subject": "C04: add 9Q cross-system execution overlay",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/web-experience-framework-v2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "f7a3662cb36fa21c6eb5bc1b64d8ed9e51bdf99d",
+      "committed_at": "2026-08-16T15:27:38+08:00",
+      "subject": "C04 Web: align README with preservation-review Control Plane",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/web-final-framework-v2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "1fc4a6af8675a4aa1662be722ac4114bb5510d8d",
+      "committed_at": "2026-08-17T09:01:56+08:00",
+      "subject": "C04: preserve independent design verdict boundary",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "c04/web-story-flow-organization-20260817",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "e2d9bf854bdf1a95c3af4495b7aa6a08a3b755d1",
+      "committed_at": "2026-08-17T17:17:38+08:00",
+      "subject": "C04: organize Web story flow without editing Web/App",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "feat/oleander-axis-parallel-one-shot",
+      "state": "REVIEW",
+      "evidence": "Introduces bounded AXIS_PARALLEL rotation, changing the current intentional multi-solution failure gate; requires authority choice plus real-Blender validation before absorb or reject.",
+      "tip_sha": "d8a2a384566216264ccadaf4e41b0f66f4bc167d",
+      "committed_at": "2026-09-08T17:44:58+08:00",
+      "subject": "test: validate bounded axis-parallel relation apply",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "feat/oleander-blender-cad-direct-execution-v01-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #499 merged and its execution receipt is already retained in main; the branch ref is no longer the authority.",
+      "tip_sha": "4d90289326278dac956a3ac6999e479689725c30",
+      "committed_at": "2026-09-09T16:55:58+08:00",
+      "subject": "Fix P4 closure receipt blocker sentinel",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "feature/rhino-grasshopper-runtime-v0.1",
+      "state": "REVIEW",
+      "evidence": "Unique Rhino/Grasshopper adapter remains HUMAN_AUTHORITY_REQUIRED with CP2/CP4 OPEN and no execution-ready provider; retain pending runtime/licensing authority decision.",
+      "tip_sha": "d9acaa92d6953df3dd03564ab2ccc9cafef8232a",
+      "committed_at": "2026-08-10T15:42:03+08:00",
+      "subject": "docs(runtime): record conditional provider watch run 10",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "fix/c04-blender-rebuild-runtime-20260902",
+      "state": "SUPERSEDED",
+      "evidence": "PR #472 closed after establishing rebuild-first evidence; PR #473 merged the reusable production carrier that supersedes this branch frontier.",
+      "tip_sha": "3665bd182e0cbf48f5f77bec77060f8681cde800",
+      "committed_at": "2026-09-02T20:53:54+08:00",
+      "subject": "C04: validate Yunshuiyi Web derivative in Chromium",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "fix/c04-blender-rebuild-runtime-clean-20260902",
+      "state": "SUPERSEDED",
+      "evidence": "PR #473 merged the rebuild-first Blender production carrier; branch ref is historical implementation provenance.",
+      "tip_sha": "6fdff11598a8cb6489573f38d83f616bd1f8299c",
+      "committed_at": "2026-09-02T21:36:09+08:00",
+      "subject": "validation: package Three core dependency for C04 browser carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "fix/c04-git-triggered-runner-20260903",
+      "state": "ACTIVE",
+      "evidence": "Current main .github/workflows/c04-blender-rebuild.yml still names this branch in its push trigger, so ref cleanup is blocked until the workflow is decoupled.",
+      "tip_sha": "96a407d2bc55470552acf48c83ab1318c25a18a7",
+      "committed_at": "2026-09-03T10:08:52+08:00",
+      "subject": "c04: park machine job on current fluid-seat DESIGN item",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "fix/oleander-hourly-continuous-production-20260903",
+      "state": "SUPERSEDED",
+      "evidence": "PR #475 merged the durable continuous-execution alignment; the branch is no longer a live frontier.",
+      "tip_sha": "c9bc62704ed654554d41bf21c84f73120acaf0c7",
+      "committed_at": "2026-09-03T08:22:05+08:00",
+      "subject": "governance: add child-item continuous production cursor",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "fix/oleander-universal-runtime-guard-20260902",
+      "state": "SUPERSEDED",
+      "evidence": "PR #474 merged the universal shared-runtime hardening; current main owns the runtime guard authority.",
+      "tip_sha": "50ac2cf0a8cd056eff6f279912f39b3c082db6d0",
+      "committed_at": "2026-09-03T01:30:06+08:00",
+      "subject": "C04: rebuild Yunshuiyi v003 from source-bound folding support reference",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "gov/oleander-anti-pollution-v1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #477 merged and the canonical Anti-Pollution Protocol/Contract now live in main; this branch is provenance only.",
+      "tip_sha": "8da50055200f809ae42ddcdcc75493c05d79cc8c",
+      "committed_at": "2026-09-04T00:50:46+08:00",
+      "subject": "docs: surface project-wide anti-pollution authority",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/2026-08-28-c04-priority-control-card",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #403; newer whole-project C04 control card and current priority queue supersede this Aug-28 control snapshot.",
+      "tip_sha": "d362ab7ed513509a35c3256bbb99f0b1c6c98a1b",
+      "committed_at": "2026-08-28T03:17:35+08:00",
+      "subject": "Governance: refresh priority queue with verified C04 Work Object",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/c04-frontier-sync-20260906",
+      "state": "SUPERSEDED",
+      "evidence": "Sep-6 C04 frontier snapshot is stale versus current C04_PROJECT_CONTROL_CARD_CURRENT and 2026-09-12 priority queue readback.",
+      "tip_sha": "53d20ddb9210a6927c0a75a8bd5919be83fc6dbc",
+      "committed_at": "2026-09-06T16:07:19+08:00",
+      "subject": "governance: align C04 control card to exact web head",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/case-claim-authority-repair-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #32 merged; authority repair is already present on main.",
+      "tip_sha": "4c292d21f7858442ef6d5389f90e465e82f097c6",
+      "committed_at": "2026-08-11T00:44:29+08:00",
+      "subject": "Fix namespace validator schema target",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/cloud-free-browser-profile-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #371 merged; browser-profile governance is integrated and later runtime/currentization work supersedes the branch.",
+      "tip_sha": "d5c865575e9569f64b1cf54a5441214999258183",
+      "committed_at": "2026-08-26T10:06:09+08:00",
+      "subject": "governance: add project environment card template",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/cloud-free-global-activation-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #372 merged; global cloud-free activation is already integrated on main.",
+      "tip_sha": "1568504df5714ebe9d6da5e6c8b1278e1ef0357d",
+      "committed_at": "2026-08-26T11:01:19+08:00",
+      "subject": "Runtime: add execution-surface state to project environment card",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/data-viz-uncertainty-currentize-20260825",
+      "state": "SUPERSEDED",
+      "evidence": "PR #362 merged; currentization is already in main.",
+      "tip_sha": "bdd6efbd7a626dd5d99984b0806fb4c9d9266eb3",
+      "committed_at": "2026-08-25T17:12:37+08:00",
+      "subject": "Data Viz: fix route-state readback typo",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/delivery-qc-interaction-state-currentize-20260825",
+      "state": "SUPERSEDED",
+      "evidence": "PR #363 merged; currentization is already in main.",
+      "tip_sha": "7c6c3c1dee214c10829525c418a83a3605c578fd",
+      "committed_at": "2026-08-25T17:13:14+08:00",
+      "subject": "Delivery QC: persist evidence-corrected interaction-state practice",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/design-environment-software-routing-20260827",
+      "state": "SUPERSEDED",
+      "evidence": "PR #390 merged and later duplicate #411 closed; routing authority is already represented in main.",
+      "tip_sha": "78d3f9e46a0792e9a1f73a0ecd30b7543c00a451",
+      "committed_at": "2026-08-27T12:05:43+08:00",
+      "subject": "Template: preserve machine token order for software routing",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/no-loss-control-card-v03-deepening-20260816",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #136 explicitly says SUPERSEDED BY #359 / NO-LOSS v0.3 PROVENANCE.",
+      "tip_sha": "464fff21ce71bf3af6149533408f925c6630ff4b",
+      "committed_at": "2026-08-16T16:57:34+08:00",
+      "subject": "governance: record v0.3 no-loss deepening owner receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/no-loss-v03-currentize-20260825",
+      "state": "SUPERSEDED",
+      "evidence": "PR #359 merged; no-loss v0.3 currentization is already in main/current control authority.",
+      "tip_sha": "a69a3007488e1c8f92fa60a4a3f95b4c6fa851ca",
+      "committed_at": "2026-08-25T16:53:46+08:00",
+      "subject": "Governance: verify current canonical E3 authority lineage",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/oleander-consolidation-throttle-20260905",
+      "state": "SUPERSEDED",
+      "evidence": "PR #481 merged; consolidation-throttle governance is already integrated.",
+      "tip_sha": "392a9790d5b965c00ddf591fc573626106cdb70c",
+      "committed_at": "2026-09-05T08:43:30+08:00",
+      "subject": "ci: execute consolidation throttle regression test",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/oleander-process-integrity-repair-20260827",
+      "state": "SUPERSEDED",
+      "evidence": "PR #389 merged; process-integrity repair is already in main.",
+      "tip_sha": "e77ce753af032c9d5999558f115101358e7b09b0",
+      "committed_at": "2026-08-27T10:08:52+08:00",
+      "subject": "governance: preserve routing token compatibility in project card",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/pr465-current-refresh-20260906",
+      "state": "SUPERSEDED",
+      "evidence": "Current priority queue on main records PR #465 current head 35648ae297..., superseding this Sep-6 refresh branch.",
+      "tip_sha": "f9ab07578b789701f50f46c1016526cf8b321315",
+      "committed_at": "2026-09-06T04:10:23+08:00",
+      "subject": "governance: refresh C04 PR465 frontier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/process-first-skill-gap-20260817",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #174 explicitly says SUPERSEDED BY CURRENT RESOLVER v1.2.2 + UPE v1.0.1.",
+      "tip_sha": "71ebc2e75331ebf0536b216197cf9db354c60e8b",
+      "committed_at": "2026-08-17T12:02:22+08:00",
+      "subject": "governance: route all reproduction claims through pixel-level fidelity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "governance/production-asset-persistence-v1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #45 merged (with earlier #44 closed); production asset persistence is already in main.",
+      "tip_sha": "5b8f5cb38377b49ac81e2405b49d526a0ca94b24",
+      "committed_at": "2026-08-11T14:20:00+08:00",
+      "subject": "Governance: register production persistence schemas",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "modeling-worker-v0-12-canonical-promotion",
+      "state": "SUPERSEDED",
+      "evidence": "Its v0.2 control card is older than main's v0.3 canonical E3 control card; retaining it would regress current no-loss semantics.",
+      "tip_sha": "ffabca373c4a5cabbcabbe1c05a5adb005f807c4",
+      "committed_at": "2026-08-13T22:38:08+08:00",
+      "subject": "Add v0.12 canonical authority receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-a01-variable-depth-20260907",
+      "state": "ABSORB",
+      "evidence": "Unique A01 native carrier is marked CURRENT NATIVE CARRIER and current authority preserves A1-A6 audience modes.",
+      "tip_sha": "b7f5734d1679a794dc1029af69194e7dbe7d6e05",
+      "committed_at": "2026-09-07T09:26:30+08:00",
+      "subject": "design(c04): add A01 variable-depth audience carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-a02-family-observation-20260907",
+      "state": "ABSORB",
+      "evidence": "Unique family shared-observation carrier directly supports the still-active Audience layer.",
+      "tip_sha": "faa111bd83f92dd1c20215f58ce367d281ff97b2",
+      "committed_at": "2026-09-07T11:25:42+08:00",
+      "subject": "design(c04): materialize A02 shared family observation carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-a04-context-overlays-20260907",
+      "state": "ABSORB",
+      "evidence": "Unique A04 context-overlay carrier directly supports the still-active Audience layer.",
+      "tip_sha": "6320421e8d97808d2eab65f0b79f333809145708",
+      "committed_at": "2026-09-07T17:28:14+08:00",
+      "subject": "C04 A04: materialize context overlays native carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-ch04-p06-audience-depth-r11",
+      "state": "ABSORB",
+      "evidence": "Unique audience-depth HTML preserves R06 frozen status plus FIELD0/NO_PROMOTION while deepening audience analysis without reopening R06 experience design.",
+      "tip_sha": "efda1bc0c222e00127ffb9914b7d388cf5eeaecc",
+      "committed_at": "2026-09-09T09:29:09+08:00",
+      "subject": "design(c04): transfer audience page rhythm into CH04-P06 same-scene depth",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-ch14-p04-role-context-v11",
+      "state": "ABSORB",
+      "evidence": "Newer CH14 P04 color-role HTML/CSS aligns with the locked BRAND COLOR != OPERATIONAL STATUS COLOR rule and is newer than the current August blobs.",
+      "tip_sha": "fd531db66ce636713ae708929d3b289939a58454",
+      "committed_at": "2026-09-09T08:28:13+08:00",
+      "subject": "update CH14 P04 color roles",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-ch14-p06-world-viewport-v21-r11",
+      "state": "ABSORB",
+      "evidence": "Unique CH14 P06 world-viewport crop specimen supports the active cross-media brand system.",
+      "tip_sha": "6376eaf62085bb0f6daf5d12f925d2a205ff8e0d",
+      "committed_at": "2026-09-09T12:29:06+08:00",
+      "subject": "Add CH14 P06 viewport crop specimen",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-d04-route-map-20260908-r11",
+      "state": "REJECT",
+      "evidence": "Validation is REVISE_RETURNED because the portable HTML failed to propagate the repaired standalone SVG hierarchy.",
+      "tip_sha": "b831e738b078abdbb92456722e1742d82fb6aaee",
+      "committed_at": "2026-09-08T22:41:17+08:00",
+      "subject": "validation(c04): return D04 map propagation mismatch",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-env05-shared-scale-transfer-20260909-r11",
+      "state": "REVIEW",
+      "evidence": "Unique ENV-05 SVG is a DERIVED SCENARIO with G1F HOLD/NO_PROMOTION and independent professional review still pending.",
+      "tip_sha": "6d675dad2dc7601e12fc2e0b06ed233ef54de1c7",
+      "committed_at": "2026-09-09T10:29:47+08:00",
+      "subject": "C04 ENV-05: transfer shared-scale comparability into project analysis",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-j01-arrival-20260908-r11",
+      "state": "ABSORB",
+      "evidence": "Unique J01 arrival service-opening carrier maps directly to Arrival, which current Journey/Service authority explicitly preserves.",
+      "tip_sha": "c42e63cab1bc81dad28d536944ce091e8a40ffda",
+      "committed_at": "2026-09-08T01:27:17+08:00",
+      "subject": "design(c04): add J01 arrival service opening carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-j03-cable-view-20260908-r11",
+      "state": "ABSORB",
+      "evidence": "Unique J03 cable moving-view carrier maps directly to CABLE, which current Journey/Service authority explicitly preserves.",
+      "tip_sha": "17e91e30fa961c6c95f17ea3316ac5a76a27a314",
+      "committed_at": "2026-09-08T12:25:32+08:00",
+      "subject": "design(c04): add J03 cable moving-view public carrier",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-m01-journal-use-repair-20260908-r11",
+      "state": "REJECT",
+      "evidence": "Validation is REVISE_RETURNED because the artifact still reads as an explanatory board rather than actual editable journal pages/spreads.",
+      "tip_sha": "c14f92e00aa1031564fb8c34d5aa33b798bc5a0a",
+      "committed_at": "2026-09-08T12:43:02+08:00",
+      "subject": "validation(c04): return M01 journal carrier revision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-p01-local-response-20260908-r11",
+      "state": "ABSORB",
+      "evidence": "Unique P01 v1.3 local-response asset supports the current step-light KEEP concept/process-support lineage.",
+      "tip_sha": "d92ac30a139134a43d3052af23490829781893de",
+      "committed_at": "2026-09-08T11:30:35+08:00",
+      "subject": "design(c04): add P01 local-response repair revision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-p02-body-contact-20260908-0525",
+      "state": "REJECT",
+      "evidence": "P02 validation is REVISE_RETURNED with NO_PROMOTION and structure still unverified.",
+      "tip_sha": "36d3fe0d356f16d86a712400f919d6db0ec7df48",
+      "committed_at": "2026-09-08T19:37:01+08:00",
+      "subject": "validation(c04): return P02 revision",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander-design-p02-clamp-interface-20260908-1727",
+      "state": "ABSORB",
+      "evidence": "Corrective P02 body/contact/clamp relation follows the returned prior revision and supports the current high-priority P02 support line; absorb as a review candidate.",
+      "tip_sha": "66fc2807db705047914f6bcc6fd969c55f2d9024",
+      "committed_at": "2026-09-08T05:29:37+08:00",
+      "subject": "design(c04): repair P02 lean-rest body contact relation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/activate-universal-production-env-v1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #142 merged; UPE activation is already in main and current runtime authority has advanced.",
+      "tip_sha": "1bfe5bd178b51a0224e2b139fea7380253cc9758",
+      "committed_at": "2026-08-16T18:40:48+08:00",
+      "subject": "governance: mark universal production environment active",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/c-track-labs-20260811",
+      "state": "REVIEW",
+      "evidence": "Unique C-track workflow/runners are absent from main and end at ALL_RENDERED_POST_REVIEW_REQUIRED; potentially useful but not promotion-safe.",
+      "tip_sha": "afc7813d8f4abdd243b784cf41885baad3032fcf",
+      "committed_at": "2026-08-11T14:21:48+08:00",
+      "subject": "ci: rerun C track with C01/C07 review fixes",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/chat-design-production-wiring-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #513 merged; chat/design production wiring is already integrated.",
+      "tip_sha": "8dd65475ff2c3fb1b3fcdeff9941ac635be1d984",
+      "committed_at": "2026-09-10T00:29:27+08:00",
+      "subject": "Fix case-insensitive Chat visual validator phrase match",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/chat-runtime-adapter-hardening-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #500 merged; adapter hardening is already integrated.",
+      "tip_sha": "513e1786a75b7f8fdfc97d63c744d685276695d2",
+      "committed_at": "2026-09-09T12:00:12+08:00",
+      "subject": "governance: encode bounded connected-surface routing",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/chat-runtime-concurrency-idempotency-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #503 merged; concurrency/idempotency hardening is already integrated.",
+      "tip_sha": "4f3f37b3bedea0cf2d72467aad7423b525a18486",
+      "committed_at": "2026-09-09T14:51:34+08:00",
+      "subject": "Restore Resolver no-loss detail and retain P0 runtime hardening",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/frontend-expression-v1",
+      "state": "SUPERSEDED",
+      "evidence": "Strict ancestor of active/open oleander/frontend-expression-visual-v1 (PR #94).",
+      "tip_sha": "4dc97589cdd58f14bf09f54a8d3184163be9ede8",
+      "committed_at": "2026-08-13T22:34:08+08:00",
+      "subject": "chore(website): preserve base frontend assets",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/nodegroups-realworkflows-20260811",
+      "state": "SUPERSEDED",
+      "evidence": "Precursor nodegroups branch is replaced by the final legacy-nodegroups branch that current workflows actually fetch.",
+      "tip_sha": "742951be98c1673cc5d424378d08569d2321dfbd",
+      "committed_at": "2026-08-11T15:16:30+08:00",
+      "subject": "strengthen W01 wall signal after second post-review",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/nodegroups-realworkflows-final-20260811",
+      "state": "ACTIVE",
+      "evidence": "Current main workflows v1-16-0 and v1-17-0 explicitly fetch this remote branch as legacy-nodegroups-v1, so deletion would break live CI.",
+      "tip_sha": "585baa7bd933d00a7e52f153dd067a9de9efb993",
+      "committed_at": "2026-08-11T15:27:36+08:00",
+      "subject": "complete three-system archive links",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/p3-continuation-cycle-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #506 merged; continuation-cycle changes are already in main.",
+      "tip_sha": "35905e853b1f3aa607937fe0cdfc2a14eb673b48",
+      "committed_at": "2026-09-09T16:07:23+08:00",
+      "subject": "Restore workflow final newline for no-loss diff",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/p6-partial-commit-reconciliation-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #508 merged; partial-commit reconciliation is already in main.",
+      "tip_sha": "5e8533267bd4139b4999ea026342018c292cc324",
+      "committed_at": "2026-09-09T19:36:31+08:00",
+      "subject": "P6: run runtime resilience validation",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/p7-execution-budget-surface-circuit-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #509 merged; execution-budget surface circuit is already in main.",
+      "tip_sha": "56669758329a36087eddceec148055f2da1080ca",
+      "committed_at": "2026-09-09T19:41:53+08:00",
+      "subject": "P7: restore P6 validator semantics before adding budgets",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/runtime-cache-readback-escalation-20260909",
+      "state": "SUPERSEDED",
+      "evidence": "PR #504 merged; runtime-cache readback escalation is already in main.",
+      "tip_sha": "48930a493227ca190fcc63761ed3a55a52811847",
+      "committed_at": "2026-09-09T15:03:52+08:00",
+      "subject": "Run executable runtime speed decisions in governance CI",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/spatial-authority-preservation-20260817",
+      "state": "SUPERSEDED",
+      "evidence": "PR #199 merged; spatial authority preservation is already integrated.",
+      "tip_sha": "58ac1313683fabf3ae506319bb010a102af4fd48",
+      "committed_at": "2026-08-17T18:48:04+08:00",
+      "subject": "evals: add spatial authority regression cases",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/universal-production-env-v1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #141 merged and activation PR #142 followed; this source branch is historical.",
+      "tip_sha": "2fec36557129c81c5c9ce58b7ccb565ae983084c",
+      "committed_at": "2026-08-16T18:37:41+08:00",
+      "subject": "ci: validate universal production environment contract",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/visual-quality-convergence-repair-20260910",
+      "state": "SUPERSEDED",
+      "evidence": "PR #515 merged; convergence repair is already in main.",
+      "tip_sha": "1e73ff294b42131a8753dc77290529fb98ba801e",
+      "committed_at": "2026-09-10T12:35:47+08:00",
+      "subject": "Remove accidental placeholder file",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "oleander/visual-technique-production-repair-20260910",
+      "state": "SUPERSEDED",
+      "evidence": "PR #514 merged; production repair is already in main.",
+      "tip_sha": "502458a4c658449520d8c1b7714982e3cd6b1ac1",
+      "committed_at": "2026-09-10T11:16:14+08:00",
+      "subject": "Add regressions for existing design-knowledge use",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "p0-retrieval-routing-repair-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #29 merged; legacy P0/P1/P2 AI-governance labels are retired from current authority in favor of AIG-01/02/03.",
+      "tip_sha": "b02a242b05f9b2a8cb692bedaebb6cbec2902cd8",
+      "committed_at": "2026-08-10T21:20:57+08:00",
+      "subject": "Add change-control retrieval aliases",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "p2-evidence-website-pr7-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #25 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "tip_sha": "d44d8fbca25979e95c002b54fa3c3c075531365a",
+      "committed_at": "2026-08-10T17:48:56+08:00",
+      "subject": "expand P2 baseline with website tool failure and provisional candidates",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "p2-live-retrieval-audit-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #26 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "tip_sha": "764546e4e16d9258f5659d307b711540e366daa0",
+      "committed_at": "2026-08-10T18:02:25+08:00",
+      "subject": "add first live retrieval baseline",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "p2-provenance-audit-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #27 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "tip_sha": "3c09bba783d6e727686b4f00ca9e34a0dcd946a2",
+      "committed_at": "2026-08-10T18:11:02+08:00",
+      "subject": "restore fixed P2 provenance metric label",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "p2-retrieval-metric-validity-repair-v01",
+      "state": "SUPERSEDED",
+      "evidence": "PR #30 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "tip_sha": "a31e7481d35aaacdb57934cf21e707ecef16bc7d",
+      "committed_at": "2026-08-10T21:30:08+08:00",
+      "subject": "Record current retrieval snapshot and metric semantics",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-08-sp01-gis-density",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "6284a66124dfbd8fe7e87bf323dea50a46dde3ea",
+      "committed_at": "2026-08-08T09:55:10+08:00",
+      "subject": "practice: add synthetic GIS training data",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-09-sp02-grasshopper-data-tree",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "8dcfffeff8649a100870aa1152943bb795f66cda",
+      "committed_at": "2026-08-09T09:24:07+08:00",
+      "subject": "practice: add SP02 training parameters",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun01",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "committed_at": "2026-08-10T11:08:30+08:00",
+      "subject": "practice: add data-tree failure-seeking report",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "868cb64e8309c031c2edf8dec57edf8bafaf7439",
+      "committed_at": "2026-08-10T16:10:21+08:00",
+      "subject": "practice: add SP02 rerun02 clean execution log",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-check",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "committed_at": "2026-08-10T11:08:30+08:00",
+      "subject": "practice: add data-tree failure-seeking report",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-tmp",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "committed_at": "2026-08-10T11:08:30+08:00",
+      "subject": "practice: add data-tree failure-seeking report",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-revit-wall-opening",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "45bd2f8610f94d403c14e677f3234979bdc8fd3d",
+      "committed_at": "2026-08-10T09:46:22+08:00",
+      "subject": "practice: add Revit family QA checklist",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-software-neutral-opening-qa",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "6f0539a5ad34fc6627272f1e9c87262549ca287f",
+      "committed_at": "2026-08-11T00:16:00+08:00",
+      "subject": "Add R08H load path checklist",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-11-sp01-r02-gis-reality-gate",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "48d381b4531829d92ec15ea8cb223e06d142f48b",
+      "committed_at": "2026-08-11T11:18:46+08:00",
+      "subject": "SP01-R02: preserve compact QGIS runtime evidence snapshot",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-11-sp02-r03-runtime-closure",
+      "state": "ACTIVE",
+      "evidence": "Canonical PRAC-SPATIAL-2026 map explicitly names this the Current handoff lineage; static handoff PASS with CP2/CP4 still OPEN and real Rhino runtime not executed.",
+      "tip_sha": "d66d1beaab9e14cdd2b5540cb2f076f2718f52ed",
+      "committed_at": "2026-08-11T14:45:49+08:00",
+      "subject": "SP02-R03: enforce no-purchase runtime constraint",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-11-sp03-r02-light-performance-interface",
+      "state": "ACTIVE",
+      "evidence": "Canonical PRAC-SPATIAL-2026 map explicitly names this the Current validation lineage; synthetic Radiance performance interface is verified while project reality remains OPEN.",
+      "tip_sha": "95c4543db17dc0e98459c967a4e36a5bb4cd92e3",
+      "committed_at": "2026-08-11T12:24:22+08:00",
+      "subject": "SP03-R02: add verified release and Drive archive to README",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08h2-orthogonal-review",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "b321d7706e22560f4e0a59e6b61fdf1f865bdc07",
+      "committed_at": "2026-08-11T09:35:40+08:00",
+      "subject": "review: add R08H.2 artifact review matrix",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08j1-p0-evidence-closure",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "99bb6cc08097fd9eab80eb5eb8bd834b2fe496b3",
+      "committed_at": "2026-08-11T10:33:41+08:00",
+      "subject": "Add P0 source register data",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "repair/prac-spatial-2026-project-axis",
+      "state": "SUPERSEDED",
+      "evidence": "Although PR #67 closed, its substantive PRAC-SPATIAL-2026 files and migration artifacts are already present on current main.",
+      "tip_sha": "5844595b74ae823b3cc4893997f5b402ef04bf40",
+      "committed_at": "2026-08-12T00:40:42+08:00",
+      "subject": "Repair Spatial Practice project axis on latest architecture baseline",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "research/ar23-corpus-v0.1-20260810",
+      "state": "REVIEW",
+      "evidence": "Unique 26-file AR23 corpus/extractor lineage has no merged PR or Current carrier in main; retain until research provenance and absorb/reject destination are explicitly resolved.",
+      "tip_sha": "1a5b4e14c2974d1405fb89470704f444d6a43dfd",
+      "committed_at": "2026-08-10T15:30:09+08:00",
+      "subject": "research: add XJ01 JD Failure AR23 cross-source matrix",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "review/design-workbench-professional-review01-20260827",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "1a614796f4bf9785d0486d0b79a330a202180f04",
+      "committed_at": "2026-08-27T08:58:32+08:00",
+      "subject": "Review Workbench professional readback 01",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/browser-design-workbench-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #373 merged; browser design workbench runtime is already integrated.",
+      "tip_sha": "87828fcf9a27cc188039893892903a514dc728d1",
+      "committed_at": "2026-08-26T12:34:52+08:00",
+      "subject": "Runtime: register shared execution surfaces",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/cloud-free-capability-expansion-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #374 merged; cloud-free capability expansion is already integrated.",
+      "tip_sha": "2a5fc254f444ade752b403e950a44b5ac03896ee",
+      "committed_at": "2026-08-26T13:16:16+08:00",
+      "subject": "Runtime: align spatial readback surface with native Canvas",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/cloud-free-default-routing-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #375 merged; default routing changes are already integrated.",
+      "tip_sha": "642ba65120b46c3840de9d0ba620dd4fdb7a7067",
+      "committed_at": "2026-08-26T13:21:36+08:00",
+      "subject": "Runtime: validate Cloud-Free default routing binding",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/design-workbench-validation-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #379 merged; design workbench validation is already integrated.",
+      "tip_sha": "6e14076fcf0484189c78ab0f3d71d84b20addb58",
+      "committed_at": "2026-08-26T15:10:30+08:00",
+      "subject": "Runtime: validate real responsive Design Workbench contract",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/image-lab-review01-repair-20260827",
+      "state": "SUPERSEDED",
+      "evidence": "PR #385 merged; image-lab review repair is already integrated.",
+      "tip_sha": "61d97012693fd9c65d030c8e4b9e5f1948c32318",
+      "committed_at": "2026-08-27T08:16:43+08:00",
+      "subject": "Runtime: validate Image Lab professional retest I01-I06",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/image-lab-validation-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #377 merged; image-lab validation is already integrated.",
+      "tip_sha": "43034e05d38a20049171a424e36deb53eef83e89",
+      "committed_at": "2026-08-26T14:09:36+08:00",
+      "subject": "Governance: validate Image Lab truth and persistence receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/spatial-lab-validation-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #378 merged; spatial-lab validation is already integrated.",
+      "tip_sha": "8a7e450a2e67f016bf63bf4fa88e8d3dab936edc",
+      "committed_at": "2026-08-26T14:28:57+08:00",
+      "subject": "Governance: validate Spatial Lab projection and proxy receipt",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "runtime/technical-svg-lab-validation-20260826",
+      "state": "SUPERSEDED",
+      "evidence": "PR #376 merged; technical-SVG lab validation is already integrated.",
+      "tip_sha": "881fadddc79d3be60b1a495e5ea443b68f6850e2",
+      "committed_at": "2026-08-26T13:42:12+08:00",
+      "subject": "Runtime: align Technical SVG Lab vendor-confirm wording with validator",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "skills/oleander-game-ui-stack-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "5be070a39a451ad8b346f18cafcf26738b6f4af7",
+      "committed_at": "2026-08-17T15:07:18+08:00",
+      "subject": "docs(skills): add game UI change impact",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "skills/project-web-image-uniqueness-gate-20260819",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "a25607a91a70dc9de251f19057e9cfa2408fce49",
+      "committed_at": "2026-08-19T11:09:11+08:00",
+      "subject": "qc: add whole-project Web image uniqueness blocker",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "skills/vi-manual-production-v0-1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "6b5589d1a6d90087cc6b26540fc6bae37071ed67",
+      "committed_at": "2026-08-18T17:31:10+08:00",
+      "subject": "skill: activate VI manual production extension after regression pass",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-c04-semantic-salience",
+      "state": "REVIEW",
+      "evidence": "Isolated study reached POST-REVIEW PASS, but its README remains OBSERVATION only and requires a second independent case or real project implementation before promotion.",
+      "tip_sha": "8f92d663878a3dda8f4fa14ab0dcfb5a22cd7df9",
+      "committed_at": "2026-08-17T12:03:06+08:00",
+      "subject": "practice: record C04 semantic salience training",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-exploration-motion-grammar",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "be22f73f298a2f829ceb11132e74b4623bade1aa",
+      "committed_at": "2026-08-17T13:58:07+08:00",
+      "subject": "practice: persist runtime sequence evidence",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-interaction-state-legibility",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "810b4dfbb12aca1814d6be0e083318332f8abc59",
+      "committed_at": "2026-08-25T17:10:03+08:00",
+      "subject": "Training: correct interaction-state practice evidence boundary",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-material-identity-gate",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "f1b2c95c5da0ede0edf83e6d6bfd9bae56688267",
+      "committed_at": "2026-08-17T18:56:11+08:00",
+      "subject": "training: add material identity parameters",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-source-independent-visual-qa",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "29038e86d3c4a7735eb544509a8f908efdee8041",
+      "committed_at": "2026-08-25T16:54:57+08:00",
+      "subject": "OLEANDER QC: isolate source-independent visual QA fallback",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-technical-drawing-hierarchy",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "9511aa9ae2cb82114bca289f02e263c8cc36c578",
+      "committed_at": "2026-08-17T10:57:24+08:00",
+      "subject": "skill: add technical drawing hierarchy gate to story-and-board",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-17-uncertainty-first-chart",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "636a9491cdcb21112b89747ae32942acd4ee9458",
+      "committed_at": "2026-08-25T17:04:48+08:00",
+      "subject": "Training: align uncertainty chart README with independent-review boundary",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-18-cross-media-correspondence",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "b6389dd014016e47297d96e9fc5d41bc5eafd243",
+      "committed_at": "2026-08-18T05:59:43+08:00",
+      "subject": "Add editable correspondence specimen",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-18-dimension-object-binding",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "7cc4984e25fefcf0dc6a1721bb52fe2a403d124e",
+      "committed_at": "2026-08-18T07:00:46+08:00",
+      "subject": "add dimension binding training manifest",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-18-exploration-behavior-grammar",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "6eb66f7fe51a47d23a768187f137e7bee144e2c6",
+      "committed_at": "2026-08-25T13:34:55+08:00",
+      "subject": "motion: consolidate exploration behavior grammar candidates",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-18-longform-project-orientation",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "97248fee81f8d9dab6a76cc54e13975efd80ddd8",
+      "committed_at": "2026-08-18T02:03:36+08:00",
+      "subject": "practice: record long-form orientation training loop",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/2026-08-18-small-mark-optical-size",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "95ae6662c981f712c615f3e130fc15e3bb2ebf30",
+      "committed_at": "2026-08-18T04:57:42+08:00",
+      "subject": "training: record small-mark optical-size closure",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/20260818-exploration-grammar",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "594f878318f306494de3d0ffb527b7cf4794dd65",
+      "committed_at": "2026-08-18T13:58:13+08:00",
+      "subject": "training: add editable exploration grammar asset",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/20260818-icon-optical-normalization",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "d882759da4236be6288b721a0b3838ef16f38b57",
+      "committed_at": "2026-08-18T23:59:09+08:00",
+      "subject": "training: record final-head CI state",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/20260818-interaction-cue-escalation",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "586249be75ad3a0023fb9722b6c7a3701c83b709",
+      "committed_at": "2026-08-19T04:00:02+08:00",
+      "subject": "training: add editable lifecycle framing study",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/20260818-same-source-reveal",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "tip_sha": "a95edb39e1287123ddb69c66ae93e26fe8a06061",
+      "committed_at": "2026-08-18T12:58:10+08:00",
+      "subject": "add paired-view vector training asset",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "training/20260826-retail-pop-dieline-handoff",
+      "state": "REJECT",
+      "evidence": "PR #370 explicitly records PARALLEL SKILL IDENTITY REJECTED while retaining the practice as provenance.",
+      "tip_sha": "fc5c35c4697b8f304ce5005211c163dd303de167",
+      "committed_at": "2026-08-26T10:02:21+08:00",
+      "subject": "training: record retail viewing-distance hierarchy practice",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "validation/c01-r03-input-integrity-r01",
+      "state": "REVIEW",
+      "evidence": "Adds duplicate/blank ID rejection, exact coder-set equality and coverage reporting, but overlaps competing unmerged C01 integrity implementations.",
+      "tip_sha": "814b2ea57e8af5a7cf494253106a7aeadd1b8c87",
+      "committed_at": "2026-09-06T09:41:16+08:00",
+      "subject": "validation(c01): harden R03 reliability input integrity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "validation/c01-r03-reliability-integrity",
+      "state": "REVIEW",
+      "evidence": "Adds useful C01 reliability input-integrity hardening, but overlaps competing unmerged implementations with no canonical selector yet.",
+      "tip_sha": "28765d9501cabd8424b30bba2dcb580c00da8be0",
+      "committed_at": "2026-09-06T13:35:56+08:00",
+      "subject": "fix(c01): harden dual-coder reliability input integrity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    },
+    {
+      "branch": "validation/c01-reliability-input-integrity-r01",
+      "state": "ABSORB",
+      "evidence": "Strongest bounded C01 fix: validates record_id column, rejects blank/duplicates, enforces exact coder sets, and reports coverage; main lacks these checks.",
+      "tip_sha": "2690a89474f096b6dff61ec5b0114d5c01bdf88f",
+      "committed_at": "2026-09-06T08:40:09+08:00",
+      "subject": "fix(c01): harden dual-coder reliability input integrity",
+      "classification_base_sha": "533254ea43a29e8f889541d81f05a22dc3c583c7"
+    }
+  ]
+}
