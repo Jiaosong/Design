@@ -1,0 +1,39 @@
+{
+  "schema": "oleander.c04.ch02-expansion/0.8",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH02",
+  "preserve": ["CH02-P01", "CH02-P02", "CH02-P03", "CH02-P04", "CH02-P05"],
+  "new_page_units": [
+    {"id":"CH02-P06","file":"CH02-P06_CLIMATE_VISIBILITY.svg","role":"Climate + Visibility"},
+    {"id":"CH02-P07","file":"CH02-P07_RAIN_FLOOD_GEOHAZARD.svg","role":"Rain–Flood–Geohazard Coupling"},
+    {"id":"CH02-P08","file":"CH02-P08_RASTER_EVIDENCE_FRONTIER.svg","role":"Analytical Raster Frontier"},
+    {"id":"CH02-P09","file":"CH02-P09_ENVIRONMENT_EXPERIENCE_MATRIX.svg","role":"Environment → Experience Matrix"}
+  ],
+  "image_generation_used": false,
+  "route_authority": "ROUTE-03 LOCKED CURRENT",
+  "raster_gates": {
+    "ENV-03": "SOURCE VERIFIED / AOI UNBOUND / HOLD / NO MAIN PROMOTION",
+    "ENV-04": "SOURCE VERIFIED / AOI UNBOUND / HOLD / NO MAIN PROMOTION"
+  },
+  "local_canonical_export": {
+    "package": "C04_CH02_EXPANSION_v0.8.zip",
+    "bytes": 1226241,
+    "sha256": "c8f32a13de2218adffd1c65af852391c9265808e4ad57d9d2c7d6897ba51d2bc",
+    "svg_sha256": {
+      "CH02-P06": "c20c71eedcb4d6892be3ba032a33bdc8f0e86ecb6fe708e4f02cc318b1e8fc9f",
+      "CH02-P07": "2f68f2a86dda05ddb58621f41791eda8fd6699e5b6087aff80d30534e9b7b680",
+      "CH02-P08": "3f004abade643d18cb6faa11d5424554cae6f664b8d0517522419386132b95ad",
+      "CH02-P09": "d31d1a0c9b3d03ef006299b2fec0662f6efaa7b1923318f6b29ea7c9a1fa9ce3"
+    }
+  },
+  "repository_byte_equivalence": {
+    "CH02-P06": false,
+    "CH02-P07": true,
+    "CH02-P08": false,
+    "CH02-P09": false,
+    "note": "false means repository-side vector serialization is not claimed byte-equivalent to local canonical export; no persistence equivalence is inferred"
+  },
+  "producer_actual_preview": "COMPLETE",
+  "independent_professional_design_review": "PENDING",
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS"
+}
