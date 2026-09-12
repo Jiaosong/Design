@@ -1,0 +1,12 @@
+{
+  "version": "0.4.0",
+  "state": "SURFACE_INTEGRATION",
+  "current_object": "OLE-GEO-0001",
+  "layers": {
+    "geometry_kernel": "INITIALIZED",
+    "surface_system": "BOUND",
+    "validation": "READY_FOR_BINDING",
+    "evidence": "INITIALIZED"
+  },
+  "next_phase": "R4.x validation receipt integration"
+}

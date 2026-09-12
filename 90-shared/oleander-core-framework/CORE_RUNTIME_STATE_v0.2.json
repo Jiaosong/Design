@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "state": "IMPLEMENTATION",
+  "current_object": "OLE-GEO-0001",
+  "layers": {
+    "semantic_object": "READY",
+    "relation_graph": "INITIALIZED",
+    "blender_bridge": "INITIALIZED",
+    "validation": "INITIALIZED",
+    "evidence": "INITIALIZED"
+  },
+  "next_phase": "v0.3 Blender Inspector + Relation Visualization + Source Permission Layer"
+}

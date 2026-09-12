@@ -1,0 +1,63 @@
+{
+  "schema": "oleander.blender-surface-system.source-authority-adapter-contract.v1",
+  "system": "OLEANDER Blender Surface System",
+  "version": "v1.21.0",
+  "parent_surface_system": "v1.20.0",
+  "adapter_api": "oleander.blender-surface-system.source-authority-adapter.v1",
+  "scope": "BLENDER_NATIVE_SPARSE_SOURCE_CONTEXT_AND_NON_DESTRUCTIVE_DIAGNOSTIC_PROXY",
+  "source_authority": {
+    "collection": "OLEANDER_SOURCE_AUTHORITY",
+    "benchmark": "MW-V013-G1-ERGONOMIC-HANDHELD-SHELL",
+    "expected_objects": [
+      "OL_SRC_GRIP_AXIS",
+      "OL_SRC_INTERFACE_DECK_BOUNDARY",
+      "OL_SRC_LOWER_RETURN_PROFILE",
+      "OL_SRC_OPPOSITE_SIDE_PLAN",
+      "OL_SRC_PALM_PROFILE",
+      "OL_SRC_THUMB_SIDE_PLAN"
+    ],
+    "supported_snapshot_object_types": [
+      "CURVE",
+      "MESH",
+      "EMPTY"
+    ],
+    "snapshot_payload": [
+      "object identity/type",
+      "matrix_world",
+      "custom properties",
+      "curve control geometry or mesh topology where applicable"
+    ],
+    "digest": "SHA256_CANONICAL_JSON",
+    "before_after_diagnostic_snapshot_required": true,
+    "source_geometry_mutation_during_diagnostic_forbidden": true,
+    "source_material_mutation_during_diagnostic_forbidden": true
+  },
+  "diagnostic_proxy": {
+    "role": "DERIVED_DIAGNOSTIC_NOT_AUTHORITY",
+    "authority": false,
+    "source_snapshot_sha_required": true,
+    "evaluated_geometry_copy": true,
+    "diagnostic_material_mutation_allowed_on_proxy_only": true,
+    "promotion_impact": "NONE"
+  },
+  "integration_rule": {
+    "modeling_worker_source_authority_remains_owner": true,
+    "surface_system_may_read_and_bind_but_not_redefine_source": true,
+    "derived_execution_mesh_remains_non_authoritative": true,
+    "local_parallel_surface_runtime_forbidden": true,
+    "r4_5_1_parameter_supported_as_custom_property": "termination_cap_pole_curvature_scale"
+  },
+  "validation": {
+    "python_contract_test_required": true,
+    "blender_5_2_smoke_required": true,
+    "smoke_checks": [
+      "six sparse source objects snapshot",
+      "diagnostic proxy creation",
+      "original target material slots unchanged",
+      "source digest unchanged during diagnostic",
+      "controlled source edit changes digest",
+      "saved .blend contains source and proxy provenance"
+    ]
+  },
+  "evidence_boundary": "This adapter proves deterministic Blender-native source readback and non-destructive diagnostic binding. It does not prove Candidate/Canonical promotion, Class-A surface quality, ergonomics, engineering CAD, manufacturing, material/CMF truth, or release readiness."
+}

@@ -1,0 +1,12 @@
+﻿{
+  "version": "0.1.0",
+  "component": "chat_on_steroids_skill_router",
+  "purpose": "Resolve OLEANDER reusable skills before local execution",
+  "flow": ["TASK_PARSE","PROJECT_STATE_CHECK","SKILL_MATCH","CAPABILITY_CHECK","EXECUTE","VALIDATE","RECEIPT"],
+  "sources": ["oleander-skills/REVIEW.md","PROJECT_STATE","SOURCE_AUTHORITY"],
+  "rules": {
+    "no_skill_no_execute": true,
+    "no_authority_no_promote": true,
+    "derived_is_not_source": true
+  }
+}
