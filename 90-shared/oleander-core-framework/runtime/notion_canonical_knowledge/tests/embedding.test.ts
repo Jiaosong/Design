@@ -47,4 +47,31 @@ describe("embedding batching", () => {
       [2, 2.5],
     ]);
   });
+
+  it("recursively splits a provider-rejected context batch without dropping order", async () => {
+    let offset = 0;
+    const run = vi.fn(async (_model: unknown, input: { text: string[] }) => {
+      if (input.text.length > 2) throw new Error("3030: Max context reached 83804 tokens but model supports only 60000");
+      return {
+        data: input.text.map(() => {
+          const value = offset++;
+          return [value, value + 0.5];
+        }),
+      };
+    });
+    const env = {
+      AI: { run },
+      EMBEDDING_MODEL: "@cf/baai/bge-m3",
+      EMBEDDING_DIMENSIONS: "2",
+    } as unknown as Env;
+    const vectors = await embedTexts(env, ["a", "b", "c", "d", "e"]);
+    expect(run.mock.calls.length).toBeGreaterThan(1);
+    expect(vectors).toEqual([
+      [0, 0.5],
+      [1, 1.5],
+      [2, 2.5],
+      [3, 3.5],
+      [4, 4.5],
+    ]);
+  });
 });
