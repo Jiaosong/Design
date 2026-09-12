@@ -1,0 +1,33 @@
+{
+  "project_identity": "PRJ-C04-QINGJIANG-SHISHU",
+  "current_delta": "Physical/Sensory — Qingfengyin currentization only",
+  "source": "Original Qingfengyin boards/longscroll: wind + soft light + waiting + writing; spatial and memory roles",
+  "skills": [
+    "Original Design Motherboard",
+    "Comparison-first",
+    "Strict/Blind Review",
+    "Material/CMF",
+    "Environmental-state review"
+  ],
+  "competition": {
+    "C0_natural_wind": "KEEP / primary baseline",
+    "C1_single_low_density_spatial_page": "COMPETE / Sensory Secondary",
+    "C2_mass_hanging": "CUT PRIORITY",
+    "C3_memory_page": "KEEP / secondary memory"
+  },
+  "design_decision": {
+    "spatial": "one dedicated low-density page; no tree fixing; no wish-wall accumulation",
+    "interaction": "APPROACH → NOTICE WIND → WAIT → OPTIONAL ONE-LINE WRITE → LEAVE",
+    "quiet": "no movement is a valid state",
+    "breeze": "subtle existence cue only; acoustics/light remain prototype-open",
+    "strong_wind": "withdraw/secure/off; do not seek larger motion",
+    "memory": "one real sentence; no purchase/completion requirement"
+  },
+  "visual_gate": {
+    "sheet01": "KEEP / SENSORY MAIN CANDIDATE — Qingjiang/wind first, product secondary",
+    "sheet02": "KEEP_AFTER_REVISION / MAIN-SUPPORT PAIR — spatial and memory roles legible after overlap repair",
+    "rejected": "v1.0 comparison-board and first v1.1 overlap layout withheld"
+  },
+  "package_sha256": "2523a3b2396e593e021cdb3c789eac89559505c29cde253443c8a2097aa4be43",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}
