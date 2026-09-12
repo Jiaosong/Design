@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { estimateTokens } from "../src/chunker";
 import { EMBEDDING_BATCH_MAX_ESTIMATED_TOKENS } from "../src/config";
 import { embeddingBatches, embedTexts } from "../src/embedding";
 import type { Env } from "../src/types";
@@ -9,6 +10,16 @@ describe("embedding batching", () => {
     const texts = Array.from({ length: EMBEDDING_BATCH_MAX_ESTIMATED_TOKENS + 10 }, () => oneTokenLike);
     const batches = embeddingBatches(texts);
     expect(batches.length).toBe(2);
+    expect(batches.flat()).toEqual(texts);
+  });
+
+  it("keeps every estimated batch below the conservative request budget", () => {
+    const texts = Array.from({ length: 300 }, (_, index) => `标题${index}:${"混合Text内容".repeat(80)}`);
+    const batches = embeddingBatches(texts);
+    for (const batch of batches) {
+      const estimated = batch.reduce((sum, text) => sum + estimateTokens(text), 0);
+      expect(estimated).toBeLessThanOrEqual(EMBEDDING_BATCH_MAX_ESTIMATED_TOKENS);
+    }
     expect(batches.flat()).toEqual(texts);
   });
 
