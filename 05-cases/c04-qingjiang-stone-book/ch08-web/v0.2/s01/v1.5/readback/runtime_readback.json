@@ -1,0 +1,20 @@
+{
+  "desktop": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"final","errors":[],"horizontalOverflow":0},
+  "mobile": {"scrollWidth":390,"clientWidth":390,"scrollHeight":1316,"clientHeight":844,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"final","errors":[],"horizontalOverflow":0},
+  "desktop_source": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"source","errors":[],"horizontalOverflow":0},
+  "desktop_tonal": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"tonal","errors":[],"horizontalOverflow":0},
+  "desktop_wash": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"wash","errors":[],"horizontalOverflow":0},
+  "small_320": {"scrollWidth":320,"clientWidth":320,"scrollHeight":1272,"clientHeight":700,"brokenImages":0,"imageNatural":[[1080,608]],"stage":"final","errors":[],"horizontalOverflow":0},
+  "pixel_diffs": {
+    "source_to_tonal":{"mean_abs_rgb":2.2423,"changed_pixel_ratio":0.380357,"bbox":[569,201,1837,825]},
+    "tonal_to_wash":{"mean_abs_rgb":0.2528,"changed_pixel_ratio":0.210456,"bbox":[569,201,1837,825]},
+    "wash_to_final":{"mean_abs_rgb":0.188,"changed_pixel_ratio":0.128534,"bbox":[569,201,1837,825]},
+    "source_to_final":{"mean_abs_rgb":2.2465,"changed_pixel_ratio":0.379455,"bbox":[569,201,1837,825]}
+  },
+  "hashes": {
+    "source":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "tonal":"e229a9b65c2fa975ca85ec6db2364d5dfa43a05b1d32383dbc0dadc108b85fc5",
+    "wash":"322ce42975a7039bf3290f170dd4839f3753d212a5679a7f537e1b96616ee5d3",
+    "final":"21b35c35b9ab293d1da573e1782da37d44666ab2315382804675ddd5bf4356c9"
+  }
+}

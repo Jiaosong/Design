@@ -1,0 +1,12 @@
+{
+  "schema":"C04_PROJECT_WEB_IMAGE_USE_LEDGER_v0.1_CH08_DELTA",
+  "rule":"one underlying content-image source = one semantic Web image slot across entire project Web",
+  "scope":"CH08 Web v0.1 delta + compatibility with project-wide gate",
+  "entries":[],
+  "content_raster_slots":0,
+  "img_elements":0,
+  "inline_svg_visuals":["CH08-S01","CH08-S02-A","CH08-S02-B","CH08-S02-C","CH08-S03","CH08-S04-NORMAL","CH08-S04-OVERRIDE","CH08-S05","CH08-S06","CH08-S07"],
+  "duplicate_source_scan":"PASS FOR CH08 DELTA / 0 CONTENT IMAGE SOURCES",
+  "project_wide_status":"HOLD / full current integrated Web surface register remains NOT_YET_REGISTERED",
+  "note":"Brand marks/icons/system textures are not used as content imagery in this CH08 delta. ROUTE-03 appears as inline authoritative geometry, not a repeated raster content-image source."
+}

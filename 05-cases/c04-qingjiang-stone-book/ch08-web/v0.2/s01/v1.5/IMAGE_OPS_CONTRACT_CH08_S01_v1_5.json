@@ -1,0 +1,15 @@
+{
+  "source": {
+    "path": "ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "size": [1080, 608],
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b"
+  },
+  "intent": "CH14 contemporary editorial print response; real photography remains first-read",
+  "stages": {
+    "WASH-TONAL": {"saturation": 0.84, "contrast": 0.94, "brightness": 1.015, "bone_mist_blend": 0.025},
+    "WASH-MASK": {"gaussian_radius": 1.25, "max_owner_opacity": 0.18, "role": "atmospheric optical decay only"},
+    "INK-EDGE": {"operator": "localized unsharp / not outline", "radius": 1.35, "percent": 55, "threshold": 4, "max_owner_strength": 0.5}
+  },
+  "prohibited": ["sepia", "antique paper", "watercolor bloom", "torn edge", "full-image outline", "selective fake river recolor", "source overwrite"],
+  "does_not_prove": ["field truth", "material print proof", "design keep", "source resolution upgrade"]
+}

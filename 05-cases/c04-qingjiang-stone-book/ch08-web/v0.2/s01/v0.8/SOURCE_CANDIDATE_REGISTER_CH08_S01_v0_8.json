@@ -1,0 +1,29 @@
+{
+  "schema": "C04_CH08_S01_SOURCE_CANDIDATE_REGISTER_v0.8",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH08-S01",
+  "date": "2026-08-19",
+  "article_page": "https://www.eslygroup.com/scenic_news/2815.html",
+  "source_owner": "恩施旅游集团有限公司官网 / 恩施大清江公司相关景区报道",
+  "article_date": "2023-07-11",
+  "generation": "OFF",
+  "materialization": {
+    "method": "official image URL → Google Slides createImage → PPTX export → ppt/media extraction",
+    "byte_identity_control": "The same method on prior source 32050c33e.jpg reproduced exact original 71,747 bytes and SHA256 33403ef..., supporting byte-preserving extraction for this set.",
+    "google_slides_id": "1sdFBm_uiXfSDta-FskDvstnighEJNViwVt84zqOPN-w"
+  },
+  "candidates": [
+    {"id":"SRC01","filename":"0lqz78y30a.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/0lqz78y30a.jpg","bytes":204871,"width":1080,"height":686,"sha256":"4ce6a0cdc424ff4b73e3e42b79da3b168f45b5b53c2d8e8be8ec4625e9de78e3","producer_role_observation":"peak forest + elevated platform; no river/cable","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC02","filename":"k3am00cd93.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/k3am00cd93.jpg","bytes":78683,"width":1080,"height":608,"sha256":"70ee22d037782af032d041ad1042ffb890bcd765ddc0efec0ca173b905b20040","producer_role_observation":"cliff + distant cable relation; river weak","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC03","filename":"xur7k2e4tf.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/xur7k2e4tf.jpg","bytes":87596,"width":1080,"height":608,"sha256":"a76e85712d7a93518ff2bcb2d6cfb13fdfaede6293b6448c5b1ee6a40373cfdf","producer_role_observation":"top-down river/peak relation; more diagrammatic than experiential","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC04","filename":"no8m44trv0.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/no8m44trv0.jpg","bytes":133082,"width":1080,"height":608,"sha256":"d43cf82695f1334907ae08ec218a1e57f6ca5393d985647b52a994b47d16d83a","producer_role_observation":"cable cars + river + settlement; transport dominates","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC05","filename":"5pszhdcxjz.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/5pszhdcxjz.jpg","bytes":120073,"width":1080,"height":608,"sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b","producer_role_observation":"peak forest + Qingjiang + visible walking/platform layer; strongest whole→body coexistence","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC06","filename":"hfwejlwwzx.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/hfwejlwwzx.jpg","bytes":94645,"width":1080,"height":608,"sha256":"57f192b425086578f2caa5ff8bacae49ce25e475c63e74cd14b6a5ef6584ec60","producer_role_observation":"wide river/valley/settlement; strong whole scale, weaker body relation","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC07","filename":"symekcvp5q.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/symekcvp5q.jpg","bytes":104666,"width":1080,"height":720,"sha256":"ea31b678ea36c015ea66d8a48d61de312e6068d34ae92f8e25f6ab54a6a13684","producer_role_observation":"cable cabin + cliff; cable dominates","final_design_verdict":"NOT_PRODUCER_OWNED"},
+    {"id":"SRC08","filename":"mnq9o6767b.jpg","url":"https://www.eslygroup.com/uploadfile/image/20230711/mnq9o6767b.jpg","bytes":163506,"width":1080,"height":720,"sha256":"69b06e7dead1101ae23bb6eae5b1a478468df78b58c25ea8cfa7138d98731f96","producer_role_observation":"peak forest + zigzag path; body/walk strong, river absent","final_design_verdict":"NOT_PRODUCER_OWNED"}
+  ],
+  "selected_for_independent_review": {
+    "id": "SRC05",
+    "reason": "Producer selection only: preserves real landscape as dominant field while simultaneously showing Qingjiang, peak forest and a small body/walking/platform layer. It does not make transport equipment the first read. Final KEEP/REVISE/REJECT belongs to independent reviewer."
+  }
+}

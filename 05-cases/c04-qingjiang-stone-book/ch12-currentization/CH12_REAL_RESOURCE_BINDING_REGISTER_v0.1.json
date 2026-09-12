@@ -1,0 +1,145 @@
+{
+  "schema": "c04.ch12.real-resource-binding.v0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH12",
+  "mode": "CANDIDATE_REAL_RESOURCE_BINDING",
+  "state": "SOURCE_MATERIALIZED_PARTIAL_BINDING_CONSUMPTION_RECONCILIATION_OPEN_NO_PROMOTION",
+  "global_rules": [
+    "REAL_QINGJIANG_FIRST",
+    "ROUTE_03_LOCKED_CURRENT",
+    "ONE_UNDERLYING_CONTENT_IMAGE_ONE_SEMANTIC_WEB_CONSUMER_UNIT",
+    "PRESENTATION_DERIVATIVE_INHERITS_SOURCE_IDENTITY",
+    "R06_FINISHED_FROZEN_NO_REOPEN"
+  ],
+  "pages": [
+    {
+      "page_id": "A01",
+      "role": "Selected Scene Atlas",
+      "source_type": "AUTHORITATIVE_VECTOR",
+      "source_object": "CH09-P01 ROUTE-03 USER_LOCKED_CURRENT v3.4",
+      "source_path": "05-cases/c04-qingjiang-stone-book/ch09-route-service/p01-route03-ch14-rebuild-v1/locked-v3.4/CH09_P01_ROUTE03_CH04_DENSE_CLEAN_MAP_v3_4.svg",
+      "package_sha256": "04065e8565f2700e0b37db4ae02f9b7c096d9eed3b72ba340409ce799150ae25",
+      "route_geometry_lineage_sha256": "44bde5dfd82bcc6435b1aa40fb9a61d3fb99b281c93e7d0e41bdf4a38e4aec75",
+      "binding_status": "BOUND_SUPPORT",
+      "content_image_slot": false,
+      "action": "READ_ONLY_SUBSET_HIGHLIGHT_NO_ROUTE_REAUTHOR"
+    },
+    {
+      "page_id": "A02",
+      "role": "R01 Cable Moving View",
+      "source_type": "OFFICIAL_ARTICLE_MEDIA",
+      "source_asset_id": "ESLY-3229-IMG-02-548f20f1f",
+      "source_url": "https://www.eslygroup.com/uploadfile/image/20240522/548f20f1f.png",
+      "width": 850,
+      "height": 629,
+      "bytes": 1192841,
+      "sha256": "75f03e6ce2027e972f203791e40fc733b8abf7b9f53f166f2316bccb5720c792",
+      "binding_status": "SOURCE_MATERIALIZED_RESERVATION_READY",
+      "consumer_unit_candidate": "CH12-A02-R01-STATIC-RELATION",
+      "moving_stimulus_state": "HOLD",
+      "required_label": "OFFICIAL ARTICLE MEDIA / STATIC CABLE RELATION / NOT CABIN POV",
+      "presentation_limit": "CONTAINED_SOURCE_SAFE_SIZE"
+    },
+    {
+      "page_id": "A03",
+      "role": "R05 Discovery",
+      "source_type": "OFFICIAL_HOSTED_MEDIA",
+      "source_asset_id": "OW-20230711-mnq9o6767b",
+      "source_url": "https://www.eslygroup.com/uploadfile/image/20230711/mnq9o6767b.jpg",
+      "width": 1080,
+      "height": 608,
+      "bytes": 85224,
+      "sha256": "29e60eae20dce7e171ec1bc15cfcb0d3036654c71a0d1ae2dc35fdfbaa1fa5af",
+      "binding_status": "SOURCE_MATERIALIZED_RESERVATION_READY_PIXEL_FIT_REVIEW_REQUIRED",
+      "consumer_unit_candidate": "CH12-A03-R05-DISCOVERY",
+      "presentation_limit": "CONTAINED_IMAGE_NO_FULL_BLEED_UPSCALE",
+      "distinct_from_ch01_source": "OW-20230616-2a923422a"
+    },
+    {
+      "page_id": "A04",
+      "role": "R06 Landscape First",
+      "source_type": "OFFICIAL_BASE_PLUS_MATURE_DERIVATIVE",
+      "source_asset_id": "ESLY-3229-IMG-01-1cce70abb",
+      "source_url": "https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg",
+      "base_width": 850,
+      "base_height": 706,
+      "base_bytes": 247959,
+      "base_sha256": "f6695ca1e9a9e47a803f8237a095b180c6b9d802141fe26869cccc32ade6754c",
+      "mature_derivative_file": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "mature_derivative_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "binding_status": "HOLD_CONSUMPTION_CONFLICT",
+      "target_consumer_if_released": "CH12-R06-SEMANTIC-COMPONENT-A04-A05"
+    },
+    {
+      "page_id": "A05",
+      "role": "R06 Same-source Relation Reveal",
+      "source_type": "SAME_R06_BASE_COMPONENT",
+      "mature_derivative_file": "QJD_V11_03_R06_TWO_STAGE_1920x1080.png",
+      "mature_derivative_bytes": 1911515,
+      "mature_derivative_sha256": "12b4170d77279c6730230e205dde5e5946feec93da2a802eae5263959b60160d",
+      "binding_status": "SAME_COMPONENT_TARGET_HOLD_CONSUMPTION_CONFLICT",
+      "final_web_rule": "ONE_BASE_BINDING_STATE_LAYER_CHANGE_NOT_SECOND_STATIC_SLOT"
+    },
+    {
+      "page_id": "A06",
+      "role": "R06 Body × Audience",
+      "source_type": "PROJECT_DESIGN_SOURCE",
+      "source_file": "09_C04_R06_AUDIENCE_DEPTH_CURRENTIZED_v4.png",
+      "bytes": 2330695,
+      "sha256": "e2db0ba76c7972f0aa66d011c3ddef2c16f79368626c2c598764cf9fa4a37b78",
+      "binding_status": "DESIGN_SOURCE_BOUND_DISPLAY_RASTER_FORBIDDEN",
+      "action": "REBUILD_BODY_BEHAVIOR_RELATION_AS_NATIVE_SVG",
+      "embedded_r06_image_reuse": "FORBIDDEN"
+    },
+    {
+      "page_id": "A07",
+      "role": "Route Decision",
+      "source_type": "SEMANTIC_LOGIC",
+      "source_object": "CH09 Route/Return + CH12 Decision Contract",
+      "binding_status": "LOGIC_BOUND_NATIVE_SVG",
+      "content_image_slot": false,
+      "truth_boundary": "LOCATION_OPEN_NOT_ROUTE03_GEOMETRY"
+    },
+    {
+      "page_id": "A08",
+      "role": "R13 Enter + Pass",
+      "source_type": "OFFICIAL_TEXT_EVIDENCE_PLUS_PROJECT_DESIGN_SOURCE",
+      "official_page": "https://www.eslygroup.com/media_focus/3229.html",
+      "design_source_file": "04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png",
+      "design_source_bytes": 481744,
+      "design_source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "binding_status": "EVIDENCE_TEXT_BOUND_DESIGN_SOURCE_SUPPORT_NODE_PIXEL_HOLD",
+      "required_label": "REMOTE CURRENTIZED DESIGN / NOT SITE PHOTO",
+      "action": "NATIVE_SVG_APERTURE_BODY_COMPRESSION"
+    },
+    {
+      "page_id": "A09",
+      "role": "R13 Exit + Re-recognition",
+      "source_type": "OFFICIAL_TEXT_EVIDENCE_PLUS_PROJECT_DESIGN_SOURCE",
+      "official_page": "https://www.eslygroup.com/media_focus/3229.html",
+      "design_source_file": "11_C04_R13_AFTER_EXIT_MEMORY_CURRENTIZED_v4.png",
+      "design_source_bytes": 658894,
+      "design_source_sha256": "6f2762e879b34f4c119495d43ac455f092f52b78c5bd17628a6a6798a49580e4",
+      "binding_status": "DESIGN_SOURCE_BOUND_REAL_EXIT_PIXEL_HOLD",
+      "action": "NATIVE_SVG_RELEASE_RETURN_MEMORY_AFTER_EXIT"
+    }
+  ],
+  "explicit_exclusions": [
+    "IMG-C04-D-HERO-01",
+    "OW-20230616-2a923422a",
+    "OW-20230718-v0ii0wjlhe",
+    "IMG-C04-C22-MACRO-01",
+    "CH13_ODB02_RESERVED_CHILD_CROPS",
+    "CH13_PHYSICAL_RECOVERY_RESERVED_IMAGE"
+  ],
+  "next_actions": [
+    "A01_BIND_ROUTE_SVG_READ_ONLY",
+    "A02_USE_MATERIALIZED_548f20f1f_AS_STATIC_RELATION_CANDIDATE",
+    "A03_USE_MATERIALIZED_mnq9o6767b_CONTAINED_AND_RUN_PIXEL_FIT_REVIEW",
+    "A04_A05_WAIT_FOR_EXPLICIT_R06_SOURCE_RELEASE_OR_REALLOCATION",
+    "A06_REBUILD_NATIVE_SVG_FROM_DESIGN_SOURCE",
+    "A07_BUILD_NATIVE_DECISION_FIELD",
+    "A08_A09_BUILD_SOURCE_BOUND_SVG_WHILE_NODE_PIXEL_REMAINS_HOLD"
+  ],
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

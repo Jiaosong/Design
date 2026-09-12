@@ -1,0 +1,32 @@
+{
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "chapter":"CH08",
+  "artifact":"CH08_WEB_VISUAL_CURRENTIZATION_v0.1",
+  "role":"DOWNSTREAM PRESENTATION / DOES NOT REPLACE CH08 v0.4 STRATEGY AUTHORITY",
+  "constraint_lock":{
+    "NO_IMAGE_GENERATION":true,
+    "PROJECT_WEB_IMAGE_UNIQUENESS":true,
+    "NO_COMPRESSION_NO_LOSS":true,
+    "ROUTE_03_LOCKED_CURRENT":true,
+    "R06_FROZEN":true
+  },
+  "resolver":"KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+  "execution_owner_set":[
+    {"owner":"oleander-story-and-board","role":"PRIMARY"},
+    {"owner":"oleander-data-viz","role":"SUPPORT / ROUTE-03 GEOMETRY ONLY"},
+    {"owner":"oleander-delivery-qc","role":"VALIDATOR"}
+  ],
+  "visual_authority":"CH14 P04/P05/P06/P07 + CH14 Contemporary Editorial + Landscape Space",
+  "content_image_policy":{
+    "content_raster_slots":0,
+    "img_elements":0,
+    "inline_svg_visuals":8,
+    "duplicate_content_image_sources":0,
+    "reason":"Avoid consuming or duplicating source-bound project imagery before the full project-wide Web image ledger is complete. Visual hierarchy is carried by unique editable vector fields; CH08 does not steal CH12/CH13/CH15 image slots."
+  },
+  "source_bound_geometry":[
+    {"object":"ROUTE-03","use":"CH08-S03 only","transform":"uniform presentation transform only","does_not_prove":"GPS / measured distance / live operation / field condition"}
+  ],
+  "truth_boundary":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "review_boundary":"Producer may complete structural/runtime readback; independent Professional Design Gate remains separate."
+}

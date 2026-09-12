@@ -1,0 +1,9 @@
+{
+  "current": "v0.4",
+  "status": "AUTHORING CANDIDATE / NO_PROMOTION",
+  "core": ["R01","R02","R05","R06","R07","R09","R12","R13"],
+  "provisional": ["R03","R04","R08","R10","R11"],
+  "system": "Core 8 + Companion Pool + Trip Subset",
+  "upstream": "PR #294 v0.3 + Notion methods",
+  "downstream": "CH11 App / CH12 scenes / CH13 physical / CH15 memory"
+}

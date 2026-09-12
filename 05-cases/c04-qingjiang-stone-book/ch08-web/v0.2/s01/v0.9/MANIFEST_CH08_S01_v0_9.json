@@ -1,0 +1,33 @@
+{
+  "schema": "C04_CH08_S01_v0.9",
+  "state": "PRODUCER_CANDIDATE / ACTUAL_PIXEL_READBACK_COMPLETE / INDEPENDENT_PROFESSIONAL_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "source": {
+    "id": "SRC05",
+    "filename": "5pszhdcxjz.jpg",
+    "local_carrier": "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "semantic_slot": "CH08-S01-MAIN",
+    "generation": "OFF",
+    "use_condition": "same underlying source remains one project-wide Web semantic image slot; responsive variants count once"
+  },
+  "delta": [
+    "replace hard 32% full-height split with full-viewport source image",
+    "use left paper wash as reading layer instead of separate content panel",
+    "retain same source/semantic slot/no generated pixels",
+    "mobile remains image-first vertical recomposition"
+  ],
+  "readback": {
+    "desktop": {"viewport":"1920x1080","scrollWidth":1920,"clientWidth":1920,"overflow":0,"broken_images":0,"console_page_errors":0},
+    "mobile": {"viewport":"390x844","scrollWidth":390,"clientWidth":390,"scrollHeight":944,"overflow":0,"broken_images":0,"console_page_errors":0}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "files": {
+    "index.html": {"bytes":4538,"sha256":"e7dbe2a8db7ba2f98ec7159c724f67421577327aa9a4e223ec7a62a9cbab22c4"},
+    "readback/S01_v0.9_desktop.png": {"bytes":2186017,"sha256":"bd8780483e3f6cefb36cbeab5111d068ec2f473d1ba7cc9c4609e578fe192bd3"},
+    "readback/S01_v0.9_desktop_gray.png": {"bytes":1175648,"sha256":"d98d0fe523fce56d6db1edc2ea8b8aece522a9fb1502097705cf71383c265d14"},
+    "readback/S01_v0.9_mobile.png": {"bytes":356830,"sha256":"565d47b9b0e008e76331c7ac26fe9d209970e6c0bffa8d2ea6147700e10d656a"},
+    "readback/S01_v0.9_mobile_gray.png": {"bytes":228530,"sha256":"ca2a70aa6d57b2602daf5263a4643069df3039cdc46ae16ad090d7ce36f790b7"},
+    "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg": {"bytes":120073,"sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b"}
+  },
+  "local_review_zip": {"filename":"C04_CH08_S01_v0.9_PRODUCER_CANDIDATE.zip","bytes":4058783,"sha256":"a624fd12659995870b9503b44c15173a417d99e44b09c0d346fe294de1da6351","persistence":"LOCAL / USER-DOWNLOADABLE / DRIVE SYNC OPEN"}
+}

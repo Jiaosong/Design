@@ -1,0 +1,64 @@
+{
+  "object": "PRJ-C04-QINGJIANG-SHISHU / CH08 / CH08-S01-MAIN / v1.4",
+  "tool": "T-VISUAL-IMAGE-OPS-001",
+  "source": {
+    "id": "SRC05",
+    "filename": "ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "dimensions": [1080,608],
+    "overwrite": false
+  },
+  "intent": "Translate the real Qingjiang photograph into a restrained ink-on-paper editorial plate without generating, reconstructing, or inventing scene content.",
+  "pipeline": ["WASH-TONAL","WASH-MASK","INK-EDGE"],
+  "operators": {
+    "WASH-TONAL": {
+      "class": "Adjustment / Raster-preview Effect",
+      "owner": "entire source image; river chroma retained by bounded hue+spatial mask",
+      "parameters": {
+        "bilateral_d": 7,
+        "bilateral_sigmaColor": 34,
+        "bilateral_sigmaSpace": 5,
+        "large_luma_sigma": 9.0,
+        "detail_retention": 0.52,
+        "tonal_anchors_x": [0,0.1,0.22,0.38,0.56,0.72,0.86,1.0],
+        "tonal_anchors_y": [0.1,0.16,0.27,0.42,0.6,0.77,0.9,0.98],
+        "global_chroma_weight": "0.075 + 0.055*vegetation_mask",
+        "river_chroma_weight": 0.5,
+        "river_mask": "HSV H 80..105, S>70, V>70, y>0.42; gaussian sigma≈4"
+      },
+      "off_state": "original SRC05 bytes"
+    },
+    "WASH-MASK": {
+      "class": "Mask / Selection / Channel + Texture",
+      "owner": "atmosphere/highlight absorption with main-karst protect mask; river suppression",
+      "parameters": {
+        "seed": 40814,
+        "noise_scales": ["MACRO≈70px","MESO≈22px","MICRO≈5px"],
+        "left_atmos_weight": 0.13,
+        "sky_weight": 0.065,
+        "highlight_weight": 0.1,
+        "max_absorption": 0.2,
+        "main_karst_protect": "ellipse centered x=.39 y=.60, 70% protection",
+        "river_absorption_suppression": 0.62,
+        "paper_density_variation": "~1–2%",
+        "pigment_pooling_max": 0.028
+      },
+      "off_state": "WASH-TONAL derivative"
+    },
+    "INK-EDGE": {
+      "class": "Raster-preview Effect",
+      "owner": "main karst + distant ridge + bounded river/shore; settlement micro-detail suppressed",
+      "parameters": {
+        "preblur_sigma": 2.05,
+        "canny": [72,156],
+        "max_edge_mix": 0.22,
+        "main_owner": "ellipse x=.36 y=.58",
+        "ridge_owner": "low-weight horizontal ridge field",
+        "settlement_suppression": "x>.54 & y<.67 → 0.28 multiplier"
+      },
+      "off_state": "WASH-MASK derivative"
+    }
+  },
+  "display_contract": "single semantic image component; page displays exactly one stage at a time; default=FINAL; ?edge=off→WASH, ?wash=off→TONAL, ?tonal=off or ?fx=off→SOURCE",
+  "does_not_prove": ["field condition","measured geometry","site validation","engineering feasibility","Design KEEP","new source identity"]
+}

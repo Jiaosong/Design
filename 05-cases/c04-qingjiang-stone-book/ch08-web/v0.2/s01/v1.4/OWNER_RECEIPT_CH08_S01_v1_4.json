@@ -1,0 +1,15 @@
+{
+  "object": "CH08-S01-MAIN",
+  "revision": "v1.4",
+  "state": "PRODUCER_CANDIDATE",
+  "source_sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+  "canonical_skill": "oleander-story-and-board",
+  "delivery_skill": "oleander-delivery-qc",
+  "tool": "T-VISUAL-IMAGE-OPS-001",
+  "generation": "OFF",
+  "field_observed": 0,
+  "field_measured": 0,
+  "g1f": "HOLD",
+  "promotion": "NO_PROMOTION",
+  "open": ["Independent Professional Design / AR-S06","Integrated-Web image uniqueness"]
+}

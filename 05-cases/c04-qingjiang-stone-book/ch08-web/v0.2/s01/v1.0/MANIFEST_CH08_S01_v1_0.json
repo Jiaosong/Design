@@ -1,0 +1,49 @@
+{
+  "schema": "C04_CH08_S01_v1.0_CH14_BIND",
+  "state": "PRODUCER_CANDIDATE / CH14_CURRENT_GRAMMAR_BOUND / ACTUAL_PIXEL_READBACK_COMPLETE / INDEPENDENT_PROFESSIONAL_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "authority": {
+    "ch08": "v0.4 Master Design Strategy / WHOLE → RELATION → BODY",
+    "ch14": {
+      "P01": "v5.6 Brand Foundation composition grammar",
+      "P04": "v1.0 Role Before Palette",
+      "P05": "v1.0 CONTEMPORARY EDITORIAL + LANDSCAPE SPACE typography/layout",
+      "P06": "v2.0 LINE / PAGE / TRACE presentation grammar; no second route geometry",
+      "P07": "functional information hierarchy reference only; no logoization of function"
+    }
+  },
+  "source": {
+    "id": "SRC05",
+    "filename": "5pszhdcxjz.jpg",
+    "local_carrier": "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "semantic_slot": "CH08-S01-MAIN",
+    "generation": "OFF",
+    "use_condition": "same underlying source remains one project-wide Web semantic image slot; responsive variants count once"
+  },
+  "delta_from_v0_9": [
+    "return from generic full-bleed split treatment to CH14 P01-style editorial landscape field with no hard review frame",
+    "use CH14 P04 palette roles exactly: River Black / Deep Water / Jade Current / Wet Stone / Bone Mist / Sediment Sand / Cinnabar",
+    "use CH14 P05 current typography families and calibrated hierarchy: Noto Serif CJK SC display, Noto Sans CJK SC body, Inter/mono metadata",
+    "bind LINE/PAGE/TRACE as thin editorial seams and a non-wayfinding trace marker; no invented route geometry",
+    "reduce source upscaling by holding the 1080×608 source inside a bounded landscape field instead of full 1920×1080 bleed",
+    "mobile recomposes to real Qingjiang image first, then editorial copy, preserving CH08 landscape-first rule"
+  ],
+  "readback": {
+    "desktop": {"scrollWidth":1920,"clientWidth":1920,"scrollHeight":1080,"clientHeight":1080,"brokenImages":0,"imageNatural":[[1080,608]],"errors":[],"horizontalOverflow":0},
+    "mobile": {"scrollWidth":390,"clientWidth":390,"scrollHeight":1302,"clientHeight":844,"brokenImages":0,"imageNatural":[[1080,608]],"errors":[],"horizontalOverflow":0}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "files": {
+    "index.html": {"bytes":2561,"sha256":"746ca095f9053cfa3f2341098f5634cd8845873bb443bbcc5bbaaa9471770f0f"},
+    "CH08_S01_SCOPED_v1_0.css": {"bytes":7557,"sha256":"c39e71aa4fc127d6db9510ff738e0ed604316a20e24a6bbee649d80785999037"},
+    "readback/runtime_readback.json": {"bytes":522,"sha256":"2c8ec1a33d44317c584b6ea8b34b99a7198d962823462e7bb34d8ef08249d583"},
+    "readback/S01_v1.0_desktop.png": {"bytes":1446347,"sha256":"403507ec9d7e32a359babb0f668dfd4a9810474b0cf0ace1ff63f0e86f7c8f80"},
+    "readback/S01_v1.0_desktop_gray.png": {"bytes":488327,"sha256":"ff0c3f50b9cfa9a1c969913b491b7778ec70e2f2548d13bc2b207dcc2cc67f21"},
+    "readback/S01_v1.0_mobile.png": {"bytes":350297,"sha256":"3f35b2bc72c6ea005e6b9a602960112290709c1fa9971e729016f4213d409dc3"},
+    "readback/S01_v1.0_mobile_gray.png": {"bytes":131749,"sha256":"6691aaaf302d9579b252b7ecf7ffc4f01444058e58368b84597baf266a8bc62d"},
+    "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg": {"bytes":120073,"sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b"},
+    "PRODUCER_READBACK_CH08_S01_v1_0.md": {"bytes":2485,"sha256":"7bb7068c16120cc5e6d62a3538a9d9dee46113a9707a5d7e138d9a908f2282a5"},
+    "README.md": {"bytes":652,"sha256":"8cc4da7ff1d90eb12c7ca674da205a0f632ad345bed1ad6b31c73c5549c88be1"}
+  },
+  "local_review_zip": {"filename":"C04_CH08_S01_v1.0_CH14_BIND_PRODUCER_PACKAGE.zip","bytes":2533982,"sha256":"211810cb29dabfce95355f5b3acb10cb6d45bf6aa20555cd8f67e2656ab9adb1","persistence":"LOCAL / USER-DOWNLOADABLE / DRIVE SYNC OPEN"}
+}

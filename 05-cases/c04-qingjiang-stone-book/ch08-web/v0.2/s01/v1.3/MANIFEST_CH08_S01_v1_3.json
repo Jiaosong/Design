@@ -1,0 +1,32 @@
+{
+  "schema": "C04_CH08_S01_v1.3",
+  "state": "PRODUCER_CANDIDATE / NO_SELF_KEEP / NO_PROMOTION",
+  "source": {
+    "id": "SRC05",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "semantic_slot": "CH08-S01-MAIN",
+    "generation": "OFF"
+  },
+  "files": {
+    "ARTIFACT_REVIEW_CH08_S01_v1_3.md": {"bytes": 1977, "sha256": "58391e1170c0ca0ecb527caa2823636f05354d2839661d38bb5909a2cef247f0"},
+    "CH08_S01_SCOPED_v1_3.css": {"bytes": 10253, "sha256": "0ba63c937b1fc9591044a5a7ce12a7bb3b8f06f6f35058b372da8c3d3a136f95"},
+    "IMAGE_OPS_CONTRACT_CH08_S01_v1_3.json": {"bytes": 1107, "sha256": "ab553b99cfcae31950da85a4d54fe4fbb63eb2deb9f9da4f2f4a2046fcef1491"},
+    "OWNER_RECEIPT_CH08_S01_v1_3.json": {"bytes": 551, "sha256": "905bd9e10e4feae131a083b224e60c5bdee4b3a52ff78abed8dc68d64888473e"},
+    "PRODUCER_READBACK_CH08_S01_v1_3.md": {"bytes": 1887, "sha256": "a9459cc7a32938b30e3f013a808ba6fe74bd251b8e0140a485c9dd32de8ecb49"},
+    "README.md": {"bytes": 656, "sha256": "70767abe4c9f4e0eed48441162dfb7fe6af036c19b77683630f6fa4a1d67e056"},
+    "SKILL_EXECUTION_RECEIPT_CH08_S01_v1_3.md": {"bytes": 1596, "sha256": "88a371a2721fe419f605d0e915f15978fdb5fa65e93e3555e191cd95f8ee8acb"},
+    "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg": {"bytes": 120073, "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b"},
+    "index.html": {"bytes": 4941, "sha256": "7ff0e58d1c19c8ba2bbff8ecef5c66a6f2a92f57d677b28f2f7b2fcebbaf0e69"},
+    "readback/S01_v1.3_desktop.png": {"bytes": 1604034, "sha256": "249a7598de139686f7d91a95c38ef085afd29406327e6a8bb6b95318959e8fda"},
+    "readback/S01_v1.3_desktop_edgeoff.png": {"bytes": 1608802, "sha256": "bb40f70397307d297c90d644ba5e7a55e8681e05465d2c4fed8f229a9852153a"},
+    "readback/S01_v1.3_desktop_fxoff.png": {"bytes": 1471904, "sha256": "71c34e863199132b0f0ffd90fedb4fae605f66ec77faec55809a5525e013f0e9"},
+    "readback/S01_v1.3_desktop_gray.png": {"bytes": 539608, "sha256": "1b9c98c6e7e631b1074ae80c4cf7511848501895452f8a37f107ebbe3c363e5e"},
+    "readback/S01_v1.3_desktop_tonaloff.png": {"bytes": 1646210, "sha256": "bfda6a12b71e506e4a8b3d7196f7d71f801642fab032d09892dcc6b5aa603be6"},
+    "readback/S01_v1.3_desktop_washoff.png": {"bytes": 1409767, "sha256": "16eaaf0eb052c1ec892326c67ea8fb48d50740d687002a97e51d3f63fdff65fd"},
+    "readback/S01_v1.3_mobile.png": {"bytes": 375900, "sha256": "6fc7c2b1cd6a9f175dde597b3d549d3e4ad20a63d89b81561c44d90aad8d3772"},
+    "readback/S01_v1.3_mobile_gray.png": {"bytes": 140078, "sha256": "66efc468a39e22435ce4780a216a92a1b4ea5b470ed6d1f5ccacdf7b05d6bae9"},
+    "readback/runtime_readback.json": {"bytes": 4260, "sha256": "30efa30e7165d0adb419157a43c56e8999ee1b7c5c04c0e308b166f6250ad06c"},
+    "render.py": {"bytes": 4027, "sha256": "7925745edac91a3e56cbe9863f16463b3012ce77b727ece8fc7d0920d71caae4"}
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

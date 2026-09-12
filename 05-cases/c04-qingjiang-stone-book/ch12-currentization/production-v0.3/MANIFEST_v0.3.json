@@ -1,0 +1,11 @@
+{
+  "version": "v0.3",
+  "state": "EXECUTED_VISUAL_RESET_CANDIDATE",
+  "pages": ["A01","A02","A03","A06","A07","A08","A09"],
+  "holds": ["A04","A05"],
+  "foreground_content_raster_images": 0,
+  "preview_method": "WeasyPrint static render for design readback; Chromium browser runtime readback not claimed in this package.",
+  "image_rule_correction": "A02/A03 prior official candidates removed from frontstage because evidence/reference eligibility != foreground scene-image eligibility.",
+  "package": {"filename":"C04_CH12_PRODUCTION_v0.3.zip","bytes":3530289,"sha256":"05600e3b22a63f9b5d96c80cfd3dc3e2558d1066f044d8473ad273c3bd4b705e"},
+  "truth_boundary": ["ROUTE-03 LOCKED CURRENT","R06 FINISHED/FROZEN/NO REOPEN","FIELD OBSERVED=0","FIELD MEASURED=0","G1F HOLD","NO_PROMOTION"]
+}

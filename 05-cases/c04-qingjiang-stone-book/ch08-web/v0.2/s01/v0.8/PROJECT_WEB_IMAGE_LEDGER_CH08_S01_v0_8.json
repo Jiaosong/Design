@@ -1,0 +1,11 @@
+{
+  "schema": "PROJECT_WEB_IMAGE_UNIQUENESS_LEDGER_CH08_S01_v0.8",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object": "CH08-S01",
+  "policy": "ONE UNDERLYING CONTENT IMAGE SOURCE = ONE SEMANTIC WEB IMAGE SLOT PROJECT-WIDE",
+  "revoked_sources": [{"sha256":"6bb51e3931d32b0a71bdb0049824d94f3f436ca90c125e8e627a1b861d0a3679","state":"REVOKED / DO NOT USE / DO NOT REASSIGN"}],
+  "superseded_producer_candidate": [{"sha256":"33403ef1892e1fdb1267a8a55bba0a85138a82078c8a66d9411eb678d2a8857e","state":"v0.6/v0.7 PRODUCER CANDIDATE SUPERSEDED BY v0.8 / NO PROMOTION"}],
+  "candidate": {"source_id":"SRC05","source_filename":"5pszhdcxjz.jpg","source_sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b","bytes":120073,"semantic_slot":"CH08-S01-MAIN","responsive_variants_count_as":1,"generation":"OFF"},
+  "scoped_checks": {"github_exact_filename":"NO MATCH","github_exact_sha256":"NO MATCH","google_drive_exact_filename":"NO MATCH","final_complete_web_surface_register_scan":"OPEN BEFORE PROMOTION"},
+  "state": "SCOPED UNIQUE / FINAL WHOLE-WEB RELEASE SCAN OPEN"
+}

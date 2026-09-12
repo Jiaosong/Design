@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN" data-image-stage="final">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CH08 / 总体体验策略 / S01 v1.5</title>
+<link rel="stylesheet" href="CH08_S01_SCOPED_v1_5.css" />
+</head>
+<body>
+<main class="ch08-s01" aria-label="CH08 总体体验策略 S01">
+  <div class="ch08-s01__frame">
+    <header class="ch08-s01__mast">
+      <div class="ch08-s01__eyebrow">CH08 · MASTER EXPERIENCE STRATEGY</div>
+      <div class="ch08-s01__truth">FIELD=0 · G1F HOLD · NO_PROMOTION</div>
+    </header>
+    <section class="ch08-s01__hero">
+      <div class="ch08-s01__copy">
+        <p class="ch08-s01__meta">01 / MASTER PROPOSITION</p>
+        <h1>先看见清江，<br>系统才有资格出现。</h1>
+        <p class="ch08-s01__deck">真实清江先建立空间关系。设计只在关系、身体或回程出现缺口时进入，并在完成作用后退出。</p>
+        <p class="ch08-s01__body">总体策略不从界面、装置或十三印开始。CH08 只负责决定何时让系统出现、出现到什么程度，以及何时撤回；路线、内容、数字、实体与记忆仍由各自章节拥有专业主权。</p>
+        <p class="ch08-s01__en">QINGJIANG FIRST.<br>RELATION BEFORE INTERVENTION.</p>
+      </div>
+      <figure class="ch08-s01__plate" data-ops="WASH-TONAL/WASH-MASK/INK-EDGE">
+        <div class="ch08-s01__plate-shell">
+          <div class="ch08-s01__photo-wrap">
+            <img class="ch08-s01__photo"
+              src="assets/ch08_s01_src05_INK-EDGE_v1_5.png"
+              data-source="assets/ch08_s01_qingjiang_landscape_official_20230711.jpg"
+              data-tonal="assets/ch08_s01_src05_WASH-TONAL_v1_5.png"
+              data-wash="assets/ch08_s01_src05_WASH-MASK_v1_5.png"
+              data-final="assets/ch08_s01_src05_INK-EDGE_v1_5.png"
+              alt="红花峰林、清江河谷与山中步道平台的真实景观影像；保留真实摄影第一读，仅做非生成、可回退的现代印刷介质响应" />
+          </div>
+        </div>
+        <figcaption class="ch08-s01__caption">
+          <span>REAL QINGJIANG / SOURCE-GROUNDED</span>
+          <span>SOURCE · 恩施旅游集团官网 · 红花峰林 · 2023-07-11</span>
+        </figcaption>
+      </figure>
+    </section>
+    <footer class="ch08-s01__seam" aria-label="总体体验三尺度">
+      <div class="ch08-s01__scale"><i>01</i><span>水上建立整体</span><small>WHOLE / WATER</small></div>
+      <div class="ch08-s01__scale"><i>02</i><span>空中改变关系</span><small>RELATION / CABLE</small></div>
+      <div class="ch08-s01__scale"><i>03</i><span>山中进入身体尺度</span><small>BODY / WALK</small></div>
+      <div class="ch08-s01__rule">LANDSCAPE → RELATION → BODY</div>
+    </footer>
+  </div>
+</main>
+<script>
+(() => {
+ const p=new URLSearchParams(location.search), root=document.documentElement, img=document.querySelector('.ch08-s01__photo');
+ const apply=(stage)=>{ const key=['source','tonal','wash','final'].includes(stage)?stage:'final'; img.src=img.dataset[key]; root.dataset.imageStage=key; };
+ window.__ch08SetStage=apply; apply(p.get('stage')||'final');
+})();
+</script>
+</body>
+</html>

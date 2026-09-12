@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350">
+  <rect width="2400" height="1350" fill="#F1EDE4"/>
+  <style>
+    .title{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:54px;font-weight:700;fill:#111918}
+    .sub{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:24px;fill:#65706A}
+    .label{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:23px;font-weight:700;fill:#111918}
+    .small{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:18px;fill:#65706A}
+    .micro{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:15px;fill:#65706A;letter-spacing:.5px}
+    .phase{font-family:Arial,"Noto Sans CJK SC",sans-serif;font-size:17px;font-weight:700;fill:#133B3C}
+    .white{fill:#F1EDE4}
+  </style>
+  <text x="110" y="110" class="title">CH08｜总体体验策略 · Master Experience Atlas v0.4</text>
+  <text x="110" y="158" class="sub">同一条江，在不同尺度中被重新认识：先获得整体，再跨越关系，再进入身体；设计只在真实缺口出现时介入。</text>
+  <g transform="translate(110,215)">
+    <rect x="0" y="0" width="620" height="118" rx="18" fill="#D8C9B1" opacity="0.55"/>
+    <text x="26" y="38" class="label">01｜WHOLE / TERRITORY</text>
+    <text x="26" y="70" class="small">先建立整体尺度 · Boat 为条件性水上体验</text>
+    <text x="26" y="97" class="micro">不是所有人必须先坐船；关键是先知道自己进入的是一条完整清江。</text>
+  </g>
+  <g transform="translate(760,215)">
+    <rect x="0" y="0" width="620" height="118" rx="18" fill="#2E7571" opacity="0.17"/>
+    <text x="26" y="38" class="label">02｜RELATION</text>
+    <text x="26" y="70" class="small">Cable 用移动视点建立江 / 两岸 / 峰林关系</text>
+    <text x="26" y="97" class="micro">中段默认 phone-down / content-down，不新增互动装置。</text>
+  </g>
+  <g transform="translate(1410,215)">
+    <rect x="0" y="0" width="620" height="118" rx="18" fill="#133B3C" opacity="0.12"/>
+    <text x="26" y="38" class="label">03｜BODY</text>
+    <text x="26" y="70" class="small">Walk 进入坡度、足下、停留、疲劳与恢复</text>
+    <text x="26" y="97" class="micro">十三印 / Digital / Physical 只能在真实身体条件之后获得介入资格。</text>
+  </g>
+  <text x="110" y="400" class="label">动态主权｜不是一条固定优先链</text>
+  <g transform="translate(110,430)">
+    <rect width="1010" height="76" rx="14" fill="#133B3C"/>
+    <text x="26" y="31" class="white" style="font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:18px;font-weight:700">NORMAL EXPERIENCE</text>
+    <text x="26" y="57" class="white" style="font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:17px">Landscape / Route / Body → Optional Observation → Optional Reveal → Supporting Systems</text>
+  </g>
+  <g transform="translate(1150,430)">
+    <rect width="880" height="76" rx="14" fill="#B8543E" opacity="0.90"/>
+    <text x="26" y="31" class="white" style="font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:18px;font-weight:700">OVERRIDE DECISION</text>
+    <text x="26" y="57" class="white" style="font-family:Arial,'Noto Sans CJK SC',sans-serif;font-size:17px">CLOSED / UNKNOWN / Return / fatigue / route uncertainty → Service / Return / Route first</text>
+  </g>
+  <text x="110" y="565" class="label">真实旅程母线｜Operational Spine（不拥有路线几何）</text>
+  <line x1="260" y1="650" x2="2140" y2="650" stroke="#65706A" stroke-width="3"/>
+  <g>
+    <circle cx="260" cy="650" r="16" fill="#2E7571"/><text x="260" y="610" text-anchor="middle" class="phase">ARRIVAL</text><text x="260" y="690" text-anchor="middle" class="micro">开卷</text>
+    <circle cx="465" cy="650" r="16" fill="#2E7571"/><text x="465" y="610" text-anchor="middle" class="phase">ORIENT</text><text x="465" y="690" text-anchor="middle" class="micro">定向</text>
+    <circle cx="670" cy="650" r="16" fill="#2E7571"/><text x="670" y="610" text-anchor="middle" class="phase">ACCESS</text><text x="670" y="690" text-anchor="middle" class="micro">整体尺度</text>
+    <circle cx="875" cy="650" r="16" fill="#2E7571"/><text x="875" y="610" text-anchor="middle" class="phase">CABLE</text><text x="875" y="690" text-anchor="middle" class="micro">换眼</text>
+    <circle cx="1080" cy="650" r="16" fill="#2E7571"/><text x="1080" y="610" text-anchor="middle" class="phase">WALK</text><text x="1080" y="690" text-anchor="middle" class="micro">寻页</text>
+    <circle cx="1285" cy="650" r="16" fill="#2E7571"/><text x="1285" y="610" text-anchor="middle" class="phase">OBSERVE</text><text x="1285" y="690" text-anchor="middle" class="micro">看懂</text>
+    <circle cx="1490" cy="650" r="16" fill="#2E7571"/><text x="1490" y="610" text-anchor="middle" class="phase">RECOVER</text><text x="1490" y="690" text-anchor="middle" class="micro">恢复</text>
+    <circle cx="1695" cy="650" r="16" fill="#2E7571"/><text x="1695" y="610" text-anchor="middle" class="phase">CHOOSE</text><text x="1695" y="690" text-anchor="middle" class="micro">决策</text>
+    <circle cx="1900" cy="650" r="16" fill="#2E7571"/><text x="1900" y="610" text-anchor="middle" class="phase">PASS</text><text x="1900" y="690" text-anchor="middle" class="micro">收束</text>
+    <circle cx="2105" cy="650" r="16" fill="#B8543E"/><text x="2105" y="610" text-anchor="middle" class="phase">RETURN / LEAVE</text><text x="2105" y="690" text-anchor="middle" class="micro">成书</text>
+  </g>
+  <g transform="translate(110,745)">
+    <text x="0" y="25" class="label">媒介强度 / 出场资格</text>
+    <text x="0" y="88" class="small">LANDSCAPE / BODY</text>
+    <rect x="300" y="65" width="1800" height="30" rx="15" fill="#133B3C" opacity="0.82"/>
+    <text x="0" y="148" class="small">ROUTE / SERVICE / RETURN</text>
+    <rect x="300" y="125" width="360" height="30" rx="15" fill="#B8543E" opacity="0.78"/>
+    <rect x="770" y="125" width="160" height="30" rx="15" fill="#B8543E" opacity="0.40"/>
+    <rect x="1540" y="125" width="560" height="30" rx="15" fill="#B8543E" opacity="0.82"/>
+    <text x="0" y="208" class="small">THIRTEEN IMPRINTS</text>
+    <rect x="930" y="185" width="520" height="30" rx="15" fill="#2E7571" opacity="0.45"/>
+    <text x="1458" y="206" class="micro">only when stable OBSERVE</text>
+    <text x="0" y="268" class="small">DIGITAL COMPANION</text>
+    <rect x="300" y="245" width="330" height="30" rx="15" fill="#2E7571" opacity="0.50"/>
+    <rect x="930" y="245" width="420" height="30" rx="15" fill="#2E7571" opacity="0.38"/>
+    <rect x="1540" y="245" width="220" height="30" rx="15" fill="#2E7571" opacity="0.60"/>
+    <text x="770" y="267" class="micro">CABLE MID = OFF</text>
+    <text x="1800" y="267" class="micro">PASS = OFF</text>
+    <text x="0" y="328" class="small">PHYSICAL / SENSORY</text>
+    <rect x="1180" y="305" width="390" height="30" rx="15" fill="#D8C9B1"/>
+    <text x="1580" y="327" class="micro">P02 / Fluid / Qingfengyin only if need + site fit</text>
+    <text x="0" y="388" class="small">BRAND PRESENCE</text>
+    <rect x="300" y="365" width="1800" height="30" rx="15" fill="#65706A" opacity="0.22"/>
+    <text x="1780" y="387" class="micro">TRACE / OFF in high landscape + body attention</text>
+    <text x="0" y="448" class="small">MEMORY</text>
+    <rect x="300" y="425" width="250" height="30" rx="15" fill="#B8543E" opacity="0.18"/>
+    <rect x="1780" y="425" width="320" height="30" rx="15" fill="#B8543E" opacity="0.55"/>
+    <text x="560" y="447" class="micro">Journal opens early; memory becomes primary after Return</text>
+  </g>
+  <line x1="110" y1="1260" x2="2290" y2="1260" stroke="#65706A" stroke-width="1" opacity="0.45"/>
+  <text x="110" y="1302" class="micro">CURRENT STRATEGY LOCKS: ROUTE-03 LOCKED · R06 FROZEN · Boat conditional · only new family = CH09 Route/Return Touchpoint · Technical Proof separate from visitor carriers</text>
+  <text x="110" y="1330" class="micro">FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "object": "PRJ-C04-QINGJIANG-SHISHU/CH08/CH08-S01-MAIN/v1.5",
+  "state": "PRODUCER_CANDIDATE_CH14_CORRECTION",
+  "source_sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+  "semantic_slot": "CH08-S01-MAIN",
+  "supersedes": "v1.4 USER_REJECTED / PROVENANCE ONLY",
+  "does_not_prove": ["professional design keep", "field validation", "promotion", "release approval"]
+}

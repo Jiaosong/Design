@@ -1,0 +1,24 @@
+{
+  "schema":"C04_CH08_S01_OWNER_RECEIPT_v0.8",
+  "project":"PRJ-C04-QINGJIANG-SHISHU",
+  "object":"CH08-S01",
+  "version":"v0.8",
+  "date":"2026-08-19",
+  "state":"FROZEN REVIEW CANDIDATE / USER PREVIEW WITHHELD / S02 GATED",
+  "claim":"先看见清江，系统才有资格出现",
+  "authority":["C04 Current Project Axis","CH08 v0.4 Master Design Strategy","CH14 Current","OLEANDER Artifact Review System v1.1"],
+  "skills":["oleander-research","oleander-story-and-board","oleander-ui-visual-composition","oleander-delivery-qc"],
+  "source":{"id":"SRC05","filename":"5pszhdcxjz.jpg","sha256":"da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b","bytes":120073,"dimensions":[1080,608],"generation":"OFF"},
+  "artifacts":{
+    "html":{"path":"index.html","bytes":3196,"sha256":"1bd59a51e5c345331f0780b9e57e120cb4cd1a1a610a59549739455fa002ca6f"},
+    "desktop":{"path":"readback/S01_v0.8_desktop.png","bytes":1745728,"sha256":"a2fb9c726461bb6a8337981efa070133d4f2e15804c0cf50a55e8de566682363"},
+    "desktop_gray":{"path":"readback/S01_v0.8_desktop_gray.png","bytes":608972,"sha256":"dc2d9c20922eb3933acdf6f493169a4de07082733f21469261e4324ba80f3b84"},
+    "mobile":{"path":"readback/S01_v0.8_mobile.png","bytes":347204,"sha256":"2f77bd65aadf0f9db369cf721b68fe83833d9dc8a995c4fd2449afc1db7fc75c"},
+    "mobile_gray":{"path":"readback/S01_v0.8_mobile_gray.png","bytes":124490,"sha256":"7a8a277607d64b70bc6b2e699904dd2e7eaa8b2dd0c8f70924bc609ad1a6d5e0"},
+    "comparison":{"path":"comparison/C04_MATURE_WEB_v2_6_FIRST_VIEWPORT_1920x1080.png","bytes":1834156,"sha256":"70cdd796da23841d5970fa2a87c514e6e7ca42d132b92d2e68efab0c7e666d19"}
+  },
+  "runtime":{"desktop":{"viewport":[1920,1080],"overflow":false,"broken_images":0,"page_errors":0,"console_errors":0},"mobile":{"viewport":[390,844],"overflow":false,"broken_images":0,"page_errors":0,"console_errors":0}},
+  "durable_review_packet":{"drive_id":"1WyAuGgLzM6tlSIg26Q-okDGK4RuOF_UG","bytes":4787495,"sha256":"08b88859b6d433c882f201b3433394dc3eb7160975e472b6d388f94afe614b76","independent_retrieval":"PASS / ZIP testzip=None / 20 members"},
+  "gates":{"gate1":"SCOPED PASS / FINAL WHOLE-WEB IMAGE SCAN OPEN","gate2":"INDEPENDENT REVIEW REQUIRED","promotion":"HOLD","user_preview":"WITHHELD","S02":"NOT STARTED / GATED"},
+  "truth":"FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

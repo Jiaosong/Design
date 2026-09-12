@@ -1,0 +1,10 @@
+{
+  "schema": "C04_CH08_S01_OWNER_RECEIPT_v1.3",
+  "object": "PRJ-C04-QINGJIANG-SHISHU/CH08/CH08-S01-MAIN",
+  "version": "v1.3",
+  "owner_skills": ["oleander-story-and-board", "oleander-delivery-qc"],
+  "downstream_method": "T-VISUAL-IMAGE-OPS-001",
+  "source_sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+  "state": "PRODUCER_CANDIDATE / INDEPENDENT_PROFESSIONAL_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION"
+}

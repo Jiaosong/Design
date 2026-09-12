@@ -1,0 +1,42 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH08",
+  "artifact": "CH08_WEB_VISUAL_CURRENTIZATION_v0.1",
+  "authority": "CH08 v0.4 Master Design Strategy / downstream presentation only",
+  "visual_family": "CH14 Contemporary Editorial + Landscape Space",
+  "constraints": {
+    "image_generation": "OFF",
+    "content_image_slots": 0,
+    "img_elements": 0,
+    "inline_svg_visuals": 10,
+    "duplicate_content_image_sources_in_delta": 0,
+    "project_wide_image_uniqueness": "HOLD pending complete integrated Web surface register"
+  },
+  "surfaces": [
+    {"id":"CH08-S01","role":"Master Thesis","primary_visual":"WHOLE / RELATION / BODY vector field"},
+    {"id":"CH08-S02","role":"Experience Scale","primary_visual":"three unique vector stage fields"},
+    {"id":"CH08-S03","role":"Real Journey Spine","primary_visual":"ROUTE-03 source-bound geometry / single use"},
+    {"id":"CH08-S04","role":"Dynamic Ownership","primary_visual":"NORMAL / OVERRIDE paired vector fields"},
+    {"id":"CH08-S05","role":"Encounter Order","primary_visual":"REAL SCENE → OPTIONAL REVEAL → WITHDRAW field"},
+    {"id":"CH08-S06","role":"Intervention Admission","primary_visual":"five-need large vector field / NO DESIGN valid"},
+    {"id":"CH08-S07","role":"Existing Design Deployment","primary_visual":"existing-object deployment vector field"}
+  ],
+  "source_files": {
+    "index.html": {"bytes":20870,"sha256":"c9eaf3fa7b05ff20ea8216be9a0a0528a29f38111ebfda2b65b9f1582dbf9769"},
+    "style.css": {"bytes":7623,"sha256":"dafabf4af08016d713e4ad37baeb55837fe5cc78f92d5501d3078bc94c8d9704"},
+    "README.md": {"bytes":2358,"sha256":"fc818d04cffcd6c683c87fac3ae64ade1ab9bfdc2a6c7014b322cadcef661a0f"},
+    "OWNER_RECEIPT_CH08_WEB_v0_1.json": {"bytes":1610,"sha256":"eac36df8d18660aa670a23253e7003231fe9f1a5f62def26961dc6432abb1124"},
+    "C04_CH08_WEB_IMAGE_USE_LEDGER_v0_1.json": {"bytes":816,"sha256":"2bf0d4517a479418e70ac6f03d71bc9d448570e7cae30b3dace265881bc30eec"}
+  },
+  "readback": {
+    "method": "WeasyPrint deterministic 1920x1080 adapter + pdftoppm raster reopen",
+    "surfaces": 7,
+    "pdf_sha256": "96a14d5dc45cf02b81f9b2bb44dda9ceaa72427e40e53dadbb510a54938bbb23",
+    "pdf_bytes": 3861296,
+    "contact_sha256": "9490f7ae70b01b3ea4bf937a54b6e8b9066eef5309c0c384e94a1f53312d3b03",
+    "contact_bytes": 380790,
+    "browser_runtime": "HOLD / headless Chromium hangs in current execution environment; no browser PASS claimed"
+  },
+  "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "design_gate": "INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING"
+}

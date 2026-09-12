@@ -1,0 +1,77 @@
+{
+  "canonical_tool": "T-VISUAL-IMAGE-OPS-001",
+  "object": "PRJ-C04-QINGJIANG-SHISHU / CH08 / S01 / v1.2",
+  "semantic_slot": "CH08-S01-MAIN",
+  "source": {
+    "id": "SRC05",
+    "filename": "5pszhdcxjz.jpg",
+    "carrier": "assets/ch08_s01_qingjiang_landscape_official_20230711.jpg",
+    "sha256": "da94acea1ae3d7961919a390f9f0ef27ceee2b06bdaf5dd897ee63fb95897f4b",
+    "generation": "OFF",
+    "geometry_reconstruction": "OFF"
+  },
+  "execution_contract": "SOURCE / DESIGN OBJECT -> OPERATION INTENT -> OWNER / MASK -> OPERATOR CLASS -> PARAMETERS -> NON-DESTRUCTIVE STATE -> EFFECT-OFF BASELINE -> EXPORT / RUNTIME -> ACTUAL READBACK -> REVIEW",
+  "operations": [
+    {
+      "order": 1,
+      "recipe": "WASH-TONAL",
+      "effect_id": "CH08-S01-FX01_WASH_TONAL",
+      "owner": "source photo only",
+      "operator_class": "Adjustment + SVG filter / raster-preview carrier",
+      "parameters": {
+        "base_css": "saturate(.61) contrast(.94) brightness(1.045) sepia(.075)",
+        "overlay_opacity": 0.27,
+        "svg": "blur .42 -> grayscale -> 8 discrete tonal bands -> restrained neutral-green matrix"
+      },
+      "off_state": "raw source image / filter:none / tonal overlay hidden",
+      "role": "compress digital photographic continuity into restrained matte tonal masses without replacing the source",
+      "does_not_prove": "ink material, field condition, geometry, weather or site survey"
+    },
+    {
+      "order": 2,
+      "recipe": "WASH-MASK",
+      "effect_id": "CH08-S01-FX02_WASH_MASK",
+      "owner": "left page-to-image transition + whole plate paper veil",
+      "operator_class": "Mask / Composite",
+      "parameters": {
+        "mask": "five asymmetric elliptical Bone Mist wash fields + low bottom density",
+        "paper_veil": "micro radial/linear texture + 0.105 Bone Mist veil",
+        "mobile": "reduced mask, no desktop left wash transfer"
+      },
+      "off_state": "wash mask and paper veil hidden",
+      "role": "replace uniform digital gradient with bounded irregular page absorption",
+      "does_not_prove": "missing landscape content or altered source extent"
+    },
+    {
+      "order": 3,
+      "recipe": "INK-EDGE",
+      "effect_id": "CH08-S01-FX03_INK_EDGE",
+      "owner": "main karst silhouettes + bounded river/shore relation",
+      "operator_class": "Raster-preview Effect / SVG edge filter",
+      "parameters": {
+        "edge": "grayscale -> .6 blur -> 3x3 high-pass -> thresholded alpha",
+        "opacity": 0.22,
+        "mask": "central karst 48%x72%@39/60 + secondary river/shore 47%x23%@73/73",
+        "mobile_opacity": 0.15
+      },
+      "off_state": "edge carrier hidden",
+      "role": "add a second-read structural ink edge only where the landscape relation benefits",
+      "does_not_prove": "line drawing authority, surveyed contour, cadastral or route geometry"
+    }
+  ],
+  "hard_boundaries": [
+    "FILTER OUTPUT != DESIGN KEEP",
+    "RASTER PREVIEW != AUTHORITATIVE VECTOR / TEXT / GEOMETRY",
+    "source photo bytes remain unchanged",
+    "same source remains one project-wide semantic Web image slot"
+  ],
+  "attack_tests": [
+    "TARGET_SIZE 1920x1080",
+    "SMALL_SIZE 390x844",
+    "GRAYSCALE",
+    "ALL FX OFF",
+    "TONAL OFF",
+    "WASH OFF",
+    "EDGE OFF"
+  ]
+}
