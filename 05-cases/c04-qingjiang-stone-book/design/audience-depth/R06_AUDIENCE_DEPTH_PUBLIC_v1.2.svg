@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+  <linearGradient id="leftveil" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#0e1715" stop-opacity=".18"/><stop offset=".62" stop-color="#0e1715" stop-opacity=".03"/><stop offset="1" stop-color="#0e1715" stop-opacity=".34"/>
+  </linearGradient>
+  <style>
+    .paper{fill:#eee8dc} .ink{fill:#15201d} .muted{fill:#68716d} .qing{fill:#4d7c76} .seal{fill:#9e4f42}
+    .h0{font:700 52px "Noto Serif CJK SC","Songti SC",serif}
+    .h1{font:700 27px "Noto Serif CJK SC","Songti SC",serif}
+    .body{font:400 16px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+    .small{font:400 13px "Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+    .cap{font:700 11px "Noto Sans CJK SC","Microsoft YaHei",sans-serif;letter-spacing:1.5px}
+    .rule{stroke:#b9b3a8;stroke-width:1}
+  </style>
+</defs>
+<rect width="1920" height="1080" class="paper"/>
+<image x="0" y="0" width="1215" height="1080" href="assets/R06_CLEAN_LANDSCAPE_CROP.png" preserveAspectRatio="xMidYMid slice"/>
+<rect x="0" y="0" width="1215" height="1080" fill="url(#leftveil)"/>
+<text x="58" y="54" class="cap" fill="#fff">C04 / AUDIENCE DEPTH / R06 SAME-SCENE PUBLIC CHAPTER · v1.2</text>
+<text x="58" y="126" class="h0" fill="#fff">同一片河谷，<tspan x="58" dy="58">不是同一种观看。</tspan></text>
+<text x="58" y="232" class="body" fill="#fff">同一个 R06，不为四类人重做四套景观；只改变身体支持、注意任务与内容深度。</text>
+<g transform="translate(60 764)">
+  <rect width="790" height="232" fill="#f2ede4" fill-opacity=".94"/>
+  <text x="28" y="36" class="cap qing">ONE SHARED SCENE · R06 河谷观察</text>
+  <text x="28" y="82" class="h1 ink">共同底线：先看江与两岸。</text>
+  <text x="28" y="120" class="body ink">路线 / Return 始终可见。数字与知识只在需要时出现；疲劳、天气或时间压力上升时主动降级。</text>
+  <line x1="28" y1="148" x2="754" y2="148" class="rule"/>
+  <text x="28" y="183" class="cap seal">SHARED SEQUENCE</text>
+  <text x="185" y="183" class="small muted">LOOK → RECOVER → OPTIONAL READ → CONTINUE / RETURN</text>
+  <text x="28" y="214" class="small muted">Exact view / slope / access / geology / route state remain FIELD OPEN.</text>
+</g>
+<g transform="translate(1260 72)">
+  <text class="cap qing">AUDIENCE DEPTH · SAME SCENE / DIFFERENT VALUE</text>
+  <text y="58" class="h1 ink">不是 Persona，而是使用深度。</text>
+  <text y="94" class="small muted">同一场景从“共同发现”到“深读”，再到“Return-first”；没有任何一层取得路线主权。</text>
+  <line x1="20" y1="156" x2="20" y2="920" stroke="#8c8276" stroke-width="1.5"/>
+  <circle cx="20" cy="190" r="5" class="seal"/><circle cx="20" cy="392" r="5" class="seal"/><circle cx="20" cy="594" r="5" class="seal"/><circle cx="20" cy="796" r="5" class="seal"/>
+  <g transform="translate(54 184)"><text class="cap seal">01 · FAMILY / CHILD</text><text y="42" class="h1 ink">一起指出：江、两岸、峰形。</text><text y="78" class="body ink">共同指认</text><text x="118" y="78" class="body muted">→ 空间启蒙 + 共同发现</text><text y="110" class="small muted">图形剖面可选；不要求长读；天气差时退成近景。</text></g>
+  <g transform="translate(54 386)"><text class="cap seal">02 · YOUTH / EXPLORER</text><text y="42" class="h1 ink">判断：河谷、步道与自己在哪里。</text><text y="78" class="body ink">简化剖面推理</text><text x="142" y="78" class="body muted">→ 定位感 + 探索判断</text><text y="110" class="small muted">可短暂 Reveal；不显示伪精确数值。</text></g>
+  <g transform="translate(54 588)"><text class="cap seal">03 · ADULT / DEEP READ</text><text y="42" class="h1 ink">先看整体，再决定是否深读。</text><text y="78" class="body ink">观察 + 可选深读</text><text x="145" y="78" class="body muted">→ 景观理解 + 地方知识</text><text y="110" class="small muted">两阶段信息层；专家未核内容保持 OPEN。</text></g>
+  <g transform="translate(54 790)"><text class="cap seal">04 · LOW-STAMINA / RETURN-FIRST</text><text y="42" class="h1 ink">先恢复，再决定是否继续。</text><text y="78" class="body ink">靠 / 半倚 + 回程判断</text><text x="184" y="78" class="body muted">→ 恢复 + 确定感</text><text y="110" class="small muted">Physical support 优先；疲劳即内容降级，游戏保持 OFF。</text></g>
+  <line x1="0" y1="938" x2="600" y2="938" class="rule"/>
+  <text y="969" class="cap qing">DESIGN CONSEQUENCE</text><text y="1000" class="small ink">同一景观、同一路线、同一 Return；只改变内容深度与身体负担。</text><text y="1034" class="small muted">FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS</text>
+</g>
+<text x="58" y="1040" class="small" fill="#fff">REAL QINGJIANG FIRST · SOURCE-GROUNDED / FIELD OPEN</text>
+</svg>
