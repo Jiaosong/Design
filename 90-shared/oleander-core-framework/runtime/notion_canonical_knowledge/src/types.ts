@@ -229,12 +229,32 @@ export interface KnowledgeReaderDetail {
   authorityReason?: string;
   notionLastEditedTime?: string;
   indexedAt?: string;
+  primaryDomainIds: string[];
+  relatedDomainIds: string[];
   review: {
     contentComplete: boolean;
     markdownTruncated: boolean;
     chunkCount: number;
     tokenEstimate: number;
     unknownBlockIds: string[];
+    relationReadback: {
+      declared: {
+        primaryDomain: number;
+        relatedDomain: number;
+        source: number;
+        method: number;
+        replacement: number;
+        replacedDocument: number;
+      };
+      indexedOutgoing: {
+        source: number;
+        method: number;
+        replacement: number;
+        replacedDocument: number;
+      };
+      unresolvedTargets: Array<{ relationType: string; pageId: string }>;
+      missingManifestEdges: Array<{ relationType: string; pageId: string }>;
+    };
   };
   sections: KnowledgeReaderDetailSection[];
   relations: KnowledgeReaderDetailRelation[];
