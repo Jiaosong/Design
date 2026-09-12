@@ -1,0 +1,36 @@
+{
+  "checkpoint": "C04-C22-20260817-FULL-LOOP",
+  "current_authority": [
+    "OLEANDER Governance v1.1.1 + Reference Materialization Gate",
+    "C04_CURRENT.md",
+    "C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md",
+    "C04_NARRATIVE_REFRAME_3AXIS_v1.0.md",
+    "C04-B_PUBLIC-NARRATIVE-AUTHORITY_v1.8.md",
+    "C04_ACTIVE_EXECUTION_CURRENT.md",
+    "QJ_C_SPATIAL_DRAWING_DATA_v3.0.json"
+  ],
+  "decision": {
+    "C1_overlay": "REJECT",
+    "C2_derived_C22": "SUPPORT / PROCESS",
+    "C0_official_guide": "CURRENT SOURCE BASIS / POSITIVE INDEPENDENT VERDICT PENDING"
+  },
+  "material_delta": "C1 FAIL / REVERT TO EXISTING C0",
+  "artifact_review": "POST-REVIEW FAIL / NEEDS SOURCE MATERIALIZATION",
+  "source_blocker": {
+    "id": "A-IMG-01",
+    "state": "HOLD_NO_SOURCE_BYTES",
+    "expected_sha256": "5aedfbc60c82bfd51eb807bec6dc0d16e7a22d1e137fbdc31fb17850f655483c"
+  },
+  "do_not_reopen": [
+    "AI-generated replacement map",
+    "derived C22 used as source-first replacement",
+    "M1-M4 overlay without new Material Delta proof",
+    "survey/metric claims from official guide"
+  ],
+  "next_actions": [
+    "materialize exact A-IMG-01 source bytes",
+    "hash-verify and persist local/project source copy",
+    "bind source without overlay by default and independently review"
+  ],
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}
