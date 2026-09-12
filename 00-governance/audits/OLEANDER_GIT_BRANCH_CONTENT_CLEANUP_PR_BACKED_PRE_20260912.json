@@ -1,0 +1,2627 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CONTENT_PR_BACKED_CLEANUP_AUDIT_v1",
+  "phase": "PRE_DELETE",
+  "as_of": "2026-09-12T09:43:48.531937+00:00",
+  "repository": "Jiaosong/Design",
+  "origin_main_sha": "12a58ebdd55752acdc1876bc3344bb5035b3afba",
+  "source_content_disposition_audit": "00-governance/audits/OLEANDER_GIT_BRANCH_CONTENT_DISPOSITION_20260912.json",
+  "policy": {
+    "allowed_states": [
+      "SUPERSEDED",
+      "REJECT"
+    ],
+    "historical_pr_required": true,
+    "open_pr_head_base_protected": true,
+    "active_worktree_protected": true,
+    "exact_tip_sha_match_required": true,
+    "no_pr_refs_held": true
+  },
+  "counts": {
+    "delete_candidates": 144,
+    "held_no_pr_provenance": 39,
+    "blocked": 0
+  },
+  "delete_candidates": [
+    {
+      "branch": "agent/2026-08-17-bilingual-typography",
+      "tip_sha": "e8cc13ef83de45a3041e7fbd671b1afb7d01a1ce",
+      "state": "SUPERSEDED",
+      "evidence": "PR #191 closed as routed to main typography plus #278 residual; retained only as training provenance.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 191,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ROUTED TO MAIN TYPOGRAPHY + #278 RESIDUAL / TRAINING PROVENANCE] Generic bilingual presentation",
+          "url": "https://github.com/Jiaosong/Design/pull/191"
+        }
+      ]
+    },
+    {
+      "branch": "agent/2026-08-18-camera-claim-gate",
+      "tip_sha": "d49b035bc55a634d95f78e7c58a78797b5ac6546",
+      "state": "SUPERSEDED",
+      "evidence": "PR #227 closed as ABSORBED INTO #293 / TRAINING PROVENANCE; no longer a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 227,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #293 / TRAINING PROVENANCE] OLEANDER 3D Camera Claim Gate",
+          "url": "https://github.com/Jiaosong/Design/pull/227"
+        }
+      ]
+    },
+    {
+      "branch": "agent/2026-08-29-governance-c04-queue-priority-hold",
+      "tip_sha": "be7af372b4fc90de943016b4c6e51cfc6b5e91c5",
+      "state": "SUPERSEDED",
+      "evidence": "PR #442 closed; the Current C04 priority queue has since been refreshed repeatedly to later verified web/frontier identities.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 442,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Governance: hold stale C04 queue object pending Current page-register identity",
+          "url": "https://github.com/Jiaosong/Design/pull/442"
+        }
+      ]
+    },
+    {
+      "branch": "agent/architecture-realignment-v1.1.0-current",
+      "tip_sha": "3ffbc3561bbce1597fd017c1fc2674440c34df2b",
+      "state": "SUPERSEDED",
+      "evidence": "PR #66 merged; its architecture namespace changes are already embodied by current main authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 66,
+          "state": "MERGED",
+          "mergedAt": "2026-08-11T16:48:50Z",
+          "title": "Realign OLEANDER architecture namespaces to AIG-01/02/03",
+          "url": "https://github.com/Jiaosong/Design/pull/66"
+        }
+      ]
+    },
+    {
+      "branch": "agent/automotive-detail-v0-10",
+      "tip_sha": "f73aca7619d5657491f2b442dd284aebe9931875",
+      "state": "REJECT",
+      "evidence": "Closed PR #84 explicitly says SUPERSEDED | Modeling Quality Rejected, so its unique content should not enter current authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 84,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "OLEANDER Automotive Detail v0.10｜SUPERSEDED｜Modeling Quality Rejected",
+          "url": "https://github.com/Jiaosong/Design/pull/84"
+        }
+      ]
+    },
+    {
+      "branch": "agent/automotive-secondary-v0-9",
+      "tip_sha": "89de6e6481730ce724113c3b980139858b8aff62",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #83 is explicitly marked SUPERSEDED because upstream primary authority was reopened.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 83,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "OLEANDER Automotive Secondary v0.9｜SUPERSEDED｜Upstream Primary Authority Reopened",
+          "url": "https://github.com/Jiaosong/Design/pull/83"
+        }
+      ]
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-20-0",
+      "tip_sha": "2819c1c9757971916346400810875366bf8aeef0",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #64; newer surface-system line and active v1.21 source-context authority supersede this revision.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 64,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "OLEANDER Blender Surface System v1.20.0｜Material Preset × CMF F1 Lab",
+          "url": "https://github.com/Jiaosong/Design/pull/64"
+        }
+      ]
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-20-0-clean",
+      "tip_sha": "0840ee775c573ad8e66cc493fa8f88672fff18e5",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #65 cleanup variant; newer surface-system line and active v1.21 source-context authority supersede it.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 65,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "OLEANDER Blender Surface System v1.20.0｜Material Preset × CMF F1 Lab",
+          "url": "https://github.com/Jiaosong/Design/pull/65"
+        }
+      ]
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-6-xj01",
+      "tip_sha": "749fdaa3afec02b1b4a757d2d4458c2fcc00de4d",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #43 explicitly says SUPERSEDED and decisions were migrated to PR #57.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 43,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "SUPERSEDED｜XJ01 v1.15 Surface integration — decisions migrated to #57",
+          "url": "https://github.com/Jiaosong/Design/pull/43"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-app-route03-currentization-v0-1",
+      "tip_sha": "df4f14d65299971f6a7147ccf4e0514e2ddec6c3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 255,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / PROVENANCE ONLY] C04 App v1.30 — unfinished / WIP",
+          "url": "https://github.com/Jiaosong/Design/pull/255"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-c22-image-reservation-v4-7-20260819",
+      "tip_sha": "d2b447c0cabae6ff564f532faea852ae605d7bfb",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 332,
+          "state": "MERGED",
+          "mergedAt": "2026-08-19T15:34:49Z",
+          "title": "C04 C22｜Reserve new macro landscape image for v4.7",
+          "url": "https://github.com/Jiaosong/Design/pull/332"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-c22-official-source-final-v2",
+      "tip_sha": "47b07b111845908aa7667a50fb2c1788363ceff0",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 178,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04 C22: source-first v3 official-guide primary visual — CLOSED / NOT CURRENT",
+          "url": "https://github.com/Jiaosong/Design/pull/178"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch01-redesign-v02-20260819",
+      "tip_sha": "1e5249fb38ca4c1185a36d29cc14ae17b8ccfe8d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 290,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04 CH01 v0.2：单独重做项目问题与机会章节",
+          "url": "https://github.com/Jiaosong/Design/pull/290"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch04-currentized-v2",
+      "tip_sha": "3d0513f1f097da254e92feb6326a83de926d363d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 335,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED / PROVENANCE] C04 CH04｜v1 artifact review + currentized v2 candidate",
+          "url": "https://github.com/Jiaosong/Design/pull/335"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch04-pixel-web-v0-1",
+      "tip_sha": "978e758b74b78d5245551c64c625d80cca6e8bf3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 347,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED / PROVENANCE] C04 CH04｜pixel-level web reconstruction v0.1",
+          "url": "https://github.com/Jiaosong/Design/pull/347"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch04-visual-blueprint-v0-2",
+      "tip_sha": "56bebee135409fc8e913c425a16b7230bdcbcfda",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 339,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED PRODUCER / SUPPORT PROVENANCE] C04 CH04｜visual-first real-object blueprint v0.2",
+          "url": "https://github.com/Jiaosong/Design/pull/339"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-knowledge-rebaseline-v0-3",
+      "tip_sha": "e7a173d8fc2230b6be0f79f69e086899a557c1c8",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 288,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED CH08 STRATEGY PROVENANCE] C04 CH08｜v0.3 rebaseline",
+          "url": "https://github.com/Jiaosong/Design/pull/288"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-master-system-v0-1",
+      "tip_sha": "b165d603dc1827a291d72588d063c515b2a47df5",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 283,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED CH08 PROVENANCE] C04 CH08｜Master System design candidate v0.1",
+          "url": "https://github.com/Jiaosong/Design/pull/283"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p01-interface-v2-20260819",
+      "tip_sha": "24cd97938456f69650ee1cc7fa0dd32d5fe00494",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 310,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P01 v1.1｜WHOLE→RELATION→BODY master strategy UI",
+          "url": "https://github.com/Jiaosong/Design/pull/310"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p02-interface-v1-20260819",
+      "tip_sha": "851d380ce23f4f98899436dd6c6ee6cc3ebd1287",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 311,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P02 v1.0｜Encounter + Freedom system UI",
+          "url": "https://github.com/Jiaosong/Design/pull/311"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p03-interface-v1-20260819",
+      "tip_sha": "cec2525e3c73b9d8a565bbeb05fd279d7dbcbfcc",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 313,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P03 v1.0｜Behavior conditions + STOP≠READ UI",
+          "url": "https://github.com/Jiaosong/Design/pull/313"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p04-interface-v1-20260819",
+      "tip_sha": "7864b8cce2d623f6fb76b42adeb6320b963f92c8",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 314,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P04 v1.0｜Minimum sufficient carrier + object admission UI",
+          "url": "https://github.com/Jiaosong/Design/pull/314"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p05-interface-v1-20260819",
+      "tip_sha": "8f4eabfdab455ca073b4dcc38410ba824203663e",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 315,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P05 v1.0｜Three-axis state + recovery UI",
+          "url": "https://github.com/Jiaosong/Design/pull/315"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-p06-interface-v1-20260819",
+      "tip_sha": "a0f0466bfe4e19e076e8dfe0cf7bdc17ac5accfe",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 316,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED PROVENANCE] C04 CH08-P06 v1.0｜Cross-system handoff + proof boundary UI",
+          "url": "https://github.com/Jiaosong/Design/pull/316"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch08-visual-story-reframe-v0-5-20260819",
+      "tip_sha": "2aeafce1434d7edb4890c15c854d956ebc48307c",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 320,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED CH08 PRESENTATION PROVENANCE] C04 CH08 v0.5｜image-led multi-surface story",
+          "url": "https://github.com/Jiaosong/Design/pull/320"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch10-checkpoint-p01-p05-20260820",
+      "tip_sha": "552102f46cb00ae8fcbb5a6e06c167f312b7e54d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 345,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / CHECKPOINT PROVENANCE] C04 CH10 checkpoint v0.2｜Source-safety currentization P01–P05",
+          "url": "https://github.com/Jiaosong/Design/pull/345"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch13-web-v1-20260819",
+      "tip_sha": "bd90321ba54830719c4452f903f28922a9a93a2e",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 301,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED CH13 IDENTITY-CARRIER PROVENANCE] CH13-01 Recovery v5 → S01=P02 #330",
+          "url": "https://github.com/Jiaosong/Design/pull/301"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch16-p01-odb02-direct-v3",
+      "tip_sha": "29437517a435176f312f6f2bc708e860c249658b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 305,
+          "state": "MERGED",
+          "mergedAt": "2026-08-19T05:45:56Z",
+          "title": "C04 CH16-P01 v3.0｜restore ODB-02 as direct current visual carrier",
+          "url": "https://github.com/Jiaosong/Design/pull/305"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch16-p01-v2-0",
+      "tip_sha": "d0cbc94ca312de37edd657b0c03b66cf4d806ec2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 304,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED BY ODB-02 DIRECT REUSE] C04 CH16-P01 v2.0｜page-by-page action-bearing body/interface rebuild",
+          "url": "https://github.com/Jiaosong/Design/pull/304"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch16-v1-2",
+      "tip_sha": "735b4c864dbb1321cf66721aa19c2a379da90d26",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 303,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED / PAGE-BY-PAGE REBUILD] C04 CH16 v1.2 — skill-executed detail development repair candidate",
+          "url": "https://github.com/Jiaosong/Design/pull/303"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-ch16-visual-production-map-v0-1",
+      "tip_sha": "303390cb803a5a8b00ce68293be19d828640e331",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 331,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / PROVENANCE MAP] C04 CH16｜Visual-first production map v0.1",
+          "url": "https://github.com/Jiaosong/Design/pull/331"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-complete-simplified-rebuild-20260908",
+      "tip_sha": "44b63bf30aee697004b9f414cae64aff2f6b1ab4",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 491,
+          "state": "MERGED",
+          "mergedAt": "2026-09-07T16:34:31Z",
+          "title": "C04 Web: rebuild complete-project simplified interactive reading",
+          "url": "https://github.com/Jiaosong/Design/pull/491"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-count-contract-ch14-multisurface-20260819",
+      "tip_sha": "48a35b3dfbeb3d604e20e452cab415d2bd2975e2",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 291,
+          "state": "MERGED",
+          "mergedAt": "2026-08-19T02:45:57Z",
+          "title": "C04：修复 CH14 多页展开与 Web 112 历史快照查询口径",
+          "url": "https://github.com/Jiaosong/Design/pull/291"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-evidence-atlas-style-v0-3-20260818",
+      "tip_sha": "5b196777988edfc98ead4749d761eeffcaf98c92",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 257,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED GIS STYLE PROVENANCE] C04 Evidence Atlas visual system v0.3",
+          "url": "https://github.com/Jiaosong/Design/pull/257"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-gis-current-reexecution-v0-7-3-20260818",
+      "tip_sha": "edb655435eb2dc97167a6326447288b57766b826",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 268,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED GIS REEXECUTION PROVENANCE] C04 GIS v0.7.3｜21×21 source-era rerun",
+          "url": "https://github.com/Jiaosong/Design/pull/268"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-morphing-voyage-web-v0-3-20260822",
+      "tip_sha": "9f27726a69e8ceec0bcc9399d67240aebdab7b41",
+      "state": "REJECT",
+      "evidence": "PR #352 was closed as incorrect scope with no merge or promotion; the branch is provenance only.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 352,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "feat(c04): integrate morphing boat web with current assets",
+          "url": "https://github.com/Jiaosong/Design/pull/352"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-narrative-v1-9-journey-led",
+      "tip_sha": "af0f286bbe34fb2969c2b901aa4c6180cbdb6c4d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 200,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T10:55:30Z",
+          "title": "C04 narrative v1.9: journey-led public story",
+          "url": "https://github.com/Jiaosong/Design/pull/200"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-narrative-v2-complete-professional-depth",
+      "tip_sha": "3f7402d8c4aba3c2859a91cc4fa299361d973a1e",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 203,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T11:10:09Z",
+          "title": "C04 narrative v2.0: restore full professional depth",
+          "url": "https://github.com/Jiaosong/Design/pull/203"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-project-architecture-v3",
+      "tip_sha": "a38f2352a77c187d55e6930c2a6bb75da50301ec",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 204,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T11:30:22Z",
+          "title": "C04：重建完整项目架构 v3.0（中文）",
+          "url": "https://github.com/Jiaosong/Design/pull/204"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-project-axis-rebaseline",
+      "tip_sha": "39fbe54583624422cbf5703c9a1efd020a1820ba",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 72,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Rebaseline C04 to current OLEANDER project axis",
+          "url": "https://github.com/Jiaosong/Design/pull/72"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-promote-v3-2-current-20260817",
+      "tip_sha": "f8ed4ca02ad127132e59915b1ebabc9185dbd48c",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 215,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T15:52:23Z",
+          "title": "C04：提升 v3.2 为 Current / Active Execution Authority",
+          "url": "https://github.com/Jiaosong/Design/pull/215"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-r06-drawing-professionalize-v1-4",
+      "tip_sha": "d97de01d785fbe9b69f50733b36437bbbd7a9f99",
+      "state": "REJECT",
+      "evidence": "PR #190 was closed per user direction because R06 is finished; the branch is provenance only and must not remain CURRENT/MAIN or an active drawing lane.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 190,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04 R06: professionalize GA / section / connection drawing v1.4",
+          "url": "https://github.com/Jiaosong/Design/pull/190"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-web-front16-currentization-v02-20260823",
+      "tip_sha": "edeb8966752b7616ff965f55503d1f70101f9d7f",
+      "state": "REJECT",
+      "evidence": "PR #354 was WITHDRAWN and explicitly superseded after design rejection.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 354,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[WITHDRAWN] C04 Web Front31 currentization — superseded after design rejection",
+          "url": "https://github.com/Jiaosong/Design/pull/354"
+        }
+      ]
+    },
+    {
+      "branch": "agent/c04-yunshuiyi-work-simple-20260907",
+      "tip_sha": "b5780f5c57e5d235011682c33b84d2966125c791",
+      "state": "REJECT",
+      "evidence": "PR #490 was closed/not merged/provenance-only; presentation is blocked by the upstream source-fidelity gate and must not reopen as a parallel master.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 490,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04: Yunshuiyi simple product work",
+          "url": "https://github.com/Jiaosong/Design/pull/490"
+        }
+      ]
+    },
+    {
+      "branch": "agent/e2-web-audit",
+      "tip_sha": "598603ff289a6f8ff7f6097bbcb02a25c6d3eb79",
+      "state": "SUPERSEDED",
+      "evidence": "PR #5 explicitly states it is superseded by PR #7 and its accessibility/Playwright work was carried forward into the governance-synchronized website branch.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 5,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Align portfolio with OLEANDER v0.7 and accessibility baseline",
+          "url": "https://github.com/Jiaosong/Design/pull/5"
+        }
+      ]
+    },
+    {
+      "branch": "agent/github-audit-immutable-actions-20260811",
+      "tip_sha": "c33ad24811575cc87954f1557096c628bb36a1e0",
+      "state": "SUPERSEDED",
+      "evidence": "PR #39 merged; audit changes are already in main and no longer form a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 39,
+          "state": "MERGED",
+          "mergedAt": "2026-08-11T03:30:25Z",
+          "title": "Audit: enforce immutable GitHub Actions dependencies",
+          "url": "https://github.com/Jiaosong/Design/pull/39"
+        }
+      ]
+    },
+    {
+      "branch": "agent/github-audit-repo-hardening-20260811",
+      "tip_sha": "2e2533d5d1a639af14e7f4a8fb567c9674831330",
+      "state": "SUPERSEDED",
+      "evidence": "PR #40 merged; hardening changes are already in main and no longer form a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 40,
+          "state": "MERGED",
+          "mergedAt": "2026-08-11T03:38:40Z",
+          "title": "Audit: harden repository gates and release defaults",
+          "url": "https://github.com/Jiaosong/Design/pull/40"
+        }
+      ]
+    },
+    {
+      "branch": "agent/governance-migration-v1.0.1",
+      "tip_sha": "2c200e6522b70cf99e37f70ec7b5d941824aadd2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #8 merged; current architecture/governance authority is newer v1.1.0 E2.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 8,
+          "state": "MERGED",
+          "mergedAt": "2026-08-07T08:43:41Z",
+          "title": "Add OLEANDER governance migration v1.0.1",
+          "url": "https://github.com/Jiaosong/Design/pull/8"
+        }
+      ]
+    },
+    {
+      "branch": "agent/governance-priority-queue-c04-web-20260828",
+      "tip_sha": "8e0f5593416a3dfe07cdaff507ec592894b451ab",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #402; current priority queue schema 2.4 and newer C04 control state supersede this queue snapshot.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 402,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[GOVERNANCE] Restore verified C04 Web priority queue object",
+          "url": "https://github.com/Jiaosong/Design/pull/402"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-default-skill-resolver",
+      "tip_sha": "406c5f3f6b6b2de335d69dcf390d9bc7ec8e6f31",
+      "state": "SUPERSEDED",
+      "evidence": "PR #232 merged; resolver content is already integrated and later current resolver authority has advanced beyond it.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 232,
+          "state": "MERGED",
+          "mergedAt": "2026-08-18T01:30:24Z",
+          "title": "OLEANDER: make Notion-first skill resolution the default",
+          "url": "https://github.com/Jiaosong/Design/pull/232"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-design-process-promote-v0.2",
+      "tip_sha": "0e9a9e84e6d5e528ba752dc5456888774ab13551",
+      "state": "SUPERSEDED",
+      "evidence": "PR #453 merged; promoted design-process v0.2 is already in main/current authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 453,
+          "state": "MERGED",
+          "mergedAt": "2026-08-29T10:08:28Z",
+          "title": "Promote oleander-design-process v0.2 to installed execution owner",
+          "url": "https://github.com/Jiaosong/Design/pull/453"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-design-process-v0.2",
+      "tip_sha": "d66a14e1c8458aaea009d62676a7144c99631e04",
+      "state": "SUPERSEDED",
+      "evidence": "PR #449 merged and subsequent promotion PR #453 made this source branch historical.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 449,
+          "state": "MERGED",
+          "mergedAt": "2026-08-29T09:47:36Z",
+          "title": "Design Process v0.2: goal-to-readback full loop",
+          "url": "https://github.com/Jiaosong/Design/pull/449"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-governance-consolidation-20260825",
+      "tip_sha": "06ef7212ef03c728917bad913373ecec3add58c9",
+      "state": "SUPERSEDED",
+      "evidence": "PR #357 merged; consolidation work is already in main and later governance currentization supersedes its branch ref.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 357,
+          "state": "MERGED",
+          "mergedAt": "2026-08-25T03:37:11Z",
+          "title": "OLEANDER runtime｜治理收口：唯一前线 × 位置完整性 × 生命周期 × 源字节去重",
+          "url": "https://github.com/Jiaosong/Design/pull/357"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-motion-skill-v0.2",
+      "tip_sha": "8ac72fd63d839d859385e94ffd3785e6e3acf487",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #54 explicitly says SUPERSEDED and rebuilt as PR #60.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 54,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "SUPERSEDED｜OLEANDER motion skill v0.2 — rebuilt as #60",
+          "url": "https://github.com/Jiaosong/Design/pull/54"
+        }
+      ]
+    },
+    {
+      "branch": "agent/oleander-runtime-assimilation-20260821",
+      "tip_sha": "cdfaed54fd8a20abb5ed07460af0e1f8db04aea2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #351 merged; runtime assimilation is already integrated and later runtime authority supersedes the branch.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 351,
+          "state": "MERGED",
+          "mergedAt": "2026-08-21T06:06:07Z",
+          "title": "OLEANDER runtime｜训练消化 + 增量读取 + 文件身份修复",
+          "url": "https://github.com/Jiaosong/Design/pull/351"
+        }
+      ]
+    },
+    {
+      "branch": "agent/practice-sync-2026-08-07",
+      "tip_sha": "23af50d804eda677dcc7f62dc73c4efda718c33a",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 9,
+          "state": "MERGED",
+          "mergedAt": "2026-08-07T08:45:23Z",
+          "title": "Sync maintainable OLEANDER practice records",
+          "url": "https://github.com/Jiaosong/Design/pull/9"
+        }
+      ]
+    },
+    {
+      "branch": "agent/project-control-plane-v0-2",
+      "tip_sha": "10444b2a2e5dc4d561f590b5d40ea9d6dbb5e957",
+      "state": "SUPERSEDED",
+      "evidence": "PR #88 merged Control Plane v0.2; current Control Card/Control Plane authority is v0.3 hardened orchestration.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 88,
+          "state": "MERGED",
+          "mergedAt": "2026-08-13T01:25:10Z",
+          "title": "OLEANDER Project Control Plane v0.2｜Executable governance router",
+          "url": "https://github.com/Jiaosong/Design/pull/88"
+        }
+      ]
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-live-final",
+      "tip_sha": "4e1fde5c37cd6692cb588f60e9967ff42b44c6e1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #90 merged; its hardened orchestration is already in main/current control-plane authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 90,
+          "state": "MERGED",
+          "mergedAt": "2026-08-13T03:16:58Z",
+          "title": "OLEANDER Project Control Plane v0.3｜Hardening: bound receipts + explicit transition + semantic replay",
+          "url": "https://github.com/Jiaosong/Design/pull/90"
+        }
+      ]
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-orchestration",
+      "tip_sha": "eab461e034569c364bab03360982fefedb8329d5",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #89 explicitly says SUPERSEDED / AUDIT ONLY; PR #90 became live final.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 89,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "SUPERSEDED / AUDIT ONLY｜OLEANDER Project Control Plane v0.3 stale-base orchestration",
+          "url": "https://github.com/Jiaosong/Design/pull/89"
+        }
+      ]
+    },
+    {
+      "branch": "agent/root-namespace-pollution-guard",
+      "tip_sha": "ded79d51d65a33ca5d00e4fa23989e88bb89472a",
+      "state": "SUPERSEDED",
+      "evidence": "PR #69 merged; the canonical root-freeze/namespace guard is already represented in main governance.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 69,
+          "state": "MERGED",
+          "mergedAt": "2026-08-11T17:12:12Z",
+          "title": "Guard OLEANDER canonical top-level roots",
+          "url": "https://github.com/Jiaosong/Design/pull/69"
+        }
+      ]
+    },
+    {
+      "branch": "agent/story-board-first-visual-repair",
+      "tip_sha": "94a9f0273abfe981687bdacfaf9c473b83d1e00f",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 167,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED BY #361 / EVIDENCE-CORRECTED PROVENANCE] First-visual repair loop",
+          "url": "https://github.com/Jiaosong/Design/pull/167"
+        }
+      ]
+    },
+    {
+      "branch": "agent/timer-light-basin-v3.3-calibration-lock",
+      "tip_sha": "4132be99d4888a49dbb399031976496d8b14ed33",
+      "state": "SUPERSEDED",
+      "evidence": "Closed calibration branch is historical; current main contains later Timer poster-lock/staging authority and rebased release-gate lineage.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 15,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Agent/timer light basin v3.3 calibration lock",
+          "url": "https://github.com/Jiaosong/Design/pull/15"
+        }
+      ]
+    },
+    {
+      "branch": "agent/timer-light-basin-v3.3-photography",
+      "tip_sha": "aff91c5a3cd74ad04a264a038b560902d1d839c2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #12 merged and current main carries later rebased Timer staging/poster-lock authority; the branch is historical photography/staging provenance rather than Current authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 12,
+          "state": "MERGED",
+          "mergedAt": "2026-08-07T09:23:27Z",
+          "title": "Add Timer v3.3 browser photography calibration evidence",
+          "url": "https://github.com/Jiaosong/Design/pull/12"
+        }
+      ]
+    },
+    {
+      "branch": "agent/timer-r54-product-rendering-rebuild",
+      "tip_sha": "cd828ae5143cb940d193d096bc202c9b31a92f5c",
+      "state": "SUPERSEDED",
+      "evidence": "PR #31 closed; later Timer R54 G3.2 evidence/persistence governance is the retained authority while this earlier R54 implementation remains historical G0-G5 provenance.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 31,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Add Timer R54 product rendering rebuild",
+          "url": "https://github.com/Jiaosong/Design/pull/31"
+        }
+      ]
+    },
+    {
+      "branch": "ai-governance-p0-v01",
+      "tip_sha": "0373f8ae7d17b613018c08d01e1b804d860549bd",
+      "state": "SUPERSEDED",
+      "evidence": "PR #20 merged; the old AI P0 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 20,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T08:56:12Z",
+          "title": "Add P0 AI governance eval and regression controls",
+          "url": "https://github.com/Jiaosong/Design/pull/20"
+        }
+      ]
+    },
+    {
+      "branch": "ai-governance-p1-v01",
+      "tip_sha": "da48f9c7eecbc4e04e42774b3d11755a692f6f7b",
+      "state": "SUPERSEDED",
+      "evidence": "PR #21 merged; the old AI P1 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 21,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T09:15:16Z",
+          "title": "Add P1 AI runtime failure, trust, and provenance controls",
+          "url": "https://github.com/Jiaosong/Design/pull/21"
+        }
+      ]
+    },
+    {
+      "branch": "ai-governance-p2-v01",
+      "tip_sha": "f3897eb87baaab88495f4f47ac0240dcbd28ab1a",
+      "state": "SUPERSEDED",
+      "evidence": "PR #22 merged; the old AI P2 namespace is retired by the current AIG-01/AIG-02/AIG-03 governance architecture.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 22,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T09:39:30Z",
+          "title": "Add P2 AI runtime evidence measurement",
+          "url": "https://github.com/Jiaosong/Design/pull/22"
+        }
+      ]
+    },
+    {
+      "branch": "c04-ch16-v1-0-detail-development",
+      "tip_sha": "2461def69ac08aa2647ddddd9a7a64b15e4ce2d0",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 289,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED / PAGE-BY-PAGE REBUILD] C04 CH16 v3.3｜CH14 Visual Grammar × OLEANDER Detail Closure Candidate",
+          "url": "https://github.com/Jiaosong/Design/pull/289"
+        }
+      ]
+    },
+    {
+      "branch": "c04-qingjiang-brand-rebuild-v1-0",
+      "tip_sha": "c1457bbc39ce10130b6b1c2e931e773ca1c7c424",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 213,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED PROVENANCE] C04: rebuild Qingjiang Stone Book brand v1.0",
+          "url": "https://github.com/Jiaosong/Design/pull/213"
+        }
+      ]
+    },
+    {
+      "branch": "c04-qingjiang-brand-v1-2",
+      "tip_sha": "94dbe34af3bf2e525de79382d20b7711b25dce5a",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 231,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "SUPERSEDED PROVENANCE｜C04 清江石书品牌系统 v1.2",
+          "url": "https://github.com/Jiaosong/Design/pull/231"
+        }
+      ]
+    },
+    {
+      "branch": "c04/current-integration-v1-0-20260817",
+      "tip_sha": "8fc1ea46bd82c6cd710a140038a970eade6c3476",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 164,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / LEGACY WEB SURFACE-REGISTER PROVENANCE] C04 Web v1.14｜112 snapshot demotion",
+          "url": "https://github.com/Jiaosong/Design/pull/164"
+        }
+      ]
+    },
+    {
+      "branch": "c04/full-asset-atlas-reframe",
+      "tip_sha": "578ecf5d2d5edabd9a54075fce899157b40817cb",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 120,
+          "state": "MERGED",
+          "mergedAt": "2026-08-16T05:04:13Z",
+          "title": "C04: restore full design asset atlas and three-axis reframe",
+          "url": "https://github.com/Jiaosong/Design/pull/120"
+        }
+      ]
+    },
+    {
+      "branch": "c04/page-register-remap-v01-20260819",
+      "tip_sha": "557474667a993630261c94e5549eedd32f9e775b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 323,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / LEGACY IDENTITY-REMAP PROVENANCE] C04 Web Page Register v0.1｜52 protected IDs × 111 authoring units",
+          "url": "https://github.com/Jiaosong/Design/pull/323"
+        }
+      ]
+    },
+    {
+      "branch": "c04/public-narrative-v1-8",
+      "tip_sha": "7750ffaa1f26acb6b90e41e4db200dc6b897ba77",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 116,
+          "state": "MERGED",
+          "mergedAt": "2026-08-15T16:15:16Z",
+          "title": "C04 B/Web/F: concrete culture-journey-play public narrative v1.8",
+          "url": "https://github.com/Jiaosong/Design/pull/116"
+        }
+      ]
+    },
+    {
+      "branch": "c04/single-project-deepening-v1-2",
+      "tip_sha": "e2eef702d32b4e2542a61e2f89528302bd171846",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 125,
+          "state": "MERGED",
+          "mergedAt": "2026-08-16T06:44:25Z",
+          "title": "C04: P0 canonical scene register + v1.2 single-project deepening",
+          "url": "https://github.com/Jiaosong/Design/pull/125"
+        }
+      ]
+    },
+    {
+      "branch": "c04/web-experience-framework-v2",
+      "tip_sha": "f7a3662cb36fa21c6eb5bc1b64d8ed9e51bdf99d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 126,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04: reframe Web around visitor experience questions",
+          "url": "https://github.com/Jiaosong/Design/pull/126"
+        },
+        {
+          "number": 127,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED WEB ARCHITECTURE PROVENANCE] C04 Web v2.3｜12-layer framework + preservation review",
+          "url": "https://github.com/Jiaosong/Design/pull/127"
+        }
+      ]
+    },
+    {
+      "branch": "c04/web-final-framework-v2",
+      "tip_sha": "1fc4a6af8675a4aa1662be722ac4114bb5510d8d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 163,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED WEB FRAMEWORK PROVENANCE] C04｜whole-project final Web framework v2｜13-part rhythm",
+          "url": "https://github.com/Jiaosong/Design/pull/163"
+        }
+      ]
+    },
+    {
+      "branch": "c04/web-story-flow-organization-20260817",
+      "tip_sha": "e2d9bf854bdf1a95c3af4495b7aa6a08a3b755d1",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 195,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[SUPERSEDED] C04: Web storytelling flow organization (2026-08-17 provenance)",
+          "url": "https://github.com/Jiaosong/Design/pull/195"
+        }
+      ]
+    },
+    {
+      "branch": "feat/oleander-blender-cad-direct-execution-v01-20260909",
+      "tip_sha": "4d90289326278dac956a3ac6999e479689725c30",
+      "state": "SUPERSEDED",
+      "evidence": "PR #499 merged and its execution receipt is already retained in main; the branch ref is no longer the authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 499,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T10:03:25Z",
+          "title": "feat: execute bounded CAD direct face edit through existing sidecar",
+          "url": "https://github.com/Jiaosong/Design/pull/499"
+        }
+      ]
+    },
+    {
+      "branch": "fix/c04-blender-rebuild-runtime-20260902",
+      "tip_sha": "3665bd182e0cbf48f5f77bec77060f8681cde800",
+      "state": "SUPERSEDED",
+      "evidence": "PR #472 closed after establishing rebuild-first evidence; PR #473 merged the reusable production carrier that supersedes this branch frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 472,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "C04: make Blender rebuild-first runner reusable",
+          "url": "https://github.com/Jiaosong/Design/pull/472"
+        }
+      ]
+    },
+    {
+      "branch": "fix/c04-blender-rebuild-runtime-clean-20260902",
+      "tip_sha": "6fdff11598a8cb6489573f38d83f616bd1f8299c",
+      "state": "SUPERSEDED",
+      "evidence": "PR #473 merged the rebuild-first Blender production carrier; branch ref is historical implementation provenance.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 473,
+          "state": "MERGED",
+          "mergedAt": "2026-09-02T12:56:21Z",
+          "title": "C04: install rebuild-first Blender production carrier",
+          "url": "https://github.com/Jiaosong/Design/pull/473"
+        }
+      ]
+    },
+    {
+      "branch": "fix/oleander-hourly-continuous-production-20260903",
+      "tip_sha": "c9bc62704ed654554d41bf21c84f73120acaf0c7",
+      "state": "SUPERSEDED",
+      "evidence": "PR #475 merged the durable continuous-execution alignment; the branch is no longer a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 475,
+          "state": "MERGED",
+          "mergedAt": "2026-09-03T00:22:56Z",
+          "title": "OLEANDER: align hourly GPT control with durable continuous execution",
+          "url": "https://github.com/Jiaosong/Design/pull/475"
+        }
+      ]
+    },
+    {
+      "branch": "fix/oleander-universal-runtime-guard-20260902",
+      "tip_sha": "50ac2cf0a8cd056eff6f279912f39b3c082db6d0",
+      "state": "SUPERSEDED",
+      "evidence": "PR #474 merged the universal shared-runtime hardening; current main owns the runtime guard authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 474,
+          "state": "MERGED",
+          "mergedAt": "2026-09-02T15:54:11Z",
+          "title": "runtime: harden OLEANDER universal shared-runtime reuse",
+          "url": "https://github.com/Jiaosong/Design/pull/474"
+        }
+      ]
+    },
+    {
+      "branch": "gov/oleander-anti-pollution-v1",
+      "tip_sha": "8da50055200f809ae42ddcdcc75493c05d79cc8c",
+      "state": "SUPERSEDED",
+      "evidence": "PR #477 merged and the canonical Anti-Pollution Protocol/Contract now live in main; this branch is provenance only.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 477,
+          "state": "MERGED",
+          "mergedAt": "2026-09-03T16:51:51Z",
+          "title": "governance: project-wide OLEANDER anti-pollution protocol",
+          "url": "https://github.com/Jiaosong/Design/pull/477"
+        }
+      ]
+    },
+    {
+      "branch": "governance/2026-08-28-c04-priority-control-card",
+      "tip_sha": "d362ab7ed513509a35c3256bbb99f0b1c6c98a1b",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #403; newer whole-project C04 control card and current priority queue supersede this Aug-28 control snapshot.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 403,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Governance: establish C04 Work Object control card and refresh Current priority queue",
+          "url": "https://github.com/Jiaosong/Design/pull/403"
+        }
+      ]
+    },
+    {
+      "branch": "governance/case-claim-authority-repair-v01",
+      "tip_sha": "4c292d21f7858442ef6d5389f90e465e82f097c6",
+      "state": "SUPERSEDED",
+      "evidence": "PR #32 merged; authority repair is already present on main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 32,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T16:46:00Z",
+          "title": "Lock case and claim namespaces and supersede legacy machine authority",
+          "url": "https://github.com/Jiaosong/Design/pull/32"
+        }
+      ]
+    },
+    {
+      "branch": "governance/cloud-free-browser-profile-20260826",
+      "tip_sha": "d5c865575e9569f64b1cf54a5441214999258183",
+      "state": "SUPERSEDED",
+      "evidence": "PR #371 merged; browser-profile governance is integrated and later runtime/currentization work supersedes the branch.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 371,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T02:07:29Z",
+          "title": "Runtime｜Add Cloud-Free browser-first project profile",
+          "url": "https://github.com/Jiaosong/Design/pull/371"
+        }
+      ]
+    },
+    {
+      "branch": "governance/cloud-free-global-activation-20260826",
+      "tip_sha": "1568504df5714ebe9d6da5e6c8b1278e1ef0357d",
+      "state": "SUPERSEDED",
+      "evidence": "PR #372 merged; global cloud-free activation is already integrated on main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 372,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T03:03:41Z",
+          "title": "Runtime｜Activate Cloud-Free environment across OLEANDER conversations",
+          "url": "https://github.com/Jiaosong/Design/pull/372"
+        }
+      ]
+    },
+    {
+      "branch": "governance/data-viz-uncertainty-currentize-20260825",
+      "tip_sha": "bdd6efbd7a626dd5d99984b0806fb4c9d9266eb3",
+      "state": "SUPERSEDED",
+      "evidence": "PR #362 merged; currentization is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 362,
+          "state": "MERGED",
+          "mergedAt": "2026-08-25T09:14:14Z",
+          "title": "Data Viz｜Currentize uncertainty-first scenario chart gate",
+          "url": "https://github.com/Jiaosong/Design/pull/362"
+        }
+      ]
+    },
+    {
+      "branch": "governance/delivery-qc-interaction-state-currentize-20260825",
+      "tip_sha": "7c6c3c1dee214c10829525c418a83a3605c578fd",
+      "state": "SUPERSEDED",
+      "evidence": "PR #363 merged; currentization is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 363,
+          "state": "MERGED",
+          "mergedAt": "2026-08-25T09:15:19Z",
+          "title": "Delivery QC｜Currentize interaction-state legibility + accessibility proof separation",
+          "url": "https://github.com/Jiaosong/Design/pull/363"
+        }
+      ]
+    },
+    {
+      "branch": "governance/design-environment-software-routing-20260827",
+      "tip_sha": "78d3f9e46a0792e9a1f73a0ecd30b7543c00a451",
+      "state": "SUPERSEDED",
+      "evidence": "PR #390 merged and later duplicate #411 closed; routing authority is already represented in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 390,
+          "state": "MERGED",
+          "mergedAt": "2026-08-27T04:06:22Z",
+          "title": "Governance｜Repair design environment and software routing",
+          "url": "https://github.com/Jiaosong/Design/pull/390"
+        },
+        {
+          "number": 411,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Runtime｜Repair design environment software routing",
+          "url": "https://github.com/Jiaosong/Design/pull/411"
+        }
+      ]
+    },
+    {
+      "branch": "governance/no-loss-control-card-v03-deepening-20260816",
+      "tip_sha": "464fff21ce71bf3af6149533408f925c6630ff4b",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #136 explicitly says SUPERSEDED BY #359 / NO-LOSS v0.3 PROVENANCE.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 136,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED BY #359 / NO-LOSS v0.3 PROVENANCE] OLEANDER Control Plane restructure accounting",
+          "url": "https://github.com/Jiaosong/Design/pull/136"
+        }
+      ]
+    },
+    {
+      "branch": "governance/no-loss-v03-currentize-20260825",
+      "tip_sha": "a69a3007488e1c8f92fa60a4a3f95b4c6fa851ca",
+      "state": "SUPERSEDED",
+      "evidence": "PR #359 merged; no-loss v0.3 currentization is already in main/current control authority.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 359,
+          "state": "MERGED",
+          "mergedAt": "2026-08-25T08:59:05Z",
+          "title": "Governance｜Currentize no-loss restructure accounting v0.3",
+          "url": "https://github.com/Jiaosong/Design/pull/359"
+        }
+      ]
+    },
+    {
+      "branch": "governance/oleander-consolidation-throttle-20260905",
+      "tip_sha": "392a9790d5b965c00ddf591fc573626106cdb70c",
+      "state": "SUPERSEDED",
+      "evidence": "PR #481 merged; consolidation-throttle governance is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 481,
+          "state": "MERGED",
+          "mergedAt": "2026-09-05T00:44:42Z",
+          "title": "governance: throttle OLEANDER candidate and training debt",
+          "url": "https://github.com/Jiaosong/Design/pull/481"
+        }
+      ]
+    },
+    {
+      "branch": "governance/oleander-process-integrity-repair-20260827",
+      "tip_sha": "e77ce753af032c9d5999558f115101358e7b09b0",
+      "state": "SUPERSEDED",
+      "evidence": "PR #389 merged; process-integrity repair is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 389,
+          "state": "MERGED",
+          "mergedAt": "2026-08-27T02:09:52Z",
+          "title": "Governance｜Repair OLEANDER process integrity",
+          "url": "https://github.com/Jiaosong/Design/pull/389"
+        }
+      ]
+    },
+    {
+      "branch": "governance/process-first-skill-gap-20260817",
+      "tip_sha": "71ebc2e75331ebf0536b216197cf9db354c60e8b",
+      "state": "SUPERSEDED",
+      "evidence": "Closed PR #174 explicitly says SUPERSEDED BY CURRENT RESOLVER v1.2.2 + UPE v1.0.1.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 174,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED BY CURRENT RESOLVER v1.2.2 + UPE v1.0.1 / GOVERNANCE PROVENANCE]",
+          "url": "https://github.com/Jiaosong/Design/pull/174"
+        }
+      ]
+    },
+    {
+      "branch": "governance/production-asset-persistence-v1",
+      "tip_sha": "5b8f5cb38377b49ac81e2405b49d526a0ca94b24",
+      "state": "SUPERSEDED",
+      "evidence": "PR #45 merged (with earlier #44 closed); production asset persistence is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 44,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Govern production binary persistence before promotion",
+          "url": "https://github.com/Jiaosong/Design/pull/44"
+        },
+        {
+          "number": 45,
+          "state": "MERGED",
+          "mergedAt": "2026-08-11T06:25:48Z",
+          "title": "Govern production binary persistence before promotion",
+          "url": "https://github.com/Jiaosong/Design/pull/45"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/activate-universal-production-env-v1",
+      "tip_sha": "1bfe5bd178b51a0224e2b139fea7380253cc9758",
+      "state": "SUPERSEDED",
+      "evidence": "PR #142 merged; UPE activation is already in main and current runtime authority has advanced.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 142,
+          "state": "MERGED",
+          "mergedAt": "2026-08-16T10:41:20Z",
+          "title": "OLEANDER: activate universal production environment v1.0",
+          "url": "https://github.com/Jiaosong/Design/pull/142"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/chat-design-production-wiring-20260909",
+      "tip_sha": "8dd65475ff2c3fb1b3fcdeff9941ac635be1d984",
+      "state": "SUPERSEDED",
+      "evidence": "PR #513 merged; chat/design production wiring is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 513,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T16:30:42Z",
+          "title": "Repair ordinary-Chat visual production wiring",
+          "url": "https://github.com/Jiaosong/Design/pull/513"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/chat-runtime-adapter-hardening-20260909",
+      "tip_sha": "513e1786a75b7f8fdfc97d63c744d685276695d2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #500 merged; adapter hardening is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 500,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T04:03:06Z",
+          "title": "Harden OLEANDER connected execution adapter routing",
+          "url": "https://github.com/Jiaosong/Design/pull/500"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/chat-runtime-concurrency-idempotency-20260909",
+      "tip_sha": "4f3f37b3bedea0cf2d72467aad7423b525a18486",
+      "state": "SUPERSEDED",
+      "evidence": "PR #503 merged; concurrency/idempotency hardening is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 503,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T06:54:56Z",
+          "title": "Harden executable frontier concurrency and idempotent mutation",
+          "url": "https://github.com/Jiaosong/Design/pull/503"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/p3-continuation-cycle-20260909",
+      "tip_sha": "35905e853b1f3aa607937fe0cdfc2a14eb673b48",
+      "state": "SUPERSEDED",
+      "evidence": "PR #506 merged; continuation-cycle changes are already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 506,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T08:08:31Z",
+          "title": "Validate P3 continuation execution cycle",
+          "url": "https://github.com/Jiaosong/Design/pull/506"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/p6-partial-commit-reconciliation-20260909",
+      "tip_sha": "5e8533267bd4139b4999ea026342018c292cc324",
+      "state": "SUPERSEDED",
+      "evidence": "PR #508 merged; partial-commit reconciliation is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 508,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T11:38:14Z",
+          "title": "P6: reconcile cross-surface partial commits before advance",
+          "url": "https://github.com/Jiaosong/Design/pull/508"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/p7-execution-budget-surface-circuit-20260909",
+      "tip_sha": "56669758329a36087eddceec148055f2da1080ca",
+      "state": "SUPERSEDED",
+      "evidence": "PR #509 merged; execution-budget surface circuit is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 509,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T11:44:52Z",
+          "title": "P7: bound execution budgets and repeated surface probes",
+          "url": "https://github.com/Jiaosong/Design/pull/509"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/runtime-cache-readback-escalation-20260909",
+      "tip_sha": "48930a493227ca190fcc63761ed3a55a52811847",
+      "state": "SUPERSEDED",
+      "evidence": "PR #504 merged; runtime-cache readback escalation is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 504,
+          "state": "MERGED",
+          "mergedAt": "2026-09-09T07:05:17Z",
+          "title": "Compile runtime cache readback and escalation decisions",
+          "url": "https://github.com/Jiaosong/Design/pull/504"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/spatial-authority-preservation-20260817",
+      "tip_sha": "58ac1313683fabf3ae506319bb010a102af4fd48",
+      "state": "SUPERSEDED",
+      "evidence": "PR #199 merged; spatial authority preservation is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 199,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T10:50:18Z",
+          "title": "OLEANDER global: preserve mature spatial authority across all projects",
+          "url": "https://github.com/Jiaosong/Design/pull/199"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/universal-production-env-v1",
+      "tip_sha": "2fec36557129c81c5c9ce58b7ccb565ae983084c",
+      "state": "SUPERSEDED",
+      "evidence": "PR #141 merged and activation PR #142 followed; this source branch is historical.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 141,
+          "state": "MERGED",
+          "mergedAt": "2026-08-16T10:38:20Z",
+          "title": "OLEANDER: universal production environment v1.0",
+          "url": "https://github.com/Jiaosong/Design/pull/141"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/visual-quality-convergence-repair-20260910",
+      "tip_sha": "1e73ff294b42131a8753dc77290529fb98ba801e",
+      "state": "SUPERSEDED",
+      "evidence": "PR #515 merged; convergence repair is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 515,
+          "state": "MERGED",
+          "mergedAt": "2026-09-10T04:36:58Z",
+          "title": "Repair visual quality convergence after repeated REVISE",
+          "url": "https://github.com/Jiaosong/Design/pull/515"
+        }
+      ]
+    },
+    {
+      "branch": "oleander/visual-technique-production-repair-20260910",
+      "tip_sha": "502458a4c658449520d8c1b7714982e3cd6b1ac1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #514 merged; production repair is already in main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 514,
+          "state": "MERGED",
+          "mergedAt": "2026-09-10T03:17:39Z",
+          "title": "Repair Chat visual production to reuse existing design knowledge",
+          "url": "https://github.com/Jiaosong/Design/pull/514"
+        }
+      ]
+    },
+    {
+      "branch": "p0-retrieval-routing-repair-v01",
+      "tip_sha": "b02a242b05f9b2a8cb692bedaebb6cbec2902cd8",
+      "state": "SUPERSEDED",
+      "evidence": "PR #29 merged; legacy P0/P1/P2 AI-governance labels are retired from current authority in favor of AIG-01/02/03.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 29,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T13:24:18Z",
+          "title": "Repair P0 retrieval authority routing",
+          "url": "https://github.com/Jiaosong/Design/pull/29"
+        }
+      ]
+    },
+    {
+      "branch": "p2-evidence-website-pr7-v01",
+      "tip_sha": "d44d8fbca25979e95c002b54fa3c3c075531365a",
+      "state": "SUPERSEDED",
+      "evidence": "PR #25 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 25,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T09:52:15Z",
+          "title": "Add first confirmed P2 design-runtime evidence",
+          "url": "https://github.com/Jiaosong/Design/pull/25"
+        }
+      ]
+    },
+    {
+      "branch": "p2-live-retrieval-audit-v01",
+      "tip_sha": "764546e4e16d9258f5659d307b711540e366daa0",
+      "state": "SUPERSEDED",
+      "evidence": "PR #26 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 26,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T10:04:41Z",
+          "title": "Record first P2 live retrieval audit",
+          "url": "https://github.com/Jiaosong/Design/pull/26"
+        }
+      ]
+    },
+    {
+      "branch": "p2-provenance-audit-v01",
+      "tip_sha": "3c09bba783d6e727686b4f00ca9e34a0dcd946a2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #27 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 27,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T10:14:46Z",
+          "title": "Record first P2 asset provenance coverage audit",
+          "url": "https://github.com/Jiaosong/Design/pull/27"
+        }
+      ]
+    },
+    {
+      "branch": "p2-retrieval-metric-validity-repair-v01",
+      "tip_sha": "a31e7481d35aaacdb57934cf21e707ecef16bc7d",
+      "state": "SUPERSEDED",
+      "evidence": "PR #30 merged; legacy P2 namespace is retired from current authority and preserved only as history.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 30,
+          "state": "MERGED",
+          "mergedAt": "2026-08-10T13:35:21Z",
+          "title": "Fix P2 retrieval metric validity and snapshot semantics",
+          "url": "https://github.com/Jiaosong/Design/pull/30"
+        }
+      ]
+    },
+    {
+      "branch": "practice/2026-08-11-sp01-r02-gis-reality-gate",
+      "tip_sha": "48d381b4531829d92ec15ea8cb223e06d142f48b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 42,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "SUPERSEDED｜SP01-R02 GIS Reality Gate — rebuilt with PAP as #58",
+          "url": "https://github.com/Jiaosong/Design/pull/42"
+        }
+      ]
+    },
+    {
+      "branch": "repair/prac-spatial-2026-project-axis",
+      "tip_sha": "5844595b74ae823b3cc4893997f5b402ef04bf40",
+      "state": "SUPERSEDED",
+      "evidence": "Although PR #67 closed, its substantive PRAC-SPATIAL-2026 files and migration artifacts are already present on current main.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 67,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Repair Spatial Practice 2026 to P2/P3/P4 project axis",
+          "url": "https://github.com/Jiaosong/Design/pull/67"
+        }
+      ]
+    },
+    {
+      "branch": "review/design-workbench-professional-review01-20260827",
+      "tip_sha": "1a614796f4bf9785d0486d0b79a330a202180f04",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 388,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "Review｜Design Workbench internal artifact crit 01｜SUPERSEDED BY #389 PROCESS POLICY",
+          "url": "https://github.com/Jiaosong/Design/pull/388"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/browser-design-workbench-20260826",
+      "tip_sha": "87828fcf9a27cc188039893892903a514dc728d1",
+      "state": "SUPERSEDED",
+      "evidence": "PR #373 merged; browser design workbench runtime is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 373,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T04:36:10Z",
+          "title": "Runtime｜Add shared Browser Design Workbench",
+          "url": "https://github.com/Jiaosong/Design/pull/373"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/cloud-free-capability-expansion-20260826",
+      "tip_sha": "2a5fc254f444ade752b403e950a44b5ac03896ee",
+      "state": "SUPERSEDED",
+      "evidence": "PR #374 merged; cloud-free capability expansion is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 374,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T05:17:13Z",
+          "title": "Runtime｜Expand Cloud-Free Studio with image, spatial and technical labs",
+          "url": "https://github.com/Jiaosong/Design/pull/374"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/cloud-free-default-routing-20260826",
+      "tip_sha": "642ba65120b46c3840de9d0ba620dd4fdb7a7067",
+      "state": "SUPERSEDED",
+      "evidence": "PR #375 merged; default routing changes are already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 375,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T05:23:22Z",
+          "title": "Runtime｜Route project start and training through Cloud-Free Studio",
+          "url": "https://github.com/Jiaosong/Design/pull/375"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/design-workbench-validation-20260826",
+      "tip_sha": "6e14076fcf0484189c78ab0f3d71d84b20addb58",
+      "state": "SUPERSEDED",
+      "evidence": "PR #379 merged; design workbench validation is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 379,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T07:11:49Z",
+          "title": "Runtime｜Validate Design Workbench with real responsive viewports",
+          "url": "https://github.com/Jiaosong/Design/pull/379"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/image-lab-review01-repair-20260827",
+      "tip_sha": "61d97012693fd9c65d030c8e4b9e5f1948c32318",
+      "state": "SUPERSEDED",
+      "evidence": "PR #385 merged; image-lab review repair is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 385,
+          "state": "MERGED",
+          "mergedAt": "2026-08-27T00:17:42Z",
+          "title": "Runtime｜Repair Image Lab professional review I01–I06",
+          "url": "https://github.com/Jiaosong/Design/pull/385"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/image-lab-validation-20260826",
+      "tip_sha": "43034e05d38a20049171a424e36deb53eef83e89",
+      "state": "SUPERSEDED",
+      "evidence": "PR #377 merged; image-lab validation is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 377,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T06:10:41Z",
+          "title": "Runtime｜Validate Image Lab on Baojiajie source raster",
+          "url": "https://github.com/Jiaosong/Design/pull/377"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/spatial-lab-validation-20260826",
+      "tip_sha": "8a7e450a2e67f016bf63bf4fa88e8d3dab936edc",
+      "state": "SUPERSEDED",
+      "evidence": "PR #378 merged; spatial-lab validation is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 378,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T06:53:54Z",
+          "title": "Runtime｜Validate Spatial Lab on Timer canonical geometry proxy",
+          "url": "https://github.com/Jiaosong/Design/pull/378"
+        }
+      ]
+    },
+    {
+      "branch": "runtime/technical-svg-lab-validation-20260826",
+      "tip_sha": "881fadddc79d3be60b1a495e5ea443b68f6850e2",
+      "state": "SUPERSEDED",
+      "evidence": "PR #376 merged; technical-SVG lab validation is already integrated.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 376,
+          "state": "MERGED",
+          "mergedAt": "2026-08-26T05:43:09Z",
+          "title": "Runtime｜Validate Technical SVG Lab on Baojiajie jump-card dieline",
+          "url": "https://github.com/Jiaosong/Design/pull/376"
+        }
+      ]
+    },
+    {
+      "branch": "skills/oleander-game-ui-stack-v0-1",
+      "tip_sha": "5be070a39a451ad8b346f18cafcf26738b6f4af7",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 188,
+          "state": "MERGED",
+          "mergedAt": "2026-08-17T07:09:41Z",
+          "title": "OLEANDER: add game UI specialist skill stack v0.1",
+          "url": "https://github.com/Jiaosong/Design/pull/188"
+        }
+      ]
+    },
+    {
+      "branch": "skills/project-web-image-uniqueness-gate-20260819",
+      "tip_sha": "a25607a91a70dc9de251f19057e9cfa2408fce49",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 296,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED IMPLEMENTATION PROVENANCE] OLEANDER｜全项目 Web 图像唯一性门",
+          "url": "https://github.com/Jiaosong/Design/pull/296"
+        }
+      ]
+    },
+    {
+      "branch": "skills/vi-manual-production-v0-1",
+      "tip_sha": "6b5589d1a6d90087cc6b26540fc6bae37071ed67",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 269,
+          "state": "MERGED",
+          "mergedAt": "2026-08-18T09:31:44Z",
+          "title": "Add VI manual production capability to story-and-board",
+          "url": "https://github.com/Jiaosong/Design/pull/269"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-exploration-motion-grammar",
+      "tip_sha": "be22f73f298a2f829ceb11132e74b4623bade1aa",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 184,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #229 / TRAINING PROVENANCE] Exploration behavior grammar foundation",
+          "url": "https://github.com/Jiaosong/Design/pull/184"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-interaction-state-legibility",
+      "tip_sha": "810b4dfbb12aca1814d6be0e083318332f8abc59",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 182,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED BY #363 / EVIDENCE-CORRECTED PROVENANCE] Interaction-state legibility gate",
+          "url": "https://github.com/Jiaosong/Design/pull/182"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-material-identity-gate",
+      "tip_sha": "f1b2c95c5da0ede0edf83e6d6bfd9bae56688267",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 201,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #293 / TRAINING PROVENANCE] 3D Material Identity Gate",
+          "url": "https://github.com/Jiaosong/Design/pull/201"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-source-independent-visual-qa",
+      "tip_sha": "29038e86d3c4a7735eb544509a8f908efdee8041",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 168,
+          "state": "MERGED",
+          "mergedAt": "2026-08-25T08:55:50Z",
+          "title": "[DELIVERY-QC CANDIDATE / SINGLE DELTA] Source-independent visual QA fallback",
+          "url": "https://github.com/Jiaosong/Design/pull/168"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-technical-drawing-hierarchy",
+      "tip_sha": "9511aa9ae2cb82114bca289f02e263c8cc36c578",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 170,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #172 / TRAINING PROVENANCE] Technical drawing hierarchy gate",
+          "url": "https://github.com/Jiaosong/Design/pull/170"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-17-uncertainty-first-chart",
+      "tip_sha": "636a9491cdcb21112b89747ae32942acd4ee9458",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 179,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / SUPERSEDED BY #362 / EVIDENCE-CORRECTED PROVENANCE] Uncertainty-first scenario chart gate",
+          "url": "https://github.com/Jiaosong/Design/pull/179"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-18-cross-media-correspondence",
+      "tip_sha": "b6389dd014016e47297d96e9fc5d41bc5eafd243",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 225,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #293 / TRAINING PROVENANCE] Cross-media correspondence",
+          "url": "https://github.com/Jiaosong/Design/pull/225"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-18-dimension-object-binding",
+      "tip_sha": "7cc4984e25fefcf0dc6a1721bb52fe2a403d124e",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 226,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #293 / TRAINING PROVENANCE] Dimension-to-object binding",
+          "url": "https://github.com/Jiaosong/Design/pull/226"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-18-exploration-behavior-grammar",
+      "tip_sha": "6eb66f7fe51a47d23a768187f137e7bee144e2c6",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 229,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO MAIN MOTION CONTRACT + CHOREOGRAPHY EXTENSION / TRAINING PROVENANCE] Exploration behavior grammar",
+          "url": "https://github.com/Jiaosong/Design/pull/229"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-18-longform-project-orientation",
+      "tip_sha": "97248fee81f8d9dab6a76cc54e13975efd80ddd8",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 219,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO MAIN IA + WAYFINDING EXTENSION / TRAINING PROVENANCE] Long-form orientation",
+          "url": "https://github.com/Jiaosong/Design/pull/219"
+        }
+      ]
+    },
+    {
+      "branch": "training/2026-08-18-small-mark-optical-size",
+      "tip_sha": "95ae6662c981f712c615f3e130fc15e3bb2ebf30",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 224,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #273 / TRAINING PROVENANCE] Small-mark optical-size gate",
+          "url": "https://github.com/Jiaosong/Design/pull/224"
+        }
+      ]
+    },
+    {
+      "branch": "training/20260818-exploration-grammar",
+      "tip_sha": "594f878318f306494de3d0ffb527b7cf4794dd65",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 251,
+          "state": "MERGED",
+          "mergedAt": "2026-08-18T05:59:07Z",
+          "title": "Training: add C04 exploration motion grammar gate",
+          "url": "https://github.com/Jiaosong/Design/pull/251"
+        }
+      ]
+    },
+    {
+      "branch": "training/20260818-icon-optical-normalization",
+      "tip_sha": "d882759da4236be6288b721a0b3838ef16f38b57",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 277,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO MAIN ICONOGRAPHY EXTENSION / TRAINING PROVENANCE] Icon optical normalization",
+          "url": "https://github.com/Jiaosong/Design/pull/277"
+        }
+      ]
+    },
+    {
+      "branch": "training/20260818-interaction-cue-escalation",
+      "tip_sha": "586249be75ad3a0023fb9722b6c7a3701c83b709",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 276,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / ABSORBED INTO #293 / TRAINING PROVENANCE] 3D CMF interaction + lifecycle evidence gates",
+          "url": "https://github.com/Jiaosong/Design/pull/276"
+        }
+      ]
+    },
+    {
+      "branch": "training/20260818-same-source-reveal",
+      "tip_sha": "a95edb39e1287123ddb69c66ae93e26fe8a06061",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 247,
+          "state": "MERGED",
+          "mergedAt": "2026-08-18T04:59:10Z",
+          "title": "Training: same-source paired-view gate for story-and-board",
+          "url": "https://github.com/Jiaosong/Design/pull/247"
+        }
+      ]
+    },
+    {
+      "branch": "training/20260826-retail-pop-dieline-handoff",
+      "tip_sha": "fc5c35c4697b8f304ce5005211c163dd303de167",
+      "state": "REJECT",
+      "evidence": "PR #370 explicitly records PARALLEL SKILL IDENTITY REJECTED while retaining the practice as provenance.",
+      "provenance_mode": "MAIN_CONTENT_DISPOSITION_AUDIT_PLUS_GITHUB_PR_HISTORY",
+      "historical_prs": [
+        {
+          "number": 370,
+          "state": "CLOSED",
+          "mergedAt": null,
+          "title": "[CLOSED / PARALLEL SKILL IDENTITY REJECTED / PRACTICE PROVENANCE RETAINED] Retail POP dieline handoff",
+          "url": "https://github.com/Jiaosong/Design/pull/370"
+        }
+      ]
+    }
+  ],
+  "held_no_pr_provenance": [
+    {
+      "branch": "agent/architecture-realignment-20260811",
+      "tip_sha": "0fa8dfe9f8225403c4c85f4d7c6f4902e45bc6a4",
+      "state": "SUPERSEDED",
+      "evidence": "Older parallel architecture realignment; merged PR #66 and current ACTIVE v1.1.0 E2 authority now define AIG-01/02/03.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-1",
+      "tip_sha": "87d860b2c61c6e98fa4b5fbe3d3d3c030d60eb1b",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-2",
+      "tip_sha": "c1b5b593024c96901f54f9bfd2235a3d37cf7883",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-3",
+      "tip_sha": "6635db1617a486109b44af935e1844dcde52e0fd",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-4",
+      "tip_sha": "dbcace4001d6598dbfd52aa04f04237a0d377a15",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-5",
+      "tip_sha": "dd0a1dd65f0868dbb5c5f36bc47d7a8d7f3c2a0d",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/automotive-reference-vehicle-v0-6",
+      "tip_sha": "e1312de928288a0da2b9c7dc65c44aaa34965cda",
+      "state": "SUPERSEDED",
+      "evidence": "Early automotive reference iteration; later v0.7/v0.8+ and current v0.12 canonical modeling authority supersede it.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/blender-runtime-bootstrap",
+      "tip_sha": "7d2b7996388f65fa8e62fc37aa1eb391ae0c1d08",
+      "state": "SUPERSEDED",
+      "evidence": "Repository now has canonical Blender 5.2 LTS runtime contract/workflows on main, replacing bootstrap-era runtime setup.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-ch08-p01-interface-v1-20260819",
+      "tip_sha": "1c49164f3c087f36f8946efedb97ddfd0f00989f",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-f-integration-loop",
+      "tip_sha": "af62de2c762f3bd1d2d0df4855737c67595b7050",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-gis-redo-v0-2-20260818",
+      "tip_sha": "156b67e77280b7ef0c8a475f49372b074a1199d0",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-j02-presentation-frame-close-20260907",
+      "tip_sha": "5a60d71a1d2c6f033293ee63dd2d7d4cfbd1b72a",
+      "state": "REJECT",
+      "evidence": "J02 validation returns VERDICT: REVISE_RETURNED; the representative surface still reads as an explanatory infographic and its release condition is unmet.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-m01-presentation-page-specimen-r02-20260907",
+      "tip_sha": "8bd180d256689fc79cd2642d730c5b58e4864dc9",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-m01-presentation-repair-20260906",
+      "tip_sha": "fd84aeb440a65c32bcc99cb1955bb9aec13252cb",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-p01-presentation-repair-20260906",
+      "tip_sha": "033e9e393d831437ded39ce94b23262dc2707b7a",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/c04-visual-media-acquisition-copy",
+      "tip_sha": "39fbe54583624422cbf5703c9a1efd020a1820ba",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-generalization-reentry-r3tmp",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "state": "SUPERSEDED",
+      "evidence": "This branch is an ancestor of active/open agent/modeling-worker-v0-13-generalization-reentry (PR #95).",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/modeling-worker-v0-13-r3-interface-fairness",
+      "tip_sha": "af877c0b30b799559da0dd7f031f2fd41d157b74",
+      "state": "SUPERSEDED",
+      "evidence": "This branch is an ancestor of active/open agent/modeling-worker-v0-13-generalization-reentry (PR #95).",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "agent/runtime-blender-5.2-lts-fetch",
+      "tip_sha": "23ce4d9dca3154a83e38da69e1ec4932fe2894b2",
+      "state": "SUPERSEDED",
+      "evidence": "Current main already has the canonical Blender 5.2 LTS runtime contract and workflows, superseding this fetch bootstrap branch.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "c04/app-game-map-v1-3-deepening",
+      "tip_sha": "9ff24cdd3094080cc3125347b20352e9f71f68ae",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "c04/r05-r06-source-binding-v1-1",
+      "tip_sha": "e17cf5a9ccf6219e969cb35bf03554d404ad5a52",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "governance/c04-frontier-sync-20260906",
+      "tip_sha": "53d20ddb9210a6927c0a75a8bd5919be83fc6dbc",
+      "state": "SUPERSEDED",
+      "evidence": "Sep-6 C04 frontier snapshot is stale versus current C04_PROJECT_CONTROL_CARD_CURRENT and 2026-09-12 priority queue readback.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "governance/pr465-current-refresh-20260906",
+      "tip_sha": "f9ab07578b789701f50f46c1016526cf8b321315",
+      "state": "SUPERSEDED",
+      "evidence": "Current priority queue on main records PR #465 current head 35648ae297..., superseding this Sep-6 refresh branch.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "modeling-worker-v0-12-canonical-promotion",
+      "tip_sha": "ffabca373c4a5cabbcabbe1c05a5adb005f807c4",
+      "state": "SUPERSEDED",
+      "evidence": "Its v0.2 control card is older than main's v0.3 canonical E3 control card; retaining it would regress current no-loss semantics.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "oleander-design-d04-route-map-20260908-r11",
+      "tip_sha": "b831e738b078abdbb92456722e1742d82fb6aaee",
+      "state": "REJECT",
+      "evidence": "Validation is REVISE_RETURNED because the portable HTML failed to propagate the repaired standalone SVG hierarchy.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "oleander-design-m01-journal-use-repair-20260908-r11",
+      "tip_sha": "c14f92e00aa1031564fb8c34d5aa33b798bc5a0a",
+      "state": "REJECT",
+      "evidence": "Validation is REVISE_RETURNED because the artifact still reads as an explanatory board rather than actual editable journal pages/spreads.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "oleander-design-p02-body-contact-20260908-0525",
+      "tip_sha": "36d3fe0d356f16d86a712400f919d6db0ec7df48",
+      "state": "REJECT",
+      "evidence": "P02 validation is REVISE_RETURNED with NO_PROMOTION and structure still unverified.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "oleander/frontend-expression-v1",
+      "tip_sha": "4dc97589cdd58f14bf09f54a8d3184163be9ede8",
+      "state": "SUPERSEDED",
+      "evidence": "Strict ancestor of active/open oleander/frontend-expression-visual-v1 (PR #94).",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "oleander/nodegroups-realworkflows-20260811",
+      "tip_sha": "742951be98c1673cc5d424378d08569d2321dfbd",
+      "state": "SUPERSEDED",
+      "evidence": "Precursor nodegroups branch is replaced by the final legacy-nodegroups branch that current workflows actually fetch.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-08-sp01-gis-density",
+      "tip_sha": "6284a66124dfbd8fe7e87bf323dea50a46dde3ea",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-09-sp02-grasshopper-data-tree",
+      "tip_sha": "8dcfffeff8649a100870aa1152943bb795f66cda",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun01",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02",
+      "tip_sha": "868cb64e8309c031c2edf8dec57edf8bafaf7439",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-check",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp02-grasshopper-data-tree-rerun02-tmp",
+      "tip_sha": "4414fa93bd8b2525e4ff436f398e49cc8491492b",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-revit-wall-opening",
+      "tip_sha": "45bd2f8610f94d403c14e677f3234979bdc8fd3d",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-10-sp04-software-neutral-opening-qa",
+      "tip_sha": "6f0539a5ad34fc6627272f1e9c87262549ca287f",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08h2-orthogonal-review",
+      "tip_sha": "b321d7706e22560f4e0a59e6b61fdf1f865bdc07",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    },
+    {
+      "branch": "practice/2026-08-11-sp04-r08j1-p0-evidence-closure",
+      "tip_sha": "99bb6cc08097fd9eab80eb5eb8bd834b2fe496b3",
+      "state": "SUPERSEDED",
+      "evidence": "Pinned-base review verified this as an explicit merged/superseded/provenance lineage or as replaced by a canonical successor/current carrier; it is not a live frontier.",
+      "hold_reason": "NO_GITHUB_PR_PROVENANCE_PATH_YET"
+    }
+  ],
+  "blocked": []
+}
