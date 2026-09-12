@@ -1,0 +1,38 @@
+{
+  "mode": "TRAINING_MODE",
+  "gap": "VARIABLE_FONT_AXIS_VISUAL_OUTPUT_VS_RECOVERABLE_FONT_AUTHORITY",
+  "tools": {
+    "chromium_pdf_producer": "Skia/PDF m144",
+    "pdffonts": "25.06.0",
+    "fontTools": "4.63.0",
+    "source_font": "Cantarell-VF.otf",
+    "source_font_license": "SIL Open Font License 1.1"
+  },
+  "source_font_axes": {"wght": {"min": 100, "default": 400, "max": 800}},
+  "browser_readback": {
+    "400": {"fontVariationSettings": "\"wght\" 400", "bbox_width_px": 511.921875},
+    "700": {"fontVariationSettings": "\"wght\" 700", "bbox_width_px": 526.40625}
+  },
+  "pdf_readback": {
+    "400": {"font_resource": "AAAAAA+Cantarell-Regular", "type": "Type 3", "embedded": true, "subset": true, "unicode": true, "sha256": "37e1da84d2eec9dd5ae058430e6551636a72db81bc542ac0e20b0505b5bf91a1"},
+    "700": {"font_resource": "AAAAAA+Cantarell-Regular", "type": "Type 3", "embedded": true, "subset": true, "unicode": true, "sha256": "b5627fa15ace0591b4e92c9ac1608bc56169ad6fca360635bbdd35c1c83870ac"},
+    "text_extraction": "OLEANDER Variable 700",
+    "raster_diff_nonzero_pixels": 9832,
+    "raster_diff_bbox": [139,126,660,178]
+  },
+  "proven": [
+    "Chromium honors distinct wght=400 and wght=700 states before PDF export.",
+    "The exported PDFs produce materially different rasterized glyph appearance.",
+    "Both PDFs embed subset font resources and preserve Unicode text extraction.",
+    "pdffonts identifies both embedded resources only as Cantarell-Regular Type 3; the original variable-axis coordinate is not recoverable from this resource identity."
+  ],
+  "not_proven": [
+    "Editable recovery of the original OpenType variation axis or coordinate from the PDF.",
+    "Roundtrip back to a variable-font authoring state.",
+    "PDF/X or PDF/A conformance.",
+    "RIP/press behavior or print approval.",
+    "Cross-browser equivalence."
+  ],
+  "verdict": "PASS_FOR_VISUAL_OUTPUT__HOLD_FOR_EDITABLE_VARIABLE_FONT_AUTHORITY",
+  "maturity": "PRACTICE_EVIDENCE"
+}
