@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#F2EFE7"/>
+<text x="88" y="72" font-family="Noto Sans CJK SC, sans-serif" font-size="22" letter-spacing="3" fill="#59615F">OLEANDER DESIGN PROCESS / MAINTAINABILITY → SPATIAL ACCESS ARCHITECTURE</text>
+<text x="88" y="128" font-family="Noto Sans CJK SC, sans-serif" font-size="46" font-weight="700" fill="#18211F">设备“放得下”不等于可维护：检修、拆出与更换路径必须进入平面和剖面</text>
+<text x="88" y="170" font-family="Noto Sans CJK SC, sans-serif" font-size="16" fill="#69706D">synthetic mechanical-room study · NTS · no code / equipment clearance / lifting / structural / safety approval claim</text>
+<rect x="88" y="208" width="1744" height="118" rx="18" fill="#DED9CD" stroke="#BDB6A8"/>
+<g font-family="Noto Sans CJK SC, sans-serif">
+<text x="116" y="242" font-size="11.5" font-weight="700" fill="#8B5D46">EXTERNAL EVIDENCE</text>
+<text x="116" y="268" font-size="12.2" fill="#29332F">WBDG / NIH guidance treats clear service, removal and replacement access</text>
+<text x="116" y="291" font-size="12.2" fill="#29332F">as a design requirement; maintenance feedback can improve original design.</text>
+<text x="668" y="242" font-size="11.5" font-weight="700" fill="#7D654B">INFERENCE</text>
+<text x="668" y="268" font-size="12.2" fill="#29332F">equipment location is incomplete if a target unit can only be reached</text>
+<text x="668" y="291" font-size="12.2" fill="#29332F">by disturbing unrelated equipment or occupied/public circulation.</text>
+<text x="1180" y="242" font-size="11.5" font-weight="700" fill="#7D654B">ADVERSE CONDITION</text>
+<text x="1180" y="268" font-size="12.2" fill="#29332F">filter service + unit replacement;</text>
+<text x="1180" y="291" font-size="12.2" fill="#29332F">neighbor equipment remains operating.</text>
+<text x="1512" y="242" font-size="11.5" font-weight="700" fill="#315D57">DESIGN CONSEQUENCE</text>
+<text x="1512" y="268" font-size="12.2" fill="#29332F">reserve service face + removal route;</text>
+<text x="1512" y="291" font-size="12.2" fill="#29332F">keep access out of unrelated paths.</text>
+</g>
+<rect x="88" y="350" width="548" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="120" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#914F3D">A / REJECT · FIT-FIRST EQUIPMENT ROOM</text>
+<text x="120" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">按“最紧凑摆放”塞满房间；日常检修与整机拆出共用狭窄通道。</text>
+<text x="120" y="462" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PLAN / TARGET UNIT = E2</text>
+<rect x="132" y="480" width="464" height="236" rx="16" fill="#F7F3EA"/>
+<rect x="160" y="512" width="120" height="76" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="304" y="512" width="120" height="76" rx="8" fill="#B8C7C0" stroke="#315D57" stroke-width="3"/>
+<rect x="448" y="512" width="120" height="76" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="160" y="616" width="120" height="68" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="304" y="616" width="120" height="68" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="448" y="616" width="120" height="68" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<text x="346" y="556" font-family="Arial,sans-serif" font-size="11" fill="#315D57">E2</text>
+<path d="M364 588 V606 H224 V704" fill="none" stroke="#914F3D" stroke-width="5"/>
+<path d="M224 704 l-8 -12 h16 z" fill="#914F3D"/>
+<text x="152" y="742" font-family="Arial,sans-serif" font-size="10.5" fill="#914F3D">E2 removal depends on aisle between unrelated units</text>
+<text x="120" y="782" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#7D4A3A">NEIGHBOR-ON ATTACK → E2 更换路径要求临时占用其他设备的操作面。</text>
+<text x="120" y="810" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#7D4A3A">DOOR TEST → 出口宽度/转角没有被“整机更换”这一任务控制。</text>
+<rect x="120" y="842" width="484" height="36" rx="9" fill="#F7F3EA"/>
+<text x="140" y="865" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#7D4A3A">ROOT · equipment footprint was solved before maintenance task.</text>
+<rect x="686" y="350" width="612" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="718" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#315D57">B / KEEP · SERVICE FACE + REMOVAL SPINE</text>
+<text x="718" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">设备沿 service face 排列；日常维护和整机拆出共享一条明确的 maintenance spine。</text>
+<text x="718" y="462" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PLAN / TASK-BOUND ACCESS</text>
+<rect x="730" y="480" width="536" height="236" rx="16" fill="#F7F3EA"/>
+<rect x="760" y="512" width="126" height="84" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="906" y="512" width="126" height="84" rx="8" fill="#B8C7C0" stroke="#315D57" stroke-width="3"/>
+<rect x="1052" y="512" width="126" height="84" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<text x="946" y="559" font-family="Arial,sans-serif" font-size="11" fill="#315D57">E2</text>
+<rect x="760" y="608" width="418" height="44" rx="8" fill="#E8E4DC" stroke="#315D57" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="902" y="635" font-family="Arial,sans-serif" font-size="10.5" fill="#315D57">SERVICE FACE</text>
+<rect x="760" y="664" width="474" height="28" rx="8" fill="#D6DED9"/>
+<path d="M970 652 V678 H1222" fill="none" stroke="#315D57" stroke-width="5"/>
+<path d="M1222 678 l-12 -8 v16 z" fill="#315D57"/>
+<text x="1028" y="668" font-family="Arial,sans-serif" font-size="9.5" fill="#315D57">REMOVAL SPINE → SERVICE DOOR</text>
+<text x="718" y="756" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#315D57">FILTER ATTACK → routine service stays on one face; removal route remains clear.</text>
+<text x="718" y="784" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#315D57">E2 DELETE / REPLACE → neighboring units retain their service face and operating path.</text>
+<rect x="718" y="830" width="548" height="46" rx="10" fill="#F7F3EA"/>
+<text x="738" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#315D57">CONSEQUENCE · maintenance task owns adjacency and circulation before room compaction.</text>
+<rect x="1348" y="350" width="484" height="548" rx="22" fill="#DED9CD" stroke="#BDB6A8"/>
+<text x="1380" y="394" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#8A6941">C / REVISE · ACCESS HATCH ONLY</text>
+<text x="1380" y="424" font-family="Noto Sans CJK SC, sans-serif" font-size="13.2" fill="#59615F">每台设备都有检修口，但整机更换仍必须穿过 public corridor。</text>
+<text x="1380" y="462" font-family="Arial,sans-serif" font-size="11" fill="#59615F">PLAN / MAINTENANCE ≠ HATCH</text>
+<rect x="1392" y="480" width="408" height="236" rx="16" fill="#F7F3EA"/>
+<rect x="1422" y="514" width="104" height="80" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<rect x="1542" y="514" width="104" height="80" rx="8" fill="#B8C7C0" stroke="#315D57" stroke-width="3"/>
+<rect x="1662" y="514" width="104" height="80" rx="8" fill="#C9C4B9" stroke="#656D69" stroke-width="2"/>
+<g fill="#F7F3EA" stroke="#315D57" stroke-width="2"><rect x="1450" y="582" width="48" height="12" rx="3"/><rect x="1570" y="582" width="48" height="12" rx="3"/><rect x="1690" y="582" width="48" height="12" rx="3"/></g>
+<rect x="1422" y="638" width="344" height="38" rx="8" fill="#DDD8CE"/>
+<text x="1538" y="648" font-family="Arial,sans-serif" font-size="10" fill="#59615F">PUBLIC CORRIDOR</text>
+<path d="M1594 594 V670 H1768" fill="none" stroke="#914F3D" stroke-width="5"/>
+<path d="M1768 670 l-12 -8 v16 z" fill="#914F3D"/>
+<text x="1380" y="756" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#8A6941">HATCH-OFF → daily access fails; HATCH-ON still does not solve replacement route.</text>
+<text x="1380" y="784" font-family="Noto Sans CJK SC, sans-serif" font-size="12.5" fill="#8A6941">REPAIR → add a service-side removal route or relocate equipment frontage.</text>
+<rect x="1380" y="830" width="420" height="46" rx="10" fill="#F7F3EA"/>
+<text x="1400" y="858" font-family="Noto Sans CJK SC, sans-serif" font-size="11.5" fill="#59615F">access panel ≠ maintainable spatial architecture.</text>
+<line x1="88" y1="950" x2="1832" y2="950" stroke="#BDB6A8" stroke-width="2"/>
+<text x="88" y="988" font-family="Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" fill="#18211F">TRANSFER ATTACK</text>
+<text x="88" y="1014" font-family="Noto Sans CJK SC, sans-serif" font-size="14.5" fill="#59615F">Product-scale “target part → access → dependencies → reassembly” survives only if spatial-scale equipment adds service face, removal route and unaffected-neighbor checks.</text>
+<text x="88" y="1044" font-family="Noto Sans CJK SC, sans-serif" font-size="13.5" fill="#747B78">No fixed clearance, aisle width, door size, lifting device, shutdown rule or code compliance is inferred. Those remain VALIDATION inputs from equipment/project authority.</text>
+</svg>
