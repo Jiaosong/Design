@@ -1,0 +1,48 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH02",
+  "version": "v0.9",
+  "state": "PRODUCER EXECUTED / ACTUAL PREVIEW R2 / INDEPENDENT PROFESSIONAL DESIGN REVIEW PENDING / NO_PROMOTION",
+  "minimum_owner_set": [
+    "oleander-data-viz",
+    "Landscape GIS Analysis Drawing Binding candidate",
+    "Cartographic Task Hierarchy",
+    "oleander-story-and-board",
+    "oleander-delivery-qc"
+  ],
+  "no_image_generation": true,
+  "source_authority": "21x21 / 441 remote terrain samples",
+  "display_derivation": "321x321 continuous surface for contour / relief readability only; does not increase source precision",
+  "30m_frontier": {
+    "dataset": "Copernicus DEM GLO-30 Public",
+    "tile_logic": "N30 / E109",
+    "script": "acquire_render_glo30.py",
+    "state": "PREPARED / NOT EXECUTED IN CURRENT TOOL SURFACE",
+    "reason": "Current connector/tool surface blocks creation/launch of a new GitHub workflow; no false materialization claim."
+  },
+  "producer_readback": [
+    "ENV-01 opened at 3200x1800",
+    "ENV-02 R1 opened and rejected for muddy / white-glare hillshade",
+    "ENV-02 R2 opened after replacing that layer with muted hypsometric elevation field; D8 hierarchy unchanged",
+    "ENV-SYN-01 opened at 3200x1800",
+    "grayscale and 50% far-read derivatives generated"
+  ],
+  "stable_ids": {
+    "ENV-01": "Slope / Aspect",
+    "ENV-02": "Drainage / D8 potential convergence",
+    "ENV-03": "Land Cover HOLD",
+    "ENV-04": "Water History HOLD",
+    "ENV-05": "Solar",
+    "ENV-06": "Operations Conflict",
+    "ENV-SYN-01": "Environmental Synthesis"
+  },
+  "truth": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS",
+  "does_not_prove": [
+    "30 m source execution",
+    "field-survey terrain",
+    "observed drainage network",
+    "hydraulic or geohazard safety",
+    "independent professional Design PASS",
+    "MAIN KEEP"
+  ]
+}

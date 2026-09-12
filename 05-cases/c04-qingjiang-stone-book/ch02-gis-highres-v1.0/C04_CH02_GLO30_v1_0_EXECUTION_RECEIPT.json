@@ -1,0 +1,83 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "chapter": "CH02",
+  "version": "GLO30_v1.0",
+  "state": "REAL_SOURCE_MATERIALIZED / DERIVATIVES_EXECUTED / PRODUCER_ACTUAL_PREVIEW_R2_COMPLETE / INDEPENDENT_PROFESSIONAL_DESIGN_REVIEW_PENDING / NO_PROMOTION",
+  "no_image_generation": true,
+  "source_authority": {
+    "dataset": "Copernicus DEM GLO-30 Public",
+    "model_type": "DSM / not bare-earth DTM",
+    "tile": "Copernicus_DSM_COG_10_N30_00_E109_00_DEM",
+    "raw_bytes": 44951183,
+    "raw_sha256": "e63e9787f8f6daffa90da722d72c1375767dc65ab558bd8535d4f295ffec2f06",
+    "analysis_extent_wgs84": [109.75, 30.29, 109.81, 30.315],
+    "analysis_extent_semantics": "CH02 ANALYSIS EXTENT / NOT SURVEYED SITE POLYGON",
+    "metric_analysis_crs": "EPSG:32649",
+    "metric_cell_size_m": [30, 30],
+    "metric_grid_rows_cols": [193, 94],
+    "valid_cells": 17766,
+    "nodata_edge_cells": 376,
+    "nodata_policy": "-9999 outside valid warped footprint; excluded from statistics and D8 routing"
+  },
+  "precision_delta": {
+    "historical_terrain_authority": "21x21 / 441 remote samples",
+    "current_terrain_authority": "real Copernicus GLO-30 raster cropped and reprojected to 30m metric grid",
+    "display_resampling": "visual only; does not create analytical cells"
+  },
+  "derived_stats": {
+    "elevation_m": {"min": 370.0, "median": 627.1936340332031, "max": 1005.665283203125},
+    "slope_deg": {"median": 12.916337966918945, "p90": 28.402552604675294, "max": 74.58629608154297},
+    "d8_accumulation_cells": {"p90": 18.0, "p99": 159.0, "max": 965.0},
+    "solar_relative_mean": {"summer": 0.924063461114247, "equinox": 0.7846463189527368, "winter": 0.5178520026092213}
+  },
+  "execution": {
+    "corrected_qgis_gdal_run": 32214746886,
+    "corrected_run_conclusion": "SUCCESS",
+    "workflow_artifact_id": 9351963976,
+    "workflow_artifact_digest": "sha256:fb797a44ad221fe8bffeb462a278595b60be80d4c5faedbacc0b26e235831ae0",
+    "first_run": 32214536789,
+    "first_run_rejected_issue": "UTM TAP edge cells lacked explicit destination NoData and were interpreted as false 0m values",
+    "repair": "gdalwarp -dstnodata -9999; invalid edge cells excluded from stats and D8 routing",
+    "temporary_frozen_practice_adapter_removed": true
+  },
+  "producer_actual_preview": {
+    "opened": ["ENV-01 3200x1800", "ENV-02 R1 3200x1800", "ENV-SYN-01 R1 3200x1800", "ENV-02 R2 3200x1800", "ENV-SYN-01 R2 3200x1800", "R2 contact sheet"],
+    "r1_rejected_issue": "D8 per-cell links created comb-like algorithmic noise and edge convergence markers",
+    "r2_repair": "source D8 links above P96.5 grouped into topology-preserving continuous potential-convergence paths; boundary nodes suppressed; tributary wording corrected to potential convergence",
+    "independent_design_review": "PENDING / NO PRODUCER KEEP"
+  },
+  "stable_ids": {
+    "ENV-01": "Slope / Aspect",
+    "ENV-02": "D8 Potential Convergence",
+    "ENV-03": "Land Cover HOLD",
+    "ENV-04": "Water History HOLD",
+    "ENV-05": "Solar",
+    "ENV-06": "Operations Conflict",
+    "ENV-SYN-01": "Environmental Synthesis"
+  },
+  "persistence": {
+    "drive_file_id": "1ftO58EWiMVhv3jMb8Z15cLKQ5u2KTywD",
+    "drive_file_name": "C04_CH02_GIS_GLO30_v1.0_SOURCE_COMPLETE.zip",
+    "raw_readback_bytes": 57733141,
+    "raw_readback_sha256": "4989aa835444a9eb25b7e626162147b7b2a5471331e4acc6496612221c6e1086",
+    "zip_integrity": "PASS"
+  },
+  "skills": [
+    "oleander-data-viz",
+    "Landscape GIS Analytical Drawing Binding candidate / PR #298",
+    "Cartographic Task Hierarchy",
+    "oleander-story-and-board",
+    "oleander-delivery-qc"
+  ],
+  "truth": "REMOTE SOURCE-GROUNDED / FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION",
+  "does_not_prove": [
+    "surveyed site boundary",
+    "field-measured elevation",
+    "bare-earth terrain beneath vegetation/buildings",
+    "observed drainage channel",
+    "hydraulic capacity or flood extent",
+    "geohazard probability or safety",
+    "construction suitability",
+    "independent Design PASS / MAIN KEEP"
+  ]
+}
