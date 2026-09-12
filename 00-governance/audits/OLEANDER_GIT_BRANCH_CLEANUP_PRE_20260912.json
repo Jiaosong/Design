@@ -1,0 +1,1843 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_CLEANUP_AUDIT_v1",
+  "as_of": "2026-09-12T06:58:57.929165+00:00",
+  "repository": "Jiaosong/Design",
+  "origin_main_sha": "a063b04e3e1efbc0b1fe3d40be93a3f606cfaaff",
+  "delete_branch_on_merge": false,
+  "open_pr_count": 133,
+  "counts": {
+    "merged_remote": 219,
+    "safe_remote_delete": 217,
+    "protected_merged_remote": 2,
+    "merged_local": 5,
+    "safe_local_delete": 3,
+    "protected_merged_local": 2
+  },
+  "safe_remote_delete": [
+    {
+      "branch": "agent/2026-08-25-cn-trans-e2-sync",
+      "sha": "eee275e177e6dbdb6be20069d70f6aa328904526",
+      "committed_at": "2026-08-25 22:07:41 +0800",
+      "subject": "governance: sync KN-DESIGN-CN-TRANS-001 evidence state to E2",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-apoc-omg-namespace-sync",
+      "sha": "ce6ecf426f3f6afc9cf15e6cdb3568504e64718c",
+      "committed_at": "2026-08-26 03:02:15 +0800",
+      "subject": "governance: sync A-POC method namespace to OMG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-autoprogettazione-e2-sync",
+      "sha": "60a2949fbe74e4a7f0888ffbd16e46dd4ca1dc0b",
+      "committed_at": "2026-08-26 04:01:04 +0800",
+      "subject": "governance: sync Autoprogettazione evidence metadata",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-exploration-motion-review-boundary",
+      "sha": "6809c14477bb6d317947408b99940cf5373019f5",
+      "committed_at": "2026-08-26 21:06:44 +0800",
+      "subject": "governance: separate exploration training readback from independent review",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-long-life-change-e2-sync",
+      "sha": "c32aa0a5f8ce1490eb639ca121178d754e34ee26",
+      "committed_at": "2026-08-26 00:04:52 +0800",
+      "subject": "governance: sync MTH-DESIGN-LONG-LIFE-CHANGE-001 evidence state to E2",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-metabolism-governance-sync",
+      "sha": "0381d17ebc1c3c1c23c77408f5e5409ea1ec6d73",
+      "committed_at": "2026-08-26 02:03:30 +0800",
+      "subject": "governance: align Metabolism mirror with current lifecycle evidence",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-mot02-review-boundary",
+      "sha": "603fa49bb88853a656e995a6f3947c2cd2f906b1",
+      "committed_at": "2026-08-26 19:02:40 +0800",
+      "subject": "governance: separate MOT-02 execution check from design review",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-26-participatory-design-sync",
+      "sha": "2fb912e637937a970afe0e248eaf752ef595f254",
+      "committed_at": "2026-08-26 05:04:50 +0800",
+      "subject": "governance: sync participatory design current theory",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-design-environment-production-contract",
+      "sha": "700e0cda4f8e5122b3b994e33038ca819142686f",
+      "committed_at": "2026-08-27 13:23:35 +0800",
+      "subject": "Governance: bind Current design production contract to universal environment",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-existing-first-policy",
+      "sha": "a472fd2c9f7c88bc6c1bf297dc7b62c894074e12",
+      "committed_at": "2026-08-27 23:31:45 +0800",
+      "subject": "Skills: add machine-readable existing-first policy",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-existing-first-policy-check",
+      "sha": "a472fd2c9f7c88bc6c1bf297dc7b62c894074e12",
+      "committed_at": "2026-08-27 23:31:45 +0800",
+      "subject": "Skills: add machine-readable existing-first policy",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-human-professional-voice",
+      "sha": "754c898e56f33e96f4a4a10a7312cd3fcd7d77d4",
+      "committed_at": "2026-08-27 23:39:44 +0800",
+      "subject": "Skills: bind human professional voice constraint",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-pro-design-toolchain-runtime",
+      "sha": "f708fa146aec5dc8125b0ae8553ba9e94ece8b93",
+      "committed_at": "2026-08-27 15:47:35 +0800",
+      "subject": "Runtime: prevent validation from implying automatic Active promotion",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-skill-framework-11-core",
+      "sha": "fb928afeab9013d6cd789b6373097c2d0361c87c",
+      "committed_at": "2026-08-27 23:06:15 +0800",
+      "subject": "skills: remove unrelated Baojiajie SVG from framework PR",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-27-ui-figma-explicit-only",
+      "sha": "6f2b26e2d1e4977252208a2a52f8abd4c5a7be11",
+      "committed_at": "2026-08-27 13:51:12 +0800",
+      "subject": "CI: validate explicit-only Figma routing invariant",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-28-training-mode-refinement",
+      "sha": "c2598059e513d8f6b6614d1a02b888463eb1c22b",
+      "committed_at": "2026-08-28 08:31:46 +0800",
+      "subject": "Governance: separate bounded training from project queue",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-28-work-coordination-state-readback",
+      "sha": "e82031d0c8949b91822934e1dd13bee50acd939b",
+      "committed_at": "2026-08-28 00:37:33 +0800",
+      "subject": "Governance: mark work coordination contract Current Active after readback",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-28-work-object-coordination",
+      "sha": "4b5feb7c2de9cd9c231043bd9636b71724bba94c",
+      "committed_at": "2026-08-28 00:30:46 +0800",
+      "subject": "Governance: add project control card template",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/2026-08-29-design-process-owner-map-sync",
+      "sha": "75ebf002e4465ce9f6a8bec4027c849cf60cec94",
+      "committed_at": "2026-08-29 20:08:13 +0800",
+      "subject": "GOVERNANCE: sync installed design-process owner map",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/add-reno-cmf",
+      "sha": "5b7e52d90a90e6f389dc6d60189c2e2758c519e4",
+      "committed_at": "2026-07-25 09:45:07 +0800",
+      "subject": "Add Reno CMF case study and portrait",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/automotive-proportion-section-v0-11",
+      "sha": "1d5e3da965aa7e5e75d8c6cd523ea6f301798200",
+      "committed_at": "2026-08-13 09:26:56 +0800",
+      "subject": "Automotive v0.11: approve formal promote review",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/banana-vision-reference-verification",
+      "sha": "90a46a7c8acfaf6a071d62f51c5b75e6d53b87cd",
+      "committed_at": "2026-08-07 17:21:42 +0800",
+      "subject": "Draft Banana Vision Studio reference pending source verification",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/banana-vision-reference-verification-backup",
+      "sha": "90a46a7c8acfaf6a071d62f51c5b75e6d53b87cd",
+      "committed_at": "2026-08-07 17:21:42 +0800",
+      "subject": "Draft Banana Vision Studio reference pending source verification",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/banana-vision-reference-verification-final",
+      "sha": "90a46a7c8acfaf6a071d62f51c5b75e6d53b87cd",
+      "committed_at": "2026-08-07 17:21:42 +0800",
+      "subject": "Draft Banana Vision Studio reference pending source verification",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/banana-vision-reference-verification-keep",
+      "sha": "90a46a7c8acfaf6a071d62f51c5b75e6d53b87cd",
+      "committed_at": "2026-08-07 17:21:42 +0800",
+      "subject": "Draft Banana Vision Studio reference pending source verification",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-16-0",
+      "sha": "6aa980f9ae2b7138ebe9129e3e078e99d6a6ee7d",
+      "committed_at": "2026-08-11 16:05:43 +0800",
+      "subject": "Pin Blender Surface System workflow action refs",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-17-0",
+      "sha": "de6aa5e6337f8a883c22865036c1f5a22118eb72",
+      "committed_at": "2026-08-11 19:45:20 +0800",
+      "subject": "docs(blender): record v1.17 catalog debug and evidence calls",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-18-0",
+      "sha": "af71e8766972d40214fa9a9027ce48242015d249",
+      "committed_at": "2026-08-11 22:37:11 +0800",
+      "subject": "Retrigger canonical v1.18.0 governance gate after branch cleanup",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/blender-surface-system-v1-19-0",
+      "sha": "1ca9c3e45ef2dc5b4edf918cfd34e2e583244bdb",
+      "committed_at": "2026-08-11 23:27:37 +0800",
+      "subject": "Rebase v1.19 designer estimate gate after SP01 mainline merge",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-c22-v4-8-image-rebind-20260819",
+      "sha": "41d3fe5e3081a2e89a86816ae74e04f91cf08629",
+      "committed_at": "2026-08-20 00:22:14 +0800",
+      "subject": "C04 C22 v4.8: add human-readable image rebind receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch02-web-008-012-v1-20260819",
+      "sha": "97f7eaf30c04b4cedfb80f8c95a4d2eaf2beb0b5",
+      "committed_at": "2026-08-19 17:21:11 +0800",
+      "subject": "Merge PR #322: close image consumption governance receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch13-page-decisions-current-v0-2",
+      "sha": "2c880a4fdc383b3f8e58ba80f22d44ad2b74bcc6",
+      "committed_at": "2026-08-19 22:33:48 +0800",
+      "subject": "C04 CH13: point Current production map to v0.2",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch13-page-decisions-v0-2",
+      "sha": "9eac5a01b05a69b480e0c588f3b6e0bb7a9077d0",
+      "committed_at": "2026-08-19 22:32:08 +0800",
+      "subject": "C04 CH13: add machine-readable page decisions v0.2",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch13-visual-map-closure-v0-1",
+      "sha": "bc94a7d8017a41431112ebb496333233c22162ca",
+      "committed_at": "2026-08-19 22:22:20 +0800",
+      "subject": "C04 CH13: mark visual production map Current in JSON",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch13-visual-map-receipt-v0-1",
+      "sha": "08048ca4a1f3319d4d376aa00fd2a8389ebddf0c",
+      "committed_at": "2026-08-19 22:24:55 +0800",
+      "subject": "C04 CH13: persist closed visual production-map execution receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch13-visual-production-map-v0-1",
+      "sha": "28726c004bb4d38a615217a3fec18b80ddefbc00",
+      "committed_at": "2026-08-19 22:17:43 +0800",
+      "subject": "C04 CH13: add machine-readable visual production map v0.1",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch16-p01-image-reservation-v0-1",
+      "sha": "4cd997bef976d65ce7b75dd2964c3420e5b5bd76",
+      "committed_at": "2026-08-20 00:24:01 +0800",
+      "subject": "C04 C22 v4.8: rebind unique water-ink source",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch16-p01-v3-1-public-pixel-correction",
+      "sha": "20beb6eca0968ef30e343ffa207b2f697fba42f6",
+      "committed_at": "2026-08-19 13:58:46 +0800",
+      "subject": "C04 CH16-P01 v3.1: correct v3.0 review scope",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch16-p01-v3-2-replan-no-odb02",
+      "sha": "6f3c6f3d838acc574b37d0336266acdb3fc44d50",
+      "committed_at": "2026-08-19 16:33:56 +0800",
+      "subject": "Add single current pointer for CH16 P01 v3.2",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ch16-p01-v3-3-resource-led-interactive",
+      "sha": "10fb19da90aebe16e4ad748c6aacd64e9c8734b3",
+      "committed_at": "2026-08-19 16:51:49 +0800",
+      "subject": "c04 ch16 p01 v3.3: bind runtime readback state",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-f-integration-loop-v2",
+      "sha": "b6a22789e57e2db2190bd78de6edda8aa7678e9d",
+      "committed_at": "2026-08-14 23:16:28 +0800",
+      "subject": "C04 F: refresh runtime state from C19 and B/D/E receipts",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-gis-data-frontier-v0-7-1-20260818",
+      "sha": "d5efca89160965c5727a632ddea27b70a0da206d",
+      "committed_at": "2026-08-18 15:39:13 +0800",
+      "subject": "C04 GIS v0.7.1: bind independent review handoff",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-gis-skill-v0-7-20260818",
+      "sha": "2f7fb98ac70db781a1a58b59238baa2eece173b2",
+      "committed_at": "2026-08-18 15:13:08 +0800",
+      "subject": "C04 GIS v0.7: add independent review request",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-gis-v0-2-1-review-request-20260818",
+      "sha": "4ca26f68668ed5fb1e9fb6159b35054728f348e8",
+      "committed_at": "2026-08-18 13:24:56 +0800",
+      "subject": "C04 GIS v0.2：真实地形派生与运营冲突证据包",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-gis-v0-2-1-review-request-20260818b",
+      "sha": "7eb10cce5c5df6066f3a5cab1a18c78d313d109f",
+      "committed_at": "2026-08-18 13:44:12 +0800",
+      "subject": "C04 GIS v0.2.1：记录Drive独立取回与哈希",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-gis-v0-7-2-stable-ids-20260818",
+      "sha": "a276d964feb964f91b46c4b388af6f00ab88e4e9",
+      "committed_at": "2026-08-18 15:48:07 +0800",
+      "subject": "C04 GIS v0.7.2: record source delta",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-j02-presentation-grammar-repair-20260906",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-j02-presentation-repair-20260906",
+      "sha": "3f7373f0f1fe9d853ca83657c24c38d0a74ff39a",
+      "committed_at": "2026-09-06 18:29:06 +0800",
+      "subject": "C04 DESIGN: materialize J02 boat water-scale experience carrier",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-j04-presentation-decision-panel-r01",
+      "sha": "3ff9b30f3711db47a714720c3e89fdd97bddb265",
+      "committed_at": "2026-09-07 04:29:15 +0800",
+      "subject": "design(c04): repair J04 topology and decision-point read",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-p02-presentation-body-contact-r01-20260907",
+      "sha": "3ff9b30f3711db47a714720c3e89fdd97bddb265",
+      "committed_at": "2026-09-07 04:29:15 +0800",
+      "subject": "design(c04): repair J04 topology and decision-point read",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-p02-presentation-contact-read-20260907",
+      "sha": "7393b01c2c743255261d2cf04bd8b49fc72c2049",
+      "committed_at": "2026-09-07 00:37:00 +0800",
+      "subject": "governance: restore design-process capability aggregate parity",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-presentation-m01-artifact-reframe-20260905",
+      "sha": "3794d3eacf52392611bdb98a4df6f31aa189c8a0",
+      "committed_at": "2026-09-05 09:42:21 +0800",
+      "subject": "fix governance: validate whole-project aggregate queue slots",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-r01-focal-preflight",
+      "sha": "964fb12d44ae9eeab3a5644a5b934c5ea2f50886",
+      "committed_at": "2026-08-12 23:43:12 +0800",
+      "subject": "govern Baojiajie licensed portrait assets as locked sources",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/c04-ws07a-runtime",
+      "sha": "8713d2f32afd15dc110296dc30f62f3904082ce9",
+      "committed_at": "2026-08-12 00:02:29 +0800",
+      "subject": "Merge pull request #49 from Jiaosong/agent/c04-ws07a-runtime",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/deploy-oleander-pages",
+      "sha": "6c1904722386b5b23ef6760c19a8e7ea8e588703",
+      "committed_at": "2026-07-25 09:34:38 +0800",
+      "subject": "Deploy Oleander website with GitHub Pages",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/execution-contract-layer-v0-1",
+      "sha": "07e0ea686d73f4d174f3d65cf497abeef05db495",
+      "committed_at": "2026-08-18 13:19:56 +0800",
+      "subject": "Promote execution contract layer v0.1 to current",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/governance-c04-control-card-readback-20260829-0302",
+      "sha": "7331ff228d6146ff07d088adf28af79a5b53248e",
+      "committed_at": "2026-08-29 03:06:08 +0800",
+      "subject": "Governance: refresh C04 control card from current PR #353 readback",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/governance-c04-priority-control-card-20260829",
+      "sha": "32931b635e4b827640bfc119c26237ef83dba8ba",
+      "committed_at": "2026-08-29 00:19:01 +0800",
+      "subject": "governance: add C04 current project control card",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/governance-sync-contract-v1-1-20260815",
+      "sha": "055b05dc217797712286166ae777348cb00dd861",
+      "committed_at": "2026-08-15 09:37:15 +0800",
+      "subject": "C04: enforce dual quality gate and retro-crit QJ-D visual sprint",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/modeling-worker-v0-12-freeform-surface",
+      "sha": "06bfcc3360fa980ce1c06023e090c87a6b307e17",
+      "committed_at": "2026-08-13 21:45:29 +0800",
+      "subject": "Integrate latest main governance into Modeling Worker v0.12 candidate",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/notion-to-github-execution-owner",
+      "sha": "b06911004be96d0e7d2cebcc6d4aa1e5c756713c",
+      "committed_at": "2026-08-18 11:22:30 +0800",
+      "subject": "Wire execution owner map into runtime index",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-asset-consumption-closure-v1",
+      "sha": "e2f15b56c379ea19a205e37bb698d0cfe597c8c2",
+      "committed_at": "2026-08-19 17:17:28 +0800",
+      "subject": "OLEANDER: require Current image-consumption register states",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-asset-consumption-v1",
+      "sha": "78829b968deafd7949f167e9276d8c1533a5eb07",
+      "committed_at": "2026-08-19 17:11:38 +0800",
+      "subject": "OLEANDER: document image-consumption receipt extension",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-blender52-shared-runtime",
+      "sha": "d1ea2f1afcafba3ffd3a9df065b61b81c0607ecf",
+      "committed_at": "2026-08-11 11:11:42 +0800",
+      "subject": "Add OLEANDER Blender runtime contract workflow",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-image-consumption-receipt-v1",
+      "sha": "666e9b1ce66017db4abe35ac28120441b6223da9",
+      "committed_at": "2026-08-19 17:20:29 +0800",
+      "subject": "OLEANDER: record image-consumption governance closure receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-motion-skill-v0.3-rebase",
+      "sha": "46ed1258cfeb9f7f50af41d9a502f098ef8e3531",
+      "committed_at": "2026-08-11 23:45:01 +0800",
+      "subject": "Rebase complete OLEANDER motion skill + atlas v0.3 onto current main",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-notion-canonical-knowledge-v01-20260911",
+      "sha": "ea1bbb1d3a34ac9e505f1bc80d0f24f3e089aacc",
+      "committed_at": "2026-09-12 13:44:45 +0800",
+      "subject": "docs(knowledge): record reader and academic migration",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-notion-d04-academic-20260912",
+      "sha": "808c46af75528f10a424295593cfd2edb9f28eaf",
+      "committed_at": "2026-09-12 14:03:21 +0800",
+      "subject": "docs(knowledge): record D04 academic migration",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-notion-d06-academic-20260912",
+      "sha": "760e681ecb174f19360fa4b6f6eeff5aadcd1b14",
+      "committed_at": "2026-09-12 14:13:23 +0800",
+      "subject": "docs(knowledge): record D06 academic migration",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-project-flow-v0-3",
+      "sha": "091a986707a0b50e53ac3e76391c7e5510e536fd",
+      "committed_at": "2026-08-11 23:53:37 +0800",
+      "subject": "Rebase PAP-safe Canonical Project Flow v0.3 onto current main",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-final",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-finalized",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-hardening",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-hardening-final",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-hardening-final-2",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-hardening-live",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-live",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-schema-enforcement",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/project-control-plane-v0-3-step2",
+      "sha": "e027e8dcf8a2455c5aef778dc2826befc490a024",
+      "committed_at": "2026-08-13 09:40:03 +0800",
+      "subject": "Close Automotive v0.11 canonical cross-system receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/reference-source-router-capability-20260909",
+      "sha": "d0931c47ad0344ba717b76876e3dfada99b4ffbd",
+      "committed_at": "2026-09-09 10:22:39 +0800",
+      "subject": "fix(research): align aggregate capability contract",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/shared-image-processing-operator-layer",
+      "sha": "78575579d4aa95bd45780b69780a61e720aeb531",
+      "committed_at": "2026-08-18 11:59:41 +0800",
+      "subject": "OLEANDER visual layers: route image-processing operator standard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/skill-runtime-closure-v1-2",
+      "sha": "c9e951f9fca5c8e14ddc89de376cc0c3544d2e29",
+      "committed_at": "2026-08-18 14:05:57 +0800",
+      "subject": "Allow empty derived-format lists in execution receipts",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/skill-runtime-drift-closure-v1-2",
+      "sha": "06f6f7bad6e0c2e2620af33f36c3bd1f0af4b3ac",
+      "committed_at": "2026-08-18 15:53:11 +0800",
+      "subject": "Use explicit no-blocker sentinel in closure receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/skill-visual-effect-layers",
+      "sha": "13592af0022c8985c4dc8f85c7f1da2d4ac07070",
+      "committed_at": "2026-08-18 11:36:48 +0800",
+      "subject": "Route visual outputs through existing skill bindings",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/sticky-constraints-full-flow-drift-closure",
+      "sha": "16e2379e8155e2ff941b212628791dddd310244f",
+      "committed_at": "2026-08-18 16:13:07 +0800",
+      "subject": "Update resolver live drift mapping for sticky-constraint enforcement",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/sticky-constraints-full-flow-receipt-close",
+      "sha": "561bd74015b952fa942bbefb31f60b88cf86f682",
+      "committed_at": "2026-08-18 16:15:08 +0800",
+      "subject": "Close sticky-constraint full-flow execution receipt after live drift readback",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/sticky-constraints-full-flow-v1-3",
+      "sha": "cfdad8e10eb36355b607f9a9cf9ee1f64ed09b9b",
+      "committed_at": "2026-08-18 16:09:58 +0800",
+      "subject": "Preserve canonical receipt token in lock validator",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/sync-oleander-skills",
+      "sha": "10f7b54e4c383f6578f3c988294f16b9cf0ef813",
+      "committed_at": "2026-07-25 09:28:28 +0800",
+      "subject": "Add Daylily brand case study",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/timer-light-basin-v3-3-photography",
+      "sha": "d1b28b8d5b52f9f8a22c77ecf5f1a418d9e3bbf5",
+      "committed_at": "2026-08-07 16:07:37 +0800",
+      "subject": "docs(render): update practice README for v3.3 photography pipeline",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/timer-light-basin-v3-web",
+      "sha": "2536142253b4cae36fd54cb419d96325954ec333",
+      "committed_at": "2026-08-07 14:35:07 +0800",
+      "subject": "Add Timer Light Basin v3 web interactions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/timer-v33-authority-gate-fix",
+      "sha": "36ef08a988c9ae636db510295f24597622a91b8d",
+      "committed_at": "2026-08-10 16:18:40 +0800",
+      "subject": "Merge latest main into Timer v3.3 authority gate fix",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/timer-v33-staging-gate-mainline",
+      "sha": "f899707d98a3aa0bffb04ae47c63790e8d0733af",
+      "committed_at": "2026-08-10 13:07:32 +0800",
+      "subject": "fix: harden Timer v3.3 staging gates",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-b-lane-receipt-v0-1",
+      "sha": "6088584bc7a3c91b99feebbb2228ec7a58b426dd",
+      "committed_at": "2026-08-14 23:04:22 +0800",
+      "subject": "C04 B: add evidence-bound narrative/content lane receipt v0.1",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-bexp-freshness-readback-20260815-1101",
+      "sha": "cb7cfb2107e4eae7a4f38e6530477108f11ac6d1",
+      "committed_at": "2026-08-15 11:03:38 +0800",
+      "subject": "C04: add B experience and D/C23 freshness checkpoint",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-c-owner-readback-v2-1",
+      "sha": "90b2a13dc32e7e49acdf06c35031a83c7e3931e3",
+      "committed_at": "2026-08-14 23:23:12 +0800",
+      "subject": "C04 C20: owner revision readback after B/D/E/F closure",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-d-state-contract-v0-1",
+      "sha": "f8cfb70abd0f08078fcbf87003e89e4afb8eac6d",
+      "committed_at": "2026-08-14 23:10:16 +0800",
+      "subject": "C04 D: confirm C19 state and evidence styling contract",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-e-state-off-contract-v0-1",
+      "sha": "4f878ec4ef5011a8bd4bf5de07fdc6170ffa058c",
+      "committed_at": "2026-08-14 23:12:45 +0800",
+      "subject": "C04 E: confirm degraded/offline and Digital-OFF contract",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "automation/c04-f-main-readback-close-v1",
+      "sha": "cff4e27ecde0f1145764c9fd3c3b89d5a05cd5d4",
+      "committed_at": "2026-08-14 23:21:35 +0800",
+      "subject": "C04 F: validate post-merge readback closure",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c01/node-prototype-v0.1-a-rebase-20260811",
+      "sha": "1a03de0ced09329adb775763bb287ac744b60f22",
+      "committed_at": "2026-08-11 23:01:43 +0800",
+      "subject": "Rebase C01 node prototype v0.1-A onto current main",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c01/prototype-v01-bcd-rebase-20260811",
+      "sha": "a359b214a325f54876b064c7d3e612221122d46f",
+      "committed_at": "2026-08-11 23:29:50 +0800",
+      "subject": "Rebase C01 v0.1-B/C/D records onto v1.19 current main",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-ch14-p01-p02-lock",
+      "sha": "7d7a1f8e6ec848014d9134b376720288d3f92c73",
+      "committed_at": "2026-08-19 08:45:07 +0800",
+      "subject": "C04 CH14 P03–P07｜lock current brand system pages",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-j04-decision-priority-v11",
+      "sha": "6bf7cce53b2479e64d01a4b3ffdae05010e27f05",
+      "committed_at": "2026-09-09 18:03:25 +0800",
+      "subject": "feat: execute bounded CAD direct face edit through existing sidecar",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-p02-body-boundary-v10",
+      "sha": "1299ef06aa72bd9aa0b80e15a1c02be908998ad4",
+      "committed_at": "2026-09-09 19:56:20 +0800",
+      "subject": "P9: run bounded runtime interleaving soak",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-p02-body-interface-v14",
+      "sha": "3d72a1a5e6f66da158f1fcd5b7271fa79590c332",
+      "committed_at": "2026-09-10 00:30:41 +0800",
+      "subject": "Repair ordinary-Chat visual production wiring",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-qingfengyin-wait-wind-v11",
+      "sha": "fbbe074bce7a3c73b2505e8541aa74b7b25d7748",
+      "committed_at": "2026-09-09 16:08:30 +0800",
+      "subject": "Validate P3 continuation execution cycle",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04-r06-lineweight-v11",
+      "sha": "2992ef8f8449f1f95ae46409687466a05895f3e8",
+      "committed_at": "2026-09-09 15:19:58 +0800",
+      "subject": "Compile known-failure recurrence and surface reliability decisions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/a-remote-evidence-analysis-20260815",
+      "sha": "b71c422373db6dbaec2ce0d5a0349a416f7337ac",
+      "committed_at": "2026-08-15 12:38:56 +0800",
+      "subject": "C04 A: add visual design crit receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/ch07-p01-image-reservation-v04-20260819",
+      "sha": "6a90472f2c83233561e20a91b90c5365b7bf564c",
+      "committed_at": "2026-08-19 23:47:58 +0800",
+      "subject": "C04 CH07: document P01 image reservation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/ch07-p02-p03-image-reservation-v04-20260819",
+      "sha": "cdaeda6d82d704a9487e34894d0b31faa41a22e9",
+      "committed_at": "2026-08-19 23:54:40 +0800",
+      "subject": "C04 CH07: document P02/P03 image reservations",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/ch09-p01-ar12-redo-v1-2-20260819",
+      "sha": "04604b3a92c6fffab4365097c3dd65bdf7c05581",
+      "committed_at": "2026-08-19 15:20:06 +0800",
+      "subject": "revert accidental placeholder file",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/model-fluid-rest-v1-1-20260817",
+      "sha": "e4a12c9fcf8a643dd071d8ef86c2e3edbbcc2a0e",
+      "committed_at": "2026-08-16 19:34:14 +0800",
+      "subject": "mark independent design verdict policy active",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/original-design-integration-v1-20260819",
+      "sha": "b20578e34cf48d00c2531eac4c12dda3ee1ca7f4",
+      "committed_at": "2026-08-19 09:46:12 +0800",
+      "subject": "C04: point organization current to v1.2.2 integration",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/original-design-source-reconciliation-20260819",
+      "sha": "036085c47341ffb35337db0c50b9d10bd36793c7",
+      "committed_at": "2026-08-19 09:36:42 +0800",
+      "subject": "C04: advance organization pointer to v1.2.1 source precedence correction",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/permanent-design-invariants-20260816",
+      "sha": "184291049c4864a3cbee1e8ac4a305169423367b",
+      "committed_at": "2026-08-16 18:11:11 +0800",
+      "subject": "C04: add machine-readable Design Invariants",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/project-organization-20260817",
+      "sha": "d74de8ea38b218e246d8f9cc1b58ba35e4cf9223",
+      "committed_at": "2026-08-17 10:40:46 +0800",
+      "subject": "C04: reconcile open PR lineage with later GitHub annotations",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/project-organization-v1-2-20260819",
+      "sha": "7845bf3414488c2bf99e5754280113bde01124cb",
+      "committed_at": "2026-08-19 09:18:52 +0800",
+      "subject": "C04 organization: add current organization pointer",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/qingjiang-project-alignment-20260811",
+      "sha": "99cd0f3f86dcc1f21cffc11b49e81dda63a81533",
+      "committed_at": "2026-08-11 16:52:50 +0800",
+      "subject": "fix(cocos4): use valid smoke scene uuid",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "c04/r05-r06-scene-deepening-v1",
+      "sha": "2c8542f75b36dd656342b32eed2ff0bcb4af56a2",
+      "committed_at": "2026-08-16 15:06:03 +0800",
+      "subject": "C04 R05/R06: add source receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "design/c04-m01-journal-currentization-20260906",
+      "sha": "6fab0b8da07b31b1fe9cefd0406140f720fe4b71",
+      "committed_at": "2026-09-05 23:23:57 +0800",
+      "subject": "design(c04): repair P02 rail lean-rest relation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "design/c04-p01-body-feedback-repair",
+      "sha": "6fab0b8da07b31b1fe9cefd0406140f720fe4b71",
+      "committed_at": "2026-09-05 23:23:57 +0800",
+      "subject": "design(c04): repair P02 rail lean-rest relation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "design/c04-p02-relation-repair-20260905",
+      "sha": "20ff7ff003a7d4e90a025aba6932b7e1029db151",
+      "committed_at": "2026-09-05 17:07:38 +0800",
+      "subject": "governance: align C04 control card with current web head",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "docs/github-showcase-readme",
+      "sha": "06f88a5569eee0013f0632c424d977a377013ece",
+      "committed_at": "2026-08-07 17:34:43 +0800",
+      "subject": "Reframe GitHub as personal design works and research showcase",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-cad-direct-intent-bridge-v01-20260909",
+      "sha": "96c9ec890deb3c07555a27e058e9571c00fd699f",
+      "committed_at": "2026-09-09 10:58:55 +0800",
+      "subject": "docs(blender): align Current surface with CAD direct request bridge",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-cad-direct-request-hardening-v01-20260909",
+      "sha": "2e12b1dc86f69f00e26a2ef7b4e084cbb4383959",
+      "committed_at": "2026-09-09 11:14:20 +0800",
+      "subject": "test(blender): bind strict CAD request hardening evidence",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-cad-tangent-move-v01-20260910",
+      "sha": "ab1deb28c9d3ec6054eb953ce1a4d7de1a488dcd",
+      "committed_at": "2026-09-10 17:03:13 +0800",
+      "subject": "chore(blender): remove transient CAD tangent receipt runner",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-direct-face-move-v01-20260909",
+      "sha": "401b22e713eaa84038ca52563a8ab134f6cb0106",
+      "committed_at": "2026-09-09 10:18:43 +0800",
+      "subject": "docs(blender): currentize bounded Direct Face interaction",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-direct-tangent-move-v01-20260909",
+      "sha": "a691dc74f75f032a0a1edd18ceca0553fb1ec329",
+      "committed_at": "2026-09-10 00:17:40 +0800",
+      "subject": "docs(blender): align Direct Face v0.2 current boundary",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "feat/oleander-blender-runtime-workbench",
+      "sha": "b5153d6a69031d0129ae12d778354405b79c1659",
+      "committed_at": "2026-09-07 23:52:44 +0800",
+      "subject": "governance: record merge-ready regression",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "fix/oleander-blender-5-2-producer-preflight",
+      "sha": "ece2c793b0eb727abd466f6dff9dce6953c92b31",
+      "committed_at": "2026-09-06 23:53:39 +0800",
+      "subject": "sync: merge main into Blender 5.2 preflight repair",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "fix/oleander-blender-current-alignment-20260909",
+      "sha": "1be9af3e048fc8bd65cf2a722218c39ff32e8477",
+      "committed_at": "2026-09-09 09:27:58 +0800",
+      "subject": "docs(blender): define shared environment and project profile boundary",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "fix/oleander-blender-postmerge-governance-current-20260909",
+      "sha": "2bd0438b2058c202ae374213f5aace6c3263d00b",
+      "committed_at": "2026-09-09 10:05:49 +0800",
+      "subject": "docs(blender): bind historical governance checker name to Current authority",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/c04-control-card-pr353-closure-20260830",
+      "sha": "b25bea429f9f4b35784d8b7472ceaa56ca3017b2",
+      "committed_at": "2026-08-30 02:09:34 +0800",
+      "subject": "governance: close stale C04 predecessor handoff state",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/c04-frontier-readback-20260905-2105",
+      "sha": "20ff7ff003a7d4e90a025aba6932b7e1029db151",
+      "committed_at": "2026-09-05 17:07:38 +0800",
+      "subject": "governance: align C04 control card with current web head",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/c04-frontier-readback-20260906",
+      "sha": "6fab0b8da07b31b1fe9cefd0406140f720fe4b71",
+      "committed_at": "2026-09-05 23:23:57 +0800",
+      "subject": "design(c04): repair P02 rail lean-rest relation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/c04-web-frontier-cutover-20260830",
+      "sha": "8ed196aaae613ee8189d07c4d5badcab6ce1ca6d",
+      "committed_at": "2026-08-30 01:50:34 +0800",
+      "subject": "governance: cut C04 Current producer pointer over to PR465",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/control-card-repo-scan-20260816",
+      "sha": "59ea98259e68cf858a69194269972713924b15c7",
+      "committed_at": "2026-08-16 15:33:36 +0800",
+      "subject": "run current Control Card scan on every governance CI",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/control-plane-no-loss-enforcement-20260816",
+      "sha": "2f95abfa1dabc9c8d848eadbbe8035c4c2bf08e3",
+      "committed_at": "2026-08-16 15:19:42 +0800",
+      "subject": "document global no-loss control-plane enforcement",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/control-plane-no-loss-readback-20260816",
+      "sha": "23881f7bd4d95adb7fc9356e22cd659de924fe32",
+      "committed_at": "2026-08-16 15:21:41 +0800",
+      "subject": "align control-plane entrypoint with no-loss enforcement",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/global-no-compression-no-loss-20260816",
+      "sha": "89a91c1f5c7a71ac5782709e05330104c425e155",
+      "committed_at": "2026-08-16 15:12:52 +0800",
+      "subject": "OLEANDER governance: align global policy activation state",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/no-loss-stored-card-compat-audit-20260816",
+      "sha": "663ad2dc0f39e6ee69b0a334771a1fe81d2ef019",
+      "committed_at": "2026-08-16 15:30:45 +0800",
+      "subject": "record no-loss stored Control Card compatibility audit",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/pixel-fidelity-20260817",
+      "sha": "8e6993c9332c2d6d0affaa5e88f27ccc73de06f0",
+      "committed_at": "2026-08-17 12:06:22 +0800",
+      "subject": "runtime: route reference materialization to canonical shared toolchain",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/refresh-c04-frontier-20260906",
+      "sha": "6fab0b8da07b31b1fe9cefd0406140f720fe4b71",
+      "committed_at": "2026-09-05 23:23:57 +0800",
+      "subject": "design(c04): repair P02 rail lean-rest relation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/retroactive-persistence-audit-2026-08-11",
+      "sha": "4f9c909d07ee91e7a24d30eede284f997f6cae24",
+      "committed_at": "2026-08-11 15:09:33 +0800",
+      "subject": "governance: add machine-readable retro persistence audit index",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/sync-contract-v1-1",
+      "sha": "0f77e85dae207588f50d9727d0cf7b860b3537fb",
+      "committed_at": "2026-08-15 09:34:36 +0800",
+      "subject": "Bind F readback receipt into sync contract regression",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "governance/sync-contract-v1-1-postmerge-receipt",
+      "sha": "2d8270872815b87a22289c8c68dd49cf71dc3e22",
+      "committed_at": "2026-08-15 09:37:14 +0800",
+      "subject": "Validate post-merge current sync state receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "modeling-worker-v0-12-canonical-review",
+      "sha": "b83419c6d34e4a16413fc8d79cd289981f24741a",
+      "committed_at": "2026-08-13 22:23:21 +0800",
+      "subject": "Merge pull request #91 from Jiaosong/agent/modeling-worker-v0-12-freeform-surface",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-a02-family-verbs-20260907",
+      "sha": "ceb30a0adc0dd1f027d8c830c8128845285184be",
+      "committed_at": "2026-09-07 14:12:12 +0800",
+      "subject": "governance: align C04 control card to fresh Web head",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-ch14-p04-role-in-context-20260909-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-ch14-p07-decision-hierarchy-20260909-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-ch14-p08-presence-20260907",
+      "sha": "85176cfdf1bb23dfc0547388d1e0831ca4db841b",
+      "committed_at": "2026-09-07 15:32:58 +0800",
+      "subject": "3d-skill: separate runtime project learning from historical Skill usage",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-d04-runtime-semantic-sync-20260908-1727",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-d04-runtime-sync-20260908-1425",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-d04-runtime-sync-20260908-1523",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-j03-cable-20260907",
+      "sha": "7393b01c2c743255261d2cf04bd8b49fc72c2049",
+      "committed_at": "2026-09-07 00:37:00 +0800",
+      "subject": "governance: restore design-process capability aggregate parity",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-j04-topology-repair-20260908-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-j05-return-service-20260908-r12",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-j06-no-phone-fallback-20260908-2127",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-m01-paper-memory-20260909-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-p01-footfall-clearzone-20260907",
+      "sha": "3ff9b30f3711db47a714720c3e89fdd97bddb265",
+      "committed_at": "2026-09-07 04:29:15 +0800",
+      "subject": "design(c04): repair J04 topology and decision-point read",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-p01-temporal-response-20260909-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-p02-assembly-service-20260908-r11",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-r06-same-source-transfer-20260909-r11",
+      "sha": "aa311040c1825e61ee95479a57f7daa5f36bcfc8",
+      "committed_at": "2026-09-09 11:00:41 +0800",
+      "subject": "feat: bind CAD direct intent into governed sidecar request",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander-design-r07-dual-name-20260908-r11",
+      "sha": "2c7efe853fbbc8ec99b5074be9ca26f2b101a5d4",
+      "committed_at": "2026-09-08 00:03:36 +0800",
+      "subject": "governance: currentize Blender bounded absorption",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/c04-current-register-control-repair-20260829",
+      "sha": "161571950009e8fbe61e514e26d01b02cd943c96",
+      "committed_at": "2026-08-29 22:34:36 +0800",
+      "subject": "C04: currentize protected register count semantics",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/capability-gap-source-map-20260829",
+      "sha": "9b440099d44ec13582229449f3ae1508d5e32b08",
+      "committed_at": "2026-08-29 10:06:41 +0800",
+      "subject": "governance: add next capability gap/source map",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/chat-resume-checkpoint-20260909",
+      "sha": "5508d812d50c6ff007ceff87744007874e4b90bb",
+      "committed_at": "2026-09-09 13:19:17 +0800",
+      "subject": "Align image-consumption validator with resolver 1.2.3",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/chat-runtime-continuity-routing-loop-20260909",
+      "sha": "2761c1a4ab1f9333d9d9f8c5a3b2e1cbd2e2d446",
+      "committed_at": "2026-09-09 14:14:53 +0800",
+      "subject": "Track Resolver 1.2.4 in image-consumption validator",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/cross-context-batch4-20260829",
+      "sha": "5be133f7212dabb605872bdf8d4d28be57da528e",
+      "committed_at": "2026-08-29 09:01:56 +0800",
+      "subject": "OLEANDER: link batch4 routing to cross-context evidence",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/design-c04-p09-currentization-20260905",
+      "sha": "20ff7ff003a7d4e90a025aba6932b7e1029db151",
+      "committed_at": "2026-09-05 17:07:38 +0800",
+      "subject": "governance: align C04 control card with current web head",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/dfm-gdt-metrology-digestion-20260829",
+      "sha": "3270398af2c52e10f24b686f69fb02484c6dbc07",
+      "committed_at": "2026-08-29 17:52:00 +0800",
+      "subject": "Merge latest main into DFM GD&T metrology digestion",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/digest-external-skills-batch-20260828",
+      "sha": "d5c7e51faff4b1fb95a1ee89c8434b39a044d3ac",
+      "committed_at": "2026-08-28 19:46:28 +0800",
+      "subject": "evals: add regression cases for six external-skill digestions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/digest-external-skills-batch2-20260828",
+      "sha": "4581c6d4e6c66ded87d2362bd3bb80c3a29152dc",
+      "committed_at": "2026-08-28 20:02:33 +0800",
+      "subject": "skills: bind IA layout and accessible interaction extensions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/digest-external-skills-batch4-20260829",
+      "sha": "c1cd9f26ad9a074ab242b52c376303d5bb9c7e69",
+      "committed_at": "2026-08-29 08:37:39 +0800",
+      "subject": "OLEANDER: add batch4 external digestion golden cases",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/digest-external-skills-round2-20260828",
+      "sha": "b9bfaec5832ae9658635d8272923c4afbcce78eb",
+      "committed_at": "2026-08-28 20:58:23 +0800",
+      "subject": "evals: add external digestion round 2 cases",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/digest-personal-homepage-20260828",
+      "sha": "5acc4a61975a3ca7b26fe2d945aac9e6ce186ea6",
+      "committed_at": "2026-08-28 19:23:51 +0800",
+      "subject": "motion: add page-level orchestration extension",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/evidence-reasoning-digestion-20260829",
+      "sha": "687c25232d54d2d1f50825835069a3d644696750",
+      "committed_at": "2026-08-29 10:33:20 +0800",
+      "subject": "evals: add evidence reasoning regression cases",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/execution-integrity-20260830",
+      "sha": "6da1302cfc48497cf1e22f00a33016364a6f6f78",
+      "committed_at": "2026-08-30 01:15:02 +0800",
+      "subject": "ci: restore pinned checkout action while adding integrity gate",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/field-survey-reality-capture-20260829",
+      "sha": "e0968bf85a7cce79c585744d5bc0d25dd10b2a4e",
+      "committed_at": "2026-08-29 18:18:36 +0800",
+      "subject": "eval: add reality-capture geometry handoff adversarial spec",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/integrate-effect-system-20260830",
+      "sha": "e24be866bb5af8427c3139855949de88cc4b0d61",
+      "committed_at": "2026-08-30 00:15:35 +0800",
+      "subject": "Motion: keep central capability contract unchanged; route effect delta through binding",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/openbim-ifc-ids-bcf-20260829",
+      "sha": "b1d5ac55762e6606eb99d4a192dcce534d717773",
+      "committed_at": "2026-08-29 21:42:04 +0800",
+      "subject": "OLEANDER: add IDS BCF closure adversarial eval",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/physical-evidence-digestion-20260829",
+      "sha": "99d44618c764adaf6b7ed24674d824c07476e855",
+      "committed_at": "2026-08-29 10:53:46 +0800",
+      "subject": "OLEANDER: add physical evidence golden regressions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/physical-prototype-vv-execution-20260829",
+      "sha": "9ad3f71026f9d65a0ea139bea65240a128bdcd37",
+      "committed_at": "2026-08-29 18:02:57 +0800",
+      "subject": "Training: add SK-DES-013 prototype V&V adversarial eval",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/process-existing-project-repair-20260830",
+      "sha": "611a2873fcfb6bfd039f283d4d0b2ce3d67b6be4",
+      "committed_at": "2026-08-30 00:56:28 +0800",
+      "subject": "process: route existing project repair extension",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/reference-materialization-gate-20260817",
+      "sha": "b16606a87c346b792e8ed18d61bffb284519822d",
+      "committed_at": "2026-08-17 11:10:00 +0800",
+      "subject": "Document reference materialization gate activation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "oleander/visual-production-depth-20260910",
+      "sha": "c1016879f5e043d01ab99655f89b9f652f001966",
+      "committed_at": "2026-09-10 12:36:58 +0800",
+      "subject": "Repair visual quality convergence after repeated REVISE",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-16-network-topology",
+      "sha": "72609aa4e9d0920d31cc7b652c9f08d2ec59871a",
+      "committed_at": "2026-08-16 22:04:51 +0800",
+      "subject": "practice: add topology-first revision SVG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-16-packaging-info-hierarchy",
+      "sha": "0422e52422f448fbf71c84aa566f0d0ef9de1c10",
+      "committed_at": "2026-08-16 23:05:34 +0800",
+      "subject": "practice: add packaging hierarchy revised output",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-16-technical-drawing-lineweight",
+      "sha": "9605cf8d7b64448beabffba732b4aaeaffffe654",
+      "committed_at": "2026-08-16 19:04:42 +0800",
+      "subject": "practice: add hierarchical lineweight drawing",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-17-cmf-role-allocation",
+      "sha": "bc05c9e7e4fd4ab5f09c2dd08e5b0abdf28f9a6c",
+      "committed_at": "2026-08-17 06:06:10 +0800",
+      "subject": "Practice: add role-bound CMF SVG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-17-earned-attention",
+      "sha": "0768036ca3058bd2df09349a9cd5e47c0a66dbd0",
+      "committed_at": "2026-08-17 04:07:21 +0800",
+      "subject": "practice: add after mobile static SVG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-17-planting-field-structure",
+      "sha": "a5677eacf2c88e089b536f9450ebb6460fa158fc",
+      "committed_at": "2026-08-17 08:00:09 +0800",
+      "subject": "practice: add planting field-structure study",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/2026-08-17-wayfinding-decision-hierarchy",
+      "sha": "4078eb0797054b2a147dd9b8a71eaa0e1504ab41",
+      "committed_at": "2026-08-17 01:02:37 +0800",
+      "subject": "practice: document wayfinding decision-priority candidate",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/grid-typography-dominant-field-20260816",
+      "sha": "15c25b2b17e99856b0316ffc45c26fb9b40f97e0",
+      "committed_at": "2026-08-16 20:09:11 +0800",
+      "subject": "practice: add dominant-field revision SVG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/nasa-grid-reconstruction-20260817",
+      "sha": "ddef0d79486b940d2fcc6b243234ca152c4bf10a",
+      "committed_at": "2026-08-17 10:05:38 +0800",
+      "subject": "practice: add editable NASA grid reconstruction SVG",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "practice/sp01-r02-gis-pap-rebase-20260811",
+      "sha": "64d99b3da05fe3ce9cbd707cd8ef1d1139780666",
+      "committed_at": "2026-08-11 23:13:21 +0800",
+      "subject": "Record SP01 PAP rescue in machine evidence snapshot",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "repair/control-plane-v0-3-1-session-runtime",
+      "sha": "c584779862de244d18cfec6d46e3f0d638b7a08d",
+      "committed_at": "2026-08-13 22:58:37 +0800",
+      "subject": "Finalize v0.12 canonical sync scan receipt",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "skills/game-ui-stack-v0-1",
+      "sha": "ca147a95d27eb99db9e76bb81e516bb3cba9253c",
+      "committed_at": "2026-08-17 15:09:40 +0800",
+      "subject": "OLEANDER: add game UI specialist skill stack v0.1",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "skills/oleander-motion-v02-rebase-20260811",
+      "sha": "62760417200d48a7ba63a9a88db7f436134a9408",
+      "committed_at": "2026-08-11 23:37:00 +0800",
+      "subject": "Rebase OLEANDER motion skill v0.2 onto current final mainline",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/candidate-main-20260906",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/candidate-main-20260906b",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/candidate-main-20260907",
+      "sha": "ceb30a0adc0dd1f027d8c830c8128845285184be",
+      "committed_at": "2026-09-07 14:12:12 +0800",
+      "subject": "governance: align C04 control card to fresh Web head",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/candidate-main-20260907b",
+      "sha": "85176cfdf1bb23dfc0547388d1e0831ca4db841b",
+      "committed_at": "2026-09-07 15:32:58 +0800",
+      "subject": "3d-skill: separate runtime project learning from historical Skill usage",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/candidate-preflight-main-20260906",
+      "sha": "e57e8442921f4c585e4187eb351234fb19fba8c5",
+      "committed_at": "2026-09-07 00:05:59 +0800",
+      "subject": "Merge PR #484: Blender 5.2 producer preflight",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/preflight-main-20260906",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/preflight-main-20260906b",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "sync/preflight-main-20260906c",
+      "sha": "ef9a56c9965e917cb5283abba4d8393c712ad2d9",
+      "committed_at": "2026-09-06 21:26:55 +0800",
+      "subject": "C04 J02: currentize boat carrier for low-attention visitor use",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "tmp/noop",
+      "sha": "13d9e4aa39bfddb0b0a26adc9dcbc575ec621cbc",
+      "committed_at": "2026-09-05 08:47:30 +0800",
+      "subject": "governance: sync canonical anti-pollution policy with consolidation throttle",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-adult-pilot-scope-sync-20260907",
+      "sha": "85176cfdf1bb23dfc0547388d1e0831ca4db841b",
+      "committed_at": "2026-09-07 15:32:58 +0800",
+      "subject": "3d-skill: separate runtime project learning from historical Skill usage",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-r03-input-integrity-20260907",
+      "sha": "3ff9b30f3711db47a714720c3e89fdd97bddb265",
+      "committed_at": "2026-09-07 04:29:15 +0800",
+      "subject": "design(c04): repair J04 topology and decision-point read",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-r03-input-integrity-20260907b",
+      "sha": "3ff9b30f3711db47a714720c3e89fdd97bddb265",
+      "committed_at": "2026-09-07 04:29:15 +0800",
+      "subject": "design(c04): repair J04 topology and decision-point read",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-r03-integrity-fix-20260907-1536",
+      "sha": "85176cfdf1bb23dfc0547388d1e0831ca4db841b",
+      "committed_at": "2026-09-07 15:32:58 +0800",
+      "subject": "3d-skill: separate runtime project learning from historical Skill usage",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-r03-reliability-input-integrity",
+      "sha": "e119f1d453acb755c69e5f0801cc96321a354c35",
+      "committed_at": "2026-09-06 13:04:30 +0800",
+      "subject": "governance: refresh C04 PR465 current head in global queue",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c01-r03-reliability-integrity-20260906",
+      "sha": "ee142fa4eff5dcacc5c10cb42dde62abc37dd2d2",
+      "committed_at": "2026-09-06 07:24:57 +0800",
+      "subject": "design(c04): repair P01 scene-fit and footfall relation",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c04-app-map-v1-2-20260909",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c04-j02-independent-readback-20260908",
+      "sha": "a2490daae27cb294657d55d0d4a89ed7867876c5",
+      "committed_at": "2026-09-08 04:12:24 +0800",
+      "subject": "governance: register exact Current carriers in anti-pollution guard",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "validation/c04-j04-route03-source-return-20260907",
+      "sha": "8f3c7e0fe1d6506bca7ed26f16df66b198f11385",
+      "committed_at": "2026-09-07 02:27:40 +0800",
+      "subject": "design(c04): add J04 branching walk native carrier",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "xj01/r02-cmf-v118-migration-20260811",
+      "sha": "9bbc564ffa32a2fedef4858523ffb5b30da5a5a3",
+      "committed_at": "2026-08-11 23:06:18 +0800",
+      "subject": "Add v1.18-bound machine record for XJ01 R02 CMF decisions",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    }
+  ],
+  "protected_merged_remote": [
+    {
+      "branch": "agent/oleander-execution-surface-readback-20260912",
+      "sha": "153b73936533587e6a5df50ed512899180896020",
+      "committed_at": "2026-09-12 14:28:26 +0800",
+      "subject": "governance(runtime): bind local MCP readback to shared execution surfaces",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "ACTIVE_WORKTREE"
+    },
+    {
+      "branch": "skills/game-ui-stack-v0-1-clean",
+      "sha": "ca147a95d27eb99db9e76bb81e516bb3cba9253c",
+      "committed_at": "2026-08-17 15:09:40 +0800",
+      "subject": "OLEANDER: add game UI specialist skill stack v0.1",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "OPEN_PR_BASE"
+    }
+  ],
+  "safe_local_delete": [
+    {
+      "branch": "agent/oleander-notion-canonical-knowledge-v01-20260911",
+      "sha": "1f699762978515a89d6dafd8e75de9e042126f11",
+      "committed_at": "2026-09-12 13:45:23 +0800",
+      "subject": "Merge pull request #527 from Jiaosong/agent/oleander-notion-canonical-knowledge-v01-20260911",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-notion-d04-academic-20260912",
+      "sha": "5dfb458ae70d45d015ab34ee0ef519cb5c4715eb",
+      "committed_at": "2026-09-12 14:04:16 +0800",
+      "subject": "Merge pull request #528 from Jiaosong/agent/oleander-notion-d04-academic-20260912",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    },
+    {
+      "branch": "agent/oleander-notion-d06-academic-20260912",
+      "sha": "760e681ecb174f19360fa4b6f6eeff5aadcd1b14",
+      "committed_at": "2026-09-12 14:13:23 +0800",
+      "subject": "docs(knowledge): record D06 academic migration",
+      "classification": "SAFE_DELETE_MERGED_REF",
+      "protected_reason": ""
+    }
+  ],
+  "protected_merged_local": [
+    {
+      "branch": "agent/oleander-execution-surface-readback-20260912",
+      "sha": "153b73936533587e6a5df50ed512899180896020",
+      "committed_at": "2026-09-12 14:28:26 +0800",
+      "subject": "governance(runtime): bind local MCP readback to shared execution surfaces",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "ACTIVE_WORKTREE"
+    },
+    {
+      "branch": "governance/github-branch-lifecycle-20260912",
+      "sha": "a063b04e3e1efbc0b1fe3d40be93a3f606cfaaff",
+      "committed_at": "2026-09-12 14:51:27 +0800",
+      "subject": "Merge pull request #531 from Jiaosong/agent/oleander-reader-visual-v1-20260912",
+      "classification": "PROTECTED_MERGED_REF",
+      "protected_reason": "ACTIVE_WORKTREE"
+    }
+  ],
+  "open_pr_base_refs": [
+    "agent/automotive-reference-vehicle-v0-7",
+    "agent/blender-surface-system-v1-21-source-context",
+    "agent/c04-c22-drawing-currentization-v3-1",
+    "agent/c04-ch00-ch19-deepening-v03-20260819",
+    "agent/c04-web-v1-12-game-line-20260822",
+    "agent/modeling-worker-v0-13-generalization-reentry",
+    "main",
+    "repair/practice-business-ip-project-axis-20260812",
+    "skills/game-ui-stack-v0-1-clean"
+  ],
+  "worktree_branches": [
+    "agent/blender-surface-system-v1-21-source-context",
+    "agent/c04-web-v1-12-currentize-20260830",
+    "agent/oleander-execution-surface-readback-20260912",
+    "agent/skill-feedback-design-gates-20260912",
+    "governance/github-branch-lifecycle-20260912",
+    "main",
+    "tmp/presentation-r13-20260910"
+  ],
+  "policy": {
+    "unmerged_deleted_by_age": false,
+    "open_pr_heads_protected": true,
+    "open_pr_bases_protected": true,
+    "active_worktrees_protected": true,
+    "audit_before_delete": true
+  }
+}

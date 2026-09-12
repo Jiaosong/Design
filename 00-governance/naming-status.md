@@ -179,8 +179,19 @@ When a successor becomes the active frontier, the same closure transaction must,
 3. close any predecessor PR that no longer owns active production;
 4. remove predecessor authority from live Notion/Drive/GitHub pointers while preserving immutable provenance;
 5. record the successor relation in the receipt/readback when persistence is triggered.
+6. dispose of the predecessor Git branch ref after merge/closure unless it is still an open PR head/base, active worktree, or an explicitly retained stack/provenance branch; branch deletion never substitutes for provenance capture.
 
 “Create new Current now; clean old Current later” is forbidden because it creates authority drift.
+
+### Git branch-ref lifecycle
+
+`BRANCH EXISTENCE ≠ CURRENT AUTHORITY`.
+
+- one logical object should keep one active work-branch / PR frontier until that frontier is merged, closed, superseded, rejected or explicitly retained as a stack base;
+- recurring automation must not create date-stamped successor branches when the previous branch for the same logical object is still the active frontier and no material delta requires a separate successor;
+- merged branch refs are transient navigation infrastructure once commit/PR provenance is preserved;
+- unmerged refs require frontier/PR disposition before deletion and may not be purged by age alone;
+- bulk cleanup requires a ref→SHA audit receipt before deletion.
 
 ## Location integrity rule｜2026-08-25 consolidation
 
