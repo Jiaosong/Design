@@ -1,0 +1,19 @@
+{
+  "schema":"oleander.skill.3d-pipeline.reference-end-form-plan-curvature.v1",
+  "version":"2026-08-17-v1",
+  "trigger":"Side silhouette can appear plausible while front/rear/3Q views reveal a planar section cap or incorrect plan curvature.",
+  "must_check":[
+    "frontmost and rearmost envelope vary across lateral position when reference plan is rounded",
+    "constant-X terminal section is not used as visible bumper/fascia when the reference is curved",
+    "front/rear ortho and 3Q views are reviewed together",
+    "plan curvature remains tied to the same Source revision",
+    "identity apertures sit on the curved host envelope rather than compensating for a flat end cap"
+  ],
+  "forbidden":[
+    "planar end-cap hidden by dark material",
+    "side-view-only approval of front/rear mass",
+    "decorative bumper objects used to hide an unresolved terminal surface"
+  ],
+  "failure_codes":["REVISE_END_FORM_PLAN_CURVATURE","FAIL_SINGLE_VIEW_FIT_MULTI_VIEW_FORM"],
+  "does_not_prove":["production bumper construction","crash structure","aerodynamic validity"]
+}

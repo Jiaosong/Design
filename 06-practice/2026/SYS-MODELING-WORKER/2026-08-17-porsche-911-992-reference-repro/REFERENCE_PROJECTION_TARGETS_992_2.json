@@ -1,0 +1,46 @@
+{
+  "schema": "oleander.reference-projection-targets.porsche-911-992-2.v1",
+  "reference_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_IMAGE_MEASUREMENT_NOT_MANUFACTURER_CAD",
+  "side": {
+    "reference_source": "Parkers 2025 Porsche 911 Carrera T 992.2 near-side profile",
+    "reference_sha256": "aba21bd1ea5ba3092451c17356a6736e3c2cf8f949f13d5a2480d953a8ed487a",
+    "a_pillar_base_x_m": 0.650,
+    "c_pillar_base_x_m": -1.150,
+    "glass_outline_m": [
+      [0.650,0.845],[0.480,1.045],[0.235,1.215],[0.020,1.255],[-0.230,1.235],[-0.500,1.170],[-0.760,1.055],[-1.150,0.990],[-0.790,0.835],[0.520,0.835]
+    ],
+    "lower_body_silhouette_m": [
+      [-2.271,0.416],[-2.100,0.407],[-1.900,0.263],[-1.700,0.179],[-1.500,0.608],[-1.300,0.724],[-1.195,0.738],[-1.050,0.706],[-0.900,0.594],[-0.750,0.151],[-0.600,0.151],[-0.450,0.151],[-0.300,0.151],[-0.150,0.151],[0.000,0.151],[0.150,0.146],[0.300,0.146],[0.450,0.146],[0.600,0.146],[0.720,0.141],[0.850,0.141],[1.000,0.598],[1.255,0.724],[1.450,0.678],[1.650,0.454],[1.850,0.160],[2.050,0.197],[2.271,0.207]
+    ],
+    "measurement_note": "White body component segmented in the persisted 1200x800 side image; wheel openings appear as raised lower-body silhouette. Pixel→metre uses the calibrated four-anchor x mapping and official-height/tyre-OD vertical mapping."
+  },
+  "front": {
+    "reference_source": "Elferspot 2025 Porsche 992.2 Carrera front studio image",
+    "reference_sha256": "fc3742d21282178e4751c3e0ea0449a843c19fa6751b82687fdfc958480589db",
+    "body_width_ratio": 1.0,
+    "roof_width_ratio_at_upper_cabin": 0.59,
+    "windshield_lower_width_ratio": 0.67,
+    "fender_hood_read": "TWO_FENDER_CROWNS_WITH_LOWER_CENTER_HOOD",
+    "lower_opening_read": "ONE_CONTINUOUS_LOWER_BAND_WITH_THREE_FUNCTIONAL_ZONES",
+    "measurement_note": "Main connected vehicle component in the studio image; mirrors excluded from primary body width. Ratios are visual-screening values, not engineering sections."
+  },
+  "rear": {
+    "reference_source": "Eurocar Porsche 911 Carrera 992 II rear studio image",
+    "reference_sha256": "af097a1f70c9a5eb9957d98c85416edf9bf031b2c75b6aafbdd60ac9a3eedcff",
+    "body_width_ratio": 1.0,
+    "roof_backlight_upper_width_ratio": 0.52,
+    "backlight_lower_width_ratio": 0.64,
+    "lightbar_width_ratio": 0.88,
+    "rear_mass_read": "WIDE_HAUNCHES_NARROW_BACKLIGHT_THIN_LIGHTBAR_DEEP_LOWER_DIFFUSER",
+    "measurement_note": "Near-rear studio reference used for relative mass and aperture screening; exact trim/exhaust package is not transferred as body-shell authority."
+  },
+  "thresholds": {
+    "front_roof_width_ratio_abs_error_max": 0.05,
+    "front_windshield_lower_width_ratio_abs_error_max": 0.05,
+    "rear_backlight_lower_width_ratio_abs_error_max": 0.06,
+    "side_pillar_x_error_m_max": 0.08
+  },
+  "review_gate": "INDEPENDENT_MULTI_VIEW_VISUAL_REVIEW_REQUIRED",
+  "does_not_prove": ["manufacturer CAD","Class-A continuity","production patch layout","manufacturing feasibility","homologation","commercial IP clearance"]
+}

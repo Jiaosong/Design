@@ -1,0 +1,86 @@
+{
+  "schema": "oleander.reference-contour-targets.porsche-911-992-2.v1",
+  "reference_id": "PORSCHE_911_992_2_CONTOUR_CALIBRATION_2026_08_18",
+  "target_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_VISUAL_CALIBRATION_NOT_MANUFACTURER_CAD",
+  "source_scope": {
+    "side": {
+      "source": "Parkers 2025 Porsche 911 Carrera T 992.2 near-orthographic side image",
+      "sha256": "aba21bd1ea5ba3092451c17356a6736e3c2cf8f949f13d5a2480d953a8ed487a",
+      "allowed_transfer": "992.2 coupe body-shell silhouette / greenhouse / wheel-arch relationship only",
+      "forbidden_transfer": "Carrera T graphics, trim, exact fascia package, production surface patch layout"
+    },
+    "front": {
+      "source": "Elferspot 2025 Porsche 992.2 Carrera front studio image",
+      "sha256": "fc3742d21282178e4751c3e0ea0449a843c19fa6751b82687fdfc958480589db",
+      "allowed_transfer": "front proportion / cabin-to-body width / lamp-fender relationship"
+    },
+    "rear": {
+      "source": "Eurocar Porsche 911 Carrera 992 II rear studio image",
+      "sha256": "af097a1f70c9a5eb9957d98c85416edf9bf031b2c75b6aafbdd60ac9a3eedcff",
+      "allowed_transfer": "rear shoulder / greenhouse / lightbar / lower-mass relationship"
+    }
+  },
+  "official_hard_points_m": {
+    "length": 4.542,
+    "width_excluding_mirrors": 1.852,
+    "height": 1.298,
+    "wheelbase": 2.45,
+    "front_axle_x": 1.255,
+    "rear_axle_x": -1.195,
+    "front_track": 1.591,
+    "rear_track": 1.557
+  },
+  "side_calibration": {
+    "image_px": [1200, 800],
+    "pixel_anchors": {
+      "rear_extreme_x": 121.0,
+      "rear_wheel_center_x": 341.4,
+      "front_wheel_center_x": 897.0,
+      "front_extreme_x": 1114.0,
+      "roof_apex_y": 285.0,
+      "front_wheel_center_y": 491.4
+    },
+    "x_mapping": "piecewise linear through rear extreme -> rear axle -> front axle -> front extreme",
+    "z_mapping": {
+      "method": "official height + public front tyre OD constraint",
+      "front_tyre_outer_radius_m": 0.3353,
+      "derived_m_per_px": 0.004664244186046513,
+      "derived_ground_y_px": 563.2873169211592
+    },
+    "segmentation": {
+      "method": "largest connected near-neutral bright body component within bounded vehicle crop; median-smoothed top envelope",
+      "crop_px": [80, 250, 1140, 600],
+      "threshold_note": "calibration aid only; target remains visual evidence, not measured CAD"
+    }
+  },
+  "side_top_silhouette_m": [
+    [-2.271, 0.668], [-2.100, 0.818], [-1.900, 0.878], [-1.700, 0.943],
+    [-1.500, 1.004], [-1.300, 1.060], [-1.195, 1.090], [-1.050, 1.131],
+    [-0.900, 1.177], [-0.750, 1.237], [-0.600, 1.265], [-0.450, 1.284],
+    [-0.300, 1.293], [-0.150, 1.298], [0.000, 1.289], [0.150, 1.259],
+    [0.300, 1.116], [0.450, 1.018], [0.600, 0.911], [0.720, 0.878],
+    [0.850, 0.888], [1.000, 0.897], [1.255, 0.869], [1.450, 0.850],
+    [1.650, 0.760], [1.850, 0.626], [2.050, 0.617], [2.271, 0.482]
+  ],
+  "front_normalized_targets": {
+    "main_body_width": 1.0,
+    "roof_mid_width_ratio": 0.586,
+    "windshield_lower_width_ratio": 0.672,
+    "note": "ratios measured from the largest main-vehicle component in the front reference; mirrors excluded from the primary body ratio"
+  },
+  "gates": {
+    "side_top_rmse_m_max": 0.025,
+    "side_top_max_abs_m": 0.055,
+    "official_hard_points_exact": true,
+    "visual_reference_gate": "INDEPENDENT_REVIEW_REQUIRED"
+  },
+  "does_not_prove": [
+    "manufacturer CAD",
+    "Class-A/G2/G3 continuity",
+    "production panel architecture",
+    "tooling/manufacturing feasibility",
+    "homologation",
+    "commercial IP clearance"
+  ]
+}

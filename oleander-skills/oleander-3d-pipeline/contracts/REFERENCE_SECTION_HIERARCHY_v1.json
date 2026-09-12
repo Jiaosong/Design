@@ -1,0 +1,20 @@
+{
+  "schema":"oleander.skill.3d-pipeline.reference-section-hierarchy.v1",
+  "version":"2026-08-17-v1",
+  "purpose":"Require identity-bearing section hierarchy to be modeled in host geometry rather than approximated by one generic shell plus trim.",
+  "automotive_checks":[
+    "hood centre is distinguishable from fender crown in height/flow",
+    "front fender crown resolves around wheel opening and lamp aperture",
+    "rear quarter/haunch carries the reference rear-biased mass",
+    "greenhouse length and A/C pillar bases match independent visual targets",
+    "rocker/lower side taper does not remain a rectangular slab",
+    "surface hierarchy is visible under clay/reflection lighting without trim"
+  ],
+  "forbidden":[
+    "single generic upper body section used for hood fender and rear quarter when reference separates them",
+    "trim or lamps used to create apparent section changes that host geometry lacks",
+    "micro-detail refinement while section hierarchy is rejected"
+  ],
+  "failure_codes":["REVISE_SECTION_HIERARCHY","REVISE_REAR_BIASED_MASS","REVISE_GREENHOUSE_EXTENT"],
+  "does_not_prove":["manufacturer patch layout","Class-A continuity","production panel architecture"]
+}

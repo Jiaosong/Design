@@ -1,0 +1,53 @@
+{
+  "schema": "oleander.reference-lock.porsche-911-carrera-992-2.v1",
+  "reference_id": "PORSCHE_911_CARRERA_2025_992_2",
+  "maker": "Porsche",
+  "product": "911",
+  "variant": "Carrera Coupe",
+  "generation": "992.2",
+  "model_year_or_revision": "2025 / 992.2",
+  "dimension_revision": "2025_992.2_CARRERA",
+  "visual_revision": "2025_992.2_CARRERA",
+  "dimension_sources": [
+    {
+      "authority": "OFFICIAL",
+      "title": "992.2 911 Carrera and Carrera Cabriolet Technical Specifications",
+      "url": "https://newsroom.porsche.com/dam/jcr%3A86fc9a9b-ece1-4cca-9930-39a78e89baf3/992.2%20911%20Carrera%20and%20Carrera%20Cabriolet%20Technical%20Specifications.pdf"
+    }
+  ],
+  "visual_sources": [
+    {
+      "authority": "OFFICIAL",
+      "title": "2025 911 Carrera / Porsche Newsroom USA photo set",
+      "url": "https://newsroom.porsche.com/en_US/model-range/911/911-carrera.html",
+      "camera_note": "press imagery; perspective varies"
+    },
+    {
+      "authority": "SUPPORT",
+      "title": "992 Carrera side-profile support image",
+      "url": "https://www.carmagazine.co.uk/car-news/industry-news/porsche/911-model-range-explained/",
+      "camera_note": "near-side profile; previous 992.1 support only; not dimensional authority"
+    }
+  ],
+  "source_note": "Official Porsche technical data controls hard points. Visual references control reproduction form only. 992.1 side imagery may be used only as continuity support, never to override 992.2 fascia/revision features.",
+  "hard_points_m": {
+    "length": 4.542,
+    "width_without_mirrors": 1.852,
+    "height": 1.298,
+    "wheelbase": 2.450,
+    "track_front": 1.591,
+    "track_rear": 1.557
+  },
+  "wheel_tyre": {
+    "front": "235/40 ZR 19",
+    "rear": "295/35 ZR 20"
+  },
+  "visual_landmark_status": "SOURCE_GROUNDED_VISUAL_ESTIMATE_NOT_ENGINEERING_MEASUREMENT",
+  "does_not_prove": [
+    "manufacturer source CAD",
+    "Class-A production surfacing",
+    "tooling feasibility",
+    "engineering release",
+    "commercial IP clearance"
+  ]
+}

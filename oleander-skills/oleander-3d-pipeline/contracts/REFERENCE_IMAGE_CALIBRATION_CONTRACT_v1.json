@@ -1,0 +1,51 @@
+{
+  "schema": "oleander.skill.3d-pipeline.reference-image-calibration.v1",
+  "version": "2026-08-18-v1",
+  "required_fields": [
+    "reference_id",
+    "target_revision",
+    "source_scope",
+    "official_hard_points_m",
+    "side_calibration",
+    "side_top_silhouette_m",
+    "gates",
+    "does_not_prove"
+  ],
+  "required_side_pixel_anchors": [
+    "rear_extreme_x",
+    "rear_wheel_center_x",
+    "front_wheel_center_x",
+    "front_extreme_x",
+    "roof_apex_y",
+    "front_wheel_center_y"
+  ],
+  "required_metric_hard_points": [
+    "length",
+    "width_excluding_mirrors",
+    "height",
+    "wheelbase",
+    "front_axle_x",
+    "rear_axle_x"
+  ],
+  "minimum_side_contour_samples": 16,
+  "rules": {
+    "reference_revision_must_be_explicit": true,
+    "allowed_transfer_scope_required": true,
+    "protected_reference_access_bypass_forbidden": true,
+    "machine_screening_cannot_promote_visual_fidelity": true,
+    "candidate_measurement_and_reference_target_provenance_must_differ": true,
+    "wrong_macro_form_stops_detail_work": true
+  },
+  "failure_codes": [
+    "FAIL_REFERENCE_REVISION_MIXED",
+    "HOLD_REFERENCE_TRANSFER_SCOPE_UNRESOLVED",
+    "HOLD_AUTH_REQUIRED_NO_BYPASS",
+    "INSUFFICIENT_REFERENCE_VIEW_COVERAGE",
+    "FAIL_REFERENCE_CALIBRATION_ANCHORS",
+    "FAIL_REFERENCE_CONTOUR_TARGETS",
+    "HOLD_RELATION_MODEL_INSUFFICIENT",
+    "FAIL_APERTURE_HOST_RELATION",
+    "FAIL_EXTERIOR_CAP_EXPOSED",
+    "REVISE_IDENTITY_DETAIL_MASKS_FORM"
+  ]
+}

@@ -1,0 +1,74 @@
+name: OLEANDER 3D Porsche V75 Reopened Scene Diagnostic
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/oleander-3d-porsche-v75-reopened-scene-diagnostic.yml'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v72.py'
+      - '06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v75.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  v75-reopened-scene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with: {fetch-depth: 1}
+      - name: Compile V72 and V75
+        run: python3 -m py_compile 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v72.py 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v75.py
+      - name: Install Blender 5.2.0 LTS
+        run: |
+          set -euo pipefail
+          URL='https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz'
+          EXPECTED='96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+          curl -fL --retry 3 --connect-timeout 30 -o /tmp/blender.tar.xz "$URL"
+          test "$(sha256sum /tmp/blender.tar.xz | awk '{print $1}')" = "$EXPECTED"
+          tar -xJf /tmp/blender.tar.xz -C /tmp
+          /tmp/blender-5.2.0-linux-x64/blender --version | tee BLENDER_RUNTIME.txt
+      - name: Execute V72 standalone parent
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/V72_PARENT"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v72.py \
+            -- --out "$OUT" --samples 4 --resolution-x 640 --resolution-y 426
+          test -s "$OUT/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO.blend"
+          test -f "$OUT/V72_ITERATIVE_REAR_BOUNDARY_REFINEMENT_RECEIPT.json"
+          sha256sum "$OUT/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO.blend" "$OUT/V72_ITERATIVE_REAR_BOUNDARY_REFINEMENT_RECEIPT.json" > "$OUT/V72_PARENT_SHA256SUMS.txt"
+      - name: Reopen exact V72 blend and execute V75 diagnostic
+        run: |
+          set -euo pipefail
+          PARENT="$GITHUB_WORKSPACE/out/V72_PARENT"
+          OUT="$GITHUB_WORKSPACE/out/V75_REOPENED_DIAGNOSTIC"; mkdir -p "$OUT"
+          /tmp/blender-5.2.0-linux-x64/blender --background "$PARENT/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO.blend" --python-exit-code 5 \
+            --python 06-practice/2026/SYS-MODELING-WORKER/2026-08-17-porsche-911-992-reference-repro/run_reference_repro_v75.py \
+            -- --out "$OUT" --parent-receipt "$PARENT/V72_ITERATIVE_REAR_BOUNDARY_REFINEMENT_RECEIPT.json"
+          git rev-parse HEAD > "$OUT/SOURCE_COMMIT.txt"
+          test -f "$OUT/V75_REOPENED_V72_RESIDUAL_DIAGNOSTIC.json"
+      - name: Require reopened scene witness before operator conclusion
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('out/V75_REOPENED_DIAGNOSTIC/V75_REOPENED_V72_RESIDUAL_DIAGNOSTIC.json').read_text())
+          assert d['scene_witness']=='PASS_MATCHES_V72_RECEIPT'
+          assert all(d['witness_checks'].values())
+          assert d['host_unchanged_by_diagnostic'] is True
+          assert len(d['residual_faces'])==2
+          assert len(d['tolerance_trials'])==5
+          assert d['diagnostic_result'] in ('TOLERANCE_SENSITIVE_OPERATOR_CAN_PROGRESS','OPERATOR_STAGNATION_CONFIRMED_ON_REOPENED_STANDALONE_SCENE')
+          print(json.dumps(d,indent=2))
+          PY
+      - name: Upload parent and V75 evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: oleander-porsche-v75-reopened-scene-${{ github.run_id }}
+          path: |
+            BLENDER_RUNTIME.txt
+            out/V72_PARENT/V72_ITERATIVE_REAR_BOUNDARY_REFINEMENT_RECEIPT.json
+            out/V72_PARENT/V72_PARENT_SHA256SUMS.txt
+            out/V75_REOPENED_DIAGNOSTIC/
+          if-no-files-found: error
+          retention-days: 14

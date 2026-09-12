@@ -1,0 +1,20 @@
+{
+  "schema":"oleander.skill.3d-pipeline.reference-mass-decomposition.v1",
+  "version":"2026-08-17-v1",
+  "trigger":"A candidate matches one projection but fails another because distinct form families were collapsed into one loft/shell.",
+  "required_checks":[
+    "identify_primary_mass_families",
+    "bind_each_family_to_shared_reference_revision",
+    "preserve_sparse_source_causality",
+    "evaluate_side_front_rear_plan_views_on_same_source_digest",
+    "forbid_single_volume_loft_when_reference_has_distinct_shoulder_and_cabin_widths"
+  ],
+  "automotive_default_families":[
+    "LOWER_BODY_AND_FENDER_SHOULDER",
+    "CABIN_ROOF_GREENHOUSE",
+    "WHEEL_OPENING",
+    "IDENTITY_APERTURE_AND_LAMP"
+  ],
+  "failure_codes":["REVISE_PRIMARY_MASS_DECOMPOSITION","FAIL_SINGLE_VIEW_FIT_MULTI_VIEW_FORM"],
+  "does_not_prove":["Class-A","manufacturer patch layout","production panel architecture"]
+}

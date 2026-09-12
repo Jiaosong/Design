@@ -1,0 +1,75 @@
+{
+  "schema": "oleander.artifact-review.3d-model-render.v1",
+  "artifact": "Porsche 911 Carrera 992.2 reference-reproduction benchmark",
+  "revision": "V59_SPARSE_FRONT_HOOD_FENDER_RELATION",
+  "review_system": "OLEANDER Artifact Review System v1.1",
+  "review_scope": ["AR-G10", "AR-S02_MODEL", "AR-S06_VISUAL_CMF", "PROFESSIONAL_DESIGN_GATE_MODEL_RENDERING"],
+  "runtime_evidence": {
+    "workflow_run": 32271258341,
+    "source_commit": "5db053b1a07b9fef824b77cb2d20e5838502f3ca",
+    "blender": "5.2.0 LTS",
+    "build_hash": "fbe6228777e7",
+    "artifact_id": 9372267675,
+    "artifact_sha256": "49a709070d18b4053d7a50927e8184cb2b7d54dde6b6b655dc089593e42caa64"
+  },
+  "machine_gate": {
+    "state": "EXECUTED_PASS",
+    "source_ring_controls": 20,
+    "evaluated_triangles": 17520,
+    "evaluated_edge_p95_m": 0.1902173127222071,
+    "adjacent_normal_fold_count": 0,
+    "hood_fender_delta_m": 0.048726445226940474,
+    "hood_fender_relation_state": "SCREENED",
+    "side_regression_lock": "PASS",
+    "rear_regression_lock": "PASS"
+  },
+  "actual_preview_set": [
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__HERO_FRONT_3Q.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__HERO_REAR_3Q.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__SIDE_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__FRONT_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__REAR_ORTHO.png",
+    "renders/OLEANDER_PORSCHE_911_CARRERA_992_REFERENCE_REPRO__TOP_FRONT_3Q.png"
+  ],
+  "professional_design_crit": {
+    "claim": "The sparse front Source edit measurably establishes a positive hood-center versus fender-crown hierarchy without damaging the V49 fold-free evaluated surface.",
+    "first_read": "The held-out 3/4 previews still read as a generic/toy sports-car proxy rather than a convincing 992.2 identity.",
+    "geometry_construction": "Primary body is continuous and fold-free at the current machine gate, but visible aperture and lamp interface architecture is not mature enough to support professional reference-reproduction fidelity.",
+    "scale_proportion": "Gross hard points remain controlled; the cabin/window/pillar read and front opening hierarchy remain visually under-resolved relative to the primary mass.",
+    "material_light": "The studio render is adequate for defect visibility but is not evidence of physical CMF or Class-A reflection fairness.",
+    "cross_view_consistency": "The same unresolved greenhouse/aperture architecture is visible in HERO_FRONT_3Q, TOP_FRONT_3Q and orthographic views; the issue is structural rather than a single-camera artifact.",
+    "portfolio_value": "Not MAIN/KEEP at V59. The benchmark is valuable as technical training evidence, not as a finished automotive modeling result.",
+    "verdict": "REVISE",
+    "root_cause": "APERTURE_ARCHITECTURE_NOT_OWNED",
+    "root_cause_detail": "Windshield, side glazing, rear glass, A/C pillars and roof-rail junctions remain proxy/infill overlays rather than one shared-boundary host-opening-interface-infill-backing architecture. This dominates the held-out 3/4 identity read and prevents the successful hood-fender relation from producing a convincing 992.2 result."
+  },
+  "next_authorized_edit_scope": "GREENHOUSE_APERTURE_ARCHITECTURE_ONLY",
+  "protected": [
+    "V59_PRIMARY_BODY_RELATIONS",
+    "V59_HOOD_FENDER_RELATION",
+    "V49_SPARSE_SOURCE_DENSITY",
+    "REAR_PRIMARY_BODY",
+    "OFFICIAL_HARD_POINTS",
+    "AXLES",
+    "WHEEL_TYRE_PACKAGE"
+  ],
+  "forbidden_next_deltas": [
+    "CAGE_DENSIFICATION",
+    "PRIMARY_BODY_REWRITE",
+    "REAR_PRIMARY_FORM_EDIT",
+    "CAMERA_TUNING_TO_HIDE_APERTURE_DEFECTS",
+    "OPAQUE_GLASS_AS_BACKING_SUBSTITUTE"
+  ],
+  "reference_fidelity": "REJECT_REVISE",
+  "design_quality": "REVISE",
+  "main_keep": false,
+  "does_not_prove": [
+    "Reference Fidelity PASS",
+    "Design KEEP",
+    "Class-A continuity",
+    "manufacturer CAD",
+    "production aperture construction",
+    "manufacturing feasibility",
+    "physical CMF"
+  ]
+}

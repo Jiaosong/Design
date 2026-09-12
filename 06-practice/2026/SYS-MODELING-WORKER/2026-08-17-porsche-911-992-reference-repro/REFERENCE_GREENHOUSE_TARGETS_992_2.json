@@ -1,0 +1,32 @@
+{
+  "schema": "oleander.reference-greenhouse-targets.porsche-911-992-2.v1",
+  "reference_revision": "2025_992.2_CARRERA_BODY_SHELL",
+  "status": "SOURCE_GROUNDED_IMAGE_SEGMENTATION_NOT_MANUFACTURER_CAD",
+  "source": {
+    "image": "SIDE_9922.jpg",
+    "source_description": "same-revision public near-side image persisted by OLEANDER reference-image acquisition",
+    "sha256": "aba21bd1ea5ba3092451c17356a6736e3c2cf8f949f13d5a2480d953a8ed487a"
+  },
+  "calibration": {
+    "x_mapping": "piecewise official hard-point mapping: rear extreme 121px=-2.271m; rear axle 341.4px=-1.195m; front axle 897px=1.255m; front extreme 1114px=2.271m",
+    "z_mapping": "ground_y_px=563.2873169211592; scale=0.004664244186046513 m/px",
+    "segmentation": "largest connected dark greenhouse component inside x=280..820,y=270..430 crop; threshold used only as image-measurement aid"
+  },
+  "side_glass_envelope_m": [
+    [-1.157,0.995,0.962],[-1.069,1.046,0.939],[-0.937,1.093,0.930],[-0.804,1.135,0.920],
+    [-0.672,1.167,0.911],[-0.540,1.195,0.906],[-0.407,1.214,0.902],[-0.275,1.223,0.897],
+    [-0.143,1.223,0.892],[-0.011,1.209,0.892],[0.122,1.167,0.888],[0.254,1.097,0.883],
+    [0.386,1.013,0.832],[0.519,0.916,0.883],[0.563,0.883,0.883]
+  ],
+  "interpretation": {
+    "fields": ["x_m","glass_top_z_m","glass_bottom_z_m"],
+    "allowed_transfer": "SIDE greenhouse top/bottom envelope, A/C pillar longitudinal placement, roof-strip-to-glass relationship",
+    "forbidden_transfer": "manufacturer glass CAD, exact flange width, exact pillar section, sealing construction, Class-A patch layout"
+  },
+  "gates": {
+    "side_greenhouse_top_rmse_m_max": 0.035,
+    "side_greenhouse_bottom_rmse_m_max": 0.040,
+    "visual_review_required": true
+  },
+  "does_not_prove": ["manufacturer CAD","engineering glazing dimensions","Class-A continuity","production aperture construction","commercial IP clearance"]
+}

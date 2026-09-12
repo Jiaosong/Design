@@ -1,0 +1,36 @@
+{
+  "schema":"oleander.reference-landmarks.porsche-911-carrera-992-2.v3",
+  "reference_id":"PORSCHE_911_CARRERA_2025_992_2",
+  "revision":"2025_992.2_CARRERA",
+  "status":"SOURCE_GROUNDED_VISUAL_ESTIMATE_NOT_ENGINEERING_MEASUREMENT",
+  "method":"Official hard points are copied from Porsche technical data. Visual targets are independently estimated from same-revision 992.2 near-side/front/rear imagery and normalized against official length/height/width. A/C pillar x positions were recalibrated on 2026-08-18 from the persisted Parkers 1200x800 side image using the rear-extreme/rear-axle/front-axle/front-extreme piecewise x mapping. They are machine-screening targets, not manufacturer CAD dimensions.",
+  "sources":[
+    "Porsche official 992.2 911 Carrera technical specifications",
+    "Porsche Newsroom 2025 911 Carrera press imagery",
+    "Parkers 2025 Porsche 911 Carrera T 992.2 near-side profile, SHA256 aba21bd1ea5ba3092451c17356a6736e3c2cf8f949f13d5a2480d953a8ed487a",
+    "Elferspot 2025 Porsche 992.2 Carrera front studio image, SHA256 fc3742d21282178e4751c3e0ea0449a843c19fa6751b82687fdfc958480589db",
+    "Eurocar Porsche 911 Carrera 992 II rear studio image, SHA256 af097a1f70c9a5eb9957d98c85416edf9bf031b2c75b6aafbdd60ac9a3eedcff"
+  ],
+  "targets_m":[
+    {"id":"FRONT_AXLE","axis":"x","value":1.255,"authority":"OFFICIAL","normalization":4.542},
+    {"id":"REAR_AXLE","axis":"x","value":-1.195,"authority":"OFFICIAL","normalization":4.542},
+    {"id":"ROOF_APEX","axis":"z","value":1.298,"authority":"OFFICIAL","normalization":1.298},
+    {"id":"A_PILLAR_BASE","axis":"x","value":0.650,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542,"basis":"Parkers 992.2 side image x≈760 px → x≈0.651 m using wheelbase-calibrated piecewise x mapping; rounded to 0.650 m"},
+    {"id":"C_PILLAR_BASE","axis":"x","value":-1.150,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542,"basis":"Parkers 992.2 side image quarter-window/C-pillar lower rear extent x≈352 px → x≈-1.148 m using wheelbase-calibrated piecewise x mapping; rounded to -1.150 m"},
+    {"id":"FRONT_ARCH_APEX","axis":"z","value":0.711,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"REAR_ARCH_APEX","axis":"z","value":0.755,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"FRONT_EXTREME","axis":"x","value":2.271,"authority":"OFFICIAL_DERIVED_FROM_LENGTH","normalization":4.542},
+    {"id":"REAR_EXTREME","axis":"x","value":-2.271,"authority":"OFFICIAL_DERIVED_FROM_LENGTH","normalization":4.542},
+    {"id":"FRONT_LAMP_CENTRE_X","axis":"x","value":1.760,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542},
+    {"id":"FRONT_LAMP_CENTRE_Z","axis":"z","value":0.755,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"ROOF_APEX_X","axis":"x","value":-0.050,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":4.542},
+    {"id":"HOOD_SPINE_FRONT_AXLE_Z","axis":"z","value":0.765,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"HOOD_SPINE_X1_85_Z","axis":"z","value":0.695,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"REAR_DECK_REAR_AXLE_Z","axis":"z","value":0.815,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"REAR_DECK_X_MINUS1_85_Z","axis":"z","value":0.715,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.298},
+    {"id":"CABIN_HALF_WIDTH_ROOF","axis":"y","value":0.540,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.852},
+    {"id":"CABIN_HALF_WIDTH_BELT","axis":"y","value":0.650,"authority":"SOURCE_GROUNDED_VISUAL_ESTIMATE","normalization":1.852},
+    {"id":"REAR_SHOULDER_HALF_WIDTH","axis":"y","value":0.926,"authority":"OFFICIAL_BOUND_PLUS_VISUAL_DISTRIBUTION","normalization":1.852}
+  ],
+  "does_not_prove":["manufacturer CAD","Class-A surface","production panel architecture"]
+}

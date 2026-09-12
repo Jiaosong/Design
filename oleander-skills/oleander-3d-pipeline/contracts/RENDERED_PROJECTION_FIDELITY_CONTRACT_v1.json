@@ -1,0 +1,23 @@
+{
+  "schema": "oleander.skill.3d-pipeline.rendered-projection-fidelity.v1",
+  "version": "2026-08-18-v1",
+  "required_fields": ["reference","candidate_revision","status","metrics","independent_visual_review","reference_fidelity_review","does_not_prove"],
+  "allowed_status": ["PROJECTION_MACHINE_SCREENING_PASS","PROJECTION_MACHINE_SCREENING_FAIL"],
+  "rules": {
+    "reference_target_and_candidate_measurement_provenance_must_differ": true,
+    "metric_error_is_recomputed": true,
+    "candidate_must_measure_final_visible_or_evaluated_geometry": true,
+    "hidden_intermediate_shell_cannot_substitute_for_final_visible_union": true,
+    "per_camera_geometry_override_forbidden": true,
+    "machine_pass_cannot_promote_reference_fidelity": true,
+    "machine_pass_cannot_promote_design_quality": true
+  },
+  "failure_codes": [
+    "FAIL_PROJECTION_RECEIPT_STRUCTURE",
+    "FAIL_PROJECTION_SELF_REFERENCE",
+    "FAIL_PROJECTION_ERROR_MISMATCH",
+    "FAIL_INTERMEDIATE_GEOMETRY_AS_FINAL_CANDIDATE",
+    "FAIL_PROJECTION_METRIC_LIMIT",
+    "FAIL_PROJECTION_SELF_PROMOTION"
+  ]
+}
