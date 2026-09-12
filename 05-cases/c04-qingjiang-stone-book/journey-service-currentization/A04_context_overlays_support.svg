@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f3f0e7}.paper{fill:#fbfaf5;stroke:#c8c9c2;stroke-width:1.1}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.soft{fill:#e8ece8}.dark{fill:#263b35}
+.main{stroke:#17332c;stroke-width:7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.branch{stroke:#548b7e;stroke-width:4.5;fill:none;stroke-linecap:round}
+.ret{stroke:#a54539;stroke-width:4;fill:none;stroke-dasharray:11 8;stroke-linecap:round}
+.thin{stroke:#87928d;stroke-width:1.1;fill:none}.dash{stroke:#87928d;stroke-width:1.2;fill:none;stroke-dasharray:6 6}
+.t1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}
+.t2{font:700 22px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}
+.txt{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}
+.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC',sans-serif;letter-spacing:1.2px}
+</style>
+
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="62" class="xs qing">A04 / CONTEXT OVERLAYS · SAME JOURNEY, DIFFERENT AVAILABLE ACTIONS</text>
+<text x="70" y="116" class="t1 ink">时间、体力、网络、天气、运营状态改变“现在能做什么”，不把人重新分类</text>
+<text x="70" y="154" class="txt muted">同一条旅程保留同一拓扑；Context 只改变可用动作、内容密度、数字介入与 Return 提权。没有伪实时数据，也不制造新的服务事实。</text>
+<text x="70" y="188" class="xs seal">DESIGN PROTOTYPE / ROUTE-03 PRESERVED / NO PSEUDO-LIVE STATUS / UNKNOWN FAIL-CLOSED / R06 FROZEN</text>
+<line x1="70" y1="214" x2="1530" y2="214" class="thin"/>
+
+<text x="70" y="250" class="xs qing">01 / FIXED JOURNEY SPINE — CONTEXT NEVER REWRITES TOPOLOGY</text>
+<g transform="translate(70 274)">
+  <rect width="1460" height="242" rx="18" class="paper"/>
+  <path d="M100 134C260 92 400 106 520 149C648 194 768 181 892 129C1021 75 1148 88 1358 145" class="main"/>
+  <path d="M500 146C476 111 484 82 518 61" class="branch"/>
+  <path d="M886 132C918 99 953 81 993 76" class="branch"/>
+  <path d="M1358 145C1392 188 1382 214 1344 226C1170 267 967 213 804 221C607 231 390 248 220 214C149 200 105 173 100 134" class="ret"/>
+  <circle cx="100" cy="134" r="10" fill="#17332c"/>
+  <circle cx="1358" cy="145" r="10" fill="#a54539"/>
+  <text x="66" y="110" class="xs seal">ARRIVE</text>
+  <text x="1310" y="119" class="xs seal">RETURN</text>
+  <text x="32" y="203" class="sm muted">Context 可以关闭支路、降低内容密度或让数字层退出，但不能凭空改写路线关系；真实开放状态仍需当前官方/现场信息。</text>
+</g>
+
+<text x="70" y="560" class="xs qing">02 / CONTEXT → AVAILABLE ACTION → CONTENT DENSITY → RETURN PRIORITY</text>
+<g transform="translate(70 584)">
+  <rect width="1460" height="300" rx="18" class="paper"/>
+  <text x="26" y="36" class="xs muted">CONTEXT</text>
+  <text x="265" y="36" class="xs muted">AVAILABLE ACTION</text>
+  <text x="655" y="36" class="xs muted">CONTENT / DIGITAL DEPTH</text>
+  <text x="1045" y="36" class="xs muted">RETURN / SERVICE EFFECT</text>
+  <line x1="24" y1="52" x2="1436" y2="52" class="thin"/>
+
+  <text x="26" y="86" class="xs seal">TIME / 时段</text>
+  <text x="265" y="86" class="t3 ink">LOOK / MOVE / RETURN</text>
+  <text x="655" y="86" class="sm muted">夜间候选：减少深读与长停；不新增未经批准的照明/运营承诺。</text>
+  <text x="1045" y="86" class="sm seal">Return 提权，未知时段不自动开放。</text>
+  <line x1="24" y1="108" x2="1436" y2="108" class="thin"/>
+
+  <text x="26" y="142" class="xs seal">FATIGUE / 体力</text>
+  <text x="265" y="142" class="t3 ink">RECOVER / ORIENT / CONTINUE OR RETURN</text>
+  <text x="655" y="142" class="sm muted">内容密度主动下降；Physical support 与方向信息提权。</text>
+  <text x="1045" y="142" class="sm seal">减少决定，不增加新的模式学习负担。</text>
+  <line x1="24" y1="164" x2="1436" y2="164" class="thin"/>
+
+  <text x="26" y="198" class="xs seal">NETWORK / 网络</text>
+  <text x="265" y="198" class="t3 ink">USE CACHED / PAPER / HUMAN SERVICE</text>
+  <text x="655" y="198" class="sm muted">FULL → LIGHT → OFF；核心路线与 Return 不依赖在线连接。</text>
+  <text x="1045" y="198" class="sm seal">断网不是异常故事，而是正常 fallback。</text>
+  <line x1="24" y1="220" x2="1436" y2="220" class="thin"/>
+
+  <text x="26" y="254" class="xs seal">WEATHER / 天气</text>
+  <text x="265" y="254" class="t3 ink">PASS / WAIT / RETURN</text>
+  <text x="655" y="254" class="sm muted">只改变当前可做动作与停留深度；不在设计图里伪造实时天气。</text>
+  <text x="1045" y="254" class="sm seal">不确定或受限 → fail-closed / human service。</text>
+
+  <text x="26" y="288" class="xs seal">OPERATIONS / 运营</text>
+  <text x="265" y="288" class="t3 ink">OPEN / DEGRADED / CLOSED / UNKNOWN</text>
+  <text x="655" y="288" class="sm muted">状态只来自权威输入；UNKNOWN 永不被 UI 推断成 OPEN。</text>
+  <text x="1045" y="288" class="sm seal">CLOSED / UNKNOWN → Return 与人工服务优先。</text>
+</g>
+
+<text x="70" y="925" class="xs qing">03 / SAME-SCENE TEST</text>
+<text x="70" y="952" class="sm muted">同一个节点：时间晚 → 少深读；人累 → 先恢复；断网 → 纸面/人工；天气不确定 → 减少停留；运营 UNKNOWN → 不继续猜。节点还是同一个节点，Route topology 仍是同一套。</text>
+<text x="70" y="978" class="sm seal">ATTACK TEST：若它读成五类 Persona、五套路线、伪实时 Dashboard、自动猜测天气/运营、或把 UNKNOWN 当 OPEN，则 FAIL。Context overlay 只改变行为可用性与信息密度。</text>
+</svg>

@@ -1,0 +1,202 @@
+{
+  "schema": "OLEANDER_GIT_BRANCH_ABSORB_C04_BOUNDED_v1",
+  "repository": "Jiaosong/Design",
+  "absorb_base_main_sha": "4aed5dbc28e8dfcc32868fe6062fc4ebebc5cd68",
+  "policy": {
+    "whole_branch_merge": false,
+    "current_authority_changed": false,
+    "truth_or_promotion_upgrade": false,
+    "source_branch_name_is_authority": false,
+    "field_hold_process_nts_no_promotion_preserved": true
+  },
+  "counts": {
+    "ready_absorb": 9,
+    "hold_review": 9
+  },
+  "ready_absorb": [
+    {
+      "branch": "c04-ch14-p08-presence-v11",
+      "src": "05-cases/c04-qingjiang-stone-book/ch14-brand/p08-v1.1/CH14_P08_BRAND_PRESENCE_SCALE_v1_1.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/ch14-brand/p08-v1.1/CH14_P08_BRAND_PRESENCE_SCALE_v1_1.svg",
+      "role": "SUPPORT",
+      "mode": "EXACT_BLOB",
+      "boundary": "Brand presence only; no route/safety/status/landscape authority.",
+      "source_tip": "268e5faeb511757649c1dd1f026b0602cb15635e",
+      "source_blob": "2811f785532204db1b4a137837d1a6580995e854",
+      "destination_blob": "2811f785532204db1b4a137837d1a6580995e854",
+      "no_promotion": true
+    },
+    {
+      "branch": "c04-m03-soft-hold-native-v13",
+      "src": "05-cases/c04-qingjiang-stone-book/ch15-memory/m03-v1.3/C04_M03_SOFT_HOLD_NEUTRAL_PROTOTYPE_v1_3.scad",
+      "dst": "05-cases/c04-qingjiang-stone-book/ch15-memory/m03-v1.3/C04_M03_SOFT_HOLD_NEUTRAL_PROTOTYPE_v1_3.scad",
+      "role": "SUPPORT_PROTOTYPE",
+      "mode": "EXACT_BLOB",
+      "boundary": "GATE-2 relational mockup only; dimensions are assumptions, not product/material/mechanism authority.",
+      "source_tip": "bbc6c58abb3a4b22daffddeff14f51a59e1e4742",
+      "source_blob": "dd6f800c5fdfae19f79df6df169385a70857832b",
+      "destination_blob": "dd6f800c5fdfae19f79df6df169385a70857832b",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-a01-variable-depth-20260907",
+      "src": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A01_same_journey_variable_depth_current.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A01_same_journey_variable_depth_support.svg",
+      "role": "AUDIENCE_SUPPORT",
+      "mode": "BOUNDARY_LABEL_DEMOTION_ONLY",
+      "boundary": "Design prototype; no new route fact; R06 frozen; Return remains parallel.",
+      "source_tip": "b7f5734d1679a794dc1029af69194e7dbe7d6e05",
+      "source_blob": "501df1a4d072dc0977273f8cbcb196f23b4ecacc",
+      "destination_blob": "9e83d270463f62134a0111dcb70dcfde62d8c2d5",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-a02-family-observation-20260907",
+      "src": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A02_family_shared_observation_current.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A02_family_shared_observation_support.svg",
+      "role": "AUDIENCE_SUPPORT",
+      "mode": "BOUNDARY_LABEL_DEMOTION_ONLY",
+      "boundary": "Design prototype; no child mission chain; R06 frozen; R13 game off; FIELD OPEN.",
+      "source_tip": "faa111bd83f92dd1c20215f58ce367d281ff97b2",
+      "source_blob": "2bae3b2565d5445234e28148cbe2d3f644c4c791",
+      "destination_blob": "7bb3929393f4fd19cfa6bd2985cdad177bc3669f",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-a04-context-overlays-20260907",
+      "src": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A04_context_overlays_current.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/A04_context_overlays_support.svg",
+      "role": "PROCESS_SUPPORT",
+      "mode": "EXACT_BLOB_RENAMED",
+      "boundary": "Design prototype; Route-03 preserved; no pseudo-live status; UNKNOWN fail-closed; R06 frozen.",
+      "source_tip": "6320421e8d97808d2eab65f0b79f333809145708",
+      "source_blob": "078d4de4294e6b0603838fb66aa675cc6a2486d0",
+      "destination_blob": "078d4de4294e6b0603838fb66aa675cc6a2486d0",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-ch04-p06-audience-depth-r11",
+      "src": "05-cases/c04-qingjiang-stone-book/design/audience/CH04_P06_R06_AUDIENCE_DEPTH_v1.html",
+      "dst": "05-cases/c04-qingjiang-stone-book/design/audience/CH04_P06_R06_AUDIENCE_DEPTH_v1.html",
+      "role": "AUDIENCE_SUPPORT",
+      "mode": "EXACT_BLOB",
+      "boundary": "R06 experience frozen; FIELD OBSERVED=0; FIELD MEASURED=0; NO_PROMOTION; NTS scene relation.",
+      "source_tip": "efda1bc0c222e00127ffb9914b7d388cf5eeaecc",
+      "source_blob": "431519a38eccc409d4cb73b853e237d3745f4440",
+      "destination_blob": "431519a38eccc409d4cb73b853e237d3745f4440",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-ch14-p06-world-viewport-v21-r11",
+      "src": "05-cases/c04-qingjiang-stone-book/ch14-brand/p06-v2.1/C04_CH14_P06_WORLD_VIEWPORT_CROP_v2_1.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/ch14-brand/p06-v2.1/C04_CH14_P06_WORLD_VIEWPORT_CROP_v2_1.svg",
+      "role": "BRAND_SUPPORT_CANDIDATE",
+      "mode": "EXACT_BLOB",
+      "boundary": "Route-03 locked; geometry mutation none; crop/styling only; NTS; not GPS; NO_PROMOTION.",
+      "source_tip": "6376eaf62085bb0f6daf5d12f925d2a205ff8e0d",
+      "source_blob": "2abbfb6986bdd7eba3e9e64ee1bbc31ab81c9022",
+      "destination_blob": "2abbfb6986bdd7eba3e9e64ee1bbc31ab81c9022",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-j01-arrival-20260908-r11",
+      "src": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/J01_arrival_service_opening_current.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/J01_arrival_service_opening_candidate.svg",
+      "role": "JOURNEY_CANDIDATE",
+      "mode": "EXACT_BLOB_RENAMED",
+      "boundary": "Design candidate; no pseudo-live data; Return first; FIELD OPEN; NO_PROMOTION.",
+      "source_tip": "c42e63cab1bc81dad28d536944ce091e8a40ffda",
+      "source_blob": "2ed883d9b4826bdb10874a07486da510ad097c68",
+      "destination_blob": "2ed883d9b4826bdb10874a07486da510ad097c68",
+      "no_promotion": true
+    },
+    {
+      "branch": "oleander-design-j03-cable-view-20260908-r11",
+      "src": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/J03_cable_view_relation_v1_0.svg",
+      "dst": "05-cases/c04-qingjiang-stone-book/journey-service-currentization/J03_cable_view_relation_v1_0.svg",
+      "role": "JOURNEY_CANDIDATE",
+      "mode": "EXACT_BLOB",
+      "boundary": "Design candidate; topological relation only; no live operation claim; FIELD OPEN; phone light-off.",
+      "source_tip": "17e91e30fa961c6c95f17ea3316ac5a76a27a314",
+      "source_blob": "271541f53fff38b4c460ef3f0bd018e0b8fdad24",
+      "destination_blob": "271541f53fff38b4c460ef3f0bd018e0b8fdad24",
+      "no_promotion": true
+    }
+  ],
+  "hold_review": [
+    {
+      "branch": "agent/c04-official-media-tech-audit",
+      "reason": "Mixed 10-path stack adds obsolete workflow/project-axis rebaseline and README changes; useful media/tool deltas require separate bounded semantic review.",
+      "source_tip": "052b1e26688001a4aa6a1c157ef76c3b55931693",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "agent/c04-visual-media-acquisition",
+      "reason": "Overlaps media-tech stack and carries obsolete project-axis/README mutations; not safe as a bounded current carrier copy.",
+      "source_tip": "99c5fd78a0213f51a3ccb504d3197179d3349c75",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "c04-m01-journal-editorial-v13",
+      "reason": "Would create parallel physical-memory-currentization-v1.3 while current M01 v1.2 already carries LOOK/journal logic; requires current-carrier semantic reconciliation.",
+      "source_tip": "6ff981ca6e3bd79a8ba705f9438a8d7ee8779dd9",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "c04-p01-v13",
+      "reason": "Would create parallel v1.3 P01 currentization; current P01 v1.2 already carries body/local-edge relation and field-open boundary.",
+      "source_tip": "d628e5431ca9ea3c9a18f31b4e1e614548a6519f",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "c04-p02-cmf-v13",
+      "reason": "Would create parallel v1.3 P02 carrier while current P02 v1.2 is active high-priority support; CMF requires reconciliation into current carrier.",
+      "source_tip": "78c06721e90dc8f6e67fbf4f8877825e26eb54ec",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "c04-p02-joint-legibility-v10",
+      "reason": "Would create parallel v1.3 P02 detail carrier; must reconcile with current P02/CH16 technical lineage before copying.",
+      "source_tip": "4e96d2461ae7596f2baec0be0abde90e7a5316e4",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "oleander-design-ch14-p04-role-context-v11",
+      "reason": "Modifies two existing current CH14 P04 files; direct copy could overwrite later authority and needs semantic diff review.",
+      "source_tip": "fd531db66ce636713ae708929d3b289939a58454",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "oleander-design-p01-local-response-20260908-r11",
+      "reason": "Adds competing P01_step_light_v1_3 beside current v1.2 whose content already covers local-edge response; requires current-carrier merge decision.",
+      "source_tip": "d92ac30a139134a43d3052af23490829781893de",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    },
+    {
+      "branch": "oleander-design-p02-clamp-interface-20260908-1727",
+      "reason": "Modifies current P02_railing_lean_rest_v1_2.svg directly; requires semantic diff against active technical carrier before selective edit.",
+      "source_tip": "66fc2807db705047914f6bcc6fd969c55f2d9024",
+      "previous_state": "ABSORB",
+      "reclassified_state": "REVIEW"
+    }
+  ],
+  "validation_state": "LOCAL_VALIDATION_PASS_PR_AND_MAIN_READBACK_PENDING",
+  "validation": {
+    "svg_xml_parse": "PASS_7",
+    "html_parser": "PASS_1",
+    "scad_structure_and_mockup_boundary": "PASS_1",
+    "authority_label_demotion": "PASS_2_EXACT_SINGLE_REPLACEMENT",
+    "truth_boundary_checks": "PASS",
+    "anti_pollution_static": "PASS",
+    "git_diff_check": "PASS",
+    "main_readback": "PENDING_PR_MERGE"
+  }
+}

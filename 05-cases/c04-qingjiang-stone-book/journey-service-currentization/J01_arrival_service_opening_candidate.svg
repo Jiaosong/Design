@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f2efe7}.paper{fill:#fbfaf5;stroke:#c9c8bf;stroke-width:1.1}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.soft{fill:#e7ebe7}.river{fill:#79a498}
+.main{stroke:#17332c;stroke-width:10;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.return{stroke:#a54539;stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:13 10}
+.thin{stroke:#87928d;stroke-width:1.1;fill:none}.body{stroke:#17332c;stroke-width:2.2;fill:none;stroke-linecap:round}
+.t1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.t2{font:700 22px 'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.txt{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC',sans-serif;letter-spacing:1.1px}
+</style>
+
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="58" class="xs qing">J01 / ARRIVAL · SERVICE BEFORE EXPLORATION / PUBLIC MAIN CANDIDATE</text>
+<text x="70" y="108" class="t1 ink">先知道今天怎么走、怎么回来，再决定要不要探索更多</text>
+<text x="70" y="146" class="txt muted">Arrival 不负责“介绍完整项目”。它只让陌生游客在进入后的第一分钟获得三个确定关系：当前入口、可继续的主关系、始终存在的 Return。</text>
+<text x="70" y="178" class="xs seal">DESIGN CANDIDATE / NO PSEUDO-LIVE DATA / RETURN FIRST / FIELD OPEN / NO_PROMOTION</text>
+<line x1="70" y1="205" x2="1530" y2="205" class="thin"/>
+
+<text x="70" y="244" class="xs qing">01 / FIRST MINUTE — CERTAINTY BEFORE CONTENT</text>
+<g transform="translate(70 268)">
+  <rect width="930" height="430" rx="22" class="paper"/>
+  <rect x="28" y="28" width="874" height="68" rx="14" class="soft"/>
+  <text x="48" y="55" class="xs seal">ARRIVAL DECISION</text>
+  <text x="48" y="81" class="t3 ink">先确认“我在哪 / 往哪继续 / 怎么退回”，十三印和深读都后置。</text>
+
+  <path d="M118 240C238 184 348 189 455 232C568 277 680 268 810 215" class="main"/>
+  <path d="M810 215C862 194 881 170 882 145" class="main"/>
+  <path d="M882 145C898 221 890 287 850 334C785 404 670 405 548 388C414 369 278 378 170 342C128 328 104 281 118 240" class="return"/>
+
+  <circle cx="118" cy="240" r="11" fill="#17332c"/>
+  <circle cx="882" cy="145" r="11" fill="#a54539"/>
+
+  <text x="74" y="220" class="sm muted">YOU ARE HERE</text>
+  <text x="775" y="196" class="sm ink">CONTINUE</text>
+  <text x="802" y="127" class="sm seal">RETURN READY</text>
+
+  <g transform="translate(58 302)">
+    <text class="xs seal">1 / ORIENT</text>
+    <text y="28" class="t3 ink">确认入口与当前主关系</text>
+
+    <text x="280" class="xs seal">2 / CHOOSE</text>
+    <text x="280" y="28" class="t3 ink">继续主关系，或稍后进入探索</text>
+
+    <text x="610" class="xs seal">3 / RETURN</text>
+    <text x="610" y="28" class="t3 ink">任何时候都能知道如何退出</text>
+  </g>
+
+  <text x="58" y="405" class="sm seal">不显示“13 个还剩几个”、不要求扫码、不让深读阻塞入口。</text>
+</g>
+
+<text x="1040" y="244" class="xs qing">02 / WHAT ARRIVAL MAY / MAY NOT OWN</text>
+<g transform="translate(1040 268)">
+  <rect width="490" height="430" rx="22" class="paper"/>
+
+  <text x="24" y="42" class="t2 ink">Arrival 只拥有必要的第一决策</text>
+
+  <text x="24" y="92" class="xs seal">MAY OWN</text>
+  <text x="24" y="120" class="t3 ink">入口关系</text>
+  <text x="24" y="146" class="sm muted">“我从哪里进入”</text>
+
+  <text x="24" y="184" class="t3 ink">继续关系</text>
+  <text x="24" y="210" class="sm muted">“当前主关系往哪里”</text>
+
+  <text x="24" y="248" class="t3 ink">Return / 人工服务入口</text>
+  <text x="24" y="274" class="sm muted">疲劳、未知、关闭、无手机时仍成立</text>
+
+  <line x1="24" y1="304" x2="466" y2="304" class="thin"/>
+
+  <text x="24" y="338" class="xs seal">MUST NOT OWN</text>
+  <text x="24" y="366" class="sm muted">完整十三印解释 / 景点列表 / 任务进度 / 假天气 / 假开放状态</text>
+  <text x="24" y="395" class="sm muted">长篇品牌故事 / 后台 Dashboard / 需要持续看屏幕的操作</text>
+</g>
+
+<text x="70" y="750" class="xs qing">03 / FAILURE MODES — STRANGER TEST</text>
+<g transform="translate(70 774)">
+  <rect width="455" height="146" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">MISREAD</text>
+  <text x="22" y="62" class="t3 ink">像“景区介绍首页”</text>
+  <text x="22" y="92" class="sm muted">如果第一分钟要读很多项目说明，Arrival 就失败。</text>
+  <text x="22" y="119" class="sm seal">先服务，后解释。</text>
+</g>
+<g transform="translate(555 774)">
+  <rect width="455" height="146" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">REMOVE TEST</text>
+  <text x="22" y="62" class="t3 ink">去掉屏幕仍应能开始游程</text>
+  <text x="22" y="92" class="sm muted">纸面 / 标识 / 人工必须承担同一底层关系。</text>
+  <text x="22" y="119" class="sm seal">Phone optional.</text>
+</g>
+<g transform="translate(1040 774)">
+  <rect width="490" height="146" rx="16" class="paper"/>
+  <text x="22" y="32" class="xs seal">COUNTEREXAMPLE</text>
+  <text x="22" y="62" class="t3 ink">“先选十三印，再显示路线”</text>
+  <text x="22" y="92" class="sm muted">内容反客为主，会把可选阅读变成任务路线。</text>
+  <text x="22" y="119" class="sm seal">REJECT.</text>
+</g>
+
+<text x="70" y="963" class="sm muted">Reality boundary：本图不声明实时天气、运营开放、班次、距离、时长、容量、无障碍连续性或安全批准；真实信息只能来自当前官方/现场 authority。</text>
+<text x="70" y="987" class="sm seal">ATTACK TEST：若陌生游客不读说明就不能看出“入口 / 继续 / Return”，或品牌/内容比服务关系更先读，则本轮 FAIL。</text>
+</svg>

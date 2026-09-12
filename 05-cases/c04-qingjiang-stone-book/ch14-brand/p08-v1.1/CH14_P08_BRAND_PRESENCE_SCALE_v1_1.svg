@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<style>
+.bg{fill:#F1EDE4}.paper{fill:#fbfaf5;stroke:#c7c5bc;stroke-width:1.1}
+.ink{fill:#111918}.deep{fill:#133B3C}.jade{fill:#2E7571}.wet{fill:#65706A}.sand{fill:#D8C9B1}.cinn{fill:#B8543E}.muted{fill:#69736e}
+.rule{stroke:#aeb4ae;stroke-width:1}.route{fill:none;stroke:#2E7571;stroke-width:6;stroke-linecap:round}.trace{fill:none;stroke:#2E7571;stroke-width:2;stroke-linecap:round;opacity:.52}
+.h1{font:700 44px "Noto Serif CJK SC","Noto Serif SC","Songti SC",serif}
+.h2{font:700 24px "Noto Serif CJK SC","Noto Serif SC","Songti SC",serif}
+.h3{font:700 16px "Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+.body{font:400 14px "Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+.sm{font:400 12px "Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+.xs{font:700 10px "Noto Sans CJK SC","Noto Sans SC",sans-serif;letter-spacing:1.15px}
+</style>
+<rect width="1600" height="1080" class="bg"/>
+<text x="64" y="58" class="xs jade">CH14-P08 / BRAND PRESENCE SCALE v1.1</text>
+<text x="64" y="112" class="h1 ink">品牌不是平均铺满所有媒介；它必须根据人的当前任务学会出现，也学会退场</text>
+<text x="64" y="150" class="body muted">P03 identity / P04 color roles / P05 typography / P06 route-derived grammar / P07 information hierarchy remain authoritative. P08 only defines how strongly those assets may appear; it never redraws their source geometry.</text>
+<text x="64" y="184" class="xs cinn">FULL → LIGHT → TRACE → OFF · BRAND COLOR ≠ OPERATIONAL STATUS COLOR · ROUTE-03 GEOMETRY NOT REDRAWN</text>
+<line x1="64" y1="208" x2="1536" y2="208" class="rule"/>
+<text x="64" y="244" class="xs jade">01 / SAME IDENTITY SYSTEM · FOUR ATTENTION LEVELS</text>
+<g transform="translate(64 272)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="22" y="34" class="xs cinn">FULL</text>
+  <text x="22" y="66" class="h2 ink">身份是当前内容的一部分</text>
+  <rect x="22" y="92" width="306" height="128" rx="12" class="deep"/>
+  <rect x="42" y="112" width="92" height="92" rx="12" fill="none" stroke="#F1EDE4" stroke-width="2"/>
+  <text x="55" y="150" class="xs" fill="#F1EDE4">P03 MASTER</text>
+  <text x="55" y="170" class="xs" fill="#F1EDE4">IDENTITY SLOT</text>
+  <text x="156" y="142" class="h3" fill="#F1EDE4">清江石书</text>
+  <text x="156" y="168" class="sm" fill="#F1EDE4">Qingjiang Stone Book</text>
+  <rect x="42" y="238" width="270" height="26" rx="8" fill="none" stroke="#2E7571" stroke-width="1.4"/>
+  <text x="55" y="255" class="xs jade">P06 SOURCE-BOUND ROUTE CROP SLOT</text>
+  <text x="22" y="294" class="sm ink">允许：项目开场 / Brand chapter / 记忆封面 / 结尾身份确认</text>
+  <text x="22" y="316" class="sm muted">不允许：实时路线决定 / 安全提示 / 身体高注意力场景</text>
+</g>
+<g transform="translate(438 272)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="22" y="34" class="xs cinn">LIGHT</text>
+  <text x="22" y="66" class="h2 ink">身份可见，但不承担第一读</text>
+  <rect x="22" y="92" width="306" height="128" rx="12" fill="#F1EDE4" stroke="#d1cec4"/>
+  <text x="42" y="125" class="xs jade">QINGJIANG STONE BOOK</text>
+  <text x="42" y="157" class="h3 ink">路线 / 场景 / 阅读仍先于品牌</text>
+  <rect x="42" y="184" width="266" height="18" rx="6" fill="none" stroke="#2E7571" stroke-width="1" opacity=".55"/>
+  <text x="54" y="197" class="xs jade" opacity=".68">P06 ROUTE CROP / LIGHT</text>
+  <text x="22" y="252" class="xs jade">USE</text>
+  <text x="22" y="278" class="sm ink">普通 Web 内页 / App 非关键状态 / 纸本页眉 / 说明页</text>
+  <text x="22" y="304" class="sm muted">身份保持一致，但综合色、字标与 LINE 不同时抢占注意力。</text>
+</g>
+<g transform="translate(812 272)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="22" y="34" class="xs cinn">TRACE</text>
+  <text x="22" y="66" class="h2 ink">只留下可识别的轻痕迹</text>
+  <rect x="22" y="92" width="306" height="128" rx="12" fill="#fbfaf5" stroke="#d1cec4"/>
+  <line x1="38" y1="158" x2="308" y2="158" stroke="#2E7571" stroke-width="1.2" opacity=".4"/>
+  <text x="38" y="148" class="xs jade" opacity=".58">P06 SOURCE-BOUND TRACE SLOT</text>
+  <text x="38" y="200" class="xs wet">SOURCE-BOUND LINE / PAGE TRACE</text>
+  <text x="22" y="252" class="xs jade">USE</text>
+  <text x="22" y="278" class="sm ink">景观阅读 / 身体恢复 / 感官提示 / 高内容密度说明</text>
+  <text x="22" y="304" class="sm muted">品牌仅作为连续性提示；真实景观、身体和信息任务必须更强。</text>
+</g>
+<g transform="translate(1186 272)">
+  <rect width="350" height="330" rx="18" class="paper"/>
+  <text x="22" y="34" class="xs cinn">OFF</text>
+  <text x="22" y="66" class="h2 ink">品牌完全退出当前决定</text>
+  <rect x="22" y="92" width="306" height="128" rx="12" fill="#e7e8e2"/>
+  <text x="42" y="132" class="xs wet">CURRENT TASK ONLY</text>
+  <text x="42" y="164" class="h3 ink">RETURN / SERVICE / CLOSED / UNKNOWN</text>
+  <text x="42" y="194" class="sm muted">or unmediated landscape/body attention</text>
+  <text x="22" y="252" class="xs jade">USE</text>
+  <text x="22" y="278" class="sm ink">安全 / 服务决策 / Return 中断 / 无手机基础体验 / 某些自然场景</text>
+  <text x="22" y="304" class="sm muted">OFF 不是“没设计”；它是品牌主动让出认知带宽。</text>
+</g>
+<text x="64" y="654" class="xs jade">02 / MEDIUM × ATTENTION CONTRACT</text>
+<g transform="translate(64 680)">
+  <rect width="1472" height="286" rx="18" class="paper"/>
+  <text x="24" y="34" class="xs wet">MEDIUM / CONTEXT</text>
+  <text x="360" y="34" class="xs cinn">DEFAULT</text>
+  <text x="540" y="34" class="xs jade">MAY ESCALATE</text>
+  <text x="840" y="34" class="xs jade">MUST WITHDRAW WHEN</text>
+  <text x="1225" y="34" class="xs wet">PRIMARY READ</text>
+  <line x1="24" y1="52" x2="1448" y2="52" class="rule"/>
+  <text x="24" y="82" class="h3 ink">Web / Editorial</text>
+  <text x="360" y="82" class="body ink">LIGHT</text>
+  <text x="540" y="82" class="sm ink">FULL at identity moments</text>
+  <text x="840" y="82" class="sm ink">dense analysis / critical decision</text>
+  <text x="1225" y="82" class="sm ink">content / argument</text>
+  <text x="24" y="126" class="h3 ink">App / Map / Signage</text>
+  <text x="360" y="126" class="body ink">LIGHT → TRACE</text>
+  <text x="540" y="126" class="sm ink">FULL only at identity entry</text>
+  <text x="840" y="126" class="sm ink">RETURN / SERVICE / CLOSED / UNKNOWN</text>
+  <text x="1225" y="126" class="sm ink">movement decision</text>
+  <text x="24" y="170" class="h3 ink">Paper Journal / Memory</text>
+  <text x="360" y="170" class="body ink">LIGHT</text>
+  <text x="540" y="170" class="sm ink">FULL on cover / opening / closure</text>
+  <text x="840" y="170" class="sm ink">writable field needs silence</text>
+  <text x="1225" y="170" class="sm ink">personal trace</text>
+  <text x="24" y="214" class="h3 ink">Physical / Body / Sensory</text>
+  <text x="360" y="214" class="body ink">TRACE → OFF</text>
+  <text x="540" y="214" class="sm ink">only when identity is necessary</text>
+  <text x="840" y="214" class="sm ink">view / recovery / safety / sensory attention</text>
+  <text x="1225" y="214" class="sm ink">landscape / body</text>
+  <line x1="24" y1="238" x2="1448" y2="238" class="rule"/>
+  <text x="24" y="266" class="sm cinn">HARD RULE：Brand never gains route, safety, status or landscape authority. Presence level changes hierarchy, not source truth.</text>
+</g>
+<text x="64" y="1015" class="sm muted">Transfer from Earned Attention: TASK CONTENT > CURRENT DECISION / RETURN > SUPPORTING CONTENT > BRAND CHROME. P08 rewrites this as a cross-media presence scale rather than a UI-only contrast trick.</text>
+<text x="64" y="1042" class="xs cinn">ATTACK TEST：如果隐藏 FULL/LIGHT/TRACE/OFF 标签后，四级强度仍看起来一样，或 OFF 仍残留装饰性品牌元素，则 FAIL。</text>
+</svg>

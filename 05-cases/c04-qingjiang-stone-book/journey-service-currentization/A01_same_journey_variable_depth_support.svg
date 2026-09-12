@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.bg{fill:#f2efe7}.paper{fill:#fbfaf5;stroke:#c8cbc4;stroke-width:1.1}
+.ink{fill:#17332c}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}
+.soft{fill:#e6ece7}.dark{fill:#213a33}.light{fill:#eef1ed}
+.base{stroke:#17332c;stroke-width:5;fill:none;stroke-linecap:round}
+.depth{stroke:#548b7e;stroke-width:5;fill:none;stroke-linecap:round}
+.return{stroke:#a54539;stroke-width:4;fill:none;stroke-dasharray:11 8;stroke-linecap:round}
+.thin{stroke:#87928d;stroke-width:1.1;fill:none}.dash{stroke:#87928d;stroke-width:1.1;fill:none;stroke-dasharray:6 6}
+.t1{font:700 42px 'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.t2{font:700 22px 'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.t3{font:700 16px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.txt{font:400 14px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+.xs{font:700 10.5px 'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC',sans-serif;letter-spacing:1.2px}
+</style>
+<rect class="bg" width="1600" height="1000"/>
+<text x="70" y="60" class="xs qing">A01 / SAME JOURNEY · VARIABLE DEPTH + SUPPORT / SUPPORT NATIVE CARRIER</text>
+<text x="70" y="112" class="t1 ink">不是给不同人四套清江，而是让同一条旅程在不同状态下变深、变轻或直接退出</text>
+<text x="70" y="150" class="txt muted">年龄不是开关。真正改变体验的是体力、注意力、阅读意愿、数字熟悉度、同行关系与回程压力。</text>
+<text x="70" y="184" class="xs seal">DESIGN PROTOTYPE / NO PERSONA CARDS / NO NEW ROUTE FACT / R06 FROZEN / RETURN ALWAYS PARALLEL</text>
+<line x1="70" y1="210" x2="1530" y2="210" class="thin"/>
+<text x="70" y="248" class="xs qing">01 / SHARED JOURNEY — ONE SPINE FOR EVERYONE</text>
+<g transform="translate(70 270)">
+  <rect width="1460" height="250" rx="18" class="paper"/>
+  <path d="M90 142H1370" class="base"/>
+  <path d="M90 185H1370" class="return"/>
+  <circle cx="110" cy="142" r="11" fill="#17332c"/>
+  <circle cx="430" cy="142" r="11" fill="#17332c"/>
+  <circle cx="750" cy="142" r="11" fill="#17332c"/>
+  <circle cx="1070" cy="142" r="11" fill="#17332c"/>
+  <circle cx="1370" cy="142" r="11" fill="#a54539"/>
+  <text x="72" y="94" class="xs seal">ARRIVE</text><text x="72" y="116" class="sm muted">定向 / 服务</text>
+  <text x="390" y="94" class="xs seal">MOVE</text><text x="390" y="116" class="sm muted">游船 / 索道</text>
+  <text x="706" y="94" class="xs seal">EXPLORE</text><text x="706" y="116" class="sm muted">步行 / 发现</text>
+  <text x="1017" y="94" class="xs seal">STOP / PASS</text><text x="1017" y="116" class="sm muted">观察 / 通过</text>
+  <text x="1328" y="94" class="xs seal">RETURN</text><text x="1328" y="116" class="sm muted">离场 / 记忆</text>
+  <text x="72" y="218" class="sm seal">RETURN 并不是最后才出现：从 ARRIVE 开始就和整条旅程平行。</text>
+</g>
+<text x="70" y="566" class="xs qing">02 / ONE SYSTEM — STATE CHANGES DEPTH, SUPPORT AND DIGITAL INTENSITY</text>
+<g transform="translate(70 590)">
+  <rect width="1460" height="286" rx="18" class="paper"/>
+  <text x="28" y="34" class="xs muted">JOURNEY STAGE</text>
+  <text x="240" y="34" class="xs muted">ARRIVE</text>
+  <text x="500" y="34" class="xs muted">MOVE</text>
+  <text x="760" y="34" class="xs muted">EXPLORE</text>
+  <text x="1020" y="34" class="xs muted">STOP / PASS</text>
+  <text x="1280" y="34" class="xs muted">RETURN</text>
+  <line x1="210" y1="52" x2="1390" y2="52" class="thin"/>
+  <text x="28" y="88" class="xs seal">ACTIVE + CURIOUS</text>
+  <text x="210" y="88" class="t3 ink">ORIENT</text>
+  <path d="M278 84H465" class="depth"/>
+  <text x="490" y="88" class="t3 ink">LOOK</text>
+  <path d="M540 84H710" class="depth"/>
+  <text x="735" y="88" class="t3 ink">COMPARE / TRACE</text>
+  <path d="M865 84H1000" class="depth"/>
+  <text x="1025" y="88" class="t3 ink">DEEP READ</text>
+  <path d="M1115 84H1270" class="depth"/>
+  <text x="1294" y="88" class="t3 ink">REMEMBER</text>
+  <text x="28" y="108" class="sm muted">FULL 可用；自主进入更多分支与解释，但不显示“还有几个任务”。</text>
+  <line x1="28" y1="126" x2="1432" y2="126" class="thin"/>
+  <text x="28" y="158" class="xs seal">SHARED ATTENTION</text>
+  <text x="210" y="158" class="t3 ink">ORIENT</text>
+  <path d="M278 154H465" class="depth"/>
+  <text x="490" y="158" class="t3 ink">LOOK</text>
+  <path d="M540 154H710" class="depth"/>
+  <text x="735" y="158" class="t3 ink">COMPARE / POINT</text>
+  <path d="M860 154H1000" class="depth"/>
+  <text x="1025" y="158" class="t3 ink">SHORT READ</text>
+  <path d="M1125 154H1200" class="depth"/>
+  <path d="M1200 154H1270" class="dash"/>
+  <text x="1294" y="158" class="t3 ink">REMEMBER</text>
+  <text x="28" y="178" class="sm muted">LIGHT；同行交流占用注意力，动作更短、更共同；不建立儿童独立任务链。</text>
+  <line x1="28" y1="196" x2="1432" y2="196" class="thin"/>
+  <text x="28" y="228" class="xs seal">PRESSURE ↑</text>
+  <text x="210" y="228" class="t3 ink">ORIENT</text>
+  <path d="M278 224H465" class="depth"/>
+  <text x="490" y="228" class="t3 ink">MOVE</text>
+  <path d="M540 224H660" class="depth"/>
+  <path d="M660 224H710" class="dash"/>
+  <text x="735" y="228" class="t3 ink">RECOVER</text>
+  <path d="M815 224H930" class="depth"/>
+  <path d="M930 224H1000" class="dash"/>
+  <text x="1025" y="228" class="t3 ink">CONTINUE / RETURN</text>
+  <path d="M1170 224H1270" class="return"/>
+  <text x="1294" y="228" class="t3 ink">RETURN</text>
+  <text x="28" y="250" class="sm muted">疲劳 / 无手机 / 回程压力上升：LIGHT → OFF；Physical / 纸图 / 标识 / 人工服务提权。减少决定，不减少尊严。</text>
+  <text x="28" y="276" class="sm seal">同一条 journey spine 没有改变；改变的是可读深度、身体支持和数字介入强度。</text>
+</g>
+<text x="70" y="925" class="xs qing">03 / ATTACK TEST</text>
+<text x="70" y="952" class="sm muted">FAIL：画成四张 Persona 卡；按年龄复制四套路线；疲劳时仍要求复杂地图/长内容；儿童层变成任务链；无手机时路线或 Return 失效；任何状态改变 R06 frozen 的空间事实。</text>
+<text x="70" y="978" class="sm seal">TRANSFER BOUNDARY：适用于同一系统的“深度 / 支持 / 数字介入”动态调整；不代表所有用户差异都应被统一，也不替代真实无障碍与现场测试。</text>
+</svg>
