@@ -35,16 +35,67 @@ A bounded METHOD candidate was created only after owner comparison showed that D
 
 Earned Attention and Breakpoint Role Redistribution call it through dedicated METHOD relations. Their L7 `M6 PRACTICED` state is not inherited upward.
 
-### Structural hierarchy guard
+## Canonical hierarchy relation forensic
 
-A live Notion write to `Canonical Parent` produced reciprocal same-field mutation: the L4 Visual Communication Framework received the new L5 METHOD as its own Parent. This violates the Current Architecture Binding's one-way structural meaning and would contaminate Reader/runtime hierarchy readback.
+The architecture contract defines `Canonical Parent / Canonical Children` as the sole structural hierarchy, with a child normally carrying `0–1 Parent` and a parent carrying `0–N Children`. METHOD invocation remains separate.
 
-The erroneous relation was rolled back. Current state:
+A live Notion write to `Canonical Parent` first exposed reciprocal same-field mutation: the L4 Visual Communication Framework received the new L5 Adaptive Composition METHOD as its own Parent. Controlled live probes later proved that both legacy structural fields are physically configured as separate symmetric self-relations:
 
-- METHOD invocation relations: retained.
-- Bogus Canonical Parent relations: removed.
-- `KN-METHOD-ADAPTIVE-COMPOSITION-001`: `STRUCTURAL_PARENT_BINDING=HOLD`.
-- No routing inference from title, Knowledge Path, or Related relation.
+- writing `A.Parent = B` also writes `B.Parent = A`;
+- writing `A.Children = B` also writes `B.Children = A`.
+
+They are therefore not a direction-safe Parent↔Children pair.
+
+### Pre-cleanup graph readback
+
+Before the query-data-source gate became unavailable, a full Notes SQL audit returned:
+
+- Parent edges: `417`;
+- Children edges: `135`;
+- Parent edges missing reverse Children: `282`;
+- Children edges missing reverse Parent: `0`;
+- nodes with multiple Parent: `1`.
+
+The sole multiple-Parent object was `MTH-DESIGN-MATERIAL-DRIVEN-DESIGN-001`; one Parent was the legitimate Research Toolbox parent and the other was its own L7 Culture Material Practice, proving an actual symmetric relation corruption rather than a semantic multi-parent exception.
+
+### Migration experiments and rejected paths
+
+- A live `ALTER ... SET RELATION(one-way)` completed without visible value loss, but a post-ALTER live probe still produced same-field reciprocal mutation. It did **not** detach the legacy synced relation identity and is not accepted as a fix.
+- An isolated temporary Notion schema lab confirmed that one correctly defined DUAL relation automatically creates the reciprocal field, while defining both sides separately creates duplicate relation pairs.
+- The same lab showed that rebinding an existing populated relation to a new DUAL counterpart can replace the property identity and drop existing relation values. That lossy route was rejected and was never applied to the live Notes registry.
+
+### Known cycle cleanup
+
+Ten proven owner↔Practice/Evidence Parent cycles were cleared fail-closed from the Practice/Evidence side:
+
+1. Cognitive Load ↔ `PRAC-COG-LOAD-001`;
+2. Motion Design ↔ `PRAC-IP-MOTION-20260811-01`;
+3. Migration ↔ `PRAC-KG-ASSIM-20260807-02`;
+4. State Exhibition ↔ `PRAC-KG-ASSIM-20260807-04`;
+5. Arts & Crafts ↔ `PRAC-KG-ASSIM-20260807-07`;
+6. Production Network ↔ `PRAC-KG-ASSIM-20260807-08`;
+7. Mies ↔ `PRAC-KG-ASSIM-20260807-10`;
+8. Handscroll ↔ `PRAC-KG-ASSIM-20260807-11`;
+9. Suzhou Garden ↔ `PRAC-KG-ASSIM-20260807-13`;
+10. Material Driven Design ↔ `PRAC-CULTURE-MAT-20260812-01`.
+
+For those ten Practice/Evidence pages, `Canonical Parent` is temporarily empty and `关系状态=REVIEW`. A page-level structural HOLD note preserves the intended owner and explains why the edge is suppressed. Trust, Evidence and Maturity were not changed.
+
+All ten owner pages were read back after cleanup. Nine no longer expose the Practice/Evidence object as their own Parent; `MTH-DESIGN-MATERIAL-DRIVEN-DESIGN-001` retains only its legitimate `MTH-RESEARCH-TOOLBOX-001` Parent. The known cycle corruption set is therefore closed.
+
+`KN-METHOD-ADAPTIVE-COMPOSITION-001` remains `STRUCTURAL_PARENT_BINDING=HOLD`; no structural Parent was reintroduced. Dedicated METHOD invocation relations remain intact.
+
+### Safe full-migration boundary
+
+The complete direction-safe migration is not yet claimed. Safe completion requires:
+
+1. preserve the legacy relation graph as migration source;
+2. create a fresh direction-safe structural pair under migration-only names;
+3. copy and validate the complete intended hierarchy without promoting the migration fields to authority;
+4. switch runtime/name binding only after full graph readback;
+5. archive the legacy symmetric fields only after parity and cardinality checks pass.
+
+No V2 hierarchy or alternate owner resolver is authoritative before that closure.
 
 ## Current CMF thin-owner closure
 
@@ -117,8 +168,8 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 
 - D02 canonical Notion content was previously observed by Cloudflare/D1 at the 2026-09-13 repaired revision with active chunks and no markdown truncation.
 - The repaired CMF owners and new Sources were each read back from canonical Notion after the writes.
-- **All-library L5 aggregate is now closed.** A fresh Notes SQL readback on 2026-09-13 returned zero rows for `CURRENT + DEFAULT + L5` objects with Evidence `NULL/E0/E1` or Maturity `NULL/M0/M1/M2`. This is a real zero-gap result for that exact predicate; it is not a claim that every Current object is VERIFIED or reality-tested.
-- A fresh derivative check for the newest CMF writes was attempted through two independent protected paths: Worker `/v1/reader-page/:page_id` and remote D1 `wrangler d1 execute --remote`.
+- **All-library L5 aggregate is closed.** A fresh Notes SQL readback returned zero rows for `CURRENT + DEFAULT + L5` objects with Evidence `NULL/E0/E1` or Maturity `NULL/M0/M1/M2`. This is a zero-gap result for that exact predicate; it is not a claim that every Current object is VERIFIED or reality-tested.
+- A fresh derivative check for the newest CMF writes was attempted through two protected paths: Worker `/v1/reader-page/:page_id` and remote D1 `wrangler d1 execute --remote`.
 - The local execution environment cannot resolve the Worker hostname. GitHub Actions was then used only as a credential-isolated readback runner. Both `OLEANDER_API_TOKEN` and Cloudflare API/account credentials are currently absent from Actions, so no protected request or D1 query was issued.
 - Therefore newest-CMF derivative state remains **`DERIVATIVE READBACK AUTH CHANNEL BLOCKED`**, not `D1 STALE` and not falsely `D1 SYNCED`.
 - No D1 row was directly mutated, no reconcile/drain was triggered, and no secret was exposed or synthesized.
@@ -127,18 +178,18 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 
 - Branch: `agent/knowledge-weakness-closure-20260913`.
 - Draft PR: `#569`, targeting `main`.
-- Final tree contains this governance receipt only; the temporary readback workflow used to test credential availability was deleted after diagnosis.
-- The temporary readback failure proves only missing Actions credentials; it does not prove a Worker/D1 data failure.
-- K06 provenance log was updated with the aggregate PASS and derivative-auth-channel blocker.
-- Normal repository governance checks must pass on this final receipt-only head before merge readiness is claimed.
+- Final tree is intended to contain this governance receipt only; temporary credential-diagnostic workflows were deleted after diagnosis.
+- K06 provenance log records the aggregate PASS, derivative-auth blocker, hierarchy relation forensic and known-cycle cleanup.
+- Normal repository governance checks must pass on the latest receipt-only head before merge readiness is claimed.
 
 ## Remaining non-content debt
 
-1. `KN-METHOD-ADAPTIVE-COMPOSITION-001` structural Parent binding remains HOLD until Notion relation direction can be expressed/read back safely without reciprocal same-field mutation. This is intentionally fail-closed and is accepted as an open architecture blocker rather than patched by hierarchy inference.
-2. Newest-CMF Cloudflare/D1 derivative readback remains blocked only by the absence of an authorized readback credential channel in the current environments. Closing it requires an existing authorized Worker bearer or Cloudflare D1 credential; credentials must not be copied into knowledge content, logs, or Git.
-3. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
-4. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
+1. Full direction-safe `Canonical Parent / Canonical Children` migration remains OPEN. Known symmetric cycles are cleaned, but the complete legacy graph has not yet been migrated and parity-validated against a fresh direction-safe pair.
+2. `KN-METHOD-ADAPTIVE-COMPOSITION-001` structural Parent binding remains HOLD until that migration closes; no hierarchy inference substitutes for the missing structural edge.
+3. Newest-CMF Cloudflare/D1 derivative readback remains blocked only by the absence of an authorized readback credential channel in the current environments. Closing it requires an existing authorized Worker bearer or Cloudflare D1 credential; credentials must not be copied into knowledge content, logs, or Git.
+4. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
+5. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
 
 ## Final status
 
-`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / STRUCTURAL-PARENT HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED`
+`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / KNOWN SYMMETRIC-PARENT CYCLES CLOSED / LEGACY PHYSICAL RELATION BUG PROVEN / FULL DIRECTION-SAFE HIERARCHY MIGRATION OPEN / ADAPTIVE-COMPOSITION STRUCTURAL HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED`
