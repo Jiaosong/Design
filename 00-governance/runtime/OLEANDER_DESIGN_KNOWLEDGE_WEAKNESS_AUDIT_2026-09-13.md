@@ -190,6 +190,31 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 4. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
 5. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
 
+## Structured output reconciliation｜KN-THEORY-CMF-PVD-001
+
+This section is a structured control/provenance receipt for the existing PVD output. It does not alter the PVD knowledge body, create a second knowledge owner, or claim validation closure.
+
+- `object_id`: `KN-THEORY-CMF-PVD-001`
+- `output_kind`: `KNOWLEDGE_CANONICAL_DELTA`
+- `canonical_output_target`: `https://app.notion.com/p/3cbb86be5c47819c90cdc6494f85ea30`
+- `canonical_owner`: `PVD镀膜｜物理气相沉积`
+- `canonical_revision_readback`: `Notion page_last_edited_at=2026-09-13T14:21:57.257Z`
+- `content_state`: `CURRENT / DEFAULT / ACTIVE / REVIEW / UNVERIFIED / E2 / M3 SYNTHESIZED`
+- `source_set`: `SRC-ISO-PVD-SC9-001 + SRC-OERLIKON-PVD-PROCESS-001`
+- `source_relation_readback`: `PASS` — both Source pages return `引用该来源的文档 → KN-THEORY-CMF-PVD-001`, and the PVD owner returns both under `来源文档`.
+- `body_readback`: `PASS` — current owner contains process-family boundary, mechanism/causal chain, conditions, competing alternatives, evidence, failure/root-cause/repair, decision consequence, verification, transfer boundary and maturity/provenance.
+- `material_delta`: `true` for the 2026-09-13 knowledge-depth repair; no additional PVD body mutation was made during this reconciliation.
+- `work_id`: `UNKNOWN` — the legacy batch receipt did not persist a recoverable single-object stable work ID in GitHub/Notion readback available to this reconciliation.
+- `submitted_revision`: `2026-09-13T14:21:57.257Z` as the exact canonical Notion readback boundary currently available; no stronger immutable Notion revision identifier is exposed here.
+- `artifact_digest`: `N/A` for canonical Notion knowledge body; do not synthesize a hash.
+- `derivative_readback`: `HOLD / AUTH CHANNEL BLOCKED` — newest-CMF protected Worker/D1 verification was not executed because an authorized readback credential channel was unavailable.
+- `independent_validation`: `NOT CLOSED` — no independent exact-revision Knowledge verdict is recoverable from the current receipt chain.
+- `validation_verdict`: `HOLD`
+- `workflow_state`: `OUTPUT_RECONCILIATION_HOLD`
+- `hold_reason`: `MISSING_RECOVERABLE_STABLE_WORK_ID + DERIVATIVE_READBACK_AUTH_CHANNEL_BLOCKED + INDEPENDENT_VALIDATION_NOT_CLOSED`
+- `next_gate`: Router must bind/recover a stable `work_id` in the existing D1/pending_work/execution-receipt layer, then Validation may consume this same exact canonical revision if the requested gate requires independent validation.
+- `non_claim`: this HOLD does not roll back PVD's canonical `E2 / M3` knowledge synthesis and does not imply that the PVD body or Source relations are defective.
+
 ## Final status
 
-`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / KNOWN SYMMETRIC-PARENT CYCLES CLOSED / LEGACY PHYSICAL RELATION BUG PROVEN / FULL DIRECTION-SAFE HIERARCHY MIGRATION OPEN / ADAPTIVE-COMPOSITION STRUCTURAL HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED`
+`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / KNOWN SYMMETRIC-PARENT CYCLES CLOSED / LEGACY PHYSICAL RELATION BUG PROVEN / FULL DIRECTION-SAFE HIERARCHY MIGRATION OPEN / ADAPTIVE-COMPOSITION STRUCTURAL HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED / PVD OUTPUT RECONCILIATION HOLD`
