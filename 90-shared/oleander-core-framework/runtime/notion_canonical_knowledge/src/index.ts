@@ -69,6 +69,7 @@ import {
   FRAMEWORK_READBACK_BUDGET_MS,
   hydrateKnowledgeReaderFramework,
 } from "./reader";
+import { validateReaderContentPatchInput } from "./reader-edit";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -144,6 +145,76 @@ async function buildReaderDetailResult(
   }
 }
 
+async function patchReaderAcademicContent(
+  env: Env,
+  pageIdInput: string,
+  oldStrInput: string,
+  newStrInput: string,
+): Promise<ReaderRpcResult> {
+  const validated = validateReaderContentPatchInput(pageIdInput, oldStrInput, newStrInput);
+  if (!validated.ok) return { status: validated.status, body: { ok: false, error: validated.error } };
+  const { pageId, oldStr, newStr } = validated.input;
+
+  const beforePage = normalizePage(await fetchPage(env, pageId));
+  if (beforePage.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+    return { status: 409, body: { ok: false, error: "academic_page_not_in_notes_data_source" } };
+  }
+  if (!beforePage.canonicalId || beforePage.retrievalSpace !== "CURRENT" || beforePage.governanceState !== "ACTIVE") {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "academic_content_patch_requires_active_current_canonical_page",
+        canonical_id: beforePage.canonicalId,
+        retrieval_space: beforePage.retrievalSpace,
+        governance_state: beforePage.governanceState,
+      },
+    };
+  }
+  if (beforePage.relationState !== "REVIEW") {
+    return {
+      status: 409,
+      body: { ok: false, error: "academic_content_patch_requires_review_state", relation_state: beforePage.relationState },
+    };
+  }
+
+  const beforeMarkdown = await fetchCompleteMarkdown(env, pageId);
+  if (beforeMarkdown.truncated || beforeMarkdown.unknown_block_ids.length > 0) {
+    return { status: 409, body: { ok: false, error: "academic_content_patch_requires_complete_readback" } };
+  }
+  const occurrences = beforeMarkdown.markdown.split(oldStr).length - 1;
+  if (occurrences !== 1) {
+    return { status: 409, body: { ok: false, error: "content_patch_old_str_must_match_once", occurrences } };
+  }
+
+  await updatePageMarkdownContent(env, pageId, oldStr, newStr);
+  const afterMarkdown = await fetchCompleteMarkdown(env, pageId);
+  if (afterMarkdown.truncated || afterMarkdown.unknown_block_ids.length > 0) {
+    return { status: 502, body: { ok: false, error: "content_patch_post_readback_incomplete" } };
+  }
+  if (!afterMarkdown.markdown.includes(newStr) || afterMarkdown.markdown.includes(oldStr)) {
+    return { status: 502, body: { ok: false, error: "content_patch_readback_failed" } };
+  }
+  const sync = await syncPage(env, {
+    kind: "notion-page-sync",
+    page_id: pageId,
+    cause_id: `academic-content:${crypto.randomUUID()}`,
+    cause_type: "manual",
+  });
+  return {
+    status: 200,
+    body: {
+      ok: true,
+      page: normalizePage(await fetchPage(env, pageId)),
+      before_markdown_length: beforeMarkdown.markdown.length,
+      after_markdown_length: afterMarkdown.markdown.length,
+      markdown_truncated: afterMarkdown.truncated,
+      unknown_block_ids: afterMarkdown.unknown_block_ids,
+      sync,
+    },
+  };
+}
+
 /**
  * Capability-scoped, read-only service surface for the private Pages Reader.
  *
@@ -171,6 +242,20 @@ export class ReaderProxyEntrypoint extends WorkerEntrypoint<Env> {
     if (!boundedPageId) return { status: 400, body: { ok: false, error: "page_id_required_or_too_long" } };
     if (taskId && !boundedTaskId) return { status: 400, body: { ok: false, error: "task_id_too_long" } };
     return buildReaderDetailResult(this.env, boundedPageId, boundedTaskId);
+  }
+}
+
+/**
+ * Capability-scoped canonical edit surface for the private Reader.
+ *
+ * Kept separate from ReaderProxyEntrypoint so read-only deployments cannot
+ * accidentally gain mutation authority. This entrypoint exposes exactly one
+ * existing guarded Notion content-patch operation; it cannot change Canonical
+ * ID, Trust, lifecycle promotion, owner routing, relations or arbitrary fields.
+ */
+export class ReaderEditorEntrypoint extends WorkerEntrypoint<Env> {
+  async readerContentPatch(pageId: string, oldStr: string, newStr: string): Promise<ReaderRpcResult> {
+    return patchReaderAcademicContent(this.env, pageId, oldStr, newStr);
   }
 }
 
@@ -1143,63 +1228,8 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       old_str?: string;
       new_str?: string;
     };
-    if (!body.page_id || !body.old_str || !body.new_str) {
-      return json({ ok: false, error: "page_id_old_str_new_str_required" }, 400);
-    }
-    if (body.old_str === body.new_str) return json({ ok: false, error: "content_patch_noop" }, 400);
-    if (body.old_str.length > 20_000 || body.new_str.length > 20_000) {
-      return json({ ok: false, error: "content_patch_too_large" }, 413);
-    }
-
-    const beforePage = normalizePage(await fetchPage(env, body.page_id));
-    if (beforePage.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
-      return json({ ok: false, error: "academic_page_not_in_notes_data_source" }, 409);
-    }
-    if (!beforePage.canonicalId || beforePage.retrievalSpace !== "CURRENT" || beforePage.governanceState !== "ACTIVE") {
-      return json({
-        ok: false,
-        error: "academic_content_patch_requires_active_current_canonical_page",
-        canonical_id: beforePage.canonicalId,
-        retrieval_space: beforePage.retrievalSpace,
-        governance_state: beforePage.governanceState,
-      }, 409);
-    }
-    if (beforePage.relationState !== "REVIEW") {
-      return json({ ok: false, error: "academic_content_patch_requires_review_state", relation_state: beforePage.relationState }, 409);
-    }
-
-    const beforeMarkdown = await fetchCompleteMarkdown(env, body.page_id);
-    if (beforeMarkdown.truncated || beforeMarkdown.unknown_block_ids.length > 0) {
-      return json({ ok: false, error: "academic_content_patch_requires_complete_readback" }, 409);
-    }
-    const occurrences = beforeMarkdown.markdown.split(body.old_str).length - 1;
-    if (occurrences !== 1) {
-      return json({ ok: false, error: "content_patch_old_str_must_match_once", occurrences }, 409);
-    }
-
-    await updatePageMarkdownContent(env, body.page_id, body.old_str, body.new_str);
-    const afterMarkdown = await fetchCompleteMarkdown(env, body.page_id);
-    if (afterMarkdown.truncated || afterMarkdown.unknown_block_ids.length > 0) {
-      return json({ ok: false, error: "content_patch_post_readback_incomplete" }, 502);
-    }
-    if (!afterMarkdown.markdown.includes(body.new_str) || afterMarkdown.markdown.includes(body.old_str)) {
-      return json({ ok: false, error: "content_patch_readback_failed" }, 502);
-    }
-    const sync = await syncPage(env, {
-      kind: "notion-page-sync",
-      page_id: body.page_id,
-      cause_id: `academic-content:${crypto.randomUUID()}`,
-      cause_type: "manual",
-    });
-    return json({
-      ok: true,
-      page: normalizePage(await fetchPage(env, body.page_id)),
-      before_markdown_length: beforeMarkdown.markdown.length,
-      after_markdown_length: afterMarkdown.markdown.length,
-      markdown_truncated: afterMarkdown.truncated,
-      unknown_block_ids: afterMarkdown.unknown_block_ids,
-      sync,
-    });
+    const result = await patchReaderAcademicContent(env, body.page_id ?? "", body.old_str ?? "", body.new_str ?? "");
+    return json(result.body, result.status);
   }
 
   if (request.method === "POST" && url.pathname === "/v1/reader-layer") {
