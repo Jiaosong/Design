@@ -494,6 +494,94 @@ export async function schedulerTaskCounts(db: D1Database): Promise<Record<string
   return Object.fromEntries(counts.results.map((row) => [row.status, row.count]));
 }
 
+export interface ReaderLiveSyncTask {
+  cause_id: string;
+  run_id: string | null;
+  page_id: string;
+  cause_type: string;
+  event_type: string | null;
+  status: string;
+  attempts: number;
+  error: string | null;
+  updated_at: string;
+}
+
+export interface ReaderLiveWebhookEvent {
+  event_id: string;
+  event_type: string;
+  entity_id: string | null;
+  event_timestamp: string | null;
+  received_at: string;
+  queued_at: string | null;
+  processed_at: string | null;
+  status: string;
+  error: string | null;
+}
+
+export async function recentReaderSyncTasks(
+  db: D1Database,
+  pageId: string | null,
+  limit = 12,
+): Promise<ReaderLiveSyncTask[]> {
+  const boundedLimit = Math.max(1, Math.min(30, Math.floor(limit)));
+  const base = `SELECT cause_id, run_id, page_id, cause_type, event_type, status, attempts, error, updated_at
+                FROM sync_message_receipts`;
+  const result = pageId
+    ? await db
+        .prepare(`${base} WHERE page_id=? ORDER BY updated_at DESC, cause_id DESC LIMIT ?`)
+        .bind(pageId, boundedLimit)
+        .all<ReaderLiveSyncTask>()
+    : await db
+        .prepare(`${base} ORDER BY updated_at DESC, cause_id DESC LIMIT ?`)
+        .bind(boundedLimit)
+        .all<ReaderLiveSyncTask>();
+  return result.results;
+}
+
+export async function recentReaderWebhookEvents(
+  db: D1Database,
+  pageId: string | null,
+  limit = 12,
+): Promise<ReaderLiveWebhookEvent[]> {
+  const boundedLimit = Math.max(1, Math.min(30, Math.floor(limit)));
+  const base = `SELECT event_id, event_type, entity_id, event_timestamp, received_at, queued_at, processed_at, status, error
+                FROM webhook_events`;
+  const result = pageId
+    ? await db
+        .prepare(`${base} WHERE entity_id=? ORDER BY received_at DESC, event_id DESC LIMIT ?`)
+        .bind(pageId, boundedLimit)
+        .all<ReaderLiveWebhookEvent>()
+    : await db
+        .prepare(`${base} ORDER BY received_at DESC, event_id DESC LIMIT ?`)
+        .bind(boundedLimit)
+        .all<ReaderLiveWebhookEvent>();
+  return result.results;
+}
+
+export async function latestReaderDocumentActivity(
+  db: D1Database,
+  pageId: string | null,
+): Promise<{ latest_indexed_at: string | null; latest_observed_at: string | null }> {
+  const row = pageId
+    ? await db
+        .prepare(
+          `SELECT MAX(indexed_at) AS latest_indexed_at, MAX(observed_at) AS latest_observed_at
+           FROM documents WHERE page_id=?`,
+        )
+        .bind(pageId)
+        .first<{ latest_indexed_at: string | null; latest_observed_at: string | null }>()
+    : await db
+        .prepare(
+          `SELECT MAX(indexed_at) AS latest_indexed_at, MAX(observed_at) AS latest_observed_at
+           FROM documents`,
+        )
+        .first<{ latest_indexed_at: string | null; latest_observed_at: string | null }>();
+  return {
+    latest_indexed_at: row?.latest_indexed_at ?? null,
+    latest_observed_at: row?.latest_observed_at ?? null,
+  };
+}
+
 export async function refreshSyncRunStatus(db: D1Database, runId: string): Promise<void> {
   const counts = await db
     .prepare("SELECT status, COUNT(*) AS count FROM sync_message_receipts WHERE run_id=? GROUP BY status")
@@ -536,6 +624,92 @@ export async function getRuntimeState(db: D1Database, key: string): Promise<{ va
     .bind(key)
     .first<{ state_value: string; updated_at: string }>();
   return row ? { value: row.state_value, updated_at: row.updated_at } : null;
+}
+
+export interface ExecutionLiveStatusProjection {
+  version: "oleander-execution-live-status/v1";
+  task_id: string;
+  executor_id: string;
+  checkpoint_sequence: number;
+  status: "WORKING" | "REVIEW_PENDING" | "HOLD" | "CLOSED";
+  current_node?: string;
+  next_allowed_action?: string;
+  receipt_id?: string;
+  readback_verdict?: string;
+  flow_completion_gate?: string;
+  note?: string;
+  updated_at?: string;
+}
+
+function executionRuntimeStateKey(taskId: string, executorId: string): string {
+  return `execution_status_v1:${encodeURIComponent(taskId)}:${encodeURIComponent(executorId)}`;
+}
+
+function escapeSqlLike(value: string): string {
+  return value.replace(/\\/g, "\\\\").replace(/%/g, "\\%").replace(/_/g, "\\_");
+}
+
+export async function putExecutionLiveStatus(
+  db: D1Database,
+  input: ExecutionLiveStatusProjection,
+): Promise<{ applied: boolean; observed_checkpoint_sequence: number | null; updated_at: string }> {
+  const key = executionRuntimeStateKey(input.task_id, input.executor_id);
+  const updatedAt = now();
+  const value = JSON.stringify({ ...input, updated_at: updatedAt });
+  const result = await db
+    .prepare(
+      `INSERT INTO runtime_state (state_key, state_value, updated_at) VALUES (?, ?, ?)
+       ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value, updated_at=excluded.updated_at
+       WHERE COALESCE(CAST(json_extract(runtime_state.state_value, '$.checkpoint_sequence') AS INTEGER), -1) <= ?`,
+    )
+    .bind(key, value, updatedAt, input.checkpoint_sequence)
+    .run();
+  const applied = (result.meta.changes ?? 0) > 0;
+  const observed = await getRuntimeState(db, key);
+  let observedSequence: number | null = null;
+  if (observed?.value) {
+    try {
+      const parsed = JSON.parse(observed.value) as { checkpoint_sequence?: unknown };
+      if (typeof parsed.checkpoint_sequence === "number") observedSequence = parsed.checkpoint_sequence;
+    } catch {
+      observedSequence = null;
+    }
+  }
+  return {
+    applied,
+    observed_checkpoint_sequence: observedSequence,
+    updated_at: observed?.updated_at ?? updatedAt,
+  };
+}
+
+export async function listExecutionLiveStatus(
+  db: D1Database,
+  taskId: string | null = null,
+  limit = 20,
+): Promise<ExecutionLiveStatusProjection[]> {
+  const boundedLimit = Math.max(1, Math.min(50, Math.floor(limit)));
+  const keyPrefix = taskId
+    ? `${escapeSqlLike(`execution_status_v1:${encodeURIComponent(taskId)}:`)}%`
+    : "execution_status_v1:%";
+  const rows = await db
+    .prepare(
+      `SELECT state_value, updated_at FROM runtime_state
+       WHERE state_key LIKE ? ESCAPE '\\'
+       ORDER BY updated_at DESC LIMIT ?`,
+    )
+    .bind(keyPrefix, boundedLimit)
+    .all<{ state_value: string; updated_at: string }>();
+  const result: ExecutionLiveStatusProjection[] = [];
+  for (const row of rows.results) {
+    try {
+      const parsed = JSON.parse(row.state_value) as ExecutionLiveStatusProjection;
+      if (parsed?.version !== "oleander-execution-live-status/v1") continue;
+      result.push({ ...parsed, updated_at: row.updated_at });
+    } catch {
+      // Ignore malformed legacy runtime values instead of widening their authority.
+    }
+  }
+  return result;
 }
 
 export async function deleteRuntimeState(db: D1Database, key: string): Promise<void> {
