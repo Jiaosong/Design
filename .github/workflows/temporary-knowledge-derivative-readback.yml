@@ -1,0 +1,85 @@
+name: Temporary Knowledge Derivative Readback
+
+on:
+  push:
+    branches:
+      - agent/knowledge-weakness-closure-20260913
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-derivative-readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify CMF D1 derivative revision against live Notion
+        env:
+          OLEANDER_API_TOKEN: ${{ secrets.OLEANDER_API_TOKEN }}
+          WORKER_URL: https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.request
+          import urllib.error
+
+          worker = os.environ.get("WORKER_URL", "").rstrip("/")
+          token = os.environ.get("OLEANDER_API_TOKEN", "")
+          if not token:
+              print("FAIL: OLEANDER_API_TOKEN unavailable to workflow")
+              sys.exit(2)
+
+          expected = [
+              ("3cbb86be-5c47-8117-aac9-dc10313e1f37", "KN-THEORY-CMF-IMD-001"),
+              ("3cbb86be-5c47-819c-90cd-c6494f85ea30", "KN-THEORY-CMF-PVD-001"),
+              ("3cbb86be-5c47-81ac-bdd5-cbbf43f4d4a7", "KN-THEORY-CMF-ELECTROPLATING-001"),
+              ("3cbb86be-5c47-819b-bc61-cb329c12f7b7", "KN-THEORY-CMF-ANODIZING-001"),
+              ("3cbb86be-5c47-8175-a36c-d1f31622a190", "KN-THEORY-CMF-COATING-001"),
+          ]
+
+          def norm(value):
+              return str(value or "").replace("-", "").lower()
+
+          failures = []
+          for page_id, canonical_id in expected:
+              req = urllib.request.Request(
+                  f"{worker}/v1/reader-page/{page_id}",
+                  headers={"Authorization": f"Bearer {token}", "Accept": "application/json"},
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=15) as response:
+                      status = response.status
+                      payload = json.loads(response.read().decode("utf-8"))
+              except urllib.error.HTTPError as error:
+                  print(f"{canonical_id}: FAIL http_status={error.code}")
+                  failures.append(canonical_id)
+                  continue
+              except Exception as error:
+                  print(f"{canonical_id}: FAIL transport={type(error).__name__}")
+                  failures.append(canonical_id)
+                  continue
+
+              source = ((payload.get("frameworkReadback") or {}).get("source") or {})
+              checks = {
+                  "http_200": status == 200,
+                  "page_id": norm(payload.get("id")) == norm(page_id),
+                  "canonical_id": payload.get("canonicalId") == canonical_id,
+                  "revision_matches": source.get("revisionMatches") is True,
+                  "readback_coherent": source.get("readbackRevisionCoherent") is True,
+              }
+              failed = [name for name, passed in checks.items() if not passed]
+              if failed:
+                  print(f"{canonical_id}: FAIL checks={','.join(failed)} source_state={source.get('state')}")
+                  failures.append(canonical_id)
+              else:
+                  print(f"{canonical_id}: PASS derivative_revision_matches_live source_state={source.get('state')}")
+
+          if failures:
+              print(f"RESULT: FAIL count={len(failures)}")
+              sys.exit(1)
+          print(f"RESULT: PASS count={len(expected)}")
+          PY
