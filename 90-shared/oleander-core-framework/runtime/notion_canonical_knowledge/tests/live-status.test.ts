@@ -36,6 +36,24 @@ function frameworkFixture(): KnowledgeReaderFrameworkReadback {
       childrenRelationComplete: true,
       unresolvedPageIds: [],
     },
+    dedicatedRelations: {
+      semanticRelated: {
+        declaredIds: [],
+        items: [],
+        relationComplete: true,
+        unresolvedPageIds: [],
+      },
+      projects: {
+        primaryDeclaredIds: [],
+        relatedDeclaredIds: [],
+        primary: [],
+        related: [],
+        primaryRelationComplete: true,
+        relatedRelationComplete: true,
+        registryInventoryComplete: true,
+        unresolvedPageIds: [],
+      },
+    },
     routingInputs: {
       knowledgeRole: "METHOD",
       methodFamily: ["分析建模"],

@@ -13,10 +13,25 @@ export const FIELDS = {
   canonicalParent: "Canonical Parent｜层级上位",
   canonicalChildren: "Canonical Children｜层级子级",
   methodFamily: "方法家族",
+  semanticRelated: "相关笔记",
+  primaryProject: "主项目",
+  relatedProjects: "关联项目",
   sourceRelations: "来源文档",
   methodRelations: "引用方法",
   replacements: "替代文档",
   replacedDocuments: "被替代文档",
+} as const;
+
+// Existing Current Project Registry identity fields. Reader hydration treats
+// these as live readback only; Project identity remains Project ID + level and
+// is never reconstructed from note titles, paths, case IDs, or legacy codes.
+export const PROJECT_FIELDS = {
+  title: "Name",
+  projectId: "Project ID｜项目ID",
+  level: "项目层级",
+  governanceState: "治理状态",
+  relationState: "关系状态",
+  projectPath: "项目路径",
 } as const;
 
 // These are existing Current Domain registry fields. The Reader consumes their

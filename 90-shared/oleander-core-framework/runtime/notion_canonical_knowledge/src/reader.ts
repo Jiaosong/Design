@@ -1,10 +1,11 @@
-import { DOMAIN_FIELDS, FIELDS } from "./config";
+import { DOMAIN_FIELDS, FIELDS, PROJECT_FIELDS } from "./config";
 import {
   fetchPage,
   fetchRelationReadback,
   NotionHttpError,
   NotionReadbackBudgetError,
   queryDomainRegistryPages,
+  queryProjectRegistryPages,
 } from "./notion";
 import {
   belongsToDataSource,
@@ -101,6 +102,29 @@ function domainFrameworkRef(page: NotionPage): KnowledgeReaderFrameworkObjectRef
   };
 }
 
+function projectFrameworkRef(page: NotionPage): KnowledgeReaderFrameworkObjectRef {
+  const properties = page.properties ?? {};
+  const title = propertyText(properties[PROJECT_FIELDS.title]);
+  const projectId = propertyText(properties[PROJECT_FIELDS.projectId]);
+  const projectLevel = propertyText(properties[PROJECT_FIELDS.level]);
+  const governanceState = propertyText(properties[PROJECT_FIELDS.governanceState]);
+  const relationState = propertyText(properties[PROJECT_FIELDS.relationState]);
+  const projectPath = propertyText(properties[PROJECT_FIELDS.projectPath]);
+  return {
+    registry: "projects",
+    metadataSource: "NOTION_LIVE",
+    pageId: page.id,
+    ...(title ? { title } : {}),
+    ...(projectId ? { projectId } : {}),
+    ...(projectLevel ? { projectLevel } : {}),
+    ...(governanceState ? { governanceState } : {}),
+    ...(relationState ? { relationState } : {}),
+    ...(projectPath ? { projectPath } : {}),
+    ...(page.last_edited_time ? { lastEditedTime: page.last_edited_time } : {}),
+    inTrash: page.in_trash === true,
+  };
+}
+
 function normalizedUuid(value: string): string {
   return value.replaceAll("-", "").toLowerCase();
 }
@@ -166,6 +190,27 @@ function hydrateDomainRefsFromRegistry(
     const page = byId.get(normalizedUuid(pageId));
     if (!page) unresolvedPageIds.push(pageId);
     else refs.push(domainFrameworkRef(page));
+  }
+  return { refs, unresolvedPageIds };
+}
+
+function hydrateProjectRefsFromRegistry(
+  env: Env,
+  pageIds: string[],
+  registryPages: NotionPage[],
+): { refs: KnowledgeReaderFrameworkObjectRef[]; unresolvedPageIds: string[] } {
+  const requested = uniqueStrings(pageIds);
+  const byId = new Map(
+    registryPages
+      .filter((page) => belongsToDataSource(page, env.NOTION_PROJECTS_DATA_SOURCE_ID))
+      .map((page) => [normalizedUuid(page.id), page] as const),
+  );
+  const refs: KnowledgeReaderFrameworkObjectRef[] = [];
+  const unresolvedPageIds: string[] = [];
+  for (const pageId of requested) {
+    const page = byId.get(normalizedUuid(pageId));
+    if (!page) unresolvedPageIds.push(pageId);
+    else refs.push(projectFrameworkRef(page));
   }
   return { refs, unresolvedPageIds };
 }
@@ -489,6 +534,24 @@ export async function hydrateKnowledgeReaderFramework(
         childrenRelationComplete: false,
         unresolvedPageIds: [],
       },
+      dedicatedRelations: {
+        semanticRelated: {
+          declaredIds: [],
+          items: [],
+          relationComplete: false,
+          unresolvedPageIds: [],
+        },
+        projects: {
+          primaryDeclaredIds: [],
+          relatedDeclaredIds: [],
+          primary: [],
+          related: [],
+          primaryRelationComplete: false,
+          relatedRelationComplete: false,
+          registryInventoryComplete: false,
+          unresolvedPageIds: [],
+        },
+      },
       routingInputs: {
         ...(detail.role ? { knowledgeRole: detail.role } : {}),
         methodFamily: [],
@@ -550,6 +613,24 @@ export async function hydrateKnowledgeReaderFramework(
         childrenRelationComplete: false,
         unresolvedPageIds: [],
       },
+      dedicatedRelations: {
+        semanticRelated: {
+          declaredIds: [],
+          items: [],
+          relationComplete: false,
+          unresolvedPageIds: [],
+        },
+        projects: {
+          primaryDeclaredIds: [],
+          relatedDeclaredIds: [],
+          primary: [],
+          related: [],
+          primaryRelationComplete: false,
+          relatedRelationComplete: false,
+          registryInventoryComplete: false,
+          unresolvedPageIds: [],
+        },
+      },
       routingInputs: {
         ...(detail.role ? { knowledgeRole: detail.role } : {}),
         methodFamily: [],
@@ -573,31 +654,49 @@ export async function hydrateKnowledgeReaderFramework(
 
   const live = normalizePage(page);
   const readbackStartedRevision = page.last_edited_time ?? null;
-  const [primaryRelation, relatedRelation, parentRelation, childrenRelation] = await Promise.all([
+  const [
+    primaryRelation,
+    relatedRelation,
+    parentRelation,
+    childrenRelation,
+    semanticRelatedRelation,
+    primaryProjectRelation,
+    relatedProjectRelation,
+  ] = await Promise.all([
     safeRelationReadback(env, page, FIELDS.primaryDomain, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.relatedDomains, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.canonicalParent, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.canonicalChildren, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.semanticRelated, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.primaryProject, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.relatedProjects, deadlineAtMs),
   ]);
   const primaryDeclaredIds = primaryRelation.ids;
   const relatedDeclaredIds = relatedRelation.ids;
   const declaredParentIds = parentRelation.ids;
   const declaredChildrenIds = childrenRelation.ids;
+  const semanticRelatedDeclaredIds = semanticRelatedRelation.ids;
+  const primaryProjectDeclaredIds = primaryProjectRelation.ids;
+  const relatedProjectDeclaredIds = relatedProjectRelation.ids;
+  const declaredProjectIds = uniqueStrings([...primaryProjectDeclaredIds, ...relatedProjectDeclaredIds]);
   const methodFamilyRead = methodFamilyReadback(page);
 
-  let domainRegistryPages: NotionPage[] = [];
-  let domainRegistryComplete = false;
-  try {
-    const domainRegistry = await queryDomainRegistryPages(env, deadlineAtMs);
-    domainRegistryPages = domainRegistry.pages;
-    domainRegistryComplete = domainRegistry.complete;
-  } catch {
-    domainRegistryPages = [];
-    domainRegistryComplete = false;
-  }
+  const [domainRegistry, projectRegistry, semanticRelatedHydrated] = await Promise.all([
+    queryDomainRegistryPages(env, deadlineAtMs).catch(() => ({ pages: [] as NotionPage[], complete: false })),
+    declaredProjectIds.length
+      ? queryProjectRegistryPages(env, deadlineAtMs).catch(() => ({ pages: [] as NotionPage[], complete: false }))
+      : Promise.resolve({ pages: [] as NotionPage[], complete: true }),
+    hydrateNoteRefsFromManifest(env.MANIFEST, semanticRelatedDeclaredIds),
+  ]);
+  const domainRegistryPages = domainRegistry.pages;
+  const domainRegistryComplete = domainRegistry.complete;
+  const projectRegistryPages = projectRegistry.pages;
+  const projectRegistryComplete = projectRegistry.complete;
 
   const primaryHydrated = hydrateDomainRefsFromRegistry(env, primaryDeclaredIds, domainRegistryPages);
   const relatedHydrated = hydrateDomainRefsFromRegistry(env, relatedDeclaredIds, domainRegistryPages);
+  const primaryProjectsHydrated = hydrateProjectRefsFromRegistry(env, primaryProjectDeclaredIds, projectRegistryPages);
+  const relatedProjectsHydrated = hydrateProjectRefsFromRegistry(env, relatedProjectDeclaredIds, projectRegistryPages);
   const [parentHydrated, childrenHydrated] = await Promise.all([
     hydrateNoteRefsFromManifest(env.MANIFEST, declaredParentIds),
     hydrateNoteRefsFromManifest(env.MANIFEST, declaredChildrenIds),
@@ -631,14 +730,24 @@ export async function hydrateKnowledgeReaderFramework(
   );
   const domainUnresolved = uniqueStrings([...primaryHydrated.unresolvedPageIds, ...relatedHydrated.unresolvedPageIds]);
   const hierarchyUnresolved = uniqueStrings([...parentHydrated.unresolvedPageIds, ...childrenHydrated.unresolvedPageIds]);
+  const projectUnresolved = uniqueStrings([
+    ...primaryProjectsHydrated.unresolvedPageIds,
+    ...relatedProjectsHydrated.unresolvedPageIds,
+  ]);
   const structurallyComplete = primaryRelation.complete
     && relatedRelation.complete
     && parentRelation.complete
     && childrenRelation.complete
+    && semanticRelatedRelation.complete
+    && primaryProjectRelation.complete
+    && relatedProjectRelation.complete
     && methodFamilyRead.complete
     && domainRegistryComplete
+    && projectRegistryComplete
     && domainUnresolved.length === 0
-    && hierarchyUnresolved.length === 0;
+    && hierarchyUnresolved.length === 0
+    && semanticRelatedHydrated.unresolvedPageIds.length === 0
+    && projectUnresolved.length === 0;
   const sourceState: KnowledgeReaderFrameworkReadback["source"]["state"] = !endingPage
     ? "PARTIAL"
     : !readbackRevisionCoherent
@@ -680,6 +789,24 @@ export async function hydrateKnowledgeReaderFramework(
       parentRelationComplete: parentRelation.complete,
       childrenRelationComplete: childrenRelation.complete,
       unresolvedPageIds: hierarchyUnresolved,
+    },
+    dedicatedRelations: {
+      semanticRelated: {
+        declaredIds: semanticRelatedDeclaredIds,
+        items: semanticRelatedHydrated.refs,
+        relationComplete: semanticRelatedRelation.complete,
+        unresolvedPageIds: semanticRelatedHydrated.unresolvedPageIds,
+      },
+      projects: {
+        primaryDeclaredIds: primaryProjectDeclaredIds,
+        relatedDeclaredIds: relatedProjectDeclaredIds,
+        primary: primaryProjectsHydrated.refs,
+        related: relatedProjectsHydrated.refs,
+        primaryRelationComplete: primaryProjectRelation.complete,
+        relatedRelationComplete: relatedProjectRelation.complete,
+        registryInventoryComplete: projectRegistryComplete,
+        unresolvedPageIds: projectUnresolved,
+      },
     },
     routingInputs: {
       ...(live.knowledgeRole ? { knowledgeRole: live.knowledgeRole } : {}),

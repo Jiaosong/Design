@@ -112,6 +112,7 @@ export interface NotionRelationReadback {
 
 const NOTION_RELATION_READBACK_MAX_PAGES = 20;
 const NOTION_DOMAIN_INVENTORY_MAX_PAGES = 20;
+const NOTION_PROJECT_INVENTORY_MAX_PAGES = 20;
 
 function relationIdsFromPageProperty(property: Record<string, unknown> | undefined): string[] {
   if (!property || property.type !== "relation" || !Array.isArray(property.relation)) return [];
@@ -198,6 +199,38 @@ export async function queryDomainRegistryPages(env: Env, deadlineAtMs?: number):
     const response = await notionFetch<DomainRegistryQueryResponse>(
       env,
       `/v1/data_sources/${encodeURIComponent(env.NOTION_DOMAINS_DATA_SOURCE_ID)}/query`,
+      { method: "POST", body: JSON.stringify(payload) },
+      deadlineAtMs,
+    );
+    pages.push(...response.results.filter((page) => page.object === "page" && typeof page.id === "string"));
+    if (!response.has_more) return { pages, complete: true };
+    if (!response.next_cursor || seenCursors.has(response.next_cursor)) return { pages, complete: false };
+    seenCursors.add(response.next_cursor);
+    cursor = response.next_cursor;
+  }
+  return { pages, complete: false };
+}
+
+export interface ProjectRegistryReadback {
+  pages: NotionPage[];
+  complete: boolean;
+}
+
+/**
+ * Query the one Current Project Registry as a bounded live inventory. This is
+ * identity readback only: it does not create Project State, infer project use,
+ * or resolve owners from Project fields.
+ */
+export async function queryProjectRegistryPages(env: Env, deadlineAtMs?: number): Promise<ProjectRegistryReadback> {
+  const pages: NotionPage[] = [];
+  let cursor: string | null = null;
+  const seenCursors = new Set<string>();
+  for (let pageNumber = 0; pageNumber < NOTION_PROJECT_INVENTORY_MAX_PAGES; pageNumber += 1) {
+    const payload: Record<string, unknown> = { page_size: 100, result_type: "page" };
+    if (cursor) payload.start_cursor = cursor;
+    const response = await notionFetch<DomainRegistryQueryResponse>(
+      env,
+      `/v1/data_sources/${encodeURIComponent(env.NOTION_PROJECTS_DATA_SOURCE_ID)}/query`,
       { method: "POST", body: JSON.stringify(payload) },
       deadlineAtMs,
     );
