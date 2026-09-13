@@ -1,3 +1,4 @@
+import { WorkerEntrypoint } from "cloudflare:workers";
 import {
   FIELDS,
   INDEX_PIPELINE_REVISION,
@@ -99,6 +100,77 @@ async function withinAbsoluteDeadline<T>(promise: Promise<T>, deadlineAtMs: numb
     ]);
   } finally {
     if (timeout !== null) clearTimeout(timeout);
+  }
+}
+
+type ReaderRpcResult = {
+  status: number;
+  body: unknown;
+};
+
+function boundedReaderInput(value: string | null | undefined, max: number): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed && trimmed.length <= max ? trimmed : null;
+}
+
+async function buildReaderDetailResult(
+  env: Env,
+  pageIdInput: string,
+  taskIdInput?: string | null,
+): Promise<ReaderRpcResult> {
+  const pageId = pageIdInput.trim();
+  const taskId = taskIdInput?.trim() || null;
+  if (!pageId) return { status: 400, body: { ok: false, error: "page_id_required" } };
+  if (taskId && taskId.length > 200) return { status: 400, body: { ok: false, error: "task_id_too_long" } };
+  const deadlineAtMs = Date.now() + FRAMEWORK_READBACK_BUDGET_MS;
+  try {
+    const detail = await withinAbsoluteDeadline(buildKnowledgeReaderDetail(env.MANIFEST, pageId), deadlineAtMs);
+    if (!detail) return { status: 404, body: { ok: false, error: "not_found" } };
+    const executionStatusesPromise = taskId
+      ? listExecutionLiveStatus(env.MANIFEST, taskId).catch(() => [])
+      : Promise.resolve([]);
+    const [frameworkReadback, executionStatuses] = await Promise.all([
+      withinAbsoluteDeadline(hydrateKnowledgeReaderFramework(env, detail, deadlineAtMs), deadlineAtMs),
+      withinAbsoluteDeadline(executionStatusesPromise, deadlineAtMs),
+    ]);
+    detail.frameworkReadback = bindKnowledgeReaderExecutionContext(detail, frameworkReadback, taskId, executionStatuses);
+    return { status: 200, body: detail };
+  } catch (error) {
+    if (error instanceof ReaderPageBudgetError) {
+      return { status: 504, body: { ok: false, error: "reader_detail_budget_exceeded" } };
+    }
+    throw error;
+  }
+}
+
+/**
+ * Capability-scoped, read-only service surface for the private Pages Reader.
+ *
+ * This named entrypoint is not an HTTP bypass and does not weaken OLEANDER_API_TOKEN.
+ * It can only be invoked through an explicit Cloudflare Service Binding to this
+ * entrypoint, and it exposes no governance, sync, execution-publish, search or
+ * mutation method. Notion remains canonical; D1 remains derivative readback.
+ */
+export class ReaderProxyEntrypoint extends WorkerEntrypoint<Env> {
+  async readerSnapshot(): Promise<ReaderRpcResult> {
+    return { status: 200, body: await buildKnowledgeReaderSnapshot(this.env.MANIFEST) };
+  }
+
+  async readerLiveStatus(pageIdInput?: string | null, taskIdInput?: string | null): Promise<ReaderRpcResult> {
+    const pageId = boundedReaderInput(pageIdInput, 128);
+    const taskId = boundedReaderInput(taskIdInput, 200);
+    if (pageIdInput && !pageId) return { status: 400, body: { ok: false, error: "page_id_too_long" } };
+    if (taskIdInput && !taskId) return { status: 400, body: { ok: false, error: "task_id_too_long" } };
+    return { status: 200, body: await buildReaderLiveStatus(this.env.MANIFEST, pageId, taskId) };
+  }
+
+  async readerPage(pageId: string, taskId?: string | null): Promise<ReaderRpcResult> {
+    const boundedPageId = boundedReaderInput(pageId, 128);
+    const boundedTaskId = boundedReaderInput(taskId, 200);
+    if (!boundedPageId) return { status: 400, body: { ok: false, error: "page_id_required_or_too_long" } };
+    if (taskId && !boundedTaskId) return { status: 400, body: { ok: false, error: "task_id_too_long" } };
+    return buildReaderDetailResult(this.env, boundedPageId, boundedTaskId);
   }
 }
 
@@ -1422,31 +1494,10 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const pageId = decodeURIComponent(readerPageMatch[1] ?? "").trim();
     const taskId = url.searchParams.get("task_id")?.trim() || null;
-    if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
-    if (taskId && taskId.length > 200) return json({ ok: false, error: "task_id_too_long" }, 400);
-    // Start the response budget before the D1 detail read so the Notion
-    // hydration cannot silently consume a fresh 8-second window afterwards.
-    // The Reader client aborts at 12s; this leaves a fixed margin for response
-    // serialization/network delivery without increasing the client timeout.
-    const deadlineAtMs = Date.now() + FRAMEWORK_READBACK_BUDGET_MS;
-    try {
-      const detail = await withinAbsoluteDeadline(buildKnowledgeReaderDetail(env.MANIFEST, pageId), deadlineAtMs);
-      if (!detail) return json({ ok: false, error: "not_found" }, 404);
-      const executionStatusesPromise = taskId
-        ? listExecutionLiveStatus(env.MANIFEST, taskId).catch(() => [])
-        : Promise.resolve([]);
-      const [frameworkReadback, executionStatuses] = await Promise.all([
-        withinAbsoluteDeadline(hydrateKnowledgeReaderFramework(env, detail, deadlineAtMs), deadlineAtMs),
-        withinAbsoluteDeadline(executionStatusesPromise, deadlineAtMs),
-      ]);
-      detail.frameworkReadback = bindKnowledgeReaderExecutionContext(detail, frameworkReadback, taskId, executionStatuses);
-      return json(detail);
-    } catch (error) {
-      if (error instanceof ReaderPageBudgetError) {
-        return json({ ok: false, error: "reader_detail_budget_exceeded" }, 504);
-      }
-      throw error;
-    }
+    // Shared with the named ReaderProxyEntrypoint so HTTP and service-bound
+    // reads retain the exact same 8-second absolute detail/hydration budget.
+    const result = await buildReaderDetailResult(env, pageId, taskId);
+    return json(result.body, result.status);
   }
 
   if (request.method === "POST" && url.pathname === "/v1/search") {
