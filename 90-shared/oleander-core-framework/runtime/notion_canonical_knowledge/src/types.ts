@@ -238,6 +238,51 @@ export interface KnowledgeReaderFrameworkObjectRef {
   frameworkPath?: string;
 }
 
+export type KnowledgeReaderRequiredNativeOutput =
+  | {
+      state: "EXECUTION_CONTEXT_REQUIRED";
+      source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND";
+    }
+  | {
+      state: "HYDRATED_FROM_EXECUTION_RECEIPT";
+      source: "OLEANDER_EXECUTION_RECEIPT_V1";
+      taskId: string;
+      receiptId: string;
+      artifactClass: string;
+      nativeFormat: string;
+      editableRequired: boolean;
+      targetRuntime: string;
+      derivedFormats: string[];
+    };
+
+export type KnowledgeReaderExecutionOwner =
+  | {
+      state: "NOT_HYDRATED";
+      localProjectionUsed: false;
+      reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND";
+      blockingInputs: string[];
+      requestedTaskId?: string;
+      contextMatchState?: "NOT_REQUESTED" | "NO_MATCH" | "AMBIGUOUS" | "STALE";
+    }
+  | {
+      state: "HYDRATED";
+      localProjectionUsed: false;
+      source: "OLEANDER_EXECUTION_RECEIPT_V1";
+      authorityCeiling: "TASK_SCOPED_EXECUTION_ROUTING_READBACK_ONLY";
+      taskId: string;
+      receiptId: string;
+      matchedCanonicalId: string;
+      primaryOwner: string;
+      nodes: Array<{ ownerId: string; role: string }>;
+      omittedOwnerReasoning: string;
+      checkpointSequence: number;
+      checkpointState: string;
+      executionStatus: "WORKING" | "REVIEW_PENDING" | "HOLD" | "CLOSED";
+      authorityFingerprint: string;
+      requiredNativeOutput: Extract<KnowledgeReaderRequiredNativeOutput, { state: "HYDRATED_FROM_EXECUTION_RECEIPT" }>;
+      doesNotProve: string[];
+    };
+
 export interface KnowledgeReaderFrameworkReadback {
   source: {
     authority: "Notion";
@@ -276,18 +321,10 @@ export interface KnowledgeReaderFrameworkReadback {
     methodFamilyComplete: boolean;
     primaryDomainRoutingReady: boolean;
     primaryDomainRoutingIssues: string[];
-    requiredNativeOutput: {
-      state: "EXECUTION_CONTEXT_REQUIRED";
-      source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND";
-    };
+    requiredNativeOutput: KnowledgeReaderRequiredNativeOutput;
     unresolvedInputs: string[];
   };
-  executionOwner: {
-    state: "NOT_HYDRATED";
-    localProjectionUsed: false;
-    reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND";
-    blockingInputs: string[];
-  };
+  executionOwner: KnowledgeReaderExecutionOwner;
 }
 
 export interface KnowledgeReaderDetail {

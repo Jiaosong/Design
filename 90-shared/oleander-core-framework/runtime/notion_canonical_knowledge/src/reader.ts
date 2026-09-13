@@ -23,11 +23,20 @@ import type {
   KnowledgeReaderSnapshot,
   NotionPage,
 } from "./types";
+import type { ExecutionLiveStatusProjection, ExecutionReceiptLiveContext } from "./manifest";
 
 const CORE_LEVELS = new Set(["L4｜Framework", "L5｜Knowledge Object"]);
 const EVIDENCE_ROLES = new Set(["SOURCE", "EVIDENCE", "CASE"]);
 const PRACTICE_ROLES = new Set(["PRACTICE", "TOOL"]);
 export const FRAMEWORK_READBACK_BUDGET_MS = 8_000;
+const EXECUTION_OWNER_NODE_ROLES = new Set([
+  "PRIMARY_OWNER",
+  "SUPPORTING_OWNER",
+  "READ_ONLY_CONSUMER",
+  "VALIDATOR",
+  "INDEPENDENT_REVIEWER",
+]);
+const EXECUTION_LIVE_STATUSES = new Set(["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"]);
 
 function isHistory(row: Record<string, unknown>): boolean {
   return row.effective_space === "PROVENANCE" || row.search_eligibility === "HISTORY_ONLY" || row.governance_state === "LEGACY";
@@ -206,6 +215,225 @@ function unresolvedOwnerInputs(
   if (knowledgeRole === "METHOD" && (!methodFamilyComplete || methodFamily.length === 0)) inputs.push("method_family");
   if (!primaryDomainRoutingReady) inputs.push("primary_current_l2_domain");
   return inputs;
+}
+
+function safeExecutionReceiptContext(projection: ExecutionLiveStatusProjection): ExecutionReceiptLiveContext | null {
+  if (
+    projection.version !== "oleander-execution-live-status/v1"
+    || typeof projection.task_id !== "string"
+    || !projection.task_id.trim()
+    || typeof projection.executor_id !== "string"
+    || !projection.executor_id.trim()
+    || !Number.isInteger(projection.checkpoint_sequence)
+    || projection.checkpoint_sequence < 0
+    || !EXECUTION_LIVE_STATUSES.has(projection.status)
+  ) return null;
+  const context = projection.execution_context as unknown;
+  if (!context || typeof context !== "object") return null;
+  const value = context as Record<string, unknown>;
+  if (value.source !== "OLEANDER_EXECUTION_RECEIPT_V1") return null;
+  if (
+    typeof value.receipt_id !== "string"
+    || !value.receipt_id.trim()
+    || projection.receipt_id !== value.receipt_id
+    || !Array.isArray(value.canonical_ids)
+    || value.canonical_ids.length === 0
+  ) return null;
+  if (!value.canonical_ids.every((item) => typeof item === "string" && Boolean(item.trim()))) return null;
+  if (
+    typeof value.checkpoint_state !== "string"
+    || !value.checkpoint_state.trim()
+    || typeof value.authority_fingerprint !== "string"
+    || !value.authority_fingerprint.trim()
+  ) return null;
+  if (!Array.isArray(value.stale_reasons) || !value.stale_reasons.every((item) => typeof item === "string" && Boolean(item.trim()))) return null;
+  const output = value.required_native_output;
+  if (!output || typeof output !== "object") return null;
+  const outputValue = output as Record<string, unknown>;
+  if (
+    typeof outputValue.artifact_class !== "string"
+    || !outputValue.artifact_class.trim()
+    || typeof outputValue.native_format !== "string"
+    || !outputValue.native_format.trim()
+    || typeof outputValue.editable_required !== "boolean"
+    || typeof outputValue.target_runtime !== "string"
+    || !outputValue.target_runtime.trim()
+    || !Array.isArray(outputValue.derived_formats)
+    || !outputValue.derived_formats.every((item) => typeof item === "string" && Boolean(item.trim()))
+  ) return null;
+  const ownerSet = value.owner_set;
+  if (!ownerSet || typeof ownerSet !== "object") return null;
+  const ownerValue = ownerSet as Record<string, unknown>;
+  if (
+    ownerValue.minimum_sufficient_owner_set !== true
+    || typeof ownerValue.primary_owner !== "string"
+    || !ownerValue.primary_owner.trim()
+    || typeof ownerValue.omitted_owner_reasoning !== "string"
+    || !ownerValue.omitted_owner_reasoning.trim()
+    || !Array.isArray(ownerValue.nodes)
+    || ownerValue.nodes.length === 0
+  ) return null;
+  const nodes = ownerValue.nodes as unknown[];
+  if (!nodes.every((node) => {
+    if (!node || typeof node !== "object") return false;
+    const raw = node as Record<string, unknown>;
+    return typeof raw.owner_id === "string"
+      && Boolean(raw.owner_id.trim())
+      && typeof raw.role === "string"
+      && EXECUTION_OWNER_NODE_ROLES.has(raw.role);
+  })) return null;
+  const primaryNodes = nodes.filter((node) => (node as Record<string, unknown>).role === "PRIMARY_OWNER");
+  if (
+    primaryNodes.length !== 1
+    || (primaryNodes[0] as Record<string, unknown>).owner_id !== ownerValue.primary_owner
+  ) return null;
+  const flow = value.flow_completion;
+  if (!flow || typeof flow !== "object") return null;
+  const flowValue = flow as Record<string, unknown>;
+  if (
+    !(typeof flowValue.completion_gate === "string" || flowValue.completion_gate === null)
+    || typeof flowValue.completion_claim_allowed !== "boolean"
+    || !Array.isArray(flowValue.incomplete_required_phases)
+    || !flowValue.incomplete_required_phases.every((item) => typeof item === "string")
+  ) return null;
+  return context as ExecutionReceiptLiveContext;
+}
+
+function executionContextIdentity(projection: ExecutionLiveStatusProjection): string | null {
+  const context = safeExecutionReceiptContext(projection);
+  if (!context) return null;
+  return JSON.stringify({
+    receipt_id: context.receipt_id,
+    canonical_ids: [...context.canonical_ids].sort(),
+    checkpoint_state: context.checkpoint_state,
+    authority_fingerprint: context.authority_fingerprint,
+    stale_reasons: [...context.stale_reasons].sort(),
+    required_native_output: {
+      ...context.required_native_output,
+      derived_formats: [...context.required_native_output.derived_formats].sort(),
+    },
+    owner_set: {
+      ...context.owner_set,
+      nodes: [...context.owner_set.nodes].sort((left, right) =>
+        `${left.owner_id}\u0000${left.role}`.localeCompare(`${right.owner_id}\u0000${right.role}`),
+      ),
+    },
+    flow_completion: {
+      ...context.flow_completion,
+      incomplete_required_phases: [...context.flow_completion.incomplete_required_phases].sort(),
+    },
+  });
+}
+
+export function bindKnowledgeReaderExecutionContext(
+  detail: KnowledgeReaderDetail,
+  framework: KnowledgeReaderFrameworkReadback,
+  taskId: string | null,
+  projections: ExecutionLiveStatusProjection[],
+): KnowledgeReaderFrameworkReadback {
+  if (!taskId) return framework;
+
+  const unresolved = (state: "NO_MATCH" | "AMBIGUOUS" | "STALE"): KnowledgeReaderFrameworkReadback => ({
+    ...framework,
+    executionOwner: {
+      state: "NOT_HYDRATED",
+      localProjectionUsed: false,
+      reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND",
+      blockingInputs: uniqueStrings([
+        ...(framework.executionOwner.state === "NOT_HYDRATED" ? framework.executionOwner.blockingInputs : []),
+        "task_scoped_execution_receipt_readback",
+      ]),
+      requestedTaskId: taskId,
+      contextMatchState: state,
+    },
+  });
+
+  if (!detail.canonicalId) return unresolved("NO_MATCH");
+  const taskProjections = projections.filter((projection) => projection.task_id === taskId);
+  if (!taskProjections.length) return unresolved("NO_MATCH");
+  if (taskProjections.some((projection) => !Number.isInteger(projection.checkpoint_sequence) || projection.checkpoint_sequence < 0)) {
+    return unresolved("AMBIGUOUS");
+  }
+  const highestSequence = Math.max(...taskProjections.map((projection) => projection.checkpoint_sequence));
+  const highest = taskProjections.filter((projection) => projection.checkpoint_sequence === highestSequence);
+  const highestContexts = highest.map((projection) => safeExecutionReceiptContext(projection));
+  if (highestContexts.some((context) => !context)) return unresolved("NO_MATCH");
+  if (highestContexts.some((context) => !context?.canonical_ids.includes(detail.canonicalId as string))) return unresolved("NO_MATCH");
+  const identities = uniqueStrings(highest.map(executionContextIdentity).filter((value): value is string => Boolean(value)));
+  if (identities.length !== 1) return unresolved("AMBIGUOUS");
+  const statuses = uniqueStrings(highest.map((projection) => projection.status));
+  if (statuses.length !== 1) return unresolved("AMBIGUOUS");
+
+  const selected = highest[0];
+  const context = selected ? safeExecutionReceiptContext(selected) : null;
+  if (!selected || !context) return unresolved("NO_MATCH");
+  if (
+    context.stale_reasons.length > 0
+    || context.checkpoint_state === "REVALIDATE"
+    || context.checkpoint_state === "BLOCKED"
+  ) {
+    return unresolved("STALE");
+  }
+  if (
+    selected.status === "CLOSED"
+    && (
+      context.flow_completion.completion_gate !== "PASS"
+      || context.flow_completion.completion_claim_allowed !== true
+      || context.flow_completion.incomplete_required_phases.length > 0
+    )
+  ) {
+    return unresolved("STALE");
+  }
+
+  const requiredNativeOutput = {
+    state: "HYDRATED_FROM_EXECUTION_RECEIPT" as const,
+    source: "OLEANDER_EXECUTION_RECEIPT_V1" as const,
+    taskId,
+    receiptId: context.receipt_id,
+    artifactClass: context.required_native_output.artifact_class,
+    nativeFormat: context.required_native_output.native_format,
+    editableRequired: context.required_native_output.editable_required,
+    targetRuntime: context.required_native_output.target_runtime,
+    derivedFormats: context.required_native_output.derived_formats,
+  };
+  const clearedRuntimeInputs = new Set([
+    "required_native_output_or_execution_medium",
+    "current_task_or_project_runtime_context",
+    "authoritative_execution_owner_resolver_runtime_readback",
+  ]);
+  return {
+    ...framework,
+    routingInputs: {
+      ...framework.routingInputs,
+      requiredNativeOutput,
+      unresolvedInputs: framework.routingInputs.unresolvedInputs.filter((input) => !clearedRuntimeInputs.has(input)),
+    },
+    executionOwner: {
+      state: "HYDRATED",
+      localProjectionUsed: false,
+      source: "OLEANDER_EXECUTION_RECEIPT_V1",
+      authorityCeiling: "TASK_SCOPED_EXECUTION_ROUTING_READBACK_ONLY",
+      taskId,
+      receiptId: context.receipt_id,
+      matchedCanonicalId: detail.canonicalId,
+      primaryOwner: context.owner_set.primary_owner,
+      nodes: context.owner_set.nodes.map((node) => ({ ownerId: node.owner_id, role: node.role })),
+      omittedOwnerReasoning: context.owner_set.omitted_owner_reasoning,
+      checkpointSequence: selected.checkpoint_sequence,
+      checkpointState: context.checkpoint_state,
+      executionStatus: selected.status,
+      authorityFingerprint: context.authority_fingerprint,
+      requiredNativeOutput,
+      doesNotProve: [
+        "CURRENT_NOTION_OWNER_RECOMPUTATION",
+        "METHOD_VALIDATION",
+        "SKILL_PROMOTION",
+        "DESIGN_PASS",
+        "FIELD_OR_ENGINEERING_TRUTH",
+        "CANONICAL_OR_LIFECYCLE_FINALITY",
+      ],
+    },
+  };
 }
 
 export async function safeRelationReadback(

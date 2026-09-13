@@ -188,6 +188,70 @@ def run_self_test() -> dict:
         raise RuntimeError("bridge self-test: publish failure must degrade observability")
     if degraded["preflight"]["conversation_directive"] != dry["preflight"]["conversation_directive"]:
         raise RuntimeError("bridge self-test: publish failure changed resolver decision")
+
+    receipt_payload = {
+        "intent": "CONTINUE",
+        "execution_receipt": {
+            "receipt_id": "EXR-BRIDGE-OWNER-1",
+            "status": "WORKING",
+            "task_id": "bridge-owner-self-test",
+            "authority": {"canonical_ids": ["KN-METHOD-BRIDGE-001"]},
+            "required_native_output": {
+                "artifact_class": "parametric_model",
+                "native_format": "Grasshopper GH",
+                "editable_required": True,
+                "target_runtime": "Rhino + Grasshopper",
+                "derived_formats": ["3dm"],
+            },
+            "owner_set": {
+                "minimum_sufficient_owner_set": True,
+                "primary_owner": "oleander-3d-pipeline",
+                "nodes": [{"owner_id": "oleander-3d-pipeline", "role": "PRIMARY_OWNER"}],
+                "omitted_owner_reasoning": "One installed geometry owner is sufficient.",
+            },
+            "continuation_checkpoint": {
+                "checkpoint_state": "RESUMABLE",
+                "current_node": "REAL_EXECUTION",
+                "next_allowed_action": "ACTUAL_READBACK",
+                "checkpoint_sequence": 2,
+                "executor_id": "CHAT-BRIDGE-OWNER",
+                "authority_fingerprint": "AUTH-BRIDGE-OWNER-1",
+                "stale_reasons": [],
+            },
+            "flow_completion": {
+                "phase_results": {
+                    "AUTHORITY_PREFLIGHT": "PASS",
+                    "STICKY_CONSTRAINT_RESOLUTION": "PASS",
+                    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION": "PASS",
+                    "REQUIRED_NATIVE_OUTPUT_DEFINITION": "PASS",
+                    "CAPABILITY_AND_MINIMUM_OWNER_SET": "PASS",
+                },
+                "incomplete_required_phases": ["REAL_EXECUTION"],
+                "completion_gate": "HOLD",
+                "completion_claim_allowed": False,
+            },
+            "readback": {"verdict": "WORKING_READBACK"},
+        },
+    }
+    receipt_dry = run_bridge(receipt_payload, publish_live=False)
+    receipt_projection = receipt_dry["observability"].get("projection") or {}
+    context = receipt_projection.get("execution_context") or {}
+    if context.get("source") != "OLEANDER_EXECUTION_RECEIPT_V1":
+        raise RuntimeError("bridge self-test: receipt owner context source missing")
+    if context.get("owner_set", {}).get("primary_owner") != "oleander-3d-pipeline":
+        raise RuntimeError("bridge self-test: receipt owner context was not copied")
+
+    forged_direct = _projection_from_payload({
+        "live_projection": {
+            "task_id": "direct-forge-test",
+            "executor_id": "CHAT-DIRECT",
+            "checkpoint_sequence": 1,
+            "status": "WORKING",
+            "execution_context": context,
+        },
+    }) or {}
+    if "execution_context" in forged_direct:
+        raise RuntimeError("bridge self-test: direct telemetry injected owner context")
     return {
         "status": "PASS",
         "bridge_id": BRIDGE_ID,
@@ -195,6 +259,8 @@ def run_self_test() -> dict:
             "RESOLVER_DECISION_PRESERVED",
             "SOURCE_OBSERVED_PROJECTION_ONLY",
             "PUBLISH_FAILURE_OBSERVABILITY_ONLY",
+            "EXECUTION_RECEIPT_OWNER_CONTEXT_ONLY",
+            "DIRECT_TELEMETRY_CANNOT_INJECT_OWNER_CONTEXT",
         ],
     }
 

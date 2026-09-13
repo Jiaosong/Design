@@ -626,6 +626,33 @@ export async function getRuntimeState(db: D1Database, key: string): Promise<{ va
   return row ? { value: row.state_value, updated_at: row.updated_at } : null;
 }
 
+export interface ExecutionReceiptLiveContext {
+  source: "OLEANDER_EXECUTION_RECEIPT_V1";
+  receipt_id: string;
+  canonical_ids: string[];
+  checkpoint_state: string;
+  authority_fingerprint: string;
+  stale_reasons: string[];
+  required_native_output: {
+    artifact_class: string;
+    native_format: string;
+    editable_required: boolean;
+    target_runtime: string;
+    derived_formats: string[];
+  };
+  owner_set: {
+    minimum_sufficient_owner_set: true;
+    primary_owner: string;
+    nodes: Array<{ owner_id: string; role: string }>;
+    omitted_owner_reasoning: string;
+  };
+  flow_completion: {
+    completion_gate: string | null;
+    completion_claim_allowed: boolean;
+    incomplete_required_phases: string[];
+  };
+}
+
 export interface ExecutionLiveStatusProjection {
   version: "oleander-execution-live-status/v1";
   task_id: string;
@@ -638,6 +665,7 @@ export interface ExecutionLiveStatusProjection {
   readback_verdict?: string;
   flow_completion_gate?: string;
   note?: string;
+  execution_context?: ExecutionReceiptLiveContext;
   updated_at?: string;
 }
 

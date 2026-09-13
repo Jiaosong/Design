@@ -24,6 +24,20 @@ WORKER_DEV_VARS = (
     / ".dev.vars"
 )
 ALLOWED_STATUS = {"WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"}
+ALLOWED_OWNER_NODE_ROLES = {
+    "PRIMARY_OWNER",
+    "SUPPORTING_OWNER",
+    "READ_ONLY_CONSUMER",
+    "VALIDATOR",
+    "INDEPENDENT_REVIEWER",
+}
+OWNER_CONTEXT_REQUIRED_FLOW_PHASES = {
+    "AUTHORITY_PREFLIGHT",
+    "STICKY_CONSTRAINT_RESOLUTION",
+    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
+    "REQUIRED_NATIVE_OUTPUT_DEFINITION",
+    "CAPABILITY_AND_MINIMUM_OWNER_SET",
+}
 
 
 def _clean_string(value: object, max_len: int) -> str | None:
@@ -31,6 +45,126 @@ def _clean_string(value: object, max_len: int) -> str | None:
         return None
     value = value.strip()
     return value[:max_len] if value else None
+
+
+def _clean_string_list(value: object, *, max_items: int, max_len: int) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    result: list[str] = []
+    seen: set[str] = set()
+    for item in value[:max_items]:
+        cleaned = _clean_string(item, max_len)
+        if not cleaned or cleaned in seen:
+            continue
+        seen.add(cleaned)
+        result.append(cleaned)
+    return result
+
+
+def _execution_context_from_receipt(receipt: dict) -> dict:
+    """Extract only execution-owner context already recorded by Execution Receipt v1.
+
+    This function does not resolve an owner. It refuses to synthesize missing
+    owner/output/canonical inputs and therefore cannot become a second owner
+    resolver.
+    """
+    receipt_id = _clean_string(receipt.get("receipt_id"), 500)
+    authority = receipt.get("authority")
+    native_output = receipt.get("required_native_output")
+    owner_set = receipt.get("owner_set")
+    checkpoint = receipt.get("continuation_checkpoint")
+    flow = receipt.get("flow_completion")
+    if not receipt_id:
+        raise ValueError("receipt receipt_id is required for execution context projection")
+    if not isinstance(authority, dict):
+        raise ValueError("receipt authority is required for execution context projection")
+    canonical_ids = _clean_string_list(authority.get("canonical_ids"), max_items=64, max_len=500)
+    if not canonical_ids:
+        raise ValueError("receipt authority.canonical_ids must contain at least one canonical id")
+    if not isinstance(native_output, dict):
+        raise ValueError("receipt required_native_output is required for execution context projection")
+    artifact_class = _clean_string(native_output.get("artifact_class"), 500)
+    native_format = _clean_string(native_output.get("native_format"), 500)
+    target_runtime = _clean_string(native_output.get("target_runtime"), 1000)
+    editable_required = native_output.get("editable_required")
+    derived_formats = _clean_string_list(native_output.get("derived_formats"), max_items=32, max_len=500)
+    if not artifact_class or not native_format or not target_runtime or not isinstance(editable_required, bool):
+        raise ValueError("receipt required_native_output is incomplete")
+    if not isinstance(owner_set, dict):
+        raise ValueError("receipt owner_set is required for execution context projection")
+    minimum_sufficient = owner_set.get("minimum_sufficient_owner_set")
+    primary_owner = _clean_string(owner_set.get("primary_owner"), 500)
+    omitted_owner_reasoning = _clean_string(owner_set.get("omitted_owner_reasoning"), 2000)
+    raw_nodes = owner_set.get("nodes")
+    if minimum_sufficient is not True or not primary_owner or not omitted_owner_reasoning or not isinstance(raw_nodes, list):
+        raise ValueError("receipt owner_set is incomplete")
+    nodes: list[dict[str, str]] = []
+    for raw in raw_nodes[:32]:
+        if not isinstance(raw, dict):
+            continue
+        owner_id = _clean_string(raw.get("owner_id"), 500)
+        role = _clean_string(raw.get("role"), 200)
+        if owner_id and role in ALLOWED_OWNER_NODE_ROLES:
+            nodes.append({"owner_id": owner_id, "role": role})
+    if not nodes:
+        raise ValueError("receipt owner_set.nodes must contain at least one typed owner node")
+    primary_nodes = [node for node in nodes if node["role"] == "PRIMARY_OWNER"]
+    if len(primary_nodes) != 1 or primary_nodes[0]["owner_id"] != primary_owner:
+        raise ValueError("receipt owner_set must contain exactly one PRIMARY_OWNER matching primary_owner")
+    if not isinstance(checkpoint, dict):
+        raise ValueError("receipt continuation_checkpoint is required for execution context projection")
+    checkpoint_state = _clean_string(checkpoint.get("checkpoint_state"), 80)
+    authority_fingerprint = _clean_string(checkpoint.get("authority_fingerprint"), 1000)
+    stale_reasons = _clean_string_list(checkpoint.get("stale_reasons"), max_items=32, max_len=1000)
+    if not checkpoint_state or not authority_fingerprint:
+        raise ValueError("receipt continuation_checkpoint provenance is incomplete")
+    if not isinstance(flow, dict):
+        raise ValueError("receipt flow_completion is required for execution context projection")
+    phase_results = flow.get("phase_results")
+    if not isinstance(phase_results, dict):
+        raise ValueError("receipt flow_completion.phase_results is required for execution context projection")
+    missing_pass = sorted(
+        phase for phase in OWNER_CONTEXT_REQUIRED_FLOW_PHASES if phase_results.get(phase) != "PASS"
+    )
+    if missing_pass:
+        raise ValueError(f"receipt owner-routing phases are not PASS: {missing_pass}")
+    completion_gate = _clean_string(flow.get("completion_gate"), 40)
+    completion_claim_allowed = flow.get("completion_claim_allowed")
+    incomplete_required_phases = _clean_string_list(
+        flow.get("incomplete_required_phases"), max_items=64, max_len=500
+    )
+    if receipt.get("status") == "CLOSED" and (
+        completion_gate != "PASS"
+        or completion_claim_allowed is not True
+        or incomplete_required_phases
+    ):
+        raise ValueError("closed receipt does not satisfy the existing Flow Completion Gate")
+    return {
+        "source": "OLEANDER_EXECUTION_RECEIPT_V1",
+        "receipt_id": receipt_id,
+        "canonical_ids": canonical_ids,
+        "checkpoint_state": checkpoint_state,
+        "authority_fingerprint": authority_fingerprint,
+        "stale_reasons": stale_reasons,
+        "required_native_output": {
+            "artifact_class": artifact_class,
+            "native_format": native_format,
+            "editable_required": editable_required,
+            "target_runtime": target_runtime,
+            "derived_formats": derived_formats,
+        },
+        "owner_set": {
+            "minimum_sufficient_owner_set": minimum_sufficient,
+            "primary_owner": primary_owner,
+            "nodes": nodes,
+            "omitted_owner_reasoning": omitted_owner_reasoning,
+        },
+        "flow_completion": {
+            "completion_gate": completion_gate,
+            "completion_claim_allowed": completion_claim_allowed is True,
+            "incomplete_required_phases": incomplete_required_phases,
+        },
+    }
 
 
 def projection_from_receipt(receipt: dict) -> dict:
@@ -56,6 +190,7 @@ def projection_from_receipt(receipt: dict) -> dict:
         "executor_id": executor_id,
         "checkpoint_sequence": sequence,
         "status": status,
+        "execution_context": _execution_context_from_receipt(receipt),
     }
     optional = {
         "current_node": _clean_string(checkpoint.get("current_node"), 500),
@@ -95,6 +230,8 @@ def projection_from_direct(payload: dict) -> dict:
         value = _clean_string(payload.get(key), max_len)
         if value:
             result[key] = value
+    # Direct status input remains observability-only and may not inject owner
+    # routing context. Only the Execution Receipt extraction path can carry it.
     return result
 
 
