@@ -215,6 +215,63 @@ This section is a structured control/provenance receipt for the existing PVD out
 - `next_gate`: Router must bind/recover a stable `work_id` in the existing D1/pending_work/execution-receipt layer, then Validation may consume this same exact canonical revision if the requested gate requires independent validation.
 - `non_claim`: this HOLD does not roll back PVD's canonical `E2 / M3` knowledge synthesis and does not imply that the PVD body or Source relations are defective.
 
+## Structured output reconciliation｜KN-METHOD-ADAPTIVE-COMPOSITION-001
+
+- `object_id`: `KN-METHOD-ADAPTIVE-COMPOSITION-001`
+- `output_kind`: `KNOWLEDGE_CANONICAL_DELTA`
+- `canonical_output_target`: `https://app.notion.com/p/3dab86be5c4781a4ad02f7fd19d3c680`
+- `canonical_revision_readback`: `Notion page_last_edited_at=2026-09-13T02:40:40.738Z`
+- `content_state`: `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E2 / M3 SYNTHESIZED`
+- `method_invocation_readback`: `PASS` — METHOD `引用该方法的文档` returns exactly `PRAC-20260817-05` and `PRAC-20260818-01`; each Practice `引用方法` returns this METHOD.
+- `structural_hierarchy_readback`: `PASS_FOR_FAIL_CLOSED_STATE` — METHOD has no Canonical Parent; both Practices have no Canonical Parent; Visual Communication retains the METHOD only under `相关笔记`, not structural routing.
+- `structural_parent_status`: `STRUCTURAL_PARENT_BINDING=HOLD` because the legacy self-relation is not direction-safe. This is an architecture hold, not a METHOD-content defect.
+- `material_delta`: `true` for the 2026-09-13 method-owner/invocation repair; no new METHOD body mutation was needed during reconciliation.
+- `work_id`: `UNKNOWN` — no recoverable single-object stable work ID was found in available Notion/GitHub receipt evidence.
+- `submitted_revision`: `2026-09-13T02:40:40.738Z` as current exact Notion readback boundary.
+- `independent_validation`: `NOT CLOSED`; real production-context transfer remains open.
+- `validation_verdict`: `HOLD`
+- `workflow_state`: `OUTPUT_RECONCILIATION_HOLD`
+- `hold_reason`: `MISSING_RECOVERABLE_STABLE_WORK_ID + STRUCTURAL_PARENT_BINDING_HOLD + CROSS_CONTEXT_VALIDATION_OPEN`
+- `next_gate`: preserve dedicated METHOD relations; do not reintroduce Canonical Parent until direction-safe hierarchy migration closes. Router must recover/bind stable work_id before an exact-revision Validation gate can close this output.
+
+## Structured output reconciliation｜PRAC-20260817-05｜Earned Attention
+
+- `object_id`: `PRAC-20260817-05`
+- `output_kind`: `PRACTICE_NATIVE_ARTIFACT`
+- `canonical_output_target`: `https://app.notion.com/p/3c0b86be5c47816ab84ddb86497428bc`
+- `canonical_revision_readback`: `Notion page_last_edited_at=2026-09-13T02:38:43.935Z`
+- `practice_state`: `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E2 / M6 PRACTICED / SATURATED_FOR_NOW`
+- `method_relation_readback`: `PASS` — `引用方法 → KN-METHOD-ADAPTIVE-COMPOSITION-001`; no Canonical Parent is used as a METHOD-use alias.
+- `historical_native_evidence`: `EXISTS` — provenance records editable SVG/CairoSVG static A/B for the base exercise and later HTML/CSS/JS + Chromium/Playwright closed/open-state execution for the 2026-08-27 extension.
+- `historical_receipt`: `EXR-20260827-AESTHETIC-WEB-SUPPLEMENT-THRESHOLD-01`; its own record says producer and reviewer were the same and independent review remained open.
+- `canonical_artifact_target`: `UNRESOLVED` — current GitHub default-branch search and Drive search did not recover a unique canonical artifact path by Practice ID/receipt; absence of a searchable path is not rewritten as absence of historical execution.
+- `project_transfer`: `HOLD` — current Practice explicitly records `PROJECT_USAGE_EVIDENCE=NOT_OBSERVED / CONFIRMED_TRANSFER=HOLD`.
+- `work_id`: `UNKNOWN` — no stable single-object hourly work ID is recoverable from the current evidence chain.
+- `independent_validation`: `NOT CLOSED`
+- `validation_verdict`: `HOLD`
+- `workflow_state`: `OUTPUT_RECONCILIATION_HOLD`
+- `hold_reason`: `CANONICAL_ARTIFACT_PATH_UNRESOLVED + MISSING_RECOVERABLE_STABLE_WORK_ID + INDEPENDENT_REVIEW_OPEN + CONFIRMED_TRANSFER_HOLD`
+- `next_gate`: resolve/relink the actual native artifact into the existing L7 Practice canonical artifact path without duplication; bind stable work_id; then perform independent review on the exact artifact/revision before claiming confirmed transfer.
+
+## Structured output reconciliation｜PRAC-20260818-01｜Breakpoint Role Redistribution
+
+- `object_id`: `PRAC-20260818-01`
+- `output_kind`: `PRACTICE_NATIVE_ARTIFACT`
+- `canonical_output_target`: `https://app.notion.com/p/3c0b86be5c4781358eede1781021f065`
+- `canonical_revision_readback`: `Notion page_last_edited_at=2026-09-13T02:38:57.513Z`
+- `practice_state`: `SUPPORT / SCOPED / REVIEW / UNVERIFIED / E2 / M6 PRACTICED / SATURATED_FOR_NOW`
+- `method_relation_readback`: `PASS` — `引用方法 → KN-METHOD-ADAPTIVE-COMPOSITION-001`; Canonical Parent remains empty because no separate structural framework parent is safely bound.
+- `historical_native_evidence`: `PASS_FOR_PRACTICE_ONLY` — provenance records editable HTML/CSS, Chromium/Playwright first readback `REVISE`, repair, then second desktop/mobile readback `POST-READBACK PASS for practice artifact only`; later extensions used actual HTML/CSS/JS interaction readback.
+- `artifact_path_evidence`: historical extensions reference `website/index.html` and `website/styles.css`, but these are project binding paths, not a proven unique canonical Practice archive path.
+- `canonical_artifact_target`: `UNRESOLVED` — GitHub/Drive searches by Practice ID/title did not recover a unique current Practice artifact path.
+- `project_transfer`: `HOLD` — real project-rule binding exists in bounded extensions, but independent professional review/user comprehension and confirmed transfer remain open.
+- `work_id`: `UNKNOWN`
+- `independent_validation`: `NOT CLOSED`
+- `validation_verdict`: `HOLD`
+- `workflow_state`: `OUTPUT_RECONCILIATION_HOLD`
+- `hold_reason`: `CANONICAL_ARTIFACT_PATH_UNRESOLVED + MISSING_RECOVERABLE_STABLE_WORK_ID + INDEPENDENT_REVIEW_OPEN + CONFIRMED_TRANSFER_HOLD`
+- `next_gate`: resolve/relink the exact native practice artifact into the existing L7 Practice canonical artifact path, bind stable work_id, then independently validate the exact artifact/revision; do not promote METHOD or project transfer from producer-side browser PASS alone.
+
 ## Final status
 
-`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / KNOWN SYMMETRIC-PARENT CYCLES CLOSED / LEGACY PHYSICAL RELATION BUG PROVEN / FULL DIRECTION-SAFE HIERARCHY MIGRATION OPEN / ADAPTIVE-COMPOSITION STRUCTURAL HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED / PVD OUTPUT RECONCILIATION HOLD`
+`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / KNOWN SYMMETRIC-PARENT CYCLES CLOSED / LEGACY PHYSICAL RELATION BUG PROVEN / FULL DIRECTION-SAFE HIERARCHY MIGRATION OPEN / ADAPTIVE-COMPOSITION STRUCTURAL HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED / PVD OUTPUT RECONCILIATION HOLD / ADAPTIVE+EARNED+BREAKPOINT OUTPUT RECONCILIATION HOLD`
