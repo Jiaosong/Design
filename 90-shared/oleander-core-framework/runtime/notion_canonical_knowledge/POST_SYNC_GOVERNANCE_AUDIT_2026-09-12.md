@@ -702,3 +702,198 @@ The separate OLEANDER Visual Knowledge Reader MCP also read the D05 cutover dyna
 The presentation layer was also revised, independently of knowledge authority, to a Notion-3.4-inspired workspace shell with persistent left navigation, Dashboard, page tabs, Library/reading split view, `Overview / Evidence / Limitations / Trace` tabs and an in-app Present focus mode. The local Reader source commit is `41f8534 feat(reader): adopt workspace dashboard reading shell`. Edge QA passed at desktop width and at `390px` mobile with no horizontal overflow. The runtime HTML was updated without restarting Chat On Steroids; the Reader therefore remains `REGISTERED + VALIDATED + PENDING SAFE RELOAD / NOT LIVE-LOADED` in the current CoS process until a future safe reload and CoS-side enumeration readback.
 
 The final remaining D-series academic migration is now `D02`. D01, D03, D04, D05, D06 and D07 are closed Current migrations and must not be reopened as unfinished work. `K05` remains a later navigation / information-architecture cleanup after D02.
+
+## Phase 9 — D02 Rural Architecture / Local Construction Academic Migration
+
+`D02｜乡村建筑与地方营造` has completed the additive academic migration. The new Current is intentionally narrower than the old rural-architecture encyclopedia: it tests whether architectural intervention improves real life / production / service continuity, local knowledge and maintenance capability without reducing the village to a vernacular image, frozen heritage object, tourism commodity or externally maintained showcase.
+
+New Current knowledge object:
+
+- Page ID: `3dab86be-5c47-8191-b417-f682dfa65605`
+- Canonical ID: `KN-ARCH-RURAL-LOCAL-CONSTRUCTION-001`
+- Human title: `乡村建筑与地方营造：生活系统、活态遗产与在地建造能力`
+- `CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / L5 / THEORY`
+- Normal `syncPage` result after promotion: `INDEXED`, `43` active chunks.
+- Final live Notion markdown readback: `17,814` characters, `markdown_truncated=false`, `unknown_block_ids=[]`.
+
+### D02 Academic Quality Gate
+
+The page was created in `REVIEW`, read back from live Notion, machine/content reviewed, and only then promoted to `VALID`. The actual live body contains:
+
+- six conditional theses and six explicit Rival / Counterevidence sections;
+- the full `Research Question / Thesis → Claim–Evidence Map → Rival / Counterevidence → Method / Evidence Boundary → Arguments → Applicability / Project Translation → Limitations → Conclusion → References` sequence;
+- `S1–S7` and `A1–A6` reference carriers present in the live page;
+- ten explicit `Normative rule｜OLEANDER` labels and five explicit `Heuristic｜OLEANDER` labels;
+- research / sampling / causal / POE ownership deferred to `MTH-ARCH-RESEARCH-001`;
+- law / policy / standard / evidence-version conflict ownership deferred to `MTH-ARCH-EVIDENCE-GOV-001`;
+- public-service, housing, climate/carbon and lifecycle-value boundaries linked to their existing Current owners rather than re-implemented in D02;
+- no universal local-procurement percentage, visitor capacity, material transport radius, vacancy threshold, maintenance interval, participation percentage or income-growth target promoted into Current;
+- tourism retained as competing positive / negative evidence rather than a default success or failure mechanism;
+- local materials treated as performance / durability / execution / maintenance / lifecycle candidates rather than automatically sustainable materials;
+- participation separated into information, decision rights, labour, procurement, benefit distribution, maintenance ownership and grievance rather than inferred from workshop or volunteer-labour counts.
+
+Fresh source QA before publication corrected the `A6` bibliography entry to Arduin, Caldas, Paiva and Rocha (2022), retained the verified DOI `10.3390/su142013228`, and replaced the draft's secondary `S2` mirror with a government-hosted full-text reproduction of the 2022 `乡村建设行动实施方案`. The governance state remains `UNVERIFIED` at the Trust layer: `relation_state=VALID` records knowledge-object / lineage validity, not blanket external-source truth.
+
+### D02 NO LOSS / Replacement Readback
+
+The old D02 remains fully present in Notion and was not edited for cleanup. Its live body before and after governance cutover is exactly `18,709` markdown characters with the same SHA-256:
+
+`1fb9870f6aedc1f24df558721f89ee3be10444df1e58ca3f939850b79b255fd6`
+
+The old carrier is now:
+
+- Page ID: `3adb86be-5c47-81d2-84af-cf3a68eae2a9`
+- Canonical ID: `LEGACY-KN-ARCH-RURAL-LOCAL-CONSTRUCTION-D02-20260807`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `KN-ARCH-RURAL-LOCAL-CONSTRUCTION-001`
+- `55` active chunks after normal re-indexing.
+
+The old body remains the History / Provenance carrier for the former settlement / household / production survey material, local-material detail, co-building guidance, retain / replace / new-build / demolition framework, project prototypes, older evaluation indicators, failure mechanisms, cases, theory genealogy, historical timeline, issue matrix, methodology toolbox, China policy / cases, international comparison, glossary and historical references.
+
+### Phase 9 D1 Readback
+
+Current live D1 readback after D02 cutover:
+
+- document rows: `1,197`
+- active documents: `1,195`
+- excluded documents: `2`
+- effective `CURRENT`: `53`
+- effective `SUPPORT`: `930`
+- effective `PROVENANCE`: `212`
+- duplicate non-empty Canonical IDs: `0 groups`
+- new Current row: `KN-ARCH-RURAL-LOCAL-CONSTRUCTION-001 / CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / INDEXED / 43 active chunks`
+- old row: `LEGACY-KN-ARCH-RURAL-LOCAL-CONSTRUCTION-D02-20260807 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 55 active chunks`
+
+These are corpus-wide live totals at the time of readback. They include other concurrent knowledge-runtime activity after the Phase 8 snapshot; therefore the corpus-wide delta from Phase 8 is not attributed wholly to D02. The D02-specific additive delta is the one new Current carrier while the old carrier remains active on the provenance plane.
+
+### Reader Readback After D02
+
+The existing Notion Reader / Dashboard was refreshed in place; no second Reader or knowledge database was created:
+
+- Core Knowledge: `279`
+- Methods: `75`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `215`
+- Academic migration: `7 / 7`
+- Next: `null` / specialist D-series queue complete
+- Reader markdown readback: `4,128` characters, `markdown_truncated=false`, `unknown_block_ids=[]`
+
+The separate OLEANDER Visual Knowledge Reader also picked up the D02 authority cutover dynamically through the existing derivative snapshot path:
+
+- live item count: `1,195`
+- Core Knowledge: `279`
+- Methods: `93`
+- Evidence: `574`
+- Practice: `78`
+- History: `212`
+- active/indexed documents: `1,195 / 1,195`
+- explicit Current: `53`
+- support / provenance: `930 / 212`
+- new D02 is `current / CURRENT / ACTIVE / VALID / INDEXED`;
+- old D02 is `history / PROVENANCE / LEGACY / VALID / INDEXED`;
+- canonical authority reported by the snapshot remains `Notion` and the derivative remains `Cloudflare D1 / oleander-knowledge-manifest`.
+
+The D-series academic migration is now complete at `7 / 7`. The next knowledge-maintenance target is `K05｜建筑研究与实践方向地图` as navigation / information-architecture cleanup only. K05 must align navigation to the new Current carriers and remove stale / legacy collisions without being rewritten into another academic essay.
+
+## Phase 10 — K05 Navigation / Information-Architecture Cleanup
+
+`K05｜建筑研究与实践方向地图` has completed the planned navigation-only cleanup. This is intentionally **not** another academic migration: the Current carrier remains a short `L4 / INDEX` map whose only job is to route readers to the correct Current knowledge objects, Support frameworks and Method owners.
+
+New Current navigation object:
+
+- Page ID: `3dab86be-5c47-81a1-961c-d067435b442c`
+- Canonical ID: `IDX-ARCH-RESEARCH-PRACTICE-MAP-001`
+- Human title: `K05｜建筑研究与实践方向地图｜Current-first 导航`
+- `CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / L4 / INDEX`
+- live Notion markdown readback: `3,476` characters, `markdown_truncated=false`, `unknown_block_ids=[]`
+- normal derivative state: `INDEXED`, `9` active chunks.
+
+### K05 IA Contract
+
+The Current K05 does not contain `Research Question / Thesis / Claim–Evidence / Rival / Conclusion / References` sections. It keeps the original five-direction navigation concept but rewires it to explicit authority tiers:
+
+- `CURRENT` is the first-reading entry when a live Current carrier exists;
+- `SUPPORT` is labelled explicitly when no Current owner exists;
+- `PROVENANCE / LEGACY` never appears as the primary direction entry;
+- research / sampling / causal / interview / POE questions route to `MTH-ARCH-RESEARCH-001`;
+- law / standard / evidence-version / source-conflict questions route to `MTH-ARCH-EVIDENCE-GOV-001`;
+- project specialty systems remain owned by their actual professional / jurisdictional owner rather than K05;
+- title similarity, embeddings and neighboring content never infer `CURRENT`.
+
+The active direction map now resolves the migrated D-series to their Current carriers:
+
+- urban / community -> `KN-ARCH-URBAN-REGEN-001`;
+- rural / local construction -> `KN-ARCH-RURAL-LOCAL-CONSTRUCTION-001`;
+- housing / daily life -> `KN-ARCH-HOUSING-DAILY-LIFE-001`;
+- public / social infrastructure -> `KN-ARCH-PUBLIC-SOCIAL-INFRA-001`;
+- climate + resilience -> one shared Current owner, `KN-ARCH-CLIMATE-RESILIENCE-001`, rather than two duplicate navigation authorities;
+- BIM / digital construction -> `KN-ARCH-DIGITAL-INFO-001`;
+- economics / development / lifecycle value -> `KN-ARCH-LIFECYCLE-VALUE-001`.
+
+Directions without a dedicated Current remain visibly second-layer rather than silently promoted:
+
+- history / region -> `KN-ARCH-HIST-001`, `KN-ARCH-HIST-002`, `KN-ARCH-HIST-008`, `KN-ARCH-HIST-013` (`SUPPORT`);
+- heritage / adaptive reuse -> `KN-ARCH-HERITAGE-007` (`SUPPORT`);
+- participation / accessibility / equity -> `KN-ARCH-EQUITY-006` (`SUPPORT`);
+- materials / tectonics / labour -> `KN-ARCH-TECT-004` (`SUPPORT`).
+
+The former broad label `健康包容与福祉` is no longer presented as if a single Current topic existed. Inclusion/equity remains on the Support carrier and medical typology routes separately through `IDX-ARCH-TYPOLOGY-MED-004` until a dedicated Current object exists.
+
+### K05 Concurrency / Duplicate Guard
+
+A uniqueness read immediately before creation found no existing `IDX-ARCH-RESEARCH-PRACTICE-MAP-001`, but the subsequent create call returned `409 canonical_id_exists` with page `3dab86be-5c47-81a1-961c-d067435b442c`. Another execution path had created the same reviewed Current candidate in the race window. The duplicate guard therefore prevented a second canonical page.
+
+The existing live page was not assumed valid from the `409`. It was read back in full and confirmed as the intended `CURRENT / ACTIVE / REVIEW / L4 / INDEX` carrier with the expected `3,476`-character navigation body and reciprocal replacement relation to old K05. Only after that live IA gate passed was it promoted to `relation_state=VALID`.
+
+### K05 NO LOSS / Replacement Readback
+
+The old K05 body is unchanged. Pre-cutover and post-cutover live readbacks are both exactly `783` markdown characters with SHA-256:
+
+`0cc4f9b3605c9ffebb58cb6b3d720648276cdfbff918013c6a45b385e0c1be3b`
+
+The old carrier is now:
+
+- Page ID: `3adb86be-5c47-81bb-9bed-f0ba6f952f06`
+- Canonical ID: `LEGACY-IDX-ARCH-RESEARCH-PRACTICE-MAP-K05-20260730`
+- `PROVENANCE / HISTORY_ONLY / LEGACY / VALID`
+- reciprocal replacement relation -> `IDX-ARCH-RESEARCH-PRACTICE-MAP-001`
+- `9` active chunks after normal re-indexing.
+
+The old five categories, distinction between directions / theory / professional systems / typology / G0–G9, old topic-minimum structure and old direction-selection criteria remain intact in History / Provenance.
+
+### Phase 10 D1 / Reader Readback
+
+Current corpus readback after K05 cutover:
+
+- document rows: `1,198`
+- active documents: `1,196`
+- excluded documents: `2`
+- effective `CURRENT`: `54`
+- effective `SUPPORT`: `930`
+- effective `PROVENANCE`: `212`
+- duplicate non-empty Canonical IDs: `0 groups`
+- new K05 row: `IDX-ARCH-RESEARCH-PRACTICE-MAP-001 / CURRENT / DEFAULT / UNVERIFIED / ACTIVE / VALID / L4 / INDEX / INDEXED / 9 active chunks`
+- old K05 row: `LEGACY-IDX-ARCH-RESEARCH-PRACTICE-MAP-K05-20260730 / PROVENANCE / HISTORY_ONLY / LEGACY / VALID / INDEXED / 9 active chunks`.
+
+The same Notion Reader / Dashboard was refreshed in place:
+
+- Core Knowledge: `280`
+- Methods: `75`
+- Evidence: `341`
+- Practice: `34`
+- History/Governance: `215`
+- Academic migration: `7 / 7`
+- next academic item: `null`
+- Reader markdown: `4,128` characters, `markdown_truncated=false`, `unknown_block_ids=[]`.
+
+The Visual Knowledge Reader derivative snapshot after K05 reports:
+
+- `1,196` live / indexed objects;
+- Core Knowledge `280`, Methods `93`, Evidence `574`, Practice `78`, History `212`;
+- explicit Current `54`, Support `930`, Provenance `212`;
+- D02 Current and K05 Current both resolve to `group=current / CURRENT / ACTIVE / VALID / INDEXED`;
+- their old carriers resolve to `group=history / PROVENANCE / LEGACY / VALID / INDEXED`;
+- canonical authority remains `Notion`; the derivative plane remains `Cloudflare D1 / oleander-knowledge-manifest`.
+
+With Phase 10 complete, the scoped D-series academic migration and the immediately following K05 IA cleanup are closed. Future knowledge refinement should select the next object from the governance queue by object type and owner contract rather than reopening these closed items or treating K05 as an essay target.
