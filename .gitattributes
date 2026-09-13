@@ -1,0 +1,7 @@
+# Critical runtime and workflow text is canonical LF in Git, independent of
+# developer OS or global core.autocrlf settings.
+00-governance/runtime/** text eol=lf
+90-shared/oleander-core-framework/runtime/notion_canonical_knowledge/** text eol=lf
+.github/workflows/** text eol=lf
+evals/scripts/*.py text eol=lf
+.gitattributes text eol=lf
