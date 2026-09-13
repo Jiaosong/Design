@@ -73,6 +73,28 @@ test("gateway relays only the bounded private Reader content edit POST", async (
   assert.deepEqual(await response.json(), { ok: true });
 });
 
+test("gateway relays the bounded content-review transition POST", async () => {
+  const response = await handleRequest(
+    new Request("https://gateway.example/api/reader-content-review", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Cookie: "oleander_reader_session=abc" },
+      body: JSON.stringify({
+        page_id: "abcd1234",
+        expected_canonical_id: "KN-METHOD-TEST-001",
+        expected_notion_last_edited_time: "2026-09-13T10:00:00.000Z",
+      }),
+    }),
+    mockFetch(async (request) => {
+      assert.equal(request.url, `${upstreamOrigin}/api/reader-content-review`);
+      assert.equal(request.method, "POST");
+      assert.equal(request.headers.get("cookie"), "oleander_reader_session=abc");
+      return Response.json({ ok: true });
+    }),
+  );
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { ok: true });
+});
+
 test("origin failure fails closed", async () => {
   const response = await handleRequest(new Request("https://gateway.example/"), async () => { throw new Error("offline"); });
   assert.equal(response.status, 502);

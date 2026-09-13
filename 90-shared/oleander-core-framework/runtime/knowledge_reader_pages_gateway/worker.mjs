@@ -1,6 +1,6 @@
 const PAGES_ORIGIN = "https://oleander-knowledge-reader-private.pages.dev";
 const ALLOWED_METHODS = new Set(["GET", "HEAD", "POST"]);
-const ALLOWED_POST_PATHS = new Set(["/login", "/api/reader-content-patch"]);
+const ALLOWED_POST_PATHS = new Set(["/login", "/api/reader-content-review", "/api/reader-content-patch"]);
 
 function securityHeaders(headers = new Headers()) {
   const out = new Headers(headers);
