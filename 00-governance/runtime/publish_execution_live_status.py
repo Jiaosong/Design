@@ -111,13 +111,17 @@ def _load_dev_var(path: Path, key: str) -> str | None:
     return None
 
 
-def _token() -> str:
+def _token(explicit_token_file: str | None = None) -> str:
     direct = os.environ.get("OLEANDER_KNOWLEDGE_READER_TOKEN", "").strip()
     if direct:
         return direct
     direct = os.environ.get("OLEANDER_API_TOKEN", "").strip()
     if direct:
         return direct
+    if explicit_token_file:
+        value = Path(explicit_token_file).read_text(encoding="utf-8").strip()
+        if value:
+            return value
     token_file = os.environ.get("OLEANDER_KNOWLEDGE_READER_TOKEN_FILE", "").strip()
     if token_file:
         value = Path(token_file).read_text(encoding="utf-8").strip()
@@ -132,16 +136,17 @@ def _token() -> str:
     )
 
 
-def publish(payload: dict, endpoint: str, timeout: float = 6.0) -> dict:
+def publish(payload: dict, endpoint: str, timeout: float = 6.0, token_file: str | None = None) -> dict:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     request = urllib.request.Request(
         endpoint,
         data=body,
         method="POST",
         headers={
-            "Authorization": f"Bearer {_token()}",
+            "Authorization": f"Bearer {_token(token_file)}",
             "Content-Type": "application/json",
             "Accept": "application/json",
+            "User-Agent": "OLEANDER-Execution-Live-Status/1.0",
         },
     )
     try:
@@ -175,6 +180,7 @@ def main() -> None:
     parser.add_argument("input", nargs="?", help="JSON input or receipt path; omit/use '-' for stdin")
     parser.add_argument("--receipt", action="store_true", help="Interpret input as OLEANDER Execution Receipt v1")
     parser.add_argument("--dry-run", action="store_true", help="Validate/extract payload without network mutation")
+    parser.add_argument("--token-file", default=None, help="Read the bearer credential from this local file without exporting it through the shell environment")
     parser.add_argument(
         "--endpoint",
         default=os.environ.get("OLEANDER_KNOWLEDGE_READER_EXECUTION_STATUS_ENDPOINT", DEFAULT_ENDPOINT),
@@ -191,7 +197,7 @@ def main() -> None:
                 "payload": payload,
             }
         else:
-            result = publish(payload, args.endpoint)
+            result = publish(payload, args.endpoint, token_file=args.token_file)
     except (OSError, ValueError, RuntimeError, json.JSONDecodeError) as exc:
         print(json.dumps({
             "publisher": "OLEANDER_EXECUTION_LIVE_STATUS_PROJECTION",
