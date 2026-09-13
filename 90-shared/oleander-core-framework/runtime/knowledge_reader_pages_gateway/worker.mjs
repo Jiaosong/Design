@@ -1,5 +1,6 @@
-﻿const PAGES_ORIGIN = "https://oleander-knowledge-reader-private.pages.dev";
+const PAGES_ORIGIN = "https://oleander-knowledge-reader-private.pages.dev";
 const ALLOWED_METHODS = new Set(["GET", "HEAD", "POST"]);
+const ALLOWED_POST_PATHS = new Set(["/login", "/api/reader-content-patch"]);
 
 function securityHeaders(headers = new Headers()) {
   const out = new Headers(headers);
@@ -41,7 +42,7 @@ function rewriteLocation(request, headers) {
 export async function handleRequest(request, fetchImpl = fetch) {
   const url = new URL(request.url);
   if (!ALLOWED_METHODS.has(request.method)) return fail(405, "method_not_allowed");
-  if (request.method === "POST" && url.pathname !== "/login") return fail(405, "post_only_allowed_for_login");
+  if (request.method === "POST" && !ALLOWED_POST_PATHS.has(url.pathname)) return fail(405, "post_route_not_allowed");
 
   let upstream;
   try {
