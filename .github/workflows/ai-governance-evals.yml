@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Enforce canonical LF in critical runtime blobs
+        run: python evals/scripts/validate_runtime_line_endings.py
+
       - name: Validate governance corpus
         run: python evals/scripts/validate_evals.py
 
@@ -105,6 +108,7 @@ jobs:
           echo '- For declared EXISTING_PROJECT_REPAIR cards, enforces material artifact delta before handoff, explicit run/input/output provenance, dependency-digest stale propagation, and baseline/change-impact/rollback closure.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Replay/example/test/receipt/archive/frozen-Legacy zones are not retroactively rewritten by the prospective Control Card scan.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces full immutable commit-SHA pins for external GitHub Actions dependencies across all workflows.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Rejects CRLF Git blobs in critical runtime, knowledge-runtime, workflow and eval-script paths so connector/API writes cannot bypass local line-ending hygiene.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates release workflow defaults against the locked Timer v3.3 authority manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Zero-denominator metrics must render as N/A, never as 0%.' >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
