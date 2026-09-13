@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.1"
+BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.2"
 RESOLVER_REVISION = "1.2.5"
 BEGIN = f"[[{BINDING_REVISION}:BEGIN]]"
 END = f"[[{BINDING_REVISION}:END]]"
@@ -20,17 +20,17 @@ MAX_GOAL_SYSTEM_PROMPT_CHARS = 20_000
 MAIN_CHAT_BINDING = f"""{BEGIN}
 For OLEANDER-scoped work, Chat On Steroids is an execution adapter only. Before a generic continue/execute/repair/optimize mutation or any completion claim, consume the existing OLEANDER resolver instead of inferring execution state from chat text.
 
-Use `00-governance/runtime/oleander_chat_resolver_adapter.py`, which binds `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision {RESOLVER_REVISION}. Feed it Current authority/frontier/checkpoint/constraint/flow evidence; its result is transient and never becomes Project State.
+Use `00-governance/runtime/oleander_chat_runtime_bridge.py`, which delegates resolver decisions to the side-effect-free `oleander_chat_resolver_adapter.py` bound to `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision {RESOLVER_REVISION}. Feed it Current authority/frontier/checkpoint/constraint/flow evidence; its resolver result is transient and never becomes Project State.
 
 Run the preflight through the normal CoS command surface so its structured JSON result is recorded as an actual tool call/readback. Hard rules: transcript, handoff and summary are not checkpoint authority; generic continue resumes the verified `next_allowed_action`; a CLOSED checkpoint is not reopened; sticky constraints remain active until a later explicit user revocation; checkpoint sequence must be current before mutation; ready nodes auto-advance while legal; ambiguous frontier or authority/sequence drift revalidates or HOLDs; completion is allowed only after the Flow Completion Gate returns PASS. Never create a second framework, Control Plane, Project State or checkpoint database to compensate for missing runtime state.
 
-For live Reader observability, after each material verified checkpoint/node transition publish the source-observed execution projection through `00-governance/runtime/publish_execution_live_status.py`. Publish only task/executor identity, raw WORKING/REVIEW_PENDING/HOLD/CLOSED status, current node, next allowed action, checkpoint sequence and existing receipt/readback fields. This is latest-only telemetry: a publish failure degrades observability but grants no authority, does not change the resolver decision, and never turns observed CLOSED into canonical completion without the existing Execution Receipt + Flow Completion readback.
+For live Reader observability, invoke the same runtime bridge again with the refreshed source-observed checkpoint after each material verified checkpoint/node transition. When `task_id`, raw `status` and the existing checkpoint/receipt fields are present, the bridge automatically attempts the bounded `publish_execution_live_status.py` projection; do not invoke a second state store or owner resolver. This is latest-only telemetry: a publish failure degrades observability but grants no authority, does not change the resolver decision, and never turns observed CLOSED into canonical completion without the existing Execution Receipt + Flow Completion readback.
 {END}"""
 
 GOAL_BINDING = f"""{BEGIN}
 OLEANDER override for Goal/Objective/Loop decisions: do not decide continue or stop from the transcript, an assistant completion claim, or a compaction handoff alone. Those are not checkpoint authority.
 
-The latest OLEANDER execution turn must be grounded in the recorded tool result from `00-governance/runtime/oleander_chat_resolver_adapter.py` (existing Resolver v1.2 implementation revision {RESOLVER_REVISION}). `goal.includeToolCalls` is enabled by this binding so the decision context can consume that readback directly. If no current machine result is present, continue only by instructing ChatGPT to run the existing resolver preflight and follow its `conversation_directive`; do not invent a new task, plan, framework or state carrier.
+The latest OLEANDER execution turn must be grounded in the recorded tool result from `00-governance/runtime/oleander_chat_runtime_bridge.py`, whose `preflight` is produced by the existing Resolver v1.2 implementation revision {RESOLVER_REVISION}. `goal.includeToolCalls` is enabled by this binding so the decision context can consume that readback directly. If no current machine result is present, continue only by instructing ChatGPT to run the existing runtime bridge preflight and follow `preflight.conversation_directive`; do not invent a new task, plan, framework or state carrier.
 
 Interpret directives strictly: `EXECUTE_NEXT_ALLOWED_ACTION` / `AUTO_ADVANCE_NEXT_READY_NODE` means continue that target; `REVALIDATE_*`, `REFRESH_FRONTIER_BEFORE_MUTATION` or `HOLD_*` means request only that bounded revalidation/HOLD action; `STOP_CLOSED_TASK` or `STOP_FLOW_COMPLETION_GATE_PASS` means the OLEANDER task is finished for generic continuation and no optional polish may be invented. In Goal/Objective mode return stop/NO_REPLY. In Loop mode this OLEANDER rule overrides the generic instruction to keep raising the bar: return stop rather than manufacturing more work. If the host refuses a Loop stop, fail closed and send no reopening follow-up.
 {END}"""

@@ -645,24 +645,25 @@ function executionRuntimeStateKey(taskId: string, executorId: string): string {
   return `execution_status_v1:${encodeURIComponent(taskId)}:${encodeURIComponent(executorId)}`;
 }
 
-function escapeSqlLike(value: string): string {
-  return value.replace(/\\/g, "\\\\").replace(/%/g, "\\%").replace(/_/g, "\\_");
-}
-
 export async function putExecutionLiveStatus(
   db: D1Database,
   input: ExecutionLiveStatusProjection,
 ): Promise<{ applied: boolean; observed_checkpoint_sequence: number | null; updated_at: string }> {
   const key = executionRuntimeStateKey(input.task_id, input.executor_id);
   const updatedAt = now();
+  const stableValue = JSON.stringify(input);
   const value = JSON.stringify({ ...input, updated_at: updatedAt });
   const result = await db
     .prepare(
       `INSERT INTO runtime_state (state_key, state_value, updated_at) VALUES (?, ?, ?)
        ON CONFLICT(state_key) DO UPDATE SET state_value=excluded.state_value, updated_at=excluded.updated_at
-       WHERE COALESCE(CAST(json_extract(runtime_state.state_value, '$.checkpoint_sequence') AS INTEGER), -1) <= ?`,
+       WHERE COALESCE(CAST(json_extract(runtime_state.state_value, '$.checkpoint_sequence') AS INTEGER), -1) < ?
+          OR (
+            COALESCE(CAST(json_extract(runtime_state.state_value, '$.checkpoint_sequence') AS INTEGER), -1) = ?
+            AND json_remove(runtime_state.state_value, '$.updated_at') = json(?)
+          )`,
     )
-    .bind(key, value, updatedAt, input.checkpoint_sequence)
+    .bind(key, value, updatedAt, input.checkpoint_sequence, input.checkpoint_sequence, stableValue)
     .run();
   const applied = (result.meta.changes ?? 0) > 0;
   const observed = await getRuntimeState(db, key);
@@ -689,15 +690,15 @@ export async function listExecutionLiveStatus(
 ): Promise<ExecutionLiveStatusProjection[]> {
   const boundedLimit = Math.max(1, Math.min(50, Math.floor(limit)));
   const keyPrefix = taskId
-    ? `${escapeSqlLike(`execution_status_v1:${encodeURIComponent(taskId)}:`)}%`
-    : "execution_status_v1:%";
+    ? `execution_status_v1:${encodeURIComponent(taskId)}:`
+    : "execution_status_v1:";
   const rows = await db
     .prepare(
       `SELECT state_value, updated_at FROM runtime_state
-       WHERE state_key LIKE ? ESCAPE '\\'
+       WHERE substr(state_key, 1, length(?)) = ?
        ORDER BY updated_at DESC LIMIT ?`,
     )
-    .bind(keyPrefix, boundedLimit)
+    .bind(keyPrefix, keyPrefix, boundedLimit)
     .all<{ state_value: string; updated_at: string }>();
   const result: ExecutionLiveStatusProjection[] = [];
   for (const row of rows.results) {
