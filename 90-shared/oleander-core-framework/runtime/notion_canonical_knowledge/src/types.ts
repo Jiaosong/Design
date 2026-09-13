@@ -326,6 +326,32 @@ export interface KnowledgeReaderFrameworkReadback {
       relationComplete: boolean;
       unresolvedPageIds: string[];
     };
+    lineage: {
+      source: {
+        declaredIds: string[];
+        items: KnowledgeReaderFrameworkObjectRef[];
+        relationComplete: boolean;
+        unresolvedPageIds: string[];
+      };
+      method: {
+        declaredIds: string[];
+        items: KnowledgeReaderFrameworkObjectRef[];
+        relationComplete: boolean;
+        unresolvedPageIds: string[];
+      };
+      replacement: {
+        declaredIds: string[];
+        items: KnowledgeReaderFrameworkObjectRef[];
+        relationComplete: boolean;
+        unresolvedPageIds: string[];
+      };
+      replacedDocument: {
+        declaredIds: string[];
+        items: KnowledgeReaderFrameworkObjectRef[];
+        relationComplete: boolean;
+        unresolvedPageIds: string[];
+      };
+    };
     projects: {
       primaryDeclaredIds: string[];
       relatedDeclaredIds: string[];

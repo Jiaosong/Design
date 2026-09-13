@@ -43,6 +43,12 @@ function frameworkFixture(): KnowledgeReaderFrameworkReadback {
         relationComplete: true,
         unresolvedPageIds: [],
       },
+      lineage: {
+        source: { declaredIds: [], items: [], relationComplete: true, unresolvedPageIds: [] },
+        method: { declaredIds: [], items: [], relationComplete: true, unresolvedPageIds: [] },
+        replacement: { declaredIds: [], items: [], relationComplete: true, unresolvedPageIds: [] },
+        replacedDocument: { declaredIds: [], items: [], relationComplete: true, unresolvedPageIds: [] },
+      },
       projects: {
         primaryDeclaredIds: [],
         relatedDeclaredIds: [],

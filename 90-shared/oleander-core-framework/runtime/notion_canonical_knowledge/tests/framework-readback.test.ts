@@ -367,6 +367,10 @@ describe("framework readback normalization", () => {
         "Canonical Parent｜层级上位": { type: "relation", relation: [] },
         "Canonical Children｜层级子级": { type: "relation", relation: [] },
         "相关笔记": { type: "relation", relation: [{ id: "related-note-1" }] },
+        "来源文档": { type: "relation", relation: [{ id: "source-note-1" }] },
+        "引用方法": { type: "relation", relation: [{ id: "method-note-1" }] },
+        "替代文档": { type: "relation", relation: [{ id: "replacement-note-1" }] },
+        "被替代文档": { type: "relation", relation: [{ id: "replaced-note-1" }] },
         "主项目": { type: "relation", relation: [{ id: "project-main" }] },
         "关联项目": { type: "relation", relation: [{ id: "project-related" }] },
       },
@@ -405,21 +409,28 @@ describe("framework readback normalization", () => {
       }
       throw new Error(`unexpected Notion URL: ${url}`);
     });
+    const noteRows = [
+      ["related-note-1", "KN-RELATED-001", "Related note", "THEORY"],
+      ["source-note-1", "SRC-TEST-001", "Source note", "SOURCE"],
+      ["method-note-1", "MTH-TEST-001", "Method note", "METHOD"],
+      ["replacement-note-1", "KN-REPLACEMENT-001", "Replacement note", "THEORY"],
+      ["replaced-note-1", "KN-REPLACED-001", "Replaced note", "THEORY"],
+    ].map(([page_id, canonical_id, title, knowledge_role]) => ({
+      page_id,
+      canonical_id,
+      title,
+      effective_space: "CURRENT",
+      governance_state: "ACTIVE",
+      relation_state: "VALID",
+      content_level: "L5｜Knowledge Object",
+      knowledge_role,
+      in_trash: 0,
+    }));
     const manifest = {
       prepare: () => ({
-        bind: () => ({
+        bind: (...pageIds: string[]) => ({
           all: async () => ({
-            results: [{
-              page_id: "related-note-1",
-              canonical_id: "KN-RELATED-001",
-              title: "Related note",
-              effective_space: "CURRENT",
-              governance_state: "ACTIVE",
-              relation_state: "VALID",
-              content_level: "L5｜Knowledge Object",
-              knowledge_role: "THEORY",
-              in_trash: 0,
-            }],
+            results: noteRows.filter((row) => typeof row.page_id === "string" && pageIds.includes(row.page_id)),
           }),
         }),
       }),
@@ -463,6 +474,30 @@ describe("framework readback normalization", () => {
     expect(result.dedicatedRelations.semanticRelated.items).toMatchObject([
       { registry: "notes", pageId: "related-note-1", canonicalId: "KN-RELATED-001" },
     ]);
+    expect(result.dedicatedRelations.lineage.source).toMatchObject({
+      declaredIds: ["source-note-1"],
+      relationComplete: true,
+      unresolvedPageIds: [],
+      items: [{ registry: "notes", pageId: "source-note-1", canonicalId: "SRC-TEST-001" }],
+    });
+    expect(result.dedicatedRelations.lineage.method).toMatchObject({
+      declaredIds: ["method-note-1"],
+      relationComplete: true,
+      unresolvedPageIds: [],
+      items: [{ registry: "notes", pageId: "method-note-1", canonicalId: "MTH-TEST-001" }],
+    });
+    expect(result.dedicatedRelations.lineage.replacement).toMatchObject({
+      declaredIds: ["replacement-note-1"],
+      relationComplete: true,
+      unresolvedPageIds: [],
+      items: [{ registry: "notes", pageId: "replacement-note-1", canonicalId: "KN-REPLACEMENT-001" }],
+    });
+    expect(result.dedicatedRelations.lineage.replacedDocument).toMatchObject({
+      declaredIds: ["replaced-note-1"],
+      relationComplete: true,
+      unresolvedPageIds: [],
+      items: [{ registry: "notes", pageId: "replaced-note-1", canonicalId: "KN-REPLACED-001" }],
+    });
     expect(result.dedicatedRelations.projects.primary).toMatchObject([
       { registry: "projects", pageId: "project-main", projectId: "C04", projectLevel: "P2｜Project" },
     ]);

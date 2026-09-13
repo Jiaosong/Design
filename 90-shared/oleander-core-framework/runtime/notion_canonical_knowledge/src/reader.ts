@@ -541,6 +541,12 @@ export async function hydrateKnowledgeReaderFramework(
           relationComplete: false,
           unresolvedPageIds: [],
         },
+        lineage: {
+          source: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          method: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          replacement: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          replacedDocument: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+        },
         projects: {
           primaryDeclaredIds: [],
           relatedDeclaredIds: [],
@@ -620,6 +626,12 @@ export async function hydrateKnowledgeReaderFramework(
           relationComplete: false,
           unresolvedPageIds: [],
         },
+        lineage: {
+          source: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          method: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          replacement: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+          replacedDocument: { declaredIds: [], items: [], relationComplete: false, unresolvedPageIds: [] },
+        },
         projects: {
           primaryDeclaredIds: [],
           relatedDeclaredIds: [],
@@ -660,6 +672,10 @@ export async function hydrateKnowledgeReaderFramework(
     parentRelation,
     childrenRelation,
     semanticRelatedRelation,
+    sourceRelation,
+    methodRelation,
+    replacementRelation,
+    replacedDocumentRelation,
     primaryProjectRelation,
     relatedProjectRelation,
   ] = await Promise.all([
@@ -668,6 +684,10 @@ export async function hydrateKnowledgeReaderFramework(
     safeRelationReadback(env, page, FIELDS.canonicalParent, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.canonicalChildren, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.semanticRelated, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.sourceRelations, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.methodRelations, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.replacements, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.replacedDocuments, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.primaryProject, deadlineAtMs),
     safeRelationReadback(env, page, FIELDS.relatedProjects, deadlineAtMs),
   ]);
@@ -676,17 +696,33 @@ export async function hydrateKnowledgeReaderFramework(
   const declaredParentIds = parentRelation.ids;
   const declaredChildrenIds = childrenRelation.ids;
   const semanticRelatedDeclaredIds = semanticRelatedRelation.ids;
+  const sourceDeclaredIds = sourceRelation.ids;
+  const methodDeclaredIds = methodRelation.ids;
+  const replacementDeclaredIds = replacementRelation.ids;
+  const replacedDocumentDeclaredIds = replacedDocumentRelation.ids;
   const primaryProjectDeclaredIds = primaryProjectRelation.ids;
   const relatedProjectDeclaredIds = relatedProjectRelation.ids;
   const declaredProjectIds = uniqueStrings([...primaryProjectDeclaredIds, ...relatedProjectDeclaredIds]);
   const methodFamilyRead = methodFamilyReadback(page);
 
-  const [domainRegistry, projectRegistry, semanticRelatedHydrated] = await Promise.all([
+  const [
+    domainRegistry,
+    projectRegistry,
+    semanticRelatedHydrated,
+    sourceHydrated,
+    methodHydrated,
+    replacementHydrated,
+    replacedDocumentHydrated,
+  ] = await Promise.all([
     queryDomainRegistryPages(env, deadlineAtMs).catch(() => ({ pages: [] as NotionPage[], complete: false })),
     declaredProjectIds.length
       ? queryProjectRegistryPages(env, deadlineAtMs).catch(() => ({ pages: [] as NotionPage[], complete: false }))
       : Promise.resolve({ pages: [] as NotionPage[], complete: true }),
     hydrateNoteRefsFromManifest(env.MANIFEST, semanticRelatedDeclaredIds),
+    hydrateNoteRefsFromManifest(env.MANIFEST, sourceDeclaredIds),
+    hydrateNoteRefsFromManifest(env.MANIFEST, methodDeclaredIds),
+    hydrateNoteRefsFromManifest(env.MANIFEST, replacementDeclaredIds),
+    hydrateNoteRefsFromManifest(env.MANIFEST, replacedDocumentDeclaredIds),
   ]);
   const domainRegistryPages = domainRegistry.pages;
   const domainRegistryComplete = domainRegistry.complete;
@@ -796,6 +832,32 @@ export async function hydrateKnowledgeReaderFramework(
         items: semanticRelatedHydrated.refs,
         relationComplete: semanticRelatedRelation.complete,
         unresolvedPageIds: semanticRelatedHydrated.unresolvedPageIds,
+      },
+      lineage: {
+        source: {
+          declaredIds: sourceDeclaredIds,
+          items: sourceHydrated.refs,
+          relationComplete: sourceRelation.complete,
+          unresolvedPageIds: sourceHydrated.unresolvedPageIds,
+        },
+        method: {
+          declaredIds: methodDeclaredIds,
+          items: methodHydrated.refs,
+          relationComplete: methodRelation.complete,
+          unresolvedPageIds: methodHydrated.unresolvedPageIds,
+        },
+        replacement: {
+          declaredIds: replacementDeclaredIds,
+          items: replacementHydrated.refs,
+          relationComplete: replacementRelation.complete,
+          unresolvedPageIds: replacementHydrated.unresolvedPageIds,
+        },
+        replacedDocument: {
+          declaredIds: replacedDocumentDeclaredIds,
+          items: replacedDocumentHydrated.refs,
+          relationComplete: replacedDocumentRelation.complete,
+          unresolvedPageIds: replacedDocumentHydrated.unresolvedPageIds,
+        },
       },
       projects: {
         primaryDeclaredIds: primaryProjectDeclaredIds,
