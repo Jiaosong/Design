@@ -1,5 +1,35 @@
 # C04 Web｜公开作品结构重构｜2026-08-23
 
+## ROUTER CONTROL RECEIPT｜2026-09-14｜OUTPUT_RECONCILIATION_HOLD
+
+- `WORK_ID`: `UNKNOWN / HOLD` — no explicit stable `work_id` exists in the current C04 governance/receipt surfaces; ROUTER will not invent one.
+- `ROOT_WORK_ID`: `UNKNOWN / HOLD`.
+- `PARENT_WORK_ID`: `N/A`.
+- `PROJECT_ID`: `PRJ-C04-QINGJIANG-SHISHU`.
+- `OBJECT_ID`: `PRJ-C04-DIGITAL-INTERACTION`.
+- `LANE`: `ROUTER`.
+- `WORK_TYPE`: `OUTPUT_RECONCILIATION` (pure control-layer lineage repair; no project-content mutation authorized by this receipt).
+- `MODE`: `PROJECT_MODE`.
+- `OUTPUT_KIND`: `CONTROL_RECEIPT`.
+- `CANONICAL_OUTPUT_TARGET`: `05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/C04_WEB_v1_12_RECEIPT.md` (existing receipt; no second log/page created).
+- `EXPECTED_SOURCE_REVISION`: `c9cf475ce39e44bea94b96cc2699facecc57aaf9`.
+- `EXPECTED_AUTHORITY_HASH`: `UNKNOWN / HOLD`.
+- `CLAIM`: reconcile stable work identity/lineage before issuing another lane claim; preserve the existing project artifact and authority boundaries.
+- `REQUIRED_OUTPUT`: an existing-authority-backed stable `work_id` (and root/parent lineage if applicable) bound to this object/receipt without creating a parallel workflow schema.
+- `ARTIFACT_TARGET`: GitHub PR `#465` / `agent/c04-web-v1-12-currentize-20260830`; no artifact bytes are changed by this control receipt.
+- `BLOCKED_BY`: (1) stable `work_id` absent from current exact C04 governance/receipt readback; (2) exact PR head `c9cf475ce39e44bea94b96cc2699facecc57aaf9` currently reports `mergeable=false`; (3) independent exact-revision PRESENTATION/VALIDATION release verdict remains absent.
+- `RELEASE_CONDITION`: resolve/reuse the pre-existing stable work identity from the canonical control plane; exact-readback the resulting PR head; only then route the same `work_id` to the applicable lane. Merge remains separately gated by mergeability, required CI, authority/currentness, independent verdict, remote readback and no residual blocker.
+- `WORKFLOW_STATE`: `HOLD`.
+- `STATE_ENTERED_AT`: `2026-09-14T00:06:33+08:00`.
+- `PRODUCER_ID`: `ROUTER`.
+- `SUBMITTED_REVISION`: `N/A` (control receipt only; no project-native artifact submission).
+- `ARTIFACT_DIGEST`: `N/A`.
+- `READBACK_REFS`: GitHub PR `#465` exact-head metadata + exact-head workflow-run readback + `C04_CURRENT.md` exact-head authority readback.
+- `VALIDATION_VERDICT`: `N/A / ROUTER IS NOT VALIDATION`.
+- `NEXT_GATE`: `OUTPUT_RECONCILIATION → stable work_id lineage readback`; after that, if mergeability remains false, route `REPAIR` to `DESIGN` using the same stable work_id.
+- `CLOSURE_REASON`: `NOT CLOSED / OUTPUT_RECONCILIATION_HOLD`.
+
+This receipt records control state only. It does not overwrite Notion/Project Current, does not promote any artifact, and does not convert CI/browser evidence into Design or Validation KEEP.
 ## VALIDATION RETURN｜2026-09-09｜b61ffbf
 
 - `PROJECT_ID`: `PRJ-C04-QINGJIANG-SHISHU`
