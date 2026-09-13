@@ -15,6 +15,7 @@ export interface Env {
   NOTION_ROOT_PAGE_ID: string;
   NOTION_NOTES_DATA_SOURCE_ID: string;
   NOTION_DOMAINS_DATA_SOURCE_ID: string;
+  NOTION_PROJECTS_DATA_SOURCE_ID: string;
   EMBEDDING_MODEL: string;
   EMBEDDING_DIMENSIONS: string;
   API_DEFAULT_TOP_K: string;
@@ -222,7 +223,7 @@ export interface KnowledgeReaderDetailRelation {
 }
 
 export interface KnowledgeReaderFrameworkObjectRef {
-  registry: "notes" | "domains";
+  registry: "notes" | "domains" | "projects";
   metadataSource: "NOTION_LIVE" | "D1_DERIVATIVE";
   pageId: string;
   title?: string;
@@ -236,6 +237,9 @@ export interface KnowledgeReaderFrameworkObjectRef {
   inTrash?: boolean;
   domainLevel?: string;
   frameworkPath?: string;
+  projectId?: string;
+  projectLevel?: string;
+  projectPath?: string;
 }
 
 export type KnowledgeReaderRequiredNativeOutput =
@@ -314,6 +318,24 @@ export interface KnowledgeReaderFrameworkReadback {
     parentRelationComplete: boolean;
     childrenRelationComplete: boolean;
     unresolvedPageIds: string[];
+  };
+  dedicatedRelations: {
+    semanticRelated: {
+      declaredIds: string[];
+      items: KnowledgeReaderFrameworkObjectRef[];
+      relationComplete: boolean;
+      unresolvedPageIds: string[];
+    };
+    projects: {
+      primaryDeclaredIds: string[];
+      relatedDeclaredIds: string[];
+      primary: KnowledgeReaderFrameworkObjectRef[];
+      related: KnowledgeReaderFrameworkObjectRef[];
+      primaryRelationComplete: boolean;
+      relatedRelationComplete: boolean;
+      registryInventoryComplete: boolean;
+      unresolvedPageIds: string[];
+    };
   };
   routingInputs: {
     knowledgeRole?: string;

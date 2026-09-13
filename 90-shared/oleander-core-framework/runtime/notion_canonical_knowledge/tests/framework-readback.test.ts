@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fetchRelationReadback, NotionReadbackBudgetError, queryDomainRegistryPages } from "../src/notion";
+import { fetchRelationReadback, NotionReadbackBudgetError, queryDomainRegistryPages, queryProjectRegistryPages } from "../src/notion";
 import { normalizePage, propertyMultiSelectNames } from "../src/normalize";
-import { methodFamilyReadback, primaryDomainRoutingReadiness, safeRelationReadback } from "../src/reader";
-import type { Env, KnowledgeReaderFrameworkObjectRef, NotionPage, NotionProperty } from "../src/types";
+import { hydrateKnowledgeReaderFramework, methodFamilyReadback, primaryDomainRoutingReadiness, safeRelationReadback } from "../src/reader";
+import type { Env, KnowledgeReaderDetail, KnowledgeReaderFrameworkObjectRef, NotionPage, NotionProperty } from "../src/types";
 
 describe("framework readback normalization", () => {
   afterEach(() => {
@@ -48,6 +48,28 @@ describe("framework readback normalization", () => {
     expect(normalized.methodFamilies).toEqual(["分析建模"]);
     expect(normalized.sourceRelationIds).toEqual(["source-1"]);
     expect(normalized.methodRelationIds).toEqual(["method-1"]);
+  });
+
+  it("keeps semantic Related and Project-use relations distinct from hierarchy and lineage", async () => {
+    const page: NotionPage = {
+      object: "page",
+      id: "page-1",
+      properties: {
+        "相关笔记": { type: "relation", relation: [{ id: "related-note-1" }] },
+        "主项目": { type: "relation", relation: [{ id: "project-main" }] },
+        "关联项目": { type: "relation", relation: [{ id: "project-related" }] },
+        "来源文档": { type: "relation", relation: [{ id: "source-1" }] },
+        "引用方法": { type: "relation", relation: [{ id: "method-1" }] },
+        "Canonical Parent｜层级上位": { type: "relation", relation: [{ id: "parent-1" }] },
+      },
+    };
+    const env = {} as Env;
+    await expect(safeRelationReadback(env, page, "相关笔记")).resolves.toEqual({ ids: ["related-note-1"], complete: true });
+    await expect(safeRelationReadback(env, page, "主项目")).resolves.toEqual({ ids: ["project-main"], complete: true });
+    await expect(safeRelationReadback(env, page, "关联项目")).resolves.toEqual({ ids: ["project-related"], complete: true });
+    expect(normalizePage(page).sourceRelationIds).toEqual(["source-1"]);
+    expect(normalizePage(page).methodRelationIds).toEqual(["method-1"]);
+    expect(normalizePage(page).canonicalParentIds).toEqual(["parent-1"]);
   });
 
   it("fails closed when an expected relation field is missing or retagged", async () => {
@@ -301,6 +323,155 @@ describe("framework readback normalization", () => {
     expect(result.complete).toBe(false);
     expect(result.pages).toHaveLength(20);
     expect(fetchMock).toHaveBeenCalledTimes(20);
+  });
+
+  it("queries the configured Project registry with bounded cursor pagination", async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        results: [{ object: "page", id: "project-1", properties: {} }],
+        has_more: true,
+        next_cursor: "project-cursor",
+      }), { status: 200, headers: { "Content-Type": "application/json" } }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        results: [{ object: "page", id: "project-2", properties: {} }],
+        has_more: false,
+        next_cursor: null,
+      }), { status: 200, headers: { "Content-Type": "application/json" } }));
+    const promise = queryProjectRegistryPages({
+      NOTION_TOKEN: "test",
+      NOTION_VERSION: "test",
+      NOTION_PROJECTS_DATA_SOURCE_ID: "projects-current",
+    } as Env);
+    await vi.runAllTimersAsync();
+    const result = await promise;
+    expect(result.complete).toBe(true);
+    expect(result.pages.map((page) => page.id)).toEqual(["project-1", "project-2"]);
+    expect(String(fetchMock.mock.calls[0]?.[0])).toContain("/v1/data_sources/projects-current/query");
+  });
+
+  it("hydrates semantic Related plus main/related Project identity without using them as owner inputs", async () => {
+    vi.useFakeTimers();
+    const notePage: NotionPage = {
+      object: "page",
+      id: "note-1",
+      parent: { type: "data_source_id", data_source_id: "notes-current" },
+      last_edited_time: "2026-09-13T00:00:00.000Z",
+      properties: {
+        Name: { type: "title", title: [{ plain_text: "Knowledge object" }] },
+        "Canonical ID": { type: "rich_text", rich_text: [{ plain_text: "KN-TEST-001" }] },
+        "知识角色": { type: "select", select: { name: "THEORY" } },
+        "方法家族": { type: "multi_select", multi_select: [] },
+        "主领域": { type: "relation", relation: [] },
+        "关联领域": { type: "relation", relation: [] },
+        "Canonical Parent｜层级上位": { type: "relation", relation: [] },
+        "Canonical Children｜层级子级": { type: "relation", relation: [] },
+        "相关笔记": { type: "relation", relation: [{ id: "related-note-1" }] },
+        "主项目": { type: "relation", relation: [{ id: "project-main" }] },
+        "关联项目": { type: "relation", relation: [{ id: "project-related" }] },
+      },
+    };
+    const project = (id: string, projectId: string, level: string): NotionPage => ({
+      object: "page",
+      id,
+      parent: { type: "data_source_id", data_source_id: "projects-current" },
+      last_edited_time: "2026-09-12T00:00:00.000Z",
+      properties: {
+        Name: { type: "title", title: [{ plain_text: projectId }] },
+        "Project ID｜项目ID": { type: "rich_text", rich_text: [{ plain_text: projectId }] },
+        "项目层级": { type: "select", select: { name: level } },
+        "治理状态": { type: "select", select: { name: "ACTIVE" } },
+        "关系状态": { type: "select", select: { name: "VALID" } },
+        "项目路径": { type: "rich_text", rich_text: [{ plain_text: `Portfolio/${projectId}` }] },
+      },
+    });
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/v1/pages/note-1")) {
+        return new Response(JSON.stringify(notePage), { status: 200, headers: { "Content-Type": "application/json" } });
+      }
+      if (url.includes("/v1/data_sources/domains-current/query")) {
+        return new Response(JSON.stringify({ results: [], has_more: false, next_cursor: null }), { status: 200, headers: { "Content-Type": "application/json" } });
+      }
+      if (url.includes("/v1/data_sources/projects-current/query")) {
+        return new Response(JSON.stringify({
+          results: [
+            project("project-main", "C04", "P2｜Project"),
+            project("project-related", "C04-WS-01", "P3｜Workstream"),
+          ],
+          has_more: false,
+          next_cursor: null,
+        }), { status: 200, headers: { "Content-Type": "application/json" } });
+      }
+      throw new Error(`unexpected Notion URL: ${url}`);
+    });
+    const manifest = {
+      prepare: () => ({
+        bind: () => ({
+          all: async () => ({
+            results: [{
+              page_id: "related-note-1",
+              canonical_id: "KN-RELATED-001",
+              title: "Related note",
+              effective_space: "CURRENT",
+              governance_state: "ACTIVE",
+              relation_state: "VALID",
+              content_level: "L5｜Knowledge Object",
+              knowledge_role: "THEORY",
+              in_trash: 0,
+            }],
+          }),
+        }),
+      }),
+    } as unknown as D1Database;
+    const detail: KnowledgeReaderDetail = {
+      version: "oleander-knowledge-reader-detail/v1",
+      generatedAt: "2026-09-13T00:00:00.000Z",
+      id: "note-1",
+      title: "Knowledge object",
+      canonicalId: "KN-TEST-001",
+      notionLastEditedTime: "2026-09-13T00:00:00.000Z",
+      primaryDomainIds: [],
+      relatedDomainIds: [],
+      review: {
+        contentComplete: true,
+        markdownTruncated: false,
+        chunkCount: 0,
+        tokenEstimate: 0,
+        unknownBlockIds: [],
+        relationReadback: {
+          declared: { primaryDomain: 0, relatedDomain: 0, source: 0, method: 0, replacement: 0, replacedDocument: 0 },
+          indexedOutgoing: { source: 0, method: 0, replacement: 0, replacedDocument: 0 },
+          unresolvedTargets: [],
+          missingManifestEdges: [],
+        },
+      },
+      sections: [],
+      relations: [],
+    };
+    const promise = hydrateKnowledgeReaderFramework({
+      MANIFEST: manifest,
+      NOTION_TOKEN: "test",
+      NOTION_VERSION: "test",
+      NOTION_NOTES_DATA_SOURCE_ID: "notes-current",
+      NOTION_DOMAINS_DATA_SOURCE_ID: "domains-current",
+      NOTION_PROJECTS_DATA_SOURCE_ID: "projects-current",
+    } as Env, detail, Date.now() + 8_000);
+    await vi.runAllTimersAsync();
+    const result = await promise;
+    expect(result.source.state).toBe("HYDRATED");
+    expect(result.dedicatedRelations.semanticRelated.items).toMatchObject([
+      { registry: "notes", pageId: "related-note-1", canonicalId: "KN-RELATED-001" },
+    ]);
+    expect(result.dedicatedRelations.projects.primary).toMatchObject([
+      { registry: "projects", pageId: "project-main", projectId: "C04", projectLevel: "P2｜Project" },
+    ]);
+    expect(result.dedicatedRelations.projects.related).toMatchObject([
+      { registry: "projects", pageId: "project-related", projectId: "C04-WS-01", projectLevel: "P3｜Workstream" },
+    ]);
+    expect(result.executionOwner.state).toBe("NOT_HYDRATED");
+    if (result.executionOwner.state !== "NOT_HYDRATED") throw new Error("expected unhydrated execution owner");
+    expect(result.executionOwner.blockingInputs).toContain("authoritative_execution_owner_resolver_runtime_readback");
   });
 
   it("keeps primary Domain routing unresolved when the root revision drifts", () => {
