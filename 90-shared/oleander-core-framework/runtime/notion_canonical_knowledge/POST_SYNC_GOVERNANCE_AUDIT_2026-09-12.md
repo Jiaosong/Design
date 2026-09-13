@@ -699,7 +699,7 @@ The separate OLEANDER Visual Knowledge Reader MCP also read the D05 cutover dyna
 - canonical authority reported by the snapshot: `Notion`
 - MCP App resource readback after the reader-shell redesign: `668,710` HTML characters.
 
-The presentation layer was also revised, independently of knowledge authority, to a Notion-3.4-inspired workspace shell with persistent left navigation, Dashboard, page tabs, Library/reading split view, `Overview / Evidence / Limitations / Trace` tabs and an in-app Present focus mode. The local Reader source commit is `41f8534 feat(reader): adopt workspace dashboard reading shell`. Edge QA passed at desktop width and at `390px` mobile with no horizontal overflow. The runtime HTML was updated without restarting Chat On Steroids; the Reader therefore remains `REGISTERED + VALIDATED + PENDING SAFE RELOAD / NOT LIVE-LOADED` in the current CoS process until a future safe reload and CoS-side enumeration readback.
+The presentation layer was also revised, independently of knowledge authority, to a Notion-3.4-inspired workspace shell with persistent left navigation, Dashboard, page tabs, Library/reading split view, `Overview / Evidence / Limitations / Trace` tabs and an in-app Present focus mode. The local Reader source commit is `41f8534 feat(reader): adopt workspace dashboard reading shell`. Edge QA passed at desktop width and at `390px` mobile with no horizontal overflow. At this Phase 8 checkpoint the runtime HTML had been updated without restarting Chat On Steroids, so the Reader was still `REGISTERED + VALIDATED + PENDING SAFE RELOAD / NOT LIVE-LOADED`. That stale-load condition was later closed by the verified host reload recorded in Phase 11 below.
 
 The final remaining D-series academic migration is now `D02`. D01, D03, D04, D05, D06 and D07 are closed Current migrations and must not be reopened as unfinished work. `K05` remains a later navigation / information-architecture cleanup after D02.
 
@@ -897,3 +897,66 @@ The Visual Knowledge Reader derivative snapshot after K05 reports:
 - canonical authority remains `Notion`; the derivative plane remains `Cloudflare D1 / oleander-knowledge-manifest`.
 
 With Phase 10 complete, the scoped D-series academic migration and the immediately following K05 IA cleanup are closed. Future knowledge refinement should select the next object from the governance queue by object type and owner contract rather than reopening these closed items or treating K05 as an essay target.
+
+## Phase 11 — Legacy Git / CRLF / Reader Reload Technical-Debt Closure
+
+The remaining technical debt from the earlier realtime-runtime closure was handled without reopening D02, K05 or any closed knowledge object. The scope was limited to GitHub remote closure, line-ending hardening and the stale Visual Knowledge Reader host load.
+
+### Git / CRLF Root Cause and Repair
+
+Readback on the current Windows environment showed global Git `core.autocrlf=true` while the repository root had no `.gitattributes`. Critical runtime Git blobs themselves were LF-clean, but the repository had no in-repo rule preventing a connector/API write from committing CRLF directly. The previously abandoned connector commit `cb66a2004af81d58bd15fdb53c42416e3c0f9e1f` was not reused; after a fresh remote fetch it was not present in the active local refs/object path used for this repair.
+
+The repair added:
+
+- root `.gitattributes` rules forcing canonical `LF` for `00-governance/runtime/**`, the Notion canonical knowledge runtime, GitHub workflows and eval scripts;
+- `evals/scripts/validate_runtime_line_endings.py`, which checks committed Git blobs at `HEAD` rather than the checked-out worktree so API/connector writes cannot bypass a developer's local clean/smudge filters;
+- an `AI Governance Evals` step that rejects CRLF blobs in those critical paths;
+- `.gitignore` entries for `__pycache__/` and `*.py[cod]` so Python bytecode/cache output no longer pollutes worktree status.
+
+After rebasing the bounded delta onto the then-current `origin/main`, validation passed:
+
+- knowledge runtime TypeScript typecheck: `PASS`;
+- Vitest: `9` files / `47` tests `PASS`;
+- runtime Git-blob LF check: `PASS`;
+- workflow action pin audit: `PASS (62 workflows)`;
+- Chat/Resolver adapter self-test: `PASS`;
+- governance consolidation validator: `PASS`;
+- `git diff --check`: `PASS`.
+
+Remote closure:
+
+- D02/K05 audit commit after rebase: `14f9f9f0 docs(knowledge): close D02 migration and K05 IA cleanup`;
+- line-ending hardening commit after rebase: `dda660b1 chore(runtime): enforce LF hygiene for critical blobs`;
+- PR: `#566 Close knowledge audit and runtime line-ending debt`;
+- PR checks: AI Governance `PASS`, Anti-Pollution `PASS`, Vercel / deployment checks `PASS`;
+- merge commit on `main`: `d5da6aa21a1cf55f82a1beb22febb21835a92696`;
+- post-merge ancestry readback: both `14f9f9f0` and `dda660b1` are ancestors of `origin/main`;
+- post-merge raw Git-blob scan on the protected runtime/workflow scope: no CRLF matches.
+
+### Visual Knowledge Reader Stale-Load Closure
+
+The earlier `PENDING SAFE RELOAD / NOT LIVE-LOADED` state was still real when rechecked rather than merely historical. The old Reader MCP process was PID `49356`, started at `2026-09-13 10:28:58`, while the active runtime files had later timestamps:
+
+- `dist/mcp-knowledge-reader.html`: `2026-09-13 10:38:36`;
+- `dist/server.bundle.mjs`: `2026-09-13 10:38:41`.
+
+Because the process predated the deployed runtime bytes, it was stopped and Chat On Steroids was reloaded through the existing host process rather than launching an orphan stdio MCP manually. Post-reload readback:
+
+- Chat On Steroids parent PID `53208`, start `2026-09-13 10:59:01`;
+- Visual Knowledge Reader Node PID `34696`, parent PID `53208`, start `2026-09-13 10:59:03`;
+- Reader process state: alive / `Responding=True`;
+- `ReaderStart > BundleLastWrite`: `true`.
+
+This closes the stale-load blocker: the Reader is now host-spawned after the current runtime bundle was written, instead of continuing with the pre-update process image. The existing CoS binding was verified before restart as `OLEANDER_CHAT_RESOLVER_BINDING_v1.2` / Resolver implementation `1.2.5` with `goal.includeToolCalls=true`; no new resolver, Project State or authority carrier was introduced.
+
+### Authority Boundary After Debt Closure
+
+The technical-debt repair changes transport/repository hygiene and runtime loading only. Authority remains unchanged:
+
+- Notion = canonical knowledge/content authority;
+- Cloudflare D1 / Vectorize / R2 = derivative retrieval/readback plane;
+- Authoritative Resolver = execution-owner/routing authority;
+- GitHub/runtime = executable Skill / implementation authority;
+- Reader/live telemetry = derivative display/readback only.
+
+No knowledge Current, Domain identity, hierarchy, owner or completion state was inferred or promoted by this closure work.
