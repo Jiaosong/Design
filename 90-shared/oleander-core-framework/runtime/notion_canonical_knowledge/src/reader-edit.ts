@@ -8,6 +8,16 @@ export type ReaderContentPatchValidation =
   | { ok: true; input: ReaderContentPatchInput }
   | { ok: false; status: 400 | 413; error: string };
 
+export type ReaderBeginContentReviewInput = {
+  pageId: string;
+  expectedCanonicalId: string;
+  expectedNotionLastEditedTime: string;
+};
+
+export type ReaderBeginContentReviewValidation =
+  | { ok: true; input: ReaderBeginContentReviewInput }
+  | { ok: false; status: 400; error: string };
+
 export function validateReaderContentPatchInput(
   pageIdInput: unknown,
   oldStrInput: unknown,
@@ -24,4 +34,20 @@ export function validateReaderContentPatchInput(
     return { ok: false, status: 413, error: "content_patch_too_large" };
   }
   return { ok: true, input: { pageId, oldStr, newStr } };
+}
+
+export function validateReaderBeginContentReviewInput(
+  pageIdInput: unknown,
+  expectedCanonicalIdInput: unknown,
+  expectedNotionLastEditedTimeInput: unknown,
+): ReaderBeginContentReviewValidation {
+  const pageId = typeof pageIdInput === "string" ? pageIdInput.trim() : "";
+  const expectedCanonicalId = typeof expectedCanonicalIdInput === "string" ? expectedCanonicalIdInput.trim() : "";
+  const expectedNotionLastEditedTime = typeof expectedNotionLastEditedTimeInput === "string"
+    ? expectedNotionLastEditedTimeInput.trim()
+    : "";
+  if (!pageId || pageId.length > 128 || !expectedCanonicalId || expectedCanonicalId.length > 256 || !expectedNotionLastEditedTime || expectedNotionLastEditedTime.length > 128) {
+    return { ok: false, status: 400, error: "content_review_requires_expected_identity_and_revision" };
+  }
+  return { ok: true, input: { pageId, expectedCanonicalId, expectedNotionLastEditedTime } };
 }

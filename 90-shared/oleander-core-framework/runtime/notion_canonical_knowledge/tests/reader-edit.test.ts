@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { validateReaderContentPatchInput } from "../src/reader-edit";
+import { validateReaderBeginContentReviewInput, validateReaderContentPatchInput } from "../src/reader-edit";
 
 describe("private Reader content patch contract", () => {
   it("accepts one bounded exact replacement", () => {
@@ -25,5 +25,18 @@ describe("private Reader content patch contract", () => {
 
   it("rejects page identifiers beyond the service-boundary limit", () => {
     expect(validateReaderContentPatchInput("p".repeat(129), "before", "after")).toMatchObject({ ok: false, status: 400 });
+  });
+
+  it("requires exact identity and revision before entering content REVIEW", () => {
+    expect(validateReaderBeginContentReviewInput(" page-12345678 ", " KN-METHOD-TEST-001 ", " 2026-09-13T10:00:00.000Z ")).toEqual({
+      ok: true,
+      input: {
+        pageId: "page-12345678",
+        expectedCanonicalId: "KN-METHOD-TEST-001",
+        expectedNotionLastEditedTime: "2026-09-13T10:00:00.000Z",
+      },
+    });
+    expect(validateReaderBeginContentReviewInput("page-12345678", "", "2026-09-13T10:00:00.000Z")).toMatchObject({ ok: false, status: 400 });
+    expect(validateReaderBeginContentReviewInput("page-12345678", "KN-METHOD-TEST-001", "")).toMatchObject({ ok: false, status: 400 });
   });
 });

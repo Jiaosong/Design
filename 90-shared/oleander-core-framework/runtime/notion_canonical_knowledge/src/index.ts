@@ -69,7 +69,7 @@ import {
   FRAMEWORK_READBACK_BUDGET_MS,
   hydrateKnowledgeReaderFramework,
 } from "./reader";
-import { validateReaderContentPatchInput } from "./reader-edit";
+import { validateReaderBeginContentReviewInput, validateReaderContentPatchInput } from "./reader-edit";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -215,6 +215,74 @@ async function patchReaderAcademicContent(
   };
 }
 
+async function beginReaderContentReview(
+  env: Env,
+  pageIdInput: string,
+  expectedCanonicalIdInput: string,
+  expectedNotionLastEditedTimeInput: string,
+): Promise<ReaderRpcResult> {
+  const validated = validateReaderBeginContentReviewInput(
+    pageIdInput,
+    expectedCanonicalIdInput,
+    expectedNotionLastEditedTimeInput,
+  );
+  if (!validated.ok) return { status: validated.status, body: { ok: false, error: validated.error } };
+  const { pageId, expectedCanonicalId, expectedNotionLastEditedTime } = validated.input;
+  const before = normalizePage(await fetchPage(env, pageId));
+  if (before.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+    return { status: 409, body: { ok: false, error: "content_review_page_not_in_notes_data_source" } };
+  }
+  if (before.canonicalId !== expectedCanonicalId) {
+    return {
+      status: 409,
+      body: { ok: false, error: "canonical_identity_drift", expected: expectedCanonicalId, actual: before.canonicalId },
+    };
+  }
+  if (before.lastEditedTime !== expectedNotionLastEditedTime) {
+    return {
+      status: 409,
+      body: { ok: false, error: "notion_revision_drift", expected: expectedNotionLastEditedTime, actual: before.lastEditedTime },
+    };
+  }
+  if (!before.canonicalId || before.retrievalSpace !== "CURRENT" || before.governanceState !== "ACTIVE") {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "content_review_requires_active_current_canonical_page",
+        retrieval_space: before.retrievalSpace,
+        governance_state: before.governanceState,
+      },
+    };
+  }
+  if (before.relationState === "REVIEW") {
+    return { status: 200, body: { ok: true, already_review: true, before, after: before, sync: null } };
+  }
+  if (before.relationState !== "VALID") {
+    return { status: 409, body: { ok: false, error: "content_review_requires_valid_or_review_relation_state", relation_state: before.relationState } };
+  }
+
+  await updatePageGovernanceFields(env, pageId, { relation_state: "REVIEW" });
+  const sync = await syncPage(env, {
+    kind: "notion-page-sync",
+    page_id: pageId,
+    cause_id: `content-edit-review:${crypto.randomUUID()}`,
+    cause_type: "manual",
+  });
+  const after = normalizePage(await fetchPage(env, pageId));
+  const readbackMatches = after.canonicalId === before.canonicalId
+    && after.retrievalSpace === "CURRENT"
+    && after.governanceState === "ACTIVE"
+    && after.relationState === "REVIEW";
+  if (!readbackMatches) {
+    return {
+      status: 502,
+      body: { ok: false, error: "content_review_post_write_readback_mismatch", notion_write_applied: true, before, after, sync },
+    };
+  }
+  return { status: 200, body: { ok: true, already_review: false, before, after, sync } };
+}
+
 /**
  * Capability-scoped, read-only service surface for the private Pages Reader.
  *
@@ -254,6 +322,14 @@ export class ReaderProxyEntrypoint extends WorkerEntrypoint<Env> {
  * ID, Trust, lifecycle promotion, owner routing, relations or arbitrary fields.
  */
 export class ReaderEditorEntrypoint extends WorkerEntrypoint<Env> {
+  async readerBeginContentReview(
+    pageId: string,
+    expectedCanonicalId: string,
+    expectedNotionLastEditedTime: string,
+  ): Promise<ReaderRpcResult> {
+    return beginReaderContentReview(this.env, pageId, expectedCanonicalId, expectedNotionLastEditedTime);
+  }
+
   async readerContentPatch(pageId: string, oldStr: string, newStr: string): Promise<ReaderRpcResult> {
     return patchReaderAcademicContent(this.env, pageId, oldStr, newStr);
   }
