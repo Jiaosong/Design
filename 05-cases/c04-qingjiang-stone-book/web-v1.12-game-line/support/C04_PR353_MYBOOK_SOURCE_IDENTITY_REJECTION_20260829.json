@@ -1,0 +1,60 @@
+{
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "owner": "PRESENTATION",
+  "pr_frontier": 353,
+  "status": "CANONICAL_SOURCE_FILENAME_KNOWN__SOURCE_BYTES_HOLD",
+  "runtime_target": "assets/app_mybook.png",
+  "knowledge_read_state": "CURRENT+DEFAULT_ONLY",
+  "current_authority": {
+    "receipt": "C04_WEB_v1.2 + APP_STATIC_ONLY_DELTA_RECEIPT_20260826T1030+0800.md",
+    "drive_file_id": "1ZYrwb-kW9HJZjy_Spk1L0u5Rc5ilJTfI",
+    "required_identity": "Current Web preserves the Current approved App v1.6 TODAY / R06 / MY BOOK source pixels instead of live-app rendering; this delta does not redesign App / R06 / My Book visual surfaces.",
+    "canonical_static_capture_set": [
+      "05_APP_V1_6_TODAY_STATIC_WIDE_1920x1080.png",
+      "05_APP_V1_6_R06_STATIC_WIDE_1920x1080.png",
+      "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png"
+    ],
+    "runtime_source_expected": "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png",
+    "boundary": "Digital/App is not redesigned in this Web delta."
+  },
+  "source_resolution_delta": {
+    "previous_state": "Exact App v1.6 MY BOOK carrier/source identity not named; similar v3 state rejected.",
+    "current_state": "The Current Web v1.2 receipt names the exact expected App v1.6 MY BOOK static capture, but the image bytes/file itself are still unresolved.",
+    "drive_exact_filename_search": {
+      "query": "05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png",
+      "result_count": 0,
+      "decision": "KEEP_RUNTIME_MISSING_UNTIL_EXACT_BYTES_OR_AUTHORIZED_CARRIER_FOUND"
+    },
+    "portable_current_html_checked": {
+      "title": "C04_WEB_FULL_ASSET_FOLD_V11_PORTABLE_CURRENT.html",
+      "drive_file_id": "1iePFyl5vZrRzKEmLMBpv5JPB4r0-0egu",
+      "exact_filename_occurrence": 0,
+      "decision": "DO_NOT_TREAT_PORTABLE_HTML_AS_PROOF_OF_MYBOOK_SOURCE_BYTES"
+    }
+  },
+  "candidate_checked": {
+    "title": "C04_QJE_OFFLINE_FIRST_CURRENTIZED_v3.html",
+    "drive_file_id": "1kDCVEKYC6Lw_0JqHi9829UPix1dh9SRB",
+    "created_at": "2026-08-16T11:56:43.351Z",
+    "visible_mybook_state": "MY QINGJIANG / MEMORY — 不是 13 / 13。是我走过的清江。",
+    "decision": "REJECT_AS_RUNTIME_SOURCE_FOR_APP_MYBOOK",
+    "reason": "The file is a real currentized QJE HTML and contains a MY BOOK state, but the Current Web v1.2 authority requires exact approved App v1.6 source pixels. No CURRENT+DEFAULT authority establishes this v3 file as the v1.6 pixel authority."
+  },
+  "prohibited_substitutions": [
+    "Do not capture C04_QJE_OFFLINE_FIRST_CURRENTIZED_v3.html as app_mybook.png without an authority relation proving it is the approved App v1.6 source.",
+    "Do not use PROVENANCE/SUPERSEDED web/app captures to fill the runtime slot.",
+    "Do not recreate MY BOOK from text, AI imagery, or a new visual interpretation.",
+    "Do not crop/composite another App state into a MY BOOK surrogate.",
+    "Do not infer that an inlined/portable Web carrier contains the canonical static capture unless the exact child identity can be proven."
+  ],
+  "next_resolution": [
+    "Search for 05_APP_V1_6_MY_BOOK_STATIC_WIDE_1920x1080.png by exact filename/file id or locate the approved App v1.6 carrier that produced it.",
+    "Only after exact source bytes or an authority-backed deterministic carrier/state are proven, materialize assets/app_mybook.png and record source hash/capture state/viewport/runtime hash.",
+    "Keep assets/app_mybook.png missing until that closure is achieved."
+  ],
+  "evidence_level": "PROJECT_USAGE_EVIDENCE / SOURCE-IDENTITY NARROWING",
+  "knowledge_write_boundary": "PR support evidence only; not a Notion Current Rule; KNOWLEDGE migration/relation closure remains external to PRESENTATION.",
+  "no_loss_no_churn": true,
+  "field_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+}

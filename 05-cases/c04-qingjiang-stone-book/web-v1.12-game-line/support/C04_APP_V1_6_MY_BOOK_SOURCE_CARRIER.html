@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>清江石书 App v1.6｜MY BOOK source carrier</title>
+<style>
+:root{--paper:#f2efe6;--ink:#14231f;--qing:#3f7f78;--red:#a4493e;--muted:#728079;--line:rgba(20,35,31,.14);--serif:"Noto Serif SC","Songti SC",serif;--sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+.app{width:100%;min-height:100vh;background:var(--paper);overflow:hidden}
+.top{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;background:rgba(242,239,230,.96);border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:9px;align-items:center}.seal{width:32px;height:32px;border:1.5px solid var(--red);color:var(--red);display:grid;place-items:center;font:700 18px var(--serif)}.brand b{display:block;font:700 14px var(--serif)}.brand small{display:block;font-size:6px;letter-spacing:.13em;color:var(--muted);margin-top:2px}.return-btn{border:1px solid rgba(164,73,62,.3);background:#faf7f0;border-radius:999px;color:var(--red);font-size:8px;padding:8px 10px}
+.page{padding:28px 18px 14px}.ey{font-size:7px;letter-spacing:.15em;font-weight:800;text-transform:uppercase;color:var(--qing)}.page h1{font:700 34px/1.12 var(--serif);letter-spacing:-.04em;margin:8px 0 10px}.page p{font-size:9px;line-height:1.7;color:var(--muted);margin:0}
+.book-cover{margin:8px 18px 16px;border-radius:26px;padding:28px 24px;background:#1c3830;color:#f6f0e3;min-height:290px;position:relative;overflow:hidden}.book-cover:before{content:"";position:absolute;right:-55px;top:-35px;width:200px;height:200px;border:1px solid rgba(255,255,255,.16);border-radius:50%}.book-cover .ey{color:#9dc0b7}.book-cover h2{font:700 32px/1.15 var(--serif);margin:14px 0 46px}.book-cover blockquote{font:700 17px/1.5 var(--serif);margin:0;max-width:250px}
+.memory-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 22px}.memory-row article{border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px;min-height:140px}.memory-row span{font-size:6px;color:var(--qing);letter-spacing:.1em;font-weight:800}.memory-row b{display:block;font:700 13px var(--serif);margin:20px 0 5px}.memory-row p{font-size:7px;color:var(--muted);line-height:1.5;margin:0}
+.source-boundary{margin:0 18px 20px;padding:10px 12px;border-top:1px solid var(--line);font-size:6px;line-height:1.5;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="seal">清</div><div><b>清江石书</b><small>QINGJIANG · THIRTEEN IMPRINTS</small></div></div><span class="return-btn">RETURN / 服务</span></header>
+<section data-view="book">
+<div class="page"><span class="ey">MY BOOK / 我的石书</span><h1>把真正改变你的那一部分留下。</h1><p>不是自动集章。记忆来自一次观察、一次身体停留、一次重新认出或一次判断修订。</p></div>
+<div class="book-cover"><span class="ey">QINGJIANG JOURNAL / 数字对应页</span><h2>我的清江</h2><blockquote>“回来时，我第一次能把江、两岸和刚才走过的方向重新对应起来。”</blockquote></div>
+<div class="memory-row"><article><span>RECOGNIZE</span><b>江与两岸</b><p>回程中的再认，不是任务奖励。</p></article><article><span>REST</span><b>R06 河谷观察</b><p>因为停下来，才重新看清空间关系。</p></article></div>
+<p class="source-boundary">Source-extracted carrier from C04 App v1.6 Mature Package. MY BOOK markup and visual values are preserved from the authoritative editable HTML source; no screenshot redraw and no completion-ledger semantics.</p>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "schema": "C04_WEB_CURRENT_DERIVATIVE_LINEAGE_V1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "PRJ-C04-DIGITAL-INTERACTION",
+  "date": "2026-08-30",
+  "policy": "authority-preserving regeneration from locked QJ-D v1.1 sources; these are new Current Web derivatives and do not reuse PR353 derivative hashes",
+  "state": "STAGED_FOR_BINDING",
+  "assets": [
+    {
+      "role": "HERO_COVER",
+      "source_drive_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_filename": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "derivative_target": "assets/hero_qingjiang.webp",
+      "derivative_format": "WEBP",
+      "derivative_dimensions": "1600x900",
+      "derivative_quality": 75,
+      "derivative_sha256": "0001227898f8ab249568f447b7499b6a11460d99c6b072af50c3ba5cc3a7a6c0",
+      "expected_git_blob_sha1": "3610cd84f61d8a34d5668f48e2b260a3b3724328",
+      "bytes": 94166,
+      "truth_boundary": "LANDSCAPE FIRST / PRESENTATION DERIVATIVE"
+    },
+    {
+      "role": "R06_COVER",
+      "source_drive_id": "1Y78DpNjMvkowBNDpgYMii5wgopelKoLO",
+      "source_filename": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "derivative_target": "assets/r06_qingjiang.webp",
+      "derivative_format": "WEBP",
+      "derivative_dimensions": "1600x900",
+      "derivative_quality": 75,
+      "derivative_sha256": "d8b476ac24bca45419a9d903574e2b0c9ee9843364165fc078f7b0dc12c9efde",
+      "expected_git_blob_sha1": "3f785be8f546b953675cd2ada32c62e9a5305792",
+      "bytes": 166502,
+      "alpha_preserved": true,
+      "truth_boundary": "LANDSCAPE FIRST / FIELD HOLD REMAINS"
+    },
+    {
+      "role": "R13_CONCEPT_CONTAIN",
+      "source_drive_id": "1CABTTLFASECBvVdaOe3sfRvOOFgTRx0t",
+      "source_filename": "04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png",
+      "source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "derivative_target": "assets/r13_passage_sequence.webp",
+      "derivative_format": "WEBP",
+      "derivative_dimensions": "1600x900",
+      "derivative_quality": 75,
+      "derivative_sha256": "93ee698c66aac1c796be4f572f4e3fcd8ed5ddd6509d5f223e7b9a4c4cb35865",
+      "expected_git_blob_sha1": "02f5f041bafea16d8c85a942c786b7dab1ef4750",
+      "bytes": 45800,
+      "truth_boundary": "REMOTE CONCEPT / NOT SITE PHOTO / NOT MEASUREMENT EVIDENCE"
+    }
+  ],
+  "promotion_ceiling": "STATIC/BROWSER READBACK REQUIRED; NOT DESIGN KEEP; NOT FIELD PASS"
+}
