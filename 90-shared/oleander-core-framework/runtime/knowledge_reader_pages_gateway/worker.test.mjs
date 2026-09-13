@@ -1,4 +1,4 @@
-﻿import test from "node:test";
+import test from "node:test";
 import assert from "node:assert/strict";
 import { handleRequest } from "./worker.mjs";
 
@@ -47,11 +47,30 @@ test("cookie is relayed to fixed Pages origin", async () => {
 test("gateway does not become a generic write tunnel", async () => {
   const post = await handleRequest(new Request("https://gateway.example/api/reader-snapshot", { method: "POST" }), mockFetch(() => { throw new Error("should not fetch"); }));
   assert.equal(post.status, 405);
-  assert.equal((await post.json()).error, "post_only_allowed_for_login");
+  assert.equal((await post.json()).error, "post_route_not_allowed");
 
   const put = await handleRequest(new Request("https://gateway.example/", { method: "PUT" }), mockFetch(() => { throw new Error("should not fetch"); }));
   assert.equal(put.status, 405);
   assert.equal((await put.json()).error, "method_not_allowed");
+});
+
+test("gateway relays only the bounded private Reader content edit POST", async () => {
+  const response = await handleRequest(
+    new Request("https://gateway.example/api/reader-content-patch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Cookie: "oleander_reader_session=abc" },
+      body: JSON.stringify({ page_id: "abcd1234", old_str: "before", new_str: "after" }),
+    }),
+    mockFetch(async (request) => {
+      assert.equal(request.url, `${upstreamOrigin}/api/reader-content-patch`);
+      assert.equal(request.method, "POST");
+      assert.equal(request.headers.get("cookie"), "oleander_reader_session=abc");
+      assert.deepEqual(await request.json(), { page_id: "abcd1234", old_str: "before", new_str: "after" });
+      return Response.json({ ok: true });
+    }),
+  );
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { ok: true });
 });
 
 test("origin failure fails closed", async () => {
