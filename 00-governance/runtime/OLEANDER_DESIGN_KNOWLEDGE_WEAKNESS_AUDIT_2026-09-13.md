@@ -117,26 +117,27 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 
 - D02 canonical Notion content was previously observed by Cloudflare/D1 at the 2026-09-13 repaired revision with active chunks and no markdown truncation.
 - The repaired CMF owners and new Sources were each read back from canonical Notion after the writes.
-- A fresh read-only Cloudflare/Reader check for the newest CMF writes could not be completed in the current execution environment because the public Worker hostname could not be resolved. Those newest writes are therefore `DERIVATIVE READBACK DEFERRED`, not falsely `D1 SYNCED`.
-- The final Notion SQL aggregate intended to prove that no `CURRENT + DEFAULT L5` remains at `E0/E1 or M0–M2` could not execute because the Notion Query Data Source usage limit was reached.
-- Therefore the supported claim is: **known priority set closed; final all-library aggregate and newest-CMF derivative readback deferred**.
-- Do not convert either deferred verification into a zero-gap or D1-synced claim.
+- **All-library L5 aggregate is now closed.** A fresh Notes SQL readback on 2026-09-13 returned zero rows for `CURRENT + DEFAULT + L5` objects with Evidence `NULL/E0/E1` or Maturity `NULL/M0/M1/M2`. This is a real zero-gap result for that exact predicate; it is not a claim that every Current object is VERIFIED or reality-tested.
+- A fresh derivative check for the newest CMF writes was attempted through two independent protected paths: Worker `/v1/reader-page/:page_id` and remote D1 `wrangler d1 execute --remote`.
+- The local execution environment cannot resolve the Worker hostname. GitHub Actions was then used only as a credential-isolated readback runner. Both `OLEANDER_API_TOKEN` and Cloudflare API/account credentials are currently absent from Actions, so no protected request or D1 query was issued.
+- Therefore newest-CMF derivative state remains **`DERIVATIVE READBACK AUTH CHANNEL BLOCKED`**, not `D1 STALE` and not falsely `D1 SYNCED`.
+- No D1 row was directly mutated, no reconcile/drain was triggered, and no secret was exposed or synthesized.
 
 ## GitHub receipt readback
 
 - Branch: `agent/knowledge-weakness-closure-20260913`.
 - Draft PR: `#569`, targeting `main`.
-- The PR contains this governance receipt only; it does not mutate canonical knowledge or runtime implementation.
-- First receipt commit `92541e4cc6ef7a00cc86ad60897d308e0c255056` passed `AI Governance Evals`, `OLEANDER Project Anti-Pollution Gate`, and `OLEANDER Blender Runtime Contract` before this final receipt-boundary update.
-- This final documentation-only commit requires its own workflow readback before any full-current-head CI PASS claim.
+- Final tree contains this governance receipt only; the temporary readback workflow used to test credential availability was deleted after diagnosis.
+- The temporary readback failure proves only missing Actions credentials; it does not prove a Worker/D1 data failure.
+- Normal repository governance checks must pass again on the final receipt-only head before merge readiness is claimed.
 
 ## Remaining non-content debt
 
-1. `KN-METHOD-ADAPTIVE-COMPOSITION-001` structural Parent binding remains HOLD until Notion relation direction can be expressed/read back safely without reciprocal same-field mutation.
-2. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
-3. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
-4. Final all-library aggregate and newest-CMF Cloudflare derivative readbacks remain verification debt, not knowledge-content debt.
+1. `KN-METHOD-ADAPTIVE-COMPOSITION-001` structural Parent binding remains HOLD until Notion relation direction can be expressed/read back safely without reciprocal same-field mutation. This is intentionally fail-closed and is accepted as an open architecture blocker rather than patched by hierarchy inference.
+2. Newest-CMF Cloudflare/D1 derivative readback remains blocked only by the absence of an authorized readback credential channel in the current environments. Closing it requires an existing authorized Worker bearer or Cloudflare D1 credential; credentials must not be copied into knowledge content, logs, or Git.
+3. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
+4. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
 
 ## Final status
 
-`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / STRUCTURAL-PARENT HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / ALL-LIBRARY AGGREGATE READBACK DEFERRED / NEWEST-CMF DERIVATIVE READBACK DEFERRED`
+`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CURRENT+DEFAULT+L5 LOW-EVIDENCE-MATURITY AGGREGATE = 0 / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / STRUCTURAL-PARENT HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / NEWEST-CMF DERIVATIVE READBACK AUTH CHANNEL BLOCKED`
