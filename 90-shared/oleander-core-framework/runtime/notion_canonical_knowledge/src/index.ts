@@ -1276,9 +1276,10 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       ...(note ? { note } : {}),
     });
     if (!write.applied) {
+      const sameSequenceConflict = write.observed_checkpoint_sequence === checkpointSequence;
       return json({
         ok: false,
-        error: "stale_checkpoint_sequence",
+        error: sameSequenceConflict ? "checkpoint_sequence_conflict" : "stale_checkpoint_sequence",
         observed_checkpoint_sequence: write.observed_checkpoint_sequence,
       }, 409);
     }
