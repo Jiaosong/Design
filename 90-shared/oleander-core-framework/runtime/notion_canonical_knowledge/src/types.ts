@@ -298,6 +298,28 @@ export interface KnowledgeReaderFrameworkReadback {
     revisionMatches?: boolean;
     error?: string;
   };
+  canonicalObjectState: {
+    canonicalId: string | null;
+    retrievalSpace: string | null;
+    searchEligibility: string | null;
+    trustState: string | null;
+    governanceState: string | null;
+    relationState: string | null;
+    contentLevel: string | null;
+    knowledgeRole: string | null;
+    inTrash?: boolean;
+    fieldsReadable: {
+      canonicalId: boolean;
+      retrievalSpace: boolean;
+      searchEligibility: boolean;
+      trustState: boolean;
+      governanceState: boolean;
+      relationState: boolean;
+      contentLevel: boolean;
+      knowledgeRole: boolean;
+      allFieldsReadable: boolean;
+    };
+  };
   domains: {
     primaryDeclaredIds: string[];
     relatedDeclaredIds: string[];

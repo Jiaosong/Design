@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchRelationReadback, NotionReadbackBudgetError, queryDomainRegistryPages, queryProjectRegistryPages } from "../src/notion";
 import { normalizePage, propertyMultiSelectNames } from "../src/normalize";
-import { hydrateKnowledgeReaderFramework, methodFamilyReadback, primaryDomainRoutingReadiness, safeRelationReadback } from "../src/reader";
+import { canonicalObjectStateReadback, hydrateKnowledgeReaderFramework, methodFamilyReadback, primaryDomainRoutingReadiness, safeRelationReadback } from "../src/reader";
 import type { Env, KnowledgeReaderDetail, KnowledgeReaderFrameworkObjectRef, NotionPage, NotionProperty } from "../src/types";
 
 describe("framework readback normalization", () => {
@@ -27,6 +27,114 @@ describe("framework readback normalization", () => {
     };
     expect(methodFamilyReadback(missing)).toEqual({ names: [], complete: false });
     expect(methodFamilyReadback(retagged)).toEqual({ names: [], complete: false });
+  });
+
+  it("distinguishes readable empty canonical scalars from missing or retagged schema", () => {
+    const page: NotionPage = {
+      object: "page",
+      id: "page-scalars",
+      in_trash: false,
+      properties: {
+        "Canonical ID": { type: "rich_text", rich_text: [] },
+        "Retrieval Space｜检索空间": { type: "select", select: null },
+        "Search Eligibility｜检索资格": { type: "rich_text", rich_text: [{ plain_text: "DEFAULT" }] },
+        "Trust State｜可信状态": { type: "select", select: { name: "VERIFIED" } },
+        "治理状态": { type: "select", select: { name: "ACTIVE" } },
+        "关系状态": { type: "select", select: { name: "VALID" } },
+        "内容层级": { type: "select", select: { name: "L5｜Knowledge Object" } },
+      },
+    };
+    const state = canonicalObjectStateReadback(page);
+    expect(state.canonicalId).toBeNull();
+    expect(state.retrievalSpace).toBeNull();
+    expect(state.fieldsReadable.canonicalId).toBe(true);
+    expect(state.fieldsReadable.retrievalSpace).toBe(true);
+    expect(state.fieldsReadable.searchEligibility).toBe(false);
+    expect(state.fieldsReadable.knowledgeRole).toBe(false);
+    expect(state.searchEligibility).toBeNull();
+    expect(state.knowledgeRole).toBeNull();
+    expect(state.fieldsReadable.allFieldsReadable).toBe(false);
+  });
+
+  it("downgrades framework readback to PARTIAL when a canonical scalar field is retagged", async () => {
+    const page: NotionPage = {
+      object: "page",
+      id: "note-scalar-drift",
+      parent: { type: "data_source_id", data_source_id: "notes-current" },
+      last_edited_time: "2026-09-13T01:00:00.000Z",
+      properties: {
+        Name: { type: "title", title: [{ plain_text: "Scalar drift" }] },
+        "Canonical ID": { type: "rich_text", rich_text: [{ plain_text: "KN-SCALAR-DRIFT-001" }] },
+        "Retrieval Space｜检索空间": { type: "select", select: { name: "CURRENT" } },
+        "Search Eligibility｜检索资格": { type: "rich_text", rich_text: [{ plain_text: "DEFAULT" }] },
+        "Trust State｜可信状态": { type: "select", select: { name: "VERIFIED" } },
+        "治理状态": { type: "select", select: { name: "ACTIVE" } },
+        "关系状态": { type: "select", select: { name: "VALID" } },
+        "内容层级": { type: "select", select: { name: "L5｜Knowledge Object" } },
+        "知识角色": { type: "select", select: { name: "THEORY" } },
+        "方法家族": { type: "multi_select", multi_select: [] },
+        "主领域": { type: "relation", relation: [] },
+        "关联领域": { type: "relation", relation: [] },
+        "Canonical Parent｜层级上位": { type: "relation", relation: [] },
+        "Canonical Children｜层级子级": { type: "relation", relation: [] },
+        "相关笔记": { type: "relation", relation: [] },
+        "来源文档": { type: "relation", relation: [] },
+        "引用方法": { type: "relation", relation: [] },
+        "替代文档": { type: "relation", relation: [] },
+        "被替代文档": { type: "relation", relation: [] },
+        "主项目": { type: "relation", relation: [] },
+        "关联项目": { type: "relation", relation: [] },
+      },
+    };
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/v1/pages/note-scalar-drift")) {
+        return new Response(JSON.stringify(page), { status: 200, headers: { "Content-Type": "application/json" } });
+      }
+      if (url.includes("/v1/data_sources/domains-current/query")) {
+        return new Response(JSON.stringify({ results: [], has_more: false, next_cursor: null }), { status: 200, headers: { "Content-Type": "application/json" } });
+      }
+      throw new Error(`unexpected Notion URL: ${url}`);
+    });
+    const detail: KnowledgeReaderDetail = {
+      version: "oleander-knowledge-reader-detail/v1",
+      generatedAt: "2026-09-13T01:00:00.000Z",
+      id: "note-scalar-drift",
+      title: "Scalar drift",
+      canonicalId: "KN-SCALAR-DRIFT-001",
+      notionLastEditedTime: "2026-09-13T01:00:00.000Z",
+      primaryDomainIds: [],
+      relatedDomainIds: [],
+      review: {
+        contentComplete: true,
+        markdownTruncated: false,
+        chunkCount: 0,
+        tokenEstimate: 0,
+        unknownBlockIds: [],
+        relationReadback: {
+          declared: { primaryDomain: 0, relatedDomain: 0, source: 0, method: 0, replacement: 0, replacedDocument: 0 },
+          indexedOutgoing: { source: 0, method: 0, replacement: 0, replacedDocument: 0 },
+          unresolvedTargets: [],
+          missingManifestEdges: [],
+        },
+      },
+      sections: [],
+      relations: [],
+    };
+    const result = await hydrateKnowledgeReaderFramework({
+      MANIFEST: {} as D1Database,
+      NOTION_TOKEN: "test",
+      NOTION_VERSION: "test",
+      NOTION_NOTES_DATA_SOURCE_ID: "notes-current",
+      NOTION_DOMAINS_DATA_SOURCE_ID: "domains-current",
+      NOTION_PROJECTS_DATA_SOURCE_ID: "projects-current",
+    } as Env, detail, Date.now() + 8_000);
+    expect(result.source.state).toBe("PARTIAL");
+    expect(result.source.readbackRevisionCoherent).toBe(true);
+    expect(result.canonicalObjectState.searchEligibility).toBeNull();
+    expect(result.canonicalObjectState.fieldsReadable.searchEligibility).toBe(false);
+    expect(result.canonicalObjectState.fieldsReadable.allFieldsReadable).toBe(false);
+    expect(result.routingInputs.unresolvedInputs).toContain("canonical_object_state_schema_readback");
   });
 
   it("keeps Canonical hierarchy distinct from Source and Method relations", () => {
@@ -360,6 +468,12 @@ describe("framework readback normalization", () => {
       properties: {
         Name: { type: "title", title: [{ plain_text: "Knowledge object" }] },
         "Canonical ID": { type: "rich_text", rich_text: [{ plain_text: "KN-TEST-001" }] },
+        "Retrieval Space｜检索空间": { type: "select", select: { name: "CURRENT" } },
+        "Search Eligibility｜检索资格": { type: "select", select: { name: "DEFAULT" } },
+        "Trust State｜可信状态": { type: "select", select: { name: "VERIFIED" } },
+        "治理状态": { type: "select", select: { name: "ACTIVE" } },
+        "关系状态": { type: "select", select: { name: "VALID" } },
+        "内容层级": { type: "select", select: { name: "L5｜Knowledge Object" } },
         "知识角色": { type: "select", select: { name: "THEORY" } },
         "方法家族": { type: "multi_select", multi_select: [] },
         "主领域": { type: "relation", relation: [] },
@@ -471,6 +585,18 @@ describe("framework readback normalization", () => {
     await vi.runAllTimersAsync();
     const result = await promise;
     expect(result.source.state).toBe("HYDRATED");
+    expect(result.canonicalObjectState).toMatchObject({
+      canonicalId: "KN-TEST-001",
+      retrievalSpace: "CURRENT",
+      searchEligibility: "DEFAULT",
+      trustState: "VERIFIED",
+      governanceState: "ACTIVE",
+      relationState: "VALID",
+      contentLevel: "L5｜Knowledge Object",
+      knowledgeRole: "THEORY",
+      inTrash: false,
+      fieldsReadable: { allFieldsReadable: true },
+    });
     expect(result.dedicatedRelations.semanticRelated.items).toMatchObject([
       { registry: "notes", pageId: "related-note-1", canonicalId: "KN-RELATED-001" },
     ]);

@@ -15,6 +15,28 @@ function frameworkFixture(): KnowledgeReaderFrameworkReadback {
       readbackRevisionCoherent: true,
       revisionMatches: true,
     },
+    canonicalObjectState: {
+      canonicalId: "KN-METHOD-TEST-001",
+      retrievalSpace: "CURRENT",
+      searchEligibility: "DEFAULT",
+      trustState: "VERIFIED",
+      governanceState: "ACTIVE",
+      relationState: "VALID",
+      contentLevel: "L5｜Knowledge Object",
+      knowledgeRole: "METHOD",
+      inTrash: false,
+      fieldsReadable: {
+        canonicalId: true,
+        retrievalSpace: true,
+        searchEligibility: true,
+        trustState: true,
+        governanceState: true,
+        relationState: true,
+        contentLevel: true,
+        knowledgeRole: true,
+        allFieldsReadable: true,
+      },
+    },
     domains: {
       primaryDeclaredIds: [],
       relatedDeclaredIds: [],
@@ -90,13 +112,13 @@ function frameworkFixture(): KnowledgeReaderFrameworkReadback {
   };
 }
 
-function detailFixture(canonicalId = "KN-METHOD-TEST-001"): KnowledgeReaderDetail {
+function detailFixture(canonicalId: string | undefined = "KN-METHOD-TEST-001"): KnowledgeReaderDetail {
   return {
     version: "oleander-knowledge-reader-detail/v1",
     generatedAt: "2026-09-13T00:00:00.000Z",
     id: "page-1",
     title: "Method test",
-    canonicalId,
+    ...(canonicalId ? { canonicalId } : {}),
     primaryDomainIds: [],
     relatedDomainIds: [],
     review: {
@@ -200,7 +222,7 @@ describe("Reader live status", () => {
     expect(result.routingInputs.unresolvedInputs).toEqual(["primary_current_l2_domain"]);
   });
 
-  it("keeps owner unresolved when task or canonical identity does not match", () => {
+  it("treats a D1/live canonical identity mismatch as stale instead of trusting the derivative ID", () => {
     const mismatch = bindKnowledgeReaderExecutionContext(
       detailFixture("KN-OTHER-001"),
       frameworkFixture(),
@@ -211,9 +233,49 @@ describe("Reader live status", () => {
       state: "NOT_HYDRATED",
       localProjectionUsed: false,
       requestedTaskId: "TASK-1",
-      contextMatchState: "NO_MATCH",
+      contextMatchState: "STALE",
     });
     expect(mismatch.routingInputs.requiredNativeOutput.state).toBe("EXECUTION_CONTEXT_REQUIRED");
+  });
+
+  it("allows a coherent live Canonical ID to bind when the derivative detail omitted Canonical ID", () => {
+    const result = bindKnowledgeReaderExecutionContext(
+      detailFixture(undefined),
+      frameworkFixture(),
+      "TASK-1",
+      [projectionFixture()],
+    );
+    expect(result.executionOwner.state).toBe("HYDRATED");
+    if (result.executionOwner.state !== "HYDRATED") throw new Error("expected hydrated owner");
+    expect(result.executionOwner.matchedCanonicalId).toBe("KN-METHOD-TEST-001");
+  });
+
+  it("keeps owner unresolved when the receipt does not include the coherent live Canonical ID", () => {
+    const projection = projectionFixture({
+      execution_context: {
+        ...projectionFixture().execution_context!,
+        canonical_ids: ["KN-OTHER-001"],
+      },
+    });
+    const result = bindKnowledgeReaderExecutionContext(detailFixture(), frameworkFixture(), "TASK-1", [projection]);
+    expect(result.executionOwner).toMatchObject({ state: "NOT_HYDRATED", contextMatchState: "NO_MATCH" });
+  });
+
+  it("fails closed when live Canonical ID schema is unreadable", () => {
+    const framework = frameworkFixture();
+    framework.canonicalObjectState.canonicalId = null;
+    framework.canonicalObjectState.fieldsReadable.canonicalId = false;
+    framework.canonicalObjectState.fieldsReadable.allFieldsReadable = false;
+    const result = bindKnowledgeReaderExecutionContext(detailFixture(), framework, "TASK-1", [projectionFixture()]);
+    expect(result.executionOwner).toMatchObject({ state: "NOT_HYDRATED", contextMatchState: "STALE" });
+  });
+
+  it("fails closed when the live root revision is incoherent", () => {
+    const framework = frameworkFixture();
+    framework.source.state = "STALE_DURING_READBACK";
+    framework.source.readbackRevisionCoherent = false;
+    const result = bindKnowledgeReaderExecutionContext(detailFixture(), framework, "TASK-1", [projectionFixture()]);
+    expect(result.executionOwner).toMatchObject({ state: "NOT_HYDRATED", contextMatchState: "STALE" });
   });
 
   it("fails closed on stale receipt context", () => {
