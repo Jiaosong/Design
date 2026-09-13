@@ -116,16 +116,27 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 ## Readback status
 
 - D02 canonical Notion content was previously observed by Cloudflare/D1 at the 2026-09-13 repaired revision with active chunks and no markdown truncation.
+- The repaired CMF owners and new Sources were each read back from canonical Notion after the writes.
+- A fresh read-only Cloudflare/Reader check for the newest CMF writes could not be completed in the current execution environment because the public Worker hostname could not be resolved. Those newest writes are therefore `DERIVATIVE READBACK DEFERRED`, not falsely `D1 SYNCED`.
 - The final Notion SQL aggregate intended to prove that no `CURRENT + DEFAULT L5` remains at `E0/E1 or M0–M2` could not execute because the Notion Query Data Source usage limit was reached.
-- Therefore the supported claim is: **known priority set closed; final all-library aggregate readback deferred**.
-- Do not convert that deferred aggregate into a zero-gap claim.
+- Therefore the supported claim is: **known priority set closed; final all-library aggregate and newest-CMF derivative readback deferred**.
+- Do not convert either deferred verification into a zero-gap or D1-synced claim.
+
+## GitHub receipt readback
+
+- Branch: `agent/knowledge-weakness-closure-20260913`.
+- Draft PR: `#569`, targeting `main`.
+- The PR contains this governance receipt only; it does not mutate canonical knowledge or runtime implementation.
+- First receipt commit `92541e4cc6ef7a00cc86ad60897d308e0c255056` passed `AI Governance Evals`, `OLEANDER Project Anti-Pollution Gate`, and `OLEANDER Blender Runtime Contract` before this final receipt-boundary update.
+- This final documentation-only commit requires its own workflow readback before any full-current-head CI PASS claim.
 
 ## Remaining non-content debt
 
 1. `KN-METHOD-ADAPTIVE-COMPOSITION-001` structural Parent binding remains HOLD until Notion relation direction can be expressed/read back safely without reciprocal same-field mutation.
 2. All CMF objects still require real production/project evidence before higher Practice/Reality maturity.
 3. Independent professional/user/operations evidence remains separate from producer-side/browser/process evidence.
+4. Final all-library aggregate and newest-CMF Cloudflare derivative readbacks remain verification debt, not knowledge-content debt.
 
 ## Final status
 
-`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / STRUCTURAL-PARENT HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / ALL-LIBRARY AGGREGATE READBACK DEFERRED`
+`KNOWN HIGH-AUTHORITY THIN KNOWLEDGE CLOSED / CMF BRANCH SOURCE DEBT CLOSED / METHOD-INVOCATION SEMANTICS CORRECTED / STRUCTURAL-PARENT HOLD RETAINED / TRUST UNCHANGED / REAL-WORLD MATURITY OPEN / ALL-LIBRARY AGGREGATE READBACK DEFERRED / NEWEST-CMF DERIVATIVE READBACK DEFERRED`
