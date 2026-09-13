@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.0"
+BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.1"
 RESOLVER_REVISION = "1.2.5"
 BEGIN = f"[[{BINDING_REVISION}:BEGIN]]"
 END = f"[[{BINDING_REVISION}:END]]"
@@ -23,6 +23,8 @@ For OLEANDER-scoped work, Chat On Steroids is an execution adapter only. Before 
 Use `00-governance/runtime/oleander_chat_resolver_adapter.py`, which binds `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2` implementation revision {RESOLVER_REVISION}. Feed it Current authority/frontier/checkpoint/constraint/flow evidence; its result is transient and never becomes Project State.
 
 Run the preflight through the normal CoS command surface so its structured JSON result is recorded as an actual tool call/readback. Hard rules: transcript, handoff and summary are not checkpoint authority; generic continue resumes the verified `next_allowed_action`; a CLOSED checkpoint is not reopened; sticky constraints remain active until a later explicit user revocation; checkpoint sequence must be current before mutation; ready nodes auto-advance while legal; ambiguous frontier or authority/sequence drift revalidates or HOLDs; completion is allowed only after the Flow Completion Gate returns PASS. Never create a second framework, Control Plane, Project State or checkpoint database to compensate for missing runtime state.
+
+For live Reader observability, after each material verified checkpoint/node transition publish the source-observed execution projection through `00-governance/runtime/publish_execution_live_status.py`. Publish only task/executor identity, raw WORKING/REVIEW_PENDING/HOLD/CLOSED status, current node, next allowed action, checkpoint sequence and existing receipt/readback fields. This is latest-only telemetry: a publish failure degrades observability but grants no authority, does not change the resolver decision, and never turns observed CLOSED into canonical completion without the existing Execution Receipt + Flow Completion readback.
 {END}"""
 
 GOAL_BINDING = f"""{BEGIN}
@@ -42,7 +44,11 @@ def _default_config() -> Path:
 
 
 def _replace_binding(text: str, binding: str) -> str:
-    pattern = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END), re.DOTALL)
+    pattern = re.compile(
+        r"\[\[OLEANDER_CHAT_RESOLVER_BINDING_v1\.[0-9]+:BEGIN\]\].*?"
+        r"\[\[OLEANDER_CHAT_RESOLVER_BINDING_v1\.[0-9]+:END\]\]",
+        re.DOTALL,
+    )
     cleaned = pattern.sub("", text).strip()
     return f"{cleaned}\n\n{binding}".strip() if cleaned else binding
 

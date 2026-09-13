@@ -26,6 +26,7 @@ import {
   markWebhookQueued,
   markWebhookQueueError,
   putRuntimeState,
+  putExecutionLiveStatus,
   recordSyncMessageReceipt,
   recordWebhookReceived,
   refreshSyncRunStatus,
@@ -55,6 +56,7 @@ import {
   updateView,
 } from "./notion";
 import { normalizePage } from "./normalize";
+import { buildReaderLiveStatus } from "./live-status";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
 import {
@@ -1218,6 +1220,75 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "GET" && url.pathname === "/v1/reader-snapshot") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     return json(await buildKnowledgeReaderSnapshot(env.MANIFEST));
+  }
+
+  if (request.method === "GET" && url.pathname === "/v1/reader-live-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const pageId = url.searchParams.get("page_id")?.trim() || null;
+    const taskId = url.searchParams.get("task_id")?.trim() || null;
+    return json(await buildReaderLiveStatus(env.MANIFEST, pageId, taskId));
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/execution-live-status") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    let body: Record<string, unknown>;
+    try {
+      body = await request.json<Record<string, unknown>>();
+    } catch {
+      return json({ ok: false, error: "invalid_json" }, 400);
+    }
+    const taskId = typeof body.task_id === "string" ? body.task_id.trim() : "";
+    const executorId = typeof body.executor_id === "string" ? body.executor_id.trim() : "";
+    const checkpointSequence = typeof body.checkpoint_sequence === "number" && Number.isInteger(body.checkpoint_sequence)
+      ? body.checkpoint_sequence
+      : Number.NaN;
+    const status = typeof body.status === "string" ? body.status : "";
+    const allowedStatus = new Set(["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"]);
+    if (!taskId || taskId.length > 200) return json({ ok: false, error: "task_id_required_or_too_long" }, 400);
+    if (!executorId || executorId.length > 200) return json({ ok: false, error: "executor_id_required_or_too_long" }, 400);
+    if (!Number.isFinite(checkpointSequence) || checkpointSequence < 0) {
+      return json({ ok: false, error: "checkpoint_sequence_nonnegative_integer_required" }, 400);
+    }
+    if (!allowedStatus.has(status)) return json({ ok: false, error: "invalid_execution_status" }, 400);
+    const optionalString = (key: string, max = 2000): string | undefined => {
+      const value = body[key];
+      if (typeof value !== "string") return undefined;
+      const trimmed = value.trim();
+      return trimmed ? trimmed.slice(0, max) : undefined;
+    };
+    const currentNode = optionalString("current_node", 500);
+    const nextAllowedAction = optionalString("next_allowed_action", 1000);
+    const receiptId = optionalString("receipt_id", 500);
+    const readbackVerdict = optionalString("readback_verdict", 500);
+    const flowCompletionGate = optionalString("flow_completion_gate", 200);
+    const note = optionalString("note");
+    const write = await putExecutionLiveStatus(env.MANIFEST, {
+      version: "oleander-execution-live-status/v1",
+      task_id: taskId,
+      executor_id: executorId,
+      checkpoint_sequence: checkpointSequence,
+      status: status as "WORKING" | "REVIEW_PENDING" | "HOLD" | "CLOSED",
+      ...(currentNode ? { current_node: currentNode } : {}),
+      ...(nextAllowedAction ? { next_allowed_action: nextAllowedAction } : {}),
+      ...(receiptId ? { receipt_id: receiptId } : {}),
+      ...(readbackVerdict ? { readback_verdict: readbackVerdict } : {}),
+      ...(flowCompletionGate ? { flow_completion_gate: flowCompletionGate } : {}),
+      ...(note ? { note } : {}),
+    });
+    if (!write.applied) {
+      return json({
+        ok: false,
+        error: "stale_checkpoint_sequence",
+        observed_checkpoint_sequence: write.observed_checkpoint_sequence,
+      }, 409);
+    }
+    return json({
+      ok: true,
+      projection: "RUNTIME_OBSERVABILITY_ONLY",
+      observed_checkpoint_sequence: write.observed_checkpoint_sequence,
+      updated_at: write.updated_at,
+      finality_rule: "EXECUTION_LIVE_STATUS_DOES_NOT_REPLACE_EXECUTION_RECEIPT_OR_CANONICAL_READBACK",
+    }, 202);
   }
 
   const readerPageMatch = /^\/v1\/reader-page\/([^/]+)$/.exec(url.pathname);
