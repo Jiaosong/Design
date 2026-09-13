@@ -129,6 +129,8 @@ Current Notion structural routing uses the live Registry and `Canonical Parentï½
 
 Chat / Chat On Steroids entry enforcement reuses that Current Resolver through `oleander_chat_resolver_adapter.py`. The adapter is stateless execution glue only: it owns no Project State, checkpoint database, Method, Skill or Control Plane. `bind_chat_on_steroids_oleander.py` can persist the corresponding CoS prompt/connector binding without replacing the user's existing prompts or changing the Goal enabled/mode setting.
 
+`publish_execution_live_status.py` is the bounded live-observability bridge for that same execution path. After a material verified checkpoint/node transition, the CoS binding may project the source-observed `task_id`, `executor_id`, raw receipt status, current node, next allowed action and monotonic checkpoint sequence into the existing Cloudflare `runtime_state`. The projection is latest-only telemetry for Reader polling: it is not Project State, does not resolve owners, does not replace `OLEANDER_EXECUTION_RECEIPT_v1.0`, and cannot turn observed `CLOSED` into authoritative completion without the existing Flow Completion/readback contract. A publish failure therefore degrades observability only and must not alter the Resolver decision or mutation authority.
+
 ## Current executable contract layer v0.1
 
 - `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.md/.json`
