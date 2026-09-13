@@ -129,8 +129,8 @@ New manufacturer Sources remain bounded first-party evidence and do not become p
 - Draft PR: `#569`, targeting `main`.
 - Final tree contains this governance receipt only; the temporary readback workflow used to test credential availability was deleted after diagnosis.
 - The temporary readback failure proves only missing Actions credentials; it does not prove a Worker/D1 data failure.
-- K06 provenance log was updated with the aggregate PASS and derivative-auth-channel blocker before this final receipt revision.
-- Normal repository governance checks must pass again on the final receipt-only head before merge readiness is claimed.
+- K06 provenance log was updated with the aggregate PASS and derivative-auth-channel blocker.
+- Normal repository governance checks must pass on this final receipt-only head before merge readiness is claimed.
 
 ## Remaining non-content debt
 
