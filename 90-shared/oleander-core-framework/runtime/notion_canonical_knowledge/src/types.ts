@@ -14,6 +14,7 @@ export interface Env {
   NOTION_VERSION: string;
   NOTION_ROOT_PAGE_ID: string;
   NOTION_NOTES_DATA_SOURCE_ID: string;
+  NOTION_DOMAINS_DATA_SOURCE_ID: string;
   EMBEDDING_MODEL: string;
   EMBEDDING_DIMENSIONS: string;
   API_DEFAULT_TOP_K: string;
@@ -91,6 +92,9 @@ export interface NormalizedPage {
   relationState: string | null;
   contentLevel: string | null;
   knowledgeRole: string | null;
+  canonicalParentIds: string[];
+  canonicalChildrenIds: string[];
+  methodFamilies: string[];
   primaryDomainIds: string[];
   relatedDomainIds: string[];
   sourceRelationIds: string[];
@@ -217,6 +221,75 @@ export interface KnowledgeReaderDetailRelation {
   relationState?: string;
 }
 
+export interface KnowledgeReaderFrameworkObjectRef {
+  registry: "notes" | "domains";
+  metadataSource: "NOTION_LIVE" | "D1_DERIVATIVE";
+  pageId: string;
+  title?: string;
+  canonicalId?: string;
+  role?: string;
+  level?: string;
+  retrievalSpace?: string;
+  governanceState?: string;
+  relationState?: string;
+  lastEditedTime?: string;
+  inTrash?: boolean;
+  domainLevel?: string;
+  frameworkPath?: string;
+}
+
+export interface KnowledgeReaderFrameworkReadback {
+  source: {
+    authority: "Notion";
+    state: "HYDRATED" | "PARTIAL" | "STALE_DURING_READBACK" | "UNAVAILABLE";
+    derivativeRevision?: string;
+    readbackStartedRevision?: string;
+    liveRevision?: string;
+    readbackRevisionCoherent?: boolean;
+    revisionMatches?: boolean;
+    error?: string;
+  };
+  domains: {
+    primaryDeclaredIds: string[];
+    relatedDeclaredIds: string[];
+    primary: KnowledgeReaderFrameworkObjectRef[];
+    related: KnowledgeReaderFrameworkObjectRef[];
+    primaryRelationComplete: boolean;
+    relatedRelationComplete: boolean;
+    registryInventoryComplete: boolean;
+    unresolvedPageIds: string[];
+  };
+  canonicalHierarchy: {
+    declaredParentIds: string[];
+    declaredChildrenIds: string[];
+    parent: KnowledgeReaderFrameworkObjectRef | null;
+    parents: KnowledgeReaderFrameworkObjectRef[];
+    parentAmbiguous: boolean;
+    children: KnowledgeReaderFrameworkObjectRef[];
+    parentRelationComplete: boolean;
+    childrenRelationComplete: boolean;
+    unresolvedPageIds: string[];
+  };
+  routingInputs: {
+    knowledgeRole?: string;
+    methodFamily: string[];
+    methodFamilyComplete: boolean;
+    primaryDomainRoutingReady: boolean;
+    primaryDomainRoutingIssues: string[];
+    requiredNativeOutput: {
+      state: "EXECUTION_CONTEXT_REQUIRED";
+      source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND";
+    };
+    unresolvedInputs: string[];
+  };
+  executionOwner: {
+    state: "NOT_HYDRATED";
+    localProjectionUsed: false;
+    reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND";
+    blockingInputs: string[];
+  };
+}
+
 export interface KnowledgeReaderDetail {
   version: "oleander-knowledge-reader-detail/v1";
   generatedAt: string;
@@ -237,6 +310,7 @@ export interface KnowledgeReaderDetail {
   indexedAt?: string;
   primaryDomainIds: string[];
   relatedDomainIds: string[];
+  frameworkReadback?: KnowledgeReaderFrameworkReadback;
   review: {
     contentComplete: boolean;
     markdownTruncated: boolean;

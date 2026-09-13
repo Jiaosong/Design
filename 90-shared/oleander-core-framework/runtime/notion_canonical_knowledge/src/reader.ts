@@ -1,13 +1,33 @@
+import { DOMAIN_FIELDS, FIELDS } from "./config";
+import {
+  fetchPage,
+  fetchRelationReadback,
+  NotionHttpError,
+  NotionReadbackBudgetError,
+  queryDomainRegistryPages,
+} from "./notion";
+import {
+  belongsToDataSource,
+  normalizePage,
+  propertyMultiSelectNames,
+  propertyRelationIds,
+  propertyText,
+} from "./normalize";
 import type {
+  Env,
   KnowledgeReaderDetail,
   KnowledgeReaderDetailRelation,
   KnowledgeReaderDetailSection,
+  KnowledgeReaderFrameworkObjectRef,
+  KnowledgeReaderFrameworkReadback,
   KnowledgeReaderSnapshot,
+  NotionPage,
 } from "./types";
 
 const CORE_LEVELS = new Set(["L4｜Framework", "L5｜Knowledge Object"]);
 const EVIDENCE_ROLES = new Set(["SOURCE", "EVIDENCE", "CASE"]);
 const PRACTICE_ROLES = new Set(["PRACTICE", "TOOL"]);
+export const FRAMEWORK_READBACK_BUDGET_MS = 8_000;
 
 function isHistory(row: Record<string, unknown>): boolean {
   return row.effective_space === "PROVENANCE" || row.search_eligibility === "HISTORY_ONLY" || row.governance_state === "LEGACY";
@@ -41,6 +61,423 @@ function stringArray(value: unknown): string[] {
   } catch {
     return [];
   }
+}
+
+function uniqueStrings(values: string[]): string[] {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function readbackErrorCode(error: unknown): string {
+  if (error instanceof NotionReadbackBudgetError) return "NOTION_READBACK_BUDGET_EXCEEDED";
+  if (error instanceof NotionHttpError) return `NOTION_HTTP_${error.status}`;
+  return "NOTION_READBACK_FAILED";
+}
+
+function domainFrameworkRef(page: NotionPage): KnowledgeReaderFrameworkObjectRef {
+  const properties = page.properties ?? {};
+  const title = propertyText(properties[DOMAIN_FIELDS.title]);
+  const domainLevel = propertyText(properties[DOMAIN_FIELDS.level]);
+  const frameworkPath = propertyText(properties[DOMAIN_FIELDS.frameworkPath]);
+  const governanceState = propertyText(properties[DOMAIN_FIELDS.governanceState]);
+  return {
+    registry: "domains",
+    metadataSource: "NOTION_LIVE",
+    pageId: page.id,
+    ...(title ? { title } : {}),
+    ...(domainLevel ? { domainLevel } : {}),
+    ...(frameworkPath ? { frameworkPath } : {}),
+    ...(governanceState ? { governanceState } : {}),
+    ...(page.last_edited_time ? { lastEditedTime: page.last_edited_time } : {}),
+    inTrash: page.in_trash === true,
+  };
+}
+
+function normalizedUuid(value: string): string {
+  return value.replaceAll("-", "").toLowerCase();
+}
+
+async function hydrateNoteRefsFromManifest(
+  db: D1Database,
+  pageIds: string[],
+): Promise<{ refs: KnowledgeReaderFrameworkObjectRef[]; unresolvedPageIds: string[] }> {
+  const requested = uniqueStrings(pageIds);
+  const refs: KnowledgeReaderFrameworkObjectRef[] = [];
+  const resolved = new Set<string>();
+  for (let offset = 0; offset < requested.length; offset += 100) {
+    const batch = requested.slice(offset, offset + 100);
+    if (!batch.length) continue;
+    const placeholders = batch.map(() => "?").join(",");
+    const result = await db.prepare(`
+      SELECT page_id, canonical_id, title, notion_last_edited_time,
+             effective_space, governance_state, relation_state,
+             content_level, knowledge_role, in_trash
+        FROM documents
+       WHERE active=1 AND page_id IN (${placeholders})
+    `).bind(...batch).all<Record<string, unknown>>();
+    for (const row of result.results ?? []) {
+      const pageId = String(row.page_id ?? "");
+      if (!pageId) continue;
+      resolved.add(normalizedUuid(pageId));
+      refs.push({
+        registry: "notes",
+        metadataSource: "D1_DERIVATIVE",
+        pageId,
+        ...(optionalString(row.title) ? { title: String(row.title) } : {}),
+        ...(optionalString(row.canonical_id) ? { canonicalId: String(row.canonical_id) } : {}),
+        ...(optionalString(row.knowledge_role) ? { role: String(row.knowledge_role) } : {}),
+        ...(optionalString(row.content_level) ? { level: String(row.content_level) } : {}),
+        ...(optionalString(row.effective_space) ? { retrievalSpace: String(row.effective_space) } : {}),
+        ...(optionalString(row.governance_state) ? { governanceState: String(row.governance_state) } : {}),
+        ...(optionalString(row.relation_state) ? { relationState: String(row.relation_state) } : {}),
+        ...(optionalString(row.notion_last_edited_time) ? { lastEditedTime: String(row.notion_last_edited_time) } : {}),
+        inTrash: Number(row.in_trash ?? 0) !== 0,
+      });
+    }
+  }
+  return {
+    refs,
+    unresolvedPageIds: requested.filter((pageId) => !resolved.has(normalizedUuid(pageId))),
+  };
+}
+
+function hydrateDomainRefsFromRegistry(
+  env: Env,
+  pageIds: string[],
+  registryPages: NotionPage[],
+): { refs: KnowledgeReaderFrameworkObjectRef[]; unresolvedPageIds: string[] } {
+  const requested = uniqueStrings(pageIds);
+  const byId = new Map(
+    registryPages
+      .filter((page) => belongsToDataSource(page, env.NOTION_DOMAINS_DATA_SOURCE_ID))
+      .map((page) => [normalizedUuid(page.id), page] as const),
+  );
+  const refs: KnowledgeReaderFrameworkObjectRef[] = [];
+  const unresolvedPageIds: string[] = [];
+  for (const pageId of requested) {
+    const page = byId.get(normalizedUuid(pageId));
+    if (!page) unresolvedPageIds.push(pageId);
+    else refs.push(domainFrameworkRef(page));
+  }
+  return { refs, unresolvedPageIds };
+}
+
+export function methodFamilyReadback(page: NotionPage): { names: string[]; complete: boolean } {
+  const property = page.properties?.[FIELDS.methodFamily];
+  if (!property || property.type !== "multi_select" || !Array.isArray(property.multi_select)) {
+    return { names: [], complete: false };
+  }
+  return { names: propertyMultiSelectNames(property), complete: true };
+}
+
+export function primaryDomainRoutingReadiness(
+  relationComplete: boolean,
+  inventoryComplete: boolean,
+  declaredIds: string[],
+  refs: KnowledgeReaderFrameworkObjectRef[],
+  revisionCoherent = true,
+): { ready: boolean; issues: string[] } {
+  const issues: string[] = [];
+  if (!revisionCoherent) issues.push("framework_revision_incoherent");
+  if (!relationComplete) issues.push("primary_domain_relation_incomplete");
+  if (!inventoryComplete) issues.push("domain_registry_inventory_incomplete");
+  if (declaredIds.length !== 1) issues.push(`primary_domain_cardinality_${declaredIds.length}`);
+  const target = declaredIds.length === 1
+    ? refs.find((ref) => normalizedUuid(ref.pageId) === normalizedUuid(declaredIds[0] ?? ""))
+    : undefined;
+  if (declaredIds.length === 1 && !target) issues.push("primary_domain_target_unresolved");
+  if (target?.inTrash) issues.push("primary_domain_target_in_trash");
+  if (target && target.governanceState !== "ACTIVE") issues.push("primary_domain_not_active");
+  if (target && !String(target.domainLevel ?? "").startsWith("L2")) issues.push("primary_domain_not_l2");
+  return { ready: issues.length === 0, issues };
+}
+
+function unresolvedOwnerInputs(
+  knowledgeRole: string | null,
+  methodFamily: string[],
+  methodFamilyComplete: boolean,
+  primaryDomainRoutingReady: boolean,
+): string[] {
+  const inputs = [
+    "required_native_output_or_execution_medium",
+    "current_task_or_project_runtime_context",
+    "authoritative_execution_owner_resolver_runtime_readback",
+  ];
+  if (!knowledgeRole) inputs.push("knowledge_role");
+  if (knowledgeRole === "METHOD" && (!methodFamilyComplete || methodFamily.length === 0)) inputs.push("method_family");
+  if (!primaryDomainRoutingReady) inputs.push("primary_current_l2_domain");
+  return inputs;
+}
+
+export async function safeRelationReadback(
+  env: Env,
+  page: NotionPage,
+  fieldName: string,
+  deadlineAtMs?: number,
+): Promise<{ ids: string[]; complete: boolean }> {
+  try {
+    return await fetchRelationReadback(env, page, fieldName, deadlineAtMs);
+  } catch {
+    return {
+      ids: uniqueStrings(propertyRelationIds(page.properties?.[fieldName])),
+      complete: false,
+    };
+  }
+}
+
+export async function hydrateKnowledgeReaderFramework(
+  env: Env,
+  detail: KnowledgeReaderDetail,
+  deadlineAtMs = Date.now() + FRAMEWORK_READBACK_BUDGET_MS,
+): Promise<KnowledgeReaderFrameworkReadback> {
+  let page: NotionPage;
+  try {
+    page = await fetchPage(env, detail.id, deadlineAtMs);
+  } catch (error) {
+    return {
+      source: {
+        authority: "Notion",
+        state: "UNAVAILABLE",
+        ...(detail.notionLastEditedTime ? { derivativeRevision: detail.notionLastEditedTime } : {}),
+        error: readbackErrorCode(error),
+      },
+      domains: {
+        primaryDeclaredIds: [],
+        relatedDeclaredIds: [],
+        primary: [],
+        related: [],
+        primaryRelationComplete: false,
+        relatedRelationComplete: false,
+        registryInventoryComplete: false,
+        unresolvedPageIds: uniqueStrings([...detail.primaryDomainIds, ...detail.relatedDomainIds]),
+      },
+      canonicalHierarchy: {
+        declaredParentIds: [],
+        declaredChildrenIds: [],
+        parent: null,
+        parents: [],
+        parentAmbiguous: false,
+        children: [],
+        parentRelationComplete: false,
+        childrenRelationComplete: false,
+        unresolvedPageIds: [],
+      },
+      routingInputs: {
+        ...(detail.role ? { knowledgeRole: detail.role } : {}),
+        methodFamily: [],
+        methodFamilyComplete: false,
+        primaryDomainRoutingReady: false,
+        primaryDomainRoutingIssues: ["live_notion_framework_readback_unavailable"],
+        requiredNativeOutput: {
+          state: "EXECUTION_CONTEXT_REQUIRED",
+          source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND",
+        },
+        unresolvedInputs: uniqueStrings([
+          "live_notion_framework_readback",
+          "required_native_output_or_execution_medium",
+          "current_task_or_project_runtime_context",
+          "authoritative_execution_owner_resolver_runtime_readback",
+        ]),
+      },
+      executionOwner: {
+        state: "NOT_HYDRATED",
+        localProjectionUsed: false,
+        reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND",
+        blockingInputs: uniqueStrings([
+          "live_notion_framework_readback",
+          "required_native_output_or_execution_medium",
+          "current_task_or_project_runtime_context",
+          "authoritative_execution_owner_resolver_runtime_readback",
+        ]),
+      },
+    };
+  }
+
+  if (!belongsToDataSource(page, env.NOTION_NOTES_DATA_SOURCE_ID)) {
+    return {
+      source: {
+        authority: "Notion",
+        state: "UNAVAILABLE",
+        ...(detail.notionLastEditedTime ? { derivativeRevision: detail.notionLastEditedTime } : {}),
+        ...(page.last_edited_time ? { liveRevision: page.last_edited_time } : {}),
+        error: "NOTES_DATA_SOURCE_MISMATCH",
+      },
+      domains: {
+        primaryDeclaredIds: [],
+        relatedDeclaredIds: [],
+        primary: [],
+        related: [],
+        primaryRelationComplete: false,
+        relatedRelationComplete: false,
+        registryInventoryComplete: false,
+        unresolvedPageIds: uniqueStrings([...detail.primaryDomainIds, ...detail.relatedDomainIds]),
+      },
+      canonicalHierarchy: {
+        declaredParentIds: [],
+        declaredChildrenIds: [],
+        parent: null,
+        parents: [],
+        parentAmbiguous: false,
+        children: [],
+        parentRelationComplete: false,
+        childrenRelationComplete: false,
+        unresolvedPageIds: [],
+      },
+      routingInputs: {
+        ...(detail.role ? { knowledgeRole: detail.role } : {}),
+        methodFamily: [],
+        methodFamilyComplete: false,
+        primaryDomainRoutingReady: false,
+        primaryDomainRoutingIssues: ["notes_data_source_membership"],
+        requiredNativeOutput: {
+          state: "EXECUTION_CONTEXT_REQUIRED",
+          source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND",
+        },
+        unresolvedInputs: ["notes_data_source_membership", "authoritative_execution_owner_resolver_runtime_readback"],
+      },
+      executionOwner: {
+        state: "NOT_HYDRATED",
+        localProjectionUsed: false,
+        reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND",
+        blockingInputs: ["notes_data_source_membership", "authoritative_execution_owner_resolver_runtime_readback"],
+      },
+    };
+  }
+
+  const live = normalizePage(page);
+  const readbackStartedRevision = page.last_edited_time ?? null;
+  const [primaryRelation, relatedRelation, parentRelation, childrenRelation] = await Promise.all([
+    safeRelationReadback(env, page, FIELDS.primaryDomain, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.relatedDomains, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.canonicalParent, deadlineAtMs),
+    safeRelationReadback(env, page, FIELDS.canonicalChildren, deadlineAtMs),
+  ]);
+  const primaryDeclaredIds = primaryRelation.ids;
+  const relatedDeclaredIds = relatedRelation.ids;
+  const declaredParentIds = parentRelation.ids;
+  const declaredChildrenIds = childrenRelation.ids;
+  const methodFamilyRead = methodFamilyReadback(page);
+
+  let domainRegistryPages: NotionPage[] = [];
+  let domainRegistryComplete = false;
+  try {
+    const domainRegistry = await queryDomainRegistryPages(env, deadlineAtMs);
+    domainRegistryPages = domainRegistry.pages;
+    domainRegistryComplete = domainRegistry.complete;
+  } catch {
+    domainRegistryPages = [];
+    domainRegistryComplete = false;
+  }
+
+  const primaryHydrated = hydrateDomainRefsFromRegistry(env, primaryDeclaredIds, domainRegistryPages);
+  const relatedHydrated = hydrateDomainRefsFromRegistry(env, relatedDeclaredIds, domainRegistryPages);
+  const [parentHydrated, childrenHydrated] = await Promise.all([
+    hydrateNoteRefsFromManifest(env.MANIFEST, declaredParentIds),
+    hydrateNoteRefsFromManifest(env.MANIFEST, declaredChildrenIds),
+  ]);
+  let endingPage: NotionPage | null = null;
+  let endingReadbackError: string | null = null;
+  try {
+    endingPage = await fetchPage(env, detail.id, deadlineAtMs);
+  } catch (error) {
+    endingReadbackError = readbackErrorCode(error);
+  }
+  const liveRevision = endingPage?.last_edited_time ?? readbackStartedRevision;
+  const readbackRevisionCoherent = Boolean(
+    endingPage
+    && readbackStartedRevision
+    && endingPage.last_edited_time
+    && readbackStartedRevision === endingPage.last_edited_time,
+  );
+  const primaryDomainRouting = primaryDomainRoutingReadiness(
+    primaryRelation.complete,
+    domainRegistryComplete,
+    primaryDeclaredIds,
+    primaryHydrated.refs,
+    readbackRevisionCoherent,
+  );
+  const ownerBlockingInputs = unresolvedOwnerInputs(
+    live.knowledgeRole,
+    methodFamilyRead.names,
+    methodFamilyRead.complete,
+    primaryDomainRouting.ready,
+  );
+  const domainUnresolved = uniqueStrings([...primaryHydrated.unresolvedPageIds, ...relatedHydrated.unresolvedPageIds]);
+  const hierarchyUnresolved = uniqueStrings([...parentHydrated.unresolvedPageIds, ...childrenHydrated.unresolvedPageIds]);
+  const structurallyComplete = primaryRelation.complete
+    && relatedRelation.complete
+    && parentRelation.complete
+    && childrenRelation.complete
+    && methodFamilyRead.complete
+    && domainRegistryComplete
+    && domainUnresolved.length === 0
+    && hierarchyUnresolved.length === 0;
+  const sourceState: KnowledgeReaderFrameworkReadback["source"]["state"] = !endingPage
+    ? "PARTIAL"
+    : !readbackRevisionCoherent
+      ? "STALE_DURING_READBACK"
+      : structurallyComplete
+        ? "HYDRATED"
+        : "PARTIAL";
+
+  return {
+    source: {
+      authority: "Notion",
+      state: sourceState,
+      ...(detail.notionLastEditedTime ? { derivativeRevision: detail.notionLastEditedTime } : {}),
+      ...(readbackStartedRevision ? { readbackStartedRevision } : {}),
+      ...(liveRevision ? { liveRevision } : {}),
+      readbackRevisionCoherent,
+      ...(detail.notionLastEditedTime && liveRevision
+        ? { revisionMatches: detail.notionLastEditedTime === liveRevision }
+        : {}),
+      ...(endingReadbackError ? { error: endingReadbackError } : {}),
+    },
+    domains: {
+      primaryDeclaredIds,
+      relatedDeclaredIds,
+      primary: primaryHydrated.refs,
+      related: relatedHydrated.refs,
+      primaryRelationComplete: primaryRelation.complete,
+      relatedRelationComplete: relatedRelation.complete,
+      registryInventoryComplete: domainRegistryComplete,
+      unresolvedPageIds: domainUnresolved,
+    },
+    canonicalHierarchy: {
+      declaredParentIds,
+      declaredChildrenIds,
+      parent: parentHydrated.refs.length === 1 ? (parentHydrated.refs[0] ?? null) : null,
+      parents: parentHydrated.refs,
+      parentAmbiguous: declaredParentIds.length > 1,
+      children: childrenHydrated.refs,
+      parentRelationComplete: parentRelation.complete,
+      childrenRelationComplete: childrenRelation.complete,
+      unresolvedPageIds: hierarchyUnresolved,
+    },
+    routingInputs: {
+      ...(live.knowledgeRole ? { knowledgeRole: live.knowledgeRole } : {}),
+      methodFamily: methodFamilyRead.names,
+      methodFamilyComplete: methodFamilyRead.complete,
+      primaryDomainRoutingReady: primaryDomainRouting.ready,
+      primaryDomainRoutingIssues: primaryDomainRouting.issues,
+      requiredNativeOutput: {
+        state: "EXECUTION_CONTEXT_REQUIRED",
+        source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND",
+      },
+      unresolvedInputs: uniqueStrings([
+        ...ownerBlockingInputs.filter((input) => input !== "authoritative_execution_owner_resolver_runtime_readback"),
+        ...(!methodFamilyRead.complete ? ["method_family_schema_readback"] : []),
+        ...(!primaryRelation.complete ? ["primary_domain_relation_readback"] : []),
+        ...(!domainRegistryComplete ? ["domain_registry_inventory_readback"] : []),
+        ...(!readbackRevisionCoherent ? ["framework_revision_coherence"] : []),
+      ]),
+    },
+    executionOwner: {
+      state: "NOT_HYDRATED",
+      localProjectionUsed: false,
+      reason: "AUTHORITATIVE_RESOLVER_READBACK_NOT_BOUND",
+      blockingInputs: ownerBlockingInputs,
+    },
+  };
 }
 
 function removeChunkOverlap(previous: string, next: string): string {
