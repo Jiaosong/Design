@@ -9,7 +9,6 @@ import {
 } from "./notion";
 import {
   belongsToDataSource,
-  normalizePage,
   propertyMultiSelectNames,
   propertyRelationIds,
   propertyText,
@@ -223,6 +222,73 @@ export function methodFamilyReadback(page: NotionPage): { names: string[]; compl
   return { names: propertyMultiSelectNames(property), complete: true };
 }
 
+type CanonicalObjectState = KnowledgeReaderFrameworkReadback["canonicalObjectState"];
+type CanonicalObjectField = Exclude<keyof CanonicalObjectState["fieldsReadable"], "allFieldsReadable">;
+
+const CANONICAL_OBJECT_FIELD_SPECS: ReadonlyArray<{
+  key: CanonicalObjectField;
+  fieldName: string;
+  expectedType: "rich_text" | "select";
+}> = [
+  { key: "canonicalId", fieldName: FIELDS.canonicalId, expectedType: "rich_text" },
+  { key: "retrievalSpace", fieldName: FIELDS.retrievalSpace, expectedType: "select" },
+  { key: "searchEligibility", fieldName: FIELDS.searchEligibility, expectedType: "select" },
+  { key: "trustState", fieldName: FIELDS.trustState, expectedType: "select" },
+  { key: "governanceState", fieldName: FIELDS.governanceState, expectedType: "select" },
+  { key: "relationState", fieldName: FIELDS.relationState, expectedType: "select" },
+  { key: "contentLevel", fieldName: FIELDS.contentLevel, expectedType: "select" },
+  { key: "knowledgeRole", fieldName: FIELDS.knowledgeRole, expectedType: "select" },
+];
+
+function unavailableCanonicalObjectState(): CanonicalObjectState {
+  return {
+    canonicalId: null,
+    retrievalSpace: null,
+    searchEligibility: null,
+    trustState: null,
+    governanceState: null,
+    relationState: null,
+    contentLevel: null,
+    knowledgeRole: null,
+    fieldsReadable: {
+      canonicalId: false,
+      retrievalSpace: false,
+      searchEligibility: false,
+      trustState: false,
+      governanceState: false,
+      relationState: false,
+      contentLevel: false,
+      knowledgeRole: false,
+      allFieldsReadable: false,
+    },
+  };
+}
+
+export function canonicalObjectStateReadback(page: NotionPage): CanonicalObjectState {
+  const properties = page.properties ?? {};
+  const readable = Object.fromEntries(
+    CANONICAL_OBJECT_FIELD_SPECS.map(({ key, fieldName, expectedType }) => [key, properties[fieldName]?.type === expectedType]),
+  ) as Record<CanonicalObjectField, boolean>;
+  const value = (key: CanonicalObjectField, fieldName: string): string | null =>
+    readable[key] ? propertyText(properties[fieldName]) : null;
+  const allFieldsReadable = CANONICAL_OBJECT_FIELD_SPECS.every(({ key }) => readable[key]);
+  return {
+    canonicalId: value("canonicalId", FIELDS.canonicalId),
+    retrievalSpace: value("retrievalSpace", FIELDS.retrievalSpace),
+    searchEligibility: value("searchEligibility", FIELDS.searchEligibility),
+    trustState: value("trustState", FIELDS.trustState),
+    governanceState: value("governanceState", FIELDS.governanceState),
+    relationState: value("relationState", FIELDS.relationState),
+    contentLevel: value("contentLevel", FIELDS.contentLevel),
+    knowledgeRole: value("knowledgeRole", FIELDS.knowledgeRole),
+    inTrash: page.in_trash === true,
+    fieldsReadable: {
+      ...readable,
+      allFieldsReadable,
+    },
+  };
+}
+
 export function primaryDomainRoutingReadiness(
   relationComplete: boolean,
   inventoryComplete: boolean,
@@ -393,7 +459,11 @@ export function bindKnowledgeReaderExecutionContext(
     },
   });
 
-  if (!detail.canonicalId) return unresolved("NO_MATCH");
+  const liveCanonicalId = framework.canonicalObjectState.fieldsReadable.canonicalId
+    ? framework.canonicalObjectState.canonicalId?.trim() || null
+    : null;
+  if (framework.source.readbackRevisionCoherent !== true || !liveCanonicalId) return unresolved("STALE");
+  if (detail.canonicalId && detail.canonicalId !== liveCanonicalId) return unresolved("STALE");
   const taskProjections = projections.filter((projection) => projection.task_id === taskId);
   if (!taskProjections.length) return unresolved("NO_MATCH");
   if (taskProjections.some((projection) => !Number.isInteger(projection.checkpoint_sequence) || projection.checkpoint_sequence < 0)) {
@@ -403,7 +473,7 @@ export function bindKnowledgeReaderExecutionContext(
   const highest = taskProjections.filter((projection) => projection.checkpoint_sequence === highestSequence);
   const highestContexts = highest.map((projection) => safeExecutionReceiptContext(projection));
   if (highestContexts.some((context) => !context)) return unresolved("NO_MATCH");
-  if (highestContexts.some((context) => !context?.canonical_ids.includes(detail.canonicalId as string))) return unresolved("NO_MATCH");
+  if (highestContexts.some((context) => !context?.canonical_ids.includes(liveCanonicalId))) return unresolved("NO_MATCH");
   const identities = uniqueStrings(highest.map(executionContextIdentity).filter((value): value is string => Boolean(value)));
   if (identities.length !== 1) return unresolved("AMBIGUOUS");
   const statuses = uniqueStrings(highest.map((projection) => projection.status));
@@ -460,7 +530,7 @@ export function bindKnowledgeReaderExecutionContext(
       authorityCeiling: "TASK_SCOPED_EXECUTION_ROUTING_READBACK_ONLY",
       taskId,
       receiptId: context.receipt_id,
-      matchedCanonicalId: detail.canonicalId,
+      matchedCanonicalId: liveCanonicalId,
       primaryOwner: context.owner_set.primary_owner,
       nodes: context.owner_set.nodes.map((node) => ({ ownerId: node.owner_id, role: node.role })),
       omittedOwnerReasoning: context.owner_set.omitted_owner_reasoning,
@@ -513,6 +583,7 @@ export async function hydrateKnowledgeReaderFramework(
         ...(detail.notionLastEditedTime ? { derivativeRevision: detail.notionLastEditedTime } : {}),
         error: readbackErrorCode(error),
       },
+      canonicalObjectState: unavailableCanonicalObjectState(),
       domains: {
         primaryDeclaredIds: [],
         relatedDeclaredIds: [],
@@ -598,6 +669,7 @@ export async function hydrateKnowledgeReaderFramework(
         ...(page.last_edited_time ? { liveRevision: page.last_edited_time } : {}),
         error: "NOTES_DATA_SOURCE_MISMATCH",
       },
+      canonicalObjectState: canonicalObjectStateReadback(page),
       domains: {
         primaryDeclaredIds: [],
         relatedDeclaredIds: [],
@@ -664,7 +736,10 @@ export async function hydrateKnowledgeReaderFramework(
     };
   }
 
-  const live = normalizePage(page);
+  const canonicalObjectState = canonicalObjectStateReadback(page);
+  const liveKnowledgeRole = canonicalObjectState.fieldsReadable.knowledgeRole
+    ? canonicalObjectState.knowledgeRole
+    : null;
   const readbackStartedRevision = page.last_edited_time ?? null;
   const [
     primaryRelation,
@@ -759,7 +834,7 @@ export async function hydrateKnowledgeReaderFramework(
     readbackRevisionCoherent,
   );
   const ownerBlockingInputs = unresolvedOwnerInputs(
-    live.knowledgeRole,
+    liveKnowledgeRole,
     methodFamilyRead.names,
     methodFamilyRead.complete,
     primaryDomainRouting.ready,
@@ -778,6 +853,7 @@ export async function hydrateKnowledgeReaderFramework(
     && primaryProjectRelation.complete
     && relatedProjectRelation.complete
     && methodFamilyRead.complete
+    && canonicalObjectState.fieldsReadable.allFieldsReadable
     && domainRegistryComplete
     && projectRegistryComplete
     && domainUnresolved.length === 0
@@ -805,6 +881,7 @@ export async function hydrateKnowledgeReaderFramework(
         : {}),
       ...(endingReadbackError ? { error: endingReadbackError } : {}),
     },
+    canonicalObjectState,
     domains: {
       primaryDeclaredIds,
       relatedDeclaredIds,
@@ -871,7 +948,7 @@ export async function hydrateKnowledgeReaderFramework(
       },
     },
     routingInputs: {
-      ...(live.knowledgeRole ? { knowledgeRole: live.knowledgeRole } : {}),
+      ...(liveKnowledgeRole ? { knowledgeRole: liveKnowledgeRole } : {}),
       methodFamily: methodFamilyRead.names,
       methodFamilyComplete: methodFamilyRead.complete,
       primaryDomainRoutingReady: primaryDomainRouting.ready,
@@ -883,6 +960,7 @@ export async function hydrateKnowledgeReaderFramework(
       unresolvedInputs: uniqueStrings([
         ...ownerBlockingInputs.filter((input) => input !== "authoritative_execution_owner_resolver_runtime_readback"),
         ...(!methodFamilyRead.complete ? ["method_family_schema_readback"] : []),
+        ...(!canonicalObjectState.fieldsReadable.allFieldsReadable ? ["canonical_object_state_schema_readback"] : []),
         ...(!primaryRelation.complete ? ["primary_domain_relation_readback"] : []),
         ...(!domainRegistryComplete ? ["domain_registry_inventory_readback"] : []),
         ...(!readbackRevisionCoherent ? ["framework_revision_coherence"] : []),
