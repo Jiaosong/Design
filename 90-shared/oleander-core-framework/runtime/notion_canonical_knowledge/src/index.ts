@@ -57,7 +57,12 @@ import {
 import { normalizePage } from "./normalize";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
-import { buildKnowledgeReaderDetail, buildKnowledgeReaderSnapshot, hydrateKnowledgeReaderFramework } from "./reader";
+import {
+  buildKnowledgeReaderDetail,
+  buildKnowledgeReaderSnapshot,
+  FRAMEWORK_READBACK_BUDGET_MS,
+  hydrateKnowledgeReaderFramework,
+} from "./reader";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -68,6 +73,28 @@ function json(data: unknown, status = 200): Response {
 function errorJson(error: unknown, status = 500): Response {
   const message = error instanceof Error ? error.message : String(error);
   return json({ ok: false, error: message }, status);
+}
+
+class ReaderPageBudgetError extends Error {
+  constructor() {
+    super("reader_detail_budget_exceeded");
+  }
+}
+
+async function withinAbsoluteDeadline<T>(promise: Promise<T>, deadlineAtMs: number): Promise<T> {
+  const remainingMs = deadlineAtMs - Date.now();
+  if (remainingMs <= 0) throw new ReaderPageBudgetError();
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timeout = setTimeout(() => reject(new ReaderPageBudgetError()), remainingMs);
+      }),
+    ]);
+  } finally {
+    if (timeout !== null) clearTimeout(timeout);
+  }
 }
 
 async function handleWebhook(request: Request, env: Env): Promise<Response> {
@@ -1198,10 +1225,25 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const pageId = decodeURIComponent(readerPageMatch[1] ?? "").trim();
     if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
-    const detail = await buildKnowledgeReaderDetail(env.MANIFEST, pageId);
-    if (!detail) return json({ ok: false, error: "not_found" }, 404);
-    detail.frameworkReadback = await hydrateKnowledgeReaderFramework(env, detail);
-    return json(detail);
+    // Start the response budget before the D1 detail read so the Notion
+    // hydration cannot silently consume a fresh 8-second window afterwards.
+    // The Reader client aborts at 12s; this leaves a fixed margin for response
+    // serialization/network delivery without increasing the client timeout.
+    const deadlineAtMs = Date.now() + FRAMEWORK_READBACK_BUDGET_MS;
+    try {
+      const detail = await withinAbsoluteDeadline(buildKnowledgeReaderDetail(env.MANIFEST, pageId), deadlineAtMs);
+      if (!detail) return json({ ok: false, error: "not_found" }, 404);
+      detail.frameworkReadback = await withinAbsoluteDeadline(
+        hydrateKnowledgeReaderFramework(env, detail, deadlineAtMs),
+        deadlineAtMs,
+      );
+      return json(detail);
+    } catch (error) {
+      if (error instanceof ReaderPageBudgetError) {
+        return json({ ok: false, error: "reader_detail_budget_exceeded" }, 504);
+      }
+      throw error;
+    }
   }
 
   if (request.method === "POST" && url.pathname === "/v1/search") {

@@ -14,6 +14,7 @@ export interface Env {
   NOTION_VERSION: string;
   NOTION_ROOT_PAGE_ID: string;
   NOTION_NOTES_DATA_SOURCE_ID: string;
+  NOTION_DOMAINS_DATA_SOURCE_ID: string;
   EMBEDDING_MODEL: string;
   EMBEDDING_DIMENSIONS: string;
   API_DEFAULT_TOP_K: string;
@@ -222,6 +223,7 @@ export interface KnowledgeReaderDetailRelation {
 
 export interface KnowledgeReaderFrameworkObjectRef {
   registry: "notes" | "domains";
+  metadataSource: "NOTION_LIVE" | "D1_DERIVATIVE";
   pageId: string;
   title?: string;
   canonicalId?: string;
@@ -239,9 +241,11 @@ export interface KnowledgeReaderFrameworkObjectRef {
 export interface KnowledgeReaderFrameworkReadback {
   source: {
     authority: "Notion";
-    state: "HYDRATED" | "UNAVAILABLE";
+    state: "HYDRATED" | "PARTIAL" | "STALE_DURING_READBACK" | "UNAVAILABLE";
     derivativeRevision?: string;
+    readbackStartedRevision?: string;
     liveRevision?: string;
+    readbackRevisionCoherent?: boolean;
     revisionMatches?: boolean;
     error?: string;
   };
@@ -252,6 +256,7 @@ export interface KnowledgeReaderFrameworkReadback {
     related: KnowledgeReaderFrameworkObjectRef[];
     primaryRelationComplete: boolean;
     relatedRelationComplete: boolean;
+    registryInventoryComplete: boolean;
     unresolvedPageIds: string[];
   };
   canonicalHierarchy: {
@@ -268,6 +273,9 @@ export interface KnowledgeReaderFrameworkReadback {
   routingInputs: {
     knowledgeRole?: string;
     methodFamily: string[];
+    methodFamilyComplete: boolean;
+    primaryDomainRoutingReady: boolean;
+    primaryDomainRoutingIssues: string[];
     requiredNativeOutput: {
       state: "EXECUTION_CONTEXT_REQUIRED";
       source: "CURRENT_EXECUTION_CONTEXT_NOT_BOUND";

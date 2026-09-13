@@ -25,33 +25,77 @@ function headers(env: Env): HeadersInit {
   };
 }
 
-async function notionFetch<T>(env: Env, path: string, init: RequestInit = {}): Promise<T> {
-  for (let attempt = 0; attempt < NOTION_MAX_FETCH_ATTEMPTS; attempt += 1) {
-    await new Promise((resolve) => setTimeout(resolve, NOTION_MIN_REQUEST_INTERVAL_MS));
-    const response = await fetch(`https://api.notion.com${path}`, {
-      ...init,
-      headers: { ...headers(env), ...(init.headers ?? {}) },
-    });
-    if (response.ok) return (await response.json()) as T;
+export class NotionReadbackBudgetError extends Error {
+  constructor() {
+    super("Notion framework readback deadline exceeded");
+  }
+}
 
-    const body = await response.text();
-    const retryable = response.status === 429 || [500, 502, 503, 504].includes(response.status);
-    if (!retryable || attempt === NOTION_MAX_FETCH_ATTEMPTS - 1) {
-      throw new NotionHttpError(response.status, body);
-    }
-
-    const retryAfter = Number.parseInt(response.headers.get("Retry-After") ?? "", 10);
-    const delayMs = response.status === 429 && Number.isFinite(retryAfter) && retryAfter > 0
-      ? retryAfter * 1000
-      : Math.min(8_000, 500 * 2 ** attempt);
+async function waitWithinDeadline(delayMs: number, deadlineAtMs?: number): Promise<void> {
+  if (deadlineAtMs === undefined) {
     await new Promise((resolve) => setTimeout(resolve, delayMs));
+    return;
+  }
+  const remainingMs = deadlineAtMs - Date.now();
+  if (remainingMs <= 0) throw new NotionReadbackBudgetError();
+  if (delayMs >= remainingMs) {
+    await new Promise((resolve) => setTimeout(resolve, remainingMs));
+    throw new NotionReadbackBudgetError();
+  }
+  await new Promise((resolve) => setTimeout(resolve, delayMs));
+}
+
+async function notionFetch<T>(
+  env: Env,
+  path: string,
+  init: RequestInit = {},
+  deadlineAtMs?: number,
+): Promise<T> {
+  for (let attempt = 0; attempt < NOTION_MAX_FETCH_ATTEMPTS; attempt += 1) {
+    await waitWithinDeadline(NOTION_MIN_REQUEST_INTERVAL_MS, deadlineAtMs);
+    const remainingMs = deadlineAtMs === undefined ? null : deadlineAtMs - Date.now();
+    if (remainingMs !== null && remainingMs <= 0) throw new NotionReadbackBudgetError();
+    const controller = deadlineAtMs === undefined ? null : new AbortController();
+    const timeout = controller && remainingMs !== null
+      ? setTimeout(() => controller.abort(), remainingMs)
+      : null;
+    let delayMs: number | null = null;
+    try {
+      const response = await fetch(`https://api.notion.com${path}`, {
+        ...init,
+        headers: { ...headers(env), ...(init.headers ?? {}) },
+        ...(controller ? { signal: controller.signal } : {}),
+      });
+      // Keep the same AbortController alive through body consumption. Fetch can
+      // resolve as soon as headers arrive; clearing the timer before json/text
+      // parsing would let a stalled response body escape the Reader deadline.
+      if (response.ok) return (await response.json()) as T;
+
+      const body = await response.text();
+      const retryable = response.status === 429 || [500, 502, 503, 504].includes(response.status);
+      if (!retryable || attempt === NOTION_MAX_FETCH_ATTEMPTS - 1) {
+        throw new NotionHttpError(response.status, body);
+      }
+
+      const retryAfter = Number.parseInt(response.headers.get("Retry-After") ?? "", 10);
+      delayMs = response.status === 429 && Number.isFinite(retryAfter) && retryAfter > 0
+        ? retryAfter * 1000
+        : Math.min(8_000, 500 * 2 ** attempt);
+    } catch (error) {
+      if (controller?.signal.aborted) throw new NotionReadbackBudgetError();
+      throw error;
+    } finally {
+      if (timeout !== null) clearTimeout(timeout);
+    }
+    if (delayMs === null) throw new Error("Notion retry delay missing unexpectedly");
+    await waitWithinDeadline(delayMs, deadlineAtMs);
   }
 
   throw new Error("Notion fetch retry loop exhausted unexpectedly");
 }
 
-export async function fetchPage(env: Env, pageId: string): Promise<NotionPage> {
-  return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`);
+export async function fetchPage(env: Env, pageId: string, deadlineAtMs?: number): Promise<NotionPage> {
+  return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`, {}, deadlineAtMs);
 }
 
 interface NotionPropertyItemListResponse {
@@ -65,6 +109,9 @@ export interface NotionRelationReadback {
   ids: string[];
   complete: boolean;
 }
+
+const NOTION_RELATION_READBACK_MAX_PAGES = 20;
+const NOTION_DOMAIN_INVENTORY_MAX_PAGES = 20;
 
 function relationIdsFromPageProperty(property: Record<string, unknown> | undefined): string[] {
   if (!property || property.type !== "relation" || !Array.isArray(property.relation)) return [];
@@ -83,6 +130,7 @@ export async function fetchRelationReadback(
   env: Env,
   page: NotionPage,
   fieldName: string,
+  deadlineAtMs?: number,
 ): Promise<NotionRelationReadback> {
   const property = page.properties?.[fieldName];
   // Missing/retagged fields are schema drift, not an authoritative empty
@@ -97,12 +145,15 @@ export async function fetchRelationReadback(
 
   const ids: string[] = [];
   let cursor: string | null = null;
-  for (;;) {
+  const seenCursors = new Set<string>();
+  for (let pageNumber = 0; pageNumber < NOTION_RELATION_READBACK_MAX_PAGES; pageNumber += 1) {
     const params = new URLSearchParams({ page_size: "100" });
     if (cursor) params.set("start_cursor", cursor);
     const response = await notionFetch<NotionPropertyItemListResponse>(
       env,
       `/v1/pages/${encodeURIComponent(page.id)}/properties/${encodeURIComponent(propertyId)}?${params.toString()}`,
+      {},
+      deadlineAtMs,
     );
     for (const result of response.results) {
       const relation = result.relation;
@@ -112,8 +163,51 @@ export async function fetchRelationReadback(
     }
     if (!response.has_more) return { ids: [...new Set(ids)], complete: true };
     if (!response.next_cursor) return { ids: [...new Set(ids.length ? ids : initialIds)], complete: false };
+    if (seenCursors.has(response.next_cursor)) {
+      return { ids: [...new Set(ids.length ? ids : initialIds)], complete: false };
+    }
+    seenCursors.add(response.next_cursor);
     cursor = response.next_cursor;
   }
+  return { ids: [...new Set(ids.length ? ids : initialIds)], complete: false };
+}
+
+interface DomainRegistryQueryResponse {
+  results: NotionPage[];
+  has_more: boolean;
+  next_cursor: string | null;
+}
+
+export interface DomainRegistryReadback {
+  pages: NotionPage[];
+  complete: boolean;
+}
+
+/**
+ * Query the authoritative Current Domain data source as one bounded inventory
+ * instead of issuing one live page request per related Domain. This both
+ * verifies registry membership and keeps Reader detail latency bounded.
+ */
+export async function queryDomainRegistryPages(env: Env, deadlineAtMs?: number): Promise<DomainRegistryReadback> {
+  const pages: NotionPage[] = [];
+  let cursor: string | null = null;
+  const seenCursors = new Set<string>();
+  for (let pageNumber = 0; pageNumber < NOTION_DOMAIN_INVENTORY_MAX_PAGES; pageNumber += 1) {
+    const payload: Record<string, unknown> = { page_size: 100, result_type: "page" };
+    if (cursor) payload.start_cursor = cursor;
+    const response = await notionFetch<DomainRegistryQueryResponse>(
+      env,
+      `/v1/data_sources/${encodeURIComponent(env.NOTION_DOMAINS_DATA_SOURCE_ID)}/query`,
+      { method: "POST", body: JSON.stringify(payload) },
+      deadlineAtMs,
+    );
+    pages.push(...response.results.filter((page) => page.object === "page" && typeof page.id === "string"));
+    if (!response.has_more) return { pages, complete: true };
+    if (!response.next_cursor || seenCursors.has(response.next_cursor)) return { pages, complete: false };
+    seenCursors.add(response.next_cursor);
+    cursor = response.next_cursor;
+  }
+  return { pages, complete: false };
 }
 
 export interface GovernanceScalarUpdates {
