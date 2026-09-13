@@ -19,6 +19,7 @@ import {
   getRuntimeState,
   inventoryMissingPageIds,
   latestCompleteFullReconcile,
+  listExecutionLiveStatus,
   markNotionSeen,
   markWebhookFallbackFailure,
   markWebhookFallbackScheduled,
@@ -35,6 +36,7 @@ import {
   stageSyncMessages,
   syncRunReadback,
   type DocumentSyncState,
+  type ExecutionReceiptLiveContext,
 } from "./manifest";
 import {
   createAcademicPage,
@@ -62,6 +64,7 @@ import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
 import {
   buildKnowledgeReaderDetail,
   buildKnowledgeReaderSnapshot,
+  bindKnowledgeReaderExecutionContext,
   FRAMEWORK_READBACK_BUDGET_MS,
   hydrateKnowledgeReaderFramework,
 } from "./reader";
@@ -97,6 +100,122 @@ async function withinAbsoluteDeadline<T>(promise: Promise<T>, deadlineAtMs: numb
   } finally {
     if (timeout !== null) clearTimeout(timeout);
   }
+}
+
+const EXECUTION_OWNER_NODE_ROLES = new Set([
+  "PRIMARY_OWNER",
+  "SUPPORTING_OWNER",
+  "READ_ONLY_CONSUMER",
+  "VALIDATOR",
+  "INDEPENDENT_REVIEWER",
+]);
+
+function boundedExecutionString(value: unknown, max: number): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed ? trimmed.slice(0, max) : null;
+}
+
+function boundedExecutionStrings(value: unknown, maxItems: number, maxLength: number): string[] | null {
+  if (!Array.isArray(value) || value.length > maxItems) return null;
+  const result: string[] = [];
+  const seen = new Set<string>();
+  for (const raw of value) {
+    const item = boundedExecutionString(raw, maxLength);
+    if (!item) return null;
+    if (!seen.has(item)) {
+      seen.add(item);
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+function parseExecutionReceiptLiveContext(value: unknown, topLevelReceiptId: string | undefined): ExecutionReceiptLiveContext | null {
+  if (value === undefined || value === null) return null;
+  if (!value || typeof value !== "object") throw new Error("invalid_execution_context");
+  const input = value as Record<string, unknown>;
+  if (input.source !== "OLEANDER_EXECUTION_RECEIPT_V1") throw new Error("invalid_execution_context_source");
+  const receiptId = boundedExecutionString(input.receipt_id, 500);
+  if (!receiptId || !topLevelReceiptId || receiptId !== topLevelReceiptId) {
+    throw new Error("execution_context_receipt_id_mismatch");
+  }
+  const canonicalIds = boundedExecutionStrings(input.canonical_ids, 64, 500);
+  if (!canonicalIds?.length) throw new Error("execution_context_canonical_ids_required");
+  const checkpointState = boundedExecutionString(input.checkpoint_state, 80);
+  const authorityFingerprint = boundedExecutionString(input.authority_fingerprint, 1000);
+  const staleReasons = boundedExecutionStrings(input.stale_reasons, 32, 1000);
+  if (!checkpointState || !authorityFingerprint || staleReasons === null) {
+    throw new Error("execution_context_checkpoint_provenance_invalid");
+  }
+
+  if (!input.required_native_output || typeof input.required_native_output !== "object") {
+    throw new Error("execution_context_required_native_output_invalid");
+  }
+  const output = input.required_native_output as Record<string, unknown>;
+  const artifactClass = boundedExecutionString(output.artifact_class, 500);
+  const nativeFormat = boundedExecutionString(output.native_format, 500);
+  const targetRuntime = boundedExecutionString(output.target_runtime, 1000);
+  const derivedFormats = boundedExecutionStrings(output.derived_formats, 32, 500);
+  if (!artifactClass || !nativeFormat || !targetRuntime || typeof output.editable_required !== "boolean" || derivedFormats === null) {
+    throw new Error("execution_context_required_native_output_invalid");
+  }
+
+  if (!input.owner_set || typeof input.owner_set !== "object") throw new Error("execution_context_owner_set_invalid");
+  const ownerSet = input.owner_set as Record<string, unknown>;
+  const primaryOwner = boundedExecutionString(ownerSet.primary_owner, 500);
+  const omittedOwnerReasoning = boundedExecutionString(ownerSet.omitted_owner_reasoning, 2000);
+  if (ownerSet.minimum_sufficient_owner_set !== true || !primaryOwner || !omittedOwnerReasoning || !Array.isArray(ownerSet.nodes) || ownerSet.nodes.length > 32) {
+    throw new Error("execution_context_owner_set_invalid");
+  }
+  const nodes: Array<{ owner_id: string; role: string }> = [];
+  for (const rawNode of ownerSet.nodes) {
+    if (!rawNode || typeof rawNode !== "object") throw new Error("execution_context_owner_node_invalid");
+    const node = rawNode as Record<string, unknown>;
+    const ownerId = boundedExecutionString(node.owner_id, 500);
+    const role = boundedExecutionString(node.role, 200);
+    if (!ownerId || !role || !EXECUTION_OWNER_NODE_ROLES.has(role)) throw new Error("execution_context_owner_node_invalid");
+    nodes.push({ owner_id: ownerId, role });
+  }
+  const primaryNodes = nodes.filter((node) => node.role === "PRIMARY_OWNER");
+  if (primaryNodes.length !== 1 || primaryNodes[0]?.owner_id !== primaryOwner) {
+    throw new Error("execution_context_primary_owner_mismatch");
+  }
+
+  if (!input.flow_completion || typeof input.flow_completion !== "object") throw new Error("execution_context_flow_completion_invalid");
+  const flow = input.flow_completion as Record<string, unknown>;
+  const completionGate = flow.completion_gate === null ? null : boundedExecutionString(flow.completion_gate, 40);
+  const incompleteRequiredPhases = boundedExecutionStrings(flow.incomplete_required_phases, 64, 500);
+  if ((flow.completion_gate !== null && !completionGate) || typeof flow.completion_claim_allowed !== "boolean" || incompleteRequiredPhases === null) {
+    throw new Error("execution_context_flow_completion_invalid");
+  }
+
+  return {
+    source: "OLEANDER_EXECUTION_RECEIPT_V1",
+    receipt_id: receiptId,
+    canonical_ids: canonicalIds,
+    checkpoint_state: checkpointState,
+    authority_fingerprint: authorityFingerprint,
+    stale_reasons: staleReasons,
+    required_native_output: {
+      artifact_class: artifactClass,
+      native_format: nativeFormat,
+      editable_required: output.editable_required,
+      target_runtime: targetRuntime,
+      derived_formats: derivedFormats,
+    },
+    owner_set: {
+      minimum_sufficient_owner_set: true,
+      primary_owner: primaryOwner,
+      nodes,
+      omitted_owner_reasoning: omittedOwnerReasoning,
+    },
+    flow_completion: {
+      completion_gate: completionGate,
+      completion_claim_allowed: flow.completion_claim_allowed,
+      incomplete_required_phases: incompleteRequiredPhases,
+    },
+  };
 }
 
 async function handleWebhook(request: Request, env: Env): Promise<Response> {
@@ -1262,6 +1381,12 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     const readbackVerdict = optionalString("readback_verdict", 500);
     const flowCompletionGate = optionalString("flow_completion_gate", 200);
     const note = optionalString("note");
+    let executionContext: ExecutionReceiptLiveContext | null = null;
+    try {
+      executionContext = parseExecutionReceiptLiveContext(body.execution_context, receiptId);
+    } catch (error) {
+      return json({ ok: false, error: error instanceof Error ? error.message : "invalid_execution_context" }, 400);
+    }
     const write = await putExecutionLiveStatus(env.MANIFEST, {
       version: "oleander-execution-live-status/v1",
       task_id: taskId,
@@ -1274,6 +1399,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       ...(readbackVerdict ? { readback_verdict: readbackVerdict } : {}),
       ...(flowCompletionGate ? { flow_completion_gate: flowCompletionGate } : {}),
       ...(note ? { note } : {}),
+      ...(executionContext ? { execution_context: executionContext } : {}),
     });
     if (!write.applied) {
       return json({
@@ -1295,7 +1421,9 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "GET" && readerPageMatch) {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const pageId = decodeURIComponent(readerPageMatch[1] ?? "").trim();
+    const taskId = url.searchParams.get("task_id")?.trim() || null;
     if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
+    if (taskId && taskId.length > 200) return json({ ok: false, error: "task_id_too_long" }, 400);
     // Start the response budget before the D1 detail read so the Notion
     // hydration cannot silently consume a fresh 8-second window afterwards.
     // The Reader client aborts at 12s; this leaves a fixed margin for response
@@ -1304,10 +1432,14 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     try {
       const detail = await withinAbsoluteDeadline(buildKnowledgeReaderDetail(env.MANIFEST, pageId), deadlineAtMs);
       if (!detail) return json({ ok: false, error: "not_found" }, 404);
-      detail.frameworkReadback = await withinAbsoluteDeadline(
-        hydrateKnowledgeReaderFramework(env, detail, deadlineAtMs),
-        deadlineAtMs,
-      );
+      const executionStatusesPromise = taskId
+        ? listExecutionLiveStatus(env.MANIFEST, taskId).catch(() => [])
+        : Promise.resolve([]);
+      const [frameworkReadback, executionStatuses] = await Promise.all([
+        withinAbsoluteDeadline(hydrateKnowledgeReaderFramework(env, detail, deadlineAtMs), deadlineAtMs),
+        withinAbsoluteDeadline(executionStatusesPromise, deadlineAtMs),
+      ]);
+      detail.frameworkReadback = bindKnowledgeReaderExecutionContext(detail, frameworkReadback, taskId, executionStatuses);
       return json(detail);
     } catch (error) {
       if (error instanceof ReaderPageBudgetError) {
