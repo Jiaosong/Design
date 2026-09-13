@@ -1,0 +1,12 @@
+# Create these metadata indexes on oleander-bgem3-v1 BEFORE any vector backfill.
+# Keep values short enum/ID strings because indexed string filtering is bounded.
+retrieval_space:string
+search_eligibility:string
+governance_state:string
+trust_state:string
+freshness_state:string
+evidence_grade:string
+authority_class:string
+project_id:string
+domain_id:string
+knowledge_role:string

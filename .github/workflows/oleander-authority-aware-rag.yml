@@ -1,0 +1,51 @@
+name: OLEANDER Authority-aware RAG
+
+on:
+  pull_request:
+    paths:
+      - "00-governance/OLEANDER_AUTHORITY_AWARE_RAG_CONTRACT_v0.1.md"
+      - "00-governance/runtime/oleander_rag_policy.py"
+      - "00-governance/runtime/test_oleander_rag_policy.py"
+      - "00-governance/runtime/oleander-rag-worker/**"
+      - "90-shared/oleander-core-framework/runtime/retrieval/**"
+      - ".github/workflows/oleander-authority-aware-rag.yml"
+  push:
+    branches: [main]
+    paths:
+      - "00-governance/OLEANDER_AUTHORITY_AWARE_RAG_CONTRACT_v0.1.md"
+      - "00-governance/runtime/oleander_rag_policy.py"
+      - "00-governance/runtime/test_oleander_rag_policy.py"
+      - "00-governance/runtime/oleander-rag-worker/**"
+      - "90-shared/oleander-core-framework/runtime/retrieval/**"
+      - ".github/workflows/oleander-authority-aware-rag.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  policy-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run authority policy regression
+        working-directory: 00-governance/runtime
+        run: python -m unittest -v test_oleander_rag_policy.py
+
+  worker-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: 00-governance/runtime/oleander-rag-worker/package.json
+      - name: Install worker dependencies
+        working-directory: 00-governance/runtime/oleander-rag-worker
+        run: npm install --no-audit --no-fund
+      - name: Typecheck worker
+        working-directory: 00-governance/runtime/oleander-rag-worker
+        run: npm run typecheck
