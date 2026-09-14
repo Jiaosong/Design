@@ -55,6 +55,27 @@ Hard rules:
 - research output must preserve enough provenance and method detail to reconstruct the reasoning;
 - `RESEARCH PASS` does not prove `DESIGN PASS`, field truth, construction readiness, regulatory approval, or final project validity.
 
+## Professional knowledge content + research contract
+
+For formal Research / THEORY / METHOD / FRAMEWORK / CASE / SOURCE / EVIDENCE / PRACTICE / TOOL / STANDARD content, also apply `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`.
+
+This is the default body/content contract for professional knowledge creation and current-body review. It extends the research gate into independent gates for:
+
+`R1 Research Conduct → R2 Study-Type Reporting → K1 Knowledge Content → K2 Knowledge Object → K3 Graph Semantics → K4 Metadata/Provenance/Retrieval → K5 Lifecycle/Reuse/Staleness → B1 Bilingual Semantic Parity → Independent Review`.
+
+Mandatory boundaries:
+
+- `STRUCTURE PASS ≠ CONTENT PASS ≠ RESEARCH PASS ≠ KNOWLEDGE OBJECT PASS ≠ CANONICAL CURRENT`;
+- R1 and R2 are independent; a complete report cannot repair a bad research design;
+- consequential claims use a Claim–Evidence Ledger with contradiction, confidence, uncertainty, applicability and validation state;
+- different study types route to different reporting profiles rather than one generic checklist;
+- a well-researched document still needs correct atomicity, metadata, provenance, graph semantics, lifecycle and retrieval status;
+- formal body text defaults to English｜中文 semantic parity at the same claim/evidence/uncertainty/status level;
+- high-impact Current promotion requires independent review when applicable;
+- the standard extends current Notion Authority and live registries; it must not create a second taxonomy, registry, Authority or generic page tree.
+
+When reviewing the existing knowledge graph, always read the **CURRENT full body** of the exact object before assigning `CONTENT PASS`. Existing graph classification, lineage or older review evidence is not a substitute for current body review.
+
 ## Reference sourcing + how-made deconstruction capability
 
 Use this branch when the task is not only "find evidence" but "find better precedents and understand how they were made".
@@ -162,6 +183,8 @@ Provide:
 
 For consequential `RDC-1+` research, also provide the applicable Professional Research Gate outputs: protocol summary, claim-evidence matrix, contradiction/limitation register, claim-level confidence and uncertainty, reproducibility record, and final `RESEARCH PASS / REVISE / HOLD / REJECT`.
 
+For formal knowledge-body creation or review, also report the applicable `R1 / R2 / K1 / K2 / K3 / K4 / K5 / B1 / Independent Review` states from `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`. Do not collapse them into one vanity score.
+
 ## Quality checks
 
 - No unsupported quantitative claim.
@@ -176,4 +199,7 @@ For consequential `RDC-1+` research, also provide the applicable Professional Re
 - Domain, Source, Method, Project, Related and Supersession semantics remain separate.
 - No parallel Notion taxonomy/page tree is created by default.
 - For consequential research, the declared research depth, source appraisal, contradiction search, claim confidence, uncertainty and applicability boundary satisfy `PROFESSIONAL_RESEARCH_GATE_v0.1.md`.
+- Formal professional knowledge-body work satisfies the applicable gates and Claim–Evidence Ledger rules in `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`.
+- Existing graph classification or old review evidence never substitutes for reading the CURRENT full body when assigning content state.
+- English｜中文 formal content preserves claim, evidence strength, uncertainty, boundary, numbers/units/version and status parity when bilingual content is required.
 - The result is usable by `oleander-design-process`, `oleander-data-viz`, `oleander-story-and-board`, `oleander-image-art-direction`, `oleander-web-ui`, `oleander-motion`, and `oleander-3d-pipeline`.
