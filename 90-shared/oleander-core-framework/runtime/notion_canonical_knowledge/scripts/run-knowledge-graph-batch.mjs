@@ -116,3 +116,4 @@ const receipt = {
 if (receiptPath) fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n");
 console.log(JSON.stringify({ plannedCount: receipt.plannedCount, processedCount: receipt.processedCount, summary, receiptPath }, null, 2));
 if (results.some((r) => ["DRIFT", "FAILED", "ERROR"].includes(r.status))) process.exit(2);
+
