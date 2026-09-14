@@ -1,4 +1,4 @@
-﻿import fs from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -89,12 +89,12 @@ for (const node of plan.nodes) {
       expected,
       updates,
     };
-    const response = await fetch(mutationBase, { method: "POST", headers, body: JSON.stringify(body) });
-    const text = await response.text();
+    const mutationResponse = await fetch(mutationBase, { method: "POST", headers, body: JSON.stringify(body) });
+    const text = await mutationResponse.text();
     let payload;
     try { payload = JSON.parse(text); } catch { payload = { raw: text }; }
-    const status = response.ok && payload?.ok ? "APPLIED" : "FAILED";
-    results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status, httpStatus: response.status, updates, response: payload, startedAt, completedAt: new Date().toISOString() });
+    const status = mutationResponse.ok && payload?.ok ? "APPLIED" : "FAILED";
+    results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status, httpStatus: mutationResponse.status, updates, response: payload, startedAt, completedAt: new Date().toISOString() });
     if (status === "FAILED") break;
     await sleep(750);
   } catch (error) {
