@@ -1,0 +1,57 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T15:06:00.000Z",
+  "status": "BATCH_07C_SUPPORT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair the remaining unambiguous KN-ARCH-THEORY-003 Primary Domain route using complete current-body readback and the canonical 30-object ACTIVE L2 Domain Registry.",
+  "safeguards": [
+    "KN-ARCH-THEORY-003 was read completely in the targeted domain batch; the body is not truncated and Reader detail succeeded.",
+    "The current Primary Domain points to Architecture Knowledge at L0, which is invalid under the locked Primary Domain contract requiring exactly one ACTIVE L2 owner.",
+    "The target is the exact ACTIVE L2 Notion Domain Registry page ID for Design Theory & History from the complete 30-object registry readback.",
+    "The plan records the exact current Primary Domain set and current relation state; the runner must fail closed on drift before mutation.",
+    "No classification, structural hierarchy, Source, Method, Project, Related or provenance relation is changed in this batch.",
+    "Domain code is not invented because the current ACTIVE L2 registry readback does not export a domainCode field."
+  ],
+  "plannedCount": 1,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-ARCH-THEORY-003",
+      "pageId": "3acb86be-5c47-8119-bd6c-d2cd340eb985",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": [
+          "3b5b86be-5c47-816c-944b-edbe990ed671"
+        ]
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The body is explicitly a phenomenology and sensory-experience theory translation framework. It separates author/concept traditions from validation methods and uses human factors, building physics, accessibility, observation and POE as supporting validation layers. Its reusable owned subject is design theory/history translation rather than any one validation or technical domain.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-81de-95be-fd3ec8ff6b99",
+          "targetTitle": "Design Theory & History｜设计理论与设计史",
+          "targetFrameworkPath": "General Design Knowledge / Theory, History & Culture / Design Theory & History",
+          "reason": "The ACTIVE L2 domain directly owns design theory/history/culture synthesis. KN-ARCH-THEORY-003 studies Heidegger, Merleau-Ponty, Norberg-Schulz, Pallasmaa and Zumthor as bounded theory traditions and translates them into testable design questions; the other disciplines named in the body are validators rather than the primary owner."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_C_SUPPORT_RESULT_20260914.json",
+        "summaryResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_C_SUPPORT_SUMMARY_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
