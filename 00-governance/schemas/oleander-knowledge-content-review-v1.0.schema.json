@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/oleander-knowledge-content-review-v1.0.schema.json",
+  "title": "OLEANDER Knowledge Content Review Record v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["canonicalId","pageId","graphState","graphTerminal","contentState","contentDecision","contentTerminal","bodyReadStatus","reviewConfidence","contentIssues","overallTerminal"],
+  "properties": {
+    "canonicalId": { "type": ["string", "null"] },
+    "pageId": { "type": "string", "minLength": 1 },
+    "graphState": { "type": "string", "minLength": 1 },
+    "graphTerminal": { "type": "boolean" },
+    "contentState": { "enum": ["CONTENT_UNREVIEWED","CONTENT_REVIEW_IN_PROGRESS","CONTENT_REVIEWED_KEEP","CONTENT_ACTION_REQUIRED_RESTRUCTURE","CONTENT_ACTION_REQUIRED_ENRICH","CONTENT_ACTION_REQUIRED_MERGE","CONTENT_HOLD","CONTENT_LINEAGE_TERMINAL","CONTENT_ACTION_APPLIED_VERIFY_PENDING","CONTENT_ACTION_APPLIED_VERIFIED"] },
+    "contentDecision": { "type": ["string", "null"], "enum": [null,"KEEP","RESTRUCTURE","ENRICH","MERGE","HOLD","LINEAGE_ONLY"] },
+    "contentTerminal": { "type": "boolean" },
+    "bodyReadStatus": { "enum": ["NOT_READ","FULL_BODY_READ","EMPTY","TRUNCATED","UNAVAILABLE","CORRUPT"] },
+    "bodyEvidenceRef": { "type": ["string", "null"] },
+    "reviewedAt": { "type": ["string", "null"], "format": "date-time" },
+    "reviewConfidence": { "enum": ["UNSET","LOW","MEDIUM","MEDIUM_HIGH","HIGH"] },
+    "contentIssues": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "requiredContentAction": { "type": ["string", "null"] },
+    "overallTerminal": { "type": "boolean" }
+  },
+  "allOf": [
+    { "if": { "properties": { "contentState": { "enum": ["CONTENT_REVIEWED_KEEP","CONTENT_HOLD","CONTENT_LINEAGE_TERMINAL","CONTENT_ACTION_APPLIED_VERIFIED"] } } }, "then": { "properties": { "contentTerminal": { "const": true } } } },
+    { "if": { "properties": { "contentState": { "enum": ["CONTENT_UNREVIEWED","CONTENT_REVIEW_IN_PROGRESS","CONTENT_ACTION_REQUIRED_RESTRUCTURE","CONTENT_ACTION_REQUIRED_ENRICH","CONTENT_ACTION_REQUIRED_MERGE","CONTENT_ACTION_APPLIED_VERIFY_PENDING"] } } }, "then": { "properties": { "contentTerminal": { "const": false } } } }
+  ]
+}
