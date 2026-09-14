@@ -54,6 +54,13 @@ function plannedUpdates(node, live) {
   return updates;
 }
 
+function effectiveRetrievalSpace(live) {
+  if (live.searchEligibility === "HISTORY_ONLY") return "PROVENANCE";
+  if (["LEGACY", "ARCHIVED"].includes(live.governanceState)) return "PROVENANCE";
+  if (["CURRENT", "SUPPORT", "PROVENANCE"].includes(live.retrievalSpace)) return live.retrievalSpace;
+  return live.governanceState === "ACTIVE" ? "SUPPORT" : "PROVENANCE";
+}
+
 for (const node of plan.nodes) {
   const startedAt = new Date().toISOString();
   let inspect;
@@ -64,7 +71,8 @@ for (const node of plan.nodes) {
     const live = inspect.page;
     const drift = [];
     if (live.canonicalId !== node.canonicalId) drift.push(`canonicalId:${live.canonicalId}`);
-    if (live.retrievalSpace !== node.retrievalSpace) drift.push(`retrievalSpace:${live.retrievalSpace}`);
+    const liveEffectiveSpace = effectiveRetrievalSpace(live);
+    if (liveEffectiveSpace !== node.retrievalSpace) drift.push(`retrievalSpace:${live.retrievalSpace}->${liveEffectiveSpace}`);
     if (live.contentLevel !== node.current.level) drift.push(`contentLevel:${live.contentLevel}`);
     if (live.knowledgeRole !== node.current.role) drift.push(`knowledgeRole:${live.knowledgeRole}`);
     if (live.relationState !== node.current.relationState) drift.push(`relationState:${live.relationState}`);

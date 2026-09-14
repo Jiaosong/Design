@@ -68,6 +68,7 @@ import {
 } from "./notion";
 import { belongsToDataSource, normalizePage, propertyText } from "./normalize";
 import { buildReaderLiveStatus } from "./live-status";
+import { resolveAuthority } from "./authority";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
 import {
@@ -1318,11 +1319,13 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     if (before.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
       return json({ ok: false, error: "graph_mutation_page_not_in_notes_data_source" }, 409);
     }
-    if (!before.canonicalId || !["CURRENT", "SUPPORT"].includes(before.retrievalSpace ?? "") || !["ACTIVE", "REVIEW"].includes(before.governanceState ?? "")) {
+    const beforeAuthority = resolveAuthority(before);
+    if (!before.canonicalId || !beforeAuthority.index || !["CURRENT", "SUPPORT"].includes(beforeAuthority.effectiveSpace ?? "") || !["ACTIVE", "REVIEW"].includes(before.governanceState ?? "")) {
       return json({
         ok: false,
         error: "graph_mutation_requires_active_current_or_support_object",
         before,
+        authority: beforeAuthority,
       }, 409);
     }
     if (before.canonicalId !== body.expected.canonical_id) {
