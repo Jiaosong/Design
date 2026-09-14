@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "OLE-GEO-0001",
+      "type": "surface_component"
+    }
+  ],
+  "edges": [
+    {
+      "from": "OLE-GEO-0001",
+      "to": "Validation",
+      "relation": "validated_by",
+      "reason": "Surface quality validation integration",
+      "authority": "DERIVED"
+    }
+  ]
+}

@@ -33,6 +33,8 @@
     "third_numeric_cap_dof_forbidden": true,
     "mesh_local_patch_forbidden": true,
     "native_source_must_remain_active_in_saved_blend": true,
+    "saved_blend_reopen_required": true,
+    "self_contained_cap_aware_rebuild_required": true,
     "derived_mesh_is_authority": false,
     "shared_surface_system_runtime_required": true,
     "required_diagnostics": ["BROAD","STRIP","GRAZING","ZEBRA"],
@@ -47,7 +49,8 @@
   "outputs": {
     "blend": "OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend",
     "report": "G1_R4_5_1B_SCALE_086_CONFIRMATION_REPORT.json",
-    "native_source_snapshot": "G1_R4_5_1B_SCALE_086_NATIVE_SOURCE_SNAPSHOT.json"
+    "native_source_snapshot": "G1_R4_5_1B_SCALE_086_NATIVE_SOURCE_SNAPSHOT.json",
+    "reopen_report": "G1_R4_5_1B_SCALE_086_REOPEN_PERSISTENCE_REPORT.json"
   },
   "boundary": "Exact Working Source confirmation only. No parameter tuning, third DOF, Candidate Promotion, Candidate/Canonical Authority, Class-A, engineering CAD, manufacturing/tooling, ergonomic comfort, final CMF or Release."
 }

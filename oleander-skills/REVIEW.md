@@ -35,6 +35,8 @@ This file is the current repository-state source for the installed reusable skil
 - Narrative outputs trace claims back to approved research.
 - QC distinguishes blocking defects from warnings and never edits masters without permission.
 - Motion identifies a real Motion Role, includes a no-motion baseline and Reduced Motion path, uses native-first library routing, distinguishes `DESIGNED / NOT RUN` from executed runtime evidence, and applies AR-S10 checks for timing, interruption, jank, latency, occlusion, accessibility, dependency/runtime cost and export consistency.
+- Reusable design skills route through the current L0–L7 knowledge architecture rather than inventing a parallel design taxonomy. For material design decisions, resolve relevant existing METHOD / THEORY / SOURCE / EVIDENCE / CASE / PRACTICE into a project Design Intelligence Packet and triggered professional review lenses under `00-governance/design-intelligence-routing-and-review-v1.0.md`. Skill execution, artifact QA or technical PASS may not self-award `DESIGN KEEP`.
+- Complex multidisciplinary tasks additionally trigger `00-governance/cross-disciplinary-design-integration-v1.0.md`: resolve interface coupling / criticality, owners, shared variables, required maturity, authority conflicts, acceptance/readback basis, dependency/change propagation and a current Integration Receipt where Promotion depends on whole-system closure. Parallel discipline outputs or a federated model are not sufficient evidence of integrated design.
 
 ## AIG-01 AI governance checks
 

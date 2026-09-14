@@ -1,0 +1,10 @@
+{
+  "nodes": [
+    {
+      "id": "OLE-GEO-0001",
+      "type": "surface_component"
+    }
+  ],
+  "edges": [],
+  "version": "0.2.0"
+}

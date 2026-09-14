@@ -1,0 +1,5 @@
+{
+  "target": "OLE-GEO-0001",
+  "checks": ["curvature", "zebra", "reopen_verification", "machine_gate"],
+  "state": "READY_FOR_BINDING"
+}

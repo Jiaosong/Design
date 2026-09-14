@@ -1,0 +1,13 @@
+{
+  "adapter": "chat_on_steroids_core",
+  "version": "0.1",
+  "role": "execution_layer",
+  "gates": [
+    "project_state",
+    "source_authority",
+    "current_task",
+    "skill_resolution",
+    "validation",
+    "receipt"
+  ]
+}

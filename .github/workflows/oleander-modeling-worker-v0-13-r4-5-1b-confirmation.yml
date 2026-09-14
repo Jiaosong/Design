@@ -6,6 +6,8 @@ on:
       - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_CURVATURE_REFINEMENT_DECISION_2026-08-17.md'
       - '90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json'
       - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_reopen_verify.py'
+      - '90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py'
       - '.github/workflows/oleander-modeling-worker-v0-13-r4-5-1b-confirmation.yml'
   workflow_dispatch:
 
@@ -24,7 +26,10 @@ jobs:
       - name: Compile and validate frozen relation
         run: |
           set -euo pipefail
-          python3 -m py_compile 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py
+          python3 -m py_compile \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r2_blender_rebuild.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_confirmation.py \
+            90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_reopen_verify.py
           python3 -m json.tool 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json >/dev/null
           python3 - <<'PY'
           import json
@@ -43,6 +48,8 @@ jobs:
           assert p['parameter_tuning_in_confirmation_forbidden'] is True
           assert p['third_numeric_cap_dof_forbidden'] is True
           assert p['native_source_must_remain_active_in_saved_blend'] is True
+          assert p['saved_blend_reopen_required'] is True
+          assert p['self_contained_cap_aware_rebuild_required'] is True
           assert p['derived_mesh_is_authority'] is False
           assert p['candidate_promotion']=='NOT_RUN'
           receipt=(root/c['authorization_receipt']).read_text()
@@ -129,6 +136,33 @@ jobs:
           PY
           sha256sum out/G1_R4_5_1B_CONFIRM/OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend | tee out/G1_R4_5_1B_CONFIRM/NATIVE_BLEND_SHA256.txt
 
+      - name: Reopen saved blend and verify cap-aware native persistence
+        run: |
+          set -euo pipefail
+          OUT="$GITHUB_WORKSPACE/out/G1_R4_5_1B_CONFIRM"
+          /tmp/blender-5.2.0-linux-x64/blender \
+            "$OUT/OLEANDER_G1_R4_5_1B_SCALE_086_WORKING_SOURCE__v0_13.blend" \
+            --background \
+            --python-exit-code 18 \
+            --python 90-shared/toolchains/modeling-worker/v0.13/g1_r4_5_1b_scale_086_reopen_verify.py \
+            -- \
+            --source 90-shared/toolchains/modeling-worker/v0.13/G1_PRIMARY_CURVE_SOURCE.json \
+            --r2-correction 90-shared/toolchains/modeling-worker/v0.13/G1_R2_RELATION_CORRECTION.json \
+            --confirmation 90-shared/toolchains/modeling-worker/v0.13/G1_R4_5_1B_CAP_SCALE_086_CONFIRMATION_CONTRACT.json \
+            --out "$OUT"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('out/G1_R4_5_1B_CONFIRM/G1_R4_5_1B_SCALE_086_REOPEN_PERSISTENCE_REPORT.json')
+          r=json.loads(p.read_text())
+          assert r['status']=='R4_5_1B_SCALE_086_REOPEN_PERSISTENCE_PASS',r['status']
+          assert all(r['checks'].values()),r['checks']
+          assert r['rebuild_max_displacement_m'] <= 1e-8,r['rebuild_max_displacement_m']
+          assert r['authority_state']=='WORKING_SOURCE'
+          assert r['candidate_promotion']=='NOT_RUN'
+          print('R4_5_1B_SCALE_086_REOPEN_PERSISTENCE_PASS',r['source_digest'])
+          PY
+
       - name: Upload exact scale 0.86 artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
@@ -141,4 +175,5 @@ jobs:
         run: |
           echo 'Exact frozen relation: onset=.88, pole-curvature-scale=.86, two numeric DOFs total.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Saved .blend must retain both parameters on the existing native LOWER_RETURN_PROFILE Source owner; derived mesh remains non-authoritative.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A second Blender process must reopen the saved file and reproduce the cap-aware exact candidate from embedded native Source with <=1e-8 m vertex error.' >> "$GITHUB_STEP_SUMMARY"
           echo '768px Broad/Strip/Grazing/Zebra still require Human Visual decision. Candidate Promotion remains NOT_RUN.' >> "$GITHUB_STEP_SUMMARY"

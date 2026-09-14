@@ -1,0 +1,8 @@
+{
+  "id": "EVID-OLE-GEO-0001-SURFACE-001",
+  "target": "OLE-GEO-0001",
+  "integration": "Blender Surface System v1.21",
+  "status": "INITIALIZED",
+  "source_authority": "SOURCE",
+  "validation_authority": "DERIVED"
+}
