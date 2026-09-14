@@ -1,0 +1,33 @@
+{
+  "schema": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+  "status": "DRAFT_GOVERNANCE_EXTENSION",
+  "priority": "P7",
+  "object_plane": "PROJECT",
+  "classes": ["RISK", "ISSUE", "ASSUMPTION", "UNKNOWN"],
+  "risk": {
+    "polarity": ["THREAT", "OPPORTUNITY", "MIXED"],
+    "states": ["IDENTIFIED", "ANALYZED", "EVALUATED", "TREATMENT_PLANNED", "TREATED", "MONITORED", "ACCEPTED", "CLOSED"],
+    "treatment": ["AVOID", "REDUCE", "TRANSFER_SHARE", "ACCEPT", "EXPLOIT", "ENHANCE", "MONITOR", "OTHER_AUTHORIZED"],
+    "required_fields": ["risk_id", "project_id", "risk_polarity", "cause", "uncertain_event_or_condition", "consequence", "affected_objectives", "likelihood_basis", "impact_basis", "exposure_class", "owner", "trigger_indicators", "treatment_strategy", "residual_risk", "status"]
+  },
+  "issue": {
+    "severity": ["MINOR", "MATERIAL", "MAJOR", "CRITICAL"],
+    "states": ["OPEN", "TRIAGED", "CONTAINED", "ROOT_CAUSE_CONFIRMED", "REPAIRED", "RETESTED", "CLOSED"],
+    "root_cause_classes": ["AUTHORITY", "REQUIREMENT", "RELATION", "GEOMETRY", "DATA", "MATERIAL", "INTERFACE", "CONFIGURATION", "EXECUTION", "TOOL_ENVIRONMENT", "VISUAL_COMPOSITION", "CONTENT", "HUMAN_FACTOR", "PROCESS", "EVIDENCE", "UNKNOWN_ROOT_CAUSE"],
+    "required_fields": ["issue_id", "project_id", "observed_problem", "detection_evidence", "affected_objects", "severity", "owner", "containment", "root_cause_state", "corrective_actions", "verification_or_retest_refs", "reopen_rule", "status"]
+  },
+  "assumption": {
+    "criticality": ["LOW", "MATERIAL", "MAJOR", "CRITICAL"],
+    "states": ["PROPOSED", "ACTIVE", "CONFIRMED", "REFUTED", "EXPIRED"],
+    "required_fields": ["assumption_id", "project_id", "proposition", "why_needed", "scope", "affected_objects", "consequence_if_false", "criticality", "owner", "accepting_authority", "validation_route", "expiry_or_trigger", "containment_if_unresolved", "claim_ceiling_effect", "status"]
+  },
+  "unknown": {
+    "states": ["OPEN", "INVESTIGATING", "RESOLVED", "OUTSIDE_CLAIM"],
+    "required_fields": ["unknown_id", "project_id", "unknown_question", "why_material", "scope", "affected_objects", "owner", "resolution_route", "required_source_or_evidence", "decision_deadline", "consequence_if_unresolved", "claim_ceiling_effect", "status"]
+  },
+  "conversion_relations": ["RISK_REALIZED_AS_ISSUE", "UNKNOWN_RESOLVED_BY_EVIDENCE_DECISION_REQUIREMENT_ASSUMPTION", "ASSUMPTION_CONFIRMED_OR_REFUTED_BY_EVIDENCE", "ISSUE_CAUSED_BY_CONFIRMED_ROOT_CAUSE", "ISSUE_CREATES_RISK"],
+  "blocked_semantics": "DISPOSITION_NOT_DEFAULT_OBJECT_CLASS",
+  "promotion_rules": ["OPEN_RISK_REQUIRES_EVALUATION_OWNER_TREATMENT_TRIGGER_RESIDUAL_RISK", "MAJOR_CRITICAL_ISSUE_BLOCKS_AFFECTED_PROMOTION_UNTIL_RETESTED_OR_VALIDLY_EXCLUDED", "MAJOR_CRITICAL_ASSUMPTION_REQUIRES_CONTAINMENT_AND_CLAIM_CEILING", "MATERIAL_UNKNOWN_REQUIRES_RESOLUTION_OR_EXPLICIT_OUTSIDE_CLAIM"],
+  "hard_boundaries": ["RISK_NE_ISSUE_NE_ASSUMPTION_NE_UNKNOWN", "UNKNOWN_CANNOT_AUTO_CONVERT_TO_ASSUMPTION", "CONTAINED_NE_REPAIRED_NE_RETESTED_NE_CLOSED", "TREATMENT_NE_ZERO_RESIDUAL_RISK", "BLOCKED_IS_DISPOSITION"],
+  "validator_rules": ["RSK-001_CAUSE_EVENT_CONSEQUENCE_OBJECTIVE_OWNER_BASIS_REQUIRED", "RSK-002_NUMERIC_LIKELIHOOD_REQUIRES_EVIDENCE_BASIS", "RSK-003_ACCEPTED_RISK_HAS_RESIDUAL_RISK_AUTHORITY_BASIS", "RSK-004_REALIZED_RISK_LINKS_TO_ISSUE_WITH_LINEAGE", "ISS-001_DETECTION_EVIDENCE_OWNER_SEVERITY_REQUIRED", "ISS-002_MATERIAL_ISSUE_CANNOT_CLOSE_BEFORE_RETEST", "ISS-003_CONTAINMENT_CANNOT_EQUAL_CLOSURE", "ISS-004_RECURRING_KNOWN_FAILURE_TRIGGERS_ANTI_REPEAT", "ASM-001_ACTIVE_ASSUMPTION_HAS_OWNER_CONSEQUENCE_AUTHORITY", "ASM-002_MAJOR_CRITICAL_HAS_VALIDATION_EXPIRY_CONTAINMENT_CEILING", "ASM-003_CONFIRMATION_REQUIRES_APPROPRIATE_EVIDENCE", "ASM-004_REFUTED_EXPIRED_REOPENS_AFFECTED_CLAIMS", "UNK-001_NO_AUTO_ASSUMPTION_CONVERSION", "UNK-002_MATERIAL_UNKNOWN_HAS_OWNER_ROUTE_CONSEQUENCE", "UNK-003_OUTSIDE_CLAIM_EXPLICIT_IN_PROMOTED_SCOPE", "BLK-001_BLOCKED_NOT_DEFAULT_OBJECT_CLASS", "PROM-001_MATERIAL_RIAU_CONSTRAINS_CLAIM_CEILING"]
+}
