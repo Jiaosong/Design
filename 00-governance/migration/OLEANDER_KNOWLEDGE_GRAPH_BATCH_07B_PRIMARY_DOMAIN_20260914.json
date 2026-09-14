@@ -1,0 +1,241 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T14:48:00.000Z",
+  "status": "BATCH_07B_SUPPORT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair six unambiguous SUPPORT Primary Domain routes using complete current-body readback and the canonical 30-object ACTIVE L2 Domain Registry.",
+  "safeguards": [
+    "Every target body was read completely in the 2026-09-14 targeted domain batches; no target body is truncated and no Reader budget failure occurred.",
+    "Primary Domain targets are exact ACTIVE L2 Notion Domain Registry page IDs from the complete 30-object live registry readback.",
+    "The plan records the exact current Primary Domain set and current relation state; the runner must fail closed on drift before mutation.",
+    "No classification, structural hierarchy, Source, Method, Project, Related or provenance relation is changed in this batch.",
+    "Domain codes are not invented because the current ACTIVE L2 registry endpoint does not export a domainCode field; exact page ID + title + framework path are the authoritative target identity for this batch.",
+    "KN-THEORY-DESIGN-ETHICS-001, KN-ARCH-THEORY-003, IDX-ARCH-TYPOLOGY-MED-004, IDX-ARCH-OPS-SOCIAL-007, FW-SOFTWARE-KNOWLEDGE-GOV-001, IDX-DESIGN-001, KN-ARCH-URBAN-REGEN-001 and KN-ARTSYS-CANON-004 are intentionally excluded until their domain ownership or authority disposition is unambiguous."
+  ],
+  "plannedCount": 6,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-DESIGN-CN-TRANS-001",
+      "pageId": "3a8b86be-5c47-81ff-bfd3-f91642e1cad3",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body studies historical and traditional cultural resources as evidence-bearing design mechanisms, separates historical fact from OLEANDER translation, and tests how historical relations can be transferred into contemporary design without style imitation. Its reusable subject is theory/history/culture translation, while CMF, spatial and IP are explicitly supporting application interfaces rather than the primary owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-81de-95be-fd3ec8ff6b99",
+          "targetTitle": "Design Theory & History｜设计理论与设计史",
+          "targetFrameworkPath": "General Design Knowledge / Theory, History & Culture / Design Theory & History",
+          "reason": "The ACTIVE L2 domain owns design theory/history/culture synthesis and is the exact semantic owner for a tradition-to-contemporary theory translation framework."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "IDX-CMF-GOV-007",
+      "pageId": "3adb86be-5c47-815c-80d1-ed812f218592",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "EVALUATION_FRAMEWORK"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body explicitly governs Color, Material and Finish decisions across performance, manufacturing, environment, sensory use, lifecycle, supply, samples and production gates. CMF is the primary object; engineering compliance and architectural delivery are downstream evidence interfaces.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "390b86be-5c47-81e7-9b61-ee2fee3df75f",
+          "targetTitle": "CMF（Color·Material·Finish）",
+          "targetFrameworkPath": "General Design Knowledge / Material & CMF / CMF",
+          "reason": "The ACTIVE L2 CMF domain exactly matches the method's owned decision object and scope."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "IDX-ARCH-DELIVERY-001",
+      "pageId": "3acb86be-5c47-81a0-9e5b-e076806bec1b",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "PROCESS_ORCHESTRATION"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body defines a canonical delivery chain from design intent through system/interface/detail/product/submittal/RFQ/mockup/installation/QC/commissioning/acceptance/handover/G9. Its owned function is architectural delivery, submittal and quality orchestration.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-812e-b94f-c427e7a82724",
+          "targetTitle": "Delivery, Submittal & Quality｜交付、送审与质量",
+          "targetFrameworkPath": "Architecture Knowledge / Evidence, Regulation & Practice / Delivery, Submittal & Quality",
+          "reason": "The ACTIVE L2 domain is an exact semantic and professional-system match for the framework's call chain."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "FW-ARCH-MATERIAL-SYSTEM-001",
+      "pageId": "3acb86be-5c47-81c6-bf9f-e297f22a122c",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "CONCEPTUAL_MODEL"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body explicitly models Material–System–Interface relations from performance and material state through specific product, connection, fabrication/installation, QC, maintenance, failure and evidence. This is architectural material/tectonic system knowledge, not a generic CMF aesthetic rule.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "39db86be-5c47-81eb-b04f-f9fbc5685f1e",
+          "targetTitle": "建筑CMF与材料建构（Architectural CMF & Tectonics）",
+          "targetFrameworkPath": "Architecture Knowledge / Material, Tectonics & Construction / Architectural CMF & Tectonics",
+          "reason": "The ACTIVE L2 architecture domain exactly owns material, tectonic and construction-system reasoning."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "KN-ARCH-HIST-002",
+      "pageId": "3acb86be-5c47-8118-b115-e8a7d5946d59",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": [
+          "3b5b86be-5c47-8100-a534-fe3906715faa"
+        ]
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body is a comparative historical/cultural research framework for hot-humid East and Southeast Asian architecture. It explicitly separates historical/cultural facts from measurable climate-performance claims, then evaluates contemporary transferability. Climate evidence is a validation layer; the reusable knowledge object is a theory/history/culture synthesis rather than a generic MEP or sustainability object.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-81de-95be-fd3ec8ff6b99",
+          "targetTitle": "Design Theory & History｜设计理论与设计史",
+          "targetFrameworkPath": "General Design Knowledge / Theory, History & Culture / Design Theory & History",
+          "reason": "The current invalid L1 owner is Theory, History & Criticism. Among the ACTIVE L2 registry, Design Theory & History is the direct valid owner and is already used as the cross-design history/theory domain; climate and performance remain supporting evidence dimensions."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_C_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "IDX-ARCH-HUMAN-006",
+      "pageId": "3acb86be-5c47-8150-93db-f530fc5a4f25",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body defines a human-centered spatial routing model from actor/body and task through equipment, posture/motion, clearance/reach/view, sound/privacy, storage/support, change/adaptation, regulatory gates and mockup/observation. Its primary reusable subject is human factors and usability; accessibility/life-safety are explicit triggered constraints rather than the whole owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bcb86be-5c47-81e5-838c-c720cbe36eb9",
+          "targetTitle": "Human Factors & Usability｜人因与可用性",
+          "targetFrameworkPath": "General Design Knowledge / Human Factors, Cognition & Inclusion / Human Factors & Usability",
+          "reason": "The ACTIVE L2 domain directly owns body-task fit, human performance and usable interaction with designed environments."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_C_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
