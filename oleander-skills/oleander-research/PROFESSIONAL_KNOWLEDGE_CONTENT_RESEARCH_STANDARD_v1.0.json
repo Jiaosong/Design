@@ -1,8 +1,14 @@
 {
   "schema": "OLEANDER_PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0",
   "status": "EXECUTION_CONTRACT",
-  "sync_state": "GITHUB_EXECUTION_MIRROR_READY_NOTION_AUTHORITY_BINDING_PENDING_READBACK",
+  "sync_state": "NOTION_AUTHORITY_SYNCED_GITHUB_PR_PENDING_MAIN_MERGE",
   "authority_boundary": "EXTENDS_NOTION_CURRENT_AUTHORITY_NO_PARALLEL_AUTHORITY",
+  "notion_readback": {
+    "current_root_authority_page_id": "9150e089-9a7d-4b29-b026-175fca3a41b3",
+    "knowledge_retrieval_lifecycle_page_id": "3cab86be-5c47-812e-ac2b-d35b79f546ce",
+    "binding_date": "2026-09-15",
+    "readback_state": "PASS"
+  },
   "backward_compatible_research_gate": "PROFESSIONAL_RESEARCH_GATE_v0.1.md",
   "skill_binding": "oleander-skills/oleander-research/SKILL.md",
   "eval_binding": "oleander-skills/oleander-research/evals/evals.json",
