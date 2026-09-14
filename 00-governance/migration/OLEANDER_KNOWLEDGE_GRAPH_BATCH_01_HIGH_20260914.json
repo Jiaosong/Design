@@ -1267,6 +1267,13 @@
           ],
           "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
           "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        },
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-81ab-a960-d3aa12f18486",
+          "targetCanonicalId": "IDX-DESIGN-001",
+          "evidenceStrength": "PROVEN_LIVE_PLUS_CURRENT_AUTHORITY_CONTRACT",
+          "sourceDecision": "OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md ?7 + OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md ?2; old 20 General Design Knowledge is not current structural-routing authority."
         }
       ]
     },
@@ -1346,5 +1353,14 @@
       "LEVEL_ASSIGN",
       "OTHER_HIGH_CONFIDENCE"
     ]
-  }
+  },
+  "authorityOverrides": [
+    {
+      "canonicalId": "IDX-DESIGN-001",
+      "previousProposal": "L1?Branch / INDEX (MEDIUM)",
+      "resolvedDisposition": "DO_NOT_LEVEL_UP_AS_STRUCTURAL_AUTHORITY",
+      "reason": "Current runtime authority explicitly treats old 20?General Design Knowledge as historical navigation/discovery, not default current write target or structural-routing authority. Its broad routing body cannot override that authority contract.",
+      "followup": "Reclassify separately as non-authoritative navigation/index surface; do not use it as Canonical Parent."
+    }
+  ]
 }
