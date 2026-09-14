@@ -1,0 +1,87 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08G_CURRENT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Resolve only the two CURRENT Primary Domain gaps for which current full-body review and the complete ACTIVE L2 registry establish a defensible existing owner. Leave three ambiguous objects on HOLD rather than fabricating a domain.",
+  "safeguards": [
+    "All five candidate bodies were freshly re-read from CURRENT canonical full body with no truncation or Reader budget failure.",
+    "Only two objects are included because only those two have a defensible existing ACTIVE L2 owner.",
+    "KN-ARCH-HOUSING-DAILY-LIFE-001, KN-ARCH-PUBLIC-SOCIAL-INFRA-001 and MTH-KNOWLEDGE-ACADEMIC-NOTE-001 remain HOLD_DOMAIN_OWNER and are not mutated.",
+    "Every SET_PRIMARY_DOMAIN target is an exact ACTIVE L2 page from the complete 30-object Domain Registry.",
+    "This batch changes Primary Domain only; all typed relations and canonical hierarchy are otherwise unchanged.",
+    "Production mutation stops on first drift/error and requires final preflight, derivative reconcile and fresh Reader audit."
+  ],
+  "plannedCount": 2,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-ARCH-DIGITAL-INFO-001",
+      "pageId": "3d9b86be-5c47-81de-a512-d8bfcfbe8d13",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM",
+      "reason": "The current body owns the traceable built-environment information chain from information requirements through authoring/exchange, machine+human validation, issue closure, published baseline, handover and operation readback. Delivery, Submittal & Quality is the best existing architecture L2 owner; standards and computational methods are supporting interfaces rather than the primary subject.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-812e-b94f-c427e7a82724",
+          "targetTitle": "Delivery, Submittal & Quality｜交付、送审与质量",
+          "targetFrameworkPath": "Architecture Knowledge / Evidence, Regulation & Practice / Delivery, Submittal & Quality"
+        }
+      ],
+      "freshEvidence": {
+        "candidateAudit": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_BATCH_08G_DOMAIN_CANDIDATE_AUDIT_20260915.json",
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_BATCH_08G_DOMAIN_FULLBODY_READBACK_20260915.json",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-ARCH-LIFECYCLE-VALUE-001",
+      "pageId": "3d9b86be-5c47-8127-9574-f1106e228ccd",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The current body explicitly owns an auditable architecture pre-design value-decision structure: need/objective, service/function, comparable options, cost boundary, payer/beneficiary, uncertainty and option value before downstream procurement/change/outturn readback. Pre-design & Briefing is therefore the direct existing ACTIVE L2 owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-810c-bd45-e9eb0eaf1392",
+          "targetTitle": "Pre-design & Briefing｜前期策划与任务定义",
+          "targetFrameworkPath": "Architecture Knowledge / Architecture Process & Methods / Pre-design & Briefing"
+        }
+      ],
+      "freshEvidence": {
+        "candidateAudit": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_BATCH_08G_DOMAIN_CANDIDATE_AUDIT_20260915.json",
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_BATCH_08G_DOMAIN_FULLBODY_READBACK_20260915.json",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
