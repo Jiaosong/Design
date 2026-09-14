@@ -2,6 +2,8 @@
 
 Status: extension of existing `oleander-research`; not a new Authority, Method family, taxonomy, Registry, Project State, or parallel research system.
 
+> **Current binding:** this research-specific gate is retained for backward compatibility and detailed R0–R11 research execution. For formal professional research/knowledge content, it operates under `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`, which separates `R1 Research Conduct`, `R2 Study-Type Reporting`, `K1–K5 Knowledge`, `B1 Bilingual Semantic Parity`, and Independent Review. `R2 PASS` never grants `R1 PASS`, and research/content/knowledge-object/current states remain independent.
+
 ## Purpose
 
 Convert research from “traceable source collection” into a professional, decision-grade process whose search scope, appraisal, synthesis, uncertainty, reproducibility, ethics, and design transfer can be audited.
