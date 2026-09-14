@@ -6,6 +6,206 @@
   "count": 49,
   "nodes": [
     {
+      "sequence": 5,
+      "pageId": "3a8b86be-5c47-81f9-94e5-d7b21e9b7bed",
+      "canonicalId": "KN-THEORY-SYSTEMS-THINKING-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文是一套自洽的系统思维理论对象，围绕 boundary、stock/flow、delay、feedback 与 leverage 展开，其子项是同一理论的内部概念而非需要 L4 协调的独立知识 owner。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 8,
+      "pageId": "3a8b86be-5c47-81a0-b072-f6114afb7348",
+      "canonicalId": "KN-THEORY-PRODUCT-LIFECYCLE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文完整解释一个产品生命周期知识对象的状态、installed base、部件寿命、维修、退出与兼容关系，但这些是同一理论的组成部分而非多个独立 L5 owner 的上位整合。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 20,
+      "pageId": "3acb86be-5c47-81ed-8d1a-e801005072f1",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-IND-008",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one industrial-typology procedure from process/hazard/equipment through utilities and validation, so its sections are one type-specific object rather than peer L5 owners.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 24,
+      "pageId": "3acb86be-5c47-81bb-9ff7-c2388d23ab79",
+      "canonicalId": "KN-ARCH-TECT-004",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body explicitly says it only owns tectonic theory translation and develops one load–material–joint–sequence–tolerance–labor–maintenance explanatory object rather than coordinating peer knowledge owners.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 27,
+      "pageId": "3acb86be-5c47-81a0-9b15-e2e0d74b559e",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-RES-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is a single residential-typology procedure centered on household/task/privacy/service/change evidence, not an integrator of multiple independent child knowledge objects.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 28,
+      "pageId": "3acb86be-5c47-817c-93c5-dd590a3b45ed",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-TRANSIT-007",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body gives one transit-typology analysis/validation procedure across passenger states, queue/transfer, abnormal operations and information systems rather than coordinating peer type objects.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 32,
+      "pageId": "3acb86be-5c47-8156-9f4b-cae54ac29063",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-COM-003",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one commercial-typology procedure covering actors, leasing unit, customer/backstage flow, capacity/economics, evidence and tenant-change stress rather than a multi-object framework.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 34,
+      "pageId": "3acb86be-5c47-8131-a0af-c52bf9227c7a",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-EDU-005",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one education-typology procedure linking learner/pedagogy/time/safeguarding/learning units/environment/community use and evidence, not a peer-object integrator.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 44,
+      "pageId": "3b9b86be-5c47-8103-a87b-f76480c601f4",
+      "canonicalId": "FW-SERVICE-DESIGN-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文主要解释一个服务系统对象中 actor、journey、front/backstage、capacity、failure/recovery、rights 与 measurement 的统一关系，Journey/Blueprint/Actor Map/Prototype 是内部工具而非独立 L5 owners 的 L4 编排。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 47,
+      "pageId": "3bab86be-5c47-8146-b61a-cb35102fc06c",
+      "canonicalId": "PRAC-IP-SURFACE-20260811-01",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": null,
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "INDEX",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body explicitly declares INDEX CARRIER ONLY, routes to one canonical project/runtime authority and disclaims L7 Practice or independent runtime truth; it is a bounded L5 navigation object.",
+      "status": "PENDING"
+    },
+    {
       "sequence": 1,
       "pageId": "3ccb86be-5c47-816a-bab9-d1e67a4ffbed",
       "canonicalId": "FW-CG-3D-PRODUCTION-001",
@@ -86,26 +286,6 @@
       "status": "PENDING"
     },
     {
-      "sequence": 5,
-      "pageId": "3a8b86be-5c47-81f9-94e5-d7b21e9b7bed",
-      "canonicalId": "KN-THEORY-SYSTEMS-THINKING-001",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "THEORY",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "THEORY",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "正文是一套自洽的系统思维理论对象，围绕 boundary、stock/flow、delay、feedback 与 leverage 展开，其子项是同一理论的内部概念而非需要 L4 协调的独立知识 owner。",
-      "status": "PENDING"
-    },
-    {
       "sequence": 6,
       "pageId": "3a8b86be-5c47-81ec-b94a-dcca8729b697",
       "canonicalId": "KN-THEORY-PRODUCT-IDENTITY-001",
@@ -143,26 +323,6 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "正文以功能单位、系统边界、生命周期与 burden shifting 作为跨产品/服务/数字/建筑的稳定关系模型，并把 LCA、CMF筛选、合规和工程验证委派给独立 owner。",
-      "status": "PENDING"
-    },
-    {
-      "sequence": 8,
-      "pageId": "3a8b86be-5c47-81a0-b072-f6114afb7348",
-      "canonicalId": "KN-THEORY-PRODUCT-LIFECYCLE-001",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "THEORY",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "THEORY",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "正文完整解释一个产品生命周期知识对象的状态、installed base、部件寿命、维修、退出与兼容关系，但这些是同一理论的组成部分而非多个独立 L5 owner 的上位整合。",
       "status": "PENDING"
     },
     {
@@ -510,26 +670,6 @@
       ]
     },
     {
-      "sequence": 20,
-      "pageId": "3acb86be-5c47-81ed-8d1a-e801005072f1",
-      "canonicalId": "IDX-ARCH-TYPOLOGY-IND-008",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "METHOD",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body is one industrial-typology procedure from process/hazard/equipment through utilities and validation, so its sections are one type-specific object rather than peer L5 owners.",
-      "status": "PENDING"
-    },
-    {
       "sequence": 21,
       "pageId": "3acb86be-5c47-81df-bff4-f6a365a7eafd",
       "canonicalId": "KN-ARCH-HIST-001",
@@ -617,26 +757,6 @@
       ]
     },
     {
-      "sequence": 24,
-      "pageId": "3acb86be-5c47-81bb-9ff7-c2388d23ab79",
-      "canonicalId": "KN-ARCH-TECT-004",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "THEORY",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "THEORY",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body explicitly says it only owns tectonic theory translation and develops one load–material–joint–sequence–tolerance–labor–maintenance explanatory object rather than coordinating peer knowledge owners.",
-      "status": "PENDING"
-    },
-    {
       "sequence": 25,
       "pageId": "3acb86be-5c47-81bb-8381-ebfeb71f3ad1",
       "canonicalId": "KN-ARCH-HERITAGE-007",
@@ -706,46 +826,6 @@
           "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
         }
       ]
-    },
-    {
-      "sequence": 27,
-      "pageId": "3acb86be-5c47-81a0-9b15-e2e0d74b559e",
-      "canonicalId": "IDX-ARCH-TYPOLOGY-RES-001",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "METHOD",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body is a single residential-typology procedure centered on household/task/privacy/service/change evidence, not an integrator of multiple independent child knowledge objects.",
-      "status": "PENDING"
-    },
-    {
-      "sequence": 28,
-      "pageId": "3acb86be-5c47-817c-93c5-dd590a3b45ed",
-      "canonicalId": "IDX-ARCH-TYPOLOGY-TRANSIT-007",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "METHOD",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body gives one transit-typology analysis/validation procedure across passenger states, queue/transfer, abnormal operations and information systems rather than coordinating peer type objects.",
-      "status": "PENDING"
     },
     {
       "sequence": 29,
@@ -883,26 +963,6 @@
       ]
     },
     {
-      "sequence": 32,
-      "pageId": "3acb86be-5c47-8156-9f4b-cae54ac29063",
-      "canonicalId": "IDX-ARCH-TYPOLOGY-COM-003",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "METHOD",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body is one commercial-typology procedure covering actors, leasing unit, customer/backstage flow, capacity/economics, evidence and tenant-change stress rather than a multi-object framework.",
-      "status": "PENDING"
-    },
-    {
       "sequence": 33,
       "pageId": "3acb86be-5c47-8142-8595-e61a613b7a1c",
       "canonicalId": "IDX-ARCH-SPECIALTY-008",
@@ -930,26 +990,6 @@
           "sourceDecision": "OLEANDER_KNOWLEDGE_GRAPH_EDGE_REPAIR_20260914.json"
         }
       ]
-    },
-    {
-      "sequence": 34,
-      "pageId": "3acb86be-5c47-8131-a0af-c52bf9227c7a",
-      "canonicalId": "IDX-ARCH-TYPOLOGY-EDU-005",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "METHOD",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "Body is one education-typology procedure linking learner/pedagogy/time/safeguarding/learning units/environment/community use and evidence, not a peer-object integrator.",
-      "status": "PENDING"
     },
     {
       "sequence": 35,
@@ -1186,26 +1226,6 @@
       "status": "PENDING"
     },
     {
-      "sequence": 44,
-      "pageId": "3b9b86be-5c47-8103-a87b-f76480c601f4",
-      "canonicalId": "FW-SERVICE-DESIGN-001",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": "L4｜Framework",
-        "role": "THEORY",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "THEORY",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_DOWN",
-      "confidence": "HIGH",
-      "reason": "正文主要解释一个服务系统对象中 actor、journey、front/backstage、capacity、failure/recovery、rights 与 measurement 的统一关系，Journey/Blueprint/Actor Map/Prototype 是内部工具而非独立 L5 owners 的 L4 编排。",
-      "status": "PENDING"
-    },
-    {
       "sequence": 45,
       "pageId": "3bbb86be-5c47-8130-8e3d-ed7e199570cb",
       "canonicalId": "FW-DESIGN-THEORY-HISTORY-001",
@@ -1271,26 +1291,6 @@
       "status": "PENDING"
     },
     {
-      "sequence": 47,
-      "pageId": "3bab86be-5c47-8146-b61a-cb35102fc06c",
-      "canonicalId": "PRAC-IP-SURFACE-20260811-01",
-      "retrievalSpace": "SUPPORT",
-      "current": {
-        "level": null,
-        "role": "INDEX",
-        "relationState": "VALID"
-      },
-      "target": {
-        "level": "L5｜Knowledge Object",
-        "role": "INDEX",
-        "frameworkType": null
-      },
-      "migrationAction": "LEVEL_ASSIGN",
-      "confidence": "HIGH",
-      "reason": "Body explicitly declares INDEX CARRIER ONLY, routes to one canonical project/runtime authority and disclaims L7 Practice or independent runtime truth; it is a bounded L5 navigation object.",
-      "status": "PENDING"
-    },
-    {
       "sequence": 48,
       "pageId": "3c0b86be-5c47-8197-aebb-f5e51dc4f265",
       "canonicalId": "FW-PACKAGING-RETAIL-EXPERIENCE-001",
@@ -1337,5 +1337,14 @@
     "generatedAt": "2026-09-14T07:58:15.524Z",
     "source": "live preflight R3 + full node migration ledger",
     "rule": "L4 same-level structural parent/child -> Related; L4 child pointing to L6 SOURCE/EVIDENCE/CASE -> Source relation; preserve true L4->L5 hierarchy."
+  },
+  "executionPolicy": {
+    "kind": "DEPENDENCY_SAFE_V1",
+    "rule": "Apply L4->L5 LEVEL_DOWN nodes before L4 framework mutations so surviving Canonical Children already satisfy L4->L5 structural hierarchy at validation time. Edge retypes remain atomic with their source-node mutation.",
+    "priority": [
+      "LEVEL_DOWN",
+      "LEVEL_ASSIGN",
+      "OTHER_HIGH_CONFIDENCE"
+    ]
   }
 }
