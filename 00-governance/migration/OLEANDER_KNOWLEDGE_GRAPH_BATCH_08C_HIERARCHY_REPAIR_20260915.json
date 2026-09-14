@@ -1,0 +1,166 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08C_CURRENT_HIERARCHY_REPAIR",
+  "purpose": "Repair six CURRENT hierarchy-type defects without changing domains: five CMF peer-theory pages retype an invalid L5 parent to semantic Related; Computer Graphics retypes six L6 evidence children to Source lineage.",
+  "safeguards": [
+    "All six objects were freshly hydrated from Notion and independently audited before planning.",
+    "No Primary Domain, Related Domain, project, replacement or content-classification field is changed in this batch.",
+    "The five CMF targets are peer L5 THEORY objects; Related preserves semantic context without inventing a false L4 hierarchy or METHOD invocation relation.",
+    "The six Computer Graphics targets are L6 EVIDENCE objects and therefore satisfy the SOURCE target-role contract.",
+    "Production mutation must stop on first drift/error and be followed by derivative reconcile plus fresh Reader audit."
+  ],
+  "plannedCount": 6,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-THEORY-CMF-COATING-001",
+      "pageId": "3cbb86be-5c47-8175-a36c-d1f31622a190",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81e7-9b61-ee2fee3df75f"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "The current parent KN-TECH-SURFACE-FINISH-001 is itself an L5 SUPPORT THEORY. The coating page treats surface-finish systems as peer theory/context rather than a structural L4 parent or callable method.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-81c2-9e6a-ca0c355b1782",
+          "targetCanonicalId": "KN-TECH-SURFACE-FINISH-001",
+          "targetTitle": "表面处理系统：基材—前处理—层结构—工艺—验证"
+        }
+      ]
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-THEORY-CMF-ANODIZING-001",
+      "pageId": "3cbb86be-5c47-819b-bc61-cb329c12f7b7",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81e7-9b61-ee2fee3df75f"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "Anodizing is a peer CMF process-family theory. The L5 surface-finish theory is semantic context, not a valid L4 structural parent.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-81c2-9e6a-ca0c355b1782",
+          "targetCanonicalId": "KN-TECH-SURFACE-FINISH-001",
+          "targetTitle": "表面处理系统：基材—前处理—层结构—工艺—验证"
+        }
+      ]
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "KN-THEORY-CMF-ELECTROPLATING-001",
+      "pageId": "3cbb86be-5c47-81ac-bdd5-cbbf43f4d4a7",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81e7-9b61-ee2fee3df75f"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "Electroplating and the L5 surface-finish theory are peer process/context objects; the current parent edge violates the L5-to-L4 hierarchy contract.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-81c2-9e6a-ca0c355b1782",
+          "targetCanonicalId": "KN-TECH-SURFACE-FINISH-001",
+          "targetTitle": "表面处理系统：基材—前处理—层结构—工艺—验证"
+        }
+      ]
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "KN-THEORY-CMF-IMD-001",
+      "pageId": "3cbb86be-5c47-8117-aac9-dc10313e1f37",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81e7-9b61-ee2fee3df75f"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "IMD and the L5 surface-finish theory are peer CMF knowledge objects. Related is the correct non-hierarchical context relation.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-81c2-9e6a-ca0c355b1782",
+          "targetCanonicalId": "KN-TECH-SURFACE-FINISH-001",
+          "targetTitle": "表面处理系统：基材—前处理—层结构—工艺—验证"
+        }
+      ]
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "KN-THEORY-CMF-PVD-001",
+      "pageId": "3cbb86be-5c47-819c-90cd-c6494f85ea30",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81e7-9b61-ee2fee3df75f"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "PVD is a peer surface-treatment theory. The current L5 parent edge is structurally invalid, while Related preserves the actual comparison/context relation.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-81c2-9e6a-ca0c355b1782",
+          "targetCanonicalId": "KN-TECH-SURFACE-FINISH-001",
+          "targetTitle": "表面处理系统：基材—前处理—层结构—工艺—验证"
+        }
+      ]
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "KN-THEORY-COMPUTER-GRAPHICS-001",
+      "pageId": "3ccb86be-5c47-8165-a382-d7368430657c",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81a7-aabc-fa351fc32312"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "HIERARCHY_RELATION_RETYPE",
+      "confidence": "HIGH",
+      "reason": "The six current Canonical Children are L6 SUPPORT EVIDENCE layers supporting the L5 causal map. OLEANDER hierarchy allows children only on L4; SOURCE lineage is the correct evidence-bearing typed relation for L6 SOURCE/EVIDENCE/CASE objects.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_SOURCE",
+          "targetPageIds": [
+            "3ccb86be-5c47-811d-8ae6-fcc3bbe8a849",
+            "3ccb86be-5c47-8192-99b4-db46d52aec3e",
+            "3ccb86be-5c47-81b5-aed9-f8f696b694c2",
+            "3ccb86be-5c47-81ee-8a18-ec7337e7d95b",
+            "3ccb86be-5c47-81c0-88dd-c17bd0028029",
+            "3ccb86be-5c47-8136-9eed-e12828b1bd54"
+          ],
+          "targetRoles": ["EVIDENCE", "EVIDENCE", "EVIDENCE", "EVIDENCE", "EVIDENCE", "EVIDENCE"]
+        }
+      ]
+    }
+  ]
+}
