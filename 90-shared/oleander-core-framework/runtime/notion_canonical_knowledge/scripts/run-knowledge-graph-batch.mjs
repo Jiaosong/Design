@@ -377,6 +377,12 @@ for (const node of plan.nodes) {
     if (Array.isArray(node.current.relatedDomainIds) && !sameIds(live.relatedDomainIds ?? [], node.current.relatedDomainIds)) {
       drift.push(`relatedDomainIds:${JSON.stringify(live.relatedDomainIds ?? [])}`);
     }
+    if (Array.isArray(node.current.sourceRelationIds) && !sameIds(live.sourceRelationIds ?? [], node.current.sourceRelationIds)) {
+      drift.push(`sourceRelationIds:${JSON.stringify(live.sourceRelationIds ?? [])}`);
+    }
+    if (Array.isArray(node.current.semanticRelatedIds) && !sameIds(live.semanticRelatedIds ?? [], node.current.semanticRelatedIds)) {
+      drift.push(`semanticRelatedIds:${JSON.stringify(live.semanticRelatedIds ?? [])}`);
+    }
     drift.push(...edgeRepairDrift(node, live));
     if (drift.length) {
       results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "DRIFT", drift, live, updates, startedAt, completedAt: new Date().toISOString() });
