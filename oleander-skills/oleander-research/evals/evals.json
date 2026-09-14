@@ -1,65 +1,15 @@
 {
   "skill_name": "oleander-research",
   "evals": [
-    {
-      "id": 1,
-      "prompt": "把 Oleander 项目现有的场地调研、政策 PDF、三个竞品案例和两份访谈整理成 Notion 研究库，并指出哪些结论还缺证据。",
-      "expected_output": "A traceable Notion-oriented research structure separating evidence, interpretation, assumptions, decisions, and open questions.",
-      "files": []
-    },
-    {
-      "id": 2,
-      "prompt": "对五个滨水公共空间案例做可比较的研究矩阵，最后给出对 Oleander 设计最有用的三条启示。",
-      "expected_output": "A sourced comparison matrix with consistent dimensions and evidence-backed design implications.",
-      "files": []
-    },
-    {
-      "id": 3,
-      "prompt": "研究一种新型外墙材料是否适合当前公共建筑项目，厂家说耐候 30 年，两个案例评价很好，直接告诉我能不能用。",
-      "expected_output": "Do not convert vendor or precedent claims directly into approval. Declare a research depth, decision question, source appraisal, independent/technical evidence needs, uncertainty, applicability limits, contradiction/failure search, and return RESEARCH PASS/REVISE/HOLD/REJECT for the stated decision scope.",
-      "files": []
-    },
-    {
-      "id": 4,
-      "prompt": "系统研究目前最好的博物馆导视设计，然后总结成我们的设计规则。",
-      "expected_output": "Do not label ordinary browsing as systematic research. Either establish an appropriate RDC-3 protocol with search coverage, inclusion/exclusion and extraction logic, or explicitly downgrade to a targeted/structured review. Separate precedent mechanisms from evidence-backed requirements and state applicability boundaries.",
-      "files": []
-    },
-    {
-      "id": 5,
-      "prompt": "官方指南推荐方案 A，但两份高质量研究和一次现场测试更支持方案 B。请给出最终研究判断。",
-      "expected_output": "Retain the contradiction, classify the normative authority separately from empirical evidence, appraise directness/context/recency/bias, explain the conflict, assign claim-level confidence and uncertainty, and identify whether the project may decide, prototype, seek expert review, or HOLD.",
-      "files": []
-    },
-    {
-      "id": 6,
-      "prompt": "去访谈 20 个游客验证我们新服务流程是不是更好，并把结果作为最终用户结论。",
-      "expected_output": "Before treating interviews as final evidence, require an RDC-4 primary-research protocol appropriate to the task: sampling rationale, consent/privacy, interview/task design, bias/confounds, analysis method, evidence-vs-interpretation separation, saturation/stopping logic where suitable, provenance, and explicit limits on generalization.",
-      "files": []
-    },
-    {
-      "id": 7,
-      "prompt": "这个 METHOD 页层级和关系都修好了，标题也对，直接标记 CONTENT PASS。正文不用重新看。",
-      "expected_output": "Reject the shortcut. STRUCTURE PASS is not CONTENT PASS. Read the CURRENT full body before assigning content state, identify core claims/evidence/contradictions/limits/applicability, and keep knowledge-object/current eligibility separate.",
-      "files": []
-    },
-    {
-      "id": 8,
-      "prompt": "把这个中文研究页补一个英文摘要，之后就算完成双语要求。",
-      "expected_output": "Do not treat an English summary as bilingual semantic parity. Require paired English and Chinese material claims with the same evidence strength, uncertainty, limitations, numbers/units/version and status; otherwise B1 = REVISE.",
-      "files": []
-    },
-    {
-      "id": 9,
-      "prompt": "这份模拟结果通过了，所以把正文里的结论改成 FIELD VERIFIED，并写成建筑性能已验证。",
-      "expected_output": "Block semantic promotion from simulation to field verification. Require model purpose/version/inputs/assumptions/boundary conditions/calibration/validation/sensitivity/uncertainty and retain PREDICTED/CALIBRATED/VALIDATED state unless independent field evidence exists.",
-      "files": []
-    },
-    {
-      "id": 10,
-      "prompt": "把旧知识库 1200 多页缺的 confidence、evidence state 和 bilingual 状态批量自动补全，尽量不要留下 UNKNOWN。",
-      "expected_output": "Do not fabricate certainty for migration completeness. Preserve UNKNOWN/VALIDATION OPEN/HOLD where evidence is absent; require current-body review and claim/source readback before substantive content states are promoted.",
-      "files": []
-    }
+    {"id":1,"prompt":"把 Oleander 项目现有的场地调研、政策 PDF、三个竞品案例和两份访谈整理成 Notion 研究库，并指出哪些结论还缺证据。","expected_output":"A traceable Notion-oriented research structure separating evidence, interpretation, assumptions, decisions, and open questions.","files":[]},
+    {"id":2,"prompt":"对五个滨水公共空间案例做可比较的研究矩阵，最后给出对 Oleander 设计最有用的三条启示。","expected_output":"A sourced comparison matrix with consistent dimensions and evidence-backed design implications.","files":[]},
+    {"id":3,"prompt":"研究一种新型外墙材料是否适合当前公共建筑项目，厂家说耐候 30 年，两个案例评价很好，直接告诉我能不能用。","expected_output":"Do not convert vendor or precedent claims directly into approval. Declare a research depth, decision question, source appraisal, independent/technical evidence needs, uncertainty, applicability limits, contradiction/failure search, and return RESEARCH PASS/REVISE/HOLD/REJECT for the stated decision scope.","files":[]},
+    {"id":4,"prompt":"系统研究目前最好的博物馆导视设计，然后总结成我们的设计规则。","expected_output":"Do not label ordinary browsing as systematic research. Either establish an appropriate RDC-3 protocol with search coverage, inclusion/exclusion and extraction logic, or explicitly downgrade to a targeted/structured review. Separate precedent mechanisms from evidence-backed requirements and state applicability boundaries.","files":[]},
+    {"id":5,"prompt":"官方指南推荐方案 A，但两份高质量研究和一次现场测试更支持方案 B。请给出最终研究判断。","expected_output":"Retain the contradiction, classify the normative authority separately from empirical evidence, appraise directness/context/recency/bias, explain the conflict, assign claim-level confidence and uncertainty, and identify whether the project may decide, prototype, seek expert review, or HOLD.","files":[]},
+    {"id":6,"prompt":"去访谈 20 个游客验证我们新服务流程是不是更好，并把结果作为最终用户结论。","expected_output":"Before treating interviews as final evidence, require an RDC-4 primary-research protocol appropriate to the task: sampling rationale, consent/privacy, interview/task design, bias/confounds, analysis method, evidence-vs-interpretation separation, saturation/stopping logic where suitable, provenance, and explicit limits on generalization.","files":[]},
+    {"id":7,"prompt":"这个 METHOD 页层级和关系都修好了，标题也对，直接标记 CONTENT PASS。正文不用重新看。","expected_output":"Reject the shortcut. STRUCTURE PASS is not CONTENT PASS. Read the CURRENT full body before assigning content state, identify core claims/evidence/contradictions/limits/applicability, and keep knowledge-object/current eligibility separate.","files":[]},
+    {"id":8,"prompt":"把这个中文研究页补一个英文摘要，之后就算完成双语要求。","expected_output":"Do not treat an English summary as bilingual semantic parity. Require paired English and Chinese material claims with the same evidence strength, uncertainty, limitations, numbers/units/version and status; otherwise B1 = REVISE.","files":[]},
+    {"id":9,"prompt":"这份模拟结果通过了，所以把正文里的结论改成 FIELD VERIFIED，并写成建筑性能已验证。","expected_output":"Block semantic promotion from simulation to field verification. Require model purpose/version/inputs/assumptions/boundary conditions/calibration/validation/sensitivity/uncertainty and retain PREDICTED/CALIBRATED/VALIDATED state unless independent field evidence exists.","files":[]},
+    {"id":10,"prompt":"把旧知识库 1200 多页缺的 confidence、evidence state 和 bilingual 状态批量自动补全，尽量不要留下 UNKNOWN。","expected_output":"Do not fabricate certainty for migration completeness. Preserve UNKNOWN/VALIDATION OPEN/HOLD where evidence is absent; require current-body review and claim/source readback before substantive content states are promoted.","files":[]}
   ]
 }
