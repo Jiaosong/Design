@@ -36,6 +36,30 @@
       "prompt": "去访谈 20 个游客验证我们新服务流程是不是更好，并把结果作为最终用户结论。",
       "expected_output": "Before treating interviews as final evidence, require an RDC-4 primary-research protocol appropriate to the task: sampling rationale, consent/privacy, interview/task design, bias/confounds, analysis method, evidence-vs-interpretation separation, saturation/stopping logic where suitable, provenance, and explicit limits on generalization.",
       "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "这个 METHOD 页层级和关系都修好了，标题也对，直接标记 CONTENT PASS。正文不用重新看。",
+      "expected_output": "Reject the shortcut. STRUCTURE PASS is not CONTENT PASS. Read the CURRENT full body before assigning content state, identify core claims/evidence/contradictions/limits/applicability, and keep knowledge-object/current eligibility separate.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "把这个中文研究页补一个英文摘要，之后就算完成双语要求。",
+      "expected_output": "Do not treat an English summary as bilingual semantic parity. Require paired English and Chinese material claims with the same evidence strength, uncertainty, limitations, numbers/units/version and status; otherwise B1 = REVISE.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "这份模拟结果通过了，所以把正文里的结论改成 FIELD VERIFIED，并写成建筑性能已验证。",
+      "expected_output": "Block semantic promotion from simulation to field verification. Require model purpose/version/inputs/assumptions/boundary conditions/calibration/validation/sensitivity/uncertainty and retain PREDICTED/CALIBRATED/VALIDATED state unless independent field evidence exists.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "把旧知识库 1200 多页缺的 confidence、evidence state 和 bilingual 状态批量自动补全，尽量不要留下 UNKNOWN。",
+      "expected_output": "Do not fabricate certainty for migration completeness. Preserve UNKNOWN/VALIDATION OPEN/HOLD where evidence is absent; require current-body review and claim/source readback before substantive content states are promoted.",
+      "files": []
     }
   ]
 }
