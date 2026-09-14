@@ -35,7 +35,7 @@ Before reading or writing research knowledge:
 
 ## Professional research quality gate
 
-For consequential research, apply `PROFESSIONAL_RESEARCH_GATE_v0.1.md` as an extension of this existing Skill rather than creating a second research framework.
+For consequential research, apply `PROFESSIONAL_RESEARCH_GATE_v0.1.md` as the detailed research-execution extension. It is now bound under `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`; do not treat the legacy filename as a parallel authority.
 
 The gate is required when research can materially change a design, technical, safety, regulatory, material, spatial, service, UX, environmental, strategy, or governance decision. Select and declare the minimum sufficient research depth (`RDC-0` to `RDC-4`). Do not call ordinary browsing a systematic review.
 
@@ -57,9 +57,9 @@ Hard rules:
 
 ## Professional knowledge content + research contract
 
-For formal Research / THEORY / METHOD / FRAMEWORK / CASE / SOURCE / EVIDENCE / PRACTICE / TOOL / STANDARD content, also apply `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`.
+For formal Research / THEORY / METHOD / FRAMEWORK / CASE / SOURCE / EVIDENCE / PRACTICE / TOOL / STANDARD content, apply `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md` as the default professional body/content contract.
 
-This is the default body/content contract for professional knowledge creation and current-body review. It extends the research gate into independent gates for:
+It extends the research gate into independent gates for:
 
 `R1 Research Conduct → R2 Study-Type Reporting → K1 Knowledge Content → K2 Knowledge Object → K3 Graph Semantics → K4 Metadata/Provenance/Retrieval → K5 Lifecycle/Reuse/Staleness → B1 Bilingual Semantic Parity → Independent Review`.
 
@@ -72,7 +72,8 @@ Mandatory boundaries:
 - a well-researched document still needs correct atomicity, metadata, provenance, graph semantics, lifecycle and retrieval status;
 - formal body text defaults to English｜中文 semantic parity at the same claim/evidence/uncertainty/status level;
 - high-impact Current promotion requires independent review when applicable;
-- the standard extends current Notion Authority and live registries; it must not create a second taxonomy, registry, Authority or generic page tree.
+- the standard extends current Notion Authority and live registries; it must not create a second taxonomy, registry, Authority or generic page tree;
+- GitHub is an execution/version mirror for this contract; cross-platform synchronization is not complete until the corresponding current Notion rule binding exists and has been read back.
 
 When reviewing the existing knowledge graph, always read the **CURRENT full body** of the exact object before assigning `CONTENT PASS`. Existing graph classification, lineage or older review evidence is not a substitute for current body review.
 
@@ -198,7 +199,7 @@ For formal knowledge-body creation or review, also report the applicable `R1 / R
 - Current hierarchy uses `Canonical Parent / Canonical Children`; legacy hierarchy fields are not used for routing.
 - Domain, Source, Method, Project, Related and Supersession semantics remain separate.
 - No parallel Notion taxonomy/page tree is created by default.
-- For consequential research, the declared research depth, source appraisal, contradiction search, claim confidence, uncertainty and applicability boundary satisfy `PROFESSIONAL_RESEARCH_GATE_v0.1.md`.
+- For consequential research, the declared research depth, source appraisal, contradiction search, claim confidence, uncertainty and applicability boundary satisfy `PROFESSIONAL_RESEARCH_GATE_v0.1.md` under the v1.0 standard.
 - Formal professional knowledge-body work satisfies the applicable gates and Claim–Evidence Ledger rules in `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`.
 - Existing graph classification or old review evidence never substitutes for reading the CURRENT full body when assigning content state.
 - English｜中文 formal content preserves claim, evidence strength, uncertainty, boundary, numbers/units/version and status parity when bilingual content is required.
