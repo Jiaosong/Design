@@ -33,6 +33,28 @@ Before reading or writing research knowledge:
 7. End with design implications, unresolved questions, and the next research action.
 8. Write back only to the correct live Registry object/relation and perform readback.
 
+## Professional research quality gate
+
+For consequential research, apply `PROFESSIONAL_RESEARCH_GATE_v0.1.md` as an extension of this existing Skill rather than creating a second research framework.
+
+The gate is required when research can materially change a design, technical, safety, regulatory, material, spatial, service, UX, environmental, strategy, or governance decision. Select and declare the minimum sufficient research depth (`RDC-0` to `RDC-4`). Do not call ordinary browsing a systematic review.
+
+At minimum, decision-grade research must make the following auditable when applicable:
+
+`QUESTION + DECISION → PROTOCOL → SEARCH COVERAGE → SOURCE APPRAISAL → EXTRACTION/PROVENANCE → SYNTHESIS/CONTRADICTION → CLAIM CONFIDENCE/UNCERTAINTY → APPLICABILITY → DESIGN IMPLICATION → VALIDATION/READBACK → RESEARCH PASS/REVISE/HOLD/REJECT`
+
+Hard rules:
+
+- source strength and claim confidence are separate;
+- weak sources do not become strong merely by quantity;
+- search must pursue contradictory/failure evidence when material, not only confirming examples;
+- consequential quantitative claims require source, unit, condition, and method context;
+- precedent similarity does not prove technical performance;
+- vendor evidence does not become independent proof;
+- primary human/field research requires an appropriate protocol before collection;
+- research output must preserve enough provenance and method detail to reconstruct the reasoning;
+- `RESEARCH PASS` does not prove `DESIGN PASS`, field truth, construction readiness, regulatory approval, or final project validity.
+
 ## Reference sourcing + how-made deconstruction capability
 
 Use this branch when the task is not only "find evidence" but "find better precedents and understand how they were made".
@@ -138,6 +160,8 @@ Provide:
 6. Open questions
 7. Current Notion objects/relations created or updated, including their Canonical ID / role / registry location when relevant
 
+For consequential `RDC-1+` research, also provide the applicable Professional Research Gate outputs: protocol summary, claim-evidence matrix, contradiction/limitation register, claim-level confidence and uncertainty, reproducibility record, and final `RESEARCH PASS / REVISE / HOLD / REJECT`.
+
 ## Quality checks
 
 - No unsupported quantitative claim.
@@ -151,4 +175,5 @@ Provide:
 - Current hierarchy uses `Canonical Parent / Canonical Children`; legacy hierarchy fields are not used for routing.
 - Domain, Source, Method, Project, Related and Supersession semantics remain separate.
 - No parallel Notion taxonomy/page tree is created by default.
+- For consequential research, the declared research depth, source appraisal, contradiction search, claim confidence, uncertainty and applicability boundary satisfy `PROFESSIONAL_RESEARCH_GATE_v0.1.md`.
 - The result is usable by `oleander-design-process`, `oleander-data-viz`, `oleander-story-and-board`, `oleander-image-art-direction`, `oleander-web-ui`, `oleander-motion`, and `oleander-3d-pipeline`.
