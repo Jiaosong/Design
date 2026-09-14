@@ -734,7 +734,10 @@ async function handleReconcile(request: Request, env: Env): Promise<Response> {
     if (body.page_id) {
       const cause = `reconcile:${runId}:${body.page_id}`;
       await stageSyncMessages(env.MANIFEST, [
-        { kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "manual" },
+        // A manual page reconcile is explicitly asking us to bypass the
+        // last-edited-time fast path. Notion can expose the same timestamp
+        // for multiple writes that land close together.
+        { kind: "notion-page-sync", page_id: body.page_id, cause_id: cause, cause_type: "reconcile" },
       ]);
       count = 1;
     } else {
@@ -1405,6 +1408,9 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
         page_id: pageId,
         cause_id: `graph-mutation-review:${crypto.randomUUID()}`,
         cause_type: "manual",
+        // The subsequent VALID write can share Notion's lastEditedTime with
+        // this REVIEW transition, so both phases must bypass UNCHANGED.
+        force: true,
       });
     } catch (error) {
       return json({
@@ -1426,6 +1432,9 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
         page_id: pageId,
         cause_id: `graph-mutation-valid:${crypto.randomUUID()}`,
         cause_type: "manual",
+        // Do not let the REVIEW derivative survive when Notion reports the
+        // same lastEditedTime for the final VALID transition.
+        force: true,
       });
     } catch (error) {
       return json({
