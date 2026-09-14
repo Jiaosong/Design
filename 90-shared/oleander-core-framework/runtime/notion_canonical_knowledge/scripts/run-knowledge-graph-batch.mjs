@@ -41,6 +41,11 @@ const mutationBase = "https://oleander-notion-canonical-knowledge.oleander-desig
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const results = [];
 
+function sameIds(a = [], b = []) {
+  const normalize = (value) => [...new Set(value)].sort();
+  return JSON.stringify(normalize(a)) === JSON.stringify(normalize(b));
+}
+
 function plannedUpdates(node, live) {
   const updates = {};
   if (node.target.level && live.contentLevel !== node.target.level) updates.content_level = node.target.level;
@@ -52,6 +57,12 @@ function plannedUpdates(node, live) {
     updates.framework_type = null;
   }
   for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action === "SET_PRIMARY_DOMAIN") {
+      const target = repair.targetPageId;
+      if (!target) throw new Error(`${node.canonicalId}: SET_PRIMARY_DOMAIN requires targetPageId`);
+      updates.primary_domain_ids = [target];
+      continue;
+    }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
       const target = repair.targetPageId;
       if (!target) throw new Error(`${node.canonicalId}: REMOVE_CANONICAL_PARENT requires targetPageId`);
@@ -116,6 +127,9 @@ function classificationAtTarget(node, live) {
 
 function edgeRepairsAtTarget(node, live) {
   return (node.edgeRepairs ?? []).every((repair) => {
+    if (repair.action === "SET_PRIMARY_DOMAIN") {
+      return sameIds(live.primaryDomainIds ?? [], [repair.targetPageId]);
+    }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
       return !(live.canonicalParentIds ?? []).includes(repair.targetPageId);
     }
@@ -145,6 +159,11 @@ function edgeRepairsAtTarget(node, live) {
 function edgeRepairDrift(node, live) {
   const drift = [];
   for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action === "SET_PRIMARY_DOMAIN") {
+      const target = repair.targetPageId;
+      if (!target) drift.push("SET_PRIMARY_DOMAIN:targetPageIdMissing");
+      continue;
+    }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
       const target = repair.targetPageId;
       if (!target) {
@@ -226,6 +245,9 @@ for (const node of plan.nodes) {
     if (live.contentLevel !== node.current.level) drift.push(`contentLevel:${live.contentLevel}`);
     if (live.knowledgeRole !== node.current.role) drift.push(`knowledgeRole:${live.knowledgeRole}`);
     if (live.relationState !== node.current.relationState) drift.push(`relationState:${live.relationState}`);
+    if (Array.isArray(node.current.primaryDomainIds) && !sameIds(live.primaryDomainIds ?? [], node.current.primaryDomainIds)) {
+      drift.push(`primaryDomainIds:${JSON.stringify(live.primaryDomainIds ?? [])}`);
+    }
     drift.push(...edgeRepairDrift(node, live));
     if (drift.length) {
       results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "DRIFT", drift, live, updates, startedAt, completedAt: new Date().toISOString() });
@@ -248,6 +270,7 @@ for (const node of plan.nodes) {
       content_level: "contentLevel",
       knowledge_role: "knowledgeRole",
       framework_type: "frameworkType",
+      primary_domain_ids: "primaryDomainIds",
       canonical_parent_ids: "canonicalParentIds",
       canonical_children_ids: "canonicalChildrenIds",
       semantic_related_ids: "semanticRelatedIds",
