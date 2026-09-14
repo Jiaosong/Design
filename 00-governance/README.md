@@ -121,6 +121,30 @@ Canonical system: [`artifact-review-system-v1.0.md`](artifact-review-system-v1.0
 
 `BA0–BA4` 不等于本 Project Flow 的执行/render `FID0–FID3`，也不等于外部 BIM LOD。Beauty render、PBR、对象/面数、可打开、CI PASS 或 BIM/LOD 标签均不能单独升级 built-asset acceptance；FIELD / engineering / code / fabrication / commissioning authority 仍保持独立。
 
+## Design Intelligence Routing & Review System v1.0
+
+Canonical system: [`design-intelligence-routing-and-review-v1.0.md`](design-intelligence-routing-and-review-v1.0.md)
+
+OLEANDER 的设计知识层不建立第二套知识树。当前 `L0–L7`、Domain / Topic、METHOD / THEORY / SOURCE / EVIDENCE / CASE / PRACTICE 关系继续承担知识所有权；项目在 `P0–P4` 下通过 **Design Intelligence Packet** 解析当前设计问题、Design Intent、需要调用的既有知识对象、专业 Review Lens、技术/Evidence Gate 触发条件与 Claim Ceiling。
+
+设计审查与技术审查保持分离：`Machine PASS ≠ Design KEEP`、`Technical Validation ≠ Design Quality`、`Evidence Correctness ≠ Visual Excellence`、`Process PASS ≠ MAIN KEEP`。专业设计 Lens 负责空间、产品、视觉、品牌、交互、服务、展陈、导视、CMF、数据、动效、Presentation 等设计判断；其知识由当前知识库关系路由，不把这些 Lens 固化成新的 L2 Domain 或平行 `DKE-*` 分类。
+
+项目级闭环统一为：
+
+`Knowledge Route → Design Question / Intent → Explore / Compare → Candidate → Execute / Prototype → QA + Artifact Review + Triggered Design Review + Technical/Evidence Gates → Independent Design Decision → Promotion → Observe → G9 Knowledge Candidate`。
+
+G9 经验只有在适用范围、证据状态、反例/失败条件与成熟度明确后，才允许进入或修订 L4/L5 知识对象；项目经验本身不自动成为通用设计规则。
+
+## Cross-Disciplinary Design Integration v1.0
+
+Canonical system: [`cross-disciplinary-design-integration-v1.0.md`](cross-disciplinary-design-integration-v1.0.md)
+
+复杂跨专业项目在 Design Intelligence 之上增加集成层，但不新增知识分类。它负责 `subsystem / interface / coupling / criticality / shared variable / dependency / authority / maturity / joint decision / change propagation / integrated prototype / integration readback`。治理强度按接口风险与耦合程度分级：`MAJOR / CRITICAL` 接口使用明确的 Acceptance Contract，关键共享变量变更会按影响范围重开相关接口、评审和 Gate；`DISCIPLINE PASS ≠ INTEGRATION PASS`。
+
+跨专业项目的运行关系是：
+
+`Knowledge Route → Design Intelligence Packet → Discipline Lenses → Cross-Disciplinary Integration Packet → Prototype / Execute → Discipline + Technical Review → Integration Readback / Integration Receipt → Independent Whole-System Design Decision → Promotion / G9`。
+
 ## Mandatory Post-Generation Review Gate
 
 Operational gate: [`post-generation-review-gate.md`](post-generation-review-gate.md)

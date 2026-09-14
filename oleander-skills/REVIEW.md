@@ -84,6 +84,8 @@ Installed/core-skill existence does **not** prove that a skill, prompt, model, r
 - Design process uses a Variable Budget, distinguishes concept families from parameter variants, matches prototype medium to the unknown, performs actual multi-scale readback/repair, preserves a Design Continuity Contract, records consequential decisions and propagates material changes through dependent artifacts.
 - Installed design-process ownership does not grant specialist technical proof, final presentation KEEP, field/manufacturing/engineering truth or human-test PASS.
 - Remaining Candidate core skills cannot self-promote to installed execution owner or ACTIVE; producer review cannot grant Independent KEEP.
+- Reusable design skills route through the current L0–L7 knowledge architecture rather than inventing a parallel design taxonomy. For material design decisions, resolve relevant existing METHOD / THEORY / SOURCE / EVIDENCE / CASE / PRACTICE into a project Design Intelligence Packet and triggered professional review lenses under `00-governance/design-intelligence-routing-and-review-v1.0.md`. Skill execution, artifact QA or technical PASS may not self-award `DESIGN KEEP`.
+- Complex multidisciplinary tasks additionally trigger `00-governance/cross-disciplinary-design-integration-v1.0.md`: resolve interface coupling / criticality, owners, shared variables, required maturity, authority conflicts, acceptance/readback basis, dependency/change propagation and a current Integration Receipt where Promotion depends on whole-system closure. Parallel discipline outputs or a federated model are not sufficient evidence of integrated design.
 
 ## Reference Reconstruction Fidelity Gate
 
