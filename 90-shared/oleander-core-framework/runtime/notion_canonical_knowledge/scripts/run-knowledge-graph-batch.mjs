@@ -60,7 +60,7 @@ function plannedUpdates(node, live) {
     if (repair.action === "SET_PRIMARY_DOMAIN") {
       const target = repair.targetPageId;
       if (!target) throw new Error(`${node.canonicalId}: SET_PRIMARY_DOMAIN requires targetPageId`);
-      updates.primary_domain_ids = [target];
+      if (!sameIds(live.primaryDomainIds ?? [], [target])) updates.primary_domain_ids = [target];
       continue;
     }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
