@@ -1,6 +1,6 @@
 # OLEANDER Runtime Refinement Priority Roadmap v1.0
 
-Status: **DRAFT GOVERNANCE EXTENSION / ORDER-OF-WORK ONLY**. This roadmap does not replace Current Authority, Project Axis, Knowledge Architecture, the Object Plane contract, or any existing gate. It defines the order in which the new typed runtime system should be deepened so that high-consequence control semantics are stabilized before lower-consequence presentation detail.
+Status: **DRAFT GOVERNANCE EXTENSION / ORDER-OF-WORK ONLY / P1–P11 FIRST-PASS CONTRACTS DRAFTED**. This roadmap does not replace Current Authority, Project Axis, Knowledge Architecture, the Object Plane contract, or any existing gate. It defines the order in which the typed runtime system is deepened so that high-consequence control semantics are stabilized before lower-consequence presentation detail.
 
 ## 1. Ordering principle
 
@@ -14,9 +14,9 @@ Priority rule:
 
 This is not a statement that presentation is unimportant. It means a presentation defect normally cannot be allowed to repair or redefine a wrong upstream project truth.
 
-## 2. Priority sequence
+## 2. Priority sequence and draft status
 
-### P0 — Object Plane + identity routing — ALREADY DRAFTED
+### P0 — Object Plane + identity routing — DRAFTED
 
 Questions:
 - Is the record `KNOWLEDGE`, `PROJECT`, or `RUNTIME_CONTROL`?
@@ -30,158 +30,135 @@ Primary contracts:
 Exit condition:
 - plane and identity can be resolved before downstream classification.
 
-### P1 — Authority / Invocation / Precedence / Staleness / Claim Ceiling / Promotion — FIRST TO DEEPEN
+### P1 — Authority / Invocation / Precedence / Staleness / Claim Ceiling / Promotion — FIRST-PASS DRAFTED
 
 Why first:
 - every later packet, requirement, interface, evidence object, review and presentation depends on a valid authority scope;
 - stale authority or an excessive claim ceiling can make otherwise correct work false at system level.
 
-Required outputs:
-- authority source classes;
-- precedence algorithm;
-- authority snapshot contract;
-- invocation envelope;
-- stale triggers and propagation;
-- independent claim-ceiling dimensions;
-- promotion/reopen rules;
-- machine validator rules.
+Outputs drafted:
+- `OLEANDER_AUTHORITY_INVOCATION_STALENESS_CLAIM_PROMOTION_CONTRACT_v1.0.md/.json`;
+- authority source classes and conflict algorithm;
+- authority snapshot + invocation envelope;
+- mutation classes + RB0–RB4;
+- vector-valued claim ceilings;
+- promotion/reopen validators.
 
-### P2 — Project State + Decision Question + Execution Scope
+### P2 — Project State + Decision Question + Execution Scope — FIRST-PASS DRAFTED
 
-Questions:
-- What project/workstream/decision is active?
-- What is locked, open, outside claim and forbidden to change?
-- What constitutes material completion for this loop?
+Outputs drafted:
+- `OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0.md/.json`;
+- Project State and Workstream Runtime Card;
+- Runtime Decision Object;
+- Decision Question quality gate;
+- locked/open/protected distinction;
+- mutation budget, stop/close/reopen/concurrency rules.
 
-Required outputs:
-- Project State contract;
-- Decision Object control envelope;
-- scope lock / mutation budget;
-- stop and reopen conditions.
+### P3 — Need / Requirement / Constraint / Project Claim — FIRST-PASS DRAFTED
 
-### P3 — Need / Requirement / Constraint / Project Claim
+Outputs drafted:
+- `OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0.md/.json`;
+- independent semantics/state machines;
+- Requirement atomicity and verification route;
+- Requirement Validation vs Verification vs Product Validation;
+- constraint/waiver boundary;
+- project Claim–Evidence/ceiling rules.
 
-Why before geometry or artifacts:
-- design objects should not become the hidden source of requirements;
-- Verification requires a traceable requirement target;
-- claims need explicit evidence ceilings.
+### P4 — Controlled Variable / Interface / Material Dependency — FIRST-PASS DRAFTED
 
-Required outputs:
-- requirement atomicity;
-- requirement provenance;
-- acceptance criteria;
-- requirement-validation vs product-validation boundary;
-- constraint authority and waiver logic;
-- project-claim trace contract.
+Outputs drafted:
+- `OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0.md/.json`;
+- variable authority/consumer sensitivity;
+- interface objectification, coupling, criticality, maturity/disposition;
+- Acceptance Contract;
+- N-way interface handling;
+- Material Dependency vs Interface threshold;
+- register and propagation rules.
 
-### P4 — Controlled Variable / Interface / Material Dependency
+### P5 — Baseline / Change / Staleness Propagation — FIRST-PASS DRAFTED
 
-Why high priority:
-- this is the main cross-disciplinary propagation layer;
-- one wrong shared variable can invalidate multiple disciplines while each local artifact remains internally correct.
+Outputs drafted:
+- `OLEANDER_BASELINE_CHANGE_STALENESS_PROPAGATION_CONTRACT_v1.0.md/.json`;
+- immutable scoped baselines;
+- Change lifecycle/impact classes;
+- orthogonal validity disposition;
+- typed propagation + stop proof;
+- reassurance obligations;
+- promotion-breaking/concurrency/cross-platform-pointer rules.
 
-Required outputs:
-- variable authority and consumer registry;
-- interface objectification threshold;
-- interface acceptance contract;
-- coupling/criticality rules;
-- integrated readback;
-- N-way interface handling.
+### P6 — Evidence / Formal Assurance / Claim Ceiling — FIRST-PASS DRAFTED
 
-### P5 — Baseline / Change / Staleness Propagation
+Outputs drafted:
+- `OLEANDER_EVIDENCE_FORMAL_ASSURANCE_CONTRACT_v1.0.md/.json`;
+- Evidence Record / Assurance Activity / Assurance Decision separation;
+- Verification / Validation / Certification / Independent Review / Audit / Acceptance semantics;
+- applicability/uncertainty/freshness/contradiction;
+- per-target results;
+- field/simulation/prototype boundaries.
 
-Questions:
-- what configuration is Current?
-- what does a change invalidate or reopen?
-- when is previous evidence historical rather than Current?
+### P7 — Risk / Issue / Assumption / Unknown — FIRST-PASS DRAFTED
 
-Required outputs:
-- immutable baseline contract;
-- change-impact graph;
-- stale propagation engine;
-- local/material/coupled/promotion-breaking change rules;
-- downstream reassurance obligations.
+Outputs drafted:
+- `OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0.md/.json`;
+- four independent semantic classes/state machines;
+- risk treatments/residual risk;
+- issue root-cause/retest/anti-repeat;
+- assumption authority/expiry/claim ceiling;
+- Unknown non-conversion rule;
+- lineage conversions and promotion constraints.
 
-### P6 — Evidence / Assurance / Claim Ceiling
+### P8 — Work / Artifact / Information Carrier — FIRST-PASS DRAFTED
 
-Questions:
-- what was actually observed or tested?
-- what was Verification versus Validation?
-- what conclusion does the evidence not establish?
+Outputs drafted:
+- `OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0.md/.json`;
+- Work Package / Task / Artifact separation;
+- carrier roles;
+- editable master/source/derivative distinction;
+- loss profile;
+- cross-software handoff/readback;
+- artifact authority boundaries.
 
-Required outputs:
-- evidence-record contract;
-- assurance activity/decision split;
-- result-per-target semantics;
-- contradiction handling;
-- field/simulation/prototype separation;
-- claim-ceiling binding.
+### P9 — Knowledge Distillation + Classification + Content Gates — FIRST-PASS DRAFTED
 
-### P7 — Risk / Issue / Assumption / Unknown
+Outputs drafted:
+- `OLEANDER_G9_KNOWLEDGE_DISTILLATION_ADMISSION_CONTRACT_v1.0.md/.json`;
+- G9 candidate lifecycle;
+- existing-owner-first;
+- de-project/provenance separation;
+- transfer statement + counterexample gate;
+- eight-axis Knowledge classification;
+- Human Knowledge Body vs Runtime Metadata;
+- Claim-level evidence + R1/R2/K1–K5/B1/IR promotion.
 
-Required outputs:
-- class-specific state machines;
-- trigger/expiry rules;
-- consequence-if-false;
-- residual risk;
-- assumption confirmation/refutation;
-- unknown resolution and `OUTSIDE_CLAIM` rules.
+### P10 — Presentation Projection / Style / Technique — FIRST-PASS DRAFTED
 
-### P8 — Work / Artifact / Information Carrier
+Existing presentation contracts:
+- `OLEANDER_PROJECT_PRESENTATION_LAYER_v1.0.md/.json`;
+- `OLEANDER_PRESENTATION_STYLE_TECHNIQUE_SYSTEM_v1.0.md/.json`.
 
-Questions:
-- what work remains?
-- what carrier represents which semantic object?
-- what can be replaced without changing truth?
+Additional matrices drafted:
+- `OLEANDER_PRESENTATION_COMPATIBILITY_MATRICES_v1.0.md/.json`;
+- Style × Technique Family matrix;
+- Style × Medium matrix;
+- Technique × Evidence Truth-Risk matrix;
+- E0–E3 transformation boundaries;
+- medium-specific readbacks;
+- accessibility/bilingual/static/reduced-motion rules.
 
-Required outputs:
-- Work Package / Task contracts;
-- artifact carrier semantics;
-- editable-master / derivative distinction;
-- source-to-derivative relation;
-- information-loss/readback contract.
+### P11 — Retrieval / Reader / Automation / Routing Optimization — FIRST-PASS DRAFTED
 
-### P9 — Knowledge Distillation + Classification + Content Gates
-
-Questions:
-- what project/runtime learning is genuinely reusable?
-- what remains project-specific?
-- what belongs in L0–L7 and with which Role/relations?
-
-Required outputs:
-- G9 admission contract;
-- deproject/generalize rules;
-- Claim–Evidence migration;
-- eight-axis classification;
-- Human Knowledge Body vs Runtime Metadata separation;
-- R1/R2/K1–K5/B1/IR execution.
-
-### P10 — Presentation Projection / Style / Technique
-
-Questions:
-- how should valid source truth be communicated to a given audience/medium/context?
-- which style axes and techniques solve the communication problem?
-- what truth risk does each presentation transformation introduce?
-
-Required outputs:
-- presentation runtime objects;
-- style-profile axes;
-- technique library;
-- Style × Technique compatibility;
-- Medium × Style adaptation;
-- Technique × Evidence-risk matrix;
-- presentation release/readback.
-
-### P11 — Retrieval / Reader / Automation / Routing Optimization
-
-Do last because UI/routing must reflect the stabilized semantic model rather than force the model to fit an early interface.
-
-Required outputs:
-- Reader information architecture;
-- plane-aware search/filter;
-- typed graph traversal;
-- minimum sufficient runtime routing;
-- automated validators and regression tests.
+Outputs drafted:
+- `OLEANDER_RETRIEVAL_READER_ROUTING_CONTRACT_v1.0.md/.json`;
+- plane-aware retrieval;
+- typed relation expansion;
+- separated Reader state columns;
+- dynamic corpus contract;
+- Claim-first retrieval;
+- Project-vs-Knowledge query precedence;
+- minimum sufficient execution owner routing;
+- automation limits/fail-closed behavior;
+- return-to-source/contradiction/staleness visibility;
+- regression scenarios.
 
 ## 3. Completion discipline
 
@@ -189,8 +166,17 @@ For each priority item, use the same closure sequence:
 
 `READ CURRENT → IDENTIFY EXISTING OWNER → DEFINE SEMANTIC GAP → WRITE HUMAN CONTRACT → WRITE MACHINE CONTRACT → DEFINE VALIDATOR RULES → TEST EDGE CASES → READBACK → KEEP AS DRAFT UNTIL AUTHORITY PROMOTION`.
 
-Do not start a lower-priority item merely because the higher-priority document exists. A priority item is sufficiently refined only when its core conflicts, state transitions, relation cardinalities, failure modes and machine-readable invariants are explicit.
+A first-pass contract is **not** Current promotion. The first pass is sufficient only to begin cross-contract consistency review and real-project replay. Each item can still receive REVISE after replay or contradiction testing.
 
-## 4. Current next action
+## 4. Next refinement stage
 
-`P1 Authority / Invocation / Precedence / Staleness / Claim Ceiling / Promotion` is the active refinement target.
+P1–P11 first-pass human + machine contracts are now drafted on the feature branch. The next work should be **cross-contract integration rather than adding more taxonomy**:
+
+1. run cross-file consistency and enum/reference audit;
+2. compile validator rules into one validator/eval manifest;
+3. replay representative real projects against the contracts;
+4. repair contradictions/over-modeling revealed by replay;
+5. independently review governance and migration impact;
+6. only then propose Current Authority / Notion / main promotion.
+
+No draft contract in this branch is Current merely because it exists or is internally detailed.
