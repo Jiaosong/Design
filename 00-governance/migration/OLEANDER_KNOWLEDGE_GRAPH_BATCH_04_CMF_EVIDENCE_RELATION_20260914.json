@@ -1,0 +1,496 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T12:41:17.149Z",
+  "status": "BATCH_04_CMF_EVIDENCE_STRUCTURAL_RELATION_REPAIR",
+  "purpose": "Repair 15 fresh-reader-confirmed CMF product evidence objects whose L4 product index association was incorrectly stored as Canonical Parent.",
+  "safeguards": [
+    "Fresh Reader detail 15/15 succeeded with complete hierarchy readback.",
+    "All sources are SUPPORT L6 EVIDENCE with exactly one L4 IDX-CMF-PRODUCT-001 structural parent.",
+    "Each object retains at least one dedicated Source relation.",
+    "No node classification, Primary Domain, Source, Method, Project, or lineage mutation is included.",
+    "Serial exact-before-state application; stop on first drift/failure."
+  ],
+  "plannedCount": 15,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "EVD-CMF-PROD-KLEIBERIT-303.0.00",
+      "pageId": "3b4b86be-5c47-81ae-aa42-d04b791bbba2",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:36.559Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "EVD-CMF-PROD-FUNDERMAX-0755-AP-FQ-2800-12",
+      "pageId": "3b4b86be-5c47-8199-8010-f71f2a218b8d",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:40.760Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "EVD-CMF-PROD-OSTERMANN-P4M.2990",
+      "pageId": "3b4b86be-5c47-8129-85f9-e58679a6e782",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:45.159Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "EVD-CMF-PROD-BUTTONFIX-TYPE2-262.94.024",
+      "pageId": "3b3b86be-5c47-81ee-b53c-dbd145e8250f",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:49.673Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "EVD-CMF-PROD-RUBIO-OILPLUS2C-PURE-1.3L",
+      "pageId": "3b3b86be-5c47-8178-bb23-c5ea3c8d8804",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:54.392Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "EVD-CMF-PROD-FUNDERMAX-0755-AP-BLACK-4100-12",
+      "pageId": "3b2b86be-5c47-81d3-896f-ca9169db84cb",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:38:58.780Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 7,
+      "canonicalId": "EVD-CMF-PROD-TARKETT-PURE-OAK-NATURE-MINIPLANK",
+      "pageId": "3b2b86be-5c47-8178-b549-d5b10081aac3",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:39:03.546Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 8,
+      "canonicalId": "EVD-CMF-PROD-EGGER-U999-PM-MDF-18",
+      "pageId": "3b2b86be-5c47-8144-946a-f5bd167cae97",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:39:07.793Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 9,
+      "canonicalId": "EVD-CMF-PROD-MAPEI-UM35",
+      "pageId": "3b1b86be-5c47-81a4-adc3-cfb32eb77829",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:39:11.876Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 10,
+      "canonicalId": "EVD-CMF-PROD-DONGPENG-YG276865",
+      "pageId": "3b1b86be-5c47-819d-9824-e01ee2939765",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:39:17.674Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 11,
+      "canonicalId": "EVD-CMF-PROD-MAPEI-ULTRACOLOR-112",
+      "pageId": "3b1b86be-5c47-8188-a202-f3b73e673f7f",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:39:58.010Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 12,
+      "canonicalId": "EVD-CMF-PROD-FILA-MP90-ECO-XTREME-1L",
+      "pageId": "3b1b86be-5c47-816d-950c-ca1e345ee13f",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:40:02.435Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 13,
+      "canonicalId": "EVD-CMF-PROD-LAMINAM-CALACATTA-ORO-NATURAL-5",
+      "pageId": "3b0b86be-5c47-8154-9ce0-cd5fba5ddf6b",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:40:06.930Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 14,
+      "canonicalId": "EVD-CMF-PROD-DEKTON-REM-VELVET-8",
+      "pageId": "3b0b86be-5c47-8145-8b9e-fccb87540461",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:40:11.473Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    },
+    {
+      "sequence": 15,
+      "canonicalId": "EVD-CMF-PROD-MAPEI-KERAFLEX-MAXI-S1-ZERO-GREY",
+      "pageId": "3b0b86be-5c47-8105-8528-d4576ec99bb9",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh Reader readback proves this L6 EVIDENCE object uses an L4 product index as Canonical Parent. L6 evidence is not part of the L4→L5 structural hierarchy; preserve the routing association as Related while retaining its dedicated Source evidence chain.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-811c-a866-fe1472194883",
+          "targetCanonicalId": "IDX-CMF-PRODUCT-001",
+          "reason": "L6 EVIDENCE cannot use Canonical Parent; preserve IDX-CMF-PRODUCT-001 as semantic/routing Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:40:16.011Z",
+        "hierarchyReadbackComplete": true,
+        "dedicatedSourceCount": 1
+      }
+    }
+  ]
+}
