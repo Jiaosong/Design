@@ -52,14 +52,32 @@ function plannedUpdates(node, live) {
     updates.framework_type = null;
   }
   for (const repair of node.edgeRepairs ?? []) {
-    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") {
-      throw new Error(`${node.canonicalId}: unsupported edge repair ${repair.action}`);
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
+      const target = repair.targetPageId;
+      const parents = [...new Set(updates.canonical_parent_ids ?? live.canonicalParentIds ?? [])];
+      const related = [...new Set(updates.semantic_related_ids ?? live.semanticRelatedIds ?? [])];
+      if (parents.includes(target)) updates.canonical_parent_ids = parents.filter((id) => id !== target);
+      if (!related.includes(target)) updates.semantic_related_ids = [...related, target];
+      continue;
     }
-    const target = repair.targetPageId;
-    const parents = [...new Set(live.canonicalParentIds ?? [])];
-    const related = [...new Set(live.semanticRelatedIds ?? [])];
-    if (parents.includes(target)) updates.canonical_parent_ids = parents.filter((id) => id !== target);
-    if (!related.includes(target)) updates.semantic_related_ids = [...related, target];
+    if (["RETYPE_CANONICAL_CHILDREN_TO_RELATED", "RETYPE_CANONICAL_CHILDREN_TO_SOURCE"].includes(repair.action)) {
+      const targets = [...new Set(repair.targetPageIds ?? [])];
+      if (!targets.length) throw new Error(`${node.canonicalId}: ${repair.action} requires targetPageIds`);
+      const children = [...new Set(updates.canonical_children_ids ?? live.canonicalChildrenIds ?? [])];
+      const remainingChildren = children.filter((id) => !targets.includes(id));
+      if (remainingChildren.length !== children.length) updates.canonical_children_ids = remainingChildren;
+      if (repair.action === "RETYPE_CANONICAL_CHILDREN_TO_RELATED") {
+        const related = [...new Set(updates.semantic_related_ids ?? live.semanticRelatedIds ?? [])];
+        const next = [...new Set([...related, ...targets])];
+        if (next.length !== related.length) updates.semantic_related_ids = next;
+      } else {
+        const sources = [...new Set(updates.source_relation_ids ?? live.sourceRelationIds ?? [])];
+        const next = [...new Set([...sources, ...targets])];
+        if (next.length !== sources.length) updates.source_relation_ids = next;
+      }
+      continue;
+    }
+    throw new Error(`${node.canonicalId}: unsupported edge repair ${repair.action}`);
   }
   return updates;
 }
@@ -74,23 +92,43 @@ function classificationAtTarget(node, live) {
 
 function edgeRepairsAtTarget(node, live) {
   return (node.edgeRepairs ?? []).every((repair) => {
-    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") return false;
-    const target = repair.targetPageId;
-    return !(live.canonicalParentIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
+      const target = repair.targetPageId;
+      return !(live.canonicalParentIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
+    }
+    if (repair.action === "RETYPE_CANONICAL_CHILDREN_TO_RELATED") {
+      const targets = repair.targetPageIds ?? [];
+      return targets.every((target) => !(live.canonicalChildrenIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target));
+    }
+    if (repair.action === "RETYPE_CANONICAL_CHILDREN_TO_SOURCE") {
+      const targets = repair.targetPageIds ?? [];
+      return targets.every((target) => !(live.canonicalChildrenIds ?? []).includes(target) && (live.sourceRelationIds ?? []).includes(target));
+    }
+    return false;
   });
 }
 
 function edgeRepairDrift(node, live) {
   const drift = [];
   for (const repair of node.edgeRepairs ?? []) {
-    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") {
-      drift.push(`unsupportedEdgeRepair:${repair.action}`);
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
+      const target = repair.targetPageId;
+      const hasParent = (live.canonicalParentIds ?? []).includes(target);
+      const hasRelated = (live.semanticRelatedIds ?? []).includes(target);
+      if (!hasParent && !hasRelated) drift.push(`edgeRepairSourceMissing:${target}`);
       continue;
     }
-    const target = repair.targetPageId;
-    const hasParent = (live.canonicalParentIds ?? []).includes(target);
-    const hasRelated = (live.semanticRelatedIds ?? []).includes(target);
-    if (!hasParent && !hasRelated) drift.push(`edgeRepairSourceMissing:${target}`);
+    if (["RETYPE_CANONICAL_CHILDREN_TO_RELATED", "RETYPE_CANONICAL_CHILDREN_TO_SOURCE"].includes(repair.action)) {
+      for (const target of repair.targetPageIds ?? []) {
+        const hasChild = (live.canonicalChildrenIds ?? []).includes(target);
+        const hasRetyped = repair.action === "RETYPE_CANONICAL_CHILDREN_TO_RELATED"
+          ? (live.semanticRelatedIds ?? []).includes(target)
+          : (live.sourceRelationIds ?? []).includes(target);
+        if (!hasChild && !hasRetyped) drift.push(`edgeRepairSourceMissing:${target}`);
+      }
+      continue;
+    }
+    drift.push(`unsupportedEdgeRepair:${repair.action}`);
   }
   return drift;
 }
@@ -145,7 +183,9 @@ for (const node of plan.nodes) {
       knowledge_role: "knowledgeRole",
       framework_type: "frameworkType",
       canonical_parent_ids: "canonicalParentIds",
+      canonical_children_ids: "canonicalChildrenIds",
       semantic_related_ids: "semanticRelatedIds",
+      source_relation_ids: "sourceRelationIds",
     };
     for (const key of Object.keys(updates)) expected[key] = live[fieldMap[key]];
     const body = {
