@@ -1,0 +1,27 @@
+{
+  "schema": "OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0",
+  "status": "DRAFT_GOVERNANCE_EXTENSION",
+  "priority": "P8",
+  "object_plane": "PROJECT",
+  "work_package": {
+    "states": ["PLANNED", "READY", "IN_PROGRESS", "REVIEW", "ACCEPTED_FOR_SCOPE", "CANCELLED", "SUPERSEDED"],
+    "required_fields": ["work_package_id", "project_id", "workstream_id", "outcome", "scope_in", "scope_out", "owner", "decision_object_ref", "input_objects", "required_outputs", "requirements", "constraints", "dependencies", "interfaces", "acceptance_conditions", "required_readback", "claim_ceiling_ref", "status"]
+  },
+  "task": {
+    "states": ["PLANNED", "READY", "IN_PROGRESS", "REVIEW", "DONE", "CANCELLED", "SUPERSEDED"],
+    "objectification_threshold": ["OWNER_MATTERS", "DEPENDENCY_OR_SCHEDULE_MATTERS", "MUTATION_READBACK_SCOPE_MATTERS", "FAILURE_RETRY_TRACE_REQUIRED", "OUTPUT_FEEDS_CONSEQUENTIAL_DECISION_OR_ARTIFACT", "TASK_MUST_SURVIVE_SESSION_TOOL_INTERRUPTION"],
+    "required_fields": ["task_id", "project_id", "work_package_id", "action", "owner", "inputs", "expected_output", "allowed_mutation_class", "protected_objects", "dependencies", "execution_surface", "required_readback", "stop_conditions", "result_refs", "status"]
+  },
+  "artifact": {
+    "types": ["DOCUMENT", "DRAWING", "MODEL_3D", "CAD_BIM", "IMAGE", "VIDEO", "AUDIO", "DATASET", "CODE", "WEB_APP", "PROTOTYPE", "PHYSICAL_SAMPLE", "SPECIFICATION", "TABLE", "DIAGRAM", "MAP_GIS", "PRESENTATION", "PUBLICATION", "PACKAGE_ARCHIVE", "OTHER_CONTROLLED"],
+    "carrier_roles": ["SOURCE_MASTER", "EDITABLE_MASTER", "DERIVATIVE", "EVIDENCE_CARRIER", "PRESENTATION_CARRIER", "DELIVERY_PACKAGE", "REFERENCE_INPUT", "TEMPORARY_WORKING", "PROVENANCE_ARCHIVE"],
+    "states": ["WORKING", "REVIEWABLE", "ACCEPTED_FOR_SCOPE", "BASELINED", "SUPERSEDED", "WITHDRAWN"],
+    "required_fields": ["artifact_id", "project_id", "artifact_type", "carrier_role", "carrier_uri", "native_format", "version_or_revision", "producer", "owner", "represents", "implements", "derived_from", "baseline_ref", "editability_state", "loss_profile", "rights_or_access_state", "target_medium", "readback_refs", "status"]
+  },
+  "loss_profile": ["NO_MATERIAL_LOSS", "EDITABILITY_LOSS", "SEMANTIC_STRUCTURE_LOSS", "PARAMETRIC_LOSS", "GEOMETRY_APPROXIMATION", "COLOR_APPEARANCE_SHIFT", "FONT_TEXT_LOSS", "INTERACTION_STATE_LOSS", "METADATA_PROVENANCE_LOSS", "UNKNOWN_LOSS"],
+  "material_derivative_record": ["UPSTREAM_MASTER_ID", "UPSTREAM_REVISION", "TRANSFORMATION", "MATERIAL_INFORMATION_LOST_OR_BAKED", "TARGET_PURPOSE", "READBACK_REF"],
+  "cross_software_handoff_required_fields": ["upstream_master", "upstream_revision", "downstream_surface", "exchange_format", "editability_retained", "known_loss_or_bake", "protected_properties", "reopen_method", "actual_readback_ref"],
+  "hard_boundaries": ["TASK_DONE_NE_WORK_ACCEPTED", "ARTIFACT_EXISTS_NE_SEMANTIC_SATISFACTION", "LATEST_FILE_NE_CURRENT_AUTHORITY", "EXPORT_SUCCESS_NE_QUALITY_OR_ASSURANCE_PASS", "ARTIFACT_TYPE_NE_SEMANTIC_OBJECT_CLASS", "PRESENTATION_DERIVATIVE_NE_SOURCE_AUTHORITY"],
+  "work_acceptance_requirements": ["REQUIRED_OUTPUTS_EXIST", "SEMANTIC_TARGET_OBJECTS_UPDATED", "REQUIRED_READBACK_COMPLETE", "MATERIAL_ISSUES_RESOLVED_OR_BOUNDED", "MASTER_DERIVATIVE_IDENTITIES_CLEAR", "DOWNSTREAM_DEPENDENCIES_UPDATED", "CLAIM_CEILING_ACCURATE"],
+  "validator_rules": ["WORK-001_OUTCOME_SCOPE_OWNER_ACCEPTANCE_REQUIRED", "WORK-002_TASK_DONE_CANNOT_AUTO_ACCEPT_WORK_PACKAGE", "WORK-003_ACCEPTANCE_REQUIRES_READBACK", "TASK-001_MATERIAL_TASK_HAS_MUTATION_READBACK_PROTECTED_CONTRACT", "ART-001_STABLE_ID_TYPE_ROLE_SOURCE_VERSION_STATUS", "ART-002_NO_SILENT_SEMANTIC_PROMOTION", "ART-003_LATEST_FILE_NOT_CURRENT_WITHOUT_AUTHORITY_BASELINE", "ART-004_EDITABLE_MASTER_REQUIRED_WHEN_DELIVERABLE_REQUIRES_EDITABILITY", "ART-005_DERIVATIVE_RECORDS_UPSTREAM_TRANSFORMATION_LOSS", "ART-006_UNKNOWN_MATERIAL_LOSS_REQUIRES_READBACK_OR_HOLD", "ART-007_PRESENTATION_CANNOT_REWRITE_SOURCE_GEOMETRY_DATA", "ART-008_SUPERSEDED_WITHDRAWN_CANNOT_REMAIN_CURRENT", "HANDOFF-001_MATERIAL_HANDOFF_RECORDS_LOSS_AND_ACTUAL_READBACK", "DELIVERY-001_EXPORT_SUCCESS_CANNOT_GRANT_UNRELATED_CEILINGS"]
+}
