@@ -1,0 +1,71 @@
+{
+  "schema": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+  "status": "DRAFT_GOVERNANCE_EXTENSION",
+  "priority": "P4",
+  "object_plane": "PROJECT",
+  "primary_classes": ["CONTROLLED_VARIABLE", "INTERFACE", "MATERIAL_DEPENDENCY"],
+  "controlled_variable": {
+    "types": ["GEOMETRIC_DATUM", "DIMENSION", "TOLERANCE", "SPATIAL_CLEARANCE", "PERFORMANCE_TARGET", "CAPACITY", "MATERIAL_PROPERTY", "CMF_ROLE", "TYPOGRAPHY_ROLE", "COLOR_TOKEN", "CONTENT_TERM", "NAMING", "STATE_ENUM", "DATA_SCHEMA", "INTERACTION_PARAMETER", "ENVIRONMENTAL_TARGET", "HUMAN_FACTOR_ASSUMPTION", "MAINTENANCE_ENVELOPE", "SCHEDULE_TARGET", "COST_TARGET", "OTHER_CONTROLLED"],
+    "states": ["PROVISIONAL", "COORDINATED", "BASELINED", "CHANGED_REOPENED", "SUPERSEDED"],
+    "consumer_sensitivity": ["LOW", "MATERIAL", "INTERFACE_CRITICAL", "PROMOTION_CRITICAL"],
+    "required_fields": ["variable_id", "project_id", "variable_type", "semantic_name", "definition", "value_or_range", "definition_owner", "change_authority", "source_authority", "consumers", "interfaces", "requirements", "constraints", "evidence_refs", "baseline_ref", "current_revision", "status", "stale_if"]
+  },
+  "interface": {
+    "types": ["PHYSICAL_GEOMETRIC", "MECHANICAL_STRUCTURAL", "ELECTRICAL_DATA", "HYDRAULIC_ENVIRONMENTAL", "HUMAN_ERGONOMIC", "SPATIAL_CIRCULATION", "VISUAL_PERCEPTUAL", "SEMANTIC_CONTENT", "INTERACTION_STATE", "SERVICE_OPERATIONAL", "BRAND_LANGUAGE", "INFORMATION_SCHEMA", "MAINTENANCE_REPLACEMENT", "TEMPORAL_LIFECYCLE", "OTHER_CONTROLLED"],
+    "coupling": ["INFORMATIVE", "DEPENDENT", "RECIPROCAL", "TIGHTLY_COUPLED"],
+    "criticality": ["ROUTINE", "MATERIAL", "MAJOR", "CRITICAL"],
+    "maturity": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"],
+    "disposition": ["OPEN", "BLOCKED", "CLOSED", "OUTSIDE_CLAIM"],
+    "required_fields": ["interface_id", "project_id", "participants", "interface_type", "purpose", "integration_owner", "controlling_authority", "inputs_outputs", "shared_variables", "requirements", "constraints", "coupling_relationship", "criticality", "required_maturity", "maturity", "disposition", "evidence_state", "change_reopen_rule"]
+  },
+  "interface_acceptance_contract": {
+    "required_for": ["MAJOR", "CRITICAL", "LOWER_CRITICALITY_WITH_MATERIAL_SHARED_ACCEPTANCE_QUESTION"],
+    "required_fields": ["acceptance_contract_id", "interface_id", "claim_or_decision_scope", "required_maturity", "participants", "controlling_authority", "shared_variables_and_ranges", "requirements", "constraints", "acceptance_questions", "acceptance_criteria", "test_or_readback_method", "configuration_under_test", "required_evidence", "per_participant_obligations", "allowed_open_items", "claim_ceiling_if_pass", "reopen_triggers", "review_authority", "status"]
+  },
+  "governance_floor": {
+    "ROUTINE_LOW_COUPLING": ["OWNER", "CHANGE_RULE", "REGISTER_ENTRY"],
+    "MATERIAL": ["ACCEPTANCE_QUESTION", "AUTHORITY", "REQUIRED_MATURITY", "READBACK"],
+    "MAJOR": ["ACCEPTANCE_CONTRACT", "INTEGRATED_READBACK", "EXPLICIT_REOPEN_SCOPE"],
+    "CRITICAL": ["FULL_ACCEPTANCE_CONTRACT", "NO_AUTHORITY_CONFLICT", "INTEGRATED_VERIFICATION", "INDEPENDENT_WHOLE_SYSTEM_REVIEW_BEFORE_PROMOTION"],
+    "TIGHTLY_COUPLED": ["ASSEMBLED_OR_INTEGRATED_PROTOTYPE_OR_READBACK"]
+  },
+  "n_way_interface_rule": {
+    "single_object_allowed_if": ["ONE_ACCEPTANCE_QUESTION", "ONE_CONTROLLING_AUTHORITY_MODEL", "ONE_COHERENT_SHARED_VARIABLE_SET", "ONE_INTEGRATED_READBACK"],
+    "decompose_if": ["PAIRWISE_VARIABLES_DIFFER", "PAIRWISE_TOLERANCES_DIFFER", "PAIRWISE_ACCEPTANCE_DIFFERS", "PAIRWISE_AUTHORITY_DIFFERS"]
+  },
+  "material_dependency": {
+    "types": ["DATA", "GEOMETRY", "DECISION", "REQUIREMENT", "EVIDENCE", "AUTHORITY", "CONFIGURATION", "RESOURCE", "SCHEDULE", "CONTENT", "OTHER_CONTROLLED"],
+    "direction": ["SOURCE_TO_CONSUMER", "RECIPROCAL"],
+    "states": ["IDENTIFIED", "DEFINED", "ACTIVE", "SATISFIED_FOR_SCOPE", "STALE", "SUPERSEDED"],
+    "required_fields": ["dependency_id", "project_id", "source_object", "consumer_object", "dependency_type", "direction", "required_condition", "owner", "criticality", "current_disposition", "stale_if", "readback_route", "status"]
+  },
+  "dependency_upgrade_to_interface_if": ["BILATERAL_MATERIAL_CONSTRAINT", "SHARED_VARIABLE_COORDINATION", "RELATIONSHIP_SPECIFIC_TOLERANCE", "INDEPENDENT_ACCEPTANCE_BEHAVIOR", "INTEGRATED_EXERCISE_REQUIRED"],
+  "change_propagation_chain": ["CHANGED_OBJECT", "REGISTERED_CONSUMERS", "AFFECTED_INTERFACE_OR_DEPENDENCY", "AFFECTED_ARTIFACT", "AFFECTED_DECISION", "AFFECTED_ASSURANCE", "AFFECTED_GATE_OR_PROMOTION"],
+  "hard_boundaries": [
+    "SHARED_VARIABLE_NE_INTERFACE_NE_DEPENDENCY",
+    "DISCIPLINE_NAME_NOT_INTERFACE_TYPE",
+    "MATURITY_NE_DISPOSITION",
+    "COUPLING_NE_CRITICALITY",
+    "VERIFIED_INTERFACE_DOES_NOT_IMPLY_FIELD_OR_PROFESSIONAL_PROOF",
+    "RUNTIME_REGISTER_DOES_NOT_REPLACE_PROJECT_OBJECT_IDENTITY"
+  ],
+  "validator_rules": [
+    "VAR-001_ONE_EFFECTIVE_CHANGE_AUTHORITY_UNLESS_EXPLICIT_JOINT_CONTRACT",
+    "VAR-002_MATERIAL_VARIABLE_HAS_REGISTERED_CONSUMERS",
+    "VAR-003_BASELINED_VARIABLE_CHANGE_TRIGGERS_REOPEN_ANALYSIS",
+    "VAR-004_UNIT_TOLERANCE_CONDITIONS_PRESENT_WHERE_MATERIAL",
+    "IFC-001_INTERFACE_HAS_PARTICIPANTS_AND_REQUIRED_INTEGRATION_OWNER",
+    "IFC-002_MATURITY_AND_DISPOSITION_INDEPENDENT",
+    "IFC-003_CLOSED_REQUIRES_MATURITY_GTE_REQUIRED_MATURITY",
+    "IFC-004_MAJOR_CRITICAL_REQUIRES_ACCEPTANCE_CONTRACT",
+    "IFC-005_TIGHTLY_COUPLED_REQUIRES_INTEGRATED_READBACK",
+    "IFC-006_AUTHORITY_CONFLICT_BLOCKS_CLOSURE_AND_PROMOTION",
+    "IFC-007_VERIFIED_CANNOT_EXCEED_EVIDENCE_AND_CLAIM_CEILING",
+    "IFC-008_N_WAY_INTERFACE_JUSTIFY_SHARED_CONTRACT_OR_DECOMPOSE",
+    "DEP-001_DEPENDENCY_HAS_SOURCE_CONSUMER_CONDITION_OWNER_STALE_RULE",
+    "DEP-002_BILATERAL_SHARED_ACCEPTANCE_UPGRADES_TO_INTERFACE",
+    "REG-001_RUNTIME_REGISTERS_REFERENCE_PROJECT_OBJECTS_NOT_REPLACE_IDENTITIES",
+    "PROP-001_MATERIAL_CHANGE_PROPAGATES_THROUGH_CONSUMERS_INTERFACES_ASSURANCE",
+    "PROP-002_UNKNOWN_MATERIAL_BLAST_RADIUS_BLOCKS_CLOSURE_OR_EXPANDS_INVESTIGATION"
+  ]
+}
