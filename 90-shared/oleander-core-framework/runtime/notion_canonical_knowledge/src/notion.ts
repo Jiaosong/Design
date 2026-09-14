@@ -1,4 +1,5 @@
 import {
+  FRAMEWORK_TYPES,
   FIELDS,
   MAX_UNKNOWN_BLOCK_FETCHES,
   NOTION_MAX_FETCH_ATTEMPTS,
@@ -251,6 +252,23 @@ export interface GovernanceScalarUpdates {
   relation_state?: string | null;
 }
 
+export interface GraphMutationUpdates {
+  content_level?: string;
+  knowledge_role?: string;
+  framework_type?: string | null;
+  primary_domain_ids?: string[];
+  related_domain_ids?: string[];
+  canonical_parent_ids?: string[];
+  canonical_children_ids?: string[];
+  semantic_related_ids?: string[];
+  source_relation_ids?: string[];
+  method_relation_ids?: string[];
+  primary_project_ids?: string[];
+  related_project_ids?: string[];
+  replacement_ids?: string[];
+  replaced_document_ids?: string[];
+}
+
 export interface AcademicPageInput {
   title: string;
   canonical_id: string;
@@ -303,6 +321,31 @@ const GOVERNANCE_FIELDS = {
 
 const VALID_GOVERNANCE_STATES = new Set(["ACTIVE", "ARCHIVED", "HOLD", "LEGACY", "REVIEW"]);
 const VALID_RELATION_STATES = new Set(["REVIEW", "VALID"]);
+const VALID_CONTENT_LEVELS = new Set([
+  "L4｜Framework",
+  "L4｜Integrating Framework / Cluster",
+  "L5｜Knowledge Object",
+  "L6｜Evidence / Case",
+  "L6｜Source / Evidence / Case",
+  "L7｜Practice / Output",
+]);
+const VALID_KNOWLEDGE_ROLES = new Set(["INDEX", "THEORY", "METHOD", "TOOL", "SOURCE", "EVIDENCE", "CASE", "PRACTICE"]);
+const VALID_FRAMEWORK_TYPES = new Set<string>(FRAMEWORK_TYPES);
+
+function levelNumber(value: string | null | undefined): number | null {
+  const match = value?.match(/^L(\d)/);
+  return match ? Number(match[1]) : null;
+}
+
+export function validateLevelRoleCompatibility(level: string | null | undefined, role: string | null | undefined): boolean {
+  const number = levelNumber(level);
+  if (number === null || !role) return false;
+  if (number === 4) return ["INDEX", "THEORY", "METHOD"].includes(role);
+  if (number === 5) return ["INDEX", "THEORY", "METHOD", "TOOL"].includes(role);
+  if (number === 6) return ["SOURCE", "EVIDENCE", "CASE"].includes(role);
+  if (number === 7) return role === "PRACTICE";
+  return false;
+}
 
 function propertyMutation(property: Record<string, unknown> | undefined, value: string | null): Record<string, unknown> {
   if (!property || typeof property.type !== "string") throw new Error("Target Notion property is missing or has no type");
@@ -374,6 +417,97 @@ export async function updatePageGovernanceFields(
   });
 }
 
+const GRAPH_RELATION_FIELDS = {
+  primary_domain_ids: FIELDS.primaryDomain,
+  related_domain_ids: FIELDS.relatedDomains,
+  canonical_parent_ids: FIELDS.canonicalParent,
+  canonical_children_ids: FIELDS.canonicalChildren,
+  semantic_related_ids: FIELDS.semanticRelated,
+  source_relation_ids: FIELDS.sourceRelations,
+  method_relation_ids: FIELDS.methodRelations,
+  primary_project_ids: FIELDS.primaryProject,
+  related_project_ids: FIELDS.relatedProjects,
+  replacement_ids: FIELDS.replacements,
+  replaced_document_ids: FIELDS.replacedDocuments,
+} as const;
+
+export function buildGraphPropertyPatch(
+  page: NotionPage,
+  updates: GraphMutationUpdates,
+  relationState: "REVIEW" | "VALID" = "REVIEW",
+): Record<string, Record<string, unknown>> {
+  const properties = page.properties ?? {};
+  const projectedLevel = updates.content_level ?? propertyTextForMutation(properties[FIELDS.contentLevel]);
+  const projectedRole = updates.knowledge_role ?? propertyTextForMutation(properties[FIELDS.knowledgeRole]);
+  if (updates.content_level && !VALID_CONTENT_LEVELS.has(updates.content_level)) throw new Error(`Invalid content_level: ${updates.content_level}`);
+  if (updates.knowledge_role && !VALID_KNOWLEDGE_ROLES.has(updates.knowledge_role)) throw new Error(`Invalid knowledge_role: ${updates.knowledge_role}`);
+  if (updates.framework_type !== undefined && updates.framework_type !== null && !VALID_FRAMEWORK_TYPES.has(updates.framework_type)) {
+    throw new Error(`Invalid framework_type: ${updates.framework_type}`);
+  }
+  if (!validateLevelRoleCompatibility(projectedLevel, projectedRole)) {
+    throw new Error(`Incompatible Level×Role: ${projectedLevel ?? "UNSET"} / ${projectedRole ?? "UNSET"}`);
+  }
+  if (updates.primary_domain_ids && updates.primary_domain_ids.length > 1) throw new Error("primary_domain_ids must contain at most one target");
+  if (updates.primary_project_ids && updates.primary_project_ids.length > 1) throw new Error("primary_project_ids must contain at most one target");
+
+  const patch: Record<string, Record<string, unknown>> = {
+    [FIELDS.relationState]: propertyMutation(properties[FIELDS.relationState], relationState),
+  };
+  if (updates.content_level !== undefined) patch[FIELDS.contentLevel] = propertyMutation(properties[FIELDS.contentLevel], updates.content_level);
+  if (updates.knowledge_role !== undefined) patch[FIELDS.knowledgeRole] = propertyMutation(properties[FIELDS.knowledgeRole], updates.knowledge_role);
+  if (updates.framework_type !== undefined) {
+    if (!String(projectedLevel ?? "").startsWith("L4") && updates.framework_type !== null) {
+      throw new Error("framework_type requires projected L4 level");
+    }
+    patch[FIELDS.frameworkType] = propertyMutation(properties[FIELDS.frameworkType], updates.framework_type);
+  }
+  for (const [key, field] of Object.entries(GRAPH_RELATION_FIELDS) as Array<[keyof typeof GRAPH_RELATION_FIELDS, string]>) {
+    const value = updates[key];
+    if (value === undefined) continue;
+    if (!Array.isArray(value) || value.some((id) => typeof id !== "string" || !id.trim())) throw new Error(`Invalid ${key}`);
+    patch[field] = relationMutation(properties[field], [...new Set(value.map((id) => id.trim()))]);
+  }
+  if (Object.keys(patch).length === 1) throw new Error("No graph updates supplied");
+  return patch;
+}
+
+function propertyTextForMutation(property: Record<string, unknown> | undefined): string | null {
+  if (!property || typeof property.type !== "string") return null;
+  if (property.type === "select") {
+    const value = property.select;
+    return value && typeof value === "object" && typeof (value as Record<string, unknown>).name === "string"
+      ? (value as Record<string, unknown>).name as string
+      : null;
+  }
+  if (property.type === "status") {
+    const value = property.status;
+    return value && typeof value === "object" && typeof (value as Record<string, unknown>).name === "string"
+      ? (value as Record<string, unknown>).name as string
+      : null;
+  }
+  if (property.type === "rich_text") {
+    const parts = Array.isArray(property.rich_text) ? property.rich_text : [];
+    return parts.map((item) => item && typeof item === "object" && typeof (item as Record<string, unknown>).plain_text === "string"
+      ? (item as Record<string, unknown>).plain_text as string
+      : "").join("") || null;
+  }
+  return null;
+}
+
+export async function updatePageGraphFields(
+  env: Env,
+  pageId: string,
+  updates: GraphMutationUpdates,
+  relationState: "REVIEW" | "VALID" = "REVIEW",
+): Promise<NotionPage> {
+  const before = await fetchPage(env, pageId);
+  const properties = buildGraphPropertyPatch(before, updates, relationState);
+  return notionFetch<NotionPage>(env, `/v1/pages/${encodeURIComponent(pageId)}`, {
+    method: "PATCH",
+    body: JSON.stringify({ properties }),
+  });
+}
+
 export async function updatePageMarkdownContent(
   env: Env,
   pageId: string,
@@ -395,6 +529,96 @@ export async function updatePageMarkdownContent(
 
 export async function retrieveNotesDataSource(env: Env): Promise<NotionDataSource> {
   return notionFetch<NotionDataSource>(env, `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}`);
+}
+
+export type FrameworkTypeSchemaState = {
+  field_name: string;
+  state: "MISSING" | "READY" | "WRONG_TYPE" | "OPTIONS_INCOMPLETE";
+  property_id: string | null;
+  property_type: string | null;
+  option_names: string[];
+  missing_options: string[];
+};
+
+export function inspectFrameworkTypeSchema(dataSource: NotionDataSource): FrameworkTypeSchemaState {
+  const property = dataSource.properties?.[FIELDS.frameworkType];
+  if (!property) {
+    return {
+      field_name: FIELDS.frameworkType,
+      state: "MISSING",
+      property_id: null,
+      property_type: null,
+      option_names: [],
+      missing_options: [...FRAMEWORK_TYPES],
+    };
+  }
+  const propertyType = typeof property.type === "string" ? property.type : null;
+  const propertyId = typeof property.id === "string" ? property.id : null;
+  if (propertyType !== "select") {
+    return {
+      field_name: FIELDS.frameworkType,
+      state: "WRONG_TYPE",
+      property_id: propertyId,
+      property_type: propertyType,
+      option_names: [],
+      missing_options: [...FRAMEWORK_TYPES],
+    };
+  }
+  const select = property.select;
+  const options = select && typeof select === "object" && Array.isArray((select as Record<string, unknown>).options)
+    ? (select as Record<string, unknown>).options as Array<Record<string, unknown>>
+    : [];
+  const optionNames = options
+    .map((option) => typeof option.name === "string" ? option.name : null)
+    .filter((name): name is string => Boolean(name));
+  const missing = FRAMEWORK_TYPES.filter((name) => !optionNames.includes(name));
+  return {
+    field_name: FIELDS.frameworkType,
+    state: missing.length ? "OPTIONS_INCOMPLETE" : "READY",
+    property_id: propertyId,
+    property_type: propertyType,
+    option_names: optionNames,
+    missing_options: [...missing],
+  };
+}
+
+export async function ensureFrameworkTypeSchema(env: Env): Promise<{
+  changed: boolean;
+  before: FrameworkTypeSchemaState;
+  after: FrameworkTypeSchemaState;
+}> {
+  const beforeSource = await retrieveNotesDataSource(env);
+  const before = inspectFrameworkTypeSchema(beforeSource);
+  if (before.state === "WRONG_TYPE") throw new Error(`Framework Type schema has wrong type: ${before.property_type ?? "UNKNOWN"}`);
+  if (before.state === "READY") return { changed: false, before, after: before };
+
+  const property = beforeSource.properties?.[FIELDS.frameworkType];
+  const existingOptions = property?.type === "select" && property.select && typeof property.select === "object"
+    && Array.isArray((property.select as Record<string, unknown>).options)
+    ? (property.select as Record<string, unknown>).options as Array<Record<string, unknown>>
+    : [];
+  const preservedOptions = existingOptions.map((option) => {
+    const id = typeof option.id === "string" ? option.id : null;
+    const name = typeof option.name === "string" ? option.name : null;
+    return id ? { id } : name ? { name } : null;
+  }).filter((option): option is { id: string } | { name: string } => option !== null);
+  const existingNames = new Set(existingOptions.map((option) => typeof option.name === "string" ? option.name : "").filter(Boolean));
+  const newOptions = FRAMEWORK_TYPES.filter((name) => !existingNames.has(name)).map((name) => ({ name }));
+  await notionFetch<NotionDataSource>(env, `/v1/data_sources/${encodeURIComponent(env.NOTION_NOTES_DATA_SOURCE_ID)}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      properties: {
+        [FIELDS.frameworkType]: {
+          type: "select",
+          select: { options: [...preservedOptions, ...newOptions] },
+        },
+      },
+    }),
+  });
+  const afterSource = await retrieveNotesDataSource(env);
+  const after = inspectFrameworkTypeSchema(afterSource);
+  if (after.state !== "READY") throw new Error(`Framework Type schema ensure readback failed: ${after.state}`);
+  return { changed: true, before, after };
 }
 
 export async function createAcademicPage(env: Env, input: AcademicPageInput): Promise<NotionPage> {

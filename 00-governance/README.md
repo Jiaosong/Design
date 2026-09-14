@@ -6,7 +6,9 @@ Owner: 刘旋 / OLEANDER／织作
 
 ## Current architecture authority
 
-- Knowledge axis: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Framework / Cluster → L5 Knowledge Object / Index → L6 Evidence / Case → L7 Practice / Output`.
+- Knowledge Level axis: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Integrating Framework / Cluster → L5 Knowledge Object → L6 Source / Evidence / Case → L7 Practice / Output`.
+- Knowledge Role is independent from Level: `INDEX / THEORY / METHOD / TOOL / SOURCE / EVIDENCE / CASE / PRACTICE`. `FRAMEWORK` is not a Knowledge Role and `INDEX` is not part of the L5 level name.
+- L4 objects additionally declare a functional `Framework Type` such as `NAVIGATION_MAP / CONCEPTUAL_MODEL / METHOD_FAMILY / PROCESS_ORCHESTRATION / PROFESSIONAL_SYSTEM_MAP / TYPOLOGY_FRAMEWORK / APPLICATION_FRAMEWORK / DESIGN_LANGUAGE_SYSTEM / STRATEGY_FRAMEWORK / EVALUATION_FRAMEWORK / HISTORICAL_COMPARATIVE_SYNTHESIS` when resolved. Domain / Topic remains a separate subject axis.
 - Application Mapping: `Business / Culture / IP / Spatial`, with `B01–B04 / CU01–CU04 / IP01–IP04 / SP01–SP04`. These codes express where knowledge or project work is applied; they are not a knowledge taxonomy, Project IDs, or delivery-priority labels.
 - Project axis: `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`.
 - Case axis: `C01 / C02 / C03 / C04 / C05+`; a bare `Cnn` is a Canonical Case ID and must not substitute for a Project ID.
@@ -120,6 +122,18 @@ Canonical system: [`artifact-review-system-v1.0.md`](artifact-review-system-v1.0
 当空间 / 建筑 / built-environment 模型声明完整高写实、近距离构造完整、construction-aware、near-as-built 或 digital-twin-ready 时，AR-S02 之外还必须触发 `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`。该 Gate 使用 `BA0–BA4` 描述 built-asset representation maturity，并独立检查任务范围内 architecture / structure / MEP system coverage、连接/支撑、排水、检修、细节 carrier、缺陷真值和多距离 readback。
 
 `BA0–BA4` 不等于本 Project Flow 的执行/render `FID0–FID3`，也不等于外部 BIM LOD。Beauty render、PBR、对象/面数、可打开、CI PASS 或 BIM/LOD 标签均不能单独升级 built-asset acceptance；FIELD / engineering / code / fabrication / commissioning authority 仍保持独立。
+
+## Complex Project Master Runtime v1.0
+
+Canonical system: [`complex-project-master-runtime-v1.0.md`](complex-project-master-runtime-v1.0.md)
+
+这是 OLEANDER 复杂项目的**薄 Master Runtime**：位于唯一 Current Authority 之下、Design Intelligence / Cross-Disciplinary Integration / Canonical Project Flow / Control Plane 等现有运行模块之上。它只负责跨模块 `Invocation / Precedence / State Propagation / Handoff / Claim Ceiling / Promotion Eligibility / G9 Re-entry / Version-Supersession`，不复制各模块正文，也不创建第二套 L0–L7、P0–P4、Gate、Evidence 或 Discipline taxonomy。
+
+机器运行状态复用现有 `00-governance/control-plane/orchestration.schema.json` 的 `MASTER_RUNTIME_STATE`，由 `orchestrator.py master-runtime` 检查。状态可到 `RUNNABLE / READY_FOR_HUMAN_DECISION`，但机器不得自动授予 `DESIGN KEEP` 或 `PROMOTED`。
+
+复杂项目主链统一为：
+
+`Resolve Authority → Route Current Knowledge → Compile Design Intelligence → Resolve Integration Trigger → Execute / Prototype → Close Triggered Reviews → Integration Readback → Independent Whole-System Design Decision → Persist when required → Human Promotion Decision → G9 bounded re-entry`。
 
 ## Design Intelligence Routing & Review System v1.0
 

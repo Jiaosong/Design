@@ -9,7 +9,7 @@
 
 OLEANDER must keep four concerns separate:
 
-1. **Knowledge Architecture** — where reusable knowledge belongs: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Framework / Cluster → L5 Knowledge Object / Index → L6 Evidence / Case → L7 Practice / Output`.
+1. **Knowledge Architecture** — where reusable knowledge belongs. Level is only granularity/aggregation: `L0 System → L1 Branch → L2 Domain → L3 Topic → L4 Integrating Framework / Cluster → L5 Knowledge Object → L6 Source / Evidence / Case → L7 Practice / Output`. Knowledge Role and, for L4, Framework Type are independent axes.
 2. **Project Architecture** — where current work belongs: `P0 Portfolio → P1 Program → P2 Project → P3 Workstream → P4 Validation`.
 3. **Application Mapping** — where knowledge is being applied: Business / Culture / IP / Spatial.
 4. **Execution & Review Flow** — how a current task reads knowledge, develops a design, validates it and promotes or rejects the result.
@@ -32,13 +32,17 @@ Design Intelligence routing makes the `Read / Frame / Decide` portions explicit 
 
 Stores reusable design knowledge, methods, sources, evidence, cases and practice. Existing Notion/GitHub identity and relations remain authoritative.
 
-Typical roles include:
+Typical Knowledge Roles include:
 
-- THEORY / Framework — explanatory models and professional design knowledge;
+- INDEX — routing / grouping / relation visibility;
+- THEORY — explanatory models and professional design knowledge;
 - METHOD — reusable procedures and decision methods;
+- TOOL — bounded operators / templates / execution aids used by methods;
 - SOURCE / EVIDENCE — factual or professional support;
 - CASE — precedent or case material;
-- PRACTICE / OUTPUT — exercised or project-derived application.
+- PRACTICE — exercised or project-derived application at the L7 Practice / Output level.
+
+`FRAMEWORK` is not a Knowledge Role. A true L4 object separately declares a functional Framework Type; `INDEX` is a Role and is not embedded in the L5 level name.
 
 Do not convert these roles into project stages. A METHOD may be called at several stages; a CASE may inform framing or critique; PRACTICE is not automatically authority for a new project.
 

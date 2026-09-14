@@ -1,0 +1,989 @@
+{
+  "version": "oleander-knowledge-graph-migration-batch/v1",
+  "generatedAt": "2026-09-14T07:26:22.907Z",
+  "source": "OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json",
+  "selectionPolicy": "participatesInCurrentHierarchy && HIGH && approved actionable classification mutation; excludes PROVENANCE/MEDIUM/HOLD/UNRESOLVED",
+  "count": 49,
+  "nodes": [
+    {
+      "sequence": 1,
+      "pageId": "3ccb86be-5c47-816a-bab9-d1e67a4ffbed",
+      "canonicalId": "FW-CG-3D-PRODUCTION-001",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文把 Modeling、DCC、Surface、Materials、Rendering、Technical Art、Procedural 与 Toolchain 作为独立生产责任组织成稳定 stack，并给出 worker 选择与 no-duplication 边界。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 2,
+      "pageId": "3dab86be-5c47-81a1-961c-d067435b442c",
+      "canonicalId": "IDX-ARCH-RESEARCH-PRACTICE-MAP-001",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明确声明只承担 Current/Support/Legacy 的建筑研究方向入口与 owner 路由，不复制专题正文或替代专业系统。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 3,
+      "pageId": "3a8b86be-5c47-818a-816e-cd0e59d8be86",
+      "canonicalId": "KN-THEORY-IA-001",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "CONCEPTUAL_MODEL"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文建立 Content Object×Actor×Task×Relation×Metadata×Navigation×Search×State×Permission×Governance×Evidence 的跨对象模型，并区分 taxonomy、relation 与 retrieval 及其失败解释。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 4,
+      "pageId": "3a8b86be-5c47-81fa-9e8f-ebd0e0f80aa0",
+      "canonicalId": "IDX-DESIGN-METHOD-TOOLBOX-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "METHOD_FAMILY"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明确把页面改为导航 INDEX，以决策问题、证据类型与风险选择/路由多种独立方法，并拒绝重复方法正文和固定阶段式工具清单。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 5,
+      "pageId": "3a8b86be-5c47-81f9-94e5-d7b21e9b7bed",
+      "canonicalId": "KN-THEORY-SYSTEMS-THINKING-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文是一套自洽的系统思维理论对象，围绕 boundary、stock/flow、delay、feedback 与 leverage 展开，其子项是同一理论的内部概念而非需要 L4 协调的独立知识 owner。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 6,
+      "pageId": "3a8b86be-5c47-81ec-b94a-dcca8729b697",
+      "canonicalId": "KN-THEORY-PRODUCT-IDENTITY-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "DESIGN_LANGUAGE_SYSTEM"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文在产品家族层整合 Structural、Geometric、Functional Semantics、CMF、Interaction、Graphic/VI 与 variation envelope，并明确 PI 对 Form Language、Design Language、VI 等独立系统只做跨产品连续性检查。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 7,
+      "pageId": "3a8b86be-5c47-81bd-9894-c3ed3dbaad39",
+      "canonicalId": "KN-THEORY-SUSTAINABLE-DESIGN-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "CONCEPTUAL_MODEL"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文以功能单位、系统边界、生命周期与 burden shifting 作为跨产品/服务/数字/建筑的稳定关系模型，并把 LCA、CMF筛选、合规和工程验证委派给独立 owner。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 8,
+      "pageId": "3a8b86be-5c47-81a0-b072-f6114afb7348",
+      "canonicalId": "KN-THEORY-PRODUCT-LIFECYCLE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文完整解释一个产品生命周期知识对象的状态、installed base、部件寿命、维修、退出与兼容关系，但这些是同一理论的组成部分而非多个独立 L5 owner 的上位整合。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 9,
+      "pageId": "3a7b86be-5c47-81dc-80ea-f84365d040f7",
+      "canonicalId": "IDX-ACCESSIBILITY-INCLUSIVE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明确只负责 Digital Accessibility、Physical Accessibility、Rights/Accommodation 与 Inclusive Design 四线分流及 evidence routing，并禁止跨媒介/法域互相代替 authority。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 10,
+      "pageId": "3a7b86be-5c47-810c-8a74-e97124df7fbe",
+      "canonicalId": "MTH-RESEARCH-TOOLBOX-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "METHOD",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "METHOD_FAMILY"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文以 Decision Question、六个选择维度、方法族、sampling、triangulation/组合策略、高风险 escalation 与 evidence handoff 来选择和编排多个独立研究方法。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 11,
+      "pageId": "3adb86be-5c47-81d5-b53c-ff958e6ce3d6",
+      "canonicalId": "KN-DESIGN-HIST-009",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文主要提供跨生产、组织、市场、地区、媒介和生命周期的 historiography contract、比较矩阵、source strategy 与 research clusters，而没有提出可与 rival explanation 对抗的统一历史因果理论。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 12,
+      "pageId": "3adb86be-5c47-8192-b864-dc2b95744af3",
+      "canonicalId": "KN-DESIGN-HIST-012",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文以对象证据 contract、生产/材料/使用/制度/交换/现代化比较轴和多对象 research clusters 组织中国设计史材料，主价值是比较与史料路由而非单一解释性 thesis。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 13,
+      "pageId": "3adb86be-5c47-8190-a287-c630631ece6b",
+      "canonicalId": "KN-FINEART-HIST-010",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文围绕 medium、making、viewing、institution、region 与 canon 提供对象级证据 contract、比较矩阵和 source strategy，承担跨对象史学组织而非统一因果理论。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 14,
+      "pageId": "3adb86be-5c47-8186-a3f9-da4a14229a22",
+      "canonicalId": "KN-ARCH-HIST-008",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文用工业化、住房/城市、机构、区域现代性、技术环境和 critique 等维度组织跨地区现代建筑对象，并将教材分期降为检索骨架，没有把一个历史解释模型作为主 owner。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 15,
+      "pageId": "3adb86be-5c47-8169-a69c-f37e49c15820",
+      "canonicalId": "KN-ART-HIST-011",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文通过 institution、medium、transmission、region/group、function 与 living heritage 比较不同艺术对象/实践，并以 source-type 与 later-classification 边界组织检索，主功能是史学综合路由。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 16,
+      "pageId": "3adb86be-5c47-8124-8e40-d8d60132275a",
+      "canonicalId": "IDX-CN-MATERIAL-COMPLIANCE-008",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文按产品身份/使用场景分流多类中国材料标准、版本切换、最小证据包与项目阶段，并明确 K08 只是法规/标准 routing INDEX、最终 authority 回到对应 Source。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 17,
+      "pageId": "3adb86be-5c47-811c-a866-fe1472194883",
+      "canonicalId": "IDX-CMF-PRODUCT-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文把 design need→产品类→制造商/SKU→供应/文件→系统适配→RFQ/样品/送审→现场验收串成专业证据路由，并明确目录/产品页不能替代系统批准与项目现实。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 18,
+      "pageId": "3acb86be-5c47-81f5-b385-f53107f7cf45",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-CULTURE-006",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "TYPOLOGY_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明确分出 Performance/Music、Museum/Gallery、Library/Knowledge、Sport/Event 四个子类型，以共用 mission/program/audience/operator/backstage/system/evidence 轴比较并路由各自专项要求。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 19,
+      "pageId": "3acb86be-5c47-81f1-a9f3-d5765ea4c28c",
+      "canonicalId": "IDX-ARCH-STRUCT-SAFETY-005",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body separates Structure/Fire/Civil Defense/Accessibility into independent responsibility tracks and only coordinates interfaces/evidence closure.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 20,
+      "pageId": "3acb86be-5c47-81ed-8d1a-e801005072f1",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-IND-008",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one industrial-typology procedure from process/hazard/equipment through utilities and validation, so its sections are one type-specific object rather than peer L5 owners.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 21,
+      "pageId": "3acb86be-5c47-81df-bff4-f6a365a7eafd",
+      "canonicalId": "KN-ARCH-HIST-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body organizes many periods/regions/institutions/materials into comparison clusters and source routes while explicitly withholding a single unified explanatory conclusion.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 22,
+      "pageId": "3acb86be-5c47-81dc-94c1-efc67df8eb95",
+      "canonicalId": "IDX-ARCH-MEP-004",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body routes six independently meaningful MEP tracks and defines their architectural interfaces, commissioning evidence and closure boundaries.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 23,
+      "pageId": "3acb86be-5c47-81c9-8f0d-fbf633619d46",
+      "canonicalId": "KN-ARCH-ANALYSIS-005",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "METHOD_FAMILY"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body distinguishes typology, urban morphology and space syntax as separate analysis tracks and routes question→representation→method→evidence→decision while delegating formulas/software specifics downward.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 24,
+      "pageId": "3acb86be-5c47-81bb-9ff7-c2388d23ab79",
+      "canonicalId": "KN-ARCH-TECT-004",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body explicitly says it only owns tectonic theory translation and develops one load–material–joint–sequence–tolerance–labor–maintenance explanatory object rather than coordinating peer knowledge owners.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 25,
+      "pageId": "3acb86be-5c47-81bb-8381-ebfeb71f3ad1",
+      "canonicalId": "KN-ARCH-HERITAGE-007",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body orchestrates legal status, significance, condition/risk, stakeholders, intervention, reuse, specialist evidence, permission and monitoring as a reusable heritage decision flow with explicit transfer limits.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 26,
+      "pageId": "3acb86be-5c47-81aa-9f26-f1039f5b3fea",
+      "canonicalId": "FW-ARCH-TYPOLOGY-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "TYPOLOGY_FRAMEWORK"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body has eight explicit type entry points plus a shared actor/task/flow/system/operations/evidence contract, making its irreducible function cross-typology routing rather than one explanatory thesis.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 27,
+      "pageId": "3acb86be-5c47-81a0-9b15-e2e0d74b559e",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-RES-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is a single residential-typology procedure centered on household/task/privacy/service/change evidence, not an integrator of multiple independent child knowledge objects.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 28,
+      "pageId": "3acb86be-5c47-817c-93c5-dd590a3b45ed",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-TRANSIT-007",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body gives one transit-typology analysis/validation procedure across passenger states, queue/transfer, abnormal operations and information systems rather than coordinating peer type objects.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 29,
+      "pageId": "3acb86be-5c47-816e-9116-cc04a006421b",
+      "canonicalId": "IDX-ARCH-SITE-003",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body coordinates boundary/rights, survey, geotech, planning, climate/ecology, mobility and utilities as independent evidence/professional packages with authority gates.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 30,
+      "pageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+      "canonicalId": "IDX-ARCH-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body is explicitly a navigation/governance index routing the architecture corpus across L0–L7, G0–G9, professional topics, typologies, evidence and tools while disclaiming substantive numeric ownership.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 31,
+      "pageId": "3acb86be-5c47-815b-a4c5-ec486f26b754",
+      "canonicalId": "IDX-STRUCT-LIGHTWEIGHT-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "METHOD_FAMILY"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body says it is a research router across independent material, structural/optimization and manufacturing/integration routes, with cross-case trade-off logic and downstream verification.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 32,
+      "pageId": "3acb86be-5c47-8156-9f4b-cae54ac29063",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-COM-003",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one commercial-typology procedure covering actors, leasing unit, customer/backstage flow, capacity/economics, evidence and tenant-change stress rather than a multi-object framework.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 33,
+      "pageId": "3acb86be-5c47-8142-8595-e61a613b7a1c",
+      "canonicalId": "IDX-ARCH-SPECIALTY-008",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body separates acoustics, smart-building/data, corrosion/durability and roof/ancillary into independent specialty tracks and owns their shared boundary/interface/evidence routing contract rather than their specialist parameters.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 34,
+      "pageId": "3acb86be-5c47-8131-a0af-c52bf9227c7a",
+      "canonicalId": "IDX-ARCH-TYPOLOGY-EDU-005",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Body is one education-typology procedure linking learner/pedagogy/time/safeguarding/learning units/environment/community use and evidence, not a peer-object integrator.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 35,
+      "pageId": "3acb86be-5c47-8114-a394-c4919f539360",
+      "canonicalId": "KN-ARCH-EQUITY-006",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body converts rights/law, accessibility, participation governance, equity distribution and feedback/appeal into a repeatable architectural decision chain while keeping underlying theory/method owners separate.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 36,
+      "pageId": "3acb86be-5c47-8106-a6a5-dac1f042e902",
+      "canonicalId": "IDX-ARCH-COMPLIANCE-SUST-002",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body explicitly routes legal/approval, technical compliance, environmental/health and sustainability-target responsibilities to distinct source/project evidence and closure paths.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 37,
+      "pageId": "3b5b86be-5c47-81f3-a5da-e1f7fe1d2ba7",
+      "canonicalId": "KN-FINEART-HIST-014",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Body is a global comparative survey/routing structure across media, periods, institutions and regional topic booklets and explicitly frames its visual-analysis card as non-validated method, so navigation/synthesis dominates theory.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 38,
+      "pageId": "3b5b86be-5c47-8184-bb74-e68e35ffd1f3",
+      "canonicalId": "KN-ARCH-HIST-013",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文把多个区域、时期与独立 L5/L6 历史对象放入共同比较维度和补全路由，并明确六项检查不是通用因果模型，因此不可约价值是跨对象史学组织而非自有解释理论。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 39,
+      "pageId": "3b5b86be-5c47-8174-8e03-d1325bdf7416",
+      "canonicalId": "KN-ARTSYS-HIST-015",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文以仪式、赞助、公共文化、学院、博物馆、媒介和平台等并行制度板块组织多个独立专题，并将具体结论下沉 L5/L6，主要承担比较与研究入口而非单一解释命题。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 40,
+      "pageId": "3b5b86be-5c47-812d-b3f3-c6eac83bce92",
+      "canonicalId": "KN-DESIGN-HIST-016",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "HISTORICAL_COMPARATIVE_SYNTHESIS"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "正文用跨区域、生产、媒介、制度、服务与数字系统的问题轴组织多组独立历史对象并维护区域补全队列，且明确分析卡不是普遍定义或评分理论。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 41,
+      "pageId": "3b5b86be-5c47-8102-b5e3-f2c73d6345f8",
+      "canonicalId": "IDX-KG-EXTERNAL-ASSIM-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文自称“执行索引”，持续把多个外部知识库路由到不同 Canonical owners、状态、缺口与下一队列，并明确不复制外部库为新正文。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 42,
+      "pageId": "3b9b86be-5c47-81e2-a2a1-c0d0a2e23d42",
+      "canonicalId": "FW-DESIGN-FORM-LANGUAGE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "DESIGN_LANGUAGE_SYSTEM"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文显式把 Product Semantics 与 Design Language Method 两个独立 L5 owner 通过 task/body/action/geometry/CMF/semantics/family/production/evidence 关系模型整合，并保留跨对象验证与转译边界。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 43,
+      "pageId": "3b9b86be-5c47-8190-8db4-c6ba1967b87c",
+      "canonicalId": "FW-BRAND-STRATEGY-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "STRATEGY_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文把 audience、offer、alternative、value、position、architecture、experience、identity、governance 与 measurement 等独立战略责任通过证据和 trade-off 关系连接，并明确模型选择与下位方法边界。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 44,
+      "pageId": "3b9b86be-5c47-8103-a87b-f76480c601f4",
+      "canonicalId": "FW-SERVICE-DESIGN-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "正文主要解释一个服务系统对象中 actor、journey、front/backstage、capacity、failure/recovery、rights 与 measurement 的统一关系，Journey/Blueprint/Actor Map/Prototype 是内部工具而非独立 L5 owners 的 L4 编排。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 45,
+      "pageId": "3bbb86be-5c47-8130-8e3d-ed7e199570cb",
+      "canonicalId": "FW-DESIGN-THEORY-HISTORY-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明确是 Current Registry Framework，只组织全球/中国设计史、艺术视觉文化与理论对象的结构身份和入口，并把对象级事实与理论下沉到独立 L5/L6。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 46,
+      "pageId": "3bab86be-5c47-8186-ad38-eaf859a607b8",
+      "canonicalId": "KN-ARCH-CEDRICPRICE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": null,
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "ROLE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body synthesizes Cedric Price's project evidence into one bounded explanatory design object (Question→Service→Time→Change→Feedback→Exit) with explicit inference and transfer boundaries.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 47,
+      "pageId": "3bab86be-5c47-8146-b61a-cb35102fc06c",
+      "canonicalId": "PRAC-IP-SURFACE-20260811-01",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": null,
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "INDEX",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body explicitly declares INDEX CARRIER ONLY, routes to one canonical project/runtime authority and disclaims L7 Practice or independent runtime truth; it is a bounded L5 navigation object.",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 48,
+      "pageId": "3c0b86be-5c47-8197-aebb-f5e51dc4f265",
+      "canonicalId": "FW-PACKAGING-RETAIL-EXPERIENCE-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "正文明示 bounded Application Framework，并把品牌主张、身份、材料、包装结构、法规/物流与 retail spatial 专业方法路由进同一包装×零售应用脊柱，同时定义证据和 transfer boundary。",
+      "status": "PENDING"
+    },
+    {
+      "sequence": 49,
+      "pageId": "3c0b86be-5c47-812b-8497-dfe2664464b4",
+      "canonicalId": "KN-METHOD-IMAGE-CLAIM-BOUND-CAMERA-001",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": null,
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "ROLE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Body defines and repeatedly tests a reusable claim→evidence→camera/crop protocol with gates, counterexamples, extensions and validation boundaries; its irreducible function is METHOD.",
+      "status": "PENDING"
+    }
+  ]
+}

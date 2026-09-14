@@ -1,6 +1,6 @@
 # OLEANDER Canonical Project Flow｜v0.3
 
-**Status:** REVIEW  
+**Status:** ACTIVE / CURRENT EXECUTION-FLOW MODULE
 **Application Primary Mapping:** B04｜Metrics & Governance  
 **Application Supporting Mapping:** IP03｜Visual & Verbal System / SP04｜Construction & Operation  
 **Knowledge Architecture note:** B04 / IP03 / SP04 describe Application Mapping only; knowledge ownership must be resolved separately through `Domain / exact L0–L7 level`.  
@@ -9,6 +9,8 @@
 ## 1｜Position
 
 OLEANDER no longer treats AI collaboration, engine-style execution, project management, QA and persistence as parallel workflows.
+
+This file is the canonical execution-flow module under `complex-project-master-runtime-v1.0.md`. The Master Runtime owns cross-module invocation, precedence, stale-state propagation and Promotion readiness; this file owns the execution-flow sequence itself. Neither file replaces the unique OLEANDER Current Authority.
 
 The canonical project structure is:
 

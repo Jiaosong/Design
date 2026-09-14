@@ -73,6 +73,9 @@ jobs:
       - name: Validate current Control Cards and no-loss architecture contract
         run: python 00-governance/control-plane/scan_control_cards.py | tee /tmp/control-card-scan.txt
 
+      - name: Validate Complex Project Master Runtime
+        run: python 00-governance/control-plane/validate_master_runtime.py
+
       - name: Validate existing-project execution integrity
         run: python 00-governance/control-plane/validate_execution_integrity.py | tee /tmp/execution-integrity.txt
 
