@@ -52,6 +52,21 @@ function plannedUpdates(node, live) {
     updates.framework_type = null;
   }
   for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action === "REMOVE_CANONICAL_PARENT") {
+      const target = repair.targetPageId;
+      if (!target) throw new Error(`${node.canonicalId}: REMOVE_CANONICAL_PARENT requires targetPageId`);
+      const parents = [...new Set(updates.canonical_parent_ids ?? live.canonicalParentIds ?? [])];
+      if (parents.includes(target)) updates.canonical_parent_ids = parents.filter((id) => id !== target);
+      continue;
+    }
+    if (repair.action === "REMOVE_CANONICAL_CHILDREN") {
+      const targets = [...new Set(repair.targetPageIds ?? [])];
+      if (!targets.length) throw new Error(`${node.canonicalId}: REMOVE_CANONICAL_CHILDREN requires targetPageIds`);
+      const children = [...new Set(updates.canonical_children_ids ?? live.canonicalChildrenIds ?? [])];
+      const remainingChildren = children.filter((id) => !targets.includes(id));
+      if (remainingChildren.length !== children.length) updates.canonical_children_ids = remainingChildren;
+      continue;
+    }
     if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
       const target = repair.targetPageId;
       const parents = [...new Set(updates.canonical_parent_ids ?? live.canonicalParentIds ?? [])];
@@ -92,6 +107,12 @@ function classificationAtTarget(node, live) {
 
 function edgeRepairsAtTarget(node, live) {
   return (node.edgeRepairs ?? []).every((repair) => {
+    if (repair.action === "REMOVE_CANONICAL_PARENT") {
+      return !(live.canonicalParentIds ?? []).includes(repair.targetPageId);
+    }
+    if (repair.action === "REMOVE_CANONICAL_CHILDREN") {
+      return (repair.targetPageIds ?? []).every((target) => !(live.canonicalChildrenIds ?? []).includes(target));
+    }
     if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
       const target = repair.targetPageId;
       return !(live.canonicalParentIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
@@ -111,6 +132,27 @@ function edgeRepairsAtTarget(node, live) {
 function edgeRepairDrift(node, live) {
   const drift = [];
   for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action === "REMOVE_CANONICAL_PARENT") {
+      const target = repair.targetPageId;
+      if (!target) {
+        drift.push("REMOVE_CANONICAL_PARENT:targetPageIdMissing");
+        continue;
+      }
+      const hasParent = (live.canonicalParentIds ?? []).includes(target);
+      if (!hasParent) drift.push(`edgeRepairSourceMissing:${target}`);
+      continue;
+    }
+    if (repair.action === "REMOVE_CANONICAL_CHILDREN") {
+      const targets = repair.targetPageIds ?? [];
+      if (!targets.length) {
+        drift.push("REMOVE_CANONICAL_CHILDREN:targetPageIdsMissing");
+        continue;
+      }
+      for (const target of targets) {
+        if (!(live.canonicalChildrenIds ?? []).includes(target)) drift.push(`edgeRepairSourceMissing:${target}`);
+      }
+      continue;
+    }
     if (repair.action === "RETYPE_CANONICAL_PARENT_TO_RELATED") {
       const target = repair.targetPageId;
       const hasParent = (live.canonicalParentIds ?? []).includes(target);
