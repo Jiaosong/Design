@@ -28,8 +28,8 @@ const vars = Object.fromEntries(
 const token = process.env.OLEANDER_API_TOKEN || vars.OLEANDER_API_TOKEN;
 if (!token) throw new Error("OLEANDER_API_TOKEN missing");
 const [mode, planInput, receiptInput] = process.argv.slice(2);
-if (!mode || !["preflight", "apply"].includes(mode) || !planInput) {
-  throw new Error("usage: preflight|apply <plan.json> [receipt.json]");
+if (!mode || !["preflight", "apply", "reconcile"].includes(mode) || !planInput) {
+  throw new Error("usage: preflight|apply|reconcile <plan.json> [receipt.json]");
 }
 const planPath = path.resolve(planInput);
 const plan = JSON.parse(fs.readFileSync(planPath, "utf8"));
@@ -38,6 +38,9 @@ const receiptPath = receiptInput ? path.resolve(receiptInput) : null;
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 const governanceBase = "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev/v1/governance-page";
 const mutationBase = "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev/v1/knowledge-graph-mutation";
+const reconcileBase = "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev/v1/reconcile";
+const reconcileStatusBase = "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev/v1/reconcile-status";
+const drainOnceBase = "https://oleander-notion-canonical-knowledge.oleander-design-runtime.workers.dev/v1/drain-once";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const results = [];
 
@@ -233,6 +236,59 @@ for (const node of plan.nodes) {
     inspect = await response.json();
     if (!response.ok || !inspect.ok) throw new Error(`inspect HTTP ${response.status}: ${JSON.stringify(inspect)}`);
     const live = inspect.page;
+    if (mode === "reconcile") {
+      const drift = [];
+      if (live.canonicalId !== node.canonicalId) drift.push(`canonicalId:${live.canonicalId}`);
+      if (node.expectedRelationState && live.relationState !== node.expectedRelationState) {
+        drift.push(`relationState:${live.relationState}`);
+      }
+      if (drift.length) {
+        results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "DRIFT", drift, live, startedAt, completedAt: new Date().toISOString() });
+        break;
+      }
+
+      const scheduleResponse = await fetch(reconcileBase, { method: "POST", headers, body: JSON.stringify({ page_id: node.pageId }) });
+      const schedulePayload = await scheduleResponse.json();
+      if (!scheduleResponse.ok || !schedulePayload?.ok || !schedulePayload?.run_id) {
+        results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "FAILED", httpStatus: scheduleResponse.status, response: schedulePayload, live, startedAt, completedAt: new Date().toISOString() });
+        break;
+      }
+
+      let run = null;
+      let drainCalls = 0;
+      for (; drainCalls < 24; drainCalls += 1) {
+        const drainResponse = await fetch(drainOnceBase, { method: "POST", headers, body: "{}" });
+        const drainPayload = await drainResponse.json();
+        if (!drainResponse.ok || !drainPayload?.ok) {
+          throw new Error(`drain-once HTTP ${drainResponse.status}: ${JSON.stringify(drainPayload)}`);
+        }
+        const statusResponse = await fetch(`${reconcileStatusBase}?run_id=${encodeURIComponent(schedulePayload.run_id)}`, { headers });
+        const statusPayload = await statusResponse.json();
+        if (!statusResponse.ok || !statusPayload?.ok) {
+          throw new Error(`reconcile-status HTTP ${statusResponse.status}: ${JSON.stringify(statusPayload)}`);
+        }
+        run = statusPayload.run;
+        if (run?.status === "COMPLETE" && Number(run?.task_counts?.PROCESSED ?? 0) === 1) break;
+        if (["FAILED", "PARTIAL_BLOCKED"].includes(run?.status)) break;
+        await sleep(150);
+      }
+      const reconciled = run?.status === "COMPLETE" && Number(run?.task_counts?.PROCESSED ?? 0) === 1;
+      results.push({
+        sequence: node.sequence,
+        pageId: node.pageId,
+        canonicalId: node.canonicalId,
+        status: reconciled ? "RECONCILED" : "FAILED",
+        runId: schedulePayload.run_id,
+        run,
+        drainCalls: drainCalls + (reconciled ? 1 : 0),
+        live,
+        startedAt,
+        completedAt: new Date().toISOString(),
+      });
+      if (!reconciled) break;
+      await sleep(150);
+      continue;
+    }
     const updates = plannedUpdates(node, live);
     if (classificationAtTarget(node, live) && edgeRepairsAtTarget(node, live) && !Object.keys(updates).length) {
       results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "ALREADY_TARGET", live, updates, startedAt, completedAt: new Date().toISOString() });
