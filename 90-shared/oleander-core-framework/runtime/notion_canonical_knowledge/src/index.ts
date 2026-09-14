@@ -1745,6 +1745,22 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return json(result.body, result.status);
   }
 
+  if (request.method === "POST" && url.pathname === "/v1/academic-page/begin-content-review") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      page_id?: string;
+      expected_canonical_id?: string;
+      expected_notion_last_edited_time?: string;
+    };
+    const result = await beginReaderContentReview(
+      env,
+      body.page_id ?? "",
+      body.expected_canonical_id ?? "",
+      body.expected_notion_last_edited_time ?? "",
+    );
+    return json(result.body, result.status);
+  }
+
   if (request.method === "POST" && url.pathname === "/v1/reader-layer") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     const existing = await env.MANIFEST.prepare("SELECT state_value FROM runtime_state WHERE state_key='reader_layer_v1' LIMIT 1")
