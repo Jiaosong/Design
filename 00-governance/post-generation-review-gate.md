@@ -69,6 +69,7 @@ AR-G10 必须把以下内容作为独立检查项：Visual hierarchy、Boundary�
 5. 视图适配性：尺寸和构造关系必须放在正确的平/立/剖/详图方向表达；不同正交测量方向不得强行混画。
 6. 多视图一致：同一对象在平、立、剖、详图中的位置、厚度、方向和控制层关系一致。
 7. 构造逻辑：水、气、热、受力、材料、锚固、排水、保温、安装与收口不得相互冲突。
+   - 当空间/建筑模型声明完整高写实、construction-aware、near-as-built、digital-twin-ready，或审查距离进入螺栓/接缝/给排水/电气/裂缝等层级时，同时触发 `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`；必须检查任务范围内系统连续性、支撑/连接、排水重力与检修逻辑、穿透/冲突、维护净空、细节 carrier、缺陷/老化真值及隐藏但 claim-relevant 的系统，不得仅凭 hero render、对象数量或 LOD 标签通过。
 8. 证据状态：区分练习假设、外部核验事实、PENDING、厂家/结构输入、法规和项目数据。
 9. 复现：确认修正真正进入最终交付文件。
 10. 审查结果必须写入 README / REVIEW / REVISION / ARTIFACT_REVIEW_MATRIX / training record。

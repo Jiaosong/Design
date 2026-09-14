@@ -115,6 +115,12 @@ Canonical system: [`artifact-review-system-v1.0.md`](artifact-review-system-v1.0
 
 一个文件只有 `Common PASS + 对应 Specific PASS` 才能标记 `POST-REVIEW PASS`；一个交付包只有全部触发 Gate + AR-S09 通过才允许 `PACKAGE RELEASE PASS`。历史审查未按 v1.0 重跑时只保留为 `LEGACY REVIEW RESULT`。
 
+### Built-asset High-Fidelity Gate
+
+当空间 / 建筑 / built-environment 模型声明完整高写实、近距离构造完整、construction-aware、near-as-built 或 digital-twin-ready 时，AR-S02 之外还必须触发 `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`。该 Gate 使用 `BA0–BA4` 描述 built-asset representation maturity，并独立检查任务范围内 architecture / structure / MEP system coverage、连接/支撑、排水、检修、细节 carrier、缺陷真值和多距离 readback。
+
+`BA0–BA4` 不等于本 Project Flow 的执行/render `FID0–FID3`，也不等于外部 BIM LOD。Beauty render、PBR、对象/面数、可打开、CI PASS 或 BIM/LOD 标签均不能单独升级 built-asset acceptance；FIELD / engineering / code / fabrication / commissioning authority 仍保持独立。
+
 ## Mandatory Post-Generation Review Gate
 
 Operational gate: [`post-generation-review-gate.md`](post-generation-review-gate.md)

@@ -73,7 +73,7 @@ Installed/core-skill existence does **not** prove that a skill, prompt, model, r
 - The Notion knowledge base may be in `CLEANUP FIRST`; unresolved/uncanonical pages are not silently treated as Current Authority.
 - Data/visualization work is capability-first and per-run probed; no machine-specific local Python path is a global requirement.
 - GIS instructions do not assume a documented QGIS version is callable execution evidence.
-- 3D handoffs record units, axes, dependencies, versions, editable master identity and exchange tests.
+- 3D handoffs record units, axes, dependencies, versions, editable master identity and exchange tests. Complete/realistic built-asset requests additionally trigger the `oleander-3d-pipeline` Built-asset High-Fidelity Gate: declare `BA0–BA4`, audit in-scope architecture/structure/MEP coverage, connection/support/service continuity, critical-detail carrier, drainage/service logic, maintenance clearance, defect/aging truth state and overall/working/inspection readback. A BIM/LOD label, object/poly/modifier count or photoreal render cannot self-pass this gate.
 - Narrative outputs trace claims back to approved research/evidence and do not let layout overrule locked geometry or truth state.
 - QC distinguishes blocking defects from warnings, stays non-destructive and cannot grant Design KEEP merely because delivery checks pass.
 - Motion identifies a real Motion Role, includes no-motion and Reduced Motion paths, distinguishes designed/not-run from executed evidence, and applies runtime/interaction QA.

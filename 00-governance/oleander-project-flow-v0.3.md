@@ -50,7 +50,7 @@ Candidate is not Canonical.
 
 ### Loop B｜Canonical Production
 
-`Candidate → Contract Compile → Authority Resolve → Capability Resolve → Execute → Machine QA → Visual QA → Project QA → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
+`Candidate → Contract Compile → Authority Resolve → Capability Resolve → Execute → Machine QA → Visual QA → Project QA → Specialized Acceptance Gates when triggered → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
 
 Execution should be deterministic wherever possible.
 
@@ -174,6 +174,8 @@ Whether the Decision Question was answered, Locked Variables were preserved and 
 Review outcome: `PASS / REVISE / REJECT / BLOCKED`.
 
 Machine / Visual / Project QA do not substitute for specialized gates such as rights, field/reality, engineering, human-test or PAP when those are applicable.
+
+For spatial / architectural / built-environment models that claim complete high-fidelity realism, close constructive completeness, construction-aware, near-as-built or digital-twin-ready representation, the `oleander-3d-pipeline` Built-asset High-Fidelity Gate is one of these specialized acceptance gates. It runs after general QA and before Promotion, and emits `BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT`. Its `BA0–BA4` namespace describes built-asset representation depth and is independent from this flow's execution/render `FID0–FID3`, external BIM LOD, FIELD state and engineering/code/manufacturing authority.
 
 ## 11｜Revision Boundary
 
