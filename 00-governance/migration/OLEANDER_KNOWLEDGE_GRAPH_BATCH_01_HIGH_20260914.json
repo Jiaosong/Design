@@ -388,7 +388,68 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "正文把 design need→产品类→制造商/SKU→供应/文件→系统适配→RFQ/样品/送审→现场验收串成专业证据路由，并明确目录/产品页不能替代系统批准与项目现实。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_SOURCE",
+          "targetPageIds": [
+            "3b5b86be-5c47-8163-ae88-dbe579afc284",
+            "3b3b86be-5c47-8163-96cf-dd328f209ca1",
+            "3b3b86be-5c47-81ee-b53c-dbd145e8250f",
+            "3b0b86be-5c47-8145-8b9e-fccb87540461",
+            "3b1b86be-5c47-819d-9824-e01ee2939765",
+            "3b2b86be-5c47-8144-946a-f5bd167cae97",
+            "3b1b86be-5c47-816d-950c-ca1e345ee13f",
+            "3b2b86be-5c47-81d3-896f-ca9169db84cb",
+            "3b4b86be-5c47-8199-8010-f71f2a218b8d",
+            "3b4b86be-5c47-81ae-aa42-d04b791bbba2",
+            "3b0b86be-5c47-8154-9ce0-cd5fba5ddf6b",
+            "3b0b86be-5c47-8105-8528-d4576ec99bb9",
+            "3b1b86be-5c47-8188-a202-f3b73e673f7f",
+            "3b1b86be-5c47-81a4-adc3-cfb32eb77829",
+            "3b4b86be-5c47-8129-85f9-e58679a6e782",
+            "3b3b86be-5c47-8178-bb23-c5ea3c8d8804",
+            "3b2b86be-5c47-8178-b549-d5b10081aac3",
+            "3b5b86be-5c47-8116-8304-d3b43684e883",
+            "3bab86be-5c47-8146-9fc4-e0ac5b57210e",
+            "3bab86be-5c47-8105-9134-ea2754a02aea",
+            "3bab86be-5c47-8151-b707-db2cf265ceeb",
+            "3bab86be-5c47-8159-83ac-f2302e663260",
+            "3bab86be-5c47-8102-b0cc-d34c0fb253ba",
+            "3bab86be-5c47-8174-89f5-d85b006907e8",
+            "3bab86be-5c47-816b-bbc3-f7e87d21c27c"
+          ],
+          "targetCanonicalIds": [
+            "EVD-ARCH-EQUIP-NEDFON-DST15-250P",
+            "EVD-CMF-PROD-ALPI-NATURAL-OAK-10.87",
+            "EVD-CMF-PROD-BUTTONFIX-TYPE2-262.94.024",
+            "EVD-CMF-PROD-DEKTON-REM-VELVET-8",
+            "EVD-CMF-PROD-DONGPENG-YG276865",
+            "EVD-CMF-PROD-EGGER-U999-PM-MDF-18",
+            "EVD-CMF-PROD-FILA-MP90-ECO-XTREME-1L",
+            "EVD-CMF-PROD-FUNDERMAX-0755-AP-BLACK-4100-12",
+            "EVD-CMF-PROD-FUNDERMAX-0755-AP-FQ-2800-12",
+            "EVD-CMF-PROD-KLEIBERIT-303.0.00",
+            "EVD-CMF-PROD-LAMINAM-CALACATTA-ORO-NATURAL-5",
+            "EVD-CMF-PROD-MAPEI-KERAFLEX-MAXI-S1-ZERO-GREY",
+            "EVD-CMF-PROD-MAPEI-ULTRACOLOR-112",
+            "EVD-CMF-PROD-MAPEI-UM35",
+            "EVD-CMF-PROD-OSTERMANN-P4M.2990",
+            "EVD-CMF-PROD-RUBIO-OILPLUS2C-PURE-1.3L",
+            "EVD-CMF-PROD-TARKETT-PURE-OAK-NATURE-MINIPLANK",
+            "PRD-BUTTONFIX-SAFETYCORD-T2-001",
+            "SRC-CMF-ALPI-NATURAL-OAK-10.87-OFFICIAL",
+            "SRC-CMF-DEKTON-REM-OFFICIAL",
+            "SRC-CMF-FILA-MP90-ECO-XTREME-OFFICIAL",
+            "SRC-CMF-KLEIBERIT-303-OFFICIAL",
+            "SRC-CMF-OSTERMANN-P4M2990-OFFICIAL",
+            "SRC-CMF-RUBIO-OILPLUS2C-PURE-OFFICIAL",
+            "SRC-CMF-TARKETT-PURE-OAK-NATURE-OFFICIAL"
+          ],
+          "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
+          "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        }
+      ]
     },
     {
       "sequence": 18,
@@ -568,7 +629,22 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body has eight explicit type entry points plus a shared actor/task/flow/system/operations/evidence contract, making its irreducible function cross-typology routing rather than one explanatory thesis.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_RELATED",
+          "targetPageIds": [
+            "3acb86be-5c47-81fc-b3e2-e349d9b59f52",
+            "3acb86be-5c47-81f5-b385-f53107f7cf45"
+          ],
+          "targetCanonicalIds": [
+            "IDX-ARCH-TYPOLOGY-MED-004",
+            "IDX-ARCH-TYPOLOGY-CULTURE-006"
+          ],
+          "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
+          "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        }
+      ]
     },
     {
       "sequence": 27,
@@ -648,7 +724,54 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body is explicitly a navigation/governance index routing the architecture corpus across L0–L7, G0–G9, professional topics, typologies, evidence and tools while disclaiming substantive numeric ownership.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_RELATED",
+          "targetPageIds": [
+            "3acb86be-5c47-81c6-bf9f-e297f22a122c",
+            "3acb86be-5c47-81aa-9f26-f1039f5b3fea",
+            "3acb86be-5c47-8114-a394-c4919f539360",
+            "3acb86be-5c47-81bb-8381-ebfeb71f3ad1",
+            "3acb86be-5c47-81df-bff4-f6a365a7eafd",
+            "3b5b86be-5c47-8184-bb74-e68e35ffd1f3",
+            "3acb86be-5c47-8119-bd6c-d2cd340eb985",
+            "3acb86be-5c47-8118-b115-e8a7d5946d59",
+            "3adb86be-5c47-8186-a3f9-da4a14229a22",
+            "3acb86be-5c47-81c9-8f0d-fbf633619d46",
+            "3acb86be-5c47-8106-a6a5-dac1f042e902",
+            "3acb86be-5c47-81a0-9e5b-e076806bec1b",
+            "3acb86be-5c47-8150-93db-f530fc5a4f25",
+            "3acb86be-5c47-81dc-94c1-efc67df8eb95",
+            "3acb86be-5c47-818f-af48-f10512f6e3e0",
+            "3acb86be-5c47-816e-9116-cc04a006421b",
+            "3acb86be-5c47-8142-8595-e61a613b7a1c",
+            "3acb86be-5c47-81f1-a9f3-d5765ea4c28c"
+          ],
+          "targetCanonicalIds": [
+            "FW-ARCH-MATERIAL-SYSTEM-001",
+            "FW-ARCH-TYPOLOGY-001",
+            "KN-ARCH-EQUITY-006",
+            "KN-ARCH-HERITAGE-007",
+            "KN-ARCH-HIST-001",
+            "KN-ARCH-HIST-013",
+            "KN-ARCH-THEORY-003",
+            "KN-ARCH-HIST-002",
+            "KN-ARCH-HIST-008",
+            "KN-ARCH-ANALYSIS-005",
+            "IDX-ARCH-COMPLIANCE-SUST-002",
+            "IDX-ARCH-DELIVERY-001",
+            "IDX-ARCH-HUMAN-006",
+            "IDX-ARCH-MEP-004",
+            "IDX-ARCH-OPS-SOCIAL-007",
+            "IDX-ARCH-SITE-003",
+            "IDX-ARCH-SPECIALTY-008",
+            "IDX-ARCH-STRUCT-SAFETY-005"
+          ],
+          "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
+          "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        }
+      ]
     },
     {
       "sequence": 31,
@@ -668,7 +791,26 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body says it is a research router across independent material, structural/optimization and manufacturing/integration routes, with cross-case trade-off logic and downstream verification.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_SOURCE",
+          "targetPageIds": [
+            "3b9b86be-5c47-810e-a6e9-d1d6d5a1ce13",
+            "3b9b86be-5c47-8128-bb61-f2619d600960",
+            "3b9b86be-5c47-811b-b98e-e2efa5244d9b",
+            "3b9b86be-5c47-81b0-a52a-d3e414d96fc3"
+          ],
+          "targetCanonicalIds": [
+            "CASE-LW-AIRBUS-BIONIC-001",
+            "CASE-LW-ORNL-SEATBACK-001",
+            "CASE-LW-ORNL-GE-BRACKET-001",
+            "CASE-LW-ORNL-TI-TO-001"
+          ],
+          "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
+          "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        }
+      ]
     },
     {
       "sequence": 32,
@@ -957,7 +1099,32 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "正文明确是 Current Registry Framework，只组织全球/中国设计史、艺术视觉文化与理论对象的结构身份和入口，并把对象级事实与理论下沉到独立 L5/L6。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_RELATED",
+          "targetPageIds": [
+            "3adb86be-5c47-81d5-b53c-ff958e6ce3d6",
+            "3adb86be-5c47-8192-b864-dc2b95744af3",
+            "3b5b86be-5c47-812d-b3f3-c6eac83bce92",
+            "3adb86be-5c47-8169-a69c-f37e49c15820",
+            "3b5b86be-5c47-8174-8e03-d1325bdf7416",
+            "3adb86be-5c47-8190-a287-c630631ece6b",
+            "3b5b86be-5c47-81f3-a5da-e1f7fe1d2ba7"
+          ],
+          "targetCanonicalIds": [
+            "KN-DESIGN-HIST-009",
+            "KN-DESIGN-HIST-012",
+            "KN-DESIGN-HIST-016",
+            "KN-ART-HIST-011",
+            "KN-ARTSYS-HIST-015",
+            "KN-FINEART-HIST-010",
+            "KN-FINEART-HIST-014"
+          ],
+          "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
+          "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        }
+      ]
     },
     {
       "sequence": 46,
