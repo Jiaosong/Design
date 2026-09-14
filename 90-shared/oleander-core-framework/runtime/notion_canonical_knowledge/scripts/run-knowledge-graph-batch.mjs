@@ -51,7 +51,48 @@ function plannedUpdates(node, live) {
   } else if (live.frameworkType) {
     updates.framework_type = null;
   }
+  for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") {
+      throw new Error(`${node.canonicalId}: unsupported edge repair ${repair.action}`);
+    }
+    const target = repair.targetPageId;
+    const parents = [...new Set(live.canonicalParentIds ?? [])];
+    const related = [...new Set(live.semanticRelatedIds ?? [])];
+    if (parents.includes(target)) updates.canonical_parent_ids = parents.filter((id) => id !== target);
+    if (!related.includes(target)) updates.semantic_related_ids = [...related, target];
+  }
   return updates;
+}
+
+function classificationAtTarget(node, live) {
+  if (node.target.level && live.contentLevel !== node.target.level) return false;
+  if (node.target.role && live.knowledgeRole !== node.target.role) return false;
+  const targetLevel = String(node.target.level ?? live.contentLevel ?? "");
+  if (targetLevel.startsWith("L4")) return live.frameworkType === node.target.frameworkType;
+  return !live.frameworkType;
+}
+
+function edgeRepairsAtTarget(node, live) {
+  return (node.edgeRepairs ?? []).every((repair) => {
+    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") return false;
+    const target = repair.targetPageId;
+    return !(live.canonicalParentIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
+  });
+}
+
+function edgeRepairDrift(node, live) {
+  const drift = [];
+  for (const repair of node.edgeRepairs ?? []) {
+    if (repair.action !== "RETYPE_CANONICAL_PARENT_TO_RELATED") {
+      drift.push(`unsupportedEdgeRepair:${repair.action}`);
+      continue;
+    }
+    const target = repair.targetPageId;
+    const hasParent = (live.canonicalParentIds ?? []).includes(target);
+    const hasRelated = (live.semanticRelatedIds ?? []).includes(target);
+    if (!hasParent && !hasRelated) drift.push(`edgeRepairSourceMissing:${target}`);
+  }
+  return drift;
 }
 
 function effectiveRetrievalSpace(live) {
@@ -69,6 +110,11 @@ for (const node of plan.nodes) {
     inspect = await response.json();
     if (!response.ok || !inspect.ok) throw new Error(`inspect HTTP ${response.status}: ${JSON.stringify(inspect)}`);
     const live = inspect.page;
+    const updates = plannedUpdates(node, live);
+    if (classificationAtTarget(node, live) && edgeRepairsAtTarget(node, live) && !Object.keys(updates).length) {
+      results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "ALREADY_TARGET", live, updates, startedAt, completedAt: new Date().toISOString() });
+      continue;
+    }
     const drift = [];
     if (live.canonicalId !== node.canonicalId) drift.push(`canonicalId:${live.canonicalId}`);
     const liveEffectiveSpace = effectiveRetrievalSpace(live);
@@ -76,7 +122,7 @@ for (const node of plan.nodes) {
     if (live.contentLevel !== node.current.level) drift.push(`contentLevel:${live.contentLevel}`);
     if (live.knowledgeRole !== node.current.role) drift.push(`knowledgeRole:${live.knowledgeRole}`);
     if (live.relationState !== node.current.relationState) drift.push(`relationState:${live.relationState}`);
-    const updates = plannedUpdates(node, live);
+    drift.push(...edgeRepairDrift(node, live));
     if (drift.length) {
       results.push({ sequence: node.sequence, pageId: node.pageId, canonicalId: node.canonicalId, status: "DRIFT", drift, live, updates, startedAt, completedAt: new Date().toISOString() });
       continue;
@@ -98,6 +144,8 @@ for (const node of plan.nodes) {
       content_level: "contentLevel",
       knowledge_role: "knowledgeRole",
       framework_type: "frameworkType",
+      canonical_parent_ids: "canonicalParentIds",
+      semantic_related_ids: "semanticRelatedIds",
     };
     for (const key of Object.keys(updates)) expected[key] = live[fieldMap[key]];
     const body = {
