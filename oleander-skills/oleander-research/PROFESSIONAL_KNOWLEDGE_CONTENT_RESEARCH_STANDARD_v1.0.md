@@ -4,6 +4,12 @@ Status: **EXECUTION CONTRACT / GOVERNANCE EXTENSION**. This document extends the
 
 Sync state｜同步状态：**GitHub execution mirror saved; Notion Current Authority remains the canonical Source of Truth and must carry the corresponding current rule binding before this contract is treated as cross-platform synchronized.**
 
+Runtime bindings｜运行绑定：
+- detailed research execution: `PROFESSIONAL_RESEARCH_GATE_v0.1.md`
+- Skill owner: `SKILL.md`
+- machine contract: `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.json`
+- regression coverage: `evals/evals.json`
+
 Authority boundary｜权威边界：
 
 `NOTION CURRENT AUTHORITY → LIVE REGISTRY IDENTITY → CURRENT OBJECT / RELATIONS → THIS EXECUTION CONTRACT → GITHUB SKILL / VALIDATOR`
