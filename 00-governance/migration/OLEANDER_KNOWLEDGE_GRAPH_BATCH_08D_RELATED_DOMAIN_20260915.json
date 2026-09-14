@@ -1,0 +1,73 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08D_CURRENT_RELATED_DOMAIN_REPAIR",
+  "purpose": "Replace two invalid CURRENT Related Domain edges that target the L1 Digital Design & Delivery branch with the exact ACTIVE L2 Generative, Relational & Computational Methods domain, preserving all other domain relations.",
+  "safeguards": [
+    "Both replacement decisions are based on current full-body semantics, not titles or prefixes.",
+    "The old target is an L1 Branch and is invalid for Related Domain semantics.",
+    "The new target is an ACTIVE L2 domain in the current registry.",
+    "The runner must guard the complete current relatedDomainIds set before mutation.",
+    "The old domain edge and replacement domain edge are changed atomically in one canonical mutation.",
+    "Production mutation stops on first drift/error and requires final preflight, derivative reconcile and fresh Reader audit."
+  ],
+  "plannedCount": 2,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-THEORY-3D-MODELING-ESSENCE-001",
+      "pageId": "3ccb86be-5c47-81c2-980c-f52536329032",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81a7-aabc-fa351fc32312"],
+        "relatedDomainIds": ["3b5b86be-5c47-81f5-b219-dba332da807c"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RELATED_DOMAIN_REPLACE",
+      "confidence": "HIGH",
+      "reason": "The body substantially covers parametric/procedural graphs, constraints, dependency evaluation, declarative/code modeling, topology and operators. Digital Design & Delivery is only an L1 branch; Generative, Relational & Computational Methods is the exact eligible L2 semantic adjacency.",
+      "edgeRepairs": [
+        {
+          "action": "REPLACE_RELATED_DOMAIN",
+          "oldTargetPageId": "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "newTargetPageId": "3bbb86be-5c47-817d-9ecf-f8e13dbf2cd5",
+          "newTargetCanonicalId": "KD-DESIGN-091",
+          "newTargetTitle": "Generative, Relational & Computational Methods｜生成·关系·计算方法"
+        }
+      ]
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-THEORY-COMPUTER-GRAPHICS-001",
+      "pageId": "3ccb86be-5c47-8165-a382-d7368430657c",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": ["390b86be-5c47-81a7-aabc-fa351fc32312"],
+        "relatedDomainIds": [
+          "390b86be-5c47-81e7-9b61-ee2fee3df75f",
+          "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "39db86be-5c47-81df-ad8d-e08a743c2932"
+        ]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RELATED_DOMAIN_REPLACE",
+      "confidence": "HIGH",
+      "reason": "The body covers geometry computation, BSDF/microfacet models, Monte Carlo/path tracing, sampling, color pipeline and interchange/runtime semantics. Replace the invalid L1 Digital Design & Delivery adjacency with the exact computational-method L2 while retaining the existing CMF and Light & Shadow related domains.",
+      "edgeRepairs": [
+        {
+          "action": "REPLACE_RELATED_DOMAIN",
+          "oldTargetPageId": "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "newTargetPageId": "3bbb86be-5c47-817d-9ecf-f8e13dbf2cd5",
+          "newTargetCanonicalId": "KD-DESIGN-091",
+          "newTargetTitle": "Generative, Relational & Computational Methods｜生成·关系·计算方法"
+        }
+      ]
+    }
+  ]
+}
